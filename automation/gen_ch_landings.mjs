@@ -430,6 +430,57 @@ const PAGES = [
       ["Coworking oder eigenes Büro?", "Für kleine Teams/Start oft Coworking (flexibel, günstiger Einstieg); ab stabiler Grösse lohnt ein eigener Mietvertrag."],
     ],
   },
+  {
+    slug: "pflege-jobs-schweiz", icon: "🩺", h1: "Pflege-Jobs in der Schweiz", jobq: "pflege",
+    title: "Pflege-Jobs Schweiz — offene Stellen finden | aban",
+    desc: "Pflege-Jobs in der Schweiz finden: offene Stellen in Spital, Spitex, Heim und Praxis — nach Ort und Pensum suchen, direkt zur Original-Anzeige bewerben.",
+    cta: "/stellenangebote.html?q=pflege", ctaLabel: "Pflege-Stellen durchsuchen",
+    intro: "Pflegefachpersonen sind in der ganzen Schweiz gesucht. Durchsuche aktuelle Stellen in Spital, Spitex, Heim und Praxis und bewirb dich direkt beim Arbeitgeber.",
+    tips: [
+      ["Pensum & Schichten klären", "Achte auf Pensum (z. B. 80–100 %), Schicht-/Wochenendarbeit und ob Springerdienste erwartet werden."],
+      ["Anerkennung & Stufe", "Halte Diplom/Anerkennung (SRK bei Ausland) und deine Funktionsstufe (FaGe, HF, FH) bereit — das beschleunigt die Bewerbung."],
+      ["Region wählen", "Filtere nach Ort/Kanton — Lohn und Bedarf unterscheiden sich je Region deutlich."],
+    ],
+    faq: [
+      ["Wo finde ich Pflege-Stellen in der Schweiz?", "In der Job-Suche nach „Pflege“ plus Ort/Kanton suchen. Die Treffer kommen live aus mehreren Börsen inkl. Schweizer Quellen; der Klick führt zur Original-Anzeige."],
+      ["Brauche ich eine Anerkennung?", "Mit ausländischem Diplom ist meist eine SRK-Anerkennung nötig. Arbeitgeber geben im Inserat an, was sie verlangen."],
+      ["Voll- oder Teilzeit?", "Beides ist verbreitet — filtere nach Beschäftigungsart und Pensum direkt in der Job-Suche."],
+    ],
+  },
+  {
+    slug: "gastro-jobs-schweiz", icon: "🍽️", h1: "Gastro-Jobs in der Schweiz", jobq: "gastronomie",
+    title: "Gastro-Jobs Schweiz — Koch, Service & Küche finden | aban",
+    desc: "Gastronomie-Jobs in der Schweiz finden: Koch, Service, Küchenhilfe und Hotellerie — offene Stellen nach Ort suchen, direkt bewerben.",
+    cta: "/stellenangebote.html?q=gastronomie", ctaLabel: "Gastro-Stellen durchsuchen",
+    intro: "Von der Saison-Stelle bis zur Festanstellung: Koch, Service, Küche und Hotellerie sind in der ganzen Schweiz gesucht. Durchsuche aktuelle Stellen und bewirb dich direkt.",
+    tips: [
+      ["Saison vs. Jahresstelle", "In Tourismusregionen viele Saisonstellen (Winter/Sommer) — kläre Vertragsdauer und ob Personalzimmer geboten wird."],
+      ["Sprachen helfen", "Deutsch/Französisch je Region + Englisch sind im Service ein Vorteil — im Lebenslauf angeben."],
+      ["Referenzen bereit", "Arbeitszeugnisse und Referenzen aus früheren Betrieben beschleunigen die Zusage."],
+    ],
+    faq: [
+      ["Wo finde ich Gastro-Jobs in der Schweiz?", "Such in der Job-Suche nach „Gastronomie“, „Koch“ oder „Service“ plus Ort. Treffer kommen live aus mehreren Börsen; Klick führt zur Original-Anzeige."],
+      ["Gibt es Saisonstellen?", "Ja, gerade in Tourismusorten. Achte im Inserat auf Vertragsdauer und Unterkunft."],
+      ["Auch ohne Ausbildung?", "Für Küchenhilfe/Service-Einstieg oft ja; für Koch/Chef de Partie wird Ausbildung/Erfahrung erwartet."],
+    ],
+  },
+  {
+    slug: "verkauf-jobs-schweiz", icon: "🛒", h1: "Verkauf- & Detailhandel-Jobs in der Schweiz", jobq: "verkauf",
+    title: "Verkauf-Jobs Schweiz — Detailhandel & Beratung finden | aban",
+    desc: "Verkauf- und Detailhandel-Jobs in der Schweiz finden: Verkäufer/in, Filialleitung, Kasse und Kundenberatung — Stellen nach Ort suchen, direkt bewerben.",
+    cta: "/stellenangebote.html?q=verkauf", ctaLabel: "Verkauf-Stellen durchsuchen",
+    intro: "Detailhandel sucht laufend Personal: Verkauf, Beratung, Kasse und Filialleitung. Durchsuche aktuelle Stellen in deiner Region und bewirb dich direkt beim Arbeitgeber.",
+    tips: [
+      ["Pensum & Samstage", "Im Detailhandel gehören Samstage meist dazu — kläre Pensum und Arbeitszeiten vorab."],
+      ["Branche zeigen", "Erfahrung in der passenden Branche (Mode, Lebensmittel, Elektronik) im Lebenslauf hervorheben."],
+      ["Sprachen & Auftritt", "Freundlicher Auftritt und Sprachkenntnisse der Region sind im Verkauf entscheidend."],
+    ],
+    faq: [
+      ["Wo finde ich Verkauf-Stellen in der Schweiz?", "Such in der Job-Suche nach „Verkauf“ oder „Detailhandel“ plus Ort. Treffer kommen live aus mehreren Börsen; Klick führt zur Original-Anzeige."],
+      ["Brauche ich eine Ausbildung?", "Für den Einstieg nicht immer; eine EFZ-Detailhandelsausbildung oder Branchenerfahrung erhöht die Chancen, v. a. für Filialleitung."],
+      ["Voll- oder Teilzeit?", "Beides ist üblich — filtere nach Beschäftigungsart in der Job-Suche."],
+    ],
+  },
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -456,7 +507,8 @@ function page(p) {
     buero: ["IMMO_UMZUG_URL", "Büro-Umzug? Zügelfirmen für Gewerbe vergleichen.", "Umzug vergleichen"] };
   let pbKey = "";
   for (const k in PB) { if (p.slug.indexOf(k) === 0) { pbKey = k; break; } }
-  const partnerBox = pbKey ? `  <div data-partner="${PB[pbKey][0]}" data-text="${esc(PB[pbKey][1])}" data-cta="${esc(PB[pbKey][2])}"></div>\n` : "";
+  const pb = pbKey ? PB[pbKey] : (p.jobq ? ["JOB_NETZWERK_URL", "Mehr passende Stellen bei unserem Partner-Job-Netzwerk.", "Jobs beim Partner"] : null);
+  const partnerBox = pb ? `  <div data-partner="${pb[0]}" data-text="${esc(pb[1])}" data-cta="${esc(pb[2])}"></div>\n` : "";
   // Live-eBay-Produktzeile: nur für Produkt-Kategorien (Wohnung/Job ausgenommen)
   const EQ = { "auto-kaufen": "Auto", "ebike-kaufen": "E-Bike", "velo-kaufen": "Velo Fahrrad",
     "moebel-kaufen": "Möbel", "handy-kaufen": "Handy Smartphone", "computer-kaufen": "Laptop",
@@ -479,6 +531,22 @@ function page(p) {
       el.innerHTML=it.map(function(x){var img=x.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\\''+esc(x.img)+'\\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';
         var href=(x.url&&x.url!=="#")?esc(x.url):"#";
         return '<a href="'+href+'" target="_blank" rel="sponsored nofollow noopener" style="border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;text-decoration:none;color:var(--ink);display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(x.title)+'</div><div style="color:var(--amber-dk);font-weight:800;font-size:.9rem">'+esc(x.price||"")+'</div></div></a>';
+      }).join("");
+    }).catch(function(){el.closest("section").style.display="none"});
+  })();</script>` : "";
+  // Live-Jobs-Zeile (für Job-Kategorie-Seiten via p.jobq)
+  const jobsRow = p.jobq ? `
+  <section style="margin-top:26px">
+    <h2 style="margin-bottom:4px">Aktuelle Stellen</h2>
+    <p style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Live aus mehreren Job-Börsen (inkl. Schweiz) · Klick führt zur Original-Anzeige.</p>
+    <div id="jobRow" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px"><div style="color:var(--muted);font-size:.9rem">Lade Stellen …</div></div>
+  </section>
+  <script>(function(){var JQ=${JSON.stringify(p.jobq)};var el=document.getElementById("jobRow");if(!el)return;
+    function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+    fetch("/api/jobs?q="+encodeURIComponent(JQ)).then(function(r){return r.json()}).then(function(d){
+      var it=(d.items||[]).slice(0,6);if(!it.length){el.closest("section").style.display="none";return}
+      el.innerHTML=it.map(function(o){var href=(o.url&&o.url!=="#")?esc(o.url):"#";
+        return '<a href="'+href+'" target="_blank" rel="noopener nofollow" style="border:1px solid var(--line);border-radius:11px;padding:12px 13px;background:#fff;text-decoration:none;color:var(--ink);display:block"><div style="font-weight:700;font-size:.86rem;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(o.title)+'</div><div style="font-size:.76rem;color:var(--muted)">'+esc([o.company,o.location].filter(Boolean).join(" · "))+'</div></a>';
       }).join("");
     }).catch(function(){el.closest("section").style.display="none"});
   })();</script>` : "";
@@ -540,7 +608,7 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
   <div class="tips">
 ${tips}
   </div>
-${liveRow}
+${liveRow}${jobsRow}
   <h2 style="margin-top:26px">Häufige Fragen</h2>
 ${faq}
   <div class="cta2">
