@@ -1,0 +1,25 @@
+{%- comment -%}
+  LuxeStyle — Einheitlicher Attribut-/Vorteils-Block (Labels) für die Produktseite.
+  1× als "Custom Liquid"-Block ins Produkt-Template einfügen → rendert auf ALLEN ~1'349 Produkten.
+
+  Intelligente Logik (kein per-Produkt-Pflegeaufwand):
+   • Marken-Produkte (vendor ≠ "LuxeStyle") bekommen automatisch ein dynamisches "Original {Marke}"-Label.
+   • Optionaler Override: product.metafields.custom.benefits (Liste) ersetzt die Standard-Labels, wenn gesetzt.
+   • Sonst: einheitliche Standard-Trust-Labels.
+{%- endcomment -%}
+{%- assign custom = product.metafields.custom.benefits.value -%}
+<div class="ls-attr-block" style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;font-size:13px;line-height:1;">
+  {%- if product.vendor != blank and product.vendor != 'LuxeStyle' -%}
+    <span style="background:#1a1a1a;color:#fff;border-radius:999px;padding:7px 12px;font-weight:600;">👑 Original {{ product.vendor }}</span>
+  {%- endif -%}
+  {%- if custom and custom.size > 0 -%}
+    {%- for l in custom -%}<span style="background:#f5f3ef;border:1px solid #e3ddd2;border-radius:999px;padding:7px 12px;">{{ l }}</span>{%- endfor -%}
+  {%- else -%}
+    <span style="background:#f5f3ef;border:1px solid #e3ddd2;border-radius:999px;padding:7px 12px;">✓ 100 % Original</span>
+    <span style="background:#f5f3ef;border:1px solid #e3ddd2;border-radius:999px;padding:7px 12px;">🚚 EU-Lager · 2–7 Tage</span>
+    <span style="background:#f5f3ef;border:1px solid #e3ddd2;border-radius:999px;padding:7px 12px;">🇨🇭 Gratis-Versand ab CHF 65</span>
+    <span style="background:#f5f3ef;border:1px solid #e3ddd2;border-radius:999px;padding:7px 12px;">↩️ 30 Tage Rückgabe</span>
+    <span style="background:#f5f3ef;border:1px solid #e3ddd2;border-radius:999px;padding:7px 12px;">🔒 TWINT &amp; sichere Zahlung</span>
+    <span style="background:#1a1a1a;color:#fff;border-radius:999px;padding:7px 12px;">🏷️ −10 % mit WELCOME10</span>
+  {%- endif -%}
+</div>
