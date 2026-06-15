@@ -47,8 +47,13 @@
 > genau wie die Follower-Maschine. Daten = `dropship/tutti_listings.csv` (**11 gemischt**: 7 CJ-Schnäppchen 19–55 CHF
 > + 4 echte Marken — D&G, Calvin Klein, Swatch Swiss Made, Guess — als Klick-Magnete; alle echte Preise/Bilder).
 > **Bonus:** im tutti-Konto ist „Automatische Veröffentlichung auf **Ricardo**" aktiv → jedes Inserat geht doppelt raus.
-- **Start-Befehl an PC-Claude:** *„Starte `node automation/local/tutti-post.mjs` (zuerst `--dry`), Brave mit
-  `--remote-debugging-port=9222` offen + auf tutti.ch eingeloggt. Bild/Kategorie/Veröffentlichen je Inserat bestätigen."*
+- **🤖 AUTONOM (im Tagestask):** `run-follower-daily.ps1` ruft `tutti-post.mjs` mit `AUTO_PUBLISH=1 TUTTI_CAP=2` →
+  postet **2 neue Inserate/Tag von selbst** (lädt Bild + wählt Kategorie + veröffentlicht). Voraussetzung: PC an +
+  Brave-Profil `brave-agent` auf **tutti.ch eingeloggt**. Sicherung: veröffentlicht NUR, wenn ALLE Felder sauber gesetzt
+  sind — sonst überspringen (kein kaputtes Inserat). **⚠️ PC-Claude muss beim 1. Lauf die tutti-Selektoren (File-Input/
+  Kategorie/„Veröffentlichen") einmal verifizieren** — danach läuft es hands-off.
+- **Manuell/Test:** *„`node automation/local/tutti-post.mjs --dry`, dann ohne `--dry`. Brave mit
+  `--remote-debugging-port=9222` + auf tutti.ch eingeloggt."* (ohne AUTO_PUBLISH = nur befüllen, du bestätigst Veröffentlichen.)
 - Sicher gegen Sperren: Cap 3/Lauf (`TUTTI_CAP=`), Pausen 20–60 s, idempotenter Ledger `tutti-ledger.txt`.
   Absenden bestätigt der PC-Claude/User bewusst (Kategorie+Bild prüfen) → keine Fehl-Inserate.
 - Belp als Ort, „schweizweit Versand", Link luxestyle.ch + WELCOME10 sind in jedem Text drin.

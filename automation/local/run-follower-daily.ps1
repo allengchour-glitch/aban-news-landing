@@ -55,5 +55,11 @@ node "automation/local/tiktok-dm-browser.mjs"
 #    No-op ohne META_ACCESS_TOKEN.
 if ($env:META_ACCESS_TOKEN) { node "automation/social-comment-reply.mjs" }
 
-# 7) Sonntags zusätzlich entfolgen (Nicht-Zurückfolger nach ~14 Tagen)
+# 7) tutti.ch autonom inserieren (Browser/CDP — tutti hat kein API). Voll-Auto: lädt Bild + wählt Kategorie +
+#    veröffentlicht NUR wenn alles sauber gesetzt ist (sonst überspringen). Cap 2/Tag, idempotent (tutti-ledger.txt).
+#    Voraussetzung: Brave-Profil ist auf tutti.ch eingeloggt. Auto-Veröffentlichung auf Ricardo ist im Konto aktiv → doppelte Reichweite.
+$env:AUTO_PUBLISH = "1"; $env:TUTTI_CAP = "2"
+node "automation/local/tutti-post.mjs"
+
+# 8) Sonntags zusätzlich entfolgen (Nicht-Zurückfolger nach ~14 Tagen)
 if ((Get-Date).DayOfWeek -eq "Sunday") { node "automation/local/ch-unfollow.mjs" }
