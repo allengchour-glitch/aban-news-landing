@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rédiger une facture — générateur gratuit · aban news</title>
+<meta name="description" content="Rédigez une facture gratuitement et enregistrez-la en PDF (Ctrl+P). Avec TVA ou franchise de petite entreprise (§19), aide sur les mentions obligatoires. Local dans votre navigateur, sans connexion, sans téléversement.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/rechnung-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/rechnung-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/rechnung-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/rechnung-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/rechnung-generator.html">
+<meta property="og:title" content="Rédiger une facture — générateur gratuit">
+<meta property="og:description" content="Créez une facture et enregistrez-la en PDF. TVA ou franchise de petite entreprise, aide sur les mentions obligatoires. Local dans votre navigateur, sans connexion.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/rechnung-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Générateur de factures",
+"url":"https://abannews.com/fr/rechnung-generator.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Crée une facture prête à imprimer (PDF via Ctrl+P), avec TVA ou franchise de petite entreprise. Tourne localement dans le navigateur.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:38px 0 6px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:640px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.panel h2{font-size:1.05rem;margin-bottom:12px}
+label{display:block;font-weight:600;font-size:12.5px;margin:0 0 5px;color:var(--ink2)}
+input,textarea,select{width:100%;font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);font-family:inherit}
+textarea{resize:vertical;min-height:74px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.two,.three{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.opt{display:inline-flex;gap:7px;align-items:center;font-weight:500;font-size:.92rem;color:var(--ink2)}
+table.items{width:100%;border-collapse:collapse;margin-top:6px}
+table.items th,table.items td{text-align:left;font-size:13px;padding:6px 6px}
+table.items th{color:var(--muted);font-weight:600;border-bottom:1px solid var(--line)}
+table.items td input{padding:7px 8px}
+table.items td.num input{text-align:right}
+.delrow{background:transparent;border:1px solid var(--line);color:var(--bad);border-radius:7px;cursor:pointer;padding:6px 9px;font-weight:700}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+/* Aperçu / feuille d'impression */
+.sheet{background:#fff;color:#1a1a1a;border:1px solid var(--line);border-radius:12px;padding:34px;margin:18px 0;font-size:14px;line-height:1.5}
+.sheet .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.sheet .from{font-size:12px;color:#555}
+.sheet h3{font-size:20px;margin:18px 0 2px}
+.sheet .addr{margin-top:18px;white-space:pre-line}
+.sheet .meta{margin-top:6px;font-size:12.5px;color:#444;text-align:right}
+.sheet table{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px}
+.sheet table th{text-align:left;border-bottom:2px solid #222;padding:7px 6px;font-size:12px}
+.sheet table td{padding:7px 6px;border-bottom:1px solid #ddd;vertical-align:top}
+.sheet td.r,.sheet th.r{text-align:right;white-space:nowrap}
+.sheet .sums{margin-top:14px;margin-left:auto;width:280px;font-size:13px}
+.sheet .sums div{display:flex;justify-content:space-between;padding:3px 0}
+.sheet .sums .total{font-weight:800;font-size:15px;border-top:2px solid #222;margin-top:4px;padding-top:6px}
+.sheet .pay{margin-top:22px;font-size:12.5px;color:#333;white-space:pre-line}
+.sheet .foot{margin-top:24px;font-size:11px;color:#777;border-top:1px solid #ddd;padding-top:8px;white-space:pre-line}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+/* Impression : n'afficher que la feuille */
+@media print{
+  header.site,.hero,.app,.cta,footer,.noprint,aside{display:none !important}
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .sheet{border:0;border-radius:0;margin:0;padding:0;font-size:12pt}
+  @page{margin:18mm}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Aller à l'outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Argent &amp; IA : tous les sujets, calculateurs &amp; tests</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1>Rédiger une <span class="a">facture</span></h1>
+    <p>Saisissez vos données, voyez la facture en direct et enregistrez-la en PDF (Imprimer &rarr; &bdquo;Enregistrer au format PDF&ldquo;). Avec TVA ou franchise de petite entreprise. Local dans votre navigateur &mdash; rien n'est téléversé, vos données restent sur votre appareil.</p>
+  </section>
+
+  <div class="app">
+    <section class="panel">
+      <h2>Vous &amp; votre client</h2>
+      <div class="two">
+        <div>
+          <div class="fld"><label for="fName">Votre nom / entreprise</label><input id="fName" value="Maria Muster, Studio de design"></div>
+          <div class="fld"><label for="fAddr">Votre adresse</label><textarea id="fAddr">Musterstrasse 1
+3000 Bern</textarea></div>
+          <div class="fld"><label for="fTax">Numéro fiscal / N° TVA</label><input id="fTax" value="CHE-123.456.789 MWST"></div>
+          <div class="fld"><label for="fContact">Contact (e-mail / tél.)</label><input id="fContact" value="maria@example.com"></div>
+        </div>
+        <div>
+          <div class="fld"><label for="cName">Client (nom / entreprise)</label><input id="cName" value="Exemple SARL"></div>
+          <div class="fld"><label for="cAddr">Adresse du client</label><textarea id="cAddr">À l'attention de M. Meier
+Bahnhofweg 5
+8000 Zürich</textarea></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Données de la facture</h2>
+      <div class="three">
+        <div class="fld"><label for="rNr">Numéro de facture</label><input id="rNr" value="2026-001"></div>
+        <div class="fld"><label for="rDate">Date de facturation</label><input id="rDate" type="date"></div>
+        <div class="fld"><label for="rService">Date / période de prestation</label><input id="rService" value="Juin 2026"></div>
+      </div>
+      <div class="three">
+        <div class="fld"><label for="cur">Devise</label>
+          <select id="cur"><option>CHF</option><option>EUR</option></select></div>
+        <div class="fld"><label for="vat">Taux de TVA (%)</label><input id="vat" type="text" inputmode="decimal" value="8.1"></div>
+        <div class="fld"><label>&nbsp;</label>
+          <label class="opt"><input type="checkbox" id="klein"> Petite entreprise (sans TVA, §19)</label></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Lignes</h2>
+      <table class="items">
+        <thead><tr><th style="width:46%">Description</th><th style="width:14%">Quantité</th><th style="width:22%">Prix unitaire</th><th style="width:14%" class="r">Montant</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="bar"><button class="btn ghost" id="addRow">+ Ligne</button></div>
+    </section>
+
+    <section class="panel">
+      <h2>Paiement &amp; pied de page</h2>
+      <div class="fld"><label for="pay">Mention de paiement (banque/IBAN, délai de paiement)</label><textarea id="pay">Payable sous 30 jours net.
+IBAN : CH00 0000 0000 0000 0000 0 · Banque : Banque Exemple</textarea></div>
+      <div class="fld"><label for="foot">Pied de page (facultatif)</label><textarea id="foot">Merci pour votre collaboration.</textarea></div>
+      <div class="bar">
+        <button class="btn" id="print">Imprimer / enregistrer en PDF</button>
+        <button class="btn ghost" id="save">Mémoriser mes données</button>
+        <button class="btn ghost" id="clear">Effacer la mémorisation</button>
+        <span class="note" id="savemsg" style="margin:0"></span>
+      </div>
+      <div class="warn"><strong>Mentions obligatoires d'une facture</strong> (DE §14 UStG / AT / CH équivalent) : nom complet + adresse de vous et du client, votre numéro fiscal/N° TVA, date de facturation, numéro de facture séquentiel, quantité &amp; nature de la prestation, date de la prestation, montant + taux/montant de la taxe (ou mention de l'exonération). Pour une petite entreprise : mention selon §19 UStG. <strong>Ceci n'est pas un conseil juridique ou fiscal</strong> — en cas de doute, vérifiez brièvement avec un conseiller fiscal.</div>
+    </section>
+  </div>
+
+  <h2 style="margin:8px 0 0;font-size:1.05rem;color:var(--ink2)">Aperçu</h2>
+  <div class="sheet" id="sheet"><!-- rendu en direct --></div>
+
+  <div class="cta"><strong>Plus propre qu'à la main : le pack de modèles pro</strong>
+    <p class="note" style="margin:.4rem auto .8rem;max-width:560px">Facture, devis, relance &amp; confirmation de commande sous forme de modèles prêts à l'emploi et personnalisables — pour tous les cas, pas seulement un.</p>
+    <p><a class="btn" href="/vorlagen-pack.html">Voir le pack de modèles</a>
+      <a class="btn ghost" href="/angebot-schreiben.html">Rédiger un devis</a>
+      <a class="btn ghost" href="/mahnung-schreiben.html">Rédiger une relance</a>
+      <a class="btn ghost" href="/fr/mwst-rechner.html">Calculateur de TVA</a>
+      <a class="btn ghost" href="/online-tools.html">Tous les outils</a></p></div>
+</div><aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Plus de profondeur, pas de hype.</strong><span style="color:#374151"> aban news Premium : sans publicité, archives complètes, boussole IA quotidienne pour votre business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Membre fondateur — 69 € à vie →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Tester d'abord gratuitement →</a></span></aside>
+</main>
+<footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
+  <a href="/fr/mwst-rechner.html">TVA</a> &middot; <a href="/fr/ki-werkzeug.html">Outils IA</a> &middot; <a href="/online-tools.html">Tous les outils</a> &middot;
+  <a href="/impressum.html">Mentions légales</a> &middot; <a href="/datenschutz.html">Confidentialité</a></div></footer>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var rows=$("rows");
+  var DEFAULT_ITEMS=[
+    ["Concept & design page d'accueil","1","1200"],
+    ["Sous-pages (l'unité)","4","350"]
+  ];
+  function num(v){v=(""+v).trim().replace(/'/g,"").replace(",",".");var n=parseFloat(v);return isFinite(n)?n:0;}
+  function money(n,cur){return n.toLocaleString("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2})+" "+cur;}
+  function esc(s){return (s||"").replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+
+  function addRow(desc,qty,price){
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td><input class="d" value="'+esc(desc||"")+'"></td>'+
+      '<td class="num"><input class="q" inputmode="decimal" value="'+(qty||"1")+'"></td>'+
+      '<td class="num"><input class="p" inputmode="decimal" value="'+(price||"0")+'"></td>'+
+      '<td class="r sum">—</td>'+
+      '<td><button class="delrow" title="Supprimer la ligne">×</button></td>';
+    rows.appendChild(tr);
+    tr.querySelector(".delrow").addEventListener("click",function(){tr.remove();render();});
+    tr.querySelectorAll("input").forEach(function(i){i.addEventListener("input",render);});
+  }
+
+  function render(){
+    var cur=$("cur").value;
+    var klein=$("klein").checked;
+    var vatRate=klein?0:num($("vat").value);
+    var net=0, items=[];
+    rows.querySelectorAll("tr").forEach(function(tr){
+      var d=tr.querySelector(".d").value, q=num(tr.querySelector(".q").value), p=num(tr.querySelector(".p").value);
+      var s=q*p; net+=s;
+      tr.querySelector(".sum").textContent=money(s,cur);
+      if(d||q||p) items.push([d,q,p,s]);
+    });
+    var vat=net*vatRate/100, gross=net+vat;
+    // Construire l'aperçu
+    var rowsHtml=items.map(function(it){
+      return '<tr><td>'+esc(it[0])+'</td><td class="r">'+(it[1].toLocaleString("fr-FR"))+'</td>'+
+        '<td class="r">'+money(it[2],cur)+'</td><td class="r">'+money(it[3],cur)+'</td></tr>';
+    }).join("") || '<tr><td colspan="4" style="color:#999">— pas encore de ligne —</td></tr>';
+    var dateTxt=$("rDate").value? new Date($("rDate").value).toLocaleDateString("fr-FR"):"";
+    var sums='<div><span>Sous-total (net)</span><span>'+money(net,cur)+'</span></div>';
+    if(klein){ sums+='<div style="color:#555"><span>TVA</span><span>aucune (§19)</span></div>'; }
+    else { sums+='<div><span>TVA '+(vatRate.toLocaleString("fr-FR"))+' %</span><span>'+money(vat,cur)+'</span></div>'; }
+    sums+='<div class="total"><span>Montant total</span><span>'+money(gross,cur)+'</span></div>';
+    var kleinNote=klein?'<p class="pay">Conformément au §19 UStG, aucune TVA n\'est facturée (franchise de petite entreprise).</p>':'';
+    $("sheet").innerHTML=
+      '<div class="row"><div class="from">'+esc($("fName").value)+' · '+esc($("fAddr").value.replace(/\n/g,", "))+'</div></div>'+
+      '<div class="row"><div class="addr"><strong>'+esc($("cName").value)+'</strong>\n'+esc($("cAddr").value)+'</div>'+
+        '<div class="meta">'+(esc($("fName").value))+'<br>'+esc($("fAddr").value).replace(/\n/g,"<br>")+
+        (($("fTax").value)?'<br>'+esc($("fTax").value):'')+
+        (($("fContact").value)?'<br>'+esc($("fContact").value):'')+'</div></div>'+
+      '<h3>Facture '+esc($("rNr").value)+'</h3>'+
+      '<div class="meta" style="text-align:left;color:#444">'+
+        (dateTxt?'Date de facturation : '+dateTxt+'  ·  ':'')+
+        (($("rService").value)?'Prestation : '+esc($("rService").value):'')+'</div>'+
+      '<table><thead><tr><th>Description</th><th class="r">Quantité</th><th class="r">Prix unitaire</th><th class="r">Montant</th></tr></thead>'+
+        '<tbody>'+rowsHtml+'</tbody></table>'+
+      '<div class="sums">'+sums+'</div>'+
+      kleinNote+
+      (($("pay").value)?'<p class="pay"><strong>Paiement</strong>\n'+esc($("pay").value)+'</p>':'')+
+      (($("foot").value)?'<p class="foot">'+esc($("foot").value)+'</p>':'');
+  }
+
+  // La petite entreprise désactive le champ TVA
+  $("klein").addEventListener("change",function(){$("vat").disabled=this.checked;render();});
+
+  // Saisies -> en direct
+  ["fName","fAddr","fTax","fContact","cName","cAddr","rNr","rDate","rService","cur","vat","pay","foot"].forEach(function(id){
+    $(id).addEventListener("input",render);
+  });
+  $("addRow").addEventListener("click",function(){addRow("","1","0");render();});
+  $("print").addEventListener("click",function(){window.print();});
+
+  // „Mémoriser mes données" — bloc expéditeur uniquement, local, sans suivi
+  var KEY="aban_rechnung_v1";
+  $("save").addEventListener("click",function(){
+    try{localStorage.setItem(KEY,JSON.stringify({fName:$("fName").value,fAddr:$("fAddr").value,fTax:$("fTax").value,fContact:$("fContact").value,pay:$("pay").value,cur:$("cur").value,vat:$("vat").value}));
+      $("savemsg").textContent="✓ Données de l'expéditeur mémorisées localement";}catch(e){$("savemsg").textContent="Enregistrement impossible";}
+  });
+  $("clear").addEventListener("click",function(){try{localStorage.removeItem(KEY);$("savemsg").textContent="Mémorisation effacée";}catch(e){}});
+  try{var saved=JSON.parse(localStorage.getItem(KEY)||"null");if(saved){["fName","fAddr","fTax","fContact","pay","cur","vat"].forEach(function(k){if(saved[k]!=null)$(k).value=saved[k];});$("savemsg").textContent="Données de l'expéditeur chargées depuis la mémorisation";}}catch(e){}
+
+  // Init
+  $("rDate").value=new Date().toISOString().slice(0,10);
+  DEFAULT_ITEMS.forEach(function(it){addRow(it[0],it[1],it[2]);});
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
