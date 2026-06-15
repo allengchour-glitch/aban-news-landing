@@ -54,6 +54,16 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-15 (abannews-Session) — ✅ Ehrlich-Ton-Zyklus: Brain 97.2 → 99.3 (PR #1004) + Ricardo-Export (PR #1003):**
+- **abannews.com Hype-Wörter entschärft:** 25 echte Verkaufs-Floskeln in `vergleich/*`+`themen/*` umgeschrieben
+  (Game-Changer→entscheidender Vorteil, „Disruptive Preise"→„Aggressiv günstige Preise", einzigartigere→individuellere …).
+  **Brain-Score 99.3** (Befunde 28→7). Die **7 Rest-Befunde sind LEGITIM** und sollen so bleiben: Verbots-Wortlisten in
+  `launch-manual.html`/`en/faq.html`, Bau-„disruption" (Estrichleger), kritische „Revolution"-Nutzung (ueber-aban/ki-trends),
+  „10x Hebel" (Finanzbegriff). → **Nicht „wegfixen"** (sind keine Hype-Masche). Branch `claude/abannews-honest-tone`, PR #1004.
+- **Ricardo-Listing-Export** (separater PR #1003, Branch `claude/marktplatz-hype-cleanup`): Ricardo-Feed abgelehnt (nur B-Ware
+  + Pipeline voll) → `dropship/ricardo_export.csv` (110 Produkte: 20 LuxeStyle-Top + 90 BigBuy) für normales Verkäufer-Listing.
+- Deploy abannews = beim Merge nach `main` (Cloudflare-Pages) bzw. via Pages-Token; nur `vergleich/themen`-Fließtext geändert, keine Logik.
+
 **2026-06-15 (Luxestyle-Session) — ✅ Pixel/Pinterest gelöst · Brain v3 · 1.-August-Fokus · Voll-Audit:**
 - **TikTok-Pixel FERTIG:** Live-Theme feuert jetzt **`D8EKVR3C77U6KT5BTBD0`** (alter `D85BAG…` weg), per API verifiziert.
   Geändert per **PC-Browser-Claude** (Live-Theme-Writes sind MCP-gesperrt). ⚠️ Unveröffentlichte Theme-Kopie
