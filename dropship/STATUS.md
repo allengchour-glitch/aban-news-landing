@@ -35,6 +35,19 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🏛️ PROFI-SEITE in ETAPPEN (User „keine 0815-Seite, professionell, alles in Etappen")
+**Klartext-Aufteilung: (A) Inhalt/Struktur = ich via API · (B) Theme-Visuals (Hero/Schrift/Layout/Farben) = Live-Theme
+schreibgeschützt → nur Customizer (User) oder Agentur (`dropship/AGENTUR-BRIEFING.md` liegt bereit).**
+- **✅ Etappe 1 (erledigt):** Flaggschiff „✨ LuxeStyle Premium" zur Boutique gemacht — Profi-Beschreibung (Marken-Namen
+  YSL/D&G/MK/Tommy/Casio/Swatch…), SEO-Title+Meta, Hero-Bild (MK Khai), Sortierung Best-Selling.
+- **⏳ Etappe 2 (Inhalt, ich):** Kollektionen aufräumen — die vielen bildlosen/leeren Kollektionen (50+!) bekommen
+  Bild+Beschreibung+SEO ODER werden ausgeblendet; redundante Saison-/Geschenk-Kollektionen reduzieren → klare Navigation.
+- **⏳ Etappe 3 (Inhalt, ich):** Meisterwerk-Rollout batchweise über den Katalog (Kleider → Schuhe → Taschen → Schmuck …):
+  Detail-Text + Grössentabelle + SEO + Galerie je Produkt.
+- **⏳ Etappe 4 (Inhalt, ich):** Trust/Conversion-Texte (TWINT, Reviews-Hinweise, Garantie) in Kollektionen/Produkten.
+- **🔴 Etappe 5 (nur User/Agentur):** Theme-Design — Hero-Bild/Headline, Schriften, Produktkachel-Layout, Sticky-ATC,
+  Reviews-Sterne auf Kacheln. Geht NICHT via API (Live-Theme gesperrt). → Customizer-Klicks oder Agentur-Briefing.
+
 ### 2026-06-15 (Abend) — 🎨 MEISTERWERK-STANDARD (User „alles ein meisterwerk: SEO, Bilder, Video, Tabelle für Ahnungslose")
 - **Gehirn-Regel `meisterwerk_standard`** verankert: jedes Produkt = Detail-Beschreibung (Story+Material+Passform+Styling+
   Pflege) + Grössentabelle MIT Einsteiger-Mess-Anleitung + SEO (title/meta) + volle Bilder-Galerie (QA) + Video wo möglich.
