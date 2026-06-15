@@ -35,6 +35,16 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🧹 DUBLETTEN-FIX (User-Meldung „doppelte Produkte, anderer Preis")
+- **Voyage-Weekender-Dublette behoben:** zwei identische «Voyage»-Reisetaschen (gleiches Bild, beide 13.06. importiert,
+  CHF 32.90 vs 39.90). Bessere Version (32.90, 3 Farben + echte CJ-SKUs) behalten, schlechtere (39.90, ohne SKU/Farbe)
+  archiviert. Quelle = Auto-Import der anderen Session am 13.06.
+- **Voll-Katalog-Dubletten-Scan** (alle aktiven Produkte, Gruppierung nach «Name» + Bild-Basis-Dateiname): nur 1 weitere
+  echte Dublette gefunden — Sticker «Boombox» (boombox.png) doppelt → eine archiviert. „Gleiches Bild"-Treffer sonst =
+  legitime **Bundles** (z.B. Slim-Wallet + „Bundle inkl. Slim-Wallet") + «Name»-Sharing (Riviera/Carré = verschiedene Artikel).
+- **Lehre/Heuristik:** Doppel-Importe erkennt man am besten über identischen **Bild-Basis-Dateinamen** (vor `_<uuid>`-Suffix)
+  bei unterschiedlichem Titel/Preis. Bundles vorher ausschliessen (teilen bewusst das Hero-Bild).
+
 ### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: ~44 echte Marken-Produkte importiert (BigBuy)
 - **💎 +9 „weiter" (5. Charge):** Uhren **Olivia Burton** floral (CHF 79.90), Lorus Leder (89.90) · Parfum **Kenzo**
   «Amour» (64.90), **Elie Saab** «Elixir» (64.90), Antonio Banderas Set (49.90), Swiss Arabian Rose (54.90) ·
