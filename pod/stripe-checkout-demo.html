@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LuxeStyle · Eigenes Design kaufen (Demo, ohne Shopify)</title>
+<style>
+  :root{ --gold:#c1922f; --ink:#16151a; }
+  *{ box-sizing:border-box; } body{ font-family:'Helvetica Neue',Arial,sans-serif; color:var(--ink); margin:0; background:#faf8f5; }
+  .wrap{ max-width:520px; margin:0 auto; padding:24px 16px 60px; }
+  h1{ font-size:20px; } .card{ background:#fff; border:1px solid #ece7df; border-radius:16px; padding:18px; margin-top:16px; }
+  label{ display:block; font-weight:700; font-size:13px; margin:12px 0 5px; }
+  input,select{ width:100%; padding:11px; border:1px solid #ddd; border-radius:10px; font-size:15px; }
+  .prev{ width:100%; aspect-ratio:1/1; border:1px dashed #ccc; border-radius:12px; object-fit:contain; background:#fff; margin-top:8px; display:none; }
+  button{ width:100%; padding:14px; border:none; border-radius:999px; background:var(--gold); color:#fff; font-weight:800; font-size:16px; cursor:pointer; margin-top:18px; }
+  button:disabled{ opacity:.6; } .muted{ color:#7a756c; font-size:12.5px; margin-top:8px; } .err{ color:#b3122b; font-size:13px; margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🇨🇭 Eigenes Design auf Swiss-Edition-Hoodie</h1>
+  <p class="muted">Demo des <b>ohne-Shopify</b>-Flows: Design hochladen → mit Stripe bezahlen → wird automatisch bei Gelato gedruckt. Kein Shop-Konto, kein Warenkorb.</p>
+
+  <div class="card">
+    <label>1) Dein Motiv (PNG/JPG)</label>
+    <input id="file" type="file" accept="image/*">
+    <img id="prev" class="prev" alt="Vorschau">
+
+    <label>2) Produkt / Grösse</label>
+    <select id="sku">
+      <!-- value = Shopify-Variant-ID, die in gelato_map.json gemappt ist (Beispiele eintragen) -->
+      <option value="">— wähle eine Variante —</option>
+    </select>
+
+    <label>3) Menge</label>
+    <input id="qty" type="number" min="1" max="10" value="1">
+
+    <button id="buy" disabled>🛒 Mit Stripe kaufen (CHF <span id="price">54.90</span>)</button>
+    <div id="err" class="err"></div>
+    <p class="muted">Sicher bezahlen via Stripe. Versand in die Schweiz &amp; EU. Druck &amp; Versand durch Gelato (EU-Produktion).</p>
+  </div>
+</div>
+
+<script>
+// ⚙️ Konfiguration — nach dem Worker-Deploy anpassen:
+const WORKER = 'https://luxestyle-autopilot.allengchour.workers.dev'; // Stripe-Checkout-Endpoint
+const CLOUD = 'dwyi6kkrl', PRESET = 'pigto8ba';                       // Cloudinary (unsigned upload) — wie im POD-Editor
+// Produkt-Katalog der Demo: { variantId (in gelato_map): {label, preis} }
+const CATALOG = {
+  // Beispiel — echte gemappte Variant-IDs aus cloudflare/gelato_map.json eintragen:
+  // '55803254473089': { label:'Sweatshirt «Fondue» · L', price:54.90 },
+};
+
+var fileEl=document.getElementById('file'), prev=document.getElementById('prev'),
+    skuEl=document.getElementById('sku'), qtyEl=document.getElementById('qty'),
+    buy=document.getElementById('buy'), err=document.getElementById('err'), priceEl=document.getElementById('price');
+var printUrl='';
+
+// Katalog → Dropdown
+for(var id in CATALOG){ var o=document.createElement('option'); o.value=id; o.textContent=CATALOG[id].label+' — CHF '+CATALOG[id].price.toFixed(2); skuEl.appendChild(o); }
+skuEl.addEventListener('change', function(){ var c=CATALOG[skuEl.value]; if(c) priceEl.textContent=c.price.toFixed(2); refresh(); });
+
+function refresh(){ buy.disabled = !(printUrl && skuEl.value); }
+function fail(m){ err.textContent=m; }
+
+fileEl.addEventListener('change', function(){
+  var f=fileEl.files[0]; if(!f) return; err.textContent='';
+  prev.src=URL.createObjectURL(f); prev.style.display='block';
+  // Druckdatei zu Cloudinary hochladen (öffentliche URL → die geht später an Gelato)
+  var fd=new FormData(); fd.append('file',f); fd.append('upload_preset',PRESET);
+  buy.disabled=true; buy.textContent='Lade Motiv hoch …';
+  fetch('https://api.cloudinary.com/v1_1/'+CLOUD+'/auto/upload',{method:'POST',body:fd})
+    .then(function(r){return r.json();})
+    .then(function(j){ if(!j.secure_url) throw new Error('Upload fehlgeschlagen'); printUrl=j.secure_url; buy.textContent='🛒 Mit Stripe kaufen (CHF '+priceEl.textContent+')'; refresh(); })
+    .catch(function(e){ fail(e.message); buy.textContent='🛒 Mit Stripe kaufen'; });
+});
+
+buy.addEventListener('click', function(){
+  var c=CATALOG[skuEl.value]; if(!c||!printUrl) return; err.textContent='';
+  buy.disabled=true; buy.textContent='Weiter zu Stripe …';
+  fetch(WORKER+'/stripe/checkout',{ method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ sku:skuEl.value, printFront:printUrl, quantity:parseInt(qtyEl.value,10)||1, amountChf:c.price, name:c.label }) })
+    .then(function(r){return r.json();})
+    .then(function(j){ if(!j.url) throw new Error(j.error||'Checkout fehlgeschlagen'); window.location.href=j.url; })
+    .catch(function(e){ fail(e.message); buy.disabled=false; buy.textContent='🛒 Mit Stripe kaufen'; });
+});
+</script>
+</body>
+</html>

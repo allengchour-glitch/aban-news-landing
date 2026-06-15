@@ -47,14 +47,14 @@ async function verifyHmac(secret, rawBody, hmacHeader){
 }
 
 // ---------- Mapping laden (KV bevorzugt, sonst env.GELATO_MAP) ----------
-async function loadMap(env){
+export async function loadMap(env){
   let raw = '';
   try{ raw = (await env.STATE.get('gelato_map')) || ''; }catch{}
   if(!raw && env.GELATO_MAP) raw = env.GELATO_MAP;
   if(!raw) return {};
   try{ return JSON.parse(raw) || {}; }catch{ return {}; }
 }
-function mapEntry(map, item){
+export function mapEntry(map, item){
   return map[item.sku] || map[String(item.variant_id)] || map[String(item.product_id)] || null;
 }
 
@@ -95,7 +95,7 @@ function shipAddr(order){
 }
 
 // ---------- Gelato-Bestellung anlegen ----------
-async function createGelatoOrder(env, payload){
+export async function createGelatoOrder(env, payload){
   const r = await fetch(`${GELATO_ORDER_BASE}/orders`, {
     method:'POST',
     headers:{ 'X-API-KEY': env.GELATO_API_KEY, 'Content-Type':'application/json' },

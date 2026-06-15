@@ -152,6 +152,30 @@ curl -X POST "https://…workers.dev/webhooks/orders/create?key=DEIN_RUN_KEY" \
 → Mit `GELATO_DRAFT="1"` erscheint der Auftrag als **Entwurf** im Gelato-Dashboard (kein echter Druck).
 Passt alles → `GELATO_DRAFT="0"` und neu deployen ⇒ Produktion läuft vollautomatisch.
 
+## 💳 Stripe-Checkout → Gelato (der „ohne-Shopify"-Weg)
+
+Verkauf von Eigendesign-Produkten **komplett ohne Shopify**: statische Storefront (GitHub Pages) +
+Stripe-Checkout + Gelato-Druck, geklebt vom Worker. Code: `cloudflare/src/stripe.js`, Demo-Seite:
+`pod/stripe-checkout-demo.html`.
+
+**Ablauf:** Kunde gestaltet/lädt Motiv hoch → Browser POSTet `/stripe/checkout` → Worker legt Stripe-Session
+an (CHF, Adresse) → Kunde zahlt → Stripe-Webhook `/webhooks/stripe` (checkout.session.completed) → Worker
+mappt SKU→Gelato-productUid (gleiche `gelato_map`) → Gelato-Druckauftrag. No-op ohne `STRIPE_SECRET_KEY`.
+
+**Einrichtung:**
+```bash
+npx wrangler secret put STRIPE_SECRET_KEY        # sk_test_… (Test) bzw. sk_live_…
+# Webhook in Stripe anlegen (Dashboard → Developers → Webhooks → Add endpoint):
+#   URL = {PUBLIC_BASE}/webhooks/stripe ; Event = checkout.session.completed
+#   Danach den Signing-Secret (whsec_…) setzen:
+npx wrangler secret put STRIPE_WEBHOOK_SECRET     # whsec_…
+npx wrangler deploy
+```
+Storefront: in `pod/stripe-checkout-demo.html` `WORKER`-URL + `CATALOG` (gemappte Variant-IDs aus
+`gelato_map.json` + Preise) eintragen → via GitHub Pages servieren. `GELATO_DRAFT="1"` testet ohne Echtdruck.
+
+> Webhook-Signatur wird geprüft (`STRIPE_WEBHOOK_SECRET`), idempotent pro Event, Test-Bypass via `?key=RUN_KEY`.
+
 ## Kosten
 - Gemini 2.5 Flash Image: ~$0.04/Bild × 1/Tag ≈ **$1.2/Monat**.
 - Cloudflare Workers/R2/KV: im **Free-Tier** für dieses Volumen kostenlos.

@@ -22,6 +22,7 @@
 import { PRODUCTS } from './products.js';
 import { runReel, postVideoAll } from './video.js';
 import { handleOrderWebhook } from './gelato.js';
+import { createCheckout, handleStripeWebhook } from './stripe.js';
 
 const CAPTIONS = [
   '{label} ✨ Premium-Look zum fairen Preis. Code WELCOME10 = -10% · 🔗 {url}',
@@ -234,6 +235,21 @@ export default {
       const bypass = !!((env.WEBHOOK_TOKEN && t === env.WEBHOOK_TOKEN) || (env.RUN_KEY && url.searchParams.get('key') === env.RUN_KEY));
       const resp = await handleOrderWebhook(req, env, log, bypass);
       console.log(`[gelato] ${log.join(' · ')}`);
+      return resp;
+    }
+    // Stripe (ohne-Shopify-Weg): Checkout-Session anlegen (vom Storefront aufgerufen).
+    if(url.pathname === '/stripe/checkout' && (req.method === 'POST' || req.method === 'OPTIONS')){
+      const log = [];
+      const resp = await createCheckout(req, env, log);
+      if(log.length) console.log(`[stripe] ${log.join(' · ')}`);
+      return resp;
+    }
+    // Stripe-Webhook: bezahlt → Gelato-Druck. (?key=RUN_KEY = Test-Bypass der Signaturprüfung.)
+    if(url.pathname === '/webhooks/stripe' && req.method === 'POST'){
+      const log = [];
+      const bypass = !!(env.RUN_KEY && url.searchParams.get('key') === env.RUN_KEY);
+      const resp = await handleStripeWebhook(req, env, log, bypass);
+      console.log(`[stripe] ${log.join(' · ')}`);
       return resp;
     }
     // Manueller Trigger zum Testen: /run?task=enhance|reel|post&key=RUN_KEY

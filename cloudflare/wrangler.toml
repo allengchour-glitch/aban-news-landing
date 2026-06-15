@@ -47,3 +47,4 @@ GELATO_DRAFT = "1"
 #   GEMINI_API_KEY  IG_USER_ID  IG_ACCESS_TOKEN  FB_PAGE_ID  FB_PAGE_ACCESS_TOKEN
 #   THREADS_ACCESS_TOKEN (optional)  LUMA_API_KEY (optional, für Reels)  RUN_KEY (für manuellen /run-Test)
 #   GELATO_API_KEY (Gelato-Fulfillment)  SHOPIFY_WEBHOOK_SECRET (Webhook-Signatur prüfen)
+#   STRIPE_SECRET_KEY (ohne-Shopify-Checkout)  STRIPE_WEBHOOK_SECRET (Stripe-Webhook-Signatur)
