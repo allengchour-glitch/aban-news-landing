@@ -35,6 +35,18 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 👚 DAMEN-MARKEN-KLEIDUNG + Lücken-Check (User „damen bluse und hose, fülle alles / schau was fehlt")
+- **+3 Damen-Marken-Shirts mit Grössen-Option (S–XL):** Puma «Squad Graphic», Puma «Essentials», Adidas «3-Stripes»
+  (je CHF 29.90). ACTIVE · 6 Kanäle · Premium. Erste Produkte mit echtem Grössen-Selektor.
+- **Ehrlicher Lücken-Befund BigBuy-Kleidung (Wurzel 19668, 1000 gescannt):** stark **Streetwear/Sport** (Puma, Nike,
+  Adidas, Levi's, Jack&Jones, Calvin Klein, Champion). **KEINE eleganten Damen-Blusen** — von 252 Marken-Kandidaten
+  nur 3 echte Damen-Teile (Sport-Tees). → Damen-Blusen/Hosen/Kleider deckt der Shop schon breit über **CJ** ab (mit
+  Grössen); BigBuy lohnt dafür nicht. Kleidung braucht zudem Grössen-Attribut-Mapping (attributes:true) für echtes Fulfillment.
+- **Noch füllbare Lücken (ohne Margen-/Grössen-Falle):** Marken-Schals/Tücher, Gürtel, Damen-Sonnenbrillen (branded).
+  **Nicht füllen:** Elektronik (Margenfalle), Drogerie-Einzelartikel (Versandfalle), eleganter Damen-Stoff (BigBuy hat's nicht).
+- **Realität:** Premium-Sortiment jetzt ~51 Marken-Produkte — sehr breit. Weiteres Füllen hat abnehmenden Nutzen;
+  der echte Engpass bleibt **Reichweite/Pixel** (0 Käufe = kein Traffic, nicht zu wenig Produkte).
+
 ### 2026-06-15 (Abend) — 💄 BEAUTY (User „beauty sachen") + 🧠 Dubletten-Schutz ins Gehirn
 - **🧠 Gehirn-Regel `rules.import_dedup`** (User „kontrolliere dass nicht mehr vorkommt, Gehirn"): Vor jedem Import auf
   bestehende Produkte prüfen (Bild-Basis-Dateiname · «Name» · SKU/EAN; BigBuy bb-<sku> eindeutig). Bundles ausnehmen.
