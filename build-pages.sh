@@ -34,6 +34,7 @@ tar -cf - \
   --exclude='./linkedin' \
   --exclude='./reports' \
   --exclude='./ki-tools-radar' \
+  --exclude='./data/issue-*.html' \
   . | tar -xf - -C _site
 
 # Pflicht-Checks: functions/ MUSS dabei sein (sonst sind /api/* tot).
