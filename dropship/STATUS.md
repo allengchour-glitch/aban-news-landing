@@ -51,8 +51,13 @@ schreibgeschützt → nur Customizer (User) oder Agentur (`dropship/AGENTUR-BRIE
   auch auf Niveau (Blusen/Shirts mit Tabelle+Guide+SEO, Ringe mit Ring-Tabelle, Galerien). **Rest-Gap minimal:** den
   Einsteiger-„So misst du"-Guide könnte man katalogweit ergänzen (Tabelle ist aber schon da) — optional, nicht dringend.
 - **⏳ Etappe 4 (Inhalt, ich):** Trust/Conversion-Texte (TWINT, Reviews-Hinweise, Garantie) in Kollektionen/Produkten.
-- **🔴 Etappe 5 (nur User/Agentur):** Theme-Design — Hero-Bild/Headline, Schriften, Produktkachel-Layout, Sticky-ATC,
-  Reviews-Sterne auf Kacheln. Geht NICHT via API (Live-Theme gesperrt). → Customizer-Klicks oder Agentur-Briefing.
+- **✅ Etappe 4 (verifiziert):** Trust-/Conversion-Texte sind bereits überall (Produkte haben „Schweizer Versprechen"-
+  Block: Versand/30-Tage-Garantie/TWINT/Support; Kollektionen haben Trust-Zeile). Ganzer Katalog (Kleider/Schuhe/Wohnen/
+  Schmuck) ist content-seitig MEISTERWERK (frühere Sessions) — verifiziert, nicht überschrieben.
+- **🔴 Etappe 5 (nur User/Agentur) — ANLEITUNG GESCHRIEBEN:** `dropship/CUSTOMIZER-PROFI-GUIDE.md` = klick-für-klick
+  9-Punkte-Anleitung (Hero, quadratische Kacheln, Judge.me-Sterne, Sticky-ATC+Zahlungsicons, Schriften/Farben, Menü,
+  Kollektionen ausblenden, Footer). Geht NICHT via API (Live-Theme gesperrt) → User im Customizer ODER Agentur (`AGENTUR-BRIEFING.md`).
+  **Damit ist alles, was AUTONOM geht, fertig — der Rest ist visuelles Theme = 3 Klicks-Bereich des Users.**
 
 ### 2026-06-15 (Abend) — 🎨 MEISTERWERK-STANDARD (User „alles ein meisterwerk: SEO, Bilder, Video, Tabelle für Ahnungslose")
 - **Gehirn-Regel `meisterwerk_standard`** verankert: jedes Produkt = Detail-Beschreibung (Story+Material+Passform+Styling+
