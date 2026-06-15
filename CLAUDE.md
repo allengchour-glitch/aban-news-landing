@@ -59,6 +59,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-06-15 (🎨 SWISS-EDITION WELLE-1 DESIGNS autonom generiert — 9 druckfertige PNGs):**
+- **`automation/render_swiss_edition.py`** (Pillow + Anton-Font, KEINE Bild-API nötig) rendert **transparente
+  Druck-PNGs ~2900px** (≈25cm@300dpi) im Design-System (Swiss-Rot/Anthrazit/Off-White/Sage). Output: `pod/swiss-edition/`.
+- **9 Designs:** hoi-zaeme · merci-vilmal · chuchichaeschtli · gmuetlech · sali-zaeme · erste-august (Swiss-Kreuz) +
+  Bonus hopp-schwiiz · feierabig · grueezi. **Manifest** (`pod/swiss-edition/README.md`): je Design → Gelato-Garment+Farbe+Ink+Preis.
+- **⚠️ Ink↔Garment:** Off-White-Designs (chuchichaeschtli, sali-zaeme) NUR auf dunkle Garments. Alle visuell geprüft (Layout ok).
+- **Nächster Schritt:** PC-Claude lädt die PNGs bei Gelato hoch (DTG, Front, mittig) → Cloud-Session macht Titel/SEO/Collection/Map.
+  Welle 2 (Kantone/Berge/Tiere/Food = Line-Art) braucht andere Technik (SVG/KI) — Mundart-Typo war der schnelle autonome Win.
+
 **📌 2026-06-15 (💳 STRIPE→GELATO-BRÜCKE gebaut — der „ohne-Shopify"-Weg, autonom):**
 - **`cloudflare/src/stripe.js` + Worker-Routen** `/stripe/checkout` (Checkout-Session, CHF, Adresse) +
   `/webhooks/stripe` (checkout.session.completed → Gelato-Druck). Nutzt dieselbe `gelato_map` + `createGelatoOrder`
