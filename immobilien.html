@@ -129,6 +129,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="fcard"><h4>Zimmer (mind.)</h4>
       <select id="zimmer" class="ffield"><option value="">egal</option><option value="1">1+</option><option value="1.5">1.5+</option><option value="2">2+</option><option value="2.5">2.5+</option><option value="3">3+</option><option value="3.5">3.5+</option><option value="4">4+</option><option value="4.5">4.5+</option><option value="5">5+</option></select>
     </div>
+    <div class="fcard"><h4>Wohnfläche (ab m²)</h4>
+      <input id="amin" class="ffield" type="number" min="0" placeholder="z. B. 60" style="width:100%">
+    </div>
     <div class="fcard"><h4>Preis (CHF)</h4>
       <div style="display:flex;gap:8px;align-items:center"><input id="pmin" class="ffield" type="number" min="0" placeholder="von"><span>–</span><input id="pmax" class="ffield" type="number" min="0" placeholder="bis"></div>
       <p style="font-size:.72rem;color:var(--muted);margin-top:6px">Miete pro Monat bzw. Kaufpreis</p>
@@ -143,6 +146,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="rhead">
       <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
       <span class="cnt" id="cnt">Lade Immobilien …</span>
+      <span style="margin-left:auto;font-size:.85rem;color:var(--muted)">Sortieren:
+        <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option><option value="rooms">Zimmer absteigend</option></select>
+      </span>
     </div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
@@ -169,17 +175,24 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function chfNum(p){var s=String(p||"").replace(/['’\s]/g,"");var m=s.match(/(\d{2,})(?:[.,]\-)?/);return m?parseInt(m[1],10):NaN}
   // Zimmerzahl aus Titel/Beschreibung: "3.5 Zimmer", "4 Zi", "2½"
   function roomsOf(it){var h=(String(it.titel||"")+" "+String(it.beschreibung||"")).replace("½",".5");var m=h.match(/(\d(?:[.,]5)?)\s*(?:zimmer|zi\b|zhl|zw\b)/i);return m?parseFloat(m[1].replace(",",".")):NaN}
+  // Wohnfläche (m²) aus Titel/Beschreibung: "85 m²", "120m2", "60 qm"
+  function m2Of(it){var h=String(it.titel||"")+" "+String(it.beschreibung||"");var m=h.match(/(\d{2,4})\s*(?:m²|m2|m\^2|qm|quadratmeter)/i);return m?parseInt(m[1],10):NaN}
   $("#cats").innerHTML=ARTEN.map(function(c,i){return '<label class="opt"><input type="radio" name="art" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>'}).join("");
   function contactHtml(k){var v=esc(k);var mail=/^[^@\s]+@[^@\s]+$/.test(k);return mail?('<a class="c" href="mailto:'+v+'" style="text-decoration:none;display:inline-block">✉️ '+v+'</a>'):('<span>'+v+'</span>')}
   function applyFilters(items){
-    items=items||[];
+    items=(items||[]).slice();
     var loc=$("#loc").value.trim().toLowerCase();
     if(loc)items=items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0});
     var zi=parseFloat($("#zimmer").value);
     if(!isNaN(zi))items=items.filter(function(it){var r=roomsOf(it);return isNaN(r)?false:r>=zi});
+    var am=parseFloat($("#amin").value);
+    if(!isNaN(am))items=items.filter(function(it){var a=m2Of(it);return isNaN(a)?false:a>=am});
     var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
     if(!isNaN(lo))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n>=lo});
     if(!isNaN(hi))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n<=hi});
+    var sort=$("#sort")?$("#sort").value:"rel";
+    if(sort==="pasc"||sort==="pdesc"){items.sort(function(a,b){var x=chfNum(a.preis),y=chfNum(b.preis);if(isNaN(x))return 1;if(isNaN(y))return -1;return sort==="pasc"?x-y:y-x})}
+    else if(sort==="rooms"){items.sort(function(a,b){var x=roomsOf(a),y=roomsOf(b);if(isNaN(x))return 1;if(isNaN(y))return -1;return y-x})}
     return items;
   }
   function render(items){
@@ -208,12 +221,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
   $("#loc").addEventListener("input",function(){render(raw)});
   $("#zimmer").addEventListener("change",function(){render(raw)});
-  ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
+  ["pmin","pmax","amin"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
+  $("#sort").addEventListener("change",function(){render(raw)});
   $("#modus").addEventListener("click",function(e){var b=e.target.closest(".mbtn");if(!b)return;
     Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;load()});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#loc").value=a.dataset.loc;render(raw);window.scrollTo({top:0,behavior:"smooth"})});
   $("#cats").addEventListener("change",function(e){if(e.target.name==="art"){curArt=e.target.value;load()}});
-  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#zimmer").value="";$("#pmin").value="";$("#pmax").value="";curArt="";curModus="";
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#zimmer").value="";$("#amin").value="";$("#pmin").value="";$("#pmax").value="";if($("#sort"))$("#sort").value="rel";curArt="";curModus="";
     var f=document.querySelector('input[name="art"]');if(f)f.checked=true;
     Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});load()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}

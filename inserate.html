@@ -110,6 +110,18 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="fcard"><a class="bigcta" href="/inserat-aufgeben.html">+ Inserat aufgeben</a>
       <p style="font-size:.82rem;color:var(--muted);margin-top:9px;text-align:center">Kostenlos &amp; in 1 Minute. Wird vor Veröffentlichung kurz geprüft.</p></div>
     <div class="fcard"><h4>Kategorie</h4><div id="cats"></div></div>
+    <div class="fcard"><h4>Art des Inserats</h4>
+      <label class="opt"><input type="radio" name="typ" value="" checked>Alle</label>
+      <label class="opt"><input type="radio" name="typ" value="Angebot">📦 Angebote</label>
+      <label class="opt"><input type="radio" name="typ" value="Gesuch">🔎 Gesuche</label>
+    </div>
+    <div class="fcard"><h4>Zustand</h4>
+      <label class="opt"><input type="checkbox" class="cond" value="neu">Neu</label>
+      <label class="opt"><input type="checkbox" class="cond" value="gebraucht">Gebraucht</label>
+    </div>
+    <div class="fcard"><h4>Preis (CHF)</h4>
+      <div style="display:flex;gap:8px;align-items:center"><input id="pmin" class="txt" type="number" min="0" placeholder="von" style="width:50%"><span>–</span><input id="pmax" class="txt" type="number" min="0" placeholder="bis" style="width:50%"></div>
+    </div>
     <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
     <div class="applybar"><button id="apply" type="button">Ergebnisse anzeigen</button></div>
   </aside>
@@ -118,6 +130,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="rhead">
       <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
       <span class="cnt" id="cnt">Lade Inserate …</span>
+      <span style="margin-left:auto;font-size:.85rem;color:var(--muted)">Sortieren:
+        <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
+      </span>
     </div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
@@ -141,10 +156,25 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#cats").innerHTML='<label class="opt"><input type="radio" name="kat" value="" checked>Alle Kategorien</label>'+
     CATS.map(function(c){return '<label class="opt"><input type="radio" name="kat" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
   function contactHtml(k){var v=esc(k);var mail=/^[^@\s]+@[^@\s]+$/.test(k);return mail?('<a class="c" href="mailto:'+v+'" style="text-decoration:none;display:inline-block">✉️ '+v+'</a>'):('<span>'+v+'</span>')}
-  function applyLoc(items){var loc=$("#loc").value.trim().toLowerCase();if(!loc)return items;
-    return items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0})}
+  // Schweizer Preis (CHF) aus Freitext: "CHF 1'850.–", "1850.-", "Fr. 2'400" -> 1850 / 2400
+  function chfNum(p){var s=String(p||"").replace(/['’\s]/g,"");var m=s.match(/(\d{2,})(?:[.,]\-)?/);return m?parseInt(m[1],10):NaN}
+  function applyFilters(items){
+    items=(items||[]).slice();
+    var loc=$("#loc").value.trim().toLowerCase();
+    if(loc)items=items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0});
+    var typ=(document.querySelector('input[name="typ"]:checked')||{}).value||"";
+    if(typ)items=items.filter(function(it){return String(it.typ||"Angebot")===typ});
+    var conds=Array.prototype.map.call(document.querySelectorAll(".cond:checked"),function(c){return c.value});
+    if(conds.length)items=items.filter(function(it){var z=String(it.zustand||"").toLowerCase();return conds.some(function(c){return z.indexOf(c)>=0})});
+    var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
+    if(!isNaN(lo))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n>=lo});
+    if(!isNaN(hi))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n<=hi});
+    var sort=$("#sort")?$("#sort").value:"rel";
+    if(sort==="pasc"||sort==="pdesc"){items.sort(function(a,b){var x=chfNum(a.preis),y=chfNum(b.preis);if(isNaN(x))return 1;if(isNaN(y))return -1;return sort==="pasc"?x-y:y-x})}
+    return items;
+  }
   function render(items){
-    items=applyLoc(items||[]);
+    items=applyFilters(items||[]);
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
       statusEl.innerHTML="Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent="0 Inserate";return}
     statusEl.hidden=true;
@@ -169,8 +199,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
   $("#loc").addEventListener("input",function(){render(raw)});
   $("#cats").addEventListener("change",function(e){if(e.target.name==="kat"){curKat=e.target.value;load()}});
-  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";curKat="";
-    var f=document.querySelector('input[name="kat"]');if(f)f.checked=true;load()});
+  document.addEventListener("change",function(e){if(e.target&&(e.target.name==="typ"||e.target.classList.contains("cond"))){render(raw)}});
+  ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
+  $("#sort").addEventListener("change",function(){render(raw)});
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#pmin").value="";$("#pmax").value="";$("#sort").value="rel";curKat="";
+    var f=document.querySelector('input[name="kat"]');if(f)f.checked=true;
+    var t=document.querySelector('input[name="typ"][value=""]');if(t)t.checked=true;
+    Array.prototype.forEach.call(document.querySelectorAll(".cond"),function(c){c.checked=false});load()});
 
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
