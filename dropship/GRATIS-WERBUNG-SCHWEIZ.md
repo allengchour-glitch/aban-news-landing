@@ -44,7 +44,8 @@
 
 ## 🤖 tutti halbautomatisch (PC-Claude-Browser) — `automation/local/tutti-post.mjs`
 > tutti hat **kein Inserier-API** → läuft NUR über den eingeloggten Browser am PC-Claude (CDP Port 9222),
-> genau wie die Follower-Maschine. Daten = `dropship/tutti_listings.csv` (7 Top-Produkte, echte Preise/Bilder).
+> genau wie die Follower-Maschine. Daten = `dropship/tutti_listings.csv` (**11 gemischt**: 7 CJ-Schnäppchen 19–55 CHF
+> + 4 echte Marken — D&G, Calvin Klein, Swatch Swiss Made, Guess — als Klick-Magnete; alle echte Preise/Bilder).
 > **Bonus:** im tutti-Konto ist „Automatische Veröffentlichung auf **Ricardo**" aktiv → jedes Inserat geht doppelt raus.
 - **Start-Befehl an PC-Claude:** *„Starte `node automation/local/tutti-post.mjs` (zuerst `--dry`), Brave mit
   `--remote-debugging-port=9222` offen + auf tutti.ch eingeloggt. Bild/Kategorie/Veröffentlichen je Inserat bestätigen."*
