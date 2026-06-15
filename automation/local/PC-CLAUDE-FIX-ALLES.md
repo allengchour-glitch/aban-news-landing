@@ -7,12 +7,9 @@
 
 ---
 
-## BLOCK 1 — Policies/Impressum reparieren (Shopify-Admin) ← WICHTIGSTER für die Google-Sperre
-Admin → **Einstellungen → Richtlinien (Policies)**.
-1. **Versandrichtlinie** öffnen → Text durchsuchen nach **`info@luxestyle.com`** → ersetzen durch **`info@luxestyle.ch`**. Speichern.
-2. **AGB / Nutzungsbedingungen** (§8 Gewährleistung) → **`allengchour@gmail.com`** → ersetzen durch **`info@luxestyle.ch`**. Speichern.
-3. Prüfen, dass **alle** Policies gefüllt + erreichbar sind: Versand, Rückerstattung/Rückgabe (30 Tage), Datenschutz, AGB, **Impressum/Kontakt mit echter Adresse (Belp)**.
-4. Im Footer prüfen: Kontakt-E-Mail überall **`info@luxestyle.ch`** (keine .com / gmail).
+## BLOCK 1 — Policies/Impressum reparieren ✅ ERLEDIGT (2026-06-15, live verifiziert)
+Beide E-Mail-Tippfehler sind korrigiert (Versand-Policy + AGB §8 → `info@luxestyle.ch`), alle 7 Policies konsistent.
+**NICHTS mehr zu tun.** (Nur falls im Footer noch eine alte `.com`/gmail auftaucht: auf `info@luxestyle.ch` ändern.)
 
 ## BLOCK 2 — Google Merchant Center entsperren-Vorbereitung
 merchants.google.com (eingeloggt).
