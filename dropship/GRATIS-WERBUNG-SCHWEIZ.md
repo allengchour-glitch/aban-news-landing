@@ -42,6 +42,16 @@
 **6) Crossbody-Tasche «Lido» — CHF 12.90**
 > Gewebte Color-Block-Tasche, freihändig & stylisch. Neu. –10% mit WELCOME10. 👉 luxestyle.ch
 
+## 🤖 tutti halbautomatisch (PC-Claude-Browser) — `automation/local/tutti-post.mjs`
+> tutti hat **kein Inserier-API** → läuft NUR über den eingeloggten Browser am PC-Claude (CDP Port 9222),
+> genau wie die Follower-Maschine. Daten = `dropship/tutti_listings.csv` (7 Top-Produkte, echte Preise/Bilder).
+> **Bonus:** im tutti-Konto ist „Automatische Veröffentlichung auf **Ricardo**" aktiv → jedes Inserat geht doppelt raus.
+- **Start-Befehl an PC-Claude:** *„Starte `node automation/local/tutti-post.mjs` (zuerst `--dry`), Brave mit
+  `--remote-debugging-port=9222` offen + auf tutti.ch eingeloggt. Bild/Kategorie/Veröffentlichen je Inserat bestätigen."*
+- Sicher gegen Sperren: Cap 3/Lauf (`TUTTI_CAP=`), Pausen 20–60 s, idempotenter Ledger `tutti-ledger.txt`.
+  Absenden bestätigt der PC-Claude/User bewusst (Kategorie+Bild prüfen) → keine Fehl-Inserate.
+- Belp als Ort, „schweizweit Versand", Link luxestyle.ch + WELCOME10 sind in jedem Text drin.
+
 ## ⚙️ Was automatisierbar ist vs. manuell
 - **Automatisch (läuft):** IG/FB/Pinterest organisch (Worker + Pinterest-System).
 - **Manuell (deine Konten, Login nötig):** tutti/anibis/zaster/trovas, FB-Gruppen, Google Merchant Center, Google Business Profile. Ich kann jederzeit MEHR fertige Inserate/Texte liefern.
