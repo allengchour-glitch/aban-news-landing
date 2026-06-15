@@ -114,6 +114,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <a href="#" data-q="Fahrrad">Fahrrad</a><a href="#" data-q="iPhone">Handy</a><a href="#" data-q="Sofa">Möbel</a>
     <a href="#" data-q="Werkzeug">Werkzeug</a><a href="#" data-q="Gaming">Gaming</a><a href="#" data-q="Kamera">Kamera</a>
   </div>
+  <div id="recent" hidden style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:.84rem"></div>
 </div></div>
 <div class="disc"><div>💬 Transparenz: Die Angebote stammen von Partnern (z. B. eBay). Klickst du und kaufst, erhalten wir evtl. eine kleine Provision — für dich bleibt der Preis gleich.</div></div>
 
@@ -148,6 +149,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <div class="sheetbg" id="sheetbg"></div>
 
 <nav style="max-width:1180px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/stellenangebote.html">Jobs</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a></nav>
+<section style="max-width:1100px;margin:24px auto 6px;padding:0 16px" aria-label="Häufige Fragen"><h2 style="font-size:1.2rem;margin-bottom:10px">Häufige Fragen</h2><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Woher kommen die Angebote?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Von Partnern wie eBay. Klickst du und kaufst, erhalten wir eventuell eine kleine Provision — für dich bleibt der Preis gleich.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Kostet die Suche etwas?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Nein. Suchen und Vergleichen sind kostenlos; der Klick führt direkt zum jeweiligen Anbieter.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Wie filtere ich die Angebote?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Nach Kategorie, Zustand (neu/gebraucht) und Preis. Die Ergebnisse lassen sich zusätzlich nach Preis sortieren.</p></details></section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Woher kommen die Angebote?", "acceptedAnswer": {"@type": "Answer", "text": "Von Partnern wie eBay. Klickst du und kaufst, erhalten wir eventuell eine kleine Provision — für dich bleibt der Preis gleich."}}, {"@type": "Question", "name": "Kostet die Suche etwas?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Suchen und Vergleichen sind kostenlos; der Klick führt direkt zum jeweiligen Anbieter."}}, {"@type": "Question", "name": "Wie filtere ich die Angebote?", "acceptedAnswer": {"@type": "Answer", "text": "Nach Kategorie, Zustand (neu/gebraucht) und Preis. Die Ergebnisse lassen sich zusätzlich nach Preis sortieren."}}]}</script>
 <footer>aban news · Angebote-Suche · Preise &amp; Verfügbarkeit ohne Gewähr · Klicks führen zum jeweiligen Anbieter · © 2026 ·
   <a href="/fahrrad-angebote.html">Fahrrad</a> · <a href="/handy-angebote.html">Handy</a> · <a href="/moebel-angebote.html">Möbel</a> · <a href="/gaming-angebote.html">Gaming</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
@@ -200,7 +203,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function search(){
     var q=$("#q").value.trim();
     var cat=document.querySelector('input[name="cat"]:checked');
-    var term=q||(cat&&cat.value)||"";
+    var term=q||(cat&&cat.value)||"";try{saveRecent(term)}catch(e){}
     cntEl.textContent="Suche „"+(term||"Angebote")+"“ …";skeleton();
     fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
       badge.hidden=!d.demo;raw=d.items||[];render();
@@ -228,6 +231,12 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uc=sp.get("cat");
     if(uq)$("#q").value=uq;
     if(uc)Array.prototype.forEach.call(document.querySelectorAll('input[name="cat"]'),function(r){if(r.value===uc)r.checked=true});})();
+  var RKEY="aban_recent_angebote";
+  function recentGet(){try{return JSON.parse(localStorage.getItem(RKEY)||"[]")}catch(e){return []}}
+  function saveRecent(t){t=(t||"").trim();if(!t)return;try{var a=recentGet().filter(function(x){return x.toLowerCase()!==t.toLowerCase()});a.unshift(t);a=a.slice(0,6);localStorage.setItem(RKEY,JSON.stringify(a));renderRecent()}catch(e){}}
+  function renderRecent(){var el=document.getElementById("recent");if(!el)return;var a=recentGet();if(!a.length){el.hidden=true;return}el.hidden=false;el.innerHTML='<b style="color:#f4e7d3;font-weight:700">Zuletzt:</b> '+a.map(function(t){return '<a href="#" class="rq" data-q="'+esc(t)+'" style="color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:4px 12px;font-weight:600;text-decoration:none">'+esc(t)+'</a>'}).join(" ")+' <button type="button" id="rclear" style="background:none;border:0;color:#f4e7d3;cursor:pointer;text-decoration:underline;font-size:.8rem">löschen</button>'}
+  (function(){var el=document.getElementById("recent");if(!el)return;el.addEventListener("click",function(e){var a=e.target.closest("a.rq");if(a){e.preventDefault();$("#q").value=a.dataset.q;search();window.scrollTo({top:0,behavior:"smooth"});return}if(e.target.id==="rclear"){try{localStorage.removeItem(RKEY)}catch(_){}renderRecent()}});renderRecent()})();
+
   search();
 })();
 </script>
