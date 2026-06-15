@@ -122,4 +122,20 @@ cf = font(110); cap='SCHWIIZER NATIONALFIIRTIG'; cw=line_width(cap,cf,18)
 draw_tracked(d, (W-cw)//2, bottom+80, cap, cf, RED, 18)
 save(im, 'erste-august')
 
+# --- Bonus Welle 1+ (hohe Nachfrage) ---
+# 7) HOPP SCHWIIZ (Cream-Tee → Anthrazit + roter Punkt; Sport/Nationalstolz)
+save(stacked(['HOPP','SCHWIIZ'], ANTHRACITE, accent_dot=True), 'hopp-schwiiz')
+
+# 8) FEIERABIG (Off-White-/Cream-Tee → Anthrazit + Sage-Unterstrich)
+img = oneline('FEIERABIG', ANTHRACITE, tracking=30)
+d = ImageDraw.Draw(img); bb = img.getbbox()
+d.rectangle([(bb[0], bb[3]), (bb[2], bb[3]+34)], fill=SAGE)
+save(img, 'feierabig')
+
+# 9) GRÜEZI (Cream-Tee → Anthrazit + roter Punkt)
+img = oneline('GRÜEZI', ANTHRACITE, tracking=40)
+d = ImageDraw.Draw(img); bb = img.getbbox()
+r = 70; d.ellipse([(bb[2]+50, bb[3]-r),(bb[2]+50+r, bb[3])], fill=RED)
+save(img, 'grueezi')
+
 print('Fertig. Dateien in pod/swiss-edition/')

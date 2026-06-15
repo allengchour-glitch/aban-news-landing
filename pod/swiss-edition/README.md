@@ -14,6 +14,9 @@ Anthrazit `#1F2328`, Off-White `#F4F1EA`, Sage `#7C8C6B`.
 | `gmuetlech.png` | Sweatshirt «Gmüetlech» | Crewneck (Gildan 18000) | Sand | Anthrazit + Sage | 44.90 |
 | `sali-zaeme.png` | Herren-Tee «Sali Zäme» | Unisex-Tee | **Schwarz** | Off-White | 32.90 |
 | `erste-august.png` | T-Shirt «1. August» | Unisex-Tee | Off-White | Rot-Kreuz + Anthrazit | 32.90 |
+| `hopp-schwiiz.png` | T-Shirt «Hopp Schwiiz» | Unisex-Tee | Cream/Weiss | Anthrazit + roter Punkt | 32.90 |
+| `feierabig.png` | Sweatshirt «Feierabig» | Crewneck | Cream/Sand | Anthrazit + Sage | 44.90 |
+| `grueezi.png` | T-Shirt «Grüezi» | Unisex-Tee | Cream/Weiss | Anthrazit + roter Punkt | 32.90 |
 
 > ⚠️ **Ink-Farbe ↔ Garment beachten:** Off-White-Designs (`chuchichaeschtli`, `sali-zaeme`) NUR auf
 > dunkle Garments (sonst unsichtbar). Anthrazit-Designs auf helle Garments.
