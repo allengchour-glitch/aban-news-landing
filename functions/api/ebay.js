@@ -88,8 +88,9 @@ export async function onRequestGet({ request, env }) {
     const r = await fetch(api, { headers });
     const d = await r.json();
     if (!d.itemSummaries) return json({ demo: true, reason: "empty", items: demo(q) });
-    const items = d.itemSummaries.map(function (it) {
+    let items = d.itemSummaries.map(function (it) {
       const img = (it.image && it.image.imageUrl) || (it.thumbnailImages && it.thumbnailImages[0] && it.thumbnailImages[0].imageUrl) || "";
+      const pv = it.price ? parseFloat(it.price.value) : NaN;
       return {
         title: it.title || "",
         price: (it.price && (it.price.value + " " + it.price.currency)) || "",
@@ -97,8 +98,19 @@ export async function onRequestGet({ request, env }) {
         url: it.itemAffiliateWebUrl || it.itemWebUrl || "",
         cond: it.condition || "",
         loc: (it.itemLocation && it.itemLocation.country) || "",
+        _pv: pv,
       };
     });
+    // Defensiv: Preis-/Sortier-Filter serverseitig erzwingen (eBay-Filter-Param greift nicht immer)
+    if (!isNaN(pmin)) items = items.filter((it) => !isNaN(it._pv) && it._pv >= pmin);
+    if (!isNaN(pmax)) items = items.filter((it) => !isNaN(it._pv) && it._pv <= pmax);
+    if (sort === "price" || sort === "-price") {
+      items.sort((a, b) => {
+        const x = isNaN(a._pv) ? Infinity : a._pv, y = isNaN(b._pv) ? Infinity : b._pv;
+        return sort === "price" ? x - y : y - x;
+      });
+    }
+    items.forEach((it) => { delete it._pv; });
     return json({ demo: false, items: items });
   } catch (e) {
     return json({ demo: true, reason: "error", items: demo(q) });
