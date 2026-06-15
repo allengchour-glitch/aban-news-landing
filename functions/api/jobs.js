@@ -47,6 +47,13 @@ async function srcArbeitnow(page) {
     source: "Arbeitnow",
   }));
 }
+// Mehrere Arbeitnow-Seiten parallel (grösserer DE/CH-Pool für Suchbegriffe wie „Pflege", „Verkauf")
+async function srcArbeitnowMulti(pages) {
+  const arr = await Promise.allSettled(pages.map((p) => srcArbeitnow(p)));
+  let out = [];
+  for (const s of arr) { if (s.status === "fulfilled" && Array.isArray(s.value)) out = out.concat(s.value); }
+  return out;
+}
 async function srcRemotive(q) {
   const d = await getJSON("https://remotive.com/api/remote-jobs?limit=60" + (q ? "&search=" + encodeURIComponent(q) : ""));
   return (d.jobs || []).map((j) => ({
@@ -85,8 +92,9 @@ export async function onRequestGet({ request }) {
   const page = Math.min(Math.max(parseInt(url.searchParams.get("page") || "1", 10) || 1, 1), 10);
 
   // Alle Quellen parallel; eine darf scheitern, ohne das Ganze zu kippen.
+  // Bei der ersten Seite mehrere Arbeitnow-Seiten holen (breitere DE/CH-Abdeckung), sonst nur die angefragte.
   const jobs = [
-    srcArbeitnow(page),
+    page === 1 ? srcArbeitnowMulti([1, 2, 3, 4]) : srcArbeitnow(page),
     srcMuse(page, q),
     page === 1 ? srcRemotive(q) : Promise.resolve([]),
     page === 1 ? srcJobicy() : Promise.resolve([]),
