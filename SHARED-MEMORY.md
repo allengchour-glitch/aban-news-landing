@@ -54,6 +54,26 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-15 (ABEND) — Collections/Marken-Session (Branch `claude/memory-2026-06-13`): MARKEN-HUB + BILD-BACKFILL:**
+- **30 MARKEN-LANDINGPAGES gebaut** (Vendor-Smart-Collections, je Hero+SEO auf Brand-Suche+PRICE_DESC, in 6 Kanälen):
+  `michael-kors` `calvin-klein` `hugo-boss` `tommy-hilfiger` `guess` `dolce-gabbana` `yves-saint-laurent` `swatch` `casio`
+  `olivia-burton` `police` `citizen` `festina` `kenzo` `elie-saab` `pierre-cardin` `morellato` `lotus-uhren` `lancome`
+  `loreal` `weleda` `lorus` `paul-hewitt` `tom-hope` `adidas` `puma` `reebok` `under-armour` `fila` `superdry`.
+  **⚠️ ANDERE SESSIONS: NICHT duplizieren.** Menü-Dropdown **„💎 Marken"** (Top-6 verlinkt) ergänzt.
+- **✨ Premium-Seite `luxestyle-premium`** finalisiert: Editorial-Hero (Adobe-Stock lizenziert, 16:9, Shopify-CDN),
+  markengenaue Beschreibung (inkl. D&G), `PRICE_DESC`; Menü „💎 Premium" zeigt drauf. `sub-uhren`+`premium-schmuck` markengenau betextet.
+- **🖼️ 60 BigBuy-Produkt-Galerien vervollständigt** (172 echte Fotos von cdnbigbuy via BigBuy-API `productinformationbysku`→
+  `productimages`; „mandatory"-/„tallas"-Junk gefiltert; alle READY, 0 FAILED). 30 Produkte haben bei BigBuy nur 1 Bild = fertig.
+  **Diese Session hat den Galerie-Backfill der BESTEHENDEN BigBuy-Produkte gemacht → Katalog-Session NICHT doppeln.**
+  Für KÜNFTIGE Importe: `bigbuy_import.mjs` `bbImages` soll alle non-cover-Bilder mitnehmen (Importer-Fix = Katalog-Session).
+- **🔴 FLAG an Katalog-Session — 5 kaputte/abweichende BigBuy-SKUs** (nicht in BigBuy auffindbar → Fulfillment-Risiko + kein Bild):
+  Lancôme-Set `bb-S05151xx-lancome` (**Platzhalter!**), Etat Libre `bb-S8315004`, Radiant Damenring `bb-S7253180`,
+  Police Armband `bb-S0380891`, Guess Herrenring `bb-S0396716`. → echte SKUs nachtragen, dann zieht diese Session die Bilder nach.
+- **CJ-Bild-Backfill = SACKGASSE:** single-image CJ-Produkte haben custom-SKUs (`cj-ombra` etc.) → nicht auf CJ-ID mappbar.
+  Neueste CJ-Apparel hat bereits 5–7 Bilder. (Nicht erneut versuchen.)
+- **Reviere (bestätigt mit User 2026-06-15):** Theme/Startseite=Theme-Session · BigBuy/CJ-Import+Produktfelder(SEO/Größen/Galerie
+  künftiger Importe)=Katalog-Session · Collection-Seiten/Marken-Hub=diese Session. **Vor jedem Shopify-Write `SHARED-MEMORY` lesen.**
+
 **2026-06-15 (Luxestyle-Session) — ✅ Pixel/Pinterest gelöst · Brain v3 · 1.-August-Fokus · Voll-Audit:**
 - **TikTok-Pixel FERTIG:** Live-Theme feuert jetzt **`D8EKVR3C77U6KT5BTBD0`** (alter `D85BAG…` weg), per API verifiziert.
   Geändert per **PC-Browser-Claude** (Live-Theme-Writes sind MCP-gesperrt). ⚠️ Unveröffentlichte Theme-Kopie
