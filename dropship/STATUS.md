@@ -43,6 +43,18 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🖼️ BILDER-GALERIEN + Automation feed_ready + Mini-PR
+- **Bilder-Galerien:** meine BigBuy-Produkte mit BigBuy-Zusatzfotos angereichert — aber **BigBuy liefert für die meisten
+  (Schmuck/Parfum) nur 1 Cover-Foto** (Quell-Limit). Nur 4 Produkte (Uhren/Taschen: Casio, MK-Etui, Hugo-Boss-Uhr, Radiant-Ring)
+  hatten 2–4 Studio-Angles → als Galerie angehängt. CJ-Blusen haben schon volle Galerien; Kern-Katalog (Kleider/Schuhe) auch.
+- **🤖 `automation/feed_ready.mjs`:** wiederverwendbares Skript — setzt Barcode (EAN) + Google-Kategorie auf alle tag:bigbuy
+  automatisch (idempotent, CI-tauglich). Künftige Importe sind damit selbst feed-fertig.
+- **🧱 Mini-PR #1002** (Draft→main, nur 2 Dateien, kollisionsfrei): Theme-Workflow auf main bringen OHNE die 444 Commits der
+  anderen Session zu löschen (PR #643 NICHT mergen!). Nach Merge → Workflow auslösen → Premium-Startseiten-Sektion live.
+- **Ehrlich:** „jedes Produkt mehr Bilder" ist quellenbegrenzt — wo der Lieferant nur 1 Foto hat, geht ohne KI-Lifestyle (Regel:
+  KI nur Mood/Hero, nie Fake-Produktfotos) nicht mehr. Beschreibungs-/Attribut-/Label-Anreicherung läuft bei der anderen Session.
+
+
 ### 2026-06-15 (Abend) — 🏷️ GOOGLE-PRODUKTKATEGORIE auf 87 Premium-Produkte
 - **87 Produkte mit Standard-Produktkategorie** (Parfum→Düfte hb-3-2-8, Uhren→aa-6-11, Schmuck→aa-6, Sonnenbrillen→aa-2-27,
   Taschen→aa-5-4, Beauty→Hautpflege hb-3-2-9), 0 Fehler. → Feed-Feldqualität für Google jetzt KOMPLETT: **Marke + Barcode + Kategorie**.
