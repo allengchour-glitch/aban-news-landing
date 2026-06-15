@@ -17,6 +17,11 @@ Anthrazit `#1F2328`, Off-White `#F4F1EA`, Sage `#7C8C6B`.
 | `hopp-schwiiz.png` | T-Shirt «Hopp Schwiiz» | Unisex-Tee | Cream/Weiss | Anthrazit + roter Punkt | 32.90 |
 | `feierabig.png` | Sweatshirt «Feierabig» | Crewneck | Cream/Sand | Anthrazit + Sage | 44.90 |
 | `grueezi.png` | T-Shirt «Grüezi» | Unisex-Tee | Cream/Weiss | Anthrazit + roter Punkt | 32.90 |
+| `matterhorn-zermatt.png` | T-Shirt «Zermatt 4478» | Unisex-Tee | Cream/Weiss | Anthrazit Line-Art | 32.90 |
+| `schwiizer-alpe.png` | Sweatshirt «Schwiizer Alpe» | Crewneck | Off-White | Anthrazit + rote Sonne | 44.90 |
+| `edelweiss.png` | T-Shirt «Edelweiss» | Unisex-Tee | Cream/Weiss | Anthrazit + roter Kern | 32.90 |
+
+**Welle 2 (Line-Art, `render_swiss_welle2.py`):** matterhorn-zermatt · schwiizer-alpe (Top) · edelweiss (geometrisch/Logo-Stil — kann später durch botanisches Motiv ersetzt werden).
 
 > ⚠️ **Ink-Farbe ↔ Garment beachten:** Off-White-Designs (`chuchichaeschtli`, `sali-zaeme`) NUR auf
 > dunkle Garments (sonst unsichtbar). Anthrazit-Designs auf helle Garments.

@@ -18,6 +18,9 @@ GARMENT = {
     'hopp-schwiiz':     (237,232,221),  # Cream
     'feierabig':        (226,216,196),  # Sand/Cream
     'grueezi':          (237,232,221),  # Cream
+    'matterhorn-zermatt':(237,232,221), # Cream (Line-Art)
+    'schwiizer-alpe':   (244,241,234),  # Off-White (Line-Art)
+    'edelweiss':        (237,232,221),  # Cream (Line-Art)
 }
 BG = (250, 248, 245)   # heller Studio-Hintergrund
 CW, CH = 1200, 1500    # Mockup-Format (4:5)
