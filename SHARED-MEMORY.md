@@ -46,6 +46,26 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-15 (23:10) — Luxestyle-product-Session (CizQ6): Policies + Merchant Re-Review + tutti-Tool:**
+- **🚨 WICHTIG FÜR ALLE SESSIONS — GitHub ACTIONS IST KONTOWEIT DEAKTIVIERT.** `workflow_dispatch`/Crons geben
+  `422 „Actions has been disabled for this user"` (verifiziert 22:xx). Das ist **kein** Repo-Toggle, sondern account-level
+  (GitHub-seitig, evtl. wegen Massen-Workflow-Aktivität / Billing). **→ KEINE Cron-Workflows laufen aktuell** (auch abannews
+  Content-Engine/Radars/Märkte nicht!). Lösbar nur via GitHub-Billing-Check oder GitHub-Support durch den User. `git push`/
+  PR-Merge gehen weiter (anderer Kanal). **Nicht mit Dispatch hämmern** — bringt nur 422. (Widerspricht dem 06-11-Eintrag
+  „public = unbegrenzte Actions" — die Minuten sind frei, aber der Account ist gesperrt.)
+- **✅ POLICIES GEFIXT (nicht mehr als offen führen):** beide E-Mail-Tippfehler korrigiert (Versand-Policy + AGB §8 →
+  `info@luxestyle.ch`), alle 7 Policies konsistent, live via MCP verifiziert. (MCP kann Policies NICHT schreiben — `write_legal_policies`
+  fehlt; der Fix lief manuell durch den User. Tool `automation/fix_policies.mjs` liegt bereit für die CI-Route, falls Actions je zurückkommt.)
+- **✅ GOOGLE MERCHANT RE-REVIEW ABGESCHICKT (15.06.) — NICHT nochmal beantragen** (resettet Timer, Re-Reviews begrenzt).
+  Vorher: Rückgaberichtlinie im Merchant Center konfiguriert (30 T/per Post/No-cost/Refund 14 T/CHF/nur CH), Business-Info
+  verifiziert. Feed 34.9K→13.4K (CH-only wirkt). **NACH Freigabe (Notiz):** Google-Kanal-Zielland auf NUR Schweiz (nennt noch
+  „Belgium, France, Switzerland") + 3 verknüpfte Google-Ads-Konten auf eines reduzieren.
+- **🆕 tutti-Reichweite (mein Revier = Social/Gratis-Werbung):** `automation/local/tutti-post.mjs` (Browser/CDP, läuft NUR
+  am PC-Claude — kein tutti-API) + `dropship/tutti_listings.csv` (11 Inserate: 7 CJ-Schnäppchen + 4 Marken D&G/CK/Swatch/Guess).
+  Idempotent, Caps. Berührt KEINE Produkte/Beschreibungen/Theme.
+- **REVIER bleibt:** ich = Import-Felder + Social/Reichweite; andere Session = Beschreibungen/Attribut-Block/Energie-Label/
+  Collection-Seite/Theme. Ich fasse Beschreibungen + Theme NICHT an.
+
 **2026-06-15 — ⚠️ KOLLISIONS-ABGLEICH Premium (Luxestyle-product-Session, Branch CizQ6):**
 - **DIESE Session ist der BigBuy/CJ-IMPORTEUR** (User gab den BigBuy-Token in-Session): heute **~90 echte Marken-Produkte**
   (Parfum/Uhren/Schmuck/Taschen/Beauty) + 4 CJ-Blusen importiert, alle ACTIVE/tracked:false/6 Kanäle, getaggt `bigbuy`+`premium`+`marke`.

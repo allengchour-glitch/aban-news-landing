@@ -77,6 +77,22 @@
 **Post C — eine Kategorie (z.B. Taschen):**
 > 👜 Neui Täsche & Clutches im Shop — vo Stroh-Shopper bis Abendtasche, ab CHF 12.90. Schweizer Shop, schnelli Lieferig. luxestyle.ch · –10% WELCOME10
 
+## 📣 NEU: Facebook-CH-Gruppen-Posts MIT MARKEN (copy-paste, 2026-06-15)
+> Für CH-Buy&Sell-/Mode-/Schnäppchen-Gruppen (Bern/Zürich/Basel/Luzern rotieren). Regeln beachten (oft 1×/Woche,
+> nur Verkaufstage). Bild = Produktbild aus dem Shop-CDN (URLs in `dropship/tutti_listings.csv`). Strikt CH, kein DE.
+
+**FB-1 — Marken-Hammer (Trust + Preis):**
+> 🇨🇭 Original-Marken zu fairen Preisen im Schwiizer Shop! ⌚ **Swatch Swiss Made** ab CHF 159.90 · 🌸 **Dolce & Gabbana «The One»** EdP CHF 99.90 · **Calvin Klein** Parfum CHF 74.90 — alles 100% echt, neu & versiegelt. Gratis-Versand ab CHF 65, 30 Täg Rückgab. Lueg verbii 👉 luxestyle.ch · –10% mit Code WELCOME10
+
+**FB-2 — Mundart, nahbar:**
+> Hoi zäme! 👋 Mir si en chliine Schwiizer Onlineshop für Mode, Schmuck, Uhre & Parfum. Neu hei mer **echti Marke** wie Swatch, D&G, Calvin Klein & Guess inecho — und feini Sache ab CHF 19.90. Schau mau verbii, freue mi 🇨🇭 luxestyle.ch (–10% mit WELCOME10)
+
+**FB-3 — Beauty/Geschenk-Fokus:**
+> 🎁 Gschänk gsuecht? **D&G «The One» Parfum** CHF 99.90, **Guess Damenuhr «Glamour»** CHF 129.90 oder feini Silberschmuck ab CHF 29.90 — alles original, schnelli Lieferig us de Schwiiz. 30 Täg Rückgab. 👉 luxestyle.ch · –10% WELCOME10
+
+**FB-4 — Schnäppchen-Fokus (für Schnäppchen-Gruppen):**
+> 💥 Neu im Schwiizer Shop ab CHF 19.90: Vitamin-C-Serum, Gua-Sha «Jade», Statement-Ohrring & Sneaker. Faire Preise, gratis Versand ab CHF 65, 30 Täg Rückgab. 👉 luxestyle.ch · –10% mit WELCOME10
+
 ## 📋 Weitere tutti/anibis-Inserate (neue Produkte)
 **7) Ohrringe «Lotus» · 999 Silber — CHF 24.90** — Filigrane Lotus-Ohrringe, Emaille, hautfreundlich. 👉 luxestyle.ch
 **8) Armkette «Papillon» · Roségold — CHF 51.90** — Zarte Schmetterling-Armkette mit Perlmutt. 👉 luxestyle.ch
