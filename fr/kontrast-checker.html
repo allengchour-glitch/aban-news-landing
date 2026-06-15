@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vérificateur de contraste de couleurs (WCAG) · aban news</title>
+<meta name="description" content="Outil gratuit : vérifiez le contraste de deux couleurs selon les WCAG (AA/AAA). Pour des sites web lisibles et accessibles. En local dans votre navigateur, sans connexion.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/kontrast-checker.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/kontrast-checker.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/kontrast-checker.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/kontrast-checker.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/kontrast-checker.html">
+<meta property="og:title" content="Vérificateur de contraste de couleurs (WCAG)">
+<meta property="og:description" content="Vérifiez le contraste de deux couleurs selon les WCAG (AA/AAA). Pour des sites web accessibles. En local dans votre navigateur.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/kontrast-checker.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Vérificateur de contraste de couleurs (WCAG)",
+"url":"https://abannews.com/fr/kontrast-checker.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Vérifie le contraste de deux couleurs selon les WCAG (AA/AAA).",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.inputs{display:flex;gap:18px;flex-wrap:wrap}
+.fld{flex:1;min-width:160px}
+.fld .pick{display:flex;gap:8px;align-items:center}
+input[type=color]{width:46px;height:42px;border:1px solid var(--line);border-radius:8px;background:var(--field);cursor:pointer;padding:2px}
+input[type=text]{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.preview{margin-top:16px;border-radius:12px;padding:22px;border:1px solid var(--line)}
+.preview .big{font-size:24px;font-weight:700}
+.preview .small{font-size:14px}
+.score{display:flex;align-items:baseline;gap:10px;margin:16px 0 4px}
+.score .ratio{font-size:34px;font-weight:800}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.badge{font-size:.82rem;font-weight:700;padding:4px 10px;border-radius:999px;border:1px solid}
+.badge.pass{color:var(--ok);border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.badge.fail{color:var(--bad);border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Aller à l'outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Vérifier le <span class="a">contraste de couleurs</span></h1>
+    <p>Votre texte est-il bien lisible sur une couleur de fond ? Vérifiez le rapport selon les WCAG — la norme pour des sites web accessibles. En local dans votre navigateur, rien n'est envoyé.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="inputs">
+      <div class="fld"><label for="fgt">Couleur du texte</label>
+        <div class="pick"><input type="color" id="fg" value="#1f2937"><input type="text" id="fgt" value="#1f2937" spellcheck="false"></div></div>
+      <div class="fld"><label for="bgt">Arrière-plan</label>
+        <div class="pick"><input type="color" id="bg" value="#fffbf5"><input type="text" id="bgt" value="#fffbf5" spellcheck="false"></div></div>
+    </div>
+    <div class="preview" id="prev">
+      <div class="big">Grand texte (titre)</div>
+      <div class="small">Texte courant normal — voici comment votre contenu se lit dans cette combinaison.</div>
+    </div>
+    <div class="score"><span class="ratio" id="ratio">—</span><span class="note" style="margin:0">Rapport de contraste</span></div>
+    <div class="badges" id="badges"></div>
+    <p class="note">Seuils WCAG : <strong>AA</strong> = 4,5:1 (texte normal) ou 3:1 (grand ≥ 24px / 19px&nbsp;gras). <strong>AAA</strong> = 7:1 ou 4,5:1. Les champs hex acceptent <code>#abc</code> et <code>#aabbcc</code>. Tout en local, aucun envoi.</p>
+  </section>
+  <div class="cta"><strong>Plus d'outils</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">pour des sites web propres &amp; des automatisations.</p>
+    <p><a class="btn" href="/ai-sichtbarkeit.html">Visibilité IA</a>
+      <a class="btn ghost" href="/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/regex-tester.html">Regex</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Vous avez trouvé cela utile ? 5 minutes d'IA sans le battage — chaque jour ouvré.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news est la newsletter IA pour les indépendants : courte, honnête, sans bingo de mots-clés. Gratuite, désabonnement à tout moment.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">S'abonner à la newsletter gratuite →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/encoder.html">Encoder</a> · <a href="/fr/zeichenzaehler.html">Compteur de caractères</a> ·
+  <a href="/fr/ki-werkzeug.html">Outils IA</a> &middot; <a href="/online-tools.html">Tous les outils</a> &middot; <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></div></footer>
+<script>
+(function(){
+  var fg=document.getElementById("fg"),bg=document.getElementById("bg"),
+      fgt=document.getElementById("fgt"),bgt=document.getElementById("bgt"),
+      prev=document.getElementById("prev"),ratioEl=document.getElementById("ratio"),badges=document.getElementById("badges");
+  function parse(h){
+    h=(h||"").trim().replace(/^#/,"");
+    if(/^[0-9a-fA-F]{3}$/.test(h))h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    if(!/^[0-9a-fA-F]{6}$/.test(h))return null;
+    return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
+  }
+  function lum(rgb){
+    var a=rgb.map(function(v){v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});
+    return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];
+  }
+  function ratio(c1,c2){var l1=lum(c1),l2=lum(c2);var hi=Math.max(l1,l2),lo=Math.min(l1,l2);return (hi+0.05)/(lo+0.05);}
+  function badge(label,ok){return '<span class="badge '+(ok?"pass":"fail")+'">'+label+" "+(ok?"✓":"✗")+"</span>";}
+  function run(){
+    var c1=parse(fgt.value),c2=parse(bgt.value);
+    if(!c1||!c2){ratioEl.textContent="—";badges.innerHTML='<span class="note" style="margin:0">Veuillez saisir des couleurs hex valides.</span>';return;}
+    var r=ratio(c1,c2);
+    prev.style.color=fgt.value;prev.style.background=bgt.value;
+    ratioEl.textContent=r.toFixed(2)+":1";
+    badges.innerHTML=
+      badge("AA normal (4,5)",r>=4.5)+
+      badge("AA grand (3,0)",r>=3)+
+      badge("AAA normal (7,0)",r>=7)+
+      badge("AAA grand (4,5)",r>=4.5);
+  }
+  function sync(src,dst){return function(){dst.value=src.value;run();};}
+  fg.addEventListener("input",sync(fg,fgt));
+  bg.addEventListener("input",sync(bg,bgt));
+  fgt.addEventListener("input",function(){var c=parse(fgt.value);if(c)fg.value=fgt.value.trim();run();});
+  bgt.addEventListener("input",function(){var c=parse(bgt.value);if(c)bg.value=bgt.value.trim();run();});
+  run();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>

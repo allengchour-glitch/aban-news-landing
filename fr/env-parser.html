@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyseur .env et en-têtes → JSON · aban news</title>
+<meta name="description" content="Outil gratuit : convertir des fichiers .env ou des en-têtes HTTP en JSON (et inversement). Pour les API, les webhooks, la configuration. En local dans votre navigateur, sans connexion — les secrets ne quittent jamais le navigateur.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/env-parser.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/env-parser.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/env-parser.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/env-parser.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/env-parser.html">
+<meta property="og:title" content="Analyseur .env et en-têtes → JSON">
+<meta property="og:description" content=".env ou en-têtes HTTP ↔ JSON. Pour les API et les webhooks. En local dans votre navigateur — les secrets restent locaux.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/env-parser.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Analyseur .env et en-têtes → JSON",
+"url":"https://abannews.com/fr/env-parser.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Convertit les fichiers .env ou les en-têtes HTTP en JSON et inversement.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+textarea{width:100%;min-height:140px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);resize:vertical;word-break:break-all}
+textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;align-items:center}
+.status{font-size:.9rem;font-weight:600;min-height:1.2em;margin-top:6px}
+.status.bad{color:var(--bad)}.status.ok{color:var(--ok)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.warn{font-size:.85rem;color:var(--ink2);background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 12px;margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Aller à l'outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">.env &amp; en-têtes</span> → JSON</h1>
+    <p>Convertir un fichier <code>.env</code> ou un bloc d'en-têtes HTTP en un objet JSON — et inversement. Pratique lorsqu'un outil de webhook ou d'API attend les en-têtes au format JSON. En local dans votre navigateur, rien n'est envoyé.</p>
+  </section>
+  <section class="panel" id="tool">
+    <label for="in">Entrée (<code>KEY=value</code> ou <code>En-tête : valeur</code> par ligne)</label>
+    <textarea id="in" spellcheck="false"># Exemple
+API_URL=https://api.example.com/v1
+TIMEOUT=30
+Content-Type: application/json
+Authorization: Bearer VOTRE_TOKEN</textarea>
+    <div class="bar">
+      <button class="btn" data-op="toj">→ JSON</button>
+      <button class="btn ghost" data-op="toenv">JSON → .env</button>
+      <button class="btn ghost" data-op="tohdr">JSON → en-têtes</button>
+    </div>
+    <label for="out">Sortie</label>
+    <textarea id="out" spellcheck="false" readonly></textarea>
+    <div class="bar"><button class="btn ghost" id="copy">Copier</button>
+      <span class="status" id="status">—</span></div>
+    <div class="warn"><strong>Remarque :</strong> les tokens et les mots de passe restent dans votre navigateur — cette page n'envoie rien. Néanmoins : mieux vaut ne coller de vrais secrets de production que là où vous en avez réellement besoin.</div>
+    <p class="note">Reconnaît <code>KEY=value</code> (.env) et <code>Nom : valeur</code> (en-têtes). Les commentaires (<code>#</code>) et les lignes vides sont ignorés, les guillemets entourants sont supprimés. Tout en local.</p>
+  </section>
+  <div class="cta"><strong>Plus d'outils de liaison</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">pour les API &amp; l'automatisation.</p>
+    <p><a class="btn" href="/fr/json-formatter.html">JSON</a>
+      <a class="btn ghost" href="/fr/encoder.html">Base64/URL</a>
+      <a class="btn ghost" href="/fr/uuid-generator.html">UUID/Slug</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Vous avez trouvé cela utile ? 5 minutes d'IA sans le battage — chaque jour ouvré.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news est la newsletter IA pour les indépendants : courte, honnête, sans bingo de mots à la mode. Gratuite, désabonnement à tout moment.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">S'abonner à la newsletter gratuite →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/fr/encoder.html">Encodeur</a> · <a href="/fr/json-formatter.html">JSON</a> ·
+  <a href="/fr/ki-werkzeug.html">Outil IA</a> &middot; <a href="/online-tools.html">Tous les outils</a> &middot; <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("in"),out=document.getElementById("out"),status=document.getElementById("status");
+  function ok(m){status.className="status ok";status.textContent="✓ "+m;}
+  function bad(m){status.className="status bad";status.textContent="✗ "+m;}
+  function unquote(s){s=s.trim();
+    if((s[0]==='"'&&s[s.length-1]==='"')||(s[0]==="'"&&s[s.length-1]==="'"))return s.slice(1,-1);
+    return s;}
+  function toj(text){
+    var o={},n=0;
+    text.split("\n").forEach(function(line){
+      var l=line.trim();
+      if(!l||l[0]==="#")return;
+      var m,k,v;
+      if((m=l.match(/^([^:=]+?)\s*=\s*(.*)$/))){k=m[1].trim();v=unquote(m[2]);}
+      else if((m=l.match(/^([^:=]+?)\s*:\s*(.*)$/))){k=m[1].trim();v=m[2].trim();}
+      else return;
+      o[k]=v;n++;
+    });
+    if(!n)throw new Error("aucune ligne KEY=value ou en-tête trouvée");
+    return JSON.stringify(o,null,2);
+  }
+  function obj(text){
+    var o=JSON.parse(text);
+    if(typeof o!=="object"||o===null||Array.isArray(o))throw new Error("un objet JSON {…} est attendu");
+    return o;
+  }
+  function toenv(text){
+    var o=obj(text);
+    return Object.keys(o).map(function(k){
+      var v=String(o[k]);
+      if(/\s|#|"/.test(v))v='"'+v.replace(/"/g,'\\"')+'"';
+      return k+"="+v;
+    }).join("\n");
+  }
+  function tohdr(text){
+    var o=obj(text);
+    return Object.keys(o).map(function(k){return k+": "+String(o[k]);}).join("\n");
+  }
+  var ops={toj:toj,toenv:toenv,tohdr:tohdr},
+      names={toj:"en JSON",toenv:"en .env",tohdr:"en bloc d'en-têtes"};
+  document.querySelectorAll("[data-op]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var op=b.getAttribute("data-op");
+      try{out.value=ops[op](inp.value);ok(names[op]);}
+      catch(e){out.value="";bad("Impossible : "+(e.message||e));}
+    });
+  });
+  document.getElementById("copy").addEventListener("click",function(){var b=this;try{navigator.clipboard.writeText(out.value);b.textContent="copié ✓";setTimeout(function(){b.textContent="Copier";},1500);}catch(e){}});
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>

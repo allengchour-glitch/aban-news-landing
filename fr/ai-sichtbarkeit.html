@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vérificateur de visibilité IA · ChatGPT vous trouve-t-il bien ? · aban news</title>
+<meta name="description" content="Outil gratuit : vérifiez à quel point votre page est prête pour les moteurs de réponse comme ChatGPT, Perplexity et Google AI Overviews. Conseils concrets, sans connexion.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/ai-sichtbarkeit.html">
+<meta property="og:title" content="Vérificateur de visibilité IA — ChatGPT vous trouve-t-il bien ?">
+<meta property="og:description" content="Vérifiez votre page sur sa maturité AEO : structure de réponse, FAQ, données structurées, lisibilité. Gratuit, sans connexion, sans suivi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/ai-sichtbarkeit.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="aban news">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vérificateur de visibilité IA — testez votre maturité AEO">
+<meta name="twitter:description" content="À quel point votre page est-elle prête pour les moteurs de réponse ? Vérifiez-le gratuitement, sans connexion.">
+<meta name="twitter:image" content="https://abannews.com/og-hype.png">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Vérificateur de visibilité IA",
+  "url": "https://abannews.com/fr/ai-sichtbarkeit.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "fr",
+  "description": "Vérifie le HTML ou le texte d'une page web sur sa maturité AEO/GEO : structure réponse-d'abord, FAQ, données structurées (JSON-LD), listes, lisibilité et métadonnées — avec des recommandations concrètes pour la visibilité dans les moteurs de réponse.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "publisher": {"@type": "Organization", "name": "aban news", "url": "https://abannews.com"}
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --amber:#d97706;--amber-dark:#b45309;--amber-light:#fde9c8;--cream:#fef3c7;
+  --ink:#1f2937;--ink-soft:#374151;--muted:#6b7280;--line:#ece3d4;
+  --bg:#fffbf5;--card:#ffffff;
+  --header-bg:rgba(255,251,245,.9);
+  --field-bg:#fffdf9;--shadow:0 1px 3px rgba(0,0,0,.03);
+  --gauge-track:#f1e9da;
+  --good-bg:#dcfce7;--good-fg:#15803d;
+  --teils-bg:#fdeccd;--teils-fg:#92560a;
+  --weak-bg:#fcd9d9;--weak-fg:#a01616;
+  --err-bg:#fcd9d9;--err-fg:#a01616;
+  --focus:#b45309;--btn-fg:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --amber:#f0a93a;--amber-dark:#fbbf24;--amber-light:#5a4422;--cream:#3a2f1c;
+    --ink:#f3ede2;--ink-soft:#d6cdbd;--muted:#9c9384;--line:#3a352d;
+    --bg:#1a1712;--card:#231f19;
+    --header-bg:rgba(26,23,18,.9);
+    --field-bg:#1f1b15;--shadow:0 1px 3px rgba(0,0,0,.4);
+    --gauge-track:#3a352d;
+    --good-bg:#1c3a26;--good-fg:#86e8ab;
+    --teils-bg:#5a3f12;--teils-fg:#ffd98a;
+    --weak-bg:#5a1c1c;--weak-fg:#ffbcbc;
+    --err-bg:#4a1818;--err-fg:#ffbcbc;
+    --focus:#fbbf24;--btn-fg:#1a1712;
+  }
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dark)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber-dark);color:var(--btn-fg);padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
+.skip:focus{left:0}
+header.site{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;font-size:18px;color:var(--amber);text-decoration:none;letter-spacing:-.02em}
+.brand span{opacity:.8}
+.btn{display:inline-block;background:var(--amber-dark);color:var(--btn-fg);text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;font-size:15px;border:none;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--amber-dark)}
+.btn.ghost{background:transparent;color:var(--amber-dark);border:1px solid var(--amber-light)}
+.btn.ghost:hover{background:var(--cream)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.hero{padding:48px 20px 24px;text-align:center}
+.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.hero h1 .accent{color:var(--amber)}
+.hero p{font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);max-width:640px;margin:0 auto}
+.tool{padding:8px 20px 16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+label.fld{display:block;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink-soft)}
+textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--field-bg);color:var(--ink)}
+textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.row .count{margin-left:auto;font-size:13px;color:var(--muted)}
+.count.warn{color:var(--err-fg);font-weight:600}
+.kbdhint{font-size:12px;color:var(--muted);margin-top:8px}
+.kbd{display:inline-block;font:inherit;font-size:11px;line-height:1;padding:3px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:var(--bg);color:var(--ink-soft)}
+.restored{display:none;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.restored.show{display:flex}
+.linkbtn{font:inherit;font-size:13px;background:none;border:none;color:var(--amber-dark);cursor:pointer;text-decoration:underline;padding:4px 6px;min-height:24px}
+.linkbtn:hover{text-decoration:none}
+.examples{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.exlabel{font-size:13px;color:var(--muted)}
+.chip{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:7px 14px;min-height:32px;cursor:pointer;transition:all .15s}
+.chip:hover{background:var(--cream);border-color:var(--amber-light);color:var(--amber-dark)}
+.muted{color:var(--muted)}
+.results{margin-top:20px;display:none}
+.results.show{display:block}
+.scorecard{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}
+.gauge{--v:0;width:96px;height:96px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+  background:conic-gradient(var(--gc,#d97706) calc(var(--v)*1%),var(--gauge-track) 0)}
+.gauge .inner{width:74px;height:74px;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center}
+.gauge .num{font-size:26px;font-weight:800;line-height:1}
+.gauge .lbl{font-size:10px;color:var(--muted)}
+.verdict h2{font-size:20px;margin-bottom:4px}
+.verdict p{color:var(--ink-soft);font-size:15px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:16px 0}
+.metric{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.metric .v{font-size:22px;font-weight:800;line-height:1}
+.metric .k{font-size:12px;color:var(--muted);margin-top:3px}
+h3.sec{font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:22px 0 10px}
+.cats{display:grid;gap:10px}
+.cat{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--card)}
+.cat .ch{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cat .ct{font-weight:700;font-size:14px}
+.cat .det{font-size:13px;color:var(--ink-soft);margin-top:6px}
+.bar{height:7px;border-radius:999px;background:var(--gauge-track);margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--amber)}
+.statusbadge{font-weight:700;font-size:12px;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.statusbadge.gut{background:var(--good-bg);color:var(--good-fg)}
+.statusbadge.teils{background:var(--teils-bg);color:var(--teils-fg)}
+.statusbadge.schwach{background:var(--weak-bg);color:var(--weak-fg)}
+.pts{font-size:12px;color:var(--muted);margin-left:8px}
+ul.recs{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+ul.recs li{font-size:14px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card);display:flex;gap:10px;align-items:flex-start}
+.sev{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.03em;border-radius:6px;padding:2px 7px;flex:0 0 auto;margin-top:1px}
+.sev.hoch{background:var(--weak-bg);color:var(--weak-fg)}
+.sev.mittel{background:var(--teils-bg);color:var(--teils-fg)}
+.sev.niedrig{background:var(--good-bg);color:var(--good-fg)}
+.cta{margin:36px 0 8px;background:linear-gradient(135deg,var(--cream),#fff);border:1px solid var(--amber-light);border-radius:14px;padding:24px;text-align:center}
+.cta h2{font-size:22px;margin-bottom:6px}
+.service{margin:20px 0 8px;border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:var(--card)}
+.service h2{font-size:19px;margin-bottom:6px}
+.service p{font-size:.95rem;color:var(--ink-soft);margin-bottom:14px}
+.service .opts{display:flex;gap:10px;flex-wrap:wrap}
+.service .opt{flex:1 1 220px;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:left;background:var(--bg)}
+.service .opt b{display:block;font-size:.95rem;margin-bottom:3px}
+.service .opt span{display:block;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.service .opt a{display:inline-block;font-size:.88rem;font-weight:600;color:#fff;background:var(--amber-dark);text-decoration:none;padding:8px 14px;border-radius:8px}
+.service .fineprint{font-size:.78rem;color:var(--muted);margin:12px 0 0}
+.cta p{color:var(--ink-soft);max-width:540px;margin:0 auto 16px}
+.waitlist{margin:14px 0 8px;border:1px dashed var(--amber-light);border-radius:12px;padding:18px;background:var(--bg)}
+.waitlist h3{font-size:16px;margin-bottom:4px}
+.waitlist p{font-size:14px;color:var(--ink-soft);margin-bottom:12px;max-width:560px}
+.waitform{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.waitform input[type=email]{flex:1 1 220px;min-width:0;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field-bg);color:var(--ink)}
+.waitform input[type=email]:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
+.waitnote{font-size:12px;color:var(--muted);margin-top:8px}
+.err{display:none;background:var(--err-bg);color:var(--err-fg);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14px}
+.err.show{display:block}
+details.how{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0}
+details.how summary{cursor:pointer;font-weight:600;padding:14px 16px;list-style:none}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";float:right;color:var(--muted);font-size:20px}
+details.how[open] summary::after{content:"−"}
+details.how .body{padding:0 16px 16px;font-size:14px;color:var(--ink-soft)}
+details.how .body p{margin-bottom:8px}
+footer{padding:28px 0;margin-top:32px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+footer a{color:var(--muted)}
+.spin{display:inline-block;width:15px;height:15px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:600px){.scorecard{gap:12px}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .spin{animation:none;border:2px solid #fff;border-top-color:rgba(255,255,255,.3)}
+  *{transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#inp">Aller directement au champ de saisie</a>
+
+<header class="site">
+  <div class="wrap">
+    <a href="/fr/" class="brand">aban news<span> · Visibilité IA</span></a>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn">Newsletter gratuite</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1><span class="accent">ChatGPT</span> vous trouve-t-il ?</h1>
+    <p>De plus en plus de gens interrogent des moteurs de réponse comme ChatGPT, Perplexity ou Google AI au lieu de chercher de façon classique. Le vérificateur de visibilité IA teste à quel point votre page est prête pour ces moteurs — structure de réponse, FAQ, données structurées, langage clair. Avec des conseils concrets. Sans connexion, sans suivi.</p>
+  </div>
+</section>
+
+<section class="tool">
+  <div class="wrap">
+    <div class="panel">
+      <label class="fld" for="inp">Code source HTML ou texte de votre page</label>
+      <textarea id="inp" aria-describedby="count kbdhint" maxlength="120000" placeholder="Collez le code source de votre page (dans le navigateur : clic droit → &ldquo;Afficher le code source de la page&rdquo;, tout sélectionner, copier). Le texte brut fonctionne aussi — mais il manque alors les signaux de structure comme les titres et les données structurées."></textarea>
+      <p class="kbdhint" id="kbdhint">Astuce : <span class="kbd" id="kbdLabel">Ctrl + Entrée</span> lance la vérification. Le code source HTML complet est l'entrée la plus parlante.</p>
+      <div class="row">
+        <button id="go" class="btn" type="button">Vérifier la visibilité</button>
+        <span class="count" id="count" aria-live="polite">0 caractère</span>
+      </div>
+      <div class="examples" id="examples" role="group" aria-label="Charger des exemples"><span class="exlabel">Ou chargez un exemple :</span></div>
+      <div class="restored" id="restored" role="status">
+        <span id="restoredText"></span>
+        <button class="linkbtn" id="clearStored" type="button">Effacer la saisie</button>
+      </div>
+      <div class="err" id="err" role="alert" aria-live="assertive"></div>
+    </div>
+
+    <div class="results" id="res" role="region" aria-labelledby="resHeading" aria-live="polite">
+      <div class="panel">
+        <h2 id="resHeading" class="visually-hidden" tabindex="-1">Résultat de la vérification de visibilité</h2>
+        <div class="scorecard">
+          <div class="gauge" id="gauge" role="img" aria-label="Le score AEO est en cours de calcul"><div class="inner"><div class="num" id="scoreNum">–</div><div class="lbl">/ 100</div></div></div>
+          <div class="verdict">
+            <h2 id="gradeLbl">—</h2>
+            <p id="verdict">—</p>
+          </div>
+        </div>
+
+        <div class="metrics" id="metrics" role="list" aria-label="Indicateurs"></div>
+
+        <h3 class="sec">Score par catégorie</h3>
+        <div class="cats" id="cats"></div>
+
+        <h3 class="sec">Comment l'améliorer</h3>
+        <ul class="recs" id="recs"></ul>
+
+        <div class="waitlist" id="waitlist">
+          <h3>En projet : un rapport mensuel de visibilité IA</h3>
+          <p>Je réfléchis à un rapport mensuel qui vérifie votre page automatiquement et montre comment votre maturité AEO évolue dans le temps. Encore en projet — pas de prix, pas d'abonnement. Inscrivez-vous si ça vous intéresse ; vous rejoindrez la liste d'attente sans engagement (via l'opt-in newsletter).</p>
+          <form class="waitform" id="waitform" action="https://abannews.beehiiv.com/subscribe" method="post" target="_blank" rel="noopener">
+            <label class="visually-hidden" for="waitmail">Adresse e-mail pour la liste d'attente</label>
+            <input type="email" id="waitmail" name="email" placeholder="vous@mail.com" autocomplete="email" required>
+            <button class="btn" type="submit">Rejoindre la liste d'attente</button>
+          </form>
+          <p class="waitnote" id="waitnote">Pas de spam, pas de suivi. Vous recevrez la newsletter aban news et serez averti en premier au lancement du rapport. Désinscription à tout moment.</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2>Du langage clair chaque matin</h2>
+        <p>aban news est la newsletter IA quotidienne pour les professionnels : du lundi au vendredi, 5 minutes, sans hype. Y compris sur la manière dont la recherche et les moteurs de réponse évoluent.</p>
+        <a href="https://abannews.beehiiv.com/subscribe" class="btn">S'abonner gratuitement</a>
+      </div>
+
+      <div class="service" id="service">
+        <h2>Vous ne voulez pas le faire vous-même ?</h2>
+        <p>Si vous voulez que votre entreprise devienne visible dans ChatGPT, Perplexity ou Google AI Overviews, il y a deux voies — toutes deux sans compte, toutes deux demandées par e-mail :</p>
+        <div class="opts">
+          <div class="opt">
+            <b>Audit ponctuel</b>
+            <span>Je vérifie vos pages les plus importantes sur leur maturité AEO et vous envoie une liste d'actions concrètes.</span>
+            <a href="mailto:hallo@abannews.com?subject=AI%20visibility%20audit&amp;body=Hi%20Aban%2C%20I%27m%20interested%20in%20an%20AEO%20audit.%20My%20website%3A%20">Demander un audit</a>
+          </div>
+          <div class="opt">
+            <b>Abonnement au rapport</b>
+            <span>Rapport mensuel de visibilité : ce qui a changé et ce qu'il faut faire ensuite. Automatisé, concis.</span>
+            <a href="mailto:hallo@abannews.com?subject=AI%20visibility%20report%20subscription&amp;body=Hi%20Aban%2C%20I%27m%20interested%20in%20the%20monthly%20report%20subscription.%20My%20website%3A%20">Demander le rapport</a>
+          </div>
+        </div>
+        <p class="fineprint">Aucun engagement d'abonnement, aucun paiement d'avance. Vous envoyez un e-mail, je réponds avec le périmètre et le prix. Nous clarifions les conditions à l'avance et par écrit.</p>
+      </div>
+
+      <p style="text-align:center;margin:18px 0 0;font-size:14px;color:var(--ink-soft)">
+        Autre question : êtes-vous seulement <em>cité</em> dans les réponses IA ?
+        <a href="/fr/ki-erwaehnungs-check.html">Vérificateur de mentions IA (présence de marque) →</a>
+      </p>
+    </div>
+
+    <details class="how">
+      <summary>Ce que le vérificateur teste — et ce que signifie l'AEO</summary>
+      <div class="body">
+        <p><b>AEO</b> signifie optimisation pour les moteurs de réponse (answer-engine optimisation) : la question de savoir à quel point une page peut être lue et citée par les moteurs de réponse (ChatGPT, Perplexity, Google AI Overviews). Ces systèmes privilégient une structure claire et des affirmations directes — contrairement à la recherche classique, qui s'appuie davantage sur les liens et les mots-clés.</p>
+        <p>La vérification tourne en périphérie (edge) dans une fonction Cloudflare et évalue sept domaines : structure réponse-d'abord, hiérarchie des titres, FAQ, données structurées (JSON-LD), listes et tableaux, langage clair et lisibilité, ainsi que les métadonnées. Chaque domaine attribue des points, et le total compose le score de 0 à 100.</p>
+        <p>L'outil n'interroge <b>aucun</b> moteur de réponse en direct — il analyse uniquement le contenu que vous collez. Votre texte est traité pour l'analyse et n'est stocké nulle part. Aucun compte, aucun suivi. Le code source HTML complet est l'entrée la plus parlante, car le texte brut sans titres ni schéma fournit moins de signaux.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/fr/">Accueil</a> · <a href="/resources.html">Ressources</a> · <a href="/fr/hype-filter.html">Filtre anti-hype</a> · <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const inp = $("inp"), res = $("res"), errBox = $("err");
+const MAXLEN = 120000, WARNLEN = 110000, STORE_KEY = "ai-sichtbarkeit-input";
+const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || "");
+const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Curated examples — show the range.
+const EXAMPLES = [
+  { name: "Bien optimisé", text: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Conseil fiscal pour les indépendants à Berne — cabinet en langage clair</title>
+<meta name="description" content="Nous réalisons généralement la déclaration d'impôts des indépendants à Berne en deux semaines. Prix fixes, délais clairs.">
+<\script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien coûte une déclaration d'impôts ?","acceptedAnswer":{"@type":"Answer","text":"À partir de 250 francs."}}]}
+<\/script>
+</head>
+<body>
+<h1>Conseil fiscal pour les indépendants à Berne</h1>
+<p>Nous réalisons votre déclaration d'impôts généralement en deux semaines à prix fixe. Vous envoyez les justificatifs, nous nous occupons du reste.</p>
+<h2>Combien coûte une déclaration d'impôts ?</h2>
+<p>Une déclaration simple commence à 250 francs. Nous vous indiquons le prix exact à l'avance.</p>
+<ul><li>Rassembler les justificatifs</li><li>Réserver un rendez-vous</li><li>Recevoir le résultat</li></ul>
+<h2>Combien de temps dure le traitement ?</h2>
+<p>Généralement deux semaines à compter de la réception des documents.</p>
+<h2>À qui s'adresse l'offre ?</h2>
+<p>Aux indépendants et aux petites entreprises de la région de Berne.</p>
+<script defer src="/js/assistant.js"></script>
+</body>
+</html>` },
+  { name: "Faible", text: `<html>
+<head><title>Accueil</title></head>
+<body>
+<p>Dans cet article, nous souhaitons vous présenter notre gamme de services holistique et innovante qui, dans le cadre d'une considération globale de l'ensemble des exigences et en tenant compte des circonstances individuelles de notre précieuse clientèle, permet un accompagnement sur mesure tout au long de l'ensemble du processus.</p>
+<p>Nous nous réjouissons de votre visite et restons à votre disposition à tout moment.</p>
+</body>
+</html>` },
+  { name: "Texte brut", text: `La livraison arrive généralement sous trois jours ouvrables. Vous recevez un numéro de suivi par e-mail. Pour toute question, contactez-nous brièvement et nous réglons cela le jour même. Un retour est possible pendant 30 jours.` },
+];
+
+const STATUS_CLASS = { gut: "gut", teils: "teils", schwach: "schwach" };
+const SEV_LABEL = { hoch: "Important", mittel: "Moyen", niedrig: "Mineur" };
+
+function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function updateCount(){
+  const n = inp.value.length;
+  const c = $("count");
+  if (n > WARNLEN){
+    c.textContent = n.toLocaleString("fr-FR") + " / " + MAXLEN.toLocaleString("fr-FR") + " caractères";
+    c.classList.add("warn");
+  } else {
+    c.textContent = n.toLocaleString("fr-FR") + " caractères";
+    c.classList.remove("warn");
+  }
+}
+inp.addEventListener("input", () => { updateCount(); persist(); });
+
+// Build example chips
+EXAMPLES.forEach((ex) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.textContent = ex.name;
+  b.setAttribute("aria-label", "Charger l'exemple : " + ex.name);
+  b.addEventListener("click", () => { inp.value = ex.text; updateCount(); persist(); $("go").click(); });
+  $("examples").appendChild(b);
+});
+
+// --- Persistence (local only, no tracking) ---
+function persist(){
+  try {
+    if (inp.value.trim()) localStorage.setItem(STORE_KEY, inp.value);
+    else localStorage.removeItem(STORE_KEY);
+  } catch(e){}
+}
+$("clearStored").addEventListener("click", () => {
+  inp.value = "";
+  try { localStorage.removeItem(STORE_KEY); } catch(e){}
+  $("restored").classList.remove("show");
+  updateCount();
+  res.classList.remove("show");
+  inp.focus();
+});
+
+// --- Keyboard: Cmd/Ctrl+Enter checks ---
+$("kbdLabel").textContent = isMac ? "⌘ + Entrée" : "Ctrl + Entrée";
+inp.addEventListener("keydown", (e) => {
+  if ((e.metaKey || e.ctrlKey) && (e.key === "Enter" || e.keyCode === 13)){
+    e.preventDefault();
+    $("go").click();
+  }
+});
+
+function render(d){
+  const g = $("gauge");
+  const score = (d.score != null ? d.score : 0);
+  g.style.setProperty("--v", score);
+  if (d.gradeColor) g.style.setProperty("--gc", d.gradeColor);
+  g.setAttribute("aria-label", "Score AEO " + score + " sur 100" + (d.grade ? ", note : " + d.grade : ""));
+  $("scoreNum").textContent = (d.score != null ? d.score : "–");
+  $("gradeLbl").textContent = d.grade || "—";
+  if (d.gradeColor) $("gradeLbl").style.color = d.gradeColor;
+  $("verdict").textContent = d.verdict || "";
+
+  const m = d.metrics || {};
+  const has = (x) => x !== undefined && x !== null;
+  const reading = has(m.readingLabel) ? m.readingLabel
+                : (has(m.readingGrade) ? ("Niveau " + m.readingGrade) : "—");
+  const cards = [
+    ["Entrée", d.inputType === "html" ? "HTML" : "Texte"],
+    ["Mots", has(m.wordCount) ? m.wordCount : "—"],
+    ["Sections H2", has(m.h2Count) ? m.h2Count : "—"],
+    ["Titres-questions", has(m.questionHeadings) ? m.questionHeadings : "—"],
+    ["Blocs JSON-LD", has(m.jsonLdBlocks) ? m.jsonLdBlocks : "—"],
+    ["Niveau de lecture", reading],
+  ];
+  $("metrics").innerHTML = cards.map(([k,v]) =>
+    '<div class="metric" role="listitem"><div class="v">'+escapeHtml(String(v))+'</div><div class="k">'+escapeHtml(k)+'</div></div>').join("");
+
+  // Categories
+  const categories = Array.isArray(d.categories) ? d.categories : [];
+  $("cats").innerHTML = categories.map(c => {
+    const pct = c.max ? Math.round((c.points / c.max) * 100) : 0;
+    const cls = STATUS_CLASS[c.status] || "teils";
+    return '<div class="cat"><div class="ch"><span class="ct">'+escapeHtml(c.label||c.key||"")+
+      '<span class="pts">'+escapeHtml(String(c.points))+' / '+escapeHtml(String(c.max))+'</span></span>'+
+      '<span class="statusbadge '+cls+'">'+escapeHtml(c.status||"")+'</span></div>'+
+      '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
+      (c.detail ? '<div class="det">'+escapeHtml(c.detail)+'</div>' : '')+'</div>';
+  }).join("");
+
+  // Recommendations
+  const recs = Array.isArray(d.recommendations) ? d.recommendations : [];
+  $("recs").innerHTML = recs.length
+    ? recs.map(r =>
+        '<li><span class="sev '+escapeHtml(r.severity||"niedrig")+'">'+escapeHtml(SEV_LABEL[r.severity]||r.severity||"")+'</span>'+
+        '<span>'+escapeHtml(r.text||"")+'</span></li>').join("")
+    : '<li><span class="sev niedrig">Mineur</span><span>Rien d\'urgent — la page est solidement construite.</span></li>';
+
+  res.classList.add("show");
+
+  const heading = $("resHeading");
+  heading.focus({preventScroll:true});
+  res.scrollIntoView({behavior: prefersReducedMotion ? "auto" : "smooth", block:"start"});
+}
+
+async function callApi(){
+  const text = inp.value.trim();
+  if (!text){ showErr("Collez d'abord le code source ou le texte de votre page."); inp.focus(); return null; }
+  if (text.length > MAXLEN){
+    showErr("La saisie est trop longue avec " + text.length.toLocaleString("fr-FR") + " caractères. Veuillez la raccourcir à " + MAXLEN.toLocaleString("fr-FR") + " caractères au maximum.");
+    return null;
+  }
+  const r = await fetch("/api/aeo-check", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ input: text })
+  });
+  if (!r.ok){
+    const e = await r.json().catch(()=>({}));
+    throw new Error(e.error || ("Erreur serveur "+r.status));
+  }
+  return r.json();
+}
+function showErr(msg){ errBox.textContent = msg; errBox.classList.add("show"); }
+function clearErr(){ errBox.textContent = ""; errBox.classList.remove("show"); }
+
+$("go").addEventListener("click", async () => {
+  clearErr();
+  const btn = $("go"); const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Vérification…';
+  try {
+    const d = await callApi();
+    if (d) render(d);
+  } catch (e) {
+    showErr("Impossible de vérifier la page : " + e.message + ". Le site tourne-t-il sur Cloudflare Pages ?");
+  } finally {
+    btn.disabled = false; btn.innerHTML = old;
+  }
+});
+
+// --- On load: restore text from localStorage ---
+(function init(){
+  updateCount();
+  try {
+    const saved = localStorage.getItem(STORE_KEY);
+    if (saved && saved.trim()){
+      inp.value = saved.slice(0, MAXLEN);
+      updateCount();
+      $("restoredText").textContent = "Votre dernière saisie a été restaurée (stockée localement uniquement).";
+      $("restored").classList.add("show");
+    }
+  } catch(e){}
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>

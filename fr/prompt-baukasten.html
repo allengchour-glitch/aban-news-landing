@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constructeur de prompts — un prompt IA solide en 30 secondes | aban news</title>
+<meta name="description" content="Transformez quelques mots-clés en un prompt IA clairement structuré : rôle, contexte, tâche, format et garde-fous. Gratuit, sans connexion — fonctionne avec ChatGPT, Claude, Gemini & co.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/prompt-baukasten.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/prompt-baukasten.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/prompt-baukasten.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/prompt-baukasten.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/prompt-baukasten.html">
+<meta property="og:title" content="Constructeur de prompts — un prompt IA solide en 30 secondes">
+<meta property="og:description" content="Des mots-clés en entrée, un prompt propre et structuré en sortie — pour ChatGPT, Claude, Gemini & co. Gratuit, sans connexion.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/prompt-baukasten.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Constructeur de prompts","url":"https://abannews.com/fr/prompt-baukasten.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"fr","description":"Construit un prompt IA clairement structuré à partir de quelques mots-clés (rôle, contexte, tâche, format, garde-fous).","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--ok:#15803d}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15;--ok:#86efac}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:840px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:9px;border:0;cursor:pointer;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 6px;text-align:center}
+.hero h1{font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:620px;margin:0 auto}
+.app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:26px 0 6px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
+.field .hint{color:var(--muted);font-weight:400;font-size:.84rem}
+input[type=text],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+textarea{min-height:70px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.checks{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;color:var(--ink2);margin-top:2px}
+.checks label{display:flex;gap:7px;align-items:center;cursor:pointer}
+.out{margin-top:8px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:16px}
+.out h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
+.out pre{white-space:pre-wrap;font:inherit;font-size:1rem;line-height:1.6;color:var(--ink)}
+.rowbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.copied{color:var(--ok)!important}
+.tips{margin:26px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tips h2{font-size:1.15rem;margin-bottom:8px}
+.tips ol{margin:0 0 0 1.1rem}.tips li{margin-bottom:5px;color:var(--ink2);font-size:.95rem}
+.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.band h2{font-size:1.2rem;margin-bottom:8px}.band p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
+.disc{color:var(--muted);font-size:.82rem;margin:14px 0;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="/prompt-baukasten.html" class="btn ghost">DE</a></div></header>
+<main><div class="wrap">
+
+  <section class="hero">
+    <h1>Constructeur de <span class="a">prompts</span></h1>
+    <p>Transformez quelques mots-clés en un prompt clairement structuré — pour ChatGPT, Claude, Gemini &amp; co. Gratuit, sans connexion. Vous remplissez, le prompt se construit en direct.</p>
+  </section>
+
+  <div class="app">
+    <div class="field">
+      <label for="aufgabe">Que doit faire l'IA ? <span class="hint">— la tâche principale</span></label>
+      <input type="text" id="aufgabe" placeholder="p. ex. rédiger un e-mail client au sujet d'un rendez-vous reporté">
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="rolle">Rôle de l'IA <span class="hint">— facultatif</span></label>
+        <input type="text" id="rolle" placeholder="p. ex. rédacteur expérimenté pour des entreprises artisanales">
+      </div>
+      <div class="field">
+        <label for="format">Réponse sous forme de …</label>
+        <select id="format">
+          <option value="texte rédigé">texte rédigé</option>
+          <option value="puces">puces</option>
+          <option value="tableau">tableau</option>
+          <option value="e-mail avec objet">e-mail (avec objet)</option>
+          <option value="guide étape par étape">étape par étape</option>
+          <option value="publication pour réseaux sociaux">publication réseaux sociaux</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="kontext">Contexte &amp; faits <span class="hint">— mots-clés séparés par des virgules ; donnez de vrais chiffres/noms</span></label>
+      <textarea id="kontext" placeholder="p. ex. rendez-vous du 14 juin annulé, remplacement le 21 juin, M. Dupont, amical, court"></textarea>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="ton">Ton</label>
+        <select id="ton">
+          <option value="factuel et professionnel">factuel &amp; professionnel</option>
+          <option value="amical et accessible">amical &amp; accessible</option>
+          <option value="décontracté et jeune">décontracté &amp; jeune</option>
+          <option value="élégant et haut de gamme">élégant &amp; haut de gamme</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="laenge">Longueur</label>
+        <select id="laenge">
+          <option value="court (max. 120 mots)">court</option>
+          <option value="moyen (env. 200–300 mots)" selected>moyen</option>
+          <option value="détaillé">détaillé</option>
+        </select>
+      </div>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" id="nachfragen" checked> Demander d'abord s'il manque des informations</label>
+      <label><input type="checkbox" id="keinefakten" checked> Ne pas inventer de faits/chiffres</label>
+    </div>
+
+    <div class="out">
+      <h3>Votre prompt</h3>
+      <pre id="out"></pre>
+      <div class="rowbtns">
+        <button class="btn ghost" id="copy">Copier dans le presse-papiers</button>
+        <a class="btn ghost" href="https://chatgpt.com" target="_blank" rel="noopener">Ouvrir dans ChatGPT ↗</a>
+        <a class="btn ghost" href="https://claude.ai" target="_blank" rel="noopener">Ouvrir dans Claude ↗</a>
+      </div>
+    </div>
+  </div>
+  <p class="disc">Le constructeur structure vos saisies selon des règles éprouvées — il n'« invente » rien. Vérifiez toujours vous-même le résultat de l'IA.</p>
+
+  <section class="tips">
+    <h2>Les 5 éléments d'un bon prompt</h2>
+    <ol>
+      <li><b>Rôle</b> — qui l'IA doit-elle être ? (« expert-comptable expérimenté »)</li>
+      <li><b>Tâche</b> — qu'est-ce qui doit précisément en sortir ?</li>
+      <li><b>Contexte &amp; faits</b> — de vrais chiffres/noms plutôt que de faire deviner.</li>
+      <li><b>Format</b> — tableau, puces, e-mail …</li>
+      <li><b>Garde-fous</b> — ton, longueur, « ne rien inventer », « demander d'abord ».</li>
+    </ol>
+  </section>
+
+  <div class="band">
+    <h2>Encore moins d'effort ?</h2>
+    <p>La <a href="/fr/ki-werkzeug.html">Boîte à outils IA</a> vous donne directement le texte fini — et la newsletter vous garde à jour sur l'IA du lun. au ven., sans battage.</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">S'abonner gratuitement</a>
+  </div>
+
+</div></main>
+<footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
+  <a href="/fr/ki-werkzeug.html">Boîte à outils IA</a> &middot; <a href="/impressum.html">Mentions légales</a> &middot; <a href="/datenschutz.html">Confidentialité</a></div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+  function kws(s){return (s||"").split(/[,;\n]+/).map(function(x){return x.trim();}).filter(Boolean);}
+  function build(){
+    var aufgabe=$("aufgabe").value.trim();
+    var rolle=$("rolle").value.trim();
+    var format=$("format").value;
+    var kontext=kws($("kontext").value);
+    var ton=$("ton").value;
+    var laenge=$("laenge").value;
+    var nachfragen=$("nachfragen").checked;
+    var keine=$("keinefakten").checked;
+    var lines=[];
+    lines.push("Tu es " + (rolle || "un assistant utile et précis") + ".");
+    lines.push("");
+    lines.push("Tâche : " + (aufgabe || "[ce que l'IA doit faire]") + ".");
+    if(kontext.length){
+      lines.push("");
+      lines.push("Contexte & faits (utilise exactement ceux-ci, n'ajoute rien) :");
+      kontext.forEach(function(k){ lines.push("- " + k); });
+    }
+    lines.push("");
+    lines.push("Format : Réponds sous forme de " + format + ".");
+    lines.push("Ton : " + ton + ". Longueur : " + laenge + ".");
+    var rules=[];
+    if(keine) rules.push("N'invente aucun fait, chiffre ou source.");
+    if(nachfragen) rules.push("S'il manque des informations importantes, pose d'abord des questions ciblées au lieu de deviner.");
+    rules.push("Rédige en français clair, sans remplissage.");
+    if(rules.length){
+      lines.push("");
+      lines.push("Important :");
+      rules.forEach(function(r){ lines.push("- " + r); });
+    }
+    return lines.join("\n");
+  }
+  function render(){ $("out").textContent = build(); }
+  ["aufgabe","rolle","format","kontext","ton","laenge"].forEach(function(id){
+    $(id).addEventListener("input",render); $(id).addEventListener("change",render);
+  });
+  ["nachfragen","keinefakten"].forEach(function(id){ $(id).addEventListener("change",render); });
+  $("copy").addEventListener("click",function(){
+    var t=build(); var b=this;
+    navigator.clipboard.writeText(t).then(function(){
+      var old=b.textContent; b.textContent="✓ Copié"; b.classList.add("copied");
+      setTimeout(function(){ b.textContent=old; b.classList.remove("copied"); },1600);
+    });
+  });
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
+</body>
+</html>
