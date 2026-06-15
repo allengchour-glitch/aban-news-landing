@@ -74,6 +74,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Lehre für künftige Sessions:** E-Mail kann erst Umsatz bringen, wenn es eine Audience gibt. Audience entsteht aus
   (a) konvertierendem Traffic, der sich via WELCOME10-Popup einträgt, oder (b) Kontakt-Import. Beides hängt am REICH­WEITEN-
   Unlock (User-§10: Kampagne+Pixel+Budget). **Nicht weiter ins Leere optimieren** — der Hebel liegt beim User.
+- **✅ Sendebereite Draft-Kampagne gebaut (User OK, NICHT verschickt):** „Sommer 2026 · Neue Looks + WELCOME10"
+  (Klaviyo-Campaign-ID `01KV58TANGVR948JTV7P5650PT`, Status Draft), Premium-HTML-Template `RLxtU7` (CTA→/collections/sommer,
+  Kleider/Schuhe/Schmuck-Links, WELCOME10-Box, Abmelde-Link), Zielgruppe Liste „Newsletter Subscribers" (`T2VHfu`),
+  Absender info@luxestyle.ch. **Versand klickt nur der User im UI.** Ersetzt inhaltlich die 3 veralteten Drafts.
+- **⚠️ Klaviyo-MCP kann KEINE Kampagnen archivieren/löschen** (kein update/delete-campaign-Tool) → die 3 alten Drafts
+  (Flash-Sale/Vatertag/Summer-Push) muss der User im Klaviyo-UI archivieren. **Kampagne ANLEGEN ist auto-mode-gated**
+  (Safety-Classifier blockt „Broadcast an echte Kunden" ohne explizites User-OK) — vor dem nächsten Mal explizit bestätigen lassen.
 
 **📌 2026-06-15 (🧹 SHOP-SEO-/QUALITÄTS-BEREINIGUNG — autonom, „alle 4 Bereiche"):**
 - **62 Produkte mit echten Defekten gefixt** (live via Shopify-MCP, gebatchte `productUpdate`-Aliase):
