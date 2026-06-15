@@ -71,6 +71,12 @@
   Police Armband `bb-S0380891`, Guess Herrenring `bb-S0396716`. → echte SKUs nachtragen, dann zieht diese Session die Bilder nach.
 - **CJ-Bild-Backfill = SACKGASSE:** single-image CJ-Produkte haben custom-SKUs (`cj-ombra` etc.) → nicht auf CJ-ID mappbar.
   Neueste CJ-Apparel hat bereits 5–7 Bilder. (Nicht erneut versuchen.)
+- **🏷️ ATTRIBUT-/LABEL-BLOCK gebaut (für ALLE Produkte):** Datei **`dropship/produkt-attribut-block.liquid`** — intelligenter
+  Liquid-Block: einheitliche Trust-Labels (✓Original·🚚EU-Lager·🇨🇭Gratis ab 65·↩️30 Tage·🔒TWINT·🏷️WELCOME10) auf JEDEM Produkt
+  + automatisch dynamisches **„👑 Original {Marke}"-Label** (per `product.vendor`) + optionaler `custom.benefits`-Metafeld-Override.
+  **Metafeld-Definition `custom.benefits` (list.single_line_text) angelegt + auf die 90 Marken-Produkte gesetzt.**
+  **🟡 OFFEN (Theme-Session): Block 1× als „Custom Liquid" ins Produkt-Template einfügen** → sofort auf allen ~1'349 sichtbar.
+  Bewusst KEINE 1'349 Beschreibungs-Edits (Theme-Block deckt alles einheitlich ab, kein Duplikat-Bloat).
 - **Reviere (bestätigt mit User 2026-06-15):** Theme/Startseite=Theme-Session · BigBuy/CJ-Import+Produktfelder(SEO/Größen/Galerie
   künftiger Importe)=Katalog-Session · Collection-Seiten/Marken-Hub=diese Session. **Vor jedem Shopify-Write `SHARED-MEMORY` lesen.**
 
