@@ -61,6 +61,11 @@
 - **🔄 PROTOKOLL „regelmässig Updates + gemeinsames Gehirn" (User 2026-06-15):** (1) Jede Session aktualisiert DIESEN
   LIVE-STAND nach grösseren Aktionen. (2) **Gemeinsames Gehirn = `automation/brain/knowledge.json`** — beide Sessions LESEN es
   + dürfen `rules` ergänzen (APPEND), NIE gegenseitig überschreiben. (3) Vor jedem Shopify-Write hier reinschauen.
+- **🚨 GOOGLE MERCHANT GESPERRT (20:25) + 🌍 MÄRKTE GEFIXT (20:30):** Merchant-Konto suspendiert (0 genehmigt / 106'650
+  abgelehnt). Ursache u.a.: **8 Märkte ALLE aktiv** (inkl. DACH = Strikt-CH-Verstoss!) → Feed-Bloat. **FIX (von mir, reversibel):**
+  7 Nicht-CH-Märkte (DACH/FR/IT/Global/EU-Rest/UK/US) auf **status DRAFT** gesetzt; **nur Switzerland aktiv**. Strikt-CH wieder erfüllt,
+  Feed schrumpft 8→1 Markt. **OFFEN (User):** Policies/Impressum + 2 E-Mail-Tippfehler fixen, dann Re-Review im Merchant Center.
+  Fix-Plan: `dropship/GOOGLE-SUSPENSION-FIX.md`. ⚠️ Märkte NICHT ohne Abstimmung wieder aktivieren (Strikt-CH + Feed).
 
 **2026-06-11 — REPO IST JETZT PUBLIC (User-Entscheid) → Actions wieder gratis/unbegrenzt:**
 - **🔓 `aban-news-landing` ist PUBLIC** (vorher privat). Grund: **Actions-Minuten waren an EINEM Tag

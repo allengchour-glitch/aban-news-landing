@@ -35,6 +35,14 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🌍 MÄRKTE GEFIXT: nur noch Schweiz (Strikt-CH + Feed-Bloat-Fix)
+- **Wurzel des 106k-Feeds gefunden:** ALLE 8 Shopify-Märkte waren aktiv — inkl. **DACH (DE/AT)** = direkter Verstoss gegen
+  die FESTE Strikt-CH-Regel + FR/IT/UK/US/Global/EU-Rest → Feed = Produkte × 8 Märkte.
+- **FIX (autonom, reversibel):** 7 Nicht-CH-Märkte auf **status DRAFT** gesetzt (`marketUpdate status:DRAFT`), **nur Switzerland
+  aktiv/primär**. → Deutschland/Österreich raus (Regel erfüllt), Feed schrumpft 8→1 Markt (massive Entschlackung Richtung ~real).
+- **Bleibt User:** Policies/Impressum + 2 E-Mail-Tippfehler, dann Re-Review (Merchant Center). Feed-Land im Merchant = CH.
+
+
 ### 2026-06-15 (Abend) — 🚨 GOOGLE MERCHANT KONTO GESPERRT (User-Screenshot)
 - **Befund:** Merchant-Konto **gesperrt** (0 genehmigt / 106'650 abgelehnt). = **Konto-Sperre** (meist „Misrepresentation"),
   NICHT nur Produkt-Ablehnung. Free Listings blockiert bis Entsperrung. **NICHT vorschnell Re-Review klicken** (begrenzt).
