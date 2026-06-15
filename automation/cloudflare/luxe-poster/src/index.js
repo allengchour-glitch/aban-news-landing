@@ -305,6 +305,20 @@ export default {
     // EINEN bestimmten FB-Post löschen (Handy-Tap): …/?key=…&del=<POST_ID>  (sicher: nur diese eine ID)
     const del = u.searchParams.get("del");
     if (del) { const ids = await discoverIds(env); const d = await (await fetch(`${G(del)}?access_token=${ids.page_token}`, { method: "DELETE" })).json(); return Response.json({ deleted: del, result: d }); }
+    // HANDY→PC-BEFEHLE: Handy pusht (&cmd=tutti|tiktok|follower|all|deploy), PC-Listener holt sie (&drain=1).
+    // So steuerst du die PC-Browser-Aufgaben (tutti/TikTok = kein API) komplett vom Handy.
+    const cmd = u.searchParams.get("cmd");
+    if (cmd) {
+      const q = JSON.parse((await env.LUXE_KV.get("pc_queue")) || "[]");
+      q.push({ cmd, t: Date.now() });
+      await env.LUXE_KV.put("pc_queue", JSON.stringify(q.slice(-20)));
+      return Response.json({ queued: cmd, pending: q.length, note: "PC-Listener führt es beim nächsten Poll aus." });
+    }
+    if (u.searchParams.get("drain")) {
+      const q = JSON.parse((await env.LUXE_KV.get("pc_queue")) || "[]");
+      await env.LUXE_KV.put("pc_queue", "[]");
+      return Response.json({ commands: q });
+    }
     // Kommentar-Auto-Antwort manuell auslösen (Handy-Tap): …/?key=…&replies=1
     if (u.searchParams.get("replies")) {
       const ids = await discoverIds(env);

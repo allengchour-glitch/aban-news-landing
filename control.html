@@ -32,12 +32,18 @@
 
   <div class="grid">
     <button class="full" onclick="go('')">📷 Jetzt posten (nächster Post)</button>
+    <button onclick="go('cmd=tutti')">🛒 tutti posten (PC)</button>
+    <button onclick="go('cmd=tiktok')">🎵 TikTok posten (PC)</button>
+    <button onclick="go('replies=1')">💬 Kommentare beantworten</button>
+    <button onclick="go('cmd=all')">⚡ Ganze Routine (PC)</button>
     <button onclick="go('status=1')">📊 Status</button>
     <button onclick="go('insights=1')">📈 Meta-Analyse</button>
     <button onclick="cleanup()">🧹 Alte FB-Posts löschen</button>
     <button onclick="go('cursor=0')">🔄 Queue von vorne</button>
     <button class="full" onclick="setQueue()">🔗 Neue Queue-URL laden</button>
   </div>
+
+  <div class="hint">🛒🎵⚡ = PC-Aufgaben (laufen über den PC-Listener, START-LISTENER.bat muss am PC laufen + Brave eingeloggt). 📷💬 = direkt über Cloudflare, ohne PC.</div>
 
   <div id="out">Bereit. Key eintragen, dann tippen.</div>
 
