@@ -1,6 +1,7 @@
 // Cloudflare Pages Function — GET /api/jobs?q=...&loc=...&tag=...&remote=1&page=1
 // Aggregiert ECHTE Stellenanzeigen aus MEHREREN offiziellen, freien Job-APIs (legal) und gibt sie
-// normalisiert + gefiltert zurück. Quellen: Arbeitnow, Remotive, Jobicy, The Muse (alle frei, kein Key).
+// normalisiert + gefiltert zurück. Quellen: Arbeitnow, Remotive, Jobicy, The Muse (frei, kein Key) +
+// optional Adzuna CH (deutschsprachige/CH-Jobs) — aktiv sobald ADZUNA_APP_ID/ADZUNA_APP_KEY als Env gesetzt sind.
 // Links zeigen IMMER auf die Original-Anzeige (Bewerbung beim Anbieter) — Pflicht laut deren Nutzung.
 // Fällt eine Quelle aus, liefern die anderen weiter; fallen alle aus, kommt eine kleine Demo-Liste.
 const CORS = { "Access-Control-Allow-Origin": "*", "Cache-Control": "no-store" };
@@ -83,7 +84,28 @@ async function srcMuse(page, q) {
     };
   });
 }
-export async function onRequestGet({ request }) {
+// Adzuna (CH) — schliesst die Lücke bei deutschsprachigen/CH-Nicht-Tech-Jobs (Pflege, Verkauf, …).
+// Nur aktiv, wenn env.ADZUNA_APP_ID + env.ADZUNA_APP_KEY gesetzt sind (gegated; sonst keine Änderung).
+// Gratis-Key: https://developer.adzuna.com/ → als Pages-Secrets ADZUNA_APP_ID / ADZUNA_APP_KEY hinterlegen.
+async function srcAdzuna(q, loc, page, env) {
+  if (!env || !env.ADZUNA_APP_ID || !env.ADZUNA_APP_KEY) return [];
+  let u = "https://api.adzuna.com/v1/api/jobs/ch/search/" + (page || 1) +
+    "?app_id=" + encodeURIComponent(env.ADZUNA_APP_ID) + "&app_key=" + encodeURIComponent(env.ADZUNA_APP_KEY) +
+    "&results_per_page=30&content-type=application/json";
+  if (q) u += "&what=" + encodeURIComponent(q);
+  if (loc) u += "&where=" + encodeURIComponent(loc);
+  const d = await getJSON(u);
+  return (d.results || []).map((j) => {
+    const l = (j.location && j.location.display_name) || "";
+    return {
+      title: j.title || "", company: (j.company && j.company.display_name) || "", location: l,
+      remote: /remote|home ?office|telearbeit/i.test((j.title || "") + " " + l),
+      tags: (j.category && j.category.label ? [j.category.label] : []), types: (j.contract_time ? [j.contract_time] : []),
+      url: j.redirect_url || "", created: j.created || "", source: "Adzuna",
+    };
+  });
+}
+export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const q = norm(url.searchParams.get("q") || "").trim().slice(0, 60);
   const loc = norm(url.searchParams.get("loc") || "").trim().slice(0, 40);
@@ -95,6 +117,7 @@ export async function onRequestGet({ request }) {
   // Bei der ersten Seite mehrere Arbeitnow-Seiten holen (breitere DE/CH-Abdeckung), sonst nur die angefragte.
   const jobs = [
     page === 1 ? srcArbeitnowMulti([1, 2, 3, 4]) : srcArbeitnow(page),
+    srcAdzuna(q, loc, page, env),
     srcMuse(page, q),
     page === 1 ? srcRemotive(q) : Promise.resolve([]),
     page === 1 ? srcJobicy() : Promise.resolve([]),
