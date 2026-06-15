@@ -35,8 +35,11 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
-### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 11 echte Marken-Produkte importiert (BigBuy)
-- **✨ Kollektion „LuxeStyle Premium" mit 11 ECHTEN Marken bestückt** (vorher leer/diluiert): **Parfum** Dolce & Gabbana
+### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 16 echte Marken-Produkte importiert (BigBuy)
+- **⌚ +5 Marken-UHREN (2. Charge, „mach du"):** Radiant Damenuhr Roségold (CHF 39.90), Casio Damenuhr Blau (59.90),
+  Bellevue Damenuhr Gold/Kristalle (79.90), Pierre Cardin Herrenuhr Leder (99.90), Guess Herrenuhr Gold-Silber (139.90).
+  Alle ACTIVE · Bild visuell QA'd (sauberes Studio-Weiss) · kaufbar · 6 Kanäle · Premium-Kollektion. 3 in Social-Rotation.
+- **✨ Kollektion „LuxeStyle Premium" mit echten Marken bestückt** (vorher leer/diluiert): **Parfum** Dolce & Gabbana
   «Light Blue» (CHF 59.90), D&G «The One» (99.90), Lancôme Mini-Set (69.90), Etat Libre d'Orange (84.90), Sensilis (49.90)
   · **Schmuck** Radiant Ring (24.90), Folli Follie Armreif (34.90), Police Armband (49.90), Guess Ring (54.90),
   Panarea Ring (74.90), One Jewels Armband (89.90). Alle ACTIVE · Bild READY · sofort kaufbar (tracked:false) · in alle 6 Kanäle.
