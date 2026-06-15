@@ -51,3 +51,25 @@
 - **Strikt CH** — keine Deutschland-Gruppen/Plattformen.
 - Nicht spammen: in FB-Gruppen die Regeln beachten (oft 1 Post/Woche, nur in „Verkaufs"-Tagen).
 - tutti = kostenlos & ohne Provision (anders als Ricardo 8–12%).
+
+---
+## 📣 Fertige Facebook-Gruppen-Posts (CH Buy&Sell / Mode-Gruppen)
+> In Gruppen wie „Kleider & Mode Schweiz", „Schweizer Schnäppchen", regionale Buy&Sell (Bern/Zürich/Basel).
+> Regeln beachten (oft nur an Verkaufstagen / 1×/Woche). Bild dazu = Produktbild aus dem Shop.
+
+**Post A — Neuheiten (Wert-Fokus):**
+> 🆕 Frisch im Shop: Schmuck, Taschen & Deko für die Schweiz 🇨🇭 Faire Preise ab CHF 12.90, Gratis-Versand ab CHF 65, 30 Tage Rückgabe. Schau verbii 👉 luxestyle.ch · –10% mit Code WELCOME10
+
+**Post B — Mundart (nahbar):**
+> Hoi zäme! 👋 Mir si en chliine Schwiizer Shop für Mode, Schmuck & Deko. Neu sind hübschi Täschli, Ohrring & Cozy-Home-Sache inecho. Lueg mau verbii, freue mi 🇨🇭 luxestyle.ch (–10% mit WELCOME10)
+
+**Post C — eine Kategorie (z.B. Taschen):**
+> 👜 Neui Täsche & Clutches im Shop — vo Stroh-Shopper bis Abendtasche, ab CHF 12.90. Schweizer Shop, schnelli Lieferig. luxestyle.ch · –10% WELCOME10
+
+## 📋 Weitere tutti/anibis-Inserate (neue Produkte)
+**7) Ohrringe «Lotus» · 999 Silber — CHF 24.90** — Filigrane Lotus-Ohrringe, Emaille, hautfreundlich. 👉 luxestyle.ch
+**8) Armkette «Papillon» · Roségold — CHF 51.90** — Zarte Schmetterling-Armkette mit Perlmutt. 👉 luxestyle.ch
+**9) Kerzenwärmer «Fiore» — CHF 40.90** — Tulpen-Glasschirm-Lampe, schmilzt Duftkerzen ohne Flamme. 👉 luxestyle.ch
+**10) Filzhut «Montana» — CHF 12.90** — Breitkrempiger Wollfilz-Fedora, Herbst-Statement. 👉 luxestyle.ch
+**11) Y-Roller Gesichtsmassage — CHF 29.90** — Beauty-Tool für Lifting & Self-Care zuhause. 👉 luxestyle.ch
+**12) Reed-Diffuser «Cristallo» — CHF 12.90** — Duftöl mit Achat-Stein, dezenter Dauerduft. 👉 luxestyle.ch
