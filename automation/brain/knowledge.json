@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-14",
+  "updated": "2026-06-15",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -416,7 +416,19 @@
       "Vorher-Nachher-Transformation auf Trend-Sound (harter Cut, gleiche Pose) = Share-Trigger + hohe Hold-Rate"
     ],
     "caption_rule": "HVC: erste ~125 Zeichen = Hook (vor dem Abschneiden), dann Value, dann EXPLIZITER Save- ODER Share-CTA + CHF-Preis. CH-Tags only (#schweizmode #ootdschweiz #swissmade + Stadt-Rotation), NIE Deutschland-Tags. Hook-Text muss stumm wirken (Burn-in), in der Bildmitte, NICHT in der unteren Safe-Zone.",
-    "berndeutsch": "Mundart = bester Hook (Ø 793 V) -> AUTHENTISCHES Bärndütsch (Stadt/Region Bern), NICHT Zürichdeutsch. 3 Bern-Signale in JEDE Mundart-Caption: (1) L-Vokalisierung (viu/schnäu/aui/Gäud), (2) gäng ODER äuä, (3) gäu? am Satzende. Vokabular/Phrasen: automation/brain/berndeutsch.json. Vermeiden: grüezi/nöd/nüüt/mer (=ZH). 'u' statt 'und'. Nicht überkorrekt — locker tippen."
+    "berndeutsch": "Mundart = bester Hook (Ø 793 V) -> AUTHENTISCHES Bärndütsch (Stadt/Region Bern), NICHT Zürichdeutsch. 3 Bern-Signale in JEDE Mundart-Caption: (1) L-Vokalisierung (viu/schnäu/aui/Gäud), (2) gäng ODER äuä, (3) gäu? am Satzende. Vokabular/Phrasen: automation/brain/berndeutsch.json. Vermeiden: grüezi/nöd/nüüt/mer (=ZH). 'u' statt 'und'. Nicht überkorrekt — locker tippen.",
+    "learned_2026": {
+      "_quelle": "Recherche 2026-06-15 (Improvado/Ampfluence/TrueFuture/Photoroom/AutoDS): aktuelle Wachstums- + Conversion-Taktiken.",
+      "algo": "IG/TikTok 2026 belohnt SAVES/SHARES/DMs/Watch-Time > Likes. Gesunde Impressions:Reach = 1.5–2.0. → konsequent Save/Share/A-B-Comment-Formate (rules.share_formats).",
+      "format": "TikTok-Algo = Relevanz > Account-Grösse (kleine Marke kann gross reichen). AUTHENTISCH/unpoliert (Try-on, BTS, echte Kundenreaktionen) schlägt Hochglanz. 1 Idee pro Video, starker Hook in Sek. 1, hohe Completion-Rate.",
+      "cadence": "4 STARKE Posts/Woche schlagen 7 vergessliche. NICHT mit Masse spammen (deckt sich mit Spam-Risiko bei 6×/Tag → eher 3 starke/Tag max).",
+      "new_account": "70 % Aufwand auf UNCONNECTED REACH (Shareability, Hooks, Trend-Sounds), bis Audience da ist.",
+      "conversion": "Kalt-Traffic kauft nur bei TRUST ab Sek. 1: konsistente Marke, eigene (NICHT Lieferanten-)Beschreibungen, klare Lieferzeiten, saubere Bilder, Policies. Poor images/inkonsistente Fonts/Generic-Template = Bounce. Paid Meta = schnellster Weg zu ersten Verkäufen (braucht Creative-Testing + Budget).",
+      "RISIKO_neu_bewerten": [
+        "⚠️ Follow/Unfollow-Wachstum (ch-follower-growth.mjs) kann 2026 PENALISIERT werden (Follower-zu-Engagement-Lücke = 'inauthentisch'). → vorsichtig nutzen / eher auf organische Shareability setzen. Nicht blind hochfahren.",
+        "⚠️ Generische Discovery-Hashtags (#tiktokmademebuyit etc.) ziehen Low-Intent-Follower → Algo-Strafe möglich. → eher nischige CH-/Produkt-Tags + Trend-Sounds statt generische Massen-Tags."
+      ]
+    }
   },
   "decisions": [
     {

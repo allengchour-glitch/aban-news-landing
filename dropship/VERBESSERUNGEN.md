@@ -3,6 +3,16 @@
 > Regel: in jeder Session 3–5 konkrete, priorisierte Vorschläge; Lehren sofort ins Memory.
 > Ehrliche Priorisierung — der Engpass ist **Reichweite/Conversion (0 Käufe)**, nicht Katalog/Videos.
 
+## 2026-06-15 — Recherche/Lernen (studiere weiter): 2026-Taktiken ins Gehirn
+- **Algo 2026:** Saves/Shares/DMs/Watch-Time > Likes (IG+TikTok). → Save/Share/A-B-Formate konsequent (haben wir).
+- **Format:** authentisch/unpoliert (Try-on/BTS/Kundenreaktion) schlägt Hochglanz; 1 Idee/Video; Hook Sek.1.
+- **Cadence:** 4 starke/Woche > 7 vergessliche → bestätigt: NICHT 6×/Tag spammen (wir sind auf 3 Posts/Tag).
+- **Conversion (Kalt-Traffic):** Trust ab Sek.1 (eigene Beschreibungen ✓, klare Lieferzeiten, saubere Bilder, Policies);
+  Paid Meta = schnellster Erstverkauf → bestätigt Pixel/Kampagne als #1.
+- **⚠️ 2 Risiko-Flags neu:** (1) Follow/Unfollow-Bot kann 2026 penalisiert werden (Follower-Engagement-Lücke) → vorsichtig.
+  (2) Generische Discovery-Hashtags ziehen Low-Intent → Algo-Strafe → eher nischige CH-/Produkt-Tags + Trend-Sounds.
+- Alles in `automation/brain/knowledge.json` → `rules.learned_2026`.
+
 ## 📌 OFFEN — User-Zusage: **Pixel + CH-Kampagne MORGEN (2026-06-14)**
 Der User macht den #1-Hebel (TikTok/Meta-Pixel + bezahlte CH-Kampagne) morgen. → In der nächsten Session
 **zuerst prüfen, ob Pixel/Kampagne live ist**, und Conversion-Funnel davor sauber machen:
