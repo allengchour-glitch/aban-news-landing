@@ -35,7 +35,13 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
-### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 26 echte Marken-Produkte importiert (BigBuy)
+### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 35 echte Marken-Produkte importiert (BigBuy)
+- **🚀 +9 „weiter voll gas" (4. Charge):** Parfum **Yves Saint Laurent** «L'Homme Cologne Bleue» (CHF 109.90),
+  Atkinsons English Lavender (49.90), Jacomo Paris (54.90), Floris London (79.90), Le Couvent des Minimes (84.90) ·
+  Armbänder Tom Hope Anker (24.90), Adore Gold (39.90) · Taschen **Michael Kors** Leder-Etui (149.90),
+  Don Algodon Umhängetasche (64.90). Alle ACTIVE · Bild-QA'd · kaufbar · 6 Kanäle · Premium-Kollektion.
+  **Abgelehnt:** D&G The One (Dublette), Paul Hewitt Armband (Bild = Comic-Werbegrafik statt Produkt), Miffy Kinder-
+  Rucksack (Zielgruppe), Home ESPRIT/DKD/Black&Decker-Taschen (Deko-/Werkzeug-Marken, nicht Fashion). MK = neues Luxus-Anker-Produkt.
 - **🧱 +10 „füll produkte" (3. Charge):** Halsketten (Folli Follie 29.90, Radiant 39.90, Breil 44.90) · Ohrringe
   (Cristian Lay 19.90, Radiant 29.90, **Tommy Hilfiger 39.90**) · Sonnenbrillen (Fila 49.90, Superdry 79.90) ·
   Umhängetaschen (Under Armour 39.90, Reebok 49.90). Alle ACTIVE · Bild-QA'd · kaufbar · 6 Kanäle · Premium-Kollektion.
