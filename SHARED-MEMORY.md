@@ -60,8 +60,9 @@
   `olivia-burton` `police` `citizen` `festina` `kenzo` `elie-saab` `pierre-cardin` `morellato` `lotus-uhren` `lancome`
   `loreal` `weleda` `lorus` `paul-hewitt` `tom-hope` `adidas` `puma` `reebok` `under-armour` `fila` `superdry`.
   **⚠️ ANDERE SESSIONS: NICHT duplizieren.** Menü-Dropdown **„💎 Marken"** (Top-6 verlinkt) ergänzt.
-- **✨ Premium-Seite `luxestyle-premium`** finalisiert: Editorial-Hero (Adobe-Stock lizenziert, 16:9, Shopify-CDN),
-  markengenaue Beschreibung (inkl. D&G), `PRICE_DESC`; Menü „💎 Premium" zeigt drauf. `sub-uhren`+`premium-schmuck` markengenau betextet.
+- **✨ Premium-Seite `luxestyle-premium`** finalisiert: Hero = sauberes Michael-Kors-Produktbild (Shopify-CDN; Adobe-
+  Editorial-Banner optional offen — würde Stock-Credits kosten), markengenaue Beschreibung (inkl. D&G, Marken verlinkt),
+  `PRICE_DESC`; Menü „💎 Premium" zeigt drauf. `sub-uhren`+`premium-schmuck` markengenau betextet.
 - **🖼️ 60 BigBuy-Produkt-Galerien vervollständigt** (172 echte Fotos von cdnbigbuy via BigBuy-API `productinformationbysku`→
   `productimages`; „mandatory"-/„tallas"-Junk gefiltert; alle READY, 0 FAILED). 30 Produkte haben bei BigBuy nur 1 Bild = fertig.
   **Diese Session hat den Galerie-Backfill der BESTEHENDEN BigBuy-Produkte gemacht → Katalog-Session NICHT doppeln.**
