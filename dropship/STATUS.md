@@ -45,8 +45,11 @@ schreibgeschützt → nur Customizer (User) oder Agentur (`dropship/AGENTUR-BRIE
   **🔴 Redundanz reduzieren (leere/doppelte Kollektionen löschen/ausblenden) = NUR User:** Shopify-Sicherheitslayer
   blockiert `publishableUnpublish` + Bulk-Delete via API (mehrfach bestätigt) → Admin → Kollektionen → die vielen
   überlappenden Geschenk-/Saison-/Preis-Kollektionen (z.B. „Geschenke unter CHF 50/100" = fast ganzer Katalog) manuell ausblenden.
-- **⏳ Etappe 3 (Inhalt, ich):** Meisterwerk-Rollout batchweise über den Katalog (Kleider → Schuhe → Taschen → Schmuck …):
-  Detail-Text + Grössentabelle + SEO + Galerie je Produkt.
+- **✅ Etappe 3 (grösstenteils erledigt — VERIFIZIERT):** Die **Kern-Mode (Kleider) ist bereits Meisterwerk** — 12 Kleider
+  geprüft: alle mit Detail-Beschreibung + cm-Grössentabelle (XS–3XL) + SEO-Title + Trust-Block (aus früherer Session).
+  → NICHT überschreiben (wäre Verschlechterung). Der Aufwand lag bei MEINEN neuen BigBuy/CJ-Produkten → die sind jetzt
+  auch auf Niveau (Blusen/Shirts mit Tabelle+Guide+SEO, Ringe mit Ring-Tabelle, Galerien). **Rest-Gap minimal:** den
+  Einsteiger-„So misst du"-Guide könnte man katalogweit ergänzen (Tabelle ist aber schon da) — optional, nicht dringend.
 - **⏳ Etappe 4 (Inhalt, ich):** Trust/Conversion-Texte (TWINT, Reviews-Hinweise, Garantie) in Kollektionen/Produkten.
 - **🔴 Etappe 5 (nur User/Agentur):** Theme-Design — Hero-Bild/Headline, Schriften, Produktkachel-Layout, Sticky-ATC,
   Reviews-Sterne auf Kacheln. Geht NICHT via API (Live-Theme gesperrt). → Customizer-Klicks oder Agentur-Briefing.
