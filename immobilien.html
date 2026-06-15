@@ -84,6 +84,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   .sheetbg.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
 }
 @media(min-width:861px){.sidebar .sheethead,.sidebar .applybar{display:none}}
+.mbtn{flex:1;padding:8px 0;border:1px solid var(--line);background:#f8f5ef;border-radius:9px;font-weight:700;font-size:.85rem;color:var(--ink2);cursor:pointer}
+.mbtn.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.ffield{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#f8f5ef;font-family:inherit;font-size:.9rem}
+.ffield:focus{outline:0;border-color:var(--amber);background:#fff}
 :focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
 </style>
 </head>
@@ -114,7 +118,21 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
     <div class="fcard"><a class="bigcta" href="/inserat-aufgeben.html">+ Immobilie inserieren</a>
       <p style="font-size:.82rem;color:var(--muted);margin-top:9px;text-align:center">Kostenlos &amp; in 1 Minute. Wird vor Veröffentlichung kurz geprüft.</p></div>
+    <div class="fcard"><h4>Ich möchte</h4>
+      <div id="modus" style="display:flex;gap:6px">
+        <button type="button" class="mbtn on" data-m="">Alle</button>
+        <button type="button" class="mbtn" data-m="miete">Mieten</button>
+        <button type="button" class="mbtn" data-m="kauf">Kaufen</button>
+      </div>
+    </div>
     <div class="fcard"><h4>Art</h4><div id="cats"></div></div>
+    <div class="fcard"><h4>Zimmer (mind.)</h4>
+      <select id="zimmer" class="ffield"><option value="">egal</option><option value="1">1+</option><option value="1.5">1.5+</option><option value="2">2+</option><option value="2.5">2.5+</option><option value="3">3+</option><option value="3.5">3.5+</option><option value="4">4+</option><option value="4.5">4.5+</option><option value="5">5+</option></select>
+    </div>
+    <div class="fcard"><h4>Preis (CHF)</h4>
+      <div style="display:flex;gap:8px;align-items:center"><input id="pmin" class="ffield" type="number" min="0" placeholder="von"><span>–</span><input id="pmax" class="ffield" type="number" min="0" placeholder="bis"></div>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:6px">Miete pro Monat bzw. Kaufpreis</p>
+    </div>
     <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
     <div data-partner="IMMO_HYPOTHEK_URL" data-text="Eigenheim geplant? Hypothek &amp; Finanzierung vergleichen." data-cta="Hypothek vergleichen"></div>
     <div data-partner="IMMO_UMZUG_URL" data-text="Umzug geplant? Zügelfirmen vergleichen und sparen." data-cta="Umzug vergleichen"></div>
@@ -145,14 +163,27 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     ["Haus","haus"],["WG-Zimmer","wg zimmer"],["Gewerbe / Büro","gewerbe büro"],["Grundstück","grundstück"],["Parkplatz / Garage","parkplatz garage"]];
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
-  var curArt="",raw=[];
+  var curArt="",curModus="",raw=[];
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  // Schweizer Preis (CHF) aus Freitext: "CHF 1'850.–", "1850.-", "Fr. 2'400" -> 1850 / 2400
+  function chfNum(p){var s=String(p||"").replace(/['’\s]/g,"");var m=s.match(/(\d{2,})(?:[.,]\-)?/);return m?parseInt(m[1],10):NaN}
+  // Zimmerzahl aus Titel/Beschreibung: "3.5 Zimmer", "4 Zi", "2½"
+  function roomsOf(it){var h=(String(it.titel||"")+" "+String(it.beschreibung||"")).replace("½",".5");var m=h.match(/(\d(?:[.,]5)?)\s*(?:zimmer|zi\b|zhl|zw\b)/i);return m?parseFloat(m[1].replace(",",".")):NaN}
   $("#cats").innerHTML=ARTEN.map(function(c,i){return '<label class="opt"><input type="radio" name="art" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>'}).join("");
   function contactHtml(k){var v=esc(k);var mail=/^[^@\s]+@[^@\s]+$/.test(k);return mail?('<a class="c" href="mailto:'+v+'" style="text-decoration:none;display:inline-block">✉️ '+v+'</a>'):('<span>'+v+'</span>')}
-  function applyLoc(items){var loc=$("#loc").value.trim().toLowerCase();if(!loc)return items;
-    return items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0})}
+  function applyFilters(items){
+    items=items||[];
+    var loc=$("#loc").value.trim().toLowerCase();
+    if(loc)items=items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0});
+    var zi=parseFloat($("#zimmer").value);
+    if(!isNaN(zi))items=items.filter(function(it){var r=roomsOf(it);return isNaN(r)?false:r>=zi});
+    var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
+    if(!isNaN(lo))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n>=lo});
+    if(!isNaN(hi))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n<=hi});
+    return items;
+  }
   function render(items){
-    items=applyLoc(items||[]);
+    items=applyFilters(items||[]);
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
       statusEl.innerHTML="Noch keine Immobilien in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Immobilie inserieren</a>.";cntEl.textContent="0 Immobilien";return}
     statusEl.hidden=true;
@@ -166,7 +197,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     Array.prototype.forEach.call(document.querySelectorAll(".card button.c"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
   }
   function load(){
-    var q=($("#q").value.trim()+" "+curArt).trim();
+    var q=($("#q").value.trim()+" "+curArt+" "+curModus).trim();
     cntEl.textContent="Lade …";grid.innerHTML="";statusEl.hidden=true;
     fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent("Immobilien")).then(function(r){return r.json()}).then(function(d){
       if(d.demo){grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="<div style=\"max-width:440px;margin:0 auto;text-align:center\"><div style=\"font-size:2rem\">🏠</div><h3 style=\"margin:.3rem 0;color:#1f2937\">Noch keine Immobilien — sei der/die Erste!</h3><p style=\"color:#6b7280;margin-bottom:14px\">Dieser Bereich ist neu. Inseriere deine Wohnung, dein Haus oder WG-Zimmer kostenlos — oder stöbere solange in den Bereichen mit Live-Angeboten.</p><a href=\"/inserat-aufgeben.html\" style=\"display:inline-block;background:#b45309;color:#fff;border-radius:22px;padding:11px 22px;font-weight:800;text-decoration:none\">+ Kostenlos inserieren</a><p style=\"margin-top:14px;font-size:.9rem\">Live stöbern: <a href=\"/auto-suche.html\">🚗 Auto</a> · <a href=\"/angebote-suche.html\">🛍️ Angebote</a> · <a href=\"/stellenangebote.html\">💼 Jobs</a></p></div>";cntEl.textContent="";return}
@@ -176,9 +207,15 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#go").addEventListener("click",function(e){e.preventDefault();load()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
   $("#loc").addEventListener("input",function(){render(raw)});
+  $("#zimmer").addEventListener("change",function(){render(raw)});
+  ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
+  $("#modus").addEventListener("click",function(e){var b=e.target.closest(".mbtn");if(!b)return;
+    Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;load()});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#loc").value=a.dataset.loc;render(raw);window.scrollTo({top:0,behavior:"smooth"})});
   $("#cats").addEventListener("change",function(e){if(e.target.name==="art"){curArt=e.target.value;load()}});
-  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";curArt="";var f=document.querySelector('input[name="art"]');if(f)f.checked=true;load()});
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#zimmer").value="";$("#pmin").value="";$("#pmax").value="";curArt="";curModus="";
+    var f=document.querySelector('input[name="art"]');if(f)f.checked=true;
+    Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});load()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
