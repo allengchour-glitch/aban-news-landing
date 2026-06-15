@@ -54,6 +54,17 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-15 (abannews-Session) — ✅ Content-Qualität + Sitemap (PR #1005), zusätzlich zu #1003/#1004:**
+- **74 `[Redaktion: pruefen & bewerten]`-Platzhalter aus 64 `vergleich/`-Seiten entfernt** (standen live im Text → Trust-Defekt).
+  **Wichtig für andere abannews-Arbeit:** der Vergleichs-Cluster ist **gesättigt** — alle naheliegenden neuen Vergleiche existieren
+  bereits in **Gegenrichtung** (z. B. `chatgpt-vs-claude`, `make-vs-n8n`, `flux-vs-midjourney`). **Keine neuen vergleich-Seiten
+  bauen** (= Doorway-Dubletten). Echte Verbesserung = Bestandscontent vertiefen / Platzhalter füllen.
+- **Performance** geprüft: bereits gut (0 render-blocking, System-Fonts, defer, Engine lazy-loaded Bilder). Nicht-deferte Scripts =
+  nur `*-config.js` (Lade-Reihenfolge) → bewusst NICHT defern.
+- **Sitemap:** `lastmod 2026-06-15` für die 64 verbesserten Seiten + Homepage-lastmod aufgefrischt (Re-Crawl/GSC-Vorbereitung).
+- **Semrush-MCP ist im Plan NICHT freigeschaltet** → Marktlücken nur über eigene Coverage-Analyse, keine Live-Keyword-Daten.
+- 3 offene PRs dieser Session: **#1003** (Ricardo-Export, dropship), **#1004** (Hype-Ton, Brain→99.3), **#1005** (Platzhalter+Sitemap).
+
 **2026-06-15 (Luxestyle-Session) — ✅ Pixel/Pinterest gelöst · Brain v3 · 1.-August-Fokus · Voll-Audit:**
 - **TikTok-Pixel FERTIG:** Live-Theme feuert jetzt **`D8EKVR3C77U6KT5BTBD0`** (alter `D85BAG…` weg), per API verifiziert.
   Geändert per **PC-Browser-Claude** (Live-Theme-Writes sind MCP-gesperrt). ⚠️ Unveröffentlichte Theme-Kopie
