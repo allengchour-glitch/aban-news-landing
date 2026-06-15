@@ -25,6 +25,7 @@ const API = '2025-01';
 if (!SHOP || !CID || !SEC) { console.error('❌ ENV fehlt: SHOPIFY_SHOP / SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET'); process.exit(1); }
 
 async function token() {
+  if (process.env.SHOPIFY_TOKEN) return process.env.SHOPIFY_TOKEN; // direct access token (skip grant)
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ client_id: CID, client_secret: SEC, grant_type: 'client_credentials' })
