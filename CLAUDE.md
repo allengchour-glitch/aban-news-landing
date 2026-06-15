@@ -62,11 +62,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 **📌 2026-06-15 (🎨 SWISS-EDITION WELLE-1 DESIGNS autonom generiert — 9 druckfertige PNGs):**
 - **`automation/render_swiss_edition.py`** (Pillow + Anton-Font, KEINE Bild-API nötig) rendert **transparente
   Druck-PNGs ~2900px** (≈25cm@300dpi) im Design-System (Swiss-Rot/Anthrazit/Off-White/Sage). Output: `pod/swiss-edition/`.
-- **9 Designs:** hoi-zaeme · merci-vilmal · chuchichaeschtli · gmuetlech · sali-zaeme · erste-august (Swiss-Kreuz) +
-  Bonus hopp-schwiiz · feierabig · grueezi. **Manifest** (`pod/swiss-edition/README.md`): je Design → Gelato-Garment+Farbe+Ink+Preis.
-- **⚠️ Ink↔Garment:** Off-White-Designs (chuchichaeschtli, sali-zaeme) NUR auf dunkle Garments. Alle visuell geprüft (Layout ok).
+- **12 Designs total:** Welle-1-Typo (9): hoi-zaeme · merci-vilmal · chuchichaeschtli · gmuetlech · sali-zaeme · erste-august
+  (Swiss-Kreuz) · hopp-schwiiz · feierabig · grueezi. **Welle-2-Line-Art (3, `render_swiss_welle2.py`):** schwiizer-alpe (TOP,
+  Berg-Panorama+rote Sonne) · matterhorn-zermatt · edelweiss (geometrisch/Logo, schwächstes). **Manifest** (`pod/swiss-edition/README.md`).
+- **Vorschau-Mockups** (`render_swiss_mockups.py` → `pod/swiss-edition/mockups/`): Design auf echter Garment-Farbe, alle dem User aufs Handy geschickt.
+- **⚠️ Ink↔Garment:** Off-White-Designs (chuchichaeschtli, sali-zaeme) NUR auf dunkle Garments. Alle visuell geprüft.
 - **Nächster Schritt:** PC-Claude lädt die PNGs bei Gelato hoch (DTG, Front, mittig) → Cloud-Session macht Titel/SEO/Collection/Map.
-  Welle 2 (Kantone/Berge/Tiere/Food = Line-Art) braucht andere Technik (SVG/KI) — Mundart-Typo war der schnelle autonome Win.
+  Line-Art geht doch programmatisch (Pillow-Polylinien) — nur botanisch/komplex (Edelweiss) bleibt Schwachpunkt ohne Vektor/KI.
 
 **📌 2026-06-15 (💳 STRIPE→GELATO-BRÜCKE gebaut — der „ohne-Shopify"-Weg, autonom):**
 - **`cloudflare/src/stripe.js` + Worker-Routen** `/stripe/checkout` (Checkout-Session, CHF, Adresse) +
