@@ -36,7 +36,7 @@
 ### 2026-06-15 (CJ-Import: +24 saubere Produkte)
 - **🛒 32 neue Produkte importiert** (CJ-Token vom User): 10 Schmuck · 8 Accessoires · 6 Beauty · 8 Impuls(Taschen/Sonnenbrille/Haar). Alle ACTIVE,
   Bild-QA pro Produkt (~17 abgelehnt: Text-Overlays/asiat. Schrift/Fremdprodukte), in alle 6 Kanäle, Bilder READY.
-  3 überteuerte Beauty-Preise nachträglich gesenkt. Details: `CJ-IMPORT-LOG.md`.
+  3 überteuerte Beauty-Preise gesenkt. **+ alle 32 mit deutschem SEO-Meta (für Google-Listings).** Details: `CJ-IMPORT-LOG.md`.
 
 ### 2026-06-14 (Nacht-Autonom: Doppel-Post-Fix + Video-Katalog + Cleanup)
 - **🔴 DOPPEL-POST-URSACHE gefunden & gefixt:** ZWEI Meta-Poster liefen parallel — GitHub-Actions
