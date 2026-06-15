@@ -102,12 +102,12 @@ function loadReels() {
 (async () => {
   const pools = loadPools();
   // good_products.csv ist KATEGORIE-GEMISCHT (Beauty/Schmuck/Schuhe/Gadget) → Fashion-Niche-Tags
-  // (#sommerkleid) wuerden falsch sitzen. Darum hier eine SICHERE generische Discovery-Basis
-  // (spiegelt die Gehirn-Lehre „Discovery statt Marken-Sackgasse"), rotierend gemischt.
+  // (#sommerkleid) wuerden falsch sitzen. CH-NISCHIG statt generisch (Lehre 2026-06-15: generische
+  // Discovery-Tags #tiktokmademebuyit/#musthave ziehen Low-Intent → Algo-Strafe-Risiko). 1 Reach-Tag (#fyp) ok.
   const SAFE = [
-    '#tiktokmademebuyit #produkttipp #schweiz #fyp #musthave',
-    '#gefundenauftiktok #musthave #schweiz #foryou #lifehack',
-    '#tiktokmademebuyit #lifehack #schweiz #fyp #produkttipp',
+    '#schweizmode #ootdschweiz #swissstyle #shoppingschweiz #fyp',
+    '#schweiz #swissmade #swissfashion #modeschweiz #foryou',
+    '#ootdschweiz #schweizershop #swissstyle #schweizmode #fyp',
   ];
   const tagsets = SAFE;
   // SCHWEIZWEIT (User 2026-06-14 „nicht nur Bern"): rotierend über CH-Städte/Tags statt immer #bern.

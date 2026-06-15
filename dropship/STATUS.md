@@ -20,6 +20,7 @@
 - **🇨🇭 CH-Follower** — PC-Task (`run-follower-daily.ps1`), wenn PC an + Brave eingeloggt.
 
 ## ⏳ WARTET AUF DICH (nur du kannst es)
+- **✉️ 2 Policy-Tippfehler** (Admin, MCP scope-blockiert): Versand-Policy „info@luxestyle.**com**" → `.ch`; AGB §8 Gewährleistung „allengchour@**gmail.com**" → `info@luxestyle.ch` (Trust/Konsistenz).
 - **🎯 Pixel + bezahlte CH-Kampagne** (TikTok Spark Ads / Meta Advantage+) = der #1-Käufe-Hebel. (User: „pixel morgen".)
 - **🟢 GRATIS Google-Listings:** Kanal „Google & YouTube" ist installiert + Katalog publiziert (Shopify-Seite fertig).
   Morgen im **Merchant Center** prüfen: Domain verifiziert · „Free listings" AN · Feed genehmigt. Bezahlte Google-Ads
