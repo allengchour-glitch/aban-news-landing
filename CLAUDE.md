@@ -119,7 +119,25 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-**📌 2026-06-14 (NEUESTER STAND — grosse autonome Session):**
+**📌 2026-06-15 (NEUESTER STAND — Autonomes Posten OHNE GitHub + Handy-Fernsteuerung):**
+- **🚨 GitHub Actions KONTOWEIT GESPERRT** („Actions has been disabled for this user", 422 bei dispatch). Kein
+  Repo-Toggle hilft (account-level). → **Kein Cron-Workflow läuft.** `git push`/PR-Merge gehen weiter. Ersatz =
+  Cloudflare-Worker (gratis Cron) + PC-Tagestask. (User-Fix nur via GitHub-Billing/Support.)
+- **✅ AUTONOMES POSTEN (so läuft es jetzt, MERKEN):**
+  · **IG + FB** = Cloudflare-Worker `luxe-poster` (Cron 3×/Tag 12/17/21 CH) — **kein PC/GitHub nötig**. Handy-Trigger
+    `https://luxe-poster.allengchour.workers.dev/?key=Abanaban192%2B` (`+`=`%2B`). Postet nächste Queue-Zeile.
+  · **💬 Kommentar-Auto-Antwort** im Worker eingebaut (IG+FB, themen-erkennend, Spam-Skip, KV-idempotent) — läuft bei
+    jedem Cron, Trigger `&replies=1`. **Braucht 1× `wrangler deploy`** (Worker-Code aktualisieren).
+  · **🛒 tutti + 🎵 TikTok** haben **KEIN API** → nur über den eingeloggten **Brave-Port 9222 am PC**. Laufen im
+    PC-Tagestask `run-follower-daily.ps1` (tutti `tutti-post.mjs` AUTO_PUBLISH=1 Cap2/Tag; TikTok `tiktok-upload-browser.mjs`).
+- **📱 HANDY-FERNSTEUERUNG (NEU, MERKEN):** Worker hat eine **Befehlswarteschlange** — Handy pusht `&cmd=tutti|tiktok|
+  follower|all|deploy`, der **PC-Listener** `automation/local/pc-listener.ps1` (Start: `START-LISTENER.bat`) pollt alle
+  90 s `&drain=1` und führt es am PC aus. So steuerst du die PC-Browser-Aufgaben komplett vom Handy (`control.html`-Knöpfe
+  🛒/🎵/⚡). Auch `&del=<POST_ID>` (einen FB-Post löschen). **Cloud kann den PC NICHT direkt erreichen** — nur über diese Queue.
+- **✅ Google Merchant:** beide Policy-Tippfehler gefixt + Rückgaberichtlinie konfiguriert + **Re-Review abgeschickt 15.06.**
+  (NICHT nochmal!). Märkte CH-only. **tutti-Inserate** `dropship/tutti_listings.csv` (11: 7 CJ + 4 Marken) + FB-CH-Gruppen-Posts fertig.
+
+**📌 2026-06-14 (grosse autonome Session):**
 - **🎵 Musik-Tool** `automation/music/music_library.mjs` (kommerziell-frei, Kevin MacLeod CC-BY 4.0, Auto-Attribution
   `CREDITS.md`) ersetzt den „zu billigen" GM-Synth. **🎬 Marken-Video 60s+30s** (`render_brand_video.py`).
 - **🈂️ SAFE-ZONE-TEXTREGEL** (User „schrift unten achtung"): eingebrannter Text endet bei ~78 % Höhe, nie unter der

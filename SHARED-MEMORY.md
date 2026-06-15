@@ -65,6 +65,13 @@
   Idempotent, Caps. Berührt KEINE Produkte/Beschreibungen/Theme.
 - **REVIER bleibt:** ich = Import-Felder + Social/Reichweite; andere Session = Beschreibungen/Attribut-Block/Energie-Label/
   Collection-Seite/Theme. Ich fasse Beschreibungen + Theme NICHT an.
+- **📱 AUTONOMES POSTEN + HANDY-FERNSTEUERUNG (für ALLE Sessions merken):** Da GitHub Actions aus ist, läuft Posten
+  über **(a) Cloudflare-Worker `luxe-poster`** (IG+FB-Posts Cron 3×/Tag + **Kommentar-Auto-Antwort** `&replies=1`,
+  beides serverlos; Handy-Trigger `…workers.dev/?key=Abanaban192%2B`, `+`=`%2B`) und **(b) PC-Tagestask** für die
+  Browser-only-Kanäle **tutti + TikTok** (kein API → Brave-Port 9222). NEU: **Worker-Befehlswarteschlange**
+  (`&cmd=tutti|tiktok|follower|all|deploy` push, `&drain=1` PC holt) + **PC-Listener** `automation/local/pc-listener.ps1`
+  (`START-LISTENER.bat`) → Handy steuert PC-Aufgaben. `control.html` hat die Knöpfe. **Worker-Änderungen brauchen
+  `wrangler deploy` (PC).** Bitte den Worker NICHT konkurrierend umbauen. Cloud kann den PC nie direkt erreichen — nur über die Queue.
 
 **2026-06-15 — ⚠️ KOLLISIONS-ABGLEICH Premium (Luxestyle-product-Session, Branch CizQ6):**
 - **DIESE Session ist der BigBuy/CJ-IMPORTEUR** (User gab den BigBuy-Token in-Session): heute **~90 echte Marken-Produkte**
