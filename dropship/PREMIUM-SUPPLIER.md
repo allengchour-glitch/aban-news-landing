@@ -50,3 +50,17 @@
 2) Mit **Uhren oder Schmuck** anfangen (kein Flüssigkeits-/Zoll-Problem, leicht). 3) Parfum nur, wenn CH-Versand sauber.
 4) Erst Ecommerce-Pack zahlen, wenn 2–3 Heroes mit guter CH-Marge feststehen. Dann gebe ich (mit API-Key) die Heroes ins
 Shopify (QA + deutsche Texte + CHF-Marge + 6 Kanäle), als Kollektion **„LuxeStyle Premium"**.
+
+---
+## 🔌 BigBuy-API-Recipe (gemappt 2026-06-15) — Token NUR transient/Secret, NIE ins Repo
+Base: `https://api.bigbuy.eu` · Header `Authorization: Bearer <TOKEN>` (BigBuy → Mein Konto → API).
+- Produkte je Kategorie: `GET /rest/catalog/products.json?parentTaxonomy=<TAXID>&page=1&pageSize=N`
+  → {id, sku, ean13, wholesalePrice (EUR-EK), retailPrice, inShopsPrice, condition, active, images}
+- Kategoriebaum (DE): `GET /rest/catalog/taxonomies.json?isoCode=de` (13082 Einträge, id+name)
+- Name/Text (DE): `GET /rest/catalog/productinformation/<id>.json?isoCode=de`
+- Bilder: `GET /rest/catalog/productimages/<id>.json` (cover: isCover=true, bevorzugt whiteBackground=true; cdnbigbuy.com)
+- **Premium-Taxonomy-IDs:** 2588 Schmuck · 2657 Ohrringe · 2659 Statement-Ohrringe · 2614 Halsketten · 2681 Schmuck-Sets
+  · 776 Geldbörsen · 2911 Handtaschen. (Uhren/Parfum/Kosmetik-IDs noch suchen.)
+- **FILTER:** nur active=1 + condition NEW (KEINE REFURBISHED/USED — viel Refurb-Elektronik im Katalog!).
+- **Preis:** CHF = wholesalePrice(EUR) × 2.3, auf .90 (Premium). ⚠️ retailPrice/taxRate sind EU-21%-MWST — für CH irrelevant, aber CH-Zoll/Versand bei Fulfillment prüfen.
+- **Bezahl-Realität:** Pack Ecommerce €89/Mt + €89 Setup + €129 Shopify-Connector. Bei Import läuft nur Listing (kein Order-Cost); echte Kosten/Marge erst bei realer CH-Bestellung verifizieren.
