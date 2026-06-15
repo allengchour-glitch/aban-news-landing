@@ -59,6 +59,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-06-15 (🧹 SHOP-SEO-/QUALITÄTS-BEREINIGUNG — autonom, „alle 4 Bereiche"):**
+- **62 Produkte mit echten Defekten gefixt** (live via Shopify-MCP, gebatchte `productUpdate`-Aliase):
+  - **10 Schweiz-Poster hatten ENGLISCHE Titel** + rohen POD-Text („…Premium Semi-Glossy Paper Print in 29 Sizes") →
+    deutsche Titel + SEO. Grösster sichtbarer Defekt (English auf DE-Shop).
+  - **22 Swiss-POD-Items ohne SEO** (12 Schweiz-Sticker + 10 Schweiz-Poster, neuer Batch) → SEO-Titel im Shop-Muster.
+  - **6 Schweiz-Magnete** ohne SEO → SEO-Titel+Description.
+  - **~24 kaputte Auto-SEO-Titel** (Defekt: „ … – Wort – Wort |…", inkl. **Herren-Mode**: Jogginghose, Stoffhose,
+    Cordhose, Hemd, Outdoor-Jacke, Jogging-Set, Anzughose) → saubere Titel.
+- **Methode:** `products(sortKey:UPDATED_AT)` paginiert (~590 Produkte/4 Seiten gescannt). Defekte konzentriert in der
+  06-11-Import-Charge (IDs ~15411xxx/15413xxx) + neuem Swiss-POD-Batch (15427xxx). Rest des Katalogs (Sticker etc.) SEO-sauber.
+- **Lehre:** Der Auto-SEO-Generator mancher Importe macht (a) englische Titel bei POD-Postern, (b) „ – "-verstümmelte
+  Titel mit „|…", (c) gar keine SEO bei neuen Batches. Beim Anlegen IMMER `title` (DE) + `seo.title` direkt mitgeben.
+- **⚠️ Offen (optional):** Tiefere Katalogseiten (>590) nicht gescannt — vermutlich sauber (Sticker-Muster konsistent);
+  bei Bedarf Pagination ab letztem Cursor fortsetzen.
+
 **📌 2026-06-15 (🎨 SWISS-EDITION WELLE-1 DESIGNS autonom generiert — 9 druckfertige PNGs):**
 - **`automation/render_swiss_edition.py`** (Pillow + Anton-Font, KEINE Bild-API nötig) rendert **transparente
   Druck-PNGs ~2900px** (≈25cm@300dpi) im Design-System (Swiss-Rot/Anthrazit/Off-White/Sage). Output: `pod/swiss-edition/`.
