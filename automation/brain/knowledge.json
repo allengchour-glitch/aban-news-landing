@@ -466,6 +466,11 @@
       "Andere Session arbeitete auf veraltetem Katalog (entfernte D&G, das ICH importiert habe) → Fakten in SHARED-MEMORY LIVE-STAND abgleichen statt gegeneinander editieren.",
       "Live-Theme MAIN ist ohnehin API-gesperrt; Theme-Aenderungen nur an unveroeffentlichten Kopien (themeFilesUpsert) — aber das ist aktuell Revier der Theme-Session → nur nach expliziter Uebergabe.",
       "GEMEINSAMES GEHIRN + UPDATES (User 2026-06-15 teilt regelmaessig updates und gehirn zusammen): knowledge.json ist das geteilte Gehirn beider Sessions — LESEN + rules nur APPEND, nie ueberschreiben. Nach groesseren Aktionen SHARED-MEMORY LIVE-STAND updaten. Feed: Produkt-Felder (EAN-Barcode/vendor) = Produkt-Session; Merchant-Center/Meta-Katalog-Kanal = Marketing/Theme-Session."
+    ],
+    "automation_first": [
+      "SHOPIFY-API = VOLLER ZUGRIFF (User 2026-06-15 merke): Shopify Admin API ist über die MCP komplett offen (keine Creds noetig) — Produkte/Kollektionen/Varianten/Markets/Metafelder/Discounts/Analytics alles per graphql_mutation machbar. AUSNAHME: Live/MAIN-Theme-Dateien sind MCP-seitig schreibgesperrt (nur unveroeffentlichte Theme-Kopien beschreibbar) — Live-Theme-Write nur via GitHub-CI (raw Admin API mit Secrets) oder PC-Claude-Browser.",
+      "IMMER AUTOMATION bevorzugen (User 2026-06-15): wiederkehrende/grosse Arbeit als Skript+Workflow bauen (z.B. feed_ready.mjs), nicht manuell. Neue Importe sofort feed-fertig (Marke+Barcode+Kategorie) per Skript.",
+      "GitHub-API (merge/dispatch/PR) kann rate-limiten — git push geht weiter (anderer Kanal). Bei GitHub-Rate-Limit: Aktion spaeter erneut versuchen, nicht haemmern."
     ]
   },
   "decisions": [
