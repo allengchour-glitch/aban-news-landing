@@ -37,7 +37,7 @@ const MIN_STOCK = parseInt(process.env.MIN_STOCK || '5', 10) || 5;  // TOP = lie
 const MAX_COST_EUR = parseFloat(process.env.MAX_COST_EUR || '40') || 40;
 // DRY ist DEFAULT (Sicherheit). Nur mit LIVE=1 wird wirklich in Shopify angelegt.
 const DRY = process.env.LIVE !== '1';
-const CATS = (process.env.CATS || 'schmuck,taschen,uhren,sonnenbrillen').split(',').map(s => s.trim()).filter(Boolean);
+const CATS = (process.env.CATS || 'schmuck,taschen,uhren,sonnenbrillen,parfum,herren,schuhe,elektronik,audio,kueche,wohnen,spielzeug,damenmode').split(',').map(s => s.trim()).filter(Boolean);
 
 /* On-brand TOP-Kategorien. `cat` = BigBuy-Taxonomie/Such-Anker (Name-Match, DE/EN), wie bei CJ.
  * `bbCategoryIds` (optional) = exakte BigBuy-Kategorie-IDs, falls bekannt → präziser als Name-Match.
@@ -68,6 +68,48 @@ const CONFIG = {
     anchor: ['dress', 'blouse', 'skirt', 'kleid', 'bluse', 'rock', 'vestido', 'top women'],
     ban: ['men ', 'herren', 'kids', 'baby'],
     bullets: ['Femininer Schnitt', 'Angenehmer Stoff', 'Vielseitig kombinierbar', 'Premium-Look zum fairen Preis'] },
+  // ── Erweiterung 2026-06-15 (Collections-Session): breiter Kategorie-Fill. ⚠️ Anchors = Name-Match über GANZEN Katalog
+  //    (nicht marken-beschränkt) → Qualität via maxCost + ban kuratieren; pro Lauf modto halten (sonst Feed-Bloat).
+  parfum: { coll: { handle: 'premium-beauty', title: '💄 Beauty · Premium', tag: 'beauty' },
+    extraTags: ['parfum', 'geschenk', 'premium'], type: 'Parfum', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['perfume', 'eau de', 'cologne', 'parfum', 'fragancia', 'colonia', 'toilette'],
+    ban: ['tester', 'recambio', 'sample', 'muestra'],
+    bullets: ['Original-Duft, versiegelt', 'Langanhaltend', 'Edles Geschenk', '100 % authentisch'] },
+  herren: { coll: { handle: 'fur-ihn', title: '👨 Für Ihn', tag: 'herren' },
+    extraTags: ['mode', 'premium'], type: 'Herrenmode', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['men shirt', 'camisa hombre', 'pantalon hombre', 'polo hombre', 'sudadera hombre', 'men t-shirt', 'herren', 'chaqueta hombre'],
+    ban: ['mujer', 'women', 'kids', 'niño', 'baby'],
+    bullets: ['Moderner Schnitt', 'Angenehmer Stoff', 'Vielseitig kombinierbar', 'Für jeden Anlass'] },
+  schuhe: { coll: { handle: 'schuhe', title: '👟 Schuhe', tag: 'schuhe' },
+    extraTags: ['mode', 'premium'], type: 'Schuhe', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['sneaker', 'zapatilla', 'zapato', 'bota', 'sandalia', 'schuh', 'botin', 'shoe'],
+    ban: ['kids', 'niño', 'baby', 'cordon', 'plantilla'],
+    bullets: ['Bequemer Tragekomfort', 'Hochwertiges Material', 'Stylisches Design', 'Für jeden Tag'] },
+  elektronik: { coll: { handle: 'trends-gadgets', title: '🔥 Trends & Gadgets', tag: 'gadget' },
+    extraTags: ['elektronik', 'trend'], type: 'Elektronik', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['bluetooth', 'cargador', 'powerbank', 'smart', 'cable usb', 'adaptador', 'linterna', 'gadget', 'ventilador usb'],
+    ban: ['toy', 'juguete', 'kids'],
+    bullets: ['Praktischer Alltagshelfer', 'Einfache Bedienung', 'Kompakt & smart', 'Tolles Geschenk'] },
+  audio: { coll: { handle: 'audio-sub', title: '🎧 Audio', tag: 'audio' },
+    extraTags: ['elektronik', 'trend'], type: 'Audio', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['auricular', 'headphone', 'earphone', 'earbud', 'kopfhörer', 'altavoz', 'speaker', 'cascos'],
+    ban: ['kids', 'toy'],
+    bullets: ['Starker Klang', 'Bequemer Sitz', 'Für unterwegs', 'Lange Akkulaufzeit'] },
+  kueche: { coll: { handle: 'sub-kueche', title: '🍳 Küche', tag: 'kueche' },
+    extraTags: ['haushalt', 'wohnen'], type: 'Küche', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['cocina', 'kitchen', 'sarten', 'olla', 'cuchillo', 'küche', 'utensilio', 'set vasos', 'tabla cortar'],
+    ban: ['toy', 'juguete'],
+    bullets: ['Praktisch im Alltag', 'Hochwertige Verarbeitung', 'Leicht zu reinigen', 'Schönes Design'] },
+  wohnen: { coll: { handle: 'wohnen-dekoration', title: '🏠 Wohnen & Deko', tag: 'wohnen' },
+    extraTags: ['deko', 'haushalt'], type: 'Wohnen', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['decoracion', 'hogar', 'lampara', 'vela', 'cojin', 'manta', 'jarron', 'deko', 'portavelas', 'marco foto'],
+    ban: ['toy', 'juguete', 'kids'],
+    bullets: ['Schöner Wohn-Akzent', 'Hochwertige Materialien', 'Stimmungsvolles Design', 'Tolle Geschenkidee'] },
+  spielzeug: { coll: { handle: 'spielzeug', title: '🧸 Spielzeug', tag: 'spielzeug' },
+    extraTags: ['kinder', 'geschenk'], type: 'Spielzeug', maxCost: MAX_COST_EUR, bbCategoryIds: [],
+    anchor: ['juguete', 'toy', 'spielzeug', 'peluche', 'puzzle', 'muñeca', 'figura', 'juego mesa'],
+    ban: ['adult', 'erotic'],
+    bullets: ['Großer Spielspaß', 'Sicher & geprüft', 'Fördert Kreativität', 'Tolles Geschenk'] },
 };
 
 // ── Shopify (1:1 aus cj_gaps_import.mjs, bewährt) ──
