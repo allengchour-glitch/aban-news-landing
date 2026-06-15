@@ -3,7 +3,17 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
-## 🆕 2026-06-15 (NEUESTER STAND — Policy-Tippfehler GEFIXT ✅)
+## 🆕 2026-06-15 (NEUESTER STAND — Google Merchant Re-Review LÄUFT ✅)
+- **✅ Merchant-Center Re-Review ABGESCHICKT** (15.06.2026, „Review requested — can take a few days"). NICHT nochmal
+  beantragen (resettet den Timer). Vorher erledigt: beide Policy-Tippfehler gefixt, **Rückgaberichtlinie im Merchant
+  Center konfiguriert** (30 Tage · Rücksendung per Post · No-cost Restocking · Refund 14 Tage · CHF · nur Schweiz),
+  Business-Info verifiziert. Feed bereits von 34.9K → **13.4K** geschrumpft (CH-only-Märkte wirken).
+- **⏳ WARTEN: 3–7 Tage Google-Prüfung.** Bei Freigabe: Free Listings AN + Domain verifiziert (Guide da). Bis dahin
+  greifen gratis CH-Reichweite (tutti.ch / FB-Gruppen) + Meta/TikTok organisch — brauchen KEIN Merchant Center.
+- **🧹 NACH Freigabe aufräumen (Notiz):** Google nennt Zielländer „Belgium, France and Switzerland" → im Google-Kanal
+  auf **nur Schweiz** begrenzen. UND **3 verknüpfte Google-Ads-Konten** → nur „LuxeStyle CH" behalten, andere entkoppeln.
+
+## 🆕 2026-06-15 (Policy-Tippfehler GEFIXT ✅)
 - **✅ BEIDE E-Mail-Tippfehler in den Policies korrigiert** (User manuell im Admin, live via MCP verifiziert 22:13 UTC):
   Versand-Policy + AGB §8 GEWÄHRLEISTUNG → jetzt beide `info@luxestyle.ch`. Alle 7 Policies konsistent. → der
   wahrscheinlichste Google-Merchant-„Misrepresentation"-Auslöser ist beseitigt.
