@@ -302,6 +302,9 @@ export default {
     if (setq) { await env.LUXE_KV.put("queue_url", setq); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url_set: setq, cursor: 0 }); }
     const clean = u.searchParams.get("cleanup");
     if (clean) return Response.json(await cleanupOldFb(env, clean).catch((e) => ({ error: String(e) })));
+    // EINEN bestimmten FB-Post löschen (Handy-Tap): …/?key=…&del=<POST_ID>  (sicher: nur diese eine ID)
+    const del = u.searchParams.get("del");
+    if (del) { const ids = await discoverIds(env); const d = await (await fetch(`${G(del)}?access_token=${ids.page_token}`, { method: "DELETE" })).json(); return Response.json({ deleted: del, result: d }); }
     // Kommentar-Auto-Antwort manuell auslösen (Handy-Tap): …/?key=…&replies=1
     if (u.searchParams.get("replies")) {
       const ids = await discoverIds(env);
