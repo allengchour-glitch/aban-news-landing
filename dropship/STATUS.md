@@ -35,6 +35,12 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🏷️ GOOGLE-PRODUKTKATEGORIE auf 87 Premium-Produkte
+- **87 Produkte mit Standard-Produktkategorie** (Parfum→Düfte hb-3-2-8, Uhren→aa-6-11, Schmuck→aa-6, Sonnenbrillen→aa-2-27,
+  Taschen→aa-5-4, Beauty→Hautpflege hb-3-2-9), 0 Fehler. → Feed-Feldqualität für Google jetzt KOMPLETT: **Marke + Barcode + Kategorie**.
+- Damit ist alles, was an der Google-Sperre AUTONOM in meinem Revier geht, erledigt. Rest = extern (Policies/Re-Review = User; Feed-Kanal-Land = Marketing-Session; PC-Claude Browser-Tasks).
+
+
 ### 2026-06-15 (Abend) — 🌍 MÄRKTE GEFIXT: nur noch Schweiz (Strikt-CH + Feed-Bloat-Fix)
 - **Wurzel des 106k-Feeds gefunden:** ALLE 8 Shopify-Märkte waren aktiv — inkl. **DACH (DE/AT)** = direkter Verstoss gegen
   die FESTE Strikt-CH-Regel + FR/IT/UK/US/Global/EU-Rest → Feed = Produkte × 8 Märkte.
