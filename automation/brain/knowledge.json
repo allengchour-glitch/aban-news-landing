@@ -441,7 +441,13 @@
         "⚠️ Follow/Unfollow-Wachstum (ch-follower-growth.mjs) kann 2026 PENALISIERT werden (Follower-zu-Engagement-Lücke = 'inauthentisch'). → vorsichtig nutzen / eher auf organische Shareability setzen. Nicht blind hochfahren.",
         "⚠️ Generische Discovery-Hashtags (#tiktokmademebuyit etc.) ziehen Low-Intent-Follower → Algo-Strafe möglich. → eher nischige CH-/Produkt-Tags + Trend-Sounds statt generische Massen-Tags."
       ]
-    }
+    },
+    "import_dedup": [
+      "DUBLETTEN-CHECK VOR JEDEM IMPORT (User 2026-06-15 doppelte produkte, anderer preis -> kontrolliere dass nicht mehr vorkommt): Vor dem Anlegen JEDES Produkts pruefen, ob es schon existiert. Signale: (1) gleicher Bild-Basis-Dateiname (vor _<uuid>-Suffix) wie ein bestehendes Produkt, (2) gleicher «Name» im Titel, (3) gleiche SKU/EAN. BigBuy: SKU-Praefix bb-<sku> ist eindeutig -> vor create per search_products tag:bigbuy + sku pruefen. CJ: gleicher CJYD-SKU.",
+      "BUNDLES sind KEINE Dubletten: ein Bundle darf das Hero-Bild teilen (z.B. Slim-Wallet + Bundle inkl. Slim-Wallet). Nur archivieren, wenn Titel+Bild+SKU praktisch identisch sind UND es kein bewusstes Set ist.",
+      "Bei Fund: die VOLLSTAENDIGERE Version behalten (mehr Varianten/echte SKUs/besserer Preis), die schlechtere ARCHIVIEREN (status ARCHIVED). Nie beide aktiv lassen -> sieht im Shop nach Fehler/Betrug aus.",
+      "Auto-Importe der Parallel-Session sind die Hauptquelle fuer Doppel-Importe -> nach fremden Importen einen Dubletten-Scan fahren (Gruppierung nach Bild-Basis + «Name»)."
+    ]
   },
   "decisions": [
     {

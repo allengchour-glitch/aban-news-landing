@@ -35,6 +35,17 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 💄 BEAUTY (User „beauty sachen") + 🧠 Dubletten-Schutz ins Gehirn
+- **🧠 Gehirn-Regel `rules.import_dedup`** (User „kontrolliere dass nicht mehr vorkommt, Gehirn"): Vor jedem Import auf
+  bestehende Produkte prüfen (Bild-Basis-Dateiname · «Name» · SKU/EAN; BigBuy bb-<sku> eindeutig). Bundles ausnehmen.
+  Bei Fund vollständigere Version behalten, schlechtere archivieren. Nach Fremd-Importen Dubletten-Scan fahren.
+- **+4 Premium-Beauty** (echte Marken, gift-tauglich): L'Oréal Paris «Revitalift Filler» SPF30 (CHF 34.90), L'Oréal
+  Professionnel «Absolut Repair» Haarmaske (39.90), **Weleda Granatapfel-Serum** (39.90, vegan/Naturkosmetik), Sensilis
+  «Upgrade» Make-up-Set (54.90). Alle ACTIVE · Bild-QA'd · kaufbar · 6 Kanäle · Premium-Kollektion.
+- **Ehrlich:** Drogerie-Einzelartikel (Catrice-Nagellack €2.61, Rimmel-Lippenstift €4) BEWUSST NICHT importiert —
+  bei CH-Cross-Border = Versand-/Margenfalle + überall billiger erhältlich. Nur höherwertige Sets/Skincare (EK ≥ €13) genommen.
+  Premium-Beauty ist bei BigBuy dünn (nur ~8 sinnvolle Treffer). Premium-Sortiment jetzt ~48 Marken-Produkte.
+
 ### 2026-06-15 (Abend) — 🧹 DUBLETTEN-FIX (User-Meldung „doppelte Produkte, anderer Preis")
 - **Voyage-Weekender-Dublette behoben:** zwei identische «Voyage»-Reisetaschen (gleiches Bild, beide 13.06. importiert,
   CHF 32.90 vs 39.90). Bessere Version (32.90, 3 Farben + echte CJ-SKUs) behalten, schlechtere (39.90, ohne SKU/Farbe)
