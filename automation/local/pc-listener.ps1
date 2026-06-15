@@ -23,6 +23,7 @@ function Run-Cmd($c) {
   Write-Host "[$(Get-Date -Format HH:mm:ss)] Befehl: $c"
   switch ($c) {
     "tutti"    { $env:AUTO_PUBLISH="1"; $env:TUTTI_CAP="2"; node "automation/local/tutti-post.mjs" }
+    "anibis"   { $env:AUTO_PUBLISH="1"; $env:ANIBIS_CAP="2"; node "automation/local/anibis-post.mjs" }
     "tiktok"   { node "automation/local/tiktok-upload-browser.mjs" }
     "follower" { node "automation/local/ch-follower-growth.mjs" }
     "all"      { powershell -ExecutionPolicy Bypass -File "automation/local/run-follower-daily.ps1" }

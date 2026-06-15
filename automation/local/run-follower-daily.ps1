@@ -61,5 +61,9 @@ if ($env:META_ACCESS_TOKEN) { node "automation/social-comment-reply.mjs" }
 $env:AUTO_PUBLISH = "1"; $env:TUTTI_CAP = "2"
 node "automation/local/tutti-post.mjs"
 
+# 7b) anibis.ch autonom inserieren (zweiter Gratis-CH-Marktplatz, gleiche Liste, eigener Ledger).
+$env:AUTO_PUBLISH = "1"; $env:ANIBIS_CAP = "2"
+node "automation/local/anibis-post.mjs"
+
 # 8) Sonntags zusätzlich entfolgen (Nicht-Zurückfolger nach ~14 Tagen)
 if ((Get-Date).DayOfWeek -eq "Sunday") { node "automation/local/ch-unfollow.mjs" }
