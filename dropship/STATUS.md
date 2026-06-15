@@ -40,8 +40,11 @@
 schreibgeschützt → nur Customizer (User) oder Agentur (`dropship/AGENTUR-BRIEFING.md` liegt bereit).**
 - **✅ Etappe 1 (erledigt):** Flaggschiff „✨ LuxeStyle Premium" zur Boutique gemacht — Profi-Beschreibung (Marken-Namen
   YSL/D&G/MK/Tommy/Casio/Swatch…), SEO-Title+Meta, Hero-Bild (MK Khai), Sortierung Best-Selling.
-- **⏳ Etappe 2 (Inhalt, ich):** Kollektionen aufräumen — die vielen bildlosen/leeren Kollektionen (50+!) bekommen
-  Bild+Beschreibung+SEO ODER werden ausgeblendet; redundante Saison-/Geschenk-Kollektionen reduzieren → klare Navigation.
+- **✅ Etappe 2 (erledigt, Inhalt):** 11 Haupt-Kollektionen mit Profi-Beschreibung + SEO-Title/Meta aufgewertet
+  (Damen-Mode, Für Sie, Für Ihn, Neu, Sonnenbrillen, Herrenuhren&Schmuck, Wohnen, Vegan, Beauty +Bild, Reisen, Premium).
+  **🔴 Redundanz reduzieren (leere/doppelte Kollektionen löschen/ausblenden) = NUR User:** Shopify-Sicherheitslayer
+  blockiert `publishableUnpublish` + Bulk-Delete via API (mehrfach bestätigt) → Admin → Kollektionen → die vielen
+  überlappenden Geschenk-/Saison-/Preis-Kollektionen (z.B. „Geschenke unter CHF 50/100" = fast ganzer Katalog) manuell ausblenden.
 - **⏳ Etappe 3 (Inhalt, ich):** Meisterwerk-Rollout batchweise über den Katalog (Kleider → Schuhe → Taschen → Schmuck …):
   Detail-Text + Grössentabelle + SEO + Galerie je Produkt.
 - **⏳ Etappe 4 (Inhalt, ich):** Trust/Conversion-Texte (TWINT, Reviews-Hinweise, Garantie) in Kollektionen/Produkten.
