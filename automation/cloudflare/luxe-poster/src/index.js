@@ -202,6 +202,68 @@ async function postTikTok(item, env) {
   return { ok: pid, draft: true };
 }
 
+// ===== KOMMENTAR-AUTO-ANTWORT (autonom bei jedem Cron, idempotent über KV) =====
+const SPAM_RE = /https?:\/\/|t\.me\/|wa\.me\/|whatsapp|telegram|seguidores|followers|promo(c|t)|\bdm\b|inbox me|check my|verkaufe|crypto|invest/i;
+const C_TOPIC = [
+  ['versand', /versand|liefer|wann kommt|geliefert|sendung|paket|shipping|delivery/i],
+  ['groesse', /grösse|groesse|size|passt|fällt (gross|klein)|masse|welche grösse/i],
+  ['preis',   /preis|kostet|chf|rabatt|code|gutschein|zahlung|twint|bezahl|price|discount/i],
+  ['verfueg', /verfügbar|lager|available|noch da|ausverkauft|stock/i],
+];
+const C_REPLY = {
+  versand: ['Mir liefere schweizwiit – gratis ab CHF 65 🚚🇨🇭 Meh uf luxestyle.ch', 'Hoi! 📦 Schweizwiite Versand, gratis ab CHF 65. Infos uf luxestyle.ch ✨'],
+  groesse: ['D Grössetabälle findsch direkt bim Produkt uf luxestyle.ch 📏 Frag sönsch gern!'],
+  preis:   ['Merci! 🛍️ Dr Pris staht im Shop 👉 luxestyle.ch – mit Code WELCOME10 gits –10% 🤍'],
+  verfueg: ['Jaa, a Lager & sofort bestellbar ✅ luxestyle.ch 🇨🇭'],
+  allgemein: ['Merci vilmal! 🙏🇨🇭 Schau gern verbii uf luxestyle.ch ✨', 'Danke dir! 😍 Meh devo uf luxestyle.ch 🛍️', 'Freut üs mega! 🙌 luxestyle.ch (–10% mit WELCOME10)'],
+};
+const cTopic = (t = '') => { for (const [n, re] of C_TOPIC) if (re.test(t)) return n; return 'allgemein'; };
+const cReply = (t) => { const a = C_REPLY[cTopic(t)] || C_REPLY.allgemein; return a[Math.floor(Math.random() * a.length)]; };
+
+async function replyComments(ids, env, max = 6) {
+  const out = { ig: 0, fb: 0, skipped: 0 };
+  let replied = [];
+  try { replied = JSON.parse((await env.LUXE_KV.get('replied_comments')) || '[]'); } catch {}
+  const seen = new Set(replied);
+  let done = 0;
+  let myIg = '';
+  if (ids.ig_id) { try { myIg = (await gget(ids.ig_id, { access_token: ids.page_token, fields: 'username' })).username || ''; } catch {} }
+
+  if (ids.ig_id) {
+    try {
+      const media = await gget(`${ids.ig_id}/media`, { access_token: ids.page_token, fields: 'id', limit: '8' });
+      for (const m of (media.data || [])) {
+        if (done >= max) break;
+        const cs = await gget(`${m.id}/comments`, { access_token: ids.page_token, fields: 'id,text,username', limit: '25' });
+        for (const c of (cs.data || [])) {
+          if (done >= max) break;
+          const text = c.text || '';
+          if (seen.has(c.id) || (myIg && c.username === myIg) || SPAM_RE.test(text)) { out.skipped++; continue; }
+          const r = await gpost(`${c.id}/replies`, { message: cReply(text), access_token: ids.page_token });
+          if (r.id) { seen.add(c.id); out.ig++; done++; } else { out.skipped++; }
+        }
+      }
+    } catch (e) { out.ig_err = String(e).slice(0, 120); }
+  }
+  try {
+    const posts = await gget(`${ids.page_id}/posts`, { access_token: ids.page_token, fields: 'id', limit: '8' });
+    for (const p of (posts.data || [])) {
+      if (done >= max) break;
+      const cs = await gget(`${p.id}/comments`, { access_token: ids.page_token, fields: 'id,message,from,is_hidden', limit: '25' });
+      for (const c of (cs.data || [])) {
+        if (done >= max) break;
+        const text = c.message || '';
+        if (seen.has(c.id) || c.is_hidden || (c.from && c.from.id === ids.page_id) || SPAM_RE.test(text)) { out.skipped++; continue; }
+        const r = await gpost(`${c.id}/comments`, { message: cReply(text), access_token: ids.page_token });
+        if (r.id) { seen.add(c.id); out.fb++; done++; } else { out.skipped++; }
+      }
+    }
+  } catch (e) { out.fb_err = String(e).slice(0, 120); }
+
+  await env.LUXE_KV.put('replied_comments', JSON.stringify([...seen].slice(-1000)));
+  return out;
+}
+
 // doPost=true -> posten (3×/Tag-Slots); immer -> Meta-Analyse (6×/Tag). So 3× posten + 6× analysieren.
 async function run(env, doPost = true) {
   if (!env.META_ACCESS_TOKEN) return { error: "META_ACCESS_TOKEN fehlt" };
@@ -220,6 +282,8 @@ async function run(env, doPost = true) {
   } else { out.posted = false; out.note = "Analyse-Slot (kein Post)"; }
   // Meta-Analyse läuft bei JEDEM Cron (6×/Tag)
   out.insights = await metaInsights(ids, env).catch((e) => ({ error: String(e) }));
+  // Kommentar-Auto-Antwort läuft bei JEDEM Cron (autonom, idempotent über KV)
+  out.replies = await replyComments(ids, env).catch((e) => ({ error: String(e) }));
   return out;
 }
 
@@ -238,6 +302,11 @@ export default {
     if (setq) { await env.LUXE_KV.put("queue_url", setq); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url_set: setq, cursor: 0 }); }
     const clean = u.searchParams.get("cleanup");
     if (clean) return Response.json(await cleanupOldFb(env, clean).catch((e) => ({ error: String(e) })));
+    // Kommentar-Auto-Antwort manuell auslösen (Handy-Tap): …/?key=…&replies=1
+    if (u.searchParams.get("replies")) {
+      const ids = await discoverIds(env);
+      return Response.json(await replyComments(ids, env).catch((e) => ({ error: String(e) })));
+    }
     // Meta-Analyse-Verlauf ansehen (IG+FB-Engagement, autonom 2×/Tag gesammelt)
     if (u.searchParams.get("insights")) {
       const log = JSON.parse((await env.LUXE_KV.get("insights_log")) || "[]");
