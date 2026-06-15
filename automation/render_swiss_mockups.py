@@ -23,6 +23,9 @@ GARMENT = {
     'edelweiss':        (237,232,221),  # Cream (Line-Art)
     'swiss-made':       (237,232,221),  # Cream (Emblem)
     'zueri':            (244,241,234),  # Off-White (Stadt)
+    'baern':            (244,241,234),
+    'basel':            (244,241,234),
+    'luzaern':           (244,241,234),
 }
 BG = (250, 248, 245)   # heller Studio-Hintergrund
 CW, CH = 1200, 1500    # Mockup-Format (4:5)

@@ -45,12 +45,18 @@ bottom=im.getbbox()[3]
 cf=font(110); centered(d,bottom+70,'SCHWIIZER QUALITÄT',cf,RED,16)
 save(im,'swiss-made')
 
-# ZÜRI — Stadt-Pride + Koordinaten
-im=new(); d=ImageDraw.Draw(im)
-f=fitfont('ZÜRI',W-300,tr=40); h=tsize(f,'ZÜRI')[1]
-centered(d,300,'ZÜRI',f,ANTHRACITE,40)
-bottom=im.getbbox()[3]
-cf=font(120); centered(d,bottom+70,'47.37° N · 8.54° E',cf,RED,14)
-save(im,'zueri')
+# Städte-Serie — Stadt-Pride + Koordinaten (separate Regional-Märkte)
+CITIES=[
+    ('zueri',   'ZÜRI',   '47.37° N · 8.54° E'),
+    ('baern',   'BÄRN',   '46.95° N · 7.45° E'),
+    ('basel',   'BASEL',  '47.56° N · 7.59° E'),
+    ('luzaern', 'LUZÄRN', '47.05° N · 8.31° E'),
+]
+for slug, word, coords in CITIES:
+    im=new(); d=ImageDraw.Draw(im)
+    f=fitfont(word,W-300,tr=40); centered(d,300,word,f,ANTHRACITE,40)
+    bottom=im.getbbox()[3]
+    cf=font(120); centered(d,bottom+70,coords,cf,RED,14)
+    save(im,slug)
 
 print('Fertig → pod/swiss-edition/')

@@ -22,11 +22,11 @@ Anthrazit `#1F2328`, Off-White `#F4F1EA`, Sage `#7C8C6B`.
 | `edelweiss.png` | T-Shirt «Edelweiss» | Unisex-Tee | Cream/Weiss | Anthrazit + roter Kern | 32.90 |
 
 | `swiss-made.png` | T-Shirt «Swiss Made» | Unisex-Tee | Cream/Weiss | Swiss-Kreuz + Anthrazit | 32.90 |
-| `zueri.png` | T-Shirt «Züri» | Unisex-Tee | Off-White | Anthrazit + rote Koordinaten | 32.90 |
+| `zueri.png` / `baern.png` / `basel.png` / `luzaern.png` | T-Shirt «Züri/Bärn/Basel/Luzärn» | Unisex-Tee | Off-White | Anthrazit + rote Koordinaten | 32.90 |
 
 **Welle 2 (Line-Art, `render_swiss_welle2.py`):** matterhorn-zermatt · schwiizer-alpe (Top) · edelweiss (botanisch verbessert).
-**Zusatz (`render_swiss_extra.py`):** swiss-made (Premium-Emblem) · zueri (Stadt-Pride + Koordinaten — Vorlage für Städte-Serie Bärn/Basel/Luzärn).
-**Gesamt: 14 druckfertige Designs.**
+**Zusatz (`render_swiss_extra.py`):** swiss-made (Premium-Emblem) · **Städte-Serie** zueri/baern/basel/luzaern (Stadt-Pride + Koordinaten, je separater Regional-Markt — erweiterbar: St. Gallen, Winti, Bümpliz …).
+**Gesamt: 17 druckfertige Designs.**
 
 > ⚠️ **Ink-Farbe ↔ Garment beachten:** Off-White-Designs (`chuchichaeschtli`, `sali-zaeme`) NUR auf
 > dunkle Garments (sonst unsichtbar). Anthrazit-Designs auf helle Garments.
