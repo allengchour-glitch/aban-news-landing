@@ -4,9 +4,24 @@
 > CJ-Access-Token vom User transient erhalten (funktioniert: code 200). Ziel ~30: Statement-Schmuck · Beauty · Herbst-Accessoires.
 > **Methode:** CJ-Suche → **jedes Bild visuell QA** (asiat. Schrift/Watermark/Text-Overlay/Fremdmarke ablehnen) → ACTIVE anlegen
 > (CHF = Kosten×3.7 auf .90) → in alle 6 Publications. 3 parallele Import-Agenten + 2 manuell.
-- **Manuell angelegt + publiziert (2):** Ohrringe «Lotus» (999 Silber, CHF 24.90, `15430690865537`) · Ring «Provence»
-  (Vintage-Stein, CHF 19.90, `15430690898305`).
-- **3 Agenten laufen** (Schmuck-Statement / Beauty / Accessoires) — Ergebnisse werden hier ergänzt.
+**✅ ERGEBNIS: 24 saubere Produkte angelegt (ACTIVE, alle in 6 Publications, Bilder READY). Strenge Bild-QA → ~17 abgelehnt.**
+
+**💎 Schmuck (10):** Ohrringe «Lotus» CHF 24.90 (`15430690865537`) · Ring «Provence» 19.90 (`15430690898305`) · Ohrringe
+«Onda» 14.90 · Armkette «Papillon» 51.90 · Ring «Duetto» 22.90 · Armreif «Nominé» 14.90 · Ring «Arcobaleno» 16.90 ·
+Ring-Set «Eternità» 35.90 · Ohrstecker «Sakura» 28.90 · Ring «Souvenir» 21.90. (CJ-Pool ring-lastig; Halsketten knapp.)
+
+**🧣 Herbst-Accessoires (8, alle CHF 12.90):** Schiebermütze «Marais» · «Tweed» · Docker «Brest» · Leoparden «Savane» ·
+Pailletten-Beret «Étoile» · Filzhut «Montana» · Seidenschal «Lyon» · Chiffon-Stola «Soirée». (CJ-Pool hut-lastig.)
+
+**💄 Beauty (6):** 3D-Gesichtsroller 12.90 · Y-Roller 29.90 · Warm&Kalt-Gerät 29.90 · Kosmetik-Tasche 44.90 (reprice) ·
+RF&LED-Gerät 129.90 (reprice) · Sandelholz-Haarbürste 39.90 (reprice). 3 Preise nachträglich gesenkt (×3.7 war zu hoch).
+
+**🈲 Abgelehnt (~17, Bild-QA):** englische Werbe-Text-Overlays/Collagen, „I Love You"/„10 COLORS"-Overlays, chinesische
+Schrift auf Glücksbeutel, eingenähtes EN-Label, asiatisches Model als alleiniges Hauptbild, Fremdprodukte (Pet-Halstuch,
+Kleid statt Gürtel, Clutch statt Gürtel), off-brand (BFF-Kette, Haushaltsreiniger). **Regel hielt: lieber sauber als voll.**
+
+**Lehre:** CJ-Suche braucht KURZE Queries (1–2 Wörter), Pool ist kategorieübergreifend verschmutzt + viele Text-Overlays.
+Für mehr Halsketten/echte Accessoires (Gürtel/Handschuhe) braucht es eine gezieltere Folge-Session.
 
 ## 2026-06-13 — Nachfrage-getriebener Import (autonom, „suche was Leute wollen, hole Produkte")
 - **Trend-Recherche Juni 2026** (Web + Kanal-Daten): praktische Sommer-/Home-Gadgets („TikTok made me buy it" =
