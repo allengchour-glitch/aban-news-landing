@@ -34,7 +34,7 @@
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-15 (CJ-Import: +24 saubere Produkte)
-- **🛒 24 neue Produkte importiert** (CJ-Token vom User): 10 Schmuck · 8 Herbst-Accessoires · 6 Beauty. Alle ACTIVE,
+- **🛒 32 neue Produkte importiert** (CJ-Token vom User): 10 Schmuck · 8 Accessoires · 6 Beauty · 8 Impuls(Taschen/Sonnenbrille/Haar). Alle ACTIVE,
   Bild-QA pro Produkt (~17 abgelehnt: Text-Overlays/asiat. Schrift/Fremdprodukte), in alle 6 Kanäle, Bilder READY.
   3 überteuerte Beauty-Preise nachträglich gesenkt. Details: `CJ-IMPORT-LOG.md`.
 

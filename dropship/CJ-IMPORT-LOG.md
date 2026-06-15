@@ -20,6 +20,11 @@ RF&LED-Gerät 129.90 (reprice) · Sandelholz-Haarbürste 39.90 (reprice). 3 Prei
 Schrift auf Glücksbeutel, eingenähtes EN-Label, asiatisches Model als alleiniges Hauptbild, Fremdprodukte (Pet-Halstuch,
 Kleid statt Gürtel, Clutch statt Gürtel), off-brand (BFF-Kette, Haushaltsreiniger). **Regel hielt: lieber sauber als voll.**
 
+_**➕ 2. Charge (Conversion-Impuls, +8 → gesamt 32):** Sonnenbrille «Riviera» 14.90 · Stroh-Shopper «Capri» 19.90 ·
+Crossbody «Lido» 12.90 · Mini-Tasche «Perla» 12.90 · Handtasche «Onda» 12.90 · Haargummi «Charlotte» 13.90 ·
+Plüsch-Haargummi «Nuvola» 12.90 · Haarklammern «Mocha» 12.90. (5 abgelehnt: «PUPIL HEART»-Watermark, chines.
+Schrift, Apple-Logo im Hintergrund, Herren-Moody-Bild.) Phone-Charms/Parfum = kein sauberer CJ-Treffer._
+
 **Lehre:** CJ-Suche braucht KURZE Queries (1–2 Wörter), Pool ist kategorieübergreifend verschmutzt + viele Text-Overlays.
 Für mehr Halsketten/echte Accessoires (Gürtel/Handschuhe) braucht es eine gezieltere Folge-Session.
 
