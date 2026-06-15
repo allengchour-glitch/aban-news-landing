@@ -33,5 +33,124 @@
     "link": "https://buy.stripe.com/cNi9AVdCCgvG9Ez4Mt5wI04",
     "cents": 1200,
     "currency": "chf"
+  },
+  "coaches": {
+    "product": "prod_Ui9nPQXnGrPee5",
+    "price": "price_1TijTsRXvVMyfaIrPdilMQfe",
+    "link": "https://buy.stripe.com/28E14p1TUenycQL1Ah5wI08",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "immobilienmakler": {
+    "product": "prod_Ui9nH2wtlyE5Gk",
+    "price": "price_1TijTuRXvVMyfaIrC3GW1y1h",
+    "link": "https://buy.stripe.com/eVqeVf9mm0wI2c72El5wI09",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "friseure": {
+    "product": "prod_Ui9nczHal7bQbx",
+    "price": "price_1TijTuRXvVMyfaIrscg57Zvr",
+    "link": "https://buy.stripe.com/cNiaEZ1TUa7i9Ez6UB5wI0a",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "fotografen": {
+    "product": "prod_Ui9nlkY6rd6Z4I",
+    "price": "price_1TijTvRXvVMyfaIrukaT7FlR",
+    "link": "https://buy.stripe.com/28E3cx2XYdjug2Xgvb5wI0b",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "architekten": {
+    "product": "prod_Ui9nV3DBl1rNZO",
+    "price": "price_1TijTwRXvVMyfaIrBzWNqQ29",
+    "link": "https://buy.stripe.com/8x25kF6aa7Za7wrbaR5wI0c",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "fitnessstudios": {
+    "product": "prod_Ui9nZHLDAsl6Hb",
+    "price": "price_1TijTxRXvVMyfaIrE4MsbT4b",
+    "link": "https://buy.stripe.com/3cIbJ3cyya7i8Ava6N5wI0d",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "kosmetikstudios": {
+    "product": "prod_Ui9n8n4A93r2K1",
+    "price": "price_1TijTyRXvVMyfaIrC2N8SLRw",
+    "link": "https://buy.stripe.com/5kQ28taqqcfq8Av5Qx5wI0e",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "kfz-werkstaetten": {
+    "product": "prod_Ui9nHXS7mlqHbE",
+    "price": "price_1TijTzRXvVMyfaIrkTbe6m9g",
+    "link": "https://buy.stripe.com/6oU6oJeGGa7iaIDgvb5wI0f",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "maler": {
+    "product": "prod_Ui9ntKMGaQC5P5",
+    "price": "price_1TijU0RXvVMyfaIrUYeggmNt",
+    "link": "https://buy.stripe.com/00w28t1TU1AM8AvceV5wI0g",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "hotels": {
+    "product": "prod_Ui9n0iEA6pr5XO",
+    "price": "price_1TijU1RXvVMyfaIrAtMsbt5W",
+    "link": "https://buy.stripe.com/7sYaEZ1TU4MYeYTen35wI0h",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "physiotherapeuten": {
+    "product": "prod_Ui9nUjc0xwEZky",
+    "price": "price_1TijU1RXvVMyfaIrTBRGkgWM",
+    "link": "https://buy.stripe.com/7sY9AVbuu4MYbMH2El5wI0i",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "reinigungsfirmen": {
+    "product": "prod_Ui9nxuwCuwLhU7",
+    "price": "price_1TijU2RXvVMyfaIrE7q3BQWk",
+    "link": "https://buy.stripe.com/5kQ7sNfKK2EQ03Z7YF5wI0j",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "garten-landschaftsbau": {
+    "product": "prod_Ui9nBgPXV5g1Bx",
+    "price": "price_1TijU3RXvVMyfaIrzTZsWtOn",
+    "link": "https://buy.stripe.com/4gMdRb8iidju5oj0wd5wI0k",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "goldschmiede": {
+    "product": "prod_Ui9nDkYb7RwwMH",
+    "price": "price_1TijU4RXvVMyfaIruC3T23D3",
+    "link": "https://buy.stripe.com/5kQeVf2XY4MY2c71Ah5wI0l",
+    "cents": 1200,
+    "currency": "chf"
+  },
+  "alle-kits": {
+    "product": "prod_Ui9nY4NVDgmykr",
+    "price": "price_1TijU5RXvVMyfaIrYkG7hB47",
+    "link": "https://buy.stripe.com/6oUbJ38iicfq4kf2El5wI0m",
+    "cents": 7900,
+    "currency": "chf"
+  },
+  "prompt-bibliothek": {
+    "product": "prod_Ui9nKMQMZgzq4e",
+    "price": "price_1TijU6RXvVMyfaIrqHP6Gq3p",
+    "link": "https://buy.stripe.com/28E4gBgOO0wI3gben35wI0n",
+    "cents": 1900,
+    "currency": "chf"
+  },
+  "vorlagen-set": {
+    "product": "prod_Ui9nMcjb8Z1udn",
+    "price": "price_1TijU7RXvVMyfaIr3II8l4JP",
+    "link": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o",
+    "cents": 1900,
+    "currency": "chf"
   }
 }
