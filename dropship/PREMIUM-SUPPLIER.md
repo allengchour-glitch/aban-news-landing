@@ -52,15 +52,43 @@
 Shopify (QA + deutsche Texte + CHF-Marge + 6 Kanäle), als Kollektion **„LuxeStyle Premium"**.
 
 ---
-## 🔌 BigBuy-API-Recipe (gemappt 2026-06-15) — Token NUR transient/Secret, NIE ins Repo
+## 🔌 BigBuy-API-Recipe (KORRIGIERT 2026-06-15 — vorherige Taxonomy-IDs waren falsch!) — Token NUR transient, NIE ins Repo
 Base: `https://api.bigbuy.eu` · Header `Authorization: Bearer <TOKEN>` (BigBuy → Mein Konto → API).
-- Produkte je Kategorie: `GET /rest/catalog/products.json?parentTaxonomy=<TAXID>&page=1&pageSize=N`
-  → {id, sku, ean13, wholesalePrice (EUR-EK), retailPrice, inShopsPrice, condition, active, images}
-- Kategoriebaum (DE): `GET /rest/catalog/taxonomies.json?isoCode=de` (13082 Einträge, id+name)
-- Name/Text (DE): `GET /rest/catalog/productinformation/<id>.json?isoCode=de`
-- Bilder: `GET /rest/catalog/productimages/<id>.json` (cover: isCover=true, bevorzugt whiteBackground=true; cdnbigbuy.com)
-- **Premium-Taxonomy-IDs:** 2588 Schmuck · 2657 Ohrringe · 2659 Statement-Ohrringe · 2614 Halsketten · 2681 Schmuck-Sets
-  · 776 Geldbörsen · 2911 Handtaschen. (Uhren/Parfum/Kosmetik-IDs noch suchen.)
-- **FILTER:** nur active=1 + condition NEW (KEINE REFURBISHED/USED — viel Refurb-Elektronik im Katalog!).
-- **Preis:** CHF = wholesalePrice(EUR) × 2.3, auf .90 (Premium). ⚠️ retailPrice/taxRate sind EU-21%-MWST — für CH irrelevant, aber CH-Zoll/Versand bei Fulfillment prüfen.
-- **Bezahl-Realität:** Pack Ecommerce €89/Mt + €89 Setup + €129 Shopify-Connector. Bei Import läuft nur Listing (kein Order-Cost); echte Kosten/Marge erst bei realer CH-Bestellung verifizieren.
+- **⚠️ WICHTIGSTE LEHRE:** `products.json?parentTaxonomy=<ID>` akzeptiert NUR **Top-Level-Wurzeln** (grosse IDs wie
+  19650, 19662, 19654). Eine Unterkategorie wie 2588/2657 wirft **404 „Taxonomy not parent with id"**. → Wurzel
+  abfragen, dann **client-seitig** nach dem Produkt-Feld `category`/`taxonomy` filtern (Subtree-Set vorher aus dem
+  Kategoriebaum berechnen). Skript-Vorlage: `/tmp/bb_collect.py` (Charge 2026-06-15, baut children-Map + descendants()).
+- Produkte: `GET /rest/catalog/products.json?parentTaxonomy=<ROOT>&page=N&pageSize=200`
+  → Array {id, sku, ean13, wholesalePrice (EUR-EK), retailPrice, condition, active, images(bool), category, taxonomy, manufacturer}
+- Kategoriebaum (DE): `GET /rest/catalog/taxonomies.json?isoCode=de` (13082 Einträge: id, name, **parentTaxonomy**)
+- **Name/Text (DE): `GET /rest/catalog/productinformation/<id>.json?isoCode=de` → gibt eine LISTE zurück → `[0].name` / `[0].description`** (NICHT Objekt!)
+- Bilder: `GET /rest/catalog/productimages/<id>.json` → `{images:[{url, isCover, whiteBackground}]}` (cover: isCover=true; cdnbigbuy.com; meist sauberes Studio-Weiss)
+- **Verifizierte Wurzeln + Subtrees:** Parfum/Beauty-Wurzel **19650** (Subtree Parfums=14091) · Schmuck-Wurzel **19662**
+  (Subtree Schmuck=2588: Ringe 2590, Halsketten 2614, Ohrringe 2657, Sets 2681) · Taschen-Wurzel **19654** (gemischt →
+  hart auf Handtaschen 2911/Strand 2910/Geldbörsen 776 filtern). Uhren: Subtree 5804/5849.
+- **FILTER (hart):** nur active=1 + condition NEW (KEINE REFURBISHED/USED) + images=true. Bild trotzdem visuell QA'en.
+- **Preis:** Marken-Schmuck CHF = EK(EUR) × ~2.3–3.0 auf .90 (hoher gefühlter Wert). **Marken-Parfum: NICHT ×2.3!**
+  Kund:innen kennen D&G/Lancôme-Marktpreise → markt-nah kalkulieren (EK €26 D&G Light Blue 25ml → CHF 59.90; EK €55
+  D&G The One 50ml → CHF 99.90). Sonst sieht es zu teuer/unseriös aus → Marge bei Marken-Parfum ist dünn (Trust/Traffic-Play).
+- **Bezahl-Realität:** Listing kostet nichts; echte Order-Kosten + CH-Zoll/Versand (Spanien→CH ist Cross-Border!) erst bei realer Bestellung verifizieren. Parfum = Flüssigkeit → Versand-Restriktionen prüfen.
+
+## ✅ ERSTE PREMIUM-CHARGE LIVE (2026-06-15) — 11 echte Marken-Produkte
+Kollektion **„✨ LuxeStyle Premium"** (gid 688683942273) → Rule jetzt **tag EQUALS `bigbuy`** (vorher tag `premium` = 2307
+Produkte, weil fast der ganze CJ-Katalog „premium" getaggt ist → war wertlos; jetzt sauber = nur diese 11). Alle ACTIVE,
+Bild READY, `inventoryItem.tracked:false` (sofort kaufbar, availableForSale:true), in alle 6 Kanäle publiziert, vendor = echte Marke.
+| Produkt | CHF | EK € | Typ |
+|---|---|---|---|
+| Dolce & Gabbana «Light Blue» EdT 25ml | 59.90 | 26.43 | Parfum |
+| Dolce & Gabbana «The One» EdP 50ml | 99.90 | 55.04 | Parfum |
+| Lancôme Miniatur-Set 4 Düfte | 69.90 | 38.29 | Parfum |
+| Etat Libre d'Orange «Sous Le Pont Mirabeau» Unisex 100ml | 84.90 | 43.56 | Parfum (Niche) |
+| Sensilis «Encore un Soir» EdT 100ml | 49.90 | 22.02 | Parfum |
+| Radiant Damenring Edelstahl | 24.90 | 6.31 | Schmuck |
+| Folli Follie Damen-Armreif | 34.90 | 10.91 | Schmuck |
+| Police Herren-Armband Edelstahl | 49.90 | 18.18 | Schmuck |
+| Guess Herrenring Edelstahl | 54.90 | 20.91 | Schmuck |
+| Panarea Damenring | 74.90 | 30.68 | Schmuck |
+| One Jewels Herren-Armband Schwarz | 89.90 | 40.69 | Schmuck |
+
+**Tags je Produkt:** `bigbuy, premium, marke` + parfum/beauty/schmuck + damen/herren/unisex + ring/armband + geschenk.
+5 Heroes (D&G ×2, Radiant, Police, Guess) sind in `automation/good_products.csv` für die Social-Rotation.

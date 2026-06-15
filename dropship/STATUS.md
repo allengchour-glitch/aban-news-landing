@@ -35,6 +35,21 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 11 echte Marken-Produkte importiert (BigBuy)
+- **✨ Kollektion „LuxeStyle Premium" mit 11 ECHTEN Marken bestückt** (vorher leer/diluiert): **Parfum** Dolce & Gabbana
+  «Light Blue» (CHF 59.90), D&G «The One» (99.90), Lancôme Mini-Set (69.90), Etat Libre d'Orange (84.90), Sensilis (49.90)
+  · **Schmuck** Radiant Ring (24.90), Folli Follie Armreif (34.90), Police Armband (49.90), Guess Ring (54.90),
+  Panarea Ring (74.90), One Jewels Armband (89.90). Alle ACTIVE · Bild READY · sofort kaufbar (tracked:false) · in alle 6 Kanäle.
+- **Marken-Parfum markt-nah bepreist** (NICHT ×2.3 — Kund:innen kennen D&G/Lancôme-Preise; sonst unseriös). Schmuck Premium-Marge.
+- **🔧 Premium-Kollektion-Rule gefixt:** war `tag premium` = **2307 Produkte** (fast ganzer CJ-Katalog hat „premium" →
+  wertlos). Jetzt `tag bigbuy` = exakt diese 11 echten Marken → saubere kuratierte Premium-Linie. 5 Heroes in Social-Rotation.
+- **🔌 BigBuy-API-Recipe KORRIGIERT** (`PREMIUM-SUPPLIER.md`): vorherige Taxonomy-IDs (2588 etc.) warfen 404 —
+  `parentTaxonomy` will nur Top-Wurzeln (19650 Parfum, 19662 Schmuck), dann client-seitig nach `category` filtern;
+  `productinformation` gibt eine LISTE zurück. (Der vorige Import-Agent hing in Poll-Loops fest → 0 Produkte; jetzt selbst gemacht.)
+- **Ehrlich offen:** Elektronik bewusst NICHT importiert (Margen-/Zoll-/Retouren-Falle für CH-Dropship — stehe dazu);
+  bestehende Elektronik trägt schon `elektronik/tech`-Tags. Vegan-Tag nur wo wahr (Beauty-Tools), NIE falsch auf Parfum.
+  BigBuy-Bestellkosten + CH-Zoll erst bei echtem Verkauf real (Listing kostet nichts). Engpass bleibt Reichweite/Pixel.
+
 ### 2026-06-15 (Premium-Niveau: BigBuy-Research + Gratis-Werbung-Kit)
 - **🏆 BigBuy analysiert** (`dropship/PREMIUM-SUPPLIER.md`): EU-Premium-Supplier, hebt Qualität — ABER €69/Mt+€90,
   CH=Cross-Border/Zoll, Reviews mängelbehaftet (Versand-Doppelkosten). **Ehrlich: erst Verkäufe validieren, dann gezielt
