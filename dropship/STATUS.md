@@ -35,7 +35,12 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
-### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 16 echte Marken-Produkte importiert (BigBuy)
+### 2026-06-15 (Abend) — 🏆 PREMIUM LIVE: 26 echte Marken-Produkte importiert (BigBuy)
+- **🧱 +10 „füll produkte" (3. Charge):** Halsketten (Folli Follie 29.90, Radiant 39.90, Breil 44.90) · Ohrringe
+  (Cristian Lay 19.90, Radiant 29.90, **Tommy Hilfiger 39.90**) · Sonnenbrillen (Fila 49.90, Superdry 79.90) ·
+  Umhängetaschen (Under Armour 39.90, Reebok 49.90). Alle ACTIVE · Bild-QA'd · kaufbar · 6 Kanäle · Premium-Kollektion.
+  **Abgelehnt:** Polaroid KIDS-Brille (Zielgruppe), „Home ESPRIT"/„DKD Home Decor"-Taschen (Deko-Marken-Bazar-Ware,
+  NICHT die Fashion-Marke Esprit → nicht Premium). Bild-QA via Montage; alle behaltenen = sauberes Studio-Weiss.
 - **⌚ +5 Marken-UHREN (2. Charge, „mach du"):** Radiant Damenuhr Roségold (CHF 39.90), Casio Damenuhr Blau (59.90),
   Bellevue Damenuhr Gold/Kristalle (79.90), Pierre Cardin Herrenuhr Leder (99.90), Guess Herrenuhr Gold-Silber (139.90).
   Alle ACTIVE · Bild visuell QA'd (sauberes Studio-Weiss) · kaufbar · 6 Kanäle · Premium-Kollektion. 3 in Social-Rotation.
