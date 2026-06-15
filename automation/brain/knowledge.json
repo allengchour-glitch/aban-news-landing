@@ -475,6 +475,25 @@
       "POLICY-FIX (Shop-Richtlinien/AGB/Versand-Text) geht NICHT per Shopify-MCP: shopPolicyUpdate braucht Scope write_legal_policies (MCP hat ihn nicht, 2026-06-15 erneut bestaetigt: \"Access denied ... Required access: write_legal_policies\"). Routen: (a) GitHub-CI mit ALLE-Zugriffe-App-Secrets (fix_policies.mjs) — aktuell durch Actions-Deaktivierung blockiert, (b) PC-Claude-Browser, (c) User editiert 2 E-Mails manuell im Admin → Einstellungen → Richtlinien.",
       "POLICY-TIPPFEHLER ERLEDIGT (2026-06-15): beide E-Mail-Tippfehler (Versand + AGB §8) live auf info@luxestyle.ch korrigiert (User manuell, MCP-verifiziert). Alle 7 Policies konsistent. → Merchant-Re-Review kann beantragt werden. NICHT erneut als offen fuehren.",
       "AUTONOMES POSTEN OHNE GITHUB (2026-06-15, da Actions kontoweit aus): IG/FB + Kommentar-Auto-Antwort laufen serverlos über den Cloudflare-Worker luxe-poster (Cron 3x/Tag + &replies=1, KV-idempotent). tutti + TikTok haben KEIN API → nur über eingeloggten Brave-Port 9222 am PC (PC-Tagestask run-follower-daily.ps1). HANDY-FERNSTEUERUNG: Worker-Befehlswarteschlange &cmd=tutti|tiktok|follower|all|deploy (push) + &drain=1 (PC-Listener pc-listener.ps1 holt alle 90s) → control.html-Knoepfe steuern PC-Aufgaben vom Handy. Worker-Code-Aenderung braucht wrangler deploy (nur am PC). Cloud kann den PC NIE direkt erreichen — nur ueber diese Queue. &del=<id> loescht einen FB-Post."
+    ],
+    "hooks_2026_mundart": [
+      "Payoff/Preis in Sekunde 1, On-Screen-Text spiegelt den Hook, End-Card-CTA. Mundart filtert DE automatisch raus (Quellen: opus.pro/shopify 2026 + eigene TikTok-Daten).",
+      "Die {item} für CHF {preis} – und niemmer merkt, dass si nid vom Juwelier isch 💍 #schweizmode #ootdschweiz",
+      "POV: du findsch DS {item} für CHF {preis} wo zu allem passt ☀️ #schweiz #fashionschweiz",
+      "Niemer glaubt mer, dass das {item} nume CHF {preis} choschtet 🤫 #schweizmade #beautyschweiz",
+      "3 Outfits, 1 Teil – und alli under CHF {preis} 😮‍💨 mach es na! #zürichstyle #ootdschweiz",
+      "Das {item} isch s’meischt verchaufti die Wuche – CHF {preis} ✨ #schweizmode #schmuck",
+      "Warte bis am Schluss... so gseht CHF {preis} us am Körper 👀 #fashionschweiz #luzern",
+      "Ich ha ufghört teuri {item} z’choufe – die da sind CHF {preis} und gseh edler us 💎 #basel #ootdschweiz",
+      "Welä Look fürs Wuchenend? Beidi under CHF {preis} 😍 #schweiz #swissstyle #bern"
+    ],
+    "content_formats_2026": [
+      "Product/Outcome-Showcase: fertiges Teil am Körper in Sek 1-2 + Preis-Overlay, dann 3-4 Detail-Stills mit 0.5-1s Ken-Burns, harte Cuts (stärkster Hook).",
+      "Price-Reveal: Frage-Text (Was choschtet das?) über Produkt, Preis bei Sek 2-3 enthüllen, Cut auf In-den-Warenkorb-CTA.",
+      "Before/After-POV: Outfit ohni / mit Accessoire, xfade auf den Beat, On-Screen vorher/nachher.",
+      "GRWM-Companion: 4-6 Anzieh-Segmente, piper-VO nennt jedes Teil + Preis, weicher Musik-Bed, Safe-Zone-Captions.",
+      "1 Teil X Wege Mini-Lookbook: 1 Kleid/Kette 3x gestylt, je ~1.2s auf den Beat, Preis+CTA-Endframe.",
+      "REGEL: jeder Cut 0.5-1.5s in den ersten 5s, On-Screen-Text verstärkt den Hook, Gesamt 21-60s."
     ]
   },
   "decisions": [

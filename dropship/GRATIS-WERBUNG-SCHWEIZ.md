@@ -63,6 +63,14 @@
 - **Manuell (deine Konten, Login nötig):** tutti/anibis/zaster/trovas, FB-Gruppen, Google Merchant Center, Google Business Profile. Ich kann jederzeit MEHR fertige Inserate/Texte liefern.
 - **Tipp:** tutti/anibis-Inserate brauchen oft eine Adresse — Belp (Impressum) nutzen, Versand „Schweizweit" anbieten.
 
+## 🆕 Weitere Gratis-CH-Kanäle (recherchiert 2026-06-15, Quellen newinzurich.com/meineinkauf.ch)
+- **anibis.ch** — gratis Kleininserate, lokale CH-Käufer. Hero-Schmuck/Accessoires listen, luxestyle.ch im Text als Shop-Funnel.
+  (Dieselben Texte/Bilder wie `tutti_listings.csv` nutzbar; gleicher Browser-Weg wie tutti.)
+- **Facebook Marketplace** pro Stadt (Zürich/Bern/Basel/Genf/Luzern rotieren) — gratis, hohe Reichweite, in CH stark.
+- **Lokale + Expat-FB-Gruppen** (Stadt-/Expat-Buy&Sell) — Verkaufsregeln je Gruppe beachten, 1×/Woche.
+- **Google Business Profile** (business.google.com) — gratis Eintrag → „LuxeStyle"/Marken- + Lokal-Suchen + Maps. **Einmal anlegen (User).**
+- **Pinterest Business** — läuft schon (`pinterest-publish.yml`, 103 Pins) → weiter füttern; Fashion/Schmuck visuell stark in CH.
+
 ## ⚠️ Wichtig
 - **Strikt CH** — keine Deutschland-Gruppen/Plattformen.
 - Nicht spammen: in FB-Gruppen die Regeln beachten (oft 1 Post/Woche, nur in „Verkaufs"-Tagen).

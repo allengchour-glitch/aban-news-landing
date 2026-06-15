@@ -65,6 +65,13 @@
   Idempotent, Caps. Berührt KEINE Produkte/Beschreibungen/Theme.
 - **REVIER bleibt:** ich = Import-Felder + Social/Reichweite; andere Session = Beschreibungen/Attribut-Block/Energie-Label/
   Collection-Seite/Theme. Ich fasse Beschreibungen + Theme NICHT an.
+- **🎯 CONVERSION-FIXES → AUFTRAG AN DIE THEME-SESSION (recherchiert 2026-06-15, Quellen shopify.com/twint.ch/meineinkauf.ch).**
+  Engpass ist Session→Warenkorb. Diese 8 Theme-Hebel bitte umsetzen (sind THEME = euer Revier, drum gebe ich sie weiter statt selbst zu machen):
+  1) **TWINT + Apple Pay + Shop Pay** sichtbar an ATC + Checkout (CH-Mobile-Zahlung = #1; Shop Pay bis ~50% CVR-Lift).
+  2) **Sticky Add-to-Cart** mobil sitewide. 3) **Grössen/Fit-Block ÜBER der Galerie** (Model-Grösse + „fällt normal aus" + cm-Tabelle).
+  4) **Trust-Badge-Reihe an ATC** (TWINT/Visa/MC/Apple Pay + „Sichere Zahlung · 30 Tage Rückgabe · Versand Schweiz").
+  5) **Echte ≥4★-Reviews** (Judge.me, filterbar; keine Fake-5,0). 6) **Versand-Klarheit auf PDP** + Warenkorb-Fortschritt „Gratis ab CHF 65".
+  7) **8–12 PDP-Bilder** (front/back/detail/on-model). 8) **Speed/INP ≤200ms** (lazy-load). Copy-Hinweis 2026: „Versand innerhalb der Schweiz / keine Zollüberraschung" framen.
 - **📱 AUTONOMES POSTEN + HANDY-FERNSTEUERUNG (für ALLE Sessions merken):** Da GitHub Actions aus ist, läuft Posten
   über **(a) Cloudflare-Worker `luxe-poster`** (IG+FB-Posts Cron 3×/Tag + **Kommentar-Auto-Antwort** `&replies=1`,
   beides serverlos; Handy-Trigger `…workers.dev/?key=Abanaban192%2B`, `+`=`%2B`) und **(b) PC-Tagestask** für die
