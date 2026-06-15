@@ -66,7 +66,8 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 .item{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,border-color .15s}
 .item:hover{box-shadow:var(--shadow);transform:translateY(-1px);border-color:#dcc89c}
-.item .ph{aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#bcae95;font-size:2rem}
+.item .ph{aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#bcae95;font-size:2rem;transition:transform .25s ease}
+.item:hover .ph{transform:scale(1.06)}
 .item .b{padding:11px 12px;display:flex;flex-direction:column;flex:1}
 .item .t{font-size:.86rem;font-weight:600;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .item .p{color:var(--amber-dk);font-weight:800;font-size:1.05rem}
