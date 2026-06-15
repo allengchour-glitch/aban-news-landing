@@ -16,6 +16,18 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🌅 2026-06-15 (FRÜH) — QA-Fixes + 25 Kaufberater + Adzuna-Hook (alles live)
+> Fortsetzung. Live-QA fand & behob echte Bugs (alle deployed): **eBay-Preisfilter** (pmin/pmax) wird jetzt
+> serverseitig erzwungen (`functions/api/ebay.js`); **Jobs DE/CH** breiter (Arbeitnow Seiten 1–4); **ehrlicher
+> Job-Leer-Zustand**. Startseite hat Live-Reihen (Top-Angebote + Neue Jobs). **25 Kaufberater-Seiten** (neu:
+> occasion-auto/motorrad/wohnmobil/umzug/haus-kaufen/wohnung-kaufen/buero-mieten). 
+> **Adzuna-CH-Jobquelle eingebaut, GEGATED** (`functions/api/jobs.js`, `srcAdzuna`): aktiv sobald Pages-Env
+> `ADZUNA_APP_ID`+`ADZUNA_APP_KEY` gesetzt → echte CH-Jobs (Pflege/Verkauf). Gratis-Key: developer.adzuna.com.
+> ⚠️ Erkenntnis: freie keyless Jobquellen decken CH-Nicht-Tech kaum ab — nur Adzuna/Jooble-Key löst das.
+> **OFFENE USER-PARTS (Stand jetzt):** (1) **D1** für Inserate (Token mit `D1 Edit` oder DB im Dashboard als
+> `DB` binden); (2) **Affiliate-Links** `js/affiliate-config.js` + **AdSense `ca-pub-…`** `js/ads-config.js`;
+> (3) **Adzuna-Keys** als Pages-Env; (4) **Sitemap** in Google Search Console (`/sitemap.xml`).
+
 ## 🌙 2026-06-14 (NACHT-LAUF) — Marktplatz LIVE deployed + voll ausgebaut
 > **DER MARKTPLATZ IST LIVE auf abannews.com** (Cloudflare Pages, via gültigem Pages-Token deployed).
 > Verifiziert 200 + echte Daten: `/marktplatz /suche /stellenangebote /auto-suche /immobilien /angebote-suche
