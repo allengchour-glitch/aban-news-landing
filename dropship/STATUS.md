@@ -33,6 +33,14 @@
 - **🎵 TikTok-App-Freigabe** (in Review) → danach TikTok-Autopost öffentlich. Bis dahin Entwurf/manuell.
 - **🗓️ PC-Task registrieren** (`schtasks …LuxeMarketing`) → Follower+TikTok täglich ohne Tippen.
 
+## 🔑 THEME-WRITE-CREDS „für später" (User 2026-06-15) — OHNE Geheimwert hier!
+- **NIE den Schlüssel-Wert ins Repo/Memory** (feste Regel + Harness blockt). Die **funktionierenden** Admin/Theme-Creds
+  liegen als **GitHub-Secrets `SHOPIFY_CLIENT_ID` + `SHOPIFY_CLIENT_SECRET`** (ALLE-Zugriffe-Custom-App, siehe `dropship/STAND-2026-06-08-shopify-automation.md`).
+- **So läuft es „später" automatisch:** Workflow `.github/workflows/add-premium-section.yml` nutzt genau diese Secrets →
+  sobald er auf `main` ist (nach PR-Merge), per `workflow_dispatch` auslösen → setzt die Premium-Startseiten-Sektion live. Kein Paste nötig.
+- ⚠️ Die am 15.06. im Screenshot gezeigte App `c77dde5c…` war **app_not_installed** (nicht nutzbar) + Schlüssel war sichtbar
+  → **rotieren**. Für Theme-Write nötig: Scope **`write_themes`** an der genutzten App.
+
 ## ✅ Verlauf — was gemacht wurde
 
 ### 2026-06-15 (Abend) — 🏷️ GOOGLE-PRODUKTKATEGORIE auf 87 Premium-Produkte
