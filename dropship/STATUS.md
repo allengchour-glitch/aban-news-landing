@@ -3,6 +3,12 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-15 (NEUESTER STAND — CI-Fix gemergt, ABER Actions kontoweit AUS)
+- **✅ Mini-PR #1002 → `main` gemergt** (sauber, ohne den divergierten Produkt-Branch zu clobbern). Liegt jetzt auf `main`:
+  `automation/fix_policies.mjs` + `automation/add_premium_section.mjs` + Workflows `shop-fix.yml` / `add-premium-section.yml`.
+- **🔴 BLOCKER (verifiziert):** **GitHub Actions ist kontoweit deaktiviert** → `workflow_dispatch` gibt `422 „Actions has been disabled for this user"`. Kein Workflow läuft, egal ob auf `main`. UND `shopPolicyUpdate` per MCP = `Access denied (write_legal_policies)`. → Beide Auto-Routen für den Policy-Fix sind blockiert.
+- **➡️ EINZIGER Hebel (du, 1 Klick):** GitHub → Repo **Settings → Actions → General → „Allow all actions"** aktivieren. Danach löse ich `shop-fix.yml` aus → korrigiert die 2 E-Mail-Tippfehler + setzt die Premium-Startseiten-Sektion live, vollautomatisch. ODER: die 2 E-Mails manuell im Admin (siehe unten, 2 Min).
+
 ## 🟢 LÄUFT AUTONOM (ohne dein Zutun)
 - **📷 IG/FB-Poster LIVE verifiziert** (Cloud-Check 14.06.): `{"cursor":1,"total":29}` — postet 29 Mix-Posts
   (Bilder+Reels+Stories) autonom 2×/Tag. Handy-Trigger: `…workers.dev/?key=Abanaban192%2B` (`+` = `%2B`!).
