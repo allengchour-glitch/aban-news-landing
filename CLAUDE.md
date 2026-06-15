@@ -103,6 +103,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Funktionierende Footer-Handles: schuhe✓ damen-mode✓ sonnenbrillen-eyewear✓. **Lehre:** Veredelungs-Footer nutzten
   teils falsche Handles (sub-X vs X-sub) → bei neuen Cross-Sell-Links IMMER gegen echte Collection-Handles prüfen.
 - **🎨 3 Look-Collections Hero-Banner gesetzt** (abend-look/office-look/strand-look hatten kein Bild) — Produktbild als Hero.
+- **🔎 Abend-QA-Sweep (autonom):** Footer-Cross-Sell anderer Kategorien (Herren/Beauty/Deko/Haustier/Auto/Uhren) geprüft →
+  **keine weiteren kaputten Collection-Links** (Problem war nur Fashion/Schmuck, gefixt). Zudem „Gratis-Versand ab CHF 50"
+  (statt 65) gefunden — aber **ausschliesslich in ARCHIVED/DRAFT-Produkten** (Gadget/Pet/Küche-„✦"-Vorlage), **0 ACTIVE** →
+  **kein Live-Defekt**, bewusst NICHT editiert (archivierter Junk). **Live-Katalog verifiziert sauber.** Lehre: CHF50/65
+  nicht jagen — nur Archiv-Altlast (gehört zum Lösch-Backlog).
 
 **📌 2026-06-15 (🎨 SWISS-EDITION WELLE-1 DESIGNS autonom generiert — 9 druckfertige PNGs):**
 - **`automation/render_swiss_edition.py`** (Pillow + Anton-Font, KEINE Bild-API nötig) rendert **transparente
