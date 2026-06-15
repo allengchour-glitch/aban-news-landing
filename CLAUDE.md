@@ -59,6 +59,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-06-15 (📧 KLAVIYO-DIAGNOSE — HARTE FUNNEL-DATEN, neue Richtung „eigene Reichweite"):**
+- **Semrush-MCP = NICHT im User-Plan** (kein Zugang) → SEO-Keyword-Daten darüber nicht möglich (Plan: semrush.com/mcp-access).
+- **Klaviyo-MCP verbunden** (Account `XWqMAD`, Sender info@luxestyle.ch, TZ Zürich). **E-Mail-Infra ist VOLL gebaut:**
+  10 Live-Flows (Welcome DE+EN, Abandoned Cart/Checkout DE+EN, Win-Back DE+EN, Post-Purchase DE+EN, VIP) + 3 Entwürfe.
+  **ABER 3 Broadcast-Kampagnen (Flash-Sale, Vatertag, Summer-Push) sind ALLE Entwurf — NIE verschickt** (vom 26.05., teils veraltet).
+- **🔴 HARTE ZAHLEN (Klaviyo metric-aggregates, letzte 90 Tage, unabhängige 2. Quelle):**
+  **Placed Order = 0 · Checkout Started = 0 · Viewed Product = 0** (alle Monate März–Juni je 0). Flow-Report 90T = LEER
+  (Flows haben ~0 Mails versendet, mangels Auslöser/Audience). **= Bestätigt endgültig: Engpass ist 100% REICHWEITE/Traffic,
+  NICHT der Shop.** Kein Shop-Polish/SEO/E-Mail-Draft ändert das — es fehlen schlicht Besucher, die kaufen.
+- **⚠️ Möglicher Tracking-Bug (User prüfen):** Klaviyo-Account-`website_url` = **luxestyle.com.co**, Live-Shop = **luxestyle.ch**.
+  `Viewed Product`=0 deutet auf nicht-feuerndes Onsite-Tracking (Klaviyo-JS evtl. auf falscher Domain) ODER echt ~0 engagierter Traffic.
+  Server-seitige Shopify-Events (Placed/Checkout) sind aber autoritativ → 0 Verkäufe ist real.
+- **Lehre für künftige Sessions:** E-Mail kann erst Umsatz bringen, wenn es eine Audience gibt. Audience entsteht aus
+  (a) konvertierendem Traffic, der sich via WELCOME10-Popup einträgt, oder (b) Kontakt-Import. Beides hängt am REICH­WEITEN-
+  Unlock (User-§10: Kampagne+Pixel+Budget). **Nicht weiter ins Leere optimieren** — der Hebel liegt beim User.
+
 **📌 2026-06-15 (🧹 SHOP-SEO-/QUALITÄTS-BEREINIGUNG — autonom, „alle 4 Bereiche"):**
 - **62 Produkte mit echten Defekten gefixt** (live via Shopify-MCP, gebatchte `productUpdate`-Aliase):
   - **10 Schweiz-Poster hatten ENGLISCHE Titel** + rohen POD-Text („…Premium Semi-Glossy Paper Print in 29 Sizes") →
