@@ -481,6 +481,57 @@ const PAGES = [
       ["Voll- oder Teilzeit?", "Beides ist üblich — filtere nach Beschäftigungsart in der Job-Suche."],
     ],
   },
+  {
+    slug: "jobs-zuerich", icon: "🏙️", h1: "Jobs in Zürich", jobloc: "zürich",
+    title: "Jobs Zürich — offene Stellen in der Region Zürich finden | aban",
+    desc: "Jobs in Zürich finden: offene Stellen aus mehreren Job-Börsen für die Region Zürich — nach Beruf und Branche filtern, direkt zur Original-Anzeige bewerben.",
+    cta: "/stellenangebote.html?loc=Z%C3%BCrich", ctaLabel: "Stellen in Zürich durchsuchen",
+    intro: "Zürich ist der grösste Arbeitsmarkt der Schweiz. Durchsuche aktuelle Stellen in und um Zürich — von IT und Finance über Gesundheit bis Detailhandel — und bewirb dich direkt beim Arbeitgeber.",
+    tips: [
+      ["Pendeln einkalkulieren", "Die Region Zürich ist gut mit ÖV erschlossen — auch Stellen in Winterthur, Zug oder am Flughafen sind oft gut erreichbar."],
+      ["Lohnniveau kennen", "Zürich hat hohe Löhne, aber auch hohe Lebenskosten — vergleiche Brutto mit Miete/Krankenkasse der Region."],
+      ["Branche wählen", "Filtere nach deiner Branche (Finance, IT, Gesundheit, Verkauf), um aus der grossen Auswahl die passenden Stellen zu sehen."],
+    ],
+    faq: [
+      ["Wie finde ich Jobs in Zürich?", "Gib in der Job-Suche „Zürich“ als Ort ein (oder nutze diese Seite). Die Treffer kommen live aus mehreren Börsen inkl. Schweizer Quellen; der Klick führt zur Original-Anzeige."],
+      ["Welche Branchen sind in Zürich stark?", "Finance/Banking, IT, Versicherung, Gesundheit, Beratung und Detailhandel — für alle kannst du in der Job-Suche nach Kategorie filtern."],
+      ["Gibt es auch Teilzeit-Stellen?", "Ja — filtere in der Job-Suche nach Beschäftigungsart (Voll-/Teilzeit, Praktikum)."],
+    ],
+  },
+  {
+    slug: "jobs-bern", icon: "🐻", h1: "Jobs in Bern", jobloc: "bern",
+    title: "Jobs Bern — offene Stellen in der Region Bern finden | aban",
+    desc: "Jobs in Bern finden: offene Stellen aus mehreren Job-Börsen für die Region Bern und das Mittelland — nach Beruf filtern, direkt bewerben.",
+    cta: "/stellenangebote.html?loc=Bern", ctaLabel: "Stellen in Bern durchsuchen",
+    intro: "Bundesstadt und Mittelland: In Bern findest du Stellen in Verwaltung, Gesundheit, Bildung, IT und Gewerbe. Durchsuche aktuelle Angebote und bewirb dich direkt.",
+    tips: [
+      ["Verwaltung & Bund", "Bern ist Sitz der Bundesverwaltung — viele Stellen im öffentlichen Sektor; Bewerbungsfristen genau beachten."],
+      ["Sprachen", "Im Raum Bern ist Deutsch zentral, Französisch (Biel/Seeland) oft ein Plus — im CV angeben."],
+      ["Region nutzen", "Auch Thun, Biel und das Seeland sind gut erreichbar — erweitere die Suche bei Bedarf."],
+    ],
+    faq: [
+      ["Wie finde ich Jobs in Bern?", "Gib in der Job-Suche „Bern“ als Ort ein (oder nutze diese Seite). Treffer kommen live aus mehreren Börsen inkl. Schweizer Quellen; Klick führt zur Original-Anzeige."],
+      ["Welche Branchen sind in Bern stark?", "Öffentliche Verwaltung, Gesundheit, Bildung, IT und Gewerbe — in der Job-Suche nach Kategorie filterbar."],
+      ["Auch Stellen in der Region?", "Ja — Thun, Biel und das Seeland tauchen bei einer etwas breiteren Ortssuche mit auf."],
+    ],
+  },
+  {
+    slug: "jobs-basel", icon: "💊", h1: "Jobs in Basel", jobloc: "basel",
+    title: "Jobs Basel — offene Stellen in der Region Basel finden | aban",
+    desc: "Jobs in Basel finden: offene Stellen aus mehreren Job-Börsen für die Region Basel — Pharma, Chemie, Logistik & mehr. Nach Beruf filtern, direkt bewerben.",
+    cta: "/stellenangebote.html?loc=Basel", ctaLabel: "Stellen in Basel durchsuchen",
+    intro: "Basel ist das Pharma- und Life-Sciences-Zentrum der Schweiz. Durchsuche aktuelle Stellen in Pharma, Chemie, Logistik, Gesundheit und mehr — und bewirb dich direkt.",
+    tips: [
+      ["Life Sciences im Fokus", "Pharma/Chemie (z. B. Roche, Novartis und Zulieferer) prägen den Markt — auch viele Stellen bei Dienstleistern rundherum."],
+      ["Grenzregion nutzen", "Basel grenzt an DE/FR — kläre bei Bedarf Grenzgänger-Themen (Bewilligung, Steuern)."],
+      ["Branche filtern", "Neben Pharma sind Logistik, Gesundheit und Detailhandel stark — in der Job-Suche nach Kategorie filtern."],
+    ],
+    faq: [
+      ["Wie finde ich Jobs in Basel?", "Gib in der Job-Suche „Basel“ als Ort ein (oder nutze diese Seite). Treffer kommen live aus mehreren Börsen inkl. Schweizer Quellen; Klick führt zur Original-Anzeige."],
+      ["Welche Branchen sind in Basel stark?", "Pharma/Chemie/Life Sciences, Logistik, Gesundheit und Detailhandel — in der Job-Suche filterbar."],
+      ["Auch für Grenzgänger?", "Ja — viele Stellen sind für Pendler aus DE/FR offen; Bewilligungs- und Steuerfragen vorab klären."],
+    ],
+  },
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -507,7 +558,7 @@ function page(p) {
     buero: ["IMMO_UMZUG_URL", "Büro-Umzug? Zügelfirmen für Gewerbe vergleichen.", "Umzug vergleichen"] };
   let pbKey = "";
   for (const k in PB) { if (p.slug.indexOf(k) === 0) { pbKey = k; break; } }
-  const pb = pbKey ? PB[pbKey] : (p.jobq ? ["JOB_NETZWERK_URL", "Mehr passende Stellen bei unserem Partner-Job-Netzwerk.", "Jobs beim Partner"] : null);
+  const pb = pbKey ? PB[pbKey] : ((p.jobq || p.jobloc) ? ["JOB_NETZWERK_URL", "Mehr passende Stellen bei unserem Partner-Job-Netzwerk.", "Jobs beim Partner"] : null);
   const partnerBox = pb ? `  <div data-partner="${pb[0]}" data-text="${esc(pb[1])}" data-cta="${esc(pb[2])}"></div>\n` : "";
   // Live-eBay-Produktzeile: nur für Produkt-Kategorien (Wohnung/Job ausgenommen)
   const EQ = { "auto-kaufen": "Auto", "ebike-kaufen": "E-Bike", "velo-kaufen": "Velo Fahrrad",
@@ -534,16 +585,16 @@ function page(p) {
       }).join("");
     }).catch(function(){el.closest("section").style.display="none"});
   })();</script>` : "";
-  // Live-Jobs-Zeile (für Job-Kategorie-Seiten via p.jobq)
-  const jobsRow = p.jobq ? `
+  // Live-Jobs-Zeile (für Job-Kategorie- oder Regions-Seiten via p.jobq / p.jobloc)
+  const jobsRow = (p.jobq || p.jobloc) ? `
   <section style="margin-top:26px">
     <h2 style="margin-bottom:4px">Aktuelle Stellen</h2>
     <p style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Live aus mehreren Job-Börsen (inkl. Schweiz) · Klick führt zur Original-Anzeige.</p>
     <div id="jobRow" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px"><div style="color:var(--muted);font-size:.9rem">Lade Stellen …</div></div>
   </section>
-  <script>(function(){var JQ=${JSON.stringify(p.jobq)};var el=document.getElementById("jobRow");if(!el)return;
+  <script>(function(){var JQ=${JSON.stringify(p.jobq || "")},JL=${JSON.stringify(p.jobloc || "")};var el=document.getElementById("jobRow");if(!el)return;
     function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-    fetch("/api/jobs?q="+encodeURIComponent(JQ)).then(function(r){return r.json()}).then(function(d){
+    fetch("/api/jobs?q="+encodeURIComponent(JQ)+"&loc="+encodeURIComponent(JL)).then(function(r){return r.json()}).then(function(d){
       var it=(d.items||[]).slice(0,6);if(!it.length){el.closest("section").style.display="none";return}
       el.innerHTML=it.map(function(o){var href=(o.url&&o.url!=="#")?esc(o.url):"#";
         return '<a href="'+href+'" target="_blank" rel="noopener nofollow" style="border:1px solid var(--line);border-radius:11px;padding:12px 13px;background:#fff;text-decoration:none;color:var(--ink);display:block"><div style="font-weight:700;font-size:.86rem;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(o.title)+'</div><div style="font-size:.76rem;color:var(--muted)">'+esc([o.company,o.location].filter(Boolean).join(" · "))+'</div></a>';
