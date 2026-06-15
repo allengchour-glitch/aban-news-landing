@@ -67,9 +67,12 @@
   `productimages`; „mandatory"-/„tallas"-Junk gefiltert; alle READY, 0 FAILED). 30 Produkte haben bei BigBuy nur 1 Bild = fertig.
   **Diese Session hat den Galerie-Backfill der BESTEHENDEN BigBuy-Produkte gemacht → Katalog-Session NICHT doppeln.**
   Für KÜNFTIGE Importe: `bigbuy_import.mjs` `bbImages` soll alle non-cover-Bilder mitnehmen (Importer-Fix = Katalog-Session).
-- **🔴 FLAG an Katalog-Session — 5 kaputte/abweichende BigBuy-SKUs** (nicht in BigBuy auffindbar → Fulfillment-Risiko + kein Bild):
-  Lancôme-Set `bb-S05151xx-lancome` (**Platzhalter!**), Etat Libre `bb-S8315004`, Radiant Damenring `bb-S7253180`,
-  Police Armband `bb-S0380891`, Guess Herrenring `bb-S0396716`. → echte SKUs nachtragen, dann zieht diese Session die Bilder nach.
+- **✅ „5 kaputte SKUs" GRÖSSTENTEILS FALSCHALARM (geklärt 2026-06-15 spät):** Die 4 SKUs Etat `S8315004`, Radiant
+  `S7253180`, Police `S0380891`, Guess `S0396716` sind **KORREKT** (per BigBuy-Bilddateiname `{EAN}_{SKU}_P00` verifiziert)
+  → **kein Fulfillment-Problem**; `productinformationbysku` lieferte 404 nur wegen Stock=0. Zusatzbilder per konstruierter
+  cdnbigbuy-URL (HTTP-200-geprüft) nachgezogen: Etat 5, Radiant 5, Guess 2, Lancôme 3, Police 1 (BigBuy hat echt nur 1).
+  **🟡 EINZIG OFFEN (Katalog-Session, niedrige Prio):** Lancôme-Variant-SKU `bb-S05151xx-lancome` ist ein **Platzhalter**
+  → echte BigBuy-SKU für EAN `3660732559572` nachtragen (sonst Fulfillment-Fehler, falls bestellt — noch keine Orders).
 - **CJ-Bild-Backfill = SACKGASSE:** single-image CJ-Produkte haben custom-SKUs (`cj-ombra` etc.) → nicht auf CJ-ID mappbar.
   Neueste CJ-Apparel hat bereits 5–7 Bilder. (Nicht erneut versuchen.)
 - **🏷️ ATTRIBUT-/LABEL-BLOCK gebaut (für ALLE Produkte):** Datei **`dropship/produkt-attribut-block.liquid`** — intelligenter
