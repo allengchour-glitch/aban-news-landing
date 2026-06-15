@@ -61,6 +61,15 @@
 - **🔄 PROTOKOLL „regelmässig Updates + gemeinsames Gehirn" (User 2026-06-15):** (1) Jede Session aktualisiert DIESEN
   LIVE-STAND nach grösseren Aktionen. (2) **Gemeinsames Gehirn = `automation/brain/knowledge.json`** — beide Sessions LESEN es
   + dürfen `rules` ergänzen (APPEND), NIE gegenseitig überschreiben. (3) Vor jedem Shopify-Write hier reinschauen.
+- **📋 ATTRIBUT-BLOCK + ENERGIE-LABEL = Auftrag an die anreichernde Session (User 2026-06-15 „sehr gute Ergänzung, auf
+  ALLE Produkte, v.a. Elektro mit Label"):** Die andere Session reichert Produkt-Beschreibungen mit BigBuy-Volltext +
+  **strukturiertem Attribut-Block** an (Art/Material/Farbe/Grösse/Geschlecht/„Markenetui") — sehr gut, **bitte auf ALLE
+  Produkte ausrollen**. ⚠️ **QA:** irrelevante Auto-Attribute droppen (z.B. „Sonnenschutz: Kategorie 3" stand fälschlich auf
+  einem RING). **ELEKTRO:** EU-**Energie-Effizienzklasse + Label-Bild** ergänzen (BigBuy liefert `energyEfficiency`/Label-Image;
+  Google verlangt `energy_efficiency_class` bei relevanten Artikeln wie LED-Lampen). **REVIER:** Beschreibungs-/Attribut-/Label-
+  Anreicherung macht die ANREICHERNDE Session — die **Produkt-Session (CizQ6) fasst Beschreibungen NICHT mehr an** (kein Clobber);
+  sie bleibt bei Import-Feldern (Marke/Barcode/Kategorie/Märkte), die schon gesetzt sind.
+
 - **🚨 GOOGLE MERCHANT GESPERRT (20:25) + 🌍 MÄRKTE GEFIXT (20:30):** Merchant-Konto suspendiert (0 genehmigt / 106'650
   abgelehnt). Ursache u.a.: **8 Märkte ALLE aktiv** (inkl. DACH = Strikt-CH-Verstoss!) → Feed-Bloat. **FIX (von mir, reversibel):**
   7 Nicht-CH-Märkte (DACH/FR/IT/Global/EU-Rest/UK/US) auf **status DRAFT** gesetzt; **nur Switzerland aktiv**. Strikt-CH wieder erfüllt,
