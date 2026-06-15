@@ -453,6 +453,12 @@
       "Grössentabelle als HTML-Block in descriptionHtml (Tabelle EU/mm/US fuer Ringe; cm-Masse fuer Kleidung). Zusaetzlich, wenn der Lieferant ein Size-Chart-Bild hat (BigBuy: *_mandatory-ring*.jpg / CJ: Size-Chart im productImageSet), dieses als Galerie-Bild anhaengen — ABER NUR wenn QA sauber (keine asiat. Schrift bei CJ).",
       "BigBuy-Ringe tragen die reale Groesse im Namen (z.B. 14 54 mm). Im Dropship-Front Grössen-Selektor mit inventoryItem.tracked:false anbieten (wie bei Kleidung). Bei create-product gleich options:[Grösse]+variants mitgeben, NICHT nachtraeglich.",
       "MEHR BILDER: immer die volle Lieferanten-Galerie als Media anhaengen (CJ productImageSet 5-10 Bilder, BigBuy P00/P10/P20), jedes Bild vorher per 🈲-QA. Nie nur das Cover-Bild allein lassen."
+    ],
+    "meisterwerk_standard": [
+      "MEISTERWERK-PRODUKT-STANDARD (User 2026-06-15 alles ein meisterwerk): jedes Produkt soll haben: (1) DETAIL-Beschreibung (Story-Einstieg + Material/Passform/Styling/Anlass/Pflege, nicht nur 2 Saetze), (2) GRÖSSENTABELLE wo Groessen relevant (Kleidung cm Brust/Taille/Huefte/Laenge; Ringe EU/mm/US) MIT Einsteiger-Mess-Anleitung (für die ahnungslosen: wie messe ich Brust/Taille/Hüfte), (3) SEO title+meta (Marke+Kategorie+Nutzen+CH), (4) volle Bilder-Galerie (Lieferant, je QA), (5) Video wo moeglich.",
+      "CLOTHING-SIZE-TABLE (cm) Standard XS34/S36/M38/L42/XL44 mit Brust/Taille/Hüfte-Bereichen + Hinweis im Zweifel groessere Groesse. Mess-Guide immer dazu.",
+      "VIDEO: pro Produkt-Video ist teuer/aufwendig (Luma ray-flash-2 aus Hauptbild, oder CJ-productVideo wenn vorhanden, oder Reel aus good_products). Realistisch: Hero-Produkte zuerst, nicht alle 1300 auf einmal. CJ-productVideo meist leer.",
+      "ROLLOUT realistisch in Batches: neue Importe sofort im Meisterwerk-Standard; Alt-Katalog (~1300) schrittweise nachziehen (Kleider haben teils schon cm-Tabellen aus fruehen Sessions — nicht doppeln)."
     ]
   },
   "decisions": [

@@ -35,6 +35,15 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🎨 MEISTERWERK-STANDARD (User „alles ein meisterwerk: SEO, Bilder, Video, Tabelle für Ahnungslose")
+- **Gehirn-Regel `meisterwerk_standard`** verankert: jedes Produkt = Detail-Beschreibung (Story+Material+Passform+Styling+
+  Pflege) + Grössentabelle MIT Einsteiger-Mess-Anleitung + SEO (title/meta) + volle Bilder-Galerie (QA) + Video wo möglich.
+- **7 Kleidungsstücke veredelt** (4 Blusen + 3 Marken-Shirts): Meisterwerk-Beschreibung, **cm-Grössentabelle (Büste/
+  Taille/Hüfte) + „So misst du richtig"-Anleitung für Einsteiger**, SEO-Title + Meta-Description. Vorlage für den Rest.
+- **Ehrlich zum Umfang:** „alles" = ~1300 Produkte → geht nur in Batches, nicht in einem Zug. Neue Importe sind ab sofort
+  im Meisterwerk-Standard; Alt-Katalog ziehe ich schrittweise nach (Kleider haben teils schon cm-Tabellen aus früheren Sessions).
+  **Pro-Produkt-VIDEO** ist der teuerste Teil (Luma ray-flash-2 / Reels) → Hero-Produkte zuerst, nicht alle gleichzeitig.
+
 ### 2026-06-15 (Abend) — 🧹 SAUBER-MACHEN: Grössen, Grössentabellen, Galerien + 22 neue Produkte
 - **+21 neue Marken-Teile** (Runde „noch 3 mal", weg von Uhren → Schmuck/Parfum): Halsketten/Anhänger (One Jewels,
   Radiant, Guess, Tommy Hilfiger, Folli Follie, Morellato), Ohrringe (Radiant, Adore, Folli Follie, Breil, One Jewels),
