@@ -3,7 +3,14 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
-## 🆕 2026-06-15 (NEUESTER STAND — CI-Fix gemergt, ABER Actions kontoweit AUS)
+## 🆕 2026-06-15 (NEUESTER STAND — Policy-Tippfehler GEFIXT ✅)
+- **✅ BEIDE E-Mail-Tippfehler in den Policies korrigiert** (User manuell im Admin, live via MCP verifiziert 22:13 UTC):
+  Versand-Policy + AGB §8 GEWÄHRLEISTUNG → jetzt beide `info@luxestyle.ch`. Alle 7 Policies konsistent. → der
+  wahrscheinlichste Google-Merchant-„Misrepresentation"-Auslöser ist beseitigt.
+- **➡️ NÄCHSTER SCHRITT (User, Merchant Center):** jetzt **„Erneute Überprüfung beantragen"** (Konto-Status). Davor
+  noch: Feed auf CH/de + saubere Kollektionen begrenzen (Markets bereits CH-only auf DRAFT gesetzt).
+
+
 - **✅ Mini-PR #1002 → `main` gemergt** (sauber, ohne den divergierten Produkt-Branch zu clobbern). Liegt jetzt auf `main`:
   `automation/fix_policies.mjs` + `automation/add_premium_section.mjs` + Workflows `shop-fix.yml` / `add-premium-section.yml`.
 - **🔴 BLOCKER (verifiziert):** **GitHub Actions ist kontoweit deaktiviert** → `workflow_dispatch` gibt `422 „Actions has been disabled for this user"`. Kein Workflow läuft, egal ob auf `main`. UND `shopPolicyUpdate` per MCP = `Access denied (write_legal_policies)`. → Beide Auto-Routen für den Policy-Fix sind blockiert.

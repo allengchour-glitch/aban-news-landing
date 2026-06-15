@@ -472,7 +472,8 @@
       "IMMER AUTOMATION bevorzugen (User 2026-06-15): wiederkehrende/grosse Arbeit als Skript+Workflow bauen (z.B. feed_ready.mjs), nicht manuell. Neue Importe sofort feed-fertig (Marke+Barcode+Kategorie) per Skript.",
       "GitHub-API (merge/dispatch/PR) kann rate-limiten — git push geht weiter (anderer Kanal). Bei GitHub-Rate-Limit: Aktion spaeter erneut versuchen, nicht haemmern.",
       "GITHUB ACTIONS IST KONTOWEIT DEAKTIVIERT (2026-06-15 verifiziert: workflow_dispatch → 422 \"Actions has been disabled for this user\"). → KEIN Workflow laeuft, egal ob auf main. CI-Route fuer Policy-Fix + Theme-Section ist TOT bis der User in GitHub Settings → Actions die Actions wieder aktiviert. git push/merge gehen weiter (anderer Kanal).",
-      "POLICY-FIX (Shop-Richtlinien/AGB/Versand-Text) geht NICHT per Shopify-MCP: shopPolicyUpdate braucht Scope write_legal_policies (MCP hat ihn nicht, 2026-06-15 erneut bestaetigt: \"Access denied ... Required access: write_legal_policies\"). Routen: (a) GitHub-CI mit ALLE-Zugriffe-App-Secrets (fix_policies.mjs) — aktuell durch Actions-Deaktivierung blockiert, (b) PC-Claude-Browser, (c) User editiert 2 E-Mails manuell im Admin → Einstellungen → Richtlinien."
+      "POLICY-FIX (Shop-Richtlinien/AGB/Versand-Text) geht NICHT per Shopify-MCP: shopPolicyUpdate braucht Scope write_legal_policies (MCP hat ihn nicht, 2026-06-15 erneut bestaetigt: \"Access denied ... Required access: write_legal_policies\"). Routen: (a) GitHub-CI mit ALLE-Zugriffe-App-Secrets (fix_policies.mjs) — aktuell durch Actions-Deaktivierung blockiert, (b) PC-Claude-Browser, (c) User editiert 2 E-Mails manuell im Admin → Einstellungen → Richtlinien.",
+      "POLICY-TIPPFEHLER ERLEDIGT (2026-06-15): beide E-Mail-Tippfehler (Versand + AGB §8) live auf info@luxestyle.ch korrigiert (User manuell, MCP-verifiziert). Alle 7 Policies konsistent. → Merchant-Re-Review kann beantragt werden. NICHT erneut als offen fuehren."
     ]
   },
   "decisions": [
