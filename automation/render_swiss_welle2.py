@@ -70,20 +70,33 @@ d.line([(bx0-30,by0+bh),(bx0+bw+30,by0+bh)],fill=ANTHRACITE,width=LW)
 f=fitfont('SCHWIIZER ALPE',2200,tr=40); centered(d,by0+bh+90,'SCHWIIZER ALPE',f,ANTHRACITE,40)
 save(im,'schwiizer-alpe')
 
-# 3) EDELWEISS (stilisiert, monoline) + EDELWEISS-Schriftzug
+# 3) EDELWEISS (botanisch: doppellagige Lanzett-Blütenblätter + Floret-Kern)
 im=new(); d=ImageDraw.Draw(im)
 import math
-cx,cy=W//2,720; petL=420; petW=120
-for i in range(8):
-    a=math.pi*2*i/8
-    tip=(cx+math.cos(a)*petL, cy+math.sin(a)*petL)
-    s1=(cx+math.cos(a-0.18)*petW, cy+math.sin(a-0.18)*petW)
-    s2=(cx+math.cos(a+0.18)*petW, cy+math.sin(a+0.18)*petW)
-    d.line([s1,tip,s2],fill=ANTHRACITE,width=20,joint='curve')
-# Blütenmitte (kleine Punkte)
-for i in range(6):
-    a=math.pi*2*i/6; d.ellipse([cx+math.cos(a)*55-26,cy+math.sin(a)*55-26,cx+math.cos(a)*55+26,cy+math.sin(a)*55+26],fill=RED)
-f=fitfont('EDELWEISS',1700,tr=48); centered(d,cy+petL+120,'EDELWEISS',f,ANTHRACITE,48)
+cx,cy=W//2,760
+def petal(a,r0,r1,halfw):
+    dx,dy=math.cos(a),math.sin(a); px,py=-math.sin(a),math.cos(a)
+    rmid=r0+(r1-r0)*0.42
+    bl=(cx+dx*r0+px*halfw*0.35, cy+dy*r0+py*halfw*0.35)
+    ml=(cx+dx*rmid+px*halfw,     cy+dy*rmid+py*halfw)
+    tip=(cx+dx*r1,               cy+dy*r1)
+    mr=(cx+dx*rmid-px*halfw,     cy+dy*rmid-py*halfw)
+    br=(cx+dx*r0-px*halfw*0.35,  cy+dy*r0-py*halfw*0.35)
+    return [bl,ml,tip,mr,br]
+# untere (innere) Lage – etwas kürzer, versetzt
+for i in range(7):
+    a=math.pi*2*i/7 + math.pi/7
+    d.polygon(petal(a,55,300,62), fill=ANTHRACITE)
+# obere (äussere) Lage – lang, markant
+for i in range(7):
+    a=math.pi*2*i/7 - math.pi/2
+    d.polygon(petal(a,60,470,78), fill=ANTHRACITE)
+# Floret-Kern: Cluster kleiner Punkte
+for i in range(7):
+    a=math.pi*2*i/7; rr=24
+    d.ellipse([cx+math.cos(a)*48-rr,cy+math.sin(a)*48-rr,cx+math.cos(a)*48+rr,cy+math.sin(a)*48+rr],fill=RED)
+d.ellipse([cx-rr,cy-rr,cx+rr,cy+rr],fill=RED)
+f=fitfont('EDELWEISS',1700,tr=48); centered(d,cy+470+150,'EDELWEISS',f,ANTHRACITE,48)
 save(im,'edelweiss')
 
 print('Fertig → pod/swiss-edition/')
