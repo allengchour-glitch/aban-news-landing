@@ -4,7 +4,7 @@
     "title": "Alle KI-Starter-Kits (Bundle)",
     "desc": "Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.",
     "price": "CHF 79",
-    "buy": "",
+    "buy": "https://buy.stripe.com/6oUbJ38iicfq4kf2El5wI0m",
     "bundle": true
   },
   {
@@ -47,111 +47,111 @@
     "title": "KI-Starter-Kit für Coaches & Berater",
     "desc": "Angebote, Posts, Session-Vorbereitung — ohne Hype.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/28E14p1TUenycQL1Ah5wI08"
   },
   {
     "slug": "immobilienmakler",
     "title": "KI-Starter-Kit für Immobilienmakler",
     "desc": "Exposés, Anfragen-Antworten, Inserate schneller.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/eVqeVf9mm0wI2c72El5wI09"
   },
   {
     "slug": "friseure",
     "title": "KI-Starter-Kit für Friseure & Salons",
     "desc": "Social-Posts, Bewertungen, Terminmails.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/cNiaEZ1TUa7i9Ez6UB5wI0a"
   },
   {
     "slug": "fotografen",
     "title": "KI-Starter-Kit für Fotografen",
     "desc": "Angebote, Bildtexte, Kundenkommunikation.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/28E3cx2XYdjug2Xgvb5wI0b"
   },
   {
     "slug": "architekten",
     "title": "KI-Starter-Kit für Architekturbüros",
     "desc": "Texte, Ausschreibungen, Recherche — mit Grenzen.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/8x25kF6aa7Za7wrbaR5wI0c"
   },
   {
     "slug": "fitnessstudios",
     "title": "KI-Starter-Kit für Fitnessstudios",
     "desc": "Social, Mitglieder-Mails, Kurs-Beschreibungen.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/3cIbJ3cyya7i8Ava6N5wI0d"
   },
   {
     "slug": "kosmetikstudios",
     "title": "KI-Starter-Kit für Kosmetik- & Nagelstudios",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/5kQ28taqqcfq8Av5Qx5wI0e"
   },
   {
     "slug": "kfz-werkstaetten",
     "title": "KI-Starter-Kit für KFZ-Werkstätten",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/6oU6oJeGGa7iaIDgvb5wI0f"
   },
   {
     "slug": "maler",
     "title": "KI-Starter-Kit für Maler & Lackierer",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/00w28t1TU1AM8AvceV5wI0g"
   },
   {
     "slug": "hotels",
     "title": "KI-Starter-Kit für Hotels & Pensionen",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/7sYaEZ1TU4MYeYTen35wI0h"
   },
   {
     "slug": "physiotherapeuten",
     "title": "KI-Starter-Kit für Physiotherapie-Praxen",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/7sY9AVbuu4MYbMH2El5wI0i"
   },
   {
     "slug": "reinigungsfirmen",
     "title": "KI-Starter-Kit für Reinigungsfirmen",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/5kQ7sNfKK2EQ03Z7YF5wI0j"
   },
   {
     "slug": "garten-landschaftsbau",
     "title": "KI-Starter-Kit für Garten- & Landschaftsbau",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/4gMdRb8iidju5oj0wd5wI0k"
   },
   {
     "slug": "goldschmiede",
     "title": "KI-Starter-Kit für Goldschmiede & Juweliere",
     "desc": "Spickzettel + erprobte Prompts + Datenschutz-Checkliste.",
     "price": "CHF 12",
-    "buy": ""
+    "buy": "https://buy.stripe.com/5kQeVf2XY4MY2c71Ah5wI0l"
   },
   {
     "slug": "prompt-bibliothek",
     "title": "KI-Prompt-Bibliothek für DACH-Solopreneure",
     "desc": "100+ erprobte Prompts zum Kopieren — Akquise, Kunden, Marketing, Admin & Recherche. Branchen-übergreifend, ehrlich, ohne Hype.",
     "price": "CHF 19",
-    "buy": ""
+    "buy": "https://buy.stripe.com/28E4gBgOO0wI3gben35wI0n"
   },
   {
     "slug": "vorlagen-set",
     "title": "Fertige Text-Vorlagen für Solopreneure",
     "desc": "40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen & Absagen. Kopieren, Platzhalter ersetzen, abschicken.",
     "price": "CHF 19",
-    "buy": ""
+    "buy": "https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o"
   }
 ]
