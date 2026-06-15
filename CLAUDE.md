@@ -59,6 +59,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-06-15 (💳 STRIPE→GELATO-BRÜCKE gebaut — der „ohne-Shopify"-Weg, autonom):**
+- **`cloudflare/src/stripe.js` + Worker-Routen** `/stripe/checkout` (Checkout-Session, CHF, Adresse) +
+  `/webhooks/stripe` (checkout.session.completed → Gelato-Druck). Nutzt dieselbe `gelato_map` + `createGelatoOrder`
+  wie der Shopify-Pfad (gelato.js: `createGelatoOrder`/`loadMap`/`mapEntry` exportiert). **Stripe-Signatur geprüft**
+  (STRIPE_WEBHOOK_SECRET), **idempotent** (Event-ID in KV), **no-op-sicher** (ohne STRIPE_SECRET_KEY → 503).
+  Mock-Tests grün: paid→Gelato-draft, Idempotenz, no-key→503, Checkout→URL, fremde Events ignoriert.
+- **Storefront-Demo** `pod/stripe-checkout-demo.html` (GitHub Pages): Motiv→Cloudinary→`/stripe/checkout`→Stripe→Druck.
+  **KOMPLETT OHNE Shopify** — Webhook lege ich per Stripe-API selbst an (kein MCP-Block, kein manueller Schritt).
+- **User-To-do (README §Stripe):** `wrangler secret put STRIPE_SECRET_KEY` (sk_test_…) + Stripe-Webhook anlegen →
+  `STRIPE_WEBHOOK_SECRET` setzen → in der Demo `CATALOG` (gemappte Variant-IDs + Preise) eintragen. Dann End-to-End live.
+
 **📌 2026-06-14 (🧹 WEBSEITE-SAUBER-AUDIT — autonom, Nacht):**
 - **Produkt-QA:** 50 älteste + 40 neueste ACTIVE-Produkte gescannt → **0 FAILED-Bilder**, alle Medien READY, alle SEO-Titel
   gesetzt, keine „CJ"/Platzhalter-Leaks. Katalog visuell + SEO sauber.
