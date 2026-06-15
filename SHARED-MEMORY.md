@@ -20,15 +20,17 @@
 > Andere Sessions: keine Produkte importieren / keine `social/posts_image.csv` ändern, sonst Dubletten/Konflikte.
 
 > 🏭 **HANDOFF 2026-06-15 — BIGBUY-IMPORT (an die Session mit dem `BIGBUY_API_KEY`):**
-> Neue Lieferantenfirma **BigBuy** (EU-Lager, DDP). Connector ist **gebaut + auf `main`**: **`automation/bigbuy_import.mjs`**
+> Neue Lieferantenfirma **BigBuy** (EU-Lager, DDP). Connector **gebaut + API verifiziert + auf `main`**: **`automation/bigbuy_import.mjs`**
 > (holt **nur TOP-Produkte**: Schmuck/Taschen/Uhren/Sonnenbrillen/Damenmode; DE-Titel via Gemini, CHF-Marge, SEO, Tags
 > `bigbuy`+`dropship`, 6 Kanäle, idempotent via `dropship/bigbuy_done.txt`). **No-op ohne Key · DRY ist Default · `LIVE=1` zum Anlegen.**
-> - **Wenn deine Session schon läuft:** erst `git pull origin main` (sonst fehlt dir der Connector).
-> - **ENV:** `BIGBUY_API_KEY` (+ optional `BIGBUY_ENV=sandbox|prod`) · Shopify geht über die MCP (kein Key nötig) bzw.
->   `SHOPIFY_CLIENT_ID/SECRET/SHOPIFY_SHOP` fürs Skript.
-> - **PFLICHT-ERSTSTEP (Sandbox, DRY):** `BIGBUY_ENV=sandbox node automation/bigbuy_import.mjs` → die mit **`⚠️BB-VERIFY`**
->   markierten Endpoint-/Feldnamen (`bbProducts`/`bbInfo`/`bbImages`/`costOf`/`stockOf`/`idOf`) gegen die **echte BigBuy-Antwort**
->   abgleichen + korrigieren, **bevor** du `LIVE=1` setzt. Anmelde-/Kosten-/API-Details: `dropship/LIEFERANTEN-ANMELDUNG.md` §3.
+> - **✅ API LIVE GEPRÜFT 2026-06-15:** Key ist gültig, aber **PRODUKTION** (`api.bigbuy.eu`) — **Sandbox liefert 401** (dieser Account hat keinen Sandbox-Zugang).
+>   Token = der gegebene String **direkt als `Authorization: Bearer`** (nicht base64-dekodieren). Connector-Default ist jetzt `BIGBUY_ENV=prod`.
+> - **Verifizierte Endpoints/Felder:** Kandidaten `GET /rest/catalog/productsinformation.json?isoCode=de` → `{id,sku,name,description}` ·
+>   Preis/aktiv `GET /rest/catalog/product/{id}.json?isoCode=de` → `{wholesalePrice,retailPrice,active}` · Bilder `GET /rest/catalog/productimages/{id}.json` → `{images:[{url}]}`.
+>   `categories.json` ist LEER → Kategorien via `taxonomies.json`. ⚠️ **Rate-Limit ist STRENG** (Body „You exceeded the rate limit") → Backoff/Pausen sind im Connector eingebaut (`GAP`-ms).
+> - **ENV:** `BIGBUY_API_KEY` (Prod-Key; **NICHT im Repo** — User hat ihn) · **Shopify-Creds nötig fürs Skript:** `SHOPIFY_CLIENT_ID/SECRET/SHOPIFY_SHOP`
+>   (in einer Session ohne diese Env-Vars no-op'd das Skript auf der Shopify-Seite — dann entweder Env setzen oder via Shopify-MCP anlegen).
+> - **Lauf:** `BIGBUY_API_KEY=… SHOPIFY_CLIENT_ID=… SHOPIFY_CLIENT_SECRET=… node automation/bigbuy_import.mjs` (DRY-Vorschau) → dann `LIVE=1` für Echtbetrieb. QA: Bilder READY, SEO, 6 Kanäle.
 > - **Eigentum:** **BigBuy-Import = die Session mit dem Key.** Die „Luxestyle product"-Session fasst BigBuy nicht an (vermeidet Dubletten).
 
 ## 🧱 Geteilte Ressourcen (alle teilen sich diese!)
