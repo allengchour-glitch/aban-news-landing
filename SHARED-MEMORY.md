@@ -19,6 +19,18 @@
 > ⚠️ **Wichtigste Regel:** **CJ-Produktimport + Shop-Katalog + Social-Queue = nur die „Luxestyle product"-Session.**
 > Andere Sessions: keine Produkte importieren / keine `social/posts_image.csv` ändern, sonst Dubletten/Konflikte.
 
+> 🏭 **HANDOFF 2026-06-15 — BIGBUY-IMPORT (an die Session mit dem `BIGBUY_API_KEY`):**
+> Neue Lieferantenfirma **BigBuy** (EU-Lager, DDP). Connector ist **gebaut + auf `main`**: **`automation/bigbuy_import.mjs`**
+> (holt **nur TOP-Produkte**: Schmuck/Taschen/Uhren/Sonnenbrillen/Damenmode; DE-Titel via Gemini, CHF-Marge, SEO, Tags
+> `bigbuy`+`dropship`, 6 Kanäle, idempotent via `dropship/bigbuy_done.txt`). **No-op ohne Key · DRY ist Default · `LIVE=1` zum Anlegen.**
+> - **Wenn deine Session schon läuft:** erst `git pull origin main` (sonst fehlt dir der Connector).
+> - **ENV:** `BIGBUY_API_KEY` (+ optional `BIGBUY_ENV=sandbox|prod`) · Shopify geht über die MCP (kein Key nötig) bzw.
+>   `SHOPIFY_CLIENT_ID/SECRET/SHOPIFY_SHOP` fürs Skript.
+> - **PFLICHT-ERSTSTEP (Sandbox, DRY):** `BIGBUY_ENV=sandbox node automation/bigbuy_import.mjs` → die mit **`⚠️BB-VERIFY`**
+>   markierten Endpoint-/Feldnamen (`bbProducts`/`bbInfo`/`bbImages`/`costOf`/`stockOf`/`idOf`) gegen die **echte BigBuy-Antwort**
+>   abgleichen + korrigieren, **bevor** du `LIVE=1` setzt. Anmelde-/Kosten-/API-Details: `dropship/LIEFERANTEN-ANMELDUNG.md` §3.
+> - **Eigentum:** **BigBuy-Import = die Session mit dem Key.** Die „Luxestyle product"-Session fasst BigBuy nicht an (vermeidet Dubletten).
+
 ## 🧱 Geteilte Ressourcen (alle teilen sich diese!)
 - **1 Shopify-Shop** (LuxeStyle) — Zugriff über die **Shopify-MCP** (direkt in jeder Session, KEIN Key nötig).
 - **1 Repo**, **1 `main`** → vor jedem Push `git pull --rebase`; **nie zwei Sessions gleichzeitig nach `main`**.
