@@ -31,3 +31,22 @@
 ## Was ich dir abnehmen kann (sobald Konto da)
 - BigBuy-Produkte genauso QA'en + anlegen wie die CJ-Importe (Bild-Check, deutsche Texte, CHF-Marge, in 6 Kanäle).
 - Premium-Hero-Liste vorschlagen (welche BigBuy-Kategorien LuxeStyle aufwerten).
+
+---
+## 🏆 BigBuy Premium-Hero-Kategorien für LuxeStyle (Empfehlung 2026-06-15)
+> BigBuys USP vs CJ: **echte Marken + EU-Lager + 24h-Versand**. Diese Kategorien heben LuxeStyle aufs nächste Level:
+
+1. **🥇 Parfümerie / Marken-Parfum** — BigBuys Spezial-Katalog (Designer-/Marken-Düfte). DER Game-Changer:
+   echte Marken = sofort Trust + hohe Marge + Wiederkauf. Markt-Research: Fragrance = ~8% Conversion (Top-Beauty-Konverter).
+   ⚠️ CH-Vorsicht: Parfum = Flüssigkeit → Versand-Restriktionen + CH-Zoll/Einfuhr prüfen, bevor du listest.
+2. **⌚ Marken-Uhren (Damen)** — anerkannte Marken, hoher gefühlter Wert, Premium-Accessoire. Klein, gut versendbar.
+3. **💄 Marken-Kosmetik/Skincare** — echte Marken statt generische CJ-Beauty-Tools → glaubwürdige Beauty-Linie.
+4. **👜 EU-Leder/Handtaschen** — Qualität über den PU-CJ-Taschen → „Premium"-Tasche-Linie.
+5. **💍 Marken-Schmuck (S925/Edelstahl)** — bekannte EU-Schmuckmarken statt No-Name.
+
+**NICHT für LuxeStyle:** Elektronik (HP/Acer…), Sex Shop, Toys, IT — off-brand fürs Mode/Lifestyle-Profil.
+
+**Start-Taktik:** 1) Im Gratis-Browse Einkaufspreis + **CH-Versandkosten/Zoll** je Kategorie prüfen (v.a. Parfum).
+2) Mit **Uhren oder Schmuck** anfangen (kein Flüssigkeits-/Zoll-Problem, leicht). 3) Parfum nur, wenn CH-Versand sauber.
+4) Erst Ecommerce-Pack zahlen, wenn 2–3 Heroes mit guter CH-Marge feststehen. Dann gebe ich (mit API-Key) die Heroes ins
+Shopify (QA + deutsche Texte + CHF-Marge + 6 Kanäle), als Kollektion **„LuxeStyle Premium"**.
