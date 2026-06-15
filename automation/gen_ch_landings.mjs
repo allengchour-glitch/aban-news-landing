@@ -532,6 +532,57 @@ const PAGES = [
       ["Auch für Grenzgänger?", "Ja — viele Stellen sind für Pendler aus DE/FR offen; Bewilligungs- und Steuerfragen vorab klären."],
     ],
   },
+  {
+    slug: "jobs-genf", icon: "🌍", h1: "Jobs in Genf", jobloc: "genf",
+    title: "Jobs Genf — offene Stellen in der Region Genf finden | aban",
+    desc: "Jobs in Genf finden: offene Stellen aus mehreren Job-Börsen für die Region Genf — internationale Organisationen, Uhren, Finanz & mehr. Direkt zur Original-Anzeige bewerben.",
+    cta: "/stellenangebote.html?loc=Genf", ctaLabel: "Stellen in Genf durchsuchen",
+    intro: "Genf ist Sitz vieler internationaler Organisationen und ein starker Finanz- und Uhrenstandort. Durchsuche aktuelle Stellen in der Region Genf und bewirb dich direkt beim Arbeitgeber.",
+    tips: [
+      ["Sprachen", "Französisch ist zentral, Englisch (internationale Organisationen) und Deutsch sind oft ein klarer Vorteil — im CV angeben."],
+      ["Internationale Arbeitgeber", "UNO, NGOs und Konzerne haben eigene Bewerbungsprozesse und Fristen — früh vorbereiten."],
+      ["Grenzregion", "Viele pendeln aus Frankreich — Grenzgänger-Themen (Bewilligung, Steuern) bei Bedarf vorab klären."],
+    ],
+    faq: [
+      ["Wie finde ich Jobs in Genf?", "Gib in der Job-Suche Genf als Ort ein oder nutze diese Seite. Treffer kommen live aus mehreren Börsen inkl. Schweizer Quellen; der Klick führt zur Original-Anzeige."],
+      ["Welche Branchen sind in Genf stark?", "Internationale Organisationen, Finanz/Banking, Uhren/Luxus, Pharma/Handel und Gastgewerbe — in der Job-Suche nach Kategorie filterbar."],
+      ["Brauche ich Französisch?", "Für die meisten Stellen ja; bei internationalen Organisationen genügt teils Englisch. Sprachkenntnisse im CV hervorheben."],
+    ],
+  },
+  {
+    slug: "jobs-lausanne", icon: "⛵", h1: "Jobs in Lausanne", jobloc: "lausanne",
+    title: "Jobs Lausanne — offene Stellen in der Region Lausanne finden | aban",
+    desc: "Jobs in Lausanne finden: offene Stellen aus mehreren Job-Börsen für die Region Lausanne und die Waadt — Bildung, Gesundheit, Sport & mehr. Direkt bewerben.",
+    cta: "/stellenangebote.html?loc=Lausanne", ctaLabel: "Stellen in Lausanne durchsuchen",
+    intro: "Lausanne ist Hochschul-, Sport- und Verwaltungsstandort am Genfersee. Durchsuche aktuelle Stellen in der Region Lausanne und bewirb dich direkt beim Arbeitgeber.",
+    tips: [
+      ["Französisch zentral", "In der Waadt ist Französisch Voraussetzung; Englisch (EPFL, internationale Sportverbände) hilft zusätzlich."],
+      ["Hochschulen & Sport", "EPFL, Universität und Sportverbände (IOC) sind grosse Arbeitgeber mit eigenen Prozessen."],
+      ["Region nutzen", "Auch Montreux, Vevey und Morges sind gut erreichbar — Suche bei Bedarf erweitern."],
+    ],
+    faq: [
+      ["Wie finde ich Jobs in Lausanne?", "Gib in der Job-Suche Lausanne als Ort ein oder nutze diese Seite. Treffer kommen live aus mehreren Börsen inkl. Schweizer Quellen; der Klick führt zur Original-Anzeige."],
+      ["Welche Branchen sind in Lausanne stark?", "Bildung/Forschung, Gesundheit, öffentliche Verwaltung, Sport und Detailhandel — in der Job-Suche nach Kategorie filterbar."],
+      ["Brauche ich Französisch?", "Für die meisten Stellen ja; bei Hochschulen/internationalen Verbänden ist Englisch oft zusätzlich gefragt."],
+    ],
+  },
+  {
+    slug: "jobs-lugano", icon: "🌴", h1: "Jobs in Lugano", jobloc: "lugano",
+    title: "Jobs Lugano — offene Stellen im Tessin finden | aban",
+    desc: "Jobs in Lugano und im Tessin finden: offene Stellen aus mehreren Job-Börsen — Finanz, Tourismus, Handel & mehr. Direkt zur Original-Anzeige bewerben.",
+    cta: "/stellenangebote.html?loc=Lugano", ctaLabel: "Stellen in Lugano durchsuchen",
+    intro: "Lugano ist das Wirtschaftszentrum des Tessins mit Schwerpunkt Finanz, Handel und Tourismus. Durchsuche aktuelle Stellen in der Region Lugano und bewirb dich direkt.",
+    tips: [
+      ["Italienisch zentral", "Im Tessin ist Italienisch Voraussetzung; Deutsch und Englisch sind je nach Branche ein Vorteil."],
+      ["Finanz & Tourismus", "Banken, Treuhand, Handel und Hotellerie prägen den Markt — saisonale Stellen im Tourismus beachten."],
+      ["Grenzregion Italien", "Viele Grenzgänger aus Italien — Bewilligungs- und Lohnfragen vorab klären."],
+    ],
+    faq: [
+      ["Wie finde ich Jobs in Lugano?", "Gib in der Job-Suche Lugano als Ort ein oder nutze diese Seite. Treffer kommen live aus mehreren Börsen inkl. Schweizer Quellen; der Klick führt zur Original-Anzeige."],
+      ["Welche Branchen sind in Lugano stark?", "Finanz/Treuhand, Handel, Tourismus/Hotellerie und Dienstleistungen — in der Job-Suche nach Kategorie filterbar."],
+      ["Brauche ich Italienisch?", "Für die meisten Stellen ja; Deutsch/Englisch sind je nach Arbeitgeber ein zusätzlicher Vorteil."],
+    ],
+  },
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
