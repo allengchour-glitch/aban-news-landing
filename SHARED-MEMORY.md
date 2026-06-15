@@ -83,6 +83,15 @@
   Bewusst KEINE 1'349 Beschreibungs-Edits (Theme-Block deckt alles einheitlich ab, kein Duplikat-Bloat).
 - **Reviere (bestätigt mit User 2026-06-15):** Theme/Startseite=Theme-Session · BigBuy/CJ-Import+Produktfelder(SEO/Größen/Galerie
   künftiger Importe)=Katalog-Session · Collection-Seiten/Marken-Hub=diese Session. **Vor jedem Shopify-Write `SHARED-MEMORY` lesen.**
+- **🔻 ÜBERGABE an Theme/Marketing- + Katalog-Session (Collections-Session ist hier API-geblockt):**
+  - **Merchant gesperrt — Feed entschlacken (dominant!):** (1) **Google-Kanal → Ziel-Land = NUR Schweiz/DE** → kollabiert den
+    Feed von 106k auf ~13k (Länder-Multiplikator; **Kanal-App-Config, nicht per Admin-API** machbar). (2) GTIN-lose raus:
+    **267 Sticker (`tag:sticker`) + 12 Poster (`product_type:Poster`)** → am einfachsten **Merchant-Center-Feed-Regel
+    „product_type = Sticker/Poster ausschließen"** (1 Klick) ODER aus der Google-Publication entpublizieren. ⚠️ **`publishableUnpublish`
+    ist im Shopify-MCP als „destructive" GEBLOCKT** → Collections-Session kann's nicht; **Admin/andere Session muss.** (3) DANN Re-Review.
+  - **Policies:** beide E-Mail-Tippfehler ✅ **gefixt + verifiziert** (Versand `info@luxestyle.ch`, AGB §8 `info@luxestyle.ch`).
+  - **BigBuy-Import bleibt bei der Katalog-Session** (Revier) — Collections-Session fasst KEINE Produkt-Importe an (Dubletten-Schutz),
+    obwohl Flow + Key bekannt wären. Offen: Lancôme-Platzhalter-SKU `bb-S05151xx-lancome` (EAN `3660732559572`) echte BigBuy-SKU nachtragen.
 
 **2026-06-15 (Luxestyle-Session) — ✅ Pixel/Pinterest gelöst · Brain v3 · 1.-August-Fokus · Voll-Audit:**
 - **TikTok-Pixel FERTIG:** Live-Theme feuert jetzt **`D8EKVR3C77U6KT5BTBD0`** (alter `D85BAG…` weg), per API verifiziert.
