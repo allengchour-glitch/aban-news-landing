@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generatore e spiegatore cron (in italiano) · aban news</title>
+<meta name="description" content="Strumento gratuito: crea pianificazioni cron con un clic e fai spiegare qualsiasi espressione cron in italiano chiaro — per n8n, Make, GitHub Actions, cronjob su server. Senza login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/cron-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/cron-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/cron-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/cron-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/cron-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/cron-generator.html">
+<meta property="og:title" content="Generatore e spiegatore cron — in italiano">
+<meta property="og:description" content="Crea pianificazioni cron con un clic e fai spiegare qualsiasi espressione cron in italiano chiaro. Gratis, senza login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/cron-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generatore e spiegatore cron",
+"url":"https://abannews.com/it/cron-generator.html","applicationCategory":"DeveloperApplication",
+"operatingSystem":"Web","inLanguage":"it","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Crea pianificazioni cron con un clic e spiega qualsiasi espressione cron in italiano chiaro.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(26px,4.6vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}
+h2{font-size:1.15rem;margin:0 0 12px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px;color:var(--ink2)}
+select,input{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+select:focus,input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.out{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cronbox{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1.25rem;font-weight:700;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:10px 16px;color:var(--amber-dk);letter-spacing:1px}
+.copybtn{font:inherit;font-size:14px;background:var(--card);border:1px solid var(--line);color:var(--amber-dk);border-radius:8px;padding:8px 14px;cursor:pointer}
+.expl{margin-top:12px;font-size:.95rem;color:var(--ink2);background:var(--bg);border-left:3px solid var(--amber);border-radius:6px;padding:10px 14px}
+.expl.bad{border-color:var(--bad);color:var(--bad)}
+.fields{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px;font-size:.75rem;text-align:center;color:var(--muted)}
+.fields code{display:block;font-size:1rem;color:var(--ink);background:var(--cream);border-radius:6px;padding:4px 0;margin-bottom:3px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:20px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#builder">Vai allo strumento</a>
+<header class="site"><div class="wrap">
+  <a href="/it/" class="brand">aban news</a>
+  <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuita</a>
+</div></header>
+
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Crea &amp; comprendi una pianificazione <span class="a">cron</span></h1>
+    <p>Quando deve essere eseguita la tua automazione? Componi l'espressione cron con un clic — oppure fai spiegare un'espressione esistente in italiano chiaro. Per n8n, Make, GitHub Actions, cronjob su server. Senza login.</p>
+  </section>
+
+  <section class="panel" id="builder">
+    <h2>1 · Crea</h2>
+    <label for="mode">Con quale frequenza deve essere eseguita?</label>
+    <select id="mode">
+      <option value="min5">ogni 5 minuti</option>
+      <option value="min15">ogni 15 minuti</option>
+      <option value="hourly">ogni ora (all'ora esatta)</option>
+      <option value="daily" selected>ogni giorno alle …</option>
+      <option value="weekly">ogni settimana alle …</option>
+      <option value="monthly">ogni mese il … alle …</option>
+      <option value="weekdays">nei giorni feriali (lun–ven) alle …</option>
+    </select>
+    <div id="opts"></div>
+    <div class="out">
+      <span class="cronbox" id="cron">0 9 * * *</span>
+      <button class="copybtn" type="button" id="copy">copia</button>
+    </div>
+    <div class="fields">
+      <div><code id="f0">0</code>Minuto</div>
+      <div><code id="f1">9</code>Ora</div>
+      <div><code id="f2">*</code>Giorno (mese)</div>
+      <div><code id="f3">*</code>Mese</div>
+      <div><code id="f4">*</code>Giorno della settimana</div>
+    </div>
+    <p class="expl" id="bexpl"></p>
+    <p class="note">Nota: cron viene eseguito nel <strong>fuso orario del server</strong> (spesso UTC). Per le 9:00 in ora locale, imposta il fuso orario nello strumento oppure inserisci l'ora UTC.</p>
+  </section>
+
+  <section class="panel">
+    <h2>2 · Spiega</h2>
+    <label for="parse">Inserisci un'espressione cron (5 campi)</label>
+    <input type="text" id="parse" value="*/15 8-18 * * 1-5" spellcheck="false" autocomplete="off">
+    <p class="expl" id="pexpl"></p>
+  </section>
+
+  <div class="cta">
+    <strong>Pianificazione pronta — con cosa automatizzare?</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Confronto onesto degli strumenti (n8n, Make, Zapier …) + se ne vale davvero la pena.</p>
+    <p>
+      <a class="btn" href="https://radar.abannews.com" target="_blank" rel="noopener">Confronta gli strumenti →</a>
+      <a class="btn ghost" href="/it/automatisierung-rechner.html">Ne vale la pena? (calcolatore)</a>
+    </p>
+  </div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">L'hai trovato utile? 5 minuti di IA senza hype — ogni giorno lavorativo.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news è la newsletter sull'IA per i liberi professionisti: breve, onesta, senza bingo di parole alla moda. Gratuita, disdici quando vuoi.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Iscriviti alla newsletter gratuita →</a>
+</aside>
+</div></main>
+
+<footer><div class="wrap">
+  © 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/it/automatisierung-rechner.html">Calcolatore di automazione</a> ·
+  <a href="/was-automatisieren.html">Cosa automatizzare?</a> ·
+  <a href="/it/ki-werkzeug.html">Strumenti IA</a> &middot; <a href="/online-tools.html">Tutti gli strumenti</a> &middot; <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a>
+</div></footer>
+
+<script>
+(function(){
+  var TAGE=["domenica","lunedì","martedì","mercoledì","giovedì","venerdì","sabato"];
+  var MON=["","gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+  var mode=document.getElementById("mode"), opts=document.getElementById("opts"),
+      cronEl=document.getElementById("cron"), bexpl=document.getElementById("bexpl");
+
+  function opt(html){opts.innerHTML=html;}
+  function num(id){var e=document.getElementById(id);return e?(+e.value||0):0;}
+
+  function render(){
+    var m=mode.value, h, mm, dow, dom, cron;
+    if(m==="min5"){cron="*/5 * * * *";opt("");}
+    else if(m==="min15"){cron="*/15 * * * *";opt("");}
+    else if(m==="hourly"){cron="0 * * * *";opt("");}
+    else if(m==="daily"){opt(timeRow());h=num("h");mm=num("m");cron=mm+" "+h+" * * *";}
+    else if(m==="weekly"){opt(dowRow()+timeRow());dow=num("dow");h=num("h");mm=num("m");cron=mm+" "+h+" * * "+dow;}
+    else if(m==="weekdays"){opt(timeRow());h=num("h");mm=num("m");cron=mm+" "+h+" * * 1-5";}
+    else if(m==="monthly"){opt(domRow()+timeRow());dom=num("dom");h=num("h");mm=num("m");cron=mm+" "+h+" "+dom+" * *";}
+    cronEl.textContent=cron;
+    var f=cron.split(" ");
+    for(var i=0;i<5;i++){document.getElementById("f"+i).textContent=f[i];}
+    bexpl.textContent="Significa: "+explain(cron);
+    rebind();
+  }
+  function timeRow(){return '<label>Ora</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+
+    '<select id="h" aria-label="Ora">'+hours()+'</select>'+
+    '<select id="m" aria-label="Minuto">'+mins()+'</select></div>';}
+  function dowRow(){var o="";for(var i=1;i<=7;i++){var v=i%7;o+='<option value="'+v+'"'+(v===1?" selected":"")+'>'+TAGE[v]+'</option>';}return '<label>Giorno della settimana</label><select id="dow">'+o+'</select>';}
+  function domRow(){var o="";for(var i=1;i<=28;i++){o+='<option value="'+i+'"'+(i===1?" selected":"")+'>'+i+'</option>';}return '<label>Giorno del mese</label><select id="dom">'+o+'</select>';}
+  function hours(){var o="";for(var i=0;i<24;i++){o+='<option value="'+i+'"'+(i===9?" selected":"")+'>'+(i<10?"0":"")+i+':00</option>';}return o;}
+  function mins(){var o="";[0,5,10,15,30,45].forEach(function(i){o+='<option value="'+i+'"'+(i===0?" selected":"")+'>'+(i<10?"0":"")+i+' min</option>';});return o;}
+  function rebind(){["h","m","dow","dom"].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener("change",render);});}
+
+  // --- Cron -> italiano ---
+  function explain(c){
+    var p=c.trim().split(/\s+/);
+    if(p.length!==5) return null;
+    var mi=p[0],h=p[1],dom=p[2],mon=p[3],dow=p[4];
+    function every(field,unit){var mm=field.match(/^\*\/(\d+)$/);return mm?("ogni "+mm[1]+" "+unit):null;}
+    var parts=[];
+    // Ora
+    var em=every(mi,"minuti"), eh=every(h,"ore");
+    if(mi==="*"&&h==="*"){parts.push("ogni minuto");}
+    else if(em&&h==="*"){parts.push(em);}
+    else if(mi!=="*"&&h==="*"){parts.push("ogni ora al minuto "+mi);}
+    else if(eh){parts.push(eh+(mi!=="*"?(" al minuto "+mi):""));}
+    else {
+      var hr=h.match(/^(\d+)-(\d+)$/);
+      if(hr){parts.push("ogni ora dalle "+hr[1]+":00 alle "+hr[2]+":00"+(em?(" "+em):(mi!=="*"?(" al minuto "+mi):"")));}
+      else {parts.push("alle "+(h<10?"0":"")+h+":"+(mi.length<2?"0"+mi:mi));}
+    }
+    // Giorno della settimana
+    if(dow!=="*"){
+      var dr=dow.match(/^(\d)-(\d)$/);
+      if(dow==="1-5")parts.push("nei giorni feriali (lun–ven)");
+      else if(dr)parts.push("da "+TAGE[+dr[1]%7]+" a "+TAGE[+dr[2]%7]);
+      else if(/^\d$/.test(dow))parts.push("solo "+TAGE[+dow%7]);
+      else parts.push("nei giorni della settimana "+dow);
+    }
+    // Giorno del mese
+    if(dom!=="*"){ if(/^\d+$/.test(dom))parts.push("il "+dom+" del mese"); else parts.push("nei giorni "+dom); }
+    // Mese
+    if(mon!=="*"){ if(/^\d+$/.test(mon))parts.push("a "+(MON[+mon]||mon)); else parts.push("nei mesi "+mon); }
+    return parts.join(", ")+".";
+  }
+
+  // Eventi del generatore
+  document.getElementById("copy").addEventListener("click",function(){
+    var t=cronEl.textContent, b=this;
+    try{navigator.clipboard.writeText(t);b.textContent="copiato ✓";setTimeout(function(){b.textContent="copia";},1500);}catch(e){}
+  });
+  mode.addEventListener("change",render);
+
+  // Eventi dello spiegatore
+  var parse=document.getElementById("parse"), pexpl=document.getElementById("pexpl");
+  function doParse(){
+    var ex=explain(parse.value);
+    if(ex){pexpl.className="expl";pexpl.textContent="Viene eseguito: "+ex;}
+    else{pexpl.className="expl bad";pexpl.textContent="Questi non sono 5 campi cron validi (minuto ora giorno mese giorno-della-settimana).";}
+  }
+  parse.addEventListener("input",doParse);
+
+  render(); doParse();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>

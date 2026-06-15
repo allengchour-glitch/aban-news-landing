@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>Generatore di nomi — Portachiavi, targhetta &amp; nome 3D in SVG | aban news</title>
+  <meta name="description" content="Inserisci un nome e ottieni subito un design pronto all'uso: portachiavi, targhetta con nome o nome 3D — in SVG da scaricare. Gratis, nel browser, senza tracciamento. Ideale per taglio laser, stampa &amp; stampa 3D.">
+  <link rel="canonical" href="https://abannews.com/it/namen-generator.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Generatore di nomi — Portachiavi, targhetta &amp; nome 3D">
+  <meta property="og:description" content="Inserisci un nome → scarica un design pronto all'uso in SVG. Per laser, stampa &amp; stampa 3D. Gratis, nel browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://abannews.com/it/namen-generator.html">
+  <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:locale" content="it_IT">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/namen-generator.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/namen-generator.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/namen-generator.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/namen-generator.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/namen-generator.html">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .btn[disabled]{opacity:.5;cursor:not-allowed}
+    .hero{padding:2.2rem 0 1rem;text-align:center}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.12;letter-spacing:-.02em;font-weight:800;margin-bottom:.6rem}
+    .lead{font-size:1.02rem;color:var(--muted);max-width:56ch;margin:0 auto}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;margin:1.2rem 0;box-shadow:var(--shadow)}
+    label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.35rem}
+    input[type=text]{width:100%;padding:.7rem .8rem;font-size:1.15rem;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+    input:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+    .seg{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0 .4rem}
+    .seg button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.45rem .95rem;font-size:.9rem;cursor:pointer}
+    .seg button[aria-pressed=true]{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+    .opts{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-top:.6rem;font-size:.9rem;color:var(--muted)}
+    .opts label{display:inline-flex;align-items:center;gap:.35rem;font-weight:400;margin:0}
+    .preview{background:repeating-conic-gradient(#f4f1ec 0% 25%, #fff 0% 50%) 50%/22px 22px;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:1rem;display:flex;justify-content:center}
+    .preview svg{max-width:100%;height:auto}
+    .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+    .hint{font-size:.85rem;color:var(--muted);margin-top:.6rem}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.4rem;text-align:center;margin:1.8rem 0}
+    .cta-box h2{font-size:1.2rem;margin-bottom:.4rem}.cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    h2.sec{font-size:1.3rem;margin:1.8rem 0 .6rem}
+    .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.7rem 1rem;margin-bottom:.5rem}
+    .faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:.5rem;color:var(--muted);font-size:.92rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.4rem 0;border-top:1px solid var(--line);margin-top:1.5rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}footer a{color:var(--muted)}
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Generatore di nomi","url":"https://abannews.com/it/namen-generator.html","applicationCategory":"DesignApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"it","description":"Inserisci un nome e scarica un design pronto all'uso (portachiavi, targhetta, nome 3D) in SVG. Funziona nel browser, senza tracciamento."}
+  </script>
+</head>
+<body>
+<a href="#main" class="skip">Vai al contenuto</a>
+
+<header><div class="wrap">
+  <a href="/it/" class="brand">☕ aban news</a>
+  <nav>
+    <a href="/geld-verdienen-mit-3d-druck.html">Stampa 3D &amp; soldi</a>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn">Abbonati</a>
+  </nav>
+</div></header>
+
+<main id="main"><div class="wrap">
+
+  <div class="hero">
+    <span class="badge">Gratis · nel browser · senza tracciamento</span>
+    <h1>Generatore di nomi</h1>
+    <p class="lead">Inserisci un nome e ottieni subito un design pronto all'uso — in <strong>SVG da scaricare</strong>. Per portachiavi, targhette con nome o un effetto 3D. Pronto per laser, stampa e servizi 3D.</p>
+  </div>
+
+  <div class="panel">
+    <label for="name">Nome o parola</label>
+    <input type="text" id="name" maxlength="22" value="Mia" placeholder="es. Mia" autocomplete="off" spellcheck="false">
+
+    <div class="seg" id="styleSeg" role="group" aria-label="Stile">
+      <button type="button" data-style="keychain" aria-pressed="true">🔑 Portachiavi</button>
+      <button type="button" data-style="card">🪧 Targhetta con nome</button>
+      <button type="button" data-style="threed">🅰️ Nome 3D</button>
+    </div>
+
+    <div class="opts">
+      <label>Colore <input type="color" id="color" value="#d97706"></label>
+      <label><input type="checkbox" id="outline"> solo contorno (laser/plotter)</label>
+    </div>
+
+    <div class="preview" id="preview" aria-live="polite"></div>
+
+    <div class="actions">
+      <button class="btn" id="dl">⬇︎ Scarica l'SVG</button>
+      <button class="btn" id="dlpng" style="background:#fff;color:var(--amber-dk);border:1px solid var(--amber)">⬇︎ PNG (anteprima)</button>
+    </div>
+    <p class="hint">L'SVG è vettoriale — ideale per taglierine laser, plotter e tipografie. Per una vera stampa 3D, un servizio converte l'SVG in STL (profondità/estrusione regolabile).</p>
+  </div>
+
+  <div class="cta-box">
+    <h2>Vuoi guadagnarci?</h2>
+    <p>Ecco come funziona il print-on-demand con prodotti personalizzati (valutato onestamente, fornitori inclusi): la mia guida «Guadagnare con la stampa 3D».</p>
+    <a href="/geld-verdienen-mit-3d-druck.html" class="btn">Vai alla guida →</a>
+  </div>
+
+  <h2 class="sec">Domande frequenti</h2>
+  <div class="faq">
+    <details><summary>Cosa posso fare con l'SVG?</summary><p>L'SVG è un formato vettoriale: scalabile senza perdita di qualità. Puoi inviarlo a una taglierina laser, a un plotter da taglio o a una tipografia — oppure farlo convertire in STL da un servizio 3D (per nomi fresati/stampati, portachiavi, ecc.).</p></details>
+    <details><summary>Ne ottengo un vero portachiavi?</summary><p>Il file sì — la produzione la cura un servizio di stampa/laser/3D o la tua stessa stampante. Questo generatore crea il design, non il prodotto fisico.</p></details>
+    <details><summary>I miei dati vengono salvati?</summary><p>No. Tutto funziona in locale nel tuo browser — nessun server, nessun tracciamento, nessun salvataggio.</p></details>
+    <details><summary>Posso usarlo nel mio negozio?</summary><p>Sì, come anteprima/aiuto al design. Per un configuratore del negozio con ordine, ti serve in più un negozio (es. Shopify) con un'app di personalizzazione e un partner di stampa/3D per la produzione.</p></details>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Nota:</strong> questo strumento genera file di design, non un prodotto fisico. Prima di vendere articoli personalizzati, verifica i diritti di marchio/nome. Il carattere nell'SVG è un font di sistema; per laser/3D scegli se necessario «solo contorno» oppure fai convertire il testo in tracciati dal servizio.</p>
+  </div>
+
+</div></main>
+
+<footer><div class="wrap">
+  <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+  <span><a href="/it/">Home</a> · <a href="/geld-verdienen-mit-3d-druck.html">Stampa 3D</a> · <a href="/impressum.html">Note legali</a></span>
+</div></footer>
+
+<script>
+(function(){
+  var nameEl=document.getElementById('name'),
+      colorEl=document.getElementById('color'),
+      outlineEl=document.getElementById('outline'),
+      preview=document.getElementById('preview'),
+      seg=document.getElementById('styleSeg'),
+      style='keychain';
+
+  function esc(s){return (s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  function svgKeychain(name,color,outline){
+    var w=Math.max(220, 90+name.length*42), h=150, r=20;
+    var fill=outline?'none':color, stroke=color, sw=outline?3:0;
+    var textFill=outline?'none':'#fff', textStroke=outline?color:'none';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'">'
+      +'<rect x="6" y="6" width="'+(w-12)+'" height="'+(h-12)+'" rx="'+r+'" ry="'+r+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="'+(outline?3:4)+'"/>'
+      +'<circle cx="34" cy="'+(h/2)+'" r="14" fill="none" stroke="'+(outline?color:'#fff')+'" stroke-width="6"/>'
+      +'<text x="'+((w+40)/2)+'" y="'+(h/2)+'" dominant-baseline="central" text-anchor="middle" '
+      +'font-family="Arial Rounded MT Bold, Arial, sans-serif" font-weight="800" font-size="'+Math.min(64,150/Math.max(1,name.length)*2.4)+'" '
+      +'fill="'+textFill+'"'+(outline?(' stroke="'+color+'" stroke-width="1.5"'):'')+'>'+esc(name)+'</text>'
+      +'</svg>';
+  }
+
+  function svgCard(name,color,outline){
+    var w=420,h=240;
+    var bg=outline?'#fff':'#fffaf2', border=color;
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'">'
+      +'<rect x="8" y="8" width="'+(w-16)+'" height="'+(h-16)+'" rx="18" fill="'+bg+'" stroke="'+border+'" stroke-width="3"/>'
+      +'<rect x="22" y="22" width="'+(w-44)+'" height="'+(h-44)+'" rx="12" fill="none" stroke="'+border+'" stroke-width="1" stroke-dasharray="4 5"/>'
+      +'<text x="'+(w/2)+'" y="'+(h/2-6)+'" text-anchor="middle" dominant-baseline="central" font-family="Georgia, serif" font-weight="700" font-size="'+Math.min(64,w/Math.max(3,name.length)*2.1)+'" fill="'+color+'">'+esc(name)+'</text>'
+      +'<text x="'+(w/2)+'" y="'+(h-46)+'" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" letter-spacing="3" fill="#9a8c78">BENVENUTO</text>'
+      +'</svg>';
+  }
+
+  function svgThreeD(name,color,outline){
+    var w=Math.max(260,120+name.length*52), h=170;
+    var fs=Math.min(110,w/Math.max(1,name.length)*1.7);
+    var layers='', depth=outline?0:7;
+    // dunklere Schattenfarbe für 3D-Look
+    function darken(hex,f){var n=parseInt(hex.slice(1),16);var r=Math.max(0,((n>>16)&255)*f|0),g=Math.max(0,((n>>8)&255)*f|0),b=Math.max(0,(n&255)*f|0);return 'rgb('+r+','+g+','+b+')';}
+    var shadow=darken(color,0.55);
+    for(var i=depth;i>0;i--){
+      layers+='<text x="'+(w/2+i)+'" y="'+(h/2+i)+'" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="'+fs+'" fill="'+shadow+'">'+esc(name)+'</text>';
+    }
+    var top=outline
+      ? '<text x="'+(w/2)+'" y="'+(h/2)+'" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="'+fs+'" fill="none" stroke="'+color+'" stroke-width="2">'+esc(name)+'</text>'
+      : '<text x="'+(w/2)+'" y="'+(h/2)+'" text-anchor="middle" dominant-baseline="central" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="'+fs+'" fill="'+color+'">'+esc(name)+'</text>';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'">'+layers+top+'</svg>';
+  }
+
+  function currentSVG(){
+    var name=(nameEl.value||'').trim()||'Name';
+    var color=colorEl.value, outline=outlineEl.checked;
+    if(style==='card') return svgCard(name,color,outline);
+    if(style==='threed') return svgThreeD(name,color,outline);
+    return svgKeychain(name,color,outline);
+  }
+
+  function render(){ preview.innerHTML=currentSVG(); }
+
+  function fileBase(){return ((nameEl.value||'name').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'name')+'-'+style;}
+
+  function downloadSVG(){
+    var blob=new Blob([currentSVG()],{type:'image/svg+xml'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fileBase()+'.svg';a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},1000);
+  }
+  function downloadPNG(){
+    var svg=currentSVG();
+    var img=new Image();
+    var blob=new Blob([svg],{type:'image/svg+xml'});var url=URL.createObjectURL(blob);
+    img.onload=function(){
+      var scale=2,c=document.createElement('canvas');c.width=img.width*scale;c.height=img.height*scale;
+      var ctx=c.getContext('2d');ctx.scale(scale,scale);ctx.drawImage(img,0,0);
+      URL.revokeObjectURL(url);
+      c.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fileBase()+'.png';a.click();});
+    };
+    img.onerror=function(){URL.revokeObjectURL(url);alert('Export PNG non possibile qui — usa il download SVG.');};
+    img.src=url;
+  }
+
+  seg.addEventListener('click',function(ev){
+    var b=ev.target.closest('button[data-style]');if(!b)return;
+    style=b.getAttribute('data-style');
+    Array.prototype.forEach.call(seg.querySelectorAll('button'),function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    render();
+  });
+  nameEl.addEventListener('input',render);
+  colorEl.addEventListener('input',render);
+  outlineEl.addEventListener('change',render);
+  document.getElementById('dl').addEventListener('click',downloadSVG);
+  document.getElementById('dlpng').addEventListener('click',downloadPNG);
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
+</body>
+</html>

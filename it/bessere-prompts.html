@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrivere prompt IA migliori — 7 basi per principianti (+ verifica) | aban news</title>
+<meta name="description" content="Prompt migliori per ChatGPT, Claude & co.: le 7 basi che ti danno subito risposte migliori — adatte ai principianti, con una verifica della qualità del prompt. Senza promesse di prompt magici.">
+<link rel="canonical" href="https://abannews.com/it/bessere-prompts.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/bessere-prompts.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/bessere-prompts.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/bessere-prompts.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/bessere-prompts.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/bessere-prompts.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Scrivere prompt IA migliori — 7 basi per principianti">
+<meta property="og:description" content="Le 7 basi per risposte IA migliori + una verifica della qualità del prompt. Senza promesse di prompt magici.">
+<meta property="og:url" content="https://abannews.com/it/bessere-prompts.html">
+<meta property="og:image" content="https://abannews.com/img/og/bessere-prompts.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://abannews.com/img/og/bessere-prompts.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Come scrivo un buon prompt IA?","acceptedAnswer":{"@type":"Answer","text":"Dai all'IA un ruolo, un contesto chiaro, un obiettivo concreto e il formato desiderato. Un esempio e limiti chiari aiutano in più. Più la tua istruzione è precisa, migliore è la risposta — fare prompt è un mestiere, non magia."}},
+{"@type":"Question","name":"Qual è l'errore più frequente nel fare prompt?","acceptedAnswer":{"@type":"Answer","text":"Essere troppo vaghi. « Scrivimi qualcosa sul marketing » dà risultati mediocri. Dì piuttosto per chi, in quale formato, quanto lungo e con quale obiettivo. Il contesto batte la parola magica."}},
+{"@type":"Question","name":"Esistono prompt segreti che migliorano tutto?","acceptedAnswer":{"@type":"Answer","text":"No. Chi vende costosi « pacchetti di prompt magici » vende soprattutto hype. Le basi sono pubbliche e gratuite — il resto è provare e adattare."}}
+]}
+</script>
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem}
+  main{max-width:760px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
+  .lead{font-size:1.12rem;color:var(--ink2)}
+  .note{background:var(--field);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;margin:22px 0;color:var(--ink2);font-size:.96rem}
+  h2{font-size:1.35rem;margin:34px 0 6px}
+  p{color:var(--ink2)}
+  .tip{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;background:#fff}
+  .tip h3{margin:0 0 6px;font-size:1.12rem}
+  .n{display:inline-block;min-width:1.6rem;color:var(--amber-dk);font-weight:800}
+  .tip p{margin:.3rem 0 0}
+  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  summary{font-weight:700;cursor:pointer}
+  .premium{background:linear-gradient(180deg,#fff7ed,#fffbf5);border:1px solid #f6d9ad;border-radius:14px;padding:22px;margin:30px 0}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/it/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigazione">
+      <a href="/it/prompt-baukasten.html">Costruttore di prompt</a>
+      <a href="/online-tools.html">Strumenti</a>
+      <a href="/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com" target="_blank" rel="noopener" title="Già Premium? Accedi tramite magic link">Login Pro</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Iscriviti gratis</a>
+      <span style="font-size:.85rem"><a href="/bessere-prompts.html" hreflang="de">DE</a></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1>Scrivere prompt IA migliori</h1>
+  <p class="lead">La stessa IA a volte produce oro, a volte risultati mediocri — la differenza sta quasi sempre nel prompt. Ecco le 7 basi che ti fanno ottenere subito risposte migliori da ChatGPT, Claude &amp; co. Adatte ai principianti, senza parole « magiche ».</p>
+
+  <div class="note">💡 <strong>Per cominciare:</strong> fare prompt è un mestiere, non magia. Nessuno ha bisogno di costosi « pacchetti di prompt segreti » — le basi sono gratuite, il resto è provare.</div>
+
+  <h2>Le 7 basi</h2>
+  <div class="tip"><h3><span class="n">1.</span> Dai un ruolo all'IA</h3><p>« Sei una commercialista esperta … » porta la risposta al livello giusto. Il ruolo guida tono, profondità e prospettiva.</p></div>
+  <div class="tip"><h3><span class="n">2.</span> Fornisci contesto &amp; obiettivo</h3><p>Per chi? Perché? Cosa deve succedere dopo? « Scrivi qualcosa sul marketing » resta mediocre; « Scrivi 3 oggetti e-mail per la mia newsletter ai liberi professionisti solo, obiettivo: più aperture » diventa concreto.</p></div>
+  <div class="tip"><h3><span class="n">3.</span> Indica il formato</h3><p>Elenco, tabella, 5 frasi, punti, JSON? Se non indichi il formato, l'IA indovina — di solito sbagliando.</p></div>
+  <div class="tip"><h3><span class="n">4.</span> Dai un esempio</h3><p>Un breve esempio dell'output desiderato fa miracoli. « Più o meno così: … » è la scorciatoia più rapida verso buoni risultati.</p></div>
+  <div class="tip"><h3><span class="n">5.</span> Poni dei limiti</h3><p>Cosa NON deve succedere? « Niente emoji, niente gergo di marketing, massimo 120 parole. » I limiti sono spesso più importanti dei desideri.</p></div>
+  <div class="tip"><h3><span class="n">6.</span> Procedi per passaggi</h3><p>Invece di tutto in una volta: prima la scaletta, poi la stesura, poi le rifiniture. Puoi correggere in qualsiasi momento — fare prompt è una conversazione, non la pressione di un pulsante.</p></div>
+  <div class="tip"><h3><span class="n">7.</span> Verifica &amp; migliora</h3><p>La risposta non ti piace? Dì esattamente cosa manca (« troppo generico, rendilo concreto con un esempio »). Il secondo tentativo è quasi sempre migliore.</p></div>
+
+  <section aria-label="Verifica del prompt" style="border:1px solid var(--line);border-radius:14px;padding:20px;margin:26px 0;background:#fff">
+    <h2 style="margin-top:0">Verifica della qualità del prompt</h2>
+    <p style="margin:.2rem 0 1rem">Spunta ciò che il tuo prompt contiene già. Calcola nel browser, nulla viene salvato.</p>
+    <div id="pq-list" style="font-size:.96rem">
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>Un <strong>ruolo</strong> per l'IA</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span><strong>Contesto &amp; obiettivo</strong> (per chi, perché)</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span>Il <strong>formato</strong> desiderato</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>Un <strong>esempio</strong> dell'output</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="2" style="margin-top:5px"><span><strong>Limiti</strong> (lunghezza, tono, cosa non fare)</span></label>
+      <label style="display:flex;gap:.55rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer"><input type="checkbox" data-w="1" style="margin-top:5px"><span>Una <strong>formulazione</strong> concreta invece di « scrivi qualcosa »</span></label>
+    </div>
+    <div id="pq-out" style="margin-top:14px;border-radius:10px;padding:14px 16px;font-weight:600;background:#f1f5f9;color:#475569">Ancora nulla di spuntato.</div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:10px">Più spunte = prompt più preciso = risposta migliore. Strutture pronte all'uso: <a href="/it/prompt-baukasten.html">Costruttore di prompt</a> · <a href="/it/ki-prompt-checker.html">Migliora-prompt</a>.</p>
+    <script>
+    (function(){
+      var root=document.getElementById('pq-list'),out=document.getElementById('pq-out');
+      function calc(){
+        var s=0,max=0;root.querySelectorAll('input[type=checkbox]').forEach(function(c){var w=+c.dataset.w||1;max+=w;if(c.checked)s+=w;});
+        var pct=max?s/max:0,bg,fg,msg;
+        if(s===0){bg='#f1f5f9';fg='#475569';msg='Ancora nulla di spuntato — spunta ciò che il tuo prompt contiene.';}
+        else if(pct<0.4){bg='#fee2e2';fg='#991b1b';msg='Ancora vago — aggiungi contesto, obiettivo e formato, e la risposta sarà nettamente migliore.';}
+        else if(pct<0.75){bg='#fef9c3';fg='#854d0e';msg='Discreto — un esempio e limiti chiari lo portano al livello successivo.';}
+        else{bg='#dcfce7';fg='#166534';msg='Prompt solido — preciso e completo. È così che si ottengono risposte affidabili e buone.';}
+        out.style.background=bg;out.style.color=fg;out.textContent=msg;
+      }
+      root.addEventListener('change',calc);calc();
+    })();
+    </script>
+  </section>
+
+  <section data-aban-signup style="max-width:760px;margin:30px auto;padding:20px;border:1px solid #ece3d4;border-radius:14px;background:#fff;text-align:center">
+    <h2 style="margin:0 0 6px;font-size:1.25rem">Un consiglio IA al giorno, in 5 minuti</h2>
+    <p style="margin:0 0 12px;color:#374151">Onesto, anti-hype, gratis. Dal lun. al ven., disdici quando vuoi. (Newsletter in tedesco.)</p>
+    <form action="https://abannews.beehiiv.com/subscribe" method="get" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:460px;margin:0 auto">
+      <input type="email" name="email" required placeholder="tua@email.com" autocomplete="email" inputmode="email" aria-label="Indirizzo e-mail" style="flex:1;min-width:200px;padding:11px 14px;border:1px solid #ece3d4;border-radius:10px;font-size:1rem">
+      <button type="submit" style="background:#b45309;color:#fff;border:0;border-radius:10px;padding:11px 20px;font-weight:700;font-size:1rem;cursor:pointer">Iscriviti gratis</button>
+    </form>
+  </section>
+
+  <div class="premium">
+    <h2 style="margin-top:0">Prompt &amp; strumenti collaudati — ogni giorno</h2>
+    <p style="margin:.3rem 0 1rem"><strong>aban news</strong> fornisce prompt pronti da copiare e test onesti di strumenti — senza hype. In 5 minuti al giorno. (La newsletter quotidiana è in tedesco.)</p>
+    <p style="margin:0 0 1rem"><strong>Membro fondatore</strong> (69 € una volta, a vita) o prova Premium gratis — senza pubblicità, archivio completo, linea diretta.</p>
+    <a href="/founding.html" class="btn">Vedi l'offerta fondatore — 69 € a vita →</a>
+    &nbsp; <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="font-weight:600">Prova prima gratis →</a>
+  </div>
+
+  <h2>Domande frequenti</h2>
+  <details><summary>Come scrivo un buon prompt IA?</summary><p>Dai all'IA un ruolo, un contesto chiaro, un obiettivo concreto e il formato desiderato. Un esempio e limiti chiari aiutano in più. Più la tua istruzione è precisa, migliore è la risposta — fare prompt è un mestiere, non magia.</p></details>
+  <details><summary>Qual è l'errore più frequente nel fare prompt?</summary><p>Essere troppo vaghi. « Scrivimi qualcosa sul marketing » dà risultati mediocri. Dì piuttosto per chi, in quale formato, quanto lungo e con quale obiettivo. Il contesto batte la parola magica.</p></details>
+  <details><summary>Esistono prompt segreti che migliorano tutto?</summary><p>No. Chi vende costosi « pacchetti di prompt magici » vende soprattutto hype. Le basi sono pubbliche e gratuite — il resto è provare e adattare.</p></details>
+
+  <p style="margin:24px 0 0">Correlato: <a href="/it/prompt-baukasten.html">Costruttore di prompt</a> · <a href="/it/ki-prompt-checker.html">Migliora-prompt</a> · <a href="/it/welche-ki-fuer-was.html">Quale IA per cosa?</a></p>
+
+  <p style="color:var(--muted);font-size:.85rem;margin:24px 0 0">aban news è indipendente e non utilizza alcun tracciamento di affiliazione. Tutti i contenuti hanno scopo informativo generale.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/it/prompt-baukasten.html">Costruttore di prompt</a>
+    <a href="/online-tools.html">Strumenti</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Note legali</a>
+    <a href="/datenschutz.html">Privacy</a>
+  </div>
+</footer>
+</body>
+</html>

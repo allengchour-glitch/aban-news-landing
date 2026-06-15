@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generatore di prompt per immagini IA — prompt migliori per Midjourney, DALL·E &amp; Co. | aban news</title>
+<meta name="description" content="Generatore gratuito di prompt per immagini IA: scegli soggetto, stile, luce, prospettiva — ottieni un prompt pronto da copiare per Midjourney, DALL·E, Stable Diffusion e altri. Funziona in locale nel browser, senza login.">
+<link rel="canonical" href="https://abannews.com/it/ki-bild-prompt-generator.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/ki-bild-prompt-generator.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/ki-bild-prompt-generator.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ki-bild-prompt-generator.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/ki-bild-prompt-generator.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/ki-bild-prompt-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Generatore di prompt per immagini IA — prompt migliori per le immagini">
+<meta property="og:description" content="Scegli soggetto, stile, luce, prospettiva → prompt pronto da copiare. Per Midjourney, DALL·E &amp; Co.">
+<meta property="og:url" content="https://abannews.com/it/ki-bild-prompt-generator.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generatore di prompt per immagini IA","url":"https://abannews.com/it/ki-bild-prompt-generator.html","applicationCategory":"DesignApplication","operatingSystem":"Web","inLanguage":"it","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Costruisce un prompt per immagini pronto all'uso per i generatori di immagini IA a partire da soggetto, stile, luce e prospettiva.","publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Per quali generatori di immagini IA va bene il prompt?","acceptedAnswer":{"@type":"Answer","text":"Per i più diffusi: Midjourney, DALL·E, Stable Diffusion, Leonardo, Adobe Firefly e simili. La struttura (soggetto, stile, luce, prospettiva) funziona ovunque. Il formato viene aggiunto come --ar; non tutti gli strumenti usano questa notazione — in tal caso lo imposti nello strumento stesso."}},
+{"@type":"Question","name":"Scrivere i prompt in italiano o in inglese?","acceptedAnswer":{"@type":"Answer","text":"La maggior parte dei modelli di immagini capisce meglio l'inglese. Per questo il generatore costruisce il prompt in inglese, ma puoi inserire il tuo soggetto in qualsiasi lingua. Se necessario, traduci prima il soggetto."}},
+{"@type":"Question","name":"I miei dati inseriti vengono salvati?","acceptedAnswer":{"@type":"Answer","text":"No. Tutto avviene nel tuo browser, nulla viene inviato o salvato."}}
+]}
+</script>
+<style>
+  :root{--amber-dk:#b45309;--accent:#d97706;--bg:#fffbf5;--field:#fffdf9;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--ok:#059669}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--amber-dk)}
+  header{border-bottom:1px solid var(--line);background:#fff}
+  header .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:14px 20px}
+  .brand{display:flex;align-items:center;gap:.5rem;font-weight:800;text-decoration:none;color:var(--ink)}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+  .hnav{margin-left:auto;display:flex;align-items:center;gap:1.1rem;font-size:.92rem;flex-wrap:wrap}
+  .hnav a{color:var(--muted);text-decoration:none}
+  .btn{background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:600;padding:8px 15px;border-radius:8px;font-size:.9rem;border:0;cursor:pointer}
+  main{max-width:760px;margin:0 auto;padding:0 20px}
+  h1{font-size:2rem;line-height:1.2;margin:34px 0 10px}
+  .lead{font-size:1.12rem;color:var(--ink2)}
+  h2{font-size:1.35rem;margin:34px 0 6px}
+  p{color:var(--ink2)}
+  .tool{border:1px solid var(--line);border-radius:14px;padding:18px;margin:24px 0;background:#fff}
+  .tool label{display:block;font-weight:600;font-size:.9rem;margin:10px 0 5px;color:var(--ink2)}
+  .tool select,.tool input,.tool textarea{width:100%;font-size:1rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);font-family:inherit}
+  .tool textarea{min-height:120px;line-height:1.5;white-space:pre-wrap}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>div{flex:1;min-width:150px}
+  .copied{color:var(--ok);font-weight:700;font-size:.9rem;margin-left:10px;opacity:0;transition:opacity .2s}
+  .copied.show{opacity:1}
+  details{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:#fff}
+  summary{font-weight:700;cursor:pointer}
+  .cta{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:20px;margin:30px 0;text-align:center}
+  footer{border-top:1px solid var(--line);margin-top:40px;background:#fff}
+  footer .wrap{max-width:980px;margin:0 auto;padding:18px 20px;color:var(--muted);font-size:.88rem;display:flex;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/it/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigazione">
+      <a href="/online-tools.html">Strumenti</a>
+      <a href="/it/bessere-prompts.html">Prompt migliori</a>
+      <a href="/founding.html">Premium</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Iscriviti gratis</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Tutti gli strumenti gratuiti</a></p>
+
+  <h1>Generatore di prompt per immagini IA</h1>
+  <p class="lead">Le belle immagini IA cominciano con un buon prompt. Scegli soggetto, stile, luce e prospettiva — il generatore ne costruisce un prompt pulito, pronto da copiare, per Midjourney, DALL·E, Stable Diffusion &amp; Co. Funziona in locale nel browser, nulla viene inviato.</p>
+
+  <div class="tool">
+    <label for="motiv">Soggetto (di cosa si tratta?)</label>
+    <input type="text" id="motiv" value="una volpe in una foresta innevata" spellcheck="false">
+    <div class="row">
+      <div><label for="stil">Stile</label>
+        <select id="stil">
+          <option value="photorealistic, 8k, sharp focus">Fotorealistico</option>
+          <option value="digital illustration, clean lines">Illustrazione</option>
+          <option value="3D render, octane, soft shadows">Render 3D</option>
+          <option value="watercolor painting, soft edges">Acquerello</option>
+          <option value="oil painting, textured brushstrokes">Pittura a olio</option>
+          <option value="flat minimalist vector">Minimalista / vettoriale</option>
+          <option value="comic book style, bold ink">Fumetto</option>
+          <option value="cyberpunk, neon, futuristic">Cyberpunk</option>
+          <option value="isometric, miniature diorama">Isometrico</option>
+        </select></div>
+      <div><label for="licht">Luce / atmosfera</label>
+        <select id="licht">
+          <option value="soft natural daylight">Luce diurna morbida</option>
+          <option value="golden hour, warm backlight">Ora dorata</option>
+          <option value="studio lighting, softbox">Studio</option>
+          <option value="dramatic cinematic lighting, high contrast">Drammatica / cinema</option>
+          <option value="moody, foggy, low light">Cupa / nebbia</option>
+          <option value="bright and airy, pastel tones">Chiara &amp; ariosa</option>
+          <option value="neon glow, night">Neon / notte</option>
+        </select></div>
+    </div>
+    <div class="row">
+      <div><label for="persp">Prospettiva</label>
+        <select id="persp">
+          <option value="close-up portrait">Primo piano</option>
+          <option value="wide establishing shot">Campo lungo</option>
+          <option value="top-down, bird's eye view">Vista dall'alto</option>
+          <option value="macro, extreme detail">Macro</option>
+          <option value="low angle, dynamic">Dal basso</option>
+          <option value="eye level, centered">All'altezza degli occhi</option>
+        </select></div>
+      <div><label for="ar">Formato</label>
+        <select id="ar">
+          <option value="1:1">Quadrato 1:1</option>
+          <option value="16:9">Orizzontale 16:9</option>
+          <option value="9:16">Verticale 9:16 (Story)</option>
+          <option value="4:3">4:3</option>
+          <option value="3:2">3:2</option>
+        </select></div>
+    </div>
+    <label for="extra">Dettagli aggiuntivi (colori, sfondo, extra)</label>
+    <input type="text" id="extra" value="colori caldi, sfondo morbido, fini fiocchi di neve" spellcheck="false">
+    <label for="avoid">Da evitare (negativo)</label>
+    <input type="text" id="avoid" value="testo, filigrana, mani deformate" spellcheck="false">
+    <label for="out" style="margin-top:16px">Il tuo prompt</label>
+    <textarea id="out" readonly aria-label="Prompt per immagine generato"></textarea>
+    <div style="margin-top:10px"><button class="btn" id="copy">Copia negli appunti</button><span class="copied" id="ok">copiato ✓</span></div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:10px">💡 Suggerimento: la maggior parte dei modelli di immagini capisce meglio l'<strong>inglese</strong> — per questo il prompt viene costruito in inglese. Puoi inserire il tuo soggetto in qualsiasi lingua (traducilo prima se necessario).</p>
+  </div>
+
+  <div class="cta">
+    <h2 style="margin-top:0">Ogni giorno un trucco IA che ti aiuta davvero</h2>
+    <p style="margin:.4rem 0 1rem">aban news ti mostra dal lun. al ven. in 5 minuti cosa si può fare concretamente con l'IA — onesto, senza hype. Gratis.</p>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn" target="_blank" rel="noopener">Iscriviti gratis →</a>
+    &nbsp; <a href="/it/bessere-prompts.html" style="display:inline-block;margin-top:8px">Scrivere prompt migliori →</a>
+    &nbsp; <a href="/online-tools.html" style="display:inline-block;margin-top:8px">Tutti gli strumenti →</a>
+  </div>
+
+  <h2>Domande frequenti</h2>
+  <details><summary>Per quali generatori di immagini IA va bene il prompt?</summary><p>Midjourney, DALL·E, Stable Diffusion, Leonardo, Firefly e altri. La struttura va bene ovunque; non tutti gli strumenti usano il formato <code>--ar</code> — in tal caso lo imposti nello strumento stesso.</p></details>
+  <details><summary>Scrivere i prompt in italiano o in inglese?</summary><p>L'inglese funziona meglio con la maggior parte dei modelli. Per questo il generatore costruisce in inglese; il tuo soggetto lo inserisci in qualsiasi lingua.</p></details>
+  <details><summary>I miei dati inseriti vengono salvati?</summary><p>No — tutto avviene in locale nel browser, nulla viene inviato.</p></details>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+    <a href="/online-tools.html">Strumenti</a>
+    <a href="/it/bessere-prompts.html">Prompt migliori</a>
+    <a href="/founding.html">Premium</a>
+    <a href="/impressum.html">Note legali</a>
+    <a href="/datenschutz.html">Privacy</a>
+  </div>
+</footer>
+<script>
+(function(){
+  var ids=["motiv","stil","licht","persp","ar","extra","avoid"],el={};
+  ids.forEach(function(i){el[i]=document.getElementById(i);});
+  var out=document.getElementById("out");
+  function v(i){return (el[i].value||"").trim();}
+  function build(){
+    var parts=[v("motiv"),el.stil.value,el.licht.value,el.persp.value];
+    if(v("extra")) parts.push(v("extra"));
+    parts.push("highly detailed, professional");
+    var p=parts.filter(Boolean).join(", ");
+    if(v("avoid")) p+="\n\nNegative prompt: "+v("avoid");
+    p+="\n\n--ar "+el.ar.value;
+    out.value=p;
+  }
+  ids.forEach(function(i){el[i].addEventListener("input",build);el[i].addEventListener("change",build);});
+  var ok=document.getElementById("ok");
+  document.getElementById("copy").addEventListener("click",function(){
+    out.select();
+    var done=function(){ok.classList.add("show");setTimeout(function(){ok.classList.remove("show");},1500);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(out.value).then(done,function(){try{document.execCommand("copy");done();}catch(e){}});}
+    else{try{document.execCommand("copy");done();}catch(e){}}
+  });
+  build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>

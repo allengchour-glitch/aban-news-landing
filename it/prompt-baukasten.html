@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costruttore di prompt — un prompt IA solido in 30 secondi | aban news</title>
+<meta name="description" content="Trasforma qualche parola chiave in un prompt IA chiaramente strutturato: ruolo, contesto, compito, formato e limiti. Gratis, senza login — funziona con ChatGPT, Claude, Gemini & co.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/prompt-baukasten.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/prompt-baukasten.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/prompt-baukasten.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/prompt-baukasten.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/prompt-baukasten.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/prompt-baukasten.html">
+<meta property="og:title" content="Costruttore di prompt — un prompt IA solido in 30 secondi">
+<meta property="og:description" content="Parole chiave in entrata, un prompt pulito e strutturato in uscita — per ChatGPT, Claude, Gemini & co. Gratis, senza login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/prompt-baukasten.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="it_IT"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Costruttore di prompt","url":"https://abannews.com/it/prompt-baukasten.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"it","description":"Costruisce un prompt IA chiaramente strutturato da qualche parola chiave (ruolo, contesto, compito, formato, limiti).","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--field:#fffdf9;--ok:#15803d}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15;--ok:#86efac}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:840px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:9px;border:0;cursor:pointer;font-size:.95rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 6px;text-align:center}
+.hero h1{font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,18px);color:var(--ink2);max-width:620px;margin:0 auto}
+.app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:26px 0 6px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
+.field .hint{color:var(--muted);font-weight:400;font-size:.84rem}
+input[type=text],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:9px;padding:10px 12px}
+textarea{min-height:70px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.checks{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;color:var(--ink2);margin-top:2px}
+.checks label{display:flex;gap:7px;align-items:center;cursor:pointer}
+.out{margin-top:8px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:16px}
+.out h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
+.out pre{white-space:pre-wrap;font:inherit;font-size:1rem;line-height:1.6;color:var(--ink)}
+.rowbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.copied{color:var(--ok)!important}
+.tips{margin:26px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tips h2{font-size:1.15rem;margin-bottom:8px}
+.tips ol{margin:0 0 0 1.1rem}.tips li{margin-bottom:5px;color:var(--ink2);font-size:.95rem}
+.band{margin:30px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:16px;padding:24px;text-align:center}
+.band h2{font-size:1.2rem;margin-bottom:8px}.band p{color:var(--ink2);max-width:560px;margin:0 auto 14px}
+.disc{color:var(--muted);font-size:.82rem;margin:14px 0;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a href="/it/" class="brand">aban news</a>
+<a href="/prompt-baukasten.html" class="btn ghost">DE</a></div></header>
+<main><div class="wrap">
+
+  <section class="hero">
+    <h1>Costruttore di <span class="a">prompt</span></h1>
+    <p>Trasforma qualche parola chiave in un prompt chiaramente strutturato — per ChatGPT, Claude, Gemini &amp; co. Gratis, senza login. Tu compili, il prompt si costruisce in tempo reale.</p>
+  </section>
+
+  <div class="app">
+    <div class="field">
+      <label for="aufgabe">Cosa deve fare l'IA? <span class="hint">— il compito principale</span></label>
+      <input type="text" id="aufgabe" placeholder="ad es. scrivere un'e-mail al cliente per un appuntamento rinviato">
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="rolle">Ruolo dell'IA <span class="hint">— facoltativo</span></label>
+        <input type="text" id="rolle" placeholder="ad es. copywriter esperto per imprese artigiane">
+      </div>
+      <div class="field">
+        <label for="format">Risposta sotto forma di …</label>
+        <select id="format">
+          <option value="testo discorsivo">testo discorsivo</option>
+          <option value="punti elenco">punti elenco</option>
+          <option value="tabella">tabella</option>
+          <option value="e-mail con oggetto">e-mail (con oggetto)</option>
+          <option value="guida passo passo">passo passo</option>
+          <option value="post per i social">post per i social</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="kontext">Contesto &amp; fatti <span class="hint">— parole chiave separate da virgole; fornisci cifre/nomi reali</span></label>
+      <textarea id="kontext" placeholder="ad es. appuntamento del 14 giu. annullato, sostituzione il 21 giu., sig. Rossi, amichevole, breve"></textarea>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="ton">Tono</label>
+        <select id="ton">
+          <option value="oggettivo e professionale">oggettivo &amp; professionale</option>
+          <option value="amichevole e accessibile">amichevole &amp; accessibile</option>
+          <option value="informale e giovane">informale &amp; giovane</option>
+          <option value="elegante e di alta gamma">elegante &amp; di alta gamma</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="laenge">Lunghezza</label>
+        <select id="laenge">
+          <option value="breve (max. 120 parole)">breve</option>
+          <option value="media (circa 200–300 parole)" selected>media</option>
+          <option value="dettagliata">dettagliata</option>
+        </select>
+      </div>
+    </div>
+    <div class="checks">
+      <label><input type="checkbox" id="nachfragen" checked> Chiedere prima se mancano informazioni</label>
+      <label><input type="checkbox" id="keinefakten" checked> Non inventare fatti/cifre</label>
+    </div>
+
+    <div class="out">
+      <h3>Il tuo prompt</h3>
+      <pre id="out"></pre>
+      <div class="rowbtns">
+        <button class="btn ghost" id="copy">Copia negli appunti</button>
+        <a class="btn ghost" href="https://chatgpt.com" target="_blank" rel="noopener">Apri in ChatGPT ↗</a>
+        <a class="btn ghost" href="https://claude.ai" target="_blank" rel="noopener">Apri in Claude ↗</a>
+      </div>
+    </div>
+  </div>
+  <p class="disc">Il costruttore struttura i tuoi dati secondo regole collaudate — non «inventa» nulla. Verifica sempre tu stesso il risultato dell'IA.</p>
+
+  <section class="tips">
+    <h2>I 5 elementi di un buon prompt</h2>
+    <ol>
+      <li><b>Ruolo</b> — chi deve essere l'IA? («commercialista esperto»)</li>
+      <li><b>Compito</b> — cosa deve venire fuori esattamente?</li>
+      <li><b>Contesto &amp; fatti</b> — cifre/nomi reali invece di far indovinare.</li>
+      <li><b>Formato</b> — tabella, punti elenco, e-mail …</li>
+      <li><b>Limiti</b> — tono, lunghezza, «non inventare nulla», «chiedere prima».</li>
+    </ol>
+  </section>
+
+  <div class="band">
+    <h2>Ancora meno fatica?</h2>
+    <p>Lo <a href="/it/ki-werkzeug.html">strumento IA</a> ti dà direttamente il testo finito — e la newsletter ti tiene aggiornato sull'IA dal lun. al ven., senza hype.</p>
+    <a class="btn" href="https://abannews.beehiiv.com/subscribe">Iscriviti gratis</a>
+  </div>
+
+</div></main>
+<footer><div class="wrap">&copy; 2026 aban news &middot; Allen Chour &middot; Belp (CH) &middot;
+  <a href="/it/ki-werkzeug.html">Strumento IA</a> &middot; <a href="/impressum.html">Note legali</a> &middot; <a href="/datenschutz.html">Privacy</a></div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+  function kws(s){return (s||"").split(/[,;\n]+/).map(function(x){return x.trim();}).filter(Boolean);}
+  function build(){
+    var aufgabe=$("aufgabe").value.trim();
+    var rolle=$("rolle").value.trim();
+    var format=$("format").value;
+    var kontext=kws($("kontext").value);
+    var ton=$("ton").value;
+    var laenge=$("laenge").value;
+    var nachfragen=$("nachfragen").checked;
+    var keine=$("keinefakten").checked;
+    var lines=[];
+    lines.push("Sei " + (rolle || "un assistente utile e preciso") + ".");
+    lines.push("");
+    lines.push("Compito: " + (aufgabe || "[cosa deve fare l'IA]") + ".");
+    if(kontext.length){
+      lines.push("");
+      lines.push("Contesto & fatti (usa esattamente questi, non aggiungere nulla):");
+      kontext.forEach(function(k){ lines.push("- " + k); });
+    }
+    lines.push("");
+    lines.push("Formato: Rispondi sotto forma di " + format + ".");
+    lines.push("Tono: " + ton + ". Lunghezza: " + laenge + ".");
+    var rules=[];
+    if(keine) rules.push("Non inventare alcun fatto, cifra o fonte.");
+    if(nachfragen) rules.push("Se mancano informazioni importanti, fai prima domande mirate invece di indovinare.");
+    rules.push("Scrivi in italiano chiaro, senza riempitivi.");
+    if(rules.length){
+      lines.push("");
+      lines.push("Importante:");
+      rules.forEach(function(r){ lines.push("- " + r); });
+    }
+    return lines.join("\n");
+  }
+  function render(){ $("out").textContent = build(); }
+  ["aufgabe","rolle","format","kontext","ton","laenge"].forEach(function(id){
+    $(id).addEventListener("input",render); $(id).addEventListener("change",render);
+  });
+  ["nachfragen","keinefakten"].forEach(function(id){ $(id).addEventListener("change",render); });
+  $("copy").addEventListener("click",function(){
+    var t=build(); var b=this;
+    navigator.clipboard.writeText(t).then(function(){
+      var old=b.textContent; b.textContent="✓ Copiato"; b.classList.add("copied");
+      setTimeout(function(){ b.textContent=old; b.classList.remove("copied"); },1600);
+    });
+  });
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
+</body>
+</html>

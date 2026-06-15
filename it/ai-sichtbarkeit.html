@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verifica della visibilità IA · Quanto bene ti trova ChatGPT? · aban news</title>
+<meta name="description" content="Strumento gratuito: verifica quanto bene la tua pagina è preparata per i motori di risposta come ChatGPT, Perplexity e Google AI Overviews. Consigli concreti, senza login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/ai-sichtbarkeit.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/ai-sichtbarkeit.html">
+<meta property="og:title" content="Verifica della visibilità IA — quanto bene ti trova ChatGPT?">
+<meta property="og:description" content="Verifica la maturità AEO della tua pagina: struttura delle risposte, FAQ, dati strutturati, leggibilità. Gratis, senza login, senza tracciamento.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/ai-sichtbarkeit.html">
+<meta property="og:image" content="https://abannews.com/og-hype.png">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="aban news">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Verifica della visibilità IA — verifica la maturità AEO">
+<meta name="twitter:description" content="Quanto bene è preparata la tua pagina per i motori di risposta? Verifica gratis, senza login.">
+<meta name="twitter:image" content="https://abannews.com/og-hype.png">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Verifica della visibilità IA",
+  "url": "https://abannews.com/it/ai-sichtbarkeit.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "it",
+  "description": "Verifica l'HTML o il testo di una pagina web per la maturità AEO/GEO: struttura risposta-prima, FAQ, dati strutturati (JSON-LD), elenchi, leggibilità e metadati — con raccomandazioni concrete per la visibilità nei motori di risposta.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "publisher": {"@type": "Organization", "name": "aban news", "url": "https://abannews.com"}
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --amber:#d97706;--amber-dark:#b45309;--amber-light:#fde9c8;--cream:#fef3c7;
+  --ink:#1f2937;--ink-soft:#374151;--muted:#6b7280;--line:#ece3d4;
+  --bg:#fffbf5;--card:#ffffff;
+  --header-bg:rgba(255,251,245,.9);
+  --field-bg:#fffdf9;--shadow:0 1px 3px rgba(0,0,0,.03);
+  --gauge-track:#f1e9da;
+  --good-bg:#dcfce7;--good-fg:#15803d;
+  --teils-bg:#fdeccd;--teils-fg:#92560a;
+  --weak-bg:#fcd9d9;--weak-fg:#a01616;
+  --err-bg:#fcd9d9;--err-fg:#a01616;
+  --focus:#b45309;--btn-fg:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --amber:#f0a93a;--amber-dark:#fbbf24;--amber-light:#5a4422;--cream:#3a2f1c;
+    --ink:#f3ede2;--ink-soft:#d6cdbd;--muted:#9c9384;--line:#3a352d;
+    --bg:#1a1712;--card:#231f19;
+    --header-bg:rgba(26,23,18,.9);
+    --field-bg:#1f1b15;--shadow:0 1px 3px rgba(0,0,0,.4);
+    --gauge-track:#3a352d;
+    --good-bg:#1c3a26;--good-fg:#86e8ab;
+    --teils-bg:#5a3f12;--teils-fg:#ffd98a;
+    --weak-bg:#5a1c1c;--weak-fg:#ffbcbc;
+    --err-bg:#4a1818;--err-fg:#ffbcbc;
+    --focus:#fbbf24;--btn-fg:#1a1712;
+  }
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dark)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber-dark);color:var(--btn-fg);padding:10px 16px;border-radius:0 0 8px 0;z-index:50;font-weight:600}
+.skip:focus{left:0}
+header.site{position:sticky;top:0;z-index:20;background:var(--header-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;font-size:18px;color:var(--amber);text-decoration:none;letter-spacing:-.02em}
+.brand span{opacity:.8}
+.btn{display:inline-block;background:var(--amber-dark);color:var(--btn-fg);text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;font-size:15px;border:none;cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--amber-dark)}
+.btn.ghost{background:transparent;color:var(--amber-dark);border:1px solid var(--amber-light)}
+.btn.ghost:hover{background:var(--cream)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.hero{padding:48px 20px 24px;text-align:center}
+.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.hero h1 .accent{color:var(--amber)}
+.hero p{font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);max-width:640px;margin:0 auto}
+.tool{padding:8px 20px 16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+label.fld{display:block;font-weight:600;font-size:14px;margin-bottom:8px;color:var(--ink-soft)}
+textarea{width:100%;min-height:200px;resize:vertical;font:inherit;font-size:15px;line-height:1.6;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--field-bg);color:var(--ink)}
+textarea:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.row .count{margin-left:auto;font-size:13px;color:var(--muted)}
+.count.warn{color:var(--err-fg);font-weight:600}
+.kbdhint{font-size:12px;color:var(--muted);margin-top:8px}
+.kbd{display:inline-block;font:inherit;font-size:11px;line-height:1;padding:3px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;background:var(--bg);color:var(--ink-soft)}
+.restored{display:none;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.restored.show{display:flex}
+.linkbtn{font:inherit;font-size:13px;background:none;border:none;color:var(--amber-dark);cursor:pointer;text-decoration:underline;padding:4px 6px;min-height:24px}
+.linkbtn:hover{text-decoration:none}
+.examples{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.exlabel{font-size:13px;color:var(--muted)}
+.chip{font:inherit;font-size:13px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:7px 14px;min-height:32px;cursor:pointer;transition:all .15s}
+.chip:hover{background:var(--cream);border-color:var(--amber-light);color:var(--amber-dark)}
+.muted{color:var(--muted)}
+.results{margin-top:20px;display:none}
+.results.show{display:block}
+.scorecard{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}
+.gauge{--v:0;width:96px;height:96px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+  background:conic-gradient(var(--gc,#d97706) calc(var(--v)*1%),var(--gauge-track) 0)}
+.gauge .inner{width:74px;height:74px;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center}
+.gauge .num{font-size:26px;font-weight:800;line-height:1}
+.gauge .lbl{font-size:10px;color:var(--muted)}
+.verdict h2{font-size:20px;margin-bottom:4px}
+.verdict p{color:var(--ink-soft);font-size:15px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:16px 0}
+.metric{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.metric .v{font-size:22px;font-weight:800;line-height:1}
+.metric .k{font-size:12px;color:var(--muted);margin-top:3px}
+h3.sec{font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:22px 0 10px}
+.cats{display:grid;gap:10px}
+.cat{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--card)}
+.cat .ch{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cat .ct{font-weight:700;font-size:14px}
+.cat .det{font-size:13px;color:var(--ink-soft);margin-top:6px}
+.bar{height:7px;border-radius:999px;background:var(--gauge-track);margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--amber)}
+.statusbadge{font-weight:700;font-size:12px;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.statusbadge.gut{background:var(--good-bg);color:var(--good-fg)}
+.statusbadge.teils{background:var(--teils-bg);color:var(--teils-fg)}
+.statusbadge.schwach{background:var(--weak-bg);color:var(--weak-fg)}
+.pts{font-size:12px;color:var(--muted);margin-left:8px}
+ul.recs{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+ul.recs li{font-size:14px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card);display:flex;gap:10px;align-items:flex-start}
+.sev{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.03em;border-radius:6px;padding:2px 7px;flex:0 0 auto;margin-top:1px}
+.sev.hoch{background:var(--weak-bg);color:var(--weak-fg)}
+.sev.mittel{background:var(--teils-bg);color:var(--teils-fg)}
+.sev.niedrig{background:var(--good-bg);color:var(--good-fg)}
+.cta{margin:36px 0 8px;background:linear-gradient(135deg,var(--cream),#fff);border:1px solid var(--amber-light);border-radius:14px;padding:24px;text-align:center}
+.cta h2{font-size:22px;margin-bottom:6px}
+.service{margin:20px 0 8px;border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:var(--card)}
+.service h2{font-size:19px;margin-bottom:6px}
+.service p{font-size:.95rem;color:var(--ink-soft);margin-bottom:14px}
+.service .opts{display:flex;gap:10px;flex-wrap:wrap}
+.service .opt{flex:1 1 220px;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:left;background:var(--bg)}
+.service .opt b{display:block;font-size:.95rem;margin-bottom:3px}
+.service .opt span{display:block;font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.service .opt a{display:inline-block;font-size:.88rem;font-weight:600;color:#fff;background:var(--amber-dark);text-decoration:none;padding:8px 14px;border-radius:8px}
+.service .fineprint{font-size:.78rem;color:var(--muted);margin:12px 0 0}
+.cta p{color:var(--ink-soft);max-width:540px;margin:0 auto 16px}
+.waitlist{margin:14px 0 8px;border:1px dashed var(--amber-light);border-radius:12px;padding:18px;background:var(--bg)}
+.waitlist h3{font-size:16px;margin-bottom:4px}
+.waitlist p{font-size:14px;color:var(--ink-soft);margin-bottom:12px;max-width:560px}
+.waitform{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.waitform input[type=email]{flex:1 1 220px;min-width:0;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field-bg);color:var(--ink)}
+.waitform input[type=email]:focus{outline:2px solid var(--amber-light);border-color:var(--amber)}
+.waitnote{font-size:12px;color:var(--muted);margin-top:8px}
+.err{display:none;background:var(--err-bg);color:var(--err-fg);border-radius:10px;padding:12px 14px;margin-top:12px;font-size:14px}
+.err.show{display:block}
+details.how{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0}
+details.how summary{cursor:pointer;font-weight:600;padding:14px 16px;list-style:none}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary::after{content:"+";float:right;color:var(--muted);font-size:20px}
+details.how[open] summary::after{content:"−"}
+details.how .body{padding:0 16px 16px;font-size:14px;color:var(--ink-soft)}
+details.how .body p{margin-bottom:8px}
+footer{padding:28px 0;margin-top:32px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+footer a{color:var(--muted)}
+.spin{display:inline-block;width:15px;height:15px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:600px){.scorecard{gap:12px}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .spin{animation:none;border:2px solid #fff;border-top-color:rgba(255,255,255,.3)}
+  *{transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#inp">Vai direttamente al campo di immissione</a>
+
+<header class="site">
+  <div class="wrap">
+    <a href="/it/" class="brand">aban news<span> · Visibilità IA</span></a>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn">Newsletter gratuita</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1><span class="accent">ChatGPT</span> ti trova?</h1>
+    <p>Sempre più persone interrogano motori di risposta come ChatGPT, Perplexity o Google AI invece di cercare in modo classico. La verifica della visibilità IA controlla quanto bene la tua pagina è preparata per questi motori — struttura delle risposte, FAQ, dati strutturati, parole chiare. Con consigli concreti. Senza login, senza tracciamento.</p>
+  </div>
+</section>
+
+<section class="tool">
+  <div class="wrap">
+    <div class="panel">
+      <label class="fld" for="inp">Codice sorgente HTML o testo della tua pagina</label>
+      <textarea id="inp" aria-describedby="count kbdhint" maxlength="120000" placeholder="Incolla il codice sorgente della tua pagina (nel browser: tasto destro → &ldquo;Visualizza sorgente pagina&rdquo;, seleziona tutto, copia). Anche il testo semplice va bene — ma in tal caso mancano i segnali di struttura come titoli e dati strutturati."></textarea>
+      <p class="kbdhint" id="kbdhint">Consiglio: <span class="kbd" id="kbdLabel">Ctrl + Invio</span> avvia la verifica. Il codice sorgente HTML completo è l'input più significativo.</p>
+      <div class="row">
+        <button id="go" class="btn" type="button">Verifica la visibilità</button>
+        <span class="count" id="count" aria-live="polite">0 caratteri</span>
+      </div>
+      <div class="examples" id="examples" role="group" aria-label="Carica esempi"><span class="exlabel">Oppure carica un esempio:</span></div>
+      <div class="restored" id="restored" role="status">
+        <span id="restoredText"></span>
+        <button class="linkbtn" id="clearStored" type="button">Cancella il testo</button>
+      </div>
+      <div class="err" id="err" role="alert" aria-live="assertive"></div>
+    </div>
+
+    <div class="results" id="res" role="region" aria-labelledby="resHeading" aria-live="polite">
+      <div class="panel">
+        <h2 id="resHeading" class="visually-hidden" tabindex="-1">Risultato della verifica della visibilità</h2>
+        <div class="scorecard">
+          <div class="gauge" id="gauge" role="img" aria-label="Il punteggio AEO è in fase di calcolo"><div class="inner"><div class="num" id="scoreNum">–</div><div class="lbl">/ 100</div></div></div>
+          <div class="verdict">
+            <h2 id="gradeLbl">—</h2>
+            <p id="verdict">—</p>
+          </div>
+        </div>
+
+        <div class="metrics" id="metrics" role="list" aria-label="Indicatori"></div>
+
+        <h3 class="sec">Punteggio per categoria</h3>
+        <div class="cats" id="cats"></div>
+
+        <h3 class="sec">Come migliorarlo</h3>
+        <ul class="recs" id="recs"></ul>
+
+        <div class="waitlist" id="waitlist">
+          <h3>In programma: un report mensile di visibilità IA</h3>
+          <p>Sto pensando a un report mensile che verifica automaticamente la tua pagina e mostra come si evolve nel tempo la tua maturità AEO. Ancora in programma — nessun prezzo, nessun abbonamento. Iscriviti se ti interessa; entrerai nella lista d'attesa senza impegno (tramite l'opt-in della newsletter).</p>
+          <form class="waitform" id="waitform" action="https://abannews.beehiiv.com/subscribe" method="post" target="_blank" rel="noopener">
+            <label class="visually-hidden" for="waitmail">Indirizzo e-mail per la lista d'attesa</label>
+            <input type="email" id="waitmail" name="email" placeholder="tu@mail.it" autocomplete="email" required>
+            <button class="btn" type="submit">Entra nella lista d'attesa</button>
+          </form>
+          <p class="waitnote" id="waitnote">Niente spam, niente tracciamento. Riceverai la newsletter di aban news e sarai avvisato per primo al lancio del report. Annullabile in qualsiasi momento.</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2>Parole chiare ogni mattina</h2>
+        <p>aban news è la newsletter quotidiana sull'IA per i professionisti: dal lunedì al venerdì, 5 minuti, senza hype. Anche su come stanno cambiando la ricerca e i motori di risposta.</p>
+        <a href="https://abannews.beehiiv.com/subscribe" class="btn">Iscriviti gratis</a>
+      </div>
+
+      <div class="service" id="service">
+        <h2>Non vuoi farlo da solo?</h2>
+        <p>Se vuoi che la tua azienda diventi visibile in ChatGPT, Perplexity o Google AI Overviews, ci sono due strade — entrambe senza account, entrambe richieste via e-mail:</p>
+        <div class="opts">
+          <div class="opt">
+            <b>Audit una tantum</b>
+            <span>Verifico le tue pagine più importanti sulla maturità AEO e ti invio un elenco concreto di azioni in italiano.</span>
+            <a href="mailto:hallo@abannews.com?subject=AI-Sichtbarkeit%20Audit&amp;body=Hallo%20Aban%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20AEO-Audit.%20Meine%20Website%3A%20">Richiedi un audit</a>
+          </div>
+          <div class="opt">
+            <b>Abbonamento al report</b>
+            <span>Report mensile di visibilità: cosa è cambiato e cosa fare in seguito. Automatizzato, conciso.</span>
+            <a href="mailto:hallo@abannews.com?subject=AI-Sichtbarkeit%20Report-Abo&amp;body=Hallo%20Aban%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20monatliche%20Report-Abo.%20Meine%20Website%3A%20">Richiedi il report</a>
+          </div>
+        </div>
+        <p class="fineprint">Nessun vincolo di abbonamento, nessun pagamento anticipato. Tu invii un'e-mail, io rispondo con ambito e prezzo. Chiariamo le condizioni in anticipo e per iscritto.</p>
+      </div>
+
+      <p style="text-align:center;margin:18px 0 0;font-size:14px;color:var(--ink-soft)">
+        Altra domanda: vieni davvero <em>menzionato</em> nelle risposte IA?
+        <a href="/it/ki-erwaehnungs-check.html">Verifica delle menzioni IA (presenza del brand) →</a>
+      </p>
+    </div>
+
+    <details class="how">
+      <summary>Cosa verifica il controllo — e cosa significa AEO</summary>
+      <div class="body">
+        <p><b>AEO</b> sta per ottimizzazione per i motori di risposta (answer-engine optimisation): la questione di quanto bene una pagina possa essere letta e citata dai motori di risposta (ChatGPT, Perplexity, Google AI Overviews). Questi sistemi privilegiano una struttura chiara e affermazioni dirette — a differenza della ricerca classica, che si basa di più su link e parole chiave.</p>
+        <p>Il controllo gira all'edge in una funzione Cloudflare e valuta sette aree: struttura risposta-prima, gerarchia dei titoli, FAQ, dati strutturati (JSON-LD), elenchi e tabelle, parole chiare e leggibilità, oltre ai metadati. Ogni area assegna punti, e la somma compone il punteggio da 0 a 100.</p>
+        <p>Lo strumento <b>non</b> interroga alcun motore di risposta in tempo reale — analizza solo il contenuto che incolli. Il tuo testo viene elaborato per l'analisi e non viene memorizzato da nessuna parte. Nessun account, nessun tracciamento. Il codice sorgente HTML completo è l'input più significativo, perché il testo semplice senza titoli né schema fornisce meno segnali.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/it/">Home</a> · <a href="/resources.html">Risorse</a> · <a href="/it/hype-filter.html">Filtro anti-hype</a> · <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a></span>
+  </div>
+</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const inp = $("inp"), res = $("res"), errBox = $("err");
+const MAXLEN = 120000, WARNLEN = 110000, STORE_KEY = "ai-sichtbarkeit-input";
+const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || "");
+const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Curated examples — show the range.
+const EXAMPLES = [
+  { name: "Ben ottimizzato", text: `<!DOCTYPE html>
+<html lang="it">
+<head>
+<title>Consulenza fiscale per autonomi a Berna — studio in parole chiare</title>
+<meta name="description" content="In genere completiamo la dichiarazione dei redditi degli autonomi a Berna in due settimane. Prezzi fissi, scadenze chiare.">
+<\script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quanto costa la dichiarazione dei redditi?","acceptedAnswer":{"@type":"Answer","text":"A partire da 250 franchi."}}]}
+<\/script>
+</head>
+<body>
+<h1>Consulenza fiscale per autonomi a Berna</h1>
+<p>In genere completiamo la tua dichiarazione dei redditi in due settimane a prezzo fisso. Tu invii i documenti, noi pensiamo al resto.</p>
+<h2>Quanto costa la dichiarazione dei redditi?</h2>
+<p>Una dichiarazione semplice parte da 250 franchi. Il prezzo esatto te lo indichiamo in anticipo.</p>
+<ul><li>Raccogliere i documenti</li><li>Prenotare un appuntamento</li><li>Ricevere il risultato</li></ul>
+<h2>Quanto dura l'elaborazione?</h2>
+<p>In genere due settimane dalla ricezione dei documenti.</p>
+<h2>A chi si rivolge l'offerta?</h2>
+<p>Agli autonomi e alle piccole imprese della regione di Berna.</p>
+<script defer src="/js/assistant.js"></script>
+</body>
+</html>` },
+  { name: "Debole", text: `<html>
+<head><title>Home</title></head>
+<body>
+<p>In questo articolo desideriamo presentarvi la nostra gamma di servizi olistica e innovativa che, nell'ambito di una considerazione globale di tutti i requisiti e tenendo conto delle circostanze individuali della nostra preziosa clientela, consente un accompagnamento su misura lungo l'intero processo.</p>
+<p>Siamo lieti della vostra visita e restiamo a vostra disposizione in qualsiasi momento.</p>
+</body>
+</html>` },
+  { name: "Testo semplice", text: `La consegna arriva in genere entro tre giorni lavorativi. Ricevi un numero di tracciamento via e-mail. Per qualsiasi domanda, contattaci brevemente e lo risolviamo lo stesso giorno. Un reso è possibile entro 30 giorni.` },
+];
+
+const STATUS_CLASS = { gut: "gut", teils: "teils", schwach: "schwach" };
+const SEV_LABEL = { hoch: "Importante", mittel: "Medio", niedrig: "Minore" };
+
+function escapeHtml(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function updateCount(){
+  const n = inp.value.length;
+  const c = $("count");
+  if (n > WARNLEN){
+    c.textContent = n.toLocaleString("it-IT") + " / " + MAXLEN.toLocaleString("it-IT") + " caratteri";
+    c.classList.add("warn");
+  } else {
+    c.textContent = n.toLocaleString("it-IT") + " caratteri";
+    c.classList.remove("warn");
+  }
+}
+inp.addEventListener("input", () => { updateCount(); persist(); });
+
+// Build example chips
+EXAMPLES.forEach((ex) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.textContent = ex.name;
+  b.setAttribute("aria-label", "Carica l'esempio: " + ex.name);
+  b.addEventListener("click", () => { inp.value = ex.text; updateCount(); persist(); $("go").click(); });
+  $("examples").appendChild(b);
+});
+
+// --- Persistence (local only, no tracking) ---
+function persist(){
+  try {
+    if (inp.value.trim()) localStorage.setItem(STORE_KEY, inp.value);
+    else localStorage.removeItem(STORE_KEY);
+  } catch(e){}
+}
+$("clearStored").addEventListener("click", () => {
+  inp.value = "";
+  try { localStorage.removeItem(STORE_KEY); } catch(e){}
+  $("restored").classList.remove("show");
+  updateCount();
+  res.classList.remove("show");
+  inp.focus();
+});
+
+// --- Keyboard: Cmd/Ctrl+Enter checks ---
+$("kbdLabel").textContent = isMac ? "⌘ + Invio" : "Ctrl + Invio";
+inp.addEventListener("keydown", (e) => {
+  if ((e.metaKey || e.ctrlKey) && (e.key === "Enter" || e.keyCode === 13)){
+    e.preventDefault();
+    $("go").click();
+  }
+});
+
+function render(d){
+  const g = $("gauge");
+  const score = (d.score != null ? d.score : 0);
+  g.style.setProperty("--v", score);
+  if (d.gradeColor) g.style.setProperty("--gc", d.gradeColor);
+  g.setAttribute("aria-label", "Punteggio AEO " + score + " su 100" + (d.grade ? ", voto: " + d.grade : ""));
+  $("scoreNum").textContent = (d.score != null ? d.score : "–");
+  $("gradeLbl").textContent = d.grade || "—";
+  if (d.gradeColor) $("gradeLbl").style.color = d.gradeColor;
+  $("verdict").textContent = d.verdict || "";
+
+  const m = d.metrics || {};
+  const has = (x) => x !== undefined && x !== null;
+  const reading = has(m.readingLabel) ? m.readingLabel
+                : (has(m.readingGrade) ? ("Livello " + m.readingGrade) : "—");
+  const cards = [
+    ["Input", d.inputType === "html" ? "HTML" : "Testo"],
+    ["Parole", has(m.wordCount) ? m.wordCount : "—"],
+    ["Sezioni H2", has(m.h2Count) ? m.h2Count : "—"],
+    ["Titoli-domanda", has(m.questionHeadings) ? m.questionHeadings : "—"],
+    ["Blocchi JSON-LD", has(m.jsonLdBlocks) ? m.jsonLdBlocks : "—"],
+    ["Livello di lettura", reading],
+  ];
+  $("metrics").innerHTML = cards.map(([k,v]) =>
+    '<div class="metric" role="listitem"><div class="v">'+escapeHtml(String(v))+'</div><div class="k">'+escapeHtml(k)+'</div></div>').join("");
+
+  // Categories
+  const categories = Array.isArray(d.categories) ? d.categories : [];
+  $("cats").innerHTML = categories.map(c => {
+    const pct = c.max ? Math.round((c.points / c.max) * 100) : 0;
+    const cls = STATUS_CLASS[c.status] || "teils";
+    return '<div class="cat"><div class="ch"><span class="ct">'+escapeHtml(c.label||c.key||"")+
+      '<span class="pts">'+escapeHtml(String(c.points))+' / '+escapeHtml(String(c.max))+'</span></span>'+
+      '<span class="statusbadge '+cls+'">'+escapeHtml(c.status||"")+'</span></div>'+
+      '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
+      (c.detail ? '<div class="det">'+escapeHtml(c.detail)+'</div>' : '')+'</div>';
+  }).join("");
+
+  // Recommendations
+  const recs = Array.isArray(d.recommendations) ? d.recommendations : [];
+  $("recs").innerHTML = recs.length
+    ? recs.map(r =>
+        '<li><span class="sev '+escapeHtml(r.severity||"niedrig")+'">'+escapeHtml(SEV_LABEL[r.severity]||r.severity||"")+'</span>'+
+        '<span>'+escapeHtml(r.text||"")+'</span></li>').join("")
+    : '<li><span class="sev niedrig">Minore</span><span>Niente di urgente — la pagina è costruita solidamente.</span></li>';
+
+  res.classList.add("show");
+
+  const heading = $("resHeading");
+  heading.focus({preventScroll:true});
+  res.scrollIntoView({behavior: prefersReducedMotion ? "auto" : "smooth", block:"start"});
+}
+
+async function callApi(){
+  const text = inp.value.trim();
+  if (!text){ showErr("Incolla prima il codice sorgente o il testo della tua pagina."); inp.focus(); return null; }
+  if (text.length > MAXLEN){
+    showErr("L'input è troppo lungo con " + text.length.toLocaleString("it-IT") + " caratteri. Riducilo ad al massimo " + MAXLEN.toLocaleString("it-IT") + " caratteri.");
+    return null;
+  }
+  const r = await fetch("/api/aeo-check", {
+    method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ input: text })
+  });
+  if (!r.ok){
+    const e = await r.json().catch(()=>({}));
+    throw new Error(e.error || ("Errore del server "+r.status));
+  }
+  return r.json();
+}
+function showErr(msg){ errBox.textContent = msg; errBox.classList.add("show"); }
+function clearErr(){ errBox.textContent = ""; errBox.classList.remove("show"); }
+
+$("go").addEventListener("click", async () => {
+  clearErr();
+  const btn = $("go"); const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Verifica…';
+  try {
+    const d = await callApi();
+    if (d) render(d);
+  } catch (e) {
+    showErr("Impossibile verificare la pagina: " + e.message + ". Il sito gira su Cloudflare Pages?");
+  } finally {
+    btn.disabled = false; btn.innerHTML = old;
+  }
+});
+
+// --- On load: restore text from localStorage ---
+(function init(){
+  updateCount();
+  try {
+    const saved = localStorage.getItem(STORE_KEY);
+    if (saved && saved.trim()){
+      inp.value = saved.slice(0, MAXLEN);
+      updateCount();
+      $("restoredText").textContent = "Il tuo ultimo input è stato ripristinato (memorizzato solo localmente).";
+      $("restored").classList.add("show");
+    }
+  } catch(e){}
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
