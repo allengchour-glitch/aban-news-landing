@@ -35,6 +35,18 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🏷️ GOOGLE-FEED: 75 EAN-Barcodes + Kollisions-Koordination
+- **75 von ~90 BigBuy-Produkten haben jetzt echte EAN13-Barcodes** (aus BigBuy `ean13`, via productVariantsBulkUpdate, 0 Fehler).
+  Markenartikel ohne GTIN werden in Google Shopping oft abgelehnt → das ist der grösste Feed-Freigabe-Hebel. Marke=vendor war schon echt.
+  (3 ohne EAN = meine selbst-vergebenen ID-SKUs; vernachlässigbar.) Tools: `automation/add_premium_section.mjs` (Theme), EAN-Matching `/tmp`.
+- **🤝 Kollisions-Koordination mit Parallel-Session** (User „nicht kollidieren, teilt Updates + Gehirn"): SHARED-MEMORY LIVE-STAND
+  + Gehirn-Regel `collision_avoidance` ergänzt. Reviere: Produkt-Import/-Felder (inkl. EAN) = ich; Theme/Collection-Seite/Feed-Kanal = andere Session.
+  Gemeinsames Gehirn = `automation/brain/knowledge.json` (beide append, nie überschreiben). D&G-Fakten-Korrektur weitergegeben.
+- **🏛️ Theme-Übernahme vorbereitet (User-Entscheid „ICH übernehme per API"):** Helper `automation/add_premium_section.mjs` +
+  Workflow `add-premium-section.yml` (fügt „✨ Premium-Marken"-Startseiten-Sektion sauber via Admin-API ein). Lauf braucht
+  Shopify-Secrets — per CI erst nach main-Merge, oder User pastet Creds transient. Live-Theme bleibt sonst MCP-gesperrt.
+
+
 ### 2026-06-15 (Abend) — 🏛️ PROFI-SEITE in ETAPPEN (User „keine 0815-Seite, professionell, alles in Etappen")
 **Klartext-Aufteilung: (A) Inhalt/Struktur = ich via API · (B) Theme-Visuals (Hero/Schrift/Layout/Farben) = Live-Theme
 schreibgeschützt → nur Customizer (User) oder Agentur (`dropship/AGENTUR-BRIEFING.md` liegt bereit).**

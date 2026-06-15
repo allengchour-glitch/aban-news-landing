@@ -55,6 +55,12 @@
 - **REVIER (Kollisionsvermeidung):** Collection-SEITE „✨ LuxeStyle Premium" (gid 688683942273) Präsentation = Hero/Seitentext/
   Sortierung/Startseiten-Sektion/THEME → **andere Session**. Produkt-IMPORT + Produkt-Inhalt → **diese Session**. Ich fasse
   Collection-Seite + Theme ab jetzt NICHT mehr an (kein Clobber). Beide lesen SHARED-MEMORY vor Shopify-Writes.
+- **🏷️ EAN/BARCODES GESETZT (20:10):** 75 der ~90 BigBuy-Produkte haben jetzt echte EAN13-Barcodes (aus BigBuy `ean13`)
+  → wichtig für Google-Shopping-Freigabe von Markenartikeln. Produkt-Feed-Felder (Barcode/Marke=vendor) = Produkt-Session;
+  Feed-KANAL-Konfig (Merchant Center / Meta-Katalog) = Theme/Marketing-Session; Merchant Center braucht weiterhin Domain-Verify (User).
+- **🔄 PROTOKOLL „regelmässig Updates + gemeinsames Gehirn" (User 2026-06-15):** (1) Jede Session aktualisiert DIESEN
+  LIVE-STAND nach grösseren Aktionen. (2) **Gemeinsames Gehirn = `automation/brain/knowledge.json`** — beide Sessions LESEN es
+  + dürfen `rules` ergänzen (APPEND), NIE gegenseitig überschreiben. (3) Vor jedem Shopify-Write hier reinschauen.
 
 **2026-06-11 — REPO IST JETZT PUBLIC (User-Entscheid) → Actions wieder gratis/unbegrenzt:**
 - **🔓 `aban-news-landing` ist PUBLIC** (vorher privat). Grund: **Actions-Minuten waren an EINEM Tag
