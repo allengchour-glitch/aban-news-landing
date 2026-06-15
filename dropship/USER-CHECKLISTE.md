@@ -1,4 +1,31 @@
-# ✅ USER-CHECKLISTE — LuxeStyle Social-Maschine aktivieren
+# ✅ USER-CHECKLISTE — LuxeStyle
+
+## 🚀 JETZT-START-PAKET (Stand 2026-06-15) — die 4 Dinge, die WIRKLICH zählen
+> **Datenbefund (Klaviyo, harte Zahlen, letzte 90 Tage): 0 Produktansichten · 0 Checkouts · 0 Bestellungen.**
+> Der Shop ist top (Katalog/SEO/Cross-Sell/E-Mail-Flows fertig). **Der EINZIGE Engpass ist Reichweite.**
+> Alles unten ist autonom vorbereitet — es fehlen nur diese Klicks (kein Tool-Zugang / nur Browser/Admin):
+
+- [ ] **1. ⭐ TikTok- ODER Meta-Kampagne scharf schalten (der Haupt-Hebel).** Genau so anlegen:
+      - **Ziel:** Conversions / „Complete Payment" (NICHT Reichweite/Klicks).
+      - **Pixel:** TikTok `D8EKVR3C77U6KT5BTBD0` (Shopify-verbunden) muss Events empfangen.
+      - **Zielgruppe:** Schweiz · Frauen · 18–34 · Sprache DE+FR.
+      - **Budget:** 20 CHF/Tag zum Testen · **Placement:** nur TikTok (kein Audience-Network).
+      - **Landingpage:** `https://luxestyle.ch/collections/sommer` · **Creative:** vorhandene Premium-Reels.
+      - 2–3 Tage laufen lassen → dann „Auswertung" bei mir anfordern (kommen jetzt Views/Checkouts > 0?).
+- [ ] **2. 📧 Newsletter senden (steht startklar als ENTWURF).** Klaviyo → Kampagnen → **„Sommer 2026 · Neue Looks
+      + WELCOME10"** (ID `01KV58TANGVR948JTV7P5650PT`) → prüfen → **Senden**. (Ich habe alles gebaut, NUR nicht gesendet.)
+- [ ] **3. 🔍 Klaviyo-Tracking-Domain prüfen.** Account-Website steht auf **`luxestyle.com.co`**, Shop ist **`luxestyle.ch`**.
+      → In Klaviyo (Settings + Onsite/Web-Tracking) sicherstellen, dass das Tracking-Snippet auf **`luxestyle.ch`** läuft
+      (sonst werden „Viewed Product"-Events nie erfasst). Shop-Domain in Klaviyo auf `.ch` umstellen.
+- [ ] **4. 🧹 3 alte Klaviyo-Entwürfe archivieren** (Klaviyo-MCP kann das nicht): „48h Flash-Sale", „Vatertag 2026"
+      (vorbei), „Summer-Push 2026 · Galaxy Aurora". Der neue Newsletter (Punkt 2) ersetzt sie.
+
+> Sobald Punkt 1 Traffic bringt: die 10 Live-Flows (Welcome/Warenkorb/Win-Back/Post-Purchase) feuern automatisch,
+> die Newsletter-Liste wächst übers WELCOME10-Popup, und du klickst Punkt 2 ab. **Das ist der ganze Weg zu den ersten Käufen.**
+
+---
+
+# ✅ USER-CHECKLISTE — LuxeStyle Social-Maschine aktivieren (ältere Punkte, Stand 06-08/09)
 
 ## 🔴 OFFEN (todo morgen, Stand 2026-06-09) — nach Gemini-Verifikation (Note 4→6/10, Hero jetzt Stärke)
 **Hero ist fertig & live** (heller Text + goldener Button + Premium-Bild, Schema 3 gesetzt). Verbleibende Gemini-Punkte —
