@@ -35,6 +35,21 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Abend) — 🧹 SAUBER-MACHEN: Grössen, Grössentabellen, Galerien + 22 neue Produkte
+- **+21 neue Marken-Teile** (Runde „noch 3 mal", weg von Uhren → Schmuck/Parfum): Halsketten/Anhänger (One Jewels,
+  Radiant, Guess, Tommy Hilfiger, Folli Follie, Morellato), Ohrringe (Radiant, Adore, Folli Follie, Breil, One Jewels),
+  Parfum (Police, Tommy Hilfiger, Hugo Boss «Alive», Elie Saab «L'Homme», Calvin Klein «Eternity»), Ringe (Radiant,
+  Police, Folli Follie, Breil). Dubletten-Regel angewandt (Lancôme-Set/Guess-Ring/Guess-Ohrringe-ohne-Bild ausgeschlossen).
+- **+4 DAMEN-BLUSEN von CJ** (User „nur 3?" Blusen): Streifen-«Marbella», Spitzen-«Dentelle», Strick-«Maglia»,
+  Chiffon-Set-«Solare» — mit Grössen S–XL, je Bild-QA'd (🈲 sauber). CJ-Token-Cache war noch gültig → BigBuy hat keine eleganten Blusen, CJ schon.
+- **🖼️ MEHR BILDER (User „mehr bilder?"):** alle 4 Blusen mit voller CJ-Galerie (5–6 Bilder, jedes 🈲-geprüft) angereichert.
+  BigBuy-Schmuck hat quellenbedingt oft nur 1 Foto (+ Grössentabelle-Bild) → Galerie dort knapp.
+- **📏 RING-GRÖSSEN + GRÖSSENTABELLE (User „verschiedene grösse für ringe, grössentabelle, merk dir das"):** 7 Ringe
+  bekamen EU-52–58-Selektor (Herren 56–62) via `productOptionsCreate` (alle Varianten tracked:false=kaufbar) + HTML-
+  Grössentabelle (EU/Innen-Ø/US) in der Beschreibung. **Gehirn-Regel `sizes_and_charts`** verankert: ab jetzt JEDES Produkt
+  mit Grössen-Option + Tabelle, volle Lieferanten-Galerie (nach QA) — gilt für alle künftigen Importe.
+- **✅ Beschreibungen:** sind auf ALLEN neuen Produkten gespeichert (verifiziert) — erscheinen auf der PDP unter dem Kauf-Block.
+
 ### 2026-06-15 (Abend) — ⌚ +18 MARKEN-UHREN/SCHMUCK (User „BigBuy war teuer, fülle mehr")
 - **Investition ausnutzen → 18 neue Marken-Produkte** (Dubletten-Regel angewandt: erst 51 bestehende bb-SKUs geholt,
   nur Neues). Neue Top-Marken: **Swatch (Swiss Made!), Citizen, Hugo Boss, Tommy Hilfiger, Calvin Klein, Festina,

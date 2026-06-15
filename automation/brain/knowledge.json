@@ -447,6 +447,12 @@
       "BUNDLES sind KEINE Dubletten: ein Bundle darf das Hero-Bild teilen (z.B. Slim-Wallet + Bundle inkl. Slim-Wallet). Nur archivieren, wenn Titel+Bild+SKU praktisch identisch sind UND es kein bewusstes Set ist.",
       "Bei Fund: die VOLLSTAENDIGERE Version behalten (mehr Varianten/echte SKUs/besserer Preis), die schlechtere ARCHIVIEREN (status ARCHIVED). Nie beide aktiv lassen -> sieht im Shop nach Fehler/Betrug aus.",
       "Auto-Importe der Parallel-Session sind die Hauptquelle fuer Doppel-Importe -> nach fremden Importen einen Dubletten-Scan fahren (Gruppierung nach Bild-Basis + «Name»)."
+    ],
+    "sizes_and_charts": [
+      "GRÖSSEN + GRÖSSENTABELLE PFLICHT (User 2026-06-15 merk dir das): JEDES Produkt mit Grössen-relevanz bekommt eine Grössen-Auswahl UND eine Grössentabelle. Kleidung: XS-XXL. RINGE: Ring-Grössen (EU 52/54/56/58/60 bzw. S/M/L) als Option Grösse. Uhren/Taschen/Parfum = Einheitsgrösse (keine Option noetig).",
+      "Grössentabelle als HTML-Block in descriptionHtml (Tabelle EU/mm/US fuer Ringe; cm-Masse fuer Kleidung). Zusaetzlich, wenn der Lieferant ein Size-Chart-Bild hat (BigBuy: *_mandatory-ring*.jpg / CJ: Size-Chart im productImageSet), dieses als Galerie-Bild anhaengen — ABER NUR wenn QA sauber (keine asiat. Schrift bei CJ).",
+      "BigBuy-Ringe tragen die reale Groesse im Namen (z.B. 14 54 mm). Im Dropship-Front Grössen-Selektor mit inventoryItem.tracked:false anbieten (wie bei Kleidung). Bei create-product gleich options:[Grösse]+variants mitgeben, NICHT nachtraeglich.",
+      "MEHR BILDER: immer die volle Lieferanten-Galerie als Media anhaengen (CJ productImageSet 5-10 Bilder, BigBuy P00/P10/P20), jedes Bild vorher per 🈲-QA. Nie nur das Cover-Bild allein lassen."
     ]
   },
   "decisions": [
