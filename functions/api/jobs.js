@@ -26,6 +26,13 @@ const CAT_KW = {
   "Customer Service": ["customer", "support", "kundenservice", "kundenbetreuung", "service desk"],
   "Human Resources": ["human resources", "recruit", "personal", "talent acquisition"],
   "Engineering": ["mechanical", "electrical", "ingenieur", "construction", "manufacturing", "maschinen"],
+  "Gesundheit & Pflege": ["pflege", "pfleger", "spitex", "gesundheit", "klinik", "spital", "medizin", "ärzt", "arzt", "mfa", "fage", "therapeut"],
+  "Gastronomie": ["koch", "köch", "gastro", "restaurant", "küche", "barista", "kellner", "service mitarb", "buffet"],
+  "Detailhandel & Verkauf": ["verkauf", "detailhandel", "verkäufer", "filialleit", "kasse", "retail"],
+  "Bau & Handwerk": ["handwerk", "elektriker", "sanitär", "maurer", "schreiner", "monteur", "maler", "bauführ", "polier"],
+  "Reinigung": ["reinigung", "reinigungskraft", "gebäudereinig", "hauswart", "facility"],
+  "Logistik & Transport": ["logistik", "lager", "chauffeur", "staplerfahrer", "kurier", "spedition", "transport"],
+  "Bildung": ["lehrer", "lehrper", "kita", "erzieher", "dozent", "pädagog", "bildung"],
 };
 function catOf(title, tags) {
   const hay = (String(title) + " " + (tags || []).join(" ")).toLowerCase();
