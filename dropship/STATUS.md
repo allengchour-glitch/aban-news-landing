@@ -20,6 +20,7 @@
 - **🇨🇭 CH-Follower** — PC-Task (`run-follower-daily.ps1`), wenn PC an + Brave eingeloggt.
 
 ## ⏳ WARTET AUF DICH (nur du kannst es)
+- **🆓 Gratis-Werbung schweizweit** (Plan: `dropship/GRATIS-WERBUNG-SCHWEIZ.md`): (1) Google-Merchant Free Listings grün, (2) tutti.ch-Inserate (copy-paste fertig), (3) FB CH-Gruppen, (4) anibis/zaster spiegeln. Kein Budget nötig — trifft den Reichweiten-Engpass.
 - **✉️ 2 Policy-Tippfehler** (Admin, MCP scope-blockiert): Versand-Policy „info@luxestyle.**com**" → `.ch`; AGB §8 Gewährleistung „allengchour@**gmail.com**" → `info@luxestyle.ch` (Trust/Konsistenz).
 - **🎯 Pixel + bezahlte CH-Kampagne** (TikTok Spark Ads / Meta Advantage+) = der #1-Käufe-Hebel. (User: „pixel morgen".)
 - **🟢 GRATIS Google-Listings:** Kanal „Google & YouTube" ist installiert + Katalog publiziert (Shopify-Seite fertig).
