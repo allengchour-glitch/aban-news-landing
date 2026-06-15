@@ -54,6 +54,18 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-15 (abannews-Session) — ✅ KONSOLIDIERT in EINEM PR (`claude/abannews-all`): Ehrlich-Ton + Content + Ricardo:**
+- **Brain-Score 97.2 → 99.3:** 25 echte Hype-Floskeln in `vergleich/`+`themen/` entschärft (Game-Changer→entscheidender Vorteil,
+  „Disruptive Preise"→„Aggressiv günstige Preise" …). Die **7 Rest-Befunde sind LEGITIM** (Verbots-Wortlisten launch-manual/en-faq,
+  Bau-„disruption", kritische „Revolution", „10x Hebel") → **nicht wegfixen**.
+- **74 `[Redaktion: pruefen & bewerten]`-Platzhalter aus 64 `vergleich/`-Seiten entfernt** (standen live im Text). **Cluster gesättigt:
+  keine neuen Vergleichsseiten bauen** — alle Kandidaten existieren in Gegenrichtung (chatgpt-vs-claude/make-vs-n8n/flux-vs-midjourney) = Doorway.
+- **Sitemap:** `lastmod 2026-06-15` für 78 verbesserte Seiten + Homepage (Re-Crawl/GSC). **Perf** geprüft = bereits gut (nicht-deferte
+  Scripts sind nur `*-config.js`, Lade-Reihenfolge → bewusst nicht defern).
+- **Ricardo-Export** (`dropship/ricardo_export.csv`, 110 Produkte = 20 LuxeStyle-Top + 90 BigBuy): Ricardo-Feed abgelehnt (nur B-Ware
+  + Pipeline voll) → für **normales Verkäufer-Listing**. BigBuy-Artikel sind bereits ACTIVE im Shop (EU-Lager) → nicht doppelt importieren.
+- **Semrush-MCP nicht im Plan freigeschaltet** → Marktlücken über eigene Coverage-Analyse. Alte Einzel-PRs #1003/#1004/#1005 ersetzt durch diesen Sammel-PR.
+
 **2026-06-15 (Luxestyle-Session) — ✅ Pixel/Pinterest gelöst · Brain v3 · 1.-August-Fokus · Voll-Audit:**
 - **TikTok-Pixel FERTIG:** Live-Theme feuert jetzt **`D8EKVR3C77U6KT5BTBD0`** (alter `D85BAG…` weg), per API verifiziert.
   Geändert per **PC-Browser-Claude** (Live-Theme-Writes sind MCP-gesperrt). ⚠️ Unveröffentlichte Theme-Kopie
