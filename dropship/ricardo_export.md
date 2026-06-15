@@ -1,6 +1,6 @@
 # Ricardo-Listing-Export — LuxeStyle Top-Produkte
 
-Stand 2026-06-15 · 90 Produkte · Preise in CHF · Zustand: Neu
+Stand 2026-06-15 · 110 Produkte · Preise in CHF · Zustand: Neu
 
 ## Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
 - **Marke:** LuxeStyle  |  **Preis:** CHF 49.90  |  **Kategorie:** Kleidung & Accessoires > Accessoires  |  **Zustand:** Neu  |  **Versand:** 6–12 Werktage  |  **Quelle:** LuxeStyle
@@ -541,4 +541,124 @@ Stand 2026-06-15 · 90 Produkte · Preise in CHF · Zustand: Neu
 - **Beschreibung:** Eleganter One-Jewels-Anhänger mit blauem Stein: feminin, modern, hautfreundlich. Original-Markenschmuck im Geschenketui.
 - **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5608217623897_S72140810_P00.jpg?v=1781550511
 - **Shop:** https://luxestyle.ch/products/one-jewels-halskette-mit-blauem-anhanger
+
+## Radiant · Halskette Edelstahl Fein
+- **Marke:** Radiant  |  **Preis:** CHF 29.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Zarte Radiant-Halskette aus Edelstahl: schlicht, alltagstauglich, anlauffest. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8434103480544_S7253156_P00.jpg?v=1781550516
+- **Shop:** https://luxestyle.ch/products/radiant-halskette-edelstahl-fein
+
+## Guess · Herren-Halskette Edelstahl
+- **Marke:** Guess  |  **Preis:** CHF 39.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Markantes Guess-Herren-Halsband aus Edelstahl: urbaner Look mit Logo-Detail, robust. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7620207510107_S0379197_P00.jpg?v=1781550521
+- **Shop:** https://luxestyle.ch/products/guess-herren-halskette-edelstahl
+
+## Tommy Hilfiger · Damen-Halskette Edelstahl
+- **Marke:** Tommy Hilfiger  |  **Preis:** CHF 44.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Feine Tommy-Hilfiger-Halskette aus Edelstahl: clean, zeitlos, anlauffest. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7613272545440_S0384476_P00.jpg?v=1781550527
+- **Shop:** https://luxestyle.ch/products/tommy-hilfiger-damen-halskette-edelstahl
+
+## Folli Follie · Halskette Elegant
+- **Marke:** Folli Follie  |  **Preis:** CHF 49.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Elegante Folli-Follie-Halskette: feminin mit feinem Detail, vielseitig kombinierbar. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8431777809305_S0351449_P00.jpg?v=1781550533
+- **Shop:** https://luxestyle.ch/products/folli-follie-halskette-elegant
+
+## Morellato · Halskette Silber Italienisch
+- **Marke:** Morellato  |  **Preis:** CHF 84.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Silberfarbene Halskette der italienischen Marke Morellato: modern, elegant, Edelstahl, anlauffest. Original im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8056783018215_S72142479_P00.jpg?v=1781550535
+- **Shop:** https://luxestyle.ch/products/morellato-halskette-silber-italienisch
+
+## One Jewels · Damen-Halskette Silber
+- **Marke:** One Jewels  |  **Preis:** CHF 89.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Elegante One-Jewels-Silber-Halskette: feminin, vielseitig, hochwertig verarbeitet. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5608217624658_S72140574_P00.jpg?v=1781550548
+- **Shop:** https://luxestyle.ch/products/one-jewels-damen-halskette-silber
+
+## Radiant · Damen-Ohrringe Fein
+- **Marke:** Radiant  |  **Preis:** CHF 24.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Zarte Radiant-Ohrringe: leicht, schlicht, alltagstauglich, hautfreundlich. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8434103480261_S7283513_P00.jpg?v=1781550552
+- **Shop:** https://luxestyle.ch/products/radiant-damen-ohrringe-fein
+
+## Adore · Damen-Ohrringe Glanz
+- **Marke:** Adore  |  **Preis:** CHF 29.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Funkelnde Adore-Ohrringe: feminin mit edlem Glanz, hautfreundlich. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9009653754903_S0365595_P00.jpg?v=1781550558
+- **Shop:** https://luxestyle.ch/products/adore-damen-ohrringe-glanz
+
+## Folli Follie · Statement-Ohrringe
+- **Marke:** Folli Follie  |  **Preis:** CHF 34.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Coole Folli-Follie-Statement-Ohrringe mit Totenkopf-Motiv: edgy, auffällig, leicht. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2300000035544_S0359629_P00.jpg?v=1781550563
+- **Shop:** https://luxestyle.ch/products/folli-follie-statement-ohrringe
+
+## Breil · Damen-Ohrringe Tropfen
+- **Marke:** Breil  |  **Preis:** CHF 44.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Elegante Breil-Tropfen-Ohrringe: modernes italienisches Design, anlauffest. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3300_00.jpg?v=1781550567
+- **Shop:** https://luxestyle.ch/products/breil-damen-ohrringe-tropfen
+
+## One Jewels · Damen-Ohrringe Silber
+- **Marke:** One Jewels  |  **Preis:** CHF 89.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Edle One-Jewels-Silber-Ohrringe: feminin, zeitlos, hochwertig verarbeitet. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5608217623712_S72140295_P00.jpg?v=1781550572
+- **Shop:** https://luxestyle.ch/products/one-jewels-damen-ohrringe-silber
+
+## Police «To Be True Me» Eau de Parfum · 125 ml
+- **Marke:** Police  |  **Preis:** CHF 39.90  |  **Kategorie:** Beauty & Gesundheit > Parfum & Düfte  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** «To Be True Me» von Police: moderner, ausdrucksstarker Damenduft im auffälligen Skull-Flakon. Eau de Parfum, 125 ml. 100% Original.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0679602004534_S05151720_P00.jpg?v=1781550596
+- **Shop:** https://luxestyle.ch/products/police-to-be-true-me-eau-de-parfum-125-ml
+
+## Tommy Hilfiger · Herrenduft Eau de Toilette
+- **Marke:** Tommy Hilfiger  |  **Preis:** CHF 44.90  |  **Kategorie:** Beauty & Gesundheit > Parfum & Düfte  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Frischer Tommy-Hilfiger-Herrenduft: urban, sportlich, unkompliziert. Eau de Toilette. 100% Original, neu & versiegelt.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7640496672379_R00.jpg?v=1781550598
+- **Shop:** https://luxestyle.ch/products/tommy-hilfiger-herrenduft-eau-de-toilette
+
+## Hugo Boss «Alive Intense» Eau de Parfum
+- **Marke:** Hugo Boss  |  **Preis:** CHF 49.90  |  **Kategorie:** Beauty & Gesundheit > Parfum & Düfte  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** «Boss Alive Intense» von Hugo Boss: lebendiger, femininer Duft mit Charakter. Eau de Parfum. 100% Original, neu & versiegelt.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3616302968220_R10.jpg?v=1781550602
+- **Shop:** https://luxestyle.ch/products/hugo-boss-alive-intense-eau-de-parfum
+
+## Elie Saab «L'Homme» Eau de Toilette · 50 ml
+- **Marke:** Elie Saab  |  **Preis:** CHF 69.90  |  **Kategorie:** Beauty & Gesundheit > Parfum & Düfte  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** «L'Homme» von Elie Saab: eleganter, holzig-warmer Herrenduft. Eau de Toilette, 50 ml. 100% Original, neu & versiegelt.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7640233340622_S05150611_P00.jpg?v=1781550607
+- **Shop:** https://luxestyle.ch/products/elie-saab-lhomme-eau-de-toilette-50-ml
+
+## Calvin Klein «Eternity for Men» Eau de Toilette
+- **Marke:** Calvin Klein  |  **Preis:** CHF 74.90  |  **Kategorie:** Beauty & Gesundheit > Parfum & Düfte  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** «Eternity for Men» von Calvin Klein: zeitloser, frisch-aromatischer Herrenklassiker. Eau de Toilette. 100% Original, neu & versiegelt.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3616303549756_S8311078_P00.jpg?v=1781550613
+- **Shop:** https://luxestyle.ch/products/calvin-klein-eternity-for-men-eau-de-toilette
+
+## Radiant · Damenring Fein
+- **Marke:** Radiant  |  **Preis:** CHF 29.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Eleganter Radiant-Damenring aus Edelstahl: schlicht, alltagstauglich, anlauffest, hautfreundlich. Original im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8434103480643_S7253161_P00.jpg?v=1781550629
+- **Shop:** https://luxestyle.ch/products/radiant-damenring-fein
+
+## Police · Damenring Modern
+- **Marke:** Police  |  **Preis:** CHF 29.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Stilvoller Police-Damenring aus Edelstahl: modernes Design mit Charakter, anlauffest. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4894816045548_S0380722_P00.jpg?v=1781550634
+- **Shop:** https://luxestyle.ch/products/police-damenring-modern
+
+## Folli Follie · Damenring Zart
+- **Marke:** Folli Follie  |  **Preis:** CHF 34.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Femininer Folli-Follie-Ring: zart, elegant, hautfreundlich. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5205340551945_R00.jpg?v=1781550640
+- **Shop:** https://luxestyle.ch/products/folli-follie-damenring-zart
+
+## Breil · Damenring Italienisch
+- **Marke:** Breil  |  **Preis:** CHF 44.90  |  **Kategorie:** Uhren & Schmuck > Schmuck  |  **Zustand:** Neu  |  **Versand:** EU-Lager, 5–10 Werktage  |  **Quelle:** BigBuy
+- **Beschreibung:** Eleganter Breil-Damenring aus Edelstahl: modernes italienisches Design. Original-Markenschmuck im Geschenketui.
+- **Bilder:** https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8431242265148_ok_P00.jpg?v=1781550643
+- **Shop:** https://luxestyle.ch/products/breil-damenring-italienisch
 

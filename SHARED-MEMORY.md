@@ -40,6 +40,22 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-15 (Session „Ricardo/Export") — 🆕 BigBuy-Markenware im Katalog + Ricardo-Listing-Export (KEIN Feed!):**
+- **⚠️ Ricardo-Produkt-Feed ABGELEHNT** (Mail accountmanagement@ricardo.ch, Anfrage 3651626): Feed nimmt **nur B-Ware**
+  (Retouren/Restposten/Ausstellung) — LuxeStyle=Neuware → passt nicht; **Pipeline ausserdem voll** (nur Warteliste).
+  → **Kein Feed bauen.** Ricardo geht nur über den **normalen gewerblichen Verkäufer-Weg** (manuell/Bulk einstellen).
+- **🆕 BigBuy-Produkte sind LIVE im Shopify-Katalog** (Tag `bigbuy`, vendor=Marke, am 2026-06-15 angelegt): **~90 Markenartikel** —
+  Parfums (D&G, Lancôme, YSL, Calvin Klein, Hugo Boss, Kenzo, Police …), Marken-Uhren (Casio, Guess, Citizen, Swatch,
+  Tommy Hilfiger, Pierre Cardin, Festina, Lotus …), Schmuck (Police, Breil, Folli Follie, Radiant, One Jewels …),
+  Michael-Kors-Taschen, Puma/Adidas-Shirts. **Wichtig: BigBuy = EU-Lager (Spanien), CH-Versand 5–10 Werktage** (schneller als CJ).
+  Beschreibungen enthalten Shop-Boilerplate „📦 Lieferung … (EU-Lager) · Gratis-Versand ab CHF 65 · WELCOME10".
+- **📦 Listing-Export gebaut:** `dropship/ricardo_export.csv` (+ `.md`, + Generator `build_ricardo_export.py` & Daten
+  `ricardo_bigbuy.py`) — **110 Produkte** (20 LuxeStyle-Top + 90 BigBuy), DE, Spalten Titel/Marke/Kategorie/Preis-CHF/
+  Zustand/Versand/Beschreibung/Bilder/Quelle. Shop-Boilerplate entfernt. Quelle = Live-Katalog via Shopify-MCP.
+- **Branch `claude/marktplatz-hype-cleanup` → Draft-PR #1003** (nur `dropship/`-Dateien; Katalog NICHT verändert, reine Leseabfragen).
+- **Für andere Sessions:** BigBuy-Artikel nicht doppelt importieren; sie sind bereits ACTIVE im Shop. Bei Pinterest/Social
+  eignen sich die BigBuy-Marken (echte Marken + schneller Versand) gut für CH-Kaufabsicht.
+
 **2026-06-14 (abannews-Session) — ✅ eBay-Affiliate LIVE + 13 SEO-Seiten + Bilder + Selbst-Hirn (Detail: `PROJEKT.md` oben):**
 - **eBay-Angebote scharf:** `/api/ebay` echte Browse-API + EPN-Tracking. **Neue Cloudflare-Pages-Secrets gesetzt:**
   `EBAY_CLIENT_ID/SECRET/DEV_ID` + `EBAY_CAMPAIGN_ID=5339156671`. (Pages-Token DARF Secrets setzen.) Nicht überschreiben.
