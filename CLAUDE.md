@@ -73,6 +73,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Titel mit „|…", (c) gar keine SEO bei neuen Batches. Beim Anlegen IMMER `title` (DE) + `seo.title` direkt mitgeben.
 - **⚠️ Offen (optional):** Tiefere Katalogseiten (>590) nicht gescannt — vermutlich sauber (Sticker-Muster konsistent);
   bei Bedarf Pagination ab letztem Cursor fortsetzen.
+- **🔗 KAPUTTE CROSS-SELL-LINKS gefixt (wichtig, breit):** Viele Produkt-Beschreibungen (Veredelungs-Footer „Mehr X
+  entdecken →") verlinkten auf NICHT existierende Collections → 404. Geprüft: `kleider`→war schon per Redirect ok;
+  **`taschen-sub` + `damen-schmuck-sub` waren echt 404** → per **URL-Redirect gefixt** (`urlRedirectCreate`:
+  taschen-sub→sub-taschen, damen-schmuck-sub→premium-schmuck). **Eleganter Fix: 2 Redirects statt hunderte Edits.**
+  Funktionierende Footer-Handles: schuhe✓ damen-mode✓ sonnenbrillen-eyewear✓. **Lehre:** Veredelungs-Footer nutzten
+  teils falsche Handles (sub-X vs X-sub) → bei neuen Cross-Sell-Links IMMER gegen echte Collection-Handles prüfen.
+- **🎨 3 Look-Collections Hero-Banner gesetzt** (abend-look/office-look/strand-look hatten kein Bild) — Produktbild als Hero.
 
 **📌 2026-06-15 (🎨 SWISS-EDITION WELLE-1 DESIGNS autonom generiert — 9 druckfertige PNGs):**
 - **`automation/render_swiss_edition.py`** (Pillow + Anton-Font, KEINE Bild-API nötig) rendert **transparente
