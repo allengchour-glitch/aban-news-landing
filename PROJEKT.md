@@ -16,6 +16,24 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 💳 2026-06-15 (NACHT) — STRIPE LIVE: alle 22 DE-Shop-Produkte kaufbar (zuerst lesen!)
+> User gab den `sk_live_`-Key (im Chat → **kompromittiert, MUSS rotiert werden**). `stripe_sync.py` mit
+> Key als flüchtige Env-Var gefahren (nie in Datei/Commit). Ergebnis **gemerged (#1008)**:
+- **✅ 22/22 DE-Produkte kaufbar** (vorher 5): 17 neue `buy.stripe.com`-Payment-Links für coaches,
+  immobilienmakler, friseure, fotografen, architekten, fitnessstudios, kosmetikstudios, kfz-werkstaetten,
+  maler, hotels, physiotherapeuten, reinigungsfirmen, garten-landschaftsbau, goldschmiede, **alle-kits
+  (Bundle CHF 79)**, prompt-bibliothek (CHF 19), vorlagen-set (CHF 19). `shop-products.json` +
+  `stripe-state.json` (idempotent, die 5 alten übersprungen) + `shop.html` ItemList-Schema mit 22 Offer-URLs.
+- **🔴 USER MUSS JETZT (2 Dinge, sonst kein echter Verkauf):**
+  1. **`sk_live`-Key ROTIEREN** (Stripe → Developers → API keys → Roll), neuen Key NUR als GitHub-/Cloudflare-
+     **Secret** — nie wieder in den Chat. Der alte Key ist verbrannt.
+  2. **`DOWNLOAD_SALT`** als GitHub- + Cloudflare-Secret setzen → sonst kann zwar bezahlt werden, aber
+     `kit-download.js` liefert die ZIP nicht aus (Hash-Namen rätbar/uneinheitlich). ZIPs mit demselben Salt bauen.
+- **🟡 EN-Shop (EUR) noch offen:** CLI-Key wurde vom Classifier (zu Recht) geblockt → EN-Sync über den
+  Secret-basierten `stripe-shop.yml`-Workflow laufen lassen, sobald GitHub Actions wieder frei ist.
+- **Lehre:** Stripe-Sync braucht KEIN GitHub Actions — lief lokal in der Sandbox mit Env-Key; nur der EN-Teil
+  wartet auf den sauberen Secret-Weg. Sync ist idempotent (state-Datei) → gefahrlos wiederholbar.
+
 ## 🌅 2026-06-15 (FRÜH) — QA-Fixes + 25 Kaufberater + Adzuna-Hook (alles live)
 > Fortsetzung. Live-QA fand & behob echte Bugs (alle deployed): **eBay-Preisfilter** (pmin/pmax) wird jetzt
 > serverseitig erzwungen (`functions/api/ebay.js`); **Jobs DE/CH** breiter (Arbeitnow Seiten 1–4); **ehrlicher

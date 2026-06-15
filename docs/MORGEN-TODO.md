@@ -5,13 +5,15 @@
 > Sobald ein Punkt erledigt ist: sag mir das Stichwort in Klammern, dann macht
 > die Maschine (Sync/Workflows) den Rest automatisch.
 
-## 🔴 1. `STRIPE_API_KEY` setzen — der grösste Umsatz-Hebel (~2 Min)  → Stichwort: „sync"
-Aktuell sind nur **5 von 11** Kits kaufbar; EN-Shop hat **0** Kauflinks; das Bundle (CHF 79) auch nicht.
-- Stripe-Dashboard → Developers → API keys → **Secret key** (`sk_live_…`) kopieren
-- Als **GitHub-Secret `STRIPE_API_KEY`** setzen (Repo → Settings → Secrets → Actions)
-- Dann „sync" sagen → `stripe_sync.py` legt **alle fehlenden Kauflinks + Bundle (DE+EN)** an,
-  ich verdrahte sie in `shop-products*.json` + ins Product/Offer-Schema.
-- 🔒 Falls der Key je im Chat stand → in Stripe **rotieren**.
+## ✅/🔴 1. Stripe-Shop — DE LIVE (22/22 kaufbar), aber 2 dringende Schritte offen
+**Erledigt (15.06., #1008):** alle 22 DE-Produkte haben echte `buy.stripe.com`-Links (inkl. Bundle CHF 79).
+**Jetzt DU, sonst kein echter Verkauf:**
+- 🔴 **`sk_live`-Key ROTIEREN** — er stand im Chat = verbrannt. Stripe → Developers → API keys → **Roll key**,
+  neuen Key NUR als GitHub-/Cloudflare-**Secret** (nie in den Chat).
+- 🔴 **`DOWNLOAD_SALT`** als Secret setzen (GitHub + Cloudflare) → sonst wird zwar bezahlt, aber die ZIP-Datei
+  wird nicht ausgeliefert. ZIPs mit demselben Salt bauen.
+- 🟡 **EN-Shop (EUR)** noch offen → über den Secret-basierten `stripe-shop.yml`-Workflow syncen, sobald
+  GitHub Actions wieder frei ist (CLI-Key wird vom Sicherheits-Classifier zu Recht geblockt).
 
 ## 🔴 2. Cloudflare-Deploy-Token reparieren — sonst geht nichts live (~3 Min)
 Jeder Deploy schlägt fehl (Auth-Fehler 10000, `radar`-Projekt-Scope). Bis das fixt ist, sieht
