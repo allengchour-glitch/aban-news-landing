@@ -44,15 +44,14 @@ Template, falls Key fehlt oder die API mal hakt. Steuerung per Env:
 
 Cloudflare: `npx wrangler secret put ANTHROPIC_API_KEY`. GitHub Actions/GitLab: als Secret/Variable setzen.
 
-## Was es konkret tut (v2)
-1. **Produkt-Veredelung:** holt die **50 neuesten** `cj-real`-Produkte (sortKey CREATED_AT). Für jedes mit
-   **fehlendem SEO-Titel ODER fehlender Description** → setzt sauberen Titel `… | LuxeStyle` + Nutzen-Description.
-   Für jedes mit **fehlender Kategorie** → setzt Shopify-Taxonomie (Produkttyp→ID-Map) → speist Google Free Listings.
-2. **Collection-Cover:** prüft alle Collections; jede **ohne Titelbild** bekommt automatisch ein Cover aus einem
-   eigenen Produktbild (leere Kategorien sehen in den Grids sonst unfertig aus). Bis `COLLECTION_COVER_MAX` (Default 30) pro Lauf.
-3. **Bild-QA:** erkennt **aktive Produkte ohne Bild** und meldet sie (Log/KV `last_no_image` + Telegram) —
-   **kein** Auto-Löschen (bewusst sicher, damit nichts versehentlich aus dem Verkauf fliegt).
-- Idempotent: bereits gepflegte Produkte/Collections werden übersprungen.
+## Was es konkret tut (v3)
+1. **Produkt-Veredelung:** holt die **50 neuesten** `cj-real`-Produkte. Fehlender **SEO-Titel/Description** → gesetzt
+   (Template oder **Claude** mit `ANTHROPIC_API_KEY`). Fehlende **Kategorie** → Shopify-Taxonomie (Google-Feed).
+2. **Collection-Cover:** Collections **ohne Titelbild** bekommen automatisch ein Cover aus einem eigenen Produktbild.
+3. **Collection-SEO (v3):** Collections **ohne SEO-Titel** bekommen automatisch Titel + Description.
+4. **QA-Alarme (v3, melden – kein Auto-Eingriff):** aktive Produkte **ohne Bild**, **Dubletten** (gleicher Titel),
+   **Fehlpreise (CHF 0)** → Log/KV (`last_no_image`, `last_alerts`) + Telegram.
+- Idempotent: bereits gepflegte Produkte/Collections werden übersprungen. Limits: `AI_LIMIT`, `COLLECTION_COVER_MAX`.
 
 ## Grenzen (ehrlich)
 - **Apps installieren** geht nur per User-OAuth — das kann kein Skript. Die wichtigen sind aber schon da
