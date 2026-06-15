@@ -3,6 +3,16 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-15 (NACHT — Autonom-Session: QA + Lernen + Content-Engine)
+- **🖼️ Bild-QA neue Importe:** 4 CJ-Blusen (Solare/Maglia/Dentelle/Marbella) + Marken-Batch visuell geprüft → **alle sauber**
+  (kein asiat. Text/Watermark). Kaufbarkeit verifiziert: `availableForSale:true` + `tracked:false` trotz 0 Inventar = OK.
+- **🧠 Content-Engine 2026 gelernt** (recherchiert, Quellen shopify/twint/opus): 8 Mundart-Preis-Hooks + 5 Gewinner-Formate
+  ins Gehirn (`hooks_2026_mundart`, `content_formats_2026`). +6 Marken-Heroes in `good_products.csv`, +3 in `tutti_listings.csv` (14 total).
+- **🎯 8 Conversion-Fixes an Theme-Session übergeben** (TWINT/ApplePay/ShopPay, Sticky-ATC, Fit-Block, Trust-Badges, Reviews,
+  Versand-Klarheit, 8–12 PDP-Bilder, Speed) — in SHARED-MEMORY, kollisionsfrei (Theme = deren Revier).
+- **🆓 Neue Gratis-CH-Kanäle dokumentiert:** anibis.ch, FB-Marketplace pro Stadt, **Google Business Profile (User-Klick)**, Pinterest.
+- **✅ Conversion-Landings sauber:** Sommerkleid 3,54★ korrekt aus sommer/bestseller/highlights raus.
+
 ## 🆕 2026-06-15 (NEUESTER STAND — Google Merchant Re-Review LÄUFT ✅)
 - **✅ Merchant-Center Re-Review ABGESCHICKT** (15.06.2026, „Review requested — can take a few days"). NICHT nochmal
   beantragen (resettet den Timer). Vorher erledigt: beide Policy-Tippfehler gefixt, **Rückgaberichtlinie im Merchant

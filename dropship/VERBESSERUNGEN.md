@@ -3,6 +3,19 @@
 > Regel: in jeder Session 3–5 konkrete, priorisierte Vorschläge; Lehren sofort ins Memory.
 > Ehrliche Priorisierung — der Engpass ist **Reichweite/Conversion (0 Käufe)**, nicht Katalog/Videos.
 
+## 2026-06-15 (spät) — Autonom-Session: 5 priorisierte Vorschläge (recherchiert + live geprüft)
+> Engpass bleibt **Session→Warenkorb** (0,32% ATC) + Reichweite. Quellen: shopify.com/twint.ch/meineinkauf.ch/opus.pro.
+1. **🥇 TWINT + Apple Pay + Shop Pay an ATC/Checkout sichtbar** (THEME-Session). CH-Mobile-Zahlung = grösster Hebel,
+   Shop Pay bis ~50% CVR-Lift. → in SHARED-MEMORY an Theme-Session übergeben.
+2. **🥈 Sticky-ATC mobil + Grössen/Fit-Block ÜBER der Galerie** (THEME). Direkt gegen den ATC-Leak. → übergeben.
+3. **🥉 2026-Mundart-Preis-Hooks im Content** — 8 Gewinner-Hooks + 5 Formate ins Gehirn (`hooks_2026_mundart`,
+   `content_formats_2026`); Payoff/Preis in Sek.1, Cut 0.5–1.5s, 21–60s. ✅ erledigt diese Session.
+4. **Marken als Social-/tutti-Magnete** (Casio/Citizen/Hugo Boss/Tommy/Morellato/Guess) — echte Marken ziehen
+   am stärksten auf Marktplatz + Feed. ✅ in good_products.csv + tutti_listings.csv (jetzt 14).
+5. **Mehr Gratis-CH-Kanäle** anstossen: anibis.ch, FB-Marketplace pro Stadt, **Google Business Profile** (User: 1× anlegen),
+   Pinterest weiter füttern. ✅ dokumentiert in GRATIS-WERBUNG-SCHWEIZ.md. **Google Business = nächster User-Klick.**
+> Bottleneck-ehrlich: #1/#2 (Theme-Conversion) + Pixel/Kampagne bringen Käufe; Katalog/Content sind bereits stark.
+
 ## 2026-06-15 — Recherche/Lernen (studiere weiter): 2026-Taktiken ins Gehirn
 - **Algo 2026:** Saves/Shares/DMs/Watch-Time > Likes (IG+TikTok). → Save/Share/A-B-Formate konsequent (haben wir).
 - **Format:** authentisch/unpoliert (Try-on/BTS/Kundenreaktion) schlägt Hochglanz; 1 Idee/Video; Hook Sek.1.
