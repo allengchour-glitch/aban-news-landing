@@ -25,6 +25,12 @@ Crossbody «Lido» 12.90 · Mini-Tasche «Perla» 12.90 · Handtasche «Onda» 1
 Plüsch-Haargummi «Nuvola» 12.90 · Haarklammern «Mocha» 12.90. (5 abgelehnt: «PUPIL HEART»-Watermark, chines.
 Schrift, Apple-Logo im Hintergrund, Herren-Moody-Bild.) Phone-Charms/Parfum = kein sauberer CJ-Treffer._
 
+_**➕ 3. Charge (Taschen + Cozy Home, +16 → gesamt 48):** 8 Taschen/Lederwaren (Clutch «Riva», Portemonnaie «Fiore»,
+Abendtasche «Farfalla», Mini-Rucksack «Carmen», Set «Bella», Hobo «Treccia», Puffer-Tote «Nuvola», Schultertasche «Ombra»)
++ 8 Home/Deko (Kerzenwärmer «Fiore», Rattan-Windlicht «Saluna», Hunde-Tasse «Bruno», Keramik-Schale «Fleur»,
+Räucherofen «Mandarina», Reed-Diffuser «Cristallo», Duftkerzen «Rosé», Stabkerzen «Amore»). ~13 abgelehnt (Text-Overlays,
+sperrig, off-theme). CJ-Such-Lehre: nur „clutch/hobo/shoulder bag/candle/vase/basket" gaben Treffer._
+
 **Lehre:** CJ-Suche braucht KURZE Queries (1–2 Wörter), Pool ist kategorieübergreifend verschmutzt + viele Text-Overlays.
 Für mehr Halsketten/echte Accessoires (Gürtel/Handschuhe) braucht es eine gezieltere Folge-Session.
 
