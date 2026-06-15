@@ -1,10 +1,10 @@
 {
-  "updated": "2026-06-14",
+  "updated": "2026-06-15",
   "tagsets": [
-    "#fyp #tiktokmademebuyit #produkttipp #bohostyle #swisspremium",
-    "#foryou #musthave #gefundenauftiktok #premiumlifestyle #wellness",
-    "#fyp #lifehack #tiktokmademebuyit #sommerkleid #cardigan",
-    "#foryou #produkttipp #musthave #schweiz #sommerschuhe"
+    "#fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie",
+    "#foryou #musthave #gefundenauftiktok #aroma #smartdiffuser",
+    "#fyp #lifehack #tiktokmademebuyit #aestheticroom #spaathome",
+    "#foryou #produkttipp #musthave #premiumwellness #luxurylife"
   ],
   "caps": [
     "Mach dis eigete Teil 🐻🇨🇭 %s – dis Design, dini Sprüch. 💾 Speicher der das · 👇 Was chiem uf DIS Teil? −10%% WELCOME10 → luxestyle.ch",
@@ -29,57 +29,53 @@
     "Stopp — das musst du sehen ✋ %s. Welche Variante nimmst du? 1, 2 oder 3? 👇 📌 Speichern · −10%% WELCOME10 → luxestyle.ch"
   ],
   "top_tags": [
-    "#bohostyle",
-    "#swisspremium",
-    "#premiumlifestyle",
-    "#wellness",
-    "#sommerkleid",
-    "#cardigan",
-    "#schweiz",
-    "#sommerschuhe"
+    "#aromatherapyathome",
+    "#aromatherapie",
+    "#aroma",
+    "#smartdiffuser",
+    "#aestheticroom",
+    "#spaathome",
+    "#premiumwellness",
+    "#luxurylife"
   ],
   "hook_rank": [
     {
       "ty": "mundart",
-      "avg": 793,
-      "n": 3
+      "avg": 794,
+      "n": 4
     },
     {
       "ty": "preis_vergleich",
-      "avg": 332,
-      "n": 5
+      "avg": 355,
+      "n": 7
     },
     {
       "ty": "generisch",
-      "avg": 296,
-      "n": 80
+      "avg": 302,
+      "n": 106
     },
     {
       "ty": "preis",
-      "avg": 161,
-      "n": 18
+      "avg": 162,
+      "n": 24
     },
     {
       "ty": "frage_cta",
       "avg": 51,
-      "n": 6
+      "n": 8
     }
   ],
   "kpi_last": {
-    "report": "tiktok_luxestyle.ch_2026-06-14.json",
-    "date": "2026-06-14",
-    "videos": 36,
-    "views": 10771,
-    "likes": 161,
+    "report": "tiktok_luxestyle.ch_2026-06-15.json",
+    "date": "2026-06-15",
+    "videos": 37,
+    "views": 10992,
+    "likes": 169,
     "shares": 0,
     "comments": 5,
-    "avg_views": 299,
-    "eng": 0.0555,
-    "dur": 16.8
+    "avg_views": 297,
+    "eng": 0.0541,
+    "dur": 16.6
   },
-  "risers": [
-    "#fyp",
-    "#foryou",
-    "#schweizmode"
-  ]
+  "risers": []
 }

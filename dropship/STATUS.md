@@ -35,6 +35,12 @@
 
 ## ✅ Verlauf — was gemacht wurde
 
+### 2026-06-15 (Premium-Niveau: BigBuy-Research + Gratis-Werbung-Kit)
+- **🏆 BigBuy analysiert** (`dropship/PREMIUM-SUPPLIER.md`): EU-Premium-Supplier, hebt Qualität — ABER €69/Mt+€90,
+  CH=Cross-Border/Zoll, Reviews mängelbehaftet (Versand-Doppelkosten). **Ehrlich: erst Verkäufe validieren, dann gezielt
+  5–10 Hero-Produkte** (nicht Voll-Sync). Alternativen: Spocket/Syncee (bessere Integration), Printful (POD). Konto = User.
+- **🆓 Gratis-Werbung-Kit** (`GRATIS-WERBUNG-SCHWEIZ.md`): Kanäle + 12 Inserate + 3 FB-Posts. User macht #1 = Google Merchant Free Listings.
+
 ### 2026-06-15 (CJ-Import: +24 saubere Produkte)
 - **🛒 48 neue Produkte importiert** (CJ-Token vom User): 10 Schmuck · 8 Accessoires · 6 Beauty · 8 Impuls · 8 Taschen · 8 Home. Alle ACTIVE,
   Bild-QA pro Produkt (~17 abgelehnt: Text-Overlays/asiat. Schrift/Fremdprodukte), in alle 6 Kanäle, Bilder READY.

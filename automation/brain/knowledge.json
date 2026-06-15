@@ -5,106 +5,106 @@
   "signals": {
     "hashtags": {
       "#luxestyle": {
-        "uses_total": 64,
-        "views_wsum": 21874,
-        "eng_wsum": 3.1693999999999996,
-        "last_avg": 371
+        "uses_total": 85,
+        "views_wsum": 29686,
+        "eng_wsum": 4.1983999999999995,
+        "last_avg": 372
       },
       "#schweiz": {
-        "uses_total": 36,
-        "views_wsum": 11290,
-        "eng_wsum": 1.883,
-        "last_avg": 342
+        "uses_total": 47,
+        "views_wsum": 15074,
+        "eng_wsum": 2.5287,
+        "last_avg": 344
       },
       "#ootdschweiz": {
-        "uses_total": 38,
-        "views_wsum": 10908,
-        "eng_wsum": 2.3058,
-        "last_avg": 325
+        "uses_total": 51,
+        "views_wsum": 15003,
+        "eng_wsum": 3.0338000000000003,
+        "last_avg": 315
       },
       "#fyp": {
-        "uses_total": 31,
-        "views_wsum": 9312,
-        "eng_wsum": 1.3820000000000001,
-        "last_avg": 360
+        "uses_total": 42,
+        "views_wsum": 13096,
+        "eng_wsum": 1.8429000000000002,
+        "last_avg": 344
       },
       "#foryou": {
-        "uses_total": 22,
-        "views_wsum": 6408,
-        "eng_wsum": 1.0015999999999998,
-        "last_avg": 376
+        "uses_total": 30,
+        "views_wsum": 9224,
+        "eng_wsum": 1.3767999999999998,
+        "last_avg": 352
       },
       "#schweizmode": {
-        "uses_total": 26,
-        "views_wsum": 3978,
-        "eng_wsum": 1.7718,
+        "uses_total": 36,
+        "views_wsum": 5748,
+        "eng_wsum": 2.3688000000000002,
         "last_avg": 177
       },
       "#sommerkleid": {
-        "uses_total": 20,
-        "views_wsum": 7532,
-        "eng_wsum": 0.7956000000000001,
-        "last_avg": 397
+        "uses_total": 28,
+        "views_wsum": 10476,
+        "eng_wsum": 1.0948000000000002,
+        "last_avg": 368
       },
       "#fashionschweiz": {
-        "uses_total": 20,
-        "views_wsum": 4514,
-        "eng_wsum": 1.3994,
-        "last_avg": 253
+        "uses_total": 27,
+        "views_wsum": 6299,
+        "eng_wsum": 1.8355,
+        "last_avg": 255
       },
       "#sommermode": {
-        "uses_total": 15,
-        "views_wsum": 725,
-        "eng_wsum": 1.543,
-        "last_avg": 49
+        "uses_total": 20,
+        "views_wsum": 985,
+        "eng_wsum": 2.0534999999999997,
+        "last_avg": 52
       },
       "#ootd": {
-        "uses_total": 12,
-        "views_wsum": 632,
-        "eng_wsum": 0.82,
+        "uses_total": 16,
+        "views_wsum": 844,
+        "eng_wsum": 1.0888,
         "last_avg": 53
       },
       "#cardigan": {
-        "uses_total": 9,
-        "views_wsum": 3210,
-        "eng_wsum": 0.3288,
-        "last_avg": 357
+        "uses_total": 12,
+        "views_wsum": 4287,
+        "eng_wsum": 0.4734,
+        "last_avg": 359
       },
       "#sommermode2026": {
-        "uses_total": 9,
-        "views_wsum": 1536,
-        "eng_wsum": 0.6741,
-        "last_avg": 171
+        "uses_total": 12,
+        "views_wsum": 2055,
+        "eng_wsum": 0.8877,
+        "last_avg": 173
       },
       "#bohostyle": {
-        "uses_total": 6,
-        "views_wsum": 4716,
-        "eng_wsum": 0.0342,
-        "last_avg": 786
+        "uses_total": 8,
+        "views_wsum": 6290,
+        "eng_wsum": 0.0456,
+        "last_avg": 787
       },
       "#sommerschuhe": {
-        "uses_total": 6,
-        "views_wsum": 1678,
-        "eng_wsum": 0.09659999999999999,
-        "last_avg": 280
+        "uses_total": 8,
+        "views_wsum": 2242,
+        "eng_wsum": 0.1284,
+        "last_avg": 282
       },
       "#schmuck": {
-        "uses_total": 6,
-        "views_wsum": 1158,
-        "eng_wsum": 0.21000000000000002,
-        "last_avg": 193
+        "uses_total": 8,
+        "views_wsum": 1546,
+        "eng_wsum": 0.2776,
+        "last_avg": 194
       },
       "#accessoires": {
-        "uses_total": 6,
-        "views_wsum": 302,
-        "eng_wsum": 0.4904,
+        "uses_total": 8,
+        "views_wsum": 404,
+        "eng_wsum": 0.6496,
         "last_avg": 51
       },
       "#swissfashion": {
-        "uses_total": 6,
-        "views_wsum": 274,
-        "eng_wsum": 0.5466,
-        "last_avg": 46
+        "uses_total": 8,
+        "views_wsum": 368,
+        "eng_wsum": 0.7218,
+        "last_avg": 47
       },
       "#selbstgestalten": {
         "uses_total": 2,
@@ -119,10 +119,10 @@
         "last_avg": 792
       },
       "#schwiizerdütsch": {
-        "uses_total": 1,
-        "views_wsum": 792,
-        "eng_wsum": 0.0088,
-        "last_avg": 792
+        "uses_total": 2,
+        "views_wsum": 1589,
+        "eng_wsum": 0.0188,
+        "last_avg": 797
       },
       "#wunschdesign": {
         "uses_total": 2,
@@ -185,103 +185,103 @@
         "last_avg": 326
       },
       "#swisspremium": {
-        "uses_total": 4,
-        "views_wsum": 2988,
-        "eng_wsum": 0.0264,
+        "uses_total": 6,
+        "views_wsum": 4482,
+        "eng_wsum": 0.039599999999999996,
         "last_avg": 747
       },
       "#premiumlifestyle": {
-        "uses_total": 4,
-        "views_wsum": 2988,
-        "eng_wsum": 0.0264,
+        "uses_total": 6,
+        "views_wsum": 4482,
+        "eng_wsum": 0.039599999999999996,
         "last_avg": 747
       },
       "#luxestylech": {
-        "uses_total": 4,
-        "views_wsum": 2988,
-        "eng_wsum": 0.0264,
+        "uses_total": 6,
+        "views_wsum": 4482,
+        "eng_wsum": 0.039599999999999996,
         "last_avg": 747
       },
       "#wellness": {
-        "uses_total": 4,
-        "views_wsum": 2868,
-        "eng_wsum": 0.0472,
+        "uses_total": 6,
+        "views_wsum": 4302,
+        "eng_wsum": 0.0708,
         "last_avg": 717
       },
       "#aromatherapyathome": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       },
       "#aromatherapie": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       },
       "#aroma": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       },
       "#smartdiffuser": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       },
       "#aestheticroom": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       },
       "#spaathome": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       },
       "#premiumwellness": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       },
       "#luxurylife": {
-        "uses_total": 2,
-        "views_wsum": 2214,
-        "eng_wsum": 0.0108,
-        "last_avg": 1107
+        "uses_total": 3,
+        "views_wsum": 3322,
+        "eng_wsum": 0.0162,
+        "last_avg": 1108
       }
     },
     "hook_types": {
       "generisch": {
-        "views_sum": 23672,
-        "n": 80,
-        "eng_sum": 3.9165000000000014
+        "views_sum": 31964,
+        "n": 106,
+        "eng_sum": 5.1769000000000025
       },
       "preis": {
-        "views_sum": 2906,
-        "n": 18,
-        "eng_sum": 1.4133
+        "views_sum": 3884,
+        "n": 24,
+        "eng_sum": 1.8932999999999995
       },
       "preis_vergleich": {
-        "views_sum": 1661,
-        "n": 5,
-        "eng_sum": 0.3435
+        "views_sum": 2483,
+        "n": 7,
+        "eng_sum": 0.45840000000000003
       },
       "mundart": {
-        "views_sum": 2378,
-        "n": 3,
-        "eng_sum": 0.028999999999999998
+        "views_sum": 3175,
+        "n": 4,
+        "eng_sum": 0.039
       },
       "frage_cta": {
-        "views_sum": 304,
-        "n": 6,
-        "eng_sum": 0.41440000000000005
+        "views_sum": 407,
+        "n": 8,
+        "eng_sum": 0.5501
       }
     },
     "kpi_history": [
@@ -320,12 +320,25 @@
         "avg_views": 299,
         "eng": 0.0555,
         "dur": 16.8
+      },
+      {
+        "report": "tiktok_luxestyle.ch_2026-06-15.json",
+        "date": "2026-06-15",
+        "videos": 37,
+        "views": 10992,
+        "likes": 169,
+        "shares": 0,
+        "comments": 5,
+        "avg_views": 297,
+        "eng": 0.0541,
+        "dur": 16.6
       }
     ],
     "reports_ingested": [
       "tiktok_luxestyle.ch_2026-06-12.json",
       "tiktok_luxestyle.ch_2026-06-13.json",
-      "tiktok_luxestyle.ch_2026-06-14.json"
+      "tiktok_luxestyle.ch_2026-06-14.json",
+      "tiktok_luxestyle.ch_2026-06-15.json"
     ]
   },
   "rules": {
@@ -460,6 +473,11 @@
       "date": "2026-06-14",
       "change": "Pools v2 aus 3 Reports abgeleitet (Bayes + Hook-Typ-Lernen).",
       "evidence": "Top-Tag #bohostyle; bester Hook „mundart\" (Ø 793V)"
+    },
+    {
+      "date": "2026-06-15",
+      "change": "Pools v2 aus 4 Reports abgeleitet (Bayes + Hook-Typ-Lernen).",
+      "evidence": "Top-Tag #aromatherapyathome; bester Hook „mundart\" (Ø 794V)"
     }
   ]
 }

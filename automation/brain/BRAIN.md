@@ -1,33 +1,33 @@
 # 🧠 BRAIN v2 — LuxeStyle Social-Lernschleife (auto-generiert)
 
-_Aktualisiert: 2026-06-14 · 3 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis 344 V)_
+_Aktualisiert: 2026-06-15 · 4 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis 352 V)_
 
 ## 📈 KPI-Verlauf (verbessert es sich?)
-- Views: 10771 ▲ (vorher 10770)
-- Engagement: 5.5% ▼ (vorher 5.6%)
-- Shares: 0 = (vorher 0) · Likes: 161 = (vorher 161) · Kommentare: 5 = (vorher 5)
-- Ø Views/Video: 299 = · Ø Dauer: 16.8s
+- Views: 10992 ▲ (vorher 10771)
+- Engagement: 5.4% ▼ (vorher 5.5%)
+- Shares: 0 = (vorher 0) · Likes: 169 ▲ (vorher 161) · Kommentare: 5 = (vorher 5)
+- Ø Views/Video: 297 ▼ · Ø Dauer: 16.6s
 
 ## 🏷️ Beste Hashtag-Saetze (Bayes-Score, Verlierer geblockt)
-1. #fyp #tiktokmademebuyit #produkttipp #bohostyle #swisspremium
-2. #foryou #musthave #gefundenauftiktok #premiumlifestyle #wellness
-3. #fyp #lifehack #tiktokmademebuyit #sommerkleid #cardigan
-4. #foryou #produkttipp #musthave #schweiz #sommerschuhe
-**Top-Performer (Score · Konfidenz):** #bohostyle 585·mittel · #swisspremium 523·mittel · #premiumlifestyle 523·mittel · #wellness 510·mittel · #sommerkleid 370·hoch · #cardigan 352·hoch
-**📈 Momentum (steigend):** #fyp ×1.20 · #foryou ×1.29 · #schweizmode ×1.16
+1. #fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie
+2. #foryou #musthave #gefundenauftiktok #aroma #smartdiffuser
+3. #fyp #lifehack #tiktokmademebuyit #aestheticroom #spaathome
+4. #foryou #produkttipp #musthave #premiumwellness #luxurylife
+**Top-Performer (Score · Konfidenz):** #aromatherapyathome 635·mittel · #aromatherapie 635·mittel · #aroma 635·mittel · #smartdiffuser 635·mittel · #aestheticroom 635·mittel · #spaathome 635·mittel
+**📈 Momentum (steigend):** — (noch zu wenig Verlauf)
 **🚫 Geblockt:** #luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg
 
 ## 🎣 Hook-Typ-Scoreboard (was zieht wirklich — gelernt aus 5 Typen)
-- **mundart**: Ø 793 Views (3 Videos)
-- **preis_vergleich**: Ø 332 Views (5 Videos)
-- **generisch**: Ø 296 Views (80 Videos)
-- **preis**: Ø 161 Views (18 Videos)
-- **frage_cta**: Ø 51 Views (6 Videos)
+- **mundart**: Ø 794 Views (4 Videos)
+- **preis_vergleich**: Ø 355 Views (7 Videos)
+- **generisch**: Ø 302 Views (106 Videos)
+- **preis**: Ø 162 Views (24 Videos)
+- **frage_cta**: Ø 51 Views (8 Videos)
 
 ## 🎯 Naechste Aktionen (auto-abgeleitet)
 - 🔴 0 Shares = Reichweiten-Decke. Share/Save-Trigger + Vergleichs-/Neugier-Hooks (stehen in CAPS) konsequent nutzen.
 - 🔴 Views steigen, aber Shares/Engagement nicht → hohle Reichweite. UGC/Demo + Save-Trigger statt nur Produkt-Pans.
-- 🟢 Bester Hook-Typ laut Daten: „mundart" (Ø 793 V) → davon mehr; „generisch" meiden.
+- 🟢 Bester Hook-Typ laut Daten: „mundart" (Ø 794 V) → davon mehr; „generisch" meiden.
 - 🟢 Groesster Hebel (manuell/PC-Claude): Hands-on/UGC-Clips + Trending-Sounds.
 
 ## ✅ Gewinner-Formate / ❌ Verlierer
