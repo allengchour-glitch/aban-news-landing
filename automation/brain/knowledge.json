@@ -459,6 +459,11 @@
       "CLOTHING-SIZE-TABLE (cm) Standard XS34/S36/M38/L42/XL44 mit Brust/Taille/Hüfte-Bereichen + Hinweis im Zweifel groessere Groesse. Mess-Guide immer dazu.",
       "VIDEO: pro Produkt-Video ist teuer/aufwendig (Luma ray-flash-2 aus Hauptbild, oder CJ-productVideo wenn vorhanden, oder Reel aus good_products). Realistisch: Hero-Produkte zuerst, nicht alle 1300 auf einmal. CJ-productVideo meist leer.",
       "ROLLOUT realistisch in Batches: neue Importe sofort im Meisterwerk-Standard; Alt-Katalog (~1300) schrittweise nachziehen (Kleider haben teils schon cm-Tabellen aus fruehen Sessions — nicht doppeln)."
+    ],
+    "collision_avoidance": [
+      "KOLLISIONS-REGEL (User 2026-06-15 andere session, nicht kollidieren, merke): VOR jedem Shopify-Schreibzugriff SHARED-MEMORY.md lesen. Diese Session (Luxestyle-product, Branch CizQ6) = BigBuy/CJ-IMPORT + Produkt-Inhalt. Collection-SEITE Premium-Praesentation (Hero/Seitentext/Sortierung/Startseiten-Sektion) + THEME gehoeren der anderen Session → NICHT anfassen.",
+      "Andere Session arbeitete auf veraltetem Katalog (entfernte D&G, das ICH importiert habe) → Fakten in SHARED-MEMORY LIVE-STAND abgleichen statt gegeneinander editieren.",
+      "Live-Theme MAIN ist ohnehin API-gesperrt; Theme-Aenderungen nur an unveroeffentlichten Kopien (themeFilesUpsert) — aber das ist aktuell Revier der Theme-Session → nur nach expliziter Uebergabe."
     ]
   },
   "decisions": [

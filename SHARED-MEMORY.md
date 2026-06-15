@@ -45,6 +45,17 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+
+**2026-06-15 — ⚠️ KOLLISIONS-ABGLEICH Premium (Luxestyle-product-Session, Branch CizQ6):**
+- **DIESE Session ist der BigBuy/CJ-IMPORTEUR** (User gab den BigBuy-Token in-Session): heute **~90 echte Marken-Produkte**
+  (Parfum/Uhren/Schmuck/Taschen/Beauty) + 4 CJ-Blusen importiert, alle ACTIVE/tracked:false/6 Kanäle, getaggt `bigbuy`+`premium`+`marke`.
+- **❗ FAKTEN-KORREKTUR an die Collection-/Theme-Session:** **Dolce & Gabbana IST im Sortiment** (D&G «Light Blue» 25ml + «The One» 50ml).
+  D&G NICHT aus der Premium-Beschreibung streichen. Ebenso vorhanden: YSL, Michael Kors, Calvin Klein, Hugo Boss, Tommy Hilfiger,
+  Guess, Kenzo, Elie Saab, Lancôme, Swatch, Citizen, Festina, Lotus, Olivia Burton, Casio, L'Oréal, Weleda u.v.m.
+- **REVIER (Kollisionsvermeidung):** Collection-SEITE „✨ LuxeStyle Premium" (gid 688683942273) Präsentation = Hero/Seitentext/
+  Sortierung/Startseiten-Sektion/THEME → **andere Session**. Produkt-IMPORT + Produkt-Inhalt → **diese Session**. Ich fasse
+  Collection-Seite + Theme ab jetzt NICHT mehr an (kein Clobber). Beide lesen SHARED-MEMORY vor Shopify-Writes.
+
 **2026-06-11 — REPO IST JETZT PUBLIC (User-Entscheid) → Actions wieder gratis/unbegrenzt:**
 - **🔓 `aban-news-landing` ist PUBLIC** (vorher privat). Grund: **Actions-Minuten waren an EINEM Tag
   aufgebraucht** (~3000 Min) → alle Cron-Jobs + Dispatches scheiterten beim Start (kein Runner, 0 Steps).
