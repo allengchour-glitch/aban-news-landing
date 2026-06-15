@@ -132,14 +132,17 @@ async function run(env, manual) {
     const aiKey = env.ANTHROPIC_API_KEY || "";
     const aiLimit = parseInt(env.AI_LIMIT || "12", 10); // im Worker bewusst niedrig (Subrequest-Limit)
 
-    // 1) Produkt-Veredelung (SEO Titel + Description + Kategorie) + Bild-QA
+    // 1) Produkt-Veredelung (SEO Titel + Description + Kategorie) + QA (Bild/Dublette/Preis)
     const pq = `{ products(first: ${limit}, query: "status:active tag:cj-real", sortKey: CREATED_AT, reverse: true) {
-      nodes { id title productType category { id } seo { title description } featuredImage { url } } } }`;
+      nodes { id title productType category { id } seo { title description } featuredImage { url } priceRangeV2 { minVariantPrice { amount } } } } }`;
     const pdata = await gql(env, token, pq);
     const nodes = pdata?.data?.products?.nodes || [];
-    const prodFixes = []; const noImage = []; let aiUsed = 0;
+    const prodFixes = []; const noImage = []; const dupes = []; const priceZero = []; const seenTitles = {}; let aiUsed = 0;
     for (const n of nodes) {
-      if (!n.featuredImage) noImage.push(clean(n.title).slice(0, 60));
+      const t = clean(n.title);
+      if (t) { if (seenTitles[t]) dupes.push(t.slice(0, 50)); else seenTitles[t] = 1; }
+      if (!(parseFloat(n.priceRangeV2 && n.priceRangeV2.minVariantPrice && n.priceRangeV2.minVariantPrice.amount || "0") > 0)) priceZero.push(t.slice(0, 50));
+      if (!n.featuredImage) noImage.push(t.slice(0, 60));
       const needSeo = !(n.seo && n.seo.title && n.seo.description);
       const needCat = !n.category && CAT[(n.productType || "").trim()];
       if (!needSeo && !needCat) continue;
@@ -155,35 +158,49 @@ async function run(env, manual) {
       prodFixes.push(input);
     }
 
-    // 2) Collection-Cover (leere Kategorien aus eigenem Produktbild bebildern)
-    const cq = `{ collections(first: 250) { nodes { id handle title image { url } products(first: 5) { nodes { featuredImage { url } } } } } }`;
+    // 2) Collection-Cover (leere Kategorien bebildern) + fehlende Collection-SEO setzen
+    const cq = `{ collections(first: 250) { nodes { id handle title seo { title } image { url } products(first: 5) { nodes { featuredImage { url } } } } } }`;
     const cdata = await gql(env, token, cq);
     const colls = cdata?.data?.collections?.nodes || [];
-    const colFixes = [];
+    const colFixes = []; const colSeoFixes = [];
     for (const c of colls) {
-      if (c.image) continue;
-      const img = (c.products?.nodes || []).map((p) => p.featuredImage && p.featuredImage.url).find(Boolean);
-      if (img) colFixes.push({ id: c.id, src: img, alt: clean(c.title) || "LuxeStyle" });
-      if (colFixes.length >= colMax) break;
+      const hasProd = (c.products?.nodes || []).length > 0;
+      if (!c.image && colFixes.length < colMax) {
+        const img = (c.products?.nodes || []).map((p) => p.featuredImage && p.featuredImage.url).find(Boolean);
+        if (img) colFixes.push({ id: c.id, src: img, alt: clean(c.title) || "LuxeStyle" });
+      }
+      if (hasProd && c.handle !== "frontpage" && !(c.seo && c.seo.title) && colSeoFixes.length < colMax) {
+        const ct = clean(c.title) || "Kollektion";
+        let title = ct; if (title.length > 54) { let x = title.slice(0, 54); if (x.includes(" ")) x = x.slice(0, x.lastIndexOf(" ")); title = x.replace(/[ ,;:·–-]+$/, ""); }
+        title = (title + " | LuxeStyle").slice(0, 70);
+        const desc = `${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 65, 30 Tage Rückgabe, −10% mit Code WELCOME10.`.slice(0, 320);
+        colSeoFixes.push({ id: c.id, title, desc });
+      }
     }
 
     const pDone = await runMutations(env, token, prodFixes,
       (inp, j) => `  f${j}: productUpdate(input: { ${inp} }) { product { id } userErrors { field message } }`, log);
     const cDone = await runMutations(env, token, colFixes,
       (f, j) => `  c${j}: collectionUpdate(input: { id: "${f.id}", image: { src: "${esc(f.src)}", altText: "${esc(f.alt)} bei LuxeStyle" } }) { collection { id } userErrors { field message } }`, log);
+    const csDone = await runMutations(env, token, colSeoFixes,
+      (f, j) => `  s${j}: collectionUpdate(input: { id: "${f.id}", seo: { title: "${esc(f.title)}", description: "${esc(f.desc)}" } }) { collection { id } userErrors { field message } }`, log);
 
-    const status = `🧠 Shop-Brain v2: ${prodFixes.length} veredelt (${aiUsed} per KI) · ${cDone} Cover · ${noImage.length} ohne Bild${manual ? " [manuell]" : ""} · ${new Date().toISOString()}`;
+    const uDupes = [...new Set(dupes)], uZero = [...new Set(priceZero)];
+    const status = `🧠 Shop-Brain v3: ${prodFixes.length} veredelt (${aiUsed} KI) · ${cDone} Cover · ${csDone} Coll-SEO · ⚠️ ${noImage.length} ohne Bild, ${uDupes.length} Dubletten, ${uZero.length} Preis-0${manual ? " [manuell]" : ""} · ${new Date().toISOString()}`;
     log.push(status);
     if (noImage.length) log.push("⚠️ ohne Bild: " + noImage.join(" · "));
+    if (uDupes.length) log.push("⚠️ Dubletten: " + uDupes.join(" · "));
+    if (uZero.length) log.push("⚠️ Preis 0: " + uZero.join(" · "));
     await env.BRAIN_KV.put("last_run", status);
     await env.BRAIN_KV.put("last_no_image", JSON.stringify(noImage));
-    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID && (prodFixes.length || cDone || noImage.length)) {
+    await env.BRAIN_KV.put("last_alerts", JSON.stringify({ dupes: uDupes, priceZero: uZero }));
+    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID && (prodFixes.length || cDone || csDone || noImage.length || uDupes.length || uZero.length)) {
       await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: status }),
       }).catch(() => {});
     }
-    return { ok: true, checked: nodes.length, fixed: prodFixes.length, pDone, covers: cDone, noImage: noImage.length, log };
+    return { ok: true, checked: nodes.length, fixed: prodFixes.length, pDone, covers: cDone, collSeo: csDone, noImage: noImage.length, dupes: uDupes.length, priceZero: uZero.length, log };
   } catch (e) {
     return { ok: false, error: e.message, log };
   }
