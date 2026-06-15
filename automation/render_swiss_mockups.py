@@ -21,6 +21,8 @@ GARMENT = {
     'matterhorn-zermatt':(237,232,221), # Cream (Line-Art)
     'schwiizer-alpe':   (244,241,234),  # Off-White (Line-Art)
     'edelweiss':        (237,232,221),  # Cream (Line-Art)
+    'swiss-made':       (237,232,221),  # Cream (Emblem)
+    'zueri':            (244,241,234),  # Off-White (Stadt)
 }
 BG = (250, 248, 245)   # heller Studio-Hintergrund
 CW, CH = 1200, 1500    # Mockup-Format (4:5)

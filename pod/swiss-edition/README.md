@@ -21,7 +21,12 @@ Anthrazit `#1F2328`, Off-White `#F4F1EA`, Sage `#7C8C6B`.
 | `schwiizer-alpe.png` | Sweatshirt «Schwiizer Alpe» | Crewneck | Off-White | Anthrazit + rote Sonne | 44.90 |
 | `edelweiss.png` | T-Shirt «Edelweiss» | Unisex-Tee | Cream/Weiss | Anthrazit + roter Kern | 32.90 |
 
-**Welle 2 (Line-Art, `render_swiss_welle2.py`):** matterhorn-zermatt · schwiizer-alpe (Top) · edelweiss (geometrisch/Logo-Stil — kann später durch botanisches Motiv ersetzt werden).
+| `swiss-made.png` | T-Shirt «Swiss Made» | Unisex-Tee | Cream/Weiss | Swiss-Kreuz + Anthrazit | 32.90 |
+| `zueri.png` | T-Shirt «Züri» | Unisex-Tee | Off-White | Anthrazit + rote Koordinaten | 32.90 |
+
+**Welle 2 (Line-Art, `render_swiss_welle2.py`):** matterhorn-zermatt · schwiizer-alpe (Top) · edelweiss (botanisch verbessert).
+**Zusatz (`render_swiss_extra.py`):** swiss-made (Premium-Emblem) · zueri (Stadt-Pride + Koordinaten — Vorlage für Städte-Serie Bärn/Basel/Luzärn).
+**Gesamt: 14 druckfertige Designs.**
 
 > ⚠️ **Ink-Farbe ↔ Garment beachten:** Off-White-Designs (`chuchichaeschtli`, `sali-zaeme`) NUR auf
 > dunkle Garments (sonst unsichtbar). Anthrazit-Designs auf helle Garments.
