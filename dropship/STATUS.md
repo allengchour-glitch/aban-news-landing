@@ -50,7 +50,7 @@
   funktionieren end-to-end. Trust-Signale da (WELCOME10, Gratis-Versand, 30-Tage-Rückgabe, Zahlungs-Badges, Reviews),
   CHF-Preise, ATC-Buttons. Ad-Landing `sommer`: 81 Produkte, gesund.
 - **🔧 LIVE gefixt:** 2 «Swiss Edition»-Teile (Tank «Alpsee» in sommer-Landing + Hoodie «Alpenkuh») waren auf DENY =
-  **nicht kaufbar** → auf CONTINUE (Dropship-Oversell) gesetzt, jetzt kaufbar. Rest des Katalogs = CONTINUE (ok).
+  **nicht kaufbar** → auf tracked:false gesetzt (CONTINUE reichte nicht), Admin bestaetigt availableForSale:true. Rest des Katalogs = CONTINUE (ok).
 - **⚠️ Beobachten:** Homepage 1,5 MB (Mobile-Speed) · TWINT kaum sichtbar (CH-Trust) · Checkout-Locale zeigte `de-us`
   bei Geo-losem Test (Währungs-Routing für Nicht-CH prüfen). **Fazit: Pixel-Traffic läuft NICHT in einen kaputten Funnel.**
 - **🛑 Cloudflare-Deploy bleibt blockiert** (Sicherheitssystem, auch mit Token) → User: Bash-Erlaubnisregel ODER selbst deployen.
