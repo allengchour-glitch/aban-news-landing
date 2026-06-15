@@ -125,7 +125,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <label class="opt"><input type="checkbox" class="cond" value="neu">Neu</label>
       <label class="opt"><input type="checkbox" class="cond" value="gebraucht">Gebraucht</label>
     </div>
-    <div class="fcard"><h4>Preis (EUR)</h4>
+    <div class="fcard"><h4>Preis (<span class="curlbl">EUR</span>)</h4>
       <div class="prange"><input id="pmin" type="number" min="0" placeholder="von"><span>–</span><input id="pmax" type="number" min="0" placeholder="bis"></div>
     </div>
     <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
@@ -163,7 +163,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   var grid=$("#grid"),statusEl=$("#status"),badge=$("#badge"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
   var raw=[];
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  function priceNum(p){var m=String(p||"").replace(/\./g,"").replace(",",".").match(/[\d.]+/);return m?parseFloat(m[0]):NaN}
+  function priceNum(p){var s=String(p||"").replace(/[^\d.,'’]/g,"").replace(/['’]/g,"").replace(/,/g,"");var f=parseFloat(s);return isNaN(f)?NaN:f}
   $("#cats").innerHTML=CATS.map(function(c,i){return '<label class="opt"><input type="radio" name="cat" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>'}).join("");
   function skeleton(){grid.innerHTML=Array(9).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="b"><div style="width:90%"></div><div style="width:40%"></div></div></div>'}).join("");statusEl.hidden=true;}
   function activeConds(){return Array.prototype.filter.call(document.querySelectorAll(".cond"),function(c){return c.checked}).map(function(c){return c.value})}
@@ -201,7 +201,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var term=q||(cat&&cat.value)||"Auto";try{saveRecent(term)}catch(e){}
     cntEl.textContent="Suche „"+term+"“ …";skeleton();
     fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
-      badge.hidden=!d.demo;raw=d.items||[];render();
+      badge.hidden=!d.demo;if(d.currency){var cl=document.querySelector(".curlbl");if(cl)cl.textContent=d.currency}raw=d.items||[];render();
     }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden. Bitte später nochmal.";cntEl.textContent=""});
   }
   var pTimer;function searchSoon(){clearTimeout(pTimer);pTimer=setTimeout(search,450)}

@@ -51,13 +51,22 @@ function curOf(mkt) {
   if (/EBAY_CH/.test(mkt)) return "CHF";
   return "EUR"; // DE/AT/FR/…
 }
+// Näherungskurs EUR→CHF (kein Live-Kurs; Anzeige wird als „ca." gekennzeichnet)
+const RATE_EUR_CHF = 0.95;
+// Schweizer Tausendertrennung: 1850 -> 1'850
+function fmtChf(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); }
+
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const p = url.searchParams;
   const q = (p.get("q") || "").slice(0, 80);
   const limit = Math.min(parseInt(p.get("limit") || "24", 10) || 24, 50);
+  // Besucherland: ?cc= (QA/Override) → Cloudflare cf.country → Header CF-IPCountry
+  const cc = String(p.get("cc") || (request.cf && request.cf.country) || request.headers.get("CF-IPCountry") || "").toUpperCase();
+  const isCH = cc === "CH";
+  const currency = isCH ? "CHF" : "EUR";
   if (!env.EBAY_CLIENT_ID || !env.EBAY_CLIENT_SECRET) {
-    return json({ demo: true, reason: "no_keys", items: demo(q) });
+    return json({ demo: true, reason: "no_keys", currency, items: demo(q) });
   }
   try {
     const token = await getToken(env);
@@ -65,12 +74,13 @@ export async function onRequestGet({ request, env }) {
     const headers = { "Authorization": "Bearer " + token, "X-EBAY-C-MARKETPLACE-ID": mkt };
     if (env.EBAY_CAMPAIGN_ID) headers["X-EBAY-C-ENDUSERCTX"] = "affiliateCampaignId=" + env.EBAY_CAMPAIGN_ID;
 
-    // Serverseitige Filter (alle optional, abwärtskompatibel)
-    const filters = [];
+    // Eingabe-Preisgrenzen sind in Anzeige-Währung; eBay-Filter rechnet in Markt-Währung (EBAY_DE = EUR).
     const pmin = parseFloat(p.get("pmin")), pmax = parseFloat(p.get("pmax"));
+    const toEur = (v) => (isCH ? v / RATE_EUR_CHF : v);
+    const filters = [];
     if (!isNaN(pmin) || !isNaN(pmax)) {
-      const lo = isNaN(pmin) ? "" : Math.max(0, pmin);
-      const hi = isNaN(pmax) ? "" : Math.max(0, pmax);
+      const lo = isNaN(pmin) ? "" : Math.max(0, Math.floor(toEur(pmin)));
+      const hi = isNaN(pmax) ? "" : Math.max(0, Math.ceil(toEur(pmax)));
       filters.push("price:[" + lo + ".." + hi + "]");
       filters.push("priceCurrency:" + curOf(mkt));
     }
@@ -87,21 +97,23 @@ export async function onRequestGet({ request, env }) {
     if (sort) api += "&sort=" + encodeURIComponent(sort);
     const r = await fetch(api, { headers });
     const d = await r.json();
-    if (!d.itemSummaries) return json({ demo: true, reason: "empty", items: demo(q) });
+    if (!d.itemSummaries) return json({ demo: true, reason: "empty", currency, items: demo(q) });
     let items = d.itemSummaries.map(function (it) {
       const img = (it.image && it.image.imageUrl) || (it.thumbnailImages && it.thumbnailImages[0] && it.thumbnailImages[0].imageUrl) || "";
-      const pv = it.price ? parseFloat(it.price.value) : NaN;
+      const eur = it.price ? parseFloat(it.price.value) : NaN;          // Originalpreis (EUR, Markt EBAY_DE)
+      const dv = isNaN(eur) ? NaN : (isCH ? eur * RATE_EUR_CHF : eur);  // Anzeige-/Filterwert in Besucher-Währung
+      const price = isNaN(eur) ? "" : (isCH ? ("≈ " + fmtChf(eur * RATE_EUR_CHF) + " CHF") : (it.price.value + " " + it.price.currency));
       return {
         title: it.title || "",
-        price: (it.price && (it.price.value + " " + it.price.currency)) || "",
+        price: price,
         img: img,
         url: it.itemAffiliateWebUrl || it.itemWebUrl || "",
         cond: it.condition || "",
         loc: (it.itemLocation && it.itemLocation.country) || "",
-        _pv: pv,
+        _pv: dv,
       };
     });
-    // Defensiv: Preis-/Sortier-Filter serverseitig erzwingen (eBay-Filter-Param greift nicht immer)
+    // Defensiv: Preis-/Sortier-Filter serverseitig erzwingen (in Anzeige-Währung)
     if (!isNaN(pmin)) items = items.filter((it) => !isNaN(it._pv) && it._pv >= pmin);
     if (!isNaN(pmax)) items = items.filter((it) => !isNaN(it._pv) && it._pv <= pmax);
     if (sort === "price" || sort === "-price") {
@@ -111,8 +123,8 @@ export async function onRequestGet({ request, env }) {
       });
     }
     items.forEach((it) => { delete it._pv; });
-    return json({ demo: false, items: items });
+    return json({ demo: false, currency, items: items });
   } catch (e) {
-    return json({ demo: true, reason: "error", items: demo(q) });
+    return json({ demo: true, reason: "error", currency, items: demo(q) });
   }
 }
