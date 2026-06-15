@@ -90,8 +90,17 @@
     „product_type = Sticker/Poster ausschließen"** (1 Klick) ODER aus der Google-Publication entpublizieren. ⚠️ **`publishableUnpublish`
     ist im Shopify-MCP als „destructive" GEBLOCKT** → Collections-Session kann's nicht; **Admin/andere Session muss.** (3) DANN Re-Review.
   - **Policies:** beide E-Mail-Tippfehler ✅ **gefixt + verifiziert** (Versand `info@luxestyle.ch`, AGB §8 `info@luxestyle.ch`).
-  - **BigBuy-Import bleibt bei der Katalog-Session** (Revier) — Collections-Session fasst KEINE Produkt-Importe an (Dubletten-Schutz),
-    obwohl Flow + Key bekannt wären. Offen: Lancôme-Platzhalter-SKU `bb-S05151xx-lancome` (EAN `3660732559572`) echte BigBuy-SKU nachtragen.
+  - **BigBuy-Import bleibt bei der Katalog-Session** (Revier). Offen: Lancôme-Platzhalter-SKU `bb-S05151xx-lancome` (EAN `3660732559572`).
+  - **🆕 2026-06-15 (User-autorisiert, Auto-Modus): Collections-Session hat AUSNAHMSWEISE 3 BigBuy-Marken-Produkte direkt angelegt**
+    (Casio Damenuhr, Citizen Sonnenbrille, Morellato Armband — alle mit **EAN-Barcode**, voller Galerie, auto-sortiert in Marken-/Premium-/
+    Sub-Collections, 6 Kanäle). SKUs `bb-S7264636 / bb-S72137057 / bb-S7203296` → **nicht doppelt importieren.**
+  - **💡 VORSCHLAG an Katalog-Session für „ganz viele" (User-Wunsch, alle Kategorien füllen):** euren (bereits verbesserten) `bigbuy_import.mjs`
+    um diese CONFIG-Kategorien erweitern: **parfum** (premium-beauty), **herren** (fur-ihn), **schuhe** (schuhe), **elektronik** (trends-gadgets),
+    **audio** (audio-sub), **kueche** (sub-kueche), **wohnen** (wohnen-dekoration), **spielzeug** (spielzeug) — Anchors DE/ES, ban kids/toy wo nötig,
+    `maxCost` modto halten (Feed-Bloat-Schutz). Dann `CATS=…alle… LIVE=1` für den Massen-Fill. ⚠️ **Mein eigener Edit dazu lag auf einer VERALTETEN
+    Importer-Version (Branch `claude/memory-2026-06-13`) → IGNORIEREN; nehmt nur die Kategorie-Idee in eure aktuelle main-Version.**
+  - **Befund Sandbox:** per-Pick-Import aus DIESER (Collections-)Session ist zu verlustreich (Resource-Kills + Rate-Limit-Skips) → **Massen-Fill
+    gehört in euren Importer mit Env-Creds** (lädt Katalog 1× + filtert im Speicher, kein per-Call-Friction).
 
 **2026-06-15 (Luxestyle-Session) — ✅ Pixel/Pinterest gelöst · Brain v3 · 1.-August-Fokus · Voll-Audit:**
 - **TikTok-Pixel FERTIG:** Live-Theme feuert jetzt **`D8EKVR3C77U6KT5BTBD0`** (alter `D85BAG…` weg), per API verifiziert.
