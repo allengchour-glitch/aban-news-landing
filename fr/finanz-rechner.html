@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d97706">
+  <title>Calculateur financier pour indépendants (2026) — taux horaire, réserve fiscale, matelas | aban news</title>
+  <meta name="description" content="Calculateur financier gratuit pour indépendants : taux horaire réaliste, réserve fiscale et sociale en pourcentage, matelas de trésorerie en mois. Tourne dans le navigateur, sans suivi, sans inscription.">
+  <link rel="canonical" href="https://abannews.com/fr/finanz-rechner.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Calculateur financier pour indépendants — taux horaire, réserve, matelas">
+  <meta property="og:description" content="Trois calculateurs honnêtes pour vos finances d'indépendant. Dans le navigateur, sans suivi.">
+  <meta property="og:url" content="https://abannews.com/fr/finanz-rechner.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://abannews.com/img/og/geld-verdienen-mit-ki.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://abannews.com/img/og/geld-verdienen-mit-ki.png">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/finanz-rechner.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/finanz-rechner.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/finanz-rechner.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/finanz-rechner.html">
+  <style>
+    :focus-visible{outline:3px solid #d97706;outline-offset:2px;border-radius:3px}
+    :root{--bg:#fffbf5;--card:#fff;--ink:#1f2937;--muted:#6b7280;--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fef3c7;--line:#e5e7eb;--ok:#059669;--r:16px;--shadow:0 4px 16px rgba(31,41,55,.08)}
+    *{box-sizing:border-box;margin:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+    .wrap{max-width:760px;margin:0 auto;padding:0 1.25rem}
+    header{background:var(--bg);border-bottom:1px solid var(--line);padding:.75rem 0;position:sticky;top:0;z-index:50}
+    header .wrap{display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.1rem}
+    nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none;font-size:.9rem}
+    nav a:hover{color:var(--ink)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:.95rem;padding:.7rem 1.1rem;background:#b45309;color:#fff;text-decoration:none}
+    .hero{padding:2.5rem 0 1.5rem;text-align:center}
+    .badge{display:inline-block;background:var(--amber-lt);color:var(--amber);font-size:.82rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+    h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:.8rem}
+    .lead{font-size:1.05rem;color:var(--muted);max-width:58ch;margin:0 auto}
+    .calc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;margin:1.25rem 0;box-shadow:var(--shadow)}
+    .calc h2{font-size:1.2rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+    .calc .hint{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+    .row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:.9rem}
+    .field{flex:1;min-width:140px}
+    label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.3rem}
+    input[type=number]{width:100%;padding:.6rem .7rem;font-size:1rem;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+    input:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+    .unit{color:var(--muted);font-size:.78rem;font-weight:400}
+    .out{background:var(--amber-lt);border:1px solid var(--amber);border-radius:12px;padding:1rem 1.1rem;margin-top:.5rem}
+    .out .big{font-size:1.8rem;font-weight:800;color:var(--amber-dk);line-height:1.1}
+    .out .sub{color:var(--ink);font-size:.9rem;margin-top:.35rem}
+    .out ul{margin:.5rem 0 0 1.1rem;font-size:.9rem;color:var(--ink)}
+    .seg{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.9rem}
+    .seg button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.35rem .8rem;font-size:.85rem;cursor:pointer}
+    .seg button[aria-pressed=true]{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+    .cta-box{background:var(--amber-lt);border:2px solid var(--amber);border-radius:var(--r);padding:1.5rem;text-align:center;margin:2rem 0}
+    .cta-box h2{font-size:1.25rem;margin-bottom:.5rem}
+    .cta-box p{color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .disclaimer{font-size:.8rem;color:var(--muted);padding:1.5rem 0;border-top:1px solid var(--line);margin-top:1rem}
+    footer{padding:1.5rem 0;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    footer a{color:var(--muted)}
+    .skip{position:absolute;left:-9999px;top:0;z-index:100;background:#1c2530;color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}.skip:focus{left:0}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur financier pour indépendants","url":"https://abannews.com/fr/finanz-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"fr","description":"Calculateur de taux horaire, de réserve fiscale et de matelas de trésorerie pour indépendants. Tourne localement dans le navigateur, sans suivi."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[
+    {"@type":"Question","name":"Comment calculer mon taux horaire en tant qu'indépendant ?","acceptedAnswer":{"@type":"Answer","text":"Ne partez pas à rebours du salaire souhaité en supposant que les 8 heures par jour sont facturables. Seule une partie de votre temps de travail est facturable (prospection, comptabilité et pauses ne comptent pas). Divisez votre objectif annuel — coûts, impôts et cotisations sociales compris — par vos heures réellement facturables."}},
+    {"@type":"Question","name":"Quel pourcentage un indépendant doit-il mettre de côté ?","acceptedAnswer":{"@type":"Answer","text":"Une règle générale approximative est de 30 à 40 pour cent de chaque rentrée pour l'impôt sur le revenu et les cotisations sociales, selon le pays, le bénéfice et l'assurance. Ce n'est qu'une orientation et cela ne remplace pas un conseil fiscal — clarifiez le taux exact avec votre conseiller fiscal."}},
+    {"@type":"Question","name":"Quelle taille doit avoir mon matelas financier ?","acceptedAnswer":{"@type":"Answer","text":"Trois à six mois de vos frais fixes privés et professionnels sur un compte séparé est courant. Cela vous permet de surmonter les périodes creuses et les paiements tardifs sans stress."}}
+  ]}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header>
+  <div class="wrap">
+    <a href="/fr/" class="brand">☕ aban news</a>
+    <nav>
+      <a href="/finanz-skills-fuer-selbststaendige.html">Compétences financières</a>
+      <a href="/fr/geld-verdienen-mit-ki.html">IA &amp; Argent</a>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn">S'abonner</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Argent &amp; IA : tous les sujets, calculateurs &amp; tests</a></p>
+
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Gratuit · tourne dans le navigateur · sans suivi</span>
+      <h1>Calculateur financier pour indépendants</h1>
+      <p class="lead">Trois calculateurs sobres pour les chiffres sur lesquels beaucoup butent : un taux horaire réaliste, la réserve pour les impôts et cotisations, et votre matelas pour les mois maigres. Tout est calculé localement dans votre navigateur — rien n'est envoyé ni enregistré.</p>
+      <p style="margin:.8rem 0 0;font-size:.93rem;color:#5c6773">Lié : <a href="/maerkte.html" style="color:#b45309;font-weight:700;text-decoration:none">Marchés — crypto &amp; actions en direct avec sentiment IA →</a></p>
+    </div>
+
+    <!-- 1) Taux horaire -->
+    <section class="calc" aria-labelledby="h-rate">
+      <h2 id="h-rate">🧮 1. Taux horaire réaliste</h2>
+      <p class="hint">L'erreur la plus fréquente : diviser le salaire souhaité par 160 heures. En réalité, seule une partie de votre temps est facturable — personne ne vous paie directement la prospection, la comptabilité et les pauses.</p>
+      <div class="row">
+        <div class="field">
+          <label for="r-netto">Votre salaire annuel cible <span class="unit">(net, pour vous à titre privé)</span></label>
+          <input type="number" id="r-netto" value="36000" min="0" step="1000" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-kosten">Frais professionnels par an <span class="unit">(logiciels, bureau, assurance …)</span></label>
+          <input type="number" id="r-kosten" value="6000" min="0" step="500" inputmode="numeric">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="r-steuer">Impôts &amp; cotisations <span class="unit">(% du bénéfice)</span></label>
+          <input type="number" id="r-steuer" value="35" min="0" max="90" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-tage">Jours de travail par an <span class="unit">(moins congés/maladie)</span></label>
+          <input type="number" id="r-tage" value="220" min="1" max="365" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="r-billable">Heures facturables par jour <span class="unit">(réaliste 4–6)</span></label>
+          <input type="number" id="r-billable" value="5" min="0.5" max="12" step="0.5" inputmode="decimal">
+        </div>
+      </div>
+      <div class="out" id="r-out" aria-live="polite"></div>
+    </section>
+
+    <!-- 2) Réserve fiscale -->
+    <section class="calc" aria-labelledby="h-tax">
+      <h2 id="h-tax">💶 2. Réserve fiscale &amp; sociale</h2>
+      <p class="hint">Mettez immédiatement une part fixe de chaque rentrée sur un compte séparé. Ainsi, la note d'impôt ne vous assomme pas. Choisissez une valeur de référence ou saisissez la vôtre.</p>
+      <div class="seg" id="t-seg" role="group" aria-label="Valeur de référence de la réserve">
+        <button type="button" data-p="25">prudent 25%</button>
+        <button type="button" data-p="35" aria-pressed="true">standard 35%</button>
+        <button type="button" data-p="42">élevé 42%</button>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="t-einnahme">Rentrée <span class="unit">(brut, par mois)</span></label>
+          <input type="number" id="t-einnahme" value="5000" min="0" step="100" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="t-prozent">Taux de réserve <span class="unit">(%)</span></label>
+          <input type="number" id="t-prozent" value="35" min="0" max="90" step="1" inputmode="numeric">
+        </div>
+      </div>
+      <div class="out" id="t-out" aria-live="polite"></div>
+    </section>
+
+    <!-- 3) Matelas de trésorerie -->
+    <section class="calc" aria-labelledby="h-buf">
+      <h2 id="h-buf">🛟 3. Matelas de trésorerie</h2>
+      <p class="hint">Combien de temps tenez-vous si aucun argent ne rentre pendant trois mois ? Trois à six mois de frais fixes sur un compte séparé est courant.</p>
+      <div class="row">
+        <div class="field">
+          <label for="b-fix">Frais fixes par mois <span class="unit">(privés + professionnels)</span></label>
+          <input type="number" id="b-fix" value="3000" min="0" step="100" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="b-monate">Matelas cible <span class="unit">(mois)</span></label>
+          <input type="number" id="b-monate" value="4" min="0" max="24" step="1" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="b-vorhanden">Déjà épargné <span class="unit">(EUR)</span></label>
+          <input type="number" id="b-vorhanden" value="2000" min="0" step="100" inputmode="numeric">
+        </div>
+      </div>
+      <div class="out" id="b-out" aria-live="polite"></div>
+    </section>
+
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--amber);">
+      <h2>📄 Gratuit : aide-mémoire financier (PDF)</h2>
+      <p>Les 6 fondamentaux et toutes les valeurs de référence du calculateur sur une seule page — prêt à imprimer, sans inscription.</p>
+      <a href="/downloads/finanz-spickzettel.pdf" class="btn" download style="background:#fff;color:var(--amber-dk);border:1px solid var(--amber);">Télécharger l'aide-mémoire ↓</a>
+    </div>
+
+    <div class="cta-box">
+      <h2>Des compétences financières, une chose par semaine</h2>
+      <p>aban news vous envoie du lundi au vendredi, en 5 minutes, les mises à jour IA et business les plus importantes — avec des conseils honnêtes sur les prix, les outils et l'activité indépendante. Sans hype.</p>
+      <a href="https://abannews.beehiiv.com/subscribe" class="btn" style="font-size:1.05rem;padding:.85rem 1.3rem;">Recevoir le briefing de 5 min gratuitement →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.7rem;">Pas de spam. Désinscription en un clic. Conforme RGPD.</p>
+    </div>
+
+    <div style="padding:1.2rem 0;border-top:1px solid var(--line);">
+      <h2 style="font-size:1.05rem;margin-bottom:.8rem;">À lire ensuite</h2>
+      <div style="display:grid;gap:.7rem;grid-template-columns:1fr 1fr;">
+        <a href="/finanz-skills-fuer-selbststaendige.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Compétences financières pour indépendants</strong><span style="color:var(--muted);font-size:.82rem;">Les 6 fondamentaux, expliqués honnêtement</span></a>
+        <a href="/fr/geld-verdienen-mit-ki.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem;text-decoration:none;font-size:.9rem;"><strong style="display:block;margin-bottom:.15rem;">Gagner de l'argent avec l'IA</strong><span style="color:var(--muted);font-size:.82rem;">7 voies réelles, sans hype</span></a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>Remarque importante :</strong> ces calculateurs fournissent une orientation approximative, pas un conseil fiscal, juridique ou en investissement. Les taux d'imposition et de cotisations dépendent du pays, de la forme juridique, du bénéfice et de l'assurance — clarifiez le taux exact avec votre conseiller fiscal. Aucune saisie n'est enregistrée ni envoyée à un serveur ; tout est calculé dans votre navigateur.</p>
+    </div>
+
+  </div>
+<aside data-aban-premium style="max-width:760px;margin:24px auto 4px;padding:16px 18px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center"><strong style="color:#1f2937">Plus de profondeur, pas de hype.</strong><span style="color:#374151"> aban news Premium : sans publicité, archives complètes, boussole IA quotidienne pour votre business.</span><span style="display:block;margin-top:10px"><a href="/founding.html" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem">Membre fondateur — 69 € à vie →</a>&nbsp;<a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener" style="color:#b45309;font-weight:600;text-decoration:none;font-size:.92rem">Tester d'abord gratuitement →</a></span></aside>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+    <span><a href="/fr/">Accueil</a> · <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var euro = function(n){
+    if(!isFinite(n)) n = 0;
+    return n.toLocaleString('fr-FR',{maximumFractionDigits:0}) + ' €';
+  };
+  var num = function(id){ var v = parseFloat(document.getElementById(id).value); return isFinite(v)?v:0; };
+
+  // 1) Taux horaire
+  function calcRate(){
+    var netto = num('r-netto'), kosten = num('r-kosten'),
+        steuer = Math.min(num('r-steuer'),89)/100, tage = num('r-tage'), bill = num('r-billable');
+    // Bénéfice avant impôt, pour qu'après impôt le net cible reste :
+    var gewinnVorSteuer = steuer < 1 ? netto/(1-steuer) : netto;
+    var umsatzZiel = gewinnVorSteuer + kosten;     // Chiffre d'affaires annuel nécessaire
+    var stunden = Math.max(tage*bill, 1);
+    var satz = umsatzZiel/stunden;
+    var out = document.getElementById('r-out');
+    out.innerHTML = '<div class="big">'+euro(satz)+' / heure</div>'+
+      '<div class="sub">C\'est le montant net que vous devez facturer par heure facturable pour qu\'à la fin votre objectif soit atteint.</div>'+
+      '<ul><li>Chiffre d\'affaires annuel requis : <strong>'+euro(umsatzZiel)+'</strong></li>'+
+      '<li>Heures facturables/an : <strong>'+stunden.toLocaleString('fr-FR')+'</strong> ('+tage+' jours × '+bill+' h)</li>'+
+      '<li>Taux journalier (8 h d\'occupation) : <strong>'+euro(satz*8)+'</strong></li></ul>';
+  }
+
+  // 2) Réserve fiscale
+  function calcTax(){
+    var ein = num('t-einnahme'), p = Math.min(num('t-prozent'),90)/100;
+    var ruck = ein*p, rest = ein-ruck;
+    document.getElementById('t-out').innerHTML =
+      '<div class="big">mettre de côté '+euro(ruck)+'</div>'+
+      '<div class="sub">Sur '+euro(ein)+', il vous reste pour le travail et le privé : <strong>'+euro(rest)+'</strong>.</div>'+
+      '<ul><li>Par an (×12) mis de côté : <strong>'+euro(ruck*12)+'</strong></li>'+
+      '<li>Conseil : idéalement directement sur un compte séparé, le jour où le paiement arrive.</li></ul>';
+  }
+
+  // 3) Matelas
+  function calcBuf(){
+    var fix = num('b-fix'), monate = num('b-monate'), da = num('b-vorhanden');
+    var ziel = fix*monate, fehlt = Math.max(ziel-da,0);
+    var reichweite = fix>0 ? da/fix : 0;
+    var msg = fehlt<=0
+      ? 'Votre matelas cible est atteint. Base solide.'
+      : 'Il vous manque encore <strong>'+euro(fehlt)+'</strong> pour atteindre l\'objectif.';
+    document.getElementById('b-out').innerHTML =
+      '<div class="big">'+euro(ziel)+' de matelas cible</div>'+
+      '<div class="sub">'+msg+'</div>'+
+      '<ul><li>Votre épargne tient actuellement <strong>'+reichweite.toLocaleString('fr-FR',{maximumFractionDigits:1})+' mois</strong> sans revenus.</li>'+
+      '<li>Avec un taux d\'épargne de 200 €/mois, vous atteignez l\'objectif en environ <strong>'+(fehlt>0?Math.ceil(fehlt/200):0)+' mois</strong>.</li></ul>';
+  }
+
+  // Boutons de segment (valeur de référence de la réserve)
+  var seg = document.getElementById('t-seg');
+  seg.addEventListener('click', function(ev){
+    var b = ev.target.closest('button'); if(!b) return;
+    Array.prototype.forEach.call(seg.querySelectorAll('button'), function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    document.getElementById('t-prozent').value = b.getAttribute('data-p');
+    calcTax();
+  });
+
+  // Toutes les saisies en direct
+  function bind(ids, fn){ ids.forEach(function(id){ document.getElementById(id).addEventListener('input', fn); }); }
+  bind(['r-netto','r-kosten','r-steuer','r-tage','r-billable'], calcRate);
+  bind(['t-einnahme','t-prozent'], calcTax);
+  bind(['b-fix','b-monate','b-vorhanden'], calcBuf);
+  calcRate(); calcTax(); calcBuf();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
+</body>
+</html>
