@@ -3,82 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gaming-Angebote — günstig finden &amp; vergleichen | aban</title>
-<meta name="description" content="Konsolen, Spiele &amp; Gaming-Zubehör als Angebote – der Klick führt direkt zum Anbieter (eBay).">
+<title>Gaming-Angebote — Konsolen, Spiele &amp; PC günstig | aban</title>
+<meta name="description" content="Konsolen, Spiele, Controller und Gaming-PCs günstig finden und filtern. Klick führt direkt zum Anbieter (eBay), mit Affiliate-Kennzeichnung.">
 <meta name="theme-color" content="#d97706">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://abannews.com/gaming-angebote.html">
-<meta property="og:title" content="Gaming-Angebote — günstig finden">
-<meta property="og:description" content="Konsolen, Spiele &amp; Gaming-Zubehör als Angebote – der Klick führt direkt zum Anbieter (eBay).">
+<meta property="og:title" content="Gaming-Angebote günstig finden">
+<meta property="og:description" content="Eine Suche, viele Angebote — nach Kategorie, Zustand & Preis filtern.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://abannews.com/gaming-angebote.html">
+<meta property="og:image" content="https://abannews.com/og-image.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}a{color:var(--amber-dk)}
-header.hero{background:linear-gradient(180deg,var(--cream),var(--bg));border-bottom:1px solid var(--line);padding:26px 0 20px}
-h1{font-size:1.55rem;line-height:1.2;margin-bottom:6px}.lead{color:var(--ink2);font-size:.98rem;max-width:660px}
-.disc{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:8px;padding:9px 12px;font-size:.8rem;color:var(--ink2);margin:12px 0}
-.searchbar{display:flex;gap:8px;margin:14px 0 10px;flex-wrap:wrap}
-.searchbar input{flex:1;min-width:200px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:var(--card)}
-.searchbar button{background:var(--amber-dk);color:#fff;border:0;border-radius:10px;padding:11px 20px;font-weight:700;font-size:.95rem;cursor:pointer}
-.catnav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}
-.catnav a{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.82rem;font-weight:600;color:var(--ink2);text-decoration:none}
-.catnav a:hover{border-color:var(--amber);color:var(--amber-dk)}.catnav a.on{background:var(--cream);border-color:var(--amber);color:var(--amber-dk)}
-main{padding:14px 0 56px}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--ok:#059669;--shadow:0 8px 24px rgba(31,41,55,.09)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:var(--ink);background:var(--bg)}
+a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
+.top .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
+.brand{font-weight:900;color:var(--amber-dk);font-size:19px;white-space:nowrap}
+.top .links{margin-left:auto;display:flex;gap:8px}
+.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:7px 12px;border:1px solid var(--line);border-radius:20px}
+.top .links a:hover{background:var(--cream);color:var(--amber-dk);border-color:var(--cream)}
+.hero{background:linear-gradient(135deg,#1f2937 0%,#3a2a12 55%,#b45309 100%);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(251,191,36,.25),transparent 45%),radial-gradient(circle at 10% 90%,rgba(217,119,6,.22),transparent 40%);pointer-events:none}
+.hero .in{max-width:1180px;margin:0 auto;padding:34px 16px 30px;position:relative;z-index:1}
+.hero h1{font-size:1.85rem;line-height:1.2;margin-bottom:6px}
+.hero p{color:#f4e7d3;font-size:1rem;max-width:600px}
+.searchbox{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.28);padding:12px;margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:stretch}
+.searchbox .fld{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;background:#f5f2ec;border:1px solid var(--line);border-radius:11px;padding:0 12px}
+.searchbox .fld span{font-size:17px}
+.searchbox input{flex:1;min-width:0;border:0;background:transparent;padding:13px 0;font-size:15px;color:var(--ink);font-family:inherit}
+.searchbox input:focus{outline:0}
+.searchbox .fld:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(217,119,6,.15);background:#fff}
+.searchbox button.go{background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px 30px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap}
+.searchbox button.go:hover{background:#a04708}
+.hero .quick{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap;font-size:.84rem}
+.hero .quick b{color:#f4e7d3;font-weight:700;align-self:center}
+.hero .quick a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:4px 12px;font-weight:600}
+.hero .quick a:hover{background:rgba(255,255,255,.28)}
+.disc{max-width:1180px;margin:12px auto 0;padding:0 16px}
+.disc div{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:8px;padding:9px 12px;font-size:.8rem;color:var(--ink2)}
+.wrap{max-width:1180px;margin:16px auto;padding:0 16px;display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start}
+.sidebar{position:sticky;top:74px;display:flex;flex-direction:column;gap:14px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.fcard h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px}
+.opt{display:flex;align-items:center;gap:9px;padding:6px 0;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.opt input{width:16px;height:16px;accent-color:var(--amber-dk);cursor:pointer}
+.opt:hover{color:var(--amber-dk)}
+.prange{display:flex;gap:8px;align-items:center}
+.prange input{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:.9rem;font-family:inherit;background:#f8f5ef}
+.prange input:focus{outline:0;border-color:var(--amber);background:#fff}
+.reset{background:none;border:0;color:var(--amber-dk);font-weight:700;font-size:.85rem;cursor:pointer;padding:4px 0;text-align:left}
+.reset:hover{text-decoration:underline}
+.results{min-width:0}
+.rhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.rhead .cnt{font-weight:800;font-size:1.05rem}
+.rhead .sort{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:.85rem;color:var(--muted)}
+.rhead select{border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:.85rem;background:#fff;font-family:inherit;color:var(--ink)}
+.filterbtn{display:none}
 .badge{display:inline-block;background:#fff7ed;border:1px solid #f3dca0;color:#92660a;font-size:.72rem;font-weight:700;border-radius:999px;padding:3px 9px;margin-bottom:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.item{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column}
-.item .ph{aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#bcae95;font-size:2rem}
-.item .b{padding:10px 11px;display:flex;flex-direction:column;flex:1}
-.item .t{font-size:.85rem;font-weight:600;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.item .p{color:var(--amber-dk);font-weight:800;font-size:1rem}.item .m{font-size:.72rem;color:var(--muted);margin:2px 0 8px}
-.item a.go{margin-top:auto;display:block;text-align:center;background:var(--amber-dk);color:#fff;text-decoration:none;border-radius:8px;padding:7px;font-weight:700;font-size:.82rem}
-.status{color:var(--muted);font-size:.9rem;padding:20px 0}
-footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var(--muted);text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,border-color .15s}
+.item:hover{box-shadow:var(--shadow);transform:translateY(-1px);border-color:#dcc89c}
+.item .ph{aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#bcae95;font-size:2rem;transition:transform .25s ease}
+.item:hover .ph{transform:scale(1.06)}
+.item .b{padding:11px 12px;display:flex;flex-direction:column;flex:1}
+.item .t{font-size:.86rem;font-weight:600;line-height:1.3;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item .p{color:var(--amber-dk);font-weight:800;font-size:1.05rem}
+.item .m{font-size:.72rem;color:var(--muted);margin:2px 0 9px}
+.item a.go2{margin-top:auto;display:block;text-align:center;background:var(--amber-dk);color:#fff;border-radius:8px;padding:8px;font-weight:700;font-size:.82rem}
+.item a.go2:hover{background:#a04708}
+.status{color:var(--muted);font-size:.95rem;padding:30px 0;text-align:center}
+.skl{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.skl .ph{aspect-ratio:1/1;background:#ece6da}.skl .b{padding:11px 12px}.skl .b div{height:12px;background:#ece6da;border-radius:6px;margin-bottom:8px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}.skl{animation:pulse 1.2s infinite}
+footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color:var(--muted);text-align:center}
+.sheetbg{display:none}
+@media(max-width:860px){
+  .wrap{grid-template-columns:1fr}.hero h1{font-size:1.5rem}
+  .filterbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:20px;padding:8px 15px;font-weight:700;font-size:.85rem;cursor:pointer}
+  .sidebar{position:fixed;inset:0;z-index:100;background:var(--bg);padding:0;transform:translateY(100%);transition:transform .25s;overflow-y:auto;max-height:100vh}
+  .sidebar.open{transform:translateY(0)}
+  .sidebar .sheethead{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:14px 16px;font-weight:800}
+  .sidebar .sheethead .x{background:none;border:0;font-size:24px;cursor:pointer;color:var(--muted);line-height:1}
+  .sidebar .fcard{margin:12px 14px;border-radius:14px}
+  .sidebar .applybar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 16px}
+  .sidebar .applybar button{width:100%;background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:800;font-size:15px;cursor:pointer}
+  .sheetbg.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
+}
+@media(min-width:861px){.sidebar .sheethead,.sidebar .applybar{display:none}}
+:focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
 </style>
 </head>
 <body>
-<header class="hero"><div class="wrap">
-  <h1>Gaming-Angebote</h1>
-  <p class="lead">Konsolen, Controller, Spiele und Headsets: Hier findest du Gaming-Angebote – neu und gebraucht, für jede Plattform.</p>
-  <div class="searchbar">
-    <input id="q" type="search" value="Konsole Spiele" placeholder="Stichwort verfeinern …" aria-label="Suche">
-    <button id="go" type="button">Suchen</button>
+<div class="top"><div class="in">
+  <a class="brand" href="/">aban</a>
+  <span class="links"><a href="/stellenangebote.html">💼 Jobs</a><a href="/inserate.html">Inserate</a></span>
+</div></div>
+
+<nav class="abn-bc" style="max-width:1180px;margin:0 auto;padding:9px 16px;font-size:.8rem;color:#6b7280" aria-label="Brotkrumen"><a href="/" style="color:#b45309">Start</a> › <a href="/marktplatz.html" style="color:#b45309">Marktplatz</a> › <span>Gaming</span></nav>
+<div class="hero"><div class="in">
+  <h1>Gaming &amp; Konsolen — günstig finden</h1>
+  <p>Gaming günstig finden und vergleichen — nach Zustand und Preis filtern, der Klick führt direkt zum Anbieter.</p>
+  <form class="searchbox" id="sf" onsubmit="return false">
+    <label class="fld"><span>🔍</span><input id="q" type="search" value="Gaming Konsole" placeholder="Gaming suchen …" aria-label="Suche"></label>
+    <button class="go" id="go" type="submit">Angebote suchen</button>
+  </form>
+  <div class="quick"><b>Beliebt:</b>
+    <a href="#" data-q="Fahrrad">Fahrrad</a><a href="#" data-q="iPhone">Handy</a><a href="#" data-q="Sofa">Möbel</a>
+    <a href="#" data-q="Werkzeug">Werkzeug</a><a href="#" data-q="Gaming">Gaming</a><a href="#" data-q="Kamera">Kamera</a>
   </div>
-  <nav class="catnav" aria-label="Kategorien"><a href="/angebote-suche.html">🔎 Alle</a><a href="/fahrrad-angebote.html">Fahrrad</a><a href="/handy-angebote.html">Handy</a><a href="/moebel-angebote.html">Möbel</a><a href="/werkzeug-angebote.html">Werkzeug</a><a href="/spielzeug-angebote.html">Spielzeug</a><a href="/mode-angebote.html">Mode</a><a href="/autoteile-angebote.html">Auto-Teile</a><a href="/garten-angebote.html">Garten</a><a href="/kueche-angebote.html">Küche</a><a href="/gaming-angebote.html" class="on">Gaming</a><a href="/schmuck-angebote.html">Schmuck &amp; Uhren</a><a href="/baby-angebote.html">Baby &amp; Kind</a><a href="/haustier-angebote.html">Haustier</a><a href="/kamera-angebote.html">Foto &amp; Kamera</a></nav>
-  <div class="disc">💬 Transparenz: Die Angebote stammen von Partnern (z. B. eBay). Klickst du und kaufst, erhalten wir evtl. eine kleine Provision — für dich bleibt der Preis gleich.</div>
-</div></header>
-<main><div class="wrap">
-  <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
-  <div class="status" id="status">Lade Angebote …</div>
-  <div class="grid" id="grid"></div>
-</div></main>
-<nav style="max-width:1100px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/stellenangebote.html">Jobs</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a></nav>
-<footer><div class="wrap">aban news · Angebote-Suche · Preise &amp; Verfügbarkeit ohne Gewähr · Klicks führen zum jeweiligen Anbieter · © 2026 ·
-  <a href="/angebote-suche.html">Alle Angebote</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+</div></div>
+<div class="disc"><div>💬 Transparenz: Die Angebote stammen von Partnern (z. B. eBay). Klickst du und kaufst, erhalten wir evtl. eine kleine Provision — für dich bleibt der Preis gleich.</div></div>
+
+<div class="wrap">
+  <aside class="sidebar" id="sidebar">
+    <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
+    <div class="fcard"><h4>Kategorie</h4><div id="cats"></div></div>
+    <div class="fcard"><h4>Zustand</h4>
+      <label class="opt"><input type="checkbox" class="cond" value="neu">Neu</label>
+      <label class="opt"><input type="checkbox" class="cond" value="gebraucht">Gebraucht</label>
+    </div>
+    <div class="fcard"><h4>Preis (EUR)</h4>
+      <div class="prange"><input id="pmin" type="number" min="0" placeholder="von"><span>–</span><input id="pmax" type="number" min="0" placeholder="bis"></div>
+    </div>
+    <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
+    <div class="applybar"><button id="apply" type="button">Ergebnisse anzeigen</button></div>
+  </aside>
+
+  <section class="results">
+    <div class="rhead">
+      <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
+      <span class="cnt" id="cnt">Lade Angebote …</span>
+      <span class="sort">Sortieren:
+        <select id="sort"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
+      </span>
+    </div>
+    <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
+    <div class="grid" id="grid"></div>
+    <div class="status" id="status" hidden></div>
+  </section>
+</div>
+<div class="sheetbg" id="sheetbg"></div>
+
+<nav style="max-width:1180px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/stellenangebote.html">Jobs</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a></nav>
+<footer>aban news · Angebote-Suche · Preise &amp; Verfügbarkeit ohne Gewähr · Klicks führen zum jeweiligen Anbieter · © 2026 ·
+  <a href="/fahrrad-angebote.html">Fahrrad</a> · <a href="/handy-angebote.html">Handy</a> · <a href="/moebel-angebote.html">Möbel</a> · <a href="/gaming-angebote.html">Gaming</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
+
 <script>
 (function(){
-  var QUERY="Konsole Spiele";
-  var d2=function(s){return document.querySelector(s)};
-  var grid=d2("#grid"),status=d2("#status"),badge=d2("#badge");
+  var CATS=[["Alle Kategorien",""],["Elektronik","Elektronik"],["Handy","Handy"],["Computer","Computer"],
+    ["Haushalt","Haushalt"],["Möbel","Möbel"],["Garten","Garten"],["Werkzeug","Werkzeug"],["Auto","Auto"],
+    ["Mode","Mode"],["Spielzeug","Spielzeug"],["Sport","Sport"],["Sammeln","Sammeln"]];
+  var $=function(s){return document.querySelector(s)};
+  var grid=$("#grid"),statusEl=$("#status"),badge=$("#badge"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
+  var raw=[];
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  function render(items,demo){badge.hidden=!demo;
-    if(!items||!items.length){status.textContent="Keine Angebote gefunden — versuch ein anderes Stichwort.";grid.innerHTML="";return}
-    status.textContent="";
+  function priceNum(p){var m=String(p||"").replace(/\./g,"").replace(",",".").match(/[\d.]+/);return m?parseFloat(m[0]):NaN}
+
+  $("#cats").innerHTML=CATS.map(function(c,i){return '<label class="opt"><input type="radio" name="cat" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>'}).join("");
+
+  function skeleton(){grid.innerHTML=Array(9).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="b"><div style="width:90%"></div><div style="width:40%"></div></div></div>'}).join("");statusEl.hidden=true;}
+  function activeConds(){return Array.prototype.filter.call(document.querySelectorAll(".cond"),function(c){return c.checked}).map(function(c){return c.value})}
+  function applyFilters(items){
+    var out=items.slice();
+    var conds=activeConds();
+    if(conds.length){out=out.filter(function(it){var c=String(it.cond||"").toLowerCase();
+      return conds.some(function(k){return k==="neu"?/neu|new/.test(c):/gebraucht|used|refurb/.test(c)})})}
+    var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
+    if(!isNaN(lo))out=out.filter(function(it){var n=priceNum(it.price);return isNaN(n)?false:n>=lo});
+    if(!isNaN(hi))out=out.filter(function(it){var n=priceNum(it.price);return isNaN(n)?false:n<=hi});
+    var s=$("#sort").value;
+    if(s!=="rel")out.sort(function(a,b){var na=priceNum(a.price),nb=priceNum(b.price);na=isNaN(na)?1e12:na;nb=isNaN(nb)?1e12:nb;return s==="pasc"?na-nb:nb-na});
+    return out;
+  }
+  function render(){
+    var items=applyFilters(raw);
+    if(!items.length){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Keine Treffer — anderes Stichwort oder weniger Filter probieren.";cntEl.textContent="0 Angebote";return}
+    statusEl.hidden=true;
     grid.innerHTML=items.map(function(it){
       var img=it.img?('<div class="ph" style="background-image:url(\''+esc(it.img)+'\')"></div>'):'<div class="ph">🛍️</div>';
       var href=(it.url&&it.url!=="#")?esc(it.url):"#";
-      return '<div class="item">'+img+'<div class="b"><div class="t">'+esc(it.title)+'</div><div class="p">'+esc(it.price||"")+'</div><div class="m">'+esc([it.cond,it.loc].filter(Boolean).join(" · "))+'</div><a class="go" href="'+href+'" rel="sponsored nofollow noopener" target="_blank">Beim Anbieter ansehen →</a></div></div>';
+      return '<div class="item">'+img+'<div class="b"><div class="t">'+esc(it.title)+'</div><div class="p">'+esc(it.price||"")+'</div><div class="m">'+esc([it.cond,it.loc].filter(Boolean).join(" · "))+'</div><a class="go2" href="'+href+'" rel="sponsored nofollow noopener" target="_blank">Beim Anbieter ansehen →</a></div></div>';
     }).join("");
+    cntEl.textContent=items.length+" Angebote";
   }
-  function search(q){status.textContent="Suche \u201E"+(q||"Angebote")+"\u201C …";grid.innerHTML="";
-    fetch("/api/ebay?limit=24&q="+encodeURIComponent(q||"")).then(function(r){return r.json()}).then(function(d){render(d.items,d.demo)}).catch(function(){status.textContent="Konnte gerade nicht laden. Bitte später nochmal.";});}
-  d2("#go").addEventListener("click",function(){search(d2("#q").value.trim())});
-  d2("#q").addEventListener("keydown",function(e){if(e.key==="Enter")search(d2("#q").value.trim())});
-  search(QUERY);
+  function ebayUrl(term){
+    var p="/api/ebay?limit=50&q="+encodeURIComponent(term);
+    var conds=activeConds();if(conds.length)p+="&cond="+encodeURIComponent(conds.join(","));
+    var lo=$("#pmin").value.trim(),hi=$("#pmax").value.trim();
+    if(lo)p+="&pmin="+encodeURIComponent(lo);if(hi)p+="&pmax="+encodeURIComponent(hi);
+    var s=$("#sort").value;if(s&&s!=="rel")p+="&sort="+encodeURIComponent(s);
+    return p;
+  }
+  function search(){
+    var q=$("#q").value.trim();
+    var cat=document.querySelector('input[name="cat"]:checked');
+    var term=q||(cat&&cat.value)||"";
+    cntEl.textContent="Suche „"+(term||"Angebote")+"“ …";skeleton();
+    fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
+      badge.hidden=!d.demo;raw=d.items||[];render();
+    }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden. Bitte später nochmal.";cntEl.textContent=""});
+  }
+  var pTimer;function searchSoon(){clearTimeout(pTimer);pTimer=setTimeout(search,450)}
+
+  $("#go").addEventListener("click",function(e){e.preventDefault();search()});
+  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();search()}});
+  document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#q").value=a.dataset.q;search();window.scrollTo({top:0,behavior:"smooth"})});
+  $("#cats").addEventListener("change",function(e){if(e.target.name==="cat"){$("#q").value="";search()}});
+  document.querySelectorAll(".cond").forEach(function(c){c.addEventListener("change",search)});
+  ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",searchSoon)});
+  $("#sort").addEventListener("change",search);
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#pmin").value="";$("#pmax").value="";
+    var f=document.querySelector('input[name="cat"]');if(f)f.checked=true;
+    document.querySelectorAll(".cond").forEach(function(c){c.checked=false});$("#sort").value="rel";search()});
+
+  function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
+  function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
+  $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
+  $("#apply").addEventListener("click",closeSheet);sheetbg.addEventListener("click",closeSheet);
+
+  // Deep-Link: ?q= / ?cat= aus der URL übernehmen (vom Marktplatz/Hub)
+  (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uc=sp.get("cat");
+    if(uq)$("#q").value=uq;
+    if(uc)Array.prototype.forEach.call(document.querySelectorAll('input[name="cat"]'),function(r){if(r.value===uc)r.checked=true});})();
+  search();
 })();
 </script>
 </body>
