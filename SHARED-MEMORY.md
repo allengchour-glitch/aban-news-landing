@@ -129,6 +129,15 @@
   den Sprach-Finder umgebogen (je 198); Sitemap +2. Verifiziert: 0 Parser-Error, Konsistenz gruen, 0 echte
   Broken-Links. **→ Finder + Vergleiche + Branchen-Hubs jetzt durchgaengig viersprachig (DE/EN/FR/IT).**
   Verbleibend nur noch FR/IT der uebrigen EN-Tools/Artikel (geringer Hebel).
+- **Welle 10 (15.06.) — 38 universelle Tools auf FR+IT:** Dev-Utilities (json/regex/encoder/diff/hash/uuid/jwt/
+  timestamp/env/markdown/cron), Generatoren/Rechner (passwort/kontrast/farb/zeichenzaehler/qr/namen/iban/prozent/
+  mwst/ki-token/automatisierung/ki-kosten/ki-spar/stundensatz/finanz/rechnung) + AI-Helfer (bild-prompt/prompt-
+  checker/baukasten/glossar/bessere-prompts/readiness/hype-filter/ai-sichtbarkeit/erwaehnungs-check/betrug/aktien).
+  Je 38 fr + 38 it; JS byte-identisch, nur UI uebersetzt. **5-Sprachen-hreflang auf allen 4 Versionen normalisiert
+  (114 Dateien).** Sitemap komplett. Verifiziert: Konsistenz gruen, 0 echte Broken-Links, Sitemap valide.
+  **Bewusst NICHT FR/IT:** DACH-Finanz-Artikel (etf/inflation/altersvorsorge/geld-und-ki), Sales-/Infra-Seiten
+  (founding/about/faq/api/archive/dossiers/empfehlen). **→ Die universellen Tools + Finder + Vergleiche +
+  Branchen-Hubs sind komplett viersprachig; abannews-Kern-Assets mehrsprachig erschoepft.**
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
