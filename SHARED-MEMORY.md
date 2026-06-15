@@ -122,6 +122,13 @@
   **Offen als eigene grosse Lane (nicht gemacht):** fr/it-Versionen des Finders (`welche-ki-fuer-was` braucht
   `tools.fr/it.json`, je 175 Tools) + FR/IT der EN-Tools/Artikel. EN-Reichweite + DACH-4-Sprachigkeit der
   Vergleiche/Hubs sind komplett.
+- **Welle 9 (15.06.) — Finder VIERSPRACHIG:** `fr/welche-ki-fuer-was.html` + `it/welche-ki-fuer-was.html`
+  (interaktiver Tool-Finder) gebaut; **`data/tools.fr.json` + `data/tools.it.json`** (je 175 Tools, Prosa
+  uebersetzt, Keys/IDs/Scores/Filter-Tokens identisch). Finder fetchen nun die jeweilige Sprach-JSON; JS-Logik
+  byte-identisch. **5-Sprachen-hreflang** auf allen 4 Finder-Versionen; FR/IT-Vergleiche+Indizes-Finderlinks auf
+  den Sprach-Finder umgebogen (je 198); Sitemap +2. Verifiziert: 0 Parser-Error, Konsistenz gruen, 0 echte
+  Broken-Links. **→ Finder + Vergleiche + Branchen-Hubs jetzt durchgaengig viersprachig (DE/EN/FR/IT).**
+  Verbleibend nur noch FR/IT der uebrigen EN-Tools/Artikel (geringer Hebel).
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
