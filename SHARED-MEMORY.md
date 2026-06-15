@@ -54,6 +54,29 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-15 (Luxestyle-Session) — ✅ Pixel/Pinterest gelöst · Brain v3 · 1.-August-Fokus · Voll-Audit:**
+- **TikTok-Pixel FERTIG:** Live-Theme feuert jetzt **`D8EKVR3C77U6KT5BTBD0`** (alter `D85BAG…` weg), per API verifiziert.
+  Geändert per **PC-Browser-Claude** (Live-Theme-Writes sind MCP-gesperrt). ⚠️ Unveröffentlichte Theme-Kopie
+  „Horizon · LuxeStyle (Pixel-Fix D8EKVR)" existiert noch (harmlos, NICHT veröffentlichen — hat alten Pixel; User kann löschen).
+- **Pinterest-Domain FERTIG:** `luxestyle.ch` ist auf Business-Konto „LuxeStyle CH" **verifiziert** (alter Claim lag auf
+  Privatkonto „alleng chour" → entfernt). OFFEN: Shopify-Pinterest-**Händler-Checkliste einreichen** (Browser-Claude:
+  `…/apps/pinterest-4/settings-new/merchant-review-checklist`) → Katalog-Produkt-Pins. Separat: **Standard-Access** der
+  Entwickler-App (App-ID 1580904, in Prüfung) → dann GitLab `PINTEREST_*` → 203 Design-Pins posten automatisch.
+- **🧠 Shop-Brain v3 (im Repo, NOCH NICHT DEPLOYT):** `workers/shop-brain/` + `automation/shop_brain.mjs`. Kann:
+  SEO (Titel+Desc, Template ODER **Claude** via `ANTHROPIC_API_KEY`) + Kategorie + Auto-Collection-Cover +
+  **Collection-SEO** + Alarme (Bild fehlt / **Dublette** / **Preis 0**). ⚠️ **Bis zum Deploy (`wrangler deploy`)
+  überschreibt der Import-Bot weiter die SEO neuer Produkte** → bis dahin jede Session neueste Produkte re-veredeln.
+- **Voll-Audit erledigt:** 17 Produkte re-veredelt (SEO/Kat vom Bot geleert), Maui-**Dublette** auf DRAFT,
+  `premium-bundles`-SEO gesetzt, Startseite geprüft (gesund), Rabatt **WELCOME10** aktiv bis 31.08.
+- **🇨🇭 1.-AUGUST-FOKUS (dein USP – weiter pushen!):** `erste-august`-Collection (261 Prod.) zum Aushängeschild gemacht;
+  **3 Anlass-Artikel** live (looks-deko, geschenke-gastgeschenke, selbst-gestalten); **10 Social-Hooks + Posting-Plan**
+  in `dropship/SOCIAL-HOOKS.md` (Abschnitt „1. AUGUST PUSH"). Magazin: **63 Artikel**.
+- **⚠️ Social-Posten-Lesson:** Browser-Automation kann KEINE Bilder hochladen (OS-Datei-Dialog ausserhalb des Browsers).
+  → IG/FB-Posts **vom Handy / nativer App** posten (oder PC-Claude staged nur Caption, User klickt Bild). Captions in SOCIAL-HOOKS.md.
+- **Zahlen:** **0 Bestellungen**, **11 Leads** (WELCOME10-Popup-Mails → Klaviyo remarketet). Engpass = Traffic/Conversion.
+- **Offene 3 User-Klicks:** (1) täglich posten (Handy), (2) Pinterest-Checkliste einreichen, (3) `cd workers/shop-brain && npx wrangler deploy`.
+- Branches alle nach `main` gemergt (PRs via GitHub-API). Detail-Handoff: `dropship/SESSION-HANDOFF.md`.
+
 **2026-06-14 (abannews-Session) — ✅ eBay-Affiliate LIVE + 13 SEO-Seiten + Bilder + Selbst-Hirn (Detail: `PROJEKT.md` oben):**
 - **eBay-Angebote scharf:** `/api/ebay` echte Browse-API + EPN-Tracking. **Neue Cloudflare-Pages-Secrets gesetzt:**
   `EBAY_CLIENT_ID/SECRET/DEV_ID` + `EBAY_CAMPAIGN_ID=5339156671`. (Pages-Token DARF Secrets setzen.) Nicht überschreiben.
