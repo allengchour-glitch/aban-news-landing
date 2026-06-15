@@ -254,7 +254,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function render(){
     var items=applyClientFilters(allItems);
     if(!items.length){feed.innerHTML="";statusEl.hidden=false;
-      statusEl.textContent="Keine Treffer. Versuch ein anderes Stichwort, eine andere Kategorie oder weniger Filter.";
+      statusEl.innerHTML="Keine Treffer für diese Suche. Unsere Live-Quellen sind am stärksten bei <strong>IT, Marketing, Engineering &amp; Remote/Deutschschweiz-Tech</strong> — bei klassischen Berufen (z. B. Pflege, Verkauf) finden wir aktuell wenig. Versuch ein breiteres Stichwort oder eine andere Kategorie.";
       cntEl.textContent="0 Stellen";moreBtn.hidden=true;return}
     statusEl.hidden=true;
     feed.innerHTML=items.map(card).join("");
