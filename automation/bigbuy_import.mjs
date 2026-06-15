@@ -6,20 +6,24 @@
  * Produkte an (ACTIVE, DE-Titel via Gemini, gesunde CHF-Marge, Tags+SEO), publiziert in alle Kanäle und
  * sortiert sie in Smart-Collections. Idempotent (Ledger). No-op ohne Creds. DRY_RUN ist DEFAULT.
  *
- * ── Status: Shopify-Seite = bewährt (1:1 aus cj_gaps_import.mjs). BigBuy-Seite = nach offizieller REST-Doku
- *    (base api.bigbuy.eu / Sandbox api.sandbox.bigbuy.eu, Bearer-Auth). Feld-/Pfadnamen mit ⚠️BB-VERIFY
- *    markiert → beim ERSTEN Lauf mit Sandbox-Key (BIGBUY_ENV=sandbox, DRY_RUN=1) gegen echte Antwort prüfen.
+ * ── API VERIFIZIERT 2026-06-15 (Prod-Key, live geprüft):
+ *    base = https://api.bigbuy.eu (PROD; Sandbox-Key liefert dieser Account NICHT) · Auth: Bearer <BIGBUY_API_KEY>
+ *    Kandidatenquelle: GET /rest/catalog/productsinformation.json?isoCode=de → [{id, sku, name, description}]
+ *    Preis/aktiv:      GET /rest/catalog/product/{id}.json?isoCode=de → {wholesalePrice, retailPrice, active, taxonomy, categories[]}
+ *    Bilder:           GET /rest/catalog/productimages/{id}.json → {id, images:[{url, isCover, ...}]}
+ *    ⚠️ Rate-Limit ist STRENG (Body „You exceeded the rate limit") → Backoff + Pausen zwischen Calls (eingebaut).
+ *    Hinweis: productsinformation.json ist der Voll-Katalog (gross) → einmal laden + im Speicher filtern.
  *
- * DRY_RUN=1 (Default) → nur suchen + Kandidaten listen (nichts in Shopify anlegen).
- * ENV: BIGBUY_API_KEY · [BIGBUY_ENV=sandbox|prod] (Default sandbox) ·
+ * DRY_RUN ist Default → nur suchen + Kandidaten listen (nichts in Shopify anlegen). LIVE=1 zum Anlegen.
+ * ENV: BIGBUY_API_KEY · [BIGBUY_ENV=prod|sandbox] (Default prod) ·
  *      SHOPIFY_CLIENT_ID/SECRET (o. SHOPIFY_ADMIN_TOKEN), SHOPIFY_SHOP · [GEMINI_API_KEY] ·
- *      [CATS=schmuck,taschen,uhren] · [PER=4] · [MARGIN=2.6] · [MIN_STOCK=5] · [MAX_COST_EUR=40] · [LIVE=1]
+ *      [CATS=schmuck,taschen,uhren,sonnenbrillen] · [PER=4] · [MARGIN=2.6] · [MAX_COST_EUR=60] · [LIVE=1]
  */
 import fs from 'node:fs';
 
 const BB_KEY = (process.env.BIGBUY_API_KEY || '').trim();
-const BB_BASE = (process.env.BIGBUY_ENV || 'sandbox').toLowerCase() === 'prod'
-  ? 'https://api.bigbuy.eu' : 'https://api.sandbox.bigbuy.eu';
+const BB_BASE = (process.env.BIGBUY_ENV || 'prod').toLowerCase() === 'sandbox'
+  ? 'https://api.sandbox.bigbuy.eu' : 'https://api.bigbuy.eu';
 const GKEY = (process.env.GEMINI_API_KEY || '').trim();
 const ADMIN_TOKEN = (process.env.SHOPIFY_ADMIN_TOKEN || '').trim();
 const CID = (process.env.SHOPIFY_CLIENT_ID || '').trim();
@@ -31,85 +35,42 @@ const LEDGER = 'dropship/bigbuy_done.txt';
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 const PER = Math.max(1, parseInt(process.env.PER || '4', 10) || 4);
-const MARGIN = parseFloat(process.env.MARGIN || '2.6') || 2.6;     // EU-Einkauf ist teurer als CJ → kleinere Marge reicht
+const MARGIN = parseFloat(process.env.MARGIN || '2.6') || 2.6;     // auf wholesalePrice (EU-Einkauf)
 const EUR_CHF = 0.96;
-const MIN_STOCK = parseInt(process.env.MIN_STOCK || '5', 10) || 5;  // TOP = lieferbar
-const MAX_COST_EUR = parseFloat(process.env.MAX_COST_EUR || '40') || 40;
-// DRY ist DEFAULT (Sicherheit). Nur mit LIVE=1 wird wirklich in Shopify angelegt.
-const DRY = process.env.LIVE !== '1';
-const CATS = (process.env.CATS || 'schmuck,taschen,uhren,sonnenbrillen,parfum,herren,schuhe,elektronik,audio,kueche,wohnen,spielzeug,damenmode').split(',').map(s => s.trim()).filter(Boolean);
+const MAX_COST_EUR = parseFloat(process.env.MAX_COST_EUR || '60') || 60; // Einkaufs-Deckel je Stück
+const GAP = parseInt(process.env.GAP || '1500', 10) || 1500;       // Pause zwischen BigBuy-Calls (Rate-Limit)
+const DRY = process.env.LIVE !== '1';                              // DRY ist Default
+const CATS = (process.env.CATS || 'schmuck,taschen,uhren,sonnenbrillen').split(',').map(s => s.trim()).filter(Boolean);
 
-/* On-brand TOP-Kategorien. `cat` = BigBuy-Taxonomie/Such-Anker (Name-Match, DE/EN), wie bei CJ.
- * `bbCategoryIds` (optional) = exakte BigBuy-Kategorie-IDs, falls bekannt → präziser als Name-Match.
- * ⚠️BB-VERIFY: echte Kategorie-IDs via `GET /rest/catalog/categories.json?isoCode=de` einsetzen. */
+/* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
   schmuck: { coll: { handle: 'premium-schmuck', title: '💎 Premium Schmuck', tag: 'schmuck' },
-    extraTags: ['damen', 'geschenk', 'premium'], type: 'Schmuck', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['jewel', 'necklace', 'bracelet', 'earring', 'ring', 'schmuck', 'kette', 'armband', 'ohrring', 'pendant', 'collar', 'pulsera', 'anillo'],
-    ban: ['toy', 'kids', 'child', 'sticker'],
+    extraTags: ['damen', 'geschenk', 'premium'], type: 'Schmuck', maxCost: MAX_COST_EUR,
+    anchor: ['halskette', 'kette', 'armband', 'ohrring', 'ohrstecker', 'ring ', 'anhänger', 'armreif', 'collier',
+             'jewel', 'necklace', 'bracelet', 'earring', 'pendant', 'collar', 'pulsera', 'anillo', 'pendiente'],
+    ban: ['spielzeug', 'kinder', 'aufkleber', 'toy', 'kids', 'child', 'sticker', 'handyhülle', 'case'],
     bullets: ['Edles Design für jeden Anlass', 'Hochwertige Verarbeitung', 'Schöne Geschenkidee', 'Hautfreundliche Materialien'] },
   taschen: { coll: { handle: 'sub-taschen', title: '👜 Taschen', tag: 'tasche' },
-    extraTags: ['damen', 'accessoire', 'premium'], type: 'Taschen', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['bag', 'handbag', 'tote', 'crossbody', 'shoulder bag', 'tasche', 'handtasche', 'bolso', 'clutch'],
-    ban: ['trash', 'vacuum', 'tool bag', 'sleeping bag'],
+    extraTags: ['damen', 'accessoire', 'premium'], type: 'Taschen', maxCost: MAX_COST_EUR,
+    anchor: ['handtasche', 'tasche', 'umhängetasche', 'schultertasche', 'clutch', 'shopper', 'rucksack',
+             'handbag', 'bag', 'tote', 'crossbody', 'bolso'],
+    ban: ['müll', 'staubsauger', 'werkzeug', 'schlafsack', 'trash', 'vacuum', 'tool bag', 'sleeping bag', 'kosmetiktasche klein'],
     bullets: ['Vielseitig kombinierbar', 'Hochwertiges Material', 'Durchdachte Fächer', 'Eleganter Begleiter für jeden Tag'] },
   uhren: { coll: { handle: 'uhren', title: '⌚ Uhren', tag: 'uhren' },
-    extraTags: ['accessoire', 'geschenk', 'premium'], type: 'Uhren', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['watch', 'uhr', 'reloj', 'timepiece', 'wristwatch'],
-    ban: ['smart band cheap', 'kids watch', 'toy'],
+    extraTags: ['accessoire', 'geschenk', 'premium'], type: 'Uhren', maxCost: MAX_COST_EUR,
+    anchor: ['armbanduhr', 'uhr', 'watch', 'reloj', 'timepiece'],
+    ban: ['wanduhr', 'wecker', 'küchen', 'kinder', 'spielzeug', 'wall clock', 'kids watch', 'toy'],
     bullets: ['Zeitloses Design', 'Präzises Uhrwerk', 'Edles Geschenk', 'Für Business & Freizeit'] },
   sonnenbrillen: { coll: { handle: 'sonnenbrillen-eyewear', title: '🕶️ Sonnenbrillen', tag: 'sonnenbrille' },
-    extraTags: ['accessoire', 'sommer', 'damen'], type: 'Sonnenbrillen', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['sunglass', 'sonnenbrille', 'gafas de sol', 'eyewear', 'shades'],
-    ban: ['reading glasses', 'safety glasses', 'kids'],
+    extraTags: ['accessoire', 'sommer', 'damen'], type: 'Sonnenbrillen', maxCost: MAX_COST_EUR,
+    anchor: ['sonnenbrille', 'sunglass', 'gafas de sol', 'eyewear'],
+    ban: ['lesebrille', 'schutzbrille', 'kinder', 'reading glasses', 'safety glasses', 'kids'],
     bullets: ['UV-Schutz', 'Trendiges Design', 'Leichter Tragekomfort', 'Inkl. Etui'] },
   damenmode: { coll: { handle: 'damen-mode', title: '👗 Damen-Mode', tag: 'damen' },
-    extraTags: ['sommer-2026', 'kleid', 'premium'], type: 'Damenmode', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['dress', 'blouse', 'skirt', 'kleid', 'bluse', 'rock', 'vestido', 'top women'],
-    ban: ['men ', 'herren', 'kids', 'baby'],
+    extraTags: ['sommer-2026', 'kleid', 'premium'], type: 'Damenmode', maxCost: MAX_COST_EUR,
+    anchor: ['kleid', 'bluse', 'rock', 'damen', 'dress', 'blouse', 'skirt', 'vestido'],
+    ban: ['herren', 'kinder', 'baby', 'men ', 'kids'],
     bullets: ['Femininer Schnitt', 'Angenehmer Stoff', 'Vielseitig kombinierbar', 'Premium-Look zum fairen Preis'] },
-  // ── Erweiterung 2026-06-15 (Collections-Session): breiter Kategorie-Fill. ⚠️ Anchors = Name-Match über GANZEN Katalog
-  //    (nicht marken-beschränkt) → Qualität via maxCost + ban kuratieren; pro Lauf modto halten (sonst Feed-Bloat).
-  parfum: { coll: { handle: 'premium-beauty', title: '💄 Beauty · Premium', tag: 'beauty' },
-    extraTags: ['parfum', 'geschenk', 'premium'], type: 'Parfum', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['perfume', 'eau de', 'cologne', 'parfum', 'fragancia', 'colonia', 'toilette'],
-    ban: ['tester', 'recambio', 'sample', 'muestra'],
-    bullets: ['Original-Duft, versiegelt', 'Langanhaltend', 'Edles Geschenk', '100 % authentisch'] },
-  herren: { coll: { handle: 'fur-ihn', title: '👨 Für Ihn', tag: 'herren' },
-    extraTags: ['mode', 'premium'], type: 'Herrenmode', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['men shirt', 'camisa hombre', 'pantalon hombre', 'polo hombre', 'sudadera hombre', 'men t-shirt', 'herren', 'chaqueta hombre'],
-    ban: ['mujer', 'women', 'kids', 'niño', 'baby'],
-    bullets: ['Moderner Schnitt', 'Angenehmer Stoff', 'Vielseitig kombinierbar', 'Für jeden Anlass'] },
-  schuhe: { coll: { handle: 'schuhe', title: '👟 Schuhe', tag: 'schuhe' },
-    extraTags: ['mode', 'premium'], type: 'Schuhe', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['sneaker', 'zapatilla', 'zapato', 'bota', 'sandalia', 'schuh', 'botin', 'shoe'],
-    ban: ['kids', 'niño', 'baby', 'cordon', 'plantilla'],
-    bullets: ['Bequemer Tragekomfort', 'Hochwertiges Material', 'Stylisches Design', 'Für jeden Tag'] },
-  elektronik: { coll: { handle: 'trends-gadgets', title: '🔥 Trends & Gadgets', tag: 'gadget' },
-    extraTags: ['elektronik', 'trend'], type: 'Elektronik', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['bluetooth', 'cargador', 'powerbank', 'smart', 'cable usb', 'adaptador', 'linterna', 'gadget', 'ventilador usb'],
-    ban: ['toy', 'juguete', 'kids'],
-    bullets: ['Praktischer Alltagshelfer', 'Einfache Bedienung', 'Kompakt & smart', 'Tolles Geschenk'] },
-  audio: { coll: { handle: 'audio-sub', title: '🎧 Audio', tag: 'audio' },
-    extraTags: ['elektronik', 'trend'], type: 'Audio', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['auricular', 'headphone', 'earphone', 'earbud', 'kopfhörer', 'altavoz', 'speaker', 'cascos'],
-    ban: ['kids', 'toy'],
-    bullets: ['Starker Klang', 'Bequemer Sitz', 'Für unterwegs', 'Lange Akkulaufzeit'] },
-  kueche: { coll: { handle: 'sub-kueche', title: '🍳 Küche', tag: 'kueche' },
-    extraTags: ['haushalt', 'wohnen'], type: 'Küche', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['cocina', 'kitchen', 'sarten', 'olla', 'cuchillo', 'küche', 'utensilio', 'set vasos', 'tabla cortar'],
-    ban: ['toy', 'juguete'],
-    bullets: ['Praktisch im Alltag', 'Hochwertige Verarbeitung', 'Leicht zu reinigen', 'Schönes Design'] },
-  wohnen: { coll: { handle: 'wohnen-dekoration', title: '🏠 Wohnen & Deko', tag: 'wohnen' },
-    extraTags: ['deko', 'haushalt'], type: 'Wohnen', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['decoracion', 'hogar', 'lampara', 'vela', 'cojin', 'manta', 'jarron', 'deko', 'portavelas', 'marco foto'],
-    ban: ['toy', 'juguete', 'kids'],
-    bullets: ['Schöner Wohn-Akzent', 'Hochwertige Materialien', 'Stimmungsvolles Design', 'Tolle Geschenkidee'] },
-  spielzeug: { coll: { handle: 'spielzeug', title: '🧸 Spielzeug', tag: 'spielzeug' },
-    extraTags: ['kinder', 'geschenk'], type: 'Spielzeug', maxCost: MAX_COST_EUR, bbCategoryIds: [],
-    anchor: ['juguete', 'toy', 'spielzeug', 'peluche', 'puzzle', 'muñeca', 'figura', 'juego mesa'],
-    ban: ['adult', 'erotic'],
-    bullets: ['Großer Spielspaß', 'Sicher & geprüft', 'Fördert Kreativität', 'Tolles Geschenk'] },
 };
 
 // ── Shopify (1:1 aus cj_gaps_import.mjs, bewährt) ──
@@ -122,23 +83,23 @@ async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return
 async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); const j = await r.json().catch(() => ({})); return j.access_token || null; }
 async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return ADMIN_TOKEN; if (CID && CSEC) { const t = await sCC(); if (t && await sWorks(t)) return t; } return null; }
 
-// ── BigBuy REST (Bearer-Auth, JSON). ⚠️BB-VERIFY Pfade/Felder mit Sandbox abgleichen ──
-async function bbGet(path, params) {
-  const qs = params ? ('?' + new URLSearchParams(params).toString()) : '';
-  for (let a = 0; a < 4; a++) {
-    const r = await fetch(`${BB_BASE}${path}${qs}`, { headers: { 'Authorization': `Bearer ${BB_KEY}`, 'Accept': 'application/json' } });
-    if (r.status === 429) { await sleep((a + 1) * 2500); continue; } // BigBuy Rate-Limit
-    if (!r.ok) { console.log(`  ⚠️ BigBuy ${path} → HTTP ${r.status}`); return null; }
-    return r.json().catch(() => null);
+// ── BigBuy REST (Bearer-Auth, JSON, verifiziert). Robustes Rate-Limit-Handling ──
+async function bbGet(path) {
+  for (let a = 0; a < 6; a++) {
+    let r;
+    try { r = await fetch(`${BB_BASE}${path}`, { headers: { 'Authorization': `Bearer ${BB_KEY}`, 'Accept': 'application/json' } }); }
+    catch { await sleep((a + 1) * 4000); continue; }
+    const txt = await r.text();
+    if (r.status === 429 || /exceeded the rate limit|too many/i.test(txt)) { await sleep((a + 1) * 5000); continue; }
+    if (!r.ok) { console.log(`  ⚠️ BigBuy ${path.split('?')[0]} → HTTP ${r.status} ${txt.slice(0, 80)}`); return null; }
+    try { return JSON.parse(txt); } catch { return null; }
   }
+  console.log(`  ⚠️ BigBuy ${path.split('?')[0]} → Rate-Limit, aufgegeben.`);
   return null;
 }
-// Katalog-Liste (leichtgewichtig): id, sku, Preise, Kategorie. ⚠️BB-VERIFY Feldnamen
-async function bbProducts(isoCode = 'de') { return (await bbGet('/rest/catalog/products.json', { isoCode })) || []; }
-// Namen/Beschreibungen je Sprache. ⚠️BB-VERIFY: /rest/catalog/productsinformation.json
-async function bbInfo(isoCode = 'de') { return (await bbGet('/rest/catalog/productsinformation.json', { isoCode })) || []; }
-// Bilder je Produkt (einzeln, nur für die Picks → spart Last). ⚠️BB-VERIFY: /rest/catalog/productimages/{id}.json
-async function bbImages(id) { const d = await bbGet(`/rest/catalog/productimages/${id}.json`); return d || null; }
+const bbInfoAll = () => bbGet('/rest/catalog/productsinformation.json?isoCode=de'); // [{id,sku,name,description}]
+const bbProduct = (id) => bbGet(`/rest/catalog/product/${id}.json?isoCode=de`);     // {wholesalePrice,retailPrice,active,...}
+const bbImages = (id) => bbGet(`/rest/catalog/productimages/${id}.json`);           // {id, images:[{url,...}]}
 async function img200(u) { try { const r = await fetch(u, { method: 'HEAD' }); if (r.ok) return true; const g = await fetch(u); return g.ok; } catch { return false; } }
 
 // ── Gemini Batch-Übersetzung → knackiger DE-Titel (1:1 aus Vorlage) ──
@@ -159,12 +120,6 @@ async function titlesDE(names) {
 
 const chf = (eur) => { let p = Math.max(9.9, eur * EUR_CHF * MARGIN); return (Math.ceil(p) - 0.1).toFixed(2); };
 
-// Felder defensiv lesen (BigBuy-Antworten variieren je Endpoint/Version) ⚠️BB-VERIFY
-const f = (o, ...keys) => { for (const k of keys) { if (o && o[k] != null) return o[k]; } return undefined; };
-const costOf = (p) => Number(f(p, 'wholesalePrice', 'price', 'cost')) || 0;
-const stockOf = (p) => Number(f(p, 'stock', 'quantity')) || 0;
-const idOf = (p) => f(p, 'id', 'productId', 'sku');
-
 if (!BB_KEY) { console.log('Kein BIGBUY_API_KEY → No-op (Connector startklar, wartet auf Key).'); process.exit(0); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
@@ -178,20 +133,10 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
   console.log(`BigBuy-Import [${BB_BASE.includes('sandbox') ? 'SANDBOX' : 'PROD'}]${DRY ? ' [DRY — nichts wird angelegt; LIVE=1 zum Anlegen]' : ' [LIVE]'}`);
   const stok = await sToken(); if (!stok) { console.log('Shopify-Auth fehlgeschlagen → No-op.'); process.exit(0); }
 
-  // Katalog einmal laden (Liste + Infos), dann je Kategorie filtern + ranken.
-  const products = await bbProducts('de');
-  if (!Array.isArray(products) || !products.length) {
-    console.log('⚠️ BigBuy lieferte keine Produktliste. Bei Sandbox-Key zuerst Endpoint/Feldnamen prüfen (⚠️BB-VERIFY).');
-    process.exit(0);
-  }
-  const info = await bbInfo('de');
-  const nameById = new Map();
-  for (const it of (Array.isArray(info) ? info : [])) {
-    const id = f(it, 'id', 'productId', 'sku');
-    const nm = f(it, 'name', 'title');
-    if (id != null && nm) nameById.set(String(id), { name: nm, desc: f(it, 'description', 'descriptionHtml') || '' });
-  }
-  console.log(`Katalog: ${products.length} Produkte, ${nameById.size} mit DE-Namen.`);
+  console.log('Lade BigBuy-Katalog (productsinformation, kann gross sein) …');
+  const info = await bbInfoAll();
+  if (!Array.isArray(info) || !info.length) { console.log('⚠️ Keine productsinformation erhalten (Rate-Limit?) → Abbruch.'); process.exit(0); }
+  console.log(`Katalog: ${info.length} Produkte mit DE-Namen.`);
 
   const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
   const pubs = DRY ? [] : ((await sgql(stok, PUBQ))?.data?.publications?.edges || []).map(e => ({ publicationId: e.node.id }));
@@ -210,41 +155,33 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
   for (const cat of CATS) {
     const cfg = CONFIG[cat]; if (!cfg) { console.log(`Unbekannte Kategorie ${cat}`); continue; }
     console.log(`\n=== ${cat.toUpperCase()} (${cfg.coll.title}) ===`);
-    // 1) Kandidaten: on-brand Name-Match (oder exakte bbCategoryIds, falls gesetzt) + Ban-Filter
-    const cand = products.filter(p => {
-      const id = idOf(p); if (id == null) return false;
-      if (cfg.bbCategoryIds?.length) { const c = f(p, 'category', 'categoryId'); if (!cfg.bbCategoryIds.includes(Number(c))) return false; }
-      const nm = (nameById.get(String(id))?.name || f(p, 'name') || '').toLowerCase();
-      if (!nm) return false;
+    // 1) Kandidaten: on-brand Name-Match aus productsinformation + Ban-Filter
+    const cand = info.filter(p => {
+      const nm = (p.name || '').toLowerCase(); if (!nm) return false;
       return cfg.anchor.some(a => nm.includes(a)) && !(cfg.ban || []).some(x => nm.includes(x));
     });
-    // 2) TOP-Ranking: lieferbar (Stock) + Preis im Rahmen, sortiert nach Stock (Proxy für Gängigkeit)
-    const ranked = cand
-      .filter(p => stockOf(p) >= MIN_STOCK && costOf(p) > 0 && costOf(p) <= cfg.maxCost)
-      .sort((a, b) => stockOf(b) - stockOf(a));
-    console.log(`  ${cand.length} on-brand, ${ranked.length} TOP-fähig (Stock≥${MIN_STOCK}, ≤€${cfg.maxCost}).`);
-
-    // 3) Bilder prüfen, Picks bilden
+    console.log(`  ${cand.length} on-brand Kandidaten im Katalog.`);
+    // 2) Pro Kandidat: Detail (Preis/aktiv) + Bilder prüfen, bis PER Picks
     const picks = [];
-    for (const p of ranked) {
+    for (const c of cand) {
       if (picks.length >= PER) break;
-      const id = String(idOf(p));
-      if (done.has('bb:' + id)) continue;
-      const imgD = await bbImages(id); await sleep(800);
-      // ⚠️BB-VERIFY: Bild-URLs liegen je nach Antwort unter images[].url / .urls / direkt als Array
-      let urls = [];
-      if (Array.isArray(imgD)) urls = imgD.map(x => f(x, 'url', 'src')).filter(Boolean);
-      else if (imgD && Array.isArray(imgD.images)) urls = imgD.images.map(x => f(x, 'url', 'src')).filter(Boolean);
+      if (done.has('bb:' + c.id)) continue;
+      const d = await bbProduct(c.id); await sleep(GAP);
+      if (!d || d.active !== 1) continue;
+      const cost = Number(d.wholesalePrice) || 0;
+      if (!cost || cost > cfg.maxCost) continue;
+      const imgD = await bbImages(c.id); await sleep(GAP);
+      const urls = (imgD?.images || []).map(x => x.url).filter(Boolean);
       const good = [];
       for (const u of urls.slice(0, 8)) { if (await img200(u)) good.push(u); if (good.length >= 6) break; }
       if (good.length < 2) continue;
-      picks.push({ id, sku: f(p, 'sku') || id, nameEn: nameById.get(id)?.name || f(p, 'name') || ('BigBuy ' + id), cost: costOf(p), imgs: good });
-      console.log(`  Kandidat: €${costOf(p)} ${good.length}img · ${(nameById.get(id)?.name || '').slice(0, 55)}`);
+      picks.push({ id: c.id, sku: c.sku || String(c.id), nameEn: c.name, cost, imgs: good });
+      console.log(`  Kandidat: €${cost} ${good.length}img · ${(c.name || '').slice(0, 55)}`);
     }
     if (!picks.length) { console.log('  (keine geeigneten TOP-Kandidaten)'); continue; }
     if (DRY) { picks.forEach(p => console.log(`  [DRY] würde anlegen: ${p.nameEn.slice(0, 55)} → CHF ${chf(p.cost)}`)); continue; }
 
-    // 4) Anlegen (DE-Titel + SEO + Tags + Bilder, 6 Kanäle)
+    // 3) Anlegen (DE-Titel + SEO + Tags + Bilder, 6 Kanäle)
     const titles = await titlesDE(picks.map(p => p.nameEn));
     await ensureColl(cfg);
     for (let i = 0; i < picks.length; i++) {
