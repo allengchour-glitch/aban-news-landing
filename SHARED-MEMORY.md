@@ -54,6 +54,16 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ NOCH MEHR FRISCHE NISCHEN (Offset 100): +33 Produkte, 0 Dubletten (Summe ~454):**
+- 🌻 Garten +15 (Offset 100): Teleskop-Heckenschere (Stocker), Gartenschere/Pflanzenroller (Progarden), Schlauch-Verbinder
+  (Gardena), Philips-Design-Lampen, EDM-Wandleuchte/Strahler, Fisch-Grillkorb (Sauvic), Pflanzkasten, Insektenvernichter,
+  Garten-Dekofigur, **Wetterstation (Alecto)**, LED-Laterne.
+- 🏠 Haushalt +18 (Offset 100): **Induktionskochplatte (Tristar), Tischgrill (TM Electron), Heizkörper (FM)**, Fondue (Quttin),
+  Cocktailgläser (Chef & Sommelier), Muffinform (Quid), viele DKD-Home-Decor-Deko (Wanduhr/Schmuckkästchen/Vorratsdose/
+  Kaffeetassen/Fussmatte/Deko-Figur), Obstkorb (Versa), Flaschenkühler, Küchen-Organizer (Metaltex), Duftkerze, Kissenbezug.
+- **Bestätigt:** Offset 100 in Garten/Haushalt weiterhin 0 % Dubletten — viel frisches Markenmaterial. Filter griff sauber
+  (3 Garten-Chemie raus). Für Folge-Sessions: Offset 120+/140+ in Garten/Haushalt als nächste frische Quelle.
+
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ GEZIELTE FRISCHE NISCHEN (hohe Offsets): +28 Produkte, 0 Dubletten (Summe ~421):**
 - 🌻 Garten +11 (Offset 80): Sonnensegel/Sonnenschirm (DKD), Blumentöpfe (Elho/DKD/Keramik), Sichtschutz-Netz (Fun&Go),
   Drucksprüher (Progarden), LED-Strahler (EDM), Grill-Schutzhülle (Altadex), Metall-Beistelltisch.
