@@ -15,7 +15,13 @@
     "öpper": "jemand", "öppis": "etwas", "dehei": "daheim", "itz": "jetzt", "scho": "schon", "no": "noch",
     "es/e": "ein/eine", "ds": "das", "u": "und (sehr berntypisch)", "au": "auch", "eifach": "einfach",
     "Meitschi": "Mädchen/junge Frau", "Büez": "Arbeit", "guet": "gut", "mängs": "manches/viele",
-    "hole/hol dr's": "kaufen/hol dir's", "spicher": "speichere"
+    "hole/hol dr's": "kaufen/hol dir's", "spicher": "speichere",
+    "alegge": "anlegen/auflegen (Schmuck) — KORREKT, NICHT aalegge (User 2026-06-16)"
+  },
+  "korrekturen_user": {
+    "_zweck": "Vom User (Bärndütsch-Muttersprachler) korrigiert — IMMER Vorrang vor allem anderen.",
+    "aalegge": "FALSCH → richtig: alegge",
+    "_offen": "User korrigiert weitere Wörter/Phrasen — hier eintragen, dann in Captions verwenden."
   },
   "phrasen": [
     "Lueg mau das aa 😍 (Neugier)",
