@@ -75,6 +75,32 @@ async function run(env) {
   const broken = results.filter((r) => r.issues.length);
   const snap = { ts: new Date().toISOString(), score, ok, total, broken };
 
+  // 💰 Geld-Wächter: Einnahme-Quellen live prüfen (sofort wissen statt still Umsatz verlieren).
+  const REV = [
+    ["eBay (Provision)", SITE + "/api/ebay?q=lampe&limit=1", function (j) { return j && j.demo === false && (j.items || []).length > 0; }, function (j) { return (j && j.demo) ? "liefert Demo — eBay-Keys prüfen" : "keine Treffer"; }],
+    ["LuxeStyle (Shop)", SITE + "/api/luxestyle?limit=1", function (j) { return j && (j.items || []).length > 0; }, function () { return "Shop-Feed leer/down"; }],
+    ["Jobs", SITE + "/api/jobs?q=verkauf", function (j) { return j && (j.items || []).length > 0; }, function () { return "Jobs-Quelle leer"; }],
+  ];
+  const revBroken = [];
+  for (const it of REV) {
+    try {
+      const r = await fetch(it[1], { cf: { cacheTtl: 0 }, headers: { "user-agent": "aban-site-brain/1.0" } });
+      const j = await r.json();
+      if (!it[2](j)) revBroken.push(it[0] + ": " + it[3](j));
+    } catch (e) { revBroken.push(it[0] + ": nicht erreichbar"); }
+  }
+  snap.revenueOk = REV.length - revBroken.length;
+  snap.revenueTotal = REV.length;
+  snap.revenueBroken = revBroken;
+  if (revBroken.length && env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+    try {
+      await fetch("https://api.telegram.org/bot" + env.TELEGRAM_BOT_TOKEN + "/sendMessage", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: ("💰 aban Geld-Wächter: " + revBroken.length + " Einnahme-Quelle(n) gestört:\n" + revBroken.map(function (x) { return "• " + x; }).join("\n")).slice(0, 3900) }),
+      });
+    } catch (_) {}
+  }
+
   if (env.BRAIN_KV) {
     await env.BRAIN_KV.put("last", JSON.stringify(snap));
     let hist = [];
@@ -89,7 +115,8 @@ async function run(env) {
     const now = new Date();
     if (now.getUTCDay() === 1 && now.getUTCHours() === 6 && env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
       const txt = "📊 aban Wochen-Report\nScore: " + score + " (" + ok + "/" + total + " Seiten ok)\n" +
-        (broken.length ? broken.map((b) => "• " + b.path + ": " + b.issues.join(", ")).join("\n") : "Alles grün. ✅");
+        "💰 Einnahmen: " + snap.revenueOk + "/" + snap.revenueTotal + " Quellen ok" + (revBroken.length ? " (" + revBroken.join("; ") + ")" : "") + "\n" +
+        (broken.length ? broken.map((b) => "• " + b.path + ": " + b.issues.join(", ")).join("\n") : "Seiten alle grün. ✅");
       await fetch("https://api.telegram.org/bot" + env.TELEGRAM_BOT_TOKEN + "/sendMessage", {
         method: "POST", headers: { "content-type": "application/json" },
         body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: txt.slice(0, 3900) }),
