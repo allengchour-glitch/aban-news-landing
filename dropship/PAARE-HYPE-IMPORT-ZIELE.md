@@ -38,3 +38,14 @@ Quelle Hype-Ranking: Research 2026-06-16 (CJ-/Sellthetrend-/Etsy-/TikTok-Trends)
 
 ## 📌 Sofort schon live (diese Session, ohne neue Produkte)
 Partner-Look-Content aus dem sauberen Bestand: `reels/partner-armband-9x16.mp4` (His/Hers, Tag-a-Friend-CTA) — in der Queue.
+
+---
+
+## 👔 HERREN-HEMDEN & Herren-Gap (User 2026-06-16 „männer hemden? go")
+**Befund:** CJ hat KEINE sauberen Fashion-Herrenhemden (nur 1 Unterhemd). Gute Sommerhemden = **AliExpress (PC-Browser)**.
+**Strategie (ehrlich):** Der Shop ist Damen-lastig → Herren ist ein echter Gap. ABER **Hemden = sized Apparel = Retouren-Risiko #1**.
+Darum:
+- **Selektiv starten:** 2–3 saubere **Leinen-Kurzarm- / Cuban-Collar-Sommerhemden** (2026-Hype), je **Grössentabelle (EU S–XXL, cm Brust/Länge) PFLICHT** + Mess-Guide + „im Zweifel grösser".
+- **QA:** kein asiatisches Model/Verpackungs-Text, sauberes Studio-/Lifestyle-Bild, uni/zeitlose Farben (kein Logo-Knockoff).
+- **Alternative/parallel — Herren ohne Retouren-Risiko:** der Herren-Gap lässt sich risikoärmer mit **Accessoires** füllen, wo wir schon Gewinner haben (Caps, Uhren, Slim-Wallet, Cuban-Link-Armband, Sonnenbrille) — Einheitsgrösse = kaum Retouren. Hemden als bewusster, kleiner Test danebenstellen.
+Ziele in `dropship/paare_hype_targets.csv` (3 Hemden-Zeilen ergänzt).
