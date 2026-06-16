@@ -1,0 +1,44 @@
+name: Shop Autopilot
+
+# Autonome Shop-Wartung: SEO-Autofix für neue Produkte + Bild-QA + Health-Report.
+# Läuft täglich (06:45 UTC) und manuell. No-op ohne Shopify-Secrets.
+#
+# Aktivierung (einmalig): Repo-Secrets setzen —
+#   SHOPIFY_SHOP = au3j0y-hq.myshopify.com
+#   und entweder SHOPIFY_ADMIN_TOKEN  ODER  SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET
+#   (Custom-App im Shop installiert, Scope write_products).
+# Optional: TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID für den Digest.
+
+on:
+  schedule:
+    - cron: '45 6 * * *'
+  workflow_dispatch:
+    inputs:
+      live:
+        description: 'LIVE=1 schreibt SEO (sonst Dry-Run)'
+        required: false
+        default: '1'
+      task:
+        description: 'all | seo | images | health'
+        required: false
+        default: 'all'
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run shop autopilot
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LIVE: ${{ github.event_name == 'schedule' && '1' || github.event.inputs.live }}
+          TASK: ${{ github.event.inputs.task || 'all' }}
+        run: node automation/shop_autopilot.mjs

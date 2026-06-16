@@ -1,0 +1,38 @@
+name: Bestseller Refresh
+
+# Hält die Collection "🔥 Hero-Favoriten" (bestseller) automatisch aktuell:
+# rankt nach echten Verkäufen (60 Tage), fällt bei 0 Verkäufen auf Review-Sieger
+# + beworbene Premium-Produkte (good_products.csv) zurück.
+#
+# Aktivierung (einmalig): Repo-Secrets setzen —
+#   SHOPIFY_SHOP = au3j0y-hq.myshopify.com
+#   und entweder SHOPIFY_ADMIN_TOKEN  ODER  SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET
+#   (Custom-App muss im Shop installiert sein, Scope write_products).
+# Ohne Secrets: no-op (Skript bricht sauber ab).
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # täglich 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      live:
+        description: 'LIVE=1 schreibt Änderungen (sonst Dry-Run)'
+        required: false
+        default: '1'
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Update bestseller collection
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ github.event_name == 'schedule' && '1' || github.event.inputs.live }}
+        run: node automation/update_bestsellers.mjs
