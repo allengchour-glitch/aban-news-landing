@@ -1,7 +1,7 @@
 // POST /api/inserat-moderate — Moderation (nur mit Admin-Token).
 // Body: { admin, id, action }  action = "approve" | "reject" | "delete"
 import { portalsConfigured, crossPostToPortals } from "../_portals.mjs";
-const H = { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" };
+const H = { "Access-Control-Allow-Origin": "https://abannews.com", "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" };
 function json(o, s = 200) { return new Response(JSON.stringify(o), { status: s, headers: H }); }
 
 export async function onRequestPost({ request, env }) {

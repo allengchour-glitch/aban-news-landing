@@ -1,6 +1,6 @@
 // POST /api/inserat-submit — nimmt ein eigenes Inserat entgegen (Status: pending).
 // Speichert in Cloudflare D1 (Binding-Name: DB). Ohne DB -> 503 (Anbindung fehlt).
-const H = { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" };
+const H = { "Access-Control-Allow-Origin": "https://abannews.com", "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" };
 function json(o, s = 200) { return new Response(JSON.stringify(o), { status: s, headers: H }); }
 
 export async function onRequestPost({ request, env }) {
