@@ -54,6 +54,16 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session) — 📝 PREMIUM-BESCHREIBUNGEN VOLL + 🔗 MENÜ-VERLINKUNG + Büro-Taxonomie +6 (User „fülle überall voll" / „verlinkung alles"):**
+- **24 Premium-Markenprodukte mit ausführlicher Beschreibung** veredelt (User-Screenshot CK-Uhr „zu wenig Beschreibung"):
+  Marken-Story/Heritage + ✨Highlights + 📋Details (Ø/Material/Zustand) + 📦Lieferumfang & Service (2 J. Garantie/Etui/Box) + Trust + WELCOME10.
+  Pro Kategorie-Template (Uhren/Sonnenbrillen/Taschen/Schmuck), keine erfundenen Hard-Specs (alles „gemäss Herstellerangabe"). Skript `gen_pd.mjs`.
+- **🔗 Hauptmenü verlinkt** (menuUpdate, voller Baum originalgetreu rekonstruiert — NICHTS verloren): unter „Trends & Gadgets" neu
+  **🖱️ Mauspads**, **🏅 Sport & Outdoor**, **🖨️ Büro**. Menu-ID 310224093569, alle Items werden bei menuUpdate ERSETZT → immer kompletten Baum mitgeben!
+- **🖨️ Büro-Taxonomie (19664) +6** (Nobo Whiteboards ×2, HSM Aktenvernichter, Fellowes Bindegerät, SumUp Kassenschublade, Premier Bondrucker) +
+  Collection `buero-schreibwaren`. ⚠️ Büro = grösstenteils Bulk-Multipacks (10/36/90 Stück) → streng filtern; Fit für Lifestyle-Shop mässig.
+- **Neue Collections heute:** `mauspads` (33), `sport-outdoor`, `buero-schreibwaren` — alle 6 Kanäle, SEO. Katalog ~543.
+
 **2026-06-16 (Katalog-Session) — 🧹 MAUSPAD-/POD-AUFRÄUMUNG (User-Screenshot „zu viel mousepad") + Sport-Taxonomie +8:**
 - **Problem:** 25 POD-Mauspads «…» (Swiss-Edition, `printful_personalized_product`, nur Druck-Design als Bild, z. B. «Haeee» = nur Text)
   waren mit `gaming`/`buero`/`tech` getaggt → fluteten 🎮 Gaming (87 Produkte) & Büro/Tech. Dazu 1 echtes Produkt (XXL RGB-Rand) + 7 ARCHIVED-Dubletten.
