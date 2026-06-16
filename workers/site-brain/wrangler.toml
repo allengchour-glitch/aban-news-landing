@@ -12,7 +12,7 @@ crons = ["0 */6 * * *"]
 
 [[kv_namespaces]]
 binding = "BRAIN_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "662199893128478e8db247831dd86ee9"
 
 # Secrets per CLI setzen (NICHT hier eintragen):
 #   npx wrangler secret put TRIGGER_KEY         # optional: schützt den manuellen ?run=1
