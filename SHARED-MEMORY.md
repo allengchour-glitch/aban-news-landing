@@ -54,6 +54,21 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (abannews/Tool-Session) — QA-Tools geeicht statt Symptome verstecken (3 PRs auf `main`):**
+- **Preise vereinheitlicht (#1017):** Site war widersprüchlich (€9/€89 vs €19/€190 vs €29 vs €149). Kanon = realer Stand
+  **aban Pro €19/Monat · €190/Jahr · Founding €69** (Flaggschiff `ki-studio.html` hat die echten Bezahllinks). 20 Stellen in 9 Seiten
+  (de+en) gezielt korrigiert; `tools/consistency_check.py` CANON darauf geeicht (war veraltet €9/€89). **Editoriale „€49/month"-Spott-
+  Zeile in `en/trading-tipps.html` bewusst gelassen** (kein Produktpreis).
+- **Brain-Scan-Präzision (#1018) → Score 99.3→100:** Die am 15.06. als „legitim, nicht wegfixen" markierten **7 Hype-Befunde sind jetzt
+  TOOL-SEITIG gelöst** — `tools/daily_improvement_scan.py` erkennt sie als FP (DEBUNK-Fenster 60→120, Marker versprech/weniger/forbidden/
+  without/schlagzeile/headline, „disruption"-Substantiv raus, 10x-vor-Hebel-Guard). Echter Hype wird weiter erkannt (verifiziert). 1 echte
+  Stelle im Fließtext entschärft (`ki-freelancing`: „noch nie dagewesene"→„wirklich neue Ideen"). **→ Künftig 0/0/0 = echtes Signal, keine Phantome.**
+- **Link-Checker-Präzision (#1019):** `tools/link_checker.py` jetzt 3-stufig **OK/BLOCKED/BROKEN**. BROKEN nur bei echt tot (DNS/refused/404/410/451);
+  Bot-Walls/Rate-Limits/5xx (403/429/503 phind/freepik/venturebeat/midjourney…) = BLOCKED (kein Handlungsbedarf, fällt nicht in CI). 13→**1 echt defekt**.
+- **🟡 OFFEN (User-Entscheidung, „später"):** Der eine echte tote Link = **`automatisierung.abannews.com` (DNS nicht geschaltet)**. Mikro-Site
+  `automatisierung-radar/dist/` (Build-Workflow `automatisierung-radar-build.yml`) zielt dorthin; Social-Post-Entwurf `social/posts.json` (`sent:false`)
+  verlinkt sie. **Nichts gelöscht** — entweder Subdomain DNS/Deploy einrichten ODER Post zurückhalten.
+
 **2026-06-15 (abannews-Session) — ✅ KONSOLIDIERT in EINEM PR (`claude/abannews-all`): Ehrlich-Ton + Content + Ricardo:**
 - **Brain-Score 97.2 → 99.3:** 25 echte Hype-Floskeln in `vergleich/`+`themen/` entschärft (Game-Changer→entscheidender Vorteil,
   „Disruptive Preise"→„Aggressiv günstige Preise" …). Die **7 Rest-Befunde sind LEGITIM** (Verbots-Wortlisten launch-manual/en-faq,
