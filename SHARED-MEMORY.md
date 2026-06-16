@@ -54,13 +54,16 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
-**2026-06-16 (Katalog-Session, BigBuy) — ✅ FÜLL-OFFENSIVE FORTGESETZT: +39 Produkte (Summe jetzt ~382)** — User „füll alles", autonom:
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ FÜLL-OFFENSIVE FORTGESETZT: +50 Produkte (Summe jetzt ~393)** — User „füll alles", autonom:
 - 🐾 Haustier +15 (Trixie: Betten/Leinen/Näpfe/Plüsch- & Kauspielzeug/Kleintierhaus/Vogelfutterspender; 3 Tierfutter übersprungen).
 - 👟 Schuhe +12 (Nike/Adidas/Puma/Converse/Reebok/Hi-Tec/Vans — Damen/Herren/Kinder; Sneaker/Tennis/Wander/Bade; 6 Dubletten übersprungen).
 - 🔌 Elektronik +12 (Xiaomi-Powerbank/Belkin/Epson/Acer/Cooler Master/Noctua/Zalman/Energizer/Celly/Vention/Gembird/Trevi; 6 Dubletten übersprungen).
-- **⚠️ DUBLETTEN-SIGNAL steigt:** bei Schuhe(offset 0) + Elektronik(offset 18) je 6/18 Handle-Kollisionen → niedrige Offsets dieser Kategorien
-  sind gesättigt. **Nächste Chargen: höhere Offsets nehmen** (Shopify-Handle-Check fängt Reste sauber ab). Methode unverändert (productSet,
-  EAN-Barcode, 2 Bilder, 6 Kanäle, tracked:false/CONTINUE).
+- 👕 Kleidung +11 (Joma/Adidas/Vans-Sportswear, New Era/North Face/Puma-Caps, Mapalé/Obsessive/Chilirose/Exposed-Dessous, Disney/Stitch/Domiva-Kids; 7 Dubletten übersprungen).
+- **🛑 SÄTTIGUNGS-SIGNAL (wichtig für nächste Session):** Dubletten-Rate stieg pro Charge **0 % → 33 % → 33 % → 44 %** (Handle-Kollisionen,
+  von Shopify sauber abgefangen). Der BigBuy-Katalog ist in den ergiebigen Marken-Kategorien jetzt weitgehend ausgeschöpft. **Lehre (= CLAUDE.md §9
+  „Dubletten = aufhören"): NICHT weiter stumpf Chargen stapeln** — Ausbeute sinkt. Künftig nur noch gezielt frische Nischen/sehr hohe Offsets, sonst
+  Zeit in REICHWEITE investieren (User-§10: Kampagne+Pixel+Budget, Cloudflare-/Gelato-Scharfschaltung) — das ist und bleibt der echte Engpass.
+- Methode unverändert (productSet, EAN-Barcode, 2 Bilder, 6 Kanäle, tracked:false/CONTINUE, Marken-vendor, Dessous→Hygiene-Hinweis).
 
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ GROSSE GLEICHMÄSSIGE FÜLL-OFFENSIVE: ~255 Produkte live über ALLE 8 Kategorien** (alle ACTIVE, EAN-Barcode, volle Galerie/0 FAILED, DE-Titel/SEO, 6 Kanäle, auto-sortiert in Kategorie+Preis+Geschenk+Premium):
 - **Laufende Summen (16.06.):** 🧸 Spielzeug ~120 (LEGO/Playmobil/Schleich/Ravensburger/Brio/Barbie/Dragon Ball/Marvel/Sylvanian…),
