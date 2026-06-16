@@ -5,109 +5,179 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LuxeStyle Shop — Premium-Produkte für dein Zuhause (Schweiz) | aban</title>
 <meta name="description" content="Entdecke ausgewählte Premium-Produkte: Beleuchtung, Deko, Garten & Smart-Home — versandfertig in der Schweiz. Direkt aus dem LuxeStyle-Shop.">
-<meta name="theme-color" content="#d97706">
+<meta name="theme-color" content="#0f0d0b">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://abannews.com/luxestyle.html">
 <meta property="og:title" content="LuxeStyle Shop — Premium für dein Zuhause">
 <meta property="og:description" content="Beleuchtung, Deko, Garten & Smart-Home — versandfertig in der Schweiz.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/luxestyle.html">
 <meta property="og:image" content="https://abannews.com/og-image.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--shadow:0 8px 24px rgba(31,41,55,.09)}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:var(--ink);background:var(--bg)}
+:root{
+  --gold:#d8a657;--gold-dk:#b9842f;--amber-dk:#b45309;
+  --ink:#1b1813;--ink2:#4a443c;--muted:#8a8073;--line:#ece4d6;
+  --bg:#faf7f1;--card:#fff;--dark:#161310;--dark2:#211b15;
+  --shadow:0 10px 30px rgba(40,30,15,.10);--shadow-lg:0 22px 50px rgba(40,30,15,.18)
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
 a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
-.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
-.top .in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
-.brand{font-weight:900;color:var(--amber-dk);font-size:19px}
+img{max-width:100%}
+
+/* Topbar */
+.top{background:rgba(255,255,255,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
+.top .in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:11px 18px}
+.brand{font-weight:900;color:var(--ink);font-size:20px;letter-spacing:-.02em}
+.brand b{color:var(--gold-dk)}
 .top .links{margin-left:auto;display:flex;gap:8px}
-.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:7px 12px;border:1px solid var(--line);border-radius:20px}
-.top .links a.cta{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
-.hero{background:linear-gradient(135deg,#1f2937 0%,#3a2a12 55%,#b45309 100%);color:#fff;position:relative;overflow:hidden}
-.hero .in{max-width:1180px;margin:0 auto;padding:34px 16px 30px;position:relative;z-index:1}
-.hero h1{font-size:1.9rem;line-height:1.15;margin-bottom:6px}
-.hero p{color:#f4e7d3;font-size:1rem;max-width:620px}
-.searchbox{background:#fff;border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.28);padding:12px;margin-top:20px;display:flex;gap:10px;max-width:620px}
-.searchbox input{flex:1;min-width:0;border:1px solid var(--line);background:#f5f2ec;border-radius:11px;padding:13px 14px;font-size:15px;color:var(--ink);font-family:inherit}
-.searchbox input:focus{outline:0;border-color:var(--amber);background:#fff}
-.searchbox button{background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px 24px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap}
-.quick{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap;font-size:.84rem}
-.quick a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:4px 12px;font-weight:600}
-.quick a:hover{background:rgba(255,255,255,.28)}
-.note{max-width:1180px;margin:12px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted)}
-.wrap{max-width:1180px;margin:18px auto;padding:0 16px}
-.cnt{font-weight:800;font-size:1.05rem;margin-bottom:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,border-color .15s}
-.c:hover{box-shadow:var(--shadow);transform:translateY(-1px);border-color:#dcc89c}
-.c .ph{aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#bcae95}
-.c .b{padding:10px 11px;display:flex;flex-direction:column;flex:1}
-.c .t{font-size:.84rem;font-weight:600;line-height:1.3;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.c .p{color:var(--amber-dk);font-weight:800;font-size:1.02rem;margin-top:auto}
-.c .go{margin-top:7px;text-align:center;background:var(--amber-dk);color:#fff;border-radius:8px;padding:7px;font-weight:700;font-size:.8rem}
-.c .go:hover{background:#a04708}
-.status{color:var(--muted);text-align:center;padding:40px 0}
-.skl{background:var(--card);border:1px solid var(--line);border-radius:13px;height:240px;animation:pulse 1.2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
-footer{max-width:1180px;margin:10px auto;padding:22px 16px;font-size:.8rem;color:var(--muted);text-align:center}
-:focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:8px 13px;border:1px solid var(--line);border-radius:22px;transition:.15s}
+.top .links a:hover{background:#fff;border-color:var(--gold);color:var(--gold-dk)}
+.top .links a.cta{background:var(--ink);color:#fff;border-color:var(--ink)}
+.top .links a.cta:hover{background:var(--gold-dk);border-color:var(--gold-dk);color:#fff}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 130% at 12% 10%,#2a221a 0%,#161310 55%,#0f0d0b 100%);color:#f6efe2}
+.hero::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(40% 60% at 88% 12%,rgba(216,166,87,.30),transparent 60%),
+  radial-gradient(36% 50% at 8% 92%,rgba(185,132,47,.22),transparent 60%);pointer-events:none}
+.hero .in{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:54px 18px 40px}
+.kick{display:inline-flex;align-items:center;gap:8px;background:rgba(216,166,87,.14);border:1px solid rgba(216,166,87,.4);color:var(--gold);border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:700;letter-spacing:.02em;margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;letter-spacing:-.03em;font-weight:900;margin-bottom:12px}
+.hero h1 .hl{background:linear-gradient(100deg,var(--gold),#f0cf94);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#cdbfa6;font-size:1.06rem;max-width:54ch}
+.searchbox{margin-top:24px;display:flex;gap:10px;max-width:560px;background:#fff;border-radius:16px;padding:8px;box-shadow:var(--shadow-lg)}
+.searchbox input{flex:1;min-width:0;border:0;background:transparent;padding:13px 12px;font-size:15.5px;color:var(--ink);font-family:inherit}
+.searchbox input:focus{outline:0}
+.searchbox button{background:var(--ink);color:#fff;border:0;border-radius:11px;padding:13px 24px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap;transition:.15s}
+.searchbox button:hover{background:var(--gold-dk)}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:.86rem;color:#d8cbb3}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust b{color:#fff;font-weight:700}
+
+/* Category bar */
+.catbar{position:sticky;top:55px;z-index:50;background:rgba(250,247,241,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.catbar .in{max-width:1200px;margin:0 auto;padding:11px 18px;display:flex;gap:9px;overflow-x:auto;scrollbar-width:none}
+.catbar .in::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:999px;padding:8px 15px;font-size:.86rem;font-weight:700;cursor:pointer;transition:.15s;white-space:nowrap}
+.chip:hover{border-color:var(--gold);color:var(--gold-dk)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Results */
+.wrap{max-width:1200px;margin:24px auto;padding:0 18px}
+.rhead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+.rhead h2{font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
+.rhead .cnt{color:var(--muted);font-size:.9rem;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+.c{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease,border-color .18s}
+.c:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#e3d4b6}
+.c .ph{aspect-ratio:1/1;background:#f1ece2 center/cover no-repeat;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#c4b89f}
+.c .ph .im{width:100%;height:100%;background:inherit;background-size:cover;background-position:center;transition:transform .35s ease}
+.c:hover .ph .im{transform:scale(1.07)}
+.c .ov{position:absolute;top:10px;left:10px;background:rgba(22,19,16,.86);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.03em;border-radius:7px;padding:4px 8px}
+.c .b{padding:12px 13px 14px;display:flex;flex-direction:column;flex:1}
+.c .cat{font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-dk);margin-bottom:4px}
+.c .t{font-size:.88rem;font-weight:600;line-height:1.32;color:var(--ink);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.c .row{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.c .p{color:var(--ink);font-weight:900;font-size:1.06rem}
+.c .go{background:var(--ink);color:#fff;border-radius:9px;padding:8px 12px;font-weight:800;font-size:.78rem;transition:.15s;white-space:nowrap}
+.c:hover .go{background:var(--gold-dk)}
+.status{text-align:center;color:var(--muted);padding:50px 0}
+.skl{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.skl .a{aspect-ratio:1/1;background:linear-gradient(90deg,#efe9dd 25%,#f7f2e8 50%,#efe9dd 75%);background-size:400px 100%;animation:sh 1.2s infinite}
+.skl .l{height:12px;margin:12px;border-radius:6px;background:#efe9dd}
+@keyframes sh{0%{background-position:-200px 0}100%{background-position:200px 0}}
+
+/* CTA band */
+.band{max-width:1200px;margin:30px auto 8px;padding:0 18px}
+.band .in{background:linear-gradient(120deg,#211b15,#3a2c17 60%,var(--gold-dk));border-radius:20px;padding:26px 26px;color:#f6efe2;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.band h3{font-size:1.25rem;font-weight:800;margin-bottom:3px}
+.band p{color:#d6c8ac;font-size:.94rem}
+.band a{margin-left:auto;background:#fff;color:var(--ink);border-radius:24px;padding:13px 24px;font-weight:800;white-space:nowrap;transition:.15s}
+.band a:hover{background:var(--gold);color:#1b1813}
+
+.foot-nav{max-width:1200px;margin:22px auto 0;padding:0 18px;font-size:.85rem;text-align:center;color:var(--muted)}
+.foot-nav a{color:var(--amber-dk);font-weight:600}
+footer{max-width:1200px;margin:14px auto;padding:22px 18px;font-size:.8rem;color:var(--muted);text-align:center}
+:focus-visible{outline:3px solid var(--gold-dk);outline-offset:2px;border-radius:6px}
+@media(max-width:560px){.hero .in{padding:40px 18px 30px}.searchbox{flex-wrap:wrap}.searchbox button{width:100%}.band a{margin-left:0;width:100%;text-align:center}}
 </style>
 </head>
 <body>
 <div class="top"><div class="in">
-  <a class="brand" href="/">aban</a>
-  <span class="links"><a href="/marktplatz.html">Marktplatz</a><a href="/suche.html">🔎 Suche</a><a class="cta" href="/inserat-aufgeben.html">+ Inserieren</a></span>
+  <a class="brand" href="/">aban<b>·</b>Shop</a>
+  <span class="links"><a href="/marktplatz.html">Marktplatz</a><a href="/suche.html">🔎 Suche</a><a class="cta" href="https://luxestyle.ch" target="_blank" rel="noopener">Zum Shop ↗</a></span>
 </div></div>
 
-<nav class="abn-bc" style="max-width:1180px;margin:0 auto;padding:9px 16px;font-size:.8rem;color:#6b7280" aria-label="Brotkrumen"><a href="/" style="color:#b45309">Start</a> › <a href="/marktplatz.html" style="color:#b45309">Marktplatz</a> › <span>LuxeStyle Shop</span></nav>
-<div class="hero"><div class="in">
-  <h1>🛍️ LuxeStyle Shop — Premium für dein Zuhause</h1>
-  <p>Ausgewählte Beleuchtung, Deko, Garten &amp; Smart-Home — versandfertig in der Schweiz.</p>
+<nav class="abn-bc" style="max-width:1200px;margin:0 auto;padding:9px 18px;font-size:.8rem;color:#8a8073" aria-label="Brotkrumen"><a href="/" style="color:var(--amber-dk)">Start</a> › <a href="/marktplatz.html" style="color:var(--amber-dk)">Marktplatz</a> › <span>Shop</span></nav>
+
+<header class="hero"><div class="in">
+  <span class="kick">🇨🇭 Versandfertig in der Schweiz</span>
+  <h1>Premium für dein <span class="hl">Zuhause</span>.</h1>
+  <p>Ausgewählte Beleuchtung, Deko, Garten &amp; Smart-Home — kuratiert, fair bepreist, schnell geliefert.</p>
   <form class="searchbox" id="sf" onsubmit="return false">
-    <input id="q" type="search" placeholder="🔍 Produkt suchen … z. B. Lampe, Solar, Deko" aria-label="Produkt suchen">
+    <input id="q" type="search" placeholder="🔍 Suche … z. B. Lampe, Solar, Vase, Diffuser" aria-label="Produkt suchen">
     <button id="go" type="submit">Suchen</button>
   </form>
-  <div class="quick">
-    <a href="#" data-q="Lampe">💡 Lampen</a><a href="#" data-q="Solar">☀️ Solar</a><a href="#" data-q="Garten">🪴 Garten</a>
-    <a href="#" data-q="Deko">🖼️ Deko</a><a href="#" data-q="Smart">🔌 Smart Home</a><a href="#" data-q="">Alle</a>
+  <div class="trust">
+    <span>🚚 <b>Versand CH/EU</b> · 6–12 Tage</span>
+    <span>🔒 <b>Sichere Zahlung</b></span>
+    <span>↩️ <b>Rückgabe</b> möglich</span>
   </div>
+</div></header>
+
+<div class="catbar"><div class="in" id="cats">
+  <button class="chip on" data-q="">✨ Alle</button>
+  <button class="chip" data-q="Lampe">💡 Lampen</button>
+  <button class="chip" data-q="Solar">☀️ Solar</button>
+  <button class="chip" data-q="Garten">🪴 Garten</button>
+  <button class="chip" data-q="Deko">🖼️ Deko</button>
+  <button class="chip" data-q="Diffuser">🌿 Diffuser</button>
+  <button class="chip" data-q="Smart">🔌 Smart Home</button>
+  <button class="chip" data-q="Küche">🍴 Küche</button>
 </div></div>
-<p class="note">🛍️ Produkte &amp; Versand über <strong>luxestyle.ch</strong> (CHF, Versand Schweiz). Klick führt direkt zum Produkt.</p>
 
 <div class="wrap">
-  <div class="cnt" id="cnt">Lade Produkte …</div>
+  <div class="rhead"><h2 id="htitle">Bestseller</h2><span class="cnt" id="cnt">Lade …</span></div>
   <div class="grid" id="grid"></div>
   <div class="status" id="status" hidden></div>
 </div>
 
-<nav style="max-width:1180px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a> · <a href="/luxestyle.html">Shop</a></nav>
-<footer>aban news · LuxeStyle Shop · Produkte von luxestyle.ch (CHF, Versand Schweiz) · © 2026 ·
+<div class="band"><div class="in">
+  <div><h3>Den ganzen Shop entdecken</h3><p>Über 200 Produkte für Zuhause, Garten &amp; Lifestyle — direkt bei LuxeStyle.</p></div>
+  <a href="https://luxestyle.ch" target="_blank" rel="noopener">Zum LuxeStyle-Shop ↗</a>
+</div></div>
+
+<nav class="foot-nav" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a> · <a href="/luxestyle.html">Shop</a></nav>
+<footer>aban news · LuxeStyle Shop · Produkte &amp; Versand über luxestyle.ch (CHF, Schweiz) · Klick führt zum Produkt · © 2026 ·
   <a href="/marktplatz.html">Marktplatz</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
 <script>
 (function(){
   var $=function(s){return document.querySelector(s)};
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-  var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt");
-  function skel(){grid.innerHTML=Array(13).join().split(",").map(function(){return '<div class="skl"></div>'}).join("");statusEl.hidden=true}
-  function load(){var q=$("#q").value.trim();cntEl.textContent="Lade Produkte …";skel();
-    fetch("/api/luxestyle?limit=48&q="+encodeURIComponent(q)).then(function(r){return r.json()}).then(function(d){
-      var items=d.items||[];
-      if(!items.length){grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="Keine Produkte zu „"+esc(q)+"“. <a href=\"https://luxestyle.ch\" target=\"_blank\" rel=\"noopener\">Ganzen Shop ansehen →</a>";cntEl.textContent="0 Produkte";return}
-      statusEl.hidden=true;
-      grid.innerHTML=items.map(function(it){
-        var img=it.img?('<div class="ph" style="background-image:url(\''+esc(it.img)+'\')"></div>'):'<div class="ph">🛍️</div>';
-        return '<a class="c" href="'+esc(it.url)+'" target="_blank" rel="noopener">'+img+'<div class="b"><div class="t">'+esc(it.title)+'</div><div class="p">'+esc(it.price)+'</div><span class="go">Im Shop ansehen →</span></div></a>';
-      }).join("");
-      cntEl.textContent=items.length+" Produkte"+(q?" zu „"+esc(q)+"“":"");
-    }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""});
+  var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),htitle=$("#htitle");
+  function skel(){grid.innerHTML=Array(11).join().split(",").map(function(){return '<div class="skl"><div class="a"></div><div class="l" style="width:80%"></div><div class="l" style="width:45%"></div></div>'}).join("");statusEl.hidden=true}
+  function render(items){items=items||[];
+    if(!items.length){grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="Keine Produkte gefunden. <a href=\"https://luxestyle.ch\" target=\"_blank\" rel=\"noopener\">Ganzen Shop ansehen ↗</a>";cntEl.textContent="0 Produkte";return}
+    statusEl.hidden=true;
+    grid.innerHTML=items.map(function(it){
+      var im=it.img?('<div class="im" style="background-image:url(\''+esc(it.img)+'\')"></div>'):'🛍️';
+      var cat=it.type?('<div class="cat">'+esc(it.type)+'</div>'):'';
+      return '<a class="c" href="'+esc(it.url)+'" target="_blank" rel="noopener"><div class="ph">'+im+'</div><div class="b">'+cat+'<div class="t">'+esc(it.title)+'</div><div class="row"><span class="p">'+esc(it.price)+'</span><span class="go">Ansehen ↗</span></div></div></a>';
+    }).join("");
+    cntEl.textContent=items.length+" Produkte";
   }
-  $("#go").addEventListener("click",function(e){e.preventDefault();load()});
-  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
-  document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#q").value=a.dataset.q;load();window.scrollTo({top:0,behavior:"smooth"})});
-  var uq=new URLSearchParams(location.search).get("q");if(uq)$("#q").value=uq;
-  load();
+  function load(q){htitle.textContent=q?("Treffer für „"+q+"“"):"Bestseller";cntEl.textContent="Lade …";skel();
+    fetch("/api/luxestyle?limit=48&q="+encodeURIComponent(q||"")).then(function(r){return r.json()}).then(function(d){render(d.items||[])})
+      .catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""})}
+  function setCat(q){Array.prototype.forEach.call(document.querySelectorAll("#cats .chip"),function(c){c.classList.toggle("on",c.dataset.q===q)});$("#q").value=q;load(q)}
+  $("#cats").addEventListener("click",function(e){var b=e.target.closest(".chip");if(b)setCat(b.dataset.q)});
+  $("#go").addEventListener("click",function(e){e.preventDefault();var q=$("#q").value.trim();Array.prototype.forEach.call(document.querySelectorAll("#cats .chip"),function(c){c.classList.toggle("on",c.dataset.q===q)});load(q)});
+  $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();$("#go").click()}});
+  var uq=new URLSearchParams(location.search).get("q");if(uq){$("#q").value=uq;load(uq)}else{load("")}
 })();
 </script>
 </body>
