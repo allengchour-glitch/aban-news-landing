@@ -30,6 +30,9 @@
 - **🟡 EN-Shop (EUR) Sync offen:** CLI-Key vom Sicherheits-Classifier (zu Recht) geblockt → über den Secret-
   basierten `stripe-shop.yml`-Workflow laufen lassen, sobald GitHub Actions wieder frei ist (war zuletzt gedrosselt).
 - **Brain-Score 100.0/100** (0 Befunde). DE-Shop 22/22 kaufbar (#1008). Newsletter-Queue (3×, 10/10) versandbereit.
+- **Scanner-Fix (#1048):** `daily_improvement_scan.py` Mehrfach-`!`-Check ignoriert jetzt `<script>/<style>` →
+  JS-`!!` (Boolean-Coercion, z. B. `inserate.html`) wird nicht mehr als Hype-Ausrufezeichen fehl-geflaggt.
+  Report damit vertrauenswürdig (0/0/0). Lehre: Voice-Checks immer auf script/style-gestripptem Text laufen lassen.
 
 ## 💳 2026-06-15 (NACHT) — STRIPE LIVE: alle 22 DE-Shop-Produkte kaufbar (zuerst lesen!)
 > User gab den `sk_live_`-Key (im Chat → **kompromittiert, MUSS rotiert werden**). `stripe_sync.py` mit
