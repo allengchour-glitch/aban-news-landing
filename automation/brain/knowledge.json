@@ -573,6 +573,12 @@
     "pod_printful": [
       "PRINTFUL-Katalog ist öffentlich OHNE API-Key: GET api.printful.com/products/variant/{catalogVariantId} → sauberes Blank-Produktfoto ohne «Dein Design»-Text. catalogVariantId = Teil nach «_» in der Shopify-SKU. Ideal für POD-Mockups ohne Gemini-Guthaben (MEMORY-KOMPAKT).",
       "POD CH-MUNDART als Marken-Burggraben: «Hoi zäme»/Dialekt-Humor/Stadt-Pride können generische Dropshipper nicht kopieren (Sprachbarriere) = emotionaler Kaufgrund. CHF 4.90 Sticker = niedrigster Erstkauf-Hebel (MARKTLUECKE-SCHWEIZ-EDITION)."
+    ],
+    "media_pflicht": [
+      "ALLE BILDER + VIDEO PFLICHT (User 2026-06-16 nimm immer alle bilder und video mit bei allem produkten): bei JEDEM create-product die KOMPLETTE Lieferanten-Galerie (CJ productImageSet / BigBuy P00..P20) als productCreateMedia anhaengen — NIE nur das Cover. Plus EIN Video: CJ/BigBuy-productVideo wenn vorhanden, sonst eigenes Reel (dropship/ads/render_price_reveal.sh). NIE ein Produkt OHNE Bild live (Bsp Mars-Gaming-Lautsprecher = leere Kachel, anderer Import). Vor Live: featuredMedia gesetzt + alle Media READY pruefen."
+    ],
+    "paare_partner": [
+      "PAAR/PARTNER-PRODUKTE (User 2026-06-16 fuege paare partner sachen): Hype 2026 = magnetische Herz-/Split-Halsketten, His/Hers-Armbaender (wasserfest/Cuban-Link/Kleeblatt), King-Queen-Sets, Sun-Moon. ABER CJ-Auswahl an SAUBEREN Paar-SETS ist duenn: Treffer sind meist PERSONALISIERT (Namens-Gravur, eingebrannte Demo-Namen Xylah) ODER Overlay-Text (18 Birthstone For Your Choices) → NICHT als simpler Dropship anlegen (Gravur=Fulfillment/Misrepresentation-Risiko). Saubere Paar-Sets eher via BigBuy (Import-Session) ODER bestehende wasserfeste Edelstahl-Armbaender als His/Hers-Partner-Look merchandisen/Content."
     ]
   },
   "decisions": [
