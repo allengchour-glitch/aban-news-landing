@@ -186,6 +186,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
         </select>
       </span>
     </div>
+    <div id="portals" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px"></div>
     <div class="feed" id="feed"></div>
     <div class="status" id="status" hidden></div>
     <button class="more" id="more" type="button" hidden>Mehr Jobs laden</button>
@@ -288,7 +289,15 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(remote)p+="&remote=1";
     return p;
   }
+  function renderPortals(){var box=$("#portals");if(!box)return;var q=$("#q").value.trim(),loc=$("#loc").value.trim();
+    var t=encodeURIComponent(q),l=encodeURIComponent(loc),ql=encodeURIComponent((q+" "+loc).trim());
+    var L=[{n:"💼 jobs.ch",u:q?"https://www.jobs.ch/de/stellenangebote/?term="+t+(loc?"&location="+l:""):"https://www.jobs.ch"},
+      {n:"🔎 Indeed",u:q||loc?"https://ch.indeed.com/jobs?q="+t+(loc?"&l="+l:""):"https://ch.indeed.com"},
+      {n:"🏢 JobScout24",u:"https://www.jobscout24.ch/de"},
+      {n:"🔗 LinkedIn",u:q?"https://www.linkedin.com/jobs/search/?keywords="+t+"&location="+(loc?l:"Schweiz"):"https://www.linkedin.com/jobs"}];
+    box.innerHTML='<span style="font-size:.86rem;font-weight:800;width:100%">🇨🇭 Auch auf Job-Portalen suchen'+(q?' nach „'+esc(q)+'“':'')+':</span>'+L.map(function(p){return '<a href="'+esc(p.u)+'" target="_blank" rel="noopener nofollow" style="font-size:.83rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:6px 11px;text-decoration:none">'+esc(p.n)+' →</a>'}).join("");}
   function load(append){
+    renderPortals();
     if(!append){allItems=[];page=1;skeleton();cntEl.textContent="Lade Stellen …"}
     moreBtn.hidden=true;
     fetch(buildUrl()).then(function(r){return r.json()}).then(function(d){
