@@ -54,6 +54,14 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — 👔 HERREN-PREMIUM + Hero-Auftrag (+4 Uhren):**
+- +4 Premium-Uhren: **Police** (H, 406), **Sector** 350 (H, 398), **Tommy Hilfiger** TH85 (H, 329), **Calvin Klein** Dainty (D, 429).
+  Alle highend → Premium-Auswahl. ⚠️ Herren-**Geldbörsen**: BigBuy-Taxonomie 19688 ist KEIN gültiger `parentTaxonomy` (400) →
+  Wallets so nicht listbar; künftig über Marken-/Namensfilter in einer Eltern-Taxonomie ziehen oder SKU-Liste.
+- 🖼️ **KI-Hero für Premium-Collection an PC-Claude delegiert:** `dropship/PREMIUM-HERO-AUFTRAG.md` (Cloud kann keine Bild-KI).
+  Brief: edles Flatlay (Uhr+Brille+Tasche+Kette), 2400×1000 + 1200×1200, kein Text, dann Collection-Bild `luxus-highend` setzen.
+- Premium-Welt total: **23 Luxus-Stücke** heute. Katalog ~520.
+
 **2026-06-16 (Katalog-Session, BigBuy) — 💎 PREMIUM-AUSWAHL VEREDELT + ECHTER SCHMUCK (+7):**
 - **Collection-Text + SEO** neu: nennt jetzt die Designer-/Swiss-Marken (Tissot/Certina/Seiko/Citizen/Jaguar/MK/Versace/Chopard/
   Porsche Design/Thomas Sabo) → besseres Google-Ranking. (Hero-Bild war bereits gesetzt, belassen.)
