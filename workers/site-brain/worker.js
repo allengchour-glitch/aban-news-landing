@@ -23,8 +23,20 @@ const CRITICAL = [
   "/mwst-rechner.html", "/stundensatz-rechner.html",
   "/lexoffice-vs-sevdesk.html", "/qonto-vs-kontist.html",
   "/rechnungsprogramm-kostenlos.html", "/gewerbe-anmelden-kosten.html",
+  // Marktplatz (Suche/Inserate/Auto/Immobilien) — autonom mitüberwacht
+  "/marktplatz.html", "/suche.html", "/auto-suche.html", "/immobilien.html",
+  "/inserate.html", "/angebote-suche.html", "/stellenangebote.html", "/inserat-aufgeben.html",
   "/sitemap.xml",
 ];
+
+// Marker, die beweisen, dass die NEUE (deployte) Version live ist.
+// Fehlt der Marker, ist die Seite veraltet -> Deploy nötig (autonomer Hinweis).
+const MARKERS = {
+  "/suche.html": 'id="fpanel"',
+  "/auto-suche.html": 'id="fmarke"',
+  "/immobilien.html": 'id="regs"',
+  "/inserate.html": 'catbox',
+};
 
 function checkPage(path, status, body) {
   const issues = [];
@@ -36,6 +48,7 @@ function checkPage(path, status, body) {
   if (!/rel=["']?canonical/.test(low)) issues.push("kein canonical");
   if (!low.includes('property="og:title"')) issues.push("kein og:title");
   if (!low.includes('name="description"')) issues.push("keine description");
+  if (MARKERS[path] && !low.includes(MARKERS[path])) issues.push("veraltet — Deploy nötig");
   return issues;
 }
 
