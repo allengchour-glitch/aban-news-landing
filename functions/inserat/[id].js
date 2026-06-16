@@ -99,7 +99,7 @@ ${loc ? `<div class="loc">📍 ${loc}</div>` : ""}
 <div class="actions"><button class="btn btn-primary" id="cBtn" type="button" data-k="${attr(b64(it.kontakt))}">Kontakt anzeigen</button>
 <button class="btn btn-ghost" id="sBtn" type="button">🔗 Teilen</button></div>
 <div id="cOut"></div>
-<p class="note">Angaben stammen von der inserierenden Person; aban übernimmt keine Gewähr. Vorsicht bei Vorkasse — am besten persönlich übergeben.</p>
+<p class="note">Angaben stammen von der inserierenden Person; aban übernimmt keine Gewähr. Vorsicht bei Vorkasse — am besten persönlich übergeben.<br><a href="mailto:hallo@abannews.com?subject=${encodeURIComponent("Inserat melden: " + (it.titel || ""))}&body=${encodeURIComponent("Ich möchte dieses Inserat melden:\n" + canonical + "\n\nGrund:\n")}" style="color:var(--muted);text-decoration:underline">⚠️ Inserat melden</a></p>
 </div></div></div>
 <div class="toast" id="toast"></div>
 <footer>aban news · Inserat-Details · Angaben ohne Gewähr · © 2026 · <a href="/inserate.html">Alle Inserate</a> · <a href="/impressum.html">Impressum</a></footer>
