@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (Reichweite-Fix: Dubletten weg + A/B-Share-Format + Auto-Analyse + Gehirn-Upgrade)
+- **🔁 DOPPELTE FEED-POSTS GEFIXT** (User „doppelt bilder"): build_queue.mjs garantiert jetzt KEINE doppelte Bild-/Video-URL im Grid. Queue neu (0 Grid-Dubletten). IG-Alt-Dubletten nur in App löschbar (keine API).
+- **🎬 NEUES SHARE-FORMAT gegen 0-Shares-Decke:** `dropship/ads/render_ab_reel.sh` = «1 oder 2?»-Vergleichs-Reels (Frage-Hook → Kommentar/Tag-a-Friend = das fehlende Engagement-Signal). 2 Beispiele (Ohrringe/Armband) gerendert, QA'd, auf CDN (200), in video_queue.csv + Queue mit Mundart-1-oder-2-CTA.
+- **📊 AUTO-ANALYSE eingebaut** (User „wenn fertig posten, dann immer Analyse"): PC-Tagestask `run-follower-daily.ps1` macht nach dem Posten IMMER TikTok-Analyse → Gehirn-Lernen → Queue-Rebuild → zurück ins Repo. Worker analysiert ohnehin bei jedem Cron.
+- **🧠 GEHIRN aus allen ~63 dropship/-Docs angereichert:** 8 neue rules-Bereiche (kampagnen_paid/conversion_hebel/gratis_kanaele/api_patterns/aesthetik_optik/supplier_pricing/katalog_audit/pod_printful) + Queue-Dedup-Lehre.
+- **❓ 102'400% im Dashboard = Wachstum-vs-Vorperiode** (Basis ~0 → riesige %, aussagelos). Echte Zahl bleibt: CHF 0 / 0 Orders → Hebel = Reichweite + Conversion.
+
 ## 🆕 2026-06-16 (TWINT BESTÄTIGT OK → Engpass = klar REICHWEITE)
 - **✅ TWINT-Testkauf ging KOMPLETT DURCH** (User, andere Session) → **Bezahlweg funktioniert, Checkout NICHT kaputt.**
 - **➡️ Neu-Bewertung der 4 Checkout-Abbrüche:** keine kaputte Bezahlung, sondern echte Kunden, die am letzten Schritt aus anderem
