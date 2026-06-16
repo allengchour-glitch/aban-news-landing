@@ -13,15 +13,25 @@
     "gäu/gäll": "gell/oder?", "grüessech": "grüss Sie (Bern-Gruss)", "hoi": "hallo (locker)",
     "chli": "bisschen/klein", "nid": "nicht (Bern, NICHT nöd)", "nüt": "nichts", "nümm": "nicht mehr",
     "öpper": "jemand", "öppis": "etwas", "dehei": "daheim", "itz": "jetzt", "scho": "schon", "no": "noch",
-    "es/e": "ein/eine", "ds": "das", "u": "und (sehr berntypisch)", "au": "auch", "eifach": "einfach",
+    "es/e": "ein/eine", "ds": "das", "u": "und (sehr berntypisch)", "ou": "auch (User-Korrektur: ou, NICHT au)", "eifach": "einfach",
     "Meitschi": "Mädchen/junge Frau", "Büez": "Arbeit", "guet": "gut", "mängs": "manches/viele",
     "hole/hol dr's": "kaufen/hol dir's", "spicher": "speichere",
     "alegge": "anlegen/auflegen (Schmuck) — KORREKT, NICHT aalegge (User 2026-06-16)"
   },
   "korrekturen_user": {
-    "_zweck": "Vom User (Bärndütsch-Muttersprachler) korrigiert — IMMER Vorrang vor allem anderen.",
+    "_zweck": "Vom User (Bärndütsch-Muttersprachler) korrigiert — IMMER Vorrang. Quelle = wie der User SELBER schreibt.",
+    "_modern_stil": "WICHTIG (User 2026-06-16 'hütztags schribt me äbe angers'): MODERN/phonetisch schreiben, wie auf Insta/TikTok — NICHT altes Lehrbuch-Bärndütsch. Casual, Verben oft auf -ä (schribä, lehrä, mache), so wie's tönt.",
     "aalegge": "FALSCH → richtig: alegge",
-    "_offen": "User korrigiert weitere Wörter/Phrasen — hier eintragen, dann in Captions verwenden."
+    "Parfum": "FALSCH → richtig: Parfüm (mit ü)",
+    "auch": "= ou (NICHT au!) — z.B. 'chani ou'",
+    "anders": "= angers",
+    "eben": "= äbe",
+    "heute": "= hüt | heutzutage = hütztags",
+    "schreiben": "= schribä | schreibt man = schribt me",
+    "lernen": "= lehrä",
+    "kann ich": "= chani",
+    "_vom_user_gelernt": "User schreibt: 'chani ou bärndütsch schribä das ou chli chasch lehrä', 'ja hüt zu tags schribt me äbe angers' → diese Schreibweise nachahmen.",
+    "_offen": "User korrigiert laufend weiter — hier eintragen, hat Vorrang."
   },
   "phrasen": [
     "Lueg mau das aa 😍 (Neugier)",
