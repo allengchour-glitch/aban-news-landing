@@ -284,6 +284,93 @@ def write_brain_state(n_pages: int, counts: dict) -> float:
     return score
 
 
+def write_brain_page() -> None:
+    """Selbst-aktualisierende öffentliche Seite brain.html: zeigt den Autonomie-/
+    Qualitäts-Zustand der Website. Wird bei JEDEM Scan neu aus brain-state.json
+    erzeugt → ist also immer aktuell ('die Seite, die die Seite verbessert')."""
+    sp = ROOT / "automation" / "brain-state.json"
+    if not sp.exists():
+        return
+    try:
+        st = json.loads(sp.read_text(encoding="utf-8"))
+    except Exception:
+        return
+    hist = st.get("history", [])[-14:]
+    last = hist[-1] if hist else {"pages": 0, "high": 0, "medium": 0, "low": 0}
+    score = st.get("score", 0)
+    best = st.get("best", score)
+    trend = st.get("trend", "—")
+    updated = st.get("updated", "")
+    mx = max([h.get("score", 0) for h in hist] + [100]) or 100
+    bars = "".join(
+        '<div class="bar" title="{d}: {s}/100 · {p} Seiten" style="height:{h}%"></div>'.format(
+            d=h.get("date", ""), s=h.get("score", 0), p=h.get("pages", 0),
+            h=max(6, round(h.get("score", 0) / mx * 100)))
+        for h in hist)
+    checks = [
+        ("🔗", "Sicherheit", "Externe Links automatisch mit <code>rel=noopener</code> abgesichert (Tabnabbing-Schutz)."),
+        ("🗣️", "Ehrlicher Ton", "Hype-/Marketing-Floskeln werden erkannt und sinnerhaltend entschärft."),
+        ("🖼️", "SEO &amp; Social", "Fehlende <code>og:image</code>/Canonicals/Alt-Texte werden beim Build ergänzt."),
+        ("🔍", "Integrität", "Interne Links, Sitemap-Frische und JSON-LD werden bei jedem Lauf geprüft."),
+        ("📈", "Selbst-Messung", "Jeder Lauf schreibt einen Health-Score (0–100) + Verlauf — sichtbar unten."),
+    ]
+    checkhtml = "".join(
+        '<div class="ck"><div class="ci">{i}</div><div><b>{t}</b><p>{d}</p></div></div>'.format(i=i, t=t, d=d)
+        for i, t, d in checks)
+    html = '''<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 aban-Brain — die Seite, die sich selbst verbessert | aban news</title>
+<meta name="description" content="Transparenz-Seite: Wie sich abannews.com automatisch selbst prüft und verbessert — mit Live-Health-Score und Verlauf. Ehrlich, ohne Hype.">
+<link rel="canonical" href="https://abannews.com/brain.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="aban-Brain — die Seite, die sich selbst verbessert">
+<meta property="og:description" content="Live-Health-Score + automatische Qualitätssicherung von abannews.com.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://abannews.com/brain.html">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<meta name="theme-color" content="#d97706"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#15803d;--okbg:#ecfdf3}
+@media(prefers-color-scheme:dark){:root{--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--cream:#3a2f1c}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header.site{border-bottom:1px solid var(--line)}header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}a{color:var(--amber-dk)}
+.hero{text-align:center;padding:40px 0 6px}.hero h1{font-size:clamp(24px,4.4vw,34px);letter-spacing:-.02em;margin-bottom:8px}
+.hero p{color:var(--ink2);max-width:620px;margin:0 auto}
+.score{margin:26px auto;max-width:420px;background:var(--okbg);border:1px solid var(--amber);border-radius:18px;padding:24px;text-align:center}
+.score .n{font-size:3.4rem;font-weight:800;color:var(--ok);line-height:1}.score .o{color:var(--muted);font-size:.9rem;margin-top:4px}
+.kv{display:flex;justify-content:center;gap:22px;margin-top:14px;flex-wrap:wrap;font-size:.9rem;color:var(--ink2)}
+.kv b{color:var(--ink)}
+.chart{display:flex;align-items:flex-end;gap:5px;height:120px;margin:10px 0 4px;padding:12px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.bar{flex:1;background:linear-gradient(180deg,var(--amber),var(--amber-dk));border-radius:4px 4px 0 0;min-width:6px}
+.cards{display:grid;grid-template-columns:1fr;gap:10px;margin:8px 0 4px}
+.ck{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px}
+.ck .ci{font-size:1.4rem}.ck b{font-size:.98rem}.ck p{color:var(--ink2);font-size:.9rem;margin-top:2px}.ck code{background:var(--cream);padding:1px 5px;border-radius:5px;font-size:.85em}
+.note{background:var(--cream);border-radius:12px;padding:14px 16px;color:var(--ink2);font-size:.9rem;margin:16px 0}
+h2{font-size:1.2rem;margin:26px 0 10px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}footer a{color:var(--muted)}
+.tag{display:inline-block;background:var(--okbg);color:var(--ok);border:1px solid var(--amber);border-radius:20px;padding:3px 11px;font-size:.8rem;font-weight:700}</style>
+</head><body>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a><a href="/marktplatz.html">Marktplatz →</a></div></header>
+<main><div class="wrap">
+<section class="hero"><span class="tag">🧠 Autonome Qualitätssicherung</span>
+<h1>Die Seite, die sich selbst verbessert</h1>
+<p>abannews.com prüft sich bei jedem Lauf automatisch auf Sicherheit, ehrlichen Ton, SEO und kaputte Links — und hält einen offenen Health-Score. Diese Seite wird bei jedem Lauf neu erzeugt.</p></section>
+<div class="score"><div class="n">''' + str(score) + '''<span style="font-size:1.2rem;color:var(--muted)">/100</span></div>
+<div class="o">Health-Score · Trend ''' + str(trend) + ''' · Bestwert ''' + str(best) + '''</div>
+<div class="kv"><span>📄 <b>''' + str(last.get("pages", 0)) + '''</b> Seiten</span><span>🔴 <b>''' + str(last.get("high", 0)) + '''</b> hoch</span><span>🟡 <b>''' + str(last.get("medium", 0)) + '''</b> mittel</span><span>🟢 <b>''' + str(last.get("low", 0)) + '''</b> niedrig</span></div></div>
+<h2>Verlauf (letzte Läufe)</h2><div class="chart">''' + (bars or '<span style="color:var(--muted)">noch keine Daten</span>') + '''</div>
+<h2>Was automatisch läuft</h2><div class="cards">''' + checkhtml + '''</div>
+<div class="note">⚖️ <b>Ehrlich:</b> Der Score ist eine Heuristik, kein Marketing-Versprechen. Automatisch behoben werden nur eindeutig sichere Dinge (z. B. <code>rel=noopener</code>, Hype-Wörter); inhaltliche Entscheidungen prüft ein Mensch. Stand: ''' + str(updated) + '''.</div>
+<p style="margin:14px 0"><a href="/marktplatz.html">← Zum Marktplatz</a> · <a href="/welche-ki-fuer-was.html">Tool-Finder</a> · <a href="/ueber-aban.html">Über aban</a></p>
+</div></main>
+<footer><div class="wrap">&copy; 2026 aban news · Auto-generiert von <code>tools/daily_improvement_scan.py</code> · <a href="/impressum.html">Impressum</a></div></footer>
+</body></html>
+'''
+    (ROOT / "brain.html").write_text(html, encoding="utf-8")
+    print("🧠 brain.html aktualisiert.")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--top", type=int, default=12, help="Beispiele je Kategorie im Report")
@@ -356,6 +443,7 @@ def main():
     print(f"{n_pages} Seiten geprüft · {counts['high']} hoch / {counts['medium']} mittel / "
           f"{counts['low']} niedrig → {out.relative_to(ROOT)}")
     write_brain_state(n_pages, counts)  # 🧠 Selbst-Tracking: Score + Verlauf
+    write_brain_page()                  # 🧠 Selbst-aktualisierende Seite brain.html
     # Exit 0: Report-Tool, kein CI-Blocker.
 
 
