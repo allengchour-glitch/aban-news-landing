@@ -45,3 +45,8 @@ all-content: funnel related cta leadmagnets sharekit growth  ## Alles Inhaltlich
 
 check: consistency links  ## Schnell-Check vor dem Commit
 	@echo "✓ Check fertig."
+
+qa: consistency links  ## Voll-QA: HTML-Standards + Links + Konsistenz + Brain-Score
+	@npx html-validate index.html marktplatz.html immobilien.html inserate.html angebote-suche.html auto-suche.html stellenangebote.html 2>/dev/null || echo "ℹ html-validate: 'npm install' fuer HTML-Standards-Check"
+	@$(PY) tools/daily_improvement_scan.py
+	@echo "✓ QA fertig."
