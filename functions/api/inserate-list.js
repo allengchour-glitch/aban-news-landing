@@ -8,6 +8,14 @@ function json(o, s = 200) { return new Response(JSON.stringify(o), { status: s, 
 export async function onRequestGet({ request, env }) {
   if (!env.DB) return json({ items: [], demo: true });
   const url = new URL(request.url);
+  // Einzelabruf für die Detailseite: ?id=123 (nur freigegebene Inserate)
+  const idParam = parseInt(url.searchParams.get("id") || "", 10);
+  if (idParam) {
+    try {
+      const row = await env.DB.prepare("SELECT id,kat,ort,plz,titel,beschreibung,preis,kontakt,typ,zustand,bild,featured,created,status FROM inserate WHERE id=? AND status='approved' AND (expires=0 OR expires>?)").bind(idParam, Date.now()).first();
+      return json({ items: row ? [row] : [] });
+    } catch (e) { return json({ items: [], error: "db" }); }
+  }
   const status = url.searchParams.get("status") === "pending" ? "pending" : "approved";
   if (status === "pending") {
     const tok = request.headers.get("X-Admin-Token") || url.searchParams.get("admin") || "";
