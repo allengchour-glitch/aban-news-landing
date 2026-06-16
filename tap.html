@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LuxeStyle — 1 Tap</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin:0; min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+         gap:22px; background:#0b0b0f; color:#fff; font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif; padding:24px; }
+  h1 { font-size:20px; font-weight:700; margin:0; letter-spacing:.3px; }
+  p  { margin:0; color:#9aa0aa; font-size:14px; text-align:center; max-width:340px; line-height:1.5; }
+  .big { width:240px; height:240px; border-radius:50%; border:none; cursor:pointer;
+         background:radial-gradient(circle at 30% 30%, #d4af37, #b8860b 70%); color:#1a1206;
+         font-size:26px; font-weight:800; box-shadow:0 14px 40px rgba(212,175,55,.35); transition:transform .12s; }
+  .big:active { transform:scale(.95); }
+  .small { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:360px; }
+  .small a { text-decoration:none; color:#cdd2da; background:#16171d; border:1px solid #262833;
+             padding:10px 14px; border-radius:12px; font-size:14px; }
+  #out { font-size:13px; color:#7dd87d; min-height:20px; text-align:center; max-width:340px; word-break:break-word; }
+  #out.err { color:#ff7a7a; }
+</style>
+</head>
+<body>
+  <h1>🛍️ LuxeStyle — Alles starten</h1>
+  <button class="big" id="go">▶️<br>ALLES<br>LAUFEN</button>
+  <p>Ein Tap = Follower + Influencer (folgen & liken) + tutti + TikTok. Der PC erledigt es in den nächsten ~90 Sek.</p>
+  <div id="out"></div>
+  <div class="small">
+    <a href="#" data-cmd="follower">👥 nur Follower</a>
+    <a href="#" data-cmd="tutti">🛒 nur tutti</a>
+    <a href="#" data-cmd="tiktok">🎵 nur TikTok</a>
+    <a href="#" data-cmd="deploy">⚡ deploy</a>
+  </div>
+<script>
+  const KEY = "Abanaban192+";
+  const BASE = "https://luxe-poster.allengchour.workers.dev/";
+  const out = document.getElementById("out");
+  async function fire(cmd){
+    out.className = ""; out.textContent = "… sende „"+cmd+"" …";
+    try {
+      const u = BASE + "?key=" + encodeURIComponent(KEY) + "&cmd=" + cmd;
+      const r = await fetch(u); const j = await r.json().catch(()=>({}));
+      if (j.queued) out.textContent = "✅ „"+cmd+"" in der Warteschlange — PC führt es gleich aus.";
+      else out.textContent = "⚠️ Gesendet. Falls nichts passiert: Worker noch nicht deployed (1× am PC) + Listener starten.";
+    } catch(e){ out.className="err"; out.textContent = "❌ Keine Verbindung: " + e.message; }
+  }
+  document.getElementById("go").addEventListener("click", ()=>fire("all"));
+  document.querySelectorAll(".small a").forEach(a=>a.addEventListener("click", e=>{ e.preventDefault(); fire(a.dataset.cmd); }));
+</script>
+</body>
+</html>
