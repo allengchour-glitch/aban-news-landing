@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marchés — crypto & actions en direct + sentiment IA | aban news</title>
+  <meta name="description" content="Cours en direct pour la crypto & les actions, actualité financière récente et sentiment IA expérimental d'un seul coup d'œil. Anti-hype, avec sources — sans conseil en investissement.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://abannews.com/fr/maerkte.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/maerkte.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/maerkte.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/maerkte.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/maerkte.html">
+  <meta name="theme-color" content="#d97706">
+  <meta property="og:title" content="Marchés — crypto & actions en direct + sentiment IA | aban news">
+  <meta property="og:description" content="Cours en direct, actualité financière et sentiment IA expérimental d'un seul coup d'œil. Anti-hype, avec sources — sans conseil en investissement.">
+  <meta property="og:image" content="https://abannews.com/og-image.png">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    :root{
+      --bg:#fffaf2;--card:#fff;--ink:#15202b;--muted:#5c6773;--line:#ece6db;
+      --amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ok:#0f9d6b;
+      --ink2:#1f2b38;--grad1:#fff3d6;--grad2:#ffe2b0;
+      --bear:#dc2626;--bear-lt:#fee2e2;--ok-lt:#dcfce7;--neutral:#5c6773;--neutral-lt:#eef1f4;
+      --warn:#92400e;--warn-bg:#fef3c7;
+      --shadow:0 24px 60px rgba(28,37,48,.13);--shadow-sm:0 8px 22px rgba(28,37,48,.08);--r:20px;
+    }
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;display:block}a{color:inherit}
+    .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 1.25rem}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
+    .skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:0 0 10px 0;font-weight:700;text-decoration:none}
+    .skip:focus{left:0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:0;border-radius:999px;cursor:pointer;
+      font-weight:800;font-size:1.02rem;padding:.95rem 1.6rem;background:var(--ink);color:#fff;text-decoration:none;
+      box-shadow:0 10px 24px rgba(21,32,43,.22);transition:transform .12s,box-shadow .12s,background .15s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(21,32,43,.28)}
+    .btn--amber{background:var(--amber);box-shadow:0 12px 26px rgba(217,119,6,.34)}
+    .btn--amber:hover{background:var(--amber-dk)}
+    .btn--sm{padding:.55rem 1rem;font-size:.92rem}
+    .btn--ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+
+    /* header */
+    header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
+    .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
+    .hnav{display:flex;align-items:center;gap:1.3rem;font-size:.93rem}
+    .hnav a.lk{color:var(--muted);text-decoration:none}.hnav a.lk:hover{color:var(--ink)}.hnav a.lk[aria-current=page]{color:var(--ink);font-weight:700}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:800}
+    .lang a{padding:.34rem .6rem;color:var(--muted);text-decoration:none}.lang a.on{background:var(--ink);color:#fff}
+    @media(max-width:820px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+
+    /* hero */
+    .hero{position:relative;overflow:hidden;background:
+      radial-gradient(900px 480px at 88% -8%,var(--grad2),transparent 60%),
+      radial-gradient(700px 420px at 6% 0%,var(--cream),transparent 55%),
+      linear-gradient(180deg,#fffdf9,var(--bg))}
+    .hero .wrap{padding:clamp(2.2rem,5vw,3.6rem) 1.25rem clamp(1.4rem,3vw,2rem)}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:700;color:var(--amber-dk);
+      background:#fff;border:1px solid #f3d8ab;padding:.4rem .8rem;border-radius:999px;box-shadow:var(--shadow-sm)}
+    .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:p 2s infinite}
+    @keyframes p{0%{box-shadow:0 0 0 0 rgba(15,157,107,.45)}70%{box-shadow:0 0 0 7px rgba(15,157,107,0)}100%{box-shadow:0 0 0 0 rgba(15,157,107,0)}}
+    @media(prefers-reduced-motion:reduce){.pulse{animation:none}}
+    .hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05;letter-spacing:-.03em;margin:1rem 0 .7rem;font-weight:900}
+    .hero h1 .hl{background:linear-gradient(120deg,var(--amber),#ef9d2b);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero .lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink2);max-width:60ch;margin:0 0 1.1rem}
+    .disclaimer{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:.7rem 1rem;font-size:.9rem;font-weight:600;margin:1rem 0 0;max-width:72ch}
+
+    /* sections */
+    .sec{padding:clamp(2rem,5vw,3.4rem) 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--amber-dk)}
+    .eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--amber)}
+    .sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);letter-spacing:-.025em;line-height:1.08;margin:.5rem 0 0;font-weight:900}
+    .sec .sub{color:var(--muted);max-width:64ch;margin:.6rem 0 0}
+    .updated{font-size:.82rem;color:var(--muted);margin:0}
+    .ovbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;margin:.7rem 0 0}
+    .curswitch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+    .curswitch button{border:0;background:transparent;cursor:pointer;font-weight:800;font-size:.8rem;color:var(--muted);padding:.4rem .8rem;transition:.15s}
+    .curswitch button.on{background:var(--ink);color:#fff}
+    .curswitch button:disabled{opacity:.4;cursor:not-allowed}
+    #staleWarn{display:none}
+    /* Onglets de filtre par catégorie */
+    .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
+    .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
+    .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
+    .mtabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .mtabs button .cnt{opacity:.6;font-weight:700;margin-left:.3rem}
+    .mtable tr.morerow td{text-align:center;padding:0}
+    .mtable tr.morerow button{width:100%;border:0;background:#fcf7ee;color:var(--amber-dk);cursor:pointer;font-weight:800;font-size:.85rem;padding:.7rem 1rem;transition:.15s}
+    .mtable tr.morerow button:hover{background:var(--amber-lt)}
+
+    /* market table */
+    .mtable-wrap{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow-x:auto}
+    table.mtable{width:100%;border-collapse:collapse;font-size:.95rem;min-width:560px}
+    .mtable th,.mtable td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--line)}
+    .mtable thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
+    .mtable tbody tr:last-child td{border-bottom:0}
+    .mtable td.num,.mtable th.num{text-align:right;font-variant-numeric:tabular-nums}
+    .asset-link{text-decoration:none;color:inherit}.asset-link:hover .asset-name{color:var(--amber-dk);text-decoration:underline}
+    .asset-name{font-weight:800}
+    .asset-sym{color:var(--muted);font-weight:600;font-size:.85rem;margin-left:.35rem}
+    .tag-type{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:.12rem .45rem;border-radius:999px;background:var(--neutral-lt);color:var(--muted);margin-left:.5rem;vertical-align:middle}
+    .chg{font-weight:800;font-variant-numeric:tabular-nums}
+    .chg.up{color:var(--ok)}.chg.down{color:var(--bear)}.chg.flat{color:var(--muted)}
+    .mtable td.spark{width:96px}.mtable td.spark svg{opacity:.92}
+    .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
+
+    /* Sentiment du marché + Top-Mover */
+    .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
+    .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
+    .moodbar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--neutral-lt)}
+    .moodseg{display:block;height:100%}
+    .moodseg.bullish{background:var(--ok)}.moodseg.neutral{background:#cbd5e1}.moodseg.bearish{background:var(--bear)}
+    .moodsum{margin:.7rem 0 0;font-size:.9rem;color:var(--muted);font-weight:700}
+    .movers{display:grid;gap:.7rem}
+    .mover{display:flex;justify-content:space-between;align-items:center;gap:.6rem;font-size:.95rem}
+    .mover .ml{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+
+    /* sentiment badge */
+    .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.2rem .55rem;border-radius:999px}
+    .badge.bullish{background:var(--ok-lt);color:#0a7a52}
+    .badge.bearish{background:var(--bear-lt);color:#b91c1c}
+    .badge.neutral{background:var(--neutral-lt);color:var(--neutral)}
+
+    /* signal cards */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.8rem}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow-sm)}
+    .card .chead{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.7rem}
+    .card .cname{font-size:1.08rem;font-weight:900;letter-spacing:-.01em}
+    .card .csignal{font-weight:800;font-size:.96rem;margin:.2rem 0 .4rem}
+    .card .crat{margin:0;color:var(--muted);font-size:.92rem}
+    .card .cconf{margin:.7rem 0 0;font-size:.76rem;color:var(--muted)}
+
+    /* news feed */
+    .news{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.7rem;max-width:820px}
+    .news li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.9rem 1.1rem;box-shadow:var(--shadow-sm)}
+    .news a{font-weight:700;text-decoration:none;letter-spacing:-.005em}
+    .news a:hover{color:var(--amber-dk)}
+    .news .meta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.35rem;font-size:.8rem;color:var(--muted)}
+
+    .crosslink{margin-top:1.6rem;font-size:.95rem;color:var(--muted)}
+    .crosslink a{font-weight:700;color:var(--amber-dk)}
+
+    /* sources */
+    .sources{margin-top:1.4rem;font-size:.84rem;color:var(--muted)}
+    .sources a{color:var(--amber-dk);text-decoration:none}.sources a:hover{text-decoration:underline}
+
+    /* CTA band */
+    .band{background:linear-gradient(135deg,#1f2b38,#2c3e50);color:#fff;border-radius:28px;padding:clamp(2rem,5vw,3.4rem);text-align:center;box-shadow:var(--shadow)}
+    .band h2{font-size:clamp(1.6rem,3.6vw,2.5rem);letter-spacing:-.025em;margin:0 0 .6rem;font-weight:900}
+    .band p{color:#cdd6e0;margin:0 auto 1.6rem;max-width:46ch}
+    .band .cta{display:flex;gap:.55rem;max-width:520px;margin:0 auto}
+    .band .cta input{flex:1;min-width:0;border:1.5px solid transparent;border-radius:999px;padding:.95rem 1.15rem;font-size:1rem;background:#fff;color:#15202b}
+    .band .fine{color:#9fb0c0;font-size:.78rem;margin:.9rem 0 0}
+
+    /* footer */
+    footer{margin-top:1rem;border-top:1px solid var(--line);background:#fff}
+    footer .wrap{padding:2.4rem 1.25rem 1.6rem}
+    .footcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:1.6rem}
+    .footcols h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;margin:0 0 .8rem;font-weight:900}
+    .footcols a{display:block;font-size:.9rem;color:var(--muted);text-decoration:none;padding:.22rem 0}
+    .footcols a:hover{color:var(--ink)}
+    .footbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+    .footbar a{color:var(--muted);text-decoration:none}.footbar-links{display:flex;gap:1rem;flex-wrap:wrap}
+
+    /* Ticker en direct */
+    .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;overflow:hidden;position:relative}
+    .ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:48px;z-index:2;pointer-events:none}
+    .ticker::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+    .ticker::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+    .ticker-track{display:inline-flex;gap:2.2rem;padding:.7rem 1rem;white-space:nowrap;will-change:transform;animation:tick 38s linear infinite}
+    .ticker:hover .ticker-track{animation-play-state:paused}
+    @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media(prefers-reduced-motion:reduce){.ticker-track{animation:none;overflow-x:auto}}
+    .tk{display:inline-flex;align-items:center;gap:.5rem;font-size:.9rem;font-weight:700}
+    .tk .tk-sym{color:var(--ink)}.tk .tk-px{color:var(--muted);font-variant-numeric:tabular-nums}
+    .tk .tk-ch{font-variant-numeric:tabular-nums;font-weight:800}
+    .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
+
+    /* Étoile de watchlist */
+    .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
+    .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
+    .mtable td.starcell{width:34px;text-align:center}
+    tr.watched td{background:#fffaf0}
+
+    /* Widgets-outils */
+    .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:1.8rem}
+    .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow-sm)}
+    .tool h3{margin:0 0 .3rem;font-size:1.12rem;letter-spacing:-.01em}
+    .tool .thint{margin:0 0 1rem;color:var(--muted);font-size:.88rem}
+    .field{display:flex;flex-direction:column;gap:.3rem;margin:0 0 .8rem}
+    .field label{font-size:.8rem;font-weight:700;color:var(--muted)}
+    .field input,.field select{border:1.5px solid var(--line);border-radius:10px;padding:.6rem .7rem;font-size:1rem;background:#fff;color:var(--ink)}
+    .field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+    .tout{margin-top:.6rem;padding:.9rem 1rem;background:var(--cream);border-radius:12px;font-weight:800;font-size:1.05rem}
+    .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
+    .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
+
+    /* Réseau / En savoir plus */
+    .netgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+    .netcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink);transition:transform .14s,box-shadow .14s}
+    .netcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .netcard .ni{font-size:1.4rem}.netcard h3{margin:.4rem 0 .2rem;font-size:1.02rem}
+    .netcard p{margin:0;color:var(--muted);font-size:.88rem}
+    .netcard .nr{margin-top:auto;padding-top:.6rem;font-size:.84rem;color:var(--amber-dk);font-weight:700}
+
+    /* FAQ */
+    .mfaq{max-width:760px;margin:1.4rem 0 0;display:grid;gap:.6rem}
+    .mfaq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.2rem 1.1rem;box-shadow:var(--shadow-sm)}
+    .mfaq summary{list-style:none;cursor:pointer;font-weight:800;font-size:1rem;padding:.85rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .mfaq summary::-webkit-details-marker{display:none}
+    .mfaq summary::after{content:"+";font-size:1.3rem;color:var(--amber);line-height:1}
+    .mfaq details[open] summary::after{content:"–"}
+    .mfaq p{margin:0 0 1rem;color:var(--muted);font-size:.94rem}
+
+    /* Bloc abonnement */
+    .abo{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem}
+    .abocard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow-sm);text-align:center}
+    .abocard .ico{font-size:2rem;margin-bottom:.5rem}
+    .abocard h3{margin:0 0 .35rem;font-size:1.15rem}
+    .abocard p{margin:0 0 1rem;color:var(--muted);font-size:.92rem}
+
+    @media(max-width:860px){
+      .cards{grid-template-columns:1fr}
+      .footcols{grid-template-columns:1fr 1fr}
+      .band .cta{flex-direction:column}.band .cta .btn{width:100%}
+      .tools,.abo{grid-template-columns:1fr}
+      .netgrid{grid-template-columns:1fr}
+      .frow{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      /* Le tableau des cours devient des cartes empilées sur mobile (pas de défilement horizontal) */
+      .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
+      table.mtable{min-width:0;font-size:1rem}
+      .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+      .mtable tbody,.mtable tr,.mtable td{display:block}
+      .mtable tr.catrow{margin:1.2rem 0 .6rem}
+      .mtable tr.catrow td{border:0;border-radius:10px}
+      .mtable tr:not(.catrow):not(.morerow){position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);padding:.85rem 1rem;margin:0 0 .7rem;display:grid;grid-template-columns:1fr auto;grid-template-areas:"name star" "price change" "sent spark";align-items:center;gap:.3rem .8rem}
+      .mtable tr.watched:not(.catrow){background:#fffaf0;border-color:var(--amber)}
+      .mtable tr.morerow{margin:0 0 .9rem}
+      .mtable tr:not(.catrow):not(.morerow) td{border:0;padding:0}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(1){grid-area:star;justify-self:end;align-self:start}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(2){grid-area:name}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(3){grid-area:price;text-align:left;font-size:1.18rem;font-weight:800}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(4){grid-area:change;text-align:right}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(5){grid-area:spark}
+      .mtable tr:not(.catrow):not(.morerow) td:nth-child(6){grid-area:sent}
+      .mtable td.spark{width:auto}.mtable td.spark svg{max-width:88px;margin-left:auto;display:block}
+    }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Marchés — crypto & actions","url":"https://abannews.com/fr/maerkte.html","description":"Cours en direct pour la crypto & les actions, actualité financière et sentiment IA expérimental. Sans conseil en investissement.","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[{"@type":"Question","name":"Les cours sont-ils réels et à jour ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les cours crypto se mettent à jour en direct dans le navigateur via CoinGecko. Les cours des actions, l'actualité financière et le sentiment IA sont actualisés automatiquement plusieurs fois par jour à partir de sources publiques (Yahoo Finance, CoinGecko, flux RSS sérieux). Toutes les sources sont liées."}},{"@type":"Question","name":"Est-ce un conseil en investissement ?","acceptedAnswer":{"@type":"Answer","text":"Non. La page met en contexte des données publiquement disponibles et n'est pas un conseil en investissement, fiscal ou financier. Les marchés sont très volatils ; vous pouvez perdre la totalité de l'argent investi."}},{"@type":"Question","name":"Que signifie le sentiment IA ?","acceptedAnswer":{"@type":"Answer","text":"Une IA résume l'actualité récente par valeur en un sentiment (haussier, neutre, baissier) avec une courte justification. C'est une mise en contexte expérimentale, pas une recommandation d'achat ou de vente."}},{"@type":"Question","name":"Quelles valeurs et quelles devises sont affichées ?","acceptedAnswer":{"@type":"Answer","text":"22 valeurs en quatre catégories : crypto (Bitcoin, Ethereum, Solana, XRP, BNB, Cardano, Dogecoin), actions (NVIDIA, Apple, Microsoft, Tesla, Alphabet, Amazon, Meta, AMD), indices (S&P 500, Nasdaq, DAX, SMI) et matières premières (or, argent, pétrole). Affichage en USD, CHF ou EUR ; les indices en points."}},{"@type":"Question","name":"L'utilisation est-elle payante ?","acceptedAnswer":{"@type":"Answer","text":"Non. La page Marchés, le convertisseur et le calculateur de plan d'épargne sont gratuits et utilisables sans connexion, sans pixel de suivi."}}]}
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<header>
+  <div class="wrap">
+    <a href="/fr/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigation principale">
+      <a href="/preview.html" class="lk">Exemple</a>
+      <a href="/dossiers.html" class="lk">Dossiers</a>
+      <a href="/fr/maerkte.html" class="lk lk--keep" aria-current="page">Marchés</a>
+      <a href="/founding.html" class="lk">Premium</a>
+      <a href="https://abannews.beehiiv.com" class="lk" target="_blank" rel="noopener" title="Déjà Premium ? Connexion par lien magique">Connexion Pro</a>
+      <a href="/shop.html" class="lk">Boutique</a>
+      <span class="lang" role="group" aria-label="Language"><a href="/maerkte.html" hreflang="de">DE</a><a href="/en/maerkte.html" hreflang="en">EN</a><a href="/fr/maerkte.html" class="on" aria-current="page">FR</a></span>
+      <a href="#signup" class="btn btn--amber btn--sm">S'abonner gratuitement</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/fr/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Argent &amp; IA : tous les thèmes, calculateurs &amp; vérifications</a></p>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="pill"><span class="pulse"></span> En direct · la crypto se met à jour dans le navigateur</span>
+      <h1>Marchés — <span class="hl">crypto &amp; actions</span> d'un seul coup d'œil.</h1>
+      <p class="lead">Cours en direct, actualité financière récente et un sentiment IA expérimental par valeur — mis en contexte honnêtement, sans hype. Pour que vous compreniez le marché, pas seulement les gros titres.</p>
+      <p class="disclaimer">⚠️ Aucun conseil en investissement. Cette page met en contexte des données publiquement disponibles et ne remplace pas un conseil individuel. Le sentiment IA est expérimental et peut se tromper. Les marchés — surtout la crypto — sont très volatils ; vous pouvez perdre la totalité de l'argent investi.</p>
+    </div>
+  </section>
+
+  <!-- TICKER EN DIRECT -->
+  <div class="ticker" aria-label="Ticker de cours en direct">
+    <div class="ticker-track" id="tickerTrack"><span class="tk" style="color:var(--muted)">Chargement du ticker …</span></div>
+  </div>
+
+  <!-- APERÇU DU MARCHÉ -->
+  <section class="sec" style="padding-top:1rem">
+    <div class="wrap">
+      <span class="eyebrow">Aperçu en direct</span>
+      <h2>Aperçu du marché</h2>
+      <p class="sub">42 valeurs issues de la crypto, des actions, des ETF, des indices &amp; des matières premières. La crypto se met à jour en direct dans le navigateur ; le reste provient du dernier passage automatique (variation par rapport à la clôture de la veille).</p>
+      <div class="ovbar">
+        <p class="updated" id="lastUpdated">Chargement des données …</p>
+        <div class="curswitch" id="curSel" role="group" aria-label="Choisir la devise">
+          <button type="button" data-cur="usd" class="on" aria-pressed="true">USD</button>
+          <button type="button" data-cur="chf" aria-pressed="false">CHF</button>
+          <button type="button" data-cur="eur" aria-pressed="false">EUR</button>
+        </div>
+      </div>
+      <p class="disclaimer" id="staleWarn" style="display:none"></p>
+      <div class="mtabs" id="marketTabs" role="tablist" aria-label="Filtrer par catégorie"></div>
+      <div class="mtable-wrap">
+        <table class="mtable" aria-label="Aperçu du marché crypto et actions">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Suivre</span></th>
+              <th scope="col">Valeur</th>
+              <th scope="col" class="num">Prix</th>
+              <th scope="col" class="num">24&nbsp;h</th>
+              <th scope="col">Tendance&nbsp;(30&nbsp;j)</th>
+              <th scope="col">Sentiment IA</th>
+            </tr>
+          </thead>
+          <tbody id="marketRows">
+            <tr><td colspan="6" style="color:var(--muted)">Chargement des données de marché …</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="crosslink">Plus de contexte : <a href="/fr/ki-und-krypto-daten.html">IA &amp; crypto sobrement en chiffres →</a> (consommation d'énergie, réalité du trading par IA, règles fiscales DACH).</p>
+    </div>
+  </section>
+
+  <!-- SENTIMENT DU MARCHÉ -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">D'un seul coup d'œil</span>
+      <h2>Sentiment du marché</h2>
+      <p class="sub">Sentiment IA agrégé sur toutes les valeurs et les plus grands mouvements du jour.</p>
+      <div class="mood">
+        <div class="moodcard">
+          <h3>Répartition du sentiment</h3>
+          <div class="moodbar" id="moodMeter" aria-hidden="true"></div>
+          <p class="moodsum" id="moodSummary">—</p>
+        </div>
+        <div class="moodcard">
+          <h3>Plus grands mouvements (24 h)</h3>
+          <div class="movers">
+            <div class="mover"><span class="ml">📈 Gagnant</span><span id="topGainer">—</span></div>
+            <div class="mover"><span class="ml">📉 Perdant</span><span id="topLoser">—</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <h3 style="margin:0 0 8px">3D : mouvements du jour</h3>
+        <div style="border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
+          <canvas id="mkt-chart" data-aban3d data-shape="bars" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:220px;touch-action:none" aria-label="Diagramme 3D des variations sur 24 heures"></canvas>
+        </div>
+        <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Variation en direct sur 24 h (%) des principales valeurs — cours réels, haut = hausse, bas = baisse. Aucun conseil en investissement.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  /* Barres 3D à partir de données de marché réelles (fournies par markets.js). */
+  (function () {
+    var ct = null;
+    window.abanMarketsChart = function (assets) {
+      if (!assets || !assets.length) return;
+      var arr = assets.filter(function (a) { return typeof a.change_24h === "number" && isFinite(a.change_24h); })
+                      .slice(0, 14).map(function (a) { return Math.round(a.change_24h * 100) / 100; });
+      if (!arr.length) return;
+      var cv = document.getElementById("mkt-chart");
+      if (!cv) return;
+      clearTimeout(ct);
+      ct = setTimeout(function () {
+        cv.dataset.values = arr.join(",");
+        var n = cv.cloneNode(true); cv.parentNode.replaceChild(n, cv);
+        if (window.abanBoot3d) window.abanBoot3d(n);
+      }, 200);
+    };
+  })();
+  </script>
+
+  <!-- OUTILS -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Outils gratuits · sans connexion</span>
+      <h2>Calculateurs &amp; convertisseur</h2>
+      <p class="sub">Directement dans le navigateur — le convertisseur utilise les cours crypto en direct ci-dessus.</p>
+      <div class="tools">
+        <!-- Convertisseur en direct -->
+        <div class="tool">
+          <h3>💱 Convertisseur crypto/actions</h3>
+          <p class="thint">Quantité d'une valeur en dollars américains — et inversement. Cours en direct, immédiat.</p>
+          <div class="field">
+            <label for="convAsset">Valeur</label>
+            <select id="convAsset"></select>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="convAmount">Quantité</label>
+              <input id="convAmount" type="number" inputmode="decimal" value="1" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="convUsd" id="convCurLabel">Valeur en USD</label>
+              <input id="convUsd" type="number" inputmode="decimal" min="0" step="any">
+            </div>
+          </div>
+          <div class="tout" id="convOut">—</div>
+          <p class="tnote">Cours purement informatifs · aucun conseil en investissement.</p>
+        </div>
+        <!-- Calculateur de plan d'épargne -->
+        <div class="tool">
+          <h3>📈 Calculateur de plan d'épargne (exemple)</h3>
+          <p class="thint">Comment croît un montant épargné mensuellement avec un rendement supposé ?</p>
+          <div class="frow">
+            <div class="field">
+              <label for="spMonth">Par mois (CHF)</label>
+              <input id="spMonth" type="number" inputmode="decimal" value="200" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="spYears">Années</label>
+              <input id="spYears" type="number" inputmode="numeric" value="10" min="1" max="50" step="1">
+            </div>
+          </div>
+          <div class="field">
+            <label for="spRate">Rendement supposé p.a. (%)</label>
+            <input id="spRate" type="number" inputmode="decimal" value="6" min="-50" max="100" step="0.5">
+          </div>
+          <div class="tout" id="spOut">—</div>
+          <p class="tnote">Exemple de calcul à rendement constant — <strong>aucune promesse de rendement</strong>. Les vrais marchés fluctuent ; des pertes sont possibles.</p>
+        </div>
+        <!-- Calculateur de gains/pertes -->
+        <div class="tool">
+          <h3>🧾 Calculateur de gains/pertes</h3>
+          <p class="thint">Combien vaudrait votre entrée aujourd'hui ? Cours en direct face à votre prix d'achat.</p>
+          <div class="field">
+            <label for="plAsset">Valeur</label>
+            <select id="plAsset"></select>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label for="plUnits">Quantité</label>
+              <input id="plUnits" type="number" inputmode="decimal" value="1" min="0" step="any">
+            </div>
+            <div class="field">
+              <label for="plBuy" id="plBuyLabel">Prix d'achat par unité (USD)</label>
+              <input id="plBuy" type="number" inputmode="decimal" min="0" step="any">
+            </div>
+          </div>
+          <div class="tout" id="plOut">—</div>
+          <p class="tnote">Purement informatif · aucun conseil en investissement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNAUX IA -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Expérimental · mise en contexte IA</span>
+      <h2>Sentiment IA par valeur</h2>
+      <p class="sub">Une IA résume l'actualité récente par valeur en un sentiment — haussier, neutre ou baissier, avec une courte justification. <strong>Aucune recommandation d'achat ou de vente.</strong></p>
+      <div class="cards" id="signalCards">
+        <div class="card"><p class="crat">Chargement du sentiment IA …</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTUALITÉ -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Actualité financière</span>
+      <h2>Gros titres récents</h2>
+      <p class="sub">Sources réelles, agrégées automatiquement. Toujours recouper à la source.</p>
+      <ul class="news" id="newsFeed">
+        <li>Chargement de l'actualité …</li>
+      </ul>
+      <p class="sources" id="sources"></p>
+    </div>
+  </section>
+
+  <!-- EN SAVOIR PLUS / RÉSEAU -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">À lire ensuite</span>
+      <h2>En savoir plus</h2>
+      <p class="sub">Contexte, calculateurs et mise en perspective du réseau aban news.</p>
+      <div class="netgrid">
+        <a class="netcard" href="/fr/ki-und-krypto-daten.html"><span class="ni">🪙</span><h3>IA &amp; crypto en chiffres</h3><p>Panorama du secteur, consommation d'énergie, réalité du trading par IA, règles fiscales DACH.</p><span class="nr">Lire →</span></a>
+        <a class="netcard" href="/fr/finanz-rechner.html"><span class="ni">🧮</span><h3>Calculateur financier</h3><p>Taux horaire, réserves &amp; co. — calculé honnêtement, sans connexion.</p><span class="nr">Ouvrir →</span></a>
+        <a class="netcard" href="/fr/ki-spar-rechner.html"><span class="ni">💰</span><h3>Calculateur d'économies IA</h3><p>Combien de temps &amp; d'argent l'IA vous fait-elle économiser au quotidien ? Calculé honnêtement.</p><span class="nr">Ouvrir →</span></a>
+        <a class="netcard" href="/fr/ki-fuer-finanzberater.html"><span class="ni">📊</span><h3>L'IA pour les conseillers financiers</h3><p>Des workflows IA concrets pour le secteur de la finance &amp; du conseil.</p><span class="nr">Lire →</span></a>
+        <a class="netcard" href="/fr/ki-glossar.html"><span class="ni">📖</span><h3>Glossaire IA</h3><p>Les termes expliqués honnêtement — en clair &amp; avec un test anti-hype.</p><span class="nr">Consulter →</span></a>
+        <a class="netcard" href="/dossiers.html"><span class="ni">🗂️</span><h3>Dossiers thématiques</h3><p>La newsletter, regroupée par thème — gratuit, sans inscription.</p><span class="nr">Parcourir →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (Evergreen / SEO) -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions fréquentes sur les données Marchés</h2>
+      <div class="mfaq">
+        <details>
+          <summary>Les cours sont-ils réels et à jour ?</summary>
+          <p>Oui. Les cours crypto se mettent à jour en direct dans votre navigateur via l'API CoinGecko. Les cours des actions, l'actualité financière et le sentiment IA sont actualisés automatiquement plusieurs fois par jour à partir de sources publiques (Yahoo Finance, CoinGecko, flux RSS sérieux). Toutes les sources sont liées.</p>
+        </details>
+        <details>
+          <summary>Est-ce un conseil en investissement ?</summary>
+          <p>Non. Cette page met en contexte des données publiquement disponibles et n'est expressément <strong>pas un conseil en investissement, fiscal ou financier</strong>. Les marchés — surtout la crypto — sont très volatils ; vous pouvez perdre la totalité de l'argent investi. Vous prenez vos décisions sous votre propre responsabilité.</p>
+        </details>
+        <details>
+          <summary>Que signifie le « sentiment IA » ?</summary>
+          <p>Une IA résume l'actualité récente par valeur en un sentiment — haussier, neutre ou baissier — avec une courte justification. C'est une <strong>mise en contexte expérimentale, pas une recommandation d'achat ou de vente</strong> et elle peut se tromper.</p>
+        </details>
+        <details>
+          <summary>Quelles valeurs et quelles devises sont affichées ?</summary>
+          <p>Actuellement <strong>22 valeurs</strong> en quatre catégories : crypto (dont Bitcoin, Ethereum, Solana, XRP), actions (dont NVIDIA, Apple, Microsoft, Tesla, Amazon), indices (S&amp;P 500, Nasdaq, DAX, SMI) et matières premières (or, argent, pétrole). Vous pouvez basculer l'affichage entre <strong>USD, CHF et EUR</strong> (taux de référence BCE) ; les indices sont affichés en points.</p>
+        </details>
+        <details>
+          <summary>L'utilisation est-elle payante ?</summary>
+          <p>Non. La page Marchés, le convertisseur et le calculateur de plan d'épargne sont gratuits et utilisables sans connexion — directement dans le navigateur, sans pixel de suivi.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABONNEMENT / SUIVRE -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow">Rester informé</span>
+      <h2>S'abonner aux Marchés</h2>
+      <p class="sub">Pas de connexion, pas de spam — choisissez votre canal.</p>
+      <div class="abo">
+        <div class="abocard">
+          <div class="ico">📲</div>
+          <h3>Chaque jour par Telegram</h3>
+          <p>Digest de marché avec cours, mouvement sur 24 h &amp; sentiment IA — 1×/jour, automatique.</p>
+          <a class="btn btn--amber" href="https://t.me/abannews" target="_blank" rel="noopener">Suivre sur Telegram →</a>
+        </div>
+        <div class="abocard">
+          <div class="ico">📬</div>
+          <h3>Newsletter de 5 minutes</h3>
+          <p>Du lundi au vendredi à 7h30 : IA, tech &amp; économie mises en contexte honnêtement — gratuit.</p>
+          <a class="btn btn--ghost" href="#signup">S'abonner gratuitement →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDEAU CTA -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="band">
+        <h2>Comprendre les marchés au lieu de courir après</h2>
+        <p>Chaque jour ouvré à 7h30, le briefing de 5 minutes d'aban news — IA, tech &amp; économie mises en contexte honnêtement.</p>
+        <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
+          <input type="email" name="email" placeholder="vous@mail.fr" required autocomplete="email" inputmode="email" aria-label="Adresse e-mail">
+          <button type="submit" class="btn btn--amber">S'abonner gratuitement →</button>
+        </form>
+        <p class="fine">Conforme RGPD · double opt-in · désabonnement en 1 clic · pas de spam.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<section style="max-width:760px;margin:26px auto 0;padding:0 20px"><h2 style="font-size:1.15rem;text-align:center;margin-bottom:12px">Plus autour de l'IA &amp; des marchés</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px"><a href="/trading-tipps.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Conseils de trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Les 10 règles honnêtes qui vous protègent des erreurs coûteuses</span></a><a href="/fr/krypto-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Crypto pour débutants →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Bitcoin &amp; Co. expliqué honnêtement — achat, risques, protection</span></a><a href="/fr/etf-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">ETF pour débutants →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">La voie honnête et ennuyeuse — large, abordable, sans stock-picking</span></a><a href="/sparplan-statt-trading.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Plan d'épargne plutôt que trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Pourquoi l'ennuyeux gagne : intérêts composés, cost-average, discipline</span></a><a href="/fr/ki-aktien-hype-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Actions IA : test anti-hype →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">7 questions : distinguer la vraie IA de l'étiquette « IA »</span></a><a href="/fr/ki-betrug-scam-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Fraude IA & test anti-arnaque →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Repérer les investissements deepfake & faux bots de trading</span></a><a href="/fr/ki-glossar.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Glossaire IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Sentiment IA, LLM, hallucination &amp; co. expliqués honnêtement</span></a><a href="/ki-hype-detektor.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Détecteur de hype IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Démasquer le hype marché/tech dans un texte</span></a><a href="/fr/ki-tool-vergleich.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Comparatifs d'outils IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">197 duels honnêtes X-contre-Y</span></a><a href="/fr/welche-ki-fuer-was.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Trouveur d'outils IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">175 outils par tâche &amp; budget</span></a></div></section>
+<footer>
+  <div class="wrap">
+    <div class="footcols">
+      <div>
+        <a href="/fr/" class="brand" style="margin-bottom:.6rem"><span class="dot"></span> aban news</a>
+        <p style="color:var(--muted);font-size:.9rem;margin:.2rem 0 0;max-width:30ch">Newsletter IA quotidienne pour les professionnels de la zone DACH. Honnête, sans hype — curatée en Suisse.</p>
+      </div>
+      <div><h4>Newsletter</h4><a href="#signup">S'abonner</a><a href="/newsletter.html">Page newsletter</a><a href="/preview.html">Numéro exemple</a><a href="/archive/">Archive</a><a href="/dossiers.html">Dossiers thématiques</a><a href="/founding.html">Premium</a></div>
+      <div><h4>Tout &amp; offres</h4><a href="/angebote.html">Offres &amp; prix</a><a href="/texte-service.html">Service de rédaction</a><a href="/fuer-verbaende.html">Pour les fédérations (marque blanche)</a><a href="/reels">Reels IA</a><a href="/ki-sichtbarkeit.html">Être trouvé par l'IA</a><a href="/ki-compliance.html">Conformité IA</a></div>
+      <div><h4>Plus</h4><a href="/fr/maerkte.html">Marchés</a><a href="/fr/ki-und-krypto-daten.html">IA &amp; crypto en chiffres</a><a href="/fr/ki-werkzeug.html">Outil IA</a><a href="/fr/welche-ki-fuer-was.html">Quelle IA pour quoi ?</a><a href="/fr/ki-glossar.html">Glossaire IA</a><a href="/fr/ki-spar-rechner.html">Calculateur d'économies IA</a><a href="/ki-hype-detektor.html">Détecteur de hype IA</a><a href="/fr/ki-prompt-checker.html">Améliorateur de prompts</a><a href="/fr/online-tools.html">Tous les outils gratuits</a><a href="/shop.html">Boutique</a><a href="/fr/ueber-aban.html">À propos d'aban</a></div>
+      <div><h4>Mentions légales</h4><a href="/impressum.html">Mentions légales</a><a href="/datenschutz.html">Confidentialité</a></div>
+    </div>
+    <div class="footbar">
+      <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
+      <span class="footbar-links"><a href="/impressum.html">Mentions légales</a><a href="/datenschutz.html">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
+<script defer src="/js/aban3d.js"></script>
+<script defer src="/js/markets.js"></script>
+<script defer src="/js/analytics.js"></script>
+<script defer src="/js/assistant.js"></script>
+<script defer src="/js/announce.js"></script>
+<script defer src="/js/lang-suggest.js"></script>
+</body>
+</html>
