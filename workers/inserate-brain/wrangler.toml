@@ -12,7 +12,7 @@ crons = ["0 * * * *"]
 
 [[kv_namespaces]]
 binding = "INS_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "a7595b320f774fffa5aa75c4cde8719c"
 
 # Secrets per CLI setzen (NICHT hier eintragen):
 #   npx wrangler secret put ADMIN_TOKEN         # gleicher Wert wie beim Pages-Projekt -> zählt offene Freigaben
