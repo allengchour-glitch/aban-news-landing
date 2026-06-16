@@ -89,6 +89,11 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 .ffield{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#f8f5ef;font-family:inherit;font-size:.9rem}
 .ffield:focus{outline:0;border-color:var(--amber);background:#fff}
 :focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+@keyframes shmr{0%{background-position:-300px 0}100%{background-position:300px 0}}
+.skl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px}
+.skl .ph,.skl .ln{background:linear-gradient(90deg,#ece6da 25%,#f6f2ea 50%,#ece6da 75%);background-size:600px 100%;animation:shmr 1.2s infinite}
+.skl .ph{aspect-ratio:16/10;border-radius:10px;margin-bottom:11px}
+.skl .ln{height:13px;border-radius:6px;margin-bottom:9px}
 </style>
 </head>
 <body>
@@ -172,6 +177,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
   var curArt="",curModus="",raw=[];
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function skeleton(){grid.innerHTML=Array(7).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:50%"></div><div class="ln" style="width:92%"></div></div>'}).join("");statusEl.hidden=true;}
   // Schweizer Preis (CHF) aus Freitext: "CHF 1'850.–", "1850.-", "Fr. 2'400" -> 1850 / 2400
   function chfNum(p){var s=String(p||"").replace(/['’\s]/g,"");var m=s.match(/(\d{2,})(?:[.,]\-)?/);return m?parseInt(m[1],10):NaN}
   // Zimmerzahl aus Titel/Beschreibung: "3.5 Zimmer", "4 Zi", "2½"
@@ -228,7 +234,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   }
   function load(){
     var q=($("#q").value.trim()+" "+curArt+" "+curModus).trim();
-    cntEl.textContent="Lade …";grid.innerHTML="";statusEl.hidden=true;
+    cntEl.textContent="Lade …";skeleton();
     fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent("Immobilien")).then(function(r){return r.json()}).then(function(d){
       if(d.demo){grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="<div style=\"max-width:440px;margin:0 auto;text-align:center\"><div style=\"font-size:2rem\">🏠</div><h3 style=\"margin:.3rem 0;color:#1f2937\">Noch keine Immobilien — sei der/die Erste!</h3><p style=\"color:#6b7280;margin-bottom:14px\">Dieser Bereich ist neu. Inseriere deine Wohnung, dein Haus oder WG-Zimmer kostenlos — oder stöbere solange in den Bereichen mit Live-Angeboten.</p><a href=\"/inserat-aufgeben.html\" style=\"display:inline-block;background:#b45309;color:#fff;border-radius:22px;padding:11px 22px;font-weight:800;text-decoration:none\">+ Kostenlos inserieren</a><p style=\"margin-top:14px;font-size:.9rem\">Live stöbern: <a href=\"/auto-suche.html\">🚗 Auto</a> · <a href=\"/angebote-suche.html\">🛍️ Angebote</a> · <a href=\"/stellenangebote.html\">💼 Jobs</a></p></div>";cntEl.textContent="";return}
       raw=d.items||[];render(raw);
