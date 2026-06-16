@@ -505,6 +505,11 @@
     "acquisition_2026": [
       "Ziel 1. Kunde, gratis: (1) Micro-Influencer-Seeding <25k CH (Modash/Favikon) — Gratis-Set gegen Reel/Story. (2) Google Business Profile (lokales SEO). (3) Reels+Giveaway getimt auf Open-Air-Wochenende. (4) Nischen-FB-Gruppen + r/Switzerland hilfreich seeden. (5) Referral Gib-10-krieg-10 auf Bestätigungsseite+Klaviyo.",
       "Reels/Short-Form schlagen Static in Reichweite+Conversion. Giveaway-for-UGC treibt organische Fürsprache."
+    ],
+    "kategorisierung": [
+      "BEIM ANLEGEN immer pruefen ob das Produkt in die richtige Sub-Collection faellt. Smart-Collections sortieren teils per TITLE-CONTAINS (brittle!) — Ohrhaenger/Creolen/Ohrstecker matchen NICHT TITLE enthaelt Ohrring. Loesung: Sub-Collection-Regeln disjunktiv mit TAG-Match ergaenzen (additiv, entfernt nichts).",
+      "2026-06-16 FIX: 💎 Ohrringe (sub-ohrringe, 688563650945) Regel erweitert auf disjunktiv [TITLE~Ohrring, TITLE~Ohrhaenger, TITLE~Creolen, TITLE~Ohrstecker, TAG=ohrringe]. Neue Produkte mit Tag ohrringe landen jetzt korrekt. Gleiche Brittleness bei anderen Sub-Collections moeglich (Armband/Kette/Ring) — bei neuen Stuecken Collection-Mitgliedschaft verifizieren.",
+      "Verifiziert 2026-06-16: Caps→caps-hute, Armband→sub-armbaender, Halskette→sub-halsketten, Ohrhaenger→sub-ohrringe, wasserfest→wasserfester-schmuck, alle in damen-mode/neu/geschenke. Sortierung sauber."
     ]
   },
   "decisions": [
