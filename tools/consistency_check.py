@@ -6,7 +6,7 @@ Fängt genau die Drifts ab, die wir gerade von Hand finden mussten (EN €99 sta
 falsche Runway-Zahl, widersprüchliche Garantie-Fristen). Prüft die ausgelieferte
 Haupt-Website gegen die kanonischen Werte und schreibt reports/CONSISTENCY.md.
 
-Kanonisch:  Founding €69 einmalig · Premium €9/Monat · €89/Jahr · 30 Tage Geld-zurück.
+Kanonisch:  Founding €69 einmalig · aban Pro €19/Monat · €190/Jahr · 30 Tage Geld-zurück.
 
     python3 tools/consistency_check.py            # Report, Exit 0
     python3 tools/consistency_check.py --strict    # Exit 1 bei Abweichung (CI)
@@ -21,7 +21,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 OUT = REPO / "reports" / "CONSISTENCY.md"
 
-CANON = {"founding": 69, "month": 9, "year": 89, "moneyback_days": 30}
+CANON = {"founding": 69, "month": 19, "year": 190, "moneyback_days": 30}
 # Eigene Produkte/interne Ops-Docs mit eigener Preis-/Garantie-Logik → nicht prüfen.
 EXCLUDE = ("/dist/", "node_modules", "/video-prototypes/", "/aban-studio/", "/dropship/",
            "/kurs.html", "/launch-manual.html", "/ebook.html", "/buch.html")
