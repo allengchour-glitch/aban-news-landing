@@ -54,6 +54,18 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ GEZIELTE FRISCHE NISCHEN (hohe Offsets): +28 Produkte, 0 Dubletten (Summe ~421):**
+- 🌻 Garten +11 (Offset 80): Sonnensegel/Sonnenschirm (DKD), Blumentöpfe (Elho/DKD/Keramik), Sichtschutz-Netz (Fun&Go),
+  Drucksprüher (Progarden), LED-Strahler (EDM), Grill-Schutzhülle (Altadex), Metall-Beistelltisch.
+- 🏠 Haushalt/Küche +17 (Offset 80): Geschirr-/Glas-Sets (Borgonovo/Bormioli/Vivalto/Quid/Arcoroc), Backform/Spritzbeutel/
+  Tischset (Kinvara), Elektrogrill (Esperanza), Wandspiegel (Gift Decor), Vorhang (Home ESPRIT), Kerzen (Algon),
+  LED-Lichterkette, Seitenschläferkissen, Leinwandbild, Star-Wars-Party-Set.
+- **✅ BESTÄTIGT (Methode für künftige Sessions):** Bei Sättigung in Stamm-Kategorien → **HOHE Offsets (80+) in weniger
+  gefüllten Kategorien (Garten/Haushalt)** liefern wieder 0 % Dubletten. Filter weiterhin streng: Chemie (Dünger/Repellent/
+  Pool-Mittel/Holzpflege) + Ersatzteile (Griffe/Düsen/Ofenblech) raus. Unbranded → vendor „Garten & Deko"/„Haushalt"/„Deko",
+  kein `marke`-Tag; branded → vendor=Marke + `marke`.
+- Methode unverändert (productSet, EAN-Barcode, 2 Bilder, 6 Kanäle, tracked:false/CONTINUE).
+
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ FÜLL-OFFENSIVE FORTGESETZT: +50 Produkte (Summe jetzt ~393)** — User „füll alles", autonom:
 - 🐾 Haustier +15 (Trixie: Betten/Leinen/Näpfe/Plüsch- & Kauspielzeug/Kleintierhaus/Vogelfutterspender; 3 Tierfutter übersprungen).
 - 👟 Schuhe +12 (Nike/Adidas/Puma/Converse/Reebok/Hi-Tec/Vans — Damen/Herren/Kinder; Sneaker/Tennis/Wander/Bade; 6 Dubletten übersprungen).
