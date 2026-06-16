@@ -143,6 +143,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     </div>
     <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
     <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
+    <div id="portals" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px"></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
   </section>
@@ -215,10 +216,14 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var s=$("#sort").value;if(s&&s!=="rel")p+="&sort="+encodeURIComponent(s);
     return p;
   }
+  function renderPortals(){var box=$("#portals");if(!box)return;var q=$("#q").value.trim(),t=encodeURIComponent(q||"");
+    var L=[{n:"🟡 Tutti",u:q?"https://www.tutti.ch/de/q/"+t:"https://www.tutti.ch/de"},{n:"🟢 Anibis",u:q?"https://www.anibis.ch/de/q/"+t:"https://www.anibis.ch/de"},{n:"🔵 Ricardo",u:q?"https://www.ricardo.ch/de/s/"+t:"https://www.ricardo.ch/de"},{n:"🛒 eBay",u:q?"https://www.ebay.ch/sch/i.html?_nkw="+t:"https://www.ebay.ch"},{n:"🟣 Galaxus",u:q?"https://www.galaxus.ch/search?q="+t:"https://www.galaxus.ch"}];
+    box.innerHTML='<span style="font-size:.86rem;font-weight:800;width:100%">🇨🇭 Auch auf Schweizer Portalen suchen'+(q?' nach „'+esc(q)+'“':'')+':</span>'+L.map(function(p){return '<a href="'+esc(p.u)+'" target="_blank" rel="noopener nofollow" style="font-size:.83rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:6px 11px;text-decoration:none">'+esc(p.n)+' →</a>'}).join("");}
   function search(){
     var q=$("#q").value.trim();
     var cat=document.querySelector('input[name="cat"]:checked');
     var term=q||(cat&&cat.value)||"";try{saveRecent(term)}catch(e){}
+    renderPortals();
     cntEl.textContent="Suche „"+(term||"Angebote")+"“ …";skeleton();
     fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
       badge.hidden=!d.demo;if(d.currency){var cl=document.querySelector(".curlbl");if(cl)cl.textContent=d.currency}raw=d.items||[];render();
