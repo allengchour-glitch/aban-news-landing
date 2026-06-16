@@ -134,17 +134,24 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       </div>
     </div>
     <div class="fcard"><h4>Art</h4><div id="cats"></div></div>
-    <div class="fcard"><h4>Zimmer (mind.)</h4>
-      <select id="zimmer" class="ffield"><option value="">egal</option><option value="1">1+</option><option value="1.5">1.5+</option><option value="2">2+</option><option value="2.5">2.5+</option><option value="3">3+</option><option value="3.5">3.5+</option><option value="4">4+</option><option value="4.5">4.5+</option><option value="5">5+</option></select>
+    <div class="fcard"><h4>Zimmer</h4>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="zimmer" class="ffield"><option value="">von</option><option value="1">1</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="3.5">3.5</option><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="6">6</option></select>
+        <span>–</span>
+        <select id="zimmerBis" class="ffield"><option value="">bis</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="3.5">3.5</option><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="6">6</option><option value="8">8+</option></select>
+      </div>
     </div>
-    <div class="fcard"><h4>Wohnfläche (ab m²)</h4>
-      <input id="amin" class="ffield" type="number" min="0" placeholder="z. B. 60" style="width:100%">
+    <div class="fcard"><h4>Wohnfläche (m²)</h4>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="amin" class="ffield"><option value="">von</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="60">60</option><option value="80">80</option><option value="100">100</option><option value="120">120</option><option value="150">150</option></select>
+        <span>–</span>
+        <select id="amax" class="ffield"><option value="">bis</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option><option value="120">120</option><option value="150">150</option><option value="200">200</option><option value="300">300+</option></select>
+      </div>
     </div>
     <div class="fcard"><h4>Preis (CHF)</h4>
-      <div style="display:flex;gap:8px;align-items:center"><input id="pmin" class="ffield" type="number" min="0" placeholder="von"><span>–</span><input id="pmax" class="ffield" type="number" min="0" placeholder="bis"></div>
+      <div style="display:flex;gap:8px;align-items:center"><select id="pmin" class="ffield"><option value="">von</option></select><span>–</span><select id="pmax" class="ffield"><option value="">bis</option></select></div>
       <p style="font-size:.72rem;color:var(--muted);margin-top:6px">Miete pro Monat bzw. Kaufpreis</p>
     </div>
-    <div class="fcard"><h4>Preisklasse (ankreuzen)</h4><div id="pklbox"></div></div>
     <div class="fcard"><h4>Region (ankreuzen)</h4><div id="regs" style="display:flex;flex-wrap:wrap;gap:7px"></div></div>
     <div class="fcard"><h4>Ausstattung (ankreuzen)</h4><div id="feats"></div></div>
     <div class="fcard"><h4>Auch suchen auf</h4><div class="carlinks" id="immoLinks"></div></div>
@@ -204,14 +211,16 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   (function(){var r=$("#regs");if(!r)return;var st='display:inline-flex;align-items:center;gap:6px;background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:5px 10px;font-size:.8rem;font-weight:600;color:var(--ink2);cursor:pointer';
     r.innerHTML=REGIONS.map(function(c){return '<label style="'+st+'"><input type="checkbox" class="reg" value="'+esc(c)+'" style="accent-color:var(--amber-dk);cursor:pointer">'+esc(c)+'</label>'}).join("")})();
   function regSet(){return Array.prototype.map.call(document.querySelectorAll(".reg:checked"),function(c){return c.value.toLowerCase()})}
-  // Preisklassen — schlau je nach Modus (Miete pro Monat vs. Kaufpreis)
-  function renderPkl(){var box=$("#pklbox");if(!box)return;
-    var R=curModus==="kauf"
-      ?[["unter 500'000",0,500000],["500'000–1 Mio",500000,1000000],["1–1,5 Mio",1000000,1500000],["über 1,5 Mio",1500000,1e12]]
-      :[["unter 1'000",0,1000],["1'000–2'000",1000,2000],["2'000–3'500",2000,3500],["über 3'500",3500,1e12]];
-    var suf=curModus==="kauf"?" CHF":" CHF/Mt";
-    box.innerHTML=R.map(function(r){return '<label class="opt"><input type="checkbox" class="pkl" data-lo="'+r[1]+'" data-hi="'+r[2]+'">'+r[0]+suf+'</label>'}).join("");}
-  function pklSet(){return Array.prototype.map.call(document.querySelectorAll(".pkl:checked"),function(c){return [parseFloat(c.dataset.lo),parseFloat(c.dataset.hi)]})}
+  // Preis-Dropdowns — schlau je nach Modus (Miete pro Monat vs. Kaufpreis)
+  function renderPriceOptions(){var pmin=$("#pmin"),pmax=$("#pmax");if(!pmin||!pmax)return;
+    var vals=curModus==="kauf"
+      ?[100000,250000,500000,750000,1000000,1250000,1500000,2000000,3000000]
+      :[500,800,1000,1200,1500,1800,2000,2500,3000,4000,5000];
+    var c1=pmin.value,c2=pmax.value;
+    var opt=function(v){return '<option value="'+v+'">'+v.toLocaleString("de-CH")+'</option>'};
+    pmin.innerHTML='<option value="">von</option>'+vals.map(opt).join("");
+    pmax.innerHTML='<option value="">bis</option>'+vals.map(opt).join("");
+    pmin.value=c1;pmax.value=c2;}
   // Portal-Launcher: trägt Ort/Modus/Suchbegriff mit, wo das Portal es unterstützt
   function immoQuery(){return [($("#loc").value.trim()),($("#q").value.trim()),(curArt&&curArt!=="wohnung miete"&&curArt!=="wohnung kauf"?curArt.split(" ")[0]:"")].filter(Boolean).join(" ").trim()}
   function renderImmoLinks(){var el=$("#immoLinks");if(!el)return;var term=immoQuery(),t=encodeURIComponent(term||"Wohnung");
@@ -228,15 +237,17 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(regs.length)items=items.filter(function(it){var h=(String(it.plz||"")+" "+String(it.ort||"")).toLowerCase();return regs.some(function(r){return h.indexOf(r)>=0})});
     var zi=parseFloat($("#zimmer").value);
     if(!isNaN(zi))items=items.filter(function(it){var r=roomsOf(it);return isNaN(r)?false:r>=zi});
+    var ziB=parseFloat($("#zimmerBis").value);
+    if(!isNaN(ziB))items=items.filter(function(it){var r=roomsOf(it);return isNaN(r)?false:r<=ziB});
     var am=parseFloat($("#amin").value);
     if(!isNaN(am))items=items.filter(function(it){var a=m2Of(it);return isNaN(a)?false:a>=am});
+    var amB=parseFloat($("#amax").value);
+    if(!isNaN(amB))items=items.filter(function(it){var a=m2Of(it);return isNaN(a)?false:a<=amB});
     var feats=activeFeats();
     if(feats.length)items=items.filter(function(it){var h=(String(it.titel||"")+" "+String(it.beschreibung||"")).toLowerCase();return feats.every(function(rx){return new RegExp(rx,"i").test(h)})});
     var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
     if(!isNaN(lo))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n>=lo});
     if(!isNaN(hi))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n<=hi});
-    var pkl=pklSet();
-    if(pkl.length)items=items.filter(function(it){var n=chfNum(it.preis);if(isNaN(n))return false;return pkl.some(function(r){return n>=r[0]&&n<r[1]})});
     var sort=$("#sort")?$("#sort").value:"rel";
     if(sort==="pasc"||sort==="pdesc"){items.sort(function(a,b){var x=chfNum(a.preis),y=chfNum(b.preis);if(isNaN(x))return 1;if(isNaN(y))return -1;return sort==="pasc"?x-y:y-x})}
     else if(sort==="rooms"){items.sort(function(a,b){var x=roomsOf(a),y=roomsOf(b);if(isNaN(x))return 1;if(isNaN(y))return -1;return y-x})}
@@ -250,11 +261,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var loc=$("#loc").value.trim();if(loc)add("📍 "+loc,function(){$("#loc").value="";render(raw)});
     if(curModus)add(curModus==="miete"?"Mieten":"Kaufen",function(){curModus="";Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});load()});
     if(curArt){var lbl=curArt;ARTEN.forEach(function(a){if(a[1]===curArt)lbl=a[0]});add("🏠 "+lbl,function(){curArt="";var f=document.querySelector('input[name="art"]');if(f)f.checked=true;load()})}
-    var zi=$("#zimmer").value;if(zi)add(zi+"+ Zimmer",function(){$("#zimmer").value="";render(raw)});
-    var am=$("#amin").value;if(am)add("ab "+am+" m²",function(){$("#amin").value="";render(raw)});
+    var ziV=$("#zimmer").value,ziB=$("#zimmerBis").value;if(ziV||ziB)add((ziV||"0")+"–"+(ziB||"∞")+" Zi",function(){$("#zimmer").value="";$("#zimmerBis").value="";render(raw)});
+    var amV=$("#amin").value,amB=$("#amax").value;if(amV||amB)add((amV||"0")+"–"+(amB||"∞")+" m²",function(){$("#amin").value="";$("#amax").value="";render(raw)});
     var lo=$("#pmin").value,hi=$("#pmax").value;if(lo||hi)add("CHF "+(lo||"0")+"–"+(hi||"∞"),function(){$("#pmin").value="";$("#pmax").value="";render(raw)});
     Array.prototype.forEach.call(document.querySelectorAll(".reg:checked"),function(cb){add("📍 "+cb.value,function(){cb.checked=false;render(raw)})});
-    Array.prototype.forEach.call(document.querySelectorAll(".pkl:checked"),function(cb){add("💰 "+cb.parentNode.textContent.trim(),function(){cb.checked=false;render(raw)})});
     Array.prototype.forEach.call(document.querySelectorAll(".feat:checked"),function(cb){var lbl=cb.parentNode.textContent.trim();add("✓ "+lbl,function(){cb.checked=false;render(raw)})});
     if(!parts.length){c.hidden=true;c.innerHTML="";return}
     c.hidden=false;
@@ -267,11 +277,12 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(curModus)p.set("modus",curModus);
     if(curArt)p.set("art",curArt);
     var zi=$("#zimmer").value;if(zi)p.set("zimmer",zi);
-    var am=$("#amin").value.trim();if(am)p.set("amin",am);
-    var pmin=$("#pmin").value.trim();if(pmin)p.set("pmin",pmin);var pmax=$("#pmax").value.trim();if(pmax)p.set("pmax",pmax);
+    var ziB=$("#zimmerBis").value;if(ziB)p.set("zimmerBis",ziB);
+    var am=$("#amin").value;if(am)p.set("amin",am);
+    var amB=$("#amax").value;if(amB)p.set("amax",amB);
+    var pmin=$("#pmin").value;if(pmin)p.set("pmin",pmin);var pmax=$("#pmax").value;if(pmax)p.set("pmax",pmax);
     var feats=[];Array.prototype.forEach.call(document.querySelectorAll(".feat"),function(c,i){if(c.checked)feats.push(i)});if(feats.length)p.set("feat",feats.join(","));
     var reg=Array.prototype.map.call(document.querySelectorAll(".reg:checked"),function(c){return c.value});if(reg.length)p.set("reg",reg.join(","));
-    var pkl=Array.prototype.map.call(document.querySelectorAll(".pkl:checked"),function(c){return c.dataset.lo+"-"+c.dataset.hi});if(pkl.length)p.set("pkl",pkl.join(","));
     var s=$("#sort")?$("#sort").value:"rel";if(s&&s!=="rel")p.set("sort",s);
     var qs=p.toString();try{history.replaceState(null,"",qs?("?"+qs):location.pathname)}catch(e){}}
   function render(items){
@@ -300,24 +311,22 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#go").addEventListener("click",function(e){e.preventDefault();load()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
   $("#loc").addEventListener("input",function(){renderImmoLinks();render(raw)});
-  $("#zimmer").addEventListener("change",function(){render(raw)});
-  ["pmin","pmax","amin"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
+  ["zimmer","zimmerBis","amin","amax","pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("change",function(){render(raw)})});
   $("#feats").addEventListener("change",function(){render(raw)});
   $("#regs").addEventListener("change",function(){render(raw)});
-  $("#pklbox").addEventListener("change",function(){render(raw)});
   $("#sort").addEventListener("change",function(){render(raw)});
   $("#chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
     if(b.dataset.all){$("#reset").click();return}
     var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
   $("#modus").addEventListener("click",function(e){var b=e.target.closest(".mbtn");if(!b)return;
-    Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;renderPkl();renderImmoLinks();load()});
+    Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;$("#pmin").value="";$("#pmax").value="";renderPriceOptions();renderImmoLinks();load()});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#loc").value=a.dataset.loc;render(raw);window.scrollTo({top:0,behavior:"smooth"})});
   $("#cats").addEventListener("change",function(e){if(e.target.name==="art"){curArt=e.target.value;renderImmoLinks();load()}});
-  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#zimmer").value="";$("#amin").value="";$("#pmin").value="";$("#pmax").value="";if($("#sort"))$("#sort").value="rel";curArt="";curModus="";
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";["zimmer","zimmerBis","amin","amax","pmin","pmax"].forEach(function(id){if($("#"+id))$("#"+id).value=""});if($("#sort"))$("#sort").value="rel";curArt="";curModus="";
     var f=document.querySelector('input[name="art"]');if(f)f.checked=true;
     Array.prototype.forEach.call(document.querySelectorAll(".feat"),function(c){c.checked=false});
     Array.prototype.forEach.call(document.querySelectorAll(".reg"),function(c){c.checked=false});
-    Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});renderPkl();renderImmoLinks();load()});
+    Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});renderPriceOptions();renderImmoLinks();load()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
@@ -328,13 +337,14 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var um=sp.get("modus");if(um==="miete"||um==="kauf"){curModus=um;Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x){x.classList.toggle("on",x.dataset.m===um)})}
     var ua=sp.get("art");if(ua){curArt=ua;var ar=document.querySelector('input[name="art"][value="'+ua.replace(/"/g,'')+'"]');if(ar)ar.checked=true}
     if(sp.get("zimmer"))$("#zimmer").value=sp.get("zimmer");
+    if(sp.get("zimmerBis"))$("#zimmerBis").value=sp.get("zimmerBis");
     if(sp.get("amin"))$("#amin").value=sp.get("amin");
+    if(sp.get("amax"))$("#amax").value=sp.get("amax");
+    renderPriceOptions(); // Preis-Dropdowns passend zum (evtl. gesetzten) Modus, dann wiederherstellen
     if(sp.get("pmin"))$("#pmin").value=sp.get("pmin"); if(sp.get("pmax"))$("#pmax").value=sp.get("pmax");
     if(sp.get("sort")&&$("#sort"))$("#sort").value=sp.get("sort");
-    renderPkl(); // Preisklassen passend zum (evtl. gesetzten) Modus aufbauen, dann wiederherstellen
     var fi=(sp.get("feat")||"").split(",").filter(function(x){return x!==""});var feats=document.querySelectorAll(".feat");fi.forEach(function(ix){if(feats[+ix])feats[+ix].checked=true});
     var rg=(sp.get("reg")||"").split(",").filter(Boolean);if(rg.length)Array.prototype.forEach.call(document.querySelectorAll(".reg"),function(c){if(rg.indexOf(c.value)>=0)c.checked=true});
-    var pk=(sp.get("pkl")||"").split(",").filter(Boolean);if(pk.length)Array.prototype.forEach.call(document.querySelectorAll(".pkl"),function(c){if(pk.indexOf(c.dataset.lo+"-"+c.dataset.hi)>=0)c.checked=true});
   })();
   function savedLabel(){var q=$("#q").value.trim(),loc=$("#loc").value.trim(),parts=[];
     if(curModus)parts.push(curModus==="kauf"?"Kaufen":"Mieten");if(q)parts.push('"'+q+'"');if(loc)parts.push("📍"+loc);
