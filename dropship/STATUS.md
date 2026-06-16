@@ -3,8 +3,14 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
-## 🆕 2026-06-16 (AUTONOME KATALOG-FEED-POLITUR — ganzer Shop in die richtige Kategorie)
-- **🛠️ `automation/feed_polish.mjs` gebaut** (User „polish när ganzi produkt u ds söt scho i richtige kategorie si … aues outonom, e meisterwärk"): setzt **katalogweit** die richtige Shopify-Standard-Produktkategorie (→ Google-Kategorie auto) per Keyword-Mapping (productType+Titel, ~45 Regeln, alle GIDs verifiziert) + `mm-google-shopping` **condition=new** (alle), **gender/age_group** (Mode/Schmuck/Taschen).
+## ✅ 2026-06-16 (KATALOG-FEED-POLITUR LIVE DURCHGEZOGEN — ganzer Shop, 0 Fehler)
+- **🎉 GANZER KATALOG (6480 Produkt) live poliert** via Shopify-Bulk (eigener access_token, richtige App `ffe6c3a…`):
+  · **condition=new** auf **6480** + **gender/age_group** auf Mode (Google-Pflichtfelder) ✅
+  · **richtige Google-Kategorie** auf **3818** Produkte (516 waren schon ok; ~2146 exotische Typen ohne Mapping = nur condition) ✅
+  · **Farbe/Grösse/Material/Muster-Block** in **2032** Mode-Beschreibungen (Merchant-Report „Update product descriptions" gefixt) ✅
+  Verifiziert live (Herrenuhr→Armbanduhren, Sommerkleid→Kleider/female, Leinen-Hose→Material Leinen). Idempotent → re-run safe.
+- **🔑 Token-Saga gelöst (gemerkt in CLAUDE.md):** shpat_ tot seit 2026; client_credentials braucht **installierte** App (sonst app_not_installed); atkn untauglich; richtige Client-ID `ffe6c3a…` (Secret nur in luxe-secrets.ps1).
+- **🛠️ `automation/feed_polish.mjs` + `enrich_apparel_descriptions.mjs`** (für PC-Tagestask, idempotent): setzt **katalogweit** die richtige Shopify-Standard-Produktkategorie (→ Google-Kategorie auto) per Keyword-Mapping (productType+Titel, ~45 Regeln, alle GIDs verifiziert) + `mm-google-shopping` **condition=new** (alle), **gender/age_group** (Mode/Schmuck/Taschen).
 - **Robust:** idempotent (überspringt Polierte via condition-Metafeld), resümierbar, THROTTLED-Backoff, `MAX`/Lauf, `DRY=1`. Logik gegen echte productTypes getestet (Armbanduhr≠Armband-Bug gefixt).
 - **🤖 Autonom verdrahtet:** PC-Tagestask `run-follower-daily.ps1` **Step 8b** (MAX=800/Tag → ganzer Katalog über wenige Läufe). Braucht `SHOPIFY_CLIENT_ID/SECRET` in luxe-secrets.ps1 (Client-Credentials, wie reel-analytics).
 - **🤝 Koordination:** Bulk-Feed-Kategorie war „Taxonomie-Session-Revier" → auf User-Anweisung übernimmt das jetzt **CizQ6** (in SHARED-MEMORY angekündigt, kein Doppel-Setzen). Theme/Menü/Collections bleiben Taxonomie-/Theme-Session.

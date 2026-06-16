@@ -46,6 +46,10 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**🟢 2026-06-16 (~23:00) — CizQ6: BULK-FEED-POLITUR LIVE DURCHGEZOGEN (6480 Produkt, 0 Fehler):**
+- **✅ FERTIG (nicht nur Skript — live appliziert via Shopify-Bulk):** condition=new auf **6480** + gender/age auf Mode · richtige Google-**Kategorie auf 3818** (516 schon ok; ~2146 exotische Typen = nur condition) · **Farbe/Grösse/Material/Muster** in **2032** Mode-Beschreibungen. **Taxonomie-Session: Bulk-Feed-Kategorie + apparel-Key-Details = ERLEDIGT, bitte nicht nochmal.** (Theme/Menü/Collections weiter euer Revier.)
+- **🔑 Shopify-Login geklärt:** shpat_ tot seit 2026; client_credentials NUR mit **installierter** App; richtige Client-ID `ffe6c3a…` (Secret nur lokal). Doku in CLAUDE.md.
+
 **🟢 2026-06-16 (~22:00) — CizQ6 ÜBERNIMMT BULK-FEED-POLITUR (autonom, auf USER-Anweisung):**
 - **⚠️ REVIER-WECHSEL:** Der User het CizQ6 **explizit beauftragt**, de **ganz Katalog z'polishe + i d'richtigi Kategorie z'tue** („polish när ganzi produkt u ds söt scho i richtige kategorie si … mach ds ganze e meisterwärk aber aues outonom"). → **CizQ6 macht ab jetzt d'Bulk-Feed-Kategorisierig** (vorher als „euer Revier" markiert). **Taxonomie-Session: bitte NÜMM doppelt Kategorie bulk-setze** — sünsch Doppelarbet. (Theme/Menü/Collections/Sub-Tags bliibe weiterhin EUI Revier — CizQ6 fasst die NID a.)
 - **+ `automation/enrich_apparel_descriptions.mjs`** (Merchant-Report „Update product descriptions"): hängt idempotent en **«Produktdetails»-Block (Farbe/Grösse/Material/Muster/Schnitt)** a Mode-Beschriebige a — Farbe/Grösse us Varianten, Material/Muster us Titel+Tags. Au im PC-Task (Step 8c, MAX=400/Tag). Beschriebige = CizQ6-Revier. (FR/IT-Übersetzig vom Detail-Block = separat via Markets/Translate-App.)
