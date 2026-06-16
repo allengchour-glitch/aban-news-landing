@@ -3,6 +3,15 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (TIEFEN-ANALYSE — Traffic stürzt ab + Gehirn-Lehren)
+- **📉 TRAFFIC-ABSTURZ (Tagestrend 14T):** 02.06=237 · 03.06=**256** · 04.06=173 → dann Einbruch: 05.06=45 … 12.06=13 · 15.06=**7** · 16.06=12.
+  → Die 1.206/14T sind front-loaded; **die letzten Tage sind quasi tot (7–36/Tag).** Ursache: bezahlte TikTok-Kampagne pausiert + nur Organik
+  + Worker nicht redeployed (Posting-Kadenz gedrosselt) + GitHub-Actions-Sperre. **Reichweite kollabiert — das ist jetzt der akuteste Engpass NEBEN dem Checkout-Leck.**
+- **🧠 GEHIRN (auto.sh, kumulativ):** Hook-Rang nach echten Views: **mundart Ø795** ≫ preis_vergleich 367 > generisch 305 > preis 162 > frage_cta 51.
+  → **Mundart-Hooks dominieren — davon MEHR, „generisch" meiden.** TikTok: Views steigen, **0 Shares = hohle Reichweite/Decke** → Share-/Save-Trigger + UGC/Demo statt Produkt-Pans.
+- **📤 Autopost-Queue neu gebaut: 141 Posts** (95 Bild / 31 Reel / 15 Story, CH-weit, gelernte Captions + echte Preise) → `queue.json`. **Wirkt erst nach `wrangler deploy`.**
+- **🔑 Konsequenz Prioritäten:** (1) Reichweite RESTAURIEREN — Worker deployen (Organik-Kadenz) + Pixel/Kampagne (bezahlt) ; (2) Checkout-Leck (TWINT-Test) ; (3) Free Listings/SEO.
+
 ## 🆕 2026-06-16 (AUSWERTUNG 14T — WENDE: echte Checkout-Abbrüche gefunden!)
 - **Zahlen 14T:** 1.206 Sessions · **0 Bestellungen** · ABER **4 abgebrochene Checkouts** (CHF 71.90 / 43.00 / 69.00 / 69.00, + 1 älterer 129.90).
   → **Es ist NICHT (nur) Reichweite — echte Käufer kommen bis in den Checkout und brechen am LETZTEN Schritt ab.** Das ist neu/entscheidend.
