@@ -40,6 +40,13 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .searchbox button.go{background:var(--amber-dk);color:#fff;border:0;border-radius:11px;padding:13px 30px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap}
 .searchbox button.go:hover{background:#a04708}
 .note{max-width:1180px;margin:12px auto 0;padding:0 16px;font-size:.8rem;color:var(--muted)}
+.picker{max-width:1180px;margin:14px auto 0;padding:0 16px}
+.picker .pin{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.picker .plbl{font-size:.78rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.picker .pchips{display:flex;gap:8px;flex-wrap:wrap}
+.pchip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:7px 13px;font-size:.88rem;font-weight:700;color:var(--ink2);cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .12s}
+.pchip:hover{border-color:var(--amber);color:var(--amber-dk);background:var(--cream)}
+.pchip.on{background:var(--amber-dk);border-color:var(--amber-dk);color:#fff}
 .wrap{max-width:1180px;margin:16px auto;padding:0 16px;display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start}
 .sidebar{position:sticky;top:74px;display:flex;flex-direction:column;gap:14px}
 .fcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
@@ -107,6 +114,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <button class="go" id="go" type="submit">Inserate suchen</button>
   </form>
 </div></div>
+<div class="picker"><div class="pin">
+  <span class="plbl">Was suchst du?</span>
+  <div class="pchips" id="pchips"></div>
+</div></div>
 <p class="note">⚠️ Privat-Inserate von Nutzern. Keine illegalen oder anstößigen Inhalte. Etwas melden? <a href="mailto:info@abannews.com?subject=Inserat%20melden">info@abannews.com</a> · <a href="/nutzungsbedingungen.html">Nutzungsbedingungen</a></p>
 
 <div class="wrap">
@@ -114,6 +125,11 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
     <div class="fcard"><a class="bigcta" href="/inserat-aufgeben.html">+ Inserat aufgeben</a>
       <p style="font-size:.82rem;color:var(--muted);margin-top:9px;text-align:center">Kostenlos &amp; in 1 Minute. Wird vor Veröffentlichung kurz geprüft.</p></div>
+    <div class="fcard" id="portalCard"><h4>🇨🇭 Auch auf CH-Portalen suchen</h4>
+      <p style="font-size:.8rem;color:var(--muted);margin:-2px 0 8px">Wähle Portale — deine Suche oben öffnet sich dort mit einem Klick.</p>
+      <div id="portalPick"></div>
+      <div id="portalLinks" style="display:flex;flex-direction:column;gap:6px;margin-top:9px"></div>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:8px">Öffnet die externen Portale (Tutti, Anibis, Ricardo, Homegate …). aban speichert keine fremden Inserate.</p></div>
     <div class="fcard"><h4>Kategorie</h4><div id="cats"></div></div>
     <div class="fcard"><h4>Art des Inserats</h4>
       <label class="opt"><input type="radio" name="typ" value="" checked>Alle</label>
@@ -220,8 +236,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   }
   $("#go").addEventListener("click",function(e){e.preventDefault();load()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
-  $("#loc").addEventListener("input",function(){render(raw)});
-  $("#cats").addEventListener("change",function(e){if(e.target.name==="kat"){curKat=e.target.value;load()}});
+  $("#loc").addEventListener("input",function(){render(raw);renderPortals()});
+  $("#cats").addEventListener("change",function(e){if(e.target.name==="kat"){curKat=e.target.value;curThing=-1;renderThings();load();renderPortals()}});
   document.addEventListener("change",function(e){if(e.target&&(e.target.name==="typ"||e.target.classList.contains("cond"))){render(raw)}});
   ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
   $("#sort").addEventListener("change",function(){render(raw)});
@@ -231,12 +247,68 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#pmin").value="";$("#pmax").value="";$("#sort").value="rel";curKat="";
     var f=document.querySelector('input[name="kat"]');if(f)f.checked=true;
     var t=document.querySelector('input[name="typ"][value=""]');if(t)t.checked=true;
-    Array.prototype.forEach.call(document.querySelectorAll(".cond"),function(c){c.checked=false});load()});
+    Array.prototype.forEach.call(document.querySelectorAll(".cond"),function(c){c.checked=false});
+    curThing=-1;if(typeof renderThings==="function")renderThings();if(typeof renderPortals==="function")renderPortals();load()});
 
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
   $("#apply").addEventListener("click",closeSheet);sheetbg.addEventListener("click",closeSheet);
+
+  // ── „Was suchst du?" — Auswahl-Widget für Suchthemen (CH-fokussiert) ──
+  var THINGS=[
+    {e:"🚗",l:"Auto",q:"Auto",kat:"Auto & Teile"},{e:"🚲",l:"Velo",q:"Velo",kat:"Fahrrad"},
+    {e:"🏠",l:"Wohnung",q:"Wohnung",kat:"Immobilien"},{e:"🛋️",l:"Möbel",q:"",kat:"Möbel"},
+    {e:"📱",l:"Handy",q:"",kat:"Handy"},{e:"💻",l:"Laptop",q:"Laptop",kat:"Computer"},
+    {e:"👗",l:"Kleider",q:"",kat:"Mode"},{e:"⌚",l:"Uhren",q:"Uhr",kat:""},
+    {e:"🎮",l:"Games",q:"Games",kat:"Elektronik"},{e:"🔧",l:"Werkzeug",q:"",kat:"Werkzeug"},
+    {e:"🎿",l:"Ski",q:"Ski",kat:"Sport"},{e:"👶",l:"Kinder",q:"",kat:"Baby & Kind"},
+    {e:"🐶",l:"Haustier",q:"",kat:"Haustier"},{e:"🪑",l:"Garten",q:"",kat:"Garten"},
+    {e:"📦",l:"Umzug",q:"Umzug",kat:"Dienstleistungen"},{e:"💼",l:"Jobs",q:"",kat:"Jobs"}
+  ];
+  var curThing=-1;
+  function renderThings(){
+    var c=$("#pchips");if(!c)return;
+    c.innerHTML=THINGS.map(function(t,i){return '<button type="button" class="pchip'+(i===curThing?" on":"")+'" data-i="'+i+'">'+t.e+' '+esc(t.l)+'</button>'}).join("");
+  }
+  function pickThing(i){
+    var t=THINGS[i];if(!t)return;curThing=i;
+    $("#q").value=t.q||"";
+    curKat=t.kat||"";
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="kat"]'),function(r){r.checked=(r.value===curKat)});
+    renderThings();load();renderPortals();
+    $("#go").scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+  $("#pchips").addEventListener("click",function(e){var b=e.target.closest(".pchip");if(b)pickThing(+b.dataset.i)});
+
+  // ── CH-Portal-Auswahl — öffnet die aktuelle Suche legal auf Schweizer Inseratseiten ──
+  function pslug(s){return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
+  var PORTALS=[
+    {id:"tutti",name:"Tutti",e:"🟡",cat:"alle",b:function(q){return q?"https://www.tutti.ch/de/q/"+encodeURIComponent(q):"https://www.tutti.ch/de"}},
+    {id:"anibis",name:"Anibis",e:"🟢",cat:"alle",b:function(q){return q?"https://www.anibis.ch/de/q/"+encodeURIComponent(q):"https://www.anibis.ch/de"}},
+    {id:"ricardo",name:"Ricardo",e:"🔵",cat:"alle",b:function(q){return q?"https://www.ricardo.ch/de/s/"+encodeURIComponent(q):"https://www.ricardo.ch/de"}},
+    {id:"comparis",name:"Comparis",e:"🔶",cat:"alle",b:function(){return "https://www.comparis.ch/"}},
+    {id:"homegate",name:"Homegate",e:"🏠",cat:"Immobilien",b:function(q,loc){var c=loc&&!/^\d+$/.test(loc)?"city-"+pslug(loc):"";return "https://www.homegate.ch/rent/apartment/"+(c?c+"/":"")+"matching-list"}},
+    {id:"immoscout",name:"ImmoScout24",e:"🏢",cat:"Immobilien",b:function(){return "https://www.immoscout24.ch/de"}},
+    {id:"autoscout",name:"AutoScout24",e:"🚙",cat:"Auto & Teile",b:function(){return "https://www.autoscout24.ch/de"}},
+    {id:"fb",name:"FB Marketplace",e:"📘",cat:"alle",b:function(q){return "https://www.facebook.com/marketplace/search/?query="+encodeURIComponent(q||"")}}
+  ];
+  var PKEY="abanPortalsOff";
+  function offSet(){try{return JSON.parse(localStorage.getItem(PKEY)||"[]")}catch(e){return[]}}
+  function isOn(id){return offSet().indexOf(id)<0}
+  function setOn(id,on){var s=offSet(),i=s.indexOf(id);if(on&&i>=0)s.splice(i,1);if(!on&&i<0)s.push(id);try{localStorage.setItem(PKEY,JSON.stringify(s))}catch(e){}}
+  function relevant(p){return p.cat==="alle"||p.cat===curKat}
+  function renderPortals(){
+    var pick=$("#portalPick"),links=$("#portalLinks");if(!pick)return;
+    var list=PORTALS.filter(relevant);
+    pick.innerHTML=list.map(function(p){return '<label class="opt" style="padding:4px 0"><input type="checkbox" class="pchk" value="'+p.id+'"'+(isOn(p.id)?" checked":"")+'>'+p.e+' '+esc(p.name)+'</label>'}).join("");
+    var q=$("#q").value.trim(),loc=$("#loc").value.trim();
+    var on=list.filter(function(p){return isOn(p.id)});
+    links.innerHTML=on.length?on.map(function(p){return '<a href="'+esc(p.b(q,loc))+'" target="_blank" rel="noopener nofollow" style="display:flex;align-items:center;gap:7px;background:#f8f5ef;border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:.85rem;font-weight:700;color:var(--ink2)">'+p.e+' Auf '+esc(p.name)+' suchen →</a>'}).join(""):'<p style="font-size:.78rem;color:var(--muted)">Kein Portal gewählt.</p>';
+  }
+  $("#portalPick").addEventListener("change",function(e){if(e.target.classList.contains("pchk")){setOn(e.target.value,e.target.checked);renderPortals()}});
+  $("#q").addEventListener("input",renderPortals);
+  renderThings();renderPortals();
 
   // Deep-Link: ?q= / ?kat= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uk=sp.get("kat"),ul=sp.get("loc");
