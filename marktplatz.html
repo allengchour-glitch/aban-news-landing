@@ -64,6 +64,10 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color:var(--muted);text-align:center}
 @media(max-width:560px){.hero h1{font-size:1.6rem}.searchbox{flex-wrap:wrap}.searchbox button{width:100%}}
 :focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+.mchip{display:inline-flex;align-items:center;gap:7px;background:#f8f5ef;border:1px solid var(--line);border-radius:18px;padding:7px 13px;font-size:.86rem;font-weight:600;color:var(--ink2);cursor:pointer}
+.mchip input{width:15px;height:15px;accent-color:var(--amber-dk);cursor:pointer}
+.mchip:hover{border-color:var(--amber)}
+.mchip:has(input:checked){background:var(--cream);border-color:var(--amber);color:var(--amber-dk)}
 </style>
 </head>
 <body>
@@ -84,6 +88,17 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
 </div></div>
 
 <div class="wrap">
+  <div style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:8px">
+    <h2 class="h2" style="margin:0 0 3px">Mehrere Kategorien auswählen</h2>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Kreuze an, was dich interessiert — dann gemeinsam in den Inseraten durchsuchen.</p>
+    <div id="mcats" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+    <div style="margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <button id="mgo" type="button" style="background:var(--amber-dk);color:#fff;border:0;border-radius:22px;padding:11px 22px;font-weight:800;cursor:pointer">Auswahl durchsuchen →</button>
+      <button id="mclear" type="button" style="background:none;border:0;color:var(--amber-dk);font-weight:700;cursor:pointer">Auswahl leeren</button>
+      <span id="mcount" style="font-size:.85rem;color:var(--muted)"></span>
+    </div>
+  </div>
+
   <h2 class="h2">Hauptbereiche</h2>
   <div class="tiles">
     <a class="tile" href="/stellenangebote.html"><div class="ic">💼</div><h3>Jobs &amp; Stellen</h3><p>Tausende Stellen aus mehreren Job-Börsen — mit Unterkategorien &amp; Remote-Filter.</p><span class="cta">Jobs suchen →</span></a>
@@ -184,6 +199,20 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   function go(){var q=$("#q").value.trim();location.href="/suche.html"+(q?"?q="+encodeURIComponent(q):"")}
   $("#go").addEventListener("click",function(e){e.preventDefault();go()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();go()}});
+  // Mehrfach-Kategorie-Auswahl (Ankreuzen) → bündelt zur Inserate-Suche
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  var MCATS=["Elektronik","Handy","Computer","Möbel","Haushalt","Garten","Werkzeug","Auto & Teile","Fahrrad","Mode","Spielzeug","Baby & Kind","Haustier","Sport","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
+  var mc=$("#mcats");
+  if(mc){
+    mc.innerHTML=MCATS.map(function(c){return '<label class="mchip"><input type="checkbox" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
+    function msel(){return Array.prototype.map.call(mc.querySelectorAll("input:checked"),function(i){return i.value})}
+    function mupd(){var n=msel().length;$("#mcount").textContent=n?(n+" ausgewählt"):""}
+    mc.addEventListener("change",mupd);
+    $("#mgo").addEventListener("click",function(){var s=msel(),q=$("#q").value.trim(),p=[];
+      if(s.length)p.push("kat="+encodeURIComponent(s.join(",")));if(q)p.push("q="+encodeURIComponent(q));
+      location.href="/inserate.html"+(p.length?"?"+p.join("&"):"")});
+    $("#mclear").addEventListener("click",function(){Array.prototype.forEach.call(mc.querySelectorAll("input"),function(i){i.checked=false});mupd()});
+  }
 })();
 </script>
 <script src="/js/ads-config.js" defer></script>
