@@ -93,6 +93,10 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
 .schip .sdel{background:none;border:0;border-left:1px solid var(--line);padding:6px 9px;color:var(--muted);cursor:pointer;font-weight:800}
 .schip .sdel:hover{color:var(--amber-dk)}
 .achips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.portals{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.p-lbl{font-size:.86rem;font-weight:800;color:var(--ink);width:100%}
+.p-chip{font-size:.83rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:6px 11px;text-decoration:none}
+.p-chip:hover{border-color:var(--amber);color:var(--amber-dk);background:var(--cream)}
 .achip{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:5px 12px;font-size:.82rem;font-weight:600;color:var(--ink2);cursor:pointer;font-family:inherit}
 .achip:hover{border-color:var(--amber)}
 .achip.clr{color:var(--amber-dk);border-color:var(--amber-dk)}
@@ -136,6 +140,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   </div>
   <div class="saved" id="saved" hidden></div>
   <div class="achips" id="achips" hidden></div>
+  <div class="portals" id="portals" hidden></div>
   <div class="row" id="grid"></div>
   <div class="empty" id="empty" hidden>Tippe oben ein, was du suchst — wir schauen in allen Quellen gleichzeitig nach.</div>
 </div>
@@ -206,7 +211,29 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     var inner=thumb+body;
     return it.url?('<a class="c" href="'+esc(it.url||"#")+'"'+open+'>'+inner+'</a>'):('<div class="c">'+inner+'</div>');
   }
+  // Alle Schweizer Portale — jede Suche fuehrt zu echten Treffern (legaler Deep-Link)
+  function classify(q){q=(q||"").toLowerCase();
+    if(/(wohnung|miete|mieten|zimmer|\bhaus\b|immobil|loft|studio|\bwg\b|attika|reihenhaus|grundst|gewerbe|b[üu]ro)/.test(q))return "immo";
+    if(/(auto|wagen|\bpkw\b|occasion|\bgolf\b|\bbmw\b|audi|mercedes|\bvw\b|toyota|tesla|skoda|velo|e-?bike|fahrrad|motorrad|roller|scooter|reifen)/.test(q))return "auto";
+    if(/(\bjob\b|stelle|lehrstelle|praktikum|arbeit|entwickler|pflege|gastro|verkauf)/.test(q))return "job";
+    return "general";}
+  function portalList(ctx,q){var t=encodeURIComponent(q||"");
+    var TUTTI={n:"🟡 Tutti",u:q?"https://www.tutti.ch/de/q/"+t:"https://www.tutti.ch/de"};
+    var ANIBIS={n:"🟢 Anibis",u:q?"https://www.anibis.ch/de/q/"+t:"https://www.anibis.ch/de"};
+    var RICARDO={n:"🔵 Ricardo",u:q?"https://www.ricardo.ch/de/s/"+t:"https://www.ricardo.ch/de"};
+    var EBAY={n:"🛒 eBay",u:q?"https://www.ebay.ch/sch/i.html?_nkw="+t:"https://www.ebay.ch"};
+    var GALAXUS={n:"🟣 Galaxus",u:q?"https://www.galaxus.ch/search?q="+t:"https://www.galaxus.ch"};
+    if(ctx==="immo")return [{n:"🏠 Homegate",u:"https://www.homegate.ch/mieten"},{n:"🏢 ImmoScout24",u:"https://www.immoscout24.ch/de"},{n:"🛋️ Flatfox",u:q?"https://flatfox.ch/de/search/?query="+t:"https://flatfox.ch/de/"},{n:"🆕 Newhome",u:"https://www.newhome.ch/de"},{n:"🔶 Comparis",u:"https://www.comparis.ch/immobilien/default"},TUTTI];
+    if(ctx==="auto")return [{n:"🚗 AutoScout24",u:"https://www.autoscout24.ch/de"},{n:"🔶 Comparis",u:"https://www.comparis.ch/carfinder/default"},TUTTI,RICARDO,EBAY];
+    if(ctx==="job")return [{n:"💼 jobs.ch",u:q?"https://www.jobs.ch/de/stellenangebote/?term="+t:"https://www.jobs.ch"},{n:"🔎 Indeed",u:q?"https://ch.indeed.com/jobs?q="+t:"https://ch.indeed.com"},{n:"🏢 JobScout24",u:"https://www.jobscout24.ch/de"},{n:"🔗 LinkedIn",u:q?"https://www.linkedin.com/jobs/search/?keywords="+t+"&location=Schweiz":"https://www.linkedin.com/jobs"}];
+    return [TUTTI,ANIBIS,RICARDO,EBAY,GALAXUS];}
+  function renderPortals(){var box=$("#portals");if(!box)return;var q=$("#q").value.trim();
+    var cats=checked("#fcat input");
+    var ctx=cats.indexOf("Immobilien")>=0?"immo":((cats.indexOf("Auto & Teile")>=0||cats.indexOf("Fahrrad")>=0)?"auto":classify(q));
+    var L=portalList(ctx,q);box.hidden=false;
+    box.innerHTML='<span class="p-lbl">🇨🇭 Direkt auf Schweizer Portalen suchen'+(q?' nach „'+esc(q)+'“':'')+':</span>'+L.map(function(p){return '<a class="p-chip" href="'+esc(p.u)+'" target="_blank" rel="noopener nofollow">'+esc(p.n)+' →</a>'}).join("");}
   function render(){
+    renderPortals();
     var items=applyFilters(raw);
     if(!items.length){grid.innerHTML="";emptyEl.hidden=false;emptyEl.innerHTML=raw.length?"Nichts in dieser Auswahl — weniger Filter probieren.":"Tippe oben ein, was du suchst.";cntEl.textContent="0 Treffer";return}
     emptyEl.hidden=true;
