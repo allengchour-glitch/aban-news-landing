@@ -3,6 +3,14 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🎉 2026-06-16 (WORKER DEPLOYED — Posting-Maschine + Handy-Steuerung LIVE)
+- **✅ `wrangler deploy` erfolgreich** (User am PC). luxe-poster Version 62eb9ea9, Cron 7/10/12/15/17/19 UTC. KV LUXE_KV (662199…86ee9) gebunden.
+- **134-Posts-Queue live** (13 neue Reels + 5 neue Produkte in Rotation, dedupliziert).
+- **📱 Handy-Befehlsqueue VERIFIZIERT LIVE** (`&cmd=ping`→queued, `&drain=1`→zurück) → tap.html/1-Tap scharf. Kommentar-Auto-Antwort + FB-Stories/Reels aktiv.
+- **Deploy-Stolperfallen gelöst (für künftige Sessions):** (1) `cd` in absoluten Worker-Pfad (sonst legt wrangler „allen"-Worker an), (2) KV-ID jetzt fest in wrangler.toml committet, (3) kaputter `CLOUDFLARE_API_TOKEN` (U+2026-Ellipse) → `Remove-Item Env:CLOUDFLARE_API_TOKEN` + `wrangler login` (OAuth).
+- **queue_url (KV) = raw.githubusercontent 404** (Repo privat) → Worker nutzt eingebackene Queue (ok). Künftige Queue-Updates = erneut `wrangler deploy`.
+- **🔜 Offen User:** `START-LISTENER.bat` am PC starten (Handy-Befehle ausführen) · TikTok-Pixel/Kampagne · Google Free Listings AN.
+
 ## 🆕 2026-06-16 (Neue Produkte voll angelegt + Brillen-Misrepresentation-Fix)
 - **🆕 3 Produkte im Meisterwerk-Standard** (dt. Beschreibung + alle Bilder + eigenes Video + 6 Kanäle):
   Herren-Halskette **«Fenrir»** (Edelstahl-Weizenkette, 3 Farben, CHF 39.90), Statement-Ohrring-Set **«Aurelia»** (Creolen+Stecker, CHF 27.90), Boho-Halskette **«Lagune»** (Türkis-Crescent, CHF 29.90).
