@@ -54,6 +54,27 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ LEERE KATEGORIEN GEFÜLLT: +72 Produkte live (alle ACTIVE, EAN, Galerie, DE-Titel/SEO, 6 Kanäle):**
+- **Haushalt/Küche 6** (Geschirr-Set Home ESPRIT, Frischhaltedosen, Zuckerdose, Deko-Korb, Badematte, Kinder-Schreibtisch).
+- **🧸 Spielzeug 14** (Barbie, Paw Patrol, Puzzle Educa, Knet-Sets Llopis/Llorens/Jovi, Spielküche Moltó, Plüsch Clementoni,
+  Müllwagen PlayGo, Klavier iDance, u.a.) → Smart-Collection `spielzeug` (TAG).
+- **👟 Schuhe 14** (echte Marken: Nike/Adidas/Puma/Converse/Vans/Reebok/Head/Rip Curl/Disney; Sneaker/Tennis/Badeschuhe,
+  Damen+Kinder+Herren) → `schuhe` (TAG), 121 Produkte.
+- **👕 Kleidung 16** (Hoodies Dickies/Champion/Rip Curl/Jack&Jones/Levis, Jeans, Polos Columbia, Shirts Nike/New Era/CMP,
+  Socken Real Madrid/Star Wars/Picture, Puma Hoodie) → `damen-mode`/`herren`/`baby-kids` per gender-Tag.
+- **🌻 Garten 9** (Sonnenschirmständer, Hängematte Aktive, Klapptisch Ibergarden, Gardena-Spritze, Blumentöpfe, Hama-Wetterstation,
+  Vention-Powerbank, Fieldmann-Kissen) → `garten` (TAG; Regel ist case-insensitiv `Garten`).
+- **🐾 Haustier 9** (Trixie/Hunter/Company of Animals/Aimé: Hundebett, Katzenbett, Leinen, Geschirr, Plüsch, Erste-Hilfe-Set)
+  → `sub-haustier` (TITLE CONTAINS Hund/Katze greift).
+- **🚗 Auto 4** (Sonax Smokeex, Rain-X Reifenglanz, Dr.Marcus Lufterfrischer, Trixie Hunde-Autositz) → Tag `auto-handy` gesetzt
+  (Collection `auto-handy` matcht TAG, NICHT `auto`!). **Lehre: BigBuy-„auto"-Taxonomie ist 90% Hardware-Teile (Spurplatten,
+  Getriebeöl, Ölfilter) → nur ~4 konsumententaugliche Pflege-Artikel pro Charge.** Lebensmittel/Tierfutter/Gaskartuschen/Rattengift bewusst übersprungen.
+- **Pipeline (Katalog-Session, reproduzierbar):** `/tmp/enrich_broad.mjs <cat> <start> <count>` (taxonomie-gebucketete `/tmp/cat_*.json`
+  aus `bb_products.json` via parentTaxonomy-Walk; 4s-Pacing Pflicht; `productinformationbysku`+`productimages`) → gen_*.mjs (DE-Titel-Map)
+  → productSet (synchronous) → publishablePublish 6 Kanäle. **Marken-Ware bekam `premium`+`marke` → landet auch in `luxestyle-premium`.**
+- **SKU-Ledger** der 72 in `/tmp/created_skus.txt` (session-lokal). **Andere Sessions: diese Kategorien NICHT doppeln** — Rest der
+  Taxonomie-Buckets (Haushalt 37k, Elektronik 24k, Spielzeug 11k Kandidaten) noch offen für weitere Chargen.
+
 **2026-06-15 (ABEND) — Collections/Marken-Session (Branch `claude/memory-2026-06-13`): MARKEN-HUB + BILD-BACKFILL:**
 - **30 MARKEN-LANDINGPAGES gebaut** (Vendor-Smart-Collections, je Hero+SEO auf Brand-Suche+PRICE_DESC, in 6 Kanälen):
   `michael-kors` `calvin-klein` `hugo-boss` `tommy-hilfiger` `guess` `dolce-gabbana` `yves-saint-laurent` `swatch` `casio`
