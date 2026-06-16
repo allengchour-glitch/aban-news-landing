@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 15 — Video-Rollout vollendet: +11 Produkte → 34 total)
+- **🎬 +11 eigene Produkt-Videos** für alle restlichen heute angelegten Produkte (Schmuck/Sonnenbrille/Ring):
+  Cœur, Trésor, Couleur, Papillon, Minou, Fleur, Cascade, Étincelle, Rosée, Riviera, Sonnenbrille, Ring «Astra».
+  Pipeline wie gehabt: ffmpeg Price-Reveal → stagedUpload (curl 204) → productCreateMedia VIDEO (UPLOADED→READY).
+- **Σ 34 Produkte mit eigenem Produkt-Video** (7 Marken + 3 Wasserfest + 13 Caps/Hüte + 11 Schmuck/Brille/Ring).
+  Alle Reels in `reels/luxe-*-9x16.mp4` committet — auch für TikTok/Meta (vertikal) wiederverwendbar.
+
 ## 🆕 2026-06-16 (NACHT 14 — Video-Rollout 10 Produkte + 10 Reels in Meta-Queue)
 - **🎬 10 Produkte mit eigenem Produkt-Video** (7 Marken + 3 Wasserfest-Schmuck: Amore/Goutte/Nœud). Alle via Cloud-Pipeline (ffmpeg→stagedUpload→productCreateMedia).
 - **📣 10 Marken-/Schmuck-Reels in die Worker-Queue** (Meta/TikTok, type reel, Shopify-CDN-mp4-URLs) → posten autonom mit. Queue jetzt 104+ Posts, 23+ Reels.
