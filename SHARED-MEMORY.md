@@ -54,6 +54,16 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — 💎 PREMIUM-KOLLEKTION aufgebaut (+8, Collection „💎 Premium-Auswahl" = 27 Produkte):**
+- Uhren: **Seiko** SRPH75K1 (H, 550), **Citizen** Damenuhr (525), **Jaguar** J980/4 Swiss (H, 550). (Hamilton war „Reacondicionado/refurbished" → bewusst NICHT angelegt; nur Neuware!)
+- Designer-Eyewear: **Versace** Damen Ø64 (560), **Chopard** Herren Ø59 (595), **Porsche Design** P8942 (595).
+- Taschen: **Michael Kors** Charlotte Blau + Schwarz (je 675).
+- Alle `highend`+`premium` → Smart-Collection `luxus-highend` (umbenannt „💎 Premium-Auswahl", Top-Menü Pos. 2) füllte sich automatisch.
+  Zusammen mit Tissot/Certina/Thomas Sabo/MK-Leida (Vorrunden) = 12 echte Luxus-Marken-Stücke neu heute. compareAtPrice gesetzt, EAN/Google, 6 Kanäle.
+- **⚠️ LEHRE:** BigBuy-Taxonomie **19662 „Schmuck" enthält faktisch v. a. Sonnenbrillen** (Versace/Chopard/Porsche „Gafas de Sol") →
+  Name immer aus `productinformationbysku` prüfen, nicht aus Taxonomie schliessen. Echten Schmuck (Ketten/Ringe) gezielt über Namensfilter ziehen.
+- **Premium-Nachschub-Rezept steht** (Taxonomien 19662/19667/19654 + manufacturers.json, nach inShopsPrice sortieren, Refurbished/„Reacondicionado" ausschliessen).
+
 **2026-06-16 (Katalog-Session, BigBuy) — 💎 PREMIUM-DROP „von allem" (+3, alle highend → Luxus-Collection):**
 - 👜 **Michael Kors** Schultertasche «Leida» Blau (CHF 598, compareAt 649) — Taschen.
 - 💎 **Thomas Sabo** Halskette Sterling-Silber (CHF 598/649) — Schmuck.
