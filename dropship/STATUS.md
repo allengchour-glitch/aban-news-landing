@@ -3,6 +3,9 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 12 — Menü premium gestrafft)
+- **🧭 Premium-Menü** per `menuUpdate`: 11→9 Top-Punkte, **Departments zuerst** (Frauen/Herren/Schmuck), „Premium"+„Marken"
+  zu **Premium & Marken** gemerged (Redundanz, beide → luxestyle-premium), „Hype 2026" als Sub unter Trends. Clean, premium, alles erreichbar.
 ## 🆕 2026-06-16 (NACHT 11 — Menü auf Premium-Clean umgestellt)
 - **🧭 Hauptmenü „clean" (Galaxus-Stil)** per `menuUpdate`: ALLE Emojis aus Labels raus, **unsere Struktur 1:1 erhalten**
   (11 Top + alle Subs inkl. der 3 neuen Kategorien). Wirkt premium statt „0815". User-Entscheid „clean, unsere Unterteilung".
