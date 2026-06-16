@@ -3,6 +3,15 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 8 — #1 Conversion: Klaviyo-Audit, 2 kritische Bugs)
+- **✅ Conversion-Engine läuft:** Klaviyo-Flows alle LIVE (Abandoned Cart UXEjv2, Abandoned Checkout Vse76a, Welcome-Serie,
+  Win-Back, Post-Purchase). WELCOME10 aktiv (10%, bis 31.08.).
+- **🔴 BUG 1 (gross!):** Klaviyo Konto-`websiteUrl` = **`luxestyle.com.co`** (FALSCH) → alle E-Mail-Links zeigen auf falsche
+  Domain statt luxestyle.ch → Abandoned-Cart-Mails konvertieren NICHT. **Fix (User, UI):** klaviyo.com/settings/account →
+  Kontaktinfo → Website-URL = `https://luxestyle.ch`. (Kein API-Zugriff auf Konto-Settings → nur UI.)
+- **🔴 BUG 2:** Klaviyo `preferredCurrency` = **USD** → sollte **CHF**. Gleiche Seite.
+- **➡️ Diese 2 UI-Fixes (2 Min) + TWINT-auf-PDP (Theme) + Pixel/Kampagne = der Käufe-Pfad.** Mehr Produkte nicht nötig.
+
 ## 🆕 2026-06-16 (NACHT 7 — Ring + Abschluss Nischen-Fill; Fokus jetzt Reichweite)
 - **💍 Ring «Astra»** (Stern&Mond, drehbar & VERSTELLBAR = One-Size, kein Grössen-Risiko) live, ACTIVE/6 Kanäle. Fixe-Grösse-Ringe BEWUSST nicht (Retouren-Risiko ohne Grössen-Varianten).
 - **🛑 Nischen-Grinden gestoppt (ehrlich):** CJ-List-API liefert für Halsketten/Sonnenbrillen/Haar-Accessoires kaum saubere Treffer (quick/-404, Asia-Motive, Name/Bild-Mismatch, Haar-Suche traf Haarpflege). Diminishing returns → an BigBuy-Import-Session delegiert (SHARED-MEMORY): premium Sonnenbrillen/Halsketten + Ringe MIT Grössen.
