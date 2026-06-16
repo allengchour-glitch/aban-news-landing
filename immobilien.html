@@ -162,6 +162,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
         <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option><option value="rooms">Zimmer absteigend</option></select>
       </span>
     </div>
+    <div id="savedbar"></div>
     <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
@@ -175,6 +176,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <footer>aban news · Immobilien (CH/DACH) · Angaben der Inserenten ohne Gewähr · © 2026 ·
   <a href="/inserat-aufgeben.html">Immobilie inserieren</a> · <a href="/marktplatz.html">Marktplatz</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
+<script src="/js/saved-search.js"></script>
 <script>
 (function(){
   // Unter-Arten als Suchbegriff innerhalb der Immobilien-Inserate
@@ -259,7 +261,21 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     c.innerHTML=parts.map(function(p,i){return '<button type="button" data-i="'+i+'" style="'+CHIP+'">'+esc(p.l)+' <span aria-hidden="true" style="color:var(--muted);font-weight:800">×</span></button>'}).join("")+'<button type="button" data-all="1" style="'+CHIP+';color:var(--amber-dk);border-color:var(--amber-dk)">Alle löschen</button>';
     window.__chip=parts.map(function(p){return p.clr});
   }
+  function writeUrl(){var p=new URLSearchParams();
+    var q=$("#q").value.trim();if(q)p.set("q",q);
+    var loc=$("#loc").value.trim();if(loc)p.set("loc",loc);
+    if(curModus)p.set("modus",curModus);
+    if(curArt)p.set("art",curArt);
+    var zi=$("#zimmer").value;if(zi)p.set("zimmer",zi);
+    var am=$("#amin").value.trim();if(am)p.set("amin",am);
+    var pmin=$("#pmin").value.trim();if(pmin)p.set("pmin",pmin);var pmax=$("#pmax").value.trim();if(pmax)p.set("pmax",pmax);
+    var feats=[];Array.prototype.forEach.call(document.querySelectorAll(".feat"),function(c,i){if(c.checked)feats.push(i)});if(feats.length)p.set("feat",feats.join(","));
+    var reg=Array.prototype.map.call(document.querySelectorAll(".reg:checked"),function(c){return c.value});if(reg.length)p.set("reg",reg.join(","));
+    var pkl=Array.prototype.map.call(document.querySelectorAll(".pkl:checked"),function(c){return c.dataset.lo+"-"+c.dataset.hi});if(pkl.length)p.set("pkl",pkl.join(","));
+    var s=$("#sort")?$("#sort").value:"rel";if(s&&s!=="rel")p.set("sort",s);
+    var qs=p.toString();try{history.replaceState(null,"",qs?("?"+qs):location.pathname)}catch(e){}}
   function render(items){
+    writeUrl();
     items=applyFilters(items||[]);renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
       statusEl.innerHTML="Noch keine Immobilien in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Immobilie inserieren</a>.";cntEl.textContent="0 Immobilien";return}
@@ -306,10 +322,25 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
   $("#apply").addEventListener("click",closeSheet);sheetbg.addEventListener("click",closeSheet);
-  // Deep-Link: ?q= / ?loc= aus der URL übernehmen
-  (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),ul=sp.get("loc");
-    if(uq)$("#q").value=uq; if(ul)$("#loc").value=ul;})();
-  renderPkl();renderImmoLinks();load();
+  // Deep-Link: Filter-Zustand aus der URL übernehmen (für gespeicherte/geteilte Suchen)
+  (function(){var sp=new URLSearchParams(location.search);
+    if(sp.get("q"))$("#q").value=sp.get("q"); if(sp.get("loc"))$("#loc").value=sp.get("loc");
+    var um=sp.get("modus");if(um==="miete"||um==="kauf"){curModus=um;Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x){x.classList.toggle("on",x.dataset.m===um)})}
+    var ua=sp.get("art");if(ua){curArt=ua;var ar=document.querySelector('input[name="art"][value="'+ua.replace(/"/g,'')+'"]');if(ar)ar.checked=true}
+    if(sp.get("zimmer"))$("#zimmer").value=sp.get("zimmer");
+    if(sp.get("amin"))$("#amin").value=sp.get("amin");
+    if(sp.get("pmin"))$("#pmin").value=sp.get("pmin"); if(sp.get("pmax"))$("#pmax").value=sp.get("pmax");
+    if(sp.get("sort")&&$("#sort"))$("#sort").value=sp.get("sort");
+    renderPkl(); // Preisklassen passend zum (evtl. gesetzten) Modus aufbauen, dann wiederherstellen
+    var fi=(sp.get("feat")||"").split(",").filter(function(x){return x!==""});var feats=document.querySelectorAll(".feat");fi.forEach(function(ix){if(feats[+ix])feats[+ix].checked=true});
+    var rg=(sp.get("reg")||"").split(",").filter(Boolean);if(rg.length)Array.prototype.forEach.call(document.querySelectorAll(".reg"),function(c){if(rg.indexOf(c.value)>=0)c.checked=true});
+    var pk=(sp.get("pkl")||"").split(",").filter(Boolean);if(pk.length)Array.prototype.forEach.call(document.querySelectorAll(".pkl"),function(c){if(pk.indexOf(c.dataset.lo+"-"+c.dataset.hi)>=0)c.checked=true});
+  })();
+  function savedLabel(){var q=$("#q").value.trim(),loc=$("#loc").value.trim(),parts=[];
+    if(curModus)parts.push(curModus==="kauf"?"Kaufen":"Mieten");if(q)parts.push('"'+q+'"');if(loc)parts.push("📍"+loc);
+    return parts.join(" · ")||"Immobilien";}
+  if(window.AbanSaved)window.AbanSaved({key:"abanSaved_immobilien",mount:"#savedbar",labelFn:savedLabel});
+  renderImmoLinks();load();
 })();
 </script>
 <script src="/js/affiliate-config.js" defer></script>

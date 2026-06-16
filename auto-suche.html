@@ -163,6 +163,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       </span>
     </div>
     <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
+    <div id="savedbar"></div>
     <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
@@ -176,6 +177,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <footer>aban news · Auto-Suche · Preise &amp; Verfügbarkeit ohne Gewähr · Klicks führen zum jeweiligen Anbieter · © 2026 ·
   <a href="/marktplatz.html">Marktplatz</a> · <a href="/angebote-suche.html">Alle Angebote</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
+<script src="/js/saved-search.js"></script>
 <script>
 (function(){
   var CATS=[["Alle Fahrzeuge","Auto"],["PKW / Autos","Auto PKW"],["Motorräder","Motorrad"],["Auto-Teile","Auto Ersatzteile"],
@@ -247,7 +249,22 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var s=$("#sort").value;if(s&&s!=="rel")p+="&sort="+encodeURIComponent(s);
     return p;
   }
+  function writeUrl(){var p=new URLSearchParams();
+    var q=$("#q").value.trim();if(q)p.set("q",q);
+    var cat=document.querySelector('input[name="cat"]:checked');if(cat&&cat.value)p.set("cat",cat.value);
+    var mk=$("#fMarke").value;if(mk)p.set("marke",mk);
+    var md=$("#fModell").value.trim();if(md)p.set("modell",md);
+    var jr=$("#fJahr").value;if(jr)p.set("jahr",jr);
+    var km=$("#fKm").value;if(km)p.set("km",km);
+    var f=$("#fFuel").value;if(f)p.set("fuel",f);
+    var g=$("#fGetriebe").value;if(g)p.set("getriebe",g);
+    var cond=Array.prototype.map.call(document.querySelectorAll(".cond:checked"),function(c){return c.value});if(cond.length)p.set("cond",cond.join(","));
+    var pmin=$("#pmin").value.trim();if(pmin)p.set("pmin",pmin);var pmax=$("#pmax").value.trim();if(pmax)p.set("pmax",pmax);
+    var pkl=Array.prototype.map.call(document.querySelectorAll(".pkl:checked"),function(c){return c.dataset.lo+"-"+c.dataset.hi});if(pkl.length)p.set("pkl",pkl.join(","));
+    var s=$("#sort").value;if(s&&s!=="rel")p.set("sort",s);
+    var qs=p.toString();try{history.replaceState(null,"",qs?("?"+qs):location.pathname)}catch(e){}}
   function search(){
+    writeUrl();
     var cat=document.querySelector('input[name="cat"]:checked');
     var term=carQuery()||(cat&&cat.value)||"Auto";try{saveRecent(term)}catch(e){}
     renderCarLinks();
@@ -276,7 +293,17 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#apply").addEventListener("click",closeSheet);sheetbg.addEventListener("click",closeSheet);
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uc=sp.get("cat");
     if(uq)$("#q").value=uq;
-    if(uc)Array.prototype.forEach.call(document.querySelectorAll('input[name="cat"]'),function(r){if(r.value===uc)r.checked=true});})();
+    if(uc)Array.prototype.forEach.call(document.querySelectorAll('input[name="cat"]'),function(r){if(r.value===uc)r.checked=true});
+    var sv=function(id,v){var e=$("#"+id);if(e&&v)e.value=v};
+    sv("fMarke",sp.get("marke"));sv("fModell",sp.get("modell"));sv("fJahr",sp.get("jahr"));sv("fKm",sp.get("km"));sv("fFuel",sp.get("fuel"));sv("fGetriebe",sp.get("getriebe"));
+    sv("pmin",sp.get("pmin"));sv("pmax",sp.get("pmax"));if(sp.get("sort"))sv("sort",sp.get("sort"));
+    var setMulti=function(param,sel,key){var vals=(sp.get(param)||"").split(",").filter(Boolean);if(!vals.length)return;Array.prototype.forEach.call(document.querySelectorAll(sel),function(c){if(vals.indexOf(key(c))>=0)c.checked=true})};
+    setMulti("cond",".cond",function(c){return c.value});
+    setMulti("pkl",".pkl",function(c){return c.dataset.lo+"-"+c.dataset.hi});})();
+  // "Suche speichern"-Widget
+  function savedLabel(){var q=$("#q").value.trim(),mk=$("#fMarke").value,md=$("#fModell").value.trim();
+    return (q||[mk,md].filter(Boolean).join(" ")||"Fahrzeuge").slice(0,50);}
+  if(window.AbanSaved)window.AbanSaved({key:"abanSaved_auto",mount:"#savedbar",labelFn:savedLabel});
   var RKEY="aban_recent_auto";
   function recentGet(){try{return JSON.parse(localStorage.getItem(RKEY)||"[]")}catch(e){return []}}
   function saveRecent(t){t=(t||"").trim();if(!t)return;try{var a=recentGet().filter(function(x){return x.toLowerCase()!==t.toLowerCase()});a.unshift(t);a=a.slice(0,6);localStorage.setItem(RKEY,JSON.stringify(a));renderRecent()}catch(e){}}
