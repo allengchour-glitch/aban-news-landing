@@ -1,0 +1,21 @@
+# 🧠 aban Inserate-Brain — autonomer Kleinanzeigen-Wächter (Cloudflare Cron, gratis)
+# Deploy:  cd workers/inserate-brain && npx wrangler deploy
+# Vorher:  KV-Namespace anlegen + ID unten eintragen (siehe README.md)
+
+name = "aban-inserate-brain"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# Cron: stündlich (vernachlässigbarer Verbrauch).
+[triggers]
+crons = ["0 * * * *"]
+
+[[kv_namespaces]]
+binding = "INS_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Secrets per CLI setzen (NICHT hier eintragen):
+#   npx wrangler secret put ADMIN_TOKEN         # gleicher Wert wie beim Pages-Projekt -> zählt offene Freigaben
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN  # Alarm aufs Handy
+#   npx wrangler secret put TELEGRAM_CHAT_ID
+#   npx wrangler secret put TRIGGER_KEY         # optional: schützt /?run=1
