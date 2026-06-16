@@ -168,7 +168,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
       <span class="cnt" id="cnt">Lade Immobilien …</span>
       <span style="margin-left:auto;font-size:.85rem;color:var(--muted)">Sortieren:
-        <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option><option value="rooms">Zimmer absteigend</option></select>
+        <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="neu">Neueste zuerst</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option><option value="rooms">Zimmer absteigend</option></select>
       </span>
     </div>
     <div id="savedbar"></div>
@@ -253,6 +253,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var sort=$("#sort")?$("#sort").value:"rel";
     if(sort==="pasc"||sort==="pdesc"){items.sort(function(a,b){var x=chfNum(a.preis),y=chfNum(b.preis);if(isNaN(x))return 1;if(isNaN(y))return -1;return sort==="pasc"?x-y:y-x})}
     else if(sort==="rooms"){items.sort(function(a,b){var x=roomsOf(a),y=roomsOf(b);if(isNaN(x))return 1;if(isNaN(y))return -1;return y-x})}
+    else if(sort==="neu"){items.sort(function(a,b){return (parseInt(b.created||0,10))-(parseInt(a.created||0,10))})}
     return items;
   }
   var CHIP='display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.82rem;color:var(--ink2);cursor:pointer;font-family:inherit;font-weight:600';

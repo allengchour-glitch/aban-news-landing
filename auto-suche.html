@@ -159,7 +159,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
       <span class="cnt" id="cnt">Lade Fahrzeuge …</span>
       <span class="sort">Sortieren:
-        <select id="sort"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
+        <select id="sort"><option value="rel">Relevanz</option><option value="neu">Neueste zuerst</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
       </span>
     </div>
     <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
@@ -249,7 +249,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(!isNaN(lo))out=out.filter(function(it){var n=priceNum(it.price);return isNaN(n)?false:n>=lo});
     if(!isNaN(hi))out=out.filter(function(it){var n=priceNum(it.price);return isNaN(n)?false:n<=hi});
     var s=$("#sort").value;
-    if(s!=="rel")out.sort(function(a,b){var na=priceNum(a.price),nb=priceNum(b.price);na=isNaN(na)?1e12:na;nb=isNaN(nb)?1e12:nb;return s==="pasc"?na-nb:nb-na});
+    if(s==="pasc"||s==="pdesc")out.sort(function(a,b){var na=priceNum(a.price),nb=priceNum(b.price);na=isNaN(na)?1e12:na;nb=isNaN(nb)?1e12:nb;return s==="pasc"?na-nb:nb-na});
     return out;
   }
   var CHIP='display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e6e1d6;border-radius:20px;padding:5px 12px;font-size:.82rem;color:#374151;cursor:pointer;font-family:inherit;font-weight:600';
