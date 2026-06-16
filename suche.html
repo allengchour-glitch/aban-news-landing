@@ -221,7 +221,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   function getIns(q){return fetch("/api/inserate-list?q="+qenc(q)+"&kat=").then(function(x){return x.json()}).then(function(d){
     var items=d.items||[];
     if(d.demo||!items.length)return demoIns(q);
-    return items.map(function(it){return {src:"ins",title:it.titel||"",price:it.preis||"",pn:priceNum(it.preis),region:(String(it.plz||"")+" "+String(it.ort||"")).toLowerCase(),meta:[it.kat,[it.plz,it.ort].filter(Boolean).join(" ")].filter(Boolean).join(" · "),desc:it.beschreibung||"",kat:it.kat||"Sonstiges",cond:String(it.zustand||""),url:"/inserat.html?id="+encodeURIComponent(it.id),img:it.bild||"",emoji:"📋",act:"Details ansehen →",ext:false}})
+    return items.map(function(it){return {src:"ins",title:it.titel||"",price:it.preis||"",pn:priceNum(it.preis),region:(String(it.plz||"")+" "+String(it.ort||"")).toLowerCase(),meta:[it.kat,[it.plz,it.ort].filter(Boolean).join(" ")].filter(Boolean).join(" · "),desc:it.beschreibung||"",kat:it.kat||"Sonstiges",cond:String(it.zustand||""),url:"/inserat/"+encodeURIComponent(it.id),img:it.bild||"",emoji:"📋",act:"Details ansehen →",ext:false}})
   }).catch(function(){return demoIns(q)})}
 
   function searchAll(){
