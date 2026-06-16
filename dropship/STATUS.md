@@ -3,6 +3,12 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 13 — Eigene Produkt-Videos ausgerollt: 7 Marken)
+- **🎬 7 Marken-Produkte mit eigenem Price-Reveal-Reel als Produkt-Video** (vollautonom: ffmpeg → Shopify-CDN-Upload via MCP+curl → productCreateMedia VIDEO):
+  D&G «The One», Swatch Swiss Made, Casio, Hugo Boss «Alive Intense», Calvin Klein «Eternity», Guess «Glamour», Michael Kors Handtasche.
+  Mundart-Hook → Preis-Reveal → CTA, Safe-Zone. Reels in `reels/luxe-*-9x16.mp4`. Skript `dropship/ads/render_price_reveal.sh` (wiederholbar).
+- **Lieferanten-Videos = 0** (BigBuy/CJ) → eigene Reels sind DER Weg. mp4 auch für TikTok/Meta (vertikal/stumm) nutzbar.
+
 ## 🆕 2026-06-16 (NACHT 12 — Menü premium gestrafft)
 - **🧭 Premium-Menü** per `menuUpdate`: 11→9 Top-Punkte, **Departments zuerst** (Frauen/Herren/Schmuck), „Premium"+„Marken"
   zu **Premium & Marken** gemerged (Redundanz, beide → luxestyle-premium), „Hype 2026" als Sub unter Trends. Clean, premium, alles erreichbar.
