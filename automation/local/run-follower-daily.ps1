@@ -1,6 +1,7 @@
 # run-follower-daily.ps1 — LuxeStyle Marketing OHNE Befehl (für Windows-Taskplaner)
-# Macht 1x/Tag automatisch: Brave starten · CH-Follower · TikTok-Reel posten (API) · IG+TikTok-DMs
-# beantworten · IG/FB-Kommentare beantworten · (sonntags) Entfolgen.
+# Macht 1x/Tag automatisch: Brave starten · CH-Follower · TikTok-Reel posten · IG+TikTok-DMs
+# beantworten · IG/FB-Kommentare beantworten · (sonntags) Entfolgen · ZULETZT analysieren + Gehirn
+# lernen + Autopost-Queue neu bauen (auto.sh-Kette, Windows-tauglich) und ins Repo zurückspeichern.
 # IG/FB-POSTEN läuft separat & ohne PC über den Cloudflare-Worker.
 #
 # EINMALIGE EINRICHTUNG (dann täglich von selbst, kein Tippen):
@@ -67,3 +68,20 @@ node "automation/local/anibis-post.mjs"
 
 # 8) Sonntags zusätzlich entfolgen (Nicht-Zurückfolger nach ~14 Tagen)
 if ((Get-Date).DayOfWeek -eq "Sunday") { node "automation/local/ch-unfollow.mjs" }
+
+# 9) IMMER NACH DEM POSTEN: ANALYSIEREN + LERNEN (User 2026-06-16 „wenn du fertig postest, dann immer Analyse").
+#    Kette wie auto.sh, aber Windows-tauglich via node/python direkt (kein bash nötig). Alles no-op-safe:
+#    (a) frische TikTok-Analyse (best-effort, yt-dlp kann blockieren → nutzt sonst vorhandene Reports),
+#    (b) Gehirn lernen (kumulativ + Ratsche → knowledge.json/pools.json/BRAIN.md),
+#    (c) Autopost-Queue aus Gelerntem neu bauen (mit Dedup-Garantie gegen doppelte Posts).
+try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
+node "automation/brain/brain.mjs"
+node "automation/brain/build_queue.mjs"
+
+# 10) Gelerntes Gehirn + frische Queue zurück ins Repo (sonst geht das Lernen verloren; der Worker
+#     bäckt die Queue beim nächsten `wrangler deploy` ein). Defensiv: erst rebase-pullen, dann pushen.
+git add automation/brain/knowledge.json automation/brain/pools.json automation/brain/queue.json automation/brain/BRAIN.md automation/cloudflare/luxe-poster/src/queue.json reports/ 2>$null
+git commit -m "auto(PC-Task): tägliche Analyse + Gehirn-Lernen + frische Queue" 2>$null
+git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
+git push origin claude/luxestyle-product-CizQ6 2>$null
+Write-Host "✅ Tageslauf fertig: Marketing + analysiert + gelernt + Queue aktualisiert."
