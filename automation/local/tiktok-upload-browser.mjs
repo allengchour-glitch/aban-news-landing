@@ -26,7 +26,7 @@ const argFile = process.argv.find(a => a.endsWith('.mp4'));
 const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
 const REELS = path.join(ROOT, 'reels');
 const CAPS = JSON.parse(fs.readFileSync(path.join(ROOT, 'automation', 'local', 'reels-captions.json'), 'utf8'));
-const DONE = path.join(process.cwd(), 'tiktok-upload-done.txt');
+const DONE = path.join(ROOT, 'automation', 'local', 'tiktok-upload-done.txt'); // fix am Repo-Root → nie Re-Post bei anderem cwd
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
