@@ -11,8 +11,8 @@ compatibility_date = "2026-06-01"
 # Nur Shop-Wartung:        crons = ["45 6 * * *"]
 # Alles (Social + Shop):   crons = ["45 6 * * *", "30 4 * * *", "15 5 * * *", "25 5 * * *", "0 9 * * *", "0 17 * * *"]
 # Zum Aktivieren einkommentieren + erneut deployen. Für Gelato-Fulfillment NICHT nötig (Webhook = fetch).
-# [triggers]
-# crons = ["45 6 * * *"]
+[triggers]
+crons = ["45 6 * * *"]
 
 # --- R2: speichert + liefert die veredelten JPGs öffentlich aus ---
 # DEAKTIVIERT bis R2 im CF-Dashboard freigeschaltet ist (nur für Social-Bild/Video-Hosting nötig,
@@ -30,6 +30,7 @@ id = "6678493bf48d4c599dd7c615e6b5ac94"   # via: wrangler kv namespace create ST
 [vars]
 PUBLIC_BASE = "https://luxestyle-autopilot.allengchour.workers.dev"
 SITE_URL = "https://luxestyle.ch"
+SHOPIFY_SHOP = "au3j0y-hq.myshopify.com"
 GEMINI_IMAGE_MODEL = "gemini-2.5-flash-image"
 META_GRAPH_VERSION = "v21.0"
 ENHANCE_BATCH = "1"
