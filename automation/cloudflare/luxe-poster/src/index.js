@@ -279,6 +279,13 @@ async function run(env, doPost = true) {
     const tt = await postTikTok(item, env).catch((e) => ({ error: String(e) }));
     if (ig.ok || fb.ok || tt.ok) await env.LUXE_KV.put("cursor", String(cursor + 1));
     out.index = cursor; out.item = item.caption.split("\n")[0]; out.ig = ig; out.fb = fb; out.tt = tt;
+    // Post-Log (Observability): letzte 40 Posts mit Erfolg pro Kanal -> abrufbar via ?health=1
+    try {
+      const pl = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]");
+      pl.unshift({ t: new Date().toISOString(), i: cursor, type: item.type || "image",
+        cap: (item.caption || "").split("\n")[0].slice(0, 70), ig: ig.ok ? 1 : 0, fb: fb.ok ? 1 : 0, tt: tt.ok ? 1 : 0 });
+      await env.LUXE_KV.put("post_log", JSON.stringify(pl.slice(0, 40)));
+    } catch (e) { /* best-effort */ }
   } else { out.posted = false; out.note = "Analyse-Slot (kein Post)"; }
   // Meta-Analyse läuft bei JEDEM Cron (6×/Tag)
   out.insights = await metaInsights(ids, env).catch((e) => ({ error: String(e) }));
@@ -335,6 +342,20 @@ export default {
       const cursor = (await env.LUXE_KV.get("cursor")) || "0";
       const url = await env.LUXE_KV.get("queue_url");
       return Response.json({ cursor: Number(cursor), total: q.length, queue_url: url || "(eingebacken)" });
+    }
+    // queue_url aus KV entfernen → Worker nutzt die eingebackene queue.json (kein 404-Fetch je Cron)
+    if (u.searchParams.get("clearqueue")) { await env.LUXE_KV.delete("queue_url"); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url: "cleared", note: "nutzt eingebackene queue.json, cursor=0" }); }
+    // GESUNDHEITS-CHECK (Handy/Chat): laufen die Posts? letzte Posts + Erfolg pro Kanal.  …/?key=…&health=1
+    if (u.searchParams.get("health")) {
+      const [pl, cur] = await Promise.all([env.LUXE_KV.get("post_log"), env.LUXE_KV.get("cursor")]);
+      const posts = JSON.parse(pl || "[]");
+      return Response.json({
+        cursor: Number(cur || 0),
+        posts_logged: posts.length,
+        posts_ok: posts.filter((p) => p.ig || p.fb || p.tt).length,
+        last_post: posts[0] || null,
+        recent: posts.slice(0, 8),
+      });
     }
     return Response.json(await run(env));
   },
