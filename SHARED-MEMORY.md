@@ -54,6 +54,17 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ GROSSE GLEICHMÄSSIGE FÜLL-OFFENSIVE: ~255 Produkte live über ALLE 8 Kategorien** (alle ACTIVE, EAN-Barcode, volle Galerie/0 FAILED, DE-Titel/SEO, 6 Kanäle, auto-sortiert in Kategorie+Preis+Geschenk+Premium):
+- **Laufende Summen (16.06.):** 🧸 Spielzeug ~120 (LEGO/Playmobil/Schleich/Ravensburger/Brio/Barbie/Dragon Ball/Marvel/Sylvanian…),
+  👟 Schuhe ~150 (Nike/Adidas/Puma/Vans/Geox/Hi-Tec/Munich/Joma — Sneaker/Wander/Trail/Fussball/Bade), 👕 Kleidung+Accessoires +34
+  (Hoodies/Shirts/Caps/Mützen/Dessous/Bademäntel — Puma/Nike/Columbia/Burton/Hurley/Rip Curl/Hello Kitty/Bluey),
+  🌻 Garten +22, 🐾 Haustier +17 (Trixie/Hunter/Ferplast/Exo Terra), 🏠 Haus&Küche +13, 🔌 Elektronik +15 (Denver/HORI/Trust/muvit/Startech), 🚗 Auto +4.
+- **DEDUP-PFLICHT (wichtig):** vor Elektronik-Chargen IMMER live `productVariants(query:"sku:bb-…")` prüfen — 7 Elektronik-SKUs
+  (Sony/JBL/Canon/Samsung-Hülle/Mars/Bombata/Trust-Kopfh.) waren bereits angelegt → übersprungen. SKU-Ledger session-lokal `/tmp/created_skus.txt`.
+- **REGELN gefestigt:** Lebensmittel/Tierfutter/Nassfutter, Chemie (Herbizid/Mückenmittel/Rattengift), Gaskartuschen, Ersatzteile
+  (Mähmesser/Spurplatten/Getriebeöl/Gasdruckfeder/Andis-Klinge) = NICHT anlegen. Falsch im Bucket gelandete Artikel umsortieren
+  (z.B. Viceroy-Schmuckset → Schmuck statt Spielzeug; Kinder-Schminksets → Spielzeug statt Kleidung). Volle Galerie IMMER beim Anlegen mitgeben.
+
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ LEERE KATEGORIEN GEFÜLLT: +72 Produkte live (alle ACTIVE, EAN, Galerie, DE-Titel/SEO, 6 Kanäle):**
 - **Haushalt/Küche 6** (Geschirr-Set Home ESPRIT, Frischhaltedosen, Zuckerdose, Deko-Korb, Badematte, Kinder-Schreibtisch).
 - **🧸 Spielzeug 14** (Barbie, Paw Patrol, Puzzle Educa, Knet-Sets Llopis/Llorens/Jovi, Spielküche Moltó, Plüsch Clementoni,
