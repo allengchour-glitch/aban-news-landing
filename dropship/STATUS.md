@@ -3,6 +3,10 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 6 — Halskette + Sonnenbrille; CJ-Pool für diese Nischen dünn)
+- **📿 +1 Halskette «Rosée»** (Kristall-Tropfen) → sub-halsketten. **🕶️ +1 Sonnenbrille «Riviera»** (Oversize getönt UV400) → sonnenbrillen-eyewear + Sommer/Reisen. Beide ACTIVE/6 Kanäle/Bild-QA'd, in Social/Queue.
+- **⚠️ ERKENNTNIS:** CJ-List-API liefert für **Halsketten & Sonnenbrillen kaum saubere Kandidaten** (meist quick/-404-URLs, Asia-Motive, Name/Bild-Mismatch) → je nur 1 brauchbar. Diese Nischen besser über **BigBuy (Import-Session, Marken-Sonnenbrillen wie Superdry/Citizen schon da)** oder Fokus auf Reichweite/Conversion.
+
 ## 🆕 2026-06-16 (NACHT 5 — Statement-Ohrringe/Creolen gefüllt)
 - **💎 Ohrringe gefüllt:** 4 neue (Kätzchen «Minou» 925, Herz-Trockenblumen «Fleur», Creolen «Cascade», Statement «Étincelle»),
   Bild-QA'd (2 mit Overlay-Text verworfen), CHF 22.90–27.90, ACTIVE/6 Kanäle, Tag `ohrringe`. **💎 Ohrringe-Collection jetzt 55**
