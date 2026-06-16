@@ -44,6 +44,10 @@ def is_skippable(url: str) -> bool:
         return True
     if PLACEHOLDER.search(url):
         return True
+    # Bare Platzhalter-Token (z. B. AFFILIATE-URL, IMMO_HYPOTHEK_URL) — werden zur
+    # Laufzeit gegated ersetzt; kein echtes internes Ziel.
+    if re.fullmatch(r"[A-Z][A-Z0-9_-]+", url):
+        return True
     return False
 
 
@@ -62,10 +66,17 @@ def scan() -> dict[str, list[str]]:
                 frm = parts[0].split("?")[0].rstrip("/")
                 redirects.add(frm)
                 redirects.add(frm.lstrip("/"))
+    # Nur DEPLOYTE Seiten prüfen — nicht-deployte Ordner spiegeln build-pages.sh
+    # (sonst Fehlalarme aus z. B. dropship/-Shop-Fragmenten oder dem Build _site/).
+    SKIP_TOP = {"_site", "dropship", "node_modules", "video-prototypes", "reels",
+                "social", "mediakit", "ki-schriftsteller", "luxestyle-3d",
+                "luxestyle-shop", "linkedin", "automation", "tools", "reports",
+                "ki-tools-radar"}
     htmls = [
         p for p in Path(".").rglob("*.html")
         if "/dist/" not in p.as_posix()
-        and "node_modules" not in p.as_posix()
+        and p.parts[0] not in SKIP_TOP
+        and not p.name.startswith("issue-")  # Newsletter-Entwürfe (nicht deployt)
     ]
     broken: dict[str, list[str]] = defaultdict(list)
     for f in htmls:
