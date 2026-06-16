@@ -27,10 +27,15 @@ Tippen löst am PC aus (Listener pollt alle 90 s):
 - [ ] [🎵 tiktok](https://luxe-poster.allengchour.workers.dev/?key=Abanaban192%2B&cmd=tiktok)
 
 ## 🤖 Läuft schon autonom (nichts zu tun)
-- [x] IG/FB-Posting (Cron 3×/Tag, Queue 100+ Posts / 23+ Reels)
-- [x] Klaviyo-Flows live (Abandoned Cart/Checkout, Welcome, Win-Back, Post-Purchase) + WELCOME10
+- [x] IG/FB-Posting (Cron 3×/Tag, Queue 100+ Posts / 23+ Reels)- [x] Klaviyo-Flows live (Abandoned Cart/Checkout, Welcome, Win-Back, Post-Purchase) + WELCOME10
 - [x] 34 Produkte mit eigenem Produkt-Video
 - [x] Katalog/Kategorien sauber, Menü premium, Merchant entsperrt
+
+## 🤖 PURE AUTOMATION einrichten (einmal → läuft hands-off)
+Komplette Anleitung: **`dropship/PURE-AUTOMATION-SETUP.md`**
+- [ ] **Ebene 1 (5 Min PC):** Worker deployen (`npx wrangler deploy` + Secrets + KV) → Cloud postet/antwortet/analysiert **für immer** (Queue loopt endlos, kein PC/GitHub nötig)
+- [ ] **Ebene 2 (10 Min PC):** `run-follower-daily.ps1` als Windows-Task → tutti/Follower/TikTok täglich automatisch
+- [x] **Ebene 3:** Klaviyo-Flows (Conversion) — läuft schon
 
 ---
 **Wenn 1–5 erledigt → sag „Auswertung"** → ich prüfe Käufe/ATC, verstärke Gewinner, droppe Verlierer.
