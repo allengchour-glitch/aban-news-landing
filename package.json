@@ -8,7 +8,10 @@
     "validate:all": "html-validate \"*.html\"",
     "format:check": "prettier --check index.html about.html ueber-aban.html impressum.html datenschutz.html",
     "shots": "node tools/screenshots.mjs",
-    "audit": "node tools/lh-audit.mjs"
+    "audit": "node tools/lh-audit.mjs",
+    "setup": "npm install",
+    "qa": "html-validate index.html about.html ueber-aban.html impressum.html datenschutz.html founding.html premium-briefing.html marktplatz.html immobilien.html inserate.html angebote-suche.html auto-suche.html stellenangebote.html && python3 tools/check_internal_links.py && python3 tools/consistency_check.py && python3 tools/daily_improvement_scan.py",
+    "qa:html": "html-validate \"*.html\""
   },
   "devDependencies": {
     "html-validate": "^9.7.1",
