@@ -14,9 +14,13 @@
  *   1) Brave läuft mit  --remote-debugging-port=9222 --user-data-dir="$env:USERPROFILE\brave-agent"
  *      und du bist bei instagram.com + tiktok.com eingeloggt (= dein Dauer-Setup).
  *   2) (einmalig)  npm install playwright-core
- *   3)  node ch-follower-growth.mjs              # IG + TikTok, Tageslimit
+ *   3)  node ch-follower-growth.mjs              # IG-Influencer + Hashtags + TikTok, Tageslimit
  *       node ch-follower-growth.mjs instagram    # nur eine Plattform
  *       node ch-follower-growth.mjs --dry        # nichts klicken, nur zeigen
+ *       node ch-follower-growth.mjs --comments   # OPT-IN: dazu auf Influencer-Posts kommentieren (Cap 6, sehr vorsichtig)
+ *
+ * INFLUENCER-MODUS: folgt den CH-Influencern in IG_SEED_ACCOUNTS (Liste: dropship/INFLUENCER-TARGETS.md),
+ * liked deren neue Beiträge und — nur mit --comments — setzt kurze, echte Mundart-Kommentare (KEIN Promo/Link).
  *
  * SICHERHEIT GEGEN SPERREN (bewusst konservativ):
  *   • harte Tages-Caps (IG 40 Follows / TikTok 30) + Likes ~2× so viele
@@ -48,10 +52,22 @@ const TT_TAGS = [
 // Deren engagierte Follower = unsere Wunsch-Zielgruppe. Weitere Kandidaten: dropship/INFLUENCER-TARGETS.md.
 const IG_SEED_ACCOUNTS = ['oliviafaeh', 'mimoza', 'omnibloomofficial'];
 
+// ---- Kommentar-Pool (NUR wenn --comments / COMMENTS=1) -------------------------
+// ⚠️ Auto-Kommentare = höchstes Sperr-Risiko. Darum: OPT-IN, sehr kleiner Cap, NUR auf
+// Influencer-Beiträgen (nicht random), KEINE Links/kein Marken-Promo (= Spam-Flag), variiert.
+// Echt-positiv & kurz auf Mundart — wie ein echter Schweizer Fan.
+const IG_COMMENTS = [
+  'Schöne Vibes! 😍', 'Mega Look 🔥', 'Wow, das gseht traumhaft us! ✨', 'So schön 😍',
+  'Toll gmacht 👏', 'Richtig schön! 🤩', 'Liebe dä Style! 💫', 'Wunderschön ✨',
+  'Dä Look isch on point 🔥', 'Voll schön gmacht 😍',
+];
+
 // ---- Limits (konservativ; lieber täglich wenig & dauerhaft) -------------------
+const COMMENTS_ON = process.argv.includes('--comments') || process.env.COMMENTS === '1';
 const CAP = {
   ig_follows: Number(process.env.IG_FOLLOWS || 40),
   tt_follows: Number(process.env.TT_FOLLOWS || 30),
+  ig_comments: COMMENTS_ON ? Number(process.env.IG_COMMENTS_CAP || 6) : 0, // sehr klein, nur Influencer
 };
 const DRY = process.argv.includes('--dry');
 const ONLY = (process.argv.find(a => !a.startsWith('-')) || '').toLowerCase();
@@ -158,11 +174,66 @@ async function growTikTok(ctx) {
   log(`TikTok fertig: ${follows} neue CH-Kontakte angesprochen.`);
 }
 
+// Kommentar absetzen (nur Influencer-Beiträge, Opt-in). Defensiv: Feld finden, tippen, senden.
+async function tryComment(p) {
+  const text = IG_COMMENTS[rnd(0, IG_COMMENTS.length)];
+  try {
+    const box = p.locator('textarea[aria-label*="omment"], textarea[aria-label*="ommentar"], form textarea').first();
+    if (!(await box.count().catch(() => 0))) return false;
+    await box.click({ timeout: 4000 }); await sleep(rnd(800, 1600));
+    await box.type(text, { delay: rnd(40, 110) }); await sleep(rnd(900, 1800));
+    const post = p.locator('div[role="button"]:has-text("Post"), div[role="button"]:has-text("Posten"), button:has-text("Post"), button:has-text("Posten")').first();
+    if (await post.count().catch(() => 0)) { await post.click({ timeout: 4000 }).catch(() => {}); }
+    else { await box.press('Enter').catch(() => {}); }
+    log(`    💬 kommentiert: „${text}"`);
+    return true;
+  } catch { return false; }
+}
+
+// ---------- INSTAGRAM: Influencer gezielt ansprechen (folgen + Beiträge engagen) ----------
+async function growSeedInfluencers(ctx) {
+  if (!IG_SEED_ACCOUNTS.length) return;
+  log('=== Instagram: Schweizer Influencer gezielt ===');
+  const p = await ctx.newPage();
+  let comments = 0;
+  for (const acc of IG_SEED_ACCOUNTS) {
+    await p.goto(`https://www.instagram.com/${acc}/`, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+    await sleep(rnd(3500, 6000));
+    if (await blocked(p)) { log('⛔ IG-Limit → stoppe.'); break; }
+    // Dem Influencer selbst folgen (falls noch nicht)
+    if (!seen.has('ig:' + acc)) {
+      if (!DRY) {
+        const fb = p.locator('header button:has-text("Follow"), header button:has-text("Folgen")').first();
+        if (await fb.count().catch(() => 0)) { await fb.click({ timeout: 4000 }).catch(() => {}); }
+      }
+      remember('ig:' + acc);
+      log(`  ${DRY ? '[dry] ' : ''}➕ folge Influencer @${acc}`);
+      await pause();
+    }
+    // 1–2 aktuelle Beiträge öffnen → liken + (opt-in) kommentieren
+    const posts = await p.locator('a[href*="/p/"]').all().catch(() => []);
+    for (let i = 0; i < Math.min(posts.length, 2); i++) {
+      try {
+        await posts[i].click({ timeout: 8000 }); await sleep(rnd(2500, 4500));
+        if (!DRY) await p.locator('svg[aria-label="Like"], svg[aria-label="Gefällt mir"]').first().click({ timeout: 4000 }).catch(() => {});
+        await sleep(rnd(1500, 3000));
+        if (!DRY && comments < CAP.ig_comments) { if (await tryComment(p)) comments++; }
+        await p.keyboard.press('Escape').catch(() => {});
+        if (await blocked(p)) { log('⛔ IG-Limit → stoppe.'); break; }
+        await pause();
+      } catch { await p.keyboard.press('Escape').catch(() => {}); await sleep(1500); }
+    }
+  }
+  await p.screenshot({ path: path.join(SHOTS, 'influencers.png') }).catch(() => {});
+  log(`Influencer fertig: ${comments}/${CAP.ig_comments} Kommentare. (Folgen + Likes dazu.)`);
+}
+
 (async () => {
-  log(`Start CH-Follower-Wachstum ${DRY ? '(DRY-RUN)' : ''} — Caps: IG ${CAP.ig_follows} / TikTok ${CAP.tt_follows}. Ledger: ${seen.size} bekannt.`);
+  log(`Start CH-Follower-Wachstum ${DRY ? '(DRY-RUN)' : ''} — Caps: IG ${CAP.ig_follows} / TikTok ${CAP.tt_follows} / Kommentare ${CAP.ig_comments}${COMMENTS_ON ? '' : ' (AUS)'}. Ledger: ${seen.size} bekannt.`);
   const b = await connect();
   const ctx = b.contexts()[0] || await b.newContext();
   log('✓ Mit Brave verbunden.');
+  try { if (!ONLY || ONLY === 'instagram') await growSeedInfluencers(ctx); } catch (e) { log('Influencer-Fehler:', e.message); }
   try { if (!ONLY || ONLY === 'instagram') await growInstagram(ctx); } catch (e) { log('IG-Fehler:', e.message); }
   try { if (!ONLY || ONLY === 'tiktok') await growTikTok(ctx); } catch (e) { log('TikTok-Fehler:', e.message); }
   log('\nFertig. Screenshots in ./ch-growth-screens/. Brave bleibt offen. Täglich 1× laufen lassen = stetiges CH-Wachstum.');
