@@ -648,11 +648,15 @@
         <button type="button" id="t-mo" class="on" aria-pressed="true">Monatlich</button>
         <button type="button" id="t-yr" aria-pressed="false">Jährlich <span class="save">−18&nbsp;%</span></button>
       </div>
+      <div class="toggle" id="ccy-toggle" role="group" aria-label="Währung" style="margin-left:8px">
+        <button type="button" id="c-eur" class="on" aria-pressed="true">€&nbsp;EUR</button>
+        <button type="button" id="c-chf" aria-pressed="false">CHF</button>
+      </div>
       <div class="prices">
         <!-- Free -->
         <div class="price">
           <div class="pname">Free</div>
-          <div class="pp">€0</div>
+          <div class="pp"><span class="amt" data-v="0">€0</span></div>
           <div class="psub">für immer kostenlos</div>
           <ul>
             <li>Täglicher Newsletter (Mo–Fr)</li>
@@ -680,8 +684,8 @@
         <!-- Pro -->
         <div class="price">
           <div class="pname">Pro ✨</div>
-          <div class="pp">€19<small> /Monat</small></div>
-          <div class="psub">oder €190 / Jahr · ⭐ 2 Monate gratis</div>
+          <div class="pp"><span class="amt" data-v="19">€19</span><small> /Monat</small></div>
+          <div class="psub">oder <span class="amt" data-v="190">€190</span> / Jahr · ⭐ 2 Monate gratis</div>
           <ul>
             <li>Alles aus Premium</li>
             <li>KI-Studio: 7 Live-KI-Tools</li>
@@ -694,7 +698,7 @@
         <!-- Founding -->
         <div class="price">
           <div class="pname">Founding</div>
-          <div class="pp">€69<small> einmalig</small></div>
+          <div class="pp"><span class="amt" data-v="69">€69</span><small> einmalig</small></div>
           <div class="psub">lifetime — keine Abo-Gebühr</div>
           <ul>
             <li>Alles aus Premium — auf Lebenszeit</li>
@@ -707,7 +711,7 @@
           <a href="/founding.html" class="btn">Founding sichern</a>
         </div>
       </div>
-      <p class="pfine">Preise in € · beim Checkout ggf. in deiner Landeswährung · jederzeit kündbar · Zahlung sicher über den Anbieter. Details &amp; FAQ auf der <a href="/founding.html">Premium-Seite</a>.</p>
+      <p class="pfine">Preise in € oder CHF (Richtwert, 1:1) · beim Checkout in deiner Landeswährung abgerechnet · jederzeit kündbar · Zahlung sicher über den Anbieter. Details &amp; FAQ auf der <a href="/founding.html">Premium-Seite</a>.</p>
     </div>
   </section>
 
@@ -825,14 +829,22 @@
     document.querySelectorAll('form.cta').forEach(function(f){
       f.addEventListener('submit',function(){var b=f.querySelector('button');if(b){b.textContent='Wird geöffnet…';b.disabled=true;}});
     });
-    // Premium Monats-/Jahres-Umschalter
+    // Premium Monats-/Jahres-Umschalter + EUR/CHF-Währungsschalter (Parität 1:1)
     var mo=document.getElementById('t-mo'),yr=document.getElementById('t-yr'),
         pp=document.getElementById('prem-pp'),sub=document.getElementById('prem-sub'),
         buy=document.getElementById('prem-buy'),PAY=(window.ABAN_PAY||{});
+    var ceur=document.getElementById('c-eur'),cchf=document.getElementById('c-chf');
+    var CCY=(function(){try{return localStorage.getItem('aban_ccy')||'EUR'}catch(e){return 'EUR'}});
+    function money(v){ return CCY()==='CHF' ? 'CHF&nbsp;'+v : '€'+v; }
+    var curPer='mo';
+    function renderStatic(){ // Free/Pro/Founding-Beträge an die Währung anpassen
+      var a=document.querySelectorAll('#preise .amt');
+      for(var i=0;i<a.length;i++){ a[i].innerHTML=money(a[i].getAttribute('data-v')); }
+    }
     function setP(per){
-      var m=per==='mo';
-      pp.innerHTML= m ? '€9<small> /Monat</small>' : '€89<small> /Jahr</small>';
-      sub.textContent= m ? 'oder €89 / Jahr' : 'entspricht €7,42 / Monat';
+      curPer=per; var m=per==='mo';
+      pp.innerHTML= (m ? money(9) : money(89)) + '<small> /'+(m?'Monat':'Jahr')+'</small>';
+      sub.innerHTML= m ? ('oder '+money(89)+' / Jahr') : ('entspricht '+money('7,42')+' / Monat');
       mo.classList.toggle('on',m); yr.classList.toggle('on',!m);
       mo.setAttribute('aria-pressed',m); yr.setAttribute('aria-pressed',!m);
       if(buy){
@@ -841,7 +853,18 @@
         else { buy.href='/founding.html'; buy.removeAttribute('target'); buy.textContent='Premium ansehen'; }
       }
     }
-    if(mo&&yr){mo.addEventListener('click',function(){setP('mo')});yr.addEventListener('click',function(){setP('yr')});setP('mo');}
+    function setCcy(c){
+      try{localStorage.setItem('aban_ccy',c)}catch(e){}
+      var isChf=c==='CHF';
+      if(ceur&&cchf){
+        ceur.classList.toggle('on',!isChf); cchf.classList.toggle('on',isChf);
+        ceur.setAttribute('aria-pressed',!isChf); cchf.setAttribute('aria-pressed',isChf);
+      }
+      setP(curPer); renderStatic();
+    }
+    if(mo&&yr){mo.addEventListener('click',function(){setP('mo')});yr.addEventListener('click',function(){setP('yr')});}
+    if(ceur&&cchf){ceur.addEventListener('click',function(){setCcy('EUR')});cchf.addEventListener('click',function(){setCcy('CHF')});}
+    setCcy(CCY()); // initialer Render (berücksichtigt gespeicherte Währung)
 
     // Sticky Mobile-CTA: nach etwas Scrollen einblenden
     var mcta=document.getElementById('mcta');
