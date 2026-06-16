@@ -85,6 +85,13 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
 .sortw select{font-family:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 9px;margin-left:5px;background:#fff;color:var(--ink)}
 .freset{background:none;border:0;color:var(--amber-dk);font-weight:700;cursor:pointer}
 .freset:hover{text-decoration:underline}
+.saved{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.slbl{font-size:.8rem;color:var(--muted)}
+.schip{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.schip .sgo{background:none;border:0;padding:6px 11px;font-weight:700;font-size:.82rem;color:var(--ink2);cursor:pointer;font-family:inherit}
+.schip .sgo:hover{color:var(--amber-dk)}
+.schip .sdel{background:none;border:0;border-left:1px solid var(--line);padding:6px 9px;color:var(--muted);cursor:pointer;font-weight:800}
+.schip .sdel:hover{color:var(--amber-dk)}
 .achips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .achip{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:5px 12px;font-size:.82rem;font-weight:600;color:var(--ink2);cursor:pointer;font-family:inherit}
 .achip:hover{border-color:var(--amber)}
@@ -124,8 +131,10 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     <div class="fgrp"><span class="flbl">Zustand</span><div class="chips" id="fcond"></div></div>
     <div class="fbar"><span class="fcount" id="fcount"></span>
       <label class="sortw">Sortieren<select id="sort"><option value="rel">Relevanz</option><option value="pasc">Preis ↑</option><option value="pdesc">Preis ↓</option></select></label>
+      <button class="freset" id="fsave" type="button">★ Suche speichern</button>
       <button class="freset" id="freset" type="button">↺ Zurücksetzen</button></div>
   </div>
+  <div class="saved" id="saved" hidden></div>
   <div class="achips" id="achips" hidden></div>
   <div class="row" id="grid"></div>
   <div class="empty" id="empty" hidden>Tippe oben ein, was du suchst — wir schauen in allen Quellen gleichzeitig nach.</div>
@@ -235,10 +244,24 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     window.__ach=parts.map(function(p){return p.clr});}
   // Suche teilbar/merkbar: Zustand in der URL (Zurück-Button + Link kopieren)
   var GRP=[["src","#fsrc"],["cat","#fcat"],["reg","#freg"],["pkl","#fpkl"],["cond","#fcond"]];
-  function syncUrl(){var p=new URLSearchParams();var q=$("#q").value.trim();if(q)p.set("q",q);
+  function paramsNow(){var p=new URLSearchParams();var q=$("#q").value.trim();if(q)p.set("q",q);
     GRP.forEach(function(g){var v=checked(g[1]+" input");if(v.length)p.set(g[0],v.join(","))});
-    if($("#sort").value!=="rel")p.set("sort",$("#sort").value);
-    var qs=p.toString();history.replaceState(null,"",qs?("?"+qs):location.pathname);}
+    if($("#sort").value!=="rel")p.set("sort",$("#sort").value);return p.toString();}
+  function syncUrl(){var qs=paramsNow();history.replaceState(null,"",qs?("?"+qs):location.pathname);}
+  // Gespeicherte Suchen (lokal im Browser)
+  var SKEY="abanSavedSearch";
+  function savedGet(){try{return JSON.parse(localStorage.getItem(SKEY)||"[]")}catch(e){return[]}}
+  function savedSet(a){try{localStorage.setItem(SKEY,JSON.stringify(a.slice(0,12)))}catch(e){}}
+  function savedRender(){var box=$("#saved");if(!box)return;var a=savedGet();if(!a.length){box.hidden=true;box.innerHTML="";return}
+    box.hidden=false;box.innerHTML='<span class="slbl">★ Gespeichert:</span>'+a.map(function(s,i){return '<span class="schip"><button class="sgo" data-go="'+i+'">🔎 '+esc(s.label)+'</button><button class="sdel" data-del="'+i+'" title="Entfernen">×</button></span>'}).join("");}
+  $("#fsave").addEventListener("click",function(){var qs=paramsNow();var q=$("#q").value.trim();
+    var nf=document.querySelectorAll("#fpanel input:checked").length;
+    var label=(q?'"'+q+'"':"")+(nf?(q?" +":"")+nf+" Filter":"")||"Alle";
+    var a=savedGet().filter(function(x){return x.qs!==qs});a.unshift({label:label,qs:qs});savedSet(a);savedRender();
+    this.textContent="✓ Gespeichert";var b=this;setTimeout(function(){b.textContent="★ Suche speichern"},1400);});
+  $("#saved").addEventListener("click",function(e){
+    var g=e.target.closest("[data-go]");if(g){var s=savedGet()[+g.dataset.go];if(s){location.search=s.qs?("?"+s.qs):"";}return}
+    var d=e.target.closest("[data-del]");if(d){var a=savedGet();a.splice(+d.dataset.del,1);savedSet(a);savedRender();}});
   function applyUrl(){var sp=new URLSearchParams(location.search);
     if(sp.get("q"))$("#q").value=sp.get("q");
     GRP.forEach(function(g){var vals=(sp.get(g[0])||"").split(",").filter(Boolean);if(vals.length)Array.prototype.forEach.call(document.querySelectorAll(g[1]+" input"),function(i){if(vals.indexOf(i.value)>=0)i.checked=true})});
@@ -251,7 +274,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   $("#ftoggle").addEventListener("click",function(){var p=$("#fpanel"),o=p.classList.toggle("open");this.setAttribute("aria-expanded",o?"true":"false")});
   $("#freset").addEventListener("click",function(){Array.prototype.forEach.call(document.querySelectorAll("#fpanel input"),function(i){i.checked=false});$("#sort").value="rel";afterFilter()});
 
-  applyUrl();updBadge();searchAll();
+  applyUrl();updBadge();savedRender();searchAll();
 })();
 </script>
 </body>
