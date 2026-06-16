@@ -15,8 +15,13 @@ Ziel des Auftrags (CLAUDE.md): Shop vollautonom betreiben → kaufende Kunden. D
 |---|---|---|
 | `automation/shop_autopilot.mjs` | **SEO-Autofix** neuer Produkte (ohne `seo.title`) + **Bild-QA** (FAILED-Report) + **Health-Report** + Telegram-Digest | `node automation/shop_autopilot.mjs` (DRY) · `LIVE=1` schreibt · `TASK=all\|seo\|images\|health` |
 | `automation/update_bestsellers.mjs` | **Bestseller** der sichtbaren Top-10 (`bestseller-premium-heroes`) nach echten Verkäufen ranken; Fallback Review-Sieger + `good_products.csv` | `LIVE=1 node automation/update_bestsellers.mjs` |
+| `automation/price_guard.mjs` | **Verkaufbarkeit schützen**: Varianten mit `inventoryPolicy=DENY` → `CONTINUE` (nie „ausverkauft"); meldet Preis-0 / sinnlose compareAtPrice | `LIVE=1 node automation/price_guard.mjs` |
+| `automation/link_guard.mjs` | **404-Wächter**: prüft Menü- + Cross-Sell-Collection-Links auf Existenz/Publikation; legt sichere Swapped-Prefix-Redirects an | `LIVE=1 node automation/link_guard.mjs` |
+| `automation/cross_sell.mjs` | hängt Produkten ohne internen Collection-Link eine **Cross-Sell-Box** an (Tag/Typ → verifizierte Collection) | `LIVE=1 node automation/cross_sell.mjs` |
 | `cloudflare/src/shop.js` | Worker-Port der Shop-Wartung (Cron 06:45 → KV `shop_health`, sichtbar unter `/health`) | per Cron / `/run?task=shop&key=RUN_KEY` |
 | `cloudflare/src/{worker,video,gelato,stripe,products}.js` | Social-Autopilot, Fulfillment, Checkout | per Cron / Webhook |
+
+**Workflows:** `shop-autopilot.yml` (täglich, SEO/QA), `bestseller-refresh.yml` (täglich), `shop-guards.yml` (wöchentlich: price/link/cross-sell).
 
 Alle Tools sind **no-op-sicher** (ohne Creds passiert nichts) und **idempotent** (DRY-Default, `LIVE=1` schreibt).
 
