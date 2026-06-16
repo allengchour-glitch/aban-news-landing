@@ -6,7 +6,7 @@
 ## 🆕 2026-06-16 (NACHT 2 — Caps-Kategorie autonom + Marken auf Meta)
 - **🧢 CAPS-KATEGORIE LIVE** (User „eine Kategorie voller Caps"): 4 Caps via CJ (Token ok), Bild-QA'd (1 Knockoff verworfen):
   Flat-Cap «Brigade» camo 24.90 · Vintage «Liberty» 27.90 · Pailletten-Baskenmütze «Scintille» 29.90 · Docker-Mütze «Marin» 27.90.
-  ACTIVE/6 Kanäle/kaufbar/deutsche Texte+Grössen-Hinweis. Smart-Collection **„🧢 Caps & Hüte"** (`caps-hute`). In Social+Worker-Queue.
+  ACTIVE/6 Kanäle/kaufbar/deutsche Texte+Grössen-Hinweis. Smart-Collection **„🧢 Caps & Hüte"** (`caps-hute`) — **NACHGEFÜLLT auf 14 Caps** (Baseball/Bucket/Cord/5-Panel/Denim/Beret/Docker, CHF 22.90–29.90, alle Bild-QA'd). In Social+Worker-Queue.
 - **📣 BigBuy-Marken in Meta-Queue** (10 Posts: D&G/Swatch/Casio/Hugo Boss/CK/Guess/MK/Citizen/Tommy/Morellato), git-gesteuert.
 - **🎯 Marktlücken** (`MARKTLUECKEN-2026.md`): HERO=wasserfester Edelstahl-Schmuck (→Import-Session), TWINT-auf-PDP (→Theme), Micro-Influencer/Google-Business/Open-Air-Reels.
 
