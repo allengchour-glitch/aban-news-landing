@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 7 — Ring + Abschluss Nischen-Fill; Fokus jetzt Reichweite)
+- **💍 Ring «Astra»** (Stern&Mond, drehbar & VERSTELLBAR = One-Size, kein Grössen-Risiko) live, ACTIVE/6 Kanäle. Fixe-Grösse-Ringe BEWUSST nicht (Retouren-Risiko ohne Grössen-Varianten).
+- **🛑 Nischen-Grinden gestoppt (ehrlich):** CJ-List-API liefert für Halsketten/Sonnenbrillen/Haar-Accessoires kaum saubere Treffer (quick/-404, Asia-Motive, Name/Bild-Mismatch, Haar-Suche traf Haarpflege). Diminishing returns → an BigBuy-Import-Session delegiert (SHARED-MEMORY): premium Sonnenbrillen/Halsketten + Ringe MIT Grössen.
+- **🎯 #1 REICHWEITE/CONVERSION = jetzt der Hebel** (Katalog ist breit+sauber): User-Klicks TWINT-auf-PDP (Theme) · Pixel+CH-Kampagne · Google Business · `wrangler deploy` (Kommentar-Auto-Antwort). Social-Queue hat alle neuen Kategorien (97 Posts), tutti/anibis bereit.
+
 ## 🆕 2026-06-16 (NACHT 6 — Halskette + Sonnenbrille; CJ-Pool für diese Nischen dünn)
 - **📿 +1 Halskette «Rosée»** (Kristall-Tropfen) → sub-halsketten. **🕶️ +1 Sonnenbrille «Riviera»** (Oversize getönt UV400) → sonnenbrillen-eyewear + Sommer/Reisen. Beide ACTIVE/6 Kanäle/Bild-QA'd, in Social/Queue.
 - **⚠️ ERKENNTNIS:** CJ-List-API liefert für **Halsketten & Sonnenbrillen kaum saubere Kandidaten** (meist quick/-404-URLs, Asia-Motive, Name/Bild-Mismatch) → je nur 1 brauchbar. Diese Nischen besser über **BigBuy (Import-Session, Marken-Sonnenbrillen wie Superdry/Citizen schon da)** oder Fokus auf Reichweite/Conversion.

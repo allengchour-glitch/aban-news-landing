@@ -69,7 +69,10 @@
   CJ/BigBuy-Token aktiv — Stand: ~~(1) HERO wasserfester Edelstahl-Schmuck~~ → **ERLEDIGT (diese Session 2026-06-16, CJ-Token
   funktionierte): 6 Stück live** (Armbänder «Amore»/«Cœur»/«Trésor», Halskette «Goutte», Armreif «Couleur», Titan «Nœud» +
   Ohrhänger «Papillon») in Collection **`wasserfester-schmuck`**, ACTIVE/6 Kanäle/Bild-QA'd/kaufbar, Tag `wasserfest`. **NICHT
-  doppelt importieren.** Rest noch offen: Statement-Creolen, Layering-Sets als Bundle, Pendant-Halsketten, Hochzeitsgast-Schmuck. ~~(2) CAPS~~ →
+  doppelt importieren.** **➡️ BITTE IHR (BigBuy-Token) füllen — CJ liefert dafür kaum saubere Bilder (quick/-404/Asia-Motive/Mismatch):
+  premium Marken-SONNENBRILLEN (Superdry/Citizen sind schon da → mehr) + Marken-HALSKETTEN + RINGE MIT GRÖSSEN-VARIANTEN
+  (Ringe ohne Grössen = Retouren-Risiko, drum hab ich nur 1 verstellbaren angelegt).** Erledigt von mir (CJ, je QA'd):
+  4 Statement-/Creolen-Ohrringe (→💎 Ohrringe jetzt 55), +1 Halskette «Rosée», +1 Sonnenbrille «Riviera», +1 verstellbarer Ring «Astra». ~~(2) CAPS~~ →
   **CAPS ERLEDIGT (diese Session, 2026-06-16): 4 Caps live** (Flat-Cap «Brigade» camo, Vintage «Liberty», Pailletten-Baskenmütze
   «Scintille», Docker-Mütze «Marin») in neuer Smart-Collection **„🧢 Caps & Hüte"** (`caps-hute`, Rule tag `huete`), ACTIVE/6 Kanäle/
   Bild-QA'd/kaufbar. **NICHT nochmal Caps importieren.** **(3) Anlass-Bundles** „Geschenk unter 50 Franken"/Hochzeitsgast. Bild-QA (kein asiat. Text/Watermark) + Marke/Barcode wie gehabt.
