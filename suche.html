@@ -46,17 +46,16 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .shead h2{font-size:1.25rem}.shead .ic{font-size:1.4rem}
 .shead .all{margin-left:auto;font-size:.85rem;font-weight:700}
 .shead .all:hover{text-decoration:underline}
-.row{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,border-color .15s}
-.c:hover{box-shadow:var(--shadow);transform:translateY(-1px);border-color:#dcc89c}
-.c.prod{padding:0;overflow:hidden}
-.c.prod .ph{aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#bcae95;font-size:1.8rem;transition:transform .25s ease}
-.c.prod:hover .ph{transform:scale(1.06)}
-.c.prod .pb{padding:11px 12px;display:flex;flex-direction:column;flex:1}
-.c .t{font-weight:600;font-size:.92rem;line-height:1.3;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.c .m{font-size:.78rem;color:var(--muted);margin-bottom:8px}
-.c .p{color:var(--amber-dk);font-weight:800}
-.c .go2{margin-top:auto;align-self:flex-start;color:var(--amber-dk);font-weight:700;font-size:.84rem}
+.row{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:740px){.row{grid-template-columns:1fr 1fr}}
+.c{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:12px;display:flex;flex-direction:row;gap:12px;align-items:stretch;transition:box-shadow .15s,border-color .15s}
+.c:hover{box-shadow:var(--shadow);border-color:#dcc89c}
+.c .thumb{flex:0 0 78px;width:78px;height:78px;border-radius:9px;background:#f3eee4 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#bcae95;font-size:1.7rem}
+.c .body{flex:1;min-width:0;display:flex;flex-direction:column}
+.c .t{font-weight:700;font-size:.98rem;line-height:1.32;margin-bottom:2px;color:var(--ink)}
+.c .m{font-size:.8rem;color:var(--muted);margin:2px 0}
+.c .p{color:var(--amber-dk);font-weight:800;font-size:1.05rem;margin:1px 0}
+.c .go2{margin-top:auto;align-self:flex-start;color:var(--amber-dk);font-weight:700;font-size:.84rem;padding-top:4px}
 .sub{color:var(--muted);font-size:.9rem;padding:8px 0}
 .skl{background:var(--card);border:1px solid var(--line);border-radius:13px;height:96px;animation:pulse 1.2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
@@ -176,14 +175,13 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     return items;
   }
   function card(it){
-    var badge='<span class="badge2 '+(it.src==="ins"?"b-ins":it.src==="prod"?"b-prod":"b-job")+'">'+(it.src==="ins"?(it.demo?"Beispiel · Inserat":"Inserat"):it.src==="prod"?"Angebot":"Job")+'</span>';
+    var bc=it.src==="ins"?"b-ins":it.src==="prod"?"b-prod":"b-job";
+    var bt=it.src==="ins"?(it.demo?"Beispiel · Inserat":"Inserat"):it.src==="prod"?"Angebot":"Job";
+    var thumb=(it.src==="prod"&&it.img)?('<div class="thumb" style="background-image:url(\''+esc(it.img)+'\')"></div>'):('<div class="thumb">'+(it.emoji||"🏷️")+'</div>');
     var open=it.ext?' target="_blank" rel="sponsored nofollow noopener"':'';
-    if(it.src==="prod"){
-      var img=it.img?('<div class="ph" style="background-image:url(\''+esc(it.img)+'\')"></div>'):'<div class="ph">'+(it.emoji||"🛍️")+'</div>';
-      return '<a class="c prod" href="'+esc(it.url||"#")+'"'+open+'>'+img+'<div class="pb">'+badge+'<div class="t">'+esc(it.title)+'</div>'+(it.price?'<div class="p">'+esc(it.price)+'</div>':'')+'<div class="m">'+esc(it.meta)+'</div><span class="go2">'+esc(it.act)+'</span></div></a>';
-    }
-    var inner=badge+'<div class="t">'+esc(it.title)+'</div>'+(it.price?'<div class="p">'+esc(it.price)+'</div>':'')+'<div class="m">'+esc(it.meta)+'</div>'+(it.desc?'<div class="d">'+esc(it.desc)+'</div>':'')+'<span class="go2">'+esc(it.act)+'</span>';
-    return it.url?('<a class="c" href="'+esc(it.url)+'"'+open+'>'+inner+'</a>'):('<div class="c">'+inner+'</div>');
+    var body='<div class="body"><span class="badge2 '+bc+'">'+bt+'</span><div class="t">'+esc(it.title)+'</div>'+(it.price?'<div class="p">'+esc(it.price)+'</div>':'')+'<div class="m">'+esc(it.meta)+'</div>'+(it.desc?'<div class="d">'+esc(it.desc)+'</div>':'')+'<span class="go2">'+esc(it.act)+'</span></div>';
+    var inner=thumb+body;
+    return it.url?('<a class="c" href="'+esc(it.url||"#")+'"'+open+'>'+inner+'</a>'):('<div class="c">'+inner+'</div>');
   }
   function render(){
     var items=applyFilters(raw);
