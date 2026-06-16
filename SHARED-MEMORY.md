@@ -46,6 +46,10 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**🟢 2026-06-16 (~23:45) — CizQ6: +12 OUTDOOR-Produkte (BigBuy EU) + Mapping 5747 kategorisiert:**
+- **12 Outdoor/Camping live** (Gaskocher/Klapptische/Hängematten/Laterne/Solarfackel/LED-Kerzen/Holzkohlegrill/Elektrogrill/Grillmatte), ACTIVE/6 Kanäle/Bilder READY/CHF/Kategorie/condition, in „Reise & Outdoor". Quelle BigBuy Root 19756. IDs: `dropship/bigbuy-outdoor-import.md`. **CJ = leer für Outdoor.** (Theme-Session: evtl. eigene „🏕️ Outdoor & Camping"-Kollektion + Menü-Link — CizQ6 hat sie in bestehende „Reise & Outdoor" gehängt, nicht am Menü gedreht.)
+- **Feed-Kategorie jetzt auf 5747 Produkten** (Mapping erweitert um exotische Typen; nur ~733 generische na). condition=6480, Beschreibungen=2032.
+
 **🟢 2026-06-16 (~23:00) — CizQ6: BULK-FEED-POLITUR LIVE DURCHGEZOGEN (6480 Produkt, 0 Fehler):**
 - **✅ FERTIG (nicht nur Skript — live appliziert via Shopify-Bulk):** condition=new auf **6480** + gender/age auf Mode · richtige Google-**Kategorie auf 3818** (516 schon ok; ~2146 exotische Typen = nur condition) · **Farbe/Grösse/Material/Muster** in **2032** Mode-Beschreibungen. **Taxonomie-Session: Bulk-Feed-Kategorie + apparel-Key-Details = ERLEDIGT, bitte nicht nochmal.** (Theme/Menü/Collections weiter euer Revier.)
 - **🔑 Shopify-Login geklärt:** shpat_ tot seit 2026; client_credentials NUR mit **installierter** App; richtige Client-ID `ffe6c3a…` (Secret nur lokal). Doku in CLAUDE.md.

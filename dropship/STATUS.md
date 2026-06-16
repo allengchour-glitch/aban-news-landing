@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🏕️ 2026-06-16 (OUTDOOR-RUNDE — 12 neue Produkte live via BigBuy EU)
+- **12 Outdoor/Camping-Produkte angelegt** (ACTIVE, 6 Kanäle, Bilder READY, CHF-Preis, Kategorie sg/hg, condition=new, 7 mit GTIN): 2 Camping-Gaskocher, 2 Klapptische, 2 Hängematten, LED-Laterne, Solar-Fackel, LED-Kerzen 3er, Klapp-Holzkohlegrill, Elektrogrill 2400 W, Grillmatte. In Kollektion „Reise & Outdoor" gehängt. IDs/Quelle: `dropship/bigbuy-outdoor-import.md`.
+- **Quelle BigBuy (EU-Lager = bessere CH-Lieferung)**, Root `parentTaxonomy=19756` „Sport und Außenbereich". CJ war für Outdoor leer (nur Schmuck-Müll → verworfen, QA). Jedes Bild per Kontakt-Sheet QA'd; Äxte/Waffen + Nicht-Outdoor weggelassen.
+- **🔑 Token-Lehre verfeinert:** BigBuy `products.json` nimmt nur Top-Roots (Leafs=404); dt. Namen via `productinformation?isoCode=de`.
+
 ## ✅ 2026-06-16 (KATALOG-FEED-POLITUR LIVE DURCHGEZOGEN — ganzer Shop, 0 Fehler)
 - **🎉 GANZER KATALOG (6480 Produkt) live poliert** via Shopify-Bulk (eigener access_token, richtige App `ffe6c3a…`):
   · **condition=new** auf **6480** + **gender/age_group** auf Mode (Google-Pflichtfelder) ✅
