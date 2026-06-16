@@ -292,7 +292,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       var ch=[];if(String(it.typ||"")==="Gesuch")ch.push("🔎 Gesuch");if(it.zustand)ch.push(esc(it.zustand));
       var chips=ch.length?('<div style="margin:1px 0 7px">'+ch.map(function(c){return '<span style="display:inline-block;background:#fef3c7;color:#92660a;border-radius:6px;padding:2px 8px;font-size:.7rem;font-weight:700;margin-right:5px">'+c+'</span>'}).join("")+'</div>'):'';
       var on=isMerk(it.id);
-      var cta='<a class="c2" href="/inserat.html?id='+esc(it.id)+'">Details ansehen →</a>';
+      var cta='<a class="c2" href="/inserat/'+encodeURIComponent(it.id)+'">Details ansehen →</a>';
       return '<div class="card'+(on?' sel':'')+(it.featured?' feat':'')+'" data-id="'+esc(it.id)+'">'+img+
         '<div class="krow"><span class="k">'+esc(it.kat||"Sonstiges")+top+dbadge+'</span>'+
         '<button class="heart" type="button" data-merk="'+esc(it.id)+'" aria-label="Merken" title="Merken">'+(on?'♥':'♡')+'</button></div>'+
