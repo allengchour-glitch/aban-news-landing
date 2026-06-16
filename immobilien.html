@@ -144,6 +144,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <div style="display:flex;gap:8px;align-items:center"><input id="pmin" class="ffield" type="number" min="0" placeholder="von"><span>–</span><input id="pmax" class="ffield" type="number" min="0" placeholder="bis"></div>
       <p style="font-size:.72rem;color:var(--muted);margin-top:6px">Miete pro Monat bzw. Kaufpreis</p>
     </div>
+    <div class="fcard"><h4>Preisklasse (ankreuzen)</h4><div id="pklbox"></div></div>
+    <div class="fcard"><h4>Region (ankreuzen)</h4><div id="regs" style="display:flex;flex-wrap:wrap;gap:7px"></div></div>
     <div class="fcard"><h4>Ausstattung (ankreuzen)</h4><div id="feats"></div></div>
     <div class="fcard"><h4>Auch suchen auf</h4><div class="carlinks" id="immoLinks"></div></div>
     <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
@@ -195,6 +197,19 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     ["Garten","garten"],["Möbliert","möbliert|moebliert|furnished"],["Haustiere erlaubt","haustier|hund|katze"],["Neubau / Erstbezug","neubau|erstbezug|neuwertig"],["Keller / Estrich","keller|estrich|kellerabteil"]];
   $("#feats").innerHTML=FEATURES.map(function(f){return '<label class="opt"><input type="checkbox" class="feat" data-rx="'+esc(f[1])+'">'+esc(f[0])+'</label>'}).join("");
   function activeFeats(){return Array.prototype.filter.call(document.querySelectorAll(".feat"),function(c){return c.checked}).map(function(c){return c.dataset.rx})}
+  // Region zum Ankreuzen (Mehrfachauswahl, ODER)
+  var REGIONS=["Zürich","Bern","Basel","Genf","Lausanne","Luzern","St. Gallen","Winterthur","Lugano","Zug","Fribourg","Neuchâtel","Chur","Thun","Biel","Sitten"];
+  (function(){var r=$("#regs");if(!r)return;var st='display:inline-flex;align-items:center;gap:6px;background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:5px 10px;font-size:.8rem;font-weight:600;color:var(--ink2);cursor:pointer';
+    r.innerHTML=REGIONS.map(function(c){return '<label style="'+st+'"><input type="checkbox" class="reg" value="'+esc(c)+'" style="accent-color:var(--amber-dk);cursor:pointer">'+esc(c)+'</label>'}).join("")})();
+  function regSet(){return Array.prototype.map.call(document.querySelectorAll(".reg:checked"),function(c){return c.value.toLowerCase()})}
+  // Preisklassen — schlau je nach Modus (Miete pro Monat vs. Kaufpreis)
+  function renderPkl(){var box=$("#pklbox");if(!box)return;
+    var R=curModus==="kauf"
+      ?[["unter 500'000",0,500000],["500'000–1 Mio",500000,1000000],["1–1,5 Mio",1000000,1500000],["über 1,5 Mio",1500000,1e12]]
+      :[["unter 1'000",0,1000],["1'000–2'000",1000,2000],["2'000–3'500",2000,3500],["über 3'500",3500,1e12]];
+    var suf=curModus==="kauf"?" CHF":" CHF/Mt";
+    box.innerHTML=R.map(function(r){return '<label class="opt"><input type="checkbox" class="pkl" data-lo="'+r[1]+'" data-hi="'+r[2]+'">'+r[0]+suf+'</label>'}).join("");}
+  function pklSet(){return Array.prototype.map.call(document.querySelectorAll(".pkl:checked"),function(c){return [parseFloat(c.dataset.lo),parseFloat(c.dataset.hi)]})}
   // Portal-Launcher: trägt Ort/Modus/Suchbegriff mit, wo das Portal es unterstützt
   function immoQuery(){return [($("#loc").value.trim()),($("#q").value.trim()),(curArt&&curArt!=="wohnung miete"&&curArt!=="wohnung kauf"?curArt.split(" ")[0]:"")].filter(Boolean).join(" ").trim()}
   function renderImmoLinks(){var el=$("#immoLinks");if(!el)return;var term=immoQuery(),t=encodeURIComponent(term||"Wohnung");
@@ -207,6 +222,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     items=(items||[]).slice();
     var loc=$("#loc").value.trim().toLowerCase();
     if(loc)items=items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0});
+    var regs=regSet();
+    if(regs.length)items=items.filter(function(it){var h=(String(it.plz||"")+" "+String(it.ort||"")).toLowerCase();return regs.some(function(r){return h.indexOf(r)>=0})});
     var zi=parseFloat($("#zimmer").value);
     if(!isNaN(zi))items=items.filter(function(it){var r=roomsOf(it);return isNaN(r)?false:r>=zi});
     var am=parseFloat($("#amin").value);
@@ -216,6 +233,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
     if(!isNaN(lo))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n>=lo});
     if(!isNaN(hi))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n<=hi});
+    var pkl=pklSet();
+    if(pkl.length)items=items.filter(function(it){var n=chfNum(it.preis);if(isNaN(n))return false;return pkl.some(function(r){return n>=r[0]&&n<r[1]})});
     var sort=$("#sort")?$("#sort").value:"rel";
     if(sort==="pasc"||sort==="pdesc"){items.sort(function(a,b){var x=chfNum(a.preis),y=chfNum(b.preis);if(isNaN(x))return 1;if(isNaN(y))return -1;return sort==="pasc"?x-y:y-x})}
     else if(sort==="rooms"){items.sort(function(a,b){var x=roomsOf(a),y=roomsOf(b);if(isNaN(x))return 1;if(isNaN(y))return -1;return y-x})}
@@ -232,6 +251,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var zi=$("#zimmer").value;if(zi)add(zi+"+ Zimmer",function(){$("#zimmer").value="";render(raw)});
     var am=$("#amin").value;if(am)add("ab "+am+" m²",function(){$("#amin").value="";render(raw)});
     var lo=$("#pmin").value,hi=$("#pmax").value;if(lo||hi)add("CHF "+(lo||"0")+"–"+(hi||"∞"),function(){$("#pmin").value="";$("#pmax").value="";render(raw)});
+    Array.prototype.forEach.call(document.querySelectorAll(".reg:checked"),function(cb){add("📍 "+cb.value,function(){cb.checked=false;render(raw)})});
+    Array.prototype.forEach.call(document.querySelectorAll(".pkl:checked"),function(cb){add("💰 "+cb.parentNode.textContent.trim(),function(){cb.checked=false;render(raw)})});
     Array.prototype.forEach.call(document.querySelectorAll(".feat:checked"),function(cb){var lbl=cb.parentNode.textContent.trim();add("✓ "+lbl,function(){cb.checked=false;render(raw)})});
     if(!parts.length){c.hidden=true;c.innerHTML="";return}
     c.hidden=false;
@@ -266,18 +287,21 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#zimmer").addEventListener("change",function(){render(raw)});
   ["pmin","pmax","amin"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
   $("#feats").addEventListener("change",function(){render(raw)});
+  $("#regs").addEventListener("change",function(){render(raw)});
+  $("#pklbox").addEventListener("change",function(){render(raw)});
   $("#sort").addEventListener("change",function(){render(raw)});
   $("#chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
     if(b.dataset.all){$("#reset").click();return}
     var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
   $("#modus").addEventListener("click",function(e){var b=e.target.closest(".mbtn");if(!b)return;
-    Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;renderImmoLinks();load()});
+    Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;renderPkl();renderImmoLinks();load()});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#loc").value=a.dataset.loc;render(raw);window.scrollTo({top:0,behavior:"smooth"})});
   $("#cats").addEventListener("change",function(e){if(e.target.name==="art"){curArt=e.target.value;renderImmoLinks();load()}});
   $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#zimmer").value="";$("#amin").value="";$("#pmin").value="";$("#pmax").value="";if($("#sort"))$("#sort").value="rel";curArt="";curModus="";
     var f=document.querySelector('input[name="art"]');if(f)f.checked=true;
     Array.prototype.forEach.call(document.querySelectorAll(".feat"),function(c){c.checked=false});
-    Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});renderImmoLinks();load()});
+    Array.prototype.forEach.call(document.querySelectorAll(".reg"),function(c){c.checked=false});
+    Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});renderPkl();renderImmoLinks();load()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
@@ -285,7 +309,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   // Deep-Link: ?q= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),ul=sp.get("loc");
     if(uq)$("#q").value=uq; if(ul)$("#loc").value=ul;})();
-  renderImmoLinks();load();
+  renderPkl();renderImmoLinks();load();
 })();
 </script>
 <script src="/js/affiliate-config.js" defer></script>
