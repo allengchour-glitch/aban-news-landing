@@ -100,7 +100,9 @@ ${loc ? `<div class="loc">📍 ${loc}</div>` : ""}
 <button class="btn btn-ghost" id="sBtn" type="button">🔗 Teilen</button></div>
 <div id="cOut"></div>
 <p class="note">Angaben stammen von der inserierenden Person; aban übernimmt keine Gewähr. Vorsicht bei Vorkasse — am besten persönlich übergeben.<br><a href="mailto:hallo@abannews.com?subject=${encodeURIComponent("Inserat melden: " + (it.titel || ""))}&body=${encodeURIComponent("Ich möchte dieses Inserat melden:\n" + canonical + "\n\nGrund:\n")}" style="color:var(--muted);text-decoration:underline">⚠️ Inserat melden</a></p>
-</div></div></div>
+</div></div>
+<div id="reco" style="margin-top:18px"></div>
+</div>
 <div class="toast" id="toast"></div>
 <footer>aban news · Inserat-Details · Angaben ohne Gewähr · © 2026 · <a href="/inserate.html">Alle Inserate</a> · <a href="/impressum.html">Impressum</a></footer>
 <script>
@@ -115,6 +117,9 @@ $("#cOut").innerHTML='<div class="contactbox">'+cHtml(k)+'</div>';this.style.dis
 $("#sBtn").addEventListener("click",function(){var u=location.href;
 if(navigator.share){navigator.share({title:document.title,url:u}).catch(function(){})}
 else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){toast("🔗 Link kopiert")})}else{toast(u)}});
+function esc2(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+fetch("/api/luxestyle?limit=6").then(function(r){return r.json()}).then(function(d){var it=(d.items||[]).slice(0,6);var box=$("#reco");if(!box||!it.length)return;
+box.innerHTML='<h3 style="font-size:1.05rem;margin:0 0 10px">🛍️ Das könnte dir auch gefallen <span style="font-weight:500;color:var(--muted);font-size:.85rem">· LuxeStyle 🇨🇭</span></h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:11px">'+it.map(function(p){var img=p.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc2(p.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.5rem">🛍️</div>';return '<a href="'+esc2(p.url)+'" target="_blank" rel="noopener" style="background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;text-decoration:none;color:var(--ink);display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.76rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc2(p.title)+'</div><div style="color:var(--amber-dk);font-weight:800;font-size:.84rem">'+esc2(p.price)+'</div></div></a>'}).join("")+'</div>';}).catch(function(){});
 })();
 </script></body></html>`;
 }
