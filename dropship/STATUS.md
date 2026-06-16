@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 2 — Caps-Kategorie autonom + Marken auf Meta)
+- **🧢 CAPS-KATEGORIE LIVE** (User „eine Kategorie voller Caps"): 4 Caps via CJ (Token ok), Bild-QA'd (1 Knockoff verworfen):
+  Flat-Cap «Brigade» camo 24.90 · Vintage «Liberty» 27.90 · Pailletten-Baskenmütze «Scintille» 29.90 · Docker-Mütze «Marin» 27.90.
+  ACTIVE/6 Kanäle/kaufbar/deutsche Texte+Grössen-Hinweis. Smart-Collection **„🧢 Caps & Hüte"** (`caps-hute`). In Social+Worker-Queue.
+- **📣 BigBuy-Marken in Meta-Queue** (10 Posts: D&G/Swatch/Casio/Hugo Boss/CK/Guess/MK/Citizen/Tommy/Morellato), git-gesteuert.
+- **🎯 Marktlücken** (`MARKTLUECKEN-2026.md`): HERO=wasserfester Edelstahl-Schmuck (→Import-Session), TWINT-auf-PDP (→Theme), Micro-Influencer/Google-Business/Open-Air-Reels.
+
 ## 🆕 2026-06-15 (NACHT — Autonom-Session: QA + Lernen + Content-Engine)
 - **🖼️ Bild-QA neue Importe:** 4 CJ-Blusen (Solare/Maglia/Dentelle/Marbella) + Marken-Batch visuell geprüft → **alle sauber**
   (kein asiat. Text/Watermark). Kaufbarkeit verifiziert: `availableForSale:true` + `tracked:false` trotz 0 Inventar = OK.
