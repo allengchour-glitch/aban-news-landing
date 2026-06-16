@@ -42,6 +42,13 @@
 - **📤 Autopost-Queue neu gebaut: 141 Posts** (95 Bild / 31 Reel / 15 Story, CH-weit, gelernte Captions + echte Preise) → `queue.json`. **Wirkt erst nach `wrangler deploy`.**
 - **🔑 Konsequenz Prioritäten:** (1) Reichweite RESTAURIEREN — Worker deployen (Organik-Kadenz) + Pixel/Kampagne (bezahlt) ; (2) Checkout-Leck (TWINT-Test) ; (3) Free Listings/SEO.
 
+## 🎉 2026-06-16 (ABEND — Worker live + Shop-Struktur + Autonomie-Upgrade)
+- **Cloudflare-Skills in Claude Code installiert** → künftige Sessions deployen den Worker selbst (kein PowerShell).
+- **luxe-poster live + autonom** (Cron, KV fest in wrangler.toml, Handy-1-Tap verifiziert). Code committet: `&health`, `&dedupe` (FB-Doppel löschen), Text-Stories → brauchen 1 sauberen Deploy (git pull DANN deploy).
+- **Shop:** 5 neue Produkte (Fenrir/Aurelia/Lagune/Samsara/Olivia) · 6 Marken-Brillen-Mislabel gefixt · 🧸 Spielzeug → 13 Sub-Kategorien + im Menü.
+- **Video:** render_price_reveal v3 (Ken-Burns+Grade+Musik) · A/B- & Save-Reels gegen 0-Shares.
+- **Lehre:** Worker nur mit DEPLOYTEN Routen antippen (unbekannte Params → posten). 3 versehentliche Posts so passiert.
+
 ## 🆕 2026-06-16 (AUSWERTUNG 14T — WENDE: echte Checkout-Abbrüche gefunden!)
 - **Zahlen 14T:** 1.206 Sessions · **0 Bestellungen** · ABER **4 abgebrochene Checkouts** (CHF 71.90 / 43.00 / 69.00 / 69.00, + 1 älterer 129.90).
   → **Es ist NICHT (nur) Reichweite — echte Käufer kommen bis in den Checkout und brechen am LETZTEN Schritt ab.** Das ist neu/entscheidend.

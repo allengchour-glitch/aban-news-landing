@@ -119,6 +119,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-16 (ABEND — Worker LIVE + Shop-Struktur + Autonomie-Upgrade):**
+- **✅ AUTONOMIE-UPGRADE:** Cloudflare-Skills sind in Claude Code installiert (beim `wrangler deploy` automatisch, 11 Skills inkl. `wrangler`/`cloudflare`).
+  → **In künftigen Sessions kann ich den luxe-poster-Worker SELBST deployen/verwalten** (kein PowerShell mehr nötig). Cloudflare-Marketplace `cloudflare/skills` added.
+- **✅ WORKER LIVE & autonom:** luxe-poster deployed (Cron 7/10/12/15/17/19 UTC = CH 12/17/21 posten + Analyse), KV LUXE_KV `662199…86ee9` **fest in wrangler.toml** (kein git-pull-Konflikt mehr).
+  Handy-Befehlsqueue (`&cmd=`) + 1-Tap (`tap.html`) verifiziert live; PC-Listener läuft. **Neu im Code (committet): `&health`/post_log (Observability), `&dedupe` (FB-Doppel-Posts löschen), Stories=Text-Reels** — die brauchen noch EINEN sauberen Deploy (`git pull` DANN `wrangler deploy`; letzter war stale = Grösse unverändert).
+- **⚠️ WORKER-TEST-FALLE (teuer gelernt):** Unbekannte URL-Parameter fallen im Worker auf `run()` durch → **POSTEN**. Darum Worker NUR mit DEPLOYTEN Routen antippen; vor Bestätigung nichts testen. `&queue=`/`&clearqueue` setzen cursor=0 → Re-Post → NICHT nutzen. (Drei versehentliche Posts so entstanden.)
+- **🛍️ SHOP-STRUKTUR (live via API, voller Zugriff genutzt):** 5 neue Schmuck-Produkte (Fenrir/Aurelia/Lagune/Samsara/Olivia, Meisterwerk+Video+Musik). **6 falsch-gelabelte Marken-„Sonnenbrillen"→„Brille"** (Citizen/MK/Tous, Misrepresentation-Fix). **🧸 Spielzeug (147) in 13 Smart-Sub-Collections** unterteilt + per `menuUpdate` als L3 ins main-menu gehängt (Struktur 1:1 erhalten).
+- **🎬 VIDEO-PIPELINE poliert:** `render_price_reveal.sh` v3 = Ken-Burns + warmer Grade + Vignette + **Musik (music_library, CC-BY)**; SILENT=1 = stumm/TikTok. **A/B- & Save-Listen-Reels** (`render_ab_reel.sh`/`render_savelist_reel.sh`) gegen 0-Shares.
+- **🔴 Engpass unverändert:** 0 Orders → Reichweite. Nur-User: TikTok-Pixel/Kampagne + Google Free Listings. (Bezahlung TWINT bestätigt ok.)
+
 **📌 2026-06-16 (AUSWERTUNG-WENDE + Video-Rollout 34 + Handy-TODO):**
 - **📊 AUSWERTUNG 14T (live via Shopify):** 1.206 Sessions · **0 Orders** · ABER **4 abgebrochene Checkouts** (CHF 71.90/43/69/69
   + 1 älterer 129.90). → **Echte Käufer kommen bis in den Checkout & brechen am LETZTEN Schritt ab — NICHT (nur) Reichweite!**
