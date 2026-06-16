@@ -54,6 +54,14 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ FÜLL-OFFENSIVE FORTGESETZT: +39 Produkte (Summe jetzt ~382)** — User „füll alles", autonom:
+- 🐾 Haustier +15 (Trixie: Betten/Leinen/Näpfe/Plüsch- & Kauspielzeug/Kleintierhaus/Vogelfutterspender; 3 Tierfutter übersprungen).
+- 👟 Schuhe +12 (Nike/Adidas/Puma/Converse/Reebok/Hi-Tec/Vans — Damen/Herren/Kinder; Sneaker/Tennis/Wander/Bade; 6 Dubletten übersprungen).
+- 🔌 Elektronik +12 (Xiaomi-Powerbank/Belkin/Epson/Acer/Cooler Master/Noctua/Zalman/Energizer/Celly/Vention/Gembird/Trevi; 6 Dubletten übersprungen).
+- **⚠️ DUBLETTEN-SIGNAL steigt:** bei Schuhe(offset 0) + Elektronik(offset 18) je 6/18 Handle-Kollisionen → niedrige Offsets dieser Kategorien
+  sind gesättigt. **Nächste Chargen: höhere Offsets nehmen** (Shopify-Handle-Check fängt Reste sauber ab). Methode unverändert (productSet,
+  EAN-Barcode, 2 Bilder, 6 Kanäle, tracked:false/CONTINUE).
+
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ GROSSE GLEICHMÄSSIGE FÜLL-OFFENSIVE: ~255 Produkte live über ALLE 8 Kategorien** (alle ACTIVE, EAN-Barcode, volle Galerie/0 FAILED, DE-Titel/SEO, 6 Kanäle, auto-sortiert in Kategorie+Preis+Geschenk+Premium):
 - **Laufende Summen (16.06.):** 🧸 Spielzeug ~120 (LEGO/Playmobil/Schleich/Ravensburger/Brio/Barbie/Dragon Ball/Marvel/Sylvanian…),
   👟 Schuhe ~150 (Nike/Adidas/Puma/Vans/Geox/Hi-Tec/Munich/Joma — Sneaker/Wander/Trail/Fussball/Bade), 👕 Kleidung+Accessoires +34
