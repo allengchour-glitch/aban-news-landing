@@ -88,6 +88,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 .mbtn.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
 .ffield{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#f8f5ef;font-family:inherit;font-size:.9rem}
 .ffield:focus{outline:0;border-color:var(--amber);background:#fff}
+.carlinks{display:flex;flex-wrap:wrap;gap:6px}
+.carlinks a{font-size:.78rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:5px 10px}
+.carlinks a:hover{border-color:var(--amber);color:var(--amber-dk);background:var(--cream)}
 :focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
 @keyframes shmr{0%{background-position:-300px 0}100%{background-position:300px 0}}
 .skl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px}
@@ -141,6 +144,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <div style="display:flex;gap:8px;align-items:center"><input id="pmin" class="ffield" type="number" min="0" placeholder="von"><span>–</span><input id="pmax" class="ffield" type="number" min="0" placeholder="bis"></div>
       <p style="font-size:.72rem;color:var(--muted);margin-top:6px">Miete pro Monat bzw. Kaufpreis</p>
     </div>
+    <div class="fcard"><h4>Ausstattung (ankreuzen)</h4><div id="feats"></div></div>
+    <div class="fcard"><h4>Auch suchen auf</h4><div class="carlinks" id="immoLinks"></div></div>
     <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
     <div data-partner="IMMO_HYPOTHEK_URL" data-text="Eigenheim geplant? Hypothek &amp; Finanzierung vergleichen." data-cta="Hypothek vergleichen"></div>
     <div data-partner="IMMO_UMZUG_URL" data-text="Umzug geplant? Zügelfirmen vergleichen und sparen." data-cta="Umzug vergleichen"></div>
@@ -185,6 +190,18 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   // Wohnfläche (m²) aus Titel/Beschreibung: "85 m²", "120m2", "60 qm"
   function m2Of(it){var h=String(it.titel||"")+" "+String(it.beschreibung||"");var m=h.match(/(\d{2,4})\s*(?:m²|m2|m\^2|qm|quadratmeter)/i);return m?parseInt(m[1],10):NaN}
   $("#cats").innerHTML=ARTEN.map(function(c,i){return '<label class="opt"><input type="radio" name="art" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>'}).join("");
+  // Ausstattung als Mehrfach-Auswahl (Ankreuzen) — filtert per Stichwort in Titel/Beschreibung
+  var FEATURES=[["Balkon / Terrasse","balkon|terrasse|loggia"],["Lift / Aufzug","lift|aufzug"],["Parkplatz / Garage","parkplatz|stellplatz|tiefgarage|garage|einstellhalle"],
+    ["Garten","garten"],["Möbliert","möbliert|moebliert|furnished"],["Haustiere erlaubt","haustier|hund|katze"],["Neubau / Erstbezug","neubau|erstbezug|neuwertig"],["Keller / Estrich","keller|estrich|kellerabteil"]];
+  $("#feats").innerHTML=FEATURES.map(function(f){return '<label class="opt"><input type="checkbox" class="feat" data-rx="'+esc(f[1])+'">'+esc(f[0])+'</label>'}).join("");
+  function activeFeats(){return Array.prototype.filter.call(document.querySelectorAll(".feat"),function(c){return c.checked}).map(function(c){return c.dataset.rx})}
+  // Portal-Launcher: trägt Ort/Modus/Suchbegriff mit, wo das Portal es unterstützt
+  function immoQuery(){return [($("#loc").value.trim()),($("#q").value.trim()),(curArt&&curArt!=="wohnung miete"&&curArt!=="wohnung kauf"?curArt.split(" ")[0]:"")].filter(Boolean).join(" ").trim()}
+  function renderImmoLinks(){var el=$("#immoLinks");if(!el)return;var term=immoQuery(),t=encodeURIComponent(term||"Wohnung");
+    var kauf=curModus==="kauf",seg=kauf?"kaufen":"mieten";
+    var L=[{n:"Homegate",u:"https://www.homegate.ch/"+seg},{n:"ImmoScout24",u:"https://www.immoscout24.ch/de"},{n:"Comparis",u:"https://www.comparis.ch/immobilien/default"},
+      {n:"Flatfox",u:term?"https://flatfox.ch/de/search/?query="+t:"https://flatfox.ch/de/"},{n:"Tutti",u:term?"https://www.tutti.ch/de/q/"+t:"https://www.tutti.ch/de/li/immobilien"},{n:"Newhome",u:"https://www.newhome.ch/de"}];
+    el.innerHTML=L.map(function(x){return '<a href="'+esc(x.u)+'" target="_blank" rel="noopener nofollow">'+esc(x.n)+' →</a>'}).join("");}
   function contactHtml(k){var v=esc(k);var mail=/^[^@\s]+@[^@\s]+$/.test(k);return mail?('<a class="c" href="mailto:'+v+'" style="text-decoration:none;display:inline-block">✉️ '+v+'</a>'):('<span>'+v+'</span>')}
   function applyFilters(items){
     items=(items||[]).slice();
@@ -194,6 +211,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(!isNaN(zi))items=items.filter(function(it){var r=roomsOf(it);return isNaN(r)?false:r>=zi});
     var am=parseFloat($("#amin").value);
     if(!isNaN(am))items=items.filter(function(it){var a=m2Of(it);return isNaN(a)?false:a>=am});
+    var feats=activeFeats();
+    if(feats.length)items=items.filter(function(it){var h=(String(it.titel||"")+" "+String(it.beschreibung||"")).toLowerCase();return feats.every(function(rx){return new RegExp(rx,"i").test(h)})});
     var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
     if(!isNaN(lo))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n>=lo});
     if(!isNaN(hi))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n<=hi});
@@ -213,6 +232,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var zi=$("#zimmer").value;if(zi)add(zi+"+ Zimmer",function(){$("#zimmer").value="";render(raw)});
     var am=$("#amin").value;if(am)add("ab "+am+" m²",function(){$("#amin").value="";render(raw)});
     var lo=$("#pmin").value,hi=$("#pmax").value;if(lo||hi)add("CHF "+(lo||"0")+"–"+(hi||"∞"),function(){$("#pmin").value="";$("#pmax").value="";render(raw)});
+    Array.prototype.forEach.call(document.querySelectorAll(".feat:checked"),function(cb){var lbl=cb.parentNode.textContent.trim();add("✓ "+lbl,function(){cb.checked=false;render(raw)})});
     if(!parts.length){c.hidden=true;c.innerHTML="";return}
     c.hidden=false;
     c.innerHTML=parts.map(function(p,i){return '<button type="button" data-i="'+i+'" style="'+CHIP+'">'+esc(p.l)+' <span aria-hidden="true" style="color:var(--muted);font-weight:800">×</span></button>'}).join("")+'<button type="button" data-all="1" style="'+CHIP+';color:var(--amber-dk);border-color:var(--amber-dk)">Alle löschen</button>';
@@ -242,20 +262,22 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   }
   $("#go").addEventListener("click",function(e){e.preventDefault();load()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
-  $("#loc").addEventListener("input",function(){render(raw)});
+  $("#loc").addEventListener("input",function(){renderImmoLinks();render(raw)});
   $("#zimmer").addEventListener("change",function(){render(raw)});
   ["pmin","pmax","amin"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
+  $("#feats").addEventListener("change",function(){render(raw)});
   $("#sort").addEventListener("change",function(){render(raw)});
   $("#chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
     if(b.dataset.all){$("#reset").click();return}
     var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
   $("#modus").addEventListener("click",function(e){var b=e.target.closest(".mbtn");if(!b)return;
-    Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;load()});
+    Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;renderImmoLinks();load()});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#loc").value=a.dataset.loc;render(raw);window.scrollTo({top:0,behavior:"smooth"})});
-  $("#cats").addEventListener("change",function(e){if(e.target.name==="art"){curArt=e.target.value;load()}});
+  $("#cats").addEventListener("change",function(e){if(e.target.name==="art"){curArt=e.target.value;renderImmoLinks();load()}});
   $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#zimmer").value="";$("#amin").value="";$("#pmin").value="";$("#pmax").value="";if($("#sort"))$("#sort").value="rel";curArt="";curModus="";
     var f=document.querySelector('input[name="art"]');if(f)f.checked=true;
-    Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});load()});
+    Array.prototype.forEach.call(document.querySelectorAll(".feat"),function(c){c.checked=false});
+    Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});renderImmoLinks();load()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
@@ -263,7 +285,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   // Deep-Link: ?q= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),ul=sp.get("loc");
     if(uq)$("#q").value=uq; if(ul)$("#loc").value=ul;})();
-  load();
+  renderImmoLinks();load();
 })();
 </script>
 <script src="/js/affiliate-config.js" defer></script>
