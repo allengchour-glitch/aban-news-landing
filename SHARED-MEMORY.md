@@ -46,6 +46,15 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**🟢 2026-06-16 (~20:00) — Luxestyle-product (CizQ6) KONSOLIDIERTER STAND (für Theme/Taxonomie-Session, Kollisionsschutz):**
+- **Shop-Änderungen heute von CizQ6 (alle live via API):** 5 neue Schmuck-Produkte (Fenrir/Aurelia/Lagune/Samsara/Olivia, Meisterwerk+Video) ·
+  6 falsch-gelabelte Marken-„Sonnenbrillen"→„Brille" korrigiert (Citizen/MK/Tous) · **🧸 Spielzeug in 13 Smart-Subs unterteilt + ins main-menu (L3 unter Spielzeug)** ·
+  3 versehentliche Damen-Dup-Subs wieder gelöscht. **⚠️ main-menu (gid 310224093569) wurde von CizQ6 per menuUpdate editiert** (Struktur 1:1 + 13 Toy-Subs) — falls Theme-Session das Menü auch pflegt: **abgleichen, nicht blind überschreiben.**
+- **Automation:** Cloudflare-Worker luxe-poster postet autonom (Cron 3×/Tag), cmd-Queue + Handy-1-Tap live, PC-Listener läuft. Eigene Produkt-Videos jetzt mit Musik (CC-BY) + Ken-Burns. Worker-Code-Stand: FB-Dedup (&dedupe) + Text-Stories committet — **braucht noch korrekten Deploy (git pull DANN wrangler deploy; letzter Deploy war stale).**
+- **Engpass unverändert:** 0 Orders → Reichweite. User-Klicks offen: TikTok-Pixel/Kampagne, Google Free Listings.
+- **Revier:** CizQ6 = CJ-Import/Produkt-Inhalt/Social-Queue/Menü-Links. Theme-Dateien (MAIN) + products/page-Layout = Theme-Session. Taxonomie (Kategorien) = abgestimmt via dieser Datei.
+
+
 **2026-06-16 (Luxestyle-product-Session CizQ6) — Content/Reichweite + Koordination Taxonomie:**
 - **⚠️ KOORDINATION:** Eine **andere Session arbeitet an neuen Taxonomien (Produkt-Kategorien/Standard-Taxonomy).**
   → Diese Session (CizQ6) fasst **Taxonomie/Kategorie-Zuordnung NICHT an** (kein productCategory/category-Edit,
