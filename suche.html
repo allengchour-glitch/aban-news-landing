@@ -64,6 +64,23 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color:var(--muted);text-align:center}
 @media(max-width:560px){.hero h1{font-size:1.55rem}.searchbox{flex-wrap:wrap}.searchbox button.go{width:100%}}
 :focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+.fpanel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px 16px;margin-bottom:14px}
+.fgrp{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #f0ece2}
+.fgrp:last-of-type{border-bottom:0}
+.flbl{flex:0 0 90px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.chk{display:inline-flex;align-items:center;gap:6px;background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:5px 11px;font-size:.82rem;font-weight:600;color:var(--ink2);cursor:pointer}
+.chk input{width:14px;height:14px;accent-color:var(--amber-dk);cursor:pointer}
+.chk:has(input:checked){background:var(--cream);border-color:var(--amber);color:var(--amber-dk)}
+.fbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:11px 0 7px}
+.fcount{font-weight:800}
+.sortw{font-size:.83rem;color:var(--muted);margin-left:auto}
+.sortw select{font-family:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 9px;margin-left:5px;background:#fff;color:var(--ink)}
+.freset{background:none;border:0;color:var(--amber-dk);font-weight:700;cursor:pointer}
+.freset:hover{text-decoration:underline}
+.badge2{display:inline-block;font-size:.66rem;font-weight:800;border-radius:6px;padding:2px 7px;margin-bottom:6px;align-self:flex-start}
+.b-ins{background:#e0f2fe;color:#075985}.b-prod{background:#fef3c7;color:#92660a}.b-job{background:#dcfce7;color:#166534}
+.c .d{font-size:.82rem;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:2px 0 8px}
 </style>
 </head>
 <body>
@@ -87,18 +104,17 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
 </div></div>
 
 <div class="wrap">
-  <div class="sect" id="s-jobs">
-    <div class="shead"><span class="ic">💼</span><h2>Jobs &amp; Stellen</h2><a class="all" id="all-jobs" href="/stellenangebote.html">Alle Jobs →</a></div>
-    <div class="row" id="r-jobs"></div><div class="sub" id="sub-jobs"></div>
+  <div class="fpanel" id="fpanel">
+    <div class="fgrp"><span class="flbl">Quelle</span><div class="chips" id="fsrc"></div></div>
+    <div class="fgrp"><span class="flbl">Kategorie</span><div class="chips" id="fcat"></div></div>
+    <div class="fgrp"><span class="flbl">Region</span><div class="chips" id="freg"></div></div>
+    <div class="fgrp"><span class="flbl">Preisklasse</span><div class="chips" id="fpkl"></div></div>
+    <div class="fgrp"><span class="flbl">Zustand</span><div class="chips" id="fcond"></div></div>
+    <div class="fbar"><span class="fcount" id="fcount"></span>
+      <label class="sortw">Sortieren<select id="sort"><option value="rel">Relevanz</option><option value="pasc">Preis ↑</option><option value="pdesc">Preis ↓</option></select></label>
+      <button class="freset" id="freset" type="button">↺ Zurücksetzen</button></div>
   </div>
-  <div class="sect" id="s-prod">
-    <div class="shead"><span class="ic">🛍️</span><h2>Angebote &amp; Schnäppchen</h2><a class="all" id="all-prod" href="/angebote-suche.html">Alle Angebote →</a></div>
-    <div class="row" id="r-prod"></div><div class="sub" id="sub-prod"></div>
-  </div>
-  <div class="sect" id="s-ins">
-    <div class="shead"><span class="ic">📋</span><h2>Kleinanzeigen &amp; Immobilien</h2><a class="all" id="all-ins" href="/inserate.html">Alle Inserate →</a></div>
-    <div class="row" id="r-ins"></div><div class="sub" id="sub-ins"></div>
-  </div>
+  <div class="row" id="grid"></div>
   <div class="empty" id="empty" hidden>Tippe oben ein, was du suchst — wir schauen in allen Quellen gleichzeitig nach.</div>
 </div>
 
@@ -111,63 +127,95 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
 <script>
 (function(){
   var $=function(s){return document.querySelector(s)};
+  var grid=$("#grid"),cntEl=$("#fcount"),emptyEl=$("#empty");
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function qenc(s){return encodeURIComponent(s||"")}
-  function skel(el,n){el.innerHTML=Array(n+1).join().split(",").map(function(){return '<div class="skl"></div>'}).join("")}
+  function priceNum(p){var s=String(p||"").replace(/[^\d.,'’]/g,"").replace(/['’]/g,"").replace(/,/g,"");var f=parseFloat(s);return isNaN(f)?NaN:f}
+  var raw=[];
 
-  function loadJobs(q){
-    var r=$("#r-jobs"),sub=$("#sub-jobs");skel(r,4);sub.textContent="";
-    $("#all-jobs").href="/stellenangebote.html?q="+qenc(q);
-    fetch("/api/jobs?q="+qenc(q)).then(function(x){return x.json()}).then(function(d){
-      var items=(d.items||[]).slice(0,6);
-      if(!items.length){r.innerHTML="";sub.textContent="Keine Jobs zu „"+q+"“.";return}
-      r.innerHTML=items.map(function(it){
-        var url=(it.url&&it.url!=="#")?esc(it.url):"#";
-        return '<a class="c" href="'+url+'" target="_blank" rel="noopener nofollow"><div class="t">'+esc(it.title)+'</div><div class="m">'+esc([it.company,it.location].filter(Boolean).join(" · "))+(it.remote?" · 🏠 Remote":"")+'</div><span class="go2">Zum Job →</span></a>';
-      }).join("");
-      sub.textContent=(d.count||items.length)+" Jobs gefunden"+(d.source?" · "+d.source:"");
-    }).catch(function(){r.innerHTML="";sub.textContent="Jobs gerade nicht erreichbar."});
+  // ── Beispiel-Inserate (CH) — füllen die Suche, solange keine echten da sind ──
+  var DEMO=[
+    {kat:"Immobilien",titel:"3.5-Zimmer-Wohnung mit Balkon",preis:"CHF 1'890.–/Mt",ort:"Bern",plz:"3000",emoji:"🏠",beschreibung:"Hell und ruhig, ÖV in 3 Min. Bezug per sofort."},
+    {kat:"Immobilien",titel:"2.5-Zimmer-Wohnung, modern",preis:"CHF 1'650.–/Mt",ort:"Zürich",plz:"8050",emoji:"🏠",beschreibung:"Neubau, Einbauküche, Lift, Parkplatz möglich."},
+    {kat:"Immobilien",titel:"Möbliertes WG-Zimmer",preis:"CHF 720.–/Mt",ort:"Lausanne",plz:"1003",emoji:"🛏️",beschreibung:"20 m², zentral, ab nächstem Monat frei."},
+    {kat:"Immobilien",titel:"4.5-Zimmer-Haus mit Garten",preis:"CHF 2'480.–/Mt",ort:"Luzern",plz:"6003",emoji:"🏡",beschreibung:"Familienfreundlich, ruhige Lage, Garage."},
+    {kat:"Möbel",titel:"Eiche-Esstisch ausziehbar",preis:"CHF 420.–",ort:"Zürich",plz:"8001",zustand:"Gebraucht",emoji:"🪑",beschreibung:"Massiv, 160–220 cm, sehr guter Zustand."},
+    {kat:"Auto & Teile",titel:"VW Golf 7 1.4 TSI",preis:"CHF 12'500.–",ort:"Luzern",plz:"6003",zustand:"Gebraucht",emoji:"🚗",beschreibung:"98'000 km, frisch ab MFK, Winterräder."},
+    {kat:"Fahrrad",titel:"E-Bike Trekking 500 Wh",preis:"CHF 1'350.–",ort:"Basel",plz:"4051",zustand:"Gebraucht",emoji:"🚲",beschreibung:"Bosch-Motor, 1'200 km, Service neu."},
+    {kat:"Handy",titel:"iPhone 14 128 GB",preis:"CHF 540.–",ort:"Winterthur",plz:"8400",zustand:"Gebraucht",emoji:"📱",beschreibung:"Akku 91 %, keine Kratzer, mit OVP."},
+    {kat:"Computer",titel:"MacBook Air M1",preis:"CHF 690.–",ort:"Zug",plz:"6300",zustand:"Gebraucht",emoji:"💻",beschreibung:"256 GB, 8 GB RAM, sehr guter Akku."},
+    {kat:"Sport",titel:"Ski-Set 170 cm + Stöcke",preis:"CHF 180.–",ort:"Chur",plz:"7000",zustand:"Gebraucht",emoji:"🎿",beschreibung:"Allmountain, inkl. Bindung, guter Zustand."}
+  ];
+  function demoIns(q){q=(q||"").toLowerCase();
+    return DEMO.filter(function(it){return !q||(it.titel+" "+it.beschreibung+" "+it.kat+" "+it.ort).toLowerCase().indexOf(q)>=0})
+      .map(function(it){return {src:"ins",demo:true,title:it.titel,price:it.preis||"",pn:priceNum(it.preis),region:(it.plz+" "+it.ort).toLowerCase(),meta:[it.kat,it.plz+" "+it.ort].filter(Boolean).join(" · "),desc:it.beschreibung||"",kat:it.kat,cond:it.zustand||"",url:"/inserate.html",img:"",emoji:it.emoji||"🏷️",act:"Im Inserate-Bereich →",ext:false}})}
+
+  // ── Filter-Widgets (Ankreuzen) ──
+  var SRC=[["ins","📋 Inserate & Immobilien"],["prod","🛍️ Angebote"],["job","💼 Jobs"]];
+  var CATS=["Elektronik","Handy","Computer","Möbel","Haushalt","Garten","Werkzeug","Auto & Teile","Fahrrad","Mode","Spielzeug","Baby & Kind","Haustier","Sport","Dienstleistungen","Immobilien","Sonstiges"];
+  var REGIONS=["Zürich","Bern","Basel","Genf","Lausanne","Luzern","St. Gallen","Winterthur","Lugano","Zug","Fribourg","Chur","Thun"];
+  var PKL=[["unter 50",0,50],["50–200",50,200],["200–1'000",200,1000],["1'000–10'000",1000,10000],["über 10'000",10000,1e12]];
+  var CONDS=[["neu","Neu"],["gebraucht","Gebraucht"]];
+  function mkChips(el,arr){el.innerHTML=arr.map(function(it){return '<label class="chk"><input type="checkbox" value="'+esc(it[0])+'">'+esc(it[1])+'</label>'}).join("")}
+  mkChips($("#fsrc"),SRC);
+  mkChips($("#fcat"),CATS.map(function(c){return [c,c]}));
+  mkChips($("#freg"),REGIONS.map(function(c){return [c,c]}));
+  mkChips($("#fpkl"),PKL.map(function(r){return [r[1]+"-"+r[2],r[0]]}));
+  mkChips($("#fcond"),CONDS);
+  function checked(sel){return Array.prototype.map.call(document.querySelectorAll(sel+":checked"),function(i){return i.value})}
+
+  function applyFilters(items){
+    items=items.slice();
+    var srcs=checked("#fsrc input");if(srcs.length)items=items.filter(function(it){return srcs.indexOf(it.src)>=0});
+    var cats=checked("#fcat input");if(cats.length)items=items.filter(function(it){return it.src!=="ins"?true:cats.indexOf(it.kat)>=0});
+    var regs=checked("#freg input").map(function(r){return r.toLowerCase()});if(regs.length)items=items.filter(function(it){return !it.region?true:regs.some(function(r){return it.region.indexOf(r)>=0})});
+    var pkl=checked("#fpkl input").map(function(v){return v.split("-").map(parseFloat)});if(pkl.length)items=items.filter(function(it){return isNaN(it.pn)?true:pkl.some(function(r){return it.pn>=r[0]&&it.pn<r[1]})});
+    var conds=checked("#fcond input");if(conds.length)items=items.filter(function(it){return !it.cond?true:conds.some(function(c){return it.cond.toLowerCase().indexOf(c)>=0})});
+    var s=$("#sort").value;
+    if(s==="pasc"||s==="pdesc")items.sort(function(a,b){var x=isNaN(a.pn)?(s==="pasc"?1e15:-1):a.pn,y=isNaN(b.pn)?(s==="pasc"?1e15:-1):b.pn;return s==="pasc"?x-y:y-x});
+    return items;
   }
-  function loadProd(q){
-    var r=$("#r-prod"),sub=$("#sub-prod");skel(r,4);sub.textContent="";
-    $("#all-prod").href="/angebote-suche.html?q="+qenc(q);
-    fetch("/api/ebay?limit=12&q="+qenc(q)).then(function(x){return x.json()}).then(function(d){
-      var items=(d.items||[]).slice(0,6);
-      if(!items.length){r.innerHTML="";sub.textContent="Keine Angebote zu „"+q+"“.";return}
-      r.innerHTML=items.map(function(it){
-        var img=it.img?('<div class="ph" style="background-image:url(\''+esc(it.img)+'\')"></div>'):'<div class="ph">🛍️</div>';
-        var url=(it.url&&it.url!=="#")?esc(it.url):"#";
-        return '<a class="c prod" href="'+url+'" target="_blank" rel="sponsored nofollow noopener">'+img+'<div class="pb"><div class="t">'+esc(it.title)+'</div><div class="p">'+esc(it.price||"")+'</div><div class="m">'+esc([it.cond,it.loc].filter(Boolean).join(" · "))+'</div><span class="go2">Ansehen →</span></div></a>';
-      }).join("");
-      sub.innerHTML=(d.demo?"Demo-Angebote":"Angebote von Partnern")+" · auch <a href=\"/auto-suche.html\">Auto</a> durchsuchen";
-    }).catch(function(){r.innerHTML="";sub.textContent="Angebote gerade nicht erreichbar."});
+  function card(it){
+    var badge='<span class="badge2 '+(it.src==="ins"?"b-ins":it.src==="prod"?"b-prod":"b-job")+'">'+(it.src==="ins"?(it.demo?"Beispiel · Inserat":"Inserat"):it.src==="prod"?"Angebot":"Job")+'</span>';
+    var open=it.ext?' target="_blank" rel="sponsored nofollow noopener"':'';
+    if(it.src==="prod"){
+      var img=it.img?('<div class="ph" style="background-image:url(\''+esc(it.img)+'\')"></div>'):'<div class="ph">'+(it.emoji||"🛍️")+'</div>';
+      return '<a class="c prod" href="'+esc(it.url||"#")+'"'+open+'>'+img+'<div class="pb">'+badge+'<div class="t">'+esc(it.title)+'</div>'+(it.price?'<div class="p">'+esc(it.price)+'</div>':'')+'<div class="m">'+esc(it.meta)+'</div><span class="go2">'+esc(it.act)+'</span></div></a>';
+    }
+    var inner=badge+'<div class="t">'+esc(it.title)+'</div>'+(it.price?'<div class="p">'+esc(it.price)+'</div>':'')+'<div class="m">'+esc(it.meta)+'</div>'+(it.desc?'<div class="d">'+esc(it.desc)+'</div>':'')+'<span class="go2">'+esc(it.act)+'</span>';
+    return it.url?('<a class="c" href="'+esc(it.url)+'"'+open+'>'+inner+'</a>'):('<div class="c">'+inner+'</div>');
   }
-  function loadIns(q){
-    var r=$("#r-ins"),sub=$("#sub-ins");skel(r,3);sub.textContent="";
-    $("#all-ins").href="/inserate.html?q="+qenc(q);
-    fetch("/api/inserate-list?q="+qenc(q)+"&kat=").then(function(x){return x.json()}).then(function(d){
-      if(d.demo){r.innerHTML="";sub.innerHTML="Inserate werden gerade aufgebaut. <a href=\"/inserat-aufgeben.html\">Jetzt kostenlos inserieren</a> · <a href=\"/immobilien.html\">Immobilien</a>";return}
-      var items=(d.items||[]).slice(0,6);
-      if(!items.length){r.innerHTML="";sub.innerHTML="Keine Inserate zu „"+q+"“. <a href=\"/inserat-aufgeben.html\">Selbst inserieren</a>";return}
-      r.innerHTML=items.map(function(it){
-        return '<div class="c"><div class="t">'+esc(it.titel)+'</div><div class="m">'+esc([it.kat,it.ort].filter(Boolean).join(" · "))+'</div>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<a class="go2" href="/inserate.html">Im Inserate-Bereich →</a></div>';
-      }).join("");
-      sub.textContent=items.length+" Inserate";
-    }).catch(function(){r.innerHTML="";sub.textContent="Inserate gerade nicht erreichbar."});
+  function render(){
+    var items=applyFilters(raw);
+    if(!items.length){grid.innerHTML="";emptyEl.hidden=false;emptyEl.innerHTML=raw.length?"Nichts in dieser Auswahl — weniger Filter probieren.":"Tippe oben ein, was du suchst.";cntEl.textContent="0 Treffer";return}
+    emptyEl.hidden=true;
+    grid.innerHTML=items.map(card).join("");
+    var ni=items.filter(function(x){return x.src==="ins"}).length,np=items.filter(function(x){return x.src==="prod"}).length,nj=items.filter(function(x){return x.src==="job"}).length;
+    cntEl.textContent=items.length+" Treffer · 📋 "+ni+" · 🛍️ "+np+" · 💼 "+nj;
   }
+
+  function getJobs(q){return fetch("/api/jobs?q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"job",title:it.title||"",price:"",pn:NaN,region:String(it.location||"").toLowerCase(),meta:[it.company,it.location].filter(Boolean).join(" · ")+(it.remote?" · 🏠 Remote":""),desc:"",kat:"",cond:"",url:(it.url&&it.url!=="#")?it.url:"",img:"",emoji:"💼",act:"Zum Job →",ext:true}})}).catch(function(){return []})}
+  function getProd(q){return fetch("/api/ebay?limit=24&q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"prod",title:it.title||"",price:it.price||"",pn:priceNum(it.price),region:String(it.loc||"").toLowerCase(),meta:[it.cond,it.loc].filter(Boolean).join(" · "),desc:"",kat:"",cond:it.cond||"",url:(it.url&&it.url!=="#")?it.url:"",img:it.img||"",emoji:"🛍️",act:"Ansehen →",ext:true}})}).catch(function(){return []})}
+  function getIns(q){return fetch("/api/inserate-list?q="+qenc(q)+"&kat=").then(function(x){return x.json()}).then(function(d){
+    var items=d.items||[];
+    if(d.demo||!items.length)return demoIns(q);
+    return items.map(function(it){return {src:"ins",title:it.titel||"",price:it.preis||"",pn:priceNum(it.preis),region:(String(it.plz||"")+" "+String(it.ort||"")).toLowerCase(),meta:[it.kat,[it.plz,it.ort].filter(Boolean).join(" ")].filter(Boolean).join(" · "),desc:it.beschreibung||"",kat:it.kat||"Sonstiges",cond:String(it.zustand||""),url:"/inserate.html",img:it.bild||"",emoji:"📋",act:"Im Inserate-Bereich →",ext:false}})
+  }).catch(function(){return demoIns(q)})}
 
   function searchAll(){
-    var q=$("#q").value.trim();
-    $("#empty").hidden=true;
-    loadJobs(q);loadProd(q);loadIns(q);
+    var q=$("#q").value.trim();emptyEl.hidden=true;cntEl.textContent="Suche …";
+    grid.innerHTML=Array(9).join().split(",").map(function(){return '<div class="skl"></div>'}).join("");
+    Promise.all([getIns(q),getProd(q),getJobs(q)]).then(function(res){raw=[].concat(res[0],res[1],res[2]);render()});
   }
   $("#go").addEventListener("click",function(e){e.preventDefault();searchAll()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();searchAll()}});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#q").value=a.dataset.q;searchAll()});
+  $("#fpanel").addEventListener("change",render);
+  $("#freset").addEventListener("click",function(){Array.prototype.forEach.call(document.querySelectorAll("#fpanel input"),function(i){i.checked=false});$("#sort").value="rel";render()});
 
-  // Start: ?q=… aus der URL übernehmen, sonst Standard-Suche zeigen
   var urlQ=new URLSearchParams(location.search).get("q");
-  if(urlQ){$("#q").value=urlQ;searchAll()}else{searchAll()}
+  if(urlQ)$("#q").value=urlQ;
+  searchAll();
 })();
 </script>
 </body>
