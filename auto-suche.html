@@ -93,6 +93,11 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 }
 @media(min-width:861px){.sidebar .sheethead,.sidebar .applybar{display:none}}
 :focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+.fsel{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:.9rem;font-family:inherit;background:#f8f5ef;color:var(--ink);margin-bottom:8px}
+.fsel:focus{outline:0;border-color:var(--amber);background:#fff}
+.carlinks{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.carlinks a{font-size:.78rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:5px 10px}
+.carlinks a:hover{border-color:var(--amber);color:var(--amber-dk);background:var(--cream)}
 </style>
 </head>
 <body>
@@ -120,6 +125,14 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <div class="wrap">
   <aside class="sidebar" id="sidebar">
     <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
+    <div class="fcard"><h4>🚗 Fahrzeug-Auswahl</h4>
+      <select class="fsel" id="fMarke"><option value="">Marke (alle)</option></select>
+      <input class="fsel" id="fModell" type="search" placeholder="Modell (z. B. Golf, 3er, A4)">
+      <div class="prange"><select class="fsel" id="fJahr" style="margin-bottom:0"><option value="">Jahr ab</option></select><select class="fsel" id="fKm" style="margin-bottom:0"><option value="">km bis</option></select></div>
+      <select class="fsel" id="fFuel" style="margin-top:8px"><option value="">Treibstoff (alle)</option></select>
+      <select class="fsel" id="fGetriebe" style="margin-bottom:0"><option value="">Getriebe (alle)</option></select>
+      <div class="carlinks" id="carLinks"></div>
+    </div>
     <div class="fcard"><h4>Kategorie</h4><div id="cats"></div></div>
     <div class="fcard"><h4>Zustand</h4>
       <label class="opt"><input type="checkbox" class="cond" value="neu">Neu</label>
@@ -166,6 +179,17 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function priceNum(p){var s=String(p||"").replace(/[^\d.,'’]/g,"").replace(/['’]/g,"").replace(/,/g,"");var f=parseFloat(s);return isNaN(f)?NaN:f}
   $("#cats").innerHTML=CATS.map(function(c,i){return '<label class="opt"><input type="radio" name="cat" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>'}).join("");
+  // ── AutoScout-artige Fahrzeug-Auswahl ──
+  var MAKES=["VW","BMW","Mercedes-Benz","Audi","Škoda","Toyota","Ford","Opel","Renault","Peugeot","Fiat","Volvo","Hyundai","Kia","Nissan","Mazda","Seat","Citroën","Tesla","Dacia","Suzuki","Honda","Mini","Porsche","Jeep","Land Rover","Subaru"];
+  var FUELS=["Benzin","Diesel","Hybrid","Elektro","Gas"],GEARS=["Automat","Manuell"];
+  function fillSel(id,arr,fmt){var el=$("#"+id);if(!el)return;el.innerHTML=el.options[0].outerHTML+arr.map(function(v){return '<option value="'+esc(String(v))+'">'+esc(fmt?fmt(v):String(v))+'</option>'}).join("")}
+  fillSel("fMarke",MAKES);fillSel("fFuel",FUELS);fillSel("fGetriebe",GEARS);
+  (function(){var ys=[];for(var y=2025;y>=2005;y--)ys.push(y);fillSel("fJahr",ys,function(y){return "ab "+y})})();
+  fillSel("fKm",[5000,10000,30000,50000,80000,100000,150000,200000],function(k){return "bis "+k.toLocaleString("de-CH")+" km"});
+  function carQuery(){var p=[];var mk=$("#fMarke").value;if(mk)p.push(mk);var md=$("#fModell").value.trim();if(md)p.push(md);var f=$("#fFuel").value;if(f)p.push(f);var g=$("#fGetriebe").value;if(g)p.push(g);var jr=$("#fJahr").value;if(jr)p.push(jr);var q=$("#q").value.trim();if(q)p.push(q);return p.join(" ").trim()}
+  function renderCarLinks(){var el=$("#carLinks");if(!el)return;var term=carQuery(),t=encodeURIComponent(term||"Auto");
+    var L=[{n:"AutoScout24",u:"https://www.autoscout24.ch/de"},{n:"Comparis",u:"https://www.comparis.ch/carfinder/default"},{n:"Tutti",u:term?"https://www.tutti.ch/de/q/"+t:"https://www.tutti.ch/de"},{n:"Ricardo",u:term?"https://www.ricardo.ch/de/s/"+t:"https://www.ricardo.ch/de"}];
+    el.innerHTML='<span style="font-size:.72rem;color:var(--muted);width:100%">Auswahl auch öffnen auf:</span>'+L.map(function(x){return '<a href="'+esc(x.u)+'" target="_blank" rel="noopener nofollow">'+esc(x.n)+' →</a>'}).join("")}
   function skeleton(){grid.innerHTML=Array(9).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="b"><div style="width:90%"></div><div style="width:40%"></div></div></div>'}).join("");statusEl.hidden=true;}
   function activeConds(){return Array.prototype.filter.call(document.querySelectorAll(".cond"),function(c){return c.checked}).map(function(c){return c.value})}
   function applyFilters(items){
@@ -212,8 +236,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     return p;
   }
   function search(){
-    var q=$("#q").value.trim();var cat=document.querySelector('input[name="cat"]:checked');
-    var term=q||(cat&&cat.value)||"Auto";try{saveRecent(term)}catch(e){}
+    var cat=document.querySelector('input[name="cat"]:checked');
+    var term=carQuery()||(cat&&cat.value)||"Auto";try{saveRecent(term)}catch(e){}
+    renderCarLinks();
     cntEl.textContent="Suche „"+term+"“ …";skeleton();
     fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
       badge.hidden=!d.demo;if(d.currency){var cl=document.querySelector(".curlbl");if(cl)cl.textContent=d.currency}raw=d.items||[];render();
@@ -225,10 +250,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#q").value=a.dataset.q;search();window.scrollTo({top:0,behavior:"smooth"})});
   $("#cats").addEventListener("change",function(e){if(e.target.name==="cat"){$("#q").value="";search()}});
   document.querySelectorAll(".cond").forEach(function(c){c.addEventListener("change",search)});
+  ["fMarke","fFuel","fGetriebe","fJahr"].forEach(function(id){$("#"+id).addEventListener("change",search)});
+  $("#fKm").addEventListener("change",renderCarLinks);
+  $("#fModell").addEventListener("input",function(){renderCarLinks();searchSoon()});
   ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",searchSoon)});
   $("#sort").addEventListener("change",search);
   document.getElementById("chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(b.dataset.all){$("#reset").click();return}var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
-  $("#reset").addEventListener("click",function(){$("#q").value="";$("#pmin").value="";$("#pmax").value="";var f=document.querySelector('input[name="cat"]');if(f)f.checked=true;document.querySelectorAll(".cond").forEach(function(c){c.checked=false});$("#sort").value="rel";search()});
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#pmin").value="";$("#pmax").value="";["fMarke","fModell","fFuel","fGetriebe","fJahr","fKm"].forEach(function(id){var e=$("#"+id);if(e)e.value=""});var f=document.querySelector('input[name="cat"]');if(f)f.checked=true;document.querySelectorAll(".cond").forEach(function(c){c.checked=false});$("#sort").value="rel";renderCarLinks();search()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
