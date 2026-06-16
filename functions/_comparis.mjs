@@ -49,3 +49,67 @@ export async function crossPostToComparis(row, env) {
     return { ok: false, error: String((e && e.message) || e) };
   }
 }
+
+// ---- Import-Richtung: Comparis-Inserate in den aban-Marktplatz einspeisen ----
+//
+// Auch hier no-op-safe: erst mit Secret COMPARIS_IMPORT_URL werden Comparis-Inserate
+// beim Laden der Marktplatz-Liste mit-eingeblendet. Der Mapper ist absichtlich tolerant
+// (akzeptiert mehrere Feldnamen), damit er ans echte Feed-Format angepasst werden kann.
+
+export function comparisImportConfigured(env) {
+  return !!(env && env.COMPARIS_IMPORT_URL);
+}
+
+// Mappt ein Comparis-Item auf die aban-Listen-Form (Inverse von toComparisPayload).
+export function fromComparisItem(item, i = 0) {
+  const it = item || {};
+  const g = (...keys) => { for (const k of keys) { if (it[k] != null && it[k] !== "") return it[k]; } return ""; };
+  const loc = typeof it.location === "object" && it.location ? it.location : {};
+  const imgs = Array.isArray(it.images) ? it.images : (it.image ? [it.image] : []);
+  const typ = String(g("type", "typ")).toLowerCase();
+  let ts = Date.now();
+  const created = g("published_at", "created", "date");
+  if (created) { const d = new Date(created); if (!isNaN(d.getTime())) ts = d.getTime(); }
+  return {
+    id: "cmp-" + String(g("external_id", "id") || i),
+    kat: String(g("category", "kat")),
+    ort: String(loc.city || g("city", "ort")),
+    plz: String(loc.zip || g("zip", "plz")),
+    titel: String(g("title", "titel")),
+    beschreibung: String(g("description", "beschreibung")),
+    preis: String(g("price", "preis")),
+    kontakt: "", // externer Kontakt läuft über den Comparis-Link, nicht über uns
+    typ: (typ === "wanted" || typ === "gesuch") ? "Gesuch" : "Angebot",
+    zustand: String(g("condition", "zustand")),
+    bild: imgs[0] ? String(imgs[0]) : "",
+    featured: 0,
+    created: ts,
+    status: "approved",
+    source: "comparis",
+    url: String(g("permalink", "url", "link")),
+  };
+}
+
+// Holt Comparis-Inserate (no-op-safe, 2,5s-Timeout). Filtert optional nach kat/q. Wirft nie.
+export async function fetchComparisListings(env, { kat = "", q = "", limit = 40 } = {}) {
+  if (!comparisImportConfigured(env)) return [];
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 2500);
+    let res;
+    try {
+      const headers = {};
+      if (env.COMPARIS_API_KEY) headers["Authorization"] = "Bearer " + env.COMPARIS_API_KEY;
+      res = await fetch(env.COMPARIS_IMPORT_URL, { headers, signal: ctrl.signal });
+    } finally { clearTimeout(t); }
+    if (!res || !res.ok) return [];
+    const data = await res.json();
+    const arr = Array.isArray(data) ? data : (data && Array.isArray(data.items) ? data.items : []);
+    let out = arr.map((it, i) => fromComparisItem(it, i));
+    if (kat) out = out.filter((x) => x.kat === kat);
+    if (q) { const ql = q.toLowerCase(); out = out.filter((x) => (x.titel + " " + x.beschreibung).toLowerCase().includes(ql)); }
+    return out.slice(0, Math.max(0, limit));
+  } catch (e) {
+    return [];
+  }
+}

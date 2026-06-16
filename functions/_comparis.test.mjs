@@ -1,6 +1,9 @@
 // Node-Test des Comparis-Cross-Postings: node functions/_comparis.test.mjs
 // Prüft Mapping, No-op ohne Config, und dass Fehler nie geworfen werden.
-import { comparisConfigured, toComparisPayload, crossPostToComparis } from "./_comparis.mjs";
+import {
+  comparisConfigured, toComparisPayload, crossPostToComparis,
+  comparisImportConfigured, fromComparisItem, fetchComparisListings,
+} from "./_comparis.mjs";
 
 let pass = 0, fail = 0;
 function check(name, cond, extra = "") {
@@ -51,6 +54,43 @@ async function run() {
   globalThis.fetch = async () => { throw new Error("boom"); };
   const errRes = await crossPostToComparis(ROW, { COMPARIS_FEED_URL: "https://c" });
   check("fetch-Fehler wirft nicht", errRes.ok === false && /boom/.test(errRes.error || ""));
+  globalThis.fetch = orig;
+
+  // ---- Import-Richtung ----
+  console.log("\nComparis-Import — Tests:");
+  check("import nicht konfiguriert ohne URL", comparisImportConfigured({}) === false);
+  check("import konfiguriert mit IMPORT_URL", comparisImportConfigured({ COMPARIS_IMPORT_URL: "https://c" }) === true);
+
+  const ci = fromComparisItem({
+    external_id: "x9", type: "offer", category: "Möbel", title: "Sofa", description: "3-Sitzer",
+    price: "200 CHF", condition: "Gebraucht", location: { zip: "8000", city: "Zürich" },
+    images: ["https://i/1.jpg"], permalink: "https://comparis.ch/i/9", published_at: "2026-01-02T00:00:00.000Z",
+  });
+  check("import id präfixt cmp-", ci.id === "cmp-x9", ci.id);
+  check("import offer → Angebot", ci.typ === "Angebot");
+  check("import wanted → Gesuch", fromComparisItem({ type: "wanted" }).typ === "Gesuch");
+  check("import location → ort/plz", ci.ort === "Zürich" && ci.plz === "8000");
+  check("import status approved + source", ci.status === "approved" && ci.source === "comparis");
+  check("import url aus permalink", ci.url === "https://comparis.ch/i/9");
+  check("import created als ts", ci.created === new Date("2026-01-02T00:00:00.000Z").getTime());
+
+  const noimp = await fetchComparisListings({}, {});
+  check("import no-op ohne Config → []", Array.isArray(noimp) && noimp.length === 0);
+
+  globalThis.fetch = async () => new Response(JSON.stringify({ items: [
+    { id: 1, title: "Velo", category: "Fahrrad", description: "rot" },
+    { id: 2, title: "Auto", category: "Auto & Teile", description: "blau" },
+  ] }), { status: 200 });
+  const imp = await fetchComparisListings({ COMPARIS_IMPORT_URL: "https://c" }, {});
+  check("import lädt items", imp.length === 2 && imp[0].titel === "Velo");
+  const impFilt = await fetchComparisListings({ COMPARIS_IMPORT_URL: "https://c" }, { kat: "Fahrrad" });
+  check("import filtert nach kat", impFilt.length === 1 && impFilt[0].titel === "Velo");
+  const impQ = await fetchComparisListings({ COMPARIS_IMPORT_URL: "https://c" }, { q: "blau" });
+  check("import filtert nach q", impQ.length === 1 && impQ[0].titel === "Auto");
+
+  globalThis.fetch = async () => { throw new Error("net"); };
+  const impErr = await fetchComparisListings({ COMPARIS_IMPORT_URL: "https://c" }, {});
+  check("import fetch-Fehler → []", Array.isArray(impErr) && impErr.length === 0);
   globalThis.fetch = orig;
 
   console.log(`\n${fail ? "✗" : "✓"} ${pass} ok, ${fail} fehlgeschlagen`);
