@@ -54,6 +54,14 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — 👜 PREMIUM-TASCHEN +6 & 🚗 AUTO-NISCHE +3:**
+- **+6 Premium-Taschen** (Taxonomie 19654, alle highend): MK Rucksack Casual Grau (659), Mia Tomazzi (339), Anna Luchini
+  Rucksack+Handtasche (je 300), Roberta M (269), Laura Ashley (240). MK „Charlotte Schwarz"-Dublett (S0375206) bewusst übersprungen.
+- **🚗 Auto-Kategorie bestätigt = Sackgasse:** cat_auto.json (120) angetestet → von 22 nur **3 konsumtauglich**: Auto-Hundesitz
+  «Trixie» (59.90), Auto-Fußmatten «OCC Motorsport» (52.90), Schlüsselanhänger «Nike» (41.90). Rest = Spurplatten/Öle/
+  Reiniger/Fettnippel/Ersatzklingen/Spachtel → NICHT anlegen. **Auto nicht weiter abgrasen** (wie Memory 06-12 schon vermerkt).
+- Katalog ~529. Premium-Welt heute: ~29 Luxus-Stücke (Uhren/Taschen/Brillen/Schmuck).
+
 **2026-06-16 (Katalog-Session, BigBuy) — 👔 HERREN-PREMIUM + Hero-Auftrag (+4 Uhren):**
 - +4 Premium-Uhren: **Police** (H, 406), **Sector** 350 (H, 398), **Tommy Hilfiger** TH85 (H, 329), **Calvin Klein** Dainty (D, 429).
   Alle highend → Premium-Auswahl. ⚠️ Herren-**Geldbörsen**: BigBuy-Taxonomie 19688 ist KEIN gültiger `parentTaxonomy` (400) →
