@@ -16,6 +16,21 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## ✅ 2026-06-16 — Shop-Fulfillment verifiziert + Brain 100/100 (zuerst lesen)
+> **🧠 STANDING-REGEL (User 2026-06-16): IMMER die geteilte Memory (PROJEKT.md) aktuell halten** — jede
+> Session trägt ihren Stand hier ein, damit andere Sessions nahtlos weitermachen. (Dropship = CLAUDE.md, nicht anfassen.)
+- **✅ Alle 22 DE-Shop-Produkte sind LIEFERBAR verifiziert** (kein „bezahlt, nichts erhalten"): 19 Branchen-Kits
+  haben ihr `downloads/branchen/ki-schnellstart-<slug>.pdf` (+ Prompts/Checkliste beim Pack-Bau via
+  `build_product_pack.py`), `prompt-bibliothek`+`vorlagen-set` haben kuratierten Inhalt in `content/packs/de/`,
+  `alle-kits` = Bundle. `shop_selfcheck.py`: 0 Fehler, 34 ZIPs in `downloads/kits/`.
+- **🔴 Letzter Schritt zum echten Verkauf (NUR USER, 2 Dinge):** (1) **`sk_live`-Key ROTIEREN** (war im Chat →
+  verbrannt) + neuen nur als Secret; (2) **`DOWNLOAD_SALT`** als GitHub-+Cloudflare-Secret setzen → erst dann
+  liefert `kit-download.js` die ZIP nach Zahlung aus. Den exakten ZIP↔Slug-Hash-Abgleich kann nur mit dem Salt
+  geprüft werden (Stichwort „salt" → ich verifiziere alle 22).
+- **🟡 EN-Shop (EUR) Sync offen:** CLI-Key vom Sicherheits-Classifier (zu Recht) geblockt → über den Secret-
+  basierten `stripe-shop.yml`-Workflow laufen lassen, sobald GitHub Actions wieder frei ist (war zuletzt gedrosselt).
+- **Brain-Score 100.0/100** (0 Befunde). DE-Shop 22/22 kaufbar (#1008). Newsletter-Queue (3×, 10/10) versandbereit.
+
 ## 💳 2026-06-15 (NACHT) — STRIPE LIVE: alle 22 DE-Shop-Produkte kaufbar (zuerst lesen!)
 > User gab den `sk_live_`-Key (im Chat → **kompromittiert, MUSS rotiert werden**). `stripe_sync.py` mit
 > Key als flüchtige Env-Var gefahren (nie in Datei/Commit). Ergebnis **gemerged (#1008)**:
