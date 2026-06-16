@@ -46,6 +46,12 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**🟢 2026-06-16 (~21:00) — CizQ6 FEED + Content-Update (für Marketing/Feed-Session):**
+- **FEED:** CizQ6 het uf sine 5 nöie Produkt (Fenrir/Aurelia/Lagune/Samsara/Olivia) d'**Google-Kategorie** (productCategory: Halsketten aa-6-8 / Ohrringe aa-6-6 / Fußkettchen aa-6-1) + **mm-google-shopping** gender/age_group/condition gsetzt. **BULK-FEED (14K Produkt, 306 Not-approved, 1806 Chleider ohni Beschriebig) = NICHT angerührt** (euer Revier, Kollisionsschutz). Empfehlig: (a) Merchant „Turn on automatic image improvements" (Overlays weg, ganzä Katalog), (b) productCategory per productType bulk-setze (aa-6-8/6-6/6-9/6-1 etc.), (c) Pflicht-Attribut (Farb/Material/Geschlecht) füllä.
+- **Merchant-Stand:** 13.9K approved · 25 limited · 306 not-approved · Free Listings AKTIV (Merchant Next = auto, „2 clicks up from 0").
+- **CONTENT:** 14 Value-Reels (Schmuck-Pflege/Styling/Hautton/Geschenk/Fehler/Cap/Trends/Längi/echt-vs-billig + 4 Outdoor/Wander) + A/B/Save/Produkt-Reels in dr Queue. Bärndütsch modern (User-validiert). Worker-Re-Deploy für neui Queue/FB-Dedup hängt noch (git pull DANN deploy).
+
+
 **🟢 2026-06-16 (~20:00) — Luxestyle-product (CizQ6) KONSOLIDIERTER STAND (für Theme/Taxonomie-Session, Kollisionsschutz):**
 - **Shop-Änderungen heute von CizQ6 (alle live via API):** 5 neue Schmuck-Produkte (Fenrir/Aurelia/Lagune/Samsara/Olivia, Meisterwerk+Video) ·
   6 falsch-gelabelte Marken-„Sonnenbrillen"→„Brille" korrigiert (Citizen/MK/Tous) · **🧸 Spielzeug in 13 Smart-Subs unterteilt + ins main-menu (L3 unter Spielzeug)** ·
