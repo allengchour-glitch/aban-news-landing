@@ -4,6 +4,25 @@
 > (aus dem Newsletter-Chat durchgereicht) — bitte hier weiterbauen, nicht im Newsletter-Chat.
 > **User-Wunsch (2026-06-09 Nacht): Memory regelmäßig speichern/aktualisieren.**
 
+## 2026-06-16 (Teil 14) — QA-Tools geeicht statt Symptome verstecken (User: „weiter")
+- **Leitlinie diese Session:** Wo ein QA-Tool dauerhaft dieselben „Befunde" wirft, erst prüfen ob es **Fehlalarme** sind —
+  dann das **Tool präzisieren** (ehrliches Signal), statt Inhalte zu verbiegen oder Befunde zu ignorieren. 3 PRs, alle auf `main`.
+- **Preise vereinheitlicht (#1017):** Site war widersprüchlich (€9/€89 ↔ €19/€190 ↔ €29 ↔ €149). Kanon = realer Stand
+  **aban Pro €19/Monat · €190/Jahr · Founding €69** (echte Bezahllinks in `ki-studio.html`). 20 Stellen in 9 Seiten (de+en) gezielt
+  korrigiert (regex nur vor /Monat·/Jahr bzw. month/year), „Founding member €149"→€69, Cockpit „€29 einmalig"→€69.
+  `tools/consistency_check.py` **CANON auf €19/€190 geeicht** (war veraltet). **Bewusst NICHT angefasst:** `en/trading-tipps.html`
+  „on sale for €49/month" = Spott über Trading-Bots, kein Produktpreis (bleibt 1 bekannter, harmloser Check-Treffer).
+- **Brain-Scan präziser (#1018) → Score 99.3→100:** Die 7 „Hype"-Befunde waren **alle Fehlalarme** (Wort in Verbotswort-Liste
+  `launch-manual`/`en/faq`, ironisch „versprechen die Revolution", abschwächend „weniger um revolutionäre", wörtlich „10x Hebel"
+  /„disruption"=Störung). `tools/daily_improvement_scan.py`: DEBUNK-Fenster 60→120, neue Marker (versprech/weniger/forbidden/without/
+  schlagzeile/headline), „disruption"-Substantiv raus (nur „disruptive/-iv/-or"), 10x-vor-Hebel/leverage-Guard. **Regressionstest:**
+  echter Hype wird weiter geflaggt. 1 echte Stelle entschärft (`themen/ki-freelancing.html`: „noch nie dagewesene"→„wirklich neue Ideen").
+- **Link-Checker präziser (#1019):** `tools/link_checker.py` 3-stufig **OK/BLOCKED/BROKEN**. BROKEN nur echt tot (DNS „Name or service
+  not known"/refused/404/410/451); 401/403/429/5xx/Cloudflare-999/Timeout/SSL = BLOCKED. Vorher 13 „BROKEN" (12 Bot-Walls) → **1 echt defekt**.
+- **🟡 OFFEN (User, „später"):** Einziger echter toter Link = **`automatisierung.abannews.com` — Subdomain nicht DNS-geschaltet.**
+  `automatisierung-radar/dist/` (eigener Build-Workflow) zielt dorthin; `social/posts.json`-Entwurf (`sent:false`) verlinkt sie.
+  Nichts gelöscht — DNS/Deploy einrichten ODER Post zurückhalten.
+
 ## 2026-06-12 (Teil 13) — Tool-Explorer für Engagement (User: „beschäftige die leute auf der seite")
 - **`online-tools.html` ist jetzt interaktiv:** Live-Suche (filtert die ~59 Karten sofort nach Titel+Beschreibung),
   **Kategorie-Chips** mit Anzahl, Trefferzähler, **„🎲 Überrasch mich"** (öffnet ein zufälliges sichtbares Tool),
