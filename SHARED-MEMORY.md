@@ -76,6 +76,10 @@
   **CAPS ERLEDIGT (diese Session, 2026-06-16): 4 Caps live** (Flat-Cap «Brigade» camo, Vintage «Liberty», Pailletten-Baskenmütze
   «Scintille», Docker-Mütze «Marin») in neuer Smart-Collection **„🧢 Caps & Hüte"** (`caps-hute`, Rule tag `huete`), ACTIVE/6 Kanäle/
   Bild-QA'd/kaufbar. **NICHT nochmal Caps importieren.** **(3) Anlass-Bundles** „Geschenk unter 50 Franken"/Hochzeitsgast. Bild-QA (kein asiat. Text/Watermark) + Marke/Barcode wie gehabt.
+- **🧭 HAUPTMENÜ per API erweitert (2026-06-16, diese Session — Menü ist sonst EURE Theme-Zone, drum FYI):** `main-menu`
+  via `menuUpdate` sauber aktualisiert (komplette Struktur 1:1 erhalten + 3 neue Kategorie-Links): **🧢 Caps & Hüte** + **🌸 Parfum & Düfte**
+  in Frauen & Herren, **💧 Wasserfester Schmuck** im Schmuck-Untermenü. Sonnenbrillen/Ringe/Ohrringe/Halsketten waren schon drin. Bitte beim
+  nächsten Menü-Edit diese 3 behalten. **⚠️ FUND:** Kundenkonto-Links + Klaviyo zeigen auf **`luxestyle.com.co`** (falsche Domain) → Shopify-Primärdomain prüfen (User).
 - **🗂️ KATEGORISIERUNG VERIFIZIERT + FIX (2026-06-16, diese Session):** Neue Produkte korrekt einsortiert (Caps→🧢 Caps&Hüte,
   Armbänder→💫 Armbänder, Halskette→📿 Halsketten, Ohrhänger→💎 Ohrringe, wasserfest→💧). **Eingriff:** Smart-Collection **💎 Ohrringe**
   (`sub-ohrringe`) Regel war nur `TITLE~Ohrring` → verpasste „Ohrhänger/Creolen/Ohrstecker". Auf **disjunktiv erweitert** (+ TITLE~Ohrhänger/

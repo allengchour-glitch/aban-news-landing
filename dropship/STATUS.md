@@ -3,6 +3,10 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 9 — Hauptmenü per API: neue Kategorien verlinkt)
+- **🧭 main-menu per `menuUpdate` aktualisiert** (Struktur 1:1 + 3 neue Links): 🧢 Caps & Hüte + 🌸 Parfum & Düfte (Frauen & Herren), 💧 Wasserfester Schmuck (Schmuck). Sonnenbrillen/Ringe/Ohrringe/Halsketten waren schon verlinkt. Voll autonom, kein Customizer nötig.
+- **⚠️ Domain-Fund:** Kundenkonto-Links + Klaviyo nutzen `luxestyle.com.co` → Shopify-Primärdomain (Einstellungen→Domains) prüfen — möglicher Trust/SEO/Tracking-Leak.
+
 ## 🆕 2026-06-16 (NACHT 8 — #1 Conversion: Klaviyo-Audit, 2 kritische Bugs)
 - **✅ Conversion-Engine läuft:** Klaviyo-Flows alle LIVE (Abandoned Cart UXEjv2, Abandoned Checkout Vse76a, Welcome-Serie,
   Win-Back, Post-Purchase). WELCOME10 aktiv (10%, bis 31.08.).
