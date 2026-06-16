@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marchés — crypto & actions en direct + sentiment IA | aban news</title>
-  <meta name="description" content="Cours en direct pour la crypto & les actions, actualité financière récente et sentiment IA expérimental d'un seul coup d'œil. Anti-hype, avec sources — sans conseil en investissement.">
+  <title>Mercati — crypto & azioni live + sentiment IA | aban news</title>
+  <meta name="description" content="Quotazioni live per crypto & azioni, notizie finanziarie aggiornate e un sentiment IA sperimentale a colpo d'occhio. Anti-hype, con fonti — senza consulenza d'investimento.">
   <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://abannews.com/fr/maerkte.html">
-<link rel="alternate" hreflang="de" href="https://abannews.com/maerkte.html">
-<link rel="alternate" hreflang="en" href="https://abannews.com/en/maerkte.html">
-<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/maerkte.html">
-<link rel="alternate" hreflang="it" href="https://abannews.com/it/maerkte.html">
-<link rel="alternate" hreflang="x-default" href="https://abannews.com/maerkte.html">
+  <link rel="canonical" href="https://abannews.com/it/maerkte.html">
+  <link rel="alternate" hreflang="de" href="https://abannews.com/maerkte.html">
+  <link rel="alternate" hreflang="en" href="https://abannews.com/en/maerkte.html">
+  <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/maerkte.html">
+  <link rel="alternate" hreflang="it" href="https://abannews.com/it/maerkte.html">
+  <link rel="alternate" hreflang="x-default" href="https://abannews.com/maerkte.html">
   <meta name="theme-color" content="#d97706">
-  <meta property="og:title" content="Marchés — crypto & actions en direct + sentiment IA | aban news">
-  <meta property="og:description" content="Cours en direct, actualité financière et sentiment IA expérimental d'un seul coup d'œil. Anti-hype, avec sources — sans conseil en investissement.">
+  <meta property="og:title" content="Mercati — crypto & azioni live + sentiment IA | aban news">
+  <meta property="og:description" content="Quotazioni live, notizie finanziarie e un sentiment IA sperimentale a colpo d'occhio. Anti-hype, con fonti — senza consulenza d'investimento.">
   <meta property="og:image" content="https://abannews.com/og-image.png">
-  <meta property="og:locale" content="fr_FR">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
     *,*::before,*::after{box-sizing:border-box}
@@ -88,7 +87,7 @@
     .curswitch button.on{background:var(--ink);color:#fff}
     .curswitch button:disabled{opacity:.4;cursor:not-allowed}
     #staleWarn{display:none}
-    /* Onglets de filtre par catégorie */
+    /* tab filtro categorie */
     .mtabs{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.4rem 0 .2rem}
     .mtabs button{border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;font-weight:800;font-size:.85rem;padding:.45rem .9rem;border-radius:999px;transition:.15s}
     .mtabs button:hover{border-color:var(--amber);color:var(--amber-dk)}
@@ -114,7 +113,7 @@
     .mtable td.spark{width:96px}.mtable td.spark svg{opacity:.92}
     .mtable tr.catrow td{background:#fbf6ec;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-dk);padding:.5rem 1rem}
 
-    /* Sentiment du marché + Top-Mover */
+    /* sentiment di mercato + top mover */
     .mood{display:grid;grid-template-columns:1.4fr 1fr;gap:1.1rem;margin-top:1.6rem}
     .moodcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
     .moodcard h3{margin:0 0 .8rem;font-size:1.05rem}
@@ -173,7 +172,7 @@
     .footbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
     .footbar a{color:var(--muted);text-decoration:none}.footbar-links{display:flex;gap:1rem;flex-wrap:wrap}
 
-    /* Ticker en direct */
+    /* ticker live */
     .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;overflow:hidden;position:relative}
     .ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:48px;z-index:2;pointer-events:none}
     .ticker::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
@@ -187,13 +186,13 @@
     .tk .tk-ch{font-variant-numeric:tabular-nums;font-weight:800}
     .tk .tk-ch.up{color:var(--ok)}.tk .tk-ch.down{color:var(--bear)}.tk .tk-ch.flat{color:var(--muted)}
 
-    /* Étoile de watchlist */
+    /* stella watchlist */
     .star{background:none;border:0;cursor:pointer;font-size:1.05rem;line-height:1;padding:.1rem .3rem;color:var(--line);transition:color .12s,transform .12s}
     .star:hover{transform:scale(1.15)}.star.on{color:var(--amber)}
     .mtable td.starcell{width:34px;text-align:center}
     tr.watched td{background:#fffaf0}
 
-    /* Widgets-outils */
+    /* tool widget */
     .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:1.8rem}
     .tool{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow-sm)}
     .tool h3{margin:0 0 .3rem;font-size:1.12rem;letter-spacing:-.01em}
@@ -207,7 +206,7 @@
     .tout small{display:block;font-weight:600;color:var(--muted);font-size:.78rem;margin-top:.2rem}
     .tnote{margin:.7rem 0 0;font-size:.74rem;color:var(--muted)}
 
-    /* Réseau / En savoir plus */
+    /* network / approfondimenti */
     .netgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
     .netcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm);text-decoration:none;color:var(--ink);transition:transform .14s,box-shadow .14s}
     .netcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
@@ -224,7 +223,7 @@
     .mfaq details[open] summary::after{content:"–"}
     .mfaq p{margin:0 0 1rem;color:var(--muted);font-size:.94rem}
 
-    /* Bloc abonnement */
+    /* blocco abbonamento */
     .abo{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem}
     .abocard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow-sm);text-align:center}
     .abocard .ico{font-size:2rem;margin-bottom:.5rem}
@@ -240,7 +239,7 @@
       .frow{grid-template-columns:1fr}
     }
     @media(max-width:560px){
-      /* Le tableau des cours devient des cartes empilées sur mobile (pas de défilement horizontal) */
+      /* la tabella quotazioni diventa schede impilate su mobile (niente scroll orizzontale) */
       .mtable-wrap{overflow:visible;background:transparent;border:0;box-shadow:none}
       table.mtable{min-width:0;font-size:1rem}
       .mtable thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -261,118 +260,118 @@
     }
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CollectionPage","name":"Marchés — crypto & actions","url":"https://abannews.com/fr/maerkte.html","description":"Cours en direct pour la crypto & les actions, actualité financière et sentiment IA expérimental. Sans conseil en investissement.","inLanguage":"fr","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
+  {"@context":"https://schema.org","@type":"CollectionPage","name":"Mercati — crypto & azioni","url":"https://abannews.com/it/maerkte.html","description":"Quotazioni live per crypto & azioni, notizie finanziarie e sentiment IA sperimentale. Senza consulenza d'investimento.","inLanguage":"it","isPartOf":{"@type":"WebSite","name":"aban news","url":"https://abannews.com/"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr","mainEntity":[{"@type":"Question","name":"Les cours sont-ils réels et à jour ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les cours crypto se mettent à jour en direct dans le navigateur via CoinGecko. Les cours des actions, l'actualité financière et le sentiment IA sont actualisés automatiquement plusieurs fois par jour à partir de sources publiques (Yahoo Finance, CoinGecko, flux RSS sérieux). Toutes les sources sont liées."}},{"@type":"Question","name":"Est-ce un conseil en investissement ?","acceptedAnswer":{"@type":"Answer","text":"Non. La page met en contexte des données publiquement disponibles et n'est pas un conseil en investissement, fiscal ou financier. Les marchés sont très volatils ; vous pouvez perdre la totalité de l'argent investi."}},{"@type":"Question","name":"Que signifie le sentiment IA ?","acceptedAnswer":{"@type":"Answer","text":"Une IA résume l'actualité récente par valeur en un sentiment (haussier, neutre, baissier) avec une courte justification. C'est une mise en contexte expérimentale, pas une recommandation d'achat ou de vente."}},{"@type":"Question","name":"Quelles valeurs et quelles devises sont affichées ?","acceptedAnswer":{"@type":"Answer","text":"22 valeurs en quatre catégories : crypto (Bitcoin, Ethereum, Solana, XRP, BNB, Cardano, Dogecoin), actions (NVIDIA, Apple, Microsoft, Tesla, Alphabet, Amazon, Meta, AMD), indices (S&P 500, Nasdaq, DAX, SMI) et matières premières (or, argent, pétrole). Affichage en USD, CHF ou EUR ; les indices en points."}},{"@type":"Question","name":"L'utilisation est-elle payante ?","acceptedAnswer":{"@type":"Answer","text":"Non. La page Marchés, le convertisseur et le calculateur de plan d'épargne sont gratuits et utilisables sans connexion, sans pixel de suivi."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","inLanguage":"it","mainEntity":[{"@type":"Question","name":"Le quotazioni sono reali e aggiornate?","acceptedAnswer":{"@type":"Answer","text":"Sì. Le quotazioni crypto si aggiornano live nel browser tramite CoinGecko. Le quotazioni azionarie, le notizie finanziarie e il sentiment IA vengono aggiornati automaticamente più volte al giorno da fonti pubbliche (Yahoo Finance, CoinGecko, feed RSS affidabili). Tutte le fonti sono collegate."}},{"@type":"Question","name":"È una consulenza d'investimento?","acceptedAnswer":{"@type":"Answer","text":"No. La pagina contestualizza dati pubblicamente disponibili e non è una consulenza d'investimento, fiscale o finanziaria. I mercati sono molto volatili; puoi perdere completamente il denaro investito."}},{"@type":"Question","name":"Cosa significa il sentiment IA?","acceptedAnswer":{"@type":"Answer","text":"Un'IA riassume la situazione di notizie attuale per ogni valore in un sentiment (rialzista, neutrale, ribassista) con una breve motivazione. È una contestualizzazione sperimentale, non una raccomandazione di acquisto o vendita."}},{"@type":"Question","name":"Quali valori e quali valute vengono mostrati?","acceptedAnswer":{"@type":"Answer","text":"22 valori in quattro categorie: crypto (Bitcoin, Ethereum, Solana, XRP, BNB, Cardano, Dogecoin), azioni (NVIDIA, Apple, Microsoft, Tesla, Alphabet, Amazon, Meta, AMD), indici (S&P 500, Nasdaq, DAX, SMI) e materie prime (oro, argento, petrolio). Visualizzazione in USD, CHF o EUR; gli indici in punti."}},{"@type":"Question","name":"L'utilizzo è a pagamento?","acceptedAnswer":{"@type":"Answer","text":"No. La pagina Mercati, il convertitore e il calcolatore del piano di accumulo sono gratuiti e utilizzabili senza login, senza pixel di tracciamento."}}]}
   </script>
 </head>
 <body>
-<a class="skip" href="#main">Aller au contenu</a>
+<a class="skip" href="#main">Vai al contenuto</a>
 <header>
   <div class="wrap">
-    <a href="/fr/" class="brand"><span class="dot"></span> aban news</a>
-    <nav class="hnav" aria-label="Navigation principale">
-      <a href="/preview.html" class="lk">Exemple</a>
-      <a href="/dossiers.html" class="lk">Dossiers</a>
-      <a href="/fr/maerkte.html" class="lk lk--keep" aria-current="page">Marchés</a>
+    <a href="/it/" class="brand"><span class="dot"></span> aban news</a>
+    <nav class="hnav" aria-label="Navigazione principale">
+      <a href="/preview.html" class="lk">Esempio</a>
+      <a href="/dossiers.html" class="lk">Dossier</a>
+      <a href="/it/maerkte.html" class="lk lk--keep" aria-current="page">Mercati</a>
       <a href="/founding.html" class="lk">Premium</a>
-      <a href="https://abannews.beehiiv.com" class="lk" target="_blank" rel="noopener" title="Déjà Premium ? Connexion par lien magique">Connexion Pro</a>
-      <a href="/shop.html" class="lk">Boutique</a>
-      <span class="lang" role="group" aria-label="Language"><a href="/maerkte.html" hreflang="de">DE</a><a href="/en/maerkte.html" hreflang="en">EN</a><a href="/fr/maerkte.html" class="on" aria-current="page">FR</a></span>
-      <a href="#signup" class="btn btn--amber btn--sm">S'abonner gratuitement</a>
+      <a href="https://abannews.beehiiv.com" class="lk" target="_blank" rel="noopener" title="Sei già Premium? Accedi con magic link">Login Pro</a>
+      <a href="/shop.html" class="lk">Shop</a>
+      <span class="lang" role="group" aria-label="Language"><a href="/maerkte.html" hreflang="de">DE</a><a href="/en/maerkte.html" hreflang="en">EN</a><a href="/fr/maerkte.html" hreflang="fr">FR</a><a href="/it/maerkte.html" class="on" aria-current="page">IT</a></span>
+      <a href="#signup" class="btn btn--amber btn--sm">Iscriviti gratis</a>
     </nav>
   </div>
 </header>
 
 <main id="main" tabindex="-1">
-<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/fr/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Argent &amp; IA : tous les thèmes, calculateurs &amp; vérifications</a></p>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/it/geld-und-ki.html" style="color:#b45309;font-weight:600;text-decoration:none">Soldi &amp; IA: tutti i temi, calcolatori &amp; verifiche</a></p>
 
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <span class="pill"><span class="pulse"></span> En direct · la crypto se met à jour dans le navigateur</span>
-      <h1>Marchés — <span class="hl">crypto &amp; actions</span> d'un seul coup d'œil.</h1>
-      <p class="lead">Cours en direct, actualité financière récente et un sentiment IA expérimental par valeur — mis en contexte honnêtement, sans hype. Pour que vous compreniez le marché, pas seulement les gros titres.</p>
-      <p class="disclaimer">⚠️ Aucun conseil en investissement. Cette page met en contexte des données publiquement disponibles et ne remplace pas un conseil individuel. Le sentiment IA est expérimental et peut se tromper. Les marchés — surtout la crypto — sont très volatils ; vous pouvez perdre la totalité de l'argent investi.</p>
+      <span class="pill"><span class="pulse"></span> Live · le crypto si aggiornano nel browser</span>
+      <h1>Mercati — <span class="hl">crypto &amp; azioni</span> a colpo d'occhio.</h1>
+      <p class="lead">Quotazioni live, notizie finanziarie aggiornate e un sentiment IA sperimentale per ogni valore — contestualizzato onestamente, senza clamore. Così capisci il mercato, non leggi solo i titoli.</p>
+      <p class="disclaimer">⚠️ Nessuna consulenza d'investimento. Questa pagina contestualizza dati pubblicamente disponibili e non sostituisce una consulenza individuale. Il sentiment IA è sperimentale e può sbagliare. I mercati — soprattutto le crypto — sono molto volatili; puoi perdere completamente il denaro investito.</p>
     </div>
   </section>
 
-  <!-- TICKER EN DIRECT -->
-  <div class="ticker" aria-label="Ticker de cours en direct">
-    <div class="ticker-track" id="tickerTrack"><span class="tk" style="color:var(--muted)">Chargement du ticker …</span></div>
+  <!-- TICKER LIVE -->
+  <div class="ticker" aria-label="Ticker delle quotazioni live">
+    <div class="ticker-track" id="tickerTrack"><span class="tk" style="color:var(--muted)">Caricamento ticker …</span></div>
   </div>
 
-  <!-- APERÇU DU MARCHÉ -->
+  <!-- PANORAMICA DI MERCATO -->
   <section class="sec" style="padding-top:1rem">
     <div class="wrap">
-      <span class="eyebrow">Aperçu en direct</span>
-      <h2>Aperçu du marché</h2>
-      <p class="sub">42 valeurs issues de la crypto, des actions, des ETF, des indices &amp; des matières premières. La crypto se met à jour en direct dans le navigateur ; le reste provient du dernier passage automatique (variation par rapport à la clôture de la veille).</p>
+      <span class="eyebrow">Panoramica live</span>
+      <h2>Panoramica di mercato</h2>
+      <p class="sub">42 valori tra crypto, azioni, ETF, indici &amp; materie prime. Le crypto si aggiornano live nel browser; il resto proviene dall'ultimo aggiornamento automatico (variazione rispetto alla chiusura del giorno precedente).</p>
       <div class="ovbar">
-        <p class="updated" id="lastUpdated">Chargement des données …</p>
-        <div class="curswitch" id="curSel" role="group" aria-label="Choisir la devise">
+        <p class="updated" id="lastUpdated">Caricamento dati …</p>
+        <div class="curswitch" id="curSel" role="group" aria-label="Scegli la valuta">
           <button type="button" data-cur="usd" class="on" aria-pressed="true">USD</button>
           <button type="button" data-cur="chf" aria-pressed="false">CHF</button>
           <button type="button" data-cur="eur" aria-pressed="false">EUR</button>
         </div>
       </div>
       <p class="disclaimer" id="staleWarn" style="display:none"></p>
-      <div class="mtabs" id="marketTabs" role="tablist" aria-label="Filtrer par catégorie"></div>
+      <div class="mtabs" id="marketTabs" role="tablist" aria-label="Filtra per categoria"></div>
       <div class="mtable-wrap">
-        <table class="mtable" aria-label="Aperçu du marché crypto et actions">
+        <table class="mtable" aria-label="Panoramica di mercato crypto e azioni">
           <thead>
             <tr>
-              <th scope="col"><span class="sr-only">Suivre</span></th>
-              <th scope="col">Valeur</th>
-              <th scope="col" class="num">Prix</th>
+              <th scope="col"><span class="sr-only">Segui</span></th>
+              <th scope="col">Valore</th>
+              <th scope="col" class="num">Prezzo</th>
               <th scope="col" class="num">24&nbsp;h</th>
-              <th scope="col">Tendance&nbsp;(30&nbsp;j)</th>
+              <th scope="col">Trend&nbsp;(30&nbsp;g)</th>
               <th scope="col">Sentiment IA</th>
             </tr>
           </thead>
           <tbody id="marketRows">
-            <tr><td colspan="6" style="color:var(--muted)">Chargement des données de marché …</td></tr>
+            <tr><td colspan="6" style="color:var(--muted)">Caricamento dati di mercato …</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="crosslink">Plus de contexte : <a href="/fr/ki-und-krypto-daten.html">IA &amp; crypto sobrement en chiffres →</a> (consommation d'énergie, réalité du trading par IA, règles fiscales DACH).</p>
+      <p class="crosslink">Più contesto: <a href="/it/ki-und-krypto-daten.html">IA &amp; crypto in cifre, senza clamore →</a> (consumo energetico, realtà del trading con l'IA, regole fiscali DACH).</p>
     </div>
   </section>
 
-  <!-- SENTIMENT DU MARCHÉ -->
+  <!-- SENTIMENT DI MERCATO -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">D'un seul coup d'œil</span>
-      <h2>Sentiment du marché</h2>
-      <p class="sub">Sentiment IA agrégé sur toutes les valeurs et les plus grands mouvements du jour.</p>
+      <span class="eyebrow">A colpo d'occhio</span>
+      <h2>Sentiment di mercato</h2>
+      <p class="sub">Sentiment IA aggregato su tutti i valori e i maggiori movimenti della giornata.</p>
       <div class="mood">
         <div class="moodcard">
-          <h3>Répartition du sentiment</h3>
+          <h3>Distribuzione del sentiment</h3>
           <div class="moodbar" id="moodMeter" aria-hidden="true"></div>
           <p class="moodsum" id="moodSummary">—</p>
         </div>
         <div class="moodcard">
-          <h3>Plus grands mouvements (24 h)</h3>
+          <h3>Maggiori movimenti (24 h)</h3>
           <div class="movers">
-            <div class="mover"><span class="ml">📈 Gagnant</span><span id="topGainer">—</span></div>
-            <div class="mover"><span class="ml">📉 Perdant</span><span id="topLoser">—</span></div>
+            <div class="mover"><span class="ml">📈 In rialzo</span><span id="topGainer">—</span></div>
+            <div class="mover"><span class="ml">📉 In ribasso</span><span id="topLoser">—</span></div>
           </div>
         </div>
       </div>
 
       <div style="margin-top:18px">
-        <h3 style="margin:0 0 8px">3D : mouvements du jour</h3>
+        <h3 style="margin:0 0 8px">3D: movimenti della giornata</h3>
         <div style="border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
-          <canvas id="mkt-chart" data-aban3d data-shape="bars" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:220px;touch-action:none" aria-label="Diagramme 3D des variations sur 24 heures"></canvas>
+          <canvas id="mkt-chart" data-aban3d data-shape="bars" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:220px;touch-action:none" aria-label="Grafico 3D delle variazioni a 24 ore"></canvas>
         </div>
-        <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Variation en direct sur 24 h (%) des principales valeurs — cours réels, haut = hausse, bas = baisse. Aucun conseil en investissement.</p>
+        <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Variazione live a 24 h (%) dei principali valori — quotazioni reali, su = rialzo, giù = ribasso. Nessuna consulenza d'investimento.</p>
       </div>
     </div>
   </section>
 
   <script>
-  /* Barres 3D à partir de données de marché réelles (fournies par markets.js). */
+  /* Barre 3D da dati di mercato reali (forniti da markets.js). */
   (function () {
     var ct = null;
     window.abanMarketsChart = function (assets) {
@@ -392,118 +391,118 @@
   })();
   </script>
 
-  <!-- OUTILS -->
+  <!-- TOOL -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">Outils gratuits · sans connexion</span>
-      <h2>Calculateurs &amp; convertisseur</h2>
-      <p class="sub">Directement dans le navigateur — le convertisseur utilise les cours crypto en direct ci-dessus.</p>
+      <span class="eyebrow">Strumenti gratuiti · senza login</span>
+      <h2>Calcolatori &amp; convertitore</h2>
+      <p class="sub">Direttamente nel browser — il convertitore usa le quotazioni crypto live qui sopra.</p>
       <div class="tools">
-        <!-- Convertisseur en direct -->
+        <!-- convertitore live -->
         <div class="tool">
-          <h3>💱 Convertisseur crypto/actions</h3>
-          <p class="thint">Quantité d'une valeur en dollars américains — et inversement. Cours en direct, immédiat.</p>
+          <h3>💱 Convertitore crypto/azioni</h3>
+          <p class="thint">Quantità di un valore in dollari USA — e viceversa. Quotazione live, immediata.</p>
           <div class="field">
-            <label for="convAsset">Valeur</label>
+            <label for="convAsset">Valore</label>
             <select id="convAsset"></select>
           </div>
           <div class="frow">
             <div class="field">
-              <label for="convAmount">Quantité</label>
+              <label for="convAmount">Quantità</label>
               <input id="convAmount" type="number" inputmode="decimal" value="1" min="0" step="any">
             </div>
             <div class="field">
-              <label for="convUsd" id="convCurLabel">Valeur en USD</label>
+              <label for="convUsd" id="convCurLabel">Valore in USD</label>
               <input id="convUsd" type="number" inputmode="decimal" min="0" step="any">
             </div>
           </div>
           <div class="tout" id="convOut">—</div>
-          <p class="tnote">Cours purement informatifs · aucun conseil en investissement.</p>
+          <p class="tnote">Quotazioni puramente informative · nessuna consulenza d'investimento.</p>
         </div>
-        <!-- Calculateur de plan d'épargne -->
+        <!-- calcolatore piano di accumulo -->
         <div class="tool">
-          <h3>📈 Calculateur de plan d'épargne (exemple)</h3>
-          <p class="thint">Comment croît un montant épargné mensuellement avec un rendement supposé ?</p>
+          <h3>📈 Calcolatore piano di accumulo (esempio)</h3>
+          <p class="thint">Come cresce un importo risparmiato mensilmente con un rendimento ipotizzato?</p>
           <div class="frow">
             <div class="field">
-              <label for="spMonth">Par mois (CHF)</label>
+              <label for="spMonth">Al mese (CHF)</label>
               <input id="spMonth" type="number" inputmode="decimal" value="200" min="0" step="any">
             </div>
             <div class="field">
-              <label for="spYears">Années</label>
+              <label for="spYears">Anni</label>
               <input id="spYears" type="number" inputmode="numeric" value="10" min="1" max="50" step="1">
             </div>
           </div>
           <div class="field">
-            <label for="spRate">Rendement supposé p.a. (%)</label>
+            <label for="spRate">Rendimento ipotizzato p.a. (%)</label>
             <input id="spRate" type="number" inputmode="decimal" value="6" min="-50" max="100" step="0.5">
           </div>
           <div class="tout" id="spOut">—</div>
-          <p class="tnote">Exemple de calcul à rendement constant — <strong>aucune promesse de rendement</strong>. Les vrais marchés fluctuent ; des pertes sont possibles.</p>
+          <p class="tnote">Esempio di calcolo a rendimento costante — <strong>nessuna promessa di rendimento</strong>. I mercati reali oscillano; sono possibili perdite.</p>
         </div>
-        <!-- Calculateur de gains/pertes -->
+        <!-- calcolatore profitti/perdite -->
         <div class="tool">
-          <h3>🧾 Calculateur de gains/pertes</h3>
-          <p class="thint">Combien vaudrait votre entrée aujourd'hui ? Cours en direct face à votre prix d'achat.</p>
+          <h3>🧾 Calcolatore profitti/perdite</h3>
+          <p class="thint">Quanto varrebbe oggi il tuo ingresso? Quotazione live contro il tuo prezzo d'acquisto.</p>
           <div class="field">
-            <label for="plAsset">Valeur</label>
+            <label for="plAsset">Valore</label>
             <select id="plAsset"></select>
           </div>
           <div class="frow">
             <div class="field">
-              <label for="plUnits">Quantité</label>
+              <label for="plUnits">Quantità</label>
               <input id="plUnits" type="number" inputmode="decimal" value="1" min="0" step="any">
             </div>
             <div class="field">
-              <label for="plBuy" id="plBuyLabel">Prix d'achat par unité (USD)</label>
+              <label for="plBuy" id="plBuyLabel">Prezzo d'acquisto per unità (USD)</label>
               <input id="plBuy" type="number" inputmode="decimal" min="0" step="any">
             </div>
           </div>
           <div class="tout" id="plOut">—</div>
-          <p class="tnote">Purement informatif · aucun conseil en investissement.</p>
+          <p class="tnote">Solo informativo · nessuna consulenza d'investimento.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SIGNAUX IA -->
+  <!-- SEGNALI IA -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">Expérimental · mise en contexte IA</span>
-      <h2>Sentiment IA par valeur</h2>
-      <p class="sub">Une IA résume l'actualité récente par valeur en un sentiment — haussier, neutre ou baissier, avec une courte justification. <strong>Aucune recommandation d'achat ou de vente.</strong></p>
+      <span class="eyebrow">Sperimentale · contestualizzazione IA</span>
+      <h2>Sentiment IA per ogni valore</h2>
+      <p class="sub">Un'IA riassume la situazione di notizie attuale per ogni valore in un sentiment — rialzista, neutrale o ribassista, con una breve motivazione. <strong>Nessuna raccomandazione di acquisto o vendita.</strong></p>
       <div class="cards" id="signalCards">
-        <div class="card"><p class="crat">Chargement du sentiment IA …</p></div>
+        <div class="card"><p class="crat">Caricamento sentiment IA …</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ACTUALITÉ -->
+  <!-- NEWS -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">Actualité financière</span>
-      <h2>Gros titres récents</h2>
-      <p class="sub">Sources réelles, agrégées automatiquement. Toujours recouper à la source.</p>
+      <span class="eyebrow">Notizie finanziarie</span>
+      <h2>Titoli recenti</h2>
+      <p class="sub">Fonti reali, aggregate automaticamente. Verifica sempre alla fonte.</p>
       <ul class="news" id="newsFeed">
-        <li>Chargement de l'actualité …</li>
+        <li>Caricamento notizie …</li>
       </ul>
       <p class="sources" id="sources"></p>
     </div>
   </section>
 
-  <!-- EN SAVOIR PLUS / RÉSEAU -->
+  <!-- APPROFONDIMENTI / NETWORK -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">À lire ensuite</span>
-      <h2>En savoir plus</h2>
-      <p class="sub">Contexte, calculateurs et mise en perspective du réseau aban news.</p>
+      <span class="eyebrow">Da leggere dopo</span>
+      <h2>Per saperne di più</h2>
+      <p class="sub">Contesto, calcolatori e inquadramento dal network aban news.</p>
       <div class="netgrid">
-        <a class="netcard" href="/fr/ki-und-krypto-daten.html"><span class="ni">🪙</span><h3>IA &amp; crypto en chiffres</h3><p>Panorama du secteur, consommation d'énergie, réalité du trading par IA, règles fiscales DACH.</p><span class="nr">Lire →</span></a>
-        <a class="netcard" href="/fr/finanz-rechner.html"><span class="ni">🧮</span><h3>Calculateur financier</h3><p>Taux horaire, réserves &amp; co. — calculé honnêtement, sans connexion.</p><span class="nr">Ouvrir →</span></a>
-        <a class="netcard" href="/fr/ki-spar-rechner.html"><span class="ni">💰</span><h3>Calculateur d'économies IA</h3><p>Combien de temps &amp; d'argent l'IA vous fait-elle économiser au quotidien ? Calculé honnêtement.</p><span class="nr">Ouvrir →</span></a>
-        <a class="netcard" href="/fr/ki-fuer-finanzberater.html"><span class="ni">📊</span><h3>L'IA pour les conseillers financiers</h3><p>Des workflows IA concrets pour le secteur de la finance &amp; du conseil.</p><span class="nr">Lire →</span></a>
-        <a class="netcard" href="/fr/ki-glossar.html"><span class="ni">📖</span><h3>Glossaire IA</h3><p>Les termes expliqués honnêtement — en clair &amp; avec un test anti-hype.</p><span class="nr">Consulter →</span></a>
-        <a class="netcard" href="/dossiers.html"><span class="ni">🗂️</span><h3>Dossiers thématiques</h3><p>La newsletter, regroupée par thème — gratuit, sans inscription.</p><span class="nr">Parcourir →</span></a>
+        <a class="netcard" href="/it/ki-und-krypto-daten.html"><span class="ni">🪙</span><h3>IA &amp; crypto in cifre</h3><p>Panoramica del settore, consumo energetico, realtà del trading con l'IA, regole fiscali DACH.</p><span class="nr">Leggi →</span></a>
+        <a class="netcard" href="/it/finanz-rechner.html"><span class="ni">🧮</span><h3>Calcolatore finanziario</h3><p>Tariffa oraria, riserve &amp; co. — calcolati onestamente, senza login.</p><span class="nr">Apri →</span></a>
+        <a class="netcard" href="/it/ki-spar-rechner.html"><span class="ni">💰</span><h3>Calcolatore di risparmio IA</h3><p>Quanto tempo &amp; denaro ti fa risparmiare l'IA nella quotidianità? Calcolato onestamente.</p><span class="nr">Apri →</span></a>
+        <a class="netcard" href="/it/ki-fuer-finanzberater.html"><span class="ni">📊</span><h3>L'IA per i consulenti finanziari</h3><p>Workflow IA concreti per il settore finanziario &amp; della consulenza.</p><span class="nr">Leggi →</span></a>
+        <a class="netcard" href="/it/ki-glossar.html"><span class="ni">📖</span><h3>Glossario IA</h3><p>I termini spiegati onestamente — in chiaro &amp; con verifica anti-hype.</p><span class="nr">Consulta →</span></a>
+        <a class="netcard" href="/dossiers.html"><span class="ni">🗂️</span><h3>Dossier tematici</h3><p>La newsletter, raggruppata per tema — gratis, senza iscrizione.</p><span class="nr">Sfoglia →</span></a>
       </div>
     </div>
   </section>
@@ -512,88 +511,88 @@
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <span class="eyebrow">FAQ</span>
-      <h2>Questions fréquentes sur les données Marchés</h2>
+      <h2>Domande frequenti sui dati Mercati</h2>
       <div class="mfaq">
         <details>
-          <summary>Les cours sont-ils réels et à jour ?</summary>
-          <p>Oui. Les cours crypto se mettent à jour en direct dans votre navigateur via l'API CoinGecko. Les cours des actions, l'actualité financière et le sentiment IA sont actualisés automatiquement plusieurs fois par jour à partir de sources publiques (Yahoo Finance, CoinGecko, flux RSS sérieux). Toutes les sources sont liées.</p>
+          <summary>Le quotazioni sono reali e aggiornate?</summary>
+          <p>Sì. Le quotazioni crypto si aggiornano live nel tuo browser tramite l'API CoinGecko. Le quotazioni azionarie, le notizie finanziarie e il sentiment IA vengono aggiornati automaticamente più volte al giorno da fonti pubbliche (Yahoo Finance, CoinGecko, feed RSS affidabili). Tutte le fonti sono collegate.</p>
         </details>
         <details>
-          <summary>Est-ce un conseil en investissement ?</summary>
-          <p>Non. Cette page met en contexte des données publiquement disponibles et n'est expressément <strong>pas un conseil en investissement, fiscal ou financier</strong>. Les marchés — surtout la crypto — sont très volatils ; vous pouvez perdre la totalité de l'argent investi. Vous prenez vos décisions sous votre propre responsabilité.</p>
+          <summary>È una consulenza d'investimento?</summary>
+          <p>No. Questa pagina contestualizza dati pubblicamente disponibili e non è espressamente <strong>una consulenza d'investimento, fiscale o finanziaria</strong>. I mercati — soprattutto le crypto — sono molto volatili; puoi perdere completamente il denaro investito. Le decisioni le prendi sotto la tua responsabilità.</p>
         </details>
         <details>
-          <summary>Que signifie le « sentiment IA » ?</summary>
-          <p>Une IA résume l'actualité récente par valeur en un sentiment — haussier, neutre ou baissier — avec une courte justification. C'est une <strong>mise en contexte expérimentale, pas une recommandation d'achat ou de vente</strong> et elle peut se tromper.</p>
+          <summary>Cosa significa il «sentiment IA»?</summary>
+          <p>Un'IA riassume la situazione di notizie attuale per ogni valore in un sentiment — rialzista, neutrale o ribassista — con una breve motivazione. È una <strong>contestualizzazione sperimentale, non una raccomandazione di acquisto o vendita</strong> e può sbagliare.</p>
         </details>
         <details>
-          <summary>Quelles valeurs et quelles devises sont affichées ?</summary>
-          <p>Actuellement <strong>22 valeurs</strong> en quatre catégories : crypto (dont Bitcoin, Ethereum, Solana, XRP), actions (dont NVIDIA, Apple, Microsoft, Tesla, Amazon), indices (S&amp;P 500, Nasdaq, DAX, SMI) et matières premières (or, argent, pétrole). Vous pouvez basculer l'affichage entre <strong>USD, CHF et EUR</strong> (taux de référence BCE) ; les indices sont affichés en points.</p>
+          <summary>Quali valori e quali valute vengono mostrati?</summary>
+          <p>Attualmente <strong>22 valori</strong> in quattro categorie: crypto (tra cui Bitcoin, Ethereum, Solana, XRP), azioni (tra cui NVIDIA, Apple, Microsoft, Tesla, Amazon), indici (S&amp;P 500, Nasdaq, DAX, SMI) e materie prime (oro, argento, petrolio). Puoi commutare la visualizzazione tra <strong>USD, CHF ed EUR</strong> (tassi di riferimento BCE); gli indici sono mostrati in punti.</p>
         </details>
         <details>
-          <summary>L'utilisation est-elle payante ?</summary>
-          <p>Non. La page Marchés, le convertisseur et le calculateur de plan d'épargne sont gratuits et utilisables sans connexion — directement dans le navigateur, sans pixel de suivi.</p>
+          <summary>L'utilizzo è a pagamento?</summary>
+          <p>No. La pagina Mercati, il convertitore e il calcolatore del piano di accumulo sono gratuiti e utilizzabili senza login — direttamente nel browser, senza pixel di tracciamento.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- ABONNEMENT / SUIVRE -->
+  <!-- ABBONAMENTO / SEGUIRE -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <span class="eyebrow">Rester informé</span>
-      <h2>S'abonner aux Marchés</h2>
-      <p class="sub">Pas de connexion, pas de spam — choisissez votre canal.</p>
+      <span class="eyebrow">Resta aggiornato</span>
+      <h2>Abbonati ai Mercati</h2>
+      <p class="sub">Niente login, niente spam — scegli il tuo canale.</p>
       <div class="abo">
         <div class="abocard">
           <div class="ico">📲</div>
-          <h3>Chaque jour par Telegram</h3>
-          <p>Digest de marché avec cours, mouvement sur 24 h &amp; sentiment IA — 1×/jour, automatique.</p>
-          <a class="btn btn--amber" href="https://t.me/abannews" target="_blank" rel="noopener">Suivre sur Telegram →</a>
+          <h3>Ogni giorno via Telegram</h3>
+          <p>Digest di mercato con quotazioni, movimento a 24 h &amp; sentiment IA — 1×/giorno, automatico.</p>
+          <a class="btn btn--amber" href="https://t.me/abannews" target="_blank" rel="noopener">Segui su Telegram →</a>
         </div>
         <div class="abocard">
           <div class="ico">📬</div>
-          <h3>Newsletter de 5 minutes</h3>
-          <p>Du lundi au vendredi à 7h30 : IA, tech &amp; économie mises en contexte honnêtement — gratuit.</p>
-          <a class="btn btn--ghost" href="#signup">S'abonner gratuitement →</a>
+          <h3>Newsletter di 5 minuti</h3>
+          <p>Da lunedì a venerdì alle 7:30: IA, tech &amp; economia contestualizzate onestamente — gratis.</p>
+          <a class="btn btn--ghost" href="#signup">Iscriviti gratis →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BANDEAU CTA -->
+  <!-- BANNER CTA -->
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="band">
-        <h2>Comprendre les marchés au lieu de courir après</h2>
-        <p>Chaque jour ouvré à 7h30, le briefing de 5 minutes d'aban news — IA, tech &amp; économie mises en contexte honnêtement.</p>
+        <h2>Capire i mercati invece di inseguirli</h2>
+        <p>Ogni giorno feriale alle 7:30 il briefing di 5 minuti di aban news — IA, tech &amp; economia contestualizzate onestamente.</p>
         <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
-          <input type="email" name="email" placeholder="vous@mail.fr" required autocomplete="email" inputmode="email" aria-label="Adresse e-mail">
-          <button type="submit" class="btn btn--amber">S'abonner gratuitement →</button>
+          <input type="email" name="email" placeholder="tua@mail.it" required autocomplete="email" inputmode="email" aria-label="Indirizzo e-mail">
+          <button type="submit" class="btn btn--amber">Iscriviti gratis →</button>
         </form>
-        <p class="fine">Conforme RGPD · double opt-in · désabonnement en 1 clic · pas de spam.</p>
+        <p class="fine">Conforme al GDPR · double opt-in · disiscrizione con 1 clic · niente spam.</p>
       </div>
     </div>
   </section>
 </main>
 
 
-<section style="max-width:760px;margin:26px auto 0;padding:0 20px"><h2 style="font-size:1.15rem;text-align:center;margin-bottom:12px">Plus autour de l'IA &amp; des marchés</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px"><a href="/trading-tipps.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Conseils de trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Les 10 règles honnêtes qui vous protègent des erreurs coûteuses</span></a><a href="/fr/krypto-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Crypto pour débutants →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Bitcoin &amp; Co. expliqué honnêtement — achat, risques, protection</span></a><a href="/fr/etf-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">ETF pour débutants →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">La voie honnête et ennuyeuse — large, abordable, sans stock-picking</span></a><a href="/sparplan-statt-trading.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Plan d'épargne plutôt que trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Pourquoi l'ennuyeux gagne : intérêts composés, cost-average, discipline</span></a><a href="/fr/ki-aktien-hype-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Actions IA : test anti-hype →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">7 questions : distinguer la vraie IA de l'étiquette « IA »</span></a><a href="/fr/ki-betrug-scam-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Fraude IA & test anti-arnaque →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Repérer les investissements deepfake & faux bots de trading</span></a><a href="/fr/ki-glossar.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Glossaire IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Sentiment IA, LLM, hallucination &amp; co. expliqués honnêtement</span></a><a href="/ki-hype-detektor.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Détecteur de hype IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Démasquer le hype marché/tech dans un texte</span></a><a href="/fr/ki-tool-vergleich.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Comparatifs d'outils IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">197 duels honnêtes X-contre-Y</span></a><a href="/fr/welche-ki-fuer-was.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Trouveur d'outils IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">175 outils par tâche &amp; budget</span></a></div></section>
+<section style="max-width:760px;margin:26px auto 0;padding:0 20px"><h2 style="font-size:1.15rem;text-align:center;margin-bottom:12px">Altro su IA &amp; mercati</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px"><a href="/it/trading-tipps.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Consigli di trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Le 10 regole oneste che ti proteggono dagli errori costosi</span></a><a href="/it/krypto-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Crypto per principianti →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Bitcoin &amp; Co. spiegati onestamente — acquisto, rischi, protezione</span></a><a href="/it/etf-fuer-einsteiger.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">ETF per principianti →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">La via onesta e noiosa — ampia, economica, senza stock-picking</span></a><a href="/it/sparplan-statt-trading.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Piano di accumulo invece del trading →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Perché il noioso vince: interesse composto, cost-average, disciplina</span></a><a href="/it/ki-aktien-hype-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Azioni IA: verifica anti-hype →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">7 domande: distinguere la vera IA dall'etichetta «IA»</span></a><a href="/it/ki-betrug-scam-check.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Frode IA & verifica anti-truffa →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Riconoscere investimenti deepfake & falsi bot di trading</span></a><a href="/it/ki-glossar.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Glossario IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Sentiment IA, LLM, allucinazione &amp; co. spiegati onestamente</span></a><a href="/it/ki-hype-detektor.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Rilevatore di hype IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">Smascherare l'hype di mercato/tech in un testo</span></a><a href="/it/ki-tool-vergleich.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Confronti di strumenti IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">197 duelli onesti X-contro-Y</span></a><a href="/it/welche-ki-fuer-was.html" style="display:block;text-decoration:none;background:var(--field,#fffdf9);border:1px solid var(--line,#ece3d4);border-radius:12px;padding:12px 14px;color:inherit"><b style="color:var(--amber-dk,#b45309)">Trova-strumenti IA →</b><span style="display:block;color:var(--muted,#6b7280);font-size:.9rem;margin-top:2px">175 strumenti per compito &amp; budget</span></a></div></section>
 <footer>
   <div class="wrap">
     <div class="footcols">
       <div>
-        <a href="/fr/" class="brand" style="margin-bottom:.6rem"><span class="dot"></span> aban news</a>
-        <p style="color:var(--muted);font-size:.9rem;margin:.2rem 0 0;max-width:30ch">Newsletter IA quotidienne pour les professionnels de la zone DACH. Honnête, sans hype — curatée en Suisse.</p>
+        <a href="/it/" class="brand" style="margin-bottom:.6rem"><span class="dot"></span> aban news</a>
+        <p style="color:var(--muted);font-size:.9rem;margin:.2rem 0 0;max-width:30ch">Newsletter IA quotidiana per i professionisti dell'area DACH. Onesta, senza clamore — curata in Svizzera.</p>
       </div>
-      <div><h4>Newsletter</h4><a href="#signup">S'abonner</a><a href="/newsletter.html">Page newsletter</a><a href="/preview.html">Numéro exemple</a><a href="/archive/">Archive</a><a href="/dossiers.html">Dossiers thématiques</a><a href="/founding.html">Premium</a></div>
-      <div><h4>Tout &amp; offres</h4><a href="/angebote.html">Offres &amp; prix</a><a href="/texte-service.html">Service de rédaction</a><a href="/fuer-verbaende.html">Pour les fédérations (marque blanche)</a><a href="/reels">Reels IA</a><a href="/ki-sichtbarkeit.html">Être trouvé par l'IA</a><a href="/ki-compliance.html">Conformité IA</a></div>
-      <div><h4>Plus</h4><a href="/fr/maerkte.html">Marchés</a><a href="/fr/ki-und-krypto-daten.html">IA &amp; crypto en chiffres</a><a href="/fr/ki-werkzeug.html">Outil IA</a><a href="/fr/welche-ki-fuer-was.html">Quelle IA pour quoi ?</a><a href="/fr/ki-glossar.html">Glossaire IA</a><a href="/fr/ki-spar-rechner.html">Calculateur d'économies IA</a><a href="/ki-hype-detektor.html">Détecteur de hype IA</a><a href="/fr/ki-prompt-checker.html">Améliorateur de prompts</a><a href="/fr/online-tools.html">Tous les outils gratuits</a><a href="/shop.html">Boutique</a><a href="/fr/ueber-aban.html">À propos d'aban</a></div>
-      <div><h4>Mentions légales</h4><a href="/impressum.html">Mentions légales</a><a href="/datenschutz.html">Confidentialité</a></div>
+      <div><h4>Newsletter</h4><a href="#signup">Iscriviti</a><a href="/newsletter.html">Pagina newsletter</a><a href="/preview.html">Numero esempio</a><a href="/archive/">Archivio</a><a href="/dossiers.html">Dossier tematici</a><a href="/founding.html">Premium</a></div>
+      <div><h4>Tutto &amp; offerte</h4><a href="/angebote.html">Offerte &amp; prezzi</a><a href="/texte-service.html">Servizio di scrittura</a><a href="/fuer-verbaende.html">Per le associazioni (white-label)</a><a href="/reels">Reel IA</a><a href="/ki-sichtbarkeit.html">Farsi trovare dall'IA</a><a href="/ki-compliance.html">Compliance IA</a></div>
+      <div><h4>Altro</h4><a href="/it/maerkte.html">Mercati</a><a href="/it/ki-und-krypto-daten.html">IA &amp; crypto in cifre</a><a href="/it/ki-werkzeug.html">Strumento IA</a><a href="/it/welche-ki-fuer-was.html">Quale IA per cosa?</a><a href="/it/ki-glossar.html">Glossario IA</a><a href="/it/ki-spar-rechner.html">Calcolatore di risparmio IA</a><a href="/it/ki-hype-detektor.html">Rilevatore di hype IA</a><a href="/it/ki-prompt-checker.html">Migliora-prompt</a><a href="/it/online-tools.html">Tutti gli strumenti gratuiti</a><a href="/shop.html">Shop</a><a href="/it/ueber-aban.html">Chi è aban</a></div>
+      <div><h4>Note legali</h4><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Privacy</a></div>
     </div>
     <div class="footbar">
       <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
-      <span class="footbar-links"><a href="/impressum.html">Mentions légales</a><a href="/datenschutz.html">Confidentialité</a></span>
+      <span class="footbar-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Privacy</a></span>
     </div>
   </div>
 </footer>
