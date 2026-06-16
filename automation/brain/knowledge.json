@@ -441,7 +441,8 @@
     "share_formats": [
       "Save-Liste (3-in-1 Styling: «Drü Outfits mit eim Teil») + expliziter Speicher-CTA = stärkstes Reichweiten-Signal nach Comments",
       "A/B-Entscheidung (Gold oder Silber? / welä Look fürs Date?) als Split-Screen = Comment- & Tag-a-Friend-Maschine (genau das fehlte → 0 Shares)",
-      "Vorher-Nachher-Transformation auf Trend-Sound (harter Cut, gleiche Pose) = Share-Trigger + hohe Hold-Rate"
+      "Vorher-Nachher-Transformation auf Trend-Sound (harter Cut, gleiche Pose) = Share-Trigger + hohe Hold-Rate",
+      "A/B-REEL-FORMAT gebaut (User 2026-06-16 weiter machen): dropship/ads/render_ab_reel.sh erzeugt «1 oder 2?»-Vergleichs-Reels (Frage-Hook oben, grosse 1/2-Marker, CTA-Band y1360 in Safe-Zone, stumm 9:16). Treibt Kommentare/Tag-a-Friend = das fehlende Share-Signal (0 Shares). 2 Beispiele (Ohrringe/Armband) auf CDN + in social/video_queue.csv. Mundart-Caption mit explizitem 1-oder-2-Kommentar-CTA."
     ],
     "caption_rule": "HVC: erste ~125 Zeichen = Hook (vor dem Abschneiden), dann Value, dann EXPLIZITER Save- ODER Share-CTA + CHF-Preis. CH-Tags only (#schweizmode #ootdschweiz #swissmade + Stadt-Rotation), NIE Deutschland-Tags. Hook-Text muss stumm wirken (Burn-in), in der Bildmitte, NICHT in der unteren Safe-Zone.",
     "berndeutsch": "Mundart = bester Hook (Ø 793 V) -> AUTHENTISCHES Bärndütsch (Stadt/Region Bern), NICHT Zürichdeutsch. 3 Bern-Signale in JEDE Mundart-Caption: (1) L-Vokalisierung (viu/schnäu/aui/Gäud), (2) gäng ODER äuä, (3) gäu? am Satzende. Vokabular/Phrasen: automation/brain/berndeutsch.json. Vermeiden: grüezi/nöd/nüüt/mer (=ZH). 'u' statt 'und'. Nicht überkorrekt — locker tippen.",
