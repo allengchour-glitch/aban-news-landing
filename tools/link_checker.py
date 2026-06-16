@@ -141,6 +141,26 @@ def gather_sources() -> dict[str, set[str]]:
     return sources
 
 
+def _classify_code(code: int) -> str:
+    """OK = erreichbar; BROKEN = wirklich tot; BLOCKED = nicht bestätigbar.
+
+    Nur eindeutig tote Codes (404/410/451) gelten als BROKEN. Bot-Walls (401/403),
+    Rate-Limits (429) und transiente Server-/Gateway-Fehler (5xx, Cloudflare 999)
+    sind KEIN Beweis für einen toten Link — sie blockieren nur unseren Checker und
+    funktionieren im Browser. Sonst nur Rauschen, das echte Treffer übertönt.
+    """
+    if 200 <= code < 400:
+        return "OK"
+    if code in (404, 410, 451):
+        return "BROKEN"
+    return "BLOCKED"
+
+
+# Netz-Fehlergründe, die einen wirklich toten Host bedeuten (vs. Timeout/SSL = unklar).
+_DEAD_REASONS = ("name or service not known", "nodename nor servname",
+                 "name resolution", "no address associated", "refused")
+
+
 def check_url(url: str, timeout: float) -> tuple[str, int | None, str]:
     """Prüft eine URL. Rückgabe: (status_label, http_code|None, detail).
 
@@ -168,25 +188,31 @@ def check_url(url: str, timeout: float) -> tuple[str, int | None, str]:
             else:
                 raise
     except urllib.error.HTTPError as he:
-        label = "OK" if 200 <= he.code < 400 else "BROKEN"
-        return label, he.code, f"HTTP {he.code}"
+        return _classify_code(he.code), he.code, f"HTTP {he.code}"
     except urllib.error.URLError as ue:
-        return "BROKEN", None, f"URL-Fehler: {ue.reason}"
-    except Exception as ex:  # noqa: BLE001 — Timeout/SSL/sonstiges: nie crashen
-        return "BROKEN", None, f"{type(ex).__name__}: {ex}"
+        reason = str(ue.reason).lower()
+        label = "BROKEN" if any(d in reason for d in _DEAD_REASONS) else "BLOCKED"
+        return label, None, f"URL-Fehler: {ue.reason}"
+    except Exception as ex:  # noqa: BLE001 — Timeout/SSL/sonstiges: unklar, nicht „tot"
+        return "BLOCKED", None, f"{type(ex).__name__}: {ex}"
 
-    label = "OK" if 200 <= code < 400 else "BROKEN"
-    return label, code, f"HTTP {code}"
+    return _classify_code(code), code, f"HTTP {code}"
 
 
 def build_report(rows: list[tuple[str, str, str, str]], offline_hint: bool) -> str:
     """rows: (url, status_label, detail, sources_str). Liefert Markdown."""
     ok = sum(1 for r in rows if r[1] == "OK")
     broken = sum(1 for r in rows if r[1] == "BROKEN")
+    blocked = sum(1 for r in rows if r[1] == "BLOCKED")
     lines = [
         "# Link-Report — Aban News",
         "",
-        f"Geprüft: {len(rows)} eindeutige Links · OK: {ok} · defekt: {broken}",
+        f"Geprüft: {len(rows)} eindeutige Links · OK: {ok} · defekt: {broken} · "
+        f"blockiert/unklar: {blocked}",
+        "",
+        "> **defekt** = wirklich tot (DNS/Verbindung/404/410) und zu beheben. "
+        "**blockiert/unklar** = Bot-Wall, Rate-Limit oder transienter Serverfehler "
+        "(403/429/5xx) — funktioniert i. d. R. im Browser, kein Handlungsbedarf.",
         "",
     ]
     if offline_hint:
@@ -197,11 +223,11 @@ def build_report(rows: list[tuple[str, str, str, str]], offline_hint: bool) -> s
             "",
         ]
     lines += ["| Status | Link | Detail | Quelle |", "|---|---|---|---|"]
-    # defekte zuerst, danach alphabetisch
-    for url, status, detail, src in sorted(rows, key=lambda r: (r[1] != "BROKEN", r[0])):
-        mark = "BROKEN" if status == "BROKEN" else "OK"
+    # Reihenfolge: defekt zuerst, dann blockiert/unklar, dann OK; je alphabetisch.
+    rank = {"BROKEN": 0, "BLOCKED": 1, "OK": 2}
+    for url, status, detail, src in sorted(rows, key=lambda r: (rank.get(r[1], 3), r[0])):
         safe_url = url.replace("|", "%7C")
-        lines.append(f"| {mark} | {safe_url} | {detail} | {src} |")
+        lines.append(f"| {status} | {safe_url} | {detail} | {src} |")
     lines.append("")
     return "\n".join(lines)
 
