@@ -74,6 +74,8 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .card .d{font-size:.88rem;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px}
 .card button.c{background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:8px;padding:7px 12px;font-weight:700;font-size:.82rem;cursor:pointer}
 .card button.c:hover{background:var(--amber-dk);color:#fff}
+.card .c2{display:inline-block;background:var(--amber-dk);color:#fff;border-radius:8px;padding:8px 14px;font-weight:700;font-size:.82rem;text-decoration:none;margin-top:2px}
+.card .c2:hover{background:#a04708}
 .status{color:var(--muted);font-size:.95rem;padding:30px 0;text-align:center}
 footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color:var(--muted);text-align:center}
 .sheetbg{display:none}
@@ -290,7 +292,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       var ch=[];if(String(it.typ||"")==="Gesuch")ch.push("🔎 Gesuch");if(it.zustand)ch.push(esc(it.zustand));
       var chips=ch.length?('<div style="margin:1px 0 7px">'+ch.map(function(c){return '<span style="display:inline-block;background:#fef3c7;color:#92660a;border-radius:6px;padding:2px 8px;font-size:.7rem;font-weight:700;margin-right:5px">'+c+'</span>'}).join("")+'</div>'):'';
       var on=isMerk(it.id);
-      var cta=it.demo?'<button class="c" type="button" disabled style="opacity:.55;cursor:default">Beispiel-Inserat</button>':'<button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button>';
+      var cta='<a class="c2" href="/inserat.html?id='+esc(it.id)+'">Details ansehen →</a>';
       return '<div class="card'+(on?' sel':'')+(it.featured?' feat':'')+'" data-id="'+esc(it.id)+'">'+img+
         '<div class="krow"><span class="k">'+esc(it.kat||"Sonstiges")+top+dbadge+'</span>'+
         '<button class="heart" type="button" data-merk="'+esc(it.id)+'" aria-label="Merken" title="Merken">'+(on?'♥':'♡')+'</button></div>'+
