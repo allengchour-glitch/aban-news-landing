@@ -208,8 +208,16 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     function msel(){return Array.prototype.map.call(mc.querySelectorAll("input:checked"),function(i){return i.value})}
     function mupd(){var n=msel().length;$("#mcount").textContent=n?(n+" ausgewählt"):""}
     mc.addEventListener("change",mupd);
-    $("#mgo").addEventListener("click",function(){var s=msel(),q=$("#q").value.trim(),p=[];
-      if(s.length)p.push("kat="+encodeURIComponent(s.join(",")));if(q)p.push("q="+encodeURIComponent(q));
+    // Smart-Routing: 1 Kategorie -> beste Spezialseite; mehrere -> universelle Inserate-Suche
+    var ONE={"Auto & Teile":{u:"/auto-suche.html",q:"Auto"},"Fahrrad":{u:"/auto-suche.html",q:"Velo"},
+      "Immobilien":{u:"/immobilien.html"},"Jobs":{u:"/stellenangebote.html"}};
+    var SHOP={Elektronik:1,Handy:1,Computer:1,"Möbel":1,Haushalt:1,Garten:1,Werkzeug:1,Mode:1,Spielzeug:1,Sport:1};
+    $("#mgo").addEventListener("click",function(){var s=msel(),q=$("#q").value.trim(),enc=encodeURIComponent;
+      if(s.length===1){var c=s[0];
+        if(ONE[c]){var r=ONE[c],qq=q||r.q||"";location.href=r.u+(qq?"?q="+enc(qq):"");return}
+        if(SHOP[c]){location.href="/angebote-suche.html?cat="+enc(c)+(q?"&q="+enc(q):"");return}
+        location.href="/inserate.html?kat="+enc(c)+(q?"&q="+enc(q):"");return}
+      var p=[];if(s.length)p.push("kat="+enc(s.join(",")));if(q)p.push("q="+enc(q));
       location.href="/inserate.html"+(p.length?"?"+p.join("&"):"")});
     $("#mclear").addEventListener("click",function(){Array.prototype.forEach.call(mc.querySelectorAll("input"),function(i){i.checked=false});mupd()});
   }
