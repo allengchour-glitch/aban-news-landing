@@ -84,6 +84,19 @@ async function run(env) {
     await env.BRAIN_KV.put("history", JSON.stringify(hist));
   }
 
+  // Wöchentlicher Digest (Montag 06:00 UTC) — Lebenszeichen, auch wenn alles grün ist.
+  try {
+    const now = new Date();
+    if (now.getUTCDay() === 1 && now.getUTCHours() === 6 && env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+      const txt = "📊 aban Wochen-Report\nScore: " + score + " (" + ok + "/" + total + " Seiten ok)\n" +
+        (broken.length ? broken.map((b) => "• " + b.path + ": " + b.issues.join(", ")).join("\n") : "Alles grün. ✅");
+      await fetch("https://api.telegram.org/bot" + env.TELEGRAM_BOT_TOKEN + "/sendMessage", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: txt.slice(0, 3900) }),
+      });
+    }
+  } catch (_) {}
+
   if (broken.length && env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
     const msg = "⚠️ aban Site-Brain: " + broken.length + "/" + total +
       " Seiten mit Problemen (Score " + score + ").\n" +
