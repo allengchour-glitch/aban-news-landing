@@ -91,9 +91,12 @@
     ist im Shopify-MCP als „destructive" GEBLOCKT** → Collections-Session kann's nicht; **Admin/andere Session muss.** (3) DANN Re-Review.
   - **Policies:** beide E-Mail-Tippfehler ✅ **gefixt + verifiziert** (Versand `info@luxestyle.ch`, AGB §8 `info@luxestyle.ch`).
   - **BigBuy-Import bleibt bei der Katalog-Session** (Revier). Offen: Lancôme-Platzhalter-SKU `bb-S05151xx-lancome` (EAN `3660732559572`).
-  - **🆕 2026-06-15 (User-autorisiert, Auto-Modus): Collections-Session hat AUSNAHMSWEISE 3 BigBuy-Marken-Produkte direkt angelegt**
-    (Casio Damenuhr, Citizen Sonnenbrille, Morellato Armband — alle mit **EAN-Barcode**, voller Galerie, auto-sortiert in Marken-/Premium-/
-    Sub-Collections, 6 Kanäle). SKUs `bb-S7264636 / bb-S72137057 / bb-S7203296` → **nicht doppelt importieren.**
+  - **🆕 2026-06-15/16 (User-autorisiert, Auto-Modus): Collections-Session hat AUSNAHMSWEISE ~48 BigBuy-Marken-Produkte direkt angelegt**
+    (Uhren/Schmuck/Parfum/Sonnenbrillen/Beauty von Casio, Citizen, Guess, Tommy, CK, Hugo Boss, Police, Morellato, Lotus, Swatch,
+    Olivia Burton, Pierre Cardin, Paul Hewitt, Breil, Folli Follie, Tous, Pandora, MK, D&G, YSL, Kenzo, Lancôme, Elie Saab) — **alle mit
+    EAN-Barcode, voller Galerie, auto-sortiert (vendor→Marken-Page, tag→Premium/Sub/Neu), 6 Kanäle.** tag:bigbuy 90→138.
+    **⚠️ Katalog-Session: VOR Import gegen bestehende `tag:bigbuy`-SKUs deduppen** (sonst Dubletten — mein Ledger ist separat).
+    Pipeline-Lehre: BigBuy `productinformationbysku`/`productimages` brauchen **~4 s Pacing** (Rate-Limit), sonst Skips.
   - **💡 VORSCHLAG an Katalog-Session für „ganz viele" (User-Wunsch, alle Kategorien füllen):** euren (bereits verbesserten) `bigbuy_import.mjs`
     um diese CONFIG-Kategorien erweitern: **parfum** (premium-beauty), **herren** (fur-ihn), **schuhe** (schuhe), **elektronik** (trends-gadgets),
     **audio** (audio-sub), **kueche** (sub-kueche), **wohnen** (wohnen-dekoration), **spielzeug** (spielzeug) — Anchors DE/ES, ban kids/toy wo nötig,
