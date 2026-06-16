@@ -128,7 +128,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
     <div class="fcard"><h4>🚗 Fahrzeug-Auswahl</h4>
       <select class="fsel" id="fMarke"><option value="">Marke (alle)</option></select>
-      <input class="fsel" id="fModell" type="search" placeholder="Modell (z. B. Golf, 3er, A4)">
+      <select class="fsel" id="fModell"><option value="">Modell (zuerst Marke wählen)</option></select>
       <div class="prange"><select class="fsel" id="fJahr" style="margin-bottom:0"><option value="">Jahr ab</option></select><select class="fsel" id="fKm" style="margin-bottom:0"><option value="">km bis</option></select></div>
       <select class="fsel" id="fFuel" style="margin-top:8px"><option value="">Treibstoff (alle)</option></select>
       <select class="fsel" id="fGetriebe" style="margin-bottom:0"><option value="">Getriebe (alle)</option></select>
@@ -193,6 +193,40 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   var FUELS=["Benzin","Diesel","Hybrid","Elektro","Gas"],GEARS=["Automat","Manuell"];
   function fillSel(id,arr,fmt){var el=$("#"+id);if(!el)return;el.innerHTML=el.options[0].outerHTML+arr.map(function(v){return '<option value="'+esc(String(v))+'">'+esc(fmt?fmt(v):String(v))+'</option>'}).join("")}
   fillSel("fMarke",MAKES);fillSel("fFuel",FUELS);fillSel("fGetriebe",GEARS);
+  // Modell-Listen pro Marke (gaengige Modelle — Auswahl wie bei AutoScout)
+  var MODELS={
+    "VW":["Polo","Golf","Golf GTI","Passat","Tiguan","T-Roc","T-Cross","Touran","Touareg","Up","Arteon","ID.3","ID.4","Caddy","Sharan","Polo GTI"],
+    "BMW":["1er","2er","3er","4er","5er","6er","7er","8er","X1","X2","X3","X4","X5","X6","X7","Z4","i3","i4","iX","M2","M3","M4","M5"],
+    "Mercedes-Benz":["A-Klasse","B-Klasse","C-Klasse","E-Klasse","S-Klasse","CLA","CLS","GLA","GLB","GLC","GLE","GLS","G-Klasse","V-Klasse","Vito","AMG GT","EQA","EQC"],
+    "Audi":["A1","A3","A4","A5","A6","A7","A8","Q2","Q3","Q5","Q7","Q8","TT","e-tron","RS3","RS6","S3","S4"],
+    "Škoda":["Citigo","Fabia","Scala","Octavia","Superb","Rapid","Kamiq","Karoq","Kodiaq","Enyaq"],
+    "Toyota":["Aygo","Yaris","Yaris Cross","Corolla","C-HR","RAV4","Auris","Avensis","Prius","Hilux","Land Cruiser","Camry","Proace","bZ4X"],
+    "Ford":["Fiesta","Focus","Mondeo","Puma","Kuga","EcoSport","Ka","S-Max","Galaxy","Mustang","Mustang Mach-E","Ranger","Transit"],
+    "Opel":["Corsa","Astra","Insignia","Mokka","Crossland","Grandland","Adam","Karl","Zafira","Combo"],
+    "Renault":["Twingo","Clio","Megane","Captur","Kadjar","Scenic","Zoe","Kangoo","Talisman","Koleos","Arkana","Austral"],
+    "Peugeot":["108","208","308","508","2008","3008","5008","Partner","Rifter","Expert","e-208"],
+    "Fiat":["500","500e","Panda","Punto","Tipo","500X","500L","Doblo","Ducato"],
+    "Volvo":["V40","V60","V90","S60","S90","XC40","XC60","XC90","C40","EX30"],
+    "Hyundai":["i10","i20","i30","Kona","Tucson","Santa Fe","Ioniq","Ioniq 5","Ioniq 6","Bayon","i40"],
+    "Kia":["Picanto","Rio","Ceed","ProCeed","XCeed","Stonic","Niro","Sportage","Sorento","EV6","EV9","Soul","Stinger","Venga","Carens"],
+    "Nissan":["Micra","Juke","Qashqai","X-Trail","Leaf","Ariya","Note","Navara","Townstar"],
+    "Mazda":["Mazda2","Mazda3","Mazda6","CX-3","CX-30","CX-5","CX-60","MX-5","MX-30"],
+    "Seat":["Mii","Ibiza","Leon","Arona","Ateca","Tarraco","Alhambra"],
+    "Citroën":["C1","C3","C3 Aircross","C4","C5 Aircross","C5 X","Berlingo","SpaceTourer","ë-C4"],
+    "Tesla":["Model 3","Model Y","Model S","Model X"],
+    "Dacia":["Sandero","Sandero Stepway","Duster","Logan","Jogger","Spring","Lodgy"],
+    "Suzuki":["Swift","Ignis","Vitara","S-Cross","Jimny","Across","Swace","Baleno"],
+    "Honda":["Jazz","Civic","HR-V","CR-V","e","Accord","ZR-V"],
+    "Mini":["Cooper","Cooper S","Countryman","Clubman","Cabrio","Electric","John Cooper Works"],
+    "Porsche":["911","718 Cayman","718 Boxster","Panamera","Macan","Cayenne","Taycan"],
+    "Jeep":["Renegade","Compass","Cherokee","Grand Cherokee","Wrangler","Avenger"],
+    "Land Rover":["Defender","Discovery","Discovery Sport","Range Rover","Range Rover Sport","Range Rover Evoque","Range Rover Velar","Freelander"],
+    "Subaru":["Impreza","XV","Forester","Outback","Legacy","Levorg","BRZ","Solterra"]
+  };
+  function populateModels(){var sel=$("#fModell");if(!sel)return;var mk=$("#fMarke").value;
+    if(!mk){sel.innerHTML='<option value="">Modell (zuerst Marke wählen)</option>';return;}
+    var list=MODELS[mk]||[];
+    sel.innerHTML='<option value="">Alle '+esc(mk)+'-Modelle</option>'+list.map(function(m){return '<option value="'+esc(m)+'">'+esc(m)+'</option>'}).join("");}
   (function(){var ys=[];for(var y=2025;y>=2005;y--)ys.push(y);fillSel("fJahr",ys,function(y){return "ab "+y})})();
   fillSel("fKm",[5000,10000,30000,50000,80000,100000,150000,200000],function(k){return "bis "+k.toLocaleString("de-CH")+" km"});
   function carQuery(){var p=[];var mk=$("#fMarke").value;if(mk)p.push(mk);var md=$("#fModell").value.trim();if(md)p.push(md);var f=$("#fFuel").value;if(f)p.push(f);var g=$("#fGetriebe").value;if(g)p.push(g);var jr=$("#fJahr").value;if(jr)p.push(jr);var q=$("#q").value.trim();if(q)p.push(q);return p.join(" ").trim()}
@@ -280,13 +314,14 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#cats").addEventListener("change",function(e){if(e.target.name==="cat"){$("#q").value="";search()}});
   document.querySelectorAll(".cond").forEach(function(c){c.addEventListener("change",search)});
   document.querySelectorAll(".pkl").forEach(function(c){c.addEventListener("change",render)});
-  ["fMarke","fFuel","fGetriebe","fJahr"].forEach(function(id){$("#"+id).addEventListener("change",search)});
+  ["fFuel","fGetriebe","fJahr"].forEach(function(id){$("#"+id).addEventListener("change",search)});
+  $("#fMarke").addEventListener("change",function(){populateModels();renderCarLinks();search()});
   $("#fKm").addEventListener("change",function(){renderCarLinks();search()});
-  $("#fModell").addEventListener("input",function(){renderCarLinks();searchSoon()});
+  $("#fModell").addEventListener("change",function(){renderCarLinks();search()});
   ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",searchSoon)});
   $("#sort").addEventListener("change",search);
   document.getElementById("chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;if(b.dataset.all){$("#reset").click();return}var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
-  $("#reset").addEventListener("click",function(){$("#q").value="";$("#pmin").value="";$("#pmax").value="";["fMarke","fModell","fFuel","fGetriebe","fJahr","fKm"].forEach(function(id){var e=$("#"+id);if(e)e.value=""});var f=document.querySelector('input[name="cat"]');if(f)f.checked=true;document.querySelectorAll(".cond").forEach(function(c){c.checked=false});document.querySelectorAll(".pkl").forEach(function(c){c.checked=false});$("#sort").value="rel";renderCarLinks();search()});
+  $("#reset").addEventListener("click",function(){$("#q").value="";$("#pmin").value="";$("#pmax").value="";["fMarke","fModell","fFuel","fGetriebe","fJahr","fKm"].forEach(function(id){var e=$("#"+id);if(e)e.value=""});populateModels();var f=document.querySelector('input[name="cat"]');if(f)f.checked=true;document.querySelectorAll(".cond").forEach(function(c){c.checked=false});document.querySelectorAll(".pkl").forEach(function(c){c.checked=false});$("#sort").value="rel";renderCarLinks();search()});
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
   function closeSheet(){sidebar.classList.remove("open");sheetbg.classList.remove("show");document.body.style.overflow=""}
   $("#filterOpen").addEventListener("click",openSheet);$("#sheetClose").addEventListener("click",closeSheet);
@@ -295,7 +330,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(uq)$("#q").value=uq;
     if(uc)Array.prototype.forEach.call(document.querySelectorAll('input[name="cat"]'),function(r){if(r.value===uc)r.checked=true});
     var sv=function(id,v){var e=$("#"+id);if(e&&v)e.value=v};
-    sv("fMarke",sp.get("marke"));sv("fModell",sp.get("modell"));sv("fJahr",sp.get("jahr"));sv("fKm",sp.get("km"));sv("fFuel",sp.get("fuel"));sv("fGetriebe",sp.get("getriebe"));
+    sv("fMarke",sp.get("marke"));populateModels();sv("fModell",sp.get("modell"));sv("fJahr",sp.get("jahr"));sv("fKm",sp.get("km"));sv("fFuel",sp.get("fuel"));sv("fGetriebe",sp.get("getriebe"));
     sv("pmin",sp.get("pmin"));sv("pmax",sp.get("pmax"));if(sp.get("sort"))sv("sort",sp.get("sort"));
     var setMulti=function(param,sel,key){var vals=(sp.get(param)||"").split(",").filter(Boolean);if(!vals.length)return;Array.prototype.forEach.call(document.querySelectorAll(sel),function(c){if(vals.indexOf(key(c))>=0)c.checked=true})};
     setMulti("cond",".cond",function(c){return c.value});
