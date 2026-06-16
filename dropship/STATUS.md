@@ -3,6 +3,15 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (AUSWERTUNG 14T — WENDE: echte Checkout-Abbrüche gefunden!)
+- **Zahlen 14T:** 1.206 Sessions · **0 Bestellungen** · ABER **4 abgebrochene Checkouts** (CHF 71.90 / 43.00 / 69.00 / 69.00, + 1 älterer 129.90).
+  → **Es ist NICHT (nur) Reichweite — echte Käufer kommen bis in den Checkout und brechen am LETZTEN Schritt ab.** Das ist neu/entscheidend.
+- **Shop technisch sauber (geprüft):** kein Passwortschutz, Währung CHF, Checkout-API aktiv, Storefront + Produktseiten HTTP 200, Recovery-Flows live (Abandoned Checkout `Vse76a` + Cart `UXEjv2`).
+- **Traffic-Quellen:** social **535** (= autonomes Posten zieht, bester Kanal!) · direct 664 (Bot/Junk) · **search 4** (SEO/organisch ≈ tot → Free Listings #3 = reine Upside).
+- **Landing-Pages korrekt:** / (435), damen-mode (271), highlights (179), sommer (21) + echte Produktseiten.
+- **🔑 DIAGNOSE (datenbelegt):** Leck ist der **Bezahl-/Abschluss-Schritt**. #1 Hebel = **Bezahlmethode end-to-end testen** (TWINT/Karte schliesst wirklich ab?) + Versandkosten/Total am Ende kein Schock (CHF 71.90-Abbruch direkt über der 65er-Gratis-Schwelle). 2-Min-Testkauf am Handy beweist es sofort.
+- **LEHRE (Gehirn):** Abgebrochene Checkouts mit echten CHF-Werten = Kaufabsicht da → Engpass-Hierarchie aktualisiert: (1) Bezahl-Abschluss, (2) Buy-Intent-Traffic/Pixel, (3) SEO/Free Listings. Recovery-Mails greifen nur wenn E-Mail im Checkout erfasst → „Express/E-Mail zuerst" im Checkout prüfen.
+
 ## 🆕 2026-06-16 (NACHT 15 — Video-Rollout vollendet: +11 Produkte → 34 total)
 - **🎬 +11 eigene Produkt-Videos** für alle restlichen heute angelegten Produkte (Schmuck/Sonnenbrille/Ring):
   Cœur, Trésor, Couleur, Papillon, Minou, Fleur, Cascade, Étincelle, Rosée, Riviera, Sonnenbrille, Ring «Astra».
