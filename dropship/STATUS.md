@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (Neue Produkte voll angelegt + Brillen-Misrepresentation-Fix)
+- **🆕 3 Produkte im Meisterwerk-Standard** (dt. Beschreibung + alle Bilder + eigenes Video + 6 Kanäle):
+  Herren-Halskette **«Fenrir»** (Edelstahl-Weizenkette, 3 Farben, CHF 39.90), Statement-Ohrring-Set **«Aurelia»** (Creolen+Stecker, CHF 27.90), Boho-Halskette **«Lagune»** (Türkis-Crescent, CHF 29.90).
+- **🚨 Brillen-Fix:** 6 BigBuy-Marken-Eyewear waren als „Sonnenbrille" gelistet, sind aber **klare optische Gestelle** (Citizen×3/MK×2/Tous) → korrigiert (Titel→Brille, Kategorie→Brillen). Merchant-Misrepresentation-Risiko weg.
+- **🔎 LEHRE:** CJ/BigBuy haben KEINE sauberen Cuban-Link/Paar-Sets/Herren-Hemden → diese via AliExpress-Liste (PC). Damen-Hype (Layering-Set/Chunky-Hoops) führt CJ auch kaum — Aurelia/Lagune waren die sauberen Treffer.
+- **🎬 11 Share-/Produkt-Reels** diese Session (A/B + Save-Listen + Partner + Für-ihn + 3 Produkt-Reels), alle auf CDN + Queue (greifen nach `wrangler deploy`).
+
 ## 🆕 2026-06-16 (Reichweite-Fix: Dubletten weg + A/B-Share-Format + Auto-Analyse + Gehirn-Upgrade)
 - **🔁 DOPPELTE FEED-POSTS GEFIXT** (User „doppelt bilder"): build_queue.mjs garantiert jetzt KEINE doppelte Bild-/Video-URL im Grid. Queue neu (0 Grid-Dubletten). IG-Alt-Dubletten nur in App löschbar (keine API).
 - **🎬 NEUES SHARE-FORMAT gegen 0-Shares-Decke:** `dropship/ads/render_ab_reel.sh` = «1 oder 2?»-Vergleichs-Reels (Frage-Hook → Kommentar/Tag-a-Friend = das fehlende Engagement-Signal). 2 Beispiele (Ohrringe/Armband) gerendert, QA'd, auf CDN (200), in video_queue.csv + Queue mit Mundart-1-oder-2-CTA.
