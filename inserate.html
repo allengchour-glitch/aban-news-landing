@@ -96,6 +96,18 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 .skl .ph,.skl .ln{background:linear-gradient(90deg,#ece6da 25%,#f6f2ea 50%,#ece6da 75%);background-size:600px 100%;animation:shmr 1.2s infinite}
 .skl .ph{aspect-ratio:16/10;border-radius:10px;margin-bottom:11px}
 .skl .ln{height:13px;border-radius:6px;margin-bottom:9px}
+.krow{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.heart{background:#fff;border:1.5px solid var(--line);border-radius:50%;width:32px;height:32px;flex:0 0 auto;font-size:15px;line-height:1;cursor:pointer;color:#b45309;display:flex;align-items:center;justify-content:center;transition:all .12s}
+.heart:hover{border-color:var(--amber);background:var(--cream)}
+.card.sel{border-color:var(--amber)!important;box-shadow:0 0 0 2px rgba(217,119,6,.25)}
+.card.sel .heart{background:var(--amber-dk);border-color:var(--amber-dk);color:#fff}
+.demobadge{background:#6b7280;color:#fff;border-radius:6px;padding:2px 7px;font-size:.66rem;font-weight:800;margin-left:6px}
+#demoBanner{background:#fff;border:1px dashed #d6cbb0;border-radius:12px;padding:11px 14px;margin-bottom:13px;font-size:.86rem;color:var(--ink2)}
+#demoBanner b{color:var(--amber-dk)}
+#selbar{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:80;background:#1f2937;color:#fff;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.3);display:flex;align-items:center;gap:10px;padding:9px 12px 9px 18px;font-size:.9rem;font-weight:700}
+#selbar button{font-family:inherit;border:0;border-radius:20px;padding:8px 14px;font-weight:700;font-size:.85rem;cursor:pointer}
+#selbar .sbshow{background:var(--amber);color:#1f2937}
+#selbar .sbclear{background:transparent;color:#f4e7d3;border:1px solid rgba(255,255,255,.3)}
 </style>
 </head>
 <body>
@@ -156,11 +168,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       </span>
     </div>
     <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
+    <div id="demoBanner" hidden>🎫 <b>Beispiel-Inserate</b> — so sieht's aus. Echte erscheinen hier, sobald Leute inserieren. Du kannst sie schon <b>♡ merken &amp; vergleichen</b>. <a href="/inserat-aufgeben.html">Eigenes Inserat aufgeben →</a></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
   </section>
 </div>
 <div class="sheetbg" id="sheetbg"></div>
+<div id="selbar" hidden><span>♥ <span id="selcnt">0</span> gemerkt</span><button class="sbshow" id="selShow" type="button">Anzeigen</button><button class="sbclear" id="selClear" type="button">Leeren</button></div>
 
 <nav style="max-width:1180px;margin:18px auto 0;padding:0 16px;font-size:.85rem;text-align:center" aria-label="Marktplatz-Bereiche"><strong>Marktplatz:</strong> <a href="/suche.html">Universal-Suche</a> · <a href="/marktplatz.html">Alle Kategorien</a> · <a href="/stellenangebote.html">Jobs</a> · <a href="/auto-suche.html">Auto</a> · <a href="/immobilien.html">Immobilien</a> · <a href="/angebote-suche.html">Angebote</a> · <a href="/inserate.html">Inserate</a></nav>
 <section style="max-width:1100px;margin:24px auto 6px;padding:0 16px" aria-label="Häufige Fragen"><h2 style="font-size:1.2rem;margin-bottom:10px">Häufige Fragen</h2><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Sind die Inserate kostenlos?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Ja, Suchen und Aufgeben sind kostenlos. Jedes Inserat wird vor der Veröffentlichung kurz geprüft.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Woher kommen die Inserate?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Von Nutzern (private Kleinanzeigen). Keine illegalen oder gewerblichen Massen-Inhalte — bitte fair bleiben.</p></details><details style="background:#fff;border:1px solid #e6e1d6;border-radius:12px;padding:12px 16px;margin-bottom:8px"><summary style="font-weight:700;cursor:pointer">Wie nehme ich Kontakt auf?</summary><p style="margin-top:8px;color:#374151;font-size:.95rem">Über den Kontakt-Button im jeweiligen Inserat erscheint die hinterlegte E-Mail oder Telefonnummer.</p></details></section>
@@ -173,8 +187,29 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   var CATS=["Elektronik","Handy","Computer","Möbel","Haushalt","Garten","Werkzeug","Auto & Teile","Fahrrad","Mode","Spielzeug","Baby & Kind","Haustier","Sport","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
-  var curKat="",raw=[];
+  var curKat="",raw=[],isDemo=false,merkOnly=false;
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  // Schweizer Beispiel-Inserate (Demo) — füllen die Seite, solange noch keine echten da sind. Klar als „Beispiel" markiert.
+  var DEMO=[
+    {id:"demo-1",kat:"Möbel",titel:"Eiche-Esstisch ausziehbar",preis:"CHF 420.–",ort:"Zürich",plz:"8001",zustand:"Gebraucht",typ:"Angebot",emoji:"🪑",demo:1,beschreibung:"Massiv, 160–220 cm, sehr guter Zustand. Abholung in Zürich."},
+    {id:"demo-2",kat:"Immobilien",titel:"3.5-Zimmer-Wohnung mit Balkon",preis:"CHF 1'890.–/Mt",ort:"Bern",plz:"3000",typ:"Angebot",emoji:"🏠",demo:1,beschreibung:"Hell und ruhig, ÖV in 3 Min. Bezug per sofort."},
+    {id:"demo-3",kat:"Auto & Teile",titel:"VW Golf 7 1.4 TSI",preis:"CHF 12'500.–",ort:"Luzern",plz:"6003",zustand:"Gebraucht",typ:"Angebot",emoji:"🚗",demo:1,beschreibung:"98'000 km, frisch ab MFK, Winterräder inklusive."},
+    {id:"demo-4",kat:"Fahrrad",titel:"E-Bike Trekking 500 Wh",preis:"CHF 1'350.–",ort:"Basel",plz:"4051",zustand:"Gebraucht",typ:"Angebot",emoji:"🚲",demo:1,beschreibung:"Bosch-Motor, 1'200 km, Service neu gemacht."},
+    {id:"demo-5",kat:"Handy",titel:"iPhone 14 128 GB",preis:"CHF 540.–",ort:"Winterthur",plz:"8400",zustand:"Gebraucht",typ:"Angebot",emoji:"📱",demo:1,beschreibung:"Akku 91 %, keine Kratzer, mit Originalverpackung."},
+    {id:"demo-6",kat:"Mode",titel:"Winterjacke Damen Gr. M",preis:"CHF 60.–",ort:"St. Gallen",plz:"9000",zustand:"Neu",typ:"Angebot",emoji:"🧥",demo:1,beschreibung:"Ungetragen, warm und wasserdicht."},
+    {id:"demo-7",kat:"Immobilien",titel:"Möbliertes WG-Zimmer",preis:"CHF 720.–/Mt",ort:"Lausanne",plz:"1003",typ:"Angebot",emoji:"🛏️",demo:1,beschreibung:"20 m², zentral, ab nächstem Monat frei."},
+    {id:"demo-8",kat:"Computer",titel:"MacBook Air M1",preis:"CHF 690.–",ort:"Zug",plz:"6300",zustand:"Gebraucht",typ:"Angebot",emoji:"💻",demo:1,beschreibung:"256 GB, 8 GB RAM, sehr guter Akku."},
+    {id:"demo-9",kat:"Dienstleistungen",titel:"Umzugshilfe gesucht",preis:"",ort:"Zürich",plz:"8050",typ:"Gesuch",emoji:"📦",demo:1,beschreibung:"2 Stunden, 2 Personen, Samstag. Faire Bezahlung."},
+    {id:"demo-10",kat:"Sport",titel:"Ski-Set 170 cm + Stöcke",preis:"CHF 180.–",ort:"Chur",plz:"7000",zustand:"Gebraucht",typ:"Angebot",emoji:"🎿",demo:1,beschreibung:"Allmountain, inkl. Bindung, guter Zustand."},
+    {id:"demo-11",kat:"Haustier",titel:"Katzen-Kratzbaum gross",preis:"CHF 45.–",ort:"Thun",plz:"3600",zustand:"Gebraucht",typ:"Angebot",emoji:"🐈",demo:1,beschreibung:"180 cm, stabil, gereinigt. Abholung Thun."},
+    {id:"demo-12",kat:"Baby & Kind",titel:"Kinderwagen 3-in-1",preis:"CHF 280.–",ort:"Fribourg",plz:"1700",zustand:"Gebraucht",typ:"Angebot",emoji:"👶",demo:1,beschreibung:"Inkl. Babywanne und Maxi-Cosi-Adapter."}
+  ];
+  // ── Merkliste / Auswahl (im Browser gespeichert) ──
+  var MKEY="abanMerk";
+  function merkSet(){try{return JSON.parse(localStorage.getItem(MKEY)||"[]")}catch(e){return[]}}
+  function isMerk(id){return merkSet().indexOf(String(id))>=0}
+  function toggleMerk(id){id=String(id);var s=merkSet(),i=s.indexOf(id);if(i>=0)s.splice(i,1);else s.push(id);try{localStorage.setItem(MKEY,JSON.stringify(s))}catch(e){}renderSelbar()}
+  function renderSelbar(){var b=$("#selbar");if(!b)return;var n=merkSet().length;b.hidden=!n;if(n){$("#selcnt").textContent=n;$("#selShow").textContent=merkOnly?"Alle zeigen":"Anzeigen"}}
   function skeleton(){grid.innerHTML=Array(7).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:50%"></div><div class="ln" style="width:92%"></div></div>'}).join("");statusEl.hidden=true;}
   $("#cats").innerHTML='<label class="opt"><input type="radio" name="kat" value="" checked>Alle Kategorien</label>'+
     CATS.map(function(c){return '<label class="opt"><input type="radio" name="kat" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
@@ -213,26 +248,43 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     window.__chip=parts.map(function(p){return p.clr});
   }
   function render(items){
-    items=applyFilters(items||[]);renderChips();
+    items=applyFilters(items||[]);if(merkOnly)items=items.filter(function(it){return isMerk(it.id)});renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
-      statusEl.innerHTML="Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent="0 Inserate";return}
+      statusEl.innerHTML=merkOnly?"Noch nichts gemerkt. Tippe auf ♡ bei einem Inserat.":"Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent="0 Inserate";return}
     statusEl.hidden=true;
     grid.innerHTML=items.map(function(it){
-      var img=it.bild?('<div style="aspect-ratio:16/10;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.bild)+'\');border-radius:10px;margin:-2px 0 9px"></div>'):'';
+      var img=it.bild?('<div style="aspect-ratio:16/10;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.bild)+'\');border-radius:10px;margin:-2px 0 9px"></div>')
+        :(it.demo?('<div style="aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;font-size:2.7rem;background:linear-gradient(135deg,#fef3c7,#f3eee4);border-radius:10px;margin:-2px 0 9px">'+(it.emoji||"🏷️")+'</div>'):'');
       var top=it.featured?'<span style="background:#b45309;color:#fff;border-radius:6px;padding:2px 7px;font-size:.66rem;font-weight:800;margin-left:6px">⭐ TOP</span>':'';
+      var dbadge=it.demo?'<span class="demobadge">Beispiel</span>':'';
       var ch=[];if(String(it.typ||"")==="Gesuch")ch.push("🔎 Gesuch");if(it.zustand)ch.push(esc(it.zustand));
       var chips=ch.length?('<div style="margin:1px 0 7px">'+ch.map(function(c){return '<span style="display:inline-block;background:#fef3c7;color:#92660a;border-radius:6px;padding:2px 8px;font-size:.7rem;font-weight:700;margin-right:5px">'+c+'</span>'}).join("")+'</div>'):'';
-      var fcls=it.featured?' style="border:2px solid var(--amber)"':'';
-      return '<div class="card"'+fcls+'>'+img+'<div class="k">'+esc(it.kat||"Sonstiges")+top+'</div><h3>'+esc(it.titel)+'</h3>'+chips+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div><button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button></div>';
+      var on=isMerk(it.id);
+      var cta=it.demo?'<button class="c" type="button" disabled style="opacity:.55;cursor:default">Beispiel-Inserat</button>':'<button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button>';
+      return '<div class="card'+(on?' sel':'')+(it.featured?' feat':'')+'" data-id="'+esc(it.id)+'">'+img+
+        '<div class="krow"><span class="k">'+esc(it.kat||"Sonstiges")+top+dbadge+'</span>'+
+        '<button class="heart" type="button" data-merk="'+esc(it.id)+'" aria-label="Merken" title="Merken">'+(on?'♥':'♡')+'</button></div>'+
+        '<h3>'+esc(it.titel)+'</h3>'+chips+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+
+        '<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div>'+cta+'</div>';
     }).join("");
-    cntEl.textContent=items.length+" Inserate";
-    Array.prototype.forEach.call(document.querySelectorAll(".card button.c"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
+    cntEl.textContent=items.length+(merkOnly?" gemerkt":(isDemo?" Beispiele":" Inserate"));
+    Array.prototype.forEach.call(document.querySelectorAll(".card.feat"),function(c){c.style.border="2px solid var(--amber)"});
+    Array.prototype.forEach.call(document.querySelectorAll(".card button.c:not([disabled])"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
   }
+  function showDemoBanner(on){var b=$("#demoBanner");if(b)b.hidden=!on}
+  function demoFiltered(){var q=$("#q").value.trim().toLowerCase();
+    return DEMO.filter(function(it){
+      if(curKat&&it.kat!==curKat)return false;
+      if(q&&(it.titel+" "+it.beschreibung+" "+it.kat).toLowerCase().indexOf(q)<0)return false;
+      return true;});}
   function load(){var q=$("#q").value.trim();cntEl.textContent="Lade …";skeleton();
     fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(curKat)).then(function(r){return r.json()}).then(function(d){
-      if(d.demo){grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="<div style=\"max-width:440px;margin:0 auto;text-align:center\"><div style=\"font-size:2rem\">📋</div><h3 style=\"margin:.3rem 0;color:#1f2937\">Noch keine Inserate — sei der/die Erste!</h3><p style=\"color:#6b7280;margin-bottom:14px\">Stell deine Kleinanzeige kostenlos ein — oder stöbere solange in den Bereichen mit Live-Angeboten.</p><a href=\"/inserat-aufgeben.html\" style=\"display:inline-block;background:#b45309;color:#fff;border-radius:22px;padding:11px 22px;font-weight:800;text-decoration:none\">+ Inserat aufgeben</a><p style=\"margin-top:14px;font-size:.9rem\">Live stöbern: <a href=\"/auto-suche.html\">🚗 Auto</a> · <a href=\"/angebote-suche.html\">🛍️ Angebote</a> · <a href=\"/stellenangebote.html\">💼 Jobs</a></p></div>";cntEl.textContent="";return}
-      raw=d.items||[];render(raw);
-    }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""});
+      var items=d.items||[];
+      if(d.demo||!items.length){var dm=demoFiltered();
+        if(dm.length){isDemo=true;showDemoBanner(true);raw=dm;render(raw);return}
+        isDemo=false;showDemoBanner(false);grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="<div style=\"max-width:440px;margin:0 auto;text-align:center\"><div style=\"font-size:2rem\">📋</div><h3 style=\"margin:.3rem 0;color:#1f2937\">Nichts in dieser Auswahl — sei der/die Erste!</h3><p style=\"color:#6b7280;margin-bottom:14px\">Stell deine Kleinanzeige kostenlos ein.</p><a href=\"/inserat-aufgeben.html\" style=\"display:inline-block;background:#b45309;color:#fff;border-radius:22px;padding:11px 22px;font-weight:800;text-decoration:none\">+ Inserat aufgeben</a></div>";cntEl.textContent="";return}
+      isDemo=false;showDemoBanner(false);raw=items;render(raw);
+    }).catch(function(){isDemo=false;showDemoBanner(false);grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""});
   }
   $("#go").addEventListener("click",function(e){e.preventDefault();load()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
@@ -308,7 +360,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   }
   $("#portalPick").addEventListener("change",function(e){if(e.target.classList.contains("pchk")){setOn(e.target.value,e.target.checked);renderPortals()}});
   $("#q").addEventListener("input",renderPortals);
-  renderThings();renderPortals();
+
+  // Herz auf den Karten → merken/auswählen (Event-Delegation, überlebt Neu-Render)
+  grid.addEventListener("click",function(e){var h=e.target.closest("[data-merk]");if(h){e.preventDefault();toggleMerk(h.dataset.merk);render(raw)}});
+  $("#selShow").addEventListener("click",function(){merkOnly=!merkOnly;renderSelbar();render(raw)});
+  $("#selClear").addEventListener("click",function(){try{localStorage.removeItem(MKEY)}catch(e){}merkOnly=false;renderSelbar();render(raw)});
+
+  renderThings();renderPortals();renderSelbar();
 
   // Deep-Link: ?q= / ?kat= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uk=sp.get("kat"),ul=sp.get("loc");
