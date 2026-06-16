@@ -21,7 +21,8 @@ function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({
 function attr(s) { return esc(s).replace(/'/g, "&#39;"); }
 function b64(s) { try { return btoa(unescape(encodeURIComponent(String(s || "")))); } catch (e) { return ""; } }
 
-function page(it, demo) {
+function page(it, demo, id) {
+  const canonical = "https://abannews.com/inserat/" + encodeURIComponent(id || "");
   const title = (it.titel || "Inserat") + " — aban";
   const plain = String(it.beschreibung || "").replace(/\s+/g, " ").trim();
   const ogDesc = (it.preis ? it.preis + " · " : "") + [it.plz, it.ort].filter(Boolean).join(" ") + (plain ? " — " + plain : "");
@@ -45,8 +46,9 @@ function page(it, demo) {
 <title>${esc(title)}</title>
 <meta name="description" content="${desc}">
 <meta name="robots" content="${demo ? "noindex,follow" : "index,follow"}">
+<link rel="canonical" href="${attr(canonical)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="product"><meta property="og:title" content="${esc(it.titel || "Inserat")}">
+<meta property="og:type" content="product"><meta property="og:url" content="${attr(canonical)}"><meta property="og:title" content="${esc(it.titel || "Inserat")}">
 <meta property="og:description" content="${desc}"><meta property="og:image" content="${attr(ogImg)}">
 <meta name="twitter:card" content="summary_large_image">
 ${demo ? "" : ldScript}
@@ -129,13 +131,13 @@ const HTML = { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "pub
 export async function onRequestGet({ params, env }) {
   const id = String(params.id || "");
   if (/^demo-/.test(id) && DEMO[id]) {
-    return new Response(page(DEMO[id], true), { headers: HTML });
+    return new Response(page(DEMO[id], true, id), { headers: HTML });
   }
   const num = parseInt(id, 10);
   if (num && env.DB) {
     try {
       const row = await env.DB.prepare("SELECT kat,ort,plz,titel,beschreibung,preis,kontakt,typ,zustand,bild,created,status FROM inserate WHERE id=? AND status='approved' AND (expires=0 OR expires>?)").bind(num, Date.now()).first();
-      if (row) return new Response(page(row, false), { headers: HTML });
+      if (row) return new Response(page(row, false, id), { headers: HTML });
     } catch (e) { /* fällt unten auf notFound */ }
   }
   return new Response(notFound(), { status: 404, headers: { ...HTML, "Cache-Control": "no-store" } });
