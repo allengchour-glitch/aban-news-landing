@@ -49,3 +49,11 @@ Darum:
 - **QA:** kein asiatisches Model/Verpackungs-Text, sauberes Studio-/Lifestyle-Bild, uni/zeitlose Farben (kein Logo-Knockoff).
 - **Alternative/parallel — Herren ohne Retouren-Risiko:** der Herren-Gap lässt sich risikoärmer mit **Accessoires** füllen, wo wir schon Gewinner haben (Caps, Uhren, Slim-Wallet, Cuban-Link-Armband, Sonnenbrille) — Einheitsgrösse = kaum Retouren. Hemden als bewusster, kleiner Test danebenstellen.
 Ziele in `dropship/paare_hype_targets.csv` (3 Hemden-Zeilen ergänzt).
+
+---
+
+## 🥾 WANDER & OUTDOOR-KAFFEE (User 2026-06-16 „wander sache + outdoor kaffee")
+**Befund:** CJ hat KEINE sauberen Outdoor-Kaffee/Wander-Artikel (Suche → Couch-Tische/Wein-Öffner/Overlay-Flasche). Gute via **AliExpress (PC-Browser)**.
+**Schweiz-Winkel (Wanderland!):** „Frische Kaffee am Bärg/See", Mundart, CH-Versand. Passt zu bestehende Kollektione Camping/Reise & Outdoor.
+**6 Ziele** in `dropship/paare_hype_targets.csv` (Camping French-Press, Pour-Over faltbar, Hand-Espresso, Doppelwand-Mug, Silikon-Becher, Wander-Daypack 20L).
+**QA:** kein Overlay-/Mengen-Text igebrennt, sauberes Outdoor-Lifestyle-Bild, Daypack mit Liter-Angabe. **Dublette-Check** gege bestehendi Trinkflasche/Camping-Produkt!
