@@ -119,6 +119,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-16 (Neue Kategorien autonom + Sortier-Fixes — CJ-Token aus /tmp/cj_token.json funktionierte):**
+- **🧢 Caps & Hüte (`caps-hute`): 14 Caps** angelegt (Baseball/Bucket/Cord/5-Panel/Denim/Beret/Docker), alle Bild-QA'd
+  (1 Monogramm-Knockoff verworfen), ACTIVE/6 Kanäle/kaufbar, deutsche Texte + Grössen-Hinweis.
+- **💧 Wasserfester Schmuck (`wasserfester-schmuck`): 6 Edelstahl-Stücke** + Ohrhänger (HERO-Nische aus Research),
+  Verkaufswinkel anlauffrei/hypoallergen/am-See + Pflege-Hinweis.
+- **🌸 Parfum & Düfte (`parfum-duefte`): 48 Marken-Parfums** gesammelt (Smart-Rule TYPE=Parfum, self-füllend) —
+  es gab ~48 Düfte (D&G/Hugo Boss/CK/Kenzo/YSL/Lancôme…) OHNE Parfum-Kollektion. Mehr Marken-Parfum = BigBuy (Import-Session).
+- **🗂️ Sortier-Fix:** 💎 Ohrringe-Smart-Regel war nur `TITLE~Ohrring` (verpasste Ohrhänger/Creolen) → disjunktiv + TAG=ohrringe erweitert.
+  **LEHRE (Gehirn `rules.kategorisierung`):** Smart-Collections per TITLE sind brittle → Tag-Match ergänzen; nach Import-Wellen prüfen ob Kategorie-Kollektion fehlt.
+- **📣 Meta-Queue** um 10 BigBuy-Marken-Posts erweitert (nicht nur CJ), git-gesteuert (self-heilend, live ab `wrangler deploy`).
+- **QA-REGEL verschärft:** CJ-Einträge mit **Name/Bild-Mismatch** ODER eingebranntem **Overlay-Text** verwerfen (Misrepresentation-Schutz, v.a. Merchant-Re-Review).
+
 **📌 2026-06-15 (NEUESTER STAND — Autonomes Posten OHNE GitHub + Handy-Fernsteuerung):**
 - **🚨 GitHub Actions KONTOWEIT GESPERRT** („Actions has been disabled for this user", 422 bei dispatch). Kein
   Repo-Toggle hilft (account-level). → **Kein Cron-Workflow läuft.** `git push`/PR-Merge gehen weiter. Ersatz =
