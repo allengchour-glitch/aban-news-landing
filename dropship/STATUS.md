@@ -3,6 +3,12 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 3 — HERO-Nische wasserfester Edelstahl-Schmuck importiert)
+- **💧 WASSERFESTER EDELSTAHL-SCHMUCK LIVE** (CH-Sommer-Renner #1 aus Research): 7 Stück via CJ (Bild-QA't, Name/Bild-Mismatch +
+  Overlay-Text-Bilder verworfen) — Armbänder «Amore»/«Cœur»/«Trésor», Halskette «Goutte», Armreif «Couleur», Titan «Nœud»,
+  Ohrhänger «Papillon». CHF 24.90–39.90. ACTIVE/6 Kanäle/kaufbar. Beschreibung mit Verkaufswinkel anlauffrei/hypoallergen/
+  am-See-tragbar + Pflege-Hinweis. Neue Collection **„💧 Wasserfester Schmuck"** (`wasserfester-schmuck`, 6 Stück). In Social/Worker-Queue/tutti.
+
 ## 🆕 2026-06-16 (NACHT 2 — Caps-Kategorie autonom + Marken auf Meta)
 - **🧢 CAPS-KATEGORIE LIVE** (User „eine Kategorie voller Caps"): 4 Caps via CJ (Token ok), Bild-QA'd (1 Knockoff verworfen):
   Flat-Cap «Brigade» camo 24.90 · Vintage «Liberty» 27.90 · Pailletten-Baskenmütze «Scintille» 29.90 · Docker-Mütze «Marin» 27.90.

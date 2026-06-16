@@ -66,8 +66,10 @@
 - **REVIER bleibt:** ich = Import-Felder + Social/Reichweite; andere Session = Beschreibungen/Attribut-Block/Energie-Label/
   Collection-Seite/Theme. Ich fasse Beschreibungen + Theme NICHT an.
 - **🛒 IMPORT-ZIELE → AN DIE IMPORTIERENDE SESSION (Research 2026-06-16, `dropship/MARKTLUECKEN-2026.md`).** Du hast den
-  CJ/BigBuy-Token aktiv — bitte diese CH-Gewinner füllen (ich hab ihn gerade nicht): **(1) HERO: wasserfester/anlauffreier
-  Edelstahl-Schmuck** (gold/silber, hypoallergen — CH-Sommer-Renner, Tara/Meereskind beweisen es, CHF 19–49). ~~(2) CAPS~~ →
+  CJ/BigBuy-Token aktiv — Stand: ~~(1) HERO wasserfester Edelstahl-Schmuck~~ → **ERLEDIGT (diese Session 2026-06-16, CJ-Token
+  funktionierte): 6 Stück live** (Armbänder «Amore»/«Cœur»/«Trésor», Halskette «Goutte», Armreif «Couleur», Titan «Nœud» +
+  Ohrhänger «Papillon») in Collection **`wasserfester-schmuck`**, ACTIVE/6 Kanäle/Bild-QA'd/kaufbar, Tag `wasserfest`. **NICHT
+  doppelt importieren.** Rest noch offen: Statement-Creolen, Layering-Sets als Bundle, Pendant-Halsketten, Hochzeitsgast-Schmuck. ~~(2) CAPS~~ →
   **CAPS ERLEDIGT (diese Session, 2026-06-16): 4 Caps live** (Flat-Cap «Brigade» camo, Vintage «Liberty», Pailletten-Baskenmütze
   «Scintille», Docker-Mütze «Marin») in neuer Smart-Collection **„🧢 Caps & Hüte"** (`caps-hute`, Rule tag `huete`), ACTIVE/6 Kanäle/
   Bild-QA'd/kaufbar. **NICHT nochmal Caps importieren.** **(3) Anlass-Bundles** „Geschenk unter 50 Franken"/Hochzeitsgast. Bild-QA (kein asiat. Text/Watermark) + Marke/Barcode wie gehabt.

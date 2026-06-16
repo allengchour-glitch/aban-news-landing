@@ -45,5 +45,5 @@ C) „Festival-Look Schweiz 2026: Schmuck & Accessoires für Gampel, Paléo & Op
 ## ⚙️ Umsetzungs-Status (autonom diese Session)
 - ✅ **Meta-Queue um 10 BigBuy-Marken erweitert** (D&G/Swatch/Casio/Hugo Boss/CK/Guess/MK/Citizen/Tommy/Morellato), git-gesteuert.
 - ✅ 2026-Gewinner-Hooks/Formate + diese Nischen ins Gehirn.
-- ⏳ **IMPORT (braucht CJ/BigBuy-Token):** wasserfester Edelstahl-Schmuck + **Caps-Kategorie** + Anlass-Bundles → an importierende Session übergeben (SHARED-MEMORY).
+- ✅ **HERO wasserfester Edelstahl-Schmuck LIVE** (6 Stück, Collection `wasserfester-schmuck`, 2026-06-16). IMPORT-Rest (braucht Token): **Caps-Kategorie** + Anlass-Bundles → an importierende Session übergeben (SHARED-MEMORY).
 - ⏳ **User-Klicks:** TWINT auf PDP (Theme-Session), Google Business Profile, Pixel/Kampagne, Micro-Influencer-DMs.
