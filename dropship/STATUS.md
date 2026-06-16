@@ -6,7 +6,7 @@
 ## ✅ 2026-06-16 (KATALOG-FEED-POLITUR LIVE DURCHGEZOGEN — ganzer Shop, 0 Fehler)
 - **🎉 GANZER KATALOG (6480 Produkt) live poliert** via Shopify-Bulk (eigener access_token, richtige App `ffe6c3a…`):
   · **condition=new** auf **6480** + **gender/age_group** auf Mode (Google-Pflichtfelder) ✅
-  · **richtige Google-Kategorie** auf **3818** Produkte (516 waren schon ok; ~2146 exotische Typen ohne Mapping = nur condition) ✅
+  · **richtige Google-Kategorie** auf **5747** Produkte (erst 3818, dann Mapping erweitert → cat2 +5231 inkl. exotische Typen Sticker/Hobby/DIY/Gaming/Wellness/Deko/Foto/Saison/Auto/Ski; nur ~733 echt-generische «Set/Stück/Paar» bleiben na) ✅
   · **Farbe/Grösse/Material/Muster-Block** in **2032** Mode-Beschreibungen (Merchant-Report „Update product descriptions" gefixt) ✅
   Verifiziert live (Herrenuhr→Armbanduhren, Sommerkleid→Kleider/female, Leinen-Hose→Material Leinen). Idempotent → re-run safe.
 - **🔑 Token-Saga gelöst (gemerkt in CLAUDE.md):** shpat_ tot seit 2026; client_credentials braucht **installierte** App (sonst app_not_installed); atkn untauglich; richtige Client-ID `ffe6c3a…` (Secret nur in luxe-secrets.ps1).
