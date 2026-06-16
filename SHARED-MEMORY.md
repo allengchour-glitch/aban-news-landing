@@ -54,6 +54,20 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ HAUSTIER +17 & 💎 PREMIUM-HERO (Tissot), Summe ~472:**
+- 🐾 Haustier +17 (Offset 60, 0 Dubletten): Hundegeschirre/Halsbänder/Leinen (Trixie New/Fusion/Comfort Premium),
+  **Julius-K9 IDC Powerharness**, Company of Animals, Kratzbaum, Transportkäfig, Mickey-Napf (Disney), Kauspielzeug (Gloria),
+  Hundekostüm. 1 Nassfutter übersprungen.
+- 💎 **PREMIUM-PRODUKT gesourct (User „mach ein premium"):** **Damenuhr Tissot Lovely (Ø 19 mm), Swiss Made**, CHF 445
+  (compareAt 495), Tags `highend`+`premium` → landet automatisch in Collection **Luxus · High-End** (Smart-Regel TAG=highend,
+  Top-Menüpunkt). Luxus-Copy (Swiss-Heritage/Garantie/Geschenkbox), EAN 7611608305157 für Google, 6 Kanäle.
+  **Quelle für Premium:** BigBuy `products.json?parentTaxonomy=19667` (Uhren, 8532 Stück) bzw. 19662 (Schmuck) →
+  nach `inShopsPrice` sortieren; `manufacturers.json` für Markennamen. Echte Luxusmarken da: Tissot/Hamilton/Certina/
+  Seiko/Citizen/Hugo Boss/Bulova/Tag-Heuer-Preisklasse bis CHF 6000+. **Premium-Nachschub jederzeit über diese Endpoints.**
+- **🔎 WICHTIG (Pipeline-Grenze):** Die vor-gebauten `/tmp/cat_*.json`-Listen sind je **auf 120 SKU gedeckelt** → Garten &
+  Haushalt ab Offset 120 = 0 Treffer (erschöpft). Frische Quellen künftig: **direkter Taxonomie-Pull** (`products.json?parentTaxonomy=ID`)
+  statt der cat-Listen; Auto-Kategorie (nur ~4 angelegt) noch offen, aber BigBuy-„auto" = 90 % Hardware/Ersatzteile (streng filtern).
+
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ NOCH MEHR FRISCHE NISCHEN (Offset 100): +33 Produkte, 0 Dubletten (Summe ~454):**
 - 🌻 Garten +15 (Offset 100): Teleskop-Heckenschere (Stocker), Gartenschere/Pflanzenroller (Progarden), Schlauch-Verbinder
   (Gardena), Philips-Design-Lampen, EDM-Wandleuchte/Strahler, Fisch-Grillkorb (Sauvic), Pflanzkasten, Insektenvernichter,
