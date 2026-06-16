@@ -43,6 +43,37 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
+## 📌 Stand 2026-06-16 (Teil 20) — ⚠️ i18n KOMPLETT UMGEKEHRT: jetzt VOLL VIERSPRACHIG (DE/EN/FR/IT)
+> ⚠️ **WICHTIG für alle künftigen Sessions — diese Sektion SUPERSEDED Teil 17 („i18n FINAL: nur DE+EN, FR/IT
+> zurückgebaut").** Der User hat in mehreren Sessions (12.–16.06., Branch `claude/abannews-projekt-JSw9l`,
+> PR #715) **ausdrücklich FR + IT wieder aufgebaut und massiv erweitert.** **FR/IT NICHT mehr löschen/zurückbauen!**
+> Voller Live-Stand auch in `SHARED-MEMORY.md` (Wellen 1–11).
+
+**Was jetzt VIERSPRACHIG (DE/EN/FR/IT) ist — alles verifiziert (0 Parser-Error, Konsistenz grün, 0 echte
+Broken-Links, Sitemap valide), 5-Sprachen-hreflang (de/en/fr/it/x-default) normalisiert:**
+- **Tool-Vergleiche:** `vergleich/`, `en/vergleich/`, `fr/vergleich/`, `it/vergleich/` — je **197** (788 Seiten)
+  + `ki-tool-vergleich.html`-Index in allen 4 Sprachen.
+- **Tool-Finder** `welche-ki-fuer-was.html` in allen 4 Sprachen + Daten `data/tools.{en,fr,it}.json` (je 175 Tools).
+- **Branchen-Hubs** `ki-fuer-*`: je **360** (de/en/fr/it), `branchen.html`-Index 4×.
+- **38 universelle Tools** (Dev-Utilities json/regex/encoder/diff/hash/uuid/jwt/timestamp/env/markdown/cron,
+  Generatoren/Rechner passwort/kontrast/farb/zeichenzaehler/qr/namen/iban/prozent/mwst/ki-token/automatisierung/
+  ki-kosten/ki-spar/stundensatz/finanz/rechnung, AI-Helfer bild-prompt/prompt-checker/baukasten/glossar/
+  bessere-prompts/readiness/hype-filter/ai-sichtbarkeit/erwaehnungs-check/betrug/aktien) — je FR + IT.
+- **34 Content-/Finanz-/Hub-/Public-Seiten** je FR + IT (Artikel, universelle Finanz-Guides, geld-und-ki,
+  online-tools, maerkte, angebot/mahnung, Audits, ueber-aban/press/media-kit/resources/roadmap/sponsoring/faq/brand).
+- Plus voller **EN-Reichweiten-Ausbau** (EN-Tools-Hub, Content-Artikel, Homepage verlinkt Tools/Finder/Vergleiche).
+
+**Bewusst NICHT FR/IT übersetzt** (dokumentiert, kein/geringer Hebel — NICHT als „fehlend" behandeln):
+DE-Steuer/Recht-Guides (steuer-basics/altersvorsorge/kleinunternehmerregelung/scheinselbststaendigkeit =
+landesspezifisches Recht), der Roman (the-seam/trilogie), thin/funktionale Seiten (api/archive/danke-kit/
+empfehlen/dossiers/ki-studio/shop/founding-Sales).
+
+**Arbeitsmuster (für künftige grosse Übersetzungs-Jobs):** Server-/Session-Rate-Limits resetten ~stündlich →
+throttle-resilient: Übersetzungs-Agenten „eine Datei nach der anderen speichern, KEIN Sub-Delegieren",
+Hauptthread salvaged (nur vollständige Dateien mit `</html>`) + committet + pusht wiederholt; am Ende
+5-Sprachen-hreflang normalisieren + `make consistency` / Broken-Link- / Sitemap-Check. `consistency_check`
+hat `/vergleich/` in EXCLUDE (Fremd-Toolpreise). **Offen (User, GitHub-Rate-Limit-Phasen):** PR #715 ist „ready".
+
 ## 📌 Stand 2026-06-11 (Teil 19) — ⚠️ HOSTING-BEFUND + Edge-API auf Cloudflare Pages bewiesen
 **Kernbefund (Live-Test):** `abannews.com` läuft aktuell auf **GitHub Pages** (statisch; Header `via: varnish` +
 `x-github-request-id`, nur durch Cloudflare durchgeproxyt). Deshalb geben `/api/*` (KI-Studio, hype-rewrite, chat)
@@ -139,7 +170,7 @@ gemerged (zuletzt PR #599, FR/IT-Revert). **Komplett live & autonom — diese (a
   629 Branchen-Hubs verlinkt (siehe KI-WERKZEUG-HANDOFF.md). i18n nur DE/EN (`<html lang>`-getrieben).
 - **Nebenbei gefixt:** 60 fehlende Branchen-PDFs (`generate_branchen_pdfs.py`-Parserfix) + 21 Hub-Bilder
   generiert; 3 tote related-Links. **Out-of-scope (andere Session):** tote `/products/`-Links in `dropship/`.
-- **i18n-Stand FINAL: nur DE + EN.** FR/IT wurden auf User-Wunsch komplett zurückgebaut (hreflang/Switcher/
+- **⚠️ SUPERSEDED durch Teil 20 (16.06.): FR/IT sind wieder da + voll ausgebaut — NICHT zurückbauen!** (Historisch:) **i18n-Stand FINAL: nur DE + EN.** FR/IT wurden auf User-Wunsch komplett zurückgebaut (hreflang/Switcher/
   Detailseiten). Lehre: globaler String-Replace für Übersetzungen zerstörte `id`/`for`-Attribute → kanonische
   DE-IDs als Referenz. Push-Lehre: 413-„request too large" kam von stalem `origin/main` → `git fetch` +
   `rebase origin/main`, dann packt git nur den eigenen Commit. Force-Push auf den Feature-Branch war freigegeben.
