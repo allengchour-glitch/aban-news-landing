@@ -63,7 +63,14 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color:var(--muted);text-align:center}
 @media(max-width:560px){.hero h1{font-size:1.55rem}.searchbox{flex-wrap:wrap}.searchbox button.go{width:100%}}
 :focus-visible{outline:3px solid #b45309;outline-offset:2px;border-radius:4px}
+.ftoggle{display:none}
 .fpanel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px 16px;margin-bottom:14px}
+@media(max-width:739px){
+  .ftoggle{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:22px;padding:9px 18px;font-weight:800;font-size:.92rem;cursor:pointer;margin-bottom:12px}
+  .fbadge{background:var(--amber-dk);color:#fff;border-radius:999px;min-width:20px;padding:1px 6px;font-size:.74rem;text-align:center}
+  .fpanel{display:none}
+  .fpanel.open{display:block}
+}
 .fgrp{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #f0ece2}
 .fgrp:last-of-type{border-bottom:0}
 .flbl{flex:0 0 90px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding-top:6px}
@@ -103,6 +110,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
 </div></div>
 
 <div class="wrap">
+  <button class="ftoggle" id="ftoggle" type="button" aria-expanded="false">⚙ Filter <span class="fbadge" id="fbadge" hidden>0</span></button>
   <div class="fpanel" id="fpanel">
     <div class="fgrp"><span class="flbl">Quelle</span><div class="chips" id="fsrc"></div></div>
     <div class="fgrp"><span class="flbl">Kategorie</span><div class="chips" id="fcat"></div></div>
@@ -208,8 +216,10 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   $("#go").addEventListener("click",function(e){e.preventDefault();searchAll()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();searchAll()}});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#q").value=a.dataset.q;searchAll()});
-  $("#fpanel").addEventListener("change",render);
-  $("#freset").addEventListener("click",function(){Array.prototype.forEach.call(document.querySelectorAll("#fpanel input"),function(i){i.checked=false});$("#sort").value="rel";render()});
+  function updBadge(){var n=document.querySelectorAll("#fpanel input:checked").length;var b=$("#fbadge");if(b){b.textContent=n;b.hidden=!n}}
+  $("#fpanel").addEventListener("change",function(){updBadge();render()});
+  $("#ftoggle").addEventListener("click",function(){var p=$("#fpanel"),o=p.classList.toggle("open");this.setAttribute("aria-expanded",o?"true":"false")});
+  $("#freset").addEventListener("click",function(){Array.prototype.forEach.call(document.querySelectorAll("#fpanel input"),function(i){i.checked=false});$("#sort").value="rel";updBadge();render()});
 
   var urlQ=new URLSearchParams(location.search).get("q");
   if(urlQ)$("#q").value=urlQ;
