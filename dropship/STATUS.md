@@ -3,6 +3,14 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (TWINT BESTÄTIGT OK → Engpass = klar REICHWEITE)
+- **✅ TWINT-Testkauf ging KOMPLETT DURCH** (User, andere Session) → **Bezahlweg funktioniert, Checkout NICHT kaputt.**
+- **➡️ Neu-Bewertung der 4 Checkout-Abbrüche:** keine kaputte Bezahlung, sondern echte Kunden, die am letzten Schritt aus anderem
+  Grund abspringen (Versandkosten-Wahrnehmung/Vertrauen/Ablenkung) — Recovery-Flow fängt das ab. **Kein technischer Blocker mehr.**
+- **🎯 ENGPASS jetzt eindeutig = REICHWEITE.** Funnel+Katalog+Bezahlung sind ok; bei nur **7–12 Sessions/Tag** kann es mathematisch keine
+  Order geben. **Top-Prio: Traffic restaurieren** — (1) Worker deployen (Organik-Kadenz hoch, Queue 141 Posts wartet), (2) Pixel + CH-Kampagne (bezahlt).
+  Bezahl-Test ist damit ✅ erledigt und von der TODO genommen.
+
 ## 🆕 2026-06-16 (TIEFEN-ANALYSE — Traffic stürzt ab + Gehirn-Lehren)
 - **📉 TRAFFIC-ABSTURZ (Tagestrend 14T):** 02.06=237 · 03.06=**256** · 04.06=173 → dann Einbruch: 05.06=45 … 12.06=13 · 15.06=**7** · 16.06=12.
   → Die 1.206/14T sind front-loaded; **die letzten Tage sind quasi tot (7–36/Tag).** Ursache: bezahlte TikTok-Kampagne pausiert + nur Organik
