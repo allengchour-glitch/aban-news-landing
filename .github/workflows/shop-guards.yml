@@ -1,0 +1,50 @@
+name: Shop Guards
+
+# Wöchentliche autonome Wächter:
+#   - price_guard : hält den Katalog verkaufbar (inventoryPolicy DENY -> CONTINUE) + Preis-Anomalie-Report
+#   - link_guard  : 404-Wächter für Menü-/Cross-Sell-Collection-Links (+ sichere Auto-Redirects)
+#   - cross_sell  : hängt Produkten ohne internen Collection-Link eine Cross-Sell-Box an
+# No-op ohne Shopify-Secrets. Alle idempotent + safe.
+#
+# Secrets: SHOPIFY_SHOP + (SHOPIFY_ADMIN_TOKEN | SHOPIFY_CLIENT_ID+SHOPIFY_CLIENT_SECRET)
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # Montags 07:00 UTC
+  workflow_dispatch:
+    inputs:
+      live:
+        description: 'LIVE=1 schreibt (sonst Dry-Run)'
+        required: false
+        default: '1'
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    env:
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      LIVE: ${{ github.event_name == 'schedule' && '1' || github.event.inputs.live }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Price guard (keep sellable)
+        run: node automation/price_guard.mjs
+      - name: Link guard (404 watcher)
+        run: node automation/link_guard.mjs
+      - name: Cross-sell generator
+        run: node automation/cross_sell.mjs
+      - name: Publish guard (all sales channels)
+        run: node automation/publish_guard.mjs
+      - name: Alt-text guard (image SEO/a11y)
+        run: node automation/alt_text_guard.mjs
+      - name: Discount guard (keep WELCOME10 alive)
+        run: node automation/discount_guard.mjs
+      - name: Hero image guard (collection covers)
+        run: node automation/hero_image_guard.mjs
+      - name: Rating guard (pull weak products from promo)
+        run: node automation/rating_guard.mjs
