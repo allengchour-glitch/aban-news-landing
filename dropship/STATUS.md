@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 10 — Domain/.com.co geklärt)
+- **✅ Shopify-Primärdomain = luxestyle.ch (SSL)** → Feed-URLs korrekt, `.com.co` ist KEIN Merchant-Blocker (Entwarnung).
+- **`.com.co` = Alt-Rest** nur noch in: Klaviyo websiteUrl (E-Mail-Leak!) + Kundenkonto-Subdomain. Plus Shop-Kontaktmail=gmail.
+- **Fix-Plan `dropship/DOMAIN-FIX.md`** (alles UI, nicht API): PRIO1 Klaviyo URL→.ch + Währung→CHF · PRIO2 Domains/Kundenkonto `.com.co` weg/Redirect · PRIO3 Shop-Kontaktmail→info@luxestyle.ch.
+
 ## 🎉 2026-06-16 (09:24 — GOOGLE MERCHANT ENTSPERRT!)
 - **✅ Misrepresentation-Review ABGESCHLOSSEN & Sperre AUFGEHOBEN** (E-Mail Google Merchant: „issue no longer appears").
   Der Policy-Fix (E-Mail-Tippfehler + Rückgaberichtlinie + Verifizierung) hat gewirkt. Konto-Block weg. Merchant-ID 5797470070.
