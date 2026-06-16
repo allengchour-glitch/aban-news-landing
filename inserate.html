@@ -134,6 +134,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
         <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
       </span>
     </div>
+    <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
   </section>
@@ -173,8 +174,24 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(sort==="pasc"||sort==="pdesc"){items.sort(function(a,b){var x=chfNum(a.preis),y=chfNum(b.preis);if(isNaN(x))return 1;if(isNaN(y))return -1;return sort==="pasc"?x-y:y-x})}
     return items;
   }
+  var CHIP='display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.82rem;color:var(--ink2);cursor:pointer;font-family:inherit;font-weight:600';
+  function renderChips(){
+    var c=$("#chips");if(!c)return;var parts=[];
+    function add(l,clr){parts.push({l:l,clr:clr})}
+    var q=$("#q").value.trim();if(q)add("🔍 "+q,function(){$("#q").value="";load()});
+    var loc=$("#loc").value.trim();if(loc)add("📍 "+loc,function(){$("#loc").value="";render(raw)});
+    if(curKat)add("📂 "+curKat,function(){curKat="";var f=document.querySelector('input[name="kat"][value=""]');if(f)f.checked=true;load()});
+    var typ=(document.querySelector('input[name="typ"]:checked')||{}).value||"";
+    if(typ)add(typ==="Gesuch"?"🔎 Gesuche":"📦 Angebote",function(){var t=document.querySelector('input[name="typ"][value=""]');if(t)t.checked=true;render(raw)});
+    Array.prototype.forEach.call(document.querySelectorAll(".cond:checked"),function(cb){add(cb.value.charAt(0).toUpperCase()+cb.value.slice(1),function(){cb.checked=false;render(raw)})});
+    var lo=$("#pmin").value,hi=$("#pmax").value;if(lo||hi)add("CHF "+(lo||"0")+"–"+(hi||"∞"),function(){$("#pmin").value="";$("#pmax").value="";render(raw)});
+    if(!parts.length){c.hidden=true;c.innerHTML="";return}
+    c.hidden=false;
+    c.innerHTML=parts.map(function(p,i){return '<button type="button" data-i="'+i+'" style="'+CHIP+'">'+esc(p.l)+' <span aria-hidden="true" style="color:var(--muted);font-weight:800">×</span></button>'}).join("")+'<button type="button" data-all="1" style="'+CHIP+';color:var(--amber-dk);border-color:var(--amber-dk)">Alle löschen</button>';
+    window.__chip=parts.map(function(p){return p.clr});
+  }
   function render(items){
-    items=applyFilters(items||[]);
+    items=applyFilters(items||[]);renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
       statusEl.innerHTML="Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent="0 Inserate";return}
     statusEl.hidden=true;
@@ -202,6 +219,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   document.addEventListener("change",function(e){if(e.target&&(e.target.name==="typ"||e.target.classList.contains("cond"))){render(raw)}});
   ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
   $("#sort").addEventListener("change",function(){render(raw)});
+  $("#chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+    if(b.dataset.all){$("#reset").click();return}
+    var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
   $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#pmin").value="";$("#pmax").value="";$("#sort").value="rel";curKat="";
     var f=document.querySelector('input[name="kat"]');if(f)f.checked=true;
     var t=document.querySelector('input[name="typ"][value=""]');if(t)t.checked=true;

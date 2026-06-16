@@ -150,6 +150,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
         <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option><option value="rooms">Zimmer absteigend</option></select>
       </span>
     </div>
+    <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
   </section>
@@ -195,8 +196,24 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     else if(sort==="rooms"){items.sort(function(a,b){var x=roomsOf(a),y=roomsOf(b);if(isNaN(x))return 1;if(isNaN(y))return -1;return y-x})}
     return items;
   }
+  var CHIP='display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.82rem;color:var(--ink2);cursor:pointer;font-family:inherit;font-weight:600';
+  function renderChips(){
+    var c=$("#chips");if(!c)return;var parts=[];
+    function add(l,clr){parts.push({l:l,clr:clr})}
+    var q=$("#q").value.trim();if(q)add("🔍 "+q,function(){$("#q").value="";load()});
+    var loc=$("#loc").value.trim();if(loc)add("📍 "+loc,function(){$("#loc").value="";render(raw)});
+    if(curModus)add(curModus==="miete"?"Mieten":"Kaufen",function(){curModus="";Array.prototype.forEach.call(document.querySelectorAll("#modus .mbtn"),function(x,i){x.classList.toggle("on",i===0)});load()});
+    if(curArt){var lbl=curArt;ARTEN.forEach(function(a){if(a[1]===curArt)lbl=a[0]});add("🏠 "+lbl,function(){curArt="";var f=document.querySelector('input[name="art"]');if(f)f.checked=true;load()})}
+    var zi=$("#zimmer").value;if(zi)add(zi+"+ Zimmer",function(){$("#zimmer").value="";render(raw)});
+    var am=$("#amin").value;if(am)add("ab "+am+" m²",function(){$("#amin").value="";render(raw)});
+    var lo=$("#pmin").value,hi=$("#pmax").value;if(lo||hi)add("CHF "+(lo||"0")+"–"+(hi||"∞"),function(){$("#pmin").value="";$("#pmax").value="";render(raw)});
+    if(!parts.length){c.hidden=true;c.innerHTML="";return}
+    c.hidden=false;
+    c.innerHTML=parts.map(function(p,i){return '<button type="button" data-i="'+i+'" style="'+CHIP+'">'+esc(p.l)+' <span aria-hidden="true" style="color:var(--muted);font-weight:800">×</span></button>'}).join("")+'<button type="button" data-all="1" style="'+CHIP+';color:var(--amber-dk);border-color:var(--amber-dk)">Alle löschen</button>';
+    window.__chip=parts.map(function(p){return p.clr});
+  }
   function render(items){
-    items=applyFilters(items||[]);
+    items=applyFilters(items||[]);renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
       statusEl.innerHTML="Noch keine Immobilien in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Immobilie inserieren</a>.";cntEl.textContent="0 Immobilien";return}
     statusEl.hidden=true;
@@ -223,6 +240,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#zimmer").addEventListener("change",function(){render(raw)});
   ["pmin","pmax","amin"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
   $("#sort").addEventListener("change",function(){render(raw)});
+  $("#chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+    if(b.dataset.all){$("#reset").click();return}
+    var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
   $("#modus").addEventListener("click",function(e){var b=e.target.closest(".mbtn");if(!b)return;
     Array.prototype.forEach.call(this.querySelectorAll(".mbtn"),function(x){x.classList.remove("on")});b.classList.add("on");curModus=b.dataset.m;load()});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#loc").value=a.dataset.loc;render(raw);window.scrollTo({top:0,behavior:"smooth"})});
