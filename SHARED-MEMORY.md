@@ -46,6 +46,11 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**🟢 2026-06-16 (~22:00) — CizQ6 ÜBERNIMMT BULK-FEED-POLITUR (autonom, auf USER-Anweisung):**
+- **⚠️ REVIER-WECHSEL:** Der User het CizQ6 **explizit beauftragt**, de **ganz Katalog z'polishe + i d'richtigi Kategorie z'tue** („polish när ganzi produkt u ds söt scho i richtige kategorie si … mach ds ganze e meisterwärk aber aues outonom"). → **CizQ6 macht ab jetzt d'Bulk-Feed-Kategorisierig** (vorher als „euer Revier" markiert). **Taxonomie-Session: bitte NÜMM doppelt Kategorie bulk-setze** — sünsch Doppelarbet. (Theme/Menü/Collections/Sub-Tags bliibe weiterhin EUI Revier — CizQ6 fasst die NID a.)
+- **WIE (kollisionssicher):** Neus Skript **`automation/feed_polish.mjs`** = **idempotent + resümierbar**: setzt katalogweit `productCategory` (Keyword-Mapping productType+Titel → Shopify-Standard-Taxonomie, alli GIDs verifiziert) + `mm-google-shopping` **condition=new** (ALLI Produkt) + **gender/age_group** (nur Mode/Schmuck/Taschä). Überspringt scho-Polierti (condition-Metafeld vorhandä). Läuft im **PC-Tagestask** (`run-follower-daily.ps1` Step 8b, MAX=800/Tag → ganzä Katalog in paar Läuf; brucht SHOPIFY_CLIENT_ID/SECRET i luxe-secrets.ps1). Additiv/last-write-wins → kei Konflikt wenn ihr mal öppis gsetzt hend.
+- **OFFE (User, 1 Klick):** Merchant „Turn on automatic image improvements" (Overlays wäg, ganzä Katalog) + SHOPIFY_CLIENT_ID/SECRET i d'PC-Secrets, dass d'Politur loslauft.
+
 **🟢 2026-06-16 (~21:00) — CizQ6 FEED + Content-Update (für Marketing/Feed-Session):**
 - **FEED:** CizQ6 het uf sine 5 nöie Produkt (Fenrir/Aurelia/Lagune/Samsara/Olivia) d'**Google-Kategorie** (productCategory: Halsketten aa-6-8 / Ohrringe aa-6-6 / Fußkettchen aa-6-1) + **mm-google-shopping** gender/age_group/condition gsetzt. **BULK-FEED (14K Produkt, 306 Not-approved, 1806 Chleider ohni Beschriebig) = NICHT angerührt** (euer Revier, Kollisionsschutz). Empfehlig: (a) Merchant „Turn on automatic image improvements" (Overlays weg, ganzä Katalog), (b) productCategory per productType bulk-setze (aa-6-8/6-6/6-9/6-1 etc.), (c) Pflicht-Attribut (Farb/Material/Geschlecht) füllä.
 - **Merchant-Stand:** 13.9K approved · 25 limited · 306 not-approved · Free Listings AKTIV (Merchant Next = auto, „2 clicks up from 0").

@@ -14,6 +14,8 @@
 #        $env:META_ACCESS_TOKEN = "EAA…"                 # für IG/FB-Kommentar-Auto-Antwort
 #        $env:IG_USER_ID = "17841480560863361"           # @luxestyle.ch
 #        $env:FB_PAGE_ID = "1049840534888592"            # LuxeStyle CH
+#        $env:SHOPIFY_CLIENT_ID     = "…"                 # Custom-App (für Feed-Politur)
+#        $env:SHOPIFY_CLIENT_SECRET = "shpss_…"           #   → setzt Kategorie+condition katalogweit
 #        # $env:TT_PRIVACY_LEVEL = "PUBLIC_TO_EVERYONE"   # erst NACH TikTok-App-Audit
 #   2) Task registrieren (PowerShell als Admin, 1 Zeile):
 #      schtasks /create /tn "LuxeMarketing" /sc daily /st 10:00 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Users\allen\aban-news-landing\automation\local\run-follower-daily.ps1"
@@ -68,6 +70,15 @@ node "automation/local/anibis-post.mjs"
 
 # 8) Sonntags zusätzlich entfolgen (Nicht-Zurückfolger nach ~14 Tagen)
 if ((Get-Date).DayOfWeek -eq "Sunday") { node "automation/local/ch-unfollow.mjs" }
+
+# 8b) KATALOG-FEED-POLITUR (autonom, User 2026-06-16 „ds söt scho i richtige kategorie si"):
+#     setzt katalogweit die richtige Shopify-/Google-Produktkategorie + condition/gender/age.
+#     Braucht SHOPIFY_CLIENT_ID/SECRET in luxe-secrets.ps1. Idempotent + resümierbar → MAX/Tag,
+#     der nächste Lauf macht weiter, bis der ganze Katalog poliert ist. No-op ohne Creds.
+#     ($env:SHOPIFY_SHOP default au3j0y-hq.myshopify.com; $env:SHOPIFY_CLIENT_ID/SECRET = Custom-App.)
+if ($env:SHOPIFY_CLIENT_ID -and $env:SHOPIFY_CLIENT_SECRET) {
+  $env:MAX = "800"; node "automation/feed_polish.mjs"; $env:MAX = $null
+}
 
 # 9) IMMER NACH DEM POSTEN: ANALYSIEREN + LERNEN (User 2026-06-16 „wenn du fertig postest, dann immer Analyse").
 #    Kette wie auto.sh, aber Windows-tauglich via node/python direkt (kein bash nötig). Alles no-op-safe:

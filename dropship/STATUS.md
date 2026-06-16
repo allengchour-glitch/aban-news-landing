@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (AUTONOME KATALOG-FEED-POLITUR — ganzer Shop in die richtige Kategorie)
+- **🛠️ `automation/feed_polish.mjs` gebaut** (User „polish när ganzi produkt u ds söt scho i richtige kategorie si … aues outonom, e meisterwärk"): setzt **katalogweit** die richtige Shopify-Standard-Produktkategorie (→ Google-Kategorie auto) per Keyword-Mapping (productType+Titel, ~45 Regeln, alle GIDs verifiziert) + `mm-google-shopping` **condition=new** (alle), **gender/age_group** (Mode/Schmuck/Taschen).
+- **Robust:** idempotent (überspringt Polierte via condition-Metafeld), resümierbar, THROTTLED-Backoff, `MAX`/Lauf, `DRY=1`. Logik gegen echte productTypes getestet (Armbanduhr≠Armband-Bug gefixt).
+- **🤖 Autonom verdrahtet:** PC-Tagestask `run-follower-daily.ps1` **Step 8b** (MAX=800/Tag → ganzer Katalog über wenige Läufe). Braucht `SHOPIFY_CLIENT_ID/SECRET` in luxe-secrets.ps1 (Client-Credentials, wie reel-analytics).
+- **🤝 Koordination:** Bulk-Feed-Kategorie war „Taxonomie-Session-Revier" → auf User-Anweisung übernimmt das jetzt **CizQ6** (in SHARED-MEMORY angekündigt, kein Doppel-Setzen). Theme/Menü/Collections bleiben Taxonomie-/Theme-Session.
+- **🔴 User (1×):** SHOPIFY_CLIENT_ID/SECRET in PC-Secrets + Merchant „Turn on automatic image improvements".
+
 ## 🎉 2026-06-16 (WORKER DEPLOYED — Posting-Maschine + Handy-Steuerung LIVE)
 - **✅ `wrangler deploy` erfolgreich** (User am PC). luxe-poster Version 62eb9ea9, Cron 7/10/12/15/17/19 UTC. KV LUXE_KV (662199…86ee9) gebunden.
 - **134-Posts-Queue live** (13 neue Reels + 5 neue Produkte in Rotation, dedupliziert).
