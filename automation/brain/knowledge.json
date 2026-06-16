@@ -530,6 +530,47 @@
       "2026-06-16 MENÜ-STIL: User will premium/clean (Galaxus-Vorbild) → Emojis aus main-menu-Labels entfernt, EIGENE Mode-Struktur behalten (NICHT Galaxus-Departments übernehmen — anderer Shop-Typ). Emoji-Strip-Regex inkl. ⌚/Flaggen/Variation-Selektoren. Menü-Labels künftig clean halten.",
       "2026-06-16 GEPRÜFT (BigBuy-Token): BigBuy products.json hat ein video-Feld, aber Wert=0 bei 0/600 in Schmuck/Uhren/Parfum/Kleidung/Taschen → KEINE Videos für LuxeStyle-Kategorien. NICHT nochmal suchen. Video-Content = selbst erzeugen (Luma image→video automation/luma_product_video.mjs ODER ffmpeg Price-Reveal/Ken-Burns aus den sauberen Marken-Bildern). Gilt analog CJ (productVideo leer).",
       "2026-06-16 ERGÄNZT: BigBuy-Videos auch bei Elektronik ~0/600, Beleuchtung 3/600, Haus&Küche 5/600 — und Wert = nur YouTube-ID (Hersteller-Clip, NICHT als eigenes vertikales Reel nutzbar, Copyright). KEIN Lieferanten-Video-Weg (weder Mode noch Elektronik). Reels IMMER selbst erzeugen (Luma/ffmpeg aus sauberen Produktbildern). Elektronik bleibt off-brand für LuxeStyle."
+    ],
+    "kampagnen_paid": [
+      "BREAK-EVEN ROAS ~1.5–1.6 bei CH-Margen — darunter ist die Kampagne mit Steuern/Gebühren Verlust. ROAS>1.6 nach Lernphase → skalieren; sonst nächstes Produkt (Quelle KAMPAGNEN-PLAYBOOK).",
+      "TEST-SETUP: EIN Produkt + EIN Kanal gleichzeitig (nicht streuen, sonst unklar auswertbar). Broad-Targeting + CBO + 3–4 Creative-Varianten — kein enges Interest-Targeting am Anfang (Pixel/Algo findet Käufer schneller selbst).",
+      "BUDGET: CHF 150–250 über 7 Tage, nie unter CHF 20/Tag (unter ~CHF 80 total lernt der Algo nicht). Erste 3 Tage = Lernphase NICHT anfassen; Tag 4 Kennzahlen, Tag 5–7 Gewinner ausbauen.",
+      "CTR < 1% = CREATIVE-Problem, nicht Shop → neuen Hook/Video (erste 3 Sek entscheiden). NULL Käufe nach ~CHF 80 Spend bei ROAS<1 → Produkt/Hook sofort wechseln, nicht weiterlaufen lassen. Ratsche: bewiesene Verlierer-Produkte nie wieder testen."
+    ],
+    "conversion_hebel": [
+      "REIHENFOLGE: Bezahlmethoden (TWINT+Karten) VOR Content/Pixel — ohne sie 0 Käufe möglich, egal wie viel Traffic (EIN-WEG-ZUM-1-KUNDEN). [2026-06-16: TWINT-Testkauf ging durch = Bezahlung ok.]",
+      "VERSANDZEIT-TRANSPARENZ stoppt Checkout-Abbrüche: «Versand 7–14 Tage» klar auf PDP + Banner. Verhindert Frust/Rückbuchungen (CONVERSION-BOOSTER).",
+      "JUDGE.ME Auto-Review-Mail 14T nach Lieferung aktiv lassen = automatische ≥4.5★-Sammlung. Sterne NICHT nur auf PDP, auch auf Kollektions-/Feed-Kacheln zeigen (höhere CTR ins Produkt). NIEMALS Fake-Reviews."
+    ],
+    "gratis_kanaele": [
+      "PINTEREST: Pins ranken 3–12 Monate gratis in der Suche → pro Produkt 1 Pin mit Keyword-Titel + Mode-Bild, 5–10 Pins/Woche = passive Langzeit-Reichweite parallel zu Ads (GRATIS-WACHSTUM). Bestehendes System auf main (pinterest-publish.yml) — nicht duplizieren.",
+      "tutti.ch = #1 CH-Kleinanzeigen, gratis/keine Provision; Ricardo lädt automatisch mit = doppelte Reichweite. 8–10 Top-Produkte, 2×/Tag halbautomatisch (Browser-CDP).",
+      "Reihenfolge gratis→bezahlt: Worker-Organik + Pinterest + Free Listings + tutti ZUERST (0 CHF), dann bezahlte Kampagne als Verstärker."
+    ],
+    "api_patterns": [
+      "SEO-FULL-REPLACE-FALLE: productUpdate mit seo:{title} allein nullt seo.description (und umgekehrt) → IMMER beide Felder zusammen senden (POLISH-ROUND-SEO).",
+      "PUBLISH/COLLECTION-ID NIE raten → echte gid aus get-collection/search_collections bzw. aus der create-Antwort nehmen, sonst «Ressource existiert nicht».",
+      "LÖSCH-FALLE: VOR productDelete per products(query:\"sku:<SKU>\") prüfen, dass wirklich ein ZWEITES Exemplar existiert (≥2). «Sieht aus wie Dup» reicht NICHT — einmal wurde das einzige Exemplar gelöscht (AUTONOMER-MODUS §9).",
+      "BigBuy-Taxonomie akzeptiert NUR Top-Level-Wurzeln (Subkategorie-ID → 404 «not parent») → Root abfragen, Subtree client-seitig per category-Feld filtern.",
+      "IG-POSTEN: nach /{ig}/media (Container) ~10–12s warten vor /media_publish, sonst «Media ID is not available». FB /photos ist robuster (bei «reduce data» 1× retry). IG akzeptiert nur JPEG → webp via ffmpeg -i x.webp x.jpg konvertieren, dann stagedUploadsCreate(IMAGE)+curl(file LAST)+fileCreate."
+    ],
+    "aesthetik_optik": [
+      "HERO-BILD = optischer Conversion-Engpass #1: 1 starkes, einheitliches Lifestyle-Foto + 1 klarer CTA schlägt jede Navigations-/Feature-Politur (OPTIK-REPORT, SHOP-DESIGN-AUDIT).",
+      "PRODUKTKACHEL-KONSISTENZ: Mix aus Freisteller-Weiss/Lifestyle/Render im selben Grid wirkt wie «5 Shops». Hero-Reihe nur heller, einheitlicher Hintergrund — Renders raus.",
+      "ALT-TEXTE für ALLE Produktbilder (Google-Bildersuche + Barrierefreiheit) — fehlende Alt-Texte = 0 Bilder-SEO. [Hinweis: Optik/Theme/Collection-Seite = Theme-Session-Revier → nur abstimmen, nicht eigenmächtig.]"
+    ],
+    "supplier_pricing": [
+      "CJ EU-LAGER: countryCode=DE (Frankfurt) → EU-bevorratete Artikel mit ~5–10 Tagen CH-Versand für Ad-Produkte sourcen (1 API-Parameter statt Anbieterwechsel). Tag eu-lager + «Express» in Copy (EU-LAGER-STRATEGIE).",
+      "MARGEN-PSYCHOLOGIE: Markenware (z.B. D&G-Parfum) = NO-/Low-Margin-Traffic-Converter & Vertrauen; Generika = 3× Marge. Mix: Marken ziehen, Generika verdienen.",
+      "EU→CH ist GRENZÜBERSCHREITEND (Zoll/Einfuhr-MwSt, nicht EU-intern). Parfum = Flüssig-Versand-Restriktionen. Vor Pricing reale CH-Versandkosten+Zoll prüfen (PREMIUM-SUPPLIER)."
+    ],
+    "katalog_audit": [
+      "FANTASIE-STREICHPREISE: compareAt ≈ Preis×1.3 ohne echte MSRP = unglaubwürdig (722 Funde, viele krumm wie 51.87/337.87). Audit: ratio>1.4 & Endung nicht .90/.95 → prüfen/entfernen. Streichpreis nur mit echter UVP (KATALOG-QUALITAET).",
+      "BILD-AUDIT katalogweit: image-audit.mjs / asian_script_audit.py mit GEMINI_API_KEY, 2-Pass (1: alles flaggen, 2: nur prominente Overlays/Banner/asiat. Schrift archivieren) → ~15–17% der Auto-Importe haben Werbe-Overlays. Borderline-Hintergrundschilder behalten (False-Positive-Reduktion)."
+    ],
+    "pod_printful": [
+      "PRINTFUL-Katalog ist öffentlich OHNE API-Key: GET api.printful.com/products/variant/{catalogVariantId} → sauberes Blank-Produktfoto ohne «Dein Design»-Text. catalogVariantId = Teil nach «_» in der Shopify-SKU. Ideal für POD-Mockups ohne Gemini-Guthaben (MEMORY-KOMPAKT).",
+      "POD CH-MUNDART als Marken-Burggraben: «Hoi zäme»/Dialekt-Humor/Stadt-Pride können generische Dropshipper nicht kopieren (Sprachbarriere) = emotionaler Kaufgrund. CHF 4.90 Sticker = niedrigster Erstkauf-Hebel (MARKTLUECKE-SCHWEIZ-EDITION)."
     ]
   },
   "decisions": [
@@ -572,6 +613,11 @@
       "date": "2026-06-16",
       "change": "Pools v2 aus 5 Reports abgeleitet (Bayes + Hook-Typ-Lernen).",
       "evidence": "Top-Tag #aromatherapyathome; bester Hook „mundart\" (Ø 795V)"
+    },
+    {
+      "date": "2026-06-16",
+      "change": "Gehirn aus allen ~63 dropship/-Docs angereichert: neue rules-Keys kampagnen_paid, conversion_hebel, gratis_kanaele, api_patterns, aesthetik_optik, supplier_pricing, katalog_audit, pod_printful.",
+      "evidence": "User-Auftrag 'studiere alle dropshipseiten und verbessere mein gehirn'. 3 Explore-Agenten destillierten neue, nicht-duplizierte Lehren (Paid-Ads-Playbook, Conversion-Hebel, Gratis-Kanäle, API-Fallen, Optik, Supplier/Pricing, Katalog-Audit, POD)."
     }
   ]
 }
