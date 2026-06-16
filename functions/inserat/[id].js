@@ -27,6 +27,14 @@ function page(it, demo) {
   const ogDesc = (it.preis ? it.preis + " · " : "") + [it.plz, it.ort].filter(Boolean).join(" ") + (plain ? " — " + plain : "");
   const desc = esc(ogDesc.slice(0, 180));
   const ogImg = (it.bild && /^https:\/\//i.test(it.bild)) ? it.bild : "https://abannews.com/og-image.png";
+  // JSON-LD (Product/Offer) für Rich Results — XSS-fest über JSON.stringify + <-Escape.
+  const priceNum = parseFloat(String(it.preis || "").replace(/[^\d.]/g, ""));
+  const ld = { "@context": "https://schema.org", "@type": "Product", name: String(it.titel || "Inserat"), description: plain.slice(0, 400) };
+  if (it.bild && /^https:\/\//i.test(it.bild)) ld.image = it.bild;
+  if (!isNaN(priceNum) && priceNum > 0 && String(it.typ || "") !== "Gesuch") {
+    ld.offers = { "@type": "Offer", price: priceNum, priceCurrency: "CHF", availability: "https://schema.org/InStock", areaServed: "CH" };
+  }
+  const ldScript = '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, "\\u003c") + "</" + "script>";
   const img = (it.bild && /^https:\/\//i.test(it.bild))
     ? `<div class="hero-img" style="background-image:url('${attr(it.bild)}')"></div>`
     : `<div class="hero-img">${esc(it.emoji || "🏷️")}</div>`;
@@ -41,6 +49,7 @@ function page(it, demo) {
 <meta property="og:type" content="product"><meta property="og:title" content="${esc(it.titel || "Inserat")}">
 <meta property="og:description" content="${desc}"><meta property="og:image" content="${attr(ogImg)}">
 <meta name="twitter:card" content="summary_large_image">
+${demo ? "" : ldScript}
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff;--shadow:0 8px 24px rgba(31,41,55,.09)}
