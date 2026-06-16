@@ -32,10 +32,15 @@ const TOK_ST  = process.env.SHOPIFY_ADMIN_TOKEN || '';
 const CID     = process.env.SHOPIFY_CLIENT_ID || '';
 const CSECRET = process.env.SHOPIFY_CLIENT_SECRET || '';
 const LIVE    = process.env.LIVE === '1';
-const COLL    = process.env.BESTSELLER_COLLECTION_GID || 'gid://shopify/Collection/687789113729';
-const TARGET      = parseInt(process.env.TARGET || '12', 10);
+// Ziel = die auf der STARTSEITE sichtbare Collection "⭐ Top 10 Bestseller" (handle bestseller-premium-heroes).
+const COLL    = process.env.BESTSELLER_COLLECTION_GID || 'gid://shopify/Collection/687774499201';
+const TARGET      = parseInt(process.env.TARGET || '10', 10);
 const WINDOW_DAYS = parseInt(process.env.WINDOW_DAYS || '60', 10);
-const MIN_RATING  = parseFloat(process.env.MIN_RATING || '4.5');
+const MIN_RATING  = parseFloat(process.env.MIN_RATING || '4.3');
+// Seed: bekannte Review-Sieger — immer im Kandidaten-Pool, falls nicht via Mitglieder/CSV erfasst.
+const SEED_IDS = (process.env.SEED_IDS ? process.env.SEED_IDS.split(',') : [
+  '15396249960833','15396249502081','15412915339649','15397247385985','15413025145217','15403009704321'
+]).map(x=>x.trim().startsWith('gid://')?x.trim():`gid://shopify/Product/${x.trim()}`);
 const MIN_COUNT   = parseInt(process.env.MIN_COUNT || '3', 10);
 const API = '2025-01';
 
@@ -129,8 +134,8 @@ async function main(){
   const handleMap = await resolveHandles(token, handles);
   const goodIds = handles.map(h=>handleMap.get(h)).filter(Boolean);
 
-  // Kandidaten-Pool = Mitglieder ∪ good_products
-  const pool = Array.from(new Set([...memberIds, ...goodIds]));
+  // Kandidaten-Pool = Mitglieder ∪ good_products ∪ Seed (bekannte Review-Sieger)
+  const pool = Array.from(new Set([...memberIds, ...goodIds, ...SEED_IDS]));
 
   let ranked, mode;
   const units = await salesUnits(token);
