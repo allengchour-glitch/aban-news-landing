@@ -42,6 +42,11 @@
 - **📤 Autopost-Queue neu gebaut: 141 Posts** (95 Bild / 31 Reel / 15 Story, CH-weit, gelernte Captions + echte Preise) → `queue.json`. **Wirkt erst nach `wrangler deploy`.**
 - **🔑 Konsequenz Prioritäten:** (1) Reichweite RESTAURIEREN — Worker deployen (Organik-Kadenz) + Pixel/Kampagne (bezahlt) ; (2) Checkout-Leck (TWINT-Test) ; (3) Free Listings/SEO.
 
+## 🆕 2026-06-16 (NACHT — Value-Content-Offensive + Bärndütsch gelernt)
+- **9 VALUE-Reels** gebaut (80/20-Regel gegen 0-Shares): Pflege · Styling · echt-vs-billig · Hautton · Geschenk-Guide · Schmuck-Fehler · Cap-Gsicht · Sommer-Trends-26 · Ketteli-Längi. Format `render_value_reel.sh` (Tipp-Liste, Save-CTA, Musik, Safe-Zone). Alle auf CDN + Queue.
+- **🇨🇭 BÄRNDÜTSCH vom User gelernt + validiert** („passt scho"): modern/phonetisch (Insta-Stil). Korrekturen in `berndeutsch.json/korrekturen_user` (Vorrang): ou(≠au)·Parfüm·angers·äbe·hüt·hütztags·schribä·lehrä·chani·haut(=halt)·alegge(≠aalegge). Pflege-Reel neu gerendert (kyrill. Zeichen weg).
+- **Hooks erweitert** (winner_hooks): Value/«30-Tage»/«Stopp»/«POV» (Research 2026). Pixel = User am Weekend.
+
 ## 🎉 2026-06-16 (ABEND — Worker live + Shop-Struktur + Autonomie-Upgrade)
 - **Cloudflare-Skills in Claude Code installiert** → künftige Sessions deployen den Worker selbst (kein PowerShell).
 - **luxe-poster live + autonom** (Cron, KV fest in wrangler.toml, Handy-1-Tap verifiziert). Code committet: `&health`, `&dedupe` (FB-Doppel löschen), Text-Stories → brauchen 1 sauberen Deploy (git pull DANN deploy).
