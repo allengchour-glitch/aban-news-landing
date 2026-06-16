@@ -138,6 +138,16 @@
   **Bewusst NICHT FR/IT:** DACH-Finanz-Artikel (etf/inflation/altersvorsorge/geld-und-ki), Sales-/Infra-Seiten
   (founding/about/faq/api/archive/dossiers/empfehlen). **→ Die universellen Tools + Finder + Vergleiche +
   Branchen-Hubs sind komplett viersprachig; abannews-Kern-Assets mehrsprachig erschoepft.**
+- **Welle 11 (16.06.) — FR+IT der wertvollen Content-Seiten (je 34):** Content-Artikel (anti-hype/3d-druck/
+  lifestyle/stimmen/krypto-daten/videos/bullshit-bingo/wie-nutze-ich-ki), universelle Finanz-Guides (etf/
+  inflation/krypto/notgroschen/sparplan/trading/passives-einkommen/ki-abo), Hubs (geld-und-ki, online-tools,
+  maerkte), Generatoren (angebot/mahnung), Audits (ki-audit/hype-detektor/sichtbarkeit-audit/monitor) +
+  Public (ueber-aban/about/press/media-kit/resources/roadmap/sponsoring/faq/brand). 5-Sprachen-hreflang
+  normalisiert, Sitemap komplett, JS byte-identisch. Verifiziert: Konsistenz gruen, 0 Broken-Links.
+  **Bewusst NICHT FR/IT:** DE-Steuer/Recht-Guides (steuer-basics/altersvorsorge/kleinunternehmer/
+  scheinselbststaendigkeit), Roman (the-seam/trilogie), thin/funktional (api/archive/danke-kit/empfehlen/
+  dossiers/ki-studio/shop/founding). **→ Mehrsprachiger Ausbau praktisch erschoepft: alle sinnvollen
+  oeffentlichen Assets DE/EN/FR/IT.**
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
