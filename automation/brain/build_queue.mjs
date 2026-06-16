@@ -129,7 +129,9 @@ function loadReels() {
   });
   // REELS (echte CDN-Videos aus video_queue.csv) + STORIES (Produktbilder als Foto-Story, 24h)
   const reels = loadReels();
-  const stories = goods.slice(0, 8).map(p => ({ type: 'story', image: p.image }));
+  // STORIES = text-tragende Reels (Produktname/Preis/CTA eingebrannt, Safe-Zone) statt nackter Bilder
+  // (User 2026-06-16 „story kein text?"). Lieber KEINE Story als eine ohne Text → nur aus Reels bauen.
+  const stories = reels.slice(0, 8).map(r => ({ type: 'story', video: r.video }));
 
   // MIX interleaven: überwiegend Bilder, jede 3. ein Reel, jede 6. eine Story → alle Formate überall.
   const out = []; let ri = 0, si = 0;

@@ -143,6 +143,23 @@ async function cleanupOldFb(env, cutoff) {
   return { cutoff, fb_total: all.length, deleted, failed, note: failed || old.length === 40 ? "Nochmal aufrufen für weitere." : "Fertig. (IG nur in der App löschbar.)" };
 }
 
+// FB-DOPPEL-POSTS entfernen: gruppiert nach identischer Caption (erste 80 Zeichen), behält den ÄLTESTEN,
+// löscht die Doppelten. ?dedupe=1 (löschen) oder ?dedupe=1&dry=1 (nur zeigen). Cap 40/Aufruf.
+async function dedupeFb(env, doDelete) {
+  const ids = await discoverIds(env);
+  let u = new URL(G(`${ids.page_id}/posts`));
+  u.searchParams.set("fields", "id,message,created_time"); u.searchParams.set("limit", "100"); u.searchParams.set("access_token", ids.page_token);
+  let all = [], next = u.toString();
+  for (let i = 0; i < 6 && next; i++) { const r = await (await fetch(next)).json(); if (r.error) break; all = all.concat(r.data || []); next = r.paging && r.paging.next; }
+  const groups = {};
+  for (const p of all) { const k = (p.message || "").slice(0, 80).trim(); if (!k) continue; (groups[k] = groups[k] || []).push(p); }
+  const dups = [];
+  for (const k in groups) { const g = groups[k].sort((a, b) => (a.created_time < b.created_time ? -1 : 1)); for (let i = 1; i < g.length; i++) dups.push(g[i]); }
+  let deleted = 0;
+  if (doDelete) { for (const p of dups.slice(0, 40)) { const d = await (await fetch(`${G(p.id)}?access_token=${ids.page_token}`, { method: "DELETE" })).json(); if (d.success) deleted++; } }
+  return { scanned: all.length, duplicate_groups: Object.values(groups).filter(g => g.length > 1).length, duplicates_found: dups.length, deleted, dry: !doDelete, sample: dups.slice(0, 10).map(p => ({ id: p.id, msg: (p.message || "").slice(0, 50) })) };
+}
+
 // META-ANALYSE (User „analysiere öfters meta tiktok"): läuft autonom bei JEDEM Cron — der Worker
 // hat den Page-Token. Holt IG+FB-Engagement der letzten Posts, bildet eine Kurz-Zusammenfassung
 // und schreibt sie in ein rollendes KV-Log (insights_log, letzte 14). Lesen via ?insights=1.
@@ -309,6 +326,8 @@ export default {
     if (setq) { await env.LUXE_KV.put("queue_url", setq); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url_set: setq, cursor: 0 }); }
     const clean = u.searchParams.get("cleanup");
     if (clean) return Response.json(await cleanupOldFb(env, clean).catch((e) => ({ error: String(e) })));
+    // FB-Doppel-Posts entfernen (?dedupe=1 löschen · ?dedupe=1&dry=1 nur anzeigen)
+    if (u.searchParams.get("dedupe")) return Response.json(await dedupeFb(env, !u.searchParams.get("dry")).catch((e) => ({ error: String(e) })));
     // EINEN bestimmten FB-Post löschen (Handy-Tap): …/?key=…&del=<POST_ID>  (sicher: nur diese eine ID)
     const del = u.searchParams.get("del");
     if (del) { const ids = await discoverIds(env); const d = await (await fetch(`${G(del)}?access_token=${ids.page_token}`, { method: "DELETE" })).json(); return Response.json({ deleted: del, result: d }); }
