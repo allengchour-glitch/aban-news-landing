@@ -152,6 +152,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <label class="opt"><input type="checkbox" class="cond" value="neu">Neu</label>
       <label class="opt"><input type="checkbox" class="cond" value="gebraucht">Gebraucht</label>
     </div>
+    <div class="fcard"><h4>Schnellfilter (ankreuzen)</h4>
+      <label class="opt"><input type="checkbox" class="qf" data-f="img">🖼️ Nur mit Bild</label>
+      <label class="opt"><input type="checkbox" class="qf" data-f="price">🏷️ Nur mit Preis</label>
+    </div>
     <div class="fcard"><h4>Preis (CHF)</h4>
       <div style="display:flex;gap:8px;align-items:center"><input id="pmin" class="txt" type="number" min="0" placeholder="von" style="width:50%"><span>–</span><input id="pmax" class="txt" type="number" min="0" placeholder="bis" style="width:50%"></div>
     </div>
@@ -211,8 +215,10 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function toggleMerk(id){id=String(id);var s=merkSet(),i=s.indexOf(id);if(i>=0)s.splice(i,1);else s.push(id);try{localStorage.setItem(MKEY,JSON.stringify(s))}catch(e){}renderSelbar()}
   function renderSelbar(){var b=$("#selbar");if(!b)return;var n=merkSet().length;b.hidden=!n;if(n){$("#selcnt").textContent=n;$("#selShow").textContent=merkOnly?"Alle zeigen":"Anzeigen"}}
   function skeleton(){grid.innerHTML=Array(7).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:50%"></div><div class="ln" style="width:92%"></div></div>'}).join("");statusEl.hidden=true;}
-  $("#cats").innerHTML='<label class="opt"><input type="radio" name="kat" value="" checked>Alle Kategorien</label>'+
-    CATS.map(function(c){return '<label class="opt"><input type="radio" name="kat" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
+  $("#cats").innerHTML='<p style="font-size:.74rem;color:var(--muted);margin:-2px 0 6px">Mehrere ankreuzen möglich</p>'+
+    CATS.map(function(c){return '<label class="opt"><input type="checkbox" class="catbox" value="'+esc(c)+'">'+esc(c)+'</label>'}).join("");
+  function catSet(){return Array.prototype.map.call(document.querySelectorAll(".catbox:checked"),function(c){return c.value})}
+  function primaryKat(){var s=catSet();return s.length===1?s[0]:""}
   function contactHtml(k){var v=esc(k);var mail=/^[^@\s]+@[^@\s]+$/.test(k);return mail?('<a class="c" href="mailto:'+v+'" style="text-decoration:none;display:inline-block">✉️ '+v+'</a>'):('<span>'+v+'</span>')}
   // Schweizer Preis (CHF) aus Freitext: "CHF 1'850.–", "1850.-", "Fr. 2'400" -> 1850 / 2400
   function chfNum(p){var s=String(p||"").replace(/['’\s]/g,"");var m=s.match(/(\d{2,})(?:[.,]\-)?/);return m?parseInt(m[1],10):NaN}
@@ -222,8 +228,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     if(loc)items=items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0});
     var typ=(document.querySelector('input[name="typ"]:checked')||{}).value||"";
     if(typ)items=items.filter(function(it){return String(it.typ||"Angebot")===typ});
+    var cats=catSet();
+    if(cats.length)items=items.filter(function(it){return cats.indexOf(it.kat||"Sonstiges")>=0});
     var conds=Array.prototype.map.call(document.querySelectorAll(".cond:checked"),function(c){return c.value});
     if(conds.length)items=items.filter(function(it){var z=String(it.zustand||"").toLowerCase();return conds.some(function(c){return z.indexOf(c)>=0})});
+    var qf=Array.prototype.map.call(document.querySelectorAll(".qf:checked"),function(c){return c.dataset.f});
+    if(qf.indexOf("img")>=0)items=items.filter(function(it){return !!it.bild||!!it.emoji});
+    if(qf.indexOf("price")>=0)items=items.filter(function(it){return !!String(it.preis||"").trim()});
     var lo=parseFloat($("#pmin").value),hi=parseFloat($("#pmax").value);
     if(!isNaN(lo))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n>=lo});
     if(!isNaN(hi))items=items.filter(function(it){var n=chfNum(it.preis);return isNaN(n)?false:n<=hi});
@@ -237,10 +248,11 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     function add(l,clr){parts.push({l:l,clr:clr})}
     var q=$("#q").value.trim();if(q)add("🔍 "+q,function(){$("#q").value="";load()});
     var loc=$("#loc").value.trim();if(loc)add("📍 "+loc,function(){$("#loc").value="";render(raw)});
-    if(curKat)add("📂 "+curKat,function(){curKat="";var f=document.querySelector('input[name="kat"][value=""]');if(f)f.checked=true;load()});
+    Array.prototype.forEach.call(document.querySelectorAll(".catbox:checked"),function(cb){add("📂 "+cb.value,function(){cb.checked=false;curThing=-1;renderThings();load();renderPortals()})});
     var typ=(document.querySelector('input[name="typ"]:checked')||{}).value||"";
     if(typ)add(typ==="Gesuch"?"🔎 Gesuche":"📦 Angebote",function(){var t=document.querySelector('input[name="typ"][value=""]');if(t)t.checked=true;render(raw)});
     Array.prototype.forEach.call(document.querySelectorAll(".cond:checked"),function(cb){add(cb.value.charAt(0).toUpperCase()+cb.value.slice(1),function(){cb.checked=false;render(raw)})});
+    Array.prototype.forEach.call(document.querySelectorAll(".qf:checked"),function(cb){add(cb.parentNode.textContent.trim(),function(){cb.checked=false;render(raw)})});
     var lo=$("#pmin").value,hi=$("#pmax").value;if(lo||hi)add("CHF "+(lo||"0")+"–"+(hi||"∞"),function(){$("#pmin").value="";$("#pmax").value="";render(raw)});
     if(!parts.length){c.hidden=true;c.innerHTML="";return}
     c.hidden=false;
@@ -272,13 +284,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     Array.prototype.forEach.call(document.querySelectorAll(".card button.c:not([disabled])"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
   }
   function showDemoBanner(on){var b=$("#demoBanner");if(b)b.hidden=!on}
-  function demoFiltered(){var q=$("#q").value.trim().toLowerCase();
+  function demoFiltered(){var q=$("#q").value.trim().toLowerCase();var cats=catSet();
     return DEMO.filter(function(it){
-      if(curKat&&it.kat!==curKat)return false;
+      if(cats.length&&cats.indexOf(it.kat)<0)return false;
       if(q&&(it.titel+" "+it.beschreibung+" "+it.kat).toLowerCase().indexOf(q)<0)return false;
       return true;});}
-  function load(){var q=$("#q").value.trim();cntEl.textContent="Lade …";skeleton();
-    fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(curKat)).then(function(r){return r.json()}).then(function(d){
+  function load(){var q=$("#q").value.trim();curKat=primaryKat();cntEl.textContent="Lade …";skeleton();
+    fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(primaryKat())).then(function(r){return r.json()}).then(function(d){
       var items=d.items||[];
       if(d.demo||!items.length){var dm=demoFiltered();
         if(dm.length){isDemo=true;showDemoBanner(true);raw=dm;render(raw);return}
@@ -289,17 +301,18 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#go").addEventListener("click",function(e){e.preventDefault();load()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
   $("#loc").addEventListener("input",function(){render(raw);renderPortals()});
-  $("#cats").addEventListener("change",function(e){if(e.target.name==="kat"){curKat=e.target.value;curThing=-1;renderThings();load();renderPortals()}});
-  document.addEventListener("change",function(e){if(e.target&&(e.target.name==="typ"||e.target.classList.contains("cond"))){render(raw)}});
+  $("#cats").addEventListener("change",function(e){if(e.target.classList.contains("catbox")){curThing=-1;renderThings();load();renderPortals()}});
+  document.addEventListener("change",function(e){if(e.target&&(e.target.name==="typ"||e.target.classList.contains("cond")||e.target.classList.contains("qf"))){render(raw)}});
   ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",function(){render(raw)})});
   $("#sort").addEventListener("change",function(){render(raw)});
   $("#chips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
     if(b.dataset.all){$("#reset").click();return}
     var i=+b.dataset.i;if(window.__chip&&window.__chip[i])window.__chip[i]()});
   $("#reset").addEventListener("click",function(){$("#q").value="";$("#loc").value="";$("#pmin").value="";$("#pmax").value="";$("#sort").value="rel";curKat="";
-    var f=document.querySelector('input[name="kat"]');if(f)f.checked=true;
+    Array.prototype.forEach.call(document.querySelectorAll(".catbox"),function(c){c.checked=false});
     var t=document.querySelector('input[name="typ"][value=""]');if(t)t.checked=true;
     Array.prototype.forEach.call(document.querySelectorAll(".cond"),function(c){c.checked=false});
+    Array.prototype.forEach.call(document.querySelectorAll(".qf"),function(c){c.checked=false});
     curThing=-1;if(typeof renderThings==="function")renderThings();if(typeof renderPortals==="function")renderPortals();load()});
 
   function openSheet(){sidebar.classList.add("open");sheetbg.classList.add("show");document.body.style.overflow="hidden"}
@@ -326,8 +339,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function pickThing(i){
     var t=THINGS[i];if(!t)return;curThing=i;
     $("#q").value=t.q||"";
-    curKat=t.kat||"";
-    Array.prototype.forEach.call(document.querySelectorAll('input[name="kat"]'),function(r){r.checked=(r.value===curKat)});
+    Array.prototype.forEach.call(document.querySelectorAll('.catbox'),function(cb){cb.checked=(!!t.kat&&cb.value===t.kat)});
     renderThings();load();renderPortals();
     $("#go").scrollIntoView({behavior:"smooth",block:"nearest"});
   }
@@ -373,7 +385,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   // Deep-Link: ?q= / ?kat= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uk=sp.get("kat"),ul=sp.get("loc");
     if(uq)$("#q").value=uq; if(ul)$("#loc").value=ul;
-    if(uk){curKat=uk;Array.prototype.forEach.call(document.querySelectorAll('input[name="kat"]'),function(r){if(r.value===uk)r.checked=true})}})();
+    if(uk){curKat=uk;Array.prototype.forEach.call(document.querySelectorAll('.catbox'),function(cb){if(cb.value===uk)cb.checked=true})}})();
   load();
 })();
 </script>

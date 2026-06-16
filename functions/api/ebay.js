@@ -122,6 +122,20 @@ export async function onRequestGet({ request, env }) {
         return sort === "price" ? x - y : y - x;
       });
     }
+    // Fahrzeug-Feinfilter (Jahr ab / km bis) — eBay liefert km/Baujahr nicht strukturiert,
+    // daher aus dem Titel geparst. Mehrdeutige (nicht erkennbare) Treffer bleiben drin,
+    // damit der Filter nicht alle Resultate verschluckt.
+    const yearFrom = parseInt(p.get("yearFrom") || "", 10);
+    const kmMax = parseInt(p.get("kmMax") || "", 10);
+    const parseYear = (t) => { const m = String(t).match(/\b(19[89]\d|20[0-3]\d)\b/); return m ? parseInt(m[1], 10) : NaN; };
+    const parseKm = (t) => {
+      const s = String(t).toLowerCase().replace(/['’.\s](?=\d{3}\b)/g, "");
+      let m = s.match(/(\d{4,6})\s*km/); if (m) return parseInt(m[1], 10);
+      m = s.match(/(\d{1,3})\s*t\.?\s*km/); if (m) return parseInt(m[1], 10) * 1000;
+      return NaN;
+    };
+    if (!isNaN(yearFrom)) items = items.filter((it) => { const y = parseYear(it.title); return isNaN(y) ? true : y >= yearFrom; });
+    if (!isNaN(kmMax)) items = items.filter((it) => { const k = parseKm(it.title); return isNaN(k) ? true : k <= kmMax; });
     items.forEach((it) => { delete it._pv; });
     return json({ demo: false, currency, items: items });
   } catch (e) {
