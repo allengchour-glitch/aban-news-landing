@@ -140,9 +140,23 @@ function loadReels() {
   });
   const counts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
 
-  if (DRY) { console.log(JSON.stringify(out.slice(0, 5), null, 2)); console.log(`… ${out.length} Posts (dry): ${JSON.stringify(counts)}`); process.exit(0); }
+  // 🛡️ DEDUP-GARANTIE (User 2026-06-16 „doppelt bilder"): dieselbe Bild-/Video-URL darf NIE
+  // zweimal im Grid (Bild/Reel) stehen → sonst doppelte Feed-Posts. Stories (ephemer, nicht im
+  // Grid) dürfen ein Produkt erneut zeigen, aber nicht sich selbst doppeln.
+  const seenGrid = new Set(), seenStory = new Set();
+  const deduped = out.filter((x) => {
+    const u = x.image || x.video || '';
+    if (!u) return true;
+    if (x.type === 'story') { if (seenStory.has(u)) return false; seenStory.add(u); return true; }
+    if (seenGrid.has(u)) return false; seenGrid.add(u); return true;
+  });
+  const removed = out.length - deduped.length;
+  out.length = 0; out.push(...deduped);
+  const dcounts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
+
+  if (DRY) { console.log(JSON.stringify(out.slice(0, 5), null, 2)); console.log(`… ${out.length} Posts (dry, ${removed} Dubletten entfernt): ${JSON.stringify(dcounts)}`); process.exit(0); }
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
-  console.log(`✅ Autopost-Queue neu gebaut: ${out.length} Posts (Mix) → ${path.relative(ROOT, OUT)}`);
-  console.log(`   Formate: ${JSON.stringify(counts)} (Bilder+Reels+Stories, alle CH-weit)`);
+  console.log(`✅ Autopost-Queue neu gebaut: ${out.length} Posts (Mix, ${removed} Dubletten entfernt) → ${path.relative(ROOT, OUT)}`);
+  console.log(`   Formate: ${JSON.stringify(dcounts)} (Bilder+Reels+Stories, alle CH-weit, KEINE Grid-Dubletten)`);
   console.log('   ⚠️ Nach Queue-Änderung: `wrangler deploy` (Worker bäckt queue.json beim Deploy ein).');
 })();
