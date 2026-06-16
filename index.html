@@ -369,6 +369,10 @@
           <a href="/job-finden-schweiz.html" style="color:#fff">Job</a></p>
       </div>
       <div style="margin-top:20px">
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px"><h3 style="font-size:1.1rem;margin:0">🛍️ Aus dem Shop</h3><a href="/luxestyle.html" style="margin-left:auto;font-size:.85rem;font-weight:700">Zum Shop →</a></div>
+        <div id="homeShop" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px"></div>
+      </div>
+      <div style="margin-top:20px">
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px"><h3 style="font-size:1.1rem;margin:0">🔥 Top-Angebote</h3><a href="/angebote-suche.html" style="margin-left:auto;font-size:.85rem;font-weight:700">Alle Angebote →</a></div>
         <div id="homeDeals" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px"></div>
       </div>
@@ -384,6 +388,9 @@
       var d=document.getElementById("homeDeals");
       if(d){fetch("/api/ebay?limit=6&q=Angebote").then(function(r){return r.json()}).then(function(x){var it=(x.items||[]).slice(0,6);if(!it.length){d.parentNode.style.display="none";return}
         d.innerHTML=it.map(function(p){var img=p.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(p.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';var href=(p.url&&p.url!=="#")?esc(p.url):"#";return '<a href="'+href+'" target="_blank" rel="sponsored nofollow noopener" style="background:#fff;border-radius:11px;overflow:hidden;text-decoration:none;color:#1f2937;display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(p.title)+'</div><div style="color:#b45309;font-weight:800;font-size:.9rem">'+esc(p.price||"")+'</div></div></a>'}).join("")}).catch(function(){d.parentNode.style.display="none"});}
+      var sh=document.getElementById("homeShop");
+      if(sh){fetch("/api/luxestyle?limit=6").then(function(r){return r.json()}).then(function(x){var it=(x.items||[]).slice(0,6);if(!it.length){sh.parentNode.style.display="none";return}
+        sh.innerHTML=it.map(function(p){var img=p.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(p.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛍️</div>';return '<a href="'+esc(p.url)+'" target="_blank" rel="noopener" style="background:#fff;border-radius:11px;overflow:hidden;text-decoration:none;color:#1f2937;display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(p.title)+'</div><div style="color:#b45309;font-weight:800;font-size:.9rem">'+esc(p.price||"")+'</div></div></a>'}).join("")}).catch(function(){sh.parentNode.style.display="none"});}
       var j=document.getElementById("homeJobs");
       if(j){fetch("/api/jobs?q=").then(function(r){return r.json()}).then(function(x){var it=(x.items||[]).slice(0,4);if(!it.length){j.parentNode.style.display="none";return}
         j.innerHTML=it.map(function(o){var href=(o.url&&o.url!=="#")?esc(o.url):"#";return '<a href="'+href+'" target="_blank" rel="noopener nofollow" style="background:#fff;border-radius:11px;padding:12px 13px;text-decoration:none;color:#1f2937;display:block"><div style="font-weight:700;font-size:.9rem;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(o.title)+'</div><div style="font-size:.78rem;color:#6b7280">'+esc([o.company,o.location].filter(Boolean).join(" · "))+(o.remote?" · 🏠":"")+'</div></a>'}).join("")}).catch(function(){j.parentNode.style.display="none"});}
