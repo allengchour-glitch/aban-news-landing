@@ -54,6 +54,16 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — 💎 PREMIUM-DROP „von allem" (+3, alle highend → Luxus-Collection):**
+- 👜 **Michael Kors** Schultertasche «Leida» Blau (CHF 598, compareAt 649) — Taschen.
+- 💎 **Thomas Sabo** Halskette Sterling-Silber (CHF 598/649) — Schmuck.
+- ⌚ **Certina** Caimano Ø 38 mm, Swiss Made (CHF 499/549) — Uhren (Herren/Damen).
+- Zusammen mit der Tissot Lovely (Damenuhr, Vorrunde) deckt der Premium-Bereich jetzt **Tasche · Schmuck · Herren- & Damenuhr** ab.
+- **Premium-Quellen (bestätigt, EAN+Marke vorhanden, jederzeit nach-sourcebar via `products.json?parentTaxonomy=` + `manufacturers.json`):**
+  Schmuck **19662** (26 560 Stk: Thomas Sabo/Versace/Chopard/Philipp Plein/Porsche Design …), Uhren **19667** (8 532:
+  Tissot/Certina/Hamilton/Citizen/Seiko/Jaguar/Lotus …), Taschen **19654** (1 585: Michael Kors/Laura Ashley/Mia Tomazzi …).
+  Methode: `inShopsPrice` als RRP nehmen (compareAt), `highend`+`premium` taggen → landet in Smart-Collection „Luxus · High-End".
+
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ HAUSTIER KOMPLETT AUSGESCHÖPFT: +26 weitere (Summe ~498):**
 - Offset 78 (+7) & Offset 98 (+19), 0 Dubletten. Marken: **Hunter** (Geschirre/Halsbänder/Leckerli-Tasche), **Red Dingo**
   (Geschirre/Leinen/Halsbänder/Mantel), **Flexi** (Roll-Leine), **Gloria** (Leinen/Plüsch), **Nylabone** (Kauspielzeug),
