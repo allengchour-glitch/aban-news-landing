@@ -3,6 +3,14 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🎉 2026-06-16 (09:24 — GOOGLE MERCHANT ENTSPERRT!)
+- **✅ Misrepresentation-Review ABGESCHLOSSEN & Sperre AUFGEHOBEN** (E-Mail Google Merchant: „issue no longer appears").
+  Der Policy-Fix (E-Mail-Tippfehler + Rückgaberichtlinie + Verifizierung) hat gewirkt. Konto-Block weg. Merchant-ID 5797470070.
+- **➡️ JETZT (User, Merchant Center):** (1) **Free Listings AN** (Wachstum → Listings → „Surfaces across Google"). (2) Produkte-Tab:
+  Genehmigungen kommen in 3–5 T. (3) **Domain:** luxestyle.ch verifizieren + die `.com.co`-Domain klären (Feed-Produkt-URLs müssen
+  zur beanspruchten Domain passen!). (4) Zielland auf NUR Schweiz begrenzen (nannte Belgium/France/Switzerland) + 3 Ads-Konten → 1.
+- **Bedeutung:** gratis Google-Shopping-Reichweite wird freigeschaltet = neuer Traffic-Kanal Richtung 1. Kunde.
+
 ## 🆕 2026-06-16 (NACHT 9 — Hauptmenü per API: neue Kategorien verlinkt)
 - **🧭 main-menu per `menuUpdate` aktualisiert** (Struktur 1:1 + 3 neue Links): 🧢 Caps & Hüte + 🌸 Parfum & Düfte (Frauen & Herren), 💧 Wasserfester Schmuck (Schmuck). Sonnenbrillen/Ringe/Ohrringe/Halsketten waren schon verlinkt. Voll autonom, kein Customizer nötig.
 - **⚠️ Domain-Fund:** Kundenkonto-Links + Klaviyo nutzen `luxestyle.com.co` → Shopify-Primärdomain (Einstellungen→Domains) prüfen — möglicher Trust/SEO/Tracking-Leak.

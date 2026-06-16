@@ -56,7 +56,7 @@
 - **✅ POLICIES GEFIXT (nicht mehr als offen führen):** beide E-Mail-Tippfehler korrigiert (Versand-Policy + AGB §8 →
   `info@luxestyle.ch`), alle 7 Policies konsistent, live via MCP verifiziert. (MCP kann Policies NICHT schreiben — `write_legal_policies`
   fehlt; der Fix lief manuell durch den User. Tool `automation/fix_policies.mjs` liegt bereit für die CI-Route, falls Actions je zurückkommt.)
-- **✅ GOOGLE MERCHANT RE-REVIEW ABGESCHICKT (15.06.) — NICHT nochmal beantragen** (resettet Timer, Re-Reviews begrenzt).
+- **🎉 GOOGLE MERCHANT ENTSPERRT (16.06. 09:24): Misrepresentation-Review abgeschlossen, Sperre weg** (Policy-Fix wirkte). JETZT: Free Listings AN + Domain luxestyle.ch verifizieren (+ .com.co klären) + Zielland nur CH. — (vorher: Re-Review abgeschickt 15.06.) (resettet Timer, Re-Reviews begrenzt).
   Vorher: Rückgaberichtlinie im Merchant Center konfiguriert (30 T/per Post/No-cost/Refund 14 T/CHF/nur CH), Business-Info
   verifiziert. Feed 34.9K→13.4K (CH-only wirkt). **NACH Freigabe (Notiz):** Google-Kanal-Zielland auf NUR Schweiz (nennt noch
   „Belgium, France, Switzerland") + 3 verknüpfte Google-Ads-Konten auf eines reduzieren.
