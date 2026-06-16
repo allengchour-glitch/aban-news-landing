@@ -3,13 +3,16 @@ main = "src/worker.js"
 compatibility_date = "2026-06-01"
 
 # --- Cron Triggers (UTC) — laufen unabhängig von GitHub Actions ---
+#   06:45        → SHOP-WARTUNG (SEO-Autofix neuer Produkte + Bild-QA + Health-Report → KV; src/shop.js)
 #   04:30        → ENHANCE (1 Bild veredeln, in Queue legen)
 #   05:15 + 05:25 → REEL    (Luma-Video starten + pollen; 2. Lauf resümiert lange Renders)
 #   09:00 + 17:00 → POST    (nächsten Queue-Eintrag — Bild ODER Reel — an IG/FB/Threads)
-# Cron-Trigger (Social-Autopilot) — DEAKTIVIERT bis Meta/Gemini-Keys gesetzt sind (sonst eh no-op).
+# Die SHOP-WARTUNG braucht NUR Shopify-Creds (s.u.), nicht die Meta/Gemini-Keys → separat aktivierbar.
+# Nur Shop-Wartung:        crons = ["45 6 * * *"]
+# Alles (Social + Shop):   crons = ["45 6 * * *", "30 4 * * *", "15 5 * * *", "25 5 * * *", "0 9 * * *", "0 17 * * *"]
 # Zum Aktivieren einkommentieren + erneut deployen. Für Gelato-Fulfillment NICHT nötig (Webhook = fetch).
 # [triggers]
-# crons = ["30 4 * * *", "15 5 * * *", "25 5 * * *", "0 9 * * *", "0 17 * * *"]
+# crons = ["45 6 * * *"]
 
 # --- R2: speichert + liefert die veredelten JPGs öffentlich aus ---
 # DEAKTIVIERT bis R2 im CF-Dashboard freigeschaltet ist (nur für Social-Bild/Video-Hosting nötig,
@@ -43,8 +46,18 @@ LUMA_DURATION = "5s"
 # Die SKU→productUid-Map kommt aus KV ('gelato_map', JSON) ODER aus der Var GELATO_MAP (kleine Maps).
 GELATO_DRAFT = "1"
 
+# --- Shop-Wartung (src/shop.js, Cron 06:45) ---
+# SHOP_AUTOPILOT_LIVE="1" → schreibt SEO automatisch (sonst nur Report in KV 'shop_health').
+# SHOP_SCAN="200"         → wie viele zuletzt geänderte aktive Produkte gescannt werden.
+SHOP_AUTOPILOT_LIVE = "0"
+SHOP_SCAN = "200"
+
 # Secrets NICHT hier — per `wrangler secret put <NAME>` setzen:
 #   GEMINI_API_KEY  IG_USER_ID  IG_ACCESS_TOKEN  FB_PAGE_ID  FB_PAGE_ACCESS_TOKEN
 #   THREADS_ACCESS_TOKEN (optional)  LUMA_API_KEY (optional, für Reels)  RUN_KEY (für manuellen /run-Test)
 #   GELATO_API_KEY (Gelato-Fulfillment)  SHOPIFY_WEBHOOK_SECRET (Webhook-Signatur prüfen)
 #   STRIPE_SECRET_KEY (ohne-Shopify-Checkout)  STRIPE_WEBHOOK_SECRET (Stripe-Webhook-Signatur)
+#   --- für die Shop-Wartung (eines von beiden): ---
+#   SHOPIFY_ADMIN_TOKEN (shpat_/shpca_…)   ODER   SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET
+#   SHOPIFY_SHOP setzt du als [vars] oder Secret (z. B. au3j0y-hq.myshopify.com)
+#   TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID (optional, für täglichen Wartungs-Digest)

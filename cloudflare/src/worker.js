@@ -23,6 +23,7 @@ import { PRODUCTS } from './products.js';
 import { runReel, postVideoAll } from './video.js';
 import { handleOrderWebhook } from './gelato.js';
 import { createCheckout, handleStripeWebhook } from './stripe.js';
+import { runMaintenance } from './shop.js';
 
 const CAPTIONS = [
   '{label} ✨ Premium-Look zum fairen Preis. Code WELCOME10 = -10% · 🔗 {url}',
@@ -201,8 +202,10 @@ async function runPost(env, log){
 export default {
   async scheduled(event, env, ctx){
     const log = [];
-    // Cron-Routing nach Minute: 30→Enhance (04:30), 15/25→Reel (05:15/05:25), sonst→Post (09:00/17:00).
-    if(/^30 /.test(event.cron)) await runEnhance(env, log);
+    // Cron-Routing nach Minute: 45→Shop-Wartung (06:45), 30→Enhance (04:30),
+    // 15/25→Reel (05:15/05:25), sonst→Post (09:00/17:00).
+    if(/^45 /.test(event.cron)) await runMaintenance(env, log);
+    else if(/^30 /.test(event.cron)) await runEnhance(env, log);
     else if(/^(15|25) /.test(event.cron)) await runReel(env, log);
     else await runPost(env, log);
     console.log(`[cron ${event.cron}] ${log.join(' · ')}`);
@@ -259,12 +262,15 @@ export default {
       const log = [];
       if(task==='enhance') await runEnhance(env, log);
       else if(task==='reel') await runReel(env, log);
+      else if(task==='shop') await runMaintenance(env, log);
       else await runPost(env, log);
       return Response.json({ task, log });
     }
     if(url.pathname === '/health' || url.pathname === '/'){
       const q = await getQueue(env);
-      return Response.json({ ok:true, products:PRODUCTS.length, queue_ready:q.filter(x=>x.status==='ready').length, queue_total:q.length });
+      let shop = null;
+      try { shop = env.STATE ? JSON.parse(await env.STATE.get('shop_health') || 'null') : null; } catch {}
+      return Response.json({ ok:true, products:PRODUCTS.length, queue_ready:q.filter(x=>x.status==='ready').length, queue_total:q.length, shop });
     }
     return new Response('LuxeStyle Autopilot', { status:200 });
   },
