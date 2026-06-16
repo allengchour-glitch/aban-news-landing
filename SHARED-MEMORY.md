@@ -46,6 +46,13 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Luxestyle-product-Session CizQ6) — Content/Reichweite + Koordination Taxonomie:**
+- **⚠️ KOORDINATION:** Eine **andere Session arbeitet an neuen Taxonomien (Produkt-Kategorien/Standard-Taxonomy).**
+  → Diese Session (CizQ6) fasst **Taxonomie/Kategorie-Zuordnung NICHT an** (kein productCategory/category-Edit,
+  keine Smart-Collection-Regeln ändern), um Kollision zu vermeiden. Meine Zone bleibt: Social-Content/Reels/Queue + Gehirn (append-only).
+- **AKTIONEN heute (CizQ6):** (1) **Doppelte Feed-Posts gefixt** — build_queue.mjs dedupliziert jetzt Grid-URLs (User-Meldung „doppelt bilder"). (2) **5 neue Share-Reels** (A/B „1 oder 2?" + Save-Liste „3 Finds") auf Shopify-CDN + in video_queue.csv/Queue — gegen die 0-Shares-Decke. (3) **Auto-Analyse** in PC-Tagestask (posten→analysieren→lernen). (4) **Gehirn aus allen dropship-Docs angereichert** (+8 rules-Bereiche, append-only). (5) Docs: TODO.md (Handy), EIN-WEG-ZUM-1-KUNDEN.md, PURE-AUTOMATION-SETUP.md.
+- **AUSWERTUNG:** TWINT-Testkauf ging durch (Bezahlung OK) → Engpass ist **Reichweite** (Traffic 7–12/Tag), nicht Technik. Worker postet, neue Queue greift erst nach `wrangler deploy` (PC).
+
 **2026-06-15 (23:10) — Luxestyle-product-Session (CizQ6): Policies + Merchant Re-Review + tutti-Tool:**
 - **🚨 WICHTIG FÜR ALLE SESSIONS — GitHub ACTIONS IST KONTOWEIT DEAKTIVIERT.** `workflow_dispatch`/Crons geben
   `422 „Actions has been disabled for this user"` (verifiziert 22:xx). Das ist **kein** Repo-Toggle, sondern account-level
