@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 5 — Statement-Ohrringe/Creolen gefüllt)
+- **💎 Ohrringe gefüllt:** 4 neue (Kätzchen «Minou» 925, Herz-Trockenblumen «Fleur», Creolen «Cascade», Statement «Étincelle»),
+  Bild-QA'd (2 mit Overlay-Text verworfen), CHF 22.90–27.90, ACTIVE/6 Kanäle, Tag `ohrringe`. **💎 Ohrringe-Collection jetzt 55**
+  (Regel-Fix zog auch ~12 vorher unsortierte „Ohrhänger" rein = Bonus-Aufräumung). 3 in Social/Worker-Queue.
+
 ## 🆕 2026-06-16 (NACHT 4 — Parfum-Kategorie + Kategorisierungs-Fixes)
 - **🌸 PARFUM-KATEGORIE ERSTELLT** (`parfum-duefte`): es gab ~48 Marken-Parfums (D&G/Hugo Boss/CK/Kenzo/Elie Saab/YSL/Lancôme/
   Michael Kors/Tommy/Police/Tous …) aber KEINE Parfum-Kollektion → jetzt Smart-Collection **„🌸 Parfum & Düfte"** (Rule TYPE=Parfum,
