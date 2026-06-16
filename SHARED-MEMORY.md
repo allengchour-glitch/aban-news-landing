@@ -54,6 +54,15 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — 💎 PREMIUM-AUSWAHL VEREDELT + ECHTER SCHMUCK (+7):**
+- **Collection-Text + SEO** neu: nennt jetzt die Designer-/Swiss-Marken (Tissot/Certina/Seiko/Citizen/Jaguar/MK/Versace/Chopard/
+  Porsche Design/Thomas Sabo) → besseres Google-Ranking. (Hero-Bild war bereits gesetzt, belassen.)
+- **+7 echte Marken-Schmuckstücke** (namensgeprüft, KEINE Brillen): **Guess** Halsketten (45/50 cm), **Thomas Sabo** Armbänder
+  (Multicolor/19 cm), **Lotus** Anhänger-Ketten (Silber/Gold), **Viceroy** Anhänger-Kette. Alle `highend`+`premium`+`schmuck` → Premium-Auswahl.
+- **Schmuck-Filter-Rezept (wichtig wg. Taxonomie-19662-Brillen-Mix):** Marken-Whitelist (Guess/Thomas Sabo/Lotus/Viceroy/Festina/
+  Police/Tous …) + **Namens-Regex** `collar|cadena|colgante|pulsera|anillo|pendiente` und `gafa|sol` ausschliessen → nur echter Schmuck.
+- Premium-Welt total heute: **19 Luxus-Stücke** (12 Vorrunden + 7 Schmuck). Katalog ~516.
+
 **2026-06-16 (Katalog-Session, BigBuy) — 💎 PREMIUM-KOLLEKTION aufgebaut (+8, Collection „💎 Premium-Auswahl" = 27 Produkte):**
 - Uhren: **Seiko** SRPH75K1 (H, 550), **Citizen** Damenuhr (525), **Jaguar** J980/4 Swiss (H, 550). (Hamilton war „Reacondicionado/refurbished" → bewusst NICHT angelegt; nur Neuware!)
 - Designer-Eyewear: **Versace** Damen Ø64 (560), **Chopard** Herren Ø59 (595), **Porsche Design** P8942 (595).
