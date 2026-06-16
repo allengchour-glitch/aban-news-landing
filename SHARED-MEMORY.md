@@ -54,6 +54,20 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session) — 🧹 MAUSPAD-/POD-AUFRÄUMUNG (User-Screenshot „zu viel mousepad") + Sport-Taxonomie +8:**
+- **Problem:** 25 POD-Mauspads «…» (Swiss-Edition, `printful_personalized_product`, nur Druck-Design als Bild, z. B. «Haeee» = nur Text)
+  waren mit `gaming`/`buero`/`tech` getaggt → fluteten 🎮 Gaming (87 Produkte) & Büro/Tech. Dazu 1 echtes Produkt (XXL RGB-Rand) + 7 ARCHIVED-Dubletten.
+- **Fix:** (a) Neue Smart-Collection **🖱️ Mauspads** (`handle mauspads`, TAG=`mauspad`, 6 Kanäle, SEO) = **33 Mauspads** an einem Ort.
+  (b) Tags `gaming`/`buero`/`tech`/`Gaming`/`Tech` von den 25 POD-Mauspads entfernt → Gaming 87→**74**, Büro/Tech entlastet. `mauspad` aufs echte Produkt ergänzt.
+  (c) **„Selbst gestalten – alle Produkte"** (`sg-alle`, 688590160257) Regel um `TAG=printful_personalized_product` erweitert (disjunktiv) →
+  fängt jetzt **alle 493 selbstgemachten** statt nur 33 = die Selbstgemacht-Unterkategorie deckt nun ALLE POD.
+- **⚠️ OFFEN (PC-Claude, Bild-KI):** POD-Mauspad-Bilder zeigen nur das flache Druck-Design, KEIN Produkt-Mockup (z. B. «Haeee» = nur „Hä?"-Text).
+  → Mockups rendern (bestehende `pod_*_mockups`-Pipeline) wie bei Shirts/Tassen. **Cloud kann keine Bilder rendern.** Gleiches Muster gilt für viele der 493 POD-Artikel — Bild-QA durch PC-Claude empfohlen.
+- **🏅 Sport-Taxonomie (19756) angezapft (+8 frische Marken):** Deuter Wanderrucksäcke (Trail Pro 31, Futura 23), Deeper START Fischfinder,
+  Huffy Kinderfahrrad, Rebel E-Scooter (blau/weiss), Xiaomi Hanteln, Julbo Sport-Sonnenbrille. Bulk-10er-Hüpfbälle + 1 Refurbished gefiltert.
+  Methode `htax.mjs`: `products.json?parentTaxonomy=<TopID>` + Marken-Dedup + Namensfilter (BAN-Regex Chemie/Nahrung/Refurb) + Detail-Fetch.
+  **Frische Top-Taxonomien für künftige breite Ware:** Schönheit 19650 · Baby 19649 · Büro 19664 · Sport 19756 · Gesundheit 19669.
+
 **2026-06-16 (Katalog-Session, BigBuy) — 👜 PREMIUM-TASCHEN +6 & 🚗 AUTO-NISCHE +3:**
 - **+6 Premium-Taschen** (Taxonomie 19654, alle highend): MK Rucksack Casual Grau (659), Mia Tomazzi (339), Anna Luchini
   Rucksack+Handtasche (je 300), Roberta M (269), Laura Ashley (240). MK „Charlotte Schwarz"-Dublett (S0375206) bewusst übersprungen.
