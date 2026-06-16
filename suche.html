@@ -84,6 +84,10 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
 .sortw select{font-family:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 9px;margin-left:5px;background:#fff;color:var(--ink)}
 .freset{background:none;border:0;color:var(--amber-dk);font-weight:700;cursor:pointer}
 .freset:hover{text-decoration:underline}
+.achips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.achip{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:5px 12px;font-size:.82rem;font-weight:600;color:var(--ink2);cursor:pointer;font-family:inherit}
+.achip:hover{border-color:var(--amber)}
+.achip.clr{color:var(--amber-dk);border-color:var(--amber-dk)}
 .badge2{display:inline-block;font-size:.66rem;font-weight:800;border-radius:6px;padding:2px 7px;margin-bottom:6px;align-self:flex-start}
 .b-ins{background:#e0f2fe;color:#075985}.b-prod{background:#fef3c7;color:#92660a}.b-job{background:#dcfce7;color:#166534}
 .c .d{font-size:.82rem;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:2px 0 8px}
@@ -104,8 +108,8 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     <button class="go" id="go" type="submit">Alles durchsuchen</button>
   </form>
   <div class="quick">
-    <a href="#" data-q="iPhone">iPhone</a><a href="#" data-q="Entwickler">Entwickler</a>
-    <a href="#" data-q="Sofa">Sofa</a><a href="#" data-q="Winterreifen">Winterreifen</a><a href="#" data-q="Marketing">Marketing</a>
+    <a href="#" data-q="Wohnung">🏠 Wohnung</a><a href="#" data-q="Auto">🚗 Auto</a><a href="#" data-q="Velo">🚲 Velo</a>
+    <a href="#" data-q="iPhone">📱 iPhone</a><a href="#" data-q="Sofa">🛋️ Sofa</a><a href="#" data-q="Job">💼 Job</a>
   </div>
 </div></div>
 
@@ -121,6 +125,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
       <label class="sortw">Sortieren<select id="sort"><option value="rel">Relevanz</option><option value="pasc">Preis ↑</option><option value="pdesc">Preis ↓</option></select></label>
       <button class="freset" id="freset" type="button">↺ Zurücksetzen</button></div>
   </div>
+  <div class="achips" id="achips" hidden></div>
   <div class="row" id="grid"></div>
   <div class="empty" id="empty" hidden>Tippe oben ein, was du suchst — wir schauen in allen Quellen gleichzeitig nach.</div>
 </div>
@@ -198,6 +203,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     grid.innerHTML=items.map(card).join("");
     var ni=items.filter(function(x){return x.src==="ins"}).length,np=items.filter(function(x){return x.src==="prod"}).length,nj=items.filter(function(x){return x.src==="job"}).length;
     cntEl.textContent=items.length+" Treffer · 📋 "+ni+" · 🛍️ "+np+" · 💼 "+nj;
+    if(typeof renderActive==="function")renderActive();
   }
 
   function getJobs(q){return fetch("/api/jobs?q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"job",title:it.title||"",price:"",pn:NaN,region:String(it.location||"").toLowerCase(),meta:[it.company,it.location].filter(Boolean).join(" · ")+(it.remote?" · 🏠 Remote":""),desc:"",kat:"",cond:"",url:(it.url&&it.url!=="#")?it.url:"",img:"",emoji:"💼",act:"Zum Job →",ext:true}})}).catch(function(){return []})}
@@ -209,7 +215,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   }).catch(function(){return demoIns(q)})}
 
   function searchAll(){
-    var q=$("#q").value.trim();emptyEl.hidden=true;cntEl.textContent="Suche …";
+    var q=$("#q").value.trim();emptyEl.hidden=true;cntEl.textContent="Suche …";if(typeof syncUrl==="function")syncUrl();
     grid.innerHTML=Array(9).join().split(",").map(function(){return '<div class="skl"></div>'}).join("");
     Promise.all([getIns(q),getProd(q),getJobs(q)]).then(function(res){raw=[].concat(res[0],res[1],res[2]);render()});
   }
@@ -217,13 +223,34 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();searchAll()}});
   document.querySelector(".quick").addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;e.preventDefault();$("#q").value=a.dataset.q;searchAll()});
   function updBadge(){var n=document.querySelectorAll("#fpanel input:checked").length;var b=$("#fbadge");if(b){b.textContent=n;b.hidden=!n}}
-  $("#fpanel").addEventListener("change",function(){updBadge();render()});
+  // Aktive Filter als Chips (einzeln entfernbar)
+  function renderActive(){var box=$("#achips");if(!box)return;var parts=[];
+    var q=$("#q").value.trim();if(q)parts.push({t:'🔍 "'+q+'"',clr:function(){$("#q").value="";searchAll()}});
+    Array.prototype.forEach.call(document.querySelectorAll("#fpanel input:checked"),function(i){
+      parts.push({t:i.parentNode.textContent.trim(),clr:function(){i.checked=false;afterFilter()}})});
+    if(!parts.length){box.hidden=true;box.innerHTML="";return}
+    box.hidden=false;
+    box.innerHTML=parts.map(function(p,idx){return '<button class="achip" data-i="'+idx+'">'+esc(p.t)+' <span aria-hidden="true">×</span></button>'}).join("")+'<button class="achip clr" data-all="1">Alle löschen</button>';
+    window.__ach=parts.map(function(p){return p.clr});}
+  // Suche teilbar/merkbar: Zustand in der URL (Zurück-Button + Link kopieren)
+  var GRP=[["src","#fsrc"],["cat","#fcat"],["reg","#freg"],["pkl","#fpkl"],["cond","#fcond"]];
+  function syncUrl(){var p=new URLSearchParams();var q=$("#q").value.trim();if(q)p.set("q",q);
+    GRP.forEach(function(g){var v=checked(g[1]+" input");if(v.length)p.set(g[0],v.join(","))});
+    if($("#sort").value!=="rel")p.set("sort",$("#sort").value);
+    var qs=p.toString();history.replaceState(null,"",qs?("?"+qs):location.pathname);}
+  function applyUrl(){var sp=new URLSearchParams(location.search);
+    if(sp.get("q"))$("#q").value=sp.get("q");
+    GRP.forEach(function(g){var vals=(sp.get(g[0])||"").split(",").filter(Boolean);if(vals.length)Array.prototype.forEach.call(document.querySelectorAll(g[1]+" input"),function(i){if(vals.indexOf(i.value)>=0)i.checked=true})});
+    if(sp.get("sort"))$("#sort").value=sp.get("sort");}
+  function afterFilter(){updBadge();syncUrl();render();renderActive();}
+  $("#fpanel").addEventListener("change",afterFilter);
+  $("#achips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+    if(b.dataset.all){Array.prototype.forEach.call(document.querySelectorAll("#fpanel input"),function(i){i.checked=false});$("#sort").value="rel";afterFilter();return}
+    var i=+b.dataset.i;if(window.__ach&&window.__ach[i])window.__ach[i]()});
   $("#ftoggle").addEventListener("click",function(){var p=$("#fpanel"),o=p.classList.toggle("open");this.setAttribute("aria-expanded",o?"true":"false")});
-  $("#freset").addEventListener("click",function(){Array.prototype.forEach.call(document.querySelectorAll("#fpanel input"),function(i){i.checked=false});$("#sort").value="rel";updBadge();render()});
+  $("#freset").addEventListener("click",function(){Array.prototype.forEach.call(document.querySelectorAll("#fpanel input"),function(i){i.checked=false});$("#sort").value="rel";afterFilter()});
 
-  var urlQ=new URLSearchParams(location.search).get("q");
-  if(urlQ)$("#q").value=urlQ;
-  searchAll();
+  applyUrl();updBadge();searchAll();
 })();
 </script>
 </body>
