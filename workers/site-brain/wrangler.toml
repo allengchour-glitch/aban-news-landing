@@ -1,6 +1,5 @@
 # 🧠 aban Site-Brain — Live-Gesundheits-Wächter (Cloudflare Cron, gratis, ohne GitHub Actions)
 # Deploy:  cd workers/site-brain && npx wrangler deploy
-# Vorher:  KV-Namespace anlegen + ID unten eintragen (siehe README.md)
 
 name = "aban-site-brain"
 main = "worker.js"
@@ -10,11 +9,15 @@ compatibility_date = "2026-01-01"
 [triggers]
 crons = ["0 */6 * * *"]
 
-[[kv_namespaces]]
-binding = "BRAIN_KV"
-id = "662199893128478e8db247831dd86ee9"
+# KV ist OPTIONAL (nur für Verlauf/Score-History). Der Worker läuft auch ohne.
+# Wer Verlauf will: eigenen Namespace anlegen
+#   npx wrangler kv namespace create BRAIN_KV
+# und hier einkommentieren (NICHT LUXE_KV/INS_KV nehmen — eigener Namespace!):
+# [[kv_namespaces]]
+# binding = "BRAIN_KV"
+# id = "<eigene-id>"
 
 # Secrets per CLI setzen (NICHT hier eintragen):
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN  # Alarm bei Problemen
+#   npx wrangler secret put TELEGRAM_CHAT_ID
 #   npx wrangler secret put TRIGGER_KEY         # optional: schützt den manuellen ?run=1
-#   npx wrangler secret put TELEGRAM_BOT_TOKEN  # optional: Alarm bei Problemen
-#   npx wrangler secret put TELEGRAM_CHAT_ID    # optional
