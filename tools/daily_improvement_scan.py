@@ -32,7 +32,7 @@ EXCLUDE_SUFFIXES = ("page_body.html", "_body.html", ".partial.html", "_fragment.
 
 # Spiegel der Aban-Sperrliste (Quelle: automation/brand-voice-validator-api.py).
 HYPE = [
-    r"\brevolution(?:aer|aere|ar|ary)?\w*", r"\bdisrupt(?:iv|ive|s|ed|ion)?\w*",
+    r"\brevolution(?:aer|aere|ar|ary)?\w*", r"\bdisrupt(?:iv|ive|or)\w*",
     r"\bgame[- ]?changer\w*", r"\bbahnbrech(?:end|ende|ender)\w*",
     r"\beinzigartig\w*", r"\bunglaublich\w*", r"\bwahnsinnig\w*",
     r"\bnext[- ]?level\w*", r"\bcutting[- ]?edge\w*", r"\bworld[- ]?class\w*",
@@ -115,11 +115,23 @@ def scan_page(p: Path, findings: list):
         # Negation/„verboten"-Marker ist Absicht (die Marke entlarvt Hype), kein
         # Verstoß. Prüft die 60 Zeichen direkt vor dem Treffer.
         DEBUNK = re.compile(
-            r'(?:\b(?:kein|keine|ohne|nicht|statt|nie|no|not|banned|verboten|'
-            r'verbannt|tabu|liste)\b|sperrlist|[„“”"»«])', re.I)
+            r'(?:\b(?:kein|keine|ohne|nicht|statt|nie|no|not|without|banned|'
+            r'verboten|verbannt|forbidden|tabu|liste|weniger|versprech\w*|'
+            r'schlagzeile\w*|headline\w*)\b|sperrlist|[„“”"»«])', re.I)
+
+        def _exempt(m):
+            # Zitat-/Debunk-/Listen-Kontext im 120-Zeichen-Fenster davor (z. B.
+            # Verbotswort-Listen, „… weniger um …", „versprechen die Revolution").
+            if DEBUNK.search(text[max(0, m.start() - 120):m.start()]):
+                return True
+            # „10x" direkt vor „Hebel/leverage" ist Trading-Fachbegriff, kein Hype.
+            if m.group(0).lower() == "10x" and re.match(
+                    r"\s*(?:hebel|leverage)", text[m.end():m.end() + 12], re.I):
+                return True
+            return False
+
         hits = sorted(set(
-            m.group(0) for m in HYPE_RX.finditer(text)
-            if not DEBUNK.search(text[max(0, m.start() - 60):m.start()])
+            m.group(0) for m in HYPE_RX.finditer(text) if not _exempt(m)
         ))
         if hits:
             add("low", "Voice: Hype-Wörter", ", ".join(hits[:6]))
