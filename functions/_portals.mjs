@@ -21,17 +21,22 @@ export function getPortals(env) {
   const add = (p) => {
     if (!p || !p.name) return;
     const key = slug(p.name);
+    const cats = Array.isArray(p.categories) ? p.categories.map(String) : (Array.isArray(p.kategorien) ? p.kategorien.map(String) : null);
     const norm = {
       name: String(p.name), slug: key,
       feedUrl: p.feedUrl || p.feed_url || "",
       importUrl: p.importUrl || p.import_url || "",
       apiKey: p.apiKey || p.api_key || "",
+      format: String(p.format || "json").toLowerCase(), // "json" | "openimmo"
+      categories: cats, // null = keine Einschränkung; sonst nur diese kat exportieren
     };
     if (byKey[key]) {
       const e = byKey[key];
       e.feedUrl = norm.feedUrl || e.feedUrl;
       e.importUrl = norm.importUrl || e.importUrl;
       e.apiKey = norm.apiKey || e.apiKey;
+      if (p.format) e.format = norm.format;
+      if (cats) e.categories = cats;
     } else { byKey[key] = norm; out.push(norm); }
   };
   // 1) Legacy-Comparis
@@ -48,12 +53,51 @@ export function getPortals(env) {
 export function portalsConfigured(env) { return getPortals(env).some((p) => p.feedUrl); }
 export function importPortalsConfigured(env) { return getPortals(env).some((p) => p.importUrl); }
 
+// XML-Escape für OpenImmo.
+function xe(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+// Baut OpenImmo-XML (DACH-Standard, den Homegate & die meisten CH-Immobilienportale als
+// Anbieter-Schnittstelle akzeptieren). Scaffold für Immobilien-Inserate; Felder lassen sich
+// erweitern, sobald der konkrete Anbietervertrag/das Mapping feststeht.
+export function toOpenImmoXml(row, env) {
+  const e = env || {};
+  const anid = e.OPENIMMO_ANID || "aban-news";
+  const firma = e.OPENIMMO_FIRMA || "aban news";
+  const email = e.OPENIMMO_EMAIL || row.kontakt || "";
+  const isKauf = /kauf|verkauf/i.test(String(row.typ || "")) || /chf\s*\d{5,}/i.test(String(row.preis || ""));
+  const preisNum = String(row.preis || "").replace(/[^0-9.]/g, "");
+  const stand = new Date(row.created || Date.now()).toISOString();
+  const img = row.bild
+    ? `<anhaenge><anhang location="REMOTE" gruppe="TITELBILD"><daten><pfad>${xe(row.bild)}</pfad></daten></anhang></anhaenge>`
+    : "";
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<openimmo>
+<uebertragung art="ONLINE" umfang="TEILANGEBOT" modus="CHANGE" version="1.2.7" sendersoftware="aban news" sendersoftwareversion="1.0"/>
+<anbieter>
+<openimmo_anid>${xe(anid)}</openimmo_anid>
+<firma>${xe(firma)}</firma>
+<immobilie>
+<objektkategorie><nutzungsart WOHNEN="1"/><vermarktungsart KAUF="${isKauf ? 1 : 0}" MIETE_PACHT="${isKauf ? 0 : 1}"/><objektart><wohnung/></objektart></objektkategorie>
+<geo><plz>${xe(row.plz)}</plz><ort>${xe(row.ort)}</ort><land iso_land="CHE"/></geo>
+<preise>${isKauf ? `<kaufpreis>${xe(preisNum)}</kaufpreis>` : `<kaltmiete>${xe(preisNum)}</kaltmiete>`}<waehrung iso_waehrung="CHF"/></preise>
+<freitexte><objekttitel>${xe(row.titel)}</objekttitel><objektbeschreibung>${xe(row.beschreibung)}</objektbeschreibung></freitexte>
+${img}
+<verwaltung_techn><objektnr_extern>aban-${xe(row.id)}</objektnr_extern><stand_vom>${xe(stand)}</stand_vom><aktion/></verwaltung_techn>
+<kontaktperson><email_direkt>${xe(email)}</email_direkt></kontaktperson>
+</immobilie>
+</anbieter>
+</openimmo>`;
+}
+
 // ---- Export: freigegebenes Inserat an alle Portale pushen ----
 async function postToPortal(portal, row, env) {
   try {
-    const headers = { "Content-Type": "application/json" };
+    let body, ct;
+    if (portal.format === "openimmo") { body = toOpenImmoXml(row, env); ct = "application/xml; charset=utf-8"; }
+    else { body = JSON.stringify(toComparisPayload(row, env)); ct = "application/json"; }
+    const headers = { "Content-Type": ct };
     if (portal.apiKey) headers["Authorization"] = "Bearer " + portal.apiKey;
-    const r = await fetch(portal.feedUrl, { method: "POST", headers, body: JSON.stringify(toComparisPayload(row, env)) });
+    const r = await fetch(portal.feedUrl, { method: "POST", headers, body });
     return { portal: portal.name, ok: r.ok, status: r.status };
   } catch (e) {
     return { portal: portal.name, ok: false, error: String((e && e.message) || e) };
@@ -61,12 +105,18 @@ async function postToPortal(portal, row, env) {
 }
 
 // Pusht ein Inserat an alle Export-Portale (parallel). Wirft NIE — Fehler dürfen die
-// Moderation/Freigabe nicht blockieren. Rückgabe: Array von Ergebnissen (leer = keins konfiguriert).
+// Moderation/Freigabe nicht blockieren. Portale mit `categories` bekommen nur passende kat
+// (z. B. Homegate nur "Immobilien"). Rückgabe: Array von Ergebnissen (leer = keins konfiguriert).
 export async function crossPostToPortals(row, env) {
   if (!row || !row.id) return [];
   const ps = getPortals(env).filter((p) => p.feedUrl);
   if (!ps.length) return [];
-  return Promise.all(ps.map((p) => postToPortal(p, row, env)));
+  return Promise.all(ps.map((p) => {
+    if (p.categories && p.categories.length && !p.categories.includes(row.kat)) {
+      return Promise.resolve({ portal: p.name, skipped: "category" });
+    }
+    return postToPortal(p, row, env);
+  }));
 }
 
 // ---- Import: Portal-Inserate in die aban-Marktplatz-Form mappen ----

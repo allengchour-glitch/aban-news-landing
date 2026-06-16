@@ -1,7 +1,7 @@
 // Node-Test der generischen Portal-Engine: node functions/_portals.test.mjs
 import {
   getPortals, portalsConfigured, importPortalsConfigured,
-  crossPostToPortals, fromPortalItem, fetchPortalListings,
+  crossPostToPortals, fromPortalItem, fetchPortalListings, toOpenImmoXml,
 } from "./_portals.mjs";
 
 let pass = 0, fail = 0;
@@ -69,6 +69,39 @@ const orig = globalThis.fetch;
   check("import filter q", (await fetchPortalListings(env2, { q: "hell" })).length === 1);
   globalThis.fetch = async () => { throw new Error("net"); };
   check("import fetch-fehler -> []", (await fetchPortalListings(env2, {})).length === 0);
+  globalThis.fetch = orig;
+
+  // OpenImmo-Export (Homegate-Weg)
+  console.log("\nOpenImmo (Homegate-Weg):");
+  const xml = toOpenImmoXml(
+    { id: 42, kat: "Immobilien", titel: "3.5 Zi Wohnung", beschreibung: "hell & ruhig", preis: "1850", ort: "Bern", plz: "3000", bild: "https://i/1.jpg", typ: "Angebot", created: 1700000000000 },
+    { OPENIMMO_ANID: "aban-test", OPENIMMO_EMAIL: "k@aban.ch" }
+  );
+  check("openimmo wohlgeformter header", xml.startsWith("<?xml") && xml.includes("<openimmo>"));
+  check("openimmo anid/titel/ort", xml.includes("aban-test") && xml.includes("3.5 Zi Wohnung") && xml.includes("<ort>Bern</ort>"));
+  check("openimmo objektnr extern", xml.includes("<objektnr_extern>aban-42</objektnr_extern>"));
+  check("openimmo miete default", xml.includes('MIETE_PACHT="1"') && xml.includes("<kaltmiete>1850</kaltmiete>"));
+  check("openimmo bild als anhang", xml.includes("<pfad>https://i/1.jpg</pfad>"));
+  const xmlKauf = toOpenImmoXml({ id: 1, titel: "Haus", preis: "CHF 950000" }, {});
+  check("openimmo kauf erkannt", xmlKauf.includes('KAUF="1"') && xmlKauf.includes("<kaufpreis>950000</kaufpreis>"));
+  check("openimmo escaped <&>", toOpenImmoXml({ id: 1, titel: "A & B <x>" }, {}).includes("A &amp; B &lt;x&gt;"));
+
+  // Format-Routing + Kategorie-Filter
+  console.log("\nFormat-Routing + Kategorie-Filter:");
+  let sent = [];
+  globalThis.fetch = async (url, opt) => { sent.push({ url, ct: opt.headers["Content-Type"], body: opt.body }); return new Response("", { status: 200 }); };
+  const env3 = { LISTING_PORTALS: JSON.stringify([
+    { name: "Homegate", feedUrl: "https://h/openimmo", format: "openimmo", categories: ["Immobilien"] },
+    { name: "Anibis", feedUrl: "https://a/post" },
+  ]) };
+  const rImmo = await crossPostToPortals({ id: 9, kat: "Immobilien", titel: "Wohnung", preis: "1500" }, env3);
+  check("immobilie -> beide portale", rImmo.length === 2 && rImmo.every((r) => r.ok), rImmo);
+  check("homegate bekommt XML", sent.some((s) => s.url === "https://h/openimmo" && s.ct.includes("xml") && s.body.includes("<openimmo>")));
+  check("anibis bekommt JSON", sent.some((s) => s.url === "https://a/post" && s.ct.includes("json")));
+  sent = [];
+  const rMoebel = await crossPostToPortals({ id: 10, kat: "Möbel", titel: "Sofa", preis: "200" }, env3);
+  check("möbel -> homegate übersprungen (kategorie)", rMoebel.find((r) => r.portal === "Homegate").skipped === "category");
+  check("möbel -> anibis trotzdem gepostet", rMoebel.find((r) => r.portal === "Anibis").ok === true && sent.length === 1);
   globalThis.fetch = orig;
 
   console.log(`\n${fail ? "✗" : "✓"} ${pass} ok, ${fail} fehlgeschlagen`);
