@@ -42,3 +42,9 @@ jobs:
         run: node automation/publish_guard.mjs
       - name: Alt-text guard (image SEO/a11y)
         run: node automation/alt_text_guard.mjs
+      - name: Discount guard (keep WELCOME10 alive)
+        run: node automation/discount_guard.mjs
+      - name: Hero image guard (collection covers)
+        run: node automation/hero_image_guard.mjs
+      - name: Rating guard (pull weak products from promo)
+        run: node automation/rating_guard.mjs

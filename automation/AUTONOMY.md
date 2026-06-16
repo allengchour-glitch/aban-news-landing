@@ -20,10 +20,13 @@ Ziel des Auftrags (CLAUDE.md): Shop vollautonom betreiben → kaufende Kunden. D
 | `automation/cross_sell.mjs` | hängt Produkten ohne internen Collection-Link eine **Cross-Sell-Box** an (Tag/Typ → verifizierte Collection) | `LIVE=1 node automation/cross_sell.mjs` |
 | `automation/publish_guard.mjs` | stellt sicher, dass aktive Produkte auf **allen 6 Verkaufskanälen** publiziert sind (häufigster Handgriff) | `LIVE=1 node automation/publish_guard.mjs` |
 | `automation/alt_text_guard.mjs` | füllt **fehlende Bild-Alt-Texte** aus dem Produkttitel (SEO + Barrierefreiheit) | `LIVE=1 node automation/alt_text_guard.mjs` |
+| `automation/discount_guard.mjs` | hält **WELCOME10** am Leben (verlängert `endsAt` vor Ablauf) | `LIVE=1 node automation/discount_guard.mjs` |
+| `automation/hero_image_guard.mjs` | Menü-Collections **ohne Hero-Bild** bekommen das Bild ihres 1. Produkts | `LIVE=1 node automation/hero_image_guard.mjs` |
+| `automation/rating_guard.mjs` | **Conversion-Leak-Schutz**: schwach bewertete Produkte taggen + aus Bestsellern ziehen | `LIVE=1 node automation/rating_guard.mjs` |
 | `cloudflare/src/shop.js` | Worker-Port der Shop-Wartung (Cron 06:45 → KV `shop_health`, sichtbar unter `/health`) | per Cron / `/run?task=shop&key=RUN_KEY` |
 | `cloudflare/src/{worker,video,gelato,stripe,products}.js` | Social-Autopilot, Fulfillment, Checkout | per Cron / Webhook |
 
-**Workflows:** `shop-autopilot.yml` (täglich, SEO/QA), `bestseller-refresh.yml` (täglich), `shop-guards.yml` (wöchentlich: price/link/cross-sell/publish/alt-text).
+**Workflows:** `shop-autopilot.yml` (täglich, SEO/QA), `bestseller-refresh.yml` (täglich), `shop-guards.yml` (wöchentlich: price/link/cross-sell/publish/alt-text/discount/hero/rating — 8 Wächter).
 
 Alle Tools sind **no-op-sicher** (ohne Creds passiert nichts) und **idempotent** (DRY-Default, `LIVE=1` schreibt).
 
