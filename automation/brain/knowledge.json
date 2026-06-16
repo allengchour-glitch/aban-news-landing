@@ -421,7 +421,8 @@
     },
     "production": [
       "SAFE-ZONE-TEXT (User 2026-06-14 schrift unten achtung): eingebrannter Text endet bei ~78% Hoehe (y<=1500 von 1920); CTA-Zeile NIE ganz unten (kollidiert sonst mit Plattform-Caption/Buttons). Rechts ~12% (Icons) freilassen. Tool: dropship/ads/finish_reel.sh.",
-      "MUSIK = automation/music/music_library.mjs (kommerziell-frei, Kevin MacLeod CC-BY 4.0, Attribution in CREDITS.md). GM-Synth/fluidsynth war zu billig -> nur Fallback. Gesang nur via Suno-Port (Pro fuer Live-Ad)."
+      "MUSIK = automation/music/music_library.mjs (kommerziell-frei, Kevin MacLeod CC-BY 4.0, Attribution in CREDITS.md). GM-Synth/fluidsynth war zu billig -> nur Fallback. Gesang nur via Suno-Port (Pro fuer Live-Ad).",
+      "2026-06-16 EIGENE PRODUKT-VIDEOS — Pipeline bewiesen (vollautonom aus Cloud, kein PC noetig): dropship/ads/render_price_reveal.sh (ffmpeg Price-Reveal, Safe-Zone y<=1500) -> stagedUploadsCreate(resource VIDEO, mimeType video/mp4, fileSize) -> curl -F bytes an GCS (HTTP 204; policy/signature EXAKT kopieren) -> productCreateMedia(productId, mediaContentType VIDEO). 1. Reel live auf D&G The One (Produkt 15431327252865). REGEL immer-einbetten: Hero/Marken-Produkte kriegen ein eigenes Reel als Produkt-Video (Lieferanten BigBuy/CJ liefern keine). Reel-mp4 auch fuer social/Worker-Queue (Meta) nutzbar."
     ],
     "share_formats": [
       "Save-Liste (3-in-1 Styling: «Drü Outfits mit eim Teil») + expliziter Speicher-CTA = stärkstes Reichweiten-Signal nach Comments",
