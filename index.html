@@ -238,7 +238,7 @@
   {"@context":"https://schema.org","@type":"Organization","@id":"https://abannews.com/#organization","name":"aban news","url":"https://abannews.com/","logo":"https://abannews.com/og-image.png","founder":{"@type":"Person","name":"Allen Chour"},"foundingLocation":"Belp, CH","sameAs":["https://www.linkedin.com/in/aban-news-019b21239"]}
   </script>
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Ist der Newsletter wirklich kostenlos?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Die tägliche Ausgabe (Mo–Fr) ist und bleibt gratis — ohne versteckte Kosten. Premium und Founding sind optionale Upgrades: werbefrei, das durchsuchbare Voll-Archiv und die Tool-Datenbank."}}, {"@type": "Question", "name": "Wie oft kommt die E-Mail — und wie lang ist sie?", "acceptedAnswer": {"@type": "Answer", "text": "Jeden Werktag um 7:30 Uhr, in rund 5 Minuten gelesen: 3 relevante KI-Updates, 1 getestetes Tool und 1 Prompt zum Kopieren. Am Wochenende ist Ruhe."}}, {"@type": "Question", "name": "Kann ich jederzeit kündigen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, mit einem Klick über den Abmelde-Link in jeder E-Mail. Die Anmeldung läuft per Double-Opt-in, deine Daten werden DSGVO-konform behandelt — kein Tracking-Pixel."}}, {"@type": "Question", "name": "Was unterscheidet Premium von Founding?", "acceptedAnswer": {"@type": "Answer", "text": "Premium kostet €9 pro Monat oder €89 pro Jahr und bringt das durchsuchbare Voll-Archiv, die Tool-Datenbank und werbefreies Lesen. Founding ist eine einmalige Zahlung von €69 und sichert dir alle Premium-Inhalte auf Lebenszeit plus den direkten Draht zu mir."}}, {"@type": "Question", "name": "Wer steckt hinter aban news?", "acceptedAnswer": {"@type": "Answer", "text": "aban news wird von Allen Chour in Belp (Schweiz) kuratiert — kein anonymes Netzwerk. Impressum und Datenschutz sind im Footer verlinkt, Hintergründe findest du auf der Über-Seite."}}]}
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Ist der Newsletter wirklich kostenlos?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Die tägliche Ausgabe (Mo–Fr) ist und bleibt gratis — ohne versteckte Kosten. Premium und Founding sind optionale Upgrades: werbefrei, das durchsuchbare Voll-Archiv und die Tool-Datenbank."}}, {"@type": "Question", "name": "Wie oft kommt die E-Mail — und wie lang ist sie?", "acceptedAnswer": {"@type": "Answer", "text": "Jeden Werktag um 7:30 Uhr, in rund 5 Minuten gelesen: 3 relevante KI-Updates, 1 getestetes Tool und 1 Prompt zum Kopieren. Am Wochenende ist Ruhe."}}, {"@type": "Question", "name": "Kann ich jederzeit kündigen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, mit einem Klick über den Abmelde-Link in jeder E-Mail. Die Anmeldung läuft per Double-Opt-in, deine Daten werden DSGVO-konform behandelt — kein Tracking-Pixel."}}, {"@type": "Question", "name": "Was unterscheidet Premium von Founding?", "acceptedAnswer": {"@type": "Answer", "text": "Premium kostet €19 pro Monat oder €190 pro Jahr und bringt das durchsuchbare Voll-Archiv, die Tool-Datenbank und werbefreies Lesen. Founding ist eine einmalige Zahlung von €69 und sichert dir alle Premium-Inhalte auf Lebenszeit plus den direkten Draht zu mir."}}, {"@type": "Question", "name": "Wer steckt hinter aban news?", "acceptedAnswer": {"@type": "Answer", "text": "aban news wird von Allen Chour in Belp (Schweiz) kuratiert — kein anonymes Netzwerk. Impressum und Datenschutz sind im Footer verlinkt, Hintergründe findest du auf der Über-Seite."}}]}
   </script>
 </head>
 <body>
@@ -668,7 +668,7 @@
           <span class="tag">Beliebt</span>
           <div class="pname">Premium</div>
           <div class="pp" id="prem-pp">€9<small> /Monat</small></div>
-          <div class="psub" id="prem-sub">oder €89 / Jahr</div>
+          <div class="psub" id="prem-sub">oder €190 / Jahr</div>
           <ul>
             <li>Alles aus Free</li>
             <li>Voll-Archiv mit Suche</li>
@@ -746,7 +746,7 @@
         </details>
         <details>
           <summary>Was unterscheidet Premium von Founding?</summary>
-          <p>Premium kostet €9 pro Monat oder €89 pro Jahr und bringt das durchsuchbare Voll-Archiv, die Tool-Datenbank und werbefreies Lesen. Founding ist eine einmalige Zahlung von €69 und sichert dir alle Premium-Inhalte auf Lebenszeit plus den direkten Draht zu mir.</p>
+          <p>Premium kostet €19 pro Monat oder €190 pro Jahr und bringt das durchsuchbare Voll-Archiv, die Tool-Datenbank und werbefreies Lesen. Founding ist eine einmalige Zahlung von €69 und sichert dir alle Premium-Inhalte auf Lebenszeit plus den direkten Draht zu mir.</p>
         </details>
         <details>
           <summary>Wer steckt hinter aban news?</summary>
@@ -832,7 +832,7 @@
     function setP(per){
       var m=per==='mo';
       pp.innerHTML= m ? '€9<small> /Monat</small>' : '€89<small> /Jahr</small>';
-      sub.textContent= m ? 'oder €89 / Jahr' : 'entspricht €7,42 / Monat';
+      sub.textContent= m ? 'oder €190 / Jahr' : 'entspricht €7,42 / Monat';
       mo.classList.toggle('on',m); yr.classList.toggle('on',!m);
       mo.setAttribute('aria-pressed',m); yr.setAttribute('aria-pressed',!m);
       if(buy){
