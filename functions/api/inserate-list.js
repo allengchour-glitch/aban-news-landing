@@ -1,7 +1,7 @@
 // GET /api/inserate-list — gibt freigegebene Inserate zurück (mit Filter kat/q).
 // ?status=pending nur mit gültigem Admin-Token (Header X-Admin-Token oder ?admin=).
-// Falls konfiguriert (COMPARIS_IMPORT_URL), werden Comparis-Inserate mit-eingeblendet.
-import { comparisImportConfigured, fetchComparisListings } from "../_comparis.mjs";
+// Falls Portale konfiguriert sind (Comparis/Homegate/… via LISTING_PORTALS), werden deren Inserate mit-eingeblendet.
+import { importPortalsConfigured, fetchPortalListings } from "../_portals.mjs";
 const H = { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" };
 function json(o, s = 200) { return new Response(JSON.stringify(o), { status: s, headers: H }); }
 
@@ -24,9 +24,9 @@ export async function onRequestGet({ request, env }) {
   try {
     const r = await env.DB.prepare(sql).bind(...binds).all();
     let items = r.results || [];
-    // Comparis-Inserate einspeisen (nur in der öffentlichen, freigegebenen Ansicht).
-    if (status === "approved" && comparisImportConfigured(env)) {
-      const ext = await fetchComparisListings(env, { kat, q, limit: 40 });
+    // Portal-Inserate (Comparis/Homegate/…) einspeisen (nur in der öffentlichen, freigegebenen Ansicht).
+    if (status === "approved" && importPortalsConfigured(env)) {
+      const ext = await fetchPortalListings(env, { kat, q, limit: 40 });
       if (ext.length) {
         items = items.concat(ext)
           .sort((a, b) => (b.featured - a.featured) || (b.created - a.created))
