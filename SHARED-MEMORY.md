@@ -54,6 +54,7 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+> **⛔ KOLLISIONS-REGEL (User 2026-06-16): PC-Claude macht GERADE FEEDS/MOCKUPS/PRODUKT-BILDER.** → Die **Cloud-Session fasst Produkt-Medien/Bilder NICHT an** (kein productCreateMedia/Bildreihenfolge/Mockups, kein erneutes alt_text auf POD-Medien, keine Feed-Felder doppelt editieren). Cloud arbeitet kollisionsfrei an: **Beschreibungen/Cross-Sell, Collections/Menü/Navigation, Guards (price/publish/link/hero/discount/rating), SEO-Meta, Bestseller**. POD-Mockups = PC-Claude (`dropship/POD-MOCKUP-AUFTRAG.md` + `dropship/pod_no_mockup.jsonl`). Voller Autonomie-Freibrief: „du darfst alles fixen autonom".
 > **⭐ STEHENDE REGEL (User 2026-06-16): REGELMÄSSIG SPEICHERN.** Nach jedem sinnvollen Schritt committen + auf `claude/memory-2026-06-13` pushen (Container ist ephemer → nicht gespeicherte Arbeit ist verloren). Commit-Autor immer `noreply@anthropic.com` / `Claude` (sonst „Unverified"). Nicht am Ende stapeln — laufend sichern.
 > **⭐ STEHENDE REGEL (User 2026-06-16): Neuzugänge IMMER reviewen & polishen, bevor „fertig" gemeldet wird.**
 > Nach jedem Anlegen sofort QA: (1) **Beschreibung VOLL** (Intro + ✨Highlights + 📋Details + Pflege/Hinweise + 📦Lieferumfang & Service + Trust + WELCOME10 — Maximum-Info für Kunden), (2) **Bild-QA** (echtes Produktfoto, 0 FAILED, POD = Mockup statt flaches Design), (3) **Kategorie/Tags** korrekt (keine Flut-Tags), (4) **SEO-Titel/Beschreibung** gesetzt. Kein dünnes 3-Bullet-Template mehr für neue Produkte!
