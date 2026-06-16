@@ -410,7 +410,13 @@
       "Viu Style für wenig Gäud 🤍 %s — schnäu si, isch fasch weg! 📌 Spicher der's · –10%% WELCOME10 → luxestyle.ch",
       "Das mues i ha 👀 %s — wele nimmsch? Schrib's i d Kommentär 👇 –10%% WELCOME10 → luxestyle.ch",
       "Es perfekts Gschänk, gäu? 🎁 %s — teil das mit dyre beschte Fründin 💛 –10%% WELCOME10 → luxestyle.ch",
-      "Du gsesch eifach mega us drmit ✨ %s — hol dr's, solang's no git 🛍️ 💾 spicher's · –10%% WELCOME10 → luxestyle.ch"
+      "Du gsesch eifach mega us drmit ✨ %s — hol dr's, solang's no git 🛍️ 💾 spicher's · –10%% WELCOME10 → luxestyle.ch",
+      "[VALUE] So bliibt dy %s wie neu — 4 Tipps 💾 (Pflege-Reel = Save-Treiber)",
+      "[VALUE] 3 Wege, %s z'style — speicher der das 💾",
+      "[VALUE] Echt vs. billig: so gsehsch dr Unterschied bi %s 👀",
+      "Ich ha %s 30 Täg täglich treit — das isch passiert 👀",
+      "Stopp — bevor du %s chaufsch, lueg das 👇",
+      "POV: du findsch %s wo niemmer het ✨ (1, 2 oder 3?)"
     ],
     "format_priority": [
       "UGC/Hands-on-Demo (Problem->Loesung, Vorher/Nachher) — Algo pusht nativ am staerksten",
@@ -592,7 +598,8 @@
       "Netz-Recherche 2026-06-16 (TikTok/Organic/CRO). TikTok-Algo: Qualitaet>Konto-Groesse; Signale=Completion/Re-Watch/SHARES/Kommentare/SAVES/Frueh-Engagement. 80/20 VALUE>Promo. 4-6 starke Posts/Woche. Nische-Community zuerst (waechst 3-4x). Hybrid: organische Gewinner→Spark-Ads. TikTok-Shop=Algo-Bevorzugung.",
       "ERSTER VERKAUF organisch: taeglich Kurzvideo, Hooks (Problem/«30 Tage getestet»/«schau was passiert»); Community-Seeding (CH-FB-Gruppen/r-Switzerland, PC); Shop<3s mobil (Theme).",
       "CHECKOUT/CRO: #1 Abbruch=ueberraschende Versandkosten + Konto-Zwang (>70% vermeidbar). FIX: Versand/Gratis-ab-65 frueh+klar zeigen, Gast-Checkout, Express-Pay sichtbar, Trust-Badges+Zahlungs-Icons am Bezahl-Schritt. Gesunde Checkout-CR 45-55%.",
-      "AUTONOM (meine Lane, Prio): (1) VALUE-Content 80/20 (Styling/Pflege/echt-vs-billig/BTS Reels+Captions gegen 0-Shares), (2) Hook-Pools upgraden, (3) PDP-Trust+Versand-Klarheit, (4) Produkt/Kollektions-SEO CH, (5) TikTok-Shop-Sync. NUR User/PC: Spark-Ads/Pixel, Community-Seeding, Theme-Speed/Checkout-Settings."
+      "AUTONOM (meine Lane, Prio): (1) VALUE-Content 80/20 (Styling/Pflege/echt-vs-billig/BTS Reels+Captions gegen 0-Shares), (2) Hook-Pools upgraden, (3) PDP-Trust+Versand-Klarheit, (4) Produkt/Kollektions-SEO CH, (5) TikTok-Shop-Sync. NUR User/PC: Spark-Ads/Pixel, Community-Seeding, Theme-Speed/Checkout-Settings.",
+      "VALUE-CONTENT LIVE 2026-06-16 (go value): render_value_reel.sh = Tipp-Reels (Pflege/Styling/echt-vs-billig, Mundart, Save-CTA, Musik) → 3 in Queue. 80/20-Regel aktiv: künftig pro ~5 Posts mind. 1 VALUE-Reel (Save/Share-Treiber gegen 0-Shares). Hooks erweitert um Value/«30-Tage»/«Stopp»/«POV»-Muster (Research 2026)."
     ]
   },
   "decisions": [
