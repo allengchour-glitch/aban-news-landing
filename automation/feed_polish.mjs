@@ -48,6 +48,7 @@ const G = {
   FRAG: T('hb-3-2-8'), BEAUTY: T('hb-3-2-9'), HEALTH: T('hb'),
   TOYS: T('tg'), PET: T('ap'), BABY: T('bt'), SPORT: T('sg'),
   ELEC: T('el'), HOME: T('hg'), FURN: T('fr'), OFFICE: T('os'), KITCHEN: T('hg'),
+  AE: T('ae'), HW: T('ha'), FEIER: T('rc'), AUTO: T('vp'),
 };
 // Kategorien, die als „Mode" gelten → gender/age_group setzen
 const FASHION = new Set([G.NECK,G.EARR,G.RING,G.BRAC,G.ANKL,G.JEWE,G.WATCH,
@@ -97,6 +98,27 @@ const RULES = [
   [/garten|pflanze|blumen|gartenwerkzeug|bewässerung|gartenmöbel|gartendeko|gartenschlauch|\brasen|\bgrill\b|\bbbq\b|sonnenschirm|pavillon|hochbeet|\bsamen\b|saatgut/, G.HOME],
   [/\bbad\b|badezimmer|duschkopf|seifenspender|zahnputzbecher|\bwc-|badaccessoire|bidet/, G.HOME],
   [/stift|kugelschreiber|\bfüller\b|notizbuch|notizblock|\bjournal\b|kalender|\bplaner\b|\bordner\b|briefpapier|umschlag|brieföffner|\bstempel\b|\blocher\b|\btacker\b|büro|schreibtischunterlage/, G.OFFICE],
+  // — Erweiterung (exotische Typen, 2026-06-16) —
+  [/gaming|headset|mauspad|mousepad|ringlicht|ring.?light|greenscreen|green.?screen|stream.?deck|capture.?card|audio.?interface|\bmikrofon|webcam|power.?bank|powerbank|\bakku\b|\bbattery\b|\bcharger\b|wearable|fotodrucker|sofortbild|\bdrucker\b|capture|hdmi|ladekabel|\busb\b/, G.ELEC],
+  [/diffuser|aroma|aromatherapie|ätherisch|fussbad|fußbad|wellness|\bmassage|wärmedecke|heizdecke|haltungs.?korrektor|maniküre|gesichtspflege|hautpflege|nacken|infrarot/, G.HEALTH],
+  [/balance.?board|resistance|widerstandsband|stretch.?strap|hand.?grip|handgrip|massage.?ball|\bsurvival\b|\bpool\b|planschbecken|schwimm|klimmzug|bauch.?trainer/, G.SPORT],
+  [/silvester|halloween|weihnacht|christmas|advent|\boster|karneval|fasnacht|deko.?saison|girlande|luftballon|party.?deko/, G.FEIER],
+  [/diy.?werkzeug|\bwerkzeug|bohrer|schraub|\bsäge\b|\bzange\b|heimwerk|akkuschrauber|schleif/, G.HW],
+  [/sattelbezug|sitzbezug|nummernschild|kennzeichen|auto.?zubehör|\bkfz\b|fahrzeug/, G.AUTO],
+  [/sticker|aufkleber|bastel|basteln|\bhobby\b|scrapbook|sammelkarte|diamond.?painting|stickerei|wandtattoo/, G.AE],
+  [/fotoalbum|foto.?banner|foto.?karten|foto.?magnete|foto.?sticker|erinnerungsbox|babybuch|gästebuch|sternenkarte|fotorahmen/, G.AE],
+  [/poster|wandkunst|wanddeko|wandbild|leinwand|geschenkverpackung|geschenkpapier|geschenkbox|geschenk.?bundle|geschenkbundle/, G.HOME],
+  [/küche|kitchen|backzubehör|backform|backblech|milchaufschäumer|haushalt|household|geschirr|besteck|vorrats|trinkflasche|brotkasten/, G.KITCHEN],
+  [/\bkarten\b|schreibmappe|notiz|sammelmappe/, G.OFFICE],
+  // — Erweiterung Runde 2 (Rest-Cluster) —
+  [/skibrille|ski.?goggle|schwimmbrille|tauchbrille|tauch/, G.SPORT],
+  [/tennis|badminton|calisthenics|stoppuhr|strandzubehör|\bstrand\b|frisbee|tischtennis|golf/, G.SPORT],
+  [/notebook.?ständer|laptop.?ständer|stehpult|monitor.?ständer|tablet.?ständer|stehpult.?aufsatz/, G.OFFICE],
+  [/reise.?elektronik|lifestyle.?tech|tech.?mystery|reise.?adapter|\bgadget|mini.?drucker/, G.ELEC],
+  [/fineliner|aquarell|siegelstempel|kalligraf|buntstift|marker.?set|filzstift|pinsel|farbset/, G.AE],
+  [/self.?care|\bsauna\b|bürsten.?set|gesichtsbürste|körperbürste|peeling|sleep|schlafmaske|einschlaf/, G.HEALTH],
+  [/glaswaren|thermosbecher|thermobecher|trinkglas|weinglas|karaffe|cocktail|gläser/, G.KITCHEN],
+  [/\bmagnet\b|kühlschrankmagnet|magnettafel/, G.HOME],
 ];
 // productType-Fallback (exakt), falls kein Keyword griff
 const TYPE_FALLBACK = {
@@ -106,6 +128,10 @@ const TYPE_FALLBACK = {
   'Garten':G.HOME,'Deko':G.HOME,'Heim & Garten':G.HOME,'Bad & Wellness':G.HOME,'Aufbewahrung':G.HOME,'Beleuchtung':G.HOME,
   'Spielzeug':G.TOYS,'Fitness':G.SPORT,'Camping':G.SPORT,'Baby':G.BABY,'Baby & Kinder':G.BABY,'Möbel':G.FURN,
   'Damen-Mode':G.APPAREL,'Damenmode':G.APPAREL,'Bekleidung':G.APPAREL,'Bademode':G.APPAREL,'Accessoire':G.ACC,'Accessoires':G.ACC,
+  'Home':G.HOME,'Kitchen':G.KITCHEN,'Haushalt':G.HOME,'Wohnen':G.HOME,'Gesundheit':G.HEALTH,'Wellness':G.HEALTH,
+  'Auto':G.AUTO,'Auto & Lifestyle':G.AUTO,'Auto-Zubehör':G.AUTO,'Tech-Lifestyle':G.ELEC,'Mobile Tech':G.ELEC,'Wearable Tech':G.ELEC,
+  'Pool':G.SPORT,'Diffuser':G.HEALTH,'Sticker':G.AE,'Poster':G.HOME,'Wandkunst':G.HOME,'Wanddeko':G.HOME,'Hobby':G.AE,
+  'Gaming-Zubehör':G.ELEC,'Gaming-Beleuchtung':G.ELEC,'Beauty Mystery Box':G.BEAUTY,'Beauty Tools':G.BEAUTY,
 };
 
 function categorize(hay, ptype) {
