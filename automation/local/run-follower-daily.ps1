@@ -78,6 +78,9 @@ if ((Get-Date).DayOfWeek -eq "Sunday") { node "automation/local/ch-unfollow.mjs"
 #     ($env:SHOPIFY_SHOP default au3j0y-hq.myshopify.com; $env:SHOPIFY_CLIENT_ID/SECRET = Custom-App.)
 if ($env:SHOPIFY_CLIENT_ID -and $env:SHOPIFY_CLIENT_SECRET) {
   $env:MAX = "800"; node "automation/feed_polish.mjs"; $env:MAX = $null
+  # 8c) MODE-BESCHREIBIGE: Google-„Key details" (Farbe/Grösse/Material/Muster) ergänzen
+  #     (Merchant-Report „Update product descriptions"). Idempotent → MAX/Tag, resümierbar.
+  $env:MAX = "400"; node "automation/enrich_apparel_descriptions.mjs"; $env:MAX = $null
 }
 
 # 9) IMMER NACH DEM POSTEN: ANALYSIEREN + LERNEN (User 2026-06-16 „wenn du fertig postest, dann immer Analyse").
