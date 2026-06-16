@@ -100,8 +100,10 @@ def scan_page(p: Path, findings: list):
     if noopener:
         add("medium", "Security: target=_blank ohne rel=noopener", f"{len(noopener)} Link(s)")
 
-    # Mehrfach-Ausrufezeichen
-    if EXCL_RX.search(re.sub(r"<[^>]+>", " ", s)):
+    # Mehrfach-Ausrufezeichen (nur sichtbarer Text; <script>/<style> ausnehmen,
+    # sonst werden JS-Idiome wie `!!wert` (Boolean-Coercion) fälschlich als Hype geflaggt).
+    _vis = re.sub(r"<(script|style)\b.*?</\1>", " ", s, flags=re.S | re.I)
+    if EXCL_RX.search(re.sub(r"<[^>]+>", " ", _vis)):
         add("low", "Voice: Mehrfach-Ausrufezeichen", "!! im Text")
 
     # Hype-Wörter (nur sichtbarer Text, Tags entfernt).
