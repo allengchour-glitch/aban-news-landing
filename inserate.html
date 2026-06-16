@@ -180,6 +180,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
         <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
       </span>
     </div>
+    <div id="savedbar"></div>
     <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
     <div id="demoBanner" hidden>🎫 <b>Beispiel-Inserate</b> — so sieht's aus. Echte erscheinen hier, sobald Leute inserieren. Du kannst sie schon <b>♡ merken &amp; vergleichen</b>. <a href="/inserat-aufgeben.html">Eigenes Inserat aufgeben →</a></div>
     <div class="grid" id="grid"></div>
@@ -195,6 +196,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <footer>aban news · Kleinanzeigen · Angaben der Inserenten ohne Gewähr · © 2026 ·
   <a href="/inserat-aufgeben.html">Inserat aufgeben</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
+<script src="/js/saved-search.js"></script>
 <script>
 (function(){
   var CATS=["Elektronik","Handy","Computer","Möbel","Haushalt","Garten","Werkzeug","Auto & Teile","Fahrrad","Mode","Spielzeug","Baby & Kind","Haustier","Sport","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
@@ -279,7 +281,19 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     c.innerHTML=parts.map(function(p,i){return '<button type="button" data-i="'+i+'" style="'+CHIP+'">'+esc(p.l)+' <span aria-hidden="true" style="color:var(--muted);font-weight:800">×</span></button>'}).join("")+'<button type="button" data-all="1" style="'+CHIP+';color:var(--amber-dk);border-color:var(--amber-dk)">Alle löschen</button>';
     window.__chip=parts.map(function(p){return p.clr});
   }
+  function writeUrl(){var p=new URLSearchParams();
+    var q=$("#q").value.trim();if(q)p.set("q",q);
+    var loc=$("#loc").value.trim();if(loc)p.set("loc",loc);
+    var cats=catSet();if(cats.length)p.set("kat",cats.join(","));
+    var typ=(document.querySelector('input[name="typ"]:checked')||{}).value||"";if(typ)p.set("typ",typ);
+    var cond=Array.prototype.map.call(document.querySelectorAll(".cond:checked"),function(c){return c.value});if(cond.length)p.set("cond",cond.join(","));
+    var qf=Array.prototype.map.call(document.querySelectorAll(".qf:checked"),function(c){return c.dataset.f});if(qf.length)p.set("qf",qf.join(","));
+    var pkl=Array.prototype.map.call(document.querySelectorAll(".pkl:checked"),function(c){return c.dataset.lo+"-"+c.dataset.hi});if(pkl.length)p.set("pkl",pkl.join(","));
+    var reg=Array.prototype.map.call(document.querySelectorAll(".reg:checked"),function(c){return c.value});if(reg.length)p.set("reg",reg.join(","));
+    var sort=$("#sort")?$("#sort").value:"rel";if(sort&&sort!=="rel")p.set("sort",sort);
+    var qs=p.toString();try{history.replaceState(null,"",qs?("?"+qs):location.pathname)}catch(e){}}
   function render(items){
+    writeUrl();
     items=applyFilters(items||[]);if(merkOnly)items=items.filter(function(it){return isMerk(it.id)});renderChips();
     if(!items.length){grid.innerHTML="";statusEl.hidden=false;
       statusEl.innerHTML=merkOnly?"Noch nichts gemerkt. Tippe auf ♡ bei einem Inserat.":"Noch keine Inserate in dieser Auswahl. Sei der/die Erste: <a href=\"/inserat-aufgeben.html\">Inserat aufgeben</a>.";cntEl.textContent="0 Inserate";return}
@@ -407,7 +421,20 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   // Deep-Link: ?q= / ?kat= / ?loc= aus der URL übernehmen
   (function(){var sp=new URLSearchParams(location.search),uq=sp.get("q"),uk=sp.get("kat"),ul=sp.get("loc");
     if(uq)$("#q").value=uq; if(ul)$("#loc").value=ul;
-    if(uk){uk.split(",").forEach(function(k){k=k.trim();if(!k)return;Array.prototype.forEach.call(document.querySelectorAll('.catbox'),function(cb){if(cb.value===k)cb.checked=true})});curKat=primaryKat();}})();
+    if(uk){uk.split(",").forEach(function(k){k=k.trim();if(!k)return;Array.prototype.forEach.call(document.querySelectorAll('.catbox'),function(cb){if(cb.value===k)cb.checked=true})});curKat=primaryKat();}
+    function setMulti(param,sel,key){var vals=(sp.get(param)||"").split(",").filter(Boolean);if(!vals.length)return;Array.prototype.forEach.call(document.querySelectorAll(sel),function(c){if(vals.indexOf(key(c))>=0)c.checked=true})}
+    setMulti("cond",".cond",function(c){return c.value});
+    setMulti("qf",".qf",function(c){return c.dataset.f});
+    setMulti("pkl",".pkl",function(c){return c.dataset.lo+"-"+c.dataset.hi});
+    setMulti("reg",".reg",function(c){return c.value});
+    var utyp=sp.get("typ");if(utyp){var tr=document.querySelector('input[name="typ"][value="'+utyp+'"]');if(tr)tr.checked=true}
+    var usort=sp.get("sort");if(usort&&$("#sort"))$("#sort").value=usort;
+  })();
+  // "Suche speichern"-Widget (gemeinsames Modul)
+  function savedLabel(){var q=$("#q").value.trim(),cats=catSet(),loc=$("#loc").value.trim(),parts=[];
+    if(q)parts.push('"'+q+'"');if(cats.length)parts.push(cats.slice(0,2).join(", ")+(cats.length>2?"…":""));if(loc)parts.push("📍"+loc);
+    return parts.join(" · ")||"Alle Inserate";}
+  if(window.AbanSaved)window.AbanSaved({key:"abanSaved_inserate",mount:"#savedbar",labelFn:savedLabel});
   load();
 })();
 </script>
