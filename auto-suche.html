@@ -232,6 +232,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var conds=activeConds();if(conds.length)p+="&cond="+encodeURIComponent(conds.join(","));
     var lo=$("#pmin").value.trim(),hi=$("#pmax").value.trim();
     if(lo)p+="&pmin="+encodeURIComponent(lo);if(hi)p+="&pmax="+encodeURIComponent(hi);
+    var jr=$("#fJahr").value;if(jr)p+="&yearFrom="+encodeURIComponent(jr);
+    var km=$("#fKm").value;if(km)p+="&kmMax="+encodeURIComponent(km);
     var s=$("#sort").value;if(s&&s!=="rel")p+="&sort="+encodeURIComponent(s);
     return p;
   }
@@ -251,7 +253,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   $("#cats").addEventListener("change",function(e){if(e.target.name==="cat"){$("#q").value="";search()}});
   document.querySelectorAll(".cond").forEach(function(c){c.addEventListener("change",search)});
   ["fMarke","fFuel","fGetriebe","fJahr"].forEach(function(id){$("#"+id).addEventListener("change",search)});
-  $("#fKm").addEventListener("change",renderCarLinks);
+  $("#fKm").addEventListener("change",function(){renderCarLinks();search()});
   $("#fModell").addEventListener("input",function(){renderCarLinks();searchSoon()});
   ["pmin","pmax"].forEach(function(id){$("#"+id).addEventListener("input",searchSoon)});
   $("#sort").addEventListener("change",search);
