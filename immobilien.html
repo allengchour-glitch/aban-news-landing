@@ -138,20 +138,20 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="fcard"><h4>Art</h4><div id="cats"></div></div>
     <div class="fcard"><h4>Zimmer</h4>
       <div style="display:flex;gap:8px;align-items:center">
-        <select id="zimmer" class="ffield"><option value="">von</option><option value="1">1</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="3.5">3.5</option><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="6">6</option></select>
+        <select id="zimmer" aria-label="Zimmer von" class="ffield"><option value="">von</option><option value="1">1</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="3.5">3.5</option><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="6">6</option></select>
         <span>–</span>
-        <select id="zimmerBis" class="ffield"><option value="">bis</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="3.5">3.5</option><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="6">6</option><option value="8">8+</option></select>
+        <select id="zimmerBis" aria-label="Zimmer bis" class="ffield"><option value="">bis</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="3.5">3.5</option><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="6">6</option><option value="8">8+</option></select>
       </div>
     </div>
     <div class="fcard"><h4>Wohnfläche (m²)</h4>
       <div style="display:flex;gap:8px;align-items:center">
-        <select id="amin" class="ffield"><option value="">von</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="60">60</option><option value="80">80</option><option value="100">100</option><option value="120">120</option><option value="150">150</option></select>
+        <select id="amin" aria-label="Wohnflaeche von" class="ffield"><option value="">von</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="60">60</option><option value="80">80</option><option value="100">100</option><option value="120">120</option><option value="150">150</option></select>
         <span>–</span>
-        <select id="amax" class="ffield"><option value="">bis</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option><option value="120">120</option><option value="150">150</option><option value="200">200</option><option value="300">300+</option></select>
+        <select id="amax" aria-label="Wohnflaeche bis" class="ffield"><option value="">bis</option><option value="40">40</option><option value="60">60</option><option value="80">80</option><option value="100">100</option><option value="120">120</option><option value="150">150</option><option value="200">200</option><option value="300">300+</option></select>
       </div>
     </div>
     <div class="fcard"><h4>Preis (CHF)</h4>
-      <div style="display:flex;gap:8px;align-items:center"><select id="pmin" class="ffield"><option value="">von</option></select><span>–</span><select id="pmax" class="ffield"><option value="">bis</option></select></div>
+      <div style="display:flex;gap:8px;align-items:center"><select id="pmin" aria-label="Preis von" class="ffield"><option value="">von</option></select><span>–</span><select id="pmax" aria-label="Preis bis" class="ffield"><option value="">bis</option></select></div>
       <p style="font-size:.72rem;color:var(--muted);margin-top:6px">Miete pro Monat bzw. Kaufpreis</p>
     </div>
     <div class="fcard"><h4>Region (ankreuzen)</h4><div id="regs" style="display:flex;flex-wrap:wrap;gap:7px"></div></div>
@@ -168,7 +168,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
       <span class="cnt" id="cnt">Lade Immobilien …</span>
       <span style="margin-left:auto;font-size:.85rem;color:var(--muted)">Sortieren:
-        <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="neu">Neueste zuerst</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option><option value="rooms">Zimmer absteigend</option></select>
+        <select id="sort" aria-label="Sortierung" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="neu">Neueste zuerst</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option><option value="rooms">Zimmer absteigend</option></select>
       </span>
     </div>
     <div id="savedbar"></div>

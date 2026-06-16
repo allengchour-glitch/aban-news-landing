@@ -127,11 +127,11 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   <aside class="sidebar" id="sidebar">
     <div class="sheethead"><span>Filter</span><button class="x" id="sheetClose" type="button" aria-label="Schließen">×</button></div>
     <div class="fcard"><h4>🚗 Fahrzeug-Auswahl</h4>
-      <select class="fsel" id="fMarke"><option value="">Marke (alle)</option></select>
-      <select class="fsel" id="fModell"><option value="">Modell (zuerst Marke wählen)</option></select>
-      <select class="fsel" id="fKaross"><option value="">Fahrzeugtyp (alle)</option></select>
-      <select class="fsel" id="fFuel"><option value="">Treibstoff (alle)</option></select>
-      <select class="fsel" id="fGetriebe" style="margin-bottom:0"><option value="">Getriebe (alle)</option></select>
+      <select class="fsel" id="fMarke" aria-label="Marke"><option value="">Marke (alle)</option></select>
+      <select class="fsel" id="fModell" aria-label="Modell"><option value="">Modell (zuerst Marke wählen)</option></select>
+      <select class="fsel" id="fKaross" aria-label="Fahrzeugtyp"><option value="">Fahrzeugtyp (alle)</option></select>
+      <select class="fsel" id="fFuel" aria-label="Treibstoff"><option value="">Treibstoff (alle)</option></select>
+      <select class="fsel" id="fGetriebe" aria-label="Getriebe" style="margin-bottom:0"><option value="">Getriebe (alle)</option></select>
       <div class="carlinks" id="carLinks"></div>
     </div>
     <div class="fcard"><h4>Kategorie</h4><div id="cats"></div></div>
@@ -140,13 +140,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <label class="opt"><input type="checkbox" class="cond" value="gebraucht">Gebraucht</label>
     </div>
     <div class="fcard"><h4>Preis (<span class="curlbl">EUR</span>)</h4>
-      <div class="prange"><select class="fsel" id="pmin" style="margin-bottom:0"><option value="">von</option></select><span>–</span><select class="fsel" id="pmax" style="margin-bottom:0"><option value="">bis</option></select></div>
+      <div class="prange"><select class="fsel" id="pmin" aria-label="Preis von" style="margin-bottom:0"><option value="">von</option></select><span>–</span><select class="fsel" id="pmax" aria-label="Preis bis" style="margin-bottom:0"><option value="">bis</option></select></div>
     </div>
     <div class="fcard"><h4>Erstzulassung (Jahr)</h4>
-      <div class="prange"><select class="fsel" id="fJahr" style="margin-bottom:0"><option value="">von</option></select><span>–</span><select class="fsel" id="fJahrBis" style="margin-bottom:0"><option value="">bis</option></select></div>
+      <div class="prange"><select class="fsel" id="fJahr" aria-label="Jahr von" style="margin-bottom:0"><option value="">von</option></select><span>–</span><select class="fsel" id="fJahrBis" aria-label="Jahr bis" style="margin-bottom:0"><option value="">bis</option></select></div>
     </div>
     <div class="fcard"><h4>Kilometer</h4>
-      <div class="prange"><select class="fsel" id="fKmVon" style="margin-bottom:0"><option value="">von</option></select><span>–</span><select class="fsel" id="fKm" style="margin-bottom:0"><option value="">bis</option></select></div>
+      <div class="prange"><select class="fsel" id="fKmVon" aria-label="Kilometer von" style="margin-bottom:0"><option value="">von</option></select><span>–</span><select class="fsel" id="fKm" aria-label="Kilometer bis" style="margin-bottom:0"><option value="">bis</option></select></div>
     </div>
     <button class="reset" id="reset" type="button">↺ Alle Filter zurücksetzen</button>
     <div data-partner="AUTO_VERSICHERUNG_URL" data-text="Autokauf geplant? KFZ-Versicherung vergleichen und sparen." data-cta="Versicherung vergleichen"></div>
@@ -159,7 +159,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
       <span class="cnt" id="cnt">Lade Fahrzeuge …</span>
       <span class="sort">Sortieren:
-        <select id="sort"><option value="rel">Relevanz</option><option value="neu">Neueste zuerst</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
+        <select id="sort" aria-label="Sortierung"><option value="rel">Relevanz</option><option value="neu">Neueste zuerst</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
       </span>
     </div>
     <span class="badge" id="badge" hidden>Demo-Daten — echte Angebote, sobald die eBay-Anbindung freigeschaltet ist</span>
