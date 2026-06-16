@@ -102,14 +102,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   FB-Post per Graph-API löschen (`DELETE /{post_id}`). **⚠️ Instagram-API kann veröffentlichte Posts NICHT
   löschen** → IG-Post nur in der App ODER via PC-Claude `ig-delete` entfernen. Katalogweit aufräumen:
   `automation/image-audit.mjs` (Gemini-Vision erkennt asiatische Schrift/Overlays) — braucht `GEMINI_API_KEY`.
-- **🔑 Shopify-Admin-API-Token (WICHTIG — 2026 geändert, NIE wieder Stunden verlieren):** Shopify hat den
-  „shpat_-Token anzeigen"-Knopf **abgeschafft**. Custom-Apps (Dev-Dashboard) liefern nur noch **Client-ID**
-  + **Schlüssel** (`shpss_…`). Token holt man per **Client-Credentials-Grant**:
-  `POST https://{shop}.myshopify.com/admin/oauth/access_token` mit JSON
-  `{client_id, client_secret, grant_type:"client_credentials"}` → `access_token` (gültig ~24h, daher
-  pro Lauf neu holen). LuxeStyle: shop `au3j0y-hq.myshopify.com`. `automation/reel-analytics.mjs` macht das
-  bereits (Secrets `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET`/`SHOPIFY_SHOP`). **Kein `shpat_` mehr suchen!**
-  (Für Live-Abfragen nutze ich ohnehin die `mcp__…__*`-Shopify-Tools direkt.)
+- **🔑 Shopify-API-Login (WICHTIG — VERIFIZIERT 2026-06-16, NIE wieder Stunden verlieren):**
+  **`shpat_` git's NÜMME sit 2026** (User bestätigt 2×). Login-Wäg = **Client-Credentials-Grant** mit ere
+  Custom-App (Dev-Dashboard): `POST https://au3j0y-hq.myshopify.com/admin/oauth/access_token` mit JSON
+  `{client_id, client_secret, grant_type:"client_credentials"}` → `access_token` (gültig ~24h, pro Lauf neu).
+  **⚠️ TEUER GELERNT — 3 Fallen:**
+  1. **Die App MUSS uf de Shop INSTALLIERT si** (Dev-Dashboard → «App installiere» → uf de Berächtigungs-Sytä
+     wirklich «Installieren» klicke → «Installationen: 1»). Sünsch: Fehler **`app_not_installed`** (egal ob Creds stimmen).
+  2. **`atkn_`-«App-Automatisierungs-Token» FUNKTIONIERT NID** gäge d'Admin-API (401 «Invalid API key») — NID bruche.
+     Nur de **client_credentials access_token** lauft.
+  3. Es gab e FALSCHI App (Client-ID `c77dde5c…`, nid installiert) → immer `app_not_installed`.
+  ✅ **RICHTIGI App (verifiziert, volle write_products-Scopes): Client-ID `ffe6c3a1326affdd7f461760ac1a8950`**
+  (Secret `shpss_…` = NUR i `luxe-secrets.ps1`/Secrets, NIE is Repo). Shop `au3j0y-hq.myshopify.com`.
+  Skript-ENV: `SHOPIFY_CLIENT_ID`/`SHOPIFY_CLIENT_SECRET` (ODER direkt `SHOPIFY_TOKEN`=fertige access_token).
+  - **Katalogweite Änderige (Kategorie/Feed):** über d'Skript `automation/feed_polish.mjs` /
+    `automation/enrich_apparel_descriptions.mjs` mit em access_token (gedrosselti Mutatione, idempotent +
+    resümierbar, MAX/Lauf). Für Live-Abfrage/Einzeländerig sünsch d'`mcp__…__*`-Shopify-Tools direkt.
 - **Branch (FEST, 2026-06-07):** alles auf **`claude/luxestyle-product-CizQ6`** → Draft-PR nach `main`.
   Nie direkt nach `main` pushen. ⚠️ Die alten Branches `claude/dropship-lade-memory-SrAs5` (PR #5) und
   `claude/dropshipping-session-LehDs` sind **in `main` gemergt und vom Remote gelöscht** — nicht mehr nutzen.
