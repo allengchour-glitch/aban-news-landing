@@ -65,6 +65,15 @@
   Idempotent, Caps. Berührt KEINE Produkte/Beschreibungen/Theme.
 - **REVIER bleibt:** ich = Import-Felder + Social/Reichweite; andere Session = Beschreibungen/Attribut-Block/Energie-Label/
   Collection-Seite/Theme. Ich fasse Beschreibungen + Theme NICHT an.
+- **🛒 IMPORT-ZIELE → AN DIE IMPORTIERENDE SESSION (Research 2026-06-16, `dropship/MARKTLUECKEN-2026.md`).** Du hast den
+  CJ/BigBuy-Token aktiv — bitte diese CH-Gewinner füllen (ich hab ihn gerade nicht): **(1) HERO: wasserfester/anlauffreier
+  Edelstahl-Schmuck** (gold/silber, hypoallergen — CH-Sommer-Renner, Tara/Meereskind beweisen es, CHF 19–49). **(2) CAPS/Hüte-
+  Kategorie** (User-Wunsch „eine Kategorie voller Caps" — aktuell 0 im Katalog, Kollektion `huete-caps` existiert nicht).
+  **(3) Anlass-Bundles** „Geschenk unter 50 Franken"/Hochzeitsgast. Bild-QA (kein asiat. Text/Watermark) + Marke/Barcode wie gehabt.
+- **📣 META-QUEUE um BigBuy-Marken erweitert (diese Session, 2026-06-16):** Worker-Queue (`luxe-poster/src/queue.json`) hat
+  jetzt **10 Premium-Marken-Posts** (D&G/Swatch/Casio/Hugo Boss/CK/Guess/MK/Citizen/Tommy/Morellato) interleaved → IG/FB postet
+  nicht mehr nur CJ. Live-Queue zeigt per `?queue=`(GitHub-Raw, self-heilend) auf die git-Datei; **sicher live ab nächstem `wrangler deploy`**.
+  Bitte die queue.json NICHT konkurrierend überschreiben (Social = meine Session).
 - **🎯 CONVERSION-FIXES → AUFTRAG AN DIE THEME-SESSION (recherchiert 2026-06-15, Quellen shopify.com/twint.ch/meineinkauf.ch).**
   Engpass ist Session→Warenkorb. Diese 8 Theme-Hebel bitte umsetzen (sind THEME = euer Revier, drum gebe ich sie weiter statt selbst zu machen):
   1) **TWINT + Apple Pay + Shop Pay** sichtbar an ATC + Checkout (CH-Mobile-Zahlung = #1; Shop Pay bis ~50% CVR-Lift).
