@@ -119,6 +119,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-16 (AUSWERTUNG-WENDE + Video-Rollout 34 + Handy-TODO):**
+- **📊 AUSWERTUNG 14T (live via Shopify):** 1.206 Sessions · **0 Orders** · ABER **4 abgebrochene Checkouts** (CHF 71.90/43/69/69
+  + 1 älterer 129.90). → **Echte Käufer kommen bis in den Checkout & brechen am LETZTEN Schritt ab — NICHT (nur) Reichweite!**
+  Shop technisch sauber geprüft (kein Passwort, CHF, Checkout aktiv, Storefront+PDP HTTP 200, Recovery-Flows live).
+  Traffic: social **535** (autonomes Posten zieht) · direct 664 (Junk) · **search 4** (SEO ≈ tot → Free Listings = Upside).
+  **NEUE Engpass-Hierarchie:** (1) Bezahl-/Abschluss-Schritt (TWINT/Karte testen!), (2) Buy-Intent-Traffic/Pixel, (3) SEO/Free Listings.
+  **LEHRE:** Abbrüche mit echten CHF-Werten = Kaufabsicht da; Recovery-Mails greifen nur wenn E-Mail im Checkout erfasst.
+- **🎬 34 Produkte mit eigenem Produkt-Video** (7 Marken + 3 Wasserfest + 13 Caps + 11 Schmuck/Brille/Ring) via Cloud-Pipeline
+  (ffmpeg Price-Reveal → stagedUpload curl 204 → productCreateMedia VIDEO). Skript `dropship/ads/render_price_reveal.sh`. Lieferanten-Videos=0.
+- **📋 NEUE DOCS (merken/teilen):** `TODO.md` (Repo-Root, **Handy-Durchklick** mit Direkt-Links + Checkboxen),
+  `dropship/EIN-WEG-ZUM-1-KUNDEN.md` (alle Hebel nach Impact). Auswertung-Verlauf in `dropship/STATUS.md`.
+- **🔴 Bleibt User (kein API-Weg, geprüft):** Testkauf+TWINT, Pixel/Kampagne, Google Free Listings, `wrangler deploy`,
+  Klaviyo URL→.ch+CHF (Klaviyo hat KEINE Konto-Update-API). 💻 PC-Browser: tutti/Follower/TikTok-Upload (kein API).
+- **⚠️ Worker `&cmd=tutti` etc. NOCH NICHT live** → Befehlsqueue-Route erst nach `wrangler deploy` aktiv (bis dahin postet ein
+  Worker-Hit nur den nächsten IG/FB-Queue-Eintrag). Schweizer-Follower-Tool ist committet, aber **noch nie gelaufen** (kein Ledger).
+
 **📌 2026-06-16 (Neue Kategorien autonom + Sortier-Fixes — CJ-Token aus /tmp/cj_token.json funktionierte):**
 - **🧢 Caps & Hüte (`caps-hute`): 14 Caps** angelegt (Baseball/Bucket/Cord/5-Panel/Denim/Beret/Docker), alle Bild-QA'd
   (1 Monogramm-Knockoff verworfen), ACTIVE/6 Kanäle/kaufbar, deutsche Texte + Grössen-Hinweis.
