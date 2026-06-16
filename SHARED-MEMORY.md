@@ -54,6 +54,14 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-16 (Katalog-Session, BigBuy) — ✅ HAUSTIER KOMPLETT AUSGESCHÖPFT: +26 weitere (Summe ~498):**
+- Offset 78 (+7) & Offset 98 (+19), 0 Dubletten. Marken: **Hunter** (Geschirre/Halsbänder/Leckerli-Tasche), **Red Dingo**
+  (Geschirre/Leinen/Halsbänder/Mantel), **Flexi** (Roll-Leine), **Gloria** (Leinen/Plüsch), **Nylabone** (Kauspielzeug),
+  **KVP** (Halskrause), **United Pets**, **GO GIFT** (Bett), **Sprenger**, Disney (Minnie-Halsband).
+- **Tierfutter/Snacks/Creme/Repellent konsequent gefiltert** (~16 Stück in diesen 2 Offsets übersprungen — diese hohe
+  Haustier-Region ist food-lastig). **cat_haustier.json (120) damit weitgehend abgegrast** (Offsets 0–117 verarbeitet über alle Sessions).
+- **Haustier-Welt total heute: ~58 neue Pet-Artikel** → eine der stärksten Kategorien im Shop. Alles EAN/Google-ready, 6 Kanäle.
+
 **2026-06-16 (Katalog-Session, BigBuy) — ✅ HAUSTIER +17 & 💎 PREMIUM-HERO (Tissot), Summe ~472:**
 - 🐾 Haustier +17 (Offset 60, 0 Dubletten): Hundegeschirre/Halsbänder/Leinen (Trixie New/Fusion/Comfort Premium),
   **Julius-K9 IDC Powerharness**, Company of Animals, Kratzbaum, Transportkäfig, Mickey-Napf (Disney), Kauspielzeug (Gloria),
