@@ -54,6 +54,17 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+> **⭐ STEHENDE REGEL (User 2026-06-16): Neuzugänge IMMER reviewen & polishen, bevor „fertig" gemeldet wird.**
+> Nach jedem Anlegen sofort QA: (1) **Beschreibung VOLL** (Intro + ✨Highlights + 📋Details + Pflege/Hinweise + 📦Lieferumfang & Service + Trust + WELCOME10 — Maximum-Info für Kunden), (2) **Bild-QA** (echtes Produktfoto, 0 FAILED, POD = Mockup statt flaches Design), (3) **Kategorie/Tags** korrekt (keine Flut-Tags), (4) **SEO-Titel/Beschreibung** gesetzt. Kein dünnes 3-Bullet-Template mehr für neue Produkte!
+> **Shop-Token für Auto-Bulk:** Creds liegen in `/tmp/shop_creds.json` (client_id/client_secret shpss_/shop au3j0y-hq) — ABER Client-Credentials-Grant scheitert mit `app_not_installed` (Custom-App muss 1× im Shop installiert sein, Scope write_products). Solange nicht installiert → Beschreibungen wellenweise via MCP-`graphql_mutation` (Generator `/tmp/gen_desc.mjs`, Datei lesen → als eine Mutation senden).
+
+**2026-06-16 (Katalog-Session) — 📝 BESCHREIBUNGEN-OFFENSIVE + ✏️ GRAVUR-KATEGORIE (User „fülle alle komplett / maximum info"):**
+- **Erkenntnis:** Älterer Katalog (CJ, ältere BigBuy-Parfum/Schmuck/Uhren, POD) hat BEREITS ausführliche Beschreibungen (Intro+Bullets+Grössentabellen+Lieferinfo). **Thin = nur die heutigen Neuzugänge.**
+- **+24 Premium** (Uhren/Brillen/Taschen/Marken-Schmuck) + **+45 heutige BigBuy** (Büro/Sport/Auto/Haustier) auf **volle Maximum-Info-Beschreibung** gebracht (Marken-Story, Highlights, Details, Pflege/Hinweise, Lieferumfang & Service, Trust). Generator-Templates pro Kategorie (`gen_pd.mjs`, `gen_desc.mjs`).
+- **✏️ NEUE Kategorie „Gravur · Personalisiert"** (`/collections/gravur-personalisiert`, TAG=`gravur`) live + publiziert, mit kompletter „So funktioniert's"-Anleitung & Kundenhinweisen. **Empfehlung:** Gravur = eigene Kategorie + **Text-Personalisierung** (Name/Datum/Monogramm), NICHT der Bild-Editor. **Offen (User/Theme):** Gravur-Lieferant/Fulfillment + Text-Eingabefeld (Line-Item-Property) → dann echte Gravur-Produkte anlegen.
+- **Noch offen (Beschreibungen):** restliche heutige Neuzugänge älterer Chargen (füll-alles Schuhe/Kleidung/Elektronik/Garten/Haushalt/Spielzeug) — wellenweise nachziehen, sofern noch 3-Bullet-Template. App-Install schaltet Auto-Bulk frei.
+
+
 **2026-06-16 (Katalog-Session) — 📝 PREMIUM-BESCHREIBUNGEN VOLL + 🔗 MENÜ-VERLINKUNG + Büro-Taxonomie +6 (User „fülle überall voll" / „verlinkung alles"):**
 - **24 Premium-Markenprodukte mit ausführlicher Beschreibung** veredelt (User-Screenshot CK-Uhr „zu wenig Beschreibung"):
   Marken-Story/Heritage + ✨Highlights + 📋Details (Ø/Material/Zustand) + 📦Lieferumfang & Service (2 J. Garantie/Etui/Box) + Trust + WELCOME10.
