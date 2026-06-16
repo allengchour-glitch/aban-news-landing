@@ -3,6 +3,12 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 4 — Parfum-Kategorie + Kategorisierungs-Fixes)
+- **🌸 PARFUM-KATEGORIE ERSTELLT** (`parfum-duefte`): es gab ~48 Marken-Parfums (D&G/Hugo Boss/CK/Kenzo/Elie Saab/YSL/Lancôme/
+  Michael Kors/Tommy/Police/Tous …) aber KEINE Parfum-Kollektion → jetzt Smart-Collection **„🌸 Parfum & Düfte"** (Rule TYPE=Parfum,
+  48 Stück, self-füllend: neue Parfum-Importe landen automatisch). Browsebar + BEST_SELLING sortiert. (Mehr Marken-Parfum = BigBuy-Token/Import-Session.)
+- **🗂️ Kategorisierung gefixt:** 💎 Ohrringe-Regel robuster (Tag+Ohrhänger/Creolen/Ohrstecker). Neue Caps/Schmuck korrekt einsortiert.
+
 ## 🆕 2026-06-16 (NACHT 3 — HERO-Nische wasserfester Edelstahl-Schmuck importiert)
 - **💧 WASSERFESTER EDELSTAHL-SCHMUCK LIVE** (CH-Sommer-Renner #1 aus Research): 7 Stück via CJ (Bild-QA't, Name/Bild-Mismatch +
   Overlay-Text-Bilder verworfen) — Armbänder «Amore»/«Cœur»/«Trésor», Halskette «Goutte», Armreif «Couleur», Titan «Nœud»,

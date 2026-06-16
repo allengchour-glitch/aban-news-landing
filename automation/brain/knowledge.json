@@ -509,7 +509,8 @@
     "kategorisierung": [
       "BEIM ANLEGEN immer pruefen ob das Produkt in die richtige Sub-Collection faellt. Smart-Collections sortieren teils per TITLE-CONTAINS (brittle!) — Ohrhaenger/Creolen/Ohrstecker matchen NICHT TITLE enthaelt Ohrring. Loesung: Sub-Collection-Regeln disjunktiv mit TAG-Match ergaenzen (additiv, entfernt nichts).",
       "2026-06-16 FIX: 💎 Ohrringe (sub-ohrringe, 688563650945) Regel erweitert auf disjunktiv [TITLE~Ohrring, TITLE~Ohrhaenger, TITLE~Creolen, TITLE~Ohrstecker, TAG=ohrringe]. Neue Produkte mit Tag ohrringe landen jetzt korrekt. Gleiche Brittleness bei anderen Sub-Collections moeglich (Armband/Kette/Ring) — bei neuen Stuecken Collection-Mitgliedschaft verifizieren.",
-      "Verifiziert 2026-06-16: Caps→caps-hute, Armband→sub-armbaender, Halskette→sub-halsketten, Ohrhaenger→sub-ohrringe, wasserfest→wasserfester-schmuck, alle in damen-mode/neu/geschenke. Sortierung sauber."
+      "Verifiziert 2026-06-16: Caps→caps-hute, Armband→sub-armbaender, Halskette→sub-halsketten, Ohrhaenger→sub-ohrringe, wasserfest→wasserfester-schmuck, alle in damen-mode/neu/geschenke. Sortierung sauber.",
+      "2026-06-16: ~48 Marken-Parfums existierten ohne Parfum-Kollektion → Smart-Collection 🌸 Parfum & Düfte (parfum-duefte, Rule TYPE=Parfum, self-fuellend) erstellt. LEHRE: nach Import-Wellen pruefen ob eine Kategorie-Kollektion fehlt (Produkte da, aber nicht browsebar). Mehr Marken-Parfum = BigBuy-Token (Import-Session), CJ hat nur No-Name (Premium-Positionierung nicht verwaessern)."
     ]
   },
   "decisions": [
