@@ -6,16 +6,46 @@
     "gäu? am Satzende (=gell/oder?)"
   ],
   "vokabular": {
-    "i": "ich", "du": "du", "mir": "wir (Bern, NICHT mer)", "dir": "ihr/Sie (Höflichkeit)",
-    "ha/han": "habe", "hesch": "hast", "hei": "haben (wir)", "gits/git's": "gibt es",
-    "gseh/gsesch": "sehen/siehst", "wott": "will", "chasch": "kannst", "machsch": "machst",
-    "lue/lueg": "schau", "luege": "schauen", "äuä": "wohl/echt jetzt", "gäng/geng": "immer",
-    "gäu/gäll": "gell/oder?", "grüessech": "grüss Sie (Bern-Gruss)", "hoi": "hallo (locker)",
-    "chli": "bisschen/klein", "nid": "nicht (Bern, NICHT nöd)", "nüt": "nichts", "nümm": "nicht mehr",
-    "öpper": "jemand", "öppis": "etwas", "dehei": "daheim", "itz": "jetzt", "scho": "schon", "no": "noch",
-    "es/e": "ein/eine", "ds": "das", "u": "und (sehr berntypisch)", "ou": "auch (User-Korrektur: ou, NICHT au)", "eifach": "einfach",
-    "Meitschi": "Mädchen/junge Frau", "Büez": "Arbeit", "guet": "gut", "mängs": "manches/viele",
-    "hole/hol dr's": "kaufen/hol dir's", "spicher": "speichere",
+    "i": "ich",
+    "du": "du",
+    "mir": "wir (Bern, NICHT mer)",
+    "dir": "ihr/Sie (Höflichkeit)",
+    "ha/han": "habe",
+    "hesch": "hast",
+    "hei": "haben (wir)",
+    "gits/git's": "gibt es",
+    "gseh/gsesch": "sehen/siehst",
+    "wott": "will",
+    "chasch": "kannst",
+    "machsch": "machst",
+    "lue/lueg": "schau",
+    "luege": "schauen",
+    "äuä": "wohl/echt jetzt",
+    "gäng/geng": "immer",
+    "gäu/gäll": "gell/oder?",
+    "grüessech": "grüss Sie (Bern-Gruss)",
+    "hoi": "hallo (locker)",
+    "chli": "bisschen/klein",
+    "nid": "nicht (Bern, NICHT nöd)",
+    "nüt": "nichts",
+    "nümm": "nicht mehr",
+    "öpper": "jemand",
+    "öppis": "etwas",
+    "dehei": "daheim",
+    "itz": "jetzt",
+    "scho": "schon",
+    "no": "noch",
+    "es/e": "ein/eine",
+    "ds": "das",
+    "u": "und (sehr berntypisch)",
+    "ou": "auch (User-Korrektur: ou, NICHT au)",
+    "eifach": "einfach",
+    "Meitschi": "Mädchen/junge Frau",
+    "Büez": "Arbeit",
+    "guet": "gut",
+    "mängs": "manches/viele",
+    "hole/hol dr's": "kaufen/hol dir's",
+    "spicher": "speichere",
     "alegge": "anlegen/auflegen (Schmuck) — KORREKT, NICHT aalegge (User 2026-06-16)"
   },
   "korrekturen_user": {
@@ -31,7 +61,9 @@
     "lernen": "= lehrä",
     "kann ich": "= chani",
     "_vom_user_gelernt": "User schreibt: 'chani ou bärndütsch schribä das ou chli chasch lehrä', 'ja hüt zu tags schribt me äbe angers' → diese Schreibweise nachahmen.",
-    "_offen": "User korrigiert laufend weiter — hier eintragen, hat Vorrang."
+    "_offen": "User korrigiert laufend weiter — hier eintragen, hat Vorrang.",
+    "halt": "= haut (L-Vokalisierung) — User: \"passt scho jede schribt haut chli angers\"",
+    "_validiert": "Moderner Stil vom User bestätigt 2026-06-16 (\"das passt scho\")."
   },
   "phrasen": [
     "Lueg mau das aa 😍 (Neugier)",
@@ -52,10 +84,33 @@
     "So gahsch in Summer 🌿 (eigener Gewinner)",
     "Für di oder zum Verschänke? (eigener Gewinner)"
   ],
-  "begruessung_abbinder": ["Hoi zäme!", "Grüessech mitenand", "Merci viumau ❤️", "Bis bald wieder!", "Mach's guet 👋"],
+  "begruessung_abbinder": [
+    "Hoi zäme!",
+    "Grüessech mitenand",
+    "Merci viumau ❤️",
+    "Bis bald wieder!",
+    "Mach's guet 👋"
+  ],
   "vermeiden": {
-    "zu_deutsch": ["ich->i", "nicht->nid", "etwas->öppis", "jemand->öpper", "immer->gäng", "du siehst->du gsesch", "du hast->hesch", "viel/schnell/Geld->viu/schnäu/Gäud", "ein schönes Teil->es schöns Teil"],
-    "ist_zueriduetsch_nicht_bern": ["grüezi (->grüessech)", "nöd (->nid)", "nüüt (->nüt)", "mer=wir (->mir)", "all/immer-ZH (->gäng)", "es bitzeli (->es chli)"]
+    "zu_deutsch": [
+      "ich->i",
+      "nicht->nid",
+      "etwas->öppis",
+      "jemand->öpper",
+      "immer->gäng",
+      "du siehst->du gsesch",
+      "du hast->hesch",
+      "viel/schnell/Geld->viu/schnäu/Gäud",
+      "ein schönes Teil->es schöns Teil"
+    ],
+    "ist_zueriduetsch_nicht_bern": [
+      "grüezi (->grüessech)",
+      "nöd (->nid)",
+      "nüüt (->nüt)",
+      "mer=wir (->mir)",
+      "all/immer-ZH (->gäng)",
+      "es bitzeli (->es chli)"
+    ]
   },
   "beispiel_caption": "Viu Style für CHF 39.90 – äuä ds beschte Teil, gäu? 😍 Schnäu si! 💾 Spicher dr's · –10% mit WELCOME10 → luxestyle.ch #schweizmode #ootdschweiz #bärndütsch"
 }
