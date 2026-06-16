@@ -3,6 +3,9 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🆕 2026-06-16 (NACHT 14 — Video-Rollout 10 Produkte + 10 Reels in Meta-Queue)
+- **🎬 10 Produkte mit eigenem Produkt-Video** (7 Marken + 3 Wasserfest-Schmuck: Amore/Goutte/Nœud). Alle via Cloud-Pipeline (ffmpeg→stagedUpload→productCreateMedia).
+- **📣 10 Marken-/Schmuck-Reels in die Worker-Queue** (Meta/TikTok, type reel, Shopify-CDN-mp4-URLs) → posten autonom mit. Queue jetzt 104+ Posts, 23+ Reels.
 ## 🆕 2026-06-16 (NACHT 13 — Eigene Produkt-Videos ausgerollt: 7 Marken)
 - **🎬 7 Marken-Produkte mit eigenem Price-Reveal-Reel als Produkt-Video** (vollautonom: ffmpeg → Shopify-CDN-Upload via MCP+curl → productCreateMedia VIDEO):
   D&G «The One», Swatch Swiss Made, Casio, Hugo Boss «Alive Intense», Calvin Klein «Eternity», Guess «Glamour», Michael Kors Handtasche.
