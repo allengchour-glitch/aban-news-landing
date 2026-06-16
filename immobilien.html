@@ -67,6 +67,8 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .card .o{font-size:.78rem;color:var(--muted);margin-bottom:6px}
 .card .d{font-size:.88rem;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px}
 .card button.c{background:#fff;border:1.5px solid var(--amber-dk);color:var(--amber-dk);border-radius:8px;padding:7px 12px;font-weight:700;font-size:.82rem;cursor:pointer}
+.card .c2{display:inline-block;background:var(--amber-dk);color:#fff;border-radius:8px;padding:8px 14px;font-weight:700;font-size:.82rem;text-decoration:none}
+.card .c2:hover{background:#a04708}
 .card button.c:hover{background:var(--amber-dk);color:#fff}
 .status{color:var(--muted);font-size:.95rem;padding:30px 0;text-align:center}
 footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color:var(--muted);text-align:center}
@@ -295,7 +297,8 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       var img=it.bild?('<div style="aspect-ratio:16/10;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.bild)+'\');border-radius:10px;margin:-2px 0 9px"></div>'):'';
       var top=it.featured?'<span style="background:#b45309;color:#fff;border-radius:6px;padding:2px 7px;font-size:.66rem;font-weight:800;margin-left:6px">⭐ TOP</span>':'';
       var fcls=it.featured?' style="border:2px solid var(--amber)"':'';
-      return '<div class="card"'+fcls+'>'+img+'<div class="k">'+esc(it.kat||"Immobilie")+top+'</div><h3>'+esc(it.titel)+'</h3>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div><button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button></div>';
+      var cta=it.id?('<a class="c2" href="/inserat/'+encodeURIComponent(it.id)+'">Details ansehen →</a>'):('<button class="c" type="button" data-k="'+esc(it.kontakt||"")+'">Kontakt anzeigen</button>');
+      return '<div class="card"'+fcls+'>'+img+'<div class="k">'+esc(it.kat||"Immobilie")+top+'</div><h3>'+esc(it.titel)+'</h3>'+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+'<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div>'+cta+'</div>';
     }).join("");
     cntEl.textContent=items.length+" Immobilien";
     Array.prototype.forEach.call(document.querySelectorAll(".card button.c"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
