@@ -568,7 +568,8 @@
     ],
     "katalog_audit": [
       "FANTASIE-STREICHPREISE: compareAt ≈ Preis×1.3 ohne echte MSRP = unglaubwürdig (722 Funde, viele krumm wie 51.87/337.87). Audit: ratio>1.4 & Endung nicht .90/.95 → prüfen/entfernen. Streichpreis nur mit echter UVP (KATALOG-QUALITAET).",
-      "BILD-AUDIT katalogweit: image-audit.mjs / asian_script_audit.py mit GEMINI_API_KEY, 2-Pass (1: alles flaggen, 2: nur prominente Overlays/Banner/asiat. Schrift archivieren) → ~15–17% der Auto-Importe haben Werbe-Overlays. Borderline-Hintergrundschilder behalten (False-Positive-Reduktion)."
+      "BILD-AUDIT katalogweit: image-audit.mjs / asian_script_audit.py mit GEMINI_API_KEY, 2-Pass (1: alles flaggen, 2: nur prominente Overlays/Banner/asiat. Schrift archivieren) → ~15–17% der Auto-Importe haben Werbe-Overlays. Borderline-Hintergrundschilder behalten (False-Positive-Reduktion).",
+      "BRILLEN-QA (User 2026-06-16 ist das wirklich sonnenbrille): BigBuy-Marken-Eyewear wird teils als Sonnenbrille getaggt, ist aber KLARES optisches GESTELL (Korrekturbrille, durchsichtige Gläser) = Misrepresentation (Merchant-Risiko!). 2026-06-16 korrigiert: 3x Citizen + 2x Michael Kors + 1x Tous → Titel Sonnenbrille->Brille, productType Brillen, Tag brille statt sonnenbrille. JEDES Marken-Eyewear-Bild ansehen: getoente Glaeser=Sonnenbrille, klare Glaeser=Brille. Citizen CTZ-Modelle = fast immer optische Gestelle. REST noch zu pruefen (Versace/Chopard/Porsche/Fila/Superdry)."
     ],
     "pod_printful": [
       "PRINTFUL-Katalog ist öffentlich OHNE API-Key: GET api.printful.com/products/variant/{catalogVariantId} → sauberes Blank-Produktfoto ohne «Dein Design»-Text. catalogVariantId = Teil nach «_» in der Shopify-SKU. Ideal für POD-Mockups ohne Gemini-Guthaben (MEMORY-KOMPAKT).",
