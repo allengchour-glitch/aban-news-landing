@@ -132,7 +132,7 @@ function loadReels() {
   const reels = loadReels();
   // STORIES = text-tragende Reels (Produktname/Preis/CTA eingebrannt, Safe-Zone) statt nackter Bilder
   // (User 2026-06-16 „story kein text?"). Lieber KEINE Story als eine ohne Text → nur aus Reels bauen.
-  const stories = reels.slice(0, 8).map(r => ({ type: 'story', video: r.video }));
+  const stories = reels.map(r => ({ type: 'story', video: r.video })); // ALLE Reels (täglich rotiert) → keine Story-Wiederholung (User 2026-06-17)
 
   // MIX interleaven: überwiegend Bilder, jede 3. ein Reel, jede 6. eine Story → alle Formate überall.
   const out = []; let ri = 0, si = 0;
