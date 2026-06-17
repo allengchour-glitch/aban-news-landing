@@ -48,6 +48,9 @@ async function pingProvider(name) {
     // Google-Trends-CH erreichbar? (gratis, kein Key)
     try { const r = await fetch('https://trends.google.com/trending/rss?geo=CH', { signal: AbortSignal.timeout(8000) });
       out.data.google_trends_ch = r.ok ? 'erreichbar' : `http ${r.status}`; } catch { out.data.google_trends_ch = 'down'; }
+    // Gratis Bild-KI (Pollinations, kein Key) erreichbar?
+    try { const r = await fetch('https://image.pollinations.ai/prompt/test?width=64&height=64&nologo=true', { signal: AbortSignal.timeout(12000) });
+      out.data.image_gen_free = r.ok ? 'erreichbar' : `http ${r.status}`; } catch { out.data.image_gen_free = 'down'; }
   }
 
   const liveAi = Object.entries(out.ai).filter(([, v]) => v === 'live').map(([k]) => k);
