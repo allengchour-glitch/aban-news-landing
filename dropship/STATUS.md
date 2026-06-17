@@ -5,7 +5,7 @@
 
 ## 🧰 2026-06-17 (GRATIS-VOLLAUTOMATIONS-STACK + KI-FALLBACK + Trends/Musik + Follower langsam)
 - **🤖 Multi-Provider-KI-Router `automation/ai/ai_generate.mjs`:** groq→gemini→openrouter→cloudflare→mistral→openai,
-  automatischer Fallback wenn einer ausfällt, Template-Fallback ohne Key → **Automation bricht NIE**. Live getestet: OpenAI-Key = Quota leer (429) → Router fiel sauber zurück (genau das Ziel). **Fehlt: 1 gratis Key (Groq #1).**
+  automatischer Fallback wenn einer ausfällt, Template-Fallback ohne Key → **Automation bricht NIE**. **GROQ ist jetzt der aktive #1 (Key vom User 2026-06-17 geliefert + live verifiziert: `groq=live`, echte Bärndütsch-Caption generiert).** Key-Wert NUR in `luxe-secrets.ps1` als `$env:GROQ_API_KEY` (NIE im öffentlichen Repo). OpenAI = Quota leer (429, nur Fallback).
 - **🩺 `automation/health-check.mjs`:** zeigt welche KI-Provider/Binaries/Daten leben (Report `reports/health-*.json`). Aktuell: ffmpeg/yt-dlp/piper/gallery-dl ok, Google-Trends-CH erreichbar, 0 KI-Keys gesetzt.
 - **📈 `automation/trends/trend_scan.mjs`:** Trends+Musik regelmässig — Google-Trends-CH (gratis, kein Key) + KI-Content-Ideen (CH/Mundart). Läuft auch ohne KI (regelbasiert).
 - **🛠️ `automation/setup-free-stack.sh`:** baut Gratis-Stack reproduzierbar (yt-dlp/gallery-dl/Pillow/Checks) — Container sind ephemer, Skript = Wahrheit. gallery-dl neu installiert.
