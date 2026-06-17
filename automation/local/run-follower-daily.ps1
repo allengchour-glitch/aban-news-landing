@@ -57,6 +57,10 @@ node "automation/local/tiktok-upload-browser.mjs"
 node "automation/local/ig-dm-browser.mjs"
 node "automation/local/tiktok-dm-browser.mjs"
 
+# 5b) IG-Posts LÖSCHEN die nicht erlaubt sind (Botox/Serum/Rosehip/Gua-Sha) — IG-API kann published
+#     NICHT löschen → Browser/CDP. Liest automation/local/ig-delete-queue.txt, idempotent. No-op wenn leer.
+node "automation/local/ig-delete-browser.mjs"
+
 # 6) IG/FB-Kommentare unter den Posts automatisch beantworten (Meta-API, FAQ-Stil)
 #    No-op ohne META_ACCESS_TOKEN.
 if ($env:META_ACCESS_TOKEN) { node "automation/social-comment-reply.mjs" }
