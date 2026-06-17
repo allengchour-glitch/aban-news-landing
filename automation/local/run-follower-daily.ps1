@@ -85,7 +85,9 @@ if ($env:SHOPIFY_CLIENT_ID -and $env:SHOPIFY_CLIENT_SECRET) {
   # 8d) BILD-COMPLIANCE-AUDIT (Gemini Vision): findet Botox/Vorher-Nachher/asiat. Schrift/
   #     Watermark/Med-Claims auf Produktbildern → Treffer auf DRAFT + Tag (reversibel).
   #     Braucht GEMINI_API_KEY (gratis, aistudio.google.com) in luxe-secrets.ps1. Idempotent.
-  if ($env:GEMINI_API_KEY) { $env:MAX = "300"; $env:AUDIT_FIX = "1"; node "automation/image-audit.mjs"; $env:MAX = $null; $env:AUDIT_FIX = $null }
+  # REPORT-Modus (kein Auto-DRAFT): erzeugt reports/image-audit-*.json zum Sichten.
+  # (FIX nur manuell nach Review — verhindert Fehlalarm-DRAFTs von echten Markenprodukten/POD.)
+  if ($env:GEMINI_API_KEY) { $env:MAX = "400"; node "automation/image-audit.mjs"; $env:MAX = $null }
 }
 
 # 9) IMMER NACH DEM POSTEN: ANALYSIEREN + LERNEN (User 2026-06-16 „wenn du fertig postest, dann immer Analyse").

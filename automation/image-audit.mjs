@@ -30,18 +30,18 @@ const ONLY_ACTIVE = process.env.ONLY_ACTIVE !== '0';
 const API = '2025-01';
 if (!GKEY) { console.error('❌ GEMINI_API_KEY fehlt.'); process.exit(1); }
 
-const PROMPT = `Du prüfst EIN Produktbild eines Schweizer Shops auf SCHWERE Compliance-Verstösse.
-Setze flag=true NUR wenn EINDEUTIG eines davon sichtbar ist:
-A) Geschützter Markenname/Logo einer FREMDEN Marke auf einem generischen Produkt (z.B. "Botox", "Ozempic", "Nike", "Adidas", Apple-Logo, Disney).
-B) Vorher/Nachher-Vergleichsfoto (zwei Gesichter/Körper "before/after" nebeneinander).
+const PROMPT = `Du prüfst EIN Produktbild eines Schweizer Shops NUR auf BILD-HYGIENE-Verstösse.
+Setze flag=true NUR wenn EINDEUTIG eines sichtbar ist:
+B) Vorher/Nachher-Vergleichsfoto (before/after, zwei Zustände nebeneinander).
 C) Chinesische/japanische/koreanische SCHRIFTZEICHEN oder der Text "MADE IN CHINA" im Bild.
-D) Watermark/Logo/URL eines ANDEREN Shops/Marktplatzes (z.B. AliExpress, Amazon, fremde .com).
-Setze flag=false bei: normalem Produktfoto, Menschen/Modellen JEDER Herkunft, englischem Marketing-Text,
-üblichen Kosmetik-Wörtern (Anti-Aging, Whitening, Collagen, Lifting), Produktnamen ohne fremde Marke.
-WICHTIG: Eine fremde Marke auf einem DEMO-/Muster-Gegenstand, der nur das Produkt zeigt (z.B. Kreditkarte
-"Bank of America" in einem Portemonnaie, App-Logo auf einem Handy-Display, Getränkedose in einem Kühler),
-ist KEIN Verstoss → flag=false. Nur flag=true, wenn die fremde Marke das PRODUKT SELBST brandet oder als
-Text/Logo/Watermark AUFS BILD gelegt ist (z.B. "PureMax" oben im Bild).
+D) Watermark/Logo/URL eines FREMDEN Online-Shops/Marktplatzes als Overlay aufs Bild gelegt
+   (z.B. "AliExpress", "Amazon", eine fremde .com-URL, oder ein unbekannter Verkäufer-Schriftzug wie "PureMax", "INEFFABLE", "RKJ").
+Setze flag=false (KEIN Verstoss) bei ALLEM anderen, insbesondere:
+- Echte Markenprodukte mit ihrem eigenen legitimen Logo/Namen (z.B. Adidas-Shirt, YSL-Parfum, Nike-Schuh, Pandora-Ring, Michael Kors-Tasche) → das ist KEIN Verstoss.
+- Eigene/aufgedruckte Design-Texte des Shops (z.B. "Matterhorn", "Edelweiss", "Swiss Army Knife", "Fondue").
+- Fremde Marke nur auf einem Demo-Gerät, das das Produkt nutzt (iPhone an einem Ladegerät, Kreditkarte im Portemonnaie).
+- Menschen/Modelle, englischer Marketing-Text, Kosmetik-Wörter (Anti-Aging, Whitening, Collagen).
+NICHT die Marke an sich bewerten — nur ob ein FREMDER Shop-Watermark, asiatische Schrift oder ein Before/After-Foto draufliegt.
 Im Zweifel flag=false. Antworte NUR mit einer Zeile JSON: {"flag":true|false,"reasons":["kurz"]}`;
 
 async function shToken(){
