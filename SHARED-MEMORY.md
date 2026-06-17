@@ -44,6 +44,15 @@
 
 ---
 
+## 🎯 PIXEL-STRATEGIE (FÜR ALLE SESSIONS · User 2026-06-17 „merk für immer + teil mit alle")
+- **TikTok-Pixel `D8EKVR3C77U6KT5BTBD0`** (Shopify-TikTok-App). **WICHTIGSTE Regel = EVENT-LEITER:**
+  bei 0 Verkäufen NICHT auf „Complete Payment" optimieren (keine Lerndaten) → **Phase 1 „View Content"
+  → Phase 2 „Add to Cart" → Phase 3 „Complete Payment"** (erst ab ~50 Events/Woche hochstufen).
+- Kampagne: CH/Frauen/18–34/DE+FR, nur TikTok, **Budget-Cap 350 CHF hart**, Creative = bestes Reel,
+  Ziel `/collections/sommer`. Tool: `automation/local/tiktok-campaign-port.mjs` (--dry → AUTO_LAUNCH=1).
+- Nur **1** aktive Kampagne (TikTok-App-Auto-Smart-Kampagnen AUS = Budget-Loch). Volles Playbook:
+  **`dropship/PIXEL-STRATEGIE.md`**. (Pixel-Setup gehört zur Social/Marketing-Session, nicht Theme.)
+
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
 **🟢 2026-06-16 (~23:45) — CizQ6: +12 OUTDOOR-Produkte (BigBuy EU) + Mapping 5747 kategorisiert:**

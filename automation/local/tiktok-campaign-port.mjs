@@ -33,7 +33,7 @@ const C = {
   total: process.env.TT_TOTAL_BUDGET || '350',
   daily: process.env.TT_DAILY_BUDGET || '25',
   pixel: process.env.TT_PIXEL_ID || 'D8EKVR3C77U6KT5BTBD0',
-  event: process.env.TT_EVENT || 'Complete payment',
+  event: process.env.TT_EVENT || 'View Content', // PIXEL-LEITER Phase 1 (mehr Events = Pixel lernt). Erst spaeter auf "Add to Cart" -> "Complete payment". Siehe dropship/PIXEL-STRATEGIE.md
   landing: process.env.TT_LANDING || 'https://luxestyle.ch/collections/sommer',
   video: path.resolve(process.env.TT_VIDEO || path.join(ROOT, 'reels', 'luxe-flagship-film.mp4')),
   identity: process.env.TT_IDENTITY || 'Luxestyle.ch',
