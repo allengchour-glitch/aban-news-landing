@@ -22,7 +22,7 @@ import fs from 'node:fs';
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const CID = process.env.SHOPIFY_CLIENT_ID, SEC = process.env.SHOPIFY_CLIENT_SECRET;
 const GKEY = process.env.GEMINI_API_KEY;
-const GMODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+const GMODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const MAX = parseInt(process.env.MAX || '0', 10);
 const DELAY = parseInt(process.env.DELAY || '400', 10);
 const FIX = process.env.AUDIT_FIX === '1';
@@ -30,15 +30,15 @@ const ONLY_ACTIVE = process.env.ONLY_ACTIVE !== '0';
 const API = '2025-01';
 if (!GKEY) { console.error('❌ GEMINI_API_KEY fehlt.'); process.exit(1); }
 
-const PROMPT = `Du bist Bild-Compliance-Prüfer für einen Schweizer Shopify-Shop.
-Markiere NUR klare Verstösse auf dem Produktbild:
-1) Fremde Marke/Trademark auf generischem Produkt (z.B. Botox, Ozempic, Nike, Adidas, Apple, Disney).
-2) Vorher/Nachher-Vergleichsfoto.
-3) Chinesische/japanische/koreanische/asiatische Schriftzeichen ODER Text "MADE IN CHINA".
-4) Fremde Watermark / fremde Shop-URL / Logo eines anderen Händlers.
-5) Eingeblendete medizinische Heilversprechen (z.B. "cures", "heilt", "100% wirksam gegen Krankheit").
-Ein normales, sauberes Produktfoto (auch mit Modellen oder üblichen Kosmetik-Wörtern wie "Anti-Aging") = KEIN Verstoss.
-Antworte AUSSCHLIESSLICH als JSON: {"flag": true oder false, "reasons": ["..."]}`;
+const PROMPT = `Du prüfst EIN Produktbild eines Schweizer Shops auf SCHWERE Compliance-Verstösse.
+Setze flag=true NUR wenn EINDEUTIG eines davon sichtbar ist:
+A) Geschützter Markenname/Logo einer FREMDEN Marke auf einem generischen Produkt (z.B. "Botox", "Ozempic", "Nike", "Adidas", Apple-Logo, Disney).
+B) Vorher/Nachher-Vergleichsfoto (zwei Gesichter/Körper "before/after" nebeneinander).
+C) Chinesische/japanische/koreanische SCHRIFTZEICHEN oder der Text "MADE IN CHINA" im Bild.
+D) Watermark/Logo/URL eines ANDEREN Shops/Marktplatzes (z.B. AliExpress, Amazon, fremde .com).
+Setze flag=false bei: normalem Produktfoto, Menschen/Modellen JEDER Herkunft, englischem Marketing-Text,
+üblichen Kosmetik-Wörtern (Anti-Aging, Whitening, Collagen, Lifting), Produktnamen ohne fremde Marke.
+Im Zweifel flag=false. Antworte NUR mit einer Zeile JSON: {"flag":true|false,"reasons":["kurz"]}`;
 
 async function shToken(){
   if (process.env.SHOPIFY_TOKEN) return process.env.SHOPIFY_TOKEN;
@@ -54,7 +54,7 @@ async function audit(url){
   let b64, mime=mimeOf(url);
   try{ const r=await fetch(url); const buf=Buffer.from(await r.arrayBuffer()); if(buf.length>4_000_000) return {flag:false,reasons:['(zu gross, skip)']}; b64=buf.toString('base64'); }
   catch{ return {flag:false,reasons:['(bild-download-fehler)']}; }
-  const body={contents:[{parts:[{text:PROMPT},{inline_data:{mime_type:mime,data:b64}}]}],generationConfig:{temperature:0,maxOutputTokens:200}};
+  const body={contents:[{parts:[{text:PROMPT},{inline_data:{mime_type:mime,data:b64}}]}],generationConfig:{temperature:0,maxOutputTokens:512,thinkingConfig:{thinkingBudget:0}}};
   for(let a=0;a<5;a++){
     const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GMODEL}:generateContent?key=${GKEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     if(r.status===429||r.status>=500){ await sleep(3000*(a+1)); continue; }
