@@ -16,6 +16,19 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🔑 2026-06-17 — DOWNLOAD_SALT turnkey gemacht (Kit-ZIPs at deploy) + Key bleibt (User-Wille)
+> User-Entscheid: **`sk_live`-Key NICHT rotieren, dauerhaft behalten** (Risiko bewusst akzeptiert — der Key
+> stand im Chat; wer ihn sah, könnte ihn nutzen. Nicht erneut posten.) Salt: dauerhaft + turnkey gelöst.
+- **🆕 `automation/build_kit_zips.py` + Schritt in `build-pages.sh`:** baut beim Cloudflare-Deploy für alle 22
+  DE- + 22 EN-Kits das Paket und legt es unter `downloads/kits/<sha256(slug:DOWNLOAD_SALT)[:24]>.zip` ab —
+  exakt der Name, den `functions/api/kit-download.js` ausliefert. **Damit funktioniert der Kauf-Download mit
+  JEDEM dauerhaften Salt, OHNE GitHub Actions** (die ist eh gedrosselt). No-op ohne Salt; nutzt committете
+  PDFs + Fallback-Prompts (kein API-Key nötig). Vorher machte das NUR `stripe-shop.yml` (Actions).
+- **➡️ Letzter User-Schritt für echten Verkauf:** **`DOWNLOAD_SALT`** im **Cloudflare-Pages-Env** setzen
+  (irgendein dauerhafter Geheim-String) → nächster Deploy baut die passenden ZIPs → alle 22 Downloads live.
+  Stichwort „salt" (mit dem Wert lokal/CI) → `shop_selfcheck.py` verifiziert den ZIP↔Slug-Abgleich.
+- Stand: DE-Shop 22/22 kaufbar + lieferbar (Content da), Brain 100/100, Memory aktuell.
+
 ## ✅ 2026-06-16 — Shop-Fulfillment verifiziert + Brain 100/100 (zuerst lesen)
 > **🧠 STANDING-REGEL (User 2026-06-16): IMMER die geteilte Memory (PROJEKT.md) aktuell halten** — jede
 > Session trägt ihren Stand hier ein, damit andere Sessions nahtlos weitermachen. (Dropship = CLAUDE.md, nicht anfassen.)

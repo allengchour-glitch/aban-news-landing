@@ -15,6 +15,12 @@ set -euo pipefail
 rm -rf _site
 mkdir -p _site
 
+# Geschützte Kit-ZIPs aus DOWNLOAD_SALT (Cloudflare-Pages-Env) bauen →
+# downloads/kits/<sha256(slug:salt)[:24]>.zip, exakt wie kit-download.js sie ausliefert.
+# So funktioniert der Kauf-Download mit JEDEM dauerhaften Salt, ganz ohne GitHub Actions.
+# No-op ohne DOWNLOAD_SALT; tolerant (bricht den Build nicht ab).
+( command -v python3 >/dev/null 2>&1 && python3 automation/build_kit_zips.py ) || echo "build_kit_zips übersprungen"
+
 # Portabel (kein rsync nötig): mit tar kopieren und dabei ausschließen.
 tar -cf - \
   --exclude='./.git' \
