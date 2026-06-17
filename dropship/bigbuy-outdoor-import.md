@@ -111,3 +111,13 @@ QA verworfen: Ceys «Agua Stop» (Wasser-Reparaturband ≠ Isolierband), Bosch �
 | OBO Bettermann | Nagel-Kabelschellen | 16.90 |
 
 **→ Session-Total: 61 neue Produkte (24 Outdoor + 12 Garten + 12 Küche + 13 Elektriker).**
+
+## Runde 6 — Elektriker MAXIMUM (NWS/BOSCH/Grip-on, am Lager) — +12 Produkte
+User: „alles von Knipex und Wera" → **Knipex+Wera = 0 Lager bei BigBuy** (6000 Produkte gescannt, bestätigt; AliExpress = Fake → verboten). Stattdessen ALLES von den echten DE-Premium-Marken die BigBuy WIRKLICH hat:
+- **NWS** (Made in Germany): Abisolierzange, Spitzzange, Zangensatz 2er, T-Griff, Nussverlängerung
+- **BOSCH**: Akku-Arbeitsscheinwerfer GLI 18V-1200, 3× Akku-Lampe/Taschenlampe (alle „ohne Akku" deklariert!), Schonhammer
+- **Grip-on**: Spann-/Gripzange, C-Spannzange
+Skript `/tmp/bb_prem.py` + `/tmp/create_prem.mjs` (`/tmp/cfg_prem.json`). Alle tag:elektriker → Smart-Kollektion. QA: KUKKO-Lagerabzieher (Mechaniker, off-focus) + Grip-on-Adapter-Kleinteile weggelassen.
+**Lehre:** BigBuy listet Marken (Knipex/Wera/Stanley/Dewalt/Makita) die NICHT am Lager sind → immer per Manufacturer-ID über mehrere Roots scannen, nicht auf die Markenliste verlassen.
+
+**→ Elektriker-Linie: 25 Produkte. Session-Total: 73 neue Produkte.**
