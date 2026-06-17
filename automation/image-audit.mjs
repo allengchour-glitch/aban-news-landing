@@ -38,6 +38,10 @@ C) Chinesische/japanische/koreanische SCHRIFTZEICHEN oder der Text "MADE IN CHIN
 D) Watermark/Logo/URL eines ANDEREN Shops/Marktplatzes (z.B. AliExpress, Amazon, fremde .com).
 Setze flag=false bei: normalem Produktfoto, Menschen/Modellen JEDER Herkunft, englischem Marketing-Text,
 üblichen Kosmetik-Wörtern (Anti-Aging, Whitening, Collagen, Lifting), Produktnamen ohne fremde Marke.
+WICHTIG: Eine fremde Marke auf einem DEMO-/Muster-Gegenstand, der nur das Produkt zeigt (z.B. Kreditkarte
+"Bank of America" in einem Portemonnaie, App-Logo auf einem Handy-Display, Getränkedose in einem Kühler),
+ist KEIN Verstoss → flag=false. Nur flag=true, wenn die fremde Marke das PRODUKT SELBST brandet oder als
+Text/Logo/Watermark AUFS BILD gelegt ist (z.B. "PureMax" oben im Bild).
 Im Zweifel flag=false. Antworte NUR mit einer Zeile JSON: {"flag":true|false,"reasons":["kurz"]}`;
 
 async function shToken(){
