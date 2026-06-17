@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🎠 2026-06-17 (IG VOLL-PORT-AUTOMATION + Carousel + Profil-Analyse + Cleanup)
+- **🚨 BOTOX/SERUM/ÖL im IG-Grid LIVE gfunde** (alti Posts vor de Verbots-Regle): Botox/Vitamin-C-Serum «Glow», Rosehip-Öl/Gua-Sha (HEMP). IG-API cha published NID lösche (#10) → **`ig-delete-browser.mjs` (Brave-CDP)** boue, liest `ig-delete-queue.txt` (5 Posts mit Permalinks), im PC-Task verdrahtet. DO-NOT-POST erweitert (serum/botox/vitamin-c); fresh1-Reel raus; queue.json verifiziert clean.
+- **🎠 IG-Carousel (Bilderreihe in 1 Kachel, 1 Beschreibung):** `automation/post_ig_carousel.mjs` (Graph-API, 2–10 Top-Text-Karten, Gewinner zuerst). **Erster live** (id 18115311286862973). Autonom **Di+Fr** im PC-Task.
+- **📊 Profil-Analyse (Screenshots TikTok+IG):** Gewinner = **Schmuck-Makro** (Herzketti 778 V) + Kleid-in-Bewegung → A-Video startet jetzt mit dem Gewinner. Verlierer = generische Street-Shots. Ratio ungesund (IG 146 Foll/814 Gefolgt, TT 592/878) → **ch-unfollow täglich** statt nur Sonntag.
+- **📋 Format-Regeln (Gehirn `formate_2026_06`):** Carousel + Videos/Reels IMMER mit Beschreibung+Hashtags + Stories/Reels im Mix nicht vergessen + jederzeit antworten (Worker-Cron 6×/Tag Kommentare, PC-Browser DMs).
+- **IG = komplett über Port/API:** Posten (Graph), Löschen (Browser), DM (Browser), Follower/Unfollow (Browser), Kommentar (API) — alles im PC-Tagestask.
+
 ## 🎯 2026-06-17 (TikTok-Pixel-Kampagne per Port — Scaffold, Budget-Cap 350 CHF)
 - **User-Entscheid:** „autonom, ha 350 Fr druf, uf Pixel voll Gas, ohni mi." → voll-auto Kampagne via Brave-CDP-Port.
 - **`automation/local/tiktok-campaign-port.mjs` gebaut:** erstellt+startet Kampagne über eingeloggtes TikTok Ads Manager (Port 9222, wie Upload/Follower). Config: Lifetime-Cap CHF 350 (HART), Tag 25 CHF (~14 T), Pixel D8EKVR…, Event Complete Payment, CH/Frauen/18–34/DE+FR, TikTok-Placement, Creative `reels/luxe-hero-ad.mp4`, Ziel /collections/sommer. Idempotent (campaign-ledger.txt → kein Doppel-Spend).
