@@ -3,11 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
-## 🛍️ 2026-06-17 (PRODUKT-OFFENSIVE — 36 neue Produkte via BigBuy EU)
-- **24 Outdoor/Camping** (2 Runden) + **12 Garten & Balkon** = 36 neue, alle ACTIVE/6 Kanäle/Bilder QA'd+READY/CHF/Kategorie/condition=new.
-- **Neue Smart-Kollektion „🌿 Garten & Balkon"** (Tag=garten, publiziert) + Outdoor in „Reise & Outdoor" (jetzt 30).
-- Garten: Springbrunnen/Gartenbrunnen/Feuerschale/Varta-Stirnlampe/Laternen-4er/2 Gewächshäuser/Pavillon 3×3/Gartenschere/Hacke/2 Sichtschutz.
-- QA verworfen: Kinder-Teepee, Box-statt-Kompass, Bosch-Thermometer, Camping-Äxte (Waffenpolicy). IDs: `dropship/bigbuy-outdoor-import.md`.
+## 🛍️ 2026-06-17 (PRODUKT-OFFENSIVE — 48 neue Produkte via BigBuy EU, 4 Runden)
+- **24 Outdoor/Camping + 12 Garten & Balkon + 12 Haus & Küche = 48 neue**, alle ACTIVE/6 Kanäle/Bilder QA'd+READY/CHF/Kategorie/condition=new.
+- **Kollektionen:** „Reise & Outdoor" (30), neue Smart-Coll „🌿 Garten & Balkon" (Tag=garten, publiziert), „Küche & Kochen".
+- Küche: Kaffeemaschine/2 Milchaufschäumer(inkl. Jura)/Allesschneider/Aufbewahrung(3)/Kupferbecher/Ofenform Zenker/2 Pfannen/Abtropfsieb.
+- QA verworfen (nicht live): Kinder-Teepee, Box-statt-Kompass, Bosch-Thermometer, Camping-Äxte (Waffe), 2× x12-Grosspack. IDs: `dropship/bigbuy-outdoor-import.md`.
 
 ## 🏕️ 2026-06-16 (OUTDOOR-RUNDE — 12 neue Produkte live via BigBuy EU)
 - **12 Outdoor/Camping-Produkte angelegt** (ACTIVE, 6 Kanäle, Bilder READY, CHF-Preis, Kategorie sg/hg, condition=new, 7 mit GTIN): 2 Camping-Gaskocher, 2 Klapptische, 2 Hängematten, LED-Laterne, Solar-Fackel, LED-Kerzen 3er, Klapp-Holzkohlegrill, Elektrogrill 2400 W, Grillmatte. In Kollektion „Reise & Outdoor" gehängt. IDs/Quelle: `dropship/bigbuy-outdoor-import.md`.
