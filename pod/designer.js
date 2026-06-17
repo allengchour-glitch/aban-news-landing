@@ -513,4 +513,10 @@
 
   function initAll(){ var n=document.querySelectorAll('.lspod-designer'); Array.prototype.forEach.call(n,function(x){ if(x.getAttribute('data-init'))return; x.setAttribute('data-init','1'); try{ build(x); }catch(e){} }); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+  // Robust gegen Theme-View-Transitions / Client-Navigation / spaet eingefuegtes DOM (Horizon & Co.):
+  try{ window.LSPOD={init:initAll}; }catch(e){}
+  document.addEventListener('shopify:section:load', initAll);
+  document.addEventListener('shopify:section:select', initAll);
+  ['page:loaded','pageshow','popstate'].forEach(function(ev){ try{ window.addEventListener(ev, function(){ setTimeout(initAll,50); }); }catch(e){} });
+  try{ new MutationObserver(function(){ if(document.querySelector('.lspod-designer:not([data-init])')) initAll(); }).observe(document.documentElement,{childList:true,subtree:true}); }catch(e){}
 })();
