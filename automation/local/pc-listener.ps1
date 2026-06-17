@@ -10,7 +10,9 @@
 #   &cmd=tiktok    -> nächstes Reel auf TikTok (Port)
 #   &cmd=follower  -> CH-Follower-Lauf
 #   &cmd=all       -> komplette Tagesroutine (run-follower-daily.ps1)
-#   &cmd=deploy    -> Cloudflare-Worker neu deployen (wrangler)
+#   &cmd=deploy        -> Cloudflare-Worker neu deployen (wrangler)
+#   &cmd=campaign-dry  -> TikTok-Kampagne TESTLAUF (kein Geld) + Screenshots ins Repo pushen
+#   &cmd=campaign-go   -> TikTok-Kampagne erstellen + absenden (Budget-Cap 350, erst nach campaign-dry)
 
 $ErrorActionPreference = "SilentlyContinue"
 $WORKER = "https://luxe-poster.allengchour.workers.dev"
@@ -28,6 +30,18 @@ function Run-Cmd($c) {
     "follower" { node "automation/local/ch-follower-growth.mjs" }
     "all"      { powershell -ExecutionPolicy Bypass -File "automation/local/run-follower-daily.ps1" }
     "deploy"   { Push-Location "automation/cloudflare/luxe-poster"; wrangler deploy; Pop-Location }
+    "campaign-dry" {
+      # Handy-tauglich: Kampagne-Bot im Test-Modus laufen lassen + Screenshots ins Repo pushen,
+      # damit Cloud-Claude die Selektoren prüfen kann. Gibt KEIN Geld aus.
+      node "automation/local/tiktok-campaign-port.mjs" --dry
+      git add automation/local/campaign-shots/* 2>$null
+      git commit -m "campaign-dry: Ads-Manager Screenshots zum Pruefen" 2>$null
+      git push origin claude/luxestyle-product-CizQ6 2>$null
+    }
+    "campaign-go" {
+      # NUR wenn Selektoren bestaetigt: Kampagne erstellen + absenden (Budget-Cap 350 im Skript).
+      $env:AUTO_LAUNCH="1"; node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null
+    }
     default    { Write-Host "  (unbekannter Befehl, übersprungen)" }
   }
 }
