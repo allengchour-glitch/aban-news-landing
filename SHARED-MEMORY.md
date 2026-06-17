@@ -53,6 +53,11 @@
 - Nur **1** aktive Kampagne (TikTok-App-Auto-Smart-Kampagnen AUS = Budget-Loch). Volles Playbook:
   **`dropship/PIXEL-STRATEGIE.md`**. (Pixel-Setup gehört zur Social/Marketing-Session, nicht Theme.)
 
+> **⚠️ 2026-06-17 KOORDINATION (CizQ6/Social ↔ Theme-Session):**
+> **(1) DOPPEL-POST-GEFAHR:** Theme-Session hat `luxestyle-autopilot.yml` gebaut (24/7, braucht Actions-Freischaltung + 6 Secrets). **WENN dieser Workflow zu IG/FB/Social postet → KONFLIKT mit dem Cloudflare-Worker luxe-poster (= DER EINE Meta-Poster, postet 3×/Tag).** REGEL bleibt: nur EIN Meta-Poster. → autopilot.yml soll NUR Katalog/CJ/BigBuy/Content/Lernen machen, NICHT Social-Posten; ODER falls autopilot postet, Worker-Cron deaktivieren. **Vor Aktivierung abstimmen!**
+> **(2) Owner-Klicks (Theme-Session/User):** GitHub Actions freischalten (war 422) + 6 Repo-Secrets (SHOPIFY_CLIENT_ID/SECRET/SHOP, CJ_ACCESS_TOKEN, GROQ_API_KEY, opt. BIGBUY_API_KEY) · Theme-Kopie 187708211585 veröffentlichen (themePublish API-gesperrt = der eine Admin-Klick).
+> **(3) Social-Stack (CizQ6) komplett:** Worker IG+FB 3×/Tag · tiktok-cycle 2× · engagement-cycle 4× · tutti/anibis/Pinterest/FB-Gruppen · Pixel-Kampagne-Bot · Clarity aktiv. Voll-Doku: `dropship/MASTER-A-Z.md`.
+
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
 **🟢 2026-06-16 (~23:45) — CizQ6: +12 OUTDOOR-Produkte (BigBuy EU) + Mapping 5747 kategorisiert:**
