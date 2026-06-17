@@ -46,3 +46,7 @@ session-check.png
 
 # Cloudflare-Pages-Build-Output (lokal/CI generiert)
 _site/
+
+# wrangler local cache (nicht committen)
+.wrangler/
+cloudflare/.wrangler/
