@@ -37,6 +37,22 @@ Set-Location $repo
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"
 if (Test-Path $secrets) { . $secrets }
 
+# 0) SELBST-BOOTSTRAP („Bot wo klickt", User 2026-06-17): wenn dieser Task läuft (z.B. alte
+#    LuxeMarketing-Task), macht er sich SELBST zur kompletten Autonom-Installation — OHNE User-Klick:
+#    startet den PC-Listener (falls nicht aktiv), registriert alle Cycles + Auto-Start im Startup-Ordner.
+$loc = $PSScriptRoot
+# (a) PC-Listener starten, falls noch keiner läuft (1 node-Prozess mit pc-listener im Cmdline)
+$listenerOn = Get-CimInstance Win32_Process -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*pc-listener.ps1*" }
+if (-not $listenerOn) { Start-Process powershell "-ExecutionPolicy Bypass -WindowStyle Hidden -File `"$loc\pc-listener.ps1`"" }
+# (b) Cycles als Benutzer-Tasks registrieren (idempotent, kein Admin)
+$psf = "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File"
+schtasks /create /f /tn "LuxePost-10" /sc daily /st 10:00 /tr "$psf `"$loc\tiktok-cycle.ps1`"" 2>$null
+schtasks /create /f /tn "LuxePost-19" /sc daily /st 19:00 /tr "$psf `"$loc\tiktok-cycle.ps1`"" 2>$null
+foreach ($h in "09","12","15","21") { schtasks /create /f /tn "LuxeEng-$h" /sc daily /st "${h}:00" /tr "$psf `"$loc\engagement-cycle.ps1`"" 2>$null }
+# (c) Auto-Start dieses Tasks beim Login (Startup-Ordner, kein Admin) — falls noch nicht da
+$lnk = [Environment]::GetFolderPath('Startup') + '\LuxeStyle-Bot.lnk'
+if (-not (Test-Path $lnk)) { try { $w=New-Object -ComObject WScript.Shell; $s=$w.CreateShortcut($lnk); $s.TargetPath="$loc\START.bat"; $s.WorkingDirectory=$loc; $s.WindowStyle=7; $s.Save() } catch {} }
+
 # 1) Brave mit Debug-Port starten, falls Port nicht lauscht (für Follower-Wachstum)
 $open = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue
 if (-not $open) {
