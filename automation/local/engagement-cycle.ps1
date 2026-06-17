@@ -41,6 +41,10 @@ $env:IG_FOLLOWS = "8"; $env:TT_FOLLOWS = "6"
 node "automation/local/ch-follower-growth.mjs"
 $env:IG_FOLLOWS = $null; $env:TT_FOLLOWS = $null
 
+# 4b) FACEBOOK-FOLLOWER: 1x/Tag (nur Mittags-Cycle) in CH-Gruppe posten -> Reichweite -> Page-Follows.
+#     Sehr konservativ (FB blockt hart): 1 Gruppe/Lauf. Braucht fb-groups.txt (Gruppen wo man Mitglied ist).
+if ((Get-Date).Hour -eq 12) { node "automation/local/fb-group-post.mjs" }
+
 # 5) LERNEN + zurueck ins Repo
 node "automation/brain/brain.mjs" 2>$null
 git add automation/brain/knowledge.json automation/brain/pools.json automation/brain/BRAIN.md reports/ automation/local/ch-growth-ledger.txt 2>$null

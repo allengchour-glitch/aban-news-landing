@@ -1,0 +1,7 @@
+# CH-Facebook-Gruppen für Reichweite → Page-Follower (User 2026-06-17 „FB Follower sueche wichtig").
+# EINE Gruppen-URL pro Zeile. NUR Gruppen, in denen die Seite/das Profil MITGLIED ist + wo Verkauf/
+# Mode erlaubt ist (sonst Rauswurf). Beispiele zum selber füllen (echte beitreten + hier eintragen):
+#   https://www.facebook.com/groups/<ID-oder-Name>
+# Empfohlene Suchbegriffe für CH-Gruppen: "Schweiz Mode kaufen verkaufen", "Flohmarkt Schweiz",
+#   "Schmuck Schweiz", "Damenmode Schweiz", "Secondhand Mode CH", "Zürich/Bern/Basel kaufen verkaufen".
+# (Leer = fb-group-post.mjs macht No-op. Kommentar-Zeilen mit # werden ignoriert.)
