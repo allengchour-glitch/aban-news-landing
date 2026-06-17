@@ -3,6 +3,14 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## ✨ 2026-06-17 (POLISH ALLES — ganzer Katalog bild-geprüft + geheilt)
+- **Bild-Audit über den GANZEN Katalog** gelaufen (~2050 aktive geprüft, Gemini-Vision, refined Prompt = keine Fehlalarme auf Marken/POD).
+- **Autonome Selbstheilung:** schlechte Bilder (Watermark/asiat.Schrift/Vorher-Nachher) gelöscht, saubere behalten → fast alle blieben ACTIVE.
+- **Nur 3 Produkte DRAFT** (alle Bilder schlecht, brauchen eigenes Foto): Shiatsu-Nackenkissen, LED-Laterne Weiss Metall, Ticketdrucker Premier (alle CJ).
+- Lost Nomade (arab. Parfüm-Marke) + Jovi KAWAII = als legit erkannt → ACTIVE + `bild-ok` getaggt (kein Re-Flag).
+- **73 neue Produkte in Reel- + IG/FB-Post-Queue** (Bärndütsch, Handwerk-Hashtags) → Reichweite-Maschine bewirbt sie.
+- Feed weiterhin 100% (Kategorie/condition/identifier_exists/Mode-Details). PC-Task Step 8d = Bild-Audit Report-Modus läuft täglich weiter.
+
 ## 🔍 2026-06-17 (BILD-AUDIT + MERCHANT-FEED komplett gefixt)
 - **`automation/image-audit.mjs` gebaut (Gemini-2.5-flash, Vision)** — scannt Produktbilder auf **asiat./arab. Schrift, MADE IN CHINA, fremde-Shop-Watermark (Vnox/HOMEFISH/INEFFABLE/AWARN SUN/PureMax/RKJ), Vorher/Nachher**. Key `AQ.Ab8…` funktioniert (transient/luxe-secrets, NIE Repo). thinkingBudget=0 (sonst Truncation).
 - **⚠️ LEHRE (wichtig):** Erst-Version flaggte «jede Marke» → **118 legit Markenprodukte (Adidas/YSL/Nike/Pandora/MK…) + eigene Swiss-POD-Designs (Matterhorn/Edelweiss/Fondue)** fälschlich auf DRAFT → **alle 118 reaktiviert**. Prompt gefixt: **NUR Bild-Hygiene, KEINE Marken-Kategorie**; **Report-Modus default** (kein Auto-DRAFT, manueller Review). Verifiziert: Adidas=ok, Vnox/HOMEFISH/INEFFABLE-Watermarks=flag.
