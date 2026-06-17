@@ -193,7 +193,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const p = picks[i];
       const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').trim();
       const price = chf(p.cost);
-      const handle = (title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 60) || ('bigbuy-' + p.id);
+      const handle = ((title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 50) || 'bigbuy') + '-' + p.id;
       const tags = [cfg.coll.tag, ...cfg.extraTags, 'bigbuy', 'dropship'];
       const desc = `<p><strong>${title}</strong></p><ul>${cfg.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
         + `<p>📦 Lieferung aus EU-Lager, schnell · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
