@@ -1,0 +1,73 @@
+name: "LuxeStyle Autopilot (Katalog + Nischen-Bot)"
+
+# 🤖 Der "Bot": fährt täglich autonom Katalog-Pflege + Nischen-Import.
+# Läuft NUR, wenn (a) GitHub Actions für den Account aktiv ist UND (b) die Repo-Secrets gesetzt sind.
+# Ohne Secrets/Creds machen die Skripte sauberen No-op. Manuell startbar via "Run workflow".
+#
+# Benötigte Repo-Secrets (Settings → Secrets and variables → Actions):
+#   SHOPIFY_CLIENT_ID · SHOPIFY_CLIENT_SECRET · SHOPIFY_SHOP (= au3j0y-hq.myshopify.com)
+#   CJ_ACCESS_TOKEN (aus /tmp/cj_token.json accessToken) · GROQ_API_KEY · BIGBUY_API_KEY (optional)
+
+on:
+  schedule:
+    - cron: "0 5 * * *"   # täglich 05:00 UTC
+  workflow_dispatch:
+    inputs:
+      cats:
+        description: "CJ-Nischen (Komma): gaming,fishing,velo,fitness …"
+        default: "gaming"
+      per:
+        description: "Max. Produkte pro Nische"
+        default: "20"
+
+concurrency:
+  group: luxestyle-autopilot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+    env:
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      BIGBUY_API_KEY: ${{ secrets.BIGBUY_API_KEY }}
+      CATS: ${{ github.event.inputs.cats || 'gaming' }}
+      PER: ${{ github.event.inputs.per || '20' }}
+      LIVE: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Tokens bereitstellen (session-lokal, nicht ins Repo)
+        run: |
+          mkdir -p /tmp
+          printf '{"accessToken":"%s"}' "${{ secrets.CJ_ACCESS_TOKEN }}" > /tmp/cj_token.json
+          printf '%s' "${{ secrets.GROQ_API_KEY }}" > /tmp/groq.key
+          chmod 600 /tmp/cj_token.json /tmp/groq.key
+
+      - name: SEO-Lücken füllen (katalogweit)
+        run: node automation/seo_gap_fix.mjs || true
+
+      - name: CJ-Nischen-Import (Gaming-Schwerpunkt)
+        run: node automation/cj_niche_import.mjs || true
+
+      - name: Sticker / Google-Feed anreichern
+        run: node automation/enrich_stickers.mjs || true
+
+      - name: Ledger committen + pushen
+        run: |
+          git config user.name  "luxestyle-autopilot"
+          git config user.email "noreply@anthropic.com"
+          git add dropship/cj_niche_done.txt dropship/bigbuy_done.txt 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(autopilot): Nischen-Import + SEO-Pflege ($(date -u +%F))"
+            git push
+          else
+            echo "Keine neuen Produkte heute."
+          fi

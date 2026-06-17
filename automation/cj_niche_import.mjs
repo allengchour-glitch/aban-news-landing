@@ -46,8 +46,8 @@ const NICHE={
     must:['resistance band','dumbbell','jump rope','ab roller','ab wheel','massage gun','grip strengthener','push up board','pull up bar'],ban:['kids','toy','baby']},
 };
 
-async function cjSearch(kw){
-  const u=`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageNum=1&pageSize=30&productNameEn=${encodeURIComponent(kw)}`;
+async function cjSearch(kw,page=1){
+  const u=`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageNum=${page}&pageSize=30&productNameEn=${encodeURIComponent(kw)}`;
   for(let a=0;a<4;a++){ try{ const r=await fetch(u,{headers:{'CJ-Access-Token':CJTOK}}); const j=await r.json(); if(j.code===200) return j.data?.list||[]; if(/frequ|limit/i.test(j.message||'')){await sleep(3000*(a+1));continue;} return []; }catch{await sleep(2000);} }
   return [];
 }
@@ -77,7 +77,9 @@ for(const cat of CATS){
   const seen=new Set(), picks=[];
   for(const kw of cfg.kw){
     if(picks.length>=PER) break;
-    const list=await cjSearch(kw); await sleep(900);
+    for(let page=1; page<=4 && picks.length<PER; page++){
+    const list=await cjSearch(kw,page); await sleep(900);
+    if(!list.length) break;
     for(const p of list){
       if(picks.length>=PER) break;
       const nm=clean(p.productNameEn).toLowerCase();
@@ -88,6 +90,7 @@ for(const cat of CATS){
       if(!p.productImage||!/^https/.test(p.productImage)) continue;
       const price=parseFloat(p.sellPrice)||0; if(price<=0||price>120) continue;
       seen.add(p.pid); picks.push({pid:p.pid,name:clean(p.productNameEn),img:p.productImage,price:chf(p.sellPrice),sku:p.productSku});
+    }
     }
   }
   console.log(`  ${picks.length} saubere Kandidaten.`);
