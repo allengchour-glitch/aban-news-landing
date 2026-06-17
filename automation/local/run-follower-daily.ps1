@@ -50,10 +50,9 @@ git pull origin claude/luxestyle-product-CizQ6 2>$null
 # 3) CH-Follower holen (Browser/CDP)
 node "automation/local/ch-follower-growth.mjs"
 
-# 4) TikTok-Reel hochladen ÜBER DEN PORT (Brave-CDP) — wie der Follower-Bot, kein API-Audit nötig.
-#    Postet das nächste reels/*-9x16-meta.mp4 (mit Eigen-Track) direkt aufs eingeloggte TikTok.
-#    (Trend-Sound gibt's nur in der Handy-App; der Port-Weg nutzt die eingebackene Musik.)
-node "automation/local/tiktok-upload-browser.mjs"
+# 4) TikTok-Posten läuft jetzt in der EIGENEN, mehrmals-täglichen Task `tiktok-cycle.ps1`
+#    (User 2026-06-17 „mehrmals am Tag TikTok"). Hier NICHT mehr posten → keine Doppel-Posts.
+#    Einrichtung der 3×/Tag-Trigger: siehe Kopf von automation/local/tiktok-cycle.ps1.
 
 # 5) DMs beantworten (Browser/CDP — TikTok hat keine DM-API, IG-API ist app-gesperrt)
 node "automation/local/ig-dm-browser.mjs"

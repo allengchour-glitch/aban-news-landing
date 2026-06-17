@@ -43,6 +43,9 @@ function pickReel() {
   const meta = all.filter(f => /-9x16-meta\.mp4$/.test(f)).sort();
   const cand = [...PRIO.filter(f => all.includes(f)), ...luxe, ...meta];
   for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
+  // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu
+  // starten (Ledger leeren), damit nie still steht. Inhalt wiederholt sich erst nach ~allen Reels.
+  if (cand.length) { try { fs.writeFileSync(DONE, ''); } catch {} log('♻️ Alle Reels gepostet → Rotation startet neu.'); return path.join(REELS, cand[0]); }
   return null;
 }
 // Caption aus video_queue.csv ziehen (gleiche coole Mundart-Captions wie Meta), sonst reels-captions.json.
