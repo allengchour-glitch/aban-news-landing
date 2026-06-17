@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🔍 2026-06-17 (BILD-AUDIT + MERCHANT-FEED komplett gefixt)
+- **`automation/image-audit.mjs` gebaut (Gemini-2.5-flash, Vision)** — scannt Produktbilder auf **asiat./arab. Schrift, MADE IN CHINA, fremde-Shop-Watermark (Vnox/HOMEFISH/INEFFABLE/AWARN SUN/PureMax/RKJ), Vorher/Nachher**. Key `AQ.Ab8…` funktioniert (transient/luxe-secrets, NIE Repo). thinkingBudget=0 (sonst Truncation).
+- **⚠️ LEHRE (wichtig):** Erst-Version flaggte «jede Marke» → **118 legit Markenprodukte (Adidas/YSL/Nike/Pandora/MK…) + eigene Swiss-POD-Designs (Matterhorn/Edelweiss/Fondue)** fälschlich auf DRAFT → **alle 118 reaktiviert**. Prompt gefixt: **NUR Bild-Hygiene, KEINE Marken-Kategorie**; **Report-Modus default** (kein Auto-DRAFT, manueller Review). Verifiziert: Adidas=ok, Vnox/HOMEFISH/INEFFABLE-Watermarks=flag.
+- **40 echte Verstöße auf DRAFT** (brauchen sauberes Ersatzbild → dann ACTIVE) + Botox-Serum archiviert + PureMax DRAFT. Liste: `reports/BILD-AUDIT-2026-06-17.md` (lokal).
+- **🛒 MERCHANT-FEED katalogweit gefixt:** Kategorie 5747 · condition 6480 · **identifier_exists/custom_product 5232** (= grösster Disapproval-Grund «fehlende GTIN» weg) · gender/age · Mode-Key-Details 2044. Apparel-Beschreibungen (Shirts&Tops Merchant-Task) = abgedeckt, Google re-crawlt in Tagen.
+- **PC-Task Step 8d** = Bild-Audit Report-Modus (braucht GEMINI_API_KEY in luxe-secrets.ps1).
+
 ## 🛍️ 2026-06-17 (PRODUKT-OFFENSIVE — 48 neue Produkte via BigBuy EU, 4 Runden)
 - **24 Outdoor/Camping + 12 Garten & Balkon + 12 Haus & Küche = 48 neue**, alle ACTIVE/6 Kanäle/Bilder QA'd+READY/CHF/Kategorie/condition=new.
 - **Kollektionen:** „Reise & Outdoor" (30), neue Smart-Coll „🌿 Garten & Balkon" (Tag=garten, publiziert), „Küche & Kochen".
