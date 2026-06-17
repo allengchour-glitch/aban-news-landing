@@ -105,6 +105,17 @@ if ($env:SHOPIFY_CLIENT_ID -and $env:SHOPIFY_CLIENT_SECRET) {
   if ($env:GEMINI_API_KEY) { $env:MAX = "400"; node "automation/image-audit.mjs"; $env:MAX = $null }
 }
 
+# 8e) NEUE PRODUKTE autonom (BigBuy EU → Merchant-ready) — vom PC (frische API-Quota, anders als Cloud-IP).
+#     User 2026-06-17 „fülle maximum, ma nüm de token igä". 10/Tag = stetig, ohne BigBuy-Quota zu sprengen.
+#     ROOT rotiert nach Wochentag (Schmuck/Mode/Beauty/Taschen/Schuhe = Gewinner-Kategorien zuerst).
+#     Braucht BIGBUY_TOKEN + SHOPIFY_CLIENT_ID/SECRET in luxe-secrets.ps1. Idempotent (EAN-Ledger).
+if ($env:BIGBUY_TOKEN -and $env:SHOPIFY_CLIENT_ID) {
+  $roots = @("19662","19668","19662","19668","19662","19668","19662")  # Schmuck/Mode rotierend (Gewinner)
+  $env:ROOT = $roots[[int](Get-Date).DayOfWeek]; $env:MAX = "10"; $env:MARKUP = "1.9"; $env:BB_DELAY = "1500"
+  node "dropship/bigbuy_import.mjs"
+  $env:ROOT = $null; $env:MAX = $null
+}
+
 # 9) IMMER NACH DEM POSTEN: ANALYSIEREN + LERNEN (User 2026-06-16 „wenn du fertig postest, dann immer Analyse").
 #    Kette wie auto.sh, aber Windows-tauglich via node/python direkt (kein bash nötig). Alles no-op-safe:
 #    (a) frische TikTok-Analyse (best-effort, yt-dlp kann blockieren → nutzt sonst vorhandene Reports),
