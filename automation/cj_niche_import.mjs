@@ -45,6 +45,10 @@ const NICHE={
   fitness:{coll:{handle:'fitness-training',title:'💪 Fitness & Training',tag:'fitness'},type:'Fitness',tags:['fitness','sport','training','wellness'],
     kw:['resistance band','adjustable dumbbell','jump rope','ab roller wheel','massage gun','hand grip strengthener','push up board','ab wheel'],
     must:['resistance band','dumbbell','jump rope','ab roller','ab wheel','massage gun','grip strengthener','push up board','pull up bar'],ban:['kids','toy','baby']},
+  bastel:{coll:{handle:'basteln-diy',title:'🎨 Basteln & DIY',tag:'bastel-diy'},type:'Basteln & Hobby',tags:['bastel-diy','hobby','kreativ','diy','geschenk'],
+    kw:['diamond painting kit','crochet hook set','knitting needle set','embroidery hoop kit','jewelry making beads kit','silicone resin mold','macrame cord kit','punch needle kit','cross stitch kit','clay modeling tool set'],
+    must:['diamond painting','crochet hook','knitting needle','embroidery hoop','embroidery kit','embroidery thread','jewelry making','beads kit','resin mold','silicone mold','macrame','punch needle','cross stitch','quilling','clay tool','modeling tool'],
+    ban:['bikini','swimsuit','swimwear','swim ','bra','underwear','cap','hat','sun hat','baseball','beanie','dress','top ','tops','shirt','jacket','earring','necklace','ring ','fabric','mesh','sock','shoe','lace','floral print','one piece','machine','furniture','phone case']},
 };
 
 async function cjSearch(kw,page=1,cat=''){
