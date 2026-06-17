@@ -41,6 +41,9 @@
     <button onclick="go('insights=1')">📈 Meta-Analyse</button>
     <button onclick="cleanup()">🧹 Alte FB-Posts löschen</button>
     <button onclick="go('cursor=0')">🔄 Queue von vorne</button>
+    <button class="full" onclick="go('cmd=campaign-dry')">🧪 TikTok-Kampagne TESTEN (kein Geld) → Screenshots</button>
+    <button class="full" onclick="if(confirm('Kampagne wirklich STARTEN? Gibt bis 350 CHF aus.'))go('cmd=campaign-go')">🚀 TikTok-Kampagne STARTEN (350 CHF)</button>
+    <button class="full" onclick="go('cmd=deploy')">☁️ Worker deployen (Inhalt live)</button>
     <button class="full" onclick="setQueue()">🔗 Neue Queue-URL laden</button>
   </div>
 
