@@ -17,6 +17,7 @@
  *   DAYS=7  (Vergleichszeitraum)  ·  BASEURL=https://abannews.com/reels
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const DAYS = parseInt(process.env.DAYS || '7', 10);
 const SHOP = process.env.SHOPIFY_SHOP || '';
@@ -38,7 +39,7 @@ function parse(t){const rows=[];let row=[],f='',q=false;for(let i=0;i<t.length;i
 let qLine='Reels-Queue: (reels_seed.csv nicht gefunden)';
 let pickUrl='', pickCap='';
 try{
-  const rows=parse(fs.readFileSync(new URL('./reels_seed.csv',import.meta.url).pathname,'utf8'));
+  const rows=parse(fs.readFileSync(fileURLToPath(new URL('./reels_seed.csv',import.meta.url)),'utf8'));
   const h=rows[0], si=h.indexOf('status'), vi=h.indexOf('video_url'), ci=h.indexOf('caption');
   const c={posted:0,ready:0,pending:0};
   const vids=[];

@@ -22,10 +22,11 @@
  *   DRY_RUN=1
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 
-const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
+const CSV = fileURLToPath(new URL('./reels_seed.csv', import.meta.url));
 const DRY = process.env.DRY_RUN === '1';
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
 const MODE = (process.env.TT_PRIVACY_LEVEL || 'SELF_ONLY').toUpperCase();

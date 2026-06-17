@@ -9,6 +9,7 @@
  * Scope nötig: instagram_manage_messages (+ pages_messaging). Fehlt er → API meldet es, No-op.
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const IG_ID = process.env.IG_USER_ID || '';
@@ -17,7 +18,7 @@ const DRY = process.env.DRY_RUN === '1';
 const MAXR = Math.max(1, parseInt(process.env.MAX_REPLIES || '10',10)||10);
 if (!IG_ID || !TOK) { console.log('Kein IG-Token → No-op.'); process.exit(0); }
 
-const ROOT = path.dirname(path.dirname(new URL(import.meta.url).pathname));
+const ROOT = path.dirname(path.dirname(fileURLToPath(new URL(import.meta.url))));
 const STATE = path.join(ROOT,'social','replied-dms.json');
 const loadState=()=>{try{return new Set(JSON.parse(fs.readFileSync(STATE,'utf8')))}catch{return new Set()}};
 const saveState=s=>{try{fs.mkdirSync(path.dirname(STATE),{recursive:true});fs.writeFileSync(STATE,JSON.stringify([...s].slice(-2000)))}catch(e){console.error(e.message)}};

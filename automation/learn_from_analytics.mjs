@@ -8,8 +8,9 @@
  * funktionieren, delegiert dieser Shim einfach ans Gehirn.
  */
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-const brain = path.resolve(new URL('./brain/brain.mjs', import.meta.url).pathname);
+const brain = path.resolve(fileURLToPath(new URL('./brain/brain.mjs', import.meta.url)));
 const r = spawnSync(process.execPath, [brain, ...process.argv.slice(2)], { stdio: 'inherit' });
 process.exit(r.status || 0);

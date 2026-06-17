@@ -13,10 +13,11 @@
  * Nutzung: node automation/queue_veo_clips.mjs
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.dirname(HERE);
 const VQ = path.join(ROOT, 'social', 'video_queue.csv');
 const UPLOADER = path.join(HERE, 'upload_to_shopify_cdn.mjs');

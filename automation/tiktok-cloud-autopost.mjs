@@ -13,10 +13,11 @@
  * ENV: BROWSERBASE_API_KEY/PROJECT_ID/CONTEXT_ID · DRY_RUN=1 (nicht posten)
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.dirname(HERE);
 const QUEUE = path.join(ROOT, 'social', 'tiktok_queue.csv');
 const AGENT = path.join(ROOT, 'tools', 'browser', 'agent_cloud.mjs');

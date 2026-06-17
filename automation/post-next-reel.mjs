@@ -17,8 +17,9 @@
  *   DRY_RUN=1             (optional: nur loggen, nichts senden/schreiben)
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
+const CSV = fileURLToPath(new URL('./reels_seed.csv', import.meta.url));
 const WEBHOOK = process.env.PUBLISH_WEBHOOK_URL || process.env.MAKE_REEL_WEBHOOK || '';
 // Telegram-Ping pro Reel ist STANDARD AUS (User-Wunsch: nur 1×/Tag Telegram = Tages-Digest
 // reel-analytics.mjs). Opt-in über REEL_TELEGRAM_PING=1, falls man doch je Post eine Meldung will.

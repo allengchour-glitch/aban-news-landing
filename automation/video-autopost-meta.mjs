@@ -21,8 +21,9 @@
  *   MAX_PER_RUN=1 · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
+const CSV = fileURLToPath(new URL('../social/video_queue.csv', import.meta.url));
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const DRY = process.env.DRY_RUN === '1';
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);

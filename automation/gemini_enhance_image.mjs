@@ -18,6 +18,7 @@
  *      BATCH (Default 5) · ENHANCE_ONLY (Komma-Liste names, gezielt) · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const KEY = process.env.GEMINI_API_KEY || '';
@@ -29,7 +30,7 @@ const BATCH = Math.max(1, parseInt(process.env.BATCH || '5', 10) || 5);
 const ONLY = (process.env.ENHANCE_ONLY || '').split(',').map(s=>s.trim()).filter(Boolean);
 const DRY = process.env.DRY_RUN === '1';
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.dirname(HERE);
 const GOOD = path.join(HERE, 'good_products.csv');
 const OUT_DIR = path.join(ROOT, 'social', 'enhanced');

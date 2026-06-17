@@ -16,6 +16,7 @@
  *      ONLY (Komma-Liste handles, gezielt) · FORCE=1 (vorhandene überschreiben) · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const KEY = process.env.GEMINI_API_KEY || '';
@@ -25,7 +26,7 @@ const ONLY = (process.env.ONLY || '').split(',').map(s=>s.trim()).filter(Boolean
 const FORCE = process.env.FORCE === '1';
 const DRY = process.env.DRY_RUN === '1';
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.dirname(HERE);
 const OUT_DIR = path.join(ROOT, 'pod', 'blanks');
 const CDN = 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/';

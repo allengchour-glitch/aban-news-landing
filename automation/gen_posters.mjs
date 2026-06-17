@@ -5,6 +5,7 @@
  * No-op ohne GEMINI_API_KEY. Skip vorhandene (FORCE=1 überschreibt). ENV: GEMINI_API_KEY, ONLY=name,name, FORCE, MAX.
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const KEY = (process.env.GEMINI_API_KEY||'').trim();
@@ -14,7 +15,7 @@ const ONLY = (process.env.ONLY||'').split(',').map(s=>s.trim()).filter(Boolean);
 const FORCE = process.env.FORCE==='1';
 const MAX = Math.max(1, parseInt(process.env.MAX||'12',10)||12);
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.dirname(HERE);
 const OUT = path.join(ROOT,'social','posters');
 

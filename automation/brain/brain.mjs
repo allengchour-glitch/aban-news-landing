@@ -18,9 +18,10 @@
  * No-op-safe + idempotent. Schreibt: learned_pools.sh, brain/BRAIN.md, brain/knowledge.json, brain/pools.json
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
+const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const REPORTS = path.join(ROOT, 'reports');
 const KB = path.join(ROOT, 'automation', 'brain', 'knowledge.json');
 const POOLS = path.join(ROOT, 'automation', 'learned_pools.sh');

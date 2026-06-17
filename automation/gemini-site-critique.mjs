@@ -19,6 +19,7 @@
  *   DRY_RUN=1             (optional)
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const KEY = process.env.GEMINI_API_KEY || '';
@@ -191,7 +192,7 @@ if(!c){ console.error('Keine Kritik erhalten.'); process.exit(1); }
 const LABEL = (process.env.CRITIQUE_LABEL || '').replace(/[^a-z0-9-]/gi, '').toLowerCase();
 const fname = `site-critique-${LABEL ? LABEL + '-' : ''}${date}.md`;
 const md = toMarkdown(c, date);
-const outDir = path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'reports');
+const outDir = path.join(path.dirname(fileURLToPath(new URL(import.meta.url))), '..', 'reports');
 fs.mkdirSync(outDir, { recursive: true });
 const outFile = path.join(outDir, fname);
 fs.writeFileSync(outFile, md);

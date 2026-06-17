@@ -9,6 +9,7 @@
  * ENV: [SEG=2.6] · [MAX_SEG=8] · [MONTAGE_ONLY=name,..] · [OUT_BASE_URL] · [SITE_URL] · [MUSIC=automation/reel_music.m4a]
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
@@ -17,7 +18,7 @@ const MAX_SEG=Math.max(2,parseInt(process.env.MAX_SEG||'8',10)||8);
 const ONLY=(process.env.MONTAGE_ONLY||'').split(',').map(s=>s.trim()).filter(Boolean);
 const OUT_BASE=(process.env.OUT_BASE_URL||'https://abannews.com').replace(/\/$/,'');
 const SITE=(process.env.SITE_URL||'https://luxestyle.ch').replace(/\/$/,'');
-const HERE=path.dirname(new URL(import.meta.url).pathname);
+const HERE=path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT=path.dirname(HERE);
 const GOOD=path.join(HERE,'good_products.csv');
 const ENH=path.join(ROOT,'social','enhanced');

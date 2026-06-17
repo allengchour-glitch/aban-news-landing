@@ -12,9 +12,10 @@
  * No-op-safe: ohne pools.json/Produkte passiert nichts Schaedliches (Fallback-Hashtags).
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-const ROOT = path.resolve(new URL('../..', import.meta.url).pathname);
+const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const GOOD = path.join(ROOT, 'automation', 'good_products.csv');
 const POOLS = path.join(ROOT, 'automation', 'brain', 'pools.json');
 const OUT = path.join(ROOT, 'automation', 'cloudflare', 'luxe-poster', 'src', 'queue.json');

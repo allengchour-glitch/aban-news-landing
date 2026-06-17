@@ -18,6 +18,7 @@
  * (NICHT imageBytes — das ist nur der Python-SDK-Feldname).
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const KEY = process.env.GEMINI_API_KEY || '';
@@ -31,7 +32,7 @@ const SITE = (process.env.SITE_URL || 'https://luxestyle.ch').replace(/\/$/, '')
 const DRY = process.env.DRY_RUN === '1';
 const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.dirname(HERE);
 const CSV = process.env.VEO_CSV ? path.resolve(process.env.VEO_CSV) : path.join(HERE, 'good_products.csv');
 const REELS_CSV = path.join(HERE, 'reels_seed.csv');

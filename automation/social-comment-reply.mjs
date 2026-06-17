@@ -18,6 +18,7 @@
  * Scopes: instagram_manage_comments (IG), pages_manage_engagement (FB).
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -29,7 +30,7 @@ const LOOKBACK = Math.max(1, parseInt(process.env.LOOKBACK_POSTS || '8', 10) || 
 const MAXR = Math.max(1, parseInt(process.env.MAX_REPLIES || '12', 10) || 12);
 const DRY = process.env.DRY_RUN === '1';
 
-const ROOT = path.dirname(path.dirname(new URL(import.meta.url).pathname));
+const ROOT = path.dirname(path.dirname(fileURLToPath(new URL(import.meta.url))));
 const STATE = path.join(ROOT, 'social', 'replied-comments.json');
 
 // --- Spam (überspringen) — Kurzfassung der Moderations-Regeln ---

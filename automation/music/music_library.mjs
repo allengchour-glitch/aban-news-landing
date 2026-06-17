@@ -17,10 +17,11 @@
  *   NIE in einen Live-Ad / social/video_queue.csv.
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.resolve(HERE, '..', '..');
 const LIB = path.join(HERE, 'lib');
 const CREDITS = path.join(HERE, 'CREDITS.md');

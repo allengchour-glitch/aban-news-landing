@@ -14,6 +14,7 @@
  *      [OUT_BASE_URL=https://abannews.com] · [SITE_URL=https://luxestyle.ch] · [MUSIC=automation/reel_music.m4a] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
@@ -27,7 +28,7 @@ const SEC=Math.min(4,Math.max(2,parseFloat(process.env.CLIP_SEC||'2.6')||2.6));
 const ONLY=(process.env.CLIP_ONLY||'').split(',').map(s=>s.trim()).filter(Boolean);
 const DRY=process.env.DRY_RUN==='1';
 
-const HERE=path.dirname(new URL(import.meta.url).pathname);
+const HERE=path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT=path.dirname(HERE);
 const GOOD=path.join(HERE,'good_products.csv');
 const ENH_DIR=path.join(ROOT,'social','enhanced');

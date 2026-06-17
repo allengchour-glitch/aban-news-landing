@@ -13,6 +13,7 @@
  *      (empfohlen) ODER SHOPIFY_ADMIN_TOKEN · OUT_BASE_URL · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const SHOP_FALLBACK = 'au3j0y-hq.myshopify.com';
@@ -27,7 +28,7 @@ const CSECRET = (process.env.SHOPIFY_CLIENT_SECRET || '').trim();
 const OUT_BASE = (process.env.OUT_BASE_URL || 'https://abannews.com').replace(/\/$/, '');
 const DRY = process.env.DRY_RUN === '1';
 
-const HERE = path.dirname(new URL(import.meta.url).pathname);
+const HERE = path.dirname(fileURLToPath(new URL(import.meta.url)));
 const ROOT = path.dirname(HERE);
 const MANIFEST = path.join(ROOT, 'social', 'enhanced', '_manifest.csv');
 const LEDGER = path.join(ROOT, 'social', 'enhanced', '_added.txt');

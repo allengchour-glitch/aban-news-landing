@@ -20,8 +20,9 @@
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
+const CSV = fileURLToPath(new URL('../social/posts_image.csv', import.meta.url));
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
 const DRY = process.env.DRY_RUN === '1';
 const MAX = Math.max(1, parseInt(process.env.MAX_PER_RUN || '1', 10) || 1);
