@@ -175,7 +175,9 @@ async function gql(tok, query, variables) {
 }
 
 export { categorize, genderOf, ageOf, G, RULES, TYPE_FALLBACK };
-if (process.env.FEED_TEST === '1') { /* nur Logik importieren, kein Live-Lauf */ }
+// Live-Lauf NUR wenn direkt gestartet — beim `import` der Helfer (categorize/genderOf/…) NICHT laufen.
+const _isMain = import.meta.url === `file://${process.argv[1]}`;
+if (process.env.FEED_TEST === '1' || !_isMain) { /* nur Logik importieren, kein Live-Lauf */ }
 else await (async () => {
   const tok = await shToken();
   console.log(`feed_polish ${DRY?'[DRY] ':''}— Shop ${SHOP}, MAX=${MAX||'∞'}`);
