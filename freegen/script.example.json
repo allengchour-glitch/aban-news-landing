@@ -1,0 +1,14 @@
+{
+  "output": "freegen/out/luxestyle-intro.mp4",
+  "w": 1080,
+  "h": 1920,
+  "fps": 30,
+  "music": "automation/music/luxe-premium.wav",
+  "brand": "LUXESTYLE.CH",
+  "scenes": [
+    { "text": "Premium-Mode & Accessoires aus der Schweiz", "seconds": 3, "bg": "#0b0b0c" },
+    { "text": "Sorgfältig kuratiert. Fair bepreist.", "seconds": 3, "bg": "#14141a" },
+    { "text": "Versandkostenfrei ab CHF 65", "seconds": 3, "bg": "#1d1a12" },
+    { "text": "Jetzt entdecken — luxestyle.ch", "seconds": 3, "bg": "#0b0b0c" }
+  ]
+}
