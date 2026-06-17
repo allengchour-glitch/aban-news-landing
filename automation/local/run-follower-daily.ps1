@@ -16,6 +16,7 @@
 #        $env:FB_PAGE_ID = "1049840534888592"            # LuxeStyle CH
 #        $env:SHOPIFY_CLIENT_ID     = "…"                 # Custom-App (für Feed-Politur)
 #        $env:SHOPIFY_CLIENT_SECRET = "shpss_…"           #   → setzt Kategorie+condition katalogweit
+#        $env:GEMINI_API_KEY        = "…"                 # gratis aistudio.google.com → Bild-Audit
 #        # $env:TT_PRIVACY_LEVEL = "PUBLIC_TO_EVERYONE"   # erst NACH TikTok-App-Audit
 #   2) Task registrieren (PowerShell als Admin, 1 Zeile):
 #      schtasks /create /tn "LuxeMarketing" /sc daily /st 10:00 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Users\allen\aban-news-landing\automation\local\run-follower-daily.ps1"
@@ -81,6 +82,10 @@ if ($env:SHOPIFY_CLIENT_ID -and $env:SHOPIFY_CLIENT_SECRET) {
   # 8c) MODE-BESCHREIBIGE: Google-„Key details" (Farbe/Grösse/Material/Muster) ergänzen
   #     (Merchant-Report „Update product descriptions"). Idempotent → MAX/Tag, resümierbar.
   $env:MAX = "400"; node "automation/enrich_apparel_descriptions.mjs"; $env:MAX = $null
+  # 8d) BILD-COMPLIANCE-AUDIT (Gemini Vision): findet Botox/Vorher-Nachher/asiat. Schrift/
+  #     Watermark/Med-Claims auf Produktbildern → Treffer auf DRAFT + Tag (reversibel).
+  #     Braucht GEMINI_API_KEY (gratis, aistudio.google.com) in luxe-secrets.ps1. Idempotent.
+  if ($env:GEMINI_API_KEY) { $env:MAX = "300"; $env:AUDIT_FIX = "1"; node "automation/image-audit.mjs"; $env:MAX = $null; $env:AUDIT_FIX = $null }
 }
 
 # 9) IMMER NACH DEM POSTEN: ANALYSIEREN + LERNEN (User 2026-06-16 „wenn du fertig postest, dann immer Analyse").
