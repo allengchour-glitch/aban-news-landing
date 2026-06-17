@@ -35,6 +35,8 @@ cat <<'NOTE'
   GEMINI_API_KEY      aistudio.google.com        (gratis)                 ← empfohlen #2
   OPENROUTER_API_KEY  openrouter.ai (:free)      (gratis-Modelle)
   CF_ACCOUNT_ID + CF_API_TOKEN  Cloudflare Workers AI (gratis-Tier)
+  TOGETHER_API_KEY    api.together.xyz           (gratis-Tier, Llama 3.3)
+  DEEPSEEK_API_KEY    platform.deepseek.com      (gratis-Tier)
   MISTRAL_API_KEY     console.mistral.ai         (gratis-Tier)
   OPENAI_API_KEY      platform.openai.com        (kostenpflichtig, Fallback)
 Mehr Keys = mehr Redundanz. Fällt einer aus, nimmt der Router automatisch den nächsten;

@@ -25,7 +25,7 @@
  */
 
 const ENV = process.env;
-const DEFAULT_ORDER = (ENV.AI_PROVIDER_ORDER || 'groq,gemini,openrouter,cloudflare,mistral,openai')
+const DEFAULT_ORDER = (ENV.AI_PROVIDER_ORDER || 'groq,gemini,together,deepseek,openrouter,cloudflare,mistral,openai')
   .split(',').map(s => s.trim()).filter(Boolean);
 
 const log = (...a) => process.stderr.write(a.join(' ') + '\n');
@@ -108,6 +108,28 @@ const PROVIDERS = {
     if (!ok) throw new Error(`openai ${status}: ${JSON.stringify(body).slice(0, 160)}`);
     return body.choices?.[0]?.message?.content || '';
   },
+  // Together AI (gratis-Tier, OpenAI-kompatibel) — Llama 3.3 70B free
+  async together({ system, prompt, json, maxTokens }) {
+    if (!ENV.TOGETHER_API_KEY) throw new Error('no key');
+    const { ok, status, body } = await jfetch('https://api.together.xyz/v1/chat/completions', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ENV.TOGETHER_API_KEY}` },
+      body: JSON.stringify({ model: ENV.TOGETHER_MODEL || 'meta-llama/Llama-3.3-70B-Instruct-Turbo-Free',
+        messages: msgs(system, prompt), max_tokens: maxTokens || 800, temperature: 0.8,
+        ...(json ? { response_format: { type: 'json_object' } } : {}) }) });
+    if (!ok) throw new Error(`together ${status}: ${JSON.stringify(body).slice(0, 160)}`);
+    return body.choices?.[0]?.message?.content || '';
+  },
+  // DeepSeek (gratis-Tier, OpenAI-kompatibel)
+  async deepseek({ system, prompt, json, maxTokens }) {
+    if (!ENV.DEEPSEEK_API_KEY) throw new Error('no key');
+    const { ok, status, body } = await jfetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${ENV.DEEPSEEK_API_KEY}` },
+      body: JSON.stringify({ model: ENV.DEEPSEEK_MODEL || 'deepseek-chat',
+        messages: msgs(system, prompt), max_tokens: maxTokens || 800, temperature: 0.8,
+        ...(json ? { response_format: { type: 'json_object' } } : {}) }) });
+    if (!ok) throw new Error(`deepseek ${status}: ${JSON.stringify(body).slice(0, 160)}`);
+    return body.choices?.[0]?.message?.content || '';
+  },
 };
 
 function msgs(system, prompt) {
@@ -126,6 +148,8 @@ export function hasKey(name) {
     case 'cloudflare': return !!(ENV.CF_ACCOUNT_ID && ENV.CF_API_TOKEN);
     case 'mistral': return !!ENV.MISTRAL_API_KEY;
     case 'openai': return !!ENV.OPENAI_API_KEY;
+    case 'together': return !!ENV.TOGETHER_API_KEY;
+    case 'deepseek': return !!ENV.DEEPSEEK_API_KEY;
     default: return false;
   }
 }
