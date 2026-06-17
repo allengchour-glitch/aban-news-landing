@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🎵 2026-06-17 (TikTok VOLLGAS — 4x/Tag autonom, PC immer an)
+- **EI-KLICK ** registriert 4 Tasks (10/13/16/20) →  postet+analysiert+lernt **4x/Tag** autonom.
+- **Uploader-Fix:** 48 Reels im Pool (vorher nur 4), Hero zuerst, **perpetual-Recycle** (steht nie still), Caption aus video_queue.
+- Haupt-Tagestask postet TikTok nicht mehr (kein Doppel). Posten=Brave-Port (kein API). User: PC läuft immer → Cycles zuverlässig.
+
 ## 🛍️ 2026-06-17 (Merchant-Feed MAXIMUM + BigBuy-Importer + HeyGen-Status)
 - **🛒 Google-Merchant MAXIMUM (ganzer Katalog gefegt, feed_polish):** **266 Produkte hatten KEINE Kategorie → jetzt gesetzt** + 25 Google-Felder. Rest schon ok → Feed jetzt voll: Kategorie · condition · GTIN/identifier_exists · gender/age. Google re-crawlt in Tagen.
 - **📦 BigBuy-Importer `dropship/bigbuy_import.mjs`:** legt BigBuy-EU-Produkte Merchant-ready an (ACTIVE/6 Kanäle/CHF/GTIN/Kategorie/condition/gender/age/custom_product), idempotent (EAN-Ledger), Backoff bei 429. **⚠️ BigBuy-API-Quota von Cloud-IP erschöpft (429)** → 0 erstellt; besser vom PC / inkrementell (z.B. 10/Tag) laufen lassen. feed_polish-Helfer-Import jetzt guard't (kein Auto-Polish bei Import).
