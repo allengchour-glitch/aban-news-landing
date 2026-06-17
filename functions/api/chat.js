@@ -2,6 +2,8 @@
 // „Frag aban"-LLM-Modus: natürlichsprachige Antwort, GEERDET auf den vom Widget
 // mitgeschickten Kontext-Auszügen von abannews.com (kein freies Halluzinieren).
 // Ohne ANTHROPIC_API_KEY -> 503, das Widget fällt sauber auf die Index-Suche zurück.
+// (Mit GROQ_API_KEY läuft es per Gratis-Fallback weiter — siehe ../_llm.mjs.)
+import { llmAvailable, llmComplete } from "../_llm.mjs";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -42,7 +44,7 @@ export async function onRequestOptions() {
 export async function onRequestPost(context) {
   const { request, env } = context;
   try {
-    if (!env || !env.ANTHROPIC_API_KEY) return json({ error: "llm_off" }, 503);
+    if (!llmAvailable(env)) return json({ error: "llm_off" }, 503);
     const ip = request.headers.get("CF-Connecting-IP") || "";
     if (rateLimited(ip)) return json({ error: "rate_limited" }, 429);
 
@@ -57,33 +59,21 @@ export async function onRequestPost(context) {
       `[${i + 1}] ${String(c.q || c.title || "").slice(0, 200)} — ${String(c.a || c.snippet || "").slice(0, 400)} (${String(c.url || "").slice(0, 200)})`
     ).join("\n") || "(kein Kontext gefunden)";
 
-    const model = env.CHAT_MODEL || "claude-haiku-4-5-20251001";
     const user = `Frage des Besuchers:\n${q}\n\nKontext-Auszüge von abannews.com:\n${ctxText}`;
 
-    const ctl = new AbortController();
-    const t = setTimeout(() => ctl.abort(), TIMEOUT_MS);
-    let resp;
+    let answer;
     try {
-      resp = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        signal: ctl.signal,
-        headers: {
-          "x-api-key": env.ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          model,
-          max_tokens: 320,
-          system: SYSTEM,
-          messages: [{ role: "user", content: user }],
-        }),
-      });
-    } finally { clearTimeout(t); }
-
-    if (!resp.ok) return json({ error: "upstream", status: resp.status }, 502);
-    const data = await resp.json();
-    const answer = (data && data.content && data.content[0] && data.content[0].text || "").trim();
+      ({ text: answer } = await llmComplete(env, {
+        system: SYSTEM,
+        prompt: user,
+        maxTokens: 320,
+        timeoutMs: TIMEOUT_MS,
+        anthropicModel: env.CHAT_MODEL || "claude-haiku-4-5-20251001",
+      }));
+    } catch (e) {
+      if (e && e.status) return json({ error: "upstream", status: e.status }, 502);
+      throw e;
+    }
     if (!answer) return json({ error: "empty" }, 502);
     return json({ answer });
   } catch (e) {

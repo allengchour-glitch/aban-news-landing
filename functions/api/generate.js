@@ -3,6 +3,7 @@
 // Ohne ANTHROPIC_API_KEY -> 503 (Frontend nutzt Vorlagen-Fallback).
 // Ohne gültige Pro-Lizenz -> 402.
 import { requirePro, readProKey } from "../_pro.mjs";
+import { llmAvailable, llmComplete } from "../_llm.mjs";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -166,7 +167,7 @@ export function onRequestOptions() { return new Response(null, { status: 204, he
 
 export async function onRequestPost({ request, env }) {
   try {
-    if (!env || !env.ANTHROPIC_API_KEY) return json({ error: "ai_off" }, 503);
+    if (!llmAvailable(env)) return json({ error: "ai_off" }, 503);
     const raw = await request.text();
     if (raw.length > MAX_BODY) return json({ error: "too_large" }, 413);
     let b; try { b = JSON.parse(raw); } catch { return json({ error: "bad_json" }, 400); }
@@ -195,22 +196,13 @@ export async function onRequestPost({ request, env }) {
     let prompt = buildPrompt(b) + (vorgaben.length ? "\n\nVorgaben — " + vorgaben.join(" · ") + "." : "");
     if (isEN) prompt += "\n\nIMPORTANT: Write the entire output in English.";
     const system = isEN ? SYSTEM_EN : SYSTEM;
-    const model = env.GENERATE_MODEL || "claude-sonnet-4-6";
-    const ctl = new AbortController();
-    const t = setTimeout(() => ctl.abort(), TIMEOUT_MS);
-    let resp;
+    let out, model;
     try {
-      resp = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        signal: ctl.signal,
-        headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
-        body: JSON.stringify({ model, max_tokens: maxTok, system, messages: [{ role: "user", content: prompt }] }),
-      });
-    } finally { clearTimeout(t); }
-
-    if (!resp.ok) return json({ error: "upstream", status: resp.status }, 502);
-    const data = await resp.json();
-    const out = (data && data.content && data.content[0] && data.content[0].text || "").trim();
+      ({ text: out, model } = await llmComplete(env, { system, prompt, maxTokens: maxTok, timeoutMs: TIMEOUT_MS }));
+    } catch (e) {
+      if (e && e.status) return json({ error: "upstream", status: e.status }, 502);
+      throw e;
+    }
     if (!out) return json({ error: "empty" }, 502);
     return json({ text: out, model });
   } catch (e) {
