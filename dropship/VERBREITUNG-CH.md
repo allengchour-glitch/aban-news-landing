@@ -21,3 +21,8 @@
 
 ## 📌 Strikt Schweiz
 Alle Kanäle CH-fokussiert (kein Deutschland). Mundart bevorzugt. Nur Top-Produkte + saubere Bilder (DO-NOT-POST-Filter aktiv).
+
+## ⏱️ Slow-Kadenz (langsam überall gratis — nachhaltig, kein Ban)
+- IG+FB **3×/Tag** · TikTok **2×/Tag** · tutti/anibis **2/Tag** · FB-Gruppe **1/Tag** (beitrete 2) · Pinterest **2×/Woche**
+- Follower **IG 30 / TikTok 22/Tag** (Pausen 25–70s, Stopp bei Block) · NIE hochdrehen (Sperre=Totalverlust)
+- Wachstum = TÄGLICHKEIT über Monate, nicht Spitzen. Nur Top-Produkte + Gewinner-Formate.
