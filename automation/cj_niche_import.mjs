@@ -23,9 +23,10 @@ const NICHE={
     must:['gaming mouse','gaming mice','gaming keyboard','mechanical keyboard','gaming headset','gaming headphone','game controller','gamepad','joystick','mouse pad','mousepad','controller for'],
     ban:['trap','falle','rat ','rodent','pet ','animal','jewelry','schmuck','pendant','necklace','ring ','symbol','hindu','toy','kids','child','water gun','wasserpistole','sculpture','skulptur','statue','glasses','eye ','bag','phone case','sticker','decoration','figurine']},
   anime:{coll:{handle:'anime-manga',title:'🎌 Anime & Manga',tag:'anime'},type:'Anime',tags:['anime','geschenk','hype-2026','sammler'],
-    kw:['anime action figure','naruto figure','dragon ball figure','demon slayer figure','anime keychain','anime acrylic stand','goku figure'],
-    must:['anime','manga','naruto','dragon ball','demon slayer','goku','luffy figure','action figure','figurine'],
-    ban:['dress','kleid','jumpsuit','swimsuit','badeanzug','one piece','top','pants','hose','bodysuit','shapewear','clothing','skirt','rock','lingerie','bra','swimwear','flattering','tummy','bikini']},
+    cat:'F18491A9-2F33-4D85-A154-78EE4CD2AD33',
+    kw:['anime','naruto','goku','dragon ball','demon slayer','one piece luffy','japanese anime','manga'],
+    must:['anime','naruto','goku','dragon ball','demon slayer','luffy','manga'],
+    ban:['yo-yo','yoyo','puzzle','jigsaw','sticker','aufkleber','ring ','necklace','water painting','practice board','copy board','educational','jumping warrior','vampire pu','clay','plasticine']},
   fishing:{coll:{handle:'angeln',title:'🎣 Angeln',tag:'angeln'},type:'Angelsport',tags:['angeln','outdoor','hobby'],
     kw:['fishing lure','fishing reel','fishing rod','fishing hook set','soft fishing bait','fishing line'],
     must:['fishing lure','fishing reel','fishing rod','fishing line','fishing hook','soft bait','fishing tackle','fishing bait'],
@@ -46,8 +47,8 @@ const NICHE={
     must:['resistance band','dumbbell','jump rope','ab roller','ab wheel','massage gun','grip strengthener','push up board','pull up bar'],ban:['kids','toy','baby']},
 };
 
-async function cjSearch(kw,page=1){
-  const u=`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageNum=${page}&pageSize=30&productNameEn=${encodeURIComponent(kw)}`;
+async function cjSearch(kw,page=1,cat=''){
+  const u=`https://developers.cjdropshipping.com/api2.0/v1/product/list?pageNum=${page}&pageSize=30&productNameEn=${encodeURIComponent(kw)}`+(cat?`&categoryId=${cat}`:'');
   for(let a=0;a<4;a++){ try{ const r=await fetch(u,{headers:{'CJ-Access-Token':CJTOK}}); const j=await r.json(); if(j.code===200) return j.data?.list||[]; if(/frequ|limit/i.test(j.message||'')){await sleep(3000*(a+1));continue;} return []; }catch{await sleep(2000);} }
   return [];
 }
@@ -78,7 +79,7 @@ for(const cat of CATS){
   for(const kw of cfg.kw){
     if(picks.length>=PER) break;
     for(let page=1; page<=4 && picks.length<PER; page++){
-    const list=await cjSearch(kw,page); await sleep(900);
+    const list=await cjSearch(kw,page,cfg.cat||''); await sleep(900);
     if(!list.length) break;
     for(const p of list){
       if(picks.length>=PER) break;
