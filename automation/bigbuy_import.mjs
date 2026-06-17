@@ -72,7 +72,7 @@ const CONFIG = {
     ban: ['herren', 'kinder', 'baby', 'men ', 'kids'],
     bullets: ['Femininer Schnitt', 'Angenehmer Stoff', 'Vielseitig kombinierbar', 'Premium-Look zum fairen Preis'] },
   sets: { coll: { handle: 'trainingsanzuege-sets', title: '🏃 Trainingsanzüge & Sets', tag: 'set' },
-    extraTags: ['sport', 'set', 'marke', 'premium'], type: 'Set', maxCost: MAX_COST_EUR,
+    extraTags: ['sport', 'set', 'marke', 'premium'], type: 'Set', maxCost: MAX_COST_EUR, sized: true,
     anchor: ['trainingsanzug', 'chándal', 'chandal', 'jogginganzug', 'tracksuit', 'jogging-set', 'sportanzug', 'sweatsuit'],
     ban: ['baby', 'babys', 'kinder', 'mädchen', 'junge', 'jungen', 'paw patrol', 'minnie', 'mickey', 'frozen', 'spiderman', 'disney', 'marvel', 'lol surprise', 'niñ', 'enfant'],
     bullets: ['2-teilig: Oberteil + Hose abgestimmt', 'Marken-Sportswear, EU-Lager', 'Bequem & atmungsaktiv', '100% Original, schnelle EU-Lieferung'] },
@@ -199,8 +199,17 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
         + `<p>📦 Lieferung aus EU-Lager, schnell · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
       const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: 'ACTIVE', tags,
         descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, schnelle EU-Lieferung, Gratis-Versand ab CHF 65.` },
-        variants: [{ price, inventoryItem: { sku: `BB-${p.sku}`.slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }],
         files: p.imgs.map(u => ({ originalSource: u, contentType: 'IMAGE' })) };
+      if (cfg.sized) {
+        const SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
+        input.productOptions = [{ name: 'Grösse', values: SIZES.map(s => ({ name: s })) }];
+        input.variants = SIZES.map(s => ({ optionValues: [{ optionName: 'Grösse', name: s }], price,
+          inventoryItem: { sku: `BB-${p.sku}-${s}`.slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }));
+      } else {
+        input.productOptions = [{ name: 'Titel', values: [{ name: 'Standard' }] }];
+        input.variants = [{ optionValues: [{ optionName: 'Titel', name: 'Standard' }], price,
+          inventoryItem: { sku: `BB-${p.sku}`.slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }];
+      }
       const r = await sgql(stok, SET, { input }); const e = r?.data?.productSet?.userErrors || [];
       const pid = r?.data?.productSet?.product?.id;
       if (e.length || !pid) { fails.push(`${title.slice(0, 40)}: ${JSON.stringify(e.length ? e : r).slice(0, 160)}`); continue; }
