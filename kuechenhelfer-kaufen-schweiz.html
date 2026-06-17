@@ -90,7 +90,7 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
   function cards(el,items,ext){if(!el)return;if(!items.length){el.closest("section").style.display="none";return}
     el.innerHTML=items.map(function(x){var img=x.img?('<div class="im" style="background-image:url(\''+esc(x.img)+'\')"></div>'):'<div class="im">🍴</div>';
       var href=(x.url&&x.url!=="#")?esc(x.url):"#";var rel=ext?"sponsored nofollow noopener":"noopener";
-      return '<a class="pc" href="'+href+'" target="_blank" rel="'+rel+'">'+img+'<div class="pb"><div class="pt">'+esc(x.title)+'</div><div class="pp">'+esc(x.price||"")+'</div></div></a>';}).join("")}
+      return '<a class="pc" href="'+href+'" target="_blank" rel="'+rel+' noopener noreferrer">'+img+'<div class="pb"><div class="pt">'+esc(x.title)+'</div><div class="pp">'+esc(x.price||"")+'</div></div></a>';}).join("")}
   fetch("/api/luxestyle?limit=8&q=K%C3%BCche").then(function(r){return r.json()}).then(function(d){cards(document.getElementById("shopRow"),(d.items||[]).slice(0,8),false)}).catch(function(){var e=document.getElementById("shopRow");if(e)e.closest("section").style.display="none"});
   fetch("/api/ebay?limit=6&q=K%C3%BCchenhelfer%20Gadget").then(function(r){return r.json()}).then(function(d){cards(document.getElementById("ebayRow"),(d.items||[]).slice(0,6),true)}).catch(function(){var e=document.getElementById("ebayRow");if(e)e.closest("section").style.display="none"});
 })();</script>
