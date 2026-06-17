@@ -8,10 +8,10 @@
 ## ✅/🔴 1. Stripe-Shop — DE LIVE (22/22 kaufbar), aber 2 dringende Schritte offen
 **Erledigt (15.06., #1008):** alle 22 DE-Produkte haben echte `buy.stripe.com`-Links (inkl. Bundle CHF 79).
 **Jetzt DU, sonst kein echter Verkauf:**
-- 🔴 **`sk_live`-Key ROTIEREN** — er stand im Chat = verbrannt. Stripe → Developers → API keys → **Roll key**,
-  neuen Key NUR als GitHub-/Cloudflare-**Secret** (nie in den Chat).
-- 🔴 **`DOWNLOAD_SALT`** als Secret setzen (GitHub + Cloudflare) → sonst wird zwar bezahlt, aber die ZIP-Datei
-  wird nicht ausgeliefert. ZIPs mit demselben Salt bauen.
+- ✅ **`sk_live`-Key:** User-Entscheid — **nicht rotieren, dauerhaft behalten** (Risiko akzeptiert; Key nicht erneut posten).
+- 🔴 **`DOWNLOAD_SALT` im Cloudflare-Pages-Env setzen** (irgendein dauerhafter Geheim-String) → der Build
+  (`build-pages.sh` → `build_kit_zips.py`) erzeugt beim nächsten Deploy automatisch die passend gehashten
+  Kit-ZIPs → alle 22 Downloads live. Funktioniert OHNE GitHub Actions.
 - 🟡 **EN-Shop (EUR)** noch offen → über den Secret-basierten `stripe-shop.yml`-Workflow syncen, sobald
   GitHub Actions wieder frei ist (CLI-Key wird vom Sicherheits-Classifier zu Recht geblockt).
 
