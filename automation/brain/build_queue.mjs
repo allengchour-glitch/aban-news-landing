@@ -16,7 +16,14 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
-const GOOD = path.join(ROOT, 'automation', 'good_products.csv');
+// NUR TOP-PRODUKTE (User 2026-06-17 „nutze nur top produkten"): top_products.csv bevorzugen,
+// sonst Fallback auf den vollen kuratierten Pool.
+const TOP = path.join(ROOT, 'automation', 'top_products.csv');
+const GOOD = fs.existsSync(TOP) ? TOP : path.join(ROOT, 'automation', 'good_products.csv');
+// TEXT-IM-BILD (User 2026-06-17 „mit text videos und bilder ab iz"): Map name→CDN-URL der
+// veredelten Bild-Karte (LUXESTYLE-Wortmarke + Produktname + Rabatt-Pill). Wenn vorhanden,
+// posten wir die Text-Karte statt des nackten Produktbilds.
+const TEXTMAP = path.join(ROOT, 'social', 'text_image_map.json');
 const POOLS = path.join(ROOT, 'automation', 'brain', 'pools.json');
 const OUT = path.join(ROOT, 'automation', 'cloudflare', 'luxe-poster', 'src', 'queue.json');
 const DRY = process.argv.includes('--dry');
@@ -116,6 +123,9 @@ function loadReels() {
   const goods = loadGood();
   if (!goods.length) { console.log('Keine good_products.csv → No-op.'); process.exit(0); }
   const prices = await priceMap();
+  // Text-im-Bild-Map laden (name → CDN-URL der veredelten Karte). Fehlt sie → nacktes Bild.
+  let textMap = {};
+  try { textMap = JSON.parse(fs.readFileSync(TEXTMAP, 'utf8')); } catch {}
 
   // Tages-Offset: täglich andere Opener/Trigger-Zuordnung (gegen Wiederholungs-Optik).
   const DAYOFF = Math.floor(Date.now() / 864e5);
@@ -126,7 +136,9 @@ function loadReels() {
     const tags = tagsets[i % tagsets.length] + ' ' + CH_WIDE[i % CH_WIDE.length];
     const price = prices[p.handle] ? ` – CHF ${prices[p.handle]}` : '';
     const caption = `${opener} ${p.label}${price}\n${trigger} · –10% mit WELCOME10\n👉 luxestyle.ch/products/${p.handle}\n${tags}`;
-    return { type: 'image', image: p.image, caption };
+    // Veredelte Text-Karte bevorzugen (Produktname+Rabatt eingebrannt), sonst nacktes Produktbild.
+    const image = textMap[p.handle] || p.image;
+    return { type: 'image', image, caption };
   });
   // REELS (echte CDN-Videos aus video_queue.csv) + STORIES (Produktbilder als Foto-Story, 24h)
   const reels = loadReels();

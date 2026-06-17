@@ -65,8 +65,11 @@ const IG_COMMENTS = [
 // ---- Limits (konservativ; lieber täglich wenig & dauerhaft) -------------------
 const COMMENTS_ON = process.argv.includes('--comments') || process.env.COMMENTS === '1';
 const CAP = {
-  ig_follows: Number(process.env.IG_FOLLOWS || 40),
-  tt_follows: Number(process.env.TT_FOLLOWS || 30),
+  // „Autonom-Level hoch / Ziel 1 Mio" (User 2026-06-17): Tages-Caps moderat erhöht — bleibt aber
+  // im sicheren Bereich (IG soft-limit, 25–70 s Pausen, Stopp bei „Action blocked"). NIE höher
+  // drehen ohne Risiko-Abwägung → Sperre = Totalverlust. Wachstum kommt aus TÄGLICHKEIT, nicht Spitzen.
+  ig_follows: Number(process.env.IG_FOLLOWS || 55),
+  tt_follows: Number(process.env.TT_FOLLOWS || 45),
   ig_comments: COMMENTS_ON ? Number(process.env.IG_COMMENTS_CAP || 6) : 0, // sehr klein, nur Influencer
 };
 const DRY = process.argv.includes('--dry');

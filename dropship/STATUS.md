@@ -3,6 +3,23 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🎬 2026-06-17 (ROLLEN-SPLIT + SOCIAL-MEISTERWÄRK: 1 A-Video + Text-Bilder + Follower-Level-hoch)
+- **🤝 NEUE ROLLENVERTEILUNG (User 2026-06-17 „andere session macht webseite sauber mit chatgpt, du bist für posting"):**
+  Diese Session = **NUR Social/Marketing**: Posting (TikTok + Meta), Videos/Reels, Bilder mit Text, **Follower-Wachstum, Kommentar/DM-Chat, Engagement**.
+  Die **Webseite/Theme/Katalog-Sauberkeit macht die andere Session (mit ChatGPT)** → ich fasse Theme/PDP/Katalog-Struktur NICHT mehr an (nur lesen für Content/Preise). Koordination via SHARED-MEMORY.
+- **⭐ 1 A-VIDEO (User „nur 1 A video, sonst loop für kritik" — für TikTok-Pixel-Ad):** `reels/luxe-hero-ad.mp4` (15s, 16 Top-Produkt,
+  schneller Schnitt 1.15s + xfade, Hook «Premium-Looks. Faire Priis.» 1. Sek, CTA «-10% WELCOME10 · Jetz uf luxestyle.ch», upbeat-pop-Musik,
+  Safe-Zone-Text). Auf CDN + in `video_queue.csv` (`reel-hero-ad`). **Kritik-Schleife:** EIN Hero-Video, iterativ verbessern statt viele streuen.
+- **🖼️ TEXT IM BILD = STANDARD (User „mit text videos und bilder ab iz"):** `gen_post_image.py` rendert edle Karten (LUXESTYLE-Wortmarke +
+  Produktname + «-10% CODE WELCOME10»-Pill). **22 Top-Karten auf CDN** → `social/text_image_map.json`. `build_queue.mjs` postet jetzt
+  die **Text-Karte statt nacktem Bild** (Map-Lookup) und nutzt **nur Top-Produkte** (`automation/top_products.csv`, 22 kuratiert; User „nutze nur top produkten").
+- **📹 Montage-Videos:** `luxe-main-showcase.mp4` (24s ruhig) + `luxe-showcase-fast.mp4` (23s, 24 Bilder, schnell) gerendert+CDN (als Reserve);
+  Queue-Fokus aber bewusst auf **das 1 A-Video** (nur 1 Ad-Creative).
+- **📈 FOLLOWER-LEVEL HOCH (User „insta follower folge, autonom level hoch, 1 million"):** `ch-follower-growth.mjs` Tages-Caps **IG 40→55 · TikTok 30→45**
+  (bleibt im sicheren Bereich, 25–70 s Pausen, Stopp bei Block). Läuft täglich am PC (Brave-CDP, step 3). „Ab und zue bi de andere öbis cools poste" = Worker (IG/FB) + TikTok-Upload erledigen das autonom.
+- **🔄 Queue neu gebaut:** 32 Posts (22 Text-Bilder + 7 Reels + 3 Stories). **⚠️ Geht live mit nächstem `wrangler deploy`** (Cloud hat kein CF-Token → PC-Task / Handy `&cmd=deploy`).
+- **🔴 Engpass unverändert:** 0 Orders → fehlt **TikTok-Pixel + bezahlti CH-Kampagne** (nur User). Das A-Video ist das Ad-Creative dafür.
+
 ## ✨ 2026-06-17 (POLISH ALLES — ganzer Katalog bild-geprüft + geheilt)
 - **Bild-Audit über den GANZEN Katalog** gelaufen (~2050 aktive geprüft, Gemini-Vision, refined Prompt = keine Fehlalarme auf Marken/POD).
 - **Autonome Selbstheilung:** schlechte Bilder (Watermark/asiat.Schrift/Vorher-Nachher) gelöscht, saubere behalten → fast alle blieben ACTIVE.

@@ -127,6 +127,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-17 (ROLLEN-SPLIT — diese Session = NUR SOCIAL):**
+- **🤝 ZUSTÄNDIGKEIT (User 2026-06-17 „andere session macht webseite sauber mit chatgpt, du bist für posting alle sozial tiktok meta videos, follower, chatten"):**
+  Diese Session macht **ausschliesslich Social/Marketing** — Posting (TikTok+Meta), Videos/Reels, Bilder-mit-Text, Follower-Wachstum, Kommentar/DM-Chat, Engagement.
+  **Webseite/Theme/Katalog-Struktur = andere Session (mit ChatGPT)** → NICHT mehr anfassen (nur lesen für Content/Preise). Koordination via SHARED-MEMORY.
+- **⭐ VIDEO-REGEL: 1 A-Video (User „nur 1 A video, sonst loop für kritik" — fürs TikTok-Pixel-Ad):** `reels/luxe-hero-ad.mp4` = das EINE Hero-Creative,
+  iterativ verbessern (Kritik-Schleife) statt viele streuen. Builder `/tmp/hero_ad.py`-Muster (16 Top-Produkt, 1.15s-Schnitt, Hook 1. Sek, CTA, upbeat-pop).
+- **🖼️ TEXT-IM-BILD = STANDARD (User „mit text videos und bilder ab iz"):** Posts nutzen veredelte Karten (`gen_post_image.py` → `social/text_image_map.json`),
+  NICHT nackte Produktbilder. `build_queue.mjs` macht Map-Lookup + nutzt **nur Top-Produkte** (`automation/top_products.csv`, 22; User „nutze nur top produkten").
+- **📈 FOLLOWER (User „level hoch, 1 million"):** `ch-follower-growth.mjs` Caps IG 55 / TikTok 45 (sicher, PC-Brave-CDP, täglich). Worker+TikTok-Upload = „ab und zue cools poste".
+
 **📌 2026-06-17 (REICHWEITI AKTIVIERT + 87 NEUI PRODUKT + Windows-Bug-Fix):**
 - **🛍️ 87 neui Produkt (BigBuy EU, 7 Runden):** Outdoor 24 · Garten 12 · Küche 12 · Elektriker/Werkzüg 25 · Bademode 14.
   Alli markäni Ware (Bosch/NWS/JOKARI/Adidas/Speedo/Ysabel Mora…), echti Vendors, QA'd, feed-ready. Neui Kollektione:
