@@ -56,6 +56,7 @@
 > **⚠️ 2026-06-17 KOORDINATION (CizQ6/Social ↔ Theme-Session):**
 > **(1) ✅ GEKLÄRT (User 2026-06-17): autopilot.yml postet NICHT zu Social — er macht NUR Katalog/CJ/BigBuy/Content/Lernen. CizQ6/Cloudflare-Worker = DER EINZIGE Social-Poster. KEIN Doppel-Post-Konflikt. Beide laufen parallel ohne Kollision.**
 > **(2) Owner-Klicks (Theme-Session/User):** GitHub Actions freischalten (war 422) + 6 Repo-Secrets (SHOPIFY_CLIENT_ID/SECRET/SHOP, CJ_ACCESS_TOKEN, GROQ_API_KEY, opt. BIGBUY_API_KEY) · Theme-Kopie 187708211585 veröffentlichen (themePublish API-gesperrt = der eine Admin-Klick).
+> **(2b) 🤝 AUTOMATION FÜR AUTOPILOT:** CizQ6 hat wiederverwendbare Bausteine dokumentiert in **`automation/AUTOMATION-GUIDE.md`** — KI-Router (ai_generate, bricht nie), Bild-QA (image-audit/Gemini = JEDEN Import prüfen!), Bild-KI (image_gen), Feed (feed_polish), Trends, BigBuy-Import. Autopilot/Katalog-Session kann sie direkt nutzen (no-op-safe, ENV-Keys). Social-Posten bleibt CizQ6.
 > **(3) Social-Stack (CizQ6) komplett:** Worker IG+FB 3×/Tag · tiktok-cycle 2× · engagement-cycle 4× · tutti/anibis/Pinterest/FB-Gruppen · Pixel-Kampagne-Bot · Clarity aktiv. Voll-Doku: `dropship/MASTER-A-Z.md`.
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
