@@ -65,6 +65,12 @@ node "automation/local/ig-delete-browser.mjs"
 #    No-op ohne META_ACCESS_TOKEN.
 if ($env:META_ACCESS_TOKEN) { node "automation/social-comment-reply.mjs" }
 
+# 6b) IG-CAROUSEL (Bilderreihe in 1 Kachel, 1 Beschreibung) — Di+Fr autonom posten (kein Spam).
+#     Nutzt die Top-Text-Karten (text_image_map). No-op ohne META_ACCESS_TOKEN.
+if ($env:META_ACCESS_TOKEN -and ((Get-Date).DayOfWeek -in "Tuesday","Friday")) {
+  node "automation/post_ig_carousel.mjs" --n 6
+}
+
 # 7) tutti.ch autonom inserieren (Browser/CDP — tutti hat kein API). Voll-Auto: lädt Bild + wählt Kategorie +
 #    veröffentlicht NUR wenn alles sauber gesetzt ist (sonst überspringen). Cap 2/Tag, idempotent (tutti-ledger.txt).
 #    Voraussetzung: Brave-Profil ist auf tutti.ch eingeloggt. Auto-Veröffentlichung auf Ricardo ist im Konto aktiv → doppelte Reichweite.
