@@ -32,6 +32,7 @@
 >   (in einer Session ohne diese Env-Vars no-op'd das Skript auf der Shopify-Seite — dann entweder Env setzen oder via Shopify-MCP anlegen).
 > - **Lauf:** `BIGBUY_API_KEY=… SHOPIFY_CLIENT_ID=… SHOPIFY_CLIENT_SECRET=… node automation/bigbuy_import.mjs` (DRY-Vorschau) → dann `LIVE=1` für Echtbetrieb. QA: Bilder READY, SEO, 6 Kanäle.
 > - **Eigentum:** **BigBuy-Import = die Session mit dem Key.** Die „Luxestyle product"-Session fasst BigBuy nicht an (vermeidet Dubletten).
+> - **🔧 WURZEL-FIX-BITTE an die Import-Session (2026-06-17):** Dein breiter Importer (Chargen **Werkzeug/Küche/Garten/Camping/Elektro**, IDs ~15432xxx) legt Produkte **OHNE `seo.title` und OHNE `custom_product`** an → die Katalog-Session muss jede Stunde manuell SEO + Google-Feed-Flag nachziehen (Schleife). **Bitte beim Anlegen direkt mitsetzen** (so wie `automation/bigbuy_import.mjs` Z.196 es für Schmuck tut): `productSet`-Input um `seo:{ title:"<Titel> | LuxeStyle", description:"<Titel> – … Gratis-Versand ab CHF 65 …" }` ergänzen **und** ein Metafeld `{namespace:"mm-google-shopping", key:"custom_product", type:"boolean", value:"true"}` (für Produkte ohne EAN/Barcode → kein „fehlende GTIN" in Google Merchant). Dann entfällt die Aufräum-Schleife komplett.
 
 ## 🧱 Geteilte Ressourcen (alle teilen sich diese!)
 - **1 Shopify-Shop** (LuxeStyle) — Zugriff über die **Shopify-MCP** (direkt in jeder Session, KEIN Key nötig).
