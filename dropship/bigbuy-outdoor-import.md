@@ -121,3 +121,8 @@ Skript `/tmp/bb_prem.py` + `/tmp/create_prem.mjs` (`/tmp/cfg_prem.json`). Alle t
 **Lehre:** BigBuy listet Marken (Knipex/Wera/Stanley/Dewalt/Makita) die NICHT am Lager sind → immer per Manufacturer-ID über mehrere Roots scannen, nicht auf die Markenliste verlassen.
 
 **→ Elektriker-Linie: 25 Produkte. Session-Total: 73 neue Produkte.**
+
+## Runde 7 — 👙 Bademode MAXIMUM (Root 19668/19756) — +14 Produkte
+User: „Badekleider maximum." Echte Marken (Ysabel Mora, Adidas, Speedo, Aqua Sphere, Aquarapid, Go & Win, Koalaroo). Skript `/tmp/bb_swim.py` + `/tmp/create_swim.mjs` (`/tmp/cfg_swim.json`). Kategorie aa-1 (Bekleidung), gender+age_group, Tag `bademode` → Bademode-Kollektion. QA: alle 14 saubere Profi-Fotos; Kinder-Bademode (Hello Kitty/Kuromi/Princess/Adidas-Kids) bewusst weggelassen (Erwachsenen-Fashion-Fokus).
+- 8 Damen-Bikinis (6× Ysabel Mora + 2× Go & Win) · 2 Damen-Badeanzüge (Adidas/Aquarapid) · 4 Herren-Badehosen (Speedo/Aqua Sphere/Koalaroo/Adidas)
+**→ Session-Total: 87 neue Produkte.**
