@@ -71,8 +71,9 @@ node "automation/local/tutti-post.mjs"
 $env:AUTO_PUBLISH = "1"; $env:ANIBIS_CAP = "2"
 node "automation/local/anibis-post.mjs"
 
-# 8) Sonntags zusätzlich entfolgen (Nicht-Zurückfolger nach ~14 Tagen)
-if ((Get-Date).DayOfWeek -eq "Sunday") { node "automation/local/ch-unfollow.mjs" }
+# 8) Entfolgen — TÄGLICH (User 2026-06-17: Ratio 878 Gefolgt > 592 Follower = ungesund → schneller trimmen).
+#    Sicher: Cap 50/Lauf, nur Nicht-Zurückfolger nach ~14 Tagen, Stopp bei Block. Idempotent.
+node "automation/local/ch-unfollow.mjs"
 
 # 8b) KATALOG-FEED-POLITUR (autonom, User 2026-06-16 „ds söt scho i richtige kategorie si"):
 #     setzt katalogweit die richtige Shopify-/Google-Produktkategorie + condition/gender/age.
