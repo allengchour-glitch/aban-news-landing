@@ -34,8 +34,27 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 function pickReel() {
   if (argFile) return path.resolve(argFile);
   const done = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split(/\s+/).filter(Boolean) : [];
-  const cand = fs.readdirSync(REELS).filter(f => /-9x16-meta\.mp4$/.test(f)).sort();
+  // PRIORITÄT (User 2026-06-17 „wenn postist TikTok"): erst die besten Hero-Creatives, dann alle
+  // luxe-*-9x16-Reels, dann die alten *-9x16-meta. So landen die neuen Top-Videos auch auf TikTok.
+  const PRIO = ['luxe-ultimate-ad.mp4', 'luxe-jewelry-cinematic.mp4', 'luxe-hero-ad.mp4',
+    'luxe-showcase-fast.mp4', 'luxe-main-showcase.mp4'];
+  const all = fs.readdirSync(REELS);
+  const luxe = all.filter(f => /^luxe-.*-9x16\.mp4$/.test(f)).sort();
+  const meta = all.filter(f => /-9x16-meta\.mp4$/.test(f)).sort();
+  const cand = [...PRIO.filter(f => all.includes(f)), ...luxe, ...meta];
   for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
+  return null;
+}
+// Caption aus video_queue.csv ziehen (gleiche coole Mundart-Captions wie Meta), sonst reels-captions.json.
+function captionFromQueue(file) {
+  try {
+    const base = path.basename(file);
+    const lines = fs.readFileSync(path.join(ROOT, 'social', 'video_queue.csv'), 'utf8').split('\n');
+    for (const l of lines) {
+      if (!l.includes(base)) continue;
+      const m = l.match(/"([^"]+)"/); if (m) return m[1];
+    }
+  } catch {}
   return null;
 }
 
@@ -43,7 +62,7 @@ function pickReel() {
   const file = pickReel();
   if (!file || !fs.existsSync(file)) { log('Kein offenes Reel zum Posten (alle in tiktok-upload-done.txt). No-op.'); process.exit(0); }
   const slug = path.basename(file).replace('.mp4', '');
-  const caption = CAPS[slug] || `${slug} ✨ luxestyle.ch · –10% WELCOME10 #schweizmode #fyp`;
+  const caption = captionFromQueue(file) || CAPS[slug] || `${slug} ✨ luxestyle.ch · –10% WELCOME10 #schweizmode #fyp`;
   log(`Reel: ${path.basename(file)} ${DRY ? '(DRY)' : ''}`);
   log(`Caption: ${caption.split('\n')[0]}`);
 
