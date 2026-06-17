@@ -3,6 +3,12 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🛍️ 2026-06-17 (PRODUKT-OFFENSIVE — 36 neue Produkte via BigBuy EU)
+- **24 Outdoor/Camping** (2 Runden) + **12 Garten & Balkon** = 36 neue, alle ACTIVE/6 Kanäle/Bilder QA'd+READY/CHF/Kategorie/condition=new.
+- **Neue Smart-Kollektion „🌿 Garten & Balkon"** (Tag=garten, publiziert) + Outdoor in „Reise & Outdoor" (jetzt 30).
+- Garten: Springbrunnen/Gartenbrunnen/Feuerschale/Varta-Stirnlampe/Laternen-4er/2 Gewächshäuser/Pavillon 3×3/Gartenschere/Hacke/2 Sichtschutz.
+- QA verworfen: Kinder-Teepee, Box-statt-Kompass, Bosch-Thermometer, Camping-Äxte (Waffenpolicy). IDs: `dropship/bigbuy-outdoor-import.md`.
+
 ## 🏕️ 2026-06-16 (OUTDOOR-RUNDE — 12 neue Produkte live via BigBuy EU)
 - **12 Outdoor/Camping-Produkte angelegt** (ACTIVE, 6 Kanäle, Bilder READY, CHF-Preis, Kategorie sg/hg, condition=new, 7 mit GTIN): 2 Camping-Gaskocher, 2 Klapptische, 2 Hängematten, LED-Laterne, Solar-Fackel, LED-Kerzen 3er, Klapp-Holzkohlegrill, Elektrogrill 2400 W, Grillmatte. In Kollektion „Reise & Outdoor" gehängt. IDs/Quelle: `dropship/bigbuy-outdoor-import.md`.
 - **Quelle BigBuy (EU-Lager = bessere CH-Lieferung)**, Root `parentTaxonomy=19756` „Sport und Außenbereich". CJ war für Outdoor leer (nur Schmuck-Müll → verworfen, QA). Jedes Bild per Kontakt-Sheet QA'd; Äxte/Waffen + Nicht-Outdoor weggelassen.

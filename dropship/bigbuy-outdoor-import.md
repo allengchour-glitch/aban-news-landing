@@ -55,3 +55,23 @@ QA: 2 verworfen (Kinder-Teepee statt Camping-Zelt + Box statt Kompass = Mismatch
 - Echte grosse Camping-Zelte (4-Mann) sind bei BigBuy teuer/selten (Treffer waren Kinder-Teepees) → ggf. CJ/AliExpress.
 - Einige ohne GTIN → `feed_ready.mjs` (BIGBUY_TOKEN) füllt Barcodes nach.
 - Eigene Produkt-Videos (render_price_reveal.sh) für die 24 nachziehen.
+
+## Runde 3 — Garten & Balkon (Root 19661 „Garten") — +12 Produkte
+Skript `/tmp/bb_garden.py` + `/tmp/create_garden.mjs` (Config `/tmp/cfg3.json`). Kategorie hg (Heim & Garten).
+Neue Smart-Kollektion **„🌿 Garten & Balkon"** (`gid://shopify/Collection/688740663681`, Regel Tag=garten, publiziert).
+| BigBuy-ID | Shopify-ID | CHF | Titel |
+|---|---|---|---|
+| 283501 | 15432179253633 | 49.90 | Springbrunnen «Zen» |
+| 1141683 | 15432179286401 | 84.90 | Gartenbrunnen «Cascada» 3 Säulen |
+| 1268847 | 15432179319169 | 49.90 | Feuerschale «Inferno» |
+| 517826 | 15432179351937 | 49.90 | Stirnlampe «Varta Sports H30R Pro» |
+| 1117513 | 15432179384705 | 69.90 | Camping-Laterne «Trail» 4er-Set |
+| 690609 | 15432179417473 | 59.90 | Anzucht-Gewächshaus «Sprout» 8er |
+| 1188742 | 15432179450241 | 74.90 | Pop-up-Gewächshaus «Bloom» |
+| 619689 | 15432179483009 | 69.90 | Garten-Pavillon «Sole» 3×3 m |
+| 870216 | 15432179515777 | 24.90 | Bypass-Gartenschere «Cellfast» |
+| 510008 | 15432179548545 | 24.90 | Garten-Handhacke «Stocker» |
+| 901917 | 15432179581313 | 29.90 | Balkon-Sichtschutz «Privato» |
+| 408137 | 15432179614081 | 29.90 | Bambus-Sichtschutz «Natura» 1×5 m |
+
+**→ Session-Total: 36 neue Produkte (24 Outdoor + 12 Garten), alle ACTIVE/6 Kanäle/QA'd/Kategorie/condition.**
