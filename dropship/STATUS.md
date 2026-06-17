@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🎯 2026-06-17 (TikTok-Pixel-Kampagne per Port — Scaffold, Budget-Cap 350 CHF)
+- **User-Entscheid:** „autonom, ha 350 Fr druf, uf Pixel voll Gas, ohni mi." → voll-auto Kampagne via Brave-CDP-Port.
+- **`automation/local/tiktok-campaign-port.mjs` gebaut:** erstellt+startet Kampagne über eingeloggtes TikTok Ads Manager (Port 9222, wie Upload/Follower). Config: Lifetime-Cap CHF 350 (HART), Tag 25 CHF (~14 T), Pixel D8EKVR…, Event Complete Payment, CH/Frauen/18–34/DE+FR, TikTok-Placement, Creative `reels/luxe-hero-ad.mp4`, Ziel /collections/sommer. Idempotent (campaign-ledger.txt → kein Doppel-Spend).
+- **⚠️ EHRLICH:** TikTok-Ads-UI ändert sich + ist aus der Cloud NICHT testbar → **erster Lauf `--dry`** (diagnostiziert + screenshottet jeden Schritt, `campaign-shots/`), dann Selektoren scharfziehen, DANN autonom. Bis Selektoren bestätigt: Script stoppt VOR dem Absenden (kein versehentlicher Spend). Pixel selbst ist schon verbunden (Shopify-TikTok-App).
+
 ## 🧰 2026-06-17 (GRATIS-VOLLAUTOMATIONS-STACK + KI-FALLBACK + Trends/Musik + Follower langsam)
 - **🤖 Multi-Provider-KI-Router `automation/ai/ai_generate.mjs`:** groq→gemini→openrouter→cloudflare→mistral→openai,
   automatischer Fallback wenn einer ausfällt, Template-Fallback ohne Key → **Automation bricht NIE**. **GROQ ist jetzt der aktive #1 (Key vom User 2026-06-17 geliefert + live verifiziert: `groq=live`, echte Bärndütsch-Caption generiert).** Key-Wert NUR in `luxe-secrets.ps1` als `$env:GROQ_API_KEY` (NIE im öffentlichen Repo). OpenAI = Quota leer (429, nur Fallback).
