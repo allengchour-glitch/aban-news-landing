@@ -3,6 +3,14 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## ⚙️ 2026-06-17 (A-Z AUTONOM-VERBESSERIG + QA)
+- **QA-Lauf:** ALLE Skripte syntax-geprüft (0 Fehler .mjs/.py), JSON intakt (71 Gehirn-Regeln, queue 31 Posts).
+- **Caption-Engine verbessert:** Gewinner-FRAGE-Hooks zuerst («Weles nimmsch – 1,2,3?», «Für di oder zum Verschänke?») = treiben Kommentare (aus IG-Analyse + Top-Shop-Formaten).
+- **KI-Analyse live:** Trend-Scan nutzt jetzt Gemini (Groq+Gemini beide live), Google-Trends-CH + Bild-KI erreichbar.
+- **Steuer-Zentrale** : Cloud steuert alle PC-Aktionen selbst (Worker-Queue).
+- **Key-Inventar** im Gehirn (Namen/Status/Ort, keine Werte). Freier Stack (Groq/Gemini/Luma/piper/Pollinations) reicht → kein Geld ausser TikTok-Kampagne.
+- **Pipeline airtight:** DO-NOT-POST-Filter im Queue-Builder (botox/öl nie wieder). Clarity aktiv (Conversion-Analyse in 1-2 Tagen).
+
 ## 🎵 2026-06-17 (TikTok VOLLGAS — 4x/Tag autonom, PC immer an)
 - **EI-KLICK ** registriert 4 Tasks (10/13/16/20) →  postet+analysiert+lernt **4x/Tag** autonom.
 - **Uploader-Fix:** 48 Reels im Pool (vorher nur 4), Hero zuerst, **perpetual-Recycle** (steht nie still), Caption aus video_queue.

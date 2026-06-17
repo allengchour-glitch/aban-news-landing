@@ -32,6 +32,11 @@ const DRY = process.argv.includes('--dry');
 // Mix aus Bärndütsch (bester Hook-Typ, Ø 793 V — siehe berndeutsch.json) + Hochdeutsch.
 // ⚠️ 2026-06-14: Liste erweitert (vorher 6 → Opener wiederholten sich 3× pro Queue = sah wie Doppel-Post aus).
 const OPENERS = [
+  // 🏆 GEWINNER-FRAGE-HOOKS zuerst (Analyse 2026-06-17: Frage/Poll-Captions treiben Kommentare,
+  // bestes IG-Post-Engagement; Top-Mode-Shops nutzen das). Frage = Engagement-Trigger.
+  'Weles nimmsch – 1, 2 oder 3? 👀',             // Bärndütsch (bester Engagement-Typ)
+  'Für di oder zum Verschänke? 🎁',              // Bärndütsch (Frage)
+  'Weles isch dis Lieblingsteil? 🤍',           // Bärndütsch (Frage)
   'Lueg mau das aa 😍',                          // Bärndütsch
   'Äuä ds schönschte Teil grad itz 👀',          // Bärndütsch
   'Wusste nicht, dass ich das brauche 👀',
@@ -44,7 +49,6 @@ const OPENERS = [
   'Dis nöie Lieblingsteil? 👀',                  // Bärndütsch
   'Kleiner Preis, grosse Wirkung ✨',
   'Hesch das scho gseh? 🇨🇭',                    // Bärndütsch
-  'Für di oder zum Verschänke? 🎁',              // Bärndütsch
   'Genau das hat mir gefehlt 🙌',
 ];
 const TRIGGERS = [
