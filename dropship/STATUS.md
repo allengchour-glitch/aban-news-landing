@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🛍️ 2026-06-17 (Merchant-Feed MAXIMUM + BigBuy-Importer + HeyGen-Status)
+- **🛒 Google-Merchant MAXIMUM (ganzer Katalog gefegt, feed_polish):** **266 Produkte hatten KEINE Kategorie → jetzt gesetzt** + 25 Google-Felder. Rest schon ok → Feed jetzt voll: Kategorie · condition · GTIN/identifier_exists · gender/age. Google re-crawlt in Tagen.
+- **📦 BigBuy-Importer `dropship/bigbuy_import.mjs`:** legt BigBuy-EU-Produkte Merchant-ready an (ACTIVE/6 Kanäle/CHF/GTIN/Kategorie/condition/gender/age/custom_product), idempotent (EAN-Ledger), Backoff bei 429. **⚠️ BigBuy-API-Quota von Cloud-IP erschöpft (429)** → 0 erstellt; besser vom PC / inkrementell (z.B. 10/Tag) laufen lassen. feed_polish-Helfer-Import jetzt guard't (kein Auto-Polish bei Import).
+- **🎬 HeyGen-Spokesperson (`heygen_video.mjs`, Key vorhanden):** Key verifiziert (1281 Avatare, 29 DE-Frauenstimmen, Abigail+Leonie gewählt) — ABER **Render scheitert an API-Credits** (`INSUFFICIENT_CREDIT`: API-Quota=4 ≠ Dashboard-Credits 16'500). → HeyGen-**API-Quota aufladen** ODER im HeyGen-Webapp manuell. Tool ist startklar, sobald API-Credits da.
+
 ## 🎠 2026-06-17 (IG VOLL-PORT-AUTOMATION + Carousel + Profil-Analyse + Cleanup)
 - **🚨 BOTOX/SERUM/ÖL im IG-Grid LIVE gfunde** (alti Posts vor de Verbots-Regle): Botox/Vitamin-C-Serum «Glow», Rosehip-Öl/Gua-Sha (HEMP). IG-API cha published NID lösche (#10) → **`ig-delete-browser.mjs` (Brave-CDP)** boue, liest `ig-delete-queue.txt` (5 Posts mit Permalinks), im PC-Task verdrahtet. DO-NOT-POST erweitert (serum/botox/vitamin-c); fresh1-Reel raus; queue.json verifiziert clean.
 - **🎠 IG-Carousel (Bilderreihe in 1 Kachel, 1 Beschreibung):** `automation/post_ig_carousel.mjs` (Graph-API, 2–10 Top-Text-Karten, Gewinner zuerst). **Erster live** (id 18115311286862973). Autonom **Di+Fr** im PC-Task.
