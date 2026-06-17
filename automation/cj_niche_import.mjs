@@ -19,9 +19,9 @@ const chf=usd=>{const v=Math.max(9.9,(parseFloat(usd)||0)*2.4);return (Math.floo
 
 const NICHE={
   gaming:{coll:{handle:'gaming',title:'🎮 Gaming',tag:'gaming'},type:'Gaming',tags:['gaming','tech','hype-2026','geschenk'],
-    kw:['gaming mouse','gaming keyboard','gaming headset','gaming mouse pad','game controller gamepad','rgb gaming light','gaming finger sleeve','mechanical keyboard'],
-    must:['gaming','mouse','keyboard','headset','controller','gamepad','mousepad','mouse pad','rgb','joystick'],
-    ban:['chair','stuhl','desk','table','sofa','bag','case for phone','sticker','cable organizer']},
+    kw:['gaming mouse','gaming keyboard','gaming headset','gaming mouse pad','game controller','gamepad joystick','mechanical keyboard rgb','gaming headphone'],
+    must:['gaming mouse','gaming mice','gaming keyboard','mechanical keyboard','gaming headset','gaming headphone','game controller','gamepad','joystick','mouse pad','mousepad','controller for'],
+    ban:['trap','falle','rat ','rodent','pet ','animal','jewelry','schmuck','pendant','necklace','ring ','symbol','hindu','toy','kids','child','water gun','wasserpistole','sculpture','skulptur','statue','glasses','eye ','bag','phone case','sticker','decoration','figurine']},
   anime:{coll:{handle:'anime-manga',title:'🎌 Anime & Manga',tag:'anime'},type:'Anime',tags:['anime','geschenk','hype-2026','sammler'],
     kw:['anime figure','anime keychain','anime acrylic stand','naruto figure','one piece figure','dragon ball figure','anime poster','demon slayer'],
     must:['anime','manga','naruto','one piece','dragon ball','demon slayer','figure','keychain','acrylic'],
