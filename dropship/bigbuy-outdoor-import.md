@@ -75,3 +75,23 @@ Neue Smart-Kollektion **„🌿 Garten & Balkon"** (`gid://shopify/Collection/68
 | 408137 | 15432179614081 | 29.90 | Bambus-Sichtschutz «Natura» 1×5 m |
 
 **→ Session-Total: 36 neue Produkte (24 Outdoor + 12 Garten), alle ACTIVE/6 Kanäle/QA'd/Kategorie/condition.**
+
+## Runde 4 — Haus & Küche (Root 19656) — +12 Produkte
+Skript `/tmp/bb_kitchen.py` + `/tmp/create_kitchen.mjs` (`/tmp/cfg4.json`). Kategorie hg. In Kollektion „Küche & Kochen".
+QA verworfen: 2× „x12"-Grosspack (Mehrstück-Falle: Rattankorb + Gläser).
+| BigBuy-ID | Shopify-ID | CHF | Titel |
+|---|---|---|---|
+| 1294490 | 15432181088641 | 89.90 | Kapsel-Kaffeemaschine «Espresso» |
+| 1276212 | 15432181121409 | 64.90 | Milchaufschäumer «Barista» |
+| 1284566 | 15432181154177 | 129.90 | Premium-Milchaufschäumer «Jura» |
+| 1260909 | 15432181219713 | 69.90 | Allesschneider «Chef» |
+| 1214948 | 15432181285249 | 39.90 | Aufbewahrungsboxen «Dots» 3er |
+| 1248733 | 15432181318017 | 29.90 | Aufbewahrungsbox «Roll» m. Rädern |
+| 1236285 | 15432181383553 | 34.90 | Frischhaltedosen-Set «Fresh» |
+| 1259673 | 15432181416321 | 29.90 | Kupfer-Becher «Mule» 4er |
+| 1235598 | 15432181449089 | 69.90 | Ofenform-Set «Zenker» 2-tlg |
+| 1284510 | 15432181481857 | 27.90 | Edelstahl-Bratpfanne «Castey» |
+| 1215840 | 15432181514625 | 22.90 | Antihaft-Bratpfanne «Monix Green» |
+| 1228244 | 15432181547393 | 24.90 | Spülen-Abtropfsieb «Clean» |
+
+**→ Session-Total: 48 neue Produkte (24 Outdoor + 12 Garten + 12 Küche), alle ACTIVE/6 Kanäle/QA'd/Kategorie/condition.**
