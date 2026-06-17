@@ -155,6 +155,22 @@ function loadReels() {
   });
   const counts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
 
+  // 🈲 AIRTIGHT DO-NOT-POST-FILTER (User 2026-06-17 „wenn botox u öl verbote isch nüm poste?"):
+  // HARTE Garantie — KEIN Item dessen Caption/Bild-URL/Video-URL einen verbotenen Begriff enthält
+  // (botox/serum/öl/gua-sha/hemp…) kommt je in die Queue, egal aus welcher Quelle. Letzte Schutzlinie.
+  let banned = [];
+  try {
+    banned = fs.readFileSync(path.join(ROOT, 'automation', 'DO-NOT-POST.txt'), 'utf8')
+      .split('\n').map(l => l.trim().toLowerCase()).filter(l => l && !l.startsWith('#'));
+  } catch {}
+  const before = out.length;
+  const clean = out.filter((x) => {
+    const hay = ((x.caption || '') + ' ' + (x.image || '') + ' ' + (x.video || '')).toLowerCase();
+    return !banned.some(t => hay.includes(t));
+  });
+  const bannedRemoved = before - clean.length;
+  out.length = 0; out.push(...clean);
+
   // 🛡️ DEDUP-GARANTIE (User 2026-06-16 „doppelt bilder"): dieselbe Bild-/Video-URL darf NIE
   // zweimal im Grid (Bild/Reel) stehen → sonst doppelte Feed-Posts. Stories (ephemer, nicht im
   // Grid) dürfen ein Produkt erneut zeigen, aber nicht sich selbst doppeln.
@@ -171,7 +187,7 @@ function loadReels() {
 
   if (DRY) { console.log(JSON.stringify(out.slice(0, 5), null, 2)); console.log(`… ${out.length} Posts (dry, ${removed} Dubletten entfernt): ${JSON.stringify(dcounts)}`); process.exit(0); }
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
-  console.log(`✅ Autopost-Queue neu gebaut: ${out.length} Posts (Mix, ${removed} Dubletten entfernt) → ${path.relative(ROOT, OUT)}`);
+  console.log(`✅ Autopost-Queue neu gebaut: ${out.length} Posts (Mix, ${removed} Dubletten + ${bannedRemoved} VERBOTENE entfernt) → ${path.relative(ROOT, OUT)}`);
   console.log(`   Formate: ${JSON.stringify(dcounts)} (Bilder+Reels+Stories, alle CH-weit, KEINE Grid-Dubletten)`);
   console.log('   ⚠️ Nach Queue-Änderung: `wrangler deploy` (Worker bäckt queue.json beim Deploy ein).');
 })();
