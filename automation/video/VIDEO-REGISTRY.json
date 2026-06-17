@@ -1,0 +1,105 @@
+{
+  "updated": "2026-06-17",
+  "hinweis": "Jedes Video + sein Build-Skript, damit es JEDERZEIT neu zusammengesetzt werden kann. Skripte in automation/video/. Luma-Clips brauchen LUMA_API_KEY, Upload upload_to_shopify_cdn.mjs.",
+  "videos": [
+    {
+      "name": "luxe-ultimate-ad.mp4",
+      "queue_id": "reel-ultimate",
+      "typ": "Luma-animiert (4 Produkte)",
+      "produkte": [
+        "Moissanite-Herzkette Coeur",
+        "Blazer Roma",
+        "Crossbody Lido",
+        "Stiletto Gala"
+      ],
+      "build": [
+        "automation/video/luma_generate_clips.mjs (Luma img2video)",
+        "automation/video/assemble_ultimate.py (Montage+Text+Musik)"
+      ],
+      "musik": "upbeat-pop",
+      "cdn": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-ultimate-ad.mp4?v=1781729294"
+    },
+    {
+      "name": "luxe-jewelry-cinematic.mp4",
+      "queue_id": "reel-jewelry-cine",
+      "typ": "Cinematisch Schmuck (6 Bilder, Ken-Burns)",
+      "produkte": [
+        "Herzkette",
+        "Onyx-Ohrringe",
+        "Serpent-Armreif",
+        "Eternita-Ring",
+        "Papillon-Armkette",
+        "Stella-Kette"
+      ],
+      "build": [
+        "automation/video/build_jewelry_cinematic.py"
+      ],
+      "musik": "elegant",
+      "cdn": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-jewelry-cinematic.mp4?v=1781728105"
+    },
+    {
+      "name": "luxe-fashion-motion.mp4",
+      "queue_id": "reel-fashion-motion",
+      "typ": "Luma-animiert Mode (4 Produkte)",
+      "produkte": [
+        "Leinen-Set Lino",
+        "Seidenschal Lyon",
+        "Plateau-Sneaker Cloud",
+        "Filzhut Montana"
+      ],
+      "build": [
+        "automation/video/luma_generate_clips.mjs",
+        "automation/video/assemble_fashion.py"
+      ],
+      "musik": "upbeat-pop",
+      "cdn": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-fashion-motion.mp4?v=1781730819"
+    },
+    {
+      "name": "luxe-hero-ad.mp4",
+      "queue_id": "reel-hero-ad",
+      "typ": "Schneller A-Video (16 Top-Produkte, Ken-Burns)",
+      "produkte": [
+        "top_products.csv (16)"
+      ],
+      "build": [
+        "automation/video/build_hero_ad.py"
+      ],
+      "musik": "upbeat-pop",
+      "cdn": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-ad_6e7c5b78-2dad-414c-8db3-fbb44b55ebec.mp4?v=1781723505"
+    },
+    {
+      "name": "luxe-main-showcase.mp4",
+      "queue_id": "",
+      "typ": "Montage 12 Bilder (ruhig)",
+      "produkte": [
+        "gemischt"
+      ],
+      "build": [
+        "automation/video/build_montage.py"
+      ],
+      "musik": "upbeat-pop",
+      "cdn": ""
+    },
+    {
+      "name": "luxe-showcase-fast.mp4",
+      "queue_id": "",
+      "typ": "Montage 24 Bilder (schnell)",
+      "produkte": [
+        "gemischt"
+      ],
+      "build": [
+        "automation/video/build_montage_fast.py"
+      ],
+      "musik": "upbeat-pop",
+      "cdn": ""
+    }
+  ],
+  "zutaten": {
+    "top_produkte": "automation/top_products.csv",
+    "text_karten": "social/text_image_map.json",
+    "musik": "automation/music/music_library.mjs (CC-BY)",
+    "luma": "LUMA_API_KEY (ray-flash-2)",
+    "upload": "automation/upload_to_shopify_cdn.mjs",
+    "queue": "social/video_queue.csv"
+  }
+}

@@ -41,9 +41,11 @@ $env:IG_FOLLOWS = "8"; $env:TT_FOLLOWS = "6"
 node "automation/local/ch-follower-growth.mjs"
 $env:IG_FOLLOWS = $null; $env:TT_FOLLOWS = $null
 
-# 4b) FACEBOOK-FOLLOWER: 1x/Tag (nur Mittags-Cycle) in CH-Gruppe posten -> Reichweite -> Page-Follows.
-#     Sehr konservativ (FB blockt hart): 1 Gruppe/Lauf. Braucht fb-groups.txt (Gruppen wo man Mitglied ist).
+# 4b) FACEBOOK-FOLLOWER: 1x/Tag (Mittags-Cycle) in CH-Gruppe posten -> Reichweite -> Page-Follows.
 if ((Get-Date).Hour -eq 12) { node "automation/local/fb-group-post.mjs" }
+# 4c) CH-GRUPPEN AUTONOM BEITRETEN: 1x/Tag (15-Uhr-Cycle), konservativ 2/Lauf -> baut fb-groups.txt aus.
+#     (CH-Marktplätze tutti/anibis/ricardo werden separat im Haupt-Tagestask bespielt; Konto = 1x manuell.)
+if ((Get-Date).Hour -eq 15) { node "automation/local/fb-group-join.mjs" }
 
 # 5) LERNEN + zurueck ins Repo
 node "automation/brain/brain.mjs" 2>$null
