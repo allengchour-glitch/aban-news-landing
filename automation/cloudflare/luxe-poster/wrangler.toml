@@ -6,7 +6,7 @@ compatibility_date = "2024-11-01"
 # = 3 Posts/Tag (Meta, weniger Spam) + 6× Meta-Analyse/Tag. UTC->CH(+2): 10=12(Lunch) 15=17 19=21(Primetime).
 # Posten geht an IG + FB + TikTok-Entwurf (falls TT-Secrets gesetzt).
 [triggers]
-crons = ["0 7,10,12,15,17,19 * * *"]
+crons = ["0 8,12,17 * * *"]
 
 # KV für Cursor + entdeckte IDs (LUXE_KV). ID fest eingetragen → git pull/deploy ohne Handarbeit.
 [[kv_namespaces]]
