@@ -142,8 +142,19 @@ def main():
         total += secs
         png = os.path.join(tmp, f"s{i}.png")
         render_scene(sc, w, h, brand, png)
-        inputs += ["-loop", "1", "-t", f"{secs}", "-i", png]
-        filters.append(f"[{i}:v]scale={w}:{h},setsar=1,fps={fps},format=yuv420p[v{i}]")
+        # Ken-Burns-Bewegung (sanfter Zoom) — Standard an, wenn ein Bild da ist.
+        motion = sc.get("motion", bool(sc.get("image")))
+        if motion:
+            d = max(1, int(round(secs * fps)))
+            inputs += ["-i", png]
+            filters.append(
+                f"[{i}:v]scale={w * 2}:{h * 2},"
+                f"zoompan=z='min(zoom+0.0010,1.10)':d={d}:"
+                f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={w}x{h}:fps={fps},"
+                f"setsar=1,format=yuv420p[v{i}]")
+        else:
+            inputs += ["-loop", "1", "-t", f"{secs}", "-i", png]
+            filters.append(f"[{i}:v]scale={w}:{h},setsar=1,fps={fps},format=yuv420p[v{i}]")
 
     n = len(scenes)
     concat = "".join(f"[v{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[v]"
