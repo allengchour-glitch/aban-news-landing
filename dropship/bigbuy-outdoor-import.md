@@ -95,3 +95,19 @@ QA verworfen: 2× „x12"-Grosspack (Mehrstück-Falle: Rattankorb + Gläser).
 | 1228244 | 15432181547393 | 24.90 | Spülen-Abtropfsieb «Clean» |
 
 **→ Session-Total: 48 neue Produkte (24 Outdoor + 12 Garten + 12 Küche), alle ACTIVE/6 Kanäle/QA'd/Kategorie/condition.**
+
+## Runde 5 — 🔌 Elektriker & Installation (Root 19651/19657/19653) — +13 Produkte
+User: „Arbeitskollegen sind Elektriker, alles für Elektriker." Skript `/tmp/bb_elektro.py` + `/tmp/create_el.mjs` (`/tmp/cfg_el.json`). Kategorie ha (Heimwerker), vendor=echte Marke (Merchant-korrekt), GTIN/custom_product. Neue Smart-Kollektion **„🔌 Elektriker & Installation"** (`688748200321`, Tag=elektriker, publiziert).
+QA verworfen: Ceys «Agua Stop» (Wasser-Reparaturband ≠ Isolierband), Bosch «Drahtrolle» (Rasentrimmer-Faden!), Mobilis (Handyhülle, Mismatch), Auto-Ladegeräte, 80L-Boiler.
+| Marke | Produkt | CHF |
+|---|---|---|
+| Workpro | Wasserpumpenzange / Seitenschneider / Kombizange ×2 / Auto-Abisolierzange | 16.90–27.90 |
+| NWS (DE) | Profi-Wasserpumpenzange · Flachrundzange | 49.90–59.90 |
+| JOKARI | Automatik-Abisolierzange Sensor | 119.90 |
+| Bosch | VDE-Kabelschneider 1000 V | 99.90 |
+| Grip-on | Gripzange selbstklemmend | 54.90 |
+| EDM | Kabeltrommel 4-fach | 34.90 |
+| F-line | Kabelkanal-Set 5er | 14.90 |
+| OBO Bettermann | Nagel-Kabelschellen | 16.90 |
+
+**→ Session-Total: 61 neue Produkte (24 Outdoor + 12 Garten + 12 Küche + 13 Elektriker).**
