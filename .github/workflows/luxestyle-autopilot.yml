@@ -54,6 +54,11 @@ jobs:
       - name: SEO-Lücken füllen (katalogweit)
         run: node automation/seo_gap_fix.mjs || true
 
+      - name: Google-Merchant-Feed pflegen (GTIN/custom_product)
+        env:
+          LIVE: "1"
+        run: node automation/google_feed_fix.mjs || true
+
       - name: CJ-Nischen-Import (Gaming-Schwerpunkt)
         run: node automation/cj_niche_import.mjs || true
 
