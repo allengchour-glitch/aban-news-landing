@@ -1,0 +1,12 @@
+{
+  "output": "freegen/out/abannews-shop.mp4",
+  "w": 1080, "h": 1920, "fps": 30,
+  "music": "automation/music/luxe-premium.wav",
+  "brand": "ABANNEWS.COM/SHOP",
+  "scenes": [
+    { "text": "KI-Schnellstart für dein Business.", "seconds": 3, "bg": "#0b0b0c" },
+    { "text": "19 Branchen. Fertige Prompts & Checklisten.", "seconds": 3.2, "bg": "#141019" },
+    { "text": "Sofort einsetzbar — kein Tech-Wissen nötig.", "seconds": 3.2, "bg": "#0e1410" },
+    { "text": "Hol dein Kit auf abannews.com", "seconds": 3, "bg": "#0b0b0c" }
+  ]
+}
