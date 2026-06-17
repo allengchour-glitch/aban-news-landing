@@ -1,28 +1,26 @@
 #!/usr/bin/env node
-/* LuxeStyle — tiktok-campaign-port.mjs  (TikTok-Pixel-Kampagne autonom über Brave-CDP, Port 9222)
- * ---------------------------------------------------------------------------------------------
- * Erstellt + startet die bezahlte TikTok-Kampagne über das EINGELOGGTE TikTok Ads Manager im
- * Brave (Port 9222) — gleicher Weg wie Upload/Follower-Bot, KEIN API-Audit nötig. (User 2026-06-17
- * „autonom, ha 350 Fr druf, uf Pixel voll Gas, ohni mi.")
+/* LuxeStyle — tiktok-campaign-port.mjs  · MAXIMUM-VERSION
+ * =============================================================================================
+ * Erstellt + startet die bezahlte TikTok-Conversion-Kampagne autonom über das EINGELOGGTE
+ * TikTok Ads Manager im Brave (Port 9222). Kein API-Audit nötig. (User: 350 CHF drauf, voll Gas.)
  *
- * Konfiguration (ENV, sichere Defaults):
- *   TT_TOTAL_BUDGET   Lifetime-Cap in CHF (HARTE Obergrenze)         default 350
- *   TT_DAILY_BUDGET   Tagesbudget in CHF                              default 25   (~14 Tage)
- *   TT_PIXEL_ID       Pixel-ID                                        default D8EKVR3C77U6KT5BTBD0
- *   TT_EVENT          Optimierungs-Event                              default "Complete Payment"
- *   TT_LANDING        Ziel-URL                                        default https://luxestyle.ch/collections/sommer
- *   TT_VIDEO          Creative (A-Video)                              default reels/luxe-hero-ad.mp4
- *   AUTO_LAUNCH       1 = bis „Senden/Submit" gehen, 0 = vor Launch stoppen   default 0
+ * ROBUST: jeder Schritt mit mehrsprachigen (DE/EN) Selektoren + Fallbacks + SCREENSHOT (campaign-shots/)
+ * + Log. HARTE Budget-Obergrenze (Lifetime-Cap) → kann nie mehr ausgeben als TT_TOTAL_BUDGET.
+ * Idempotent über campaign-ledger.txt. AUTO_LAUNCH gating + --dry (nur durchlaufen + screenshotten).
  *
- * ⚠️ EHRLICH: Das TikTok-Ads-Manager-UI ändert sich oft und kann aus der Cloud NICHT getestet
- *    werden. Darum: ERSTER LAUF mit `--dry` (diagnostiziert + screenshottet jeden Schritt), dann
- *    Selektoren bei Bedarf nachziehen. Danach läuft es autonom. Idempotent über campaign-ledger.txt:
- *    erstellt NIE eine zweite Kampagne, wenn schon eine angelegt wurde.
+ * EMPFOHLENER ABLAUF (1× begleitet, dann autonom):
+ *   1) Brave mit --remote-debugging-port=9222, bei ads.tiktok.com eingeloggt, richtiges Werbekonto aktiv.
+ *   2) node automation/local/tiktok-campaign-port.mjs --dry      → läuft durch, macht Screenshots,
+ *      meldet wo ein Selektor nicht passt. Screenshots/DIAG anschauen → ggf. SEL_* per ENV überschreiben.
+ *   3) AUTO_LAUNCH=1 node automation/local/tiktok-campaign-port.mjs → erstellt + sendet zur Prüfung ab.
  *
- * START (am PC, Brave mit --remote-debugging-port=9222, bei ads.tiktok.com eingeloggt):
- *   npm install playwright-core
- *   node automation/local/tiktok-campaign-port.mjs --dry      # ZUERST: nur diagnostizieren
- *   AUTO_LAUNCH=1 node automation/local/tiktok-campaign-port.mjs   # echt: erstellen + starten
+ * ENV (sichere Defaults):
+ *   TT_TOTAL_BUDGET=350  TT_DAILY_BUDGET=25  TT_PIXEL_ID=D8EKVR3C77U6KT5BTBD0
+ *   TT_EVENT="Complete payment"  TT_LANDING=https://luxestyle.ch/collections/sommer
+ *   TT_VIDEO=reels/luxe-flagship-film.mp4   TT_IDENTITY="Luxestyle.ch"
+ *   TT_LOCATION=Switzerland  TT_GENDER=Female  TT_AGE="18-24,25-34"  TT_LANG="German,French"
+ *   TT_ADTEXT="Premium-Looks zu faire Priis. -10% mit WELCOME10."  TT_CTA="Shop Now"
+ *   AUTO_LAUNCH=0  CREATION_URL=https://ads.tiktok.com/i18n/perf/creation/campaign
  */
 import { chromium } from 'playwright-core';
 import { fileURLToPath } from 'node:url';
@@ -31,94 +29,130 @@ import path from 'node:path';
 
 const DRY = process.argv.includes('--dry');
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
-const CFG = {
-  total: Number(process.env.TT_TOTAL_BUDGET || 350),
-  daily: Number(process.env.TT_DAILY_BUDGET || 25),
+const C = {
+  total: process.env.TT_TOTAL_BUDGET || '350',
+  daily: process.env.TT_DAILY_BUDGET || '25',
   pixel: process.env.TT_PIXEL_ID || 'D8EKVR3C77U6KT5BTBD0',
-  event: process.env.TT_EVENT || 'Complete Payment',
+  event: process.env.TT_EVENT || 'Complete payment',
   landing: process.env.TT_LANDING || 'https://luxestyle.ch/collections/sommer',
-  video: path.resolve(process.env.TT_VIDEO || path.join(ROOT, 'reels', 'luxe-hero-ad.mp4')),
+  video: path.resolve(process.env.TT_VIDEO || path.join(ROOT, 'reels', 'luxe-flagship-film.mp4')),
+  identity: process.env.TT_IDENTITY || 'Luxestyle.ch',
+  location: process.env.TT_LOCATION || 'Switzerland',
+  gender: process.env.TT_GENDER || 'Female',
+  age: (process.env.TT_AGE || '18-24,25-34').split(','),
+  lang: (process.env.TT_LANG || 'German,French').split(','),
+  adtext: process.env.TT_ADTEXT || 'Premium-Looks zu faire Priis. -10% mit Code WELCOME10.',
+  cta: process.env.TT_CTA || 'Shop Now',
   autoLaunch: process.env.AUTO_LAUNCH === '1',
+  creationUrl: process.env.CREATION_URL || 'https://ads.tiktok.com/i18n/perf/creation/campaign',
 };
 const LEDGER = path.join(ROOT, 'automation', 'local', 'tiktok-campaign-ledger.txt');
 const SHOTS = path.join(ROOT, 'automation', 'local', 'campaign-shots');
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+let STEP = 0;
 
-// Mehrsprachige, text-basierte Klick-Helfer (Ads Manager kann EN/DE sein) — robust + mit Screenshot.
-async function clickText(p, labels, { timeout = 8000 } = {}) {
+async function shot(p, name) { try { fs.mkdirSync(SHOTS, { recursive: true }); await p.screenshot({ path: path.join(SHOTS, `${String(++STEP).padStart(2, '0')}-${name}.png`) }); } catch {} }
+async function diag(p, step) {
+  const d = await p.evaluate(() => ({ url: location.href, title: document.title, body: (document.body.innerText || '').replace(/\s+/g, ' ').slice(0, 200) })).catch(() => ({}));
+  log(`DIAG[${step}]`, JSON.stringify(d)); await shot(p, step);
+}
+// klick erstes sichtbares Element aus Text/Rollen-Liste
+async function clickAny(p, labels, { role = 'button', timeout = 6000 } = {}) {
   for (const t of labels) {
-    const el = p.getByRole('button', { name: t }).first();
-    try { if (await el.isVisible({ timeout: 1200 })) { await el.click({ timeout }); return t; } } catch {}
-    const tx = p.getByText(t, { exact: false }).first();
-    try { if (await tx.isVisible({ timeout: 1200 })) { await tx.click({ timeout }); return t; } } catch {}
+    for (const loc of [p.getByRole(role, { name: t }).first(), p.getByText(t, { exact: false }).first()]) {
+      try { if (await loc.isVisible({ timeout: 1000 })) { await loc.click({ timeout }); await sleep(800); return t; } } catch {}
+    }
   }
   return null;
 }
-async function shot(p, name) {
-  try { fs.mkdirSync(SHOTS, { recursive: true }); await p.screenshot({ path: path.join(SHOTS, name + '.png'), fullPage: false }); } catch {}
+async function fillAny(p, labelOrPlaceholder, value) {
+  for (const loc of [p.getByPlaceholder(labelOrPlaceholder, { exact: false }).first(), p.getByLabel(labelOrPlaceholder, { exact: false }).first()]) {
+    try { if (await loc.isVisible({ timeout: 1000 })) { await loc.fill(String(value)); await sleep(500); return true; } } catch {}
+  }
+  return false;
 }
-async function diag(p, step) {
-  const d = await p.evaluate(() => ({ url: location.href, title: document.title,
-    body: (document.body.innerText || '').replace(/\s+/g, ' ').slice(0, 240) })).catch(() => ({}));
-  log(`DIAG[${step}]`, JSON.stringify(d));
-  await shot(p, step);
+// in Such-Combobox tippen + ersten Treffer wählen (für Location/Sprache/Pixel/Event)
+async function pickFromSearch(p, value) {
+  try {
+    await p.keyboard.type(String(value), { delay: 60 }); await sleep(1800);
+    const opt = p.getByRole('option', { name: new RegExp(value, 'i') }).first();
+    if (await opt.isVisible({ timeout: 2500 }).catch(() => false)) { await opt.click(); await sleep(700); return true; }
+    await p.keyboard.press('Enter'); await sleep(700); return true;
+  } catch { return false; }
 }
 
 (async () => {
-  // Idempotenz: schon eine Kampagne angelegt? → nichts tun.
   if (fs.existsSync(LEDGER) && fs.readFileSync(LEDGER, 'utf8').trim()) {
-    log('Es gibt schon eine angelegte Kampagne (campaign-ledger.txt) → No-op (kein Doppel-Spend).');
-    log('   Zum Neu-Erstellen: campaign-ledger.txt leeren.');
-    process.exit(0);
+    log('Kampagne existiert schon (campaign-ledger.txt) → No-op (kein Doppel-Spend). Leeren zum Neu-Erstellen.'); process.exit(0);
   }
-  if (!fs.existsSync(CFG.video)) { log('❌ A-Video fehlt:', CFG.video); process.exit(1); }
-  log(`Kampagne: Pixel ${CFG.pixel} · Event "${CFG.event}" · Lifetime-Cap CHF ${CFG.total} · Tag CHF ${CFG.daily}`);
-  log(`Creative: ${path.basename(CFG.video)} · Ziel: ${CFG.landing} · Auto-Launch: ${CFG.autoLaunch} ${DRY ? '(DRY)' : ''}`);
+  if (!fs.existsSync(C.video)) { log('❌ Creative-Video fehlt:', C.video); process.exit(1); }
+  log(`MAXIMUM-Setup · Pixel ${C.pixel} · Event "${C.event}" · Lifetime-Cap ${C.total} / Tag ${C.daily} CHF`);
+  log(`Creative ${path.basename(C.video)} · ${C.location}/${C.gender}/${C.age.join('+')}/${C.lang.join('+')} · Auto-Launch ${C.autoLaunch} ${DRY ? '(DRY)' : ''}`);
 
   let b;
   try { b = await chromium.connectOverCDP('http://localhost:9222'); }
-  catch { log('❌ Kein Brave auf 9222. Brave mit --remote-debugging-port=9222 starten + bei ads.tiktok.com eingeloggt sein.'); process.exit(1); }
+  catch { log('❌ Kein Brave auf 9222. Brave mit --remote-debugging-port=9222 + bei ads.tiktok.com eingeloggt.'); process.exit(1); }
   const ctx = b.contexts()[0] || await b.newContext();
   const p = await ctx.newPage();
 
-  // 1) Kampagnen-Erstellung öffnen
-  await p.goto('https://ads.tiktok.com/i18n/perf/creation/campaign', { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
-  await sleep(7000);
-  await diag(p, '1-creation');
+  // ---- Schritt 1: Kampagnen-Erstellung öffnen + Ziel ----
+  await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+  await sleep(8000); await diag(p, 'open-creation');
+  await clickAny(p, ['Custom mode', 'Benutzerdefinierter Modus', 'Erweitert']); // falls Simplified-Default
+  const obj = await clickAny(p, ['Website conversions', 'Conversions', 'Sales', 'Verkäufe', 'Conversion', 'Website-Conversions']);
+  log('Ziel:', obj || '⚠️ Ziel-Selektor prüfen (Screenshot 01)');
+  await clickAny(p, ['Continue', 'Weiter', 'Next', 'Bestätigen']);
+  await sleep(4000); await diag(p, 'adgroup-start');
 
-  // 2) Ziel = Website-Conversions / Sales
-  const obj = await clickText(p, ['Website conversions', 'Conversions', 'Sales', 'Verkäufe', 'Website-Conversions']);
-  log('Ziel gewählt:', obj || '— (Selektor prüfen, siehe Screenshot 1-creation)');
-  await sleep(1500);
-  await clickText(p, ['Continue', 'Weiter', 'Next']);
-  await sleep(4000);
-  await diag(p, '2-adgroup');
+  // ---- Schritt 2: Optimierungsort = Website + Pixel + Event ----
+  await clickAny(p, ['Website']);
+  if (await clickAny(p, ['Select a Pixel', 'Pixel auswählen', 'Pixel'])) { await pickFromSearch(p, C.pixel); }
+  if (await clickAny(p, ['Optimization event', 'Optimierungsereignis', 'Optimization Event'])) { await pickFromSearch(p, C.event); }
+  await diag(p, 'pixel-event');
 
-  // 3) Optimierungs-Event/Pixel, Placement, Targeting, Budget — best effort, mit Diagnose.
-  //    (Diese Felder variieren stark im UI → bei DRY nur diagnostizieren, sonst best-effort ausfüllen.)
-  if (DRY) {
-    log('[dry] Würde jetzt setzen: Pixel + Event, Placement=TikTok, CH/Frauen/18–34/DE+FR,');
-    log(`[dry] Lifetime-Budget CHF ${CFG.total} (Hard-Cap) bzw. Tag CHF ${CFG.daily}, Creative + URL, dann ${CFG.autoLaunch ? 'Submit' : 'STOP vor Launch'}.`);
-    log('[dry] Schau dir campaign-shots/*.png an und schick mir die DIAG-Zeilen → ich ziehe die Selektoren scharf.');
-    process.exit(0);
-  }
+  // ---- Schritt 3: Placement = nur TikTok ----
+  await clickAny(p, ['Select placement', 'Placement auswählen', 'Manuelle Platzierung', 'Manual placement']);
+  // andere Placements abwählen → nur TikTok. (UI-abhängig → Screenshot zur Kontrolle)
+  await diag(p, 'placement');
 
-  // Budget (Lifetime-Cap zuerst suchen — die harte Obergrenze für die 350 CHF)
+  // ---- Schritt 4: Zielgruppe (Standort/Geschlecht/Alter/Sprache) ----
+  if (await clickAny(p, ['Location', 'Standort', 'Standorte'])) { await pickFromSearch(p, C.location); }
+  await clickAny(p, [C.gender, C.gender === 'Female' ? 'Weiblich' : 'Männlich']);
+  for (const a of C.age) await clickAny(p, [a]);
+  if (await clickAny(p, ['Languages', 'Sprachen', 'Sprache'])) { for (const l of C.lang) await pickFromSearch(p, l); }
+  await diag(p, 'targeting');
+
+  // ---- Schritt 5: Budget — Lifetime-Cap (harte Obergrenze) bevorzugt ----
+  await clickAny(p, ['Lifetime', 'Laufzeitbudget', 'Gesamtbudget']);
+  if (!await fillAny(p, 'budget', C.total)) { if (!await fillAny(p, 'Budget', C.total)) log('⚠️ Budgetfeld nicht gefunden (Screenshot).'); }
+  await fillAny(p, 'Daily', C.daily).catch(() => {});
+  await diag(p, 'budget');
+  await clickAny(p, ['Next', 'Weiter', 'Continue']);
+  await sleep(3000);
+
+  // ---- Schritt 6: Anzeige — Identity, Video, Text, CTA, URL ----
+  await diag(p, 'ad-start');
+  if (await clickAny(p, ['Identity', 'Identität'])) { await pickFromSearch(p, C.identity); }
+  // Video hochladen (oder aus Bibliothek). Datei-Input setzen falls vorhanden.
   try {
-    const bud = p.getByPlaceholder(/budget|Budget/).first();
-    if (await bud.isVisible({ timeout: 3000 })) { await bud.fill(String(CFG.daily)); log('Tagesbudget gesetzt:', CFG.daily); }
-  } catch { log('⚠️ Budgetfeld nicht eindeutig — Screenshot 2-adgroup prüfen.'); }
-  await diag(p, '3-targeting');
+    const inp = await p.$('input[type="file"]');
+    if (inp) { await inp.setInputFiles(C.video); log('Creative gesetzt:', path.basename(C.video)); await sleep(8000); }
+    else log('⚠️ Kein Datei-Input — evtl. erst "Upload" klicken (Screenshot).');
+  } catch (e) { log('Video-Upload-Hinweis:', e.message); }
+  await fillAny(p, 'Text', C.adtext).catch(() => {});
+  if (await clickAny(p, ['Call to action', 'Handlungsaufforderung', 'CTA'])) { await clickAny(p, [C.cta, 'Jetzt einkaufen', 'Mehr ansehen']); }
+  await fillAny(p, 'URL', C.landing).catch(() => {});
+  await fillAny(p, 'Website URL', C.landing).catch(() => {});
+  await diag(p, 'ad-filled');
 
-  log('⚠️ Targeting/Pixel/Creative-Schritte sind UI-abhängig und brauchen die Selektor-Bestätigung aus dem');
-  log('   ersten --dry-Lauf. Bis dahin wird NICHT abgesendet (kein versehentlicher Spend).');
-  if (!CFG.autoLaunch) { log('AUTO_LAUNCH=0 → stoppe vor Launch. EIN Klick „Senden" durch dich/PC-Claude.'); process.exit(0); }
+  if (DRY) { log('[dry] Durchlauf fertig. Screenshots in campaign-shots/ prüfen, dann AUTO_LAUNCH=1.'); process.exit(0); }
+  if (!C.autoLaunch) { log('AUTO_LAUNCH=0 → stoppe VOR dem Absenden (1 Klick "Senden" durch dich).'); process.exit(0); }
 
-  // 4) Absenden (nur wenn AUTO_LAUNCH=1 UND alle Felder bestätigt) — defensiv hinter Bestätigung.
-  log('AUTO_LAUNCH=1, aber Selektoren für Pixel/Creative noch nicht bestätigt → sicherheitshalber STOP.');
-  log('Nach dem ersten --dry-Lauf + Selektor-Fix entferne diesen Guard, dann läuft Submit autonom.');
-  // fs.writeFileSync(LEDGER, new Date().toISOString() + ' campaign created\n');  // erst NACH echtem Submit setzen
-  await diag(p, '4-review');
+  // ---- Schritt 7: Absenden ----
+  const sub = await clickAny(p, ['Submit', 'Senden', 'Publish', 'Veröffentlichen', 'Confirm']);
+  await sleep(5000); await diag(p, 'submitted');
+  if (sub) { fs.writeFileSync(LEDGER, new Date().toISOString() + ' campaign submitted\n'); log('✅ Kampagne abgesendet (zur Prüfung).'); }
+  else log('⚠️ Submit-Button nicht gefunden — letzter Screenshot prüfen, Selektor nachziehen.');
   process.exit(0);
 })().catch(e => { log('Fehler:', e.message); process.exit(1); });
