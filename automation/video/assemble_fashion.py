@@ -31,7 +31,7 @@ for k in range(1,n):
     last=f"[x{k}]"
 total=step*(n-1)+DUR
 brand="LuxeStyle.ch"; hook="Sommer-Mode wo fliesst"; cta="-10%25 mit WELCOME10"; cta2="luxestyle.ch"
-draw=(f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=42:x=(w-tw)/2:y=70:alpha=0.9:box=1:boxcolor=black@0.25:boxborderw=12,"
+draw=(f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=42:x=(w-tw)/2:y=70:alpha=0.9:box=1:boxcolor=black@0.5:boxborderw=12,"
  f"drawtext=fontfile={F}:text='{hook}':fontcolor=white:fontsize=60:x=(w-tw)/2:y=200:box=1:boxcolor=black@0.5:boxborderw=22:enable='lt(t,2.6)',"
  f"drawtext=fontfile={F}:text='{cta}':fontcolor=white:fontsize=58:x=(w-tw)/2:y=1540:box=1:boxcolor=black@0.55:boxborderw=20:enable='gt(t,{total-3.6:.2f})',"
  f"drawtext=fontfile={F}:text='{cta2}':fontcolor=0xE8D5A8:fontsize=50:x=(w-tw)/2:y=1620:box=1:boxcolor=black@0.55:boxborderw=18:enable='gt(t,{total-3.6:.2f})'")

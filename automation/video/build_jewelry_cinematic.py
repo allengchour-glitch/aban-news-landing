@@ -40,7 +40,7 @@ for idx,k in enumerate(ok):
     lab=LABELS[k] if k<len(LABELS) else ""
     labeldraw+=f"drawtext=fontfile={F}:text='{lab}':fontcolor=white:fontsize=46:x=(w-tw)/2:y=1380:box=1:boxcolor=black@0.45:boxborderw=16:enable='between(t,{s+0.3:.2f},{e-0.3:.2f})',"
 draw=(labeldraw+
- f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=40:x=(w-tw)/2:y=70:alpha=0.88:box=1:boxcolor=black@0.25:boxborderw=12,"
+ f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=40:x=(w-tw)/2:y=70:alpha=0.88:box=1:boxcolor=black@0.5:boxborderw=12,"
  f"drawtext=fontfile={F}:text='{hook}':fontcolor=white:fontsize=62:x=(w-tw)/2:y=210:box=1:boxcolor=black@0.5:boxborderw=22:enable='lt(t,2.6)',"
  f"drawtext=fontfile={F}:text='{sub}':fontcolor=0xE8D5A8:fontsize=44:x=(w-tw)/2:y=290:box=1:boxcolor=black@0.4:boxborderw=14:enable='lt(t,2.6)',"
  f"drawtext=fontfile={F}:text='{cta}':fontcolor=white:fontsize=56:x=(w-tw)/2:y=1480:box=1:boxcolor=black@0.55:boxborderw=20:enable='gt(t,{total-3.6:.2f})',"

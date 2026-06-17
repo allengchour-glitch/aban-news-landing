@@ -45,7 +45,7 @@ hook1="Schwiizer Shop 🇨🇭"   # entfernt (Emoji = tofu) → siehe unten ohne
 hook1="Premium-Looks. Faire Priis."
 cta="-10%25 mit Code WELCOME10"
 cta2="Jetz uf luxestyle.ch"
-draw=(f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=42:x=(w-tw)/2:y=70:alpha=0.9:box=1:boxcolor=black@0.25:boxborderw=12,"
+draw=(f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=42:x=(w-tw)/2:y=70:alpha=0.9:box=1:boxcolor=black@0.5:boxborderw=12,"
  f"drawtext=fontfile={F}:text='{hook1}':fontcolor=white:fontsize=56:x=(w-tw)/2:y=210:box=1:boxcolor=black@0.5:boxborderw=24:enable='lt(t,2.2)',"
  f"drawtext=fontfile={F}:text='{cta}':fontcolor=white:fontsize=60:x=(w-tw)/2:y=1300:box=1:boxcolor=black@0.55:boxborderw=24:enable='gt(t,{total-4.0:.2f})',"
  f"drawtext=fontfile={F}:text='{cta2}':fontcolor=0xC19A5B:fontsize=52:x=(w-tw)/2:y=1390:box=1:boxcolor=black@0.55:boxborderw=22:enable='gt(t,{total-4.0:.2f})'")

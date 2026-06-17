@@ -187,3 +187,8 @@ in Sekunden → Bytes parallel hochladen. `luma-api-…`-Keys = Agents-API, `lum
   Hintergrund-Schilder). Erst „prominent overlay/banner/bag"-Filter trennt echte Verstösse sauber.
 - **⚠️ Reaktivieren mit sauberem Bild (statt löschen):** Bali-Maxikleid (4,93★) + Tech-Hero-Box (Smartwatch 5★) —
   nur Hintergrund-Chinesisch → mit Alternativbild/Luma wieder ACTIVE setzen lohnt sich.
+
+## 2026-06-17 — KI-Selbst-Analyse (Gemini Vision + Strategie)
+- **Gemini Vision auf Hero-Video-Frames:** Marken-Text-Kontrast zu schwach auf hellem BG → Box black@0.25→0.5 in ALLEN `automation/video/*.py` gefixt (künftige Renders besser lesbar).
+- Lehre: Titel kurz halten, Produkt zentrierter framen. Bild-Audit (Gemini) deckt Produktbilder katalogweit ab.
+- **Multi-Produkt-Filme bestätigt möglich:** ultimate-ad (4 Luma-Produkte), Montagen (12/24 Bilder), jewelry (6) — beliebig erweiterbar zu längerem „Film".

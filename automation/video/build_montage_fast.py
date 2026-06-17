@@ -60,7 +60,7 @@ total=step*(n-1)+DUR
 hook="Viu Style. Eis Shop."
 brand="LuxeStyle.ch"
 cta="luxestyle.ch   -10%25 mit WELCOME10"
-draw=(f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=40:x=(w-tw)/2:y=70:alpha=0.85:box=1:boxcolor=black@0.25:boxborderw=12,"
+draw=(f"drawtext=fontfile={F}:text='{brand}':fontcolor=white:fontsize=40:x=(w-tw)/2:y=70:alpha=0.85:box=1:boxcolor=black@0.5:boxborderw=12,"
  f"drawtext=fontfile={F}:text='{hook}':fontcolor=white:fontsize=72:x=(w-tw)/2:y=230:box=1:boxcolor=black@0.45:boxborderw=22:enable='lt(t,2.4)',"
  f"drawtext=fontfile={F}:text='{cta}':fontcolor=white:fontsize=56:x=(w-tw)/2:y=1380:box=1:boxcolor=black@0.5:boxborderw=24:enable='gt(t,{total-3.4:.2f})'")
 fc=fc[:-1]+f";{last}{draw}[v]"
