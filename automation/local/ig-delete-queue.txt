@@ -1,7 +1,7 @@
-# IG-Posts zum LÖSCHEN (API kann published IG NICHT löschen → PC-Browser/App).
-# Grund: Botox/Serum/Rosehip-Öl/Gua-Sha (HEMP-Marke) — User: nie posten. id | permalink | caption
-17917870977180403 | https://www.instagram.com/p/DZqLfkiH3Oa/ | Viu Style für wenig Gäud ✨ Vitamin-C-Serum «Glow» 💾 Merk’s 
-17935622868270964 | https://www.instagram.com/p/DZj1V9zEqRp/ | Wusste nicht, dass ich das brauche 👀 Gua-Sha-Set «Jade» – C
-18113219647893430 | https://www.instagram.com/p/DZaopvjIHvm/ | Gua-Sha-Set «Jade» 💚 Massage-Tool + Rosehip-Öl fürs Self-Ca
-17924169777356896 | https://www.instagram.com/reel/DZYgBAnDwDC/ | Neu eingetroffen 🌿 Vitamin-C-Serum «Glow», Herren-Set «Cost
-18323863495286045 | https://www.instagram.com/reel/DZYfQcHnbIM/ | Frische Neuheiten bei LuxeStyle ✨ Gua-Sha-Tool, Herren-Sneak
+# IG-Posts zum LÖSCHEN (API kann published IG NICHT löschen → PC ig-delete-browser.mjs).
+# Botox/Serum/Rosehip/Gua-Sha (HEMP) — User: nie posten. id | permalink | caption
+17917870977180403 | https://www.instagram.com/p/DZqLfkiH3Oa/ | Viu Style für wenig Gäud ✨ Vitamin-C-Serum «G
+17935622868270964 | https://www.instagram.com/p/DZj1V9zEqRp/ | Wusste nicht, dass ich das brauche 👀 Gua-Sha
+18113219647893430 | https://www.instagram.com/p/DZaopvjIHvm/ | Gua-Sha-Set «Jade» 💚 Massage-Tool + Rosehip-
+17924169777356896 | https://www.instagram.com/reel/DZYgBAnDwDC/ | Neu eingetroffen 🌿 Vitamin-C-Serum «Glow», H
+18323863495286045 | https://www.instagram.com/reel/DZYfQcHnbIM/ | Frische Neuheiten bei LuxeStyle ✨ Gua-Sha-Too
