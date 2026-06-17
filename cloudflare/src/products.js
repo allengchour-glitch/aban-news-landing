@@ -2,6 +2,46 @@
 // Aktualisieren: good_products.csv pflegen, dann `node cloudflare/sync-products.mjs` neu laufen lassen.
 export const PRODUCTS = [
   {
+    "name": "michael-kors-rucksack-himbeer-rose",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0197853812956_S0396038_P00.jpg",
+    "label": "Michael Kors Rucksack"
+  },
+  {
+    "name": "guess-herrenuhr-gold-silber",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0091661521713_S0397637_P00.jpg",
+    "label": "Guess Herrenuhr"
+  },
+  {
+    "name": "olivia-burton-damenuhr-floral-rosegold",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7613272309479_S0396790_P00.jpg",
+    "label": "Olivia Burton Uhr"
+  },
+  {
+    "name": "casio-damenuhr-edelstahl-blau",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4549526309014_S0398165_P00.jpg",
+    "label": "Casio Damenuhr"
+  },
+  {
+    "name": "dolce-gabbana-the-one-eau-de-parfum-50-ml",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8056669925934_S05150676_P00.jpg",
+    "label": "D&G «The One»"
+  },
+  {
+    "name": "yves-saint-laurent-lhomme-cologne-bleue-herren",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3614271990013_R00.jpg",
+    "label": "YSL «L Homme»"
+  },
+  {
+    "name": "tommy-hilfiger-damen-ohrringe-edelstahl",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7613272263825_S0392501_P00.jpg",
+    "label": "Tommy Hilfiger Ohrringe"
+  },
+  {
+    "name": "kenzo-amour-eau-de-parfum-50-ml",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3352818717012_3_A00.jpg",
+    "label": "Kenzo «Amour»"
+  },
+  {
     "name": "gua-sha-set-jade-massage-tool-rosehip-ol",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a083eb57-fe88-4722-9860-1de863c00b06.jpg?v=1780949914",
     "label": "Gua-Sha-Set «Jade»"
@@ -20,16 +60,6 @@ export const PRODUCTS = [
     "name": "stiletto-sandalette-gala-violett-knochelriemen",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7bf5ab15-c1f2-4d08-8f90-d80f0ffcab79.jpg?v=1780945950",
     "label": "Stiletto-Sandalette «Gala»"
-  },
-  {
-    "name": "boden-stander-flexhold-fur-handy-tablet-hohenverstellbar",
-    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08ccb8bf-069c-4859-b815-cb5173a3e9f5.jpg?v=1780897582",
-    "label": "Boden-Ständer «FlexHold»"
-  },
-  {
-    "name": "vitamin-c-serum-glow-straffend-strahlend",
-    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6de4cd13-ce79-4c95-a35d-1d67563487a6.jpg?v=1780950381",
-    "label": "Vitamin-C-Serum «Glow»"
   },
   {
     "name": "herren-set-costa-kapuzen-shirt-jogger",
@@ -87,11 +117,6 @@ export const PRODUCTS = [
     "label": "Herrenuhr «Edelstahl»"
   },
   {
-    "name": "smartwatch-pro-amoled-herzfrequenz-100-sportmodi-7-tage-akku",
-    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/S999a7c4138b642d682163261eb9f6b91m.webp?v=1780080350",
-    "label": "Smartwatch «Pro AMOLED»"
-  },
-  {
     "name": "moissanite-kette-aurora-925-silber-gra-zertifiziert",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3d48340e-cc7f-4d18-8f74-cd2c8d463c9b.jpg?v=1781380333",
     "label": "Moissanite-Kette «Aurora»"
@@ -110,11 +135,6 @@ export const PRODUCTS = [
     "name": "925-silber-armband-maglia-mesh-verstellbar",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c8f52d5a-690e-4cfc-8471-9a7dee8ed3b4.jpg?v=1781386533",
     "label": "925-Armband «Maglia»"
-  },
-  {
-    "name": "open-ear-wireless-kopfhorer-aria-bluetooth-sport-clip",
-    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/370826bc-ead7-4f4c-a3bd-95793af4427c_fine.jpg?v=1781384110",
-    "label": "Open-Ear-Kopfhörer «Aria»"
   },
   {
     "name": "polka-dot-wickel-rock-dolce-high-waist-asymmetrisch",
