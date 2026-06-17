@@ -49,6 +49,7 @@
 | `CJ_EMAIL` + `CJ_API_KEY` | ❌ als Repo-Secret offen (in-Session vorhanden) |
 | TikTok | ⏳ Reel-Autopost GEBAUT (FILE_UPLOAD, kein Domain-Verify) — fehlen nur 4 Secrets: TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN. Anleitung: `dropship/TIKTOK-AUTOPOST-AKTIVIEREN.md` |
 | `YT_API_KEY` | ❌ offen (Video-Session) |
+| **Groq (LLM-API)** | ✅ **funktioniert** (User 2026-06-17, `gsk_`-Key — **session-lokal `/tmp/groq.key`, NIE ins Repo**). Endpoint OpenAI-kompatibel: `https://api.groq.com/openai/v1`. Modelle u.a. `llama-3.3-70b-versatile`, `qwen/qwen3-32b`, `openai/gpt-oss-20b`, `llama-4-scout`. **Nutzen:** ersetzt die leeren OpenAI-Keys (externe Conversion-Kritik, Text/Content-Gen, Übersetzung). ⚠️ **Wird auch von einer ANDEREN Session genutzt** („macht was") → bei Bedarf koordinieren, Key teilen sie sich. **Merke dauerhaft: Groq = der verfügbare Zweit-LLM.** |
 > Hinweis: Für Shopify-Arbeit **braucht keine Session einen Key** — das geht über die MCP. Keys nur für die Cron-Actions.
 
 ---
