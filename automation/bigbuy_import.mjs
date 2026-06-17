@@ -71,6 +71,11 @@ const CONFIG = {
     anchor: ['kleid', 'bluse', 'rock', 'damen', 'dress', 'blouse', 'skirt', 'vestido'],
     ban: ['herren', 'kinder', 'baby', 'men ', 'kids'],
     bullets: ['Femininer Schnitt', 'Angenehmer Stoff', 'Vielseitig kombinierbar', 'Premium-Look zum fairen Preis'] },
+  sets: { coll: { handle: 'trainingsanzuege-sets', title: '🏃 Trainingsanzüge & Sets', tag: 'set' },
+    extraTags: ['sport', 'set', 'marke', 'premium'], type: 'Set', maxCost: MAX_COST_EUR,
+    anchor: ['trainingsanzug', 'chándal', 'chandal', 'jogginganzug', 'tracksuit', 'jogging-set', 'sportanzug', 'sweatsuit'],
+    ban: ['baby', 'babys', 'kinder', 'mädchen', 'junge', 'jungen', 'paw patrol', 'minnie', 'mickey', 'frozen', 'spiderman', 'disney', 'marvel', 'lol surprise', 'niñ', 'enfant'],
+    bullets: ['2-teilig: Oberteil + Hose abgestimmt', 'Marken-Sportswear, EU-Lager', 'Bequem & atmungsaktiv', '100% Original, schnelle EU-Lieferung'] },
 };
 
 // ── Shopify (1:1 aus cj_gaps_import.mjs, bewährt) ──
