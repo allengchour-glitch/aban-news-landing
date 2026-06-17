@@ -12,9 +12,7 @@
 - **FB-Gruppen (CH)** — fb-group-join (beitrete) + fb-group-post (poste) 1×/Tag
 
 ## 🟡 1× User-Setup (gratis, denn dauerhaft)
-- **Ricardo.ch** (GRÖSSTER CH-Marktplatz): Feed `ricardo_feed.csv` (2114 Produkte) ist fertig.
-  → **Feed-URL an accountmanagement@ricardo.ch senden** (1 Mail). Feed-URL =
-  `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/claude/luxestyle-product-CizQ6/ricardo_feed.csv`
+- **Ricardo.ch**: ❌ Feed-Anbindung NICHT möglich (Ricardo nimmt per Feed NUR B-Ware/Retouren, nicht Neuware; Pipeline voll). LuxeStyle = Neuware → auf Warteliste gesetzt (Ticket 3651626, Linda Piva 15.06.). NICHT weiterverfolgen bis Ricardo meldet. Einzige Option wäre manuelles Einzel-Inserieren (wie tutti/anibis).
 - **Google Merchant Free Listings**: Feed 100% ready → in Merchant Center aktivieren.
 
 ## 🚫 NICHT geeignet (ehrlich)
