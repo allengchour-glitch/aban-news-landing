@@ -24,6 +24,7 @@ import { runReel, postVideoAll } from './video.js';
 import { handleOrderWebhook } from './gelato.js';
 import { createCheckout, handleStripeWebhook } from './stripe.js';
 import { runMaintenance } from './shop.js';
+import { DESIGNER_JS, PERSONALIZE_JS } from './editor-assets.js';
 
 const CAPTIONS = [
   '{label} ✨ Premium-Look zum fairen Preis. Code WELCOME10 = -10% · 🔗 {url}',
@@ -225,6 +226,14 @@ export default {
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if(!obj) return new Response('Not found', { status:404 });
       return new Response(obj.body, { headers:{ 'Content-Type':'video/mp4', 'Cache-Control':'public, max-age=86400' } });
+    }
+    // First-Party-Storefront-Skripte: der POD-Gestalten-Editor und das Personalisierungs-Widget
+    // (Gravur-Textfeld + Live-Vorschau). Werden per <script src> aus dem Shop-Theme geladen, damit
+    // sie zuverlässig laufen (Horizon-View-Transitions führen dazu, dass <script> in Produkt-
+    // beschreibungen nicht erneut ausgeführt werden). Quelle: pod/designer.js + pod/personalize.js.
+    if(url.pathname === '/ls-designer.js' || url.pathname === '/ls-personalize.js'){
+      const body = url.pathname === '/ls-designer.js' ? DESIGNER_JS : PERSONALIZE_JS;
+      return new Response(body, { headers:{ 'Content-Type':'application/javascript; charset=utf-8', 'Cache-Control':'public, max-age=3600', 'Access-Control-Allow-Origin':'*' } });
     }
     // Gelato-Fulfillment: Shopify orders/create-Webhook → echter Druckauftrag bei Gelato.
     // In Shopify einrichten: Einstellungen → Benachrichtigungen → Webhooks → "Bestellungserstellung",
