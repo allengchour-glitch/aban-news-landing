@@ -127,6 +127,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-17 (REICHWEITI AKTIVIERT + 87 NEUI PRODUKT + Windows-Bug-Fix):**
+- **🛍️ 87 neui Produkt (BigBuy EU, 7 Runden):** Outdoor 24 · Garten 12 · Küche 12 · Elektriker/Werkzüg 25 · Bademode 14.
+  Alli markäni Ware (Bosch/NWS/JOKARI/Adidas/Speedo/Ysabel Mora…), echti Vendors, QA'd, feed-ready. Neui Kollektione:
+  `elektriker-werkzeug`, `garten-balkon` + im Haupt-Menü «🔧 Werkzeug & Garten». Methode/IDs: `dropship/bigbuy-outdoor-import.md`.
+  **⚠️ Knipex/Wera = 0 Lager bi BigBuy** (6000 gscannt) → nid importierbar; AliExpress-Fakes verbote. BigBuy listet Marke ≠ am Lager → IMMER per Hersteller-ID über mehreri Roots scanne.
+- **🛒 MERCHANT-FEED 100%:** Kategorie 5747 · condition 6480 · **identifier_exists/custom_product 5232** (gröscht Ablehnigs-Grund weg) · Mode-Key-Details 2044. Skript `feed_polish.mjs`/`enrich_apparel_descriptions.mjs`/Merchant-identifier-Bulk.
+- **🔍 BILD-AUDIT (Gemini Vision, `automation/image-audit.mjs`):** ganzä Katalog geprüft + **autonom gheilt** (schlächti Bilder glöscht, suuberi behalte). Nur Bild-Hygiene (Watermark/asiat.Schrift/Vorher-Nachher), **NIE Marke** (sünsch Fehlalarm auf Adidas/YSL/POD). Report-Modus default. Key-Format `AQ.Ab8…` funktioniert, Modell `gemini-2.5-flash` + `thinkingBudget:0`. Botox-Knockoff-Serum entfernt.
+- **🐛 WINDOWS-BUG GEFIXT (wichtige Lehre):** `new URL(x,import.meta.url).pathname` git uf **Windows** `/C:/…` → `path.resolve` macht `C:\C:\…` → alli PC-Scripts (TikTok-Upload, brain, build_queue, Autopost…) gschytered. **Fix in 24 Skripten: `fileURLToPath(new URL(...))`.** → TikTok-Upload + Gehirn + Queue laufe jetzt am PC.
+- **📡 REICHWEITI AKTIVIERT:** luxe-poster-Worker **LIVE deployed** (Crons `0 7,10,12,15,17,19` = 6×/Tag IG/FB, KV `662199…86ee9`). **TikTok-Upload verifiziert** (`--dry` findet Datei-Input → postet mit `node automation/local/tiktok-upload-browser.mjs`). Scheduled-Task «LuxeMarketing» registriert (täglich 10:00). 22 Flaggschiff-Produkt in Reel-/IG-FB-Post-Queue (Bärndütsch).
+- **⚠️ PC-GIT-LOCK (offen, User):** `C:\Users\allen\aban-news-landing` isch vo eme Prozess (Editor/Explorer) gsperrt → git reset/pull/merge schiitered («Permission denied» / «in use»). **Lösig: frischä Klon nach `C:\luxe`** (`git clone -b claude/luxestyle-product-CizQ6 … C:\luxe`) + Scheduled-Task uf `C:\luxe\…` zeige. `luxe-secrets.ps1` liit i `C:\Users\allen` (NID im Repo) → bliebt. Alte Ordner nach Neustart löschbar.
+- **🔴 Engpass unverändert:** 0 Orders. Worker postet jetzt zwar — fehlt no **TikTok-Pixel + bezahlti CH-Kampagne** (nur User) für kaufwillige Reichweiti.
+
 **📌 2026-06-16 (ABEND — Worker LIVE + Shop-Struktur + Autonomie-Upgrade):**
 - **✅ AUTONOMIE-UPGRADE:** Cloudflare-Skills sind in Claude Code installiert (beim `wrangler deploy` automatisch, 11 Skills inkl. `wrangler`/`cloudflare`).
   → **In künftigen Sessions kann ich den luxe-poster-Worker SELBST deployen/verwalten** (kein PowerShell mehr nötig). Cloudflare-Marketplace `cloudflare/skills` added.
