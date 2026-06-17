@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-16",
+  "updated": "2026-06-17",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -601,7 +601,8 @@
       "AUTONOM (meine Lane, Prio): (1) VALUE-Content 80/20 (Styling/Pflege/echt-vs-billig/BTS Reels+Captions gegen 0-Shares), (2) Hook-Pools upgraden, (3) PDP-Trust+Versand-Klarheit, (4) Produkt/Kollektions-SEO CH, (5) TikTok-Shop-Sync. NUR User/PC: Spark-Ads/Pixel, Community-Seeding, Theme-Speed/Checkout-Settings.",
       "VALUE-CONTENT LIVE 2026-06-16 (go value): render_value_reel.sh = Tipp-Reels (Pflege/Styling/echt-vs-billig, Mundart, Save-CTA, Musik) → 3 in Queue. 80/20-Regel aktiv: künftig pro ~5 Posts mind. 1 VALUE-Reel (Save/Share-Treiber gegen 0-Shares). Hooks erweitert um Value/«30-Tage»/«Stopp»/«POV»-Muster (Research 2026).",
       "FEED-MAXIMUM 2026-06-16: Google productCategory (Shopify-Taxonomy aa-6-8 Halsketten/aa-6-6 Ohrringe/aa-6-9 Ringe/aa-6-3 Armbänder/aa-6-1 Fußkettchen/aa-2-27 Sonnenbrillen/aa-2-17 Hüte) + mm-google-shopping gender/age_group/condition auf 29 CizQ6-Produkte gesetzt (5 neu + 11 Schmuck + 13 Caps) → besseri Google-Genehmigung/weniger Limited. CJ-Reservoir für NEUE saubere Produkte erschöpft (rezykliert/Overlay) → weiteri coole Produkte via AliExpress/BigBuy (PC). Bulk-Feed 14K = Merchant Turn-on-automatic-image-improvements (1 Klick User) + Marketing-Session."
-    ]
+    ],
+    "social_bild_hygiene": "NIE Social-Creatives (Reel/Story/Bild) mit fremder Lieferanten-Marke/Watermark auf dem Produktbild posten (z.B. ROSEHIP OIL \"HEMP for U\" beim Gua-Sha-Set = \"grüänes Öl\", User 2026-06-17 raus). Auch HEMP/Cannabis-Bezug = Ad-Risk. → in automation/DO-NOT-POST.txt eintragen + aus top_products.csv/text_image_map.json/Queue nehmen. Lehre: Beauty-Sets zeigen oft eine fremd-gebrandete Öl-/Serum-Flasche → vor dem Posten Bild ansehen."
   },
   "decisions": [
     {

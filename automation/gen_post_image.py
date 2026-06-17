@@ -217,7 +217,11 @@ def render_card(product_img, label, width, height):
     # Rating-Klammer & ★ aus der Headline entfernen (Serifen-Font hat kein ★-Glyph → Tofu-Box);
     # die Bewertung bleibt in der Caption erhalten.
     disp = re.sub(r"\s*\(\s*\d[.,]\d+\s*★?\s*\)", "", label).replace("★", "").strip()
-    name_f = fit_font(draw, disp, width - 2 * pad, int(width * 0.066), "serif-bold", floor=36)
+    # Headline kleiner + adaptiv (User 2026-06-17 „bild chliner mache, je nach Produkt passt gross nid"):
+    # Startgrösse je nach Namenslänge (kurz=elegant gross, lang=automatisch kleiner) + Seitenrand,
+    # fit_font schrumpft zusätzlich bis es in EINE schöne Zeile passt; Floor 28.
+    start = int(width * (0.058 if len(disp) <= 16 else 0.050 if len(disp) <= 26 else 0.044))
+    name_f = fit_font(draw, disp, width - 2 * pad, start, "serif-bold", floor=28)
     lines = wrap(draw, disp, name_f, width - 2 * pad, maxlines=2)
     line_h = int(name_f.size * 1.16)
     block_h = line_h * len(lines)
