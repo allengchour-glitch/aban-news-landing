@@ -59,6 +59,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   **Gesang:** kommerziell-frei gibt's kaum → echte Songs MIT Gesang nur via `--engine suno` (PC-Port, gratis-Konto;
   **für Live-Ad Suno Pro nötig**). `--engine musicgen` (lokal CPU, instrumental) ist CC-BY-**NC** = NUR intern/Test,
   nie in einen Live-Ad. Alte Generatoren (`make_signature_track.py`/`make_trend_tracks.py`, fluidsynth) = nur Fallback.
+- **🧰 GRATIS-VOLLAUTOMATIONS-STACK + KI-FALLBACK (FEST, User 2026-06-17 „alles gratis Versionen … falls einer nicht mehr geht … richtige Vollautomation"):**
+  EIN Multi-Provider-KI-Router **`automation/ai/ai_generate.mjs`** für ALLE Text/Content-KI — probiert
+  **groq → gemini → openrouter → cloudflare → mistral → openai** der Reihe nach durch; fällt ein Key/Provider
+  aus (Quota/429/down), nimmt er automatisch den nächsten; **ohne jeden Key = Template-Fallback** → Automation
+  bricht NIE. Keys NUR aus ENV (NIE im Repo). **Gratis empfohlen: `GROQ_API_KEY` (#1, console.groq.com)** +
+  `GEMINI_API_KEY`. **`automation/health-check.mjs`** zeigt welche Provider/Tools leben (Report `reports/health-*.json`).
+  **`automation/trends/trend_scan.mjs`** = Trends+Musik regelmässig analysieren (Google-Trends-CH gratis ohne Key +
+  KI-Ideen, STRIKT CH/Mundart). **`automation/setup-free-stack.sh`** baut den Stack reproduzierbar auf (yt-dlp/gallery-dl/
+  Pillow/Checks). Alles in `auto.sh` (Schritte 1/3/6) + PC-Task (9b) verdrahtet. ⚠️ OpenAI-Key des Users = Quota leer (429) → nur als Fallback.
+- **🐢 FOLLOWER LANGSAM (FEST, User 2026-06-17 „wachse langsam follower"):** `ch-follower-growth.mjs` bewusst NIEDRIGE
+  Caps (IG 30 / TikTok 22), 25–70 s Pausen, Stopp bei Block. Ziel 1 Mio = NACHHALTIG über Monate, nie Spitzen (Ban=Totalverlust).
 - **🈂️ SAFE-ZONE-TEXT-REGEL (FEST, User 2026-06-14 „schrift unten achtung"):** TikTok/IG/Reels blenden **unten ~20 %**
   (Caption/CTA/Fortschrittsbalken) und **rechts ~12 %** (Icons) ein. Eingebrannter Text MUSS da raus → **endet bei ~78 %
   Höhe (y≤1500 von 1920)**, nie ganz unten, sonst Textbrei mit der Plattform-Caption. Gilt für ALLE Reels/Videos.

@@ -3,6 +3,15 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🧰 2026-06-17 (GRATIS-VOLLAUTOMATIONS-STACK + KI-FALLBACK + Trends/Musik + Follower langsam)
+- **🤖 Multi-Provider-KI-Router `automation/ai/ai_generate.mjs`:** groq→gemini→openrouter→cloudflare→mistral→openai,
+  automatischer Fallback wenn einer ausfällt, Template-Fallback ohne Key → **Automation bricht NIE**. Live getestet: OpenAI-Key = Quota leer (429) → Router fiel sauber zurück (genau das Ziel). **Fehlt: 1 gratis Key (Groq #1).**
+- **🩺 `automation/health-check.mjs`:** zeigt welche KI-Provider/Binaries/Daten leben (Report `reports/health-*.json`). Aktuell: ffmpeg/yt-dlp/piper/gallery-dl ok, Google-Trends-CH erreichbar, 0 KI-Keys gesetzt.
+- **📈 `automation/trends/trend_scan.mjs`:** Trends+Musik regelmässig — Google-Trends-CH (gratis, kein Key) + KI-Content-Ideen (CH/Mundart). Läuft auch ohne KI (regelbasiert).
+- **🛠️ `automation/setup-free-stack.sh`:** baut Gratis-Stack reproduzierbar (yt-dlp/gallery-dl/Pillow/Checks) — Container sind ephemer, Skript = Wahrheit. gallery-dl neu installiert.
+- **🔗 Verdrahtet:** `auto.sh` (Health→Analyse→Trends→Lernen→Queue) + PC-Task `run-follower-daily.ps1` (9b). Secrets-Kommentar um GROQ/OPENROUTER/MISTRAL/CF ergänzt.
+- **🐢 Follower LANGSAM (User „wachse langsam follower"):** Caps zurück auf IG 30 / TikTok 22 (nachhaltig, kein Ban-Risiko). Ziel 1 Mio über Monate, nicht Spitzen.
+
 ## 🎬 2026-06-17 (ROLLEN-SPLIT + SOCIAL-MEISTERWÄRK: 1 A-Video + Text-Bilder + Follower-Level-hoch)
 - **🤝 NEUE ROLLENVERTEILUNG (User 2026-06-17 „andere session macht webseite sauber mit chatgpt, du bist für posting"):**
   Diese Session = **NUR Social/Marketing**: Posting (TikTok + Meta), Videos/Reels, Bilder mit Text, **Follower-Wachstum, Kommentar/DM-Chat, Engagement**.

@@ -16,7 +16,9 @@
 #        $env:FB_PAGE_ID = "1049840534888592"            # LuxeStyle CH
 #        $env:SHOPIFY_CLIENT_ID     = "…"                 # Custom-App (für Feed-Politur)
 #        $env:SHOPIFY_CLIENT_SECRET = "shpss_…"           #   → setzt Kategorie+condition katalogweit
-#        $env:GEMINI_API_KEY        = "…"                 # gratis aistudio.google.com → Bild-Audit
+#        $env:GEMINI_API_KEY        = "…"                 # gratis aistudio.google.com → Bild-Audit + KI-Router
+#        $env:GROQ_API_KEY          = "…"                 # GRATIS console.groq.com → KI-Router #1 (Captions/Trends)
+#        # optional mehr KI-Fallbacks: OPENROUTER_API_KEY · MISTRAL_API_KEY · CF_ACCOUNT_ID+CF_API_TOKEN
 #        # $env:TT_PRIVACY_LEVEL = "PUBLIC_TO_EVERYONE"   # erst NACH TikTok-App-Audit
 #   2) Task registrieren (PowerShell als Admin, 1 Zeile):
 #      schtasks /create /tn "LuxeMarketing" /sc daily /st 10:00 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Users\allen\aban-news-landing\automation\local\run-follower-daily.ps1"
@@ -96,6 +98,10 @@ if ($env:SHOPIFY_CLIENT_ID -and $env:SHOPIFY_CLIENT_SECRET) {
 #    (b) Gehirn lernen (kumulativ + Ratsche → knowledge.json/pools.json/BRAIN.md),
 #    (c) Autopost-Queue aus Gelerntem neu bauen (mit Dedup-Garantie gegen doppelte Posts).
 try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
+# 9b) HEALTH-CHECK (welche GRATIS-KI-Provider/Tools leben) + TREND/MUSIK-SCAN (Schweiz) — gratis,
+#     no-op-safe ohne Keys. Multi-Provider-Router fällt automatisch zurück, falls einer ausfällt.
+node "automation/health-check.mjs"
+node "automation/trends/trend_scan.mjs"
 node "automation/brain/brain.mjs"
 node "automation/brain/build_queue.mjs"
 

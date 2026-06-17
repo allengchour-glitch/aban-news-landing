@@ -11,17 +11,23 @@ echo "════════════════════════�
 echo "🤖 LuxeStyle AUTO-MODUS — $(date -u +%Y-%m-%dT%H:%MZ)"
 echo "════════════════════════════════════════════════"
 
-echo "📊 [1/4] ANALYSIEREN — frische TikTok-Daten ..."
+echo "🩺 [1/6] HEALTH — welche GRATIS-KI-Provider/Tools leben gerade? ..."
+node automation/health-check.mjs --ai 2>&1 | sed 's/^/   /'
+
+echo "📊 [2/6] ANALYSIEREN — frische TikTok-Daten ..."
 python3 tools/tiktok_analyze.py --user @luxestyle.ch --max 60 --insecure --out reports/ 2>&1 | tail -2 \
   || echo "   (yt-dlp blockiert → nutze vorhandene Reports)"
 
-echo "🧠 [2/4] LERNEN — Gehirn (kumulativ, Ratsche) ..."
+echo "📈 [3/6] TRENDS + MUSIK — Schweiz analysieren & Ideen entwickeln ..."
+node automation/trends/trend_scan.mjs 2>&1 | sed 's/^/   /'
+
+echo "🧠 [4/6] LERNEN — Gehirn (kumulativ, Ratsche) ..."
 node automation/brain/brain.mjs 2>&1 | sed 's/^/   /'
 
-echo "📤 [3/4] AUTOPOST — Queue aus gelernten Captions nachfuellen ..."
+echo "📤 [5/6] AUTOPOST — Queue aus gelernten Captions nachfuellen ..."
 node automation/brain/build_queue.mjs 2>&1 | sed 's/^/   /'
 
-echo "🎯 [4/4] NAECHSTE AKTIONEN (aus BRAIN.md):"
+echo "🎯 [6/6] NAECHSTE AKTIONEN (aus BRAIN.md):"
 awk '/## 🎯/{f=1;next} /^## /{f=0} f' automation/brain/BRAIN.md | sed 's/^/   /'
 
 echo "────────────────────────────────────────────────"
