@@ -3,6 +3,18 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🚀 2026-06-18 (GROSSE AUTONOM-SESSION — Video live + Bot maximiert)
+- **🎉 ERSTES ECHTES VIDEO LIVE auf FB + IG** (smooth Werbe-Montage, 6 Top-Produkte, Mundart+WELCOME10): gerendert → Shopify-CDN (stagedUpload) → Graph-API direkt gepostet. FB-Doppelpost entdeckt+gelöscht (Lehre: Graph-Fehler kann trotzdem posten → immer nachprüfen, Gehirn-Regel `doppelpost_schutz`).
+- **📲 Metricool verbunden** (TikTok+IG+FB+Pinterest) = der Gratis-TikTok-Autopost-Weg ohne Dev-App. Video in `social/video_queue.csv` für PC/Metricool.
+- **🤖 Worker maximiert (committet, brauchen 1× `wrangler deploy` am PC):** POST_HOURS-Bug gefixt (postet jetzt 11+19 CH), 6×/Tag Cron (Engagement+Analyse 6×, Posten 2×), **zweisprachiger Chat-Bot** (DE/Mundart+EN, Verkäufer-Spam-Filter), **KV-Spar-Fix** (drain), **SELBER-KLICK** (Worker queued PC-Tasks selbst: tiktok/follower morgens, tutti/anibis abends).
+- **🎬 Video-Builder (persistiert):** `build_masterpiece.py` (cinematisch), `build_montage_fast.py` (2.5s/Produkt, smooth — kein Gezappel, Intro langsamer), `finish_reel.py` (hebt schwache Reels), `build_wm_reel.py`. ffmpeg `-nostdin` (Batch-stdin-Bug gefixt). 6 Einzel-Meisterwerke + Montagen gerendert.
+- **🎵 Musik:** `eleven-music.mjs` (ElevenLabs Eleven Music, kommerziell-cleared, Key in ENV) + MUSIK-KLICK.bat. Inventar geprüft (MUSIK-INVENTAR.md: KEIN Pixabay/Suno/MusicGen installiert; nur fluidsynth+KevinMacLeod).
+- **💬 Auto-Chat:** `chat/responder.mjs` (gemeinsame zweisprachige Brain) + AUTO-CHAT-MAX.md (Meta Business Suite DMs nativ, ReplyRush/CreatorFlow, Shopify Inbox, Metricool).
+- **📚 Neue Docs:** AUTOBOT-PIPELINE · FALLBACK-KATALOG (alle-Wege-Ketten) · ANMELDEN-GRATIS · CHECK-ANALYSE (Mobile=Hauptleak 0,24% ATC) · AUTO-CHAT-MAX · MUSIK-INVENTAR. 5 dünne Kollektionen manuell auf DE+Trust.
+- **🖱️ Klick-Starter:** TIKTOK-KLICK.bat, KAMPAGNE-DRY/GO.bat, RUN-TIKTOK-OAUTH.bat, INSTALL-DEPS.bat, VOLLAUTOMAT(-SETUP).bat. Handy-Tap-URLs (`&cmd=tiktok|all|deploy`).
+- **🧠 Mandate verankert (CLAUDE.md FEST):** einfach-machen-nicht-fragen · Klick-Starter für alles · selbst-verbessern · volle Delegation · immer-andere-gratis-Lösung. Gehirn 90 Regeln.
+- **🔴 OFFEN (nur PC/User):** PC-Listener läuft NICHT (Befehle stapeln) → 1× `SETUP-AUTONOM.bat` = Windows-Autostart (PC 24/7 → dann nie wieder Klick). `wrangler deploy` für Worker-Verbesserungen. TWINT/Kauf-auf-Rechnung (Theme). Engpass bleibt Mobile-Conversion + Zahlung, NICHT Reichweite.
+
 ## 🐛 2026-06-18 (WICHTIGER FIX — Worker postete nie via Cron)
 - **Bug:** `POST_HOURS=[10,15,19]` UTC, aber Cron feuert `0 9,17` UTC → **keine Überschneidung** → Worker hat bei jedem Cron-Lauf nur ANALYSIERT, **nie gepostet**. Die letzten echten Posts kamen alle vom PC-Listener.
 - **Fix:** `POST_HOURS=[9,17]` (= 11:00 + 19:00 CH, 2×/Tag). Committet+gepusht. **⚠️ Wirkt erst nach `wrangler deploy` am PC.**
