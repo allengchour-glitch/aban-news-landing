@@ -61,8 +61,8 @@ for i, (h, img, lab) in enumerate(pick):
     except Exception as e: print("gen fail", lab, e)
     time.sleep(2)
 clips = []
-for rnd in range(60):
-    time.sleep(10); alldone = True
+for rnd in range(100):
+    time.sleep(15); alldone = True
     for idx, (gid, h, lab, pr) in enumerate(ids):
         cp = f"{SEG}/c{idx}.mp4"
         if os.path.exists(cp): continue
