@@ -221,3 +221,8 @@ Quelle: stackmatix/improvado (Social 2026), shopify/growthsuite/provesrc (CRO 20
 - **→ Bi 350 CHF: TRAFFIC- oder Video-Views-Ziel** (günstigi Klicks, baut Pixel-Date + Reichwiti) — NID direkt Conversion.
 - Lean: **1 Kampagne · 1 Ad-Group · 4 Creatives** (Gewinner finde, Verlierer kille). 20%/Tag skaliere. 2–3 Wuche bis Schluss.
 - **Bis $1'000 TikTok-Ad-Guthabe** für Neukunde möglich → Mail a Wallrath (Entwurf liegt) lohnt sich!
+
+## 🔧 2026-06-18 21:25 — Auto-Verbesserungs-Durchlauf
+- Health/Analyse/Lernen/Queue/Engagement durch. Gehirn-Regeln: 95.
+- Queue frisch (Worker liest live). Top-Produkte nach Engagement neu sortiert.
+- Engpass bleibt: Conversion (Mobile/Reviews) > Reichweite. Nächster Content nach Gewinner-Rezept (Preis-Vergleich+Mundart).
