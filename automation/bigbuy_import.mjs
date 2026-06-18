@@ -160,12 +160,17 @@ async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access
 async function sToken() { if (ADMIN_TOKEN && await sWorks(ADMIN_TOKEN)) return ADMIN_TOKEN; if (CID && CSEC) { const t = await sCC(); if (t && await sWorks(t)) return t; } return null; }
 
 // ── BigBuy REST (Bearer-Auth, JSON, verifiziert). Robustes Rate-Limit-Handling ──
-async function bbGet(path) {
+async function bbGet(path, timeoutMs = 30000) {
   for (let a = 0; a < 6; a++) {
-    let r;
-    try { r = await fetch(`${BB_BASE}${path}`, { headers: { 'Authorization': `Bearer ${BB_KEY}`, 'Accept': 'application/json' } }); }
-    catch { await sleep((a + 1) * 4000); continue; }
-    const txt = await r.text();
+    let r, txt;
+    const ac = new AbortController();
+    const to = setTimeout(() => ac.abort(), timeoutMs); // Hard-Timeout gegen hängende Verbindungen
+    try {
+      r = await fetch(`${BB_BASE}${path}`, { headers: { 'Authorization': `Bearer ${BB_KEY}`, 'Accept': 'application/json' }, signal: ac.signal });
+      txt = await r.text();
+    }
+    catch { clearTimeout(to); await sleep((a + 1) * 4000); continue; }
+    clearTimeout(to);
     if (r.status === 429 || /exceeded the rate limit|too many/i.test(txt)) { await sleep((a + 1) * 5000); continue; }
     if (!r.ok) { console.log(`  ⚠️ BigBuy ${path.split('?')[0]} → HTTP ${r.status} ${txt.slice(0, 80)}`); return null; }
     try { return JSON.parse(txt); } catch { return null; }
@@ -173,7 +178,7 @@ async function bbGet(path) {
   console.log(`  ⚠️ BigBuy ${path.split('?')[0]} → Rate-Limit, aufgegeben.`);
   return null;
 }
-const bbInfoAll = () => bbGet('/rest/catalog/productsinformation.json?isoCode=de'); // [{id,sku,name,description}]
+const bbInfoAll = () => bbGet('/rest/catalog/productsinformation.json?isoCode=de', 180000); // [{id,sku,name,description}] — grosser Download, 180s Timeout
 const bbProduct = (id) => bbGet(`/rest/catalog/product/${id}.json?isoCode=de`);     // {wholesalePrice,retailPrice,active,...}
 const bbImages = (id) => bbGet(`/rest/catalog/productimages/${id}.json`);           // {id, images:[{url,...}]}
 async function img200(u) { try { const r = await fetch(u, { method: 'HEAD' }); if (r.ok) return true; const g = await fetch(u); return g.ok; } catch { return false; } }
