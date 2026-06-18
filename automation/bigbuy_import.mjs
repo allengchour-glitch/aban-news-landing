@@ -74,7 +74,7 @@ const CONFIG = {
   parfum: { coll: { handle: 'parfum-duefte', title: '🌸 Parfum & Düfte', tag: 'parfum' },
     extraTags: ['beauty', 'geschenk', 'premium'], type: 'Parfum', maxCost: MAX_COST_EUR,
     anchor: ['eau de parfum', 'eau de toilette', 'parfum', 'cologne', 'fragrance', 'perfume', 'duftset'],
-    ban: ['kinder', 'spielzeug', 'raumduft', 'diffuser', 'auto', 'lufterfrischer', 'nachfüll', 'kerze', 'duftkerze', 'waschmittel', 'deo ', 'roll-on', 'handschuh', 'gloves', 'seife', 'lotion', 'creme'],
+    ban: ['kinder', 'spielzeug', 'raumduft', 'diffuser', 'auto', 'lufterfrischer', 'nachfüll', 'kerze', 'duftkerze', 'waschmittel', 'deo ', 'roll-on', 'handschuh', 'gloves', 'seife', 'lotion', 'creme', 'slime', 'spielschleim', 'toys', 'dr. tree', 'empfindliche haut'],
     bullets: ['Original-Markenduft', 'Lang anhaltende Sillage', 'Edles Geschenk', '100% Original, schnelle EU-Lieferung'] },
   lederwaren: { coll: { handle: 'lederwaren', title: '👝 Leder & Accessoires', tag: 'leder' },
     extraTags: ['accessoire', 'geschenk', 'premium'], type: 'Lederwaren', maxCost: MAX_COST_EUR,
