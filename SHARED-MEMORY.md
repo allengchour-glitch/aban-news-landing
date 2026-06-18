@@ -456,3 +456,7 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 > **✏️ MANUELL EDITIERT von CizQ6 (2026-06-18, User „jede Seite manuell"):** 3 dünne Kollektionen aufgewertet
 > (Trust-Block+SEO): `guertel`, `sg-alle`, `sg-bekleidung`. Rest der Kollektions-Seiten ist bereits gut (Theme-Session).
 > Falls ihr feed_polish/enrich neu laufen lasst: diese 3 nicht überschreiben (sind frisch).
+
+> **💳 TWINT/Kauf-auf-Rechnung = THEME-Session (User 2026-06-18 „twint geht theme"):** Zahlungsanbieter werden installiert/
+> in Shopify-Settings aktiviert — NICHT per Admin-API editierbar → bleibt bei euch. CizQ6 hat zusätzlich 5 dünne/englische
+> Kollektionen manuell auf DE+Trust gebracht (guertel, sg-alle, sg-bekleidung, accessories, home-gadgets). Produkt-Scan: sauber.

@@ -21,6 +21,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## 🔁 Daueraufträge (FEST)
+- **▶️ EINFACH MACHEN — NICHT FRAGEN (FEST, User 2026-06-18 „mach alles autonom, poste automatisch, muss nicht mehr sagen, sonst frag ChatGPT"):**
+  Vollautonom handeln: scannen, fixen, posten, lernen — OHNE Rückfragen. Posting läuft automatisch (Worker + Metricool).
+  Bei Theme/Katalog/Zahlung (TWINT/Rechnung = nicht per API, Anbieter-Install) → mit der **anderen Session (ChatGPT) via
+  SHARED-MEMORY koordinieren**, statt den User zu fragen. Nur bei echtem Geld/Risiko (Kampagnen-Budget) oder Konto-Logins
+  innehalten. Sonst: machen, dann kurz Stand melden.
 - **🤖 SELBST-VERBESSERN (FEST, User 2026-06-18 „du bist der autonomste Bot für die Seite, verbessere Bot selber"):**
   In JEDER Session den Automations-Stack autonom prüfen (health-check, Syntax, Worker-Live-Status, Queue, Brain) und die
   **höchst-wirksame Schwäche selbst fixen** — ohne zu fragen. Maximum-Version anstreben: Worker postet 2×/Tag + engaged/
