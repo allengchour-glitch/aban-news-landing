@@ -147,6 +147,12 @@ const CONFIG = {
     anchor: ['hundehalsband', 'hundeleine', 'hundebett', 'hundebürste', 'hundespielzeug', 'hundefutter', 'katzenbaum', 'kratzbaum', 'katzenspielzeug', 'katzenstreu', 'futternapf', 'fressnapf', 'trinknapf', 'transportbox', 'haustier', 'comedero', 'rascador', 'collar perro', 'correa perro'],
     ban: ['kinder', 'aufkleber', 'sticker', 'auto', 'toy car', 'verkleidung mensch', 'saugnapf', 'wimpel', 'spiegel', 'handyhalterung', 'sit-up', 'analplug', 'plug', 'vibrator', 'dildo', 'erotik', 'intim', 'sex', 'clementoni', 'interaktives haustier', 'plüschtier'],
     bullets: ['Für glückliche Vierbeiner', 'Robust & pflegeleicht', 'Durchdachtes Design', 'Schnelle EU-Lieferung'] },
+  // ── SAISONAL WM 2026 (Tag `wm-2026` → nach der WM mit `tag:wm-2026` komplett archivierbar) ──
+  fussball: { coll: { handle: 'wm-fussball-2026', title: '⚽ WM & Fussball 2026', tag: 'wm-2026' },
+    extraTags: ['fussball', 'fan', 'sport', 'wm'], type: 'Fussball & Fan', maxCost: MAX_COST_EUR,
+    anchor: ['fußball', 'fussball', 'football', 'soccer', 'trikot', 'fan-schal', 'fanschal', 'fan schal', 'torwart', 'fußballtor', 'fußballschuh', 'fanartikel', 'nationalmannschaft', 'weltmeister', 'fútbol', 'balón de fútbol', 'camiseta fútbol', 'bufanda fútbol', 'fc barcelona', 'real madrid', 'atlético', 'atletico'],
+    ban: ['aufkleber', 'sticker', 'malbuch', 'puzzle', 'tattoo', 'luftballon', 'tischdecke', 'servietten', 'kostüm', 'verkleidung', 'pyjama', 'tischfußball klein', 'kicker tisch', 'window color', 'baby '],
+    bullets: ['Zeig deine Fan-Liebe', 'Offizielles Fan-Feeling', 'Top für Stadion, Party & Public Viewing', 'Schnelle EU-Lieferung'] },
 };
 
 // ── Shopify (1:1 aus cj_gaps_import.mjs, bewährt) ──
