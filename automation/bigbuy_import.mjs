@@ -145,7 +145,7 @@ const CONFIG = {
   haustier: { coll: { handle: 'sub-haustier', title: '🐾 Haustier', tag: 'haustier' },
     extraTags: ['haustier', 'tier', 'geschenk', 'premium'], type: 'Haustier', maxCost: MAX_COST_EUR,
     anchor: ['hundehalsband', 'hundeleine', 'hundebett', 'hundebürste', 'hundespielzeug', 'hundefutter', 'katzenbaum', 'kratzbaum', 'katzenspielzeug', 'katzenstreu', 'futternapf', 'fressnapf', 'trinknapf', 'transportbox', 'haustier', 'comedero', 'rascador', 'collar perro', 'correa perro'],
-    ban: ['kinder', 'aufkleber', 'sticker', 'auto', 'toy car', 'verkleidung mensch', 'saugnapf', 'wimpel', 'spiegel', 'handyhalterung', 'sit-up', 'analplug', 'plug', 'vibrator', 'dildo', 'erotik', 'intim', 'sex'],
+    ban: ['kinder', 'aufkleber', 'sticker', 'auto', 'toy car', 'verkleidung mensch', 'saugnapf', 'wimpel', 'spiegel', 'handyhalterung', 'sit-up', 'analplug', 'plug', 'vibrator', 'dildo', 'erotik', 'intim', 'sex', 'clementoni', 'interaktives haustier', 'plüschtier'],
     bullets: ['Für glückliche Vierbeiner', 'Robust & pflegeleicht', 'Durchdachtes Design', 'Schnelle EU-Lieferung'] },
 };
 
