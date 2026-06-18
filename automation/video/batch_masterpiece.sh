@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # LuxeStyle — batch_masterpiece.sh : Meisterwerk-Reel fuer jedes Top-Produkt (idempotent, robust).
 cd "$(dirname "$0")/../.." || exit 1
-HOOKS=("Genau das hesch gsuecht?" "Lueg mau das aa" "Das mues i ha" "Weles nimmsch?" "Dis noeie Lieblingsteil?" "Fuer di oder zum Verschaenke?" "Schoen, oder?" "Das waer doch was")
+HOOKS=("Gseht us wie Tuusige?" "Luxus-Look, kei Luxus-Pris" "Genau das hesch gsuecht?" "Das mues i ha" "Weles nimmsch?" "Gseht teuer us - isch es nid" "Dis noeie Lieblingsteil?" "Fuer di oder zum Verschaenke?")
 i=0
 # CRLF strip + sauber parsen
 tail -n +2 automation/top_products.csv | tr -d '\r' | while IFS=, read -r handle img label rest; do
