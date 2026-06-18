@@ -69,6 +69,11 @@
 > (2) **Reviews über der Falz** (+15–25 %), ≥5–10 pro Top-Produkt, Sterne auf Kacheln (+12–18 % CTR); visuelle/Foto-Reviews schlagen Text (bes. Schmuck).
 > (3) **Landed-Cost/Versand auf der PDP** vor dem ATC-Button (47 % Abbruch wegen unerwarteter Kosten) · **Gastbestellung** (Pflichtkonto −25 %) · **Sticky-ATC mobil** (+10–15 %) · **CHF-only**.
 
+> **🔴 MOBILE = GRÖSSTER LEAK (Check-Analyse 2026-06-18, für Theme-Session — Details `dropship/CHECK-ANALYSE-2026-06-18.md`):**
+> Live-Daten 30T: **mobile 2'115 Sessions (69 %) → nur 5 Warenkorb-Adds = 0,24 % ATC**, Desktop 881 → 9 = 1,0 % (4× besser!).
+> → Mobile-UX ist der Conversion-Killer: **mobile-first, <3s Ladezeit, Sticky-„In den Warenkorb", keine Popups, Express-Checkout.**
+> Traffic kommt (social 1'151/30T), CH 53 % — Reichweite ist NICHT der Engpass; **Mobile-Erlebnis + Zahlung (TWINT/Rechnung)** sind es.
+
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
 **🟢 2026-06-16 (~23:45) — CizQ6: +12 OUTDOOR-Produkte (BigBuy EU) + Mapping 5747 kategorisiert:**

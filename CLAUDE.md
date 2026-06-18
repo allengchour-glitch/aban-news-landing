@@ -28,6 +28,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Direkt-Starter: `automation/local/KAMPAGNE-DRY.bat` / `KAMPAGNE-GO.bat` (stellen Brave-Port selbst sicher, brauchen
   kein git). Lehre: Git-Lock ist IMMER nur PC-lokal (ein Prozess hält die Datei) — Cloud/Cloudflare nie betroffen;
   lösbar per `taskkill` des sperrenden Prozesses ODER indem man git ganz umgeht.
+- **🔓 VOLLE DELEGATION + „merk dir alles" (FEST, User 2026-06-18):** Der User übergibt mir **alles** und volle Autonomie:
+  selbst entscheiden & umsetzen, **auch Pixel-Sachen ändern/löschen** (Mehrfach-Pixel aufräumen: nur `D8EKVR3C77U6KT5BTBD0`
+  behalten, `D8EQE4…`/`D85BAG…` weg), Konten/Kampagnen/Content nach bestem Wissen. Nicht ständig rückfragen — handeln,
+  dann melden. ALLES Gelernte sofort ins Memory schreiben („merk dir alles"). Sicherheits-Grenzen bleiben (kein Geld
+  ohne klare Freigabe = 350-Kampagne ist freigegeben; keine verbotenen Produkte; strikt CH; Secrets nie ins Repo).
+- **🤖 „Bot PERFEKT einrichten + immer gratis Alternativen" (FEST, User 2026-06-18):** Den Automations-Bot robust & wartungs-
+  arm aufsetzen. Bevorzugte Architektur (am wenigsten Fehlerquellen): **lokaler Windows-Task, der die node-Skripte DIREKT
+  startet** (kein Cloudflare-Worker-Poll/KV-Limit, kein Listener-Dauerpoll, kein git-pull→kein Git-Lock). Worker bleibt nur
+  fürs reine IG/FB-Cron-Posten. Bei Blockaden immer eine andere gratis Lösung suchen.
 - **„update dich immer"** (2026-06-12): Memory nach jeder Charge nachführen.
 - **📈 ÖFTER ANALYSIEREN — Meta + TikTok (FEST, User 2026-06-14 „analysiere öfters in meta tiktok und so"):**
   In JEDER Session **zuerst `bash automation/brain/auto.sh`** (TikTok-Analyse + Lernen) UND einen **Meta-Check**
