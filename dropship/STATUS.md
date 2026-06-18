@@ -3,6 +3,13 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## ✅ 2026-06-18 (SPÄT — Checkout verifiziert + TikTok-Gewinner-Rezept)
+- **🛒 CHECKOUT TECHNISCH SAUBER (per Screenshot + API geprüft):** **TWINT aktiv** (+ Kreditkarte Visa/MC/Amex/UnionPay). **Versand deckt CH in ALLEN 5 Profilen ab** (Allgemein Domestic=CH CHF7+gratis · Zendrop · Collective International=restOfWorld · Gelato EFTA). Die „andere Lieferadresse"-Meldung = temporär (Adresse unvollständig), KEIN Bug. → 0 Käufe = KEIN technischer Block → Reichweite/Kaufabsicht/Vertrauen. **Offen: echter Test-Kauf** (Adresse komplett→Versandart→TWINT→Bestätigung). Korrekturen: TWINT war NIE „fehlend", Versand NIE „kaputt" (frühere Aussagen revidiert, Gehirn-Regeln zahlung_/versand_korrektur).
+- **📊 TIKTOK MAX-ANALYSE (37 Videos/11'106 Views/Ø300/0 Shares):** Gewinner = **Preis-Vergleich** („CHF 32 statt 200" 795V, „80% weniger als Rolex"), **Aspirational** (Diffuser XXL #1 1'111V), **Mundart** (801V). Beste Tags #schweiz/#schweizmode/#ootdschweiz. 0 Shares→Neugier/Save-Trigger. Rezept im Gehirn (`tiktok_gewinner_rezept`).
+- **🎭 Meisterwerk-Builder** (`build_masterpiece.py`, Hook-Font-Fix kein Clipping) → TikTok-Meisterwerk „Gseht us wie Tuusige?" (Herzkette) nach Rezept gerendert + an User.
+- **🔌 Cloud-API-Grenzen geklärt:** TikTok-Dev (Privatkonto) + Pinterest (`pina_`-App nicht freigegeben) + Cloudflare (`cfk_`-Tokens ungültig) = aus Cloud NICHT nutzbar. → Social aus Cloud = nur Meta (FB/IG ✅); TikTok/Pinterest via Metricool (verbunden) + PC-Zeitpläne. Mehr Worker (Deno/Val.town/2.CF) = Redundanz, nicht nötig. Multi-Domain (luxestyle.ch + .com.co) → Theme klären.
+- **Gehirn 95 Regeln.** Repo sauber, alles gepusht.
+
 ## 🚀 2026-06-18 (GROSSE AUTONOM-SESSION — Video live + Bot maximiert)
 - **🎉 ERSTES ECHTES VIDEO LIVE auf FB + IG** (smooth Werbe-Montage, 6 Top-Produkte, Mundart+WELCOME10): gerendert → Shopify-CDN (stagedUpload) → Graph-API direkt gepostet. FB-Doppelpost entdeckt+gelöscht (Lehre: Graph-Fehler kann trotzdem posten → immer nachprüfen, Gehirn-Regel `doppelpost_schutz`).
 - **📲 Metricool verbunden** (TikTok+IG+FB+Pinterest) = der Gratis-TikTok-Autopost-Weg ohne Dev-App. Video in `social/video_queue.csv` für PC/Metricool.
