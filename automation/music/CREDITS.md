@@ -7,3 +7,4 @@
 - Music: "Funkorama" by Kevin MacLeod (incompetech.com) — Creative Commons: By Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/)
 - Music: "Inspired" by Kevin MacLeod (incompetech.com) — Creative Commons: By Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/)
 - Music: "Local Forecast - Elevator" by Kevin MacLeod (incompetech.com) — Creative Commons: By Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/)
+- Music: "Carefree" by Kevin MacLeod (incompetech.com) — Creative Commons: By Attribution 4.0 (https://creativecommons.org/licenses/by/4.0/)

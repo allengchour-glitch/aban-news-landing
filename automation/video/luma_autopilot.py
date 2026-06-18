@@ -69,7 +69,7 @@ for rnd in range(100):
         try:
             s = hget(f"{LUMA}/{gid}", H)
             if s.get("state") == "completed" and s.get("assets", {}).get("video"):
-                urllib.request.urlretrieve(s["assets"]["video"], cp); print("done", lab)
+                open(cp,"wb").write(urllib.request.urlopen(urllib.request.Request(s["assets"]["video"], headers={"User-Agent":"Mozilla/5.0"}), timeout=60).read()); print("done", lab)
             elif s.get("state") == "failed": print("failed", lab); ids[idx] = (gid, h, lab + "__FAIL", pr)
             else: alldone = False
         except Exception: alldone = False
