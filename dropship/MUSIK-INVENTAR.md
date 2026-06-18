@@ -22,3 +22,8 @@
 
 > Fazit: Es gibt KEINE installierte „moderne Musik-App". Der legale Gratis-Standard ist Kevin MacLeod (Backing) +
 > TikTok-In-App-Trend-Sounds. Für modern/Gesang braucht's Suno (PC) oder bezahlt.
+
+## ⭐ UPDATE 2026-06-18: ElevenLabs „Eleven Music" = bester kommerzieller Gratis-Weg
+- User HAT ElevenLabs-Keys (in luxe-secrets/ENV als ELEVENLABS_API_KEY). ElevenLabs „Eleven Music" = **copyright-cleared, kommerziell OK**.
+- → To-do: `automation/eleven-music.mjs` bauen (Key aus ENV) = moderne, kommerziell-saubere Tracks statt Kevin MacLeod.
+- Suno/Udio/Stable Audio: Gratis-Tier = NICHT kommerziell → für Live-Ads nicht nutzen (nur Suno Pro / Stable Creator-Lizenz).
