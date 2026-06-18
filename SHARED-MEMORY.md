@@ -452,3 +452,7 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   das EINE bestehende System.** Der User hat `PINTEREST_ACCESS_TOKEN` gesetzt → aktiviert das bestehende System direkt
   (Mo&Do je 5, sobald Actions frei). Handy-Button 📌 → `pinterest-publish.yml`.
 - **ℹ️ Printful** (POD-Fulfillment, andere Session) bleibt unangetastet — kein Konflikt mit Katalog/Social dieser Session.
+
+> **✏️ MANUELL EDITIERT von CizQ6 (2026-06-18, User „jede Seite manuell"):** 3 dünne Kollektionen aufgewertet
+> (Trust-Block+SEO): `guertel`, `sg-alle`, `sg-bekleidung`. Rest der Kollektions-Seiten ist bereits gut (Theme-Session).
+> Falls ihr feed_polish/enrich neu laufen lasst: diese 3 nicht überschreiben (sind frisch).
