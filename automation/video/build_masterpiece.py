@@ -31,7 +31,7 @@ vf = (f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920
       f"[base]zoompan=z='min(zoom+0.0007,1.10)':d={nf}:s=1080x1920:fps={FR},"
       f"eq=contrast=1.07:saturation=1.12:brightness=0.012,curves=preset=lighter,vignette=angle=PI/4.5,"
       f"drawtext=fontfile={FS}:text='LuxeStyle.ch':fontcolor=white:fontsize=40:x=(w-tw)/2:y=80:alpha='min(1,t*1.5)',"
-      f"drawtext=fontfile={FS}:text='{esc(hook)}':fontcolor=white:fontsize=66:x=(w-tw)/2:y=170:box=1:boxcolor=black@0.45:boxborderw=20:enable='lt(t,4)':alpha='if(lt(t,0.5),t*2,if(lt(t,3.5),1,(4-t)*2))',"
+      f"drawtext=fontfile={FS}:text='{esc(hook)}':fontcolor=white:fontsize=50:x=(w-tw)/2:y=170:box=1:boxcolor=black@0.45:boxborderw=20:enable='lt(t,4)':alpha='if(lt(t,0.5),t*2,if(lt(t,3.5),1,(4-t)*2))',"
       f"drawtext=fontfile={FS}:text='{esc(label)}':fontcolor=white:fontsize=58:x=(w-tw)/2:y=1330:box=1:boxcolor=black@0.45:boxborderw=18:enable='gt(t,3.5)',"
       f"drawtext=fontfile={F}:text='{esc(prx)}':fontcolor={GOLD}:fontsize=56:x=(w-tw)/2:y=1410:box=1:boxcolor=black@0.5:boxborderw=14:enable='gt(t,3.5)',"
       f"drawtext=fontfile={F}:text='luxestyle.ch  WELCOME10 = 10 Prozent':fontcolor=white:fontsize=40:x=(w-tw)/2:y=1480:box=1:boxcolor=black@0.55:boxborderw=12:enable='gt(t,{DUR-4:.0f})'[v]")
