@@ -36,10 +36,15 @@ if ($env:META_ACCESS_TOKEN) { node "automation/social-comment-reply.mjs" }
 node "automation/local/ig-dm-browser.mjs"
 node "automation/local/tiktok-dm-browser.mjs"
 
-# 4) FOLGEN — kleine Charge pro Lauf (Tages-Summe sicher). Liken inklusive = Engagement der CH-Zielgruppe.
-$env:IG_FOLLOWS = "8"; $env:TT_FOLLOWS = "6"
+# 4) RATIO-RETTUNG (2026-06-17: IG verliert Follower wegen 814:147-Ratio = Spam-Signal → Reichweite gedrosselt):
+#    IG-FOLGEN PAUSIERT (IG_FOLLOWS=0, macht Ratio nur schlimmer). Nur TikTok weiter (kleine Charge).
+$env:IG_FOLLOWS = "0"; $env:TT_FOLLOWS = "6"
 node "automation/local/ch-follower-growth.mjs"
 $env:IG_FOLLOWS = $null; $env:TT_FOLLOWS = $null
+# 4a) AGGRESSIV ENTFOLGEN jeden Lauf bis Ratio gesund (814 → ~150). DAYS=5 (schneller), MAX=45/Lauf.
+$env:DAYS = "5"; $env:MAX = "25"
+node "automation/local/ch-unfollow.mjs"
+$env:DAYS = $null; $env:MAX = $null
 
 # 4b) FACEBOOK-FOLLOWER: 1x/Tag (Mittags-Cycle) in CH-Gruppe posten -> Reichweite -> Page-Follows.
 if ((Get-Date).Hour -eq 12) { node "automation/local/fb-group-post.mjs" }
