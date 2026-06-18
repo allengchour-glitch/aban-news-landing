@@ -87,13 +87,16 @@ const server = http.createServer(async (req, res) => {
   }
   res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
   res.end('<h2>✅ Geschafft!</h2><p>Tokens wurden lokal gespeichert. Du kannst dieses Fenster schliessen.</p>');
-  // Tokens automatisch in luxe-secrets.ps1 (Home-Verzeichnis) schreiben — kein Kopieren nötig.
+  // Tokens in luxe-secrets.ps1 MERGEN (NICHT überschreiben — sonst sind Stripe/Groq/Shopify-Secrets weg!).
   const secretsPath = path.join(os.homedir(), 'luxe-secrets.ps1');
-  const content = `# Auto-generiert von tiktok-oauth.mjs — NICHT committen!\n` +
-    `$env:TT_ACCESS_TOKEN  = "${j.access_token}"\n` +
+  let existing = '';
+  try { existing = fs.readFileSync(secretsPath, 'utf8'); } catch {}
+  const kept = existing.split(/\r?\n/).filter(l => !/\$env:TT_(ACCESS_TOKEN|REFRESH_TOKEN|CLIENT_KEY|CLIENT_SECRET)\b/.test(l));
+  const ttBlock = `$env:TT_ACCESS_TOKEN  = "${j.access_token}"\n` +
     `$env:TT_REFRESH_TOKEN = "${j.refresh_token}"\n` +
     `$env:TT_CLIENT_KEY    = "${KEY}"\n` +
     `$env:TT_CLIENT_SECRET = "${SECRET}"\n`;
+  const content = (kept.join('\n').trim() + '\n' + ttBlock).replace(/^\n+/, '');
   try { fs.writeFileSync(secretsPath, content); } catch (e) { console.error('Konnte luxe-secrets.ps1 nicht schreiben:', e.message); }
   console.log('\n✅ ERFOLG — Tokens gespeichert in:', secretsPath);
   console.log('   (open_id:', j.open_id, '· scope:', j.scope, '· access gültig', j.expires_in, 's · refresh', j.refresh_expires_in, 's)');
