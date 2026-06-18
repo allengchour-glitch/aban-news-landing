@@ -11,6 +11,6 @@ tail -n +2 automation/top_products.csv | tr -d '\r' | while IFS=, read -r handle
   if [ -f "$out" ]; then echo "skip: $label"; continue; fi
   hook="${HOOKS[$((i % ${#HOOKS[@]}))]}"; i=$((i+1))
   echo "== build: $label  [$hook] -> $out =="
-  PRESET=veryfast python3 automation/video/build_masterpiece.py "$handle" "$img" "$label" "$hook" "$out" 2>&1 | tail -1
+  PRESET=veryfast python3 automation/video/build_masterpiece.py </dev/null "$handle" "$img" "$label" "$hook" "$out" 2>&1 | tail -1
 done
 echo "BATCH FERTIG. Meisterwerke total: $(ls reels/mw-*.mp4 reels/luxe-meisterwerk-*.mp4 2>/dev/null | wc -l)"
