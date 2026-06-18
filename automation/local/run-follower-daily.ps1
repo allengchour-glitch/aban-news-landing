@@ -91,11 +91,11 @@ if ($env:META_ACCESS_TOKEN -and ((Get-Date).DayOfWeek -in "Tuesday","Friday")) {
 # 7) tutti.ch autonom inserieren (Browser/CDP — tutti hat kein API). Voll-Auto: lädt Bild + wählt Kategorie +
 #    veröffentlicht NUR wenn alles sauber gesetzt ist (sonst überspringen). Cap 2/Tag, idempotent (tutti-ledger.txt).
 #    Voraussetzung: Brave-Profil ist auf tutti.ch eingeloggt. Auto-Veröffentlichung auf Ricardo ist im Konto aktiv → doppelte Reichweite.
-$env:AUTO_PUBLISH = "1"; $env:TUTTI_CAP = "2"
+$env:AUTO_PUBLISH = "1"; $env:TUTTI_CAP = "3"
 node "automation/local/tutti-post.mjs"
 
 # 7b) anibis.ch autonom inserieren (zweiter Gratis-CH-Marktplatz, gleiche Liste, eigener Ledger).
-$env:AUTO_PUBLISH = "1"; $env:ANIBIS_CAP = "2"
+$env:AUTO_PUBLISH = "1"; $env:ANIBIS_CAP = "3"
 node "automation/local/anibis-post.mjs"
 
 # 8) Entfolgen — TÄGLICH (User 2026-06-17: Ratio 878 Gefolgt > 592 Follower = ungesund → schneller trimmen).

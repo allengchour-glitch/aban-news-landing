@@ -36,7 +36,7 @@ const CSV = path.join(ROOT, 'dropship/tutti_listings.csv');
 const LEDGER = path.join(__dir, 'tutti-ledger.txt');
 const DRY = process.argv.includes('--dry');
 const AUTO = process.env.AUTO_PUBLISH === '1' || process.argv.includes('--auto');
-const CAP = parseInt(process.env.TUTTI_CAP || (AUTO ? '2' : '3'), 10);
+const CAP = parseInt(process.env.TUTTI_CAP || (AUTO ? '3' : '3'), 10);
 const CDP = process.env.CDP_URL || 'http://localhost:9222';
 
 async function downloadImage(url) {
