@@ -342,7 +342,7 @@ export default {
     }
     if (u.searchParams.get("drain")) {
       const q = JSON.parse((await env.LUXE_KV.get("pc_queue")) || "[]");
-      await env.LUXE_KV.put("pc_queue", "[]");
+      if (q.length) await env.LUXE_KV.put("pc_queue", "[]");  // KV-SPAR: nur schreiben wenn nicht leer (Listener pollt 90s -> sonst ~960 Writes/Tag = Gratis-Limit)
       return Response.json({ commands: q });
     }
     // Kommentar-Auto-Antwort manuell auslösen (Handy-Tap): …/?key=…&replies=1
