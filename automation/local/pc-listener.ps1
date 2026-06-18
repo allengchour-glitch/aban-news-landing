@@ -40,6 +40,7 @@ function Run-Cmd($c) {
     "follower" { node "automation/local/ch-follower-growth.mjs" }
     "all"      { powershell -ExecutionPolicy Bypass -File "automation/local/run-follower-daily.ps1" }
     "deploy"   { Push-Location "automation/cloudflare/luxe-poster"; wrangler deploy; Pop-Location }
+    "install"  { npm install playwright-core --no-save }
     "campaign-dry" {
       # Handy-tauglich: Kampagne-Bot im Test-Modus laufen lassen + Screenshots ins Repo pushen,
       # damit Cloud-Claude die Selektoren prüfen kann. Gibt KEIN Geld aus.
