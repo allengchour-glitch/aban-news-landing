@@ -240,5 +240,35 @@ export const PRODUCTS = [
     "name": "hoodie-alpenkuh-swiss-edition",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65ac01d4-861d-4667-a60f-8866d15568db.webp",
     "label": "Hoodie «Alpenkuh» Swiss"
+  },
+  {
+    "name": "fu-ball-starter-perfekt-fur-den-ersten-kick-177060",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8435406987235_S2012964_P02.jpg",
+    "label": "⚽ WM 2026 · Fussball"
+  },
+  {
+    "name": "soft-fu-ball-20-cm-sicherer-spielspa-fur-alle-131686",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8001011078523_0_P11.jpg",
+    "label": "⚽ WM 2026 · Soft-Ball"
+  },
+  {
+    "name": "unisex-fan-uhr-schwarz-stilvoll-die-zeit-im-blick-108499",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8435041746693_0_P01.jpg",
+    "label": "⚽ Fan-Uhr Atlético"
+  },
+  {
+    "name": "sportarmband-schwarz-dein-team-immer-am-handgelenk-107659",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8426801117617_0_P02.jpg",
+    "label": "⚽ FC Barcelona Armband"
+  },
+  {
+    "name": "spanien-fan-hut-zeige-deine-fu-ball-leidenschaft-574",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/H2500136_901741.jpg",
+    "label": "⚽ WM 2026 · Fan-Hut"
+  },
+  {
+    "name": "rucksack-mit-federtasche-rot-alles-dabei-fur-fans-181197",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8412688387366_R02.jpg",
+    "label": "⚽ Fan-Rucksack"
   }
 ];
