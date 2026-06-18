@@ -21,6 +21,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## 🔁 Daueraufträge (FEST)
+- **🛠️ „immer eine Lösung finden — sonst eine ANDERE Bot/Automation-Lösung" (FEST, User 2026-06-18):** Nie an einem
+  klemmenden Weg hängenbleiben. Scheitert ein Automatik-Pfad (Listener/Worker/Brave-Port/Git-Lock), SOFORT einen
+  alternativen, robusteren Weg suchen & bauen. **Bewährtes Muster: den fragilen Stack umgehen** — Browser-Tools
+  **direkt** per `node …mjs` auf dem PC starten (kein git-pull → kein Git-Lock; kein Listener-Poll; kein Worker).
+  Direkt-Starter: `automation/local/KAMPAGNE-DRY.bat` / `KAMPAGNE-GO.bat` (stellen Brave-Port selbst sicher, brauchen
+  kein git). Lehre: Git-Lock ist IMMER nur PC-lokal (ein Prozess hält die Datei) — Cloud/Cloudflare nie betroffen;
+  lösbar per `taskkill` des sperrenden Prozesses ODER indem man git ganz umgeht.
 - **„update dich immer"** (2026-06-12): Memory nach jeder Charge nachführen.
 - **📈 ÖFTER ANALYSIEREN — Meta + TikTok (FEST, User 2026-06-14 „analysiere öfters in meta tiktok und so"):**
   In JEDER Session **zuerst `bash automation/brain/auto.sh`** (TikTok-Analyse + Lernen) UND einen **Meta-Check**
