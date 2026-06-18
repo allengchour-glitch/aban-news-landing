@@ -37,10 +37,11 @@ do{
     scanned++;
     if((e.node.descriptionHtml||'').includes('ls-feed-details')){ skipped++; continue; }
     let sku=e.node.variants?.edges?.[0]?.node?.sku||''; sku=sku.replace(/^CJ-/,'').trim();
-    if(!sku){ nodata++; continue; }
-    const d=await cj(sku); await sleep(GAP);
-    if(!d){ nodata++; continue; }
-    const nh=(e.node.descriptionHtml||'')+block(d);
+    let d=null;
+    if(!process.env.GENERIC){ if(sku){ d=await cj(sku); await sleep(GAP); } }
+    const GEN=`\n<div class="ls-feed-details">\n<h4>Produktdetails</h4>\n<ul>\n<li><strong>Versand:</strong> 🇨🇭 CH/EU ca. 8–16 Tage · inkl. Produktion</li>\n<li><strong>Rückgabe:</strong> 30 Tage · Gratis-Versand ab CHF 65</li>\n<li><strong>Sicher einkaufen:</strong> Code <strong>WELCOME10</strong> = –10% · TWINT &amp; Karte</li>\n</ul>\n</div>`;
+    if(!d && !process.env.GENERIC){ nodata++; continue; }
+    const nh=(e.node.descriptionHtml||'')+(d?block(d):GEN);
     if(LIVE){ batch.push({id:e.node.id, descriptionHtml:nh}); if(batch.length>=10) await flush(); }
     enriched++;
     if(MAXP&&enriched>=MAXP) break;
