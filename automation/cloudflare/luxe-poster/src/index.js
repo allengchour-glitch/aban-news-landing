@@ -220,7 +220,8 @@ async function postTikTok(item, env) {
 }
 
 // ===== KOMMENTAR-AUTO-ANTWORT (autonom bei jedem Cron, idempotent über KV) =====
-const SPAM_RE = /https?:\/\/|t\.me\/|wa\.me\/|whatsapp|telegram|seguidores|followers|promo(c|t)|\bdm\b|inbox me|check my|verkaufe|crypto|invest/i;
+// Spam/Verkäufer-Filter (viele englische „wollen was verkaufen"-Comments) — NICHT drauf antworten
+const SPAM_RE = /https?:\/\/|t\.me\/|wa\.me\/|whatsapp|telegram|seguidores|followers|promo(c|t)|\bdm\b|inbox me|check (my|out)|verkaufe|crypto|invest|follow.?back|collab|wholesale|supplier|manufactur|we (sell|offer|provide)|best price|interested in|boost (your|sales)|grow your|increase your (sales|follow)|link in bio|cheap|business inquir|sponsor/i;
 const C_TOPIC = [
   ['versand', /versand|liefer|wann kommt|geliefert|sendung|paket|shipping|delivery|wie lang/i],
   ['groesse', /grösse|groesse|size|passt|fällt (gross|klein)|masse|welche grösse|xl|grössi/i],
@@ -242,8 +243,22 @@ const C_REPLY = {
   lob:     ['Merci vilmal! 🤍 Das freut üs mega 🥹', 'Danke dir!! 😍 Schau gern verbii uf luxestyle.ch ✨', 'Aaaw merci! 🙏 Mit WELCOME10 gits –10% 🛍️', 'Mega lieb, danke! 💕 luxestyle.ch'],
   allgemein: ['Merci vilmal! 🙏🇨🇭 Schau gern verbii uf luxestyle.ch ✨', 'Danke dir! 😍 Meh devo uf luxestyle.ch 🛍️', 'Freut üs mega! 🙌 luxestyle.ch (–10% mit WELCOME10)', 'Hoi & merci! 🤍 Bi Frage eifach melde – luxestyle.ch'],
 };
+// Englische Antworten (viele Kommentare sind englisch) — echte EN-Kunden auf EN bedienen
+const EN_REPLY = {
+  versand: ['We ship across Switzerland – free over CHF 65 🚚 More at luxestyle.ch', 'Swiss-wide shipping, free over CHF 65 📦 Details at luxestyle.ch ✨'],
+  groesse: ['You\'ll find the size chart on each product at luxestyle.ch 📏', 'All sizes S–XL are listed on the product page 📏 luxestyle.ch'],
+  preis:   ['Price is on the site 👉 luxestyle.ch – use WELCOME10 for –10% 🤍', 'Check luxestyle.ch for the price · WELCOME10 = –10% ✨'],
+  verfueg: ['Yes, in stock & ready to order ✅ luxestyle.ch', 'Available now! 🛍️ Order at luxestyle.ch ✅'],
+  wo:      ['Everything\'s at 👉 luxestyle.ch 🛍️', 'Find it at luxestyle.ch ✨ (–10% with WELCOME10)'],
+  farbe:   ['Available colors are shown on the product page 🎨 luxestyle.ch'],
+  retoure: ['No worries – 30-day returns 🤍 just reach out, we\'ll help!', '30-day return policy 📦 message us anytime, we\'ll sort it out 🇨🇭'],
+  lob:     ['Thank you so much! 🤍 Means a lot 🥹', 'Aw, thank you! 😍 Have a look at luxestyle.ch ✨', 'So kind, thanks! 💕 WELCOME10 = –10% 🛍️'],
+  allgemein: ['Thanks so much! 🙏 Have a look at luxestyle.ch ✨', 'Thank you! 😍 More at luxestyle.ch 🛍️', 'Appreciate it! 🙌 luxestyle.ch (–10% with WELCOME10)'],
+};
 const cTopic = (t = '') => { for (const [n, re] of C_TOPIC) if (re.test(t)) return n; return 'allgemein'; };
-const cReply = (t) => { const a = C_REPLY[cTopic(t)] || C_REPLY.allgemein; return a[Math.floor(Math.random() * a.length)]; };
+// DE/Mundart wenn deutsche Marker da sind, sonst Englisch
+const isDE = (t = '') => /[äöüß]|\b(der|die|das|und|ist|wie|wo|ich|du|mit|für|nicht|sehr|schön|grösse|preis|wieviel|wie ?tüür|hesch|isch|gits|chunt|liefer|merci|hoi|gäll|chauf)\b/i.test(t);
+const cReply = (t = '') => { const tp = cTopic(t); const set = isDE(t) ? C_REPLY : EN_REPLY; const a = set[tp] || set.allgemein; return a[Math.floor(Math.random() * a.length)]; };
 
 async function replyComments(ids, env, max = 12) {
   const out = { ig: 0, fb: 0, skipped: 0 };
