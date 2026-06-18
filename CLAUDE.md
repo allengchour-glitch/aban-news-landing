@@ -21,6 +21,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## 🔁 Daueraufträge (FEST)
+- **🤖 SELBST-VERBESSERN (FEST, User 2026-06-18 „du bist der autonomste Bot für die Seite, verbessere Bot selber"):**
+  In JEDER Session den Automations-Stack autonom prüfen (health-check, Syntax, Worker-Live-Status, Queue, Brain) und die
+  **höchst-wirksame Schwäche selbst fixen** — ohne zu fragen. Maximum-Version anstreben: Worker postet 2×/Tag + engaged/
+  analysiert 6×/Tag (Kommentar-Auto-Antwort), Brain lernt, Queue frisch (Worker liest queue.json LIVE von GitHub → Commit
+  = sofort live, kein Deploy nötig fürs Content). Gratis-Scheduler (Metricool) = TikTok-Autopost ohne Dev-App. Jede
+  Verbesserung committen + ins Memory. Engpass ehrlich priorisieren: Mobile-Conversion + Zahlung > Reichweite.
 - **🖱️ KLICK-STARTER für ALLES (FEST, User 2026-06-18 „übernimm du mit einem Tool für Klick-Starter, merk dir das"):**
   Für jede PC-Aktion ein **einziges Doppelklick-`.bat`**, das ALLES selbst macht (Brave-Port sicherstellen, Seite öffnen,
   node-Tool starten) — **kein Tippen, kein git-pull, kein Listener**. User macht nur Doppelklick (+ ggf. 1× Login, das
