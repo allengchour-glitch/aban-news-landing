@@ -222,17 +222,25 @@ async function postTikTok(item, env) {
 // ===== KOMMENTAR-AUTO-ANTWORT (autonom bei jedem Cron, idempotent über KV) =====
 const SPAM_RE = /https?:\/\/|t\.me\/|wa\.me\/|whatsapp|telegram|seguidores|followers|promo(c|t)|\bdm\b|inbox me|check my|verkaufe|crypto|invest/i;
 const C_TOPIC = [
-  ['versand', /versand|liefer|wann kommt|geliefert|sendung|paket|shipping|delivery/i],
-  ['groesse', /grösse|groesse|size|passt|fällt (gross|klein)|masse|welche grösse/i],
-  ['preis',   /preis|kostet|chf|rabatt|code|gutschein|zahlung|twint|bezahl|price|discount/i],
-  ['verfueg', /verfügbar|lager|available|noch da|ausverkauft|stock/i],
+  ['versand', /versand|liefer|wann kommt|geliefert|sendung|paket|shipping|delivery|wie lang/i],
+  ['groesse', /grösse|groesse|size|passt|fällt (gross|klein)|masse|welche grösse|xl|grössi/i],
+  ['preis',   /preis|kostet|chf|rabatt|code|gutschein|zahlung|twint|rechnung|bezahl|price|discount|wie tüür|wieviel/i],
+  ['verfueg', /verfügbar|lager|available|noch da|ausverkauft|stock|hesch (no|na)|gits/i],
+  ['wo',      /\bwo\b|link|wo chauf|wo gits|woher|where|wie bestell|bestelle/i],
+  ['farbe',   /farb|color|welche farbe|farbig|gäll|schwarz|wiis|rot|blau/i],
+  ['retoure', /retour|rückgab|umtausch|zurück|reklamation|return/i],
+  ['lob',     /schön|geil|nice|wow|traumhaft|liebe|love|wunderschön|hammer|mega|so härzig|😍|❤️|🔥|💕/i],
 ];
 const C_REPLY = {
-  versand: ['Mir liefere schweizwiit – gratis ab CHF 65 🚚🇨🇭 Meh uf luxestyle.ch', 'Hoi! 📦 Schweizwiite Versand, gratis ab CHF 65. Infos uf luxestyle.ch ✨'],
-  groesse: ['D Grössetabälle findsch direkt bim Produkt uf luxestyle.ch 📏 Frag sönsch gern!'],
-  preis:   ['Merci! 🛍️ Dr Pris staht im Shop 👉 luxestyle.ch – mit Code WELCOME10 gits –10% 🤍'],
-  verfueg: ['Jaa, a Lager & sofort bestellbar ✅ luxestyle.ch 🇨🇭'],
-  allgemein: ['Merci vilmal! 🙏🇨🇭 Schau gern verbii uf luxestyle.ch ✨', 'Danke dir! 😍 Meh devo uf luxestyle.ch 🛍️', 'Freut üs mega! 🙌 luxestyle.ch (–10% mit WELCOME10)'],
+  versand: ['Mir liefere schweizwiit – gratis ab CHF 65 🚚🇨🇭 Meh uf luxestyle.ch', 'Hoi! 📦 Schweizwiite Versand, gratis ab CHF 65. Infos uf luxestyle.ch ✨', 'Versand i d ganz Schwiiz, gratis ab CHF 65 🇨🇭 Bi Frage gern melde!'],
+  groesse: ['D Grössetabälle findsch direkt bim Produkt uf luxestyle.ch 📏', 'Hoi! Alli Grösse S–XL stahn bim Artikel – luxestyle.ch 📏 Frag sönsch gern!', 'D Mass sind uf dr Produktsyte ufglistet 📏 luxestyle.ch'],
+  preis:   ['Merci! 🛍️ Dr Pris staht im Shop 👉 luxestyle.ch – mit Code WELCOME10 gits –10% 🤍', 'Hoi! Pris findsch uf luxestyle.ch · mit WELCOME10 –10% 🤍', 'Zahle chasch mit TWINT, Charte & Co 💳 Pris im Shop, WELCOME10 = –10% ✨'],
+  verfueg: ['Jaa, a Lager & sofort bestellbar ✅ luxestyle.ch 🇨🇭', 'Isch verfügbar! 🛍️ Grad uf luxestyle.ch bestellbar ✅', 'Klar, no da ✅ Schnäll si – luxestyle.ch 🇨🇭'],
+  wo:      ['Alles uf 👉 luxestyle.ch 🛍️🇨🇭', 'Direkt im Shop: luxestyle.ch ✨ (–10% mit WELCOME10)', 'Findsch uf luxestyle.ch – eifach im Suechfäld iigä 🔎'],
+  farbe:   ['D verfügbare Farbe gsehsch bim Produkt uf luxestyle.ch 🎨', 'Mehreri Farbe verfügbar – lusch mau uf luxestyle.ch 🎨✨'],
+  retoure: ['Kei Sorg – 30 Täg Rückgab 🤍 Eifach bi üs melde, mir helfe gern!', '30 Tage Rückgaberächt 📦 Schrib üs eifach, mir regle das unkompliziert 🇨🇭'],
+  lob:     ['Merci vilmal! 🤍 Das freut üs mega 🥹', 'Danke dir!! 😍 Schau gern verbii uf luxestyle.ch ✨', 'Aaaw merci! 🙏 Mit WELCOME10 gits –10% 🛍️', 'Mega lieb, danke! 💕 luxestyle.ch'],
+  allgemein: ['Merci vilmal! 🙏🇨🇭 Schau gern verbii uf luxestyle.ch ✨', 'Danke dir! 😍 Meh devo uf luxestyle.ch 🛍️', 'Freut üs mega! 🙌 luxestyle.ch (–10% mit WELCOME10)', 'Hoi & merci! 🤍 Bi Frage eifach melde – luxestyle.ch'],
 };
 const cTopic = (t = '') => { for (const [n, re] of C_TOPIC) if (re.test(t)) return n; return 'allgemein'; };
 const cReply = (t) => { const a = C_REPLY[cTopic(t)] || C_REPLY.allgemein; return a[Math.floor(Math.random() * a.length)]; };
