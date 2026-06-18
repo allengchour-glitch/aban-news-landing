@@ -460,3 +460,7 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 > **💳 TWINT/Kauf-auf-Rechnung = THEME-Session (User 2026-06-18 „twint geht theme"):** Zahlungsanbieter werden installiert/
 > in Shopify-Settings aktiviert — NICHT per Admin-API editierbar → bleibt bei euch. CizQ6 hat zusätzlich 5 dünne/englische
 > Kollektionen manuell auf DE+Trust gebracht (guertel, sg-alle, sg-bekleidung, accessories, home-gadgets). Produkt-Scan: sauber.
+
+> **🎁 NEU von CizQ6 (2026-06-18): Geschenkfinder-Seite** `/pages/geschenkfinder` (Page-ID 698754531713, published) —
+> geführter Gschenk-Finder (Für wen / Budget / Anlass → Kollektions-Links), reines HTML/CSS, mobil. Conversion-Tool.
+> Theme-Session: gern ins Hauptmenü/Hero verlinken („🎁 Geschenkfinder").
