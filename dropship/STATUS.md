@@ -3,6 +3,11 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🐛 2026-06-18 (WICHTIGER FIX — Worker postete nie via Cron)
+- **Bug:** `POST_HOURS=[10,15,19]` UTC, aber Cron feuert `0 9,17` UTC → **keine Überschneidung** → Worker hat bei jedem Cron-Lauf nur ANALYSIERT, **nie gepostet**. Die letzten echten Posts kamen alle vom PC-Listener.
+- **Fix:** `POST_HOURS=[9,17]` (= 11:00 + 19:00 CH, 2×/Tag). Committet+gepusht. **⚠️ Wirkt erst nach `wrangler deploy` am PC.**
+- **Verifiziert read-only (Graph API):** letzter FB-Post 2026-06-17 23:23 UTC (= 18.06. 01:23 CH, vom PC) — heute 11:00-CH-Slot kam nichts (wegen Bug). Page „LuxeStyle CH" 1049840534888592.
+
 ## 🔄 2026-06-18 (AUTO-LAUF — Charge)
 - **Gehirn-Lauf:** Health/TikTok-Analyse/Trends/Lernen/Autopost durch. **Queue neu gebaut: 34 Posts** (21 Bild · 10 Reel · 3 Story), 0 Dubletten, **0 verbotene** (Botox/Öl-Filter greift). Reports 2026-06-18 (health/tiktok/trends) abgelegt. Ratsche aktualisiert (Hook-Rang: mundart 796 ▸ preis_vergleich 381 ▸ generisch 310).
 - **KI-Provider in Cloud:** alle „kein Key" (Keys nur am PC/ENV) → Template-Fallback hielt — Betrieb brach nicht. Am PC laufen Groq+Gemini live.
