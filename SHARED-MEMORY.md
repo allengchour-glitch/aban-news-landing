@@ -59,6 +59,8 @@
 > **(2b) 🤝 AUTOMATION FÜR AUTOPILOT:** CizQ6 hat wiederverwendbare Bausteine dokumentiert in **`automation/AUTOMATION-GUIDE.md`** — KI-Router (ai_generate, bricht nie), Bild-QA (image-audit/Gemini = JEDEN Import prüfen!), Bild-KI (image_gen), Feed (feed_polish), Trends, BigBuy-Import. Autopilot/Katalog-Session kann sie direkt nutzen (no-op-safe, ENV-Keys). Social-Posten bleibt CizQ6.
 > **(3) Social-Stack (CizQ6) komplett:** Worker IG+FB 3×/Tag · tiktok-cycle 2× · engagement-cycle 4× · tutti/anibis/Pinterest/FB-Gruppen · Pixel-Kampagne-Bot · Clarity aktiv. Voll-Doku: `dropship/MASTER-A-Z.md`.
 
+> **🛒 CONVERSION-HEBEL (Recherche 2026-06-17, für Theme/Katalog-Session):** Gegen 0 Kaeufe: (1) REVIEWS = +270% (5+ Bewertungen, Judge.me auf Top-Produkte) = groesster Hebel! (2) Social-Proof/Urgency-Badges. (3) Mobile-first (<3s, sticky Add-to-Cart, keine Popups). (4) Checkout: Shop Pay + keine versteckten Kosten + kein Pflicht-Konto. Clarity (aktiv) zeigt die Reibung. Details: dropship/VERBESSERUNGEN.md.
+
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
 **🟢 2026-06-16 (~23:45) — CizQ6: +12 OUTDOOR-Produkte (BigBuy EU) + Mapping 5747 kategorisiert:**

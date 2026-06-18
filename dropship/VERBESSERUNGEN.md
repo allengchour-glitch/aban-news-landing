@@ -192,3 +192,21 @@ in Sekunden → Bytes parallel hochladen. `luma-api-…`-Keys = Agents-API, `lum
 - **Gemini Vision auf Hero-Video-Frames:** Marken-Text-Kontrast zu schwach auf hellem BG → Box black@0.25→0.5 in ALLEN `automation/video/*.py` gefixt (künftige Renders besser lesbar).
 - Lehre: Titel kurz halten, Produkt zentrierter framen. Bild-Audit (Gemini) deckt Produktbilder katalogweit ab.
 - **Multi-Produkt-Filme bestätigt möglich:** ultimate-ad (4 Luma-Produkte), Montagen (12/24 Bilder), jewelry (6) — beliebig erweiterbar zu längerem „Film".
+
+## 2026-06-17 — WEB-RECHERCHE: Verbesserige (Social + Conversion)
+### 📱 Social/Content (mini Lane) — gegen 0-Engagement
+1. **ROH > POLIERT:** Marken-schweri/polierti Inhalt (Text-Karte mit Logo/Pill) UNDERPERFORMT vs. rohe, authentischi Creator-Style-Videos. → meh ungeschliffeni, echti Clips (Hand-Held-Vibe), weniger Editorial-Karte.
+2. **Erschti 3 Sek = alles** (Watch-Time/Completion = #1 TikTok-Faktor). Hook sofort.
+3. **3–4 Content-Säule** (wiederkehrendi Theme): z.B. Outfit-Inspo · How-To/Styling · Behind-the-Scenes · Produkt+Preis. Konsistänz 4–6×/Woche, 8+ Wuche.
+4. **Schnäll antworte** (10–15 Min nach Post Kommentär beantworte → Algo pusht meh).
+5. **IG: Saves/Shares/DMs > Likes** → Carousels + Reels + CTA «spicher/teil das».
+6. **Community statt Broadcasting** (Nische anspreche, nid nur Produkt pushe). Timeline 60–90 Täg.
+
+### 🛒 Conversion (mit Theme-Session koordiniere) — gegen 0 Käuf
+1. **🔥 REVIEWS = +270% Conversion** (5+ Bewertige). Üsi Produkt hei meist 0 → GRÖSSTE Hebel. Judge.me-Reviews uf Top-Produkt.
+2. **Social Proof / Urgency:** «X Lüt luege grad» / «47× kauft i 24h» → Vertraue + Dringlichkeit.
+3. **Mobile-first** (75% mobil): schnäll (<3s), sticky «In Warenkorb», kei intrusivi Popups.
+4. **Checkout-Friction wäg:** Shop Pay/Express, kei versteckti Versandkoschte, kei Pflicht-Konto (70% Abbruch-Grund).
+5. **Selber am Handy teste** wie en Erstbesuecher → Reibig finde (Clarity zeigt's jetz).
+
+Quelle: stackmatix/improvado (Social 2026), shopify/growthsuite/provesrc (CRO 2026).
