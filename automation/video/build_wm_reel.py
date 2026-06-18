@@ -1,114 +1,88 @@
 #!/usr/bin/env python3
-# LuxeStyle — build_wm_reel.py  (WM/Public-Viewing-Reel, CH-Theme rot-weiss, Mundart)
-# Reicht den WM-Reichweiten-Trend mit: Top-Produkte als "Match-Day / Public-Viewing-Outfit".
-# KEIN FIFA/Team-Logo/Spielername (rechtlich sauber) — nur generische WM-Stimmung + CH rot-weiss.
-# 9:16, Safe-Zone-Text (y<=1500), kein Emoji/Apostroph/% im Brenn-Text, Hype-Musik, xfade.
-# Lauf:  python3 automation/video/build_wm_reel.py [ANZAHL]
-import os, sys, csv, time, subprocess, urllib.request
+# LuxeStyle — build_wm_reel.py  (WM/Public-Viewing-Reel v3, CH, ECHTER Fussball-Bezug)
+# - Match-Day-passende Produkte (Caps, Sport-/Aviator-Brillen, Herren-Shorts/Sneaker/Set) statt Frauen-Blazer.
+# - Fussball-Bild (Pollinations, gratis) als Intro/Halbzeit/Outro + gezeichnete Schweizer-Flagge (Dauer-Badge + Intro gross).
+# - Mundart-Fussball-Hooks, Hype-Musik, KEINE Stimme, kein FIFA-Logo (rechtlich sauber), Safe-Zone-Text.
+# Lauf:  python3 automation/video/build_wm_reel.py
+import os, subprocess, time, urllib.request, json
 
-HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(os.path.dirname(HERE))
-N = int(sys.argv[1]) if len(sys.argv) > 1 else 8
-FR = 30; DUR = 1.7; XF = 0.35
-RED = "0xD52B1E"  # Schweizer Rot
-F = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-FS = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+FR = 30; DUR = 1.8
+F = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"; FS = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+RED = "0xD52B1E"; CDN = "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/"
 MUSIC = os.path.join(ROOT, "automation/music/luxe-hype-pro.mp3")
-SEG = "/tmp/wmreel"; os.makedirs(SEG, exist_ok=True)
-GRADE = "eq=contrast=1.06:saturation=1.14:brightness=0.01,vignette=angle=PI/5"
+S = "/tmp/wmreel"; os.makedirs(S, exist_ok=True); BALL = f"{S}/ball.jpg"
+
+# Match-Day / Public-Viewing-passende Produkte (handle, bild, label)
+WM = [
+    ("baseball-cap-navy-washed-cotton", CDN+"f3a43509-1c4d-4cf7-ad0d-438b6047f99d.png", "Baseball-Cap «Navy»"),
+    ("sport-sonnenbrille-wraparound-polarisiert", CDN+"S6a68cdd64d554b31a3568be18d8ea363w.webp", "Sport-Sonnenbrille"),
+    ("herren-sneaker-marco-leder-optik-retro-trainer", CDN+"8769b498-4e79-4900-bde6-9d7316ed91a3.jpg", "Herren-Sneaker «Marco»"),
+    ("herren-beach-shorts-coral-reissverschluss-tasche", CDN+"dd82ba1d-222f-40c8-bcb5-78942c0b5938.jpg", "Herren-Shorts «Coral»"),
+    ("aviator-sonnenbrille-pilot-polarisiert-uv400", CDN+"H071fc6eb77d94c0c931c316f405bf9d5H.webp", "Aviator-Brille"),
+    ("herren-set-costa-kapuzen-shirt-jogger", CDN+"6d3dddef-f807-44ac-9758-37c07591fe4c.jpg", "Herren-Set «Costa»"),
+]
 
 def run(a):
     r = subprocess.run(a, capture_output=True, text=True)
-    if r.returncode != 0:
-        print("FFMPEG ERR:\n", r.stderr[-600:]); raise SystemExit(1)
+    if r.returncode: print("ERR", r.stderr[-500:]); raise SystemExit(1)
+def price(h):
+    try: return json.load(urllib.request.urlopen(f"https://luxestyle.ch/products/{h}.json", timeout=15))["product"]["variants"][0]["price"]
+    except Exception: return ""
+def esc(t): return t.replace("'", "").replace(":", " ").replace("%", " Prozent").replace(",", "")
+def flag(x, y, s):  # Schweizer Flagge
+    cx, cy = x+s//2, y+s//2; t = int(s*0.2); l = int(s*0.62)
+    return (f"drawbox=x={x}:y={y}:w={s}:h={s}:color={RED}:t=fill,"
+            f"drawbox=x={cx-t//2}:y={cy-l//2}:w={t}:h={l}:color=white:t=fill,"
+            f"drawbox=x={cx-l//2}:y={cy-t//2}:w={l}:h={t}:color=white:t=fill")
 
-def price(handle):
-    try:
-        d = __import__("json").load(urllib.request.urlopen(f"https://luxestyle.ch/products/{handle}.json", timeout=15))
-        return d["product"]["variants"][0]["price"]
-    except Exception:
-        return ""
+# Fussball holen (Pollinations gratis)
+if not os.path.exists(BALL):
+    try: urllib.request.urlretrieve("https://image.pollinations.ai/prompt/classic%20soccer%20ball%20black%20white%20on%20green%20grass%20stadium?width=600&height=600&nologo=true", BALL)
+    except Exception as e: print("Ball-Download fail", e)
 
-def esc(t):  # drawtext-sicher: kein Apostroph/Doppelpunkt/%; Umlaute ok (DejaVu)
-    return t.replace("'", "").replace(":", " ").replace("%", " Prozent").replace(",", "")
+def card(lines, out, dur):
+    draws = [f"drawbox=x=0:y=0:w=1080:h=14:color={RED}:t=fill", flag(440, 300, 200)]
+    y = 820
+    for txt, size, col, fnt in lines:
+        draws.append(f"drawtext=fontfile={fnt}:text='{esc(txt)}':fontcolor={col}:fontsize={size}:x=(w-tw)/2:y={y}:box=1:boxcolor=black@0.5:boxborderw=16"); y += size+34
+    vf = (f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,eq=brightness=-0.30:saturation=1.05,boxblur=3[bg];[bg]"+",".join(draws)+"[v]")
+    run(["ffmpeg","-y","-loop","1","-t",str(dur),"-i",BALL,"-filter_complex",vf,"-map","[v]","-an","-r",str(FR),"-preset","veryfast","-crf","23","-pix_fmt","yuv420p",out])
 
-# 1) Produkte laden
-rows = list(csv.reader(open(os.path.join(ROOT, "automation/top_products.csv"))))[1:]
-pick = [r for r in rows if len(r) >= 3][:N]
-print(f"{len(pick)} Produkte:", ", ".join(p[2] for p in pick))
+# Karten
+card([("WM-FIEBER",104,"white",F),("Public Viewing im Style",54,"0xFF5A4D",FS),("HOPP SCHWIIZ!",60,"white",F)], f"{S}/c_intro.mp4", 3.0)
+card([("MATCH-DAY-LOOKS",80,"white",F),("Dys Outfit fürs Spiel",50,"0xFF5A4D",FS)], f"{S}/c_mid.mp4", 2.0)
+card([("Anpfiff fürs Shoppe",58,"white",FS),("luxestyle.ch",90,"0xFF5A4D",F),("WELCOME10 = 10 Prozent",44,"white",FS)], f"{S}/c_outro.mp4", 2.8)
 
-def stripe(extra=""):  # rot-weiss CH-Akzent: roter Balken oben + weisse Linie
-    return (f"drawbox=x=0:y=0:w=1080:h=14:color={RED}:t=fill,"
-            f"drawbox=x=0:y=14:w=1080:h=4:color=white:t=fill" + (("," + extra) if extra else ""))
-
-def card(text_lines, out, dur, sub=""):
-    # Titel-/Outro-Karte: dunkler BG, rot-weiss, grosse Schrift
-    draws = [stripe()]
-    y = 760
-    for i, (txt, size, col, fnt) in enumerate(text_lines):
-        draws.append(f"drawtext=fontfile={fnt}:text='{esc(txt)}':fontcolor={col}:fontsize={size}:x=(w-tw)/2:y={y}:box=1:boxcolor=black@0.45:boxborderw=16")
-        y += size + 40
-    vf = f"color=c=0x101418:s=1080x1920:d={dur}:r={FR},{GRADE}," + ",".join(draws)
-    run(["ffmpeg","-y","-f","lavfi","-i",vf,"-t",str(dur),"-c:v","libx264","-preset","veryfast","-pix_fmt","yuv420p","-r",str(FR),out])
-
-# 2) Intro-Karte
-intro = f"{SEG}/00intro.mp4"
-card([("WM-FIEBER", 110, "white", F), ("Public Viewing im Style", 60, RED, FS),
-      ("SCHWIIZ - bisch bereit?", 54, "white", FS)], intro, 2.2)
-
-# 3) Produkt-Segmente (Ken-Burns + rot-weiss-Akzent + Label + Preis)
-segs = [intro]
-for i, r in enumerate(pick):
-    handle, img, label = r[0], r[1], r[2]
-    raw = f"{SEG}/raw{i}.jpg"
-    try:
-        urllib.request.urlretrieve(img, raw)
-    except Exception as e:
-        print("skip", label, e); continue
-    pr = price(handle); prx = f"CHF {pr}" if pr else ""
-    o = f"{SEG}/s{i}.mp4"
-    nframes = int(DUR * FR)
+# Produkt-Segmente (Ken-Burns + Marke + Label + Preis + Eck-Flagge)
+segs = []
+for i, (h, img, lab) in enumerate(WM):
+    raw = f"{S}/p{i}." + img.split(".")[-1].split("?")[0]
+    try: urllib.request.urlretrieve(img, raw)
+    except Exception as e: print("skip", lab, e); continue
+    pr = price(h); prx = f"CHF {pr}" if pr else ""
+    o = f"{S}/p{i}.mp4"; nf = int(DUR*FR)
     vf = (f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=24,eq=brightness=-0.12[bg];"
           f"[0:v]scale=900:-1[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2[base];"
-          f"[base]zoompan=z='min(zoom+0.0012,1.12)':d={nframes}:s=1080x1920:fps={FR},{GRADE},"
-          f"{stripe()},"
+          f"[base]zoompan=z='min(zoom+0.0012,1.12)':d={nf}:s=1080x1920:fps={FR},eq=contrast=1.06:saturation=1.14,"
+          f"drawbox=x=0:y=0:w=1080:h=14:color={RED}:t=fill,{flag(905,40,120)},"
           f"drawtext=fontfile={F}:text='LuxeStyle.ch':fontcolor=white:fontsize=38:x=40:y=44:box=1:boxcolor={RED}@0.85:boxborderw=10,"
-          f"drawtext=fontfile={FS}:text='{esc(label)}':fontcolor=white:fontsize=58:x=(w-tw)/2:y=1330:box=1:boxcolor=black@0.5:boxborderw=18,"
+          f"drawtext=fontfile={FS}:text='{esc(lab)}':fontcolor=white:fontsize=56:x=(w-tw)/2:y=1330:box=1:boxcolor=black@0.5:boxborderw=18,"
           f"drawtext=fontfile={F}:text='{esc(prx)}':fontcolor=0xFFE066:fontsize=52:x=(w-tw)/2:y=1410:box=1:boxcolor={RED}@0.85:boxborderw=14[v]")
-    run(["ffmpeg","-y","-loop","1","-t",str(DUR),"-i",raw,"-filter_complex",vf,"-map","[v]","-an","-r",str(FR),"-c:v","libx264","-preset","ultrafast","-crf","24","-pix_fmt","yuv420p",o])
-    segs.append(o)
+    run(["ffmpeg","-y","-loop","1","-t",str(DUR),"-i",raw,"-filter_complex",vf,"-map","[v]","-an","-r",str(FR),"-preset","ultrafast","-crf","24","-pix_fmt","yuv420p",o])
+    segs.append((o, lab))
 
-# 4) Outro-CTA
-outro = f"{SEG}/zz_outro.mp4"
-card([("Dys Match-Day-Outfit", 64, "white", FS), ("luxestyle.ch", 92, RED, F),
-      ("WELCOME10 = 10 Prozent gschpart", 46, "white", FS)], outro, 2.6)
-segs.append(outro)
-
-# 5) Montage per concat-FILTER (harte Schnitte = schnell + passt zum Hype-Reel; xfade war zu langsam/Timeout)
-inp = []; [inp.extend(["-i", s]) for s in segs]
+# Reihenfolge: intro, 3 Produkte, Halbzeit, Rest, outro
+half = len(segs)//2
+order = [f"{S}/c_intro.mp4"] + [s[0] for s in segs[:half]] + [f"{S}/c_mid.mp4"] + [s[0] for s in segs[half:]] + [f"{S}/c_outro.mp4"]
+order = [o for o in order if os.path.exists(o)]
 durs = []
-for s in segs:
-    pr = subprocess.run(["ffprobe","-v","0","-show_entries","format=duration","-of","csv=p=0",s], capture_output=True, text=True)
-    durs.append(float(pr.stdout.strip() or DUR))
-total = sum(durs)
-n = len(segs)
+for o in order:
+    p = subprocess.run(["ffprobe","-v","0","-show_entries","format=duration","-of","csv=p=0",o], capture_output=True, text=True); durs.append(float(p.stdout.strip() or DUR))
+total = sum(durs); n = len(order)
+inp = []; [inp.extend(["-i", o]) for o in order]
 fc = "".join(f"[{k}:v]" for k in range(n)) + f"concat=n={n}:v=1:a=0[v]"
-stamp = time.strftime("%Y%m%d-%H%M")
-out = os.path.join(ROOT, f"reels/luxe-wm-publicviewing-{stamp}.mp4")
+out = os.path.join(ROOT, "reels/luxe-wm-fussball.mp4")
 af = f"afade=t=in:d=0.5,afade=t=out:st={total-1.3:.2f}:d=1.3,loudnorm=I=-14:TP=-1.5"
-if os.path.exists(MUSIC):
-    run(["ffmpeg","-y",*inp,"-i",MUSIC,"-filter_complex",fc,"-map","[v]","-map",f"{n}:a",
-         "-t",f"{total:.2f}","-af",af,"-c:v","libx264","-preset","veryfast","-crf","23","-pix_fmt","yuv420p","-r",str(FR),"-shortest","-movflags","+faststart",out])
-else:
-    run(["ffmpeg","-y",*inp,"-filter_complex",fc,"-map","[v]","-t",f"{total:.2f}","-c:v","libx264","-preset","veryfast","-crf","23","-pix_fmt","yuv420p","-r",str(FR),"-movflags","+faststart",out])
-print(f"FERTIG: {out}  ({total:.0f}s, {n} Segmente)")
-# Optional Stimm-Version: VOICE_TEXT setzen -> piper (/tmp/brand/kerstin.onnx) + Musik leise drunter
-vt = os.environ.get("VOICE_TEXT", "")
-if vt and os.path.exists("/tmp/brand/kerstin.onnx"):
-    vo = "/tmp/wmreel_vo.wav"
-    subprocess.run(f'echo "{vt}" | piper -m /tmp/brand/kerstin.onnx --output_file {vo}', shell=True, capture_output=True)
-    if os.path.exists(vo):
-        outv = out.replace(".mp4", "-voice.mp4")
-        mix = (f"[1:a]volume=0.14,afade=t=in:d=0.5,afade=t=out:st={total-1.4:.2f}:d=1.3[m];"
-               f"[2:a]volume=1.8[v];[m][v]amix=inputs=2:duration=first:dropout_transition=3,loudnorm=I=-14:TP=-1.5[a]")
-        run(["ffmpeg","-y","-i",out,"-i",MUSIC,"-i",vo,"-filter_complex",mix,"-map","0:v","-map","[a]","-c:v","copy","-t",f"{total:.2f}","-movflags","+faststart",outv])
-        print("FERTIG (Stimme):", outv)
+run(["ffmpeg","-y",*inp,"-i",MUSIC,"-filter_complex",fc,"-map","[v]","-map",f"{n}:a","-t",f"{total:.2f}","-af",af,"-c:v","libx264","-preset","veryfast","-crf","23","-pix_fmt","yuv420p","-r",str(FR),"-shortest","-movflags","+faststart",out])
+print(f"FERTIG {out} {total:.0f}s {n} Segmente · Produkte: " + ", ".join(s[1] for s in segs))
