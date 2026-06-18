@@ -54,7 +54,9 @@ if ((Get-Date).Hour -eq 15) { node "automation/local/fb-group-join.mjs" }
 
 # 5) LERNEN + zurueck ins Repo
 node "automation/brain/brain.mjs" 2>$null
-git add automation/brain/knowledge.json automation/brain/pools.json automation/brain/BRAIN.md reports/ automation/local/ch-growth-ledger.txt 2>$null
+# Selbstlern: IG-Performance messen -> Gewinner verstaerken (top_products neu sortieren)
+if ($env:META_ACCESS_TOKEN) { node "automation/brain/self_learn.mjs" }
+git add automation/brain/knowledge.json automation/brain/pools.json automation/brain/BRAIN.md automation/top_products.csv reports/ automation/local/ch-growth-ledger.txt 2>$null
 git commit -m "auto(Engagement-Cycle): analysiert + gechattet + gefolgt ($(Get-Date -Format 'yyyy-MM-dd HH:mm'))" 2>$null
 git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
 git push origin claude/luxestyle-product-CizQ6 2>$null

@@ -142,6 +142,7 @@ try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecur
 node "automation/health-check.mjs"
 node "automation/trends/trend_scan.mjs"
 node "automation/brain/brain.mjs"
+if ($env:META_ACCESS_TOKEN) { node "automation/brain/self_learn.mjs" }
 node "automation/brain/build_queue.mjs"
 
 # 10) Gelerntes Gehirn + frische Queue zurück ins Repo (sonst geht das Lernen verloren; der Worker
