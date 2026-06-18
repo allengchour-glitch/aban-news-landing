@@ -311,7 +311,7 @@ async function run(env, doPost = true) {
   return out;
 }
 
-const POST_HOURS = [10, 15, 19];  // UTC -> CH 12(Lunch)/17/21(Primetime) = 3 Posts/Tag
+const POST_HOURS = [9, 17];  // UTC -> CH 11(Mittag)/19(Primetime) = 2 Posts/Tag (muss zu cron "0 9,17" passen!)
 
 export default {
   async scheduled(event, env, ctx) {
