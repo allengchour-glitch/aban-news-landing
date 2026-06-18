@@ -339,7 +339,18 @@ const POST_HOURS = [9, 17];  // UTC -> CH 11(Mittag)/19(Primetime) = 2 Posts/Tag
 export default {
   async scheduled(event, env, ctx) {
     const h = new Date().getUTCHours();
-    ctx.waitUntil(run(env, POST_HOURS.includes(h)));   // posten nur in 3 Slots; analysieren immer
+    // SELBER-KLICK (User „alles auto ohne mich"): der Worker stösst die PC-Aufgaben SELBST an.
+    // Morgens (7 UTC = 9 CH) tiktok+follower, abends (17 UTC = 19 CH) tutti+anibis in die PC-Queue legen.
+    // Der PC-Listener (24/7) holt sie -> postet/wächst autonom, ohne dass jemand klickt.
+    const autoCmds = h === 7 ? ["tiktok", "follower"] : h === 17 ? ["tutti", "anibis"] : [];
+    if (autoCmds.length) ctx.waitUntil((async () => {
+      try {
+        const q = JSON.parse((await env.LUXE_KV.get("pc_queue")) || "[]");
+        for (const c of autoCmds) if (!q.find((x) => x.cmd === c)) q.push({ cmd: c, t: Date.now() });
+        await env.LUXE_KV.put("pc_queue", JSON.stringify(q.slice(-20)));
+      } catch (e) { /* best-effort */ }
+    })());
+    ctx.waitUntil(run(env, POST_HOURS.includes(h)));   // posten nur in 2 Slots; analysieren + chatten immer
   },
   async fetch(req, env) {
     const u = new URL(req.url);
