@@ -154,7 +154,7 @@ function loadReels() {
   const out = []; let ri = 0, si = 0;
   images.forEach((img, i) => {
     out.push(img);
-    if (i % 3 === 2 && reels.length) out.push(reels[ri++ % reels.length]);
+    if (i % 2 === 1 && reels.length) out.push(reels[ri++ % reels.length]); // mehr Reels = mehr Vielfalt (User: zu viel gleich)
     if (i % 6 === 5 && stories.length) out.push(stories[si++ % stories.length]);
   });
   const counts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
