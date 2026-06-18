@@ -54,7 +54,7 @@ const CONFIG = {
     extraTags: ['damen', 'accessoire', 'premium'], type: 'Taschen', maxCost: MAX_COST_EUR,
     anchor: ['handtasche', 'tasche', 'umhängetasche', 'schultertasche', 'clutch', 'shopper', 'rucksack',
              'handbag', 'bag', 'tote', 'crossbody', 'bolso'],
-    ban: ['müll', 'staubsauger', 'werkzeug', 'schlafsack', 'trash', 'vacuum', 'tool bag', 'sleeping bag', 'kosmetiktasche klein', 'laptop', 'notebook', 'tablet', 'ngs', 'leinwand', 'beamer', 'stativ', 'projektor', 'computer', 'pc-', 'kamera'],
+    ban: ['müll', 'staubsauger', 'werkzeug', 'schlafsack', 'trash', 'vacuum', 'tool bag', 'sleeping bag', 'kosmetiktasche klein', 'laptop', 'notebook', 'tablet', 'ngs', 'leinwand', 'beamer', 'stativ', 'projektor', 'computer', 'pc-', 'kamera', 'innovagoods', 'ärmeldecke', 'decke', 'matte', 'regal', 'gabel', 'löffel', 'besteck', 'lkw', 'bagger', 'spielzeug', 'amefa', 'organisationsregal', 'gymbag', 'sleekbag'],
     bullets: ['Vielseitig kombinierbar', 'Hochwertiges Material', 'Durchdachte Fächer', 'Eleganter Begleiter für jeden Tag'] },
   uhren: { coll: { handle: 'uhren', title: '⌚ Uhren', tag: 'uhren' },
     extraTags: ['accessoire', 'geschenk', 'premium'], type: 'Uhren', maxCost: MAX_COST_EUR,
