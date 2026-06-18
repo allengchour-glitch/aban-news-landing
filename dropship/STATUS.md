@@ -3,6 +3,12 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## 🔄 2026-06-18 (AUTO-LAUF — Charge)
+- **Gehirn-Lauf:** Health/TikTok-Analyse/Trends/Lernen/Autopost durch. **Queue neu gebaut: 34 Posts** (21 Bild · 10 Reel · 3 Story), 0 Dubletten, **0 verbotene** (Botox/Öl-Filter greift). Reports 2026-06-18 (health/tiktok/trends) abgelegt. Ratsche aktualisiert (Hook-Rang: mundart 796 ▸ preis_vergleich 381 ▸ generisch 310).
+- **KI-Provider in Cloud:** alle „kein Key" (Keys nur am PC/ENV) → Template-Fallback hielt — Betrieb brach nicht. Am PC laufen Groq+Gemini live.
+- **Committet+gepusht** auf CizQ6. Worker braucht `wrangler deploy` (am PC), damit die neue Queue live geht.
+- **⏳ Offen (unverändert, nur User/PC):** (1) TikTok-Kampagne 350 CHF scharf — Brave bei ads.tiktok.com einloggen → campaign-dry → ich prüfe Selektoren → campaign-go. (2) Wallrath-Mail (Gmail-Entwurf) senden = bis $1000 Gratis-Ad-Credit. (3) `wrangler deploy` für frische Queue.
+
 ## ⚙️ 2026-06-17 (A-Z AUTONOM-VERBESSERIG + QA)
 - **QA-Lauf:** ALLE Skripte syntax-geprüft (0 Fehler .mjs/.py), JSON intakt (71 Gehirn-Regeln, queue 31 Posts).
 - **Caption-Engine verbessert:** Gewinner-FRAGE-Hooks zuerst («Weles nimmsch – 1,2,3?», «Für di oder zum Verschänke?») = treiben Kommentare (aus IG-Analyse + Top-Shop-Formaten).
