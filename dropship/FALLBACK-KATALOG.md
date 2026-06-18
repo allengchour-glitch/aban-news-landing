@@ -62,3 +62,22 @@ Lösung für autonomes TikTok-Posten ohne Entwickler-App + ohne Brave-Port:
 - **Buffer** (gratis 30/Kanal/Mt), **Publer** (gratis 3 Profile/10 pro Tag), **Adobe Express** (gratis Scheduler, bis 1000/Mt).
 - Ablauf: User verbindet TikTok 1× in der Web-UI (einfacher Login, kein Code) -> Reels+Captions liefern -> Tool postet.
 - Weitere Gratis-Helfer: Google Merchant Free Listings (SEO/Shopping), Pinterest, tutti/anibis, Microsoft Clarity (Heatmaps), Canva.
+
+## 12) 🔗 ALLE-WEGE / FALLBACK-KETTEN pro Funktion (User „suche alle Wege falls es nicht geht", 2026-06-18)
+> Reihenfolge = von „am besten/autonom" zu „Notnagel". Klappt einer nicht → nächster.
+
+- **TikTok posten:** Metricool (verbunden ✅) → Buffer → Publer → Adobe Express → PC-Browser-Uploader (`TIKTOK-KLICK.bat`) → manuell in App. (+ Trend-Sound in-App)
+- **IG/FB posten:** Cloudflare-Worker (live, 2×/Tag) → Metricool/Buffer → Meta Graph-API direkt → manuell.
+- **Pinterest:** bestehendes `pinterest_publish.mjs` → Metricool → manuell.
+- **Gratis-Produkt-Listings / Such-Traffic:** Google Merchant Free Listings → **Microsoft/Bing Shopping** (Microsoft Merchant Center, gratis) → **Pinterest-Katalog** → **Meta/Instagram-Shopping** (FB-Katalog) → Shopify „Shop Campaigns" (Bing/Pinterest/ChatGPT) → tutti/anibis.
+- **Bezahlte Ads:** TikTok (Ads-Manager manuell / Promote) → Meta Ads → Pinterest Ads → Microsoft/Bing Ads → Google (mit Neukunden-Credits).
+- **KI-Text:** `ai_generate.mjs` Router: groq→gemini→together→deepseek→openrouter→cloudflare→mistral→openai→**Template** (bricht nie).
+- **Bilder:** `image_gen.mjs`: Pollinations (kein Key) → Cloudflare FLUX → HuggingFace → Produkt-CDN-Bild.
+- **Musik:** **ElevenLabs Eleven Music** (kommerziell, `eleven-music.mjs`) → `music_library` (Kevin MacLeod CC-BY) → fertige `luxe-*`-Tracks → TikTok In-App-Sound. (Gesang: Suno PC.)
+- **Video:** `build_*`-Builder + `finish_reel.py` → Luma (`luma_autopilot.py`) → vorhandene Reels recyceln → CapCut manuell.
+- **Stimme/VO:** piper (`/tmp/brand/kerstin.onnx`, gratis) → ElevenLabs TTS.
+- **Follower/Reichweite:** `ch-follower-growth.mjs` (PC) → Influencer-Seeding → Pinterest → FB-Gruppen → Metricool-SmartLink.
+- **Analyse:** `brain/auto.sh` (TikTok) → Shopify-Analytics → Microsoft Clarity → Metricool-Analytics.
+- **Conversion (Verkauf):** Reviews → TWINT + Kauf-auf-Rechnung → Mobile-UX/Sticky-ATC → Klaviyo Abandoned-Cart → Trust-Badges.
+- **PC-Automation:** Direkt-`node …mjs` → Klick-Starter-.bat → VOLLAUTOMAT-Task → Worker-Queue (`&cmd`) → manuell. Git-Lock: `taskkill`/`reset --hard`/git umgehen.
+- **Infra-Limits:** Worker-KV (drain-Fix) → $5 Paid; GitHub-Actions gesperrt → Cloudflare-Cron + Windows-Task; CJ/BigBuy-429 → vom PC.
