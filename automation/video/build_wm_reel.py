@@ -83,24 +83,32 @@ card([("Dys Match-Day-Outfit", 64, "white", FS), ("luxestyle.ch", 92, RED, F),
       ("WELCOME10 = 10 Prozent gschpart", 46, "white", FS)], outro, 2.6)
 segs.append(outro)
 
-# 5) xfade-Kette
+# 5) Montage per concat-FILTER (harte Schnitte = schnell + passt zum Hype-Reel; xfade war zu langsam/Timeout)
 inp = []; [inp.extend(["-i", s]) for s in segs]
 durs = []
 for s in segs:
     pr = subprocess.run(["ffprobe","-v","0","-show_entries","format=duration","-of","csv=p=0",s], capture_output=True, text=True)
     durs.append(float(pr.stdout.strip() or DUR))
-fc = ""; last = "[0:v]"; off = 0.0
-for k in range(1, len(segs)):
-    off += durs[k-1] - XF
-    fc += f"{last}[{k}:v]xfade=transition=fade:duration={XF}:offset={off:.2f}[x{k}];"; last = f"[x{k}]"
-total = sum(durs) - XF*(len(segs)-1)
-fc = fc.rstrip(";")
+total = sum(durs)
+n = len(segs)
+fc = "".join(f"[{k}:v]" for k in range(n)) + f"concat=n={n}:v=1:a=0[v]"
 stamp = time.strftime("%Y%m%d-%H%M")
 out = os.path.join(ROOT, f"reels/luxe-wm-publicviewing-{stamp}.mp4")
-af = f"afade=t=in:d=0.5,afade=t=out:st={total-1.0:.2f}:d=1.0,loudnorm=I=-14:TP=-1.5"
+af = f"afade=t=in:d=0.5,afade=t=out:st={total-1.3:.2f}:d=1.3,loudnorm=I=-14:TP=-1.5"
 if os.path.exists(MUSIC):
-    run(["ffmpeg","-y",*inp,"-i",MUSIC,"-filter_complex",fc,"-map",last,"-map",f"{len(segs)}:a",
-         "-t",f"{total:.2f}","-af",af,"-c:v","libx264","-preset","veryfast","-pix_fmt","yuv420p","-r",str(FR),"-crf","20","-movflags","+faststart",out])
+    run(["ffmpeg","-y",*inp,"-i",MUSIC,"-filter_complex",fc,"-map","[v]","-map",f"{n}:a",
+         "-t",f"{total:.2f}","-af",af,"-c:v","libx264","-preset","veryfast","-crf","23","-pix_fmt","yuv420p","-r",str(FR),"-shortest","-movflags","+faststart",out])
 else:
-    run(["ffmpeg","-y",*inp,"-filter_complex",fc,"-map",last,"-t",f"{total:.2f}","-c:v","libx264","-pix_fmt","yuv420p","-r",str(FR),"-movflags","+faststart",out])
-print(f"FERTIG: {out}  ({total:.0f}s, {len(segs)} Segmente)")
+    run(["ffmpeg","-y",*inp,"-filter_complex",fc,"-map","[v]","-t",f"{total:.2f}","-c:v","libx264","-preset","veryfast","-crf","23","-pix_fmt","yuv420p","-r",str(FR),"-movflags","+faststart",out])
+print(f"FERTIG: {out}  ({total:.0f}s, {n} Segmente)")
+# Optional Stimm-Version: VOICE_TEXT setzen -> piper (/tmp/brand/kerstin.onnx) + Musik leise drunter
+vt = os.environ.get("VOICE_TEXT", "")
+if vt and os.path.exists("/tmp/brand/kerstin.onnx"):
+    vo = "/tmp/wmreel_vo.wav"
+    subprocess.run(f'echo "{vt}" | piper -m /tmp/brand/kerstin.onnx --output_file {vo}', shell=True, capture_output=True)
+    if os.path.exists(vo):
+        outv = out.replace(".mp4", "-voice.mp4")
+        mix = (f"[1:a]volume=0.14,afade=t=in:d=0.5,afade=t=out:st={total-1.4:.2f}:d=1.3[m];"
+               f"[2:a]volume=1.8[v];[m][v]amix=inputs=2:duration=first:dropout_transition=3,loudnorm=I=-14:TP=-1.5[a]")
+        run(["ffmpeg","-y","-i",out,"-i",MUSIC,"-i",vo,"-filter_complex",mix,"-map","0:v","-map","[a]","-c:v","copy","-t",f"{total:.2f}","-movflags","+faststart",outv])
+        print("FERTIG (Stimme):", outv)
