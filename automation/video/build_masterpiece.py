@@ -37,6 +37,6 @@ vf = (f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920
       f"drawtext=fontfile={F}:text='luxestyle.ch  WELCOME10 = 10 Prozent':fontcolor=white:fontsize=40:x=(w-tw)/2:y=1480:box=1:boxcolor=black@0.55:boxborderw=12:enable='gt(t,{DUR-4:.0f})'[v]")
 af = f"afade=t=in:d=0.8,afade=t=out:st={DUR-1.5:.1f}:d=1.5,loudnorm=I=-14:TP=-1.5"
 run(["ffmpeg", "-y", "-loop", "1", "-t", str(DUR), "-i", raw, "-i", mp, "-filter_complex", vf,
-     "-map", "[v]", "-map", "1:a", "-t", str(DUR), "-af", af, "-c:v", "libx264", "-preset", "medium",
-     "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FR), "-movflags", "+faststart", out])
+     "-map", "[v]", "-map", "1:a", "-t", str(DUR), "-af", af, "-c:v", "libx264", "-preset", os.environ.get("PRESET", "veryfast"),
+     "-crf", "19", "-pix_fmt", "yuv420p", "-r", str(FR), "-movflags", "+faststart", out])
 print("FERTIG:", out)
