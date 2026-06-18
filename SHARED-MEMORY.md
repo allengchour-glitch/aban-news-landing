@@ -63,6 +63,12 @@
 
 > **🇨🇭 KAUF AUF RECHNUNG (Recherche 2026-06-17, für Theme/Checkout-Session):** Schweizer lieben «zahle nach Erhalt» — 70% der CH-Shops bieten Invoice/BNPL. GROSSER Conversion-Hebel! Shopify-Zahlungsart Invoice/Klarna/Swissbilling/Byjuno prüfen + aktivieren. Plus: keine versteckten Kosten, klare Lieferinfo (CH-Abbruch-Grund #1). TWINT haben wir.
 
+> **🔬 TIEFEN-RECHERCHE 2026-06-18 (für Theme/Checkout-Session — quellengeprüft, Details `dropship/TIEFEN-RECHERCHE-2026-06-18.md`):**
+> Engpass bestätigt = **Session→Warenkorb** (Vertrauen/PDP/Zahlung), NICHT Checkout. Priorisiert:
+> (1) **TWINT** (66,7 % CH-Mobile!) **+ Kauf-auf-Rechnung** (62–72 % wollen es) via **Swissbilling/Klarna/Payrexx** = vermutlich grösster Conversion-Sprung.
+> (2) **Reviews über der Falz** (+15–25 %), ≥5–10 pro Top-Produkt, Sterne auf Kacheln (+12–18 % CTR); visuelle/Foto-Reviews schlagen Text (bes. Schmuck).
+> (3) **Landed-Cost/Versand auf der PDP** vor dem ATC-Button (47 % Abbruch wegen unerwarteter Kosten) · **Gastbestellung** (Pflichtkonto −25 %) · **Sticky-ATC mobil** (+10–15 %) · **CHF-only**.
+
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
 **🟢 2026-06-16 (~23:45) — CizQ6: +12 OUTDOOR-Produkte (BigBuy EU) + Mapping 5747 kategorisiert:**

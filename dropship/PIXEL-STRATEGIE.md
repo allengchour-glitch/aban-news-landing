@@ -39,3 +39,9 @@ Hochstufen, sobald genug Events da sind (im Ads Manager sichtbar).
 - **Phase 0 (350 CHF):** Ziel = **Traffic** oder **Video-Views** → günstige Klicks, baut Pixel-Daten + Reichweite.
 - Lean: 1 Kampagne · 1 Ad-Group · 4 Creatives · 20%/Tag skalieren · 2–3 Wochen.
 - **Erst mit mehr Budget / den bis 1000$ Neukunden-Credits** → auf «Website-Conversions» wechseln (dann Event-Leiter View Content→ATC→Kauf).
+
+## 🔬 VERTIEFUNG (Tiefen-Recherche 2026-06-18, quellengeprüft) — Details: `dropship/TIEFEN-RECHERCHE-2026-06-18.md`
+- **🆕 Gratis-Credit verdoppelt das Budget:** Neukunden-Matched-Spend «Spend $200 → get $200» (Tier 1, höher bis $6000) → 350 CHF effektiv ~550. ⚠️ CH **nicht explizit** in offizieller Länderliste (FR/DE/IE schon) → bei Anmeldung (getstarted.tiktok.com) / via Rep (Wallrath-Mail ist raus) verifizieren.
+- **🎬 Spark Ads schlagen Studio-Ads klar:** CTR 2,4 % vs 1,0 %, Conversion 2,6 % vs 1,8 % (TikTok-Shop-Spark 3,84 % vs 1,12 %), CPM 20–30 % tiefer. → **bestes organisches Reel boosten** statt Studio-Creative («roh > poliert»).
+- **Pixel-Leiter konkret:** Phase 1 Traffic/CPC (50–100 Klicks) → Phase 2 **Add-to-Cart** (besseres Lernsignal als View Content bei Mini-Budget) → Phase 3 Kauf. `content_id`=SKU bei allen Events.
+- **Plattform-Minima:** Ad-Group $20/Tag, Kampagne $50; Conversion-Lernphase-Exit real ~$160/Tag → Traffic/ATC zuerst. CH-CPM ~$5–8 (Spark $1–4), CPC $0,30–1,50 (Spark $0,10–0,30).
