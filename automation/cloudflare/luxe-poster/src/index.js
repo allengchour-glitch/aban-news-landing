@@ -237,7 +237,7 @@ const C_REPLY = {
 const cTopic = (t = '') => { for (const [n, re] of C_TOPIC) if (re.test(t)) return n; return 'allgemein'; };
 const cReply = (t) => { const a = C_REPLY[cTopic(t)] || C_REPLY.allgemein; return a[Math.floor(Math.random() * a.length)]; };
 
-async function replyComments(ids, env, max = 6) {
+async function replyComments(ids, env, max = 12) {
   const out = { ig: 0, fb: 0, skipped: 0 };
   let replied = [];
   try { replied = JSON.parse((await env.LUXE_KV.get('replied_comments')) || '[]'); } catch {}

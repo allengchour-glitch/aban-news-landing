@@ -2,11 +2,12 @@ name = "luxe-poster"
 main = "src/index.js"
 compatibility_date = "2024-11-01"
 
-# 6 Cron-Läufe/Tag: ANALYSE bei allen 6, POSTEN nur in 3 Slots (POST_HOURS=[10,15,19] im Code)
-# = 3 Posts/Tag (Meta, weniger Spam) + 6× Meta-Analyse/Tag. UTC->CH(+2): 10=12(Lunch) 15=17 19=21(Primetime).
-# Posten geht an IG + FB + TikTok-Entwurf (falls TT-Secrets gesetzt).
+# HÖCHSTE VERSION (User 2026-06-18 „live bot höchste version"): 6 Cron-Läufe/Tag.
+# Bei ALLEN 6: Analyse + Kommentar-Auto-Antwort (=Engagement/chatten, autonom 24/7).
+# POSTEN nur in 2 Slots (POST_HOURS=[9,17] im Code = 11:00 + 19:00 CH) → wenig Spam, viel Engagement.
+# UTC->CH(+2): 7=9, 9=11(Post), 12=14, 15=17, 17=19(Post), 19=21.
 [triggers]
-crons = ["0 9,17 * * *"]
+crons = ["0 7,9,12,15,17,19 * * *"]
 
 # KV für Cursor + entdeckte IDs (LUXE_KV). ID fest eingetragen → git pull/deploy ohne Handarbeit.
 [[kv_namespaces]]
