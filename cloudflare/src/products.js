@@ -270,5 +270,25 @@ export const PRODUCTS = [
     "name": "rucksack-mit-federtasche-rot-alles-dabei-fur-fans-181197",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8412688387366_R02.jpg",
     "label": "⚽ Fan-Rucksack"
+  },
+  {
+    "name": "fu-balltrikot-zeig-deine-starke-fur-dein-team-1299535",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4067887875240_S64229227_P00.jpg",
+    "label": "⚽ Adidas Deutschland-Trikot"
+  },
+  {
+    "name": "fu-balltrikot-zeig-deine-leidenschaft-als-fan-1270748",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4067982191030_S64218668_P00.jpg",
+    "label": "⚽ Puma Girona Trikot"
+  },
+  {
+    "name": "oranges-fu-balltrikot-auffallig-stark-fur-dein-mat-1137383",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4067894128681_S64176565_P00.jpg",
+    "label": "⚽ Adidas Tiro24 Trikot"
+  },
+  {
+    "name": "schwarzes-fu-balltrikot-eleganz-fur-jeden-einsatz-1137359",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4066745721538_S64174886_P00.jpg",
+    "label": "⚽ Adidas Tiro23 Trikot"
   }
 ];

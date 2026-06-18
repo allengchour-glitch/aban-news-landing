@@ -153,6 +153,11 @@ const CONFIG = {
     anchor: ['fußball', 'fussball', 'football', 'soccer', 'trikot', 'fan-schal', 'fanschal', 'fan schal', 'torwart', 'fußballtor', 'fußballschuh', 'fanartikel', 'nationalmannschaft', 'weltmeister', 'fútbol', 'balón de fútbol', 'camiseta fútbol', 'bufanda fútbol', 'fc barcelona', 'real madrid', 'atlético', 'atletico'],
     ban: ['aufkleber', 'sticker', 'malbuch', 'puzzle', 'tattoo', 'luftballon', 'tischdecke', 'servietten', 'kostüm', 'verkleidung', 'pyjama', 'tischfußball klein', 'kicker tisch', 'window color', 'baby '],
     bullets: ['Zeig deine Fan-Liebe', 'Offizielles Fan-Feeling', 'Top für Stadion, Party & Public Viewing', 'Schnelle EU-Lieferung'] },
+  trikot: { coll: { handle: 'wm-fussball-2026', title: '⚽ WM & Fussball 2026', tag: 'wm-2026' },
+    extraTags: ['fussball', 'fan', 'sport', 'wm', 'trikot'], type: 'Trikot', maxCost: MAX_COST_EUR, sized: true,
+    anchor: ['fußballtrikot', 'fussballtrikot', 'football trikot', 'soccer jersey', 'fußball-trikot', 'camiseta de fútbol', 'camiseta fútbol'],
+    ban: ['radtrikot', 'rad-trikot', 'cycling', 'velo', 'fahrrad', 'maillot ciclismo', 'kinder', 'jr.', 'jr ', 'baby', '11-12 jahre', '7-8 jahre', '9-10 jahre', '3-4 jahre', '5-6 jahre'],
+    bullets: ['Trikot im Team-Look', 'Atmungsaktiv & sportlich', 'Top für Stadion & Public Viewing', '100% Original, schnelle EU-Lieferung'] },
 };
 
 // ── Shopify (1:1 aus cj_gaps_import.mjs, bewährt) ──
