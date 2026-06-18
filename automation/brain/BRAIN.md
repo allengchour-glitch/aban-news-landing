@@ -48,3 +48,4 @@ _Aktualisiert: 2026-06-18 · 7 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis
 - 2026-06-15: Pools v2 aus 4 Reports abgeleitet (Bayes + Hook-Typ-Lernen). _(Top-Tag #aromatherapyathome; bester Hook „mundart" (Ø 794V))_
 - 2026-06-16: Pools v2 aus 5 Reports abgeleitet (Bayes + Hook-Typ-Lernen). _(Top-Tag #aromatherapyathome; bester Hook „mundart" (Ø 795V))_
 - 2026-06-16: Gehirn aus allen ~63 dropship/-Docs angereichert: neue rules-Keys kampagnen_paid, conversion_hebel, gratis_kanaele, api_patterns, aesthetik_optik, supplier_pricing, katalog_audit, pod_printful. _(User-Auftrag 'studiere alle dropshipseiten und verbessere mein gehirn'. 3 Explore-Agenten destillierten neue, nicht-duplizierte Lehren (Paid-Ads-Playbook, Conversion-Hebel, Gratis-Kanäle, API-Fallen, Optik, Supplier/Pricing, Katalog-Audit, POD).)_
+- 2026-06-18: Pools v2 aus 7 Reports abgeleitet (Bayes + Hook-Typ-Lernen). _(Top-Tag #aromatherapyathome; bester Hook „mundart" (Ø 796V))_
