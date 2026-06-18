@@ -55,3 +55,10 @@
 - **CJ/BigBuy 429 (Cloud-IP)**: vom PC laufen / inkrementell (10/Tag).
 
 > Leitsatz: Erst die robusteste gratis Option, bei Blockade sofort die nächste. Lokaler Direkt-Start schlägt meist den Cloud-Umweg.
+
+## 11) 🆓 GRATIS-SCHEDULER = TikTok-Autopost OHNE Dev-App/PC-Browser (Recherche 2026-06-18)
+Lösung für autonomes TikTok-Posten ohne Entwickler-App + ohne Brave-Port:
+- **Metricool** (gratis 50 Posts/Mt, 1 Marke): TikTok+IG+FB+Pinterest + Analytik. EMPFOHLEN. Konto 1× verbinden -> postet autonom.
+- **Buffer** (gratis 30/Kanal/Mt), **Publer** (gratis 3 Profile/10 pro Tag), **Adobe Express** (gratis Scheduler, bis 1000/Mt).
+- Ablauf: User verbindet TikTok 1× in der Web-UI (einfacher Login, kein Code) -> Reels+Captions liefern -> Tool postet.
+- Weitere Gratis-Helfer: Google Merchant Free Listings (SEO/Shopping), Pinterest, tutti/anibis, Microsoft Clarity (Heatmaps), Canva.
