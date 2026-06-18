@@ -26,7 +26,7 @@ def card(lines, out, dur):
         d.append(f"drawtext=fontfile={fn}:text='{esc(txt)}':fontcolor={col}:fontsize={sz}:x=(w-tw)/2:y={y}:box=1:boxcolor=black@0.5:boxborderw=16"); y += sz + 30
     vf = f"color=c=0x0e1116:s=1080x1920:d={dur}:r={FR},{GRADE}," + ",".join(d)
     run(["ffmpeg","-y","-nostdin","-f","lavfi","-i",vf,"-t",str(dur),"-c:v","libx264","-preset","veryfast","-crf","20","-pix_fmt","yuv420p","-r",str(FR),out])
-intro = f"{SEG}/00.mp4"; card([("LUXESTYLE",96,"white",F),("Dini neue Lieblingsstuck",52,GOLD,FS),("Lueg dir das aa",46,"white",FS)], intro, 1.6)
+intro = f"{SEG}/00.mp4"; card([("LUXESTYLE",96,"white",F),("Dini neue Lieblingsstuck",52,GOLD,FS),("Lueg dir das aa",46,"white",FS)], intro, 2.8)
 segs = [intro]
 for i, r in enumerate(pick):
     h, img, lab = r[0], r[1], r[2]
@@ -37,11 +37,11 @@ for i, r in enumerate(pick):
     o = f"{SEG}/s{i}.mp4"
     vf = (f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=24,eq=brightness=-0.12[bg];"
           f"[0:v]scale=940:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2[b];"
-          f"[b]zoompan=z='min(zoom+0.0018,1.14)':d={nf}:s=1080x1920:fps={FR},{GRADE},"
+          f"[b]zoompan=z='min(zoom+0.0005,1.05)':d={nf}:s=1080x1920:fps={FR},{GRADE},"
           f"drawbox=x=0:y=0:w=1080:h=12:color={RED}:t=fill,"
           f"drawtext=fontfile={F}:text='LuxeStyle.ch':fontcolor=white:fontsize=36:x=40:y=44:box=1:boxcolor={RED}@0.85:boxborderw=9,"
-          f"drawtext=fontfile={FS}:text='{esc(lab)}':fontcolor=white:fontsize=56:x=(w-tw)/2:y=1340:box=1:boxcolor=black@0.5:boxborderw=16:alpha='min(1,t*6)',"
-          f"drawtext=fontfile={F}:text='{esc(prx)}':fontcolor={GOLD}:fontsize=52:x=(w-tw)/2:y=1420:box=1:boxcolor={RED}@0.85:boxborderw=13:alpha='min(1,t*6)'[v]")
+          f"drawtext=fontfile={FS}:text='{esc(lab)}':fontcolor=white:fontsize=56:x=(w-tw)/2:y=1340:box=1:boxcolor=black@0.5:boxborderw=16:alpha='min(1,t*2.2)',"
+          f"drawtext=fontfile={F}:text='{esc(prx)}':fontcolor={GOLD}:fontsize=52:x=(w-tw)/2:y=1420:box=1:boxcolor={RED}@0.85:boxborderw=13:alpha='min(1,t*2.2)'[v]")
     run(["ffmpeg","-y","-nostdin","-loop","1","-t",str(DUR),"-i",raw,"-filter_complex",vf,"-map","[v]","-an","-r",str(FR),"-c:v","libx264","-preset","veryfast","-crf","21","-pix_fmt","yuv420p",o])
     segs.append(o)
 outro = f"{SEG}/zz.mp4"; card([("Alles uf",54,"white",FS),("luxestyle.ch",92,GOLD,F),("WELCOME10 = 10 Prozent",44,"white",FS)], outro, 2.2); segs.append(outro)
