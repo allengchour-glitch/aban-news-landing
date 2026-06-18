@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16",
+  "updated": "2026-06-18",
   "tagsets": [
     "#fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie",
     "#foryou #musthave #gefundenauftiktok #aroma #smartdiffuser",
@@ -14,6 +14,10 @@
     "Gliche Person, ganz anders Gfüehl ✨ %s — vorhär/nachhär. ↗️ Teile mit öpperem wo es Upgrade bruucht · −10%% WELCOME10 → luxestyle.ch",
     "Viu Style für wenig Gäud 🤍 %s — schnäu si, isch fasch weg! 📌 Spicher der's · –10%% WELCOME10 → luxestyle.ch",
     "Du gsesch eifach mega us drmit ✨ %s — hol dr's, solang's no git 🛍️ 💾 spicher's · –10%% WELCOME10 → luxestyle.ch",
+    "[VALUE] So bliibt dy %s wie neu — 4 Tipps 💾 (Pflege-Reel = Save-Treiber)",
+    "[VALUE] 3 Wege, %s z'style — speicher der das 💾",
+    "[VALUE] Echt vs. billig: so gsehsch dr Unterschied bi %s 👀",
+    "Ich ha %s 30 Täg täglich treit — das isch passiert 👀",
     "Das git's so chuum i de Schwiz 👀 %s — lueg dir das a! 💾 Speichere · 👇 1, 2 oder 3? −10%% WELCOME10 → luxestyle.ch",
     "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch",
     "Dein nächster Lieblings-Look? %s 🤍 Frage in die Kommentare 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
@@ -25,8 +29,10 @@
     "Lueg mau das aa 😍 %s — äuä ds beschte Teil vom Summer, gäu? 💾 Spicher dr's 👇 –10%% WELCOME10 → luxestyle.ch",
     "Das mues i ha 👀 %s — wele nimmsch? Schrib's i d Kommentär 👇 –10%% WELCOME10 → luxestyle.ch",
     "Es perfekts Gschänk, gäu? 🎁 %s — teil das mit dyre beschte Fründin 💛 –10%% WELCOME10 → luxestyle.ch",
+    "POV: du findsch %s wo niemmer het ✨ (1, 2 oder 3?)",
     "Wusste nicht, dass ich das brauche 👀 %s — und der Preis? Schau selbst 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch",
-    "Stopp — das musst du sehen ✋ %s. Welche Variante nimmst du? 1, 2 oder 3? 👇 📌 Speichern · −10%% WELCOME10 → luxestyle.ch"
+    "Stopp — das musst du sehen ✋ %s. Welche Variante nimmst du? 1, 2 oder 3? 👇 📌 Speichern · −10%% WELCOME10 → luxestyle.ch",
+    "Stopp — bevor du %s chaufsch, lueg das 👇"
   ],
   "top_tags": [
     "#aromatherapyathome",
@@ -41,40 +47,40 @@
   "hook_rank": [
     {
       "ty": "mundart",
-      "avg": 795,
-      "n": 5
+      "avg": 796,
+      "n": 7
     },
     {
       "ty": "preis_vergleich",
-      "avg": 367,
-      "n": 9
+      "avg": 381,
+      "n": 13
     },
     {
       "ty": "generisch",
-      "avg": 305,
-      "n": 132
+      "avg": 310,
+      "n": 184
     },
     {
       "ty": "preis",
-      "avg": 162,
-      "n": 30
+      "avg": 163,
+      "n": 42
     },
     {
       "ty": "frage_cta",
       "avg": 51,
-      "n": 10
+      "n": 14
     }
   ],
   "kpi_last": {
-    "report": "tiktok_luxestyle.ch_2026-06-16.json",
-    "date": "2026-06-16",
+    "report": "tiktok_luxestyle.ch_2026-06-18.json",
+    "date": "2026-06-18",
     "videos": 37,
-    "views": 11013,
-    "likes": 170,
+    "views": 11081,
+    "likes": 183,
     "shares": 0,
     "comments": 5,
-    "avg_views": 297,
-    "eng": 0.0531,
+    "avg_views": 299,
+    "eng": 0.0572,
     "dur": 16.6
   },
   "risers": []

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # AUTO-GENERIERT von automation/brain/brain.mjs v2 — NICHT manuell editieren (Aenderungen in knowledge.json).
-# Gehirn-Stand: 5 Report(s) gelernt · Bayes-Shrinkage · Verlierer geblockt (#luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg).
+# Gehirn-Stand: 7 Report(s) gelernt · Bayes-Shrinkage · Verlierer geblockt (#luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg).
 # CAPS sind nach gelerntem Hook-Typ sortiert (bester Typ zuerst: mundart > preis_vergleich > generisch).
 TAGSETS=(
   "#fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie"
@@ -16,6 +16,10 @@ CAPS=(
   "Gliche Person, ganz anders Gfüehl ✨ %s — vorhär/nachhär. ↗️ Teile mit öpperem wo es Upgrade bruucht · −10%% WELCOME10 → luxestyle.ch"
   "Viu Style für wenig Gäud 🤍 %s — schnäu si, isch fasch weg! 📌 Spicher der's · –10%% WELCOME10 → luxestyle.ch"
   "Du gsesch eifach mega us drmit ✨ %s — hol dr's, solang's no git 🛍️ 💾 spicher's · –10%% WELCOME10 → luxestyle.ch"
+  "[VALUE] So bliibt dy %s wie neu — 4 Tipps 💾 (Pflege-Reel = Save-Treiber)"
+  "[VALUE] 3 Wege, %s z'style — speicher der das 💾"
+  "[VALUE] Echt vs. billig: so gsehsch dr Unterschied bi %s 👀"
+  "Ich ha %s 30 Täg täglich treit — das isch passiert 👀"
   "Das git's so chuum i de Schwiz 👀 %s — lueg dir das a! 💾 Speichere · 👇 1, 2 oder 3? −10%% WELCOME10 → luxestyle.ch"
   "%s unter CHF 40 ☀️ 1, 2 oder 3 — welches nimmst du? 👇 Folge für mehr Looks 🤍 −10%% WELCOME10 → luxestyle.ch"
   "Dein nächster Lieblings-Look? %s 🤍 Frage in die Kommentare 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch"
@@ -27,6 +31,8 @@ CAPS=(
   "Lueg mau das aa 😍 %s — äuä ds beschte Teil vom Summer, gäu? 💾 Spicher dr's 👇 –10%% WELCOME10 → luxestyle.ch"
   "Das mues i ha 👀 %s — wele nimmsch? Schrib's i d Kommentär 👇 –10%% WELCOME10 → luxestyle.ch"
   "Es perfekts Gschänk, gäu? 🎁 %s — teil das mit dyre beschte Fründin 💛 –10%% WELCOME10 → luxestyle.ch"
+  "POV: du findsch %s wo niemmer het ✨ (1, 2 oder 3?)"
   "Wusste nicht, dass ich das brauche 👀 %s — und der Preis? Schau selbst 👇 📌 Speicher's dir · −10%% WELCOME10 → luxestyle.ch"
   "Stopp — das musst du sehen ✋ %s. Welche Variante nimmst du? 1, 2 oder 3? 👇 📌 Speichern · −10%% WELCOME10 → luxestyle.ch"
+  "Stopp — bevor du %s chaufsch, lueg das 👇"
 )
