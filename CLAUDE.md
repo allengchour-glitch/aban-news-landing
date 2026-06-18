@@ -21,6 +21,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## 🔁 Daueraufträge (FEST)
+- **🖱️ KLICK-STARTER für ALLES (FEST, User 2026-06-18 „übernimm du mit einem Tool für Klick-Starter, merk dir das"):**
+  Für jede PC-Aktion ein **einziges Doppelklick-`.bat`**, das ALLES selbst macht (Brave-Port sicherstellen, Seite öffnen,
+  node-Tool starten) — **kein Tippen, kein git-pull, kein Listener**. User macht nur Doppelklick (+ ggf. 1× Login, das
+  ist physisch unvermeidbar). Beispiele: `TIKTOK-KLICK.bat` (Reel posten), `KAMPAGNE-DRY/GO.bat`. Bei jeder neuen
+  PC-Aufgabe SO einen Klick-Starter bauen statt mehrstufiger Anleitungen.
 - **🛠️ „immer eine Lösung finden — sonst eine ANDERE Bot/Automation-Lösung" (FEST, User 2026-06-18):** Nie an einem
   klemmenden Weg hängenbleiben. Scheitert ein Automatik-Pfad (Listener/Worker/Brave-Port/Git-Lock), SOFORT einen
   alternativen, robusteren Weg suchen & bauen. **Bewährtes Muster: den fragilen Stack umgehen** — Browser-Tools
