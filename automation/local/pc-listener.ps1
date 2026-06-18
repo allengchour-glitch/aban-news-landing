@@ -21,14 +21,26 @@ $repo   = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 
-# ROOT-FIX (2026-06-17): Brave mit Debug-Port 9222 SICHERSTELLEN — sonst scheitern ALLE Browser-Befehle
+# SELBST-AKTUALISIEREN: immer neueste Skripte holen, bevor's losgeht.
+Write-Host "Hole neueste Skripte (git pull)..."
+git pull origin claude/luxestyle-product-CizQ6 2>$null
+
+# ROOT-FIX: Brave mit Debug-Port 9222 SICHERSTELLEN — sonst scheitern ALLE Browser-Befehle
 # (campaign-dry/tiktok/follower/tutti/anibis) bevor sie etwas tun (connectOverCDP findet kein Brave).
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
 if (-not (Test-Path $brave)) { $brave = "C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe" }
 $open = Get-NetTCPConnection -LocalPort 9222 -State Listen -ErrorAction SilentlyContinue
 if (-not $open -and (Test-Path $brave)) {
+  Write-Host "Starte Brave (Profil brave-agent) mit Debug-Port 9222..."
   Start-Process $brave "--remote-debugging-port=9222 --user-data-dir=`"$env:USERPROFILE\brave-agent`""
   Start-Sleep -Seconds 20
+  $open = Get-NetTCPConnection -LocalPort 9222 -State Listen -ErrorAction SilentlyContinue
+}
+if ($open) {
+  Write-Host "OK: Brave-Debug-Port 9222 ist offen." -ForegroundColor Green
+  Write-Host ">> WICHTIG: In DIESEM Brave-Fenster (Profil 'brave-agent') bei ads.tiktok.com UND instagram.com/tiktok.com EINGELOGGT sein!" -ForegroundColor Yellow
+} else {
+  Write-Host "WARNUNG: Port 9222 ist NICHT offen - Browser-Befehle werden scheitern. Brave-Pfad pruefen." -ForegroundColor Red
 }
 
 function Run-Cmd($c) {

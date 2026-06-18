@@ -1,13 +1,18 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — Handy-Fernbedienung EINSCHALTEN (1x doppelklicken).
-REM  Startet den PC-Listener: lauscht am Cloudflare-Worker auf deine Handy-
-REM  Knoepfe und fuehrt tutti / TikTok / Follower auf dem PC aus.
-REM  Voraussetzung: PC an + Brave-Profil "brave-agent" auf tutti.ch + TikTok eingeloggt.
-REM  Fenster offen lassen (oder minimieren). Schliessen = Fernbedienung aus.
+REM  LuxeStyle — Fernbedienung EINSCHALTEN (1x doppelklicken).
+REM  Holt neueste Skripte (git pull), startet Brave mit Debug-Port + den
+REM  PC-Listener. Danach steuert die Cloud alle PC-Browser-Aufgaben.
+REM  Voraussetzung: im Brave-Fenster 'brave-agent' bei ads.tiktok.com +
+REM  Instagram/TikTok EINGELOGGT sein. Fenster offen lassen.
 REM ========================================================================
-start "LuxeStyle Listener" powershell -ExecutionPolicy Bypass -File "%~dp0pc-listener.ps1"
+cd /d "%~dp0..\.."
+echo Hole neueste Skripte...
+git pull origin claude/luxestyle-product-CizQ6
+echo Starte Listener (neues Fenster offen lassen)...
+start "LuxeStyle Listener" powershell -ExecutionPolicy Bypass -NoExit -File "%~dp0pc-listener.ps1"
 echo.
-echo  Listener gestartet. Ab jetzt kannst du vom Handy ueber control.html
-echo  (oder die Worker-URL ?key=...&cmd=tutti) tutti/TikTok ausloesen.
+echo  Listener gestartet. Im neuen Fenster steht, ob Port 9222 offen ist
+echo  und ob du im brave-agent-Brave bei ads.tiktok.com eingeloggt sein musst.
 echo.
+pause
