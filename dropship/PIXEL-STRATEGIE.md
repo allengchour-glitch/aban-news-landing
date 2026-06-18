@@ -33,3 +33,9 @@ Hochstufen, sobald genug Events da sind (im Ads Manager sichtbar).
 ## 🈲 Sicherheit
 - Nur **1** aktive Kampagne · Budget-Cap fix · Strikt Schweiz (kein Deutschland).
 - Creative ohne Botox/Serum/asiat. Schrift/Watermark (siehe DO-NOT-POST).
+
+## ⚠️ KORREKTUR (Recherche 2026-06-17): kleines Budget → TRAFFIC zuerst, nicht Conversion
+- 25 CHF/Tag (350 total) ist ZU WENIG für Conversion-Optimierung (braucht ~50 Conv/Woche).
+- **Phase 0 (350 CHF):** Ziel = **Traffic** oder **Video-Views** → günstige Klicks, baut Pixel-Daten + Reichweite.
+- Lean: 1 Kampagne · 1 Ad-Group · 4 Creatives · 20%/Tag skalieren · 2–3 Wochen.
+- **Erst mit mehr Budget / den bis 1000$ Neukunden-Credits** → auf «Website-Conversions» wechseln (dann Event-Leiter View Content→ATC→Kauf).

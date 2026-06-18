@@ -61,6 +61,8 @@
 
 > **🛒 CONVERSION-HEBEL (Recherche 2026-06-17, für Theme/Katalog-Session):** Gegen 0 Kaeufe: (1) REVIEWS = +270% (5+ Bewertungen, Judge.me auf Top-Produkte) = groesster Hebel! (2) Social-Proof/Urgency-Badges. (3) Mobile-first (<3s, sticky Add-to-Cart, keine Popups). (4) Checkout: Shop Pay + keine versteckten Kosten + kein Pflicht-Konto. Clarity (aktiv) zeigt die Reibung. Details: dropship/VERBESSERUNGEN.md.
 
+> **🇨🇭 KAUF AUF RECHNUNG (Recherche 2026-06-17, für Theme/Checkout-Session):** Schweizer lieben «zahle nach Erhalt» — 70% der CH-Shops bieten Invoice/BNPL. GROSSER Conversion-Hebel! Shopify-Zahlungsart Invoice/Klarna/Swissbilling/Byjuno prüfen + aktivieren. Plus: keine versteckten Kosten, klare Lieferinfo (CH-Abbruch-Grund #1). TWINT haben wir.
+
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
 **🟢 2026-06-16 (~23:45) — CizQ6: +12 OUTDOOR-Produkte (BigBuy EU) + Mapping 5747 kategorisiert:**

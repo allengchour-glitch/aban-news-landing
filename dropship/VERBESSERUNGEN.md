@@ -210,3 +210,14 @@ in Sekunden → Bytes parallel hochladen. `luma-api-…`-Keys = Agents-API, `lum
 5. **Selber am Handy teste** wie en Erstbesuecher → Reibig finde (Clarity zeigt's jetz).
 
 Quelle: stackmatix/improvado (Social 2026), shopify/growthsuite/provesrc (CRO 2026).
+
+## 2026-06-17 — RECHERCHE 2: CH-Markt + TikTok-Ads (korrigiert Kampagne-Plan!)
+### 🇨🇭 Schweizer Käufer (was zellt)
+- **Vertraue + KEI versteckti Koschte + klari Lieferinfo** = #1 (Schwiizer breche bei Unklarheit ab).
+- **«Kauf uf Rechnung» (Invoice/BNPL)** = 70% der CH-Shops biete das → Schwiizer LIEBE «zahle nach Erhalt». GROSSE Conversion-Hebel (Theme/Checkout-Session: Shopify-Payment «Invoice»/Klarna/Swissbilling prüefe).
+- TWINT (98% bekannt) hei mer ✓. Express-Checkout reduziert Friction.
+### 🎯 TikTok-Ads bi chliine Budget (350 CHF) — WICHTIGI KORREKTUR
+- **25 CHF/Tag isch z'WENIG für Conversion-Optimierig** (brucht ~50 Conversions/Woche = $100–200/Tag zum d Lernphase z'verlah).
+- **→ Bi 350 CHF: TRAFFIC- oder Video-Views-Ziel** (günstigi Klicks, baut Pixel-Date + Reichwiti) — NID direkt Conversion.
+- Lean: **1 Kampagne · 1 Ad-Group · 4 Creatives** (Gewinner finde, Verlierer kille). 20%/Tag skaliere. 2–3 Wuche bis Schluss.
+- **Bis $1'000 TikTok-Ad-Guthabe** für Neukunde möglich → Mail a Wallrath (Entwurf liegt) lohnt sich!
