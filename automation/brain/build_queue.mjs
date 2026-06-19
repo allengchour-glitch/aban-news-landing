@@ -168,6 +168,11 @@ function loadReels() {
     { handle: 'damen-mode', label: 'Damen-Mode 👗', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1781386829' },
     { handle: 'parfum-duefte', label: 'Parfum & Düfte 🌸', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/0679602161121_0_P01.jpg?v=1781640714' },
     { handle: 'sommer', label: 'Sommer-Kollektion ☀️', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/fa7f66fa-bf2d-4800-835e-2e3fe6984427.jpg?v=1780336517' },
+    // Weitere Kollektionen NUR für organische Posts (NICHT fürs bezahlte Pixel-Ad — User 2026-06-19)
+    { handle: 'garten-balkon', label: 'Garten & Balkon 🌿', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/8413246150088_00_WBG4_8fa839a4-d41f-44ef-bc0f-4cff31205c03.jpg?v=1781880256' },
+    { handle: 'fitness-training', label: 'Fitness & Training 💪', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/S64188635_1752127868-remove-background0_e201d068-c786-4b35-aad0-418bad4097e7.jpg?v=1781880262' },
+    { handle: 'lederwaren', label: 'Leder & Accessoires 👝', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/9359082762827_S64130277_P00.jpg?v=1781880275' },
+    { handle: 'trainingsanzuege-sets', label: 'Trainingsanzüge & Sets 🏃', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/8054041765383_S64228713_P00.jpg?v=1781880260' },
   ];
   const collPosts = COLLECTIONS.map((c, i) => ({ type: 'image', image: c.image,
     caption: `Entdeck d ganzi ${c.label}\n${TRUST_LINES[i % TRUST_LINES.length]}\n👉 luxestyle.ch/collections/${c.handle} · –10% mit WELCOME10\n#schweiz #schweizmode #ootdschweiz #swissmade #fyp` }));
