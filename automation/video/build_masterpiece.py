@@ -16,7 +16,8 @@ def run(a):
 def esc(t): return t.replace("'", "").replace(":", " ").replace("%", " Prozent").replace(",", "")
 try: price = json.load(urllib.request.urlopen(f"https://luxestyle.ch/products/{handle}.json", timeout=15))["product"]["variants"][0]["price"]
 except Exception: price = ""
-prx = f"CHF {price}" if price else ""
+cmp = os.environ.get("COMPARE", "")  # Preis-Vergleich (Top-Gewinner-Format "CHF X statt CHF Y")
+prx = (f"CHF {price} statt CHF {cmp}" if (price and cmp) else (f"CHF {price}" if price else ""))
 raw = f"{S}/p." + img.split(".")[-1].split("?")[0]
 urllib.request.urlretrieve(img, raw)
 # Musik: elegant aus music_library, sonst house
@@ -34,7 +35,7 @@ vf = (f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920
       f"drawtext=fontfile={FS}:text='{esc(hook)}':fontcolor=white:fontsize=50:x=(w-tw)/2:y=170:box=1:boxcolor=black@0.45:boxborderw=20:enable='lt(t,4)':alpha='if(lt(t,0.5),t*2,if(lt(t,3.5),1,(4-t)*2))',"
       f"drawtext=fontfile={FS}:text='{esc(label)}':fontcolor=white:fontsize=58:x=(w-tw)/2:y=1330:box=1:boxcolor=black@0.45:boxborderw=18:enable='gt(t,3.5)',"
       f"drawtext=fontfile={F}:text='{esc(prx)}':fontcolor={GOLD}:fontsize=56:x=(w-tw)/2:y=1410:box=1:boxcolor=black@0.5:boxborderw=14:enable='gt(t,3.5)',"
-      f"drawtext=fontfile={F}:text='luxestyle.ch  WELCOME10 = 10 Prozent':fontcolor=white:fontsize=40:x=(w-tw)/2:y=1480:box=1:boxcolor=black@0.55:boxborderw=12:enable='gt(t,{DUR-4:.0f})'[v]")
+      f"drawtext=fontfile={F}:text='Merk der s  luxestyle.ch  WELCOME10 = 10 Prozent':fontcolor=white:fontsize=38:x=(w-tw)/2:y=1480:box=1:boxcolor=black@0.55:boxborderw=12:enable='gt(t,{DUR-4:.0f})'[v]")
 af = f"afade=t=in:d=0.8,afade=t=out:st={DUR-1.5:.1f}:d=1.5,loudnorm=I=-14:TP=-1.5"
 run(["ffmpeg", "-y", "-loop", "1", "-t", str(DUR), "-i", raw, "-i", mp, "-filter_complex", vf,
      "-map", "[v]", "-map", "1:a", "-t", str(DUR), "-af", af, "-c:v", "libx264", "-preset", os.environ.get("PRESET", "veryfast"),
