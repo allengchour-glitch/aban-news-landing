@@ -68,6 +68,11 @@ def main() -> int:
     if not salt:
         print("DOWNLOAD_SALT nicht gesetzt → no-op (vorhandene Kit-ZIPs bleiben).")
         return 0
+    # Deploy-Build soll deterministisch, schnell & gratis sein: KEINE KI-Calls beim
+    # Bauen (gen_prompts fällt sonst je Kit auf Gemini zurück → 44× Netz/Tokens/Deploy).
+    # Wir leeren die KI-Keys nur für DIESEN Prozess → garantierte Fallback-Prompts.
+    for k in ("GCP_SA_KEY", "GCP_PROJECT", "GEMINI_API_KEY", "VERTEX_TEXT_MODEL", "GEMINI_MODEL"):
+        os.environ.pop(k, None)
     KITS.mkdir(parents=True, exist_ok=True)
     total = 0
     total += build_for(REPO / "data" / "kit-catalog.json", "de", salt)
