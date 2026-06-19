@@ -36,6 +36,14 @@ LIFE = re.compile(r'€\s?(\d{1,4})\s*(?:einmal|einmalig|once|lifetime)', re.I)
 MBACK = re.compile(r'(\d{1,3})\s*[- ]?\s*(?:Tage?|days?)\s*(?:[- ]?\s*)?(?:Geld[- ]?zurück|money[- ]?back|Geld zurück)', re.I)
 LEGACY = re.compile(r'€\s?(?:149|99|79)\b')  # bekannte alte Preise
 
+# Debunking-/Zitat-Kontext: Preise, die einen FREMD-Anbieter/Scam entlarven, sind
+# keine aban-Preise (z. B. „wäre es nicht für 49 €/Monat zu haben"). Nicht flaggen.
+DEBUNK = re.compile(
+    r'\b(?:nicht für|wouldn.?t be|if it worked|wenn es funktionieren|verkaufen ein|'
+    r'sell a feeling|scam|betrug|unseri|verspricht|promises|angeblich|supposedly|'
+    r'on sale for|zu haben|trefferquote|win rate|schlägt den markt|beats the market)\b',
+    re.I)
+
 
 def pages() -> list[Path]:
     out = []
@@ -56,6 +64,8 @@ def main() -> int:
     for p in pages():
         rp = p.relative_to(REPO).as_posix()
         for i, line in enumerate(p.read_text(encoding="utf-8", errors="ignore").splitlines(), 1):
+            if DEBUNK.search(line):
+                continue  # Preis entlarvt einen Fremd-Anbieter/Scam, kein aban-Preis
             for m in YEAR.finditer(line):
                 if m.start() and line[m.start() - 1] in "–—-":
                     continue  # Teil einer Spanne (z. B. „€5–€10")
