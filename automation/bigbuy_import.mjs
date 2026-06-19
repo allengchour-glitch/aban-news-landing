@@ -158,6 +158,22 @@ const CONFIG = {
     anchor: ['fußballtrikot', 'fussballtrikot', 'football trikot', 'soccer jersey', 'fußball-trikot', 'camiseta de fútbol', 'camiseta fútbol'],
     ban: ['radtrikot', 'rad-trikot', 'cycling', 'velo', 'fahrrad', 'maillot ciclismo', 'kinder', 'jr.', 'jr ', 'baby', '11-12 jahre', '7-8 jahre', '9-10 jahre', '3-4 jahre', '5-6 jahre'],
     bullets: ['Trikot im Team-Look', 'Atmungsaktiv & sportlich', 'Top für Stadion & Public Viewing', '100% Original, schnelle EU-Lieferung'] },
+  // ── COOLE MARKEN-WELT (BigBuy-Markenkatalog: New Era, Puma, Adidas, lizenzierte Merch) ──
+  caps: { coll: { handle: 'caps-huete', title: '🧢 Caps & Hüte', tag: 'Hut' },
+    extraTags: ['accessoire', 'hype-2026', 'streetwear', 'premium'], type: 'Cap', maxCost: MAX_COST_EUR,
+    anchor: ['kappe', 'basecap', 'snapback', 'baseball cap', 'sport cap', 'beanie', 'mütze', 'strickmütze', 'new era', 'schirmmütze', 'trucker'],
+    ban: ['helm', 'fahrradhelm', 'schutzhelm', 'bauhelm', 'reithelm', 'badekappe', 'duschhaube', 'perücke', 'kinder', 'baby', 'paw patrol'],
+    bullets: ['Original-Marken-Cap', 'Trendiger Streetwear-Look', 'Bequemer Sitz, verstellbar', '100% Original, schnelle EU-Lieferung'] },
+  hoodies: { coll: { handle: 'loungewear', title: '🛋️ Loungewear & Hoodies', tag: 'loungewear' },
+    extraTags: ['herren', 'sport', 'streetwear', 'premium'], type: 'Hoodie', maxCost: MAX_COST_EUR, sized: true,
+    anchor: ['hoodie', 'kapuzenpullover', 'kapuzensweat', 'kapuzenshirt', 'kapuzenjacke', 'sweatshirt', 'sudadera'],
+    ban: ['kinder', 'baby', 'jr.', 'jr ', 'mädchen', 'junge', '11-12 jahre', '7-8 jahre', '9-10 jahre', 'paw patrol', 'minnie', 'disney'],
+    bullets: ['Weicher, warmer Tragekomfort', 'Marken-Streetwear, EU-Lager', 'Vielseitig kombinierbar', '100% Original, schnelle EU-Lieferung'] },
+  socken: { coll: { handle: 'socken-strumpfe', title: '🧦 Socken & Strümpfe', tag: 'socken' },
+    extraTags: ['accessoire', 'streetwear', 'geschenk', 'premium'], type: 'Socken', maxCost: MAX_COST_EUR,
+    anchor: ['socken', 'sportsocken', 'sneakersocken', 'strümpfe', 'kniestrümpfe', 'tennissocken', 'calcetines'],
+    ban: ['kinder', 'baby', 'mädchen', 'junge', 'stützstrümpfe medizin', 'kompressionsstrümpfe medizin'],
+    bullets: ['Bequem & atmungsaktiv', 'Cooles Design', 'Tolles kleines Geschenk', '100% Original, schnelle EU-Lieferung'] },
 };
 
 // ── Shopify (1:1 aus cj_gaps_import.mjs, bewährt) ──
