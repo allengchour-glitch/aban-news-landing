@@ -202,7 +202,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 <script src="/js/saved-search.js"></script>
 <script>
 (function(){
-  var CATS=["Elektronik","Handy","Computer","Möbel","Haushalt","Garten","Werkzeug","Auto & Teile","Fahrrad","Mode","Spielzeug","Baby & Kind","Haustier","Sport","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
+  var CATS=["Elektronik","Handy","Computer","Foto & Video","Gaming","TV & Audio","Möbel","Wohnen & Deko","Haushalt","Küche","Garten","Werkzeug","Baumaterial","Auto & Teile","Motorrad","Fahrrad","Mode","Schmuck & Uhren","Spielzeug","Baby & Kind","Haustier","Sport","Musik & Instrumente","Bücher & Medien","Tickets & Gutscheine","Sammeln & Antik","Dienstleistungen","Immobilien","Jobs","Sonstiges"];
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
   var curKat="",raw=[],isDemo=false,merkOnly=false;
@@ -220,7 +220,31 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     {id:"demo-9",kat:"Dienstleistungen",titel:"Umzugshilfe gesucht",preis:"",ort:"Zürich",plz:"8050",typ:"Gesuch",emoji:"📦",demo:1,beschreibung:"2 Stunden, 2 Personen, Samstag. Faire Bezahlung."},
     {id:"demo-10",kat:"Sport",titel:"Ski-Set 170 cm + Stöcke",preis:"CHF 180.–",ort:"Chur",plz:"7000",zustand:"Gebraucht",typ:"Angebot",emoji:"🎿",demo:1,beschreibung:"Allmountain, inkl. Bindung, guter Zustand."},
     {id:"demo-11",kat:"Haustier",titel:"Katzen-Kratzbaum gross",preis:"CHF 45.–",ort:"Thun",plz:"3600",zustand:"Gebraucht",typ:"Angebot",emoji:"🐈",demo:1,beschreibung:"180 cm, stabil, gereinigt. Abholung Thun."},
-    {id:"demo-12",kat:"Baby & Kind",titel:"Kinderwagen 3-in-1",preis:"CHF 280.–",ort:"Fribourg",plz:"1700",zustand:"Gebraucht",typ:"Angebot",emoji:"👶",demo:1,beschreibung:"Inkl. Babywanne und Maxi-Cosi-Adapter."}
+    {id:"demo-12",kat:"Baby & Kind",titel:"Kinderwagen 3-in-1",preis:"CHF 280.–",ort:"Fribourg",plz:"1700",zustand:"Gebraucht",typ:"Angebot",emoji:"👶",demo:1,beschreibung:"Inkl. Babywanne und Maxi-Cosi-Adapter."},
+    {id:"demo-13",kat:"TV & Audio",titel:"Soundbar mit Subwoofer",preis:"CHF 130.–",ort:"Aarau",plz:"5000",zustand:"Gebraucht",typ:"Angebot",emoji:"🔊",demo:1,beschreibung:"Bluetooth, kräftiger Bass, mit Fernbedienung."},
+    {id:"demo-14",kat:"Gaming",titel:"PlayStation 5 mit 2 Controllern",preis:"CHF 380.–",ort:"Zürich",plz:"8004",zustand:"Gebraucht",typ:"Angebot",emoji:"🎮",demo:1,beschreibung:"Disc-Version, inkl. 3 Spiele. Top-Zustand."},
+    {id:"demo-15",kat:"Foto & Video",titel:"Spiegelreflexkamera + Objektiv",preis:"CHF 320.–",ort:"Bern",plz:"3008",zustand:"Gebraucht",typ:"Angebot",emoji:"📷",demo:1,beschreibung:"24 MP, 18–55 mm Kit, wenig Auslösungen."},
+    {id:"demo-16",kat:"Küche",titel:"Küchenmaschine mit Zubehör",preis:"CHF 150.–",ort:"Luzern",plz:"6005",zustand:"Gebraucht",typ:"Angebot",emoji:"🍳",demo:1,beschreibung:"Rührschüssel, Knethaken, Schwingbesen dabei."},
+    {id:"demo-17",kat:"Wohnen & Deko",titel:"Stehlampe Messing-Look",preis:"CHF 55.–",ort:"Basel",plz:"4053",zustand:"Neu",typ:"Angebot",emoji:"💡",demo:1,beschreibung:"Dimmbar, warmweiss. Noch originalverpackt."},
+    {id:"demo-18",kat:"Motorrad",titel:"Roller 125 ccm",preis:"CHF 1'650.–",ort:"Winterthur",plz:"8400",zustand:"Gebraucht",typ:"Angebot",emoji:"🛵",demo:1,beschreibung:"12'000 km, ab Service, 2 Helme inklusive."},
+    {id:"demo-19",kat:"Werkzeug",titel:"Akkuschrauber-Set",preis:"CHF 90.–",ort:"Sitten",plz:"1950",zustand:"Gebraucht",typ:"Angebot",emoji:"🛠️",demo:1,beschreibung:"2 Akkus, Ladegerät, Koffer mit Bits."},
+    {id:"demo-20",kat:"Garten",titel:"Gartentisch mit 4 Stühlen",preis:"CHF 120.–",ort:"Thun",plz:"3600",zustand:"Gebraucht",typ:"Angebot",emoji:"🌿",demo:1,beschreibung:"Wetterfest, wenig benutzt. Abholung Thun."},
+    {id:"demo-21",kat:"Musik & Instrumente",titel:"Akustikgitarre für Anfänger",preis:"CHF 95.–",ort:"Genf",plz:"1201",zustand:"Gebraucht",typ:"Angebot",emoji:"🎸",demo:1,beschreibung:"Inkl. Tasche, Stimmgerät und Ersatzsaiten."},
+    {id:"demo-22",kat:"Bücher & Medien",titel:"Krimi-Sammlung (20 Bücher)",preis:"CHF 30.–",ort:"St. Gallen",plz:"9000",zustand:"Gebraucht",typ:"Angebot",emoji:"📚",demo:1,beschreibung:"Diverse Autoren, guter Zustand. Nur als Paket."},
+    {id:"demo-23",kat:"Schmuck & Uhren",titel:"Automatikuhr Edelstahl",preis:"CHF 240.–",ort:"Lugano",plz:"6900",zustand:"Gebraucht",typ:"Angebot",emoji:"⌚",demo:1,beschreibung:"42 mm, Saphirglas, frisch revidiert."},
+    {id:"demo-24",kat:"Tickets & Gutscheine",titel:"2 Konzerttickets",preis:"CHF 120.–",ort:"Zürich",plz:"8005",typ:"Angebot",emoji:"🎫",demo:1,beschreibung:"Stehplatz, Termin im Herbst. Übertragbar."},
+    {id:"demo-25",kat:"Sammeln & Antik",titel:"Vintage-Plattenspieler",preis:"CHF 160.–",ort:"Neuchâtel",plz:"2000",zustand:"Gebraucht",typ:"Angebot",emoji:"🎶",demo:1,beschreibung:"Funktioniert einwandfrei, neuer Tonabnehmer."},
+    {id:"demo-26",kat:"Elektronik",titel:"Tablet 10 Zoll 64 GB",preis:"CHF 130.–",ort:"Biel",plz:"2502",zustand:"Gebraucht",typ:"Angebot",emoji:"📲",demo:1,beschreibung:"Mit Hülle und Ladegerät, guter Akku."},
+    {id:"demo-27",kat:"Spielzeug",titel:"Lego-Konvolut 5 kg",preis:"CHF 70.–",ort:"Zug",plz:"6300",zustand:"Gebraucht",typ:"Angebot",emoji:"🧱",demo:1,beschreibung:"Gemischt, gereinigt. Ideal zum Bauen."},
+    {id:"demo-28",kat:"Haushalt",titel:"Staubsauger-Roboter",preis:"CHF 110.–",ort:"Aarau",plz:"5000",zustand:"Gebraucht",typ:"Angebot",emoji:"🤖",demo:1,beschreibung:"App-Steuerung, frische Bürsten, leise."},
+    {id:"demo-29",kat:"Dienstleistungen",titel:"Nachhilfe Mathematik",preis:"CHF 40.–/h",ort:"Bern",plz:"3012",typ:"Angebot",emoji:"📐",demo:1,beschreibung:"Sek- und Gymi-Stufe, auch online möglich."},
+    {id:"demo-30",kat:"Baumaterial",titel:"Restposten Parkettboden",preis:"CHF 200.–",ort:"Luzern",plz:"6014",zustand:"Neu",typ:"Angebot",emoji:"🪵",demo:1,beschreibung:"Eiche, ca. 18 m², originalverpackt."},
+    {id:"demo-31",kat:"Mode",titel:"Wanderschuhe Gr. 43",preis:"CHF 75.–",ort:"Chur",plz:"7000",zustand:"Gebraucht",typ:"Angebot",emoji:"🥾",demo:1,beschreibung:"Gore-Tex, einmal getragen, wie neu."},
+    {id:"demo-32",kat:"Auto & Teile",titel:"4 Winterreifen 205/55 R16",preis:"CHF 220.–",ort:"Fribourg",plz:"1700",zustand:"Gebraucht",typ:"Angebot",emoji:"🛞",demo:1,beschreibung:"Profil 6 mm, eine Saison gefahren."},
+    {id:"demo-33",kat:"Haustier",titel:"Hundebox für Auto Gr. L",preis:"CHF 60.–",ort:"Winterthur",plz:"8400",zustand:"Gebraucht",typ:"Angebot",emoji:"🐕",demo:1,beschreibung:"Stabil, faltbar, gut gereinigt."},
+    {id:"demo-34",kat:"Computer",titel:"Suche defekte Laptops",preis:"",ort:"Zürich",plz:"8048",typ:"Gesuch",emoji:"💻",demo:1,beschreibung:"Für Bastelprojekt, zahle fair je nach Modell."},
+    {id:"demo-35",kat:"Sport",titel:"Hometrainer / Ergometer",preis:"CHF 130.–",ort:"Basel",plz:"4057",zustand:"Gebraucht",typ:"Angebot",emoji:"🚴",demo:1,beschreibung:"Magnetbremse, faltbar, App-kompatibel."},
+    {id:"demo-36",kat:"Möbel",titel:"Sofa 3-Sitzer Stoff grau",preis:"CHF 250.–",ort:"Lausanne",plz:"1004",zustand:"Gebraucht",typ:"Angebot",emoji:"🛋️",demo:1,beschreibung:"Bequem, gepflegt, Lieferung gegen Aufpreis."}
   ];
   // ── Merkliste / Auswahl (im Browser gespeichert) ──
   var MKEY="abanMerk";
