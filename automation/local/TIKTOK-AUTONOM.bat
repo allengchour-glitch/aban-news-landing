@@ -20,7 +20,6 @@ cd /d "%REPO%"
 attrib -R "%REPO%\*.*" /S /D >nul 2>&1
 git fetch origin claude/luxestyle-product-CizQ6
 git reset --hard origin/claude/luxestyle-product-CizQ6
-git clean -fd
 
 echo [2/5] Alte Tasks weg (sauberer Stand)...
 for %%T in (LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 LuxeListener LuxeWatchdog) do schtasks /delete /tn "%%T" /f >nul 2>&1

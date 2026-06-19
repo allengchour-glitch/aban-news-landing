@@ -26,7 +26,6 @@ cd /d "%REPO%"
 attrib -R "%REPO%\*.*" /S /D >nul 2>&1
 git fetch origin claude/luxestyle-product-CizQ6
 git reset --hard origin/claude/luxestyle-product-CizQ6
-git clean -fd
 
 echo [3/6] Direkt-Tasks registrieren (VOLLAUTOMAT, kein git im Hot-Path)...
 schtasks /create /f /tn "LuxeUpdate"  /sc daily /st 05:00 /tr "%PSF% \"%VA%\" -Mode update"

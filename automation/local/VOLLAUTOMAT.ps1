@@ -25,7 +25,6 @@ if ($Mode -eq "update") {
   & attrib -R "$repo\*.*" /S /D 2>$null                                                               # Schreibschutz weg
   & git fetch origin $branch 2>&1 | ForEach-Object { Add-Content $log $_ }
   & git reset --hard "origin/$branch" 2>&1 | ForEach-Object { Add-Content $log $_ }
-  & git clean -fd 2>&1 | ForEach-Object { Add-Content $log $_ }
   Log "UPDATE fertig: $(& git rev-parse --short HEAD)"
   return
 }
