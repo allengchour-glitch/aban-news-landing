@@ -1,8 +1,8 @@
-# LuxeStyle — setup-tiktok.ps1 · TikTok-Autopost komplett scharfschalten (am PC).
+# LuxeStyle - setup-tiktok.ps1  TikTok-Autopost komplett scharfschalten (am PC).
 # Macht ALLES Skriptbare: OAuth -> Tokens -> Worker-Secrets -> Deploy.
-# Du machst nur: 1× in der TikTok-App die Redirect-URI/Scopes setzen (s.u.) + 1× "Autorisieren" klicken.
+# Du machst nur: 1 in der TikTok-App die Redirect-URI/Scopes setzen (s.u.) + 1 "Autorisieren" klicken.
 #
-# VORAUSSETZUNG (1×, in der TikTok-Developer-App "LuxeStyle Poster"):
+# VORAUSSETZUNG (1, in der TikTok-Developer-App "LuxeStyle Poster"):
 #   - Produkte: "Login Kit" + "Content Posting API"
 #   - Scopes:   user.info.basic, video.upload, video.publish
 #   - Redirect URI:  http://localhost:8723/callback      <-- EXAKT so
@@ -22,7 +22,7 @@ if (Test-Path $secrets) { . $secrets }
 if (-not $env:TT_CLIENT_KEY)    { $env:TT_CLIENT_KEY    = Read-Host "TikTok Client Key" }
 if (-not $env:TT_CLIENT_SECRET) { $env:TT_CLIENT_SECRET = Read-Host "TikTok Client Secret" }
 
-Write-Host "`n[1/3] OAuth — Browser oeffnet sich, bitte EINMAL 'Autorisieren' klicken ..." -ForegroundColor Green
+Write-Host "`n[1/3] OAuth - Browser oeffnet sich, bitte EINMAL 'Autorisieren' klicken ..." -ForegroundColor Green
 node automation/tiktok-oauth.mjs
 if (-not (Test-Path $secrets)) { Write-Host "[FEHLER] OAuth hat keine Tokens geschrieben. Abbruch." -ForegroundColor Red; exit 1 }
 . $secrets   # laedt jetzt TT_REFRESH_TOKEN
@@ -39,5 +39,5 @@ $env:TT_REFRESH_TOKEN | npx wrangler secret put TT_REFRESH_TOKEN
 npx wrangler deploy
 Pop-Location
 
-Write-Host "`n✅ FERTIG. Der Worker laedt ab jetzt 3x/Tag ein Reel in deine TikTok-Entwuerfe." -ForegroundColor Cyan
+Write-Host "`n FERTIG. Der Worker laedt ab jetzt 3x/Tag ein Reel in deine TikTok-Entwuerfe." -ForegroundColor Cyan
 Write-Host "   Du legst nur den Trend-Sound drauf + tippst 'Posten'." -ForegroundColor Cyan

@@ -1,13 +1,13 @@
-# pc-listener.ps1 — macht dein Handy zur Fernbedienung für die PC-Browser-Aufgaben.
+# pc-listener.ps1 - macht dein Handy zur Fernbedienung fuer die PC-Browser-Aufgaben.
 #
-# WARUM: tutti & TikTok haben kein API → brauchen den eingeloggten Brave-Port (9222) auf DEINEM PC.
-# Die Cloud kann den PC nicht erreichen. Lösung: Dieser Listener läuft auf dem PC und fragt den
-# Cloudflare-Worker alle ~90 s, ob du am Handy einen Knopf gedrückt hast — und führt ihn dann aus.
+# WARUM: tutti & TikTok haben kein API -> brauchen den eingeloggten Brave-Port (9222) auf DEINEM PC.
+# Die Cloud kann den PC nicht erreichen. Loesung: Dieser Listener laeuft auf dem PC und fragt den
+# Cloudflare-Worker alle ~90 s, ob du am Handy einen Knopf gedrueckt hast - und fuehrt ihn dann aus.
 #
-# STARTEN (1×, dann läuft's im Hintergrund): Doppelklick auf START-LISTENER.bat
-# Befehle (vom Handy über control.html oder direkt per URL):
+# STARTEN (1, dann laeuft's im Hintergrund): Doppelklick auf START-LISTENER.bat
+# Befehle (vom Handy ueber control.html oder direkt per URL):
 #   &cmd=tutti     -> tutti-Inserate posten (Auto-Publish)
-#   &cmd=tiktok    -> nächstes Reel auf TikTok (Port)
+#   &cmd=tiktok    -> naechstes Reel auf TikTok (Port)
 #   &cmd=follower  -> CH-Follower-Lauf
 #   &cmd=all       -> komplette Tagesroutine (run-follower-daily.ps1)
 #   &cmd=deploy        -> Cloudflare-Worker neu deployen (wrangler)
@@ -21,9 +21,9 @@ $repo   = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 
-# ── SELBST-HEILEN (User 2026-06-19 „mach e Bot wo klickt", nicht zuhause): der Listener macht sich
-#    selbst unkaputtbar — registriert einen WATCHDOG (alle 10 Min) + Startup-Eintrag, damit er nach
-#    Crash/Reboot/Login von selbst wieder hochfährt. KEIN Admin nötig (LIMITED + Startup-Ordner). ──
+#  SELBST-HEILEN (User 2026-06-19 "mach e Bot wo klickt", nicht zuhause): der Listener macht sich
+#    selbst unkaputtbar - registriert einen WATCHDOG (alle 10 Min) + Startup-Eintrag, damit er nach
+#    Crash/Reboot/Login von selbst wieder hochfaehrt. KEIN Admin noetig (LIMITED + Startup-Ordner). 
 $BEAT = "$env:USERPROFILE\.luxe-listener-beat.txt"
 try {
   $wd = Join-Path $PSScriptRoot "WATCHDOG.ps1"
@@ -39,7 +39,7 @@ try {
 Write-Host "Hole neueste Skripte (git pull)..."
 git pull origin claude/luxestyle-product-CizQ6 2>$null
 
-# ROOT-FIX: Brave mit Debug-Port 9222 SICHERSTELLEN — sonst scheitern ALLE Browser-Befehle
+# ROOT-FIX: Brave mit Debug-Port 9222 SICHERSTELLEN - sonst scheitern ALLE Browser-Befehle
 # (campaign-dry/tiktok/follower/tutti/anibis) bevor sie etwas tun (connectOverCDP findet kein Brave).
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
 if (-not (Test-Path $brave)) { $brave = "C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe" }
@@ -69,7 +69,7 @@ function Run-Cmd($c) {
     "install"  { npm install playwright-core --no-save }
     "campaign-dry" {
       # Handy-tauglich: Kampagne-Bot im Test-Modus laufen lassen + Screenshots ins Repo pushen,
-      # damit Cloud-Claude die Selektoren prüfen kann. Gibt KEIN Geld aus.
+      # damit Cloud-Claude die Selektoren pruefen kann. Gibt KEIN Geld aus.
       node "automation/local/tiktok-campaign-port.mjs" --dry
       git add automation/local/campaign-shots/* 2>$null
       git commit -m "campaign-dry: Ads-Manager Screenshots zum Pruefen" 2>$null
@@ -79,14 +79,14 @@ function Run-Cmd($c) {
       # NUR wenn Selektoren bestaetigt: Kampagne erstellen + absenden (Budget-Cap 350 im Skript).
       $env:AUTO_LAUNCH="1"; node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null
     }
-    default    { Write-Host "  (unbekannter Befehl, übersprungen)" }
+    default    { Write-Host "  (unbekannter Befehl, uebersprungen)" }
   }
 }
 
-Write-Host "LuxeStyle PC-Listener läuft. Pollt $WORKER alle 90s. (Fenster offen lassen / minimieren.)"
+Write-Host "LuxeStyle PC-Listener laeuft. Pollt $WORKER alle 90s. (Fenster offen lassen / minimieren.)"
 git pull origin claude/luxestyle-product-CizQ6 2>$null
 while ($true) {
-  try { Set-Content -Path $BEAT -Value (Get-Date -Format o) } catch {}   # Heartbeat für den Watchdog
+  try { Set-Content -Path $BEAT -Value (Get-Date -Format o) } catch {}   # Heartbeat fuer den Watchdog
   try {
     $r = Invoke-RestMethod -Uri "$WORKER/?key=$([uri]::EscapeDataString($KEY))&drain=1" -TimeoutSec 30
     if ($r.commands -and $r.commands.Count -gt 0) {

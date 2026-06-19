@@ -1,10 +1,10 @@
-# VOLLAUTOMAT.ps1 — SUPER-AUTONOMER PC-Bot. Robuste Architektur (User 2026-06-19 „fix für super autonome bot"):
-# Direkte Skript-Ausführung über Windows-Tasks — KEIN Cloudflare-Worker-Poll, KEIN Listener-Dauerpoll,
-# KEIN git-pull im Hot-Path → KEIN Git-Lock. Updates laufen separat im Modus 'update' (ruhiges Fenster).
+# VOLLAUTOMAT.ps1 - SUPER-AUTONOMER PC-Bot. Robuste Architektur (User 2026-06-19 "fix fuer super autonome bot"):
+# Direkte Skript-Ausfuehrung ueber Windows-Tasks - KEIN Cloudflare-Worker-Poll, KEIN Listener-Dauerpoll,
+# KEIN git-pull im Hot-Path -> KEIN Git-Lock. Updates laufen separat im Modus 'update' (ruhiges Fenster).
 #
 # Aufruf:  powershell -ExecutionPolicy Bypass -File VOLLAUTOMAT.ps1 -Mode update|post|engage|weekly
-#   update (1x/Tag früh, allein): lock-proof Repo-Sync (kill node, reset --hard) → neuester Code
-#   post   (10:00 + 19:00): TikTok analyze→post→engage + tutti/anibis + lernen
+#   update (1x/Tag frueh, allein): lock-proof Repo-Sync (kill node, reset --hard) -> neuester Code
+#   post   (10:00 + 19:00): TikTok analyze->post->engage + tutti/anibis + lernen
 #   engage (09/12/15/21):  analyze + Kommentare beantworten + Follower + DMs + lernen
 #   weekly (So): Entfolgen + FB-Gruppen
 #
@@ -18,10 +18,10 @@ $log = Join-Path $PSScriptRoot "vollautomat.log"
 function Log($m){ $line="[{0}] {1}" -f (Get-Date -Format "yyyy-MM-dd HH:mm:ss"), $m; Write-Host $line; Add-Content $log $line }
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 
-# ===== Modus 'update' : LOCK-PROOF Repo-Sync (läuft allein, kein Posting gleichzeitig → keine Lock-Konkurrenz) =====
+# ===== Modus 'update' : LOCK-PROOF Repo-Sync (laeuft allein, kein Posting gleichzeitig -> keine Lock-Konkurrenz) =====
 if ($Mode -eq "update") {
   Log "=== UPDATE: lock-proof Sync auf origin/$branch ==="
-  Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue  # node-Locks lösen
+  Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue  # node-Locks loesen
   & attrib -R "$repo\*.*" /S /D 2>$null                                                               # Schreibschutz weg
   & git fetch origin $branch 2>&1 | ForEach-Object { Add-Content $log $_ }
   & git reset --hard "origin/$branch" 2>&1 | ForEach-Object { Add-Content $log $_ }
@@ -29,13 +29,13 @@ if ($Mode -eq "update") {
   return
 }
 
-# --- Brave-Debug-Port 9222 sicherstellen (ZUVERLÄSSIG: wenn Port zu, ALLE Brave killen, dann brave-agent
-#     mit Port neu starten — sonst wird --remote-debugging-port von einem offenen Brave ignoriert) ---
+# --- Brave-Debug-Port 9222 sicherstellen (ZUVERLAeSSIG: wenn Port zu, ALLE Brave killen, dann brave-agent
+#     mit Port neu starten - sonst wird --remote-debugging-port von einem offenen Brave ignoriert) ---
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
 if (-not (Test-Path $brave)) { $brave = "C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe" }
 $open = Get-NetTCPConnection -LocalPort 9222 -State Listen -ErrorAction SilentlyContinue
 if (-not $open -and (Test-Path $brave)) {
-  Log "Port 9222 zu → alle Brave beenden + brave-agent mit Port neu starten..."
+  Log "Port 9222 zu -> alle Brave beenden + brave-agent mit Port neu starten..."
   Get-Process brave -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
   Start-Sleep -Seconds 3
   Start-Process $brave "--remote-debugging-port=9222 --user-data-dir=`"$env:USERPROFILE\brave-agent`""
@@ -80,6 +80,6 @@ switch ($Mode) {
     Node "automation/local/ch-unfollow.mjs"
     Node "automation/local/fb-group-join.mjs"
   }
-  default { Log "Unbekannter Modus '$Mode' — nichts getan." }
+  default { Log "Unbekannter Modus '$Mode' - nichts getan." }
 }
 Log "=== VOLLAUTOMAT Modus=$Mode FERTIG ==="

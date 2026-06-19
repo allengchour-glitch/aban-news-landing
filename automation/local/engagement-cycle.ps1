@@ -1,12 +1,12 @@
-# engagement-cycle.ps1 — MEHRMALS AM TAG: NUR analysieren + chatten + folgen + engagieren (KEIN Posten).
+# engagement-cycle.ps1 - MEHRMALS AM TAG: NUR analysieren + chatten + folgen + engagieren (KEIN Posten).
 # ---------------------------------------------------------------------------------------------
-# User 2026-06-17 „mehrmals nur analysiere und chatte, folge, öbis im Profil schribe" — Posten ist
+# User 2026-06-17 "mehrmals nur analysiere und chatte, folge, oebis im Profil schribe" - Posten ist
 # selten (Spam-Schutz), aber Engagement lauft oft. Dieser Cycle (z.B. 4x/Tag) macht NUR:
 #   1) TikTok analysieren (frische Daten -> Gehirn lernt schneller)
 #   2) IG/FB-Kommentare beantworten (Meta-API, FAQ-Stil, idempotent)
 #   3) IG + TikTok-DMs beantworten (Browser/CDP)
-#   4) CH-Follower folgen — KLEINE Charge pro Lauf (Tages-Summe bleibt sicher: 4x8=32 IG / 4x6=24 TT)
-#      + dabei Liken = „öbis im Profil" / Engagement der Zielgruppe.
+#   4) CH-Follower folgen - KLEINE Charge pro Lauf (Tages-Summe bleibt sicher: 4x8=32 IG / 4x6=24 TT)
+#      + dabei Liken = "oebis im Profil" / Engagement der Zielgruppe.
 #   5) lernen + zurueck ins Repo committen.
 # KEIN Posten hier (das macht tiktok-cycle.ps1 1-2x/Tag). Mehrfach/Tag = unbedenklich, da nur Engagement.
 #
@@ -28,25 +28,25 @@ if (-not $open) { Start-Process $brave "--remote-debugging-port=$port --user-dat
 
 git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
 
-# 1b) Worker selbst-deployen, falls Code geändert (Hash-Wächter, maximum auto)
+# 1b) Worker selbst-deployen, falls Code geaendert (Hash-Waechter, maximum auto)
 powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\worker-autodeploy.ps1" 2>$null
 
-# 2) ANALYSIEREN (jeder Lauf) — eingeloggt (Bot) + öffentlich (yt-dlp)
+# 2) ANALYSIEREN (jeder Lauf) - eingeloggt (Bot) + oeffentlich (yt-dlp)
 node "automation/local/tiktok-bot.mjs" analyze --max 80 2>$null
 try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
 
-# 3) CHATTEN — TikTok-Kommentare (Bot) + IG/FB-Kommentare (Meta-API) + DMs (Browser). No-op ohne Token/Login.
+# 3) CHATTEN - TikTok-Kommentare (Bot) + IG/FB-Kommentare (Meta-API) + DMs (Browser). No-op ohne Token/Login.
 node "automation/local/tiktok-bot.mjs" engage --cap 10 2>$null
 if ($env:META_ACCESS_TOKEN) { node "automation/social-comment-reply.mjs" }
 node "automation/local/ig-dm-browser.mjs"
 node "automation/local/tiktok-dm-browser.mjs"
 
-# 4) RATIO-RETTUNG (2026-06-17: IG verliert Follower wegen 814:147-Ratio = Spam-Signal → Reichweite gedrosselt):
+# 4) RATIO-RETTUNG (2026-06-17: IG verliert Follower wegen 814:147-Ratio = Spam-Signal -> Reichweite gedrosselt):
 #    IG-FOLGEN PAUSIERT (IG_FOLLOWS=0, macht Ratio nur schlimmer). Nur TikTok weiter (kleine Charge).
 $env:IG_FOLLOWS = "0"; $env:TT_FOLLOWS = "6"
 node "automation/local/ch-follower-growth.mjs"
 $env:IG_FOLLOWS = $null; $env:TT_FOLLOWS = $null
-# 4a) AGGRESSIV ENTFOLGEN jeden Lauf bis Ratio gesund (814 → ~150). DAYS=5 (schneller), MAX=45/Lauf.
+# 4a) AGGRESSIV ENTFOLGEN jeden Lauf bis Ratio gesund (814 -> ~150). DAYS=5 (schneller), MAX=45/Lauf.
 $env:DAYS = "5"; $env:MAX = "25"
 node "automation/local/ch-unfollow.mjs"
 $env:DAYS = $null; $env:MAX = $null
@@ -54,7 +54,7 @@ $env:DAYS = $null; $env:MAX = $null
 # 4b) FACEBOOK-FOLLOWER: 1x/Tag (Mittags-Cycle) in CH-Gruppe posten -> Reichweite -> Page-Follows.
 if ((Get-Date).Hour -eq 12) { node "automation/local/fb-group-post.mjs" }
 # 4c) CH-GRUPPEN AUTONOM BEITRETEN: 1x/Tag (15-Uhr-Cycle), konservativ 2/Lauf -> baut fb-groups.txt aus.
-#     (CH-Marktplätze tutti/anibis/ricardo werden separat im Haupt-Tagestask bespielt; Konto = 1x manuell.)
+#     (CH-Marktplaetze tutti/anibis/ricardo werden separat im Haupt-Tagestask bespielt; Konto = 1x manuell.)
 if ((Get-Date).Hour -eq 15) { node "automation/local/fb-group-join.mjs" }
 
 # 5) LERNEN + zurueck ins Repo
