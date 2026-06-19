@@ -231,3 +231,17 @@ Quelle: stackmatix/improvado (Social 2026), shopify/growthsuite/provesrc (CRO 20
 - Health/Analyse/Lernen/Queue/Engagement durch. Gehirn-Regeln: 102.
 - Queue frisch (Worker liest live). Top-Produkte nach Engagement neu sortiert.
 - Engpass bleibt: Conversion (Mobile/Reviews) > Reichweite. Nächster Content nach Gewinner-Rezept (Preis-Vergleich+Mundart).
+
+## 💡 2026-06-19 — Autonome Vorschläge (umgesetzt + offen)
+**Umgesetzt (Cloud, selbst):**
+- ✅ Kollektions-Werbung (8 Kollektionen organisch, Sommer/Damen-Mode auch fürs Pixel) → führt auf Kollektions-Seiten = höherer Warenkorb
+- ✅ Geschenkfinder beworben (eigene Tool-Seite /pages/geschenkfinder, live 200) → hilft Unentschlossenen = Conversion
+- ✅ Tages-Offset für Kollektions/Geschenk-Posts → alle rotieren durch (keine Wiederholungs-Optik)
+- ✅ SEO-Meta-Beschreibungen der neuesten Importe gefüllt (SEO + Merchant-Feed)
+- ✅ Builder Gewinner-Format (Preis-Vergleich + Save-Trigger), Video-QA-Gate vor Upload
+
+**Offene Vorschläge (brauchen User/andere Lane):**
+1. 🔴 REVIEWS auf Top-Produkte (Judge.me) = Conversion-Hebel #1 (+270%). Echte Reviews → ich bau Stern-Reels automatisch.
+2. 🔴 Zeit-limitierter Aktions-Code (z.B. SOMMER15, 15% bis Sonntag) = Urgency → konvertiert warme Abbrecher. (Geld-Entscheid = dein OK.)
+3. 🔴 TikTok-Pixel-Kampagne live + Google/Bing Free Listings (Reichweite).
+4. 🟡 Mehr Preis-Vergleich-Meisterwerke bauen (bestes Format) — mache ich laufend.

@@ -176,9 +176,12 @@ function loadReels() {
   ];
   const collPosts = COLLECTIONS.map((c, i) => ({ type: 'image', image: c.image,
     caption: `Entdeck d ganzi ${c.label}\n${TRUST_LINES[i % TRUST_LINES.length]}\n👉 luxestyle.ch/collections/${c.handle} · –10% mit WELCOME10\n#schweiz #schweizmode #ootdschweiz #swissmade #fyp` }));
+  // 🎁 GESCHENKFINDER-WERBUNG (smart: hilft Unentschlossenen → Conversion + Engagement; eigene Tool-Seite)
+  collPosts.push({ type: 'image', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/0679602161121_0_P01.jpg?v=1781640714',
+    caption: 'Wüsstsch nid was schänke? 🎁 Üse Geschänk-Finder hilft dir – nach Typ & Budget. Probier en us 👉 luxestyle.ch/pages/geschenkfinder\n🇨🇭 Schweizer Shop · –10% mit WELCOME10\n#geschenkidee #schweiz #geschenk #ootdschweiz #fyp' });
 
   // MIX interleaven: überwiegend Bilder, jede 2. ein Reel, jede 5. ein Kollektions-Post, jede 6. eine Story.
-  const out = []; let ri = 0, si = 0, ci = 0;
+  const out = []; let ri = 0, si = 0, ci = DAYOFF; // ci-Tagesoffset → über die Tage rotieren ALLE Kollektionen + Geschenkfinder durch
   images.forEach((img, i) => {
     out.push(img);
     if (i % 2 === 1 && reels.length) out.push(reels[ri++ % reels.length]); // mehr Reels = mehr Vielfalt (User: zu viel gleich)
