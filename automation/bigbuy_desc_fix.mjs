@@ -29,15 +29,18 @@ function details(p){ const li=[]; const b=mans.get(String(p.manufacturer)); if(b
 const titleClean=s=>s.replace(/^[^\p{L}\p{N}]+/u,'').trim();
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
-// PHASE 1: alle Produkt-IDs SAMMELN (read-only, sortKey:ID stabil → kein Loop beim späteren Schreiben)
-const Q=`query($c:String){ products(first:100, query:"tag:bigbuy status:active", sortKey:ID, after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){edges{node{sku}}} } } } }`;
-let cursor=null, items=[], seen=new Set();
+// PHASE 1: alle Produkt-IDs SAMMELN (read-only → kein Mutations-Loop; Default-Sort paginiert vollständig)
+const Q=`query($c:String){ products(first:50, query:"tag:bigbuy status:active", after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){edges{node{sku}}} } } } }`;
+let cursor=null, items=[], seen=new Set(), pages=0;
 do{
-  const r=await gql(t,Q,{cursor}); const pg=r?.data?.products; if(!pg) break;
-  for(const e of pg.edges){ if(seen.has(e.node.id)) continue; seen.add(e.node.id); items.push(e.node); }
-  cursor=pg.pageInfo.hasNextPage?pg.pageInfo.endCursor:null;
+  const r=await gql(t,Q,{cursor}); const pg=r?.data?.products;
+  if(!pg){ console.log(`  ⚠️ Seite ${pages+1} fehlgeschlagen, Cursor=${cursor?.slice(0,16)} → 1× retry`); await sleep(3000); const r2=await gql(t,Q,{cursor}); if(!r2?.data?.products){ console.log('  ⚠️ erneut fehlgeschlagen → Abbruch Phase 1'); break; } var pg2=r2.data.products; }
+  const cur=pg||pg2;
+  for(const e of cur.edges){ if(seen.has(e.node.id)) continue; seen.add(e.node.id); items.push(e.node); }
+  cursor=cur.pageInfo.hasNextPage?cur.pageInfo.endCursor:null; pages++;
+  if(pages%10===0) console.log(`  Phase1 … ${items.length} gesammelt (Seite ${pages})`);
 }while(cursor);
-console.log(`Phase 1: ${items.length} eindeutige BigBuy-Produkte gesammelt.`);
+console.log(`Phase 1: ${items.length} eindeutige BigBuy-Produkte gesammelt (${pages} Seiten).`);
 
 // PHASE 2: Beschreibungen bauen + updaten
 let scanned=0, done=0, withSpec=0, batch=[];
