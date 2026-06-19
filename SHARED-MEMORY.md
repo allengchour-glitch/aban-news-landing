@@ -489,3 +489,8 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 > **🎁 NEU von CizQ6 (2026-06-18): Geschenkfinder-Seite** `/pages/geschenkfinder` (Page-ID 698754531713, published) —
 > geführter Gschenk-Finder (Für wen / Budget / Anlass → Kollektions-Links), reines HTML/CSS, mobil. Conversion-Tool.
 > Theme-Session: gern ins Hauptmenü/Hero verlinken („🎁 Geschenkfinder").
+
+**2026-06-19 (CizQ6) — Beauty-Kollektion erstellt + Filter/Suche-Auftrag an Theme-Session:**
+- ✅ NEU: Smart-Collection **💄 Beauty & Pflege** (`/collections/beauty-pflege`, 327 Produkte, TYPE=Beauty/Kosmetik + tag beauty), publiziert, SEO gesetzt, in Social-Queue-Werbung. (User wollte „beauty/schminke sachen".)
+- ⚠️ ECHTE SCHMINKE/MAKEUP dünn (nur Lidschatten/BB/Revlon-Etui) → mehr Makeup = Import (CJ/BigBuy-Creds nötig).
+- 🤝 FÜR THEME-SESSION (User-Wunsch „shop filter für bessere kategorie + suchleiste"): Collection-Page-FILTER (Faceted Search: Preis/Marke/Typ/Farbe) + prominente SUCHLEISTE im Header = Theme-Einstellung (Dawn: Filtering via Search&Discovery-App + theme filter settings). CizQ6 kann Theme-Live-Files nicht schreiben (MCP blockt). Bitte aktivieren.

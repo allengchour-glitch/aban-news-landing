@@ -173,6 +173,7 @@ function loadReels() {
     { handle: 'fitness-training', label: 'Fitness & Training 💪', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/S64188635_1752127868-remove-background0_e201d068-c786-4b35-aad0-418bad4097e7.jpg?v=1781880262' },
     { handle: 'lederwaren', label: 'Leder & Accessoires 👝', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/9359082762827_S64130277_P00.jpg?v=1781880275' },
     { handle: 'trainingsanzuege-sets', label: 'Trainingsanzüge & Sets 🏃', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/8054041765383_S64228713_P00.jpg?v=1781880260' },
+    { handle: 'beauty-pflege', label: 'Beauty & Pflege 💄', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0309979139019_0_P03.jpg?v=1781873705' },
   ];
   const collPosts = COLLECTIONS.map((c, i) => ({ type: 'image', image: c.image,
     caption: `Entdeck d ganzi ${c.label}\n${TRUST_LINES[i % TRUST_LINES.length]}\n👉 luxestyle.ch/collections/${c.handle} · –10% mit WELCOME10\n#schweiz #schweizmode #ootdschweiz #swissmade #fyp` }));
