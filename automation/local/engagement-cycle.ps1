@@ -28,10 +28,15 @@ if (-not $open) { Start-Process $brave "--remote-debugging-port=$port --user-dat
 
 git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
 
-# 2) ANALYSIEREN (jeder Lauf)
+# 1b) Worker selbst-deployen, falls Code geändert (Hash-Wächter, maximum auto)
+powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\worker-autodeploy.ps1" 2>$null
+
+# 2) ANALYSIEREN (jeder Lauf) — eingeloggt (Bot) + öffentlich (yt-dlp)
+node "automation/local/tiktok-bot.mjs" analyze --max 80 2>$null
 try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
 
-# 3) CHATTEN — Kommentare (Meta-API) + DMs (Browser). No-op ohne Token/Login.
+# 3) CHATTEN — TikTok-Kommentare (Bot) + IG/FB-Kommentare (Meta-API) + DMs (Browser). No-op ohne Token/Login.
+node "automation/local/tiktok-bot.mjs" engage --cap 10 2>$null
 if ($env:META_ACCESS_TOKEN) { node "automation/social-comment-reply.mjs" }
 node "automation/local/ig-dm-browser.mjs"
 node "automation/local/tiktok-dm-browser.mjs"
