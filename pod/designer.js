@@ -30,7 +30,7 @@
     upHint:'PNG/JPG · transparent PNG for logos', uploading:'Uploading …', upErr:'Upload error: ', tooBig:'File too large (max 10 MB).',
     cta:'🛒 Add my design to cart', empty:'Add text, an image or a sticker first.',
     baking:'Preparing print file …', adding:'Adding …', added:'✓ Added! Redirecting …', addErr:'Could not add: ', stillUp:'Image still uploading – please wait …', noVar:'Please select a size/color above first.',
-    fonts:['Modern Sans','Elegant Serif','Handwriting','Bold Display','Mono'],
+    fonts:['Modern Sans','Elegant Serif','Handwriting','Bold Display','Mono','Poster','Clean','Classic'],
     pSide:['Front','Back'], pPrintFile:'🖼️ Print file', pDesign:'🎨 Design', layerText:'Text', layerImage:'Image', layerSticker:'Sticker'
   } : {
     head:'Jetzt selbst gestalten', ph:'Dein Text …',
@@ -40,13 +40,13 @@
     upHint:'PNG/JPG · transparentes PNG für Logos', uploading:'Wird hochgeladen …', upErr:'Upload-Fehler: ', tooBig:'Datei zu gross (max 10 MB).',
     cta:'🛒 Mit meinem Design in den Warenkorb', empty:'Füge zuerst Text, ein Bild oder einen Sticker hinzu.',
     baking:'Druckdatei wird erstellt …', adding:'Wird hinzugefügt …', added:'✓ Im Warenkorb! Weiterleitung …', addErr:'Konnte nicht hinzufügen: ', stillUp:'Bild lädt noch hoch – kurz warten …', noVar:'Variante nicht gefunden – bitte oben Grösse/Farbe wählen.',
-    fonts:['Modern Sans','Elegant Serif','Handschrift','Bold Display','Mono'],
+    fonts:['Modern Sans','Elegant Serif','Handschrift','Bold Display','Mono','Poster','Clean','Klassisch'],
     pSide:['Vorne','Hinten'], pPrintFile:'🖼️ Druckdatei', pDesign:'🎨 Design', layerText:'Text', layerImage:'Bild', layerSticker:'Sticker'
   };
 
-  var FONTVALS=["'Helvetica Neue',Arial,sans-serif","Georgia,'Times New Roman',serif","'Brush Script MT','Segoe Script',cursive","'Arial Black','Helvetica Neue',sans-serif","'Courier New',monospace"];
+  var FONTVALS=["'Helvetica Neue',Arial,sans-serif","Georgia,'Times New Roman',serif","'Brush Script MT','Segoe Script',cursive","'Arial Black','Helvetica Neue',sans-serif","'Courier New',monospace","Impact,'Arial Narrow',sans-serif","'Trebuchet MS',Verdana,sans-serif","'Palatino Linotype','Book Antiqua',serif"];
   // Canvas-taugliche Font-Strings (Web-sichere Familien) parallel zu FONTVALS, {S}=Pixel
-  var FONTCANVAS=["bold {S}px Arial,Helvetica,sans-serif","bold {S}px Georgia,'Times New Roman',serif","{S}px 'Brush Script MT','Segoe Script',cursive","900 {S}px 'Arial Black',Arial,sans-serif","bold {S}px 'Courier New',monospace"];
+  var FONTCANVAS=["bold {S}px Arial,Helvetica,sans-serif","bold {S}px Georgia,'Times New Roman',serif","{S}px 'Brush Script MT','Segoe Script',cursive","900 {S}px 'Arial Black',Arial,sans-serif","bold {S}px 'Courier New',monospace","bold {S}px Impact,'Arial Narrow',sans-serif","bold {S}px 'Trebuchet MS',Verdana,sans-serif","{S}px 'Palatino Linotype','Book Antiqua',serif"];
   var FONTS=FONTVALS.map(function(v,i){ return {n:T.fonts[i], v:v, c:FONTCANVAS[i]}; });
   var COLORS=['#111111','#ffffff','#c1922f','#b3122b','#1e4fd6','#1c8a4b','#e84393','#000080','#ff7a00','#7b2ff7','#00b3b3','#6b6b6b'];
   var ADD_URL=(window.Shopify&&Shopify.routes&&Shopify.routes.cart_add_url)||'/cart/add.js';
@@ -121,8 +121,8 @@
     body.appendChild(preLbl); body.appendChild(preRow);
 
     // FERTIGE VORLAGEN (1 Tipp = komplettes Design) — Anfänger: sofort schön · Profis: danach frei tweaken.
-    var TEMPLATES = EN ? [{t:'Make it yours',f:3,c:'#c1922f'},{t:'Unique',f:1,c:'#111111'},{t:'Good Vibes',f:2,c:'#1e4fd6'},{t:'Swiss made',f:0,c:'#b3122b'},{t:'Stay cozy',f:2,c:'#7b2ff7'}]
-                       : [{t:'Mach dys eiges Teil',f:3,c:'#c1922f'},{t:'Hoi 🇨🇭',f:2,c:'#b3122b'},{t:'Einzigartig',f:1,c:'#111111'},{t:'Schwiizer Härz ❤️',f:0,c:'#b3122b'},{t:'Sünneli ☀️',f:2,c:'#ff7a00'}];
+    var TEMPLATES = EN ? [{t:'Make it yours',f:3,c:'#c1922f'},{t:'Unique',f:1,c:'#111111'},{t:'Good Vibes',f:2,c:'#1e4fd6'},{t:'Swiss made',f:0,c:'#b3122b'},{t:'Stay cozy',f:2,c:'#7b2ff7'},{t:'BÄRN',f:5,c:'#111111'},{t:'Wanderlust',f:7,c:'#1c8a4b'}]
+                       : [{t:'Mach dys eiges Teil',f:3,c:'#c1922f'},{t:'Hoi 🇨🇭',f:2,c:'#b3122b'},{t:'Einzigartig',f:1,c:'#111111'},{t:'Schwiizer Härz ❤️',f:0,c:'#b3122b'},{t:'Sünneli ☀️',f:2,c:'#ff7a00'},{t:'BÄRN',f:5,c:'#111111'},{t:'Züri',f:5,c:'#b3122b'}];
     var tplLbl=el('div',{style:"font-size:12px;color:#8a8a90;margin:2px 0 6px;font-weight:700;"}, EN?'Templates — one tap, done:':'Vorlagen — ein Tipp, fertig:');
     var tplRow=el('div',{style:"display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;"});
     TEMPLATES.forEach(function(tp,i){ var b=el('button',{type:'button','data-tpl':i,style:"padding:9px 13px;border-radius:10px;border:1.5px solid #ece7df;background:#faf8f5;cursor:pointer;font-size:14px;font-weight:800;"}, tp.t); b.style.fontFamily=FONTS[tp.f].v; b.style.color=tp.c; tplRow.appendChild(b); });
