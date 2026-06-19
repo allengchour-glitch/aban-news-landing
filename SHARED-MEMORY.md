@@ -11,6 +11,15 @@
 
 > **⚠️ 2026-06-14 (Luxestyle-Session) DOPPEL-POST-FIX:** Es gab ZWEI Meta-Poster (GitHub-Actions social-/story-/video-meta-autopost + Cloudflare-Worker luxe-poster) → doppelte IG/FB-Posts. Die 3 Actions-Cron-Poster sind jetzt DEAKTIVIERT. **Der Cloudflare-Worker ist der EINE Meta-Poster.** Keine andere Session diese Workflows reaktivieren!
 
+## ⚠️ TIKTOK-CLOUD (Browserbase) — WARUM ES NICHT LÄUFT (2026-06-19, NICHT nochmal fragen!)
+**User hat Browserbase EINGERICHTET** (Secrets `BROWSERBASE_API_KEY/PROJECT_ID/CONTEXT_ID` als GitHub-Secrets + Context-Login).
+**ABER:** (1) der Runner war **GitHub Actions (`tiktok-cloud-autopost.yml`) = kontoweit GESPERRT** → Cron lief nie seit der Sperre.
+(2) Die **interaktive Cloud-Session sieht GitHub-Secrets NICHT** → `tiktok-cloud-autopost.mjs` no-opt hier („Kein Browserbase-Context").
+**FIX (einmalig, beendet die Schleife):** die 3 `BROWSERBASE_*`-Werte als **ENV-Variablen DIESER Claude-Code-Umgebung**
+setzen (claude.ai/code → Umgebung → Variables), NICHT als GitHub-Secret → dann läuft `node automation/tiktok-cloud-autopost.mjs`
+aus jeder Cloud-Session. ⚠️ Rest-Risiko: Gratis-Browserbase + Cloud-IP → TikTok kann Captcha/Block werfen (Residential-Proxy = bezahlt).
+**NICHT den User wiederholt nach TT-/Browserbase-Tokens fragen — Stand steht HIER.**
+
 ## 🚨🚨 NOTFALL 2026-06-19 ~10:40 — SHOP-DOMAIN DOWN (luxestyle.ch NICHT MEHR VERBUNDEN)  ✅ GELÖST ~11:10
 **✅ GELÖST:** User hat luxestyle.ch in Admin→Domains **neu verbunden + als primär gesetzt** → SSL aktiv, Storefront wieder
 **200** (Start/Produkt/Kollektion verifiziert). www.luxestyle.ch propagiert noch kurz. **Lehre:** luxestyle.ch war komplett
