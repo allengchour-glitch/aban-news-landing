@@ -183,7 +183,7 @@ const CONFIG = {
   herrenmode: { coll: { handle: 'fur-ihn', title: '👨 Für Ihn', tag: 'herren' },
     extraTags: ['herren', 'mode', 'streetwear', 'premium'], type: 'Herrenmode', maxCost: MAX_COST_EUR, sized: true,
     anchor: ['herrenhemd', 'herren-hemd', 'poloshirt', 'herren t-shirt', 'herren-t-shirt', 'herrenhose', 'herren-hose', 'herren-pullover', 'herrenpullover', 'herren-shorts', 'camiseta hombre', 'sudadera hombre'],
-    ban: ['damen', 'kinder', 'baby', 'mujer', 'niño', 'mädchen'],
+    ban: ['damen', 'kinder', 'baby', 'mujer', 'niño', 'niña', 'mädchen', 'jungen', 'kids'],
     bullets: ['Maskuliner Schnitt', 'Marken-Mode, EU-Lager', 'Vielseitig kombinierbar', '100% Original, schnelle EU-Lieferung'] },
   kueche: { coll: { handle: 'sub-kueche', title: '🍳 Küche', tag: 'kueche' },
     extraTags: ['wohnen', 'kueche', 'geschenk', 'premium'], type: 'Küche', maxCost: MAX_COST_EUR,
