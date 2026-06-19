@@ -112,6 +112,14 @@
     if(IMG_ENABLED){ btnImg=toolBtn(T.addImg); tools.appendChild(btnImg); }
     body.appendChild(tools);
 
+    // Mundart-Spruch-Presets (Ein-Tipp) — weniger Reibung + einzigartig (User 2026-06-19 „selbstgestalten verbessern")
+    var PRESETS = EN ? ['Make it yours','Unique','Swiss made','Good vibes','Stay cozy','Be kind','Wanderlust','Hello']
+                     : ['Hoi 🇨🇭','Mach dys eiges Teil','Einzigartig','Schwiizer Härz ❤️','Bärn','Züri','Merci vielmal','Sünneli'];
+    var preLbl=el('div',{style:"font-size:12px;color:#8a8a90;margin-bottom:6px;font-weight:700;"}, EN?'Quick text — one tap:':'Schnell-Spruch — ein Tipp:');
+    var preRow=el('div',{style:"display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;"});
+    PRESETS.forEach(function(p){ preRow.appendChild(el('button',{type:'button','data-pre':p,style:"padding:7px 11px;border-radius:999px;border:1.5px solid #c1922f;background:#fff;color:#16151a;font-weight:700;font-size:13px;cursor:pointer;"},p)); });
+    body.appendChild(preLbl); body.appendChild(preRow);
+
     // Kontextleiste (Schrift/Farbe für aktives Text-Layer)
     var ctx=el('div',{style:"display:none;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:10px;margin-bottom:10px;"});
     var ctxIn=el('input',{type:'text',maxlength:'40',placeholder:T.ph,style:"width:100%;box-sizing:border-box;padding:10px;border:1px solid #ddd;border-radius:9px;font-size:15px;margin-bottom:8px;"});
@@ -236,6 +244,8 @@
 
     // Werkzeug-Aktionen
     btnText.addEventListener('click',function(){ lib.style.display='none'; addLayer(newText()); ctxIn.focus(); });
+    // Preset-Spruch: Text-Layer mit fertigem Schweizer Spruch hinzufügen (ein Tipp)
+    preRow.addEventListener('click',function(e){ var b=e.target.closest('[data-pre]'); if(!b) return; lib.style.display='none'; var ly=newText(); ly.text=b.getAttribute('data-pre'); addLayer(ly); ctxIn.value=ly.text; layoutNode(ly); syncFormInputs(); ctxIn.focus(); });
     btnSticker.addEventListener('click',function(){ ctx.style.display='none'; lib.style.display=lib.style.display==='none'?'block':'none'; loadStickers(); });
     if(btnImg){ btnImg.addEventListener('click',function(){ lib.style.display='none'; fi.click(); }); }
 
