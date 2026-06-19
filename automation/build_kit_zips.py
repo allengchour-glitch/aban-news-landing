@@ -74,6 +74,11 @@ def main() -> int:
     for k in ("GCP_SA_KEY", "GCP_PROJECT", "GEMINI_API_KEY", "VERTEX_TEXT_MODEL", "GEMINI_MODEL"):
         os.environ.pop(k, None)
     KITS.mkdir(parents=True, exist_ok=True)
+    # Vorhandene ZIPs (evtl. mit altem Salt gebaut) entfernen, damit der Deploy GENAU
+    # den aktuellen Salt-Satz ausliefert — kein totes Gewicht, keine Verwirrung.
+    # (Nur wenn ein Salt gesetzt ist; ohne Salt = no-op oben, committете ZIPs bleiben.)
+    for z in KITS.glob("*.zip"):
+        z.unlink()
     total = 0
     total += build_for(REPO / "data" / "kit-catalog.json", "de", salt)
     total += build_for(REPO / "data" / "kit-catalog-en.json", "en", salt)
