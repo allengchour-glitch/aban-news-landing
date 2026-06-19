@@ -31,6 +31,7 @@ const USER = process.env.TT_USER || '@luxestyle.ch';
 const args = process.argv.slice(2);
 const cmd = (args[0] || 'all').toLowerCase();
 const GO = args.includes('--go');                 // echte Löschung (sonst dry)
+const DRY = args.includes('--dry');               // Trockenlauf für engage
 const flag = (name, def) => { const i = args.indexOf(name); return i >= 0 && args[i + 1] ? args[i + 1] : def; };
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -160,10 +161,60 @@ async function doDelete() {
   log(`✅ delete: ${n}/${targets.length} gelöscht. Ledger: reports/tiktok-deleted.txt`);
 }
 
+/* ── ENGAGE: Kommentare auf eigenen Videos beantworten (Spam-Filter, Caps, anti-Block) ── */
+async function doEngage() {
+  const CAP = Math.min(parseInt(flag('--cap', '12'), 10), 20); // max 20/Lauf (anti-Block)
+  const LED = path.join(REPORTS, 'tiktok-engaged.txt');
+  const done = fs.existsSync(LED) ? fs.readFileSync(LED, 'utf8').split('\n').filter(Boolean) : [];
+  const { reply, isSpam } = await import(path.join(ROOT, 'automation/chat/responder.mjs'));
+  const { ctx } = await connect();
+  const p = await ctx.newPage();
+  log('▶ engage — öffne TikTok-Studio Kommentar-Verwaltung…');
+  await p.goto('https://www.tiktok.com/tiktokstudio/comment', { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+  await sleep(7000);
+  for (let i = 0; i < 6; i++) { await p.mouse.wheel(0, 2000).catch(() => {}); await sleep(1200); }
+  // Kommentar-Karten finden (tolerant): Container mit Text + „Antworten/Reply"-Affordanz
+  let cards = p.locator('div:has-text("Reply"), div:has-text("Antworten")');
+  const n = await cards.count().catch(() => 0);
+  if (!n) {
+    await p.screenshot({ path: path.join(process.cwd(), 'tiktok-engage-diag.png') }).catch(() => {});
+    const d = await p.evaluate(() => ({ url: location.href, title: document.title })).catch(() => ({}));
+    log('⚠️ Keine Kommentar-Karten gefunden. DIAG', JSON.stringify(d), '· Screenshot: tiktok-engage-diag.png');
+    return;
+  }
+  let sent = 0;
+  for (let i = 0; i < n && sent < CAP; i++) {
+    const card = cards.nth(i);
+    const txt = ((await card.innerText().catch(() => '')) || '').replace(/\s+/g, ' ').trim();
+    if (!txt || txt.length < 2) continue;
+    const key = txt.slice(0, 60);
+    if (done.includes(key)) continue;
+    if (isSpam(txt)) { log('   ⏭️ Spam übersprungen'); continue; }
+    const ans = reply(txt);
+    if (!ans) continue; // null = nicht antworten
+    if (DRY) { log(`   [dry] würde antworten auf "${txt.slice(0, 40)}" → "${ans.slice(0, 50)}"`); sent++; continue; }
+    // Reply-Knopf der Karte → Eingabe → senden
+    const rb = card.locator('text=/^(Reply|Antworten)$/i').first();
+    if (await rb.count().catch(() => 0)) await rb.click().catch(() => {});
+    await sleep(1200);
+    const inp = p.locator('div[contenteditable="true"], textarea').last();
+    if (await inp.count().catch(() => 0)) {
+      await inp.click().catch(() => {});
+      await inp.type(ans, { delay: 14 }).catch(() => {});
+      await sleep(700);
+      const post = p.locator('button:has-text("Post"), button:has-text("Posten"), button:has-text("Send"), button:has-text("Senden")').last();
+      if (await post.count().catch(() => 0)) { await post.click().catch(() => {}); sent++; fs.appendFileSync(LED, key + '\n'); log(`   💬 geantwortet (${sent}/${CAP})`); }
+    }
+    await sleep(8000 + Math.floor(Math.random() * 12000)); // 8–20s Pause (anti-Block)
+  }
+  log(`✅ engage: ${sent} Antworten. Ledger: reports/tiktok-engaged.txt`);
+}
+
 (async () => {
   if (cmd === 'post') return doPost();
   if (cmd === 'analyze') { await doAnalyze(); return; }
+  if (cmd === 'engage') { await doEngage(); return; }
   if (cmd === 'delete') { await doDelete(); return; }
-  if (cmd === 'all') { await doAnalyze(); doPost(); return; }
-  log('Unbekannt. Befehle: post | analyze | delete | all');
+  if (cmd === 'all' || cmd === 'max') { await doAnalyze(); doPost(); await doEngage(); return; }
+  log('Unbekannt. Befehle: post | analyze | engage | delete | all | max');
 })();

@@ -42,6 +42,9 @@ node "automation/local/tiktok-bot.mjs" analyze --max 80 2>$null
 try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
 node "automation/brain/brain.mjs" 2>$null
 
+# 4a2) ENGAGE — Kommentare auf eigenen Videos beantworten (Spam-Filter, Cap 12, anti-Block-Pausen)
+node "automation/local/tiktok-bot.mjs" engage --cap 12 2>$null
+
 # 4b) AUTO-AUFRÄUMEN (User 2026-06-19 „automatisch"): Verlierer löschen — NUR 1×/Tag (frühester Lauf < 12 Uhr),
 #     mit harten Sicherheits-Caps: max 3/Lauf, unter 60 Views, Top-5-Gewinner + tiktok-keep.txt geschützt, Ledger.
 if ((Get-Date).Hour -lt 12) {
