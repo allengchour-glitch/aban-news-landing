@@ -81,8 +81,15 @@ function toSilent(file) {
 }
 
 (async () => {
-  const file = pickReel();
+  let file = pickReel();
   if (!file || !fs.existsSync(file)) { log('Kein offenes Reel zum Posten (alle in tiktok-upload-done.txt). No-op.'); process.exit(0); }
+  // QA-GATE (User 2026-06-19 „immer neue Videos analysieren ob's passt"): vor dem Posten pruefen
+  // (Format/Vollstaendigkeit + Gemini-Vision asiat.Schrift/Watermark/Qualitaet). Durchfall -> ueberspringen.
+  for (let tries = 0; file && tries < 8; tries++) {
+    try { execSync(`node "${path.join(ROOT, 'automation/video/video-qa.mjs')}" "${file}"`, { stdio: 'inherit' }); break; }
+    catch { log('⚠️ QA durchgefallen → ueberspringe ' + path.basename(file)); fs.appendFileSync(DONE, path.basename(file) + '\n'); file = pickReel(); }
+  }
+  if (!file || !fs.existsSync(file)) { log('Kein QA-bestandenes Reel offen. No-op.'); process.exit(0); }
   const slug = path.basename(file).replace('.mp4', '');
   let caption = captionFromQueue(file) || CAPS[slug] || `${slug} ✨ luxestyle.ch · –10% WELCOME10 #schweizmode #fyp`;
   // Trust-Winkel (Recherche „Vertrauen VOR Verkauf"): ~jeder 3. Reel kriegt eine WAHRE Trust-Zeile.
