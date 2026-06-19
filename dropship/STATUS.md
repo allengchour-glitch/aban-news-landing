@@ -3,6 +3,16 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## ✅ 2026-06-19 (SPÄT — TikTok-Posten LÖST + Fernsteuerung + Selbst-Verbesserung + Shop-Rettung)
+- **🛒 SHOP WAR DOWN → GEFIXT:** luxestyle.ch 503 weil **Shop geschlossen** (Shopify-Mail „Du hast LuxeStyle geschlossen") → primaryDomain auf myshopify zurückgefallen → Domain getrennt. **User hat Domain in Admin→Domains neu verbunden+primär** → wieder 200, SSL aktiv, www→301. (Lehre `shop_503_domain`.)
+- **🎵 TIKTOK-POSTEN LÄUFT (bestätigt „es geht"):** Brave-Port-Fix = **ZUERST `taskkill brave`**, dann mit `--remote-debugging-port=9222` + brave-agent starten + bei tiktok.com einloggen. Klick-Starter `TIKTOK-JETZT.bat`/`BRAVE-PORT-START.bat`. (Lehre `tiktok_brave_port_fix`.)
+- **🎛️ FERNSTEUERUNG ohne am PC zu sein:** `cmd-poll.ps1` + Task **`LuxeCmd`** (alle 5 Min) drained Worker-Queue + führt aus. Cloud pusht `?key=…&cmd=tiktok|engage|follower|analyse|tutti|anibis|campaign-dry|campaign-go`. Doku `dropship/FERNSTEUERUNG.md`. (Kein Dauer-Listener → kein Git-Lock.)
+- **🔄 24/7 SELBST-VERBESSERUNG:** `analyse-run.ps1` (Task `LuxeAnalyse`, stündlich): analysieren→Pixel-Check(alle Varianten)→lernen→Top-Produkte sortieren→Queue neu→commit/push→Cloud-cmd. Wird ohne User besser.
+- **🎬 NUR BESTE VIDEOS:** Upload nimmt **Meisterwerke zuerst** + **Pre-Post-QA-Gate** `video-qa.mjs` (Format+Vollständigkeit+Gemini-Vision asiat.Schrift/Watermark/Qualität → Durchfall=übersprungen). Builder baut **Gewinner-Format** (COMPARE „CHF X statt Y" + Save-Trigger).
+- **🤖 SUPERBOT-Architektur:** direkte Windows-Tasks (kein Worker-Poll/Listener/git im Hot-Path → kein Lock). `SUPERBOT-SETUP.bat`/`TIKTOK-AUTONOM.bat`. Git-Lock immer PC-lokal (Reboot+`git reset` = sauber).
+- **🎯 Pixel D8EKVR:** verifiziert live auf allen Seiten/Varianten (Browser-Theme+Shopify-App). Server-Events-API = Fallback (braucht Token).
+- **🔴 NUR USER (Wachstum):** (1) bezahlte TikTok-Pixel-Kampagne freigeben (Dry-Run ready, ads.tiktok.com-Login), (2) Google Merchant „Free Listings" AN, (3) PC an+Brave eingeloggt, (4) optional Auto-Login + 1× git reset für Cloud-Propagation. Gehirn 104 Regeln.
+
 ## ✅ 2026-06-19 (AUTO-Session — KI-Stack + Google-Merchant-Kontrolle + neues Reel live-ready)- **🧠 KI-STACK gemappt** (`dropship/KI-STACK.md`): jede Gratis-KI nach Stärke (Text Groq/Gemini · Bild Pollinations/FLUX · Video ffmpeg/Luma · Musik CC-BY/ElevenLabs · Voice piper · Vision Gemini) + Router-Status. Alles läuft schon mit Auto-Fallback.
 - **🔧 improve.sh 1. Lauf:** Health/Analyse/Lernen → Queue frisch (34 Posts, 0 Dubletten). Hook-Rang: mundart(796) > preis_vergleich(381).
 - **🔍 GOOGLE-MERCHANT-KONTROLLE:** Kanal aktiv, **alle 2895 Produkte publiziert (100%)**, Markt CH-only (DACH aus). EINZIGER Gap = **Standard-Produktkategorie meist leer** → an Taxonomie-Session via SHARED-MEMORY übergeben. User-only: Free-Listings AN + Approval-Check im Merchant Center.
