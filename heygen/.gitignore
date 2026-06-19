@@ -1,0 +1,5 @@
+# Generierte Videos nicht ins Repo committen (zu groß / gehören dir lokal)
+out/
+*.mp4
+# Echte Queue mit deinen IDs/Texten lokal halten; nur die *.example.json wird versioniert
+queue.json

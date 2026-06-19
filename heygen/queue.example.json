@@ -1,0 +1,20 @@
+[
+  {
+    "name": "luxestyle-intro",
+    "text": "Willkommen bei LuxeStyle – Premium-Mode und Accessoires aus der Schweiz. Versandkostenfrei ab 65 Franken.",
+    "avatar": "ERSETZEN_avatar_id",
+    "voice": "ERSETZEN_voice_id",
+    "w": 1080,
+    "h": 1920,
+    "bg": "#ffffff"
+  },
+  {
+    "name": "aban-erklaer",
+    "text": "aban news erklärt dir KI ehrlich und ohne Hype – jeden Tag, in zwei Minuten.",
+    "avatar": "ERSETZEN_avatar_id",
+    "voice": "ERSETZEN_voice_id",
+    "w": 1920,
+    "h": 1080,
+    "bg": "#0b0b0c"
+  }
+]

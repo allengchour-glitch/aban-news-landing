@@ -1,0 +1,13 @@
+{
+  "output": "freegen/out/abannews-newsletter.mp4",
+  "w": 1080, "h": 1920, "fps": 30,
+  "music": "automation/music/luxe-premium.wav",
+  "brand": "ABANNEWS.COM",
+  "scenes": [
+    { "text": "KI ehrlich erklärt.", "seconds": 2.5, "bg": "#0b0b0c" },
+    { "text": "Kein Hype. Keine leeren Versprechen.", "seconds": 3, "bg": "#101018" },
+    { "text": "Was wirklich funktioniert — und was nicht.", "seconds": 3, "bg": "#0e1410" },
+    { "text": "Jeden Tag. In 2 Minuten.", "seconds": 2.5, "bg": "#101018" },
+    { "text": "Gratis-Newsletter auf abannews.com", "seconds": 3, "bg": "#0b0b0c" }
+  ]
+}

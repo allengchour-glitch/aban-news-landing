@@ -1,0 +1,11 @@
+[
+  { "out": "freegen/img/abannews-newsletter.png", "size": "post", "kicker": "Gratis-Newsletter",
+    "headline": "KI ehrlich erklärt", "subline": "Jeden Tag in 2 Minuten — kein Hype, nur was wirklich funktioniert.",
+    "brand": "ABANNEWS.COM", "bg": "#0b0b0c", "accent": "#e8b04b" },
+  { "out": "freegen/img/abannews-kits.png", "size": "square", "kicker": "KI-Schnellstart",
+    "headline": "Fertige KI-Kits für dein Business", "subline": "19 Branchen · Prompts & Checklisten · sofort einsetzbar.",
+    "brand": "ABANNEWS.COM/SHOP", "bg": "#101018", "accent": "#5ad19b" },
+  { "out": "freegen/img/abannews-dsgvo.png", "size": "og", "kicker": "Gratis-Tool",
+    "headline": "KI DSGVO-konform nutzen", "subline": "Schneller Check für KMU in DACH.",
+    "brand": "ABANNEWS.COM", "bg": "#0e1014", "accent": "#6ab7ff" }
+]
