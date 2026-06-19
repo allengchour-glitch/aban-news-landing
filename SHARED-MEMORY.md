@@ -11,15 +11,12 @@
 
 > **⚠️ 2026-06-14 (Luxestyle-Session) DOPPEL-POST-FIX:** Es gab ZWEI Meta-Poster (GitHub-Actions social-/story-/video-meta-autopost + Cloudflare-Worker luxe-poster) → doppelte IG/FB-Posts. Die 3 Actions-Cron-Poster sind jetzt DEAKTIVIERT. **Der Cloudflare-Worker ist der EINE Meta-Poster.** Keine andere Session diese Workflows reaktivieren!
 
-## 🚨🚨 NOTFALL 2026-06-19 ~10:40 — SHOP-DOMAIN DOWN (luxestyle.ch NICHT MEHR VERBUNDEN)
-**luxestyle.ch + luxestyle.com.co → 503** (User bestätigt am Handy down). **EXAKTE URSACHE per Admin-API verifiziert:**
-`luxestyle.ch` ist **an keinen Store angehängt** — am Shop hängen nur 3 `.myshopify.com`-Domains, **primaryDomain ist auf
-`au3j0y-hq.myshopify.com` zurückgefallen.** Store SELBST ist gesund (`au3j0y-hq.myshopify.com` → 200, sslEnabled). DNS von
-luxestyle.ch zeigt korrekt auf Shopify (23.227.38.65), aber ohne Store-Anbindung = kein SSL-Zert = 503/`upstream error`.
-**→ KEIN API-FIX MÖGLICH** (Admin-GraphQL hat KEINE Domain-Mutation — alles geprüft). **NUR Admin-UI:**
-Shopify-Admin → **Einstellungen → Domains → „Bestehende Domain verbinden" → luxestyle.ch → als PRIMÄR setzen** →
-SSL stellt Shopify autom. aus (DNS schon korrekt → Minuten). Falls „mit anderem Store verbunden" → dort zuerst entfernen.
-**PRIORITÄT #1.** Social-Posten (CizQ6) pausiert bis Shop wieder 200. Interim-Verkaufslink: au3j0y-hq.myshopify.com (200).
+## 🚨🚨 NOTFALL 2026-06-19 ~10:40 — SHOP-DOMAIN DOWN (luxestyle.ch NICHT MEHR VERBUNDEN)  ✅ GELÖST ~11:10
+**✅ GELÖST:** User hat luxestyle.ch in Admin→Domains **neu verbunden + als primär gesetzt** → SSL aktiv, Storefront wieder
+**200** (Start/Produkt/Kollektion verifiziert). www.luxestyle.ch propagiert noch kurz. **Lehre:** luxestyle.ch war komplett
+aus dem Store ausgehängt (primaryDomain auf myshopify zurückgefallen) → 503. KEIN API-Fix (Admin-GraphQL hat 0 Domain-Mutationen)
+→ nur Admin-UI „Bestehende Domain verbinden". Bei künftigem 503 ZUERST `shop.domains`/`primaryDomain` per API prüfen.
+**Historie (Diagnose):** Store selbst war immer gesund (au3j0y-hq.myshopify.com → 200); nur die Custom-Domain-Anbindung fehlte.
 
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)
 | Session | Aufgabe | Detail-Memory | Branch |
