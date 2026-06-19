@@ -1,20 +1,34 @@
-# VOLLAUTOMAT.ps1 — robuster PC-Bot OHNE Cloudflare-Worker / Listener-Poll / git-pull.
-# WARUM: vermeidet KV-Gratis-Limit (Worker), Git-Lock (kein pull) und Dauer-Polling.
-# Startet die Browser-/Automations-Skripte DIREKT, je nach Modus. Von Windows-Task aufgerufen.
+# VOLLAUTOMAT.ps1 — SUPER-AUTONOMER PC-Bot. Robuste Architektur (User 2026-06-19 „fix für super autonome bot"):
+# Direkte Skript-Ausführung über Windows-Tasks — KEIN Cloudflare-Worker-Poll, KEIN Listener-Dauerpoll,
+# KEIN git-pull im Hot-Path → KEIN Git-Lock. Updates laufen separat im Modus 'update' (ruhiges Fenster).
 #
-# Aufruf:  powershell -ExecutionPolicy Bypass -File VOLLAUTOMAT.ps1 -Mode post|engage|weekly
-#   post   (1-2x/Tag): 1 Reel auf TikTok + tutti/anibis-Inserate + Gehirn lernt
-#   engage (mehrmals/Tag): Follower + Kommentare/DMs beantworten + FB-Gruppen  (User: "mehrmals analysiere+chatte+folge, weniger selber posten")
-#   weekly (1x/Woche): Entfolgen der Nicht-Zurueckfolger
+# Aufruf:  powershell -ExecutionPolicy Bypass -File VOLLAUTOMAT.ps1 -Mode update|post|engage|weekly
+#   update (1x/Tag früh, allein): lock-proof Repo-Sync (kill node, reset --hard) → neuester Code
+#   post   (10:00 + 19:00): TikTok analyze→post→engage + tutti/anibis + lernen
+#   engage (09/12/15/21):  analyze + Kommentare beantworten + Follower + DMs + lernen
+#   weekly (So): Entfolgen + FB-Gruppen
 #
-# Voraussetzung: Brave-Profil 'brave-agent' bei IG/TikTok/tutti EINGELOGGT. PC an.
+# Voraussetzung: Brave-Profil 'brave-agent' bei TikTok/IG/tutti EINGELOGGT. PC an. Eingerichtet via SUPERBOT-SETUP.bat.
 param([string]$Mode = "post")
 $ErrorActionPreference = "Continue"
+$branch = "claude/luxestyle-product-CizQ6"
 $repo = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
 $log = Join-Path $PSScriptRoot "vollautomat.log"
 function Log($m){ $line="[{0}] {1}" -f (Get-Date -Format "yyyy-MM-dd HH:mm:ss"), $m; Write-Host $line; Add-Content $log $line }
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
+
+# ===== Modus 'update' : LOCK-PROOF Repo-Sync (läuft allein, kein Posting gleichzeitig → keine Lock-Konkurrenz) =====
+if ($Mode -eq "update") {
+  Log "=== UPDATE: lock-proof Sync auf origin/$branch ==="
+  Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue  # node-Locks lösen
+  & attrib -R "$repo\*.*" /S /D 2>$null                                                               # Schreibschutz weg
+  & git fetch origin $branch 2>&1 | ForEach-Object { Add-Content $log $_ }
+  & git reset --hard "origin/$branch" 2>&1 | ForEach-Object { Add-Content $log $_ }
+  & git clean -fd 2>&1 | ForEach-Object { Add-Content $log $_ }
+  Log "UPDATE fertig: $(& git rev-parse --short HEAD)"
+  return
+}
 
 # --- Brave-Debug-Port 9222 sicherstellen (kein git noetig) ---
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
@@ -26,10 +40,11 @@ if (-not $open -and (Test-Path $brave)) {
   Start-Sleep -Seconds 18
 }
 
-function Node($script, $env_pairs=@{}){
+# Node-Runner mit Argumenten + ENV. Best-effort, ein Fehler stoppt den Rest nicht.
+function Node($script, [string[]]$nargs=@(), $env_pairs=@{}){
   foreach($k in $env_pairs.Keys){ Set-Item -Path "Env:$k" -Value $env_pairs[$k] }
-  Log "RUN $script $(($env_pairs.GetEnumerator()|%{$_.Key+'='+$_.Value}) -join ' ')"
-  try { & node $script 2>&1 | ForEach-Object { Add-Content $log $_ } ; Log "OK $script" }
+  Log ("RUN {0} {1} {2}" -f $script, ($nargs -join ' '), (($env_pairs.GetEnumerator()|%{$_.Key+'='+$_.Value}) -join ' '))
+  try { & node $script @nargs 2>&1 | ForEach-Object { Add-Content $log $_ } ; Log "OK $script" }
   catch { Log "FEHLER $script : $_" }
   foreach($k in $env_pairs.Keys){ Remove-Item -Path "Env:$k" -ErrorAction SilentlyContinue }
 }
@@ -37,12 +52,16 @@ function Node($script, $env_pairs=@{}){
 Log "=== VOLLAUTOMAT Modus=$Mode START ==="
 switch ($Mode) {
   "post" {
-    Node "automation/local/tiktok-upload-browser.mjs"
-    Node "automation/local/tutti-post.mjs"  @{ AUTO_PUBLISH="1"; TUTTI_CAP="3" }
-    Node "automation/local/anibis-post.mjs" @{ AUTO_PUBLISH="1"; ANIBIS_CAP="3" }
+    Node "automation/local/tiktok-bot.mjs" @("analyze","--max","80")    # erst lernen
+    Node "automation/local/tiktok-bot.mjs" @("post")                    # dann 1 Reel posten (stumm)
+    Node "automation/local/tiktok-bot.mjs" @("engage","--cap","10")     # Kommentare beantworten
+    Node "automation/local/tutti-post.mjs"  @() @{ AUTO_PUBLISH="1"; TUTTI_CAP="3" }
+    Node "automation/local/anibis-post.mjs" @() @{ AUTO_PUBLISH="1"; ANIBIS_CAP="3" }
     Node "automation/brain/self_learn.mjs"
   }
   "engage" {
+    Node "automation/local/tiktok-bot.mjs" @("analyze","--max","80")
+    Node "automation/local/tiktok-bot.mjs" @("engage","--cap","12")
     Node "automation/local/ch-follower-growth.mjs"
     Node "automation/local/ig-dm-browser.mjs"
     Node "automation/local/tiktok-dm-browser.mjs"
