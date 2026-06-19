@@ -230,6 +230,8 @@ const C_TOPIC = [
   ['wo',      /\bwo\b|link|wo chauf|wo gits|woher|where|wie bestell|bestelle/i],
   ['farbe',   /farb|color|welche farbe|farbig|gäll|schwarz|wiis|rot|blau/i],
   ['retoure', /retour|rückgab|umtausch|zurück|reklamation|return/i],
+  ['geschenk',/geschenk|present|gift|für mini|für mis|zum geburtstag|birthday|für sie|für ihn|verschenke/i],
+  ['material',/material|qualität|quality|stoff|echt(e|s)? (leder|gold|silber)|woraus|fabric|aus was/i],
   ['lob',     /schön|geil|nice|wow|traumhaft|liebe|love|wunderschön|hammer|mega|so härzig|😍|❤️|🔥|💕/i],
 ];
 const C_REPLY = {
@@ -240,6 +242,8 @@ const C_REPLY = {
   wo:      ['Alles uf 👉 luxestyle.ch 🛍️🇨🇭', 'Direkt im Shop: luxestyle.ch ✨ (–10% mit WELCOME10)', 'Findsch uf luxestyle.ch – eifach im Suechfäld iigä 🔎'],
   farbe:   ['D verfügbare Farbe gsehsch bim Produkt uf luxestyle.ch 🎨', 'Mehreri Farbe verfügbar – lusch mau uf luxestyle.ch 🎨✨'],
   retoure: ['Kei Sorg – 30 Täg Rückgab 🤍 Eifach bi üs melde, mir helfe gern!', '30 Tage Rückgaberächt 📦 Schrib üs eifach, mir regle das unkompliziert 🇨🇭'],
+  geschenk:['Es perfekts Gschänk 🎁 Mit Code WELCOME10 gits –10% uf luxestyle.ch 🤍', 'Super Gschänk-Idee! 🎁 Schnäll bi üs uf luxestyle.ch ✨'],
+  material:['Top Qualität – Details staht bim Produkt uf luxestyle.ch ✨', 'Mir luege bi de Materialie gnau ane 🤍 Infos uf dr Produktsyte luxestyle.ch'],
   lob:     ['Merci vilmal! 🤍 Das freut üs mega 🥹', 'Danke dir!! 😍 Schau gern verbii uf luxestyle.ch ✨', 'Aaaw merci! 🙏 Mit WELCOME10 gits –10% 🛍️', 'Mega lieb, danke! 💕 luxestyle.ch'],
   allgemein: ['Merci vilmal! 🙏🇨🇭 Schau gern verbii uf luxestyle.ch ✨', 'Danke dir! 😍 Meh devo uf luxestyle.ch 🛍️', 'Freut üs mega! 🙌 luxestyle.ch (–10% mit WELCOME10)', 'Hoi & merci! 🤍 Bi Frage eifach melde – luxestyle.ch'],
 };
@@ -252,6 +256,8 @@ const EN_REPLY = {
   wo:      ['Everything\'s at 👉 luxestyle.ch 🛍️', 'Find it at luxestyle.ch ✨ (–10% with WELCOME10)'],
   farbe:   ['Available colors are shown on the product page 🎨 luxestyle.ch'],
   retoure: ['No worries – 30-day returns 🤍 just reach out, we\'ll help!', '30-day return policy 📦 message us anytime, we\'ll sort it out 🇨🇭'],
+  geschenk:['A perfect gift 🎁 Use WELCOME10 for –10% at luxestyle.ch 🤍', 'Lovely gift idea! 🎁 Grab it at luxestyle.ch ✨'],
+  material:['Great quality – details are on each product at luxestyle.ch ✨', 'We care about materials 🤍 full info on the product page luxestyle.ch'],
   lob:     ['Thank you so much! 🤍 Means a lot 🥹', 'Aw, thank you! 😍 Have a look at luxestyle.ch ✨', 'So kind, thanks! 💕 WELCOME10 = –10% 🛍️'],
   allgemein: ['Thanks so much! 🙏 Have a look at luxestyle.ch ✨', 'Thank you! 😍 More at luxestyle.ch 🛍️', 'Appreciate it! 🙌 luxestyle.ch (–10% with WELCOME10)'],
 };
@@ -260,7 +266,7 @@ const cTopic = (t = '') => { for (const [n, re] of C_TOPIC) if (re.test(t)) retu
 const isDE = (t = '') => /[äöüß]|\b(der|die|das|und|ist|wie|wo|ich|du|mit|für|nicht|sehr|schön|grösse|preis|wieviel|wie ?tüür|hesch|isch|gits|chunt|liefer|merci|hoi|gäll|chauf)\b/i.test(t);
 const cReply = (t = '') => { const tp = cTopic(t); const set = isDE(t) ? C_REPLY : EN_REPLY; const a = set[tp] || set.allgemein; return a[Math.floor(Math.random() * a.length)]; };
 
-async function replyComments(ids, env, max = 12) {
+async function replyComments(ids, env, max = 18) {
   const out = { ig: 0, fb: 0, skipped: 0 };
   let replied = [];
   try { replied = JSON.parse((await env.LUXE_KV.get('replied_comments')) || '[]'); } catch {}
@@ -271,10 +277,10 @@ async function replyComments(ids, env, max = 12) {
 
   if (ids.ig_id) {
     try {
-      const media = await gget(`${ids.ig_id}/media`, { access_token: ids.page_token, fields: 'id', limit: '8' });
+      const media = await gget(`${ids.ig_id}/media`, { access_token: ids.page_token, fields: 'id', limit: '12' });
       for (const m of (media.data || [])) {
         if (done >= max) break;
-        const cs = await gget(`${m.id}/comments`, { access_token: ids.page_token, fields: 'id,text,username', limit: '25' });
+        const cs = await gget(`${m.id}/comments`, { access_token: ids.page_token, fields: 'id,text,username', limit: '40' });
         for (const c of (cs.data || [])) {
           if (done >= max) break;
           const text = c.text || '';
@@ -286,10 +292,10 @@ async function replyComments(ids, env, max = 12) {
     } catch (e) { out.ig_err = String(e).slice(0, 120); }
   }
   try {
-    const posts = await gget(`${ids.page_id}/posts`, { access_token: ids.page_token, fields: 'id', limit: '8' });
+    const posts = await gget(`${ids.page_id}/posts`, { access_token: ids.page_token, fields: 'id', limit: '12' });
     for (const p of (posts.data || [])) {
       if (done >= max) break;
-      const cs = await gget(`${p.id}/comments`, { access_token: ids.page_token, fields: 'id,message,from,is_hidden', limit: '25' });
+      const cs = await gget(`${p.id}/comments`, { access_token: ids.page_token, fields: 'id,message,from,is_hidden', limit: '40' });
       for (const c of (cs.data || [])) {
         if (done >= max) break;
         const text = c.message || '';
