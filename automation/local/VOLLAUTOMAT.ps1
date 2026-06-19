@@ -30,12 +30,15 @@ if ($Mode -eq "update") {
   return
 }
 
-# --- Brave-Debug-Port 9222 sicherstellen (kein git noetig) ---
+# --- Brave-Debug-Port 9222 sicherstellen (ZUVERLÄSSIG: wenn Port zu, ALLE Brave killen, dann brave-agent
+#     mit Port neu starten — sonst wird --remote-debugging-port von einem offenen Brave ignoriert) ---
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
 if (-not (Test-Path $brave)) { $brave = "C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe" }
 $open = Get-NetTCPConnection -LocalPort 9222 -State Listen -ErrorAction SilentlyContinue
 if (-not $open -and (Test-Path $brave)) {
-  Log "Starte Brave (brave-agent) mit Debug-Port 9222..."
+  Log "Port 9222 zu → alle Brave beenden + brave-agent mit Port neu starten..."
+  Get-Process brave -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+  Start-Sleep -Seconds 3
   Start-Process $brave "--remote-debugging-port=9222 --user-data-dir=`"$env:USERPROFILE\brave-agent`""
   Start-Sleep -Seconds 18
 }
@@ -51,6 +54,12 @@ function Node($script, [string[]]$nargs=@(), $env_pairs=@{}){
 
 Log "=== VOLLAUTOMAT Modus=$Mode START ==="
 switch ($Mode) {
+  "tiktok" {
+    # REIN TIKTOK (User 2026-06-19 "alles nur fuer tiktok"): analysieren -> posten (stumm) -> Kommentare beantworten
+    Node "automation/local/tiktok-bot.mjs" @("analyze","--max","80")
+    Node "automation/local/tiktok-bot.mjs" @("post")
+    Node "automation/local/tiktok-bot.mjs" @("engage","--cap","12")
+  }
   "post" {
     Node "automation/local/tiktok-bot.mjs" @("analyze","--max","80")    # erst lernen
     Node "automation/local/tiktok-bot.mjs" @("post")                    # dann 1 Reel posten (stumm)
