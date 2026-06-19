@@ -44,6 +44,30 @@ def find_ffmpeg():
         sys.exit("❌ Kein ffmpeg gefunden. Installier es (apt) oder: pip install imageio-ffmpeg")
 
 
+def tts(text, out_wav, model=None):
+    """Gratis-Voiceover via piper. Gibt den WAV-Pfad zurück oder None."""
+    import glob
+    piper = shutil.which("piper")
+    if not piper or not text:
+        return None
+    m = model or os.environ.get("PIPER_MODEL")
+    if not m or not os.path.exists(m):
+        hits = sorted(glob.glob(os.path.expanduser("~/.local/share/piper-voices/*.onnx")))
+        de = [x for x in hits if "de_DE" in os.path.basename(x)]
+        m = (de or hits or [None])[0]
+    if not m:
+        return None
+    p = subprocess.run([piper, "-m", m, "-f", out_wav], input=text.encode("utf-8"),
+                       stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+    return out_wav if p.returncode == 0 and os.path.exists(out_wav) else None
+
+
+def wav_dur(path):
+    import wave
+    with wave.open(path) as wv:
+        return wv.getnframes() / float(wv.getframerate())
+
+
 def hex_rgb(s, default=(11, 11, 12)):
     if not s:
         return default
@@ -128,13 +152,30 @@ def main():
     brand = spec.get("brand", "")
     music = spec.get("music")
     output = spec.get("output", "freegen/out/clip.mp4")
-    scenes = spec.get("scenes", [])
+    scenes = list(spec.get("scenes", []))
     if not scenes:
         sys.exit("❌ Keine 'scenes' im Skript.")
+
+    # Marken-Intro / -Outro (opt-in) — einheitliche Klammer um jedes Reel.
+    if spec.get("intro"):
+        scenes.insert(0, {"text": spec["intro"], "seconds": float(spec.get("intro_seconds", 2.2)),
+                          "bg": spec.get("intro_bg", "#0b0b0c")})
+    if spec.get("outro"):
+        scenes.append({"text": spec["outro"], "seconds": float(spec.get("outro_seconds", 2.5)),
+                       "bg": spec.get("outro_bg", "#0b0b0c")})
 
     os.makedirs(os.path.dirname(output) or ".", exist_ok=True)
     ff = find_ffmpeg()
     tmp = tempfile.mkdtemp(prefix="freegen_")
+
+    # Optionales Voiceover (piper) — eine Erzählung über das ganze Reel.
+    voice_wav = tts(spec.get("voiceover", ""), os.path.join(tmp, "voice.wav")) if spec.get("voiceover") else None
+    if voice_wav:
+        vdur = wav_dur(voice_wav) + 0.6
+        cur = sum(float(s.get("seconds", 3)) for s in scenes)
+        if vdur > cur:  # letzte Szene strecken, damit das Bild die Stimme abdeckt
+            scenes[-1]["seconds"] = float(scenes[-1].get("seconds", 3)) + (vdur - cur)
+
     inputs, filters, total = [], [], 0.0
 
     for i, sc in enumerate(scenes):
@@ -160,18 +201,31 @@ def main():
     concat = "".join(f"[v{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=0[v]"
 
     cmd = [ff, "-y", *inputs]
-    has_music = music and os.path.exists(music)
-    if has_music:
+    has_music = bool(music and os.path.exists(music))
+    fade_st = max(0.0, total - 1.5)
+    audio_parts, map_audio = [], False
+
+    if voice_wav and has_music:
+        cmd += ["-i", voice_wav, "-stream_loop", "-1", "-i", music]
+        audio_parts = [
+            f"[{n}:a]apad,atrim=0:{total:.2f},volume=1.0[vo]",
+            f"[{n + 1}:a]atrim=0:{total:.2f},afade=t=out:st={fade_st:.2f}:d=1.5,volume=0.16[mu]",
+            "[vo][mu]amix=inputs=2:duration=first:normalize=0[a]",
+        ]
+        map_audio = True
+    elif voice_wav:
+        cmd += ["-i", voice_wav]
+        audio_parts = [f"[{n}:a]apad,atrim=0:{total:.2f}[a]"]
+        map_audio = True
+    elif has_music:
         cmd += ["-stream_loop", "-1", "-i", music]
-        fade_st = max(0.0, total - 1.5)
-        audio = (f"[{n}:a]atrim=0:{total:.2f},afade=t=out:st={fade_st:.2f}:d=1.5,"
-                 f"volume=0.7[a]")
-        fc = ";".join(filters + [concat, audio])
-        cmd += ["-filter_complex", fc, "-map", "[v]", "-map", "[a]",
-                "-c:a", "aac", "-b:a", "160k"]
-    else:
-        fc = ";".join(filters + [concat])
-        cmd += ["-filter_complex", fc, "-map", "[v]"]
+        audio_parts = [f"[{n}:a]atrim=0:{total:.2f},afade=t=out:st={fade_st:.2f}:d=1.5,volume=0.7[a]"]
+        map_audio = True
+
+    fc = ";".join(filters + [concat] + audio_parts)
+    cmd += ["-filter_complex", fc, "-map", "[v]"]
+    if map_audio:
+        cmd += ["-map", "[a]", "-c:a", "aac", "-b:a", "160k"]
 
     cmd += ["-r", str(fps), "-c:v", "libx264", "-pix_fmt", "yuv420p",
             "-movflags", "+faststart", "-shortest", output]
