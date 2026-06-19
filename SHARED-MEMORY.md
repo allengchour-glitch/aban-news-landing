@@ -514,3 +514,9 @@ WEITERE (eventuell DUBLETTE zu bestehenden „sub-"-Kollektionen → ihr entsche
 - ERKENNTNIS: Marken-Kollektionen `puma`/`adidas`/`under-armour` EXISTIEREN schon (handle vergeben) → Katalog/Taxonomie ist bereits sehr tief (mehr als im Menü). CizQ6 stoppt Kollektions-Erstellen (Dubletten-Schutz).
 - 🔴 PREMIUM-MAKEUP: CJ ungeeignet (billig/China/asiat. Schrift). Quelle = BigBuy (echte EU-Marken) → BigBuy-Creds nötig (nicht gesetzt). CJ-Token IST gültig, aber CJ-Makeup-Qualität zu tief.
 - OFFEN Theme-Session: neue Sub-Cats (beauty/make-up/hautpflege/beauty-tools/herren-uhren/damen-uhren/gant) ins Menü + dedupe.
+
+**2026-06-19 (CizQ6) — BigBuy-Beauty/Makeup-Import vorbereitet (User „makeup premium, das hast du"):**
+- bigbuy_import.mjs kann jetzt ROOT per NAME finden (ROOT_NAME="cosmet"/"perfum"/"beauty") → kein hardcodierter Root nötig.
+- Fernsteuer-Befehle NEU: `&cmd=bigbuy-beauty` (ROOT_NAME=cosmet) · `&cmd=bigbuy-makeup` (ROOT_NAME=perfum), MAX 12, idempotent (EAN-Ledger), QA.
+- Läuft auf dem PC (BIGBUY_TOKEN + SHOPIFY_CLIENT_ID/SECRET in luxe-secrets; BigBuy rate-limitet → PC). Cloud hat den Token nicht.
+- Aktivierung: PC braucht neuesten cmd-poll.ps1 + bigbuy_import.mjs (LuxeUpdate 05:00 ODER git checkout). Dann importiert er EU-Beauty/Makeup (echte Marken, sauber) in Beauty-Kollektion.

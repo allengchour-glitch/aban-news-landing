@@ -71,12 +71,25 @@ const TRUST = '<hr><p><strong>LuxeStyle CH</strong> · Gratis-Versand ab CHF 65 
   const tok = await shToken();
   if (!tok) { log('Kein Shopify-Token.'); process.exit(1); }
 
+  // ROOT-Auto-Lookup per Name (User 2026-06-19): ROOT_NAME="cosmet"/"beauty"/"perfum" → Top-Taxonomy-ID finden.
+  let root = ROOT;
+  if (process.env.ROOT_NAME) {
+    try {
+      const tax = await bbGet(`/catalog/taxonomies.json?isoCode=de`);
+      const kw = process.env.ROOT_NAME.toLowerCase();
+      const top = tax.filter(t => !t.parentTaxonomy);
+      const hit = (top.length ? top : tax).find(t => (t.name || '').toLowerCase().includes(kw));
+      if (hit) { root = String(hit.id); log(`ROOT_NAME "${kw}" → Root ${root} (${hit.name})`); }
+      else log(`ROOT_NAME "${kw}" kein Top-Root gefunden → nutze ${root}`);
+    } catch (e) { log('Taxonomy-Lookup fehlgeschlagen:', e.message); }
+  }
+
   // Publications (alle Kanäle) + Manufacturer-Map
   const pubs = (await gql(tok, `{ publications(first:20){ nodes{ id name } } }`)).publications.nodes;
   const mfrs = {}; try { for (const m of await bbGet(`/catalog/manufacturers.json?isoCode=de`)) mfrs[m.id] = m.name; } catch {}
 
-  const list = await bbGet(`/catalog/products.json?parentTaxonomy=${ROOT}&isoCode=de`);
-  log(`BigBuy Root ${ROOT}: ${list.length} Produkte · Ziel: ${MAX} neue (Markup ${MARKUP}) ${DRY ? '(DRY)' : ''}`);
+  const list = await bbGet(`/catalog/products.json?parentTaxonomy=${root}&isoCode=de`);
+  log(`BigBuy Root ${root}: ${list.length} Produkte · Ziel: ${MAX} neue (Markup ${MARKUP}) ${DRY ? '(DRY)' : ''}`);
   const seen = seenEans();
   let made = 0; const created = [];
 
@@ -137,6 +150,6 @@ const TRUST = '<hr><p><strong>LuxeStyle CH</strong> · Gratis-Versand ab CHF 65 
     made++; created.push({ name, pid, price });
     await sleep(800);
   }
-  log(`\n✅ ${made} Produkte ${DRY ? '(dry) ' : ''}angelegt (Root ${ROOT}).`);
+  log(`\n✅ ${made} Produkte ${DRY ? '(dry) ' : ''}angelegt (Root ${root}).`);
   if (!DRY && created.length) created.forEach(c => log(`   ${c.pid} · ${c.name?.slice(0, 45)} · CHF ${c.price}`));
 })().catch(e => { log('Fehler:', e.message); process.exit(1); });
