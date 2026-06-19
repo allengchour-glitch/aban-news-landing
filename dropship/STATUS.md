@@ -3,8 +3,7 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
-## ✅ 2026-06-19 (AUTO-Session — KI-Stack + Google-Merchant-Kontrolle + neues Reel live-ready)
-- **🧠 KI-STACK gemappt** (`dropship/KI-STACK.md`): jede Gratis-KI nach Stärke (Text Groq/Gemini · Bild Pollinations/FLUX · Video ffmpeg/Luma · Musik CC-BY/ElevenLabs · Voice piper · Vision Gemini) + Router-Status. Alles läuft schon mit Auto-Fallback.
+## ✅ 2026-06-19 (AUTO-Session — KI-Stack + Google-Merchant-Kontrolle + neues Reel live-ready)- **🧠 KI-STACK gemappt** (`dropship/KI-STACK.md`): jede Gratis-KI nach Stärke (Text Groq/Gemini · Bild Pollinations/FLUX · Video ffmpeg/Luma · Musik CC-BY/ElevenLabs · Voice piper · Vision Gemini) + Router-Status. Alles läuft schon mit Auto-Fallback.
 - **🔧 improve.sh 1. Lauf:** Health/Analyse/Lernen → Queue frisch (34 Posts, 0 Dubletten). Hook-Rang: mundart(796) > preis_vergleich(381).
 - **🔍 GOOGLE-MERCHANT-KONTROLLE:** Kanal aktiv, **alle 2895 Produkte publiziert (100%)**, Markt CH-only (DACH aus). EINZIGER Gap = **Standard-Produktkategorie meist leer** → an Taxonomie-Session via SHARED-MEMORY übergeben. User-only: Free-Listings AN + Approval-Check im Merchant Center.
 - **🎬 Neues Meisterwerk «Blazer Roma»** (Top-Produkt #1, Mundart-Hook, Safe-Zone, QA'd) → **auf Shopify-CDN gehoben (1080p READY) + in video_queue (CHF 49.90, Gewinner-Format)** = sofort auto-postbar (Worker liest live). Bleibt für später drin (User).
