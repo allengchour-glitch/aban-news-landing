@@ -21,6 +21,20 @@ $repo   = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 
+# ── SELBST-HEILEN (User 2026-06-19 „mach e Bot wo klickt", nicht zuhause): der Listener macht sich
+#    selbst unkaputtbar — registriert einen WATCHDOG (alle 10 Min) + Startup-Eintrag, damit er nach
+#    Crash/Reboot/Login von selbst wieder hochfährt. KEIN Admin nötig (LIMITED + Startup-Ordner). ──
+$BEAT = "$env:USERPROFILE\.luxe-listener-beat.txt"
+try {
+  $wd = Join-Path $PSScriptRoot "WATCHDOG.ps1"
+  schtasks /create /f /tn "LuxeWatchdog" /sc minute /mo 10 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$wd`"" 2>$null | Out-Null
+  $sc = [Environment]::GetFolderPath('Startup') + '\LuxeStyle-Listener.lnk'
+  if (-not (Test-Path $sc)) {
+    $wsh = New-Object -ComObject WScript.Shell; $lnk = $wsh.CreateShortcut($sc)
+    $lnk.TargetPath = (Join-Path $PSScriptRoot "START-LISTENER.bat"); $lnk.WorkingDirectory = $PSScriptRoot; $lnk.WindowStyle = 7; $lnk.Save()
+  }
+} catch {}
+
 # SELBST-AKTUALISIEREN: immer neueste Skripte holen, bevor's losgeht.
 Write-Host "Hole neueste Skripte (git pull)..."
 git pull origin claude/luxestyle-product-CizQ6 2>$null
@@ -72,6 +86,7 @@ function Run-Cmd($c) {
 Write-Host "LuxeStyle PC-Listener läuft. Pollt $WORKER alle 90s. (Fenster offen lassen / minimieren.)"
 git pull origin claude/luxestyle-product-CizQ6 2>$null
 while ($true) {
+  try { Set-Content -Path $BEAT -Value (Get-Date -Format o) } catch {}   # Heartbeat für den Watchdog
   try {
     $r = Invoke-RestMethod -Uri "$WORKER/?key=$([uri]::EscapeDataString($KEY))&drain=1" -TimeoutSec 30
     if ($r.commands -and $r.commands.Count -gt 0) {
