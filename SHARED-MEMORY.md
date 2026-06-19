@@ -148,6 +148,7 @@
   scheinselbststaendigkeit), Roman (the-seam/trilogie), thin/funktional (api/archive/danke-kit/empfehlen/
   dossiers/ki-studio/shop/founding). **→ Mehrsprachiger Ausbau praktisch erschoepft: alle sinnvollen
   oeffentlichen Assets DE/EN/FR/IT.**
+- **Welle 12 (16.06.) — QA Discoverability FR/IT:** ~4000 interne Links in fr/* + it/* von DE-Root bzw. EN-Leak auf die lokalisierte Version umgebogen (nur wo vorhanden, Sprach-Switcher via hreflang-Attribut ausgeschlossen); 4 FR/IT-Orphans im Tools-Hub verlinkt (0 Orphans); FR/IT-Startseiten-Nav verlinkt jetzt den Tools-Hub. 0 Broken-Links, Konsistenz gruen. **Stehende User-Anweisung 16.06.: nach jeder groesseren Charge IMMER beide Memorys aktualisieren (SHARED-MEMORY.md + PROJEKT.md) + ueberholte Alt-Notizen als superseded markieren.**
 
 **2026-06-11 — Luxestyle/POD session: Editor mit echten Fotos + 98 Fertig-Mockups + Shop-Audit A–Z:**
 - **🎨 Selbst-gestalten-Editor komplett überarbeitet** (`pod/designer.js` live): echtes Produktfoto statt
