@@ -48,7 +48,7 @@
   // Canvas-taugliche Font-Strings (Web-sichere Familien) parallel zu FONTVALS, {S}=Pixel
   var FONTCANVAS=["bold {S}px Arial,Helvetica,sans-serif","bold {S}px Georgia,'Times New Roman',serif","{S}px 'Brush Script MT','Segoe Script',cursive","900 {S}px 'Arial Black',Arial,sans-serif","bold {S}px 'Courier New',monospace"];
   var FONTS=FONTVALS.map(function(v,i){ return {n:T.fonts[i], v:v, c:FONTCANVAS[i]}; });
-  var COLORS=['#111111','#ffffff','#c1922f','#b3122b','#1e4fd6','#1c8a4b','#e84393','#000080'];
+  var COLORS=['#111111','#ffffff','#c1922f','#b3122b','#1e4fd6','#1c8a4b','#e84393','#000080','#ff7a00','#7b2ff7','#00b3b3','#6b6b6b'];
   var ADD_URL=(window.Shopify&&Shopify.routes&&Shopify.routes.cart_add_url)||'/cart/add.js';
   var CART_URL=(window.Shopify&&Shopify.routes&&Shopify.routes.cart_url)||'/cart';
 
@@ -119,6 +119,14 @@
     var preRow=el('div',{style:"display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;"});
     PRESETS.forEach(function(p){ preRow.appendChild(el('button',{type:'button','data-pre':p,style:"padding:7px 11px;border-radius:999px;border:1.5px solid #c1922f;background:#fff;color:#16151a;font-weight:700;font-size:13px;cursor:pointer;"},p)); });
     body.appendChild(preLbl); body.appendChild(preRow);
+
+    // FERTIGE VORLAGEN (1 Tipp = komplettes Design) — Anfänger: sofort schön · Profis: danach frei tweaken.
+    var TEMPLATES = EN ? [{t:'Make it yours',f:3,c:'#c1922f'},{t:'Unique',f:1,c:'#111111'},{t:'Good Vibes',f:2,c:'#1e4fd6'},{t:'Swiss made',f:0,c:'#b3122b'},{t:'Stay cozy',f:2,c:'#7b2ff7'}]
+                       : [{t:'Mach dys eiges Teil',f:3,c:'#c1922f'},{t:'Hoi 🇨🇭',f:2,c:'#b3122b'},{t:'Einzigartig',f:1,c:'#111111'},{t:'Schwiizer Härz ❤️',f:0,c:'#b3122b'},{t:'Sünneli ☀️',f:2,c:'#ff7a00'}];
+    var tplLbl=el('div',{style:"font-size:12px;color:#8a8a90;margin:2px 0 6px;font-weight:700;"}, EN?'Templates — one tap, done:':'Vorlagen — ein Tipp, fertig:');
+    var tplRow=el('div',{style:"display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;"});
+    TEMPLATES.forEach(function(tp,i){ var b=el('button',{type:'button','data-tpl':i,style:"padding:9px 13px;border-radius:10px;border:1.5px solid #ece7df;background:#faf8f5;cursor:pointer;font-size:14px;font-weight:800;"}, tp.t); b.style.fontFamily=FONTS[tp.f].v; b.style.color=tp.c; tplRow.appendChild(b); });
+    body.appendChild(tplLbl); body.appendChild(tplRow);
 
     // Kontextleiste (Schrift/Farbe für aktives Text-Layer)
     var ctx=el('div',{style:"display:none;background:#faf8f5;border:1px solid #ece7df;border-radius:12px;padding:10px;margin-bottom:10px;"});
@@ -246,6 +254,8 @@
     btnText.addEventListener('click',function(){ lib.style.display='none'; addLayer(newText()); ctxIn.focus(); });
     // Preset-Spruch: Text-Layer mit fertigem Schweizer Spruch hinzufügen (ein Tipp)
     preRow.addEventListener('click',function(e){ var b=e.target.closest('[data-pre]'); if(!b) return; lib.style.display='none'; var ly=newText(); ly.text=b.getAttribute('data-pre'); addLayer(ly); ctxIn.value=ly.text; layoutNode(ly); syncFormInputs(); ctxIn.focus(); });
+    // Fertige Vorlage: komplettes Design (Text+Schrift+Farbe) mit einem Tipp — danach frei editierbar
+    tplRow.addEventListener('click',function(e){ var b=e.target.closest('[data-tpl]'); if(!b) return; var tp=TEMPLATES[+b.getAttribute('data-tpl')]; lib.style.display='none'; var ly=newText(); ly.text=tp.t; ly.font=FONTS[tp.f].v; ly.color=tp.c; addLayer(ly); ctxIn.value=ly.text; ctxFont.value=ly.font; paintCtxSwatch(ly.color); layoutNode(ly); syncFormInputs(); });
     btnSticker.addEventListener('click',function(){ ctx.style.display='none'; lib.style.display=lib.style.display==='none'?'block':'none'; loadStickers(); });
     if(btnImg){ btnImg.addEventListener('click',function(){ lib.style.display='none'; fi.click(); }); }
 
