@@ -3,6 +3,12 @@
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
+## ✅ 2026-06-19 (AUTO-Session — KI-Stack + Google-Merchant-Kontrolle + neues Reel live-ready)
+- **🧠 KI-STACK gemappt** (`dropship/KI-STACK.md`): jede Gratis-KI nach Stärke (Text Groq/Gemini · Bild Pollinations/FLUX · Video ffmpeg/Luma · Musik CC-BY/ElevenLabs · Voice piper · Vision Gemini) + Router-Status. Alles läuft schon mit Auto-Fallback.
+- **🔧 improve.sh 1. Lauf:** Health/Analyse/Lernen → Queue frisch (34 Posts, 0 Dubletten). Hook-Rang: mundart(796) > preis_vergleich(381).
+- **🔍 GOOGLE-MERCHANT-KONTROLLE:** Kanal aktiv, **alle 2895 Produkte publiziert (100%)**, Markt CH-only (DACH aus). EINZIGER Gap = **Standard-Produktkategorie meist leer** → an Taxonomie-Session via SHARED-MEMORY übergeben. User-only: Free-Listings AN + Approval-Check im Merchant Center.
+- **🎬 Neues Meisterwerk «Blazer Roma»** (Top-Produkt #1, Mundart-Hook, Safe-Zone, QA'd) → **auf Shopify-CDN gehoben (1080p READY) + in video_queue (CHF 49.90, Gewinner-Format)** = sofort auto-postbar (Worker liest live).
+
 ## ✅ 2026-06-18 (SPÄT — Checkout verifiziert + TikTok-Gewinner-Rezept)
 - **🛒 CHECKOUT TECHNISCH SAUBER (per Screenshot + API geprüft):** **TWINT aktiv** (+ Kreditkarte Visa/MC/Amex/UnionPay). **Versand deckt CH in ALLEN 5 Profilen ab** (Allgemein Domestic=CH CHF7+gratis · Zendrop · Collective International=restOfWorld · Gelato EFTA). Die „andere Lieferadresse"-Meldung = temporär (Adresse unvollständig), KEIN Bug. → 0 Käufe = KEIN technischer Block → Reichweite/Kaufabsicht/Vertrauen. **Offen: echter Test-Kauf** (Adresse komplett→Versandart→TWINT→Bestätigung). Korrekturen: TWINT war NIE „fehlend", Versand NIE „kaputt" (frühere Aussagen revidiert, Gehirn-Regeln zahlung_/versand_korrektur).
 - **📊 TIKTOK MAX-ANALYSE (37 Videos/11'106 Views/Ø300/0 Shares):** Gewinner = **Preis-Vergleich** („CHF 32 statt 200" 795V, „80% weniger als Rolex"), **Aspirational** (Diffuser XXL #1 1'111V), **Mundart** (801V). Beste Tags #schweiz/#schweizmode/#ootdschweiz. 0 Shares→Neugier/Save-Trigger. Rezept im Gehirn (`tiktok_gewinner_rezept`).
