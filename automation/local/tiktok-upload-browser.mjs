@@ -38,14 +38,19 @@ function pickReel() {
   const done = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split(/\s+/).filter(Boolean) : [];
   // PRIORITÄT (User 2026-06-17 „wenn postist TikTok"): erst die besten Hero-Creatives, dann alle
   // luxe-*-9x16-Reels, dann die alten *-9x16-meta. So landen die neuen Top-Videos auch auf TikTok.
+  // MEISTERWERKE ZUERST (User 2026-06-19 „muss meisterwerk sein, komplette videos") + Vollstaendigkeits-Gate.
   const PRIO = ['luxe-ultimate-ad.mp4', 'luxe-jewelry-cinematic.mp4', 'luxe-hero-ad.mp4',
     'luxe-showcase-fast.mp4', 'luxe-main-showcase.mp4'];
   const all = fs.readdirSync(REELS);
+  const big = f => { try { return fs.statSync(path.join(REELS, f)).size > 250000; } catch { return false; } };
+  const mw   = all.filter(f => /^mw-.*\.mp4$/.test(f)).sort();                 // Meisterwerke (build_masterpiece)
+  const lmw  = all.filter(f => /^luxe-meisterwerk-.*\.mp4$/.test(f)).sort();   // aeltere Meisterwerke
   const luxe = all.filter(f => /^luxe-.*-9x16\.mp4$/.test(f)).sort();
-  const mw = all.filter(f => /^mw-.*\.mp4$/.test(f)).sort();        // Meisterwerk-Reels (build_masterpiece)
   const meta = all.filter(f => /-9x16-meta\.mp4$/.test(f)).sort();
-  // Reihenfolge: Hero-Creatives → luxe → Meisterwerke → alte meta. So landen auch mw-* auf TikTok.
-  const cand = [...PRIO.filter(f => all.includes(f)), ...luxe, ...mw, ...meta];
+  // Meisterwerke zuerst -> komplette, polierte Videos. Dedupe + nur Dateien > 250 KB (keine kaputten/leeren).
+  const seen = new Set();
+  const cand = [...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe, ...meta]
+    .filter(f => big(f) && !seen.has(f) && (seen.add(f), true));
   for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
   // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu
   // starten (Ledger leeren), damit nie still steht. Inhalt wiederholt sich erst nach ~allen Reels.
