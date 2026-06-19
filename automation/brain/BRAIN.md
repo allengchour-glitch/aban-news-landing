@@ -1,33 +1,33 @@
 # 🧠 BRAIN v2 — LuxeStyle Social-Lernschleife (auto-generiert)
 
-_Aktualisiert: 2026-06-18 · 7 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis 363 V)_
+_Aktualisiert: 2026-06-19 · 8 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis 365 V)_
 
 ## 📈 KPI-Verlauf (verbessert es sich?)
-- Views: 11081 ▲ (vorher 11068)
-- Engagement: 5.7% ▲ (vorher 5.5%)
-- Shares: 0 = (vorher 0) · Likes: 183 ▲ (vorher 178) · Kommentare: 5 = (vorher 5)
-- Ø Views/Video: 299 = · Ø Dauer: 16.6s
+- Views: 11137 ▲ (vorher 11081)
+- Engagement: 5.5% ▼ (vorher 5.7%)
+- Shares: 0 = (vorher 0) · Likes: 183 = (vorher 183) · Kommentare: 5 = (vorher 5)
+- Ø Views/Video: 301 ▲ · Ø Dauer: 16.6s
 
 ## 🏷️ Beste Hashtag-Saetze (Bayes-Score, Verlierer geblockt)
 1. #fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie
 2. #foryou #musthave #gefundenauftiktok #aroma #smartdiffuser
 3. #fyp #lifehack #tiktokmademebuyit #aestheticroom #spaathome
 4. #foryou #produkttipp #musthave #premiumwellness #luxurylife
-**Top-Performer (Score · Konfidenz):** #aromatherapyathome 769·mittel · #aromatherapie 769·mittel · #aroma 769·mittel · #smartdiffuser 769·mittel · #aestheticroom 769·mittel · #spaathome 769·mittel
+**Top-Performer (Score · Konfidenz):** #aromatherapyathome 799·mittel · #aromatherapie 799·mittel · #aroma 799·mittel · #smartdiffuser 799·mittel · #aestheticroom 799·mittel · #spaathome 799·mittel
 **📈 Momentum (steigend):** — (noch zu wenig Verlauf)
 **🚫 Geblockt:** #luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg
 
 ## 🎣 Hook-Typ-Scoreboard (was zieht wirklich — gelernt aus 5 Typen)
-- **mundart**: Ø 796 Views (7 Videos)
-- **preis_vergleich**: Ø 381 Views (13 Videos)
-- **generisch**: Ø 310 Views (184 Videos)
-- **preis**: Ø 163 Views (42 Videos)
-- **frage_cta**: Ø 51 Views (14 Videos)
+- **mundart**: Ø 797 Views (8 Videos)
+- **preis_vergleich**: Ø 386 Views (15 Videos)
+- **generisch**: Ø 311 Views (210 Videos)
+- **preis**: Ø 163 Views (48 Videos)
+- **frage_cta**: Ø 52 Views (16 Videos)
 
 ## 🎯 Naechste Aktionen (auto-abgeleitet)
 - 🔴 0 Shares = Reichweiten-Decke. Share/Save-Trigger + Vergleichs-/Neugier-Hooks (stehen in CAPS) konsequent nutzen.
 - 🔴 Views steigen, aber Shares/Engagement nicht → hohle Reichweite. UGC/Demo + Save-Trigger statt nur Produkt-Pans.
-- 🟢 Bester Hook-Typ laut Daten: „mundart" (Ø 796 V) → davon mehr; „generisch" meiden.
+- 🟢 Bester Hook-Typ laut Daten: „mundart" (Ø 797 V) → davon mehr; „generisch" meiden.
 - 🟢 Groesster Hebel (manuell/PC-Claude): Hands-on/UGC-Clips + Trending-Sounds.
 
 ## ✅ Gewinner-Formate / ❌ Verlierer

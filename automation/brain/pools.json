@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-18",
+  "updated": "2026-06-19",
   "tagsets": [
     "#fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie",
     "#foryou #musthave #gefundenauftiktok #aroma #smartdiffuser",
@@ -47,40 +47,40 @@
   "hook_rank": [
     {
       "ty": "mundart",
-      "avg": 796,
-      "n": 7
+      "avg": 797,
+      "n": 8
     },
     {
       "ty": "preis_vergleich",
-      "avg": 381,
-      "n": 13
+      "avg": 386,
+      "n": 15
     },
     {
       "ty": "generisch",
-      "avg": 310,
-      "n": 184
+      "avg": 311,
+      "n": 210
     },
     {
       "ty": "preis",
       "avg": 163,
-      "n": 42
+      "n": 48
     },
     {
       "ty": "frage_cta",
-      "avg": 51,
-      "n": 14
+      "avg": 52,
+      "n": 16
     }
   ],
   "kpi_last": {
-    "report": "tiktok_luxestyle.ch_2026-06-18.json",
-    "date": "2026-06-18",
+    "report": "tiktok_luxestyle.ch_2026-06-19.json",
+    "date": "2026-06-19",
     "videos": 37,
-    "views": 11081,
+    "views": 11137,
     "likes": 183,
     "shares": 0,
     "comments": 5,
-    "avg_views": 299,
-    "eng": 0.0572,
+    "avg_views": 301,
+    "eng": 0.0551,
     "dur": 16.6
   },
   "risers": []
