@@ -161,11 +161,23 @@ function loadReels() {
   // (User 2026-06-16 „story kein text?"). Lieber KEINE Story als eine ohne Text → nur aus Reels bauen.
   const stories = reels.map(r => ({ type: 'story', video: r.video })); // ALLE Reels (täglich rotiert) → keine Story-Wiederholung (User 2026-06-17)
 
-  // MIX interleaven: überwiegend Bilder, jede 3. ein Reel, jede 6. eine Story → alle Formate überall.
-  const out = []; let ri = 0, si = 0;
+  // KOLLEKTIONS-WERBUNG (User 2026-06-19 „kollektions werbung?"): Posts, die auf KOLLEKTIONS-Seiten führen
+  // (mehr Produkte = höherer Warenkorb). Rotierend, jede 5. Position.
+  const COLLECTIONS = [
+    { handle: 'uhren', label: 'Uhren-Kollektion ⌚', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/8431777726558_0_P02.jpg?v=1781880273' },
+    { handle: 'damen-mode', label: 'Damen-Mode 👗', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/3136e619-9947-4d5f-8248-707c65d055d2.jpg?v=1781386829' },
+    { handle: 'parfum-duefte', label: 'Parfum & Düfte 🌸', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/0679602161121_0_P01.jpg?v=1781640714' },
+    { handle: 'sommer', label: 'Sommer-Kollektion ☀️', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/fa7f66fa-bf2d-4800-835e-2e3fe6984427.jpg?v=1780336517' },
+  ];
+  const collPosts = COLLECTIONS.map((c, i) => ({ type: 'image', image: c.image,
+    caption: `Entdeck d ganzi ${c.label}\n${TRUST_LINES[i % TRUST_LINES.length]}\n👉 luxestyle.ch/collections/${c.handle} · –10% mit WELCOME10\n#schweiz #schweizmode #ootdschweiz #swissmade #fyp` }));
+
+  // MIX interleaven: überwiegend Bilder, jede 2. ein Reel, jede 5. ein Kollektions-Post, jede 6. eine Story.
+  const out = []; let ri = 0, si = 0, ci = 0;
   images.forEach((img, i) => {
     out.push(img);
     if (i % 2 === 1 && reels.length) out.push(reels[ri++ % reels.length]); // mehr Reels = mehr Vielfalt (User: zu viel gleich)
+    if (i % 5 === 4 && collPosts.length) out.push(collPosts[ci++ % collPosts.length]); // Kollektions-Werbung
     if (i % 6 === 5 && stories.length) out.push(stories[si++ % stories.length]);
   });
   const counts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
