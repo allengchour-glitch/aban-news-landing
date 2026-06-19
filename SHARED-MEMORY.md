@@ -11,6 +11,16 @@
 
 > **⚠️ 2026-06-14 (Luxestyle-Session) DOPPEL-POST-FIX:** Es gab ZWEI Meta-Poster (GitHub-Actions social-/story-/video-meta-autopost + Cloudflare-Worker luxe-poster) → doppelte IG/FB-Posts. Die 3 Actions-Cron-Poster sind jetzt DEAKTIVIERT. **Der Cloudflare-Worker ist der EINE Meta-Poster.** Keine andere Session diese Workflows reaktivieren!
 
+## 🚨🚨 NOTFALL 2026-06-19 ~10:40 — SHOP IST DOWN (SSL-ZERTIFIKAT ABGELAUFEN)
+**luxestyle.ch + luxestyle.com.co liefern 503** (User bestätigt am Handy down). Ursache **diagnostiziert:**
+`certificate has expired` / `upstream connect error` → **abgelaufenes/nicht-erneuertes SSL-Zertifikat** der Domain.
+**KEIN Shopify-Ausfall** (Status „All Systems Operational"), **DNS korrekt** (luxestyle.ch → 23.227.38.65 = Shopify-IP).
+→ **= reines Domain/SSL-Problem. PRIORITÄT #1 — jede Minute = 0 Käufe + alle Werbung läuft ins Leere.**
+**FIX (Website/Domain-Session ODER User):** Shopify-Admin → **Einstellungen → Domains** → SSL-Status der Domain prüfen;
+typisch **Domain entfernen & neu hinzufügen** (Shopify stellt das Let's-Encrypt-Zert neu aus) ODER „SSL erneuern/retry".
+CAA-Records prüfen (müssen Let's Encrypt erlauben). Domain darf NICHT durch fremden Proxy (Cloudflare orange) laufen →
+DNS-only, damit Shopify das Zert verwaltet. **Social-Posten (CizQ6) pausiert, bis Shop wieder 200 liefert.**
+
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)
 | Session | Aufgabe | Detail-Memory | Branch |
 |---|---|---|---|
