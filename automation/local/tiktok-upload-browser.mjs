@@ -19,6 +19,8 @@
  */
 import { chromium } from 'playwright-core';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
+import os from 'node:os';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -40,8 +42,10 @@ function pickReel() {
     'luxe-showcase-fast.mp4', 'luxe-main-showcase.mp4'];
   const all = fs.readdirSync(REELS);
   const luxe = all.filter(f => /^luxe-.*-9x16\.mp4$/.test(f)).sort();
+  const mw = all.filter(f => /^mw-.*\.mp4$/.test(f)).sort();        // Meisterwerk-Reels (build_masterpiece)
   const meta = all.filter(f => /-9x16-meta\.mp4$/.test(f)).sort();
-  const cand = [...PRIO.filter(f => all.includes(f)), ...luxe, ...meta];
+  // Reihenfolge: Hero-Creatives → luxe → Meisterwerke → alte meta. So landen auch mw-* auf TikTok.
+  const cand = [...PRIO.filter(f => all.includes(f)), ...luxe, ...mw, ...meta];
   for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
   // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu
   // starten (Ledger leeren), damit nie still steht. Inhalt wiederholt sich erst nach ~allen Reels.
@@ -59,6 +63,16 @@ function captionFromQueue(file) {
     }
   } catch {}
   return null;
+}
+// TikTok-Sound-Regel (FEST): Reels STUMM hochladen → User legt Trend-Sound in der App drauf.
+// Macht eine tonlose Kopie (kein Re-Encode des Bilds = schnell, verlustfrei). Fallback = Original.
+function toSilent(file) {
+  try {
+    const out = path.join(os.tmpdir(), 'tt-' + path.basename(file));
+    execSync(`ffmpeg -y -nostdin -i "${file}" -c:v copy -an "${out}"`, { stdio: 'ignore' });
+    if (fs.existsSync(out) && fs.statSync(out).size > 10000) return out;
+  } catch {}
+  return file;
 }
 
 (async () => {
@@ -92,7 +106,9 @@ function captionFromQueue(file) {
   }
   if (DRY) { log('[dry] würde Video setzen + Caption füllen + posten. (Datei-Input gefunden ✓)'); process.exit(0); }
 
-  await input.setInputFiles(file);
+  const upFile = toSilent(file); // TikTok = stumm hochladen (Trend-Sound in-app)
+  if (upFile !== file) log('🔇 Tonlose TikTok-Kopie erstellt (Trend-Sound legst du in der App drauf).');
+  await input.setInputFiles(upFile);
   log('Video gesetzt, warte auf Verarbeitung…');
   await sleep(15000);
   // Caption-Feld (contenteditable) — leeren + füllen
