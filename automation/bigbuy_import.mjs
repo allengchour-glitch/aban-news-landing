@@ -178,7 +178,7 @@ const CONFIG = {
   schuhe: { coll: { handle: 'schuhe', title: '👟 Schuhe', tag: 'schuhe' },
     extraTags: ['accessoire', 'streetwear', 'premium'], type: 'Schuhe', maxCost: MAX_COST_EUR, sized: true,
     anchor: ['sneaker', 'turnschuhe', 'laufschuhe', 'sportschuhe', 'stiefel', 'boots', 'sandalen', 'halbschuhe', 'espadrilles', 'zapatillas', 'botas'],
-    ban: ['kinder', 'baby', 'schuhcreme', 'schuhregal', 'einlegesohle', 'insole', 'sohle', 'schuhspanner', 'hausschuhe', 'spielzeug', 'niño', 'niña', 'mikrowellen', 'fußwärmer', 'wärmestiefel', 'überzieh'],
+    ban: ['kinder', 'baby', 'schuhcreme', 'schuhregal', 'einlegesohle', 'insole', 'sohle', 'schuhspanner', 'hausschuhe', 'spielzeug', 'niño', 'niña', 'mikrowellen', 'fußwärmer', 'wärmestiefel', 'überzieh', 'avengers', 'jungen', 'mädchen', 'marvel', 'disney', 'paw patrol'],
     bullets: ['Bequemer Tragekomfort', 'Marken-Qualität, EU-Lager', 'Stylischer Look', '100% Original, schnelle EU-Lieferung'] },
   herrenmode: { coll: { handle: 'fur-ihn', title: '👨 Für Ihn', tag: 'herren' },
     extraTags: ['herren', 'mode', 'streetwear', 'premium'], type: 'Herrenmode', maxCost: MAX_COST_EUR, sized: true,
