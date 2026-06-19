@@ -1,0 +1,2 @@
+# TikTok-Bot: Video-IDs ODER URLs hier rein = werden NIE auto-gelöscht (eine pro Zeile).
+# Top-Performer schützt der Bot eh automatisch (Top-5). Hier zusätzlich alles Wichtige.

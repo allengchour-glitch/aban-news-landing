@@ -37,6 +37,8 @@ git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
 node "automation/local/tiktok-upload-browser.mjs"
 
 # 4) TikTok ANALYSIEREN + lernen (jeder Lauf = frische Daten → Gehirn lernt schneller)
+#    a) eingeloggte Analyse über den Bot (genauer, private Metriken) — b) öffentliche yt-dlp als Fallback
+node "automation/local/tiktok-bot.mjs" analyze --max 80 2>$null
 try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
 node "automation/brain/brain.mjs" 2>$null
 
