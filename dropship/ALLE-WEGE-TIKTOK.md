@@ -3,6 +3,29 @@
 > Zentrale Übersicht ALLER Pfade + Status + was jeder braucht. **NICHT den User wiederholt nach denselben
 > Tokens fragen** — Stand steht hier. Reihenfolge = Zuverlässigkeit für ÖFFENTLICHE Posts.
 
+## ⏭️ NÄCHSTER SCHRITT (User 2026-06-19 Abend „schaue morgen, bin am Handy") — HIER weitermachen
+**User-Entscheid (AskUserQuestion):** TikTok künftig ohne PC = **Weg 1 (offizielle TikTok-API, gratis, 1 Tap)
++ Weg 3 (PC als Voll-Auto-Backup)**. **NICHT** Browserbase-Paid (Option 2 abgelehnt, keine Mtl-Kosten).
+
+**TikTok-API-OAuth hängt an EINER Sache: die Redirect-URI passt nicht.**
+- Login-URL wurde erzeugt (PKCE, scope `user.info.basic,video.upload` = Drafts/Inbox = „1 Tap"), Client-Key `mn971u4o67rakuol`.
+- Beim Autorisieren kam **`error=invalid_request&error_type=redirect_uri`** → `http://localhost:8723/callback`
+  ist in der App **nicht hinterlegt**.
+- **TODO morgen:** developers.tiktok.com → Manage apps → „LuxeStyle Poster" → Login Kit → **„Redirect URI"** prüfen.
+  Entweder den dort eingetragenen Wert verwenden, ODER **`https://luxestyle.ch/`** eintragen+speichern.
+  Dann Login-URL neu mit exakt diesem `redirect_uri` bauen → User autorisiert → kopiert `?code=...` aus der
+  Adresszeile → **diese Cloud-Session tauscht Code→Token** (kein localhost-Server nötig, kein PC).
+  Cloud-OAuth-Muster: PKCE-Verifier in `/tmp/tt_oauth.json` (ephemer → neu erzeugen), Token-Tausch
+  `POST https://open.tiktokapis.com/v2/oauth/token/` mit client_key/secret/code/code_verifier/redirect_uri.
+- Danach posten: `automation/tiktok-autopost.mjs` (Token in ENV `TT_ACCESS_TOKEN`/`TT_REFRESH_TOKEN`,
+  NIE ins Repo) → Video landet in TikTok-Entwürfen → User tippt 1× „Posten".
+
+**Browserbase (Weg 2) — getestet, Lehre festgehalten:** Keys gültig (Projekt „Production", Concurrency 3),
+Context `f1689a15-1613-453b-bf9d-9ec1aa7f8b1a` angelegt, Login-Live-URL funktionierte. ABER **Gratis-Plan =
+nur Rechenzentrums-IP** → Proxy gibt HTTP 402 → **TikTok behält die Anmeldung NICHT** (jede Session andere IP,
+sofort ausgeloggt). Voll-Auto-TikTok via Browserbase ginge **nur mit Paid-Plan** (Residential-CH-Proxy,
+`BB_PROXY=1`) — vom User abgelehnt. Context bleibt für IG/FB-Einzelaktionen nutzbar.
+
 ## 🎵 TikTok (kein offizielles Public-API ohne Audit → mehrere Wege)
 | # | Weg | Datei | Status | Was fehlt / Risiko |
 |---|-----|-------|--------|--------------------|
