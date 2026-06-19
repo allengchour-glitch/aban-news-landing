@@ -1,17 +1,21 @@
 @echo off
-REM ========================================================================
-REM  LuxeStyle — TikTok-Kampagne TESTLAUF (kein Geld). GIT-FREI:
-REM  kein git pull, kein Listener, kein Worker -> kein Git-Lock moeglich.
-REM  Stellt Brave (Profil brave-agent) mit Debug-Port 9222 selbst sicher,
-REM  dann laeuft der Bot direkt + zeigt jeden Schritt im Fenster.
-REM  Voraussetzung: im brave-agent-Brave bei ads.tiktok.com eingeloggt.
-REM ========================================================================
+REM LuxeStyle - TikTok-Kampagne TESTLAUF (--dry, KEIN Geld). Git-frei, mit Brave-Port-Fix.
+REM Voraussetzung: im brave-agent-Brave bei ads.tiktok.com EINGELOGGT.
+set BRAVE="C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
+if not exist %BRAVE% set BRAVE="C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe"
 cd /d "%~dp0..\.."
-echo Stelle Brave-Debug-Port 9222 sicher...
-powershell -ExecutionPolicy Bypass -Command "$o=Get-NetTCPConnection -LocalPort 9222 -State Listen -EA SilentlyContinue; if(-not $o){ $b='C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe'; if(-not (Test-Path $b)){$b='C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe'}; Start-Process $b ('--remote-debugging-port=9222 --user-data-dir=\"'+$env:USERPROFILE+'\brave-agent\"'); Start-Sleep 18; Write-Host 'Brave gestartet - bitte bei ads.tiktok.com einloggen, falls noetig.' } else { Write-Host 'Port 9222 bereits offen - gut.' }"
-echo.
-echo Starte Kampagnen-TESTLAUF (--dry, gibt KEIN Geld aus)...
+echo [1/3] Brave-Port 9222 sicherstellen (alle Brave killen, falls Port zu)...
+netstat -ano | findstr ":9222 " >nul
+if errorlevel 1 (
+  taskkill /F /IM brave.exe >nul 2>&1
+  timeout /t 3 >nul
+  start "" %BRAVE% --remote-debugging-port=9222 --user-data-dir="%USERPROFILE%\brave-agent" https://ads.tiktok.com
+  timeout /t 12 >nul
+)
+echo [2/3] Falls noetig: im Brave-Fenster bei ads.tiktok.com einloggen, dann Enter.
+pause
+echo [3/3] Kampagnen-TESTLAUF (--dry, gibt KEIN Geld aus)...
 node automation\local\tiktok-campaign-port.mjs --dry
 echo.
-echo Fertig. Screenshots in automation\local\campaign-shots\ . Fenster offen lassen.
+echo Fertig. Screenshots in automation\local\campaign-shots\ -> schick sie mir, ich pruefe + dann KAMPAGNE-GO.bat.
 pause
