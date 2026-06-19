@@ -500,3 +500,11 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 · 🌸 Parfum (bestand). Eltern: 💄 `/beauty-pflege` (327). Alle SEO gesetzt.
 🤝 FÜR THEME-/MENÜ-SESSION: diese Sub-Kollektionen ins **Menü unter „💄 Beauty"** hängen (L2/L3) + auf der Beauty-Seite als Sub-Kategorie-Kacheln zeigen = bessere Navigation statt Scrollen. (CizQ6 macht Daten/Kollektionen, Menü-Struktur = ihr.)
 ⚠️ SERUM/botox/vitamin-c = NIE in Social-Posts (DO-NOT-POST.txt) — im Shop kaufbar, nur nicht beworben (Cosmetic-Claim-Schutz).
+
+**2026-06-19 (CizQ6) — NEUE Sub-Kollektionen erstellt — bitte ins Menü integrieren/dedupen (Theme-Session):**
+NEU & WERTVOLL (Menü hat das noch NICHT granular → bitte unter „💄 Beauty" hängen):
+- 💋 `/make-up` (69) · 🧴 `/hautpflege` (71) · 💆 `/beauty-tools` (186) · 💄 `/beauty-pflege` (327, Eltern)
+WEITERE (eventuell DUBLETTE zu bestehenden „sub-"-Kollektionen → ihr entscheidet, behalten o. löschen):
+- ⌚ `/herren-uhren` (65) · `/damen-uhren` (108) = Gender-Split (Menü hat nur `sub-uhren`) → Gender-Split ist NEU/nützlich.
+- 👛 `/portemonnaie` (30) · 🎒 `/rucksaecke` (48) → evtl. Überschneidung mit `sub-taschen`. (Leere `handtaschen` hab ich gelöscht.)
+⚠️ CizQ6 fasst das **70-Link-Menü NICHT selbst an** (eure sorgfältige Navigation nicht riskieren). Ihr habt schon `premium-beauty`/`sub-uhren`/`sub-taschen` — bitte meine neuen Beauty-Sub-Cats verlinken + Rest dedupen. Alle haben SEO + sind publiziert.
