@@ -42,6 +42,12 @@ node "automation/local/tiktok-bot.mjs" analyze --max 80 2>$null
 try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
 node "automation/brain/brain.mjs" 2>$null
 
+# 4b) AUTO-AUFRÄUMEN (User 2026-06-19 „automatisch"): Verlierer löschen — NUR 1×/Tag (frühester Lauf < 12 Uhr),
+#     mit harten Sicherheits-Caps: max 3/Lauf, unter 60 Views, Top-5-Gewinner + tiktok-keep.txt geschützt, Ledger.
+if ((Get-Date).Hour -lt 12) {
+  node "automation/local/tiktok-bot.mjs" delete --losers --min-views 60 --max 3 --go 2>$null
+}
+
 # 5) Gelerntes + Ledger zurück ins Repo (defensiv: erst rebase, dann push)
 git add automation/local/tiktok-upload-done.txt automation/brain/knowledge.json automation/brain/pools.json automation/brain/BRAIN.md reports/ 2>$null
 git commit -m "auto(TikTok-Cycle): Reel gepostet + analysiert + gelernt ($(Get-Date -Format 'yyyy-MM-dd HH:mm'))" 2>$null
