@@ -179,6 +179,12 @@ function loadReels() {
   // 🎁 GESCHENKFINDER-WERBUNG (smart: hilft Unentschlossenen → Conversion + Engagement; eigene Tool-Seite)
   collPosts.push({ type: 'image', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/0679602161121_0_P01.jpg?v=1781640714',
     caption: 'Wüsstsch nid was schänke? 🎁 Üse Geschänk-Finder hilft dir – nach Typ & Budget. Probier en us 👉 luxestyle.ch/pages/geschenkfinder\n🇨🇭 Schweizer Shop · –10% mit WELCOME10\n#geschenkidee #schweiz #geschenk #ootdschweiz #fyp' });
+  // 🎨 EINZIGARTIG: „Mach dys eiges Teil" (Selbst gestalten, POD) — Gewinner-Winkel (801 V), gibt's so nur hier
+  collPosts.push({ type: 'image', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b1742-88be-4c21-9947-0299de1deea4_result23ca451f10fc6892.jpg?v=1781361016',
+    caption: 'Mach dys eiges Teil 🎨🇨🇭 Eigeni Sprüch & Motive uf Aufkleber, Shirt, Hoodie & Tasse — du gestaltisch, mir drucke. Einzigartig & kei Mindestmänge 👉 luxestyle.ch/products/kiss-cut-aufkleber-selbst-gestalten\n–10% mit WELCOME10\n#selbstgestalten #schweiz #mundart #diy #fyp' });
+  // 🇨🇭 EINZIGARTIG: Schwiizer Sticker (Matterhorn/Edelwyss/Fondue) — Mundart/CH-Kultur, unverwechselbar
+  collPosts.push({ type: 'image', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/matterhorn_d6efa14d-6932-4864-9769-5705c82b4f4c.png?v=1781135405',
+    caption: 'Es bitzeli Schwiiz für überall 🇨🇭 Schwiizer Sticker – Matterhorn, Edelwyss, Schwiizerchrüz, Fondue. Wetterfescht & einzigartig 👉 luxestyle.ch/products/schweiz-sticker-matterhorn\n–10% mit WELCOME10\n#schweiz #sticker #matterhorn #swissmade #fyp' });
 
   // MIX interleaven: überwiegend Bilder, jede 2. ein Reel, jede 5. ein Kollektions-Post, jede 6. eine Story.
   const out = []; let ri = 0, si = 0, ci = DAYOFF; // ci-Tagesoffset → über die Tage rotieren ALLE Kollektionen + Geschenkfinder durch
