@@ -26,6 +26,12 @@ const GOOD = fs.existsSync(TOP) ? TOP : path.join(ROOT, 'automation', 'good_prod
 const TEXTMAP = path.join(ROOT, 'social', 'text_image_map.json');
 const POOLS = path.join(ROOT, 'automation', 'brain', 'pools.json');
 const OUT = path.join(ROOT, 'automation', 'cloudflare', 'luxe-poster', 'src', 'queue.json');
+// TRUST-Zeilen (Recherche 2026-06-19 „Vertrauen VOR Verkauf"): WAHR, keine Fake-Reviews. Bild + Reel.
+const TRUST_LINES = [
+  '🇨🇭 Schweizer Shop · TWINT/Charte · 30 Tage Rückgab · gratis ab CHF 65',
+  '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand',
+  '🤍 100% sichere Bstellig · TWINT & Charte · gratis Versand ab CHF 65 · 🇨🇭',
+];
 const DRY = process.argv.includes('--dry');
 
 // Gewinner-Hook-Opener (Neugier/Preis-Kontrast) + Share/Save-Trigger — rotierend, kein Spam.
@@ -99,7 +105,11 @@ function loadReels() {
     for (const l of lines) {
       const c = splitCsv(l); const video = (c[2] || '').trim(); const caption = (c[3] || '').trim();
       if (!/cdn\.shopify\.com\/.*\.mp4/.test(video) || seen.has(video)) continue;
-      seen.add(video); reels.push({ type: 'reel', video, caption });
+      // Trust-Winkel auch in Reel-Captions (jeder 3.), wenn nicht schon drin — WAHR, kein Fake.
+      let cap = caption;
+      if (reels.length % 3 === 2 && cap && !/Schweizer Shop|sichere Bstellig|TWINT/.test(cap))
+        cap += `\n${TRUST_LINES[reels.length % TRUST_LINES.length]}`;
+      seen.add(video); reels.push({ type: 'reel', video, caption: cap });
     }
     // TÄGLICHE ROTATION: Pool um einen Tages-Offset drehen, damit über die Tage ALLE Assets
     // (Hero-Reels + Selbst-gestalten + Veo) durch die 6 Feed-Slots rotieren — autonome Vielfalt.
@@ -133,20 +143,13 @@ function loadReels() {
 
   // Tages-Offset: täglich andere Opener/Trigger-Zuordnung (gegen Wiederholungs-Optik).
   const DAYOFF = Math.floor(Date.now() / 864e5);
-  // TRUST-QUOTE (Recherche 2026-06-19 „Vertrauen VOR Verkauf"): jeder 3. Post bekommt eine WAHRE
-  // Vertrauens-Zeile (kein Fake-Review). Schweizer kaufen bei hohem Vertrauen → Conversion-Hebel.
-  const TRUST = [
-    '🇨🇭 Schweizer Shop · TWINT/Charte · 30 Tage Rückgab · gratis ab CHF 65',
-    '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand',
-    '🤍 100% sichere Bstellig · TWINT & Charte · gratis Versand ab CHF 65 · 🇨🇭',
-  ];
   // BILDER (Produkt + Preis + Gewinner-Hook + CH-weite Tags)
   const images = goods.map((p, i) => {
     const opener = OPENERS[(i + DAYOFF) % OPENERS.length];
     const trigger = TRIGGERS[(i + DAYOFF) % TRIGGERS.length];
     const tags = tagsets[i % tagsets.length] + ' ' + CH_WIDE[i % CH_WIDE.length];
     const price = prices[p.handle] ? ` – CHF ${prices[p.handle]}` : '';
-    const trustLine = (i % 3 === 2) ? `\n${TRUST[(i + DAYOFF) % TRUST.length]}` : '';
+    const trustLine = (i % 3 === 2) ? `\n${TRUST_LINES[(i + DAYOFF) % TRUST_LINES.length]}` : '';
     const caption = `${opener} ${p.label}${price}\n${trigger} · –10% mit WELCOME10${trustLine}\n👉 luxestyle.ch/products/${p.handle}\n${tags}`;
     // Veredelte Text-Karte bevorzugen (Produktname+Rabatt eingebrannt), sonst nacktes Produktbild.
     const image = textMap[p.handle] || p.image;
