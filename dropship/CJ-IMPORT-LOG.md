@@ -1,5 +1,13 @@
 # 📦 CJ-Import-Log — LuxeStyle CH
 
+## 2026-06-19 (Abend) — 2 Premium-Ketten (Cloud, Bild-QA, andere Session baut Theme)
+- **«Perla»** Barock-Perlen-Anhänger, wasserfest, CHF 24.90 (CJ pid c45b1fba…, SKU CJ-PERLA-NECK) — ID 15435203871105.
+- **«Trio»** Birthstone-Kristall-Kette silber, CHF 29.90 (CJ pid 9f4c09c7…, SKU CJ-TRIO-NECK) — ID 15435203903873.
+- Beide: jedes Bild **visuell QA'd** (keine Asiaten-Schrift/Watermark), CDN READY, ACTIVE, in **alle 6 Kanäle** publiziert,
+  Tags `schmuck/damen/halsketten/wasserfester-schmuck`. Initialen-Kette **verworfen** (personalisiert = Fulfillment-Risiko).
+- **Lehre:** CJ-`productNameEn`-Suche ist unzuverlässig (liefert bei Schmuck-Queries zu ~80% Kleider/Bikini + nicht-deterministisch)
+  → nur per Ein-Pass Suche→Detail(pid)→Bild-QA anlegen; Premium-Volumen = BigBuy (Rate-Limit aus Cloud → PC). CJ-Token /tmp gültig ~220h.
+
 ## 2026-06-15 — 30er-Charge Herbst 2026 (CJ-Token vom User, autonom mit Bild-QA)
 > CJ-Access-Token vom User transient erhalten (funktioniert: code 200). Ziel ~30: Statement-Schmuck · Beauty · Herbst-Accessoires.
 > **Methode:** CJ-Suche → **jedes Bild visuell QA** (asiat. Schrift/Watermark/Text-Overlay/Fremdmarke ablehnen) → ACTIVE anlegen
