@@ -508,3 +508,9 @@ WEITERE (eventuell DUBLETTE zu bestehenden „sub-"-Kollektionen → ihr entsche
 - ⌚ `/herren-uhren` (65) · `/damen-uhren` (108) = Gender-Split (Menü hat nur `sub-uhren`) → Gender-Split ist NEU/nützlich.
 - 👛 `/portemonnaie` (30) · 🎒 `/rucksaecke` (48) → evtl. Überschneidung mit `sub-taschen`. (Leere `handtaschen` hab ich gelöscht.)
 ⚠️ CizQ6 fasst das **70-Link-Menü NICHT selbst an** (eure sorgfältige Navigation nicht riskieren). Ihr habt schon `premium-beauty`/`sub-uhren`/`sub-taschen` — bitte meine neuen Beauty-Sub-Cats verlinken + Rest dedupen. Alle haben SEO + sind publiziert.
+
+**2026-06-19 (CizQ6) — Marken-Kollektion + Erkenntnis Katalog schon granular:**
+- NEU: Marke `/gant` (14) publiziert. Paco Rabanne (1 Produkt) wieder gelöscht (zu klein).
+- ERKENNTNIS: Marken-Kollektionen `puma`/`adidas`/`under-armour` EXISTIEREN schon (handle vergeben) → Katalog/Taxonomie ist bereits sehr tief (mehr als im Menü). CizQ6 stoppt Kollektions-Erstellen (Dubletten-Schutz).
+- 🔴 PREMIUM-MAKEUP: CJ ungeeignet (billig/China/asiat. Schrift). Quelle = BigBuy (echte EU-Marken) → BigBuy-Creds nötig (nicht gesetzt). CJ-Token IST gültig, aber CJ-Makeup-Qualität zu tief.
+- OFFEN Theme-Session: neue Sub-Cats (beauty/make-up/hautpflege/beauty-tools/herren-uhren/damen-uhren/gant) ins Menü + dedupe.
