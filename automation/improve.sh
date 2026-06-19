@@ -13,6 +13,7 @@ echo "▶ [1/4] Health-Check"; $NODE automation/health-check.mjs 2>&1 | tail -2
 
 echo "▶ [2/4] Analyse + Lernen + Queue (auto.sh)"; bash automation/brain/auto.sh 2>&1 | grep -E "Autopost-Queue|Hook-Rang|Top-Tags|FERTIG|Aktionen" | head -6
 
+echo "▶ [2b/4] TikTok-Pixel-Check"; $NODE automation/tiktok-pixel-check.mjs 2>&1 | tail -3
 echo "▶ [3/4] Engagement-Lernen (Produkte nach Performance sortieren)"; $NODE automation/brain/self_learn.mjs 2>&1 | tail -3
 
 echo "▶ [4/4] Logbuch + sichern"
