@@ -29,23 +29,29 @@ function details(p){ const li=[]; const b=mans.get(String(p.manufacturer)); if(b
 const titleClean=s=>s.replace(/^[^\p{L}\p{N}]+/u,'').trim();
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
-const Q=`query($c:String){ products(first:40, query:"tag:bigbuy status:active", after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){edges{node{sku}}} } } } }`;
-let cursor=null, scanned=0, done=0, withSpec=0, batch=[];
-async function flush(){ if(!batch.length)return; const al=batch.map((b,i)=>`u${i}:productUpdate(input:$i${i}){userErrors{message}}`).join('\n'); const vars=`(${batch.map((b,i)=>`$i${i}:ProductInput!`).join(',')})`; const r=await gql(t,`mutation${vars}{${al}}`,Object.fromEntries(batch.map((b,i)=>[`i${i}`,b]))); const e=Object.values(r?.data||{}).flatMap(x=>x.userErrors||[]); if(e.length)console.log(' ⚠️',JSON.stringify(e).slice(0,160)); batch=[]; }
+// PHASE 1: alle Produkt-IDs SAMMELN (read-only, sortKey:ID stabil → kein Loop beim späteren Schreiben)
+const Q=`query($c:String){ products(first:100, query:"tag:bigbuy status:active", sortKey:ID, after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){edges{node{sku}}} } } } }`;
+let cursor=null, items=[], seen=new Set();
 do{
   const r=await gql(t,Q,{cursor}); const pg=r?.data?.products; if(!pg) break;
-  for(const e of pg.edges){
-    scanned++; const rec=recOf(e.node.handle, e.node.variants?.edges?.[0]?.node?.sku); if(!rec) continue;
-    const ttl=titleClean(e.node.title||''); const ul=specs[rec.id]; if(ul) withSpec++;
-    const html=`<p><strong>${ttl}</strong> – Premium-Qualität bei LuxeStyle, sorgfältig für die Schweiz ausgewählt.</p>`
-      +(ul?`<p><strong>✨ Eigenschaften</strong></p>\n${ul}`:'')
-      +`<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>\n`
-      +details(rec.p);
-    if(LIVE){ batch.push({id:e.node.id, descriptionHtml:html}); if(batch.length>=10) await flush(); }
-    done++; if(MAXP&&done>=MAXP){cursor=null;break;}
-  }
-  cursor=(MAXP&&done>=MAXP)?null:(pg.pageInfo.hasNextPage?pg.pageInfo.endCursor:null);
-  if(scanned%200===0) console.log(`  … ${scanned} gescannt · ${done} neu beschrieben (${withSpec} mit Specs)`);
+  for(const e of pg.edges){ if(seen.has(e.node.id)) continue; seen.add(e.node.id); items.push(e.node); }
+  cursor=pg.pageInfo.hasNextPage?pg.pageInfo.endCursor:null;
 }while(cursor);
+console.log(`Phase 1: ${items.length} eindeutige BigBuy-Produkte gesammelt.`);
+
+// PHASE 2: Beschreibungen bauen + updaten
+let scanned=0, done=0, withSpec=0, batch=[];
+async function flush(){ if(!batch.length)return; const al=batch.map((b,i)=>`u${i}:productUpdate(input:$i${i}){userErrors{message}}`).join('\n'); const vars=`(${batch.map((b,i)=>`$i${i}:ProductInput!`).join(',')})`; const r=await gql(t,`mutation${vars}{${al}}`,Object.fromEntries(batch.map((b,i)=>[`i${i}`,b]))); const e=Object.values(r?.data||{}).flatMap(x=>x.userErrors||[]); if(e.length)console.log(' ⚠️',JSON.stringify(e).slice(0,160)); batch=[]; }
+for(const node of items){
+  scanned++; const rec=recOf(node.handle, node.variants?.edges?.[0]?.node?.sku); if(!rec) continue;
+  const ttl=titleClean(node.title||''); const ul=specs[rec.id]; if(ul) withSpec++;
+  const html=`<p><strong>${ttl}</strong> – Premium-Qualität bei LuxeStyle, sorgfältig für die Schweiz ausgewählt.</p>`
+    +(ul?`<p><strong>✨ Eigenschaften</strong></p>\n${ul}`:'')
+    +`<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>\n`
+    +details(rec.p);
+  if(LIVE){ batch.push({id:node.id, descriptionHtml:html}); if(batch.length>=10) await flush(); }
+  done++; if(MAXP&&done>=MAXP) break;
+  if(scanned%200===0) console.log(`  … ${scanned}/${items.length} · ${done} beschrieben (${withSpec} mit Specs)`);
+}
 if(LIVE) await flush();
-console.log(`Fertig. Gescannt ${scanned} · beschrieben ${done} · davon mit Spec-Liste ${withSpec} ${LIVE?'':'(DRY)'}`);
+console.log(`Fertig. ${items.length} gesammelt · beschrieben ${done} · davon mit Spec-Liste ${withSpec} ${LIVE?'':'(DRY)'}`);
