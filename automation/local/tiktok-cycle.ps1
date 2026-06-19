@@ -33,6 +33,9 @@ if (-not $open) { Start-Process $brave "--remote-debugging-port=$port --user-dat
 # 2) Repo aktuell halten (neue Reels/Captions vom Cloud-Claude)
 git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
 
+# 2b) WORKER SELBST-DEPLOY (maximum auto): deployt den Cloudflare-Worker NUR wenn sich der Code geändert hat.
+powershell -ExecutionPolicy Bypass -File "$PSScriptRoot\worker-autodeploy.ps1" 2>$null
+
 # 3) NÄCHSTES Top-Reel posten (Hero zuerst, idempotent via tiktok-upload-done.txt)
 node "automation/local/tiktok-upload-browser.mjs"
 
