@@ -27,6 +27,14 @@ aus dem Store ausgehängt (primaryDomain auf myshopify zurückgefallen) → 503.
 → nur Admin-UI „Bestehende Domain verbinden". Bei künftigem 503 ZUERST `shop.domains`/`primaryDomain` per API prüfen.
 **Historie (Diagnose):** Store selbst war immer gesund (au3j0y-hq.myshopify.com → 200); nur die Custom-Domain-Anbindung fehlte.
 
+## 🤝 SCOPE-ERWEITERUNG 2026-06-19 (User: „CizQ6 soll auch Shop/Produkt-Polish + Merchant machen, langsam alles")
+**CizQ6 übernimmt ZUSÄTZLICH (additiv, langsam, kollisionsarm — via Shopify-API):** SEO-Meta-Beschreibungen
+(sind ALLE leer bei 2994 Produkten!), Produkt-Text-Politur, Google-Merchant-Feed-Qualität (identifier/condition/
+Beschreibung). **NICHT angefasst (= ChatGPT/Theme-Session):** Kategorie-STRUKTUR/Standard-Taxonomie (category-Feld),
+Theme-Dateien, Smart-Collection-Regeln, Menü-Layout. **Bing/Microsoft + Google-Merchant-Konto-Toggles = nur User (Login).**
+**Neue-Produkte-Sourcing:** braucht CJ/BigBuy-Creds (nicht gesetzt) ODER Import-Session. Wenn ChatGPT-Session SEO auch
+macht → hier melden, dann teilen wir nach Produkttyp. CizQ6 macht SEO gedrosselt/idempotent (nur leere füllen).
+
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)
 | Session | Aufgabe | Detail-Memory | Branch |
 |---|---|---|---|
