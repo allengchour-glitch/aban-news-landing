@@ -29,16 +29,17 @@ function details(p){ const li=[]; const b=mans.get(String(p.manufacturer)); if(b
 const titleClean=s=>s.replace(/^[^\p{L}\p{N}]+/u,'').trim();
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
-// PHASE 1: alle Produkt-IDs SAMMELN (read-only → kein Mutations-Loop; Default-Sort paginiert vollständig)
-const Q=`query($c:String){ products(first:50, query:"tag:bigbuy status:active", after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){edges{node{sku}}} } } } }`;
-let cursor=null, items=[], seen=new Set(), pages=0;
+// PHASE 1: ALLE Produkte OHNE query-Filter paginieren (stabiler ID-Cursor, umgeht instabilen Such-Index),
+// clientseitig nach status ACTIVE + tag 'bigbuy' filtern.
+const Q=`query($c:String){ products(first:50, after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle status tags variants(first:1){edges{node{sku}}} } } } }`;
+let cursor=null, items=[], seen=new Set(), pages=0, allSeen=0;
 do{
   const r=await gql(t,Q,{cursor}); const pg=r?.data?.products;
-  if(!pg){ console.log(`  ⚠️ Seite ${pages+1} fehlgeschlagen, Cursor=${cursor?.slice(0,16)} → 1× retry`); await sleep(3000); const r2=await gql(t,Q,{cursor}); if(!r2?.data?.products){ console.log('  ⚠️ erneut fehlgeschlagen → Abbruch Phase 1'); break; } var pg2=r2.data.products; }
+  if(!pg){ console.log(`  ⚠️ Seite ${pages+1} fehlgeschlagen → 1× retry`); await sleep(3000); const r2=await gql(t,Q,{cursor}); if(!r2?.data?.products){ console.log('  ⚠️ Abbruch Phase 1'); break; } var pg2=r2.data.products; }
   const cur=pg||pg2;
-  for(const e of cur.edges){ if(seen.has(e.node.id)) continue; seen.add(e.node.id); items.push(e.node); }
+  for(const e of cur.edges){ allSeen++; const x=e.node; if(x.status!=='ACTIVE') continue; if(!(x.tags||[]).includes('bigbuy')) continue; if(seen.has(x.id)) continue; seen.add(x.id); items.push(x); }
   cursor=cur.pageInfo.hasNextPage?cur.pageInfo.endCursor:null; pages++;
-  if(pages%10===0) console.log(`  Phase1 … ${items.length} gesammelt (Seite ${pages})`);
+  if(pages%20===0) console.log(`  Phase1 … ${items.length} bigbuy (${allSeen} gescannt, Seite ${pages})`);
 }while(cursor);
 console.log(`Phase 1: ${items.length} eindeutige BigBuy-Produkte gesammelt (${pages} Seiten).`);
 
