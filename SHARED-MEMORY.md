@@ -1152,3 +1152,11 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 - **Lehre/Methode:** Für „mehr Topseller aus anderen Kategorien" KEINEN Import (BigBuy saturiert) — stattdessen
   Vendor-Frequenz-Scan (`/tmp/vendor_scan.mjs`) → starke Marken ≥4 Produkte, die noch NICHT in der Regel sind →
   als VENDOR-EQUALS-Regeln anhängen. Kategorie-Vielfalt aus dem Bestand, sofort, ohne neue Produkte.
+
+## 📌 2026-06-20 Teil 4 (✨ Polish-Runde + Menü-404-Sweep)
+- **Topseller-Beschreibung neu** (Scope war von 363→667 gewachsen): alte Beschreibung nannte nur Sport-Marken →
+  jetzt kategorieübergreifend (Mode/Uhren/Parfum/Schmuck/Sonnenbrillen/Beauty/Technik) + SEO. Flagship-Collection
+  bewusst handgeschrieben statt Groq (Groq lieferte für diese eine zu knapp).
+- **KI-Polish erneut:** alle 250 Collections haben jetzt gute Beschreibungen → 0 zu polieren, 250 übersprungen. ✅
+- **Voller Menü-404-Sweep:** alle 122 Menü-Collection-Links per HTTP geprüft → **0 echte 404** (1× 403 bei topseller =
+  Cloudflare-Rate-Limit durch die schnellen Checks, Seite ist 200). Navigation sauber.
