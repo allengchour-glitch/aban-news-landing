@@ -19,8 +19,9 @@ try {
   foreach ($it in $r.commands) {
     $c = "$($it.cmd)"; Write-Host "[cmd] $c"; Ensure-Brave
     switch ($c) {
-      "tiktok"       { & node "automation/local/tiktok-upload-browser.mjs" }
-      "post"         { & node "automation/local/tiktok-upload-browser.mjs" }
+      "tiktok"       { if ($env:TT_ACCESS_TOKEN) { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" } else { & node "automation/local/tiktok-upload-browser.mjs" } }
+      "post"         { if ($env:TT_ACCESS_TOKEN) { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" } else { & node "automation/local/tiktok-upload-browser.mjs" } }
+      "tiktok-api"   { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" }
       "follower"     { & node "automation/local/ch-follower-growth.mjs" }
       "engage"       { & node "automation/local/tiktok-bot.mjs" engage --cap 12 }
       "analyse"      { & node "automation/local/tiktok-bot.mjs" analyze --max 80; & node "automation/tiktok-pixel-check.mjs" }
