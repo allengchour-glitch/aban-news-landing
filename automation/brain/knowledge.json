@@ -748,6 +748,12 @@
     "letzter_post_analyse": {
       "fest": "User 2026-06-20: 'schaue immer den letzten Post ueberall, regelmaessige Analyse'",
       "bedeutung": "In JEDEM Analyse-Zyklus den NEUESTEN Post auf TikTok + IG + FB pruefen (Views/Likes/Saves/Shares/Kommentare), mit dem Schnitt vergleichen, Gewinner/Verlierer ins Gehirn, naechsten Content danach ausrichten. Tools: tiktok-bot analyze + self_learn (Meta-Insights). Saves+Shares zaehlen 2026 mehr als Likes."
+    },
+    "lange_jobs_detached": {
+      "lehre": "User 2026-06-20 'lerne daraus': cmd-poll ist FIFO -> EIN langer Job (BigBuy-Import, rate-limitiert, lange) blockiert ALLE folgenden Befehle (ig-delete, campaign, Analyse) -> nichts wird gepostet/gepusht, Queue staut (pending 7).",
+      "fix": "Lange Jobs IMMER detached starten (Start-Process -WindowStyle Hidden, ohne Wait) -> cmd-poll laeuft sofort weiter, schnelle Befehle nicht blockiert. Gilt fuer bigbuy-*, seo, image-audit.",
+      "prinzip": "Nie einen lang laufenden Schritt synchron in einer Steuer-/Poll-Schleife ausfuehren. Geplante Tasks (LuxeUpdate/giga) laufen unabhaengig = Selbstheilung beim naechsten Zyklus.",
+      "erkennung": "Symptom: pending steigt, kein PC-Push ueber >30min. Pruefen ob ein Langlaeufer die Schleife blockiert."
     }
   },
   "decisions": [

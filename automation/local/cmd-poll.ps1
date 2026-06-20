@@ -32,13 +32,13 @@ try {
       "tiktok-photo" { & node "automation/tiktok-photo-post.mjs" }
       "ig-delete"   { & node "automation/local/ig-delete-dupes.mjs"; git add automation/local/ig-delete-shots/* 2>$null; git commit -m "ig-delete screenshots" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "sources"      { & node "automation/check-sources.mjs" --fix; git add -A 2>$null; git commit -m "auto(Quellen-Check): Dubletten bereinigt" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
-      "seo"          { $env:MAX="200"; & node "automation/seo_polish.mjs"; Remove-Item Env:MAX -EA SilentlyContinue; git add -A 2>$null; git commit -m "auto(SEO): Meta-Beschreibungen gefuellt" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "seo"          { Start-Process powershell -WindowStyle Hidden -ArgumentList '-ExecutionPolicy','Bypass','-Command',"`$env:MAX=200; node automation/seo_polish.mjs; git add -A; git commit -m auto-seo; git pull --rebase origin claude/luxestyle-product-CizQ6; git push origin claude/luxestyle-product-CizQ6" }
       "shippingtext" { $env:MAX="500"; & node "automation/fix_shipping_text.mjs"; Remove-Item Env:MAX -EA SilentlyContinue }
       "follower"     { & node "automation/local/ch-follower-growth.mjs" }
       "engage"       { & node "automation/local/tiktok-bot.mjs" engage --cap 12 }
       "analyse"      { & node "automation/local/tiktok-bot.mjs" analyze --max 80; & node "automation/tiktok-pixel-check.mjs" }
       "health"       { & node "automation/health-check.mjs"; git add reports/ 2>$null; git commit -m "auto(health): Provider/Key-Check" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
-      "image-audit"  { $env:MAX="300"; & node "automation/image-audit.mjs"; Remove-Item Env:MAX -EA SilentlyContinue; git add reports/ 2>$null; git commit -m "auto(image-audit): Gemini-Vision-Report" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "image-audit"  { Start-Process powershell -WindowStyle Hidden -ArgumentList '-ExecutionPolicy','Bypass','-Command',"`$env:MAX=300; node automation/image-audit.mjs; git add reports/; git commit -m auto-imageaudit; git pull --rebase origin claude/luxestyle-product-CizQ6; git push origin claude/luxestyle-product-CizQ6" }
       "cleanup"      { & powershell -ExecutionPolicy Bypass -File "automation/local/cleanup-storage.ps1" }
       "tutti"        { $env:AUTO_PUBLISH="1"; & node "automation/local/tutti-post.mjs"; $env:AUTO_PUBLISH=$null }
       "anibis"       { $env:AUTO_PUBLISH="1"; & node "automation/local/anibis-post.mjs"; $env:AUTO_PUBLISH=$null }
