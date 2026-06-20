@@ -136,15 +136,27 @@ function toSilent(file) {
     await box.type(caption, { delay: 12 }).catch(() => {});
   } else { log('⚠️ Kein Caption-Feld gefunden (poste evtl. ohne Caption)'); }
   await sleep(2000);
-  // Post-Button
-  const postBtn = p.locator('button:has-text("Post"), button:has-text("Posten"), [data-e2e="post_video_button"]').first();
+  // Post-/Veröffentlichen-Button (DE+EN). Wichtig: TikTok zeigt DANACH oft noch einen
+  // Bestätigungs-Dialog „Weiter und veröffentlichen?" → den auch klicken (sonst bleibt's stehen).
+  const postBtn = p.locator('[data-e2e="post_video_button"], button:has-text("Veröffentlichen"), button:has-text("Posten"), button:has-text("Post"), button:has-text("Publish")').first();
   if (await postBtn.count().catch(() => 0)) {
     await postBtn.click().catch(() => {});
-    log('„Post" geklickt — warte auf Bestätigung…');
+    log('„Veröffentlichen" geklickt — prüfe auf Bestätigungs-Dialog…');
+    // Bestätigungs-Dialog „Weiter und veröffentlichen?" → „Jetzt veröffentlichen" (mehrfach versuchen)
+    let confirmed = false;
+    for (let i = 0; i < 5 && !confirmed; i++) {
+      await sleep(1800);
+      const confirm = p.locator('button:has-text("Jetzt veröffentlichen"), button:has-text("Trotzdem veröffentlichen"), button:has-text("Publish now"), div[role="dialog"] button:has-text("Veröffentlichen"), div[role="dialog"] button:has-text("Weiter"), button:has-text("Continue")').first();
+      if (await confirm.count().catch(() => 0) && await confirm.isVisible().catch(() => false)) {
+        await confirm.click().catch(() => {});
+        log('✅ Bestätigung „Jetzt veröffentlichen" geklickt.');
+        confirmed = true;
+      }
+    }
     await sleep(12000);
     fs.appendFileSync(DONE, path.basename(file) + '\n');
-    log('✅ Gepostet (oder im Upload). In tiktok-upload-done.txt vermerkt.');
-  } else { log('⚠️ Post-Button nicht gefunden — Video ist gesetzt, bitte in der Seite manuell „Post" klicken.'); }
+    log(confirmed ? '✅ Veröffentlicht (Bestätigung geklickt). Vermerkt.' : '✅ „Veröffentlichen" geklickt (kein Extra-Dialog). Vermerkt.');
+  } else { log('⚠️ Veröffentlichen-Button nicht gefunden — Video ist gesetzt, bitte in der Seite manuell klicken.'); }
   await p.screenshot({ path: path.join(process.cwd(), 'tiktok-upload-result.png') }).catch(() => {});
   process.exit(0);
 })();
