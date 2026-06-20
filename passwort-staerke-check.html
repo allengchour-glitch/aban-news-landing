@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passwort-Stärke-Check — wie sicher ist mein Passwort? · aban news</title>
+<meta name="description" content="Kostenloser Passwort-Stärke-Check: Prüfe live, wie stark dein Passwort ist (Länge, Zeichenarten, geschätzte Knackzeit). Komplett lokal im Browser — dein Passwort wird nie gesendet.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/passwort-staerke-check.html">
+<meta property="og:title" content="Passwort-Stärke-Check — wie sicher ist mein Passwort?">
+<meta property="og:description" content="Live-Check: Länge, Zeichenarten, geschätzte Knackzeit. 100 % lokal im Browser — nichts wird gesendet.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/passwort-staerke-check.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Passwort-Stärke-Check",
+"url":"https://abannews.com/passwort-staerke-check.html","applicationCategory":"SecurityApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Prüft lokal im Browser, wie stark ein Passwort ist (Länge, Zeichenarten, geschätzte Knackzeit). Nichts wird gesendet.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wird mein Passwort übertragen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Prüfung läuft zu 100 % in deinem Browser. Dein Passwort wird nicht gesendet, nicht gespeichert und nicht protokolliert. Du kannst die Seite zur Sicherheit auch offline nutzen."}},
+{"@type":"Question","name":"Was macht ein Passwort stark?","acceptedAnswer":{"@type":"Answer","text":"Vor allem die Länge: 12–16+ Zeichen sind wichtiger als Sonderzeichen-Wirrwarr. Eine Mischung aus Groß-/Kleinbuchstaben, Zahlen und Symbolen erhöht die Vielfalt. Eine lange Passphrase aus mehreren zufälligen Wörtern ist gut merkbar und sehr stark."}},
+{"@type":"Question","name":"Wie wird die Knackzeit geschätzt?","acceptedAnswer":{"@type":"Answer","text":"Aus dem Zeichenraum (welche Zeichenarten vorkommen) und der Länge ergibt sich die Anzahl möglicher Kombinationen. Die Schätzung nimmt schnelles Offline-Raten an und ist eine grobe Orientierung, keine Garantie."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--mid:#d97706;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input{font:inherit;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:14px}
+.bar i{display:block;height:100%;width:0;border-radius:999px;transition:width .2s,background .2s}
+.verdict{font-weight:800;font-size:1.15rem;margin-top:10px}
+.meta{color:var(--ink2);font-size:.92rem;margin-top:6px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px;font-size:.86rem}
+@media(max-width:520px){.checks{grid-template-columns:1fr}}
+.chk{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.chk.ok{color:var(--ok)}
+.safe{margin-top:14px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:12px 14px;font-size:.86rem;color:var(--ink2)}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1>Wie stark ist dein <span class="a">Passwort</span>?</h1>
+    <p>Live-Check für Länge, Zeichenarten und geschätzte Knackzeit. Zu 100 % lokal im Browser — dein Passwort wird nie gesendet oder gespeichert.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">🔒 <strong style="color:#1f2937">100 % lokal:</strong> Die Prüfung passiert nur in deinem Browser. Nichts wird übertragen — du kannst die Seite sogar offline nutzen.</p>
+
+  <section class="panel" id="tool">
+    <label for="pw">Passwort eingeben</label>
+    <input id="pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Tipp: lange Passphrase aus 4 zufälligen Wörtern">
+    <div class="bar"><i id="fill"></i></div>
+    <div class="verdict" id="verdict">—</div>
+    <div class="meta" id="meta"></div>
+    <div class="checks" id="checks"></div>
+    <div class="safe"><strong>Faustregel:</strong> Länge schlägt Komplexität. 12–16+ Zeichen, pro Dienst ein eigenes Passwort, am besten aus einem Passwort-Manager. Niemals echte Passwörter auf fremden Seiten eingeben — hier ist es sicher, weil rein lokal.</div>
+    <p class="note">Schätzung = grobe Orientierung (Offline-Raten), keine Garantie. Kein Upload, kein Tracking.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für mehr Sicherheit.</p>
+    <p><a class="btn" href="/passwort-generator.html">Passwort-Generator</a>
+      <a class="btn ghost" href="/ki-betrug-scam-check.html">KI-Betrug erkennen</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/passwort-generator.html">Passwort-Generator</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var pw=document.getElementById("pw");
+  function human(sec){
+    if(sec<1) return "sofort";
+    var u=[["Jahrhunderte",3155760000],["Jahre",31557600],["Monate",2629800],["Tage",86400],["Stunden",3600],["Minuten",60],["Sekunden",1]];
+    for(var i=0;i<u.length;i++){ if(sec>=u[i][1]){ var n=sec/u[i][1]; if(n>1e6) return Math.round(n).toLocaleString("de-DE")+" "+u[i][0]; return (n<10?n.toFixed(1):Math.round(n))+" "+u[i][0]; } }
+    return "sofort";
+  }
+  function render(){
+    var p=pw.value, n=p.length;
+    var lower=/[a-z]/.test(p),upper=/[A-Z]/.test(p),dig=/[0-9]/.test(p),sym=/[^a-zA-Z0-9]/.test(p);
+    var pool=(lower?26:0)+(upper?26:0)+(dig?10:0)+(sym?33:0);
+    var fill=document.getElementById("fill"),verd=document.getElementById("verdict"),meta=document.getElementById("meta");
+    if(!n){fill.style.width="0";verd.textContent="—";verd.style.color="var(--muted)";meta.textContent="";drawChecks(false,false,false,false,0);return;}
+    var entropy = n * (Math.log(pool||1)/Math.log(2));
+    // 10^10 Versuche/Sek (schnelles Offline-Cracking)
+    var combos = Math.pow(2, entropy);
+    var sec = combos/2/1e10;
+    var score = Math.max(0, Math.min(100, Math.round(entropy/0.9)));
+    var col = entropy<40?"var(--bad)":entropy<60?"var(--mid)":"var(--ok)";
+    var label = entropy<28?"Sehr schwach":entropy<40?"Schwach":entropy<60?"Okay":entropy<80?"Stark":"Sehr stark";
+    fill.style.width=score+"%"; fill.style.background=col;
+    verd.textContent=label; verd.style.color=col;
+    meta.innerHTML="Länge: <strong>"+n+"</strong> · Zeichenraum: <strong>"+pool+"</strong> · geschätzte Knackzeit: <strong>"+human(sec)+"</strong>";
+    drawChecks(n>=12,upper&&lower,dig,sym,n);
+  }
+  function drawChecks(lenOk,caseOk,dig,sym,n){
+    var c=document.getElementById("checks");
+    function row(ok,t){return '<div class="chk '+(ok?"ok":"")+'">'+(ok?"✓":"○")+" "+t+"</div>";}
+    c.innerHTML=row(lenOk,"mind. 12 Zeichen")+row(caseOk,"Groß- &amp; Kleinbuchstaben")+row(dig,"Zahlen")+row(sym,"Sonderzeichen");
+  }
+  pw.addEventListener("input",render);
+  render();
+})();
+</script>
+</body>
+</html>
