@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum-Generator (DE / AT / CH) — kostenlos · aban news</title>
+<meta name="description" content="Kostenloser Impressum-Generator für Selbstständige und kleine Firmen: §5 TMG (DE), §5 ECG (AT), OR (CH). Felder ausfüllen → fertiges Impressum kopieren. Lokal im Browser, ohne Login, keine Rechtsberatung.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/impressum-generator.html">
+<meta property="og:title" content="Impressum-Generator (DE / AT / CH) — kostenlos">
+<meta property="og:description" content="Felder ausfüllen → rechtssicher strukturiertes Impressum kopieren. Für DE, AT, CH. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/impressum-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Impressum-Generator (DE / AT / CH)",
+"url":"https://abannews.com/impressum-generator.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Erzeugt ein strukturiertes Impressum für Deutschland (§5 TMG), Österreich (§5 ECG) und die Schweiz. Lokal im Browser, ohne Upload.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Braucht meine Website ein Impressum?","acceptedAnswer":{"@type":"Answer","text":"In Deutschland und Österreich brauchen geschäftsmäßige Websites eine Anbieterkennzeichnung (§5 TMG bzw. §5 ECG). In der Schweiz verlangt das UWG bei E-Commerce klare Kontaktangaben. Auch Solo-Selbstständige und kleine Firmen sind betroffen, sobald die Seite nicht rein privat ist."}},
+{"@type":"Question","name":"Werden meine Daten hochgeladen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Generator läuft komplett in deinem Browser. Deine Eingaben verlassen das Gerät nicht, es gibt kein Tracking und keine Server-Übertragung."}},
+{"@type":"Question","name":"Ist das eine Rechtsberatung?","acceptedAnswer":{"@type":"Answer","text":"Nein. Das Tool erzeugt eine gute, strukturierte Grundlage nach den üblichen Pflichtangaben. Je nach Tätigkeit (z. B. reglementierte Berufe, Vereine, AG/GmbH) können weitere Angaben nötig sein. Im Zweifel rechtlich prüfen lassen."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld.full{grid-column:1/-1}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input,select,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+textarea{resize:vertical;min-height:60px}
+.hint{font-size:.74rem;color:var(--muted);font-weight:400}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-top:4px}
+.seg button{font:inherit;font-size:.86rem;font-weight:700;padding:7px 16px;border:0;background:transparent;color:var(--amber-dk);cursor:pointer}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.out{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:16px;white-space:pre-wrap;font-size:.95rem;line-height:1.7;min-height:80px}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.warn{margin-top:14px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:12px 14px;font-size:.86rem;color:var(--ink2)}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Impressum</span> erstellen</h1>
+    <p>Felder ausfüllen, fertiges Impressum kopieren — für Deutschland (§5 TMG), Österreich (§5 ECG) und die Schweiz. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Baut aus deinen Angaben ein sauber strukturiertes Impressum mit den üblichen Pflichtangaben — zum Kopieren auf deine Website. Keine Rechtsberatung.</p>
+
+  <section class="panel" id="tool">
+    <div style="text-align:center;margin-bottom:6px"><label>Land</label><br>
+      <div class="seg" id="land">
+        <button data-l="DE" class="on">Deutschland</button>
+        <button data-l="AT">Österreich</button>
+        <button data-l="CH">Schweiz</button>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="fld full"><label for="name">Name / Firmenname <span class="hint">(wie im Register / auf Rechnungen)</span></label><input id="name" type="text" placeholder="Max Mustermann / Musterfirma GmbH" autocomplete="organization"></div>
+      <div class="fld"><label for="rechtsform">Rechtsform <span class="hint">(optional)</span></label>
+        <select id="rechtsform">
+          <option value="">— wählen —</option>
+          <option>Einzelunternehmen / Freiberufler:in</option>
+          <option>GmbH</option><option>UG (haftungsbeschränkt)</option><option>AG</option>
+          <option>GbR</option><option>OHG</option><option>KG</option>
+          <option>Verein (e.V.)</option><option>Einzelfirma (CH)</option><option>GmbH (CH)</option><option>AG (CH)</option>
+        </select></div>
+      <div class="fld"><label for="vertreter">Vertretungsberechtigte:r <span class="hint">(bei Firmen)</span></label><input id="vertreter" type="text" placeholder="Geschäftsführer:in: Max Mustermann"></div>
+      <div class="fld full"><label for="strasse">Straße &amp; Hausnummer</label><input id="strasse" type="text" placeholder="Musterstraße 1" autocomplete="street-address"></div>
+      <div class="fld"><label for="plz">PLZ</label><input id="plz" type="text" placeholder="3123" autocomplete="postal-code"></div>
+      <div class="fld"><label for="ort">Ort</label><input id="ort" type="text" placeholder="Belp" autocomplete="address-level2"></div>
+      <div class="fld"><label for="email">E-Mail</label><input id="email" type="email" placeholder="hallo@beispiel.de" autocomplete="email"></div>
+      <div class="fld"><label for="tel">Telefon <span class="hint">(empfohlen)</span></label><input id="tel" type="tel" placeholder="+49 30 1234567" autocomplete="tel"></div>
+      <div class="fld" id="ustWrap"><label for="ust">USt-IdNr. / UID <span class="hint">(falls vorhanden)</span></label><input id="ust" type="text" placeholder="DE123456789 / CHE-123.456.789"></div>
+      <div class="fld" id="regWrap"><label for="reg">Register &amp; Nummer <span class="hint">(bei eingetragenen Firmen)</span></label><input id="reg" type="text" placeholder="Amtsgericht Musterstadt, HRB 12345"></div>
+      <div class="fld full" id="aufsichtWrap"><label for="aufsicht">Aufsichtsbehörde / Kammer <span class="hint">(reglementierte Berufe, optional)</span></label><input id="aufsicht" type="text" placeholder="z. B. Ärztekammer / Rechtsanwaltskammer …"></div>
+    </div>
+    <div style="margin-top:12px"><label>EU-Streitschlichtung (OS-Plattform) aufnehmen?</label>
+      <div class="seg" id="os">
+        <button data-os="1" class="on">Ja (DE/AT empfohlen)</button>
+        <button data-os="0">Nein</button>
+      </div>
+    </div>
+
+    <div class="out" id="out" aria-live="polite"></div>
+    <div class="row">
+      <button type="button" class="btn" id="copy">📋 Impressum kopieren</button>
+      <button type="button" class="btn ghost" id="copyHtml">Als HTML kopieren</button>
+    </div>
+
+    <div class="warn"><strong>Hinweis:</strong> Dieses Tool erzeugt eine gute, strukturierte Grundlage mit den üblichen Pflichtangaben — <strong>keine Rechtsberatung</strong>. Je nach Tätigkeit (reglementierte Berufe, Vereine, AG/GmbH, Aufsichtsbehörden) sind weitere Angaben nötig. Im Zweifel anwaltlich prüfen lassen.</div>
+    <p class="note">Rechtsgrundlage: DE §5 DDG/TMG · AT §5 ECG / §63 GewO · CH Art. 322 OR-Praxis / UWG. Alles lokal im Browser, kein Upload, kein Tracking.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche.</p>
+    <p><a class="btn" href="/rechnung-generator.html">Rechnung schreiben</a>
+      <a class="btn ghost" href="/angebot-schreiben.html">Angebot</a>
+      <a class="btn ghost" href="/ki-dsgvo-check.html">DSGVO-Schnellcheck</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/rechnung-generator.html">Rechnung</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var land="DE", os=1;
+  function v(id){var e=document.getElementById(id);return e?e.value.trim():"";}
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  function build(){
+    var name=v("name"), rf=v("rechtsform"), vert=v("vertreter"),
+        str=v("strasse"), plz=v("plz"), ort=v("ort"),
+        email=v("email"), tel=v("tel"), ust=v("ust"), reg=v("reg"), auf=v("aufsicht");
+    var L=[];
+    L.push("Impressum");
+    L.push("");
+    L.push(land==="AT"?"Angaben gemäß §5 ECG / §63 GewO:":land==="CH"?"Angaben gemäß UWG / OR:":"Angaben gemäß §5 DDG (ehem. §5 TMG):");
+    L.push("");
+    if(name) L.push(name + (rf?(" ("+rf+")"):""));
+    if(str) L.push(str);
+    if(plz||ort) L.push((plz+" "+ort).trim());
+    L.push("");
+    if(vert) L.push((land==="CH"?"Zeichnungsberechtigt: ":"Vertreten durch: ")+vert);
+    var kon=[];
+    if(tel) kon.push("Telefon: "+tel);
+    if(email) kon.push("E-Mail: "+email);
+    if(kon.length){ L.push(""); L.push("Kontakt"); kon.forEach(function(k){L.push(k);}); }
+    if(ust){ L.push(""); L.push((land==="CH"?"Unternehmens-Identifikationsnummer (UID): ":"Umsatzsteuer-Identifikationsnummer (§27a UStG): ")+ust); }
+    if(reg){ L.push(""); L.push("Registereintrag"); L.push(reg); }
+    if(auf){ L.push(""); L.push("Zuständige Aufsichtsbehörde / Kammer"); L.push(auf); }
+    // Verantwortlich i.S.d. Presserechts (gängig, falls redaktionelle Inhalte)
+    if(name){ L.push(""); L.push((land==="AT"?"Für den Inhalt verantwortlich: ":"Verantwortlich für den Inhalt (§18 Abs.2 MStV): ")+(vert||name)); if(str){L.push(str); L.push((plz+" "+ort).trim());} }
+    if(os && land!=="CH"){
+      L.push("");
+      L.push("EU-Streitschlichtung");
+      L.push("Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.eu/consumers/odr");
+      L.push("Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.");
+    }
+    return L.join("\n").replace(/\n{3,}/g,"\n\n").trim();
+  }
+  function render(){
+    var t=build();
+    document.getElementById("out").textContent = t || "Fülle oben deine Angaben aus — das Impressum erscheint hier.";
+  }
+  // bind inputs
+  ["name","rechtsform","vertreter","strasse","plz","ort","email","tel","ust","reg","aufsicht"].forEach(function(id){
+    var e=document.getElementById(id); if(e) e.addEventListener("input",render);
+  });
+  document.querySelectorAll("#land button").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll("#land button").forEach(function(x){x.classList.remove("on");});
+      b.classList.add("on"); land=b.getAttribute("data-l"); render();
+    });
+  });
+  document.querySelectorAll("#os button").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll("#os button").forEach(function(x){x.classList.remove("on");});
+      b.classList.add("on"); os=b.getAttribute("data-os")==="1"; render();
+    });
+  });
+  function flash(btn,txt){var o=btn.textContent;btn.textContent=txt;setTimeout(function(){btn.textContent=o;},1500);}
+  document.getElementById("copy").addEventListener("click",function(){
+    var t=build(); if(!t) return; var b=this;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){flash(b,"Kopiert ✓");});
+  });
+  document.getElementById("copyHtml").addEventListener("click",function(){
+    var t=build(); if(!t) return; var b=this;
+    var html=t.split("\n").map(function(l){return l?("<p>"+esc(l)+"</p>"):"";}).join("\n");
+    if(navigator.clipboard) navigator.clipboard.writeText(html).then(function(){flash(b,"HTML kopiert ✓");});
+  });
+  render();
+})();
+</script>
+</body>
+</html>
