@@ -16,6 +16,20 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🧰 2026-06-20 — 7 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+> Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
+> Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
+- **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
+  impressum-generator (DE/AT/CH §5) #1107 · abwesenheitsnotiz-generator (DE/EN) #1108 · utm-builder #1109 ·
+  email-signatur-generator (HTML-Sig) + blindtext-generator (Lorem/DE) #1110 · tage-rechner (Datumsdiff/Frist) +
+  farbpalette-generator (Harmonien) #1113.
+- **Muster für neue Tools (bewährt):** Template = mwst-rechner.html-Struktur (header.site + hero + „Was macht das?"
+  + panel + data-aban-news-cta + footer); WebApplication+FAQPage-JSON-LD; in `online-tools.html` (Karte) +
+  `sitemap.xml` eintragen; `node --check` + JSON-LD + link-check + brain-scan. **Lehre:** online-tools.html wird
+  vom Parallel-Workstream oft live geändert → mit **Edit-Tool** (atomar) einfügen statt Python-Heredoc (Race),
+  dann sofort committen. Jeweils eigener Branch → PR → squash-merge.
+- Stand: Brain 100/100, 0 defekte Links, alle Diagnosen grün. Shop 22/22 (Salt = User-Task morgen).
+
 ## 🎬 2026-06-19 — Gratis-Creator-Suite (freegen) + Bot + Inserate-Ausbau (zuerst lesen)
 > Fokus diese Session: **abannews** (LuxeStyle bewusst nicht angefasst — andere Session). Alles gemerged auf `main`.
 - **`freegen/` — eigene, kostenlose Creator-Tools** (Ersatz für HeyGen/Canva/ElevenLabs, ohne Credits/Keys, alles
