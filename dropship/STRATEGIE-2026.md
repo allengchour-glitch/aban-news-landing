@@ -39,3 +39,11 @@
 4. **Retention-Flows + UGC** ← bei Wiederkäufern.
 
 **Quelle:** Web-Recherche 2026-06-20 (shopify/autods/klaviyo/getcarro/trueprofit u.a.) — synthetisiert ins Gehirn.
+
+## 8. 🔴 CHECKOUT-DIAGNOSE (Recherche-Schwarm, korroboriert) — direkter Weg zu den ERSTEN Käufen
+**Befund:** 0 Käufe = Checkout/Bezahl-Schicht + Mobile-Friktion, nicht Katalog/Reichweite. (Bisherige Checkouts = User-Tests → Traffic bleibt #1, aber jetzt Conversion-bereit machen.)
+**HEUTE (billig + grösster Impact, User):** TWINT in Shopify Payments aktiv? · Shop Pay/Apple/Google Pay Express · Microsoft Clarity (gratis, zeigt das blockierende Element) · Gastkauf erzwingen · 1 Handy-Testkauf.
+**Mobile/Traffic:** LCP <2.5s · TikTok-Klick → exakte Produkt-PDP (Message-Match) · Sticky-ATC · TikTok-Hero <CHF 30 (>5% Conv) + UGC-Style.
+**Trust statt Reviews:** Trust-Badges + Rückgabe beim Kaufbutton · 5-10 HD-Bilder On-Model + Grössen-Ref · cm-Tabelle · 5+ echte Reviews (+270%).
+**Verbote:** keine Fake-Scarcity/Countdowns (abmahnbar), kein A/B (zu wenig Traffic).
+**Kauf auf Rechnung (CH-Hammer):** ~70% wollen Rechnungskauf, Fehlen = 48% Abbruch → Anbieter einbinden (Payrexx/POWERPAY/Heidipay).

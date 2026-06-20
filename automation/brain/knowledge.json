@@ -796,6 +796,62 @@
       "seeding": "Influencer-Seeding: Kadenz (regelmaessig statt Spikes), einfache Kits zum Filmen, Value-Exchange statt nur Gratisprodukt.",
       "repeat": "Produkt-Empfehlungs-Mails (nach Kaufhistorie) -> Wiederkauf + AOV.",
       "anwenden": "Klaviyo-Flows aktiv halten (User). Review-Request nach Kauf. UGC sammeln (CH-Mikro-Creators seeden). CizQ6: Empfehlungs-/Cross-Sell-Logik vorbereiten."
+    },
+    "video_quellen_identifiziert": {
+      "video1": "5gXwjXEG6P0 = Julian Ivanov 'Verwandle Claude in deine Marketingagentur' (@Julian-Ivanov): Multi-Agent-KI, CEO-Agent delegiert an Spezialisten (Paperclip orchestriert mehrere Claude-Agenten).",
+      "video2": "f8vb2UrRXhI = Vilius (@ViliusLite) 'Dropshipping-Produkte live finden': Winning-Product-Research-Methode.",
+      "bedeutung": "User-Vision = Claude als autonome Marketing-Agentur (Multi-Agent). Genau unser Bot. Umsetzen: Orchestrator-Agent + Spezial-Sub-Bots."
+    },
+    "ki_agent_patterns_2026": {
+      "quelle": "Recherche-Schwarm (Nate Herk/AI Advantage/Sabrina/n8n-Blog)",
+      "top": [
+        "Orchestrator-Worker-Loop: Dirigent-Agent waehlt pro Lauf den Spezial-Bot (Post/Import/SEO/Analyse)",
+        "Writer-Critic-Loop: 2. LLM bewertet Caption/Hook (Hook/Mundart/CH/Safe-Zone), <Schwelle -> Rueckgabe mit Maengeln, max 2-3 Iterationen",
+        "Fallback-Kette mit Retry-Counter + Fehler-Feedback (haben wir, + Validierung ergaenzen)",
+        "Strukturierte Output-Validierung + Self-Heal (Schema-Check, sonst erneut)",
+        "Queue mit explizitem STATE pro Eintrag (idee->generiert->QA-ok->geplant->gepostet->analysiert)",
+        "One-to-Many-Repurposing (1 Asset -> TikTok stumm + IG-Reel + FB-Story + Pin)",
+        "Human-in-Loop-Eskalation mit vollem Kontext statt still sterben",
+        "Deterministische Switches vor LLM (Dublette/Safe-Zone/Banned = Code, nicht LLM)"
+      ],
+      "groesste_luecken": "Self-Critique-Loop (Writer-Critic) + expliziter State pro Queue-Eintrag. Diese als naechstes bauen.",
+      "anwenden": "build_queue/self_learn: Writer-Critic vor Posten; queue.json um state-Feld erweitern; Orchestrator statt starrem auto.sh."
+    },
+    "ch_conversion_kritisch_2026": {
+      "quelle": "Recherche-Schwarm CH-Markt (Carpathia/Payrexx/Horizont/Haendlerbund)",
+      "HAMMER": "KAUF AUF RECHNUNG fehlt = wahrscheinlich DER Conversion-Killer: ~70% der Schweizer wollen Rechnungskauf, Fehlen = Abbruchgrund #2 (48%). EINBAUEN (Payrexx/POWERPAY/Heidipay).",
+      "zahlung": "3 Zahlarten noetig: Karte (~30%) + TWINT (~27%) + Rechnung (~27%). Alle im Checkout, TWINT-Logo schon auf PDP.",
+      "abbruchgruende": "Versandkosten (70%!), fehlende Zahlart (48%), Lieferzeit (46%), Sicherheits-Misstrauen (56%). Alle 4 wohl gleichzeitig aktiv.",
+      "versand": "CH-Gratisversand-Schnitt ~CHF 76. Schwelle frueh+prominent + Cart-Progressbar 'noch CHF X bis gratis'.",
+      "recht": "Impressum + Datenschutz PFLICHT (DSG 2023). Kein gesetzliches Widerrufsrecht in CH -> grosszuegige Rueckgabe = Verkaufsargument.",
+      "sprache": "Produkt-/Checkout-Texte HOCHDEUTSCH (Reichweite), Mundart in Captions/Kommentaren/Voice (CH-Filter).",
+      "markt": "Nicht ueber Preis/Breite gegen Zalando/Galaxus -> kuratierte Nische + POD + Story. TikTok-Shop CH kommt 2026 -> Mikro-Creators jetzt aufbauen.",
+      "prio": "Hoechste Conversion-Hebel: 1) Rechnungskauf, 2) Versand transparent+frueh, 3) realistische Lieferzeit, 4) Trust-Badges+Reviews im Checkout-Sichtfeld."
+    },
+    "cro_diagnose_checkout": {
+      "quelle": "Recherche-Schwarm CRO (5 Straenge, korroboriert: Baymard/Shopify/Spiegel/FTC)",
+      "diagnose": "0 Kaeufe = Checkout/Bezahl-Schicht + mobile Friktion, NICHT Katalog/Reichweite. (Achtung: bisherige 12 Checkouts waren User-Tests -> Traffic bleibt #1, ABER Conversion-Bereitschaft jetzt herstellen.)",
+      "heute_billig_stark": [
+        "TWINT in Shopify Payments aktiv? (CH-only = groesster Fix, ~65% mobile CH)",
+        "Shop Pay + Apple/Google Pay Express-Buttons (+50% vs Gast)",
+        "Microsoft Clarity installieren (gratis Heatmaps -> sieht das blockierende Element)",
+        "Gastkauf erzwingen (kein Pflicht-Konto, -19% Abbruch)",
+        "1 echter Handy-Testkauf"
+      ],
+      "mobil_traffic": [
+        "LCP <2.5s (PageSpeed)",
+        "TikTok-Klick -> EXAKTE Produkt-PDP (Message-Match +60-200%), nicht breite Collection",
+        "Sticky Add-to-Cart auf Mobile-PDP",
+        "TikTok-Hero-Produkte <CHF 30 (konvertiert >5%; CHF80+ <1%) + UGC-Style"
+      ],
+      "trust_statt_reviews": [
+        "Secure-Checkout/Trust-Badges + Rueckgabe-Policy beim Kaufbutton (+42% unbekannte Shops)",
+        "5-10 HD-Bilder/Produkt On-Model + Groessen-Referenz",
+        "cm-Groessentabelle (Mode-Retouren -20-50%)",
+        "5+ ECHTE Reviews/Hero -> +270% Kaufwahrscheinlichkeit (Ziel 4.2-4.7, nie Fake)"
+      ],
+      "verbote": "KEINE Fake-Scarcity/Dauer-Countdowns (CH-UWG/FTC abmahnbar). Kein klassisches A/B (zu wenig Traffic) -> Clarity-Friktion fixen.",
+      "anwenden": "CizQ6 autonom: TikTok-Reels primaer aus <CHF30-Produkten (hoechste TikTok-Conversion), Mundart-Gewinner-Hooks, Bilder/Sizing pruefen. User-only (heute): TWINT/Express-Pay/Clarity/Gastkauf."
     }
   },
   "decisions": [

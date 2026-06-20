@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # LuxeStyle — batch_masterpiece.sh : Meisterwerk-Reel fuer jedes Top-Produkt (idempotent, robust).
 cd "$(dirname "$0")/../.." || exit 1
-HOOKS=("Gseht us wie Tuusige?" "Luxus-Look, kei Luxus-Pris" "Genau das hesch gsuecht?" "Das mues i ha" "Weles nimmsch?" "Gseht teuer us - isch es nid" "Dis noeie Lieblingsteil?" "Fuer di oder zum Verschaenke?")
+# Gewinner-Hooks aus der YouTuber/TikTok-Recherche (hooks-mundart.txt), sonst Fallback
+if [ -f automation/video/hooks-mundart.txt ]; then mapfile -t HOOKS < automation/video/hooks-mundart.txt; fi
+[ ${#HOOKS[@]} -eq 0 ] && HOOKS=("Gseht us wie Tuusige?" "Luxus-Look, kei Luxus-Pris" "Genau das hesch gsuecht?" "Das mues i ha" "Weles nimmsch?" "Gseht teuer us - isch es nid" "Dis noeie Lieblingsteil?" "Fuer di oder zum Verschaenke?")
 i=0
 # CRLF strip + sauber parsen
 tail -n +2 automation/top_products.csv | tr -d '\r' | while IFS=, read -r handle img label rest; do
