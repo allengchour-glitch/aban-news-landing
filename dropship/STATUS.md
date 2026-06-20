@@ -1,5 +1,19 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (NACHT) — GROSSE RECHERCHE-SESSION (~11 Agenten) + 123 Gehirn-Regeln + Playbooks
+**Vollgas-Recherche (2 Schwärme, ~11 Agenten parallel) → alles ins Gehirn + Doku:**
+- 🎬 Content/TikTok: Hook 1-2s, 2-3s-Cuts (+23% Completion), Montage>Einzelbild, Loop-Engineering, Punch-ins
+- 📈 Wachstum: Erste-60-Min-Regel, Duet/Stitch, DM-Shares 3-5x>Likes, ⚠️ Follow/Unfollow ABGESTRAFT
+- 🛍️ Winning-Produkte: wasserfester Schmuck/Anklets (Marge-King), Parfum-Dupes (TikTok-Conversion), Beauty-Tools, Geschenk-Sets <CHF30
+- 💰 CRO/Checkout: **Kauf auf Rechnung + TWINT + Express-Pay = #1 Conversion-Hebel** (3 Streams einig), Microsoft Clarity gratis, Trust-Badges
+- 🇨🇭 Branding: 89% Trust CH vs 25% Ausland → über VERTRAUEN gewinnen; Claim definiert; Unit Economics > Reichweite
+- 📧 Klaviyo: komplettes 6-Flow-Playbook copy-paste (dropship/EMAIL-FLOWS-KLAVIYO.md)
+- 🎥 2 User-Videos identifiziert: Julian Ivanov (Multi-Agent-KI) + Vilius (Produkt-Research)
+**Neue Docs:** STRATEGIE-2026.md · EMAIL-FLOWS-KLAVIYO.md · SYNC-BOT.md · hooks-mundart.txt (Gewinner-Hooks im Builder)
+**Tools gebaut:** yt-learn.mjs (YouTuber-Kanäle analysieren→Gehirn), cleanup-storage.ps1, Live-Profil-Dedup im Worker, detached lange Jobs.
+**🎯 KLARSTE ERKENNTNIS (alle Recherche einig):** Erste Käufe = (1) Kauf auf Rechnung+TWINT+Express-Pay, (2) Swissness/Trust, (3) Buy-Intent-Traffic. NICHT Katalog/Content (top vorbereitet).
+
+
 ## 2026-06-20 (ABEND) — ✅ TIKTOK POSTET WIEDER + Autobot vollautonom gehärtet
 **Durchbruch:** PC-Sync gefixt → **TikTok postet wieder** (giga `d7ee5aa5` 20:48 + TIKTOK-JETZT: stiletto/crossbody/lino gepostet). Ursache der „1 Woche nichts": brave-agent-Profil war nicht bei TikTok eingeloggt + PC-Git diverged/locked. Beides gelöst (User-Login + Sync-Fix).
 **Heute autonom gehärtet (alles gepusht, PC zieht's automatisch):**
