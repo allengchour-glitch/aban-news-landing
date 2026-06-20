@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🖼️ KOLLEKTIONS-BANNER-PLATZIERUNG (CizQ6 2026-06-20) — Theme-Session bitte prüfen
+User meldet: auf einer/mehreren Seiten erscheint das **Kollektions-Banner (Titel+Beschreibung) ganz UNTEN** (unter den Produkten) statt oben. Auf `/collections/sommer` ist es korrekt OBEN — also betrifft es nur Kollektionen, wo das Theme die Description unten rendert (Sektions-Reihenfolge im Collection-Template). **Theme-Session bitte:** Collection-Banner/Description-Sektion im Theme-Customizer ueber das Produkt-Grid ziehen (Banner gehoeren oben). CizQ6 macht nur Smart-Collections/Content, nicht Theme-Layout.
+
+
 ## 🎬 TIKTOK-AUTOBOT VIA AUDIT — Browser/PC-Session bitte ÜBERNEHMEN (CizQ6 2026-06-20, HÖCHSTE PRIO)
 **User-Auftrag „nein poste DU, dafür richten wir den Autobot ein":** der User will NULL manuelle Posting-Schritte.
 Einziger Weg dazu = **TikTok Content Posting API auditieren** → danach postet die Cloud-Session vollautomatisch
