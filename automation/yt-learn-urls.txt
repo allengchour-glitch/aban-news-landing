@@ -1,3 +1,10 @@
 # YouTube-Links zum Analysieren+Lernen (yt-learn.mjs liest diese Liste). Eine URL pro Zeile. # = Kommentar.
+# Vom User geteilt:
 https://www.youtube.com/watch?v=5gXwjXEG6P0
 https://www.youtube.com/watch?v=f8vb2UrRXhI
+# Top-Kanaele (CizQ6 per Websuche gefunden 2026-06-20): organisches TikTok-Dropshipping + E-Commerce.
+# yt-dlp loest @handle auf; nicht aufloesbare werden uebersprungen.
+https://www.youtube.com/@TheEcomKing
+https://www.youtube.com/@jordanwelch
+https://www.youtube.com/@eComTom
+https://www.youtube.com/@learnwithshopify
