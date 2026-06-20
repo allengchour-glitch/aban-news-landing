@@ -66,6 +66,38 @@ let injected = 0, ld = 0, skipped = 0;
 let files = [];
 try { files = walk(root, []); } catch (e) { console.error("inject-engine: kein", root); process.exit(0); }
 
+// ── Index der KI-Themen-Hubs (ki-*.html) für interne Verlinkung ("Verwandte Themen") ──
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+function tokset(base) { return new Set(base.replace(/^ki-/, "").replace(/\.html$/i, "").split("-").filter((w) => w.length > 2)); }
+let related = 0;
+const hubs = [];
+for (const f of files) {
+  const base = f.split(sep).pop();
+  if (!base.startsWith("ki-") || !base.endsWith(".html")) continue;
+  let h; try { h = readFileSync(f, "utf8"); } catch { continue; }
+  if (/<meta[^>]+name=["']robots["'][^>]*noindex/i.test(h)) continue;
+  const name = cleanName(h);
+  if (!name) continue;
+  hubs.push({ base, url: pageUrl(f), name, tokens: tokset(base) });
+}
+function relatedFor(base) {
+  const me = hubs.find((x) => x.base === base);
+  if (!me) return [];
+  const scored = hubs.filter((x) => x.base !== base).map((x) => {
+    let s = 0; for (const t of x.tokens) if (me.tokens.has(t)) s++;
+    return { x, s };
+  }).sort((a, b) => b.s - a.s);
+  const out = scored.filter((o) => o.s > 0).slice(0, 6).map((o) => o.x);
+  for (const o of scored) { if (out.length >= 6) break; if (out.indexOf(o.x) < 0) out.push(o.x); }
+  return out.slice(0, 6);
+}
+function relatedBlock(base) {
+  const rel = relatedFor(base);
+  if (rel.length < 3) return "";
+  const items = rel.map((r) => `<li style="margin:0"><a href="${esc(r.url)}" style="display:inline-block;background:#fff;border:1px solid #e6e1d6;border-radius:18px;padding:6px 13px;font-size:.85rem;color:#374151;text-decoration:none;font-weight:600">${esc(r.name)}</a></li>`).join("");
+  return `<nav aria-label="Verwandte KI-Themen" data-aban-related style="max-width:760px;margin:28px auto 8px;padding:0 16px"><h2 style="font-size:1.05rem;margin:0 0 10px">Verwandte KI-Themen</h2><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px">${items}</ul></nav>`;
+}
+
 for (const f of files) {
   let html;
   try { html = readFileSync(f, "utf8"); } catch { continue; }
@@ -118,6 +150,15 @@ for (const f of files) {
       changed = true;
     }
   }
+  // (6) Interne Verlinkung: "Verwandte KI-Themen" in KI-Hubs (ki-*.html), idempotent
+  {
+    const base = f.split(sep).pop();
+    if (!noindex && base.startsWith("ki-") && base.endsWith(".html") && html.indexOf("data-aban-related") < 0) {
+      const block = relatedBlock(base);
+      const bpos = block ? html.toLowerCase().lastIndexOf("</body>") : -1;
+      if (bpos >= 0) { html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); related++; changed = true; }
+    }
+  }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
-console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD injiziert, " + skipped + " übersprungen (von " + files.length + ").");
+console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related-Blocks injiziert, " + skipped + " übersprungen (von " + files.length + ").");
