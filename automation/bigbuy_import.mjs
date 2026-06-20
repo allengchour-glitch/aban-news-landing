@@ -192,7 +192,7 @@ const CONFIG = {
     bullets: ['Praktisch in der Küche', 'Hochwertige Materialien', 'Schöne Geschenkidee', '100% Original, schnelle EU-Lieferung'] },
   reise: { coll: { handle: 'sub-reise', title: '🧳 Reise & Camping', tag: 'reise' },
     extraTags: ['reise', 'outdoor', 'geschenk', 'premium'], type: 'Reise', maxCost: MAX_COST_EUR,
-    anchor: ['koffer', 'reisetasche', 'trolley', 'reise-organizer', 'camping', 'picknick', 'kulturbeutel', 'reiseadapter', 'packwürfel'],
+    anchor: ['koffer', 'reisetasche', 'reise-trolley', 'reise-organizer', 'camping', 'picknick', 'kulturbeutel', 'reiseadapter', 'packwürfel'],
     ban: ['kinder', 'spielzeug'],
     bullets: ['Idealer Reisebegleiter', 'Robust & praktisch', 'Mehr Ordnung unterwegs', '100% Original, schnelle EU-Lieferung'] },
   werkzeug: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
