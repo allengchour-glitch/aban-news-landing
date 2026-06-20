@@ -362,7 +362,12 @@ async function run(env, doPost = true) {
     const mediaOf = (it) => (it ? ((it.type || "image") + "|" + (it.video || it.image || (Array.isArray(it.images) && it.images[0]) || it.img || it.media || "")) : "");
     let recent = [];
     try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, 30).map((p) => p.u).filter(Boolean); } catch {}
-    for (let hop = 0; hop < q.length && mediaOf(q[cursor]) && recent.includes(mediaOf(q[cursor])); hop++) {
+    // 🔍 LIVE-PROFIL-CHECK (User 2026-06-20 „check mit den Seiten ab, sonst postest du das gleiche wieder"):
+    // die letzten 25 ECHTEN IG-Posts abrufen + ueberspringen was schon online ist (Caption-Signatur).
+    const sig = (c) => (c || "").split("\n")[0].replace(/\s+/g, " ").trim().toLowerCase().slice(0, 45);
+    let liveCaps = [];
+    try { const lm = await gget(`${ids.ig_id}/media`, { fields: "caption", limit: "25", access_token: ids.page_token }); liveCaps = (lm.data || []).map((m) => sig(m.caption)).filter(Boolean); } catch {}
+    for (let hop = 0; hop < q.length && q[cursor] && (recent.includes(mediaOf(q[cursor])) || liveCaps.includes(sig(q[cursor].caption))); hop++) {
       cursor = (cursor + 1) % q.length;
     }
     const item = q[cursor];

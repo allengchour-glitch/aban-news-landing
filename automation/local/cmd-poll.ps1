@@ -44,9 +44,9 @@ try {
       "anibis"       { $env:AUTO_PUBLISH="1"; & node "automation/local/anibis-post.mjs"; $env:AUTO_PUBLISH=$null }
       "campaign-dry" { & node "automation/local/tiktok-campaign-port.mjs" --dry; git add -f automation/local/campaign-shots/* 2>$null; git commit -m "auto(campaign-dry): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "campaign-go"  { $env:AUTO_LAUNCH="1"; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null; git add -f automation/local/campaign-shots/* 2>$null; git commit -m "auto(campaign-go): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
-      "bigbuy-beauty" { $env:ROOT_NAME="cosmet"; $env:MAX="12"; & node "dropship/bigbuy_import.mjs"; Remove-Item Env:ROOT_NAME,Env:MAX -EA SilentlyContinue }
-      "bigbuy-makeup" { $env:ROOT_NAME="perfum"; $env:MAX="12"; & node "dropship/bigbuy_import.mjs"; Remove-Item Env:ROOT_NAME,Env:MAX -EA SilentlyContinue }
-      "bigbuy-premium" { & powershell -ExecutionPolicy Bypass -File "automation/local/bigbuy-premium.ps1" }
+      "bigbuy-beauty" { Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-Command','$env:ROOT_NAME=''cosmet'';$env:MAX=''12'';node dropship/bigbuy_import.mjs' -WindowStyle Hidden }
+      "bigbuy-makeup" { Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-Command','$env:ROOT_NAME=''perfum'';$env:MAX=''12'';node dropship/bigbuy_import.mjs' -WindowStyle Hidden }
+      "bigbuy-premium" { Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-File','automation/local/bigbuy-premium.ps1' -WindowStyle Hidden }
       default        { Write-Host "  (unbekannt: $c)" }
     }
   }
