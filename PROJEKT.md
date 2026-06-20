@@ -72,7 +72,7 @@ empfehlen/dossiers/ki-studio/shop/founding-Sales).
 throttle-resilient: Übersetzungs-Agenten „eine Datei nach der anderen speichern, KEIN Sub-Delegieren",
 Hauptthread salvaged (nur vollständige Dateien mit `</html>`) + committet + pusht wiederholt; am Ende
 5-Sprachen-hreflang normalisieren + `make consistency` / Broken-Link- / Sitemap-Check. `consistency_check`
-hat `/vergleich/` in EXCLUDE (Fremd-Toolpreise). **Offen (User, GitHub-Rate-Limit-Phasen):** PR #715 ist „ready". **QA 16.06.:** interne FR/IT-Links auf lokalisierte Siblings umgebogen (Sprach-Switcher ausgenommen), 0 FR/IT-Orphans, FR/IT-Startseiten verlinken den Tools-Hub.
+hat `/vergleich/` in EXCLUDE (Fremd-Toolpreise). **Offen (User, GitHub-Rate-Limit-Phasen):** PR #715 ist „ready". **QA 16.06.:** interne FR/IT-Links auf lokalisierte Siblings umgebogen (Sprach-Switcher ausgenommen), 0 FR/IT-Orphans, FR/IT-Startseiten verlinken den Tools-Hub. **i18n-Sync-Bot (16.06.):** `tools/i18n_audit.py` + `.github/workflows/i18n-sync.yml` halten DE/EN/FR/IT automatisch synchron (hreflang/Sitemap-Auto-Fix, Defekt-Gate).
 
 ## 📌 Stand 2026-06-11 (Teil 19) — ⚠️ HOSTING-BEFUND + Edge-API auf Cloudflare Pages bewiesen
 **Kernbefund (Live-Test):** `abannews.com` läuft aktuell auf **GitHub Pages** (statisch; Header `via: varnish` +
