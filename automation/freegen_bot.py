@@ -61,11 +61,22 @@ def next_hubs(count, pattern="ki-*.html"):
     return out
 
 
-def make_image(slug, title, desc):
+def make_image(slug, title, desc, ai=True):
+    head, sub, kick = title[:60], (desc or "")[:90], "aban news"
+    if ai:
+        try:
+            import freegen_ai
+            ic = freegen_ai.image_copy(title, desc)
+            if ic:
+                head = ic.get("headline") or head
+                sub = ic.get("subline") or sub
+                kick = ic.get("kicker") or kick
+        except Exception:
+            pass
     out = f"freegen/img/hub-{slug}.png"
     r = subprocess.run([PY, "automation/freegen_image.py",
-                        "--headline", title[:60], "--subline", (desc or "")[:90],
-                        "--kicker", "aban news", "--brand", "ABANNEWS.COM",
+                        "--headline", head[:60], "--subline", sub[:90],
+                        "--kicker", kick[:24], "--brand", "ABANNEWS.COM",
                         "--size", "post", "--out", out])
     return out if r.returncode == 0 else None
 
@@ -86,7 +97,7 @@ def run_once(count, voiceover, ai=True):
         os.makedirs("freegen/hubs", exist_ok=True)
         json.dump(spec, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         rv = subprocess.run([PY, "automation/freegen_video.py", sp])
-        img = make_image(slug, title, desc)
+        img = make_image(slug, title, desc, ai=ai)
         if rv.returncode == 0:
             mark_done(slug)
             n += 1

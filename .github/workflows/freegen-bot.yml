@@ -1,0 +1,49 @@
+name: freegen Content-Bot
+
+# Manuell startbar (KEIN Cron — vermeidet erneute Actions-Drosselung).
+# Erzeugt KI-Reels + Social-Images aus den ki-*.html-Hubs und lädt sie als Artefakte hoch.
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Anzahl Hubs pro Lauf'
+        required: false
+        default: '5'
+      voiceover:
+        description: 'Voiceover (piper) statt nur On-Screen-Text'
+        type: boolean
+        default: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # Optional: gesetzt -> KI schreibt die Texte (gratis). Ohne Key sauberer Fallback.
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: ffmpeg installieren
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Python-Abhängigkeiten
+        run: pip install --quiet pillow imageio-ffmpeg piper-tts
+      - name: Deutsches Stimmmodell (nur bei Voiceover)
+        if: ${{ inputs.voiceover == true }}
+        run: python -m piper.download_voices de_DE-thorsten-medium
+      - name: Bot ausführen
+        run: |
+          ARGS="--count ${{ inputs.count }}"
+          if [ "${{ inputs.voiceover }}" != "true" ]; then ARGS="$ARGS --no-voiceover"; fi
+          python automation/freegen_bot.py $ARGS
+      - name: Reels + Bilder als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: freegen-output
+          path: |
+            freegen/out/*.mp4
+            freegen/img/*.png
+          if-no-files-found: ignore
+          retention-days: 14
