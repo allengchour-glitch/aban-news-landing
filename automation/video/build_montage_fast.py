@@ -43,7 +43,7 @@ for i, r in enumerate(pick):
           f"drawtext=fontfile={F}:text='LuxeStyle.ch':fontcolor=white:fontsize=36:x=40:y=44:box=1:boxcolor={RED}@0.85:boxborderw=9,"
           f"drawtext=fontfile={FS}:text='{esc(lab)}':fontcolor=white:fontsize=56:x=(w-tw)/2:y=1340:box=1:boxcolor=black@0.5:boxborderw=16:alpha='min(1,t*2.2)',"
           f"drawtext=fontfile={F}:text='{esc(prx)}':fontcolor={GOLD}:fontsize=52:x=(w-tw)/2:y=1420:box=1:boxcolor={RED}@0.85:boxborderw=13:alpha='min(1,t*2.2)'[v]")
-    run(["ffmpeg","-y","-nostdin","-loop","1","-t",str(DUR),"-i",raw,"-filter_complex",vf,"-map","[v]","-an","-r",str(FR),"-c:v","libx264","-preset","veryfast","-crf","21","-pix_fmt","yuv420p",o])
+    run(["ffmpeg","-y","-nostdin","-loop","1","-t",str(DUR),"-i",raw,"-filter_complex",vf,"-map","[v]","-an","-r",str(FR),"-t",str(DUR),"-frames:v",str(nf),"-c:v","libx264","-preset","veryfast","-crf","21","-pix_fmt","yuv420p",o])
     segs.append(o)
 outro = f"{SEG}/zz.mp4"; card([("Alles uf",54,"white",FS),("luxestyle.ch",92,GOLD,F),("WELCOME10 = 10 Prozent",44,"white",FS)], outro, 2.2); segs.append(outro)
 mp = f"{SEG}/m.wav"
