@@ -321,7 +321,8 @@ async function run(env, doPost = true) {
     if (cursor >= q.length) cursor = cursor % q.length;   // Queue ENDLOS loopen
     // 🛡️ REPOST-SCHUTZ (User 2026-06-20 „3x dasselbe gepostet"): ueberspringe Eintraege, deren
     // Bild/Video in den letzten 15 Posts schon kam — auch nach Cursor-Reset kein Doppel-Post.
-    const mediaOf = (it) => (it && (it.video || it.image || it.img || it.media || "")) || "";
+    // Key = TYP + URL: derselbe Clip als Reel UND Story ist ERLAUBT (Cross-Post), 2x identischer Reel nicht.
+    const mediaOf = (it) => (it ? ((it.type || "image") + "|" + (it.video || it.image || it.img || it.media || "")) : "");
     let recent = [];
     try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, 15).map((p) => p.u).filter(Boolean); } catch {}
     for (let hop = 0; hop < q.length && mediaOf(q[cursor]) && recent.includes(mediaOf(q[cursor])); hop++) {
