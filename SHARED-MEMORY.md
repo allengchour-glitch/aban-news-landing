@@ -1085,3 +1085,7 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 > 3. **„Unsupported image type" (331 .webp, v.a. CJ)** → `webp_swap.mjs`: alle 331 WebP per Pillow → JPG konvertiert, als Hauptbild gesetzt, WebP gelöscht (331 ok, 0 Fehler). **Lehre: CJ liefert WebP → Google will JPEG/PNG/GIF.**
 > + **Farb-Attribut:** `automation/gmc_color_fix.mjs` → 662 Produkte `mm-google-shopping.color` aus Titel-Farbwort (Merchant-Empfehlung).
 > Feed-Tools: `/tmp/imgscan.mjs` (Bild-Audit), `/tmp/webp_swap.mjs`, `/tmp/conv_manifest.json`.
+
+> **🖼️ POD-BILD-FIX (2026-06-18, Merchant „Missing product image" 416):** Ursache war NICHT fehlend, sondern **transparente POD-Design-PNGs** (RGBA, nur Motiv ohne Hintergrund) → Google lehnt ab. **354 transparente PNGs auf WEISS geflattet** (Pillow `paste(mask=alpha)` auf weissem BG) → JPG, als Hauptbild gesetzt, altes PNG gelöscht (`/tmp/flat_swap.mjs`, 354 ok/0 Fehler). 131 opake PNGs (z. B. Shirt-Designs «Merci», JBL-jpg) sind GÜLTIG → deren „missing"-Flag ist STALE vom Bot-Block, klärt beim Re-Crawl. **LEHRE: Transparenz prüfen via `getchannel('A').getextrema()[0]<250`; CJ=webp, POD=transparente PNG → beide für Google flatten/konvertieren.**
+> **✅ MICROSOFT MERCHANT CENTER angelegt** (User, 2026-06-18) — Shop „LuxeStyle CH", Genehmigung ~3 Werktage. Feed = gleiche Spec wie Google, datenseitig fertig.
+> **✅ CLOUDFLARE BOT FIGHT MODE AUS** (User) — Produktseiten jetzt 200 + crawlbar (kein cf-mitigated), Website-Neuprüfung in Merchant angefordert (bis 12 h).
