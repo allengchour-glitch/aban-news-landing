@@ -1,5 +1,10 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT 2) — TikTok „1 Woche nichts" diagnostiziert + Observability
+**Ursache:** Cloud kann Live-TikTok NICHT erreichen (kein Token in Cloud-ENV; Sandbox-API liefert nicht ans Live-Konto; Audit offen) → einziger Live-Weg = PC-Brave eingeloggt. „1 Woche nichts" = höchstwahrscheinlich **TikTok-Session in Brave abgelaufen** (Bot lief, fand kein Upload-Feld, machte stumm No-op).
+**Fix (Observability, „alles im Griff"):** `tiktok-upload-browser.mjs` erkennt jetzt Logout (Redirect /login) + schreibt `reports/tiktok-last-run.json` (POSTED/NOT_LOGGED_IN/NO_FILE_INPUT). Giga-Bot committet `reports/` schon → **Cloud sieht den echten Zustand nach jedem PC-Lauf**. `giga` 2× neu gequeued. Content ist bereit (veo-sirene ready + Meisterwerke).
+**Unvermeidbar (User, 1×):** falls Status = NOT_LOGGED_IN → in Brave (Profil brave-agent) bei tiktok.com @luxestyle.ch einloggen. **Permanente Null-Tap-Lösung = TikTok-App-Audit** (Paket `dropship/TIKTOK-APP-REVIEW.md`, Submit im Dev-Portal nötig).
+
 ## 2026-06-20 (SPÄT) — Bot-Bugfix + Katalog-QA + 3 PC-Tasks gequeued
 **🚚 GRATIS-VERSAND 65→49 (User-Entscheid):** TWINT bestätigt = Zahlung OK. Abgebrochene Checkouts analysiert (Gesamt=Zwischensumme → brechen VOR dem Versandschritt ab, nur ~8/Monat, alle Einzelartikel). Echter Engpass = ATC 0,5 % + Buy-Intent-Traffic, nicht Checkout. **Gratis-Versand-Schwelle auf CHF 49 gesenkt** als automatischer CH-Rabatt (ID 2349744324993, ACTIVE, kombiniert mit WELCOME10) — Versandprofil (neue Rate-Range-API) unangetastet. Ankündigungsbalken-Text → Theme-Session (SHARED-MEMORY).
 **📝 VERSAND-TEXT 65→49 KONSISTENT:** Alle 22 Text-Vorlagen (Import/DM/Captions/SEO/POD/Worker/Ad-Render/Marken-Video-VO) auf „ab CHF 49". Neues idempotentes PC-Batch `fix_shipping_text.mjs` (Befehl `shippingtext`, gequeued) zieht die ~2900 Live-Produktbeschreibungen nach. Ad-Landing-Kollektion „Sommer 2026" (/collections/sommer) Text auf CHF 49 aktualisiert.
