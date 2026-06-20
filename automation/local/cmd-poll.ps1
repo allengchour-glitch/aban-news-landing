@@ -30,6 +30,7 @@ try {
       "campaign-go"  { $env:AUTO_LAUNCH="1"; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null }
       "bigbuy-beauty" { $env:ROOT_NAME="cosmet"; $env:MAX="12"; & node "dropship/bigbuy_import.mjs"; Remove-Item Env:ROOT_NAME,Env:MAX -EA SilentlyContinue }
       "bigbuy-makeup" { $env:ROOT_NAME="perfum"; $env:MAX="12"; & node "dropship/bigbuy_import.mjs"; Remove-Item Env:ROOT_NAME,Env:MAX -EA SilentlyContinue }
+      "bigbuy-premium" { & powershell -ExecutionPolicy Bypass -File "automation/local/bigbuy-premium.ps1" }
       default        { Write-Host "  (unbekannt: $c)" }
     }
   }
