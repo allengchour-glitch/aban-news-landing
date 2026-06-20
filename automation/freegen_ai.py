@@ -45,7 +45,7 @@ def _chat(prompt, system, max_tokens=200, timeout=30):
         return None
     _, url, key, model = p
     body = json.dumps({
-        "model": model, "max_tokens": max_tokens,
+        "model": model, "max_tokens": max_tokens, "temperature": 0.5,
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
     }).encode("utf-8")
     req = urllib.request.Request(url, data=body, headers={
@@ -63,12 +63,16 @@ def _chat(prompt, system, max_tokens=200, timeout=30):
 
 def reel_copy(title, desc, timeout=30):
     """Gibt eine Liste kurzer Szenen-Texte zurück (Hook, Benefit1, Benefit2, CTA) oder None."""
-    sys = "Du bist ein nüchterner deutscher Social-Media-Texter (anti-hype, kein Clickbait). Antworte AUSSCHLIESSLICH mit kompaktem JSON, keine Erklärung."
+    sys = ("Du bist ein nüchterner deutscher Social-Media-Texter (anti-hype, kein Clickbait). "
+           "Schreibe ausschliesslich in natürlichem, korrektem Deutsch — KEINE englischen Wörter, "
+           "vollständige sinnvolle Phrasen. Antworte NUR mit kompaktem JSON, keine Erklärung.")
     prompt = (
         f'Thema einer abannews-Seite: "{title}". Kontext: "{(desc or "")[:300]}".\n'
         'Schreibe Texte für ein vertikales Kurzvideo (Reel). Gib JSON mit genau diesen Schlüsseln:\n'
-        '{"hook":"Aufmacher, max 6 Wörter","punkt1":"Nutzen, max 7 Wörter","punkt2":"Nutzen, max 7 Wörter","cta":"Handlungsaufruf, max 6 Wörter"}\n'
-        "Deutsch, konkret, ohne Hype, ohne Emojis, ohne Anführungszeichen im Text."
+        '{"hook":"Aufmacher, max 6 Wörter","punkt1":"konkreter Nutzen, max 7 Wörter","punkt2":"konkreter Nutzen, max 7 Wörter","cta":"Handlungsaufruf, max 6 Wörter"}\n'
+        "Regeln: natürliches Deutsch, keine englischen Wörter (kein 'faster', 'check' usw.), "
+        "jede Zeile muss für sich verständlich sein, keine Stichwort-Fragmente, ohne Emojis, "
+        "ohne Anführungszeichen im Text."
     )
     txt = _chat(prompt, sys)
     if not txt:
