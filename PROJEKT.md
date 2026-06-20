@@ -16,7 +16,7 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
-## 🧰 2026-06-20 — 13 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20 — 15 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -24,7 +24,8 @@
   email-signatur-generator (HTML-Sig) + blindtext-generator (Lorem/DE) #1110 · tage-rechner (Datumsdiff/Frist) +
   farbpalette-generator (Harmonien) #1113 · slug-generator (Umlaut→ae/ss) + passwort-staerke-check (Entropie/Knackzeit, 100% lokal) #1115 ·
   arbeitszeit-rechner (Start/Ende−Pause, opt. Verdienst, über Mitternacht) + lesezeit-rechner (Lese-≈220/Sprech-≈130 WpM) #1116 ·
-  zinseszins-rechner (Startkapital+Sparrate+Zins→Endkapital/Ertrag, Modellrechnung, keine Beratung) + px-rem-umrechner (px↔rem/em, Basis frei, CSS-Zeile) [batch-6].
+  zinseszins-rechner (Startkapital+Sparrate+Zins→Endkapital/Ertrag, Modellrechnung, keine Beratung) + px-rem-umrechner (px↔rem/em, Basis frei, CSS-Zeile) #1117 ·
+  text-case-konverter (GROSS/klein/Title/Satz/camelCase/snake_case) + csv-json-konverter (CSV↔JSON, Trenner-Wahl, robuster CSV-Parser) [batch-7].
 - **Muster für neue Tools (bewährt):** Template = mwst-rechner.html-Struktur (header.site + hero + „Was macht das?"
   + panel + data-aban-news-cta + footer); WebApplication+FAQPage-JSON-LD; in `online-tools.html` (Karte) +
   `sitemap.xml` eintragen; `node --check` + JSON-LD + link-check + brain-scan. **Lehre:** online-tools.html wird
