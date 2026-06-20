@@ -1138,3 +1138,17 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 - **Cloudflare-Autopilot:** Worker gesund (/health ok, 58 Produkte), aber **Queue leer** — Enhance/Post no-op ohne
   Gemini-Secret + Meta-Tokens. Posting ist hart User-OAuth-gated → nicht autonom scharfschaltbar.
 - **Storefront-Smoke:** /, /collections/wm-fussball-2026, /collections/topseller = 200. Shop läuft sauber.
+
+## 📌 2026-06-20 Teil 3 (⭐ TOPSELLER kategorie-übergreifend erweitert — User „andere tolle topseller aus andere kategorie")
+- **Topseller ist Smart-Collection per VENDOR EQUALS** (Handle `topseller`, id 689063592321, disjunktiv). War mit 28 Sport-/
+  Fashion-Marken (Nike/Adidas/Puma/Reebok/Michael Kors…) → schief auf Schuhe/Sportmode/Audio (363 Produkte).
+- **+23 Premium-Marken aus ANDEREN Kategorien ergänzt** (kein Import nötig — nutzt vorhandenen Katalog, per Vendor-Scan
+  über 3479 aktive Produkte gefunden): **Uhren** (Casio, Hugo Boss, Calvin Klein, Olivia Burton, Lotus, Kenneth Cole,
+  Marc Ecko, Watx & Colors, Madison) · **Schmuck** (Tommy Hilfiger, Folli Follie, Breil, Radiant, Police) · **Parfum**
+  (Dolce & Gabbana, Elie Saab, Histoires de Parfums) · **Sonnenbrillen** (Polaroid) · **Beauty** (Artdeco) · **Elektronik**
+  (Xiaomi) · **Fussball-Fan/WM** (Real Madrid C.F., Atlético Madrid) · **Küche** (Amefa). 51 Regeln gesamt.
+- **Ergebnis: Topseller 363 → 667 Produkte**, jetzt breit über Beauty/Sonnenbrillen/Trikot/Küche/Parfum/Uhren/Schmuck/
+  Elektronik/Fan gestreut. Storefront /collections/topseller = 200. Sort BEST_SELLING (Smart-Collection-Limit ist ~60 Regeln).
+- **Lehre/Methode:** Für „mehr Topseller aus anderen Kategorien" KEINEN Import (BigBuy saturiert) — stattdessen
+  Vendor-Frequenz-Scan (`/tmp/vendor_scan.mjs`) → starke Marken ≥4 Produkte, die noch NICHT in der Regel sind →
+  als VENDOR-EQUALS-Regeln anhängen. Kategorie-Vielfalt aus dem Bestand, sofort, ohne neue Produkte.
