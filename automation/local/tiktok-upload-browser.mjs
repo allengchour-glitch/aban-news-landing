@@ -32,6 +32,13 @@ const CAPS = JSON.parse(fs.readFileSync(path.join(ROOT, 'automation', 'local', '
 const DONE = path.join(ROOT, 'automation', 'local', 'tiktok-upload-done.txt'); // fix am Repo-Root → nie Re-Post bei anderem cwd
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+// STATUS-DATEI (Observability, User 2026-06-20 „du musst alles im Griff haben"): der PC committet sie,
+// damit die Cloud-Session sieht, ob der letzte Lauf POSTED / NOT_LOGGED_IN / NO_INPUT / NO_REEL war.
+const STATUS = path.join(ROOT, 'reports', 'tiktok-last-run.json');
+function writeStatus(result, reason, extra = {}) {
+  try { fs.mkdirSync(path.dirname(STATUS), { recursive: true });
+    fs.writeFileSync(STATUS, JSON.stringify({ ts: new Date().toISOString(), result, reason, ...extra }, null, 2) + '\n'); } catch {}
+}
 
 function pickReel() {
   if (argFile) return path.resolve(argFile);
@@ -107,6 +114,16 @@ function toSilent(file) {
   await p.goto('https://www.tiktok.com/tiktokstudio/upload', { waitUntil: 'domcontentloaded', timeout: 60000 });
   await sleep(6000);
 
+  // LOGIN-CHECK (haeufigste Ursache fuer "1 Woche nichts": TikTok-Session in Brave abgelaufen → Redirect auf /login).
+  const curUrl = p.url();
+  if (/\/login|\/signup|passport/i.test(curUrl)) {
+    log('❌ NICHT bei TikTok eingeloggt (Seite: ' + curUrl + ').');
+    log('   → EINMAL in Brave (Profil brave-agent) bei tiktok.com mit @luxestyle.ch einloggen, dann postet der Bot wieder vollautomatisch.');
+    writeStatus('NOT_LOGGED_IN', 'TikTok-Session in Brave abgelaufen — 1x einloggen noetig', { url: curUrl, file: path.basename(file) });
+    await p.screenshot({ path: path.join(process.cwd(), 'tiktok-login-needed.png') }).catch(() => {});
+    process.exit(0);
+  }
+
   // Datei-Input finden (oft versteckt) und Video setzen
   let input = await p.$('input[type="file"]');
   if (!input) { // evtl. in iframe
@@ -118,6 +135,7 @@ function toSilent(file) {
     log('DIAG', JSON.stringify(d));
     await p.screenshot({ path: path.join(process.cwd(), 'tiktok-upload-diag.png') }).catch(() => {});
     log('Screenshot: tiktok-upload-diag.png — schick mir die DIAG-Zeile, ich passe die Selektoren an.');
+    writeStatus('NO_FILE_INPUT', 'Kein Upload-Feld — evtl. ausgeloggt oder TikTok-UI geaendert', { url: d.url || curUrl, file: path.basename(file) });
     process.exit(0);
   }
   if (DRY) { log('[dry] würde Video setzen + Caption füllen + posten. (Datei-Input gefunden ✓)'); process.exit(0); }
@@ -156,7 +174,8 @@ function toSilent(file) {
     await sleep(12000);
     fs.appendFileSync(DONE, path.basename(file) + '\n');
     log(confirmed ? '✅ Veröffentlicht (Bestätigung geklickt). Vermerkt.' : '✅ „Veröffentlichen" geklickt (kein Extra-Dialog). Vermerkt.');
-  } else { log('⚠️ Veröffentlichen-Button nicht gefunden — Video ist gesetzt, bitte in der Seite manuell klicken.'); }
+    writeStatus('POSTED', confirmed ? 'Veroeffentlicht (Bestaetigung geklickt)' : 'Veroeffentlichen geklickt', { file: path.basename(file), caption: caption.split('\n')[0] });
+  } else { log('⚠️ Veröffentlichen-Button nicht gefunden — Video ist gesetzt, bitte in der Seite manuell klicken.'); writeStatus('NO_POST_BUTTON', 'Video gesetzt, Veroeffentlichen-Button fehlt', { file: path.basename(file) }); }
   await p.screenshot({ path: path.join(process.cwd(), 'tiktok-upload-result.png') }).catch(() => {});
   process.exit(0);
 })();
