@@ -16,7 +16,7 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
-## 🧰 2026-06-20 — 25 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20 — 27 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -30,7 +30,8 @@
   pomodoro-timer (Fokus 25/5 einstellbar, WebAudio-Beep, Runden) + markdown-html-konverter (MD→HTML + Live-Vorschau, eigener Mini-Parser) #1121 ·
   alters-rechner (Geburtsdatum→Jahre/Monate/Tage, gelebte Tage, nächster Geburtstag) + seitenverhaeltnis-rechner (Aspect Ratio finden/skalieren, Social-Presets) #1122 ·
   roi-rechner (ROI/ROAS + Gewinn nach Marge, opt. CPA) + break-even-rechner (Gewinnschwelle Stück/Umsatz, Deckungsbeitrag) #1124 ·
-  bild-komprimierer (JPG/PNG/WebP via Canvas verkleinern, 100% lokal, Drag&Drop, Vorher/Nachher) + css-verlauf-generator (linear/radial Gradient, Farb-Stops, CSS-Copy) [batch-12].
+  bild-komprimierer (JPG/PNG/WebP via Canvas verkleinern, 100% lokal, Drag&Drop, Vorher/Nachher) + css-verlauf-generator (linear/radial Gradient, Farb-Stops, CSS-Copy) #1132 ·
+  einheiten-umrechner (Länge/Gewicht/Temperatur/Fläche/Geschwindigkeit, Swap) + kreditrechner (Annuität: Rate/Gesamtkosten/Zinsen, keine Beratung) [batch-13].
 - **🔗 Discovery erledigt (PRs #1130 Startseite-„Mehr", #1131 Alt-Tool-Querlinks):** neue Tools jetzt 4-fach erschlossen
   (Sitemap + Hub-Kategorien + Startseite + kontextuelle Querlinks von indexierten Alt-Tools). Beim Anlegen neuer Tools künftig
   auch index.html-„Mehr"-Spalte (Anker `seitenverhaeltnis-rechner`/`zahlungsfrist-rechner`) ergänzen.
