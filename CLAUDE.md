@@ -185,6 +185,35 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-20 (GROSSE SESSION — TikTok-API LÄUFT + Dauerauftrags-Bot 24/7 + viel Content/Katalog):**
+- **✅ TIKTOK-API FUNKTIONIERT (Cloud, kein PC!):** App **„luxe"** Sandbox-Key `sbawgg40q8nkfuwl5k`, OAuth gelöst
+  (Web-Plattform aktivieren war der Fix für `unauthorized_client`), Token am PC in `luxe-secrets.ps1` (Refresh 1 Jahr).
+  **Inbox-Upload geglückt** (Reel in TikTok-Entwürfe). ⚠️ **Sandbox liefert NICHT ans Live-Konto** + Direct-Post zu
+  öffentlichem Konto = 403 unauditiert → **echte Live-Posts brauchen App-Review** ODER laufen über Browser-Weg. Volles
+  Rezept: `dropship/ALLE-WEGE-TIKTOK.md`. Review-Paket fertig: `dropship/TIKTOK-APP-REVIEW.md`.
+- **🦾 SUPER-GIGA-BOT** `automation/local/tiktok-giga-bot.ps1`: ALLE Wege Fallback (Browser live → Browserbase → API-Entwurf;
+  nach Audit `TT_API_LIVE=1` = API public zuerst). Browser-Bot **klickt jetzt komplett durch** (Veröffentlichen +
+  Bestätigungs-Dialog). Volle Lernschleife (analyze+brain+trends+engage). `dropship/TIKTOK-KING.md` = Mastery-Plan.
+- **🤖 DAUERAUFTRAGS-BOT 24/7** (in CLAUDE.md §Daueraufträge verankert + `SUPERBOT-SETUP.bat` = EIN Klick): Tasks für
+  Produkte holen (BigBuy 03:30), SEO max (04:30), Posten/Engagement, Giga-Bot 11:30/18:30, Fernsteuerung (cmd-poll alle 10min),
+  Update 05:00. Fernsteuer-cmds: `giga`/`autobot`/`tiktok-photo`/`seo`/`bigbuy-premium`/`campaign-go`.
+- **📸 CROSS-POST TikTok→Meta:** jedes Reel-Video → IG/FB als **Reel + Story** (Worker, Cloud, kein PC). Queue +10 Stories.
+  **Dublettenschutz verschärft:** Repost-Fenster 30 (war 15), **typ-bewusst** (Reel UND Story desselben Clips erlaubt).
+- **🎬 CONTENT:** Neues Reel `reels/luxe-fresh-9x16.mp4` (echte Model-Clips + legale CC-BY-Musik via `music_library.mjs` +
+  Preis-Hook, Safe-Zone). WM-Trikot-POD-Werbung `social/static/wm-trikot-pod.jpg`. TikTok Foto/Karussell-Bot
+  `automation/tiktok-photo-post.mjs` (content/init PHOTO).
+- **🗂️ KATALOG:** +2 Premium-Ketten (Perla/Trio) + SEO. **22 SEO-Metas** gefüllt (Cloud) + `seo`-Task für Rest (~2900).
+  **3 neue Smart-Collections:** ✏️ Selbst gestalten (8 echte POD-Produkte!), 🎁 Geschenke bis CHF 30, 💎 Premium ab CHF 80.
+  **Trikot-Produkt** «WM-Trikot» DRAFT (ID 15435299979649, 5 Grössen, CHF 44.90) — braucht Editor-Einbindung+Mockup (Theme).
+- **🤖 VISION-AI-WÄCHTER** `video-qa.mjs` detailliert (8 strenge Checks: asiat.Schrift/Watermark/made-in-china/Unschärfe/
+  warped/Text-untere-20%/banned/Collage/premium). Scharf sobald `GEMINI_API_KEY` in der Umgebung (User hat Key gegeben → ENV).
+- **💰 Kampagne:** User-Freigabe „GO 350 CHF" (AskUserQuestion) → `campaign-go` in Worker-Queue, läuft wenn PC an +
+  ads.tiktok.com. **Sicherheitsfilter NIE umgehen, Budget nie eigenmächtig erhöhen.**
+- **🔑 SECRET-REGEL bestätigt:** Tokens/Keys (TT_*, GEMINI_API_KEY, BigBuy) NIE ins Repo — nur `luxe-secrets.ps1`/ENV.
+  Cloud-Session behält keine gepasteten Secrets. Sicherheits-Endcheck: kein Secret im Repo (verifiziert).
+- **🔴 Engpass unverändert:** 0 Käufe (3016 Sess/30T, 16 ATC, 0 Kauf). Pixel feuert aber daten-leer → Kampagne auf „ATC"
+  optimieren + Checkout-Testkauf (12 erreichen Checkout, 0 schliessen ab!). TikTok = top Klick-Treiber (897/30T).
+
 **📌 2026-06-19/20 (TikTok-Weg entschieden + Browserbase-Test + 2 Ketten + BigBuy-Premium vorbereitet):**
 - **🎯 TikTok-ohne-PC ENTSCHIEDEN (User AskUserQuestion „1 und 3"):** = **Weg 1 (offizielle TikTok-API, gratis,
   1 Tap)** + **Weg 3 (PC als Voll-Auto-Backup)**. **Browserbase-Paid (Option 2) ABGELEHNT** (keine Mtl-Kosten).

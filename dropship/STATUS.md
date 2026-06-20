@@ -1,5 +1,12 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 12:16 — Session-Update (autonom)
+**LÄUFT autonom (kein PC):** IG/FB Reels+Stories 24/7 (Worker-Cron, Dublettenschutz 30er-Fenster), Lernschleife, SEO-Batches, Katalog/Collections.
+**NEU:** TikTok-API via App luxe (Token am PC, Refresh 1J), Giga-Bot (alle Wege Fallback, klickt durch), Cross-Post TikTok->Meta (Reel+Story), Dauerauftrags-Bot 24/7 (SUPERBOT-SETUP.bat), neues Reel luxe-fresh, WM-Trikot-Werbung+Produkt(DRAFT), 3 Smart-Collections, Vision-AI-Waechter (8 Checks), TikTok Foto/Karussell-Bot.
+**WARTET auf PC/User:** Kampagne-GO (350, freigegeben, laeuft wenn PC+ads.tiktok an) · BigBuy-Import (PC) · TikTok-App-Review (Browser-Claude) · GEMINI_API_KEY in ENV · Trikot live (Editor+Mockup, Theme).
+**ENGPASS:** 0 Kaeufe (12 erreichen Checkout, 0 schliessen ab -> Checkout-Testkauf!). TikTok = top Klick-Treiber (897/30T).
+
+
 > Dauerauftrag User 2026-06-14: „ich will immer Status-Bericht sehen, was du gemacht hast."
 > → Diese Datei nach jeder Charge nachführen + in der Antwort zeigen. Neueste oben.
 
