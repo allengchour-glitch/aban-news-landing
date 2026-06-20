@@ -37,11 +37,11 @@ schtasks /create /f /tn "LuxeEng-15"  /sc daily /st 15:00 /tr "%PSF% \"%VA%\" -M
 schtasks /create /f /tn "LuxeEng-21"  /sc daily /st 21:00 /tr "%PSF% \"%VA%\" -Mode engage"
 schtasks /create /f /tn "LuxeWeekly"  /sc weekly /d SUN /st 12:00 /tr "%PSF% \"%VA%\" -Mode weekly"
 
-echo [3b/6] NEU: API-TikTok-Autobot (zuverlaessiger, kein Brave noetig) + Fernsteuerung + SEO...
-set "AB=%DIR%tiktok-autobot.ps1"
+echo [3b/6] NEU: GIGA-Bot (ALLE TikTok-Wege Fallback) + Fernsteuerung + SEO...
+set "AB=%DIR%tiktok-giga-bot.ps1"
 set "CP=%DIR%cmd-poll.ps1"
 set "SP=%REPO%\automation\seo_polish.mjs"
-REM API-Autobot 2x/Tag (postet TikTok per API; DRAFT vor Audit, PUBLIC danach via luxe-secrets.ps1)
+REM GIGA-Bot 2x/Tag: API -> Browser -> Browserbase (erster Erfolg gewinnt, postet nur 1x)
 schtasks /create /f /tn "LuxeAutobot-11" /sc daily /st 11:30 /tr "%PSF% \"%AB%\""
 schtasks /create /f /tn "LuxeAutobot-18" /sc daily /st 18:30 /tr "%PSF% \"%AB%\""
 REM Fernsteuerung: holt Cloud-Befehle alle 10 Min (du steuerst vom Handy)
