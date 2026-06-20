@@ -3,6 +3,35 @@
 > Zentrale Übersicht ALLER Pfade + Status + was jeder braucht. **NICHT den User wiederholt nach denselben
 > Tokens fragen** — Stand steht hier. Reihenfolge = Zuverlässigkeit für ÖFFENTLICHE Posts.
 
+## ✅✅ TIKTOK-API LÖSUNG GEFUNDEN (2026-06-20) — App „luxe" (NICHT die Mini-Drama-App!)
+**Es gibt eine ZWEITE, RICHTIGE App: „luxe"** (Web/Desktop-Typ, „Owned by you"). DIE nehmen wir für Content-Posting.
+Die Mini-Drama-App „LuxeStyle Poster" bleibt unbrauchbar (siehe 🛑 unten) — NICHT verwechseln.
+
+**App „luxe" — funktionierende Konfiguration (verifiziert, OAuth läuft):**
+- **App ID:** `7648584035840903189`
+- **Production Client key:** `awhvghmn5q2oh91i` — ⚠️ Production ist **Draft/pending** → OAuth gibt `unauthorized_client` → **NICHT Production nutzen**, bis App veröffentlicht/auditiert.
+- **➡️ SANDBOX nutzen (funktioniert SOFORT für eigenes Konto):**
+  - **Sandbox „luxe-sandbox" Client key:** `sbawgg40q8nkfuwl5k`
+  - **Sandbox Client secret:** ⚠️ **NIE ins Repo** — gehört in `luxe-secrets.ps1`/ENV als `TT_CLIENT_SECRET` (bzw. transient gepastet).
+  - **Target User:** `luxestyle.ch` ist im Sandbox registriert (seit 7.6.2026) ✅
+  - **Products:** Login Kit + Content Posting API beide hinzugefügt ✅ · **Scopes:** user.info.basic, video.upload, video.publish ✅
+  - **Platforms:** Web **UND** Desktop angehakt ✅ (Web war der fehlende Haken — ohne Web → `unauthorized_client/client_key`)
+  - **Redirect URI (Sandbox):** exakt `https://luxestyle.ch/` (war fälschlich abannews.com → korrigiert) ✅
+- **OAuth-Flow (Cloud, kein PC, kein localhost-Server):**
+  1. Authorize-URL bauen: `https://www.tiktok.com/v2/auth/authorize/` mit `client_key=sbawgg40q8nkfuwl5k`,
+     `scope=user.info.basic,video.upload`, `response_type=code`, `redirect_uri=https://luxestyle.ch/`,
+     `state`, `code_challenge` (PKCE S256), `code_challenge_method=S256`. PKCE-Verifier merken (`/tmp/tt_oauth_sb.json`, ephemer).
+  2. User öffnet URL (am Handy, eingeloggt) → „Autorisieren" → landet auf `https://luxestyle.ch/?code=…` → kopiert den `code`.
+  3. **Token-Tausch** (Cloud): `POST https://open.tiktokapis.com/v2/oauth/token/` form-urlencoded mit
+     `client_key=sbawgg40q8nkfuwl5k`, **`client_secret=<Sandbox-Secret aus ENV>`**, `code` (URL-DECODEN! %21→!),
+     `grant_type=authorization_code`, `redirect_uri=https://luxestyle.ch/`, `code_verifier=<verifier>`.
+     → access_token + refresh_token. ⚠️ Code ist nur ~Minuten gültig → sofort tauschen.
+  4. **Posten:** `automation/tiktok-autopost.mjs` bzw. Content Posting API (PULL_FROM_URL mit CDN-Video).
+     Unaudited Sandbox = **SELF_ONLY** → Video landet privat/Entwurf → User tippt 1× „öffentlich". (Das war der akzeptierte „1-Tap"-Weg.)
+- **Lehre/Reihenfolge der Fehler (nicht neu diagnostizieren):** `redirect_uri`-Error = URI nicht/anders registriert ·
+  `unauthorized_client/client_key` = (a) Web-Plattform fehlt ODER (b) Production-Draft → Sandbox nutzen ·
+  `invalid_client` = falsches Secret zum Key (Sandbox-Key braucht Sandbox-Secret) · `invalid_request malformed` = Param/Secret fehlt.
+
 ## 🛑 KRITISCH (User 2026-06-20, mit Browser-Claude VERIFIZIERT): die App „LuxeStyle Poster" ist FALSCHER TYP
 **Die bestehende App ist eine „Mini Drama"-App** (URL `developers.tiktok.com/portal/**drama**/7644952871552960533/…`).
 Beweis im Portal: Security-Tab sagt **„Mini dramas on TikTok will only support requests to the trusted domains"**.

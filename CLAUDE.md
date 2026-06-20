@@ -180,6 +180,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   fürs Posten. **NICHTS an dieser App ändern.** Für die API braucht's eine **NEUE Web-App** (Login Kit + Content Posting,
   SELF_ONLY bis Audit) — Aufwand, **erst mit User abstimmen**. Details: `dropship/ALLE-WEGE-TIKTOK.md` (Abschnitt 🛑).
   **→ TikTok-ohne-PC hat aktuell KEINEN gratis Sofort-Weg** (API blockiert, Browserbase-Gratis scheitert an IP). PC trägt.
+- **✅ TIKTOK-API LÖSUNG via 2. App „luxe" (2026-06-20):** Es gibt eine RICHTIGE Web-App **„luxe"** (App ID
+  `7648584035840903189`). **Sandbox** „luxe-sandbox" Client key `sbawgg40q8nkfuwl5k`, Target User luxestyle.ch registriert,
+  Login Kit + Content Posting API + Web-Plattform + Redirect `https://luxestyle.ch/` gesetzt → **OAuth läuft aus der Cloud**
+  (PKCE, kein PC). ⚠️ **Sandbox-Secret + Tokens NIE ins Repo** → `luxe-secrets.ps1`/ENV `TT_CLIENT_SECRET`. Volles Rezept
+  + Fehler-Reihenfolge: `dropship/ALLE-WEGE-TIKTOK.md` (✅✅). Offen: User pastet Sandbox-Secret transient → Token → posten
+  (`tiktok-autopost.mjs`, SELF_ONLY/Entwurf = 1-Tap-öffentlich bis Audit).
 - **🧹 DUBLETTEN-POSTS GEFIXT (User „3× dasselbe Berg-Tee auf IG"):** `queue.json` dedupliziert (38→35, 3 Doppel-Videos
   raus) + **Worker-Repost-Schutz** (`src/index.js`: überspringt Einträge, deren Bild/Video in den letzten 15 Posts war —
   auch nach Cursor-Reset). Geht live beim nächsten `wrangler deploy` (worker-autodeploy am PC). ⚠️ IG-API kann

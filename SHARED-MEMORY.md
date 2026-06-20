@@ -20,6 +20,14 @@ setzen (claude.ai/code → Umgebung → Variables), NICHT als GitHub-Secret → 
 aus jeder Cloud-Session. ⚠️ Rest-Risiko: Gratis-Browserbase + Cloud-IP → TikTok kann Captcha/Block werfen (Residential-Proxy = bezahlt).
 **NICHT den User wiederholt nach TT-/Browserbase-Tokens fragen — Stand steht HIER.**
 
+> **✅ UPDATE 2026-06-20 (Luxestyle-Session) — TIKTOK-API LÖSUNG GEFUNDEN (mit Browser-Claude):**
+> Die alte App „LuxeStyle Poster" ist Mini-Drama-Typ = unbrauchbar. **ABER es gibt eine 2. App „luxe"** (Web-Typ,
+> App ID `7648584035840903189`) = die richtige. **Sandbox „luxe-sandbox" Client key `sbawgg40q8nkfuwl5k`**, Target User
+> luxestyle.ch registriert, Login Kit + Content Posting API + Web-Plattform + Redirect `https://luxestyle.ch/` gesetzt.
+> OAuth-Flow läuft (PKCE, Cloud, kein PC). **⚠️ Sandbox-Client-secret + Tokens NIE ins Repo → nur `luxe-secrets.ps1`/ENV
+> (`TT_CLIENT_SECRET`).** Volles Rezept + Fehler-Lehren: `dropship/ALLE-WEGE-TIKTOK.md` (Abschnitt ✅✅). Andere Session:
+> NICHT an der „luxe"-App/Sandbox-Config drehen, NICHT das Secret committen.
+
 > **🔬 UPDATE 2026-06-19 Abend (Luxestyle-Session) — Browserbase LIVE GETESTET, Ergebnis eindeutig:**
 > Keys gültig (Projekt „Production", Concurrency 3), Context `f1689a15-1613-453b-bf9d-9ec1aa7f8b1a` neu angelegt,
 > TikTok-Login-Live-URL funktionierte, User loggte sich ein. **ABER der `check` danach landete wieder auf /login** →
