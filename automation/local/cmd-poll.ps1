@@ -25,6 +25,7 @@ try {
       "autobot"      { & powershell -ExecutionPolicy Bypass -File "automation/local/tiktok-autobot.ps1" }
       "giga"         { & powershell -ExecutionPolicy Bypass -File "automation/local/tiktok-giga-bot.ps1" }
       "tiktok-photo" { & node "automation/tiktok-photo-post.mjs" }
+      "ig-delete"   { & node "automation/local/ig-delete-dupes.mjs"; git add automation/local/ig-delete-shots/* 2>$null; git commit -m "ig-delete screenshots" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "sources"      { & node "automation/check-sources.mjs" --fix; git add -A 2>$null; git commit -m "auto(Quellen-Check): Dubletten bereinigt" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "seo"          { $env:MAX="200"; & node "automation/seo_polish.mjs"; Remove-Item Env:MAX -EA SilentlyContinue; git add -A 2>$null; git commit -m "auto(SEO): Meta-Beschreibungen gefuellt" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "follower"     { & node "automation/local/ch-follower-growth.mjs" }
