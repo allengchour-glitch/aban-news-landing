@@ -1013,6 +1013,15 @@
       "regel": "Selbst entscheiden + umsetzen, NIE fragen (ausser echtem Geld/Budget oder Konto-Login). Daten/Information = oberste Prioritaet.",
       "vorgehen": "Jede Session ZUERST echte Zahlen ziehen (Shopify run-analytics/abandonedCheckouts/orders, Social-Analyse, health-check) -> daten-belegt entscheiden, nicht raten. Lehren sofort ins Gehirn, Verbesserungen autonom committen+pushen.",
       "stand": "2026-06-20"
+    },
+    "landingpage_daten_fix_2026_06_20": {
+      "quelle": "Shopify run-analytics landing_page_path -30d (selbst gezogen, info ist a und o).",
+      "top_landings": "/ 731, /collections/damen-mode 385, /highlights 239, /sommer 204, /gadgets 69, ZIRKONIA-RING 64 (Top-Produkt!), /de-de 27 (tot), /password 34.",
+      "fix1_ring": "Zirkonia-Blumenring (15413741748609, CHF 12.90) war Top-Produkt-Landing (64 Sess/Mt) aber ARCHIVED + 0 Kanaele = unkaufbar = 64 Leute/Mt auf totem Produkt. Alle 4 Bilder visuell geprueft = sauber (kein asiat.Schrift/Watermark). REAKTIVIERT: ACTIVE + 6 Kanaele publiziert + tracked:false=immer kaufbar. Direkter Kaeufe-Recovery.",
+      "fix2_dede": "/de-de (27 Sess/Mt) = toter DE-Pfad (DACH-Markt deaktiviert, gut fuer Strikt-CH). Redirect /de-de -> / erstellt (UrlRedirect 1708651872641) = 27 Sess/Mt auf Homepage statt 404.",
+      "offen": "/password 34 Sess pruefen (alte Theme-Preview-Links/Bots?). Reviews auf Top-Produkt-PDPs fehlen weiter (Proof-Beat).",
+      "lehre": "IMMER Landing-Page-Daten ziehen: archivierte/unkaufbare Top-Landings + tote Pfade = stille Kaeufe-Lecks, einfach fixbar.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [

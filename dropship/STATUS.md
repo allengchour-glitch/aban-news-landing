@@ -1,5 +1,15 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT-4) — 🎯 DATEN-FIX: tote Top-Landingpage reaktiviert (Info ist A und O)
+**Landing-Page-Daten gezogen (-30T) → 2 stille Käufe-Lecks autonom gefixt:**
+- 🚨 **Zirkonia-Blumenring (CHF 12.90) = #1 Produkt-Landing (64 Sessions/Mt) war ARCHIVED + 0 Kanäle = unkaufbar.**
+  Alle 4 Bilder geprüft = sauber (kein asiat. Schrift/Watermark). → **REAKTIVIERT: ACTIVE + 6 Kanäle + immer kaufbar.**
+  64 Leute/Monat landeten auf totem Produkt — jetzt kaufbar. Direkter Conversion-Recovery.
+- 🔁 **`/de-de` (27 Sess/Mt) = toter DE-Pfad** (DACH-Markt korrekt deaktiviert) → **Redirect /de-de → / erstellt**
+  (27 Sess/Mt auf Homepage statt 404). Strikt-CH gewahrt.
+- **Top-Landings:** / 731 · damen-mode 385 · highlights 239 · sommer 204 · gadgets 69 · Ring 64. Offen: /password 34 prüfen,
+  Reviews auf PDPs fehlen (Proof-Beat). User-Standing-Order verankert: **selbst entscheiden+verbessern ohne fragen, Daten zuerst.**
+
 ## 2026-06-20 (SPÄT-3) — 🎥 YOUTUBE-RECHERCHE-SCHWARM (5 Agenten) + Code-Verbesserungen
 **5 Recherche-Agenten (deine 2 Videos + 7 Kanäle + breite YouTube-Suche) → Gehirn 133 Regeln:**
 - **Alle Recherchen EINIG (Kern):** Zahlungsmethoden = #1 Hebel. **Kauf auf Rechnung = 26,7% der DE-Zahlungen;
