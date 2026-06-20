@@ -52,19 +52,19 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var
     </div>
     <label>Titel *</label>
     <input id="titel" maxlength="120" placeholder="z. B. Gut erhaltenes Sofa, 3-Sitzer">
-    <label>Beschreibung *</label>
-    <textarea id="beschreibung" rows="5" maxlength="2000" placeholder="Zustand, Details, Maße, Abholung/Versand …"></textarea>
+    <label>Beschreibung * <span style="font-weight:400;color:#6b7280;font-size:.82rem">— je mehr Details, desto mehr Anfragen</span></label>
+    <textarea id="beschreibung" rows="5" maxlength="2000" placeholder="z. B. Farbe, Grösse/Maße, Alter, Zustand, Abholung oder Versand, Grund des Verkaufs …"></textarea>
     <label>Bild-URL (optional)</label>
     <input id="bild" maxlength="400" placeholder="https://… (Link zu einem Foto, https)">
     <div class="row">
-      <div><label>Preis</label><input id="preis" maxlength="30" placeholder="z. B. 120 CHF / VB"></div>
+      <div><label>Preis <span style="font-weight:400;color:#6b7280;font-size:.8rem">· optional, aber empfohlen</span></label><input id="preis" maxlength="30" placeholder="z. B. 120 CHF / VB"></div>
       <div><label>PLZ</label><input id="plz" maxlength="12" placeholder="8000"></div>
       <div><label>Ort</label><input id="ort" maxlength="60" placeholder="Zürich"></div>
     </div>
     <label>Kontakt * (E-Mail oder Telefon)</label>
     <input id="kontakt" maxlength="140" placeholder="deine@mail.ch oder 079 …">
     <label class="chk"><input type="checkbox" id="agb"> Ich versichere, dass das Inserat legal ist und mir die Rechte (auch an Bildern) gehören. Ich akzeptiere die <a href="/nutzungsbedingungen.html" target="_blank" rel="noopener noreferrer">Nutzungsbedingungen</a> und <a href="/datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzhinweise</a>.</label>
-    <button class="btn" id="submit" type="submit">Inserat einreichen</button>
+    <button class="btn" id="submit" type="submit">Kostenlos inserieren</button>
     <div class="msg" id="msg"></div>
     <p class="note">Keine illegalen, gewerblichen Massen- oder anstößigen Inhalte. Wir behalten uns vor, Inserate abzulehnen.</p>
   </form>
@@ -87,7 +87,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.8rem;color:var
       else if(o.s===503){show("Die Inserate-Anbindung wird gerade eingerichtet — bitte in Kürze nochmal versuchen.","err")}
       else if(o.d&&o.d.error==="zu_viele"){show("Zu viele Inserate in kurzer Zeit. Bitte später nochmal.","err")}
       else{show("Konnte nicht gesendet werden. Bitte Eingaben prüfen.","err")}
-    }).catch(function(){show("Netzwerkfehler — bitte später nochmal.","err")}).then(function(){btn.disabled=false;btn.textContent="Inserat einreichen"});
+    }).catch(function(){show("Netzwerkfehler — bitte später nochmal.","err")}).then(function(){btn.disabled=false;btn.textContent="Kostenlos inserieren"});
   });
 })();
 </script>
