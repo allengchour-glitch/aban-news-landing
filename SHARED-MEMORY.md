@@ -1160,3 +1160,15 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 - **KI-Polish erneut:** alle 250 Collections haben jetzt gute Beschreibungen → 0 zu polieren, 250 übersprungen. ✅
 - **Voller Menü-404-Sweep:** alle 122 Menü-Collection-Links per HTTP geprüft → **0 echte 404** (1× 403 bei topseller =
   Cloudflare-Rate-Limit durch die schnellen Checks, Seite ist 200). Navigation sauber.
+
+## 📌 2026-06-20 Teil 5 (🛡️ Trust 100% + Nav-Fix data-sharing-opt-out; Reviews ehrlich)
+- **User-Frage „bewertung trust bei allen produkten?":**
+  - **TRUST: war 94% → jetzt 100%.** Neues Tool `automation/product_trust_fill.mjs` hängt den Standard-Trust-Block
+    (🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · WELCOME10) an jede aktive Beschreibung ohne
+    Trust-Marker. **193 Produkte ergänzt → 3479/3479 = 100%.** In Pipeline als Schritt 6c verdrahtet.
+  - **BEWERTUNGEN: nur 15 Produkte** haben echte Judge.me-Reviews — **NICHT faken** (feste Regel). Echte Reviews kommen
+    nur aus echten Käufen (= Reichweite/Traffic, User-Hebel) oder CJ-`productComments` (CJ saturiert, ~3 Produkte).
+- **Nav-Fix:** Footer-Link „Deine Datenschutz-Einstellungen" → Seite `data-sharing-opt-out` (Page 698054934913) war
+  **unpubliziert → 404**. Publiziert → 200. (Footer-`/en/`-URLs sind nur API-Serialisierung; Seiten sind resource-based
+  → DE-Storefront lokalisiert korrekt, KEIN Bug.) Account-Deeplink /…/account/orders 404 = Login-pflichtig = normal.
+- **Voller Nav-Sweep:** 122 Collection-Links + alle Seiten/Blog-Links geprüft → nach Fix 0 echte 404.

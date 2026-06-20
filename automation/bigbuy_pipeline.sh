@@ -36,7 +36,9 @@ LIVE=1 $N automation/gmc_category_fix.mjs 2>&1 | tail -1
 LIVE=1 $N automation/gmc_color_fix.mjs 2>&1 | tail -1
 echo "════ 6b) BILDER: Grössentabellen/Doppel entfernen ════"
 LIVE=1 $N automation/bigbuy_dedupe_images.mjs 2>&1 | tail -1 || true
-echo "════ 6c) KI-KATEGORIE-POLISH (Groq/Gemini, nur leere Beschr.) ════"
+echo "════ 6c) TRUST-BLOCK in jede Produktbeschreibung ════"
+LIVE=1 $N automation/product_trust_fill.mjs 2>&1 | tail -1 || true
+echo "════ 6d) KI-KATEGORIE-POLISH (Groq/Gemini, nur leere Beschr.) ════"
 ONLY_EMPTY=1 LIVE=1 $N automation/ai_polish_collections.mjs 2>&1 | tail -2 || true
 echo "════ 7) COMMIT ════"
 git add -A && git commit -q -m "pipeline: auto-holen+cleanen ($CATS) — +$CNT, Merchant-sauber
