@@ -1172,3 +1172,26 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   **unpubliziert → 404**. Publiziert → 200. (Footer-`/en/`-URLs sind nur API-Serialisierung; Seiten sind resource-based
   → DE-Storefront lokalisiert korrekt, KEIN Bug.) Account-Deeplink /…/account/orders 404 = Login-pflichtig = normal.
 - **Voller Nav-Sweep:** 122 Collection-Links + alle Seiten/Blog-Links geprüft → nach Fix 0 echte 404.
+
+## 📌 2026-06-20 Teil 6 (🔁 Cross-Session-Sync + Live-Checks: Pixel/Autobot/Bestseller)
+**Dropship-Session, voller Automode. Sync mit anderen Sessions gelesen (Handoffs 06-15/06-17).**
+- **✅ TikTok-Pixel LIVE bestätigt:** `D8EKVR3C77U6KT5BTBD0` feuert auf luxestyle.ch (23× ttq.). **Meta-Pixel-App** aktiv
+  (tagID `2613605355430`, FB-Seite `1049840534888592`), Judge.me-Pixel da. Pixel-Setup = komplett live.
+- **🤖 Autobot-Stand (live geprüft):**
+  - **Cloudflare-Worker** `luxestyle-autopilot`: /health 200 (58 Prod.), **Shop-Wartungs-Cron `45 6 * * *` aktiv**, aber
+    `SHOP_AUTOPILOT_LIVE=0` (report-only). **Social-/Enhance-Crons auskommentiert** + **Enhance schlägt fehl** (`reading 'put'`
+    = **R2-Bucket nicht freigeschaltet**, Code 10042) → Insta-Bild-Pipeline kann KEIN Bild erzeugen/posten.
+  - **GitHub Actions: laufen NICHT** (letzter Lauf 2026-06-12, nur „pages build" — keine Autopilot-Workflows). Account-Actions
+    weiterhin aus ODER kein Schedule → Social-Autobot dort ebenfalls dormant.
+  - **Fazit Insta-Bild/Social-Autobot:** gebaut, aber **dormant** — Blocker sind **R2-Freischaltung** (CF-Account/Billing) +
+    **Meta-Tokens** (liegen nur als Repo-Secrets vor, für eine Session NICHT lesbar) + **Actions-Freischaltung** (Owner). Alles
+    User/Infra-Schritte; per Session/API nicht aktivierbar. Pixel/Tracking ist live, das **Posten** fehlt.
+- **✅ Bestseller gesund:** „⭐ Top 10 Bestseller" (`bestseller-premium-heroes`) = 10 aktiv, alle mit Bild. Topseller = **671**
+  (durch Niche-Welle gewachsen), alle aktiv/mit Bild. Kein Fix nötig.
+- **🆕 28 neue Produkte** aus Niche-Welle (anime/fishing/velo/büro/ladegeräte/phone/socken/tauchen) — voll veredelt
+  (Marke/GTIN/Feed/Spec/GMC/Trust/Dedupe), via `bigbuy_pipeline.sh` selbst committet+gepusht (`e3cc2b05`).
+- **🔍 Storefront-Filter:** dreifach geprüft (stable+unstable+2025-04+2025-07 Schema = 0 Filter-Mutationen; Shopify-Doku =
+  UI-only). **Marke/Typ/Farbe/Grösse-Filter = NUR Search-&-Discovery-UI**, kein API/Browser-Weg (Admin-Login=2FA). Daten 100%
+  filter-bereit (productType 0 Lücken, Vendor auf allen BigBuy). = 1 User-Klick (Online Store → Search & Discovery → Filters).
+- **🛡️ Trust 100%** (3479/3479, Tool `product_trust_fill.mjs`) · **Bilder sauber** (370 Grössentabellen entfernt) ·
+  **alle 250 Collections** mit KI-Polish-Beschreibung · **Nav 0 echte 404** (reise-outdoor + data-sharing-opt-out gefixt).
