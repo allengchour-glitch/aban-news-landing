@@ -754,6 +754,15 @@
       "fix": "Lange Jobs IMMER detached starten (Start-Process -WindowStyle Hidden, ohne Wait) -> cmd-poll laeuft sofort weiter, schnelle Befehle nicht blockiert. Gilt fuer bigbuy-*, seo, image-audit.",
       "prinzip": "Nie einen lang laufenden Schritt synchron in einer Steuer-/Poll-Schleife ausfuehren. Geplante Tasks (LuxeUpdate/giga) laufen unabhaengig = Selbstheilung beim naechsten Zyklus.",
       "erkennung": "Symptom: pending steigt, kein PC-Push ueber >30min. Pruefen ob ein Langlaeufer die Schleife blockiert."
+    },
+    "organisch_tiktok_playbook_2026": {
+      "quelle": "Websuche 2026-06-20 (trueprofit/autods/salehoo/gelato) - organisches TikTok-Dropshipping was nachweislich verkauft",
+      "hook": "Hook in den ERSTEN 1-2 Sekunden = Pflicht (Scroll-Stopper). Erste Frame muss sofort fesseln.",
+      "format": "Hook (1-2s) -> Produkt loest ein PROBLEM / Produkt IN USE (echte Anwendung) -> weiche CTA am Schluss. Schnelle Cuts > statisches Einzelbild.",
+      "produktwahl": "Gewinner = sofortiger visueller Reiz + einfache Problem-Loesung + Novelty (Aha-Effekt ohne lange Erklaerung).",
+      "frequenz": "1-3 Posts/Tag (Konsistenz schlaegt Perfektion). Start 3-5/Woche, dann hochskalieren. Aggressives Testen bis 5/Tag.",
+      "sound": "Trend-Sounds + virale Challenges = Algorithmus-Boost (in-App drauflegen, da lizenziert).",
+      "anwenden": "build_masterpiece/build_montage_fast: Hook in Sek 1, MONTAGE (schnelle Cuts) statt langes Einzelbild bevorzugen, Produkt-in-Use wenn moeglich, weiche CTA. Posting-Kadenz 1-3/Tag halten. smartCaption: Problem-Loesung-Hook."
     }
   },
   "decisions": [
