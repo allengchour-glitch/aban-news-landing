@@ -1222,3 +1222,14 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   mit **26 Marken + 96 Kategorien** (123 Collection-Links, Produktzahlen). Gibt Kund:innen ein Filter-/Browse-Erlebnis.
   **Offen (optional, low-risk vermieden):** Seite ins Hauptmenü hängen (menuUpdate = Vollbaum-Replace, Risiko) → noch nicht
   verlinkt; kann via Menü-Punkt „🔎 Schnell finden" ergänzt werden. Native Facetten bleiben = der 1 S&D-Klick.
+
+## 📌 2026-06-20 Teil 8 (Filter-Hub ins Menü + 3. WM-Artikel + Groq leer→Gemini)
+- **Groq-Tageslimit erreicht** (100k Token/Tag, geteilt) → **Gemini 2.5-flash** ist der robuste Generator (im Blog-Motor primär).
+- **3. WM-Artikel live:** „WM-Trikot selbst gestalten: Name, Nummer & Farbe online bedrucken (2026)" (Ratgeber) — mit
+  stärkerem Prompt (min. 650 Wörter erzwungen). **WM-Content-Set komplett (3 Artikel)**, alle → WM-Collection + Gestalter.
+- **🔎 Filter-Hub ins Hauptmenü gehängt:** Menü-Punkt „🔎 Schnell finden" → `/pages/marken-kategorien` (Position 2, nach
+  Topseller). Sicher via `menuUpdate` (alle 142 Items rekursiv erhalten → 143, DRY-validiert vor Schreiben). Menü-ID
+  `gid://shopify/Menu/310224093569`. **Filter-Lösung ist jetzt auffindbar** (26 Marken + 96 Kategorien als Browse-Filter).
+- **Menu-Edit-Rezept (wiederverwendbar):** `menuUpdate(id,title,handle,items)` ersetzt den GANZEN Baum → vorher volle
+  Struktur ziehen, rekursiv auf `MenuItemUpdateInput{title,type,url|resourceId,tags,items}` mappen, Item einfügen,
+  Item-Count vorher/nachher prüfen (Integritäts-Guard), dann schreiben. Main-Menu-Items sind alle type HTTP+url.
