@@ -16,6 +16,28 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🎬 2026-06-19 — Gratis-Creator-Suite (freegen) + Bot + Inserate-Ausbau (zuerst lesen)
+> Fokus diese Session: **abannews** (LuxeStyle bewusst nicht angefasst — andere Session). Alles gemerged auf `main`.
+- **`freegen/` — eigene, kostenlose Creator-Tools** (Ersatz für HeyGen/Canva/ElevenLabs, ohne Credits/Keys, alles
+  in-Container verifiziert): `automation/freegen_video.py` (Text→Video: Captions, Ken-Burns-Zoom, Intro/Outro,
+  **Voiceover via piper de_DE-thorsten**, geduckte Musik) · `freegen_image.py` (Social-Images Post/Square/Story/OG,
+  Canva-Ersatz) · `freegen_tts.py` (deutsches Voiceover) · `freegen_hubreels.py` (Auto-Reel je `ki-*.html`-Hub) ·
+  `freegen_bot.py` + `run-freegen-bot.ps1` (selbstlaufender Bot, Ledger, `--loop`; Windows-Wrapper). Deps:
+  `pip install pillow imageio-ffmpeg piper-tts` + `python3 -m piper.download_voices de_DE-thorsten-medium`. Doku `freegen/README.md`.
+- **451 Hub-Reels + 451 Social-Images** erzeugt (alle `ki-*.html`, ohne Voiceover = User-Vorgabe On-Screen-Text),
+  in 10 ZIPs an den User geliefert. Ledger `freegen/.bot-done.txt` (gitignored). Generierte Medien bleiben aus dem Repo.
+- **Inserate stark ausgebaut** (`inserate.html` + `inserat-aufgeben.html` synchron): **30 Kategorien** (statt 18),
+  **60 Beispiel-Inserate** (statt 12, klar `demo:1`), **29 Schnellfilter-Chips** (statt 16). Aufgeben-Formular-CATS angeglichen.
+  → Offener echter Hebel (NUR User): **D1-Datenbank `DB`** im Cloudflare-Pages-Projekt binden + `db/inserate-schema.sql`
+  einspielen, dann werden echte Nutzer-Inserate gespeichert.
+- **`/api/generate` + `/api/chat`: Groq-Gratis-Fallback** (`functions/_llm.mjs`) — Anthropic primär, sonst Groq
+  (`llama-3.3-70b-versatile`) wenn nur `GROQ_API_KEY` gesetzt. Keys nur aus env. (User muss `GROQ_API_KEY` als Pages-Secret setzen.)
+- **HeyGen:** API-Client `automation/heygen_clone.mjs` gebaut; Plan hat aber **keine `api`-Credits** → Generierung per
+  API blockiert (nur Listing). Deshalb ist freegen der gangbare freie Weg.
+- **Salt verifiziert:** 34/34 Kit-ZIPs (22 DE + 12 EN) hashen korrekt; `tools/resalt_kits.mjs` als Rotations-Option da
+  (User will NICHT rotieren → nicht ausgeführt).
+- **⚠️ Keys, die im Chat standen → User soll rotieren:** Groq-Key, HeyGen-Key. (Stripe `sk_live` bleibt per User-Wille.)
+
 ## 🔑 2026-06-17 — DOWNLOAD_SALT turnkey gemacht (Kit-ZIPs at deploy) + Key bleibt (User-Wille)
 > User-Entscheid: **`sk_live`-Key NICHT rotieren, dauerhaft behalten** (Risiko bewusst akzeptiert — der Key
 > stand im Chat; wer ihn sah, könnte ihn nutzen. Nicht erneut posten.) Salt: dauerhaft + turnkey gelöst.
