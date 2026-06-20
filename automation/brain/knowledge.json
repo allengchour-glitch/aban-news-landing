@@ -998,6 +998,15 @@
       "trust_pdp": "DACH braucht: CHF-Preise, revDSG/Impressum, SICHTBARE Reviews, Sicher-Zahlen + 30-Tage-Rueckgabe + Versand-aus-CH-Badges beim Kaufbutton. Fehlende Reviews auf PDP = benannter Conversion-Killer (unsere Schmuck-Seiten = 0 Reviews = exakt das Problem).",
       "prioritaet": "(1) CH-Rechnung + TWINT Express verifizieren, (2) echte Reviews + CH-Trust-Badges auf PDP (Proof-Beat), (3) Ads als 5-Beat-UGC Payoff-first+Mundart, Gewinner Spark-Ad statt breit.",
       "stand": "2026-06-20"
+    },
+    "ki_video_tools_2026": {
+      "quelle": "Recherche-Agent KI-Video/Content-Tools (2026-06-20, Primaer-Docs via jina, WebSearch down).",
+      "verdikt": "piper+ffmpeg+Luma GRATIS = Standard-Engine behalten (90% Volumen; unser Gewinner-Format braucht keine Paid-Tools). ElevenLabs-GRATIS hat KEINE kommerzielle Lizenz -> nie in Live-Ad; nur Starter (6/mo) fuers 1 Hero-Ad, sonst piper. ElevenLabs hat KEIN echtes Schweizerdeutsch -> Mundart phonetisch schreiben. HeyGen 3/mo = nur Avatar-UGC-Test. Higgsfield 19/mo = bestes Paid (Kling-Avatare, Marketing-Studio, MCP fuer Claude).",
+      "pipeline_unlock": "n8n hat Live-Templates: Avatar+ElevenLabs+GPT TikTok-Videos / Auto-Post via Blotato. Blotato (29/mo) hat n8n-Node UND MCP -> postet TikTok+IG+FB per-Plattform-optimiert = koennte fragiles Worker/Browser-Posting ersetzen (IP-Block-Problem weg).",
+      "hooks_mundart": "Preis-Anker \"Nur CHF 39.90 - und gseht us wie 200\" (Gewinner) / POV \"POV: du findsch ds perfekte Sommerchleid fuer unter 40 Stutz\" / Problem->Produkt / 3-Gruend-Listicle (1/2/3 on-screen) / Negativ-Hook \"Chauf das NID bevor du das gseh hesch\" (hohe Retention). Immer: Text <=78% Hoehe, CTA Link i de Bio, Trend-Sound in-App.",
+      "workflows": "A Volumen (gratis): Luma img2video -> ffmpeg Montage 1.1-1.2s Cuts -> piper Mundart-VO + CC-BY-Musik -> Hook-Text Safe-Zone. B UGC-Ad (sparsam paid): Higgsfield/HeyGen Avatar reviewt Produkt -> ElevenLabs Starter VO -> CapCut Auto-Captions. C automatisiert: Sheet->Groq-Script->VO->Clip->ffmpeg->Blotato Auto-Post.",
+      "todo_bot": "Evaluieren: Blotato-MCP (autonomes Multi-Plattform-Posting statt Worker-IP-Block), Higgsfield-MCP (Kling-Avatar-UGC on-demand). Gratis-Default piper+ffmpeg+Luma bleibt; Credits nur fuers Hero-Creative.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [
