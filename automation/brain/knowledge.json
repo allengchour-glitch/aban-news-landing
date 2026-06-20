@@ -852,6 +852,54 @@
       ],
       "verbote": "KEINE Fake-Scarcity/Dauer-Countdowns (CH-UWG/FTC abmahnbar). Kein klassisches A/B (zu wenig Traffic) -> Clarity-Friktion fixen.",
       "anwenden": "CizQ6 autonom: TikTok-Reels primaer aus <CHF30-Produkten (hoechste TikTok-Conversion), Mundart-Gewinner-Hooks, Bilder/Sizing pruefen. User-only (heute): TWINT/Express-Pay/Clarity/Gastkauf."
+    },
+    "winning_produkte_konkret_2026": {
+      "quelle": "Recherche-Schwarm (SOQ/Artizan/WWD/AutoDS) - konkrete Winning-Produkte",
+      "prio1": [
+        "Wasserfester Edelstahl-Schmuck Sets (19-45, Marge-King, See/Dusche-Hook)",
+        "Fusskettli/Anklets (14-29, Sommer-Bestseller)",
+        "Parfum-Designer/Dupes (19-39, 1 viral=ausverkauft, Baccarat/Vanille-Style)",
+        "Personalisierte Namens-/Birthstone-Ketten (29-59, Geschenk ganzjaehrig)",
+        "Chunky Creolen/Statement-Ketten (25-59)"
+      ],
+      "prio2": [
+        "Charm-Schmuck, Mixed-Metal-Layering, Stacking-Rings/Bangles, Tennis-Ketten Zirkonia, Muschel-Schmuck, Oversized-Sonnenbrillen, Crossbody/Tote-Bags"
+      ],
+      "beauty_geschenk": [
+        "Heatless-Curls-Set, Magnet-Wimpern, LED-Schminkspiegel, Gua-Sha-Sets (demo-stark, Vorher/Nachher)",
+        "Geschenk-Sets <CHF30 (Schmuck-Box, Parfum-Sampler, Spa-Box) -> Kollektion 'Geschenke bis 30' fuellen"
+      ],
+      "anwenden": "BigBuy-Import + Reels primaer aus diesen. Marge-King = wasserfester Schmuck + Anklets. Parfum-Dupes = staerkster TikTok-Conversion (side-by-side Reels). Beauty-Tools = demo-staerkstes Reel-Futter."
+    },
+    "social_wachstum_2026": {
+      "quelle": "Recherche-Schwarm (Buffer/Metricool/Amra&Elma/FeedFlux)",
+      "kern": "Kleine Accounts (<10k) = 8-15% organische Reichweite, Algo nach Qualitaet nicht Groesse. Reels = Discovery (55% Views von Nicht-Followern).",
+      "top_taktiken": [
+        "ERSTE 60 MIN = ~80% Erfolg -> in der Stunde JEDEN Kommentar sofort beantworten",
+        "Duet/Stitch (2.9x haeufiger auf FYP; Duet+Stitch = +44% Follower) + 'Duet-Bait' (Frage am Ende)",
+        "DM-Shares zaehlen 3-5x staerker als Likes -> 'schick das dyner Kollegin'-Content",
+        "Series-Format ('1 Teil 3 Looks', 'Outfit unter CHF X') = Grund zu folgen",
+        "Aktiv kommentieren bei Zielgruppe (wertvoll, nicht 'nice') = sichere Discovery",
+        "3-5 Hashtags (30=Spam), Keyword-SEO in Caption+Text+Voice",
+        "3-5 Posts/Woche nachhaltig"
+      ],
+      "warnung": "FOLLOW/UNFOLLOW wird 2026 AKTIV abgestraft (nicht nur Ban-Risiko, auch Reichweiten-Daempfer). -> ch-follower-growth.mjs runterfahren, auf Kommentar-Engagement (Nr.9) pivoten.",
+      "anwenden": "Worker-Kommentar-Auto-Antwort in erster Stunde priorisieren. Reels mit Duet-Bait-Frage + Save/Share-Trigger. Series-Formate bauen. Follower-Bot deprioritisieren."
+    },
+    "video_edit_techniken_2026": {
+      "quelle": "Recherche-Schwarm (Darkroom/beCreatives/CapCut/CyberLink)",
+      "belegt": "Jump-Cuts alle 2-3s = +23% Completion; Visual-Wechsel alle 5-7s = +18% Rewatch. Completion+Loop = oberstes Algo-Signal 2026.",
+      "techniken": [
+        "Segmente <=2.5s, Schnitt/Reiz alle 2-3s",
+        "Punch-In/Zoom-Cut auf Betonung (harter Scale-Sprung 1.0->1.15, kein xfade)",
+        "Hook-Text Sek 1 = Versprechen/Neugier-Gap, nicht nur Produktname",
+        "Loop-Engineering: End-Frame an Anfang anschliessen -> Auto-Rewatch",
+        "Animierte Text-Reveals (pop-in/rise, alpha/y zeitgesteuert) statt statisch",
+        "Beat-Sync: Cuts auf Audio-Peaks (aubio/librosa) = 'hypnotisch'",
+        "LUT/Grade nur 40-70% Mix (Produkt echt lassen), Safe-Zone <=78% strikt",
+        "Effekte/xfade nur an 2-3 Schluesselstellen, sonst harte Cuts"
+      ],
+      "anwenden": "build_masterpiece/build_montage_fast: Segmente <=2.5s, Punch-in, animierte Text-Reveals, Loop-faehiges Ende. Mittelfristig Beat-Detection."
     }
   },
   "decisions": [
