@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-19",
+  "updated": "2026-06-20",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -709,7 +709,26 @@
     "self_improve_loop": "2026-06-19: 24/7-Selbstverbesserung = analyse-run.ps1 (stuendlich LuxeAnalyse): analysieren->Pixel->lernen(brain)->self_learn->build_queue(Gewinner)->commit/push->Cloud-cmd. Damit frische Queue zur Cloud kommt MUSS PC pushen koennen -> PC-git einmal sauber (Reboot+reset). Sonst laeuft Lernen lokal, propagiert aber nicht.",
     "video_qa_und_gewinnerformat": "2026-06-19 (User: nur beste Videos, noch bessere): (1) Pre-Post-QA-Gate video-qa.mjs prueft JEDES Video vor Upload (Format/Vollstaendigkeit + Gemini-Vision asiat.Schrift/Watermark/Qualitaet) -> Durchfall=uebersprungen. (2) build_masterpiece.py baut jetzt das GEWINNER-FORMAT ein: COMPARE-env -> Preis-Vergleich 'CHF X statt CHF Y' (Top-Performer) + Save-Trigger CTA 'Merk der s' (gegen 0 Shares). (3) Upload nimmt Meisterwerke zuerst.",
     "volle_edit_freigabe": "2026-06-19 (User: 'du kannst alles bearbeiten auch musik, analysiere alles'): volle Freigabe alles zu bearbeiten inkl. Musik/Builder/Captions/Queue + alles analysieren. FOKUS PUR AUF PIXEL: beste Videos -> kaufwillige Reichweite -> Pixel-Conversion. Nur beste Creatives posten, laufend bessere bauen.",
-    "bigbuy_beauty_import": "2026-06-19 (User gab BigBuy-Token, 'merke dir alles'): BigBuy-Beauty/Makeup-Import LÄUFT. TOKEN = vom User (transient gegeben, NIE ins Repo; auf PC in luxe-secrets als BIGBUY_TOKEN). TOP-ROOTS: 19650=Schönheit (42039 Produkte! echte EU-Marken/Barcodes), 19669=Gesundheit+Körperpflege. Weitere: 19662=Schmuck,19667=Uhren,19668=Kleidung,19756=Sport,19661=Garten,19653=Elektronik,19656=Haus&Küche. Import: products.json?parentTaxonomy=ROOT&isoCode=de → productinformation/{id}.json (name) → productimages/{id}.json. bigbuy_import.mjs (ROOT_NAME-Auto-Lookup) + Fernbefehle bigbuy-beauty(cosmet)/bigbuy-makeup(perfum). ⚠️ BigBuy RATE-LIMITET HART ('You exceeded the rate limit') → grosse Delays (>=2-3s/Call) + 429-Backoff, am besten vom PC inkrementell, NICHT massenhaft aus Cloud. Shopify-Anlage via MCP productCreate ODER Script (braucht SHOPIFY_CLIENT_ID/SECRET, nur PC)."
+    "bigbuy_beauty_import": "2026-06-19 (User gab BigBuy-Token, 'merke dir alles'): BigBuy-Beauty/Makeup-Import LÄUFT. TOKEN = vom User (transient gegeben, NIE ins Repo; auf PC in luxe-secrets als BIGBUY_TOKEN). TOP-ROOTS: 19650=Schönheit (42039 Produkte! echte EU-Marken/Barcodes), 19669=Gesundheit+Körperpflege. Weitere: 19662=Schmuck,19667=Uhren,19668=Kleidung,19756=Sport,19661=Garten,19653=Elektronik,19656=Haus&Küche. Import: products.json?parentTaxonomy=ROOT&isoCode=de → productinformation/{id}.json (name) → productimages/{id}.json. bigbuy_import.mjs (ROOT_NAME-Auto-Lookup) + Fernbefehle bigbuy-beauty(cosmet)/bigbuy-makeup(perfum). ⚠️ BigBuy RATE-LIMITET HART ('You exceeded the rate limit') → grosse Delays (>=2-3s/Call) + 429-Backoff, am besten vom PC inkrementell, NICHT massenhaft aus Cloud. Shopify-Anlage via MCP productCreate ODER Script (braucht SHOPIFY_CLIENT_ID/SECRET, nur PC).",
+    "tiktok_trends_2026_06": {
+      "recherche": "WebSearch Juni 2026 (newengen/socialpilot/napoleoncat/lightreel)",
+      "gewinner_formate": [
+        "POV-Kontrast",
+        "Vorher-Nachher-Transformation",
+        "emotionales Alltags-Storytelling (narrative frame auf gewoehnliche Produkte)",
+        "7-Sek Close-up Lip-Sync mit Augenkontakt + committed energy",
+        "song-led micro-dance",
+        "elevated-look Mode-Edit (Miranda-approved)"
+      ],
+      "leitsatz": "Juni belohnt: schnell, sommerlich, nicht zu ernst, starker Narrativ-Rahmen auf gewoehnliche Kategorien (Outfit/Beauty).",
+      "trend_sounds_nur_inapp": [
+        "Josh Fawaz - Like a Prayer Remix (Summer-Anthem, easy viral)",
+        "Saxboy Billy - Puerto Rico Song (walking-city Format)",
+        "\"you are good enough\" German-lyric + beat-drop (meme/velocity edits)"
+      ],
+      "sound_regel": "Trend-Sounds sind lizenziert -> NUR in der TikTok-App draufzulegen, NICHT per Web-Upload. Autonome Posts: passender CC-BY-Vibe (sommerlich/upbeat) eingebacken. User kann optional in-app den Trend-Sound nachlegen fuer mehr Reichweite.",
+      "anwenden": "Captions/Hooks + Builder leaning auf diese Formate; CH/Mundart bleibt; Trend-Sound-Liste in social/tiktok_trend_sounds.md fuer in-app."
+    }
   },
   "decisions": [
     {
