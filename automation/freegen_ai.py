@@ -85,3 +85,28 @@ def reel_copy(title, desc, timeout=30):
         return out if len(out) >= 3 else None
     except Exception:
         return None
+
+
+def image_copy(title, desc, timeout=30):
+    """Gibt {kicker, headline, subline} für ein Social-Image zurück oder None."""
+    sys = ("Du bist ein nüchterner deutscher Social-Media-Texter (anti-hype). "
+           "Schreibe ausschliesslich natürliches, korrektes Deutsch — keine englischen Wörter. "
+           "Antworte NUR mit kompaktem JSON.")
+    prompt = (
+        f'Thema einer abannews-Seite: "{title}". Kontext: "{(desc or "")[:300]}".\n'
+        'Texte für ein quadratisches Social-Image. Gib JSON mit genau diesen Schlüsseln:\n'
+        '{"kicker":"1-2 Wörter Kategorie","headline":"prägnant, max 6 Wörter","subline":"konkreter Nutzen, max 12 Wörter"}\n'
+        "Natürliches Deutsch, ohne Emojis, ohne Anführungszeichen im Text."
+    )
+    txt = _chat(prompt, sys)
+    if not txt:
+        return None
+    try:
+        frag = txt[txt.find("{"):txt.rfind("}") + 1]
+        o = json.loads(frag)
+        head = str(o.get("headline") or "").strip()
+        if not head:
+            return None
+        return {"kicker": str(o.get("kicker") or "").strip(), "headline": head, "subline": str(o.get("subline") or "").strip()}
+    except Exception:
+        return None

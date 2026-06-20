@@ -60,6 +60,16 @@
   Canva-Ersatz) · `freegen_tts.py` (deutsches Voiceover) · `freegen_hubreels.py` (Auto-Reel je `ki-*.html`-Hub) ·
   `freegen_bot.py` + `run-freegen-bot.ps1` (selbstlaufender Bot, Ledger, `--loop`; Windows-Wrapper). Deps:
   `pip install pillow imageio-ffmpeg piper-tts` + `python3 -m piper.download_voices de_DE-thorsten-medium`. Doku `freegen/README.md`.
+- **Autobot KI-optimiert (2026-06-20):** `automation/freegen_ai.py` (stdlib) lässt die **Gratis-KI** (Groq bevorzugt,
+  7 Anbieter, Key nur aus env) knackige **Reel-Texte UND Bild-Headlines** schreiben (reines Deutsch, temp 0.5;
+  ⚠️ eigener User-Agent nötig — Cloudflare-WAF blockt Default-`Python-urllib` mit 403). `freegen_bot`/`freegen_hubreels`
+  nutzen sie automatisch wenn ein Key da ist, sonst Fallback (`--no-ai`). **Bot-Workflow** `.github/workflows/freegen-bot.yml`
+  ist **`workflow_dispatch`-only (KEIN Cron!)** — lädt Reels/Bilder als Artefakte; braucht Secret `GROQ_API_KEY` für KI-Texte.
+- **LLM-Adapter Universal-Switch** (`functions/_llm.mjs`): Anthropic/OpenAI/DeepSeek/xAI-Grok/Mistral/Gemini/OpenRouter/Groq —
+  erster env-Key gewinnt, `LLM_PROVIDER` erzwingt. **KI-Kritik-Tool** `automation/ai_critique.mjs` (Seite → priorisierte Wins).
+- **Marktplatz KI-geleitet verbessert:** Inserate-Detailseite (60 Demos, „Ähnliche Inserate", Trust-Strip), Formular-CRO,
+  auto-suche/immobilien-SEO, Stellenangebote-Quellenzeile, **interne „Verwandte KI-Themen"-Verlinkung in ~1227 KI-Hubs**
+  (inject-engine, Build-only).
 - **451 Hub-Reels + 451 Social-Images** erzeugt (alle `ki-*.html`, ohne Voiceover = User-Vorgabe On-Screen-Text),
   in 10 ZIPs an den User geliefert. Ledger `freegen/.bot-done.txt` (gitignored). Generierte Medien bleiben aus dem Repo.
 - **Inserate stark ausgebaut** (`inserate.html` + `inserat-aufgeben.html` synchron): **30 Kategorien** (statt 18),
