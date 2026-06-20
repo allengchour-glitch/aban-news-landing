@@ -16,7 +16,7 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
-## 🧰 2026-06-20 — 17 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20 — 19 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -26,7 +26,10 @@
   arbeitszeit-rechner (Start/Ende−Pause, opt. Verdienst, über Mitternacht) + lesezeit-rechner (Lese-≈220/Sprech-≈130 WpM) #1116 ·
   zinseszins-rechner (Startkapital+Sparrate+Zins→Endkapital/Ertrag, Modellrechnung, keine Beratung) + px-rem-umrechner (px↔rem/em, Basis frei, CSS-Zeile) #1117 ·
   text-case-konverter (GROSS/klein/Title/Satz/camelCase/snake_case) + csv-json-konverter (CSV↔JSON, Trenner-Wahl, robuster CSV-Parser) #1118 ·
-  datengroessen-umrechner (Byte/KB/MB/GB/TB, dezimal 1000 vs. binär 1024) + stundenlohn-rechner (Gehalt↔Stundenlohn, Wochenstd/Urlaub/Feiertage, Tagessatz) [batch-8].
+  datengroessen-umrechner (Byte/KB/MB/GB/TB, dezimal 1000 vs. binär 1024) + stundenlohn-rechner (Gehalt↔Stundenlohn, Wochenstd/Urlaub/Feiertage, Tagessatz) #1119 ·
+  pomodoro-timer (Fokus 25/5 einstellbar, WebAudio-Beep, Runden) + markdown-html-konverter (MD→HTML + Live-Vorschau, eigener Mini-Parser) [batch-9].
+  ⚠️ **Mini-Parser-Falle:** Inline-Code-Platzhalter NIE als „ N " (Leerzeichen+Zahl) bauen → frisst Prosa-Zahlen („in 3 Tagen"). Sentinel = ``-PUA-Zeichen
+  um den Index, Restore-Regex `/(\d+)/g`. Außerdem: KEINE rohen `\x00`-Null-Bytes in HTML schreiben (macht Datei „binary", git/grep-Probleme) — vor Commit `count(b"\x00")==0` prüfen.
 - **Muster für neue Tools (bewährt):** Template = mwst-rechner.html-Struktur (header.site + hero + „Was macht das?"
   + panel + data-aban-news-cta + footer); WebApplication+FAQPage-JSON-LD; in `online-tools.html` (Karte) +
   `sitemap.xml` eintragen; `node --check` + JSON-LD + link-check + brain-scan. **Lehre:** online-tools.html wird
