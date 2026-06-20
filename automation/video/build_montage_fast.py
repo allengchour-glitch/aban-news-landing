@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 N = int(sys.argv[1]) if len(sys.argv) > 1 else 8
 START = int(sys.argv[2]) if len(sys.argv) > 2 else 0
 F = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"; FS = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
-GOLD = "0xE8D5A8"; RED = "0xD52B1E"; FR = 30; DUR = 2.5; SEG = "/tmp/mfast"; os.makedirs(SEG, exist_ok=True)
+GOLD = "0xE8D5A8"; RED = "0xD52B1E"; FR = 30; DUR = float(os.environ.get("SEG_DUR", "2.8")); SEG = "/tmp/mfast"; os.makedirs(SEG, exist_ok=True)  # ~3s/Produkt (User)
 GRADE = "eq=contrast=1.07:saturation=1.13:brightness=0.012,vignette=angle=PI/5"
 def run(a):
     r = subprocess.run(a, capture_output=True, text=True)
@@ -17,7 +17,8 @@ def esc(t): return (t or "").replace("'", "").replace(":", " ").replace("%", " P
 def price(h):
     try: return json.load(urllib.request.urlopen(f"https://luxestyle.ch/products/{h}.json", timeout=12))["product"]["variants"][0]["price"]
     except Exception: return ""
-rows = [r for r in list(csv.reader(open(os.path.join(ROOT, "automation/top_products.csv"))))[1:] if len(r) >= 3]
+_CSV = os.environ.get("PRODUCTS_CSV", os.path.join(ROOT, "automation/top_products.csv"))  # eigene Produktliste moeglich
+rows = [r for r in list(csv.reader(open(_CSV)))[1:] if len(r) >= 3]
 pick = rows[START:START+N]
 nf = int(DUR * FR)
 def card(lines, out, dur):
