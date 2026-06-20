@@ -33,6 +33,7 @@ try {
       "engage"       { & node "automation/local/tiktok-bot.mjs" engage --cap 12 }
       "analyse"      { & node "automation/local/tiktok-bot.mjs" analyze --max 80; & node "automation/tiktok-pixel-check.mjs" }
       "health"       { & node "automation/health-check.mjs"; git add reports/ 2>$null; git commit -m "auto(health): Provider/Key-Check" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "image-audit"  { $env:MAX="300"; & node "automation/image-audit.mjs"; Remove-Item Env:MAX -EA SilentlyContinue; git add reports/ 2>$null; git commit -m "auto(image-audit): Gemini-Vision-Report" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "tutti"        { $env:AUTO_PUBLISH="1"; & node "automation/local/tutti-post.mjs"; $env:AUTO_PUBLISH=$null }
       "anibis"       { $env:AUTO_PUBLISH="1"; & node "automation/local/anibis-post.mjs"; $env:AUTO_PUBLISH=$null }
       "campaign-dry" { & node "automation/local/tiktok-campaign-port.mjs" --dry }
