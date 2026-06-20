@@ -1,5 +1,11 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT) — Bot-Bugfix + Katalog-QA + 3 PC-Tasks gequeued
+**🐛 RUNAWAY-LOOP GEFIXT (PC-Bot fraß Ressourcen):** `VOLLAUTOMAT.ps1` lief in Endlosschleife (anibis-post+self_learn tausende Male, „Überlauf der Aufruftiefe"). Alle .mjs verifiziert = keines loopt selbst; Ursache war der Wrapper `& node 2>&1 | ForEach-Object { Add-Content }` (Zeile-für-Zeile-Pipe flutet/überläuft die PS-Aufruftiefe; verschlimmert durch überlappende Tasks). Fix: **Single-Instance-Mutex** (kein Doppellauf) + **Output in Temp-Datei, einmal angehängt, gekappt auf 200 Zeilen** + **Hard-Timeout pro Node-Call** (killt hängende Prozesse). Commit `c1fb74f2`. Greift beim nächsten `update`-Lauf (05:00) oder SUPERBOT-SETUP.bat.
+**🧹 KATALOG-QA (BigBuy-Fehlimporte gefixt, Misrepresentation raus):** (1) Hunde-Maulkorb „Halti" war `Damenmode/kleid/sommer-2026` → korrekt `Haustier` + neuer Text/SEO (raus aus Kleider+Kampagne). (2) Spam-Titel „Schwarze Kleider: Luxuriöser Glamour…" → echter Produkttitel „Kleid Anaïs Glamour Schwarz" + SEO. (3) Karnevals-Kostüm-Rock „Rock 115284" (CHF 9.90, Disfraces-Bild) → `Kostüme & Verkleidung`, raus aus Premium-Mode/Ad-Kollektion. Übrige bigbuy+damen-Produkte geprüft = sauber kategorisiert.
+**📋 3 PC-Tasks frisch in Worker-Queue** (Queue war leer, je 1× sauber): **ig-delete** (2 Berg-Tee-Dubletten + Screenshots), **campaign-go** (350 CHF, freigegeben), **giga** (TikTok-Post). PC führt beim nächsten cmd-poll (≤10 Min) aus.
+**✅ Dublettencheck:** `check-sources.mjs` = alle Quellen sauber, kein Doppelpost-Risiko.
+
 ## 2026-06-20 12:16 — Session-Update (autonom)
 **LÄUFT autonom (kein PC):** IG/FB Reels+Stories 24/7 (Worker-Cron, Dublettenschutz 30er-Fenster), Lernschleife, SEO-Batches, Katalog/Collections.
 **NEU:** TikTok-API via App luxe (Token am PC, Refresh 1J), Giga-Bot (alle Wege Fallback, klickt durch), Cross-Post TikTok->Meta (Reel+Story), Dauerauftrags-Bot 24/7 (SUPERBOT-SETUP.bat), neues Reel luxe-fresh, WM-Trikot-Werbung+Produkt(DRAFT), 3 Smart-Collections, Vision-AI-Waechter (8 Checks), TikTok Foto/Karussell-Bot.
