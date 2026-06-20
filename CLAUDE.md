@@ -10,6 +10,12 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 Der User will den Shop **vollautonom betrieben — ohne ‚weiter' zu sagen. Oberstes Ziel: KUNDEN,
 die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Dropship/Shop/CJ-Session:
 
+> ⛔ **FEST (User 2026-06-20): VOLLER AUTOMODE — NIE FRAGEN.** „mache einfach alle verbesserung selber
+> und so ohne zu fragen … mach einfach automode bot". KEINE AskUserQuestion, KEINE „Soll ich…?"-Rückfragen,
+> KEINE Optionen-am-Ende. Einfach alle Verbesserungen selbst machen, committen, pushen, Stand melden.
+> Nur echte User-only-Klicks (OAuth/Login/2FA, Bezahlungen, Ad-Budget, veröffentlichte Posts löschen) klar
+> benennen — aber NICHT als Frage, sondern als „das musst du noch klicken"-Hinweis.
+
 1. **Lies zuerst `dropship/AUTONOMER-MODUS.md`** — vollständiges Runbook inkl. **§9 Master-Lessons**
    (alle teuer gelernten Fallen) und **§10 Kunden gewinnen** (was autonom geht, was nur der User kann).
 2. **Lies `dropship/CJ-IMPORT-LOG.md`** für Produktliste & Historie.
