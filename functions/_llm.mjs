@@ -1,26 +1,45 @@
-// Geteilter LLM-Adapter für die Cloudflare-Pages-Functions.
-// Unterstützt drei Anbieter über EINEN Env-Switch ("ein Adapter, ein Schalter",
-// docs/TOKEN-SPAREN.md):
-//   • Anthropic (Claude)      → ANTHROPIC_API_KEY
-//   • OpenAI (ChatGPT)        → OPENAI_API_KEY
-//   • Groq (Llama, gratis)    → GROQ_API_KEY
-// Standard-Reihenfolge: Anthropic → OpenAI → Groq (erster vorhandener Key gewinnt).
-// Mit env.LLM_PROVIDER ("anthropic" | "openai" | "groq") lässt sich ein Anbieter
-// erzwingen, sofern dessen Key gesetzt ist.
+// Geteilter LLM-Adapter für die Cloudflare-Pages-Functions — Universal-Switch.
+// Ein Adapter, ein Env-Schalter (docs/TOKEN-SPAREN.md). Erkennt automatisch den
+// ersten vorhandenen Anbieter-Key. Per env.LLM_PROVIDER lässt sich ein Anbieter
+// erzwingen (sofern dessen Key gesetzt ist).
+//
+// Unterstützte Anbieter (Key → Anbieter):
+//   ANTHROPIC_API_KEY   → Anthropic (Claude)        [eigenes Format]
+//   OPENAI_API_KEY      → OpenAI (ChatGPT)
+//   DEEPSEEK_API_KEY    → DeepSeek
+//   XAI_API_KEY         → xAI (Grok)
+//   MISTRAL_API_KEY     → Mistral
+//   GEMINI_API_KEY      → Google Gemini (OpenAI-kompatibler Endpoint)
+//   OPENROUTER_API_KEY  → OpenRouter (viele Modelle, auch gratis)
+//   GROQ_API_KEY        → Groq (Llama, grosse Gratis-Stufe)
+// Alle ausser Anthropic sprechen das OpenAI-kompatible /chat/completions-Format.
 //
 // 🔐 Keys werden AUSSCHLIESSLICH aus `env` gelesen — niemals hartcodiert/committet.
 
-const HAS = {
-  anthropic: (env) => !!(env && env.ANTHROPIC_API_KEY),
-  openai: (env) => !!(env && env.OPENAI_API_KEY),
-  groq: (env) => !!(env && env.GROQ_API_KEY),
-};
-const ORDER = ["anthropic", "openai", "groq"];
+// OpenAI-kompatible Anbieter: Reihenfolge = Standard-Priorität (erster Key gewinnt).
+const OPENAI_COMPAT = [
+  { id: "openai", keyEnv: "OPENAI_API_KEY", url: "https://api.openai.com/v1/chat/completions", modelEnv: "OPENAI_MODEL", model: "gpt-4o-mini" },
+  { id: "deepseek", keyEnv: "DEEPSEEK_API_KEY", url: "https://api.deepseek.com/chat/completions", modelEnv: "DEEPSEEK_MODEL", model: "deepseek-chat" },
+  { id: "xai", keyEnv: "XAI_API_KEY", url: "https://api.x.ai/v1/chat/completions", modelEnv: "XAI_MODEL", model: "grok-2-latest" },
+  { id: "mistral", keyEnv: "MISTRAL_API_KEY", url: "https://api.mistral.ai/v1/chat/completions", modelEnv: "MISTRAL_MODEL", model: "mistral-small-latest" },
+  { id: "gemini", keyEnv: "GEMINI_API_KEY", url: "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", modelEnv: "GEMINI_MODEL", model: "gemini-1.5-flash" },
+  { id: "openrouter", keyEnv: "OPENROUTER_API_KEY", url: "https://openrouter.ai/api/v1/chat/completions", modelEnv: "OPENROUTER_MODEL", model: "meta-llama/llama-3.3-70b-instruct:free" },
+  { id: "groq", keyEnv: "GROQ_API_KEY", url: "https://api.groq.com/openai/v1/chat/completions", modelEnv: "GROQ_MODEL", model: "llama-3.3-70b-versatile" },
+];
+// Anthropic zuerst, dann die OpenAI-kompatiblen.
+const ORDER = ["anthropic", ...OPENAI_COMPAT.map((p) => p.id)];
+
+function has(env, id) {
+  if (!env) return false;
+  if (id === "anthropic") return !!env.ANTHROPIC_API_KEY;
+  const cfg = OPENAI_COMPAT.find((p) => p.id === id);
+  return !!(cfg && env[cfg.keyEnv]);
+}
 
 export function llmProvider(env) {
   const forced = env && env.LLM_PROVIDER;
-  if (forced && HAS[forced] && HAS[forced](env)) return forced;
-  for (const p of ORDER) if (HAS[p](env)) return p;
+  if (forced && has(env, forced)) return forced;
+  for (const id of ORDER) if (has(env, id)) return id;
   return null;
 }
 
@@ -37,8 +56,7 @@ export async function llmComplete(env, opts) {
     maxTokens = 900,
     timeoutMs = 20000,
     anthropicModel,
-    openaiModel,
-    groqModel,
+    model: modelOverride,
   } = opts || {};
 
   const provider = llmProvider(env);
@@ -61,25 +79,16 @@ export async function llmComplete(env, opts) {
       return { text, model };
     }
 
-    // OpenAI (ChatGPT) und Groq teilen sich das OpenAI-kompatible Chat-Format.
+    // OpenAI-kompatibler Anbieter.
+    const cfg = OPENAI_COMPAT.find((p) => p.id === provider);
+    const model = modelOverride || env[cfg.modelEnv] || cfg.model;
     const messages = [];
     if (system) messages.push({ role: "system", content: system });
     messages.push({ role: "user", content: prompt });
-
-    let url, key, model;
-    if (provider === "openai") {
-      url = "https://api.openai.com/v1/chat/completions";
-      key = env.OPENAI_API_KEY;
-      model = openaiModel || env.OPENAI_MODEL || "gpt-4o-mini";
-    } else {
-      url = "https://api.groq.com/openai/v1/chat/completions";
-      key = env.GROQ_API_KEY;
-      model = groqModel || env.GROQ_MODEL || "llama-3.3-70b-versatile";
-    }
-    const resp = await fetch(url, {
+    const resp = await fetch(cfg.url, {
       method: "POST",
       signal: ctl.signal,
-      headers: { "authorization": "Bearer " + key, "content-type": "application/json" },
+      headers: { "authorization": "Bearer " + env[cfg.keyEnv], "content-type": "application/json" },
       body: JSON.stringify({ model, max_tokens: maxTokens, messages }),
     });
     if (!resp.ok) { const e = new Error("upstream"); e.status = resp.status; throw e; }
