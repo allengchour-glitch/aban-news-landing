@@ -36,19 +36,33 @@ def clean(s):
     return s
 
 
-def build_script(title, desc, slug, voiceover):
+_PALETTE = ["#0b0b0c", "#101018", "#0e1410", "#141019", "#0e1014", "#1d1a12"]
+
+
+def build_script(title, desc, slug, voiceover, ai=True):
+    copy = None
+    if ai:
+        try:
+            import freegen_ai
+            copy = freegen_ai.reel_copy(title, desc)
+        except Exception:
+            copy = None
+    if copy:
+        scenes = [{"text": t, "seconds": 3.0, "bg": _PALETTE[i % len(_PALETTE)]} for i, t in enumerate(copy)]
+    else:
+        scenes = [
+            {"text": title, "seconds": 3.2, "bg": "#0b0b0c"},
+            {"text": desc[:120] if desc else "Ehrlich erklärt — ohne Hype.", "seconds": 3.5, "bg": "#101018"},
+        ]
     spec = {
         "output": f"freegen/out/hub-{slug}.mp4",
         "w": 1080, "h": 1920, "fps": 30, "music": MUSIC, "brand": BRAND,
         "intro": "aban news",
         "outro": "Mehr auf abannews.com",
-        "scenes": [
-            {"text": title, "seconds": 3.2, "bg": "#0b0b0c"},
-            {"text": desc[:120] if desc else "Ehrlich erklärt — ohne Hype.", "seconds": 3.5, "bg": "#101018"},
-        ],
+        "scenes": scenes,
     }
     if voiceover:
-        spec["voiceover"] = f"{title}. {desc}".strip()
+        spec["voiceover"] = " ".join(copy) if copy else f"{title}. {desc}".strip()
     return spec
 
 
@@ -58,6 +72,7 @@ def main():
     ap.add_argument("--limit", type=int, default=10)
     ap.add_argument("--render", action="store_true")
     ap.add_argument("--voiceover", action="store_true")
+    ap.add_argument("--no-ai", action="store_true", help="KI-Texte aus (nur Titel/Teaser)")
     a = ap.parse_args()
 
     files = sorted(glob.glob(a.glob))[: a.limit]
@@ -72,7 +87,7 @@ def main():
         tm = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
         title = clean(tm.group(1)) if tm else slug
         desc = clean(meta(html, "description"))
-        spec = build_script(title, desc, slug, a.voiceover)
+        spec = build_script(title, desc, slug, a.voiceover, ai=not a.no_ai)
         sp = os.path.join(OUT_SCRIPTS, f"{slug}.json")
         json.dump(spec, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         made.append(sp)
