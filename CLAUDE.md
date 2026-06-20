@@ -170,6 +170,34 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-19/20 (TikTok-Weg entschieden + Browserbase-Test + 2 Ketten + BigBuy-Premium vorbereitet):**
+- **🎯 TikTok-ohne-PC ENTSCHIEDEN (User AskUserQuestion „1 und 3"):** = **Weg 1 (offizielle TikTok-API, gratis,
+  1 Tap)** + **Weg 3 (PC als Voll-Auto-Backup)**. **Browserbase-Paid (Option 2) ABGELEHNT** (keine Mtl-Kosten).
+  Details/Next-Step in `dropship/ALLE-WEGE-TIKTOK.md` (Abschnitt „NÄCHSTER SCHRITT").
+- **⛔ TikTok-API-OAuth hängt an Redirect-URI:** Login-URL erzeugt (PKCE, client_key `mn971u4o67rakuol`, scope
+  `user.info.basic,video.upload`), aber Autorisieren gab **`error_type=redirect_uri`** → `http://localhost:8723/callback`
+  ist in der App **nicht hinterlegt**. **TODO User (morgen):** developers.tiktok.com → „LuxeStyle Poster" → Login Kit →
+  Redirect-URI **`https://luxestyle.ch/`** eintragen → ich bau URL neu → User kopiert `?code=` aus Adresszeile →
+  **Cloud-Session tauscht Code→Token** (kein localhost-Server/PC nötig). Dann `tiktok-autopost.mjs` → Entwürfe → 1 Tap.
+- **☁️ Browserbase getestet (Lehre):** Keys GÜLTIG (Projekt „Production", Concurrency 3), Context
+  `f1689a15-1613-453b-bf9d-9ec1aa7f8b1a` angelegt, Login-Live-URL funktioniert. ABER **Gratis-Plan = Rechenzentrums-IP**
+  → Proxy = HTTP **402** → **TikTok behält Login NICHT** (jede Session andere IP = sofort ausgeloggt). Voll-Auto-TikTok
+  via Browserbase nur mit **Paid-Plan** (Residential-CH-Proxy `BB_PROXY=1`). `tools/browser/agent_cloud.mjs` ist der Treiber.
+- **🔑 CLOUD-SESSION BEHÄLT KEINE GEPASTETEN SECRETS (wichtig, nicht wieder annehmen!):** Jede neue Cloud-Session
+  startet frisch — vom User früher gepastete Tokens (BigBuy/TikTok/Browserbase) sind **weg**. Vor „ich hab den Token"
+  IMMER `printenv`/ENV prüfen. Für Cloud-Aktionen → User pastet transient ODER es läuft am PC (luxe-secrets.ps1).
+- **📘 IG/FB-Cloud-Posten verifiziert:** Worker-Trigger `…workers.dev/?key=Abanaban192%2B` postet 1 IG+FB-Eintrag.
+  FB klappte (Post live), IG warf 1× Fehler 9007 „media not ready" (transient, Cron holt nach). ⚠️ Worker **IP-blockt
+  die Sandbox zeitweise** (403/Timeout) → Trigger geht nicht immer durch; mehrfach probieren oder PC/Cron.
+- **🛍️ +2 Premium-Ketten (CJ, Bild-QA'd):** «Perla» Barock-Perle wasserfest CHF 24.90 (ID 15435203871105) + «Trio»
+  Birthstone-Kristall silber CHF 29.90 (ID 15435203903873). Beide ACTIVE, 6 Kanäle, Bilder einzeln visuell geprüft.
+  **CJ-SUCH-LEHRE:** `productNameEn`-Suche unzuverlässig + nicht-deterministisch (Schmuck-Query → ~80% Kleider/Bikini)
+  → nur Ein-Pass Suche→Detail(pid)→Bild-QA. Premium-Volumen = BigBuy.
+- **📦 BigBuy-Premium-Import VORBEREITET (für PC):** `automation/local/bigbuy-premium.ps1` = 6 Kategorien
+  (Schmuck/Uhren/Beauty/Körperpflege/Sport/Kleidung, ~64 Markenprodukte/Lauf, EAN/Merchant-ready, idempotent, alle
+  Kanäle) + Ein-Tap `BIGBUY-PREMIUM.bat` + Fernsteuer-Befehl `bigbuy-premium` (in cmd-poll.ps1 + Worker-Queue
+  gestellt). Braucht `BIGBUY_TOKEN`+Shopify-Creds in PC-`luxe-secrets.ps1`. BigBuy rate-limitet aus Cloud → PC-Job.
+
 **📌 2026-06-17 (ROLLEN-SPLIT — diese Session = NUR SOCIAL):**
 - **🤝 ZUSTÄNDIGKEIT (User 2026-06-17 „andere session macht webseite sauber mit chatgpt, du bist für posting alle sozial tiktok meta videos, follower, chatten"):**
   Diese Session macht **ausschliesslich Social/Marketing** — Posting (TikTok+Meta), Videos/Reels, Bilder-mit-Text, Follower-Wachstum, Kommentar/DM-Chat, Engagement.

@@ -20,6 +20,21 @@ setzen (claude.ai/code → Umgebung → Variables), NICHT als GitHub-Secret → 
 aus jeder Cloud-Session. ⚠️ Rest-Risiko: Gratis-Browserbase + Cloud-IP → TikTok kann Captcha/Block werfen (Residential-Proxy = bezahlt).
 **NICHT den User wiederholt nach TT-/Browserbase-Tokens fragen — Stand steht HIER.**
 
+> **🔬 UPDATE 2026-06-19 Abend (Luxestyle-Session) — Browserbase LIVE GETESTET, Ergebnis eindeutig:**
+> Keys gültig (Projekt „Production", Concurrency 3), Context `f1689a15-1613-453b-bf9d-9ec1aa7f8b1a` neu angelegt,
+> TikTok-Login-Live-URL funktionierte, User loggte sich ein. **ABER der `check` danach landete wieder auf /login** →
+> **Gratis-Plan = Rechenzentrums-IP, Proxy gibt HTTP 402 → TikTok behält die Anmeldung NICHT** (IP wechselt je Session).
+> **FAZIT:** Browserbase-Voll-Auto-TikTok geht NUR mit **Paid-Plan** (Residential-CH-Proxy). **User hat Paid ABGELEHNT.**
+> **Neuer Beschluss (User „1 und 3"):** TikTok = **offizielle API (1-Tap-Drafts)** + **PC-Backup**. Details:
+> `dropship/ALLE-WEGE-TIKTOK.md`. TikTok-API-OAuth hängt nur noch an **Redirect-URI** (User trägt `https://luxestyle.ch/`
+> in der App ein → dann Cloud-Token-Tausch, kein PC). **Cloud-Session behält KEINE gepasteten Secrets → vor Nutzung ENV prüfen.**
+
+## 🛍️ KATALOG (Luxestyle-Session) 2026-06-19: +2 Ketten · BigBuy-Premium-Import bereit
+- **+2 CJ-Ketten** (Bild-QA'd, ACTIVE, 6 Kanäle): «Perla» Perle wasserfest CHF 24.90, «Trio» Birthstone CHF 29.90.
+- **BigBuy-Premium-Import vorbereitet** (`automation/local/bigbuy-premium.ps1`, 6 Kategorien, EAN/Merchant-ready,
+  idempotent) — läuft am **PC** (BigBuy rate-limitet aus Cloud). Theme-Session: neue Beauty/Schmuck/Uhren-Produkte
+  kommen rein → ggf. Menü/Kollektionen prüfen. **Produktimport bleibt Luxestyle-Session.**
+
 ## 🚨🚨 NOTFALL 2026-06-19 ~10:40 — SHOP-DOMAIN DOWN (luxestyle.ch NICHT MEHR VERBUNDEN)  ✅ GELÖST ~11:10
 **✅ GELÖST:** User hat luxestyle.ch in Admin→Domains **neu verbunden + als primär gesetzt** → SSL aktiv, Storefront wieder
 **200** (Start/Produkt/Kollektion verifiziert). www.luxestyle.ch propagiert noch kurz. **Lehre:** luxestyle.ch war komplett
