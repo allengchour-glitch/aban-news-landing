@@ -1007,6 +1007,12 @@
       "workflows": "A Volumen (gratis): Luma img2video -> ffmpeg Montage 1.1-1.2s Cuts -> piper Mundart-VO + CC-BY-Musik -> Hook-Text Safe-Zone. B UGC-Ad (sparsam paid): Higgsfield/HeyGen Avatar reviewt Produkt -> ElevenLabs Starter VO -> CapCut Auto-Captions. C automatisiert: Sheet->Groq-Script->VO->Clip->ffmpeg->Blotato Auto-Post.",
       "todo_bot": "Evaluieren: Blotato-MCP (autonomes Multi-Plattform-Posting statt Worker-IP-Block), Higgsfield-MCP (Kling-Avatar-UGC on-demand). Gratis-Default piper+ffmpeg+Luma bleibt; Credits nur fuers Hero-Creative.",
       "stand": "2026-06-20"
+    },
+    "selbst_entscheiden_info_a_und_o": {
+      "fest": "User 2026-06-20 \"entscheide verbessere selbst ohne zu fragen, merke. info ist a und o\".",
+      "regel": "Selbst entscheiden + umsetzen, NIE fragen (ausser echtem Geld/Budget oder Konto-Login). Daten/Information = oberste Prioritaet.",
+      "vorgehen": "Jede Session ZUERST echte Zahlen ziehen (Shopify run-analytics/abandonedCheckouts/orders, Social-Analyse, health-check) -> daten-belegt entscheiden, nicht raten. Lehren sofort ins Gehirn, Verbesserungen autonom committen+pushen.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [

@@ -21,6 +21,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## 🔁 Daueraufträge (FEST)
+- **🧠 SELBST ENTSCHEIDEN + VERBESSERN, INFO IST DAS A UND O (FEST, User 2026-06-20 „entscheide verbessere selbst ohne zu fragen, merke. info ist a und o"):**
+  Immer selbst entscheiden und umsetzen — NIE fragen (ausser echtem Geld/Budget oder Konto-Login). **Daten/Information
+  haben oberste Priorität:** jede Session zuerst die echten Zahlen ziehen (Shopify-Analytics: Sessions/Quellen/abgebrochene
+  Checkouts/Orders; Social-Analyse; Health-Check) BEVOR gehandelt wird — Entscheidungen daten-belegt, nicht aus dem Bauch.
+  Recherche-Schwärme nutzen, Lehren sofort ins Gehirn (`knowledge.json`), Verbesserungen autonom umsetzen + committen +
+  pushen. Ehrlich priorisieren am echten Engpass (aktuell: Bezahl-Schritt/Conversion + Buy-Intent-Traffic).
 - **🤖 DAUERAUFTRAGS-BOT 24/7 OHNE PAUSE (FEST, User 2026-06-20 „installiere dauerauftragsbot 24/7 ohne pause mit allem"):**
   Der Bot läuft rund um die Uhr und macht ALLES autonom, ohne Nachfragen (ausser echtem Geld/Konto-Login):
   1. **TikTok = ERSTE PRIORITÄT** — posten (Giga-Bot: Browser live → API nach Audit), analysieren, lernen, engagen.
