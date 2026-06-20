@@ -1022,6 +1022,14 @@
       "offen": "/password 34 Sess pruefen (alte Theme-Preview-Links/Bots?). Reviews auf Top-Produkt-PDPs fehlen weiter (Proof-Beat).",
       "lehre": "IMMER Landing-Page-Daten ziehen: archivierte/unkaufbare Top-Landings + tote Pfade = stille Kaeufe-Lecks, einfach fixbar.",
       "stand": "2026-06-20"
+    },
+    "proof_review_luecke_2026": {
+      "befund": "Stichprobe 30 zuletzt aktualisierte aktive Produkte = ALLE 0 Reviews (reviews.rating/rating_count null). Proof-Beat fehlt breit, v.a. BigBuy-Importe.",
+      "warum_wichtig": "Recherche (alle Schwaerme): fehlende Reviews auf PDP = benannter Conversion-Killer; 5+ echte Reviews = +270% Conversion. Bei 0 Kaeufen besonders kritisch (kein organischer Proof).",
+      "grenze": "KEINE Fake-Reviews (CH-UWG illegal + User-Regel). Cloud kann keine echten Reviews erzeugen.",
+      "hebel": "automation/reviews-import.mjs importiert ECHTE >=4-Stern-Lieferanten-Reviews (Judge.me) - braucht JUDGEME_PRIVATE_TOKEN (User-Secret, am PC). Prioritaet: zuerst auf die TOP-TRAFFIC-Produkte (damen-mode-Kleider, Zirkonia-Ring, Highlights) importieren, nicht breit.",
+      "bekannte_bewertete": "Es gibt vereinzelt bewertete (Slim Wallet 5*, Herrenuhr 5*, Jade Roller 5*, Bali 4.93*, Ibiza 4.47*) -> diese als Social-Proof auf Home/Top-Collection sichtbar machen (Theme).",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [
