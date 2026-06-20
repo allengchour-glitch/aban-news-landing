@@ -324,7 +324,7 @@ async function run(env, doPost = true) {
     // Key = TYP + URL: derselbe Clip als Reel UND Story ist ERLAUBT (Cross-Post), 2x identischer Reel nicht.
     const mediaOf = (it) => (it ? ((it.type || "image") + "|" + (it.video || it.image || it.img || it.media || "")) : "");
     let recent = [];
-    try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, 15).map((p) => p.u).filter(Boolean); } catch {}
+    try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, 30).map((p) => p.u).filter(Boolean); } catch {}
     for (let hop = 0; hop < q.length && mediaOf(q[cursor]) && recent.includes(mediaOf(q[cursor])); hop++) {
       cursor = (cursor + 1) % q.length;
     }
@@ -339,7 +339,7 @@ async function run(env, doPost = true) {
       const pl = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]");
       pl.unshift({ t: new Date().toISOString(), i: cursor, type: item.type || "image", u: mediaOf(item),
         cap: (item.caption || "").split("\n")[0].slice(0, 70), ig: ig.ok ? 1 : 0, fb: fb.ok ? 1 : 0, tt: tt.ok ? 1 : 0 });
-      await env.LUXE_KV.put("post_log", JSON.stringify(pl.slice(0, 40)));
+      await env.LUXE_KV.put("post_log", JSON.stringify(pl.slice(0, 60)));
     } catch (e) { /* best-effort */ }
   } else { out.posted = false; out.note = "Analyse-Slot (kein Post)"; }
   // Meta-Analyse läuft bei JEDEM Cron (6×/Tag)
