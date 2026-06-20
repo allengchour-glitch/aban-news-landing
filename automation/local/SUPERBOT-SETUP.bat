@@ -37,19 +37,35 @@ schtasks /create /f /tn "LuxeEng-15"  /sc daily /st 15:00 /tr "%PSF% \"%VA%\" -M
 schtasks /create /f /tn "LuxeEng-21"  /sc daily /st 21:00 /tr "%PSF% \"%VA%\" -Mode engage"
 schtasks /create /f /tn "LuxeWeekly"  /sc weekly /d SUN /st 12:00 /tr "%PSF% \"%VA%\" -Mode weekly"
 
+echo [3b/6] NEU: API-TikTok-Autobot (zuverlaessiger, kein Brave noetig) + Fernsteuerung + SEO...
+set "AB=%DIR%tiktok-autobot.ps1"
+set "CP=%DIR%cmd-poll.ps1"
+set "SP=%REPO%\automation\seo_polish.mjs"
+REM API-Autobot 2x/Tag (postet TikTok per API; DRAFT vor Audit, PUBLIC danach via luxe-secrets.ps1)
+schtasks /create /f /tn "LuxeAutobot-11" /sc daily /st 11:30 /tr "%PSF% \"%AB%\""
+schtasks /create /f /tn "LuxeAutobot-18" /sc daily /st 18:30 /tr "%PSF% \"%AB%\""
+REM Fernsteuerung: holt Cloud-Befehle alle 10 Min (du steuerst vom Handy)
+schtasks /create /f /tn "LuxeCmd" /sc minute /mo 10 /tr "%PSF% \"%CP%\""
+REM SEO-Meta in Batches (taeglich, idempotent - fuellt die ~2900 leeren nach und nach)
+schtasks /create /f /tn "LuxeSEO" /sc daily /st 04:30 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"cd '%REPO%'; . $env:USERPROFILE\luxe-secrets.ps1; $env:MAX=200; node automation/seo_polish.mjs\""
+
 echo [4/6] Tasks duerfen PC wecken + aus Standby starten...
-for %%T in (LuxeUpdate LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21) do (
+for %%T in (LuxeUpdate LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 LuxeAutobot-11 LuxeAutobot-18 LuxeCmd LuxeSEO) do (
   powershell -NoProfile -Command "$t=Get-ScheduledTask -TaskName '%%T' -ErrorAction SilentlyContinue; if($t){$s=$t.Settings;$s.WakeToRun=$true;$s.StartWhenAvailable=$true;$s.DisallowStartIfOnBatteries=$false;Set-ScheduledTask -TaskName '%%T' -Settings $s|Out-Null}" >nul 2>&1
 )
 
 echo [5/6] Brave-Port sicherstellen + JETZT 1x posten (Test)...
 %PSF% "%VA%" -Mode post
 
-echo [6/6] FERTIG. Der Bot laeuft jetzt vollautonom:
+echo [6/6] FERTIG. Der EINE Bot laeuft jetzt vollautonom:
 echo   - Update 05:00 (holt neuen Code, lock-proof)
-echo   - Posten 10:00 + 19:00 (TikTok analyze+post+engage + Inserate)
+echo   - SEO 04:30 (fuellt Meta-Beschreibungen in Batches)
+echo   - TikTok-API-Autobot 11:30 + 18:30 (postet per API - zuverlaessig, kein Brave)
+echo   - Posten 10:00 + 19:00 (Browser-Backup: analyze+post+engage + Inserate)
 echo   - Engagement 09/12/15/21 (analysieren/chatten/folgen)
+echo   - Fernsteuerung alle 10 Min (du steuerst vom Handy)
 echo   - Meta IG/FB laeuft separat ueber den Cloud-Worker (6x/Tag)
 echo.
-echo  Voraussetzung bleibt: Brave-Profil 'brave-agent' bei TikTok/IG eingeloggt.
+echo  Voraussetzung: luxe-secrets.ps1 mit TT_*-Tokens (nach OAuth/Audit) +
+echo  Brave-Profil 'brave-agent' bei TikTok/IG eingeloggt (fuer Browser-Backup).
 pause
