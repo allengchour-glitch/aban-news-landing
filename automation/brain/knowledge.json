@@ -968,6 +968,16 @@
       "video2": "Vilius (@ViliusLite) - \"1000 EUR/Tag Dropshipping Produkte LIVE finden\": Lehren: (1) AD-SPY-Tool (Minea/PiPiAds) -> Produkte mit LIVE skalierenden TikTok-Ads finden = Nachfrage beweisen VOR Import, (2) harte Winner-Kriterien: Wow-Faktor, loest Problem, ~3x+ Marge, offline schwer findbar, leicht versendbar, (3) per Traktion validieren nicht Bauchgefuehl (steigende Ad-Spend/Engagement=gruen), (4) Shortlist statt Bulk-Import (unser Katalog ist schon gross), (5) Funnel zum Produkt passen - unser Engpass ist Checkout/Payment, also Produkte waehlen die den Checkout-Fix wert sind.",
       "anwendung": "Bot: auto.sh/brain-Loop als Skill versionieren; Produkt-Auswahl kuenftig ad-spy-validiert (Demand-Proof) statt blind BigBuy-Masse; Brand-Safety als feste QA-Phase.",
       "stand": "2026-06-20"
+    },
+    "ki_automation_patterns_v2_2026": {
+      "quelle": "Recherche Nate Herk + Sabrina Ramonov + n8n-Docs (2026-06-20).",
+      "self_healing": "Dedizierter Error-Sink statt verstreutes try/catch (alle Tasks -> reports/failures.jsonl + Ping). withRetry(fn,{tries:3,backoff:[2,8,30]s}) um JEDEN externen Call. \"Continue on error\"-Branch: ein kaputtes Item bricht nie den Batch. Watchdog: Heartbeat-Datei pro Task + killt Prozesse mit stale Heartbeat (taskkill).",
+      "content_qualitaet": "Sabrinas Humanisierungs-Preamble (Bannwort-Liste ~60 KI-Floskeln, keine Gedankenstriche, aktiv, kurz) -> IMPLEMENTIERT in ai_generate.mjs (HUMANIZE, automatisch). Brand-File einmal pro Lauf injizieren (knowledge.json als Brand-Block).",
+      "orchestrierung": "Orchestrator -> spezialisierte Sub-Agenten mit schmalem Toolset (post-gen, QA-vision, SEO, engage) statt Mega-Prompt. Agent-Loop = generate->evaluate->refine bis QA passt (max 2 Iter, sonst Dead-Letter). video-qa.mjs = Evaluator im Loop.",
+      "tools": "Blotato (~29/mo, MCP, postet IG/FB/TikTok mit Per-Plattform-Caption = evtl. Ersatz fuer fragiles Browser-TikTok). Claude+Canva-Connector fuer on-brand Carousels. MCP/APIs > Scraper (weniger Fehlerquellen).",
+      "reliability": "failures.jsonl + Alert bei jedem Error. Dead-Letter-Queue (3x fail -> reports/dead-letter.json, nie endlos retry). health-check.mjs soll auf rote Items HANDELN, nicht nur melden.",
+      "umgesetzt": "HUMANIZE-Preamble in ai_generate.mjs (b-commit). Watchdog-Ansatz bereits via cmd-poll stale-lock + Task-Zeitlimit angefangen. TODO: error-sink.mjs + withRetry-Helper + dead-letter.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [

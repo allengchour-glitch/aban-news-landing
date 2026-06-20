@@ -154,14 +154,25 @@ export function hasKey(name) {
   }
 }
 
+// HUMANISIERUNG (Lehre 2026-06-20 aus Sabrina Ramonov / Recherche): killt generische KI-Floskeln,
+// damit Captions/Hooks echt klingen. Wird automatisch an den System-Prompt gehängt (ausser json/humanize:false).
+export const HUMANIZE = [
+  'Schreib wie ein echter Mensch, nicht wie KI. Kurze, klare Sätze. Aktiv statt passiv.',
+  'VERBOTEN (nie verwenden): delve, unlock, skyrocket, game-changer, revolutionär, harness, landscape,',
+  'elevate, "nicht nur X, sondern auch Y", "in der heutigen Welt", "wenn es um … geht", "tauche ein",',
+  'jegliche Gedankenstriche (—), Marketing-Floskeln, Übertreibungen, Emoji-Spam.',
+  'Konkret statt vage: echte Details, echter Preis. Schweizer Ton; wo es passt Mundart. Keine erfundenen Behauptungen.',
+].join(' ');
+
 /** Generiert Text über die erste funktionierende Gratis-Quelle. Gibt {text, provider}.
  *  Wirft NIE — bei totalem Ausfall {text:'', provider:'none'} (Caller nutzt sein Template). */
-export async function generate({ system = '', prompt, json = false, maxTokens = 800, order = DEFAULT_ORDER } = {}) {
+export async function generate({ system = '', prompt, json = false, maxTokens = 800, order = DEFAULT_ORDER, humanize = true } = {}) {
   const errors = [];
+  const sys = (humanize && !json) ? (system ? system + '\n\n' + HUMANIZE : HUMANIZE) : system;
   for (const name of order) {
     if (!PROVIDERS[name] || !hasKey(name)) { errors.push(`${name}: kein Key`); continue; }
     try {
-      const text = await PROVIDERS[name]({ system, prompt, json, maxTokens });
+      const text = await PROVIDERS[name]({ system: sys, prompt, json, maxTokens });
       if (text && text.trim()) { log(`✓ AI via ${name}`); return { text: text.trim(), provider: name }; }
       errors.push(`${name}: leere Antwort`);
     } catch (e) { errors.push(`${name}: ${e.message}`); log(`… ${name} fiel aus → nächster`); }
