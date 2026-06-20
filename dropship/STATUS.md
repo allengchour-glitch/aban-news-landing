@@ -1,5 +1,14 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT 4) — ✅ PC-SYNC GELÖST (das war der ganze TikTok-Blocker)
+**Ursache „1 Woche nichts" endgültig gefunden:** Der PC (`C:\luxe`) konnte nicht pushen/pullen → lief mit altem Code, postete nicht, nichts kam zurück. Kette: (1) zwei Klone (`C:\Users\allen\aban-news-landing` UND `C:\luxe`, beide mit lokalen Bot-Commits) → Branch **diverged** → `git push` = non-fast-forward rejected. (2) `git reset --hard` scheiterte an **5 gesperrten Skripten** (START.bat/engagement-cycle/pc-listener/run-follower-daily/tiktok-cycle): Besitzrechte + hängende Datei-Handles.
+**FIX-SEQUENZ (FEST — bei „PC pusht nicht" genau das):**
+1. Admin-cmd: `takeown /F C:\luxe\automation\local /R /D J` + `icacls C:\luxe\automation\local /grant %USERNAME%:F /T` (Besitz/Rechte zurück).
+2. **PC NEU STARTEN** (löst die hängenden Datei-Handles — war der Knackpunkt, ohne Reboot ging's nicht).
+3. Admin-cmd: `cd /d C:\luxe && git reset --hard origin/claude/luxestyle-product-CizQ6` → **HEAD 99d0a8ea ✅**.
+**Lehre (für CLAUDE.md):** Git-Auth am PC war IMMER ok (`fetch` lief). Problem = Datei-Locks/Rechte + Doppel-Klon-Divergenz. NIE zwei Klone parallel betreiben. „non-fast-forward" = `git reset --hard origin/...` (lokale Bot-Commits sind regenerierbar). „Permission denied" beim reset = takeown+icacls + **Reboot**.
+**STAND JETZT:** PC synchron, neuer Code aktiv (Login-Erkennung, Versand 49, BigBuy-Topseller). `giga` gequeued → wartet auf cmd-poll. OFFEN nur noch: Brave bei TikTok eingeloggt? (Status-Datei `reports/tiktok-last-run.json` zeigt's beim nächsten Lauf.)
+
 ## 2026-06-20 (SPÄT 3) — WICHTIG: PC läuft IMMER (User) → Push-Lücke entdeckt
 **FEST (User 2026-06-20 „pc läuft immer merke"):** der PC ist 24/7 an. cmd-poll/giga/Tasks SOLLTEN also laufen.
 **BEFUND:** PC **pollt** nachweislich (hat die Worker-Queue von 3→0 gedrained = cmd-poll aktiv), ABER **seit Stunden KEIN PC-Push** auf origin (kein `reports/tiktok-last-run.json`, keine ig-delete-Screenshots, kein `auto(...)`-Commit). → Der PC kann **Ergebnisse nicht pushen UND meinen neuen Code nicht ziehen** = läuft mit ALTEM Code.
