@@ -1122,3 +1122,19 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   Re-Scan = sauber (0 tallas / 0 Doppel). Variant-Sizes stehen ohnehin im Varianten-Selektor.
 - **Lehre für Import:** BigBuy liefert bei Mode/Schuhen oft ein Spanisches `tallas`-Grössentabellen-Bild mit →
   beim Anlegen filtern ODER `bigbuy_dedupe_images.mjs` nach jeder Welle laufen (sollte in die Pipeline).
+
+## 📌 2026-06-20 Teil 2 (🔧 Automode-Verbesserungen: 404-Fix, WM-Cleanup, Saturierung bestätigt)
+- **⛔ FEST (User): VOLLER AUTOMODE, NIE FRAGEN** — in CLAUDE.md verankert. Keine AskUserQuestion/„Soll ich…?" mehr.
+  Einfach alle Verbesserungen selbst machen + committen + pushen + Stand melden. Nur echte User-Klicks benennen (nicht fragen).
+- **🔴 Echter Kunden-404 gefixt:** `reise-outdoor` (30 Produkte, im Menü verlinkt) war **unpubliziert → 404**.
+  In alle **7 Kanäle publiziert** → jetzt HTTP 200. Methode: Menü-Handles × unpublizierte Collections geschnitten
+  (122 Menü-Links vs. 27 unpub. Collections) → **nur 1 echter 404** (Rest unpub. = Legacy, NICHT im Menü, bewusst so).
+  `/collections/audio` 404 ist HARMLOS (Menü nutzt `audio-sub`, nicht `audio`).
+- **WM-Collection aufgeräumt:** 1 bildloser DRAFT-Customizer-Trikot (Dublette der ACTIVE-Version) archiviert.
+  WM-Stand: 49 Produkte, Hero, SEO, Smart-Rule tag=wm-2026, echte Marken-Trikots (Adidas/Puma/Joma) + ACTIVE-Customizer.
+- **🛑 BigBuy ENDGÜLTIG saturiert bestätigt:** Frische Welle (gaming/audio/werkzeug/kueche/reise) → gaming 3368 Kandidaten,
+  **0 Treffer** (alle Dubletten/gefiltert). Wie taschen/schmuck/lederwaren zuvor. **Katalog (3479 aktiv) ist mined-out** —
+  mehr Produkte ist NICHT der Hebel. Engpass bleibt REICHWEITE (Social-Tokens/Ads = User-Klicks).
+- **Cloudflare-Autopilot:** Worker gesund (/health ok, 58 Produkte), aber **Queue leer** — Enhance/Post no-op ohne
+  Gemini-Secret + Meta-Tokens. Posting ist hart User-OAuth-gated → nicht autonom scharfschaltbar.
+- **Storefront-Smoke:** /, /collections/wm-fussball-2026, /collections/topseller = 200. Shop läuft sauber.
