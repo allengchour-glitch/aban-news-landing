@@ -1,5 +1,14 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT) — Kauf-auf-Rechnung-Block geklärt + Live-Zahlen
+- **🧾 Swissbilling hängt am CembraPay-Händler-Konto:** App ist installiert, aber „Schließe die Einrichtung deines
+  Kontos ab" + „Bitte geben Sie die Händler-ID ein" bleiben, weil **Händler-ID + Passwort erst nach bewilligtem
+  CembraPay-Antrag** (Firma/UID/IBAN, Bonität 1-3 Tage) kommen. **= echter User-Schritt** (Cloud kann den Antrag
+  nicht stellen). Anleitung präzisiert (`KAUF-AUF-RECHNUNG-ANLEITUNG.md` §🔴) + Gehirn-Regel `kauf_auf_rechnung_swissbilling`.
+  Schneller-Alternative falls CembraPay stockt: **Payrexx** (1 Antrag = TWINT+Karten+Rechnung).
+- **📉 Live (Shopify, -14T):** **583 Sessions · 0 Bestellungen.** Traffic da, Conversion-Schicht blockt → bestätigt
+  Kauf-auf-Rechnung/Trust als #1. Sessions rückläufig (war ~1250/30T) → Kampagne/Posting-Reichweite nachziehen.
+
 ## 2026-06-20 (NACHT) — GROSSE RECHERCHE-SESSION (~11 Agenten) + 123 Gehirn-Regeln + Playbooks
 **Vollgas-Recherche (2 Schwärme, ~11 Agenten parallel) → alles ins Gehirn + Doku:**
 - 🎬 Content/TikTok: Hook 1-2s, 2-3s-Cuts (+23% Completion), Montage>Einzelbild, Loop-Engineering, Punch-ins
