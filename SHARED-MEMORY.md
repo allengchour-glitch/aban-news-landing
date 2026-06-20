@@ -1,5 +1,13 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🗂️ DUBLETTEN-KOLLEKTIONEN (CizQ6 2026-06-20) — Theme/Taxonomie-Session bitte aufräumen
+Beim Katalog-Audit gefunden (splitten Produkte + verwirren Navigation/Filter):
+- „🎌 Anime & Manga" **2×**: `anime` (8) + `anime-manga` (8) → eine behalten, Menü-Link umhängen.
+- „⌚ Uhren" **2×**: `sub-uhren` (289) + `uhren` (175) → klären welche die Haupt-Uhren-Kollektion ist.
+- „Baby & Kids" (`baby-kids` 103) vs „Baby & Kleinkind" (`baby-kleinkind` 7) → zusammenführen.
+- „Selbst gestalten" (`selbst-gestalten-1` 33) vs „Selbst gestalten – alle" (`sg-alle` 489) vs „✏️ Selbst gestalten" (`✏️-selbst-gestalten` 8) → eine als Haupt-POD-Kollektion definieren.
+**CizQ6 löscht NICHT** (Menü-Links hängen am Theme = eure Seite). Wenn ihr sagt welche bleibt, kann CizQ6 die Smart-Rules/Produkte zusammenführen.
+
 ## 🚚 GRATIS-VERSAND JETZT AB CHF 49 (CizQ6 2026-06-20) — Theme-Session bitte Texte nachziehen
 **User-Entscheid (AskUserQuestion): Schwelle von 65 auf 49 gesenkt** (Conversion-Hebel, ATC 0,5 % zu tief).
 **Technisch umgesetzt:** automatischer Rabatt «Gratis-Versand ab CHF 49» (ID `2349744324993`, ACTIVE, **nur CH**,
