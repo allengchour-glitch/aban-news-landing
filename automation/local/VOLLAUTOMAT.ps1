@@ -18,6 +18,15 @@ $log = Join-Path $PSScriptRoot "vollautomat.log"
 function Log($m){ $line="[{0}] {1}" -f (Get-Date -Format "yyyy-MM-dd HH:mm:ss"), $m; Write-Host $line; Add-Content $log $line }
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 
+# ===== SINGLE-INSTANCE-SPERRE (FIX 2026-06-20: Runaway-Loop / Aufruftiefe-Ueberlauf) =====
+# Verhindert, dass sich ueberlappende Tasks (z.B. SUPERBOT-Testlauf + geplanter LuxePost/LuxeEng)
+# gleichzeitig denselben Brave + dasselbe vollautomat.log greifen und sich aufschaukeln. Nur EINE
+# VOLLAUTOMAT-Instanz darf laufen; weitere beenden sich sofort sauber (kein Doppellauf, kein Stau).
+$global:LuxeMutex = New-Object System.Threading.Mutex($false, "Global\LuxeVollautomat")
+$gotLock = $false
+try { $gotLock = $global:LuxeMutex.WaitOne(0) } catch { $gotLock = $true }  # AbandonedMutex = frei
+if (-not $gotLock) { Log "Andere VOLLAUTOMAT-Instanz laeuft bereits -> beende (kein Doppellauf)."; return }
+
 # ===== Modus 'update' : LOCK-PROOF Repo-Sync (laeuft allein, kein Posting gleichzeitig -> keine Lock-Konkurrenz) =====
 if ($Mode -eq "update") {
   Log "=== UPDATE: lock-proof Sync auf origin/$branch ==="
@@ -43,12 +52,32 @@ if (-not $open -and (Test-Path $brave)) {
 }
 
 # Node-Runner mit Argumenten + ENV. Best-effort, ein Fehler stoppt den Rest nicht.
-function Node($script, [string[]]$nargs=@(), $env_pairs=@{}){
+# ROBUST (FIX 2026-06-20): Output geht in EINE Temp-Datei und wird EINMAL angehaengt, GEKAPPT auf 200
+# Zeilen -> der frueher genutzte "2>&1 | ForEach-Object { Add-Content }"-Pipe konnte bei viel Node-Output
+# die PowerShell-Aufruftiefe ueberlaufen + das Log mit tausenden Zeilen fluten. Hard-Timeout killt zudem
+# jeden haengenden/loopenden node-Prozess, statt ewig Ressourcen zu fressen.
+function Node($script, [string[]]$nargs=@(), $env_pairs=@{}, [int]$timeoutSec=1200){
   foreach($k in $env_pairs.Keys){ Set-Item -Path "Env:$k" -Value $env_pairs[$k] }
   Log ("RUN {0} {1} {2}" -f $script, ($nargs -join ' '), (($env_pairs.GetEnumerator()|%{$_.Key+'='+$_.Value}) -join ' '))
-  try { & node $script @nargs 2>&1 | ForEach-Object { Add-Content $log $_ } ; Log "OK $script" }
-  catch { Log "FEHLER $script : $_" }
-  foreach($k in $env_pairs.Keys){ Remove-Item -Path "Env:$k" -ErrorAction SilentlyContinue }
+  $tmp = [System.IO.Path]::GetTempPath()
+  $out = Join-Path $tmp ("va-out-" + [System.IO.Path]::GetRandomFileName() + ".txt")
+  $err = Join-Path $tmp ("va-err-" + [System.IO.Path]::GetRandomFileName() + ".txt")
+  try {
+    $p = Start-Process -FilePath "node" -ArgumentList (@($script) + $nargs) -NoNewWindow -PassThru `
+         -RedirectStandardOutput $out -RedirectStandardError $err
+    if (-not $p.WaitForExit($timeoutSec * 1000)) {
+      try { $p.Kill() } catch {}
+      Log "TIMEOUT $script (>${timeoutSec}s) -> Prozess beendet (Schutz vor Endlosschleife)."
+    } else {
+      Log "OK $script (exit $($p.ExitCode))"
+    }
+  } catch { Log "FEHLER $script : $_" }
+  finally {
+    foreach($f in @($out, $err)){
+      if (Test-Path $f) { try { Get-Content $f -TotalCount 200 -EA SilentlyContinue | ForEach-Object { Add-Content $log $_ } } catch {}; Remove-Item $f -EA SilentlyContinue }
+    }
+    foreach($k in $env_pairs.Keys){ Remove-Item -Path "Env:$k" -ErrorAction SilentlyContinue }
+  }
 }
 
 Log "=== VOLLAUTOMAT Modus=$Mode START ==="
@@ -70,9 +99,9 @@ switch ($Mode) {
   "engage" {
     Node "automation/local/tiktok-bot.mjs" @("analyze","--max","80")
     Node "automation/local/tiktok-bot.mjs" @("engage","--cap","12")
-    Node "automation/local/ch-follower-growth.mjs"
-    Node "automation/local/ig-dm-browser.mjs"
-    Node "automation/local/tiktok-dm-browser.mjs"
+    Node "automation/local/ch-follower-growth.mjs" @() @{} 2700   # Follower: langsame Pausen -> mehr Zeit
+    Node "automation/local/ig-dm-browser.mjs"      @() @{} 1800
+    Node "automation/local/tiktok-dm-browser.mjs"  @() @{} 1800
     Node "automation/local/fb-group-post.mjs"
     Node "automation/brain/self_learn.mjs"
   }
@@ -83,3 +112,4 @@ switch ($Mode) {
   default { Log "Unbekannter Modus '$Mode' - nichts getan." }
 }
 Log "=== VOLLAUTOMAT Modus=$Mode FERTIG ==="
+try { if ($gotLock) { $global:LuxeMutex.ReleaseMutex() } } catch {}
