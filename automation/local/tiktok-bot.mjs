@@ -108,6 +108,7 @@ async function doAnalyze() {
   log(`   Report: reports/tiktok-bot-${date}.json + reports/tiktok-stats.csv`);
   // Gehirn anstossen (best effort, no-op-sicher)
   try { execFileSync(process.execPath, [path.join(ROOT, 'automation/brain/brain.mjs')], { stdio: 'ignore' }); log('   Gehirn aktualisiert.'); } catch {}
+  await p.close().catch(() => {});   // Tab schliessen (User: nicht zu viele Tabs)
   return report;
 }
 
@@ -159,6 +160,7 @@ async function doDelete() {
   let n = 0;
   for (const t of targets) { if (await deleteOne(p, t)) n++; await sleep(2500); }
   log(`✅ delete: ${n}/${targets.length} gelöscht. Ledger: reports/tiktok-deleted.txt`);
+  await p.close().catch(() => {});
 }
 
 /* ── ENGAGE: Kommentare auf eigenen Videos beantworten (Spam-Filter, Caps, anti-Block) ── */
@@ -180,6 +182,7 @@ async function doEngage() {
     await p.screenshot({ path: path.join(process.cwd(), 'tiktok-engage-diag.png') }).catch(() => {});
     const d = await p.evaluate(() => ({ url: location.href, title: document.title })).catch(() => ({}));
     log('⚠️ Keine Kommentar-Karten gefunden. DIAG', JSON.stringify(d), '· Screenshot: tiktok-engage-diag.png');
+    await p.close().catch(() => {});
     return;
   }
   let sent = 0;
@@ -208,6 +211,7 @@ async function doEngage() {
     await sleep(8000 + Math.floor(Math.random() * 12000)); // 8–20s Pause (anti-Block)
   }
   log(`✅ engage: ${sent} Antworten. Ledger: reports/tiktok-engaged.txt`);
+  await p.close().catch(() => {});   // Tab schliessen (User: nicht zu viele Tabs)
 }
 
 (async () => {

@@ -119,6 +119,7 @@ switch ($Mode) {
   "weekly" {
     Node "automation/local/ch-unfollow.mjs"
     Node "automation/local/fb-group-join.mjs"
+    & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "cleanup-storage.ps1") 2>&1 | ForEach-Object { Add-Content $log $_ }  # Speicher schlank (User)
   }
   default { Log "Unbekannter Modus '$Mode' - nichts getan." }
 }

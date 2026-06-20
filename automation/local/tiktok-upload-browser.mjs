@@ -147,6 +147,7 @@ function toSilent(file) {
     log('   → EINMAL in Brave (Profil brave-agent) bei tiktok.com mit @luxestyle.ch einloggen, dann postet der Bot wieder vollautomatisch.');
     writeStatus('NOT_LOGGED_IN', 'TikTok-Session in Brave abgelaufen — 1x einloggen noetig', { url: curUrl, file: path.basename(file) });
     await p.screenshot({ path: path.join(ROOT, 'reports', 'tiktok-login-needed.png') }).catch(() => {});
+    await p.close().catch(() => {});
     process.exit(0);
   }
 
@@ -207,5 +208,6 @@ function toSilent(file) {
     writeStatus('POSTED', confirmed ? 'Veroeffentlicht (Bestaetigung geklickt)' : 'Veroeffentlichen geklickt', { file: path.basename(file), caption: caption.split('\n')[0] });
   } else { log('⚠️ Veröffentlichen-Button nicht gefunden — Video ist gesetzt, bitte in der Seite manuell klicken.'); writeStatus('NO_POST_BUTTON', 'Video gesetzt, Veroeffentlichen-Button fehlt', { file: path.basename(file) }); }
   await p.screenshot({ path: path.join(ROOT, 'reports', 'tiktok-upload-result.png') }).catch(() => {});
+  await p.close().catch(() => {});   // Tab schliessen (User: nicht zu viele Tabs offen lassen)
   process.exit(0);
 })();
