@@ -41,8 +41,8 @@ try {
       "image-audit"  { $env:MAX="300"; & node "automation/image-audit.mjs"; Remove-Item Env:MAX -EA SilentlyContinue; git add reports/ 2>$null; git commit -m "auto(image-audit): Gemini-Vision-Report" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "tutti"        { $env:AUTO_PUBLISH="1"; & node "automation/local/tutti-post.mjs"; $env:AUTO_PUBLISH=$null }
       "anibis"       { $env:AUTO_PUBLISH="1"; & node "automation/local/anibis-post.mjs"; $env:AUTO_PUBLISH=$null }
-      "campaign-dry" { & node "automation/local/tiktok-campaign-port.mjs" --dry }
-      "campaign-go"  { $env:AUTO_LAUNCH="1"; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null }
+      "campaign-dry" { & node "automation/local/tiktok-campaign-port.mjs" --dry; git add -f automation/local/campaign-shots/* 2>$null; git commit -m "auto(campaign-dry): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "campaign-go"  { $env:AUTO_LAUNCH="1"; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null; git add -f automation/local/campaign-shots/* 2>$null; git commit -m "auto(campaign-go): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "bigbuy-beauty" { $env:ROOT_NAME="cosmet"; $env:MAX="12"; & node "dropship/bigbuy_import.mjs"; Remove-Item Env:ROOT_NAME,Env:MAX -EA SilentlyContinue }
       "bigbuy-makeup" { $env:ROOT_NAME="perfum"; $env:MAX="12"; & node "dropship/bigbuy_import.mjs"; Remove-Item Env:ROOT_NAME,Env:MAX -EA SilentlyContinue }
       "bigbuy-premium" { & powershell -ExecutionPolicy Bypass -File "automation/local/bigbuy-premium.ps1" }

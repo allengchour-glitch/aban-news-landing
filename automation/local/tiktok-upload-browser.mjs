@@ -146,7 +146,7 @@ function toSilent(file) {
     log('❌ NICHT bei TikTok eingeloggt (Seite: ' + curUrl + ').');
     log('   → EINMAL in Brave (Profil brave-agent) bei tiktok.com mit @luxestyle.ch einloggen, dann postet der Bot wieder vollautomatisch.');
     writeStatus('NOT_LOGGED_IN', 'TikTok-Session in Brave abgelaufen — 1x einloggen noetig', { url: curUrl, file: path.basename(file) });
-    await p.screenshot({ path: path.join(process.cwd(), 'tiktok-login-needed.png') }).catch(() => {});
+    await p.screenshot({ path: path.join(ROOT, 'reports', 'tiktok-login-needed.png') }).catch(() => {});
     process.exit(0);
   }
 
@@ -159,7 +159,7 @@ function toSilent(file) {
     log('⚠️ Kein Datei-Input gefunden — Diagnose:');
     const d = await p.evaluate(() => ({ url: location.href, title: document.title, inputs: document.querySelectorAll('input').length, iframes: document.querySelectorAll('iframe').length, body: (document.body.innerText || '').slice(0, 200).replace(/\s+/g, ' ') })).catch(() => ({}));
     log('DIAG', JSON.stringify(d));
-    await p.screenshot({ path: path.join(process.cwd(), 'tiktok-upload-diag.png') }).catch(() => {});
+    await p.screenshot({ path: path.join(ROOT, 'reports', 'tiktok-upload-diag.png') }).catch(() => {});
     log('Screenshot: tiktok-upload-diag.png — schick mir die DIAG-Zeile, ich passe die Selektoren an.');
     writeStatus('NO_FILE_INPUT', 'Kein Upload-Feld — evtl. ausgeloggt oder TikTok-UI geaendert', { url: d.url || curUrl, file: path.basename(file) });
     process.exit(0);
@@ -206,6 +206,6 @@ function toSilent(file) {
     log(confirmed ? '✅ Veröffentlicht (Bestätigung geklickt). Vermerkt.' : '✅ „Veröffentlichen" geklickt (kein Extra-Dialog). Vermerkt.');
     writeStatus('POSTED', confirmed ? 'Veroeffentlicht (Bestaetigung geklickt)' : 'Veroeffentlichen geklickt', { file: path.basename(file), caption: caption.split('\n')[0] });
   } else { log('⚠️ Veröffentlichen-Button nicht gefunden — Video ist gesetzt, bitte in der Seite manuell klicken.'); writeStatus('NO_POST_BUTTON', 'Video gesetzt, Veroeffentlichen-Button fehlt', { file: path.basename(file) }); }
-  await p.screenshot({ path: path.join(process.cwd(), 'tiktok-upload-result.png') }).catch(() => {});
+  await p.screenshot({ path: path.join(ROOT, 'reports', 'tiktok-upload-result.png') }).catch(() => {});
   process.exit(0);
 })();
