@@ -1,5 +1,18 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT-3) — 🎥 YOUTUBE-RECHERCHE-SCHWARM (5 Agenten) + Code-Verbesserungen
+**5 Recherche-Agenten (deine 2 Videos + 7 Kanäle + breite YouTube-Suche) → Gehirn 133 Regeln:**
+- **Alle Recherchen EINIG (Kern):** Zahlungsmethoden = #1 Hebel. **Kauf auf Rechnung = 26,7% der DE-Zahlungen;
+  ~38,7% Abbrüche durch fehlende Wunsch-Zahlart.** TWINT Express + Shop Pay (1,72× Conversion). → bestätigt unseren Antrag.
+- **⚠️ KORREKTUR: Klarna gibt's NICHT für CH-Händler** → Swissbilling/Powerpay/Riverty (nicht Klarna jagen).
+- **Erste Käufe:** kalte Ads bringen fast nie Sale #1 (= unsere 332 CHF/0). Stattdessen warm/Nischen-Gruppen + bezahltes
+  Micro-Creator-Seeding + Checkout-Abbrecher retargeten. UGC-Framework mit **„Proof"-Beat = unsere fehlenden Reviews.**
+- **KI-Video-Verdikt:** piper+ffmpeg+Luma gratis = Standard behalten. ElevenLabs-Gratis = keine kommerz. Lizenz (nur Hero-Ad).
+  **Blotato/Higgsfield haben MCP** → könnten fragiles Browser/Worker-Posting ersetzen (TODO evaluieren).
+- **Bot-Patterns:** Workflows als Skills versionieren, Orchestrator→Subagenten, error-sink/withRetry/dead-letter, Watchdog.
+**Code-Verbesserungen umgesetzt (gepusht):** (1) KI-Router **HUMANIZE-Preamble** (killt generische Floskeln in allen
+Captions), (2) cmd-poll **stale-lock** + **Task-Zeitlimit** (Bot friert nie wieder ein). **10-Min-Sync-Heartbeat läuft.**
+
 ## 2026-06-20 (SPÄT-2) — 🎯 HARTER FUNNEL-BEFUND (Shopify-Daten selbst gezogen)
 **Bot-Modus-Recherche (kein TikTok-Token in Cloud → Shopify voll durchleuchtet):**
 - **30T: 3028 Sessions** — direct 1851 · **social 1115 (Posten zieht!)** · **search 55 (SEO tot)** · unknown 7.
