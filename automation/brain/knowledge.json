@@ -776,6 +776,26 @@
         "Klare Value-Props + Dringlichkeit + Gratis-Versand-Progressbar"
       ],
       "anwenden": "CizQ6 autonom: Cross-Sell/Bundles anlegen, PDP-Trust-Bloecke, Angebot prominent. User-only: Reviews importieren, Express-Pay aktivieren, Microsoft Clarity einbauen, Free Listings. Prioritaet: erst Buy-Intent-Traffic (Kampagne), dann CRO-Feintuning."
+    },
+    "gewinner_nischen_2026": {
+      "quelle": "Websuche 2026-06-20 (getcarro/autods/dropified) - Gewinner-Nischen 2026",
+      "top": [
+        "Parfum/Duefte (Marge >150% - haben wir D&G/YSL/Kenzo!)",
+        "Fashion-Schmuck (schnellstes Wachstum; Fusskettli/Anklets Trend Gen-Z/Sommer)",
+        "Phone-Accessoires (MagSafe, Powerbanks)",
+        "Fitness-Recovery",
+        "Eco/Nachhaltig, Smart-Home, Haustier, Kueche, Auto"
+      ],
+      "eu": "EU-Lieferanten fuer schnelle Lieferung (BigBuy/CJ-EU) - haben wir. Markt Schmuck EU waechst stark.",
+      "anwenden": "Diese Kategorien beim Import + Content priorisieren. Parfum + Fashion-Schmuck pushen (hohe Marge + Trend). Fusskettli/Anklets-Reels fuer Sommer."
+    },
+    "retention_ugc_2026": {
+      "quelle": "Websuche 2026-06-20 (hustlermarketing/klaviyo/stackinfluence) - Retention/UGC/Seeding",
+      "flows": "Automatische Mail-Flows = 58-65% des E-Mail-Umsatzes. Ziel: Welcome 12-18% Conv, Warenkorb-Recovery 8-12%. Welcome/Abandoned-Cart/Post-Purchase Pflicht.",
+      "ugc": "Review-Request-Mails nach Kauf -> Reviews + UGC = Social Proof fuer kuenftige Kaeufer. UGC ueberall nutzen (PDP/Ads/Mail).",
+      "seeding": "Influencer-Seeding: Kadenz (regelmaessig statt Spikes), einfache Kits zum Filmen, Value-Exchange statt nur Gratisprodukt.",
+      "repeat": "Produkt-Empfehlungs-Mails (nach Kaufhistorie) -> Wiederkauf + AOV.",
+      "anwenden": "Klaviyo-Flows aktiv halten (User). Review-Request nach Kauf. UGC sammeln (CH-Mikro-Creators seeden). CizQ6: Empfehlungs-/Cross-Sell-Logik vorbereiten."
     }
   },
   "decisions": [
