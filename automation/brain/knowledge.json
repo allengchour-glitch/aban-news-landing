@@ -978,6 +978,16 @@
       "reliability": "failures.jsonl + Alert bei jedem Error. Dead-Letter-Queue (3x fail -> reports/dead-letter.json, nie endlos retry). health-check.mjs soll auf rote Items HANDELN, nicht nur melden.",
       "umgesetzt": "HUMANIZE-Preamble in ai_generate.mjs (b-commit). Watchdog-Ansatz bereits via cmd-poll stale-lock + Task-Zeitlimit angefangen. TODO: error-sink.mjs + withRetry-Helper + dead-letter.",
       "stand": "2026-06-20"
+    },
+    "first_sale_playbook_2026": {
+      "quelle": "Recherche TheEcomKing/Jordan Welch/eCom Tom/Learn With Shopify + Shopify/Oberlo/TWINT-Daten (2026-06-20). WebSearch war down -> Primaerquellen.",
+      "kern": "ALLE 3 Recherche-Schwaerme einig: Zahlungsmethoden = der #1 fixbare Grund. 11% brechen ab wegen zu wenig Zahlarten; 47% wegen ueberraschender Kosten; 25% wegen Konto-Zwang.",
+      "ch_payment": "TWINT = NICHT verhandelbar (~5 Mio Nutzer / 8.7 Mio CH). Kauf auf Rechnung = vertrauensentscheidend in DACH (viele zahlen unbekanntem Shop nicht vor). Shop Pay konvertiert 1.72x -> Express-Checkout an. Status LuxeStyle: TWINT ok (user-getestet), Express/Shop Pay aktiv, Rechnung in Arbeit (CembraPay-Antrag).",
+      "erste_kaeufe": "Kalte Ads bringen fast nie Sale #1 (bestaetigt: 330 CHF/0 Kaeufe). Was zieht: (1) warmes Netzwerk + CH-Nischen-/Buy&Sell-Gruppen GRATIS, (2) Micro-Influencer BEZAHLT seeden (1x 35-Dollar-Shoutout = Dutzende Sales), (3) winziges Test-Budget 5-10/Tag auf EINEM Kanal, retarget Checkout-Abbrecher statt breit.",
+      "tiktok_organisch": "Hook in 6 Sek (90% Ad-Recall). 3 Hook-Typen: Frage / visueller Payoff zuerst / Pattern-Break. Struktur Hook->Demo/Transformation->1 Benefit->soft CTA, nativ nicht werblich. 2-5x/Woche = +17% Views/Post, >5 diminishing. UGC + Mundart = Trust, Gewinner mit Spark Ads verstaerken.",
+      "trust": "Trusted-Shops-Siegel + vollstaendiges Impressum + CHF mit MwSt/Versand-Klarheit = DACH-Basis. Kosten VOR letztem Schritt zeigen, Gastkauf, Felder kuerzen (kein Tel/Geburtstag), Rueckgabe+Sicherheit im Checkout.",
+      "top3": "(1) TWINT+Rechnung+Shop Pay sicherstellen, (2) Trusted-Shops-Siegel + alle Kosten vor Bezahlung, (3) breite TikTok-Ads stoppen -> Checkout-Abbrecher retargeten + 2-3 CH-Micro-Creators bezahlt mit Mundart-Hook seeden.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [
