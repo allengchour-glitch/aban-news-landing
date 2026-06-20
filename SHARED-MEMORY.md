@@ -1068,3 +1068,12 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 > **Jede Welle voll verarbeitet:** Retitle (echte Marken) → QA (Fehltreffer + Disney/Lizenz/Kinder-Sweep) → Marke/GTIN/Google-Feed/**Spec-Beschreibung**/GMC-Attribute → Commit.
 > **⚠️ SÄTTIGUNGSGRENZE erreicht:** Ab L7/L8 dauern Wellen ~40 Min für nur ~25–44 Treffer (Kategorien ausgedünnt) + mehr Lizenz-/Kinder-Fehltreffer. **Lehre: BigBuy in den ergiebigen Marken-Kategorien ~abgeschöpft.** Weiteres Loopen = stark abnehmender Nutzen. **Echter Hebel ab hier = REICHWEITE** (Cloudflare-Autopilot mit gültigem CF-Token + User-Marketing-Klicks §10), NICHT mehr Katalog.
 > **Wiederkehrende QA-Falle:** BigBuy-Markenkatalog enthält viel **lizenzierte Kinder-Ware** (Disney/Minnie/Mickey, Marvel/Avengers, Paw Patrol, Looney Tunes, Snoopy, Naruto, Playmobil, Martinelia, BlackFit8, El Niño/El Hormiguero) + Auto-Teile (Radkappen) + Hygiene (Bademütze) → in Mode/Schuhe/Reise/Caps-Kategorien als Fehltreffer. Bans laufend ergänzt; periodischer Lizenz-Sweep nötig.
+
+> **🛒 KOMPLETT VERKAUFSBEREIT — GOOGLE + MICROSOFT (2026-06-18, User „seo komplett / fix alles / verkaufsbereit google merchant und microsoft"):**
+> Alle ~1987 BigBuy-Produkte vollständig gemacht:
+> - **SEO:** `bigbuy_seo_fix.mjs` → markenbasierter SEO-Titel + Beschreibung für ALLE (vorher 796 ohne Beschreibung). Zwei-Phasen (IDs sammeln→schreiben) + Stall-Guard.
+> - **Beschreibungen:** echte BigBuy-Spec-Listen (`bigbuy_desc_fix.mjs`).
+> - **Medien:** `bigbuy_image_fix.mjs` (Medien-Komplett-Pass) → **5500 Bild-Alt-Texte** gesetzt + **5 bildlose Produkte** mit frischem BigBuy-Cover repariert (0 ohne Bild, 0 FAILED).
+> - **Merchant/GMC:** Marke(vendor)+GTIN/Barcode, google_product_category, condition=new, age_group, gender — komplett.
+> **⚠️ Such-Index-Falle (WICHTIG):** Massen-Writes (z. B. 1987 productUpdates) bringen den Shopify-Such-Index („tag:bigbuy"-Pagination) kurz zum Stocken → nächster Bulk-READ liefert dieselbe Seite/loopt. Lösung: **Zwei-Phasen** (erst alle IDs sammeln, dann schreiben) + **Stall-Guard** + ~10 Min warten zwischen Bulk-Ops. Einzelabfragen (first:N ohne Cursor) funktionieren immer.
+> **MICROSOFT = gleiche Feed-Spec wie Google** → datenseitig fertig. Offen (nur User): Microsoft Merchant Center via „Import from Google Merchant Center" (ads.microsoft.com) ODER Shopify-App „Microsoft Channel". **BigBuy liefert KEINE Videos** (video-Feld leer im 313k-Katalog).
