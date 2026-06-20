@@ -22,18 +22,21 @@ function Ensure-Brave {
 
 git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
 $done = $false
+# Vor App-Audit liefert die Sandbox-API NICHT ans Live-Konto -> Browser ist der einzige Live-Weg.
+# Nach Audit: in luxe-secrets.ps1  $env:TT_API_LIVE = "1"  setzen -> dann API zuerst (zuverlaessigster Live-Weg).
+$apiLive = ($env:TT_API_LIVE -eq "1")
 
-# --- Weg 1: offizielle API ---
-if (-not $done -and $env:TT_ACCESS_TOKEN) {
-  Write-Host "[Giga] Weg 1: API..."
-  if (-not $env:TT_PRIVACY_LEVEL) { $env:TT_PRIVACY_LEVEL = "DRAFT" }
+# --- Weg 1 (nur NACH Audit zuerst): offizielle API ---
+if (-not $done -and $apiLive -and $env:TT_ACCESS_TOKEN) {
+  Write-Host "[Giga] Weg 1: API (Live)..."
+  if (-not $env:TT_PRIVACY_LEVEL) { $env:TT_PRIVACY_LEVEL = "PUBLIC_TO_EVERYONE" }
   $env:MAX_PER_RUN = "1"
   $o = (& node "automation/tiktok-autopost.mjs" 2>&1 | Out-String); Write-Host $o
   if ($o -match "publish_id" -or $o -match "1 TikTok-Post") { $done = $true; Write-Host "[Giga] OK via API" }
   elseif ($o -match "status=ready|No-op|kein") { $done = $true; Write-Host "[Giga] API: nichts faelliges -> fertig" }
 }
 
-# --- Weg 2: Browser (Brave CDP) ---
+# --- Weg 2: Browser (Brave CDP) = Live-Weg vor Audit ---
 if (-not $done) {
   Write-Host "[Giga] Weg 2: Browser (Brave 9222)..."
   Ensure-Brave
@@ -46,6 +49,14 @@ if (-not $done -and $env:BROWSERBASE_CONTEXT_ID) {
   Write-Host "[Giga] Weg 3: Browserbase..."
   $o = (& node "automation/tiktok-cloud-autopost.mjs" 2>&1 | Out-String); Write-Host $o
   if ($o -notmatch "No-op|Fehler|FAIL") { $done = $true; Write-Host "[Giga] OK via Browserbase" }
+}
+
+# --- Weg 4 (Notnagel vor Audit): API in den Entwurf-Inbox (du tippst in der App "Posten") ---
+if (-not $done -and -not $apiLive -and $env:TT_ACCESS_TOKEN) {
+  Write-Host "[Giga] Weg 4: API-Entwurf (Inbox)..."
+  $env:TT_PRIVACY_LEVEL = "DRAFT"; $env:MAX_PER_RUN = "1"
+  $o = (& node "automation/tiktok-autopost.mjs" 2>&1 | Out-String); Write-Host $o
+  if ($o -match "publish_id") { $done = $true; Write-Host "[Giga] OK via API-Entwurf (in der App veroeffentlichen)" }
 }
 
 if (-not $done) { Write-Host "[Giga] Kein Weg verfuegbar: Token (luxe-secrets.ps1) ODER Brave-Login ODER Browserbase noetig." }
