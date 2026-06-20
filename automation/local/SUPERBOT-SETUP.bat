@@ -56,6 +56,14 @@ for %%T in (LuxeUpdate LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 
   powershell -NoProfile -Command "$t=Get-ScheduledTask -TaskName '%%T' -ErrorAction SilentlyContinue; if($t){$s=$t.Settings;$s.WakeToRun=$true;$s.StartWhenAvailable=$true;$s.DisallowStartIfOnBatteries=$false;Set-ScheduledTask -TaskName '%%T' -Settings $s|Out-Null}" >nul 2>&1
 )
 
+echo [4b/6] Zeitlimit setzen (haengt ein Task, killt Windows ihn -> Brave+Locks frei, Bot friert nie ein)...
+for %%T in (LuxeCmd) do (
+  powershell -NoProfile -Command "$t=Get-ScheduledTask -TaskName '%%T' -ErrorAction SilentlyContinue; if($t){$s=$t.Settings;$s.ExecutionTimeLimit='PT20M';Set-ScheduledTask -TaskName '%%T' -Settings $s|Out-Null}" >nul 2>&1
+)
+for %%T in (LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 LuxeAutobot-11 LuxeAutobot-18) do (
+  powershell -NoProfile -Command "$t=Get-ScheduledTask -TaskName '%%T' -ErrorAction SilentlyContinue; if($t){$s=$t.Settings;$s.ExecutionTimeLimit='PT45M';Set-ScheduledTask -TaskName '%%T' -Settings $s|Out-Null}" >nul 2>&1
+)
+
 echo [5/6] Brave-Port sicherstellen + JETZT 1x posten (Test)...
 %PSF% "%VA%" -Mode post
 
