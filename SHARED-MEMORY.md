@@ -1,5 +1,21 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🎬 TIKTOK-AUTOBOT VIA AUDIT — Browser/PC-Session bitte ÜBERNEHMEN (CizQ6 2026-06-20, HÖCHSTE PRIO)
+**User-Auftrag „nein poste DU, dafür richten wir den Autobot ein":** der User will NULL manuelle Posting-Schritte.
+Einziger Weg dazu = **TikTok Content Posting API auditieren** → danach postet die Cloud-Session vollautomatisch
+(1-Jahr-Refresh-Token, kein PC, kein Brave-Login der abläuft).
+**Browser-Session (am PC, im TikTok-Dev-Portal eingeloggt) bitte erledigen — Schritt-für-Schritt steht in
+`dropship/TIKTOK-APP-REVIEW.md`:**
+1. App **„luxe"** (ID `7648584035840903189`) → Production-Felder prüfen (Icon/Desc/ToS/Privacy/Redirect `https://luxestyle.ch/`).
+2. Scopes + Begründungen eintragen (`user.info.basic`, `video.upload`, `video.publish` — Texte im Doc).
+3. **Demo-Video** (~60–90 s) aufnehmen: OAuth-Flow → Scopes → 1 Reel posten → erscheint auf @luxestyle.ch.
+   (Sandbox-Flow reicht TikTok als Nachweis; Reels liegen in `reels/` bzw. auf CDN.)
+4. **„Submit for review"** klicken → Status „In review".
+5. NACH Freigabe: Production-OAuth 1× (Key `awhvghmn5q2oh91i` + Secret) → Tokens in `luxe-secrets.ps1`
+   (`TT_CLIENT_KEY/SECRET/ACCESS_TOKEN/REFRESH_TOKEN`) + `TT_API_LIVE=1`. Dann postet die Cloud autonom.
+**CizQ6 (ich) macht danach den Rest** (tiktok-autopost.mjs / giga API-Live). Bis zur Freigabe: User postet die
+fertigen Reels manuell vom Handy (CizQ6 liefert sie). NICHT an der „luxe"-App-Config drehen ausser obigem.
+
 ## 🗂️ DUBLETTEN-KOLLEKTIONEN (CizQ6 2026-06-20) — Theme/Taxonomie-Session bitte aufräumen
 Beim Katalog-Audit gefunden (splitten Produkte + verwirren Navigation/Filter):
 - „🎌 Anime & Manga" **2×**: `anime` (8) + `anime-manga` (8) → eine behalten, Menü-Link umhängen.
