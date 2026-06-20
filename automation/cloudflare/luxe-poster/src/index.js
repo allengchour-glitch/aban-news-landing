@@ -319,6 +319,14 @@ async function run(env, doPost = true) {
     const q = await loadQueue(env);
     let cursor = parseInt((await env.LUXE_KV.get("cursor")) || "0", 10);
     if (cursor >= q.length) cursor = cursor % q.length;   // Queue ENDLOS loopen
+    // 🛡️ REPOST-SCHUTZ (User 2026-06-20 „3x dasselbe gepostet"): ueberspringe Eintraege, deren
+    // Bild/Video in den letzten 15 Posts schon kam — auch nach Cursor-Reset kein Doppel-Post.
+    const mediaOf = (it) => (it && (it.video || it.image || it.img || it.media || "")) || "";
+    let recent = [];
+    try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, 15).map((p) => p.u).filter(Boolean); } catch {}
+    for (let hop = 0; hop < q.length && mediaOf(q[cursor]) && recent.includes(mediaOf(q[cursor])); hop++) {
+      cursor = (cursor + 1) % q.length;
+    }
     const item = q[cursor];
     const ig = await postInstagram(ids, item).catch((e) => ({ error: String(e) }));
     const fb = await postFacebook(ids, item).catch((e) => ({ error: String(e) }));
@@ -328,7 +336,7 @@ async function run(env, doPost = true) {
     // Post-Log (Observability): letzte 40 Posts mit Erfolg pro Kanal -> abrufbar via ?health=1
     try {
       const pl = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]");
-      pl.unshift({ t: new Date().toISOString(), i: cursor, type: item.type || "image",
+      pl.unshift({ t: new Date().toISOString(), i: cursor, type: item.type || "image", u: mediaOf(item),
         cap: (item.caption || "").split("\n")[0].slice(0, 70), ig: ig.ok ? 1 : 0, fb: fb.ok ? 1 : 0, tt: tt.ok ? 1 : 0 });
       await env.LUXE_KV.put("post_log", JSON.stringify(pl.slice(0, 40)));
     } catch (e) { /* best-effort */ }
