@@ -54,9 +54,10 @@ function pickReel() {
   const lmw  = all.filter(f => /^luxe-meisterwerk-.*\.mp4$/.test(f)).sort();   // aeltere Meisterwerke
   const luxe = all.filter(f => /^luxe-.*-9x16\.mp4$/.test(f)).sort();
   const meta = all.filter(f => /-9x16-meta\.mp4$/.test(f)).sort();
-  // Meisterwerke zuerst -> komplette, polierte Videos. Dedupe + nur Dateien > 250 KB (keine kaputten/leeren).
+  const mont = all.filter(f => /^luxe-montage-.*\.mp4$/.test(f)).sort();         // Montagen (mehrere Produkte, dynamisch)
+  // Meisterwerke + Montagen zuerst -> komplette, polierte Videos. Dedupe + nur Dateien > 250 KB.
   const seen = new Set();
-  const cand = [...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe, ...meta]
+  const cand = [...mont, ...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe, ...meta]
     .filter(f => big(f) && !seen.has(f) && (seen.add(f), true));
   for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
   // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu
