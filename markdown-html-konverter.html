@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown → HTML Konverter — mit Live-Vorschau · aban news</title>
+<meta name="description" content="Kostenloser Markdown-zu-HTML-Konverter: Markdown einfügen → sauberes HTML und Live-Vorschau. Überschriften, Listen, Links, Bilder, Code, Zitate. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/markdown-html-konverter.html">
+<meta property="og:title" content="Markdown → HTML Konverter — mit Live-Vorschau">
+<meta property="og:description" content="Markdown → sauberes HTML mit Live-Vorschau: Überschriften, Listen, Links, Code, Zitate. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/markdown-html-konverter.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Markdown → HTML Konverter",
+"url":"https://abannews.com/markdown-html-konverter.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Wandelt Markdown in sauberes HTML um und zeigt eine Live-Vorschau: Überschriften, Listen, Links, Bilder, Code und Zitate. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Welche Markdown-Syntax wird unterstützt?","acceptedAnswer":{"@type":"Answer","text":"Überschriften (# bis ######), fett und kursiv, Listen (geordnet und ungeordnet), Links und Bilder, Inline-Code und Code-Blöcke, Zitate (>), Trennlinien (---) und Absätze. Das deckt die gängige Markdown-Schreibweise ab."}},
+{"@type":"Question","name":"Ist das HTML sicher?","acceptedAnswer":{"@type":"Answer","text":"Der Konverter maskiert HTML-Sonderzeichen aus deinem Text, bevor er Markdown in Tags umwandelt. So entsteht sauberes, vorhersehbares HTML ohne ungewolltes Einschleusen von Code aus dem Eingabetext."}},
+{"@type":"Question","name":"Wird mein Text gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Umwandlung läuft komplett in deinem Browser. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+textarea{font:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;min-height:300px;resize:vertical;line-height:1.5}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:10px}
+.seg button{font:inherit;font-size:.85rem;font-weight:700;padding:7px 14px;border:0;background:transparent;color:var(--amber-dk);cursor:pointer}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.view{border:1px solid var(--line);border-radius:9px;background:var(--field);padding:14px;min-height:300px;overflow:auto}
+.view h1,.view h2,.view h3{line-height:1.25;margin:.6em 0 .3em}
+.view h1{font-size:1.5rem}.view h2{font-size:1.25rem}.view h3{font-size:1.1rem}
+.view p{margin:.5em 0}.view ul,.view ol{margin:.5em 0 .5em 1.4em}.view li{margin:.2em 0}
+.view blockquote{margin:.6em 0;padding:.2em .9em;border-left:3px solid var(--amber-lt);color:var(--ink2)}
+.view pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;overflow:auto;font-size:.85rem}
+.view code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88em;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:.05em .35em}
+.view pre code{border:0;padding:0;background:none}
+.view img{max-width:100%;height:auto;border-radius:8px}
+.view hr{border:0;border-top:1px solid var(--line);margin:1em 0}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;white-space:pre-wrap;word-break:break-word}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Markdown</span> → HTML</h1>
+    <p>Markdown einfügen → sauberes HTML und Live-Vorschau. Überschriften, Listen, Links, Bilder, Code und Zitate. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Wandelt deine Markdown-Notizen in fertiges HTML — zum Einfügen in Blog, CMS oder Newsletter, mit sofortiger Vorschau.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div>
+        <label for="md">Markdown</label>
+        <textarea id="md"># Überschrift
+
+Ein **fetter** und *kursiver* Absatz mit [Link](https://abannews.com).
+
+- Punkt eins
+- Punkt zwei
+
+> Ein Zitat.
+
+`Inline-Code` und:
+
+```
+Code-Block
+```
+</textarea>
+      </div>
+      <div>
+        <div style="text-align:center"><div class="seg" id="view">
+          <button data-v="preview" class="on">Vorschau</button>
+          <button data-v="html">HTML-Code</button>
+        </div></div>
+        <div class="view" id="preview"></div>
+        <div class="view code" id="html" style="display:none"></div>
+      </div>
+    </div>
+    <div class="row"><button type="button" class="btn" id="copy">📋 HTML kopieren</button></div>
+    <p class="note">Unterstützt: Überschriften, fett/kursiv, Listen, Links, Bilder, Code, Zitate, Trennlinien. HTML-Sonderzeichen werden maskiert. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Inhalt &amp; Web.</p>
+    <p><a class="btn" href="/markdown-tabelle.html">Markdown-Tabelle ↔ CSV</a>
+      <a class="btn ghost" href="/blindtext-generator.html">Blindtext-Generator</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/markdown-tabelle.html">Markdown ↔ CSV</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var md=document.getElementById("md"), prev=document.getElementById("preview"), htmlBox=document.getElementById("html");
+  var lastHTML="";
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function inline(s){
+    // Code zuerst schützen
+    var codes=[]; s=s.replace(/`([^`]+)`/g,function(m,c){codes.push("<code>"+c+"</code>");return ""+(codes.length-1)+"";});
+    s=s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g,'<img src="$2" alt="$1">');
+    s=s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" rel="noopener">$1</a>');
+    s=s.replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/__([^_]+)__/g,"<strong>$1</strong>");
+    s=s.replace(/(^|[^*])\*([^*]+)\*/g,"$1<em>$2</em>").replace(/(^|[^_])_([^_]+)_/g,"$1<em>$2</em>");
+    s=s.replace(/(\d+)/g,function(m,i){return codes[+i];});
+    return s;
+  }
+  function toHTML(src){
+    var lines=esc(src).replace(/\r/g,"").split("\n");
+    var out=[],i=0;
+    function closeList(stack){ while(stack.length){ out.push("</"+stack.pop()+">"); } }
+    var listStack=[];
+    while(i<lines.length){
+      var ln=lines[i];
+      // Code-Block
+      if(/^```/.test(ln)){ closeList(listStack); var buf=[]; i++;
+        while(i<lines.length && !/^```/.test(lines[i])){ buf.push(lines[i]); i++; }
+        i++; out.push("<pre><code>"+buf.join("\n")+"</code></pre>"); continue; }
+      // Überschrift
+      var h=ln.match(/^(#{1,6})\s+(.*)$/);
+      if(h){ closeList(listStack); var lvl=h[1].length; out.push("<h"+lvl+">"+inline(h[2])+"</h"+lvl+">"); i++; continue; }
+      // Trennlinie
+      if(/^(\s*[-*_]){3,}\s*$/.test(ln) && ln.trim().length>=3){ closeList(listStack); out.push("<hr>"); i++; continue; }
+      // Zitat
+      if(/^>\s?/.test(ln)){ closeList(listStack); var q=[];
+        while(i<lines.length && /^>\s?/.test(lines[i])){ q.push(inline(lines[i].replace(/^>\s?/,""))); i++; }
+        out.push("<blockquote>"+q.join("<br>")+"</blockquote>"); continue; }
+      // Listen
+      var ul=ln.match(/^\s*[-*+]\s+(.*)$/), ol=ln.match(/^\s*\d+[.)]\s+(.*)$/);
+      if(ul||ol){ var want=ul?"ul":"ol";
+        if(listStack[listStack.length-1]!==want){ closeList(listStack); out.push("<"+want+">"); listStack.push(want); }
+        out.push("<li>"+inline((ul?ul[1]:ol[1]))+"</li>"); i++; continue; }
+      // Leerzeile
+      if(/^\s*$/.test(ln)){ closeList(listStack); i++; continue; }
+      // Absatz (zusammenhängende Zeilen)
+      closeList(listStack); var p=[inline(ln)]; i++;
+      while(i<lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,6})\s|^```|^>\s?|^\s*[-*+]\s|^\s*\d+[.)]\s/.test(lines[i])){ p.push(inline(lines[i])); i++; }
+      out.push("<p>"+p.join("<br>")+"</p>");
+    }
+    closeList(listStack);
+    return out.join("\n");
+  }
+  function render(){ lastHTML=toHTML(md.value); prev.innerHTML=lastHTML; htmlBox.textContent=lastHTML; }
+  document.querySelectorAll("#view button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#view button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");
+    var v=b.getAttribute("data-v");
+    prev.style.display=v==="preview"?"":"none"; htmlBox.style.display=v==="html"?"":"none";
+  });});
+  md.addEventListener("input",render);
+  document.getElementById("copy").addEventListener("click",function(){var b=this;if(lastHTML&&navigator.clipboard)navigator.clipboard.writeText(lastHTML).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1500);});});
+  render();
+})();
+</script>
+</body>
+</html>
