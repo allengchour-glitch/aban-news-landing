@@ -1,5 +1,17 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT-2) — 🎯 HARTER FUNNEL-BEFUND (Shopify-Daten selbst gezogen)
+**Bot-Modus-Recherche (kein TikTok-Token in Cloud → Shopify voll durchleuchtet):**
+- **30T: 3028 Sessions** — direct 1851 · **social 1115 (Posten zieht!)** · **search 55 (SEO tot)** · unknown 7.
+- **5 abgebrochene Checkouts mit ECHTEN CHF-Werten** (69 · 69 · 43 · 71.90 · 24.90), **0 abgeschlossen.**
+  → **Käufer erreichen den Checkout und brechen am BEZAHL-Schritt ab.** Das ist KEIN Reichweiten-, KEIN Katalog-Problem,
+  sondern die **Bezahl-/Vertrauens-Schicht ganz am Schluss.** Bestätigt Kauf-auf-Rechnung als #1-Hebel mit Daten.
+- **Kampagne ~332 CHF ausgegeben** (von 350-Cap, User-Meldung) → Traffic geliefert, **0 Käufe** → **KEIN weiteres Budget**,
+  bis Conversion gefixt (sonst verbrannt). Budget NIE eigenmächtig erhöhen.
+- **Bot läuft:** Posting-Queue 46 Einträge frisch. Gehirn-Regel `funnel_befund_2026_06_20` (125 Regeln).
+- **Handlung:** (1) Kampagne nicht verlängern. (2) Kauf-auf-Rechnung live (CembraPay-Antrag gesendet). (3) Pixel auf
+  „Add to Cart" optimieren bis Events. (4) Google Free Listings gegen search=55. Erst dann wieder Budget.
+
 ## 2026-06-20 (SPÄT) — Kauf-auf-Rechnung-Block geklärt + Live-Zahlen
 - **🧾 ✅ ANTRAG GESENDET:** User hat über die swissbilling-App die **Kontaktanfrage an CembraPay AG** abgeschickt
   (Händler-Konto für Rechnung). Antwort an allengchour@gmail.com, 1-3 Tage. Danach Händler-ID+Passwort → App → aktivieren.

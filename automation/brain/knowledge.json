@@ -929,6 +929,15 @@
       "alternativen": "Payrexx (ein Antrag = TWINT+Karten+Rechnung) oder pend.ch/Ideal Payment.",
       "doku": "dropship/KAUF-AUF-RECHNUNG-ANLEITUNG.md",
       "stand": "2026-06-20"
+    },
+    "funnel_befund_2026_06_20": {
+      "daten": "30T: 3028 Sessions (direct 1851, social 1115, search 55, unknown 7). 14T: 583 Sess / 0 Orders.",
+      "checkout_leck": "5 abgebrochene Checkouts mit ECHTEN CHF-Werten (69, 69, 43, 71.90, 24.90) in 30T, 0 abgeschlossen. = Kaeufer erreichen Checkout, brechen am BEZAHL-Schritt ab.",
+      "diagnose": "NICHT Reichweite (social 1115 zieht). NICHT Katalog. Der Leak ist die Bezahl-/Vertrauens-Schicht ganz am Schluss. Bestaetigt Kauf-auf-Rechnung als #1.",
+      "kampagne": "User meldet ~332 CHF Ausgabe (von 350 Cap) -> Kampagne lieferte Traffic, 0 Kaeufe -> KEIN weiteres Budget bis Conversion gefixt (sonst verbrannt). Budget NIE eigenmaechtig erhoehen.",
+      "search_tot": "search nur 55/30T = SEO praktisch tot -> Google Free Listings + Meta-Beschreibungen = Upside.",
+      "handlung": "1) Kampagne nicht verlaengern. 2) Kauf-auf-Rechnung live (CembraPay-Antrag laeuft). 3) Pixel auf AddToCart optimieren bis Events. 4) erst dann wieder Budget.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [
