@@ -921,6 +921,14 @@
       ],
       "warnung": "Dropship: NICHT 'handgemacht/fair' behaupten ohne Beleg (CH-Transparenz-Erwartung hoch). Glaubwuerdig: CH/lokale-Lieferung, 'handverlesen fuer die Schweiz', echte CH-UGC, TWINT/Rechnung. UNIT ECONOMICS > Reichweite (Paul Valentine 640k Follower -> Insolvenz).",
       "anwenden": "Claim in Captions/Heros. Swissness-Trust in Content. Kauf-auf-Rechnung = #1 User-Aktion. Einstiegsprodukt-Funnel (Anklet/Armband guenstig -> Upsell)."
+    },
+    "kauf_auf_rechnung_swissbilling": {
+      "lehre": "Kauf auf Rechnung (CH #1 Conversion-Hebel) laeuft ueber swissbilling-App (CembraPay). App installiert reicht NICHT.",
+      "blocker": "App-Konfig verlangt Haendler-ID + Passwort - die gibt es NUR nach bewilligtem CembraPay-Haendler-Konto (Antrag mit Firma/UID/IBAN, Bonitaetspruefung 1-3 Tage). Warnung \"Schliesse die Einrichtung deines Kontos ab\" bleibt bis Felder gefuellt.",
+      "user_schritt": "Antrag via \"Payment Provider\"/\"Konto verwalten\" - Cloud kann das NICHT (braucht Firmen-/Bankdaten). Danach: B2B-Modus AUS, Testmodus AN, Shop-Ref luxestyle, speichern, in Shopify aktivieren.",
+      "alternativen": "Payrexx (ein Antrag = TWINT+Karten+Rechnung) oder pend.ch/Ideal Payment.",
+      "doku": "dropship/KAUF-AUF-RECHNUNG-ANLEITUNG.md",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [

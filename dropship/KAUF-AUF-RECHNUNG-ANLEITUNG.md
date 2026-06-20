@@ -9,12 +9,27 @@ POWERPAY/CembraPay ist der Rechnungs-Anbieter im Hintergrund — installierbar i
 
 ## ⭐ Weg A — Swissbilling (CembraPay) — direkt im App-Store, empfohlen
 1. **Shopify-Admin → Apps → „Swissbilling" suchen** (Anbieter: Swissbilling c/o CembraPay AG) → **Installieren**.
-   (Direkt: apps.shopify.com/swissbilling)
+   (Direkt: apps.shopify.com/swissbilling) ✅ User hat installiert.
 2. **Händler-Konto bei CembraPay/Swissbilling** anlegen (Firma/UID/IBAN/Kontakt) → Freigabe abwarten.
 3. App schaltet „Kauf auf Rechnung" als Zahlart frei (Kunde sieht/prüft Ware, zahlt danach — oder in bis zu 3 Raten/90 Tage).
 4. **Admin → Einstellungen → Zahlungen** → „Rechnung/Swissbilling" aktiv? → **Testbestellung** am Handy.
 
 **Du trägst kein Ausfallrisiko** (CembraPay übernimmt Bonität + Mahnwesen). **Kosten:** % pro Rechnungs-Verkauf (nur wenn du verkaufst).
+
+### 🔴 WO ES HÄNGT (verifiziert 2026-06-20) — „Schließe die Einrichtung deines Kontos ab"
+Die App-Konfig (swissbilling.apps.aico.swiss/dashboard) verlangt **Händler-ID\*** + **Passwort\*** + Shop-Referenz.
+Diese Warnung in Shopify (+ „Bitte geben Sie die Händler-ID ein") kommt **immer wieder**, solange die zwei Felder leer
+sind. **Grund:** Händler-ID + Passwort gibt es NUR nach einem **bewilligten CembraPay-Händler-Konto** — die App allein
+schaltet nichts frei. Reihenfolge:
+1. In der App-Konfig **„Payment Provider"** ODER in Shopify **„Konto verwalten"** klicken → **CembraPay-Antrag**.
+2. Antrag: **Firmenname, UID (CHE-…), IBAN, Kontakt, Shop-URL luxestyle.ch** → absenden.
+3. **Bonitätsprüfung 1–3 Werktage** → Händler-ID + Passwort kommen **per Mail**.
+4. Beides in die App eintragen, **Shop-Referenz `luxestyle`**, **B2B-Modus AUS** (B2C-Shop), **Testmodus AN** → Speichern.
+5. Shopify → **„Aktivieren"** wird klickbar → 1 Handy-Testkauf → dann **Testmodus AUS**.
+
+⚠️ **Cloud-Claude kann diesen Antrag NICHT machen** (braucht Firmen-/Bankdaten des Users) = einer der wenigen echten
+User-Schritte. Alternativ schneller, falls CembraPay-Antrag stockt: **Weg B Payrexx** (ein Antrag, dann TWINT+Karten+Rechnung
+über ein Dashboard) oder **Weg C** pend.ch / Ideal Payment.
 
 ## ⭐ Weg B — Payrexx (ein Dashboard für ALLES: TWINT + Karten + Rechnung)
 1. **App-Store → „Payrexx" suchen** → installieren, Payrexx-Konto anlegen.
