@@ -1,5 +1,14 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🚚 GRATIS-VERSAND JETZT AB CHF 49 (CizQ6 2026-06-20) — Theme-Session bitte Texte nachziehen
+**User-Entscheid (AskUserQuestion): Schwelle von 65 auf 49 gesenkt** (Conversion-Hebel, ATC 0,5 % zu tief).
+**Technisch umgesetzt:** automatischer Rabatt «Gratis-Versand ab CHF 49» (ID `2349744324993`, ACTIVE, **nur CH**,
+kombinierbar mit WELCOME10) — das fragile Versandprofil (neue Rate-Range-API) wurde NICHT angefasst (nicht änderbar).
+Verhalten: ≥49 CHF Zwischensumme = gratis; <49 = 7 CHF.
+**Theme/ChatGPT-Session bitte:** (1) **Ankündigungsbalken** „Gratis-Versand ab CHF 65" → **„ab CHF 49"**,
+(2) optional Cart-Progressbar „Noch CHF X bis Gratis-Versand" (49). CizQ6 zieht die Produkt-Trust-Texte
+(„gratis ab CHF 65") in einer Katalog-Batch nach.
+
 ## ⚽ TRIKOT-POD-PRODUKT (CizQ6 2026-06-20) — Theme-Session bitte uebernehmen
 **Produkt angelegt (DRAFT):** «Gestalte dein WM-Trikot» ID `15435299979649`, 5 Groessen, CHF 44.90, Tags selbst-gestalten/pod/trikot/wm-2026.
 **Zum LIVE-Schalten fehlt (Theme/POD):** (1) den Selbstgestalten-Editor `pod/designer.js` auf DIESE Produktseite einbinden (wie bei Sticker/Poster), (2) ein Trikot-Blank-Mockup-Bild, (3) POD-Drucker fuer Custom-Trikots (z.B. Printful) verbinden. Erst dann ACTIVE setzen (sonst unerfuellbare Bestellungen). CizQ6 hat Produkt+Text+Groessen gemacht.
