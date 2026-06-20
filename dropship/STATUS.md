@@ -1,5 +1,19 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (ABEND) — ✅ TIKTOK POSTET WIEDER + Autobot vollautonom gehärtet
+**Durchbruch:** PC-Sync gefixt → **TikTok postet wieder** (giga `d7ee5aa5` 20:48 + TIKTOK-JETZT: stiletto/crossbody/lino gepostet). Ursache der „1 Woche nichts": brave-agent-Profil war nicht bei TikTok eingeloggt + PC-Git diverged/locked. Beides gelöst (User-Login + Sync-Fix).
+**Heute autonom gehärtet (alles gepusht, PC zieht's automatisch):**
+1. `feat(selbstheilung)` — VOLLAUTOMAT update-Modus löst Locks/Rechte selbst (kill+takeown+icacls+reset+retry) → Permission-denied nie wieder.
+2. `feat(tiktok)` — QA liest Urteil aus Text statt Exit-Code (Node-Win-libuv-Crash überspringt keine guten Reels mehr) + **Smart-Auto-Caption** (neue Produkte kriegen automatisch Mundart-Caption) + 22 Captions.
+3. `feat(bigbuy)` — bedachte Premium-Auswahl: nur Markenware, ≥2 Bilder, kein Junk/Kostüm/Code-Titel, Topseller zuerst.
+4. `feat(ads)` — Kampagnen-Creative wird **tonlos** hochgeladen (killt Musik-Ablehnung = häufigster TikTok-Ad-Fail) + `TIKTOK-ADS-LEHREN.md`.
+5. `feat(cmd)` — `health`-Befehl (Provider/Key-Check).
+6. Versand 65→49 in allen Vorlagen + Live-Katalog-Batch; Katalog-QA (3 BigBuy-Fehler gefixt).
+**Keys (User gesetzt in luxe-secrets.ps1):** Gemini ✅, DeepSeek ✅ (+ Groq empfohlen). ElevenLabs/HeyGen = fast leer → NICHT nötig (piper+CC-BY gratis & kommerziell ok). KI 3-fach abgesichert.
+**Kampagne (Prio 1):** campaign-go gequeued/angestossen (350-CHF-Cap, Pixel D8EKVR, tonloses Creative). **User prüft ads.tiktok.com** (Review-Status) → bei Ablehnung Grund schicken → CizQ6 fixt + lernt.
+**Autonom 24/7 (läuft ohne Befehle):** 03:30 Produkte · 04:30 SEO · 05:00 Update+Heilung · 09/12/15/21 Engage+Analyse · 10/19 Post · 11:30/18:30 Giga · So Entfolgen. **Du gibst NULL Befehle.**
+**Einzige User-Sachen (selten):** TikTok-Login in Brave alle paar Wochen (entfällt nach API-Audit) · Geld/Budget-OK · Kampagnen-Review-Status melden.
+
 ## 2026-06-20 (SPÄT 4) — ✅ PC-SYNC GELÖST (das war der ganze TikTok-Blocker)
 **Ursache „1 Woche nichts" endgültig gefunden:** Der PC (`C:\luxe`) konnte nicht pushen/pullen → lief mit altem Code, postete nicht, nichts kam zurück. Kette: (1) zwei Klone (`C:\Users\allen\aban-news-landing` UND `C:\luxe`, beide mit lokalen Bot-Commits) → Branch **diverged** → `git push` = non-fast-forward rejected. (2) `git reset --hard` scheiterte an **5 gesperrten Skripten** (START.bat/engagement-cycle/pc-listener/run-follower-daily/tiktok-cycle): Besitzrechte + hängende Datei-Handles.
 **FIX-SEQUENZ (FEST — bei „PC pusht nicht" genau das):**
