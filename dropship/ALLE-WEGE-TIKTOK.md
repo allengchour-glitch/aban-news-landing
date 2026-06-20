@@ -28,6 +28,18 @@ Die Mini-Drama-App „LuxeStyle Poster" bleibt unbrauchbar (siehe 🛑 unten) �
      → access_token + refresh_token. ⚠️ Code ist nur ~Minuten gültig → sofort tauschen.
   4. **Posten:** `automation/tiktok-autopost.mjs` bzw. Content Posting API (PULL_FROM_URL mit CDN-Video).
      Unaudited Sandbox = **SELF_ONLY** → Video landet privat/Entwurf → User tippt 1× „öffentlich". (Das war der akzeptierte „1-Tap"-Weg.)
+- **✅ ERSTER POST GEGLÜCKT 2026-06-20 (aus der Cloud!):** Reel «Sirène» in TikTok-Entwürfe hochgeladen (`publish_id v_inbox_file~v2.765…`).
+  **WICHTIGE LEHRE — Direct-Post vs Inbox:** `POST /v2/post/publish/video/init/` (Direct, SELF_ONLY) → **403
+  `unaudited_client_can_only_post_to_private_accounts`** (unauditierte App darf nur direkt posten wenn das Konto PRIVAT ist;
+  @luxestyle.ch ist öffentlich). **→ Stattdessen `POST /v2/post/publish/inbox/video/init/` (FILE_UPLOAD)** = Video landet in
+  TikTok-Entwürfen/Posteingang → User fügt Caption ein + tippt „Posten" (das ist der 1-Tap). Funktioniert für öffentliches
+  Konto + unauditierte App. Flow: inbox-init (200, gibt `upload_url`+`publish_id`) → `PUT upload_url` mit Bytes +
+  `Content-Range: bytes 0-(size-1)/size` (201). `creator_info/query` vorher = 200 (Token verifiziert). Caption geht bei Inbox
+  NICHT mit → User tippt sie in der App (oder wir warten auf Audit für Direct-Post mit Caption).
+- **🔓 AUTONOM-DAUERBETRIEB:** access_token 24h, **refresh_token 1 Jahr** → in `luxe-secrets.ps1`/ENV als
+  `TT_ACCESS_TOKEN`/`TT_REFRESH_TOKEN`/`TT_CLIENT_KEY=sbawgg40q8nkfuwl5k`/`TT_CLIENT_SECRET` ablegen (NIE Repo) →
+  `tiktok-autopost.mjs` (TT_PRIVACY_LEVEL=DRAFT) refresht selbst + lädt nächstes Reel in den Posteingang. Cloud-Session
+  ohne diese ENV = jedes Mal neu via OAuth (User pastet code).
 - **Lehre/Reihenfolge der Fehler (nicht neu diagnostizieren):** `redirect_uri`-Error = URI nicht/anders registriert ·
   `unauthorized_client/client_key` = (a) Web-Plattform fehlt ODER (b) Production-Draft → Sandbox nutzen ·
   `invalid_client` = falsches Secret zum Key (Sandbox-Key braucht Sandbox-Secret) · `invalid_request malformed` = Param/Secret fehlt.
