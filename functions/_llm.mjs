@@ -1,13 +1,26 @@
 // Geteilter LLM-Adapter für die Cloudflare-Pages-Functions.
-// Primär Anthropic (Claude). Fällt automatisch auf Groq (Llama, OpenAI-kompatibel,
-// grosse Gratis-Stufe) zurück, wenn KEIN ANTHROPIC_API_KEY, aber ein GROQ_API_KEY
-// in der Umgebung liegt. „Ein Adapter, ein Env-Switch" (docs/TOKEN-SPAREN.md).
+// Unterstützt drei Anbieter über EINEN Env-Switch ("ein Adapter, ein Schalter",
+// docs/TOKEN-SPAREN.md):
+//   • Anthropic (Claude)      → ANTHROPIC_API_KEY
+//   • OpenAI (ChatGPT)        → OPENAI_API_KEY
+//   • Groq (Llama, gratis)    → GROQ_API_KEY
+// Standard-Reihenfolge: Anthropic → OpenAI → Groq (erster vorhandener Key gewinnt).
+// Mit env.LLM_PROVIDER ("anthropic" | "openai" | "groq") lässt sich ein Anbieter
+// erzwingen, sofern dessen Key gesetzt ist.
 //
 // 🔐 Keys werden AUSSCHLIESSLICH aus `env` gelesen — niemals hartcodiert/committet.
 
+const HAS = {
+  anthropic: (env) => !!(env && env.ANTHROPIC_API_KEY),
+  openai: (env) => !!(env && env.OPENAI_API_KEY),
+  groq: (env) => !!(env && env.GROQ_API_KEY),
+};
+const ORDER = ["anthropic", "openai", "groq"];
+
 export function llmProvider(env) {
-  if (env && env.ANTHROPIC_API_KEY) return "anthropic";
-  if (env && env.GROQ_API_KEY) return "groq";
+  const forced = env && env.LLM_PROVIDER;
+  if (forced && HAS[forced] && HAS[forced](env)) return forced;
+  for (const p of ORDER) if (HAS[p](env)) return p;
   return null;
 }
 
@@ -24,6 +37,7 @@ export async function llmComplete(env, opts) {
     maxTokens = 900,
     timeoutMs = 20000,
     anthropicModel,
+    openaiModel,
     groqModel,
   } = opts || {};
 
@@ -47,15 +61,25 @@ export async function llmComplete(env, opts) {
       return { text, model };
     }
 
-    // Groq — OpenAI-kompatibler Chat-Completions-Endpoint.
-    const model = groqModel || env.GROQ_MODEL || "llama-3.3-70b-versatile";
+    // OpenAI (ChatGPT) und Groq teilen sich das OpenAI-kompatible Chat-Format.
     const messages = [];
     if (system) messages.push({ role: "system", content: system });
     messages.push({ role: "user", content: prompt });
-    const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+
+    let url, key, model;
+    if (provider === "openai") {
+      url = "https://api.openai.com/v1/chat/completions";
+      key = env.OPENAI_API_KEY;
+      model = openaiModel || env.OPENAI_MODEL || "gpt-4o-mini";
+    } else {
+      url = "https://api.groq.com/openai/v1/chat/completions";
+      key = env.GROQ_API_KEY;
+      model = groqModel || env.GROQ_MODEL || "llama-3.3-70b-versatile";
+    }
+    const resp = await fetch(url, {
       method: "POST",
       signal: ctl.signal,
-      headers: { "authorization": "Bearer " + env.GROQ_API_KEY, "content-type": "application/json" },
+      headers: { "authorization": "Bearer " + key, "content-type": "application/json" },
       body: JSON.stringify({ model, max_tokens: maxTokens, messages }),
     });
     if (!resp.ok) { const e = new Error("upstream"); e.status = resp.status; throw e; }
