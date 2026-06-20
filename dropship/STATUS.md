@@ -1,5 +1,11 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-20 (SPÄT 3) — WICHTIG: PC läuft IMMER (User) → Push-Lücke entdeckt
+**FEST (User 2026-06-20 „pc läuft immer merke"):** der PC ist 24/7 an. cmd-poll/giga/Tasks SOLLTEN also laufen.
+**BEFUND:** PC **pollt** nachweislich (hat die Worker-Queue von 3→0 gedrained = cmd-poll aktiv), ABER **seit Stunden KEIN PC-Push** auf origin (kein `reports/tiktok-last-run.json`, keine ig-delete-Screenshots, kein `auto(...)`-Commit). → Der PC kann **Ergebnisse nicht pushen UND meinen neuen Code nicht ziehen** = läuft mit ALTEM Code.
+**ROOT-CAUSE (sehr wahrscheinlich):** Git-Lock/Auth auf `C:\Users\allen\aban-news-landing` (bekannt, Memory). Erklärt „1 Woche nichts" komplett: Bot postet evtl. gar nicht (alter Code, TikTok-Login evtl. ab) und nichts syncт.
+**EINZIGER FIX (1 Doppelklick am PC):** `automation/local/SUPERBOT-SETUP.bat` → killt sperrende Prozesse, lock-proof `git reset --hard` (zieht neuen Code), re-registriert Tasks, macht 1 Test-Post. Wenn danach IMMER NOCH kein Push → Git-**Auth** fehlt (PAT/Login am PC einrichten) ODER frischer Klon nach `C:\luxe` (Memory).
+
 ## 2026-06-20 (SPÄT 2) — TikTok „1 Woche nichts" diagnostiziert + Observability
 **Ursache:** Cloud kann Live-TikTok NICHT erreichen (kein Token in Cloud-ENV; Sandbox-API liefert nicht ans Live-Konto; Audit offen) → einziger Live-Weg = PC-Brave eingeloggt. „1 Woche nichts" = höchstwahrscheinlich **TikTok-Session in Brave abgelaufen** (Bot lief, fand kein Upload-Feld, machte stumm No-op).
 **Fix (Observability, „alles im Griff"):** `tiktok-upload-browser.mjs` erkennt jetzt Logout (Redirect /login) + schreibt `reports/tiktok-last-run.json` (POSTED/NOT_LOGGED_IN/NO_FILE_INPUT). Giga-Bot committet `reports/` schon → **Cloud sieht den echten Zustand nach jedem PC-Lauf**. `giga` 2× neu gequeued. Content ist bereit (veo-sirene ready + Meisterwerke).
