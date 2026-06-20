@@ -36,6 +36,13 @@ Die Mini-Drama-App „LuxeStyle Poster" bleibt unbrauchbar (siehe 🛑 unten) �
   Konto + unauditierte App. Flow: inbox-init (200, gibt `upload_url`+`publish_id`) → `PUT upload_url` mit Bytes +
   `Content-Range: bytes 0-(size-1)/size` (201). `creator_info/query` vorher = 200 (Token verifiziert). Caption geht bei Inbox
   NICHT mit → User tippt sie in der App (oder wir warten auf Audit für Direct-Post mit Caption).
+- **⚠️ SANDBOX LIEFERT NICHT AN DIE ECHTE APP (2026-06-20, User „keine Benachrichtigung"):** Inbox-Upload gibt im
+  **Sandbox** `status=SEND_TO_USER_INBOX` (Erfolg), aber **es kommt KEINE Benachrichtigung im echten TikTok an** — Sandbox
+  ist nur Testlabor. **→ Für echte Posts auf @luxestyle.ch MUSS die Production-App auditiert/freigegeben sein.** Der
+  App-Review ist also nicht nur für „ohne Tap", sondern überhaupt damit die API ans Live-Konto liefert. Paket: `dropship/TIKTOK-APP-REVIEW.md`.
+- **🤖 MAX-AUTO-BOT GEBAUT:** `automation/local/tiktok-autobot.ps1` (API, Auto-Token-Refresh, postet nächstes Reel +
+  analysiert + committet) · `SETUP-TIKTOK-AUTOBOT.bat` (Zeitplan 11/18 Uhr) · Fernsteuer-cmd `autobot`. Vor Audit
+  `TT_PRIVACY_LEVEL=DRAFT`, **nach Audit `PUBLIC_TO_EVERYONE` = vollautomatisch öffentlich, null Taps.**
 - **🔓 AUTONOM-DAUERBETRIEB:** access_token 24h, **refresh_token 1 Jahr** → in `luxe-secrets.ps1`/ENV als
   `TT_ACCESS_TOKEN`/`TT_REFRESH_TOKEN`/`TT_CLIENT_KEY=sbawgg40q8nkfuwl5k`/`TT_CLIENT_SECRET` ablegen (NIE Repo) →
   `tiktok-autopost.mjs` (TT_PRIVACY_LEVEL=DRAFT) refresht selbst + lädt nächstes Reel in den Posteingang. Cloud-Session
