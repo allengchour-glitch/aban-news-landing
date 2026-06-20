@@ -32,6 +32,12 @@
   roi-rechner (ROI/ROAS + Gewinn nach Marge, opt. CPA) + break-even-rechner (Gewinnschwelle Stück/Umsatz, Deckungsbeitrag) [batch-11].
   ⚠️ **Mini-Parser-Falle:** Inline-Code-Platzhalter NIE als „ N " (Leerzeichen+Zahl) bauen → frisst Prosa-Zahlen („in 3 Tagen"). Sentinel = ``-PUA-Zeichen
   um den Index, Restore-Regex `/(\d+)/g`. Außerdem: KEINE rohen `\x00`-Null-Bytes in HTML schreiben (macht Datei „binary", git/grep-Probleme) — vor Commit `count(b"\x00")==0` prüfen.
+- **🔗 Discovery/Interlinking (Hebel statt Masse):** Reichweite ist der Engpass → neue Tools brauchen Links von Autoritäts-Seiten,
+  nicht nur Sitemap. Die 20 stärksten neuen Tools sind jetzt in der **Startseiten-„Mehr"-Spalte** verlinkt (`index.html`, eine Zeile,
+  Anker `zahlungsfrist-rechner`). online-tools.html listet ohnehin alle in Kategorien. **Nächster Schritt offen:** kontextuelle Querlinks
+  von schon-indexierten Alt-Tools auf passende neue (z. B. finanz-rechner→stundenlohn/break-even, json-formatter→csv-json).
+- **🔒 Secrets-Vorfall 2026-06-20:** User hat einen xAI/Grok-API-Key + Passwort im Chat gepostet → als kompromittiert behandelt,
+  NICHT ins Repo/Commits/Client-JS geschrieben, User zum Rotieren aufgefordert. Regel bleibt: Keys nur als Server-Env/GitHub-Secret (vom User gesetzt).
 - **Muster für neue Tools (bewährt):** Template = mwst-rechner.html-Struktur (header.site + hero + „Was macht das?"
   + panel + data-aban-news-cta + footer); WebApplication+FAQPage-JSON-LD; in `online-tools.html` (Karte) +
   `sitemap.xml` eintragen; `node --check` + JSON-LD + link-check + brain-scan. **Lehre:** online-tools.html wird
