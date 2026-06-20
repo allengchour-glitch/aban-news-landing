@@ -52,6 +52,20 @@ async function discoverIds(env) {
 
 async function postInstagram(ids, item) {
   if (!ids.ig_id) return { skipped: "kein IG-Account verknüpft" };
+  // 🖼️ KARUSSELL (User 2026-06-20 „ab jetzt Fotokarussell"): mehrere Bilder zum Wischen = mehr Reichweite.
+  const imgs = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
+  if (item.type === "carousel" && imgs.length >= 2) {
+    const childIds = [];
+    for (const url of imgs.slice(0, 10)) {
+      const c = await gpost(`${ids.ig_id}/media`, { image_url: url, is_carousel_item: "true", access_token: ids.page_token });
+      if (c.id) childIds.push(c.id);
+    }
+    if (childIds.length < 2) return { error: "IG carousel children", detail: childIds };
+    const car = await gpost(`${ids.ig_id}/media`, { media_type: "CAROUSEL", children: childIds.join(","), caption: item.caption, access_token: ids.page_token });
+    if (!car.id) return { error: "IG carousel container", detail: car };
+    const pub = await gpost(`${ids.ig_id}/media_publish`, { creation_id: car.id, access_token: ids.page_token });
+    return pub.id ? { ok: pub.id, carousel: childIds.length } : { error: "IG carousel publish", detail: pub };
+  }
   const isVideo = item.type === "video" || item.type === "reel";
   const isStory = item.type === "story";
   let createParams;
@@ -93,7 +107,29 @@ async function fbVideoUpload(ids, edge, videoUrl, finishParams) {
   return (fin.success || fin.post_id || fin.id) ? { ok: fin.post_id || start.video_id } : { error: edge + " finish", detail: fin, up: upj };
 }
 
-async function postFacebook(ids, item) {
+// EINZIGARTIG PRO PLATTFORM (User 2026-06-20): FB kriegt eine leicht andere Caption als IG
+// (rotierende Engagement-Zeile) → kein 1:1-Duplikat über die Kanäle.
+function fbCaption(c) {
+  if (!c) return c;
+  const q = ["\n💬 Was meinsch? Schrib's is Kommentar!", "\n👍 Tag en Fründ wo das brucht!", "\n❤️ Speicher der's für spöter!", "\n🇨🇭 Schwiizer Shop – frag eus alles!"];
+  const h = [...c].reduce((a, x) => a + x.charCodeAt(0), 0);
+  return c + q[h % q.length];
+}
+async function postFacebook(ids, item0) {
+  const item = { ...item0, caption: fbCaption(item0.caption) };
+  // 🖼️ KARUSSELL: FB Multi-Foto-Post (mehrere Bilder unveröffentlicht hochladen → attached_media)
+  if (item.type === "carousel" && Array.isArray(item.images) && item.images.filter(Boolean).length >= 2) {
+    const media = [];
+    for (const url of item.images.filter(Boolean).slice(0, 10)) {
+      const ph = await gpost(`${ids.page_id}/photos`, { url, published: "false", access_token: ids.page_token });
+      if (ph.id) media.push(ph.id);
+    }
+    if (!media.length) return { error: "FB carousel photos" };
+    const params = { message: item.caption, access_token: ids.page_token };
+    media.forEach((id, i) => { params[`attached_media[${i}]`] = JSON.stringify({ media_fbid: id }); });
+    const r = await gpost(`${ids.page_id}/feed`, params);
+    return r.id ? { ok: r.id, carousel: media.length } : { error: "FB carousel feed", detail: r };
+  }
   // FB-Story (automatisiert die „Deine Story ist abgelaufen / teile dein Reel"-Nudges)
   if (item.type === "story") {
     if (item.video) return await fbVideoUpload(ids, "video_stories", item.video, {});
@@ -322,7 +358,8 @@ async function run(env, doPost = true) {
     // 🛡️ REPOST-SCHUTZ (User 2026-06-20 „3x dasselbe gepostet"): ueberspringe Eintraege, deren
     // Bild/Video in den letzten 15 Posts schon kam — auch nach Cursor-Reset kein Doppel-Post.
     // Key = TYP + URL: derselbe Clip als Reel UND Story ist ERLAUBT (Cross-Post), 2x identischer Reel nicht.
-    const mediaOf = (it) => (it ? ((it.type || "image") + "|" + (it.video || it.image || it.img || it.media || "")) : "");
+    // Karussell: nach 1. Bild keyen (sonst saehen alle Karussells gleich aus -> faelschlich geblockt).
+    const mediaOf = (it) => (it ? ((it.type || "image") + "|" + (it.video || it.image || (Array.isArray(it.images) && it.images[0]) || it.img || it.media || "")) : "");
     let recent = [];
     try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, 30).map((p) => p.u).filter(Boolean); } catch {}
     for (let hop = 0; hop < q.length && mediaOf(q[cursor]) && recent.includes(mediaOf(q[cursor])); hop++) {

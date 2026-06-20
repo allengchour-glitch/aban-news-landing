@@ -187,9 +187,20 @@ function loadReels() {
   collPosts.push({ type: 'image', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/matterhorn_d6efa14d-6932-4864-9769-5705c82b4f4c.png?v=1781135405',
     caption: 'Es bitzeli Schwiiz für überall 🇨🇭 Schwiizer Sticker – Matterhorn, Edelwyss, Schwiizerchrüz, Fondue. Wetterfescht & einzigartig 👉 luxestyle.ch/products/schweiz-sticker-matterhorn\n–10% mit WELCOME10\n#schweiz #sticker #matterhorn #swissmade #fyp' });
 
-  // MIX interleaven: überwiegend Bilder, jede 2. ein Reel, jede 5. ein Kollektions-Post, jede 6. eine Story.
+  // 🖼️ KARUSSELL (User 2026-06-20 „ab jetzt Fotokarussell"): je 3 Produktbilder → 1 Wisch-Karussell
+  // (mehr Engagement als Einzelfotos). Reels + Stories bleiben unverändert. Rest-Einzelbild bleibt Einzelbild.
+  const carousels = [];
+  for (let i = 0; i < images.length; i += 3) {
+    const grp = images.slice(i, i + 3);
+    if (grp.length < 2) { carousels.push(grp[0]); continue; }
+    const lead = grp[0].caption.split('\n')[0];
+    carousels.push({ type: 'carousel', images: grp.map(g => g.image),
+      caption: `${lead} — wüsch durch für meh 👉\n–10% mit WELCOME10 · 🇨🇭 luxestyle.ch\n#schweizmode #ootdschweiz #swissmade #fyp` });
+  }
+
+  // MIX interleaven: überwiegend Karussells, jede 2. ein Reel, jede 5. ein Kollektions-Post, jede 6. eine Story.
   const out = []; let ri = 0, si = 0, ci = DAYOFF; // ci-Tagesoffset → über die Tage rotieren ALLE Kollektionen + Geschenkfinder durch
-  images.forEach((img, i) => {
+  carousels.forEach((img, i) => {
     out.push(img);
     if (i % 2 === 1 && reels.length) out.push(reels[ri++ % reels.length]); // mehr Reels = mehr Vielfalt (User: zu viel gleich)
     if (i % 5 === 4 && collPosts.length) out.push(collPosts[ci++ % collPosts.length]); // Kollektions-Werbung
@@ -218,7 +229,7 @@ function loadReels() {
   // Grid) dürfen ein Produkt erneut zeigen, aber nicht sich selbst doppeln.
   const seenGrid = new Set(), seenStory = new Set();
   const deduped = out.filter((x) => {
-    const u = x.image || x.video || '';
+    const u = x.image || x.video || (Array.isArray(x.images) && x.images[0]) || '';
     if (!u) return true;
     if (x.type === 'story') { if (seenStory.has(u)) return false; seenStory.add(u); return true; }
     if (seenGrid.has(u)) return false; seenGrid.add(u); return true;
