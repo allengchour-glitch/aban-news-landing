@@ -953,6 +953,14 @@
       "abhaengigkeit": "Laeuft am PC (Brave port 9222, ads.tiktok.com eingeloggt). PC muss die neue cmd-poll.ps1 ZUERST pullen (LuxeUpdate 05:00 reset / giga pull), sonst verwirft alte cmd-poll den Befehl. Screenshots -> campaign-shots/.",
       "alte_kampagnen": "Script loescht alte NICHT. User soll im Dashboard alte/Doppel + Auto-Smart-Weltweit-Kampagnen (Budget-Leck) pausieren/loeschen. Die 350-Kampagne ist ~332 ausgegeben (fast Cap).",
       "regel": "Budget NIE eigenmaechtig erhoehen. CHF 70 ist die genehmigte Obergrenze fuer diese Kampagne."
+    },
+    "cmdpoll_hang_rootcause_2026_06_20": {
+      "symptom": "PC immer aktiv, aber Worker-Queue pending WAECHST (11->12) statt zu sinken = cmd-poll drainiert nicht.",
+      "ursache": "Single-Instance Global-Mutex (Global\\LuxeCmdPoll): blieb ein Lauf an Browser/node-Call haengen, hielt er den Lock fuer immer -> jeder neue 10-Min-Poll WaitOne(0)=false -> exit -> Befehlskanal tot.",
+      "fix": "Lock als DATEI mit Zeitstempel (TEMP/luxe-cmdpoll.lock): <12 Min = laeuft noch -> raus, sonst stale -> uebernehmen. finally raeumt auf. Kanal kann nie wieder dauerhaft einfrieren. Commit 876d1fac.",
+      "recovery": "Akut: 05:00-VOLLAUTOMAT-Update killt haengende node+powershell + git reset --hard -> zieht Fix + neue Befehle -> drainiert. ODER PC-Reboot (loest Hang sofort). Cloud kann PC NICHT un-haengen.",
+      "diagnose_regel": "Queue-pending waechst = PC-Kanal stuck, NICHT Cloud. Erst pruefen ob letzter PC-Push frisch (git log Zeitstempel) bevor man neue Befehle stapelt.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [
