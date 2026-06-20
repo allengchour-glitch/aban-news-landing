@@ -61,9 +61,12 @@ if (-not $done -and -not $apiLive -and $env:TT_ACCESS_TOKEN) {
 
 if (-not $done) { Write-Host "[Giga] Kein Weg verfuegbar: Token (luxe-secrets.ps1) ODER Brave-Login ODER Browserbase noetig." }
 
-# --- Analyse + Lernen (immer) ---
+# --- Analyse + Lernen (immer) = TikTok-King-Schleife ---
+node "automation/local/tiktok-bot.mjs" analyze --max 80 2>$null
 try { python "tools/tiktok_analyze.py" --user "@luxestyle.ch" --max 60 --insecure --out "reports/" } catch {}
 node "automation/brain/brain.mjs" 2>$null
+try { node "automation/trends/trend_scan.mjs" 2>$null } catch {}   # Trends klauen (CH/Mundart)
+node "automation/local/tiktok-bot.mjs" engage --cap 10 2>$null     # Kommentare beantworten
 
 # --- Stand committen ---
 git add automation/reels_seed.csv social/tiktok_queue.csv automation/local/tiktok-upload-done.txt automation/brain/knowledge.json reports/ 2>$null
