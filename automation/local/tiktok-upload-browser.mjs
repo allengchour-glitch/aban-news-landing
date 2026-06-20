@@ -76,6 +76,24 @@ function captionFromQueue(file) {
   } catch {}
   return null;
 }
+// SMART-FALLBACK (FIX 2026-06-20: taeglich neue Produkte automatisch ordentlich captionen statt Dateiname):
+// erkennt aus dem Slug die Kategorie -> Mundart-Caption + passende CH-Hashtags. So kriegt JEDES neue Reel
+// sofort eine brauchbare Caption, auch ohne Eintrag in reels-captions.json.
+function smartCaption(slug) {
+  const low = slug.toLowerCase();
+  let name = slug.replace(/^mw-/, '').replace(/-/g, ' ').replace(/\bs925\b|\b9x16\b|\bmeta\b|\bgo\b|\bvio\b/gi, '')
+    .replace(/\s+/g, ' ').trim().replace(/\b\w/g, c => c.toUpperCase());
+  let emoji = '✨', tag = '#schweizmode';
+  if (/kette|ohrring|armreif|armkette|ring|schmuck|moissanite|zirkonia|herzkette/.test(low)) { emoji = '💎'; tag = '#swissjewelry'; }
+  else if (/tasche|shopper|crossbody|handtasche|bag|beutel/.test(low)) { emoji = '👜'; tag = '#ootdschweiz'; }
+  else if (/sneaker|stiletto|sandalette|schuh|plateau|heel|stiefel/.test(low)) { emoji = '👟'; tag = '#ootdschweiz'; }
+  else if (/sonnenbrille|brille/.test(low)) { emoji = '🕶️'; tag = '#ootdschweiz'; }
+  else if (/hut|fedora|cap|huet/.test(low)) { emoji = '🎩'; tag = '#ootdschweiz'; }
+  else if (/roller|gua|sha|serum|creme|beauty|lifting|maske/.test(low)) { emoji = '✨'; tag = '#skincareschweiz'; }
+  else if (/ventilator|diffuser|gadget|lampe|projektor/.test(low)) { emoji = '🌬️'; tag = '#gadget'; }
+  else if (/blazer|hemd|set|weste|hose|kleid|strick|stola|schal|shirt|polo/.test(low)) { emoji = '🧥'; tag = '#ootdschweiz'; }
+  return `${name} ${emoji} entdeck's im Schwiizer Shop. Gratis-Versand ab CHF 49 · –10% mit WELCOME10 → luxestyle.ch\n${tag} #ootdschweiz #swissmade #fyp #foryou`;
+}
 // TikTok-Sound-Regel (FEST): Reels STUMM hochladen → User legt Trend-Sound in der App drauf.
 // Macht eine tonlose Kopie (kein Re-Encode des Bilds = schnell, verlustfrei). Fallback = Original.
 function toSilent(file) {
@@ -93,12 +111,20 @@ function toSilent(file) {
   // QA-GATE (User 2026-06-19 „immer neue Videos analysieren ob's passt"): vor dem Posten pruefen
   // (Format/Vollstaendigkeit + Gemini-Vision asiat.Schrift/Watermark/Qualitaet). Durchfall -> ueberspringen.
   for (let tries = 0; file && tries < 8; tries++) {
-    try { execSync(`node "${path.join(ROOT, 'automation/video/video-qa.mjs')}" "${file}"`, { stdio: 'inherit' }); break; }
-    catch { log('⚠️ QA durchgefallen → ueberspringe ' + path.basename(file)); fs.appendFileSync(DONE, path.basename(file) + '\n'); file = pickReel(); }
+    let qaOut = '';
+    // ROBUST (FIX 2026-06-20): video-qa.mjs crasht auf Windows beim Exit (libuv UV_HANDLE_CLOSING) ->
+    // execSync wirft, obwohl die QA bestanden hat. Darum Urteil aus dem TEXT lesen, nicht aus dem Exit-Code.
+    try { qaOut = execSync(`node "${path.join(ROOT, 'automation/video/video-qa.mjs')}" "${file}"`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }); }
+    catch (e) { qaOut = String((e.stdout || '') + (e.stderr || '')); }
+    process.stdout.write(qaOut);
+    const failed = /QA-FAIL/i.test(qaOut);
+    const passed = /QA-OK|bestanden|premium=true/i.test(qaOut);
+    if (passed && !failed) break;                       // bestanden -> posten (Exit-Code egal)
+    log('⚠️ QA durchgefallen → ueberspringe ' + path.basename(file)); fs.appendFileSync(DONE, path.basename(file) + '\n'); file = pickReel();
   }
   if (!file || !fs.existsSync(file)) { log('Kein QA-bestandenes Reel offen. No-op.'); process.exit(0); }
   const slug = path.basename(file).replace('.mp4', '');
-  let caption = captionFromQueue(file) || CAPS[slug] || `${slug} ✨ luxestyle.ch · –10% WELCOME10 #schweizmode #fyp`;
+  let caption = captionFromQueue(file) || CAPS[slug] || smartCaption(slug);
   // Trust-Winkel (Recherche „Vertrauen VOR Verkauf"): ~jeder 3. Reel kriegt eine WAHRE Trust-Zeile.
   const TRUST_TT = ['🇨🇭 Schweizer Shop · TWINT · 30 Tage Rückgab · gratis ab CHF 49', '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand'];
   const h = [...slug].reduce((a, c) => a + c.charCodeAt(0), 0);
