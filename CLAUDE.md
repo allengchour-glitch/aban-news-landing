@@ -21,6 +21,21 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## 🔁 Daueraufträge (FEST)
+- **🤖 DAUERAUFTRAGS-BOT 24/7 OHNE PAUSE (FEST, User 2026-06-20 „installiere dauerauftragsbot 24/7 ohne pause mit allem"):**
+  Der Bot läuft rund um die Uhr und macht ALLES autonom, ohne Nachfragen (ausser echtem Geld/Konto-Login):
+  1. **TikTok = ERSTE PRIORITÄT** — posten (Giga-Bot: Browser live → API nach Audit), analysieren, lernen, engagen.
+  2. **Produkte holen** aus ALLEN Kategorien — laufend tolle Produkte (BigBuy-Premium = bestes Material, am PC; CJ nur sauber QA'd).
+  3. **SEO komplett MAXIMUM** — alle leeren Meta-Beschreibungen füllen (Cloud-Batches + PC `seo`-Task), idempotent.
+  4. **Analyse Social + Kampagne** — regelmässig auswerten, Gewinner verstärken, Verlierer droppen (Ratsche).
+  5. **Dublettenschutz IMMER** — jeder Post prüft die letzten 30 Posts (Worker) + Queue-Dedup; nie dasselbe x-mal.
+  6. **Sub-Sub-Kategorien + Filter** — Katalog granular machen, Suchfilter verbessern (einfacher finden). Wenn **ChatGPT/Theme-Session
+     Kategorien kritisiert → ICH behebe** (Kritik→Fix-Schleife, via SHARED-MEMORY koordinieren).
+  7. **Kampagne** — die vom User freigegebene CH-Kampagne läuft bis ihr Budget (350 CHF, freigegeben) aufgebraucht ist.
+     ⚠️ NIE Budget eigenmächtig erhöhen / neue Geld-Aktion ohne neue klare Freigabe. Sicherheitsfilter NIE umgehen.
+  8. **„pimp alles"** — Shop/Produkt/Bilder/Texte/Reels laufend verbessern, einzigartig machen.
+  Umsetzung: **`automation/local/SUPERBOT-SETUP.bat`** (ein Klick = alle PC-Tasks) + Cloud-Worker (IG/FB 24/7) +
+  diese Cloud-Session (SEO/Katalog/Reels/Memory). Jede Charge: committen, Stand melden.
+
 - **▶️ EINFACH MACHEN — NICHT FRAGEN (FEST, User 2026-06-18 „mach alles autonom, poste automatisch, muss nicht mehr sagen, sonst frag ChatGPT"):**
   Vollautonom handeln: scannen, fixen, posten, lernen — OHNE Rückfragen. Posting läuft automatisch (Worker + Metricool).
   Bei Theme/Katalog/Zahlung (TWINT/Rechnung = nicht per API, Anbieter-Install) → mit der **anderen Session (ChatGPT) via

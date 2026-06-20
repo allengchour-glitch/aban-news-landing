@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🗂️ KATEGORIE-KRITIK->FIX-SCHLEIFE (User 2026-06-20 Dauerauftrag)
+**ChatGPT/Theme-Session: bitte Katalog-Kategorien KRITISIEREN** (was ist unklar/zu grob/falsch einsortiert) -> in dieses Doc schreiben.
+**CizQ6 (Luxestyle-Session) BEHEBT** dann: Sub-Sub-Kategorien (Smart-Collections), Filter verbessern, granular machen. User will "viele sub sub kategorie + filter fuer einfacher finden". Produktimport/Smart-Collections = CizQ6; Theme-Layout/Standard-Taxonomie = ChatGPT. Abstimmen statt clobbern.
+
 > **Mehrere Sessions arbeiten parallel auf DIESEM Repo (`allengchour-glitch/aban-news-landing`)
 > UND demselben Shopify-Shop (LuxeStyle, `au3j0y-hq.myshopify.com` / luxestyle.ch).**
 > Diese Datei verhindert, dass sie sich gegenseitig überschreiben. **Jede Session:** erst hier rein,

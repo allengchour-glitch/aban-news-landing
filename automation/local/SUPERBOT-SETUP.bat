@@ -48,9 +48,11 @@ REM Fernsteuerung: holt Cloud-Befehle alle 10 Min (du steuerst vom Handy)
 schtasks /create /f /tn "LuxeCmd" /sc minute /mo 10 /tr "%PSF% \"%CP%\""
 REM SEO-Meta in Batches (taeglich, idempotent - fuellt die ~2900 leeren nach und nach)
 schtasks /create /f /tn "LuxeSEO" /sc daily /st 04:30 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"cd '%REPO%'; . $env:USERPROFILE\luxe-secrets.ps1; $env:MAX=200; node automation/seo_polish.mjs\""
+REM PRODUKTE HOLEN (taeglich): BigBuy-Premium = bestes Markenmaterial, alle Kategorien, idempotent
+schtasks /create /f /tn "LuxeProducts" /sc daily /st 03:30 /tr "%PSF% \"%DIR%bigbuy-premium.ps1\""
 
 echo [4/6] Tasks duerfen PC wecken + aus Standby starten...
-for %%T in (LuxeUpdate LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 LuxeAutobot-11 LuxeAutobot-18 LuxeCmd LuxeSEO) do (
+for %%T in (LuxeUpdate LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 LuxeAutobot-11 LuxeAutobot-18 LuxeCmd LuxeSEO LuxeProducts) do (
   powershell -NoProfile -Command "$t=Get-ScheduledTask -TaskName '%%T' -ErrorAction SilentlyContinue; if($t){$s=$t.Settings;$s.WakeToRun=$true;$s.StartWhenAvailable=$true;$s.DisallowStartIfOnBatteries=$false;Set-ScheduledTask -TaskName '%%T' -Settings $s|Out-Null}" >nul 2>&1
 )
 
@@ -59,6 +61,7 @@ echo [5/6] Brave-Port sicherstellen + JETZT 1x posten (Test)...
 
 echo [6/6] FERTIG. Der EINE Bot laeuft jetzt vollautonom:
 echo   - Update 05:00 (holt neuen Code, lock-proof)
+echo   - Produkte holen 03:30 (BigBuy-Premium, bestes Material)
 echo   - SEO 04:30 (fuellt Meta-Beschreibungen in Batches)
 echo   - TikTok-API-Autobot 11:30 + 18:30 (postet per API - zuverlaessig, kein Brave)
 echo   - Posten 10:00 + 19:00 (Browser-Backup: analyze+post+engage + Inserate)
