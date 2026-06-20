@@ -1,6 +1,8 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
 ## 2026-06-20 (SPÄT) — Kauf-auf-Rechnung-Block geklärt + Live-Zahlen
+- **🧾 ✅ ANTRAG GESENDET:** User hat über die swissbilling-App die **Kontaktanfrage an CembraPay AG** abgeschickt
+  (Händler-Konto für Rechnung). Antwort an allengchour@gmail.com, 1-3 Tage. Danach Händler-ID+Passwort → App → aktivieren.
 - **🧾 Swissbilling hängt am CembraPay-Händler-Konto:** App ist installiert, aber „Schließe die Einrichtung deines
   Kontos ab" + „Bitte geben Sie die Händler-ID ein" bleiben, weil **Händler-ID + Passwort erst nach bewilligtem
   CembraPay-Antrag** (Firma/UID/IBAN, Bonität 1-3 Tage) kommen. **= echter User-Schritt** (Cloud kann den Antrag

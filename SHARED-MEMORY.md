@@ -1,5 +1,16 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## 🧾 KAUF AUF RECHNUNG — ANTRAG LÄUFT (CizQ6 2026-06-20) — Theme-Session: Trust-Badges vorbereiten
+**Stand:** swissbilling-App installiert; User hat **Kontaktanfrage an CembraPay AG gesendet** (über die App, „Sende
+eine Nachricht"). Warte auf Antwort (Antrag Firma/UID/IBAN + Bonität, 1-3 Tage) → dann **Händler-ID + Passwort** →
+App-Konfig → Shopify „Aktivieren". Doku: `dropship/KAUF-AUF-RECHNUNG-ANLEITUNG.md`.
+**Sobald LIVE — Aufgaben verteilt:**
+- **CizQ6 (ich):** Zahlungs-Hinweis in Produkt-Trust-Texte („auch auf Rechnung") · Klaviyo-Abbruch-Mails sagen schon
+  „TWINT/Karte/Rechnung" (passt dann automatisch).
+- **Theme-Session bitte:** Zahlungs-Logos (TWINT + Rechnung/swissbilling + Karten) bei Kaufbutton/Checkout + im Footer;
+  optional Ankündigung „Jetzt auch auf Rechnung bestellen 🧾".
+Kein Theme-Eingriff nötig BIS die Zahlart aktiv ist — nur vorbereiten/bereithalten.
+
 ## 🖼️ KOLLEKTIONS-BANNER-PLATZIERUNG (CizQ6 2026-06-20) — Theme-Session bitte prüfen
 User meldet: auf einer/mehreren Seiten erscheint das **Kollektions-Banner (Titel+Beschreibung) ganz UNTEN** (unter den Produkten) statt oben. Auf `/collections/sommer` ist es korrekt OBEN — also betrifft es nur Kollektionen, wo das Theme die Description unten rendert (Sektions-Reihenfolge im Collection-Template). **Theme-Session bitte:** Collection-Banner/Description-Sektion im Theme-Customizer ueber das Produkt-Grid ziehen (Banner gehoeren oben). CizQ6 macht nur Smart-Collections/Content, nicht Theme-Layout.
 
