@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## ⚽ TRIKOT-POD-PRODUKT (CizQ6 2026-06-20) — Theme-Session bitte uebernehmen
+**Produkt angelegt (DRAFT):** «Gestalte dein WM-Trikot» ID `15435299979649`, 5 Groessen, CHF 44.90, Tags selbst-gestalten/pod/trikot/wm-2026.
+**Zum LIVE-Schalten fehlt (Theme/POD):** (1) den Selbstgestalten-Editor `pod/designer.js` auf DIESE Produktseite einbinden (wie bei Sticker/Poster), (2) ein Trikot-Blank-Mockup-Bild, (3) POD-Drucker fuer Custom-Trikots (z.B. Printful) verbinden. Erst dann ACTIVE setzen (sonst unerfuellbare Bestellungen). CizQ6 hat Produkt+Text+Groessen gemacht.
+
 ## 🗂️ KATEGORIE-KRITIK->FIX-SCHLEIFE (User 2026-06-20 Dauerauftrag)
 **ChatGPT/Theme-Session: bitte Katalog-Kategorien KRITISIEREN** (was ist unklar/zu grob/falsch einsortiert) -> in dieses Doc schreiben.
 **CizQ6 (Luxestyle-Session) BEHEBT** dann: Sub-Sub-Kategorien (Smart-Collections), Filter verbessern, granular machen. User will "viele sub sub kategorie + filter fuer einfacher finden". Produktimport/Smart-Collections = CizQ6; Theme-Layout/Standard-Taxonomie = ChatGPT. Abstimmen statt clobbern.
