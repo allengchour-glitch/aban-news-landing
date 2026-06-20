@@ -29,6 +29,11 @@ const ROOT = process.env.ROOT || '19662';
 const MAX = Number(process.env.MAX || 15);
 const MARKUP = Number(process.env.MARKUP || 1.8);
 const MIN_PRICE = Number(process.env.MIN_PRICE || 9);
+// QUALITAETS-FILTER (User 2026-06-20 "nimm bedacht gute Produkte von BigBuy"): strenge, bedachte Auswahl.
+const BRANDED_ONLY = process.env.BRANDED_ONLY !== '0';        // nur Produkte mit ECHTEM Hersteller (Markenware)
+const MIN_COST_EUR = Number(process.env.MIN_COST_EUR || 3);   // ultra-billig (<3 EUR EK) = meist Junk -> raus
+const MIN_IMGS = Number(process.env.MIN_IMGS || 2);           // gute Produkte haben mehrere Bilder
+const JUNK_RE = /(karneval|carnival|fasching|kost(ü|ue)m|disfraz|verkleidung|per(ü|ue)cke|fancy dress|aufblasbar|erotik|dessous|sexy)/i;
 const DRY = process.env.DRY === '1';
 const LEDGER = path.join(ROOT_DIR, 'dropship', 'bigbuy-imported-eans.txt');
 const log = (...a) => console.log(...a);
@@ -128,6 +133,12 @@ const TRUST = '<hr><p><strong>LuxeStyle CH</strong> · Gratis-Versand ab CHF 49 
     const vendor = mfrs[prod.manufacturer] || 'LuxeStyle';
     const desc = (info?.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 600);
     const hay = (name + ' ' + desc).toLowerCase();
+    // BEDACHTE AUSWAHL: Marke da? nicht zu billig? genug Bilder? kein Kostuem/Junk? kein Code-Titel?
+    if (BRANDED_ONLY && !mfrs[prod.manufacturer]) { log(`    skip (keine Marke): ${name.slice(0, 40)}`); continue; }
+    if (prod.retailPrice < MIN_COST_EUR) { log(`    skip (zu billig ${prod.retailPrice} EUR): ${name.slice(0, 40)}`); continue; }
+    if (urls.length < MIN_IMGS) { log(`    skip (<${MIN_IMGS} Bilder): ${name.slice(0, 40)}`); continue; }
+    if (JUNK_RE.test(hay)) { log(`    skip (Kostuem/Junk): ${name.slice(0, 40)}`); continue; }
+    if (name.replace(/[^a-zA-Z]/g, '').length < 6) { log(`    skip (Code-Titel): ${name.slice(0, 40)}`); continue; }
     const cat = categorize(hay);
     const price = priceCHF(prod.retailPrice);
     const tags = ['bigbuy', cat ? 'kategorisiert' : 'unkat'];
