@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Mail-Signatur-Generator — kostenlos, HTML zum Einfügen · aban news</title>
+<meta name="description" content="Kostenloser E-Mail-Signatur-Generator für Selbstständige: Name, Funktion, Firma, Kontakt &amp; Links eingeben → professionelle HTML-Signatur für Outlook, Gmail &amp; Apple Mail kopieren. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/email-signatur-generator.html">
+<meta property="og:title" content="E-Mail-Signatur-Generator — kostenlos">
+<meta property="og:description" content="Professionelle HTML-E-Mail-Signatur in Sekunden — für Outlook, Gmail &amp; Apple Mail. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/email-signatur-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"E-Mail-Signatur-Generator",
+"url":"https://abannews.com/email-signatur-generator.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Erzeugt eine professionelle HTML-E-Mail-Signatur für Outlook, Gmail und Apple Mail. Lokal im Browser, ohne Upload.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie füge ich die Signatur in Outlook oder Gmail ein?","acceptedAnswer":{"@type":"Answer","text":"Klick auf „Vorschau kopieren\", öffne die Signatur-Einstellungen deines Mailprogramms und füge sie mit Strg+V ein. Outlook und Apple Mail übernehmen die Formatierung direkt; in Gmail einfach in das Signatur-Feld einfügen."}},
+{"@type":"Question","name":"Werden meine Daten gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Generator läuft komplett im Browser. Deine Angaben verlassen das Gerät nicht, kein Tracking, kein Upload."}},
+{"@type":"Question","name":"Was gehört in eine seriöse Signatur?","acceptedAnswer":{"@type":"Answer","text":"Name, Funktion, Firma, eine erreichbare Telefonnummer und E-Mail, die Website und — je nach Rechtsform — die Pflichtangaben (z. B. Registergericht, USt-IdNr.). Kurz und ohne überladene Grafiken."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+.fld.full{grid-column:1/-1}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.hint{font-size:.74rem;color:var(--muted);font-weight:400}
+.swatches{display:flex;gap:8px;align-items:center;margin-top:4px}
+.sw{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer}
+.preview{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;overflow-x:auto}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.warn{margin-top:14px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:10px;padding:12px 14px;font-size:.86rem;color:var(--ink2)}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">E-Mail-Signatur</span> erstellen</h1>
+    <p>Eine saubere, professionelle Signatur für Outlook, Gmail und Apple Mail — Angaben eintippen, Vorschau kopieren, einfügen. Lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Baut aus deinen Angaben eine fertige HTML-Signatur — formatiert, mit Akzentfarbe, zum direkten Einfügen ins Mailprogramm.</p>
+
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div class="fld"><label for="name">Name</label><input id="name" type="text" placeholder="Max Mustermann"></div>
+      <div class="fld"><label for="rolle">Funktion / Titel</label><input id="rolle" type="text" placeholder="Inhaber · Fotograf"></div>
+      <div class="fld"><label for="firma">Firma</label><input id="firma" type="text" placeholder="Musterfoto"></div>
+      <div class="fld"><label for="tel">Telefon</label><input id="tel" type="tel" placeholder="+49 30 1234567"></div>
+      <div class="fld"><label for="mail">E-Mail</label><input id="mail" type="email" placeholder="max@musterfoto.de"></div>
+      <div class="fld"><label for="web">Website</label><input id="web" type="text" placeholder="musterfoto.de"></div>
+      <div class="fld"><label for="adr">Adresse <span class="hint">(optional)</span></label><input id="adr" type="text" placeholder="Musterstr. 1, 3123 Belp"></div>
+      <div class="fld"><label for="zusatz">Zusatz <span class="hint">(z. B. USt-IdNr., optional)</span></label><input id="zusatz" type="text" placeholder="USt-IdNr.: DE123456789"></div>
+    </div>
+    <div style="margin-top:10px"><label>Akzentfarbe</label>
+      <div class="swatches" id="sw">
+        <span class="sw" data-c="#b45309" style="background:#b45309"></span>
+        <span class="sw" data-c="#1f6feb" style="background:#1f6feb"></span>
+        <span class="sw" data-c="#0f9d6b" style="background:#0f9d6b"></span>
+        <span class="sw" data-c="#7c3aed" style="background:#7c3aed"></span>
+        <span class="sw" data-c="#1f2937" style="background:#1f2937"></span>
+      </div>
+    </div>
+
+    <label style="display:block;margin-top:16px">Vorschau</label>
+    <div class="preview" id="prev"></div>
+    <div class="row">
+      <button type="button" class="btn" id="copy">📋 Vorschau kopieren</button>
+      <button type="button" class="btn ghost" id="copyHtml">HTML-Quelltext kopieren</button>
+    </div>
+    <div class="warn"><strong>Tipp:</strong> Halte die Signatur kurz und ohne große Bilder — viele Mailprogramme blockieren externe Grafiken. Bei GmbH/UG/AG gehören die handelsrechtlichen Pflichtangaben (Registergericht, HRB, Geschäftsführer) in die Signatur.</div>
+    <p class="note">„Vorschau kopieren" überträgt die formatierte Signatur (für Outlook/Apple Mail/Gmail). Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für deinen Auftritt.</p>
+    <p><a class="btn" href="/impressum-generator.html">Impressum-Generator</a>
+      <a class="btn ghost" href="/abwesenheitsnotiz-generator.html">Abwesenheitsnotiz</a>
+      <a class="btn ghost" href="/email-vorlagen.html">E-Mail-Vorlagen</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/impressum-generator.html">Impressum</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var color="#b45309";
+  function v(id){var e=document.getElementById(id);return e?e.value.trim():"";}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function url(w){ if(!w) return ""; return /^https?:\/\//.test(w)?w:("https://"+w); }
+  function buildHtml(){
+    var name=v("name"),rolle=v("rolle"),firma=v("firma"),tel=v("tel"),mail=v("mail"),web=v("web"),adr=v("adr"),zus=v("zusatz");
+    if(!name && !firma) return "";
+    var line2=[rolle,firma].filter(Boolean).join(" · ");
+    var L='<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#1f2937"><tr><td>';
+    L+='<div style="border-left:3px solid '+color+';padding-left:12px">';
+    if(name) L+='<div style="font-size:15px;font-weight:bold;color:#1f2937">'+esc(name)+'</div>';
+    if(line2) L+='<div style="color:#5c6773">'+esc(line2)+'</div>';
+    var c=[];
+    if(tel) c.push('Tel: <a href="tel:'+esc(tel.replace(/\s/g,""))+'" style="color:'+color+';text-decoration:none">'+esc(tel)+'</a>');
+    if(mail) c.push('<a href="mailto:'+esc(mail)+'" style="color:'+color+';text-decoration:none">'+esc(mail)+'</a>');
+    if(web) c.push('<a href="'+esc(url(web))+'" style="color:'+color+';text-decoration:none">'+esc(web.replace(/^https?:\/\//,""))+'</a>');
+    if(c.length) L+='<div style="margin-top:6px">'+c.join(' &nbsp;·&nbsp; ')+'</div>';
+    if(adr) L+='<div style="color:#5c6773;margin-top:4px">'+esc(adr)+'</div>';
+    if(zus) L+='<div style="color:#9aa3ad;font-size:11px;margin-top:4px">'+esc(zus)+'</div>';
+    L+='</div></td></tr></table>';
+    return L;
+  }
+  function render(){
+    var h=buildHtml();
+    document.getElementById("prev").innerHTML = h || '<span style="color:#9aa3ad">Trag oben deinen Namen / deine Firma ein — die Signatur erscheint hier.</span>';
+  }
+  ["name","rolle","firma","tel","mail","web","adr","zusatz"].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener("input",render);});
+  document.querySelectorAll("#sw .sw").forEach(function(s){s.addEventListener("click",function(){color=s.getAttribute("data-c");render();});});
+  function flash(b,t){var o=b.textContent;b.textContent=t;setTimeout(function(){b.textContent=o;},1500);}
+  document.getElementById("copy").addEventListener("click",function(){
+    var h=buildHtml(); if(!h) return; var b=this;
+    if(window.ClipboardItem && navigator.clipboard && navigator.clipboard.write){
+      var item=new ClipboardItem({"text/html":new Blob([h],{type:"text/html"}),"text/plain":new Blob([document.getElementById("prev").innerText],{type:"text/plain"})});
+      navigator.clipboard.write([item]).then(function(){flash(b,"Kopiert ✓");}).catch(function(){navigator.clipboard.writeText(h).then(function(){flash(b,"HTML kopiert ✓");});});
+    } else if(navigator.clipboard){ navigator.clipboard.writeText(h).then(function(){flash(b,"HTML kopiert ✓");}); }
+  });
+  document.getElementById("copyHtml").addEventListener("click",function(){var h=buildHtml(),b=this;if(h&&navigator.clipboard)navigator.clipboard.writeText(h).then(function(){flash(b,"Quelltext kopiert ✓");});});
+  render();
+})();
+</script>
+</body>
+</html>
