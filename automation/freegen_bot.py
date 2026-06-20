@@ -70,7 +70,7 @@ def make_image(slug, title, desc):
     return out if r.returncode == 0 else None
 
 
-def run_once(count, voiceover):
+def run_once(count, voiceover, ai=True):
     hubs = next_hubs(count)
     if not hubs:
         log("Nichts mehr zu tun — alle Hubs verarbeitet.")
@@ -81,7 +81,7 @@ def run_once(count, voiceover):
         tm = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
         title = hub.clean(tm.group(1)) if tm else slug
         desc = hub.clean(hub.meta(html, "description"))
-        spec = hub.build_script(title, desc, slug, voiceover)
+        spec = hub.build_script(title, desc, slug, voiceover, ai=ai)
         sp = f"freegen/hubs/{slug}.json"
         os.makedirs("freegen/hubs", exist_ok=True)
         json.dump(spec, open(sp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
@@ -101,6 +101,7 @@ def main():
     ap.add_argument("--count", type=int, default=2)
     ap.add_argument("--loop", type=int, default=0, help="Intervall in Sekunden (0 = einmalig)")
     ap.add_argument("--no-voiceover", action="store_true")
+    ap.add_argument("--no-ai", action="store_true", help="KI-Texte aus (nur Titel/Teaser)")
     ap.add_argument("--reset", action="store_true")
     a = ap.parse_args()
 
@@ -109,11 +110,18 @@ def main():
         log("Ledger geleert.")
 
     voiceover = not a.no_voiceover
+    ai = not a.no_ai
+    try:
+        import freegen_ai
+        if ai and freegen_ai.available():
+            log("KI-Texte aktiv (" + (freegen_ai.provider() or ["?"])[0] + ").")
+    except Exception:
+        pass
     if a.loop > 0:
         log(f"🤖 Bot startet im Loop (alle {a.loop}s, {a.count} Hubs/Lauf). Stop mit Strg+C.")
         try:
             while True:
-                made = run_once(a.count, voiceover)
+                made = run_once(a.count, voiceover, ai=ai)
                 if made == 0:
                     log("Alles erledigt — Bot beendet sich.")
                     break
@@ -121,7 +129,7 @@ def main():
         except KeyboardInterrupt:
             log("Bot gestoppt (Strg+C).")
     else:
-        run_once(a.count, voiceover)
+        run_once(a.count, voiceover, ai=ai)
 
 
 if __name__ == "__main__":

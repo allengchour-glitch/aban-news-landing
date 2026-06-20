@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+# =============================================================================
+#  freegen_ai — optionale Gratis-KI-Hilfe für die freegen-Tools
+# -----------------------------------------------------------------------------
+#  Schreibt aus einem Thema knackige Reel-Texte (Hook / 2 Benefits / CTA) via
+#  einem OpenAI-kompatiblen Anbieter. Nutzt den ersten vorhandenen Key aus der
+#  Umgebung (Groq gratis bevorzugt). Ohne Key → None (Tools fallen sauber zurück).
+#
+#  🔐 Keys NUR aus der Umgebung. Keine externen Pakete (nur stdlib urllib).
+# =============================================================================
+
+import os, json, urllib.request
+
+# (Anbieter, URL, Key-Env, Default-Modell) — Gratis (Groq) zuerst.
+_PROVIDERS = [
+    ("groq", "https://api.groq.com/openai/v1/chat/completions", "GROQ_API_KEY", "llama-3.3-70b-versatile"),
+    ("openai", "https://api.openai.com/v1/chat/completions", "OPENAI_API_KEY", "gpt-4o-mini"),
+    ("openrouter", "https://openrouter.ai/api/v1/chat/completions", "OPENROUTER_API_KEY", "meta-llama/llama-3.3-70b-instruct:free"),
+    ("gemini", "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", "GEMINI_API_KEY", "gemini-1.5-flash"),
+    ("deepseek", "https://api.deepseek.com/chat/completions", "DEEPSEEK_API_KEY", "deepseek-chat"),
+    ("xai", "https://api.x.ai/v1/chat/completions", "XAI_API_KEY", "grok-2-latest"),
+    ("mistral", "https://api.mistral.ai/v1/chat/completions", "MISTRAL_API_KEY", "mistral-small-latest"),
+]
+
+
+def provider():
+    forced = os.environ.get("LLM_PROVIDER")
+    cands = _PROVIDERS
+    if forced:
+        cands = [p for p in _PROVIDERS if p[0] == forced] + _PROVIDERS
+    for name, url, keyenv, model in cands:
+        key = os.environ.get(keyenv)
+        if key:
+            return (name, url, key, os.environ.get(name.upper() + "_MODEL", model))
+    return None
+
+
+def available():
+    return provider() is not None
+
+
+def _chat(prompt, system, max_tokens=200, timeout=30):
+    p = provider()
+    if not p:
+        return None
+    _, url, key, model = p
+    body = json.dumps({
+        "model": model, "max_tokens": max_tokens,
+        "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
+    }).encode("utf-8")
+    req = urllib.request.Request(url, data=body, headers={
+        "Authorization": "Bearer " + key, "Content-Type": "application/json",
+        # Manche Anbieter (Cloudflare-WAF) blocken den Default-"Python-urllib"-UA mit 403.
+        "User-Agent": "aban-freegen/1.0",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            d = json.loads(r.read().decode("utf-8"))
+        return d["choices"][0]["message"]["content"]
+    except Exception:
+        return None
+
+
+def reel_copy(title, desc, timeout=30):
+    """Gibt eine Liste kurzer Szenen-Texte zurück (Hook, Benefit1, Benefit2, CTA) oder None."""
+    sys = "Du bist ein nüchterner deutscher Social-Media-Texter (anti-hype, kein Clickbait). Antworte AUSSCHLIESSLICH mit kompaktem JSON, keine Erklärung."
+    prompt = (
+        f'Thema einer abannews-Seite: "{title}". Kontext: "{(desc or "")[:300]}".\n'
+        'Schreibe Texte für ein vertikales Kurzvideo (Reel). Gib JSON mit genau diesen Schlüsseln:\n'
+        '{"hook":"Aufmacher, max 6 Wörter","punkt1":"Nutzen, max 7 Wörter","punkt2":"Nutzen, max 7 Wörter","cta":"Handlungsaufruf, max 6 Wörter"}\n'
+        "Deutsch, konkret, ohne Hype, ohne Emojis, ohne Anführungszeichen im Text."
+    )
+    txt = _chat(prompt, sys)
+    if not txt:
+        return None
+    try:
+        frag = txt[txt.find("{"):txt.rfind("}") + 1]
+        o = json.loads(frag)
+        out = [o.get("hook"), o.get("punkt1"), o.get("punkt2"), o.get("cta")]
+        out = [str(x).strip() for x in out if x and str(x).strip()]
+        return out if len(out) >= 3 else None
+    except Exception:
+        return None
