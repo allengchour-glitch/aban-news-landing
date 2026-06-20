@@ -961,6 +961,13 @@
       "recovery": "Akut: 05:00-VOLLAUTOMAT-Update killt haengende node+powershell + git reset --hard -> zieht Fix + neue Befehle -> drainiert. ODER PC-Reboot (loest Hang sofort). Cloud kann PC NICHT un-haengen.",
       "diagnose_regel": "Queue-pending waechst = PC-Kanal stuck, NICHT Cloud. Erst pruefen ob letzter PC-Push frisch (git log Zeitstempel) bevor man neue Befehle stapelt.",
       "stand": "2026-06-20"
+    },
+    "yt_user_videos_2026_06_20": {
+      "quelle": "Die 2 vom User geteilten YouTube-Videos (oEmbed bestaetigt).",
+      "video1": "Julian Ivanov - \"Verwandle Claude in deine eigene Marketingagentur\": Claude + Higgsfield Marketing Studio via MCP. Lehren: (1) bewaehrte Workflows als versionierte SKILLS kodieren statt Einzel-Prompts (gegen Content-Drift), (2) MCP-Connectoren = Haende des Agenten (wie unser Shopify-MCP; evtl. Video-MCP statt nur ffmpeg), (3) Pipeline in PHASEN mit je 1 Sub-Agent (ideate->produce->QA->publish->analyze), (4) Format-Analyse VOR Volumen (deckt sich mit Regel winner=produkt+preis+mundart), (5) Brand-Safety-Gate (asiat.Schrift/Watermark-QA) als harte Pipeline-Phase.",
+      "video2": "Vilius (@ViliusLite) - \"1000 EUR/Tag Dropshipping Produkte LIVE finden\": Lehren: (1) AD-SPY-Tool (Minea/PiPiAds) -> Produkte mit LIVE skalierenden TikTok-Ads finden = Nachfrage beweisen VOR Import, (2) harte Winner-Kriterien: Wow-Faktor, loest Problem, ~3x+ Marge, offline schwer findbar, leicht versendbar, (3) per Traktion validieren nicht Bauchgefuehl (steigende Ad-Spend/Engagement=gruen), (4) Shortlist statt Bulk-Import (unser Katalog ist schon gross), (5) Funnel zum Produkt passen - unser Engpass ist Checkout/Payment, also Produkte waehlen die den Checkout-Fix wert sind.",
+      "anwendung": "Bot: auto.sh/brain-Loop als Skill versionieren; Produkt-Auswahl kuenftig ad-spy-validiert (Demand-Proof) statt blind BigBuy-Masse; Brand-Safety als feste QA-Phase.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [
