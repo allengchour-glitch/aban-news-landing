@@ -3,22 +3,24 @@
 > Zentrale Übersicht ALLER Pfade + Status + was jeder braucht. **NICHT den User wiederholt nach denselben
 > Tokens fragen** — Stand steht hier. Reihenfolge = Zuverlässigkeit für ÖFFENTLICHE Posts.
 
-## ⏭️ NÄCHSTER SCHRITT (User 2026-06-19 Abend „schaue morgen, bin am Handy") — HIER weitermachen
-**User-Entscheid (AskUserQuestion):** TikTok künftig ohne PC = **Weg 1 (offizielle TikTok-API, gratis, 1 Tap)
-+ Weg 3 (PC als Voll-Auto-Backup)**. **NICHT** Browserbase-Paid (Option 2 abgelehnt, keine Mtl-Kosten).
+## 🛑 KRITISCH (User 2026-06-20, mit Browser-Claude VERIFIZIERT): die App „LuxeStyle Poster" ist FALSCHER TYP
+**Die bestehende App ist eine „Mini Drama"-App** (URL `developers.tiktok.com/portal/**drama**/7644952871552960533/…`).
+Beweis im Portal: Security-Tab sagt **„Mini dramas on TikTok will only support requests to the trusted domains"**.
+→ **KEIN Login Kit, KEIN Content Posting API, KEINE Redirect-URI** — nur „Trusted domains" (Domains OHNE Pfad/Wildcard)
++ Webhooks. **Darum kam `error_type=redirect_uri`: das Produkt existiert gar nicht.** Client-Key `mn971u4o67rakuol`
+gehört zu DIESER Drama-App → **für Content-Posting UNBRAUCHBAR.**
+- ⚠️ **NICHTS an dieser App ändern** — v.a. NICHT „Trusted domains" `https://luxestyle.ch/` anfassen, und **kein
+  Pfad** wie `…/tiktok/callback` eintragen (Portal lehnt ab: „cannot include paths"). Webhook-Callback gibt 404 (egal).
+- **Für die offizielle API braucht es eine NEUE App** (Typ **Web/Desktop**, nicht Drama) mit den Produkten
+  **Login Kit + Content Posting API**. Content-Posting ist bis **App-Audit** nur **SELF_ONLY** (privat/Drafts → 1-Tap-Publish).
+  Das ist Aufwand (neue App + ggf. Review) → **mit User abstimmen, NICHT eigenmächtig eine neue App anlegen.**
 
-**TikTok-API-OAuth hängt an EINER Sache: die Redirect-URI passt nicht.**
-- Login-URL wurde erzeugt (PKCE, scope `user.info.basic,video.upload` = Drafts/Inbox = „1 Tap"), Client-Key `mn971u4o67rakuol`.
-- Beim Autorisieren kam **`error=invalid_request&error_type=redirect_uri`** → `http://localhost:8723/callback`
-  ist in der App **nicht hinterlegt**.
-- **TODO morgen:** developers.tiktok.com → Manage apps → „LuxeStyle Poster" → Login Kit → **„Redirect URI"** prüfen.
-  Entweder den dort eingetragenen Wert verwenden, ODER **`https://luxestyle.ch/`** eintragen+speichern.
-  Dann Login-URL neu mit exakt diesem `redirect_uri` bauen → User autorisiert → kopiert `?code=...` aus der
-  Adresszeile → **diese Cloud-Session tauscht Code→Token** (kein localhost-Server nötig, kein PC).
-  Cloud-OAuth-Muster: PKCE-Verifier in `/tmp/tt_oauth.json` (ephemer → neu erzeugen), Token-Tausch
-  `POST https://open.tiktokapis.com/v2/oauth/token/` mit client_key/secret/code/code_verifier/redirect_uri.
-- Danach posten: `automation/tiktok-autopost.mjs` (Token in ENV `TT_ACCESS_TOKEN`/`TT_REFRESH_TOKEN`,
-  NIE ins Repo) → Video landet in TikTok-Entwürfen → User tippt 1× „Posten".
+**STATUS TikTok-ohne-PC = derzeit KEIN gratis Sofort-Weg:**
+- Weg „offizielle API" (1-Tap) = blockiert (App falscher Typ, neue App nötig).
+- Weg „Browserbase Cloud-Browser" = scheitert auf Gratis-Plan (Rechenzentrums-IP: Login hält nicht / Session 410 / Google-Login
+  blockt / QR kommt nicht durch — 3× live getestet 2026-06-20). Nur mit **Paid-Plan** (Residential-Proxy) — vom User abgelehnt.
+- **→ Zuverlässig HEUTE nur: Weg 3 = PC** (Brave eingeloggt, ASCII-gefixte Skripte posten automatisch). ODER später neue API-App.
+**User-Entscheid stand auf „API(1-Tap)+PC" — die API-Hälfte ist bis neue App vertagt; bis dahin trägt der PC.**
 
 **Browserbase (Weg 2) — getestet, Lehre festgehalten:** Keys gültig (Projekt „Production", Concurrency 3),
 Context `f1689a15-1613-453b-bf9d-9ec1aa7f8b1a` angelegt, Login-Live-URL funktionierte. ABER **Gratis-Plan =

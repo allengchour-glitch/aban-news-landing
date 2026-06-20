@@ -174,11 +174,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **🎯 TikTok-ohne-PC ENTSCHIEDEN (User AskUserQuestion „1 und 3"):** = **Weg 1 (offizielle TikTok-API, gratis,
   1 Tap)** + **Weg 3 (PC als Voll-Auto-Backup)**. **Browserbase-Paid (Option 2) ABGELEHNT** (keine Mtl-Kosten).
   Details/Next-Step in `dropship/ALLE-WEGE-TIKTOK.md` (Abschnitt „NÄCHSTER SCHRITT").
-- **⛔ TikTok-API-OAuth hängt an Redirect-URI:** Login-URL erzeugt (PKCE, client_key `mn971u4o67rakuol`, scope
-  `user.info.basic,video.upload`), aber Autorisieren gab **`error_type=redirect_uri`** → `http://localhost:8723/callback`
-  ist in der App **nicht hinterlegt**. **TODO User (morgen):** developers.tiktok.com → „LuxeStyle Poster" → Login Kit →
-  Redirect-URI **`https://luxestyle.ch/`** eintragen → ich bau URL neu → User kopiert `?code=` aus Adresszeile →
-  **Cloud-Session tauscht Code→Token** (kein localhost-Server/PC nötig). Dann `tiktok-autopost.mjs` → Entwürfe → 1 Tap.
+- **🛑 TikTok-API = DEAD END mit dieser App (2026-06-20, Browser-Claude verifiziert):** Die App „LuxeStyle Poster"
+  ist eine **„Mini Drama"-App** (`/portal/drama/…`) → **kein Login Kit / kein Content Posting API / keine Redirect-URI**,
+  nur „Trusted domains" (ohne Pfad). Darum kam `error_type=redirect_uri`. Client-Key `mn971u4o67rakuol` = unbrauchbar
+  fürs Posten. **NICHTS an dieser App ändern.** Für die API braucht's eine **NEUE Web-App** (Login Kit + Content Posting,
+  SELF_ONLY bis Audit) — Aufwand, **erst mit User abstimmen**. Details: `dropship/ALLE-WEGE-TIKTOK.md` (Abschnitt 🛑).
+  **→ TikTok-ohne-PC hat aktuell KEINEN gratis Sofort-Weg** (API blockiert, Browserbase-Gratis scheitert an IP). PC trägt.
+- **🧹 DUBLETTEN-POSTS GEFIXT (User „3× dasselbe Berg-Tee auf IG"):** `queue.json` dedupliziert (38→35, 3 Doppel-Videos
+  raus) + **Worker-Repost-Schutz** (`src/index.js`: überspringt Einträge, deren Bild/Video in den letzten 15 Posts war —
+  auch nach Cursor-Reset). Geht live beim nächsten `wrangler deploy` (worker-autodeploy am PC). ⚠️ IG-API kann
+  veröffentlichte Posts NICHT löschen → die 3 bestehenden Berg-Tees nur in der IG-App ODER via PC-Claude `ig-delete` weg.
 - **☁️ Browserbase getestet (Lehre):** Keys GÜLTIG (Projekt „Production", Concurrency 3), Context
   `f1689a15-1613-453b-bf9d-9ec1aa7f8b1a` angelegt, Login-Live-URL funktioniert. ABER **Gratis-Plan = Rechenzentrums-IP**
   → Proxy = HTTP **402** → **TikTok behält Login NICHT** (jede Session andere IP = sofort ausgeloggt). Voll-Auto-TikTok
