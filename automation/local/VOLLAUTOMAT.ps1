@@ -30,10 +30,21 @@ if (-not $gotLock) { Log "Andere VOLLAUTOMAT-Instanz laeuft bereits -> beende (k
 # ===== Modus 'update' : LOCK-PROOF Repo-Sync (laeuft allein, kein Posting gleichzeitig -> keine Lock-Konkurrenz) =====
 if ($Mode -eq "update") {
   Log "=== UPDATE: lock-proof Sync auf origin/$branch ==="
-  Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue  # node-Locks loesen
-  & attrib -R "$repo\*.*" /S /D 2>$null                                                               # Schreibschutz weg
+  # SELBST-HEILEND (FIX 2026-06-20: das Lock-/Rechte-Drama nie wieder): Sperren loesen + Rechte fixen,
+  # dann hart auf origin angleichen (lokale Bot-Commits = regenerierbar -> keine Divergenz mehr).
+  Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+  Get-Process powershell,pwsh -ErrorAction SilentlyContinue | Where-Object { $_.Id -ne $PID } | Stop-Process -Force -ErrorAction SilentlyContinue
+  & attrib -R "$repo\*.*" /S /D 2>$null
+  & takeown /F "$repo\automation\local" /R /D J 2>$null | Out-Null      # Besitz zurueck (gegen "Permission denied")
+  & icacls "$repo\automation\local" /grant "$($env:USERNAME):F" /T /Q 2>$null | Out-Null
   & git fetch origin $branch 2>&1 | ForEach-Object { Add-Content $log $_ }
   & git reset --hard "origin/$branch" 2>&1 | ForEach-Object { Add-Content $log $_ }
+  if ((& git rev-parse --short HEAD) -ne (& git rev-parse --short "origin/$branch")) {
+    Log "UPDATE: 1. reset blockiert -> 5s + 2. Versuch (Handles loesen)"
+    Start-Sleep -Seconds 5
+    Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+    & git reset --hard "origin/$branch" 2>&1 | ForEach-Object { Add-Content $log $_ }
+  }
   Log "UPDATE fertig: $(& git rev-parse --short HEAD)"
   return
 }
