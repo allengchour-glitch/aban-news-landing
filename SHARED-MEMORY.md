@@ -1111,3 +1111,14 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   (6396 taschen-Kandidaten, fast alle Dubletten → sehr langsam, 0 saubere Treffer). Bestätigt erneut: **diese
   Kern-Kategorien sind voll** — für neue Produkte frische/nachgefragte Kategorien wählen, nicht die gesättigten.
 - Groq-Key gilt auch für „sonstige" KI-Texte (Produktbeschreibungen etc.) — gleicher Endpoint, llama-3.3-70b.
+
+## 📌 2026-06-20 (🖼️ DOPPELTE/JUNK-BILDER bereinigt — User „passt gar nicht in shop")
+- **Scan aller 2033 tag:bigbuy-Produkte:** 0 echte Within-Product-Doppel (gleiche Datei 2×), ABER
+  **210 Produkte hatten Spanische GRÖSSENTABELLEN-Bilder** (Dateiname `*tallas*` = „Grössen", auch
+  `*size-chart*`/`guia-talla`) als Produktfoto → 370 Bilder, optisch fremd/unprofessionell im CH-Shop.
+- **Neues Tool `automation/bigbuy_dedupe_images.mjs`** (Zwei-Phasen, Stall-Guard, DRY-Default, LIVE=1):
+  entfernt (1) Grössentabellen-Bilder + (2) exakte Doppel; **schützt das letzte/einzige Bild** (löscht nie alle).
+  **LIVE gelaufen: 210 Produkte bereinigt, 370 Grössentabellen-Bilder entfernt**, 0 Produkte ohne Bild.
+  Re-Scan = sauber (0 tallas / 0 Doppel). Variant-Sizes stehen ohnehin im Varianten-Selektor.
+- **Lehre für Import:** BigBuy liefert bei Mode/Schuhen oft ein Spanisches `tallas`-Grössentabellen-Bild mit →
+  beim Anlegen filtern ODER `bigbuy_dedupe_images.mjs` nach jeder Welle laufen (sollte in die Pipeline).
