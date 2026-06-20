@@ -1195,3 +1195,14 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
   filter-bereit (productType 0 Lücken, Vendor auf allen BigBuy). = 1 User-Klick (Online Store → Search & Discovery → Filters).
 - **🛡️ Trust 100%** (3479/3479, Tool `product_trust_fill.mjs`) · **Bilder sauber** (370 Grössentabellen entfernt) ·
   **alle 250 Collections** mit KI-Polish-Beschreibung · **Nav 0 echte 404** (reise-outdoor + data-sharing-opt-out gefixt).
+
+## 🚫📌 2026-06-20 — STOREFRONT-FILTER: ENDGÜLTIG GEKLÄRT, NICHT NOCHMAL UNTERSUCHEN
+**Frage: „Marke/Typ/Farbe/Grösse-Filter per API/Theme/Bot setzen?" → NEIN, technisch unmöglich. 4-fach verifiziert:**
+1. **Admin-API-Schema** (stable 2025-01 + unstable + 2025-04 + 2025-07): **0** Filter/Facet/Discovery-Mutationen.
+2. **Shop-Metafelder + Metaobjekte:** keine Search-&-Discovery-Config gespeichert (Shopify hält sie intern, nicht beschreibbar).
+3. **Shopify-Doku:** Filter nur via „Search & Discovery → Filters → Edit filters" (UI).
+4. **Theme-Code (Horizon `blocks/filters.liquid`):** rendert `{% for filter in filters %}` über `collection.filters` —
+   dieses Objekt wird VON S&D befüllt; das Theme kann KEINE Filter definieren, nur anzeigen.
+**→ Storefront-Filter aktivieren = AUSSCHLIESSLICH 1 User-Klick im Admin** (Online Store → Search & Discovery → Filters →
+Marke/Produkttyp/Farbe/Grösse hinzufügen). Kein API/CLI/Browser/root/Theme-Weg. **Daten sind 100% bereit** (productType 0
+Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherchieren — das kostet nur Zeit.**
