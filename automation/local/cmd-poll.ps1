@@ -23,6 +23,7 @@ try {
       "post"         { if ($env:TT_ACCESS_TOKEN) { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" } else { & node "automation/local/tiktok-upload-browser.mjs" } }
       "tiktok-api"   { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" }
       "autobot"      { & powershell -ExecutionPolicy Bypass -File "automation/local/tiktok-autobot.ps1" }
+      "seo"          { $env:MAX="200"; & node "automation/seo_polish.mjs"; Remove-Item Env:MAX -EA SilentlyContinue; git add -A 2>$null; git commit -m "auto(SEO): Meta-Beschreibungen gefuellt" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "follower"     { & node "automation/local/ch-follower-growth.mjs" }
       "engage"       { & node "automation/local/tiktok-bot.mjs" engage --cap 12 }
       "analyse"      { & node "automation/local/tiktok-bot.mjs" analyze --max 80; & node "automation/tiktok-pixel-check.mjs" }
