@@ -33,7 +33,24 @@ const frame = '/tmp/qa_frame.jpg';
 try { execSync(`ffmpeg -y -nostdin -ss ${Math.max(1, (dur || 6) / 2)} -i "${file}" -frames:v 1 -vf scale=540:-1 "${frame}"`, { stdio: 'ignore' }); }
 catch { ok('Frame-Extrakt n/a (Basis-Check bestanden)'); }
 const b64 = fs.readFileSync(frame).toString('base64');
-const prompt = 'Du pruefst ein Werbevideo-Bild fuer einen Schweizer Premium-Mode-Shop. Antworte NUR JSON: {"asian_text":bool,"watermark":bool,"made_in_china":bool,"low_quality":bool,"fits_premium":bool}. asian_text=chinesische/japanische/koreanische Schrift sichtbar. watermark=fremdes Logo/Wasserzeichen. low_quality=unscharf/verzerrt/kaputt.';
+// DETAILLIERTE Vision-Kontrolle (User 2026-06-20 „beschreib ihm in details, voll autonom"):
+// Die KI ist der autonome Qualitaets-Waechter. Jede Pruefung exakt definiert, damit sie streng + zuverlaessig ist.
+const prompt = [
+  'Du bist der autonome Qualitaets-Pruefer fuer Werbe-Reels eines SCHWEIZER PREMIUM-Mode/Lifestyle-Shops (luxestyle.ch).',
+  'Pruefe das Standbild streng und antworte AUSSCHLIESSLICH mit diesem JSON (keine Erklaerung):',
+  '{"asian_text":bool,"watermark":bool,"made_in_china":bool,"low_quality":bool,"warped":bool,"text_bottom20":bool,"banned":bool,"collage":bool,"fits_premium":bool}',
+  'Definitionen (true = Problem vorhanden):',
+  '- asian_text: irgendwo chinesische/japanische/koreanische Schriftzeichen (Verpackung, Schild, Overlay, Stickerei) sichtbar.',
+  '- watermark: fremdes Logo/Wasserzeichen/Lieferanten-Marke (z.B. AliExpress, Temu, ZHUMENG) ueber dem Bild.',
+  '- made_in_china: Text "Made in China" o.ae. Herkunfts-Aufdruck sichtbar.',
+  '- low_quality: unscharf, verpixelt, dunkel, JPEG-Artefakte, abgeschnittenes Motiv.',
+  '- warped: verzerrte/deformierte Koerperteile, Haende mit falscher Fingerzahl, schmelzende Gesichter (KI-Fehler).',
+  '- text_bottom20: eingebrannter Werbetext/Preis im UNTERSTEN Fuenftel (untere 20% Hoehe) — kollidiert mit der Plattform-Caption.',
+  '- banned: medizinische/Vorher-Nachher-Claims oder verbotene Produkte (Botox, Serum-Heilversprechen, Ozempic).',
+  '- collage: mehrere Produkte/Bilder in einem Raster statt EIN sauberer Lifestyle/Produkt-Shot.',
+  '- fits_premium: true NUR wenn es professionell, sauber und hochwertig wirkt (echtes Foto/Model, gute Komposition).',
+  'Sei im Zweifel STRENG: lieber ablehnen als ein schlechtes Bild posten.'
+].join('\n');
 try {
   const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${KEY}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -46,5 +63,9 @@ try {
   if (v.watermark) fail('fremdes Watermark/Logo');
   if (v.made_in_china) fail('"made in china" sichtbar');
   if (v.low_quality) fail('niedrige Qualitaet/unscharf');
-  ok(`Vision bestanden (${w}x${h}, passt-premium=${v.fits_premium})`);
+  if (v.warped) fail('verzerrte/deformierte Bildteile (KI-Fehler)');
+  if (v.text_bottom20) fail('Text in der unteren 20% (kollidiert mit Plattform-Caption)');
+  if (v.banned) fail('verbotener/medizinischer Inhalt');
+  if (v.collage) fail('Collage/Raster statt sauberem Shot');
+  ok(`Vision bestanden (${w}x${h}, premium=${v.fits_premium})`);
 } catch (e) { ok('Gemini n/a (' + String(e).slice(0, 40) + ') -> Basis-Check bestanden'); }
