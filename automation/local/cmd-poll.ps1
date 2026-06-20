@@ -28,6 +28,7 @@ try {
       "ig-delete"   { & node "automation/local/ig-delete-dupes.mjs"; git add automation/local/ig-delete-shots/* 2>$null; git commit -m "ig-delete screenshots" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "sources"      { & node "automation/check-sources.mjs" --fix; git add -A 2>$null; git commit -m "auto(Quellen-Check): Dubletten bereinigt" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "seo"          { $env:MAX="200"; & node "automation/seo_polish.mjs"; Remove-Item Env:MAX -EA SilentlyContinue; git add -A 2>$null; git commit -m "auto(SEO): Meta-Beschreibungen gefuellt" 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "shippingtext" { $env:MAX="500"; & node "automation/fix_shipping_text.mjs"; Remove-Item Env:MAX -EA SilentlyContinue }
       "follower"     { & node "automation/local/ch-follower-growth.mjs" }
       "engage"       { & node "automation/local/tiktok-bot.mjs" engage --cap 12 }
       "analyse"      { & node "automation/local/tiktok-bot.mjs" analyze --max 80; & node "automation/tiktok-pixel-check.mjs" }

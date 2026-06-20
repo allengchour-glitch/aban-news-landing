@@ -19,7 +19,7 @@ HOOKS=("Welcher Look ist deiner?" "Sommer-Looks, die auffallen" "Dein Sommer-Fav
 # Rotierende, conversion-fokussierte Caption-Templates (%s = gezeigtes Top-Produkt) — nie zwei gleich hintereinander.
 CAPS=(
   "CHF 34.90 statt Designer-Preis – gleicher Look 👀 %s. Code WELCOME10 = -10%% → luxestyle.ch"
-  "%s & mehr Sommer-Lieblinge ✨ Schweizer Shop · Gratis-Versand ab CHF 65 · -10%% Code WELCOME10 → luxestyle.ch"
+  "%s & mehr Sommer-Lieblinge ✨ Schweizer Shop · Gratis-Versand ab CHF 49 · -10%% Code WELCOME10 → luxestyle.ch"
   "Welcher Look ist deiner? 👇 Sommer-Favoriten wie %s. Code WELCOME10 = -10%% → luxestyle.ch"
   "Spar dir den Designer-Preis 👀 %s & Co. – gleicher Look, fairer Preis. -10%% WELCOME10 → luxestyle.ch"
   "Neu für deinen Sommer: %s 🤍 Schweizer Shop, schnelle Lieferung. -10%% Code WELCOME10 → luxestyle.ch"

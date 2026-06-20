@@ -267,7 +267,7 @@ async function geminiEnrich(name, rawDesc) {
       const sizeHint = hasSize ? 'Grössen-Hinweis: asiatische Grössen – bitte 1 Nr. grösser wählen. ' : '';
       const html = (g?.html_de
         || `<p><strong>${name.slice(0, 90)}</strong></p><ul><li>✨ Premium-Qualität</li><li>🎨 Mehrere Varianten</li><li>💝 Tolles Geschenk</li><li>🚚 Schneller CH-Versand</li></ul>`)
-        + `<p><em>${sizeHint}Versand: ca. 7–14 Tage. 🇨🇭 Gratis-Versand ab CHF 65 · WELCOME10 –10%.</em></p>`;
+        + `<p><em>${sizeHint}Versand: ca. 7–14 Tage. 🇨🇭 Gratis-Versand ab CHF 49 · WELCOME10 –10%.</em></p>`;
       const tags = ['cj-real', 'neu', 'dropship', 'autopilot'].concat(EXTRA_TAGS).concat(status === 'DRAFT' ? ['autopilot-needs-copy'] : []);
 
       const variants = vars.map(v => {

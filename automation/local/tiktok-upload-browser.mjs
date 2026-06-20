@@ -93,7 +93,7 @@ function toSilent(file) {
   const slug = path.basename(file).replace('.mp4', '');
   let caption = captionFromQueue(file) || CAPS[slug] || `${slug} ✨ luxestyle.ch · –10% WELCOME10 #schweizmode #fyp`;
   // Trust-Winkel (Recherche „Vertrauen VOR Verkauf"): ~jeder 3. Reel kriegt eine WAHRE Trust-Zeile.
-  const TRUST_TT = ['🇨🇭 Schweizer Shop · TWINT · 30 Tage Rückgab · gratis ab CHF 65', '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand'];
+  const TRUST_TT = ['🇨🇭 Schweizer Shop · TWINT · 30 Tage Rückgab · gratis ab CHF 49', '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand'];
   const h = [...slug].reduce((a, c) => a + c.charCodeAt(0), 0);
   if (h % 3 === 0 && !/Schweizer Shop|TWINT/.test(caption)) caption += `\n${TRUST_TT[h % TRUST_TT.length]}`;
   log(`Reel: ${path.basename(file)} ${DRY ? '(DRY)' : ''}`);

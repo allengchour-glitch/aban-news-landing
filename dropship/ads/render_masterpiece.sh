@@ -25,7 +25,7 @@ N=${#LINES[@]}; [ "$N" -ge 2 ] || { echo "zu wenig Segmente ($N)"; exit 1; }
 OUTRO=3.0
 SEG=$(python3 -c "print(round(max(1.7,($DUR-$OUTRO+($N)*$T)/$N),3))")
 echo "DEBUG render: voice=$VOICE  DUR=${DUR}s  N=$N  OUTRO=$OUTRO  T=$T  SEG=$SEG"
-if [ "$LANG_" = "en" ]; then O1="Shop now -> your look"; O4="Free shipping over CHF 65"; else O1="Jetzt shoppen -> dein Look"; O4="Gratis Versand ab CHF 65"; fi
+if [ "$LANG_" = "en" ]; then O1="Shop now -> your look"; O4="Free shipping over CHF 49"; else O1="Jetzt shoppen -> dein Look"; O4="Gratis Versand ab CHF 49"; fi
 
 # SAFE-ZONE (User 2026-06-14): Caption-Band hochgezogen (Box y=1300, Text ~1430 ≈ 75%),
 # damit es nicht mit Plattform-Caption/Buttons unten kollidiert.

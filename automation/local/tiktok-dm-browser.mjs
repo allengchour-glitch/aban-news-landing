@@ -28,7 +28,7 @@ const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const rnd = (a, b) => a + Math.floor(Math.random() * (b - a));
 
-// Themen-Erkennung + Antworten — identisch zu ig-dm-browser (CH-FAQ: gratis ab CHF 65, 30T Rückgabe, 8–14 Tage).
+// Themen-Erkennung + Antworten — identisch zu ig-dm-browser (CH-FAQ: gratis ab CHF 49, 30T Rückgabe, 8–14 Tage).
 const TOPIC = [
   ['retoure', /rückgabe|ruckgabe|retoure|umtausch|zurückschick|garantie|reklamation|defekt|kaputt/i],
   ['bestellung', /bestellnummer|tracking|sendungs|wo ist mein|wo bleibt|status.*bestell|order|nicht erhalten/i],
@@ -42,7 +42,7 @@ const TOPIC = [
 const REPLIES = {
   retoure: 'Kei Stress 🤍 Du hesch 30 Täg Rückgaberächt. Schick üs eifach dini Bstellnummere, mir hälfed der grad wiiter ✨',
   bestellung: 'Hoi! 📦 Gib üs churz dini Bstellnummere, denn luege mir de Status. Versand wältwiit i. d. R. 8–14 Täg 🤍',
-  versand: 'Hoi! 🤍 Versand wältwiit, gratis ab CHF 65 (Schwiiz) — Lieferig meist 8–14 Täg. Alles uf luxestyle.ch ✨',
+  versand: 'Hoi! 🤍 Versand wältwiit, gratis ab CHF 49 (Schwiiz) — Lieferig meist 8–14 Täg. Alles uf luxestyle.ch ✨',
   groesse: 'Hi! 👗 D Grössetabälle (i cm) staht direkt bim Produkt uf luxestyle.ch — säg üs susch, weles Teil! 🤍',
   design: 'So cool, dass di «Selbst gestalte» interessiert 🎨 Uf luxestyle.ch machsch dis eigete Design uf Shirt, Hoodie, Täsche oder Tasse — ohni Mindeschtmängi ✨',
   preis: 'Hoi! 💛 Mit Code WELCOME10 git’s –10% uf alles uf luxestyle.ch. Zahle bequem mit Charte, TWINT & meh ✨',

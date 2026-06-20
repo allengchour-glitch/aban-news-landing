@@ -28,7 +28,7 @@ VO60 = ("Willkommen bei LuxeStyle, deinem Schweizer Online-Shop. Premium-Looks z
         "und Wellness für deinen Alltag. Und clevere Ideen für dein Zuhause. Jedes Teil mit Sorgfalt "
         "ausgewählt. Und das Beste: Mit Selbst gestalten machst du dein ganz eigenes Design. T-Shirt, "
         "Hoodie, Tasche oder Tasse, in deiner Farbe, mit deinem Motiv, auf Bestellung gedruckt. Wir "
-        "liefern weltweit, gratis ab fünfundsechzig Franken, mit dreissig Tagen Rückgaberecht. Bezahl "
+        "liefern weltweit, gratis ab neunundvierzig Franken, mit dreissig Tagen Rückgaberecht. Bezahl "
         "bequem mit Twint, Karte oder PayPal. Sichere dir jetzt zehn Prozent auf deine erste Bestellung, "
         "mit dem Code Welcome zehn. Entdecke deinen Look, auf luxestyle punkt c h.")
 VO30 = ("LuxeStyle, dein Schweizer Online-Shop. Mode, Schmuck, Beauty und mehr, zu fairen Preisen. "

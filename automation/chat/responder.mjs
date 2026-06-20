@@ -18,7 +18,7 @@ const TOPIC = [
   ['lob',     /schön|geil|nice|wow|traumhaft|liebe|love|beautiful|gorgeous|amazing|wunderschön|hammer|mega|härzig|😍|❤️|🔥|💕|🥰/i],
 ];
 const DE = {
-  versand: ['Mir liefere schweizwiit – gratis ab CHF 65 🚚🇨🇭 Meh uf luxestyle.ch', 'Schweizwiite Versand, gratis ab CHF 65 📦 luxestyle.ch ✨'],
+  versand: ['Mir liefere schweizwiit – gratis ab CHF 49 🚚🇨🇭 Meh uf luxestyle.ch', 'Schweizwiite Versand, gratis ab CHF 49 📦 luxestyle.ch ✨'],
   groesse: ['D Grössetabälle findsch bim Produkt uf luxestyle.ch 📏', 'Alli Grösse S–XL stahn bim Artikel 📏 luxestyle.ch'],
   preis:   ['Pris staht im Shop 👉 luxestyle.ch · mit WELCOME10 –10% 🤍', 'Zahle mit TWINT/Charte 💳 WELCOME10 = –10% · luxestyle.ch'],
   verfueg: ['Jaa, a Lager & sofort bestellbar ✅ luxestyle.ch 🇨🇭', 'Isch verfügbar! 🛍️ luxestyle.ch ✅'],
@@ -29,7 +29,7 @@ const DE = {
   allgemein: ['Merci vilmal! 🙏🇨🇭 Schau gern verbii uf luxestyle.ch ✨', 'Danke dir! 😍 Meh devo uf luxestyle.ch 🛍️'],
 };
 const EN = {
-  versand: ['We ship across Switzerland – free over CHF 65 🚚 luxestyle.ch', 'Swiss-wide shipping, free over CHF 65 📦 luxestyle.ch ✨'],
+  versand: ['We ship across Switzerland – free over CHF 49 🚚 luxestyle.ch', 'Swiss-wide shipping, free over CHF 49 📦 luxestyle.ch ✨'],
   groesse: ['You\'ll find the size chart on each product 📏 luxestyle.ch', 'All sizes S–XL are on the product page 📏 luxestyle.ch'],
   preis:   ['Price is on the site 👉 luxestyle.ch · WELCOME10 = –10% 🤍', 'Check luxestyle.ch · use WELCOME10 for –10% ✨'],
   verfueg: ['Yes, in stock & ready to order ✅ luxestyle.ch', 'Available now! 🛍️ luxestyle.ch ✅'],

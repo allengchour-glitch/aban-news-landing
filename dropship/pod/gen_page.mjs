@@ -114,7 +114,7 @@ const html = `<div class="lspod">
   <h2>Dein Design. Dein Teil.</h2>
   <p class="sub">Wähle ein Produkt, lade dein Motiv hoch – wir drucken &amp; liefern. Keine Mindestmenge.</p>
   <div class="lspod-ideas"><span>📷 Foto</span><span>✍️ Spruch</span><span>🎨 Motiv</span><span>🏷️ Logo</span><span>👕 Team-Design</span><span>🎁 Geschenk</span></div>
-  <div class="lspod-trust"><span>🇨🇭 Gratis Versand ab CHF 65</span><span>⚡ On-Demand</span><span>📦 5–10 Tage</span><span>↩️ 30 Tage Rückgabe</span></div>
+  <div class="lspod-trust"><span>🇨🇭 Gratis Versand ab CHF 49</span><span>⚡ On-Demand</span><span>📦 5–10 Tage</span><span>↩️ 30 Tage Rückgabe</span></div>
   <a class="lspod-cta" href="#produkte">Jetzt Produkt wählen ↓</a>
 </section>
 
@@ -175,7 +175,7 @@ const html = `<div class="lspod">
     <details open><summary>Wie lade ich mein Design hoch?</summary><p>Wähle ein Produkt, öffne den Gestalten-Editor und lade dein Bild, Foto oder Logo hoch. Du siehst sofort eine Live-Vorschau und kannst Grösse &amp; Position anpassen.</p></details>
     <details><summary>Was kostet die Personalisierung?</summary><p>Der angezeigte Preis (ab CHF X) gilt inkl. einseitigem Druck. Zusätzliche Optionen (z.B. Rückseite) und der Endpreis werden transparent im Designer angezeigt – keine versteckten Kosten.</p></details>
     <details><summary>Gibt es eine Mindestbestellmenge?</summary><p>Nein. Du kannst ab einem einzigen Stück bestellen – jedes Teil wird on-demand für dich produziert.</p></details>
-    <details><summary>Wie lange dauert die Lieferung?</summary><p>Produktion &amp; Versand dauern zusammen ca. 5–10 Werktage. Gratis-Versand ab CHF 65.</p></details>
+    <details><summary>Wie lange dauert die Lieferung?</summary><p>Produktion &amp; Versand dauern zusammen ca. 5–10 Werktage. Gratis-Versand ab CHF 49.</p></details>
     <details><summary>Welche Dateien funktionieren am besten?</summary><p>PNG oder JPG in hoher Auflösung (mind. 1500 px). Für scharfe Drucke empfehlen wir transparente PNGs bei Logos/Motiven.</p></details>
     <details><summary>Kann ich zurückgeben?</summary><p>Bei Druckfehlern oder Mängeln ersetzen wir kostenlos. Es gilt unser 30-Tage-Rückgaberecht.</p></details>
   </div>

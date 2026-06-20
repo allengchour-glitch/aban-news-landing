@@ -24,7 +24,7 @@ Kollektions-/Kategorieseiten, Produktseite (PDP), Trust/Social Proof, Urgency/Sc
 Mobile-UX, Checkout, E-Mail/Retargeting, Reels/UGC. Jeweils stichpunktartig und SPEZIFISCH (nicht generisch).
 
 TEIL 2 — AUDIT & AKTIONSPLAN für «LuxeStyle» (luxestyle.ch): Schweizer Damen-Fashion-Shop auf Shopify
-Basic, Währung CHF, Sprache DE. Bereits vorhanden: Gratis-Versand ab CHF 65, TWINT, Code WELCOME10 (-10%),
+Basic, Währung CHF, Sprache DE. Bereits vorhanden: Gratis-Versand ab CHF 49, TWINT, Code WELCOME10 (-10%),
 14–30 Tage Rückgabe, Judge.me-Reviews, Smart-Collections, SEO/Alt-Texte. Gib einen PRIORISIERTEN
 Aktionsplan (wichtigste/wirkungsvollste zuerst). Tagge JEDEN Punkt mit GENAU einem Tag am Zeilenanfang:
   [API]  = via Shopify Admin API umsetzbar (Produkt-/Kollektionstexte, Metafelder, Tags, Rabatte, SEO, Bundles)

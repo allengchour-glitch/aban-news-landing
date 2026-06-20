@@ -64,7 +64,7 @@ async function gql(tok, query, variables) {
 const priceCHF = (eur) => { const p = Math.max(MIN_PRICE, eur * MARKUP); return (Math.max(1, Math.round(p)) - 0.10).toFixed(2); };
 const seenEans = () => new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split(/\s+/).filter(Boolean) : []);
 
-const TRUST = '<hr><p><strong>LuxeStyle CH</strong> · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · TWINT &amp; Karte · –10% mit Code <strong>WELCOME10</strong></p>';
+const TRUST = '<hr><p><strong>LuxeStyle CH</strong> · Gratis-Versand ab CHF 49 · 30 Tage Rückgabe · TWINT &amp; Karte · –10% mit Code <strong>WELCOME10</strong></p>';
 
 (async () => {
   if (!BB) { log('BIGBUY_TOKEN fehlt → No-op.'); process.exit(1); }

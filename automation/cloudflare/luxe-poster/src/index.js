@@ -271,7 +271,7 @@ const C_TOPIC = [
   ['lob',     /schön|geil|nice|wow|traumhaft|liebe|love|wunderschön|hammer|mega|so härzig|😍|❤️|🔥|💕/i],
 ];
 const C_REPLY = {
-  versand: ['Mir liefere schweizwiit – gratis ab CHF 65 🚚🇨🇭 Meh uf luxestyle.ch', 'Hoi! 📦 Schweizwiite Versand, gratis ab CHF 65. Infos uf luxestyle.ch ✨', 'Versand i d ganz Schwiiz, gratis ab CHF 65 🇨🇭 Bi Frage gern melde!'],
+  versand: ['Mir liefere schweizwiit – gratis ab CHF 49 🚚🇨🇭 Meh uf luxestyle.ch', 'Hoi! 📦 Schweizwiite Versand, gratis ab CHF 49. Infos uf luxestyle.ch ✨', 'Versand i d ganz Schwiiz, gratis ab CHF 49 🇨🇭 Bi Frage gern melde!'],
   groesse: ['D Grössetabälle findsch direkt bim Produkt uf luxestyle.ch 📏', 'Hoi! Alli Grösse S–XL stahn bim Artikel – luxestyle.ch 📏 Frag sönsch gern!', 'D Mass sind uf dr Produktsyte ufglistet 📏 luxestyle.ch'],
   preis:   ['Merci! 🛍️ Dr Pris staht im Shop 👉 luxestyle.ch – mit Code WELCOME10 gits –10% 🤍', 'Hoi! Pris findsch uf luxestyle.ch · mit WELCOME10 –10% 🤍', 'Zahle chasch mit TWINT, Charte & Co 💳 Pris im Shop, WELCOME10 = –10% ✨'],
   verfueg: ['Jaa, a Lager & sofort bestellbar ✅ luxestyle.ch 🇨🇭', 'Isch verfügbar! 🛍️ Grad uf luxestyle.ch bestellbar ✅', 'Klar, no da ✅ Schnäll si – luxestyle.ch 🇨🇭'],
@@ -285,7 +285,7 @@ const C_REPLY = {
 };
 // Englische Antworten (viele Kommentare sind englisch) — echte EN-Kunden auf EN bedienen
 const EN_REPLY = {
-  versand: ['We ship across Switzerland – free over CHF 65 🚚 More at luxestyle.ch', 'Swiss-wide shipping, free over CHF 65 📦 Details at luxestyle.ch ✨'],
+  versand: ['We ship across Switzerland – free over CHF 49 🚚 More at luxestyle.ch', 'Swiss-wide shipping, free over CHF 49 📦 Details at luxestyle.ch ✨'],
   groesse: ['You\'ll find the size chart on each product at luxestyle.ch 📏', 'All sizes S–XL are listed on the product page 📏 luxestyle.ch'],
   preis:   ['Price is on the site 👉 luxestyle.ch – use WELCOME10 for –10% 🤍', 'Check luxestyle.ch for the price · WELCOME10 = –10% ✨'],
   verfueg: ['Yes, in stock & ready to order ✅ luxestyle.ch', 'Available now! 🛍️ Order at luxestyle.ch ✅'],
