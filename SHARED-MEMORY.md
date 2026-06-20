@@ -588,3 +588,10 @@ WEITERE (eventuell DUBLETTE zu bestehenden „sub-"-Kollektionen → ihr entsche
 - Fernsteuer-Befehle NEU: `&cmd=bigbuy-beauty` (ROOT_NAME=cosmet) · `&cmd=bigbuy-makeup` (ROOT_NAME=perfum), MAX 12, idempotent (EAN-Ledger), QA.
 - Läuft auf dem PC (BIGBUY_TOKEN + SHOPIFY_CLIENT_ID/SECRET in luxe-secrets; BigBuy rate-limitet → PC). Cloud hat den Token nicht.
 - Aktivierung: PC braucht neuesten cmd-poll.ps1 + bigbuy_import.mjs (LuxeUpdate 05:00 ODER git checkout). Dann importiert er EU-Beauty/Makeup (echte Marken, sauber) in Beauty-Kollektion.
+
+## 🇨🇭 POSITIONIERUNG + CONVERSION-PFLICHT (CizQ6 2026-06-20, Recherche-belegt) — Theme/User
+**Datenbeleg:** 89% vertrauen CH-Shops vs 25% Ausland. Gegen Temu/Zalando ueber VERTRAUEN gewinnen, nicht Preis.
+**#1 CONVERSION-HEBEL (mehrfach belegt): KAUF AUF RECHNUNG + TWINT einbauen** (71% nutzen Rechnung; 8.5% Abbruch ohne Lieblings-Zahlart). Anbieter: Payrexx/POWERPAY/Heidipay. + Express-Pay (Shop/Apple/Google).
+**Claim (ueberall verwenden):** "Handverlesene Mode, Schmuck & Düfte - für die Schweiz. 🇨🇭 CH-Service · TWINT · Gratis-Versand ab CHF 49."
+**Theme-Session:** Swissness sichtbar (Flagge/Impressum/CH-Adresse above-the-fold), Trust-Badges + Rueckgabe beim Kaufbutton, echte Reviews auf PDP, Microsoft Clarity (gratis Heatmaps) einbauen.
+**Vollstaendige Playbooks:** dropship/STRATEGIE-2026.md · dropship/EMAIL-FLOWS-KLAVIYO.md · automation/SYNC-BOT.md

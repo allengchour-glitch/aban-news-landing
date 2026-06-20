@@ -905,6 +905,22 @@
       "fest": "Komplettes Klaviyo-Flow-Playbook (6 Flows, CH-Deutsch, copy-paste) in dropship/EMAIL-FLOWS-KLAVIYO.md.",
       "prio": "Abandoned Checkout > Cart > Welcome > Browse > Post-Purchase > Win-Back. Flows = 25-35% Umsatz.",
       "anwenden": "User/Theme-Session: in Klaviyo eintragen (Domain-Auth zuerst). Codes trennen (WELCOME10/COMEBACK10/WELCOMEBACK15). Review-Request-Mail = sammelt UGC/Reviews (loest Trust-Engpass)."
+    },
+    "ch_branding_positionierung": {
+      "quelle": "Recherche-Schwarm (Swiss Retail/Uni SG/Swiss Post/Carpathia)",
+      "these": "89% vertrauen CH-Shops vs 25% Ausland (64-Punkte-Luecke). 66% bevorzugen CH-Haendler. Swissness = ~40% Preisaufschlag. Gegen Zalando/Temu NICHT ueber Preis/Breite -> ueber VERTRAUEN + Nische + Kuratierung gewinnen.",
+      "claim": "EIN teilbarer Satz noetig (wie NIKIN '1 Baum/Produkt'). LuxeStyle-Claim: 'Handverlesene Mode, Schmuck & Düfte - für die Schweiz. CH-Service, TWINT, Gratis-Versand ab CHF 49.' An JEDEM Touchpoint wiederholen.",
+      "hebel": [
+        "Swissness ueberall sichtbar (Flagge, .ch, Impressum, CH-Adresse) = billigster Trust-Hebel",
+        "Kauf auf Rechnung + TWINT = PFLICHT (71% nutzen Rechnung; 8.5% Abbruch ohne Lieblings-Zahlart)",
+        "Enge Nische + rigorose Kuratierung + 'No-Liste'",
+        "Echte Reviews/UGC (UGC +91% Conversion, Foto-Reviews 4-5x)",
+        "'Verkaufe den Moment, nicht den Ring' - Story-Produkttexte",
+        "Gegen Temu mit Sicherheit/Qualitaet/CH-Rueckgabe/schnelle Lieferung fuehren (nicht primaer 'gruen')",
+        "Gruender/Ueber-uns-Story (86% Markenpersoenlichkeit), Paket-Beilagen, gestaffeltes Pricing (guenstiges Einstiegsprodukt)"
+      ],
+      "warnung": "Dropship: NICHT 'handgemacht/fair' behaupten ohne Beleg (CH-Transparenz-Erwartung hoch). Glaubwuerdig: CH/lokale-Lieferung, 'handverlesen fuer die Schweiz', echte CH-UGC, TWINT/Rechnung. UNIT ECONOMICS > Reichweite (Paul Valentine 640k Follower -> Insolvenz).",
+      "anwenden": "Claim in Captions/Heros. Swissness-Trust in Content. Kauf-auf-Rechnung = #1 User-Aktion. Einstiegsprodukt-Funnel (Anklet/Armband guenstig -> Upsell)."
     }
   },
   "decisions": [
