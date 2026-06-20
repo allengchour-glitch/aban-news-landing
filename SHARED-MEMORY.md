@@ -1206,3 +1206,19 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 **→ Storefront-Filter aktivieren = AUSSCHLIESSLICH 1 User-Klick im Admin** (Online Store → Search & Discovery → Filters →
 Marke/Produkttyp/Farbe/Grösse hinzufügen). Kein API/CLI/Browser/root/Theme-Weg. **Daten sind 100% bereit** (productType 0
 Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherchieren — das kostet nur Zeit.**
+
+## 📌 2026-06-20 Teil 7 (🚀 Autonome Reichweite: WM-SEO-Artikel + Filter-Hub-Seite)
+- **🆕 KI-Blog-Motor `automation/ai_blog_writer.mjs`** (wiederverwendbar, idempotent): Gemini 2.5-flash (primär) /
+  Groq (Fallback) schreibt Kaufberater mit vorgegebenen internen Links → publiziert live via `articleCreate`.
+  Min-Länge-Garantie (≥1800 Zeichen, sonst Retry). **Treibt kostenlosen organischen Traffic** = echter Reichweiten-Hebel
+  ohne User-Klick. ⚠️ **Groq-Tageslimit 100k Tokens** (teilen sich Sessions) → Gemini ist der robuste Langtext-Generator.
+  ⚠️ Article hat KEIN `seo`-Feld in 2025-01 (nur title/body/handle/summary/tags/isPublished/author).
+- **📝 WM-Lücke gefüllt (timely, WM 2026 läuft JETZT):** 91 Blog-Artikel deckten alles ab AUSSER Fussball-WM.
+  2 Artikel live im Ratgeber: „Fussballtrikots WM 2026 … Schweiz kaufen" + „Fussballtrikot Grösse/Material/Pflege" →
+  verlinken WM-Collection + Trikot-Gestalter. (3. Artikel „Trikot selbst gestalten" kam zu kurz aus Gemini → später retry.)
+- **🔎 FILTER-LÖSUNG gebaut (autonom, ohne S&D):** Da native In-Collection-Facetten NUR per S&D-UI gehen (4-fach bewiesen,
+  s.o.; URL-Filterung greift ohne S&D auch nicht — Tag-Pfad→301), habe ich eine **Filter-Hub-Seite** erstellt:
+  **`/pages/marken-kategorien`** („Marken & Kategorien – Schnell finden", Page-ID 698796441985, published) — Link-Raster
+  mit **26 Marken + 96 Kategorien** (123 Collection-Links, Produktzahlen). Gibt Kund:innen ein Filter-/Browse-Erlebnis.
+  **Offen (optional, low-risk vermieden):** Seite ins Hauptmenü hängen (menuUpdate = Vollbaum-Replace, Risiko) → noch nicht
+  verlinkt; kann via Menü-Punkt „🔎 Schnell finden" ergänzt werden. Native Facetten bleiben = der 1 S&D-Klick.
