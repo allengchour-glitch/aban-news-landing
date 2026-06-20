@@ -1,17 +1,15 @@
 #!/usr/bin/env node
 /* LuxeStyle — yt-learn.mjs  (User 2026-06-20 „der Youtuber alle Video analysieren mit Tool und lernen")
- * Analysiert ALLE Videos eines YouTube-Kanals mit yt-dlp und lernt die Gewinner-Muster (Hooks/Formate/
- * Titel/Laenge). LAEUFT AM PC (yt-dlp + eingeloggtes Brave = Cookies; YouTube blockt Cloud-IPs).
+ * Analysiert YouTube-Kanaele/Videos mit yt-dlp und lernt die Gewinner-Muster (Hooks/Formate/Titel/Laenge).
+ * LAEUFT AM PC (yt-dlp + eingeloggtes Brave = Cookies; YouTube blockt Cloud-IPs).
  *
- * 1) loest aus YT_URL (Video ODER Kanal) den Kanal auf
- * 2) listet alle Videos (Titel, Views, Dauer) -> sortiert nach Views
- * 3) holt Transkripte der Top-Videos -> extrahiert die HOOKS (erste Saetze)
- * 4) KI-Synthese (ai_generate) -> konkrete Lehren fuer LuxeStyle-Reels (Baerndütsch-Adaption)
- * 5) schreibt reports/yt-learn-<kanal>.json + reports/yt-learn-lehren.md (gepusht -> Cloud-Claude liest+lernt)
+ * Quellen: YT_URL (eine URL) ODER automation/yt-learn-urls.txt (mehrere, eine pro Zeile, # = Kommentar).
+ * Pro URL: Kanal aufloesen -> alle Videos (Titel/Views/Dauer) -> Top-Hooks (Transkripte) -> aggregiert.
+ * Dann KI-Synthese (ai_generate) -> konkrete Lehren fuer LuxeStyle-Reels. Report nach reports/ (gepusht).
  *
- * Lauf:  YT_URL="https://www.youtube.com/watch?v=XXXX" node automation/yt-learn.mjs
- * ENV:   YT_URL (Pflicht) · COOKIES_BROWSER=brave · TOP=25 · SUBS_TOP=8 · YTDLP=yt-dlp
- * No-op-sicher: ohne yt-dlp/URL klare Meldung, kein Crash.
+ * Lauf:  node automation/yt-learn.mjs              (liest die Liste)
+ *        YT_URL="https://youtu.be/XXXX" node automation/yt-learn.mjs   (eine URL)
+ * ENV:   COOKIES_BROWSER=brave · TOP=20 · SUBS_TOP=6 · YTDLP=yt-dlp
  */
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -20,38 +18,29 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const REP = path.join(ROOT, 'reports');
+const LIST = path.join(ROOT, 'automation', 'yt-learn-urls.txt');
 const YTDLP = process.env.YTDLP || 'yt-dlp';
-const URLIN = process.env.YT_URL || process.argv[2] || '';
 const BROWSER = process.env.COOKIES_BROWSER || 'brave';
-const TOP = parseInt(process.env.TOP || '25', 10);
-const SUBS_TOP = parseInt(process.env.SUBS_TOP || '8', 10);
+const TOP = parseInt(process.env.TOP || '20', 10);
+const SUBS_TOP = parseInt(process.env.SUBS_TOP || '6', 10);
 const COMMON = ['--no-check-certificates', '--no-warnings', '--cookies-from-browser', BROWSER];
 const log = (...a) => console.log(...a);
+const yt = (args) => execFileSync(YTDLP, [...COMMON, ...args], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
 
-function yt(args) { return execFileSync(YTDLP, [...COMMON, ...args], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }); }
-
-if (!URLIN) { log('YT_URL fehlt. Lauf: YT_URL="https://youtube.com/watch?v=..." node automation/yt-learn.mjs'); process.exit(0); }
+const urls = process.env.YT_URL ? [process.env.YT_URL]
+  : (fs.existsSync(LIST) ? fs.readFileSync(LIST, 'utf8').split('\n').map(s => s.trim()).filter(s => s && !s.startsWith('#')) : []);
+if (!urls.length) { log('Keine URLs (YT_URL oder automation/yt-learn-urls.txt).'); process.exit(0); }
 fs.mkdirSync(REP, { recursive: true });
 
-(async () => {
-  // 1) Kanal aufloesen
+function analyzeChannel(url) {
   let channel = '';
-  try { channel = yt(['--playlist-items', '1', '--print', '%(channel_url)s', URLIN]).trim().split('\n')[0]; }
-  catch (e) { log('yt-dlp Kanal-Aufloesung fehlgeschlagen (yt-dlp da? Brave eingeloggt?):', String(e.message).slice(0, 200)); process.exit(0); }
-  if (!channel) { log('Kein Kanal gefunden.'); process.exit(0); }
-  log('Kanal:', channel);
-
-  // 2) Alle Videos listen (flat = schnell)
+  try { channel = yt(['--playlist-items', '1', '--print', '%(channel_url)s', url]).trim().split('\n')[0]; } catch { return null; }
+  if (!channel) return null;
   let lines = [];
-  try { lines = yt(['--flat-playlist', '--print', '%(view_count)s\t%(duration)s\t%(id)s\t%(title)s', `${channel}/videos`]).trim().split('\n').filter(Boolean); }
-  catch (e) { log('Video-Liste fehlgeschlagen:', String(e.message).slice(0, 160)); }
-  const vids = lines.map(l => { const [v, d, id, ...t] = l.split('\t'); return { views: parseInt(v) || 0, dur: parseInt(d) || 0, id, title: t.join('\t') }; })
-    .filter(x => x.id);
+  try { lines = yt(['--flat-playlist', '--print', '%(view_count)s\t%(duration)s\t%(id)s\t%(title)s', `${channel}/videos`]).trim().split('\n').filter(Boolean); } catch {}
+  const vids = lines.map(l => { const [v, d, id, ...t] = l.split('\t'); return { views: parseInt(v) || 0, dur: parseInt(d) || 0, id, title: t.join('\t') }; }).filter(x => x.id);
   vids.sort((a, b) => b.views - a.views);
-  log(`Videos gesamt: ${vids.length} · Top-Views: ${vids[0]?.views} · Median-Dauer: ${vids.length ? vids[Math.floor(vids.length / 2)].dur : 0}s`);
   const top = vids.slice(0, TOP);
-
-  // 3) Transkripte/Hooks der Top-Videos
   const hooks = [];
   for (const v of top.slice(0, SUBS_TOP)) {
     try {
@@ -59,30 +48,36 @@ fs.mkdirSync(REP, { recursive: true });
       yt(['--skip-download', '--write-auto-subs', '--sub-lang', 'en,de,en-US', '--sub-format', 'vtt', '-o', out, `https://www.youtube.com/watch?v=${v.id}`]);
       const f = fs.readdirSync(REP).find(n => n.startsWith(`_sub_${v.id}`) && n.endsWith('.vtt'));
       if (f) {
-        const txt = fs.readFileSync(path.join(REP, f), 'utf8').split('\n')
-          .filter(l => l && !/-->/.test(l) && !/^WEBVTT|^\d+$|^Kind:|^Language:/.test(l)).join(' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-        hooks.push({ title: v.title, views: v.views, hook: txt.slice(0, 220) });
+        const txt = fs.readFileSync(path.join(REP, f), 'utf8').split('\n').filter(l => l && !/-->/.test(l) && !/^WEBVTT|^\d+$|^Kind:|^Language:/.test(l)).join(' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        hooks.push({ title: v.title, views: v.views, hook: txt.slice(0, 200) });
         fs.unlinkSync(path.join(REP, f));
       }
     } catch {}
   }
+  log(`  ${channel}: ${vids.length} Videos, Top ${vids[0]?.views || 0} Views, ${hooks.length} Hooks`);
+  return { channel, total: vids.length, top: top.map(v => ({ views: v.views, dur: v.dur, title: v.title })), hooks };
+}
 
-  // 4) KI-Synthese der Lehren
+(async () => {
+  const seen = new Set(); const results = [];
+  for (const u of urls) {
+    log('Analysiere:', u);
+    const r = analyzeChannel(u);
+    if (r && !seen.has(r.channel)) { seen.add(r.channel); results.push(r); }
+  }
+  if (!results.length) { log('Nichts analysiert (yt-dlp da? Brave eingeloggt?).'); process.exit(0); }
+  const allHooks = results.flatMap(r => r.hooks).sort((a, b) => b.views - a.views).slice(0, 15);
   let lehren = '';
   try {
     const { generate } = await import('./ai/ai_generate.mjs');
-    const g = await generate({ system: 'Du bist Viral-Video-Analyst fuer einen Schweizer Mode-Shop. Antworte knapp, umsetzbar, Baerndütsch-tauglich.', maxTokens: 500,
-      prompt: `Analysiere diesen YouTuber. Top-Videos (Views | Titel | Hook):\n${hooks.map(h => `${h.views} | ${h.title} | ${h.hook}`).join('\n')}\n\nGib 5 konkrete, kopierbare Lehren fuer LuxeStyle-Reels (Hook-Formel, Titel-Struktur, Laenge, Format, Schnitt). Pro Lehre 1 Satz.` });
+    const g = await generate({ system: 'Du bist Viral-Video-Analyst fuer einen Schweizer Mode-Shop. Knapp, umsetzbar, Baerndütsch-tauglich.', maxTokens: 600,
+      prompt: `Top-Videos mehrerer YouTuber (Views | Titel | Hook):\n${allHooks.map(h => `${h.views} | ${h.title} | ${h.hook}`).join('\n')}\n\nGib 6 konkrete, kopierbare Lehren fuer LuxeStyle-Reels: Hook-Formel (erste 3 Sek), Titel-Struktur, ideale Laenge, Format, Schnitt-Tempo, CTA. Pro Lehre 1 Satz.` });
     lehren = g.text || '';
   } catch {}
-
-  // 5) Report schreiben
-  const slug = (channel.split('/').pop() || 'kanal').replace(/[^a-zA-Z0-9_-]/g, '');
-  const report = { ts: new Date().toISOString(), channel, total_videos: vids.length,
-    top_by_views: top.map(v => ({ views: v.views, dur: v.dur, title: v.title })), hooks, lehren };
-  fs.writeFileSync(path.join(REP, `yt-learn-${slug}.json`), JSON.stringify(report, null, 2) + '\n');
-  const md = `# YouTuber-Analyse: ${channel}\n_${report.ts}_\n\n**${vids.length} Videos** · Top-Views ${vids[0]?.views || '?'}\n\n## Top 10 nach Views\n${top.slice(0, 10).map(v => `- ${v.views} Views · ${v.dur}s · ${v.title}`).join('\n')}\n\n## Gewinner-Hooks\n${hooks.map(h => `- (${h.views}) ${h.hook}`).join('\n')}\n\n## 🧠 Lehren fuer LuxeStyle\n${lehren || '(keine KI-Synthese — Keys pruefen)'}\n`;
+  const report = { ts: new Date().toISOString(), channels: results.map(r => ({ channel: r.channel, total: r.total })), top_hooks: allHooks, lehren };
+  fs.writeFileSync(path.join(REP, 'yt-learn-report.json'), JSON.stringify(report, null, 2) + '\n');
+  const md = `# YouTuber-Analyse (${results.length} Kanaele)\n_${report.ts}_\n\n${results.map(r => `**${r.channel}** — ${r.total} Videos`).join('\n')}\n\n## Top-Hooks (nach Views)\n${allHooks.map(h => `- (${h.views}) ${h.title}: ${h.hook}`).join('\n')}\n\n## 🧠 Lehren fuer LuxeStyle\n${lehren || '(keine KI-Synthese — Keys pruefen)'}\n`;
   fs.writeFileSync(path.join(REP, 'yt-learn-lehren.md'), md);
-  log(`\nFertig. Report: reports/yt-learn-${slug}.json + reports/yt-learn-lehren.md`);
+  log(`\nFertig: ${results.length} Kanaele. Report: reports/yt-learn-report.json + yt-learn-lehren.md`);
   if (lehren) log('\n🧠 LEHREN:\n' + lehren);
 })().catch(e => { log('Fehler:', e.message); process.exit(0); });
