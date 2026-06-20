@@ -89,6 +89,24 @@ const TRUST = '<hr><p><strong>LuxeStyle CH</strong> · Gratis-Versand ab CHF 49 
   const mfrs = {}; try { for (const m of await bbGet(`/catalog/manufacturers.json?isoCode=de`)) mfrs[m.id] = m.name; } catch {}
 
   const list = await bbGet(`/catalog/products.json?parentTaxonomy=${root}&isoCode=de`);
+  // TOPSELLER-PRIORISIERUNG (User 2026-06-20 „bigbuy topseller"): Liste nach BigBuys echtem Bestseller-
+  // Ranking sortieren → die meistverkauften Produkte zuerst importieren. No-op-sicher (faellt die
+  // bestsellers-API aus, bleibt die Original-Reihenfolge). Abschalten mit BESTSELLER=0.
+  if (process.env.BESTSELLER !== '0') {
+    try {
+      const bs = await bbGet(`/catalog/bestsellers.json`);
+      const rank = {};
+      (bs || []).forEach((b, i) => {
+        const id = b.id ?? b.product ?? b.productId;
+        if (id != null) rank[String(id)] = (b.sales != null ? -Number(b.sales) : (b.position != null ? Number(b.position) : i));
+      });
+      const known = Object.keys(rank).length;
+      if (known) {
+        list.sort((a, b) => (rank[String(a.id)] ?? 1e9) - (rank[String(b.id)] ?? 1e9));
+        log(`🔝 Topseller-Ranking aktiv: ${known} BigBuy-Bestseller bekannt → meistverkaufte zuerst.`);
+      } else log('Bestseller-Liste leer/unbekanntes Format → Original-Reihenfolge.');
+    } catch (e) { log('Bestseller-Ranking nicht verfuegbar:', e.message, '→ Original-Reihenfolge.'); }
+  }
   log(`BigBuy Root ${root}: ${list.length} Produkte · Ziel: ${MAX} neue (Markup ${MARKUP}) ${DRY ? '(DRY)' : ''}`);
   const seen = seenEans();
   let made = 0; const created = [];
