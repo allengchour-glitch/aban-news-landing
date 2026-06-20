@@ -136,8 +136,19 @@ async function pickFromSearch(p, value) {
   if (await clickAny(p, ['Identity', 'Identität'])) { await pickFromSearch(p, C.identity); }
   // Video hochladen (oder aus Bibliothek). Datei-Input setzen falls vorhanden.
   try {
+    // POLICY-SAFE (User 2026-06-20 "schaue Fails": TikTok lehnt Ads mit eingebetteter Musik am haeufigsten ab):
+    // Creative TONLOS hochladen -> kein Musik-Copyright-Strike im Ad-Review. CAMPAIGN_KEEP_AUDIO=1 behaelt Ton.
+    let upVid = C.video;
+    if (process.env.CAMPAIGN_KEEP_AUDIO !== '1') {
+      try {
+        const { execSync } = await import('node:child_process'); const os = (await import('node:os')).default;
+        const sv = path.join(os.tmpdir(), 'camp-' + path.basename(C.video));
+        execSync(`ffmpeg -y -nostdin -i "${C.video}" -c:v copy -an "${sv}"`, { stdio: 'ignore' });
+        if (fs.existsSync(sv) && fs.statSync(sv).size > 10000) { upVid = sv; log('🔇 Creative tonlos (Musik-Copyright-Schutz fuers Ad-Review).'); }
+      } catch (e) { log('Tonlos-Hinweis:', e.message); }
+    }
     const inp = await p.$('input[type="file"]');
-    if (inp) { await inp.setInputFiles(C.video); log('Creative gesetzt:', path.basename(C.video)); await sleep(8000); }
+    if (inp) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(8000); }
     else log('⚠️ Kein Datei-Input — evtl. erst "Upload" klicken (Screenshot).');
   } catch (e) { log('Video-Upload-Hinweis:', e.message); }
   await fillAny(p, 'Text', C.adtext).catch(() => {});
