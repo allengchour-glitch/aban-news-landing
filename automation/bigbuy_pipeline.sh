@@ -18,6 +18,7 @@ N=/opt/node22/bin/node
 set -a; . /tmp/shopify_creds.env; set +a
 export BIGBUY_API_KEY="$(cat /tmp/bigbuy_key.txt)"
 export GEMINI_API_KEY="$(cat /tmp/gemini_key 2>/dev/null || echo)"
+export GROQ_API_KEY="$(cat /tmp/groq_key.txt 2>/dev/null || echo)"
 LOG="/tmp/pipe_$(date +%s).log"
 echo "════ 1) IMPORT  CATS=$CATS PER=$PER ════"
 CATS="$CATS" PER="$PER" GAP="$GAP" LIVE=1 $N automation/bigbuy_import.mjs 2>&1 | tee "$LOG" | grep -E "===|Fertig:|⚠️|✅" || true
@@ -33,6 +34,8 @@ echo "════ 6) GMC age/gender/Kategorie/Farbe ════"
 LIVE=1 $N automation/gmc_attributes_fix.mjs 2>&1 | tail -1
 LIVE=1 $N automation/gmc_category_fix.mjs 2>&1 | tail -1
 LIVE=1 $N automation/gmc_color_fix.mjs 2>&1 | tail -1
+echo "════ 6b) KI-KATEGORIE-POLISH (Groq/Gemini, nur leere Beschr.) ════"
+ONLY_EMPTY=1 LIVE=1 $N automation/ai_polish_collections.mjs 2>&1 | tail -2 || true
 echo "════ 7) COMMIT ════"
 git add -A && git commit -q -m "pipeline: auto-holen+cleanen ($CATS) — +$CNT, Merchant-sauber
 

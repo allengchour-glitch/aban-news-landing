@@ -1093,3 +1093,21 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 > **⭐ TOPSELLER + MARKEN-KATEGORIEN (2026-06-18, User „eigene Kategorie Topseller? / jede"):** Da KEINE echten Verkaufsdaten (0 Orders) → kuratierte Marken-Bestseller. **„⭐ Topseller"** Smart-Collection (`topseller`, VENDOR-Regel disjunktiv über ~28 Top-Marken → 355 Produkte, auto-befüllt). **+20 Einzel-Marken-Collections** (`marke-<slug>`, VENDOR EQUALS): Nike/Adidas(50)/New Era(41)/Puma(44)/Champion(25)/Under Armour/Jack&Jones/Reebok/Gant/Chanel/Clinique/Artdeco/Versa(53)/Quid/Safta/Startech/Nacon/Hi-Tec/Project X Paris/Logitech. Alle 7 Kanäle publiziert. **Menü:** „⭐ Topseller" + „🏷️ Marken"-Dropdown ganz vorne. Vorteil VENDOR-Smart-Regel: kein Tagging, füllt sich automatisch bei neuen Marken-Produkten.
 
 > **🚀 CONVERSION-AUSBAU (2026-06-18, User „voll gas alle 3 / weiter alles inkl verbesserung"):** Marken-Welten ausgebaut: **⭐ Topseller** (363, Gold-Hero-Banner `pod/heroes/topseller-hero.png`) + **🏃 Marken-Sportswear** (193) + **👔 Mode-Marken** (71) + **🎧 Tech & Audio-Marken** (94) + **💄 Beauty-Marken** (62) — alle VENDOR-Smart-Regeln (auto-befüllt), 7 Kanäle, Heroes/SEO. **Menü:** „🏷️ Marken"-Dropdown = 5 Themen-Welten + 20 Einzelmarken; „⭐ Topseller" Top-Level. **Startseite:** Topseller als 2. Sektion (nach WM) eingebaut (`templates/index.json` → `product_list_topseller`). **#1 Feed datenfertig (Google re-crawl/Microsoft-Genehmigung/Meta läuft extern), #2 Cloudflare-Worker BLOCKIERT (Token IP-gefiltert — User muss IP-Filter entfernen).**
+
+---
+## 📌 2026-06-20 (🤖 GROQ-KI-POLISH + Pipeline-Filter-Fix — Dropship-Session)
+- **Neuer KI-Texter `automation/ai_polish_collections.mjs`:** poliert KATEGORIE-Seiten (Collections)
+  mit **Groq llama-3.3-70b** (schnell+gratis, Key `/tmp/groq_key.txt`, vom User 2026-06-20), Gemini-Fallback.
+  Generiert premium-DE-Beschreibung (2 Absätze, echte Marken aus Produkten, KEINE erfundenen) + SEO-Titel/-Desc
+  + einheitliche Trust-Zeile. **DRY-Default, LIVE=1 schreibt; ONLY_EMPTY=1** poliert nur leere/schwache Beschr.
+  **Live gelaufen:** 22 Collections mit leerer Beschreibung poliert (Audio→echte Marken Startech/DCU/Hiditec/Trust,
+  Wandkunst, Garten, Bar-Tools, Damen/Herren-Schuhe, Uhren, sg-Editor-Subs …), 228 mit guter Beschr. übersprungen.
+- **In `automation/bigbuy_pipeline.sh` als Schritt 6b verdrahtet** (GROQ_API_KEY export + ONLY_EMPTY-Polish vor Commit)
+  → jeder Pipeline-Lauf poliert künftig automatisch neue/leere Kategorie-Seiten. „Regelmässig polishen" = erledigt.
+- **🐛 Filter-Bug gefixt (bigbuy_import.mjs):** Damenmode-Anchor `'dress'` matchte fälschlich **„Dressurhalsband"**
+  (Hunde-Kopfhalfter) → 5 Hunde-Produkte landeten LIVE in 👗 Damen-Mode. Fix: `'dress'`→`'dress '` + Bans
+  `hund/halsband/halfter/kopfhalfter/dressur/leine/haustier/tier`. **Die 5 falschen Produkte archiviert** (nicht mehr sichtbar).
+- **Pipeline-Demo-Lauf (damenmode/taschen/schmuck/lederwaren/sets):** taschen/schmuck/lederwaren = **gesättigt**
+  (6396 taschen-Kandidaten, fast alle Dubletten → sehr langsam, 0 saubere Treffer). Bestätigt erneut: **diese
+  Kern-Kategorien sind voll** — für neue Produkte frische/nachgefragte Kategorien wählen, nicht die gesättigten.
+- Groq-Key gilt auch für „sonstige" KI-Texte (Produktbeschreibungen etc.) — gleicher Endpoint, llama-3.3-70b.
