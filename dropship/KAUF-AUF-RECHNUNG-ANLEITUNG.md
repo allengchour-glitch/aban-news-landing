@@ -4,16 +4,22 @@
 > ohne Lieblings-Zahlart). Bestätigt: Express-Pay (Shop/Apple/Google) ist aktiv, Rechnung fehlt noch.
 > **Empfehlung: POWERPAY (MF Group)** — Schweizer Marktführer, native Shopify-App, du trägst KEIN Ausfallrisiko.
 
-## ⭐ Weg A — POWERPAY (empfohlen, ~15-20 Min)
-1. **Shopify-Admin → Apps → „POWERPAY" suchen** (Anbieter MF Group) → **Installieren**.
-   (Alternativ: apps.shopify.com nach „Powerpay" / „MF Group" suchen.)
-2. **Händler-Konto registrieren** (~5 Min): Firmenname/Adresse, UID/Handelsregister, Bankkonto (IBAN), Kontaktperson.
-3. **Freigabe durch MF Group abwarten** (oft 10-15 Min, kann bis 1-2 Tage dauern — Bonitäts-/Firmencheck).
-4. **App aktiviert sich am Ende des Setups automatisch** als Zahlungsmethode.
-5. **Admin → Einstellungen → Zahlungen** → prüfen, dass „Rechnung / Powerpay" gelistet + aktiv ist.
-6. **Testbestellung** am Handy: Rechnung als Zahlart wählbar? → fertig.
+## ⚠️ Korrektur: „POWERPAY" hat KEINE eigene Shopify-App
+POWERPAY/CembraPay ist der Rechnungs-Anbieter im Hintergrund — installierbar ist er über eine der folgenden Apps.
 
-**Kosten (ehrlich):** POWERPAY nimmt eine **Gebühr pro Rechnungs-Transaktion** (Prozentsatz, da sie das Risiko + Mahnwesen übernehmen) — fällt nur an, wenn du verkaufst. Lohnt sich, weil es die ~⅓ Rechnungs-Käufer überhaupt erst konvertiert (kein Fixkosten-Risiko).
+## ⭐ Weg A — Swissbilling (CembraPay) — direkt im App-Store, empfohlen
+1. **Shopify-Admin → Apps → „Swissbilling" suchen** (Anbieter: Swissbilling c/o CembraPay AG) → **Installieren**.
+   (Direkt: apps.shopify.com/swissbilling)
+2. **Händler-Konto bei CembraPay/Swissbilling** anlegen (Firma/UID/IBAN/Kontakt) → Freigabe abwarten.
+3. App schaltet „Kauf auf Rechnung" als Zahlart frei (Kunde sieht/prüft Ware, zahlt danach — oder in bis zu 3 Raten/90 Tage).
+4. **Admin → Einstellungen → Zahlungen** → „Rechnung/Swissbilling" aktiv? → **Testbestellung** am Handy.
+
+**Du trägst kein Ausfallrisiko** (CembraPay übernimmt Bonität + Mahnwesen). **Kosten:** % pro Rechnungs-Verkauf (nur wenn du verkaufst).
+
+## ⭐ Weg B — Payrexx (ein Dashboard für ALLES: TWINT + Karten + Rechnung)
+1. **App-Store → „Payrexx" suchen** → installieren, Payrexx-Konto anlegen.
+2. In Payrexx die Zahlarten aktivieren: TWINT, Karten, **Rechnung (via CembraPay)** + optional TWINT Pay Later.
+3. Vorteil: alle Zahlarten über EIN Schweizer Dashboard.
 
 ## Weg B — Payrexx (wenn du EINEN Anbieter für alles willst)
 - Payrexx = Schweizer Payment-Gateway; bündelt TWINT + Karten + **Rechnung (via CembraPay/POWERPAY)**.
