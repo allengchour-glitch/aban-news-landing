@@ -39,3 +39,11 @@
 - Foto/Karussell-Posts per API (`media_type=PHOTO`) — neue Format-Vielfalt.
 - Trend-Sound-Vorschläge automatisch in die Caption („Sound-Tipp: …") da Sound nur manuell geht.
 - A/B: 2 Hooks pro Produkt testen, Gewinner ins Gehirn.
+
+## Lehren 2026-06-20 (User-Feedback)
+- **Marken-Video Produkt-Auswahl:** mit BREIT-beliebten, erschwinglichen Produkten FUEHREN (Sonnenbrillen/Beauty/
+  Accessoires unter ~CHF 50). Luxus (z.B. Michael Kors CHF 107) nur als Akzent am ENDE - "nicht jeder will das Teure".
+  Massentauglich zuerst = mehr Stopper.
+- **PC-Klick-Regel (User "mach du selber klick bei mir"):** PC-Aktionen (TikTok-Post, Kampagne) loese ICH per
+  Fernsteuerung aus (Worker cmd-queue -> cmd-poll LuxeCmd) - der PC klickt, der User nicht. Einzige Bedingung:
+  PC AN + Listener laeuft (SUPERBOT-SETUP.bat). Cloud kann PC nicht einschalten/einloggen.
