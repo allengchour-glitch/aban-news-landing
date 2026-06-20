@@ -3,6 +3,11 @@
 $ErrorActionPreference = "Continue"
 $repo = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
+# SINGLE-INSTANCE (FIX 2026-06-20 "laeuft ohne Pause"): ueberlappende cmd-poll-Laeufe nicht stapeln
+# (langer Job laeuft noch, naechster 10-Min-Poll startet) -> kein Stau/Doppellauf. Weitere Instanz raus.
+$global:CmdMtx = New-Object System.Threading.Mutex($false, "Global\LuxeCmdPoll")
+$cmdGot = $false; try { $cmdGot = $global:CmdMtx.WaitOne(0) } catch { $cmdGot = $true }
+if (-not $cmdGot) { exit }
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
 if (-not (Test-Path $brave)) { $brave = "C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe" }
