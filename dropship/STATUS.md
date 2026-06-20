@@ -11,6 +11,11 @@
 - **Bot läuft:** Posting-Queue 46 Einträge frisch. Gehirn-Regel `funnel_befund_2026_06_20` (125 Regeln).
 - **Handlung:** (1) Kampagne nicht verlängern. (2) Kauf-auf-Rechnung live (CembraPay-Antrag gesendet). (3) Pixel auf
   „Add to Cart" optimieren bis Events. (4) Google Free Listings gegen search=55. Erst dann wieder Budget.
+- **🔧 ROBUSTHEIT (Wurzel von „PC aktiv, nichts läuft" gefixt):** cmd-poll-Lock war Dauer-Mutex → hing ein Lauf,
+  fror der Befehlskanal für immer ein. Jetzt **stale-toleranter Lock** (Commit 876d1fac) + **Task-Zeitlimit**
+  (LuxeCmd 20m / Browser-Tasks 45m, 783d6920) → hängender Task wird gekillt, Locks frei, Bot friert nie dauerhaft ein.
+- **✅ Katalog-QA (Cloud):** 50 aktive Top-Produkte geprüft → alle Bilder READY, Top-/Ad-Produkte alle SEO-komplett.
+  Nichts kaputt. Neue ATC-Daten-Kampagne (CHF10/Tag, Cap70) + ig-delete in PC-Queue, laufen beim 05:00-Selbstheilung.
 
 ## 2026-06-20 (SPÄT) — Kauf-auf-Rechnung-Block geklärt + Live-Zahlen
 - **🧾 ✅ ANTRAG GESENDET:** User hat über die swissbilling-App die **Kontaktanfrage an CembraPay AG** abgeschickt
