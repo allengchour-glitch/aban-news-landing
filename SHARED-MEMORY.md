@@ -1077,3 +1077,11 @@ Mobile-Karten, Telegram-Digest). Nutzt geteilte Secrets `GEMINI_API_KEY` + `TELE
 > - **Merchant/GMC:** Marke(vendor)+GTIN/Barcode, google_product_category, condition=new, age_group, gender — komplett.
 > **⚠️ Such-Index-Falle (WICHTIG):** Massen-Writes (z. B. 1987 productUpdates) bringen den Shopify-Such-Index („tag:bigbuy"-Pagination) kurz zum Stocken → nächster Bulk-READ liefert dieselbe Seite/loopt. Lösung: **Zwei-Phasen** (erst alle IDs sammeln, dann schreiben) + **Stall-Guard** + ~10 Min warten zwischen Bulk-Ops. Einzelabfragen (first:N ohne Cursor) funktionieren immer.
 > **MICROSOFT = gleiche Feed-Spec wie Google** → datenseitig fertig. Offen (nur User): Microsoft Merchant Center via „Import from Google Merchant Center" (ads.microsoft.com) ODER Shopify-App „Microsoft Channel". **BigBuy liefert KEINE Videos** (video-Feld leer im 313k-Katalog).
+
+> **🛒 GOOGLE-MERCHANT „NEEDS ATTENTION" GEFIXT (2026-06-18, User-Screenshots Merchant Center):**
+> 3 Hauptprobleme diagnostiziert + behoben:
+> 1. **„Product page unavailable" (3,29K/12,2%)** = TRANSIENT (Googlebot-Crawl-Throttling während Massen-Updates). Stichprobe: alle Produkt-URLs HTTP 200 (auch als Googlebot), Store ohne Passwort → **kein echter Fehler**, User klickt „Request website check".
+> 2. **„Missing product image" (416)** = veraltet/Varianten. Voll-Scan 3434 aktive Produkte: **0 ohne Bild** (Medien-Pass hatte's gefixt).
+> 3. **„Unsupported image type" (331 .webp, v.a. CJ)** → `webp_swap.mjs`: alle 331 WebP per Pillow → JPG konvertiert, als Hauptbild gesetzt, WebP gelöscht (331 ok, 0 Fehler). **Lehre: CJ liefert WebP → Google will JPEG/PNG/GIF.**
+> + **Farb-Attribut:** `automation/gmc_color_fix.mjs` → 662 Produkte `mm-google-shopping.color` aus Titel-Farbwort (Merchant-Empfehlung).
+> Feed-Tools: `/tmp/imgscan.mjs` (Bild-Audit), `/tmp/webp_swap.mjs`, `/tmp/conv_manifest.json`.
