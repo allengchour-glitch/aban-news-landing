@@ -763,6 +763,19 @@
       "frequenz": "1-3 Posts/Tag (Konsistenz schlaegt Perfektion). Start 3-5/Woche, dann hochskalieren. Aggressives Testen bis 5/Tag.",
       "sound": "Trend-Sounds + virale Challenges = Algorithmus-Boost (in-App drauflegen, da lizenziert).",
       "anwenden": "build_masterpiece/build_montage_fast: Hook in Sek 1, MONTAGE (schnelle Cuts) statt langes Einzelbild bevorzugen, Produkt-in-Use wenn moeglich, weiche CTA. Posting-Kadenz 1-3/Tag halten. smartCaption: Problem-Loesung-Hook."
+    },
+    "cro_playbook_2026": {
+      "quelle": "Websuche 2026-06-20 (shopify/bloomreach/tidio/getmesa) - Conversion-Rate-Optimierung",
+      "ziel": "Mehr % der Besucher kaufen. Benchmark: >3% Conversion = exzellent. (LuxeStyle aktuell ~0 -> Traffic+CRO).",
+      "hebel": [
+        "Social Proof: echte Reviews/Sterne auf PDPs (groesster Vertrauens-Hebel, neuer Shop)",
+        "Produkt-Empfehlungen: Cross-/Upsell + 'oft zusammen gekauft' -> AOV hoch + laenger im Shop",
+        "Express-Checkout: TWINT/Apple/Google/Shop Pay = weniger Friktion",
+        "Heatmaps/Session-Replay GRATIS: Microsoft Clarity einbauen -> echte Leaks sehen",
+        "Multi-Channel-Recovery: Abandoned-Cart-Mail/SMS/Push",
+        "Klare Value-Props + Dringlichkeit + Gratis-Versand-Progressbar"
+      ],
+      "anwenden": "CizQ6 autonom: Cross-Sell/Bundles anlegen, PDP-Trust-Bloecke, Angebot prominent. User-only: Reviews importieren, Express-Pay aktivieren, Microsoft Clarity einbauen, Free Listings. Prioritaet: erst Buy-Intent-Traffic (Kampagne), dann CRO-Feintuning."
     }
   },
   "decisions": [
