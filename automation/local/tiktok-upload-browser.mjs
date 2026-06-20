@@ -166,8 +166,12 @@ function toSilent(file) {
   }
   if (DRY) { log('[dry] würde Video setzen + Caption füllen + posten. (Datei-Input gefunden ✓)'); process.exit(0); }
 
-  const upFile = toSilent(file); // TikTok = stumm hochladen (Trend-Sound in-app)
-  if (upFile !== file) log('🔇 Tonlose TikTok-Kopie erstellt (Trend-Sound legst du in der App drauf).');
+  // User 2026-06-20 "gepostet aber ohne Ton": organische TikTok-Posts kommen MIT eingebackener Musik
+  // (CC-BY, kommerziell ok) -> jeder Post hat automatisch Sound = voll autonom. TIKTOK_SILENT=1 = wieder
+  // stumm (falls man lieber den In-App-Trend-Sound nutzen will). (Bezahlte Ads bleiben separat tonlos.)
+  const upFile = process.env.TIKTOK_SILENT === '1' ? toSilent(file) : file;
+  if (upFile !== file) log('🔇 Tonlose Kopie (TIKTOK_SILENT=1) — Trend-Sound in der App.');
+  else log('🔊 Mit eingebackener Musik (Sound automatisch).');
   await input.setInputFiles(upFile);
   log('Video gesetzt, warte auf Verarbeitung…');
   await sleep(15000);
