@@ -21,8 +21,8 @@ const REP = path.join(ROOT, 'reports');
 const LIST = path.join(ROOT, 'automation', 'yt-learn-urls.txt');
 const YTDLP = process.env.YTDLP || 'yt-dlp';
 const BROWSER = process.env.COOKIES_BROWSER || 'brave';
-const TOP = parseInt(process.env.TOP || '20', 10);
-const SUBS_TOP = parseInt(process.env.SUBS_TOP || '6', 10);
+const TOP = parseInt(process.env.TOP || '40', 10);       // mehr Videos erfassen (User: alle anschauen)
+const SUBS_TOP = parseInt(process.env.SUBS_TOP || '8', 10);
 const COMMON = ['--no-check-certificates', '--no-warnings', '--cookies-from-browser', BROWSER];
 const log = (...a) => console.log(...a);
 const yt = (args) => execFileSync(YTDLP, [...COMMON, ...args], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
@@ -67,17 +67,31 @@ function analyzeChannel(url) {
   }
   if (!results.length) { log('Nichts analysiert (yt-dlp da? Brave eingeloggt?).'); process.exit(0); }
   const allHooks = results.flatMap(r => r.hooks).sort((a, b) => b.views - a.views).slice(0, 15);
+  const allTitles = results.flatMap(r => r.top).sort((a, b) => b.views - a.views).slice(0, 50);  // alle Videos (Titel+Views)
   let lehren = '';
   try {
     const { generate } = await import('./ai/ai_generate.mjs');
     const g = await generate({ system: 'Du bist Viral-Video-Analyst fuer einen Schweizer Mode-Shop. Knapp, umsetzbar, Baerndütsch-tauglich.', maxTokens: 600,
-      prompt: `Top-Videos mehrerer YouTuber (Views | Titel | Hook):\n${allHooks.map(h => `${h.views} | ${h.title} | ${h.hook}`).join('\n')}\n\nGib 6 konkrete, kopierbare Lehren fuer LuxeStyle-Reels: Hook-Formel (erste 3 Sek), Titel-Struktur, ideale Laenge, Format, Schnitt-Tempo, CTA. Pro Lehre 1 Satz.` });
+      prompt: `ALLE Top-Videotitel (Views | Titel):\n${allTitles.map(h => `${h.views} | ${h.title}`).join('\n')}\n\nGEWINNER-HOOKS (Transkript-Anfang):\n${allHooks.map(h => `${h.views} | ${h.hook}`).join('\n')}\n\nGib 6 konkrete, kopierbare Lehren fuer LuxeStyle-Reels: Hook-Formel (erste 3 Sek), Titel-Struktur, ideale Laenge, Format, Schnitt-Tempo, CTA. Pro Lehre 1 kurzer Satz, direkt umsetzbar.` });
     lehren = g.text || '';
   } catch {}
   const report = { ts: new Date().toISOString(), channels: results.map(r => ({ channel: r.channel, total: r.total })), top_hooks: allHooks, lehren };
   fs.writeFileSync(path.join(REP, 'yt-learn-report.json'), JSON.stringify(report, null, 2) + '\n');
   const md = `# YouTuber-Analyse (${results.length} Kanaele)\n_${report.ts}_\n\n${results.map(r => `**${r.channel}** — ${r.total} Videos`).join('\n')}\n\n## Top-Hooks (nach Views)\n${allHooks.map(h => `- (${h.views}) ${h.title}: ${h.hook}`).join('\n')}\n\n## 🧠 Lehren fuer LuxeStyle\n${lehren || '(keine KI-Synthese — Keys pruefen)'}\n`;
   fs.writeFileSync(path.join(REP, 'yt-learn-lehren.md'), md);
+  // 🤖 "setze um fuer autobot": Lehren INS GEHIRN schreiben -> Content-Generatoren (Captions/Reels/Hooks) nutzen sie
+  if (lehren) {
+    try {
+      const kp = path.join(ROOT, 'automation/brain/knowledge.json');
+      const k = JSON.parse(fs.readFileSync(kp, 'utf8'));
+      k.updated = new Date().toISOString().slice(0, 10);
+      k.rules.yt_gelernt = { stand: report.ts, quelle: results.map(r => r.channel),
+        top_hooks: allHooks.slice(0, 6).map(h => h.title), lehren,
+        anwenden: 'Diese Hook-Formeln/Titel-Struktur/Laenge in Reels+Captions umsetzen (build_masterpiece, build_montage_fast, smartCaption, build_queue).' };
+      fs.writeFileSync(kp, JSON.stringify(k, null, 2) + '\n');
+      log('🤖 Lehren ins Gehirn geschrieben (rules.yt_gelernt) -> Autobot wendet sie an.');
+    } catch (e) { log('Gehirn-Update Hinweis:', e.message); }
+  }
   log(`\nFertig: ${results.length} Kanaele. Report: reports/yt-learn-report.json + yt-learn-lehren.md`);
   if (lehren) log('\n🧠 LEHREN:\n' + lehren);
 })().catch(e => { log('Fehler:', e.message); process.exit(0); });
