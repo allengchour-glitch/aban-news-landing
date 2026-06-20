@@ -988,6 +988,16 @@
       "trust": "Trusted-Shops-Siegel + vollstaendiges Impressum + CHF mit MwSt/Versand-Klarheit = DACH-Basis. Kosten VOR letztem Schritt zeigen, Gastkauf, Felder kuerzen (kein Tel/Geburtstag), Rueckgabe+Sicherheit im Checkout.",
       "top3": "(1) TWINT+Rechnung+Shop Pay sicherstellen, (2) Trusted-Shops-Siegel + alle Kosten vor Bezahlung, (3) breite TikTok-Ads stoppen -> Checkout-Abbrecher retargeten + 2-3 CH-Micro-Creators bezahlt mit Mundart-Hook seeden.",
       "stand": "2026-06-20"
+    },
+    "dach_ugc_payment_2026": {
+      "quelle": "Recherche-Agent breit DACH/UGC (2026-06-20, via jina-Proxy+DDG, WebSearch down). Taktiken hohe Konfidenz, Creator-Namen mittel.",
+      "payment_KORREKTUR": "KLARNA ist fuer SCHWEIZER Haendler NICHT verfuegbar -> NICHT verfolgen! Fuer CH-Rechnung/Raten: Swissbilling(CembraPay)/Powerpay(MF Group)/Riverty, Gateways Unzer/Mollie. (korrigiert frueheren Klarna-Hinweis)",
+      "payment_daten": "Kauf auf Rechnung = 26.7% der DE-Zahlungen; ~38.7% der Warenkorb-Abbrueche durch fehlende Wunsch-Zahlart. TWINT Express Checkout (mobil, ohne Registrierung) = Top-CH-Conversion-Hebel.",
+      "neue_creators": "Wisam Ajj (ecom-empire.de, organic ohne Ads, gratis TikTok-Shop-Discord), Oleg Zajc (@ecom.oleg, DE Schritt-fuer-Schritt organic), Tom Gnodtke/eCom Tom (organic-first). DACH-Seeding: vorsprung-schweiz.ch, qubesmedia.com, influencer-marketing.de.",
+      "ugc_frameworks": "5-Beat: Hook->Problem->Demo->Payoff->soft CTA (~30s). 5-Step Direct Response: Hook,Problem,Solution,PROOF,CTA - der PROOF-Beat fehlt uns (0 Reviews=0 Trust). Rotation PAS/BAB/AIDA. Hook: visueller Payoff ZUERST + Preis-Anker + Mundart (deckt sich mit unseren Daten).",
+      "trust_pdp": "DACH braucht: CHF-Preise, revDSG/Impressum, SICHTBARE Reviews, Sicher-Zahlen + 30-Tage-Rueckgabe + Versand-aus-CH-Badges beim Kaufbutton. Fehlende Reviews auf PDP = benannter Conversion-Killer (unsere Schmuck-Seiten = 0 Reviews = exakt das Problem).",
+      "prioritaet": "(1) CH-Rechnung + TWINT Express verifizieren, (2) echte Reviews + CH-Trust-Badges auf PDP (Proof-Beat), (3) Ads als 5-Beat-UGC Payoff-first+Mundart, Gewinner Spark-Ad statt breit.",
+      "stand": "2026-06-20"
     }
   },
   "decisions": [
