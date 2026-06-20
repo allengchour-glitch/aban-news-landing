@@ -938,6 +938,13 @@
       "search_tot": "search nur 55/30T = SEO praktisch tot -> Google Free Listings + Meta-Beschreibungen = Upside.",
       "handlung": "1) Kampagne nicht verlaengern. 2) Kauf-auf-Rechnung live (CembraPay-Antrag laeuft). 3) Pixel auf AddToCart optimieren bis Events. 4) erst dann wieder Budget.",
       "stand": "2026-06-20"
+    },
+    "klaviyo_flows_live_verifiziert": {
+      "stand": "2026-06-20 (via Klaviyo-MCP selbst geprueft)",
+      "live": "Abandoned Checkout (Vse76a), Abandoned Cart EN/US, Welcome-Serie (DE+EN), Win-Back (DE+EN), At-Risk Win-Back 15%, Post-Purchase Review, VIP-Upgrade - ALLE live.",
+      "drafts_egal": "2x \"Essential Flow Recommendation\" + Birthday CHF15 = Klaviyo-Auto-Vorschlaege, harmlos.",
+      "lehre": "E-Mail-Recovery ist KEINE Luecke mehr - greift automatisch, ABER nur wenn E-Mail im Checkout erfasst. Luecke bleibt der BEZAHL-Schritt (Kauf-auf-Rechnung) + Domain-Auth (sonst Spam).",
+      "nicht_anfassen": "Live-Flows NICHT blind editieren (3 Welcome-Varianten = Doppel-Mail-Risiko). Rechnung-Erwaehnung in Abbruch-Mails erst wenn Zahlart live."
     }
   },
   "decisions": [
