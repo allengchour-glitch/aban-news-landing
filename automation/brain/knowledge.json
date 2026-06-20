@@ -900,6 +900,11 @@
         "Effekte/xfade nur an 2-3 Schluesselstellen, sonst harte Cuts"
       ],
       "anwenden": "build_masterpiece/build_montage_fast: Segmente <=2.5s, Punch-in, animierte Text-Reveals, Loop-faehiges Ende. Mittelfristig Beat-Detection."
+    },
+    "email_flows_bereit": {
+      "fest": "Komplettes Klaviyo-Flow-Playbook (6 Flows, CH-Deutsch, copy-paste) in dropship/EMAIL-FLOWS-KLAVIYO.md.",
+      "prio": "Abandoned Checkout > Cart > Welcome > Browse > Post-Purchase > Win-Back. Flows = 25-35% Umsatz.",
+      "anwenden": "User/Theme-Session: in Klaviyo eintragen (Domain-Auth zuerst). Codes trennen (WELCOME10/COMEBACK10/WELCOMEBACK15). Review-Request-Mail = sammelt UGC/Reviews (loest Trust-Engpass)."
     }
   },
   "decisions": [
