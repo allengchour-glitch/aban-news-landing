@@ -718,6 +718,18 @@ function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({
 function attr(s) { return esc(s).replace(/'/g, "&#39;"); }
 function b64(s) { try { return btoa(unescape(encodeURIComponent(String(s || "")))); } catch (e) { return ""; } }
 
+function relatedBlock(it, id) {
+  const others = Object.entries(DEMO).filter(([k, v]) => k !== id && v.kat === it.kat).slice(0, 4);
+  if (!others.length) return "";
+  const card = ([k, v]) => {
+    const im = (v.bild && /^https:\/\//i.test(v.bild))
+      ? `<div style="aspect-ratio:4/3;background:#f3eee4 center/cover no-repeat;background-image:url('${attr(v.bild)}')"></div>`
+      : `<div style="aspect-ratio:4/3;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:2rem">${esc(v.emoji || "🏷️")}</div>`;
+    return `<a href="/inserat/${encodeURIComponent(k)}" style="background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;text-decoration:none;color:var(--ink);display:flex;flex-direction:column">${im}<div style="padding:8px 10px"><div style="font-size:.82rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:3px">${esc(v.titel || "")}</div><div style="color:var(--amber-dk);font-weight:800;font-size:.84rem">${esc(v.preis || "")}</div></div></a>`;
+  };
+  return `<section style="margin-top:18px"><h3 style="font-size:1.05rem;margin:0 0 10px">↪ Ähnliche Inserate <span style="font-weight:500;color:var(--muted);font-size:.85rem">· ${esc(it.kat || "")}</span></h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px">${others.map(card).join("")}</div></section>`;
+}
+
 function page(it, demo, id) {
   const canonical = "https://abannews.com/inserat/" + encodeURIComponent(id || "");
   const title = (it.titel || "Inserat") + " — aban";
@@ -798,6 +810,7 @@ ${loc ? `<div class="loc">📍 ${loc}</div>` : ""}
 <div id="cOut"></div>
 <p class="note">Angaben stammen von der inserierenden Person; aban übernimmt keine Gewähr. Vorsicht bei Vorkasse — am besten persönlich übergeben.<br><a href="mailto:hallo@abannews.com?subject=${encodeURIComponent("Inserat melden: " + (it.titel || ""))}&body=${encodeURIComponent("Ich möchte dieses Inserat melden:\n" + canonical + "\n\nGrund:\n")}" style="color:var(--muted);text-decoration:underline">⚠️ Inserat melden</a></p>
 </div></div>
+${demo ? relatedBlock(it, id) : ""}
 <div id="reco" style="margin-top:18px"></div>
 </div>
 <div class="toast" id="toast"></div>
