@@ -1064,6 +1064,12 @@
       "FALSCHES_KONTO": "7646349875793182738 (\"LuxeStyle CH Ads\") = LEER/Onboarding-Wand (Add business info) -> NIE benutzen. War der Grund fuer alle gescheiterten Kampagnen.",
       "regel": "Bei TikTok-Ads IMMER aadvid=7643589765259493393 in die URL (in tiktok-campaign-port.mjs gesetzt). Identifikation des richtigen Kontos = das mit GUTHABEN + Impressions-Historie, nicht der Name. User muss sich nichts merken - Bot weiss es.",
       "stand": "2026-06-21"
+    },
+    "super_bot_mandat_2026": {
+      "fest": "User 2026-06-21 \"du steuerst alles ab jetzt. verbessere dich entwickle dich installiere dich update dich. wenn du recherchiert haettest wuerdest du ein superbot werden.\"",
+      "auftrag": "Volle Steuerung + Selbst-Entwicklung: jede Session (1) Stack-Health pruefen, (2) hoechst-wirksame Schwaeche selbst fixen, (3) recherchieren+anwenden, (4) committen+pushen, (5) Memory updaten. Self-pull (cmd-poll) = Selbst-Update. LuxeHealth = Selbst-Check. Ziel: laeuft + verbessert sich ohne User.",
+      "architektur_ziel": "Aus Skript-Sprawl -> Orchestrator+Subagenten, error-sink, withRetry, dead-letter, Skills (Recherche-Lehre). Robustheit > neue Features. Fragile Browser-Bots via Screenshot-QA-Loop iterieren.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
