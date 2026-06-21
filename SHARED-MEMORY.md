@@ -40,6 +40,7 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+- **Tool #3 (16.06.) via 2tes-Gehirn-Pipeline:** FAQ-Schema-Generator (Q&A -> valides FAQPage-JSON-LD fuer Rich Snippets), viersprachig, in allen 4 Hubs + Sitemap. Review fand 2 KRITISCHE Bugs: JSON.stringify escaped < nicht -> Q/A mit </script> haette beim Einbetten die ZIELSEITE zerschossen (Fix: <->\u003c) + Delete-to-zero-Guard. **Lehre: bei Code-/Schema-Generatoren immer auf </script>- und HTML-Escaping pruefen.** SEO-Toolkit jetzt: slug-generator + meta-tag-vorschau + faq-schema-generator (+ utm-builder), alle viersprachig.
 - **Neue Tools (16.06.) via 2tes-Gehirn-Pipeline:** Slug-Generator + Meta-Tag/SERP-Vorschau, je viersprachig (DE/EN/FR/IT), in allen 4 Tools-Hubs + Sitemap. Ablauf: bauen -> unabhaengiger Review-Agent (fand+fixte realen Clipboard-Bug: ungeschuetztes navigator.clipboard -> TypeError; + a11y) -> uebersetzen -> verdrahten -> i18n-Bot. Verifiziert: 0 Parser-Error, 0 deutsche Leftovers, 0 Orphans, 0 Broken-Links.
 **2026-06-12 — abannews session: grosser QA-/SEO-Reparatur-Lauf (Branch `claude/abannews-projekt-JSw9l`):**
 - **Auslöser:** User „100 agent go … melde dich wenn komplett fertig" → autonomer QA-Durchlauf mit 3 parallelen
