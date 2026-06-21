@@ -1,11 +1,14 @@
 {
-  "ts": "2026-06-21T18:53:55.771Z",
-  "result": "AI_INAKTIV",
-  "mode": "playwright",
-  "why": "INIT_FEHLER",
-  "stagehand_installiert": true,
-  "groq_key": true,
-  "gemini_key": true,
-  "init_fehler": "groq/llama-3.3-70b-versatile -> Unexpected server response: 404",
-  "fix": "Paket + Key da, aber Stagehand-Init schlug fehl (Key gueltig? Netz?). Mit GEMINI_API_KEY probieren."
+  "ts": "2026-06-21T20:11:56.288Z",
+  "result": "WIZARD_DIAG",
+  "mode": "stagehand",
+  "stagehand": {
+    "model": "google/gemini-2.0-flash",
+    "hasShPage": false,
+    "shPageType": "undefined",
+    "rawHasAct": "undefined",
+    "actReady": false,
+    "shKeys": "opts,state,actHandler,extractHandler,observeHandler,ctx,llmClient,bus,modelName,modelClientOptions,llmProvider,overrideLlmClients,domSettleTimeoutMs,_isClosing,browserbaseSessionId,browserbaseSessionUrl,browserbaseDebugUrl,_onCdpClosed,experimental,logInferenceToFile,disableAPI,externalLogger,verbose,stagehandLogger,_history,instanceId,sessionId,eventStore,flowLoggerContext,cacheStorage,actCache,agentCache,apiClient,keepAlive,shutdownSupervisor,stagehandMetrics",
+    "shProto": "constructor,browserbaseSessionID,browserbaseSessionURL,browserbaseDebugURL,isBrowserbase,isCaptchaAutoSolveEnabled,isVerified,isAdvancedStealth,configuredViewport,metrics,mergeAgentMetricsWithLocalFallback,updateAgentMetricsFromUsage,getApiDefaultModelConfig,resolveLlmClient,resolveDefaultAgentMode,beginAgentReplayRecording,endAgentReplayRecording,discardAgentReplayRecording,isAgentReplayRecording,isAgentReplayActive,recordAgentReplayStep,history,addToHistory,updateMetrics,updateTotalMetrics,_immediateShutdown,startShutdownSupervisor,stopShutdownSupervisor,init,_applyPostConnectLocalOptions,_ensureBrowserbaseDownloadsEnabled,resetBrowserbaseSessionMetadata,act,extract,observe,connectURL,context,close,browserbaseApiKey,requireBrowserbaseCreds,logger,resolveTopFrameId,isPlaywrightPage,isPatchrightPage,isPuppeteerPage,resolvePage,normalizeToV3Page,_logBrowserbaseSessionStatus,prepareAgentExecution,agent"
+  }
 }
