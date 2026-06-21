@@ -34,8 +34,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Deterministische Fixes anwenden (hreflang + Sitemap)
-        run: python3 tools/i18n_audit.py --fix || true
+      - name: Deterministische Fixes anwenden (hreflang + Sitemap + Bild-Maße)
+        run: |
+          python3 tools/i18n_audit.py --fix || true
+          python3 tools/add_img_dims.py || true
 
       - name: Fixes committen (falls vorhanden)
         run: |
