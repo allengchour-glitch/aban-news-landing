@@ -56,6 +56,23 @@
   dann sofort committen. Jeweils eigener Branch → PR → squash-merge.
 - Stand: Brain 100/100, 0 defekte Links, alle Diagnosen grün. Shop 22/22 (Salt = User-Task morgen).
 
+## 🚀 2026-06-21 — Gratis-KI-Suite komplett + Geld-/Posting-Setup + 2. Gehirn (zuerst lesen)
+> Alles auf `main`, mit `bash automation/selftest.sh` als Ein-Befehl-Check (grün). Gratis-KI = Groq
+> (Key nur als env/Cloudflare-Secret; im Chat geteilte Keys → rotieren).
+- **Creator-Suite (`automation/freegen_*` + `functions/_llm.mjs`):** video, image, tts (piper de_DE),
+  hubreels, bot (selbstlaufend), promo, **carousel** (5-Slide IG/LinkedIn), ai (8-Provider-Switch:
+  Groq/OpenAI/DeepSeek/xAI/Gemini/OpenRouter/Mistral/Anthropic), caption, **postqueue** (Asset+Caption+
+  Plattform→CSV), ai_critique, newsletter_polish. Doku `freegen/README.md`.
+- **Content geliefert:** 451 Hub-Reels, 6 Promo-Reels, 13 Karussells, Caption-Packs, post-queue.csv.
+- **Geld-Setup:** Shop verkaufsbereit (22 Kits, Stripe-Links, 34 ZIPs, Selfcheck 0 Fehler), eBay-Affiliate
+  live. **`automation/setup-cloudflare.sh abannews`** setzt interaktiv STRIPE_API_KEY+DOWNLOAD_SALT+
+  GROQ_API_KEY + D1. Anleitung `GELD-VERDIENEN-JETZT.md`.
+- **2. Gehirn:** `workers/site-brain/` (Cron-Monitor abannews.com) + `workers/site-brain/deploy.sh` (turnkey).
+- **🔴 Nur User (Code ist fertig):** (1) `setup-cloudflare.sh` von ERLAUBTER IP (CF-Token `cfut_…` ist
+  Pages-Scope + **IP-gesperrt** für Cloud-Sessions, Fehler 9109; D1/Workers-Scope fehlt ohnehin →
+  neuer Token nötig); (2) Content posten (post-queue.csv abarbeiten); (3) site-brain deployen (Workers-Token).
+  **Cloud-Session kann CF nicht erreichen — diese 3 nur auf deinem PC / PC-Claude.**
+
 ## 🎬 2026-06-19 — Gratis-Creator-Suite (freegen) + Bot + Inserate-Ausbau (zuerst lesen)
 > Fokus diese Session: **abannews** (LuxeStyle bewusst nicht angefasst — andere Session). Alles gemerged auf `main`.
 - **`freegen/` — eigene, kostenlose Creator-Tools** (Ersatz für HeyGen/Canva/ElevenLabs, ohne Credits/Keys, alles
