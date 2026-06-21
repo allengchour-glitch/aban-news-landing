@@ -1054,7 +1054,9 @@
       "fix": "Kampagne-URL bekommt ?aadvid=7646349875793182738 -> oeffnet die Erstellung DIREKT im richtigen Konto (automatischer Account-Switch, keine Onboarding-Wand). In tiktok-campaign-port.mjs: C.advertiserId + creationUrl mit aadvid. ENV TT_ADVERTISER_ID ueberschreibbar.",
       "voraussetzung": "Der im brave-agent eingeloggte TikTok-User muss Zugriff auf dieses Advertiser-Konto haben (Business-Center-Mitglied). Dann schaltet aadvid um. Falls ganz anderer User eingeloggt -> dort einmal richtig einloggen.",
       "lehre_allgemein": "Bei TikTok-Ads-Automation IMMER die Ziel-aadvid in die URL setzen statt auf das Default-Konto zu hoffen (Multi-Account-Falle).",
-      "stand": "2026-06-21"
+      "stand": "2026-06-21",
+      "RICHTIGE_ID": "KORRIGIERT 2026-06-21: Das richtige funktionierende Werbekonto ist \"Luxestlye Ch0524\" aadvid=7643589765259493393 (NICHT 7646349875793182738 = leer/onboarding). Hat 90 CHF Guthaben, 63.71 CHF Historie, 130863 Impressionen, 0 Conversions. Zahlung eingerichtet. Onboarding-Wand kam vom FALSCHEN aadvid. Login via separater E-Mail.",
+      "balance": "90 CHF Guthaben vorhanden -> ATC-Kampagne (Cap 70) spendet daraus. Achtung: \"Verify phone number\"-Banner aktiv (evtl. noch zu bestaetigen)."
     }
   },
   "decisions": [

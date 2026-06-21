@@ -47,8 +47,8 @@ const C = {
   // KONTO-WECHSEL via URL (Lehre 2026-06-21, User "musst nur konto wechseln"): aadvid in der URL oeffnet die
   // Kampagne DIREKT im richtigen, fertig eingerichteten Werbekonto "LuxeStyle CH Ads" - kein falsches/leeres Konto,
   // keine Onboarding-Wand. Voraussetzung: der eingeloggte TikTok-User hat Zugriff auf dieses Advertiser-Konto.
-  advertiserId: process.env.TT_ADVERTISER_ID || '7646349875793182738',
-  creationUrl: process.env.CREATION_URL || ('https://ads.tiktok.com/i18n/perf/creation/campaign?aadvid=' + (process.env.TT_ADVERTISER_ID || '7646349875793182738')),
+  advertiserId: process.env.TT_ADVERTISER_ID || '7643589765259493393',
+  creationUrl: process.env.CREATION_URL || ('https://ads.tiktok.com/i18n/perf/creation/campaign?aadvid=' + (process.env.TT_ADVERTISER_ID || '7643589765259493393')),
 };
 const LEDGER = path.join(ROOT, 'automation', 'local', 'tiktok-campaign-ledger.txt');
 const SHOTS = path.join(ROOT, 'automation', 'local', 'campaign-shots');
@@ -114,7 +114,7 @@ async function pickFromSearch(p, value) {
   }).catch(() => []);
   if (wall.length >= 2) {
     const status = { ts: new Date().toISOString(), result: 'ACCOUNT_NOT_SETUP', hits: wall,
-      hinweis: 'TikTok-Werbekonto nicht eingerichtet (Add business info/Zahlung) ODER falsches Konto. User: ads.tiktok.com onboarden ODER ins Konto LuxeStyle CH Ads 7646349875793182738 einloggen.' };
+      hinweis: 'TikTok-Werbekonto nicht eingerichtet (Add business info/Zahlung) ODER falsches Konto. User: ads.tiktok.com onboarden ODER ins Konto LuxeStyle CH Ads 7643589765259493393 einloggen.' };
     try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
       fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(status, null, 2)); } catch {}
     log('🛑 ACCOUNT_NOT_SETUP — Onboarding-Wand erkannt (' + wall.join(', ') + '). KEINE Kampagne, kein Geld. Abbruch.');
