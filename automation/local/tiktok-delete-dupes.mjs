@@ -29,8 +29,14 @@ const N = (() => { const i = process.argv.indexOf('--n'); return i > -1 ? parseI
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
+const STATUS = path.join(ROOT, 'reports', PLATFORM === 'ig' ? 'ig-delete.json' : 'tiktok-delete.json');
+function writeStatus(o) { try { fs.writeFileSync(STATUS, JSON.stringify({ ts: new Date().toISOString(), platform: PLATFORM, ...o }, null, 2)); } catch {} }
 (async () => {
-  const ab = await aiBrowser();
+  writeStatus({ result: 'GESTARTET', match: MATCH, dry: !GO });  // sofort, damit ein frueher Crash sichtbar ist
+  let ab;
+  try {
+    ab = await aiBrowser();
+  } catch (e) { log('aiBrowser-Fehler:', String(e).slice(0, 120)); writeStatus({ result: 'AIBROWSER_FEHLER', error: String(e).slice(0, 200) }); process.exit(0); }
   const p = ab.page;
   log(`Modus: ${ab.mode} · MATCH="${MATCH}" · ${GO ? 'LOESCHEN n=' + N : 'DRY (nur ansehen)'}`);
   try {
