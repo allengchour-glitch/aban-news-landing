@@ -108,7 +108,9 @@ echo.
 echo  Voraussetzung: luxe-secrets.ps1 mit TT_*-Tokens (nach OAuth/Audit) +
 echo  Brave-Profil 'brave-agent' bei TikTok/IG eingeloggt (fuer Browser-Backup).
 echo.
-echo [7/7] Starte CLOUD-AN (Dauer-Poller, selbstheilend) - damit der Kanal SOFORT laeuft...
+echo [7/7] CLOUD-AN als AUTOSTART registrieren (laeuft kuenftig bei JEDEM PC-Start von selbst, NIE wieder klicken)...
+schtasks /create /f /tn "LuxeCloudAn" /sc onlogon /rl highest /tr "cmd /c start \"\" /min \"%DIR%CLOUD-AN.bat\"" >nul 2>&1
+echo  ...und jetzt sofort starten (selbstheilend), damit der Kanal gleich laeuft:
 start "LuxeStyle CLOUD-AN" /min cmd /c "%DIR%CLOUD-AN.bat"
 echo  -^> CLOUD-AN laeuft jetzt im Hintergrund. Cloud-Befehle werden alle 2 Min ausgefuehrt.
 timeout /t 5 >nul
