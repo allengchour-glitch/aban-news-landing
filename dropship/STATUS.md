@@ -1,5 +1,15 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-21 (SPÄT-2 — TikTok-Bot Stagehand GELÖST + Content-Fixes + PC-Tasks gequeued)
+**🤖 TikTok-Kampagne-Bot: Stagehand vollständig gelöst** (~10 Iterationen, Brain `stagehand_cdp_loesung_2026`):
+CDP-WS-URL aufgelöst · Gemini-Modell · sh.page-undefined umgangen · **KERN: act/extract/observe = `sh.act` (Instanz), nicht `sh.page.act`**.
+Bot klickt jetzt durch (Create→Conversions→Data-Connection/Pixel→ATC→Bid Max-delivery→CH-Targeting→Budget→Creative→Launch).
+**Status:** sh.act-Fix gepusht, läuft beim nächsten PC-Lauf. 3 Befehle gequeued (markt-capture, markt-profil, campaign-data) —
+laufen sobald Auto-Poller `LuxeCmd` wach (= 1× SUPERBOT). Heartbeat seit 18:59 alt → Poller schläft.
+**✅ Erledigt (cloud-autonom):** anibis-Profil aktualisiert (grünes Banner) · Trust-Text 14→30 Tage **katalogweit** (83 Produkte) ·
+**CHF 49→65 in ~23 Content-Generatoren** · Ring TWINT+SEO · Kollektionen gesäubert · Kategorie-Blueprint + Conversion-Spec +
+6 Recherchen → Brain **174 Regeln** + Theme-Handoff. **Offen (PC):** tutti/ricardo-Profil, Pixel-Connect, Worker `wrangler deploy`.
+
 ## 2026-06-21 (🔥 MEILENSTEIN: TWINT LIVE + FUNNEL END-TO-END VERIFIZIERT + Recherche-Schwarm komplett)
 **✅ FUNNEL VERIFIZIERT:** Echter Checkout erreicht die **TWINT-Zahlseite** (pay.twint.ch, CHF 33.90, LuxeStyle CH,
 Code 55200, QR) — der Screenshot beweist: Warenkorb→Checkout→Zahlung läuft sauber. Bestellung wird erst nach
