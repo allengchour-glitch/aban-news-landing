@@ -69,6 +69,19 @@ for %%T in (LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 
 echo [5/6] Brave-Port sicherstellen + JETZT 1x posten (Test)...
 %PSF% "%VA%" -Mode post
 
+echo [5b/6] EINMAL-EINRICHTUNG jetzt ausfuehren (Konten+Pixel, IG/TikTok-Profil, Marktplatz, Health)...
+cd /d "%REPO%"
+node "automation\local\tiktok-accounts-analyze.mjs"
+node "automation\local\social-profile-update.mjs"
+node "automation\local\marketplace-capture.mjs"
+node "automation\local\marketplace-profile.mjs"
+node "automation\local\ai-browser-test.mjs"
+node "automation\local\post-health.mjs"
+git add -f automation/local/account-shots/* automation/local/profile-shots/* automation/local/marketplace-shots/* reports/*.json 2>nul
+git commit -m "auto(setup): Einmal-Einrichtung via SUPERBOT (Konten/Profile/Markt/Pixel/Health)" 2>nul
+git pull --rebase origin claude/luxestyle-product-CizQ6 2>nul
+git push origin claude/luxestyle-product-CizQ6 2>nul
+
 echo [6/6] FERTIG. Der EINE Bot laeuft jetzt vollautonom:
 echo   - Update 05:00 (holt neuen Code, lock-proof)
 echo   - Produkte holen 03:30 (BigBuy-Premium, bestes Material)
