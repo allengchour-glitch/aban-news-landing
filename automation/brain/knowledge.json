@@ -1090,6 +1090,14 @@
       "lehre": "User 2026-06-21: 4x dasselbe TikTok-Montage-Video weil SUPERBOT-SETUP.bat bei JEDEM Start einen Test-Post (-Mode post) machte + User es ~4x startete. Ledger-Reset verschaerfte es.",
       "fix": "SUPERBOT [5/6] postet NICHT mehr - nur Brave-Port sicherstellen. + Ledger committet sofort (durabel). = SUPERBOT mehrfach starten erzeugt nie wieder Doppel-Posts.",
       "stand": "2026-06-21"
+    },
+    "doppelpost_loeschen_pro_plattform_2026": {
+      "fest": "User 2026-06-21 merke alles. Doppelpost ueberall pruefen + loeschen.",
+      "FB_ZUVERLAESSIG": "FB-Doppel = Worker-Route ?key=...&dedupe=1&dry=1 (zeigen) bzw. &dedupe=1 (loeschen) - Graph-API, gruppiert nach Caption, behaelt aeltesten. FUNKTIONIERT (119->1 gefunden, geloescht, 0 uebrig). ⚠️ Worker IP-blockt Sandbox -> Response evtl. Timeout, aber Loeschung passiert; mit &dry=1 nachpruefen.",
+      "TIKTOK_IG": "tiktok-delete-dupes.mjs (PLATFORM=tiktok|ig) via Stagehand-AI (act open/delete). FRAGIL - erster Lauf produzierte kein Ergebnis (Diagnose-Status GESTARTET/AIBROWSER_FEHLER eingebaut). IG-API kann published Posts eh nicht loeschen. Browser-AI-Loeschen ist bleeding-edge.",
+      "KONTROLLE_UEBERALL": "post-health.mjs prueft TikTok-Ledger + Meta-Log auf echte Doppel (<90min) alle 6h (LuxeHealth).",
+      "WURZEL_GEFIXT": "Doppelpost-Ursache: SUPERBOT-SETUP machte bei JEDEM Start einen Test-Post (-Mode post) + User startete mehrfach + Ledger-Reset. FIX: SUPERBOT postet nicht mehr beim Start (nur Brave-Ensure) + Ledger committet sofort. = keine neuen Doppel.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [

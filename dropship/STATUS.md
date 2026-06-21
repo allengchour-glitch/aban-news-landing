@@ -1,5 +1,24 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-21 (GROSSE SUPERBOT-SESSION — Selbstheilung, AI-Selektoren, Konten, Doppelpost überall)
+**🤖 Super-Bot-Ausbau (alles gepusht, läuft ohne User):**
+- **Selbst-Update:** cmd-poll pullt+startet sich neu + Smoke-Test/Auto-Rollback. **Selbst-Check:** LuxeHealth alle 6h
+  (post-health: gepostet/doppel/Fehler). **Selbst-Heilung:** `resilience.mjs` (withRetry/errorSink/deadLetter/guard).
+- **🧠 Stagehand AI-Selektoren INSTALLIERT** (Gemini, `bereit:true`) — `ai-browser.mjs` Wrapper, CDP-nativ an Brave 9222.
+  Browser-Bots überstehen UI-Änderungen. Roadmap: `automation/SUPERBOT-ROADMAP.md`.
+- **1-Klick-Setup:** SUPERBOT führt Einmal-Einrichtung gleich aus (Konten/Profile/Markt/Pixel/Health) + committet.
+**🏦 TikTok-Konten geklärt (User hat MEHRERE):** ✅ **Ch0524 `7643589765259493393` = funded (90 CHF)** → Kampagnen hier.
+  ❌ `7646349875793182738` = „kein Zugriff" (war Onboarding-Wand-Ursache). 2 weitere Ch-Konten + evtl. 2. Login (am Schluss).
+  **Pixel:** Events-Seite verlangt „Identity verification" (gmail-Code) → Bot kann Pixel nicht lesen, aber Pixel ist verbunden.
+**🧹 Doppelpost ÜBERALL behoben:**
+  - **Ursache:** SUPERBOT machte bei jedem Start einen Test-Post + User startete ~4× + Ledger-Reset. **GEFIXT:** SUPERBOT
+    postet nicht mehr beim Start + Ledger committet sofort (durabel). → keine neuen Doppel.
+  - **FB:** ✅ via Worker `&dedupe=1` (Graph-API, zuverlässig) gelöscht (1→0). **TikTok/IG:** User löschte TikTok manuell;
+    AI-Lösch-Bot (Stagehand) fragil, Diagnose eingebaut. **post-health** prüft alle Plattformen alle 6h.
+**🛒 Marktplatz-Profile:** anibis-URL verifiziert (`/de/user/profile`); Bot entdeckt URLs aus Startseite + skippt 404;
+  tutti/ricardo-URLs noch offen (hinter Account-Avatar). Profil-Texte in `PROFILE-OPTIMIERUNG.md`. IG/TikTok-Bio: Stagehand-Retry nötig.
+**Gehirn: 145 Regeln.** Keys gratis (Gemini/Groq/piper/CC-BY). Posten + Selbstheilung laufen sauber (Health: doppel 0, Fehler 0).
+
 ## 2026-06-20 (SPÄT-4) — 🎯 DATEN-FIX: tote Top-Landingpage reaktiviert (Info ist A und O)
 **Landing-Page-Daten gezogen (-30T) → 2 stille Käufe-Lecks autonom gefixt:**
 - 🚨 **Zirkonia-Blumenring (CHF 12.90) = #1 Produkt-Landing (64 Sessions/Mt) war ARCHIVED + 0 Kanäle = unkaufbar.**
