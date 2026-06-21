@@ -1,10 +1,11 @@
 {
-  "ts": "2026-06-21T18:48:37.723Z",
+  "ts": "2026-06-21T18:53:55.771Z",
   "result": "AI_INAKTIV",
   "mode": "playwright",
   "why": "INIT_FEHLER",
   "stagehand_installiert": true,
   "groq_key": true,
   "gemini_key": true,
+  "init_fehler": "groq/llama-3.3-70b-versatile -> Unexpected server response: 404",
   "fix": "Paket + Key da, aber Stagehand-Init schlug fehl (Key gueltig? Netz?). Mit GEMINI_API_KEY probieren."
 }
