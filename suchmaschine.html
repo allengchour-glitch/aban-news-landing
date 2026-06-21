@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suche — alle Inhalte von abannews.com durchsuchen | aban</title>
+<meta name="description" content="Durchsuche alle Inhalte von abannews.com: KI-Ratgeber, Tools, Kaufberater und mehr. Schnelle Volltextsuche, sofort Ergebnisse — plus Marktplatz-Suche für Jobs, Angebote & Inserate.">
+<meta name="theme-color" content="#d97706">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://abannews.com/suchmaschine.html">
+<meta property="og:title" content="aban-Suche — alle Inhalte durchsuchen">
+<meta property="og:description" content="Schnelle Volltextsuche über alle Ratgeber, Tools und Kaufberater von abannews.com.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#fffdf9;--card:#fff}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--bg);min-height:100vh}
+a{color:var(--amber-dk);text-decoration:none}
+.top{max-width:760px;margin:0 auto;padding:14px 18px;display:flex;gap:10px;align-items:center;font-size:.85rem}
+.top .brand{font-weight:900;color:var(--amber-dk);font-size:20px}
+.top .lnk{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.top .lnk a{color:var(--ink2);font-weight:700;border:1px solid var(--line);border-radius:18px;padding:6px 11px}
+.hero{max-width:680px;margin:0 auto;padding:6vh 18px 18px;text-align:center}
+.logo{font-size:clamp(2.2rem,8vw,3.4rem);font-weight:900;letter-spacing:-.02em;margin-bottom:4px}
+.logo .a{color:var(--amber-dk)}.logo .n{color:var(--ink)}
+.tag{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+.box{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:6px 8px 6px 18px;box-shadow:0 10px 30px rgba(31,41,55,.10);transition:box-shadow .15s,border-color .15s}
+.box:focus-within{border-color:var(--amber);box-shadow:0 12px 34px rgba(217,119,6,.18)}
+.box span.ic{font-size:19px;color:var(--muted)}
+.box input{flex:1;border:0;outline:0;background:transparent;font-size:1.05rem;padding:12px 0;color:var(--ink);font-family:inherit;min-width:0}
+.box button{background:var(--amber-dk);color:#fff;border:0;border-radius:22px;padding:11px 20px;font-weight:800;cursor:pointer;font-family:inherit}
+.box button:hover{background:#a04708}
+.hint{margin-top:12px;font-size:.82rem;color:var(--muted)}
+.hint a{font-weight:700}
+.results{max-width:680px;margin:20px auto 60px;padding:0 18px}
+.cnt{font-size:.82rem;color:var(--muted);margin:8px 2px 12px}
+.res{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:10px;transition:box-shadow .12s,transform .12s,border-color .12s}
+.res:hover{box-shadow:0 8px 22px rgba(31,41,55,.10);transform:translateY(-1px);border-color:#e3d4b6}
+.res .u{font-size:.74rem;color:#15803d;word-break:break-all}
+.res .t{font-size:1.05rem;font-weight:700;color:#1a3aa0;margin:1px 0 3px}
+.res .d{font-size:.9rem;color:var(--ink2)}
+.empty{text-align:center;color:var(--muted);padding:24px 0}
+mark{background:#fef3c7;color:inherit;padding:0 1px;border-radius:2px}
+footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="top">
+  <a class="brand" href="/">aban</a>
+  <span class="lnk"><a href="/marktplatz.html">Marktplatz</a><a href="/suche.html">Angebote &amp; Jobs</a><a href="/">Newsletter</a></span>
+</div>
+
+<div class="hero">
+  <div class="logo"><span class="a">aban</span><span class="n">-Suche</span></div>
+  <p class="tag">Durchsuche alle Ratgeber, KI-Tools und Kaufberater von abannews.com.</p>
+  <form class="box" id="f" role="search" onsubmit="return false">
+    <span class="ic">🔎</span>
+    <input id="q" type="search" autocomplete="off" autofocus placeholder="Wonach suchst du? z. B. DSGVO, Laptop, Prompt, Velo …" aria-label="Suchbegriff">
+    <button id="go" type="submit">Suchen</button>
+  </form>
+  <p class="hint">Produkte, Jobs &amp; Inserate? → <a href="/suche.html">Marktplatz-Suche</a></p>
+</div>
+
+<div class="results"><div class="cnt" id="cnt" hidden></div><div id="list"></div></div>
+
+<footer>aban news · durchsucht <span id="total">…</span> eigene Seiten · <a href="/">Start</a> · <a href="/impressum.html">Impressum</a></footer>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  var IDX=[],ready=false;
+  var qi=$("#q"),list=$("#list"),cnt=$("#cnt");
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function hi(text,terms){var out=esc(text);terms.forEach(function(t){if(t.length<2)return;
+    out=out.replace(new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return out}
+  function score(it,terms){var t=(it.t||"").toLowerCase(),d=(it.d||"").toLowerCase(),s=0;
+    terms.forEach(function(w){if(t.indexOf(w)>=0)s+=5;if(d.indexOf(w)>=0)s+=1;if(t.indexOf(w)===0)s+=3});return s}
+  function render(q){
+    q=q.trim();var terms=q.toLowerCase().split(/\s+/).filter(Boolean);
+    if(!q){list.innerHTML="";cnt.hidden=true;return}
+    if(!ready){cnt.hidden=false;cnt.textContent="Lade Index …";return}
+    var hits=IDX.map(function(it){return {it:it,s:score(it,terms)}}).filter(function(x){return x.s>0})
+      .sort(function(a,b){return b.s-a.s}).slice(0,40);
+    cnt.hidden=false;cnt.textContent=hits.length?(hits.length+" Treffer für „"+q+"“"):"";
+    if(!hits.length){list.innerHTML='<div class="empty">Nichts gefunden für „'+esc(q)+'“.<br>Vielleicht im <a href="/suche.html?q='+encodeURIComponent(q)+'">Marktplatz</a> suchen?</div>';return}
+    list.innerHTML=hits.map(function(x){var it=x.it;
+      return '<a class="res" href="'+esc(it.u)+'"><div class="u">abannews.com'+esc(it.u)+'</div><div class="t">'+hi(it.t,terms)+'</div>'+(it.d?'<div class="d">'+hi(it.d,terms)+'</div>':'')+'</a>'}).join("")
+  }
+  var t;qi.addEventListener("input",function(){clearTimeout(t);t=setTimeout(function(){render(qi.value);writeUrl()},120)});
+  $("#f").addEventListener("submit",function(){render(qi.value);writeUrl()});
+  function writeUrl(){var q=qi.value.trim();try{history.replaceState(null,"",q?("?q="+encodeURIComponent(q)):location.pathname)}catch(e){}}
+  fetch("/data/site-index.json").then(function(r){return r.json()}).then(function(d){IDX=d||[];ready=true;
+    var tot=$("#total");if(tot)tot.textContent=IDX.length;
+    var uq=new URLSearchParams(location.search).get("q");if(uq){qi.value=uq}render(qi.value)})
+    .catch(function(){cnt.hidden=false;cnt.textContent="Index nicht erreichbar."});
+})();
+</script>
+</body>
+</html>
