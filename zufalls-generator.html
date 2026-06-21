@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zufalls-Generator — Los ziehen, Zufallszahl, Liste mischen · aban news</title>
+<meta name="description" content="Kostenloser Zufalls-Generator: aus einer Liste fair einen Gewinner ziehen, eine Zufallszahl im Bereich erzeugen oder eine Liste mischen. Für Verlosungen und Entscheidungen. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/zufalls-generator.html">
+<meta property="og:title" content="Zufalls-Generator — Los ziehen, Zufallszahl, mischen">
+<meta property="og:description" content="Gewinner aus Liste ziehen, Zufallszahl erzeugen oder Liste mischen — fair und lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/zufalls-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Zufalls-Generator",
+"url":"https://abannews.com/zufalls-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Zieht fair einen Gewinner aus einer Liste, erzeugt eine Zufallszahl im Bereich oder mischt eine Liste. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Ist die Ziehung wirklich zufällig?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der Generator nutzt die kryptografisch starke Zufallsquelle des Browsers (crypto.getRandomValues) und mischt unverzerrt (Fisher-Yates). Jeder Eintrag hat die gleiche Chance."}},
+{"@type":"Question","name":"Eignet sich das für ein Gewinnspiel?","acceptedAnswer":{"@type":"Answer","text":"Für faire, transparente Ziehungen ja — füge die Teilnehmer als Liste ein und ziehe einen oder mehrere Gewinner. Für rechtssichere Gewinnspiele dokumentiere die Ziehung zusätzlich (z. B. Screenshot mit Zeugen)."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:12px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:.85rem;font-weight:700;padding:8px 15px;border:0;background:transparent;color:var(--amber-dk);cursor:pointer}
+.seg button.on{background:var(--amber-dk);color:#fff}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+textarea{font:inherit;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;min-height:150px;resize:vertical;line-height:1.6}
+input[type=number]{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr 1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+.out{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;min-height:64px}
+.big{font-size:1.9rem;font-weight:800;color:var(--amber-dk);word-break:break-word}
+.list{margin-top:10px;text-align:left;white-space:pre-wrap;font-size:.95rem;color:var(--ink2)}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Zufall</span> &amp; Los ziehen</h1>
+    <p>Fair einen Gewinner aus einer Liste ziehen, eine Zufallszahl erzeugen oder eine Liste mischen — für Verlosungen und Entscheidungen. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Echte Zufallsquelle des Browsers, unverzerrt gemischt — gut für transparente Gewinnspiele oder „wer ist dran?".</p>
+
+  <section class="panel" id="tool">
+    <div style="text-align:center"><div class="seg" id="mode">
+      <button data-m="pick" class="on">Aus Liste ziehen</button>
+      <button data-m="num">Zufallszahl</button>
+      <button data-m="shuffle">Liste mischen</button>
+    </div></div>
+
+    <div id="listBox">
+      <label for="items">Einträge (eine Zeile = ein Eintrag)</label>
+      <textarea id="items">Anna
+Ben
+Clara
+David
+Eva</textarea>
+      <div class="grid" id="pickOpts" style="margin-top:10px">
+        <div class="fld"><label for="count">Wie viele ziehen?</label><input id="count" type="number" value="1" min="1"></div>
+        <div class="fld" style="grid-column:span 2;justify-content:end"><label style="display:flex;align-items:center;gap:8px;font-weight:400;margin-top:22px"><input id="unique" type="checkbox" checked> ohne Wiederholung</label></div>
+      </div>
+    </div>
+
+    <div id="numBox" style="display:none">
+      <div class="grid">
+        <div class="fld"><label for="min">Von</label><input id="min" type="number" value="1"></div>
+        <div class="fld"><label for="max">Bis</label><input id="max" type="number" value="100"></div>
+        <div class="fld"><label for="ncount">Anzahl</label><input id="ncount" type="number" value="1" min="1"></div>
+      </div>
+    </div>
+
+    <div class="row"><button type="button" class="btn" id="go">🎲 Ziehen</button></div>
+    <div class="out" id="out"><span style="color:#9aa3ad">Ergebnis erscheint hier …</span></div>
+    <p class="note">Echte Zufallsquelle (crypto), faires Mischen (Fisher-Yates). Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Aktionen &amp; Content.</p>
+    <p><a class="btn" href="/utm-builder.html">UTM-Link-Builder</a>
+      <a class="btn ghost" href="/uuid-generator.html">UUID-Generator</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/uuid-generator.html">UUID</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var mode="pick";
+  function rnd(n){ // 0..n-1 unverzerrt
+    var u=new Uint32Array(1), max=Math.floor(4294967296/n)*n, x;
+    do{ crypto.getRandomValues(u); x=u[0]; }while(x>=max);
+    return x%n;
+  }
+  function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=rnd(i+1); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+  function items(){ return document.getElementById("items").value.split("\n").map(function(s){return s.trim();}).filter(Boolean); }
+  function go(){
+    var out=document.getElementById("out");
+    if(mode==="num"){
+      var mn=parseInt(document.getElementById("min").value,10), mx=parseInt(document.getElementById("max").value,10), c=Math.max(1,parseInt(document.getElementById("ncount").value,10)||1);
+      if(isNaN(mn)||isNaN(mx)||mx<mn){out.innerHTML='<span style="color:#a01616">Gültigen Bereich eingeben (Von ≤ Bis).</span>';return;}
+      var span=mx-mn+1, res=[];
+      for(var i=0;i<c;i++){ res.push(mn+rnd(span)); }
+      out.innerHTML=c===1?'<div class="big">'+res[0]+'</div>':'<div class="list">'+res.join(", ")+'</div>';
+      return;
+    }
+    var list=items();
+    if(list.length<1){out.innerHTML='<span style="color:#a01616">Mindestens einen Eintrag eingeben.</span>';return;}
+    if(mode==="shuffle"){
+      var mixed=shuffle(list.slice());
+      out.innerHTML='<div class="list">'+mixed.map(function(x,i){return (i+1)+". "+x;}).join("\n")+'</div>';
+      return;
+    }
+    // pick
+    var n=Math.max(1,parseInt(document.getElementById("count").value,10)||1);
+    var uniq=document.getElementById("unique").checked, picks=[];
+    if(uniq){ var pool=shuffle(list.slice()); picks=pool.slice(0,Math.min(n,pool.length)); }
+    else { for(var k=0;k<n;k++){ picks.push(list[rnd(list.length)]); } }
+    out.innerHTML=picks.length===1?'<div class="big">🎉 '+picks[0]+'</div>':'<div class="list">'+picks.map(function(x,i){return (i+1)+". "+x;}).join("\n")+'</div>';
+  }
+  document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");
+    mode=b.getAttribute("data-m");
+    document.getElementById("listBox").style.display=(mode==="num")?"none":"block";
+    document.getElementById("numBox").style.display=(mode==="num")?"block":"none";
+    document.getElementById("pickOpts").style.display=(mode==="pick")?"grid":"none";
+    document.getElementById("go").textContent=mode==="shuffle"?"🔀 Mischen":mode==="num"?"🎲 Erzeugen":"🎲 Ziehen";
+  });});
+  document.getElementById("go").addEventListener("click",go);
+})();
+</script>
+</body>
+</html>

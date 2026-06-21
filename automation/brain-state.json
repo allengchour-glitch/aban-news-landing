@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-20 20:16 UTC",
+  "updated": "2026-06-21 12:03 UTC",
   "score": 100.0,
   "trend": "→ stabil",
   "best": 100.0,
@@ -47,6 +47,14 @@
     {
       "date": "2026-06-20",
       "pages": 2303,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "score": 100.0
+    },
+    {
+      "date": "2026-06-21",
+      "pages": 2305,
       "high": 0,
       "medium": 0,
       "low": 0,
