@@ -27,6 +27,12 @@ attrib -R "%REPO%\*.*" /S /D >nul 2>&1
 git fetch origin claude/luxestyle-product-CizQ6
 git reset --hard origin/claude/luxestyle-product-CizQ6
 
+echo [2b/6] Freie Tools installieren (alles gratis, selbst): Stagehand AI + yt-dlp (YouTube-Lernen)...
+call npm i @browserbasehq/stagehand --no-audit --no-fund >nul 2>&1
+where yt-dlp >nul 2>&1 || python -m pip install --quiet --upgrade yt-dlp >nul 2>&1
+where yt-dlp >nul 2>&1 || pip install --quiet --upgrade yt-dlp >nul 2>&1
+where yt-dlp >nul 2>&1 || powershell -NoProfile -Command "try{Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe' -OutFile (Join-Path $env:USERPROFILE 'yt-dlp.exe')}catch{}" >nul 2>&1
+
 echo [3/6] Direkt-Tasks registrieren (VOLLAUTOMAT, kein git im Hot-Path)...
 schtasks /create /f /tn "LuxeUpdate"  /sc daily /st 05:00 /tr "%PSF% \"%VA%\" -Mode update"
 schtasks /create /f /tn "LuxePost-10" /sc daily /st 10:00 /tr "%PSF% \"%VA%\" -Mode post"
