@@ -41,6 +41,8 @@ const MAX_COST_EUR = parseFloat(process.env.MAX_COST_EUR || '60') || 60; // Eink
 const GAP = parseInt(process.env.GAP || '1500', 10) || 1500;       // Pause zwischen BigBuy-Calls (Rate-Limit)
 const DRY = process.env.LIVE !== '1';                              // DRY ist Default
 const CATS = (process.env.CATS || 'schmuck,taschen,uhren,sonnenbrillen').split(',').map(s => s.trim()).filter(Boolean);
+// Global: Wholesale-Grosspackungen / Mehrstück-Sets (für Einzelhandel unpassend) kategorieübergreifend ausschliessen
+const GLOBAL_BAN = ['pcs)', ' pcs', '(18', '(24', '(36', '(48', '(12 ', '(6 pcs', '12 pcs', '18 pcs', '24 pcs', '36 pcs', '48 pcs', '50 pcs', '100 pcs', ' uds)', ' uds.', 'großpack', 'grosspack', 'bulk', 'wholesale', 'display 12', 'display 24'];
 
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
@@ -307,6 +309,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     // 1) Kandidaten: on-brand Name-Match aus productsinformation + Ban-Filter
     const cand = info.filter(p => {
       const nm = (p.name || '').toLowerCase(); if (!nm) return false;
+      if (GLOBAL_BAN.some(x => nm.includes(x))) return false; // Wholesale-Multipacks etc. global ausschliessen
       return cfg.anchor.some(a => nm.includes(a)) && !(cfg.ban || []).some(x => nm.includes(x));
     });
     console.log(`  ${cand.length} on-brand Kandidaten im Katalog.`);
