@@ -59,7 +59,18 @@ async function doSite(ab, site, urls) {
       } catch {}
     }
     await p.screenshot({ path: path.join(SHOT, `${site}-profile-before.png`) });
-    if (!loaded) { log(`${site}: keine gueltige Profil-Seite gefunden (alle 404) -> wartet auf markt-capture URLs`); return 'NO_VALID_PAGE'; }
+    if (!loaded && ab.mode === 'stagehand') {
+      // NAVIGATIONS-FALLBACK (2026-06-21): geratene URLs 404 -> per AI ueber das Konto-Menue zum Profil navigieren.
+      try {
+        const root = new URL(urls[0]).origin;
+        await p.goto(root, { waitUntil: 'domcontentloaded', timeout: 40000 }); await sleep(4000);
+        await ab.act('Oeffne das Konto-/Profil-Menue (meist Avatar oder Name oben rechts)'); await sleep(2500);
+        await ab.act('Gehe zu den Konto-Einstellungen bzw. zum Verkaeuferprofil / "Mein Profil" / "Profil bearbeiten"'); await sleep(3500);
+        const stillLogin = /login|anmelden|sign in/i.test((await p.content()).slice(0, 2000));
+        if (!stillLogin) { loaded = true; log(`${site}: per AI ueber das Konto-Menue zum Profil navigiert.`); await p.screenshot({ path: path.join(SHOT, `${site}-profile-before.png`) }); }
+      } catch (e) { log(`${site}: AI-Navigation fehlgeschlagen:`, String(e).slice(0, 60)); }
+    }
+    if (!loaded) { log(`${site}: keine gueltige Profil-Seite gefunden -> markt-capture URLs noetig`); return 'NO_VALID_PAGE'; }
     if (/login|anmelden|sign in/i.test((await p.content()).slice(0, 3000))) { log(`${site}: nicht eingeloggt`); return 'NOT_LOGGED_IN'; }
 
     if (ab.mode === 'stagehand') {
