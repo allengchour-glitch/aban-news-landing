@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-21T18:34:19.910Z",
+  "ts": "2026-06-21T18:40:32.622Z",
   "result": "AI_INAKTIV",
   "mode": "playwright",
   "hinweis": "Stagehand-AI nicht aktiv (GROQ_API_KEY oder GEMINI_API_KEY fehlt in luxe-secrets.ps1). Der Playwright-Fallback kann den TikTok-Wizard nicht zuverlaessig klicken. Loesung: gratis Groq-Key (console.groq.com) als $env:GROQ_API_KEY in luxe-secrets.ps1, dann neu starten."
