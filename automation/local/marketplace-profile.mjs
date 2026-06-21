@@ -49,9 +49,17 @@ async function doSite(ctx, site, urls) {
   const p = await ctx.newPage();
   try {
     let loaded = false;
-    for (const u of urls) { try { await p.goto(u, { waitUntil: 'domcontentloaded', timeout: 40000 }); await sleep(5000); loaded = true; break; } catch {} }
+    for (const u of urls) {
+      try {
+        await p.goto(u, { waitUntil: 'domcontentloaded', timeout: 40000 }); await sleep(5000);
+        // 404-Seiten ueberspringen (sonst fuellt der Bot das Such-Feld der Fehlerseite) — echte Profil-Seite suchen
+        const is404 = await p.evaluate(() => /404|nicht.*finden|pas.*trouver|not found|hoppla|oups/i.test(document.body.innerText.slice(0, 300))).catch(() => false);
+        if (!is404) { loaded = true; break; }
+        log(`${site}: ${u} = 404 -> naechste URL`);
+      } catch {}
+    }
     await p.screenshot({ path: path.join(SHOT, `${site}-profile-before.png`) });
-    if (!loaded) { log(`${site}: keine Seite geladen`); await p.close(); return 'NO_PAGE'; }
+    if (!loaded) { log(`${site}: keine gueltige Profil-Seite gefunden (alle 404) -> wartet auf markt-capture URLs`); await p.close(); return 'NO_VALID_PAGE'; }
     if (/login|anmelden|sign in/i.test((await p.content()).slice(0, 3000))) { log(`${site}: nicht eingeloggt`); await p.close(); return 'NOT_LOGGED_IN'; }
     // Beschreibungs-Feld (Textarea) + ggf. Name
     const descSel = await fillFirst(p, ['textarea[name*="descr" i]', 'textarea[name*="bio" i]', 'textarea[placeholder*="eschreib" i]', 'textarea[aria-label*="eschreib" i]', 'textarea'], DESC);
