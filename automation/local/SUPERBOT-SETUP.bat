@@ -52,6 +52,10 @@ REM PRODUKTE HOLEN (taeglich): BigBuy-Premium = bestes Markenmaterial, alle Kate
 schtasks /create /f /tn "LuxeProducts" /sc daily /st 03:30 /tr "%PSF% \"%DIR%bigbuy-premium.ps1\""
 REM SELBST-CHECK (alle 6h, OHNE User): Posting-Live-Check gepostet/doppel/Fehler -> committet Report
 schtasks /create /f /tn "LuxeHealth" /sc hourly /mo 6 /tr "%PSF% \"%DIR%scheduled-health.ps1\""
+REM SELBST-LERNEN (taeglich 06:00, OHNE User): analysieren -> ins Gehirn lernen -> Queue mit Gewinnern nachfuellen
+schtasks /create /f /tn "LuxeLearn" /sc daily /st 06:00 /tr "%PSF% \"%DIR%scheduled-learn.ps1\""
+REM WACHSEN: CH-Follower langsam + sicher (taeglich, niedrige Caps, Brave-CDP) - nachhaltig 1 Mio Ziel
+schtasks /create /f /tn "LuxeFollower" /sc daily /st 14:00 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"cd '%REPO%'; . $env:USERPROFILE\luxe-secrets.ps1; node automation/local/ch-follower-growth.mjs\""
 
 echo [4/6] Tasks duerfen PC wecken + aus Standby starten...
 for %%T in (LuxeUpdate LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 LuxeAutobot-11 LuxeAutobot-18 LuxeCmd LuxeSEO LuxeProducts) do (

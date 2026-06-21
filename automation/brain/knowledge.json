@@ -1104,6 +1104,11 @@
       "umsetzung": "Neue/migrierte Bots nutzen aiBrowser(). Bereits AI: tiktok/ig-delete, fb-groups. NOCH migrieren: social-profile-update, marketplace-profile, ggf. tiktok-upload. Erst verifizieren dass Stagehand verbindet (Diagnose-Status GESTARTET->act).",
       "llm": "Gemini-Key (gratis). Stagehand installiert (ai-browser-test bereit:true). Falls AIBROWSER_FEHLER -> CDP-Connect-API in ai-browser.mjs pruefen (Stagehand v3 cdpUrl).",
       "stand": "2026-06-21"
+    },
+    "selbst_wachsen_lernen_geplant_2026": {
+      "fest": "User 2026-06-21 \"mach das du ueberall selber waechst und lernst\". Lernen+Wachsen muss GEPLANT laufen (nicht nur manuell).",
+      "umgesetzt": "LuxeLearn (taeglich 06:00, scheduled-learn.ps1): analysieren->Gehirn lernen->Queue mit Gewinnern nachfuellen->committen. LuxeFollower (taeglich 14:00): CH-Follower langsam+sicher. + LuxeHealth 6h. = Bot waechst+lernt selbst, ueberall.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
