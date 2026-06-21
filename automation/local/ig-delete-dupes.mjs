@@ -49,8 +49,27 @@ async function clickFirst(scope, sels, timeout = 4000) {
     await sleep(3000);
     await p.screenshot({ path: path.join(SHOT, `post-${i + 1}-open.png`) });
     if (DRY) { log(`[dry] Post ${i + 1} geoeffnet (Screenshot), NICHT geloescht.`); await p.keyboard.press('Escape').catch(() => {}); continue; }
-    // ... (Mehr-Optionen)
-    if (!await clickFirst(p, ['svg[aria-label="More options"]', 'svg[aria-label="Mehr Optionen"]', '[aria-label="More options"]', '[aria-label="Mehr Optionen"]'])) {
+    // ... (Mehr-Optionen) — robuste Erkennung: Selektoren + JS-Fallback (IG aendert aria-labels staendig)
+    let menuOpen = await clickFirst(p, [
+      'svg[aria-label="More options"]', 'svg[aria-label="Mehr Optionen"]',
+      'svg[aria-label*="ptions"]', 'svg[aria-label*="ptionen"]',
+      '[aria-label="More options"]', '[aria-label="Mehr Optionen"]',
+      '[aria-label*="ptions"]', '[aria-label*="ptionen"]',
+      'div[role="dialog"] button[aria-label*="ption"]', 'div[role="button"][aria-label*="ption"]'
+    ]);
+    if (!menuOpen) {
+      // JS-Fallback: klickbares Element, dessen aria-label "option/optionen" enthaelt (im Dialog bevorzugt)
+      menuOpen = await p.evaluate(() => {
+        const norm = (s) => (s || '').toLowerCase();
+        const scope = document.querySelector('div[role="dialog"]') || document;
+        const cands = [...scope.querySelectorAll('[aria-label]')].filter(e => /option|optionen/.test(norm(e.getAttribute('aria-label'))));
+        const el = cands[0]?.closest('button,[role="button"],div[role="button"]') || cands[0];
+        if (el) { el.click(); return true; }
+        return false;
+      }).catch(() => false);
+      if (menuOpen) await sleep(1200);
+    }
+    if (!menuOpen) {
       await p.screenshot({ path: path.join(SHOT, `post-${i + 1}-no-menu.png`) }); log('Menue (...) nicht gefunden — Stop.'); break;
     }
     await sleep(1200);
