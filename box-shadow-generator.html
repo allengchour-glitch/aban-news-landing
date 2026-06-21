@@ -130,7 +130,6 @@ footer a{color:var(--muted)}
 (function(){
   var box=document.getElementById("box"),code=document.getElementById("code"),
       color=document.getElementById("color"),hex=document.getElementById("hex"),inset=document.getElementById("inset");
-  var R={x:"x",y:"y",b:"b",s:"s",o:"o"};
   function clampHex(v){
     v=String(v).trim().replace(/^#?/,"#").toUpperCase();
     if(/^#[0-9A-F]{3}$/.test(v))v="#"+v[1]+v[1]+v[2]+v[2]+v[3]+v[3];
