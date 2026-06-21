@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generatore CSS di box-shadow · aban news</title>
+<meta name="description" content="Generatore CSS di box-shadow gratuito: imposta le ombre con i cursori (X, Y, sfocatura, spread, colore, interna/esterna), guardale in tempo reale e copia il codice CSS pronto. In locale nel browser, senza login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/box-shadow-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/box-shadow-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/box-shadow-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/box-shadow-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/box-shadow-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/box-shadow-generator.html">
+<meta property="og:title" content="Generatore CSS di box-shadow">
+<meta property="og:description" content="Imposta le ombre con i cursori, guardale in tempo reale e copia il codice CSS. In locale nel browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/box-shadow-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="it_IT"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generatore CSS di box-shadow",
+"url":"https://abannews.com/it/box-shadow-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"it","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Imposta una box-shadow CSS con i cursori, mostra un'anteprima in tempo reale e fornisce il codice CSS pronto da copiare.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:620px){.stage{grid-template-columns:1fr}}
+.preview{display:flex;align-items:center;justify-content:center;min-height:240px;border:1px solid var(--line);border-radius:12px;background:repeating-conic-gradient(#f4ede0 0% 25%,#fff 0% 50%) 50%/24px 24px}
+@media(prefers-color-scheme:dark){.preview{background:repeating-conic-gradient(#2a2620 0% 25%,#201c16 0% 50%) 50%/24px 24px}}
+#box{width:120px;height:120px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.ctrls .lbl{display:flex;justify-content:space-between;font-weight:600;font-size:13px;margin:12px 0 5px;color:var(--ink2)}
+.ctrls .lbl:first-child{margin-top:0}
+.ctrls .val{color:var(--amber-dk);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--amber-dk)}
+.colorrow{display:flex;gap:10px;align-items:center;margin-top:12px}
+.colorrow input[type=color]{width:46px;height:38px;padding:2px;border:1px solid var(--line);border-radius:8px;background:var(--field);cursor:pointer}
+.colorrow input[type=text]{flex:1;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);text-transform:uppercase}
+.toggle{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--amber-dk)}
+.outbox{position:relative;margin-top:18px}
+.outbar{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.outbox pre{background:#1e1e1e;color:#e6e6e6;border-radius:10px;padding:14px;font-size:13.5px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Allo strumento</a>
+<header class="site"><div class="wrap"><a href="/it/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuita</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Generare una <span class="a">box-shadow</span></h1>
+    <p>Imposta un'ombra CSS con i cursori — posizione, sfocatura, dimensione, colore e interna/esterna — guardala in tempo reale e copia il codice <code>box-shadow</code> pronto. Tutto in locale nel browser, niente viene inviato.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="stage">
+      <div class="preview"><div id="box"></div></div>
+      <div class="ctrls">
+        <div class="lbl"><span>Horizontal (X)</span><span class="val" id="vx">0px</span></div>
+        <input type="range" id="x" min="-60" max="60" value="0" aria-label="Scostamento orizzontale">
+        <div class="lbl"><span>Verticale (Y)</span><span class="val" id="vy">8px</span></div>
+        <input type="range" id="y" min="-60" max="60" value="8" aria-label="Scostamento verticale">
+        <div class="lbl"><span>Sfocatura</span><span class="val" id="vb">24px</span></div>
+        <input type="range" id="b" min="0" max="120" value="24" aria-label="Sfocatura">
+        <div class="lbl"><span>Spread (dimensione)</span><span class="val" id="vs">-4px</span></div>
+        <input type="range" id="s" min="-40" max="40" value="-4" aria-label="Spread">
+        <div class="lbl"><span>Opacità</span><span class="val" id="vo">25%</span></div>
+        <input type="range" id="o" min="0" max="100" value="25" aria-label="Opacità dell'ombra">
+        <div class="colorrow">
+          <input type="color" id="color" value="#1f2937" aria-label="Colore dell'ombra">
+          <input type="text" id="hex" value="#1F2937" spellcheck="false" aria-label="Colore dell'ombra in HEX">
+        </div>
+        <label class="toggle"><input type="checkbox" id="inset"> Ombra interna (inset)</label>
+      </div>
+    </div>
+    <div class="outbox">
+      <div class="outbar">
+        <span class="lbl" id="outLbl" style="margin:0;font-weight:600;font-size:13px;color:var(--ink2)">CSS</span>
+        <span style="flex:1"></span>
+        <button class="btn sm" id="copy" type="button">Copia</button>
+      </div>
+      <pre id="code" role="textbox" tabindex="0" aria-readonly="true" aria-labelledby="outLbl"></pre>
+    </div>
+    <p class="note">L'opacità controlla l'alpha del colore dell'ombra (resa come <code>rgba()</code>). Consiglio: le ombre discrete (bassa opacità, un po' di sfocatura, spread leggermente negativo) sono le più eleganti. Tutto in locale, nessun caricamento.</p>
+  </section>
+  <div class="cta"><strong>Altri strumenti</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">per il web &amp; il design.</p>
+    <p><a class="btn" href="/it/farb-umrechner.html">Convertitore di colori</a>
+      <a class="btn ghost" href="/it/kontrast-checker.html">Verificatore di contrasto</a>
+      <a class="btn ghost" href="/it/online-tools.html">Tutti gli strumenti</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ti è stato utile? 5 minuti di IA senza clamore — ogni giorno feriale.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news è la newsletter IA per i lavoratori autonomi: breve, onesta, senza bingo di parole alla moda. Gratuita, disiscrizione in qualsiasi momento.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Iscriviti alla newsletter gratuita →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/it/farb-umrechner.html">Convertitore di colori</a> · <a href="/it/kontrast-checker.html">Verificatore di contrasto</a> ·
+  <a href="/it/ki-werkzeug.html">Strumento IA</a> &middot; <a href="/it/online-tools.html">Tutti gli strumenti</a> &middot; <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var box=document.getElementById("box"),code=document.getElementById("code"),
+      color=document.getElementById("color"),hex=document.getElementById("hex"),inset=document.getElementById("inset");
+  function clampHex(v){
+    v=String(v).trim().replace(/^#?/,"#").toUpperCase();
+    if(/^#[0-9A-F]{3}$/.test(v))v="#"+v[1]+v[1]+v[2]+v[2]+v[3]+v[3];
+    return /^#[0-9A-F]{6}$/.test(v)?v:null;
+  }
+  function hexToRgb(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
+  function val(id){return parseInt(document.getElementById(id).value,10)||0;}
+  function render(){
+    var x=val("x"),y=val("y"),b=val("b"),s=val("s"),o=val("o");
+    document.getElementById("vx").textContent=x+"px";
+    document.getElementById("vy").textContent=y+"px";
+    document.getElementById("vb").textContent=b+"px";
+    document.getElementById("vs").textContent=s+"px";
+    document.getElementById("vo").textContent=o+"%";
+    var h=clampHex(hex.value)||color.value.toUpperCase();
+    var rgb=hexToRgb(h);
+    var alpha=Math.round(o/100*100)/100;
+    var ins=inset.checked?"inset ":"";
+    var shadow=ins+x+"px "+y+"px "+b+"px "+s+"px rgba("+rgb[0]+", "+rgb[1]+", "+rgb[2]+", "+alpha+")";
+    box.style.boxShadow=shadow;
+    code.textContent="box-shadow: "+shadow+";\n-webkit-box-shadow: "+shadow+";";
+    return "box-shadow: "+shadow+";";
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Copiato ✓");},function(){fallback(text,b);});
+    } else fallback(text,b);
+  }
+  function fallback(text,b){
+    try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+      document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Copiato ✓");}
+    catch(e){flash(b,"Copia manualmente");}
+  }
+  ["x","y","b","s","o"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});
+  color.addEventListener("input",function(){hex.value=color.value.toUpperCase();render();});
+  hex.addEventListener("input",function(){var c=clampHex(hex.value);if(c)color.value=c;render();});
+  inset.addEventListener("change",render);
+  document.getElementById("copy").addEventListener("click",function(){copy(code.textContent,this);});
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
