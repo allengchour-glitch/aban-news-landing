@@ -1,0 +1,23 @@
+{
+  "ts": "2026-06-21T09:07:07.011Z",
+  "pages": [
+    {
+      "site": "tutti",
+      "tried": "https://www.tutti.ch/de/account/messages",
+      "url": "https://www.tutti.ch/de/account/messages",
+      "title": "",
+      "loggedIn": true,
+      "body": "Hoppla! Wir konnten die gesuchte Seite nicht finden. Du kannst auch ein neues Inserat aufgeben oder uns kontaktieren. Suchen Registrieren Hilfe Kontakt Jobs Medien Sicherheitshinwe",
+      "screenshot": "01-tutti.png"
+    },
+    {
+      "site": "anibis",
+      "tried": "https://www.anibis.ch/de/messages",
+      "url": "https://www.anibis.ch/de/messages",
+      "title": "",
+      "loggedIn": true,
+      "body": "Oups! Nous ne pouvons pas trouver cette page. Si vous voulez, vous pouvez insérer une nouvelle annonce ou nous contacter. Cherchez Inscrivez-vous Aide Contact Jobs Médias Conseils ",
+      "screenshot": "02-anibis.png"
+    }
+  ]
+}
