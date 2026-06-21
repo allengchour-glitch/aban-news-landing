@@ -122,6 +122,8 @@ async function pickFromSearch(p, value) {
     process.exit(0);
   }
 
+  // FIX 2026-06-21 (DIAG zeigte Kampagnen-LISTE statt Assistent): erst "Create" klicken -> oeffnet den Erstellungs-Wizard.
+  if (await clickAny(p, ['+ Create', 'Create', 'Erstellen', 'Kampagne erstellen', 'Create campaign'])) { await sleep(4000); await diag(p, 'after-create-click'); }
   await clickAny(p, ['Custom mode', 'Benutzerdefinierter Modus', 'Erweitert']); // falls Simplified-Default
   const obj = await clickAny(p, ['Website conversions', 'Conversions', 'Sales', 'Verkäufe', 'Conversion', 'Website-Conversions']);
   log('Ziel:', obj || '⚠️ Ziel-Selektor prüfen (Screenshot 01)');
