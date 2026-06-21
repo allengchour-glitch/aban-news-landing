@@ -1244,3 +1244,12 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   „keine geeigneten TOP-Kandidaten") → erwartbar; Rest läuft. **Session-Summe Produkte: ~52+ neu**, alle Merchant-sauber.
 - **Content-Lehre:** Buyer-Intent-Artikel zu Collections OHNE Artikel = bester autonomer Reichweiten-Hebel (kein User-Klick).
   Noch offene Collection-Lücken für künftige Artikel: caps-hute, sub-bart-rasur, herren-hemden, beauty-marken.
+
+## 📌 2026-06-20 Teil 10 (+2 Kaufberater → 103 Artikel; Wave 5 läuft; Multipack-Fix)
+- **+2 Gemini-Kaufberater live:** Bartpflege & Rasur (→sub-bart-rasur 23) · Make-up & Beauty Basics (→beauty-marken 62).
+  **Blog jetzt ~103 Artikel.** Offene Collection-Lücken noch: caps-hute (14, dünn), herren-hemden (6).
+- **🛠️ Import-Wurzelfix:** globaler `GLOBAL_BAN` für Wholesale-Multipacks (`pcs)`/`uds`/`grosspack`/`bulk`/`(18`/`(24`…)
+  in `bigbuy_import.mjs` → künftige Wellen überspringen Mehrstück-Packs. 2 Hundespielzeug-18er-Packs (CHF 93.90/141.90)
+  aus Wave 4 archiviert.
+- **Wave 5** (uhren,sonnenbrillen,parfum,schuhe,herrenmode,home) läuft — uhren/parfum/sonnenbrillen evtl. saturiert
+  (Premium-Charge anderer Sessions), schuhe/herrenmode/home evtl. frisch. Committet selbst.
