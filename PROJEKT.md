@@ -16,7 +16,7 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
-## 🧰 2026-06-20/21 — 37 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20/21 — 39 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -36,7 +36,8 @@
   zufalls-generator (Los ziehen/Zufallszahl/Mischen, crypto-Zufall + Fisher-Yates) + schriftgroessen-skala (modulare Type-Scale px/rem, CSS-Variablen) #1145 ·
   margen-rechner (Marge↔Aufschlag, Preis aus Wunsch-Marge/-Aufschlag) + rechnung-teilen (Betrag/Personen + Trinkgeld, Aufrunden) #1146 ·
   dreisatz-rechner (4. Wert proportional/umgekehrt, mit Rechenweg) + countdown-timer (Countdown bis Datum + Minuten-Timer + Stoppuhr, WebAudio-Beep) #1147 ·
-  tippgeschwindigkeit-test (WPM/Genauigkeit, dt. Texte, Live-Highlight) + zeitzonen-rechner (Meeting-Planer, Intl-TZ inkl. Sommerzeit, getestet) [batch-18, 2026-06-21].
+  tippgeschwindigkeit-test (WPM/Genauigkeit, dt. Texte, Live-Highlight) + zeitzonen-rechner (Meeting-Planer, Intl-TZ inkl. Sommerzeit, getestet) #1148 ·
+  bruchrechner (+−×÷, kürzen via gcd, Dezimal/gemischt) + roemische-zahlen (Zahl↔römisch, Kanonik-Check, Vinculum ab 4000) [batch-19, 2026-06-21].
   EN-Tools = KEIN Hebel (geprüft: /en/ nutzt deutsche Slugs, DACH-Fokus → bringt keine dt. Abonnenten).
 - **🔗 Discovery erledigt (PRs #1130 Startseite-„Mehr", #1131 Alt-Tool-Querlinks):** neue Tools jetzt 4-fach erschlossen
   (Sitemap + Hub-Kategorien + Startseite + kontextuelle Querlinks von indexierten Alt-Tools). Beim Anlegen neuer Tools künftig
