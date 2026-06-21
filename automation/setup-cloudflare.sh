@@ -1,63 +1,64 @@
 #!/usr/bin/env bash
 # =============================================================================
-#  setup-cloudflare.sh — schaltet die 2 letzten Live-Hebel in EINEM Lauf frei:
-#    (1) D1-Datenbank "inserate" anlegen + Schema einspielen   -> echte Inserate
-#    (2) GROQ_API_KEY als Pages-Secret setzen                  -> Gratis-KI live
+#  setup-cloudflare.sh — schaltet die Geld- & Live-Hebel frei (interaktiv).
+# -----------------------------------------------------------------------------
+#  Setzt die noetigen Cloudflare-Pages-Secrets (du fuegst jeden Wert selbst ein)
+#  und legt die Inserate-Datenbank an:
+#    • STRIPE_API_KEY   -> Shop liefert das Kit nach Zahlung aus (Geld!)
+#    • DOWNLOAD_SALT    -> korrekter Download-Hash der Kit-ZIPs
+#    • GROQ_API_KEY     -> Gratis-KI auf der Website (/api/generate, Frag aban)
+#    • D1 "inserate"    -> echte Kleinanzeigen
 #
-#  Voraussetzung (das EINZIGE, was nur du tun kannst — Konto-Zugang):
-#    entweder einmal:  npx wrangler login
-#    oder als Env:     export CLOUDFLARE_API_TOKEN=...   (Pages:Edit + D1:Edit)
+#  Kein Auto-Deploy, keine stillen Aenderungen: jeder Secret-Wert wird interaktiv
+#  abgefragt (wrangler secret put). Idempotent wiederholbar.
 #
-#  Aufruf:
-#    bash automation/setup-cloudflare.sh <PAGES_PROJEKTNAME>
-#  Beispiel:
-#    bash automation/setup-cloudflare.sh abannews
+#  Voraussetzung (nur du, Konto-Zugang):
+#    einmal:  npx wrangler login     ODER     export CLOUDFLARE_API_TOKEN=...
+#    Token-Rechte: Pages:Edit + D1:Edit (von einer erlaubten IP ausfuehren).
+#
+#  Aufruf:  bash automation/setup-cloudflare.sh [PAGES_PROJEKT]    (Default: abannews)
 # =============================================================================
 set -euo pipefail
 
-PROJ="${1:-}"
+PROJ="${1:-abannews}"
 DB_NAME="inserate"
 SCHEMA="db/inserate-schema.sql"
 WR="npx --yes wrangler@latest"
 
-if [ -z "$PROJ" ]; then
-  echo "❌ Bitte Pages-Projektnamen angeben:  bash automation/setup-cloudflare.sh <PROJEKT>"
-  echo "   (Cloudflare-Dashboard → Workers & Pages → dein Projekt → Name oben)"
-  exit 1
-fi
-if [ ! -f "$SCHEMA" ]; then echo "❌ $SCHEMA fehlt."; exit 1; fi
+[ -f "$SCHEMA" ] || { echo "❌ $SCHEMA fehlt (im Repo-Wurzelverzeichnis ausfuehren)."; exit 1; }
 
-# Auth prüfen
 if [ -z "${CLOUDFLARE_API_TOKEN:-}" ]; then
-  echo "ℹ️  Kein CLOUDFLARE_API_TOKEN gesetzt — prüfe wrangler-Login …"
   if ! $WR whoami >/dev/null 2>&1; then
-    echo "❌ Nicht eingeloggt. Führe einmal aus:  npx wrangler login"
-    echo "   ODER setze:  export CLOUDFLARE_API_TOKEN=...  (Rechte: Pages:Edit + D1:Edit)"
+    echo "❌ Nicht eingeloggt. Einmal:  npx wrangler login"
+    echo "   ODER:  export CLOUDFLARE_API_TOKEN=...  (Pages:Edit + D1:Edit), von erlaubter IP."
     exit 1
   fi
 fi
 
-echo "── (1/3) D1-Datenbank '$DB_NAME' anlegen ──"
-# Idempotent: wenn sie existiert, weiter (Fehler ignorieren).
+put_secret() {  # $1 = Secret-Name, $2 = Beschreibung
+  echo "── Secret '$1' setzen ($2) ──"
+  echo "   Wert eingeben (wird nicht angezeigt). Leer lassen + Enter = ueberspringen."
+  if $WR pages secret put "$1" --project-name "$PROJ"; then echo "   ✅ $1 gesetzt"; else echo "   ⏭️  $1 uebersprungen/Fehler"; fi
+}
+
+echo "==> Projekt: $PROJ"
+put_secret STRIPE_API_KEY "Shop-Auslieferung nach Zahlung — GELD"
+put_secret DOWNLOAD_SALT  "Download-Hash der Kit-ZIPs"
+put_secret GROQ_API_KEY   "Gratis-KI auf der Website"
+
+echo "── D1 '$DB_NAME' anlegen + Schema einspielen ──"
 $WR d1 create "$DB_NAME" 2>/dev/null || echo "   (existiert vermutlich schon — ok)"
-
-echo "── (2/3) Schema einspielen (remote) ──"
 $WR d1 execute "$DB_NAME" --remote --file="$SCHEMA" --yes
-
-echo "── (3/3) GROQ_API_KEY als Pages-Secret setzen ──"
-echo "   (gleich wird der Key abgefragt — füge deinen rotierten Groq-Key ein)"
-$WR pages secret put GROQ_API_KEY --project-name "$PROJ" || \
-  echo "   ⚠️ Konnte Secret nicht setzen — im Dashboard nachholen (Settings → Variables)."
 
 cat <<EOF
 
-✅ D1 + Schema erledigt, Secret gesetzt.
+✅ Secrets gesetzt + D1 bereit.
 
-⚠️ EIN letzter Klick im Dashboard (D1-Binding lässt sich nicht zuverlässig per CLI an ein
-   Pages-Projekt hängen): Workers & Pages → $PROJ → Settings → Functions →
-   D1 database bindings → Add → Variable: DB → Datenbank: $DB_NAME → Save → Redeploy.
+⚠️ EIN Dashboard-Klick fuer die Inserate-DB (Binding):
+   Workers & Pages → $PROJ → Settings → Functions → D1 database bindings →
+   Add → Variable: DB → Datenbank: $DB_NAME → Save → dann Redeploy.
 
-Danach prüfen:
-   curl -s https://abannews.com/api/inserate-list | head
-   (sollte JSON ohne "error":"db" liefern)
+Pruefen (nach Redeploy):
+   curl -s "https://abannews.com/api/inserate-list" | head      # kein "error":"db"
+   # Kauf-Test: ein Kit ueber den Stripe-Link kaufen -> Download muss kommen.
 EOF
