@@ -1129,6 +1129,16 @@
       "backup_fix": "Feed aus Shopify Google&YouTube-Kanal. Per API fixbar: identifier_exists/custom_product, vendor/condition/availability, Preis+Versand-Match, Bild>=250px. Tools feed_polish.mjs/enrich_apparel_descriptions.mjs.",
       "hebel": "Genehmigte Produkte = GRATIS Google-Shopping-Listings = kaufwilliger Such-Traffic (gegen search=55 tot).",
       "stand": "2026-06-21"
+    },
+    "besser_werden_2026_06_21": {
+      "fest": "User 2026-06-21 \"lerne das du besser wirst\". Meta-Lehren aus dem stundenlangen Crash/Recovery.",
+      "L1_nicht_ueberpushen": "NICHT im Minutentakt committen+pushen waehrend der PC laeuft - cmd-poll macht git pull --rebase + push pro Befehl -> staendige Push-Konkurrenz blockiert den PC. BESSER: Aenderungen BATCHEN, 1 Push pro Arbeitsblock, dann PC in Ruhe arbeiten lassen.",
+      "L2_kaputter_klon": "Wurzel des 6h-Ausfalls = beschaedigter C:luxe-Klon (Dateien fehlten z.B. SUPERBOT-SETUP.bat, git stuck). SCHNELLER FIX (am PC, 1 Befehl): cd /d C:luxe && git fetch origin BRANCH && git reset --hard FETCH_HEAD && automationlocalSUPERBOT-SETUP.bat. Stellt alles wieder her + startet neu.",
+      "L3_cloud_grenze": "Cloud kann den PC NICHT reparieren (kein Draht ausser der toten Task). Bei PC-Stillstand >20min NICHT stundenlang remote re-queuen/raten -> FRUEH den 1 Reparatur-Befehl geben + ehrlich sagen dass es Desktop braucht. Spart Stunden.",
+      "L4_weniger_bauen": "NICHT viele ungetestete fragile Bots stapeln (Stagehand-Loesch-Bots nie verifiziert). BESSER: 1 Sache bauen -> verifizieren (Screenshot/Status) -> erst dann naechste. Qualitaet > Menge.",
+      "L5_diagnose": "Bei PC-Stillstand Reihenfolge: (1) letzter echter auto-Commit Zeitstempel, (2) Klon-Integritaet (Dateien da?), (3) Brave haengt? (4) Task-Planer feuert? - statt blind re-queuen. SUPERBOT killt jetzt Brave selbst (gefixt).",
+      "L6_geld_konto": "TikTok: nur Konto mit Guthaben+Pixel (Ch0524 7643589765259493393). Pixel-Events-Seite = gmail-Verifizierung noetig (nur User).",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
