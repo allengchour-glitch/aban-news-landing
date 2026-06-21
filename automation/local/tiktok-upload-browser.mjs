@@ -42,7 +42,8 @@ function writeStatus(result, reason, extra = {}) {
 
 function pickReel() {
   if (argFile) return path.resolve(argFile);
-  const done = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split(/\s+/).filter(Boolean) : [];
+  // Ledger-Zeilen sind "dateiname" ODER "dateiname|ISO-Zeit" (Zeitstempel seit 2026-06-21 fuer Doppel-Erkennung).
+  const done = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').map(l => l.split('|')[0].trim()).filter(Boolean) : [];
   // PRIORITÄT (User 2026-06-17 „wenn postist TikTok"): erst die besten Hero-Creatives, dann alle
   // luxe-*-9x16-Reels, dann die alten *-9x16-meta. So landen die neuen Top-Videos auch auf TikTok.
   // MEISTERWERKE ZUERST (User 2026-06-19 „muss meisterwerk sein, komplette videos") + Vollstaendigkeits-Gate.
@@ -121,7 +122,7 @@ function toSilent(file) {
     const failed = /QA-FAIL/i.test(qaOut);
     const passed = /QA-OK|bestanden|premium=true/i.test(qaOut);
     if (passed && !failed) break;                       // bestanden -> posten (Exit-Code egal)
-    log('⚠️ QA durchgefallen → ueberspringe ' + path.basename(file)); fs.appendFileSync(DONE, path.basename(file) + '\n'); file = pickReel();
+    log('⚠️ QA durchgefallen → ueberspringe ' + path.basename(file)); fs.appendFileSync(DONE, path.basename(file) + '|' + new Date().toISOString() + '\n'); file = pickReel();
   }
   if (!file || !fs.existsSync(file)) { log('Kein QA-bestandenes Reel offen. No-op.'); process.exit(0); }
   const slug = path.basename(file).replace('.mp4', '');
@@ -204,7 +205,10 @@ function toSilent(file) {
       }
     }
     await sleep(12000);
-    fs.appendFileSync(DONE, path.basename(file) + '\n');
+    fs.appendFileSync(DONE, path.basename(file) + '|' + new Date().toISOString() + '\n');
+    // DONE-Ledger SOFORT committen+pushen (Lehre 2026-06-21 Doppelpost): sonst loescht 'git reset --hard'
+    // (SUPERBOT/Update) den lokalen Eintrag -> derselbe Clip wird nochmal gepostet. Durabel = nie wieder doppelt.
+    try { execSync('git add automation/local/tiktok-upload-done.txt reports/tiktok-last-run.json && git commit -m "auto(tiktok): posted-ledger ' + path.basename(file) + '" && git pull --rebase origin claude/luxestyle-product-CizQ6 && git push origin claude/luxestyle-product-CizQ6', { cwd: ROOT, stdio: 'ignore' }); } catch {}
     log(confirmed ? '✅ Veröffentlicht (Bestätigung geklickt). Vermerkt.' : '✅ „Veröffentlichen" geklickt (kein Extra-Dialog). Vermerkt.');
     writeStatus('POSTED', confirmed ? 'Veroeffentlicht (Bestaetigung geklickt)' : 'Veroeffentlichen geklickt', { file: path.basename(file), caption: caption.split('\n')[0] });
   } else { log('⚠️ Veröffentlichen-Button nicht gefunden — Video ist gesetzt, bitte in der Seite manuell klicken.'); writeStatus('NO_POST_BUTTON', 'Video gesetzt, Veroeffentlichen-Button fehlt', { file: path.basename(file) }); }
