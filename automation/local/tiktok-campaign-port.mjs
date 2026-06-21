@@ -113,11 +113,22 @@ async function pickFromSearch(p, value) {
   // DIAGNOSE-FALLE (2026-06-21): wenn Stagehand NICHT aktiv ist (kein GROQ/GEMINI-Key), kann der Bot NICHT
   // autonom klicken -> sofort klaren Status schreiben, damit der gepushte Report die Ursache zeigt.
   if (ab.mode !== 'stagehand') {
-    const st = { ts: new Date().toISOString(), result: 'AI_INAKTIV', mode: ab.mode,
-      hinweis: 'Stagehand-AI nicht aktiv (GROQ_API_KEY oder GEMINI_API_KEY fehlt in luxe-secrets.ps1). Der Playwright-Fallback kann den TikTok-Wizard nicht zuverlaessig klicken. Loesung: gratis Groq-Key (console.groq.com) als $env:GROQ_API_KEY in luxe-secrets.ps1, dann neu starten.' };
+    const hasGroq = !!process.env.GROQ_API_KEY, hasGemini = !!process.env.GEMINI_API_KEY;
+    let installed = false; try { await import('@browserbasehq/stagehand'); installed = true; } catch {}
+    const why = !installed ? 'STAGEHAND_NICHT_INSTALLIERT'
+              : !(hasGroq || hasGemini) ? 'KEIN_KEY_IN_UMGEBUNG'
+              : 'INIT_FEHLER';
+    const fix = why === 'STAGEHAND_NICHT_INSTALLIERT'
+        ? 'Im C:\\luxe-Ordner ausfuehren: npm i @browserbasehq/stagehand  (dann Bot neu starten).'
+      : why === 'KEIN_KEY_IN_UMGEBUNG'
+        ? 'GROQ_API_KEY (gsk_...) ODER GEMINI_API_KEY in DERSELBEN Shell-Session setzen, BEVOR node startet: $env:GROQ_API_KEY="gsk_...".'
+        : 'Paket + Key da, aber Stagehand-Init schlug fehl (Key gueltig? Netz?). Mit GEMINI_API_KEY probieren.';
+    const st = { ts: new Date().toISOString(), result: 'AI_INAKTIV', mode: ab.mode, why,
+      stagehand_installiert: installed, groq_key: hasGroq, gemini_key: hasGemini, fix };
     try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
       fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(st, null, 2)); } catch {}
-    log('⚠️ AI_INAKTIV — Stagehand braucht GROQ/GEMINI-Key. Playwright-Fallback ist unzuverlaessig fuer den Wizard.');
+    log('⚠️ AI_INAKTIV — Grund: ' + why + ' | installiert=' + installed + ' groq=' + hasGroq + ' gemini=' + hasGemini);
+    log('   FIX: ' + fix);
   }
 
   // ---- Schritt 1: Kampagnen-Erstellung öffnen + Ziel ----
