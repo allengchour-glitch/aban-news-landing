@@ -1379,3 +1379,11 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   CLIENT_SECRET `shpss_…` (vom User; **rotieren, da im Klartext gepostet**).
 - **User-PC-Falle:** `wrangler deploy` in `C:\Users\allen\` erzeugte aus Versehen einen Junk-Worker **„allen"** (lokale Dateien
   inkl. .git hochgeladen) → harmlos, im Dashboard löschen. Repo liegt in der CLOUD, nicht auf dem Windows-PC → User soll's NICHT lokal versuchen.
+
+## 📌 2026-06-21 Teil 20 (📝 Content-Vollgas: ~124 Kaufberater)
+- **Diese Session ~25 neue SEO-Kaufberater** via Gemini (Groq-Tageslimit umschifft): WM(3), Gaming, Handy, Haustier,
+  Fitness, Bartpflege, Beauty, Caps, Küche, + 8 neue Bereiche (Rucksack/Beleuchtung/Garten/Pool/Camping/Haarstyling/Bar/Auto),
+  Parfum, Trainingsanzug, Damenmode-Basics, Markenprodukte, Schmuck-verschenken, Schuhe-pflegen, Socken. **Blog ~124 Artikel.**
+- **Alle conversion-verlinkt** auf Collections + Produkte. Zielt auf den **2%-Organik-Hebel** (datenbelegt der grösste Upside).
+- **Cloudflare-Worker-Scharfschalten = aufgegeben** (Token-Fallen, s.o.) — low value (nur Shop-Wartung, Katalog ist eh sauber).
+  Fokus bleibt Content + Polish (autonom, kein User-Klick nötig). Produkte = andere Session.
