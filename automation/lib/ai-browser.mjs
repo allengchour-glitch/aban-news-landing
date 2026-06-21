@@ -61,11 +61,17 @@ export async function aiBrowser({ cdp = CDP } = {}) {
           console.log('Stagehand aktiv mit Modell ' + c.modelName + (sh.page ? '' : ' (raw-Page fuer goto, sh.page lazy fuer act)'));
           // Diagnose, damit der Bot sie in den gepushten Report schreiben kann (sonst nur in der Konsole sichtbar).
           const diag = () => { let shKeys = ''; try { shKeys = Object.keys(sh).join(','); } catch {} let proto = ''; try { proto = Object.getOwnPropertyNames(Object.getPrototypeOf(sh) || {}).join(','); } catch {} return { model: c.modelName, hasShPage: !!sh.page, shPageType: typeof sh.page, rawHasAct: typeof rawPage.act, actReady: !!actPage(), shKeys, shProto: proto }; };
+          // FIX 2026-06-21 (Diagnose shProto): act/extract/observe liegen in dieser Stagehand-Version auf der
+          // INSTANZ (sh.act), nicht auf sh.page (das ist undefined). -> direkt sh.act/sh.extract/sh.observe nutzen.
+          const callAct = typeof sh.act === 'function' ? (instr) => sh.act(instr)
+                          : (instr) => { const ap = actPage(); if (!ap) throw new Error('Keine act-Methode (weder sh.act noch page.act)'); return ap.act(instr); };
+          const callExtract = typeof sh.extract === 'function' ? (instr, schema) => sh.extract(schema ? { instruction: instr, schema } : instr)
+                          : (instr, schema) => { const ap = actPage() || rawPage; return ap.extract(schema ? { instruction: instr, schema } : instr); };
+          const callObserve = typeof sh.observe === 'function' ? (instr) => sh.observe(instr)
+                          : (instr) => { const ap = actPage() || rawPage; return ap.observe ? ap.observe(instr) : []; };
           return {
             mode: 'stagehand', model: c.modelName, sh, page: rawPage, diag,
-            act: (instr) => { const ap = actPage(); if (!ap) throw new Error('Keine Stagehand-act-Page verfuegbar'); return ap.act(instr); },
-            extract: (instr, schema) => { const ap = actPage() || rawPage; return ap.extract(schema ? { instruction: instr, schema } : instr); },
-            observe: (instr) => { const ap = actPage() || rawPage; return ap.observe ? ap.observe(instr) : []; },
+            act: callAct, extract: callExtract, observe: callObserve,
             close: () => sh.close().catch(() => {}),
           };
         } catch (e) {
