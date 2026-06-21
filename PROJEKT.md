@@ -16,7 +16,7 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
-## 🧰 2026-06-20 — 29 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20 — 31 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -32,7 +32,8 @@
   roi-rechner (ROI/ROAS + Gewinn nach Marge, opt. CPA) + break-even-rechner (Gewinnschwelle Stück/Umsatz, Deckungsbeitrag) #1124 ·
   bild-komprimierer (JPG/PNG/WebP via Canvas verkleinern, 100% lokal, Drag&Drop, Vorher/Nachher) + css-verlauf-generator (linear/radial Gradient, Farb-Stops, CSS-Copy) #1132 ·
   einheiten-umrechner (Länge/Gewicht/Temperatur/Fläche/Geschwindigkeit, Swap) + kreditrechner (Annuität: Rate/Gesamtkosten/Zinsen, keine Beratung) #1133 ·
-  ust-idnr-pruefer (USt-IdNr-Format DE/AT/EU + CH-Hinweis, VIES-Link, NUR Format keine Gültigkeit) + box-shadow-generator (CSS-Schatten visuell, Live-Vorschau, Code) [batch-14].
+  ust-idnr-pruefer (USt-IdNr-Format DE/AT/EU + CH-Hinweis, VIES-Link, NUR Format keine Gültigkeit) + box-shadow-generator (CSS-Schatten visuell, Live-Vorschau, Code) #1135 ·
+  zufalls-generator (Los ziehen/Zufallszahl/Mischen, crypto-Zufall + Fisher-Yates) + schriftgroessen-skala (modulare Type-Scale px/rem, CSS-Variablen) [batch-15].
   EN-Tools = KEIN Hebel (geprüft: /en/ nutzt deutsche Slugs, DACH-Fokus → bringt keine dt. Abonnenten).
 - **🔗 Discovery erledigt (PRs #1130 Startseite-„Mehr", #1131 Alt-Tool-Querlinks):** neue Tools jetzt 4-fach erschlossen
   (Sitemap + Hub-Kategorien + Startseite + kontextuelle Querlinks von indexierten Alt-Tools). Beim Anlegen neuer Tools künftig
