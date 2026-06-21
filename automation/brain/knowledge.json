@@ -1114,6 +1114,14 @@
       "fest": "User 2026-06-21 \"recherchiere auch regelmaessig youtube mit tools\". yt-learn.mjs analysiert Top-Creator-Kanaele (TheEcomKing/Vilius/Julian Ivanov/Nate Herk/Sabrina u.a.) -> Lehren ins Gehirn.",
       "geplant": "LuxeYouTube woechentlich So 07:00 (braucht yt-dlp + Brave-Cookies). Liste automation/yt-learn-urls.txt. Lehren -> knowledge.json rules.yt_gelernt -> autobot wendet an.",
       "stand": "2026-06-21"
+    },
+    "shoppable_kanaele_2026": {
+      "recherche": "2026-06-21",
+      "tiktok_shop": "NICHT in CH (nur 10 EU-Laender, CH nicht EU) -> NIE einrichten, Ads->Shop bleibt der Weg.",
+      "ig_shopping": "In-App-Checkout US-only. ABER Produkt-Tagging (Tag->luxestyle.ch) geht in CH via Meta-Katalog. Shop publiziert schon auf Facebook&Instagram-Kanal (Katalog da). Braucht IG-Shopping-Freigabe in Meta Commerce Manager (USER-Zugang). Dann Worker IG-Posts mit product_tags.",
+      "google_free_listings": "GRATIS Google-Shopping-Listings via Merchant Center (Kanal Google&YouTube verbunden, Feed da). Merchant-Re-Review war 15.06 abgeschickt -> Status pruefen (USER). Groesster Gratis-Hebel gegen search=55.",
+      "pinterest": "Produkt-Pins via pinterest_publish.mjs (Kanal verbunden) - gratis shoppbar (Pin->Shop).",
+      "plan": "Verbundene Kanaele=alle. Gratis-shoppbar-Hebel: (1) Google Free Listings (Merchant freigeben), (2) IG Produkt-Tags (IG-Shopping freigeben), (3) Pinterest-Pins (laeuft). Approvals=User-Zugang; Bau/Sync=ich."
     }
   },
   "decisions": [
