@@ -66,8 +66,8 @@ for %%T in (LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 
   powershell -NoProfile -Command "$t=Get-ScheduledTask -TaskName '%%T' -ErrorAction SilentlyContinue; if($t){$s=$t.Settings;$s.ExecutionTimeLimit='PT45M';Set-ScheduledTask -TaskName '%%T' -Settings $s|Out-Null}" >nul 2>&1
 )
 
-echo [5/6] Brave-Port sicherstellen + JETZT 1x posten (Test)...
-%PSF% "%VA%" -Mode post
+echo [5/6] Brave-Port sicherstellen (KEIN Test-Post mehr - sonst Doppel-Posts bei mehrfachem Start)...
+powershell -NoProfile -Command "if(-not(Get-NetTCPConnection -LocalPort 9222 -State Listen -EA SilentlyContinue)){$b='C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe'; if(-not(Test-Path $b)){$b='C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe'}; if(Test-Path $b){Start-Process $b -ArgumentList '--remote-debugging-port=9222',('--user-data-dir='+$env:USERPROFILE+'\brave-agent'); Start-Sleep 18}}"
 
 echo [5b/6] EINMAL-EINRICHTUNG jetzt ausfuehren (Konten+Pixel, IG/TikTok-Profil, Marktplatz, Health)...
 cd /d "%REPO%"

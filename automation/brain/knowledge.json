@@ -1085,6 +1085,11 @@
       "ZU_PRUEFEN": "7646326014504976401 (Luxestlye Ch, Ads Manager) + 7646326045779476481 (Luxestlye Ch, Business Center) = 2 weitere Konten, evtl. auch Guthaben -> Analyse erweitert (alle 4 IDs in KNOWN). Bot zieht IDs jetzt autonom aus Dropdown-Text ID:.",
       "lehre": "User hat 4 TikTok-Werbekonten. Immer alle per Konto-Analyse pruefen (Guthaben+Pixel), Kampagnen ins funded Ch0524.",
       "stand": "2026-06-21"
+    },
+    "doppelpost_ursache_superbot_2026": {
+      "lehre": "User 2026-06-21: 4x dasselbe TikTok-Montage-Video weil SUPERBOT-SETUP.bat bei JEDEM Start einen Test-Post (-Mode post) machte + User es ~4x startete. Ledger-Reset verschaerfte es.",
+      "fix": "SUPERBOT [5/6] postet NICHT mehr - nur Brave-Port sicherstellen. + Ledger committet sofort (durabel). = SUPERBOT mehrfach starten erzeugt nie wieder Doppel-Posts.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
