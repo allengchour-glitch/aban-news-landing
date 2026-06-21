@@ -14,27 +14,41 @@
  */
 const CDP = process.env.CDP_URL || 'http://localhost:9222';
 
+let lastInitError = null; // letzter Stagehand-Init-Fehler (fuer Diagnose im Bot-Report)
+
 export async function aiBrowser({ cdp = CDP } = {}) {
-  // 1) Versuch: Stagehand (AI-Selektoren). Dynamischer Import -> kein harter Dependency-Zwang.
+  lastInitError = null;
+  // 1) Versuch: Stagehand (AI-Selektoren). Mehrere Modell-Configs durchprobieren (Gemini zuerst =
+  //    nativ am robustesten in Stagehand; dann Groq). Echten Init-Fehler merken statt verschlucken.
   try {
-    const mod = await import('@browserbasehq/stagehand').catch(() => null);
+    const mod = await import('@browserbasehq/stagehand').catch((e) => { lastInitError = 'import: ' + String(e).slice(0, 120); return null; });
     if (mod && (mod.Stagehand || mod.default)) {
       const Stagehand = mod.Stagehand || mod.default;
-      const modelName = process.env.GROQ_API_KEY ? 'groq/llama-3.3-70b-versatile'
-        : process.env.GEMINI_API_KEY ? 'google/gemini-2.0-flash' : undefined;
-      const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl: cdp }, modelName,
-        modelClientOptions: { apiKey: process.env.GROQ_API_KEY || process.env.GEMINI_API_KEY } });
-      await sh.init();
-      const page = sh.page;
-      return {
-        mode: 'stagehand', sh, page,
-        act: (instr) => page.act(instr),
-        extract: (instr, schema) => page.extract(schema ? { instruction: instr, schema } : instr),
-        observe: (instr) => page.observe(instr),
-        close: () => sh.close().catch(() => {}),
-      };
+      const candidates = [];
+      if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'google/gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
+      if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
+      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
+      for (const c of candidates) {
+        try {
+          const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl: cdp }, modelName: c.modelName,
+            modelClientOptions: { apiKey: c.apiKey }, verbose: 0 });
+          await sh.init();
+          const page = sh.page;
+          console.log('Stagehand aktiv mit Modell ' + c.modelName);
+          return {
+            mode: 'stagehand', model: c.modelName, sh, page,
+            act: (instr) => page.act(instr),
+            extract: (instr, schema) => page.extract(schema ? { instruction: instr, schema } : instr),
+            observe: (instr) => page.observe(instr),
+            close: () => sh.close().catch(() => {}),
+          };
+        } catch (e) {
+          lastInitError = c.modelName + ' -> ' + String(e && e.message ? e.message : e).slice(0, 200);
+          console.log('Stagehand init (' + c.modelName + ') fehlgeschlagen: ' + lastInitError);
+        }
+      }
     }
-  } catch (e) { console.log('Stagehand nicht nutzbar (' + String(e).slice(0, 60) + ') -> Playwright-Fallback.'); }
+  } catch (e) { lastInitError = String(e && e.message ? e.message : e).slice(0, 200); console.log('Stagehand nicht nutzbar (' + lastInitError + ') -> Playwright-Fallback.'); }
 
   // 2) Fallback: rohes Playwright ueber CDP (heutiger Weg) — Bots nutzen ihre eigenen Selektoren.
   const { chromium } = await import('playwright-core');
@@ -42,7 +56,7 @@ export async function aiBrowser({ cdp = CDP } = {}) {
   const ctx = b.contexts()[0] || await b.newContext();
   const page = await ctx.newPage();
   return {
-    mode: 'playwright', browser: b, page,
+    mode: 'playwright', browser: b, page, shError: lastInitError,
     act: async () => { throw new Error('act() braucht Stagehand — installiere @browserbasehq/stagehand'); },
     extract: async () => { throw new Error('extract() braucht Stagehand'); },
     observe: async () => [],

@@ -124,7 +124,8 @@ async function pickFromSearch(p, value) {
         ? 'GROQ_API_KEY (gsk_...) ODER GEMINI_API_KEY in DERSELBEN Shell-Session setzen, BEVOR node startet: $env:GROQ_API_KEY="gsk_...".'
         : 'Paket + Key da, aber Stagehand-Init schlug fehl (Key gueltig? Netz?). Mit GEMINI_API_KEY probieren.';
     const st = { ts: new Date().toISOString(), result: 'AI_INAKTIV', mode: ab.mode, why,
-      stagehand_installiert: installed, groq_key: hasGroq, gemini_key: hasGemini, fix };
+      stagehand_installiert: installed, groq_key: hasGroq, gemini_key: hasGemini,
+      init_fehler: ab.shError || null, fix };
     try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
       fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(st, null, 2)); } catch {}
     log('⚠️ AI_INAKTIV — Grund: ' + why + ' | installiert=' + installed + ' groq=' + hasGroq + ' gemini=' + hasGemini);
