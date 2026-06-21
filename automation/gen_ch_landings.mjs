@@ -1842,6 +1842,16 @@ function page(p) {
       }).join("");
     }).catch(function(){el.closest("section").style.display="none"});
   })();</script>` : "";
+  // Vertiefte interne Verlinkung: jede Seite verweist auf 12 ANDERE Kaufberater (rotiert,
+  // damit ein echtes Querverweis-Netz statt isolierter Doorway-Seiten entsteht).
+  const _all = PAGES.filter((x) => x.slug !== p.slug);
+  const _i = Math.max(0, PAGES.indexOf(p));
+  const _seen = new Set(), _rel = [];
+  for (let k = 1; _rel.length < 12 && k <= _all.length; k++) {
+    const x = _all[(_i + k * 7) % _all.length];
+    if (x && !_seen.has(x.slug)) { _seen.add(x.slug); _rel.push(x); }
+  }
+  const relLinks = _rel.map((x) => `<a href="/${x.slug}.html">${esc(x.h1.replace(" in der Schweiz", "").replace(/\s+(kaufen|mieten|finden)$/i, "").trim())}</a>`).join(" · ");
   return `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -1917,7 +1927,7 @@ ${faq}
   </div>
 ${partnerBox}  <div data-ad-slot="landing-mid" style="margin-top:18px"></div>
   <p class="rel">Mehr im <a href="/marktplatz.html">aban-Marktplatz</a>: Jobs, Fahrzeuge, Immobilien, Angebote &amp; Inserate für die Schweiz &amp; DACH. Oder gleich alles auf einmal in der <a href="/suche.html">Universal-Suche</a>.</p>
-  <p class="rel">Beliebte Kaufberater: <a href="/auto-kaufen-schweiz.html">Auto</a> · <a href="/wohnung-mieten-schweiz.html">Wohnung</a> · <a href="/moebel-kaufen-schweiz.html">Möbel</a> · <a href="/handy-kaufen-schweiz.html">Handy</a> · <a href="/ebike-kaufen-schweiz.html">E-Bike</a> · <a href="/job-finden-schweiz.html">Job</a></p>
+  <p class="rel">Weitere Kaufberater: ${relLinks}</p>
   <section style="margin-top:26px;background:var(--cream);border:1px solid #f3dca0;border-radius:14px;padding:18px;text-align:center">
     <strong style="font-size:1.05rem">📬 Gratis: Schnäppchen- &amp; Job-Updates</strong>
     <p style="font-size:.88rem;color:var(--ink2);margin:4px 0 10px">Das Beste aus dem Marktplatz + 1 KI-Tipp, Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.</p>
