@@ -3,6 +3,15 @@
 $ErrorActionPreference = "Continue"
 $repo = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
+# SELBST-PULL + NEUSTART (FIX 2026-06-21 Timing-Falle): neuesten Code holen BEVOR Befehle laufen, damit
+# NEUE Befehle/Scripts sofort erkannt werden (sonst verwirft die alte cmd-poll unbekannte Befehle). Aendert
+# der Pull die cmd-poll.ps1 selbst -> EINMAL mit neuem Code neu starten. Vor dem Lock -> kein Konflikt.
+if (-not ($args -contains '-reexec')) {
+  $before = (git rev-parse HEAD 2>$null)
+  git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null | Out-Null
+  $after = (git rev-parse HEAD 2>$null)
+  if ($before -and $after -and ($before -ne $after)) { & powershell -ExecutionPolicy Bypass -File $PSCommandPath -reexec; exit }
+}
 # SINGLE-INSTANCE, aber STALE-TOLERANT (FIX 2026-06-20 v2 "PC immer aktiv, Queue waechst trotzdem"):
 # Der alte Global-Mutex blockierte FUER IMMER, wenn ein Lauf an einem Browser/node-Aufruf haengen blieb
 # (Lock nie freigegeben -> jeder neue Poll stieg sofort aus -> Kanal tot). Jetzt: Lock-DATEI mit Zeitstempel.
