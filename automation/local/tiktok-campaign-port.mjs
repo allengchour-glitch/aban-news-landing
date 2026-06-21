@@ -99,6 +99,25 @@ async function pickFromSearch(p, value) {
   // ---- Schritt 1: Kampagnen-Erstellung öffnen + Ziel ----
   await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await sleep(8000); await diag(p, 'open-creation');
+
+  // FRUEHERKENNUNG Onboarding-Wand (Lehre 2026-06-21): Konto nicht eingerichtet -> NIE bis zum Builder.
+  // Statt 9 Screenshots durchzuklicken: sofort mit klarem Status abbrechen (kein Geld-Risiko, klare Diagnose).
+  const wall = await p.evaluate(() => {
+    const t = (document.body.innerText || '').toLowerCase();
+    return ['add business info', 'welcome to tiktok ads manager', 'getting started',
+      'enter payment details', 'select an industry', 'advertiser business info', 'permission error']
+      .filter(s => t.includes(s));
+  }).catch(() => []);
+  if (wall.length >= 2) {
+    const status = { ts: new Date().toISOString(), result: 'ACCOUNT_NOT_SETUP', hits: wall,
+      hinweis: 'TikTok-Werbekonto nicht eingerichtet (Add business info/Zahlung) ODER falsches Konto. User: ads.tiktok.com onboarden ODER ins Konto LuxeStyle CH Ads 7646349875793182738 einloggen.' };
+    try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
+      fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(status, null, 2)); } catch {}
+    log('🛑 ACCOUNT_NOT_SETUP — Onboarding-Wand erkannt (' + wall.join(', ') + '). KEINE Kampagne, kein Geld. Abbruch.');
+    await p.close().catch(() => {});
+    process.exit(0);
+  }
+
   await clickAny(p, ['Custom mode', 'Benutzerdefinierter Modus', 'Erweitert']); // falls Simplified-Default
   const obj = await clickAny(p, ['Website conversions', 'Conversions', 'Sales', 'Verkäufe', 'Conversion', 'Website-Conversions']);
   log('Ziel:', obj || '⚠️ Ziel-Selektor prüfen (Screenshot 01)');
