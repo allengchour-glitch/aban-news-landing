@@ -1,6 +1,9 @@
 # 📡 LIVE — was läuft (zum Mitlesen)
 
 > Stand: 2026-06-21 spät · Kanal: CLOUD-AN (selbstheilend + Autostart + Watchdog 6min + act-Timeout 45s) · Modus: **immer Bot, nie fragen, selbst checken/erledigen**
+>
+> ⚠️ **PC-Kanal aktuell eingefroren** (Heartbeat steht bei 22:00Z / Head `9385a8d0`; Queue-Bots noch nicht gelaufen).
+> Die Watchdog/Timeout-Fixes greifen erst nach 1 sauberem Neustart (SUPERBOT). Cloud arbeitet derweil API-seitig weiter.
 
 ## ✅ Heute autonom erledigt (Auszug)
 - **TWINT live** + Funnel bewiesen (Order #1003) · **ATC-Rate 0,57% → 3,2%** (102 Kauf-Blocker-Fixes greifen!)
@@ -11,6 +14,15 @@
 - **BigBuy-Marken verifiziert top** (echte EAN/GTIN = Google-Shopping-Motor) · Trust/CHF49→65 katalogweit
 - **Pixel-Konten geklärt** (7646 = Pixel+332CHF, via Shopify-Kanal) · Bots gebaut: Kampagne, CAPI-Datenfreigabe, Post-Audit, Marktplatz
 - **Gehirn: 185+ Regeln** · Dropship-Automation-Playbook, Creator/Conversion/Google/CH-Recht gelernt
+
+## 🎯 NEU: Weg „ohne dich zu steuern" gefunden (Recherche 2026-06-21)
+Der PC hängt, weil **API-Arbeit + Browser-Arbeit am selben Heim-Browser kleben**. ~70–80 % brauchen
+GAR keinen Browser → gehören auf reine API-Calls. Lösung: **n8n auf €4-VPS** (Always-on, selbstheilend
+via Docker, Cron+Retry+Telegram-Alert) macht alle API-Jobs nativ + ein **Cloud-Browser** (Skyvern, CH-
+Residential-IP) übernimmt den kleinen Rest (TikTok/IG/FB/Marktplätze). **Kein PC, keine Klicks mehr.**
+→ Voller Plan + Kosten + Migration: **`dropship/ZERO-STEERING-BLUEPRINT.md`**.
+**Empfehlung:** Weg C zuerst (~€4/Mo, killt 70–80 % der PC-Abhängigkeit, 0 Browser-Kosten); Cloud-Browser
+später. ⚠️ Kostet echtes Geld → **1 Freigabe** bevor ich VPS/Skyvern aufsetze.
 
 ## 🔄 In der Queue (laufen autonom über CLOUD-AN, sobald Kanal frei)
 | Befehl | Macht |
