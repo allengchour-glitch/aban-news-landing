@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML-Entity-Encoder &amp; -Decoder · aban news</title>
+<meta name="description" content="Kostenloses Tool: HTML-Entities kodieren und dekodieren — Sonderzeichen wie &amp; &lt; &gt; in &amp;amp; &amp;lt; &amp;gt; umwandeln (und zurück), optional Unicode als numerische Entities. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/html-entity-encoder.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/html-entity-encoder.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/html-entity-encoder.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/html-entity-encoder.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/html-entity-encoder.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/html-entity-encoder.html">
+<meta property="og:title" content="HTML-Entity-Encoder & -Decoder">
+<meta property="og:description" content="Sonderzeichen ↔ HTML-Entities kodieren/dekodieren, optional Unicode numerisch. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/html-entity-encoder.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"HTML-Entity-Encoder & -Decoder",
+"url":"https://abannews.com/html-entity-encoder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Kodiert und dekodiert HTML-Entities, inklusive numerischer Entities für Unicode-Zeichen.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-bottom:14px}
+.seg button{background:var(--field);border:0;padding:9px 16px;cursor:pointer;font-size:.9rem;color:var(--ink2);font-weight:600}
+.seg button[aria-pressed=true]{background:var(--amber-dk);color:#fff}
+.opt{display:flex;align-items:center;gap:8px;margin:10px 0;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.opt input{width:18px;height:18px;accent-color:var(--amber-dk)}
+.lbl{display:block;font-weight:600;font-size:13px;margin:10px 0 6px;color:var(--ink2)}
+textarea{width:100%;min-height:120px;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:11px;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--ink);resize:vertical}
+textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.outbar{display:flex;gap:8px;align-items:center;margin:12px 0 6px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">HTML-Entities</span> kodieren</h1>
+    <p>Sonderzeichen wie <code>&amp;</code>, <code>&lt;</code>, <code>&gt;</code> in HTML-Entities umwandeln — oder zurück. Praktisch, um Code in HTML anzuzeigen oder Entities aufzulösen. Optional auch Unicode als numerische Entities. Alles lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="seg" role="group" aria-label="Modus">
+      <button type="button" id="mEnc" aria-pressed="true">Kodieren</button>
+      <button type="button" id="mDec" aria-pressed="false">Dekodieren</button>
+    </div>
+    <label class="opt" id="optAll"><input type="checkbox" id="allNonAscii"> Auch Unicode/Sonderzeichen numerisch kodieren (&amp;#…;)</label>
+    <label class="lbl" for="in" id="inLbl">Eingabe</label>
+    <textarea id="in" spellcheck="false" placeholder="<p>Hallo &amp; willkommen</p>"></textarea>
+    <div class="outbar">
+      <span class="lbl" id="outLbl" style="margin:0">Ergebnis</span>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="copy" type="button">Kopieren</button>
+    </div>
+    <textarea id="out" readonly spellcheck="false" aria-labelledby="outLbl"></textarea>
+    <p class="note">Beim Kodieren werden immer <code>&amp; &lt; &gt; " '</code> umgewandelt; mit der Option zusätzlich alle Zeichen über ASCII als numerische Entities (z.&nbsp;B. <code>&amp;#8364;</code> für €). Beim Dekodieren werden benannte Entities (z.&nbsp;B. <code>&amp;auml;</code>) sowie dezimale (<code>&amp;#228;</code>) und hexadezimale (<code>&amp;#xE4;</code>) erkannt. Alles lokal, kein Upload.</p>
+  </section>
+  <div class="cta"><strong>Mehr Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Web &amp; Entwicklung.</p>
+    <p><a class="btn" href="/encoder.html">Base64-/URL-Encoder</a>
+      <a class="btn ghost" href="/json-formatter.html">JSON-Formatter</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/encoder.html">Encoder</a> · <a href="/json-formatter.html">JSON-Formatter</a> ·
+  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var inEl=document.getElementById("in"),out=document.getElementById("out"),inLbl=document.getElementById("inLbl"),
+      mEnc=document.getElementById("mEnc"),mDec=document.getElementById("mDec"),
+      allNonAscii=document.getElementById("allNonAscii"),optAll=document.getElementById("optAll");
+  var mode="enc";
+  // decode map: entity name -> codepoint
+  var DEC={"quot":34,"amp":38,"apos":39,"lt":60,"gt":62,"nbsp":160,"copy":169,"reg":174,"euro":8364,
+    "trade":8482,"deg":176,"laquo":171,"raquo":187,"ndash":8211,"mdash":8212,"hellip":8230,
+    "ldquo":8220,"rdquo":8221,"lsquo":8216,"rsquo":8217,"auml":228,"ouml":246,"uuml":252,
+    "Auml":196,"Ouml":214,"Uuml":220,"szlig":223,"euro":8364,"cent":162,"pound":163,"yen":165,
+    "sect":167,"middot":183,"times":215,"divide":247,"hearts":9829,"check":10003};
+  function encode(s,all){
+    var basic={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"};
+    var out="";
+    for(var i=0;i<s.length;i++){
+      var ch=s[i],code=s.charCodeAt(i);
+      if(basic[ch]!==undefined){out+=basic[ch];continue;}
+      if(all&&code>127){
+        var cp=s.codePointAt(i);
+        out+="&#"+cp+";";
+        if(cp>0xFFFF)i++; // skip the low surrogate
+        continue;
+      }
+      out+=ch;
+    }
+    return out;
+  }
+  function decode(s){
+    return s.replace(/&(#x[0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]*);/g,function(m,body){
+      var cp;
+      if(body.charAt(0)==="#"){
+        if(body.charAt(1)==="x"||body.charAt(1)==="X")cp=parseInt(body.slice(2),16);
+        else cp=parseInt(body.slice(1),10);
+        if(isNaN(cp)||cp<0||cp>0x10FFFF)return m;
+        try{return String.fromCodePoint(cp);}catch(e){return m;}
+      }
+      if(Object.prototype.hasOwnProperty.call(DEC,body))return String.fromCodePoint(DEC[body]);
+      return m; // unknown named entity: leave as-is
+    });
+  }
+  function run(){
+    var s=inEl.value;
+    out.value=mode==="enc"?encode(s,allNonAscii.checked):decode(s);
+  }
+  function setMode(m){
+    mode=m;
+    mEnc.setAttribute("aria-pressed",m==="enc"?"true":"false");
+    mDec.setAttribute("aria-pressed",m==="dec"?"true":"false");
+    inLbl.textContent=m==="enc"?"Eingabe (Text)":"Eingabe (mit Entities)";
+    optAll.style.display=m==="enc"?"flex":"none";
+    run();
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(!text)return;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Kopiert ✓");},function(){fb(text,b);});
+    } else fb(text,b);
+  }
+  function fb(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Kopiert ✓");}
+    catch(e){flash(b,"Bitte manuell kopieren");}}
+  mEnc.addEventListener("click",function(){setMode("enc");});
+  mDec.addEventListener("click",function(){setMode("dec");});
+  inEl.addEventListener("input",run);
+  allNonAscii.addEventListener("change",run);
+  document.getElementById("copy").addEventListener("click",function(){copy(out.value,this);});
+  setMode("enc");
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
