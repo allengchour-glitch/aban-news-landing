@@ -18,6 +18,12 @@ let lastInitError = null; // letzter Stagehand-Init-Fehler (fuer Diagnose im Bot
 
 export async function aiBrowser({ cdp = CDP } = {}) {
   lastInitError = null;
+  // WATCHDOG (2026-06-21, User 'checke+erledige selbst'): kein Browser-Bot darf den CLOUD-AN-Loop einfrieren.
+  // Nach 6 Min hartes Exit -> cmd-poll laeuft weiter, Kanal bleibt am Leben. unref() = verzoegert schnelle Laeufe nicht
+  // (feuert nur wenn noch eine Operation haengt = genau der Hang-Fall).
+  const _wdMs = parseInt(process.env.AIBROWSER_TIMEOUT_MS || '360000', 10);
+  const _wd = setTimeout(() => { try { console.error('AI-BROWSER WATCHDOG: ' + (_wdMs / 1000) + 's Timeout -> exit (Bot hing).'); } catch {} process.exit(1); }, _wdMs);
+  if (_wd.unref) _wd.unref();
   // 1) Versuch: Stagehand (AI-Selektoren). Mehrere Modell-Configs durchprobieren (Gemini zuerst =
   //    nativ am robustesten in Stagehand; dann Groq). Echten Init-Fehler merken statt verschlucken.
   try {
