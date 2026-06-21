@@ -21,8 +21,8 @@ fs.mkdirSync(SHOT, { recursive: true });
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-// Bekannte aadvids (aus Memory) + alle, die wir aus dem Dropdown/Links finden:
-const KNOWN = (process.env.TT_AADVIDS || '7643589765259493393,7646349875793182738').split(',').map(s => s.trim()).filter(Boolean);
+// Bekannte aadvids (ALLE entdeckten Konten 2026-06-21) + alle, die wir aus dem Dropdown/Links finden:
+const KNOWN = (process.env.TT_AADVIDS || '7643589765259493393,7646326014504976401,7646326045779476481,7646349875793182738').split(',').map(s => s.trim()).filter(Boolean);
 
 (async () => {
   let b;
@@ -47,6 +47,9 @@ const KNOWN = (process.env.TT_AADVIDS || '7643589765259493393,764634987579318273
   const found = await p.evaluate(() => {
     const ids = new Set();
     document.querySelectorAll('a[href*="aadvid="]').forEach(a => { const m = a.href.match(/aadvid=(\d+)/); if (m) ids.add(m[1]); });
+    // IDs auch aus dem sichtbaren Text ziehen ("ID: 764..." im Konto-Dropdown) -> findet ALLE Konten autonom
+    const txt = document.body.innerText || '';
+    (txt.match(/ID:\s*(\d{15,20})/g) || []).forEach(m => { const id = m.replace(/ID:\s*/, ''); if (id) ids.add(id); });
     // auch Text der Konto-Liste mitnehmen
     const names = [...document.querySelectorAll('[class*="account"], [role="option"], li')]
       .map(e => (e.innerText || '').trim()).filter(t => t && t.length < 60 && /[A-Za-z]/.test(t)).slice(0, 40);
