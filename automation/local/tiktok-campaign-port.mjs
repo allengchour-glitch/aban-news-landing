@@ -26,6 +26,7 @@ import { chromium } from 'playwright-core';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
+import { aiBrowser } from '../lib/ai-browser.mjs';
 
 const DRY = process.argv.includes('--dry');
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
@@ -94,11 +95,11 @@ async function pickFromSearch(p, value) {
   log(`MAXIMUM-Setup · Pixel ${C.pixel} · Event "${C.event}" · Lifetime-Cap ${C.total} / Tag ${C.daily} CHF`);
   log(`Creative ${path.basename(C.video)} · ${C.location}/${C.gender}/${C.age.join('+')}/${C.lang.join('+')} · Auto-Launch ${C.autoLaunch} ${DRY ? '(DRY)' : ''}`);
 
-  let b;
-  try { b = await chromium.connectOverCDP('http://localhost:9222'); }
+  let ab;
+  try { ab = await aiBrowser(); }
   catch { log('❌ Kein Brave auf 9222. Brave mit --remote-debugging-port=9222 + bei ads.tiktok.com eingeloggt.'); process.exit(1); }
-  const ctx = b.contexts()[0] || await b.newContext();
-  const p = await ctx.newPage();
+  const p = ab.page;
+  log('Browser-Modus:', ab.mode, ab.mode === 'stagehand' ? '(AI-Selektoren)' : '(Playwright-Fallback)');
 
   // ---- Schritt 1: Kampagnen-Erstellung öffnen + Ziel ----
   await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
@@ -122,6 +123,39 @@ async function pickFromSearch(p, value) {
     process.exit(0);
   }
 
+  // ===== AI-WIZARD (Stagehand) — der robuste Weg fuer Vollautomation (User 2026-06-21 "bot muss das lernen") =====
+  // act() beschreibt die Aktion, die AI findet das richtige Element (ueberlebt TikToks komplexe Ziel-Karten/Wizard).
+  if (ab.mode === 'stagehand') {
+    const A = async (instr, name, ms = 2500) => { try { await ab.act(instr); } catch (e) { log('act!', name, String(e).slice(0, 60)); } await sleep(ms); if (name) await diag(p, 'ai-' + name); };
+    try {
+      await A('if a "+ Create" or "Create" button is visible, click it to start creating a new campaign', 'create', 4000);
+      await A('select "Conversions" as the advertising objective (the conversions/sales goal), then if needed click its Continue button', 'objective', 3000);
+      await A('click the Continue button to proceed to the ad group settings', 'after-obj', 4000);
+      await A('set the optimization location / conversion location to "Website"', null);
+      await A(`open the pixel selector and choose the pixel with id ${C.pixel}`, 'pixel');
+      await A(`set the optimization event to "${C.event}"`, 'event');
+      await A(`set the target location to ${C.location}`, null);
+      await A(`set gender to ${C.gender} and select age groups ${C.age.join(' and ')}`, 'targeting');
+      await A(`add languages ${C.lang.join(' and ')}`, null);
+      await A(`set the daily budget to ${C.daily} CHF`, 'budget');
+      await A('click the Next or Continue button to go to the ad creation step', 'ad-start', 4000);
+      // Creative: Datei-Input direkt setzen (Stagehand-Page = Playwright-kompatibel)
+      try { let upVid = C.video; if (process.env.CAMPAIGN_KEEP_AUDIO !== '1') { const { execSync } = await import('node:child_process'); const os = (await import('node:os')).default; const sv = path.join(os.tmpdir(), 'camp-' + path.basename(C.video)); try { execSync(`ffmpeg -y -nostdin -i "${C.video}" -c:v copy -an "${sv}"`, { stdio: 'ignore' }); if (fs.existsSync(sv) && fs.statSync(sv).size > 10000) upVid = sv; } catch {} }
+        const inp = await p.$('input[type="file"]'); if (inp) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(9000); } else log('⚠️ AI: kein Datei-Input — Screenshot ai-ad-start pruefen'); } catch (e) { log('Creative-Upload:', String(e).slice(0, 60)); }
+      await A(`fill the ad text/caption with: ${C.adtext}`, null);
+      await A(`set the call to action to "${C.cta}"`, null);
+      await A(`fill the destination website URL with ${C.landing}`, 'ad-filled');
+      if (DRY) { log('[dry] AI-Durchlauf fertig — Screenshots ai-* pruefen.'); await ab.close().catch(() => {}); process.exit(0); }
+      if (!C.autoLaunch) { log('AUTO_LAUNCH=0 → stoppe vor Absenden.'); await ab.close().catch(() => {}); process.exit(0); }
+      await A('click the Submit / Publish button to publish the whole campaign for review', 'submitted', 6000);
+      fs.writeFileSync(LEDGER, new Date().toISOString() + ' campaign submitted (AI)\n');
+      log('✅ Kampagne via AI-Wizard abgesendet (zur Pruefung).');
+      await ab.close().catch(() => {});
+      process.exit(0);
+    } catch (e) { log('AI-Wizard-Fehler → Playwright-Fallback:', String(e).slice(0, 120)); await diag(p, 'ai-error'); }
+  }
+
+  // ===== FALLBACK: Playwright-Selektoren (wenn Stagehand nicht da/fehlschlaegt) =====
   // FIX 2026-06-21 (DIAG zeigte Kampagnen-LISTE statt Assistent): erst "Create" klicken -> oeffnet den Erstellungs-Wizard.
   if (await clickAny(p, ['+ Create', 'Create', 'Erstellen', 'Kampagne erstellen', 'Create campaign'])) { await sleep(4000); await diag(p, 'after-create-click'); }
   await clickAny(p, ['Custom mode', 'Benutzerdefinierter Modus', 'Erweitert']); // falls Simplified-Default
