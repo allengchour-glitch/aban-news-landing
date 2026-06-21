@@ -33,7 +33,9 @@ const IG_BIO = `🇨🇭 Schweizer Online-Shop für Premium-Looks
 👇 –10 % mit Code WELCOME10`;
 const TT_BIO = `🇨🇭 Premium Mode·Schmuck·Uhren
 Gratis ab CHF 65 · –10% WELCOME10 👇`;
-const SITE = 'https://luxestyle.ch';
+// Link-in-Bio zeigt auf die kuratierte Bestseller-Kollektion (Recherche 2026: NIE Homepage -> kuratierte
+// Gewinner = hoehere Conversion; jeder Extra-Klick kostet ~20-30%). /collections/favoriten = 9 top-bewertete Produkte.
+const SITE = 'https://luxestyle.ch/collections/favoriten';
 
 // --- Playwright-Fallback-Helfer (wenn Stagehand fehlt) ---
 async function fillField(scope, sels, value) {
