@@ -39,6 +39,11 @@ def available():
     return provider() is not None
 
 
+def chat(prompt, system="", max_tokens=1200, timeout=45):
+    """Öffentlicher Wrapper: ein Anbieter-Aufruf. Gibt Text oder None."""
+    return _chat(prompt, system, max_tokens=max_tokens, timeout=timeout)
+
+
 def _chat(prompt, system, max_tokens=200, timeout=30):
     p = provider()
     if not p:
