@@ -59,8 +59,10 @@ export async function aiBrowser({ cdp = CDP } = {}) {
           if (!rawPage) { lastInitError = c.modelName + ' -> init ok, aber keine Page'; console.log(lastInitError); try { await sh.close(); } catch {} continue; }
           const actPage = () => { const sp = stPage(); return (sp && typeof sp.act === 'function') ? sp : (typeof rawPage.act === 'function' ? rawPage : null); };
           console.log('Stagehand aktiv mit Modell ' + c.modelName + (sh.page ? '' : ' (raw-Page fuer goto, sh.page lazy fuer act)'));
+          // Diagnose, damit der Bot sie in den gepushten Report schreiben kann (sonst nur in der Konsole sichtbar).
+          const diag = () => { let shKeys = ''; try { shKeys = Object.keys(sh).join(','); } catch {} let proto = ''; try { proto = Object.getOwnPropertyNames(Object.getPrototypeOf(sh) || {}).join(','); } catch {} return { model: c.modelName, hasShPage: !!sh.page, shPageType: typeof sh.page, rawHasAct: typeof rawPage.act, actReady: !!actPage(), shKeys, shProto: proto }; };
           return {
-            mode: 'stagehand', model: c.modelName, sh, page: rawPage,
+            mode: 'stagehand', model: c.modelName, sh, page: rawPage, diag,
             act: (instr) => { const ap = actPage(); if (!ap) throw new Error('Keine Stagehand-act-Page verfuegbar'); return ap.act(instr); },
             extract: (instr, schema) => { const ap = actPage() || rawPage; return ap.extract(schema ? { instruction: instr, schema } : instr); },
             observe: (instr) => { const ap = actPage() || rawPage; return ap.observe ? ap.observe(instr) : []; },

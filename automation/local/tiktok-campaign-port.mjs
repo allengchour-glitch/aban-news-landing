@@ -157,7 +157,16 @@ async function pickFromSearch(p, value) {
   // ===== AI-WIZARD (Stagehand) — der robuste Weg fuer Vollautomation (User 2026-06-21 "bot muss das lernen") =====
   // act() beschreibt die Aktion, die AI findet das richtige Element (ueberlebt TikToks komplexe Ziel-Karten/Wizard).
   if (ab.mode === 'stagehand') {
-    const A = async (instr, name, ms = 2500) => { try { await ab.act(instr); } catch (e) { log('act!', name, String(e).slice(0, 60)); } await sleep(ms); if (name) await diag(p, 'ai-' + name); };
+    // DIAGNOSE in den Report schreiben (sonst nur in der Konsole sichtbar) — zeigt ob act() gebunden ist + wo Stagehand die Page haelt.
+    let actErrors = 0, actOk = 0;
+    try {
+      const dg = ab.diag ? ab.diag() : { note: 'keine diag' };
+      fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
+      fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'),
+        JSON.stringify({ ts: new Date().toISOString(), result: 'WIZARD_DIAG', mode: ab.mode, stagehand: dg }, null, 2));
+      log('WIZARD_DIAG: actReady=' + dg.actReady + ' hasShPage=' + dg.hasShPage + ' shKeys=' + (dg.shKeys || '').slice(0, 120));
+    } catch (e) { log('diag-write:', String(e).slice(0, 60)); }
+    const A = async (instr, name, ms = 2500) => { try { await ab.act(instr); actOk++; } catch (e) { actErrors++; log('act!', name, String(e).slice(0, 60)); } await sleep(ms); if (name) await diag(p, 'ai-' + name); };
     try {
       await A('if a "+ Create" or "Create" button is visible, click it to start creating a new campaign', 'create', 4000);
       await A('select "Conversions" as the advertising objective (the conversions/sales goal), then if needed click its Continue button', 'objective', 3000);
