@@ -101,6 +101,25 @@ async function pickFromSearch(p, value) {
   const p = ab.page;
   log('Browser-Modus:', ab.mode, ab.mode === 'stagehand' ? '(AI-Selektoren)' : '(Playwright-Fallback)');
 
+  // Mehrere Tabs aufraeumen (User-Beobachtung 'mehrere fenster' 2026-06-21): alle ausser der Arbeitsseite
+  // schliessen, damit der Bot zuverlaessig auf dem richtigen Tab klickt (sonst landet er auf falschem Tab).
+  try {
+    const ctx = p.context();
+    let closed = 0;
+    for (const other of ctx.pages()) { if (other !== p) { await other.close().catch(() => {}); closed++; } }
+    if (closed) log('Tabs aufgeraeumt: ' + closed + ' ueberzaehlige Tabs geschlossen, nur Arbeitsseite behalten.');
+  } catch (e) { log('Tab-Cleanup uebersprungen:', String(e).slice(0, 50)); }
+
+  // DIAGNOSE-FALLE (2026-06-21): wenn Stagehand NICHT aktiv ist (kein GROQ/GEMINI-Key), kann der Bot NICHT
+  // autonom klicken -> sofort klaren Status schreiben, damit der gepushte Report die Ursache zeigt.
+  if (ab.mode !== 'stagehand') {
+    const st = { ts: new Date().toISOString(), result: 'AI_INAKTIV', mode: ab.mode,
+      hinweis: 'Stagehand-AI nicht aktiv (GROQ_API_KEY oder GEMINI_API_KEY fehlt in luxe-secrets.ps1). Der Playwright-Fallback kann den TikTok-Wizard nicht zuverlaessig klicken. Loesung: gratis Groq-Key (console.groq.com) als $env:GROQ_API_KEY in luxe-secrets.ps1, dann neu starten.' };
+    try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
+      fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(st, null, 2)); } catch {}
+    log('⚠️ AI_INAKTIV — Stagehand braucht GROQ/GEMINI-Key. Playwright-Fallback ist unzuverlaessig fuer den Wizard.');
+  }
+
   // ---- Schritt 1: Kampagnen-Erstellung öffnen + Ziel ----
   await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await sleep(8000); await diag(p, 'open-creation');
