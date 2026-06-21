@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur de temps de travail · Heures &amp; pause · aban news</title>
+<meta name="description" content="Calculateur de temps de travail gratuit : saisissez début, fin et pause par jour — heures nettes, total hebdomadaire et, en option, votre revenu via votre taux horaire. En local dans le navigateur, sans connexion.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/arbeitszeit-rechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/arbeitszeit-rechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/arbeitszeit-rechner.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/arbeitszeit-rechner.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/arbeitszeit-rechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/arbeitszeit-rechner.html">
+<meta property="og:title" content="Calculateur de temps de travail">
+<meta property="og:description" content="Début, fin &amp; pause par jour → heures nettes, total hebdomadaire et revenu via le taux horaire. En local dans le navigateur.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/arbeitszeit-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur de temps de travail",
+"url":"https://abannews.com/fr/arbeitszeit-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Calcule le temps de travail net, le total hebdomadaire et, en option, le revenu à partir du début, de la fin et de la pause par jour.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:6px;text-align:left;font-size:.86rem}
+th{color:var(--muted);font-weight:600}
+td input{width:100%;font-family:inherit;font-size:14px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+td input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+td.net{font-weight:700;color:var(--amber-dk);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.del{width:34px}
+.del button{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:7px;padding:5px 8px;cursor:pointer;font-size:.8rem}
+.del button:hover{border-color:var(--bad);color:var(--bad)}
+.colday{width:24%}.coltime{width:18%}.colbreak{width:16%}.colnet{width:18%}
+@media(max-width:560px){th.coltime,td.coltime,.colbreak{font-size:.78rem}}
+.rate{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.rate input{width:110px;font-family:inherit;font-size:15px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+.totals{margin-top:16px;border-top:1px solid var(--line);padding-top:14px;display:flex;flex-wrap:wrap;gap:18px}
+.tot b{display:block;font-size:1.5rem;color:var(--amber-dk);font-variant-numeric:tabular-nums}
+.tot span{font-size:.82rem;color:var(--muted)}
+.warn{color:var(--bad);font-size:.82rem;margin-top:6px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Aller à l’outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Calculer le <span class="a">temps de travail</span></h1>
+    <p>Saisissez début, fin et pause par jour — vous obtenez le temps de travail net par jour, le total hebdomadaire et, si vous le souhaitez, votre revenu via votre taux horaire. Tout en local dans le navigateur, rien n’est envoyé.</p>
+  </section>
+  <section class="panel" id="tool">
+    <table>
+      <thead><tr>
+        <th class="colday">Jour</th><th class="coltime">Début</th><th class="coltime">Fin</th>
+        <th class="colbreak">Pause (min)</th><th class="colnet">Net</th><th class="del"></th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <button class="btn ghost sm" id="add" type="button" style="margin-top:10px">+ Ajouter un jour</button>
+    <div class="rate">
+      <label class="lbl" for="rate" style="margin:0">Taux horaire (facultatif)</label>
+      <input type="number" id="rate" min="0" step="0.01" placeholder="p. ex. 85" inputmode="decimal">
+      <span class="muted" style="color:var(--muted);font-size:.9rem">CHF / heure</span>
+    </div>
+    <div class="totals">
+      <div class="tot"><b id="totH">0:00</b><span>Heures hebdo (net)</span></div>
+      <div class="tot"><b id="totDec">0,00 h</b><span>en heures décimales</span></div>
+      <div class="tot" id="earnBox" style="display:none"><b id="earn">–</b><span>Revenu</span></div>
+    </div>
+    <p class="note">La pause est déduite en minutes de la plage début–fin. Si la fin dépasse minuit (p.&nbsp;ex. 22:00–02:00), le jour suivant est compté correctement. Si la pause est plus longue que le temps de travail, le jour compte pour 0. Tout en local, aucun envoi.</p>
+  </section>
+  <div class="cta"><strong>Plus d’outils</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">pour les indépendants.</p>
+    <p><a class="btn" href="/fr/stundensatz-rechner.html">Calculateur de taux horaire</a>
+      <a class="btn ghost" href="/fr/rechnung-generator.html">Créer une facture</a>
+      <a class="btn ghost" href="/fr/online-tools.html">Tous les outils</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Vous avez trouvé cela utile ? 5 minutes d’IA sans le battage — chaque jour ouvré.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news est la newsletter IA pour les indépendants : court, honnête, sans bingo de mots à la mode. Gratuit, désabonnement à tout moment.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">S’abonner gratuitement à la newsletter →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/fr/stundensatz-rechner.html">Calculateur de taux horaire</a> · <a href="/fr/rechnung-generator.html">Facture</a> ·
+  <a href="/fr/ki-werkzeug.html">Outil IA</a> &middot; <a href="/fr/online-tools.html">Tous les outils</a> &middot; <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></div></footer>
+<script>
+(function(){
+  var rowsBox=document.getElementById("rows"),rateEl=document.getElementById("rate"),
+      totH=document.getElementById("totH"),totDec=document.getElementById("totDec"),
+      earnBox=document.getElementById("earnBox"),earn=document.getElementById("earn");
+  var DAYS=["Lun","Mar","Mer","Jeu","Ven"];
+  function toMin(t){if(!t)return null;var p=String(t).split(":");if(p.length<2)return null;
+    var h=parseInt(p[0],10),m=parseInt(p[1],10);if(isNaN(h)||isNaN(m))return null;return h*60+m;}
+  function netMinutes(start,end,brk){
+    var s=toMin(start),e=toMin(end);
+    if(s===null||e===null)return null;
+    var span=e-s;if(span<0)span+=1440; // crosses midnight
+    var b=parseInt(brk,10);if(isNaN(b)||b<0)b=0;
+    var net=span-b;return net>0?net:0;
+  }
+  function hhmm(min){var h=Math.floor(min/60),m=min%60;return h+":"+(m<10?"0"+m:m);}
+  function row(day){
+    var tr=document.createElement("tr");
+    var tdDay=document.createElement("td");tdDay.className="colday";
+    var di=document.createElement("input");di.type="text";di.className="day";di.value=day||"";di.setAttribute("aria-label","Jour");
+    tdDay.appendChild(di);
+    var tdS=document.createElement("td");tdS.className="coltime";
+    var si=document.createElement("input");si.type="time";si.className="start";si.setAttribute("aria-label","Début");tdS.appendChild(si);
+    var tdE=document.createElement("td");tdE.className="coltime";
+    var ei=document.createElement("input");ei.type="time";ei.className="end";ei.setAttribute("aria-label","Fin");tdE.appendChild(ei);
+    var tdB=document.createElement("td");tdB.className="colbreak";
+    var bi=document.createElement("input");bi.type="number";bi.className="brk";bi.min="0";bi.step="5";bi.value="";bi.placeholder="0";
+    bi.setAttribute("aria-label","Pause en minutes");bi.setAttribute("inputmode","numeric");tdB.appendChild(bi);
+    var tdN=document.createElement("td");tdN.className="net";tdN.textContent="–";
+    var tdD=document.createElement("td");tdD.className="del";
+    var del=document.createElement("button");del.type="button";del.textContent="✕";del.setAttribute("aria-label","Supprimer le jour");
+    del.addEventListener("click",function(){if(rowsBox.querySelectorAll("tr").length<=1)return;tr.remove();calc();});
+    tdD.appendChild(del);
+    tr.appendChild(tdDay);tr.appendChild(tdS);tr.appendChild(tdE);tr.appendChild(tdB);tr.appendChild(tdN);tr.appendChild(tdD);
+    [si,ei,bi].forEach(function(el){el.addEventListener("input",calc);});
+    rowsBox.appendChild(tr);
+  }
+  function calc(){
+    var total=0;
+    rowsBox.querySelectorAll("tr").forEach(function(tr){
+      var net=netMinutes(tr.querySelector(".start").value,tr.querySelector(".end").value,tr.querySelector(".brk").value);
+      var cell=tr.querySelector(".net");
+      if(net===null){cell.textContent="–";}
+      else{cell.textContent=hhmm(net);total+=net;}
+    });
+    totH.textContent=hhmm(total);
+    var dec=total/60;
+    totDec.textContent=dec.toFixed(2).replace(".",",")+" h";
+    var rate=parseFloat(rateEl.value);
+    if(!isNaN(rate)&&rate>0){
+      earnBox.style.display="";
+      var money=dec*rate;
+      earn.textContent=money.toLocaleString("fr-CH",{minimumFractionDigits:2,maximumFractionDigits:2})+" CHF";
+    } else earnBox.style.display="none";
+  }
+  document.getElementById("add").addEventListener("click",function(){row("");calc();});
+  rateEl.addEventListener("input",calc);
+  DAYS.forEach(function(d){row(d);});
+  calc();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
