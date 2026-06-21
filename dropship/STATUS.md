@@ -1,6 +1,9 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
-## 2026-06-21 (🔥 MEILENSTEIN: TWINT LIVE + Recherche-Schwarm komplett)
+## 2026-06-21 (🔥 MEILENSTEIN: TWINT LIVE + FUNNEL END-TO-END VERIFIZIERT + Recherche-Schwarm komplett)
+**✅ FUNNEL VERIFIZIERT:** Echter Checkout erreicht die **TWINT-Zahlseite** (pay.twint.ch, CHF 33.90, LuxeStyle CH,
+Code 55200, QR) — der Screenshot beweist: Warenkorb→Checkout→Zahlung läuft sauber. Bestellung wird erst nach
+TWINT-App-Bestätigung angelegt (vorher 0 im System = noch nicht bestätigt). Der 13→0-Blocker ist technisch weg.
 **💳 TWINT IST LIVE** (User aktiviert, nativ Shopify Payments) = **Hebel #1 erledigt** gegen 13→0-Checkout-Tod
 (TWINT = 70,2% CH-Distanzhandel). Der Funnel kann jetzt erstmals abschliessen. **Theme-Session:** Zahlungs-Logos
 unter Kaufbutton + Mobile-PDP-Spec (`RESEARCH-2026-06-21.md` §2) umsetzen (SHARED-MEMORY aktualisiert).
