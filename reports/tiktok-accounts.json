@@ -1,0 +1,33 @@
+{
+  "ts": "2026-06-21T08:20:04.808Z",
+  "accounts": [
+    {
+      "aadvid": "7643589765259493393",
+      "screenshot": "acct-01-7643589765259493393.png",
+      "accountName": null,
+      "balance": "90.00\nCHF",
+      "todaySpend": "0.00\nCHF",
+      "cost": "63.71 CHF",
+      "impressions": "130,863",
+      "onboarding": false
+    },
+    {
+      "aadvid": "7646349875793182738",
+      "screenshot": "acct-02-7646349875793182738.png",
+      "accountName": null,
+      "balance": null,
+      "todaySpend": null,
+      "cost": null,
+      "impressions": null,
+      "onboarding": false
+    }
+  ],
+  "aadvids_found": [],
+  "dropdown_names": [
+    "Business Center (1)",
+    "Luxestlye Ch\nID: 7646326045779476481\n1\n1",
+    "Ads Manager (2)",
+    "Luxestlye Ch0524\nID: 7643589765259493393",
+    "Luxestlye Ch\nID: 7646326014504976401"
+  ]
+}
