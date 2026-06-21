@@ -1,5 +1,12 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🛍️ GOOGLE MERCHANT FEED (CizQ6 2026-06-21) — andere Session fixt; CizQ6 Backup
+Merchant-Konto **5797470070** (Produkt-Diagnose). User: andere Session (ChatGPT) raeumt die Produkt-Disapprovals auf.
+**CizQ6-Backup falls nicht geloest:** Feed kommt aus Shopify (Google&YouTube-Kanal). Haeufige Fixes per Shopify-API:
+identifier_exists/custom_product, Marke(vendor)/Zustand(condition=new)/availability, Preis+Versand(gratis ab 49)-Match,
+Bild >=250px, Beschreibung. Tools: automation/feed_polish.mjs / enrich_apparel_descriptions.mjs. = GROESSTER Gratis-Traffic-Hebel (gegen search=55).
+
+
 ## 🧾 KAUF AUF RECHNUNG — ANTRAG LÄUFT (CizQ6 2026-06-20) — Theme-Session: Trust-Badges vorbereiten
 **Stand:** swissbilling-App installiert; User hat **Kontaktanfrage an CembraPay AG gesendet** (über die App, „Sende
 eine Nachricht"). Warte auf Antwort (Antrag Firma/UID/IBAN + Bonität, 1-3 Tage) → dann **Händler-ID + Passwort** →

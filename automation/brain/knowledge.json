@@ -1122,6 +1122,13 @@
       "google_free_listings": "GRATIS Google-Shopping-Listings via Merchant Center (Kanal Google&YouTube verbunden, Feed da). Merchant-Re-Review war 15.06 abgeschickt -> Status pruefen (USER). Groesster Gratis-Hebel gegen search=55.",
       "pinterest": "Produkt-Pins via pinterest_publish.mjs (Kanal verbunden) - gratis shoppbar (Pin->Shop).",
       "plan": "Verbundene Kanaele=alle. Gratis-shoppbar-Hebel: (1) Google Free Listings (Merchant freigeben), (2) IG Produkt-Tags (IG-Shopping freigeben), (3) Pinterest-Pins (laeuft). Approvals=User-Zugang; Bau/Sync=ich."
+    },
+    "google_merchant_2026": {
+      "konto": "Merchant Center 5797470070 (Produkt-Diagnose).",
+      "zustaendig": "Andere Session (ChatGPT) fixt Produkt-Disapprovals. CizQ6=Backup.",
+      "backup_fix": "Feed aus Shopify Google&YouTube-Kanal. Per API fixbar: identifier_exists/custom_product, vendor/condition/availability, Preis+Versand-Match, Bild>=250px. Tools feed_polish.mjs/enrich_apparel_descriptions.mjs.",
+      "hebel": "Genehmigte Produkte = GRATIS Google-Shopping-Listings = kaufwilliger Such-Traffic (gegen search=55 tot).",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
