@@ -123,7 +123,7 @@ footer a{color:var(--muted)}
     sentence:function(s){return s.toLowerCase().replace(/(^\s*|[.!?]\s+|\n\s*)(\p{L})/gu,function(m,p,c){return p+c.toUpperCase();});},
     trim:function(s){return lines(s).map(function(l){return l.replace(/\s+/g," ").trim();}).join("\n");},
     sort:function(s){return lines(s).sort(function(a,b){return a.localeCompare(b,"de");}).join("\n");},
-    dedup:function(s){var seen={},out=[];lines(s).forEach(function(l){if(!Object.prototype.hasOwnProperty.call(seen,l)){seen[l]=1;out.push(l);}});return out.join("\n");},
+    dedup:function(s){var seen=Object.create(null),out=[];lines(s).forEach(function(l){if(!Object.prototype.hasOwnProperty.call(seen,l)){seen[l]=1;out.push(l);}});return out.join("\n");},
     nobreaks:function(s){return s.replace(/\s*\r?\n\s*/g," ").trim();},
     reverse:function(s){return Array.from(s).reverse().join("");}
   };
