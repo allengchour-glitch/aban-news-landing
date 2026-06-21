@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeitzonen-Rechner — Uhrzeit weltweit umrechnen · aban news</title>
+<meta name="description" content="Kostenloser Zeitzonen-Rechner: eine Uhrzeit zwischen Städten und Zeitzonen umrechnen — für Online-Meetings mit Kunden und Teams weltweit. Mit Sommerzeit. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/zeitzonen-rechner.html">
+<meta property="og:title" content="Zeitzonen-Rechner — Uhrzeit weltweit umrechnen">
+<meta property="og:description" content="Uhrzeit zwischen Städten/Zeitzonen umrechnen — Meeting-Planer mit Sommerzeit. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/zeitzonen-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Zeitzonen-Rechner",
+"url":"https://abannews.com/zeitzonen-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Rechnet eine Uhrzeit zwischen Städten und Zeitzonen um, inklusive Sommerzeit, als Meeting-Planer. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Berücksichtigt der Rechner die Sommerzeit?","acceptedAnswer":{"@type":"Answer","text":"Ja. Er nutzt die echte Zeitzonen-Datenbank des Browsers (IANA), inklusive Sommer-/Winterzeit zum gewählten Datum. So stimmt die Umrechnung auch über Zeitumstellungen hinweg."}},
+{"@type":"Question","name":"Wofür ist das nützlich?","acceptedAnswer":{"@type":"Answer","text":"Vor allem für Online-Meetings mit Kunden, Partnern oder Teams in anderen Ländern: Du legst eine Uhrzeit in deiner Stadt fest und siehst sofort, wie spät es dann bei den anderen ist."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.targets{margin-top:8px}
+.targets label{font-size:.82rem}
+.list{margin-top:14px;border:1px solid var(--line);border-radius:12px;background:var(--field);overflow:hidden}
+.line{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.line:last-child{border-bottom:0}
+.line .city{font-weight:700}
+.line .when{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;color:var(--amber-dk);text-align:right}
+.line .day{font-size:.78rem;color:var(--muted)}
+.add{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.add select{flex:1;min-width:160px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Zeitzonen</span> umrechnen</h1>
+    <p>Eine Uhrzeit zwischen Städten und Zeitzonen umrechnen — für Online-Meetings mit Kunden und Teams weltweit. Mit echter Sommerzeit. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Leg eine Uhrzeit in deiner Stadt fest und sieh sofort, wie spät es bei deinen Gesprächspartnern ist — kein Kopfrechnen.</p>
+
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div class="fld"><label for="city">Deine Stadt / Zone</label><select id="city"></select></div>
+      <div class="fld"><label for="date">Datum</label><input id="date" type="date"></div>
+      <div class="fld"><label for="time">Uhrzeit</label><input id="time" type="time" value="10:00"></div>
+    </div>
+    <div class="add">
+      <select id="addsel"></select>
+      <button type="button" class="btn ghost" id="add">+ Stadt hinzufügen</button>
+    </div>
+    <div class="list" id="list"></div>
+    <p class="note">Nutzt die echte Zeitzonen-Datenbank deines Browsers inkl. Sommer-/Winterzeit. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Termine &amp; Planung.</p>
+    <p><a class="btn" href="/tage-rechner.html">Tage-Rechner</a>
+      <a class="btn ghost" href="/countdown-timer.html">Countdown &amp; Timer</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/tage-rechner.html">Tage-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var ZONES=[
+    ["Zürich","Europe/Zurich"],["Berlin","Europe/Berlin"],["Wien","Europe/Vienna"],["London","Europe/London"],
+    ["Lissabon","Europe/Lisbon"],["Athen","Europe/Athens"],["Moskau","Europe/Moscow"],["Dubai","Asia/Dubai"],
+    ["Mumbai","Asia/Kolkata"],["Bangkok","Asia/Bangkok"],["Singapur","Asia/Singapore"],["Hongkong","Asia/Hong_Kong"],
+    ["Tokio","Asia/Tokyo"],["Sydney","Australia/Sydney"],["Auckland","Pacific/Auckland"],
+    ["New York","America/New_York"],["Chicago","America/Chicago"],["Denver","America/Denver"],
+    ["Los Angeles","America/Los_Angeles"],["São Paulo","America/Sao_Paulo"],["Mexiko-Stadt","America/Mexico_City"],
+    ["Johannesburg","Africa/Johannesburg"],["Kairo","Africa/Cairo"],["Honolulu","Pacific/Honolulu"]
+  ];
+  var citySel=document.getElementById("city"), addSel=document.getElementById("addsel"),
+      dateEl=document.getElementById("date"), timeEl=document.getElementById("time"), list=document.getElementById("list");
+  var targets=["Europe/Berlin","America/New_York","Asia/Tokyo"];
+  ZONES.forEach(function(z){ citySel.add(new Option(z[0],z[1])); addSel.add(new Option(z[0],z[1])); });
+  citySel.value="Europe/Zurich";
+  // offset einer Zone (Minuten) zu UTC für einen bestimmten Moment
+  function tzOffset(date,tz){
+    var dtf=new Intl.DateTimeFormat("en-US",{timeZone:tz,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});
+    var p={}; dtf.formatToParts(date).forEach(function(x){p[x.type]=x.value;});
+    var asUTC=Date.UTC(+p.year,+p.month-1,+p.day,(p.hour==="24"?0:+p.hour),+p.minute,+p.second);
+    return (asUTC-Math.floor(date.getTime()/1000)*1000)/60000;
+  }
+  function name(tz){ for(var i=0;i<ZONES.length;i++){ if(ZONES[i][1]===tz)return ZONES[i][0]; } return tz; }
+  function sourceInstant(){
+    // gewählte Wanduhrzeit in der Quellzone → echter UTC-Moment
+    var d=dateEl.value, t=timeEl.value; if(!d||!t)return null;
+    var dp=d.split("-"), tp=t.split(":");
+    var guess=Date.UTC(+dp[0],+dp[1]-1,+dp[2],+tp[0],+tp[1],0);
+    var off=tzOffset(new Date(guess),citySel.value);
+    return new Date(guess-off*60000);
+  }
+  function fmt(instant,tz){
+    var dtf=new Intl.DateTimeFormat("de-DE",{timeZone:tz,weekday:"short",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});
+    var p={}; dtf.formatToParts(instant).forEach(function(x){p[x.type]=x.value;});
+    return {time:p.hour+":"+p.minute, day:p.weekday+", "+p.day+"."+p.month+"."};
+  }
+  function render(){
+    var inst=sourceInstant(); list.innerHTML="";
+    if(!inst){ list.innerHTML='<div class="line"><span class="city">Datum &amp; Uhrzeit wählen</span></div>'; return; }
+    var zones=[citySel.value].concat(targets.filter(function(z){return z!==citySel.value;}));
+    zones.forEach(function(tz){
+      var f=fmt(inst,tz);
+      var div=document.createElement("div"); div.className="line";
+      div.innerHTML='<span><span class="city">'+name(tz)+(tz===citySel.value?' <span style="color:#b45309">(Basis)</span>':'')+'</span><div class="day">'+f.day+'</div></span><span class="when">'+f.time+'</span>';
+      list.appendChild(div);
+    });
+  }
+  document.getElementById("add").addEventListener("click",function(){ var z=addSel.value; if(targets.indexOf(z)<0&&z!==citySel.value){ targets.push(z); render(); } });
+  [citySel,dateEl,timeEl].forEach(function(el){el.addEventListener("input",render);el.addEventListener("change",render);});
+  var n=new Date(); dateEl.value=n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0");
+  render();
+})();
+</script>
+</body>
+</html>
