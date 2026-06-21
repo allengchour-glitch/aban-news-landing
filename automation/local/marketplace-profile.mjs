@@ -29,8 +29,9 @@ const NAME = 'LuxeStyle CH';
 
 // Pro Marktplatz: wahrscheinliche Profil/Einstellungs-URLs (erste ladbare gewinnt)
 const SITES = {
+  // anibis: vom User verifiziert (/de/user/profile). tutti/ricardo: Kandidaten, werden nach markt-capture praezisiert.
   tutti: ['https://www.tutti.ch/de/account/settings', 'https://www.tutti.ch/de/account/profile', 'https://www.tutti.ch/de/account'],
-  anibis: ['https://www.anibis.ch/de/account/settings', 'https://www.anibis.ch/de/account/profile', 'https://www.anibis.ch/de/myanibis'],
+  anibis: ['https://www.anibis.ch/de/user/profile', 'https://www.anibis.ch/de/user/settings'],
   ricardo: ['https://www.ricardo.ch/de/account/settings/profile/', 'https://www.ricardo.ch/de/myricardo/profile/', 'https://www.ricardo.ch/de/account/'],
 };
 
