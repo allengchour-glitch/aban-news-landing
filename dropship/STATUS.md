@@ -1,5 +1,14 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-21 (🔥 MEILENSTEIN: TWINT LIVE + Recherche-Schwarm komplett)
+**💳 TWINT IST LIVE** (User aktiviert, nativ Shopify Payments) = **Hebel #1 erledigt** gegen 13→0-Checkout-Tod
+(TWINT = 70,2% CH-Distanzhandel). Der Funnel kann jetzt erstmals abschliessen. **Theme-Session:** Zahlungs-Logos
+unter Kaufbutton + Mobile-PDP-Spec (`RESEARCH-2026-06-21.md` §2) umsetzen (SHARED-MEMORY aktualisiert).
+**🐝 Recherche-Schwarm komplett** (5 Agenten, alles in `dropship/RESEARCH-2026-06-21.md` + Brain 163 Regeln):
+TWINT-nativ · Mobile-CRO-Spec · Social (TikTok-Shop nicht in CH, Pinterest shoppable) · Reel-Creatives (Preis-Hook,
+Beats 1.5s/3s/5s) · **Comment-to-DM (ManyChat/IG) = 4–6× Link-in-Bio = stärkster organischer Social-Hebel**.
+**Nächster Engpass:** Buy-Intent-Traffic (Pixel+Kampagne) + Mobile-ATC + ManyChat-DM. **2 User-Klicks offen:** ManyChat-IG-Verbindung, Pixel/Kampagne.
+
 ## 2026-06-21 (SPÄT — Funnel-Daten + Kauf-Blocker-Fix + alle Browser-Bots auf AI)
 **🧠 AI-Bot (Stagehand) jetzt Standard für ALLE fragilen Bots** (du steuerst alles, autonomste Weg):
   TikTok-Kampagne-Wizard + IG/TikTok-Bio + Marktplatz-Profil auf `ab.act()` umgestellt (löst „Feld nicht

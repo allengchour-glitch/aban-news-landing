@@ -7,16 +7,16 @@ identifier_exists/custom_product, Marke(vendor)/Zustand(condition=new)/availabil
 Bild >=250px, Beschreibung. Tools: automation/feed_polish.mjs / enrich_apparel_descriptions.mjs. = GROESSTER Gratis-Traffic-Hebel (gegen search=55).
 
 
-## 🧾 KAUF AUF RECHNUNG — ANTRAG LÄUFT (CizQ6 2026-06-20) — Theme-Session: Trust-Badges vorbereiten
-**Stand:** swissbilling-App installiert; User hat **Kontaktanfrage an CembraPay AG gesendet** (über die App, „Sende
-eine Nachricht"). Warte auf Antwort (Antrag Firma/UID/IBAN + Bonität, 1-3 Tage) → dann **Händler-ID + Passwort** →
-App-Konfig → Shopify „Aktivieren". Doku: `dropship/KAUF-AUF-RECHNUNG-ANLEITUNG.md`.
-**Sobald LIVE — Aufgaben verteilt:**
-- **CizQ6 (ich):** Zahlungs-Hinweis in Produkt-Trust-Texte („auch auf Rechnung") · Klaviyo-Abbruch-Mails sagen schon
-  „TWINT/Karte/Rechnung" (passt dann automatisch).
-- **Theme-Session bitte:** Zahlungs-Logos (TWINT + Rechnung/swissbilling + Karten) bei Kaufbutton/Checkout + im Footer;
-  optional Ankündigung „Jetzt auch auf Rechnung bestellen 🧾".
-Kein Theme-Eingriff nötig BIS die Zahlart aktiv ist — nur vorbereiten/bereithalten.
+## 💳 TWINT LIVE ✅ (CizQ6 2026-06-21) — Theme-Session: Zahlungs-Logos JETZT surfacen + Mobile-PDP-Spec
+**🔥 TWINT ist LIVE** (nativ in Shopify Payments, vom User aktiviert 2026-06-21). Das war Hebel #1 gegen die
+13→0-Checkout-Abbrüche (TWINT = 70,2% aller CH-Distanzhandel-Zahlungen — ohne war ~2/3 der Mobile-Käufer raus).
+**Rechnung (CembraPay/swissbilling) läuft separat** noch (`dropship/KAUF-AUF-RECHNUNG-ANLEITUNG.md`).
+**Theme-Session bitte JETZT (TWINT aktiv):**
+- **Zahlungs-Logos (TWINT + Karten) direkt unter dem Kaufbutton** + Footer/Checkout sichtbar (Trust am Moment des Zweifels).
+- **Mobile-PDP-CRO umsetzen** — komplette priorisierte Spec (Sticky-ATC, Above-the-fold, Trust-Cluster, Speed, CH-UWG-konforme
+  Urgency) in **`dropship/RESEARCH-2026-06-21.md` §2**. Mobile = 69% Traffic, nur 0,34% ATC = grösster Volumen-Hebel.
+- Optional Ankündigung „Jetzt mit TWINT bezahlen 💳".
+**CizQ6 (ich):** TWINT steht in Produkt-Trust-Texten; Trust auf CHF 65 / 30 Tage vereinheitlicht (Katalog-Fixer läuft).
 
 ## 🖼️ KOLLEKTIONS-BANNER-PLATZIERUNG (CizQ6 2026-06-20) — Theme-Session bitte prüfen
 User meldet: auf einer/mehreren Seiten erscheint das **Kollektions-Banner (Titel+Beschreibung) ganz UNTEN** (unter den Produkten) statt oben. Auf `/collections/sommer` ist es korrekt OBEN — also betrifft es nur Kollektionen, wo das Theme die Description unten rendert (Sektions-Reihenfolge im Collection-Template). **Theme-Session bitte:** Collection-Banner/Description-Sektion im Theme-Customizer ueber das Produkt-Grid ziehen (Banner gehoeren oben). CizQ6 macht nur Smart-Collections/Content, nicht Theme-Layout.
