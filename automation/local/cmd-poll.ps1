@@ -3,12 +3,16 @@
 $ErrorActionPreference = "Continue"
 $repo = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
+# FIX 2026-06-21 (teuer): npm i (Stagehand) macht package.json dirty -> git pull --rebase scheitert -> Bot-Pushes
+# kamen nie an (sah aus wie AVG-Block, war es aber NICHT). Vor jedem Lauf die npm-Aenderungen verwerfen:
+git checkout -- package.json package-lock.json 2>$null
 # PURE-AUTOMATION (User 2026-06-21 "fuer spaeter pure automation"): vor jedem Kampagne-Lauf die Keys laden
 # (GROQ/GEMINI -> Stagehand-AI klickt selbst; Shopify-Creds) + Stagehand-Paket sicherstellen. Damit laeuft eine
 # aus der Cloud gequeuete Kampagne vollautonom am PC, ohne dass der User einen Befehl tippt.
 function Ensure-Campaign {
   if (Test-Path "$env:USERPROFILE\luxe-secrets.ps1") { . "$env:USERPROFILE\luxe-secrets.ps1" }
   if (-not (Test-Path "node_modules\@browserbasehq\stagehand")) { npm i @browserbasehq/stagehand --no-audit --no-fund 2>$null | Out-Null }
+  git checkout -- package.json package-lock.json 2>$null   # npm-Dirt verwerfen -> Push am Befehlsende klappt
 }
 # SELBST-PULL + NEUSTART (FIX 2026-06-21 Timing-Falle): neuesten Code holen BEVOR Befehle laufen, damit
 # NEUE Befehle/Scripts sofort erkannt werden (sonst verwirft die alte cmd-poll unbekannte Befehle). Aendert
