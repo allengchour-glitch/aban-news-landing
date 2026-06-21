@@ -16,7 +16,7 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
-## 🧰 2026-06-20/21 — 47 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20/21 — 49 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -41,7 +41,8 @@
   kalenderwoche-rechner (KW↔Datum, ISO 8601, getestet 2021→KW53) + zahlensystem-umrechner (Bin/Okt/Dez/Hex live) #1159 ·
   durchschnitt-rechner (Mittelwert/Median/Min/Max/Spanne/σ) + prozentuale-veraenderung (alt→neu in %, Vorzeichen/Differenz) #1162 ·
   taschenrechner (wissenschaftl., eigener Parser KEIN eval, DEG/RAD, Tastatur, mit Node 14 Tests verifiziert) + keyword-dichte (Worthäufigkeit/Dichte%, 1+2-Gramm, Stoppwörter) #1166 ·
-  html-entities (entities enc/dec, optional alle Nicht-ASCII) + zeitspanne-rechner (HH:MM addieren/subtrahieren, Dezimalstunden, Timesheets) [batch-23, 2026-06-21]. **Hub = 106+ Tools.**
+  html-entities (entities enc/dec, optional alle Nicht-ASCII) + zeitspanne-rechner (HH:MM addieren/subtrahieren, Dezimalstunden, Timesheets) #1167 ·
+  text-bereinigen (Zeilen sortieren/dedupe/trim/nummerieren, Intl-Collator) + email-pruefer (Listen-Format-Check, Duplikate, Tippfehler-Hinweise, 100% lokal) [batch-24, 2026-06-21]. **Hub = 108+ Tools.**
   ⚠️ sitemap.xml = häufige Merge-Konflikte mit Parallel-Session („…-kaufen-schweiz") → neue Einträge NICHT ganz am Ende, sondern nach eigenem Anker einfügen; Konflikt = beide Sets behalten.
   EN-Tools = KEIN Hebel (geprüft: /en/ nutzt deutsche Slugs, DACH-Fokus → bringt keine dt. Abonnenten).
 - **🔗 Discovery erledigt (PRs #1130 Startseite-„Mehr", #1131 Alt-Tool-Querlinks):** neue Tools jetzt 4-fach erschlossen

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text bereinigen — Zeilen sortieren, Duplikate entfernen · aban news</title>
+<meta name="description" content="Kostenloses Text-Werkzeug: Zeilen sortieren (A–Z/Z–A), Duplikate und Leerzeilen entfernen, Leerzeichen trimmen, Zeilen umkehren oder nummerieren. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/text-bereinigen.html">
+<meta property="og:title" content="Text bereinigen — Zeilen sortieren, Duplikate entfernen">
+<meta property="og:description" content="Zeilen sortieren, Duplikate/Leerzeilen entfernen, trimmen, umkehren, nummerieren — lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/text-bereinigen.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Text-Bereiniger",
+"url":"https://abannews.com/text-bereinigen.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Bereinigt Textlisten: Zeilen sortieren, Duplikate und Leerzeilen entfernen, trimmen, umkehren und nummerieren. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was kann der Text-Bereiniger?","acceptedAnswer":{"@type":"Answer","text":"Zeilen alphabetisch sortieren (auf- oder absteigend), doppelte Zeilen entfernen, leere Zeilen löschen, führende und folgende Leerzeichen trimmen, die Reihenfolge umkehren und Zeilen durchnummerieren — einzeln kombinierbar."}},
+{"@type":"Question","name":"Werden Groß- und Kleinschreibung beim Sortieren beachtet?","acceptedAnswer":{"@type":"Answer","text":"Das Sortieren erfolgt nach deutscher Sortierreihenfolge und ignoriert dabei die Groß-/Kleinschreibung, sodass Aufzählungen natürlich geordnet werden. Beim Entfernen von Duplikaten zählt der exakte Zeileninhalt."}},
+{"@type":"Question","name":"Wird mein Text gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+textarea{font:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;min-height:230px;resize:vertical;line-height:1.5}
+.ops{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ops button{font:inherit;font-size:.84rem;font-weight:700;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:var(--field);color:var(--amber-dk);cursor:pointer}
+.summary{color:var(--ink2);font-size:.9rem;margin-top:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Text</span> bereinigen</h1>
+    <p>Zeilen sortieren, Duplikate und Leerzeilen entfernen, trimmen, umkehren oder nummerieren — für saubere Listen aus Excel, Exporten oder Notizen. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Räumt Zeilen-Listen in einem Klick auf — wende mehrere Operationen nacheinander an, das Ergebnis kannst du kopieren.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div><label for="in">Eingabe</label><textarea id="in" placeholder="Eine Zeile pro Eintrag …">Birne
+apfel
+Banane
+apfel
+
+  Kirsche
+Banane</textarea></div>
+      <div><label for="out">Ergebnis</label><textarea id="out" readonly></textarea></div>
+    </div>
+    <div class="ops">
+      <button data-op="sortAsc">A → Z sortieren</button>
+      <button data-op="sortDesc">Z → A sortieren</button>
+      <button data-op="dedupe">Duplikate entfernen</button>
+      <button data-op="noEmpty">Leerzeilen entfernen</button>
+      <button data-op="trim">Leerzeichen trimmen</button>
+      <button data-op="reverse">Reihenfolge umkehren</button>
+      <button data-op="number">Nummerieren</button>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="row"><button type="button" class="btn" id="copy">📋 Ergebnis kopieren</button>
+      <button type="button" class="btn ghost" id="use">↥ Ergebnis als Eingabe</button></div>
+    <p class="note">Operationen wirken nacheinander auf das aktuelle Ergebnis. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Text &amp; Daten.</p>
+    <p><a class="btn" href="/text-case-konverter.html">Groß-/Kleinschreibung</a>
+      <a class="btn ghost" href="/csv-json-konverter.html">CSV ↔ JSON</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/text-case-konverter.html">Groß-/Kleinschreibung</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("in"), out=document.getElementById("out"), summary=document.getElementById("summary");
+  var coll=new Intl.Collator("de",{sensitivity:"base",numeric:true});
+  function current(){ return (out.value!==""?out.value:inp.value); }
+  function lines(s){ return s.replace(/\r/g,"").split("\n"); }
+  function apply(op){
+    var L=lines(current());
+    switch(op){
+      case "sortAsc": L.sort(function(a,b){return coll.compare(a,b);}); break;
+      case "sortDesc": L.sort(function(a,b){return coll.compare(b,a);}); break;
+      case "dedupe": var seen={},r=[]; L.forEach(function(x){if(!seen.hasOwnProperty(x)){seen[x]=1;r.push(x);}}); L=r; break;
+      case "noEmpty": L=L.filter(function(x){return x.trim()!=="";}); break;
+      case "trim": L=L.map(function(x){return x.trim();}); break;
+      case "reverse": L.reverse(); break;
+      case "number": var w=String(L.length).length; L=L.map(function(x,i){return String(i+1).padStart(w," ")+". "+x;}); break;
+    }
+    out.value=L.join("\n");
+    summary.innerHTML='<strong>'+L.length.toLocaleString("de-DE")+'</strong> Zeilen im Ergebnis.';
+  }
+  document.querySelectorAll(".ops button").forEach(function(b){ b.addEventListener("click",function(){ apply(b.getAttribute("data-op")); }); });
+  inp.addEventListener("input",function(){ out.value=""; summary.textContent=""; });
+  document.getElementById("use").addEventListener("click",function(){ if(out.value){ inp.value=out.value; out.value=""; summary.textContent=""; } });
+  document.getElementById("copy").addEventListener("click",function(){var b=this;var t=current();if(t&&navigator.clipboard)navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1500);});});
+})();
+</script>
+</body>
+</html>
