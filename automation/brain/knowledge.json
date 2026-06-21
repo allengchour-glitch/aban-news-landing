@@ -1098,6 +1098,12 @@
       "KONTROLLE_UEBERALL": "post-health.mjs prueft TikTok-Ledger + Meta-Log auf echte Doppel (<90min) alle 6h (LuxeHealth).",
       "WURZEL_GEFIXT": "Doppelpost-Ursache: SUPERBOT-SETUP machte bei JEDEM Start einen Test-Post (-Mode post) + User startete mehrfach + Ledger-Reset. FIX: SUPERBOT postet nicht mehr beim Start (nur Brave-Ensure) + Ledger committet sofort. = keine neuen Doppel.",
       "stand": "2026-06-21"
+    },
+    "immer_ai_bot_2026": {
+      "fest": "User 2026-06-21 \"immer mit ai bot autonomste weg\". Browser-Automation IMMER ueber Stagehand-AI-Selektoren (ai-browser.mjs act/extract) statt fragiler CSS-Selektoren = autonomster, robustester Weg.",
+      "umsetzung": "Neue/migrierte Bots nutzen aiBrowser(). Bereits AI: tiktok/ig-delete, fb-groups. NOCH migrieren: social-profile-update, marketplace-profile, ggf. tiktok-upload. Erst verifizieren dass Stagehand verbindet (Diagnose-Status GESTARTET->act).",
+      "llm": "Gemini-Key (gratis). Stagehand installiert (ai-browser-test bereit:true). Falls AIBROWSER_FEHLER -> CDP-Connect-API in ai-browser.mjs pruefen (Stagehand v3 cdpUrl).",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
