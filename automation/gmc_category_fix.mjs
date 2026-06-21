@@ -37,6 +37,10 @@ const MAP=[
  [/metalldetektor|detektor|schatzsuche/i,'Electronics'],
  [/poloshirt|polo /i,                   'Apparel & Accessories > Clothing > Shirts & Tops'],
  [/tauchen|schnorchel|diving/i,         'Sporting Goods > Outdoor Recreation'],
+ [/luftmatratze|schwimm|aufblasbar|pool|planschbecken|schwimmbrille|schwimmring|badeschuhe|taucherbrille/i,'Sporting Goods > Outdoor Recreation'],
+ [/blumentopf|übertopf|ubertopf|pflanztopf|pflanzkübel|pflanzkubel|pflanzgefäß|pflanzgefass|rankgitter|gartenfigur|vogelhaus/i,'Home & Garden > Lawn & Garden > Gardening'],
+ [/gartenleuchte|solarleuchte|gartenlampe/i,'Home & Garden > Lighting'],
+ [/giesskanne|gie(ss|ß)kanne|gartenschere|gartenwerkzeug/i,'Home & Garden > Lawn & Garden > Gardening > Gardening Tools'],
  [/camping|zelt|schlafsack/i,           'Sporting Goods > Outdoor Recreation > Camping & Hiking'],
 ];
 function cat(s){ for(const [re,c] of MAP) if(re.test(s)) return c; return null; }
