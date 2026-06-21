@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprimere immagine · ridurre · aban news</title>
+<meta name="description" content="Strumento gratuito: comprimi e riduci le immagini nel browser (JPG, PNG, WebP) — imposta qualità &amp; larghezza max, vedi la dimensione prima/dopo e scarica. Locale, senza caricamento, senza tracciamento.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/bild-komprimieren.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/bild-komprimieren.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/bild-komprimieren.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/bild-komprimieren.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/bild-komprimieren.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/bild-komprimieren.html">
+<meta property="og:title" content="Comprimere &amp; ridurre immagine">
+<meta property="og:description" content="Comprimi le immagini localmente nel browser (JPG/PNG/WebP), imposta qualità &amp; larghezza, scarica. Senza caricamento.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/bild-komprimieren.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="it_IT"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Comprimere immagine",
+"url":"https://abannews.com/it/bild-komprimieren.html","applicationCategory":"MultimediaApplication","operatingSystem":"Web",
+"inLanguage":"it","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Comprime e riduce le immagini localmente nel browser (JPG, PNG, WebP) con qualità e larghezza regolabili.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.drop{border:2px dashed var(--amber-lt);border-radius:12px;padding:34px 18px;text-align:center;background:var(--field);cursor:pointer;transition:.15s}
+.drop:hover,.drop.over{border-color:var(--amber);background:var(--cream)}
+.drop .big{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.drop p{color:var(--ink2);font-size:.95rem}
+.warn{color:var(--bad);font-weight:600;font-size:.88rem;margin-top:10px}
+.ctrls{margin-top:16px;display:none}
+.ctrls.show{display:block}
+.lbl{display:flex;justify-content:space-between;font-weight:600;font-size:13px;margin:12px 0 5px;color:var(--ink2)}
+.lbl .v{color:var(--amber-dk);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--amber-dk)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:520px){.frow{grid-template-columns:1fr}}
+input[type=number],select{width:100%;font-family:inherit;font-size:15px;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.result{margin-top:16px;display:none}
+.result.show{display:block}
+.cmp{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.cmp img{max-width:160px;max-height:160px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.stats{font-size:.92rem;color:var(--ink2)}
+.stats b{color:var(--ink)}
+.save{font-weight:800;font-size:1.15rem;color:var(--ok)}
+.save.bad{color:var(--bad)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Vai allo strumento</a>
+<header class="site"><div class="wrap"><a href="/it/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuita</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Comprimere</span> immagine</h1>
+    <p>Riduci le immagini per il web — imposta qualità e larghezza massima, vedi il risparmio subito e scarica. Ideale per pagine più veloci e caricamenti più leggeri. Tutto avviene localmente nel browser, senza caricamento.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="drop" id="drop" tabindex="0" role="button" aria-label="Scegli un'immagine o trascinala qui">
+      <p class="big">Trascina un'immagine qui o clicca</p>
+      <p>JPG, PNG o WebP · resta sul tuo dispositivo</p>
+      <input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden>
+    </div>
+    <div class="warn" id="warn" role="alert" hidden></div>
+    <div class="ctrls" id="ctrls">
+      <div class="lbl"><span>Qualità</span><span class="v" id="qval">80 %</span></div>
+      <input type="range" id="quality" min="10" max="100" value="80" aria-label="Qualità in percento">
+      <div class="frow">
+        <div>
+          <label class="lbl" for="maxw" style="display:block"><span>Larghezza max (px, 0 = originale)</span></label>
+          <input type="number" id="maxw" min="0" max="10000" value="0" inputmode="numeric">
+        </div>
+        <div>
+          <label class="lbl" for="format" style="display:block"><span>Formato</span></label>
+          <select id="format">
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/webp">WebP</option>
+            <option value="image/png">PNG (senza perdita)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="result" id="result">
+      <div class="cmp">
+        <img id="thumb" src="data:," alt="Anteprima dell'immagine compressa">
+        <div class="stats" id="stats"></div>
+      </div>
+      <p style="margin-top:12px"><button class="btn" id="download" type="button" disabled>Scarica</button></p>
+    </div>
+    <p class="note">Il PNG è senza perdita — il cursore della qualità agisce solo su JPEG/WebP. Il WebP è di solito il più leggero. Le immagini molto piccole o già ottimizzate possono diventare leggermente più grandi dopo la conversione — allora non vale la pena. Tutto avviene localmente, niente viene caricato.</p>
+  </section>
+  <div class="cta"><strong>Altri strumenti</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">per immagini &amp; web.</p>
+    <p><a class="btn" href="/it/bild-zu-base64.html">Immagine → Base64</a>
+      <a class="btn ghost" href="/it/qr-code.html">QR code</a>
+      <a class="btn ghost" href="/it/online-tools.html">Tutti gli strumenti</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">L'hai trovato utile? 5 minuti di IA senza hype — ogni giorno feriale.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news è la newsletter sull'IA per i lavoratori autonomi: breve, onesta, senza bingo di parole alla moda. Gratuita, disdici quando vuoi.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Iscriviti alla newsletter gratuita →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/it/bild-zu-base64.html">Immagine → Base64</a> · <a href="/it/qr-code.html">QR code</a> ·
+  <a href="/it/ki-werkzeug.html">Strumento IA</a> &middot; <a href="/it/online-tools.html">Tutti gli strumenti</a> &middot; <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var drop=document.getElementById("drop"),file=document.getElementById("file"),warn=document.getElementById("warn"),
+      ctrls=document.getElementById("ctrls"),result=document.getElementById("result"),thumb=document.getElementById("thumb"),
+      stats=document.getElementById("stats"),quality=document.getElementById("quality"),qval=document.getElementById("qval"),
+      maxw=document.getElementById("maxw"),format=document.getElementById("format"),dl=document.getElementById("download");
+  var srcImg=null,srcName="immagine",srcSize=0,srcType="",outURL=null,outName="",reqId=0;
+  function human(b){return b<1024?b+" B":b<1048576?(b/1024).toFixed(1)+" KB":(b/1048576).toFixed(2)+" MB";}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+  function setWarn(msg){if(msg){warn.hidden=false;warn.textContent=msg;}else{warn.hidden=true;warn.textContent="";}}
+  function baseName(n){return String(n).replace(/\.[^.]+$/,"")||"immagine";}
+  function extFor(t){return t==="image/webp"?".webp":t==="image/png"?".png":".jpg";}
+  function load(f){
+    if(!f)return;
+    if(!/^image\/(jpeg|png|webp)$/.test(f.type)){setWarn("⚠ Scegli un'immagine JPG, PNG o WebP.");return;}
+    setWarn("");
+    srcName=baseName(f.name);srcSize=f.size;srcType=f.type;
+    var url=URL.createObjectURL(f);
+    var img=new Image();
+    img.onload=function(){srcImg=img;ctrls.classList.add("show");
+      if(srcType==="image/png")format.value="image/png";compress();
+      URL.revokeObjectURL(url);};
+    img.onerror=function(){setWarn("⚠ Impossibile caricare l'immagine.");URL.revokeObjectURL(url);};
+    img.src=url;
+  }
+  function compress(){
+    if(!srcImg)return;
+    var q=(parseInt(quality.value,10)||80);qval.textContent=q+" %";
+    var mw=parseInt(maxw.value,10);if(isNaN(mw)||mw<0)mw=0;
+    var w=srcImg.naturalWidth,h=srcImg.naturalHeight;
+    if(mw>0&&w>mw){h=Math.round(h*mw/w);w=mw;}
+    var canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;
+    var ctx=canvas.getContext("2d");
+    var type=format.value;
+    if(type==="image/jpeg"){ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);}
+    ctx.drawImage(srcImg,0,0,w,h);
+    var qq=type==="image/png"?undefined:q/100;
+    var myReq=++reqId;
+    canvas.toBlob(function(blob){
+      if(myReq!==reqId)return;
+      if(!blob){setWarn("⚠ Compressione non riuscita (formato non supportato?).");return;}
+      if(outURL)URL.revokeObjectURL(outURL);
+      outURL=URL.createObjectURL(blob);
+      thumb.src=outURL;
+      outName=srcName+extFor(type);
+      var pct=srcSize>0?Math.round((1-blob.size/srcSize)*100):0;
+      var sv=pct>=0?"−"+pct+" %":"+"+Math.abs(pct)+" %";
+      stats.innerHTML="<b>"+esc(srcName)+"</b><br>"+
+        "Originale: "+human(srcSize)+"<br>"+
+        "Compresso: <b>"+human(blob.size)+"</b> · "+w+"×"+h+" px<br>"+
+        "<span class=\"save"+(pct<0?" bad":"")+"\">"+sv+"</span> "+(pct>=0?"più piccolo":"più grande");
+      result.classList.add("show");
+      dl.disabled=false;
+    },type,qq);
+  }
+  function download(){
+    if(!outURL)return;
+    var a=document.createElement("a");a.href=outURL;a.download=outName||"immagine";
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+  }
+  drop.addEventListener("click",function(){file.click();});
+  drop.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();file.click();}});
+  file.addEventListener("change",function(){load(file.files[0]);});
+  ["dragover","dragenter"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add("over");});});
+  ["dragleave","drop"].forEach(function(ev){drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove("over");});});
+  drop.addEventListener("drop",function(e){if(e.dataTransfer&&e.dataTransfer.files)load(e.dataTransfer.files[0]);});
+  quality.addEventListener("input",compress);
+  maxw.addEventListener("input",compress);
+  format.addEventListener("change",compress);
+  dl.addEventListener("click",download);
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
