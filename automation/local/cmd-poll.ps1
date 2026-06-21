@@ -3,6 +3,13 @@
 $ErrorActionPreference = "Continue"
 $repo = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $repo
+# PURE-AUTOMATION (User 2026-06-21 "fuer spaeter pure automation"): vor jedem Kampagne-Lauf die Keys laden
+# (GROQ/GEMINI -> Stagehand-AI klickt selbst; Shopify-Creds) + Stagehand-Paket sicherstellen. Damit laeuft eine
+# aus der Cloud gequeuete Kampagne vollautonom am PC, ohne dass der User einen Befehl tippt.
+function Ensure-Campaign {
+  if (Test-Path "$env:USERPROFILE\luxe-secrets.ps1") { . "$env:USERPROFILE\luxe-secrets.ps1" }
+  if (-not (Test-Path "node_modules\@browserbasehq\stagehand")) { npm i @browserbasehq/stagehand --no-audit --no-fund 2>$null | Out-Null }
+}
 # SELBST-PULL + NEUSTART (FIX 2026-06-21 Timing-Falle): neuesten Code holen BEVOR Befehle laufen, damit
 # NEUE Befehle/Scripts sofort erkannt werden (sonst verwirft die alte cmd-poll unbekannte Befehle). Aendert
 # der Pull die cmd-poll.ps1 selbst -> EINMAL mit neuem Code neu starten. Vor dem Lock -> kein Konflikt.
@@ -81,9 +88,9 @@ try {
       "yt-learn"     { Start-Process powershell -WindowStyle Hidden -ArgumentList '-ExecutionPolicy','Bypass','-Command',"node automation/yt-learn.mjs; git add reports/; git commit -m auto-ytlearn; git pull --rebase origin claude/luxestyle-product-CizQ6; git push origin claude/luxestyle-product-CizQ6" }
       "tutti"        { $env:AUTO_PUBLISH="1"; & node "automation/local/tutti-post.mjs"; $env:AUTO_PUBLISH=$null }
       "anibis"       { $env:AUTO_PUBLISH="1"; & node "automation/local/anibis-post.mjs"; $env:AUTO_PUBLISH=$null }
-      "campaign-dry" { & node "automation/local/tiktok-campaign-port.mjs" --dry; git add -f automation/local/campaign-shots/* 2>$null; git commit -m "auto(campaign-dry): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
-      "campaign-go"  { $env:AUTO_LAUNCH="1"; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null; git add -f automation/local/campaign-shots/* 2>$null; git commit -m "auto(campaign-go): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
-      "campaign-data" { $env:AUTO_LAUNCH="1"; $env:TT_EVENT="Add to Cart"; $env:TT_DAILY_BUDGET="10"; $env:TT_TOTAL_BUDGET="70"; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null; $env:TT_EVENT=$null; $env:TT_DAILY_BUDGET=$null; $env:TT_TOTAL_BUDGET=$null; git add -f automation/local/campaign-shots/* 2>$null; git commit -m "auto(campaign-data): ATC-Daten-Kampagne Screenshots" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "campaign-dry" { Ensure-Campaign; & node "automation/local/tiktok-campaign-port.mjs" --dry; git add -f automation/local/campaign-shots/* reports/campaign-last-run.json 2>$null; git commit -m "auto(campaign-dry): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "campaign-go"  { Ensure-Campaign; $env:AUTO_LAUNCH="1"; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null; git add -f automation/local/campaign-shots/* reports/campaign-last-run.json 2>$null; git commit -m "auto(campaign-go): Screenshots zur Kontrolle" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "campaign-data" { Ensure-Campaign; $env:AUTO_LAUNCH="1"; $env:TT_EVENT="Add to Cart"; $env:TT_DAILY_BUDGET="10"; $env:TT_TOTAL_BUDGET="70"; "" | Out-File -Encoding ascii automation/local/tiktok-campaign-ledger.txt; & node "automation/local/tiktok-campaign-port.mjs"; $env:AUTO_LAUNCH=$null; $env:TT_EVENT=$null; $env:TT_DAILY_BUDGET=$null; $env:TT_TOTAL_BUDGET=$null; git add -f automation/local/campaign-shots/* reports/campaign-last-run.json 2>$null; git commit -m "auto(campaign-data): ATC-Daten-Kampagne Screenshots" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "bigbuy-beauty" { Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-Command','$env:ROOT_NAME=''cosmet'';$env:MAX=''12'';node dropship/bigbuy_import.mjs' -WindowStyle Hidden }
       "bigbuy-makeup" { Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-Command','$env:ROOT_NAME=''perfum'';$env:MAX=''12'';node dropship/bigbuy_import.mjs' -WindowStyle Hidden }
       "bigbuy-premium" { Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-File','automation/local/bigbuy-premium.ps1' -WindowStyle Hidden }
