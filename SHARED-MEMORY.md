@@ -1275,3 +1275,14 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   → **Verifikation: 2119/2119 mit Kategorie, 0 ohne.** Bessere Google-Shopping-Freigabe.
 - **`gmc_category_fix.mjs` MAP erweitert** um socke/kulturbeutel/werkzeug/büro/reise/anime/metalldetektor/poloshirt/tauchen/
   camping → künftige Wellen mappen diese Typen direkt (keine „keine-Zuordnung" mehr für die Niche-Importe).
+
+## 📌 2026-06-20 Teil 13 (🏠 Startseite SELBST-AKTUELL — „Neu eingetroffen" Fix)
+- **User „Startseite aktuell halten":** Startseiten-Sektion „🆕 Neu eingetroffen" (Collection `neu-eingetroffen`) hatte Regel
+  **`tag:cj-real`** → zeigte NUR CJ-Produkte, die **52 neuen BigBuy-Produkte fehlten** auf der Startseite!
+- **Fix:** Regel auf **`tag:dropship` AND NOT `niedrig-bewertet-nicht-bewerben`**, Sort **CREATED_DESC** geändert
+  (CJ + BigBuy haben beide `dropship`). → 609 → **2576 Produkte**, erste 8 (= Startseite) = die brandneuesten beider Lieferanten.
+  **Selbst-aktuell:** jede künftige Import-Welle erscheint automatisch ganz vorne, kein manuelles Nachpflegen nötig.
+- **Restliche Startseiten-Sektionen geprüft:** Topseller (667, cross-category) ✅ · Top-10-Bestseller (10, manuell, gesund) ✅ ·
+  WM 2026 (53, timely) ✅ · Highlights (26) · Premium-Geschenke (1021, smart). Hero „Sommer-Mode 2026" = saisonal aktuell.
+- **Lehre:** Startseiten-„Neu"-Sektion IMMER an einen lieferanten-übergreifenden Tag (`dropship`) + CREATED_DESC binden,
+  NICHT an `cj-real` (sonst fehlen BigBuy-Importe). Gilt auch für künftige neue Lieferanten → deren Produkte `dropship` taggen.
