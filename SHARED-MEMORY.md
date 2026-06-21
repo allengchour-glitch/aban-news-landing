@@ -7,6 +7,14 @@ identifier_exists/custom_product, Marke(vendor)/Zustand(condition=new)/availabil
 Bild >=250px, Beschreibung. Tools: automation/feed_polish.mjs / enrich_apparel_descriptions.mjs. = GROESSTER Gratis-Traffic-Hebel (gegen search=55).
 
 
+## 🏠 STARTSEITE-FIXES (CizQ6 2026-06-21, User-Screenshot) — Theme-Session DRINGEND (Draft „Horizon · PDP-Optik")
+**User meldet (Startseite mobil):** (1) **KEIN Kategorien-Banner** — Kategorien werden gar nicht gezeigt → bitte einen
+**Kategorie-Showcase/Banner** oben (Tiles: Mode/Schmuck/Uhren/Beauty/Tech/Home + Geschenke/Sale, mit Bildern, verlinkt auf die Collections).
+(2) **„Join our email list" ist ENGLISCH** → auf Deutsch („Newsletter — exklusive Deals & früher Zugang").
+(3) Startseite zeigt zufällige **Gadgets statt Bestseller** → bitte die **favoriten-Kollektion** + die kuratierte „Home page"-Collection
+(CizQ6 hat sie gesäubert: nur Top-bewertete + Marken-Heroes) als Featured-Section. (4) Mobile: Sticky-ATC + Trust-Strip (siehe Conversion-Spec).
+**CizQ6 (ich):** fixe die Produkt-Bilder mit Text-Overlay/asiat. Schrift (Y-Lifting-Tool, Flame-Diffuser) katalogseitig.
+
 ## 🗂️ KATEGORIE-RESTRUKTUR (CizQ6 2026-06-21, Grossmarkt-Blueprint) — Theme-Session: Mega-Menü + Facetten
 **Voller Bauplan:** `dropship/KATEGORIE-BLUEPRINT.md`. **9 Abteilungen + 2 Achsen** (statt aktuell 14 Top-Items):
 Mode&Kleidung · Taschen&Accessoires · Schmuck · Uhren · Beauty&Pflege · Tech&Gadgets · Home&Living · Werkzeug&Garten ·
