@@ -1269,3 +1269,9 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
 - **Saturierungs-Lehre:** uhren/parfum/sonnenbrillen/home = saturiert (7097 home-Kandidaten, fast alles Dubletten) →
   künftige Wellen diese Kategorien meiden. Frische blieben: anime/fishing/velo/buero/ladegeraet/phone/socken/caps/hoodies/
   guertel/werkzeug/kueche/reise/metalldetektor/fitness/haustier/audio/beauty/herrenmode/schuhe (52+ Produkte diese Session).
+
+## 📌 2026-06-20 Teil 12 (Google-Kategorie katalogweit 100%)
+- **73 bigbuy-Produkte ohne `google_product_category` gefüllt** (Büro 36, Reise 16, Werkzeug 11, Anime 7, Socken 2, Metalldet. 1)
+  → **Verifikation: 2119/2119 mit Kategorie, 0 ohne.** Bessere Google-Shopping-Freigabe.
+- **`gmc_category_fix.mjs` MAP erweitert** um socke/kulturbeutel/werkzeug/büro/reise/anime/metalldetektor/poloshirt/tauchen/
+  camping → künftige Wellen mappen diese Typen direkt (keine „keine-Zuordnung" mehr für die Niche-Importe).

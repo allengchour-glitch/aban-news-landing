@@ -28,6 +28,16 @@ const MAP=[
  [/fitness|hantel|widerstandsband|yoga|sport/i,'Sporting Goods > Exercise & Fitness'],
  [/angeln|fishing/i,                    'Sporting Goods > Outdoor Recreation > Fishing'],
  [/velo|fahrrad|rad/i,                  'Sporting Goods > Outdoor Recreation > Cycling'],
+ [/socke|strumpf/i,                     'Apparel & Accessories > Clothing > Underwear & Socks > Socks'],
+ [/kulturbeutel|necessaire|kosmetiktasche|toiletry/i,'Luggage & Bags > Toiletry Bags'],
+ [/werkzeug|wasserwaage|bohr|schraub|zange|hammer|säge|stanley|werkzeugsatz/i,'Hardware > Tools'],
+ [/büro|buero|kugelschreiber|füller|notizbuch|ordner|locher|tacker|schreibwaren|federmäppchen|mäppchen/i,'Office Supplies > General Office Supplies'],
+ [/reise|koffer|trolley|travel|packwürfel|kulturtasche/i,'Luggage & Bags > Travel Accessories'],
+ [/anime|manga|figur|sammelfigur|collectible/i,'Arts & Entertainment > Hobbies & Creative Arts > Collectibles'],
+ [/metalldetektor|detektor|schatzsuche/i,'Electronics'],
+ [/poloshirt|polo /i,                   'Apparel & Accessories > Clothing > Shirts & Tops'],
+ [/tauchen|schnorchel|diving/i,         'Sporting Goods > Outdoor Recreation'],
+ [/camping|zelt|schlafsack/i,           'Sporting Goods > Outdoor Recreation > Camping & Hiking'],
 ];
 function cat(s){ for(const [re,c] of MAP) if(re.test(s)) return c; return null; }
 
