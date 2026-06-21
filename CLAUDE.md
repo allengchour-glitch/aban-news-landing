@@ -191,6 +191,20 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-21 (TEUER GELERNT — warum TikTok-Ads + PC-Automation scheiterten; Recherche-Schwarm; Daten-Fixes):**
+- **🔴 WURZELURSACHE TikTok-Ads (endlich, mit Beweis):** Das Werbekonto im `brave-agent`-Profil ist **NICHT eingerichtet**
+  → zeigt Onboarding-Wand **„Add business info" (Industry+Firmenname+Zahlung Pflicht) + „permission error"**, bevor eine
+  Kampagne möglich ist. Der Bot klickt durch, erreicht NIE den Builder (Screenshots `campaign-shots/06,09` = Onboarding).
+  **KEIN Geld floss.** **User-Einmalfix:** ads.tiktok.com Business-Info ausfüllen (Industry=Retail, Name=LuxeStyle, Karte)
+  ODER ins fertige Konto „LuxeStyle CH Ads" `7646349875793182738` einloggen → dann läuft jede Kampagne autonom.
+- **🦠 AVG/Antivirus blockierte die PC-Automation** (nachts 0 Tasks). Fix: node/Repo/Brave in AV-Ausnahmen ODER AV aus.
+  → Bei stiller PC-Inaktivität IMMER Antivirus prüfen. SUPERBOT-SETUP.bat brachte den PC wieder current.
+- **📸 ig-delete fragil:** IG versteckt das „…"-Löschmenü vor Automation (3 Dubletten blieben). Menü-Erkennung gehärtet,
+  ABER zuverlässig = User löscht 2 in der IG-App (20 Sek). NEUE Dubletten verhindert schon der Worker.
+- **🧠 Screenshot-QA Pflicht:** Commit-Message ≠ Erfolg — IMMER Screenshots ansehen. Container-Uhr ~2.5h nach (Commit-
+  Zeitstempel +0200 nutzen). **Daten-Fixes:** toter Top-Ring (64 Sess) reaktiviert, `/de-de`-Redirect. Gehirn 138 Regeln.
+  YouTube-Recherche-Schwarm (5 Agenten): Payment (TWINT+Rechnung+ShopPay) = #1 Hebel, Klarna NICHT in CH.
+
 **📌 2026-06-20 (GROSSE SESSION — TikTok-API LÄUFT + Dauerauftrags-Bot 24/7 + viel Content/Katalog):**
 - **✅ TIKTOK-API FUNKTIONIERT (Cloud, kein PC!):** App **„luxe"** Sandbox-Key `sbawgg40q8nkfuwl5k`, OAuth gelöst
   (Web-Plattform aktivieren war der Fix für `unauthorized_client`), Token am PC in `luxe-secrets.ps1` (Refresh 1 Jahr).

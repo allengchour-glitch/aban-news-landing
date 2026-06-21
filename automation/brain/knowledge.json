@@ -1037,6 +1037,17 @@
       "ex_heroes_clean": "3 saubere Ex-Heroes archiviert MIT Bild: Thermosflasche 750ml (15401508995457), Premium-Leder-Rucksack (15401597534593), Diver Pro Automatic Uhr (15406499529089). KEIN messbarer Traffic (nicht Top-15-Landing) -> NICHT blind reaktiviert (Ring war wegen 64 Sess daten-belegt; diese nicht, koennten retired/Lieferant-aus sein). Bei Traffic-Nachweis reaktivieren.",
       "lehre": "Archivierte mit Bild + TRAFFIC = reaktivieren (Ring). Archivierte ohne Bild = Muell, lassen. Archivierte mit Bild ohne Traffic = nicht blind anfassen.",
       "stand": "2026-06-21"
+    },
+    "teuer_gelernt_tiktok_pc_2026_06_21": {
+      "titel": "TEUER GELERNT (2026-06-21) - warum TikTok-Ads + PC-Automation wochenlang scheiterten. Wurzelursachen, NIE wieder raten.",
+      "avg_blocker": "AVG/Antivirus blockierte node+Browser-Automation am PC -> nachts liefen NULL geplante Tasks (sah aus wie PC aus). LEHRE: bei stiller PC-Inaktivitaet IMMER Antivirus pruefen. Fix: node.exe + Repo-Ordner + Brave in AV-Ausnahmen, oder AV fuer Automations-Ordner deaktivieren.",
+      "tiktok_konto_NICHT_eingerichtet": "DER Hauptgrund warum TikTok-Ads nie autonom liefen: das Werbekonto im brave-agent-Profil ist NICHT fertig eingerichtet -> zeigt Onboarding-Wand \"Add business info\" (Industry + Business name + Enter payment details PFLICHT) + \"permission error\", BEVOR ueberhaupt eine Kampagne moeglich ist. Der Bot (tiktok-campaign-port.mjs) klickt durch, erreicht aber NIE den echten Builder. Beweis: campaign-shots 06-budget/09-submitted = immer dieselbe Onboarding-Seite. KEIN Geld floss (Onboarding-Wand vor Budget-Schritt). FIX = EINMALIG vom User: ads.tiktok.com Add-business-info ausfuellen (Industry=Retail/E-Commerce, Business name=LuxeStyle, Zahlungsmethode) ODER ins bestehende fertige Konto \"LuxeStyle CH Ads\" 7646349875793182738 einloggen. Danach laeuft jede Kampagne autonom.",
+      "ig_delete_fragil": "ig-delete-dupes.mjs oeffnet den Post, aber IG versteckt das \"...\"-Loesch-Menue vor Automation (post-1-no-menu). Profil blieb 111 Posts + 3 Dubletten. Menue-Erkennung gehaertet (Selektoren + JS-Fallback aria-label option/optionen), ABER IG-Browser-Loeschen bleibt fragil. ZUVERLAESSIG = User loescht 2 Dubletten in der IG-App (20 Sek). Wichtiger (NEUE Dubletten verhindern) ist im Worker schon geloest.",
+      "screenshot_qa_pflicht": "Commit-Message \"auto(campaign-go): Screenshots\" sah nach Erfolg aus - die SCREENSHOTS zeigten aber die Onboarding-Wand. LEHRE: nach jedem Browser-Bot-Lauf die Screenshots ANSEHEN, nie der Commit-Message trauen.",
+      "container_clock": "Cloud-Container-Clock ging ~2.5h nach (zeigte 04:00 CH bei real 06:30). LEHRE: fuer \"lief der 05:00-Task?\" die Commit-Zeitstempel (tragen +0200) ODER die vom User genannte Zeit nutzen, nicht die Container-Uhr.",
+      "pc_sync": "PC-Selbstheilung 05:00 feuert nur wenn PC laeuft + AV nicht blockt. User-Klick SUPERBOT-SETUP.bat brachte den PC current (zog campaign-data + stale-lock -> campaign-data wurde diesmal erkannt). LEHRE: nach Push, der einen NEUEN cmd-poll-Befehl einfuehrt, muss der PC erst pullen (SUPERBOT/giga/update) BEVOR der Befehl gequeued wird, sonst verworfen.",
+      "geld_sicher": "Trotz mehrerer fehlgeschlagener campaign-Laeufe: NIE Geld ausgegeben (harte Budget-Obergrenze + Onboarding-Wand vor Budget). Sicherheits-Design hielt.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
