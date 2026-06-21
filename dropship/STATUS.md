@@ -1,5 +1,19 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-21 (SPÄT — Funnel-Daten + Kauf-Blocker-Fix + alle Browser-Bots auf AI)
+**🧠 AI-Bot (Stagehand) jetzt Standard für ALLE fragilen Bots** (du steuerst alles, autonomste Weg):
+  TikTok-Kampagne-Wizard + IG/TikTok-Bio + Marktplatz-Profil auf `ab.act()` umgestellt (löst „Feld nicht
+  gefunden"/„Selektor klickt nicht"). Playwright bleibt Fallback → Bot bricht nie. Befehle in PC-Queue gelegt
+  (`campaign-data`/`profil`/`markt-profil`) → LuxeCmd führt aus + pusht Screenshots. **Brain: 154 Regeln.**
+**📊 FUNNEL-DATEN 30T (live gezogen, info ist A und O):** 3002 Sess → **17 Warenkorb (0,57%)** → 13 Checkout → **0 Kauf**.
+  - **Social 1117 Sess → 0 ATC** = strukturell (IG/FB-Captions ohne klickbaren Link, nur Link-in-Bio→Homepage).
+  - **Mobile 2072 Sess (69%) → nur 0,34% ATC** (Desktop 1,16%) = Mobile-Kauferfahrung ist der Volumen-Engpass.
+  - 3 Hebel gerankt: (1) **Kauf auf Rechnung/TWINT** am Checkout (13→0 = User-only, CembraPay), (2) Mobile-ATC, (3) SEO.
+**🛒 KAUF-BLOCKER GEFIXT (still, teuer):** Der Zirkonia-Ring (#1-Produkt-Landing, 64 Sess/Mt) war zwar ACTIVE
+  (gestern reaktiviert), aber **`inventoryPolicy: DENY` + 0 Bestand = „ausverkauft", Kaufen gesperrt** → 0 ATC trotz
+  Traffic. → via `productVariantsBulkUpdate` auf **CONTINUE** gesetzt = jetzt kaufbar. Restlicher Katalog gescannt = gesund
+  (CONTINUE). **LEHRE:** Status ACTIVE ≠ kaufbar — Bestands-Policy prüfen. (Brain: `kauf_blocker_deny_inventar_2026`.)
+
 ## 2026-06-21 (GROSSE SUPERBOT-SESSION — Selbstheilung, AI-Selektoren, Konten, Doppelpost überall)
 **🤖 Super-Bot-Ausbau (alles gepusht, läuft ohne User):**
 - **Selbst-Update:** cmd-poll pullt+startet sich neu + Smoke-Test/Auto-Rollback. **Selbst-Check:** LuxeHealth alle 6h
