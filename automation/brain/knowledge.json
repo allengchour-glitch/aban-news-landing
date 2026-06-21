@@ -1135,5 +1135,21 @@
       "change": "Pools v2 aus 8 Reports abgeleitet (Bayes + Hook-Typ-Lernen).",
       "evidence": "Top-Tag #aromatherapyathome; bester Hook „mundart\" (Ø 797V)"
     }
-  ]
+  ],
+  "performance": {
+    "updated": "2026-06-21",
+    "winners": [
+      "Sonnenbrille «Riviera»\r",
+      "Stroh-Shopper «Capri»\r",
+      "Blazer «Roma»\r",
+      "Statement-Ohrringe «Onyx»\r",
+      "Crossbody «Lido»\r"
+    ],
+    "losers": [
+      "Herren-Sneaker «Marco»\r",
+      "Stiletto-Sandalette «Gala»\r",
+      "Zirkonia-Kette «Stella»\r"
+    ],
+    "note": "Auto-gemessen aus IG-Engagement. top_products.csv ist nach Performance sortiert (Gewinner zuerst)."
+  }
 }
