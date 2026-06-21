@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wissenschaftlicher Taschenrechner — online &amp; gratis · aban news</title>
+<meta name="description" content="Kostenloser wissenschaftlicher Taschenrechner: Grundrechnen, Klammern, Potenzen, Wurzel, Sinus/Cosinus, Logarithmus, Fakultät und Konstanten (π, e). Tastatur-Eingabe, lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/taschenrechner.html">
+<meta property="og:title" content="Wissenschaftlicher Taschenrechner — online &amp; gratis">
+<meta property="og:description" content="Klammern, Potenzen, Wurzel, Sin/Cos, Log, Fakultät, π &amp; e — Tastatur-Eingabe, lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/taschenrechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Wissenschaftlicher Taschenrechner",
+"url":"https://abannews.com/taschenrechner.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Wissenschaftlicher Online-Taschenrechner mit Klammern, Potenzen, Wurzel, Trigonometrie, Logarithmus, Fakultät und Konstanten. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Welche Funktionen kann der Taschenrechner?","acceptedAnswer":{"@type":"Answer","text":"Grundrechenarten, Klammern, Potenzen (^), Wurzel (sqrt), Sinus/Cosinus/Tangens samt Umkehrfunktionen, natürlicher und Zehner-Logarithmus, Fakultät (!), Betrag, Runden sowie die Konstanten π und e."}},
+{"@type":"Question","name":"Grad oder Bogenmaß?","acceptedAnswer":{"@type":"Answer","text":"Du kannst zwischen Grad (DEG) und Bogenmaß (RAD) umschalten. Im Grad-Modus rechnet sin(30) wie erwartet 0,5. Die Einstellung gilt auch für die Umkehrfunktionen."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Berechnung läuft komplett lokal im Browser ohne eval, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.screen{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-align:right}
+.expr{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.1rem;min-height:1.6em;word-break:break-all;color:var(--ink)}
+.res{font-size:1.9rem;font-weight:800;color:var(--amber-dk);min-height:1.2em;word-break:break-all}
+.res.bad{color:var(--bad);font-size:1.1rem;font-weight:700}
+.modes{display:flex;gap:8px;align-items:center;margin:12px 0 8px}
+.modes .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.modes .seg button{font:inherit;font-size:.8rem;font-weight:700;padding:6px 12px;border:0;background:transparent;color:var(--amber-dk);cursor:pointer}
+.modes .seg button.on{background:var(--amber-dk);color:#fff}
+.pad{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:6px}
+.pad button{font:inherit;font-size:1rem;font-weight:700;padding:13px 0;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);cursor:pointer}
+.pad button.fn{font-size:.82rem;color:var(--amber-dk)}
+.pad button.op{background:color-mix(in srgb,var(--amber-lt) 40%,var(--field));color:var(--amber-dk)}
+.pad button.eq{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.pad button:active{transform:translateY(1px)}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Wissenschaftlicher</span> Taschenrechner</h1>
+    <p>Grundrechnen, Klammern, Potenzen, Wurzel, Sinus/Cosinus, Logarithmus, Fakultät und Konstanten (π, e) — auch per Tastatur. Lokal im Browser, ohne eval.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Ein vollständiger Rechner mit eigenem, sicherem Parser — du kannst auch direkt tippen (z. B. <code>sqrt(2)*3+1</code>) und Enter drücken.</p>
+
+  <section class="panel" id="tool">
+    <div class="screen"><div class="expr" id="expr">0</div><div class="res" id="res"></div></div>
+    <div class="modes">
+      <div class="seg" id="mode"><button data-m="DEG" class="on">DEG</button><button data-m="RAD">RAD</button></div>
+      <span class="note" style="margin:0">Grad oder Bogenmaß für sin/cos/tan</span>
+    </div>
+    <div class="pad" id="pad">
+      <button class="fn" data-i="sin(">sin</button><button class="fn" data-i="cos(">cos</button><button class="fn" data-i="tan(">tan</button><button class="fn" data-i="ln(">ln</button><button class="fn" data-i="log(">log</button>
+      <button class="fn" data-i="sqrt(">√</button><button class="fn" data-i="^">x^y</button><button class="fn" data-i="(">(</button><button class="fn" data-i=")">)</button><button class="fn" data-i="!">x!</button>
+      <button data-i="7">7</button><button data-i="8">8</button><button data-i="9">9</button><button class="op" data-i="/">÷</button><button class="op" data-i="%">mod</button>
+      <button data-i="4">4</button><button data-i="5">5</button><button data-i="6">6</button><button class="op" data-i="*">×</button><button class="fn" data-i="π">π</button>
+      <button data-i="1">1</button><button data-i="2">2</button><button data-i="3">3</button><button class="op" data-i="-">−</button><button class="fn" data-i="e">e</button>
+      <button data-i="0">0</button><button data-i=".">.</button><button class="op" data-i="+">+</button><button class="op" id="back">⌫</button><button class="eq" id="eq">=</button>
+    </div>
+    <div style="text-align:center;margin-top:10px"><button type="button" class="btn ghost" id="clear">Löschen (C)</button></div>
+    <p class="note">Sicher: kein <code>eval</code>, eigener Parser. Alles lokal, kein Upload, kein Tracking.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">zum Rechnen.</p>
+    <p><a class="btn" href="/prozent-rechner.html">Prozent-Rechner</a>
+      <a class="btn ghost" href="/durchschnitt-rechner.html">Durchschnitt-Rechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/prozent-rechner.html">Prozent-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var deg=true, expr="";
+  var exprEl=document.getElementById("expr"), resEl=document.getElementById("res");
+  function evalExpr(input){
+    var s=input.replace(/\s+/g,"").replace(/×/g,"*").replace(/÷/g,"/").replace(/,/g,".").replace(/π/g,"PI").replace(/√/g,"sqrt");
+    var i=0;
+    function peek(){return s[i];}
+    function err(m){throw new Error(m||"Fehler");}
+    function pExpr(){var v=pTerm();while(peek()==="+"||peek()==="-"){var o=s[i++];var r=pTerm();v=o==="+"?v+r:v-r;}return v;}
+    function pTerm(){var v=pFactor();while(peek()==="*"||peek()==="/"||peek()==="%"){var o=s[i++];var r=pFactor();v=o==="*"?v*r:o==="/"?v/r:v%r;}return v;}
+    function pFactor(){var v=pUnary();if(peek()==="^"){i++;var r=pFactor();v=Math.pow(v,r);}return v;}
+    function pUnary(){if(peek()==="-"){i++;return -pUnary();}if(peek()==="+"){i++;return pUnary();}return pPost();}
+    function pPost(){var v=pPrim();while(peek()==="!"){i++;v=fact(v);}return v;}
+    function fact(n){if(n<0||n!==Math.floor(n))err("Fakultät nur für ganze Zahlen ≥ 0");var r=1;for(var k=2;k<=n;k++)r*=k;return r;}
+    function tr(x){return deg?x*Math.PI/180:x;}
+    function pPrim(){
+      if(peek()==="("){i++;var v=pExpr();if(peek()!==")")err("Klammer fehlt");i++;return v;}
+      var m=/^\d*\.?\d+(?:e[+-]?\d+)?/i.exec(s.slice(i));
+      if(m){i+=m[0].length;return parseFloat(m[0]);}
+      var id=/^[A-Za-z]+/.exec(s.slice(i));
+      if(id){i+=id[0].length;var n=id[0];
+        if(n==="PI")return Math.PI; if(n==="e"||n==="E")return Math.E;
+        if(peek()==="("){i++;var a=pExpr();if(peek()!==")")err("Klammer fehlt");i++;
+          switch(n){case "sqrt":return Math.sqrt(a);case "sin":return Math.sin(tr(a));case "cos":return Math.cos(tr(a));case "tan":return Math.tan(tr(a));
+            case "asin":return (deg?180/Math.PI:1)*Math.asin(a);case "acos":return (deg?180/Math.PI:1)*Math.acos(a);case "atan":return (deg?180/Math.PI:1)*Math.atan(a);
+            case "ln":return Math.log(a);case "log":return Math.log10(a);case "abs":return Math.abs(a);case "round":return Math.round(a);
+            case "floor":return Math.floor(a);case "ceil":return Math.ceil(a);case "exp":return Math.exp(a);default:err("Unbekannte Funktion");}
+        }
+        err("Unbekannter Name");
+      }
+      err("Unerwartetes Zeichen");
+    }
+    var v=pExpr(); if(i<s.length)err("Rest nicht verstanden"); return v;
+  }
+  function show(){ exprEl.textContent=expr||"0";
+    if(!expr){resEl.textContent="";resEl.classList.remove("bad");return;}
+    try{ var v=evalExpr(expr); if(!isFinite(v)){resEl.textContent="= ∞ / undefiniert";resEl.classList.add("bad");return;}
+      resEl.classList.remove("bad"); resEl.textContent="= "+(Math.round(v*1e10)/1e10).toLocaleString("de-DE",{maximumFractionDigits:10});
+    }catch(e){ resEl.textContent="…"; resEl.classList.remove("bad"); }
+  }
+  function commit(){ try{ var v=evalExpr(expr); if(!isFinite(v))throw 0; expr=String(Math.round(v*1e10)/1e10); show(); }catch(e){ resEl.textContent="Fehler"; resEl.classList.add("bad"); } }
+  document.querySelectorAll("#pad button[data-i]").forEach(function(b){ b.addEventListener("click",function(){ expr+=b.getAttribute("data-i"); show(); }); });
+  document.getElementById("back").addEventListener("click",function(){ expr=expr.slice(0,-1); show(); });
+  document.getElementById("eq").addEventListener("click",commit);
+  document.getElementById("clear").addEventListener("click",function(){ expr=""; show(); });
+  document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){ document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");}); b.classList.add("on"); deg=b.getAttribute("data-m")==="DEG"; show(); });});
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Enter"){e.preventDefault();commit();return;}
+    if(e.key==="Backspace"){expr=expr.slice(0,-1);show();return;}
+    if(e.key==="Escape"){expr="";show();return;}
+    if(/^[0-9+\-*/^%().!]$/.test(e.key)){ expr+=e.key; show(); }
+  });
+  show();
+})();
+</script>
+</body>
+</html>
