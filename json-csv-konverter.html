@@ -216,7 +216,8 @@ footer a{color:var(--muted)}
   function download(){
     if(!out.value)return;
     var isC=dir==="j2c";
-    var blob=new Blob([out.value],{type:isC?"text/csv":"application/json"});
+    // CSV gets a UTF-8 BOM so Excel reads umlauts/accents correctly
+    var blob=new Blob([(isC?"﻿":"")+out.value],{type:isC?"text/csv;charset=utf-8":"application/json"});
     var url=URL.createObjectURL(blob);var a=document.createElement("a");
     a.href=url;a.download=isC?"daten.csv":"daten.json";document.body.appendChild(a);a.click();
     document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},1000);
