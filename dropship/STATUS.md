@@ -1,5 +1,19 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-21 (SPÄT-3 — 🎮 CLOUD-AN = 100% PC-Kontrolle + Post-Audit-Tool + Traffic-Kampagne)
+**🎮 CLOUD-AN.bat (User „pc mit klick tool dann kannst du selber ausführen" + „pc läuft 24/7"):** Dauer-Loop, PC hängt
+sich an die Cloud (Brave 9222 + cmd-poll alle 2 Min). **Verifiziert: Queue wird gedrained** → ich steuere den PC jetzt
+**komplett vom Handy/Cloud** (Kampagne, Marktplatz, Audit, alles). Energiesparen ist aus → PC pollt durch.
+**🎯 Pixel-Stillstand umgangen:** Data-Connection = Shopify-OAuth, das der Bot nicht selbst autorisieren kann →
+neue Option **`TT_OBJECTIVE=Traffic`** (braucht KEINEN Pixel) → Bot klickt durch bis Launch. `campaign-traffic` gequeued.
+Pixel später verbinden (1 Klick) → dann auf ATC-Optimierung umstellen.
+**🛡️ Post-Audit-Tool** `automation/local/post-audit.mjs` (User „alte Posts analysieren überall + löschen, entscheide du"):
+Stagehand öffnet IG/TikTok/FB-Profil, Gemini-Vision flaggt asiat.Schrift/Watermark/made-in-china/Collage/unscharf/off-brand,
+löscht klare Verstösse (DRY default, --go; FB-Auto, IG/TikTok geprüft). cmd: audit-ig/tiktok/fb(+fb-go). DRY-Audits gequeued.
+**🛒 Marktplatz:** anibis ✅; tutti/ricardo Nav-Fallback (per Konto-Menü statt URL-Raten) gebaut + gequeued.
+**📊 Doppelpost-Analyse:** FB 0 Doppel (112 gescannt), post-health duplicates:[] → behoben+verifiziert. Schutz aktiv.
+**Brain: 174 Regeln.** Daueraufträge: verbessere langsam/stetig · YouTube-Lernen (wöchentl. Task + Agenten) · regelmässig speichern.
+
 ## 2026-06-21 (SPÄT-2 — TikTok-Bot Stagehand GELÖST + Content-Fixes + PC-Tasks gequeued)
 **🤖 TikTok-Kampagne-Bot: Stagehand vollständig gelöst** (~10 Iterationen, Brain `stagehand_cdp_loesung_2026`):
 CDP-WS-URL aufgelöst · Gemini-Modell · sh.page-undefined umgangen · **KERN: act/extract/observe = `sh.act` (Instanz), nicht `sh.page.act`**.
