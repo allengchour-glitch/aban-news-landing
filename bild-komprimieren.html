@@ -141,7 +141,7 @@ footer a{color:var(--muted)}
       ctrls=document.getElementById("ctrls"),result=document.getElementById("result"),thumb=document.getElementById("thumb"),
       stats=document.getElementById("stats"),quality=document.getElementById("quality"),qval=document.getElementById("qval"),
       maxw=document.getElementById("maxw"),format=document.getElementById("format"),dl=document.getElementById("download");
-  var srcImg=null,srcName="bild",srcSize=0,srcType="",outURL=null,outName="";
+  var srcImg=null,srcName="bild",srcSize=0,srcType="",outURL=null,outName="",reqId=0;
   function human(b){return b<1024?b+" B":b<1048576?(b/1024).toFixed(1)+" KB":(b/1048576).toFixed(2)+" MB";}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
   function setWarn(msg){if(msg){warn.hidden=false;warn.textContent=msg;}else{warn.hidden=true;warn.textContent="";}}
@@ -169,10 +169,12 @@ footer a{color:var(--muted)}
     var canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;
     var ctx=canvas.getContext("2d");
     var type=format.value;
-    if(type!=="image/png"){ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);}
+    if(type==="image/jpeg"){ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);}
     ctx.drawImage(srcImg,0,0,w,h);
     var qq=type==="image/png"?undefined:q/100;
+    var myReq=++reqId;
     canvas.toBlob(function(blob){
+      if(myReq!==reqId)return;
       if(!blob){setWarn("⚠ Komprimierung fehlgeschlagen (Format nicht unterstützt?).");return;}
       if(outURL)URL.revokeObjectURL(outURL);
       outURL=URL.createObjectURL(blob);
