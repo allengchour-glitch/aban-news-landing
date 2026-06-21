@@ -1253,3 +1253,19 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   aus Wave 4 archiviert.
 - **Wave 5** (uhren,sonnenbrillen,parfum,schuhe,herrenmode,home) läuft — uhren/parfum/sonnenbrillen evtl. saturiert
   (Premium-Charge anderer Sessions), schuhe/herrenmode/home evtl. frisch. Committet selbst.
+
+## 📌 2026-06-20 Teil 11 (✅ GMC-Catch-up verifiziert + Filter-Hub kompakt)
+- **User-Frage „neue Produkte noch für Google Merchant polishen?":** Pipeline cleant pro Welle automatisch, ABER Wave 5
+  wurde mitten im Import gestoppt (saturierte uhren/parfum/home) → 16 rohe Produkte. **Voller Catch-up gefahren**
+  (`/tmp/gmc_catchup.sh`: gtin→feed→category→age/gender→color→spec+trust→trust→SEO über alle 2119 bigbuy).
+- **🔑 WICHTIGE LEHRE (Fehlalarm vermeiden):** „ohne Marke-Metafeld" und „ohne Identifier" sind **KEINE echten GMC-Lücken**,
+  solange **`vendor` gesetzt** ist (Google nimmt vendor als Marke) und ein **Barcode** existiert (BigBuy liefert EANs).
+  Präziser Check (vendor + variant.barcode statt nur Metafelder) zeigte: 40/40 vendor ✅, 0 ohne Identifier ✅.
+  **Künftig NICHT auf das mm-google-shopping.brand-Metafeld schauen — vendor + barcode prüfen.**
+- **Echte Lücke war nur:** 6-7 Produkte ohne `google_product_category` (Kulturbeutel→Toiletry Bags, Werkzeug→Hardware>Tools)
+  → manuell gesetzt. **Finale Verifikation 40 neueste: 0 ohne vendor · 0 ohne Identifier · 0 ohne Kategorie.** Merchant-clean.
+- **🔎 Filter-Hub kompakt umgebaut** (User „zuviel scrollen"): von 122 Chips am Stück → **mehrspaltiges Raster + 9 Themen-Blöcke**
+  (Mode/Schmuck/Beauty/Wohnen/Tech/Haustier/Sport/Anlässe). `/pages/marken-kategorien`, Page-ID 698796441985.
+- **Saturierungs-Lehre:** uhren/parfum/sonnenbrillen/home = saturiert (7097 home-Kandidaten, fast alles Dubletten) →
+  künftige Wellen diese Kategorien meiden. Frische blieben: anime/fishing/velo/buero/ladegeraet/phone/socken/caps/hoodies/
+  guertel/werkzeug/kueche/reise/metalldetektor/fitness/haustier/audio/beauty/herrenmode/schuhe (52+ Produkte diese Session).
