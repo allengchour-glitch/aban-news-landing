@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convertitore di unità · Lunghezza, Peso, Temperatura · aban news</title>
+<meta name="description" content="Convertitore di unità gratuito: converti lunghezza, peso, temperatura, area, volume, velocità &amp; dati all'istante — preciso, locale nel browser, senza login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/einheiten-umrechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/einheiten-umrechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/einheiten-umrechner.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/einheiten-umrechner.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/einheiten-umrechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/einheiten-umrechner.html">
+<meta property="og:title" content="Convertitore di unità">
+<meta property="og:description" content="Converti lunghezza, peso, temperatura, area, volume, velocità &amp; dati. Locale nel browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/einheiten-umrechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="it_IT"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Convertitore di unità",
+"url":"https://abannews.com/it/einheiten-umrechner.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web",
+"inLanguage":"it","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Converte lunghezza, peso, temperatura, area, volume, velocità e dati tra le unità.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.cat{background:var(--field);border:1px solid var(--line);border-radius:9px;padding:8px 13px;cursor:pointer;font-size:.9rem;color:var(--ink2);font-weight:600}
+.cat[aria-pressed=true]{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.conv{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}
+@media(max-width:560px){.conv{grid-template-columns:1fr;gap:10px}}
+input,select{width:100%;font-family:inherit;font-size:16px;padding:11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.swap{align-self:end;padding-bottom:2px}
+.swap button{background:var(--field);border:1px solid var(--line);color:var(--amber-dk);border-radius:9px;padding:11px 13px;cursor:pointer;font-size:1rem}
+.swap button:hover{border-color:var(--amber)}
+@media(max-width:560px){.swap{justify-self:center}}
+.out{margin-top:8px}
+.out input{font-weight:700;color:var(--amber-dk);background:var(--card)}
+.factor{font-size:.85rem;color:var(--muted);margin-top:14px;text-align:center}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Vai allo strumento</a>
+<header class="site"><div class="wrap"><a href="/it/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuita</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Convertire <span class="a">unità</span></h1>
+    <p>Converti lunghezza, peso, temperatura, area, volume, velocità e dati all'istante — scegli una categoria, inserisci un valore, fatto. Tutto funziona localmente nel browser, niente viene inviato.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="cats" id="cats" role="group" aria-label="Categoria"></div>
+    <div class="conv">
+      <div>
+        <label class="lbl" for="inVal">Valore</label>
+        <input type="number" id="inVal" step="any" value="1">
+        <select id="inUnit" aria-label="Unità di partenza" style="margin-top:8px"></select>
+      </div>
+      <div class="swap"><button type="button" id="swap" aria-label="Scambia unità" title="Scambia">⇄</button></div>
+      <div>
+        <label class="lbl" for="outVal">Risultato</label>
+        <input type="text" id="outVal" readonly class="readonly">
+        <select id="outUnit" aria-label="Unità di arrivo" style="margin-top:8px"></select>
+      </div>
+    </div>
+    <div class="out"></div>
+    <p class="factor" id="factor"></p>
+    <p class="note">I calcoli vengono eseguiti con alta precisione; il risultato è arrotondato in modo sensato (valori molto grandi/piccoli in notazione scientifica). Le temperature usano le formule di offset corrette (p.&nbsp;es. °C ↔ °F ↔ K). Tutto è locale, nessun caricamento.</p>
+  </section>
+  <div class="cta"><strong>Altri strumenti</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">per la vita quotidiana &amp; l'ufficio.</p>
+    <p><a class="btn" href="/it/prozent-rechner.html">Calcolatrice percentuale</a>
+      <a class="btn ghost" href="/it/seitenverhaeltnis-rechner.html">Rapporto d'aspetto</a>
+      <a class="btn ghost" href="/it/online-tools.html">Tutti gli strumenti</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Lo hai trovato utile? 5 minuti di IA senza l'hype — ogni giorno feriale.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news è la newsletter IA per gli autonomi: breve, onesta, senza bingo di parole alla moda. Gratuita, disiscrizione in qualsiasi momento.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Iscriviti alla newsletter gratuita →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/it/prozent-rechner.html">Calcolatrice percentuale</a> · <a href="/it/seitenverhaeltnis-rechner.html">Rapporto d'aspetto</a> ·
+  <a href="/it/ki-werkzeug.html">Strumento IA</a> &middot; <a href="/it/online-tools.html">Tutti gli strumenti</a> &middot; <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  // Each category: units map name->factor relative to a base unit (base factor=1).
+  // Temperature is special (offset), handled separately.
+  var CATS=[
+    {id:"laenge",label:"Lunghezza",base:"m",units:[
+      ["Millimetro (mm)",0.001],["Centimetro (cm)",0.01],["Metro (m)",1],["Chilometro (km)",1000],
+      ["Pollice (in)",0.0254],["Piede (ft)",0.3048],["Yard (yd)",0.9144],["Miglio (mi)",1609.344],["Miglio nautico (nmi)",1852]]},
+    {id:"gewicht",label:"Peso",base:"kg",units:[
+      ["Milligrammo (mg)",0.000001],["Grammo (g)",0.001],["Chilogrammo (kg)",1],["Tonnellata (t)",1000],
+      ["Oncia (oz)",0.0283495231],["Libbra (lb)",0.45359237]]},
+    {id:"temperatur",label:"Temperatura",base:"C",temp:true,units:[
+      ["Celsius (°C)","C"],["Fahrenheit (°F)","F"],["Kelvin (K)","K"]]},
+    {id:"flaeche",label:"Area",base:"m2",units:[
+      ["Metro quadro (m²)",1],["Centimetro quadro (cm²)",0.0001],["Chilometro quadro (km²)",1000000],
+      ["Ettaro (ha)",10000],["Ara (a)",100],["Piede quadro (ft²)",0.09290304],["Acro",4046.8564224]]},
+    {id:"volumen",label:"Volume",base:"l",units:[
+      ["Millilitro (ml)",0.001],["Litro (l)",1],["Metro cubo (m³)",1000],
+      ["Cucchiaino (tsp)",0.00492892159],["Cucchiaio (tbsp)",0.0147867648],
+      ["Tazza (cup)",0.2365882365],["Gallone US (gal)",3.785411784]]},
+    {id:"tempo",label:"Velocità",base:"mps",units:[
+      ["Metro/secondo (m/s)",1],["Chilometro/ora (km/h)",0.277777778],
+      ["Miglia/ora (mph)",0.44704],["Nodo (kn)",0.514444444]]},
+    {id:"daten",label:"Dati",base:"byte",units:[
+      ["Bit",0.125],["Byte (B)",1],["Kilobyte (KB)",1000],["Megabyte (MB)",1000000],
+      ["Gigabyte (GB)",1000000000],["Terabyte (TB)",1000000000000],
+      ["Kibibyte (KiB)",1024],["Mebibyte (MiB)",1048576],["Gibibyte (GiB)",1073741824]]}
+  ];
+  var catsBox=document.getElementById("cats"),inVal=document.getElementById("inVal"),outVal=document.getElementById("outVal"),
+      inUnit=document.getElementById("inUnit"),outUnit=document.getElementById("outUnit"),factor=document.getElementById("factor");
+  var cur=CATS[0];
+  function tempTo(v,from,to){ // convert via Celsius
+    var c=from==="C"?v:from==="F"?(v-32)*5/9:v-273.15;
+    return to==="C"?c:to==="F"?c*9/5+32:c+273.15;
+  }
+  function fmt(x){
+    if(!isFinite(x))return "—";
+    if(x===0)return "0";
+    var a=Math.abs(x);
+    if(a>=1e15||a<1e-6)return x.toExponential(6).replace(/\.?0+e/,"e");
+    var r=Math.round(x*1e6)/1e6;
+    return String(r);
+  }
+  function fillUnits(){
+    inUnit.innerHTML="";outUnit.innerHTML="";
+    cur.units.forEach(function(u,i){
+      var o1=document.createElement("option");o1.value=i;o1.textContent=u[0];inUnit.appendChild(o1);
+      var o2=document.createElement("option");o2.value=i;o2.textContent=u[0];outUnit.appendChild(o2);
+    });
+    inUnit.value=0;outUnit.value=cur.units.length>1?1:0;
+  }
+  function convert(){
+    var v=parseFloat(inVal.value);
+    if(isNaN(v)){outVal.value="";factor.textContent="";return;}
+    var i=parseInt(inUnit.value,10)||0,j=parseInt(outUnit.value,10)||0;
+    var res;
+    if(cur.temp){res=tempTo(v,cur.units[i][1],cur.units[j][1]);}
+    else{var base=v*cur.units[i][1];res=base/cur.units[j][1];}
+    outVal.value=fmt(res);
+    if(cur.temp||i===j){factor.textContent="";}
+    else{var one=cur.units[i][1]/cur.units[j][1];
+      factor.textContent="1 "+stripName(cur.units[i][0])+" = "+fmt(one)+" "+stripName(cur.units[j][0]);}
+  }
+  function stripName(n){var m=n.match(/\(([^)]+)\)/);return m?m[1]:n;}
+  function selectCat(c){
+    cur=c;
+    Array.prototype.forEach.call(catsBox.children,function(b){b.setAttribute("aria-pressed",b.getAttribute("data-id")===c.id?"true":"false");});
+    fillUnits();convert();
+  }
+  CATS.forEach(function(c){
+    var b=document.createElement("button");b.type="button";b.className="cat";b.textContent=c.label;
+    b.setAttribute("data-id",c.id);b.setAttribute("aria-pressed",c===cur?"true":"false");
+    b.addEventListener("click",function(){selectCat(c);});
+    catsBox.appendChild(b);
+  });
+  document.getElementById("swap").addEventListener("click",function(){
+    var t=inUnit.value;inUnit.value=outUnit.value;outUnit.value=t;
+    // keep the displayed result by moving it into the input if numeric
+    var r=parseFloat(outVal.value);if(!isNaN(r)&&isFinite(r))inVal.value=fmt(r);
+    convert();
+  });
+  [inVal,inUnit,outUnit].forEach(function(e){e.addEventListener("input",convert);e.addEventListener("change",convert);});
+  fillUnits();convert();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
