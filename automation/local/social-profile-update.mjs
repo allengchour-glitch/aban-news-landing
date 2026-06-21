@@ -29,10 +29,10 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const IG_BIO = `🇨🇭 Schweizer Online-Shop für Premium-Looks
 ✨ Mode · Schmuck · Uhren — fair & schnell
-🚚 Gratis ab CHF 49 · TWINT · 30 Tage Rückgab
+🚚 Gratis ab CHF 65 · TWINT · 30 Tage Rückgabe
 👇 –10 % mit Code WELCOME10`;
 const TT_BIO = `🇨🇭 Premium Mode·Schmuck·Uhren
-Fair & schnell · –10% WELCOME10 👇`;
+Gratis ab CHF 65 · –10% WELCOME10 👇`;
 const SITE = 'https://luxestyle.ch';
 
 // --- Playwright-Fallback-Helfer (wenn Stagehand fehlt) ---
