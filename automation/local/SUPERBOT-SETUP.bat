@@ -107,4 +107,8 @@ echo   - Meta IG/FB laeuft separat ueber den Cloud-Worker (6x/Tag)
 echo.
 echo  Voraussetzung: luxe-secrets.ps1 mit TT_*-Tokens (nach OAuth/Audit) +
 echo  Brave-Profil 'brave-agent' bei TikTok/IG eingeloggt (fuer Browser-Backup).
-pause
+echo.
+echo [7/7] Starte CLOUD-AN (Dauer-Poller, selbstheilend) - damit der Kanal SOFORT laeuft...
+start "LuxeStyle CLOUD-AN" /min cmd /c "%DIR%CLOUD-AN.bat"
+echo  -^> CLOUD-AN laeuft jetzt im Hintergrund. Cloud-Befehle werden alle 2 Min ausgefuehrt.
+timeout /t 5 >nul
