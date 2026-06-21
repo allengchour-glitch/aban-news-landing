@@ -24,13 +24,22 @@ export async function aiBrowser({ cdp = CDP } = {}) {
     const mod = await import('@browserbasehq/stagehand').catch((e) => { lastInitError = 'import: ' + String(e).slice(0, 120); return null; });
     if (mod && (mod.Stagehand || mod.default)) {
       const Stagehand = mod.Stagehand || mod.default;
+      // CDP-WS-Adresse aufloesen: Stagehand baut aus http://...:9222 sonst eine falsche WS-URL -> 404.
+      // Brave/Chrome liefern unter /json/version die echte webSocketDebuggerUrl (ws://...).
+      let cdpUrl = cdp;
+      try {
+        const base = cdp.replace(/\/$/, '');
+        const r = await fetch(base + '/json/version');
+        const j = await r.json();
+        if (j && j.webSocketDebuggerUrl) { cdpUrl = j.webSocketDebuggerUrl; console.log('CDP-WS aufgeloest: ' + cdpUrl); }
+      } catch (e) { console.log('CDP /json/version nicht erreichbar (' + String(e).slice(0, 50) + ') -> nutze ' + cdp); }
       const candidates = [];
       if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'google/gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
       if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
       if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
       for (const c of candidates) {
         try {
-          const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl: cdp }, modelName: c.modelName,
+          const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl }, modelName: c.modelName,
             modelClientOptions: { apiKey: c.apiKey }, verbose: 0 });
           await sh.init();
           const page = sh.page;
