@@ -1,6 +1,7 @@
-# FB-Gruppen zum Beitreten + langsam posten (eine Gruppen-URL pro Zeile, # = Kommentar).
-# Empfohlen: CH-Verkaufs-/Flohmarkt-Gruppen + Nischen (Mode/Schmuck) die Verkauf ERLAUBEN (sonst Ban).
-# Such auf FB nach: "Flohmarkt Schweiz", "Kaufen Verkaufen Schweiz", "Kleinanzeigen Schweiz",
-# "Schweizer Mode", "Schmuck Schweiz", "Secondhand Schweiz" -> Gruppe oeffnen -> URL hier einfuegen.
-# Beispiel-Format (deine echten URLs eintragen):
-# https://www.facebook.com/groups/123456789012345
+# FB-Gruppen (CH-Verkauf, selbst recherchiert 2026-06-21) - eine URL pro Zeile. fb-join tritt langsam bei.
+# Alle erlauben Privatverkauf/Inserate (passend fuer LuxeStyle). Ban-Schutz: max 2/Tag, lange Pausen.
+https://www.facebook.com/groups/flohmarkt.kleinanzeigen.schweiz/
+https://www.facebook.com/groups/745872872112110/
+https://www.facebook.com/groups/1616210281941537/
+https://www.facebook.com/groups/287672258087520/
+https://www.facebook.com/groups/schweizgratisinserate/
