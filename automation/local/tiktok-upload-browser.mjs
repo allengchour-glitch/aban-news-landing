@@ -94,7 +94,7 @@ function smartCaption(slug) {
   else if (/roller|gua|sha|serum|creme|beauty|lifting|maske/.test(low)) { emoji = '✨'; tag = '#skincareschweiz'; }
   else if (/ventilator|diffuser|gadget|lampe|projektor/.test(low)) { emoji = '🌬️'; tag = '#gadget'; }
   else if (/blazer|hemd|set|weste|hose|kleid|strick|stola|schal|shirt|polo/.test(low)) { emoji = '🧥'; tag = '#ootdschweiz'; }
-  return `${name} ${emoji} entdeck's im Schwiizer Shop. Gratis-Versand ab CHF 49 · –10% mit WELCOME10 → luxestyle.ch\n${tag} #ootdschweiz #swissmade #fyp #foryou`;
+  return `${name} ${emoji} entdeck's im Schwiizer Shop. Gratis-Versand ab CHF 65 · –10% mit WELCOME10 → luxestyle.ch\n${tag} #ootdschweiz #swissmade #fyp #foryou`;
 }
 // TikTok-Sound-Regel (FEST): Reels STUMM hochladen → User legt Trend-Sound in der App drauf.
 // Macht eine tonlose Kopie (kein Re-Encode des Bilds = schnell, verlustfrei). Fallback = Original.
@@ -128,7 +128,7 @@ function toSilent(file) {
   const slug = path.basename(file).replace('.mp4', '');
   let caption = captionFromQueue(file) || CAPS[slug] || smartCaption(slug);
   // Trust-Winkel (Recherche „Vertrauen VOR Verkauf"): ~jeder 3. Reel kriegt eine WAHRE Trust-Zeile.
-  const TRUST_TT = ['🇨🇭 Schweizer Shop · TWINT · 30 Tage Rückgab · gratis ab CHF 49', '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand'];
+  const TRUST_TT = ['🇨🇭 Schweizer Shop · TWINT · 30 Tage Rückgab · gratis ab CHF 65', '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand'];
   const h = [...slug].reduce((a, c) => a + c.charCodeAt(0), 0);
   if (h % 3 === 0 && !/Schweizer Shop|TWINT/.test(caption)) caption += `\n${TRUST_TT[h % TRUST_TT.length]}`;
   log(`Reel: ${path.basename(file)} ${DRY ? '(DRY)' : ''}`);

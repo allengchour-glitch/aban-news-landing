@@ -56,7 +56,7 @@ for(const n of names){
   const tags=['printful_personalized_product','fertig-sticker','sticker','aufkleber',th]; if(th==='schweiz') tags.push('schweiz-edition');
   const input={ title, handle:'pod-sticker-'+n, productType:'Sticker', vendor:'LuxeStyle', status:'ACTIVE',
     descriptionHtml:`<p><strong>«${name}»</strong> als wetterfester Vinyl-Sticker – kratz- &amp; UV-beständig, perfekt für Laptop, Flasche, Handy, Auto &amp; mehr. On-demand in Europa gedruckt. 🇨🇭 LuxeStyle · Thema: ${THEME_DE[th]||th}.</p><ul><li>Wetterfestes Kiss-Cut-Vinyl</li><li>3 Grössen (7,6–14 cm)</li><li>Starke Farben, langlebig</li></ul>`,
-    seo:{ title:`Sticker «${name}» – wetterfest & UV-beständig | LuxeStyle`, description:`Vinyl-Sticker «${name}» (${THEME_DE[th]||th}), wetterfest & kratzfest, 3 Grössen. In Europa gedruckt. Gratis-Versand ab CHF 49.` },
+    seo:{ title:`Sticker «${name}» – wetterfest & UV-beständig | LuxeStyle`, description:`Vinyl-Sticker «${name}» (${THEME_DE[th]||th}), wetterfest & kratzfest, 3 Grössen. In Europa gedruckt. Gratis-Versand ab CHF 65.` },
     tags,
     productOptions:[{name:'Grösse', values:SIZES.map(s=>({name:s[0]}))}],
     variants:SIZES.map(s=>({ optionValues:[{optionName:'Grösse',name:s[0]}], price:s[2], sku:`${PREFIX}_${s[1]}`, inventoryPolicy:'CONTINUE' })),

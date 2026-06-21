@@ -25,15 +25,16 @@ async function gql(tok, query, variables) {
   const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query, variables }) });
   return r.json();
 }
-// NUR die Versand-Schwelle ersetzen (kein blindes 65->49). Deckt CHF 65 / CHF65 / "65 Franken" im Versandkontext ab.
+// KORRIGIERT 2026-06-21: dieses Skript setzte FAELSCHLICH 65->49 (alte falsche Schwelle) und brach den
+// echten Wert immer wieder zurueck. Echte Versand-Schwelle = CHF 65. Jetzt korrigierend: 49 -> 65.
 function fixText(html) {
   if (!html) return null;
   let out = html
-    .replace(/ab CHF\s?65\b/g, 'ab CHF 49')
-    .replace(/over CHF\s?65\b/g, 'over CHF 49')
-    .replace(/gratis ab CHF\s?65\b/gi, (m) => m.replace('65', '49'))
-    .replace(/Gratis-?Versand ab CHF\s?65\b/g, (m) => m.replace('65', '49'))
-    .replace(/65 Franken/g, '49 Franken');
+    .replace(/ab CHF\s?49(?!\d)(?!\.\d)/g, 'ab CHF 65')
+    .replace(/over CHF\s?49(?!\d)(?!\.\d)/g, 'over CHF 65')
+    .replace(/gratis ab CHF\s?49(?!\d)(?!\.\d)/gi, (m) => m.replace('49', '65'))
+    .replace(/Gratis-?Versand ab CHF\s?49(?!\d)(?!\.\d)/g, (m) => m.replace('49', '65'))
+    .replace(/49 Franken/g, '65 Franken');
   return out !== html ? out : null;
 }
 (async () => {

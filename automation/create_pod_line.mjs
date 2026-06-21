@@ -99,7 +99,7 @@ for(const n of names){
   const tags=['printful_personalized_product',`fertig-${TYPE}`,...CFG.tags]; if(th==='schweiz') tags.push('schweiz-edition');
   const input={ title, handle:`${CFG.prefix}-`+n.replace(/^ch-/,''), productType:CFG.pt, vendor:'LuxeStyle', status:'ACTIVE',
     descriptionHtml:`<p><strong>${CFG.blurb(name)}</strong></p><ul>${CFG.bullets.map(b=>`<li>${b}</li>`).join('')}</ul><p>🇨🇭 On-demand in Europa gedruckt · LuxeStyle</p>`,
-    seo:{ title:`${CFG.pt} «${name}» | LuxeStyle`, description:`${CFG.pt} mit Motiv «${name}». In Europa gedruckt, Premium-Qualität. Gratis-Versand ab CHF 49.` },
+    seo:{ title:`${CFG.pt} «${name}» | LuxeStyle`, description:`${CFG.pt} mit Motiv «${name}». In Europa gedruckt, Premium-Qualität. Gratis-Versand ab CHF 65.` },
     tags,
     productOptions:[{name:CFG.opt, values:CFG.sizes.map(s=>({name:s[0]}))}],
     variants:CFG.sizes.map(s=>({ optionValues:[{optionName:CFG.opt,name:s[0]}], price:s[2], sku:`${PREFIX}_${s[1]}`, inventoryPolicy:'CONTINUE' })),

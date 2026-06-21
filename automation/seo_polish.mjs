@@ -23,7 +23,7 @@ async function gql(tok, query, variables) {
 function seoDesc(p) {
   const t = p.title.length > 60 ? p.title.slice(0, 60) : p.title;
   const v = p.vendor && !t.includes(p.vendor) ? `${p.vendor} ` : '';
-  let s = `${t} – ${v}jetzt im Schweizer Shop LuxeStyle. Gratis Versand ab CHF 49, 30 Tage Rückgabe, TWINT & Karte. –10% mit WELCOME10.`;
+  let s = `${t} – ${v}jetzt im Schweizer Shop LuxeStyle. Gratis Versand ab CHF 65, 30 Tage Rückgabe, TWINT & Karte. –10% mit WELCOME10.`;
   return s.slice(0, 160);
 }
 (async () => {

@@ -23,7 +23,7 @@ const STATE = path.join(ROOT,'social','replied-dms.json');
 const loadState=()=>{try{return new Set(JSON.parse(fs.readFileSync(STATE,'utf8')))}catch{return new Set()}};
 const saveState=s=>{try{fs.mkdirSync(path.dirname(STATE),{recursive:true});fs.writeFileSync(STATE,JSON.stringify([...s].slice(-2000)))}catch(e){console.error(e.message)}};
 
-// Themen-Erkennung (Reihenfolge = Priorität). Ehrliche Angaben: gratis ab CHF 49, 30 Tage Rückgabe, weltweiter Versand 8–14 Tage.
+// Themen-Erkennung (Reihenfolge = Priorität). Ehrliche Angaben: gratis ab CHF 65, 30 Tage Rückgabe, weltweiter Versand 8–14 Tage.
 const TOPIC=[
   ['retoure',/rückgabe|ruckgabe|retoure|umtausch|zurückschick|zuruckschick|garantie|reklamation|defekt|kaputt/i],
   ['bestellung',/bestellnummer|tracking|sendungs|wo ist mein|wo bleibt|status.*bestell|order|nicht erhalten|noch nicht.*ange/i],
@@ -37,7 +37,7 @@ const TOPIC=[
 const REPLIES={
   retoure:'Kein Stress 🤍 Du hast 30 Tage Rückgaberecht. Schreib uns einfach deine Bestellnummer, wir helfen dir sofort weiter ✨',
   bestellung:'Hey! 📦 Gib uns kurz deine Bestellnummer durch, dann checken wir den Status. Versand weltweit dauert i. d. R. 8–14 Tage 🤍',
-  versand:'Hey! 🤍 Versand weltweit, gratis ab CHF 49 (Schweiz) — Lieferzeit meist 8–14 Tage. Alle Infos auf luxestyle.ch ✨',
+  versand:'Hey! 🤍 Versand weltweit, gratis ab CHF 65 (Schweiz) — Lieferzeit meist 8–14 Tage. Alle Infos auf luxestyle.ch ✨',
   groesse:'Hi! 👗 Die genaue Grössentabelle (in cm) steht direkt beim Produkt auf luxestyle.ch — sag uns sonst gern, welches Teil, wir helfen beim Finden! 🤍',
   design:'So cool, dass dich «Selbst gestalten» interessiert 🎨 Auf luxestyle.ch machst du dein eigenes Design auf Shirt, Hoodie, Täsche oder Tasse — ohne Mindestmenge ✨',
   preis:'Hey! 💛 Mit Code WELCOME10 gibt’s –10% auf alles auf luxestyle.ch. Bezahlen bequem per Karte, TWINT & mehr ✨',

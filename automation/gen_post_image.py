@@ -51,7 +51,7 @@ QUEUE_COLS = ["id", "scheduled_date", "image_url", "caption", "platforms", "stat
 
 CAPTIONS = [
     "Designer-Look zum fairen Preis 👀 {label} bei LuxeStyle. Code WELCOME10 = -10% → luxestyle.ch",
-    "{label} ✨ Schweizer Shop · Gratis-Versand ab CHF 49 · -10% mit WELCOME10 → luxestyle.ch",
+    "{label} ✨ Schweizer Shop · Gratis-Versand ab CHF 65 · -10% mit WELCOME10 → luxestyle.ch",
     "Neu entdeckt: {label} 🤍 Jetzt mit Code WELCOME10 = -10% → luxestyle.ch",
     "Dein Sommer-Liebling? {label} 🌿 -10% mit WELCOME10 · 30 Tage Rückgabe → luxestyle.ch",
     "{label} — premium & bezahlbar. Code WELCOME10 = -10% → luxestyle.ch",

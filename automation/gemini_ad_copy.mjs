@@ -32,8 +32,8 @@ const FALLBACK = {
     hook_en: 'Designer looks. Fair prices.',
     vo_de: 'Das ist LuxeStyle. Premium-Mode aus der Schweiz, Designer-Looks zu fairen Preisen. Kleider, Taschen und Accessoires fuer deinen Sommer. Gratis Versand ab fuenfundsechzig Franken. Jetzt shoppen, auf luxestyle punkt c h.',
     vo_en: 'This is LuxeStyle. Premium Swiss fashion, designer looks at fair prices. Dresses, bags and accessories for your summer. Free shipping over sixty-five francs. Shop now, at luxestyle dot c h.',
-    steps_de: ['Schweizer Shop', 'Gratis-Versand ab CHF 49', '-10% mit WELCOME10'],
-    steps_en: ['Swiss shop', 'Free shipping over CHF 49', '-10% with WELCOME10'],
+    steps_de: ['Schweizer Shop', 'Gratis-Versand ab CHF 65', '-10% mit WELCOME10'],
+    steps_en: ['Swiss shop', 'Free shipping over CHF 65', '-10% with WELCOME10'],
   },
 };
 const fb = FALLBACK[CONCEPT] || FALLBACK.print;
@@ -44,7 +44,7 @@ if (!KEY) { process.stderr.write('Kein GEMINI_API_KEY → Fallback-Copy.\n'); ou
 
 const BRIEF = CONCEPT === 'print'
   ? 'Beworben wird der LuxeStyle-Print-on-Demand-Service: Kund:innen gestalten ihr eigenes T-Shirt, Hoodie, Jutebeutel oder Tasse mit eigenem Spruch/Motiv/Logo. On-demand gedruckt, kein Lager, keine Mindestmenge. Schweizer Shop luxestyle.ch.'
-  : 'Beworben wird der LuxeStyle-Fashion-Shop (Schweiz): Premium-Mode, Kleider/Taschen/Accessoires, faire Preise, Gratis-Versand ab CHF 49, Code WELCOME10 = -10%. luxestyle.ch.';
+  : 'Beworben wird der LuxeStyle-Fashion-Shop (Schweiz): Premium-Mode, Kleider/Taschen/Accessoires, faire Preise, Gratis-Versand ab CHF 65, Code WELCOME10 = -10%. luxestyle.ch.';
 
 const PROMPT = `Du bist ein preisgekrönter Werbetexter für kurze Social-Video-Ads (TikTok/Reels, 9:16, ~20 Sekunden).
 ${BRIEF}

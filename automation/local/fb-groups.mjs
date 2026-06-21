@@ -35,7 +35,7 @@ const writeStatus = o => { try { fs.mkdirSync(path.dirname(STATUS), { recursive:
 // Native CH-Captions (kein Werbe-Spam) — Produkt + Mundart + Link. Wird rotiert.
 const CAPTIONS = [
   'Sali zäme 👋 Schweizer Shop für Mode, Schmuck & Uhren — fair & schnell gliferet. Luege: luxestyle.ch (–10% mit WELCOME10)',
-  'Neu entdeckt: LuxeStyle.ch 🇨🇭 Premium-Looks zu fairen Priisen. TWINT, gratis ab CHF 49, 30 Täg Rückgab. Schaut verbi 😊',
+  'Neu entdeckt: LuxeStyle.ch 🇨🇭 Premium-Looks zu fairen Priisen. TWINT, gratis ab CHF 65, 30 Täg Rückgab. Schaut verbi 😊',
 ];
 
 (async () => {
