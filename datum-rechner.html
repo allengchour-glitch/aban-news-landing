@@ -158,9 +158,15 @@ footer a{color:var(--muted)}
     var totalDays=abs+(abs>=0&&incl.checked?1:0);
     // calendar breakdown y/m/d between the two dates (absolute)
     var lo=raw<0?b:a,hi=raw<0?a:b;
-    var y=hi.getUTCFullYear()-lo.getUTCFullYear(),m=hi.getUTCMonth()-lo.getUTCMonth(),dd=hi.getUTCDate()-lo.getUTCDate();
-    if(dd<0){m--;var pm=new Date(Date.UTC(hi.getUTCFullYear(),hi.getUTCMonth(),0));dd+=pm.getUTCDate();}
-    if(m<0){m+=12;y--;}
+    // calendar breakdown: lo + N whole months (day clamped to month length) = anchor, then remaining days to hi
+    var totMon=(hi.getUTCFullYear()-lo.getUTCFullYear())*12+(hi.getUTCMonth()-lo.getUTCMonth());
+    function anchorOf(n){var t=new Date(Date.UTC(lo.getUTCFullYear(),lo.getUTCMonth()+n,1));
+      var last=new Date(Date.UTC(t.getUTCFullYear(),t.getUTCMonth()+1,0)).getUTCDate();
+      var day=lo.getUTCDate();if(day>last)day=last;
+      return new Date(Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),day));}
+    var anc=anchorOf(totMon);if(anc>hi){totMon--;anc=anchorOf(totMon);}
+    var dd=Math.round((hi-anc)/ms);
+    var y=Math.floor(totMon/12),m=totMon%12;
     var wExact=Math.floor(abs/7),wRest=abs%7;
     var lo2=raw<0?b:a,hi2=raw<0?a:b;
     var wdys=workdays(lo2,new Date(+hi2+(incl.checked?ms:0)));
