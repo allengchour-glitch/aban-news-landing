@@ -175,6 +175,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     </div>
     <div id="savedbar"></div>
     <div id="chips" hidden style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px"></div>
+    <div id="immoDemoNote" hidden style="background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:10px;padding:10px 13px;margin-bottom:12px;font-size:.88rem">🏠 <b>Beispiel-Immobilien</b> — so sieht's aus. Echte Inserate erscheinen hier, sobald Leute inserieren. <a href="/inserat-aufgeben.html" style="color:#92400e;font-weight:700">Eigene Immobilie kostenlos inserieren →</a></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
   </section>
@@ -196,12 +197,28 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   var $=function(s){return document.querySelector(s)};
   var grid=$("#grid"),statusEl=$("#status"),cntEl=$("#cnt"),sidebar=$("#sidebar"),sheetbg=$("#sheetbg");
   var curArt="",curModus="",raw=[];
+  // Schweizer Beispiel-Immobilien (Fallback, solange keine echten Inserate da sind). Klar als Beispiel markiert.
+  var DEMO=[
+    {kat:"Mietwohnung",titel:"3.5-Zimmer-Wohnung mit Balkon",preis:"CHF 1'890.–/Mt",ort:"Bern",plz:"3000",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Helle 3.5-Zimmer-Wohnung, 82 m², Südbalkon, ÖV in 3 Min. Bezug per sofort."},
+    {kat:"Mietwohnung",titel:"2.5-Zimmer-Wohnung modern",preis:"CHF 1'490.–/Mt",ort:"Zürich",plz:"8004",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Moderne 2.5-Zimmer-Wohnung, 58 m², neue Küche, Lift. Zentrale Lage."},
+    {kat:"Mietwohnung",titel:"4.5-Zimmer-Wohnung mit Garten",preis:"CHF 2'350.–/Mt",ort:"Luzern",plz:"6003",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Geräumige 4.5-Zimmer-Wohnung, 110 m², eigener Gartensitzplatz, ruhig."},
+    {kat:"Wohnung kaufen",titel:"3.5-Zimmer-Eigentumswohnung",preis:"CHF 695'000.–",ort:"St. Gallen",plz:"9000",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Eigentumswohnung 3.5 Zimmer, 95 m², Balkon, Garage. Top unterhalten."},
+    {kat:"Wohnung kaufen",titel:"4.5-Zimmer-Attikawohnung",preis:"CHF 1'150'000.–",ort:"Zug",plz:"6300",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Attika 4.5 Zimmer, 128 m², grosse Terrasse, Seeblick. Hochwertig."},
+    {kat:"Haus",titel:"5.5-Zimmer-Einfamilienhaus",preis:"CHF 1'290'000.–",ort:"Aarau",plz:"5000",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Einfamilienhaus 5.5 Zimmer, 160 m² Wohnfläche, Garten, Doppelgarage."},
+    {kat:"Haus",titel:"Reihenhaus mit Garten",preis:"CHF 2'600.–/Mt",ort:"Winterthur",plz:"8400",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Reihenhaus 4.5 Zimmer, 120 m², kinderfreundlich, Quartier ruhig."},
+    {kat:"WG-Zimmer",titel:"Möbliertes WG-Zimmer",preis:"CHF 720.–/Mt",ort:"Lausanne",plz:"1003",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Möbliertes Zimmer, 18 m², in 3er-WG, zentral, ab nächstem Monat frei."},
+    {kat:"WG-Zimmer",titel:"WG-Zimmer in Altbau",preis:"CHF 650.–/Mt",ort:"Basel",plz:"4051",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Helles Zimmer, 20 m², Altbau mit Parkett, nette Mitbewohner."},
+    {kat:"Gewerbe / Büro",titel:"Bürofläche im Zentrum",preis:"CHF 2'200.–/Mt",ort:"Zürich",plz:"8001",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Büro 75 m², 3 Räume, Glasfaser, ÖV vor der Tür. Sofort beziehbar."},
+    {kat:"Parkplatz / Garage",titel:"Tiefgaragen-Parkplatz",preis:"CHF 160.–/Mt",ort:"Bern",plz:"3008",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Trockener Einstellplatz in Tiefgarage, gut erreichbar, ab sofort."},
+    {kat:"Mietwohnung",titel:"1.5-Zimmer-Studio möbliert",preis:"CHF 1'150.–/Mt",ort:"Genf",plz:"1201",typ:"Angebot",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Möbliertes Studio, 32 m², ideal für Pendler, inkl. Nebenkosten."},
+    {kat:"Mietwohnung",titel:"Suche 3-4 Zimmer Familie",preis:"",ort:"Thun",plz:"3600",typ:"Gesuch",kontakt:"beispiel@aban.ch",demo:1,beschreibung:"Ruhige Familie sucht 3.5- bis 4.5-Zimmer-Wohnung, ca. 90 m², ab Herbst."}
+  ];
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function skeleton(){grid.innerHTML=Array(7).join().split(",").map(function(){return '<div class="skl"><div class="ph"></div><div class="ln" style="width:80%"></div><div class="ln" style="width:50%"></div><div class="ln" style="width:92%"></div></div>'}).join("");statusEl.hidden=true;}
   // Schweizer Preis (CHF) aus Freitext: "CHF 1'850.–", "1850.-", "Fr. 2'400" -> 1850 / 2400
   function chfNum(p){var s=String(p||"").replace(/['’\s]/g,"");var m=s.match(/(\d{2,})(?:[.,]\-)?/);return m?parseInt(m[1],10):NaN}
   // Zimmerzahl aus Titel/Beschreibung: "3.5 Zimmer", "4 Zi", "2½"
-  function roomsOf(it){var h=(String(it.titel||"")+" "+String(it.beschreibung||"")).replace("½",".5");var m=h.match(/(\d(?:[.,]5)?)\s*(?:zimmer|zi\b|zhl|zw\b)/i);return m?parseFloat(m[1].replace(",",".")):NaN}
+  function roomsOf(it){var h=(String(it.titel||"")+" "+String(it.beschreibung||"")).replace("½",".5");var m=h.match(/(\d(?:[.,]5)?)[\s-]*(?:zimmer|zi\b|zhl|zw\b)/i);return m?parseFloat(m[1].replace(",",".")):NaN}
   // Wohnfläche (m²) aus Titel/Beschreibung: "85 m²", "120m2", "60 qm"
   function m2Of(it){var h=String(it.titel||"")+" "+String(it.beschreibung||"");var m=h.match(/(\d{2,4})\s*(?:m²|m2|m\^2|qm|quadratmeter)/i);return m?parseInt(m[1],10):NaN}
   $("#cats").innerHTML=ARTEN.map(function(c,i){return '<label class="opt"><input type="radio" name="art" value="'+esc(c[1])+'"'+(i===0?' checked':'')+'>'+esc(c[0])+'</label>'}).join("");
@@ -310,7 +327,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     var q=($("#q").value.trim()+" "+curArt+" "+curModus).trim();
     cntEl.textContent="Lade …";skeleton();
     fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent("Immobilien")).then(function(r){return r.json()}).then(function(d){
-      if(d.demo){grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="<div style=\"max-width:440px;margin:0 auto;text-align:center\"><div style=\"font-size:2rem\">🏠</div><h3 style=\"margin:.3rem 0;color:#1f2937\">Noch keine Immobilien — sei der/die Erste!</h3><p style=\"color:#6b7280;margin-bottom:14px\">Dieser Bereich ist neu. Inseriere deine Wohnung, dein Haus oder WG-Zimmer kostenlos — oder stöbere solange in den Bereichen mit Live-Angeboten.</p><a href=\"/inserat-aufgeben.html\" style=\"display:inline-block;background:#b45309;color:#fff;border-radius:22px;padding:11px 22px;font-weight:800;text-decoration:none\">+ Kostenlos inserieren</a><p style=\"margin-top:14px;font-size:.9rem\">Live stöbern: <a href=\"/auto-suche.html\">🚗 Auto</a> · <a href=\"/angebote-suche.html\">🛍️ Angebote</a> · <a href=\"/stellenangebote.html\">💼 Jobs</a></p></div>";cntEl.textContent="";return}
+      var note=document.getElementById("immoDemoNote");
+      if(d.demo){if(note)note.hidden=false;raw=DEMO;render(raw);return}
+      if(note)note.hidden=true;
       raw=d.items||[];render(raw);
     }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""});
   }
