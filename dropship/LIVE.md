@@ -27,8 +27,10 @@ dokumentiert; PC-Kanal bleibt der Weg (bei Einfrieren = 1 SUPERBOT-Klick).
 
 ## 📊 Frische Zahlen (7T, 2026-06-21)
 1275 Sessions · 9 ATC (0,7 %) · 8 erreichten Checkout · **1 abgeschlossen = 1 Verkauf** (Funnel bewiesen).
-→ Bottleneck: **Checkout-Abschluss** (8→1, 7 brechen am letzten Schritt ab) + **zu wenig Kauf-Intent-Traffic**
-(Pixel-Kampagne, hängt am PC-Browser). Hebel unverändert: Buy-Intent-Traffic + Checkout-Completion.
+**KORREKTUR (via abandonedCheckouts-API):** die 7 jüngsten abgebrochenen Checkouts sind ALLE deine
+Test-Mail `alleng0@hotmail.com` → der „Checkout-Leak" ist test-kontaminiert, **nicht** echte Absprünge.
+Checkout funktioniert. → **Echter Hebel #1 = Buy-Intent-Traffic** (Pixel-Kampagne, hängt am PC) +
+**Google-Listings/Search** (bester Kanal). Checkout-CRO ist NICHT der Engpass.
 
 ## 🔄 In der Queue (laufen autonom über CLOUD-AN, sobald Kanal frei)
 | Befehl | Macht |
