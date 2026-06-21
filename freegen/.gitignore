@@ -4,4 +4,4 @@ hubs/
 *.mp4
 script.json
 .bot-done.txt
-captions.md
+captions*.md
