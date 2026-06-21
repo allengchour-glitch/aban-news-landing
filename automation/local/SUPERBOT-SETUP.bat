@@ -50,6 +50,8 @@ REM SEO-Meta in Batches (taeglich, idempotent - fuellt die ~2900 leeren nach und
 schtasks /create /f /tn "LuxeSEO" /sc daily /st 04:30 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"cd '%REPO%'; . $env:USERPROFILE\luxe-secrets.ps1; $env:MAX=200; node automation/seo_polish.mjs\""
 REM PRODUKTE HOLEN (taeglich): BigBuy-Premium = bestes Markenmaterial, alle Kategorien, idempotent
 schtasks /create /f /tn "LuxeProducts" /sc daily /st 03:30 /tr "%PSF% \"%DIR%bigbuy-premium.ps1\""
+REM SELBST-CHECK (alle 6h, OHNE User): Posting-Live-Check gepostet/doppel/Fehler -> committet Report
+schtasks /create /f /tn "LuxeHealth" /sc hourly /mo 6 /tr "%PSF% \"%DIR%scheduled-health.ps1\""
 
 echo [4/6] Tasks duerfen PC wecken + aus Standby starten...
 for %%T in (LuxeUpdate LuxePost-10 LuxePost-19 LuxeEng-09 LuxeEng-12 LuxeEng-15 LuxeEng-21 LuxeAutobot-11 LuxeAutobot-18 LuxeCmd LuxeSEO LuxeProducts) do (

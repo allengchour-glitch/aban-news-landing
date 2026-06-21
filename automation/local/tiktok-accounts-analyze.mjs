@@ -76,7 +76,22 @@ const KNOWN = (process.env.TT_AADVIDS || '7643589765259493393,764634987579318273
         onboarding: /add business info|welcome to tiktok ads manager|select an industry/i.test(t),
       };
     }).catch(() => ({}));
-    result.accounts.push({ aadvid: id, screenshot: shotName, ...data });
+    const acct = { aadvid: id, screenshot: shotName, ...data };
+    // PIXEL/EVENTS-Seite des Kontos (User "pixel daten ausfuellen fuer alle Geld-Konten"): Status screenshotten
+    try {
+      await p.goto(`https://ads.tiktok.com/i18n/events_manager/web?aadvid=${id}`, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      await sleep(6000);
+      const pxShot = `acct-${String(i).padStart(2, '0')}-${id}-pixel.png`;
+      await p.screenshot({ path: path.join(SHOT, pxShot) }).catch(() => {});
+      acct.pixel = await p.evaluate(() => {
+        const t = (document.body.innerText || '');
+        return { hasD8EKVR: /D8EKVR/i.test(t), mentionsPixel: /pixel|ereignis|web event|datenquelle|data source/i.test(t),
+          text: t.replace(/\s+/g, ' ').slice(0, 220) };
+      }).catch(() => ({}));
+      acct.pixelScreenshot = pxShot;
+      log(`  Pixel-Seite ${id}: D8EKVR=${acct.pixel?.hasD8EKVR} pixelUI=${acct.pixel?.mentionsPixel}`);
+    } catch {}
+    result.accounts.push(acct);
     log(`Konto ${id}: balance=${data.balance || '?'} cost=${data.cost || '?'} onboarding=${data.onboarding}`);
     i++;
   }
