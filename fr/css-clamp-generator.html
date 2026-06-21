@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Générateur CSS clamp() · Typographie fluide · aban news</title>
+<meta name="description" content="Générateur CSS clamp() gratuit pour des tailles de police &amp; des espacements fluides : saisissez la taille min/max et les largeurs de viewport, copiez le code clamp() prêt à l'emploi avec la pente correcte. En local dans le navigateur, sans connexion.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/css-clamp-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/css-clamp-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/css-clamp-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/css-clamp-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/css-clamp-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/css-clamp-generator.html">
+<meta property="og:title" content="Générateur CSS clamp() (typographie fluide)">
+<meta property="og:description" content="Tailles de police fluides avec clamp() : saisissez min/max + viewports, copiez le code CSS correct. En local dans le navigateur.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/css-clamp-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Générateur CSS clamp()",
+"url":"https://abannews.com/fr/css-clamp-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Génère une valeur CSS clamp() fluide pour les tailles de police et les espacements à partir de la taille min/max et des largeurs de viewport.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+.fld{margin-bottom:4px}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.inunit{position:relative}
+.inunit input{width:100%;font-family:inherit;font-size:15px;padding:10px 42px 10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+.inunit input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.inunit .u{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem;pointer-events:none}
+.rootrow{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:.9rem;color:var(--ink2)}
+.rootrow input{width:70px;font-family:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+.outbar{display:flex;gap:8px;align-items:center;margin:16px 0 8px}
+.outbox pre{background:#1e1e1e;color:#e6e6e6;border-radius:10px;padding:14px;font-size:13.5px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace}
+.warn{color:var(--bad);font-weight:600;font-size:.88rem;margin-top:8px}
+.demo{margin-top:16px;border:1px dashed var(--line);border-radius:10px;padding:14px;background:var(--field)}
+.demo .t{color:var(--ink);font-weight:700;line-height:1.2}
+.demo .c{font-size:.8rem;color:var(--muted);margin-top:6px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Vers l'outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Générer <span class="a">CSS clamp()</span></h1>
+    <p>Des tailles de police et des espacements fluides qui grandissent en douceur avec la largeur de l'écran — sans aucune media query. Saisissez la taille min/max et les largeurs de viewport, copiez le code <code>clamp()</code> prêt à l'emploi avec la pente correcte. Tout en local dans le navigateur, rien n'est envoyé.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="grid2">
+      <div class="fld"><label class="lbl" for="minSize">Taille min (petit viewport)</label>
+        <div class="inunit"><input type="number" id="minSize" step="0.1" value="16"><span class="u">px</span></div></div>
+      <div class="fld"><label class="lbl" for="maxSize">Taille max (grand viewport)</label>
+        <div class="inunit"><input type="number" id="maxSize" step="0.1" value="32"><span class="u">px</span></div></div>
+      <div class="fld"><label class="lbl" for="minVw">Largeur viewport min</label>
+        <div class="inunit"><input type="number" id="minVw" step="1" value="360"><span class="u">px</span></div></div>
+      <div class="fld"><label class="lbl" for="maxVw">Largeur viewport max</label>
+        <div class="inunit"><input type="number" id="maxVw" step="1" value="1240"><span class="u">px</span></div></div>
+    </div>
+    <div class="rootrow"><label for="root">Taille de police de base (base rem) :</label>
+      <input type="number" id="root" step="1" value="16"><span>px</span></div>
+    <div class="warn" id="warn" role="alert" hidden></div>
+    <div class="outbar">
+      <span class="lbl" id="outLbl" style="margin:0">CSS</span>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="copy" type="button">Copier</button>
+    </div>
+    <pre id="code" role="textbox" tabindex="0" aria-readonly="true" aria-labelledby="outLbl"></pre>
+    <div class="demo">
+      <div class="t" id="demoText" style="font-size:1.4rem">Titre d'exemple</div>
+      <div class="c" id="demoNote"></div>
+    </div>
+    <p class="note">Entre les deux largeurs de viewport, la valeur croît linéairement ; en dessous/au-dessus, elle est limitée au min ou au max. Les valeurs rem sont plus accessibles que les px (elles respectent la taille de police du navigateur). L'aperçu en direct utilise la valeur de votre largeur de fenêtre actuelle. Tout en local, aucun téléversement.</p>
+  </section>
+  <div class="cta"><strong>Plus d'outils</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">pour le web &amp; le design.</p>
+    <p><a class="btn" href="/fr/css-gradient-generator.html">Générateur de dégradé</a>
+      <a class="btn ghost" href="/fr/box-shadow-generator.html">Box-shadow</a>
+      <a class="btn ghost" href="/fr/online-tools.html">Tous les outils</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Vous avez trouvé cela utile ? 5 minutes d'IA sans le battage — chaque jour ouvré.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news est la newsletter IA pour les indépendants : courte, honnête, sans bingo de mots à la mode. Gratuite, désinscription à tout moment.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">S'abonner à la newsletter gratuite →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/fr/css-gradient-generator.html">Générateur de dégradé</a> · <a href="/fr/box-shadow-generator.html">Box-shadow</a> ·
+  <a href="/fr/ki-werkzeug.html">Outil IA</a> &middot; <a href="/fr/online-tools.html">Tous les outils</a> &middot; <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></div></footer>
+<script>
+(function(){
+  var minSize=document.getElementById("minSize"),maxSize=document.getElementById("maxSize"),
+      minVw=document.getElementById("minVw"),maxVw=document.getElementById("maxVw"),root=document.getElementById("root"),
+      code=document.getElementById("code"),warn=document.getElementById("warn"),
+      demoText=document.getElementById("demoText"),demoNote=document.getElementById("demoNote");
+  function num(el){var v=parseFloat(el.value);return isNaN(v)?null:v;}
+  function r2(x){return Math.round(x*1000)/1000;}
+  function setWarn(m){if(m){warn.hidden=false;warn.textContent=m;}else{warn.hidden=true;warn.textContent="";}}
+  function build(){
+    var minS=num(minSize),maxS=num(maxSize),minV=num(minVw),maxV=num(maxVw),rt=num(root);
+    if(rt===null||rt<=0)rt=16;
+    if(minS===null||maxS===null||minV===null||maxV===null){setWarn("⚠ Remplissez tous les champs.");code.textContent="";return;}
+    if(maxV===minV){setWarn("⚠ Les viewports min et max ne doivent pas être identiques (division par 0).");code.textContent="";return;}
+    setWarn("");
+    // work with the smaller as lower bound for clamp() validity
+    var loS=Math.min(minS,maxS),hiS=Math.max(minS,maxS);
+    var slope=(maxS-minS)/(maxV-minV);            // px per px
+    var interceptPx=minS-slope*minV;              // px at viewport 0
+    var slopeVw=r2(slope*100);                    // vw coefficient
+    var interceptRem=r2(interceptPx/rt);
+    var loRem=r2(loS/rt),hiRem=r2(hiS/rt);
+    var pref;
+    if(slopeVw===0)pref=interceptRem+"rem";
+    else if(interceptRem===0)pref=slopeVw+"vw";
+    else pref="calc("+interceptRem+"rem"+(slopeVw<0?" - "+Math.abs(slopeVw):" + "+slopeVw)+"vw)";
+    code.textContent="font-size: clamp("+loRem+"rem, "+pref+", "+hiRem+"rem);";
+    // live demo: compute actual px at current window width, clamped
+    var w=window.innerWidth||maxV;
+    var px=interceptPx+slope*w;
+    px=Math.max(loS,Math.min(hiS,px));
+    demoText.style.fontSize=px+"px";
+    demoNote.textContent="≈ "+r2(px)+" px à "+w+" px de largeur de fenêtre (min "+loS+" / max "+hiS+" px)";
+    if(minS>maxS)setWarn("ℹ Le min est supérieur au max — clamp() utilise automatiquement la plus petite valeur comme limite basse.");
+    return code.textContent;
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(!text)return;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Copié ✓");},function(){fallback(text,b);});
+    } else fallback(text,b);
+  }
+  function fallback(text,b){
+    try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+      document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Copié ✓");}
+    catch(e){flash(b,"Copiez manuellement");}
+  }
+  [minSize,maxSize,minVw,maxVw,root].forEach(function(e){e.addEventListener("input",build);});
+  window.addEventListener("resize",build);
+  document.getElementById("copy").addEventListener("click",function(){copy(code.textContent,this);});
+  build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
