@@ -1297,3 +1297,19 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   nur Text/Button/Alignment ändern, neuen Key + an `order` anhängen, `JSON.parse` validieren, dann `themeFilesUpsert`
   (`templates/index.json`, body type TEXT). Theme-ID in `/tmp/theme_id.txt`. ⚠️ Customizer kann index.json überschreiben.
   Bild = aktuell dasselbe Hero-Bild (luxestyleherov2.png); im Customizer austauschbar für mehr Abwechslung.
+
+## 📌 2026-06-20 Teil 15 (🔬 GOOGLE-MERCHANT-DIAGNOSE: Probleme sind VERALTET, Shop ist sauber)
+- **User-Screenshots Merchant Center „Needs attention":** (1) „Product page unavailable" **2.82K Produkte (10,5%)**,
+  (2) „Missing product image" **317 (1,2%)**, (3) „Illegal drugs" (Gua-Sha-Set). Graph-Spike um Jun 8.
+- **LIVE-DIAGNOSE — Shop ist technisch SAUBER, die Meldungen sind GEISTER-/ALTDATEN:**
+  - **Googlebot-Test: 14/14 Produktseiten = HTTP 200, KEIN Cloudflare-Challenge** (Bot Fight Mode ist AUS). robots.txt erlaubt Crawl.
+  - **Primary Domain = luxestyle.ch** (Feed nutzt korrekte, erreichbare Domain — kein Mismatch/.com.co).
+  - **0 aktive Produkte ohne Bild** in Shopify (→ „Missing image 317" = veraltet).
+  - **0 aktive Gua-Sha/Massage/Roller-Produkte** (→ das „Illegal drugs"-Gua-Sha-Set ist ARCHIVIERT, geistert nur im Altfeed).
+  - Keine archivierten/Entwurf-Geister auf dem Google-Kanal gefunden.
+- **URSACHE:** Die Probleme stammen aus der Zeit, als **Cloudflare Bot Fight Mode den Googlebot blockte** (Spike Jun 8) +
+  seither archivierte Produkte. **Jetzt alles erreichbar → Daten nur veraltet.**
+- **FIX = RE-CRAWL (kein Shop-Fix möglich/nötig):** User klickt in Merchant Center **„Request website check"** (im Dialog
+  sichtbar) → Google re-validiert → 2.82K + 317 + Drug-Flag klären sich, da die Seiten jetzt erreichbar sind. Google
+  re-crawlt auch automatisch über Tage. **Kein API/Shop-Eingriff bringt mehr — die Shop-Seite ist nachweislich sauber.**
+- ⚠️ Falls die Zahl WIEDER steigt: Bot Fight Mode ist erneut an → Cloudflare-Dashboard → Security → Bots → AUS (User).
