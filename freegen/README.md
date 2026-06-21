@@ -10,6 +10,11 @@ keine Credits, keine API-Keys.
 | `automation/freegen_image.py` | Social-Images (Post/Square/Story/OG) | Canva |
 | `automation/freegen_tts.py` | Deutsches Voiceover (WAV) | ElevenLabs |
 | `automation/freegen_hubreels.py` | Auto-Reel je `ki-*.html`-Hub (Titel/Teaser → Skript/MP4) | — |
+| `automation/freegen_bot.py` | Selbstlaufender Bot: Reels + Bilder im Batch, Ledger, `--loop` | — |
+| `automation/freegen_promo.py` | Marktplatz-Promo-Reels aus `freegen/promo/*.json` | — |
+| `automation/freegen_ai.py` | Gratis-KI-Texte (Reel/Bild) — Groq bevorzugt, 7 Anbieter, Key aus env | — |
+| `automation/ai_critique.mjs` | KI-Kritik zu jeder HTML-Seite (Conversion/SEO/Trust) | — |
+| `automation/newsletter_polish.py` | Newsletter sicher schleifen (erfindet keine Fakten) + Betreffzeilen | — |
 
 ## Abhängigkeiten (einmalig)
 ```bash
