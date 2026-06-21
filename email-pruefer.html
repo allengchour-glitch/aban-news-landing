@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Mail-Adressen prüfen — Format &amp; Tippfehler (Liste) · aban news</title>
+<meta name="description" content="Kostenloser E-Mail-Format-Prüfer: ganze Listen von E-Mail-Adressen auf gültiges Format prüfen, Duplikate finden und gültige von ungültigen trennen. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/email-pruefer.html">
+<meta property="og:title" content="E-Mail-Adressen prüfen — Format &amp; Tippfehler (Liste)">
+<meta property="og:description" content="E-Mail-Listen auf Format prüfen, Duplikate finden, gültig/ungültig trennen. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/email-pruefer.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"E-Mail-Format-Prüfer",
+"url":"https://abannews.com/email-pruefer.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Prüft Listen von E-Mail-Adressen auf gültiges Format, findet Duplikate und trennt gültige von ungültigen Adressen. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Prüft das Tool, ob die E-Mail wirklich existiert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Es prüft nur das Format (Aufbau vor und nach dem @, Domain mit Punkt) und weist auf häufige Tippfehler bei Anbieter-Domains hin. Ob ein Postfach tatsächlich existiert, lässt sich nur durch Zustellung oder spezielle Dienste feststellen."}},
+{"@type":"Question","name":"Wofür ist das nützlich?","acceptedAnswer":{"@type":"Answer","text":"Zum Aufräumen von Verteiler- oder Kontaktlisten vor dem Import in ein Newsletter-Tool: offensichtlich falsche Adressen und Duplikate erkennst du sofort, das senkt Bounces."}},
+{"@type":"Question","name":"Werden meine Adressen hochgeladen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Prüfung läuft komplett in deinem Browser. Es wird nichts gesendet oder gespeichert — auch für vertrauliche Listen geeignet."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+textarea{font:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;min-height:150px;resize:vertical;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.stat{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.stat b{display:block;font-size:1.4rem;font-weight:800}
+.stat.ok b{color:var(--ok)}.stat.bad b{color:var(--bad)}.stat.dup b{color:var(--amber-dk)}
+.stat span{font-size:.76rem;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:680px){.cols{grid-template-columns:1fr}}
+.list{border:1px solid var(--line);border-radius:10px;background:var(--field);padding:10px;max-height:220px;overflow:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;white-space:pre-wrap;word-break:break-all}
+.list .bad{color:var(--bad)}
+.list .hint{color:var(--muted)}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">E-Mail-Adressen</span> prüfen</h1>
+    <p>Ganze Listen auf gültiges Format prüfen, Duplikate finden und gültige von ungültigen Adressen trennen — vor dem Import ins Newsletter-Tool. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">🔒 <strong style="color:#1f2937">100 % lokal:</strong> Adressen werden nicht hochgeladen. <strong>Format-Check</strong> (kein Existenz-Nachweis) — senkt aber Tippfehler und Bounces.</p>
+
+  <section class="panel" id="tool">
+    <label for="in">E-Mail-Adressen (eine pro Zeile oder mit Komma/Semikolon getrennt)</label>
+    <textarea id="in" placeholder="max@example.com, anna@firma.de …">max@example.com
+anna@firma.de
+falsch@@test
+info@gmail.con
+max@example.com
+hallo@abannews</textarea>
+    <div class="stats">
+      <div class="stat ok"><b id="okN">0</b><span>gültig (Format)</span></div>
+      <div class="stat bad"><b id="badN">0</b><span>ungültig</span></div>
+      <div class="stat dup"><b id="dupN">0</b><span>Duplikate</span></div>
+    </div>
+    <div class="cols">
+      <div><label>Gültige (ohne Duplikate)</label><div class="list" id="okList"></div></div>
+      <div><label>Ungültige / Hinweise</label><div class="list" id="badList"></div></div>
+    </div>
+    <div class="row"><button type="button" class="btn" id="copy">📋 Gültige kopieren</button></div>
+    <p class="note">Format-Regex + Tippfehler-Hinweis bei Anbieter-Domains (z. B. gmail.con). Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Listen &amp; Versand.</p>
+    <p><a class="btn" href="/text-bereinigen.html">Text bereinigen</a>
+      <a class="btn ghost" href="/email-signatur-generator.html">E-Mail-Signatur</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/text-bereinigen.html">Text bereinigen</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("in");
+  var RE=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  var typos={"gmail.con":"gmail.com","gmail.co":"gmail.com","gmial.com":"gmail.com","gmai.com":"gmail.com","hotmail.con":"hotmail.com","yahoo.con":"yahoo.com","gmx.de ":"gmx.de","web.de ":"web.de","outlook.con":"outlook.com"};
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function render(){
+    var raw=inp.value.split(/[\n,;]+/).map(function(x){return x.trim();}).filter(Boolean);
+    var ok=[], bad=[], seen={}, dup=0, okOut=[];
+    raw.forEach(function(e){
+      var low=e.toLowerCase();
+      if(RE.test(e)){
+        if(seen[low]){ dup++; }
+        else { seen[low]=1; ok.push(e); okOut.push(e); }
+      } else {
+        var hint="";
+        var dom=(e.split("@")[1]||"").toLowerCase();
+        if(typos[dom]) hint=" → meintest du …@"+typos[dom]+"?";
+        else if(e.indexOf("@")<0) hint=" → @ fehlt";
+        else if(dom && dom.indexOf(".")<0) hint=" → Domain ohne Punkt";
+        bad.push({e:e,hint:hint});
+      }
+    });
+    document.getElementById("okN").textContent=ok.length;
+    document.getElementById("badN").textContent=bad.length;
+    document.getElementById("dupN").textContent=dup;
+    document.getElementById("okList").innerHTML=ok.length?ok.map(esc).join("\n"):'<span class="hint">—</span>';
+    document.getElementById("badList").innerHTML=bad.length?bad.map(function(o){return '<span class="bad">'+esc(o.e)+'</span><span class="hint">'+esc(o.hint)+'</span>';}).join("\n"):'<span class="hint">—</span>';
+    window.__okOut=okOut.join("\n");
+  }
+  inp.addEventListener("input",render);
+  document.getElementById("copy").addEventListener("click",function(){var b=this;var t=window.__okOut||"";if(t&&navigator.clipboard)navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1500);});});
+  render();
+})();
+</script>
+</body>
+</html>
