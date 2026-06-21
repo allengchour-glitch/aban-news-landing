@@ -1109,6 +1109,11 @@
       "fest": "User 2026-06-21 \"mach das du ueberall selber waechst und lernst\". Lernen+Wachsen muss GEPLANT laufen (nicht nur manuell).",
       "umgesetzt": "LuxeLearn (taeglich 06:00, scheduled-learn.ps1): analysieren->Gehirn lernen->Queue mit Gewinnern nachfuellen->committen. LuxeFollower (taeglich 14:00): CH-Follower langsam+sicher. + LuxeHealth 6h. = Bot waechst+lernt selbst, ueberall.",
       "stand": "2026-06-21"
+    },
+    "youtube_lernen_geplant_2026": {
+      "fest": "User 2026-06-21 \"recherchiere auch regelmaessig youtube mit tools\". yt-learn.mjs analysiert Top-Creator-Kanaele (TheEcomKing/Vilius/Julian Ivanov/Nate Herk/Sabrina u.a.) -> Lehren ins Gehirn.",
+      "geplant": "LuxeYouTube woechentlich So 07:00 (braucht yt-dlp + Brave-Cookies). Liste automation/yt-learn-urls.txt. Lehren -> knowledge.json rules.yt_gelernt -> autobot wendet an.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
