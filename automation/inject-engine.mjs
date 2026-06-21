@@ -70,6 +70,7 @@ try { files = walk(root, []); } catch (e) { console.error("inject-engine: kein",
 function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 function tokset(base) { return new Set(base.replace(/^ki-/, "").replace(/\.html$/i, "").split("-").filter((w) => w.length > 2)); }
 let related = 0;
+let healed = 0;
 const hubs = [];
 for (const f of files) {
   const base = f.split(sep).pop();
@@ -159,6 +160,22 @@ for (const f of files) {
       if (bpos >= 0) { html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); related++; changed = true; }
     }
   }
+  // (7) Selbstheilung fehlender Meta-Tags (Social/Mobile), nur indexierbare Seiten
+  if (!noindex) {
+    const pos2 = html.toLowerCase().lastIndexOf("</head>");
+    if (pos2 >= 0) {
+      let add = "";
+      const tm = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+      const titleTxt = tm ? tm[1].replace(/\s+/g, " ").trim().replace(/"/g, "&quot;") : "";
+      const dm = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i);
+      const descTxt = dm ? dm[1].trim().replace(/"/g, "&quot;") : "";
+      if (titleTxt && !/property=["']og:title["']/i.test(html)) add += '<meta property="og:title" content="' + titleTxt + '">';
+      if (descTxt && !/property=["']og:description["']/i.test(html)) add += '<meta property="og:description" content="' + descTxt + '">';
+      if (!/name=["']theme-color["']/i.test(html)) add += '<meta name="theme-color" content="#d97706">';
+      if (!/name=["']viewport["']/i.test(html)) add += '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+      if (add) { html = html.slice(0, pos2) + add + "\n" + html.slice(pos2); healed++; changed = true; }
+    }
+  }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
-console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related-Blocks injiziert, " + skipped + " übersprungen (von " + files.length + ").");
+console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
