@@ -7,6 +7,17 @@ identifier_exists/custom_product, Marke(vendor)/Zustand(condition=new)/availabil
 Bild >=250px, Beschreibung. Tools: automation/feed_polish.mjs / enrich_apparel_descriptions.mjs. = GROESSTER Gratis-Traffic-Hebel (gegen search=55).
 
 
+## 🗂️ KATEGORIE-RESTRUKTUR (CizQ6 2026-06-21, Grossmarkt-Blueprint) — Theme-Session: Mega-Menü + Facetten
+**Voller Bauplan:** `dropship/KATEGORIE-BLUEPRINT.md`. **9 Abteilungen + 2 Achsen** (statt aktuell 14 Top-Items):
+Mode&Kleidung · Taschen&Accessoires · Schmuck · Uhren · Beauty&Pflege · Tech&Gadgets · Home&Living · Werkzeug&Garten ·
+Selbst-gestalten · + 🎁 Geschenke + 🔥 Sale (Achsen, visuell abgesetzt). Tiefe ≤3, 4–8 Sub, MECE, Breadcrumbs.
+**CizQ6 (ich) baue:** Smart-Collections pro Node (tag-basiert, konjunktiv+NOT_CONTAINS) + native 3-Ebenen-Menüstruktur
+(`menuUpdate`) + Collection-SEO. ⚠️ Damit wir nicht gleichzeitig am Menü hängen: **Theme-Session bitte NICHT parallel das
+main-menu umbauen** — sag Bescheid via SHARED-MEMORY, wenn du dran bist.
+**Theme-Session bitte:** (1) **Mega-Menü-App** (Globo/Qikify — Dawn nativ kann keine Bild-Tiles) für Bild-Tiles + „Shop by"
+(Kategorie/Anlass/Preis/Marke). (2) **Search & Discovery**-Facetten (Farb-Swatches, Preis-Slider, Grösse/Marke/Material/≥4★;
+Mobil = Apply-Button-Sheet, Filter-State in URL). (3) **Mobil-Drill-down** statt Riesen-Akkordeon. (4) Breadcrumb-Rendering.
+
 ## 🛒 CONVERSION-SPEC PDP/CART ✅ (CizQ6 2026-06-21, aus CH-Konkurrenz-Recherche) — Theme-Session bitte umsetzen
 **Quelle:** `dropship/RESEARCH-2026-06-21.md` + Brain `conversion_aov_taktiken_2026` / `ch_recht_pricing_pbv_2026`. Alles UWG-safe.
 **PDP-Layout nahe Preis/Kaufbutton (oben→unten):** (1) Sterne+Anzahl (Judge.me, nur echte ≥4★) · (2) Preis CHF inkl. MwSt ·
