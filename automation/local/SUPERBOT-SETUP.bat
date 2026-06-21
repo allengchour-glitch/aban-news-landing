@@ -62,7 +62,7 @@ schtasks /create /f /tn "LuxeHealth" /sc hourly /mo 6 /tr "%PSF% \"%DIR%schedule
 REM SELBST-LERNEN (taeglich 06:00, OHNE User): analysieren -> ins Gehirn lernen -> Queue mit Gewinnern nachfuellen
 schtasks /create /f /tn "LuxeLearn" /sc daily /st 06:00 /tr "%PSF% \"%DIR%scheduled-learn.ps1\""
 REM YOUTUBE-LERNEN (woechentlich So 07:00): Top-Creator-Kanaele analysieren -> Lehren ins Gehirn (autobot wendet an)
-schtasks /create /f /tn "LuxeYouTube" /sc weekly /d SUN /st 07:00 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"cd '%REPO%'; . $env:USERPROFILE\luxe-secrets.ps1; node automation/yt-learn.mjs; git add automation/brain/ reports/yt-learn-report.json automation/yt-learn-lehren.md; git commit -m 'auto(yt-learn): woechentlich von YouTube gelernt'; git pull --rebase origin claude/luxestyle-product-CizQ6; git push origin claude/luxestyle-product-CizQ6\""
+schtasks /create /f /tn "LuxeYouTube" /sc weekly /d SUN /st 07:00 /tr "%PSF% \"%DIR%scheduled-youtube.ps1\""
 REM WACHSEN: CH-Follower langsam + sicher (taeglich, niedrige Caps, Brave-CDP) - nachhaltig 1 Mio Ziel
 schtasks /create /f /tn "LuxeFollower" /sc daily /st 14:00 /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"cd '%REPO%'; . $env:USERPROFILE\luxe-secrets.ps1; node automation/local/ch-follower-growth.mjs\""
 
