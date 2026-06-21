@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-21T09:17:06.967Z",
+  "ts": "2026-06-21T09:21:03.086Z",
   "pages": [
     {
       "site": "tutti",
@@ -13,7 +13,7 @@
     {
       "site": "tutti",
       "url": "https://www.tutti.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
-      "title": "13'587 Inserate in Immobilien - Häuser - tutti.ch",
+      "title": "13'588 Inserate in Immobilien - Häuser - tutti.ch",
       "is404": false,
       "loggedIn": true,
       "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis allen ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurücks",
@@ -22,7 +22,7 @@
     {
       "site": "tutti",
       "url": "https://www.tutti.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
-      "title": "13'587 Inserate in Immobilien - Häuser - tutti.ch",
+      "title": "13'588 Inserate in Immobilien - Häuser - tutti.ch",
       "is404": false,
       "loggedIn": true,
       "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis allen ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurücks",
@@ -144,6 +144,24 @@
       "loggedIn": true,
       "body": "Angebot erstellen Favoriten 0 Benachrichtigungen A allengchour DE Alle Kategorien Kleidung & Accessoires Fahrzeuge Haushalt & Wohnen Sport Handwerk & Garten Com",
       "screenshot": "19-ricardo.png"
+    },
+    {
+      "site": "ricardo",
+      "url": "https://www.ricardo.ch/de/a/eames-fiberglas-armchair-olive-green-1959-1960-1284010284/",
+      "title": "Eames Fiberglas Armchair olive green, 1959-1960 (Gebraucht) in ipsach für CHF 1480 – mit Lieferung auf Ricardo kaufen",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Angebot erstellen Favoriten 0 Benachrichtigungen A allengchour DE Alle Kategorien Kleidung & Accessoires Fahrzeuge Haushalt & Wohnen Sport Handwerk & Garten Com",
+      "screenshot": "20-ricardo.png"
+    },
+    {
+      "site": "ricardo",
+      "url": "https://www.ricardo.ch/de/a/eames-fiberglas-stuhl-in-parchment-beige-1270124204/",
+      "title": "Eames Fiberglas Stuhl in parchment/beige (Gebraucht) in ipsach für CHF 480 – mit Lieferung auf Ricardo kaufen",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Angebot erstellen Favoriten 0 Benachrichtigungen A allengchour DE Alle Kategorien Kleidung & Accessoires Fahrzeuge Haushalt & Wohnen Sport Handwerk & Garten Com",
+      "screenshot": "21-ricardo.png"
     }
   ],
   "discovered": {
@@ -167,7 +185,9 @@
       "https://www.ricardo.ch/de/c/o/games-spielkonsolen-39563/",
       "https://www.ricardo.ch/de/c/games-82019/",
       "https://www.ricardo.ch/de/c/bienenhaeuser-82332/",
-      "https://www.ricardo.ch/de/a/eames-fiberglass-armchair-design-klassiker-1290952442/"
+      "https://www.ricardo.ch/de/a/eames-fiberglass-armchair-design-klassiker-1290952442/",
+      "https://www.ricardo.ch/de/a/eames-fiberglas-armchair-olive-green-1959-1960-1284010284/",
+      "https://www.ricardo.ch/de/a/eames-fiberglas-stuhl-in-parchment-beige-1270124204/"
     ]
   }
 }

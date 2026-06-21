@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-21T08:20:04.808Z",
+  "ts": "2026-06-21T09:19:17.050Z",
   "accounts": [
     {
       "aadvid": "7643589765259493393",
@@ -9,20 +9,68 @@
       "todaySpend": "0.00\nCHF",
       "cost": "63.71 CHF",
       "impressions": "130,863",
-      "onboarding": false
+      "onboarding": false,
+      "pixel": {
+        "hasD8EKVR": false,
+        "mentionsPixel": false,
+        "text": "For a better experience, please turn off or pause the AdBlock plugin."
+      },
+      "pixelScreenshot": "acct-01-7643589765259493393-pixel.png"
     },
     {
-      "aadvid": "7646349875793182738",
-      "screenshot": "acct-02-7646349875793182738.png",
+      "aadvid": "7646326014504976401",
+      "screenshot": "acct-02-7646326014504976401.png",
       "accountName": null,
       "balance": null,
       "todaySpend": null,
       "cost": null,
       "impressions": null,
-      "onboarding": false
+      "onboarding": false,
+      "pixel": {
+        "hasD8EKVR": false,
+        "mentionsPixel": false,
+        "text": "For a better experience, please turn off or pause the AdBlock plugin."
+      },
+      "pixelScreenshot": "acct-02-7646326014504976401-pixel.png"
+    },
+    {
+      "aadvid": "7646326045779476481",
+      "screenshot": "acct-03-7646326045779476481.png",
+      "accountName": null,
+      "balance": null,
+      "todaySpend": null,
+      "cost": null,
+      "impressions": null,
+      "onboarding": false,
+      "pixel": {
+        "hasD8EKVR": false,
+        "mentionsPixel": false,
+        "text": "Preview For IIIustrative Purposees Only You don't have permission to access this account Your access permission may have been changed, or you might be trying to access an account that's not yours. Click on Home to select"
+      },
+      "pixelScreenshot": "acct-03-7646326045779476481-pixel.png"
+    },
+    {
+      "aadvid": "7646349875793182738",
+      "screenshot": "acct-04-7646349875793182738.png",
+      "accountName": null,
+      "balance": null,
+      "todaySpend": null,
+      "cost": null,
+      "impressions": null,
+      "onboarding": false,
+      "pixel": {
+        "hasD8EKVR": false,
+        "mentionsPixel": false,
+        "text": "Preview For IIIustrative Purposees Only You don't have permission to access this account Your access permission may have been changed, or you might be trying to access an account that's not yours. Click on Home to select"
+      },
+      "pixelScreenshot": "acct-04-7646349875793182738-pixel.png"
     }
   ],
-  "aadvids_found": [],
+  "aadvids_found": [
+    "7646326045779476481",
+    "7643589765259493393",
+    "7646326014504976401"
+  ],
   "dropdown_names": [
     "Business Center (1)",
     "Luxestlye Ch\nID: 7646326045779476481\n1\n1",

@@ -1,0 +1,20 @@
+{
+  "ts": "2026-06-21T09:23:23.850Z",
+  "platforms": {
+    "tiktok": {
+      "result": "POSTED",
+      "reason": "Veroeffentlicht (Bestaetigung geklickt)",
+      "file": "luxe-montage-premium-bestseller.mp4",
+      "vor_min": 4
+    },
+    "meta": {
+      "result": "WORKER_NICHT_ERREICHBAR",
+      "detail": "TimeoutError: The operation was aborted due to timeout"
+    }
+  },
+  "duplicates": [],
+  "errors": [],
+  "ok": [
+    "TikTok zuletzt OK (luxe-montage-premium-bestseller.mp4, vor 4 min)"
+  ]
+}

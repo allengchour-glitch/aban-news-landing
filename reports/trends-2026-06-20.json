@@ -1,0 +1,88 @@
+{
+  "ts": "2026-06-20T18:48:47.917Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "elanga",
+    "schwingen",
+    "gyökeres",
+    "gakpo",
+    "virgil van dijk",
+    "johan cruyff",
+    "giorgia meloni trump",
+    "brian brobbey",
+    "évelyne dhéliat",
+    "niederlande schweden"
+  ],
+  "own_tiktok_report": "tiktok-stats.csv",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Schöni Schmuck-Stückli für d'Frau",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Chasch au e schöns Schmuckli für di Liebste?",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#zürich"
+        ]
+      },
+      {
+        "idee": "Stilvolli Herren-Schuhe für d'Stadt",
+        "kategorie": "Schuhe",
+        "hook_mundart": "Gönd di Schuhe für di nächschti Stadt-Tour?",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#ootdschweiz",
+          "#bern",
+          "#schweizermode"
+        ]
+      },
+      {
+        "idee": "Chicchi Bademode für d'Sommer",
+        "kategorie": "Bademode",
+        "hook_mundart": "Bisch bereit für di Sommer-Saison?",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweiz",
+          "#genf",
+          "#bademode"
+        ]
+      },
+      {
+        "idee": "Eleganti Hüte für d'Dame",
+        "kategorie": "Hüte",
+        "hook_mundart": "Chasch au e schönen Hut für di nächschti Veranstaltig?",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweizmode",
+          "#basel",
+          "#hüte"
+        ]
+      },
+      {
+        "idee": "Praktischi Outdoor-Ausrüstig für d'Natur",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Gönd di Ausrüstig für di nächschti Wanderung?",
+        "musik_mood": "house",
+        "hashtags": [
+          "#ootdschweiz",
+          "#luzern",
+          "#outdoor"
+        ]
+      }
+    ],
+    "trend_musik_note": "D'Musik-Moods sind ausgwählt, um d'Ideen und d'Stimmung z'Schweizer Bevölkerig optimal z'unterstütze."
+  }
+}
