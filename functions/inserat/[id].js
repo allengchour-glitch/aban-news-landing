@@ -711,6 +711,77 @@ const DEMO = {
     "emoji": "🪙",
     "kontakt": "beispiel@aban.ch",
     "beschreibung": "Konvolut, teils Silber. Für Sammler.\n\n(Beispiel-Inserat — erscheint, solange noch keine echten Inserate da sind.)"
+  },
+  "demo-61": {
+    "kat": "Jobs",
+    "titel": "Aushilfe im Service gesucht",
+    "preis": "",
+    "ort": "Zürich",
+    "plz": "8001",
+    "typ": "Gesuch",
+    "emoji": "💼",
+    "kontakt": "beispiel@aban.ch",
+    "beschreibung": "Café sucht freundliche Aushilfe für Wochenenden, Stundenlohn nach Absprache. Für echte Stellen: siehe Jobs-Bereich.\n\n(Beispiel-Inserat — erscheint, solange noch keine echten Inserate da sind.)"
+  },
+  "demo-62": {
+    "kat": "Sonstiges",
+    "titel": "Umzugskartons zu verschenken",
+    "preis": "Gratis",
+    "ort": "Bern",
+    "plz": "3000",
+    "zustand": "Gebraucht",
+    "typ": "Angebot",
+    "emoji": "📦",
+    "kontakt": "beispiel@aban.ch",
+    "beschreibung": "Ca. 20 stabile Kartons, einmal benutzt. Selbstabholung.\n\n(Beispiel-Inserat — erscheint, solange noch keine echten Inserate da sind.)"
+  },
+  "demo-63": {
+    "kat": "Foto & Video",
+    "titel": "Stativ + LED-Videolicht",
+    "preis": "CHF 65.–",
+    "ort": "Basel",
+    "plz": "4051",
+    "zustand": "Gebraucht",
+    "typ": "Angebot",
+    "emoji": "🎥",
+    "kontakt": "beispiel@aban.ch",
+    "beschreibung": "Stabiles Stativ bis 1,6 m, dimmbares LED-Licht mit Akku.\n\n(Beispiel-Inserat — erscheint, solange noch keine echten Inserate da sind.)"
+  },
+  "demo-64": {
+    "kat": "Motorrad",
+    "titel": "Motorradhelm Gr. M",
+    "preis": "CHF 80.–",
+    "ort": "Aarau",
+    "plz": "5000",
+    "zustand": "Wie neu",
+    "typ": "Angebot",
+    "emoji": "🪖",
+    "kontakt": "beispiel@aban.ch",
+    "beschreibung": "Integralhelm, kaum getragen, mit getöntem Visier.\n\n(Beispiel-Inserat — erscheint, solange noch keine echten Inserate da sind.)"
+  },
+  "demo-65": {
+    "kat": "Schmuck & Uhren",
+    "titel": "Herrenuhr Chronograph",
+    "preis": "CHF 190.–",
+    "ort": "Genf",
+    "plz": "1201",
+    "zustand": "Gebraucht",
+    "typ": "Angebot",
+    "emoji": "⌚",
+    "kontakt": "beispiel@aban.ch",
+    "beschreibung": "Edelstahl, Lederband, läuft einwandfrei. Mit Box.\n\n(Beispiel-Inserat — erscheint, solange noch keine echten Inserate da sind.)"
+  },
+  "demo-66": {
+    "kat": "Küche",
+    "titel": "Standmixer 1000 W",
+    "preis": "CHF 45.–",
+    "ort": "Winterthur",
+    "plz": "8400",
+    "zustand": "Gebraucht",
+    "typ": "Angebot",
+    "emoji": "🥤",
+    "kontakt": "beispiel@aban.ch",
+    "beschreibung": "Kräftig, 1,5-l-Glaskrug, leicht zu reinigen.\n\n(Beispiel-Inserat — erscheint, solange noch keine echten Inserate da sind.)"
   }
 };
 
