@@ -1387,3 +1387,11 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
 - **Alle conversion-verlinkt** auf Collections + Produkte. Zielt auf den **2%-Organik-Hebel** (datenbelegt der grösste Upside).
 - **Cloudflare-Worker-Scharfschalten = aufgegeben** (Token-Fallen, s.o.) — low value (nur Shop-Wartung, Katalog ist eh sauber).
   Fokus bleibt Content + Polish (autonom, kein User-Klick nötig). Produkte = andere Session.
+
+## 📌 2026-06-21 Teil 21 (🔴→✅ SEO-Fix: Ratgeber-Blog war NICHT verlinkt!)
+- **Grosser Fund:** Der **Ratgeber-Blog (124 Artikel)** war in KEINEM Menü verlinkt (nur „Magazin"/30 im Footer) → die ganzen
+  Kaufberater waren verwaist (Google crawlt verwaiste Seiten schlecht, 0 interne Links). **= Hauptgrund warum organischer
+  Search nur 2% ist** trotz viel Content.
+- **Fix:** Menü-Punkt **„📖 Ratgeber" → /blogs/ratgeber** ins Hauptmenü (Position vor „1. August"), via sicherem menuUpdate
+  (143→144, alle erhalten). Jetzt sind alle 124 Artikel intern verlinkt → besser crawlbar + auffindbar.
+- **Lehre:** Content NUR wirksam wenn VERLINKT. Künftig: neuer Blog/neue Sektion IMMER ins Menü/Footer hängen, sonst SEO-tot.
