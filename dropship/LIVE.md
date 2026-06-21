@@ -22,7 +22,13 @@ via Docker, Cron+Retry+Telegram-Alert) macht alle API-Jobs nativ + ein **Cloud-B
 Residential-IP) übernimmt den kleinen Rest (TikTok/IG/FB/Marktplätze). **Kein PC, keine Klicks mehr.**
 → Voller Plan + Kosten + Migration: **`dropship/ZERO-STEERING-BLUEPRINT.md`**.
 **Empfehlung:** Weg C zuerst (~€4/Mo, killt 70–80 % der PC-Abhängigkeit, 0 Browser-Kosten); Cloud-Browser
-später. ⚠️ Kostet echtes Geld → **1 Freigabe** bevor ich VPS/Skyvern aufsetze.
+später. → **User-Entscheid 2026-06-21: „vorerst nur PC"** (kein VPS/Geld). Blueprint bleibt für später
+dokumentiert; PC-Kanal bleibt der Weg (bei Einfrieren = 1 SUPERBOT-Klick).
+
+## 📊 Frische Zahlen (7T, 2026-06-21)
+1275 Sessions · 9 ATC (0,7 %) · 8 erreichten Checkout · **1 abgeschlossen = 1 Verkauf** (Funnel bewiesen).
+→ Bottleneck: **Checkout-Abschluss** (8→1, 7 brechen am letzten Schritt ab) + **zu wenig Kauf-Intent-Traffic**
+(Pixel-Kampagne, hängt am PC-Browser). Hebel unverändert: Buy-Intent-Traffic + Checkout-Completion.
 
 ## 🔄 In der Queue (laufen autonom über CLOUD-AN, sobald Kanal frei)
 | Befehl | Macht |
