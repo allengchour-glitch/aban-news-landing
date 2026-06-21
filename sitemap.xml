@@ -4057,4 +4057,8 @@
   <url><loc>https://abannews.com/en/bild-zu-base64.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/fr/bild-zu-base64.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/it/bild-zu-base64.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/robots-txt-generator.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/en/robots-txt-generator.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/fr/robots-txt-generator.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/it/robots-txt-generator.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>robots.txt generator · aban news</title>
+<meta name="description" content="Free robots.txt generator: build crawler rules (Allow/Disallow), sitemap &amp; crawl-delay with clicks and create a valid robots.txt — to copy or download. Local in your browser, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/en/robots-txt-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/robots-txt-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/robots-txt-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/robots-txt-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/robots-txt-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/robots-txt-generator.html">
+<meta property="og:title" content="robots.txt generator">
+<meta property="og:description" content="Build crawler rules, sitemap &amp; crawl-delay with clicks → valid robots.txt to copy. Local in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/en/robots-txt-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"robots.txt generator",
+"url":"https://abannews.com/en/robots-txt-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Creates a valid robots.txt to copy or download from crawler rules, sitemap and crawl-delay.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+input,select,textarea{width:100%;font-family:inherit;font-size:15px;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.grp{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;background:var(--field)}
+.grp .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.grp .num{font-weight:700;color:var(--amber-dk);font-size:.9rem}
+.grp .paths{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:560px){.grp .paths{grid-template-columns:1fr}}
+.grp textarea{min-height:60px;resize:vertical;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+.del{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:4px 9px;cursor:pointer;font-size:.82rem}
+.del:hover{border-color:var(--bad);color:var(--bad)}
+.fld{margin-bottom:12px}
+.out{margin-top:16px}
+.outbox{position:relative}
+.outbox pre{background:#1e1e1e;color:#e6e6e6;border-radius:10px;padding:14px;font-size:13px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace;max-height:340px;overflow:auto}
+.outbar{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">To the tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>generate <span class="a">robots.txt</span></h1>
+    <p>Build crawler rules, sitemap and crawl-delay with clicks and create a valid <code>robots.txt</code> — to copy or as a file. Place it in your website's root directory (<code>/robots.txt</code>). Everything local in your browser, nothing is sent.</p>
+  </section>
+  <section class="panel" id="tool">
+    <span class="lbl">Template</span>
+    <div class="presets">
+      <button class="btn ghost sm" type="button" data-preset="allow">Allow all</button>
+      <button class="btn ghost sm" type="button" data-preset="block">Block all</button>
+      <button class="btn ghost sm" type="button" data-preset="wp">WordPress</button>
+      <button class="btn ghost sm" type="button" data-preset="shop">Online shop</button>
+    </div>
+    <span class="lbl">Rule groups</span>
+    <div id="list"></div>
+    <button class="btn ghost sm" id="add" type="button">+ Add rule group</button>
+    <div class="fld" style="margin-top:14px">
+      <label class="lbl" for="sitemap">Sitemap URL (optional, one per line)</label>
+      <textarea id="sitemap" rows="2" placeholder="https://example.com/sitemap.xml" style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;resize:vertical"></textarea>
+    </div>
+    <div class="out">
+      <div class="outbar">
+        <span class="lbl" id="outLbl" style="margin:0">robots.txt</span>
+        <span style="flex:1"></span>
+        <button class="btn ghost sm" id="download" type="button">Download</button>
+        <button class="btn sm" id="copy" type="button">Copy</button>
+      </div>
+      <div class="outbox"><pre id="code" role="textbox" aria-readonly="true" tabindex="0" aria-labelledby="outLbl"></pre></div>
+    </div>
+    <p class="note">Paths begin with <code>/</code> (e.g. <code>/admin/</code>). An empty <code>Disallow:</code> line = everything allowed. <code>robots.txt</code> is only a request to reputable crawlers, not access protection — sensitive pages belong behind a login. Check the result in the <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Search Console robots.txt tester</a>. All local, no upload.</p>
+  </section>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for SEO &amp; publishing.</p>
+    <p><a class="btn" href="/en/meta-tag-vorschau.html">Meta tag preview</a>
+      <a class="btn ghost" href="/en/faq-schema-generator.html">FAQ schema</a>
+      <a class="btn ghost" href="/en/online-tools.html">All tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/en/meta-tag-vorschau.html">Meta tag preview</a> · <a href="/en/faq-schema-generator.html">FAQ schema</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var list=document.getElementById("list"),code=document.getElementById("code"),sitemap=document.getElementById("sitemap");
+  var PRESETS={
+    allow:[{ua:"*",dis:"",allow:""}],
+    block:[{ua:"*",dis:"/",allow:""}],
+    wp:[{ua:"*",dis:"/wp-admin/\n/wp-login.php\n/?s=",allow:"/wp-admin/admin-ajax.php"}],
+    shop:[{ua:"*",dis:"/cart\n/checkout\n/account\n/search\n/*?sort=\n/*?filter=",allow:""}]
+  };
+  // sanitize a single line: strip CR/LF and leading "directive:" the user may have pasted
+  function cleanLine(s){return String(s).replace(/[\r\n]+/g,"").replace(/^\s*(disallow|allow|user-agent|sitemap|crawl-delay)\s*:\s*/i,"").trim();}
+  function lines(v){return String(v).split(/\r?\n/).map(function(s){return cleanLine(s);}).filter(function(s){return s!=="";});}
+  function group(g){
+    g=g||{ua:"*",dis:"",allow:""};
+    var d=document.createElement("div");d.className="grp";
+    var head=document.createElement("div");head.className="row";
+    var num=document.createElement("span");num.className="num";
+    var del=document.createElement("button");del.type="button";del.className="del";del.textContent="Remove";
+    head.appendChild(num);head.appendChild(del);
+    var uaWrap=document.createElement("div");uaWrap.style.marginBottom="8px";
+    var uaLbl=document.createElement("label");uaLbl.className="lbl";uaLbl.textContent="User-agent (crawler, * = all)";
+    var ua=document.createElement("input");ua.type="text";ua.className="ua";ua.value=g.ua||"*";ua.placeholder="*";
+    uaLbl.appendChild(ua);uaWrap.appendChild(uaLbl);
+    var paths=document.createElement("div");paths.className="paths";
+    var dl=document.createElement("label");dl.className="lbl";dl.textContent="Disallow (one path per line)";
+    var dis=document.createElement("textarea");dis.className="dis";dis.value=g.dis||"";dis.placeholder="/admin/";
+    dl.appendChild(dis);
+    var al=document.createElement("label");al.className="lbl";al.textContent="Allow (exceptions, optional)";
+    var allow=document.createElement("textarea");allow.className="allow";allow.value=g.allow||"";allow.placeholder="/admin/public/";
+    al.appendChild(allow);
+    paths.appendChild(dl);paths.appendChild(al);
+    var cdWrap=document.createElement("div");cdWrap.style.marginTop="8px";
+    var cdLbl=document.createElement("label");cdLbl.className="lbl";cdLbl.textContent="Crawl-delay in seconds (optional, honored by Bing/Yandex)";
+    var cd=document.createElement("input");cd.type="number";cd.min="0";cd.step="1";cd.className="cd";cd.value=g.cd||"";cd.placeholder="e.g. 10";
+    cdLbl.appendChild(cd);cdWrap.appendChild(cdLbl);
+    d.appendChild(head);d.appendChild(uaWrap);d.appendChild(paths);d.appendChild(cdWrap);
+    del.addEventListener("click",function(){if(list.querySelectorAll(".grp").length<=1)return;d.remove();renumber();build();});
+    [ua,dis,allow,cd].forEach(function(el){el.addEventListener("input",build);});
+    list.appendChild(d);
+  }
+  function renumber(){
+    var gs=list.querySelectorAll(".grp");
+    gs.forEach(function(d,i){d.querySelector(".num").textContent="Group "+(i+1);
+      d.querySelector(".del").style.visibility=gs.length>1?"visible":"hidden";});
+  }
+  function build(){
+    var blocks=[];
+    list.querySelectorAll(".grp").forEach(function(d){
+      var ua=cleanLine(d.querySelector(".ua").value)||"*";
+      var dis=lines(d.querySelector(".dis").value),allow=lines(d.querySelector(".allow").value);
+      var b=["User-agent: "+ua];
+      allow.forEach(function(p){b.push("Allow: "+(p.charAt(0)==="/"?p:"/"+p));});
+      if(dis.length)dis.forEach(function(p){b.push("Disallow: "+(p.charAt(0)==="/"?p:"/"+p));});
+      else b.push("Disallow:");
+      var cd=cleanLine(d.querySelector(".cd").value);
+      if(cd!==""&&!isNaN(+cd)&&+cd>=0)b.push("Crawl-delay: "+(+cd));
+      blocks.push(b.join("\n"));
+    });
+    var txt=blocks.join("\n\n");
+    var sm=lines(sitemap.value);
+    if(sm.length)txt+="\n\n"+sm.map(function(u){return "Sitemap: "+u;}).join("\n");
+    code.textContent=txt+"\n";
+    return code.textContent;
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Copied ✓");},function(){fallback(text,b);});
+    } else fallback(text,b);
+  }
+  function fallback(text,b){
+    try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+      document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Copied ✓");}
+    catch(e){flash(b,"Please copy manually");}
+  }
+  function download(){
+    var blob=new Blob([build()],{type:"text/plain"});var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");a.href=url;a.download="robots.txt";document.body.appendChild(a);a.click();
+    document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  }
+  document.querySelectorAll("[data-preset]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      list.innerHTML="";sitemap.value="";
+      PRESETS[btn.getAttribute("data-preset")].forEach(function(g){group(g);});
+      renumber();build();
+    });
+  });
+  document.getElementById("add").addEventListener("click",function(){group();renumber();build();});
+  document.getElementById("copy").addEventListener("click",function(){copy(build(),this);});
+  document.getElementById("download").addEventListener("click",download);
+  sitemap.addEventListener("input",build);
+  group(PRESETS.allow[0]);renumber();build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
