@@ -11,8 +11,14 @@
   - 3 Hebel gerankt: (1) **Kauf auf Rechnung/TWINT** am Checkout (13→0 = User-only, CembraPay), (2) Mobile-ATC, (3) SEO.
 **🛒 KAUF-BLOCKER GEFIXT (still, teuer):** Der Zirkonia-Ring (#1-Produkt-Landing, 64 Sess/Mt) war zwar ACTIVE
   (gestern reaktiviert), aber **`inventoryPolicy: DENY` + 0 Bestand = „ausverkauft", Kaufen gesperrt** → 0 ATC trotz
-  Traffic. → via `productVariantsBulkUpdate` auf **CONTINUE** gesetzt = jetzt kaufbar. Restlicher Katalog gescannt = gesund
-  (CONTINUE). **LEHRE:** Status ACTIVE ≠ kaufbar — Bestands-Policy prüfen. (Brain: `kauf_blocker_deny_inventar_2026`.)
+  Traffic. → via `productVariantsBulkUpdate` auf **CONTINUE** gesetzt = jetzt kaufbar + **TWINT in Trust-Zeile + SEO** ergänzt.
+  **LEHRE:** Status ACTIVE ≠ kaufbar — Bestands-Policy prüfen. (Brain: `kauf_blocker_deny_inventar_2026`.)
+**🐝 AGENTEN-SCHWARM (8 Audit + 2 Fix + 4 Recherche parallel):** Funnel technisch SAUBER (WELCOME10/Policies/200) →
+  Checkout-Tod = **Zahlungsanbieter** (User-Hebel #1). Bilder sauber. PDP-#1-Lücke = Reviews (Judge.me-Token nötig).
+  ~12 Duplikat-Cluster (nicht blind konsolidiert). **Kollektionen gefixt:** Beauty-Tools 196→164 (28 Gaming-„Controller"
+  raus, Stem „Roller"), Röcke −2 Büro-Ordner. **Uhren (~50 Wanduhren/Uhrenbeweger) + Taschen (~14 Werkzeug)** = disjunktiv,
+  brauchen TAG/TYPE-Migration (kontrolliert, nicht blind). **22 .bat** auf ASCII-only. **Brain: 156 Regeln.**
+  **Dauer-Recherche-Schwarm fest verankert** (Netz+YouTube zu Zahlung/Creatives/Social/Mobile-CRO).
 
 ## 2026-06-21 (GROSSE SUPERBOT-SESSION — Selbstheilung, AI-Selektoren, Konten, Doppelpost überall)
 **🤖 Super-Bot-Ausbau (alles gepusht, läuft ohne User):**
