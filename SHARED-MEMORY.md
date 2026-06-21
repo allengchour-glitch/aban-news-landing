@@ -1329,3 +1329,21 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   die 2.82K „page unavailable" + 317 „missing image" + Drug-Flag sollten sich über Stunden–3 Tage klären (alles war stale).
 - **⚠️ Watch:** Wenn die Zahl WIEDER steigt → Cloudflare Bot Fight Mode ist erneut an → Dashboard → Security → Bots → AUS.
   Sonst nichts zu tun; Shop-Seite ist nachweislich sauber. Microsoft/Bing danach via „Import from Google" (optional, User).
+
+## 📌 2026-06-20 Teil 18 (🔍 DISCOVERY: 8 neue Top-Bereiche gefunden + erste 40 importiert)
+- **Lern-Transfer aus YouTube (Obsidian+Claude-Code „zweites Gehirn"):** datenbasiert neue Bereiche gefunden statt geraten.
+- **8 neue Kategorien in `bigbuy_import.mjs` ergänzt** (committet `cc40d509`) + DRY/Live-Discovery zeigt Kandidaten-Volumen:
+  | Bereich | Kandidaten | |
+  |---|---|---|
+  | 🎒 Rucksäcke & Schulranzen (`rucksaecke`→`rucksaecke`) | **3.229** | Goldgrube (Safta etc.) |
+  | 💡 Beleuchtung & Lampen (`beleuchtung`→`beleuchtung-lampen`) | **1.397** | sehr stark |
+  | 🌿 Garten & Balkon (`garten`→`garten-balkon`) | **1.130** | stark |
+  | 💇 Haarstyling & Tools (`haarstyling`→`haarstyling-tools`) | 512 | gut |
+  | ⛺ Camping & Outdoor (`camping`→`camping-outdoor`) | 304 | solide |
+  | 🍸 Bar & Wein (`bar`→`bar-wein`) | 302 | solide |
+  | 🏊 Pool & Schwimmen (`pool`→`pool-schwimmen`) | 273 | solide (Sommer) |
+  | 🚗 Auto-Zubehör (`auto`→`auto-zubehoer`) | 48 | ⚠️ dünn, Anchor zu eng → später lockern |
+- **Erste Welle: +40 Produkte** aus den 8 Bereichen (`407776ce`), voll merchant-clean. **PER-Cap erreicht → VIEL mehr Stock da**
+  (v.a. Rucksäcke/Beleuchtung/Garten) → künftige Wellen weiter mit `CATS=rucksaecke,beleuchtung,garten,haarstyling,camping,bar,pool`.
+- **⚠️ Lehre Hintergrund-Runner:** Lange gekettete `nohup`-Bash-Runner (`chain_waves.sh`) sind in dieser Umgebung FRAGIL
+  (zwischen Turns/durch `pkill -f bigbuy` gekillt). Besser: EINE Welle pro Turn starten + im selben Turn auf Ende warten.
