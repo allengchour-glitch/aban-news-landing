@@ -1286,3 +1286,14 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   WM 2026 (53, timely) ✅ · Highlights (26) · Premium-Geschenke (1021, smart). Hero „Sommer-Mode 2026" = saisonal aktuell.
 - **Lehre:** Startseiten-„Neu"-Sektion IMMER an einen lieferanten-übergreifenden Tag (`dropship`) + CREATED_DESC binden,
   NICHT an `cj-real` (sonst fehlen BigBuy-Importe). Gilt auch für künftige neue Lieferanten → deren Produkte `dropship` taggen.
+
+## 📌 2026-06-20 Teil 14 (✨ Startseite vergoldet — Abschluss-Banner ganz unten)
+- **User „Startseite vergolden mit Banner ganz unten (Kategorie)":** neue Sektion **`banner_kategorien`** ans Ende von
+  `templates/index.json` (Live-MAIN-Theme) gehängt — geklont aus der validen **Hero**-Sektion (Schema garantiert gültig,
+  DRY-validiert vor Upsert). Text „Über 3'500 Markenprodukte – finde deinen Stil", Button **„Alle Marken & Kategorien
+  entdecken" → `/pages/marken-kategorien`** (die Filter-Hub-Seite). Position 9/9, zentriert. Schliesst die Startseite mit
+  starkem Kategorie-CTA ab.
+- **Methode (wiederverwendbar, sicher):** Banner/Section live hinzufügen = bestehende valide Sektion (hero) deep-clonen,
+  nur Text/Button/Alignment ändern, neuen Key + an `order` anhängen, `JSON.parse` validieren, dann `themeFilesUpsert`
+  (`templates/index.json`, body type TEXT). Theme-ID in `/tmp/theme_id.txt`. ⚠️ Customizer kann index.json überschreiben.
+  Bild = aktuell dasselbe Hero-Bild (luxestyleherov2.png); im Customizer austauschbar für mehr Abwechslung.
