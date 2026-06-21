@@ -1313,3 +1313,12 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   sichtbar) → Google re-validiert → 2.82K + 317 + Drug-Flag klären sich, da die Seiten jetzt erreichbar sind. Google
   re-crawlt auch automatisch über Tage. **Kein API/Shop-Eingriff bringt mehr — die Shop-Seite ist nachweislich sauber.**
 - ⚠️ Falls die Zahl WIEDER steigt: Bot Fight Mode ist erneut an → Cloudflare-Dashboard → Security → Bots → AUS (User).
+
+## 📌 2026-06-20 Teil 16 (Wave 6+7, +2 Artikel, Catch-up) — UPDATE
+- **Wave 6: +40 Produkte** (herrenmode/schuhe/fitness/beauty/küche/büro/werkzeug/haustier), selbst committet `0f38b3fa`.
+- **Wave 7: +16 Produkte** (vor Clean gestoppt auf saturiertem haustier) → per GMC-Catch-up nachgecleant (Kategorie/age/
+  gender/Farbe/Specs+Trust/SEO). Ledger committet `672452a6`.
+- **+2 Kaufberater** (Caps & Sommerhüte → caps-hute · Küchenhelfer → sub-kueche) → Blog **~109 Artikel**.
+- **Session-Produkt-Summe: ~144 neue** (28+24+20+16+40+16), alle katalogweit merchant-clean verifiziert.
+- **Google-Listing-Status:** alle Pflicht-/Empfohlen-Felder erfüllt (title/desc/link/image/price/availability/brand/gtin-o.-
+  custom/condition/google_product_category 100%/age/gender/color/SEO). EINZIG offen = **Re-Crawl „Request website check"** (User).
