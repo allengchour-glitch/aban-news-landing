@@ -1077,6 +1077,14 @@
       "weitere": "Login-Ablauf fixen: WARME Sessions (Cookies/localStorage persistieren) statt frischer Logins; puppeteer-stealth ist seit Feb2025 DEPRECATED+detektiert -> Patchright/Camoufox. Self-Update: good-SHA pinnen, nach Pull Smoke-Test (--dry/health), bei Fail git reset --hard auf last-good + Alarm. Orchestrator+stateless Workers FLACH halten (40% Multi-Agent scheitern, jeder Hop +950ms/3x Token).",
       "umgesetzt_bisher": "resilience.mjs (withRetry/errorSink/deadLetter/guard/heartbeat), cmd-poll self-pull, LuxeHealth, post-health zeigt failures.jsonl. NAECHST: heartbeat in cmd-poll, Stagehand-Wrapper, Smoke-Test+Rollback.",
       "stand": "2026-06-21"
+    },
+    "tiktok_konten_karte_2026": {
+      "quelle": "Konto-Analyse-Bot 2026-06-21 (reports/tiktok-accounts.json + Screenshots).",
+      "RICHTIG": "7643589765259493393 (Luxestlye Ch0524) = DAS Konto: 90 CHF Guthaben, 63.71 ausgegeben, 130863 Impressionen, 0 Conversions. Kampagnen NUR hier (aadvid in tiktok-campaign-port.mjs).",
+      "KEIN_ZUGRIFF": "7646349875793182738 = \"You dont have permission to access this account\" - NICHT des Users Konto. War die Ursache aller Onboarding/permission-Waende. NIE benutzen.",
+      "ZU_PRUEFEN": "7646326014504976401 (Luxestlye Ch, Ads Manager) + 7646326045779476481 (Luxestlye Ch, Business Center) = 2 weitere Konten, evtl. auch Guthaben -> Analyse erweitert (alle 4 IDs in KNOWN). Bot zieht IDs jetzt autonom aus Dropdown-Text ID:.",
+      "lehre": "User hat 4 TikTok-Werbekonten. Immer alle per Konto-Analyse pruefen (Guthaben+Pixel), Kampagnen ins funded Ch0524.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
