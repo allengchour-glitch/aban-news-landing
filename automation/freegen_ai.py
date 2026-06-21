@@ -115,3 +115,27 @@ def image_copy(title, desc, timeout=30):
         return {"kicker": str(o.get("kicker") or "").strip(), "headline": head, "subline": str(o.get("subline") or "").strip()}
     except Exception:
         return None
+
+
+def carousel_copy(topic, desc="", timeout=30):
+    """Gibt Slides für ein Social-Karussell zurück: [hook, punkt1..3, cta] oder None."""
+    sys = ("Du bist ein nüchterner deutscher Social-Media-Texter (anti-hype, kein Clickbait). "
+           "Schreibe ausschliesslich natürliches, korrektes Deutsch — keine englischen Wörter. "
+           "Erfinde KEINE Fakten/Zahlen. Antworte NUR mit kompaktem JSON.")
+    prompt = (
+        f'Thema: "{topic}". Kontext: "{(desc or "")[:400]}".\n'
+        'Erstelle ein 5-Slide-Social-Karussell. Gib JSON mit genau diesen Schlüsseln:\n'
+        '{"hook":"neugierig machender Aufmacher, max 7 Wörter","punkt1":"konkreter Tipp, max 9 Wörter",'
+        '"punkt2":"konkreter Tipp, max 9 Wörter","punkt3":"konkreter Tipp, max 9 Wörter","cta":"Handlungsaufruf, max 6 Wörter"}\n'
+        "Natürliches Deutsch, jede Zeile für sich verständlich, ohne Emojis, ohne Anführungszeichen im Text."
+    )
+    txt = _chat(prompt, sys, max_tokens=300)
+    if not txt:
+        return None
+    try:
+        o = json.loads(txt[txt.find("{"):txt.rfind("}") + 1])
+        out = [o.get("hook"), o.get("punkt1"), o.get("punkt2"), o.get("punkt3"), o.get("cta")]
+        out = [str(x).strip() for x in out if x and str(x).strip()]
+        return out if len(out) >= 4 else None
+    except Exception:
+        return None
