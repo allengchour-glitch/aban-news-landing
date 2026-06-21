@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-20",
+  "updated": "2026-06-21",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1030,6 +1030,13 @@
       "hebel": "automation/reviews-import.mjs importiert ECHTE >=4-Stern-Lieferanten-Reviews (Judge.me) - braucht JUDGEME_PRIVATE_TOKEN (User-Secret, am PC). Prioritaet: zuerst auf die TOP-TRAFFIC-Produkte (damen-mode-Kleider, Zirkonia-Ring, Highlights) importieren, nicht breit.",
       "bekannte_bewertete": "Es gibt vereinzelt bewertete (Slim Wallet 5*, Herrenuhr 5*, Jade Roller 5*, Bali 4.93*, Ibiza 4.47*) -> diese als Social-Proof auf Home/Top-Collection sichtbar machen (Theme).",
       "stand": "2026-06-20"
+    },
+    "katalog_sweep_archived_2026_06_21": {
+      "collections": "highlights (26) alle ACTIVE. sommer (116) + damen-mode (848) haben vereinzelt ARCHIVED - aber Storefront blendet archivierte aus = KEIN Kunden-Leak (nur Direkt-Link-Landings wie der Ring zaehlen).",
+      "archived_ad_tags": "Masse archivierter Hero/BlackFriday-Produkte = MUELL-DUBLETTEN (LuxePods/Beauty-Wand/Sleep-Maske/Kerzen-Warmer deal-2..7, ALLE ohne Bild) - korrekt archiviert, kein Wert, evtl. spaeter bulk-loeschen (destruktiv, niedrige Prio).",
+      "ex_heroes_clean": "3 saubere Ex-Heroes archiviert MIT Bild: Thermosflasche 750ml (15401508995457), Premium-Leder-Rucksack (15401597534593), Diver Pro Automatic Uhr (15406499529089). KEIN messbarer Traffic (nicht Top-15-Landing) -> NICHT blind reaktiviert (Ring war wegen 64 Sess daten-belegt; diese nicht, koennten retired/Lieferant-aus sein). Bei Traffic-Nachweis reaktivieren.",
+      "lehre": "Archivierte mit Bild + TRAFFIC = reaktivieren (Ring). Archivierte ohne Bild = Muell, lassen. Archivierte mit Bild ohne Traffic = nicht blind anfassen.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
