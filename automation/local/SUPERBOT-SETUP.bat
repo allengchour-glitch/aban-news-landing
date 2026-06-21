@@ -15,6 +15,7 @@ set "VA=%DIR%VOLLAUTOMAT.ps1"
 echo [1/6] Haengende Prozesse beenden (loest Git-Lock)...
 taskkill /F /IM node.exe >nul 2>&1
 taskkill /F /IM powershell.exe >nul 2>&1
+taskkill /F /IM brave.exe >nul 2>&1
 REM Listener-Autostart entfernen (der hielt Dateien gesperrt):
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\LuxeStyle-Bot.lnk" >nul 2>&1
 del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\LuxeStyle-Listener.lnk" >nul 2>&1
