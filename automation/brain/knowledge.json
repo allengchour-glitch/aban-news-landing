@@ -1057,6 +1057,13 @@
       "stand": "2026-06-21",
       "RICHTIGE_ID": "KORRIGIERT 2026-06-21: Das richtige funktionierende Werbekonto ist \"Luxestlye Ch0524\" aadvid=7643589765259493393 (NICHT 7646349875793182738 = leer/onboarding). Hat 90 CHF Guthaben, 63.71 CHF Historie, 130863 Impressionen, 0 Conversions. Zahlung eingerichtet. Onboarding-Wand kam vom FALSCHEN aadvid. Login via separater E-Mail.",
       "balance": "90 CHF Guthaben vorhanden -> ATC-Kampagne (Cap 70) spendet daraus. Achtung: \"Verify phone number\"-Banner aktiv (evtl. noch zu bestaetigen)."
+    },
+    "tiktok_mehrere_konten_2026": {
+      "fest": "User 2026-06-21 \"habe mehrere konto, merke dir das\" + \"ich weiss nur nicht mehr\" (welches richtig ist).",
+      "RICHTIGES_KONTO": "Das FUNDED, benutzte Konto = \"Luxestlye Ch0524\", aadvid 7643589765259493393. Erkennbar an: 90 CHF Guthaben + Historie 63.71 CHF + 130863 Impressionen + Pixel laeuft. DAS ist das richtige fuer Kampagnen.",
+      "FALSCHES_KONTO": "7646349875793182738 (\"LuxeStyle CH Ads\") = LEER/Onboarding-Wand (Add business info) -> NIE benutzen. War der Grund fuer alle gescheiterten Kampagnen.",
+      "regel": "Bei TikTok-Ads IMMER aadvid=7643589765259493393 in die URL (in tiktok-campaign-port.mjs gesetzt). Identifikation des richtigen Kontos = das mit GUTHABEN + Impressions-Historie, nicht der Name. User muss sich nichts merken - Bot weiss es.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
