@@ -1233,3 +1233,14 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
 - **Menu-Edit-Rezept (wiederverwendbar):** `menuUpdate(id,title,handle,items)` ersetzt den GANZEN Baum → vorher volle
   Struktur ziehen, rekursiv auf `MenuItemUpdateInput{title,type,url|resourceId,tags,items}` mappen, Item einfügen,
   Item-Count vorher/nachher prüfen (Integritäts-Guard), dann schreiben. Main-Menu-Items sind alle type HTTP+url.
+
+## 📌 2026-06-20 Teil 9 (📝 Content-Offensive Gemini: +4 Kaufberater → 101 Artikel; Welle 3+4)
+- **Groq-Tageslimit weiter erreicht → alle neuen Artikel via Gemini 2.5-flash** (Blog-Motor `ai_blog_writer.mjs`).
+- **+4 Kaufberater live** (Ratgeber), füllen klare Lücken zu starken Collections:
+  Gaming-Zubehör (→gaming 200) · Handy-Zubehör (→handy-zubehoer 94 + ladegeraete 45) · Haustierzubehör (→sub-haustier
+  **288**) · Fitness zuhause (→fitness 168). **Blog jetzt ~101 Artikel**, alle conversion-verlinkt.
+- **Produkt-Wellen 3+4 (Niche):** Welle 3 **+24** (caps/hoodies/gürtel/werkzeug/küche/reise/metalldetektor, committet `4f0be1ee`).
+  Welle 4 (fussball/trikot/fitness/haustier/audio/beauty/sets) — **fussball/trikot saturiert** (WM-Trikots schon im Katalog,
+  „keine geeigneten TOP-Kandidaten") → erwartbar; Rest läuft. **Session-Summe Produkte: ~52+ neu**, alle Merchant-sauber.
+- **Content-Lehre:** Buyer-Intent-Artikel zu Collections OHNE Artikel = bester autonomer Reichweiten-Hebel (kein User-Klick).
+  Noch offene Collection-Lücken für künftige Artikel: caps-hute, sub-bart-rasur, herren-hemden, beauty-marken.
