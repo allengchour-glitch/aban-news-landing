@@ -1395,3 +1395,7 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
 - **Fix:** Menü-Punkt **„📖 Ratgeber" → /blogs/ratgeber** ins Hauptmenü (Position vor „1. August"), via sicherem menuUpdate
   (143→144, alle erhalten). Jetzt sind alle 124 Artikel intern verlinkt → besser crawlbar + auffindbar.
 - **Lehre:** Content NUR wirksam wenn VERLINKT. Künftig: neuer Blog/neue Sektion IMMER ins Menü/Footer hängen, sonst SEO-tot.
+
+## 📌 2026-06-21 Teil 22 (+2 Cluster-Artikel, Ratgeber im Menü verifiziert)
+- +2 Kaufberater (Damenuhren→sub-uhren, Powerbank→ladegeraete), mit Link auf Ratgeber-Hub (Cluster). **Blog ~126 Artikel.**
+- Ratgeber-Blog rendert (200) + jetzt im Hauptmenü → alle Artikel intern verlinkt/crawlbar.
