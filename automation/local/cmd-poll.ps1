@@ -10,8 +10,19 @@ if (-not ($args -contains '-reexec')) {
   $before = (git rev-parse HEAD 2>$null)
   git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null | Out-Null
   $after = (git rev-parse HEAD 2>$null)
-  if ($before -and $after -and ($before -ne $after)) { & powershell -ExecutionPolicy Bypass -File $PSCommandPath -reexec; exit }
+  if ($before -and $after -and ($before -ne $after)) {
+    # SMOKE-TEST + AUTO-ROLLBACK (Recherche 2026-06-21): bricht ein gepulltes node-Script syntaktisch,
+    # zurueck auf last-good-SHA, damit ein kaputter Push den PC NIE lahmlegt.
+    $bad = $false
+    foreach ($s in @("automation/local/cmd-poll-helpers.check","automation/local/post-health.mjs","automation/local/tiktok-upload-browser.mjs","automation/lib/resilience.mjs")) {
+      if ((Test-Path $s) -and ($s -like "*.mjs")) { node --check $s 2>$null; if ($LASTEXITCODE -ne 0) { $bad = $true } }
+    }
+    if ($bad) { git reset --hard $before 2>$null | Out-Null; "ROLLBACK $((Get-Date).ToString('o')): kaputter Pull -> zurueck auf $before" | Out-File -Append "reports\selfupdate-rollback.txt" }
+    else { & powershell -ExecutionPolicy Bypass -File $PSCommandPath -reexec; exit }
+  }
 }
+# HEARTBEAT (Recherche 2026-06-21): jeder Poll schreibt Lebenszeichen -> Cloud/Worker sieht ob PC laeuft.
+try { @{ ts = (Get-Date).ToString("o"); task = "cmd-poll"; head = (git rev-parse --short HEAD 2>$null) } | ConvertTo-Json -Compress | Set-Content "reports\heartbeat.json" -EA SilentlyContinue } catch {}
 # SINGLE-INSTANCE, aber STALE-TOLERANT (FIX 2026-06-20 v2 "PC immer aktiv, Queue waechst trotzdem"):
 # Der alte Global-Mutex blockierte FUER IMMER, wenn ein Lauf an einem Browser/node-Aufruf haengen blieb
 # (Lock nie freigegeben -> jeder neue Poll stieg sofort aus -> Kanal tot). Jetzt: Lock-DATEI mit Zeitstempel.

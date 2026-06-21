@@ -1070,6 +1070,13 @@
       "auftrag": "Volle Steuerung + Selbst-Entwicklung: jede Session (1) Stack-Health pruefen, (2) hoechst-wirksame Schwaeche selbst fixen, (3) recherchieren+anwenden, (4) committen+pushen, (5) Memory updaten. Self-pull (cmd-poll) = Selbst-Update. LuxeHealth = Selbst-Check. Ziel: laeuft + verbessert sich ohne User.",
       "architektur_ziel": "Aus Skript-Sprawl -> Orchestrator+Subagenten, error-sink, withRetry, dead-letter, Skills (Recherche-Lehre). Robustheit > neue Features. Fragile Browser-Bots via Screenshot-QA-Loop iterieren.",
       "stand": "2026-06-21"
+    },
+    "superbot_architektur_2026": {
+      "quelle": "Recherche-Agent 2026-06-21 (Stagehand/BullMQ/Patchright/Worker-Health, HIGH-Konfidenz OSS).",
+      "top3_hebel": "(1) AI-SELEKTOREN: Stagehand (MIT, Browserbase) act/extract/observe via Accessibility-Tree, CDP-NATIV -> haengt direkt an Brave Port 9222, cached Selektoren, fragt LLM nur bei Bruch (billig+selbstheilend), LLM via unseren Groq/Gemini-Router. Loest die Browser-Fragilitaet (Profil/ig-delete/Kampagne/Markt). Alt: browser-use (Python). (2) IDEMPOTENTE JOBS: BullMQ (Node/Redis) attempts+exponential-backoff+JITTER + DEAD-LETTER + stalled-job-detection (Heartbeat/Lock) = killt Haenger+Doppelpost; Job-ID = Idempotenz-Key (hash media+platform+tag). (3) HEARTBEAT-WATCHDOG: PC schreibt heartbeat.json (ts,last-task,queue,login), Worker /health alarmiert wenn stale -> schliesst die can-not-observe-PC-Luecke.",
+      "weitere": "Login-Ablauf fixen: WARME Sessions (Cookies/localStorage persistieren) statt frischer Logins; puppeteer-stealth ist seit Feb2025 DEPRECATED+detektiert -> Patchright/Camoufox. Self-Update: good-SHA pinnen, nach Pull Smoke-Test (--dry/health), bei Fail git reset --hard auf last-good + Alarm. Orchestrator+stateless Workers FLACH halten (40% Multi-Agent scheitern, jeder Hop +950ms/3x Token).",
+      "umgesetzt_bisher": "resilience.mjs (withRetry/errorSink/deadLetter/guard/heartbeat), cmd-poll self-pull, LuxeHealth, post-health zeigt failures.jsonl. NAECHST: heartbeat in cmd-poll, Stagehand-Wrapper, Smoke-Test+Rollback.",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
