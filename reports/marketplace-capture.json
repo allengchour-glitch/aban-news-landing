@@ -1,23 +1,173 @@
 {
-  "ts": "2026-06-21T09:07:07.011Z",
+  "ts": "2026-06-21T09:17:06.967Z",
   "pages": [
     {
       "site": "tutti",
-      "tried": "https://www.tutti.ch/de/account/messages",
-      "url": "https://www.tutti.ch/de/account/messages",
-      "title": "",
+      "url": "https://www.tutti.ch/de/messages/buying",
+      "title": "Nachrichten - tutti.ch",
+      "is404": false,
       "loggedIn": true,
-      "body": "Hoppla! Wir konnten die gesuchte Seite nicht finden. Du kannst auch ein neues Inserat aufgeben oder uns kontaktieren. Suchen Registrieren Hilfe Kontakt Jobs Medien Sicherheitshinwe",
-      "screenshot": "01-tutti.png"
+      "body": "Schütze dich vor Phishing! Erkenne betrügerische E-Mails, Links, SMS und QR-Codes. Gib weder Zugangsdaten noch Kreditkarteninformationen weiter. tutti.ch bietet",
+      "screenshot": "02-tutti.png"
+    },
+    {
+      "site": "tutti",
+      "url": "https://www.tutti.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "title": "13'587 Inserate in Immobilien - Häuser - tutti.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis allen ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurücks",
+      "screenshot": "03-tutti.png"
+    },
+    {
+      "site": "tutti",
+      "url": "https://www.tutti.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "title": "13'587 Inserate in Immobilien - Häuser - tutti.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis allen ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurücks",
+      "screenshot": "04-tutti.png"
+    },
+    {
+      "site": "tutti",
+      "url": "https://www.tutti.ch/de/q/immobilien-zuerich-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9ur2dlby1jaXR5LXp1cmljaMA",
+      "title": "9 Inserate in Immobilien - Mieten - Häuser - Zürich - tutti.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis allen ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurücks",
+      "screenshot": "05-tutti.png"
+    },
+    {
+      "site": "tutti",
+      "url": "https://www.tutti.ch/de/q/immobilien-genf-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9ur2dlby1jaXR5LWdlbmV2ZcA",
+      "title": "6 Inserate in Immobilien - Mieten - Häuser - Genf - tutti.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis allen ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurücks",
+      "screenshot": "06-tutti.png"
+    },
+    {
+      "site": "tutti",
+      "url": "https://www.tutti.ch/de/q/immobilien-basel-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9urmdlby1jaXR5LWJhc2VswA",
+      "title": "8 Inserate in Immobilien - Mieten - Häuser - Basel - tutti.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis allen ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurücks",
+      "screenshot": "07-tutti.png"
     },
     {
       "site": "anibis",
-      "tried": "https://www.anibis.ch/de/messages",
-      "url": "https://www.anibis.ch/de/messages",
-      "title": "",
+      "url": "https://www.anibis.ch/de/user/profile",
+      "title": "Mein Profil - anibis.ch",
+      "is404": false,
       "loggedIn": true,
-      "body": "Oups! Nous ne pouvons pas trouver cette page. Si vous voulez, vous pouvez insérer une nouvelle annonce ou nous contacter. Cherchez Inscrivez-vous Aide Contact Jobs Médias Conseils ",
-      "screenshot": "02-anibis.png"
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis alleng Mein Profil Verknüpfung Mein Profil Öffentliches Profil Sicherheit Logge dich ein, um deine Sic",
+      "screenshot": "09-anibis.png"
+    },
+    {
+      "site": "anibis",
+      "url": "https://www.anibis.ch/de/user/messages",
+      "title": "",
+      "is404": true,
+      "loggedIn": true,
+      "body": "Oups! Nous ne pouvons pas trouver cette page. Si vous voulez, vous pouvez insérer une nouvelle annonce ou nous contacter. Cherchez Inscrivez-vous Aide Contact J",
+      "screenshot": "10-anibis.png"
+    },
+    {
+      "site": "anibis",
+      "url": "https://www.anibis.ch/de/messages/buying",
+      "title": "Nachrichten - anibis.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Schütze dich vor Phishing! Erkenne betrügerische E-Mails, Links, SMS und QR-Codes. Gib weder Zugangsdaten noch Kreditkarteninformationen weiter. anibis.ch biete",
+      "screenshot": "11-anibis.png"
+    },
+    {
+      "site": "anibis",
+      "url": "https://www.anibis.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "title": "12'229 Inserate in Immobilien - Häuser - anibis.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis alleng ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurück",
+      "screenshot": "12-anibis.png"
+    },
+    {
+      "site": "anibis",
+      "url": "https://www.anibis.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "title": "12'229 Inserate in Immobilien - Häuser - anibis.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis alleng ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurück",
+      "screenshot": "13-anibis.png"
+    },
+    {
+      "site": "anibis",
+      "url": "https://www.anibis.ch/de/q/immobilien-zuerich-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9ur2dlby1jaXR5LXp1cmljaMA",
+      "title": "10 Inserate in Immobilien - Mieten - Häuser - Zürich - anibis.ch",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Artikel versenden Neu Nachrichten Inserat aufgeben Gratis alleng ​ Fahrzeuge Immobilien Mode Elektronik Zuhause Hobbys Dienstleistungen Familie Kategorie Zurück",
+      "screenshot": "14-anibis.png"
+    },
+    {
+      "site": "ricardo",
+      "url": "https://www.ricardo.ch/de/c/o/games-spielkonsolen-39563/",
+      "title": "Entdecke Kategorien in Games & Spielkonsolen | Ricardo",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Angebot erstellen Favoriten 0 Benachrichtigungen A allengchour DE Alle Kategorien Kleidung & Accessoires Fahrzeuge Haushalt & Wohnen Sport Handwerk & Garten Com",
+      "screenshot": "16-ricardo.png"
+    },
+    {
+      "site": "ricardo",
+      "url": "https://www.ricardo.ch/de/c/games-82019/",
+      "title": "Konsolenspiele kaufen - Riesige Auswahl | Gebraucht & Neu | Ricardo",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Angebot erstellen Favoriten 0 Benachrichtigungen A allengchour DE Alle Kategorien Kleidung & Accessoires Fahrzeuge Haushalt & Wohnen Sport Handwerk & Garten Com",
+      "screenshot": "17-ricardo.png"
+    },
+    {
+      "site": "ricardo",
+      "url": "https://www.ricardo.ch/de/c/bienenhaeuser-82332/",
+      "title": "Bienenhäuser kaufen: Grosse Auswahl & Top Preise | Gebraucht & Neu | Ricardo",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Angebot erstellen Favoriten 0 Benachrichtigungen A allengchour DE Alle Kategorien Kleidung & Accessoires Fahrzeuge Haushalt & Wohnen Sport Handwerk & Garten Com",
+      "screenshot": "18-ricardo.png"
+    },
+    {
+      "site": "ricardo",
+      "url": "https://www.ricardo.ch/de/a/eames-fiberglass-armchair-design-klassiker-1290952442/",
+      "title": "Eames Fiberglass Armchair Design Klassiker (Gebraucht) in Bern für CHF 450 – nur Abholung auf Ricardo kaufen",
+      "is404": false,
+      "loggedIn": true,
+      "body": "Angebot erstellen Favoriten 0 Benachrichtigungen A allengchour DE Alle Kategorien Kleidung & Accessoires Fahrzeuge Haushalt & Wohnen Sport Handwerk & Garten Com",
+      "screenshot": "19-ricardo.png"
     }
-  ]
+  ],
+  "discovered": {
+    "tutti": [
+      "https://www.tutti.ch/de/messages/buying",
+      "https://www.tutti.ch/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "https://www.tutti.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "https://www.tutti.ch/de/q/immobilien-zuerich-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9ur2dlby1jaXR5LXp1cmljaMA",
+      "https://www.tutti.ch/de/q/immobilien-genf-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9ur2dlby1jaXR5LWdlbmV2ZcA",
+      "https://www.tutti.ch/de/q/immobilien-basel-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9urmdlby1jaXR5LWJhc2VswA"
+    ],
+    "anibis": [
+      "https://www.anibis.ch/de/user/profile",
+      "https://www.anibis.ch/de/user/messages",
+      "https://www.anibis.ch/de/messages/buying",
+      "https://www.anibis.ch/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "https://www.anibis.ch/de/q/immobilien-haeuser/Ak8CqcmVhbEVzdGF0ZZSRkqtsaXN0aW5nVHlwZaVob3VzZcDAwA",
+      "https://www.anibis.ch/de/q/immobilien-zuerich-haeuser-mieten/Ak8CqcmVhbEVzdGF0ZZSSkqtsaXN0aW5nVHlwZaVob3VzZZKpcHJpY2VUeXBlpFJFTlTAwJGTqGxvY2F0aW9ur2dlby1jaXR5LXp1cmljaMA"
+    ],
+    "ricardo": [
+      "https://www.ricardo.ch/de/c/o/games-spielkonsolen-39563/",
+      "https://www.ricardo.ch/de/c/games-82019/",
+      "https://www.ricardo.ch/de/c/bienenhaeuser-82332/",
+      "https://www.ricardo.ch/de/a/eames-fiberglass-armchair-design-klassiker-1290952442/"
+    ]
+  }
 }
