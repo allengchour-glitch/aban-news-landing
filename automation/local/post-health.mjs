@@ -63,6 +63,15 @@ const ageMin = (ts) => ts ? Math.round((Date.now() - new Date(ts).getTime()) / 6
     if (j.errors || j.last_error) out.errors.push(`Meta: ${JSON.stringify(j.errors || j.last_error)}`);
   } catch (e) { out.platforms.meta = { result: 'WORKER_NICHT_ERREICHBAR', detail: String(e).slice(0, 80) }; }
 
+  // --- Fehler-Sink (reports/failures.jsonl) der letzten 24h einsammeln ---
+  try {
+    const fl = fs.readFileSync(path.join(ROOT, 'reports/failures.jsonl'), 'utf8').trim().split('\n').filter(Boolean);
+    const recent = fl.slice(-15).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean)
+      .filter(e => (Date.now() - new Date(e.ts).getTime()) < 24 * 3600 * 1000);
+    out.recent_failures = recent.map(e => `${e.task}: ${String(e.error).slice(0, 80)}`);
+    for (const e of recent) out.errors.push(`failures.jsonl ${e.task}: ${String(e.error).slice(0, 80)}`);
+  } catch {}
+
   fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'reports/post-health.json'), JSON.stringify(out, null, 2));
 
