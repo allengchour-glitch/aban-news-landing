@@ -1347,3 +1347,20 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   (v.a. Rucksäcke/Beleuchtung/Garten) → künftige Wellen weiter mit `CATS=rucksaecke,beleuchtung,garten,haarstyling,camping,bar,pool`.
 - **⚠️ Lehre Hintergrund-Runner:** Lange gekettete `nohup`-Bash-Runner (`chain_waves.sh`) sind in dieser Umgebung FRAGIL
   (zwischen Turns/durch `pkill -f bigbuy` gekillt). Besser: EINE Welle pro Turn starten + im selben Turn auf Ende warten.
+
+## 📌 2026-06-21 Teil 19 (🤝 KOORDINATION: Produkte = andere Session + 📊 Selbst-Analyse)
+- **⚠️ User 2026-06-21: „die ANDERE Session macht jetzt regelmässig neue Produkte."** → DIESE Session **stoppt BigBuy-
+  Produkt-Wellen** (sonst Dubletten/Konflikt). Fokus hier ab jetzt: **Content/Blog, Shop-Polish, Analyse, Autobot-Setup,
+  Memory** — NICHT mehr Produkt-Import. (Wave 10 noch auslaufen lassen, dann keine neuen.)
+- **📊 SELBST-ANALYSE (echte Shopify-Analytics, ohne User):** 30T = **3.003 Sessions**, ABER bricht ein (1.496→145/Woche).
+  Quellen: **direct 1.819 (61% Bot/Junk) · social 1.117 (37% TikTok low-intent) · 🔴 search/organisch NUR 60 (2%)**.
+  Funnel VERBESSERT sich (letzte Woche: 145 Sessions → 9 Warenkörbe + 8 Checkouts). **„1 Kauf" = User-Eigentest #1003
+  (33.90 CHF, EXPIRED/nicht bezahlt) → weiterhin 0 echte Kundenkäufe.** **Lehre: Engpass = Reichweite + Traffic-QUALITÄT;
+  organischer Search (2%) ist der grösste Hebel → Content + Google-Feed (mein Fokus) ist datenbelegt richtig.**
+- **🔬 Self-Audit-Weg:** ShopifyQL geht NUR über Shopify-MCP `run-analytics-query` (Admin-API-Feld `shopifyqlQuery` existiert
+  NICHT) → Self-Audit nur in-Session via MCP. Queries: `FROM sessions SHOW sessions,sessions_with_cart_additions,
+  sessions_that_completed_checkout TIMESERIES week SINCE -30d` + `GROUP BY referrer_source`.
+- **🤖 „Alles selbstlaufend / Befehle selbst eingeben wenn User weg":** In dieser Cloud-Session **technisch nicht möglich**
+  (KEIN Scheduler/send_later/cron → kein Self-Wakeup; lange nohup-Runner sterben). **Einziger echter Always-on-Weg =
+  Cloudflare-Worker-Autopilot** (läuft auf CF-Cron unabhängig von Sessions) → braucht R2-Freischaltung + gültiges
+  Shopify-Token als Secret. Das ist der eine Hebel für „läuft auch wenn niemand da ist".
