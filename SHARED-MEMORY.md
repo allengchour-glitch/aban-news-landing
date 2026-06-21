@@ -7,6 +7,16 @@ identifier_exists/custom_product, Marke(vendor)/Zustand(condition=new)/availabil
 Bild >=250px, Beschreibung. Tools: automation/feed_polish.mjs / enrich_apparel_descriptions.mjs. = GROESSTER Gratis-Traffic-Hebel (gegen search=55).
 
 
+## 🛒 CONVERSION-SPEC PDP/CART ✅ (CizQ6 2026-06-21, aus CH-Konkurrenz-Recherche) — Theme-Session bitte umsetzen
+**Quelle:** `dropship/RESEARCH-2026-06-21.md` + Brain `conversion_aov_taktiken_2026` / `ch_recht_pricing_pbv_2026`. Alles UWG-safe.
+**PDP-Layout nahe Preis/Kaufbutton (oben→unten):** (1) Sterne+Anzahl (Judge.me, nur echte ≥4★) · (2) Preis CHF inkl. MwSt ·
+(3) Kaufbutton → direkt darunter **Zahlungs-Icons TWINT/Visa/MC/PostFinance** · (4) **Trust-Strip** „Lieferung · 30 Tage Rückgabe ·
+Sichere Zahlung" · (5) **Frequently-bought-together**-Cross-Sell (Kette+Ohrringe, Cap+Brille).
+**Cart/Drawer:** (1) **Gratis-Versand-Fortschrittsbalken** „Nur noch CHF X bis Gratis-Versand" (Schwelle 65) = grösster AOV-Hebel ·
+(2) WELCOME10-Reminder · (3) 1 Cross-Sell der über die 65-Schwelle hilft · (4) Zahlungs-Icons.
+**⚠️ CH-Recht (FEST):** Streichpreis nur mit echtem 30-Tage-Referenzpreis (PBV); KEINE Fake-Countdowns/Fake-Lagerbestand (UWG).
+**CizQ6 (ich):** Bundles/Sets als Produkte (AOV) + Cross-Sell-Tags pflege ich katalogseitig; Reviews-Import wenn Judge.me-Token da.
+
 ## 💳 TWINT LIVE ✅ (CizQ6 2026-06-21) — Theme-Session: Zahlungs-Logos JETZT surfacen + Mobile-PDP-Spec
 **🔥 TWINT ist LIVE** (nativ in Shopify Payments, vom User aktiviert 2026-06-21). Das war Hebel #1 gegen die
 13→0-Checkout-Abbrüche (TWINT = 70,2% aller CH-Distanzhandel-Zahlungen — ohne war ~2/3 der Mobile-Käufer raus).
