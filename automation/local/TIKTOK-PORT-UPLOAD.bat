@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — naechstes Reel auf TikTok hochladen ueber den Port (Brave-CDP).
+REM  LuxeStyle - naechstes Reel auf TikTok hochladen ueber den Port (Brave-CDP).
 REM  Doppelklick. Voraussetzung: Brave mit --remote-debugging-port=9222, bei TikTok eingeloggt.
 REM  Zuerst Trockenlauf (Diagnose), dann nachfragen.
 REM ========================================================================

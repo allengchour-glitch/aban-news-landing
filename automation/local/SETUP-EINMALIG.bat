@@ -1,8 +1,8 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — EINMALIG doppelklicken. Richtet den taeglichen Marketing-Task ein.
+REM  LuxeStyle - EINMALIG doppelklicken. Richtet den taeglichen Marketing-Task ein.
 REM  Danach laeuft ALLES taeglich automatisch (Follower, TikTok-Post, DMs,
-REM  Kommentare) — du musst NIE wieder PowerShell tippen.
+REM  Kommentare) - du musst NIE wieder PowerShell tippen.
 REM ========================================================================
 schtasks /create /tn "LuxeMarketing" /sc daily /st 10:00 /f /rl LIMITED ^
   /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File \"%~dp0run-follower-daily.ps1\""

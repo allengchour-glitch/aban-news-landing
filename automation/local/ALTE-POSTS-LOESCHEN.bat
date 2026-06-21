@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — alte FB-Posts (vor 10.06.) loeschen. Doppelklick, kein Tippen.
+REM  LuxeStyle - alte FB-Posts (vor 10.06.) loeschen. Doppelklick, kein Tippen.
 REM  Nur Facebook (Instagram kann man per API NICHT loeschen -> in der App).
 REM  Erst Vorschau (DRY), dann nachfragen.
 REM ========================================================================

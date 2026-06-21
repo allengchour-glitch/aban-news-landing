@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — TikTok-Reel als ENTWURF hochladen (Doppelklick, kein Tippen).
+REM  LuxeStyle - TikTok-Reel als ENTWURF hochladen (Doppelklick, kein Tippen).
 REM  Laedt die TikTok-Tokens aus luxe-secrets.ps1 und postet das naechste Reel.
 REM  Du legst dann in der TikTok-App den Trend-Sound drauf + veroeffentlichst.
 REM ========================================================================

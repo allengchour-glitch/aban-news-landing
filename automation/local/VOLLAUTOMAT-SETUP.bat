@@ -1,7 +1,7 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — BOT PERFEKT EINRICHTEN (1x doppelklicken, kein Admin noetig).
-REM  Registriert Windows-Tasks, die die Skripte DIREKT starten —
+REM  LuxeStyle - BOT PERFEKT EINRICHTEN (1x doppelklicken, kein Admin noetig).
+REM  Registriert Windows-Tasks, die die Skripte DIREKT starten -
 REM  KEIN Cloudflare-Worker / KEIN KV-Limit / KEIN Listener-Poll / KEIN git-pull
 REM  -> kein Git-Lock, laeuft stabil. Voraussetzung: PC an + brave-agent eingeloggt.
 REM

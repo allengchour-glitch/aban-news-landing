@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — TikTok autonom scharfschalten (EINMALIG, 1 Login).
+REM  LuxeStyle - TikTok autonom scharfschalten (EINMALIG, 1 Login).
 REM  1) fragt Client Key + Secret (werden NIE ins Repo geschrieben)
 REM  2) OAuth: Browser oeffnet -> bei TikTok einloggen + erlauben
 REM  3) Tokens werden in luxe-secrets.ps1 GEMERGT (andere Secrets bleiben)
@@ -9,7 +9,7 @@ REM  Danach laedt der Worker autonom TikTok-Drafts hoch (du tippst in der App "P
 REM
 REM  VORHER in developers.tiktok.com (deine App):
 REM   - Redirect URI:  http://localhost:8723/callback
-REM   - Products: Login Kit + Content Posting API · Scopes: user.info.basic, video.upload, video.publish
+REM   - Products: Login Kit + Content Posting API - Scopes: user.info.basic, video.upload, video.publish
 REM ========================================================================
 cd /d "%~dp0..\.."
 set /p KEY=TikTok Client Key:

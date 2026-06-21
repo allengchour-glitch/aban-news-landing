@@ -1,9 +1,9 @@
 @echo off
 REM ============================================================================
-REM  LuxeStyle — START.bat  (EINFACHSTE Aktivierung: 1 DOPPELKLICK, KEIN Admin)
-REM  User „mach irgendwie dass es geit". Startet den PC-Listener jetzt + sorgt fuer Auto-Start
+REM  LuxeStyle - START.bat  (EINFACHSTE Aktivierung: 1 DOPPELKLICK, KEIN Admin)
+REM  User "mach irgendwie dass es geit". Startet den PC-Listener jetzt + sorgt fuer Auto-Start
 REM  bei jedem Login (Startup-Ordner, kein Admin noetig) + registriert die taeglichen Cycles
-REM  als Benutzer-Tasks (ohne Admin-Rechte). Einfach doppelklicken — fertig.
+REM  als Benutzer-Tasks (ohne Admin-Rechte). Einfach doppelklicken - fertig.
 REM  Voraussetzung: Brave bei tiktok/instagram/facebook eingeloggt; luxe-secrets.ps1 im %USERPROFILE%.
 REM ============================================================================
 setlocal

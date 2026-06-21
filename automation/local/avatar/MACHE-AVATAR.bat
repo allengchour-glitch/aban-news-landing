@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================================
-REM  LuxeStyle — Avatar-Reel erzeugen (PC, nach SETUP-AVATAR.bat).
+REM  LuxeStyle - Avatar-Reel erzeugen (PC, nach SETUP-AVATAR.bat).
 REM  Text -> piper (Stimme) -> SadTalker (sprechender Kopf) -> ffmpeg 9:16 + Hook.
 REM  Doppelklick. Braucht presenter.jpg in diesem Ordner.
 REM ============================================================================
@@ -9,7 +9,7 @@ cd /d "%~dp0"
 set REPO=%~dp0..\..\..
 
 if not exist presenter.jpg ( echo [FEHLER] presenter.jpg fehlt in diesem Ordner (frontales Portrait). & pause & exit /b 1 )
-set /p TXT="Bärndütsch-Skript (1 Satz): "
+set /p TXT="Baernduetsch-Skript (1 Satz): "
 if "%TXT%"=="" ( echo Kein Text. & pause & exit /b 1 )
 set /p HOOK="Hook-Text fuers Bild (oben, kurz): "
 
@@ -28,9 +28,9 @@ echo Talking-Head: !TALK!
 
 echo [3/3] 9:16-Finish + Hook (Safe-Zone) ...
 set FONT=C:\Windows\Fonts\arialbd.ttf
-ffmpeg -y -i "!TALK!" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,drawtext=fontfile='%FONT%':text='%HOOK%':fontcolor=white:fontsize=64:x=(w-text_w)/2:y=150:box=1:boxcolor=black@0.4:boxborderw=20,drawtext=fontfile='%FONT%':text='luxestyle.ch · Code WELCOME10':fontcolor=white:fontsize=40:x=(w-text_w)/2:y=1480:box=1:boxcolor=black@0.35:boxborderw=14" -c:v libx264 -pix_fmt yuv420p -movflags +faststart "%OUT%" || ( echo [FEHLER] ffmpeg & pause & exit /b 1 )
+ffmpeg -y -i "!TALK!" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,drawtext=fontfile='%FONT%':text='%HOOK%':fontcolor=white:fontsize=64:x=(w-text_w)/2:y=150:box=1:boxcolor=black@0.4:boxborderw=20,drawtext=fontfile='%FONT%':text='luxestyle.ch - Code WELCOME10':fontcolor=white:fontsize=40:x=(w-text_w)/2:y=1480:box=1:boxcolor=black@0.35:boxborderw=14" -c:v libx264 -pix_fmt yuv420p -movflags +faststart "%OUT%" || ( echo [FEHLER] ffmpeg & pause & exit /b 1 )
 
 echo.
-echo ✅ FERTIG: %OUT%
+echo  FERTIG: %OUT%
 echo Naechster Schritt (autonom): auf CDN + in social/video_queue.csv -> Worker postet.
 pause

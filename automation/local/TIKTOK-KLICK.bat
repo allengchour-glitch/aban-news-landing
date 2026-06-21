@@ -1,7 +1,7 @@
 @echo off
 title LuxeStyle - TikTok Klick-Starter
 REM ========================================================================
-REM  LuxeStyle — TikTok KLICK-STARTER (1 Doppelklick, kein Tippen, kein git).
+REM  LuxeStyle - TikTok KLICK-STARTER (1 Doppelklick, kein Tippen, kein git).
 REM  Macht alles selbst: Brave (brave-agent, Port 9222) starten, TikTok-Studio
 REM  oeffnen, naechstes Reel posten. Postet DIREKT in den Feed (kein Entwickler-App/Review).
 REM  Einzige Voraussetzung: im Brave-Fenster 1x bei tiktok.com eingeloggt sein.

@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================================
-REM  LuxeStyle — Avatar-Sprecher EINMALIG einrichten (PC mit NVIDIA-GPU).
+REM  LuxeStyle - Avatar-Sprecher EINMALIG einrichten (PC mit NVIDIA-GPU).
 REM  SadTalker (Apache-2.0) + OpenVoice (MIT). Doppelklick. ~15-30 Min beim 1. Mal.
 REM  Voraussetzung: Miniconda/conda, git, ffmpeg im PATH, NVIDIA-Treiber/CUDA.
 REM ============================================================================

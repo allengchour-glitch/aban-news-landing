@@ -1,8 +1,8 @@
 @echo off
 REM ============================================================================
-REM  LuxeStyle — MASTER-AUTONOM-SETUP (User 2026-06-17 „mach e Bot das autonom louft")
+REM  LuxeStyle - MASTER-AUTONOM-SETUP (User 2026-06-17 "mach e Bot das autonom louft")
 REM  EINMAL als Administrator ausfuehren (Rechtsklick -> Als Administrator).
-REM  Danach laeuft ALLES von selbst (PC ist eh immer an) — KEIN Tippen mehr noetig:
+REM  Danach laeuft ALLES von selbst (PC ist eh immer an) - KEIN Tippen mehr noetig:
 REM
 REM   * PC-Listener  -> startet automatisch bei jedem Login + laeuft dauernd (Handy-Befehle + Bot)
 REM   * Posten       -> 2x/Tag (10:00, 19:00)   beste Reels auf TikTok

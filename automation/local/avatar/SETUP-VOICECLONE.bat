@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================================
-REM  LuxeStyle — Voice-Cloning einrichten (PC mit NVIDIA-GPU). F5-TTS (Code MIT).
+REM  LuxeStyle - Voice-Cloning einrichten (PC mit NVIDIA-GPU). F5-TTS (Code MIT).
 REM  Klont eine Stimme aus ~10-15s Referenz UND uebernimmt Akzent/Prosodie ->
 REM  mit Berner Referenz + Baernduetsch-Text klingt's authentisch schwiizerisch.
 REM  Doppelklick. Voraussetzung: Miniconda/conda, NVIDIA-CUDA.

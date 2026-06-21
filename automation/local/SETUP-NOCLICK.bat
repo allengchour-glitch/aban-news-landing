@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================================
-REM  LuxeStyle - SETUP-NOCLICK (User 2026-06-19 „mach e Bot wo klickt", nicht zuhause)
+REM  LuxeStyle - SETUP-NOCLICK (User 2026-06-19 "mach e Bot wo klickt", nicht zuhause)
 REM  EINMAL ausfuehren (am besten als Administrator). Danach faehrt der Bot nach
 REM  Crash / Reboot / Login KOMPLETT VON SELBST wieder hoch - nie mehr ein Klick.
 REM

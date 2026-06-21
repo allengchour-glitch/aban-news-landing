@@ -1,7 +1,7 @@
 @echo off
 REM ============================================================================
-REM  LuxeStyle — EI-KLICK-SETUP: TikTok/Social autonom (User 2026-06-17)
-REM  „PC louft immer, mehrmals analysiere/chatte/folge, selten poste"
+REM  LuxeStyle - EI-KLICK-SETUP: TikTok/Social autonom (User 2026-06-17)
+REM  "PC louft immer, mehrmals analysiere/chatte/folge, selten poste"
 REM
 REM  POSTEN (tiktok-cycle.ps1)         = 2x/Tag  (10:00, 19:00)   -> frisches Top-Reel + Analyse
 REM  ENGAGEMENT (engagement-cycle.ps1) = 4x/Tag  (09/12/15/21)    -> analysieren+chatten+folgen (KEIN Posten)

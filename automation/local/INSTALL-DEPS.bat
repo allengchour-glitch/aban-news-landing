@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — EINMALIG nach frischem git clone (z.B. C:\luxe).
+REM  LuxeStyle - EINMALIG nach frischem git clone (z.B. C:\luxe).
 REM  Installiert playwright-core (das brauchen ALLE Browser-Tools:
 REM  TikTok-Upload, Follower, Kampagne, tutti/anibis, DMs, IG-Delete).
 REM  --no-save => package.json bleibt unveraendert (kein git-Konflikt).

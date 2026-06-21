@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — TikTok-Kampagne ECHT STARTEN (Budget-Cap 350 im Skript).
+REM  LuxeStyle - TikTok-Kampagne ECHT STARTEN (Budget-Cap 350 im Skript).
 REM  GIT-FREI: kein git pull, kein Listener, kein Worker. NUR ausfuehren,
 REM  wenn der TESTLAUF (KAMPAGNE-DRY.bat) sauber durchlief!
 REM ========================================================================

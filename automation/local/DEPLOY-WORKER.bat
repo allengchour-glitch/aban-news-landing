@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — Cloudflare-Worker aktualisieren (Doppelklick, kein Tippen).
+REM  LuxeStyle - Cloudflare-Worker aktualisieren (Doppelklick, kein Tippen).
 REM  Holt die neueste Version + deployt. Nutzen, wenn der Worker-Code geaendert wurde.
 REM ========================================================================
 cd /d "%~dp0..\cloudflare\luxe-poster"

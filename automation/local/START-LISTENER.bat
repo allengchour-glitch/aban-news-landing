@@ -1,6 +1,6 @@
 @echo off
 REM ========================================================================
-REM  LuxeStyle — Fernbedienung EINSCHALTEN (1x doppelklicken).
+REM  LuxeStyle - Fernbedienung EINSCHALTEN (1x doppelklicken).
 REM  Holt neueste Skripte (git pull), startet Brave mit Debug-Port + den
 REM  PC-Listener. Danach steuert die Cloud alle PC-Browser-Aufgaben.
 REM  Voraussetzung: im Brave-Fenster 'brave-agent' bei ads.tiktok.com +
