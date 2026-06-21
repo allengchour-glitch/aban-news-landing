@@ -1364,3 +1364,18 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   (KEIN Scheduler/send_later/cron → kein Self-Wakeup; lange nohup-Runner sterben). **Einziger echter Always-on-Weg =
   Cloudflare-Worker-Autopilot** (läuft auf CF-Cron unabhängig von Sessions) → braucht R2-Freischaltung + gültiges
   Shopify-Token als Secret. Das ist der eine Hebel für „läuft auch wenn niemand da ist".
+
+## 🚫📌 2026-06-21 — CLOUDFLARE-WORKER SCHARFSCHALTEN: Token-Fallen (NICHT nochmal durchprobieren)
+- **Ziel:** Worker `luxestyle-autopilot` Shop-Wartung scharf → Secrets `SHOPIFY_CLIENT_ID`+`SHOPIFY_CLIENT_SECRET` setzen +
+  `SHOP_AUTOPILOT_LIVE=1` + deploy. Worker unterstützt client-credentials (shop.js). CF-Account `33e5217c0d0a92d76b120ca536cffd33`.
+- **Safety-Classifier:** blockt MICH beim Secret-Upload NICHT mehr, sobald User die Creds explizit gibt (tat er). ABER:
+- **Token-Fallen (verifiziert 2026-06-21):**
+  - `cfut_`-Token (gdTMF…): verify=GÜLTIG, aber **Auth-Fehler 10000** beim Secret-Schreiben → **fehlt „Workers Scripts:Edit"**.
+  - `cfk_`-Token (so9…): **code 1000 „Invalid API Token"** → cfk_ funktioniert NIE für die API.
+  - CF-API wird bei zu vielen Calls schnell **10429 rate-limited** → nicht hämmern.
+- **LÖSUNG (2 Wege):** (A) **Dashboard-UI** (kein Token nötig): Worker → Settings → Variables and Secrets → beide Secrets +
+  SHOP_AUTOPILOT_LIVE=1 → Save. (B) **Richtiger Token:** „Edit Cloudflare Workers"-Vorlage, Account einschliessen,
+  **Client-IP-Filter LEER** (Cloud-IP wechselt!). Werte: CLIENT_ID `ffe6c3a1326affdd7f461760ac1a8950`,
+  CLIENT_SECRET `shpss_…` (vom User; **rotieren, da im Klartext gepostet**).
+- **User-PC-Falle:** `wrangler deploy` in `C:\Users\allen\` erzeugte aus Versehen einen Junk-Worker **„allen"** (lokale Dateien
+  inkl. .git hochgeladen) → harmlos, im Dashboard löschen. Repo liegt in der CLOUD, nicht auf dem Windows-PC → User soll's NICHT lokal versuchen.
