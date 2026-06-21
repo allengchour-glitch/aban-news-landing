@@ -44,7 +44,11 @@ const C = {
   adtext: process.env.TT_ADTEXT || 'Premium-Looks zu faire Priis. -10% mit Code WELCOME10.',
   cta: process.env.TT_CTA || 'Shop Now',
   autoLaunch: process.env.AUTO_LAUNCH === '1',
-  creationUrl: process.env.CREATION_URL || 'https://ads.tiktok.com/i18n/perf/creation/campaign',
+  // KONTO-WECHSEL via URL (Lehre 2026-06-21, User "musst nur konto wechseln"): aadvid in der URL oeffnet die
+  // Kampagne DIREKT im richtigen, fertig eingerichteten Werbekonto "LuxeStyle CH Ads" - kein falsches/leeres Konto,
+  // keine Onboarding-Wand. Voraussetzung: der eingeloggte TikTok-User hat Zugriff auf dieses Advertiser-Konto.
+  advertiserId: process.env.TT_ADVERTISER_ID || '7646349875793182738',
+  creationUrl: process.env.CREATION_URL || ('https://ads.tiktok.com/i18n/perf/creation/campaign?aadvid=' + (process.env.TT_ADVERTISER_ID || '7646349875793182738')),
 };
 const LEDGER = path.join(ROOT, 'automation', 'local', 'tiktok-campaign-ledger.txt');
 const SHOTS = path.join(ROOT, 'automation', 'local', 'campaign-shots');

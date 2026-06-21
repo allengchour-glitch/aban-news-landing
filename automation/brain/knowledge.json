@@ -1048,6 +1048,13 @@
       "pc_sync": "PC-Selbstheilung 05:00 feuert nur wenn PC laeuft + AV nicht blockt. User-Klick SUPERBOT-SETUP.bat brachte den PC current (zog campaign-data + stale-lock -> campaign-data wurde diesmal erkannt). LEHRE: nach Push, der einen NEUEN cmd-poll-Befehl einfuehrt, muss der PC erst pullen (SUPERBOT/giga/update) BEVOR der Befehl gequeued wird, sonst verworfen.",
       "geld_sicher": "Trotz mehrerer fehlgeschlagener campaign-Laeufe: NIE Geld ausgegeben (harte Budget-Obergrenze + Onboarding-Wand vor Budget). Sicherheits-Design hielt.",
       "stand": "2026-06-21"
+    },
+    "tiktok_konto_wechsel_aadvid_2026": {
+      "lehre": "User 2026-06-21 \"musst nur konto wechseln\": Die TikTok-Onboarding-Wand kam NICHT weil das Konto fehlt, sondern weil der Bot im FALSCHEN/leeren Werbekonto landete. Das richtige fertige Konto LuxeStyle CH Ads 7646349875793182738 existiert.",
+      "fix": "Kampagne-URL bekommt ?aadvid=7646349875793182738 -> oeffnet die Erstellung DIREKT im richtigen Konto (automatischer Account-Switch, keine Onboarding-Wand). In tiktok-campaign-port.mjs: C.advertiserId + creationUrl mit aadvid. ENV TT_ADVERTISER_ID ueberschreibbar.",
+      "voraussetzung": "Der im brave-agent eingeloggte TikTok-User muss Zugriff auf dieses Advertiser-Konto haben (Business-Center-Mitglied). Dann schaltet aadvid um. Falls ganz anderer User eingeloggt -> dort einmal richtig einloggen.",
+      "lehre_allgemein": "Bei TikTok-Ads-Automation IMMER die Ziel-aadvid in die URL setzen statt auf das Default-Konto zu hoffen (Multi-Account-Falle).",
+      "stand": "2026-06-21"
     }
   },
   "decisions": [
