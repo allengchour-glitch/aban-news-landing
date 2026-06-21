@@ -163,8 +163,29 @@ async function pickFromSearch(p, value) {
       await A('select "Conversions" as the advertising objective (the conversions/sales goal), then if needed click its Continue button', 'objective', 3000);
       await A('click the Continue button to proceed to the ad group settings', 'after-obj', 4000);
       await A('set the optimization location / conversion location to "Website"', null);
-      await A(`open the pixel selector and choose the pixel with id ${C.pixel}`, 'pixel');
+      // ---- Data Connection (Pixel) ----  Neu 2026-06-21: TikTok verlangt eine aktive Data-Connection.
+      const dcRequired = () => p.evaluate(() => /a tiktok pixel or events api is required|set up your data connection|an activated data connection is required/i
+        .test(document.body.innerText || '')).catch(() => false);
+      await A('open the "Select data connection" dropdown to choose a pixel / data connection', 'dc-open', 2500);
+      if (await dcRequired()) {
+        log('Data-Connection leer -> versuche bestehenden Shopify-Pixel zu verbinden.');
+        await A('click the "Get started" or "Set up" button to set up a data connection', 'dc-setup', 3500);
+        await A('in the "Choose a data connection method" dialog select "Shopify setup" and click Next', 'dc-shopify', 4500);
+        await A('continue and authorize connecting the EXISTING Shopify store (do not create a new pixel)', 'dc-auth', 6000);
+        await A('go back to the ad group, click Refresh on the data connection, then select the available data connection / pixel', 'dc-refresh', 4000);
+        if (await dcRequired()) {
+          const st = { ts: new Date().toISOString(), result: 'DATA_CONNECTION_MISSING', mode: ab.mode,
+            hinweis: 'Werbekonto Ch0524 hat keinen aktiven TikTok-Pixel/Data-Connection. EINMALIG im Dialog "Shopify setup -> Next" den bestehenden Store/Pixel D8EKVR verbinden (KEINEN neuen Pixel anlegen!), ~10 Min warten, dann Bot neu starten -> danach macht er alles allein.' };
+          try { fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(st, null, 2)); } catch {}
+          log('🛑 DATA_CONNECTION_MISSING — Pixel einmalig via Shopify-Setup verbinden, dann neu starten.');
+          await diag(p, 'dc-missing'); await ab.close().catch(() => {}); process.exit(0);
+        }
+      } else {
+        await A(`select the data connection / pixel (id ${C.pixel} if listed, otherwise the first available one)`, 'pixel');
+      }
       await A(`set the optimization event to "${C.event}"`, 'event');
+      // Bid: "Maximum delivery" (Highest volume) vermeidet den Pflicht-Wert "Target CPA".
+      await A('set the bid strategy to "Maximum delivery" (also called highest volume / lowest cost) so that no target CPA value is required', 'bid', 3000);
       await A(`set the target location to ${C.location}`, null);
       await A(`set gender to ${C.gender} and select age groups ${C.age.join(' and ')}`, 'targeting');
       await A(`add languages ${C.lang.join(' and ')}`, null);
