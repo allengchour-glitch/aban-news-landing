@@ -42,24 +42,28 @@ export async function aiBrowser({ cdp = CDP } = {}) {
           const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl }, modelName: c.modelName,
             modelClientOptions: { apiKey: c.apiKey }, verbose: 0 });
           await sh.init();
-          // Page robust holen: sh.page ist bei mehreren Tabs / CDP-Connect oft undefined ->
-          // aus dem Context die erste vorhandene Seite nehmen, sonst eine neue oeffnen.
-          let page = sh.page;
-          if (!page) {
-            const ctx = sh.context || (sh.page && sh.page.context && sh.page.context());
+          await new Promise(r => setTimeout(r, 1500)); // sh.page populiert teils verzoegert nach init
+          // Stagehand-Page (hat .act/.extract) lazy lesen — NICHT durch eine rohe Context-Page ersetzen
+          // (die hat kein .act). Fuer goto/Screenshots/File-Input reicht eine rohe Page.
+          const stPage = () => sh.page || sh.stagehandPage || (sh.context && sh.context.page) || null;
+          let rawPage = stPage();
+          if (!rawPage) {
+            const ctx = sh.context || sh.stagehandContext;
+            console.log('sh.page leer nach init; sh-Keys: ' + Object.keys(sh).join(','));
             if (ctx && typeof ctx.pages === 'function') {
               const pgs = ctx.pages();
-              page = pgs.find(p => { try { return /tiktok\.com/.test(p.url()); } catch { return false; } }) || pgs[0];
-              if (!page && ctx.newPage) page = await ctx.newPage();
+              rawPage = pgs.find(p => { try { return /tiktok\.com/.test(p.url()); } catch { return false; } }) || pgs[0];
+              if (!rawPage && ctx.newPage) rawPage = await ctx.newPage();
             }
           }
-          if (!page) { lastInitError = c.modelName + ' -> init ok, aber keine Page (sh.page+context leer)'; console.log(lastInitError); try { await sh.close(); } catch {} continue; }
-          console.log('Stagehand aktiv mit Modell ' + c.modelName + (sh.page ? '' : ' (Page aus Context geholt)'));
+          if (!rawPage) { lastInitError = c.modelName + ' -> init ok, aber keine Page'; console.log(lastInitError); try { await sh.close(); } catch {} continue; }
+          const actPage = () => { const sp = stPage(); return (sp && typeof sp.act === 'function') ? sp : (typeof rawPage.act === 'function' ? rawPage : null); };
+          console.log('Stagehand aktiv mit Modell ' + c.modelName + (sh.page ? '' : ' (raw-Page fuer goto, sh.page lazy fuer act)'));
           return {
-            mode: 'stagehand', model: c.modelName, sh, page,
-            act: (instr) => page.act(instr),
-            extract: (instr, schema) => page.extract(schema ? { instruction: instr, schema } : instr),
-            observe: (instr) => page.observe(instr),
+            mode: 'stagehand', model: c.modelName, sh, page: rawPage,
+            act: (instr) => { const ap = actPage(); if (!ap) throw new Error('Keine Stagehand-act-Page verfuegbar'); return ap.act(instr); },
+            extract: (instr, schema) => { const ap = actPage() || rawPage; return ap.extract(schema ? { instruction: instr, schema } : instr); },
+            observe: (instr) => { const ap = actPage() || rawPage; return ap.observe ? ap.observe(instr) : []; },
             close: () => sh.close().catch(() => {}),
           };
         } catch (e) {
