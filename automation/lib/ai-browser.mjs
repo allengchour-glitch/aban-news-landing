@@ -42,8 +42,19 @@ export async function aiBrowser({ cdp = CDP } = {}) {
           const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl }, modelName: c.modelName,
             modelClientOptions: { apiKey: c.apiKey }, verbose: 0 });
           await sh.init();
-          const page = sh.page;
-          console.log('Stagehand aktiv mit Modell ' + c.modelName);
+          // Page robust holen: sh.page ist bei mehreren Tabs / CDP-Connect oft undefined ->
+          // aus dem Context die erste vorhandene Seite nehmen, sonst eine neue oeffnen.
+          let page = sh.page;
+          if (!page) {
+            const ctx = sh.context || (sh.page && sh.page.context && sh.page.context());
+            if (ctx && typeof ctx.pages === 'function') {
+              const pgs = ctx.pages();
+              page = pgs.find(p => { try { return /tiktok\.com/.test(p.url()); } catch { return false; } }) || pgs[0];
+              if (!page && ctx.newPage) page = await ctx.newPage();
+            }
+          }
+          if (!page) { lastInitError = c.modelName + ' -> init ok, aber keine Page (sh.page+context leer)'; console.log(lastInitError); try { await sh.close(); } catch {} continue; }
+          console.log('Stagehand aktiv mit Modell ' + c.modelName + (sh.page ? '' : ' (Page aus Context geholt)'));
           return {
             mode: 'stagehand', model: c.modelName, sh, page,
             act: (instr) => page.act(instr),
