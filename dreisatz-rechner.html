@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreisatz-Rechner — proportional &amp; umgekehrt · aban news</title>
+<meta name="description" content="Kostenloser Dreisatz-Rechner: aus drei bekannten Werten den vierten berechnen — proportional (je mehr, desto mehr) oder umgekehrt proportional. Mit Rechenweg. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/dreisatz-rechner.html">
+<meta property="og:title" content="Dreisatz-Rechner — proportional &amp; umgekehrt">
+<meta property="og:description" content="Den vierten Wert aus drei bekannten berechnen — proportional oder umgekehrt, mit Rechenweg. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/dreisatz-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Dreisatz-Rechner",
+"url":"https://abannews.com/dreisatz-rechner.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet per Dreisatz den vierten Wert aus drei bekannten — proportional oder umgekehrt proportional, mit Rechenweg. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was ist der Dreisatz?","acceptedAnswer":{"@type":"Answer","text":"Ein Rechenverfahren, um aus drei bekannten Werten den vierten zu finden, wenn zwei Größen in einem festen Verhältnis stehen. Beispiel: 3 Stück kosten 12 € — was kosten 5 Stück? Über den Wert für 1 Stück (4 €) ergibt sich 20 €."}},
+{"@type":"Question","name":"Proportional oder umgekehrt proportional?","acceptedAnswer":{"@type":"Answer","text":"Proportional: je mehr, desto mehr (mehr Stück, mehr Preis). Umgekehrt proportional: je mehr, desto weniger (mehr Arbeiter, weniger Zeit). Der Rechner unterstützt beide Fälle und zeigt den Rechenweg."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:14px}
+.seg button{font:inherit;font-size:.85rem;font-weight:700;padding:8px 15px;border:0;background:transparent;color:var(--amber-dk);cursor:pointer}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.ds{display:grid;grid-template-columns:1fr auto 1fr;gap:10px 14px;align-items:center}
+.ds .lbl{grid-column:1/-1;text-align:center;font-size:.82rem;color:var(--muted)}
+input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;text-align:center}
+input.q{background:color-mix(in srgb,var(--amber-lt) 40%,var(--field));font-weight:700}
+.eq{font-weight:700;color:var(--muted)}
+.out{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.big{font-size:1.8rem;font-weight:800;color:var(--amber-dk)}
+.way{color:var(--ink2);font-size:.9rem;margin-top:6px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Dreisatz</span> rechnen</h1>
+    <p>Aus drei bekannten Werten den vierten berechnen — proportional (je mehr, desto mehr) oder umgekehrt proportional. Mit Rechenweg. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Der Klassiker für „wenn … kostet, was kostet dann …?" — schnell und mit nachvollziehbarem Weg.</p>
+
+  <section class="panel" id="tool">
+    <div style="text-align:center"><div class="seg" id="mode">
+      <button data-m="prop" class="on">proportional</button>
+      <button data-m="inv">umgekehrt proportional</button>
+    </div></div>
+    <div class="ds">
+      <div class="lbl">Wenn …</div>
+      <input id="a" type="number" value="3" aria-label="Menge A"><span class="eq">→</span><input id="b" type="number" value="12" aria-label="Wert A">
+      <div class="lbl" id="arrow">… dann (je mehr, desto mehr)</div>
+      <input id="c" type="number" value="5" aria-label="Menge B"><span class="eq">→</span><input id="d" class="q" type="number" placeholder="?" aria-label="gesuchter Wert" readonly>
+    </div>
+    <div class="out" id="out" aria-live="polite"></div>
+    <p class="note">Lass das gesuchte Feld leer — es wird automatisch berechnet. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">zum Rechnen.</p>
+    <p><a class="btn" href="/prozent-rechner.html">Prozent-Rechner</a>
+      <a class="btn ghost" href="/einheiten-umrechner.html">Einheiten-Umrechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/prozent-rechner.html">Prozent-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var mode="prop";
+  function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?null:v;}
+  function fmt(n){return (Math.round(n*1e6)/1e6).toLocaleString("de-DE",{maximumFractionDigits:6});}
+  function render(){
+    var a=num("a"),b=num("b"),c=num("c"),out=document.getElementById("out"),d=document.getElementById("d");
+    if(a===null||b===null||c===null||a===0){ d.value=""; out.innerHTML='<span style="color:#9aa3ad">Drei Werte eingeben (A, Wert, C).</span>'; return; }
+    var res, way;
+    if(mode==="prop"){ res=b/a*c; way="Pro Einheit: "+fmt(b)+" ÷ "+fmt(a)+" = "+fmt(b/a)+", × "+fmt(c)+" = "+fmt(res); }
+    else { res=a*b/c; way="Konstantes Produkt: "+fmt(a)+" × "+fmt(b)+" = "+fmt(a*b)+", ÷ "+fmt(c)+" = "+fmt(res); }
+    d.value=fmt(res);
+    out.innerHTML='<div class="big">'+fmt(res)+'</div><div class="way">'+way+'</div>';
+  }
+  document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");
+    mode=b.getAttribute("data-m");
+    document.getElementById("arrow").textContent=mode==="prop"?"… dann (je mehr, desto mehr)":"… dann (je mehr, desto weniger)";
+    render();
+  });});
+  ["a","b","c"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});
+  render();
+})();
+</script>
+</body>
+</html>
