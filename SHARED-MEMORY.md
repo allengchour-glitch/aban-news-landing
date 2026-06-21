@@ -1322,3 +1322,10 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
 - **Session-Produkt-Summe: ~144 neue** (28+24+20+16+40+16), alle katalogweit merchant-clean verifiziert.
 - **Google-Listing-Status:** alle Pflicht-/Empfohlen-Felder erfüllt (title/desc/link/image/price/availability/brand/gtin-o.-
   custom/condition/google_product_category 100%/age/gender/color/SEO). EINZIG offen = **Re-Crawl „Request website check"** (User).
+
+## 📌 2026-06-20 Teil 17 (✅ User hat „Request website check" geklickt — Re-Crawl läuft)
+- **User klickte den Merchant-Center-Re-Crawl** („ok geklickt"). Google re-validiert jetzt die Produktseiten.
+- **Pre-Crawl-Sweep: 44/44 Produktseiten (alt+neu) = HTTP 200 für Googlebot, 0 problematisch** → Re-Crawl wird durchgehen,
+  die 2.82K „page unavailable" + 317 „missing image" + Drug-Flag sollten sich über Stunden–3 Tage klären (alles war stale).
+- **⚠️ Watch:** Wenn die Zahl WIEDER steigt → Cloudflare Bot Fight Mode ist erneut an → Dashboard → Security → Bots → AUS.
+  Sonst nichts zu tun; Shop-Seite ist nachweislich sauber. Microsoft/Bing danach via „Import from Google" (optional, User).
