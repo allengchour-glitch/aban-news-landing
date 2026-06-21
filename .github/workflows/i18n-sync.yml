@@ -2,7 +2,7 @@ name: i18n Sync-Bot
 
 # Hält die Mehrsprachigkeit (DE/EN/FR/IT) automatisch synchron + prüft Qualität.
 # - deterministische Fixes (hreflang-Reziprozität + fehlende Sitemap-Einträge) werden auto-committet
-# - harte Probleme (Struktur/lang/og:locale/JSON-LD) lassen den Job FEHLSCHLAGEN (sichtbar)
+# - harte i18n-Probleme + echte (abannews-)Broken-Links lassen den Job FEHLSCHLAGEN (sichtbar)
 # - Übersetzungs-Leftover/og:image/Orphans = Hinweise (kein Fail)
 # KEY-LOS (reines stdlib-Python). Cron läuft nur vom Default-Branch.
 
@@ -49,10 +49,32 @@ jobs:
             echo "Nichts zu synchronisieren — bereits konsistent."
           fi
 
-      - name: Harte Prüfung (Job schlägt fehl bei i18n-Defekten)
+      - name: Harte i18n-Prüfung (Job schlägt fehl bei Defekten)
         run: python3 tools/i18n_audit.py
 
-      - name: Zusätzliche Site-Checks (informativ)
+      - name: Echte Broken-Links (abannews-scope) — Job schlägt fehl
+        run: |
+          python3 - <<'PY'
+          import subprocess, sys
+          out = subprocess.run(["python3","tools/check_internal_links.py"], capture_output=True, text=True).stdout
+          real, cur = [], None
+          for line in out.splitlines():
+              s = line.strip()
+              if s and not s.startswith(('←','…','✗','✓')):
+                  cur = s
+              elif s.startswith('←'):
+                  src = s[1:].strip()
+                  # nur echte abannews-Defekte: externes Shop-/Template-Ziel + Dropship-Quellen ausblenden
+                  if cur and not cur.startswith(('/products/','/pages/','AFFILIATE')) and not src.startswith('dropship/'):
+                      real.append(f"{cur} <- {src}")
+          if real:
+              print("::error::Echte interne Broken-Links gefunden:")
+              for r in real[:50]: print(" ", r)
+              sys.exit(1)
+          print("Keine echten abannews-Broken-Links.")
+          PY
+
+      - name: Konsistenz (Preise/Garantien) — informativ
         run: |
           python3 tools/consistency_check.py || echo "::warning::consistency_check meldete Abweichungen"
           python3 -c "import xml.dom.minidom; xml.dom.minidom.parse('sitemap.xml')" && echo "sitemap.xml wohlgeformt"
