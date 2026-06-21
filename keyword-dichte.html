@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyword-Dichte prüfen — Wörter zählen &amp; Häufigkeit · aban news</title>
+<meta name="description" content="Kostenloses Keyword-Dichte-Tool: Text einfügen und sehen, welche Wörter wie oft vorkommen und wie hoch ihre Dichte in Prozent ist — auch für 2-Wort-Phrasen. Für SEO-Texte. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/keyword-dichte.html">
+<meta property="og:title" content="Keyword-Dichte prüfen — Wörter zählen &amp; Häufigkeit">
+<meta property="og:description" content="Welche Wörter kommen wie oft vor? Häufigkeit &amp; Dichte in % (auch 2-Wort-Phrasen). Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/keyword-dichte.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Keyword-Dichte-Tool",
+"url":"https://abannews.com/keyword-dichte.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Zeigt zu einem Text die Worthäufigkeit und Keyword-Dichte in Prozent, auch für Zwei-Wort-Phrasen, mit Ausschluss häufiger Füllwörter. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was ist Keyword-Dichte?","acceptedAnswer":{"@type":"Answer","text":"Der Anteil, den ein Begriff an der Gesamtwortzahl eines Textes hat, in Prozent. Eine natürliche Dichte liegt meist bei 1–3 %. Wichtiger als ein fester Wert ist, dass der Text natürlich und lesbar bleibt — Keyword-Stuffing schadet eher."}},
+{"@type":"Question","name":"Warum werden Füllwörter ausgeblendet?","acceptedAnswer":{"@type":"Answer","text":"Wörter wie der, die, und, ist liefern keine inhaltliche Aussage und würden die Liste dominieren. Du kannst die Stoppwort-Filterung abschalten, um wirklich alle Wörter zu sehen."}},
+{"@type":"Question","name":"Wird mein Text gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Analyse läuft komplett in deinem Browser. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+textarea{font:inherit;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;min-height:160px;resize:vertical;line-height:1.5}
+.opts{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px;font-size:.85rem;color:var(--ink2)}
+.opts label{display:flex;align-items:center;gap:6px;font-weight:400}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.seg button{font:inherit;font-size:.82rem;font-weight:700;padding:6px 12px;border:0;background:transparent;color:var(--amber-dk);cursor:pointer}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.summary{color:var(--ink2);font-size:.92rem;margin-top:14px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.92rem}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:999px;background:var(--amber);display:inline-block;vertical-align:middle;margin-left:8px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Keyword-Dichte</span> prüfen</h1>
+    <p>Text einfügen und sehen, welche Wörter wie oft vorkommen und wie hoch ihre Dichte in Prozent ist — auch für Zwei-Wort-Phrasen. Für SEO-Texte. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Zeigt, worum dein Text wirklich geht — hilft, ein Keyword natürlich zu platzieren statt zu überladen.</p>
+
+  <section class="panel" id="tool">
+    <label for="txt">Text einfügen</label>
+    <textarea id="txt" placeholder="Deinen Blog-Beitrag oder Seitentext hier einfügen …"></textarea>
+    <div class="opts">
+      <div class="seg" id="ngram"><button data-n="1" class="on">Einzelwörter</button><button data-n="2">2-Wort-Phrasen</button></div>
+      <label><input type="checkbox" id="stop" checked> Füllwörter ausblenden</label>
+    </div>
+    <div class="summary" id="summary"></div>
+    <table id="tbl"><thead><tr><th>Begriff</th><th class="n">Anzahl</th><th class="n">Dichte</th></tr></thead><tbody id="rows"></tbody></table>
+    <p class="note">Natürliche Dichte ist meist 1–3 %. Lesbarkeit schlägt jede Zielzahl. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Text &amp; SEO.</p>
+    <p><a class="btn" href="/zeichenzaehler.html">Zeichenzähler</a>
+      <a class="btn ghost" href="/lesezeit-rechner.html">Lesezeit-Rechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zeichenzaehler.html">Zeichenzähler</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var STOP="der die das und oder aber als auch ein eine einen einem eines dem den des ist sind war waren sein seine ich du er sie es wir ihr mit für von zu zum zur im in an auf aus bei nach über unter vor durch um ohne gegen am dass weil wenn dann doch nur noch schon mehr sehr man sich auch nicht kein keine so wie was wer wo dieser diese dieses hat haben wird werden kann können".split(" ");
+  var stopSet={}; STOP.forEach(function(w){stopSet[w]=1;});
+  var txt=document.getElementById("txt"), rows=document.getElementById("rows"), summary=document.getElementById("summary");
+  var n=1;
+  function words(){
+    return (txt.value.toLowerCase().match(/[a-zäöüß0-9]+(?:[-'][a-zäöüß0-9]+)*/g)||[]);
+  }
+  function render(){
+    var w=words(), total=w.length, useStop=document.getElementById("stop").checked;
+    var counts={};
+    if(n===1){
+      w.forEach(function(x){ if(useStop&&stopSet[x])return; if(x.length<2)return; counts[x]=(counts[x]||0)+1; });
+    } else {
+      for(var i=0;i<w.length-1;i++){ var a=w[i],b=w[i+1]; if(useStop&&(stopSet[a]||stopSet[b]))continue; if(a.length<2||b.length<2)continue; var k=a+" "+b; counts[k]=(counts[k]||0)+1; }
+    }
+    var arr=Object.keys(counts).map(function(k){return [k,counts[k]];}).sort(function(a,b){return b[1]-a[1];}).slice(0,25);
+    summary.innerHTML='<strong>'+total.toLocaleString("de-DE")+'</strong> Wörter · <strong>'+Object.keys(counts).length.toLocaleString("de-DE")+'</strong> verschiedene '+(n===1?"Begriffe":"Phrasen")+(total?'':' — Text einfügen.');
+    if(!arr.length){ rows.innerHTML=""; return; }
+    var maxc=arr[0][1];
+    rows.innerHTML=arr.map(function(r){
+      var d=total?(r[1]/total*100):0;
+      var bw=Math.max(4,Math.round(r[1]/maxc*90));
+      return '<tr><td>'+r[0].replace(/</g,"&lt;")+'</td><td class="n">'+r[1]+'</td><td class="n">'+d.toLocaleString("de-DE",{maximumFractionDigits:1})+' %<span class="bar" style="width:'+bw+'px"></span></td></tr>';
+    }).join("");
+  }
+  txt.addEventListener("input",render);
+  document.getElementById("stop").addEventListener("change",render);
+  document.querySelectorAll("#ngram button").forEach(function(b){b.addEventListener("click",function(){ document.querySelectorAll("#ngram button").forEach(function(x){x.classList.remove("on");}); b.classList.add("on"); n=parseInt(b.getAttribute("data-n"),10); render(); });});
+  render();
+})();
+</script>
+</body>
+</html>
