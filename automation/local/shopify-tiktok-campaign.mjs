@@ -34,7 +34,10 @@ const diag = async (p, n) => { try { await p.screenshot({ path: path.join(SHOT, 
   const res = { ts: new Date().toISOString(), mode: ab.mode, dry: !LAUNCH, steps: [] };
   const A = async (instr, name, ms = 2800) => { try { await ab.act(instr); res.steps.push(name + ':ok'); } catch (e) { res.steps.push(name + ':' + String(e).slice(0, 40)); log('act!', name, String(e).slice(0, 50)); } await sleep(ms); if (name) await diag(p, name); };
   try {
-    await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 }); await sleep(8000); await diag(p, '01-open');
+    await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 60000 }); await sleep(8000);
+    try { await p.keyboard.press('Escape'); } catch {}            // Uebersetzungs-/Cookie-Popup wegklicken
+    if (ab.mode === 'stagehand') { try { await ab.act('schliesse alle stoerenden Popups/Banner (Uebersetzung, Cookies), falls vorhanden'); } catch {} }
+    await sleep(1500); await diag(p, '01-open');
     const body = (await p.content()).slice(0, 4000);
     if (/login|anmelden|sign in|passwort/i.test(body) && !/Smart|Kampagne|campaign|werben/i.test(body)) {
       log('Nicht bei Shopify-Admin eingeloggt.'); res.result = 'NOT_LOGGED_IN';
