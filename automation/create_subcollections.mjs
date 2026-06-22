@@ -20,15 +20,15 @@ const SUBS=[
  // Camping & Outdoor (173)
  {handle:'camping-schlafen',title:'⛺ Zelte & Schlafsäcke',words:['zelt','schlafsack','isomatte','feldbett','luftbett','matte']},
  {handle:'camping-kueche',title:'🍳 Camping-Küche',words:['campinggeschirr','campingkocher','kühlbox','kuhlbox','thermo','besteck','geschirr','flasche']},
- {handle:'camping-licht-outdoor',title:'🔦 Outdoor-Licht & Tools',words:['stirnlampe','campinglampe','taschenlampe','laterne','messer','werkzeug']},
+ {handle:'camping-licht-outdoor',title:'🔦 Outdoor-Licht & Tools',words:['stirnlampe','campinglampe','campingleuchte','outdoor-lampe','laterne']},
  // Bar & Wein (140)
- {handle:'bar-glaeser',title:'🥃 Gläser',words:['glas','gläser','glaser','weinglas','sektglas','whisky','becher','tumbler']},
+ {handle:'bar-glaeser',title:'🥃 Gläser',words:['weinglas','weingläser','sektglas','sektgläser','whiskyglas','whiskygläser','cocktailglas','biergläser','trinkglas','gläser-set']},
  {handle:'bar-cocktail',title:'🍸 Cocktail & Shaker',words:['cocktail','shaker','barzubehör','barset','bar-set','jigger','sieb']},
  {handle:'bar-wein-accessoires',title:'🍷 Wein-Accessoires',words:['dekanter','korkenzieher','weinkühler','weinkuhler','belüfter','beluefter','flaschenöffner','flaschenoffner','wein']},
  // Rucksäcke (113)
- {handle:'rucksaecke-schule',title:'🎒 Schulrucksäcke',words:['schulrucksack','schulranzen','schule','kinderrucksack','kinder']},
- {handle:'rucksaecke-laptop',title:'💼 Laptop- & Business-Rucksäcke',words:['laptop','business','notebook','büro','buero']},
- {handle:'rucksaecke-sport',title:'🏔️ Sport- & Wanderrucksäcke',words:['wander','sport','outdoor','trekking','daypack','sportrucksack']},
+ {handle:'rucksaecke-schule',title:'🎒 Schulrucksäcke',words:['schulrucksack','schulranzen','kinderrucksack','schultasche']},
+ {handle:'rucksaecke-laptop',title:'💼 Laptop- & Business-Rucksäcke',words:['laptop-rucksack','laptoprucksack','business-rucksack','notebook-rucksack']},
+ {handle:'rucksaecke-sport',title:'🏔️ Sport- & Wanderrucksäcke',words:['sportrucksack','wanderrucksack','trekkingrucksack','daypack','outdoor-rucksack']},
 ];
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
