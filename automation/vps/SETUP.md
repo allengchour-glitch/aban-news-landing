@@ -40,6 +40,26 @@ In n8n → **Credentials** anlegen für:
 - **TikTok Marketing API** (nach Ad-Konto-Onboarding).
 - **Klaviyo/Brevo** (E-Mail), **Telegram** (Alerts).
 
+## 🟢 Schnellstart-Alternative (ohne n8n) — sofort produktiv mit cron
+Wenn du n8n (noch) nicht aufsetzen willst, reicht für die API-Jobs **purer cron + die vorhandenen Skripte**:
+```bash
+apt-get update && apt-get install -y nodejs npm git
+git clone -b claude/luxestyle-product-CizQ6 <REPO_URL> /opt/luxe/repo && cd /opt/luxe/repo && npm ci || npm i
+# Secrets anlegen (NIE ins Repo):
+cat > /opt/luxe/.env <<'ENV'
+SHOPIFY_CLIENT_ID=ffe6c3a1326affdd7f461760ac1a8950
+SHOPIFY_CLIENT_SECRET=DEIN_SHPSS_SECRET
+SHOPIFY_SHOP=au3j0y-hq.myshopify.com
+ENV
+chmod 600 /opt/luxe/.env
+# Testlauf (DRY = aendert nichts):
+DRY=1 /opt/luxe/repo/automation/vps/run-api-jobs.sh
+# Cron eintragen (taeglich 04:00, echt):
+( crontab -l 2>/dev/null; echo "0 4 * * * /opt/luxe/repo/automation/vps/run-api-jobs.sh >> /opt/luxe/api-jobs.log 2>&1" ) | crontab -
+```
+→ Ab jetzt füllt der VPS **täglich autonom** Google-Merchant-Felder + Mode-Beschreibungen (Search = dein
+bester Kanal) — **kein PC, kein Browser, kein Neustart**. Später n8n drauf für CAPI/TikTok/Alerts.
+
 ## Schritt 5 — Erste Workflows (Reihenfolge = größter Gewinn zuerst)
 1. **SEO/Katalog-Cron** (Schedule-Trigger täglich) → Shopify-API: leere Meta-Beschreibungen füllen, Feed-Felder. *Kein Browser.*
 2. **Meta CAPI** (server-side Events) → schließt die 0-Kauf/„leerer-Pixel"-Lücke (recovered 20–30 % Conversions). *Kein Browser.*
