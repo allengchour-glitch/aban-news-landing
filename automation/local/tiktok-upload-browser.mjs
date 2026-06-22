@@ -61,9 +61,22 @@ function pickReel() {
   const cand = [...mont, ...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe, ...meta]
     .filter(f => big(f) && !seen.has(f) && (seen.add(f), true));
   for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
-  // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu
-  // starten (Ledger leeren), damit nie still steht. Inhalt wiederholt sich erst nach ~allen Reels.
-  if (cand.length) { try { fs.writeFileSync(DONE, ''); } catch {} log('♻️ Alle Reels gepostet → Rotation startet neu.'); return path.join(REELS, cand[0]); }
+  // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu starten.
+  // FIX 2026-06-22 (User: Montana-Dublette 21.+22. auf TikTok): NICHT komplett leeren — sonst wird dasselbe
+  // Video (erstes der Liste) am Folgetag sofort wieder gepostet. Stattdessen die zuletzt geposteten N behalten,
+  // damit nach dem Reset zuerst die laenger nicht geposteten drankommen (kein Sofort-Wiederholer).
+  if (cand.length) {
+    const KEEP = Math.min(10, Math.max(0, cand.length - 1)); // mind. 1 Video bleibt waehlbar
+    try {
+      const lines = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').filter(Boolean) : [];
+      const keep = lines.slice(-KEEP);
+      fs.writeFileSync(DONE, keep.length ? keep.join('\n') + '\n' : '');
+    } catch { try { fs.writeFileSync(DONE, ''); } catch {} }
+    log('♻️ Alle Reels gepostet → Rotation startet neu (letzte ' + KEEP + ' behalten = keine Dublette).');
+    const done2 = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').map(l => l.split('|')[0].trim()).filter(Boolean) : [];
+    for (const f of cand) if (!done2.includes(f)) return path.join(REELS, f);
+    return path.join(REELS, cand[0]);
+  }
   return null;
 }
 // Caption aus video_queue.csv ziehen (gleiche coole Mundart-Captions wie Meta), sonst reels-captions.json.
