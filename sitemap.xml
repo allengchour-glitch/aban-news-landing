@@ -4117,4 +4117,8 @@
   <url><loc>https://abannews.com/en/break-even-rechner.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/fr/break-even-rechner.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://abannews.com/it/break-even-rechner.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/html-entity-encoder.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/en/html-entity-encoder.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/fr/html-entity-encoder.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://abannews.com/it/html-entity-encoder.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
