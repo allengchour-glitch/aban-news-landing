@@ -21,6 +21,8 @@ log "SEO/Feed-Polish (Google-Merchant-Felder)..."
 MAX="${MAX:-300}" "$NODE" automation/feed_polish.mjs 2>&1 | tail -8 || log "feed_polish Fehler (weiter)"
 log "Mode-Beschreibungen anreichern..."
 MAX="${MAX:-150}" "$NODE" automation/enrich_apparel_descriptions.mjs 2>&1 | tail -8 || log "enrich Fehler (weiter)"
+log "Leere SEO-Meta-Beschreibungen fuellen (ganzer Katalog, idempotent)..."
+MAX="${SEO_MAX:-200}" "$NODE" automation/seo_polish.mjs 2>&1 | tail -8 || log "seo_polish Fehler (weiter)"
 
 # 4) KEIN git commit/push vom VPS (Verfeinerung 2026-06-22): der VPS-Klon hat keine Push-Credentials ->
 # lokale Commits wuerden kuenftige 'git pull --rebase' blockieren. Der VPS aendert Shopify DIREKT per API;
