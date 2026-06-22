@@ -72,9 +72,9 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
     <p style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Live aus mehreren Job-Börsen (inkl. Schweiz) · Klick führt zur Original-Anzeige.</p>
     <div id="jobRow" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px"><div style="color:var(--muted);font-size:.9rem">Lade Stellen …</div></div>
   </section>
-  <script>(function(){var JQ="pflege";var el=document.getElementById("jobRow");if(!el)return;
+  <script>(function(){var JQ="pflege",JL="";var el=document.getElementById("jobRow");if(!el)return;
     function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-    fetch("/api/jobs?q="+encodeURIComponent(JQ)).then(function(r){return r.json()}).then(function(d){
+    fetch("/api/jobs?q="+encodeURIComponent(JQ)+"&loc="+encodeURIComponent(JL)).then(function(r){return r.json()}).then(function(d){
       var it=(d.items||[]).slice(0,6);if(!it.length){el.closest("section").style.display="none";return}
       el.innerHTML=it.map(function(o){var href=(o.url&&o.url!=="#")?esc(o.url):"#";
         return '<a href="'+href+'" target="_blank" rel="noopener nofollow" style="border:1px solid var(--line);border-radius:11px;padding:12px 13px;background:#fff;text-decoration:none;color:var(--ink);display:block"><div style="font-weight:700;font-size:.86rem;line-height:1.3;margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+esc(o.title)+'</div><div style="font-size:.76rem;color:var(--muted)">'+esc([o.company,o.location].filter(Boolean).join(" · "))+'</div></a>';
@@ -92,7 +92,7 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
   <div data-partner="JOB_NETZWERK_URL" data-text="Mehr passende Stellen bei unserem Partner-Job-Netzwerk." data-cta="Jobs beim Partner"></div>
   <div data-ad-slot="landing-mid" style="margin-top:18px"></div>
   <p class="rel">Mehr im <a href="/marktplatz.html">aban-Marktplatz</a>: Jobs, Fahrzeuge, Immobilien, Angebote &amp; Inserate für die Schweiz &amp; DACH. Oder gleich alles auf einmal in der <a href="/suche.html">Universal-Suche</a>.</p>
-  <p class="rel">Beliebte Kaufberater: <a href="/auto-kaufen-schweiz.html">Auto</a> · <a href="/wohnung-mieten-schweiz.html">Wohnung</a> · <a href="/moebel-kaufen-schweiz.html">Möbel</a> · <a href="/handy-kaufen-schweiz.html">Handy</a> · <a href="/ebike-kaufen-schweiz.html">E-Bike</a> · <a href="/job-finden-schweiz.html">Job</a></p>
+  <p class="rel">Weitere Kaufberater: <a href="/jobs-lugano.html">Jobs in Lugano</a> · <a href="/grill-kaufen-schweiz.html">Grill</a> · <a href="/gartenmoebel-kaufen-schweiz.html">Gartenmöbel</a> · <a href="/spielzeug-kaufen-schweiz.html">Spielzeug</a> · <a href="/beamer-kaufen-schweiz.html">Beamer</a> · <a href="/babyphone-kaufen-schweiz.html">Babyphone</a> · <a href="/mikrowelle-kaufen-schweiz.html">Mikrowelle</a> · <a href="/pavillon-kaufen-schweiz.html">Pavillon</a> · <a href="/lautsprecher-kaufen-schweiz.html">Lautsprecher</a> · <a href="/dachbox-kaufen-schweiz.html">Dachbox</a> · <a href="/standmixer-kaufen-schweiz.html">Standmixer</a> · <a href="/wanderrucksack-kaufen-schweiz.html">Wanderrucksack</a></p>
   <section style="margin-top:26px;background:var(--cream);border:1px solid #f3dca0;border-radius:14px;padding:18px;text-align:center">
     <strong style="font-size:1.05rem">📬 Gratis: Schnäppchen- &amp; Job-Updates</strong>
     <p style="font-size:.88rem;color:var(--ink2);margin:4px 0 10px">Das Beste aus dem Marktplatz + 1 KI-Tipp, Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.</p>

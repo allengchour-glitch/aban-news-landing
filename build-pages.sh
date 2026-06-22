@@ -37,6 +37,7 @@ tar -cf - \
   --exclude='./mediakit' \
   --exclude='./tools' \
   --exclude='./automation' \
+  --exclude='./server' \
   --exclude='./linkedin' \
   --exclude='./reports' \
   --exclude='./ki-tools-radar' \

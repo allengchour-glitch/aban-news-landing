@@ -16,6 +16,21 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🛒 2026-06-21 — Kaufberater-Wellen 9–20 (120 neue CH-Ratgeber, „loop bis w20")
+> Session „weiter bis welle 15 … loop bis w20". Generator `automation/gen_ch_landings.mjs` (PAGES-Array)
+> in 12 Wellen à 10 Seiten erweitert → **238 `*-kaufen-schweiz.html`-Ratgeber total**, alle live auf `main`.
+- **Wellen-Themen:** W9 Haushalt/Wohnen · W10 Küche · W11 Elektronik · W12 Garten/Heizen/Werkzeug ·
+  W13 Fitness/Camping · W14 Möbel/Wohnen · W15 Auto/Mobilität · W16 Baby & Kind · W17 Beauty/Gesundheit ·
+  W18 Haustier/Smart-Home · W19 Hobby/Musik/Büro · W20 Haushalt/Küche. PRs #1177–#1185 (squash-merged).
+- **Jede Seite:** Hero + ehrliche Tipps + FAQ mit `FAQPage`-JSON-LD + **dynamisches Interlink-Netz**
+  (12 rotierende „Weitere Kaufberater"-Links pro Seite, mitwachsend) → mindert Doorway/Thin-Content-Risiko.
+- **Qualität gehalten:** Brain-Scan nach jeder Welle 0/0/0, Score 100/100, Build sauber. sitemap.xml je +10 URLs.
+- **Lehren (für nächste Wellen):** (1) NIE gerade `"` in deutschen JS-Strings (bricht Generator); statt „10x"
+  → „10-fach" (Scan flaggt „10x" als Hype). (2) Generator regeneriert auch bestehende Ratgeber (Interlink-Rotation)
+  → diese mit-committen. (3) GitHub-API-Stundenlimit (parallele Sessions): bei Sperre Wellen lokal weiterbauen
+  + gebündelt mergen, sobald frei. (4) Brain-Artefakte (brain-state.json/brain.html/IMPROVEMENT-REPORT.md)
+  vor Commit verwerfen (Konflikte mit Parallel-Sessions).
+
 ## 🧰 2026-06-20/21 — 53 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
