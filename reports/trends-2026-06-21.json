@@ -1,0 +1,66 @@
+{
+  "ts": "2026-06-21T17:02:15.303Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "cucurella",
+    "spanien vs. saudi-arabien",
+    "canicola",
+    "srf wm live",
+    "oyarzabal",
+    "tierquälerei",
+    "spagna - arabia saudita",
+    "lamine yamal",
+    "pogacar",
+    "espagne arabie saoudite"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "WM-Modetipps für Fraue: Wie du dich stilvoll fürs Public-Viewing anziehst",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Chumm, lass uns go public viewing ga!",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdschweiz",
+          "#züri"
+        ]
+      },
+      {
+        "idee": "Schmuck fürs Sommerfestival: Leicht, elegant und perfekt fürs Tanzfeld",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Gönd mers chli Schmuck fürs Tanzfäld, bitte!",
+        "musik_mood": "house",
+        "hashtags": [
+          "#schweiz",
+          "#genevamode",
+          "#festivalstyle"
+        ]
+      },
+      {
+        "idee": "Outdoor-Style fürs WM-Picknick: Wie du dich sportlich-chic anziehst",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Mir gönd picknicken, mit Stil!",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#ootdschweiz",
+          "#baselmode",
+          "#outdoorstyle"
+        ]
+      }
+    ],
+    "trend_musik_note": "Die aktuellen Trends zeigen, dass die Schweizer Bevölkerung sich auf die WM und das Sommerfest konzentriert. Die Musikmoods sollten daher entsprechend ausgewählt werden, um eine gute Stimmung zu erzeugen."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "ts": "2026-06-21T21:59:06.480Z",
+  "platform": "ig",
+  "mode": "stagehand",
+  "dry": true,
+  "checked": 0,
+  "flagged": [],
+  "deleted": 0,
+  "error": "TypeError: p.content is not a function"
+}
