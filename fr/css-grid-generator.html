@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Générateur CSS Grid · Mise en page en grille · aban news</title>
+<meta name="description" content="Générateur CSS grid gratuit : réglez les colonnes, les lignes &amp; les espacements, voyez la grille en direct et copiez le code grid-CSS finalisé. En local dans le navigateur, sans connexion.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/css-grid-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/css-grid-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/css-grid-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/css-grid-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/css-grid-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/css-grid-generator.html">
+<meta property="og:title" content="Générateur CSS Grid">
+<meta property="og:description" content="Réglez les colonnes, les lignes &amp; les espacements, voyez la grille en direct et copiez le grid-CSS. En local dans le navigateur.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/css-grid-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Générateur CSS Grid",
+"url":"https://abannews.com/fr/css-grid-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Configure une grille CSS (colonnes, lignes, espacements) d'un clic, affiche un aperçu en direct et fournit le code grid-CSS à copier.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:860px;margin:0 auto}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.ctrls{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.ctrls{grid-template-columns:1fr}}
+.lbl{display:flex;justify-content:space-between;font-weight:600;font-size:13px;margin:0 0 5px;color:var(--ink2)}
+.lbl .v{color:var(--amber-dk);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--amber-dk)}
+.stagewrap{margin-top:16px}
+.stage{display:grid;border:1px dashed var(--amber-lt);border-radius:10px;background:var(--field);padding:10px;min-height:200px}
+.cell{background:linear-gradient(135deg,var(--amber),var(--amber-dk));color:#fff;font-weight:800;border-radius:7px;display:flex;align-items:center;justify-content:center;min-height:40px;font-size:.9rem}
+.outbar{display:flex;gap:8px;align-items:center;margin:16px 0 8px}
+.outbox pre{background:#1e1e1e;color:#e6e6e6;border-radius:10px;padding:14px;font-size:13px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Aller à l'outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Générer une <span class="a">CSS Grid</span></h1>
+    <p>Une grille CSS concrète : réglez le nombre de colonnes et de lignes ainsi que les espacements, voyez la grille en direct et copiez le code CSS du conteneur finalisé. Tout en local dans le navigateur, rien n'est envoyé.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="ctrls">
+      <div><label class="lbl" for="cols"><span>Colonnes</span><span class="v" id="colsv">3</span></label>
+        <input type="range" id="cols" min="1" max="12" value="3" aria-label="Colonnes"></div>
+      <div><label class="lbl" for="rows"><span>Lignes</span><span class="v" id="rowsv">2</span></label>
+        <input type="range" id="rows" min="1" max="8" value="2" aria-label="Lignes"></div>
+      <div><label class="lbl" for="cgap"><span>Espacement colonnes</span><span class="v" id="cgapv">12px</span></label>
+        <input type="range" id="cgap" min="0" max="40" value="12" aria-label="Espacement colonnes in px"></div>
+      <div><label class="lbl" for="rgap"><span>Espacement lignes</span><span class="v" id="rgapv">12px</span></label>
+        <input type="range" id="rgap" min="0" max="40" value="12" aria-label="Espacement lignes in px"></div>
+    </div>
+    <div class="stagewrap"><div class="stage" id="stage"></div></div>
+    <div class="outbar">
+      <span class="lbl" id="outLbl" style="margin:0">CSS (conteneur)</span>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="copy" type="button">Copier</button>
+    </div>
+    <pre id="code" role="textbox" tabindex="0" aria-readonly="true" aria-labelledby="outLbl"></pre>
+    <p class="note"><code>repeat(N, 1fr)</code> crée N colonnes de largeur égale. <code>column-gap</code> et <code>row-gap</code> (ensemble <code>gap</code>) sont les espacements. Dans une vraie mise en page, vous placez les enfants dans la grille — ici des cellules numérotées montrent la grille. Tout en local, aucun envoi.</p>
+  </section>
+  <div class="cta"><strong>Plus d'outils</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">pour le web &amp; le design.</p>
+    <p><a class="btn" href="/fr/flexbox-generator.html">Générateur Flexbox</a>
+      <a class="btn ghost" href="/fr/css-gradient-generator.html">Dégradé</a>
+      <a class="btn ghost" href="/fr/online-tools.html">Tous les outils</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Cela vous a été utile ? 5 minutes d'IA sans le battage — chaque jour ouvré.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news est la newsletter IA pour les indépendants : courte, honnête, sans bingo de mots à la mode. Gratuite, résiliable à tout moment.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">S'abonner à la newsletter gratuite →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/fr/flexbox-generator.html">Générateur Flexbox</a> · <a href="/fr/css-gradient-generator.html">Dégradé</a> ·
+  <a href="/fr/ki-werkzeug.html">Outil IA</a> &middot; <a href="/fr/online-tools.html">Tous les outils</a> &middot; <a href="/impressum.html">Mentions légales</a> · <a href="/datenschutz.html">Confidentialité</a></div></footer>
+<script>
+(function(){
+  var stage=document.getElementById("stage"),code=document.getElementById("code"),
+      cols=document.getElementById("cols"),rows=document.getElementById("rows"),
+      cgap=document.getElementById("cgap"),rgap=document.getElementById("rgap");
+  function iv(el,min,max){var v=parseInt(el.value,10);if(isNaN(v))v=min;return Math.max(min,Math.min(max,v));}
+  function render(){
+    var c=iv(cols,1,12),r=iv(rows,1,8),cg=iv(cgap,0,40),rg=iv(rgap,0,40);
+    document.getElementById("colsv").textContent=c;
+    document.getElementById("rowsv").textContent=r;
+    document.getElementById("cgapv").textContent=cg+"px";
+    document.getElementById("rgapv").textContent=rg+"px";
+    stage.style.gridTemplateColumns="repeat("+c+",1fr)";
+    stage.style.gridTemplateRows="repeat("+r+",1fr)";
+    stage.style.columnGap=cg+"px";
+    stage.style.rowGap=rg+"px";
+    var n=c*r,html="";
+    for(var i=1;i<=n;i++)html+='<div class="cell">'+i+'</div>';
+    stage.innerHTML=html;
+    code.textContent="display: grid;\ngrid-template-columns: repeat("+c+", 1fr);\ngrid-template-rows: repeat("+r+", 1fr);\ncolumn-gap: "+cg+"px;\nrow-gap: "+rg+"px;";
+    return code.textContent;
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Copié ✓");},function(){fb(text,b);});
+    } else fb(text,b);
+  }
+  function fb(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Copié ✓");}
+    catch(e){flash(b,"Copiez manuellement");}}
+  [cols,rows,cgap,rgap].forEach(function(e){e.addEventListener("input",render);});
+  document.getElementById("copy").addEventListener("click",function(){copy(render(),this);});
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
