@@ -16,6 +16,32 @@
 > (`automation/gen_image_gemini.py`, Vertex-AI-Pfad) ist jetzt produktiv und kann auch vom
 > Dropship-Workstream genutzt werden — Secrets `GCP_SA_KEY`/`GCP_PROJECT` liegen im Repo (allengchour-glitch).
 
+## 🚀 2026-06-22 — abannews LIVE + Server-Autopilot (24/7-Deploy) + KI-Automation-Verdienseite
+> **WICHTIGSTE NEUERUNG für alle Folge-Sessions:** abannews.com deployt sich jetzt **selbst rund um die Uhr**
+> über einen **Hetzner-Server** (ersetzt den toten GitHub-Actions-Deploy).
+- **🖥️ Server-Autopilot (läuft):** Hetzner `46.225.75.125` (Ubuntu 26.04), Repo unter `/opt/abannews`.
+  Ein **systemd-Timer** (`abannews-deploy.timer`, alle 3 Min) pollt `origin/main` → bei Änderung
+  `build-pages.sh` + `wrangler pages deploy`. Setup-Paket: `server/` (PR #1187/#1188). Secrets liegen in
+  `/etc/abannews/deploy.env` (CF-Token, Account-ID, `CF_PAGES_PROJECT=abannews`, `DOWNLOAD_SALT`) — **nicht im Repo.**
+  Git-Remote auf dem Server nutzt einen `ghp_`-Token in der URL (root-only). → **Jeder Merge nach `main` geht
+  von allein live**, kein manueller Deploy mehr nötig.
+- **☁️ Cloudflare Pages:** Projekt **`abannews`** (Domain abannews.com), Account-ID `33e5217c0d0a92d76b120ca536cffd33`.
+  Manueller Deploy (falls je nötig, Token in Session): `CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=33e5217c… npx wrangler@3 pages deploy _site --project-name=abannews --branch=main`.
+  Secrets gesetzt: **`DOWNLOAD_SALT`** (✓, Kit-Downloads + 44 ZIPs live). **`STRIPE_API_KEY` FEHLT noch** →
+  User trägt seinen `sk_live_…` selbst im **CF-Dashboard** ein (Live-Key darf ich nicht per CLI setzen → Sicherheits-Layer blockt). Dann sind Verkäufe scharf.
+- **⚠️ Root-Ursache vieler Blocker:** GitHub-**Konto `allengchour-glitch` ist als „spammy" geflaggt** →
+  (1) GitHub Actions account-weit deaktiviert (deshalb der Server statt Actions-Deploy), (2) anonymer Repo-Zugriff
+  gesperrt (raw/clone braucht Token). **Echter Fix = Flag bei github.com/contact anfechten** → dann kämen Actions zurück.
+- **💼 Neuer Verdien-Kanal LIVE:** `ki-automation.html` — Angebots-/Lead-Seite „KI-Automation für Schweizer KMU"
+  (Hero, 6 Services, 3 Preis-Stufen CHF, FAQPage+Service-JSON-LD, Anfrageformular via mailto→hallo@abannews.com).
+  Verlinkt in **Nav + Startseite + Leistungen** (PRs #1193–#1198). Höchster Umsatzhebel laut Recherche (Service/Agentur).
+- **🔎 SEO:** `sitemap.xml` vervollständigt (25 fehlende Seiten, #1199); `robots.txt` (Cloudflare-managed) **verifiziert
+  gesund** (search=yes/Allow, Googlebot frei, Sitemap referenziert, nur KI-Scraper blockiert). Startseite hat WebSite+SearchAction.
+- **LinkedIn:** native Pipeline existiert (`automation/linkedin_post.py` + Queue + Actions-Cron), aber **inaktiv**
+  (Actions gesperrt, kein Runner). User-Wunsch: **sparsam** posten, kein Fake (Seed-CSV hat erfundene Stats → nie ungeprüft posten).
+- **Grenzen (für ehrliche Erwartung):** Kein 24/7-Selbstlauf der Chat-Session, kein Browser/Autoklick hier
+  (Browser-Aufgaben → PC-Claude), keine unbeaufsichtigten Deploy-Daemons (Sicherheits-Layer). Das 24/7 macht der **Server**.
+
 ## 🛒 2026-06-21 — Kaufberater-Wellen 9–20 (120 neue CH-Ratgeber, „loop bis w20")
 > Session „weiter bis welle 15 … loop bis w20". Generator `automation/gen_ch_landings.mjs` (PAGES-Array)
 > in 12 Wellen à 10 Seiten erweitert → **238 `*-kaufen-schweiz.html`-Ratgeber total**, alle live auf `main`.
