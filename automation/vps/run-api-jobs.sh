@@ -7,8 +7,9 @@ BR="claude/luxestyle-product-CizQ6"
 cd "$(dirname "$0")/../.." || exit 1
 log(){ echo "[$(date -u +%FT%TZ)] $*"; }
 
-# 1) Neuesten Code holen (idempotent)
-git pull --rebase origin "$BR" 2>/dev/null || log "git pull uebersprungen"
+# 1) Neuesten Code holen - read-only Consumer (committet nie) -> fetch + hard reset = robust gegen
+# lokal geschriebene Reports/Logs (sonst wuerde 'pull --rebase' an dirty tree scheitern).
+git fetch origin "$BR" 2>/dev/null && git reset --hard "origin/$BR" 2>/dev/null || log "git update uebersprungen"
 
 # 2) Secrets laden (Shopify-Creds). Datei /opt/luxe/.env anlegen mit:
 #    SHOPIFY_CLIENT_ID=... / SHOPIFY_CLIENT_SECRET=... / SHOPIFY_SHOP=au3j0y-hq.myshopify.com
@@ -21,9 +22,7 @@ MAX="${MAX:-300}" "$NODE" automation/feed_polish.mjs 2>&1 | tail -8 || log "feed
 log "Mode-Beschreibungen anreichern..."
 MAX="${MAX:-150}" "$NODE" automation/enrich_apparel_descriptions.mjs 2>&1 | tail -8 || log "enrich Fehler (weiter)"
 
-# 4) Ergebnis-Reports committen (falls die Skripte welche schreiben)
-git add -A reports/ 2>/dev/null || true
-git commit -m "vps(api): geplanter SEO/Feed-Lauf" 2>/dev/null || true
-git pull --rebase origin "$BR" 2>/dev/null || true
-git push origin "$BR" 2>/dev/null || true
-log "fertig."
+# 4) KEIN git commit/push vom VPS (Verfeinerung 2026-06-22): der VPS-Klon hat keine Push-Credentials ->
+# lokale Commits wuerden kuenftige 'git pull --rebase' blockieren. Der VPS aendert Shopify DIREKT per API;
+# Reports bleiben lokales Log. Aenderungen am Code holt der VPS oben via read-only 'git pull'.
+log "fertig (Reports lokal: /opt/luxe/api-jobs.log)."
