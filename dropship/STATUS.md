@@ -1,5 +1,13 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-22 (MARKTFORSCHUNG gespeichert — 3 Web-Agenten konvergieren)
+**Brain 211 Regeln** (`marktforschung_2026_06_22`). Konkurrenz + CH-Kaufverhalten + Trends stimmen mit den Daten überein:
+**Engpass = Trust + Mobile-PDP, NICHT Reichweite.** Hebel nach Impact: (1) **Reviews/Social-Proof** auf PDP+Karten (viele 0 Sterne!),
+(2) **USP/Positionierung** (1 klarer CH-Satz), (3) **Mobile Sticky-ATC/Buy-Box** (9×-Leak). **Zahlung OK** — aber **«Kauf auf Rechnung» fehlt**
+= stärkstes CH-Trust-Signal (try-before-buy) → User via PEND/Swissbilling. Sprache: **Shop=Hochdeutsch, Mundart nur Social.**
+**Trends zum Pushen (Social, mache ich):** Bag Charms (Katalog-Lücke, viral), wasserfester Schmuck + „Dusch/See-Test"-Reel, Charm-/Layering-Sets bündeln.
+→ Alles in SHARED-MEMORY (Theme) + Brain (Content) gespeichert. Genug Daten — ab jetzt umsetzen statt weiter ziehen.
+
 ## 2026-06-22 (DATEN-SWEEP „surfe überall" — Mobile = DER Leak)
 **📱 Headline:** Mobile konvertiert **9× schlechter** — Mobile 6'204 Sess/8 ATC (**0.13%**) vs Desktop 831/10 ATC (**1.2%**). 87% Traffic
 mobil → **Mobile-Conversion ist der Engpass** → Theme-Mobile-Fixes (Sticky-ATC/Buy-Box/Speed) sind eindeutig #1 (in SHARED-MEMORY).

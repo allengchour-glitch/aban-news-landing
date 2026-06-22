@@ -21,10 +21,15 @@ kann das **Live-Theme nicht editieren (API-gesperrt)** → folgende **Theme-Item
   Announcement-Bar „Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · TWINT" · Bestseller-Reihe + 3-4 Kategorie-Tiles · Menü auf 4-6 kürzen.
 - **🟡 Mobile-Speed:** kein Autoplay-Video-Hero, ein optimiertes Hero-Bild, lazy-load, LCP < 2.5 s (72% Traffic mobil).
 - **🟡 Collection-Filter** (Grösse/Farbe/Preis/Bewertung + Sortierung) via Search-&-Discovery — TITLE-Smart-Collections sind keine Filter.
-- **🟢 Variant-Swatches statt Dropdown · Footer-Trust (TWINT/PostFinance-Logos + Adresse + Policies) · Variant-Swatches.**
-**Mein Teil (CizQ6, mache ich selbst):** PDP-Produkttexte (Benefit-Bullets/Preis-Framing/Trust-Zeile/Mundart), Klaviyo-Recovery (Abandoned Checkout = live ✓), Brain.
-**🚨 NUR USER (Admin, weder Theme noch ich per API):** Der **0-von-14-Zahlungen** ist mit hoher Wahrscheinlichkeit ein **technischer Block** —
-echte **Mobile-Testbestellung** machen + prüfen: Zahlungs-Provider **NICHT im Test-Modus**, **aktiver Haupt-Provider (Karte)**, **TWINT aktiv**, **Währung = CHF**.
+- **🟡 USP/Positionierung:** EIN klarer Schweizer Versprechen-Satz (z.B. „Schweizer Schmuck & Mode — TWINT, Versand aus der CH, 30 Tage gratis zurück") statt generischem Katalog — jeder CH-Gewinner (NIKIN/Five Skincare) hat einen.
+- **🟡 Reviews/Social-Proof:** Judge.me-Sterne + Anzahl auf Collection-Karten UND PDP neben dem Titel; viele Produkte zeigen 0 Sterne = Scam-Eindruck. UGC/Echt-Körper-Fotos statt nur Freisteller (+34% Conversion).
+- **🟡 Free-Shipping-Bar mit Fortschritt** („Noch CHF X bis Gratisversand") + **„30 Tage GRATIS Rückgabe"** prominent (nicht im Footer vergraben).
+- **🟡 Sprache:** Shop-Seiten/Checkout = sauberes **Hochdeutsch**; Mundart NUR für Social (Mundart im Checkout wirkt amateurhaft).
+- **🟡 Social→PDP:** TikTok/IG-Links auf eine saubere Produktseite mit Trust-Stack landen lassen, nicht auf die Homepage.
+- **🟢 Variant-Swatches statt Dropdown · Footer-Trust (TWINT/PostFinance-Logos + Adresse + Policies) · leichte ehrliche Urgency („X-mal gekauft").**
+**Mein Teil (CizQ6, mache ich selbst):** PDP-Produkttexte (Hochdeutsch, Benefit-Bullets/Preis-Framing/Trust-Zeile), Klaviyo-Recovery (Abandoned Checkout = live ✓), Social-Content (Trend-Angles), Brain.
+**🚨 NUR USER (Admin-Level):** Zahlung verifiziert OK (Test-Modus aus, Visa/MC/PayPal/TWINT aktiv) → KEIN technischer Block. **NEUER #1-Trust-Hebel:
+«Kauf auf Rechnung» FEHLT** — in CH das stärkste Vertrauenssignal für unbekannte Shops („try before buy", Zalando-Prinzip) → via **PEND/Swissbilling/Powerpay** ergänzen. + USP-Entscheid (oben).
 **🐛 Feed-Bug (an Feed-Owner / VPS-Session):** `enrich_apparel_descriptions.mjs` hängt den `ls-feed-details`-„Produktdetails"-
 Block (Grösse XS–XL · „hochwertiges Material" · „Unifarben") AUCH an **Nicht-Kleidung** (z.B. Jade-Roller/Beauty-Tools) → wirkt
 billig/nachlässig = Trust-/ATC-Killer. Bitte den Block nur bei echten Apparel-Produkttypen setzen ODER Platzhalter-Werte unterdrücken.
