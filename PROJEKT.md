@@ -31,7 +31,7 @@
   + gebündelt mergen, sobald frei. (4) Brain-Artefakte (brain-state.json/brain.html/IMPROVEMENT-REPORT.md)
   vor Commit verwerfen (Konflikte mit Parallel-Sessions).
 
-## 🧰 2026-06-20/21 — 55 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20/22 — 57 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -60,7 +60,9 @@
   text-bereinigen (Zeilen sortieren/dedupe/trim/nummerieren, Intl-Collator) + email-pruefer (Listen-Format-Check, Duplikate, Tippfehler-Hinweise, 100% lokal) #1169 ·
   sonderzeichen (Symbol-Tabelle Klick=kopiert: Typo/Währung/Pfeile/Mathe/Akzente) + wochentag-rechner (Wochentag+Tag-im-Jahr/KW/Schaltjahr, getestet) #1174 ·
   css-clamp-generator (fluid font-size clamp(), lineare Formel + Live-Demo) + woerter-pro-seite (Seitenzahl↔Wortzahl, Schriftgröße/Abstand) #1189 ·
-  border-radius-generator (Ecken einzeln/elliptisch, px/%, Live-Box) + mehrwertsteuer-eu (27 EU-Standardsätze + Netto/Brutto, Stand 2026 o. Gewähr) [batch-27, 2026-06-22]. **Hub = 114+ Tools.**
+  border-radius-generator (Ecken einzeln/elliptisch, px/%, Live-Box) + mehrwertsteuer-eu (27 EU-Standardsätze + Netto/Brutto, Stand 2026 o. Gewähr) #1190 ·
+  wlan-qr (WIFI:-QR, **QR-Encoder aus qr-code.html wiederverwendet** via Python-Assembly, esc für ;,:") + passphrase-generator (merkbare DE-Wort-Passphrase, crypto, Entropie-Anzeige) [batch-28, 2026-06-22]. **Hub = 116+ Tools.**
+  ⚠️ **Lehre (Encoder-Reuse):** Python `codecs.decode(...,"unicode_escape")` über UTF-8-String zerschießt Umlaute (→ Ã¤). Stattdessen Datei direkt in UTF-8 schreiben; Mojibake-Fix: Paare Ã¤→ä etc. Und: in JSON-LD NIE geraden `"` als dt. Schlusszitat — „…" (U+201E/U+201C) nutzen.
   ⚠️ sitemap.xml = häufige Merge-Konflikte mit Parallel-Session („…-kaufen-schweiz") → neue Einträge NICHT ganz am Ende, sondern nach eigenem Anker einfügen; Konflikt = beide Sets behalten.
   EN-Tools = KEIN Hebel (geprüft: /en/ nutzt deutsche Slugs, DACH-Fokus → bringt keine dt. Abonnenten).
 - **🔗 Discovery erledigt (PRs #1130 Startseite-„Mehr", #1131 Alt-Tool-Querlinks):** neue Tools jetzt 4-fach erschlossen
