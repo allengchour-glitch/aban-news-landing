@@ -5,9 +5,9 @@
 **Ehrlicher Befund:** Produkttexte + SEO-Metas sind **bereits exzellent** (Benefit-Bullets, Trust/TWINT, Mundart, CHF, CTA — verifiziert) =
 NICHT die Schwäche. Die echten Hebel: **(1/2) Theme-Struktur** (Sticky-ATC mobil, Buy-Box above-the-fold, Judge.me-Sterne über den Preis,
 Hero=1 Versprechen+1 Button, Trust-Reihe, Announcement-Bar, echte Collection-Filter, Mobile-Speed) → **Live-Theme für mich API-gesperrt** →
-**Fixplan in SHARED-MEMORY an Theme-Session**. **(3) Checkout-Recovery** (Klaviyo „Abandoned Checkout" Vse76a) = **live ✓**, ABER
-**14 erreichen Checkout, 0 zahlen = wahrscheinlich technischer Zahlungs-Block** → NUR User: Mobile-Testbestellung (Test-Modus AUS /
-Haupt-Provider aktiv / TWINT / Währung CHF). **Bug geflaggt:** `ls-feed-details`-Block (Grösse XS–XL/„hochwertiges Material") auf Beauty-Produkten → Feed-Owner.
+**Fixplan in SHARED-MEMORY an Theme-Session**. **(3) Checkout-Recovery** (Klaviyo „Abandoned Checkout" Vse76a) = **live ✓**. **Zahlung vom User verifiziert (2026-06-22):
+Test-Modus aus, Visa/MC/PayPal/TWINT aktiv = KEIN technischer Block.** → 0 Käufe = Folge der winzigen ATC (0.25%, teils Bot/Test-Traffic) →
+echte Hebel = **Theme-Conversion-Fixes** (lift ATC) + **Buy-Intent-Traffic** (Kampagne auf ATC). **Bug geflaggt:** `ls-feed-details`-Block (Grösse XS–XL/„hochwertiges Material") auf Beauty-Produkten → Feed-Owner.
 
 ## 2026-06-22 (DATEN-CHECK 30T + Marktplatz-Lehre + Doppelpost-Lehre)
 **📊 Echte Zahlen (Shopify, letzte 30T):** **7'070 Sessions** (war 3'016 — Traffic >2× dank Social!) ·
