@@ -26,6 +26,15 @@ Schweiz/CHF/Retail/LuxeStyle selbst aus, stoppt nur bei der Zahlungskarte = User
 **4. 🔒 SECRETS heute im Chat exponiert** (ganze `luxe-secrets.ps1` als Screenshot): API-Keys (Groq/Gemini/DeepSeek) + Meta/TikTok-Tokens
 + Shopify-Secret bei Gelegenheit **rotieren**. Secrets NIE in Chat/Repo — nur `luxe-secrets.ps1`/ENV.
 
+# 🎯 PIXEL-CONSENT = WURZEL von "daten-leer" (CizQ6 2026-06-22) — THEME-SESSION: höchster Conversion-Daten-Hebel
+**Fund (Storefront-HTML geprüft):** TikTok-Pixel `D8EKVR3C77U6KT5BTBD0` ist korrekt eingebaut, **aber consent-gesperrt** —
+`loadTikTokPixel()` feuert NUR wenn `localStorage.choice==="all"` ODER Event `lx-consent-granted`. → Klickt der Besucher nicht
+„Alle akzeptieren", **sammelt der Pixel NICHTS** = erklärt „Pixel feuert aber daten-leer" + warum Conversion-Kampagnen nie lernen.
+**Theme-Session (mit Recht abklären):** TikTok **Consent Mode** einbauen ODER Consent-Banner prominenter/Default soweit CH-zulässig.
+Grösster Hebel, damit bezahlte Kampagnen auf Kauf optimieren können. **CizQ6:** bis dahin Traffic-Kampagnen (kein Pixel nötig).
+**FB/IG-Queue-Audit (CizQ6):** Queue sauber — keine Doppel, alle Produkte ACTIVE+kaufbar (Dropship CONTINUE/untracked), Preise=Captions,
+Versand „ab CHF 65" korrekt. Alt-Posts säubern: FB via Worker `?dedupe=1`, IG nur App/PC `ig-delete` (IG-API kann nicht löschen).
+
 
 # 🎯 DATEN-DURCHBRUCH (CizQ6 2026-06-22) — Priorität dreht sich: SEARCH > SOCIAL
 Funnel nach Quelle (30T, Shopify): **direct 5238/16ATC/1Kauf · social 1698/0ATC/0Kauf · search 33/2ATC (6%!)**.
