@@ -41,9 +41,10 @@ kann das **Live-Theme nicht editieren (API-gesperrt)** → folgende **Theme-Item
 **Mein Teil (CizQ6, mache ich selbst):** PDP-Produkttexte (Hochdeutsch, Benefit-Bullets/Preis-Framing/Trust-Zeile), Klaviyo-Recovery (Abandoned Checkout = live ✓), Social-Content (Trend-Angles), Brain.
 **🚨 NUR USER (Admin-Level):** Zahlung verifiziert OK (Test-Modus aus, Visa/MC/PayPal/TWINT aktiv) → KEIN technischer Block. **NEUER #1-Trust-Hebel:
 «Kauf auf Rechnung» FEHLT** — in CH das stärkste Vertrauenssignal für unbekannte Shops („try before buy", Zalando-Prinzip) → via **PEND/Swissbilling/Powerpay** ergänzen. + USP-Entscheid (oben).
-**🐛 Feed-Bug (an Feed-Owner / VPS-Session):** `enrich_apparel_descriptions.mjs` hängt den `ls-feed-details`-„Produktdetails"-
-Block (Grösse XS–XL · „hochwertiges Material" · „Unifarben") AUCH an **Nicht-Kleidung** (z.B. Jade-Roller/Beauty-Tools) → wirkt
-billig/nachlässig = Trust-/ATC-Killer. Bitte den Block nur bei echten Apparel-Produkttypen setzen ODER Platzhalter-Werte unterdrücken.
+**✅ Feed-Bug GEFIXT (CizQ6 2026-06-22):** `enrich_apparel_descriptions.mjs` hängte den `ls-feed-details`-Block (Grösse XS–XL) wegen
+zu breiter Regex (`set\b`) AUCH an Schmuck/Beauty/Accessoires. **Behoben:** `set\b` raus + Non-Apparel-Ausnahme (Schmuck/Beauty/Tasche/
+Brille/…, aber Kleider mit „Gürtel" bleiben Mode). **116 bestehende Falsch-Treffer live bereinigt** (`automation/strip_nonapparel_feedblock.mjs`,
+läuft jetzt auch täglich auf der VPS, idempotent). → Nichts mehr zu tun für euch.
 
 # 🖥️ VPS für ALLE Projekte nutzbar — auch aban news (CizQ6 2026-06-22, User „teile mit abanews")
 Der **Hetzner-VPS** (Ubuntu, Standort nbg1, klont DIESES Repo nach `/opt/luxe/repo`, täglicher cron, Secrets in `/opt/luxe/.env`)

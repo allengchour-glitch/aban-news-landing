@@ -30,7 +30,7 @@ const API = '2025-01';
 const MARKER = 'ls-feed-details';
 
 // Mode/Schuhe erkennen (sonst skip)
-const APPAREL_RE = /kleid|bluse|\btop\b|shirt|t-shirt|tshirt|oberteil|pullover|\bpulli\b|cardigan|sweatshirt|hoodie|strickjacke|tunika|\bhose\b|hosen|jeans|leggings|shorts|\brock\b|röcke|jacke|mantel|blazer|lederjacke|fleece|\bparka\b|\bweste\b|bikini|bademode|badeanzug|badehose|dessous|unterwäsche|negligee|bademantel|nachthemd|pyjama|jumpsuit|overall|\bschuh|sandale|sneaker|ballerina|stiefel|\bboots\b|pumps|loafer|espadrille|set\b/i;
+const APPAREL_RE = /kleid|bluse|\btop\b|shirt|t-shirt|tshirt|oberteil|pullover|\bpulli\b|cardigan|sweatshirt|hoodie|strickjacke|tunika|\bhose\b|hosen|jeans|leggings|shorts|\brock\b|röcke|jacke|mantel|blazer|lederjacke|fleece|\bparka\b|\bweste\b|bikini|bademode|badeanzug|badehose|dessous|unterwäsche|negligee|bademantel|nachthemd|pyjama|jumpsuit|overall|\bschuh|sandale|sneaker|ballerina|stiefel|\bboots\b|pumps|loafer|espadrille/i;
 
 const COLORS = { 'schwarz':'Schwarz','weiss':'Weiss','weiß':'Weiss','rot':'Rot','blau':'Blau','grün':'Grün','gruen':'Grün','gelb':'Gelb','rosa':'Rosa','pink':'Pink','lila':'Lila','violett':'Violett','grau':'Grau','braun':'Braun','beige':'Beige','creme':'Creme','khaki':'Khaki','gold':'Gold','silber':'Silber','türkis':'Türkis','tuerkis':'Türkis','marine':'Marineblau','navy':'Marineblau','bordeaux':'Bordeaux','orange':'Orange','nude':'Nude','apricot':'Apricot' };
 const MATERIALS = [
@@ -109,6 +109,8 @@ else await (async()=>{
     for(const p of d.products.nodes){
       seen++;
       const hay=(p.productType+' '+p.title).toLowerCase();
+      // Fix 2026-06-22: Schmuck/Beauty/Accessoires NIE als Mode behandeln (sonst "Grösse XS–XL" auf Jade-Roller/Schmuck-Set/Box etc.)
+      if(/roller|gua.?sha|schmuck|halskette|\bkette\b|armband|armreif|armkette|\bring\b|ohrring|ohrhänger|creole|anhänger|brosche|\bbeauty\b|serum|cr[eè]me|maske|\bkerze|duft|parfum|diffuser|tasche|rucksack|beutel|portemonnaie|\buhr\b|brille|\bhut\b|mütze|\bcap\b|schal|stola|kissen|\blampe|spielzeug|deko/i.test(hay)){ nonAppar++; continue; }
       if(!APPAREL_RE.test(hay)){ nonAppar++; continue; }
       if((p.descriptionHtml||'').includes(MARKER)){ skip++; continue; }
       const block=buildBlock(p);
