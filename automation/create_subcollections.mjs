@@ -29,6 +29,15 @@ const SUBS=[
  {handle:'rucksaecke-schule',title:'🎒 Schulrucksäcke',words:['schulrucksack','schulranzen','kinderrucksack','schultasche']},
  {handle:'rucksaecke-laptop',title:'💼 Laptop- & Business-Rucksäcke',words:['laptop-rucksack','laptoprucksack','business-rucksack','notebook-rucksack']},
  {handle:'rucksaecke-sport',title:'🏔️ Sport- & Wanderrucksäcke',words:['sportrucksack','wanderrucksack','trekkingrucksack','daypack','outdoor-rucksack']},
+ // Schuhe (223) — Wettbewerbs-Collection (Galaxus-Nische)
+ {handle:'schuhe-sneaker',title:'👟 Sneaker',words:['sneaker','turnschuh','laufschuh']},
+ {handle:'schuhe-sandalen',title:'🩴 Sandalen & Espadrilles',words:['sandale','sandalette','espadrille','zehentrenner','flip-flop','pantolette']},
+ {handle:'schuhe-stiefel',title:'🥾 Stiefel & Boots',words:['stiefel','boots','stiefelette','chelsea']},
+ // Beauty (325)
+ {handle:'beauty-makeup',title:'💄 Make-up',words:['lippenstift','mascara','foundation','lidschatten','concealer','eyeliner','rouge','nagellack','make-up','lipgloss','highlighter']},
+ // Sonnenbrillen (172)
+ {handle:'sonnenbrillen-damen',title:'🕶️ Sonnenbrillen Damen',words:['damen-sonnenbrille','cat-eye','oversized','schmetterling']},
+ {handle:'sonnenbrillen-herren',title:'🕶️ Sonnenbrillen Herren',words:['herren-sonnenbrille','pilotenbrille','aviator','wayfarer','sport-sonnenbrille']},
 ];
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
