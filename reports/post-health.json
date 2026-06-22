@@ -1,11 +1,15 @@
 {
-  "ts": "2026-06-21T15:45:42.396Z",
+  "ts": "2026-06-22T03:39:02.187Z",
   "platforms": {
     "tiktok": {
       "result": "POSTED",
       "reason": "Veroeffentlicht (Bestaetigung geklickt)",
       "file": "luxe-montage-premium-bestseller.mp4",
-      "vor_min": 387
+      "vor_min": 1100
+    },
+    "campaign": {
+      "result": "WIZARD_DIAG",
+      "vor_min": 447
     },
     "meta": {
       "result": "WORKER_NICHT_ERREICHBAR",
@@ -13,8 +17,10 @@
     }
   },
   "duplicates": [],
-  "errors": [],
+  "errors": [
+    "Kampagne: WIZARD_DIAG — "
+  ],
   "ok": [
-    "TikTok zuletzt OK (luxe-montage-premium-bestseller.mp4, vor 387 min)"
+    "TikTok zuletzt OK (luxe-montage-premium-bestseller.mp4, vor 1100 min)"
   ]
 }
