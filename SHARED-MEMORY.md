@@ -1421,3 +1421,15 @@ Damenmode-Filter-Fix). **Self-Audit:** ShopifyQL nur via MCP `run-analytics-quer
 **Offene User-Klicks (Dead-Ends ohne User):** Google-Re-Crawl ✅ geklickt (läuft). Cloudflare-Worker scharf = R2+Token (Token-
 Fallen: cfut ohne Workers:Edit, cfk invalid → Dashboard-UI ODER „Edit Workers"-Token ohne IP-Filter). Meta-Tokens für Social.
 Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
+
+## 📌 2026-06-21 Teil 23 (🗂️ Unterkategorien + Startseite mit BigBuy-Kategorien)
+- **User: „regelmässig Unterkategorien (gegen Scrollen)" + „Startseite mit BigBuy-Produkten fixen".**
+- **Neues Tool `automation/create_subcollections.mjs`** (wiederverwendbar, idempotent): legt Smart-Sub-Collections
+  (TITLE-CONTAINS-Regeln) für grosse Collections an + publiziert in alle Kanäle. **13 erstellt:** Garten→Pflanzgefässe/
+  Leuchten/Deko/Werkzeug · Camping→Schlafen/Küche/Licht · Bar→Gläser/Cocktail/Wein · Rucksäcke→Schule/Laptop/Sport.
+  Für künftige grosse Collections: SUBS-Array erweitern + laufen lassen.
+- **Filter-Hub `/pages/marken-kategorien` neu** mit ALLEN publizierten Collections (213 Kat. + 29 Marken, inkl. neue Subs)
+  → über „🔎 Schnell finden" im Menü auffindbar = weniger Scrollen.
+- **Startseiten-Kategorie-Grid** (`collection-list`) um neue BigBuy-Bereiche erweitert (Garten/Camping/Bar/Rucksäcke/Pool/
+  Haarstyling), `max_collections` 4→12. BigBuy-Produkte sind damit prominent auf der Startseite (zusätzlich zu „Neu eingetroffen"=tag:dropship).
+- **Lehre:** Sub-Collection = Smart (Titel-Regel), nicht Re-Tagging. Immer im Hub/Menü surfacen, sonst SEO-/UX-tot.
