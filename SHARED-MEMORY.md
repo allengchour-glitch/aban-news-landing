@@ -1,5 +1,15 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 📊 DATEN-FUND (CizQ6 2026-06-22) — Mobile = DER Leak + 2 Leaks für Theme/Markets
+**📱 Mobile konvertiert 9× schlechter:** Mobile **6'204 Sess / nur 8 ATC (0.13%)** vs Desktop 831 / 10 ATC (**1.2%**). 87% Traffic
+ist mobil → **Mobile-Conversion ist DER Engpass** → die Mobile-Fixes (Sticky-ATC, Buy-Box above-fold, Speed) sind eindeutig **#1**.
+**Top-Landings (müssen mobil perfekt sein):** / (756) · /collections/damen-mode (386) · /highlights (240) · /sommer (204).
+**🚩 Leak 1 — `/de-de` bekommt noch 27 Sessions** (DE-Markt-Leakage, verstösst gegen Strikt-CH) → bitte DE-Market/Redirect endgültig killen.
+**🚩 Leak 2 — Fremdprodukt im Checkout:** abgebrochener Checkout «aban news Founding-Member» (CHF 69 ×2) liegt IM LuxeStyle-Shop →
+Alt-/Fremdprodukt aus anderem Projekt im Katalog? Bitte prüfen/entfernen.
+**Echte Kauf-Absicht (abgebrochene Checkouts):** personalisiertes Geburtsstein-Armband (24.90) · 2× POD «Selbst gestalten» (71.90/43) ·
+Thermosflasche · Herrenuhr → personalisierter Schmuck + POD ziehen (pushe ich in Social).
+
 # 🎯 CONVERSION-FIXPLAN (YouTube-CRO-Lehre, CizQ6 2026-06-22) — THEME-SESSION: bitte umsetzen
 **Kontext (echte Daten 30T):** 7'070 Sessions, aber **ATC nur 0.25%** + **14 erreichen Checkout, 0 zahlen**. 3-Agenten-
 YouTube-Schwarm (Fogarty/St-Germain/Shopify/CRO) → Diagnose: **Land-and-Bounce + technischer Zahlungs-Block**. Ich (Social/CizQ6)

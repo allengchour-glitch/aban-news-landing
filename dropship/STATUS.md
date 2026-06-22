@@ -1,5 +1,12 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-22 (DATEN-SWEEP „surfe überall" — Mobile = DER Leak)
+**📱 Headline:** Mobile konvertiert **9× schlechter** — Mobile 6'204 Sess/8 ATC (**0.13%**) vs Desktop 831/10 ATC (**1.2%**). 87% Traffic
+mobil → **Mobile-Conversion ist der Engpass** → Theme-Mobile-Fixes (Sticky-ATC/Buy-Box/Speed) sind eindeutig #1 (in SHARED-MEMORY).
+**Echte Kauf-Absicht** (abgebrochene Checkouts): personalisiertes Geburtsstein-Armband, 2× POD «Selbst gestalten», Thermosflasche → in Social pushen.
+**2 Leaks geflaggt:** `/de-de` 27 Sess (DE-Leakage) + Fremdprodukt «aban news Founding-Member» im Checkout → Theme/Markets/User.
+**Web-Recherche läuft** (3 Agenten: CH-Konkurrenz · Trend-Produkte · CH-Kaufverhalten) — Lehren folgen. Brain **210 Regeln**.
+
 ## 2026-06-22 (CRO-PLAYBOOK YouTube + „behebe alle 3" geroutet)
 3-Agenten-YouTube-Schwarm (Fogarty/St-Germain/Shopify/CRO) → Playbook im Gehirn (**208 Regeln**, `cro_playbook_youtube_2026`).
 **Ehrlicher Befund:** Produkttexte + SEO-Metas sind **bereits exzellent** (Benefit-Bullets, Trust/TWINT, Mundart, CHF, CTA — verifiziert) =
