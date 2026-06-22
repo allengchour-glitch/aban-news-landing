@@ -32,6 +32,17 @@ Schweiz/CHF/Retail/LuxeStyle selbst aus, stoppt nur bei der Zahlungskarte = User
 „Alle akzeptieren", **sammelt der Pixel NICHTS** = erklärt „Pixel feuert aber daten-leer" + warum Conversion-Kampagnen nie lernen.
 **Theme-Session (mit Recht abklären):** TikTok **Consent Mode** einbauen ODER Consent-Banner prominenter/Default soweit CH-zulässig.
 Grösster Hebel, damit bezahlte Kampagnen auf Kauf optimieren können. **CizQ6:** bis dahin Traffic-Kampagnen (kein Pixel nötig).
+
+**⭐ KONKRETER FIX-AUFTRAG (Theme-Session) — nach Impact geordnet:**
+1. **🥇 OPT-OUT statt Opt-in für CH (grösster Daten-Gewinn, rechtlich prüfen!):** Der Shop ist STRIKT Schweiz → es gilt
+   **revDSG** (CH), das ist **opt-out-freundlicher als die EU-DSGVO**: für nicht-sensible Analyse-/Marketing-Cookies reicht i.d.R.
+   ein **informierender Banner mit Ablehn-Möglichkeit**, kein erzwungenes „Alle akzeptieren". → Den Gate-Code so ändern, dass der
+   Pixel **standardmässig beim ersten Seitenaufruf lädt**, AUSSER der Besucher hat aktiv abgelehnt (statt `choice==="all"` als
+   Pflicht-Vorbedingung). Das allein dürfte die Pixel-Daten vervielfachen. ⚠️ Vorher mit Recht/Datenschutz kurz bestätigen.
+2. **🥈 Falls Opt-in bleibt:** TikTok **Consent Mode** (übermittelt Consent-Signale → Modellierung) ODER Banner deutlich
+   prominenter + „Akzeptieren" als klar dominanter Primär-Button (erhöht die Zustimmungsrate).
+3. **Wo:** das `loadTikTokPixel()`-Snippet + `lx_cookie_consent_v1`-Logik im Theme (liegt im Storefront-`<head>`/Layout).
+**Validieren:** TikTok Events Manager → „Test Event" / Pixel-Helper → feuern `page`/`ViewContent`/`AddToCart` wieder?
 **FB/IG-Queue-Audit (CizQ6):** Queue sauber — keine Doppel, alle Produkte ACTIVE+kaufbar (Dropship CONTINUE/untracked), Preise=Captions,
 Versand „ab CHF 65" korrekt. Alt-Posts säubern: FB via Worker `?dedupe=1`, IG nur App/PC `ig-delete` (IG-API kann nicht löschen).
 
