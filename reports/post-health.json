@@ -1,15 +1,15 @@
 {
-  "ts": "2026-06-22T16:33:33.930Z",
+  "ts": "2026-06-22T17:46:27.387Z",
   "platforms": {
     "tiktok": {
       "result": "POSTED",
       "reason": "Veroeffentlicht (Bestaetigung geklickt)",
       "file": "mw-filzhut-montana-breitkrempig.mp4",
-      "vor_min": 3
+      "vor_min": 76
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 1222
+      "vor_min": 1295
     },
     "meta": {
       "result": "WORKER_NICHT_ERREICHBAR",
@@ -21,6 +21,6 @@
     "Kampagne: WIZARD_DIAG — "
   ],
   "ok": [
-    "TikTok zuletzt OK (mw-filzhut-montana-breitkrempig.mp4, vor 3 min)"
+    "TikTok zuletzt OK (mw-filzhut-montana-breitkrempig.mp4, vor 76 min)"
   ]
 }
