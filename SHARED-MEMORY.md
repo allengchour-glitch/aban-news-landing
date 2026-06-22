@@ -1,5 +1,17 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🖥️ VPS-AUTONOMIE LIVE (CizQ6 2026-06-22) — PC-unabhängiger API-Worker
+**Neu:** Der User hat einen **Hetzner-VPS „luxestyle"** (CX23, Nürnberg, IP 46.225.75.125) aufgesetzt. Er richtet sich per
+`automation/vps/cloud-init.sh` selbst ein und läuft **täglich 04:00 UTC** `automation/vps/run-api-jobs.sh` → ruft
+`feed_polish.mjs` (MAX 300) + `enrich_apparel_descriptions.mjs` (MAX 150) **direkt über die Shopify-API** auf —
+**komplett unabhängig vom PC** (löst das nächtliche „PC aus / AVG blockt"-Problem fürs Feed/SEO-Polishing).
+- **Secret** liegt nur in `/opt/luxe/.env` auf dem VPS (CLIENT_ID/SECRET/SHOP) — **NIE im Repo**.
+- **Proof-of-life:** Der VPS stempelt bei jedem Lauf das Shop-Metafeld **`luxe.vps_last_run`** (nur Hostname `luxestyle`
+  schreibt diesen Key → PC/Cloud überschreiben ihn nie). Auslesen: `{ shop { metafield(namespace:"luxe",key:"vps_last_run"){value} } }`.
+- **Der VPS pusht NICHT ins Git** (read-only Klon, `git fetch+reset`) → keine Commit-Kollision mit den anderen Sessions.
+- ⚠️ **Andere Session:** Wenn du auch katalogweite Feed-/SEO-Skripte laufen lässt, ist das idempotent (kein Konflikt),
+  aber sag hier Bescheid, damit wir nicht doppelt rate-limiten. Theme/Menü bleibt eure Baustelle, Feed/Kategorie-Metafelder meine.
+
 # 🎯 DATEN-DURCHBRUCH (CizQ6 2026-06-22) — Priorität dreht sich: SEARCH > SOCIAL
 Funnel nach Quelle (30T, Shopify): **direct 5238/16ATC/1Kauf · social 1698/0ATC/0Kauf · search 33/2ATC (6%!)**.
 → **Social = 0 % Conversion (nur Reichweite), Search konvertiert am besten aber verhungert (33 Sess).**

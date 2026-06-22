@@ -37,6 +37,7 @@ const MAX = parseInt(process.env.MAX || '0', 10);      // 0 = alle
 const DELAY = parseInt(process.env.DELAY || '250', 10);
 const API = '2025-01';
 const T = p => 'gid://shopify/TaxonomyCategory/' + p;
+import os from 'node:os';
 
 // ── Kategorie-GIDs (Shopify-Standard-Taxonomie; verifiziert via taxonomy-Query) ──
 const G = {
@@ -181,6 +182,18 @@ if (process.env.FEED_TEST === '1' || !_isMain) { /* nur Logik importieren, kein 
 else await (async () => {
   const tok = await shToken();
   console.log(`feed_polish ${DRY?'[DRY] ':''}— Shop ${SHOP}, MAX=${MAX||'∞'}`);
+  // VPS-Herzschlag (Proof-of-life, aus der Cloud auslesbar). NUR der VPS (Hostname 'luxestyle')
+  // schreibt den Key 'vps_last_run' -> PC/Cloud koennen ihn nie ueberschreiben. Nie fatal.
+  if (!DRY) try {
+    const host = os.hostname() || '?';
+    if (/luxestyle/i.test(host)) {
+      const sd = await gql(tok, '{ shop { id } }');
+      await gql(tok, `mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){ userErrors{message} } }`,
+        { mf:[{ ownerId: sd.shop.id, namespace:'luxe', key:'vps_last_run',
+                type:'single_line_text_field', value: new Date().toISOString() + ' host=' + host }] });
+      console.log('VPS-Herzschlag gesetzt (host=' + host + ').');
+    }
+  } catch (e) { console.log('Herzschlag uebersprungen: ' + e.message); }
   let cursor = null, seen = 0, catSet = 0, mfSet = 0, skipped = 0, noMatch = 0;
   outer:
   do {
