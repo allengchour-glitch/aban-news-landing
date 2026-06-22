@@ -1433,3 +1433,13 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Startseiten-Kategorie-Grid** (`collection-list`) um neue BigBuy-Bereiche erweitert (Garten/Camping/Bar/Rucksäcke/Pool/
   Haarstyling), `max_collections` 4→12. BigBuy-Produkte sind damit prominent auf der Startseite (zusätzlich zu „Neu eingetroffen"=tag:dropship).
 - **Lehre:** Sub-Collection = Smart (Titel-Regel), nicht Re-Tagging. Immer im Hub/Menü surfacen, sonst SEO-/UX-tot.
+
+## 📌 2026-06-21 Teil 24 (🎯 Galaxus-Differenzierung: Personalisierung/POD prominent)
+- **Strategie (vs Galaxus 3,8 Mrd CHF/10 Mio Produkte):** NICHT bei Elektronik/Tech konkurrieren (verloren) — auf
+  **Mode/Schmuck/Geschenke + POD-Personalisierung** setzen. Der **Trikot-Gestalter + Schweiz-Edition** sind einzigartig
+  (Galaxus macht KEIN POD) = struktureller Vorteil.
+- **Umgesetzt:** Startseiten-Banner „✨ Selbst gestalten" auf **Position 3** (nach WM) → /pages/selbst-gestalten.
+  Menü: „Selbst gestalten" von Pos 11 → **Pos 5** (nach WM 2026). POD-Linie ist jetzt prominent.
+- Personalisierungs-Seiten verifiziert: /pages/selbst-gestalten, /products/wm-trikot-selbst-gestalten, /pages/designs-galerie = 200.
+- **Lehre:** LuxeStyle = kuratierte Boutique + Personalisierung, NICHT Preis/Sortiment. Long-Tail-SEO in Nischen, wo Galaxus
+  nicht optimiert (WM-Trikot bedrucken, wasserfester Schmuck Geschenk, Schweiz-Edition).
