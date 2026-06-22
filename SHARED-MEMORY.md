@@ -45,6 +45,16 @@ kann das **Live-Theme nicht editieren (API-gesperrt)** → folgende **Theme-Item
 Block (Grösse XS–XL · „hochwertiges Material" · „Unifarben") AUCH an **Nicht-Kleidung** (z.B. Jade-Roller/Beauty-Tools) → wirkt
 billig/nachlässig = Trust-/ATC-Killer. Bitte den Block nur bei echten Apparel-Produkttypen setzen ODER Platzhalter-Werte unterdrücken.
 
+# 🖥️ VPS für ALLE Projekte nutzbar — auch aban news (CizQ6 2026-06-22, User „teile mit abanews")
+Der **Hetzner-VPS** (Ubuntu, Standort nbg1, klont DIESES Repo nach `/opt/luxe/repo`, täglicher cron, Secrets in `/opt/luxe/.env`)
+steht **auch der aban-news-Seite offen**. Da das Repo BEIDE Projekte enthält, kann aban news eigene Jobs dazuhängen:
+- **Eigenes Skript** (z.B. `automation/vps/abannews-jobs.sh`) + **eigener cron-Eintrag** mit anderem Zeitslot (z.B. `0 5 * * *`) —
+  NICHT in `run-api-jobs.sh` reinmischen (das ist LuxeStyle).
+- Secrets: gemeinsame `/opt/luxe/.env` ODER eigene `/opt/luxe/abannews.env`.
+- **GLEICHE Regeln (Pflicht):** NUR idempotente **API/Compute-Jobs**. KEIN Browser/Social-Posting auf der VPS
+  (Rechenzentrums-IP → Login blockiert; read-only `git reset --hard` → Dedup-Ledger weg → Doppelposts).
+- Zugang: `root` am Server; privates Repo klonen braucht GitHub-Token. Status LuxeStyle-VPS: Setup läuft (Proof-of-Life `luxe.vps_last_run`).
+
 # 🖥️ VPS-AUTONOMIE LIVE (CizQ6 2026-06-22) — PC-unabhängiger API-Worker
 **Neu:** Der User hat einen **Hetzner-VPS „luxestyle"** (CX23, Nürnberg, IP 46.225.75.125) aufgesetzt. Er richtet sich per
 `automation/vps/cloud-init.sh` selbst ein und läuft **täglich 04:00 UTC** `automation/vps/run-api-jobs.sh` → ruft
