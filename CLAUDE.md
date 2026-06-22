@@ -193,6 +193,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-22 (Daten-Sweep + CRO-Marktforschung + Ziel 100k + Klarna):**
+- **📊 ECHTE DATEN 30T:** 7'070 Sessions (war 3'016 — Social zieht), ABER ATC 0.25% (**MOBIL 0.13% vs Desktop 1.2% = 9×-LEAK**),
+  0 echte Käufe (1 Order = User-Testkauf, EXPIRED). **Zahlung verifiziert OK** (User: Test-Modus aus; Visa/MC/PayPal/TWINT +
+  **Klarna aktiv** in Shopify Payments → Kauf-auf-Rechnung wahrscheinlich via Klarna abgedeckt; **Test-Checkout offen** ob Rechnungs-Option erscheint).
+- **🎯 NORDSTERN CHF 100k/Jahr verankert** (`dropship/ZIEL-100K.md`): ~185 Best./Mt; bei 2% Conv ~9'250 Sess nötig = fast da →
+  **Hebel #1 = CONVERSION, nicht Traffic** (Traffic fast da, kauft nur nicht).
+- **🧠 CRO-WISSEN (6 Recherche-Agenten: YouTube + Markt/Konkurrenz/Trends/Kaufverhalten):** Engpass = **Trust + Mobile-PDP**.
+  Top-Hebel: Reviews sichtbar (viele Produkte 0★), Mobile Sticky-ATC/Buy-Box, USP-Satz, Kauf-auf-Rechnung. → **Theme-Bauplan in SHARED-MEMORY**.
+  **Copy + SEO-Metas sind bereits exzellent** (verifiziert) = NICHT die Schwäche. Trend-Winner: wasserfester Schmuck «See-Test», Bag Charms, Charm-Sets bündeln.
+- **🚨 MARKTPLATZ-LEHRE:** Tutti/Anibis/Ricardo = SMG-Gruppe, **Tutti verbietet Dropshipping** + geteiltes Risk-Scoring →
+  autonomes Tutti/Anibis-Dropship-Listing **DEAKTIVIERT** (Ban-Schutz, in VOLLAUTOMAT + run-follower-daily auskommentiert). FB-Marketplace kommerziell nur USA → FB-Gruppen.
+- **🔁 DOPPELPOST-LEHRE:** gegen den ECHTEN veröffentlichten Stand deduppen (nicht nur Ledger — überlebt jetzt Rotation/git-resets).
+- **🤖 AUTO-BESSER:** `top_products.csv` (Quelle des Auto-Posters) 3 Herren-Produkte → Frauen-Winner (wasserfest/personalisiert). Stack gesund (0 Syntaxfehler, Heartbeat frisch).
+- **Kauf-auf-Rechnung-Anbieter:** Klarna (gratis, aktiv → erst testen) → sonst **Swissbilling** (kein Mindestumsatz, CH-Marke); **PEND/PowerPay = 100k-Mindestumsatz = Blocker**. Mail-Check: nichts eingerichtet.
+- **🔴 Engpass:** Mobile-Conversion + Trust (Reviews/Rechnung). **Brain 216 Regeln.** Offen nur User: Test-Checkout · Theme-Conversion-Fixes · Kampagne auf ATC.
+
 **📌 2026-06-21 (TEUER GELERNT — warum TikTok-Ads + PC-Automation scheiterten; Recherche-Schwarm; Daten-Fixes):**
 - **🔴 WURZELURSACHE TikTok-Ads (endlich, mit Beweis):** Das Werbekonto im `brave-agent`-Profil ist **NICHT eingerichtet**
   → zeigt Onboarding-Wand **„Add business info" (Industry+Firmenname+Zahlung Pflicht) + „permission error"**, bevor eine
