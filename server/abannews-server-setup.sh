@@ -24,6 +24,7 @@
 set -euo pipefail
 
 REPO_URL="${REPO_URL:-https://github.com/allengchour-glitch/aban-news-landing.git}"
+BRANCH="${BRANCH:-main}"            # Branch, von dem deployt wird (Default main)
 APP_DIR="${APP_DIR:-/opt/abannews}"
 ENV_DIR="/etc/abannews"
 ENV_FILE="$ENV_DIR/deploy.env"
@@ -57,12 +58,13 @@ dpkg-reconfigure -f noninteractive unattended-upgrades >/dev/null 2>&1 || true
 
 # ── 4) Repo holen/aktualisieren ─────────────────────────────────────────────
 if [ -d "$APP_DIR/.git" ]; then
-  log "Repo aktualisieren ($APP_DIR)"
-  git -C "$APP_DIR" fetch --depth=1 origin main
-  git -C "$APP_DIR" reset --hard origin/main
+  log "Repo aktualisieren ($APP_DIR, Branch $BRANCH)"
+  git -C "$APP_DIR" fetch --depth=1 origin "$BRANCH"
+  git -C "$APP_DIR" checkout -B "$BRANCH" "origin/$BRANCH"
+  git -C "$APP_DIR" reset --hard "origin/$BRANCH"
 else
-  log "Repo klonen → $APP_DIR"
-  git clone --depth=1 "$REPO_URL" "$APP_DIR"
+  log "Repo klonen → $APP_DIR (Branch $BRANCH)"
+  git clone --depth=1 --branch "$BRANCH" "$REPO_URL" "$APP_DIR"
 fi
 
 # ── 5) Env-Datei (Secrets) — NUR lokal, nie im Repo ─────────────────────────
@@ -99,6 +101,7 @@ Wants=network-online.target
 Type=oneshot
 EnvironmentFile=$ENV_FILE
 Environment=APP_DIR=$APP_DIR
+Environment=BRANCH=$BRANCH
 ExecStart=/usr/local/bin/abannews-auto-deploy
 EOF
 

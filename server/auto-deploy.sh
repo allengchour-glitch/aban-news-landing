@@ -5,11 +5,12 @@
 set -euo pipefail
 
 APP_DIR="${APP_DIR:-/opt/abannews}"
+BRANCH="${BRANCH:-main}"
 cd "$APP_DIR"
 
-git fetch --quiet origin main
+git fetch --quiet origin "$BRANCH"
 LOCAL="$(git rev-parse HEAD)"
-REMOTE="$(git rev-parse origin/main)"
+REMOTE="$(git rev-parse "origin/$BRANCH")"
 
 if [ "$LOCAL" = "$REMOTE" ]; then
   echo "· kein neuer Commit ($LOCAL) — nichts zu tun."
@@ -17,5 +18,5 @@ if [ "$LOCAL" = "$REMOTE" ]; then
 fi
 
 echo "▶ Neuer Stand: $LOCAL → $REMOTE — pull + deploy"
-git reset --hard origin/main
+git reset --hard "origin/$BRANCH"
 exec /usr/local/bin/abannews-deploy
