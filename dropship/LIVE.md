@@ -17,6 +17,18 @@
 - **Pixel-Konten geklärt** (7646 = Pixel+332CHF, via Shopify-Kanal) · Bots gebaut: Kampagne, CAPI-Datenfreigabe, Post-Audit, Marktplatz
 - **Gehirn: 185+ Regeln** · Dropship-Automation-Playbook, Creator/Conversion/Google/CH-Recht gelernt
 
+## 🎯 DATEN-DURCHBRUCH 2026-06-22 — warum 0 Käufe (Funnel nach Quelle, 30T)
+| Quelle | Sessions | Warenkorb | Käufe |
+|---|---|---|---|
+| direct | 5238 | 16 | 1 (Bot/Junk-lastig) |
+| **social** | 1698 | **0** | **0** ← Reichweite ohne Kaufabsicht |
+| **search** | 33 | 2 | 0 ← **6% ATC = beste Quelle, ausgehungert** |
+
+**Lehre:** Social konvertiert 0% (kein Sales-Kanal, nur Brand). Search konvertiert am besten, hat aber fast
+keinen Traffic. → **Priorität dreht sich: weg von „mehr posten", hin zu Google-Free-Listings + SEO.**
+**#1-Hebel:** Google Merchant Center auf CH/CHF/de-CH verbinden (1× User-Login) → dann läuft der Feed
+(Kategorien sind cloud-seitig poliert). Voller Plan: `dropship/FIRST-SALES-PLAYBOOK-2026.md`.
+
 ## ✅ Cloud-Checks 2026-06-22 (ohne PC/Handy, rein API) — alles grün
 - **Startseite:** alle 23 Heroes ACTIVE + `CONTINUE` = kaufbar (keine DENY-Blocker).
 - **Rabatte:** WELCOME10/FIRST15/BUNDLE20/SUMMER15/COMEBACK10 (Recovery) alle ACTIVE.
