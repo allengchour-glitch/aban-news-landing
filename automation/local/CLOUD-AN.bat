@@ -27,5 +27,7 @@ REM --- Cloud-Befehle holen + ausfuehren (cmd-poll self-pullt neuen Code + drain
 powershell -ExecutionPolicy Bypass -File "automation\local\cmd-poll.ps1" 2>nul
 
 echo [%date% %time%] Poll fertig - naechster in 2 Min...
-timeout /t 120 /nobreak >nul
+REM FIX 2026-06-22: 'timeout' bricht ab, wenn stdin umgeleitet ist (Start-Process/Task-Kontext) -> der
+REM Loop machte nur EINE Runde und stoppte. 'ping' ist ein robuster Sleep ohne stdin-Abhaengigkeit.
+ping -n 121 127.0.0.1 >nul
 goto loop
