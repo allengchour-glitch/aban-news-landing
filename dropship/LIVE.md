@@ -2,8 +2,10 @@
 
 > Stand: 2026-06-21 spät · Kanal: CLOUD-AN (selbstheilend + Autostart + Watchdog 6min + act-Timeout 45s) · Modus: **immer Bot, nie fragen, selbst checken/erledigen**
 >
-> ⚠️ **PC-Kanal aktuell eingefroren** (Heartbeat steht bei 22:00Z / Head `9385a8d0`; Queue-Bots noch nicht gelaufen).
-> Die Watchdog/Timeout-Fixes greifen erst nach 1 sauberem Neustart (SUPERBOT). Cloud arbeitet derweil API-seitig weiter.
+> ⚠️ **PC-Kanal: cmd-poll/CLOUD-AN schreibt keinen frischen Heartbeat** (stirbt vor dem Lebenszeichen; Ursache vom Cloud nicht sichtbar, User 8h weg).
+> **Selbstheilung deployed (vollautonom, kein Klick):** `scheduled-health.ps1` (läuft mehrmals/Tag autonom — Health 03:39Z + Learn 04:00Z bewiesen) drained jetzt die Befehls-Queue (zeitgeboxt 12 Min) + startet CLOUD-AN neu wenn Heartbeat >15 Min alt. Greift ab seinem 2. Lauf (1× pullt Code, 1× führt aus).
+> **In der Queue (warten auf Drain):** `shopify-campaign-go` (Pixel-Kampagne favoriten→CH→10 CHF) · `datasharing-go` (CAPI) · `storefront-audit`.
+> **Fixes heute:** CLOUD-AN `ping` statt `timeout` (Loop stoppte nach 1 Runde) · Queue-Drain+Zeit-Box an Health-Task · cmd-poll/ai-browser Watchdog 6min + act-Timeout 45s.
 
 ## ✅ Heute autonom erledigt (Auszug)
 - **TWINT live** + Funnel bewiesen (Order #1003) · **ATC-Rate 0,57% → 3,2%** (102 Kauf-Blocker-Fixes greifen!)
