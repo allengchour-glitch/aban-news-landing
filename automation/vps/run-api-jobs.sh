@@ -25,6 +25,8 @@ log "Leere SEO-Meta-Beschreibungen fuellen (ganzer Katalog, idempotent)..."
 MAX="${SEO_MAX:-200}" "$NODE" automation/seo_polish.mjs 2>&1 | tail -8 || log "seo_polish Fehler (weiter)"
 log "Trend-Scan CH (Google-Trends gratis + AI-Ideen, stateless/safe)..."
 "$NODE" automation/trends/trend_scan.mjs 2>&1 | tail -12 || log "trend_scan uebersprungen (weiter)"
+log "Proof-of-Life Metafeld stempeln (luxe.vps_last_run)..."
+"$NODE" automation/vps/stamp_alive.mjs 2>&1 | tail -3 || log "stamp uebersprungen (weiter)"
 
 # ⚠️ BEWUSST NICHT auf die VPS: KEIN Social-Posting (TikTok/IG/FB/Pinterest). Gruende: (1) Hetzner =
 # Rechenzentrums-IP -> Login wird blockiert/herausgefordert; (2) VPS ist read-only mit 'git reset --hard'
