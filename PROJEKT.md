@@ -43,14 +43,16 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
-## 📌 Stand 2026-06-22 (Teil 21) — 28 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT) + Bot installiert
-> Loop läuft weiter (User: „entwickle mache selber weiter"). **Zusätzlich zu #7–#25 neu (#26–#34):** Glassmorphism,
+## 📌 Stand 2026-06-22 (Teil 21) — 34 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT) + Bot installiert
+> Loop läuft weiter (User: „entwickle mache selber weiter"). **Neu seit Teil 20 (#7–#40):** u.a. Glassmorphism,
 > Trinkgeld-/Teilen-Rechner, px↔rem, Zahlensystem-Umrechner (BigInt), CSS-Spezifitäts-Rechner, Sitemap.xml-,
-> JSON-String-Escaper, Open-Graph-/Social-Card-Vorschau u.a. Alle viersprachig, Sitemap 4/4, review-geprüft.
+> JSON-String-Escaper, Open-Graph-/Social-Card-Vorschau, LocalBusiness-Schema, Markdown→HTML (escape-first, 60/60
+> XSS-Tests), Caesar/ROT13, Favicon-, CSS-Flexbox-, Platzhalter-Bild-Generator. Alle viersprachig, Sitemap 4/4, review-geprüft.
 > **🧠 2tes Gehirn als Bot installiert:** `tools/zweites_gehirn.mjs` + `.github/workflows/zweites-gehirn.yml`
-> (automatische Tool-QA, fand sofort 3 reale kaputte Alt-Tools: rechnung-generator, lesbarkeits-check, ai-sichtbarkeit).
-> Gesamt-Tool-Suite ~34 review-grade Browser-Tools (Site: 889 Familien / 3000 Seiten). Per-Tool-Details in
-> `SHARED-MEMORY.md` (Tool #1–#34). **Tools NICHT zurückbauen.**
+> (automatische Tool-QA; fand sofort 3 reale kaputte Alt-Tools: rechnung-generator, lesbarkeits-check, ai-sichtbarkeit,
+> und später einen </script>-Kommentar-Bug in einem neuen Tool — fängt jetzt auch meine eigenen Fehler vor dem Review ab).
+> Gesamt-Tool-Suite **40** review-grade Browser-Tools (Site: 895 Familien / 3024 Seiten). Per-Tool-Details in
+> `SHARED-MEMORY.md` (Tool #1–#40). **Tools NICHT zurückbauen.**
 
 ## 📌 Stand 2026-06-16 (Teil 21b) — 19 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT)
 > Fortsetzung des Loops „weiter ohne pause fix mit 2te gehirn". Jedes neue Tool durchläuft: DE bauen →
