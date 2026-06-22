@@ -12,6 +12,21 @@
 - ⚠️ **Andere Session:** Wenn du auch katalogweite Feed-/SEO-Skripte laufen lässt, ist das idempotent (kein Konflikt),
   aber sag hier Bescheid, damit wir nicht doppelt rate-limiten. Theme/Menü bleibt eure Baustelle, Feed/Kategorie-Metafelder meine.
 
+# 🔧 PC-BOT WIEDERBELEBT + 2 wichtige Lehren (CizQ6 2026-06-22) — gilt für BEIDE Sessions
+**1. 🐛 SHOPIFY-LOGIN-BUG in `luxe-secrets.ps1` (betrifft AUCH eure PC-Shopify-Jobs!):** Die Datei hatte die **FALSCHE
+`SHOPIFY_CLIENT_ID = c77dde5c…`** (= die nicht-installierte App → `app_not_installed`, alle PC-Shopify-API-Jobs scheitern still).
+✅ **Richtig (verifiziert): `SHOPIFY_CLIENT_ID = ffe6c3a1326affdd7f461760ac1a8950`** mit dem dazu passenden `shpss_`-Secret (Dev-Dashboard
+genau dieser App). User korrigiert das in `luxe-secrets.ps1`. *(Cloud-MCP + VPS sind nicht betroffen — nur die PC-Skripte.)*
+**2. 🛡️ PC-AUTOMATIK-WIEDERBELEBUNG (Herzschlag stand seit 06:00 still):** Ursache = **Antivirus (AVG) killt node/npm**
+(v.a. beim Stagehand-Install). Fix, der heute funktionierte: **AVG pausieren (1 h)** → **SUPERBOT EINMAL voll durchlaufen lassen**
+(NICHT mehrfach neu starten — jeder Neustart fängt die 6 Setup-Schritte von vorne an, erreicht nie die Dauer-Aufgabe).
+Danach tickt `reports/heartbeat.json` wieder + PC zieht den neuesten Code + postet/arbeitet. **Dauerhaft:** node/Repo/Brave in AVG-Ausnahmen.
+**3. 🎬 Kampagne:** erster Live-Lauf = **Traffic-Ziel** (umgeht Pixel-Wand) + **Auto-Onboarding** (Bot füllt Business-Info
+Schweiz/CHF/Retail/LuxeStyle selbst aus, stoppt nur bei der Zahlungskarte = User). Start am PC: `automation/local/KAMPAGNE-GO.bat` (git-frei).
+**4. 🔒 SECRETS heute im Chat exponiert** (ganze `luxe-secrets.ps1` als Screenshot): API-Keys (Groq/Gemini/DeepSeek) + Meta/TikTok-Tokens
++ Shopify-Secret bei Gelegenheit **rotieren**. Secrets NIE in Chat/Repo — nur `luxe-secrets.ps1`/ENV.
+
+
 # 🎯 DATEN-DURCHBRUCH (CizQ6 2026-06-22) — Priorität dreht sich: SEARCH > SOCIAL
 Funnel nach Quelle (30T, Shopify): **direct 5238/16ATC/1Kauf · social 1698/0ATC/0Kauf · search 33/2ATC (6%!)**.
 → **Social = 0 % Conversion (nur Reichweite), Search konvertiert am besten aber verhungert (33 Sess).**
