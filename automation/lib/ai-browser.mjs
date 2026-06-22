@@ -70,7 +70,10 @@ export async function aiBrowser({ cdp = CDP } = {}) {
           const actPage = () => { const sp = stPage(); return (sp && typeof sp.act === 'function') ? sp : (typeof rawPage.act === 'function' ? rawPage : null); };
           console.log('Stagehand aktiv mit Modell ' + c.modelName + (sh.page ? '' : ' (raw-Page fuer goto, sh.page lazy fuer act)'));
           // Diagnose, damit der Bot sie in den gepushten Report schreiben kann (sonst nur in der Konsole sichtbar).
-          const diag = () => { let shKeys = ''; try { shKeys = Object.keys(sh).join(','); } catch {} let proto = ''; try { proto = Object.getOwnPropertyNames(Object.getPrototypeOf(sh) || {}).join(','); } catch {} return { model: c.modelName, hasShPage: !!sh.page, shPageType: typeof sh.page, rawHasAct: typeof rawPage.act, actReady: !!actPage(), shKeys, shProto: proto }; };
+          // actReady ehrlich (Lehre 2026-06-22): act() liegt auf der INSTANZ (sh.act). actReady NUR an actPage() zu
+          // messen meldete faelschlich 'false', obwohl sh.act funktioniert -> man jagte ein Phantom statt der echten
+          // Ursache (Gemini-Quota). Jetzt zaehlt sh.act mit; instanceAct macht's explizit sichtbar.
+          const diag = () => { let shKeys = ''; try { shKeys = Object.keys(sh).join(','); } catch {} let proto = ''; try { proto = Object.getOwnPropertyNames(Object.getPrototypeOf(sh) || {}).join(','); } catch {} return { model: c.modelName, hasShPage: !!sh.page, shPageType: typeof sh.page, rawHasAct: typeof rawPage.act, instanceAct: typeof sh.act === 'function', actReady: (typeof sh.act === 'function') || !!actPage(), shKeys, shProto: proto }; };
           // FIX 2026-06-21 (Diagnose shProto): act/extract/observe liegen in dieser Stagehand-Version auf der
           // INSTANZ (sh.act), nicht auf sh.page (das ist undefined). -> direkt sh.act/sh.extract/sh.observe nutzen.
           // PRO-CALL-TIMEOUT (2026-06-21, 'lerne warum er haengt'): act() haengt auf schweren SPAs (DOM settled nie).
