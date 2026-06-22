@@ -1,0 +1,37 @@
+name: Zweites Gehirn (Tool-QA)
+
+# "Second brain" automated QA gate for the self-contained browser tools.
+# Encodes the bug-classes the manual review agents have caught (inline-script
+# syntax errors, unguarded clipboard, </script>/JSON escaping, innerHTML XSS,
+# __proto__ map trap, Array(var) OOM, crypto range guard). Runs the keyless
+# Node checker; fails the build only on HARD problems.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "tools/zweites_gehirn.mjs"
+      - ".github/workflows/zweites-gehirn.yml"
+  pull_request:
+    paths:
+      - "**/*.html"
+  schedule:
+    - cron: "37 4 * * *"   # daily 04:37 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  zweites-gehirn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Zweites Gehirn — Tool-Seiten prüfen
+        run: node tools/zweites_gehirn.mjs
+      - name: html-validate (falls vorhanden, informativ)
+        run: npx --yes html-validate "*.html" "en/*.html" "fr/*.html" "it/*.html" || true

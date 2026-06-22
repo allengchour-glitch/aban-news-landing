@@ -148,9 +148,9 @@
     if(avg>22){ score-=28; tips.push("✂️ Lange Sätze (Ø "+avg.toFixed(1)+" Wörter) — teile lange Sätze in zwei. Ziel: ~12–18 Wörter."); }
     else if(avg>18){ score-=12; tips.push("📏 Etwas lange Sätze (Ø "+avg.toFixed(1)+") — ein paar könntest du teilen."); }
     else tips.push("✅ Satzlänge gut (Ø "+avg.toFixed(1)+" Wörter).");
-    if(long>0){ score-=Math.min(24,long*8); tips.push("🧶 "+long+" Schachtelsatz/-sätze über 20 Wörter — der Hauptverdächtige für „schwer zu lesen"."); }
+    if(long>0){ score-=Math.min(24,long*8); tips.push("🧶 "+long+" Schachtelsatz/-sätze über 20 Wörter — der Hauptverdächtige für „schwer zu lesen“."); }
     if(fill>0){ score-=Math.min(18,fill*4); tips.push("🪶 "+fill+" Füllwort(e) (eigentlich, irgendwie …) — meist streichbar ohne Verlust."); }
-    if(pass>=Math.max(2,Math.round(nS*0.6))){ score-=14; tips.push("🔄 Viel Passiv („wird … gemacht") — aktiv formulieren („wir machen") wirkt direkter."); }
+    if(pass>=Math.max(2,Math.round(nS*0.6))){ score-=14; tips.push("🔄 Viel Passiv („wird … gemacht“) — aktiv formulieren („wir machen“) wirkt direkter."); }
     var lw=words.filter(function(w){return w.replace(/[^A-Za-zäöüÄÖÜß]/g,"").length>=14;}).length;
     if(lw>0){ score-=Math.min(12,lw*3); tips.push("🧱 "+lw+" sehr lange(s) Wort/Wörter (≥14 Buchstaben) — wenn möglich einfacher sagen."); }
     score=Math.max(0,Math.min(100,score));
