@@ -1472,3 +1472,11 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Lehre:** VOR Content-/Server-Arbeit immer `git fetch origin main` + main-SHARED-MEMORY lesen → sehen was die andere
   Session schon macht. Sessions pushen auf VERSCHIEDENE Branches (ich: claude/memory-2026-06-13 PR#851; andere: main) →
   SHARED-MEMORY divergiert, daher aktiv von main syncen.
+
+## 📌 2026-06-22 Teil 25 (🗂️ Struktur-Verbesserung: Subs im Menü + Sub-Regel-Fix)
+- **Menü-Dropdown „🌿 Garten · Outdoor & mehr"** (nach Trends & Gadgets, 11 Unterpunkte) → neue Bereiche+Subs (Garten/
+  Pflanzgefässe/Leuchten/Camping/Pool/Bar/Gläser/Rucksäcke/Schule/Haarstyling) im Menü auffindbar = weniger Scrollen.
+  menuUpdate sicher (144→156, validiert). Subs jetzt dreifach auffindbar: Menü + Filter-Hub + Direktlink.
+- **Sub-Regel-Fix (QA):** 5 Subs waren zu breit (TITLE CONTAINS generisch) → mit **Compound-Wörtern** verengt
+  (rucksaecke-sport 403→5, bar-glaeser 241→56 etc.). `create_subcollections.mjs` Tool entsprechend aktualisiert.
+  **Lehre: Smart-Sub-Rule braucht spezifische Compound-Wörter (sportrucksack), nicht generische (sport).**
