@@ -1460,3 +1460,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   GitHub-Flag (Account geflaggt → Actions aus, OAuth-Apps blockiert). Cloudflare-Worker = CF-Token ohne Workers:Edit.
   In-Session-Hintergrund-Runner sterben → Wellen laufen in-Turn. **Echtes 24/7 = Server-Setup abschliessen (User).**
 - **Tools neu:** create_subcollections, server-setup/bot-loop, ai_blog_writer, gmc_category_fix (Pool/Garten-MAP).
+
+## ⚠️📌 2026-06-22 SYNC mit anderer Session — KOORDINATION (wichtig, Dubletten vermeiden)
+- **Andere Session (auf `main`) OWNS Kaufberater-Content:** ~**238 CH-Ratgeber** im Blog `ratgeber` (Wellen bis 20, mit
+  Interlinking, systematisch). → **DIESE Session schreibt KEINE Kaufberater mehr** (sonst Themen-Dubletten/Thin Content).
+  Meine ~33 diese Session waren teils Overlap — ab jetzt STOPP Content.
+- **Andere Session OWNS Server:** „Always-on Auto-Deploy-Box" (#1187) + Server-Setup-Fixes (#1188) als GitHub-Actions-Ersatz.
+  → Mein `server-setup.sh` ist redundant; Server = andere Session.
+- **MEINE Spur (diese Session) bleibt:** **BigBuy-Produkt-Import + Katalog-Struktur** (Unterkategorien, Startseite, Collections,
+  Merchant-Sauberkeit, Filter-Hub). main-Memory bestätigt: „Andere Sessions: keine Produkte importieren" → Produkte = ich.
+- **Lehre:** VOR Content-/Server-Arbeit immer `git fetch origin main` + main-SHARED-MEMORY lesen → sehen was die andere
+  Session schon macht. Sessions pushen auf VERSCHIEDENE Branches (ich: claude/memory-2026-06-13 PR#851; andere: main) →
+  SHARED-MEMORY divergiert, daher aktiv von main syncen.
