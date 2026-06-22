@@ -193,6 +193,16 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-22 (SPÄT — 🖥️ VPS LIVE + 24/7-Autonomie-Architektur):**
+- **🎉 HETZNER-VPS LÄUFT** (verifiziert: Metafeld `luxe.vps_last_run`=ubuntu-4gb-nbg1-1, 1. Lauf durch). Cron 04:00 täglich →
+  Feed/SEO/Trend-Polish **autonom, PC-unabhängig**. `.env` ok (Shopify+Gemini+DeepSeek), Branch CizQ6. ⚠️ remote-`ghp_`-Token + alle Chat-Secrets ROTIEREN.
+- **🤖 24/7-AUTONOMIE-ARCHITEKTUR (wichtig, ehrlich):** Ohne User laufen 24/7 = **VPS (API/Compute, 04:00)** + **Cloudflare-Worker (IG/FB-Posting 12/17/21 CH, Graph-API)**.
+  **Browser-Tasks (TikTok-Upload, Follower, Auto-Klick Ads, Pinterest-Browser) brauchen einen ECHT-IP-Browser = NUR der PC** (Brave 9222) —
+  die VPS-Rechenzentrums-IP wird von TikTok/IG geblockt (Browserbase-Lehre). Cloud-Session kann den PC-Port NICHT erreichen → steuert PC nur via Worker-Queue.
+  → **Für 24/7-Browser: PC muss AN bleiben (CLOUD-AN.bat-Loop)**; dann führt der PC die gequeueten Tasks laufend aus. PC aus = Browser-Tasks warten.
+- **Gequeued für PC (laufen sobald PC an):** audit-ig/tiktok/fb (alte Videos, braucht Gemini-Key in luxe-secrets.ps1), storefront-audit.
+- Master-Liste aller Verbesserungen: `dropship/MASTER-TODO.md`. Brain 230 Regeln.
+
 **📌 2026-06-22 (Daten-Sweep + CRO-Marktforschung + Ziel 100k + Klarna):**
 - **📊 ECHTE DATEN 30T:** 7'070 Sessions (war 3'016 — Social zieht), ABER ATC 0.25% (**MOBIL 0.13% vs Desktop 1.2% = 9×-LEAK**),
   0 echte Käufe (1 Order = User-Testkauf, EXPIRED). **Zahlung verifiziert OK** (User: Test-Modus aus; Visa/MC/PayPal/TWINT +
