@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generatore di glassmorphism · CSS vetro smerigliato · aban news</title>
+<meta name="description" content="Generatore di glassmorphism gratuito: imposta l'effetto vetro smerigliato (backdrop-filter, trasparenza, bordo) con i cursori, guardalo dal vivo e copia il CSS. Locale nel browser, senza login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/glassmorphism-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/glassmorphism-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/glassmorphism-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/glassmorphism-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/glassmorphism-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/glassmorphism-generator.html">
+<meta property="og:title" content="Generatore di glassmorphism (CSS vetro smerigliato)">
+<meta property="og:description" content="Imposta l'effetto vetro smerigliato con i cursori, guardalo dal vivo e copia il CSS. Locale nel browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/glassmorphism-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="it_IT"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generatore di glassmorphism",
+"url":"https://abannews.com/it/glassmorphism-generator.html","applicationCategory":"DesignApplication","operatingSystem":"Web",
+"inLanguage":"it","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Imposta l'effetto glassmorphism / vetro smerigliato (backdrop-filter, trasparenza, bordo) con i cursori e fornisce il CSS da copiare.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.preview{min-height:240px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(135deg,#7c3aed,#db2777 45%,#f59e0b);display:flex;align-items:center;justify-content:center;padding:24px;margin-bottom:16px}
+#glass{width:230px;height:140px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.05rem;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.ctrls .lbl{display:flex;justify-content:space-between;font-weight:600;font-size:13px;margin:12px 0 5px;color:var(--ink2)}
+.ctrls .lbl:first-child{margin-top:0}
+.ctrls .val{color:var(--amber-dk);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--amber-dk)}
+.colorrow{display:flex;gap:10px;align-items:center;margin-top:12px}
+.colorrow input[type=color]{width:46px;height:38px;padding:2px;border:1px solid var(--line);border-radius:8px;background:var(--field);cursor:pointer}
+.colorrow label{font-size:.9rem;color:var(--ink2)}
+.toggle{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--amber-dk)}
+.outbar{display:flex;gap:8px;align-items:center;margin:16px 0 8px}
+.outbox pre{background:#1e1e1e;color:#e6e6e6;border-radius:10px;padding:14px;font-size:13px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Vai allo strumento</a>
+<header class="site"><div class="wrap"><a href="/it/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuita</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Genera <span class="a">glassmorphism</span></h1>
+    <p>L'effetto « vetro smerigliato » per schede e overlay — lo sfondo traspare in trasparenza, leggermente sfocato. Imposta sfocatura, trasparenza, colore e bordo con i cursori, guarda il risultato dal vivo e copia il CSS pronto all'uso. Tutto in locale nel browser, niente viene inviato.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="preview"><div id="glass">Scheda in vetro</div></div>
+    <div class="ctrls">
+      <div class="lbl"><span>Sfocatura (backdrop-filter)</span><span class="val" id="vblur">10px</span></div>
+      <input type="range" id="blur" min="0" max="40" value="10" aria-label="Sfocatura">
+      <div class="lbl"><span>Opacità del vetro</span><span class="val" id="vop">25%</span></div>
+      <input type="range" id="op" min="0" max="100" value="25" aria-label="Opacità del vetro">
+      <div class="lbl"><span>Arrotondamento</span><span class="val" id="vrad">16px</span></div>
+      <input type="range" id="rad" min="0" max="50" value="16" aria-label="Arrotondamento">
+      <div class="colorrow">
+        <input type="color" id="color" value="#ffffff" aria-label="Colore di tinta">
+        <label for="color">Colore di tinta del vetro</label>
+      </div>
+      <label class="toggle"><input type="checkbox" id="border" checked> Bordo chiaro (1px)</label>
+    </div>
+    <div class="outbar">
+      <span class="lbl" id="outLbl" style="margin:0;font-weight:600;font-size:13px;color:var(--ink2)">CSS</span>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="copy" type="button">Copia</button>
+    </div>
+    <pre id="code" role="textbox" tabindex="0" aria-readonly="true" aria-labelledby="outLbl"></pre>
+    <p class="note">Importante: <code>backdrop-filter</code> ha effetto solo se c'è qualcosa dietro l'elemento (immagine/gradiente) — su uno sfondo a tinta unita non si vede quasi nulla. Per Safari è incluso <code>-webkit-backdrop-filter</code>. Tutto in locale, nessun caricamento.</p>
+  </section>
+  <div class="cta"><strong>Altri strumenti</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">per il web &amp; il design.</p>
+    <p><a class="btn" href="/it/box-shadow-generator.html">Box-Shadow</a>
+      <a class="btn ghost" href="/it/css-gradient-generator.html">Gradiente</a>
+      <a class="btn ghost" href="/it/online-tools.html">Tutti gli strumenti</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Lo hai trovato utile? 5 minuti di IA senza l'hype — ogni giorno lavorativo.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news è la newsletter sull'IA per gli autonomi: breve, onesta, senza bingo di parole alla moda. Gratuita, annullabile in qualsiasi momento.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Iscriviti alla newsletter gratuita →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/it/box-shadow-generator.html">Box-Shadow</a> · <a href="/it/css-gradient-generator.html">Gradiente</a> ·
+  <a href="/it/ki-werkzeug.html">Strumento IA</a> &middot; <a href="/it/online-tools.html">Tutti gli strumenti</a> &middot; <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var glass=document.getElementById("glass"),code=document.getElementById("code"),
+      blur=document.getElementById("blur"),op=document.getElementById("op"),rad=document.getElementById("rad"),
+      color=document.getElementById("color"),border=document.getElementById("border");
+  function hexToRgb(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
+  function render(){
+    var b=parseInt(blur.value,10)||0,o=parseInt(op.value,10)||0,r=parseInt(rad.value,10)||0;
+    document.getElementById("vblur").textContent=b+"px";
+    document.getElementById("vop").textContent=o+"%";
+    document.getElementById("vrad").textContent=r+"px";
+    var rgb=hexToRgb(color.value),alpha=Math.round(o/100*100)/100;
+    var bg="rgba("+rgb[0]+", "+rgb[1]+", "+rgb[2]+", "+alpha+")";
+    var brd=border.checked?"1px solid rgba(255, 255, 255, 0.3)":"none";
+    glass.style.background=bg;
+    glass.style.backdropFilter="blur("+b+"px)";
+    glass.style.webkitBackdropFilter="blur("+b+"px)";
+    glass.style.borderRadius=r+"px";
+    glass.style.border=brd;
+    glass.style.boxShadow="0 8px 32px rgba(0, 0, 0, 0.2)";
+    var css="background: "+bg+";\n"+
+      "border-radius: "+r+"px;\n"+
+      "backdrop-filter: blur("+b+"px);\n"+
+      "-webkit-backdrop-filter: blur("+b+"px);\n"+
+      (border.checked?"border: 1px solid rgba(255, 255, 255, 0.3);\n":"")+
+      "box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);";
+    code.textContent=css;
+    return css;
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Copiato ✓");},function(){fb(text,b);});
+    } else fb(text,b);
+  }
+  function fb(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Copiato ✓");}
+    catch(e){flash(b,"Copia manualmente");}}
+  [blur,op,rad,color].forEach(function(e){e.addEventListener("input",render);});
+  border.addEventListener("change",render);
+  document.getElementById("copy").addEventListener("click",function(){copy(render(),this);});
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
