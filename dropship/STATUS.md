@@ -1,5 +1,17 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-22 (DATEN-CHECK 30T + Marktplatz-Lehre + Doppelpost-Lehre)
+**📊 Echte Zahlen (Shopify, letzte 30T):** **7'070 Sessions** (war 3'016 — Traffic >2× dank Social!) ·
+Quellen: direct 5'321 (75%, grossteils Junk/Bot) · **social 1'709 (echte Reichweite)** · **search 33 (SEO tot)** ·
+**ATC nur 18 (0.25%)** · Checkout erreicht 14 · **bezahlt 0 echt** (Order #1003 = User-Testkauf, EXPIRED).
+**Lehre:** Mehr Traffic, aber ATC-Rate GEFALLEN (war 0.53%) → neuer Direct-Traffic ist Junk; **Social ist der echte Treiber**.
+**SEO-Metas sind flächendeckend gefüllt + hochwertig** (Stichprobe 2 Seiten = 0 Lücken) → Search-Engpass braucht
+jetzt **Off-Page** (Pinterest/Free Listings/Backlinks), NICHT mehr Metas. **Engpass bestätigt: (1) Zahlung (14→0), (2) ATC-Qualität.**
+**🚨 Marktplatz-Lehre (Recherche):** Tutti/Anibis/Ricardo = SMG-Gruppe, **Tutti verbietet Dropshipping** + geteiltes Risk-Scoring →
+autonomes Tutti/Anibis-Dropship-Listing **deaktiviert** (Ban-Schutz). FB-Marketplace kommerziell = nur USA → FB-Gruppen statt dessen.
+**🔁 Doppelpost-Lehre:** Dedup gegen den ECHTEN veröffentlichten Stand (nicht nur Ledger — der überlebt jetzt Resets). Brain **206 Regeln**.
+**Offen (nur User):** 🎬 Kampagne absenden (PC+Karte) · 🔒 Consent-Default (Theme) · 💳 **Zahlung TWINT/Rechnung = #1 Conversion-Hebel**.
+
 ## 2026-06-21 (SPÄT-3 — 🎮 CLOUD-AN = 100% PC-Kontrolle + Post-Audit-Tool + Traffic-Kampagne)
 **🎮 CLOUD-AN.bat (User „pc mit klick tool dann kannst du selber ausführen" + „pc läuft 24/7"):** Dauer-Loop, PC hängt
 sich an die Cloud (Brave 9222 + cmd-poll alle 2 Min). **Verifiziert: Queue wird gedrained** → ich steuere den PC jetzt
