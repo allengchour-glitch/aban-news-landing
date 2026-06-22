@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zufallszahlen-Generator · Würfel, Lotto · aban news</title>
+<meta name="description" content="Kostenloser Zufallszahlen-Generator: echte Zufallszahlen in einem Bereich ziehen — mit Anzahl, ohne Wiederholung, plus Würfel-, Münz- &amp; Lotto-Presets. Fair (crypto), lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/zufallszahlen-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/zufallszahlen-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/zufallszahlen-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/zufallszahlen-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/zufallszahlen-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/zufallszahlen-generator.html">
+<meta property="og:title" content="Zufallszahlen-Generator (Würfel · Lotto)">
+<meta property="og:description" content="Faire Zufallszahlen in einem Bereich, mit Anzahl &amp; ohne Wiederholung, + Würfel/Münz/Lotto. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/zufallszahlen-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Zufallszahlen-Generator",
+"url":"https://abannews.com/zufallszahlen-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Erzeugt faire Zufallszahlen in einem Bereich, mit Anzahl und optional ohne Wiederholung, plus Würfel-, Münz- und Lotto-Presets.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr}}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+input[type=number]{width:100%;font-family:inherit;font-size:16px;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.opt{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.opt input{width:18px;height:18px;accent-color:var(--amber-dk)}
+.actions{display:flex;gap:8px;align-items:center;margin-top:14px;flex-wrap:wrap}
+.warn{color:var(--bad);font-weight:600;font-size:.85rem;min-height:1.1em;margin-top:8px}
+.result{margin-top:14px;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:16px;min-height:70px;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+.num{background:var(--card);border:1px solid var(--amber-lt);color:var(--amber-dk);font-weight:800;font-variant-numeric:tabular-nums;border-radius:9px;padding:8px 14px;font-size:1.15rem}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Zufallszahlen</span> ziehen</h1>
+    <p>Faire Zufallszahlen in einem frei wählbaren Bereich — beliebig viele, auf Wunsch ohne Wiederholung. Für Verlosungen, Spiele oder Stichproben. Nutzt den kryptografischen Zufall des Browsers. Alles lokal, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="presets" id="presets"></div>
+    <div class="grid">
+      <div><label class="lbl" for="min">Von</label><input type="number" id="min" step="1" value="1"></div>
+      <div><label class="lbl" for="max">Bis</label><input type="number" id="max" step="1" value="100"></div>
+      <div><label class="lbl" for="count">Anzahl</label><input type="number" id="count" step="1" min="1" max="1000" value="1"></div>
+    </div>
+    <label class="opt"><input type="checkbox" id="unique"> Ohne Wiederholung (jede Zahl nur einmal)</label>
+    <div class="actions">
+      <button class="btn" id="gen" type="button">🎲 Ziehen</button>
+      <button class="btn ghost sm" id="copy" type="button">Kopieren</button>
+    </div>
+    <div class="warn" id="warn" role="alert"></div>
+    <div class="result" id="result" aria-live="polite"></div>
+    <p class="note">„Von" und „Bis" sind eingeschlossen (z.&nbsp;B. 1–6 enthält 1 und 6). „Ohne Wiederholung" geht nur, solange die Anzahl in den Bereich passt. Der Zufall stammt aus <code>crypto.getRandomValues</code> (gleichmäßig verteilt, ohne Modulo-Verzerrung). Alles lokal, kein Upload.</p>
+  </section>
+  <div class="cta"><strong>Mehr Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Alltag &amp; Web.</p>
+    <p><a class="btn" href="/passwort-generator.html">Passwort-Generator</a>
+      <a class="btn ghost" href="/uuid-generator.html">UUID-Generator</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/passwort-generator.html">Passwort-Generator</a> · <a href="/uuid-generator.html">UUID-Generator</a> ·
+  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var minEl=document.getElementById("min"),maxEl=document.getElementById("max"),countEl=document.getElementById("count"),
+      unique=document.getElementById("unique"),warn=document.getElementById("warn"),result=document.getElementById("result"),presetsBox=document.getElementById("presets");
+  var PRESETS=[["🎲 Würfel (1–6)",1,6,1,false],["🪙 Münze (1–2)",1,2,1,false],
+    ["🎰 Lotto 6 aus 49",1,49,6,true],["🔢 1–100",1,100,1,false]];
+  var last=[];
+  // unbiased integer in [0, n) via rejection sampling on a 32-bit source
+  function randBelow(n){
+    if(n<=0)return 0;
+    if(window.crypto&&window.crypto.getRandomValues){
+      var max=Math.floor(0x100000000/n)*n,a=new Uint32Array(1);
+      do{window.crypto.getRandomValues(a);}while(a[0]>=max);
+      return a[0]%n;
+    }
+    return Math.floor(Math.random()*n);
+  }
+  function randInt(lo,hi){return lo+randBelow(hi-lo+1);}
+  function int(el){var v=parseInt(el.value,10);return isNaN(v)?null:v;}
+  function gen(){
+    var lo=int(minEl),hi=int(maxEl),c=int(countEl);
+    warn.textContent="";
+    if(lo===null||hi===null||c===null){warn.textContent="⚠ Bitte Von, Bis und Anzahl ausfüllen.";result.innerHTML="";return;}
+    if(lo>hi){var t=lo;lo=hi;hi=t;} // tolerate swapped range
+    if(c<1)c=1;if(c>1000)c=1000;
+    var span=hi-lo+1,out=[];
+    if(unique.checked){
+      if(c>span){warn.textContent="⚠ Ohne Wiederholung passen höchstens "+span+" Zahlen in den Bereich "+lo+"–"+hi+".";result.innerHTML="";return;}
+      // partial Fisher–Yates over a pool
+      var pool=new Array(span);for(var i=0;i<span;i++)pool[i]=lo+i;
+      for(var k=0;k<c;k++){var j=k+randBelow(span-k);var tmp=pool[k];pool[k]=pool[j];pool[j]=tmp;out.push(pool[k]);}
+    }else{
+      for(var m=0;m<c;m++)out.push(randInt(lo,hi));
+    }
+    last=out;
+    result.innerHTML=out.map(function(n){return '<span class="num">'+n+'</span>';}).join("");
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(!text)return;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Kopiert ✓");},function(){fb(text,b);});
+    } else fb(text,b);
+  }
+  function fb(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Kopiert ✓");}
+    catch(e){flash(b,"Bitte manuell kopieren");}}
+  PRESETS.forEach(function(p){
+    var b=document.createElement("button");b.type="button";b.className="btn ghost sm";b.textContent=p[0];
+    b.addEventListener("click",function(){minEl.value=p[1];maxEl.value=p[2];countEl.value=p[3];unique.checked=p[4];gen();});
+    presetsBox.appendChild(b);
+  });
+  document.getElementById("gen").addEventListener("click",gen);
+  document.getElementById("copy").addEventListener("click",function(){copy(last.join(", "),this);});
+  gen();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
