@@ -168,7 +168,7 @@ footer a{color:var(--muted)}
       spec.push({"@type":"OpeningHoursSpecification","dayOfWeek":"https://schema.org/"+DAYS[i][1],"opens":from,"closes":to});
     });
     if(spec.length)obj.openingHoursSpecification=spec;
-    // Escape "<" so a value containing </script> can't end the tag when pasted into a page.
+    // Escape "<" so a value containing a closing script tag can't end the tag when pasted into a page.
     var json=JSON.stringify(obj,null,2).replace(/</g,"\\u003c");
     code.textContent='<script type="application/ld+json">\n'+json+'\n<\/script>';
     return code.textContent;
