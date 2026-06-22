@@ -1443,3 +1443,20 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - Personalisierungs-Seiten verifiziert: /pages/selbst-gestalten, /products/wm-trikot-selbst-gestalten, /pages/designs-galerie = 200.
 - **Lehre:** LuxeStyle = kuratierte Boutique + Personalisierung, NICHT Preis/Sortiment. Long-Tail-SEO in Nischen, wo Galaxus
   nicht optimiert (WM-Trikot bedrucken, wasserfester Schmuck Geschenk, Schweiz-Edition).
+
+## 📌📊 2026-06-21/22 STAND-UPDATE (Ende der langen Dropship-Session)
+- **Produkte: ~542 neu** in 17 Wellen via `bigbuy_pipeline.sh`, alle Google-Merchant-sicher (vendor/Identifier/Kategorie/
+  Trust/SEO katalogweit verifiziert). **8 neue Bereiche** (Rucksäcke/Beleuchtung/Garten/Camping/Bar/Pool/Haarstyling/Auto)
+  + **13 Unterkategorien** (Smart, gegen Scrollen). Katalog jetzt ~3.900 aktiv.
+- **Content: ~131 Kaufberater** (~33 neu diese Session via Gemini, `ai_blog_writer.mjs`), inkl. Galaxus-Lücken-Nischen
+  (Personalisierung/Trikot-bedrucken/Schweizer-Geschenke). **Ratgeber-Blog ins Hauptmenü** (war verwaist — grösster SEO-Fix).
+- **Struktur:** Filter-Hub (213 Kat.), Startseite mit BigBuy-Kategorien (12er-Grid) + 2 Banner (Kategorien-CTA, Selbst-
+  gestalten Pos3), „Neu eingetroffen"=tag:dropship (selbst-aktuell), Topseller cross-category (671).
+- **Galaxus-Strategie:** nicht auf Elektronik/Preis konkurrieren — auf Mode/Schmuck/Geschenke + **POD-Personalisierung**
+  (Trikot-Gestalter/Schweiz-Edition, prominent Startseite Pos3 + Menü Pos5). Long-Tail-SEO in Nischen wo Galaxus nicht optimiert.
+- **Reichweite: Google-Klicks STEIGEN** (Merchant meldet Klick-Anstieg + Spike Mini-Sprühventilator) — Strategie wirkt.
+  Re-Crawl läuft (User geklickt). „Page unavailable/Missing image/Unsupported"-Meldungen = veraltet (Shop verifiziert sauber).
+- **Always-on offen:** Hetzner-Server (`server-setup.sh`+`server-bot-loop.sh` gebaut) — User-Setup hängt an SSH-Passwort +
+  GitHub-Flag (Account geflaggt → Actions aus, OAuth-Apps blockiert). Cloudflare-Worker = CF-Token ohne Workers:Edit.
+  In-Session-Hintergrund-Runner sterben → Wellen laufen in-Turn. **Echtes 24/7 = Server-Setup abschliessen (User).**
+- **Tools neu:** create_subcollections, server-setup/bot-loop, ai_blog_writer, gmc_category_fix (Pool/Garten-MAP).
