@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS cubic-bezier-Generator · Easing · aban news</title>
+<meta name="description" content="Kostenloser CSS-cubic-bezier-Generator: Easing-Kurve für Animationen einstellen, Kurve &amp; Live-Animation sehen und die transition-timing-function kopieren. Mit Presets. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/cubic-bezier-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/cubic-bezier-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/cubic-bezier-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/cubic-bezier-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/cubic-bezier-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/cubic-bezier-generator.html">
+<meta property="og:title" content="CSS cubic-bezier-Generator">
+<meta property="og:description" content="Easing-Kurve für CSS-Animationen einstellen, Kurve &amp; Live-Demo sehen, cubic-bezier() kopieren. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/cubic-bezier-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"CSS cubic-bezier-Generator",
+"url":"https://abannews.com/cubic-bezier-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Stellt eine CSS-cubic-bezier-Easing-Kurve ein, zeigt Kurve und Live-Animation und liefert die transition-timing-function zum Kopieren.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+@media(max-width:560px){.stage{grid-template-columns:1fr}}
+canvas{border:1px solid var(--line);border-radius:10px;background:var(--field);width:200px;height:200px;touch-action:none}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fields label{font-weight:600;font-size:12px;color:var(--ink2)}
+.fields input{width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;padding:8px 9px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);margin-top:3px}
+.fields input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.demo{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:14px}
+.track{height:26px;position:relative}
+.dot{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--amber-dk));position:absolute;left:0;top:0}
+.outbar{display:flex;gap:8px;align-items:center;margin:16px 0 8px}
+.outbox pre{background:#1e1e1e;color:#e6e6e6;border-radius:10px;padding:14px;font-size:13.5px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace}
+.warn{color:var(--bad);font-size:.82rem;margin-top:6px;min-height:1em}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">cubic-bezier</span> einstellen</h1>
+    <p>Die Easing-Kurve für CSS-Animationen festlegen — bestimmt, wie eine Bewegung beschleunigt und abbremst. Wähle ein Preset oder gib eigene Kontrollpunkte ein, sieh Kurve und Live-Animation, und kopiere die <code>transition-timing-function</code>. Alles lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="presets" id="presets"></div>
+    <div class="stage">
+      <canvas id="cv" width="200" height="200" aria-label="Kurven-Vorschau"></canvas>
+      <div>
+        <div class="fields">
+          <label>x1 (0–1)<input type="number" id="x1" step="0.01" min="0" max="1" value="0.25"></label>
+          <label>y1<input type="number" id="y1" step="0.01" value="0.1"></label>
+          <label>x2 (0–1)<input type="number" id="x2" step="0.01" min="0" max="1" value="0.25"></label>
+          <label>y2<input type="number" id="y2" step="0.01" value="1"></label>
+        </div>
+        <div class="warn" id="warn" role="alert"></div>
+        <div class="demo">
+          <div class="track"><div class="dot" id="dot"></div></div>
+          <p style="margin-top:8px;font-size:.82rem;color:var(--muted)">Live-Animation (läuft in Schleife)</p>
+        </div>
+      </div>
+    </div>
+    <div class="outbar">
+      <span class="lbl" id="outLbl" style="margin:0;font-weight:600;font-size:13px;color:var(--ink2)">CSS</span>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="copy" type="button">Kopieren</button>
+    </div>
+    <pre id="code" role="textbox" tabindex="0" aria-readonly="true" aria-labelledby="outLbl"></pre>
+    <p class="note">x-Werte müssen zwischen 0 und 1 liegen (Zeit); y-Werte dürfen darüber/darunter liegen — das erzeugt ein „Überschwingen" wie bei einem Federeffekt. Die Live-Animation nutzt genau diese Kurve. Alles lokal, kein Upload.</p>
+  </section>
+  <div class="cta"><strong>Mehr Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Web &amp; Design.</p>
+    <p><a class="btn" href="/border-radius-generator.html">Border-Radius</a>
+      <a class="btn ghost" href="/box-shadow-generator.html">Box-Shadow</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/border-radius-generator.html">Border-Radius</a> · <a href="/box-shadow-generator.html">Box-Shadow</a> ·
+  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var cv=document.getElementById("cv"),ctx=cv.getContext("2d"),code=document.getElementById("code"),
+      dot=document.getElementById("dot"),warn=document.getElementById("warn"),presetsBox=document.getElementById("presets");
+  var F={x1:document.getElementById("x1"),y1:document.getElementById("y1"),x2:document.getElementById("x2"),y2:document.getElementById("y2")};
+  var PRESETS=[["ease",.25,.1,.25,1],["linear",0,0,1,1],["ease-in",.42,0,1,1],["ease-out",0,0,.58,1],
+    ["ease-in-out",.42,0,.58,1],["Schwung",.68,-.55,.27,1.55],["sanft",.4,0,.2,1]];
+  function num(el){var v=parseFloat(el.value);return isNaN(v)?0:v;}
+  function clamp01(x){return Math.max(0,Math.min(1,x));}
+  function vals(){
+    return {x1:clamp01(num(F.x1)),y1:num(F.y1),x2:clamp01(num(F.x2)),y2:num(F.y2)};
+  }
+  function round(x){return Math.round(x*1000)/1000;}
+  function draw(v){
+    var W=200,H=200,pad=24,w=W-2*pad,h=H-2*pad;
+    ctx.clearRect(0,0,W,H);
+    // map (t,val) in [0,1]x[?] to canvas; y grows upward, allow overshoot range -0.5..1.5
+    var ymin=-0.6,ymax=1.6;
+    function X(t){return pad+t*w;}
+    function Y(val){return pad+(ymax-val)/(ymax-ymin)*h;}
+    // baseline grid (0 and 1 lines)
+    ctx.strokeStyle="rgba(140,130,110,.35)";ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(X(0),Y(0));ctx.lineTo(X(1),Y(0));ctx.moveTo(X(0),Y(1));ctx.lineTo(X(1),Y(1));ctx.stroke();
+    // control handles
+    ctx.strokeStyle="rgba(217,119,6,.5)";ctx.beginPath();
+    ctx.moveTo(X(0),Y(0));ctx.lineTo(X(v.x1),Y(v.y1));ctx.moveTo(X(1),Y(1));ctx.lineTo(X(v.x2),Y(v.y2));ctx.stroke();
+    ctx.fillStyle="#b45309";
+    [[v.x1,v.y1],[v.x2,v.y2]].forEach(function(p){ctx.beginPath();ctx.arc(X(p[0]),Y(p[1]),4,0,7);ctx.fill();});
+    // the curve
+    ctx.strokeStyle="#b45309";ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(X(0),Y(0));
+    ctx.bezierCurveTo(X(v.x1),Y(v.y1),X(v.x2),Y(v.y2),X(1),Y(1));ctx.stroke();
+  }
+  function update(){
+    var v=vals();
+    // reflect clamped x back into the fields if user typed out of range
+    if(num(F.x1)!==v.x1)F.x1.value=v.x1;
+    if(num(F.x2)!==v.x2)F.x2.value=v.x2;
+    var fn="cubic-bezier("+round(v.x1)+", "+round(v.y1)+", "+round(v.x2)+", "+round(v.y2)+")";
+    draw(v);
+    code.textContent="transition-timing-function: "+fn+";";
+    restartAnim(fn);
+    return code.textContent;
+  }
+  var animTimer=null;
+  function restartAnim(fn){
+    dot.style.transition="none";dot.style.left="0px";
+    // force reflow then animate to the right edge
+    void dot.offsetWidth;
+    var run=function(){
+      dot.style.transition="left 1.4s "+fn;
+      dot.style.left="calc(100% - 26px)";
+    };
+    requestAnimationFrame(run);
+    clearTimeout(animTimer);
+    animTimer=setTimeout(function(){
+      dot.style.transition="none";dot.style.left="0px";void dot.offsetWidth;
+      requestAnimationFrame(function(){restartAnim(fn);});
+    },2400);
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Kopiert ✓");},function(){fb(text,b);});
+    } else fb(text,b);
+  }
+  function fb(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Kopiert ✓");}
+    catch(e){flash(b,"Bitte manuell kopieren");}}
+  PRESETS.forEach(function(p){
+    var b=document.createElement("button");b.type="button";b.className="btn ghost sm";b.textContent=p[0];
+    b.addEventListener("click",function(){F.x1.value=p[1];F.y1.value=p[2];F.x2.value=p[3];F.y2.value=p[4];update();});
+    presetsBox.appendChild(b);
+  });
+  Object.keys(F).forEach(function(k){F[k].addEventListener("input",update);});
+  document.getElementById("copy").addEventListener("click",function(){copy(update(),this);});
+  update();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
