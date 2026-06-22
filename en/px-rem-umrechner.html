@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>px ↔ rem Converter · CSS Units · aban news</title>
+<meta name="description" content="Free px-↔-rem converter for CSS: convert pixels to rem and back, with an adjustable base font size — plus a quick reference table. Runs locally in your browser, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/en/px-rem-umrechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/px-rem-umrechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/px-rem-umrechner.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/px-rem-umrechner.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/px-rem-umrechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/px-rem-umrechner.html">
+<meta property="og:title" content="px ↔ rem Converter (CSS)">
+<meta property="og:description" content="Convert pixels ↔ rem with an adjustable base font size + reference table. Runs locally in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/en/px-rem-umrechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"px ↔ rem Converter",
+"url":"https://abannews.com/en/px-rem-umrechner.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Converts CSS pixels to rem and back, with an adjustable base font size, plus a reference table.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+.conv{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}
+@media(max-width:560px){.conv{grid-template-columns:1fr}}
+.inunit{position:relative}
+.inunit input{width:100%;font-family:inherit;font-size:18px;padding:12px 48px 12px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+.inunit input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.inunit .u{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;pointer-events:none;font-weight:700}
+.eq{align-self:center;text-align:center;color:var(--muted);font-weight:800;font-size:1.3rem;padding-bottom:8px}
+@media(max-width:560px){.eq{padding:0}}
+.baserow{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:.9rem;color:var(--ink2);flex-wrap:wrap}
+.baserow input{width:80px;font-family:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{background:var(--field);border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:.82rem;color:var(--ink2)}
+.chips button:hover{border-color:var(--amber)}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:.9rem}
+th,td{padding:7px 8px;text-align:left;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+th{color:var(--muted);font-weight:600;font-size:.82rem}
+td code{font-family:ui-monospace,Menlo,Consolas,monospace}
+.note{font-size:.85rem;color:var(--muted);margin-top:14px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">px ↔ rem</span> converter</h1>
+    <p>Convert CSS pixels to <code>rem</code> and back — with an adjustable base font size. rem values respect the font size set in the browser and are therefore more accessible than fixed px. Type one side, the other is calculated for you. Everything runs locally in your browser, nothing is sent.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="conv">
+      <div>
+        <label class="lbl" for="px">Pixels</label>
+        <div class="inunit"><input type="number" id="px" step="any" value="24" inputmode="decimal"><span class="u">px</span></div>
+      </div>
+      <div class="eq">=</div>
+      <div>
+        <label class="lbl" for="rem">rem</label>
+        <div class="inunit"><input type="number" id="rem" step="any" value="1.5" inputmode="decimal"><span class="u">rem</span></div>
+      </div>
+    </div>
+    <div class="baserow">
+      <label for="base">Base font size:</label>
+      <input type="number" id="base" step="any" min="1" value="16"><span>px</span>
+      <span class="chips" id="chips" role="group" aria-label="Common base values"></span>
+    </div>
+    <table>
+      <thead><tr><th>px</th><th>rem</th><th>px</th><th>rem</th></tr></thead>
+      <tbody id="ref"></tbody>
+    </table>
+    <p class="note">The default is 16&nbsp;px (browser default) — <code>1rem = 16px</code>. If you change the base in CSS (<code>html{font-size:…}</code>), adjust it here too. <code>em</code> behaves like <code>rem</code>, but refers to the font size of the parent element instead of the root. Everything stays local, no upload.</p>
+  </section>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for web &amp; design.</p>
+    <p><a class="btn" href="/en/css-clamp-generator.html">CSS clamp()</a>
+      <a class="btn ghost" href="/en/typo-skala-generator.html">Type scale</a>
+      <a class="btn ghost" href="/en/online-tools.html">All tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Did you find this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/en/css-clamp-generator.html">CSS clamp()</a> · <a href="/en/typo-skala-generator.html">Type scale</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var px=document.getElementById("px"),rem=document.getElementById("rem"),base=document.getElementById("base"),
+      ref=document.getElementById("ref"),chips=document.getElementById("chips");
+  var BASES=[16,10,18,20,62.5];
+  var COMMON=[8,10,12,14,16,18,20,24,28,32,40,48,56,64,80,96];
+  function baseVal(){var b=parseFloat(base.value);return (isNaN(b)||b<=0)?16:b;}
+  function r3(x){return Math.round(x*1000)/1000;}
+  function fromPx(){var b=baseVal(),p=parseFloat(px.value);if(isNaN(p)){rem.value="";return;}rem.value=r3(p/b);}
+  function fromRem(){var b=baseVal(),r=parseFloat(rem.value);if(isNaN(r)){px.value="";return;}px.value=r3(r*b);}
+  function buildRef(){
+    var b=baseVal(),half=Math.ceil(COMMON.length/2),rows="";
+    for(var i=0;i<half;i++){
+      var a=COMMON[i],c=COMMON[i+half];
+      rows+="<tr><td><code>"+a+"px</code></td><td><code>"+r3(a/b)+"rem</code></td>"+
+        (c!==undefined?"<td><code>"+c+"px</code></td><td><code>"+r3(c/b)+"rem</code></td>":"<td></td><td></td>")+"</tr>";
+    }
+    ref.innerHTML=rows;
+  }
+  px.addEventListener("input",function(){fromPx();});
+  rem.addEventListener("input",function(){fromRem();});
+  base.addEventListener("input",function(){fromPx();buildRef();}); // keep px fixed, recompute rem + table
+  BASES.forEach(function(v){
+    var b=document.createElement("button");b.type="button";b.textContent=v+"px";
+    b.addEventListener("click",function(){base.value=v;fromPx();buildRef();});
+    chips.appendChild(b);
+  });
+  fromPx();buildRef();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
