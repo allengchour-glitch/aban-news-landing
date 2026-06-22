@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Flexbox-Generator · Layout-Spielwiese · aban news</title>
+<meta name="description" content="Kostenloser CSS-Flexbox-Generator: flex-direction, justify-content, align-items, wrap &amp; gap einstellen, live sehen und den fertigen Flexbox-CSS-Code kopieren. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/flexbox-generator.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/flexbox-generator.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/flexbox-generator.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/flexbox-generator.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/flexbox-generator.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/flexbox-generator.html">
+<meta property="og:title" content="CSS Flexbox-Generator">
+<meta property="og:description" content="Flexbox per Klick einstellen, live sehen und CSS kopieren. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/flexbox-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Flexbox-Generator",
+"url":"https://abannews.com/flexbox-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Stellt CSS-Flexbox-Eigenschaften per Klick ein, zeigt eine Live-Vorschau und liefert den Flexbox-CSS-Code zum Kopieren.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:860px;margin:0 auto}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.ctrls{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.ctrls{grid-template-columns:1fr}}
+.lbl{display:block;font-weight:600;font-size:12px;margin:0 0 5px;color:var(--ink2)}
+select{width:100%;font-family:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+select:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.gap{display:flex;align-items:center;gap:10px}
+.gap input[type=range]{flex:1;accent-color:var(--amber-dk)}
+.gap .v{color:var(--amber-dk);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.itembtns{display:flex;gap:6px}
+.itembtns button{width:32px;height:32px;border:1px solid var(--line);background:var(--field);border-radius:8px;font-size:1rem;cursor:pointer;color:var(--amber-dk)}
+.stagewrap{margin-top:16px}
+.stage{border:1px dashed var(--amber-lt);border-radius:10px;background:var(--field);min-height:220px;padding:10px;display:flex}
+.box{background:linear-gradient(135deg,var(--amber),var(--amber-dk));color:#fff;font-weight:800;border-radius:8px;display:flex;align-items:center;justify-content:center;min-width:54px;min-height:48px;padding:8px 14px}
+.outbar{display:flex;gap:8px;align-items:center;margin:16px 0 8px}
+.outbox pre{background:#1e1e1e;color:#e6e6e6;border-radius:10px;padding:14px;font-size:13px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Flexbox</span> generieren</h1>
+    <p>CSS-Flexbox zum Anfassen: stelle <code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code>, <code>flex-wrap</code> und <code>gap</code> ein, sieh die Boxen live reagieren und kopiere den fertigen Container-CSS-Code. Alles lokal im Browser, nichts wird gesendet.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="ctrls">
+      <div><label class="lbl" for="dir">flex-direction</label>
+        <select id="dir"><option>row</option><option>row-reverse</option><option>column</option><option>column-reverse</option></select></div>
+      <div><label class="lbl" for="wrap">flex-wrap</label>
+        <select id="wrap"><option>nowrap</option><option>wrap</option><option>wrap-reverse</option></select></div>
+      <div><label class="lbl" for="justify">justify-content</label>
+        <select id="justify"><option>flex-start</option><option>flex-end</option><option>center</option><option>space-between</option><option>space-around</option><option>space-evenly</option></select></div>
+      <div><label class="lbl" for="align">align-items</label>
+        <select id="align"><option>stretch</option><option>flex-start</option><option>flex-end</option><option>center</option><option>baseline</option></select></div>
+      <div><label class="lbl" for="gap">gap</label>
+        <div class="gap"><input type="range" id="gap" min="0" max="40" value="10" aria-label="gap in px"><span class="v" id="gapv">10px</span></div></div>
+      <div><label class="lbl">Boxen</label>
+        <div class="itembtns"><button type="button" id="minus" aria-label="Box entfernen">−</button><button type="button" id="plus" aria-label="Box hinzufügen">+</button></div></div>
+    </div>
+    <div class="stagewrap">
+      <div class="stage" id="stage"></div>
+    </div>
+    <div class="outbar">
+      <span class="lbl" id="outLbl" style="margin:0">CSS (Container)</span>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="copy" type="button">Kopieren</button>
+    </div>
+    <pre id="code" role="textbox" tabindex="0" aria-readonly="true" aria-labelledby="outLbl"></pre>
+    <p class="note"><code>justify-content</code> richtet entlang der Hauptachse aus (Richtung von <code>flex-direction</code>), <code>align-items</code> quer dazu. <code>align-items: stretch</code> wirkt nur, wenn die Boxen keine feste Größe quer zur Achse haben. Alles lokal, kein Upload.</p>
+  </section>
+  <div class="cta"><strong>Mehr Tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Web &amp; Design.</p>
+    <p><a class="btn" href="/css-gradient-generator.html">Gradient-Generator</a>
+      <a class="btn ghost" href="/box-shadow-generator.html">Box-Shadow</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/css-gradient-generator.html">Gradient</a> · <a href="/box-shadow-generator.html">Box-Shadow</a> ·
+  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var stage=document.getElementById("stage"),code=document.getElementById("code"),
+      dir=document.getElementById("dir"),wrap=document.getElementById("wrap"),justify=document.getElementById("justify"),
+      align=document.getElementById("align"),gap=document.getElementById("gap");
+  var count=4;
+  function setItems(){
+    stage.innerHTML="";
+    for(var i=1;i<=count;i++){var b=document.createElement("div");b.className="box";b.textContent=i;stage.appendChild(b);}
+  }
+  function render(){
+    var g=parseInt(gap.value,10)||0;
+    document.getElementById("gapv").textContent=g+"px";
+    stage.style.flexDirection=dir.value;
+    stage.style.flexWrap=wrap.value;
+    stage.style.justifyContent=justify.value;
+    stage.style.alignItems=align.value;
+    stage.style.gap=g+"px";
+    code.textContent="display: flex;\nflex-direction: "+dir.value+";\nflex-wrap: "+wrap.value+
+      ";\njustify-content: "+justify.value+";\nalign-items: "+align.value+";\ngap: "+g+"px;";
+    return code.textContent;
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Kopiert ✓");},function(){fb(text,b);});
+    } else fb(text,b);
+  }
+  function fb(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Kopiert ✓");}
+    catch(e){flash(b,"Bitte manuell kopieren");}}
+  [dir,wrap,justify,align,gap].forEach(function(e){e.addEventListener("input",render);e.addEventListener("change",render);});
+  document.getElementById("plus").addEventListener("click",function(){if(count<12){count++;setItems();}});
+  document.getElementById("minus").addEventListener("click",function(){if(count>1){count--;setItems();}});
+  document.getElementById("copy").addEventListener("click",function(){copy(render(),this);});
+  setItems();render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
