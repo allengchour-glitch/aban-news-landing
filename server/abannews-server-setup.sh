@@ -41,12 +41,20 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
 apt-get install -y git curl ca-certificates ufw fail2ban unattended-upgrades python3 python3-pip
 
-# ── 2) Node.js (für Wrangler) ───────────────────────────────────────────────
-if ! command -v node >/dev/null 2>&1 || [ "$(node -v | sed 's/v\([0-9]*\).*/\1/')" -lt "$NODE_MAJOR" ]; then
-  log "Node.js $NODE_MAJOR installieren"
-  curl -fsSL "https://deb.nodesource.com/setup_${NODE_MAJOR}.x" | bash -
-  apt-get install -y nodejs
+# ── 2) Node.js (für Wrangler) — NodeSource, mit Fallback auf Ubuntu-Pakete ───
+NODE_MIN="${NODE_MIN:-18}"   # Wrangler 3 braucht Node >= 18
+have_node() { command -v node >/dev/null 2>&1 && [ "$(node -v | sed 's/v\([0-9]*\).*/\1/')" -ge "$NODE_MIN" ]; }
+if ! have_node; then
+  log "Node.js installieren (NodeSource $NODE_MAJOR, sonst Ubuntu-Paket)"
+  if curl -fsSL "https://deb.nodesource.com/setup_${NODE_MAJOR}.x" | bash - && apt-get install -y nodejs; then
+    :
+  else
+    log "NodeSource nicht verfügbar (z. B. sehr neues Ubuntu) → Ubuntu-Pakete nodejs/npm"
+    apt-get install -y nodejs npm
+  fi
 fi
+command -v npm >/dev/null 2>&1 || apt-get install -y npm
+have_node || { echo "✗ Node >= $NODE_MIN konnte nicht installiert werden"; exit 1; }
 log "Node $(node -v) · npm $(npm -v)"
 
 # ── 3) Firewall + Auto-Updates + fail2ban ───────────────────────────────────
