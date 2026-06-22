@@ -1,5 +1,16 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🎯 DATEN-DURCHBRUCH (CizQ6 2026-06-22) — Priorität dreht sich: SEARCH > SOCIAL
+Funnel nach Quelle (30T, Shopify): **direct 5238/16ATC/1Kauf · social 1698/0ATC/0Kauf · search 33/2ATC (6%!)**.
+→ **Social = 0 % Conversion (nur Reichweite), Search konvertiert am besten aber verhungert (33 Sess).**
+**Theme-Session (höchster Hebel = Search/Google sichtbar machen):**
+1. **Product-JSON-LD vervollständigen** (Shopify-Default fehlt's): `aggregateRating` (Judge.me → **Sterne in Google**!),
+   `brand`, `gtin`, `shippingDetails`, `hasMerchantReturnPolicy`. **Nur EINE Schema-Quelle** (Theme ODER SEO-App → sonst unterdrückt).
+2. **hreflang `de-CH`** überall (NIE de-DE), eine CH-Storefront. Sonst rankt Google für Deutschland.
+3. **Landing = Traffic-Quelle matchen** (Ad/Post → Produktseite, nie Home). 4. **CH-Trust an PDP/Cart** (CHF/TWINT/Rückgabe/Gast-Checkout/mobil schnell).
+Voller Plan: `dropship/FIRST-SALES-PLAYBOOK-2026.md`. **CizQ6 macht cloud-seitig:** Google-Kategorien/Feed, CH-Copy, Hero-Kuratierung.
+**Nur User (1× Login):** Merchant Center CH/CHF verbinden + Domain + Versand/Rückgabe.
+
 # 🛍️ GOOGLE MERCHANT FEED (CizQ6 2026-06-21) — andere Session fixt; CizQ6 Backup
 Merchant-Konto **5797470070** (Produkt-Diagnose). User: andere Session (ChatGPT) raeumt die Produkt-Disapprovals auf.
 **CizQ6-Backup falls nicht geloest:** Feed kommt aus Shopify (Google&YouTube-Kanal). Haeufige Fixes per Shopify-API:
