@@ -43,7 +43,13 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
-## 📌 Stand 2026-06-16 (Teil 21) — 19 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT)
+## 📌 Stand 2026-06-22 (Teil 21) — 23 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT)
+> Loop läuft weiter. **Zusätzlich zu #7–#25 neu (#26–#29):** Glassmorphism-Generator, Trinkgeld-/Rechnung-
+> teilen-Rechner (erstes Everyday-Consumer-Tool), px↔rem-Umrechner, Zahlensystem-Umrechner (BigInt).
+> Alle viersprachig, Sitemap 4/4, review-geprüft. Gesamt-Tool-Suite ~29 review-grade Browser-Tools.
+> Per-Tool-Details in `SHARED-MEMORY.md` (Tool #1–#29). **Tools NICHT zurückbauen.**
+
+## 📌 Stand 2026-06-16 (Teil 21b) — 19 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT)
 > Fortsetzung des Loops „weiter ohne pause fix mit 2te gehirn". Jedes neue Tool durchläuft: DE bauen →
 > unabhängiger Review-Agent (kritische Bug-Jagd + Fix in-place + node-Verifikation) → Übersetzungs-Agent
 > (JS byte-identisch, nur UI-Strings + lang/canonical/hreflang/og) → in alle 4 online-tools-Hubs verdrahten →
