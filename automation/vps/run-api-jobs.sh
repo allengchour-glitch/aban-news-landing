@@ -23,6 +23,13 @@ log "Mode-Beschreibungen anreichern..."
 MAX="${MAX:-150}" "$NODE" automation/enrich_apparel_descriptions.mjs 2>&1 | tail -8 || log "enrich Fehler (weiter)"
 log "Leere SEO-Meta-Beschreibungen fuellen (ganzer Katalog, idempotent)..."
 MAX="${SEO_MAX:-200}" "$NODE" automation/seo_polish.mjs 2>&1 | tail -8 || log "seo_polish Fehler (weiter)"
+log "Trend-Scan CH (Google-Trends gratis + AI-Ideen, stateless/safe)..."
+"$NODE" automation/trends/trend_scan.mjs 2>&1 | tail -12 || log "trend_scan uebersprungen (weiter)"
+
+# ⚠️ BEWUSST NICHT auf die VPS: KEIN Social-Posting (TikTok/IG/FB/Pinterest). Gruende: (1) Hetzner =
+# Rechenzentrums-IP -> Login wird blockiert/herausgefordert; (2) VPS ist read-only mit 'git reset --hard'
+# -> Dedup-Ledger (tiktok-ledger/pinterest_done) werden ueberschrieben -> DOPPELPOSTS. Posting bleibt
+# Worker-Cron (Meta-API) + PC (Browser). Auf die VPS gehoeren NUR idempotente Direkt-API-Mutationen (oben).
 
 # 4) KEIN git commit/push vom VPS (Verfeinerung 2026-06-22): der VPS-Klon hat keine Push-Credentials ->
 # lokale Commits wuerden kuenftige 'git pull --rebase' blockieren. Der VPS aendert Shopify DIREKT per API;
