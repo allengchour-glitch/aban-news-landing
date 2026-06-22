@@ -27,6 +27,8 @@ log "Leere SEO-Meta-Beschreibungen fuellen (ganzer Katalog, idempotent)..."
 MAX="${SEO_MAX:-200}" "$NODE" automation/seo_polish.mjs 2>&1 | tail -8 || log "seo_polish Fehler (weiter)"
 log "Trend-Scan CH (Google-Trends gratis + AI-Ideen, stateless/safe)..."
 "$NODE" automation/trends/trend_scan.mjs 2>&1 | tail -12 || log "trend_scan uebersprungen (weiter)"
+log "TikTok-Pixel-Healthcheck (Storefront -> Metafeld luxe.pixel_status)..."
+"$NODE" automation/vps/pixel_check.mjs 2>&1 | tail -3 || log "pixel_check uebersprungen (weiter)"
 log "Proof-of-Life Metafeld stempeln (luxe.vps_last_run)..."
 "$NODE" automation/vps/stamp_alive.mjs 2>&1 | tail -3 || log "stamp uebersprungen (weiter)"
 
