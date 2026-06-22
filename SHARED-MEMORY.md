@@ -1,5 +1,24 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🎯 CONVERSION-FIXPLAN (YouTube-CRO-Lehre, CizQ6 2026-06-22) — THEME-SESSION: bitte umsetzen
+**Kontext (echte Daten 30T):** 7'070 Sessions, aber **ATC nur 0.25%** + **14 erreichen Checkout, 0 zahlen**. 3-Agenten-
+YouTube-Schwarm (Fogarty/St-Germain/Shopify/CRO) → Diagnose: **Land-and-Bounce + technischer Zahlungs-Block**. Ich (Social/CizQ6)
+kann das **Live-Theme nicht editieren (API-gesperrt)** → folgende **Theme-Items gehören euch**, nach Impact geordnet:
+- **🔴 PDP #1 — Sticky-ATC-Button mobil** (unten, full-width, ≥56px, beim Scrollen einblenden). Grösster Einzelhebel (+5-15% ATC).
+- **🔴 PDP #2 — Buy-Box above-the-fold:** Bild → Titel → ★Sterne → Preis → Variante → EIN grosser ATC-Button, alles ohne Scrollen (Mobile).
+- **🔴 PDP #3 — Judge.me-Sterne + Anzahl direkt UNTER dem Titel** (Reviews über den Preis ziehen, nicht ganz unten); Sterne auf Collection-Karten.
+- **🟡 Homepage:** Hero = EIN Wertversprechen + EIN Button + echtes Model-Foto · Trust-Reihe above-the-fold (⭐/🇨🇭 Schweizer Shop/🔒/30 Tage) ·
+  Announcement-Bar „Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · TWINT" · Bestseller-Reihe + 3-4 Kategorie-Tiles · Menü auf 4-6 kürzen.
+- **🟡 Mobile-Speed:** kein Autoplay-Video-Hero, ein optimiertes Hero-Bild, lazy-load, LCP < 2.5 s (72% Traffic mobil).
+- **🟡 Collection-Filter** (Grösse/Farbe/Preis/Bewertung + Sortierung) via Search-&-Discovery — TITLE-Smart-Collections sind keine Filter.
+- **🟢 Variant-Swatches statt Dropdown · Footer-Trust (TWINT/PostFinance-Logos + Adresse + Policies) · Variant-Swatches.**
+**Mein Teil (CizQ6, mache ich selbst):** PDP-Produkttexte (Benefit-Bullets/Preis-Framing/Trust-Zeile/Mundart), Klaviyo-Recovery (Abandoned Checkout = live ✓), Brain.
+**🚨 NUR USER (Admin, weder Theme noch ich per API):** Der **0-von-14-Zahlungen** ist mit hoher Wahrscheinlichkeit ein **technischer Block** —
+echte **Mobile-Testbestellung** machen + prüfen: Zahlungs-Provider **NICHT im Test-Modus**, **aktiver Haupt-Provider (Karte)**, **TWINT aktiv**, **Währung = CHF**.
+**🐛 Feed-Bug (an Feed-Owner / VPS-Session):** `enrich_apparel_descriptions.mjs` hängt den `ls-feed-details`-„Produktdetails"-
+Block (Grösse XS–XL · „hochwertiges Material" · „Unifarben") AUCH an **Nicht-Kleidung** (z.B. Jade-Roller/Beauty-Tools) → wirkt
+billig/nachlässig = Trust-/ATC-Killer. Bitte den Block nur bei echten Apparel-Produkttypen setzen ODER Platzhalter-Werte unterdrücken.
+
 # 🖥️ VPS-AUTONOMIE LIVE (CizQ6 2026-06-22) — PC-unabhängiger API-Worker
 **Neu:** Der User hat einen **Hetzner-VPS „luxestyle"** (CX23, Nürnberg, IP 46.225.75.125) aufgesetzt. Er richtet sich per
 `automation/vps/cloud-init.sh` selbst ein und läuft **täglich 04:00 UTC** `automation/vps/run-api-jobs.sh` → ruft
