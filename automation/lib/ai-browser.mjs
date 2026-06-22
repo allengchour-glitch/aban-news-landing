@@ -40,9 +40,12 @@ export async function aiBrowser({ cdp = CDP } = {}) {
         if (j && j.webSocketDebuggerUrl) { cdpUrl = j.webSocketDebuggerUrl; console.log('CDP-WS aufgeloest: ' + cdpUrl); }
       } catch (e) { console.log('CDP /json/version nicht erreichbar (' + String(e).slice(0, 50) + ') -> nutze ' + cdp); }
       const candidates = [];
+      // GROQ ZUERST (CizQ6 2026-06-22): Gemini-Free-Quota war erschoepft ("You exceeded your quota") -> jeder act()
+      // schlug fehl, obwohl Init klappte (Fallback greift nur bei Init-Fehler, nicht bei Runtime-Quota). Groq-Limit
+      // ist viel grosszuegiger -> als Erstes versuchen. Gemini bleibt als Fallback.
+      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
       if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'google/gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
       if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
-      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
       for (const c of candidates) {
         try {
           const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl }, modelName: c.modelName,
