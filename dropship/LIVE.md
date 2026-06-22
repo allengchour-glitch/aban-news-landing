@@ -17,6 +17,16 @@
 - **Pixel-Konten geklärt** (7646 = Pixel+332CHF, via Shopify-Kanal) · Bots gebaut: Kampagne, CAPI-Datenfreigabe, Post-Audit, Marktplatz
 - **Gehirn: 185+ Regeln** · Dropship-Automation-Playbook, Creator/Conversion/Google/CH-Recht gelernt
 
+## ✅ Cloud-Checks 2026-06-22 (ohne PC/Handy, rein API) — alles grün
+- **Startseite:** alle 23 Heroes ACTIVE + `CONTINUE` = kaufbar (keine DENY-Blocker).
+- **Rabatte:** WELCOME10/FIRST15/BUNDLE20/SUMMER15/COMEBACK10 (Recovery) alle ACTIVE.
+- **favoriten** (Link-in-Bio): Cover + SEO komplett. Top-Kollektionen-SEO sauber.
+- **Checkout-„Leak" = Test-Traffic** (User-Mail), nicht echte Absprünge → Funnel ok, Engpass = Buy-Intent-Traffic.
+
+## 🖥️ VPS-Status (User hat Hetzner-Konto K0629623226, 2026-06-22)
+Konto erstellt. **Offen (nur User, am PC):** CX22-Server erstellen → Ein-Zeilen-Bootstrap → Shopify-Secret eingeben.
+Bootstrap: `automation/vps/bootstrap.sh`. **Ich kann den VPS NICHT allein fertigstellen** (User-Konto + Secret nötig). Keine Eile — API-Verbesserungen mache ich direkt per Shopify-MCP, VPS ist nur für den Dauer-Cron.
+
 ## 🎯 NEU: Weg „ohne dich zu steuern" gefunden (Recherche 2026-06-21)
 Der PC hängt, weil **API-Arbeit + Browser-Arbeit am selben Heim-Browser kleben**. ~70–80 % brauchen
 GAR keinen Browser → gehören auf reine API-Calls. Lösung: **n8n auf €4-VPS** (Always-on, selbstheilend
