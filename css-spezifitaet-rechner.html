@@ -143,6 +143,7 @@ footer a{color:var(--muted)}
     s=s.replace(/\.[-\w]+/g,function(){b++;return " ";});
     // remaining: element/type selectors → c (skip * and combinators)
     s=s.replace(/[>+~]/g," ");
+    s=s.replace(/(?:[-\w]+|\*)?\|/g," "); // strip namespace prefix (ns|el, *|el, |el)
     s.split(/\s+/).forEach(function(tok){
       if(tok&&tok!=="*"&&/^[-\w]+$/.test(tok))c++;
     });
