@@ -1399,3 +1399,25 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
 ## 📌 2026-06-21 Teil 22 (+2 Cluster-Artikel, Ratgeber im Menü verifiziert)
 - +2 Kaufberater (Damenuhren→sub-uhren, Powerbank→ladegeraete), mit Link auf Ratgeber-Hub (Cluster). **Blog ~126 Artikel.**
 - Ratgeber-Blog rendert (200) + jetzt im Hauptmenü → alle Artikel intern verlinkt/crawlbar.
+
+## 📌📊 2026-06-21 SESSION-ZUSAMMENFASSUNG (Dropship-Session, voller Automode)
+**Produkte (~384 neu, alle Google-Merchant-sicher):** 13 Wellen via `bigbuy_pipeline.sh` (Import→Marke/GTIN/Feed→Spec+Trust→
+GMC-Kategorie/age/gender/Farbe→Bild-Dedupe→SEO, selbst committet). Niche-Kategorien + **8 NEUE Bereiche entdeckt+gebaut:**
+Rucksäcke(3229)/Beleuchtung(1397)/Garten(1130)/Haarstyling(512)/Camping(304)/Bar(302)/Pool(273)/Auto(48). **12h-Runner läuft**
+(`/tmp/run12h.sh`, setsid, rotiert neue Bereiche). ⚠️ Produkte = ab 06-21 eigentlich ANDERE Session; ich mache nur die NEUEN
+Bereiche (kein Doppel) bzw. den vom User explizit gewünschten 12h-Lauf.
+**Content (~126 Kaufberater):** ~27 neue SEO-Artikel via Gemini (`ai_blog_writer.mjs`, Groq-Limit umschifft) für alle starken
+Collections + 8 neue Bereiche. **🔴→✅ KRITISCH: Ratgeber-Blog (124 Artikel) war NICHT verlinkt → ins Hauptmenü gehängt**
+(„📖 Ratgeber"). = grösster rückwirkender SEO-Hebel.
+**Shop-Struktur:** Filter-Hub `/pages/marken-kategorien` (kompakt, 9 Themen) + im Menü („🔎 Schnell finden"). Startseiten-
+Abschluss-Banner. „Neu eingetroffen" auf `tag:dropship` (selbst-aktuell, zeigt neueste beider Lieferanten). Topseller
+cross-category (671). 8 neue Collections mit Hero+Beschreibung.
+**Selbst-Analyse (echte Shopify-Daten):** 3003 Sessions/30T, organisch nur 2% = grösster Upside; Funnel verbessert sich
+(Warenkorb-Rate hoch), aber 0 echte Käufe (der „1" = User-Test, EXPIRED). Engpass = Reichweite/Traffic-Qualität → Content+Google
+ist datenbelegt richtig.
+**Tools neu/erweitert:** `ai_blog_writer.mjs`, `ai_polish_collections.mjs`, `bigbuy_dedupe_images.mjs`, `product_trust_fill.mjs`,
+`gmc_category_fix.mjs` (MAP um Niche+Pool/Garten erweitert), `bigbuy_import.mjs` (8 neue Kategorien + GLOBAL_BAN Multipacks +
+Damenmode-Filter-Fix). **Self-Audit:** ShopifyQL nur via MCP `run-analytics-query`.
+**Offene User-Klicks (Dead-Ends ohne User):** Google-Re-Crawl ✅ geklickt (läuft). Cloudflare-Worker scharf = R2+Token (Token-
+Fallen: cfut ohne Workers:Edit, cfk invalid → Dashboard-UI ODER „Edit Workers"-Token ohne IP-Filter). Meta-Tokens für Social.
+Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
