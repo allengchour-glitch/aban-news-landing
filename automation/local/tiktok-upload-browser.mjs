@@ -107,7 +107,7 @@ function smartCaption(slug) {
   else if (/roller|gua|sha|serum|creme|beauty|lifting|maske/.test(low)) { emoji = '✨'; tag = '#skincareschweiz'; }
   else if (/ventilator|diffuser|gadget|lampe|projektor/.test(low)) { emoji = '🌬️'; tag = '#gadget'; }
   else if (/blazer|hemd|set|weste|hose|kleid|strick|stola|schal|shirt|polo/.test(low)) { emoji = '🧥'; tag = '#ootdschweiz'; }
-  return `${name} ${emoji} entdeck's im Schwiizer Shop. Gratis-Versand ab CHF 65 · –10% mit WELCOME10 → luxestyle.ch\n${tag} #ootdschweiz #swissmade #fyp #foryou`;
+  return `${name} ${emoji} Wie findsch's — Ja oder Nei? 👇 Schrib's i d Kommentär! Gratis-Versand ab CHF 65 · –10% mit WELCOME10 → luxestyle.ch\n${tag} #ootdschweiz #swissmade #fyp #foryou`;
 }
 // TikTok-Sound-Regel (FEST): Reels STUMM hochladen → User legt Trend-Sound in der App drauf.
 // Macht eine tonlose Kopie (kein Re-Encode des Bilds = schnell, verlustfrei). Fallback = Original.
