@@ -35,3 +35,18 @@ try {
     Start-Process cmd "/c `"$repo\automation\local\CLOUD-AN.bat`"" -WindowStyle Minimized
   }
 } catch {}
+# 5) ONLINE-UPGRADE (User 2026-06-22 "online upgrade? dann ohne mich neustart"): den fragilen CLOUD-AN-Bat-
+# Loop (starb nach 1 Runde) durch einen ZUVERLAESSIGEN Windows-Task ersetzen, der cmd-poll alle 15 Min feuert
+# UND bei jedem Login startet. Task Scheduler ist robust (dieser Health-Task beweist es) -> laeuft autonom
+# ohne User, ohne offenes Fenster, ueberlebt Reboot. Der autonome Health-Task registriert ihn EINMAL selbst
+# -> nie wieder ein Neustart-Klick noetig. cmd-polls Single-Instance-Lock (12 Min) verhindert Ueberlappung.
+try {
+  if (-not (Get-ScheduledTask -TaskName "LuxeQueue" -ErrorAction SilentlyContinue)) {
+    $arg = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$repo\automation\local\cmd-poll.ps1`""
+    $act = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $arg
+    $t1  = New-ScheduledTaskTrigger -AtLogOn
+    $t2  = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes 15)
+    $set = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+    Register-ScheduledTask -TaskName "LuxeQueue" -Action $act -Trigger @($t1, $t2) -Settings $set -Force -ErrorAction SilentlyContinue | Out-Null
+  }
+} catch {}
