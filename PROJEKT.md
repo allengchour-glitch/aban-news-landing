@@ -43,19 +43,20 @@ Hebel (organisch teilen, beehiiv-Referral, Posten) · erste Newsletter-Ausgabe s
 (Pexels+Imagen), Content-Engine, bild-reiche Ausgaben, 4 Geld-Grundgerüste, Stripe-Shop (Karte/CHF live).
 
 
-## 📌 Stand 2026-06-16 (Teil 21) — 14 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT)
+## 📌 Stand 2026-06-16 (Teil 21) — 19 neue Browser-Tools via „2tes-Gehirn"-Pipeline (alle DE/EN/FR/IT)
 > Fortsetzung des Loops „weiter ohne pause fix mit 2te gehirn". Jedes neue Tool durchläuft: DE bauen →
 > unabhängiger Review-Agent (kritische Bug-Jagd + Fix in-place + node-Verifikation) → Übersetzungs-Agent
 > (JS byte-identisch, nur UI-Strings + lang/canonical/hreflang/og) → in alle 4 online-tools-Hubs verdrahten →
-> `tools/i18n_audit.py --fix` → verifizieren → committen → Memory. **Neu (Tools #7–#20):**
+> `tools/i18n_audit.py --fix` → verifizieren → committen → Memory. **Neu (Tools #7–#25):**
 > robots.txt-Generator, CSS Box-Shadow-Generator, Lorem-Ipsum-Generator, CSS Gradient-Generator,
 > Bild-Komprimierer, JSON↔CSV-Konverter, Arbeitszeit-Rechner, Datum-Rechner, CSS clamp()-Generator,
 > Seitenverhältnis-Rechner, Einheiten-Umrechner, Marge-/Aufschlag-Rechner, Farbpaletten-Generator,
-> Text-Werkzeug — je viersprachig, in Sitemap (4/4), review-geprüft. **Das 2te Gehirn fand reale Bugs**
+> Text-Werkzeug, Break-Even-Rechner, HTML-Entity-Encoder, Typo-Skala-Generator, Border-Radius-Generator,
+> cubic-bezier-Generator — je viersprachig, in Sitemap (4/4), review-geprüft. **Das 2te Gehirn fand reale Bugs**
 > (u.a. XSS via Dateiname, </script>-Injection im FAQ-Tool, WebP-Transparenzverlust, toBlob-Race,
 > HIGH-Bug in der Datums-Differenz, `__proto__`-dedup-Falle, Marge≥100%-Guard). Per-Tool-Details in
-> `SHARED-MEMORY.md` (LIVE-STAND, Tool #1–#20). **Tools NICHT zurückbauen.** Gesamt-Tool-Suite (mit
-> früheren) ~20 review-grade Browser-Tools, alle viersprachig.
+> `SHARED-MEMORY.md` (LIVE-STAND, Tool #1–#25). **Tools NICHT zurückbauen.** Gesamt-Tool-Suite (mit
+> früheren) ~25 review-grade Browser-Tools, alle viersprachig.
 
 ## 📌 Stand 2026-06-16 (Teil 20) — ⚠️ i18n KOMPLETT UMGEKEHRT: jetzt VOLL VIERSPRACHIG (DE/EN/FR/IT)
 > ⚠️ **WICHTIG für alle künftigen Sessions — diese Sektion SUPERSEDED Teil 17 („i18n FINAL: nur DE+EN, FR/IT
