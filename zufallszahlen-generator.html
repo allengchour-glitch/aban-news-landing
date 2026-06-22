@@ -132,8 +132,10 @@ footer a{color:var(--muted)}
     if(lo>hi){var t=lo;lo=hi;hi=t;} // tolerate swapped range
     if(c<1)c=1;if(c>1000)c=1000;
     var span=hi-lo+1,out=[];
+    if(span>0x100000000){warn.textContent="⚠ Der Bereich ist zu groß (max. 4'294'967'296 Zahlen).";result.innerHTML="";return;}
     if(unique.checked){
       if(c>span){warn.textContent="⚠ Ohne Wiederholung passen höchstens "+span+" Zahlen in den Bereich "+lo+"–"+hi+".";result.innerHTML="";return;}
+      if(span>10000000){warn.textContent="⚠ Ohne Wiederholung ist der Bereich zu groß (max. 10'000'000 Zahlen).";result.innerHTML="";return;}
       // partial Fisher–Yates over a pool
       var pool=new Array(span);for(var i=0;i<span;i++)pool[i]=lo+i;
       for(var k=0;k<c;k++){var j=k+randBelow(span-k);var tmp=pool[k];pool[k]=pool[j];pool[j]=tmp;out.push(pool[k]);}
