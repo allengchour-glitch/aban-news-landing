@@ -33,7 +33,9 @@ const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const C = {
   total: process.env.TT_TOTAL_BUDGET || '350',
   daily: process.env.TT_DAILY_BUDGET || '25',
-  objective: process.env.TT_OBJECTIVE || 'Conversions', // "Traffic" = braucht KEINEN Pixel/Data-Connection -> Bot kommt durch
+  objective: process.env.TT_OBJECTIVE || 'Traffic', // ERSTER LIVE-LAUF (CizQ6 2026-06-22, User "checke alles selber"): Traffic
+  // umgeht die Pixel/Data-Connection-Wand -> Kampagne geht WIRKLICH live (statt an fehlenden Events zu stoppen). Sobald
+  // erste Pixel-Events fliessen -> auf "Conversions"/Add-to-Cart zurueck (TT_OBJECTIVE=Conversions setzen).
   pixel: process.env.TT_PIXEL_ID || 'D8EKVR3C77U6KT5BTBD0',
   event: process.env.TT_EVENT || 'View Content', // PIXEL-LEITER Phase 1 (mehr Events = Pixel lernt). Erst spaeter auf "Add to Cart" -> "Complete payment". Siehe dropship/PIXEL-STRATEGIE.md
   landing: process.env.TT_LANDING || 'https://luxestyle.ch/collections/sommer',
