@@ -26,6 +26,15 @@ def _candidates() -> list[str]:
     return out
 
 
+def _configured() -> bool:
+    """True, wenn überhaupt ein Gemini-Zugang gesetzt ist (Developer-API oder Vertex)."""
+    if os.environ.get("GEMINI_API_KEY", "").strip():
+        return True
+    if os.environ.get("GCP_SA_KEY", "").strip() and os.environ.get("GCP_PROJECT", "").strip():
+        return True
+    return False
+
+
 def _parse(data: dict) -> str | None:
     try:
         parts = data["candidates"][0]["content"]["parts"]
@@ -120,5 +129,9 @@ def generate(prompt: str, max_tokens: int = 4000, temperature: float = 0.4,
         out = _dev(prompt, model, max_tokens, temperature, thinking_budget, response_json)
         if out:
             return out
-    print("::warning::Kein Modell lieferte Text (alle Kandidaten 404/Fehler).")
+    if not _configured():
+        # Kein Key/Service-Account gesetzt → KI-Text ist optional, Fallback greift. Keine Warnung.
+        print("(Gemini nicht konfiguriert → KI-Text übersprungen, optional)")
+    else:
+        print("::warning::Kein Modell lieferte Text (alle Kandidaten 404/Fehler).")
     return None
