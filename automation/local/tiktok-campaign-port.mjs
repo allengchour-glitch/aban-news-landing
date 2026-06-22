@@ -148,11 +148,40 @@ async function pickFromSearch(p, value) {
       .filter(s => t.includes(s));
   }).catch(() => []);
   if (wall.length >= 2) {
+    try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true }); } catch {}
+    // AUTO-ONBOARDING (User 2026-06-22 "fuell du aus, wie alles autonom"): statt sofort abzubrechen,
+    // die Business-Info selbst ausfuellen (Land/Waehrung/Zeitzone/Branche/Firma/Website). Die ZAHLUNGSKARTE
+    // kann KEIN Bot eintragen (echtes Geld) -> dort sauber fuer den User stoppen. Geht nur mit aktivem AI-Wizard.
+    log('Onboarding-Wand erkannt (' + wall.join(', ') + '). Versuche Business-Info autonom auszufuellen…');
+    if (ab.mode === 'stagehand' && ab.act) {
+      const Aw = async (instr, name) => { try { await ab.act(instr); } catch (e) { log('onb!', name, String(e).slice(0, 50)); } await sleep(2500); if (name) await diag(p, 'onb-' + name); };
+      await Aw('if a "Get started", "Set up", "Confirm" or "Continue" button is visible, click it to begin account setup', 'start');
+      await Aw('set the country or region to Switzerland', 'country');
+      await Aw('set the currency to CHF (Swiss Franc) if a currency selector is shown', 'currency');
+      await Aw('set the time zone to a Switzerland / Europe Zurich time zone if shown', 'tz');
+      await Aw('set the industry / business category to "Retail" or "E-commerce"', 'industry');
+      await Aw('fill the legal business / company name field with "LuxeStyle"', 'company');
+      await Aw('fill the website / business URL field with https://luxestyle.ch', 'website');
+      await Aw('click the Next, Continue, Save or Submit button to save the business information', 'submit');
+      const after = await p.evaluate(() => {
+        const t = (document.body.innerText || '').toLowerCase();
+        return { pay: /payment|billing|add funds|enter payment details|add a payment method|abrechnung|zahlungsmethode/.test(t),
+                 stillWall: ['add business info', 'select an industry', 'advertiser business info'].some(s => t.includes(s)) };
+      }).catch(() => ({ pay: false, stillWall: true }));
+      if (after.pay || !after.stillWall) {
+        const st = { ts: new Date().toISOString(), result: 'BUSINESS_INFO_FILLED_PAYMENT_NEEDED', filledOk: !after.stillWall,
+          hinweis: 'Business-Info autonom ausgefuellt. JETZT nur noch: User traegt EINMAL die Zahlungskarte ein (ads.tiktok.com -> Abrechnung/Payment). Danach laeuft campaign-go durch.' };
+        try { fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(st, null, 2)); } catch {}
+        log('💳 BUSINESS_INFO_FILLED_PAYMENT_NEEDED — Business-Info ausgefuellt; nur die Karte muss der User eintragen.');
+        await p.close().catch(() => {});
+        process.exit(0);
+      }
+    }
+    // Auto-Fill nicht moeglich (AI-Wizard inaktiv) ODER Wand blieb -> sauber abbrechen wie bisher.
     const status = { ts: new Date().toISOString(), result: 'ACCOUNT_NOT_SETUP', hits: wall,
-      hinweis: 'TikTok-Werbekonto nicht eingerichtet (Add business info/Zahlung) ODER falsches Konto. User: ads.tiktok.com onboarden ODER ins Konto LuxeStyle CH Ads 7643589765259493393 einloggen.' };
-    try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
-      fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(status, null, 2)); } catch {}
-    log('🛑 ACCOUNT_NOT_SETUP — Onboarding-Wand erkannt (' + wall.join(', ') + '). KEINE Kampagne, kein Geld. Abbruch.');
+      hinweis: 'Auto-Onboarding nicht moeglich (AI-Wizard inaktiv -> GROQ_API_KEY/GEMINI_API_KEY am PC setzen) ODER Wand blieb. User: ads.tiktok.com -> Business-Info + Zahlungskarte, ODER ins Konto LuxeStyle CH Ads einloggen.' };
+    try { fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'), JSON.stringify(status, null, 2)); } catch {}
+    log('🛑 ACCOUNT_NOT_SETUP — Onboarding-Wand blieb. Business-Info + Karte noetig (Details im Report).');
     await p.close().catch(() => {});
     process.exit(0);
   }
