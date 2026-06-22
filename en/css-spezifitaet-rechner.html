@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Specificity Calculator · Selector Weight · aban news</title>
+<meta name="description" content="Free CSS specificity calculator: enter a selector and compute the weight (a-b-c) — with an explanation per part and a comparison of multiple selectors. Local in your browser, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/en/css-spezifitaet-rechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/css-spezifitaet-rechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/css-spezifitaet-rechner.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/css-spezifitaet-rechner.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/css-spezifitaet-rechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/css-spezifitaet-rechner.html">
+<meta property="og:title" content="CSS Specificity Calculator">
+<meta property="og:description" content="CSS selector → specificity a-b-c with explanation. Local in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/en/css-spezifitaet-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Specificity Calculator",
+"url":"https://abannews.com/en/css-spezifitaet-rechner.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Computes the specificity (a-b-c) of a CSS selector and explains what it is made of.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 6px;color:var(--ink2)}
+input[type=text]{width:100%;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.examples{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.examples button{background:var(--field);border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:.82rem;color:var(--ink2);font-family:ui-monospace,Menlo,Consolas,monospace}
+.examples button:hover{border-color:var(--amber)}
+.results{margin-top:16px}
+.specrow{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--field);flex-wrap:wrap}
+.sel{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;color:var(--ink);flex:1;min-width:140px;word-break:break-all}
+.score{display:flex;gap:6px}
+.seg{min-width:34px;text-align:center;font-weight:800;font-variant-numeric:tabular-nums;border-radius:8px;padding:4px 8px;font-size:1.05rem}
+.seg.a{background:#fde2e2;color:#a01616}.seg.b{background:#fde7c8;color:#b45309}.seg.c{background:#dce7dd;color:#059669}
+@media(prefers-color-scheme:dark){.seg.a{background:#4a2020;color:#f8b4b4}.seg.b{background:#4a3a1c;color:#fbbf24}.seg.c{background:#1e3a28;color:#86efac}}
+.detail{font-size:.82rem;color:var(--muted);width:100%}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:6px}
+.legend b{font-weight:700}
+.note{font-size:.85rem;color:var(--muted);margin-top:14px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Calculate <span class="a">CSS specificity</span></h1>
+    <p>Which CSS rule wins? Enter one or more selectors (separated by commas) and see the specificity as <code>a-b-c</code> — IDs, classes/attributes/pseudo-classes and elements. That's how you find out why one rule overrides another. Everything runs locally in your browser, nothing is sent.</p>
+  </section>
+  <section class="panel" id="tool">
+    <label class="lbl" for="sel">CSS selector(s)</label>
+    <input type="text" id="sel" spellcheck="false" autocomplete="off" value="#nav .item a:hover" placeholder="e.g. #nav .item a:hover">
+    <div class="examples" id="examples"></div>
+    <div class="legend">
+      <span><b style="color:#a01616">a</b> = IDs</span>
+      <span><b style="color:#b45309">b</b> = classes · attributes · pseudo-classes</span>
+      <span><b style="color:#059669">c</b> = elements · pseudo-elements</span>
+    </div>
+    <div class="results" id="results" aria-live="polite"></div>
+    <p class="note">Specificity is compared as three numbers (first a, then b, then c) — a higher group beats any lower one, no matter how large the number. Inline styles and <code>!important</code> rank above this and are not included here. <code>:is()</code>/<code>:not()</code>/<code>:has()</code> count with their most specific argument, <code>:where()</code> counts 0. The universal selector <code>*</code> and combinators (<code>&gt; + ~</code>) do not count. Everything local, no upload.</p>
+  </section>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for the web &amp; development.</p>
+    <p><a class="btn" href="/en/css-clamp-generator.html">CSS clamp()</a>
+      <a class="btn ghost" href="/en/farb-umrechner.html">Color converter</a>
+      <a class="btn ghost" href="/en/online-tools.html">All tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe anytime.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe to the free newsletter →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/en/css-clamp-generator.html">CSS clamp()</a> · <a href="/en/farb-umrechner.html">Color converter</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var selEl=document.getElementById("sel"),results=document.getElementById("results"),examplesBox=document.getElementById("examples");
+  var EXAMPLES=["#nav .item a:hover","ul li.active","*","a:not(.btn)",".card :where(h2, h3)","::before","[type=\"text\"]:focus","main#app .list > li::marker"];
+  var PSEUDO_EL=/^(before|after|first-line|first-letter|placeholder|selection|marker|backdrop|file-selector-button)$/;
+  // compute [a,b,c] for ONE complex selector (no top-level commas)
+  function specOne(sel){
+    var a=0,b=0,c=0;
+    var s=" "+sel+" ";
+    s=s.replace(/\\./g," ");            // drop escaped chars
+    // strings inside attribute selectors
+    s=s.replace(/"[^"]*"|'[^']*'/g," ");
+    // functional pseudo-classes that affect specificity: :is() :not() :has() :matches()
+    // and :where() which contributes 0. Resolve innermost-first via [^()] match.
+    var fnRe=/:(is|matches|not|has|where)\(([^()]*)\)/i,mm;
+    while((mm=s.match(fnRe))){
+      var name=mm[1].toLowerCase(),inner=mm[2],add=[0,0,0];
+      if(name!=="where"){
+        inner.split(",").forEach(function(part){
+          var sp=specOne(part);
+          if(sp[0]>add[0]||(sp[0]===add[0]&&sp[1]>add[1])||(sp[0]===add[0]&&sp[1]===add[1]&&sp[2]>add[2]))add=sp;
+        });
+      }
+      a+=add[0];b+=add[1];c+=add[2];
+      s=s.slice(0,mm.index)+" "+s.slice(mm.index+mm[0].length); // remove the matched function
+    }
+    // attribute selectors [..] → b
+    s=s.replace(/\[[^\]]*\]/g,function(){b++;return " ";});
+    // IDs → a
+    s=s.replace(/#[-\w]+/g,function(){a++;return " ";});
+    // pseudo-elements (::x and legacy :before etc.) → c
+    s=s.replace(/::[-\w]+/g,function(){c++;return " ";});
+    s=s.replace(/:([-\w]+)/g,function(m,n){if(PSEUDO_EL.test(n.toLowerCase())){c++;}else{b++;}return " ";});
+    // classes → b
+    s=s.replace(/\.[-\w]+/g,function(){b++;return " ";});
+    // remaining: element/type selectors → c (skip * and combinators)
+    s=s.replace(/[>+~]/g," ");
+    s=s.replace(/(?:[-\w]+|\*)?\|/g," "); // strip namespace prefix (ns|el, *|el, |el)
+    s.split(/\s+/).forEach(function(tok){
+      if(tok&&tok!=="*"&&/^[-\w]+$/.test(tok))c++;
+    });
+    return [a,b,c];
+  }
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+  function run(){
+    var raw=selEl.value;
+    if(!raw.trim()){results.innerHTML='<p class="note">Enter a selector.</p>';return;}
+    var parts=raw.split(",").map(function(x){return x.trim();}).filter(function(x){return x!=="";});
+    results.innerHTML=parts.map(function(p){
+      var s=specOne(p);
+      return '<div class="specrow"><span class="sel">'+esc(p)+'</span>'+
+        '<span class="score"><span class="seg a">'+s[0]+'</span><span class="seg b">'+s[1]+'</span><span class="seg c">'+s[2]+'</span></span>'+
+        '<span class="detail">Specificity '+s[0]+'-'+s[1]+'-'+s[2]+'</span></div>';
+    }).join("");
+  }
+  EXAMPLES.forEach(function(ex){
+    var b=document.createElement("button");b.type="button";b.textContent=ex;
+    b.addEventListener("click",function(){selEl.value=ex;run();});
+    examplesBox.appendChild(b);
+  });
+  selEl.addEventListener("input",run);
+  run();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
