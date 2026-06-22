@@ -30,7 +30,8 @@ const t=await tk();if(!t){console.error('Kein Token');process.exit(1);}
 if(!GEMINI&&!GROQ&&!DEEPSEEK&&!OPENAI){console.error('Keine KI-Keys');process.exit(1);}
 console.log('KI-Fallback-Kette:',[GEMINI&&'Gemini',GROQ&&'Groq',DEEPSEEK&&'DeepSeek',OPENAI&&'OpenAI'].filter(Boolean).join(' → '));
 // Nur NICHT-veredelte holen (Tag-Filter = schnell)
-const Q=`query($c:String){products(first:50,query:"tag:bigbuy status:active -tag:ls-ai-desc",sortKey:CREATED_AT,reverse:true,after:$c){pageInfo{hasNextPage endCursor}edges{node{id title productType descriptionHtml}}}}`;
+// älteste zuerst → trifft sofort nie-veredelte Produkte (die neuesten ~186 sind schon veredelt)
+const Q=`query($c:String){products(first:50,query:"tag:bigbuy status:active -tag:ls-ai-desc",sortKey:CREATED_AT,reverse:false,after:$c){pageInfo{hasNextPage endCursor}edges{node{id title productType descriptionHtml}}}}`;
 let c=null,items=[],stall=0;
 do{const r=await gql(t,Q,{c});const pg=r?.data?.products;if(!pg){await sleep(2000);continue;}const b=items.length;
  for(const e of pg.edges)items.push(e.node);
