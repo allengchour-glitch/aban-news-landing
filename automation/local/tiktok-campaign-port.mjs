@@ -33,11 +33,12 @@ const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const C = {
   total: process.env.TT_TOTAL_BUDGET || '350',
   daily: process.env.TT_DAILY_BUDGET || '25',
-  objective: process.env.TT_OBJECTIVE || 'Traffic', // ERSTER LIVE-LAUF (CizQ6 2026-06-22, User "checke alles selber"): Traffic
-  // umgeht die Pixel/Data-Connection-Wand -> Kampagne geht WIRKLICH live (statt an fehlenden Events zu stoppen). Sobald
-  // erste Pixel-Events fliessen -> auf "Conversions"/Add-to-Cart zurueck (TT_OBJECTIVE=Conversions setzen).
+  objective: process.env.TT_OBJECTIVE || 'Conversions', // CizQ6 2026-06-22 UMGESTELLT (YouTube-Lehre + TikTok-Doku):
+  // Pixel D8EKVR feuert jetzt (ttq.page verifiziert) + datasharing-go laeuft zuerst (Data-Connection auf Max) -> Conversions moeglich.
+  // ADD-TO-CART statt Traffic: Traffic bringt billige Falsch-Leute + trainiert den Pixel falsch = Budget-Verschwendung.
+  // FALLBACK nur falls der Bot an der Pixel/Data-Connection-Wand haengt: TT_OBJECTIVE=Traffic setzen.
   pixel: process.env.TT_PIXEL_ID || 'D8EKVR3C77U6KT5BTBD0',
-  event: process.env.TT_EVENT || 'View Content', // PIXEL-LEITER Phase 1 (mehr Events = Pixel lernt). Erst spaeter auf "Add to Cart" -> "Complete payment". Siehe dropship/PIXEL-STRATEGIE.md
+  event: process.env.TT_EVENT || 'Add to Cart', // YouTube-Lehre: ATC ist haeufig genug, dass der Algo lernt WER kauft (Complete-Payment braucht ~50 Kaeufe/Woche = bei CHF 350 unerreichbar). Spaeter parallele Complete-Payment-Gruppe dazu.
   landing: process.env.TT_LANDING || 'https://luxestyle.ch/collections/sommer',
   video: path.resolve(process.env.TT_VIDEO || path.join(ROOT, 'reels', 'luxe-flagship-film.mp4')),
   identity: process.env.TT_IDENTITY || 'Luxestyle.ch',
