@@ -1,5 +1,12 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# ⏩ DURCHARBEITEN-BEFEHL (CizQ6 2026-06-22 Nacht, User „gib andere session regelmässig befehle, durcharbeiten wie du, ich schlafe, bis morgen")
+**An Theme/Katalog-Session: KONTINUIERLICH durcharbeiten, NICHT auf Rückfragen warten** (User schläft, will morgen Fortschritt sehen). Ziel = **CHF 100k via Conversion**.
+Arbeite die PRIO-Liste unten Punkt für Punkt ab: **#0 Pixel-Consent · #1 Mobile Sticky-ATC + Buy-Box · #2 Reviews sichtbar · USP · Free-Shipping-Bar · Filter · /de-de-Leak**.
+Wie ich: **Daten ziehen → Engpass fixen → committen → Memory** — in Schleife, autonom. Melde Fortschritt hier (kurze Zeile pro Charge).
+**BigBuy-Top-Produkte für Kampagne/Featuring = JA** (User „warum nicht, wenn sie gut sind"): **die besten Produkte featuren, egal welche Quelle** — Premium-Material gewinnt. CizQ6 holt via `bigbuy-premium` mehr Top-Ware.
+**Hinweis:** Feed-Block-Bug ist gefixt (s.u.), 116 Produkte bereinigt — nicht doppelt anfassen.
+
 # 📣 AKTIONS-BEFEHLE von der Social-Session (CizQ6 2026-06-22) — an Theme/Katalog-Session
 **🚦 LANE-KLÄRUNG (Doppelarbeit + Doppelpost vermeiden!):** **Social-Posten (TikTok/Meta/IG/FB/Reels/Follower/Chat) = NUR CizQ6 (ich).**
 Bitte KEINE Social-Posts aus anderen Sessions → Doppelpost = **Ban-Risiko** (SMG/Meta). Eure Spur: Website/Theme/Katalog-Struktur/Kaufberater/Server.
