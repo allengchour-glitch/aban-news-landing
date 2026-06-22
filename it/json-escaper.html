@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escaper di stringhe JSON · Testo ↔ JSON · aban news</title>
+<meta name="description" content="Escaper di stringhe JSON gratuito: converti il testo in una stringa JSON (con \n \t \&quot; \\ ) e viceversa — Unicode come \u opzionale. Locale nel browser, senza login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/it/json-escaper.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/json-escaper.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/json-escaper.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/json-escaper.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/json-escaper.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/json-escaper.html">
+<meta property="og:title" content="Escaper di stringhe JSON">
+<meta property="og:description" content="Escape/annulla escape testo ↔ stringa JSON, Unicode come \u opzionale. Locale nel browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/it/json-escaper.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="it_IT"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Escaper di stringhe JSON",
+"url":"https://abannews.com/it/json-escaper.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"it","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Converte il testo in una stringa JSON (escape) e di nuovo indietro (annulla escape), con codifica \\u opzionale.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-bottom:14px}
+.seg button{background:var(--field);border:0;padding:9px 16px;cursor:pointer;font-size:.9rem;color:var(--ink2);font-weight:600}
+.seg button[aria-pressed=true]{background:var(--amber-dk);color:#fff}
+.opt{display:flex;align-items:center;gap:8px;margin:6px 0 4px;font-size:.92rem;color:var(--ink2);cursor:pointer}
+.opt input{width:18px;height:18px;accent-color:var(--amber-dk)}
+.lbl{display:block;font-weight:600;font-size:13px;margin:10px 0 6px;color:var(--ink2)}
+textarea{width:100%;min-height:120px;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:11px;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--ink);resize:vertical}
+textarea:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+textarea.err{border-color:var(--bad)}
+.outbar{display:flex;gap:8px;align-items:center;margin:12px 0 6px}
+.warn{color:var(--bad);font-weight:600;font-size:.85rem;min-height:1.1em}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Vai allo strumento</a>
+<header class="site"><div class="wrap"><a href="/it/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuita</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Esegui l’escape di una <span class="a">stringa JSON</span></h1>
+    <p>Converti il testo in una stringa JSON valida — interruzioni di riga, tabulazioni, virgolette e barre rovesciate vengono sottoposte a escape correttamente (<code>\n \t \" \\</code>) — oppure riconverti una stringa JSON in testo semplice. Tutto in locale nel browser, niente viene inviato.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="seg" role="group" aria-label="Modalità">
+      <button type="button" id="mEsc" aria-pressed="true">Esegui escape</button>
+      <button type="button" id="mUnesc" aria-pressed="false">Annulla escape</button>
+    </div>
+    <label class="opt" id="optQuotes"><input type="checkbox" id="quotes" checked> Con virgolette circostanti</label>
+    <label class="opt" id="optAscii"><input type="checkbox" id="ascii"> Codifica non-ASCII come <code>\u</code></label>
+    <label class="lbl" for="in" id="inLbl">Input testo</label>
+    <textarea id="in" spellcheck="false" placeholder="Riga 1&#10;Riga 2 con &quot;virgoletta&quot; e tabulazione&#9;fine"></textarea>
+    <div class="outbar">
+      <span class="lbl" id="outLbl" style="margin:0">Risultato</span>
+      <span class="warn" id="warn" role="alert"></span>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="copy" type="button">Copia</button>
+    </div>
+    <textarea id="out" readonly spellcheck="false" aria-labelledby="outLbl"></textarea>
+    <p class="note">L’escape produce un valore che puoi inserire direttamente in JSON o nel codice. L’annullamento dell’escape trasforma una stringa JSON (con o senza <code>"</code> circostanti) in testo semplice — incluso <code>\uXXXX</code>. Se l’input non è una stringa JSON valida, compare un avviso. Tutto in locale, nessun caricamento.</p>
+  </section>
+  <div class="cta"><strong>Altri strumenti</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">per dati &amp; sviluppo.</p>
+    <p><a class="btn" href="/it/json-formatter.html">Formattatore JSON</a>
+      <a class="btn ghost" href="/it/encoder.html">Encoder Base64 / URL</a>
+      <a class="btn ghost" href="/it/online-tools.html">Tutti gli strumenti</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ti è stato utile? 5 minuti di IA senza hype — ogni giorno feriale.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news è la newsletter sull’IA per i liberi professionisti: breve, onesta, senza bingo di parole alla moda. Gratis, disdici quando vuoi.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Iscriviti alla newsletter gratuita →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/it/json-formatter.html">Formattatore JSON</a> · <a href="/it/encoder.html">Encoder</a> ·
+  <a href="/it/ki-werkzeug.html">Strumento IA</a> &middot; <a href="/it/online-tools.html">Tutti gli strumenti</a> &middot; <a href="/impressum.html">Note legali</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var inEl=document.getElementById("in"),out=document.getElementById("out"),inLbl=document.getElementById("inLbl"),warn=document.getElementById("warn"),
+      mEsc=document.getElementById("mEsc"),mUnesc=document.getElementById("mUnesc"),
+      quotes=document.getElementById("quotes"),ascii=document.getElementById("ascii"),
+      optQuotes=document.getElementById("optQuotes"),optAscii=document.getElementById("optAscii");
+  var mode="esc";
+  function uEscape(s){
+    return s.replace(/[\u0080-\uffff]/g,function(c){
+      return "\\u"+("000"+c.charCodeAt(0).toString(16)).slice(-4);
+    });
+  }
+  function escape(){
+    var json=JSON.stringify(inEl.value); // always quoted, all control chars handled
+    if(ascii.checked)json=uEscape(json);
+    if(!quotes.checked)json=json.slice(1,-1);
+    out.value=json;inEl.classList.remove("err");warn.textContent="";
+  }
+  function unescape(){
+    var s=inEl.value;
+    if(s==="")  {out.value="";warn.textContent="";inEl.classList.remove("err");return;}
+    var t=s.trim(),wrapped=t;
+    // accept input with or without surrounding double quotes
+    if(!(t.charAt(0)==='"'&&t.charAt(t.length-1)==='"'&&t.length>=2)){
+      wrapped='"'+t+'"';
+    }
+    try{
+      var val=JSON.parse(wrapped);
+      if(typeof val!=="string")throw new Error("kein String");
+      out.value=val;warn.textContent="";inEl.classList.remove("err");
+    }catch(e){
+      out.value="";warn.textContent="⚠ Stringa JSON non valida.";inEl.classList.add("err");
+    }
+  }
+  function run(){mode==="esc"?escape():unescape();}
+  function setMode(m){
+    mode=m;
+    mEsc.setAttribute("aria-pressed",m==="esc"?"true":"false");
+    mUnesc.setAttribute("aria-pressed",m==="unesc"?"true":"false");
+    inLbl.textContent=m==="esc"?"Input testo":"Input stringa JSON";
+    optQuotes.style.display=m==="esc"?"flex":"none";
+    optAscii.style.display=m==="esc"?"flex":"none";
+    run();
+  }
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function copy(text,b){
+    if(!text)return;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Copiato ✓");},function(){fb(text,b);});
+    } else fb(text,b);
+  }
+  function fb(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Copiato ✓");}
+    catch(e){flash(b,"Copia manualmente");}}
+  mEsc.addEventListener("click",function(){setMode("esc");});
+  mUnesc.addEventListener("click",function(){setMode("unesc");});
+  inEl.addEventListener("input",run);
+  quotes.addEventListener("change",run);
+  ascii.addEventListener("change",run);
+  document.getElementById("copy").addEventListener("click",function(){copy(out.value,this);});
+  run();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
