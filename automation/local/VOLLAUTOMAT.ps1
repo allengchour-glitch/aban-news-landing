@@ -103,8 +103,11 @@ switch ($Mode) {
     Node "automation/local/tiktok-bot.mjs" @("analyze","--max","80")    # erst lernen
     Node "automation/local/tiktok-bot.mjs" @("post")                    # dann 1 Reel posten (stumm)
     Node "automation/local/tiktok-bot.mjs" @("engage","--cap","10")     # Kommentare beantworten
-    Node "automation/local/tutti-post.mjs"  @() @{ AUTO_PUBLISH="1"; TUTTI_CAP="3" }
-    Node "automation/local/anibis-post.mjs" @() @{ AUTO_PUBLISH="1"; ANIBIS_CAP="3" }
+    # DEAKTIVIERT 2026-06-22 (BAN-SCHUTZ): Tutti/Anibis (SMG) VERBIETEN Dropshipping ("Ware muss in CH
+    # im Besitz sein") + geteiltes Risk-Scoring -> Auto-Listing von Dropship-SKUs kann die ganze SMG-Konto-
+    # Familie (inkl. Ricardo) sperren. Nur manuell + nur echte CH-Lager-Artikel. Siehe Brain smg_marktplatz_dropship_ban_2026.
+    # Node "automation/local/tutti-post.mjs"  @() @{ AUTO_PUBLISH="1"; TUTTI_CAP="3" }
+    # Node "automation/local/anibis-post.mjs" @() @{ AUTO_PUBLISH="1"; ANIBIS_CAP="3" }
     Node "automation/brain/self_learn.mjs"
   }
   "engage" {

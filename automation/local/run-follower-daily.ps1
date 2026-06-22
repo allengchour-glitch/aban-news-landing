@@ -91,12 +91,13 @@ if ($env:META_ACCESS_TOKEN -and ((Get-Date).DayOfWeek -in "Tuesday","Friday")) {
 # 7) tutti.ch autonom inserieren (Browser/CDP - tutti hat kein API). Voll-Auto: laedt Bild + waehlt Kategorie +
 #    veroeffentlicht NUR wenn alles sauber gesetzt ist (sonst ueberspringen). Cap 2/Tag, idempotent (tutti-ledger.txt).
 #    Voraussetzung: Brave-Profil ist auf tutti.ch eingeloggt. Auto-Veroeffentlichung auf Ricardo ist im Konto aktiv -> doppelte Reichweite.
-$env:AUTO_PUBLISH = "1"; $env:TUTTI_CAP = "3"
-node "automation/local/tutti-post.mjs"
-
-# 7b) anibis.ch autonom inserieren (zweiter Gratis-CH-Marktplatz, gleiche Liste, eigener Ledger).
-$env:AUTO_PUBLISH = "1"; $env:ANIBIS_CAP = "3"
-node "automation/local/anibis-post.mjs"
+# DEAKTIVIERT 2026-06-22 (BAN-SCHUTZ): Tutti/Anibis (SMG) verbieten Dropshipping explizit + geteiltes
+# Risk-Scoring -> Auto-Listing von Dropship-SKUs riskiert Sperre der ganzen SMG-Familie (inkl. Ricardo).
+# Nur manuell + nur echte CH-Lager-Artikel. Siehe Brain smg_marktplatz_dropship_ban_2026.
+# $env:AUTO_PUBLISH = "1"; $env:TUTTI_CAP = "3"
+# node "automation/local/tutti-post.mjs"
+# $env:AUTO_PUBLISH = "1"; $env:ANIBIS_CAP = "3"
+# node "automation/local/anibis-post.mjs"
 
 # 8) Entfolgen - TAeGLICH (User 2026-06-17: Ratio 878 Gefolgt > 592 Follower = ungesund -> schneller trimmen).
 #    Sicher: Cap 50/Lauf, nur Nicht-Zurueckfolger nach ~14 Tagen, Stopp bei Block. Idempotent.
