@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Automation für Schweizer KMU — Chatbots, Termine & Prozesse | aban</title>
+<meta name="description" content="Wir automatisieren wiederkehrende Aufgaben für Schweizer KMU: 24/7-Kundensupport per KI-Chatbot, Terminbuchung, Lead-Erfassung und Backoffice. Weniger Aufwand, schnellere Antworten, mehr Anfragen — fair und transparent.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://abannews.com/ki-automation.html">
+<meta property="og:title" content="KI-Automation für Schweizer KMU — weniger Handarbeit, mehr Anfragen">
+<meta property="og:description" content="KI-Chatbots, Termin- & Lead-Automation und Prozess-Automatisierung für Schweizer Betriebe. Transparent, DSGVO-bewusst, ohne Schnickschnack.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#f3f0ea;--card:#fff}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+a{color:var(--amber-dk);text-decoration:none}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px}
+.top{background:var(--card);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:10px;padding:13px 18px;font-size:.85rem}
+.top .brand{font-weight:900;color:var(--amber-dk);font-size:20px}
+.top .lnk{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.top .lnk a{color:var(--ink2);font-weight:700;border:1px solid var(--line);border-radius:18px;padding:6px 11px}
+.hero{background:linear-gradient(160deg,#1f2937,#374151);color:#fff;padding:54px 0 48px}
+.hero h1{font-size:clamp(1.8rem,5vw,2.7rem);font-weight:900;letter-spacing:-.02em;line-height:1.15}
+.hero p{font-size:clamp(1rem,2.6vw,1.2rem);color:#e8e6e1;margin-top:14px;max-width:680px}
+.hero .cta{display:inline-flex;gap:8px;align-items:center;margin-top:24px;background:var(--amber);color:#1f2937;font-weight:800;border-radius:24px;padding:13px 24px;font-size:1.05rem}
+.hero .cta:hover{background:#f59e0b}
+.hero .sub{margin-top:14px;font-size:.85rem;color:#cbd5e1}
+section{padding:42px 0}
+h2{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:900;letter-spacing:-.01em;margin-bottom:6px}
+.lead{color:var(--muted);max-width:680px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(31,41,55,.10)}
+.card .ic{width:46px;height:46px;border-radius:13px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px}
+.card h3{font-size:1.12rem;margin-bottom:6px}
+.card p{color:var(--ink2);font-size:.95rem}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:18px;width:30px;height:30px;border-radius:50%;background:var(--amber-dk);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step h3{margin:10px 0 5px;font-size:1.05rem}
+.step p{color:var(--ink2);font-size:.93rem}
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+.tier.best{border:2px solid var(--amber);box-shadow:0 10px 30px rgba(217,119,6,.12)}
+.tier .tag{align-self:flex-start;background:var(--cream);color:var(--amber-dk);font-weight:800;font-size:.72rem;border-radius:14px;padding:4px 11px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.tier h3{font-size:1.25rem}
+.tier .amt{font-size:1.5rem;font-weight:900;margin:8px 0 2px}
+.tier .amt small{font-size:.85rem;color:var(--muted);font-weight:600}
+.tier ul{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.tier li{font-size:.93rem;color:var(--ink2);padding-left:24px;position:relative}
+.tier li::before{content:"✓";position:absolute;left:0;color:#15803d;font-weight:800}
+.tier .pick{margin-top:18px;text-align:center;background:var(--amber-dk);color:#fff;font-weight:800;border-radius:12px;padding:11px}
+.tier .pick:hover{background:#a04708}
+.formwrap{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;max-width:640px}
+label{display:block;font-weight:700;font-size:.9rem;margin:14px 0 5px}
+input,select,textarea{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;font-size:1rem;font-family:inherit;color:var(--ink);background:#fffdf9}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--amber)}
+textarea{min-height:110px;resize:vertical}
+.btn{margin-top:18px;width:100%;background:var(--amber-dk);color:#fff;border:0;border-radius:12px;padding:14px;font-weight:800;font-size:1.05rem;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(180,83,9,.3)}
+.ok{display:none;margin-top:14px;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;border-radius:11px;padding:13px;font-size:.93rem}
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.trust span{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:7px 13px;font-size:.83rem;color:var(--ink2);font-weight:600}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:4px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;padding:13px 0}
+details p{color:var(--ink2);padding:0 0 14px;font-size:.95rem}
+footer{background:#1f2937;color:#cbd5e1;padding:26px 0;font-size:.85rem;margin-top:20px}
+footer a{color:#fcd34d}
+.muted-note{font-size:.82rem;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="brand" href="/">aban</a>
+  <span class="lnk"><a href="/marktplatz.html">Marktplatz</a><a href="/suchmaschine.html">Suche</a><a href="/kontakt.html">Kontakt</a></span>
+</div></div>
+
+<div class="hero"><div class="wrap">
+  <h1>KI-Automation für Schweizer KMU</h1>
+  <p>Wiederkehrende Aufgaben kosten Zeit und Nerven. Wir bauen dir KI-gestützte Helfer, die rund um die Uhr Anfragen beantworten, Termine annehmen und Leads erfassen — damit du dich aufs Geschäft konzentrierst statt aufs Abarbeiten.</p>
+  <a class="cta" href="#anfrage">Kostenloses Erstgespräch →</a>
+  <div class="sub">Unverbindlich · auf Schweizer Betriebe zugeschnitten · DSGVO-bewusst</div>
+</div></div>
+
+<section><div class="wrap">
+  <h2>Was wir automatisieren</h2>
+  <p class="lead">Kein Technik-Kauderwelsch — konkrete Helfer für den Alltag. Du sagst uns, was nervt; wir bauen die passende Automation und betreuen sie.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">💬</div><h3>24/7-Kundensupport-Bot</h3><p>Ein KI-Chatbot auf deiner Website beantwortet häufige Fragen (Öffnungszeiten, Preise, Verfügbarkeit) sofort — Tag und Nacht. Was er nicht weiss, leitet er sauber an dich weiter. Spart Support-Zeit und lässt keine Anfrage liegen.</p></div>
+    <div class="card"><div class="ic">📅</div><h3>Termin- & Buchungs-Automation</h3><p>Kund:innen buchen selbstständig freie Termine, bekommen automatische Bestätigungen und Erinnerungen. Weniger No-Shows, kein Telefon-Pingpong, voller Kalender ohne manuelles Hin und Her.</p></div>
+    <div class="card"><div class="ic">🎯</div><h3>Lead-Erfassung & Nachfassen</h3><p>Jede Anfrage wird automatisch erfasst, sortiert und beantwortet — und bei Bedarf höflich nachgefasst. So geht kein Interessent verloren, auch wenn du gerade keine Zeit hast.</p></div>
+    <div class="card"><div class="ic">⚙️</div><h3>Backoffice & Prozesse</h3><p>Angebote, Rechnungen, E-Mail-Sortierung, Daten von A nach B: wiederkehrende Büroabläufe laufen automatisch im Hintergrund. Weniger Tipparbeit, weniger Fehler.</p></div>
+    <div class="card"><div class="ic">✍️</div><h3>Inhalte & Antworten</h3><p>KI-Entwürfe für Antworten, Produkttexte, Social-Posts und Newsletter — in deinem Ton. Du prüfst und gibst frei, statt jedes Mal bei null zu starten.</p></div>
+    <div class="card"><div class="ic">🔗</div><h3>Tools verbinden</h3><p>Wir verbinden deine bestehenden Programme (Kalender, E-Mail, Shop, Tabellen), damit Daten automatisch fliessen — ohne dass du etwas doppelt erfassen musst.</p></div>
+  </div>
+</div></section>
+
+<section style="background:var(--cream)"><div class="wrap">
+  <h2>So läuft die Zusammenarbeit</h2>
+  <p class="lead">Klar, planbar und ohne Risiko-Sprung — du siehst zuerst, was möglich ist, bevor du dich festlegst.</p>
+  <div class="steps">
+    <div class="step"><h3>Erstgespräch</h3><p>Wir schauen gemeinsam, welche Aufgaben am meisten Zeit fressen und sich am schnellsten automatisieren lassen. Kostenlos und unverbindlich.</p></div>
+    <div class="step"><h3>Aufbau</h3><p>Wir bauen die Automation, testen sie mit echten Beispielen aus deinem Betrieb und stimmen den Ton auf dich ab.</p></div>
+    <div class="step"><h3>Start & Betreuung</h3><p>Die Automation geht live. Wir überwachen, verbessern laufend und passen an, wenn sich etwas ändert.</p></div>
+  </div>
+</div></section>
+
+<section id="preise"><div class="wrap">
+  <h2>Preise — transparent</h2>
+  <p class="lead">Faire Richtpreise für Schweizer KMU. Der genaue Preis hängt vom Umfang ab und wird im Erstgespräch festgelegt — keine versteckten Kosten.</p>
+  <div class="price">
+    <div class="tier">
+      <span class="tag">Starter</span>
+      <h3>FAQ-Chatbot</h3>
+      <div class="amt">ab CHF 900 <small>einmalig</small></div>
+      <div class="amt" style="font-size:1rem;color:var(--ink2)">+ ab CHF 149 <small>/ Monat Betreuung</small></div>
+      <ul><li>KI-Chatbot auf deiner Website</li><li>Antworten auf deine häufigsten Fragen</li><li>Weiterleitung an dich bei Bedarf</li><li>Monatliche Pflege & Verbesserung</li></ul>
+      <a class="pick" href="#anfrage">Anfragen</a>
+    </div>
+    <div class="tier best">
+      <span class="tag">Beliebt · Wachstum</span>
+      <h3>Support + Termine + Leads</h3>
+      <div class="amt">ab CHF 2'900 <small>einmalig</small></div>
+      <div class="amt" style="font-size:1rem;color:var(--ink2)">+ ab CHF 390 <small>/ Monat Betreuung</small></div>
+      <ul><li>Alles aus „Starter"</li><li>Termin-/Buchungs-Automation</li><li>Lead-Erfassung & automatisches Nachfassen</li><li>Anbindung an Kalender & E-Mail</li><li>Monatlicher Report</li></ul>
+      <a class="pick" href="#anfrage">Anfragen</a>
+    </div>
+    <div class="tier">
+      <span class="tag">Individuell</span>
+      <h3>Prozess-Automation</h3>
+      <div class="amt">auf Anfrage</div>
+      <div class="amt" style="font-size:1rem;color:var(--ink2)">&nbsp;</div>
+      <ul><li>Backoffice- & Workflow-Automation</li><li>Mehrere Tools verbunden</li><li>Massgeschneidert auf deinen Betrieb</li><li>Laufende Betreuung & Ausbau</li></ul>
+      <a class="pick" href="#anfrage">Gespräch buchen</a>
+    </div>
+  </div>
+  <p class="muted-note">Hinweis: Richtpreise zur Orientierung. Verbindliche Offerte nach dem kostenlosen Erstgespräch.</p>
+</div></section>
+
+<section id="anfrage"><div class="wrap">
+  <h2>Kostenloses Erstgespräch anfragen</h2>
+  <p class="lead">Beschreib in zwei Sätzen, was bei dir am meisten Zeit kostet — wir melden uns mit einer ehrlichen Einschätzung, was sich lohnt zu automatisieren (und was nicht).</p>
+  <div class="formwrap">
+    <form id="f" autocomplete="on" onsubmit="return false">
+      <label for="name">Name *</label>
+      <input id="name" type="text" required placeholder="Vor- und Nachname">
+      <label for="firma">Firma</label>
+      <input id="firma" type="text" placeholder="Name deines Betriebs">
+      <label for="email">E-Mail / Telefon *</label>
+      <input id="email" type="text" required placeholder="So erreichen wir dich">
+      <label for="branche">Branche</label>
+      <select id="branche">
+        <option value="">– bitte wählen –</option>
+        <option>Gastronomie / Hotel</option>
+        <option>Handwerk / Bau</option>
+        <option>Gesundheit / Praxis</option>
+        <option>Handel / Shop</option>
+        <option>Dienstleistung / Beratung</option>
+        <option>Schönheit / Wellness</option>
+        <option>Anderes</option>
+      </select>
+      <label for="thema">Was möchtest du automatisieren? *</label>
+      <textarea id="thema" required placeholder="z. B. ständig dieselben Fragen per Telefon/WhatsApp, oder Termine manuell eintragen"></textarea>
+      <button class="btn" id="send" type="submit">Anfrage senden →</button>
+      <div class="ok" id="ok">✅ Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage — bitte nur noch auf „Senden" klicken. Klappt das nicht? Schreib direkt an <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.</div>
+    </form>
+    <div class="trust">
+      <span>🇨🇭 Auf Schweizer KMU zugeschnitten</span>
+      <span>🔒 DSGVO-bewusst</span>
+      <span>🤝 Unverbindlich & ehrlich</span>
+      <span>⏱️ Antwort i. d. R. < 24 h</span>
+    </div>
+  </div>
+  <p class="muted-note">📩 Lieber direkt? Schreib uns an <a href="mailto:hallo@abannews.com">hallo@abannews.com</a>.</p>
+</div></section>
+
+<section style="background:var(--cream)"><div class="wrap">
+  <h2>Häufige Fragen</h2>
+  <details><summary>Brauche ich technisches Wissen?</summary><p>Nein. Du sagst uns, was nervt — wir kümmern uns um Aufbau, Anbindung und Betrieb. Du bekommst eine fertige Lösung und eine kurze Einweisung.</p></details>
+  <details><summary>Wie lange dauert die Umsetzung?</summary><p>Ein einfacher FAQ-Chatbot ist oft in wenigen Tagen startklar. Grössere Automationen (Termine, Leads, Prozesse) dauern je nach Umfang ein bis mehrere Wochen.</p></details>
+  <details><summary>Was kostet es wirklich?</summary><p>Die Richtpreise oben dienen der Orientierung. Den verbindlichen Preis nennen wir nach dem kostenlosen Erstgespräch — abhängig von Umfang und angebundenen Tools. Keine versteckten Kosten.</p></details>
+  <details><summary>Wie steht es um den Datenschutz?</summary><p>Wir arbeiten datenschutzbewusst und besprechen mit dir, welche Daten verarbeitet werden. Sensible Abläufe richten wir so ein, dass nur das Nötige genutzt wird.</p></details>
+  <details><summary>Ersetzt die KI meine Mitarbeitenden?</summary><p>Nein — sie nimmt ihnen die stupide Wiederholungsarbeit ab. Routinefragen und Standardabläufe laufen automatisch, dein Team kümmert sich um das, was wirklich Menschen braucht.</p></details>
+</div></section>
+
+<footer><div class="wrap">aban news · KI-Automation für Schweizer KMU · <a href="mailto:hallo@abannews.com">hallo@abannews.com</a> · <a href="/marktplatz.html">Marktplatz</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Brauche ich technisches Wissen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Du sagst uns, was nervt — wir kümmern uns um Aufbau, Anbindung und Betrieb. Du bekommst eine fertige Lösung und eine kurze Einweisung."}},
+{"@type":"Question","name":"Wie lange dauert die Umsetzung?","acceptedAnswer":{"@type":"Answer","text":"Ein einfacher FAQ-Chatbot ist oft in wenigen Tagen startklar. Grössere Automationen (Termine, Leads, Prozesse) dauern je nach Umfang ein bis mehrere Wochen."}},
+{"@type":"Question","name":"Was kostet es wirklich?","acceptedAnswer":{"@type":"Answer","text":"Die Richtpreise dienen der Orientierung. Den verbindlichen Preis nennen wir nach dem kostenlosen Erstgespräch — abhängig von Umfang und angebundenen Tools. Keine versteckten Kosten."}},
+{"@type":"Question","name":"Wie steht es um den Datenschutz?","acceptedAnswer":{"@type":"Answer","text":"Wir arbeiten datenschutzbewusst und besprechen mit dir, welche Daten verarbeitet werden. Sensible Abläufe richten wir so ein, dass nur das Nötige genutzt wird."}},
+{"@type":"Question","name":"Ersetzt die KI meine Mitarbeitenden?","acceptedAnswer":{"@type":"Answer","text":"Nein — sie nimmt ihnen die Wiederholungsarbeit ab. Routinefragen und Standardabläufe laufen automatisch, das Team kümmert sich um das, was wirklich Menschen braucht."}}
+]}
+</script>
+<script>
+(function(){
+  var f=document.getElementById("f");
+  f.addEventListener("submit",function(){
+    var name=(document.getElementById("name").value||"").trim();
+    var firma=(document.getElementById("firma").value||"").trim();
+    var email=(document.getElementById("email").value||"").trim();
+    var branche=(document.getElementById("branche").value||"").trim();
+    var thema=(document.getElementById("thema").value||"").trim();
+    if(!name||!email||!thema){alert("Bitte Name, Kontakt und dein Anliegen ausfüllen.");return false;}
+    var body="Name: "+name+"\n"+"Firma: "+firma+"\n"+"Kontakt: "+email+"\n"+"Branche: "+branche+"\n\nAnliegen:\n"+thema+"\n\n— gesendet über abannews.com/ki-automation";
+    var url="mailto:hallo@abannews.com?subject="+encodeURIComponent("KI-Automation Anfrage — "+name+(firma?(" ("+firma+")"):""))+"&body="+encodeURIComponent(body);
+    document.getElementById("ok").style.display="block";
+    window.location.href=url;
+    return false;
+  });
+})();
+</script>
+</body>
+</html>
