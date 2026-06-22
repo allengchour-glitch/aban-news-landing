@@ -1504,3 +1504,14 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   Widget) → braucht echte Reviews (kommen mit Traffic). Mobile-Check + AI-Suche/Empfehlungen = optional via Apps.
 - **Lehre/Regel:** Startseite = A&O. Best-Practice-Reihenfolge: Hero(spezifisch)+CTA → USP/Differenzierer → Bestseller →
   TRUST → Produkt-Vielfalt → Kategorien → Abschluss-CTA. Trust IMMER sichtbar auf der Startseite.
+
+## 📌 2026-06-22 Teil 27 (📝 PRODUKTBESCHREIBUNGEN-OFFENSIVE — Multi-KI, katalogweit)
+- **„startseite und produktbeschreibung ist a und o"** → systematisch dünne/generische BigBuy-Produkttexte durch
+  **einzigartige, benefit-getriebene** Beschreibungen ersetzt: `automation/ai_product_descriptions.mjs`
+  (Multi-KI Gemini→Groq→DeepSeek→OpenAI, Tag-Filter `-tag:ls-ai-desc`, älteste-zuerst, Spec-Block + Trust erhalten).
+- **🔧 Schlüssel-Fix:** Gemini-2.5-flash `thinkingConfig.thinkingBudget:0` + maxTokens 1200 → vorher frassen Thinking-
+  Tokens das 600-Budget → ~58% leere Antworten/Skips. Nach Fix: **0 Skips, 100% Erfolg.**
+- **Stand:** ~940+ Produkte diese Session veredelt (Batches 100/300/500/500, je 0 Skips), Qualität spot-geprüft (Marken-
+  Uhren: einzigartige Intros, konkrete Bullets, EAN/Versand/Rückgabe-Block intakt). Läuft batchweise weiter bis Katalog durch.
+- **Lehre:** Bei Gemini-2.5-flash für kurze Texte IMMER `thinkingBudget:0` setzen, sonst leere `candidates`. Tool ist
+  idempotent (Tag `ls-ai-desc`) → beliebig oft nachlaufbar, trifft nur noch un-veredelte.
