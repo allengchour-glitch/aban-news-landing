@@ -136,7 +136,7 @@ footer a{color:var(--muted)}
   ids.forEach(function(i){F[i]=document.getElementById(i);});
   var code=document.getElementById("code");
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
-  function safeUrl(u){u=String(u).trim();return /^https?:\/\//i.test(u)?u:"";}
+  function safeUrl(u){u=String(u).trim();if(/[\s"'<>\\]/.test(u))return "";return /^https?:\/\//i.test(u)?u:"";}
   function domainOf(u){u=safeUrl(u);if(!u)return "";try{return new URL(u).hostname.replace(/^www\./,"");}catch(e){return "";}}
   function setImg(el,url){
     if(url){el.style.backgroundImage='url("'+url.replace(/["\\]/g,function(c){return "\\"+c;})+'")';el.textContent="";}
