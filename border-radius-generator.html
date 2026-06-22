@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Border-Radius-Generator — CSS abgerundete Ecken · aban news</title>
+<meta name="description" content="Kostenloser CSS-Border-Radius-Generator: abgerundete Ecken visuell einstellen (jede Ecke einzeln, auch elliptisch), Live-Vorschau und fertigen border-radius-Code kopieren. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/border-radius-generator.html">
+<meta property="og:title" content="Border-Radius-Generator — CSS abgerundete Ecken">
+<meta property="og:description" content="Abgerundete Ecken visuell (jede Ecke einzeln, elliptisch) — Live-Vorschau + CSS zum Kopieren. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/border-radius-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Border-Radius-Generator",
+"url":"https://abannews.com/border-radius-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Erzeugt CSS border-radius visuell mit Steuerung jeder Ecke (auch elliptisch), Live-Vorschau und Code zum Kopieren. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie funktioniert border-radius?","acceptedAnswer":{"@type":"Answer","text":"border-radius rundet die Ecken eines Elements. Du kannst alle vier Ecken gemeinsam oder einzeln steuern und mit zwei Werten je Ecke (horizontal/vertikal) auch elliptische Rundungen erzeugen. Werte gehen in Pixel oder Prozent."}},
+{"@type":"Question","name":"Wie mache ich einen Kreis?","acceptedAnswer":{"@type":"Answer","text":"Bei einem quadratischen Element ergibt border-radius: 50% einen perfekten Kreis. Mit unterschiedlichen Ecken-Werten entstehen organische Blob-Formen — der Generator zeigt beides live."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.stage{display:flex;align-items:center;justify-content:center;height:240px}
+.box{width:180px;height:160px;background:linear-gradient(135deg,var(--amber),var(--amber-dk));border:2px solid var(--amber-dk)}
+.opt{display:flex;align-items:center;gap:10px;margin:14px 0 6px;font-size:.85rem;color:var(--ink2);justify-content:center;flex-wrap:wrap}
+.opt label{display:flex;align-items:center;gap:6px}
+select{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+.ctrls{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:6px}
+@media(max-width:560px){.ctrls{grid-template-columns:1fr}}
+.fld label{font-size:.78rem;font-weight:700;color:var(--ink2)}
+.fld input{width:100%}
+.code{margin-top:16px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.95rem;background:var(--field);border:1px dashed var(--line);border-radius:9px;padding:12px;word-break:break-all;color:var(--amber-dk);font-weight:700}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Border-Radius</span> erzeugen</h1>
+    <p>Abgerundete Ecken visuell einstellen — alle gemeinsam oder jede Ecke einzeln, auch elliptisch. Live-Vorschau und fertiger <code>border-radius</code>-Code zum Kopieren. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Vom dezenten Button-Radius bis zur organischen Blob-Form — schieben, sehen, kopieren.</p>
+
+  <section class="panel" id="tool">
+    <div class="stage"><div class="box" id="box"></div></div>
+    <div class="opt">
+      <label>Einheit
+        <select id="unit"><option value="px">px</option><option value="%">%</option></select></label>
+      <label><input type="checkbox" id="link" checked> alle Ecken gleich</label>
+    </div>
+    <div class="ctrls" id="ctrls"></div>
+    <div class="code" id="code"></div>
+    <div class="row"><button type="button" class="btn" id="copy">📋 CSS kopieren</button></div>
+    <p class="note">Tipp: quadratisches Element + 50 % = Kreis. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Web &amp; Design.</p>
+    <p><a class="btn" href="/box-shadow-generator.html">Box-Shadow-Generator</a>
+      <a class="btn ghost" href="/css-verlauf-generator.html">CSS-Verlauf</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/box-shadow-generator.html">Box-Shadow</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var corners=[["tl","oben links"],["tr","oben rechts"],["br","unten rechts"],["bl","unten links"]];
+  var ctrls=document.getElementById("ctrls"), box=document.getElementById("box"), code=document.getElementById("code");
+  var unitSel=document.getElementById("unit"), link=document.getElementById("link");
+  var vals={tl:20,tr:20,br:20,bl:20}, css="";
+  function build(){
+    var u=unitSel.value;
+    var single=link.checked;
+    if(single){ var v=vals.tl; css="border-radius: "+v+u+";"; }
+    else { css="border-radius: "+vals.tl+u+" "+vals.tr+u+" "+vals.br+u+" "+vals.bl+u+";"; }
+    box.style.borderRadius=css.replace("border-radius: ","").replace(/;$/,"");
+    code.textContent=css;
+  }
+  function drawCtrls(){
+    ctrls.innerHTML="";
+    var list = link.checked ? [["tl","Radius (alle Ecken)"]] : corners;
+    list.forEach(function(c){
+      var d=document.createElement("div"); d.className="fld";
+      var max=unitSel.value==="%"?50:120;
+      d.innerHTML='<label>'+c[1]+': <span>'+vals[c[0]]+unitSel.value+'</span></label>';
+      var r=document.createElement("input"); r.type="range"; r.min=0; r.max=max; r.value=Math.min(vals[c[0]],max);
+      var span=d.querySelector("span");
+      r.addEventListener("input",function(){
+        if(link.checked){ vals.tl=vals.tr=vals.br=vals.bl=parseInt(r.value,10); }
+        else { vals[c[0]]=parseInt(r.value,10); }
+        span.textContent=r.value+unitSel.value; build();
+      });
+      d.appendChild(r); ctrls.appendChild(d);
+    });
+  }
+  link.addEventListener("change",function(){ drawCtrls(); build(); });
+  unitSel.addEventListener("change",function(){ var max=unitSel.value==="%"?50:120; ["tl","tr","br","bl"].forEach(function(k){ if(vals[k]>max)vals[k]=max; }); drawCtrls(); build(); });
+  document.getElementById("copy").addEventListener("click",function(){var b=this;if(css&&navigator.clipboard)navigator.clipboard.writeText(css).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1500);});});
+  drawCtrls(); build();
+})();
+</script>
+</body>
+</html>
