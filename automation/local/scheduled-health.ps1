@@ -27,11 +27,14 @@ try {
   if (Wait-Job $jb -Timeout 720) { Receive-Job $jb | Out-Null } else { Stop-Job $jb }
   Remove-Job $jb -Force
 } catch {}
-# 4) CLOUD-AN-Heartbeat pruefen + bei Stale (>15 Min) neu starten (wie WATCHDOG den Listener) -> Loop heilt sich selbst.
+# 4) FALLBACK CLOUD-AN nur wenn LuxeQueue (Schritt 5) noch NICHT existiert. Sobald der zuverlaessige
+# 15-Min-Task laeuft, NICHT mehr den 2-Min-Bat-Loop starten -> ~7x weniger Worker-Hits = schont das
+# Cloudflare-KV-Tageslimit (Alert 2026-06-22). LuxeQueue ersetzt CLOUD-AN + pc-listener als einziger Poller.
 try {
   $hb = "$repo\reports\heartbeat.json"; $stale = $true
-  if (Test-Path $hb) { try { $j = Get-Content $hb -Raw | ConvertFrom-Json; if (((Get-Date) - [datetime]$j.ts).TotalMinutes -lt 15) { $stale = $false } } catch {} }
-  if ($stale -and (Test-Path "$repo\automation\local\CLOUD-AN.bat")) {
+  if (Test-Path $hb) { try { $j = Get-Content $hb -Raw | ConvertFrom-Json; if (((Get-Date) - [datetime]$j.ts).TotalMinutes -lt 20) { $stale = $false } } catch {} }
+  $luxeQ = Get-ScheduledTask -TaskName "LuxeQueue" -ErrorAction SilentlyContinue
+  if ($stale -and -not $luxeQ -and (Test-Path "$repo\automation\local\CLOUD-AN.bat")) {
     Start-Process cmd "/c `"$repo\automation\local\CLOUD-AN.bat`"" -WindowStyle Minimized
   }
 } catch {}
