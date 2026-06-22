@@ -1480,3 +1480,14 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Sub-Regel-Fix (QA):** 5 Subs waren zu breit (TITLE CONTAINS generisch) → mit **Compound-Wörtern** verengt
   (rucksaecke-sport 403→5, bar-glaeser 241→56 etc.). `create_subcollections.mjs` Tool entsprechend aktualisiert.
   **Lehre: Smart-Sub-Rule braucht spezifische Compound-Wörter (sportrucksack), nicht generische (sport).**
+
+## ⭐📌 STEHENDE REGEL (User 2026-06-22): „Struktur-Verbesserung AUTOMATISCH IMMER"
+**Dauerauftrag: Bei jeder Session/Welle die Katalog-STRUKTUR regelmässig + autonom verbessern — ohne dass der User fragt:**
+1. **Unterkategorien** für grosse Collections (>~120 Produkte) anlegen/verfeinern via `create_subcollections.mjs`
+   (Smart-Rule TITLE CONTAINS, IMMER spezifische Compound-Wörter wie „sportrucksack", nie generisch „sport").
+2. **Subs auffindbar machen** — IMMER ins Menü (Dropdown unter Parent) UND in den Filter-Hub `/pages/marken-kategorien`.
+   Sonst sind sie SEO-/UX-tot (Lehre Ratgeber-Blog: verwaist = nutzlos).
+3. **QA:** neue Subs auf Produktzahl prüfen (0 leer? nicht über-breit? — Count >> Parent = Regel zu generisch → verengen).
+4. **Big Collections ohne Subs** identifizieren (z.B. damen-mode 852, premium 2447, schmuck) → unterteilen gegen Scrollen.
+5. **Storefront-Facetten-Filter** bleiben S&D-UI (kein API) → der Filter-Hub + Menü-Subs sind unser Filter-Ersatz, den pflege ich.
+**= „mache das automatisch immer" — Struktur-Pflege ist ab jetzt fester Teil jeder Dropship-Session, nicht auf Anfrage.**
