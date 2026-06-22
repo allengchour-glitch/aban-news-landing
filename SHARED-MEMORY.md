@@ -1491,3 +1491,16 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 4. **Big Collections ohne Subs** identifizieren (z.B. damen-mode 852, premium 2447, schmuck) → unterteilen gegen Scrollen.
 5. **Storefront-Facetten-Filter** bleiben S&D-UI (kein API) → der Filter-Hub + Menü-Subs sind unser Filter-Ersatz, den pflege ich.
 **= „mache das automatisch immer" — Struktur-Pflege ist ab jetzt fester Teil jeder Dropship-Session, nicht auf Anfrage.**
+
+## 📌 2026-06-22 Teil 26 (🏠 Startseite — Best-Practice-Audit + Trust-Banner)
+- **Recherche E-Commerce-Startseite 2026:** Above-the-fold spezifische Botschaft+CTA · **Trust-Signale ON HOMEPAGE** (Badges/
+  Garantien VOR Checkout) · Mobile-first (60%+ Umsatz) · „spezifisch/vertrauenswürdig/nützlich/menschlich".
+- **Audit:** Startseite schon stark (Hero+CTA, Selbst-gestalten-USP, Topseller/Bestseller/Neu/Geschenke, Kategorien, Abschluss-
+  Banner). **Lücke: kein sichtbares Trust-Element auf der Seite** (nur Announcement-Bar). → **Trust-Banner** (`banner_trust`)
+  nach Topseller eingefügt: Schweizer Boutique · Gratis-Versand 65 · 30T Rückgabe · TWINT/Karte + „Warum LuxeStyle?".
+- **Startseiten-Struktur jetzt (11):** Hero → WM → Selbst-gestalten → Topseller → **Trust** → Top-10-Bestseller → Neu →
+  Highlights → Premium-Geschenke → Kategorie-Grid(12) → Marken&Kategorien-Banner.
+- **Offen (Best Practice, traffic-/customizer-abhängig):** sichtbare KUNDEN-BEWERTUNGEN/Social-Proof auf Startseite (Judge.me-
+  Widget) → braucht echte Reviews (kommen mit Traffic). Mobile-Check + AI-Suche/Empfehlungen = optional via Apps.
+- **Lehre/Regel:** Startseite = A&O. Best-Practice-Reihenfolge: Hero(spezifisch)+CTA → USP/Differenzierer → Bestseller →
+  TRUST → Produkt-Vielfalt → Kategorien → Abschluss-CTA. Trust IMMER sichtbar auf der Startseite.
