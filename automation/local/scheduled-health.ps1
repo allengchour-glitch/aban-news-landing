@@ -19,7 +19,14 @@ git push origin $br 2>$null
 # dagegen verlaesslich + zieht den Code -> wir ziehen die Befehls-Queue HIER mit. Entkoppelt das Abarbeiten
 # vom fragilen Loop. cmd-poll macht eigenes Lock/Pull/Push -> nach unserem Push aufrufen (kein Git-Interleave).
 # Watchdog in cmd-poll/ai-browser verhindert, dass ein haengender Bot uns blockiert.
-try { & powershell -ExecutionPolicy Bypass -File "$repo\automation\local\cmd-poll.ps1" } catch {}
+# ZEIT-BOX (FIX 2026-06-22): falls cmd-polls eigenes 'git pull' oder ein Bot haengt, darf das den Health-Task
+# NICHT blockieren -> in einen Job mit 12-Min-Timeout kapseln, danach hart beenden. So erreicht der Task
+# IMMER Schritt 4 (CLOUD-AN-Neustart) und der naechste Zyklus versucht es frisch.
+try {
+  $jb = Start-Job -ScriptBlock { param($p) & powershell -ExecutionPolicy Bypass -File $p } -ArgumentList "$repo\automation\local\cmd-poll.ps1"
+  if (Wait-Job $jb -Timeout 720) { Receive-Job $jb | Out-Null } else { Stop-Job $jb }
+  Remove-Job $jb -Force
+} catch {}
 # 4) CLOUD-AN-Heartbeat pruefen + bei Stale (>15 Min) neu starten (wie WATCHDOG den Listener) -> Loop heilt sich selbst.
 try {
   $hb = "$repo\reports\heartbeat.json"; $stale = $true
