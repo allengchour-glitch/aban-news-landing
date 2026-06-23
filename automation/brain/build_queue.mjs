@@ -28,8 +28,10 @@ const POOLS = path.join(ROOT, 'automation', 'brain', 'pools.json');
 const OUT = path.join(ROOT, 'automation', 'cloudflare', 'luxe-poster', 'src', 'queue.json');
 // TRUST-Zeilen (Recherche 2026-06-19 „Vertrauen VOR Verkauf"): WAHR, keine Fake-Reviews. Bild + Reel.
 const TRUST_LINES = [
+  // QUALITÄTSFÜHRER-Signal (YouTube-Lehre: nicht Preiskampf, sondern Qualität/Trust differenzieren).
+  '💎 Wasserfescht-Garantie · lauft nid a oder Geld zrugg · 🇨🇭 Schweizer Shop',
   '🇨🇭 Schweizer Shop · TWINT/Charte · 30 Tage Rückgab · gratis ab CHF 65',
-  '✅ Sicher zahle mit TWINT · 30 Tage Rückgaberächt · schnälle CH-Versand',
+  '✅ Anlauffrei & hypoallergä · sichä zahle mit TWINT · schnälle CH-Versand',
   '🤍 100% sichere Bstellig · TWINT & Charte · gratis Versand ab CHF 65 · 🇨🇭',
 ];
 const DRY = process.argv.includes('--dry');
