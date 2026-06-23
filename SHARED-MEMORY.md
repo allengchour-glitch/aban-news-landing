@@ -1573,3 +1573,13 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   Feed/Bilder/Alt-Texte/Kaufbarkeit). **Es gibt nichts On-Site mehr, das Käufe blockiert.** Einziger Hebel = REICHWEITE
   (User: TikTok-Conversion-Kampagne + Budget; Cloudflare R2+Keys optional fürs Social-Posten). NICHT weiter On-Site „optimieren
   ins Leere" — der Engpass ist verifiziert extern.
+
+## 📌 2026-06-23 Teil 34 (🔗 INTERNE VERLINKUNG — Kategorie-Cross-Links für Google-Ranking)
+- **`automation/collection_crosslinks.mjs`** (neu): liest das Hauptmenü, bildet Geschwister-Gruppen, hängt an jede
+  Kategorie-Collection einen **„👉 Auch beliebt: …"-Block** mit 4 internen Links zu Schwester-Collections derselben
+  Menü-Gruppe. Idempotent (Marker `<!--ls-xlink-->`), additiv zur bestehenden Beschreibung.
+- **Live gesetzt: 116 Cross-Links** über 11 Menü-Gruppen (Frauen/Herren/Schmuck/Wohnen/Trends/Garten/Sale/Marken …),
+  0 fehlende Collections. Spot-Check premium-schmuck ✅ (sauber nach der Premium-Beschreibung gerendert).
+- **Nutzen:** Internes Linking verteilt Link-Equity → Google rankt Kategorie-Seiten besser + crawlt tiefer; Besucher
+  bleiben im Shop (weniger Bounce). Ergänzt Menü + Filter-Hub als 3. Verlinkungs-Ebene.
+- **Nachlaufbar:** bei neuen Collections/Menü-Änderungen erneut laufen → setzt nur fehlende (Marker-idempotent).
