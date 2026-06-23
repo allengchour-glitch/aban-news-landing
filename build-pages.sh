@@ -25,6 +25,10 @@ mkdir -p _site
 # (suchmaschine.html) immer alle neuen Seiten findet. Tolerant; bricht den Build nicht ab.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_search_index.py ) || echo "build_search_index übersprungen"
 
+# Kaufberater-Pillar-Hub (kaufberater-schweiz.html) aus allen *-kaufen-schweiz.html neu bauen
+# (Pillar-Cluster-SEO: alle Ratgeber ≤2 Klicks von der Startseite). Tolerant.
+( command -v python3 >/dev/null 2>&1 && python3 tools/build_kaufberater_hub.py ) || echo "build_kaufberater_hub übersprungen"
+
 # Portabel (kein rsync nötig): mit tar kopieren und dabei ausschließen.
 tar -cf - \
   --exclude='./.git' \
