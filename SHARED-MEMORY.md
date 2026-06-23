@@ -1637,3 +1637,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   Dubletten-Titel prüfen** (gleiche Quell-Namen → gleicher Gemini-Titel).
 - **Nächste Wellen möglich:** 41 Kategorien im Importer, riesige Pools. Gute frische Bereiche: gaming/audio/anime/phone/uhren/
   beauty/home/fitness/velo/socken/caps/hoodies/schuhe. PER hochsetzen für mehr pro Lauf (Rate-Limit GAP≥1500 beachten).
+
+## 📌 2026-06-23 Teil 40 (🛒 BIGBUY-WELLE 2 +36 → 51 neue Produkte heute)
+- **+36 ACTIVE** (CATS=beauty,home,fitness,velo,caps,schuhe,socken,gaming,audio · PER=4): echte Marken in Beauty
+  (Dr. Hauschka Nachtserum, Kérastase Haarserum, Maybelline Lippenstift, Babaria Vitamin-C) · Gaming-Kopfhörer Weiss/Schwarz ·
+  Sport-/Sneaker-Socken · Velo · Caps · Schuhe · Wohndeko · Fitness. Ledger 2072→2108.
+- **Voll-Polish:** 36 einzigartige Beschreibungen · 0 SEO-Lücken (Importer setzt SEO jetzt selbst ✓) · 36× custom_product ·
+  36× google_product_category · 146 Alt-Texte. QA newest 51: **0 ohne Bild · 0 FAILED · 0 <2 Kanäle · 0 Dubletten-Titel.**
+- **HEUTE GESAMT: 51 neue geile Produkte** (Welle 1: 15 + Welle 2: 36), alle sofort verkaufsfertig. Aktive Produkte 4079→4130.
+- **Importer-Verbesserung bestätigt:** setzt seo selbst (0 Lücken bei Welle 2) → Polish-Chain nur noch Beschreibung/Alt/Kategorie nötig.
+- **Skalierung:** BigBuy (313k) trägt viele weitere Wellen. Pattern pro Welle: import (CATS, PER, GAP≥1500, LIVE) → Ledger committen
+  → Polish-Chain (ai_product_descriptions LIMIT≥Anzahl · seo_gap_fix · google_feed_fix · gmc_category_fix · alt_text_fill) →
+  Dubletten-Titel-Check → QA. Krumme Preise/Dubletten-Titel danach prüfen (Gemini gibt gleichen Quell-Namen gleichen Titel).
