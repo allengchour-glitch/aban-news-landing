@@ -83,7 +83,7 @@ function Run-Cmd($c) {
   }
 }
 
-Write-Host "LuxeStyle PC-Listener laeuft. Pollt $WORKER alle 90s. (Fenster offen lassen / minimieren.)"
+Write-Host "LuxeStyle PC-Listener laeuft. Pollt $WORKER alle 300s. (Fenster offen lassen / minimieren.)"
 git pull origin claude/luxestyle-product-CizQ6 2>$null
 while ($true) {
   try { Set-Content -Path $BEAT -Value (Get-Date -Format o) } catch {}   # Heartbeat fuer den Watchdog
@@ -94,5 +94,5 @@ while ($true) {
       foreach ($item in $r.commands) { Run-Cmd $item.cmd }
     }
   } catch { Write-Host "[$(Get-Date -Format HH:mm:ss)] Poll-Fehler (ignoriert): $($_.Exception.Message)" }
-  Start-Sleep -Seconds 90
+  Start-Sleep -Seconds 300   # 90s->300s (Cloudflare-Tageslimit-Schutz: ~288 statt 960 Polls/Tag, –70% Last)
 }
