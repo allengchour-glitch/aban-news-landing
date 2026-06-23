@@ -1601,3 +1601,12 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Gefixt:** 29 Varianten-Preise auf .90 gerundet (34.33→34.90, 14.93→14.90 …). Audit prüfte nur 1. Variante, Fix erfasste
   ALLE Varianten (Anzughose hat 20 Grössen). **Katalog jetzt 100% charm-priced (.90).** Krumme Preise senken Kaufbereitschaft.
 - **Lehre:** BigBuy/EUR-Importe können krumme CHF-Preise erzeugen → bei neuen Importen Preis auf .90 runden (Importer prüfen).
+
+## 📌 2026-06-23 Teil 37 (🏷️ TAG-BACKFILL — 115 untagged Produkte erschlossen)
+- **Audit:** productType 100% gesetzt (0 Lücken). **115 aktive Produkte ganz ohne Tags** (ältere kuratierte LuxeStyle-
+  Artikel) → unsichtbar in Tag-Smart-Collections (Gender „Für Sie/Ihn", Kategorie).
+- **`automation/tag_backfill.mjs`** (neu, ADD-only, konservativ): leitet Gender (damen/herren) + 1 Kategorie-Tag aus
+  productType+Titel ab, lässt Mehrdeutiges ungetaggt. **88 getaggt · 27 bewusst gelassen.**
+- **🔧 DRY-Review fing 2 Mis-Tags ab:** Schlüsselanhänger→nicht „schmuck", Mädchen-Hoodie „Sportswear"→nicht „fitness"
+  (bare „sport" raus aus fitness-Regex). **Lehre: Tag-Mapping IMMER erst DRY sichten** — Substring-Treffer wie „Sportswear"→fitness.
+- Ergänzt: alle aktiven Produkte haben jetzt productType + (fast alle) sinnvolle Tags → bessere Filter/Collection-Abdeckung.
