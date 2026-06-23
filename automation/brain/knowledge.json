@@ -1,110 +1,110 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23",
+  "updated": "2026-06-23T11:12:19.940Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
-        "uses_total": 169,
-        "views_wsum": 61165,
-        "eng_wsum": 8.366900000000001,
-        "last_avg": 376
+        "uses_total": 190,
+        "views_wsum": 69124,
+        "eng_wsum": 9.356000000000002,
+        "last_avg": 379
       },
       "#schweiz": {
-        "uses_total": 91,
-        "views_wsum": 30353,
-        "eng_wsum": 5.3018,
-        "last_avg": 350
+        "uses_total": 102,
+        "views_wsum": 34225,
+        "eng_wsum": 5.9794,
+        "last_avg": 352
       },
       "#ootdschweiz": {
-        "uses_total": 103,
-        "views_wsum": 31539,
-        "eng_wsum": 6.0082,
-        "last_avg": 320
+        "uses_total": 122,
+        "views_wsum": 38892,
+        "eng_wsum": 6.715000000000001,
+        "last_avg": 387
       },
       "#fyp": {
-        "uses_total": 86,
-        "views_wsum": 28353,
-        "eng_wsum": 3.8878,
-        "last_avg": 349
+        "uses_total": 104,
+        "views_wsum": 36165,
+        "eng_wsum": 4.4116,
+        "last_avg": 434
       },
       "#foryou": {
-        "uses_total": 62,
-        "views_wsum": 20608,
-        "eng_wsum": 2.9903999999999997,
-        "last_avg": 359
+        "uses_total": 76,
+        "views_wsum": 26642,
+        "eng_wsum": 3.3977999999999997,
+        "last_avg": 431
       },
       "#schweizmode": {
-        "uses_total": 76,
-        "views_wsum": 12928,
-        "eng_wsum": 4.7778,
-        "last_avg": 181
+        "uses_total": 93,
+        "views_wsum": 18708,
+        "eng_wsum": 5.3507,
+        "last_avg": 340
       },
       "#sommerkleid": {
-        "uses_total": 60,
-        "views_wsum": 22348,
-        "eng_wsum": 2.2140000000000004,
-        "last_avg": 373
+        "uses_total": 68,
+        "views_wsum": 25340,
+        "eng_wsum": 2.4780000000000006,
+        "last_avg": 374
       },
       "#fashionschweiz": {
-        "uses_total": 55,
-        "views_wsum": 13495,
-        "eng_wsum": 3.5099000000000005,
-        "last_avg": 258
+        "uses_total": 62,
+        "views_wsum": 15322,
+        "eng_wsum": 3.8844000000000003,
+        "last_avg": 261
       },
       "#sommermode": {
-        "uses_total": 40,
-        "views_wsum": 2070,
-        "eng_wsum": 4.1425,
-        "last_avg": 56
+        "uses_total": 45,
+        "views_wsum": 2360,
+        "eng_wsum": 4.641,
+        "last_avg": 58
       },
       "#ootd": {
-        "uses_total": 32,
-        "views_wsum": 1704,
-        "eng_wsum": 2.1428,
-        "last_avg": 54
+        "uses_total": 36,
+        "views_wsum": 1928,
+        "eng_wsum": 2.3943999999999996,
+        "last_avg": 56
       },
       "#cardigan": {
-        "uses_total": 24,
-        "views_wsum": 8628,
-        "eng_wsum": 1.17,
-        "last_avg": 363
+        "uses_total": 27,
+        "views_wsum": 9726,
+        "eng_wsum": 1.3491,
+        "last_avg": 366
       },
       "#sommermode2026": {
-        "uses_total": 24,
-        "views_wsum": 4182,
-        "eng_wsum": 1.719,
-        "last_avg": 180
+        "uses_total": 27,
+        "views_wsum": 4734,
+        "eng_wsum": 1.8954,
+        "last_avg": 184
       },
       "#bohostyle": {
-        "uses_total": 16,
-        "views_wsum": 12600,
-        "eng_wsum": 0.0912,
-        "last_avg": 790
+        "uses_total": 18,
+        "views_wsum": 14182,
+        "eng_wsum": 0.1024,
+        "last_avg": 791
       },
       "#sommerschuhe": {
-        "uses_total": 16,
-        "views_wsum": 4512,
-        "eng_wsum": 0.25479999999999997,
-        "last_avg": 285
+        "uses_total": 18,
+        "views_wsum": 5088,
+        "eng_wsum": 0.28579999999999994,
+        "last_avg": 288
       },
       "#schmuck": {
-        "uses_total": 16,
-        "views_wsum": 3108,
-        "eng_wsum": 0.547,
-        "last_avg": 196
+        "uses_total": 18,
+        "views_wsum": 3502,
+        "eng_wsum": 0.6128,
+        "last_avg": 197
       },
       "#accessoires": {
-        "uses_total": 16,
-        "views_wsum": 820,
-        "eng_wsum": 1.2737999999999998,
-        "last_avg": 52
+        "uses_total": 18,
+        "views_wsum": 930,
+        "eng_wsum": 1.4209999999999998,
+        "last_avg": 55
       },
       "#swissfashion": {
-        "uses_total": 16,
-        "views_wsum": 744,
-        "eng_wsum": 1.4189999999999998,
-        "last_avg": 47
+        "uses_total": 18,
+        "views_wsum": 840,
+        "eng_wsum": 1.5891999999999997,
+        "last_avg": 48
       },
       "#selbstgestalten": {
         "uses_total": 4,
@@ -185,52 +185,52 @@
         "last_avg": 326
       },
       "#swisspremium": {
-        "uses_total": 14,
-        "views_wsum": 10470,
-        "eng_wsum": 0.09240000000000001,
-        "last_avg": 750
+        "uses_total": 16,
+        "views_wsum": 11974,
+        "eng_wsum": 0.10560000000000001,
+        "last_avg": 752
       },
       "#premiumlifestyle": {
-        "uses_total": 14,
-        "views_wsum": 10470,
-        "eng_wsum": 0.09240000000000001,
-        "last_avg": 750
+        "uses_total": 16,
+        "views_wsum": 11974,
+        "eng_wsum": 0.10560000000000001,
+        "last_avg": 752
       },
       "#luxestylech": {
-        "uses_total": 14,
-        "views_wsum": 10470,
-        "eng_wsum": 0.09240000000000001,
-        "last_avg": 750
+        "uses_total": 16,
+        "views_wsum": 11974,
+        "eng_wsum": 0.10560000000000001,
+        "last_avg": 752
       },
       "#wellness": {
-        "uses_total": 14,
-        "views_wsum": 10054,
-        "eng_wsum": 0.17479999999999998,
-        "last_avg": 720
+        "uses_total": 16,
+        "views_wsum": 11502,
+        "eng_wsum": 0.2012,
+        "last_avg": 724
       },
       "#aromatherapyathome": {
-        "uses_total": 7,
-        "views_wsum": 7760,
-        "eng_wsum": 0.03780000000000001,
-        "last_avg": 1112
+        "uses_total": 8,
+        "views_wsum": 8875,
+        "eng_wsum": 0.04320000000000001,
+        "last_avg": 1115
       },
       "#aromatherapie": {
-        "uses_total": 7,
-        "views_wsum": 7760,
-        "eng_wsum": 0.03780000000000001,
-        "last_avg": 1112
+        "uses_total": 8,
+        "views_wsum": 8875,
+        "eng_wsum": 0.04320000000000001,
+        "last_avg": 1115
       },
       "#aroma": {
-        "uses_total": 7,
-        "views_wsum": 7760,
-        "eng_wsum": 0.03780000000000001,
-        "last_avg": 1112
+        "uses_total": 8,
+        "views_wsum": 8875,
+        "eng_wsum": 0.04320000000000001,
+        "last_avg": 1115
       },
       "#smartdiffuser": {
-        "uses_total": 7,
-        "views_wsum": 7760,
-        "eng_wsum": 0.03780000000000001,
-        "last_avg": 1112
+        "uses_total": 8,
+        "views_wsum": 8875,
+        "eng_wsum": 0.04320000000000001,
+        "last_avg": 1115
       },
       "#aestheticroom": {
         "uses_total": 7,
@@ -239,49 +239,67 @@
         "last_avg": 1112
       },
       "#spaathome": {
-        "uses_total": 7,
-        "views_wsum": 7760,
-        "eng_wsum": 0.03780000000000001,
-        "last_avg": 1112
+        "uses_total": 8,
+        "views_wsum": 8875,
+        "eng_wsum": 0.04320000000000001,
+        "last_avg": 1115
       },
       "#premiumwellness": {
-        "uses_total": 7,
-        "views_wsum": 7760,
-        "eng_wsum": 0.03780000000000001,
-        "last_avg": 1112
+        "uses_total": 8,
+        "views_wsum": 8875,
+        "eng_wsum": 0.04320000000000001,
+        "last_avg": 1115
       },
       "#luxurylife": {
         "uses_total": 7,
         "views_wsum": 7760,
         "eng_wsum": 0.03780000000000001,
         "last_avg": 1112
+      },
+      "#sneakers": {
+        "uses_total": 2,
+        "views_wsum": 1108,
+        "eng_wsum": 0.0084,
+        "last_avg": 554
+      },
+      "#swissmade": {
+        "uses_total": 2,
+        "views_wsum": 1106,
+        "eng_wsum": 0.0172,
+        "last_avg": 553
+      },
+      "#herrenmode": {
+        "uses_total": 2,
+        "views_wsum": 616,
+        "eng_wsum": 0.0036,
+        "last_avg": 308
       }
     },
     "hook_types": {
       "generisch": {
-        "views_sum": 65385,
-        "n": 210,
-        "eng_sum": 10.38300000000001
+        "views_sum": 77805,
+        "n": 243,
+        "eng_sum": 11.652100000000013
       },
       "preis": {
-        "views_sum": 7847,
-        "n": 48,
-        "eng_sum": 3.8433999999999995
+        "views_sum": 8852,
+        "n": 54,
+        "eng_sum": 4.3233
       },
       "preis_vergleich": {
-        "views_sum": 5783,
-        "n": 15,
-        "eng_sum": 0.8742000000000002
+        "views_sum": 6616,
+        "n": 17,
+        "eng_sum": 0.9591000000000003
       },
       "mundart": {
-        "views_sum": 6372,
-        "n": 8,
-        "eng_sum": 0.079
+        "views_sum": 7176,
+        "n": 9,
+        "eng_sum": 0.089
       },
       "frage_cta": {
-        "views_sum": 825,
-        "n": 16,
-        "eng_sum": 1.0854
+        "views_sum": 933,
+        "n": 18,
+        "eng_sum": 1.2147
       }
     },
     "kpi_history": [
@@ -380,6 +398,18 @@
         "avg_views": 301,
         "eng": 0.0551,
         "dur": 16.6
+      },
+      {
+        "report": "tiktok_luxestyle.ch_2026-06-23.json",
+        "date": "2026-06-23",
+        "videos": 44,
+        "views": 15170,
+        "likes": 194,
+        "shares": 0,
+        "comments": 5,
+        "avg_views": 344,
+        "eng": 0.0448,
+        "dur": 16.3
       }
     ],
     "reports_ingested": [
@@ -390,7 +420,8 @@
       "tiktok_luxestyle.ch_2026-06-16.json",
       "tiktok_luxestyle.ch_2026-06-17.json",
       "tiktok_luxestyle.ch_2026-06-18.json",
-      "tiktok_luxestyle.ch_2026-06-19.json"
+      "tiktok_luxestyle.ch_2026-06-19.json",
+      "tiktok_luxestyle.ch_2026-06-23.json"
     ]
   },
   "rules": {
@@ -1245,7 +1276,15 @@
     "tiktok_marketing_api_setup_2026": "TIKTOK MARKETING API SETUP (Agent 2026-06-23, Doku dropship/TIKTOK-MARKETING-API-SETUP.md): Fuer Klicks/Kosten/Conversions lesen. WICHTIG: Marketing API (business-api.tiktok.com/open_api/v1.3, Header Access-Token) != Content-Posting-API (luxe-App, developers.tiktok.com, Bearer) = andere Familie! Schritte: business-api.tiktok.com/portal -> App erstellen (Marketing API Produkt) -> App ID+Secret -> Scopes Ads-Management+Reporting -> OAuth (Advertiser-Auth-URL -> Authorize -> auth_code Einweg/Minuten) -> POST oauth2/access_token -> access_token+advertiser_ids+refresh_token(~1J). Lesen: report/integrated/get (spend/clicks/cpc/conversion/complete_payment = Pixel-attribuiert). SANDBOX sofort ohne Approval (Code testen); Produktion App-Review ~paar Tage-2 Wochen. ENV: TIKTOK_APP_ID/SECRET/REDIRECT_URI/ACCESS_TOKEN/REFRESH_TOKEN/ADVERTISER_ID. SOBALD Token+advertiser_id in VPS-.env -> CizQ6 baut tiktok-stats.mjs (taeglich -> Metafeld luxe.tiktok_stats -> autonom lesbar). REIHENFOLGE: erst Kampagne live (sonst 0 Daten), dann API. TOP-FALLE: luxe-App taugt NICHT fuers Reporting (falsche API-Familie).",
     "tiktok_stats_vorgebaut_2026": "VORBEREITET 2026-06-23 (User: API spaeter, bis dann alles vorbereiten): automation/vps/tiktok-stats.mjs PRE-GEBAUT + in run-api-jobs.sh eingehaengt (no-op-safe, skippt ohne TIKTOK_ACCESS_TOKEN). Zieht via Marketing API report/integrated/get die letzten 7T (spend/clicks/impr/conversion/complete_payment) -> stempelt Metafeld luxe.tiktok_stats -> CizQ6 liest Klicks+Kosten dann autonom. AKTIVIERUNG: nur TIKTOK_ACCESS_TOKEN + TIKTOK_ADVERTISER_ID in VPS /opt/luxe/.env eintragen, Rest laeuft taeglich 04:00 von selbst. Setup-Anleitung: dropship/TIKTOK-MARKETING-API-SETUP.md. Recherche-Status: gesaettigt (16 Themen, 254 Regeln) -> Fokus jetzt Infrastruktur-Vorbereitung statt redundanter Recherche.",
     "praktiker_dropship_tipps_2026": "GROUND-LEVEL DROPSHIP-LEHREN (Reddit/Foren/Praktiker, Agent 2026-06-23). NEU/CONTRARIAN: (1) 🔥 KAUF AUF RECHNUNG (Rechnung/QR-Bill) = DAS Schweizer Trust-Signal, sogar > TWINT - no-name-Shop ohne Rechnung verliert vorsichtige Kaeufer am Checkout. = TOP-Hebel (nicht nice-to-have), Klarna haben wir, Swissbilling/QR-Bill noch staerker. (2) 🔥 ERSTE VERKAEUFE kommen aus NISCHEN-COMMUNITIES (echt hilfreich sein in FB-Gruppen/Reddit/Discord) + Freunde/Familie als legit erste Kaeufer zum Review-Seeden - NICHT aus Ads. Meistgenannte How-I-got-sale-1-Antwort. (3) 🔥 EINFACHE/SCHNELLE Seiten konvertieren > fancy Themes (Amazon-Stil, dicht, schnell; ueber-designt schadet Trust/Speed). (4) Differenzierung = Verpackung + Dankeskarte + schneller menschlicher Support, NICHT mehr SKUs. (5) Wenn nicht in ~5 Tagen lieferbar -> nicht launchen (Kaeufer bouncen auf 20-30T; CH/EU-Lager-Ware bewerben). (6) Zoll/Import-MwSt transparent ODER nur CH-schnell-Ware bewerben (sonst Chargebacks). (7) Schweizer kaufen zwar bei auslaendischen Shops, aber over-signal noetig: Schweizer/kein-Zoll/schnell. (8) TikTok-ORGANIK = Testfeld, erst zahlen wenn >=3-5 Organik-Videos 1000 Views klaren. (9) Margen 10-30% nicht 5x -> auf Identitaet/Marke/Service konkurrieren, nicht Preis (Temu/Shein gewinnen Preis). (10) Zeit-bis-1.-Verkauf realistisch ~2 Monate konsistente Organik in EINER Nische. BESTAETIGT unsere Diagnose: 0.25% ATC = Traffic-Qualitaet + simplere Seiten, nicht mehr Design. TOP-3-AKTION: Rechnung-Hebel + Community/Freunde-Seeding + schneller Versand/Transparenz.",
-    "reel_cover_schwarz_fix_2026": "SCHWARZES REEL-COVER FIX (User 2026-06-23, IG-Grid hatte 2 schwarze Vorschaubilder: 5/43 Views vs 25-37 bei echten Covern). Ursache: Reels faden aus Schwarz ein (Marken-Intro) + IG nimmt Frame 0 = schwarz als Cover. FIX im Worker (automation/cloudflare/luxe-poster/src/index.js, REELS-Branch): thumb_offset:2000 = Cover bei ~2s, ueberspringt Intro. Gilt fuer ALLE kuenftigen IG-Reels ab naechstem wrangler deploy. BESTEHENDE schwarze Reels: API kann Cover veroeffentlichter Reels NICHT aendern -> User in IG-App: Reel -> Bearbeiten -> Cover -> Produkt-Frame waehlen (~20s/Reel). Kein Account-Schaden, aber kostet Views (leeres Grid = weniger Klicks). Render-Lehre: Intros kurz, nie >1s rein schwarz."
+    "reel_cover_schwarz_fix_2026": "SCHWARZES REEL-COVER FIX (User 2026-06-23, IG-Grid hatte 2 schwarze Vorschaubilder: 5/43 Views vs 25-37 bei echten Covern). Ursache: Reels faden aus Schwarz ein (Marken-Intro) + IG nimmt Frame 0 = schwarz als Cover. FIX im Worker (automation/cloudflare/luxe-poster/src/index.js, REELS-Branch): thumb_offset:2000 = Cover bei ~2s, ueberspringt Intro. Gilt fuer ALLE kuenftigen IG-Reels ab naechstem wrangler deploy. BESTEHENDE schwarze Reels: API kann Cover veroeffentlichter Reels NICHT aendern -> User in IG-App: Reel -> Bearbeiten -> Cover -> Produkt-Frame waehlen (~20s/Reel). Kein Account-Schaden, aber kostet Views (leeres Grid = weniger Klicks). Render-Lehre: Intros kurz, nie >1s rein schwarz.",
+    "mobile_leak_verifiziert_2026_06_23": [
+      "ECHTE DATEN 14T (2026-06-23): 4773 Sess, ATC 0.36%. Mobil 4512 Sess->8 ATC=0.18% vs Desktop 260->9=3.46% = Mobil ~19x schlechter, 94% Traffic mobil.",
+      "ENTWARNUNG/KORREKTUR: Mobile-PDP ist NICHT kaputt. Live iPhone-Fetch (luxestyle.ch/products/...): HTTP200, ATC-Button da (In den Warenkorb), Preis CHF sichtbar, STICKY-ATC EXISTIERT bereits (cart-summary-sticky, 21x sticky), Pixel D8EKVR feuert (dataSharingState=optimized, NICHT consent-blockiert).",
+      "Dropship-Stock: tracksInventory=false -> totalInventory:0 ist NORMAL (immer kaufbar), KEIN OOS-Problem. Nicht mehr als Leak fehldeuten.",
+      "ECHTER Leak = (1) Low-Intent Mobile-Social-Traffic + (2) TRUST: alle 6 Frauen-Mode-Top-Produkte (top_products.csv) haben 0 Reviews (judgeme reviews_count=null), waehrend Store 242 Reviews/4.61* hat (auf ALTEN Produkten). Social schickt Traffic auf 0-Stern-Seiten.",
+      "MEINE-LANE-FIX (Social): Posts auf bewertete Seiten lenken ODER Captions tragen Trust-Signale (Gratis-Versand ab 65, 30T-Rueckgabe, TWINT). Keine Fake-Reviews (verboten).",
+      "THEME/USER-FIX: Judge.me-Review-Import PRIORITAER auf die Frauen-Mode-Top-Produkte (Handle-Liste in SHARED-MEMORY), nicht auf alte Haus/Garten-Artikel. Sticky-ATC ist schon erledigt -> naechster Theme-Hebel = Reviews-Anzeige + Mobile-Speed (PDP-HTML 526KB)."
+    ]
   },
   "decisions": [
     {
@@ -1301,6 +1340,11 @@
     {
       "date": "2026-06-19",
       "change": "Pools v2 aus 8 Reports abgeleitet (Bayes + Hook-Typ-Lernen).",
+      "evidence": "Top-Tag #aromatherapyathome; bester Hook „mundart\" (Ø 797V)"
+    },
+    {
+      "date": "2026-06-23",
+      "change": "Pools v2 aus 9 Reports abgeleitet (Bayes + Hook-Typ-Lernen).",
       "evidence": "Top-Tag #aromatherapyathome; bester Hook „mundart\" (Ø 797V)"
     }
   ],

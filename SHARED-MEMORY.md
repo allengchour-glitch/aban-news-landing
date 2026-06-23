@@ -1,5 +1,16 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🔬 VERIFIZIERTER DATEN-FUND (CizQ6 2026-06-23) — Mobile-Leak seziert + KORREKTUREN für Theme-Session
+**Echte Daten 14T:** 4773 Sess · ATC 0.36% · 1 Checkout-Abschluss (= alter User-Testkauf). **Mobil 4512→8 ATC = 0.18% vs Desktop 260→9 = 3.46% → Mobil ~19× schlechter, 94% Traffic mobil.**
+**✅ KORREKTUREN (live iPhone-Fetch von luxestyle.ch/products/… verifiziert) — bitte NICHT mehr als offen führen:**
+- **Sticky-ATC EXISTIERT schon** (`cart-summary-sticky`, 21× „sticky" im HTML), ATC-Button + Preis da, HTTP 200. PRIO #1 „Mobile Sticky-ATC" ist also **erledigt** → Häkchen.
+- **Pixel D8EKVR feuert** (`dataSharingState:optimized`, NICHT consent-blockiert im HTML). Consent-Gate war PRIO #0 — im Live-HTML sieht es **entsperrt** aus; bitte nur noch Datenfreigabe je Kanal prüfen.
+- **Dropship-Stock:** `tracksInventory:false`→`totalInventory:0` ist NORMAL (immer kaufbar). Kein OOS-Problem.
+**🔴 ECHTER verbleibender Leak = TRUST auf den Landeseiten:** Alle Frauen-Mode-Top-Produkte (worauf Social/Ads zeigen) haben **0 Reviews** (judgeme reviews_count=null), obwohl Store 242 Reviews/4.61★ hat (auf ALTEN Haus/Garten-Artikeln).
+**→ THEME/USER PRIO #1 jetzt: Judge.me-Review-Import auf diese Handles** (das sind die Social-Landeseiten):
+`stroh-shopper-capri-geflochtene-schultertasche` · `blazer-roma-tailliert-mit-bindegurtel-revers` · `geburtsstein-kette-12-monate` · `waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free` · `3d-lifting-gesichtsroller-gold` · `stiletto-sandalette-gala-violett-knochelriemen` · + restliche aus `automation/top_products.csv`.
+**→ THEME PRIO #2:** Mobile-Speed (PDP-HTML ist 526 KB) + Judge.me-Sterne auf Collection-Karten (0★ = Scam-Eindruck). Social-Session lenkt parallel nur auf bewertete Seiten + baut Trust-Signale in Captions.
+
 # 🎯 PIXEL + MONITORING — STATUS für ALLE Sessions (CizQ6 2026-06-23, verifiziert)
 - ✅ **TikTok-Pixel `D8EKVR3C77U6KT5BTBD0` FEUERT** (live verifiziert: ttq.page + web-pixels-manager) → sammelt Daten.
 - ✅ **Täglicher Pixel-Healthcheck** → Metafeld `luxe.pixel_status` (lesbar: `{shop{metafield(namespace:"luxe",key:"pixel_status"){value}}}`). Status zuletzt: OK.
