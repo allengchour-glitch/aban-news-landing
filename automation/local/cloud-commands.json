@@ -1,7 +1,5 @@
 [
   { "id": "2026-06-23-deploy", "cmd": "deploy" },
-  { "id": "2026-06-23-ig-papillon", "cmd": "ig-delete-papillon" },
-  { "id": "2026-06-23-tt-hat", "cmd": "tt-delete-hat" },
   { "id": "2026-06-23b-campaign-dry", "cmd": "campaign-dry" },
   { "id": "2026-06-23-fb-check", "cmd": "fb-check" }
 ]
