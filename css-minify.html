@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS-Minifier — CSS verkleinern &amp; Kommentare entfernen · aban news</title>
+<meta name="description" content="Kostenloser CSS-Minifier: CSS-Code verkleinern, Kommentare und unnötige Leerzeichen entfernen für schnelleres Laden. Mit Ersparnis-Anzeige und Code zum Kopieren. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/css-minify.html">
+<meta property="og:title" content="CSS-Minifier — CSS verkleinern &amp; Kommentare entfernen">
+<meta property="og:description" content="CSS verkleinern: Kommentare & Leerraum entfernen, Ersparnis sehen, Code kopieren. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/css-minify.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"CSS-Minifier",
+"url":"https://abannews.com/css-minify.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Verkleinert CSS-Code, entfernt Kommentare und unnötigen Leerraum und zeigt die Ersparnis. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was bringt das Minifizieren von CSS?","acceptedAnswer":{"@type":"Answer","text":"Kleinere CSS-Dateien laden schneller und sparen Bandbreite. Entfernt werden Kommentare, Zeilenumbrüche und überflüssige Leerzeichen — die Funktion des Codes bleibt identisch, nur die Datei wird kompakter."}},
+{"@type":"Question","name":"Ist das verlustfrei?","acceptedAnswer":{"@type":"Answer","text":"Für gängiges CSS ja: nur Whitespace und Kommentare werden entfernt, keine Regeln verändert. Bei sehr ausgefallenem CSS (etwa Kommentare innerhalb von Strings) lohnt ein kurzer Blick aufs Ergebnis. Das Original behältst du ohnehin."}},
+{"@type":"Question","name":"Wird mein Code hochgeladen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Verarbeitung passiert komplett in deinem Browser. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+textarea{font:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;min-height:240px;resize:vertical;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.stat{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.stat b{display:block;font-size:1.2rem;font-weight:800;color:var(--amber-dk)}
+.stat span{font-size:.74rem;color:var(--muted)}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">CSS</span> verkleinern</h1>
+    <p>CSS-Code minifizieren: Kommentare und unnötigen Leerraum entfernen für schnelleres Laden — mit Ersparnis-Anzeige und Code zum Kopieren. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Macht dein Stylesheet kompakter und damit schneller — gleiche Wirkung, weniger Bytes.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div><label for="in">CSS einfügen</label><textarea id="in" spellcheck="false">/* Beispiel */
+.button {
+  color: #b45309;
+  padding: 10px 16px;   /* Innenabstand */
+  border-radius: 9px;
+}
+</textarea></div>
+      <div><label for="out">Minifiziert</label><textarea id="out" readonly></textarea></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="o">0</b><span>Original</span></div>
+      <div class="stat"><b id="m">0</b><span>Minifiziert</span></div>
+      <div class="stat"><b id="s">0 %</b><span>Ersparnis</span></div>
+    </div>
+    <div class="row"><button type="button" class="btn" id="copy">📋 Ergebnis kopieren</button></div>
+    <p class="note">Entfernt Kommentare und Whitespace, kürzt <code>; }</code> → <code>}</code>. Original bleibt erhalten. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Web &amp; Performance.</p>
+    <p><a class="btn" href="/json-formatter.html">JSON-Formatter</a>
+      <a class="btn ghost" href="/css-verlauf-generator.html">CSS-Verlauf</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/json-formatter.html">JSON-Formatter</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("in"), out=document.getElementById("out");
+  function minify(css){
+    var s=css;
+    s=s.replace(/\/\*[\s\S]*?\*\//g,"");        // Kommentare
+    s=s.replace(/\s+/g," ");                       // Whitespace zusammenfassen
+    s=s.replace(/\s*([{}:;,>~+])\s*/g,"$1");     // um Sonderzeichen trimmen
+    s=s.replace(/;}/g,"}");                         // letztes Semikolon
+    s=s.replace(/}/g,"}\n");                        // optisch je Regel eine Zeile
+    return s.trim();
+  }
+  function human(n){ if(n<1024)return n+" B"; return (n/1024).toFixed(1)+" KB"; }
+  function render(){
+    var src=inp.value, mn=minify(src);
+    out.value=mn;
+    var o=src.length, m=mn.length;
+    document.getElementById("o").textContent=human(o);
+    document.getElementById("m").textContent=human(m);
+    document.getElementById("s").textContent=(o>0?Math.max(0,Math.round((1-m/o)*100)):0)+" %";
+  }
+  inp.addEventListener("input",render);
+  document.getElementById("copy").addEventListener("click",function(){var b=this;if(out.value&&navigator.clipboard)navigator.clipboard.writeText(out.value).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1500);});});
+  render();
+})();
+</script>
+</body>
+</html>
