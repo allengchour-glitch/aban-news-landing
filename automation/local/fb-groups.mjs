@@ -32,10 +32,13 @@ const rnd = (a, b) => a + Math.floor(Math.random() * (b - a));
 const done = () => fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').filter(Boolean) : [];
 const writeStatus = o => { try { fs.mkdirSync(path.dirname(STATUS), { recursive: true }); fs.writeFileSync(STATUS, JSON.stringify({ ts: new Date().toISOString(), mode: MODE, ...o }, null, 2)); } catch {} };
 
-// Native CH-Captions (kein Werbe-Spam) — Produkt + Mundart + Link. Wird rotiert.
+// Native CH-Captions (klingt wie Privat-Verkäufer:in, KEIN Gewerbe/Shop-Vibe -> Ban-Schutz in Secondhand-Gruppen).
+// Mundart + konkreti Stück + CHF + softe Link. Wird rotiert (kein Spam).
 const CAPTIONS = [
-  'Sali zäme 👋 Schweizer Shop für Mode, Schmuck & Uhren — fair & schnell gliferet. Luege: luxestyle.ch (–10% mit WELCOME10)',
-  'Neu entdeckt: LuxeStyle.ch 🇨🇭 Premium-Looks zu fairen Priisen. TWINT, gratis ab CHF 65, 30 Täg Rückgab. Schaut verbi 😊',
+  'Han paar schöni wasserfeschti Kettli & Armbänder 💧 anlauffrei & hautfründlich, neu. Ab CHF 19. Bi Interesse meldet eu — meh Föteli uf luxestyle.ch 😊',
+  'Verchaufe zarte Schmuck & Sommer-Accessoires 🌸 alles neu, fairi Priis, CH-Versand. Luege gärn: luxestyle.ch',
+  'Schöni Edelstahl-Schmuck (wasserfescht, anlauffrei) z\'haa 💎 perfekt zum Verschänke oder für sich sälber. Detail uf luxestyle.ch, Frage gärn per Nachricht.',
+  'Paar neui Stück: Kettli, Armbänder, Ohrring & meh. CHF, schnäll & sicher mit TWINT. Schaut verbi: luxestyle.ch 🇨🇭',
 ];
 
 (async () => {
