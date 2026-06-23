@@ -44,6 +44,15 @@ function pickReel() {
   if (argFile) return path.resolve(argFile);
   // Ledger-Zeilen sind "dateiname" ODER "dateiname|ISO-Zeit" (Zeitstempel seit 2026-06-21 fuer Doppel-Erkennung).
   const done = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').map(l => l.split('|')[0].trim()).filter(Boolean) : [];
+  // PRODUKT-DEDUP (FIX 2026-06-23, User: Fedora 3x auf TikTok): Ledger prüfte nur DATEINAME -> 3 versch.
+  // Dateien desselben Produkts (luxe-meisterwerk-filz-fedora / mw-lz-fedora / ...) galten als verschieden.
+  // Jetzt: aus den zuletzt geposteten Dateien Produkt-Tokens ableiten; Kandidat überspringen, wenn er ein
+  // signifikantes Token teilt (= gleiches Produkt), nicht nur exakt gleichen Dateinamen.
+  const STOP = new Set('luxe meisterwerk montage 9x16 meta reel video clip fast main showcase hero ultimate jewelry cinematic breitkrempig schwiz schweiz mode'.split(' '));
+  const toks = (name) => name.toLowerCase().replace(/\.mp4$/, '').split(/[^a-zäöü0-9]+/).filter(t => t.length >= 4 && !STOP.has(t) && !/^\d+$/.test(t));
+  const recentDone = done.slice(-30);
+  const doneTokens = new Set(recentDone.flatMap(toks));
+  const sharesProduct = (f) => toks(f).some(t => doneTokens.has(t));
   // PRIORITÄT (User 2026-06-17 „wenn postist TikTok"): erst die besten Hero-Creatives, dann alle
   // luxe-*-9x16-Reels, dann die alten *-9x16-meta. So landen die neuen Top-Videos auch auf TikTok.
   // MEISTERWERKE ZUERST (User 2026-06-19 „muss meisterwerk sein, komplette videos") + Vollstaendigkeits-Gate.
@@ -63,7 +72,7 @@ function pickReel() {
   const seen = new Set();
   const cand = [...mont, ...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe]
     .filter(f => big(f) && !/-meta\.mp4$/.test(f) && !seen.has(f) && (seen.add(f), true));
-  for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
+  for (const f of cand) if (!done.includes(f) && !sharesProduct(f)) return path.join(REELS, f);
   // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu starten.
   // FIX 2026-06-22 (User: Montana-Dublette 21.+22. auf TikTok): NICHT komplett leeren — sonst wird dasselbe
   // Video (erstes der Liste) am Folgetag sofort wieder gepostet. Stattdessen die zuletzt geposteten N behalten,
