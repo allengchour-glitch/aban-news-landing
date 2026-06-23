@@ -89,9 +89,11 @@ a{{color:var(--amber-dk);text-decoration:none}}
 .top .brand{{font-weight:900;color:var(--amber-dk);font-size:20px}}
 .top .lnk{{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}}
 .top .lnk a{{color:var(--ink2);font-weight:700;border:1px solid var(--line);border-radius:18px;padding:6px 11px}}
-.hero{{max-width:1000px;margin:0 auto;padding:26px 18px 8px}}
-.hero h1{{font-size:clamp(1.6rem,4.5vw,2.3rem);font-weight:900;letter-spacing:-.02em}}
-.hero p{{color:var(--ink2);max-width:680px;margin-top:8px}}
+.hero{{max-width:1000px;margin:18px auto 0;padding:0 18px}}
+.hero .inner{{border-radius:20px;background:radial-gradient(120% 140% at 88% 0%,#23304a,#1b2335 58%,#141a28);color:#eef2f8;padding:clamp(24px,4vw,38px) clamp(20px,3vw,32px)}}
+.hero .badge{{display:inline-block;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:4px 12px;font-size:.8rem;font-weight:800;color:#7cc0ff;margin-bottom:12px}}
+.hero h1{{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:900;letter-spacing:-.02em;margin:0;color:#fff}}
+.hero p{{color:#d7deea;max-width:680px;margin-top:10px}}
 .az{{max-width:1000px;margin:14px auto 0;padding:0 18px;display:flex;flex-wrap:wrap;gap:6px}}
 .az a{{background:var(--cream);border-radius:8px;padding:4px 10px;font-weight:800;font-size:.85rem}}
 main{{max-width:1000px;margin:0 auto;padding:8px 18px 40px}}
@@ -113,10 +115,11 @@ footer{{max-width:1000px;margin:0 auto;padding:18px;font-size:.82rem;color:var(-
   <a class="brand" href="/">aban</a>
   <span class="lnk"><a href="/ki-studio.html">KI-Studio</a><a href="/ki-anleitungen.html">KI-Anleitungen</a><a href="/suchmaschine.html">Suche</a></span>
 </div>
-<div class="hero">
-  <h1>KI-Themen A–Z — {n} ehrliche Ratgeber</h1>
+<div class="hero"><div class="inner">
+  <span class="badge">🤖 {n} KI-Themen</span>
+  <h1>KI-Themen A–Z</h1>
   <p>Alle KI-Ratgeber von abannews.com auf einen Blick: ehrliche Erklärungen, Tool-Vergleiche und Praxis-Tipps rund um künstliche Intelligenz — kompakt, aktuell und ohne Hype. Wähle ein Thema oder spring per A–Z direkt hin.</p>
-</div>
+</div></div>
 <nav class="az" aria-label="Alphabet">{az}</nav>
 <main>
 {links_html}
