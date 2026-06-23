@@ -1563,3 +1563,13 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   vielen DRAFT/bildlosen Produkten (sortieren teils ZUERST) schlug das fehl (z.B. smart-home-sub: 126 total, nur 11 aktiv).
   Fix: `products(first:30)` + **erstes AKTIVES Produkt mit Bild** wählen. Bei sehr Draft-lastigen Collections ggf. first:250.
 - Ergänzt den sauberen On-Site-Stand: Produkt-Beschreibungen/SEO/Feed/Bilder/Alt-Texte + jetzt Collection-SEO/Heroes alle komplett.
+
+## 📌 2026-06-23 Teil 33 (✅ KAUFBARKEIT-QA + Funnel-Check — Katalog erschöpfend verifiziert)
+- **Kaufbarkeit (4080 aktive):** 0 mit Preis 0 · 0 ohne Variante · 0 ohne availableForSale → **alle kaufbar.**
+- **Ad-Landing `/collections/sommer`:** 116 Produkte · Hero · SEO · 6 Kanäle → conversion-bereit.
+- **Verkäufe (Shopify, autoritativ):** weiterhin **0 echte Käufe** (einzige Order = User-Test #1003, Status EXPIRED).
+- **Ad-Spend:** in Cloud-Session NICHT einsehbar (kein TikTok-Ads-Tool) → nur User im TikTok Ads Manager (Spalte „Cost").
+- **GESAMT-FAZIT:** On-Site ist auf JEDER conversion-Dimension geprüft & sauber (Beschreibungen/SEO/Collection-SEO/Heroes/
+  Feed/Bilder/Alt-Texte/Kaufbarkeit). **Es gibt nichts On-Site mehr, das Käufe blockiert.** Einziger Hebel = REICHWEITE
+  (User: TikTok-Conversion-Kampagne + Budget; Cloudflare R2+Keys optional fürs Social-Posten). NICHT weiter On-Site „optimieren
+  ins Leere" — der Engpass ist verifiziert extern.
