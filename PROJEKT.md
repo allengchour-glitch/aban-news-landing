@@ -31,7 +31,7 @@
   + gebündelt mergen, sobald frei. (4) Brain-Artefakte (brain-state.json/brain.html/IMPROVEMENT-REPORT.md)
   vor Commit verwerfen (Konflikte mit Parallel-Sessions).
 
-## 🧰 2026-06-20/22 — 59 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20/22 — 61 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -62,7 +62,8 @@
   css-clamp-generator (fluid font-size clamp(), lineare Formel + Live-Demo) + woerter-pro-seite (Seitenzahl↔Wortzahl, Schriftgröße/Abstand) #1189 ·
   border-radius-generator (Ecken einzeln/elliptisch, px/%, Live-Box) + mehrwertsteuer-eu (27 EU-Standardsätze + Netto/Brutto, Stand 2026 o. Gewähr) #1190 ·
   wlan-qr (WIFI:-QR, **QR-Encoder aus qr-code.html wiederverwendet** via Python-Assembly, esc für ;,:") + passphrase-generator (merkbare DE-Wort-Passphrase, crypto, Entropie-Anzeige) #1191 ·
-  bild-zu-base64 (Data-URI/CSS/HTML, Drag&Drop, 100% lokal) + cubic-bezier-generator (SVG-Kurve ziehen, animierte Dot-Vorschau, Presets) [batch-29, 2026-06-22]. **Hub = 118+ Tools.**
+  bild-zu-base64 (Data-URI/CSS/HTML, Drag&Drop, 100% lokal) + cubic-bezier-generator (SVG-Kurve ziehen, animierte Dot-Vorschau, Presets) #1192 ·
+  url-parser (URL→Protokoll/Host/Pfad/Query-Tabelle, URL-API) + platzhalter-bild (Canvas-Mockup mit Maßen/Farbe/Text, PNG-Download, kein Fremddienst) [batch-30, 2026-06-22]. **Hub = 120+ Tools.**
   ⚠️ **Lehre (Encoder-Reuse):** Python `codecs.decode(...,"unicode_escape")` über UTF-8-String zerschießt Umlaute (→ Ã¤). Stattdessen Datei direkt in UTF-8 schreiben; Mojibake-Fix: Paare Ã¤→ä etc. Und: in JSON-LD NIE geraden `"` als dt. Schlusszitat — „…" (U+201E/U+201C) nutzen.
   ⚠️ sitemap.xml = häufige Merge-Konflikte mit Parallel-Session („…-kaufen-schweiz") → neue Einträge NICHT ganz am Ende, sondern nach eigenem Anker einfügen; Konflikt = beide Sets behalten.
   EN-Tools = KEIN Hebel (geprüft: /en/ nutzt deutsche Slugs, DACH-Fokus → bringt keine dt. Abonnenten).
