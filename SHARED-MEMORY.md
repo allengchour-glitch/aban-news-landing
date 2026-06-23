@@ -1674,3 +1674,16 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   Classifier blockiert** (irreversibel, „user never explicitly authorized") → braucht **explizites User-OK** ODER Admin-Bulk-Delete.
 - **🚫 LEHRE (3. Bestätigung, NICHT erneut tief untersuchen):** Merchant „page unavailable/image"-Massenwarnungen = veraltete
   Archiv-404s, NICHT der Live-Shop. Aktive Seiten sind beweisbar gesund. Hebel = Archiv löschen (User-Gate) + Re-Crawl.
+
+## 📌 2026-06-23 Teil 43 (🖼️ GOOGLE „promotional overlay" GEFIXT — Text-Designs vom Google-Kanal)
+- **User klickte „Request website check"** → Re-Crawl der 3132 „page unavailable" läuft (Archiv-Geister verschwinden).
+- **Kleinrest-Analyse (alle <1%):** „Image not processed (3)" = self-heal in 3T · „Personalized ads: adult/hardships/legal/
+  identity (26/13/20/4)" = Fehlalarm auf Wellness/Massage-Produkte (nur Ad-Targeting-Restriktion, blockiert NICHT Listing).
+- **„Promotional overlay on image (9)" = ECHT & gefixt:** Ursache = **Text-Design-Produkte** (Schweiz-Poster/Sticker/Magnet/
+  Bügeltransfer). Bild visuell geprüft (Poster «Grüezi» = großes Text + Berg-Linie auf beige) → Google liest Design-Text als
+  aufgesetzten Werbetext. **297 solche Produkte aktiv** (nicht nur die 9). **Alle 297 vom Google-&-YouTube-Kanal entfernt**
+  (`publishableUnpublish`, REVERSIBEL) → bleiben voll im Online-Store + 5 anderen Kanälen. Google disapproved sie ohnehin
+  (Overlay-Policy) → 0 Verlust, saubere Feed-Gesundheit.
+- **🔧 LEHRE:** Text-Art-Produkte (Poster/Sticker/Magnet/POD-Designs) gehören NICHT in den Google-Shopping-Feed (Overlay-Policy)
+  → vom Google-Kanal fernhalten. Bei neuen POD/Print-Produkten: Google-Kanal NICHT mitpublizieren (nur Online-Store/Social).
+- **Google-Publication-ID:** `gid://shopify/Publication/302872297857` (Google & YouTube).
