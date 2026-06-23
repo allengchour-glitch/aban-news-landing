@@ -1,28 +1,28 @@
 # 🧠 BRAIN v2 — LuxeStyle Social-Lernschleife (auto-generiert)
 
-_Aktualisiert: 2026-06-19 · 8 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis 365 V)_
+_Aktualisiert: 2026-06-23 · 9 Reports gelernt · Bayes-Shrinkage (C=5, Ø-Basis 370 V)_
 
 ## 📈 KPI-Verlauf (verbessert es sich?)
-- Views: 11137 ▲ (vorher 11081)
-- Engagement: 5.5% ▼ (vorher 5.7%)
-- Shares: 0 = (vorher 0) · Likes: 183 = (vorher 183) · Kommentare: 5 = (vorher 5)
-- Ø Views/Video: 301 ▲ · Ø Dauer: 16.6s
+- Views: 15170 ▲ (vorher 11137)
+- Engagement: 4.5% ▼ (vorher 5.5%)
+- Shares: 0 = (vorher 0) · Likes: 194 ▲ (vorher 183) · Kommentare: 5 = (vorher 5)
+- Ø Views/Video: 344 ▲ · Ø Dauer: 16.3s
 
 ## 🏷️ Beste Hashtag-Saetze (Bayes-Score, Verlierer geblockt)
 1. #fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie
 2. #foryou #musthave #gefundenauftiktok #aroma #smartdiffuser
-3. #fyp #lifehack #tiktokmademebuyit #aestheticroom #spaathome
-4. #foryou #produkttipp #musthave #premiumwellness #luxurylife
-**Top-Performer (Score · Konfidenz):** #aromatherapyathome 799·mittel · #aromatherapie 799·mittel · #aroma 799·mittel · #smartdiffuser 799·mittel · #aestheticroom 799·mittel · #spaathome 799·mittel
-**📈 Momentum (steigend):** — (noch zu wenig Verlauf)
+3. #fyp #lifehack #tiktokmademebuyit #spaathome #premiumwellness
+4. #foryou #produkttipp #musthave #aestheticroom #luxurylife
+**Top-Performer (Score · Konfidenz):** #aromatherapyathome 825·hoch · #aromatherapie 825·hoch · #aroma 825·hoch · #smartdiffuser 825·hoch · #spaathome 825·hoch · #premiumwellness 825·hoch
+**📈 Momentum (steigend):** #foryou ×1.23 · #fyp ×1.25 · #ootdschweiz ×1.21 · #schweizmode ×1.69
 **🚫 Geblockt:** #luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg
 
 ## 🎣 Hook-Typ-Scoreboard (was zieht wirklich — gelernt aus 5 Typen)
-- **mundart**: Ø 797 Views (8 Videos)
-- **preis_vergleich**: Ø 386 Views (15 Videos)
-- **generisch**: Ø 311 Views (210 Videos)
-- **preis**: Ø 163 Views (48 Videos)
-- **frage_cta**: Ø 52 Views (16 Videos)
+- **mundart**: Ø 797 Views (9 Videos)
+- **preis_vergleich**: Ø 389 Views (17 Videos)
+- **generisch**: Ø 320 Views (243 Videos)
+- **preis**: Ø 164 Views (54 Videos)
+- **frage_cta**: Ø 52 Views (18 Videos)
 
 ## 🎯 Naechste Aktionen (auto-abgeleitet)
 - 🔴 0 Shares = Reichweiten-Decke. Share/Save-Trigger + Vergleichs-/Neugier-Hooks (stehen in CAPS) konsequent nutzen.

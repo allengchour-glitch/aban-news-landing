@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # AUTO-GENERIERT von automation/brain/brain.mjs v2 — NICHT manuell editieren (Aenderungen in knowledge.json).
-# Gehirn-Stand: 8 Report(s) gelernt · Bayes-Shrinkage · Verlierer geblockt (#luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg).
+# Gehirn-Stand: 9 Report(s) gelernt · Bayes-Shrinkage · Verlierer geblockt (#luxestyle #luxestylech #deutschland #germany #deutschershop #berlin #munchen #hamburg).
 # CAPS sind nach gelerntem Hook-Typ sortiert (bester Typ zuerst: mundart > preis_vergleich > generisch).
 TAGSETS=(
   "#fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie"
   "#foryou #musthave #gefundenauftiktok #aroma #smartdiffuser"
-  "#fyp #lifehack #tiktokmademebuyit #aestheticroom #spaathome"
-  "#foryou #produkttipp #musthave #premiumwellness #luxurylife"
+  "#fyp #lifehack #tiktokmademebuyit #spaathome #premiumwellness"
+  "#foryou #produkttipp #musthave #aestheticroom #luxurylife"
 )
 CAPS=(
   "Mach dis eigete Teil 🐻🇨🇭 %s – dis Design, dini Sprüch. 💾 Speicher der das · 👇 Was chiem uf DIS Teil? −10%% WELCOME10 → luxestyle.ch"

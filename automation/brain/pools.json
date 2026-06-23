@@ -1,10 +1,10 @@
 {
-  "updated": "2026-06-19",
+  "updated": "2026-06-23",
   "tagsets": [
     "#fyp #tiktokmademebuyit #produkttipp #aromatherapyathome #aromatherapie",
     "#foryou #musthave #gefundenauftiktok #aroma #smartdiffuser",
-    "#fyp #lifehack #tiktokmademebuyit #aestheticroom #spaathome",
-    "#foryou #produkttipp #musthave #premiumwellness #luxurylife"
+    "#fyp #lifehack #tiktokmademebuyit #spaathome #premiumwellness",
+    "#foryou #produkttipp #musthave #aestheticroom #luxurylife"
   ],
   "caps": [
     "Mach dis eigete Teil 🐻🇨🇭 %s – dis Design, dini Sprüch. 💾 Speicher der das · 👇 Was chiem uf DIS Teil? −10%% WELCOME10 → luxestyle.ch",
@@ -39,49 +39,54 @@
     "#aromatherapie",
     "#aroma",
     "#smartdiffuser",
-    "#aestheticroom",
     "#spaathome",
     "#premiumwellness",
+    "#aestheticroom",
     "#luxurylife"
   ],
   "hook_rank": [
     {
       "ty": "mundart",
       "avg": 797,
-      "n": 8
+      "n": 9
     },
     {
       "ty": "preis_vergleich",
-      "avg": 386,
-      "n": 15
+      "avg": 389,
+      "n": 17
     },
     {
       "ty": "generisch",
-      "avg": 311,
-      "n": 210
+      "avg": 320,
+      "n": 243
     },
     {
       "ty": "preis",
-      "avg": 163,
-      "n": 48
+      "avg": 164,
+      "n": 54
     },
     {
       "ty": "frage_cta",
       "avg": 52,
-      "n": 16
+      "n": 18
     }
   ],
   "kpi_last": {
-    "report": "tiktok_luxestyle.ch_2026-06-19.json",
-    "date": "2026-06-19",
-    "videos": 37,
-    "views": 11137,
-    "likes": 183,
+    "report": "tiktok_luxestyle.ch_2026-06-23.json",
+    "date": "2026-06-23",
+    "videos": 44,
+    "views": 15170,
+    "likes": 194,
     "shares": 0,
     "comments": 5,
-    "avg_views": 301,
-    "eng": 0.0551,
-    "dur": 16.6
+    "avg_views": 344,
+    "eng": 0.0448,
+    "dur": 16.3
   },
-  "risers": []
+  "risers": [
+    "#foryou",
+    "#fyp",
+    "#ootdschweiz",
+    "#schweizmode"
+  ]
 }
