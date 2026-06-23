@@ -77,6 +77,7 @@ function tokset(base) { return new Set(base.replace(/^ki-/, "").replace(/\.html$
 let related = 0;
 let healed = 0;
 let kbhub = 0;
+let kihub = 0;
 const hubs = [];
 for (const f of files) {
   const base = f.split(sep).pop();
@@ -177,6 +178,17 @@ for (const f of files) {
       }
     }
   }
+  // (6c) Backlink zum KI-Themen-Pillar-Hub (bi-direktional), idempotent
+  {
+    const base = f.split(sep).pop();
+    if (!noindex && base.startsWith("ki-") && base.endsWith(".html") && base !== "ki-themen.html" && html.indexOf("data-aban-kihub") < 0) {
+      const bpos = html.toLowerCase().lastIndexOf("</body>");
+      if (bpos >= 0) {
+        const block = '<nav data-aban-kihub aria-label="KI-Themen-Übersicht" style="max-width:760px;margin:18px auto;padding:0 16px;font-size:.9rem"><a href="/ki-themen.html" style="color:#b45309;font-weight:700">← Alle KI-Themen im Überblick</a></nav>';
+        html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); kihub++; changed = true;
+      }
+    }
+  }
   // (7) Selbstheilung fehlender Meta-Tags (Social/Mobile), nur indexierbare Seiten
   if (!noindex) {
     const pos2 = html.toLowerCase().lastIndexOf("</head>");
@@ -195,4 +207,4 @@ for (const f of files) {
   }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
-console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
+console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + kihub + " KI-Backlinks + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
