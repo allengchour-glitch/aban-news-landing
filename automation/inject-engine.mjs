@@ -49,14 +49,19 @@ function ldFor(html, file) {
   const name = cleanName(html);
   if (!name) return null;
   const item = canonicalOf(html, url);
+  // Kaufberater-Seiten: 3-stufige Breadcrumb (Start › Kaufberater Schweiz › Produkt) — reichere SERP-Darstellung.
+  const crumbs = [{ "@type": "ListItem", position: 1, name: "Start", item: SITE + "/" }];
+  if (/-kaufen-schweiz\.html$/.test(url)) {
+    crumbs.push({ "@type": "ListItem", position: 2, name: "Kaufberater Schweiz", item: SITE + "/kaufberater-schweiz.html" });
+    crumbs.push({ "@type": "ListItem", position: 3, name, item });
+  } else {
+    crumbs.push({ "@type": "ListItem", position: 2, name, item });
+  }
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png" },
-      { "@type": "BreadcrumbList", itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Start", item: SITE + "/" },
-        { "@type": "ListItem", position: 2, name, item }
-      ] }
+      { "@type": "BreadcrumbList", itemListElement: crumbs }
     ]
   };
   return '<script type="application/ld+json" data-aban-ld>' + JSON.stringify(ld) + "</script>";
