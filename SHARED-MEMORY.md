@@ -1610,3 +1610,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🔧 DRY-Review fing 2 Mis-Tags ab:** Schlüsselanhänger→nicht „schmuck", Mädchen-Hoodie „Sportswear"→nicht „fitness"
   (bare „sport" raus aus fitness-Regex). **Lehre: Tag-Mapping IMMER erst DRY sichten** — Substring-Treffer wie „Sportswear"→fitness.
 - Ergänzt: alle aktiven Produkte haben jetzt productType + (fast alle) sinnvolle Tags → bessere Filter/Collection-Abdeckung.
+
+## 📌 2026-06-23 Teil 38 (🔴 ECHTER 404-FIX: 4 Menü-Collections waren unpubliziert)
+- **Menü-Link-Health-Check (156 Links, 150 Collection-Links):** 146 OK, aber **4 Menü-Collections UNPUBLIZIERT**
+  (resourcePublicationsCount=0) → Klick im Menü = **404**: camping-outdoor(199), pool-schwimmen(101), bar-wein(166),
+  haarstyling-tools(53). Zusammen **~519 Produkte via Menü unerreichbar.**
+- **Fix:** alle 4 in alle Kanäle publiziert (`publishablePublish`, 7 Publications inkl. POS) → jetzt 200/erreichbar.
+- **Wurzel:** Diese Collections wurden angelegt (Teil 25/Subs) + ins Menü gehängt, aber NIE publiziert (klassische
+  Publish-Falle — gilt auch für Collections!). Teil 32 setzte SEO, merkte aber die fehlende Publikation nicht.
+- **🔧 LEHRE (Standing-Check):** Bei jeder Session **Menü-Link-Health-Check** laufen (Tool-Snippet: Menü walken →
+  je Collection-Link resourcePublicationsCount + productsCount prüfen). Neu angelegte Collections IMMER sofort
+  publishablePublish in alle Kanäle, sonst 404 im Menü. (create_subcollections.mjs publiziert bereits — diese 4
+  waren wohl manuell/früher angelegt.)
