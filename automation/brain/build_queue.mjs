@@ -221,14 +221,21 @@ function loadReels() {
       caption: `${lead} — wüsch durch für meh 👉\n–10% mit WELCOME10 · 🇨🇭 luxestyle.ch\n#schweizmode #ootdschweiz #swissmade #fyp` });
   }
 
-  // MIX interleaven: überwiegend Karussells, jede 2. ein Reel, jede 5. ein Kollektions-Post, jede 6. eine Story.
-  const out = []; let ri = 0, si = 0, ci = DAYOFF; // ci-Tagesoffset → über die Tage rotieren ALLE Kollektionen + Geschenkfinder durch
-  carousels.forEach((img, i) => {
-    out.push(img);
-    if (i % 2 === 1 && reels.length) out.push(reels[ri++ % reels.length]); // mehr Reels = mehr Vielfalt (User: zu viel gleich)
-    if (i % 5 === 4 && collPosts.length) out.push(collPosts[ci++ % collPosts.length]); // Kollektions-Werbung
-    if (i % 6 === 5 && stories.length) out.push(stories[si++ % stories.length]);
-  });
+  // MIX (2026-06-23, Daten: IG-Reels 16-43 V vs statische Karten 0-12 V = 5-10x): REELS DOMINIEREN,
+  // Karten sind in der Minderheit. IG/TikTok pushen 2026 fast nur Reels -> Reel-getriebene Schleife.
+  const out = []; let ci = 0, si = 0, cpi = DAYOFF;
+  const maxReels = Math.min(reels.length, 8);
+  if (maxReels > 0) {
+    for (let i = 0; i < maxReels; i++) {
+      out.push(reels[i]);                                            // Reel = Rückgrat
+      if (i % 2 === 0 && carousels[ci]) out.push(carousels[ci++]);   // nur jede 2. Position eine Karte
+      if (i % 3 === 2 && collPosts.length) out.push(collPosts[cpi++ % collPosts.length]);
+      if (i % 4 === 3 && stories.length) out.push(stories[si++ % stories.length]);
+    }
+  } else {
+    // Fallback ohne Reels: wenige Karten (max 4) statt Karten-Flut.
+    carousels.slice(0, 4).forEach(c => out.push(c));
+  }
   const counts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
 
   // 🈲 AIRTIGHT DO-NOT-POST-FILTER (User 2026-06-17 „wenn botox u öl verbote isch nüm poste?"):
