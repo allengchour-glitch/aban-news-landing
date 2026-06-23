@@ -75,7 +75,9 @@ async function postInstagram(ids, item) {
       ? { media_type: "STORIES", video_url: item.video, access_token: ids.page_token }
       : { media_type: "STORIES", image_url: item.image, access_token: ids.page_token };
   } else if (isVideo) {
-    createParams = { media_type: "REELS", video_url: item.video, caption: item.caption, access_token: ids.page_token };
+    // thumb_offset=2000ms: Cover-Frame bei ~2s waehlen -> ueberspringt das schwarze Intro/Fade-in
+    // (sonst nimmt IG Frame 0 = schwarz -> leeres Vorschaubild im Grid -> weniger Klicks/Views).
+    createParams = { media_type: "REELS", video_url: item.video, caption: item.caption, thumb_offset: 2000, access_token: ids.page_token };
   } else {
     createParams = { image_url: item.image, caption: item.caption, access_token: ids.page_token };
   }
