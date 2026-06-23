@@ -1661,3 +1661,16 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🎯 HEUTE GESAMT: 101 neue Produkte** (Welle1 15 + Welle2 36 + Welle3 18 + High-End 32). Aktiv 4079→4180.
 - **Lehre/Tool:** `MIN_COST_EUR` ist der Hebel für „high-end"-Wellen (Importer pickt sonst die billigsten passenden zuerst).
   Lederwaren-Kategorie bottleneckt (riesige Ban-Liste → endloses rate-limitiertes Scannen) → bei Bedarf separat/zuletzt fahren.
+
+## 📌 2026-06-23 Teil 42 (🔬 GOOGLE-MERCHANT-DIAGNOSE 2 — Geister = Archiv, Live-Katalog sauber)
+- **User-Screenshot:** Merchant „needs attention": Product page unavailable 3132 (10.5%) · missing image 90 · unsupported image
+  type 69 · sexual interests 26 · adult content 26. Beispiel page-unavailable = **„Herren Leder-Sandalen «Adriano»" (AKTIV!)**.
+- **LIVE verifiziert (Googlebot-UA curl):** Adriano + Stichproben = **HTTP 200 + Product-Schema + Preis**. robots.txt = `Allow:/`.
+  Katalog-Scan (4216 aktiv): **0 ohne Bild · 0 webp-Hauptbild.** → **Alle gemeldeten Probleme stammen NICHT aus dem
+  Live-Katalog**, sondern aus den **4634 archivierten Altprodukten** (404, 0 Kanäle, onlineStoreUrl=NULL) = veraltete Feed-Geister.
+- **26 „sexual interests" = Fehlalarm** auf Muskel-Recovery-Geräte (Mini-Massagepistole, Shiatsu-Nackenkissen „Vibrations-
+  Massage"). Legit Produkte → NICHT verstümmeln.
+- **FIX (einzig wirksam):** 4634 archivierte Produkte löschen → dann „Request website check". **API-Löschung vom Auto-Mode-
+  Classifier blockiert** (irreversibel, „user never explicitly authorized") → braucht **explizites User-OK** ODER Admin-Bulk-Delete.
+- **🚫 LEHRE (3. Bestätigung, NICHT erneut tief untersuchen):** Merchant „page unavailable/image"-Massenwarnungen = veraltete
+  Archiv-404s, NICHT der Live-Shop. Aktive Seiten sind beweisbar gesund. Hebel = Archiv löschen (User-Gate) + Re-Crawl.
