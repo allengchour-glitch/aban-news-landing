@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compound Interest &amp; Savings Calculator · aban news</title>
+<meta name="description" content="Free compound interest &amp; savings calculator: work out the final balance, total contributions and interest earned — enter starting capital, monthly deposit, interest rate and term. Local in your browser, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/en/zinseszins-rechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/zinseszins-rechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/zinseszins-rechner.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/zinseszins-rechner.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/zinseszins-rechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/zinseszins-rechner.html">
+<meta property="og:title" content="Compound Interest &amp; Savings Calculator">
+<meta property="og:description" content="Work out the final balance, contributions and interest earned. Local in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/en/zinseszins-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest & Savings Calculator",
+"url":"https://abannews.com/en/zinseszins-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Calculates the final balance, total contributions and interest earned of a savings plan with compound interest.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 5px;color:var(--ink2)}
+input{width:100%;font-family:inherit;font-size:15px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+.kpi{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.kpi .v{font-size:clamp(19px,3.2vw,24px);font-weight:800;color:var(--amber-dk);line-height:1.2}
+.kpi .k{font-size:.8rem;color:var(--muted);margin-top:3px}
+.tbl{margin-top:16px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:7px 9px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink2);font-weight:700;font-size:12px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Compound interest</span> calculator</h1>
+    <p>Work out a savings plan with compound interest: final balance, total contributions and interest earned — just enter the starting capital, monthly deposit, interest rate and term. All local in your browser, nothing is sent.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div><label class="lbl" for="start">Starting capital</label><input type="number" id="start" min="0" max="100000000" step="100" value="5000"></div>
+      <div><label class="lbl" for="monthly">Monthly deposit</label><input type="number" id="monthly" min="0" max="1000000" step="10" value="200"></div>
+      <div><label class="lbl" for="rate">Interest rate % p.a.</label><input type="number" id="rate" min="0" max="100" step="0.01" value="5"></div>
+      <div><label class="lbl" for="years">Term (years)</label><input type="number" id="years" min="0.1" max="80" step="1" value="15"></div>
+    </div>
+    <div class="cards">
+      <div class="kpi"><div class="v" id="kFinal">–</div><div class="k">Final balance</div></div>
+      <div class="kpi"><div class="v" id="kPaid">–</div><div class="k">Contributions</div></div>
+      <div class="kpi"><div class="v" id="kInt">–</div><div class="k">Interest earned</div></div>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Year</th><th>Deposits</th><th>Interest</th><th>Balance</th></tr></thead>
+        <tbody id="plan"></tbody>
+      </table>
+    </div>
+    <p class="note">Monthly compounding, deposits made at the end of each month. Excludes taxes, fees and inflation. Not financial advice — verify figures with your provider. All local, no upload.</p>
+  </section>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for the self-employed.</p>
+    <p><a class="btn" href="/en/kredit-rechner.html">Loan calculator</a>
+      <a class="btn ghost" href="/en/finanz-rechner.html">Hourly rate &amp; reserve</a>
+      <a class="btn ghost" href="/en/online-tools.html">All tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe any time.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe free →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/en/kredit-rechner.html">Loan calculator</a> · <a href="/en/finanz-rechner.html">Finance calculator</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/en/impressum.html">Imprint</a> · <a href="/en/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var start=document.getElementById("start"),monthly=document.getElementById("monthly"),rate=document.getElementById("rate"),years=document.getElementById("years"),
+      kFinal=document.getElementById("kFinal"),kPaid=document.getElementById("kPaid"),kInt=document.getElementById("kInt"),plan=document.getElementById("plan");
+  var nf=new Intl.NumberFormat("en-GB",{minimumFractionDigits:2,maximumFractionDigits:2});
+  function num(el,min,max){var v=parseFloat(el.value);if(!isFinite(v))v=0;if(v<min)v=min;if(v>max)v=max;return v;}
+  function clr(node){while(node.firstChild)node.removeChild(node.firstChild);}
+  function cell(tr,txt){var td=document.createElement("td");td.textContent=txt;tr.appendChild(td);}
+  function build(){
+    var P=num(start,0,100000000),dep=num(monthly,0,1000000),r=num(rate,0,100),yrs=num(years,0,80);
+    var n=Math.max(1,Math.round(yrs*12)),i=r/100/12;
+    var bal=P,paid=P,row=0,yStartBal=P,yStartPaid=P;
+    clr(plan);
+    for(var m=1;m<=n;m++){
+      bal=bal*(1+i)+dep;
+      paid+=dep;
+      if(m%12===0||m===n){
+        row++;
+        var yPaid=paid-yStartPaid;
+        var yInt=(bal-yStartBal)-yPaid;
+        var tr=document.createElement("tr");
+        cell(tr,m===n&&m%12!==0?(""+(row)+" *"):(""+row));
+        cell(tr,nf.format(yPaid));
+        cell(tr,nf.format(yInt));
+        cell(tr,nf.format(bal));
+        plan.appendChild(tr);
+        yStartBal=bal;yStartPaid=paid;
+      }
+    }
+    kFinal.textContent=nf.format(bal);
+    kPaid.textContent=nf.format(paid);
+    kInt.textContent=nf.format(bal-paid);
+  }
+  [start,monthly,rate,years].forEach(function(el){el.addEventListener("input",build);});
+  build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
