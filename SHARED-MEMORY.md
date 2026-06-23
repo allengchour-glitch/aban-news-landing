@@ -1517,3 +1517,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   in früheren Sessions handkuratiert → kein Regress).
 - **Lehre:** Bei Gemini-2.5-flash für kurze Texte IMMER `thinkingBudget:0` setzen, sonst leere `candidates`. Tool ist
   idempotent (Tag `ls-ai-desc`) → beliebig oft nachlaufbar, trifft nur noch un-veredelte.
+
+## 📌 2026-06-23 Teil 28 (✅ Beschreibungen 100% + Struktur-QA: damen-mode subdividiert NICHT sauber)
+- **Produktbeschreibungen KATALOGWEIT FERTIG:** alle **2635 aktiven BigBuy-Produkte** haben einzigartige KI-Texte (0 offen).
+  Tool-Fix `thinkingBudget:0` machte 0 Skips möglich. (Details Teil 27.)
+- **Struktur-QA (Standing Rule §4 „big collections subdividieren"):** `damen-mode` (852) geprüft — **lässt sich via
+  TITLE CONTAINS NICHT sinnvoll weiter unterteilen:** Produkttitel sind marken-/generisch geführt („Damenkleid Guess…"),
+  daher liefern Kandidaten-Subs winzige/gemischte Treffer: jacke/mantel/blazer=**8**, pullover/strick/cardigan/sweatshirt=**27
+  (gemischt Herren+Damen!)**, t-shirt/top/bluse+damen=20. Bestehende Damen-Subs decken die sauberen Schnitte ab (Kleider 66,
+  Sets 44, Schuhe 27, Uhren 118, Röcke 11, Blusen 8, Hosen 5).
+- **🚫 LEHRE (nicht nochmal versuchen):** `damen-mode` NICHT weiter splittern — Titeldaten tragen es nicht, würde nur winzige/
+  gender-gemischte Junk-Collections erzeugen (gegen die „nicht über-saturieren"-Regel). Menü + Filter-Hub + bestehende Subs
+  reichen als Einstiege. Künftige Subs nur dort, wo Titel die Compound-Wörter wirklich tragen (vorher per productsCount prüfen).
