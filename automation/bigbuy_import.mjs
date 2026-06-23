@@ -38,6 +38,7 @@ const PER = Math.max(1, parseInt(process.env.PER || '4', 10) || 4);
 const MARGIN = parseFloat(process.env.MARGIN || '2.6') || 2.6;     // auf wholesalePrice (EU-Einkauf)
 const EUR_CHF = 0.96;
 const MAX_COST_EUR = parseFloat(process.env.MAX_COST_EUR || '60') || 60; // Einkaufs-Deckel je Stück
+const MIN_COST_EUR = parseFloat(process.env.MIN_COST_EUR || '0') || 0;   // Einkaufs-Untergrenze (für High-End-Wellen)
 const GAP = parseInt(process.env.GAP || '1500', 10) || 1500;       // Pause zwischen BigBuy-Calls (Rate-Limit)
 const DRY = process.env.LIVE !== '1';                              // DRY ist Default
 const CATS = (process.env.CATS || 'schmuck,taschen,uhren,sonnenbrillen').split(',').map(s => s.trim()).filter(Boolean);
@@ -363,6 +364,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       if (!d || d.active !== 1) continue;
       const cost = Number(d.wholesalePrice) || 0;
       if (!cost || cost > cfg.maxCost) continue;
+      if (cost < MIN_COST_EUR) continue;   // High-End-Untergrenze: günstige Basics überspringen
       const imgD = await bbImages(c.id); await sleep(GAP);
       const urls = (imgD?.images || []).map(x => x.url).filter(Boolean);
       const good = [];
