@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T18:26:13.315Z",
+  "updated": "2026-06-23T19:25:30.432Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1370,6 +1370,13 @@
       "FEST (User 2026-06-23 mach immer alles screenshot check): JEDE Browser-/Plattform-Aktion (FB/IG/TikTok) macht Screenshots vor/nach + Report-JSON, und die Screenshots werden angeschaut/committet BEVOR ein Ergebnis als erfolgreich gemeldet wird. Commit-Message != Erfolg.",
       "FB wird wie IG/TikTok geprüft: fb-check.mjs (Screenshots der Seite, Dubletten/Herren-Mix/Qualität), nicht-destruktiv. Befehl fb-check via Worker-Queue.",
       "Tools mit Screenshot-Pflicht: ig-cover, ig-delete, tiktok-delete, fb-check, konto-analyse, profil, markt-capture, storefront-audit."
+    ],
+    "pixel_funnel_auswertung_2026_06_23": [
+      "PIXEL-AUSWERTUNG 30T: Pixel feuert sauber (PageView 7387, AddToCart 21, Checkout 17, Kauf 1). Pixel ist NICHT das Problem.",
+      "KRITISCH nach Quelle: direct 5582->19 ATC (0.34%), SOCIAL 1763->0 ATC (0.00%!), search 34->2 (5.9% beste Absicht). Unser Social-Traffic konvertiert 0% = Scroller, keine Käufer.",
+      "KAMPAGNE: Event-Leiter statt direkt Kauf. Start ViewContent/Traffic -> ab ~50 ATC/Woche auf AddToCart -> dann CompletePayment. TikTok braucht ~50 Events/Woche/Stufe; aktuell 5 ATC/Woche = zu wenig fuer ATC-Start.",
+      "KONSEQUENZ Content: kauf-intentiver posten (Produkt+CHF-Preis+Nutzen+1 Produkt-CTA, Preis-Vergleich/Save-Format) + auf bewertete Seiten lenken. Reichweite ist NICHT der Engpass, Kaufabsicht-Umwandlung schon.",
+      "SEO-Upside: search 5.9% ATC -> Meta/Collections weiter ausbauen (VPS/Cloud). Doku: dropship/PIXEL-AUSWERTUNG.md."
     ]
   },
   "decisions": [
