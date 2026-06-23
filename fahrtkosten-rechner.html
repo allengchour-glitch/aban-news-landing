@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fahrtkosten-Rechner — Spritkosten &amp; Kilometerpauschale · aban news</title>
+<meta name="description" content="Kostenloser Fahrtkosten-Rechner: Spritkosten aus Strecke, Verbrauch und Spritpreis berechnen — oder die Kilometerpauschale (0,30 €/km) für Geschäftsreisen. Mit Hin- und Rückfahrt. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fahrtkosten-rechner.html">
+<meta property="og:title" content="Fahrtkosten-Rechner — Spritkosten &amp; Kilometerpauschale">
+<meta property="og:description" content="Spritkosten (Strecke×Verbrauch×Preis) oder Kilometerpauschale für Geschäftsreisen. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fahrtkosten-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Fahrtkosten-Rechner",
+"url":"https://abannews.com/fahrtkosten-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet Spritkosten aus Strecke, Verbrauch und Spritpreis oder die Kilometerpauschale für Geschäftsreisen, inklusive Hin- und Rückfahrt. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie berechne ich die Spritkosten einer Fahrt?","acceptedAnswer":{"@type":"Answer","text":"Strecke in Kilometer mal Verbrauch (Liter pro 100 km) geteilt durch 100 ergibt die verbrauchten Liter; multipliziert mit dem Spritpreis ergeben sich die Kosten. Der Rechner zeigt zusätzlich die Kosten pro Kilometer und kann Hin- und Rückfahrt einrechnen."}},
+{"@type":"Question","name":"Was ist die Kilometerpauschale?","acceptedAnswer":{"@type":"Answer","text":"Eine Pauschale, mit der Geschäfts- oder Dienstfahrten mit dem eigenen Auto abgerechnet werden, in Deutschland üblich 0,30 € pro Kilometer (ab dem 21. Entfernungskilometer bei der Pendlerpauschale mehr). Der konkrete Satz kann je nach Land und Zweck abweichen — du kannst ihn frei anpassen."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:14px}
+.seg button{font:inherit;font-size:.85rem;font-weight:700;padding:8px 15px;border:0;background:transparent;color:var(--amber-dk);cursor:pointer}
+.seg button.on{background:var(--amber-dk);color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.opt{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ink2);margin-top:10px}
+.out{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:6px 16px}
+.out table{width:100%;border-collapse:collapse;font-size:.95rem}
+.out td{padding:9px 0;border-bottom:1px solid var(--line)}
+.out tr:last-child td{border-bottom:0}
+.out td:last-child{text-align:right;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--amber-dk)}
+.big{font-size:1.5rem}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Fahrtkosten</span> berechnen</h1>
+    <p>Spritkosten aus Strecke, Verbrauch und Spritpreis — oder die Kilometerpauschale (0,30 €/km) für Geschäftsreisen. Mit Hin- und Rückfahrt. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Zeigt, was eine Fahrt wirklich kostet — fürs Angebot, die Reisekosten-Abrechnung oder den Vergleich.</p>
+
+  <section class="panel" id="tool">
+    <div style="text-align:center"><div class="seg" id="mode">
+      <button data-m="sprit" class="on">Spritkosten</button>
+      <button data-m="pausch">Kilometerpauschale</button>
+    </div></div>
+
+    <div id="spritBox">
+      <div class="grid">
+        <div class="fld"><label for="km">Strecke (km, einfach)</label><input id="km" type="number" value="120" min="0" step="1"></div>
+        <div class="fld"><label for="verb">Verbrauch (l/100 km)</label><input id="verb" type="number" value="6.5" min="0" step="0.1"></div>
+        <div class="fld"><label for="preis">Spritpreis (€/l)</label><input id="preis" type="number" value="1.79" min="0" step="0.01"></div>
+        <div class="fld"><label for="pers">Personen (Kosten teilen)</label><input id="pers" type="number" value="1" min="1" step="1"></div>
+      </div>
+    </div>
+    <div id="pauschBox" style="display:none">
+      <div class="grid">
+        <div class="fld"><label for="kmP">Strecke (km, einfach)</label><input id="kmP" type="number" value="120" min="0" step="1"></div>
+        <div class="fld"><label for="satz">Satz (€/km)</label><input id="satz" type="number" value="0.30" min="0" step="0.01"></div>
+      </div>
+    </div>
+    <label class="opt"><input id="rt" type="checkbox" checked> Hin- und Rückfahrt (× 2)</label>
+    <div class="out" id="out" aria-live="polite"></div>
+    <p class="note">Steuerlicher Satz variiert je Land/Zweck — Pauschale frei anpassbar, keine Steuerberatung. Alles lokal.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche.</p>
+    <p><a class="btn" href="/finanz-rechner.html">Stundensatz-Rechner</a>
+      <a class="btn ghost" href="/rechnung-generator.html">Rechnung</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/finanz-rechner.html">Finanz-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var mode="sprit";
+  function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+  function eur(v){return v.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";}
+  function render(){
+    var rt=document.getElementById("rt").checked?2:1, out=document.getElementById("out");
+    if(mode==="sprit"){
+      var km=num("km")*rt, verb=num("verb"), preis=num("preis"), pers=Math.max(1,Math.round(num("pers")));
+      var liter=km*verb/100, kosten=liter*preis, proKm=km>0?kosten/km:0;
+      out.innerHTML="<table><tbody>"+
+        '<tr><td>Gesamtkosten<span class="note"> ('+km.toLocaleString("de-DE")+" km)</span></td><td class=\"big\">"+eur(kosten)+"</td></tr>"+
+        "<tr><td>Verbrauch</td><td>"+liter.toLocaleString("de-DE",{maximumFractionDigits:1})+" l</td></tr>"+
+        "<tr><td>Kosten pro km</td><td>"+(proKm*100).toLocaleString("de-DE",{maximumFractionDigits:1})+" ct</td></tr>"+
+        (pers>1?"<tr><td>Pro Person ("+pers+")</td><td>"+eur(kosten/pers)+"</td></tr>":"")+
+        "</tbody></table>";
+    } else {
+      var kmP=num("kmP")*rt, satz=num("satz");
+      var betrag=kmP*satz;
+      out.innerHTML="<table><tbody>"+
+        '<tr><td>Erstattung<span class="note"> ('+kmP.toLocaleString("de-DE")+" km × "+satz.toLocaleString("de-DE",{minimumFractionDigits:2})+" €)</span></td><td class=\"big\">"+eur(betrag)+"</td></tr>"+
+        "</tbody></table>";
+    }
+  }
+  document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");
+    mode=b.getAttribute("data-m");
+    document.getElementById("spritBox").style.display=mode==="sprit"?"block":"none";
+    document.getElementById("pauschBox").style.display=mode==="pausch"?"block":"none";
+    render();
+  });});
+  ["km","verb","preis","pers","kmP","satz","rt"].forEach(function(id){var e=document.getElementById(id);e.addEventListener("input",render);e.addEventListener("change",render);});
+  render();
+})();
+</script>
+</body>
+</html>
