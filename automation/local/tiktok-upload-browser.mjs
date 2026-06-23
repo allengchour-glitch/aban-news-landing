@@ -57,9 +57,12 @@ function pickReel() {
   const meta = all.filter(f => /-9x16-meta\.mp4$/.test(f)).sort();
   const mont = all.filter(f => /^luxe-montage-.*\.mp4$/.test(f)).sort();         // Montagen (mehrere Produkte, dynamisch)
   // Meisterwerke + Montagen zuerst -> komplette, polierte Videos. Dedupe + nur Dateien > 250 KB.
+  // ⚠️ FIX 2026-06-23 (User: Post stummgeschaltet wegen nicht autorisierter Sounds): TikTok = STUMM hochladen.
+  // -meta-Videos (eingebackene CC-BY-Musik) werden von TikTok als nicht-autorisiert erkannt -> NICHT mehr posten.
+  // Nur stumme luxe-*-9x16.mp4 + Meisterwerke/Montagen. Trend-Sound legt der User in der App drauf.
   const seen = new Set();
-  const cand = [...mont, ...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe, ...meta]
-    .filter(f => big(f) && !seen.has(f) && (seen.add(f), true));
+  const cand = [...mont, ...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe]
+    .filter(f => big(f) && !/-meta\.mp4$/.test(f) && !seen.has(f) && (seen.add(f), true));
   for (const f of cand) if (!done.includes(f)) return path.join(REELS, f);
   // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu starten.
   // FIX 2026-06-22 (User: Montana-Dublette 21.+22. auf TikTok): NICHT komplett leeren — sonst wird dasselbe
