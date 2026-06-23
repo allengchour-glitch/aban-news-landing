@@ -21,6 +21,10 @@ mkdir -p _site
 # No-op ohne DOWNLOAD_SALT; tolerant (bricht den Build nicht ab).
 ( command -v python3 >/dev/null 2>&1 && python3 automation/build_kit_zips.py ) || echo "build_kit_zips übersprungen"
 
+# Seitensuche-Index aktuell halten (data/site-index.json) — damit die eigene Suche
+# (suchmaschine.html) immer alle neuen Seiten findet. Tolerant; bricht den Build nicht ab.
+( command -v python3 >/dev/null 2>&1 && python3 tools/build_search_index.py ) || echo "build_search_index übersprungen"
+
 # Portabel (kein rsync nötig): mit tar kopieren und dabei ausschließen.
 tar -cf - \
   --exclude='./.git' \
