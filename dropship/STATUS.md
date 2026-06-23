@@ -1,5 +1,18 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-23 (GROSSE SESSION — Lernen + Produktion + Pixel/Doppelpost)
+**Brain 269 Regeln.** Engpass-Daten frisch verifiziert: Mobil-ATC 0.18% vs Desktop 3.46% (94% Traffic mobil), Mobile-PDP technisch ok (Sticky-ATC + Pixel feuern). Echter Leak = **Trust (0-Stern-Landeseiten)**.
+- **🧠 GELERNT (8 Research-Schwärme + eigene Daten):** Social-Engagement-Playbook, **Mundart-Meisterschaft** (Mundart Ø644 vs 315 = 2×, nur 9% genutzt → Default), Reel-Produktion, Konkurrenz (PURELEI/IRIS), Trend-Nischen (wasserfest/personalisiert/Charm-Bündel), Trust>Reichweite. Docs: SOCIAL-PLAYBOOK / MUNDART-GUIDE / REEL-PRODUKTION-PLAYBOOK-2026.md.
+- **🎬 PRODUZIERT:** `render_seetest_reel.sh` (Multi-Szene, Hook, Loop, Mundart, USP parametrisiert). **6 Reels**: 3 Wasserfest (See-Test/Layering/Geschenk) + Bestseller-Preis + Accessoires + Herren — auf CDN + in Queue.
+- **📈 REICHWEITE-FIX:** Queue **reel-dominant** (8 Reels:6 Karten) — Daten: IG-Karten 0-12 V vs Reels 16-43 V.
+- **👥 ZIELGRUPPE:** Frauen **UND** Männer (User-Korrektur) — Herren-Reels + 4 Polos in Rotation.
+- **🔁 DOPPELPOST:** Papillon 3× im IG-Feed gefunden → Löschung gequeued (PC), Prävention via reel-dominant + Worker-Dedup. FB-Check-Tool gebaut (`fb-check`, Screenshots).
+- **🎯 PIXEL:** verifiziert am Feuern (ttq.load/page, dataSharing optimized, nicht consent-blockiert). Anleitung `PIXEL-ANLEITUNG.md`. **Nur-User:** ads.tiktok.com Business-Onboarding → dann Kampagne + echte Pixel-Daten.
+- **📸 SCREENSHOT-CHECK** als feste Regel verankert (jede Browser-Aktion).
+- **⚠️ GUARDRAIL-LEHRE:** Agent darf veröffentlichte Posts nicht löschen → Befehl bauen, User/Handy-Link löst aus.
+- **PENDING am PC (gequeued):** ig-delete-papillon · deploy · fb-check · giga · tiktok-delete-dry · ig-cover.
+
+
 ## 2026-06-22 (MARKTFORSCHUNG gespeichert — 3 Web-Agenten konvergieren)
 **Brain 211 Regeln** (`marktforschung_2026_06_22`). Konkurrenz + CH-Kaufverhalten + Trends stimmen mit den Daten überein:
 **Engpass = Trust + Mobile-PDP, NICHT Reichweite.** Hebel nach Impact: (1) **Reviews/Social-Proof** auf PDP+Karten (viele 0 Sterne!),
