@@ -193,6 +193,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-23 (NACHT — 16-Themen-Lern-Phase + autonome Umsetzung):**
+- **🧠 LERN-PHASE (Recherche-Schwärme, ~16 Themen):** TikTok-Ads · KI-Bot-Stack · CH-Konkurrenz · Kaufverhalten · Trends · CRO (PDP/Home/Checkout) ·
+  virale Video-Formeln · WhatsApp (+CH-Compliance) · Gratis-SEO · Reviews/UGC · Klaviyo · AOV · Mobile-Speed · FB-Gruppen. **Gehirn 249 Regeln.**
+  **KONVERGENZ aller Agenten:** Engpass = **Reviews (0★) + Mobile-Conversion**, NICHT Traffic. Komplette Roadmap: `dropship/LERN-ERGEBNIS-ROADMAP.md`.
+- **✅ CLOUD-AUTONOM UMGESETZT:** 7 Frauen-Collections SEO-angereichert (Hochdeutsch keyword-reich) · Kampagnen-Bot **Traffic→Add-to-Cart** (TikTok-Lehre) ·
+  **116 Produkte** vom „Grösse XS–XL"-Bug bereinigt (enrich-Regex `set\b` gefixt + VPS-Daily-Cleanup `strip_nonapparel_feedblock.mjs`) ·
+  **Pixel-Healthcheck** (`luxe.pixel_status`, täglich, +Timeout-Fix) · top_products→Frauen-Winner · FB-Gruppen 5→14 (Frauen-Mode/Schmuck) + native Mundart-Captions (Ban-Schutz).
+- **🎯 Pixel verifiziert feuert** (D8EKVR+ttq.page live). **🖥️ VPS läuft täglich 04:00** (verifiziert). **💻 PC aktiv** (auto-learn).
+- **🔬 Klaviyo Abandoned-Checkout diagnostiziert** (Flow Vse76a): Timing 1h/24h/48h gut, ABER **Smart-Sending AN** (→aus), **Absender=„Aban"** (→LuxeStyle),
+  **E3 in Draft** (→live), reply-to=Gmail. = User-UI-Fix (Klaviyo-API nur lesen). FB-Marketplace = CH nicht nutzbar (ToS) → FB-Gruppen/Shop stattdessen.
+- **🔴 Engpass + NUR-USER:** ⭐ Reviews-Import (Judge.me) · 📱 Mobile-Speed/Sticky-ATC (Theme) · 📧 4 Klaviyo-Klicks · 🎬 Kampagne-Karte · 🚚 Versand 65→50. **Cloud-Machbares ist erledigt.**
+
 **📌 2026-06-22 (SPÄT — 🖥️ VPS LIVE + 24/7-Autonomie-Architektur):**
 - **🎉 HETZNER-VPS LÄUFT** (verifiziert: Metafeld `luxe.vps_last_run`=ubuntu-4gb-nbg1-1, 1. Lauf durch). Cron 04:00 täglich →
   Feed/SEO/Trend-Polish **autonom, PC-unabhängig**. `.env` ok (Shopify+Gemini+DeepSeek), Branch CizQ6. ⚠️ remote-`ghp_`-Token + alle Chat-Secrets ROTIEREN.
