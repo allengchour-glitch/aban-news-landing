@@ -14,7 +14,8 @@ const clean=s=>s.replace(/[^\p{L}\p{N}\s&·.,'-]/gu,'').replace(/\s+/g,' ').trim
 const cut=(s,n)=>s.length<=n?s:s.slice(0,n-1).trim()+'…';
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
-const Q=`query($c:String){ collections(first:50, after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id handle title productsCount{count} image{url} descriptionHtml seo{title description} products(first:1){edges{node{featuredImage{url}}}} } } } }`;
+// products(first:30) + Status: Draft-/bildlose Produkte sortieren teils zuerst → erstes AKTIVES mit Bild nehmen
+const Q=`query($c:String){ collections(first:50, after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id handle title productsCount{count} image{url} descriptionHtml seo{title description} products(first:30){edges{node{status featuredImage{url}}}} } } } }`;
 let c=null, scanned=0, fImg=0, fSeo=0, fDesc=0;
 do{
   const r=await gql(t,Q,{c}); const pg=r?.data?.collections; if(!pg) break;
@@ -22,7 +23,7 @@ do{
     const x=e.node; if(x.productsCount.count<1) continue; scanned++;
     const ct=clean(x.title)||x.handle;
     const input={id:x.id}; let touch=false;
-    if(!x.image){ const pi=x.products?.edges?.[0]?.node?.featuredImage?.url; if(pi){ input.image={src:pi, altText:ct}; fImg++; touch=true; } }
+    if(!x.image){ const cand=(x.products?.edges||[]).map(e=>e.node).filter(n=>n.status==='ACTIVE'&&n.featuredImage?.url); const pi=(cand[0]||x.products?.edges?.find(e=>e.node.featuredImage?.url)?.node)?.featuredImage?.url; if(pi){ input.image={src:pi, altText:ct}; fImg++; touch=true; } }
     if(!x.seo?.title){ input.seo={title:cut(`${ct} kaufen | LuxeStyle Schweiz`,70), description:cut(`${ct} online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 65, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz.`,160)}; fSeo++; touch=true; }
     const txt=(x.descriptionHtml||'').replace(/<[^>]*>/g,'').trim();
     if(txt.length<40){ input.descriptionHtml=`<p><strong>${ct}</strong> bei LuxeStyle – kuratierte Auswahl für die Schweiz.</p><ul><li>✓ Premium-Qualität, sorgfältig ausgewählt</li><li>🚚 Gratis-Versand ab CHF 65</li><li>↩️ 30 Tage Rückgabe · TWINT, Karte &amp; PayPal</li><li>🇨🇭 Schweizer Shop · schnelle Lieferung</li></ul>`; fDesc++; touch=true; }

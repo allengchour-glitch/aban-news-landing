@@ -1554,3 +1554,12 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - Tool **`automation/alt_text_fill.mjs`** (idempotent, nur leere Alt; Alt = Produkttitel, Folgebilder „Titel – Ansicht N";
   `fileUpdate` auf MediaImage-IDs, gebatcht). DRY-Default · LIVE=1. 0 userErrors. Für künftige Importe nachlaufbar.
 - **Nutzen:** Google-Bildersuche + Accessibility. Ergänzt den schon sauberen On-Site-Stand (Beschreibungen/SEO/Feed/Bilder).
+
+## 📌 2026-06-23 Teil 32 (🏷️ COLLECTION-SEO + HERO-BILDER — Google-Kategorie-Ranking)
+- **Collection-Audit (279 nicht-leere Collections):** 5 ohne SEO-Title, 31 ohne Hero-Bild, 0 ohne Beschreibung.
+- **Behoben:** **5 SEO-Titel** gesetzt (camping-outdoor 199, bar-wein 166, pool-schwimmen 101, haarstyling-tools 53,
+  auto-zubehoer) · **31/31 Hero-Bilder** gesetzt (erstes Produktbild als Cover). Jetzt **0 Lücken**.
+- **🔧 Lehre + Tool-Fix (`collection_polish.mjs`):** Hero-Logik nahm nur `products(first:1)` → bei Smart-Collections mit
+  vielen DRAFT/bildlosen Produkten (sortieren teils ZUERST) schlug das fehl (z.B. smart-home-sub: 126 total, nur 11 aktiv).
+  Fix: `products(first:30)` + **erstes AKTIVES Produkt mit Bild** wählen. Bei sehr Draft-lastigen Collections ggf. first:250.
+- Ergänzt den sauberen On-Site-Stand: Produkt-Beschreibungen/SEO/Feed/Bilder/Alt-Texte + jetzt Collection-SEO/Heroes alle komplett.
