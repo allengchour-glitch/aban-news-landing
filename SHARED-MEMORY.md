@@ -1622,3 +1622,18 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   je Collection-Link resourcePublicationsCount + productsCount prüfen). Neu angelegte Collections IMMER sofort
   publishablePublish in alle Kanäle, sonst 404 im Menü. (create_subcollections.mjs publiziert bereits — diese 4
   waren wohl manuell/früher angelegt.)
+
+## 📌 2026-06-23 Teil 39 (🛒 BIGBUY-WELLE +15 „geile Produkte" + WICHTIG: Katalog NICHT erschöpft)
+- **User: „hole geile Produkte, BigBuy hat sehr viele" → bestätigt:** BigBuy-Katalog = **313'337 Produkte** mit DE-Namen.
+  Riesige Kandidaten-Pools je Kategorie (Uhren 9569, Audio 3543, Gaming 3368, Phone 2700, Anime 629). **NICHT mined out** —
+  die frühere „erschöpft"-Notiz galt nur für die 4 Default-Kategorien (schmuck/taschen/uhren/sonnenbrillen).
+- **+15 ACTIVE angelegt** (bigbuy_import.mjs, CATS=gaming,audio,anime,phone,uhren,parfum, PER=3): 🎮 Gaming-Gehäuse ×2 +
+  Switch-Sportspiel · 🎧 Schwebender LED-Lautsprecher + Bluetooth-Speaker + Kopfhörer · 🎌 Dragon-Ball-Figuren + Comic-Marker +
+  One-Piece-Brettspiel · 📱 Handyhülle + Rasierer-Ladegerät + Universal-Hülle · ⌚ 3 Damenuhren. (Parfum: 0 geeignete.)
+- **Voll-Polish-Chain auf die 15 gefahren:** 15 einzigartige KI-Beschreibungen · 3 SEO-Lücken gefüllt · 15× custom_product-Flag ·
+  15× google_product_category · 49 Alt-Texte · Bilder 0 FAILED · alle 6+ Kanäle. = sofort verkaufsfertig.
+- **🔧 Fix:** 3 XTRESS-Uhren bekamen von Gemini IDENTISCHE Titel (Quell-Namen gleich) → differenziert «Mira»/«Lina»/«Nova»
+  (Shop-«Name»-Konvention, ehrliche Stil-Deskriptoren, keine erfundenen Material-Claims). **Lehre: nach Import auf
+  Dubletten-Titel prüfen** (gleiche Quell-Namen → gleicher Gemini-Titel).
+- **Nächste Wellen möglich:** 41 Kategorien im Importer, riesige Pools. Gute frische Bereiche: gaming/audio/anime/phone/uhren/
+  beauty/home/fitness/velo/socken/caps/hoodies/schuhe. PER hochsetzen für mehr pro Lauf (Rate-Limit GAP≥1500 beachten).
