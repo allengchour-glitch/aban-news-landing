@@ -48,6 +48,18 @@ Betreiber: aban news (Allen Chour), Schweizer Einzelunternehmen, Belp (CH). Alle
 ## Alle Tools
 - [Alle kostenlosen Online-Tools](https://abannews.com/online-tools.html): 35+ Browser-Tools für Selbstständige, ohne Login.
 
+## Marktplatz & Kaufberater (Schweiz/DACH)
+- [Marktplatz](https://abannews.com/marktplatz.html): Jobs, Fahrzeuge, Immobilien, Angebote und Inserate an einem Ort.
+- [Kaufberater Schweiz (Übersicht)](https://abannews.com/kaufberater-schweiz.html): alle ehrlichen Produkt-Kaufberater (worauf achten, typische Fehler) + Vergleichs-Suche.
+- [KI-Themen A–Z (Übersicht)](https://abannews.com/ki-themen.html): gebündelte Übersicht aller KI-Ratgeber und Erklärungen.
+- [Universal-Suche](https://abannews.com/suche.html): Jobs, Angebote und Inserate gleichzeitig durchsuchen.
+- [Stellenangebote](https://abannews.com/stellenangebote.html) · [Angebote-Suche](https://abannews.com/angebote-suche.html) · [Immobilien](https://abannews.com/immobilien.html)
+
+## KI-Automation (Dienstleistung für Schweizer KMU)
+- [KI-Automation für KMU](https://abannews.com/ki-automation.html): Chatbots, Termin- und Lead-Automation, Backoffice-Automatisierung — transparent, DSGVO-bewusst.
+- [Automatisierungs-Checkliste](https://abannews.com/ki-automation-checkliste.html): kostenlose 10-Punkte-Selbsteinschätzung, welche Aufgaben sich lohnen.
+- [Spar-Rechner](https://abannews.com/ki-automation-rechner.html): interaktiver Rechner für die Kosten wiederkehrender Routinearbeit.
+
 ## English
 - [aban news (English)](https://abannews.com/en/): the honest, anti-hype AI newsletter for the self-employed.
 - [Premium / Founding member (€69 lifetime)](https://abannews.com/en/founding.html): ad-free, full archive, one-time payment.
