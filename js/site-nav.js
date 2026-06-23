@@ -39,6 +39,7 @@
       ["Anfrage / Kontakt", "/kontakt.html", "Leistungen", "Unverbindlich anfragen — Festpreis & Plan"],
       ["KI-Automation für KMU", "/ki-automation.html", "Leistungen", "Chatbots, Termin- & Lead-Automation für Schweizer Betriebe"],
       ["Digitale Produkte", "/digitale-produkte.html", "Leistungen", "Prompt-Pack, Checklisten, Vorlagen"],
+      ["KI-Themen A–Z (Übersicht)", "/ki-themen.html", "Start", "Alle KI-Ratgeber & Erklärungen auf einen Blick"],
       ["Universal-Suche", "/suche.html", "Start", "Jobs, Angebote & Inserate mit einer Suche auf einmal"],
       ["Kaufberater Schweiz (Übersicht)", "/kaufberater-schweiz.html", "Start", "Alle 238 ehrlichen Kaufberater auf einen Blick"],
       ["Marktplatz", "/marktplatz.html", "Start", "Jobs, Auto, Immobilien, Angebote & Inserate an einem Ort (CH/DACH)"],
