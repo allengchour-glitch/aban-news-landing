@@ -125,7 +125,7 @@ footer{{max-width:1000px;margin:0 auto;padding:18px;font-size:.82rem;color:var(-
   <h2>Häufige Fragen</h2>
   {faq_html}
 </section>
-<footer>aban news · {n} Kaufberater für die Schweiz · <a href="/marktplatz.html">Marktplatz</a> · <a href="/">Start</a> · <a href="/impressum.html">Impressum</a></footer>
+<footer>aban news · {n} Kaufberater für die Schweiz · <a href="/ki-themen.html">KI-Themen A–Z</a> · <a href="/marktplatz.html">Marktplatz</a> · <a href="/">Start</a> · <a href="/impressum.html">Impressum</a></footer>
 <script type="application/ld+json">{json.dumps(faq_ld, ensure_ascii=False)}</script>
 </body>
 </html>
