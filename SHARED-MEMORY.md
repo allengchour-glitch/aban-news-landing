@@ -1548,3 +1548,9 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **GESAMT-STAND Katalog (verifiziert sauber, diese Session):** Beschreibungen 2635/2635 einzigartig · SEO 4080/4080 ·
   Merchant-Feed (GTIN/custom_product/Kategorie) komplett · Bilder 0 Lücken/0 FAILED. **Conversion-/SEO-seitig maximal
   ausgereizt** → verbleibender Hebel = REICHWEITE (Cloudflare-Worker LIVE-Flag + Ad-Kampagne/Budget = User-Klicks).
+
+## 📌 2026-06-23 Teil 31 (🖼️ BILD-ALT-TEXTE katalogweit — Google-Bilder-SEO)
+- **3353 fehlende Bild-Alt-Texte** auf **918 Produkten** gesetzt → **0 verbleibend** (4080 aktive, 11702 Bilder geprüft).
+- Tool **`automation/alt_text_fill.mjs`** (idempotent, nur leere Alt; Alt = Produkttitel, Folgebilder „Titel – Ansicht N";
+  `fileUpdate` auf MediaImage-IDs, gebatcht). DRY-Default · LIVE=1. 0 userErrors. Für künftige Importe nachlaufbar.
+- **Nutzen:** Google-Bildersuche + Accessibility. Ergänzt den schon sauberen On-Site-Stand (Beschreibungen/SEO/Feed/Bilder).
