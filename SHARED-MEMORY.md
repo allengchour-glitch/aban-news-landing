@@ -1583,3 +1583,14 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Nutzen:** Internes Linking verteilt Link-Equity → Google rankt Kategorie-Seiten besser + crawlt tiefer; Besucher
   bleiben im Shop (weniger Bounce). Ergänzt Menü + Filter-Hub als 3. Verlinkungs-Ebene.
 - **Nachlaufbar:** bei neuen Collections/Menü-Änderungen erneut laufen → setzt nur fehlende (Marker-idempotent).
+
+## 📌 2026-06-23 Teil 35 (🏠 STARTSEITEN-AUDIT + Top-10 vervollständigt)
+- **Live-Homepage (Theme MAIN templates/index.json) gelesen — 11 Sektionen, Reihenfolge solide:**
+  Hero → product-list `wm-fussball-2026`(53) → Hero(Selbst-gestalten) → `topseller`(725) → Hero(Trust) →
+  `bestseller-premium-heroes`(Top10) → `neu-eingetroffen`(3086) → `highlights`(26) → `premium-geschenke`(1119) →
+  collection-list(Kategorie-Grid) → Hero(Abschluss). Alle Produkt-Listen-Collections gesund gefüllt.
+- **Einziger Fix:** „⭐ Top 10 Bestseller" (manuell, ruleSet null) hatte nur **7** Produkte → **auf 10 ergänzt** mit
+  premium Marken-Flaggschiffen für Varianz+Gender-Balance: Guess-Sonnenbrille (Eyewear), Tommy-Hilfiger-Herrenuhr,
+  Calvin-Klein «Eternity for Men». Marken-Mix jetzt MK/Olivia Burton/D&G/Casio/Guess/Tommy/CK + 3 LuxeStyle-Premium.
+- **Fazit:** Startseite („a und o") ist strukturell + inhaltlich rund. Kein weiterer Eingriff nötig (Customizer kann
+  Sektionen theoretisch überschreiben — index.json war hier nur Lese-Audit, nur die Collection-Mitgliedschaft geändert).
