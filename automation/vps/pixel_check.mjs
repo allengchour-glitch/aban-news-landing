@@ -3,7 +3,7 @@
 // No-op-sicher. Lauf: node automation/vps/pixel_check.mjs   (Creds aus ENV, NIE im Repo).
 const ID = process.env.SHOPIFY_CLIENT_ID, SEC = process.env.SHOPIFY_CLIENT_SECRET, SHOP = process.env.SHOPIFY_SHOP;
 const STORE = process.env.STORE_URL || 'https://luxestyle.ch/';
-let html = ''; try { html = await (await fetch(STORE, { headers: { 'User-Agent': 'Mozilla/5.0 (iPhone)' } })).text(); } catch { html = ''; }
+let html = ''; try { html = await (await fetch(STORE, { headers: { 'User-Agent': 'Mozilla/5.0 (iPhone)' }, signal: AbortSignal.timeout(15000) })).text(); } catch (e) { html = ''; console.log('pixel_check: Storefront-Fetch fehlgeschlagen ->', String(e).slice(0,60)); }
 const has = s => html.includes(s);
 const pid = has('D8EKVR'), load = has('ttq.load'), page = has('ttq.page'), wpm = has('web-pixels-manager');
 const ok = pid && page && wpm;
