@@ -29,6 +29,8 @@ log "Trend-Scan CH (Google-Trends gratis + AI-Ideen, stateless/safe)..."
 "$NODE" automation/trends/trend_scan.mjs 2>&1 | tail -12 || log "trend_scan uebersprungen (weiter)"
 log "TikTok-Pixel-Healthcheck (Storefront -> Metafeld luxe.pixel_status)..."
 "$NODE" automation/vps/pixel_check.mjs 2>&1 | tail -3 || log "pixel_check uebersprungen (weiter)"
+log "TikTok-Ad-Stats (nur falls TIKTOK_ACCESS_TOKEN gesetzt) -> Metafeld luxe.tiktok_stats..."
+"$NODE" automation/vps/tiktok-stats.mjs 2>&1 | tail -3 || log "tiktok-stats uebersprungen (weiter)"
 log "Proof-of-Life Metafeld stempeln (luxe.vps_last_run)..."
 "$NODE" automation/vps/stamp_alive.mjs 2>&1 | tail -3 || log "stamp uebersprungen (weiter)"
 
