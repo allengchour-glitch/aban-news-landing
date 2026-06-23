@@ -55,10 +55,24 @@ function Ensure-Brave {
   }
 }
 try {
-  $r = Invoke-RestMethod -Uri "https://luxe-poster.allengchour.workers.dev/?key=Abanaban192%2B&drain=1" -TimeoutSec 25
-  if (-not $r.commands) { exit }
-  foreach ($it in $r.commands) {
-    $c = "$($it.cmd)"; Write-Host "[cmd] $c"; Ensure-Brave
+  $cmds = @()
+  # QUELLE 1: Cloudflare-Worker (drain) - kann ausfallen (Tageslimit/1101).
+  try { $r = Invoke-RestMethod -Uri "https://luxe-poster.allengchour.workers.dev/?key=Abanaban192%2B&drain=1" -TimeoutSec 25; if ($r.commands) { foreach ($it in $r.commands) { $cmds += "$($it.cmd)" } } } catch { Write-Host "[worker] down (Cloudflare-Limit?) -> nutze git-Kanal" }
+  # QUELLE 2: GIT-BEFEHLSKANAL (worker-unabhaengig, "immer ein Weg"): Cloud committet automation/local/cloud-commands.json
+  # -> PC pullt + fuehrt neue Befehle aus (Dedup via lokalem done-file). Funktioniert auch wenn der Worker tot ist.
+  git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null | Out-Null
+  $doneFile = "automation/local/cloud-commands-done.txt"
+  if (Test-Path "automation/local/cloud-commands.json") {
+    try {
+      $done = if (Test-Path $doneFile) { Get-Content $doneFile } else { @() }
+      foreach ($g in (Get-Content "automation/local/cloud-commands.json" -Raw | ConvertFrom-Json)) {
+        if ($done -notcontains "$($g.id)") { $cmds += "$($g.cmd)"; Add-Content $doneFile "$($g.id)"; Write-Host "[git-cmd] $($g.cmd) (id $($g.id))" }
+      }
+    } catch { Write-Host "[git-cmd] Lesefehler: $($_.Exception.Message)" }
+  }
+  if (-not $cmds -or $cmds.Count -eq 0) { exit }
+  foreach ($c in $cmds) {
+    Write-Host "[cmd] $c"; Ensure-Brave
     switch ($c) {
       "tiktok"       { if ($env:TT_ACCESS_TOKEN) { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" } else { & node "automation/local/tiktok-upload-browser.mjs" } }
       "post"         { if ($env:TT_ACCESS_TOKEN) { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" } else { & node "automation/local/tiktok-upload-browser.mjs" } }

@@ -46,3 +46,4 @@ session-check.png
 # Musik-Cache: re-downloadbar aus automation/music/catalog.json (nicht ins Repo)
 automation/music/lib/
 automation/local/*.log
+automation/local/cloud-commands-done.txt
