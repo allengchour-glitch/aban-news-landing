@@ -102,6 +102,15 @@ function loadGood() {
   } catch { return []; }
 }
 async function priceMap() {
+  // Cache (1h TTL) → verhindert 40 sequenzielle Fetches pro Build (Timeout-Ursache). Self-Improve 2026-06-23.
+  const cacheFile = path.join(process.env.TMPDIR || '/tmp', 'luxe_pricemap.json');
+  try {
+    const st = fs.statSync(cacheFile);
+    if (Date.now() - st.mtimeMs < 3600e3) {
+      const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+      if (cached && Object.keys(cached).length) return cached;
+    }
+  } catch {}
   const m = {};
   try {
     for (let page = 1; page < 40; page++) {
@@ -109,6 +118,7 @@ async function priceMap() {
       const ps = d.products || []; if (!ps.length) break;
       for (const p of ps) { const v = (p.variants || [])[0]; if (v?.price) m[p.handle] = v.price; }
     }
+    if (Object.keys(m).length) fs.writeFileSync(cacheFile, JSON.stringify(m));
   } catch {}
   return m;
 }
@@ -134,8 +144,12 @@ function loadReels() {
         cap += `\n${TRUST_LINES[reels.length % TRUST_LINES.length]}`;
       seen.add(video); reels.push({ type: 'reel', video, caption: cap });
     }
-    // TÄGLICHE ROTATION: Pool um einen Tages-Offset drehen, damit über die Tage ALLE Assets
-    // (Hero-Reels + Selbst-gestalten + Veo) durch die 6 Feed-Slots rotieren — autonome Vielfalt.
+    // NEUESTE ZUERST (Self-Improve 2026-06-23): neue Reels werden ans CSV-Ende angehängt → umdrehen,
+    // damit die neuesten/besten (Playbook-konform: Engagement-Hooks, Mundart, Loop) Vorrang in der Rotation
+    // bekommen statt unter ~70 alten begraben zu werden.
+    reels.reverse();
+    // TÄGLICHE ROTATION: Pool um einen Tages-Offset drehen → über die Tage rotieren alle durch (Vielfalt),
+    // aber die neuesten bleiben in den vorderen Slots gewichtet.
     if (reels.length > 1) {
       const off = (Math.floor(Date.now() / 864e5)) % reels.length;
       return reels.slice(off).concat(reels.slice(0, off));
