@@ -28,7 +28,7 @@ BRANCH="${BRANCH:-main}"            # Branch, von dem deployt wird (Default main
 APP_DIR="${APP_DIR:-/opt/abannews}"
 ENV_DIR="/etc/abannews"
 ENV_FILE="$ENV_DIR/deploy.env"
-INTERVAL="${INTERVAL:-3min}"        # Poll-Intervall des Auto-Deploys
+INTERVAL="${INTERVAL:-30min}"       # Poll-Intervall des Auto-Deploys (max ~48 Deploys/Tag → unter Cloudflares Limit)
 NODE_MAJOR="${NODE_MAJOR:-22}"
 
 log() { printf '\n\033[1;36m▶ %s\033[0m\n' "$*"; }
