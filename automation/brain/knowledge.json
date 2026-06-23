@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T12:54:40.316Z",
+  "updated": "2026-06-23T12:58:19.264Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1325,6 +1325,32 @@
       "STUNDE CH (Ø Views): 18h Ø810, 20h Ø799, 15h Ø498 = Abend-Primetime. Schwach: 12h Ø128, frueh morgens. -> TikTok (Giga-Bot) abends CH 18-20h posten.",
       "HASHTAG-VIEW-DATEN sind verrauscht (kleine Samples) + View-Tags (#bohostyle/#swisspremium) = 0 Engagement -> Engagement-Tags (#sommermode/#ootd/#schweiz) bleiben Prio (siehe social_lernen). Views != Engagement.",
       "Meta-Worker-Cron (CH 11+19h) NICHT auf TikTok-Stundendaten umgestellt (anderes Publikum, schwache Stichprobe) -> bewusst belassen."
+    ],
+    "reel_produktion_2026": [
+      "Von statisch->fesselnd: Hook-Fenster 2026 = 0.8-1.2s, neuer Reiz alle 4-6s, kein Clip >3s, auf Beat schneiden, >=1 echte Transition (Hand-Cover-Reveal/Whip-Pan), Pattern-Zoom 100-115-100% + SFX, LOOP (letztes Frame=erstes).",
+      "Erstes FRAME muss visuell stoppen (Makro-Funkeln/Bewegung), NIE statische Produktkarte. Visueller+verbaler Hook = +47% 3s-Retention. Zahlen im Hook = +37% Completion.",
+      "Schmuck-Shots die verkaufen: Makro+Bewegung im Licht, am Körper getragen (nicht Freisteller), Wasserfest-Demo, 360-Dreh, Before/After.",
+      "Luma I2V strikt 4-5s + stitchen (länger=Morphing); Luma/ffmpeg=B-Roll/Glanz, CapCut=Rhythmus/Transitions/echte Body-Shots.",
+      "Länge: Recherche 8-19s Completion, ABER eigene Daten länger=mehr Views -> 20-30s NUR mit echter Story/mehr Szenen, nie lange statische Pans. Volle Bauanleitung: dropship/REEL-PRODUKTION-PLAYBOOK-2026.md."
+    ],
+    "konkurrenz_2026": [
+      "DACH-Benchmark PURELEI (8-stellig <3J, wasserfester Steel): wöchentliche Drops/Knappheit, Micro-Influencer-Gifting/Unboxing, Ozean-Story. = Social-Commerce-Bauplan.",
+      "Schweizer direkte Peers (316L wasserfest hypoallergen): IRIS Collection (Schwestern, dini-CH-Marke), JEVAANI, Tara Style, KOHO, Meereskind, nika, beestie. Trust-Hebel: CH-Marke+Gründer-Story+Garantie.",
+      "CH-Creator Collab/Referenz: Noemi Nikita (13.5M), Larissa Jeanne, Mariela, Ally.",
+      "TIMING: TikTok-Shop CH startet ~2026 (Fashion/Beauty=Top). JETZT wasserfest-Content-Bibliothek+Audience bauen -> bereit beim Launch.",
+      "#1-Format (alle Schwärme konvergieren): wasserfest See-/Dusch-Test = Flaggschiff (widerlegt grün/anlaufen-Einwand -> Shares+Kommentare+beweist USP)."
+    ],
+    "trend_nischen_2026": [
+      "Top-3 Wetten (gift-bar, hohe Marge, low-return, viral): (1) wasserfester 316L-Steel-Schmuck CHF20-45, (2) personalisiert/Geburtsstein/Initialen CHF30-60 (Premium, killt Preisvergleich), (3) Charm-Bündel/Build-your-own + Bag-Charms (hebt AOV strukturell -> direkt gegen low-ATC).",
+      "Bag-Charms: Pinterest +700%/Jahr, CHF15-35 Impuls-Add-on. Quiet-Luxury Gold-Layering-SETS (nicht Einzelketten) + Chokers/Statement-Earrings (Breuninger CH Top-2) + Spiritual/Evil-Eye (Story).",
+      "AOV-FIX = Sets/Bündel verkaufen (Charm-Kits, Layering-Sets, Geburtsstein-Familie-Multistone).",
+      "MEIDEN: Dupe-Parfums (Markenrecht/Ad-Policy-Risiko) + nicht-konforme Kosmetik (CH/EU-Labeling, Haftung). Beauty nur als Content-Crossover (Beauty-als-Bag-Charm), nicht als Kern-Kosmetiklinie."
+    ],
+    "trust_conversion_2026": [
+      "Engpass=Trust nicht Reichweite. Hebel-Reihenfolge: (1) echte Reviews live (Judge.me-Import, NIE fake), (2) Wasser-Test/Haltbarkeits-Demo + Garantie-Copy, (3) TWINT+Kauf-auf-Rechnung sichtbar, (4) transparente CH-Lieferzeit, (5) UGC-Reposts via Micro-Creator, (6) Mundart NUR in Captions/Replies.",
+      "UGC = höchster Hebel (79-90% lassen sich davon beeinflussen vs 4% Marken-Botschaft; UGC-Review-Engager konvertieren ~144% mehr). Kunden-Tag-Reposts = gratis Reichweite.",
+      "Garantie gegen Anlaufen/Farbverlust (Geld-zurück/Ersatz) macht wasserfest-Claim zur Verpflichtung -> verstärkt Demo-Beweis. Ehrliche Ausnahmen nennen.",
+      "2026: sauberes Design ist KEIN Trust-Signal mehr (Scammer habens auch) -> Trust=Beweis (Demos, echte UGC/Reviews, transparente Policies, echte Zahlung, echtes Gesicht). Micro-Creator 9.4% Eng vs 3.3% bei 500k+."
     ]
   },
   "decisions": [

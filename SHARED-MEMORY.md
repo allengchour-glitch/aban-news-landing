@@ -1,5 +1,19 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🎓 LERN-ERGEBNIS Social+Markt (CizQ6 2026-06-23) — umsetzbar für Katalog/Theme-Session
+**6 Research-Schwärme + eigene Daten.** Volle Playbooks: `dropship/REEL-PRODUKTION-PLAYBOOK-2026.md`,
+`dropship/MUNDART-GUIDE-2026.md`, `dropship/SOCIAL-PLAYBOOK-2026.md`. Kern für EUCH (Katalog/Theme):
+- **🛒 AOV-FIX (gegen low-ATC):** SETS/BÜNDEL verkaufen — **Charm-Build-your-own-Kits**, **Layering-Sets** (statt Einzelketten),
+  **Geburtsstein-Familie-Multistone**. Strukturell höherer Warenkorb. Bag-Charms (Pinterest +700%/J, CHF15-35 Impuls-Add-on).
+- **💎 Top-3-Nischen 2026 (low-return, gift-bar):** (1) wasserfester 316L-Steel CHF20-45, (2) personalisiert/Geburtsstein CHF30-60
+  (killt Preisvergleich), (3) Charm-/Bag-Charm-Bündel. **MEIDEN:** Dupe-Parfums (Markenrecht) + nicht-konforme Kosmetik (CH/EU-Labeling).
+- **🤝 TRUST > Reichweite (Conversion-Engpass):** (1) **echte Reviews live** (Judge.me, NIE fake) — höchste Prio,
+  (2) **Garantie gegen Anlaufen** (Geld-zurück) als Copy auf wasserfest-PDPs, (3) TWINT+Kauf-auf-Rechnung sichtbar,
+  (4) transparente CH-Lieferzeit. 2026: sauberes Design ≠ Trust mehr → Beweis (Demos/UGC/Reviews/Garantie) zählt.
+- **🏆 Benchmark:** PURELEI (DACH-Leader-Bauplan) + Schweizer Peers IRIS Collection/JEVAANI/Tara/KOHO (CH-Marke+Garantie).
+- **⏰ TikTok-Shop CH startet ~2026** (Fashion/Beauty=Top) → jetzt wasserfest-Content+Audience aufbauen = Timing-Fenster.
+**Social-Session macht:** wasserfest-„See-Test"-Reels (Flaggschiff), Mundart-Default, Engagement-Hooks. EURE Spur: Sets/Bündel anlegen + Reviews + Garantie-Copy.
+
 # 🔬 VERIFIZIERTER DATEN-FUND (CizQ6 2026-06-23) — Mobile-Leak seziert + KORREKTUREN für Theme-Session
 **Echte Daten 14T:** 4773 Sess · ATC 0.36% · 1 Checkout-Abschluss (= alter User-Testkauf). **Mobil 4512→8 ATC = 0.18% vs Desktop 260→9 = 3.46% → Mobil ~19× schlechter, 94% Traffic mobil.**
 **✅ KORREKTUREN (live iPhone-Fetch von luxestyle.ch/products/… verifiziert) — bitte NICHT mehr als offen führen:**
