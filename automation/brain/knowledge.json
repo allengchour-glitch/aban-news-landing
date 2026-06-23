@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T12:03:23.110Z",
+  "updated": "2026-06-23T12:09:00.616Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1292,6 +1292,19 @@
       "Hashtag-Engagement (Ø-Eng%): #sommermode 9.97%, #ootd 6.29%, #schweiz 6.16%, #cardigan 5.97%, #fashionschweiz 5.35% = ENGAGEMENT-stark -> priorisieren. View-only/Marken-Tags (#luxestyle, #bohostyle 0.56%, #swisspremium 0.66%) bringen Views aber 0 Engagement -> nachrangig.",
       "#herrenmode = 0.18% Eng = bestätigt Frauen-Pivot: Herren-Content stirbt, nicht mehr posten.",
       "KONSEQUENZ fürs Content: weg von statischen Produkt-Pans/Slideshows -> hin zu Bewegung/Demo/UGC + Text-Hook 1. Sek + 1 expliziter Save-/Share-Trigger pro Video. Trend-Sound (TikTok stumm hochladen, User legt Sound drauf)."
+    ],
+    "social_playbook_extern_2026_06_23": [
+      "ENGPASS = REAKTIONS-DESIGN, nicht Reichweite. Jeder Post braucht >=1 eingebauten Auslöser: Share-Tag / Save-Prompt / Hot-Take-Kommentar / Loop. Quellen: buffer.com, darkroomagency.com, opus.pro, shopify.com, later.com, newengen.com (2025/26).",
+      "ALGO-GEWICHT 2026: Sends/DM-Shares = #1 Verteil-Signal, Saves = #1 Langlebigkeit, dann sinnvolle Kommentare, dann Likes; Watch-Time/Rewatch = Gate. Produkt-Pans liefern 0 davon -> stoppen.",
+      "FORMAT-GEWINNER (Saves/Shares): (1) Liste «5 [Teile] wo zu allem passe» (3-7) = Top-Save; (2) «1 Stück – 5 Looks» Styling-Hack; (3) Pack-an-Order-with-me ASMR-Serie; (4) GRWM/Fit-Check/Abend-Ritual; (5) Before/After & Reveal-auf-dem-Beat; (6) Talking-Head Hot-Take = stärkster Kommentar/Share-Treiber.",
+      "GESICHT+STIMME als Default (Mundart-VO oder Talking-Head) statt faceless Produkt-Pans — baut Community die teilt. Bestätigt durch eigene Mundart-Daten (Ø797 vs Ø52).",
+      "HOOK Sek 0-3 muss Reaktion erzwingen: Contrarian («Alli säge X, aber…»/«Hör uf…»), Fehler («I ha [Fehler] gmacht…»), Neugier-Lücke («Warte bis am Schluss»), Spezifität statt vage. 3s-Hold >60% = 5-10x Reichweite (opus.pro).",
+      "SHARE-Trigger einbauen: «Tag dini Bestie wo [X] liebt». SAVE-Trigger: «Speicher das für dis nächste Outfit». Reflexions-Frage «Was würdsch zersch träge?» schlägt schwaches «Was meinsch?».",
+      "LOOP bauen: letzter Frame=erster Frame, auf Bewegung schneiden, 2nd-pass-Detail verstecken (Rewatch = TikToks #1-Signal).",
+      "CAPTION <150 Zeichen: Keyword+Nutzen+EINE CTA, enden mit Reflexions-Frage. PINNED COMMENT in Stunde 1 (Thread-Starter/Teil-2/Shop-Link) + schnell auf erste Kommentare antworten.",
+      "SOUND = nischig + aufsteigend (nicht breit-viral), innert 24-48h aufspringen. TikTok stumm hochladen (User legt Trend-Sound in-App drauf) = bestehende Regel beibehalten.",
+      "KADENZ >=3x/Woche konstant, zeitlich gestreut (nie back-to-back). Format-Trends 3-4 Wochen, Audio-Trends 7-10 Tage Lebensdauer.",
+      "UMGESETZT 2026-06-23: build_queue OPENERS auf Contrarian/Neugier/Mundart umgebaut (schwache Poll-Fragen raus), TRIGGERS = garantiert Share/Save/Tag pro Post. Playbook: dropship/SOCIAL-PLAYBOOK-2026.md."
     ]
   },
   "decisions": [

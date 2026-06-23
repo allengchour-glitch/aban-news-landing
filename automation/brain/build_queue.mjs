@@ -38,32 +38,34 @@ const DRY = process.argv.includes('--dry');
 // Mix aus Bärndütsch (bester Hook-Typ, Ø 793 V — siehe berndeutsch.json) + Hochdeutsch.
 // ⚠️ 2026-06-14: Liste erweitert (vorher 6 → Opener wiederholten sich 3× pro Queue = sah wie Doppel-Post aus).
 const OPENERS = [
-  // 🏆 GEWINNER-FRAGE-HOOKS zuerst (Analyse 2026-06-17: Frage/Poll-Captions treiben Kommentare,
-  // bestes IG-Post-Engagement; Top-Mode-Shops nutzen das). Frage = Engagement-Trigger.
-  'Weles nimmsch – 1, 2 oder 3? 👀',             // Bärndütsch (bester Engagement-Typ)
-  'Für di oder zum Verschänke? 🎁',              // Bärndütsch (Frage)
-  'Weles isch dis Lieblingsteil? 🤍',           // Bärndütsch (Frage)
-  'Lueg mau das aa 😍',                          // Bärndütsch
-  'Äuä ds schönschte Teil grad itz 👀',          // Bärndütsch
-  'Wusste nicht, dass ich das brauche 👀',
-  'Viu Style für wenig Gäud ✨',                  // Bärndütsch (L-Vokalisierung)
+  // 🏆 DATEN+RECHERCHE 2026-06-23: Hook-Scoreboard = mundart Ø797 >> preis_vergleich Ø389 > generisch Ø320
+  // > preis-only Ø164 > frage_cta Ø52 (SCHLECHTESTE). Recherche (opus.pro/darkroom/shopify 2026): schwache
+  // Poll-Fragen floppen; CONTRARIAN / NEUGIER-LÜCKE / SPEZIFITÄT + Mundart erzwingen Reaktion in Sek 0–3.
+  // → Gewinner-Hooks zuerst (Mundart-Statement, contrarian, curiosity), schwache Fragen raus/nach hinten.
+  'Niemer glaubt, dass das so günstig isch 👀',  // contrarian/curiosity (Top-Typ)
+  'Hör uf tüüri Sache z chaufe — lueg das aa 👀',// contrarian
+  'Das macht jedes Outfit teurer (ohni teuer z sii) ✨', // spezifisch
+  'Warte bis am Schluss 👀',                     // Neugier-Lücke
+  'I ha lang gsuecht — das isch es 🤍',          // relatable Mundart
+  'Lueg mau das aa 😍',                          // Mundart (Gewinner-Vibe)
+  'Niemer merkt, dass das nid vom Juwelier isch 💍', // contrarian/spezifisch
   'Das gibt es so kaum in der Schweiz 🇨🇭',
-  'Genau das hesch gsuecht, gäu? 🙌',            // Bärndütsch
-  'Das mues i ha 🤍',                            // Bärndütsch
+  'Äuä ds schönschte Teil grad itz 👀',          // Mundart
+  'Viu Style für wenig Gäud ✨',                  // Mundart
+  'Das mues i ha 🤍',                            // Mundart
   'Stopp — das musst du sehen ✋',
-  'Schnäu si, bevors weg isch 🏃‍♀️',             // Bärndütsch
-  'Dis nöie Lieblingsteil? 👀',                  // Bärndütsch
-  'Kleiner Preis, grosse Wirkung ✨',
-  'Hesch das scho gseh? 🇨🇭',                    // Bärndütsch
-  'Genau das hat mir gefehlt 🙌',
+  'Dis nöie Lieblingsteil? 👀',                  // Mundart
+  'Weles träisch zersch – 1, 2 oder 3? 👀',      // verbesserte Reflexions-Frage (statt schwacher Poll)
 ];
+// Recherche 2026-06-23: Sends/DM-Shares = höchstgewichtetes Signal, Saves = Langlebigkeit, dann Kommentare.
+// JEDER Post bekommt EXPLIZIT einen Share- ODER Save- ODER Tag-Trigger (genau das fehlte → 0 Shares).
 const TRIGGERS = [
-  '💾 Spicher dr das für spöter',                // Bärndütsch
-  '👇 Markier öpper, wo das bruucht',            // Bärndütsch
-  '👇 Würdest du? Schreib’s in die Kommentare',
-  '💾 Merk’s dir · folg für meh Schwiizer Finds',// Bärndütsch
-  '↗️ Teil das mit dyre beschte Fründin 💛',     // Bärndütsch
-  '👇 Wele nimmsch? Schrib’s i d Kommentär',     // Bärndütsch
+  '↗️ Teil das mit dyre beschte Fründin 💛',     // SHARE (stärkstes Signal)
+  '👇 Markier öpper, wo das bruucht',            // TAG → Share
+  '💾 Spicher dr das für dis nächste Outfit',    // SAVE (Langlebigkeit)
+  '↗️ Schick das dyre Schwöschter 👀',           // SHARE
+  '💾 Merk’s dir · folg für meh Schwiizer Finds',// SAVE + Follow
+  '👇 Gold oder Silber? Schrib’s i d Kommentär', // A/B → Kommentar+Tag
 ];
 
 function loadPools() {
