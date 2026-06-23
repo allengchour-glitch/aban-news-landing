@@ -53,11 +53,15 @@ function writeStatus(o) { try { fs.writeFileSync(STATUS, JSON.stringify({ ts: ne
           await ab.act(`open the first post/video thumbnail in the grid that shows ${MATCH}`);
           await sleep(3500); await p.screenshot({ path: path.join(SHOT, `open-${i + 1}.png`) });
           if (!GO) { log(`[dry] Dublette ${i + 1} geoeffnet (Screenshot), NICHT geloescht.`); await p.keyboard.press('Escape').catch(() => {}); await sleep(1500); continue; }
-          await ab.act('click the more options button (three dots) on this video');
+          // Recherche 2026: das TikTok ⋮-Menue liegt UNTEN RECHTS neben dem Video (nicht oben) + braucht echtes Hover.
+          if (PLATFORM === 'tiktok') { try { await p.mouse.move(960, 700); await sleep(500); } catch {} }
+          await ab.act(PLATFORM === 'tiktok'
+            ? 'hover over the action bar at the BOTTOM-RIGHT next to the video and click the three-dots (more options) button there — it is NOT at the top'
+            : 'click the more options button (three dots) on this post');
           await sleep(1500);
-          await ab.act('click the Delete option');
+          await ab.act('in the menu, click the item whose text is Delete or Löschen');
           await sleep(1500);
-          await ab.act('confirm the deletion (click Delete in the dialog)');
+          await ab.act('in the confirmation dialog, click the button labeled Delete or Löschen (never Cancel/Abbrechen)');
           await sleep(3500); await p.screenshot({ path: path.join(SHOT, `after-${i + 1}.png`) });
           deleted++; log(`✅ Dublette ${i + 1} geloescht (AI).`);
           await p.goto(PROFILE_URL, { waitUntil: 'domcontentloaded', timeout: 45000 }); await sleep(5000);
