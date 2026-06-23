@@ -42,18 +42,20 @@ const OPENERS = [
   // > preis-only Ø164 > frage_cta Ø52 (SCHLECHTESTE). Recherche (opus.pro/darkroom/shopify 2026): schwache
   // Poll-Fragen floppen; CONTRARIAN / NEUGIER-LÜCKE / SPEZIFITÄT + Mundart erzwingen Reaktion in Sek 0–3.
   // → Gewinner-Hooks zuerst (Mundart-Statement, contrarian, curiosity), schwache Fragen raus/nach hinten.
-  'Niemer glaubt, dass das so günstig isch 👀',  // contrarian/curiosity (Top-Typ)
+  // Mundart = Default (Daten 2026-06-23: Mundart Ø644 vs Nicht-Mundart Ø315 = 2x). Neutral/bärndütsch-getönt,
+  // hochdeutsch-nah geschrieben (Lesbarkeit), keine Teutonismen. Quelle: dropship/MUNDART-GUIDE-2026.md.
+  'Niemmer glaubt, dass das so günstig isch 👀', // contrarian/curiosity (Top-Typ)
   'Hör uf tüüri Sache z chaufe — lueg das aa 👀',// contrarian
-  'Das macht jedes Outfit teurer (ohni teuer z sii) ✨', // spezifisch
-  'Warte bis am Schluss 👀',                     // Neugier-Lücke
+  'Das macht jedes Outfit teurer – ohni teuer z sii ✨', // spezifisch
+  'Wart bis am Schluss 👀',                      // Neugier-Lücke
   'I ha lang gsuecht — das isch es 🤍',          // relatable Mundart
   'Lueg mau das aa 😍',                          // Mundart (Gewinner-Vibe)
-  'Niemer merkt, dass das nid vom Juwelier isch 💍', // contrarian/spezifisch
-  'Das gibt es so kaum in der Schweiz 🇨🇭',
+  'Niemmer merkt, dass das nid vom Juwelier isch 💍', // contrarian/spezifisch
+  'So öpis findsch i de Schwiiz chuum 🇨🇭',      // Mundart
   'Äuä ds schönschte Teil grad itz 👀',          // Mundart
   'Viu Style für wenig Gäud ✨',                  // Mundart
   'Das mues i ha 🤍',                            // Mundart
-  'Stopp — das musst du sehen ✋',
+  'Stop scrolle – das muesch gseh ✋',           // Mundart
   'Dis nöie Lieblingsteil? 👀',                  // Mundart
   'Weles träisch zersch – 1, 2 oder 3? 👀',      // verbesserte Reflexions-Frage (statt schwacher Poll)
 ];
@@ -67,6 +69,25 @@ const TRIGGERS = [
   '💾 Merk’s dir · folg für meh Schwiizer Finds',// SAVE + Follow
   '👇 Gold oder Silber? Schrib’s i d Kommentär', // A/B → Kommentar+Tag
 ];
+
+// 🇨🇭 MUNDART-SANITIZER (Recherche 2026-06-23 / MUNDART-GUIDE): Teutonismen (Hochdeutsch-Wörter, die
+// kein Schweizer sagt) auto-korrigieren — nur GANZE Wörter, case-insensitiv, ausserhalb von URLs/Hashtags.
+const TEUTONISM_FIX = [
+  [/\bdoch\b/gi, 'aber'], [/\bstets\b/gi, 'immer'], [/\blecker\b/gi, 'fein'],
+  [/\bgucken\b/gi, 'luege'], [/\bMädchen\b/g, 'Meitli'], [/\bBrötchen\b/g, 'Weggli'],
+];
+// Vulgär = Image-/Ban-Risiko (Frauen-Beauty-Brand) → Item wird hart gefiltert.
+const MUNDART_VULGAR = ['huere', 'huärä', 'scheiss', 'fucking', 'goonen', 'sybau'];
+function sanitizeCaption(s) {
+  if (!s) return s;
+  // Hashtags + URLs schützen (nicht anfassen), nur den Fliesstext korrigieren.
+  return s.split('\n').map(line => {
+    if (/^[#👉🔗]/.test(line.trim()) || /luxestyle\.ch|cdn\.shopify/.test(line)) return line;
+    let out = line;
+    for (const [re, rep] of TEUTONISM_FIX) out = out.replace(re, rep);
+    return out;
+  }).join('\n');
+}
 
 function loadPools() {
   try { return JSON.parse(fs.readFileSync(POOLS, 'utf8')); }
@@ -218,6 +239,8 @@ function loadReels() {
     banned = fs.readFileSync(path.join(ROOT, 'automation', 'DO-NOT-POST.txt'), 'utf8')
       .split('\n').map(l => l.trim().toLowerCase()).filter(l => l && !l.startsWith('#'));
   } catch {}
+  // Vulgär-Mundart in den harten Filter aufnehmen (Image-/Ban-Schutz).
+  banned = [...new Set([...banned, ...MUNDART_VULGAR])];
   const before = out.length;
   const clean = out.filter((x) => {
     const hay = ((x.caption || '') + ' ' + (x.image || '') + ' ' + (x.video || '')).toLowerCase();
@@ -238,6 +261,8 @@ function loadReels() {
   });
   const removed = out.length - deduped.length;
   out.length = 0; out.push(...deduped);
+  // 🇨🇭 Mundart-Sanitizer auf alle Captions (Teutonismen -> Mundart, schützt URLs/Hashtags).
+  for (const x of out) if (x.caption) x.caption = sanitizeCaption(x.caption);
   const dcounts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
 
   if (DRY) { console.log(JSON.stringify(out.slice(0, 5), null, 2)); console.log(`… ${out.length} Posts (dry, ${removed} Dubletten entfernt): ${JSON.stringify(dcounts)}`); process.exit(0); }

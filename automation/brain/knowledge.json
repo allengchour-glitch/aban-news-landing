@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T12:09:00.616Z",
+  "updated": "2026-06-23T12:16:41.371Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1305,6 +1305,18 @@
       "SOUND = nischig + aufsteigend (nicht breit-viral), innert 24-48h aufspringen. TikTok stumm hochladen (User legt Trend-Sound in-App drauf) = bestehende Regel beibehalten.",
       "KADENZ >=3x/Woche konstant, zeitlich gestreut (nie back-to-back). Format-Trends 3-4 Wochen, Audio-Trends 7-10 Tage Lebensdauer.",
       "UMGESETZT 2026-06-23: build_queue OPENERS auf Contrarian/Neugier/Mundart umgebaut (schwache Poll-Fragen raus), TRIGGERS = garantiert Share/Save/Tag pro Post. Playbook: dropship/SOCIAL-PLAYBOOK-2026.md."
+    ],
+    "mundart_meisterschaft_2026": [
+      "DATEN: Mundart-Posts Ø644 V vs Nicht-Mundart Ø315 V = ~2x, aber nur 4/44 Posts (9%) waren Mundart. HEBEL: Mundart zum DEFAULT machen, nicht Ausnahme.",
+      "DIALEKT-WAHL: Bärndütsch/neutral-geglättet = beste CH-weite Wahl (78% Verständnis vs ~50% Basel, höchste Sympathie; Tagi/HWZ-Studie). Züri-/Basel-/SG-Marker meiden (Vorurteile).",
+      "SCHREIBWEISE hochdeutsch-nah (Lesbarkeit>Phonetik): Silbenanfang St/Sp statt Scht/Schp (Stund nicht Schtund), Silbenende darf scht (fescht). Kurze Vokale=1 Buchstabe, lange=doppelt, ie nur echte Diphthonge, kein End-ä (unbetont=e).",
+      "AUF MUNDART DENKEN, nie aus Hochdeutsch übersetzen -> killt Teutonismen.",
+      "BLOCKLIST Teutonismen (nie posten): doch->aber, stets->immer, lecker->fein, Tüte->Säckli, gucken->luege, Mädchen->Meitli, Brötchen->Weggli.",
+      "BLOCKLIST vulgär (Image/Ban-Risiko Frauen-Beauty): huere, scheiss, fucking, goonen, sybau.",
+      "SICHERE Verstärker schweizweit: mega, voll, total, ganz. Casual sparsam: lowkey, tuff, das crazy, checksch, im Fall. Nie ganzer Satz aus Trend-Slang.",
+      "FORMATE mit Mundart top: Relatable POV/Schwiizer-Problem (Comedy-nah wie T Ronimo), GRWM-Voiceover, Voiceover-Storytime (Hook in 1.5s), Preis-Hook+Mundart.",
+      "VORBILDER (studieren): Noemi Nikita, T Ronimo, Kris8an, @nathistyle, Margauseydouxx. Durchbrecher mischen Mundart+relatable Alltags-Szene, NICHT Produktkatalog.",
+      "20 Hook-Vorlagen + sichere Wortliste + volle Regeln: dropship/MUNDART-GUIDE-2026.md."
     ]
   },
   "decisions": [
