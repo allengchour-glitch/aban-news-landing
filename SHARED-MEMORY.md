@@ -1699,3 +1699,16 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **MIN_COST_EUR-Feature bewährt:** liefert konsistent Premium-Stücke (CHF 60–477) statt Billig-Basics. Standard für High-End-Wellen.
 - **Offen (User-Gate):** Archiv-Löschung (4634, classifier-blockiert ohne explizites OK). Container-Restart heute 1× — Wellen/Polish
   resümierbar (Ledger + Memory), nur die im-Speicher laufende Welle bricht ab → danach Ledger committen + Polish nachziehen.
+
+## 📌 2026-06-23 Teil 45 (⚠️ DUPLIKAT-FALLE Wave 6 + Fix — Überlapp-Kategorien nach Restart)
+- **Wave 6** (CATS=damenmode,herrenmode,schuhe,hoodies,caps,guertel,fitness,audio,gaming,phone, MIN_COST 18) = 39 angelegt,
+  **ABER fitness/audio/gaming/phone überlappten mit der High-End-Welle** → **14 Duplikate** (gleiche BigBuy-ID, anderer
+  Gemini-Titel: Gaming-Stühle/Schreibtische/Konsolentische/Kopfhörer/Hanteln/Akku-Lader).
+- **Ursache:** Ledger-Dedup (`done.has('bb:'+id)`) griff nicht — nach dem Container-Restart war das on-disk-Ledger beim
+  Wave-6-Start nicht aktuell (High-End-Einträge fehlten in der Working-Copy) → jede Dup-ID stand danach 2× im Ledger.
+- **Fix:** 14 Live-Duplikate (die jüngeren Wave-6-Versionen) auf **DRAFT** gesetzt (High-End-Originale bleiben ACTIVE),
+  Ledger dedupliziert (2273→2254). Dedup-Check-Snippet: bigbuy-Produkte holen → Trailing-Handle-ID `-(\d{4,})$` extrahieren
+  → IDs mit ≥2 ACTIVE = Dup → jüngeres auf DRAFT.
+- **🚫 LEHRE (wichtig für künftige Wellen):** (1) **KEINE überlappenden Kategorien** über Wellen einer Session fahren
+  (gaming/audio/phone/fitness waren schon in der High-End-Welle). (2) Nach Container-Restart **Ledger committen+pushen
+  VOR** der nächsten Welle, sonst Dedup-Miss. (3) Nach jeder Welle **Trailing-Handle-ID-Dup-Check** laufen lassen.
