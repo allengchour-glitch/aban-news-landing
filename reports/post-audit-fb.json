@@ -1,0 +1,10 @@
+{
+  "ts": "2026-06-22T20:45:55.718Z",
+  "platform": "fb",
+  "mode": "stagehand",
+  "dry": true,
+  "checked": 0,
+  "flagged": [],
+  "deleted": 0,
+  "error": "TypeError: p.content is not a function"
+}

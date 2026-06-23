@@ -1,0 +1,88 @@
+{
+  "ts": "2026-06-23T04:00:13.719Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "jordanien algerien",
+    "mundial 2026",
+    "jordanie – algérie",
+    "norway vs senegal",
+    "norwegen senegal",
+    "norvège – sénégal",
+    "kick",
+    "frança - iraque",
+    "wm torschützenliste",
+    "swisscom"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Fussballfans Outfit",
+        "kategorie": "Herrenmode",
+        "hook_mundart": "Chumm uus, lüüt, mir mache dr WM-Style!",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#schweiz",
+          "#züri",
+          "#ootdschweiz"
+        ]
+      },
+      {
+        "idee": "Schöni Hüte fürs Stadion",
+        "kategorie": "Hüte",
+        "hook_mundart": "Mir brauche schöni Hüte, zum WM-Spiel z'Schaua!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweizmode",
+          "#bern",
+          "#fussballfans"
+        ]
+      },
+      {
+        "idee": "Küche fürs Fussballfest",
+        "kategorie": "Küche",
+        "hook_mundart": "Chuchichäschtli für alli Fussballfreund!",
+        "musik_mood": "house",
+        "hashtags": [
+          "#schweiz",
+          "#basel",
+          "#fussballfest"
+        ]
+      },
+      {
+        "idee": "Bademode für dr Summer",
+        "kategorie": "Bademode",
+        "hook_mundart": "Summer isch da, mir gönd uus!",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweizmode",
+          "#züri",
+          "#summervibes"
+        ]
+      },
+      {
+        "idee": "Schöni Schmuck für d'Siegerin",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Dr Siegerin verdient schöni Schmuck!",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweiz",
+          "#genf",
+          "#schmuckliebe"
+        ]
+      }
+    ],
+    "trend_musik_note": "D'Musikmoods sind aagpassd a d'Trends und d'Kategorien vo LuxeStyle"
+  }
+}
