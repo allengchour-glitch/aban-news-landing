@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatisierungs-Spar-Rechner — was kostet dich Routinearbeit? | aban</title>
+<meta name="description" content="Kostenloser Rechner für Schweizer KMU: Sieh in 10 Sekunden, wie viel CHF dich wiederkehrende Routinearbeit pro Monat und Jahr kostet — und wie viel davon sich realistisch automatisieren lässt.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://abannews.com/ki-automation-rechner.html">
+<meta property="og:title" content="Automatisierungs-Spar-Rechner für KMU">
+<meta property="og:description" content="In 10 Sekunden sehen, was dich Routinearbeit kostet — und was Automatisierung davon einsparen kann. Kostenlos, ehrlich.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#e6e1d6;--bg:#fffdf9;--card:#fff;--ok:#0f9d6b}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+a{color:var(--amber-dk);text-decoration:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+.top{border-bottom:1px solid var(--line);background:var(--card)}
+.top .wrap{display:flex;gap:10px;align-items:center;padding:13px 18px;font-size:.85rem}
+.top .brand{font-weight:900;color:var(--amber-dk);font-size:20px}
+.top .lnk{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.top .lnk a{color:var(--ink2);font-weight:700;border:1px solid var(--line);border-radius:18px;padding:6px 11px}
+.hero{padding:28px 0 6px}
+.badge{display:inline-block;background:var(--cream);color:var(--amber-dk);font-weight:800;font-size:.78rem;border-radius:14px;padding:4px 11px;margin-bottom:10px}
+h1{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:900;letter-spacing:-.02em}
+.lead{color:var(--ink2);margin-top:8px}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:20px}
+label{display:block;font-weight:700;margin:16px 0 6px}
+label:first-child{margin-top:0}
+.row{display:flex;align-items:center;gap:14px}
+input[type=range]{flex:1;accent-color:var(--amber)}
+.val{min-width:96px;text-align:right;font-weight:800;color:var(--amber-dk);font-variant-numeric:tabular-nums}
+.result{margin-top:22px;background:linear-gradient(160deg,#1f2937,#374151);color:#fff;border-radius:16px;padding:22px;text-align:center}
+.result .big{font-size:clamp(1.8rem,7vw,2.6rem);font-weight:900;letter-spacing:-.02em;color:#fcd34d}
+.result .sub{color:#e8e6e1;font-size:.95rem;margin-top:4px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.split div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:12px}
+.split b{display:block;font-size:1.25rem;color:#fff;font-variant-numeric:tabular-nums}
+.split span{font-size:.8rem;color:#c4cdde}
+.cta{display:inline-block;margin-top:18px;background:var(--amber);color:#1f2937;font-weight:800;border-radius:24px;padding:12px 22px}
+.cta:hover{background:#f59e0b}
+.note{font-size:.82rem;color:var(--muted);margin-top:14px}
+footer{border-top:1px solid var(--line);margin-top:24px}
+footer .wrap{padding:18px;font-size:.82rem;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="brand" href="/">aban</a>
+  <span class="lnk"><a href="/ki-automation.html">KI-Automation</a><a href="/ki-automation-checkliste.html">Checkliste</a><a href="/kontakt.html">Kontakt</a></span>
+</div></div>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="badge">🧮 Kostenlos · 10 Sekunden</span>
+    <h1>Was kostet dich Routinearbeit wirklich?</h1>
+    <p class="lead">Wiederkehrende Aufgaben (immer dieselben Fragen beantworten, Termine eintippen, Daten übertragen) kosten echte Zeit — und damit Geld. Stell die Regler ein und sieh, was diese Zeit dich pro Monat und Jahr kostet.</p>
+  </div>
+
+  <div class="calc">
+    <label for="h">Stunden pro Woche für Routinearbeit: <span class="val" id="hv">5 h</span></label>
+    <div class="row"><input id="h" type="range" min="1" max="40" value="5"></div>
+
+    <label for="r">Stundensatz / Kosten pro Stunde (CHF): <span class="val" id="rv">60 CHF</span></label>
+    <div class="row"><input id="r" type="range" min="25" max="150" step="5" value="60"></div>
+
+    <label for="p">Betroffene Mitarbeitende: <span class="val" id="pv">1</span></label>
+    <div class="row"><input id="p" type="range" min="1" max="20" value="1"></div>
+
+    <div class="result">
+      <div class="sub">Diese Routinezeit kostet dich aktuell</div>
+      <div class="big" id="month">–</div>
+      <div class="sub">pro Monat</div>
+      <div class="split">
+        <div><b id="year">–</b><span>pro Jahr</span></div>
+        <div><b id="save">–</b><span>oft automatisierbar (grobe Schätzung)*</span></div>
+      </div>
+      <a class="cta" href="/ki-automation.html#anfrage">Kostenloses Erstgespräch →</a>
+    </div>
+    <p class="note">* Schätzung zur Orientierung, kein Versprechen: In der Praxis lässt sich häufig ein Teil (~40 %) solcher Routinearbeit automatisieren — wie viel genau, hängt von deinen Abläufen ab und klären wir ehrlich im Erstgespräch. Der Rechner läuft komplett in deinem Browser, es werden keine Daten gesendet.</p>
+  </div>
+  <p class="note">Mehr dazu: <a href="/ki-automation.html">KI-Automation für KMU</a> · <a href="/ki-automation-checkliste.html">Checkliste: Was lohnt sich?</a></p>
+</div>
+
+<footer><div class="wrap">aban news · KI-Automation für Schweizer KMU · <a href="mailto:hallo@abannews.com">hallo@abannews.com</a> · <a href="/impressum.html">Impressum</a></div></footer>
+
+<script>
+(function(){
+  var h=document.getElementById("h"),r=document.getElementById("r"),p=document.getElementById("p");
+  var hv=document.getElementById("hv"),rv=document.getElementById("rv"),pv=document.getElementById("pv");
+  var month=document.getElementById("month"),year=document.getElementById("year"),save=document.getElementById("save");
+  function chf(n){return Math.round(n).toLocaleString("de-CH")+" CHF";}
+  function calc(){
+    var hours=+h.value, rate=+r.value, people=+p.value;
+    hv.textContent=hours+" h"; rv.textContent=rate+" CHF"; pv.textContent=people;
+    var m=hours*4.33*rate*people;
+    month.textContent=chf(m);
+    year.textContent=chf(m*12);
+    save.textContent="≈ "+chf(m*0.4)+"/Mt.";
+  }
+  [h,r,p].forEach(function(el){el.addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
