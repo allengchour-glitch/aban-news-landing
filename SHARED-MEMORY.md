@@ -1,5 +1,14 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🎯 PIXEL + MONITORING — STATUS für ALLE Sessions (CizQ6 2026-06-23, verifiziert)
+- ✅ **TikTok-Pixel `D8EKVR3C77U6KT5BTBD0` FEUERT** (live verifiziert: ttq.page + web-pixels-manager) → sammelt Daten.
+- ✅ **Täglicher Pixel-Healthcheck** → Metafeld `luxe.pixel_status` (lesbar: `{shop{metafield(namespace:"luxe",key:"pixel_status"){value}}}`). Status zuletzt: OK.
+- 🟡 **Consent = höchster Daten-Hebel:** Theme/Settings-Fix (CH ohne Opt-in-Pflicht) entsperrt ALLE 4 Pixel gleichzeitig (TikTok+Meta+Google+Pinterest) → **Theme-Session/User.**
+- 🟡 **Ad-Klicks/Kosten:** TikTok-Marketing-API noch nicht eingerichtet (User später). `automation/vps/tiktok-stats.mjs` ist VORGEBAUT → stempelt `luxe.tiktok_stats` sobald `TIKTOK_ACCESS_TOKEN`+`TIKTOK_ADVERTISER_ID` in VPS-`.env`. Anleitung: `dropship/TIKTOK-MARKETING-API-SETUP.md`.
+- 🔴 **Kampagne noch NICHT live** (kein Ad-Spend) → wartet am Zahlungskarten-Klick (PC). Ziel = **Add-to-Cart** (umgestellt).
+- 📡 **Proof-of-life:** VPS `luxe.vps_last_run` (täglich 04:00) · PC `reports/heartbeat.json` · 4 Pixel-Kanäle alle installiert.
+- 🩺 **Engpass bleibt:** Reviews (0★) + Mobile-Conversion — NICHT Traffic/Pixel. Pixel/Technik ist gesund.
+
 # ⏩ DURCHARBEITEN-BEFEHL (CizQ6 2026-06-22 Nacht, User „gib andere session regelmässig befehle, durcharbeiten wie du, ich schlafe, bis morgen")
 **An Theme/Katalog-Session: KONTINUIERLICH durcharbeiten, NICHT auf Rückfragen warten** (User schläft, will morgen Fortschritt sehen). Ziel = **CHF 100k via Conversion**.
 Arbeite die PRIO-Liste unten Punkt für Punkt ab: **#0 Pixel-Consent · #1 Mobile Sticky-ATC + Buy-Box · #2 Reviews sichtbar · USP · Free-Shipping-Bar · Filter · /de-de-Leak**.
