@@ -36,7 +36,10 @@ function seoDesc(p) {
     const edges = j?.data?.products?.edges || []; if (!edges.length) break;
     for (const e of edges) {
       scanned++; cursor = e.cursor;
-      if (e.node.seo?.description) continue;            // schon gefuellt → skip (idempotent)
+      const cur = e.node.seo?.description || '';
+      // Idempotent: nur anfassen, wenn LEER ODER falscher Geo-Text ("EU-Lieferung"/"EU-Versand" — Shop ist STRIKT CH).
+      const badGeo = /EU-Lieferung|EU-Versand|schnelle EU/i.test(cur);
+      if (cur && !badGeo) continue;                     // schon gut gefuellt → skip
       const desc = seoDesc(e.node);
       const m = await gql(tok, `mutation($id:ID!,$d:String!){ productUpdate(input:{id:$id, seo:{description:$d}}){ userErrors{message} } }`, { id: e.node.id, d: desc });
       const err = m?.data?.productUpdate?.userErrors?.[0]?.message;
@@ -46,5 +49,5 @@ function seoDesc(p) {
     }
     if (!j?.data?.products?.pageInfo?.hasNextPage) break;
   }
-  log(`seo_polish fertig: ${done} SEO-Beschreibungen gefuellt (von ${scanned} geprueft).`);
+  log(`seo_polish fertig: ${done} SEO-Beschreibungen gefuellt/korrigiert (leer ODER falsches "EU-Lieferung" → CH-Text), von ${scanned} geprueft.`);
 })();
