@@ -1511,7 +1511,9 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   (Multi-KI Gemini→Groq→DeepSeek→OpenAI, Tag-Filter `-tag:ls-ai-desc`, älteste-zuerst, Spec-Block + Trust erhalten).
 - **🔧 Schlüssel-Fix:** Gemini-2.5-flash `thinkingConfig.thinkingBudget:0` + maxTokens 1200 → vorher frassen Thinking-
   Tokens das 600-Budget → ~58% leere Antworten/Skips. Nach Fix: **0 Skips, 100% Erfolg.**
-- **Stand:** ~940+ Produkte diese Session veredelt (Batches 100/300/500/500, je 0 Skips), Qualität spot-geprüft (Marken-
-  Uhren: einzigartige Intros, konkrete Bullets, EAN/Versand/Rückgabe-Block intakt). Läuft batchweise weiter bis Katalog durch.
+- **✅ KATALOG DURCH:** **alle 2635 aktiven BigBuy-Produkte** haben jetzt einzigartige KI-Beschreibungen (0 offen).
+  Diese Session 2246 veredelt (Batches 42/100/300/500/500/804, je **0 Skips**). Qualität spot-geprüft (Marken-Uhren:
+  einzigartige Intros, konkrete Bullets, EAN/Versand/Rückgabe-Block intakt). cj-real bewusst NICHT angefasst (waren
+  in früheren Sessions handkuratiert → kein Regress).
 - **Lehre:** Bei Gemini-2.5-flash für kurze Texte IMMER `thinkingBudget:0` setzen, sonst leere `candidates`. Tool ist
   idempotent (Tag `ls-ai-desc`) → beliebig oft nachlaufbar, trifft nur noch un-veredelte.
