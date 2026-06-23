@@ -1540,3 +1540,11 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   Auto-Mapping IMMER nach TITEL-Stichwort kategorisieren, nicht nach vagem productType.
 - **Tool-Härtung committet:** `gmc_category_fix.mjs` MAP um wasserpistole/strandtuch/strandmatte/bollerwagen/bügeltransfer
   erweitert → künftige Importe dieser Typen auto-kategorisiert. `ai_product_descriptions.mjs` thinkingBudget-Fix (Teil 27).
+
+## 📌 2026-06-23 Teil 30 (✅ Bild-QA + Live-Verifikation — Katalog rundum sauber)
+- **Bild-QA (4080 aktive Produkte):** **0 ohne Bild · 0 FAILED-Media.** Alle Produktbilder vorhanden + READY.
+- **Live-Verifikation (Storefront):** Public-Produktseite gefetcht → die neue **einzigartige KI-Beschreibung rendert live**
+  („Verabschieden Sie sich vom täglichen Giessen…") inkl. Theme-Trust/Versand-Sektionen. Arbeit ist für Kund:innen sichtbar.
+- **GESAMT-STAND Katalog (verifiziert sauber, diese Session):** Beschreibungen 2635/2635 einzigartig · SEO 4080/4080 ·
+  Merchant-Feed (GTIN/custom_product/Kategorie) komplett · Bilder 0 Lücken/0 FAILED. **Conversion-/SEO-seitig maximal
+  ausgereizt** → verbleibender Hebel = REICHWEITE (Cloudflare-Worker LIVE-Flag + Ad-Kampagne/Budget = User-Klicks).
