@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T20:38:33.314Z",
+  "updated": "2026-06-23T20:43:24.981Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1426,6 +1426,14 @@
       "URSACHE Stumm: tiktok-upload-browser lud -meta-Videos (eingebackene CC-BY-Musik) -> TikTok erkennt als nicht-autorisiert -> Mute. FIX: -meta aus TikTok-Kandidaten raus, nur stumme luxe-*-9x16.mp4. Regel: TikTok=stumm, Trend-Sound in App.",
       "URSACHE Duplikate: Ledger dedupt nur per DATEINAME; gleiches Produkt als mehrere Renders/giga-Pfad -> Dubletten. Bestehende nur per App/Browser löschbar (kein TikTok-Lösch-API).",
       "BESTEHENDE Dubletten: User löscht in App (Fedora 2 weg/1 behalten, Sneaker 1 weg). Künftige verhindert silent-fix + Datei-Dedup."
+    ],
+    "tiktok_ads_freischalten_2026": [
+      "TikTok Ads CH: geht problemlos (CHF unterstützt). Die Add-business-info-Wand = normale Pflicht-Config, kein Bug. Voll-Klickliste: dropship/TIKTOK-ADS-FREISCHALTEN.md.",
+      "GESPERRT nach Anlegen (exakt eingeben): Region=Switzerland, TimeZone=Europe/Zurich, Currency=CHF, Legal Business Name=exakt registriert. Industry=E-Commerce/Apparel&Accessories.",
+      "Zahlung CH: Visa/MC oder PayPal (KEIN Klarna/SEPA bei CHF). Manual Pre-Pay empfohlen, beim Hinterlegen keine Sofort-Abbuchung. Min Budget: Ad-Group >=20/Tag, Kampagne >=50/Tag.",
+      "Pixel: Events Manager (Assets>Events) prüfen D8EKVR feuert; Ad-Group: Optimization=Website>Pixel>Event=Add to Cart (NICHT CompletePayment bei 0 Käufen, braucht ~50/Woche).",
+      "Spark Ads: @luxestyle.ch verknüpfen (Assets>TikTok Posts>Connect) ODER App>Video>Ad Settings>Ad Authorization>Code. Review der Ads <=24-48h.",
+      "User macht Schritt 1-6 (Konto+Zahlung, nur physisch möglich); Rest (Kampagne) kann der Bot (campaign-traffic/campaign-data, Event-Leiter)."
     ]
   },
   "decisions": [
