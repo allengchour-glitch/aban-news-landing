@@ -414,6 +414,9 @@ export default {
   async fetch(req, env) {
     const u = new URL(req.url);
     if (u.searchParams.get("key") !== env.TRIGGER_KEY) return new Response("forbidden", { status: 403 });
+    // HÄRTUNG 2026-06-23: ganzer Handler in try/catch → ein unerwarteter Fehler gibt sauberen 500-JSON
+    // statt Cloudflare-1101 (Worker-Crash). Macht den Worker robust gegen Einzelroute-Fehler.
+    try {
     // Neue Live-Queue laden (ohne Redeploy) + Cursor zurücksetzen — der Cloud-Claude ruft das auf.
     const setq = u.searchParams.get("queue");
     if (setq) { await env.LUXE_KV.put("queue_url", setq); await env.LUXE_KV.put("cursor", "0"); return Response.json({ queue_url_set: setq, cursor: 0 }); }
@@ -470,5 +473,8 @@ export default {
       });
     }
     return Response.json(await run(env));
+    } catch (e) {
+      return Response.json({ error: String(e && e.stack || e).slice(0, 300), note: "Worker-Fehler abgefangen (kein 1101)" }, { status: 500 });
+    }
   },
 };
