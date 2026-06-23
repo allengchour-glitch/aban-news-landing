@@ -50,7 +50,7 @@ function writeStatus(o) { try { fs.writeFileSync(STATUS, JSON.stringify({ ts: ne
       try {
         if (ab.mode === 'stagehand') {
           // AI-Weg: oeffne den obersten passenden Post, dann loeschen
-          await ab.act(PLATFORM === 'ig' ? `open the first post in the grid that shows ${MATCH}` : `open the first video thumbnail that shows the text "${MATCH}"`);
+          await ab.act(`open the first post/video thumbnail in the grid that shows ${MATCH}`);
           await sleep(3500); await p.screenshot({ path: path.join(SHOT, `open-${i + 1}.png`) });
           if (!GO) { log(`[dry] Dublette ${i + 1} geoeffnet (Screenshot), NICHT geloescht.`); await p.keyboard.press('Escape').catch(() => {}); await sleep(1500); continue; }
           await ab.act('click the more options button (three dots) on this video');
