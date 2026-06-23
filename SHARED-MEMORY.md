@@ -1529,3 +1529,14 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🚫 LEHRE (nicht nochmal versuchen):** `damen-mode` NICHT weiter splittern — Titeldaten tragen es nicht, würde nur winzige/
   gender-gemischte Junk-Collections erzeugen (gegen die „nicht über-saturieren"-Regel). Menü + Filter-Hub + bestehende Subs
   reichen als Einstiege. Künftige Subs nur dort, wo Titel die Compound-Wörter wirklich tragen (vorher per productsCount prüfen).
+
+## 📌 2026-06-23 Teil 29 (✅ Merchant/SEO-Voll-Audit: sauber + 7 Kategorie-Lücken gefixt)
+- **Katalogweiter QA-Sweep (4080 aktive Produkte):** `seo_gap_fix.mjs` → **0 SEO-Lücken** · `google_feed_fix.mjs` →
+  **0 ohne Barcode+custom_product-Flag** · `gmc_category_fix.mjs` → nur **7 echte Kategorie-Lücken** (Rest „611
+  keine-Zuordnung" = Zähl-Artefakt: Produkte mit bereits gesetzter Kategorie). Feed bzgl. SEO/GTIN/Kategorie sauber.
+- **7 Kategorie-Lücken korrekt gesetzt** (nicht generisch!): Wasserpistole→Outdoor Play, Strandtuch/Badetuch→Beach Towels,
+  Strandmatte→Outdoor Recreation, Bollerwagen→Lawn & Garden, Bügeltransfer→Arts & Crafts, 2× Garten-Töpfe→Lawn & Garden.
+  ⚠️ **Lehre:** productType „Sommer" matchte fälschlich /sommer/→Clothing (Wasserpistole ist KEINE Kleidung) → bei
+  Auto-Mapping IMMER nach TITEL-Stichwort kategorisieren, nicht nach vagem productType.
+- **Tool-Härtung committet:** `gmc_category_fix.mjs` MAP um wasserpistole/strandtuch/strandmatte/bollerwagen/bügeltransfer
+  erweitert → künftige Importe dieser Typen auto-kategorisiert. `ai_product_descriptions.mjs` thinkingBudget-Fix (Teil 27).

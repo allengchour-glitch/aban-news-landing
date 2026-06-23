@@ -42,6 +42,11 @@ const MAP=[
  [/gartenleuchte|solarleuchte|gartenlampe/i,'Home & Garden > Lighting'],
  [/giesskanne|gie(ss|ß)kanne|gartenschere|gartenwerkzeug/i,'Home & Garden > Lawn & Garden > Gardening > Gardening Tools'],
  [/camping|zelt|schlafsack/i,           'Sporting Goods > Outdoor Recreation > Camping & Hiking'],
+ [/wasserpistole|soaker|wasserbomb/i,   'Toys & Games > Toys > Outdoor Play Equipment'],
+ [/strandtuch|badetuch|strand-poncho|kapuzen-badetuch/i,'Home & Garden > Linens & Bedding > Towels > Beach Towels'],
+ [/strandmatte|picknickdecke|outdoor-decke|stranddecke/i,'Sporting Goods > Outdoor Recreation'],
+ [/bollerwagen|handwagen|gartenwagen|transportwagen/i,'Home & Garden > Lawn & Garden'],
+ [/bügeltransfer|aufbügler|transferfolie/i,'Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts'],
 ];
 function cat(s){ for(const [re,c] of MAP) if(re.test(s)) return c; return null; }
 
