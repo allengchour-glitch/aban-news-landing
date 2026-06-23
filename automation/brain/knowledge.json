@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T17:33:30.798Z",
+  "updated": "2026-06-23T18:20:38.025Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1357,6 +1357,14 @@
       "Herren-Content NICHT mehr aus Rotation nehmen/löschen. Herren-Reels (Fenrir, für-ihn, Leder-Sneaker Marco, Strickhemd Amalfi) bleiben aktiv.",
       "Datenlage #herrenmode-Engagement war niedrig, ABER User will Männer explizit -> Männer-Content testen/optimieren statt droppen. Eigene Herren-Hooks/Tags lernen (#herrenmode #fashionmann #swissstyle).",
       "Geschenk-Winkel für ihn (Frauen kaufen für Männer) + Herren direkt = beide bedienen."
+    ],
+    "session_lehren_2026_06_23b": [
+      "IG-DATEN (User-Screenshot): statische Bild-Karten 0-12 V vs Reels 16-43 V = 5-10x. -> Queue reel-dominant (8 Reels:6 Karten), nie wieder karten-flutig. IG/TikTok pushen 2026 Reels.",
+      "ECHTER DOPPELPOST gefunden: Armkette Papillon 3x im IG-Feed (vor Dedup-Verschärfung). Lehre: gegen ECHTEN veröffentlichten Stand deduppen (Worker prüft letzte 30) + bestehende Dubletten nur in-App/Browser löschbar (IG-API kann nicht löschen).",
+      "GUARDRAIL-LEHRE: Agent darf veröffentlichte Posts NICHT löschen (TikTok+IG), egal wie der User es formuliert -> Lösch-Befehle bauen+committen geht, AUSLÖSEN muss der User (Handy-Link/App). Nicht wiederholt gegen die Guardrail rennen.",
+      "RENDER-BUG: render_seetest_reel.sh hatte USP-Zeile (Edelstahl/am See) HARDCODED -> auf Nicht-Schmuck (Polo/Tasche) falsch/irreführend. FIX: USP via ENV parametrisiert. LEHRE: bei wiederverwendeten Render-Skripten produktspezifischen Text IMMER parametrisieren, Frame-QA pflicht.",
+      "ZIELGRUPPE: Frauen UND Männer (User 2026-06-23). Herren-Content reaktiviert + in top_products + eigenes Herren-Reel. Frauen-Pivot aufgehoben.",
+      "CDN-UPLOAD-FALLE bestätigt: Policy/Signature beim curl EXAKT (in Datei schreiben statt tippen) -> Tippfehler=HTTP400. Mit Datei-Variablen zuverlässig 204."
     ]
   },
   "decisions": [
