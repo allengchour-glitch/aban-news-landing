@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T19:39:09.072Z",
+  "updated": "2026-06-23T20:01:54.974Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1388,6 +1388,12 @@
       "SELBST-VERBESSERN umgesetzt: (1) loadReels kehrt um -> neueste/beste Playbook-Reels zuerst in Rotation (statt unter ~70 alten begraben), (2) priceMap mit 1h-Cache -> kein 40-Seiten-Fetch pro Build (Timeout-Ursache weg).",
       "ESM-FALLE (selbst reingelaufen + selbst gefixt): in .mjs (ESM) gibt es KEIN require() -> ReferenceError. Statt require(node:os).tmpdir() -> process.env.TMPDIR||/tmp. LEHRE: in .mjs nie require, nur import; nach jeder Tool-Änderung node --check UND einmal real laufen lassen (exit 0 + Erfolgsmeldung prüfen, nicht nur Syntax).",
       "SELBST-AUDIT-ROUTINE: alle automation/*.mjs + dropship/ads/*.sh node --check/bash -n + queue.json/knowledge.json JSON.parse + 1 realer Build-Lauf. Stack war 0 Fehler ausser meinem eigenen frischen Bug -> sofort gefixt."
+    ],
+    "weniger_werblich_2026": [
+      "SIGNAL (User-Screenshot 2026-06-23): TikTok-Zuschauer melden unsere Videos als Markeninhalt/Werbung -> zu ad-lastig (Preis+Rabattcode+Verkaufs-Overlay auf jedem Post). Passt zu Social-konv.-0%: wird als Werbung erlebt, nicht als Content.",
+      "FIX umgesetzt: build_queue Rabattcode (WELCOME10) nur noch jeder 3. Post statt jedem; Karussell-Caption ohne Code. Engagement-Trigger + Preis bleiben. Neue Reels (render_seetest) haben KEINEN Code eingebrannt (nur USP+Trust).",
+      "RICHTUNG: weniger Hard-Sell, mehr authentisch (UGC/GRWM/Mundart-Storytime/Demo). Reduziert Meldungen UND verbessert Conversion.",
+      "BRANDED-CONTENT-LEHRE: eigenes Shop-Produkt = KEIN Markeninhalt (Branded Content = bezahltes Dritt-Sponsoring). Bei Meldung -> Mein Beitrag ist kein Markeninhalt. NIE faelschlich als bezahlte Partnerschaft markieren."
     ]
   },
   "decisions": [

@@ -140,6 +140,10 @@ function loadReels() {
       if (!/cdn\.shopify\.com\/.*\.mp4/.test(video) || seen.has(video)) continue;
       // Trust-Winkel auch in Reel-Captions (jeder 3.), wenn nicht schon drin — WAHR, kein Fake.
       let cap = caption;
+      // WENIGER WERBLICH (Lehre 2026-06-23): Rabattcode nur auf jedem 3. Reel lassen, sonst rausstreichen
+      // (Videos wurden als Werbung gemeldet). Hook/Trigger/Mundart bleiben.
+      if (reels.length % 3 !== 0)
+        cap = cap.replace(/\s*[·\-–]*\s*[–-]?10\s*%?\s*(mit\s*)?WELCOME10/gi, '').replace(/  +/g, ' ').trim();
       if (reels.length % 3 === 2 && cap && !/Schweizer Shop|sichere Bstellig|TWINT/.test(cap))
         cap += `\n${TRUST_LINES[reels.length % TRUST_LINES.length]}`;
       seen.add(video); reels.push({ type: 'reel', video, caption: cap });
@@ -187,7 +191,10 @@ function loadReels() {
     const tags = tagsets[i % tagsets.length] + ' ' + CH_WIDE[i % CH_WIDE.length];
     const price = prices[p.handle] ? ` – CHF ${prices[p.handle]}` : '';
     const trustLine = (i % 3 === 2) ? `\n${TRUST_LINES[(i + DAYOFF) % TRUST_LINES.length]}` : '';
-    const caption = `${opener} ${p.label}${price}\n${trigger} · –10% mit WELCOME10${trustLine}\n👉 luxestyle.ch/products/${p.handle}\n${tags}`;
+    // WENIGER WERBLICH (Lehre 2026-06-23: Videos wurden als „Werbung/Markeninhalt" gemeldet + Social konv. 0%):
+    // Rabattcode nur auf jedem 3. Post statt jedem → authentischer, weniger Ad-Optik. Trigger+Preis bleiben.
+    const offer = (i % 3 === 0) ? ' · –10% mit WELCOME10' : '';
+    const caption = `${opener} ${p.label}${price}\n${trigger}${offer}${trustLine}\n👉 luxestyle.ch/products/${p.handle}\n${tags}`;
     // Veredelte Text-Karte bevorzugen (Produktname+Rabatt eingebrannt), sonst nacktes Produktbild.
     const image = textMap[p.handle] || p.image;
     return { type: 'image', image, caption };
@@ -232,7 +239,7 @@ function loadReels() {
     if (grp.length < 2) { carousels.push(grp[0]); continue; }
     const lead = grp[0].caption.split('\n')[0];
     carousels.push({ type: 'carousel', images: grp.map(g => g.image),
-      caption: `${lead} — wüsch durch für meh 👉\n–10% mit WELCOME10 · 🇨🇭 luxestyle.ch\n#schweizmode #ootdschweiz #swissmade #fyp` });
+      caption: `${lead} — wüsch durch für meh 👉\n🇨🇭 luxestyle.ch · Schweizer Shop\n#schweizmode #ootdschweiz #swissmade #fyp` });
   }
 
   // MIX (2026-06-23, Daten: IG-Reels 16-43 V vs statische Karten 0-12 V = 5-10x): REELS DOMINIEREN,
