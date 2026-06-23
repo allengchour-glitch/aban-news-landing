@@ -165,7 +165,7 @@ if ((Number(tot.shares) || 0) === 0) actions.push('🔴 0 Shares = Reichweiten-D
 if (prev && last.shares <= prev.shares && last.views > prev.views) actions.push('🔴 Views steigen, aber Shares/Engagement nicht → hohle Reichweite. UGC/Demo + Save-Trigger statt nur Produkt-Pans.');
 if (ptPosts === 0) actions.push('🟡 Kein Post in CH-Primetime (16–19 UTC). Cron steht auf 16/19 — sobald Autopost live ist, erledigt sich das.');
 if ((Number(avg.engagement_rate) || 0) < 0.02) actions.push('🟡 Engagement <2% → Frage-CTA „1/2/3?" + Mundart verstaerken.');
-if ((Number(avg.duration_s) || 0) > 20) actions.push('🟢 Videolaenge >20s → auf 10–15s kuerzen (Completion).');
+if ((Number(avg.duration_s) || 0) < 16) actions.push('🟢 Videolaenge: DATEN 2026-06-23 zeigen laenger=mehr Views (≤10s Ø203 → 21-30s Ø604 → >30s Ø788). Ziel 20–30s+ statt kurze Clips (≤15s = Ø<262).');
 if (hookRank[0]) actions.push(`🟢 Bester Hook-Typ laut Daten: „${hookRank[0].ty}" (Ø ${hookRank[0].avg} V) → davon mehr; „generisch" meiden.`);
 actions.push('🟢 Groesster Hebel (manuell/PC-Claude): Hands-on/UGC-Clips + Trending-Sounds.');
 

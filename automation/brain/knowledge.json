@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T12:16:41.371Z",
+  "updated": "2026-06-23T12:54:40.316Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1317,6 +1317,14 @@
       "FORMATE mit Mundart top: Relatable POV/Schwiizer-Problem (Comedy-nah wie T Ronimo), GRWM-Voiceover, Voiceover-Storytime (Hook in 1.5s), Preis-Hook+Mundart.",
       "VORBILDER (studieren): Noemi Nikita, T Ronimo, Kris8an, @nathistyle, Margauseydouxx. Durchbrecher mischen Mundart+relatable Alltags-Szene, NICHT Produktkatalog.",
       "20 Hook-Vorlagen + sichere Wortliste + volle Regeln: dropship/MUNDART-GUIDE-2026.md."
+    ],
+    "daten_format_timing_2026_06_23": [
+      "VIDEOLÄNGE (Daten 44 TikToks, monotoner Trend): ≤10s Ø203 → 11-15s Ø262 → 16-20s Ø461 → 21-30s Ø604 → >30s Ø788. LÄNGER = MEHR VIEWS. Wir machen 30/44 Videos ≤15s = zu kurz. ZIEL: 20-30s+ Storytelling statt schnelle Pans.",
+      "KORREKTUR alter Regel: brain.mjs riet faelschlich >20s kuerzen -> invertiert (laenger=mehr Reichweite bei uns; Watch-Time-Gate belohnt haltende laengere Clips).",
+      "WOCHENTAG (Ø Views): Sa 799, Mi 770, So 651 = TOP; Di 142, Do 123 = FLOP. Wir posten am meisten Di (14) + Mo (12) = schlechte Tage. -> TikTok-Posting auf Mi/Sa/So verschieben, Di/Do meiden.",
+      "STUNDE CH (Ø Views): 18h Ø810, 20h Ø799, 15h Ø498 = Abend-Primetime. Schwach: 12h Ø128, frueh morgens. -> TikTok (Giga-Bot) abends CH 18-20h posten.",
+      "HASHTAG-VIEW-DATEN sind verrauscht (kleine Samples) + View-Tags (#bohostyle/#swisspremium) = 0 Engagement -> Engagement-Tags (#sommermode/#ootd/#schweiz) bleiben Prio (siehe social_lernen). Views != Engagement.",
+      "Meta-Worker-Cron (CH 11+19h) NICHT auf TikTok-Stundendaten umgestellt (anderes Publikum, schwache Stichprobe) -> bewusst belassen."
     ]
   },
   "decisions": [
