@@ -1687,3 +1687,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🔧 LEHRE:** Text-Art-Produkte (Poster/Sticker/Magnet/POD-Designs) gehören NICHT in den Google-Shopping-Feed (Overlay-Policy)
   → vom Google-Kanal fernhalten. Bei neuen POD/Print-Produkten: Google-Kanal NICHT mitpublizieren (nur Online-Store/Social).
 - **Google-Publication-ID:** `gid://shopify/Publication/302872297857` (Google & YouTube).
+
+## 📌 2026-06-23 Teil 44 (💎 WAVE 5 +40 Premium + Tages-Bilanz ~177 neue Produkte)
+- **Wave 5 +40** (CATS=werkzeug,velo,beleuchtung,bar,kueche,camping,pool,haustier,buero,garten · MIN_COST_EUR=18 · MAX 300):
+  XXL-Luftmatratzen CHF 127–209 · große Hundebetten CHF 245 · Design-Pflanztöpfe/Rattan-Sets CHF 150–238 · Taucherbrille-Set
+  CHF 164 · Ausziehleinen · Büro (A4-Ordner/Notizbücher/Gelly-Roll). Voll poliert: 40 Beschreibungen · 0 SEO-Lücken ·
+  40 custom_product · 40 Kategorie · 158 Alt-Texte. QA: 0 ohne Bild · 0 FAILED · 0 <2 Kanäle · 0 Dubletten-Titel.
+- **🎯 TAGES-BILANZ 2026-06-23:** aktive Produkte **4079 → 4256 (+177 neue)**, Ledger 2057→2234. Wellen: 1(15)+2(36)+3(18)+
+  High-End(32)+Premium(~20)+Wave5(40). Alle voll poliert (KI-Beschreibung/SEO/Feed/Kategorie/Alt) + verifiziert.
+  KI-Beschreibungen gesamt: 2812 Produkte.
+- **MIN_COST_EUR-Feature bewährt:** liefert konsistent Premium-Stücke (CHF 60–477) statt Billig-Basics. Standard für High-End-Wellen.
+- **Offen (User-Gate):** Archiv-Löschung (4634, classifier-blockiert ohne explizites OK). Container-Restart heute 1× — Wellen/Polish
+  resümierbar (Ledger + Memory), nur die im-Speicher laufende Welle bricht ab → danach Ledger committen + Polish nachziehen.
