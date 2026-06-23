@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-23T18:20:38.025Z",
+  "updated": "2026-06-23T18:26:13.315Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1365,6 +1365,11 @@
       "RENDER-BUG: render_seetest_reel.sh hatte USP-Zeile (Edelstahl/am See) HARDCODED -> auf Nicht-Schmuck (Polo/Tasche) falsch/irreführend. FIX: USP via ENV parametrisiert. LEHRE: bei wiederverwendeten Render-Skripten produktspezifischen Text IMMER parametrisieren, Frame-QA pflicht.",
       "ZIELGRUPPE: Frauen UND Männer (User 2026-06-23). Herren-Content reaktiviert + in top_products + eigenes Herren-Reel. Frauen-Pivot aufgehoben.",
       "CDN-UPLOAD-FALLE bestätigt: Policy/Signature beim curl EXAKT (in Datei schreiben statt tippen) -> Tippfehler=HTTP400. Mit Datei-Variablen zuverlässig 204."
+    ],
+    "screenshot_check_immer_2026": [
+      "FEST (User 2026-06-23 mach immer alles screenshot check): JEDE Browser-/Plattform-Aktion (FB/IG/TikTok) macht Screenshots vor/nach + Report-JSON, und die Screenshots werden angeschaut/committet BEVOR ein Ergebnis als erfolgreich gemeldet wird. Commit-Message != Erfolg.",
+      "FB wird wie IG/TikTok geprüft: fb-check.mjs (Screenshots der Seite, Dubletten/Herren-Mix/Qualität), nicht-destruktiv. Befehl fb-check via Worker-Queue.",
+      "Tools mit Screenshot-Pflicht: ig-cover, ig-delete, tiktok-delete, fb-check, konto-analyse, profil, markt-capture, storefront-audit."
     ]
   },
   "decisions": [
