@@ -43,8 +43,9 @@ ffmpeg -y -f concat -safe 0 -i "$list" -c copy "$MONT" 2>/dev/null
 DUR=$(awk "BEGIN{print ${#clips[@]}*$SEG}")
 
 # Persistenter Hook (Sek 0–2.2, Neugier) + CTA-Endcard + Trust-Zeile, alles in Safe-Zone.
+USP="${USP:-Edelstahl · anlauffrei · am See ok}"   # USP-Zeile parametrisierbar (Wasserfest=Default, sonst überschreiben)
 TXT="drawtext=fontfile=$F:text='${HOOK}':fontcolor=white:fontsize=72:x=(w-text_w)/2:y=230:box=1:boxcolor=black@0.45:boxborderw=24:enable='lt(t,2.4)':alpha='if(lt(t,0.25),t/0.25,1)',
-drawtext=fontfile=$F:text='Edelstahl · anlauffrei · am See ok':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=1300:box=1:boxcolor=black@0.42:boxborderw=16:enable='gt(t,2.4)',
+drawtext=fontfile=$F:text='${USP}':fontcolor=white:fontsize=42:x=(w-text_w)/2:y=1300:box=1:boxcolor=black@0.42:boxborderw=16:enable='gt(t,2.4)',
 drawtext=fontfile=$F:text='30 Tage Rückgabe · Schweizer Shop':fontcolor=white:fontsize=36:x=(w-text_w)/2:y=1380:box=1:boxcolor=black@0.40:boxborderw=14:enable='gt(t,3.0)',
 drawtext=fontfile=$F:text='${CTA}':fontcolor=0x1A1206:fontsize=50:x=(w-text_w)/2:y=1448:box=1:boxcolor=0xC9A24F@0.92:boxborderw=20:enable='gt(t,${DUR%.*}-4)'"
 
