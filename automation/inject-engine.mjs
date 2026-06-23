@@ -71,6 +71,7 @@ function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({
 function tokset(base) { return new Set(base.replace(/^ki-/, "").replace(/\.html$/i, "").split("-").filter((w) => w.length > 2)); }
 let related = 0;
 let healed = 0;
+let kbhub = 0;
 const hubs = [];
 for (const f of files) {
   const base = f.split(sep).pop();
@@ -160,6 +161,17 @@ for (const f of files) {
       if (bpos >= 0) { html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); related++; changed = true; }
     }
   }
+  // (6b) Backlink zum Kaufberater-Pillar-Hub (bi-direktionale Cluster-Verlinkung), idempotent
+  {
+    const base = f.split(sep).pop();
+    if (!noindex && base.endsWith("-kaufen-schweiz.html") && html.indexOf("data-aban-kbhub") < 0) {
+      const bpos = html.toLowerCase().lastIndexOf("</body>");
+      if (bpos >= 0) {
+        const block = '<nav data-aban-kbhub aria-label="Kaufberater-Übersicht" style="max-width:760px;margin:18px auto;padding:0 16px;font-size:.9rem"><a href="/kaufberater-schweiz.html" style="color:#b45309;font-weight:700">← Alle Kaufberater in der Schweiz im Überblick</a></nav>';
+        html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); kbhub++; changed = true;
+      }
+    }
+  }
   // (7) Selbstheilung fehlender Meta-Tags (Social/Mobile), nur indexierbare Seiten
   if (!noindex) {
     const pos2 = html.toLowerCase().lastIndexOf("</head>");
@@ -178,4 +190,4 @@ for (const f of files) {
   }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
-console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
+console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
