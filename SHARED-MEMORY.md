@@ -1649,3 +1649,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Skalierung:** BigBuy (313k) trägt viele weitere Wellen. Pattern pro Welle: import (CATS, PER, GAP≥1500, LIVE) → Ledger committen
   → Polish-Chain (ai_product_descriptions LIMIT≥Anzahl · seo_gap_fix · google_feed_fix · gmc_category_fix · alt_text_fill) →
   Dubletten-Titel-Check → QA. Krumme Preise/Dubletten-Titel danach prüfen (Gemini gibt gleichen Quell-Namen gleichen Titel).
+
+## 📌 2026-06-23 Teil 41 (💎 HIGH-END-GADGET-WELLE +32 — User „high end sachen neuste gadget")
+- **Importer-Feature `MIN_COST_EUR`** (neu, committet): überspringt günstige Basics → pickt Premium-Stücke. Welle gefahren mit
+  MIN_COST_EUR=25, MAX_COST_EUR=300, CATS=audio,phone,gaming,ladegeraet,home,fitness,auto,beauty, PER=4.
+- **+32 ACTIVE High-End** (CHF 95–304!): Leinwand-Set 303.90 · Premium-Kopfhörer 276–285 · Gaming-Schreibtisch 279.90 ·
+  Konsolentische 243–252 · Gaming-Stühle 225.90 · Kettlebell/Hantel-Sets 155–186 · Auto-Sitzbezüge/Kofferraum-Organizer ·
+  Wireless-Charger 75–87 · Design-Vasen. = echtes Premium-Sortiment statt Billig-Gadgets.
+- **Voll poliert:** 32 Beschreibungen · 0 SEO-Lücken · 32 custom_product · 32 google_product_category · 121 Alt-Texte.
+  QA: 0 ohne Bild · 0 FAILED · 0 <2 Kanäle · **0 Dubletten-Titel.**
+- **🎯 HEUTE GESAMT: 101 neue Produkte** (Welle1 15 + Welle2 36 + Welle3 18 + High-End 32). Aktiv 4079→4180.
+- **Lehre/Tool:** `MIN_COST_EUR` ist der Hebel für „high-end"-Wellen (Importer pickt sonst die billigsten passenden zuerst).
+  Lederwaren-Kategorie bottleneckt (riesige Ban-Liste → endloses rate-limitiertes Scannen) → bei Bedarf separat/zuletzt fahren.
