@@ -1594,3 +1594,10 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   Calvin-Klein «Eternity for Men». Marken-Mix jetzt MK/Olivia Burton/D&G/Casio/Guess/Tommy/CK + 3 LuxeStyle-Premium.
 - **Fazit:** Startseite („a und o") ist strukturell + inhaltlich rund. Kein weiterer Eingriff nötig (Customizer kann
   Sektionen theoretisch überschreiben — index.json war hier nur Lese-Audit, nur die Collection-Mitgliedschaft geändert).
+
+## 📌 2026-06-23 Teil 36 (💰 PREIS-PSYCHOLOGIE — katalogweit charm-priced)
+- **Preis-Audit (4079 aktive):** 4028× .90 · 41× .00 → schon top. Nur **10 Produkte mit krummen Preisen** (EUR→CHF-
+  Umrechnungs-Reste): Anzughose 30/32/34.33, 9× Schweiz-Poster 14.93.
+- **Gefixt:** 29 Varianten-Preise auf .90 gerundet (34.33→34.90, 14.93→14.90 …). Audit prüfte nur 1. Variante, Fix erfasste
+  ALLE Varianten (Anzughose hat 20 Grössen). **Katalog jetzt 100% charm-priced (.90).** Krumme Preise senken Kaufbereitschaft.
+- **Lehre:** BigBuy/EUR-Importe können krumme CHF-Preise erzeugen → bei neuen Importen Preis auf .90 runden (Importer prüfen).
