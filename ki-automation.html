@@ -32,6 +32,7 @@ a{color:var(--amber-dk);text-decoration:none}
 .hero .cta{animation:abrise .6s ease .16s both}
 .hero .sub{animation:abrise .6s ease .24s both}
 @media (prefers-reduced-motion:reduce){.hero h1,.hero p,.hero .cta,.hero .sub{animation:none}}
+.hero .net{position:absolute;inset:0;width:100%;height:100%;opacity:.16;pointer-events:none;z-index:0}
 .hero h1{font-size:clamp(1.8rem,5vw,2.7rem);font-weight:900;letter-spacing:-.02em;line-height:1.15}
 .hero p{font-size:clamp(1rem,2.6vw,1.2rem);color:#e8e6e1;margin-top:14px;max-width:680px}
 .hero .cta{display:inline-flex;gap:8px;align-items:center;margin-top:24px;background:var(--amber);color:#1f2937;font-weight:800;border-radius:24px;padding:13px 24px;font-size:1.05rem}
@@ -87,7 +88,7 @@ footer a{color:#fcd34d}
   <span class="lnk"><a href="/marktplatz.html">Marktplatz</a><a href="/suchmaschine.html">Suche</a><a href="/kontakt.html">Kontakt</a></span>
 </div></div>
 
-<div class="hero"><div class="wrap">
+<div class="hero"><svg class="net" viewBox="0 0 480 220" aria-hidden="true" preserveAspectRatio="xMaxYMid slice"><g stroke="#fbbf24" stroke-width="1.2" fill="none"><path d="M60 40 140 90 110 165 240 60 320 130 410 45 380 185 320 130"/><path d="M140 90 240 60M140 90 110 165M320 130 410 45"/></g><g fill="#fde68a"><circle cx="60" cy="40" r="4"/><circle cx="140" cy="90" r="5"/><circle cx="110" cy="165" r="4"/><circle cx="240" cy="60" r="5"/><circle cx="320" cy="130" r="6"/><circle cx="410" cy="45" r="4"/><circle cx="380" cy="185" r="4"/></g></svg><div class="wrap">
   <h1>KI-Automation für Schweizer KMU</h1>
   <p>Wiederkehrende Aufgaben kosten Zeit und Nerven. Wir bauen dir KI-gestützte Helfer, die rund um die Uhr Anfragen beantworten, Termine annehmen und Leads erfassen — damit du dich aufs Geschäft konzentrierst statt aufs Abarbeiten.</p>
   <a class="cta" href="#anfrage">Kostenloses Erstgespräch →</a>
