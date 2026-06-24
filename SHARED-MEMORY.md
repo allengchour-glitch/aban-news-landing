@@ -1772,3 +1772,21 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🔧 CONTAINER-QUIRK bestätigt (2.×):** Lokaler Git-Checkout wurde MITTEN in der Session auf alten Commit (Teil 40) resettet
   → erst-Versuch der Welle lud STALE Ledger (gestoppt bei 0 erstellt, kein Schaden). **Gegenmittel-Routine:** vor jeder Welle
   `git reset --hard origin/<branch>` + HEAD==origin-Check vor jedem Ledger-Commit + Post-Wellen-Handle-ID-Dup-Check.
+
+## 📌 2026-06-23 Teil 51 (🆕 8 FRISCHE NISCHEN-KATEGORIEN +40 — User „Drohnen…alleee")
+- **8 neue Importer-Kategorien gebaut + importiert** (User-Wunsch): 🚁 Drohnen(6) · 📽️ Beamer(5) · ⌚ Smartwatches(8) ·
+  ☕ Kaffee&Espresso(8) · 🔥 Grill(4) · 🧸 Kinderspielzeug(112, TAG-Smart) · 🧘 Yoga&Pilates(18) · 🐾 Haustier-Tech(5).
+  **+40 neue Produkte** (MIN_COST 10, MAX 350, MARGIN 2.2). Frische Nischen = SCHNELL (keine Sättigung). Highlights:
+  Mini-Drohnen HD-Kamera, Heimkino-Beamer, Smartwatch AMOLED, Espressomaschinen, Tischgrills, Trinkbrunnen, Yoga-Sets.
+- **8 neue Smart-Collections** angelegt (TAG-Regel) + **publiziert** (7 nachpubliziert) + Hero/SEO via collection_polish.
+- **Voll poliert:** 40 Beschreibungen · 40 custom_product · Kategorien (gmc-MAP um Smartwatch/Drohne/Beamer/Kaffee/Grill/
+  Haustier-Tech/Spielzeug erweitert) · 132 Alt-Texte. QA: 0 Bild/Kanal/Handle-Dup/undefined/Titel-Dup.
+- **🔧 FORCE-Kategorie-Normalisierung:** `FORCE=1` re-mappte 3866 Produkte aufs neueste gmc-MAP (Spot-Check ✓ sinnvoll;
+  1 Edge: Thermo-Becher→Coffee-Maker, harmlos). = katalogweit konsistente Google-Kategorien.
+- **🔧 NEUES TOOL `dedupe_titles.mjs`:** robuste Gleichtitel-Differenzierung (20er-Nick-Pool «Classic»…«Power» + `«Modell N»`-
+  Fallback, kein „undefined" mehr). Pattern für nach JEDER Welle. (8-Nischen-Welle hatte 0 Gleichtitel — sauber.)
+- **🔧 GIT-LEHRE (teuer):** `git reset --hard origin` verwirft UN-committete Edits → **erst committen, DANN reset**. 8-Kategorien-
+  Edit war einmal weg, neu gemacht + sofort committet.
+- **⚠️ OFFEN:** 8 neue Collections noch NICHT im Menü (nur publiziert + Filter-Hub-fähig). Bei Bedarf in Menü-Gruppen einhängen
+  (Drohnen/Beamer/Smartwatch→Trends; Kaffee→Küche; Grill→Garten; Spielzeug/Yoga/Haustier-Tech→Wohnen&Wellness).
+- **🎯 TAGES-FINALE:** ~280 neue Produkte über 11 Wellen, Katalog 4079→4366 aktiv · 0 archiviert. Alle poliert/verifiziert.
