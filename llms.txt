@@ -60,6 +60,11 @@ Betreiber: aban news (Allen Chour), Schweizer Einzelunternehmen, Belp (CH). Alle
 - [Automatisierungs-Checkliste](https://abannews.com/ki-automation-checkliste.html): kostenlose 10-Punkte-Selbsteinschätzung, welche Aufgaben sich lohnen.
 - [Spar-Rechner](https://abannews.com/ki-automation-rechner.html): interaktiver Rechner für die Kosten wiederkehrender Routinearbeit.
 
+## KI-Sichtbarkeit / AEO (von ChatGPT, Perplexity & Google AI gefunden werden)
+- [KI-Sichtbarkeit (AEO) für Schweizer Betriebe](https://abannews.com/ki-sichtbarkeit.html): Answer-Engine-Optimierung — so wirst du von ChatGPT, Perplexity und Google AI Overviews als Quelle genannt.
+- [AEO-Audit](https://abannews.com/ki-sichtbarkeit-audit.html) · [Monitoring](https://abannews.com/ki-sichtbarkeit-monitor.html) · [Report](https://abannews.com/ki-sichtbarkeit-report.html) · [Komplett-Paket](https://abannews.com/ki-sichtbarkeit-paket.html).
+- Branchen-Seiten (Auswahl): [Zahnärzte](https://abannews.com/ki-sichtbarkeit-zahnaerzte.html), [Kanzleien](https://abannews.com/ki-sichtbarkeit-kanzleien.html), [Hotels](https://abannews.com/ki-sichtbarkeit-hotels.html), [Gastronomie](https://abannews.com/ki-sichtbarkeit-gastronomie.html), [Handwerk](https://abannews.com/ki-sichtbarkeit-handwerk.html), [Praxen](https://abannews.com/ki-sichtbarkeit-praxen.html), [Immobilienmakler](https://abannews.com/ki-sichtbarkeit-immobilienmakler.html), [Coaches](https://abannews.com/ki-sichtbarkeit-coaches.html) — insgesamt 20+ Branchen.
+
 ## English
 - [aban news (English)](https://abannews.com/en/): the honest, anti-hype AI newsletter for the self-employed.
 - [Premium / Founding member (€69 lifetime)](https://abannews.com/en/founding.html): ad-free, full archive, one-time payment.
