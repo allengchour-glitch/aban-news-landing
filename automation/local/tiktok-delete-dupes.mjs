@@ -15,6 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { aiBrowser } from '../lib/ai-browser.mjs';
+setTimeout(()=>{console.log("WATCHDOG 5min -> exit");process.exit(1);},300000).unref(); // 2026-06-24: kein Loop-Hang
 
 const ROOT = path.dirname(path.dirname(path.dirname(fileURLToPath(new URL(import.meta.url)))));
 // PLATFORM=tiktok|ig (User 2026-06-21 "kontrolliere ueberall"): ein Bot fuer beide via Stagehand-AI.

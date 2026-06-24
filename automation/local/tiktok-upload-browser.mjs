@@ -23,6 +23,7 @@ import { execSync } from 'node:child_process';
 import os from 'node:os';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 5min -> exit");process.exit(1);},300000).unref(); // 2026-06-24: kein Loop-Hang
 
 const DRY = process.argv.includes('--dry');
 const argFile = process.argv.find(a => a.endsWith('.mp4'));
