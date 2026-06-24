@@ -170,6 +170,15 @@ for (const f of files) {
       changed = true;
     }
   }
+  // (5b) RSS-Feed auffindbar machen (<link rel="alternate">), site-weit, idempotent
+  {
+    const pos = html.toLowerCase().lastIndexOf("</head>");
+    if (pos >= 0 && !/type=["']application\/rss\+xml["']/i.test(html)) {
+      const add = '<link rel="alternate" type="application/rss+xml" title="aban news" href="/feed.xml">';
+      html = html.slice(0, pos) + add + "\n" + html.slice(pos);
+      changed = true;
+    }
+  }
   // (6) Interne Verlinkung: "Verwandte KI-Themen" in KI-Hubs (ki-*.html), idempotent
   {
     const base = f.split(sep).pop();
