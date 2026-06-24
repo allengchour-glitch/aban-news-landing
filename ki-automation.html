@@ -201,11 +201,11 @@ footer a{color:#fcd34d}
   <div class="formwrap">
     <form id="f" autocomplete="on" onsubmit="return false">
       <label for="name">Name *</label>
-      <input id="name" type="text" required placeholder="Vor- und Nachname">
+      <input id="name" type="text" required placeholder="Vor- und Nachname" autocomplete="name">
       <label for="firma">Firma</label>
-      <input id="firma" type="text" placeholder="Name deines Betriebs">
+      <input id="firma" type="text" placeholder="Name deines Betriebs" autocomplete="organization">
       <label for="email">E-Mail / Telefon *</label>
-      <input id="email" type="text" required placeholder="So erreichen wir dich">
+      <input id="email" type="text" required placeholder="So erreichen wir dich" autocomplete="email" inputmode="email">
       <label for="branche">Branche</label>
       <select id="branche">
         <option value="">– bitte wählen –</option>
