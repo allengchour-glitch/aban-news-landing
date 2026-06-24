@@ -105,6 +105,7 @@ try {
       "shippingtext" { $env:MAX="500"; & node "automation/fix_shipping_text.mjs"; Remove-Item Env:MAX -EA SilentlyContinue }
       "follower"     { & node "automation/local/ch-follower-growth.mjs" }
       "engage"       { & node "automation/local/tiktok-bot.mjs" engage --cap 12 }
+      "meta-dm"      { $env:MAX="10"; & node "automation/local/ig-dm-browser.mjs"; & node "automation/local/tiktok-dm-browser.mjs"; & node "automation/local/tiktok-bot.mjs" engage --cap 10; $env:MAX=$null; git add -f ig-dm-done.json tiktok-dm-done.json automation/local/ig-dm-shots/* automation/local/tiktok-dm-shots/* 2>$null; git commit -m "auto(meta-dm): IG+TikTok DMs + Kommentare beantwortet" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "analyse"      { & node "automation/local/tiktok-bot.mjs" analyze --max 80; & node "automation/tiktok-pixel-check.mjs" }
       "health"       { & node "automation/health-check.mjs"; git add reports/ 2>$null; git commit -m "auto(health): Provider/Key-Check" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "image-audit"  { Start-Process powershell -WindowStyle Hidden -ArgumentList '-ExecutionPolicy','Bypass','-Command',"`$env:MAX=300; node automation/image-audit.mjs; git add reports/; git commit -m auto-imageaudit; git pull --rebase origin claude/luxestyle-product-CizQ6; git push origin claude/luxestyle-product-CizQ6" }
