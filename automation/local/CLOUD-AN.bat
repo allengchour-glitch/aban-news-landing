@@ -15,9 +15,9 @@ echo   Der PC fuehrt jetzt Cloud-Befehle automatisch aus.
 echo ============================================================
 
 :loop
-REM --- HAENGE-WACHHUND (2026-06-24): killt node-Bots, die laenger als 8 Min laufen (haengende Stagehand-Laeufe),
-REM     damit ein Haenger NIE den Loop blockiert. Zusammen mit dem 5-Min-Bot-Watchdog = Loop kann nicht einfrieren.
-powershell -NoProfile -Command "Get-Process node -EA SilentlyContinue | Where-Object {$_.StartTime -lt (Get-Date).AddMinutes(-8)} | Stop-Process -Force -EA SilentlyContinue" 2>nul
+REM --- HAENGE-WACHHUND (2026-06-24): killt node-Bots >15 Min (echte Haenger). 15 statt 8, damit der LANGE
+REM     Campaign-Wizard (~12 Min, eigener Watchdog) NICHT vorzeitig gekillt wird. Loop kann trotzdem nicht ewig einfrieren.
+powershell -NoProfile -Command "Get-Process node -EA SilentlyContinue | Where-Object {$_.StartTime -lt (Get-Date).AddMinutes(-15)} | Stop-Process -Force -EA SilentlyContinue" 2>nul
 REM --- SELBSTHEILUNG (2026-06-21): npm/Build kann package.json dirty machen -> blockiert git pull -> Deadlock.
 REM     Jede Runde aufraeumen, damit cmd-poll sich IMMER updaten + pushen kann. So gibt es nie wieder einen Deadlock.
 git checkout -- package.json package-lock.json 2>nul

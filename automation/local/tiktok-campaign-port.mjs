@@ -29,9 +29,9 @@ import path from 'node:path';
 import { aiBrowser } from '../lib/ai-browser.mjs';
 
 const DRY = process.argv.includes('--dry');
-// WATCHDOG (Lehre 2026-06-24): ohne harten Timeout hängt ein Stagehand-Lauf den ganzen cmd-poll/CLOUD-AN-Loop ein
-// (Heartbeat friert, kein neuer Code/Befehl). Self-Exit nach 5 Min -> Loop bleibt IMMER am Leben. .unref() = blockiert kein sauberes Ende.
-setTimeout(() => { console.log('⏱️ WATCHDOG 5min -> exit (kein Loop-Hang)'); process.exit(1); }, 300000).unref();
+// WATCHDOG (Lehre 2026-06-24): Campaign-Wizard ist LANG (Konto-Guard+Ziel+Gebot+Targeting+Budget+Ad+Submit).
+// 5 Min killten ihn mitten drin (stoppte bei Budget). 12 Min = genug zum Durchlaufen, aber kein Endlos-Hang.
+setTimeout(() => { console.log('⏱️ WATCHDOG 12min -> exit (Campaign-Flow zu lang)'); process.exit(1); }, 720000).unref();
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const C = {
   total: process.env.TT_TOTAL_BUDGET || '350',

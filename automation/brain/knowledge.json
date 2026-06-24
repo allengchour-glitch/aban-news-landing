@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-24T15:50:06.075Z",
+  "updated": "2026-06-24T16:19:23.343Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1487,6 +1487,12 @@
       "NEUER Stuck-Punkt: Creation-URL redirected zur Kampagnen-LISTE statt zum Wizard -> Stagehand-Objective-Acts scheitern. FIX: Create-Button-Guard - erkennt Liste, klickt +Create -> Wizard.",
       "Es gibt eine alte Kampagne Sales20260606004848 (Active, 0 CHF Spend) im Konto - die alte kaputte vom 6.Juni.",
       "iterativer Fix-Fortschritt: falsche ID->fix, Select-account->Guard, Loop-Hang->Watchdog, Liste-statt-Wizard->Create-Guard. Jeder Lauf bringt den Bot weiter."
+    ],
+    "watchdog_zu_kurz_fix_2026": [
+      "DURCHBRUCH-DIAGNOSE: Campaign-Bot stoppte exakt nach Budget (Screenshot 08, kein 09) weil MEIN 5-Min-Watchdog ihn mitten im langen Wizard killte. Der Campaign-Flow (Konto-Guard+Ziel+Gebot+Targeting+Budget+Ad+Submit mit Stagehand+Sleeps) braucht ~10-12 Min.",
+      "FIX: Campaign-Bot-Watchdog 5->12 Min. CLOUD-AN-Hänge-Killer 8->15 Min (sonst killt er den legitimen 12-Min-Campaign-Lauf). Andere Bots (delete/fb/cover) bleiben bei 5 Min (kurz).",
+      "LEHRE: Watchdog-Timeout an die ECHTE Laufzeit des Bots anpassen - ein zu kurzer Watchdog würgt legitime lange Flows ab (sieht aus wie Stuck, ist aber Self-Kill).",
+      "Nach diesem Fix sollte der Campaign-Bot bis Submit durchlaufen (Konto richtig + Wizard erreicht + genug Zeit)."
     ]
   },
   "decisions": [
