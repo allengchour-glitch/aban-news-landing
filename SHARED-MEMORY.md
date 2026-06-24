@@ -1857,3 +1857,13 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   → Diese gehören in den Horizon-Customizer (User) oder auf eine Theme-KOPIE mit Preview. Nicht erneut blind versuchen.
 - **API-MACHBAR bestätigt:** Produkte/Collections/Pages/Policies(ausser auto-Privacy)/Menü/Metafelder/Publikationen. NICHT-API:
   Theme-Blocks (Horizon-Customizer), Payment-Provider (Klarna/PostFinance-Signup), Trust-Seal (Zertifizierung), Spin-Wheel-Popup (App).
+
+## 📌 2026-06-23 Teil 58 (🚁 Vertiefungs-Welle +48 + Pipeline-Lehre ß)
+- **+48 Produkte** in die dünnen neuen Nischen (Drohnen/Beamer/Smartwatch/Kaffee/Grill/Haustier-Tech, PER=8, Ledger-Dedup → nur Neue).
+  Jetzt ~14/Kategorie statt 4-8 (Kategorie mit 4 Produkten wirkt leer). Voll poliert, 0 Dups/Bild/Kanal-Probleme. Katalog 4414 aktiv.
+- **🔧 PIPELINE-LEHRE:** Gemini gibt gelegentlich „ß" aus → **swiss_spelling_fix.mjs LIVE GEHÖRT IN JEDE Polish-Pipeline** (nach den
+  Beschreibungen). Standard-Pipeline jetzt: ai_product_descriptions → seo_gap_fix → google_feed_fix → gmc_category_fix → alt_text_fill
+  → **dedupe_titles** → **swiss_spelling_fix(LIVE)** → Handle-ID-Dup-Check.
+- **🎯 STAND:** On-Site ist API-seitig ERSCHÖPFEND maximiert (Beschreibungen/SEO/Feed/Bilder/Alt/Cross-Links/Pages/Policies/ß/Menü/
+  Filter-Hub/Kategorien). Heute ~330 neue Produkte (12 Wellen), Archiv gelöscht, Google sauber, 5-Agenten-Research umgesetzt.
+  **Verbleibende Hebel = User-only** (Theme-Customizer/Payment/Trust-Seal/Ads) — alle in RESEARCH-CONVERSION-2026-06-23.md dokumentiert.
