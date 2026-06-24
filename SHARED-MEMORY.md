@@ -1908,3 +1908,16 @@ Horizon-Theme sicher per API erweitert (Custom-Liquid-Blöcke/Sektionen + Sectio
 - **THEME-EDIT-PATTERN bestätigt:** Backup→Read JSON→parse→custom-liquid-Block(dynamische Section)/Section(order.push)→validate→
   themeFilesUpsert→curl/WebFetch-Verify. Cart-Drawer-Gratis-Versand-Balken bleibt offen (statische Cart-Blöcke → bräuchte Section-Liquid).
 - **#3 Spin-Wheel = Gratis-App (Tada/Spin-a-Sale, 1 Klick, User).** TikTok-Kampagne = andere Session.
+
+## 📌 2026-06-23 Teil 62 (🪼 VIRALES TIKTOK-PRODUKT: Quallen-Diffusor — schon im Shop, Bild+Promo gefixt)
+- **User-Screenshot:** virales TikTok-Produkt „Baowu Jellyfish Aromatherapy Diffuser" (40k Likes). → **Ist schon im Shop:**
+  „Quallen-Diffuser «Medusa» – mit Musik & LED" (CHF 49.90, cj-real, id 15412959805825). Bild-Vergleich = identisches Produkt.
+- **🔧 Bild-Fix (cj-real-Defekt):** ALLE 7 CJ-Bilder hatten ENGLISCHEN Werbetext-Overlay („Cute Dancing Jellyfish", „Music Pickup"…)
+  → schlecht für DE-Shop + Google-Overlay-Policy. **Gemini 2.5-flash-image (image-to-image) generierte ein sauberes, text-freies,
+  fotorealistisches Produktfoto** (exakt das Produkt, Quallen-Nebel, LED, Fernbedienung) → hochgeladen (stagedUploads→productCreateMedia
+  →productReorderMedia pos 0) → **als Hauptbild gesetzt (READY).** Live verifiziert.
+- **🔧 Promotion:** Tags hype-2026/trends-2026/tiktok-viral/bestseller/geschenk → landet jetzt in den Trend-Collections.
+- **🧠 NEUE FÄHIGKEIT (wiederverwendbar):** Virales Produkt vom User-Screenshot → im Shop finden → CJ-Text-Overlay-Bild per
+  Gemini-image-to-image säubern → hochladen/Hauptbild. Pattern: Gemini `inline_data`+Edit-Prompt „remove all text, keep exact product"
+  → `gemini-2.5-flash-image:generateContent` → Buffer → stagedUploadsCreate→FormData-POST→productCreateMedia→productReorderMedia.
+- **⚠️ Viele cj-real-Produkte haben evtl. ähnliche englische Text-Overlay-Bilder** → bei Bedarf gleicher Gemini-Clean-Workflow.
