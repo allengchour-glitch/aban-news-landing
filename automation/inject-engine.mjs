@@ -60,7 +60,8 @@ function ldFor(html, file) {
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png", sameAs: ["https://www.linkedin.com/in/aban-news-019b21239", "https://x.com/abannews"] },
+      { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png", sameAs: ["https://x.com/abannews"], founder: { "@id": SITE + "/#person" } },
+      { "@type": "Person", "@id": SITE + "/#person", name: "Allen Chour", alternateName: "Aban", url: SITE + "/about.html", sameAs: ["https://www.linkedin.com/in/aban-news-019b21239"] },
       { "@type": "BreadcrumbList", itemListElement: crumbs }
     ]
   };
