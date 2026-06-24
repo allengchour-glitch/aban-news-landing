@@ -30,13 +30,35 @@ const OUT = val('--out', path.join('social', 'ai-lifestyle', `${slug}.png`));
 
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
+// ===== LuxeStyle Signature-Stil "Alpenlicht Editorial" (2026-06-24, User: eigener Stil, nicht geklaut) =====
+// Fixe Kombi = unverwechselbar: warmer Schweizer Stein (Travertin) + EIN Alpen-Botanical (Edelweiss/Trockengras) +
+// Golden-Hour-Seitenlicht von links + cremiges Tuerkissee-Bokeh + warmer Editorial-Grade (lifted blacks, leichtes Korn).
+// ⚠️ KEIN dunkles Wasser/Tropfen (das war der geklaute Parfum-Look). Wasser NUR fuer wasserfesten Schmuck = helles Alpensee-Tuerkis.
 function promptFor(title, style) {
-  const base = `Use the provided product image as the EXACT reference — keep the product "${title}" identical in shape, color, material and details (do not alter or replace the product). `;
-  const common = `Strictly Switzerland aesthetic, natural realistic lighting, true colors, high quality, 9:16 vertical composition with the product clearly visible. No on-screen text, no logos, no watermarks, no extra brands.`;
-  if (style === 'model') return base + `Place it being worn/used by a real, natural-looking young Swiss woman in an elegant everyday setting. Editorial but believable. ` + common;
-  if (style === 'ugc') return base + `Make it look like an authentic phone-shot UGC photo: a real young Swiss woman holding/wearing the product in a bright everyday setting (bedroom, cafe, outdoors), casual and relatable, slight imperfection, not polished studio. ` + common;
-  if (style === 'hero' || style === 'studio') return base + `Dramatic premium COMMERCIAL product photography (advertising hero shot): place the product on a dark, glossy reflective surface — like still dark water with gentle ripples — with realistic water droplets on the product, moody cinematic lighting, deep shadows, soft rim light, elegant mirror reflection below, luxury brand-campaign aesthetic. Ultra sharp, high-end, scroll-stopping. True colors, high quality, 9:16 vertical, product centered and clearly visible. No on-screen text, no logos, no watermarks, no extra brands.`;
-  return base + `Place it in a beautiful lifestyle scene (tasteful surface, soft daylight, subtle props that fit a Swiss summer mood) that makes it desirable. Clean, premium, scroll-stopping. ` + common;
+  const base = `Use the provided product image as the EXACT reference — keep the product "${title}" identical in shape, color, material, proportions and details (do not alter or replace the product). `;
+  const clause = ` Warm golden-hour side-light from the left with long soft shadows, warm editorial grade with lifted soft blacks and faint film grain, creamy defocused alpine bokeh (pale mountains / sliver of turquoise Swiss lake), serene quiet-luxury Swiss mood, generous calm negative space, lower third uncluttered. True colors, photorealistic, 9:16 vertical, product clearly the hero. No on-screen text, no logos, no watermarks, no extra brands.`;
+  switch (style) {
+    case 'model': // Apparel/Kleider — on-model editorial
+      return base + `Place the garment on a relaxed elegant young Swiss woman on a sun-washed travertine stone terrace, a single sprig of dried wild grass on a stone ledge nearby.` + clause;
+    case 'jewelry': // Schmuck (kein Wasser) — Editorial Still-Life
+      return base + `Rest the jewelry on a pale travertine stone slab beside a single edelweiss sprig; the light grazes the metal/stones into a soft brushed-gold gleam.` + clause;
+    case 'bag': case 'accessory':
+      return base + `Lean the product on a raw travertine/pale-granite stone edge over a fold of oat linen, one dried eucalyptus sprig beside it.` + clause;
+    case 'sunglasses':
+      return base + `Place the sunglasses open on a sun-warmed pale stone slab beside a sprig of dried alpine grass, a crisp warm reflection across the lenses.` + clause;
+    case 'beauty':
+      return base + `Stand the product upright on a smooth travertine stone beside a small pressed alpine flower and a fold of linen, gentle highlight bloom, spa-clean Swiss-apothecary mood.` + clause;
+    case 'home': case 'wellness':
+      return base + `Place the item on a pale stone shelf or linen-draped wood in a calm sunlit Swiss interior opening to a blurred alpine view, one dried botanical sprig beside it, cozy quiet-luxury wellness mood.` + clause;
+    case 'men':
+      return base + `Rest the product on a raw granite/slate stone beside a sprig of dried grass, graded slightly cooler and higher-contrast for a restrained masculine tone, defocused stone-and-mountain terrace behind.` + clause;
+    case 'seetest': case 'water': case 'hero': case 'studio': // WASSER nur fuer wasserfesten Schmuck — helles Alpensee-Tuerkis, NICHT dunkel
+      return base + `Photograph the waterproof jewelry resting half-submerged at the bright sunlit edge of a crystal-clear turquoise Swiss alpine lake, clean water gently lapping with a few natural droplets, pale stones and a defocused mountain shoreline behind; the piece stays brilliant in water. Bright daylight, turquoise and Swiss (never dark moody water).` + clause;
+    case 'ugc':
+      return base + `Authentic phone-shot UGC look: a real young Swiss woman holding/wearing the product in a bright everyday setting, casual and relatable, slight imperfection, not polished studio.` + clause;
+    default: // 'lifestyle' = Signature Still-Life (produkt-agnostischer Fallback)
+      return base + `Rest the product on a warm travertine stone surface over a fold of oat linen, with exactly one alpine-botanical accent (edelweiss or dried grass) beside it on a sunlit Swiss terrace.` + clause;
+  }
 }
 
 async function loadImage(src) {

@@ -647,7 +647,8 @@
     "aesthetik_optik": [
       "HERO-BILD = optischer Conversion-Engpass #1: 1 starkes, einheitliches Lifestyle-Foto + 1 klarer CTA schlägt jede Navigations-/Feature-Politur (OPTIK-REPORT, SHOP-DESIGN-AUDIT).",
       "PRODUKTKACHEL-KONSISTENZ: Mix aus Freisteller-Weiss/Lifestyle/Render im selben Grid wirkt wie «5 Shops». Hero-Reihe nur heller, einheitlicher Hintergrund — Renders raus.",
-      "ALT-TEXTE für ALLE Produktbilder (Google-Bildersuche + Barrierefreiheit) — fehlende Alt-Texte = 0 Bilder-SEO. [Hinweis: Optik/Theme/Collection-Seite = Theme-Session-Revier → nur abstimmen, nicht eigenmächtig.]"
+      "ALT-TEXTE für ALLE Produktbilder (Google-Bildersuche + Barrierefreiheit) — fehlende Alt-Texte = 0 Bilder-SEO. [Hinweis: Optik/Theme/Collection-Seite = Theme-Session-Revier → nur abstimmen, nicht eigenmächtig.]",
+      "SIGNATURE-STIL Alpenlicht Editorial (User 2026-06-24 eigener Stil nicht geklaut): fixe Kombi = warmer Schweizer Stein (Travertin) + EIN Alpen-Botanical (Edelweiss/Trockengras) + Golden-Hour-Seitenlicht links + cremiges Tuerkissee-Bokeh + warmer Editorial-Grade (lifted blacks, feines Korn). ⚠️ NIE dunkles Wasser+Tropfen (geklauter BellaVita-Parfum-Look, verworfen). Wasser NUR fuer wasserfesten Schmuck = HELLES Alpensee-Tuerkis (style seetest). Stil pro Produkt aus Label (jewelry/model/bag/sunglasses/beauty/home/men/lifestyle). Umgesetzt in nanobanana_lifestyle.mjs + nanobanana-batch.ps1 (Pick-Style). Doc: dropship/STYLE-ALPENLICHT.md. Homepage-Hero = model + jewelry-Makro."
     ],
     "supplier_pricing": [
       "CJ EU-LAGER: countryCode=DE (Frankfurt) → EU-bevorratete Artikel mit ~5–10 Tagen CH-Versand für Ad-Produkte sourcen (1 API-Parameter statt Anbieterwechsel). Tag eu-lager + «Express» in Copy (EU-LAGER-STRATEGIE).",

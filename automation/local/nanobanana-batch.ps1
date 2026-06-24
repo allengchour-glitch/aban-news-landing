@@ -7,13 +7,27 @@ $root = Split-Path (Split-Path $PSScriptRoot)
 Set-Location $root
 $csv = Join-Path $root "automation\top_products.csv"
 if (-not (Test-Path $csv)) { Write-Host "top_products.csv fehlt"; exit }
-$max = if ($env:NB_MAX) { [int]$env:NB_MAX } else { 5 }
-$style = if ($env:NB_STYLE) { $env:NB_STYLE } else { "lifestyle" }
+$max = if ($env:NB_MAX) { [int]$env:NB_MAX } else { 6 }
+# Stil pro Produkt aus dem Label ableiten (Alpenlicht-Signature, passend statt blanko) — ausser NB_STYLE erzwingt einen.
+function Pick-Style($label) {
+  if ($env:NB_STYLE) { return $env:NB_STYLE }
+  $l = $label.ToLower()
+  if ($l -match 'wasserfest|waterproof') { return 'seetest' }   # nur wasserfester Schmuck = helles Alpensee-Wasser
+  if ($l -match 'ohrring|kette|armband|armreif|ring|schmuck|anhänger|anhanger') { return 'jewelry' }
+  if ($l -match 'sonnenbrille|brille') { return 'sunglasses' }
+  if ($l -match 'herren|polo|männer|manner') { return 'men' }
+  if ($l -match 'kleid|blazer|leinen|rock|stola|schal|seidenschal|hemd|weste|bademode') { return 'model' }
+  if ($l -match 'tasche|shopper|crossbody|rucksack|beutel|clutch|bag') { return 'bag' }
+  if ($l -match 'diffuser|kerze|wellness|deko|lampe|öl|ole') { return 'home' }
+  if ($l -match 'roller|serum|creme|beauty|pflege|maske') { return 'beauty' }
+  return 'lifestyle'
+}
 $rows = Import-Csv $csv
 $done = 0
 foreach ($r in $rows) {
   if ($done -ge $max) { break }
   if (-not $r.image_url -or -not $r.label) { continue }
+  $style = Pick-Style $r.label
   $slug = ($r.label.ToLower() -replace '[^a-z0-9]+','-').Trim('-')
   if ($slug.Length -gt 40) { $slug = $slug.Substring(0,40) }
   $suffix = if ($style -eq "lifestyle") { "" } else { "-$style" }

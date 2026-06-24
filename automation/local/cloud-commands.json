@@ -1,7 +1,5 @@
 [
-  { "id": "2026-06-24w-meta-dm", "cmd": "meta-dm" },
-  { "id": "2026-06-24w-seo", "cmd": "seo" },
-  { "id": "2026-06-24w-enrich", "cmd": "enrich" },
-  { "id": "2026-06-24w-feed", "cmd": "feed" },
-  { "id": "2026-06-24w-nanobanana", "cmd": "nanobanana" }
+  { "id": "2026-06-24x-datasharing-go", "cmd": "datasharing-go" },
+  { "id": "2026-06-24x-nanobanana", "cmd": "nanobanana" },
+  { "id": "2026-06-24x-meta-dm", "cmd": "meta-dm" }
 ]
