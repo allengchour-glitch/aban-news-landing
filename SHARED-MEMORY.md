@@ -1833,3 +1833,13 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   (4) Trust-Seal (Swiss Online Garantie) · (5) Collection-Intro+FAQ+JSON-LD (Organic/AI-Overview) · (6) Pinterest Rich Pins (bester Gratis-Kanal).
 - **Engpass-Bestätigung (alle Agenten):** Conversion-Scaffolding verbessert, aber REICHWEITE bleibt der eigentliche Hebel (User-Ad-Klicks).
 - **🚫 Koordination:** MOFU-Ratgeber-Content = ANDERE Session (nicht doppeln). Theme-Customizer/Payment/Trust-Seal = User-only.
+
+## 📌 2026-06-23 Teil 56 (📄 PAGE-INKONSISTENZEN gefixt — fake Code, falsche Email, CHF50)
+- **Aus der Research-Synthese umgesetzt:** Über-uns + FAQ + 7 weitere Pages hatten echte Defekte:
+  - **FAQ/Versand-Pages: „GRATIS ab CHF 50 mit Code SHIP50"** — SHIP50 existiert NICHT (verifiziert) → falsches Versprechen,
+    Kunde probiert Code → scheitert → Trust weg. → korrigiert zu **„GRATIS ab CHF 65 – automatisch, kein Code"** (konsistent mit Trust-Line).
+  - **„hello@luxestyle.ch"** auf 5 Pages (Kontakt/Grössenberatung/Geschenkkarten/Versand/Über-uns) → echte Email ist **info@luxestyle.ch** (Impressum). Vereinheitlicht.
+  - **Über uns „Bis zu 50% günstiger"** (unbelegbar, PBV-Risiko) → „Faire Preise dank schlankem Direkt-Modell".
+- **Ergebnis:** 0 hello@ · 0 SHIP50 · 0 „ab CHF 50" verbleibend. Alle Pages konsistent: info@luxestyle.ch · CHF 65 automatisch.
+- **Lehre:** Die „CHF 50/65-Inkonsistenz" der Agenten lebte in den Pages (nicht Produkten). Plus fake Discount-Code = stiller Conversion-Killer.
+  Bei Page-Audits IMMER auf tote Codes / falsche Emails / Schwellenwert-Inkonsistenz prüfen.
