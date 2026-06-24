@@ -246,17 +246,19 @@ async function pickFromSearch(p, value) {
   }, objectiveCards.source), 15000, 'stateNow')) || { inWizard: false, onList: false, url: '', len: 0 };
 
   const dismissOverlay = async () => {
-    await pTimeout(p.keyboard.press('Escape'), 5000, 'esc');
-    await sleep(400);
+    // CRASH-FIX 2026-06-24: die Stagehand-Page hat KEIN p.keyboard/p.mouse (nur evaluate/screenshot/goto/$).
+    // Darum ALLES via p.evaluate: Schliess-Button klicken, sonst Escape-Event + neutraler Klick in die Tabelle.
     await pTimeout(p.evaluate(() => {
       const close = [...document.querySelectorAll('button,[role="button"],svg,span,i,div')].find(e => {
         const s = (e.getAttribute('aria-label') || e.innerText || '').toLowerCase().trim();
         const r = e.getBoundingClientRect();
         return (/^(×|✕|x|close|schliessen|schließen)$/.test(s) || /got it|no thanks|nicht jetzt|maybe later|dismiss|später/.test(s)) && r.width > 0 && r.width < 120;
       });
-      if (close) close.click();
+      if (close) { close.click(); return; }
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', keyCode: 27, bubbles: true }));
+      const el = document.elementFromPoint(620, 540);
+      if (el) el.click();
     }), 8000, 'dismiss');
-    await pTimeout(p.mouse.click(620, 540), 5000, 'neutral-click'); // neutraler Klick in die leere Tabelle schliesst TikTok-Popover
     await sleep(600);
   };
 
