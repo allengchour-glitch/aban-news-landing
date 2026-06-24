@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-24T15:44:18.035Z",
+  "updated": "2026-06-24T15:47:05.085Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1476,6 +1476,11 @@
       "FIX: WATCHDOG in ALLE Browser-Bots (campaign-port, tiktok-delete, ig-delete, fb-check, ig-reel-cover, tiktok-upload): setTimeout(()=>process.exit(1),300000).unref() -> Bot beendet sich IMMER nach 5 Min, Loop bleibt am Leben.",
       "LEHRE: jeder PC-Bot, der von cmd-poll synchron gestartet wird, MUSS einen harten Self-Exit-Watchdog haben, sonst killt ein Hänger die ganze Automation. .unref() = stört sauberes Ende nicht.",
       "Nach diesem Fix sollte der cmd-poll-Loop stabil durchlaufen -> verbesserter campaign-port-Bot (richtige ID + Konto-Guard) bekommt endlich seine Chance."
+    ],
+    "cloud_an_selbstheilung_2026": [
+      "CLOUD-AN gehärtet: killt jede Runde node-Bots >8 Min Laufzeit (Hänger) + 5-Min-Bot-Watchdog -> Loop kann nicht mehr einfrieren, selbst-heilend.",
+      "HARTE GRENZE (ehrlich): Cloud kann CLOUD-AN NICHT starten/neustarten - cloud->PC geht nur über git/Worker-Queue, die der (evtl. frozene) Loop LESEN muss. Ist der Loop eingefroren, kommt die Cloud nicht ran. Ein frozener PC-Loop = nur der User kann 1x neu starten.",
+      "ABER: nach EINEM Neustart lädt der PC alle Self-Heal-Fixes (Watchdog + Hänge-Wachhund) -> ab dann nie wieder Eingriff nötig."
     ]
   },
   "decisions": [
