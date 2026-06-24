@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflations-Rechner — Kaufkraft &amp; Geldwert berechnen · aban news</title>
+<meta name="description" content="Kostenloser Inflations-Rechner: berechne, wie viel dein Geld in einigen Jahren noch wert ist (Kaufkraft) oder welcher Betrag nötig ist, um die Kaufkraft zu halten. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/inflations-rechner.html">
+<meta property="og:title" content="Inflations-Rechner — Kaufkraft &amp; Geldwert berechnen">
+<meta property="og:description" content="Wie viel ist dein Geld in X Jahren noch wert? Kaufkraft & nötiger Betrag bei Inflation. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/inflations-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Inflations-Rechner",
+"url":"https://abannews.com/inflations-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet die Kaufkraft eines Geldbetrags nach einigen Jahren Inflation sowie den Betrag, der nötig ist, um die Kaufkraft zu halten. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie wirkt sich Inflation auf mein Geld aus?","acceptedAnswer":{"@type":"Answer","text":"Inflation senkt die Kaufkraft: Für dieselbe Summe bekommst du im Lauf der Zeit weniger. Bei 3 % Inflation pro Jahr sind 1.000 € nach 10 Jahren nur noch rund 744 € wert — gemessen an dem, was du dafür kaufen kannst."}},
+{"@type":"Question","name":"Wie viel Geld brauche ich, um die Kaufkraft zu halten?","acceptedAnswer":{"@type":"Answer","text":"Der Rechner zeigt beides: was dein heutiger Betrag in einigen Jahren noch wert ist und welcher höhere Betrag nötig wäre, um die gleiche Kaufkraft zu behalten. So siehst du, welche Rendite deine Ersparnisse mindestens bringen müssen."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.out{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:6px 16px}
+.out table{width:100%;border-collapse:collapse;font-size:.95rem}
+.out td{padding:9px 0;border-bottom:1px solid var(--line)}
+.out tr:last-child td{border-bottom:0}
+.out td:last-child{text-align:right;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--amber-dk)}
+.big{font-size:1.5rem}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Inflation</span> &amp; Kaufkraft</h1>
+    <p>Wie viel ist dein Geld in einigen Jahren noch wert — und welcher Betrag wäre nötig, um die Kaufkraft zu halten? Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Macht den schleichenden Geldwert-Verlust sichtbar — und zeigt, welche Rendite deine Ersparnisse mindestens schlagen müssen.</p>
+
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div class="fld"><label for="betrag">Betrag heute (€)</label><input id="betrag" type="number" value="10000" min="0" step="100"></div>
+      <div class="fld"><label for="jahre">Jahre</label><input id="jahre" type="number" value="10" min="0" max="100" step="1"></div>
+      <div class="fld"><label for="rate">Inflation p. a. (%)</label><input id="rate" type="number" value="3" min="0" step="0.1"></div>
+    </div>
+    <div class="out" id="out" aria-live="polite"></div>
+    <p class="note">Annahme: konstante Inflationsrate. Modellrechnung, reale Inflation schwankt. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Geld.</p>
+    <p><a class="btn" href="/zinseszins-rechner.html">Zinseszins-Rechner</a>
+      <a class="btn ghost" href="/sparziel-rechner.html">Sparziel-Rechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zinseszins-rechner.html">Zinseszins</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+  function eur(v){return v.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";}
+  function render(){
+    var b=num("betrag"), j=num("jahre"), r=num("rate"), out=document.getElementById("out");
+    if(b<=0){ out.innerHTML='<p style="color:#9aa3ad;padding:8px 0">Betrag eingeben.</p>'; return; }
+    var f=Math.pow(1+r/100,j);
+    var kaufkraft=b/f;          // was b heute in j Jahren real wert ist
+    var noetig=b*f;             // wie viel man in j Jahren braucht, um b-Kaufkraft zu halten
+    var verlust=b-kaufkraft;
+    out.innerHTML="<table><tbody>"+
+      '<tr><td>Kaufkraft in '+j+' Jahren</td><td class="big">'+eur(kaufkraft)+"</td></tr>"+
+      '<tr><td>Wertverlust</td><td><span style="color:#a01616">−'+eur(verlust)+" ("+(b>0?Math.round((1-kaufkraft/b)*100):0)+" %)</span></td></tr>"+
+      '<tr><td>Nötig für gleiche Kaufkraft</td><td>'+eur(noetig)+"</td></tr>"+
+      "</tbody></table>";
+  }
+  ["betrag","jahre","rate"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});
+  render();
+})();
+</script>
+</body>
+</html>

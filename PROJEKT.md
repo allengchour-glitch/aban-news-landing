@@ -57,7 +57,7 @@
   + gebündelt mergen, sobald frei. (4) Brain-Artefakte (brain-state.json/brain.html/IMPROVEMENT-REPORT.md)
   vor Commit verwerfen (Konflikte mit Parallel-Sessions).
 
-## 🧰 2026-06-20/23 — 69 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20/24 — 71 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
@@ -93,7 +93,8 @@
   css-minify (Kommentare/Whitespace weg, Ersparnis%) + schuhgroessen-umrechner (EU/US/UK/cm, Damen/Herren, über Fußlänge, Richtwerte) #1204 ·
   kleidergroessen-umrechner (EU/US/UK/XS-XXL Tabelle, Damen/Herren) + cups-in-gramm (US-Backmaße je Zutat→g/ml, Dichte-Tabelle, getestet) #1208 ·
   fahrtkosten-rechner (Spritkosten Strecke×Verbrauch×Preis + Kilometerpauschale, Hin/Rück, pro Person) + backofen-temperatur (Gasstufe↔°C↔°F↔Umluft, Tabelle) #1210 ·
-  stromkosten-rechner (Watt×Std×Tage×Preis oder kWh/Jahr → Tag/Monat/Jahr, getestet 51,10 €) + zeichen-limit-social (Live-Längen vs. X/Insta/LinkedIn/Meta-Title/Description, Ampel) [batch-34, 2026-06-23]. **Hub = 128+ Tools.**
+  stromkosten-rechner (Watt×Std×Tage×Preis oder kWh/Jahr → Tag/Monat/Jahr, getestet 51,10 €) + zeichen-limit-social (Live-Längen vs. X/Insta/LinkedIn/Meta-Title/Description, Ampel) #1224 ·
+  sparziel-rechner (Zielbetrag→monatl. Sparrate, Annuität rückwärts, Startkapital, getestet 150,83 €) + inflations-rechner (Kaufkraft/Wertverlust, getestet 1000€→744€) [batch-35, 2026-06-24]. **Hub = 130+ Tools.**
   ⚠️ **Lehre (Encoder-Reuse):** Python `codecs.decode(...,"unicode_escape")` über UTF-8-String zerschießt Umlaute (→ Ã¤). Stattdessen Datei direkt in UTF-8 schreiben; Mojibake-Fix: Paare Ã¤→ä etc. Und: in JSON-LD NIE geraden `"` als dt. Schlusszitat — „…" (U+201E/U+201C) nutzen.
   ⚠️ sitemap.xml = häufige Merge-Konflikte mit Parallel-Session („…-kaufen-schweiz") → neue Einträge NICHT ganz am Ende, sondern nach eigenem Anker einfügen; Konflikt = beide Sets behalten.
   EN-Tools = KEIN Hebel (geprüft: /en/ nutzt deutsche Slugs, DACH-Fokus → bringt keine dt. Abonnenten).
