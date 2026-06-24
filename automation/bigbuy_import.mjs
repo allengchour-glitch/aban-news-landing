@@ -170,6 +170,12 @@ const CONFIG = {
     anchor: ['futterautomat', 'futterspender', 'trinkbrunnen', 'katzenbrunnen', 'haustierkamera', 'pet-kamera', 'gps-tracker hund', 'gps tracker katze', 'haustier-tracker', 'pfotenreiniger', 'fellpflege', 'haustier-haartrockner', 'automatischer ball', 'katzentoilette selbstreinigend'],
     ban: ['spielzeug', 'napf einfach', 'leine', 'halsband einfach', 'kissen', 'decke'],
     bullets: ['Smarte Versorgung deines Lieblings', 'Auch wenn du unterwegs bist', 'Einfach zu reinigen', 'Mehr Komfort für Tier & Halter'] },
+  // ── Viral/Trending 2026 (TikTok-Hype: Galaxy/Sunset/Mond-Lampen, LED, Massagepistole, Haltungskorrektor) ──
+  viral: { coll: { handle: 'trend-gadgets', title: '🔥 Trend-Gadgets', tag: 'viral' },
+    extraTags: ['viral', 'trend', 'tiktok', 'hype-2026', 'geschenk'], type: 'Trend-Gadget', maxCost: MAX_COST_EUR,
+    anchor: ['sternenprojektor', 'galaxy projektor', 'galaxie projektor', 'sternenhimmel projektor', 'led projektor sterne', 'sunset lampe', 'sonnenuntergang lampe', 'sunset projektor', 'mondlampe', 'mond lampe', 'levitation', 'schwebende', 'led strip', 'led-streifen', 'led streifen', 'rgb streifen', 'lichterkette led', 'massagepistole', 'massage pistole', 'massagegerät tiefen', 'faszien-pistole', 'haltungskorrektor', 'haltungstrainer', 'rückenstütze haltung', 'aurora projektor', 'nordlicht projektor', 'flammen lampe', 'schwerelos', 'tischlampe touch', 'astronaut projektor'],
+    ban: ['kinder', 'spielzeug', 'ersatz', 'fernbedienung einzeln', 'netzteil einzeln', 'glühbirne', 'auto', 'kfz', 'reifen'],
+    bullets: ['Viraler TikTok-Hit', 'Sofort Stimmung im Raum', 'Tolles Geschenk', 'Einfach Plug & Play'] },
   // ── Nachfrage-Kategorien 2026 (datenbasiert: Pet/Beauty/Home/Phone/Gürtel sind Top-Trends) ──
   beauty: { coll: { handle: 'premium-beauty', title: 'Beauty · Premium', tag: 'beauty' },
     extraTags: ['beauty', 'pflege', 'premium'], type: 'Beauty', maxCost: MAX_COST_EUR,
