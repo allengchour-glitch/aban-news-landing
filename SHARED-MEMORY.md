@@ -1880,3 +1880,18 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   returns (Katalog 4434, Engpass = REICHWEITE). Verbleibende ECHTE Hebel sind alle User-only (Theme-Customizer/Payment/Trust-Seal/
   TikTok-Ads/Pinterest) — vollständig dokumentiert in RESEARCH-CONVERSION-2026-06-23.md. Künftige Sessions: NICHT endlos Produkte
   stapeln — der Hebel liegt bei den User-Klicks.
+
+## 📌 2026-06-23 Teil 60 (📱 THEME-CRO PER API umgesetzt — #2 erledigt; Horizon IST sicher editierbar!)
+- **DURCHBRUCH:** Horizon-Theme IST per API sicher editierbar über **Custom-Liquid-Blöcke** (`blocks/custom-liquid.liquid`, setting
+  `custom_liquid`) + **Section-Settings**. Selbst-enthaltene Blöcke können den Theme-Kern NICHT zerstören. (Korrigiert Teil 57 „nicht blind".)
+- **✅ Trust-Reihe LIVE auf JEDER Produktseite** (catalog-weit): nach dem ATC-Button via Custom-Liquid-Block in `templates/product.json`
+  → product-details.block_order nach `buy_buttons_eYQEYi`. Inhalt: 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · 🔒 Sichere Zahlung
+  TWINT/Visa/MC · 🇨🇭 Schweizer Shop info@. = CRO-Hebel #3+#15 (Trust am CTA). Live verifiziert (WebFetch), 0 Schaden.
+- **✅ Schon erledigt entdeckt:** Sticky-ATC (`enable_sticky_add_to_cart:true` in product-information-Section) + Judge.me-Sterne
+  (Badge an Position 2, direkt unter Titel). = CRO #1 + #2 waren bereits aktiv.
+- **⚠️ Cart-Gratis-Versand-Balken:** geht NICHT per Template-JSON (Cart-Blöcke sind STATISCH, nicht in block_order erlaubt → Upsert-Error,
+  cart.json unverändert). Bräuchte Section-Liquid-Edit (riskanter) oder ist evtl. im Drawer. Übersprungen.
+- **🔧 THEME-EDIT-PATTERN (für künftige Sessions):** Backup→Read product.json→JSON.parse→Block zu section.blocks + key in block_order
+  (nur bei DYNAMISCHEN Blöcken!)→re-serialize→JSON.parse validieren→themeFilesUpsert→WebFetch-Live-Verify. Backup in /tmp/product_json_backup.json.
+- **#3 Spin-Wheel-Popup:** braucht echt eine GRATIS-App (Tada/Spin-a-Sale, 1 Klick) — Spin-Wheel = custom JS, würde mit bestehendem
+  Shopify-Forms-Popup kollidieren. Email-Capture-Fundament (WELCOME10-Popup) existiert. → User-App-Install empfohlen.
