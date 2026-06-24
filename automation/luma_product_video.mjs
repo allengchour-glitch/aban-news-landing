@@ -16,6 +16,8 @@
  *   --no-attach   nur Clip rendern (nach reels/), nicht ans Produkt hängen
  *   --queue       Clip zusätzlich in social/video_queue.csv eintragen (status=ready)
  *   --duration 5s --resolution 720p --aspect 9:16   (Defaults)
+ *   --ugc         UGC-Creator-Look (handheld, leichtes Wackeln, echt) statt Premium-Studio
+ *                 (auch via LUMA_STYLE=ugc) — konvertiert besser + leichter durch TikTok-Ad-Review
  *   --dry         nur zeigen, was es täte
  *
  * Luma-Doku: https://docs.lumalabs.ai  — POST/GET /dream-machine/v1/generations
@@ -51,8 +53,20 @@ if (!ids.length) { console.error('Keine Produkt-IDs übergeben. Bsp: node luma_p
 
 const REELS = path.resolve('reels'); fs.mkdirSync(REELS, { recursive: true });
 
+// STYLE waehlbar (2026-06-24, gelernt aus YouTube Claude+Seedance UGC): 'premium' (Default, Studio) ODER
+// 'ugc' (wirkt wie echter Creator-Clip -> konvertiert besser + kommt leichter durch TikTok-Ad-Review).
+const STYLE = (process.env.LUMA_STYLE || (process.argv.includes('--ugc') ? 'ugc' : 'premium')).toLowerCase();
+
 // Premium-Prompt: ruhige Kamera, KEIN Wackeln, kein Text, edle Studio-Anmutung.
+// UGC-Prompt: Creator-Brief-Struktur (Persona, Umgebung, Produkt-Aktion, KAMERA handheld+leichtes Wackeln,
+//   Proof-Moment) — der Kamera-Trick verhindert das generische "locked camera"-Werbebild.
 function promptFor(title) {
+  if (STYLE === 'ugc') {
+    return `Authentic UGC-style phone video of a real young Swiss woman showing "${title}" in a natural everyday ` +
+      `setting (bright bedroom / cafe / outdoors). Close-up handheld shot, slight natural camera wobble, casual UGC feel, ` +
+      `she holds and shows the product up close, genuine reaction. Realistic natural daylight, true colors, product stays ` +
+      `sharp and recognizable, no warping. No on-screen text, no logos, no watermarks, no extra people. Real, relatable, not polished.`;
+  }
   return `Premium e-commerce product showcase of "${title}". Slow elegant cinematic camera, gentle smooth ` +
     `orbit and subtle push-in, soft studio lighting, shallow depth of field, luxury aesthetic. ` +
     `Product stays sharp and centered, no warping, no text, no logos, no extra objects. Calm, high-end, stable.`;
