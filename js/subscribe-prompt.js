@@ -98,12 +98,14 @@
   document.addEventListener("mouseout", function (e) {
     if (!e.relatedTarget && e.clientY <= 0) show();
   });
-  // Trigger 2: scrolled past 60% (works on mobile/touch)
+  // Trigger 2: scrolled past 50% (works on mobile/touch)
   window.addEventListener("scroll", function () {
     var h = document.documentElement;
     var pct = (h.scrollTop + window.innerHeight) / h.scrollHeight;
-    if (pct >= 0.6) show();
+    if (pct >= 0.5) show();
   }, { passive: true });
+  // Trigger 3: nach 30 s engagierter Lesezeit (fängt Leser, die nicht scrollen; respektvoll, nicht aggressiv)
+  setTimeout(show, 30000);
   // Esc closes
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") close();
