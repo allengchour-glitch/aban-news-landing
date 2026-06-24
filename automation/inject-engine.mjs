@@ -136,12 +136,22 @@ for (const f of files) {
       "$1index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1$2");
     if (html !== before) changed = true;
   }
-  // (4) Core Web Vitals: Lazy-Load für Bilder ab dem 2. Bild (erstes = mögliches LCP-Bild, nicht lazy)
+  // (4) Core Web Vitals: Hero/LCP-Bild eager + priorisiert; restliche Bilder lazy
   {
     let seen = 0;
     const next = html.replace(/<img\b([^>]*)>/gi, function (m, attrs) {
       seen++;
-      if (seen === 1) return m;                                  // erstes Bild unverändert lassen
+      // Explizit markiertes Hero-Bild = LCP → niemals lazy, eager + hohe Priorität
+      if (/\bdata-aban-hero\b/.test(attrs)) {
+        let a = attrs.replace(/\s*loading\s*=\s*["'][^"']*["']/i, "");   // ggf. lazy entfernen
+        if (!/\bfetchpriority\s*=/.test(a)) a = " fetchpriority=\"high\"" + a;
+        if (!/\bdecoding\s*=/.test(a)) a = " decoding=\"async\"" + a;
+        return "<img loading=\"eager\"" + a + ">";
+      }
+      if (seen === 1) {                                          // erstes Bild = möglicher LCP → priorisieren
+        if (/\bfetchpriority\s*=/.test(attrs) || /\bloading\s*=\s*["']?lazy/i.test(attrs)) return m;
+        return "<img fetchpriority=\"high\" decoding=\"async\"" + attrs + ">";
+      }
       if (/\bloading\s*=/.test(attrs)) return m;                 // schon gesetzt
       return "<img loading=\"lazy\" decoding=\"async\"" + attrs + ">";
     });
