@@ -1,5 +1,5 @@
 [
-  { "id": "2026-06-23-deploy", "cmd": "deploy" },
-  { "id": "2026-06-23b-campaign-dry", "cmd": "campaign-dry" },
-  { "id": "2026-06-23-fb-check", "cmd": "fb-check" }
+  { "id": "2026-06-24-deploy", "cmd": "deploy" },
+  { "id": "2026-06-24-campaign-traffic", "cmd": "campaign-traffic" },
+  { "id": "2026-06-24-fb-check", "cmd": "fb-check" }
 ]
