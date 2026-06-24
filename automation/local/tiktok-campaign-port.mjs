@@ -209,6 +209,33 @@ async function pickFromSearch(p, value) {
     process.exit(0);
   }
 
+  // POPUP-GUARD (DURCHBRUCH 2026-06-24, Screenshots 06/08 = "Q2 Partner Coupon CHF 9000" Promo-Overlay BLOCKIERT
+  // die ganze UI -> jeder "+ Create"-Klick + alle AI-act()-Schritte feuern ins Leere, Bot bleibt auf der Liste).
+  // Vor allem anderen das Promo-/Coupon-Overlay schliessen: Escape, X/close-Button, sonst neutralen Klick.
+  try {
+    await p.keyboard.press('Escape').catch(() => {});
+    await sleep(800);
+    const closed = await p.evaluate(() => {
+      const t = e => (e.getAttribute('aria-label') || e.innerText || e.className || '').toLowerCase();
+      // Schliess-Buttons in Promo-/Coupon-/Dialog-Overlays
+      const btn = [...document.querySelectorAll('button,[role="button"],svg,span,i')].find(e => {
+        const s = t(e);
+        return /close|schliessen|schließen|dismiss|got it|no thanks|nicht jetzt|maybe later|×|✕/.test(s)
+          && e.getBoundingClientRect().width < 80 || /got it|no thanks|nicht jetzt|maybe later|dismiss/.test(s);
+      });
+      if (btn) { btn.click(); return 'btn'; }
+      return null;
+    }).catch(() => null);
+    if (!closed) {
+      // Neutralen Klick in die leere Kampagnen-Tabelle (Mitte links) -> TikTok-Promo-Popovers schliessen so.
+      await p.mouse.click(600, 520).catch(() => {});
+      await sleep(600);
+      await p.keyboard.press('Escape').catch(() => {});
+    }
+    await sleep(1200); await diag(p, 'after-popup-dismiss');
+    log('🧹 Promo/Coupon-Overlay-Dismiss versucht (' + (closed || 'neutral-click') + ')');
+  } catch (e) { log('popup-guard:', String(e).slice(0, 60)); }
+
   // CREATE-BUTTON-GUARD (Lehre 2026-06-24, Screenshot 09 = Kampagnen-Liste im richtigen Konto): die Creation-URL
   // redirected oft zur LISTE statt zum Wizard. Dann "+ Create" klicken, um in den Erstellungs-Wizard zu kommen.
   try {
