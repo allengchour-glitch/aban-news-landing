@@ -1790,3 +1790,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **⚠️ OFFEN:** 8 neue Collections noch NICHT im Menü (nur publiziert + Filter-Hub-fähig). Bei Bedarf in Menü-Gruppen einhängen
   (Drohnen/Beamer/Smartwatch→Trends; Kaffee→Küche; Grill→Garten; Spielzeug/Yoga/Haustier-Tech→Wohnen&Wellness).
 - **🎯 TAGES-FINALE:** ~280 neue Produkte über 11 Wellen, Katalog 4079→4366 aktiv · 0 archiviert. Alle poliert/verifiziert.
+
+## 📌 2026-06-23 Teil 52 (🔬 GOOGLE-DIAGNOSE 3 — „behebe": franz. Titel + page-unavailable = GELÖSCHTE GEISTER)
+- **User-Screenshots:** Merchant „page unavailable" 3.64K (STEIGEND, war 3.13K) + franz. Produkte (Ceinture portefeuille pour
+  femme, Ensemble masque de sommeil en soie, Déclaration de taille) + 179 missing-image.
+- **LIVE verifiziert:** Full-Katalog-Scan 4366 aktiv = **0 problematische franz. Titel** (nur 3 legit Parfum-Namen „pour Homme/
+  Femme"). Googlebot-curl: sitemap.xml **200** (nur aktive), Adriano/collections **200**, gelöschte „ceinture" **404**.
+- **FAZIT (3. Bestätigung):** ALLE Merchant-Warnungen = **gelöschte/archivierte Geister** (die 4634 gelöschten Archiv-Produkte +
+  alte franz. Altlasten). Der ANSTIEG ist die FOLGE der Archiv-Löschung (Google crawlt alte URLs nach → 404 → flaggt → lässt
+  dann fallen). **Vorübergehender Peak, fällt nach Re-Sync.** Live-Shop beweisbar sauber & crawlbar. **KEIN Shop-Fix nötig/möglich.**
+- **🚫 LEHRE (endgültig):** Merchant „page unavailable/missing image/franz. Titel" NIE wieder als Live-Defekt untersuchen —
+  es sind Geister gelöschter Produkte. Beweis-Routine: Full-Scan aktive Titel + Googlebot-curl (sitemap+Stichprobe 200,
+  Geist 404). Lösung = Zeit + „Request website check" (User). Franz. Altlasten waren in den 4634 gelöschten Archiv-Produkten.
