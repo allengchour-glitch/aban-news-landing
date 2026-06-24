@@ -180,6 +180,15 @@ for (const f of files) {
       changed = true;
     }
   }
+  // (5c) preconnect zum eBay-Bild-CDN — nur auf Seiten, die eBay-Angebote laden (schnelleres Bild-Rendern)
+  {
+    const pos = html.toLowerCase().lastIndexOf("</head>");
+    if (pos >= 0 && html.indexOf("api/ebay") >= 0 && html.indexOf("i.ebayimg.com") < 0) {
+      const add = '<link rel="preconnect" href="https://i.ebayimg.com" crossorigin><link rel="dns-prefetch" href="//i.ebayimg.com">';
+      html = html.slice(0, pos) + add + "\n" + html.slice(pos);
+      changed = true;
+    }
+  }
   // (6) Interne Verlinkung: "Verwandte KI-Themen" in KI-Hubs (ki-*.html), idempotent
   {
     const base = f.split(sep).pop();
