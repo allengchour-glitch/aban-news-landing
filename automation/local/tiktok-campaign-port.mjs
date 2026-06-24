@@ -209,6 +209,20 @@ async function pickFromSearch(p, value) {
     process.exit(0);
   }
 
+  // CREATE-BUTTON-GUARD (Lehre 2026-06-24, Screenshot 09 = Kampagnen-Liste im richtigen Konto): die Creation-URL
+  // redirected oft zur LISTE statt zum Wizard. Dann "+ Create" klicken, um in den Erstellungs-Wizard zu kommen.
+  try {
+    const body0 = await p.evaluate(() => (document.body.innerText || '').toLowerCase()).catch(() => '');
+    const inWizard = /select.*objective|advertising objective|wähle.*ziel|campaign objective|reichweite|conversions/.test(body0);
+    const onList = /total of \d+ campaign|ad id contains|search & filter/.test(body0);
+    if (onList && !inWizard) {
+      log('📋 Bot auf Kampagnen-Liste (richtiges Konto) → klicke "+ Create" für den Wizard');
+      const cl = await p.evaluate(() => { const b = [...document.querySelectorAll('button,a')].find(e => /^\s*\+?\s*(create|erstellen)\s*$/i.test((e.innerText || '').trim())); if (b) { b.click(); return true; } return false; }).catch(() => false);
+      await sleep(7000); await diag(p, 'after-create-click');
+      if (!cl) log('   "+ Create"-Button nicht gefunden — Screenshot after-create-click prüfen');
+    }
+  } catch (e) { log('create-guard:', String(e).slice(0, 60)); }
+
   // ===== AI-WIZARD (Stagehand) — der robuste Weg fuer Vollautomation (User 2026-06-21 "bot muss das lernen") =====
   // act() beschreibt die Aktion, die AI findet das richtige Element (ueberlebt TikToks komplexe Ziel-Karten/Wizard).
   if (ab.mode === 'stagehand') {

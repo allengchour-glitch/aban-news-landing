@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-24T15:47:05.085Z",
+  "updated": "2026-06-24T15:50:06.075Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1481,6 +1481,12 @@
       "CLOUD-AN gehärtet: killt jede Runde node-Bots >8 Min Laufzeit (Hänger) + 5-Min-Bot-Watchdog -> Loop kann nicht mehr einfrieren, selbst-heilend.",
       "HARTE GRENZE (ehrlich): Cloud kann CLOUD-AN NICHT starten/neustarten - cloud->PC geht nur über git/Worker-Queue, die der (evtl. frozene) Loop LESEN muss. Ist der Loop eingefroren, kommt die Cloud nicht ran. Ein frozener PC-Loop = nur der User kann 1x neu starten.",
       "ABER: nach EINEM Neustart lädt der PC alle Self-Heal-Fixes (Watchdog + Hänge-Wachhund) -> ab dann nie wieder Eingriff nötig."
+    ],
+    "create_button_guard_2026": [
+      "FORTSCHRITT (Screenshot 09 15:47): Advertiser-ID-Fix wirkt -> Bot ist im RICHTIGEN Konto LuxeStyle CH Ads (oben rechts sichtbar). Kein Select-account-Rauswurf mehr.",
+      "NEUER Stuck-Punkt: Creation-URL redirected zur Kampagnen-LISTE statt zum Wizard -> Stagehand-Objective-Acts scheitern. FIX: Create-Button-Guard - erkennt Liste, klickt +Create -> Wizard.",
+      "Es gibt eine alte Kampagne Sales20260606004848 (Active, 0 CHF Spend) im Konto - die alte kaputte vom 6.Juni.",
+      "iterativer Fix-Fortschritt: falsche ID->fix, Select-account->Guard, Loop-Hang->Watchdog, Liste-statt-Wizard->Create-Guard. Jeder Lauf bringt den Bot weiter."
     ]
   },
   "decisions": [
