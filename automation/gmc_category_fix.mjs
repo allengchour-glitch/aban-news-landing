@@ -11,6 +11,13 @@ async function gql(t,q,v){for(let a=0;a<5;a++){const r=await fetch(`https://${SH
 
 // Google-Produktkategorie (Text-Pfad, von Google akzeptiert) je Schlüsselwort
 const MAP=[
+ [/smartwatch|smart watch|fitness-?tracker|fitnesstracker|smartband|aktivitätstracker/i,'Electronics > Electronics Accessories > Wearable Technology > Smart Watches'],
+ [/drohne|drone|quadrocopter|quadcopter|quadrokopter/i,'Toys & Games > Toys > Remote Control Toys > Remote Control Aircraft'],
+ [/beamer|projektor|projector/i,        'Electronics > Video > Projectors'],
+ [/kaffee|espresso|siebträger|kapselmaschine|milchaufschäumer|mokkakanne/i,'Home & Garden > Kitchen & Dining > Kitchen Appliances > Coffee Makers & Espresso Machines'],
+ [/grill|bbq|barbecue|smoker|pizzaofen/i,'Home & Garden > Kitchen & Dining > Outdoor Cooking > Barbeque Grills'],
+ [/trinkbrunnen|katzenbrunnen|futterautomat|futterspender|haustierkamera|haustier-tracker|pfotenreiniger/i,'Animals & Pet Supplies > Pet Supplies'],
+ [/spielzeug|plüsch|kuscheltier|stofftier|bauklötze|bausteine|lernspielzeug|holzspielzeug|spielfigur|steckspiel|motorikspielzeug/i,'Toys & Games > Toys'],
  [/uhr|watch/i,                         'Apparel & Accessories > Jewelry > Watches'],
  [/schmuck|kette|ring|armband|ohrring|collier|anhänger/i,'Apparel & Accessories > Jewelry'],
  [/sonnenbrille|brille|eyewear/i,       'Apparel & Accessories > Clothing Accessories > Sunglasses'],
