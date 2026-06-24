@@ -1758,3 +1758,17 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🔧 gmc_category_fix erweitert:** e-scooter→Kick Scooters · helm→Bicycle Helmets (6 Produkte nachkategorisiert).
 - **🎯 TAGES-FINALE:** ~218 neue Produkte über 9 Wellen, Katalog **4079→4306 aktiv · 0 archiviert**. Alle poliert/verifiziert/
   dup-bereinigt. Google Merchant aufgeräumt. Engpass bleibt REICHWEITE (User-TikTok-Kampagne).
+
+## 📌 2026-06-23 Teil 50 (📦 Auffüll-Welle +20 + SÄTTIGUNGS-LEHRE)
+- **User „fülle alles weiter"** → breite Welle über 12 Großkategorien (Damen-/Herrenmode/Schmuck/Taschen/Beauty/Home/Küche/
+  Garten/Haustier/Rucksäcke/Haarstyling/Schuhe). **+20 neue** (Dedup sauber, 0 echte Dups). Katalog 4326 aktiv.
+- **🚫 SÄTTIGUNGS-LEHRE (wichtig):** Großkategorien (schmuck/taschen/damenmode/beauty/home) sind **MINED OUT** → die Dedup
+  überspringt tausende Kandidaten (1.5s each) für ~0 Neue → Welle hängt stunden­lang auf einer Kategorie (z.B. HOME).
+  **Welle nach 20 gestoppt.** → **Künftig „fülle alles" NICHT über gesättigte Großkategorien**, sondern über FRISCHE NISCHEN
+  (wie e-bike/e-trotti/metalldetektor) ODER neue CONFIG-Kategorien anlegen. Saturierte Re-Runs = Zeitverschwendung.
+- **🔧 BUG-LEHRE (Titel-Differenzierung):** Nick-Array («Basic»/«Plus»/…) lief über (7 Rucksäcke, 4 Nicks) → „Schulrucksack
+  undefined". Fix: 10er-Nick-Liste (Comfort/Active/Smart/Urban/Trek/Campus/Flex/Pro/Max…) ODER `nicks[i]||'«Modell '+(i+1)+'»'`.
+  **Bei Gleichtitel-Differenzierung IMMER genug Nicks + undefined-Guard.** Danach „title:undefined"-Check fahren.
+- **🔧 CONTAINER-QUIRK bestätigt (2.×):** Lokaler Git-Checkout wurde MITTEN in der Session auf alten Commit (Teil 40) resettet
+  → erst-Versuch der Welle lud STALE Ledger (gestoppt bei 0 erstellt, kein Schaden). **Gegenmittel-Routine:** vor jeder Welle
+  `git reset --hard origin/<branch>` + HEAD==origin-Check vor jedem Ledger-Commit + Post-Wellen-Handle-ID-Dup-Check.
