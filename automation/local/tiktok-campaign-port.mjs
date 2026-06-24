@@ -140,6 +140,25 @@ async function pickFromSearch(p, value) {
   await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await sleep(8000); await diag(p, 'open-creation');
 
+  // KONTO-AUSWAHL-GUARD (Lehre 2026-06-24, Screenshot 09-ai-ad-start = "Select an account"): wenn TikTok auf
+  // die Konto-Auswahl bouncet, das RICHTIGE finanzierte Konto klicken (LuxeStyle CH Ads), dann Builder neu öffnen.
+  for (let g = 0; g < 2; g++) {
+    const onSelect = await p.evaluate(() => /select an account|konto auswählen|select an ad account/i.test(document.body.innerText || '')).catch(() => false);
+    if (!onSelect) break;
+    log('⚠️ "Select an account" erkannt → klicke LuxeStyle CH Ads (' + C.advertiserId + ')');
+    await diag(p, 'select-account');
+    const clicked = await p.evaluate((advId) => {
+      const cards = [...document.querySelectorAll('a,div,li,button')];
+      const hit = cards.find(e => (e.innerText || '').includes(advId) || /luxestyle ch ads/i.test(e.innerText || ''));
+      if (hit) { (hit.closest('a,[role="button"],li,div') || hit).click(); return true; } return false;
+    }, C.advertiserId).catch(() => false);
+    await sleep(5000);
+    // Builder direkt mit aadvid neu öffnen (sicherer als nur Klick)
+    await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {});
+    await sleep(6000); await diag(p, 'after-account-select');
+    if (!clicked) { log('   Konto-Karte nicht gefunden — Screenshot select-account prüfen'); break; }
+  }
+
   // FRUEHERKENNUNG Onboarding-Wand (Lehre 2026-06-21): Konto nicht eingerichtet -> NIE bis zum Builder.
   // Statt 9 Screenshots durchzuklicken: sofort mit klarem Status abbrechen (kein Geld-Risiko, klare Diagnose).
   const wall = await p.evaluate(() => {

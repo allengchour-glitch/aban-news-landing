@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-24T15:33:47.236Z",
+  "updated": "2026-06-24T15:38:49.012Z",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -1465,6 +1465,11 @@
       "Sandbox sofort nutzbar (kein Review) ABER gibt kein echtes Geld aus / nicht das echte Konto. Skript gegen Sandbox bauen, dann Prod-Token tauschen.",
       "Tool gebaut: automation/tiktok-campaign-api.mjs (campaign->video upload->identity->adgroup->ad, Traffic CLICK/CPC, CH via /tool/region/, 20/Tag, Pixel D8EKVR). Token aus ENV TT_MKT_TOKEN.",
       "HEUTE bleibt: manueller 5-Min-Klick im Ads-Manager (Konto bereit, 332 CHF Guthaben, KEINE Karte). API-Weg = nach App-Freigabe für künftige autonome Kampagnen. Shopify-TikTok-Integration TAUGT NICHT (auto-Smart-Kampagnen, kein CH/Traffic-Feintuning)."
+    ],
+    "tools_gehaertet_2026_06_24": [
+      "Browser-Bot (tiktok-campaign-port) gehärtet: Konto-Auswahl-Guard — wenn Select-an-account auftaucht, klickt er das richtige finanzierte Konto (LuxeStyle CH Ads/advertiserId) + öffnet Builder neu via aadvid. Behebt den 09-ai-ad-start-Fail.",
+      "API-Tool (tiktok-campaign-api) gehärtet: Identity automatisch anlegen (identity/create display_name=LuxeStyle) falls keine vorhanden, sonst scheitert ad/create.",
+      "Beide Tools no-op-safe ohne Token/Datei. API=zuverlässig nach App-Review; Browser=best-effort, fragil bleibt fragil."
     ]
   },
   "decisions": [

@@ -48,10 +48,13 @@ async function get(path, params) {
     // 2) Video upload
     const v = await api('/file/video/ad/upload/', { advertiser_id: ADV, upload_type: 'UPLOAD_BY_URL', file_name: 'luxe-seetest.mp4', video_url: VIDEO_URL });
     const videoId = v.data.video_id || (v.data.list && v.data.list[0] && v.data.list[0].video_id); log('✅ Video:', videoId);
-    // 3) Identity
+    // 3) Identity — vorhandene nehmen, sonst automatisch eine anlegen (sonst scheitert ad/create)
     let identityId, identityType = 'CUSTOMIZED_USER';
-    try { const id = await get('/identity/get/', { advertiser_id: ADV }); const it = (id?.data?.identity_list || [])[0]; if (it) { identityId = it.identity_id; identityType = it.identity_type || identityType; } } catch {}
-    log('   Identity:', identityId || '(keine → ggf. erst Identity anlegen)');
+    try { const id = await get('/identity/get/', { advertiser_id: ADV, identity_type: 'CUSTOMIZED_USER' }); const it = (id?.data?.identity_list || [])[0]; if (it) { identityId = it.identity_id; identityType = it.identity_type || identityType; } } catch {}
+    if (!identityId) {
+      try { const ci = await api('/identity/create/', { advertiser_id: ADV, display_name: 'LuxeStyle' }); identityId = ci.data.identity_id; log('   Identity neu angelegt:', identityId); } catch (e) { log('   Identity-Create fehlgeschlagen:', String(e).slice(0, 100), '→ ggf. Identity in TikTok manuell anlegen'); }
+    }
+    log('   Identity:', identityId || '(keine)');
     // 4) AdGroup
     const ag = await api('/adgroup/create/', {
       advertiser_id: ADV, campaign_id: campaignId, adgroup_name: 'CH 18-34 Traffic',
