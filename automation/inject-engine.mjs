@@ -79,6 +79,7 @@ let healed = 0;
 let kbhub = 0;
 let kihub = 0;
 let aeohub = 0;
+let svc = 0;
 const hubs = [];
 for (const f of files) {
   const base = f.split(sep).pop();
@@ -211,6 +212,18 @@ for (const f of files) {
       }
     }
   }
+  // (6e) Funnel: dezente Service-CTA (KI-Automation) auf KI-Themen-Inhaltsseiten, idempotent
+  {
+    const base = f.split(sep).pop();
+    const isService = base.startsWith("ki-automation") || base.startsWith("ki-sichtbarkeit");
+    if (!noindex && base.startsWith("ki-") && base.endsWith(".html") && base !== "ki-themen.html" && !isService && html.indexOf("data-aban-service") < 0) {
+      const bpos = html.toLowerCase().lastIndexOf("</body>");
+      if (bpos >= 0) {
+        const block = '<aside data-aban-service style="max-width:760px;margin:24px auto;padding:14px 16px;background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;font-size:.92rem;line-height:1.5"><strong>KI im eigenen Betrieb nutzen?</strong> Wir bauen für Schweizer KMU 24/7-Chatbots sowie Termin- &amp; Lead-Automation — ehrlich und zum Festpreis. <a href="/ki-automation.html" style="color:#b45309;font-weight:700;white-space:nowrap">KI-Automation für KMU →</a></aside>';
+        html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); svc++; changed = true;
+      }
+    }
+  }
   // (7) Selbstheilung fehlender Meta-Tags (Social/Mobile), nur indexierbare Seiten
   if (!noindex) {
     const pos2 = html.toLowerCase().lastIndexOf("</head>");
@@ -229,4 +242,4 @@ for (const f of files) {
   }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
-console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + kihub + " KI-Backlinks + " + aeohub + " AEO-Backlinks + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
+console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + kihub + " KI-Backlinks + " + aeohub + " AEO-Backlinks + " + svc + " Service-CTAs + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
