@@ -22,6 +22,8 @@ const MAP=[
  [/haustier|hund|katze|pet|napf/i,      'Animals & Pet Supplies > Pet Supplies'],
  [/trikot|shirt|hose|kleid|rock|bluse|hemd|jacke|pullover|hoodie|sweat|bademode|bikini|loungewear|trainingsanzug|jogging|tank|sport-bh|leggings|mode|damen|herren/i,'Apparel & Accessories > Clothing'],
  [/schuh|sneaker|stiefel|sandale|hausschuh/i,'Apparel & Accessories > Shoes'],
+ [/e-scooter|escooter|elektroroller|tretroller|trottinett|kickscooter|cityroller/i,'Sporting Goods > Outdoor Recreation > Kick Scooters & Skateboards > Kick Scooters'],
+ [/helm/i,                              'Sporting Goods > Athletics > Cycling > Bicycle Helmets'],
  [/cap|hut|mütze|schal|handschuh/i,     'Apparel & Accessories > Clothing Accessories'],
  [/handy|smartphone|powerbank|ladekabel|ladegerät|kopfhörer|audio|gaming|tech/i,'Electronics'],
  [/deko|wohnen|vase|kissen|wanduhr|wandbild|bilderrahmen|laterne|kerze|teppich/i,'Home & Garden > Decor'],

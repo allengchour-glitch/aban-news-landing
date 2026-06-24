@@ -1746,3 +1746,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   (1) e-bike-Ledger-IDs + Code-Edit sichern · (2) `git reset --hard origin/<branch>` (Remote=Wahrheit, hat alle 20 Commits) ·
   (3) Code-Edit re-applien + IDs ans origin-Ledger anhängen · (4) commit+push. **NIE force-push** über origin. Git-Identität
   gesetzt (`user.email noreply@anthropic.com`) für verified Commits.
+
+## 📌 2026-06-23 Teil 49 (🛴 E-SCOOTER/TROTTINETT-Welle +8 — ganze E-Trottis + Helme)
+- **User „e trotti"** → neue Importer-Kategorie **etrotti** (`e-scooter-trottinett`, tag `e-scooter`, MARGIN 2.0 für Big-Ticket,
+  Deckel €450). Anchor e-scooter/elektroroller/tretroller/trottinett; **ban gegen roller-Müll** (Teig-/Farb-/Massage-/Fussel-/
+  Lockenroller). +8: **4 ganze E-Scooter** (CHF 279–824, Quellen Segway/Razor/Red Bull) + **4 Helme** (CHF 44–88, differenziert
+  Weiß/Schwarz/Robust/LED). Voll poliert, QA 0 Probleme, 0 Dubletten.
+- **Marken NICHT restauriert:** Gemini strippte Segway/Razor/Red Bull → generische Titel. Per-ID-BigBuy-Name-Fetch schlug fehl
+  (Endpoint). Bewusst generisch gelassen (falsche Marke wäre schlimmer als keine — Ehrlichkeit). Optional später via BigBuy-
+  `/catalog/product/{id}` korrekt mappen.
+- **🔧 gmc_category_fix erweitert:** e-scooter→Kick Scooters · helm→Bicycle Helmets (6 Produkte nachkategorisiert).
+- **🎯 TAGES-FINALE:** ~218 neue Produkte über 9 Wellen, Katalog **4079→4306 aktiv · 0 archiviert**. Alle poliert/verifiziert/
+  dup-bereinigt. Google Merchant aufgeräumt. Engpass bleibt REICHWEITE (User-TikTok-Kampagne).
