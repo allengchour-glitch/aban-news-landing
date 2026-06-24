@@ -431,4 +431,15 @@ async function pickFromSearch(p, value) {
   if (sub) { fs.writeFileSync(LEDGER, new Date().toISOString() + ' campaign submitted\n'); log('✅ Kampagne abgesendet (zur Prüfung).'); }
   else log('⚠️ Submit-Button nicht gefunden — letzter Screenshot prüfen, Selektor nachziehen.');
   process.exit(0);
-})().catch(e => { log('Fehler:', e.message); process.exit(1); });
+})().catch(async e => {
+  // CRASH-DIAG (2026-06-24): Laeufe hinterliessen nur 01-open + KEINEN Report -> ein Crash flog hier durch und
+  // ging nur in die (von cmd-poll verworfene) Konsole. Jetzt: letzten Screenshot + Fehler in den Report schreiben.
+  log('Fehler:', e && e.message);
+  try {
+    if (PAGE_REF) await PAGE_REF.screenshot({ path: path.join(SHOTS, '98-crash.png') }).catch(() => {});
+    fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'),
+      JSON.stringify({ ts: new Date().toISOString(), result: 'CRASH', error: String(e && e.message), stack: String(e && e.stack).slice(0, 800) }, null, 2));
+  } catch {}
+  process.exit(1);
+});
