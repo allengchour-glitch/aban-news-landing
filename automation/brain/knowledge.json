@@ -619,7 +619,11 @@
       "BUDGET: CHF 150–250 über 7 Tage, nie unter CHF 20/Tag (unter ~CHF 80 total lernt der Algo nicht). Erste 3 Tage = Lernphase NICHT anfassen; Tag 4 Kennzahlen, Tag 5–7 Gewinner ausbauen.",
       "CTR < 1% = CREATIVE-Problem, nicht Shop → neuen Hook/Video (erste 3 Sek entscheiden). NULL Käufe nach ~CHF 80 Spend bei ROAS<1 → Produkt/Hook sofort wechseln, nicht weiterlaufen lassen. Ratsche: bewiesene Verlierer-Produkte nie wieder testen.",
       "AD-CREATIVE-ABLEHNUNG (Lehre aus FRUEHER, konsolidiert 2026-06-24): TikTok lehnte Ads ab wegen (1) GEFAELSCHTE/IP-naher Produkte (Jan-Ads Wasserpistolen/Gadget-Mix = geloescht) -> nur klar eigene Marken-Creatives bewerben, kein Gadget-Mix; (2) MUSIK-COPYRIGHT — TikToks Scan greift selbst bei minimaler Lautstaerke (RESEARCH 06-21) -> Ad-Video STUMM hochladen (Bot strippt Audio: CAMPAIGN_KEEP_AUDIO!=1 -> ffmpeg -an) ODER NUR TikTok Commercial Music Library; (3) eingebrannter Text/asiat. Schrift/made-in-china/Watermark/Vorher-Nachher-Geraete-Claims = Misrepresentation. -> Standard-Ad-Creative = reels/luxe-flagship-film.mp4 STUMM, saubere Marken-Optik, keine Overlay-Claims.",
-      "ALTE ABGELEHNTE KAMPAGNE NICHT REPARIEREN (TIKTOK-ADS-ANLEITUNG): Sales20260606004848 (Konto LuxeStyle CH Ads) = Review not approved, Creative rejected -> NICHT flicken. Stattdessen EINE neue saubere Kampagne + alle Auto/Smart/Reichweite pausieren + TikTok-Shopify-App Smart-Performance AUS (erstellt sonst weltweite Junk-Auto-Kampagnen). Die alte gibt eh kein Geld aus (abgelehnt)."
+      "ALTE ABGELEHNTE KAMPAGNE NICHT REPARIEREN (TIKTOK-ADS-ANLEITUNG): Sales20260606004848 (Konto LuxeStyle CH Ads) = Review not approved, Creative rejected -> NICHT flicken. Stattdessen EINE neue saubere Kampagne + alle Auto/Smart/Reichweite pausieren + TikTok-Shopify-App Smart-Performance AUS (erstellt sonst weltweite Junk-Auto-Kampagnen). Die alte gibt eh kein Geld aus (abgelehnt).",
+      "BUDGET-MINIMUM (YouTube 2026): TikTok-Ads Mindest ~20/Tag pro Ad-Group (~50/Tag pro Kampagne). 10/Tag verhungert UNTER der Schwelle -> unzuverlaessige Auslieferung. Realistischer Boden = 20 CHF/Tag auf EINER Ad-Group; Budget NIE auf viele Ad-Groups splitten (alle verhungern).",
+      "OBJECTIVE bei KALTEM Konto (~0 Kauf-Events): NICHT auf Sales/Complete-Payment starten -> erst Traffic ODER besser Add-to-Cart optimieren (billiges Signal), dann auf Kauf graduieren. Conversion-AdGroup braucht ~50 Optimierungs-Events/7T fuer Lernphase-Exit = bei kleinem Budget nur ueber ATC erreichbar (deckt unseren 9x Mobile-ATC-Leak).",
+      "SKALIEREN langsam +20-30%/Tag max (Sprung resettet die Lernphase). Jeden Test 2-3 Tage laufen lassen vor Urteil (Tag-1-Rauschen ignorieren). Dayparting: kleines Budget in Peak 18-23 Uhr CH konzentrieren = mehr Impression-Dichte ohne hoeheres Tagesbudget.",
+      "AD-POLICY 2026 (YouTube): TikTok transkribiert Audio UND liest Bildschirm-Text -> verbotene Claims (garantiert/sofort/abnehmen/anti-aging/best quality) in Sprache, Caption ODER Songtext = Ablehnung. KI-Visuals -> Ads-Manager-Toggle AI-generated AN (sonst Auto-Disapproval). Ad-Preis MUSS = PDP-Preis. Fix: Element korrigieren + neu speichern -> Auto-Review (24h) ODER One-Click-Appeal."
     ],
     "conversion_hebel": [
       "REIHENFOLGE: Bezahlmethoden (TWINT+Karten) VOR Content/Pixel — ohne sie 0 Käufe möglich, egal wie viel Traffic (EIN-WEG-ZUM-1-KUNDEN). [2026-06-16: TWINT-Testkauf ging durch = Bezahlung ok.]",
@@ -1495,6 +1499,13 @@
       "FIX: Campaign-Bot-Watchdog 5->12 Min. CLOUD-AN-Hänge-Killer 8->15 Min (sonst killt er den legitimen 12-Min-Campaign-Lauf). Andere Bots (delete/fb/cover) bleiben bei 5 Min (kurz).",
       "LEHRE: Watchdog-Timeout an die ECHTE Laufzeit des Bots anpassen - ein zu kurzer Watchdog würgt legitime lange Flows ab (sieht aus wie Stuck, ist aber Self-Kill).",
       "Nach diesem Fix sollte der Campaign-Bot bis Submit durchlaufen (Konto richtig + Wizard erreicht + genug Zeit)."
+    ],
+    "ad_creative_winner_2026": [
+      "HOOK 1-3 Sek entscheidet ~71% ob weitergeschaut wird; nur ~25% schauen >5 Sek (Schnitt 5-6s). Produkt+Wert in die ersten 3 Sek, auch bei laengerem Video. Pattern-Interrupt: harter Cut/Text bei Frame 0.",
+      "UGC/nativ schlaegt Hochglanz: handy-gedrehte Creatives ~63% besser, ~92% vertrauen UGC > klassische Ads. Echte Frau, natuerliche Umgebung, Mundart-Ton (kein Marken-Film).",
+      "Laenge Direct-Response 9-15 Sek (Mode-Impulskauf = kurz). Schnelle 1-2 Sek Cuts, varierte Winkel/Speed, jede Pause raustrimmen.",
+      "Templates KOPIEREN statt erfinden: TikTok-Made-Me-Buy-It / 3-Gruende-warum / Unboxing-Bogen / Antwort-auf-Kommentar / echtes Testimonial. CTA konkret Jetzt-shoppe + WELCOME10 (kein Learn-more).",
+      "Pro Produkt >=3 WILD verschiedene Hook-Konzepte testen (nicht Mini-Varianten), 3-10 Creatives in EINER Test-AdGroup; Gewinner = wer die 3-Sek-Marke ueberlebt, dann den iterieren. Eigene Daten bestaetigen: Produkt+CHF-Preis+Mundart schlug generische Karten ~20:1."
     ]
   },
   "decisions": [
