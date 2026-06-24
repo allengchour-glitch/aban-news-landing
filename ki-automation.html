@@ -23,7 +23,16 @@ a{color:var(--amber-dk);text-decoration:none}
 .top .brand{font-weight:900;color:var(--amber-dk);font-size:20px}
 .top .lnk{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
 .top .lnk a{color:var(--ink2);font-weight:700;border:1px solid var(--line);border-radius:18px;padding:6px 11px}
-.hero{background:linear-gradient(160deg,#1f2937,#374151);color:#fff;padding:54px 0 48px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(130% 150% at 85% -10%,#2a3a57,#1c2433 55%,#141a28);color:#fff;padding:54px 0 48px}
+.hero::after{content:"";position:absolute;left:-12%;bottom:-45%;width:62%;height:130%;background:radial-gradient(circle,rgba(217,119,6,.16),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+@keyframes abrise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero h1{animation:abrise .6s ease both}
+.hero p{animation:abrise .6s ease .08s both}
+.hero .cta{animation:abrise .6s ease .16s both}
+.hero .sub{animation:abrise .6s ease .24s both}
+@media (prefers-reduced-motion:reduce){.hero h1,.hero p,.hero .cta,.hero .sub{animation:none}}
+.hero .net{position:absolute;inset:0;width:100%;height:100%;opacity:.16;pointer-events:none;z-index:0}
 .hero h1{font-size:clamp(1.8rem,5vw,2.7rem);font-weight:900;letter-spacing:-.02em;line-height:1.15}
 .hero p{font-size:clamp(1rem,2.6vw,1.2rem);color:#e8e6e1;margin-top:14px;max-width:680px}
 .hero .cta{display:inline-flex;gap:8px;align-items:center;margin-top:24px;background:var(--amber);color:#1f2937;font-weight:800;border-radius:24px;padding:13px 24px;font-size:1.05rem}
@@ -71,6 +80,29 @@ details p{color:var(--ink2);padding:0 0 14px;font-size:.95rem}
 footer{background:#1f2937;color:#cbd5e1;padding:26px 0;font-size:.85rem;margin-top:20px}
 footer a{color:#fcd34d}
 .muted-note{font-size:.82rem;color:var(--muted);margin-top:10px}
+/* Demo-Assistent (client-seitig, kein Key) */
+#abot-launch{position:fixed;right:18px;bottom:18px;z-index:50;background:var(--amber-dk);color:#fff;border:none;border-radius:26px;padding:12px 18px;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 24px rgba(180,83,9,.34);display:flex;align-items:center;gap:8px}
+#abot-launch:hover{background:#92400e}
+#abot{position:fixed;right:18px;bottom:18px;z-index:51;width:min(370px,calc(100vw - 28px));height:min(540px,calc(100vh - 36px));background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.22);display:none;flex-direction:column;overflow:hidden}
+#abot.open{display:flex}
+#abot .hd{background:radial-gradient(130% 150% at 85% -10%,#2a3a57,#1c2433 60%,#141a28);color:#fff;padding:13px 15px;display:flex;align-items:center;gap:10px}
+#abot .hd .av{width:34px;height:34px;border-radius:50%;background:var(--amber);color:#1f2937;display:flex;align-items:center;justify-content:center;font-weight:900;flex:none}
+#abot .hd b{font-size:.95rem;display:block;line-height:1.2}
+#abot .hd span{font-size:.74rem;color:#cbd5e1}
+#abot .hd .x{margin-left:auto;background:none;border:none;color:#cbd5e1;font-size:1.4rem;cursor:pointer;line-height:1;padding:2px 6px}
+#abot .note{background:var(--cream);color:var(--amber-dk);font-size:.74rem;padding:7px 13px;border-bottom:1px solid var(--line)}
+#abot .msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:var(--bg)}
+#abot .m{max-width:84%;padding:9px 12px;border-radius:13px;font-size:.9rem;line-height:1.45;white-space:pre-wrap}
+#abot .m.bot{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px;align-self:flex-start}
+#abot .m.me{background:var(--amber-dk);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+#abot .m a{color:inherit;font-weight:700;text-decoration:underline}
+#abot .chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px;background:var(--bg)}
+#abot .chips button{background:var(--card);border:1px solid var(--line);color:var(--ink2);border-radius:16px;padding:6px 11px;font-size:.8rem;cursor:pointer;font-family:inherit}
+#abot .chips button:hover{border-color:var(--amber);color:var(--amber-dk)}
+#abot .inp{display:flex;gap:7px;padding:10px;border-top:1px solid var(--line);background:var(--card)}
+#abot .inp input{flex:1;border:1.5px solid var(--line);border-radius:11px;padding:9px 11px;font-size:.9rem;font-family:inherit}
+#abot .inp button{background:var(--amber-dk);color:#fff;border:none;border-radius:11px;padding:0 15px;font-weight:800;cursor:pointer}
+@media (prefers-reduced-motion:no-preference){#abot.open{animation:abrise .25s ease both}}
 </style>
 </head>
 <body>
@@ -79,7 +111,7 @@ footer a{color:#fcd34d}
   <span class="lnk"><a href="/marktplatz.html">Marktplatz</a><a href="/suchmaschine.html">Suche</a><a href="/kontakt.html">Kontakt</a></span>
 </div></div>
 
-<div class="hero"><div class="wrap">
+<div class="hero"><svg class="net" viewBox="0 0 480 220" aria-hidden="true" preserveAspectRatio="xMaxYMid slice"><g stroke="#fbbf24" stroke-width="1.2" fill="none"><path d="M60 40 140 90 110 165 240 60 320 130 410 45 380 185 320 130"/><path d="M140 90 240 60M140 90 110 165M320 130 410 45"/></g><g fill="#fde68a"><circle cx="60" cy="40" r="4"/><circle cx="140" cy="90" r="5"/><circle cx="110" cy="165" r="4"/><circle cx="240" cy="60" r="5"/><circle cx="320" cy="130" r="6"/><circle cx="410" cy="45" r="4"/><circle cx="380" cy="185" r="4"/></g></svg><div class="wrap">
   <h1>KI-Automation für Schweizer KMU</h1>
   <p>Wiederkehrende Aufgaben kosten Zeit und Nerven. Wir bauen dir KI-gestützte Helfer, die rund um die Uhr Anfragen beantworten, Termine annehmen und Leads erfassen — damit du dich aufs Geschäft konzentrierst statt aufs Abarbeiten.</p>
   <a class="cta" href="#anfrage">Kostenloses Erstgespräch →</a>
@@ -169,11 +201,11 @@ footer a{color:#fcd34d}
   <div class="formwrap">
     <form id="f" autocomplete="on" onsubmit="return false">
       <label for="name">Name *</label>
-      <input id="name" type="text" required placeholder="Vor- und Nachname">
+      <input id="name" type="text" required placeholder="Vor- und Nachname" autocomplete="name">
       <label for="firma">Firma</label>
-      <input id="firma" type="text" placeholder="Name deines Betriebs">
+      <input id="firma" type="text" placeholder="Name deines Betriebs" autocomplete="organization">
       <label for="email">E-Mail / Telefon *</label>
-      <input id="email" type="text" required placeholder="So erreichen wir dich">
+      <input id="email" type="text" required placeholder="So erreichen wir dich" autocomplete="email" inputmode="email">
       <label for="branche">Branche</label>
       <select id="branche">
         <option value="">– bitte wählen –</option>
@@ -239,6 +271,57 @@ footer a{color:#fcd34d}
     window.location.href=url;
     return false;
   });
+})();
+</script>
+<!-- Demo-Assistent: zeigt live, wie ein aban-Bot antwortet (rein client-seitig, kein Key, keine Datenübertragung) -->
+<button id="abot-launch" aria-label="Demo-Assistent öffnen">💬 Demo-Assistent</button>
+<div id="abot" role="dialog" aria-label="aban Demo-Assistent" aria-modal="false">
+  <div class="hd"><div class="av">a</div><div><b>aban Demo-Assistent</b><span>So fühlt sich ein aban-Bot an</span></div><button class="x" id="abot-x" aria-label="Schliessen">×</button></div>
+  <div class="note">🔒 Demo · läuft komplett in deinem Browser, nichts wird gesendet. Echte Bots trainieren wir auf deinen Betrieb.</div>
+  <div class="msgs" id="abot-msgs" aria-live="polite"></div>
+  <div class="chips" id="abot-chips"></div>
+  <form class="inp" id="abot-form" autocomplete="off"><input id="abot-in" type="text" placeholder="Frag mich etwas …" aria-label="Nachricht"><button type="submit" aria-label="Senden">→</button></form>
+</div>
+<script>
+(function(){
+  var panel=document.getElementById("abot"),launch=document.getElementById("abot-launch"),
+      msgs=document.getElementById("abot-msgs"),chipBox=document.getElementById("abot-chips"),
+      form=document.getElementById("abot-form"),inp=document.getElementById("abot-in"),started=false;
+  var CTA='\n\n👉 Am ehrlichsten klären wir das im <a href="#anfrage">kostenlosen Erstgespräch</a> — schreib kurz, was bei dir am meisten Zeit kostet.';
+  var INTENTS=[
+    {k:["preis","kosten","kostet","teuer","budget","chf","franken","wieviel","wie viel"],
+     a:'Transparente Richtpreise:\n• <b>FAQ-Chatbot</b> ab CHF 900 einmalig + ab 149/Mt. Betreuung\n• <b>Support + Termine + Leads</b> ab CHF 2’900 + ab 390/Mt.\n• <b>Prozess-Automation</b> individuell\nDen verbindlichen Preis nennen wir nach dem Erstgespräch — keine versteckten Kosten.'+CTA},
+    {k:["automat","was geht","was kann","was lässt","möglich","helfer","aufgaben","chatbot","bot"],
+     a:'Typische Helfer, die wir bauen:\n• 24/7-Support-Bot (beantwortet häufige Fragen)\n• Termin- & Buchungs-Automation\n• Lead-Erfassung & automatisches Nachfassen\n• Backoffice/Prozesse & Tools verbinden\nWir sagen dir ehrlich, was sich bei dir am schnellsten rechnet.'+CTA},
+    {k:["ablauf","wie läuft","dauer","wie lange","schnell","startklar","umsetzung","start"],
+     a:'In 3 Schritten:\n1) <b>Erstgespräch</b> (kostenlos) — wir finden, was am meisten Zeit frisst.\n2) <b>Aufbau</b> — wir bauen & testen mit echten Beispielen.\n3) <b>Start & Betreuung</b> — live, dann laufend verbessert.\nEin FAQ-Bot ist oft in wenigen Tagen startklar.'+CTA},
+    {k:["datenschutz","dsgvo","daten","sicher","privat"],
+     a:'Wir arbeiten datenschutzbewusst und besprechen genau, welche Daten verarbeitet werden. Sensible Abläufe richten wir so ein, dass nur das Nötige genutzt wird — du behältst die Kontrolle über deine Daten.'+CTA},
+    {k:["branche","gastro","restaurant","handwerk","bau","praxis","arzt","gesundheit","shop","handel","hotel","friseur","coach"],
+     a:'Wir arbeiten branchenübergreifend für Schweizer KMU — z. B. Gastro (Reservierungen & Allergen-Fragen), Handwerk (Offert-Anfragen strukturiert aufs Handy), Praxen (Terminbuchung & No-Show-Erinnerungen), Shops (Versand-/Rückgabe-Fragen rund um die Uhr).'+CTA},
+    {k:["mitarbeiter","ersetzt","job","personal","entlassen"],
+     a:'Nein — die KI nimmt dem Team die stupide Wiederholungsarbeit ab (Routinefragen, Standardabläufe). Dein Team kümmert sich um das, was wirklich Menschen braucht.'+CTA},
+    {k:["technik","wissen","kompliziert","schwierig","selber"],
+     a:'Du brauchst kein technisches Wissen. Du sagst uns, was nervt — wir kümmern uns um Aufbau, Anbindung und Betrieb und geben dir eine kurze Einweisung.'+CTA},
+    {k:["termin","kontakt","gespräch","anfrage","melden","erreichen","reden","buchen"],
+     a:'Gern! Trag dich unten im <a href="#anfrage">Formular</a> ein (dauert 1 Minute) oder schreib direkt an <a href="mailto:hallo@abannews.com">hallo@abannews.com</a> — wir antworten i. d. R. innert 24 h.'}
+  ];
+  function add(txt,who){var d=document.createElement("div");d.className="m "+who;d.innerHTML=txt;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+  function reply(q){
+    var s=(q||"").toLowerCase();
+    if(/(^|\b)(hallo|hi|hey|grüezi|guten|servus|moin)\b/.test(s)){add("Grüezi! 👋 Ich bin der Demo-Assistent von aban. Frag mich zu Preisen, was sich automatisieren lässt, zum Ablauf oder Datenschutz.","bot");return;}
+    for(var i=0;i<INTENTS.length;i++){for(var j=0;j<INTENTS[i].k.length;j++){if(s.indexOf(INTENTS[i].k[j])>=0){add(INTENTS[i].a,"bot");return;}}}
+    add('Gute Frage — das klären wir am besten persönlich. Kurz zur Orientierung: wir automatisieren Support, Termine, Leads und Backoffice für Schweizer KMU.'+CTA,"bot");
+  }
+  var CHIPS=["Was kostet das?","Was lässt sich automatisieren?","Wie läuft das ab?","Datenschutz?"];
+  function renderChips(){chipBox.innerHTML="";CHIPS.forEach(function(c){var b=document.createElement("button");b.type="button";b.textContent=c;b.onclick=function(){send(c);};chipBox.appendChild(b);});}
+  function send(q){add(q.replace(/</g,"&lt;"),"me");setTimeout(function(){reply(q);},260);}
+  function boot(){if(started)return;started=true;add("Grüezi! 👋 Ich bin der <b>Demo-Assistent</b> von aban — so antwortet ein Bot, den wir auf deinen Betrieb trainieren. Was möchtest du wissen?","bot");renderChips();}
+  function open(){panel.classList.add("open");launch.style.display="none";boot();setTimeout(function(){inp.focus();},80);}
+  function close(){panel.classList.remove("open");launch.style.display="flex";}
+  launch.addEventListener("click",open);
+  document.getElementById("abot-x").addEventListener("click",close);
+  form.addEventListener("submit",function(e){e.preventDefault();var v=inp.value.trim();if(!v)return;inp.value="";send(v);});
 })();
 </script>
 </body>
