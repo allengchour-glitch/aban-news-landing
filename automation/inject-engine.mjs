@@ -60,7 +60,7 @@ function ldFor(html, file) {
   const ld = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png" },
+      { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png", sameAs: ["https://www.linkedin.com/in/aban-news-019b21239", "https://x.com/abannews"] },
       { "@type": "BreadcrumbList", itemListElement: crumbs }
     ]
   };
