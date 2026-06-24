@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Passwort-Stärke prüfen · aban news</title>
-<meta name="description" content="Kostenloser Passwort-Stärke-Prüfer: Entropie, geschätzte Knackzeit und Tipps — alles lokal im Browser, das Passwort wird nie gesendet. Ohne Login.">
+<title>Testeur de force de mot de passe · aban news</title>
+<meta name="description" content="Testeur de force de mot de passe gratuit : entropie, temps estimé pour le craquer et conseils — tout en local dans le navigateur, votre mot de passe n'est jamais envoyé. Sans connexion.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://abannews.com/passwort-staerke.html">
+<link rel="canonical" href="https://abannews.com/fr/passwort-staerke.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/passwort-staerke.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/passwort-staerke.html">
 <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/passwort-staerke.html">
 <link rel="alternate" hreflang="it" href="https://abannews.com/it/passwort-staerke.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/passwort-staerke.html">
-<meta property="og:title" content="Passwort-Stärke prüfen">
-<meta property="og:description" content="Entropie &amp; geschätzte Knackzeit prüfen — alles lokal, nichts wird gesendet.">
+<meta property="og:title" content="Testeur de force de mot de passe">
+<meta property="og:description" content="Vérifiez l'entropie &amp; le temps estimé pour le craquer — tout en local, rien n'est envoyé.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://abannews.com/passwort-staerke.html">
+<meta property="og:url" content="https://abannews.com/fr/passwort-staerke.html">
 <meta property="og:image" content="https://abannews.com/og-tools.png">
-<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
 <meta name="theme-color" content="#d97706">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Passwort-Stärke prüfen",
-"url":"https://abannews.com/passwort-staerke.html","applicationCategory":"SecurityApplication","operatingSystem":"Web",
-"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
-"description":"Schätzt Entropie und Knackzeit eines Passworts — vollständig lokal im Browser.",
+{"@context":"https://schema.org","@type":"WebApplication","name":"Testeur de force de mot de passe",
+"url":"https://abannews.com/fr/passwort-staerke.html","applicationCategory":"SecurityApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Estime l'entropie et le temps pour craquer un mot de passe — entièrement en local dans le navigateur.",
 "publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
 </script>
 <style>
@@ -74,52 +74,52 @@ footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="skip" href="#tool">Zum Tool</a>
-<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
-<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<a class="skip" href="#tool">Aller à l'outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
 <main><div class="wrap">
   <section class="hero">
-    <h1><span class="a">Passwort-Stärke</span> prüfen</h1>
-    <p>Wie sicher ist dein Passwort? Tippe es ein und sieh Entropie, geschätzte Knackzeit und konkrete Tipps. Das Passwort verlässt deinen Browser nie — kein Server, kein Login, nichts wird gespeichert.</p>
+    <h1>Tester la <span class="a">force d'un mot de passe</span></h1>
+    <p>Votre mot de passe est-il solide ? Saisissez-le et voyez l'entropie, le temps estimé pour le craquer et des conseils concrets. Votre mot de passe ne quitte jamais votre navigateur — aucun serveur, aucune connexion, rien n'est stocké.</p>
   </section>
   <section class="panel" id="tool">
-    <label class="lbl" for="pw">Passwort eingeben</label>
+    <label class="lbl" for="pw">Saisissez un mot de passe</label>
     <div class="pwrow">
-      <input type="text" id="pw" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Passwort hier eingeben …">
-      <button class="btn ghost sm" id="toggle" type="button" aria-pressed="true">Verbergen</button>
+      <input type="text" id="pw" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Tapez votre mot de passe ici …">
+      <button class="btn ghost sm" id="toggle" type="button" aria-pressed="true">Masquer</button>
     </div>
     <div class="bar"><i id="bar"></i></div>
     <div class="verdict" id="verdict">–</div>
     <div class="cards">
-      <div class="kpi"><div class="v" id="kBits">–</div><div class="k">Entropie (Bit)</div></div>
-      <div class="kpi"><div class="v" id="kTime">–</div><div class="k">Geschätzte Knackzeit</div></div>
+      <div class="kpi"><div class="v" id="kBits">–</div><div class="k">Entropie (bits)</div></div>
+      <div class="kpi"><div class="v" id="kTime">–</div><div class="k">Temps estimé pour craquer</div></div>
     </div>
     <ul class="checks" id="checks"></ul>
-    <p class="privacy" id="privacy">🔒 Alles bleibt lokal in deinem Browser.</p>
-    <p class="note">Schätzung anhand der Zeichenvielfalt (Entropie). Knackzeit angenommen mit 10 Mrd. Versuchen/Sek. (schnelles Offline-Cracking). Wörterbuch- und Wiederholungs-Muster (z. B. „Passwort123") senken die echte Stärke zusätzlich — nutze besser eine lange, zufällige Passphrase.</p>
+    <p class="privacy" id="privacy">🔒 Tout reste en local dans votre navigateur.</p>
+    <p class="note">Estimation basée sur la variété des caractères (entropie). Temps de craquage supposé à 10 milliards d'essais/s (craquage hors ligne rapide). Les schémas de dictionnaire et de répétition (p. ex. « MotDePasse123 ») réduisent encore la force réelle — préférez une phrase de passe longue et aléatoire.</p>
   </section>
-  <div class="cta"><strong>Mehr Tools</strong>
-    <p class="note" style="margin:.4rem 0 .8rem">für Sicherheit &amp; Alltag.</p>
-    <p><a class="btn" href="/passwort-generator.html">Passwort generieren</a>
-      <a class="btn ghost" href="/uuid-generator.html">UUID-Generator</a>
-      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+  <div class="cta"><strong>Plus d'outils</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">pour la sécurité &amp; le quotidien.</p>
+    <p><a class="btn" href="/fr/passwort-generator.html">Générer un mot de passe</a>
+      <a class="btn ghost" href="/fr/uuid-generator.html">Générateur d'UUID</a>
+      <a class="btn ghost" href="/fr/online-tools.html">Tous les outils</a></p></div>
 <aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
-  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
-  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
-  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+  <strong style="font-size:1.08rem;color:#1f2937">Utile ? 5 minutes d'IA sans le battage — chaque jour ouvré.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news est la newsletter IA pour les indépendants : courte, honnête, sans bingo de buzzwords. Gratuite, désabonnement à tout moment.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">S'abonner gratuitement →</a>
 </aside>
 </div></main>
 <footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
-  <a href="/passwort-generator.html">Passwort-Generator</a> · <a href="/uuid-generator.html">UUID-Generator</a> ·
-  <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+  <a href="/fr/passwort-generator.html">Générateur de mots de passe</a> · <a href="/fr/uuid-generator.html">Générateur d'UUID</a> ·
+  <a href="/fr/ki-werkzeug.html">Outil IA</a> &middot; <a href="/fr/online-tools.html">Tous les outils</a> &middot; <a href="/fr/impressum.html">Mentions légales</a> · <a href="/fr/datenschutz.html">Confidentialité</a></div></footer>
 <script>
 (function(){
   var pw=document.getElementById("pw"),toggle=document.getElementById("toggle"),bar=document.getElementById("bar"),
       verdict=document.getElementById("verdict"),kBits=document.getElementById("kBits"),kTime=document.getElementById("kTime"),checks=document.getElementById("checks");
-  var VERD=["sehr schwach","schwach","mittel","stark","sehr stark"];
+  var VERD=["très faible","faible","moyen","fort","très fort"];
   var COL=["#a01616","#d97706","#ca8a04","#059669","#047857"];
-  var TIME=["sofort","Sekunden","Minuten","Stunden","Tage","Monate","Jahre","Jahrhunderte","Jahrtausende oder mehr"];
-  var LABELS=["Mindestens 12 Zeichen","Klein- und Grossbuchstaben","Mindestens eine Zahl","Mindestens ein Sonderzeichen"];
+  var TIME=["instantanément","secondes","minutes","heures","jours","mois","années","siècles","millénaires ou plus"];
+  var LABELS=["Au moins 12 caractères","Majuscules et minuscules","Au moins un chiffre","Au moins un caractère spécial"];
   function pool(s){
     var p=0;
     if(/[a-z]/.test(s))p+=26;
@@ -162,7 +162,7 @@ footer a{color:var(--muted)}
   toggle.addEventListener("click",function(){
     var hidden=pw.type==="password";
     pw.type=hidden?"text":"password";
-    toggle.textContent=hidden?"Verbergen":"Anzeigen";
+    toggle.textContent=hidden?"Masquer":"Afficher";
     toggle.setAttribute("aria-pressed",hidden?"true":"false");
   });
   pw.addEventListener("input",update);
