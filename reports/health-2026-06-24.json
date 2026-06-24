@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-24T04:00:09.773Z",
+  "ts": "2026-06-24T17:28:12.981Z",
   "ai": {
     "groq": "live",
     "gemini": "live",
@@ -10,8 +10,23 @@
     "mistral": "kein Key",
     "openai": "down"
   },
-  "binaries": {},
-  "data": {},
+  "binaries": {
+    "ffmpeg": "fehlt",
+    "yt-dlp": "fehlt",
+    "piper": "fehlt",
+    "python3": "fehlt",
+    "node": "fehlt",
+    "curl": "fehlt",
+    "gallery-dl": "fehlt",
+    "wrangler": "fehlt"
+  },
+  "data": {
+    "music_tracks": 11,
+    "top_products": 26,
+    "text_image_cards": 21,
+    "google_trends_ch": "erreichbar",
+    "image_gen_free": "erreichbar"
+  },
   "summary": {
     "ai_live": [
       "groq",
