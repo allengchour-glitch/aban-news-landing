@@ -38,6 +38,7 @@
       ["Texte schreiben lassen", "/texte-schreiben-lassen.html", "Leistungen", "Web-, Produkt- & Über-uns-Texte"],
       ["Anfrage / Kontakt", "/kontakt.html", "Leistungen", "Unverbindlich anfragen — Festpreis & Plan"],
       ["KI-Automation für KMU", "/ki-automation.html", "Leistungen", "Chatbots, Termin- & Lead-Automation für Schweizer Betriebe"],
+      ["KI-Sichtbarkeit (AEO)", "/ki-sichtbarkeit.html", "Leistungen", "Von ChatGPT, Perplexity & Google AI gefunden werden (für Betriebe)"],
       ["Digitale Produkte", "/digitale-produkte.html", "Leistungen", "Prompt-Pack, Checklisten, Vorlagen"],
       ["KI-Themen A–Z (Übersicht)", "/ki-themen.html", "Start", "Alle KI-Ratgeber & Erklärungen auf einen Blick"],
       ["Universal-Suche", "/suche.html", "Start", "Jobs, Angebote & Inserate mit einer Suche auf einmal"],
