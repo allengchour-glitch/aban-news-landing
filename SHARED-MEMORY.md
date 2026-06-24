@@ -1802,3 +1802,11 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🚫 LEHRE (endgültig):** Merchant „page unavailable/missing image/franz. Titel" NIE wieder als Live-Defekt untersuchen —
   es sind Geister gelöschter Produkte. Beweis-Routine: Full-Scan aktive Titel + Googlebot-curl (sitemap+Stichprobe 200,
   Geist 404). Lösung = Zeit + „Request website check" (User). Franz. Altlasten waren in den 4634 gelöschten Archiv-Produkten.
+
+## 📌 2026-06-23 Teil 53 (🧭 8 neue Bereiche INS MENÜ — User „jaa auch")
+- **7 neue Collections ins Hauptmenü** (menuUpdate, 156→163 Items, validiert): Trends&Gadgets += Drohnen/Beamer/Smartwatch;
+  Wohnen&Wellness += Kaffee/Kinderspielzeug/Yoga&Pilates/Haustier-Tech. Grill war schon drin (übersprungen).
+- Alle 7 Links verifiziert: Collections publiziert (7 Kanäle), Produkte vorhanden → kein 404. menuUpdate-Pattern:
+  Menü rekursiv→MenuItemUpdateInput (title/type HTTP/url/items), neue Items an Ziel-Gruppe pushen, Item-Count vorher/nachher
+  prüfen, dann menuUpdate(id,handle,title,items). Menü-ID gid://shopify/Menu/310224093569.
+- **Offen (optional):** Filter-Hub `/pages/marken-kategorien` um die 8 neuen Bereiche ergänzen (3. Verlinkungs-Ebene).
