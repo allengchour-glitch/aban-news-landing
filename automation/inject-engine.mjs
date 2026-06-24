@@ -78,6 +78,7 @@ let related = 0;
 let healed = 0;
 let kbhub = 0;
 let kihub = 0;
+let aeohub = 0;
 const hubs = [];
 for (const f of files) {
   const base = f.split(sep).pop();
@@ -181,11 +182,22 @@ for (const f of files) {
   // (6c) Backlink zum KI-Themen-Pillar-Hub (bi-direktional), idempotent
   {
     const base = f.split(sep).pop();
-    if (!noindex && base.startsWith("ki-") && base.endsWith(".html") && base !== "ki-themen.html" && html.indexOf("data-aban-kihub") < 0) {
+    if (!noindex && base.startsWith("ki-") && !base.startsWith("ki-sichtbarkeit") && base.endsWith(".html") && base !== "ki-themen.html" && html.indexOf("data-aban-kihub") < 0) {
       const bpos = html.toLowerCase().lastIndexOf("</body>");
       if (bpos >= 0) {
         const block = '<nav data-aban-kihub aria-label="KI-Themen-Übersicht" style="max-width:760px;margin:18px auto;padding:0 16px;font-size:.9rem"><a href="/ki-themen.html" style="color:#b45309;font-weight:700">← Alle KI-Themen im Überblick</a></nav>';
         html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); kihub++; changed = true;
+      }
+    }
+  }
+  // (6d) Backlink zum AEO-Pillar (ki-sichtbarkeit.html) auf den Branchen-/Tool-Unterseiten, idempotent
+  {
+    const base = f.split(sep).pop();
+    if (!noindex && base.startsWith("ki-sichtbarkeit-") && base.endsWith(".html") && html.indexOf("data-aban-aeohub") < 0) {
+      const bpos = html.toLowerCase().lastIndexOf("</body>");
+      if (bpos >= 0) {
+        const block = '<nav data-aban-aeohub aria-label="KI-Sichtbarkeit-Übersicht" style="max-width:760px;margin:18px auto;padding:0 16px;font-size:.9rem"><a href="/ki-sichtbarkeit.html" style="color:#b45309;font-weight:700">← KI-Sichtbarkeit (AEO) für Schweizer Betriebe — Überblick</a></nav>';
+        html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); aeohub++; changed = true;
       }
     }
   }
@@ -207,4 +219,4 @@ for (const f of files) {
   }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
-console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + kihub + " KI-Backlinks + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
+console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + kihub + " KI-Backlinks + " + aeohub + " AEO-Backlinks + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
