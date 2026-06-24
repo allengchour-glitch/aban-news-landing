@@ -278,12 +278,15 @@ async function pickFromSearch(p, value) {
       // Creative: Datei-Input direkt setzen (Stagehand-Page = Playwright-kompatibel)
       try { let upVid = C.video; if (process.env.CAMPAIGN_KEEP_AUDIO !== '1') { const { execSync } = await import('node:child_process'); const os = (await import('node:os')).default; const sv = path.join(os.tmpdir(), 'camp-' + path.basename(C.video)); try { execSync(`ffmpeg -y -nostdin -i "${C.video}" -c:v copy -an "${sv}"`, { stdio: 'ignore' }); if (fs.existsSync(sv) && fs.statSync(sv).size > 10000) upVid = sv; } catch {} }
         const inp = await p.$('input[type="file"]'); if (inp) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(9000); } else log('⚠️ AI: kein Datei-Input — Screenshot ai-ad-start pruefen'); } catch (e) { log('Creative-Upload:', String(e).slice(0, 60)); }
-      await A(`fill the ad text/caption with: ${C.adtext}`, null);
-      await A(`set the call to action to "${C.cta}"`, null);
+      await diag(p, 'ai-creative-uploaded'); // 2026-06-24: Beweis, ob das Video durchkam (Upload kann lange dauern/scheitern)
+      await A(`fill the ad text/caption with: ${C.adtext}`, 'ad-text');
+      await A(`set the call to action to "${C.cta}"`, 'ad-cta');
       await A(`fill the destination website URL with ${C.landing}`, 'ad-filled');
+      await diag(p, 'ai-pre-submit'); // 2026-06-24: letzter Stand VOR dem Absenden -> zeigt, ob die Ad vollstaendig ist
       if (DRY) { log('[dry] AI-Durchlauf fertig — Screenshots ai-* pruefen.'); await ab.close().catch(() => {}); process.exit(0); }
       if (!C.autoLaunch) { log('AUTO_LAUNCH=0 → stoppe vor Absenden.'); await ab.close().catch(() => {}); process.exit(0); }
       await A('click the Submit / Publish button to publish the whole campaign for review', 'submitted', 6000);
+      await sleep(3000); await diag(p, 'ai-after-submit'); // 2026-06-24: bestaetigt, ob "In Pruefung"/Erfolg-Dialog erscheint
       fs.writeFileSync(LEDGER, new Date().toISOString() + ' campaign submitted (AI)\n');
       log('✅ Kampagne via AI-Wizard abgesendet (zur Pruefung).');
       await ab.close().catch(() => {});
