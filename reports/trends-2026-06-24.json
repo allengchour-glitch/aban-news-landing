@@ -1,17 +1,17 @@
 {
-  "ts": "2026-06-24T04:00:16.447Z",
+  "ts": "2026-06-24T16:50:47.706Z",
   "provider": "groq",
   "google_trends_ch": [
-    "kolumbien kongo",
-    "mundial 2026",
-    "colombie – rd congo",
-    "panama vs croatia",
-    "steam",
-    "panama – kroatien",
-    "whatsapp",
-    "fifa world cup standings",
-    "swisscom",
-    "bode miller"
+    "schüsse",
+    "montel mckenzie",
+    "fifa world cup 2026 standings",
+    "tabelle der fifa fußball-wm 2026",
+    "einbruch",
+    "drei-säulen-system",
+    "rockstar games",
+    "gta 6",
+    "zürich",
+    "hitze"
   ],
   "own_tiktok_report": "tiktok-upload-result.png",
   "music_moods_available": {
@@ -28,39 +28,66 @@
   "ideen": {
     "content_ideen": [
       {
-        "idee": "Sommer-Outfit-Tipps fürs Stadion",
-        "kategorie": "Damen-/Herrenmode",
-        "hook_mundart": "Chumm mit deinem beste Outfit zum Spiel!",
+        "idee": "Sommerschönheit: Hitze-Resistente Outfits fürs Zürcher Stadtleben",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Chumi, wie du lässig u stylish durch d Hitze kommisch?",
         "musik_mood": "upbeat-pop",
         "hashtags": [
+          "#schweiz",
+          "#zuerich",
+          "#ootdschweiz",
+          "#sommermode"
+        ]
+      },
+      {
+        "idee": "GTA 6 Inspirations: Streetwear-Meets-Luxe für Männer",
+        "kategorie": "Herrenmode",
+        "hook_mundart": "Mach disch bereit för ne Luxe-Game wie nie devu! ",
+        "musik_mood": "phonk",
+        "hashtags": [
           "#schweizmode",
-          "#züri",
+          "#bern",
+          "#gta6",
+          "#streetwear"
+        ]
+      },
+      {
+        "idee": "Schmück di fürs FIFA World Cup 2026: Fußball inspirierte Accessoires",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Chasch di Schmuck wie ne WM-Trophäe, oder?",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweiz",
+          "#fifaworldcup2026",
+          "#schmuckinspiration",
           "#fussballfans"
         ]
       },
       {
-        "idee": "Schöni Schuhe für d'Fussball-Party",
-        "kategorie": "Schuhe",
-        "hook_mundart": "D'beschte Schuhe für d'Fussball-Nacht!",
-        "musik_mood": "house",
+        "idee": "Outdoor-Abenteuer in der Schweiz: Die perfekten Outfits fürs Camping",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Gönd mier uf d Reis! Wer isch bereit för ne Camping-Tour?",
+        "musik_mood": "lofi",
         "hashtags": [
-          "#ootdschweiz",
-          "#bern",
-          "#schuhe"
+          "#schweizmode",
+          "#basel",
+          "#outdooradventures",
+          "#campinglife"
         ]
       },
       {
-        "idee": "Eleganti Hüte für d'Saison",
-        "kategorie": "Hüte",
-        "hook_mundart": "Chumm mit deinem elegante Hut!",
+        "idee": "Elegante Abendgarderobe für die Zürcher Sommerabende",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Wie chasch di am schönste ufgläse für ne sommerliche Nacht uf em Züri See?",
         "musik_mood": "elegant",
         "hashtags": [
           "#schweiz",
-          "#basel",
-          "#hüte"
+          "#zuerich",
+          "#abendgarderobe",
+          "#sommerabend"
         ]
       }
     ],
-    "trend_musik_note": "Die Musik-Moods werden je nach Idee und Kategorie ausgewählt, um die Stimmung und den Charakter der Marke LuxeStyle zu transportieren."
+    "trend_musik_note": "Die Schweizer lieben ihre Musik vielfältig, von eleganten Abendklängen bis hin zu upbeat-pop für die sommerlichen Tage."
   }
 }
