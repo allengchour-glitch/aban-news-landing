@@ -30,6 +30,9 @@ mkdir -p _site
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_kaufberater_hub.py ) || echo "build_kaufberater_hub übersprungen"
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_ki_hub.py ) || echo "build_ki_hub übersprungen"
 
+# RSS-Feed (feed.xml) aus den Newsletter-Ausgaben in archive/ — Distribution + Discoverability. Tolerant.
+( command -v python3 >/dev/null 2>&1 && python3 tools/build_feed.py ) || echo "build_feed übersprungen"
+
 # Portabel (kein rsync nötig): mit tar kopieren und dabei ausschließen.
 tar -cf - \
   --exclude='./.git' \
