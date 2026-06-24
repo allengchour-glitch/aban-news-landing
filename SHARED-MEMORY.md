@@ -1810,3 +1810,14 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   Menü rekursiv→MenuItemUpdateInput (title/type HTTP/url/items), neue Items an Ziel-Gruppe pushen, Item-Count vorher/nachher
   prüfen, dann menuUpdate(id,handle,title,items). Menü-ID gid://shopify/Menu/310224093569.
 - **Offen (optional):** Filter-Hub `/pages/marken-kategorien` um die 8 neuen Bereiche ergänzen (3. Verlinkungs-Ebene).
+
+## 📌 2026-06-23 Teil 54 (🧭 FILTER-HUB optimiert — User „nicht viel scrollen, lerne YouTube")
+- **Web/Best-Practice-Recherche** (Baymard/Plumrocket/Convertcart): Hub = scannbares Karten-Grid · Gruppierung+Weißraum statt
+  Listen · „in 3 Sek. erfassbar" · 1 Klick zur Unterkategorie · Wichtiges/Neues OBEN.
+- **Filter-Hub `/pages/marken-kategorien` (id 698796441985):** neue Sektion **„🆕 Neue Bereiche 2026" als ERSTE oben** mit den
+  8 neuen Bereichen (Drohnen/Beamer/Smartwatch/Kaffee/Grill/Spielzeug/Yoga/Haustier-Tech) → sofort sichtbar, kein Scrollen.
+- **9 doppelte Chips entfernt** (Puma/Adidas/Reebok/Under Armour/Gant je 2 Handles; Caps/Fitness/Velo/Tauchen je 2) → kürzer/
+  scannbarer (250→241 Chips). Live verifiziert (WebFetch): Neue-Bereiche-Sektion zuerst, Grid sauber.
+- **Pattern Filter-Hub-Edit:** Page-Body holen → Sektion nach Intro/vor 1. `<h2 class="lx-h2">` einfügen → pageUpdate. Chip =
+  `<a href="/collections/H" class="lx-chip">LABEL <span class="lx-n">N</span></a>`. Entdoppeln: gleiche Label-Chips, 1 behalten.
+- **3 Verlinkungs-Ebenen jetzt komplett** für die 8 neuen Bereiche: Menü ✓ + Filter-Hub ✓ + Direktlink/Collection ✓.
