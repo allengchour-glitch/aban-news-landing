@@ -101,4 +101,5 @@ async function clickFirst(scope, sels, timeout = 4000) {
   fs.writeFileSync(path.join(ROOT, 'reports', 'ig-cover.json'), JSON.stringify(report, null, 2));
   log('FAZIT: Web-Cover-Edit ' + (report.webCoverSupported ? 'IST verfuegbar -> Folge-Tool kann setzen.' : 'NICHT verfuegbar -> Cover nur in der Handy-App aenderbar (20 Sek/Reel).'));
   log('Report: reports/ig-cover.json + Screenshots: automation/local/ig-cover-shots/');
+  await p.close().catch(() => {}); // 2026-06-24 (User): Tab selber schliessen
 })();

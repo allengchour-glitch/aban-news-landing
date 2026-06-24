@@ -138,6 +138,7 @@ async function growInstagram(ctx) {
   }
   await p.screenshot({ path: path.join(SHOTS, 'instagram.png') }).catch(() => {});
   log(`Instagram fertig: ${follows} neue CH-Kontakte angesprochen.`);
+  await p.close().catch(() => {}); // 2026-06-24 (User): Tab selber schliessen
 }
 
 // ---------- TIKTOK ----------
@@ -175,6 +176,7 @@ async function growTikTok(ctx) {
   }
   await p.screenshot({ path: path.join(SHOTS, 'tiktok.png') }).catch(() => {});
   log(`TikTok fertig: ${follows} neue CH-Kontakte angesprochen.`);
+  await p.close().catch(() => {}); // 2026-06-24 (User): Tab selber schliessen
 }
 
 // Kommentar absetzen (nur Influencer-Beiträge, Opt-in). Defensiv: Feld finden, tippen, senden.
@@ -228,6 +230,7 @@ async function growSeedInfluencers(ctx) {
     }
   }
   await p.screenshot({ path: path.join(SHOTS, 'influencers.png') }).catch(() => {});
+  await p.close().catch(() => {}); // 2026-06-24 (User): Tab selber schliessen
   log(`Influencer fertig: ${comments}/${CAP.ig_comments} Kommentare. (Folgen + Likes dazu.)`);
 }
 

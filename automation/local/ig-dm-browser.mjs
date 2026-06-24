@@ -105,6 +105,7 @@ const saveDone = s => { try { fs.writeFileSync(DONE, JSON.stringify([...s].slice
   }
   saveDone(done);
   await p.screenshot({ path: path.join(SHOTS, 'ig-dm.png') }).catch(() => {});
-  log(`\nFertig: ${n} DM${DRY ? ' (DRY)' : ''} beantwortet. State: ig-dm-done.json. Brave bleibt offen.`);
+  log(`\nFertig: ${n} DM${DRY ? ' (DRY)' : ''} beantwortet. State: ig-dm-done.json.`);
+  await p.close().catch(() => {}); // 2026-06-24 (User): Tab selber schliessen -> kein Tab-Stau im Brave
   process.exit(0);
 })();

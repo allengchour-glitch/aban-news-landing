@@ -131,6 +131,7 @@ const BOX_SEL = 'div[contenteditable="true"], textarea'; // Nachrichtenfeld im o
     await sleep(rnd(7000, 15000));
   }
   saveDone(done);
-  log(`\nFertig: ${n} TikTok-DM${DRY ? ' (DRY)' : ''} beantwortet. State: tiktok-dm-done.json. Brave bleibt offen.`);
+  log(`\nFertig: ${n} TikTok-DM${DRY ? ' (DRY)' : ''} beantwortet. State: tiktok-dm-done.json.`);
+  await p.close().catch(() => {}); // 2026-06-24 (User): Tab selber schliessen -> kein Tab-Stau
   process.exit(0);
 })();

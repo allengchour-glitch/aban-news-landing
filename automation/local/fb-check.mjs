@@ -55,5 +55,6 @@ const report = { ts: new Date().toISOString(), page: PAGE, url: URL, shots: [] }
   } catch (e) { log('Fehler:', String(e).slice(0, 100)); }
   fs.writeFileSync(path.join(ROOT, 'reports', 'fb-check.json'), JSON.stringify(report, null, 2));
   log('Fertig. Screenshots: automation/local/fb-check-shots/ · Report: reports/fb-check.json');
+  await p.close().catch(() => {}); // 2026-06-24 (User): Tab selber schliessen
   process.exit(0);
 })();
