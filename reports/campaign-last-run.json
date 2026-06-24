@@ -1,13 +1,14 @@
 {
-  "ts": "2026-06-21T20:11:56.288Z",
+  "ts": "2026-06-24T15:52:16.331Z",
   "result": "WIZARD_DIAG",
   "mode": "stagehand",
   "stagehand": {
-    "model": "google/gemini-2.0-flash",
+    "model": "groq/llama-3.3-70b-versatile",
     "hasShPage": false,
     "shPageType": "undefined",
     "rawHasAct": "undefined",
-    "actReady": false,
+    "instanceAct": true,
+    "actReady": true,
     "shKeys": "opts,state,actHandler,extractHandler,observeHandler,ctx,llmClient,bus,modelName,modelClientOptions,llmProvider,overrideLlmClients,domSettleTimeoutMs,_isClosing,browserbaseSessionId,browserbaseSessionUrl,browserbaseDebugUrl,_onCdpClosed,experimental,logInferenceToFile,disableAPI,externalLogger,verbose,stagehandLogger,_history,instanceId,sessionId,eventStore,flowLoggerContext,cacheStorage,actCache,agentCache,apiClient,keepAlive,shutdownSupervisor,stagehandMetrics",
     "shProto": "constructor,browserbaseSessionID,browserbaseSessionURL,browserbaseDebugURL,isBrowserbase,isCaptchaAutoSolveEnabled,isVerified,isAdvancedStealth,configuredViewport,metrics,mergeAgentMetricsWithLocalFallback,updateAgentMetricsFromUsage,getApiDefaultModelConfig,resolveLlmClient,resolveDefaultAgentMode,beginAgentReplayRecording,endAgentReplayRecording,discardAgentReplayRecording,isAgentReplayRecording,isAgentReplayActive,recordAgentReplayStep,history,addToHistory,updateMetrics,updateTotalMetrics,_immediateShutdown,startShutdownSupervisor,stopShutdownSupervisor,init,_applyPostConnectLocalOptions,_ensureBrowserbaseDownloadsEnabled,resetBrowserbaseSessionMetadata,act,extract,observe,connectURL,context,close,browserbaseApiKey,requireBrowserbaseCreds,logger,resolveTopFrameId,isPlaywrightPage,isPatchrightPage,isPuppeteerPage,resolvePage,normalizeToV3Page,_logBrowserbaseSessionStatus,prepareAgentExecution,agent"
   }
