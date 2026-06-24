@@ -1722,3 +1722,14 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   loop{ products(first:50,status:archived) → 20er-Alias-`productDelete`-Batches } bis 0. ~13 Stk/s.
 - **Git-Restart-Lehre:** Container-Restart setzte LOKALEN Branch auf alten Commit zurück (Remote hatte alles) → lokal committen
   erzeugte Divergenz/bad-dedup. Fix: `git reset --hard origin/<branch>` (Remote = Wahrheit, alles war gepusht).
+
+## 📌 2026-06-23 Teil 47 (Wave 7 +8 frische Nischen + TAGES-ABSCHLUSS)
+- **Wave 7 +8** (CATS=sets,tauchen,angeln,metalldetektor,fussball,trikot · MIN_COST 15 · 0 Überlapp → 0 Dups):
+  Tischkicker CHF 308–592 · Neoprenanzug CHF 210 · Tauchsets/Schnorchel · Sporttasche. Voll poliert, QA sauber.
+- **🎯 TAGES-ABSCHLUSS 2026-06-23:** ~200 neue Produkte (Wellen 1–7, alle poliert+verifiziert+dup-bereinigt). Katalog
+  **4079 → 4288 aktiv**, **archiviert 4634 → 0** (Backlog erledigt), draft 57 (14 Wave-6-Dups u.a.).
+- **Google Merchant komplett aufgeräumt:** Re-Crawl (User) + 297 Text-Designs vom Google-Kanal + 4634 Archiv-404s gelöscht
+  → „page unavailable/missing image/overlay"-Warnungen verschwinden. Live-Katalog beweisbar sauber.
+- **Tools gebaut/gehärtet heute:** `MIN_COST_EUR` (High-End-Wellen) · `alt_text_fill` · `collection_crosslinks` · `tag_backfill` ·
+  `collection_polish` (Hero-Fix) · `gmc_category_fix` (Strand/Sommer-Mappings) · Dup-Check (Trailing-Handle-ID) · Archiv-Batch-Delete.
+- **Funnel-Status unverändert:** Engpass = REICHWEITE (0 echte Käufe). On-Site ist maximal ausgereizt. User-Hebel: TikTok-Kampagne.
