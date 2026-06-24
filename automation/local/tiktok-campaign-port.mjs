@@ -75,6 +75,13 @@ const LEDGER = path.join(ROOT, 'automation', 'local', 'tiktok-campaign-ledger.tx
 const SHOTS = path.join(ROOT, 'automation', 'local', 'campaign-shots');
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+// HANG-SCHUTZ (Lehre 2026-06-24: Laeufe 18:00/18:32 starben stumm nach open-creation): page.evaluate hat KEIN
+// Default-Timeout -> eine blockierte Seite friert den ganzen Lauf 12 Min ein. pTimeout rennt gegen eine Uhr,
+// liefert null statt zu haengen -> der Bot macht weiter + die Screenshots entstehen trotzdem.
+const pTimeout = (promise, ms, label = 'op') => Promise.race([
+  Promise.resolve(promise).catch(() => null),
+  new Promise(r => setTimeout(() => { log('⏱️ ' + label + ' timeout ' + ms + 'ms (weiter)'); r(null); }, ms)),
+]);
 let STEP = 0;
 
 async function shot(p, name) { try { fs.mkdirSync(SHOTS, { recursive: true }); await p.screenshot({ path: path.join(SHOTS, `${String(++STEP).padStart(2, '0')}-${name}.png`) }); } catch {} }
@@ -160,7 +167,7 @@ async function pickFromSearch(p, value) {
   // KONTO-AUSWAHL-GUARD (Lehre 2026-06-24, Screenshot 09-ai-ad-start = "Select an account"): wenn TikTok auf
   // die Konto-Auswahl bouncet, das RICHTIGE finanzierte Konto klicken (LuxeStyle CH Ads), dann Builder neu öffnen.
   for (let g = 0; g < 2; g++) {
-    const onSelect = await p.evaluate(() => /select an account|konto auswählen|select an ad account/i.test(document.body.innerText || '')).catch(() => false);
+    const onSelect = await pTimeout(p.evaluate(() => /select an account|konto auswählen|select an ad account/i.test(document.body.innerText || '')), 15000, 'onSelect');
     if (!onSelect) break;
     log('⚠️ "Select an account" erkannt → klicke LuxeStyle CH Ads (' + C.advertiserId + ')');
     await diag(p, 'select-account');
@@ -178,12 +185,12 @@ async function pickFromSearch(p, value) {
 
   // FRUEHERKENNUNG Onboarding-Wand (Lehre 2026-06-21): Konto nicht eingerichtet -> NIE bis zum Builder.
   // Statt 9 Screenshots durchzuklicken: sofort mit klarem Status abbrechen (kein Geld-Risiko, klare Diagnose).
-  const wall = await p.evaluate(() => {
+  const wall = (await pTimeout(p.evaluate(() => {
     const t = (document.body.innerText || '').toLowerCase();
     return ['add business info', 'welcome to tiktok ads manager', 'getting started',
       'enter payment details', 'select an industry', 'advertiser business info', 'permission error']
       .filter(s => t.includes(s));
-  }).catch(() => []);
+  }), 15000, 'wall')) || [];
   if (wall.length >= 2) {
     try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true }); } catch {}
     // AUTO-ONBOARDING (User 2026-06-22 "fuell du aus, wie alles autonom"): statt sofort abzubrechen,
@@ -231,25 +238,25 @@ async function pickFromSearch(p, value) {
   // (Ziel-Karten) WIRKLICH offen ist, sonst naechster Weg. Erst wenn im Wizard, uebernimmt die AI das Ausfuellen.
   const objectiveCards = /choose an objective|advertising objective|reach\b|traffic\b|video views|lead generation|website conversions|product sales|app promotion|community interaction|reichweite|zugriffe|conversions|katalogverkäufe/i;
   const listMarkers = /total of \d+ campaign|ad id contains|search & filter|split test|bulk export/i;
-  const stateNow = async () => p.evaluate((o) => {
+  const stateNow = async () => (await pTimeout(p.evaluate((o) => {
     const txt = document.body.innerText || '';
     const list = /total of \d+ campaign|ad id contains|search & filter|split test|bulk export\/import/i.test(txt);
     // Wizard = Ziel-Karten sichtbar UND definitiv NICHT die Kampagnen-Liste (Liste enthaelt auch Worte wie "Traffic").
     return { inWizard: new RegExp(o, 'i').test(txt) && !list, onList: list, url: location.href, len: txt.length };
-  }, objectiveCards.source).catch(() => ({ inWizard: false, onList: false, url: '', len: 0 }));
+  }, objectiveCards.source), 15000, 'stateNow')) || { inWizard: false, onList: false, url: '', len: 0 };
 
   const dismissOverlay = async () => {
-    await p.keyboard.press('Escape').catch(() => {});
+    await pTimeout(p.keyboard.press('Escape'), 5000, 'esc');
     await sleep(400);
-    await p.evaluate(() => {
+    await pTimeout(p.evaluate(() => {
       const close = [...document.querySelectorAll('button,[role="button"],svg,span,i,div')].find(e => {
         const s = (e.getAttribute('aria-label') || e.innerText || '').toLowerCase().trim();
         const r = e.getBoundingClientRect();
         return (/^(×|✕|x|close|schliessen|schließen)$/.test(s) || /got it|no thanks|nicht jetzt|maybe later|dismiss|später/.test(s)) && r.width > 0 && r.width < 120;
       });
       if (close) close.click();
-    }).catch(() => {});
-    await p.mouse.click(620, 540).catch(() => {}); // neutraler Klick in die leere Tabelle schliesst TikTok-Popover
+    }), 8000, 'dismiss');
+    await pTimeout(p.mouse.click(620, 540), 5000, 'neutral-click'); // neutraler Klick in die leere Tabelle schliesst TikTok-Popover
     await sleep(600);
   };
 
@@ -259,13 +266,13 @@ async function pickFromSearch(p, value) {
     await dismissOverlay();
     if (attempt === 0) {
       // Weg A: gruener "+ Create"-Button oben links (NICHT vom Overlay verdeckt, das sitzt oben rechts)
-      await p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"]')].find(e => /^\s*\+?\s*(create|erstellen)\s*$/i.test((e.innerText || '').trim())); if (b) b.click(); }).catch(() => {});
+      await pTimeout(p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"]')].find(e => /^\s*\+?\s*(create|erstellen)\s*$/i.test((e.innerText || '').trim())); if (b) b.click(); }), 8000, 'click-create');
     } else if (attempt === 1) {
       // Manche Builds: "+ Create" oeffnet ein Dropdown -> dort "Campaign"/"Kampagne" waehlen
-      await p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"],li,span')].find(e => /^\s*(campaign|kampagne)\s*$/i.test((e.innerText || '').trim())); if (b) b.click(); }).catch(() => {});
+      await pTimeout(p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"],li,span')].find(e => /^\s*(campaign|kampagne)\s*$/i.test((e.innerText || '').trim())); if (b) b.click(); }), 8000, 'click-dropdown');
     } else if (attempt === 2) {
       // Weg B: der "Create campaign"-Button IM Coupon-Popup (oeffnet Wizard mit dem CHF-9000-Gutschein)
-      await p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"]')].find(e => /create campaign|kampagne erstellen/i.test((e.innerText || '').trim()) && (e.innerText || '').length < 30); if (b) b.click(); }).catch(() => {});
+      await pTimeout(p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"]')].find(e => /create campaign|kampagne erstellen/i.test((e.innerText || '').trim()) && (e.innerText || '').length < 30); if (b) b.click(); }), 8000, 'click-coupon');
     } else {
       // Weg C: Creation-URL hart neu laden (mit aadvid)
       await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
