@@ -1843,3 +1843,17 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Ergebnis:** 0 hello@ · 0 SHIP50 · 0 „ab CHF 50" verbleibend. Alle Pages konsistent: info@luxestyle.ch · CHF 65 automatisch.
 - **Lehre:** Die „CHF 50/65-Inkonsistenz" der Agenten lebte in den Pages (nicht Produkten). Plus fake Discount-Code = stiller Conversion-Killer.
   Bei Page-Audits IMMER auf tote Codes / falsche Emails / Schwellenwert-Inkonsistenz prüfen.
+
+## 📌 2026-06-23 Teil 57 (⚖️ POLICIES per API + Theme-Grenze geklärt — „mache per API")
+- **🎉 shopPolicyUpdate FUNKTIONIERT per API** (Input braucht `type:ShopPolicyType` + `body`, NICHT id). Policies sind editierbar!
+  → **SHIPPING_POLICY ß→ss per API gefixt.** PRIVACY_POLICY = Shopify-auto-verwaltet (DSGVO) → „Automatic management must be turned off"
+  → User-Toggle nötig (minimal, nur 1 ß).
+- **✅ KORREKTUR zu Teil 55:** Die Rückgabe-/AGB-Policy ist NICHT defekt — sie unterscheidet sauber „freiwillig 30 Tage (CH)" +
+  „zusätzlich gesetzl. 14-Tage-Widerruf (EU-Kund:innen)". Da der Shop nach DE/AT/LI liefert, ist das **rechtlich KORREKT**. „Widerruf"
+  in Privacy = „Widerruf der Einwilligung" (DSGVO). → NICHT ändern. (Agent-Warnung „keine EU-Vorlage" trifft hier nicht zu — Text ist nuanciert.)
+- **🛑 THEME-GRENZE (wichtig für künftige Sessions):** MAIN-Theme = **Horizon** (`gid://…/OnlineStoreTheme/187533001089`), Shopifys
+  NEUE Architektur — `templates/product.json` liefert leeren Body / anderer Aufbau. **Theme-CRO-Hebel (Sticky-ATC, Trust-Badges,
+  Sterne-unter-Titel, Cart-Versand-Bar) NICHT blind per themeFilesUpsert** auf dem Live-Theme → Risiko, die Produktseite zu zerstören.
+  → Diese gehören in den Horizon-Customizer (User) oder auf eine Theme-KOPIE mit Preview. Nicht erneut blind versuchen.
+- **API-MACHBAR bestätigt:** Produkte/Collections/Pages/Policies(ausser auto-Privacy)/Menü/Metafelder/Publikationen. NICHT-API:
+  Theme-Blocks (Horizon-Customizer), Payment-Provider (Klarna/PostFinance-Signup), Trust-Seal (Zertifizierung), Spin-Wheel-Popup (App).
