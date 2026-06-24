@@ -63,27 +63,28 @@ def main():
     os.makedirs(os.path.dirname(out), exist_ok=True)
 
     img = fit_cover(Image.open(a.image)).convert("RGBA")
-    scrim(img, top=True, height=600, alpha=165)
-    scrim(img, top=False, height=620, alpha=185)
+    # Text NUR in OBERES Band (Marke+Hook+Preis) + UNTERES Band (CTA) -> Produkt-Mitte bleibt frei (kein Ueberdecken).
+    scrim(img, top=True, height=620, alpha=175)
+    scrim(img, top=False, height=300, alpha=190)
     d = ImageDraw.Draw(img)
 
-    # Marke oben links (Safe)
-    draw_text(d, (70, 70), a.brand, font(FB, 40), fill=(255, 255, 255, 230))
-
-    # Hook oben, umgebrochen
-    fh = font(FB, 76)
-    lines = textwrap.wrap(clean(a.hook), width=20)[:3]
-    y = 150
+    # OBEN: Marke, Hook, Preis-Pill
+    draw_text(d, (70, 64), a.brand, font(FB, 40), fill=(255, 255, 255, 235))
+    fh = font(FB, 74)
+    lines = textwrap.wrap(clean(a.hook), width=21)[:2]
+    y = 140
     for ln in lines:
         draw_text(d, (70, y), ln, fh)
-        y += 92
-
-    # CTA + Preis unten, ueber der Safe-Zone (y <= 1500)
-    yb = SAFE_BOTTOM - 250
+        y += 90
     if a.price:
-        pill(d, W // 2, yb, a.price, font(FB, 64), fill=(212, 175, 90, 245), tcol=(20, 20, 20))
-        yb += 150
-    pill(d, W // 2, yb, clean(a.cta), font(FB, 46), fill=(255, 255, 255, 240), tcol=(20, 20, 20))
+        # Preis links-buendig direkt unter dem Hook (im oberen Band, ueber dem Produkt)
+        fp = font(FB, 58); txt = a.price; pad = 28
+        w = d.textlength(txt, font=fp)
+        d.rounded_rectangle([70, y + 10, 70 + w + 2 * pad, y + 10 + fp.size + pad], radius=(fp.size + pad) // 2, fill=(212, 175, 90, 245))
+        d.text((70 + pad, y + 10 + (fp.size + pad) / 2), txt, font=fp, fill=(20, 20, 20), anchor="lm")
+
+    # UNTEN: CTA-Leiste ganz unten (unter dem Produkt)
+    pill(d, W // 2, H - 150, clean(a.cta), font(FB, 46), fill=(255, 255, 255, 242), tcol=(20, 20, 20))
 
     img.convert("RGB").save(out, quality=92)
     print("OK", out)
