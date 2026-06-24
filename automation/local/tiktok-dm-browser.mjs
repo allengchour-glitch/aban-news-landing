@@ -20,6 +20,7 @@
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 5min -> exit");process.exit(1);},300000).unref(); // 2026-06-24 Stack-Audit: kein Loop-Hang bei Brave-Disconnect
 
 const MAX = Number(process.env.MAX || 12);
 const DRY = process.argv.includes('--dry');

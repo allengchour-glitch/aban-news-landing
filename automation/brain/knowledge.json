@@ -1505,7 +1505,13 @@
       "UGC/nativ schlaegt Hochglanz: handy-gedrehte Creatives ~63% besser, ~92% vertrauen UGC > klassische Ads. Echte Frau, natuerliche Umgebung, Mundart-Ton (kein Marken-Film).",
       "Laenge Direct-Response 9-15 Sek (Mode-Impulskauf = kurz). Schnelle 1-2 Sek Cuts, varierte Winkel/Speed, jede Pause raustrimmen.",
       "Templates KOPIEREN statt erfinden: TikTok-Made-Me-Buy-It / 3-Gruende-warum / Unboxing-Bogen / Antwort-auf-Kommentar / echtes Testimonial. CTA konkret Jetzt-shoppe + WELCOME10 (kein Learn-more).",
-      "Pro Produkt >=3 WILD verschiedene Hook-Konzepte testen (nicht Mini-Varianten), 3-10 Creatives in EINER Test-AdGroup; Gewinner = wer die 3-Sek-Marke ueberlebt, dann den iterieren. Eigene Daten bestaetigen: Produkt+CHF-Preis+Mundart schlug generische Karten ~20:1."
+      "Pro Produkt >=3 WILD verschiedene Hook-Konzepte testen (nicht Mini-Varianten), 3-10 Creatives in EINER Test-AdGroup; Gewinner = wer die 3-Sek-Marke ueberlebt, dann den iterieren. Eigene Daten bestaetigen: Produkt+CHF-Preis+Mundart schlug generische Karten ~20:1.",
+      "AI-UGC-PIPELINE (YouTube Claude+Seedance 2.0, gemeldet 4.9x ROAS): KI generiert UGC-STYLE Ad-Videos aus Produktbild. Claude schreibt Brand-Brief+Script+Video-Prompts, das Modell (Seedance/Luma) rendert mit Sync-Audio. Prompt = kurzer Creator-Brief mit Persona, Umgebung, Hook, Produkt-Aktion, KAMERA-Direktion (Close-up handheld + slight wobble = UGC-feel; pan/tilt/zoom/orbit), Proof-Moment, Mood, Audio, CTA. Kamera-Direktion verhindert generisches locked-camera-Bild. UMSETZUNG bei uns: bestehende Luma-Pipeline (automation/luma_product_video.mjs, ray-flash-2, ~9600 Credits) mit UGC-Prompts upgraden statt teurem Seedance-Key. UGC-Look kommt ausserdem leichter durch TikTok-Ad-Review als Hochglanz."
+    ],
+    "trends_2026_06": [
+      "FORMAT-WINNER mid-2026: (1) Before/After-PROOF (unser See-Test wasserfest = staerkster, 2x/Woche), (2) Add-to-Cart-Try-On-Haul (staerkstes Teil zuerst), (3) GRWM + GRWM-Storytelling (+30-50% Engagement), (4) 1-Teil-3-Looks Transition (save-worthy), (5) Detail-Close-up bag charms (Coastal-Vibe).",
+      "PRODUKT-TRENDS Sommer 2026 CH: Schmuck=gemischte Metalle gold+silber, chunky/sculptural, Muschel; Taschen=GRUEN als neues Neutral + Raffia/Woven, bag charms weiter stark; Personalisierung/POD = Match zu unserem Selbst-gestalten.",
+      "EMERGING-SOUND-FENSTER: Sound in Emerging-Phase (~500-10k Videos, erste ~3 Tage) = 3-5x Reach; innert 48-72h posten. Finden via TikTok Creative Center (CH-Region) + TokChart Fastest-Growing. Bei Silent-Upload: in-app beim Upload Emerging-Sound waehlen, Mundart-Hook als TEXT-Overlay (nicht VO) damit der Trend-Sound traegt."
     ]
   },
   "decisions": [

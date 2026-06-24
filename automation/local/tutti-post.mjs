@@ -29,6 +29,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+setTimeout(()=>{console.log("WATCHDOG 5min -> exit");process.exit(1);},300000).unref(); // 2026-06-24 Stack-Audit: kein Loop-Hang bei Brave-Disconnect
 
 const __dir = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dir, '../..');

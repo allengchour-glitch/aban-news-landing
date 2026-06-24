@@ -19,6 +19,7 @@ import { chromium } from 'playwright-core';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 5min -> exit");process.exit(1);},300000).unref(); // 2026-06-24 Stack-Audit: kein Loop-Hang bei Brave-Disconnect
 
 const DRY = process.argv.includes('--dry');
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
