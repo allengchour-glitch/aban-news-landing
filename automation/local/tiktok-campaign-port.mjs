@@ -31,7 +31,20 @@ import { aiBrowser } from '../lib/ai-browser.mjs';
 const DRY = process.argv.includes('--dry');
 // WATCHDOG (Lehre 2026-06-24): Campaign-Wizard ist LANG (Konto-Guard+Ziel+Gebot+Targeting+Budget+Ad+Submit).
 // 5 Min killten ihn mitten drin (stoppte bei Budget). 12 Min = genug zum Durchlaufen, aber kein Endlos-Hang.
-setTimeout(() => { console.log('⏱️ WATCHDOG 12min -> exit (Campaign-Flow zu lang)'); process.exit(1); }, 720000).unref();
+// NEU 2026-06-24: bei Timeout NICHT blind sterben — letzten Screenshot + Report schreiben (Lauf 18:00 stoppte
+// stumm nach open-creation = ein Hang killte den Prozess ohne Spur). So sieht die Cloud beim naechsten Mal WO.
+let PAGE_REF = null;
+setTimeout(async () => {
+  console.log('⏱️ WATCHDOG 12min -> exit (Campaign-Flow zu lang/haengt)');
+  try {
+    if (PAGE_REF) { await PAGE_REF.screenshot({ path: path.join(SHOTS, '99-watchdog-timeout.png') }).catch(() => {}); }
+    fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'),
+      JSON.stringify({ ts: new Date().toISOString(), result: 'WATCHDOG_TIMEOUT',
+        hinweis: 'Lauf haengte >12min und wurde gekillt. Screenshot 99-watchdog-timeout zeigt den letzten Stand. Wahrscheinlich haengte ein p.evaluate/act auf einer langsamen/blockierten Seite.' }, null, 2));
+  } catch {}
+  process.exit(1);
+}, 720000).unref();
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const C = {
   total: process.env.TT_TOTAL_BUDGET || '350',
@@ -106,6 +119,7 @@ async function pickFromSearch(p, value) {
   try { ab = await aiBrowser(); }
   catch { log('❌ Kein Brave auf 9222. Brave mit --remote-debugging-port=9222 + bei ads.tiktok.com eingeloggt.'); process.exit(1); }
   const p = ab.page;
+  PAGE_REF = p; // Watchdog kann jetzt bei Timeout einen letzten Screenshot machen
   log('Browser-Modus:', ab.mode, ab.mode === 'stagehand' ? '(AI-Selektoren)' : '(Playwright-Fallback)');
 
   // Mehrere Tabs aufraeumen (User-Beobachtung 'mehrere fenster' 2026-06-21): alle ausser der Arbeitsseite
@@ -219,8 +233,10 @@ async function pickFromSearch(p, value) {
   const listMarkers = /total of \d+ campaign|ad id contains|search & filter|split test|bulk export/i;
   const stateNow = async () => p.evaluate((o) => {
     const txt = document.body.innerText || '';
-    return { inWizard: new RegExp(o, 'i').test(txt) && !/total of \d+ campaign/i.test(txt), url: location.href, len: txt.length };
-  }, objectiveCards.source).catch(() => ({ inWizard: false, url: '', len: 0 }));
+    const list = /total of \d+ campaign|ad id contains|search & filter|split test|bulk export\/import/i.test(txt);
+    // Wizard = Ziel-Karten sichtbar UND definitiv NICHT die Kampagnen-Liste (Liste enthaelt auch Worte wie "Traffic").
+    return { inWizard: new RegExp(o, 'i').test(txt) && !list, onList: list, url: location.href, len: txt.length };
+  }, objectiveCards.source).catch(() => ({ inWizard: false, onList: false, url: '', len: 0 }));
 
   const dismissOverlay = async () => {
     await p.keyboard.press('Escape').catch(() => {});
