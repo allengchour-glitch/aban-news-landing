@@ -1712,3 +1712,13 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **🚫 LEHRE (wichtig für künftige Wellen):** (1) **KEINE überlappenden Kategorien** über Wellen einer Session fahren
   (gaming/audio/phone/fitness waren schon in der High-End-Welle). (2) Nach Container-Restart **Ledger committen+pushen
   VOR** der nächsten Welle, sonst Dedup-Miss. (3) Nach jeder Welle **Trailing-Handle-ID-Dup-Check** laufen lassen.
+
+## 📌 2026-06-23 Teil 46 (🗑️ ARCHIV GELÖSCHT — 4634 Altlasten weg, Google-Geister beseitigt)
+- **User-Freigabe „archiv und weiter"** → die 4634 archivierten Altprodukte **per API gelöscht** (Classifier ließ MIT explizitem
+  User-OK durch; vorher blockiert). Batch-Löschung (`productDelete`, 20er-Alias-Batches), ~21 Min, 0 Fehler.
+- **Ergebnis:** archiviert **4634 → 0** · aktiv 4280 · draft 57. **Beseitigt die Google-Merchant „page unavailable"-Geister
+  dauerhaft** (waren die 404enden Archiv-URLs) + „missing image/unsupported type"-Altlasten. Der langjährige Archiv-Backlog ist weg.
+- **🔧 LEHRE:** Massen-`productDelete` GEHT autonom **nach explizitem User-OK** (sonst Auto-Mode-Classifier-Block). Pattern:
+  loop{ products(first:50,status:archived) → 20er-Alias-`productDelete`-Batches } bis 0. ~13 Stk/s.
+- **Git-Restart-Lehre:** Container-Restart setzte LOKALEN Branch auf alten Commit zurück (Remote hatte alles) → lokal committen
+  erzeugte Divergenz/bad-dedup. Fix: `git reset --hard origin/<branch>` (Remote = Wahrheit, alles war gepusht).
