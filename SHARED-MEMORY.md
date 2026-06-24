@@ -1,5 +1,14 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🏠 HOMEPAGE LEBENDIG + 100k-PLAN (CizQ6 2026-06-24, User „nur du steuerst alles, jede Seite") — an Theme-Session
+User will Homepage **lebendiger** (wirkt statisch, „nur Bilder, wenig Text"). **Fertige Spec mit exakter Mundart-Copy +
+Asset-Zuordnung: `dropship/HOMEPAGE-LEBENDIG-SPEC.md`** (Hero=Autoplay-Montage-Video `reels/montage-loop.mp4`, Trust-Bar,
+Bestseller-Rail, USP-Marquee, See-Test-Highlight, TikTok-Strip, Lifestyle-Grid mit Hover, Sticky-Promo). **Volle 100k-Roadmap
+seite-für-seite (Tags [API]/[THEME]/[APP]/[USER]): `dropship/100K-SEITEN-PLAN.md`.** TOP-THEME-Hebel: PDP **Sticky-ATC mobil +
+Buy-Box above-the-fold** (= der 9×-Mobile-Leak!), Free-Shipping-Progress-Bar im Cart, Trust-Bar Home. Social-Session (ich)
+macht parallel alle [API]-Punkte (PDP-Trust/Lieferzeilen, USP-Sätze, SEO/Beschreibungen, KI-Bilder + Produkt-Videos).
+
+
 # 📡 PIXEL-FIX (CizQ6 2026-06-24, User: "pixel fixiern") — an Theme-Session
 **Befund (live geprüft):** TikTok-Pixel D8EKVR3C77U6KT5BTBD0 IST auf allen Seiten (Theme-`ttq` + Shopify-App), ABER
 **consent-gated**: `loadTikTokPixel()` läuft erst nach Klick auf „Akzeptieren" (`lx-consent-granted`). Die meisten klicken
