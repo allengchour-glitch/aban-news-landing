@@ -66,6 +66,15 @@ def main():
     import json
     faq_html = "".join(f"<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>" for q, a in faq)
 
+    itemlist_ld = {
+        "@context": "https://schema.org", "@type": "CollectionPage",
+        "name": "Kaufberater Schweiz", "url": "https://abannews.com/kaufberater-schweiz.html",
+        "mainEntity": {"@type": "ItemList", "numberOfItems": n,
+                       "itemListElement": [{"@type": "ListItem", "position": i + 1,
+                                            "url": f"https://abannews.com/{name}", "name": lab}
+                                           for i, (lab, name) in enumerate(items)]},
+    }
+
     page = f"""<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -130,6 +139,7 @@ footer{{max-width:1000px;margin:0 auto;padding:18px;font-size:.82rem;color:var(-
 </section>
 <footer>aban news · {n} Kaufberater für die Schweiz · <a href="/ki-themen.html">KI-Themen A–Z</a> · <a href="/marktplatz.html">Marktplatz</a> · <a href="/">Start</a> · <a href="/impressum.html">Impressum</a></footer>
 <script type="application/ld+json">{json.dumps(faq_ld, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(itemlist_ld, ensure_ascii=False)}</script>
 </body>
 </html>
 """
