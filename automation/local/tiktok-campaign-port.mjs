@@ -209,46 +209,63 @@ async function pickFromSearch(p, value) {
     process.exit(0);
   }
 
-  // POPUP-GUARD (DURCHBRUCH 2026-06-24, Screenshots 06/08 = "Q2 Partner Coupon CHF 9000" Promo-Overlay BLOCKIERT
-  // die ganze UI -> jeder "+ Create"-Klick + alle AI-act()-Schritte feuern ins Leere, Bot bleibt auf der Liste).
-  // Vor allem anderen das Promo-/Coupon-Overlay schliessen: Escape, X/close-Button, sonst neutralen Klick.
-  try {
-    await p.keyboard.press('Escape').catch(() => {});
-    await sleep(800);
-    const closed = await p.evaluate(() => {
-      const t = e => (e.getAttribute('aria-label') || e.innerText || e.className || '').toLowerCase();
-      // Schliess-Buttons in Promo-/Coupon-/Dialog-Overlays
-      const btn = [...document.querySelectorAll('button,[role="button"],svg,span,i')].find(e => {
-        const s = t(e);
-        return /close|schliessen|schließen|dismiss|got it|no thanks|nicht jetzt|maybe later|×|✕/.test(s)
-          && e.getBoundingClientRect().width < 80 || /got it|no thanks|nicht jetzt|maybe later|dismiss/.test(s);
-      });
-      if (btn) { btn.click(); return 'btn'; }
-      return null;
-    }).catch(() => null);
-    if (!closed) {
-      // Neutralen Klick in die leere Kampagnen-Tabelle (Mitte links) -> TikTok-Promo-Popovers schliessen so.
-      await p.mouse.click(600, 520).catch(() => {});
-      await sleep(600);
-      await p.keyboard.press('Escape').catch(() => {});
-    }
-    await sleep(1200); await diag(p, 'after-popup-dismiss');
-    log('🧹 Promo/Coupon-Overlay-Dismiss versucht (' + (closed || 'neutral-click') + ')');
-  } catch (e) { log('popup-guard:', String(e).slice(0, 60)); }
+  // ===== ENSURE-IN-WIZARD (DURCHBRUCH 2026-06-24) =====
+  // Screenshots 06/08/11 (3 Laeufe) zeigten IMMER dasselbe: richtiges Konto (CHF-9000-Coupon sichtbar), aber der
+  // Bot bleibt auf der KAMPAGNEN-LISTE — das "Q2 Partner Coupon"-Overlay + AI-Klicks oeffneten NIE den Wizard.
+  // Lehre: der Einstieg in den Wizard darf NICHT von der AI abhaengen (groq klickt unzuverlaessig). Darum jetzt
+  // DETERMINISTISCH (rohes Playwright) MIT VERIFIKATION: mehrere Wege probieren, nach jedem pruefen ob der Wizard
+  // (Ziel-Karten) WIRKLICH offen ist, sonst naechster Weg. Erst wenn im Wizard, uebernimmt die AI das Ausfuellen.
+  const objectiveCards = /choose an objective|advertising objective|reach\b|traffic\b|video views|lead generation|website conversions|product sales|app promotion|community interaction|reichweite|zugriffe|conversions|katalogverkäufe/i;
+  const listMarkers = /total of \d+ campaign|ad id contains|search & filter|split test|bulk export/i;
+  const stateNow = async () => p.evaluate((o) => {
+    const txt = document.body.innerText || '';
+    return { inWizard: new RegExp(o, 'i').test(txt) && !/total of \d+ campaign/i.test(txt), url: location.href, len: txt.length };
+  }, objectiveCards.source).catch(() => ({ inWizard: false, url: '', len: 0 }));
 
-  // CREATE-BUTTON-GUARD (Lehre 2026-06-24, Screenshot 09 = Kampagnen-Liste im richtigen Konto): die Creation-URL
-  // redirected oft zur LISTE statt zum Wizard. Dann "+ Create" klicken, um in den Erstellungs-Wizard zu kommen.
-  try {
-    const body0 = await p.evaluate(() => (document.body.innerText || '').toLowerCase()).catch(() => '');
-    const inWizard = /select.*objective|advertising objective|wähle.*ziel|campaign objective|reichweite|conversions/.test(body0);
-    const onList = /total of \d+ campaign|ad id contains|search & filter/.test(body0);
-    if (onList && !inWizard) {
-      log('📋 Bot auf Kampagnen-Liste (richtiges Konto) → klicke "+ Create" für den Wizard');
-      const cl = await p.evaluate(() => { const b = [...document.querySelectorAll('button,a')].find(e => /^\s*\+?\s*(create|erstellen)\s*$/i.test((e.innerText || '').trim())); if (b) { b.click(); return true; } return false; }).catch(() => false);
-      await sleep(7000); await diag(p, 'after-create-click');
-      if (!cl) log('   "+ Create"-Button nicht gefunden — Screenshot after-create-click prüfen');
+  const dismissOverlay = async () => {
+    await p.keyboard.press('Escape').catch(() => {});
+    await sleep(400);
+    await p.evaluate(() => {
+      const close = [...document.querySelectorAll('button,[role="button"],svg,span,i,div')].find(e => {
+        const s = (e.getAttribute('aria-label') || e.innerText || '').toLowerCase().trim();
+        const r = e.getBoundingClientRect();
+        return (/^(×|✕|x|close|schliessen|schließen)$/.test(s) || /got it|no thanks|nicht jetzt|maybe later|dismiss|später/.test(s)) && r.width > 0 && r.width < 120;
+      });
+      if (close) close.click();
+    }).catch(() => {});
+    await p.mouse.click(620, 540).catch(() => {}); // neutraler Klick in die leere Tabelle schliesst TikTok-Popover
+    await sleep(600);
+  };
+
+  let inWiz = (await stateNow()).inWizard;
+  for (let attempt = 0; attempt < 5 && !inWiz; attempt++) {
+    log(`🎯 Wizard-Einstieg Versuch ${attempt + 1}/5 (noch auf Liste)`);
+    await dismissOverlay();
+    if (attempt === 0) {
+      // Weg A: gruener "+ Create"-Button oben links (NICHT vom Overlay verdeckt, das sitzt oben rechts)
+      await p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"]')].find(e => /^\s*\+?\s*(create|erstellen)\s*$/i.test((e.innerText || '').trim())); if (b) b.click(); }).catch(() => {});
+    } else if (attempt === 1) {
+      // Manche Builds: "+ Create" oeffnet ein Dropdown -> dort "Campaign"/"Kampagne" waehlen
+      await p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"],li,span')].find(e => /^\s*(campaign|kampagne)\s*$/i.test((e.innerText || '').trim())); if (b) b.click(); }).catch(() => {});
+    } else if (attempt === 2) {
+      // Weg B: der "Create campaign"-Button IM Coupon-Popup (oeffnet Wizard mit dem CHF-9000-Gutschein)
+      await p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"]')].find(e => /create campaign|kampagne erstellen/i.test((e.innerText || '').trim()) && (e.innerText || '').length < 30); if (b) b.click(); }).catch(() => {});
+    } else {
+      // Weg C: Creation-URL hart neu laden (mit aadvid)
+      await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
     }
-  } catch (e) { log('create-guard:', String(e).slice(0, 60)); }
+    await sleep(7000);
+    await diag(p, 'enter-try-' + (attempt + 1));
+    inWiz = (await stateNow()).inWizard;
+    if (inWiz) { log('✅ Wizard ist offen (Ziel-Karten erkannt) → AI fuellt jetzt aus.'); break; }
+  }
+  if (!inWiz) {
+    log('⚠️ Wizard liess sich nicht oeffnen — letzte enter-try-*-Screenshots pruefen. AI versucht es trotzdem.');
+    try { fs.mkdirSync(path.join(ROOT, 'reports'), { recursive: true });
+      fs.writeFileSync(path.join(ROOT, 'reports', 'campaign-last-run.json'),
+        JSON.stringify({ ts: new Date().toISOString(), result: 'WIZARD_NICHT_GEOEFFNET', mode: ab.mode,
+          hinweis: 'Bot blieb auf Kampagnen-Liste; weder "+ Create", Dropdown, Coupon-Button noch Direkt-URL oeffneten den Wizard. enter-try-1..5 + after-popup pruefen.' }, null, 2)); } catch {}
+  }
 
   // ===== AI-WIZARD (Stagehand) — der robuste Weg fuer Vollautomation (User 2026-06-21 "bot muss das lernen") =====
   // act() beschreibt die Aktion, die AI findet das richtige Element (ueberlebt TikToks komplexe Ziel-Karten/Wizard).
