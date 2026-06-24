@@ -1733,3 +1733,16 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Tools gebaut/gehärtet heute:** `MIN_COST_EUR` (High-End-Wellen) · `alt_text_fill` · `collection_crosslinks` · `tag_backfill` ·
   `collection_polish` (Hero-Fix) · `gmc_category_fix` (Strand/Sommer-Mappings) · Dup-Check (Trailing-Handle-ID) · Archiv-Batch-Delete.
 - **Funnel-Status unverändert:** Engpass = REICHWEITE (0 echte Käufe). On-Site ist maximal ausgereizt. User-Hebel: TikTok-Kampagne.
+
+## 📌 2026-06-23 Teil 48 (🚲 E-BIKE-ZUBEHÖR-Welle +10 + Git-Recovery-Lehre)
+- **User: „e-bike zubehör keine ganze ebike"** → velo-Kategorie um E-Bike-Anchor erweitert (e-bike/ebike/pedelec/Korb/Spiegel/
+  Ständer/Handyhalter/Satteltasche/Rahmentasche/Lenkertasche) + ban heimtrainer/ergometer. **MAX_COST_EUR=120 → keine ganzen
+  Bikes** (nur Zubehör). +10 angelegt: Fahrradparker, Handyhalter (×4: «Basic/Comfort/Secure/Pro» CHF 9–75), Ständer (×3:
+  «Solo/Duo/Pro»). Voll poliert (Beschreibung/Feed/Kategorie/Alt). Katalog 4298 aktiv.
+- **🔧 Gemini-Gleichtitel-Fix:** 7 Produkte hatten identische Titel (gleiche Quell-Namen) → mit Modell-Nicknames «…» nach
+  Preis differenziert (ehrliche Shop-Konvention). **Standard-Nacharbeit nach jeder Welle: Gleichtitel differenzieren.**
+- **🔧 GIT-RECOVERY-LEHRE (wichtig):** Lokaler Branch war durch Container-Hiccup auf alten Commit (Teil 40) zurückgesetzt →
+  meine 2 e-bike-Commits branchten von alter Basis → push non-fast-forward, rebase-Konflikt am Ledger. **Fix-Pattern:**
+  (1) e-bike-Ledger-IDs + Code-Edit sichern · (2) `git reset --hard origin/<branch>` (Remote=Wahrheit, hat alle 20 Commits) ·
+  (3) Code-Edit re-applien + IDs ans origin-Ledger anhängen · (4) commit+push. **NIE force-push** über origin. Git-Identität
+  gesetzt (`user.email noreply@anthropic.com`) für verified Commits.
