@@ -1,15 +1,15 @@
 {
-  "ts": "2026-06-23T23:28:03.096Z",
+  "ts": "2026-06-24T14:32:20.087Z",
   "platforms": {
     "tiktok": {
       "result": "POSTED",
       "reason": "Veroeffentlicht (Bestaetigung geklickt)",
       "file": "mw-filzhut-montana-breitkrempig.mp4",
-      "vor_min": 1857
+      "vor_min": 2761
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 3076
+      "vor_min": 3980
     },
     "meta": {
       "index": 25,
@@ -21,7 +21,7 @@
             "message": "(#10) Application does not have permission for this action",
             "type": "OAuthException",
             "code": 10,
-            "fbtrace_id": "AayvYVnRo3PVw9tgv2SwSEJ"
+            "fbtrace_id": "AdYZnfz_2FsrV_HbsSHyrkd"
           }
         }
       },
@@ -32,7 +32,7 @@
             "message": "(#200) Subject does not have permission to post videos on this target, due to lack of pages_manage_posts permission.",
             "type": "OAuthException",
             "code": 200,
-            "fbtrace_id": "AOkJYf1SBABr7RJsn-4A97w"
+            "fbtrace_id": "Alzh6rLvFa5VHmjSTDS7EP5"
           }
         }
       },
@@ -40,7 +40,7 @@
         "skipped": "keine TikTok-Creds"
       },
       "insights": {
-        "ts": "2026-06-23T23:28",
+        "ts": "2026-06-24T14:32",
         "ig": {
           "posts": 0,
           "eng": 0,
@@ -55,7 +55,9 @@
         }
       },
       "replies": {
-        "error": "Error: KV put() limit exceeded for the day."
+        "ig": 0,
+        "fb": 0,
+        "skipped": 0
       }
     }
   },
@@ -64,6 +66,6 @@
     "Kampagne: WIZARD_DIAG — "
   ],
   "ok": [
-    "TikTok zuletzt OK (mw-filzhut-montana-breitkrempig.mp4, vor 1857 min)"
+    "TikTok zuletzt OK (mw-filzhut-montana-breitkrempig.mp4, vor 2761 min)"
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "ts": "2026-06-24T04:00:09.773Z",
+  "ai": {
+    "groq": "live",
+    "gemini": "live",
+    "together": "kein Key",
+    "deepseek": "down",
+    "openrouter": "kein Key",
+    "cloudflare": "kein Key",
+    "mistral": "kein Key",
+    "openai": "down"
+  },
+  "binaries": {},
+  "data": {},
+  "summary": {
+    "ai_live": [
+      "groq",
+      "gemini"
+    ],
+    "ai_live_count": 2,
+    "automation_ok": true
+  }
+}
