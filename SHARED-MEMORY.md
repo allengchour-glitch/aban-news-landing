@@ -1821,3 +1821,15 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
 - **Pattern Filter-Hub-Edit:** Page-Body holen → Sektion nach Intro/vor 1. `<h2 class="lx-h2">` einfügen → pageUpdate. Chip =
   `<a href="/collections/H" class="lx-chip">LABEL <span class="lx-n">N</span></a>`. Entdoppeln: gleiche Label-Chips, 1 behalten.
 - **3 Verlinkungs-Ebenen jetzt komplett** für die 8 neuen Bereiche: Menü ✓ + Filter-Hub ✓ + Direktlink/Collection ✓.
+
+## 📌 2026-06-23 Teil 55 (🔬 5-AGENTEN-CONVERSION-RESEARCH + ß→ss-Sweep)
+- **5 parallele Recherche-Agenten** (CRO/Schweiz/SEO/Wettbewerb/Reviews) → Vollsynthese in `dropship/RESEARCH-CONVERSION-2026-06-23.md`.
+- **✅ Umgesetzt (API):** `swiss_spelling_fix.mjs` → **ß→ss katalogweit** (243 Produkte + 5 Coll + 4 Pages, 0 verbleibend). Grund:
+  „ß" entlarvt Shop als nicht-CH = Vertrauensverlust. CHF50/65-Inkonsistenz in Produkten = 0 (war nur gelöschtes Archiv).
+- **🔴 User-Legal gefunden:** Refund-Policy nutzt EU-„14 Tage Widerruf" → FALSCH (CH hat KEIN gesetzl. Widerrufsrecht; 30 Tage = freiwillig).
+  AGB/Terms/Privacy auch „Widerruf" + ß. Sind Settings→Legal (nicht Page-API) → User-Edit. Impressum/Über-uns/Versand/Garantie/FAQ-Pages existieren ✓.
+- **Top-User-Hebel (Konsens aller Agenten):** (1) Kauf-auf-Rechnung+PostFinance+Payment-Logos sichtbar = grösster CH-Trust-Unlock ·
+  (2) Sticky-ATC + Sterne-unter-Titel + Trust-Badges + Gratis-Versand-Cart-Bar (Horizon-Customizer) · (3) WELCOME10-Spin-Wheel-Popup ·
+  (4) Trust-Seal (Swiss Online Garantie) · (5) Collection-Intro+FAQ+JSON-LD (Organic/AI-Overview) · (6) Pinterest Rich Pins (bester Gratis-Kanal).
+- **Engpass-Bestätigung (alle Agenten):** Conversion-Scaffolding verbessert, aber REICHWEITE bleibt der eigentliche Hebel (User-Ad-Klicks).
+- **🚫 Koordination:** MOFU-Ratgeber-Content = ANDERE Session (nicht doppeln). Theme-Customizer/Payment/Trust-Seal = User-only.
