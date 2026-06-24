@@ -130,6 +130,7 @@ try {
       "bigbuy-premium" { Start-Process powershell -ArgumentList '-ExecutionPolicy','Bypass','-File','automation/local/bigbuy-premium.ps1' -WindowStyle Hidden }
       "tt-review-check" { & node "automation/local/tt-review-check.mjs"; git add -f automation/local/tt-review-shots/* reports/tt-review-check.json 2>$null; git commit -m "auto(tt-review-check): Ablehnungs-Grund der abgelehnten Ad ausgelesen" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "nanobanana" { Ensure-Campaign; & powershell -ExecutionPolicy Bypass -File "automation/local/nanobanana-batch.ps1"; git add -f social/ai-lifestyle/* 2>$null; git commit -m "auto(nanobanana): KI-Lifestyle-Bilder aus echten Produktbildern (Nano Banana 2)" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "nanobanana-hero" { Ensure-Campaign; $env:NB_STYLE="hero"; $env:NB_MAX="6"; & powershell -ExecutionPolicy Bypass -File "automation/local/nanobanana-batch.ps1"; $env:NB_STYLE=$null; $env:NB_MAX=$null; git add -f social/ai-lifestyle/* 2>$null; git commit -m "auto(nanobanana-hero): dramatische Hero-Studio-Produktbilder (Nano Banana 2)" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       default        { Write-Host "  (unbekannt: $c)" }
     }
   }

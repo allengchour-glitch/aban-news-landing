@@ -16,8 +16,9 @@ foreach ($r in $rows) {
   if (-not $r.image_url -or -not $r.label) { continue }
   $slug = ($r.label.ToLower() -replace '[^a-z0-9]+','-').Trim('-')
   if ($slug.Length -gt 40) { $slug = $slug.Substring(0,40) }
-  $out = Join-Path $root ("social\ai-lifestyle\" + $slug + ".png")
-  if (Test-Path $out) { Write-Host "skip (existiert): $slug"; continue }
+  $suffix = if ($style -eq "lifestyle") { "" } else { "-$style" }
+  $out = Join-Path $root ("social\ai-lifestyle\" + $slug + $suffix + ".png")
+  if (Test-Path $out) { Write-Host "skip (existiert): $slug$suffix"; continue }
   Write-Host "Nano Banana -> $($r.label) [$style]"
   & node "automation/nanobanana_lifestyle.mjs" --image $r.image_url --title $r.label --style $style --out $out
   if (Test-Path $out) { $done++ }

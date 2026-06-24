@@ -6,7 +6,7 @@
  *
  * ENV:  GEMINI_API_KEY (Pflicht; aistudio.google.com)
  *       NANOBANANA_MODEL=gemini-3-pro-image-preview  (Default-Liste mit Fallback unten)
- * Lauf: node automation/nanobanana_lifestyle.mjs --image <url|pfad> --title "Wasserfeste Kette" [--style lifestyle|model|ugc] [--out datei.png]
+ * Lauf: node automation/nanobanana_lifestyle.mjs --image <url|pfad> --title "Wasserfeste Kette" [--style lifestyle|model|ugc|hero] [--out datei.png]
  *       (--dry = nur zeigen, was es taete)
  *
  * REGELN: KI-Bild NUR Hintergrund/Lifestyle/Model — NIE ein anderes Produkt faken (Produkt = die Referenz).
@@ -35,6 +35,7 @@ function promptFor(title, style) {
   const common = `Strictly Switzerland aesthetic, natural realistic lighting, true colors, high quality, 9:16 vertical composition with the product clearly visible. No on-screen text, no logos, no watermarks, no extra brands.`;
   if (style === 'model') return base + `Place it being worn/used by a real, natural-looking young Swiss woman in an elegant everyday setting. Editorial but believable. ` + common;
   if (style === 'ugc') return base + `Make it look like an authentic phone-shot UGC photo: a real young Swiss woman holding/wearing the product in a bright everyday setting (bedroom, cafe, outdoors), casual and relatable, slight imperfection, not polished studio. ` + common;
+  if (style === 'hero' || style === 'studio') return base + `Dramatic premium COMMERCIAL product photography (advertising hero shot): place the product on a dark, glossy reflective surface — like still dark water with gentle ripples — with realistic water droplets on the product, moody cinematic lighting, deep shadows, soft rim light, elegant mirror reflection below, luxury brand-campaign aesthetic. Ultra sharp, high-end, scroll-stopping. True colors, high quality, 9:16 vertical, product centered and clearly visible. No on-screen text, no logos, no watermarks, no extra brands.`;
   return base + `Place it in a beautiful lifestyle scene (tasteful surface, soft daylight, subtle props that fit a Swiss summer mood) that makes it desirable. Clean, premium, scroll-stopping. ` + common;
 }
 
