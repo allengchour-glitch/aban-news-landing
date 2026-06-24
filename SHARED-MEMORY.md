@@ -1929,3 +1929,13 @@ Horizon-Theme sicher per API erweitert (Custom-Liquid-Blöcke/Sektionen + Sectio
 - **🎯 TAGES-GESAMT 2026-06-23: ~390 neue Produkte** über ~15 Wellen. Plus: Archiv gelöscht · Google Merchant sauber · 5-Agenten-
   Research umgesetzt · Theme-CRO+SEO per API (Trust-Reihe/Collection-FAQ/JSON-LD) · virales Quallen-Produkt (Gemini-Clean-Bild+Promo)
   · 8 Menü-Bereiche · Filter-Hub · ~16 Tools. ABSOLUTER REKORDTAG.
+
+## 📌 2026-06-23 Teil 64 (🔍 SUCHE optimiert per API + Filter-Guidance)
+- **✅ Such-Helfer (0-Treffer) per API** in templates/search.json (custom-liquid-Section, `{%- if search.performed and
+  search.results_count == 0 -%}`): zeigt bei erfolgloser Suche 10 beliebte Kategorie-Chips + Filter-Hub-Link → rettet failed
+  searches, hält Besucher im Shop. Live im HTML verifiziert (WebFetch übersah es wg. 1.4MB-Seite, curl-grep bestätigt).
+- **🟡 FACETTEN-FILTER + SUCH-SYNONYME = Search & Discovery-App (User, KEIN Admin-API):** (bestätigt Teil-12-Notiz). User-Schritte:
+  Shopify-Admin → Apps → **Search & Discovery** → **Filters**: Facetten hinzufügen (Verfügbarkeit, Preis, Produkttyp, Marke/Vendor,
+  Farbe/Grösse via Option/Metafeld) → erscheinen automatisch auf Collection-Seiten. → **Synonyms**: z.B. „uhr↔armbanduhr",
+  „sneaker↔turnschuh", „handy↔smartphone", „kopfhörer↔headset" → bessere Such-Treffer. → **Product boosts**: Bestseller pushen.
+- **Daten-Fundament für Filter steht:** productType 100% · Tags katalogweit · Preis/Vendor da → Facetten greifen sofort, sobald in S&D aktiviert.
