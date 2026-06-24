@@ -1895,3 +1895,16 @@ Storefront-Filter = S&D-UI. Alles im Dead-Ends-Block oben.
   (nur bei DYNAMISCHEN Blöcken!)→re-serialize→JSON.parse validieren→themeFilesUpsert→WebFetch-Live-Verify. Backup in /tmp/product_json_backup.json.
 - **#3 Spin-Wheel-Popup:** braucht echt eine GRATIS-App (Tada/Spin-a-Sale, 1 Klick) — Spin-Wheel = custom JS, würde mit bestehendem
   Shopify-Forms-Popup kollidieren. Email-Capture-Fundament (WELCOME10-Popup) existiert. → User-App-Install empfohlen.
+
+## 📌 2026-06-23 Teil 61 (🚀 THEME-CRO + SEO PER API — „alles was du alleine kannst")
+Horizon-Theme sicher per API erweitert (Custom-Liquid-Blöcke/Sektionen + Section-Settings, alle live verifiziert, 0 Schaden, Backups in /tmp):
+- **✅ Trust-Reihe auf ALLEN Produktseiten** (nach ATC): Gratis-Versand CHF 65 · 30 Tage Rückgabe · Sichere Zahlung TWINT/Visa/MC · Schweizer Shop info@. (Teil 60)
+- **✅ FAQ-Sektion auf ALLEN 279 Collection-Seiten** (UNTER dem Grid, kein UX-Schaden): semi-einzigartig via `{{ collection.title }}`,
+  5 `<details>`-Accordions (Versand CH 5–10 Tage · Zahlung TWINT · freiwillige 30-Tage-Rückgabe · cm-Grössentabelle · Warum LuxeStyle).
+  = SEO-Agentin #1-Organic-Hebel (Collection-Content + AI-Overview-Citations). Via custom-liquid-SECTION in collection.json (order.push).
+- **✅ Organization + WebSite-JSON-LD auf Homepage** (custom-liquid, padding 0 = unsichtbar): Marken-Entität + SearchAction (Google-
+  Sitelinks-Suchbox) + inLanguage de-CH. Im Quelltext verifiziert. (sameAs weggelassen — keine verifizierten Social-URLs in Settings.)
+- **✅ Schon aktiv (entdeckt):** Sticky-ATC + Judge.me-Sterne unter Titel.
+- **THEME-EDIT-PATTERN bestätigt:** Backup→Read JSON→parse→custom-liquid-Block(dynamische Section)/Section(order.push)→validate→
+  themeFilesUpsert→curl/WebFetch-Verify. Cart-Drawer-Gratis-Versand-Balken bleibt offen (statische Cart-Blöcke → bräuchte Section-Liquid).
+- **#3 Spin-Wheel = Gratis-App (Tada/Spin-a-Sale, 1 Klick, User).** TikTok-Kampagne = andere Session.
