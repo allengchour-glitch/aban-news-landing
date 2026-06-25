@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-25T19:48:20.279Z",
+  "ts": "2026-06-25T20:09:47.735Z",
   "done": {
     "flame-eigen.mp4": {
       "flag": false,
@@ -545,6 +545,291 @@
     "reel-onyx-9x16.mp4": {
       "flag": false,
       "reasons": []
+    },
+    "veo-hero-brise-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-cattote-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-cosy-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-daisy-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-mountaintee-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-nuit-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-quotemug-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-sirene-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-skulltee-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "veo-hero-sunsethoodie-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "werbung-luxestyle-de-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Starke Verzerrung/Warping/Deformation an Gesicht und Körper im dritten Frame (KI-Artefakt)."
+      ]
+    },
+    "werbung-luxestyle-de.mp4": {
+      "flag": true,
+      "reasons": [
+        "Starke Verzerrung/Warping/Deformation an Gesicht und Körper im dritten Frame (KI-Artefakt)."
+      ]
+    },
+    "werbung-luxestyle-en-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "werbung-luxestyle-en.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "werbung-selbst-gestalten-de-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "werbung-selbst-gestalten-de.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "werbung-selbst-gestalten-en-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "werbung-selbst-gestalten-en.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "ab-armband-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "ab-bucket-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'COMFORT' auf Produkt 2 sichtbar."
+      ]
+    },
+    "ab-caps-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (NY) gut sichtbar auf Produkt"
+      ]
+    },
+    "ab-ohrringe-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "ab-sonnenbrille-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf Sonnenbrillen im unteren Bildbereich sichtbar."
+      ]
+    },
+    "accessoires-20260603-1603.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark 'NCO. Jewelry' sichtbar",
+        "Fremdes Markenlogo/Watermark 'Dropshipping' sichtbar"
+      ]
+    },
+    "auto-20260603-1222.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260603-1226.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260603-1228.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260603-1320.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260603-1456.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260603-2219.mp4": {
+      "flag": true,
+      "reasons": [
+        "Im zweiten Frame sind im Hintergrund asiatische Schriftzeichen auf einer Tafel sichtbar."
+      ]
+    },
+    "auto-20260604-1231.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260604-2036.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260605-0900.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im Hintergrund des zweiten Frames (rechts oben)."
+      ]
+    },
+    "auto-20260605-1726.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260606-0739-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260606-0739.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260606-1300-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260606-1300.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260606-1654-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf der Tasche im dritten Frame."
+      ]
+    },
+    "auto-20260606-1654.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf der Tasche im dritten Frame."
+      ]
+    },
+    "auto-20260606-2048-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im dritten Frame (rechts oben im Hintergrund: \"echo studio\")"
+      ]
+    },
+    "auto-20260606-2048.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im dritten Frame (rechts oben im Hintergrund: \"echo studio\")"
+      ]
+    },
+    "auto-20260607-0840-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260607-0840.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260607-1513-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark (ZIN) gut sichtbar im zweiten Frame."
+      ]
+    },
+    "auto-20260607-1513.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark (ZIN) gut sichtbar im zweiten Frame."
+      ]
+    },
+    "auto-20260607-2056-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260607-2056.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260608-1253-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260608-1253.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260608-2118-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260608-2118.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260609-1220-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im Hintergrund des zweiten Frames sichtbar (Text auf der Wand)."
+      ]
+    },
+    "auto-20260609-1220.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im Hintergrund des zweiten Frames sichtbar (Text auf der Wand)."
+      ]
+    },
+    "auto-20260609-1937-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260609-1937.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260609-2032-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'TOMI' auf Produkt und Verpackung sichtbar (Frame 2)",
+        "Fremdes Markenlogo auf der Uhr (Frame 2)",
+        "Schriftzug 'JAPAN DESIGN' auf der Uhr (Frame 2)"
+      ]
+    },
+    "auto-20260609-2032.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'TOMI' auf Produkt und Verpackung sichtbar (Frame 2)",
+        "Fremdes Markenlogo auf der Uhr (Frame 2)",
+        "Schriftzug 'JAPAN DESIGN' auf der Uhr (Frame 2)"
+      ]
+    },
+    "auto-20260609-2242-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'HEMP for U' auf dem Produkt im zweiten Frame sichtbar."
+      ]
+    },
+    "auto-20260609-2242.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'HEMP for U' auf dem Produkt im zweiten Frame sichtbar."
+      ]
     }
   },
   "flagged": [
@@ -731,6 +1016,131 @@
       "file": "mw-ysl-lhomme-parfum.mp4",
       "reasons": [
         "Fremdes Markenlogo (Yves Saint Laurent / YSL) ist gut sichtbar auf Produkt und Verpackung."
+      ]
+    },
+    {
+      "file": "werbung-luxestyle-de-clean.mp4",
+      "reasons": [
+        "Starke Verzerrung/Warping/Deformation an Gesicht und Körper im dritten Frame (KI-Artefakt)."
+      ]
+    },
+    {
+      "file": "werbung-luxestyle-de.mp4",
+      "reasons": [
+        "Starke Verzerrung/Warping/Deformation an Gesicht und Körper im dritten Frame (KI-Artefakt)."
+      ]
+    },
+    {
+      "file": "ab-bucket-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'COMFORT' auf Produkt 2 sichtbar."
+      ]
+    },
+    {
+      "file": "ab-caps-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (NY) gut sichtbar auf Produkt"
+      ]
+    },
+    {
+      "file": "ab-sonnenbrille-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf Sonnenbrillen im unteren Bildbereich sichtbar."
+      ]
+    },
+    {
+      "file": "accessoires-20260603-1603.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark 'NCO. Jewelry' sichtbar",
+        "Fremdes Markenlogo/Watermark 'Dropshipping' sichtbar"
+      ]
+    },
+    {
+      "file": "auto-20260603-2219.mp4",
+      "reasons": [
+        "Im zweiten Frame sind im Hintergrund asiatische Schriftzeichen auf einer Tafel sichtbar."
+      ]
+    },
+    {
+      "file": "auto-20260605-0900.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im Hintergrund des zweiten Frames (rechts oben)."
+      ]
+    },
+    {
+      "file": "auto-20260606-1654-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf der Tasche im dritten Frame."
+      ]
+    },
+    {
+      "file": "auto-20260606-1654.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf der Tasche im dritten Frame."
+      ]
+    },
+    {
+      "file": "auto-20260606-2048-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im dritten Frame (rechts oben im Hintergrund: \"echo studio\")"
+      ]
+    },
+    {
+      "file": "auto-20260606-2048.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im dritten Frame (rechts oben im Hintergrund: \"echo studio\")"
+      ]
+    },
+    {
+      "file": "auto-20260607-1513-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark (ZIN) gut sichtbar im zweiten Frame."
+      ]
+    },
+    {
+      "file": "auto-20260607-1513.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark (ZIN) gut sichtbar im zweiten Frame."
+      ]
+    },
+    {
+      "file": "auto-20260609-1220-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im Hintergrund des zweiten Frames sichtbar (Text auf der Wand)."
+      ]
+    },
+    {
+      "file": "auto-20260609-1220.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark im Hintergrund des zweiten Frames sichtbar (Text auf der Wand)."
+      ]
+    },
+    {
+      "file": "auto-20260609-2032-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'TOMI' auf Produkt und Verpackung sichtbar (Frame 2)",
+        "Fremdes Markenlogo auf der Uhr (Frame 2)",
+        "Schriftzug 'JAPAN DESIGN' auf der Uhr (Frame 2)"
+      ]
+    },
+    {
+      "file": "auto-20260609-2032.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'TOMI' auf Produkt und Verpackung sichtbar (Frame 2)",
+        "Fremdes Markenlogo auf der Uhr (Frame 2)",
+        "Schriftzug 'JAPAN DESIGN' auf der Uhr (Frame 2)"
+      ]
+    },
+    {
+      "file": "auto-20260609-2242-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'HEMP for U' auf dem Produkt im zweiten Frame sichtbar."
+      ]
+    },
+    {
+      "file": "auto-20260609-2242.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'HEMP for U' auf dem Produkt im zweiten Frame sichtbar."
       ]
     }
   ]
