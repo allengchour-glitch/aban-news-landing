@@ -48,3 +48,4 @@ automation/music/lib/
 automation/local/*.log
 automation/local/cloud-commands-done.txt
 automation/local/.tiktok-posted.local
+automation/local/.fb-groups-done.local

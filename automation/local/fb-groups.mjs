@@ -30,7 +30,11 @@ const POST_CAP = parseInt(process.env.FB_POST_CAP || '1', 10);
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const rnd = (a, b) => a + Math.floor(Math.random() * (b - a));
-const done = () => fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').filter(Boolean) : [];
+// RESET-FESTER Lokal-Ledger (FIX 2026-06-25, wie TikTok): ueberlebt CLOUD-AN `git reset --hard` -> kein
+// doppelter Gruppen-Post, auch wenn der committe Ledger-Push scheitert.
+const LOCALDONE = path.join(ROOT, 'automation', 'local', '.fb-groups-done.local');
+const done = () => { const r = p => fs.existsSync(p) ? fs.readFileSync(p, 'utf8').split('\n').filter(Boolean) : []; return [...new Set([...r(DONE), ...r(LOCALDONE)])]; };
+const markDone = (line) => { try { fs.appendFileSync(DONE, line + '\n'); } catch {} try { fs.appendFileSync(LOCALDONE, line + '\n'); } catch {} };
 const writeStatus = o => { try { fs.mkdirSync(path.dirname(STATUS), { recursive: true }); fs.writeFileSync(STATUS, JSON.stringify({ ts: new Date().toISOString(), mode: MODE, ...o }, null, 2)); } catch {} };
 
 // Native CH-Captions (klingt wie Privat-Verkäufer:in, KEIN Gewerbe/Shop-Vibe -> Ban-Schutz in Secondhand-Gruppen).
@@ -61,7 +65,7 @@ const CAPTIONS = [
         if (DRY) { log(`[dry] wuerde beitreten: ${g}`); result.skipped.push(g); continue; }
         try { await ab.act('click the "Join group" or "Gruppe beitreten" button'); await sleep(rnd(2000, 4000));
           await ab.act('if a question dialog appears, leave it for the user (do nothing)').catch(() => {});
-          fs.appendFileSync(DONE, 'join:' + g + '\n'); result.joined.push(g); log('✅ beigetreten (oder Anfrage gesendet): ' + g);
+          markDone('join:' + g); result.joined.push(g); log('✅ beigetreten (oder Anfrage gesendet): ' + g);
         } catch (e) { log('Beitritt fehlgeschlagen: ' + String(e).slice(0, 60)); result.skipped.push(g); }
         await sleep(rnd(30000, 70000)); // lange Mensch-Pause
       }
@@ -83,7 +87,7 @@ const CAPTIONS = [
           await p.screenshot({ path: path.join(SHOT, 'post-filled.png') });
           await ab.act('click the Post / Posten button to publish');
           await sleep(rnd(4000, 7000));
-          fs.appendFileSync(DONE, 'post:' + target + ':' + new Date().toISOString().slice(0, 10) + '\n');
+          markDone('post:' + target + ':' + new Date().toISOString().slice(0, 10));
           result.posted.push(target); log('✅ gepostet in ' + target);
         } catch (e) { log('Posten fehlgeschlagen: ' + String(e).slice(0, 60)); result.skipped.push(target); }
       }
