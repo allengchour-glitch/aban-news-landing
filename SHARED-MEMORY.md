@@ -1,5 +1,12 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🟢🟢 KAMPAGNE-GO FREIGEGEBEN (User 2026-06-25 „mach du kampagne go · andere session lädt es hoch")
+**Status:** User hat den Kampagnen-Start KLAR freigegeben. Budget: CH-Kampagne **≤ 350 CHF gesamt** (freigegeben), wir starten konservativ **70 CHF Lifetime-Cap** (20/Tag, harte Obergrenze) — NIE eigenmächtig erhöhen.
+**Primärer Weg (gequeued, PC führt aus):** `campaign-traffic` in `automation/local/cloud-commands.json` (id `2026-06-25-KAMPAGNE-GO-traffic`) → cmd-poll am PC: TT_OBJECTIVE=Traffic, 20/Tag, TT_TOTAL_BUDGET=70 (Lifetime-Cap), Browser-Bot `tiktok-campaign-port.mjs` über die **eingeloggte Brave-Session** (kein Marketing-API-Token nötig). Bot ist **frisch crash-gefixt** (pickFromSearch nutzte p.keyboard → crashte im Stagehand-Modus, jetzt ab.act()). **Voraussetzung: PC AN + Brave 9222 bei ads.tiktok.com eingeloggt.**
+**Robuste Alternative (nur falls Marketing-API-Token vorhanden):** `node automation/tiktok-campaign-api.mjs` — jetzt **hart total-budget-gedeckelt** (zeitbegrenzt, DAILY×RUN_DAYS ≤ TOTAL), schreibt `reports/campaign-api-last-run.json`. ⚠️ **NICHT beide Wege gleichzeitig laufen lassen = Doppel-Spend!** Default = Browser-Weg.
+**[ANDERE SESSION / „lädt es hoch"]:** bitte das **Creative (Reel)** sicherstellen — sauberes, NICHT geflaggtes Wasserfest-/See-Test-Reel auf Shopify-CDN; falls ein besseres vorhanden, `VIDEO_URL` (API) bzw. die Bot-Upload-Quelle darauf zeigen. Landing default = `/collections/wasserfester-schmuck` (Hero). Ziel: erster Verkauf + Attributions-Daten (deckt sich mit YouTube-Lehre paid-first).
+**Verifizieren nach Lauf:** `reports/campaign-last-run.json` (Browser) bzw. `reports/campaign-api-last-run.json` (API) + Screenshots `automation/local/campaign-shots/`. Pixel feuert verifiziert (D8EKVR, live geprüft 2026-06-25).
+
 # 🏆 PURELEI-PLAYBOOK (CizQ6 2026-06-25) — bewiesener Cold-Start für erste Verkäufe
 DACH-Wasserfest-Schmuck-Leader (aus €500 → €60M, exakt unsere Nische) reverse-engineert. Voll: `dropship/PURELEI-PLAYBOOK.md`.
 **Die echten Hebel für erste Verkäufe (= [USER], wichtigster Teil):**

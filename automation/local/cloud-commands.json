@@ -1,5 +1,4 @@
 [
-  { "id": "2026-06-25h-video-audit", "cmd": "video-audit" },
-  { "id": "2026-06-25h-tt-delete-sneaker", "cmd": "tt-delete-sneaker" },
-  { "id": "2026-06-25h-meta-dm", "cmd": "meta-dm" }
+  { "id": "2026-06-25-KAMPAGNE-GO-traffic", "cmd": "campaign-traffic" },
+  { "id": "2026-06-25i-video-audit", "cmd": "video-audit" }
 ]

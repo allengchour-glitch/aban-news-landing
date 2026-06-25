@@ -105,8 +105,14 @@ async function fillAny(p, labelOrPlaceholder, value) {
   return false;
 }
 // in Such-Combobox tippen + ersten Treffer wählen (für Location/Sprache/Pixel/Event)
-async function pickFromSearch(p, value) {
+// CRASH-FIX 2026-06-25: im Stagehand-Modus hat p KEIN p.keyboard (= genau der Crash 2026-06-24
+// 'reading press'). Darum: stagehand -> ab.act(); nur im Playwright-Fallback p.keyboard.
+async function pickFromSearch(p, value, ab) {
   try {
+    if (ab && ab.mode === 'stagehand' && typeof ab.act === 'function') {
+      await ab.act(`type "${value}" into the active search/combobox field, then click the first matching option in the dropdown`);
+      await sleep(1400); return true;
+    }
     await p.keyboard.type(String(value), { delay: 60 }); await sleep(1800);
     const opt = p.getByRole('option', { name: new RegExp(value, 'i') }).first();
     if (await opt.isVisible({ timeout: 2500 }).catch(() => false)) { await opt.click(); await sleep(700); return true; }
@@ -374,8 +380,8 @@ async function pickFromSearch(p, value) {
 
   // ---- Schritt 2: Optimierungsort = Website + Pixel + Event ----
   await clickAny(p, ['Website']);
-  if (await clickAny(p, ['Select a Pixel', 'Pixel auswählen', 'Pixel'])) { await pickFromSearch(p, C.pixel); }
-  if (await clickAny(p, ['Optimization event', 'Optimierungsereignis', 'Optimization Event'])) { await pickFromSearch(p, C.event); }
+  if (await clickAny(p, ['Select a Pixel', 'Pixel auswählen', 'Pixel'])) { await pickFromSearch(p, C.pixel, ab); }
+  if (await clickAny(p, ['Optimization event', 'Optimierungsereignis', 'Optimization Event'])) { await pickFromSearch(p, C.event, ab); }
   await diag(p, 'pixel-event');
 
   // ---- Schritt 3: Placement = nur TikTok ----
@@ -384,10 +390,10 @@ async function pickFromSearch(p, value) {
   await diag(p, 'placement');
 
   // ---- Schritt 4: Zielgruppe (Standort/Geschlecht/Alter/Sprache) ----
-  if (await clickAny(p, ['Location', 'Standort', 'Standorte'])) { await pickFromSearch(p, C.location); }
+  if (await clickAny(p, ['Location', 'Standort', 'Standorte'])) { await pickFromSearch(p, C.location, ab); }
   await clickAny(p, [C.gender, C.gender === 'Female' ? 'Weiblich' : 'Männlich']);
   for (const a of C.age) await clickAny(p, [a]);
-  if (await clickAny(p, ['Languages', 'Sprachen', 'Sprache'])) { for (const l of C.lang) await pickFromSearch(p, l); }
+  if (await clickAny(p, ['Languages', 'Sprachen', 'Sprache'])) { for (const l of C.lang) await pickFromSearch(p, l, ab); }
   await diag(p, 'targeting');
 
   // ---- Schritt 5: Budget — Lifetime-Cap (harte Obergrenze) bevorzugt ----
@@ -400,7 +406,7 @@ async function pickFromSearch(p, value) {
 
   // ---- Schritt 6: Anzeige — Identity, Video, Text, CTA, URL ----
   await diag(p, 'ad-start');
-  if (await clickAny(p, ['Identity', 'Identität'])) { await pickFromSearch(p, C.identity); }
+  if (await clickAny(p, ['Identity', 'Identität'])) { await pickFromSearch(p, C.identity, ab); }
   // Video hochladen (oder aus Bibliothek). Datei-Input setzen falls vorhanden.
   try {
     // POLICY-SAFE (User 2026-06-20 "schaue Fails": TikTok lehnt Ads mit eingebetteter Musik am haeufigsten ab):

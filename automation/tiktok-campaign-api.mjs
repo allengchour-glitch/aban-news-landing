@@ -18,9 +18,19 @@ const ADV = process.env.TT_ADV_ID || '7646349875793182738';
 const BASE = process.env.TT_MKT_BASE || 'https://business-api.tiktok.com/open_api/v1.3';
 const VIDEO_URL = process.env.VIDEO_URL || 'https://cdn.shopify.com/videos/c/vp/7179ec99ac744848bf5e6c6cca31cc34/7179ec99ac744848bf5e6c6cca31cc34.HD-1080p-2.5Mbps-87232833.mp4';
 const DAILY = parseFloat(process.env.DAILY_BUDGET || '20');
+// 🛑 HARTE GELD-OBERGRENZE (User-Freigabe: 350 CHF Gesamt; wir nutzen konservativ TOTAL). Ohne Cap würde
+// die Adgroup mit BUDGET_MODE_DAY + SCHEDULE_FROM_NOW UNENDLICH weiterlaufen -> 350 gesprengt. Darum
+// zeitlich begrenzen: Laufzeit = floor(TOTAL/DAILY) Tage -> max. Spend = DAILY * Tage <= TOTAL.
+const TOTAL = parseFloat(process.env.TOTAL_BUDGET || process.env.TT_TOTAL_BUDGET || '80');
+const RUN_DAYS = Math.max(2, Math.floor(TOTAL / DAILY));
+const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:00`;
+const START = new Date(Date.now() + 10*60*1000);          // in 10 Min (TikTok verlangt Zukunft)
+const END = new Date(START.getTime() + RUN_DAYS*24*60*60*1000);
 const LANDING = process.env.LANDING || 'https://luxestyle.ch/collections/wasserfester-schmuck';
 const DRY = process.env.DRY === '1';
+import fs from 'node:fs';
 const log = (...a) => console.log(...a);
+const report = (o) => { try { fs.mkdirSync('reports',{recursive:true}); fs.writeFileSync('reports/campaign-api-last-run.json', JSON.stringify({ ts:new Date().toISOString(), daily:DAILY, total_cap:TOTAL, run_days:RUN_DAYS, ...o }, null, 2)); } catch {} };
 
 async function api(path, body) {
   if (DRY) { log(`[DRY] POST ${path}`, JSON.stringify(body).slice(0, 200)); return { code: 0, data: { dry: true, [`${path.split('/')[1]}_id`]: 'DRY_ID' } }; }
@@ -35,8 +45,8 @@ async function get(path, params) {
 }
 
 (async () => {
-  if (!TOK) { log('❌ Kein TT_MKT_TOKEN. Marketing-API-App genehmigen lassen + Konto autorisieren → Token. Anleitung: dropship/TIKTOK-CAMPAIGN-API.md'); process.exit(0); }
-  log(`🎯 TikTok-Traffic-Kampagne via API · Konto ${ADV} · ${DRY ? 'DRY' : BASE.includes('sandbox') ? 'SANDBOX' : 'PROD'}`);
+  if (!TOK) { log('❌ Kein TT_MKT_TOKEN. Marketing-API-App genehmigen lassen + Konto autorisieren → Token. Anleitung: dropship/TIKTOK-CAMPAIGN-API.md'); report({ result: 'NO_TOKEN', note: 'TT_MKT_TOKEN fehlt -> Browser-Pfad campaign-traffic nutzen' }); process.exit(0); }
+  log(`🎯 TikTok-Traffic-Kampagne via API · Konto ${ADV} · ${DRY ? 'DRY' : BASE.includes('sandbox') ? 'SANDBOX' : 'PROD'} · Cap ${TOTAL} CHF (${DAILY}/Tag × ${RUN_DAYS} Tage), Ende ${fmt(END)}`);
   try {
     // 0) CH-Region-Code via Tool verifizieren (nicht raten)
     let chId = '2658434';
@@ -61,7 +71,9 @@ async function get(path, params) {
       promotion_type: 'WEBSITE', placement_type: 'PLACEMENT_TYPE_NORMAL', placements: ['PLACEMENT_TIKTOK'],
       location_ids: [chId], languages: ['de', 'fr'], gender: 'GENDER_UNLIMITED', age_groups: ['AGE_18_24', 'AGE_25_34'],
       optimization_goal: 'CLICK', billing_event: 'CPC', bid_type: 'BID_TYPE_NO_BID', pacing: 'PACING_MODE_SMOOTH',
-      budget_mode: 'BUDGET_MODE_DAY', budget: DAILY, schedule_type: 'SCHEDULE_FROM_NOW', pixel_id: 'D8EKVR3C77U6KT5BTBD0'
+      // 🛑 zeitbegrenzt = harte Gesamt-Obergrenze (DAILY * RUN_DAYS <= TOTAL), NIE unendlich.
+      budget_mode: 'BUDGET_MODE_DAY', budget: DAILY, schedule_type: 'SCHEDULE_START_END',
+      schedule_start_time: fmt(START), schedule_end_time: fmt(END), pixel_id: 'D8EKVR3C77U6KT5BTBD0'
     });
     const adgroupId = ag.data.adgroup_id; log('✅ AdGroup:', adgroupId);
     // 5) Ad
@@ -70,5 +82,6 @@ async function get(path, params) {
       video_id: videoId, ad_text: 'Wasserfester Schmuck, der bleibt – anlauffrei oder Geld zrugg 💧', call_to_action: 'SHOP_NOW', landing_page_url: LANDING
     }] });
     log('✅ Ad:', ad.data.ad_ids || ad.data); log('\n🎉 Kampagne erstellt! Geht in TikTok-Review (≤24h). Status: ad/get/ pollen.');
-  } catch (e) { log('❌', String(e).slice(0, 300)); log('Häufig: Token-Scope (Ads Management) / advertiser_id nicht autorisiert / Sandbox-Token gegen Prod.'); }
+    report({ result: DRY ? 'DRY_OK' : 'LIVE', campaign_id: campaignId, adgroup_id: adgroupId, ad_ids: ad.data.ad_ids || null, landing: LANDING, video_url: VIDEO_URL });
+  } catch (e) { log('❌', String(e).slice(0, 300)); log('Häufig: Token-Scope (Ads Management) / advertiser_id nicht autorisiert / Sandbox-Token gegen Prod.'); report({ result: 'ERROR', error: String(e).slice(0, 300) }); }
 })();
