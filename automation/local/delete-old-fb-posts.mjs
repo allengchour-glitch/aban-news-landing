@@ -8,6 +8,7 @@
  *   node automation/local/delete-old-fb-posts.mjs 2026-06-12 # eigenes Datum
  *   DRY_RUN=1 node automation/local/delete-old-fb-posts.mjs  # nur zeigen, nichts löschen
  */
+setTimeout(() => { console.log('WATCHDOG 8min -> exit'); process.exit(1); }, 480000).unref(); // 2026-06-25: kein FIFO-Hang
 const T = process.env.META_ACCESS_TOKEN || '';
 const PAGE = process.env.FB_PAGE_ID || '1049840534888592';
 const CUTOFF = process.argv[2] || '2026-06-10';

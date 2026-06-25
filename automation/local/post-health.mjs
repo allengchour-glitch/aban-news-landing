@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+setTimeout(() => { console.log('WATCHDOG 5min -> exit'); process.exit(1); }, 300000).unref(); // 2026-06-25: kein FIFO-Hang
 const ROOT = path.dirname(path.dirname(path.dirname(fileURLToPath(new URL(import.meta.url)))));
 const WORKER = process.env.LUXE_WORKER || 'https://luxe-poster.allengchour.workers.dev';
 const KEY = process.env.LUXE_KEY || 'Abanaban192%2B';
