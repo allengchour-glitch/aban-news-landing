@@ -1,365 +1,363 @@
 {
-  "ts": "2026-06-25T10:16:49.879Z",
+  "ts": "2026-06-25T10:27:19.082Z",
   "done": {
     "flame-eigen.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
       ]
     },
     "flame-electro.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
       ]
     },
     "flame-hype-fast.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
       ]
     },
     "flame-hype1.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
       ]
     },
     "flame-hypepro.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
       ]
     },
     "flame-phonk-slow.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
       ]
     },
     "flame-trend-house.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
       ]
     },
     "flame-trend-hype.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
       ]
     },
     "flame-trend-phonk.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
       ]
     },
     "flame-voltaic.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
       ]
     },
     "luma-brise-master.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luma-daisy-master.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luma-flame-master.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (ein elektrischer Kamin oder Diffusor) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
       ]
     },
     "luma-onyx-master.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luma-test-wasserfest-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-accessoires-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das erste Bild zeigt eine Tasche, die nicht premium wirkt und eher an ein billiges Produkt erinnert.",
+        "Die Qualität der Bilder ist insgesamt nicht premium. Die Beleuchtung und der Hintergrund wirken billig und unprofessionell.",
+        "Die Sonnenbrille im zweiten Bild wirkt nicht premium und könnte von einem Billiganbieter stammen.",
+        "Die Taschen im dritten Bild wirken ebenfalls nicht premium und die Präsentation ist uninspiriert."
       ]
     },
     "luxe-amore-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-armband-layering-9x16-meta.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-armband-layering-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-astra-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität des Rings wirkt nicht premium, sondern eher billig und massenproduziert. Die Steine wirken unecht und die Verarbeitung nicht hochwertig.",
+        "Die Hand im Bild wirkt unnatürlich hell und glatt, was auf übermäßige Bildbearbeitung hindeutet und nicht authentisch wirkt.",
+        "Der Preis von CHF 22.90 für einen Ring, der als 'Premium Schweizer Damenmode' beworben wird, ist unrealistisch niedrig und untergräbt den Premium-Anspruch."
       ]
     },
     "luxe-aurelia-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-baskenmuetze-scintille-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität des Produkts (Pailletten-Basenmütze) wirkt nicht premium. Die Pailletten sehen billig und ungleichmäßig verteilt aus, was nicht dem Anspruch einer PREMIUM Schweizer Damenmode entspricht."
       ]
     },
     "luxe-bestseller-preis-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Der Text im ersten Frame 'F 32 statt 200 - gliiche Loo' ist grammatikalisch falsch ('gliiche Loo' statt 'gleicher Look') und wirkt nicht premium oder professionell für eine Schweizer Damenmode-Werbung.",
+        "Die Qualität des ersten Frames wirkt nicht premium; die Tasche und die Gesamtästhetik wirken eher billig und nicht passend für eine 'PREMIUM Schweizer Damenmode'-Werbung.",
+        "Die Sonnenbrille im zweiten Frame hat ein sichtbares Logo auf dem Bügel, das nicht 'LuxeStyle' ist und somit ein fremdes Markenlogo darstellt.",
+        "Die Qualität des dritten Frames, insbesondere die Passform des Blazers und die allgemeine Bildästhetik, wirkt nicht premium und könnte als billig empfunden werden."
       ]
     },
     "luxe-bucket-banana-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Bucket Hat) wirkt nicht premium. Das Design mit Bananen auf schwarzem Grund und die allgemeine Anmutung des Hutes wirken eher billig und nicht passend für PREMIUM Schweizer Damenmode."
       ]
     },
     "luxe-bucket-manchester-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produktbild wirkt wie ein Stockfoto oder ein Bild von einem Drittanbieter. Die Qualität des Bildes ist nicht premium und die Präsentation des Hutes auf einem einfachen Holzständer wirkt billig und unprofessionell für eine PREMIUM Schweizer Damenmode-Werbung.",
+        "Der Hintergrund des Produktbildes ist unscharf und wirkt wie ein generischer Studiohintergrund, was nicht zum Premium-Anspruch passt.",
+        "Die Schrift auf dem Hut ('COMFORT') ist nicht klar lesbar und wirkt wie ein generisches Logo, das nicht zum Markenimage einer Premium-Marke passt."
       ]
     },
     "luxe-cap-classic-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität des Produkts (Baseball-Cap) wirkt nicht premium, sondern eher billig und generisch.",
+        "Der Hintergrund des Produktbildes ist unscharf und wirkt unprofessionell, was nicht zu einer Premium-Marke passt.",
+        "Der Text \"Dr Basic wo immer geit\" im ersten Frame ist umgangssprachlich und passt nicht zum Image einer PREMIUM Schweizer Damenmode-Werbung."
       ]
     },
     "luxe-cap-mama-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität des Produkts (Baseball-Cap) wirkt nicht premium. Die Stickerei des Wortes 'MAMA' sieht billig und unsauber aus, was nicht zu einer PREMIUM Schweizer Damenmode-Werbung passt."
       ]
     },
     "luxe-cap-paris-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-cap-sprint-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Cap) ist nicht typisch für PREMIUM Schweizer Damenmode.",
+        "Der Preis (CHF 27.90) ist für PREMIUM Schweizer Damenmode ungewöhnlich niedrig und wirkt nicht exklusiv."
       ]
     },
     "luxe-cap-tuesday-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Cap) ist für Damenmode ungeeignet.",
+        "Das Produkt wirkt nicht premium, sondern eher wie ein Massenprodukt.",
+        "Die Qualität des Bildes ist nicht premium (leicht verpixelt, unscharf)."
       ]
     },
     "luxe-cap-wellness-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-cascade-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Der Text 'Dr Creole-Trend 2026' im ersten Frame wirkt unprofessionell und nicht passend für eine Premium-Werbung. 'Dr Creole' ist eine ungewöhnliche und potenziell irreführende Bezeichnung, die nicht zum Produkt (Ohrringe) passt und den Eindruck von Billigware erweckt.",
+        "Die allgemeine Bildqualität und das Setting wirken eher wie ein Amateur-Video oder eine Social-Media-Anzeige und nicht wie eine hochwertige Produktion für Premium-Damenmode. Der unscharfe Hintergrund und die einfache Präsentation der Ohrringe entsprechen nicht dem Premium-Anspruch."
       ]
     },
     "luxe-casio-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt ist eine Casio-Uhr, was ein fremdes Markenlogo ist und nicht LuxeStyle."
       ]
     },
     "luxe-ck-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das beworbene Produkt ist ein Herrenparfüm ('ETERNITY FOR MEN'), obwohl die Werbung für PREMIUM Schweizer Damenmode sein soll. Dies ist ein inhaltlicher Fehler.",
+        "Das Logo 'luxestyle.ch' ist nicht das erwartete 'LuxeStyle' Markenlogo, sondern eine URL, die als Lieferanten-Watermark oder fremdes Markenlogo interpretiert werden könnte, wenn 'LuxeStyle' die Hauptmarke ist."
       ]
     },
     "luxe-coeur-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-couleur-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-denim-cap-bleu-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität des Produkts (Denim-Cap) wirkt nicht premium, sondern eher billig und generisch. Der Stoff sieht dünn aus und die Verarbeitung nicht hochwertig.",
+        "Der Begriff 'Dr Jeans-Klassiker' im ersten Frame ist irreführend und passt nicht zu einer Premium-Marke. Es klingt eher nach einem generischen Produktnamen.",
+        "Der Preis von CHF 24.90 für eine 'Premium Schweizer Damenmode' ist unrealistisch niedrig und unterstreicht den Eindruck eines Billigprodukts."
       ]
     },
     "luxe-dg-theone-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Parfüm) ist nicht Teil der PREMIUM Schweizer Damenmode, für die die Werbung gedacht ist. Es handelt sich um ein Parfüm, nicht um Kleidung oder Accessoires, die typischerweise unter Damenmode fallen würden.",
+        "Der Text 'Was choschtet das?' ist umgangssprachlich und passt nicht zum Premium-Anspruch einer Schweizer Damenmode-Werbung."
       ]
     },
     "luxe-docker-marin-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das beworbene Produkt (Docker-Mütze) ist keine Damenmode.",
+        "Die Qualität des Produkts wirkt nicht premium (ausgeblichenes, abgenutztes Aussehen)."
       ]
     },
     "luxe-etincelle-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Der Text 'Dr Hingucker fürn Apéro' wirkt nicht premium und ist umgangssprachlich.",
+        "Die Qualität des Videos ist nicht scharf genug für eine Premium-Werbung, insbesondere die Details der Ohrstecker und der Haut wirken leicht unscharf/verpixelt."
       ]
     },
     "luxe-fenrir-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt ist eine Herren-Kette, die nicht zu 'PREMIUM Schweizer Damenmode' passt.",
+        "Das Logo 'VINDR' auf der Holzbox ist ein fremdes Markenlogo und kein LuxeStyle-Logo."
       ]
     },
     "luxe-flat-cap-brigade-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt (Flat-Cap) ist keine Damenmode.",
+        "Das Design der Kappe (Camouflage) wirkt nicht premium für Schweizer Damenmode."
       ]
     },
     "luxe-fleur-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-fresh-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität der Bilder wirkt nicht 'Premium'. Die Kleidung sieht in allen Frames eher billig aus und die Bildqualität ist nicht gestochen scharf, was für eine Premium-Marke unzureichend ist.",
+        "Im ersten Frame ist das Gesicht der Frau unscharf und wirkt künstlich weichgezeichnet, was nicht professionell ist.",
+        "Im zweiten Frame ist die Qualität des Bildes ebenfalls nicht 'Premium'. Das Kleid wirkt billig und die Umgebung ist unscharf.",
+        "Im dritten Frame wirkt der Mantel nicht hochwertig, sondern eher wie ein billiges Kunstfellprodukt. Die Bildqualität ist auch hier nicht 'Premium'."
       ]
     },
     "luxe-goutte-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-guess-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-herren-9x16-meta.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das erste Bild zeigt ein Produkt, das als 'Für ihn' beworben wird, obwohl die Werbung für 'PREMIUM Schweizer Damenmode' ist.",
+        "Das erste Bild zeigt den Schriftzug 'VIKINGS' auf der Holzbox, was ein fremdes Markenlogo oder eine thematische Abweichung darstellt.",
+        "Das dritte Bild zeigt ein Polo-Shirt mit dem Logo 'KAPPA', was ein fremdes Markenlogo ist und nicht zu 'LuxeStyle' gehört."
       ]
     },
     "luxe-herren-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das erste Bild zeigt ein Produkt, das als 'Für ihn' beworben wird, obwohl die Werbung für 'PREMIUM Schweizer Damenmode' ist.",
+        "Das erste Bild zeigt den Schriftzug 'VIKINGS' auf der Holzbox, was ein fremdes Markenlogo oder eine thematische Abweichung darstellt.",
+        "Das dritte Bild zeigt ein Polo-Shirt mit dem Logo 'KAPPA', was ein fremdes Markenlogo ist und nicht zu 'LuxeStyle' gehört."
       ]
     },
     "luxe-hugo-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-lagune-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität des Bildes wirkt nicht premium. Das Produktbild ist unscharf und die Beleuchtung ist nicht professionell, was nicht zu einer PREMIUM Schweizer Damenmode-Werbung passt.",
+        "Der Hintergrund des Produktbildes (Holzstück) wirkt billig und unprofessionell, was den Premium-Anspruch der Marke untergräbt."
       ]
     },
     "luxe-marken-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Frame 1: Das Produkt ist von der Marke 'ITALIA INDEPENDENT', was nicht 'LuxeStyle' ist und somit ein fremdes Markenlogo darstellt.",
+        "Frame 2: Das Produkt ist von der Marke 'GLORIA' und 'ADDA', was nicht 'LuxeStyle' ist und somit fremde Markenlogos darstellt.",
+        "Frame 3: Das Produkt ist von der Marke 'CLINIQUE', was nicht 'LuxeStyle' ist und somit ein fremdes Markenlogo darstellt."
       ]
     },
     "luxe-minou-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Ohrstecker wirken nicht premium, sondern eher wie Modeschmuck von geringer Qualität.",
+        "Die Präsentation auf dem Holzbrett wirkt einfach und nicht luxuriös.",
+        "Die Schriftart und das Layout der Texte wirken nicht hochwertig und passen nicht zu einer Premium-Marke."
       ]
     },
     "luxe-mk-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Das Produkt zeigt ein fremdes Markenlogo ('Michael Kors'), das nicht 'LuxeStyle' ist."
       ]
     },
     "luxe-noeud-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-olivia-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-papillon-9x16.mp4": {
-      "flag": false,
+      "flag": true,
       "reasons": [
-        "(frame-fehler)"
+        "Die Qualität der Ohrringe wirkt nicht premium. Die Verarbeitung der Schmetterlinge und die Perlen wirken billig und nicht hochwertig.",
+        "Die allgemeine Bildqualität ist unscharf und verpixelt, was nicht zu einer Premium-Werbung passt."
       ]
     },
     "luxe-riviera-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-rosee-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-samsara-9x16.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-save5-schmuck-9x16-meta.mp4": {
       "flag": false,
-      "reasons": [
-        "(frame-fehler)"
-      ]
+      "reasons": []
     },
     "luxe-save5-schmuck-9x16.mp4": {
       "flag": false,
@@ -1592,5 +1590,276 @@
       ]
     }
   },
-  "flagged": []
+  "flagged": [
+    {
+      "file": "flame-eigen.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
+      ]
+    },
+    {
+      "file": "flame-electro.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
+      ]
+    },
+    {
+      "file": "flame-hype-fast.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
+      ]
+    },
+    {
+      "file": "flame-hype1.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
+      ]
+    },
+    {
+      "file": "flame-hypepro.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
+      ]
+    },
+    {
+      "file": "flame-phonk-slow.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
+      ]
+    },
+    {
+      "file": "flame-trend-house.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
+      ]
+    },
+    {
+      "file": "flame-trend-hype.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
+      ]
+    },
+    {
+      "file": "flame-trend-phonk.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
+      ]
+    },
+    {
+      "file": "flame-voltaic.mp4",
+      "reasons": [
+        "Das Produkt (Flame-Diffuser) wirkt nicht wie ein Premium-Produkt für Schweizer Damenmode. Es passt nicht zum Markenimage von 'LuxeStyle' und wirkt eher wie ein generisches Gadget.",
+        "Die Qualität des 'Flammen'-Effekts wirkt künstlich und nicht überzeugend, was dem Premium-Anspruch widerspricht."
+      ]
+    },
+    {
+      "file": "luma-flame-master.mp4",
+      "reasons": [
+        "Das Produkt (ein elektrischer Kamin oder Diffusor) passt nicht zur Kategorie 'PREMIUM Schweizer Damenmode'."
+      ]
+    },
+    {
+      "file": "luxe-accessoires-9x16.mp4",
+      "reasons": [
+        "Das erste Bild zeigt eine Tasche, die nicht premium wirkt und eher an ein billiges Produkt erinnert.",
+        "Die Qualität der Bilder ist insgesamt nicht premium. Die Beleuchtung und der Hintergrund wirken billig und unprofessionell.",
+        "Die Sonnenbrille im zweiten Bild wirkt nicht premium und könnte von einem Billiganbieter stammen.",
+        "Die Taschen im dritten Bild wirken ebenfalls nicht premium und die Präsentation ist uninspiriert."
+      ]
+    },
+    {
+      "file": "luxe-astra-9x16.mp4",
+      "reasons": [
+        "Die Qualität des Rings wirkt nicht premium, sondern eher billig und massenproduziert. Die Steine wirken unecht und die Verarbeitung nicht hochwertig.",
+        "Die Hand im Bild wirkt unnatürlich hell und glatt, was auf übermäßige Bildbearbeitung hindeutet und nicht authentisch wirkt.",
+        "Der Preis von CHF 22.90 für einen Ring, der als 'Premium Schweizer Damenmode' beworben wird, ist unrealistisch niedrig und untergräbt den Premium-Anspruch."
+      ]
+    },
+    {
+      "file": "luxe-baskenmuetze-scintille-9x16.mp4",
+      "reasons": [
+        "Die Qualität des Produkts (Pailletten-Basenmütze) wirkt nicht premium. Die Pailletten sehen billig und ungleichmäßig verteilt aus, was nicht dem Anspruch einer PREMIUM Schweizer Damenmode entspricht."
+      ]
+    },
+    {
+      "file": "luxe-bestseller-preis-9x16.mp4",
+      "reasons": [
+        "Der Text im ersten Frame 'F 32 statt 200 - gliiche Loo' ist grammatikalisch falsch ('gliiche Loo' statt 'gleicher Look') und wirkt nicht premium oder professionell für eine Schweizer Damenmode-Werbung.",
+        "Die Qualität des ersten Frames wirkt nicht premium; die Tasche und die Gesamtästhetik wirken eher billig und nicht passend für eine 'PREMIUM Schweizer Damenmode'-Werbung.",
+        "Die Sonnenbrille im zweiten Frame hat ein sichtbares Logo auf dem Bügel, das nicht 'LuxeStyle' ist und somit ein fremdes Markenlogo darstellt.",
+        "Die Qualität des dritten Frames, insbesondere die Passform des Blazers und die allgemeine Bildästhetik, wirkt nicht premium und könnte als billig empfunden werden."
+      ]
+    },
+    {
+      "file": "luxe-bucket-banana-9x16.mp4",
+      "reasons": [
+        "Das Produkt (Bucket Hat) wirkt nicht premium. Das Design mit Bananen auf schwarzem Grund und die allgemeine Anmutung des Hutes wirken eher billig und nicht passend für PREMIUM Schweizer Damenmode."
+      ]
+    },
+    {
+      "file": "luxe-bucket-manchester-9x16.mp4",
+      "reasons": [
+        "Das Produktbild wirkt wie ein Stockfoto oder ein Bild von einem Drittanbieter. Die Qualität des Bildes ist nicht premium und die Präsentation des Hutes auf einem einfachen Holzständer wirkt billig und unprofessionell für eine PREMIUM Schweizer Damenmode-Werbung.",
+        "Der Hintergrund des Produktbildes ist unscharf und wirkt wie ein generischer Studiohintergrund, was nicht zum Premium-Anspruch passt.",
+        "Die Schrift auf dem Hut ('COMFORT') ist nicht klar lesbar und wirkt wie ein generisches Logo, das nicht zum Markenimage einer Premium-Marke passt."
+      ]
+    },
+    {
+      "file": "luxe-cap-classic-9x16.mp4",
+      "reasons": [
+        "Die Qualität des Produkts (Baseball-Cap) wirkt nicht premium, sondern eher billig und generisch.",
+        "Der Hintergrund des Produktbildes ist unscharf und wirkt unprofessionell, was nicht zu einer Premium-Marke passt.",
+        "Der Text \"Dr Basic wo immer geit\" im ersten Frame ist umgangssprachlich und passt nicht zum Image einer PREMIUM Schweizer Damenmode-Werbung."
+      ]
+    },
+    {
+      "file": "luxe-cap-mama-9x16.mp4",
+      "reasons": [
+        "Die Qualität des Produkts (Baseball-Cap) wirkt nicht premium. Die Stickerei des Wortes 'MAMA' sieht billig und unsauber aus, was nicht zu einer PREMIUM Schweizer Damenmode-Werbung passt."
+      ]
+    },
+    {
+      "file": "luxe-cap-sprint-9x16.mp4",
+      "reasons": [
+        "Das Produkt (Cap) ist nicht typisch für PREMIUM Schweizer Damenmode.",
+        "Der Preis (CHF 27.90) ist für PREMIUM Schweizer Damenmode ungewöhnlich niedrig und wirkt nicht exklusiv."
+      ]
+    },
+    {
+      "file": "luxe-cap-tuesday-9x16.mp4",
+      "reasons": [
+        "Das Produkt (Cap) ist für Damenmode ungeeignet.",
+        "Das Produkt wirkt nicht premium, sondern eher wie ein Massenprodukt.",
+        "Die Qualität des Bildes ist nicht premium (leicht verpixelt, unscharf)."
+      ]
+    },
+    {
+      "file": "luxe-cascade-9x16.mp4",
+      "reasons": [
+        "Der Text 'Dr Creole-Trend 2026' im ersten Frame wirkt unprofessionell und nicht passend für eine Premium-Werbung. 'Dr Creole' ist eine ungewöhnliche und potenziell irreführende Bezeichnung, die nicht zum Produkt (Ohrringe) passt und den Eindruck von Billigware erweckt.",
+        "Die allgemeine Bildqualität und das Setting wirken eher wie ein Amateur-Video oder eine Social-Media-Anzeige und nicht wie eine hochwertige Produktion für Premium-Damenmode. Der unscharfe Hintergrund und die einfache Präsentation der Ohrringe entsprechen nicht dem Premium-Anspruch."
+      ]
+    },
+    {
+      "file": "luxe-casio-9x16.mp4",
+      "reasons": [
+        "Das Produkt ist eine Casio-Uhr, was ein fremdes Markenlogo ist und nicht LuxeStyle."
+      ]
+    },
+    {
+      "file": "luxe-ck-9x16.mp4",
+      "reasons": [
+        "Das beworbene Produkt ist ein Herrenparfüm ('ETERNITY FOR MEN'), obwohl die Werbung für PREMIUM Schweizer Damenmode sein soll. Dies ist ein inhaltlicher Fehler.",
+        "Das Logo 'luxestyle.ch' ist nicht das erwartete 'LuxeStyle' Markenlogo, sondern eine URL, die als Lieferanten-Watermark oder fremdes Markenlogo interpretiert werden könnte, wenn 'LuxeStyle' die Hauptmarke ist."
+      ]
+    },
+    {
+      "file": "luxe-denim-cap-bleu-9x16.mp4",
+      "reasons": [
+        "Die Qualität des Produkts (Denim-Cap) wirkt nicht premium, sondern eher billig und generisch. Der Stoff sieht dünn aus und die Verarbeitung nicht hochwertig.",
+        "Der Begriff 'Dr Jeans-Klassiker' im ersten Frame ist irreführend und passt nicht zu einer Premium-Marke. Es klingt eher nach einem generischen Produktnamen.",
+        "Der Preis von CHF 24.90 für eine 'Premium Schweizer Damenmode' ist unrealistisch niedrig und unterstreicht den Eindruck eines Billigprodukts."
+      ]
+    },
+    {
+      "file": "luxe-dg-theone-9x16.mp4",
+      "reasons": [
+        "Das Produkt (Parfüm) ist nicht Teil der PREMIUM Schweizer Damenmode, für die die Werbung gedacht ist. Es handelt sich um ein Parfüm, nicht um Kleidung oder Accessoires, die typischerweise unter Damenmode fallen würden.",
+        "Der Text 'Was choschtet das?' ist umgangssprachlich und passt nicht zum Premium-Anspruch einer Schweizer Damenmode-Werbung."
+      ]
+    },
+    {
+      "file": "luxe-docker-marin-9x16.mp4",
+      "reasons": [
+        "Das beworbene Produkt (Docker-Mütze) ist keine Damenmode.",
+        "Die Qualität des Produkts wirkt nicht premium (ausgeblichenes, abgenutztes Aussehen)."
+      ]
+    },
+    {
+      "file": "luxe-etincelle-9x16.mp4",
+      "reasons": [
+        "Der Text 'Dr Hingucker fürn Apéro' wirkt nicht premium und ist umgangssprachlich.",
+        "Die Qualität des Videos ist nicht scharf genug für eine Premium-Werbung, insbesondere die Details der Ohrstecker und der Haut wirken leicht unscharf/verpixelt."
+      ]
+    },
+    {
+      "file": "luxe-fenrir-9x16.mp4",
+      "reasons": [
+        "Das Produkt ist eine Herren-Kette, die nicht zu 'PREMIUM Schweizer Damenmode' passt.",
+        "Das Logo 'VINDR' auf der Holzbox ist ein fremdes Markenlogo und kein LuxeStyle-Logo."
+      ]
+    },
+    {
+      "file": "luxe-flat-cap-brigade-9x16.mp4",
+      "reasons": [
+        "Das Produkt (Flat-Cap) ist keine Damenmode.",
+        "Das Design der Kappe (Camouflage) wirkt nicht premium für Schweizer Damenmode."
+      ]
+    },
+    {
+      "file": "luxe-fresh-9x16.mp4",
+      "reasons": [
+        "Die Qualität der Bilder wirkt nicht 'Premium'. Die Kleidung sieht in allen Frames eher billig aus und die Bildqualität ist nicht gestochen scharf, was für eine Premium-Marke unzureichend ist.",
+        "Im ersten Frame ist das Gesicht der Frau unscharf und wirkt künstlich weichgezeichnet, was nicht professionell ist.",
+        "Im zweiten Frame ist die Qualität des Bildes ebenfalls nicht 'Premium'. Das Kleid wirkt billig und die Umgebung ist unscharf.",
+        "Im dritten Frame wirkt der Mantel nicht hochwertig, sondern eher wie ein billiges Kunstfellprodukt. Die Bildqualität ist auch hier nicht 'Premium'."
+      ]
+    },
+    {
+      "file": "luxe-herren-9x16-meta.mp4",
+      "reasons": [
+        "Das erste Bild zeigt ein Produkt, das als 'Für ihn' beworben wird, obwohl die Werbung für 'PREMIUM Schweizer Damenmode' ist.",
+        "Das erste Bild zeigt den Schriftzug 'VIKINGS' auf der Holzbox, was ein fremdes Markenlogo oder eine thematische Abweichung darstellt.",
+        "Das dritte Bild zeigt ein Polo-Shirt mit dem Logo 'KAPPA', was ein fremdes Markenlogo ist und nicht zu 'LuxeStyle' gehört."
+      ]
+    },
+    {
+      "file": "luxe-herren-9x16.mp4",
+      "reasons": [
+        "Das erste Bild zeigt ein Produkt, das als 'Für ihn' beworben wird, obwohl die Werbung für 'PREMIUM Schweizer Damenmode' ist.",
+        "Das erste Bild zeigt den Schriftzug 'VIKINGS' auf der Holzbox, was ein fremdes Markenlogo oder eine thematische Abweichung darstellt.",
+        "Das dritte Bild zeigt ein Polo-Shirt mit dem Logo 'KAPPA', was ein fremdes Markenlogo ist und nicht zu 'LuxeStyle' gehört."
+      ]
+    },
+    {
+      "file": "luxe-lagune-9x16.mp4",
+      "reasons": [
+        "Die Qualität des Bildes wirkt nicht premium. Das Produktbild ist unscharf und die Beleuchtung ist nicht professionell, was nicht zu einer PREMIUM Schweizer Damenmode-Werbung passt.",
+        "Der Hintergrund des Produktbildes (Holzstück) wirkt billig und unprofessionell, was den Premium-Anspruch der Marke untergräbt."
+      ]
+    },
+    {
+      "file": "luxe-marken-9x16.mp4",
+      "reasons": [
+        "Frame 1: Das Produkt ist von der Marke 'ITALIA INDEPENDENT', was nicht 'LuxeStyle' ist und somit ein fremdes Markenlogo darstellt.",
+        "Frame 2: Das Produkt ist von der Marke 'GLORIA' und 'ADDA', was nicht 'LuxeStyle' ist und somit fremde Markenlogos darstellt.",
+        "Frame 3: Das Produkt ist von der Marke 'CLINIQUE', was nicht 'LuxeStyle' ist und somit ein fremdes Markenlogo darstellt."
+      ]
+    },
+    {
+      "file": "luxe-minou-9x16.mp4",
+      "reasons": [
+        "Die Ohrstecker wirken nicht premium, sondern eher wie Modeschmuck von geringer Qualität.",
+        "Die Präsentation auf dem Holzbrett wirkt einfach und nicht luxuriös.",
+        "Die Schriftart und das Layout der Texte wirken nicht hochwertig und passen nicht zu einer Premium-Marke."
+      ]
+    },
+    {
+      "file": "luxe-mk-9x16.mp4",
+      "reasons": [
+        "Das Produkt zeigt ein fremdes Markenlogo ('Michael Kors'), das nicht 'LuxeStyle' ist."
+      ]
+    },
+    {
+      "file": "luxe-papillon-9x16.mp4",
+      "reasons": [
+        "Die Qualität der Ohrringe wirkt nicht premium. Die Verarbeitung der Schmetterlinge und die Perlen wirken billig und nicht hochwertig.",
+        "Die allgemeine Bildqualität ist unscharf und verpixelt, was nicht zu einer Premium-Werbung passt."
+      ]
+    }
+  ]
 }
