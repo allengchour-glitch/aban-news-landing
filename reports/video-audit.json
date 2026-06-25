@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-25T11:03:29.121Z",
+  "ts": "2026-06-25T19:48:20.279Z",
   "done": {
     "flame-eigen.mp4": {
       "flag": false,
@@ -269,6 +269,282 @@
     "luxe-save5-schmuck-9x16-meta.mp4": {
       "flag": false,
       "reasons": []
+    },
+    "luxe-save5-schmuck-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-schmuck-gschenk-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-schmuck-gschenk-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-seetest-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-seetest-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-swatch-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Swatch' gut sichtbar auf dem Produkt und im Textoverlay."
+      ]
+    },
+    "luxe-tresor-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-vintage-cap-liberty-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "montage-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "montage-loop.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw--kette-stella-kleeblatt-anha.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-3d-lifting-gesichtsroller-go.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-armkette-papillon-schmetterl.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-bellevue-damenuhr-gold.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Bellevue' auf dem Produkt sichtbar."
+      ]
+    },
+    "mw-blazer-roma-pricewin.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-blazer-roma-tailliert-mit-bi.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-blazer-roma.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-breil-halskette.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Breil' ist gut sichtbar im Text eingeblendet."
+      ]
+    },
+    "mw-casio-damenuhr-blau.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (CASIO) gut sichtbar auf dem Produkt."
+      ]
+    },
+    "mw-chiffon-stola-soiree-elegant.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-converse-chuck.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Converse) gut sichtbar auf dem Produkt."
+      ]
+    },
+    "mw-crossbody-tasche-lido-gewebt.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-dg-the-one-parfum.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'DOLCE & GABBANA' gut sichtbar auf dem Produkt."
+      ]
+    },
+    "mw-en-set-lino-weste-weite-hose.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-filzhut-montana-breitkrempig.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-gua-sha-set-jade-mas.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'HEMP for U' auf dem Produkt sichtbar."
+      ]
+    },
+    "mw-guess-herrenuhr-gold.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (GUESS) gut sichtbar auf dem Produkt."
+      ]
+    },
+    "mw-handventilator-brisa.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt sichtbar (Y-förmiges Logo)."
+      ]
+    },
+    "mw-herren-set-costa-kapuzen-shi.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-herren-sneaker-marco-leder-o.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-herren-strickhemd-amalfi-ajo.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-kenzo-amour-parfum.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'KENZO AMOUR' gut sichtbar auf dem Produkt/Bild."
+      ]
+    },
+    "mw-leinen-set-lino-weste-weite-.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-lz-fedora.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-mini-handtasche-perla-perlen.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-mk-rucksack-rose.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Michael Kors' auf dem Produkt sichtbar."
+      ]
+    },
+    "mw-moissanite-herzkette-coeur-s.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-ohrringe-lotus.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-pierrecardin-herrenuhr.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Pierre Cardin) ist gut sichtbar auf dem Produkt."
+      ]
+    },
+    "mw-plateau-sneaker-cloud-spitze.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Schriftzug auf den Schnürsenkeln der Schuhe)."
+      ]
+    },
+    "mw-police-armband.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'POLICE' auf dem Produkt sichtbar."
+      ]
+    },
+    "mw-puma-r78-beige.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Puma) auf dem Produkt sichtbar."
+      ]
+    },
+    "mw-ring-set-eternita-stapelbare.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-seidenschal-lyon-eleganter-h.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-silber-armreif-serpent-s925-.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark (D.A.K.) auf der Verpackung im Hintergrund sichtbar."
+      ]
+    },
+    "mw-sonnenbrille-riviera-oversiz.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt sichtbar (Brillenbügel)"
+      ]
+    },
+    "mw-statement-ohrringe-onyx-geom.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-stiletto-sandalette-gala-vio.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-stroh-shopper-capri-geflocht.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-uare-mit-gold-detail.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "mw-ysl-lhomme-parfum.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Yves Saint Laurent / YSL) ist gut sichtbar auf Produkt und Verpackung."
+      ]
+    },
+    "mw-zirkonia-kette-stella-kleebl.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-brise-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-brise-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-daisy-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-daisy-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-flame-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-flame-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-onyx-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "reel-onyx-9x16.mp4": {
+      "flag": false,
+      "reasons": []
     }
   },
   "flagged": [
@@ -347,6 +623,114 @@
       "file": "luxe-mk-9x16.mp4",
       "reasons": [
         "Fremdes Markenlogo (Michael Kors) gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "luxe-swatch-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Swatch' gut sichtbar auf dem Produkt und im Textoverlay."
+      ]
+    },
+    {
+      "file": "mw-bellevue-damenuhr-gold.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Bellevue' auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "mw-breil-halskette.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Breil' ist gut sichtbar im Text eingeblendet."
+      ]
+    },
+    {
+      "file": "mw-casio-damenuhr-blau.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (CASIO) gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "mw-converse-chuck.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Converse) gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "mw-dg-the-one-parfum.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'DOLCE & GABBANA' gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "mw-gua-sha-set-jade-mas.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'HEMP for U' auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "mw-guess-herrenuhr-gold.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (GUESS) gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "mw-handventilator-brisa.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt sichtbar (Y-förmiges Logo)."
+      ]
+    },
+    {
+      "file": "mw-kenzo-amour-parfum.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'KENZO AMOUR' gut sichtbar auf dem Produkt/Bild."
+      ]
+    },
+    {
+      "file": "mw-mk-rucksack-rose.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Michael Kors' auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "mw-pierrecardin-herrenuhr.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Pierre Cardin) ist gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "mw-plateau-sneaker-cloud-spitze.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Schriftzug auf den Schnürsenkeln der Schuhe)."
+      ]
+    },
+    {
+      "file": "mw-police-armband.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'POLICE' auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "mw-puma-r78-beige.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Puma) auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "mw-silber-armreif-serpent-s925-.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark (D.A.K.) auf der Verpackung im Hintergrund sichtbar."
+      ]
+    },
+    {
+      "file": "mw-sonnenbrille-riviera-oversiz.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt sichtbar (Brillenbügel)"
+      ]
+    },
+    {
+      "file": "mw-ysl-lhomme-parfum.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Yves Saint Laurent / YSL) ist gut sichtbar auf Produkt und Verpackung."
       ]
     }
   ]
