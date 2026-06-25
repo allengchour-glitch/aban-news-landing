@@ -1987,3 +1987,7 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **🎨 2 CRO-Wins live:** rotierende Schweiz-Trust-Announcement-Bar + Lieferdatum auf Produktseite.
 - **🔑 Container-Reset-Falle:** /tmp wird oft geleert → Shopify-Keys + chained Pipelines sterben. Keys session-lokal neu schreiben (Client-ID `ffe6c3a…`, Secret `shpss_…` aus User-Screenshot), `git reset --hard origin`. User soll Keys als ENV-VAR im Web-Setup eintragen (überlebt Resets).
 - **Offen:** mobile/Akku-Ventilatoren (in Arbeit). Dyson manuell (User-Entscheid offen). Club aus „Fussball" ganz raus? (User-Entscheid offen). Menü: Club/Klima-Collection aufnehmen?
+
+## 📌 2026-06-25 (Nachtrag — Menü + Trend-Dublette)
+- **❄️ Klima & Ventilatoren ins Hauptmenü** aufgenommen (Top-Level Pos. 10, `/collections/klima-ventilatoren`). Menü-ID `gid://shopify/Menu/310224093569`, alle 163 Items Typ HTTP, Sub-Menüs erhalten. Akku-Nackenventilatoren (3) ergänzt.
+- **⚠️ TREND-DUBLETTE gefixt:** Es gab `trends-gadgets` (Menü, „🔥 Trends & Gadgets", Regel TAG=`trend`, 31 Prod.) UND meine versehentliche `trend-gadgets` (Regel TAG=`viral`, 14). Meine viralen Produkte haben beide Tags → schon im Menü-Collection. Habe 2 fehlende `trend`-Tags ergänzt + meine Dublette `trend-gadgets` UNPUBLIZIERT. **Lehre:** vor neuer Collection prüfen, ob ähnliche existiert (Handle-Varianten mit/ohne „s"!).
