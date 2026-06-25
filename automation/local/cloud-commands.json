@@ -1,4 +1,3 @@
 [
-  { "id": "2026-06-25-KAMPAGNE-GO-traffic", "cmd": "campaign-traffic" },
-  { "id": "2026-06-25i-video-audit", "cmd": "video-audit" }
+  { "id": "2026-06-25-KAMPAGNE-GO-v2", "cmd": "campaign-traffic" }
 ]

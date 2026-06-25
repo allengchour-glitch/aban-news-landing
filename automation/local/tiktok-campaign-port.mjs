@@ -272,7 +272,21 @@ async function pickFromSearch(p, value, ab) {
   for (let attempt = 0; attempt < 5 && !inWiz; attempt++) {
     log(`🎯 Wizard-Einstieg Versuch ${attempt + 1}/5 (noch auf Liste)`);
     await dismissOverlay();
-    if (attempt === 0) {
+    // ⭐ FIX 2026-06-25: TikToks SPA reagiert auf synthetische p.evaluate-.click() oft NICHT (Bot blieb auf
+    // 02-enter-try-1 haengen). Im Stagehand-Modus darum ECHTE Pointer-Klicks via ab.act() (CDP) — das triggert
+    // den SPA-Router. p.evaluate nur als Playwright-Fallback.
+    if (ab.mode === 'stagehand') {
+      if (attempt === 0) {
+        await ab.act('click the green "+ Create" button (usually top-left of the page) to start creating a new campaign').catch(() => {});
+      } else if (attempt === 1) {
+        await ab.act('click the "+ Create" button').catch(() => {}); await sleep(1200);
+        await ab.act('if a dropdown menu appeared, click the menu item labelled "Campaign" (or "Kampagne")').catch(() => {});
+      } else if (attempt === 2) {
+        await ab.act('click any "Create campaign" / "Kampagne erstellen" button on the page, including one inside a coupon or ad-credit popup').catch(() => {});
+      } else {
+        await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+      }
+    } else if (attempt === 0) {
       // Weg A: gruener "+ Create"-Button oben links (NICHT vom Overlay verdeckt, das sitzt oben rechts)
       await pTimeout(p.evaluate(() => { const b = [...document.querySelectorAll('button,a,div[role="button"]')].find(e => /^\s*\+?\s*(create|erstellen)\s*$/i.test((e.innerText || '').trim())); if (b) b.click(); }), 8000, 'click-create');
     } else if (attempt === 1) {
