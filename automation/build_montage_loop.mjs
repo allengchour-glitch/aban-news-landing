@@ -25,7 +25,9 @@ console.log(`Montage aus ${imgs.length} Bildern, ${DUR}s/Bild, ${XF}s Übergang.
 
 // Filter bauen: jedes Bild -> scale/crop/zoompan, dann xfade-Kette
 const fps = 30, frames = Math.round(DUR * fps);
-const inputs = imgs.map(f => `-loop 1 -t ${DUR} -i "${f}"`).join(' ');
+// FIX 2026-06-25: Eingabe als EIN Frame (-framerate 1 -t 1) -> zoompan d=frames erzeugt GENAU die Dauer
+// (sonst multipliziert zoompan d pro Eingabe-Frame -> Video 6x zu lang + langsam).
+const inputs = imgs.map(f => `-loop 1 -framerate 1 -t 1 -i "${f}"`).join(' ');
 let fc = '';
 imgs.forEach((_, i) => {
   // hochskalieren, croppen, langsamer Ken-Burns-Zoom, einheitlich
