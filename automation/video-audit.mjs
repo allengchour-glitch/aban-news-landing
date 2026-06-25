@@ -32,22 +32,23 @@ Flagge NUR echte Probleme. Antworte als JSON {"flag":true|false,"reasons":[...]}
 Sonst flag=false. Kurze deutsche reasons.`;
 
 function frames(v) {
+  // NUR ffmpeg (kein ImageMagick/montage -> lief am Windows-PC nicht). 3 Einzel-Frames, an Gemini als 3 Bilder.
   const tmp = path.join(os.tmpdir(), 'va-' + path.basename(v, '.mp4'));
-  const sheet = tmp + '.jpg';
-  try {
-    for (const [i, ss] of [['0', '1'], ['1', '50%'], ['2', '90%']].entries()) {
-      // 50%/90% via -ss prozentual geht nicht direkt -> feste Sekunden grob: 1 / 4 / 7
-      const t = ['1', '4', '7'][i];
-      execSync(`ffmpeg -y -ss ${t} -i "${v}" -frames:v 1 -vf "scale=240:427:force_original_aspect_ratio=increase,crop=240:427" "${tmp}-${i}.png"`, { stdio: 'ignore' });
-    }
-    execSync(`montage "${tmp}-0.png" "${tmp}-1.png" "${tmp}-2.png" -tile 3x1 -geometry +2+2 "${sheet}"`, { stdio: 'ignore' });
-    [0, 1, 2].forEach(i => { try { fs.unlinkSync(`${tmp}-${i}.png`); } catch {} });
-    return fs.existsSync(sheet) ? sheet : null;
-  } catch { return null; }
+  const out = [];
+  for (const [i, t] of ['1', '4', '7'].entries()) {
+    const fp = `${tmp}-${i}.jpg`;
+    try {
+      execSync(`ffmpeg -y -ss ${t} -i "${v}" -frames:v 1 -vf "scale=300:-1" "${fp}"`, { stdio: 'ignore' });
+      if (fs.existsSync(fp) && fs.statSync(fp).size > 500) out.push(fp);
+    } catch {}
+  }
+  return out; // 1-3 Frames; leer = wirklich kaputt
 }
 
-async function gemini(b64) {
-  const body = { contents: [{ parts: [{ text: PROMPT }, { inline_data: { mime_type: 'image/jpeg', data: b64 } }] }], generationConfig: { temperature: 0, maxOutputTokens: 300, thinkingConfig: { thinkingBudget: 0 } } };
+async function gemini(frameFiles) {
+  const parts = [{ text: PROMPT }];
+  for (const f of frameFiles) { try { parts.push({ inline_data: { mime_type: 'image/jpeg', data: fs.readFileSync(f).toString('base64') } }); } catch {} }
+  const body = { contents: [{ parts }], generationConfig: { temperature: 0, maxOutputTokens: 300, thinkingConfig: { thinkingBudget: 0 } } };
   for (let a = 0; a < 4; a++) {
     const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${KEY}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     if (r.status === 429 || r.status >= 500) { await sleep(3000 * (a + 1)); continue; }
@@ -61,16 +62,18 @@ async function gemini(b64) {
 (async () => {
   if (!KEY) { log('GEMINI_API_KEY fehlt -> No-op.'); process.exit(0); }
   const audited = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : { ts: '', done: {}, flagged: [] };
-  // Aktive Werbe-Rotation zuerst (mw-/luxe-/luma-/montage/werbung/reel/veo/flame), Rest danach
+  // Aktive Werbe-Rotation zuerst (mw-/luxe-/luma-/montage/werbung/reel/veo/flame), Rest danach.
+  // Fehlerhafte Eintraege (frame-/rate-limit-/parse-Fehler) automatisch NEU pruefen.
+  const isErr = v => (v?.reasons || []).some(r => /fehler|rate-limit|keine antwort|zu gross/.test(r));
   const prio = f => /^(mw-|luxe-.*9x16|luma-|montage|werbung-|reel-|veo-hero|flame-)/.test(f) ? 0 : 1;
-  const vids = fs.readdirSync(REELS).filter(f => f.endsWith('.mp4') && !audited.done[f]).sort((a, b) => prio(a) - prio(b) || a.localeCompare(b));
+  const vids = fs.readdirSync(REELS).filter(f => f.endsWith('.mp4') && (!audited.done[f] || isErr(audited.done[f]))).sort((a, b) => prio(a) - prio(b) || a.localeCompare(b));
   let n = 0;
   for (const f of vids) {
     if (n >= MAX) break;
-    const sheet = frames(path.join(REELS, f));
-    if (!sheet) { audited.done[f] = { flag: false, reasons: ['(frame-fehler)'] }; continue; }
-    const buf = fs.readFileSync(sheet); try { fs.unlinkSync(sheet); } catch {}
-    const res = await gemini(buf.toString('base64'));
+    const ff = frames(path.join(REELS, f));
+    if (!ff.length) { audited.done[f] = { flag: false, reasons: ['(frame-fehler)'] }; continue; }
+    const res = await gemini(ff);
+    ff.forEach(x => { try { fs.unlinkSync(x); } catch {} });
     audited.done[f] = res;
     if (res.flag) { audited.flagged = audited.flagged.filter(x => x.file !== f); audited.flagged.push({ file: f, reasons: res.reasons }); log('🚩', f, '->', (res.reasons || []).join('; ')); }
     else log('ok', f);
