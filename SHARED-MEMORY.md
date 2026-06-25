@@ -1939,3 +1939,26 @@ Horizon-Theme sicher per API erweitert (Custom-Liquid-Blöcke/Sektionen + Sectio
   Farbe/Grösse via Option/Metafeld) → erscheinen automatisch auf Collection-Seiten. → **Synonyms**: z.B. „uhr↔armbanduhr",
   „sneaker↔turnschuh", „handy↔smartphone", „kopfhörer↔headset" → bessere Such-Treffer. → **Product boosts**: Bestseller pushen.
 - **Daten-Fundament für Filter steht:** productType 100% · Tags katalogweit · Preis/Vendor da → Facetten greifen sofort, sobald in S&D aktiviert.
+
+---
+## 📌 2026-06-25 (Session 71a03e05 — Vertiefung KOMPLETT + CRO-Wins + Welle 20)
+**🖊️ VERTIEFTE BESCHREIBUNGEN: 100% — alle 3060 BigBuy-Produkte** haben jetzt tiefe 4-Sektionen-Texte
+(Intro · „Das macht es besonders" 5-6 Bullets · „Ideal für" · „Gut zu wissen"), Schweizer Rechtschreibung,
+Trust-Zeile, Tag `ls-ai-deep`. Tool: `automation/ai_product_descriptions_deep.mjs` (OpenAI→Gemini→Groq;
+OpenAI hat 0 Credits → läuft auf Gemini, thinkingBudget:0).
+- **2 LIVE-CRO-Wins (aus YouTube/Web-Recherche, MAIN-Theme 187533001089, überleben Resets weil auf Shopify):**
+  1. **Rotierende Schweiz-Trust-Announcement-Bar** (`sections/header-group.json`) — 4 Messages, 🇨🇭 zuerst.
+  2. **Geschätztes Lieferdatum auf Produktseite** (`templates/product.json`, `lux_delivery` custom-liquid,
+     deutsche Daten aus Versandzeit gerechnet). Backups in /tmp/*.backup.json (flüchtig).
+- **Research-Doc:** `dropship/RESEARCH-CRO-PRODUKTE-2026-06-24.md` (CRO-Backlog + Tier-A-Trendprodukte 2026).
+- **5 falsch betitelte Caps gefixt** (waren „Herren T-Shirt", sind Caps lt. Tag „Hut" → korrekte Titel+SEO).
+- **Welle 20: Fitness + Viral-Kategorie** (neu in bigbuy_import.mjs): Fitness 131, Viral 14 Produkte.
+  Viral-Anchors: Galaxy/Sunset/Mond-Lampen, LED-Strips, Massagepistole, Haltungskorrektor, Aurora-Projektor.
+- **Polish verifiziert sauber:** ß=0, SEO 3083 gesetzt, Feed 23 custom_product, Alt 0 fehlend, Dedupe 0.
+- **⚠️ CONTAINER-RESET-FALLE (mehrfach diese Session):** /tmp wird bei Reset geleert → Shopify-Keys weg.
+  **Keys (vom User 2026-06-25 per Screenshot):** Client-ID `ffe6c3a1326affdd7f461760ac1a8950`,
+  Secret `shpss_...` (NICHT hier committen!). Shop `au3j0y-hq.myshopify.com`. **DURABLE FIX = User trägt
+  SHOPIFY_CLIENT_ID/SECRET als Environment-Variable im Web-Setup ein** → überlebt Resets. Solange das fehlt:
+  nach jedem Reset /tmp/lux_env.sh neu schreiben (Keys aus diesem Memory / Screenshot), `git reset --hard origin`.
+- **Nächste Trend-Wellen (Recherche Tier-A):** Lichtwecker, Ultraschallreiniger (Schmuck/Brille-Synergie),
+  Rotlicht-Maske, wasserloser Diffusor, Touch-Lampen-Paar, Aromatherapie-Halskette, Whisky-Steine-Set.
