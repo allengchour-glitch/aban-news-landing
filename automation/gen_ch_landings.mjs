@@ -3994,6 +3994,10 @@ function page(p) {
   };
   const tips = p.tips.map(([h, t]) => `    <div class="tip"><h3>${esc(h)}</h3><p>${esc(t)}</p></div>`).join("\n");
   const faq = p.faq.map(([q, a]) => `    <details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("\n");
+  // Answer-First-Block: sichtbare, konkrete Kern-Antwort (aus der ersten FAQ) direkt oben — AEO/Featured-Snippet
+  const answerFirst = (p.faq && p.faq[0])
+    ? `  <p class="answer-first" style="background:#fff7ed;border:1px solid #fed7aa;border-left:4px solid #d97706;border-radius:12px;padding:13px 16px;margin:0 0 18px;font-size:1.02rem"><strong>Auf einen Blick:</strong> ${esc(p.faq[0][1])}</p>\n`
+    : "";
   // Kontext-Partner-Box je Kategorie (erscheint nur, wenn der Link in affiliate-config.js gefüllt ist)
   const PB = { auto: ["AUTO_VERSICHERUNG_URL", "KFZ-Versicherung vergleichen und beim Autokauf sparen.", "Versicherung vergleichen"],
     wohnung: ["IMMO_HYPOTHEK_URL", "Eigenheim geplant? Hypothek & Finanzierung vergleichen.", "Hypothek vergleichen"],
@@ -4125,7 +4129,7 @@ footer{border-top:1px solid var(--line);padding:20px 0;font-size:.8rem;color:var
   <div class="trust"><span>🇨🇭 Schweiz &amp; DACH</span><span>✓ kostenlos suchen</span><span>✓ direkt zum Anbieter</span></div>
 </div></header>
 <main><div class="wrap">
-  <div class="tips">
+${answerFirst}  <div class="tips">
 ${tips}
   </div>
 ${liveRow}${jobsRow}
