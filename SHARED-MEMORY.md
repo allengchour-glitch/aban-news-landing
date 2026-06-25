@@ -1991,3 +1991,6 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 ## 📌 2026-06-25 (Nachtrag — Menü + Trend-Dublette)
 - **❄️ Klima & Ventilatoren ins Hauptmenü** aufgenommen (Top-Level Pos. 10, `/collections/klima-ventilatoren`). Menü-ID `gid://shopify/Menu/310224093569`, alle 163 Items Typ HTTP, Sub-Menüs erhalten. Akku-Nackenventilatoren (3) ergänzt.
 - **⚠️ TREND-DUBLETTE gefixt:** Es gab `trends-gadgets` (Menü, „🔥 Trends & Gadgets", Regel TAG=`trend`, 31 Prod.) UND meine versehentliche `trend-gadgets` (Regel TAG=`viral`, 14). Meine viralen Produkte haben beide Tags → schon im Menü-Collection. Habe 2 fehlende `trend`-Tags ergänzt + meine Dublette `trend-gadgets` UNPUBLIZIERT. **Lehre:** vor neuer Collection prüfen, ob ähnliche existiert (Handle-Varianten mit/ohne „s"!).
+
+## 📌 2026-06-25 (Nachtrag 2 — Breadcrumbs auf Collection-Seiten)
+- **Breadcrumb jetzt auch auf KATEGORIE-Seiten** (`templates/collection.json`, neue erste Section `lux_breadcrumb` custom-liquid): Home › Eltern-Kategorie › aktuelle Collection. **Eltern wird aus dem Menü `linklists.main-menu` gelesen** (z.B. Ohrringe → liegt unter Schmuck → zeigt „Schmuck", klickbar = 1 Ebene zurück). Verifiziert: sub-ohrringe→Schmuck, damen-mode→Frauen. + BreadcrumbList JSON-LD. (Produktseiten-Breadcrumb `lux_breadcrumb` in product.json gibt's schon.)
