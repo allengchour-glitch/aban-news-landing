@@ -1375,7 +1375,7 @@ Lücken, Vendor auf allen BigBuy, color-Metafeld teils). **NICHT erneut recherch
   - CF-API wird bei zu vielen Calls schnell **10429 rate-limited** → nicht hämmern.
 - **LÖSUNG (2 Wege):** (A) **Dashboard-UI** (kein Token nötig): Worker → Settings → Variables and Secrets → beide Secrets +
   SHOP_AUTOPILOT_LIVE=1 → Save. (B) **Richtiger Token:** „Edit Cloudflare Workers"-Vorlage, Account einschliessen,
-  **Client-IP-Filter LEER** (Cloud-IP wechselt!). Werte: CLIENT_ID `ffe6c3a1326affdd7f461760ac1a8950`,
+  **Client-IP-Filter LEER** (Cloud-IP wechselt!). Werte: CLIENT_ID (session-lokal, nicht im Repo),
   CLIENT_SECRET `shpss_…` (vom User; **rotieren, da im Klartext gepostet**).
 - **User-PC-Falle:** `wrangler deploy` in `C:\Users\allen\` erzeugte aus Versehen einen Junk-Worker **„allen"** (lokale Dateien
   inkl. .git hochgeladen) → harmlos, im Dashboard löschen. Repo liegt in der CLOUD, nicht auf dem Windows-PC → User soll's NICHT lokal versuchen.
