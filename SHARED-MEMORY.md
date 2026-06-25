@@ -1994,3 +1994,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 
 ## 📌 2026-06-25 (Nachtrag 2 — Breadcrumbs auf Collection-Seiten)
 - **Breadcrumb jetzt auch auf KATEGORIE-Seiten** (`templates/collection.json`, neue erste Section `lux_breadcrumb` custom-liquid): Home › Eltern-Kategorie › aktuelle Collection. **Eltern wird aus dem Menü `linklists.main-menu` gelesen** (z.B. Ohrringe → liegt unter Schmuck → zeigt „Schmuck", klickbar = 1 Ebene zurück). Verifiziert: sub-ohrringe→Schmuck, damen-mode→Frauen. + BreadcrumbList JSON-LD. (Produktseiten-Breadcrumb `lux_breadcrumb` in product.json gibt's schon.)
+
+## 📌 2026-06-25 (Nachtrag 3 — Preis-Desaster bereinigt + Prävention)
+- **🔴 38 generische ÜBERTEUERTE Produkte auf DRAFT** (CHF 350–1580): generische Uhren/Parfums/Spülmaschinen/Soundbars/Gaming-Stühle/E-Scooter/Projektoren ohne Marke. URSACHE: `chf()`-Marge ×2.6 auf hohe Einkaufspreise (€200×2.6=CHF494). Echte Marken (15: Tissot/MK/Versace/Seiko/Chopard…) bei CHF 400–675 BLEIBEN (legitim).
+- **5 Dyson-Staubsauger** waren schon DRAFT (CHF 709–1580), Collection `staubsauger-haushalt` (leer) UNPUBLIZIERT. **Dyson-Lehre bestätigt: Premium-Marken NICHT per bulk-import.**
+- **✅ PRÄVENTION eingebaut** (`bigbuy_import.mjs` `chf()`): gestaffelte Marge — eur>150→×1.5, >80→×1.8, >40→×2.2, sonst MARGIN(2.6). Verhindert künftige Preis-Desaster bei teuren Einkäufen.
+- **Check-Tool:** `status:active` + Preis>350 + kein Marken-Keyword = generisch überteuert → DRAFT. (Script /tmp/overprice.mjs flüchtig.)
