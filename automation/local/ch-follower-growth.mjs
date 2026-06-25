@@ -34,6 +34,7 @@
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 12min -> exit");process.exit(1);},720000).unref(); // 2026-06-25 Sweep: kein cmd-poll-Queue-Freeze
 
 // ---- Schweizer Zielgruppe (Saat) ---------------------------------------------
 // Hashtags, unter denen genau unsere Wunschkund:innen posten (CH-Mode/Schmuck/Lifestyle).

@@ -15,6 +15,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+setTimeout(()=>{console.log("WATCHDOG 8min -> exit");process.exit(1);},480000).unref(); // 2026-06-25 Sweep: kein cmd-poll-Queue-Freeze
 
 const __dir = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dir, '../..');

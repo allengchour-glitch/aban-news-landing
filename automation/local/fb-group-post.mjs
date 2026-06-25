@@ -16,6 +16,7 @@ import { chromium } from 'playwright-core';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 12min -> exit");process.exit(1);},720000).unref(); // 2026-06-25 Sweep: kein cmd-poll-Queue-Freeze
 
 const DRY = process.argv.includes('--dry');
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));

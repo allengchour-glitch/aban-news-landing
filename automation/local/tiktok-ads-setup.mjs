@@ -11,6 +11,7 @@ import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+setTimeout(()=>{console.log("WATCHDOG 8min -> exit");process.exit(1);},480000).unref(); // 2026-06-25 Sweep: kein cmd-poll-Queue-Freeze
 
 const ROOT = path.dirname(path.dirname(path.dirname(fileURLToPath(new URL(import.meta.url)))));
 const SHOT = path.join(ROOT, 'automation', 'local', 'tiktok-ads-shots');

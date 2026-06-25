@@ -24,6 +24,7 @@
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 12min -> exit");process.exit(1);},720000).unref(); // 2026-06-25 Sweep: kein cmd-poll-Queue-Freeze
 
 const DAYS = Number(process.env.DAYS || 14);
 const MAX  = Number(process.env.MAX  || 50);

@@ -23,6 +23,7 @@
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 8min -> exit");process.exit(1);},480000).unref(); // 2026-06-25 Sweep: kein cmd-poll-Queue-Freeze
 
 const CDP = process.env.CDP_URL || 'http://127.0.0.1:9222';
 const DRY = process.argv.includes('--dry');

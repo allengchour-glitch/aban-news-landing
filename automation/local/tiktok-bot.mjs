@@ -22,6 +22,7 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+setTimeout(()=>{console.log("WATCHDOG 8min -> exit");process.exit(1);},480000).unref(); // 2026-06-25 Sweep: kein cmd-poll-Queue-Freeze
 
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const REPORTS = path.join(ROOT, 'reports');
