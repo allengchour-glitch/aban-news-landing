@@ -1,5 +1,13 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🏆 PURELEI-PLAYBOOK (CizQ6 2026-06-25) — bewiesener Cold-Start für erste Verkäufe
+DACH-Wasserfest-Schmuck-Leader (aus €500 → €60M, exakt unsere Nische) reverse-engineert. Voll: `dropship/PURELEI-PLAYBOOK.md`.
+**Die echten Hebel für erste Verkäufe (= [USER], wichtigster Teil):**
+1. **Creator-SEEDING** — Gratis-Produkt an passende CH-Mikro-Creatorinnen + **persönlicher Rabattcode** pro Creator (Tracking). Fit>Reichweite, Test-Koop zuerst. DAS war PURELEIs Cold-Start (€1M im 1. Jahr), nicht Paid-Ads.
+2. **Reviews** (Judge.me post-purchase Auto-Mail = unser Trusted-Shops-Pendant) — Review-Volumen IST das Marketing-Asset gegen 0★.
+**Social-Session (ich) macht [API/Content]:** Wasserfest-PROOF-Test-Reels (Flagship), PDP-Copy auf PURELEI-Positionierung (99% Edelstahl/18K/rostfrei/Glanz beim Schwimmen-Duschen-Regen + Garantie), 3-4 Drops/Mt mit Deadline.
+
+
 # 🚀 LERN-RUNDE 2026-06-25 — CONVERSION-FIX (CizQ6, 3 Agenten) — TOP-Hebel für Theme/User
 Daten: 4885 Views/7T, nur 8 ATC (0.16% = 29x unter Schnitt). **Engpass = mobile PDP + Trust, NICHT Traffic.** Voll: `dropship/LERN-RUNDE-2026-06-25.md`.
 **THEME-SESSION (höchste Conversion-Prio, in Reihenfolge):**
