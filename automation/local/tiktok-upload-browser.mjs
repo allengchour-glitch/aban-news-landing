@@ -31,6 +31,16 @@ const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const REELS = path.join(ROOT, 'reels');
 const CAPS = JSON.parse(fs.readFileSync(path.join(ROOT, 'automation', 'local', 'reels-captions.json'), 'utf8'));
 const DONE = path.join(ROOT, 'automation', 'local', 'tiktok-upload-done.txt'); // fix am Repo-Root → nie Re-Post bei anderem cwd
+// RESET-FESTER LOKAL-LEDGER (FIX 2026-06-25, User: Dubletten auf TikTok): CLOUD-AN macht jede Runde
+// `git reset --hard` -> wenn der committe Ledger-Push mal scheitert, geht der Eintrag verloren = Re-Post.
+// Diese LOKALE, UNGETRACKTE Datei ueberlebt `git reset --hard` (entfernt nur getrackte Aenderungen, keine
+// untracked Files) -> garantiert kein Doppelpost, auch wenn der Commit/Push scheitert.
+const LOCALDONE = path.join(ROOT, 'automation', 'local', '.tiktok-posted.local');
+const readDone = () => {
+  const parse = p => fs.existsSync(p) ? fs.readFileSync(p, 'utf8').split('\n').map(l => l.split('|')[0].trim()).filter(Boolean) : [];
+  return [...new Set([...parse(DONE), ...parse(LOCALDONE)])];
+};
+const markDone = (base) => { const line = base + '|' + new Date().toISOString() + '\n'; try { fs.appendFileSync(DONE, line); } catch {} try { fs.appendFileSync(LOCALDONE, line); } catch {} };
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // STATUS-DATEI (Observability, User 2026-06-20 „du musst alles im Griff haben"): der PC committet sie,
@@ -44,16 +54,18 @@ function writeStatus(result, reason, extra = {}) {
 function pickReel() {
   if (argFile) return path.resolve(argFile);
   // Ledger-Zeilen sind "dateiname" ODER "dateiname|ISO-Zeit" (Zeitstempel seit 2026-06-21 fuer Doppel-Erkennung).
-  const done = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').map(l => l.split('|')[0].trim()).filter(Boolean) : [];
-  // PRODUKT-DEDUP (FIX 2026-06-23, User: Fedora 3x auf TikTok): Ledger prüfte nur DATEINAME -> 3 versch.
-  // Dateien desselben Produkts (luxe-meisterwerk-filz-fedora / mw-lz-fedora / ...) galten als verschieden.
-  // Jetzt: aus den zuletzt geposteten Dateien Produkt-Tokens ableiten; Kandidat überspringen, wenn er ein
-  // signifikantes Token teilt (= gleiches Produkt), nicht nur exakt gleichen Dateinamen.
-  const STOP = new Set('luxe meisterwerk montage 9x16 meta reel video clip fast main showcase hero ultimate jewelry cinematic breitkrempig schwiz schweiz mode'.split(' '));
-  const toks = (name) => name.toLowerCase().replace(/\.mp4$/, '').split(/[^a-zäöü0-9]+/).filter(t => t.length >= 4 && !STOP.has(t) && !/^\d+$/.test(t));
-  const recentDone = done.slice(-30);
-  const doneTokens = new Set(recentDone.flatMap(toks));
-  const sharesProduct = (f) => toks(f).some(t => doneTokens.has(t));
+  const done = readDone(); // committer + lokaler reset-fester Ledger zusammen
+  // PRODUKT-DEDUP (FIX 2026-06-23/25, User: Fedora/Rucksack/Kette/Ohrringe je 2x auf TikTok): Ledger prüfte nur
+  // DATEINAME -> versch. Dateien desselben Produkts galten als verschieden. Jetzt: Produkt-Tokens ableiten +
+  // EN/DE-Synonyme normalisieren (backpack=rucksack, fedora/filzhut=hut, necklace=kette, earring=ohrring) +
+  // gegen ALLE bisher geposteten prüfen (nicht nur letzte 30) -> selbes Produkt landet nie zweimal.
+  // STOP = generische + KATEGORIE-Woerter (sonst wuerde 1 Rucksack alle Rucksaecke sperren). Match nur auf
+  // SPEZIFISCHE Produktnamen (onyx, rose, montana, papillon, lido, capri...) -> selbes Produkt blockt, anderes nicht.
+  const STOP = new Set(('luxe meisterwerk montage 9x16 meta reel video clip fast main showcase hero ultimate jewelry cinematic breitkrempig schwiz schweiz mode damen herren neu premium sommer ' +
+    'rucksack backpack kette halskette necklace ohrring ohrringe earring earrings ring armband armreif tasche handtasche crossbody shopper bag beutel hut filzhut fedora filz brille sonnenbrille sunglasses sneaker sneakers schuh blazer kleid hemd polo weste schal stola anhaenger anhang set wasserfest stahl gold silber').split(/\s+/));
+  const toks = (name) => [...new Set(name.toLowerCase().replace(/\.mp4$/, '').split(/[^a-zäöü0-9]+/).filter(t => t.length >= 4 && !STOP.has(t) && !/^\d+$/.test(t)))];
+  const doneTokens = new Set(done.flatMap(toks));   // gegen ALLE bisher geposteten (nicht nur letzte 30)
+  const sharesProduct = (f) => { const t = toks(f); return t.length > 0 && t.some(x => doneTokens.has(x)); };
   // PRIORITÄT (User 2026-06-17 „wenn postist TikTok"): erst die besten Hero-Creatives, dann alle
   // luxe-*-9x16-Reels, dann die alten *-9x16-meta. So landen die neuen Top-Videos auch auf TikTok.
   // MEISTERWERKE ZUERST (User 2026-06-19 „muss meisterwerk sein, komplette videos") + Vollstaendigkeits-Gate.
@@ -86,7 +98,7 @@ function pickReel() {
       fs.writeFileSync(DONE, keep.length ? keep.join('\n') + '\n' : '');
     } catch { try { fs.writeFileSync(DONE, ''); } catch {} }
     log('♻️ Alle Reels gepostet → Rotation startet neu (letzte ' + KEEP + ' behalten = keine Dublette).');
-    const done2 = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').map(l => l.split('|')[0].trim()).filter(Boolean) : [];
+    const done2 = readDone();
     for (const f of cand) if (!done2.includes(f)) return path.join(REELS, f);
     return path.join(REELS, cand[0]);
   }
@@ -148,7 +160,7 @@ function toSilent(file) {
     const failed = /QA-FAIL/i.test(qaOut);
     const passed = /QA-OK|bestanden|premium=true/i.test(qaOut);
     if (passed && !failed) break;                       // bestanden -> posten (Exit-Code egal)
-    log('⚠️ QA durchgefallen → ueberspringe ' + path.basename(file)); fs.appendFileSync(DONE, path.basename(file) + '|' + new Date().toISOString() + '\n'); file = pickReel();
+    log('⚠️ QA durchgefallen → ueberspringe ' + path.basename(file)); markDone(path.basename(file)); file = pickReel();
   }
   if (!file || !fs.existsSync(file)) { log('Kein QA-bestandenes Reel offen. No-op.'); process.exit(0); }
   const slug = path.basename(file).replace('.mp4', '');
@@ -231,7 +243,7 @@ function toSilent(file) {
       }
     }
     await sleep(12000);
-    fs.appendFileSync(DONE, path.basename(file) + '|' + new Date().toISOString() + '\n');
+    markDone(path.basename(file));
     // DONE-Ledger SOFORT committen+pushen (Lehre 2026-06-21 Doppelpost): sonst loescht 'git reset --hard'
     // (SUPERBOT/Update) den lokalen Eintrag -> derselbe Clip wird nochmal gepostet. Durabel = nie wieder doppelt.
     try { execSync('git add automation/local/tiktok-upload-done.txt reports/tiktok-last-run.json && git commit -m "auto(tiktok): posted-ledger ' + path.basename(file) + '" && git pull --rebase origin claude/luxestyle-product-CizQ6 && git push origin claude/luxestyle-product-CizQ6', { cwd: ROOT, stdio: 'ignore' }); } catch {}
