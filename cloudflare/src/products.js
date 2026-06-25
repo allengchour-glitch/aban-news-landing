@@ -290,5 +290,45 @@ export const PRODUCTS = [
     "name": "schwarzes-fu-balltrikot-eleganz-fur-jeden-einsatz-1137359",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4066745721538_S64174886_P00.jpg",
     "label": "⚽ Adidas Tiro23 Trikot"
+  },
+  {
+    "name": "ultraschallreiniger-sanfte-tiefenreinigung-fur-gla-1006569",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4006160331202_S91106982_P00.jpg",
+    "label": "Ultraschallreiniger"
+  },
+  {
+    "name": "pinker-lichterzauber-led-lichterkette-fur-dein-zuh-709218",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8445147204119_S8803689_P11_2414b1c6-dc4b-4940-9511-6b0d85650408.jpg",
+    "label": "Pinker Lichterzauber"
+  },
+  {
+    "name": "muskel-profi-massagepistole-mit-warme-kalte-power-540270",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8435527825041_V0103719_000_MKT7_bff6ddfd-183b-48ac-9517-f67d43e6c0a7.jpg",
+    "label": "Muskel-Profi"
+  },
+  {
+    "name": "hantelbank-fur-effektives-krafttraining-zuhause-1300745",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/v0710222_10_673ec56c-5063-4809-bc28-016fc8bc39f1.jpg",
+    "label": "Hantelbank für effektives Krafttrainin"
+  },
+  {
+    "name": "kettlebell-hantelset-vielseitiges-krafttraining-1300717",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6973442822360_R00_c7bbafbb-0f55-4f87-adc0-a1fa0dc3838d.jpg",
+    "label": "Kettlebell & Hantelset"
+  },
+  {
+    "name": "sternenhimmel-projektor-dein-zuhause-wird-zur-gala-339509",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/V0103544_000_MKT5.jpg",
+    "label": "Sternenhimmel Projektor"
+  },
+  {
+    "name": "smarter-haltungstrainer-vibrations-feedback-fur-di-159690",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/V0103254_000_MKT5.jpg",
+    "label": "Smarter Haltungstrainer"
+  },
+  {
+    "name": "anpassbarer-haltungstrainer-fur-perfekte-korperhal-81502",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/v0101117_010_mkt9.jpg",
+    "label": "Anpassbarer Haltungstrainer"
   }
 ];
