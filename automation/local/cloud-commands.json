@@ -1,5 +1,5 @@
 [
-  { "id": "2026-06-25a-datasharing-go", "cmd": "datasharing-go" },
-  { "id": "2026-06-25a-nanobanana", "cmd": "nanobanana" },
-  { "id": "2026-06-25a-meta-dm", "cmd": "meta-dm" }
+  { "id": "2026-06-25b-tt-events", "cmd": "tt-events" },
+  { "id": "2026-06-25b-datasharing-go", "cmd": "datasharing-go" },
+  { "id": "2026-06-25b-meta-dm", "cmd": "meta-dm" }
 ]
