@@ -1,0 +1,28 @@
+# OFF-BRAND-THEMEN — getrennt vom LuxeStyle-Frauen-Schmuck/Mode-Feed (User 2026-06-25 „fussball, wm, club sachen trennen").
+# ──────────────────────────────────────────────────────────────────────────────────────────────
+# ZWECK: „trennen", NICHT hart verbieten. Diese THEMEN gehören NICHT in den autonomen Kern-Social-Feed
+#   (Frauen-Schmuck/Mode). Greift in automation/brain/build_queue.mjs als separater Theme-Filter
+#   (WORTGRENZE, case-insensitive) gegen caption/image/video. Trend-Scanner seedet diese Themen nicht mehr.
+# WARUM: (1) Frauen-Marke nicht verwässern (Lehre: Herren/Sport spalten das Publikum).
+#        (2) FIFA-„Fußball-WM"-Framing ist DE-lastig → kollidiert mit STRIKT-CH/Mundart.
+# WORTGRENZE: kurze Begriffe (wm) matchen nur als ganzes Wort → kein Fehl-Treffer in z.B. „Swimwear".
+# ⚠️ „club" steht hier BEWUSST NICHT drin: die einzigen Club-Inhalte sind legitime POD-Badge-Designs
+#    (surf club / music club, „Selbst gestalten") = eigene POD-Linie, strukturell schon getrennt
+#    (siehe social/designs/prompts.json). Ein globaler „club"-Block würde diese Designs kaputt machen.
+# Reversibel: Begriff hier entfernen = Thema darf wieder in den Feed.
+fussball
+fußball
+football
+wm 2026
+fußball-wm
+fussball-wm
+wm
+weltmeister
+weltmeisterschaft
+fifa
+champions league
+bundesliga
+super league
+fussballfans
+fußballfans
+soccer

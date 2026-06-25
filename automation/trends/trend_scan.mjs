@@ -51,8 +51,12 @@ function musicCatalogMoods() {
   } catch { return {}; }
 }
 
+// 🏷️ Off-Brand-Themen aus den Google-Trends-Seeds filtern (User 2026-06-25 „fussball, wm, club sachen trennen"):
+// Sport/Fussball/WM gehören NICHT in den Frauen-Schmuck/Mode-Feed → gar nicht erst als Idee seeden.
+const OFF_BRAND = /\b(fussball|fußball|football|soccer|wm 2026|fußball-wm|fussball-wm|weltmeister|weltmeisterschaft|fifa|champions league|bundesliga|super league)\b/i;
+
 (async () => {
-  const trends = await googleTrendsCH();
+  const trends = (await googleTrendsCH()).filter(t => !OFF_BRAND.test(t));
   const ttReport = ownTikTokSignals();
   const moods = musicCatalogMoods();
 
@@ -62,7 +66,8 @@ function musicCatalogMoods() {
 LuxeStyle-Kategorien: Damen-/Herrenmode, Schmuck, Beauty, Schuhe, Taschen, Hüte, Outdoor/Camping, Küche, Werkzeug, Bademode.
 Verfügbare Musik-Moods im Tool: ${MOODS.join(', ')}.
 Gib JSON: {"content_ideen":[{"idee":"…","kategorie":"…","hook_mundart":"…","musik_mood":"<einer der Moods>","hashtags":["#…"]}], "trend_musik_note":"…"}.
-3–5 Ideen, Hooks kurz/Mundart, Hashtags CH (#schweiz/#schweizmode/#ootdschweiz + Stadt rotieren), max 5 Tags pro Idee.`;
+3–5 Ideen, Hooks kurz/Mundart, Hashtags CH (#schweiz/#schweizmode/#ootdschweiz + Stadt rotieren), max 5 Tags pro Idee.
+WICHTIG: KEINE Fussball-/WM-/FIFA-/Sport-Themen — die gehören NICHT zu dieser Frauen-Schmuck/Mode-Marke (getrennt halten).`;
 
   let ai = null, provider = 'none';
   const g = await generate({ system, prompt, json: true, maxTokens: 900 });

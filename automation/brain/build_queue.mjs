@@ -279,6 +279,24 @@ function loadReels() {
   const bannedRemoved = before - clean.length;
   out.length = 0; out.push(...clean);
 
+  // 🏷️ THEME-SEPARATION (User 2026-06-25 „fussball, wm, club sachen trennen"): Off-Brand-Themen
+  // (Fussball/WM/Sport) gehören NICHT in den Frauen-Schmuck/Mode-Kern-Feed → separat halten.
+  // WORTGRENZE-Match (case-insensitive), damit kurze Begriffe (wm) keine Fehl-Treffer geben.
+  let themes = [];
+  try {
+    themes = fs.readFileSync(path.join(ROOT, 'automation', 'OFF-BRAND-THEMES.txt'), 'utf8')
+      .split('\n').map(l => l.trim().toLowerCase()).filter(l => l && !l.startsWith('#'));
+  } catch {}
+  let themeRemoved = 0;
+  if (themes.length) {
+    const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const rx = new RegExp('\\b(' + themes.map(esc).join('|') + ')\\b', 'i');
+    const beforeT = out.length;
+    const keep = out.filter(x => !rx.test(((x.caption || '') + ' ' + (x.image || '') + ' ' + (x.video || ''))));
+    themeRemoved = beforeT - keep.length;
+    out.length = 0; out.push(...keep);
+  }
+
   // 🛡️ DEDUP-GARANTIE (User 2026-06-16 „doppelt bilder"): dieselbe Bild-/Video-URL darf NIE
   // zweimal im Grid (Bild/Reel) stehen → sonst doppelte Feed-Posts. Stories (ephemer, nicht im
   // Grid) dürfen ein Produkt erneut zeigen, aber nicht sich selbst doppeln.
@@ -297,7 +315,7 @@ function loadReels() {
 
   if (DRY) { console.log(JSON.stringify(out.slice(0, 5), null, 2)); console.log(`… ${out.length} Posts (dry, ${removed} Dubletten entfernt): ${JSON.stringify(dcounts)}`); process.exit(0); }
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
-  console.log(`✅ Autopost-Queue neu gebaut: ${out.length} Posts (Mix, ${removed} Dubletten + ${bannedRemoved} VERBOTENE entfernt) → ${path.relative(ROOT, OUT)}`);
+  console.log(`✅ Autopost-Queue neu gebaut: ${out.length} Posts (Mix, ${removed} Dubletten + ${bannedRemoved} VERBOTENE + ${themeRemoved} Off-Brand-Themen entfernt) → ${path.relative(ROOT, OUT)}`);
   console.log(`   Formate: ${JSON.stringify(dcounts)} (Bilder+Reels+Stories, alle CH-weit, KEINE Grid-Dubletten)`);
   console.log('   ⚠️ Nach Queue-Änderung: `wrangler deploy` (Worker bäckt queue.json beim Deploy ein).');
 })();
