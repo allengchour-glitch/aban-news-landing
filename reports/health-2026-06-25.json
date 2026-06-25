@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-25T11:28:09.627Z",
+  "ts": "2026-06-25T17:28:09.503Z",
   "ai": {
     "groq": "live",
     "gemini": "live",
@@ -22,7 +22,7 @@
   },
   "data": {
     "music_tracks": 11,
-    "top_products": 27,
+    "top_products": 21,
     "text_image_cards": 21,
     "google_trends_ch": "erreichbar",
     "image_gen_free": "erreichbar"
