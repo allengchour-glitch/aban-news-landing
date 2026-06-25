@@ -1,15 +1,15 @@
 {
-  "ts": "2026-06-25T17:28:02.139Z",
+  "ts": "2026-06-25T23:28:03.324Z",
   "platforms": {
     "tiktok": {
-      "result": "POSTED",
-      "reason": "Veroeffentlicht (Bestaetigung geklickt)",
-      "file": "mw-filzhut-montana-breitkrempig.mp4",
-      "vor_min": 4377
+      "result": "SOUND_DIAG",
+      "reason": "Sound-Panel-Screenshots erstellt",
+      "file": "mw-statement-ohrringe-onyx-geom.mp4",
+      "vor_min": 139
     },
     "campaign": {
-      "result": "CRASH",
-      "vor_min": 1324
+      "result": "WIZARD_DIAG",
+      "vor_min": 159
     },
     "meta": {
       "index": 25,
@@ -21,7 +21,7 @@
             "message": "(#10) Application does not have permission for this action",
             "type": "OAuthException",
             "code": 10,
-            "fbtrace_id": "AL3y4s3qbG5sqSj-d5EzF57"
+            "fbtrace_id": "AIlIsZsLYZK2ge8RvrZEqVn"
           }
         }
       },
@@ -32,7 +32,7 @@
             "message": "(#200) Subject does not have permission to post videos on this target, due to lack of pages_manage_posts permission.",
             "type": "OAuthException",
             "code": 200,
-            "fbtrace_id": "ARM2KAEOtS8QZeWEhy7qwz0"
+            "fbtrace_id": "AU47NgHmjZC8uXa4oY00dYJ"
           }
         }
       },
@@ -40,7 +40,7 @@
         "skipped": "keine TikTok-Creds"
       },
       "insights": {
-        "ts": "2026-06-25T17:28",
+        "ts": "2026-06-25T23:28",
         "ig": {
           "posts": 0,
           "eng": 0,
@@ -63,9 +63,8 @@
   },
   "duplicates": [],
   "errors": [
-    "Kampagne: CRASH — "
+    "TikTok: SOUND_DIAG — Sound-Panel-Screenshots erstellt",
+    "Kampagne: WIZARD_DIAG — "
   ],
-  "ok": [
-    "TikTok zuletzt OK (mw-filzhut-montana-breitkrempig.mp4, vor 4377 min)"
-  ]
+  "ok": []
 }

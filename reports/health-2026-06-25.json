@@ -1,23 +1,23 @@
 {
-  "ts": "2026-06-25T19:41:45.962Z",
+  "ts": "2026-06-25T23:28:09.404Z",
   "ai": {
-    "groq": "kein Key",
-    "gemini": "kein Key",
+    "groq": "live",
+    "gemini": "live",
     "together": "kein Key",
-    "deepseek": "kein Key",
+    "deepseek": "down",
     "openrouter": "kein Key",
     "cloudflare": "kein Key",
     "mistral": "kein Key",
-    "openai": "kein Key"
+    "openai": "down"
   },
   "binaries": {
-    "ffmpeg": "ok",
-    "yt-dlp": "ok",
-    "piper": "ok",
-    "python3": "ok",
-    "node": "ok",
-    "curl": "ok",
-    "gallery-dl": "ok",
+    "ffmpeg": "fehlt",
+    "yt-dlp": "fehlt",
+    "piper": "fehlt",
+    "python3": "fehlt",
+    "node": "fehlt",
+    "curl": "fehlt",
+    "gallery-dl": "fehlt",
     "wrangler": "fehlt"
   },
   "data": {
@@ -28,8 +28,11 @@
     "image_gen_free": "erreichbar"
   },
   "summary": {
-    "ai_live": [],
-    "ai_live_count": 0,
+    "ai_live": [
+      "groq",
+      "gemini"
+    ],
+    "ai_live_count": 2,
     "automation_ok": true
   }
 }
