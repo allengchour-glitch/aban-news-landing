@@ -1962,3 +1962,14 @@ OpenAI hat 0 Credits → läuft auf Gemini, thinkingBudget:0).
   nach jedem Reset /tmp/lux_env.sh neu schreiben (Keys aus diesem Memory / Screenshot), `git reset --hard origin`.
 - **Nächste Trend-Wellen (Recherche Tier-A):** Lichtwecker, Ultraschallreiniger (Schmuck/Brille-Synergie),
   Rotlicht-Maske, wasserloser Diffusor, Touch-Lampen-Paar, Aromatherapie-Halskette, Whisky-Steine-Set.
+
+## 📌 2026-06-25 (Dubletten-Bereinigung — Lehre: Container-Reset-Falle)
+**20 Reset-Dubletten gefunden & auf DRAFT gesetzt** (nicht gelöscht — reversibel): 11 Fitness/Viral + 9 katalogweit
+(Damenuhren, Naruto-Brettspiel, Shazam-Figuren). **URSACHE:** Container-Neustarts setzten `dropship/bigbuy_done.txt`
+per `git reset --hard origin` auf alten Stand zurück → `bigbuy_import.mjs` hielt schon angelegte Produkte für neu und
+importierte sie ein 2. Mal (neuer Titel/Handle, gleiche BigBuy-ID am Handle-Ende).
+**ERKENNUNG/FIX (Tool-Pattern, wiederverwendbar):** aktive Produkte nach `/-(\d{4,})$/` (BigBuy-ID im Handle) gruppieren;
+Gruppen >1 = Dubletten; pro Gruppe das `ls-ai-deep`-getaggte/jüngste behalten, Rest auf DRAFT. Script-Vorlage war
+`/tmp/dedup_all.mjs` (flüchtig). **PRÄVENTION künftig:** nach jedem Container-Reset VOR einem Import-Lauf prüfen, ob der
+Ledger aktuell ist (`wc -l dropship/bigbuy_done.txt` gegen erwartete Zahl), sonst erst `git pull`/Ledger sichern.
+Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
