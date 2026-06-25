@@ -1,5 +1,17 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🚀 LERN-RUNDE 2026-06-25 — CONVERSION-FIX (CizQ6, 3 Agenten) — TOP-Hebel für Theme/User
+Daten: 4885 Views/7T, nur 8 ATC (0.16% = 29x unter Schnitt). **Engpass = mobile PDP + Trust, NICHT Traffic.** Voll: `dropship/LERN-RUNDE-2026-06-25.md`.
+**THEME-SESSION (höchste Conversion-Prio, in Reihenfolge):**
+1. **Accelerated-Checkout-Buttons auf mobiler PDP sichtbar** (Theme-Editor → „Show dynamic checkout buttons" → ShopPay/Apple/Google) = grösster gratis Hebel, umgeht 9×-Leak.
+2. **Above-the-fold-Stack mobil:** Titel → 1:1-Bild → Preis-mit-Sparmathe → Swatches → Sticky-ATC → 1 Liefer-/Retouren-Zeile. Rest weg.
+3. **Swatches statt Varianten-Dropdowns** (+3-4% mobil).
+4. **Echte Urgency** (realer Versand-Cutoff-Countdown + echter Lagerbestand) — Fake ist in CH ILLEGAL (SECO/Temu 2025).
+5. Speed: INP/LCP — App-Scripts entschlacken, Hero-Bild `fetchpriority=high` nie lazy.
+**USER (1×, grösste Hebel):** Kauf-auf-Rechnung im mobilen Checkout sichtbar (Klarna prüfen) · Klaviyo Abandoned-Checkout fixen (Smart-Sending aus, Absender LuxeStyle, E3 live) + Double-Opt-In AN · Judge.me Reviews · Microsoft Clarity (gratis Heatmap) installieren.
+**Social-Session (ich) macht [API]:** scannbare Benefit-Bullet-Beschreibungen, Produkt-Videos auf PDP, Deep-Link/Auto-Discount-Links, KI-Bilder.
+
+
 # 🏠 HOMEPAGE LEBENDIG + 100k-PLAN (CizQ6 2026-06-24, User „nur du steuerst alles, jede Seite") — an Theme-Session
 User will Homepage **lebendiger** (wirkt statisch, „nur Bilder, wenig Text"). **Fertige Spec mit exakter Mundart-Copy +
 Asset-Zuordnung: `dropship/HOMEPAGE-LEBENDIG-SPEC.md`** (Hero=Autoplay-Montage-Video `reels/montage-loop.mp4`, Trust-Bar,

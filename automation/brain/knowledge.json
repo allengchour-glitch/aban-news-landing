@@ -1,7 +1,7 @@
 {
   "version": 2,
   "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
-  "updated": "2026-06-24",
+  "updated": "2026-06-25",
   "signals": {
     "hashtags": {
       "#luxestyle": {
@@ -630,7 +630,11 @@
     "conversion_hebel": [
       "REIHENFOLGE: Bezahlmethoden (TWINT+Karten) VOR Content/Pixel — ohne sie 0 Käufe möglich, egal wie viel Traffic (EIN-WEG-ZUM-1-KUNDEN). [2026-06-16: TWINT-Testkauf ging durch = Bezahlung ok.]",
       "VERSANDZEIT-TRANSPARENZ stoppt Checkout-Abbrüche: «Versand 7–14 Tage» klar auf PDP + Banner. Verhindert Frust/Rückbuchungen (CONVERSION-BOOSTER).",
-      "JUDGE.ME Auto-Review-Mail 14T nach Lieferung aktiv lassen = automatische ≥4.5★-Sammlung. Sterne NICHT nur auf PDP, auch auf Kollektions-/Feed-Kacheln zeigen (höhere CTR ins Produkt). NIEMALS Fake-Reviews."
+      "JUDGE.ME Auto-Review-Mail 14T nach Lieferung aktiv lassen = automatische ≥4.5★-Sammlung. Sterne NICHT nur auf PDP, auch auf Kollektions-/Feed-Kacheln zeigen (höhere CTR ins Produkt). NIEMALS Fake-Reviews.",
+      "LERN-RUNDE 2026-06-25 (3 Agenten, ATC 0.16% = 29x unter Schnitt): Engpass = mobile PDP erste 3 Sek + Trust, NICHT Traffic/Checkout. KONVERGENTE TOP-HEBEL: (1) Accelerated Checkout (ShopPay/Apple/Google/TWINT) als Ein-Tipp auf mobiler PDP sichtbar = groesster gratis Hebel (umgeht 9x-Leak, CH verfuegbar); (2) Kauf-auf-Rechnung sichtbar = #1 CH-Trust (+54% Conv); (3) above-fold-Stack Titel/1:1-Bild/Preis-mit-Sparmathe/Swatches/ATC/Lieferzeile; (4) Swatches statt Dropdowns (+3-4% mobil); (5) Reviews sichtbar (Judge.me) + Micro-Creator-Seeding (nie Fake). Doc: dropship/LERN-RUNDE-2026-06-25.md.",
+      "TIKTOK-TRAFFIC: 85% 'direct' = normal (Referrer gestrippt), viele 3-Sek-Bouncer, gute TikTok->Shop-Conv nur 0.3-1.5%. FIX: Link-in-Bio -> EXAKTE Produktseite (nicht Homepage) + virales Video oben auf PDP + Auto-Apply-Discount-Link (/discount/WELCOME10, kein Tippen). TikTok Shop CH noch NICHT verfuegbar (6/2026, CH fehlt) -> weiter Ads->Shopify.",
+      "FAKE-URGENCY ILLEGAL in CH (SECO vs Temu 4/2025, UWG Art.3): NUR echte Urgency (realer Versand-Cutoff-Countdown + echter Shopify-Lagerbestand). E-Mail = Double-Opt-In + identifizierbarer Absender + 1-Klick-Abmeldung (revDSG). Tracking-Pixel -> Consent.",
+      "CAPTURE/RETENTION: Klaviyo-Popup Mobile-Teaser Trigger 2.Pageview (umgeht Google-Penalty) 1 Feld; Welcome-Flow(3) + Browse-Abandonment(kein Rabatt) + Abandoned-Checkout fixen (hoechster $/Empfaenger). Google-Remarketing ab 100 Nutzern (Meta/TikTok ~1000). WhatsApp-Marketing verfrueht. PDP-Beschreibungen = scannbare Benefit-Bullets statt Fliesstext (+30%). Gratis messen: Microsoft Clarity Heatmaps."
     ],
     "gratis_kanaele": [
       "PINTEREST: Pins ranken 3–12 Monate gratis in der Suche → pro Produkt 1 Pin mit Keyword-Titel + Mode-Bild, 5–10 Pins/Woche = passive Langzeit-Reichweite parallel zu Ads (GRATIS-WACHSTUM). Bestehendes System auf main (pinterest-publish.yml) — nicht duplizieren.",
