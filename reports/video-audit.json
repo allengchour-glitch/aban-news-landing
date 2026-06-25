@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-25T21:05:56.702Z",
+  "ts": "2026-06-25T21:10:08.285Z",
   "done": {
     "flame-eigen.mp4": {
       "flag": false,
@@ -1127,6 +1127,118 @@
     "np-becher.mp4": {
       "flag": false,
       "reasons": []
+    },
+    "np-feuerschale.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt sichtbar."
+      ]
+    },
+    "np-haengematte.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "np-kaffee.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Delta Q' auf dem Produkt sichtbar."
+      ]
+    },
+    "np-kemper.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Kemper) gut sichtbar auf dem Produkt."
+      ]
+    },
+    "np-laterne.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Black Diamond' ist gut sichtbar im Text eingeblendet."
+      ]
+    },
+    "partner-armband-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "post-20260609-1607.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "premium.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "savelist-fuer-ihn-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf der Uhr (Rolex)"
+      ]
+    },
+    "savelist-schmuck-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "script-sommer-20260603-1834.mp4": {
+      "flag": true,
+      "reasons": [
+        "Im Hintergrund des zweiten und dritten Frames sind asiatische Schriftzeichen auf einer Tafel sichtbar."
+      ]
+    },
+    "sommer.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-cap-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-echtvsbillig-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-fehler-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-geschenk-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-hautton-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-kettenlaenge-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-packliste-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-pflege-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-styling-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-trends-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-wanderhacks-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-wanderkaffee-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "value-wanderoutfit-9x16.mp4": {
+      "flag": false,
+      "reasons": []
     }
   },
   "flagged": [
@@ -1591,6 +1703,42 @@
       "file": "men-20260603-1520.mp4",
       "reasons": [
         "Fremdes Markenlogo 'ZIN' gut sichtbar im dritten Frame."
+      ]
+    },
+    {
+      "file": "np-feuerschale.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "np-kaffee.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Delta Q' auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "np-kemper.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Kemper) gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "np-laterne.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Black Diamond' ist gut sichtbar im Text eingeblendet."
+      ]
+    },
+    {
+      "file": "savelist-fuer-ihn-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf der Uhr (Rolex)"
+      ]
+    },
+    {
+      "file": "script-sommer-20260603-1834.mp4",
+      "reasons": [
+        "Im Hintergrund des zweiten und dritten Frames sind asiatische Schriftzeichen auf einer Tafel sichtbar."
       ]
     }
   ]
