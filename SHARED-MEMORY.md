@@ -2000,3 +2000,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **5 Dyson-Staubsauger** waren schon DRAFT (CHF 709–1580), Collection `staubsauger-haushalt` (leer) UNPUBLIZIERT. **Dyson-Lehre bestätigt: Premium-Marken NICHT per bulk-import.**
 - **✅ PRÄVENTION eingebaut** (`bigbuy_import.mjs` `chf()`): gestaffelte Marge — eur>150→×1.5, >80→×1.8, >40→×2.2, sonst MARGIN(2.6). Verhindert künftige Preis-Desaster bei teuren Einkäufen.
 - **Check-Tool:** `status:active` + Preis>350 + kein Marken-Keyword = generisch überteuert → DRAFT. (Script /tmp/overprice.mjs flüchtig.)
+
+## 📌 2026-06-25 (Nachtrag 4 — Google-Merchant CSV: SPRACHEN-FEED-FIX)
+**🔴 GRÖSSTER GMC-FIX:** User-CSV (11'121 Zeilen, 3478 Produkte) zeigte 9360× „Product page unavailable" — **überwiegend Sprache `fr`** (8674), plus en/it. URSACHE: Shop hatte **4 publizierte Locales (de/en/fr/it)** aber nur DEUTSCHE Inhalte (keine Übersetzungen). `/fr/products/...` lieferte sogar **HTTP 404** (it/en gaben 200 mit dt. Inhalt). Nur Schweiz-Markt aktiv.
+**FIX:** `shopLocaleUpdate published:false` für en/fr/it → nur noch `de` publiziert. Löst ~9'200 Disapprovals (Google droppt die Locale-Feeds beim Re-Crawl). **REVERSIBEL** — falls echte mehrsprachige Übersetzungen gewünscht, Locales re-publishen + Shopify-Translate nutzen.
+- Kleinere CSV-Issues: Dessous/Lingerie als „adult content" geflaggt = Google-Policy, KEIN Defekt (legitime Produkte, nur nicht Ads-fähig). „Anneau lumineux" (FR-Titel) schon inaktiv. 3 GIF-Bilder + 2 Promo-Overlay-Bilder = bräuchten Bild-Ersatz (offen, minor).
+- **Lehre:** Locales nur publizieren wenn es echte Übersetzungen gibt — sonst massive GMC-Disapprovals + kaputte localized URLs.
