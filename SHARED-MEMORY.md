@@ -1973,3 +1973,17 @@ Gruppen >1 = Dubletten; pro Gruppe das `ls-ai-deep`-getaggte/jüngste behalten, 
 `/tmp/dedup_all.mjs` (flüchtig). **PRÄVENTION künftig:** nach jedem Container-Reset VOR einem Import-Lauf prüfen, ob der
 Ledger aktuell ist (`wc -l dropship/bigbuy_done.txt` gegen erwartete Zahl), sonst erst `git pull`/Ledger sichern.
 Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
+
+---
+## 📌 2026-06-25 (Session 71a03e05 — Sommer-Sortiment, Breadcrumbs, Recat, Defekt-Jagd)
+**Für die andere Session — was ich gemacht habe (nicht doppeln):**
+- **❄️ Klima & Ventilatoren-Collection NEU** (`klima-ventilatoren`, tag `klima`): 37 Produkte — Ventilatoren (Stand/Tisch/Turm/Decken/Boden/Kasten/Vernebler), Luftkühler/Verdunstungskühler, **11 Luftreiniger** (Beurer/Taurus-Klasse, CHF 36–175). Eigene Import-Kategorien in `bigbuy_import.mjs`: `klima` (maxCost 140), `luftreiniger` (maxCost 220).
+- **⚠️ DYSON-LEHRE (wichtig!):** Premium-Marken NICHT per bigbuy_import bulk-importieren — der ×2.6-Margen-Multiplikator macht absurde Preise (Airwrap → CHF 1085 statt ~550) UND der Titel-Generator strippt den Markennamen → generische überteuerte Ware. 10 Dyson-Produkte mussten sofort auf DRAFT. Dyson nur MANUELL mit Echtpreis+Markenname, wenn überhaupt (dünne Marge, Trust-Hürde). BigBuy hat Dyson (Airwrap/Supersonic/Staubsauger) + Split-AC (€1000+, nicht dropship-tauglich).
+- **🍞 BREADCRUMB-NAVIGATION auf allen Produktseiten** (MAIN-Theme 187533001089, `lux_breadcrumb` custom-liquid ganz oben in product-details): Home › echte Kategorie › Produkt. Überspringt Preis-Buckets/Sammel-Collections (geschenke/luxestyle-premium/neu-eingetroffen…). Inkl. BreadcrumbList JSON-LD (SEO). Logik verifiziert (Uhren/Schuhe/Sonnenbrillen korrekt).
+- **🔴 PUBLISH-FALLE breit gefixt:** 8 ECHTE Kategorie-Collections waren unpubliziert/404 → publiziert: **uhren (188!)**, lederwaren(46), socken-strumpfe(36), anime-manga(22), auto-zubehoer(15), trend-gadgets(14), e-scooter-trottinett(8), metalldetektor. Legacy/Auto-Collections (🎁/💎 Preis-Buckets, made-in-switzerland-premium, selbst-gestalten-1, tiktok-viral…) BEWUSST auf unpubliziert zurückgesetzt (SEO-Dubletten).
+- **🧹 Recat:** Club von WM getrennt (Real/Barça/Atlético/Sevilla → neue Collection `vereins-fanartikel`, raus aus wm-2026); Mikrowellen Garten→Küche; Grill-Werkzeug raus aus Garten.
+- **🐛 Defekt-Jagd (alle Produkte):** 61 „Marke: BigBuy"-Lieferanten-Leaks → „LuxeStyle"; 9 englische Schweiz-Poster → DE; 20 Reset-Dubletten → DRAFT (gleiche BigBuy-ID im Handle, durch Ledger-Resets). Katalog verifiziert: 0 Leak/ß/Englisch/Dubletten/CHF-0/Waisen.
+- **🖊️ Tiefe Beschreibungen 100%** (tag `ls-ai-deep`, alle bigbuy). Tool `automation/ai_product_descriptions_deep.mjs`.
+- **🎨 2 CRO-Wins live:** rotierende Schweiz-Trust-Announcement-Bar + Lieferdatum auf Produktseite.
+- **🔑 Container-Reset-Falle:** /tmp wird oft geleert → Shopify-Keys + chained Pipelines sterben. Keys session-lokal neu schreiben (Client-ID `ffe6c3a…`, Secret `shpss_…` aus User-Screenshot), `git reset --hard origin`. User soll Keys als ENV-VAR im Web-Setup eintragen (überlebt Resets).
+- **Offen:** mobile/Akku-Ventilatoren (in Arbeit). Dyson manuell (User-Entscheid offen). Club aus „Fussball" ganz raus? (User-Entscheid offen). Menü: Club/Klima-Collection aufnehmen?
