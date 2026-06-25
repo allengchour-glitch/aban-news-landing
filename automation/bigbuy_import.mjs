@@ -161,6 +161,12 @@ const CONFIG = {
     anchor: ['ventilator', 'standventilator', 'tischventilator', 'turmventilator', 'usb-ventilator', 'usb ventilator', 'mini-ventilator', 'mini ventilator', 'handventilator', 'taschenventilator', 'deckenventilator', 'bodenventilator', 'klimagerät', 'klimaanlage', 'mobile klimaanlage', 'luftkühler', 'luftkuehler', 'verdunstungskühler', 'verdunstungskuehler', 'air cooler', 'nebelventilator', 'sprühventilator', 'ventilador', 'climatizador', 'aire acondicionado', 'enfriador de aire'],
     ban: ['heizung', 'heizlüfter', 'heizluefter', 'heater', 'heizstrahler', 'ofen', 'föhn', 'foehn', 'haartrockner', 'auspuff', 'pc-lüfter', 'pc lüfter', 'gehäuselüfter', 'gehäuse', 'cpu-lüfter', 'cpu lüfter', 'grafikkarte', 'lüftungsgitter', 'staubsauger', 'ersatz', 'motorlüfter', 'abluft', 'dunstabzug', 'kinder', 'spielzeug', 'thermostat', 'termostato', 'rgb', 'gaming', '80mm', '92mm', '120mm', '140mm', 'mm ', 'disipador', 'ventilador de pc', 'ventilador caja', 'caja pc', 'pc gaming', 'placa base', 'cpu', 'torre pc', 'ordenador', 'portátil', 'laptop'],
     bullets: ['Kühle Erfrischung für heisse Tage', 'Leise &amp; energiesparend', 'Ideal für Schlafzimmer, Büro &amp; Wohnung', 'Schnell startklar'] },
+  // ── Luftreiniger 2026 (User: Luftreiniger fürs Raumklima — Beurer/Taurus, in die Klima-Collection) ──
+  luftreiniger: { coll: { handle: 'klima-ventilatoren', title: '❄️ Klima & Ventilatoren', tag: 'klima' },
+    extraTags: ['klima', 'luftreiniger', 'raumklima', 'haushalt', 'wellness'], type: 'Luftreiniger', maxCost: 220,
+    anchor: ['luftreiniger', 'raumluftreiniger', 'air purifier', 'purificador de aire', 'purificador', 'luftwäscher', 'luftwaescher', 'ionisator luft', 'hepa luftreiniger'],
+    ban: ['deko', 'figur', 'dkd', 'home decor', 'filter einzeln', 'ersatzfilter', 'ersatz-filter', 'auto', 'kfz', 'staubsauger', 'wasserfilter', 'kühlschrank', 'klimaanlage', 'split', 'mitsubishi', 'panasonic', 'samsung far', 'reiniger spray', 'reinigungsmittel'],
+    bullets: ['Saubere, frische Raumluft', 'Filtert Pollen, Staub &amp; Gerüche', 'Leise — auch nachts', 'Ideal für Allergiker'] },
   // ── Dyson Premium (User: korrekt einsortieren — Hair-Tools vs. Haushalt getrennt) ──
   dysonhair: { coll: { handle: 'haarstyling-tools', title: '💇 Haarstyling & Tools', tag: 'haarstyling' },
     extraTags: ['haarstyling', 'beauty', 'premium', 'highend', 'dyson', 'marken'], type: 'Haarstyling-Tool', maxCost: 800,
