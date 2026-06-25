@@ -167,6 +167,12 @@ const CONFIG = {
     anchor: ['luftreiniger', 'raumluftreiniger', 'air purifier', 'purificador de aire', 'purificador', 'luftwäscher', 'luftwaescher', 'ionisator luft', 'hepa luftreiniger'],
     ban: ['deko', 'figur', 'dkd', 'home decor', 'filter einzeln', 'ersatzfilter', 'ersatz-filter', 'auto', 'kfz', 'staubsauger', 'wasserfilter', 'kühlschrank', 'klimaanlage', 'split', 'mitsubishi', 'panasonic', 'samsung far', 'reiniger spray', 'reinigungsmittel'],
     bullets: ['Saubere, frische Raumluft', 'Filtert Pollen, Staub &amp; Gerüche', 'Leise — auch nachts', 'Ideal für Allergiker'] },
+  // ── Mobile/Tragbare Klimaanlagen (User: Galaxus-Monoblock-Geräte — Olimpia/Ecoflow/BEKO/UFESA) ──
+  mobilklima: { coll: { handle: 'klima-ventilatoren', title: '❄️ Klima & Ventilatoren', tag: 'klima' },
+    extraTags: ['klima', 'klimaanlage', 'mobil', 'monoblock', 'sommer', 'cooling', 'premium'], type: 'Mobile Klimaanlage', maxCost: 500,
+    anchor: ['tragbare klimaanlage', 'mobile klimaanlage', 'mobiles klimagerät', 'monoblock klimaanlage', 'klimaanlage portabel', 'portable klimaanlage'],
+    ban: ['fernbedienung', 'ersatzteil', 'ersatz', 'halterung', 'abflussrinne', 'abflu', 'schlauch einzeln', 'filter einzeln', 'wandhalter', 'split', 'kit', 'zubehör'],
+    bullets: ['Mobile Kühlung — kein Einbau nötig', 'Einfach aufstellen &amp; loslegen', 'Für Schlafzimmer, Büro &amp; Wohnung', 'Markenqualität'] },
   // ── Akku-/Mobile Ventilatoren 2026 (User: mobile venti akku — Nacken/Hand/USB, für unterwegs) ──
   akkuventi: { coll: { handle: 'klima-ventilatoren', title: '❄️ Klima & Ventilatoren', tag: 'klima' },
     extraTags: ['klima', 'ventilator', 'akku', 'mobil', 'sommer', 'reise'], type: 'Akku-Ventilator', maxCost: 90,
