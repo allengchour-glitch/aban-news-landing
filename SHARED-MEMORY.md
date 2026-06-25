@@ -2018,3 +2018,8 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **⚠️ fr (Französisch) URLs = 404** (en/it = 200). Auch nach sauberem shopLocaleDisable+Enable+publish bleibt fr 404. Markt-Web-Presence per API leer/unzugänglich → **nicht per API fixbar**. Fix nur im Admin (Einstellungen→Sprachen FR neu, oder Märkte→Schweiz→FR an Domain) ODER fr weglassen.
 - **Empfehlung:** DE + EN (Englisch = wertvollste Reichweite); FR (kaputt) + IT (klein) eher weglassen.
 - **TODO wenn App fertig:** verifizieren dass en/it übersetzten Inhalt laden, Google-Feed prüfen (echte Übersetzungen → keine Disapprovals mehr). Falls nur DE gewünscht: en/fr/it wieder unpublishen (= mein ursprünglicher GMC-Fix).
+
+## 📌 2026-06-25 (Nachtrag 7 — Galaxus-Navigation: sticky Suchleiste + Autocomplete)
+- **Sticky Suchleiste mit Autocomplete** (`sections/header-group.json`, neue custom-liquid Section `lux_searchbar` nach header_section): immer sichtbar oben (position:sticky top:var(--header-height,56px)), Galaxus-Stil. Vanilla-JS Predictive-Dropdown ruft `/search/suggest.json?q=…&resources[type]=product,collection,query` → zeigt Produktbilder+Titel+Preis, Kategorien, Query-Vorschläge, „Alle Ergebnisse →". Nutzt Search & Discovery App. Verifiziert (uhr→4 Produkte).
+- **Damit ist die Galaxus-Übersicht-Navigation komplett:** Menü (war da) + sticky Suche+Autocomplete (neu) + Breadcrumb (collection+product) + Unterkategorie-Chips (lux_subchips). Alle live verifiziert.
+- Theme-Sections-Stand: header-group = header_announcements · header_section · lux_searchbar. collection.json = lux_breadcrumb · lux_subchips · section · main · lux_faq. product.json product-details startet mit lux_breadcrumb.
