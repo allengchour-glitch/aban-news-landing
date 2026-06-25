@@ -2011,3 +2011,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Chip-Leiste auf Kategorie-Seiten** (`templates/collection.json`, neue Section `lux_subchips` custom-liquid, nach lux_breadcrumb): horizontal scrollbare Unterkategorie-Chips (Galaxus-Stil), aktive hervorgehoben. **Liest die Unterkategorien aus dem Menü `linklists.main-menu`** — zeigt Kinder/Geschwister der aktuellen Collection. Verifiziert: Damen-Mode→Kleider/Röcke/Hosen…, Wohnen→Beleuchtung/Vasen…, Schmuck→Halsketten/Ringe…, sub-kleider→Geschwister. Kategorien ohne Menü-Subitems (z.B. klima) zeigen keine Chips.
 - Theme-Sections jetzt auf collection.json: lux_breadcrumb · lux_subchips · section · main · lux_faq.
 - Sub-Collections für Damen-Mode/Wohnen/Herren/Schmuck/Schuhe/Garten/Camping/Bar/Rucksäcke existieren (Menü + `automation/create_subcollections.mjs`). Dünner: Beauty (nur makeup-sub), Sport, Klima → könnten mehr Subs bekommen (offen).
+
+## 📌 2026-06-25 (Nachtrag 6 — Mehrsprachigkeit: Status)
+- User will DE/EN/FR/IT mit echten Übersetzungen → **Translate & Adapt App** installiert + auto-translate gestartet (läuft, dauert Stunden, registriert Übersetzungen nach und nach).
+- **Locales en/fr/it wieder publiziert** (für die App nötig — sie übersetzt nur publizierte Sprachen). de=primär.
+- **⚠️ fr (Französisch) URLs = 404** (en/it = 200). Auch nach sauberem shopLocaleDisable+Enable+publish bleibt fr 404. Markt-Web-Presence per API leer/unzugänglich → **nicht per API fixbar**. Fix nur im Admin (Einstellungen→Sprachen FR neu, oder Märkte→Schweiz→FR an Domain) ODER fr weglassen.
+- **Empfehlung:** DE + EN (Englisch = wertvollste Reichweite); FR (kaputt) + IT (klein) eher weglassen.
+- **TODO wenn App fertig:** verifizieren dass en/it übersetzten Inhalt laden, Google-Feed prüfen (echte Übersetzungen → keine Disapprovals mehr). Falls nur DE gewünscht: en/fr/it wieder unpublishen (= mein ursprünglicher GMC-Fix).
