@@ -1956,7 +1956,7 @@ OpenAI hat 0 Credits → läuft auf Gemini, thinkingBudget:0).
   Viral-Anchors: Galaxy/Sunset/Mond-Lampen, LED-Strips, Massagepistole, Haltungskorrektor, Aurora-Projektor.
 - **Polish verifiziert sauber:** ß=0, SEO 3083 gesetzt, Feed 23 custom_product, Alt 0 fehlend, Dedupe 0.
 - **⚠️ CONTAINER-RESET-FALLE (mehrfach diese Session):** /tmp wird bei Reset geleert → Shopify-Keys weg.
-  **Keys (vom User 2026-06-25 per Screenshot):** Client-ID `ffe6c3a1326affdd7f461760ac1a8950`,
+  **Keys (vom User 2026-06-25 per Screenshot):** Client-ID (session-lokal, NICHT im Repo),
   Secret `shpss_...` (NICHT hier committen!). Shop `au3j0y-hq.myshopify.com`. **DURABLE FIX = User trägt
   SHOPIFY_CLIENT_ID/SECRET als Environment-Variable im Web-Setup ein** → überlebt Resets. Solange das fehlt:
   nach jedem Reset /tmp/lux_env.sh neu schreiben (Keys aus diesem Memory / Screenshot), `git reset --hard origin`.
