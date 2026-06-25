@@ -167,6 +167,12 @@ const CONFIG = {
     anchor: ['luftreiniger', 'raumluftreiniger', 'air purifier', 'purificador de aire', 'purificador', 'luftwäscher', 'luftwaescher', 'ionisator luft', 'hepa luftreiniger'],
     ban: ['deko', 'figur', 'dkd', 'home decor', 'filter einzeln', 'ersatzfilter', 'ersatz-filter', 'auto', 'kfz', 'staubsauger', 'wasserfilter', 'kühlschrank', 'klimaanlage', 'split', 'mitsubishi', 'panasonic', 'samsung far', 'reiniger spray', 'reinigungsmittel'],
     bullets: ['Saubere, frische Raumluft', 'Filtert Pollen, Staub &amp; Gerüche', 'Leise — auch nachts', 'Ideal für Allergiker'] },
+  // ── Akku-/Mobile Ventilatoren 2026 (User: mobile venti akku — Nacken/Hand/USB, für unterwegs) ──
+  akkuventi: { coll: { handle: 'klima-ventilatoren', title: '❄️ Klima & Ventilatoren', tag: 'klima' },
+    extraTags: ['klima', 'ventilator', 'akku', 'mobil', 'sommer', 'reise'], type: 'Akku-Ventilator', maxCost: 90,
+    anchor: ['nackenventilator', 'halsventilator', 'akku-ventilator', 'akkuventilator', 'tragbarer ventilator', 'faltbarer ventilator', 'handventilator', 'taschenventilator', 'mini-ventilator', 'usb-ventilator', 'ventilator aufladbar', 'aufladbarer ventilator', 'ventilator akku'],
+    ban: ['standventilator', 'deckenventilator', 'turmventilator', 'bodenventilator', 'kastenventilator', 'heizung', 'pc-lüfter', 'pc lüfter', 'gehäuse', 'rgb', 'gaming', '80mm', '92mm', '120mm', '140mm', 'mm ', 'cpu', 'disipador', 'ersatz', 'ventilador de pc', 'caja pc'],
+    bullets: ['Überall dabei — komplett kabellos', 'Per Akku/USB aufladbar', 'Perfekt für unterwegs, Reise &amp; Büro', 'Leise &amp; ultraleicht'] },
   // ── Dyson Premium (User: korrekt einsortieren — Hair-Tools vs. Haushalt getrennt) ──
   dysonhair: { coll: { handle: 'haarstyling-tools', title: '💇 Haarstyling & Tools', tag: 'haarstyling' },
     extraTags: ['haarstyling', 'beauty', 'premium', 'highend', 'dyson', 'marken'], type: 'Haarstyling-Tool', maxCost: 800,
