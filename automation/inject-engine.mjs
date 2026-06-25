@@ -57,14 +57,14 @@ function ldFor(html, file) {
   } else {
     crumbs.push({ "@type": "ListItem", position: 2, name, item });
   }
-  const ld = {
-    "@context": "https://schema.org",
-    "@graph": [
-      { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png", sameAs: ["https://x.com/abannews"], founder: { "@id": SITE + "/#person" } },
-      { "@type": "Person", "@id": SITE + "/#person", name: "Allen Chour", alternateName: "Aban", url: SITE + "/about.html", sameAs: ["https://www.linkedin.com/in/aban-news-019b21239"] },
-      { "@type": "BreadcrumbList", itemListElement: crumbs }
-    ]
-  };
+  const graph = [
+    { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png", sameAs: ["https://x.com/abannews"], founder: { "@id": SITE + "/#person" } },
+    { "@type": "Person", "@id": SITE + "/#person", name: "Allen Chour", alternateName: "Aban", url: SITE + "/about.html", sameAs: ["https://www.linkedin.com/in/aban-news-019b21239"] }
+  ];
+  if (html.indexOf("BreadcrumbList") < 0) {
+    graph.push({ "@type": "BreadcrumbList", itemListElement: crumbs });
+  }
+  const ld = { "@context": "https://schema.org", "@graph": graph };
   return '<script type="application/ld+json" data-aban-ld>' + JSON.stringify(ld) + "</script>";
 }
 
