@@ -82,9 +82,13 @@ function pickReel() {
   // ⚠️ FIX 2026-06-23 (User: Post stummgeschaltet wegen nicht autorisierter Sounds): TikTok = STUMM hochladen.
   // -meta-Videos (eingebackene CC-BY-Musik) werden von TikTok als nicht-autorisiert erkannt -> NICHT mehr posten.
   // Nur stumme luxe-*-9x16.mp4 + Meisterwerke/Montagen. Trend-Sound legt der User in der App drauf.
+  // VISION-AUDIT-SPERRE (2026-06-25): Videos, die der Gemini-Vision-Audit als Verstoss geflaggt hat
+  // (Fremd-Markenlogo/asiat. Schrift/Warping) NIE posten. reports/video-audit.json -> flagged[].
+  let flagged = new Set();
+  try { const va = JSON.parse(fs.readFileSync(path.join(ROOT, 'reports', 'video-audit.json'), 'utf8')); flagged = new Set((va.flagged || []).map(x => x.file)); } catch {}
   const seen = new Set();
   const cand = [...mont, ...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe]
-    .filter(f => big(f) && !/-meta\.mp4$/.test(f) && !seen.has(f) && (seen.add(f), true));
+    .filter(f => big(f) && !/-meta\.mp4$/.test(f) && !flagged.has(f) && !seen.has(f) && (seen.add(f), true));
   for (const f of cand) if (!done.includes(f) && !sharesProduct(f)) return path.join(REELS, f);
   // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu starten.
   // FIX 2026-06-22 (User: Montana-Dublette 21.+22. auf TikTok): NICHT komplett leeren — sonst wird dasselbe
