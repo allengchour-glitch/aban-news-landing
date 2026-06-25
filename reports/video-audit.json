@@ -1,0 +1,1596 @@
+{
+  "ts": "2026-06-25T10:16:49.879Z",
+  "done": {
+    "flame-eigen.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-electro.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-hype-fast.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-hype1.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-hypepro.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-phonk-slow.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-trend-house.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-trend-hype.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-trend-phonk.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "flame-voltaic.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luma-brise-master.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luma-daisy-master.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luma-flame-master.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luma-onyx-master.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luma-test-wasserfest-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-accessoires-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-amore-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-armband-layering-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-armband-layering-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-astra-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-aurelia-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-baskenmuetze-scintille-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-bestseller-preis-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-bucket-banana-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-bucket-manchester-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-cap-classic-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-cap-mama-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-cap-paris-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-cap-sprint-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-cap-tuesday-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-cap-wellness-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-cascade-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-casio-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-ck-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-coeur-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-couleur-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-denim-cap-bleu-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-dg-theone-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-docker-marin-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-etincelle-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-fenrir-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-flat-cap-brigade-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-fleur-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-fresh-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-goutte-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-guess-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-herren-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-herren-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-hugo-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-lagune-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-marken-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-minou-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-mk-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-noeud-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-olivia-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-papillon-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-riviera-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-rosee-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-samsara-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-save5-schmuck-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-save5-schmuck-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-schmuck-gschenk-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-schmuck-gschenk-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-seetest-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-seetest-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-swatch-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-tresor-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-vintage-cap-liberty-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "montage-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "montage-loop.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw--kette-stella-kleeblatt-anha.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-3d-lifting-gesichtsroller-go.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-armkette-papillon-schmetterl.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-bellevue-damenuhr-gold.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-blazer-roma-pricewin.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-blazer-roma-tailliert-mit-bi.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-blazer-roma.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-breil-halskette.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-casio-damenuhr-blau.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-chiffon-stola-soiree-elegant.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-converse-chuck.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-crossbody-tasche-lido-gewebt.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-dg-the-one-parfum.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-en-set-lino-weste-weite-hose.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-filzhut-montana-breitkrempig.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-gua-sha-set-jade-mas.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-guess-herrenuhr-gold.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-handventilator-brisa.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-herren-set-costa-kapuzen-shi.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-herren-sneaker-marco-leder-o.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-herren-strickhemd-amalfi-ajo.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-kenzo-amour-parfum.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-leinen-set-lino-weste-weite-.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-lz-fedora.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-mini-handtasche-perla-perlen.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-mk-rucksack-rose.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-moissanite-herzkette-coeur-s.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-ohrringe-lotus.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-pierrecardin-herrenuhr.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-plateau-sneaker-cloud-spitze.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-police-armband.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-puma-r78-beige.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-ring-set-eternita-stapelbare.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-seidenschal-lyon-eleganter-h.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-silber-armreif-serpent-s925-.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-sonnenbrille-riviera-oversiz.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-statement-ohrringe-onyx-geom.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-stiletto-sandalette-gala-vio.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-stroh-shopper-capri-geflocht.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-uare-mit-gold-detail.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-ysl-lhomme-parfum.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "mw-zirkonia-kette-stella-kleebl.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-brise-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-brise-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-daisy-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-daisy-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-flame-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-flame-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-onyx-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "reel-onyx-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-brise-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-cattote-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-cosy-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-daisy-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-mountaintee-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-nuit-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-quotemug-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-sirene-2026-06-08.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-skulltee-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "veo-hero-sunsethoodie-2026-06-09.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-luxestyle-de-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-luxestyle-de.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-luxestyle-en-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-luxestyle-en.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-selbst-gestalten-de-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-selbst-gestalten-de.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-selbst-gestalten-en-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "werbung-selbst-gestalten-en.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "ab-armband-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "ab-bucket-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "ab-caps-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "ab-ohrringe-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "ab-sonnenbrille-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "accessoires-20260603-1603.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260603-1222.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260603-1226.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260603-1228.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260603-1320.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260603-1456.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260603-2219.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260604-1231.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260604-2036.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260605-0900.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260605-1726.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-0739-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-0739.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-1300-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-1300.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-1654-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-1654.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-2048-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260606-2048.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260607-0840-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260607-0840.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260607-1513-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260607-1513.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260607-2056-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260607-2056.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260608-1253-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260608-1253.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260608-2118-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260608-2118.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-1220-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-1220.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-1937-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-1937.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2032-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2032.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2242-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2242.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2246-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2246.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2249-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260609-2249.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260610-0450-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260610-0450.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260610-0507-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260610-0507.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260610-1111-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260610-1111.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260611-0521-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "auto-20260611-0521.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "bern-voiceover-20260614-clean.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "bern-voiceover-20260614.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-augenmassage.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-aurora-kleid.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-craquele-vase.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-eclat-kette.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-lueur-lampe.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-monsieur-hemd.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-nackenventilator.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-poloshirt-herren.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-smartwatch-pro.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "clip-sonnenbrille-chrome.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "damen-20260603-1550.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "eleganz.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "hero-20260603-1550.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "herren-20260603-1550.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-badeanzug.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-bikini1.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-bikini2.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-bosch.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-feuer.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-jokari.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-kaffee2.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "inv-pavillon.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-fashion-motion.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-flagship-film.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-hero-ad.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-jewelry-cinematic.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-luma-20260618-0710.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-main-showcase.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-meisterwerk-blazer-roma-tailliert-mi.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-meisterwerk-filz-fedora.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-meisterwerk-herzkette.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-meisterwerk-kette-stella-kleeblatt-a.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-meisterwerk-n-set-lino-weste-weite-h.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-meisterwerk-tiktok-herzkette.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-meisterwerk-uare-mit-gold-detail.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-montage-premium-bestseller.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-showcase-fast.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-ultimate-ad.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-werbung-montage.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-werbung-smooth.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxe-wm-fussball.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxestyle-allmix-20260603-1601.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxestyle-brand-30s.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "luxestyle-brand-60s.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "men-20260603-1520.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "np-becher.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "np-feuerschale.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "np-haengematte.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "np-kaffee.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "np-kemper.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "np-laterne.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "partner-armband-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "post-20260609-1607.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "premium.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "savelist-fuer-ihn-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "savelist-schmuck-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "script-sommer-20260603-1834.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "sommer.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-cap-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-echtvsbillig-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-fehler-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-geschenk-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-hautton-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-kettenlaenge-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-packliste-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-pflege-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-styling-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-trends-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-wanderhacks-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-wanderkaffee-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    },
+    "value-wanderoutfit-9x16.mp4": {
+      "flag": false,
+      "reasons": [
+        "(frame-fehler)"
+      ]
+    }
+  },
+  "flagged": []
+}
