@@ -1,5 +1,5 @@
 {
-  "ts": "2026-06-25T20:09:47.735Z",
+  "ts": "2026-06-25T21:05:56.702Z",
   "done": {
     "flame-eigen.mp4": {
       "flag": false,
@@ -830,6 +830,303 @@
       "reasons": [
         "Fremdes Markenlogo 'HEMP for U' auf dem Produkt im zweiten Frame sichtbar."
       ]
+    },
+    "auto-20260609-2246-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'West Month' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'BOTTOX' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'POR' auf dem Produkt im dritten Frame sichtbar."
+      ]
+    },
+    "auto-20260609-2246.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'West Month' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'BOTTOX' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'POR' auf dem Produkt im dritten Frame sichtbar."
+      ]
+    },
+    "auto-20260609-2249-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260609-2249.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260610-0450-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'West Month Botox' auf Produkt sichtbar."
+      ]
+    },
+    "auto-20260610-0450.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'West Month Botox' auf Produkt sichtbar."
+      ]
+    },
+    "auto-20260610-0507-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260610-0507.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260610-1111-clean.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260610-1111.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "auto-20260611-0521-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Rosehip Oil Flasche)",
+        "Fremdes Markenlogo/Watermark im Hintergrund des Armreif-Frames"
+      ]
+    },
+    "auto-20260611-0521.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Rosehip Oil Flasche)",
+        "Fremdes Markenlogo/Watermark im Hintergrund des Armreif-Frames"
+      ]
+    },
+    "bern-voiceover-20260614-clean.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Massagegerät) sichtbar."
+      ]
+    },
+    "bern-voiceover-20260614.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-augenmassage.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-aurora-kleid.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-craquele-vase.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-eclat-kette.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-lueur-lampe.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-monsieur-hemd.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-nackenventilator.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-poloshirt-herren.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-smartwatch-pro.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "clip-sonnenbrille-chrome.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'ACTION' auf dem Brillenbügel sichtbar."
+      ]
+    },
+    "damen-20260603-1550.mp4": {
+      "flag": true,
+      "reasons": [
+        "Im zweiten Frame sind im Hintergrund asiatische Schriftzeichen sichtbar."
+      ]
+    },
+    "eleganz.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "hero-20260603-1550.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "herren-20260603-1550.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'ZIN' sichtbar auf dem Produkt im dritten Frame."
+      ]
+    },
+    "inv-badeanzug.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Adidas) gut sichtbar auf dem Produkt."
+      ]
+    },
+    "inv-bikini1.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark: Der Text \"Bikini «Ysabel Mora»\" zeigt eine fremde Marke, die nicht LuxeStyle ist."
+      ]
+    },
+    "inv-bikini2.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "inv-bosch.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Bosch' ist gut sichtbar auf dem Produkt und im Text eingeblendet."
+      ]
+    },
+    "inv-feuer.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt sichtbar."
+      ]
+    },
+    "inv-jokari.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'JOKARI' auf dem Produkt sichtbar."
+      ]
+    },
+    "inv-kaffee2.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'Delta Q' auf dem Produkt sichtbar."
+      ]
+    },
+    "inv-pavillon.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-fashion-motion.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt (Sneaker)"
+      ]
+    },
+    "luxe-flagship-film.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-hero-ad.mp4": {
+      "flag": true,
+      "reasons": [
+        "Im zweiten Frame sind undeutliche, aber erkennbare asiatische Schriftzeichen auf der Innenseite des Armbands zu sehen."
+      ]
+    },
+    "luxe-jewelry-cinematic.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-luma-20260618-0710.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-main-showcase.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Adidas) gut sichtbar auf Produkt im zweiten Frame."
+      ]
+    },
+    "luxe-meisterwerk-blazer-roma-tailliert-mi.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-meisterwerk-filz-fedora.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-meisterwerk-herzkette.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-meisterwerk-kette-stella-kleeblatt-a.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-meisterwerk-n-set-lino-weste-weite-h.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-meisterwerk-tiktok-herzkette.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-meisterwerk-uare-mit-gold-detail.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-montage-premium-bestseller.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Casio) gut sichtbar auf Produkt im zweiten Frame.",
+        "Fremdes Markenlogo (Dolce & Gabbana) gut sichtbar auf Produkt im dritten Frame."
+      ]
+    },
+    "luxe-showcase-fast.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo/Watermark 'Viu Style. Eis Shop.' im ersten Frame sichtbar.",
+        "Fremdes Markenlogo/Watermark 'HEMP for U' im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo/Watermark 'OUPEIFU' im dritten Frame sichtbar."
+      ]
+    },
+    "luxe-ultimate-ad.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-werbung-montage.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-werbung-smooth.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-wm-fussball.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxestyle-allmix-20260603-1601.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'ZIN' gut sichtbar auf dem Produkt (Sonnenbrille) im dritten Frame."
+      ]
+    },
+    "luxestyle-brand-30s.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxestyle-brand-60s.mp4": {
+      "flag": true,
+      "reasons": [
+        "Die Frau im dritten Frame trägt eindeutig Damenbekleidung, während der Text 'Herrenmode' anzeigt. Dies ist ein objektiver Widerspruch."
+      ]
+    },
+    "men-20260603-1520.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'ZIN' gut sichtbar im dritten Frame."
+      ]
+    },
+    "np-becher.mp4": {
+      "flag": false,
+      "reasons": []
     }
   },
   "flagged": [
@@ -1141,6 +1438,159 @@
       "file": "auto-20260609-2242.mp4",
       "reasons": [
         "Fremdes Markenlogo 'HEMP for U' auf dem Produkt im zweiten Frame sichtbar."
+      ]
+    },
+    {
+      "file": "auto-20260609-2246-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'West Month' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'BOTTOX' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'POR' auf dem Produkt im dritten Frame sichtbar."
+      ]
+    },
+    {
+      "file": "auto-20260609-2246.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'West Month' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'BOTTOX' auf dem Produkt im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo 'POR' auf dem Produkt im dritten Frame sichtbar."
+      ]
+    },
+    {
+      "file": "auto-20260610-0450-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'West Month Botox' auf Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "auto-20260610-0450.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'West Month Botox' auf Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "auto-20260611-0521-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Rosehip Oil Flasche)",
+        "Fremdes Markenlogo/Watermark im Hintergrund des Armreif-Frames"
+      ]
+    },
+    {
+      "file": "auto-20260611-0521.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Rosehip Oil Flasche)",
+        "Fremdes Markenlogo/Watermark im Hintergrund des Armreif-Frames"
+      ]
+    },
+    {
+      "file": "bern-voiceover-20260614-clean.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark auf dem Produkt (Massagegerät) sichtbar."
+      ]
+    },
+    {
+      "file": "clip-sonnenbrille-chrome.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'ACTION' auf dem Brillenbügel sichtbar."
+      ]
+    },
+    {
+      "file": "damen-20260603-1550.mp4",
+      "reasons": [
+        "Im zweiten Frame sind im Hintergrund asiatische Schriftzeichen sichtbar."
+      ]
+    },
+    {
+      "file": "herren-20260603-1550.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'ZIN' sichtbar auf dem Produkt im dritten Frame."
+      ]
+    },
+    {
+      "file": "inv-badeanzug.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Adidas) gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "inv-bikini1.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark: Der Text \"Bikini «Ysabel Mora»\" zeigt eine fremde Marke, die nicht LuxeStyle ist."
+      ]
+    },
+    {
+      "file": "inv-bosch.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Bosch' ist gut sichtbar auf dem Produkt und im Text eingeblendet."
+      ]
+    },
+    {
+      "file": "inv-feuer.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "inv-jokari.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'JOKARI' auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "inv-kaffee2.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'Delta Q' auf dem Produkt sichtbar."
+      ]
+    },
+    {
+      "file": "luxe-fashion-motion.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf dem Produkt (Sneaker)"
+      ]
+    },
+    {
+      "file": "luxe-hero-ad.mp4",
+      "reasons": [
+        "Im zweiten Frame sind undeutliche, aber erkennbare asiatische Schriftzeichen auf der Innenseite des Armbands zu sehen."
+      ]
+    },
+    {
+      "file": "luxe-main-showcase.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Adidas) gut sichtbar auf Produkt im zweiten Frame."
+      ]
+    },
+    {
+      "file": "luxe-montage-premium-bestseller.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Casio) gut sichtbar auf Produkt im zweiten Frame.",
+        "Fremdes Markenlogo (Dolce & Gabbana) gut sichtbar auf Produkt im dritten Frame."
+      ]
+    },
+    {
+      "file": "luxe-showcase-fast.mp4",
+      "reasons": [
+        "Fremdes Markenlogo/Watermark 'Viu Style. Eis Shop.' im ersten Frame sichtbar.",
+        "Fremdes Markenlogo/Watermark 'HEMP for U' im zweiten Frame sichtbar.",
+        "Fremdes Markenlogo/Watermark 'OUPEIFU' im dritten Frame sichtbar."
+      ]
+    },
+    {
+      "file": "luxestyle-allmix-20260603-1601.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'ZIN' gut sichtbar auf dem Produkt (Sonnenbrille) im dritten Frame."
+      ]
+    },
+    {
+      "file": "luxestyle-brand-60s.mp4",
+      "reasons": [
+        "Die Frau im dritten Frame trägt eindeutig Damenbekleidung, während der Text 'Herrenmode' anzeigt. Dies ist ein objektiver Widerspruch."
+      ]
+    },
+    {
+      "file": "men-20260603-1520.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'ZIN' gut sichtbar im dritten Frame."
       ]
     }
   ]
