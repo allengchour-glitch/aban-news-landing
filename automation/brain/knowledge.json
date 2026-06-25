@@ -1530,7 +1530,8 @@
     ],
     "video_kosten_2026": [
       "LUMA = TEUER/begrenzt ($25.10 Guthaben, echtes Geld): NUR fuer ausgewaehlte Hero-/Winner-Clips nutzen (z.B. wasserfest See-Test, Flame Diffuser), NICHT fuer Massen-Batch. ray-flash-2 (guenstigste) bevorzugen, kurz (5s). Vor groesseren Laeufen Budget bedenken.",
-      "VOLUMEN-VIDEO GRATIS via ffmpeg: Nano-Banana-Bilder (gratis) -> render_*.sh (Ken-Burns-Zoom + Uebergaenge + Text-Overlay + Musik) = bewegte No-Voice-Reels OHNE Kosten. Das ist der Default fuer taegliches Posting; Luma nur als Premium-Akzent."
+      "VOLUMEN-VIDEO GRATIS via ffmpeg: Nano-Banana-Bilder (gratis) -> render_*.sh (Ken-Burns-Zoom + Uebergaenge + Text-Overlay + Musik) = bewegte No-Voice-Reels OHNE Kosten. Das ist der Default fuer taegliches Posting; Luma nur als Premium-Akzent.",
+      "GRATIS-KI-VIDEO (gelernt 2026-06-25, Sleepy-Owl-Video): Tool automation/wan_video.mjs gebaut = Wan 2.2 i2v via HF-Space (prithivMLmods/wan2.2-i2v-fast), echte KI-Motion, kein Watermark. API verifiziert (curl-Upload 200 wenn Space warm). ABER: anonymer ZeroGPU = zu FLAKY (intermittierende 503, schlaeft sofort ein) -> fuer Automation nur mit GRATIS HF_TOKEN (huggingface.co) brauchbar, und auch dann Queue-abhaengig. FAZIT: zuverlaessiger Gratis-Video-Weg bleibt Nano-Banana-Bilder + ffmpeg (Ken-Burns); Wan/HF nur optional als Luma-Sparer wenn HF_TOKEN gesetzt. Seedance-Free (100 Cr/Tag, 1080p, kein WM) = bester MANUELLER Gratis-Generator."
     ]
   },
   "decisions": [
