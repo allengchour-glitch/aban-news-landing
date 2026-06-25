@@ -2006,3 +2006,8 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 **FIX:** `shopLocaleUpdate published:false` für en/fr/it → nur noch `de` publiziert. Löst ~9'200 Disapprovals (Google droppt die Locale-Feeds beim Re-Crawl). **REVERSIBEL** — falls echte mehrsprachige Übersetzungen gewünscht, Locales re-publishen + Shopify-Translate nutzen.
 - Kleinere CSV-Issues: Dessous/Lingerie als „adult content" geflaggt = Google-Policy, KEIN Defekt (legitime Produkte, nur nicht Ads-fähig). „Anneau lumineux" (FR-Titel) schon inaktiv. 3 GIF-Bilder + 2 Promo-Overlay-Bilder = bräuchten Bild-Ersatz (offen, minor).
 - **Lehre:** Locales nur publizieren wenn es echte Übersetzungen gibt — sonst massive GMC-Disapprovals + kaputte localized URLs.
+
+## 📌 2026-06-25 (Nachtrag 5 — Unterkategorie-Chip-Leiste „statt scrollen")
+- **Chip-Leiste auf Kategorie-Seiten** (`templates/collection.json`, neue Section `lux_subchips` custom-liquid, nach lux_breadcrumb): horizontal scrollbare Unterkategorie-Chips (Galaxus-Stil), aktive hervorgehoben. **Liest die Unterkategorien aus dem Menü `linklists.main-menu`** — zeigt Kinder/Geschwister der aktuellen Collection. Verifiziert: Damen-Mode→Kleider/Röcke/Hosen…, Wohnen→Beleuchtung/Vasen…, Schmuck→Halsketten/Ringe…, sub-kleider→Geschwister. Kategorien ohne Menü-Subitems (z.B. klima) zeigen keine Chips.
+- Theme-Sections jetzt auf collection.json: lux_breadcrumb · lux_subchips · section · main · lux_faq.
+- Sub-Collections für Damen-Mode/Wohnen/Herren/Schmuck/Schuhe/Garten/Camping/Bar/Rucksäcke existieren (Menü + `automation/create_subcollections.mjs`). Dünner: Beauty (nur makeup-sub), Sport, Klima → könnten mehr Subs bekommen (offen).
