@@ -132,14 +132,26 @@ function splitCsv(line) {
     else { if (c === '"') q = true; else if (c === ',') { out.push(f); f = ''; } else f += c; } }
   out.push(f); return out;
 }
+// 🚩 Flagged-Reels (Video-Audit: fremde Marken-Logos/Warping) als Basis-Namen laden → NIE auto-posten.
+function loadFlaggedReels() {
+  try {
+    const va = JSON.parse(fs.readFileSync(path.join(ROOT, 'reports', 'video-audit.json'), 'utf8'));
+    return Object.keys(va.done || {}).filter(k => va.done[k] && va.done[k].flag)
+      .map(k => k.replace(/\.mp4$/i, '').toLowerCase());
+  } catch { return []; }
+}
+
 // Reels-Pool aus video_queue.csv (NUR funktionierende Shopify-CDN-mp4, keine toten abannews-URLs).
 function loadReels() {
   try {
+    const flagged = loadFlaggedReels();
     const lines = fs.readFileSync(path.join(ROOT, 'social', 'video_queue.csv'), 'utf8').trim().split('\n').slice(1);
     const seen = new Set(); const reels = [];
     for (const l of lines) {
       const c = splitCsv(l); const video = (c[2] || '').trim(); const caption = (c[3] || '').trim();
       if (!/cdn\.shopify\.com\/.*\.mp4/.test(video) || seen.has(video)) continue;
+      // 🚩 Video-Audit-Flag (fremdes Marken-Logo/Warping) → diesen Reel NIE in die Queue.
+      if (flagged.some(f => video.toLowerCase().includes(f))) continue;
       // Trust-Winkel auch in Reel-Captions (jeder 3.), wenn nicht schon drin — WAHR, kein Fake.
       let cap = caption;
       // WENIGER WERBLICH (Lehre 2026-06-23): Rabattcode nur auf jedem 3. Reel lassen, sonst rausstreichen

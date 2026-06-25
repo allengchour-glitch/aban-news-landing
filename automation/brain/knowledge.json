@@ -1536,7 +1536,8 @@
       "LUMA = TEUER/begrenzt ($25.10 Guthaben, echtes Geld): NUR fuer ausgewaehlte Hero-/Winner-Clips nutzen (z.B. wasserfest See-Test, Flame Diffuser), NICHT fuer Massen-Batch. ray-flash-2 (guenstigste) bevorzugen, kurz (5s). Vor groesseren Laeufen Budget bedenken.",
       "VOLUMEN-VIDEO GRATIS via ffmpeg: Nano-Banana-Bilder (gratis) -> render_*.sh (Ken-Burns-Zoom + Uebergaenge + Text-Overlay + Musik) = bewegte No-Voice-Reels OHNE Kosten. Das ist der Default fuer taegliches Posting; Luma nur als Premium-Akzent.",
       "GRATIS-KI-VIDEO (gelernt 2026-06-25, Sleepy-Owl-Video): Tool automation/wan_video.mjs gebaut = Wan 2.2 i2v via HF-Space (prithivMLmods/wan2.2-i2v-fast), echte KI-Motion, kein Watermark. API verifiziert (curl-Upload 200 wenn Space warm). ABER: anonymer ZeroGPU = zu FLAKY (intermittierende 503, schlaeft sofort ein) -> fuer Automation nur mit GRATIS HF_TOKEN (huggingface.co) brauchbar, und auch dann Queue-abhaengig. FAZIT: zuverlaessiger Gratis-Video-Weg bleibt Nano-Banana-Bilder + ffmpeg (Ken-Burns); Wan/HF nur optional als Luma-Sparer wenn HF_TOKEN gesetzt. Seedance-Free (100 Cr/Tag, 1080p, kein WM) = bester MANUELLER Gratis-Generator."
-    ]
+    ],
+    "flagged_reel_skip_2026_06_25": "FIX (User 2026-06-25 \"fix mal alles\"): build_queue.mjs ueberspringt jetzt Reels die im Video-Audit geflaggt sind (reports/video-audit.json flag=true: fremde Marken-Logos Casio/CK/D&G/Guess/Hugo/MK + Caps/Herren + Warping) -> letzte Schutzschicht, ein geflaggter Reel kommt NIE in die Queue, auch wenn er auf CDN+video_queue.csv landet. Stack-Check sauber: 0 Syntax/JSON-Fehler, Worker-Queue (16) ohne Off-Brand/Banned/Flagged-Treffer. Video-Audit 60/265 (Rest PC-gebunden=Gemini-Key) -> neu gequeued. KI-Keys im Cloud-Health fehlen erwartungsgemaess (leben in luxe-secrets.ps1/VPS .env), Template-Fallback haelt Betrieb."
   },
   "decisions": [
     {
