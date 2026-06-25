@@ -155,6 +155,12 @@ const CONFIG = {
     anchor: ['grill', 'bbq', 'barbecue', 'gasgrill', 'holzkohlegrill', 'elektrogrill', 'smoker', 'kontaktgrill', 'tischgrill', 'feuerschale', 'feuerstelle', 'pizzaofen', 'barbacoa'],
     ban: ['kinder', 'spielzeug', 'grillanzünder', 'grillkohle', 'einweggrill', 'grillpapier', 'sandwichmaker', 'waffeleisen'],
     bullets: ['Perfekt für Grillabende', 'Gleichmäßige Hitze', 'Robust & langlebig', 'Garten, Balkon & Terrasse'] },
+  // ── Sommer-Cooling 2026 (User: Klimagerät/Lüfter für heissen Sommer) ──
+  klima: { coll: { handle: 'klima-ventilatoren', title: '❄️ Klima & Ventilatoren', tag: 'klima' },
+    extraTags: ['klima', 'ventilator', 'sommer', 'cooling', 'haushalt'], type: 'Ventilator & Klima', maxCost: 140,
+    anchor: ['ventilator', 'standventilator', 'tischventilator', 'turmventilator', 'usb-ventilator', 'usb ventilator', 'mini-ventilator', 'mini ventilator', 'handventilator', 'taschenventilator', 'deckenventilator', 'bodenventilator', 'klimagerät', 'klimaanlage', 'mobile klimaanlage', 'luftkühler', 'luftkuehler', 'verdunstungskühler', 'verdunstungskuehler', 'air cooler', 'nebelventilator', 'sprühventilator', 'ventilador', 'climatizador', 'aire acondicionado', 'enfriador de aire'],
+    ban: ['heizung', 'heizlüfter', 'heizluefter', 'heater', 'heizstrahler', 'ofen', 'föhn', 'foehn', 'haartrockner', 'auspuff', 'pc-lüfter', 'pc lüfter', 'gehäuselüfter', 'cpu-lüfter', 'cpu lüfter', 'grafikkarte', 'lüftungsgitter', 'staubsauger', 'ersatz', 'motorlüfter', 'abluft', 'dunstabzug', 'kinder', 'spielzeug'],
+    bullets: ['Kühle Erfrischung für heisse Tage', 'Leise &amp; energiesparend', 'Ideal für Schlafzimmer, Büro &amp; Wohnung', 'Schnell startklar'] },
   spielzeug: { coll: { handle: 'kinderspielzeug', title: '🧸 Kinderspielzeug', tag: 'spielzeug' },
     extraTags: ['spielzeug', 'kinder', 'geschenk', 'familie'], type: 'Spielzeug', maxCost: MAX_COST_EUR,
     anchor: ['spielzeug', 'spielset', 'plüschtier', 'plüsch', 'kuscheltier', 'stofftier', 'bauklötze', 'bausteine', 'lernspielzeug', 'holzspielzeug', 'puppe', 'spielfigur', 'brettspiel', 'kinderpuzzle', 'steckspiel', 'motorikspielzeug'],
