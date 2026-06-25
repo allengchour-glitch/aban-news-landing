@@ -1,5 +1,10 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-25 (Nacht — Winning-Products gelernt + Delete-Bot ECHT gefixt)
+- **🎯 WINNING-PRODUCTS gelernt (`lerne im youtube`):** Doku `dropship/WINNING-PRODUCTS-2026.md` + Brain-Regel `winning_niches_2026`. Auto-Poster `top_products.csv` auf **Hero-first** umgestellt (Top 8 = wasserfeste Schmuck-Sets, Herz-Muschel, Geburtsstein, Ring-Set, Onyx, Moissanite, Zirkonia, Papillon), 4 Herren-Polos + Diffuser raus. Engpass bleibt **Trust/Conversion**, nicht Traffic.
+- **🛠️ DELETE-BOT ROOT-CAUSE GEFUNDEN + GEFIXT:** Nach 2× `deleted:0` war die alte Diagnose („Bot hängt auf Grid") FALSCH. Echte Ursache: `tiktok-delete-dupes.mjs` rief `p.mouse.move`/`p.keyboard.press` auf — das Stagehand-`ab.page` hat die **nicht** → Crash → break → `deleted:0`. Fix: Hover/Escape nur noch via `ab.act()`. Brain korrigiert. Delete-Befehl mit frischer ID neu gequeued zum Retest am PC. **Prävention (reset-proof Ledger + Token-Dedup) bleibt der Hauptschutz.**
+- **🆓 Gratis-Video:** `wan_video.mjs` (Wan 2.2 HF i2v) drin — anonym flaky (503), mit `HF_TOKEN` stabil (optional, User entscheidet).
+
 ## 2026-06-23 (GROSSE SESSION — Lernen + Produktion + Pixel/Doppelpost)
 **Brain 269 Regeln.** Engpass-Daten frisch verifiziert: Mobil-ATC 0.18% vs Desktop 3.46% (94% Traffic mobil), Mobile-PDP technisch ok (Sticky-ATC + Pixel feuern). Echter Leak = **Trust (0-Stern-Landeseiten)**.
 - **🧠 GELERNT (8 Research-Schwärme + eigene Daten):** Social-Engagement-Playbook, **Mundart-Meisterschaft** (Mundart Ø644 vs 315 = 2×, nur 9% genutzt → Default), Reel-Produktion, Konkurrenz (PURELEI/IRIS), Trend-Nischen (wasserfest/personalisiert/Charm-Bündel), Trust>Reichweite. Docs: SOCIAL-PLAYBOOK / MUNDART-GUIDE / REEL-PRODUKTION-PLAYBOOK-2026.md.
