@@ -23,13 +23,17 @@ const MAX = parseInt(process.env.MAX || '60', 10);
 const DELAY = parseInt(process.env.DELAY || '1500', 10);
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const PROMPT = `Du bist QA fuer eine PREMIUM Schweizer Damenmode-Werbung. Das Bild zeigt 3 Frames EINES Werbe-Videos.
-Flagge NUR echte Probleme. Antworte als JSON {"flag":true|false,"reasons":[...]}. flag=true wenn IRGENDEIN Frame zeigt:
-- chinesische/asiatische Schrift oder "MADE IN CHINA"
-- Lieferanten-Watermark / fremdes Markenlogo (nicht LuxeStyle)
-- starkes Warping/Verzerrung am Produkt, an Haenden oder Gesicht
-- offensichtlich billige/kaputte/verpixelte Qualitaet, die nicht premium wirkt
-Sonst flag=false. Kurze deutsche reasons.`;
+const PROMPT = `Du bist QA fuer Werbe-Videos eines Schweizer Online-Shops (LuxeStyle, BREITES Sortiment: Mode, Schmuck,
+Accessoires, Caps, Home/Wellness-Gadgets). Das Bild zeigt 1-3 Frames EINES Videos. Antworte als JSON
+{"flag":true|false,"reasons":[...]}. Flagge NUR OBJEKTIVE VERSTOESSE, KEINE Geschmacks-/Premium-/Preis-/Kategorie-Urteile.
+flag=true NUR wenn ein Frame WIRKLICH zeigt:
+- chinesische/japanische/koreanische/asiatische Schriftzeichen ODER "MADE IN CHINA"
+- ein FREMDES Markenlogo/Watermark (nicht LuxeStyle) gut sichtbar auf Produkt/Verpackung/Bild
+- starke Verzerrung/Warping/Deformation an Produkt, Haenden oder Gesicht (KI-Artefakt)
+- kaputter/korrupter/komplett schwarzer/zerrissener Frame
+Flagge AUSDRUECKLICH NICHT: "wirkt nicht premium", "zu billig", "Preis zu tief/unrealistisch", Produktkategorie
+(Gadget/Cap/Home/Diffuser ist voellig ok), Mundart-Text, Stil-/Geschmacksfragen, einfacher Hintergrund.
+Im Zweifel flag=false. Kurze deutsche reasons.`;
 
 function frames(v) {
   // NUR ffmpeg (kein ImageMagick/montage -> lief am Windows-PC nicht). 3 Einzel-Frames, an Gemini als 3 Bilder.
