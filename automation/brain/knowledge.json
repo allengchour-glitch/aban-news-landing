@@ -591,7 +591,8 @@
       "Before/After-POV: Outfit ohni / mit Accessoire, xfade auf den Beat, On-Screen vorher/nachher.",
       "GRWM-Companion: 4-6 Anzieh-Segmente, piper-VO nennt jedes Teil + Preis, weicher Musik-Bed, Safe-Zone-Captions.",
       "1 Teil X Wege Mini-Lookbook: 1 Kleid/Kette 3x gestylt, je ~1.2s auf den Beat, Preis+CTA-Endframe.",
-      "REGEL: jeder Cut 0.5-1.5s in den ersten 5s, On-Screen-Text verstärkt den Hook, Gesamt 21-60s."
+      "REGEL: jeder Cut 0.5-1.5s in den ersten 5s, On-Screen-Text verstärkt den Hook, Gesamt 21-60s.",
+      "EIGENE-ADS-AUDIT (2026-06-25, 42 mw-Produkt-Ads visuell analysiert): SCHWAECHE = viele sind statische Katalogfoto-auf-Weiss + Ken-Burns + Text = schwache Scroll-Stopper (Lieferantenfoto-Look), gemischte BGs (weiss/Holz/dunkel) = kein einheitlicher Marken-Look, manche flach/kontrastarm. STAERKE = Model/am-Koerper-Shots stechen raus. LEHRE: alte Katalog-Ads ersetzen durch Schmuck-Makro-mit-Motion (Luma-Glitzer) + am-Koerper + Vorher-Nachher + 1-oder-2 (bewiesene Gewinner); ALPENLICHT-Signature konsequent statt gemischter BGs; erster Frame = Payoff (Produkt glaenzt sofort); mehr Mensch/am-Koerper. Naechster Schritt: neue Ads aus Nano-Banana-Alpenlicht-Bildern + render_ab_reel.sh statt der alten mw-Katalog-Reels."
     ],
     "winning_niches_2026": [
       "HERO-Nische CH-Sommer: wasserfester/anlauffreier Edelstahl-Schmuck (gold/silber, hypoallergen) — Tara/Meereskind/Purelei beweisen Nachfrage. Frame wasserfest+CH-Lieferung+TWINT. CHF 19-49.",
