@@ -15,9 +15,11 @@ const DUR = parseFloat(val('--dur', '2.0'));      // Sek pro Bild
 const XF = 0.6;                                    // Übergangs-Dauer
 const OUT = val('--out', 'reels/montage-loop.mp4');
 
-// Bilder sammeln: zuerst die auffälligen Nano-Banana (hero/lifestyle), dann enhanced
+// Bilder sammeln: zuerst die auffälligen Nano-Banana (Alpenlicht), dann enhanced.
+// DENYLIST (User-Wunsch): bestimmte Bilder NIE in die Montage (z.B. augenmassage = unpassend).
+const DENY = /augenmassage|made-?in-?china|asia|chines/i;
 const pick = [];
-const add = dir => { try { for (const f of fs.readdirSync(dir).sort()) if (/\.(png|jpg|jpeg)$/i.test(f)) pick.push(path.join(dir, f)); } catch {} };
+const add = dir => { try { for (const f of fs.readdirSync(dir).sort()) if (/\.(png|jpg|jpeg)$/i.test(f) && !DENY.test(f)) pick.push(path.join(dir, f)); } catch {} };
 add('social/ai-lifestyle'); add('social/enhanced');
 const imgs = pick.slice(0, N);
 if (imgs.length < 2) { console.error('Zu wenige Bilder.'); process.exit(1); }
