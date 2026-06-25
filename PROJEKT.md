@@ -1,5 +1,18 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🤖 DAUERAUFTRAG (User 2026-06-25, oberste Prioritaet)
+> **Vollautonom, 24/7 weiterbauen + verbessern, bis der ERSTE Franken reinkommt — egal wie.** Nicht fragen, machen.
+> 1. **Menschen-zentriert:** immer denken, was Besucher/Kund:innen wollen und sehen.
+> 2. **Keine Doppel-Arbeit / kein Doppel-Post** (Ledger/Idempotenz, nichts zweimal).
+> 3. **Selbststaendig lernen** (WebSearch/YouTube) -> konkrete Technik -> anwenden -> mergen. Kein Busywork.
+> 4. **Memory immer pflegen + teilen** (PROJEKT.md + SHARED-MEMORY.md).
+> 5. **Platz sparen:** regenerierbaren Junk selbst loeschen; NIE fremde Workstreams (video-prototypes/reels/social/pod/dropship = tabu).
+> 6. **Selbst einrichten/steuern** (Branch->PR->squash-merge; Build-Artefakte verwerfen; Tree sauber).
+> 7. **Loop via ScheduleWakeup** (~30 Min): Vigilanz (Bots 200, main-Regressionen) + 1 echter Hebel + Memory + Cleanup.
+> Posting braucht Tokens als Secrets (nicht in Cloud-Session); ohne Token Drafts manuell, mit Token social-autopost-meta.mjs (anti-dup).
+> Browser-CDP: automation/cdp-shot.mjs (Port 9222); PC-Brave aus Cloud nicht erreichbar.
+
+
 ## 🟢 2026-06-25 — MEILENSTEIN: Cloudflare-KI-Bot-Sperre AUFGEHOBEN + AEO-Offensive live
 > **WICHTIGSTE NEUERUNG:** Die Cloudflare-Edge blockte bis 25.06. `PerplexityBot`/`ChatGPT-User`/`GPTBot`/
 > `ClaudeBot` mit **403** (Googlebot+Menschen kamen durch). Damit war jede AEO-Arbeit bei den KI-Engines
