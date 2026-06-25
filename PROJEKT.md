@@ -1,5 +1,27 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## 🟢 2026-06-25 — MEILENSTEIN: Cloudflare-KI-Bot-Sperre AUFGEHOBEN + AEO-Offensive live
+> **WICHTIGSTE NEUERUNG:** Die Cloudflare-Edge blockte bis 25.06. `PerplexityBot`/`ChatGPT-User`/`GPTBot`/
+> `ClaudeBot` mit **403** (Googlebot+Menschen kamen durch). Damit war jede AEO-Arbeit bei den KI-Engines
+> wirkungslos. **User hat „Block AI bots"/Bot Fight Mode im Dashboard abgeschaltet → jetzt 200 + voller
+> Inhalt** (verifiziert 25.06: PerplexityBot/ChatGPT-User/GPTBot/ClaudeBot je 200, 15 KB Inhalt). → KI-Bots
+> dürfen wieder lesen; Re-Crawl/Zitierung folgt über Tage/Wochen. **Nicht wieder sperren.**
+>
+> **Diese Session zusätzlich live (alles via inject-engine/Generatoren, idempotent, Brain 100/100, Audit 0):**
+> AEO-Cluster-Backlinks (ki-sichtbarkeit/ki-themen/kaufberater) + llms.txt-AEO-Sektion · **Answer-First-Block
+> (sichtbare erste FAQ-Antwort) auf 234 Kaufberater + 351 Branchen-Seiten = 585** · Organization-`sameAs`
+> + Person/Autor-Entity (E-E-A-T) · Service-Funnel-CTA auf 1577 KI-Themen-Seiten → /ki-automation · LCP-Fix
+> (299 Hero-Bilder eager+fetchpriority) · RSS-Feed `/feed.xml` + site-weiter `<link rel=alternate>` ·
+> eBay-Preconnect (57 Geld-Seiten) · Sitemap `lastmod` = echtes git-Datum (`tools/refresh_sitemap_lastmod.py`) ·
+> Live-Demo-Bot auf ki-automation · `tools/link_audit.py` (QA-Gate, 1012 Seiten/0 Fehler) ·
+> `automation/DESIGN-SYSTEM.md` (Anti-Slop-Regeln) · Marketing-Drafts: `MARKETING-CONTENT-KIT.md` +
+> `SHOP-LAUNCH-POSTS.md` (LinkedIn/E-Mail/Thread/Newsletter + 3 Shop-Posts + 3 Video-Skripte — User postet).
+>
+> **Verifiziert LIVE & verdient bereit:** Digital-Shop (`shop.html`, 22 KI-Kits 12/79/19 CHF, Stripe-Links 200,
+> `STRIPE_API_KEY`+`DOWNLOAD_SALT` gesetzt, Product/Offer-Schema). **Engpass bleibt Reichweite** → User-Aktionen:
+> Marketing/Shop-Posts veröffentlichen, ggf. Ads. Offene User-Hebel: Gemini-Key (→ Branchen vertiefen via
+> `deepen_hubs_gemini.py`), D1-Binding (→ echte Lead-Erfassung statt mailto), Affiliate-IDs.
+
 > Dauerhafter Gedächtnis-Speicher für dieses Vorhaben. Überlebt Session-Resets.
 > Stand: **2026-06-07** — LIVE & autonom: KI-Bilder (Vertex/Imagen) + echte Fotos (Pexels) in Social-Posts;
 > Content-Engine erzeugt Posts (gemini-2.5-flash via Vertex, thinking_budget=0); **bild-reiche, lange Newsletter-
