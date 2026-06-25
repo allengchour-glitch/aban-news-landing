@@ -1,0 +1,353 @@
+{
+  "ts": "2026-06-25T11:03:29.121Z",
+  "done": {
+    "flame-eigen.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-electro.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-hype-fast.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-hype1.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-hypepro.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-phonk-slow.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-trend-house.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-trend-hype.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-trend-phonk.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "flame-voltaic.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luma-brise-master.mp4": {
+      "flag": true,
+      "reasons": [
+        "Starke Verzerrung/Warping/Deformation im Gesichtsbereich (KI-Artefakt)"
+      ]
+    },
+    "luma-daisy-master.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luma-flame-master.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luma-onyx-master.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luma-test-wasserfest-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-accessoires-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-amore-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-armband-layering-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-armband-layering-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-astra-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-aurelia-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-baskenmuetze-scintille-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-bestseller-preis-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-bucket-banana-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-bucket-manchester-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-cap-classic-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-cap-mama-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-cap-paris-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-cap-sprint-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf Produkt sichtbar (ESTP)"
+      ]
+    },
+    "luxe-cap-tuesday-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-cap-wellness-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-cascade-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-casio-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Casio) gut sichtbar auf dem Produkt und im Text eingeblendet."
+      ]
+    },
+    "luxe-ck-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Calvin Klein) gut sichtbar auf Produkt und Verpackung."
+      ]
+    },
+    "luxe-coeur-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-couleur-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-denim-cap-bleu-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-dg-theone-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo auf Produkt sichtbar (Dolce & Gabbana)"
+      ]
+    },
+    "luxe-docker-marin-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-etincelle-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-fenrir-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'VIKINGS' auf der Holzbox sichtbar."
+      ]
+    },
+    "luxe-flat-cap-brigade-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-fleur-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-fresh-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-goutte-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-guess-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Guess) gut sichtbar auf dem Produkt."
+      ]
+    },
+    "luxe-herren-9x16-meta.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Kappa) auf dem Polo-Shirt im dritten Frame sichtbar.",
+        "Fremdes Markenlogo (VIKINGS) auf der Holzbox im ersten Frame sichtbar."
+      ]
+    },
+    "luxe-herren-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Im ersten Frame ist auf der Holzbox der Schriftzug 'VIKINGS' zu sehen, der ein fremdes Markenlogo darstellt.",
+        "Im dritten Frame ist auf dem Poloshirt das Logo der Marke 'Kappa' zu sehen, welches ein fremdes Markenlogo darstellt."
+      ]
+    },
+    "luxe-hugo-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'BOSS' auf Produkt und Verpackung sichtbar."
+      ]
+    },
+    "luxe-lagune-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-marken-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo 'ITALIA INDEPENDENT' gut sichtbar auf dem Produkt (Sonnenbrille).",
+        "Fremdes Markenlogo 'gloria' gut sichtbar auf dem Produkt (Geldbörse).",
+        "Fremdes Markenlogo 'ADDA' gut sichtbar auf der Verpackung.",
+        "Fremdes Markenlogo 'CLINIQUE' gut sichtbar auf dem Produkt (Foundation)."
+      ]
+    },
+    "luxe-minou-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-mk-9x16.mp4": {
+      "flag": true,
+      "reasons": [
+        "Fremdes Markenlogo (Michael Kors) gut sichtbar auf dem Produkt."
+      ]
+    },
+    "luxe-noeud-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-olivia-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-papillon-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-riviera-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-rosee-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-samsara-9x16.mp4": {
+      "flag": false,
+      "reasons": []
+    },
+    "luxe-save5-schmuck-9x16-meta.mp4": {
+      "flag": false,
+      "reasons": []
+    }
+  },
+  "flagged": [
+    {
+      "file": "luma-brise-master.mp4",
+      "reasons": [
+        "Starke Verzerrung/Warping/Deformation im Gesichtsbereich (KI-Artefakt)"
+      ]
+    },
+    {
+      "file": "luxe-cap-sprint-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf Produkt sichtbar (ESTP)"
+      ]
+    },
+    {
+      "file": "luxe-casio-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Casio) gut sichtbar auf dem Produkt und im Text eingeblendet."
+      ]
+    },
+    {
+      "file": "luxe-ck-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Calvin Klein) gut sichtbar auf Produkt und Verpackung."
+      ]
+    },
+    {
+      "file": "luxe-dg-theone-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo auf Produkt sichtbar (Dolce & Gabbana)"
+      ]
+    },
+    {
+      "file": "luxe-fenrir-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'VIKINGS' auf der Holzbox sichtbar."
+      ]
+    },
+    {
+      "file": "luxe-guess-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Guess) gut sichtbar auf dem Produkt."
+      ]
+    },
+    {
+      "file": "luxe-herren-9x16-meta.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Kappa) auf dem Polo-Shirt im dritten Frame sichtbar.",
+        "Fremdes Markenlogo (VIKINGS) auf der Holzbox im ersten Frame sichtbar."
+      ]
+    },
+    {
+      "file": "luxe-herren-9x16.mp4",
+      "reasons": [
+        "Im ersten Frame ist auf der Holzbox der Schriftzug 'VIKINGS' zu sehen, der ein fremdes Markenlogo darstellt.",
+        "Im dritten Frame ist auf dem Poloshirt das Logo der Marke 'Kappa' zu sehen, welches ein fremdes Markenlogo darstellt."
+      ]
+    },
+    {
+      "file": "luxe-hugo-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'BOSS' auf Produkt und Verpackung sichtbar."
+      ]
+    },
+    {
+      "file": "luxe-marken-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo 'ITALIA INDEPENDENT' gut sichtbar auf dem Produkt (Sonnenbrille).",
+        "Fremdes Markenlogo 'gloria' gut sichtbar auf dem Produkt (Geldbörse).",
+        "Fremdes Markenlogo 'ADDA' gut sichtbar auf der Verpackung.",
+        "Fremdes Markenlogo 'CLINIQUE' gut sichtbar auf dem Produkt (Foundation)."
+      ]
+    },
+    {
+      "file": "luxe-mk-9x16.mp4",
+      "reasons": [
+        "Fremdes Markenlogo (Michael Kors) gut sichtbar auf dem Produkt."
+      ]
+    }
+  ]
+}
