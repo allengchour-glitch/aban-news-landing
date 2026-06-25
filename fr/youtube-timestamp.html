@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Générateur de lien horodaté YouTube · aban news</title>
+<meta name="description" content="Générateur de lien horodaté YouTube gratuit : collez un lien vidéo et un temps (h/m/s) pour créer un lien qui démarre exactement à ce moment — en lien youtu.be et watch. En local dans le navigateur, sans connexion.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/fr/youtube-timestamp.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/youtube-timestamp.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/youtube-timestamp.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/youtube-timestamp.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/youtube-timestamp.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/youtube-timestamp.html">
+<meta property="og:title" content="Générateur de lien horodaté YouTube">
+<meta property="og:description" content="Créez un lien qui démarre une vidéo YouTube à une seconde précise. En local dans le navigateur.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/fr/youtube-timestamp.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="fr_FR"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Générateur de lien horodaté YouTube",
+"url":"https://abannews.com/fr/youtube-timestamp.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web",
+"inLanguage":"fr","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Crée un lien YouTube qui démarre la vidéo à un moment précis.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 5px;color:var(--ink2)}
+input[type=text]{width:100%;font-family:inherit;font-size:15px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink)}
+input[type=text]:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.idline{font-size:.85rem;color:var(--muted);margin-top:8px;min-height:1.2em}
+.idline b{color:var(--ink2);font-family:ui-monospace,Menlo,Consolas,monospace}
+.err{color:var(--bad);font-weight:600}
+.tparts{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.tparts .f{flex:1;min-width:90px}
+.tparts input[type=number]{width:100%;font-family:inherit;font-size:15px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+.out{margin-top:16px}
+.lnk{display:flex;gap:8px;align-items:center;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.lnk .u{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;color:var(--amber-dk)}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Aller à l'outil</a>
+<header class="site"><div class="wrap"><a href="/fr/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratuite</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1>Créer un lien <span class="a">horodaté YouTube</span></h1>
+    <p>Partagez une vidéo YouTube qui démarre exactement au bon endroit : collez le lien, choisissez un temps (h/m/s) — et copiez le lien de saut. En lien court youtu.be et en lien watch. Tout en local, rien n'est envoyé.</p>
+  </section>
+  <section class="panel" id="tool">
+    <label class="lbl" for="url">Lien YouTube ou ID de vidéo</label>
+    <input type="text" id="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://www.youtube.com/watch?v=…  ou  dQw4w9WgXcQ" value="">
+    <p class="idline" id="idline"></p>
+    <div class="tparts">
+      <div class="f"><label class="lbl" for="hh">Heures</label><input type="number" id="hh" min="0" max="23" step="1" value="0"></div>
+      <div class="f"><label class="lbl" for="mm">Minutes</label><input type="number" id="mm" min="0" max="59" step="1" value="1"></div>
+      <div class="f"><label class="lbl" for="ss">Secondes</label><input type="number" id="ss" min="0" max="59" step="1" value="30"></div>
+    </div>
+    <div class="out" id="out"></div>
+    <p class="note">YouTube lit l'horodatage comme <code>?t=</code> en secondes. Le lien court <code>youtu.be</code> est idéal pour le partage, le lien <code>watch</code> pour les descriptions. Tout en local, aucun envoi, aucune API.</p>
+  </section>
+  <div class="cta"><strong>Plus d'outils</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">pour le web &amp; les médias.</p>
+    <p><a class="btn" href="/fr/youtube-embed.html">Intégration YouTube</a>
+      <a class="btn ghost" href="/fr/youtube-thumbnail.html">Miniature YouTube</a>
+      <a class="btn ghost" href="/fr/online-tools.html">Tous les outils</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Utile ? 5 minutes d'IA sans le battage — chaque jour ouvré.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news est la newsletter IA pour les indépendants : courte, honnête, sans bingo de buzzwords. Gratuite, désabonnement à tout moment.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">S'abonner gratuitement →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/fr/youtube-embed.html">Intégration YouTube</a> · <a href="/fr/youtube-thumbnail.html">Miniature YouTube</a> ·
+  <a href="/fr/ki-werkzeug.html">Outil IA</a> &middot; <a href="/fr/online-tools.html">Tous les outils</a> &middot; <a href="/fr/impressum.html">Mentions légales</a> · <a href="/fr/datenschutz.html">Confidentialité</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("url"),idline=document.getElementById("idline"),out=document.getElementById("out"),
+      hh=document.getElementById("hh"),mm=document.getElementById("mm"),ss=document.getElementById("ss");
+  function extractId(s){
+    s=String(s).trim();
+    if(/^[A-Za-z0-9_-]{11}$/.test(s))return s;
+    var m=s.match(/(?:youtube\.com\/(?:watch\?(?:[^#]*&)?v=|shorts\/|embed\/|live\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    if(m)return m[1];
+    var m2=s.match(/[?&]v=([A-Za-z0-9_-]{11})/);
+    if(m2)return m2[1];
+    return "";
+  }
+  function intv(el,min,max){var v=parseInt(el.value,10);if(!isFinite(v))v=0;if(v<min)v=min;if(v>max)v=max;return v;}
+  function flash(b,t){var o=b.getAttribute("data-label")||b.textContent;b.setAttribute("data-label",o);b.textContent=t;setTimeout(function(){b.textContent=b.getAttribute("data-label");},1500);}
+  function fbk(text,b){try{var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.left="-9999px";
+    document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);flash(b,"Copié ✓");}
+    catch(e){flash(b,"Copiez manuellement svp");}}
+  function copyText(text,b){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(b,"Copié ✓");},function(){fbk(text,b);});
+    } else fbk(text,b);
+  }
+  function clr(node){while(node.firstChild)node.removeChild(node.firstChild);}
+  function row(label,url){
+    var r=document.createElement("div");r.className="lnk";
+    var a=document.createElement("a");a.className="u";a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=url;
+    var cp=document.createElement("button");cp.className="btn ghost sm";cp.type="button";cp.textContent=label;
+    cp.addEventListener("click",function(){copyText(url,cp);});
+    r.appendChild(a);r.appendChild(cp);
+    return r;
+  }
+  function build(){
+    var id=extractId(inp.value);
+    clr(out);
+    if(!inp.value.trim()){idline.textContent="";idline.className="idline";return;}
+    if(!id){idline.className="idline err";idline.textContent="Aucun ID YouTube valide détecté — collez le lien complet ou l'ID de 11 caractères.";return;}
+    var total=intv(hh,0,23)*3600+intv(mm,0,59)*60+intv(ss,0,59);
+    idline.className="idline";idline.textContent="ID de vidéo : ";
+    var bid=document.createElement("b");bid.textContent=id;idline.appendChild(bid);
+    idline.appendChild(document.createTextNode("  ·  démarre à "+total+" s"));
+    out.appendChild(row("Copier youtu.be","https://youtu.be/"+id+"?t="+total));
+    out.appendChild(row("Copier le lien watch","https://www.youtube.com/watch?v="+id+"&t="+total+"s"));
+  }
+  [inp,hh,mm,ss].forEach(function(el){el.addEventListener("input",build);});
+  build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
