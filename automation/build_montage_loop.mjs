@@ -15,12 +15,18 @@ const DUR = parseFloat(val('--dur', '2.0'));      // Sek pro Bild
 const XF = 0.6;                                    // Übergangs-Dauer
 const OUT = val('--out', 'reels/montage-loop.mp4');
 
-// Bilder sammeln: zuerst die auffälligen Nano-Banana (Alpenlicht), dann enhanced.
-// DENYLIST (User-Wunsch): bestimmte Bilder NIE in die Montage (z.B. augenmassage = unpassend).
+// Bilder sammeln: NUR die Alpenlicht-Versionen (Stil-Suffix), KEINE alten Plain-Duplikate (User 2026-06-25:
+// "das 2te bild weg, sieht man bearbeitet + kam zuviel vor" = altes blazer-roma.png war Dublette zum -model).
+// DENYLIST: bestimmte Bilder nie (augenmassage etc.).
 const DENY = /augenmassage|made-?in-?china|asia|chines/i;
-const pick = [];
-const add = dir => { try { for (const f of fs.readdirSync(dir).sort()) if (/\.(png|jpg|jpeg)$/i.test(f) && !DENY.test(f)) pick.push(path.join(dir, f)); } catch {} };
-add('social/ai-lifestyle'); add('social/enhanced');
+const STYLES = /-(model|bag|jewelry|sunglasses|seetest|beauty|home|men|accessory|lifestyle)$/i;
+const baseKey = f => path.basename(f).replace(/\.(png|jpg|jpeg)$/i, '').replace(STYLES, '');
+const all = [];
+const collect = dir => { try { for (const f of fs.readdirSync(dir).sort()) if (/\.(png|jpg|jpeg)$/i.test(f) && !DENY.test(f)) all.push(path.join(dir, f)); } catch {} };
+collect('social/ai-lifestyle'); collect('social/enhanced');
+// Wenn von einem Produkt eine STIL-Version existiert, die PLAIN-Version (ohne Suffix) weglassen = keine Dublette.
+const styledKeys = new Set(all.filter(f => STYLES.test(path.basename(f).replace(/\.(png|jpg|jpeg)$/i, ''))).map(baseKey));
+const pick = all.filter(f => { const b = path.basename(f).replace(/\.(png|jpg|jpeg)$/i, ''); return STYLES.test(b) || !styledKeys.has(b); });
 const imgs = pick.slice(0, N);
 if (imgs.length < 2) { console.error('Zu wenige Bilder.'); process.exit(1); }
 console.log(`Montage aus ${imgs.length} Bildern, ${DUR}s/Bild, ${XF}s Übergang.`);
