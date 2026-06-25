@@ -76,6 +76,8 @@ try {
     switch ($c) {
       "tiktok"       { if ($env:TT_ACCESS_TOKEN) { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" } else { & node "automation/local/tiktok-upload-browser.mjs" } }
       "post"         { if ($env:TT_ACCESS_TOKEN) { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" } else { & node "automation/local/tiktok-upload-browser.mjs" } }
+      "tiktok-sound-diag" { $env:TIKTOK_SOUND_DIAG="1"; & node "automation/local/tiktok-upload-browser.mjs"; $env:TIKTOK_SOUND_DIAG=$null; git add -f reports/tiktok-sound-*.png reports/tiktok-last-run.json 2>$null; git commit -m "auto(tiktok-sound-diag): Commercial-Music-Library-UI Screenshots (kein Post)" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
+      "tiktok-sound" { $env:TIKTOK_WEB_SOUND="1"; & node "automation/local/tiktok-upload-browser.mjs"; $env:TIKTOK_WEB_SOUND=$null; git add -f reports/tiktok-sound-*.png reports/tiktok-last-run.json automation/local/tiktok-upload-done.txt 2>$null; git commit -m "auto(tiktok-sound): Reel mit TikTok Commercial-Music-Library gepostet" 2>$null; git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null; git push origin claude/luxestyle-product-CizQ6 2>$null }
       "tiktok-api"   { $env:TT_PRIVACY_LEVEL="DRAFT"; & node "automation/tiktok-autopost.mjs" }
       "autobot"      { & powershell -ExecutionPolicy Bypass -File "automation/local/tiktok-autobot.ps1" }
       "giga"         { & powershell -ExecutionPolicy Bypass -File "automation/local/tiktok-giga-bot.ps1" }

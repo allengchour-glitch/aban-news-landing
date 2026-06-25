@@ -149,6 +149,39 @@ function toSilent(file) {
   return file;
 }
 
+// 🎵 TikTok-Web "TikTok-Musik" (User 2026-06-25 „tiktok web mit tiktok musik"): im Web-Uploader die
+// COMMERCIAL MUSIC LIBRARY (TikToks EIGENE, business-lizenzierte Sounds) wählen — wird NICHT als
+// "nicht autorisiert" geflaggt (anders als eingebackene Fremd-Musik). KEINE viralen Trend-Sounds
+// (die bleiben app-only), aber legal + automatisch + ohne Handy-Tap. Fallback-sicher: scheitert ein
+// Schritt -> Screenshot + weiter (Post-Flow bleibt heil). TIKTOK_SOUND_DIAG=1 = nur Panel zeigen, NICHT posten.
+async function addCmlSound(p, sleep, log, shot, diagOnly) {
+  const tryClick = async (texts, what) => {
+    for (const t of texts) {
+      try {
+        const loc = p.locator(`button:has-text("${t}"), [role="button"]:has-text("${t}"), div:has-text("${t}")`).first();
+        if (await loc.count().catch(() => 0) && await loc.isVisible().catch(() => false)) { await loc.click().catch(() => {}); log(`   Sound: "${t}" geklickt (${what})`); return true; }
+      } catch {}
+    }
+    return false;
+  };
+  try {
+    await shot('sound-1-editor');
+    // 1) "Sound hinzufügen" / "Add sound" oeffnen
+    const opened = await tryClick(['Add sound', 'Sound hinzufügen', 'Add a sound', 'Sound auswählen', 'Sounds', 'Musik hinzufügen'], 'Panel öffnen');
+    await sleep(3000); await shot('sound-2-panel');
+    if (!opened) { log('   ⚠️ "Add sound" nicht gefunden — Screenshot sound-2-panel prüfen. Poste ohne Sound.'); return false; }
+    // 2) Commercial-Music-Library-Tab waehlen (TikToks eigene lizenzierte Sounds)
+    await tryClick(['Commercial Sounds', 'Commercial Music', 'Commercial', 'Kommerzielle', 'Kommerziell', 'For Business'], 'CML-Tab');
+    await sleep(2500); await shot('sound-3-cml');
+    if (diagOnly) { log('   [diag] Sound-Panel offen, NICHT posten (TIKTOK_SOUND_DIAG=1).'); return 'diag'; }
+    // 3) ersten Track verwenden ("Use"/"Verwenden")
+    const used = await tryClick(['Use this sound', 'Use', 'Verwenden', 'Diesen Sound verwenden', 'Hinzufügen', 'Add'], 'Track verwenden');
+    await sleep(3000); await shot('sound-4-applied');
+    log(used ? '   ✅ CML-Sound angewendet.' : '   ⚠️ Kein "Verwenden"-Button — Screenshot sound-4 prüfen. Poste ohne Sound.');
+    return used;
+  } catch (e) { log('   Sound-Schritt-Fehler (poste ohne Sound):', String(e).slice(0, 80)); try { await shot('sound-99-err'); } catch {} return false; }
+}
+
 (async () => {
   let file = pickReel();
   if (!file || !fs.existsSync(file)) { log('Kein offenes Reel zum Posten (alle in tiktok-upload-done.txt). No-op.'); process.exit(0); }
@@ -220,6 +253,13 @@ function toSilent(file) {
   await input.setInputFiles(upFile);
   log('Video gesetzt, warte auf Verarbeitung…');
   await sleep(15000);
+  // 🎵 OPT-IN: TikTok-eigene Commercial-Music-Library als Sound waehlen (User „tiktok web mit tiktok musik").
+  // Default AUS (stummer Post bleibt der bewaehrte Weg). TIKTOK_WEB_SOUND=1 aktiviert; TIKTOK_SOUND_DIAG=1 = nur UI zeigen.
+  if (process.env.TIKTOK_WEB_SOUND === '1' || process.env.TIKTOK_SOUND_DIAG === '1') {
+    const shot = (n) => p.screenshot({ path: path.join(ROOT, 'reports', 'tiktok-' + n + '.png') }).catch(() => {});
+    const r = await addCmlSound(p, sleep, log, shot, process.env.TIKTOK_SOUND_DIAG === '1');
+    if (r === 'diag') { log('Diagnose fertig — Screenshots reports/tiktok-sound-*.png. KEIN Post.'); writeStatus('SOUND_DIAG', 'Sound-Panel-Screenshots erstellt', { file: path.basename(file) }); await p.close().catch(() => {}); process.exit(0); }
+  }
   // Caption-Feld (contenteditable) — leeren + füllen
   const box = p.locator('div[contenteditable="true"]').first();
   if (await box.count().catch(() => 0)) {
