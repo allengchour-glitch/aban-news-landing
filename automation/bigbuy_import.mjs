@@ -407,7 +407,15 @@ async function titlesDE(names) {
   return names;
 }
 
-const chf = (eur) => { let p = Math.max(9.9, eur * EUR_CHF * MARGIN); return (Math.ceil(p) - 0.1).toFixed(2); };
+// Gestaffelte Marge: teure Einkaufspreise bekommen kleineren Multiplikator (sonst absurde Preise, z.B. €200×2.6=CHF494).
+const chf = (eur) => {
+  let m = MARGIN;
+  if (eur > 150) m = Math.min(MARGIN, 1.5);
+  else if (eur > 80) m = Math.min(MARGIN, 1.8);
+  else if (eur > 40) m = Math.min(MARGIN, 2.2);
+  let p = Math.max(9.9, eur * EUR_CHF * m);
+  return (Math.ceil(p) - 0.1).toFixed(2);
+};
 
 if (!BB_KEY) { console.log('Kein BIGBUY_API_KEY → No-op (Connector startklar, wartet auf Key).'); process.exit(0); }
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
