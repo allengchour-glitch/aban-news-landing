@@ -365,7 +365,7 @@ const CONFIG = {
     bullets: ['Für jedes Outdoor-Abenteuer', 'Leicht & wetterfest', 'Kompakt verstaubar', '100% Original, schnelle EU-Lieferung'] },
   beleuchtung: { coll: { handle: 'beleuchtung-lampen', title: '💡 Beleuchtung & Lampen', tag: 'beleuchtung' },
     extraTags: ['wohnen', 'beleuchtung', 'premium'], type: 'Beleuchtung', maxCost: MAX_COST_EUR,
-    anchor: ['tischlampe', 'stehlampe', 'nachttischlampe', 'led-streifen', 'led-stripe', 'wandleuchte', 'deckenleuchte', 'stimmungslicht', 'led-projektor', 'lichterkette', 'schreibtischlampe', 'leselampe'],
+    anchor: ['tischlampe', 'stehlampe', 'nachttischlampe', 'led-streifen', 'led-stripe', 'wandleuchte', 'deckenleuchte', 'stimmungslicht', 'led-projektor', 'lichterkette', 'schreibtischlampe', 'leselampe', 'nachtlicht', 'rgb-leuchte', 'rgb leuchte', 'mood light', 'salzlampe', 'lavalampe', 'projektionslampe', 'ambiente-licht', 'sternenlicht'],
     ban: ['kinder', 'spielzeug', 'taschenlampe billig', 'auto', 'fahrradlicht'],
     bullets: ['Stimmungsvolles Licht für jeden Raum', 'Energiesparende LED-Technik', 'Modernes Design', '100% Original, schnelle EU-Lieferung'] },
   rucksaecke: { coll: { handle: 'rucksaecke', title: '🎒 Rucksäcke & Schulranzen', tag: 'rucksack' },
