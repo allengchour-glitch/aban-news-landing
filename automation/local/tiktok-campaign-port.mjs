@@ -106,6 +106,35 @@ async function fillAny(p, labelOrPlaceholder, value) {
   }
   return false;
 }
+// ROBUSTES BUDGET-FELD (2026-06-26, Trace 'Budgetfeld nicht gefunden'): mehrere Strategien, weil TikTok das Input
+// weder per placeholder noch label sauber labelt. 1) Label-Varianten 2) input direkt NACH einem Budget-Text (xpath)
+// 3) erstes sichtbares Zahlen-Input. Liefert true wenn gefuellt.
+async function fillBudget(p, val) {
+  for (const t of ['Tagesbudget', 'Daily budget', 'Gesamtbudget', 'Lifetime budget', 'Budget', 'budget', 'Betrag', 'Amount']) {
+    if (await fillAny(p, t, val).catch(() => false)) return true;
+  }
+  try {
+    const inp = p.locator('xpath=//*[contains(translate(normalize-space(.),"BUDGET","budget"),"budget")]/following::input[1]').first();
+    if (await inp.count().catch(() => 0)) { await inp.click({ timeout: 3000 }).catch(() => {}); await inp.fill(String(val)); await sleep(400); return true; }
+  } catch {}
+  try {
+    const nums = p.locator('input[type="number"], input[inputmode="numeric"], input[inputmode="decimal"]');
+    const n = await nums.count();
+    for (let i = 0; i < n; i++) { const el = nums.nth(i); if (await el.isVisible().catch(() => false)) { await el.fill(String(val)).catch(() => {}); await sleep(300); return true; } }
+  } catch {}
+  return false;
+}
+// ROBUSTER CREATIVE-UPLOAD (2026-06-26, Trace 'Kein Datei-Input'): erst evtl. Upload-Button klicken (enthuellt das
+// versteckte input), dann input[type=file] ueber ALLE Frames suchen (setInputFiles geht auch auf hidden inputs).
+async function uploadCreative(p, file) {
+  await clickAny(p, ['Vom Computer hochladen', 'Vom Gerät hochladen', 'From computer', 'From device', 'Hochladen', 'Upload', 'Datei auswählen', 'Video hochladen']).catch(() => {});
+  await sleep(1500);
+  const frames = [p, ...(typeof p.frames === 'function' ? p.frames() : [])];
+  for (const fr of frames) {
+    try { const inp = fr.locator('input[type="file"]').first(); if (await inp.count().catch(() => 0)) { await inp.setInputFiles(file); await sleep(9000); return true; } } catch {}
+  }
+  return false;
+}
 // in Such-Combobox tippen + ersten Treffer wählen (für Location/Sprache/Pixel/Event)
 // CRASH-FIX 2026-06-25: im Stagehand-Modus hat p KEIN p.keyboard (= genau der Crash 2026-06-24
 // 'reading press'). Darum: stagehand -> ab.act(); nur im Playwright-Fallback p.keyboard.
@@ -368,7 +397,7 @@ async function pickFromSearch(p, value, ab) {
       await A('click the Next or Continue button to go to the ad creation step', 'ad-start', 4000);
       // Creative: Datei-Input direkt setzen (Stagehand-Page = Playwright-kompatibel)
       try { let upVid = C.video; if (process.env.CAMPAIGN_KEEP_AUDIO !== '1') { const { execSync } = await import('node:child_process'); const os = (await import('node:os')).default; const sv = path.join(os.tmpdir(), 'camp-' + path.basename(C.video)); try { execSync(`ffmpeg -y -nostdin -i "${C.video}" -c:v copy -an "${sv}"`, { stdio: 'ignore' }); if (fs.existsSync(sv) && fs.statSync(sv).size > 10000) upVid = sv; } catch {} }
-        const inp = p.locator('input[type="file"]').first(); if (await inp.count().catch(() => 0)) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(9000); } else log('⚠️ AI: kein Datei-Input — Screenshot ai-ad-start pruefen'); } catch (e) { log('Creative-Upload:', String(e).slice(0, 60)); }
+        if (await uploadCreative(p, upVid)) log('Creative gesetzt:', path.basename(upVid)); else log('⚠️ kein Datei-Input (auch nach Upload-Klick/Frames) — Screenshot pruefen'); } catch (e) { log('Creative-Upload:', String(e).slice(0, 60)); }
       await diag(p, 'ai-creative-uploaded'); // 2026-06-24: Beweis, ob das Video durchkam (Upload kann lange dauern/scheitern)
       await A(`fill the ad text/caption with: ${C.adtext}`, 'ad-text');
       await A(`set the call to action to "${C.cta}"`, 'ad-cta');
@@ -414,7 +443,7 @@ async function pickFromSearch(p, value, ab) {
 
   // ---- Schritt 5: Budget — Lifetime-Cap (harte Obergrenze) bevorzugt ----
   await clickAny(p, ['Lifetime', 'Laufzeitbudget', 'Gesamtbudget']);
-  if (!await fillAny(p, 'budget', C.total)) { if (!await fillAny(p, 'Budget', C.total)) log('⚠️ Budgetfeld nicht gefunden (Screenshot).'); }
+  if (!await fillBudget(p, C.total)) log('⚠️ Budgetfeld nicht gefunden (Screenshot).'); else log('Budget gesetzt:', C.total);
   await fillAny(p, 'Daily', C.daily).catch(() => {});
   await diag(p, 'budget');
   await clickAny(p, ['Next', 'Weiter', 'Continue']);
@@ -436,9 +465,8 @@ async function pickFromSearch(p, value, ab) {
         if (fs.existsSync(sv) && fs.statSync(sv).size > 10000) { upVid = sv; log('🔇 Creative tonlos (Musik-Copyright-Schutz fuers Ad-Review).'); }
       } catch (e) { log('Tonlos-Hinweis:', e.message); }
     }
-    const inp = p.locator('input[type="file"]').first();
-    if (await inp.count().catch(() => 0)) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(8000); }
-    else log('⚠️ Kein Datei-Input — evtl. erst "Upload" klicken (Screenshot).');
+    if (await uploadCreative(p, upVid)) log('Creative gesetzt:', path.basename(upVid));
+    else log('⚠️ Kein Datei-Input — auch nach Upload-Klick/Frames nicht (Screenshot).');
   } catch (e) { log('Video-Upload-Hinweis:', e.message); }
   await fillAny(p, 'Text', C.adtext).catch(() => {});
   if (await clickAny(p, ['Call to action', 'Handlungsaufforderung', 'CTA'])) { await clickAny(p, [C.cta, 'Jetzt einkaufen', 'Mehr ansehen']); }
