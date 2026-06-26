@@ -33,3 +33,7 @@
 - **Cool & impulsfreundlich (<CHF 30, schnelle Checkouts):** Bewegungssensor-Lichter, Voice-Plugs, Mini-Diffuser, Snack-Bag-Sealer, Tierhaar-Roller, 3-in-1-Ladegerät, Karaoke-Mics, Platzspar-Organizer. Gemeinsam: **sofort sichtbarer, satisfying Nutzen** (perfekt fürs Kurzvideo).
 - **Preisregel:** $10–30 = niedrige Hemmschwelle = schneller Kauf. → Import-Filter bevorzugt Impuls-Preise in `viral`/`kuechenhelfer`/`phone`.
 - **Anwendung:** viral+akkuventi importiert; künftige viral-Wellen gezielt auf Bewegungslicht/Diffuser/Snack-Sealer-Anker.
+
+## Runde 4b-Ernte — 2026-06-26
+- **+4 Handy-Zubehör** (Impuls <CHF13: Schnellladekabel CHF12.90, 3× Handy-Geldbeutel rosa/blau/beige CHF11.90) — genau die Impuls-Preisklasse, die laut Trenddaten schnell konvertiert. `phone` war doch nicht ganz Decke (nur sehr langsam wg. vieler Ledger-Treffer beim Scan). Anime-Welle lief danach an.
+- **Lehre Scan-Tempo:** `phone` brauchte ~10 Min für 4 Picks (hunderte Kandidaten, meiste schon im Ledger → langsamer Durchlauf trotz Ledger-Skip). Bei langsamen Kategorien einfach Hintergrund laufen lassen, nächster Tick erntet.
