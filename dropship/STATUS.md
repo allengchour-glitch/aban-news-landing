@@ -1,5 +1,13 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-26 (NACHT — 🎵 TikTok-Musik gemeistert + 🌉 Brücke baut Ads + 6 YouTube-Videos gelernt)
+- **🌉 BRÜCKE BAUT ADS (bewiesen):** `campaign-bridge.sh` (DRY) — der **VPS steuerte den PC-Brave** durch Objective→Adgroup→Pixel→Placement→Targeting. End-to-end-Fernsteuerung über Tailscale läuft. **Offen:** Stagehand auf VPS installieren (sonst starrer Playwright-Fallback → Timeouts). Fix-Cmd: `npm i @browserbasehq/stagehand`.
+- **🎵 TIKTOK-MUSIK GEMEISTERT (3 Tutorials + Daten):** Business-Account → nur **Commercial Music Library** (Trend-Pop gesperrt). **Ads nie stumm** (+72% Stop, +6% Kaufabsicht, +9% Präferenz, Sound=8× Erinnerung). Neu: `make_sound_ad.mjs` backt legale CC-BY-Musik ein → Ad-Creative `seedance-wasserfest-sound.mp4`. Favoriten-Trick = Lizenz-Filter. Doku `TIKTOK-MUSIK-MASTERPLAN-2026.md`. **Alte Stumm-Regel korrigiert** (galt nur Personal).
+- **📺 6 YOUTUBE-VIDEOS GELERNT** (neues Tool `yt_learn.mjs` via yt-dlp, je KI-Agent): **Simo $1.1M=Gold** (Ad-Test-Formel → `ad_manager.mjs` Kill/Scale automatisiert), AI-Studio/Seedance 2.0=teils, Grok&Flow=verworfen (Lizenz), Seedance 2.5=warten. Docs `ALLE-YOUTUBE-LEHREN-2026.md` + `LERN-YOUTUBE-SIMO-2026.md`.
+- **🎯 AD SAUBER NEU:** Top-Creative (See-Test 4.8Mbps, jetzt Sound-On) + clean Schmuck-Landing (verifiziert) + WELCOME10, Traffic, 70-CHF-Cap. DRY→Review→GO. Katalog 2× adult-gesweept = sauber.
+- **📊 Reader-Schleife:** `tiktok-ads-read.mjs` (Brücke) → `luxe.tiktok_stats`; `ad_manager.mjs` → `luxe.ad_decision`. **Pixel 🟢** (`pid=1 load=1 page=1 wpm=1`). Views/Klicks aktuell 0 (Ad noch nicht live).
+- **🤖 AUTOMODE gemerkt** (User: selber weiter machen, nicht auf „weiter" warten). **Gehirn 345 Regeln.**
+
 ## 2026-06-26 (Abend — 🌉 TAILSCALE-BRÜCKE LIVE + Ads-Reader + Katalog adult-sauber)
 - **🌉 DURCHBRUCH — VPS steuert PC-Brave (Tailnet):** `cdp-test.mjs` bestätigt: VPS sieht **10 Tabs** im PC-Brave (inkl. ads.tiktok.com, eingeloggt). `ai-browser.mjs` schreibt die WS-URL 127.0.0.1→Tailnet um + sendet `Host:127.0.0.1:9222`. Damit kann der VPS (Rechenzentrums-IP-Problem umgangen, weil über den PC mit Wohn-IP) den Ads-Browser fernsteuern — **24/7 ohne dass ich am PC sitze.**
 - **📊 ADS-READER gebaut (`automation/vps/tiktok-ads-read.mjs`):** liest die Reporting-Seite im PC-Brave, extrahiert Impr/Klicks/Spend/Status (Gemini + Regex-Fallback) und stempelt **`luxe.tiktok_stats`** → jede Session (auch Cloud, die den PC-Port NICHT erreicht) bekommt **echte Views+Klicks ohne Marketing-API-Token.** In `run-api-jobs.sh` (Cron) verdrahtet, no-op-sicher.
