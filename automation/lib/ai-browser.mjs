@@ -35,9 +35,16 @@ export async function aiBrowser({ cdp = CDP } = {}) {
       let cdpUrl = cdp;
       try {
         const base = cdp.replace(/\/$/, '');
-        const r = await fetch(base + '/json/version');
+        const r = await fetch(base + '/json/version', { headers: { Host: '127.0.0.1:9222' } });
         const j = await r.json();
-        if (j && j.webSocketDebuggerUrl) { cdpUrl = j.webSocketDebuggerUrl; console.log('CDP-WS aufgeloest: ' + cdpUrl); }
+        if (j && j.webSocketDebuggerUrl) {
+          cdpUrl = j.webSocketDebuggerUrl;
+          // 🌐 TAILSCALE-FIX 2026-06-26: Brave liefert die WS-URL IMMER als 127.0.0.1 -> ueber ein Remote-CDP
+          // (z.B. VPS->PC ueber Tailscale, CDP_URL=http://<tailnet-ip>:9222) unerreichbar. Host der WS-URL auf
+          // den CDP_URL-Host umschreiben, damit die Verbindung uebers Tailnet klappt (lokal bleibt 127.0.0.1).
+          try { const ch = new URL(cdp).hostname; if (ch && ch !== 'localhost' && ch !== '127.0.0.1') cdpUrl = cdpUrl.replace(/\/\/(127\.0\.0\.1|localhost)(:\d+)?/, '//' + ch + '$2'); } catch {}
+          console.log('CDP-WS aufgeloest: ' + cdpUrl);
+        }
       } catch (e) { console.log('CDP /json/version nicht erreichbar (' + String(e).slice(0, 50) + ') -> nutze ' + cdp); }
       const candidates = [];
       // GROQ ZUERST (CizQ6 2026-06-22): Gemini-Free-Quota war erschoepft ("You exceeded your quota") -> jeder act()
