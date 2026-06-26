@@ -12,6 +12,7 @@
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+setTimeout(() => { console.log('WATCHDOG 6min -> exit'); process.exit(1); }, 360000).unref(); // 2026-06-25: kein FIFO-Hang
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(new URL(import.meta.url))));
 const CSV = path.join(ROOT, 'social', 'tiktok_photos.csv');

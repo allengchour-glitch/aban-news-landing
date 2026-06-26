@@ -2,6 +2,7 @@
 /* LuxeStyle - tiktok-pixel-check.mjs : PIXEL-AUTONOMIE, prueft ALLE Varianten auf mehreren Seiten.
  * Variante 1 Browser-Pixel(Theme ttq) - 2 Shopify-TikTok-App WebPixel - 3 server Events API(Fallback).
  * Prueft home + collection + product. No-op-sicher. ENV SHOP_URL / TIKTOK_PIXEL_ID. */
+setTimeout(() => { console.log('WATCHDOG 5min -> exit'); process.exit(1); }, 300000).unref(); // 2026-06-25: kein FIFO-Hang
 const BASE = (process.env.SHOP_URL || 'https://luxestyle.ch').replace(/\/$/, '');
 const PIXEL = process.env.TIKTOK_PIXEL_ID || 'D8EKVR3C77U6KT5BTBD0';
 const PAGES = ['/', '/collections/all', '/products/blazer-roma-tailliert-mit-bindegurtel-revers'];

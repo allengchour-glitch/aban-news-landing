@@ -25,6 +25,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { attachVideo, getFeaturedImageUrl } from './attach_video_to_product.mjs';
+setTimeout(() => { console.log('WATCHDOG 12min -> exit'); process.exit(1); }, 720000).unref(); // 2026-06-25: kein FIFO-Hang
 
 const KEY = process.env.LUMA_API_KEY || process.env.LUMAAI_API_KEY || '';
 const LUMA = 'https://api.lumalabs.ai/dream-machine/v1/generations';

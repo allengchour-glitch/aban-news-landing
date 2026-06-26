@@ -25,6 +25,7 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
+setTimeout(() => { console.log('WATCHDOG 6min -> exit'); process.exit(1); }, 360000).unref(); // 2026-06-25: kein FIFO-Hang
 
 const CSV = fileURLToPath(new URL('./reels_seed.csv', import.meta.url));
 const DRY = process.env.DRY_RUN === '1';

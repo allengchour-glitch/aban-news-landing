@@ -25,6 +25,7 @@
  * Lauf:  node automation/fix_trust_consistency.mjs
  *        DRY=1 node automation/fix_trust_consistency.mjs   (nur Report)
  */
+setTimeout(() => { console.log('WATCHDOG 8min -> exit'); process.exit(1); }, 480000).unref(); // 2026-06-25: kein FIFO-Hang
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const CID = process.env.SHOPIFY_CLIENT_ID, SEC = process.env.SHOPIFY_CLIENT_SECRET;
 const DRY = process.env.DRY === '1';

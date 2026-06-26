@@ -14,6 +14,7 @@ import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { generate, listProviders } from './ai/ai_generate.mjs';
+setTimeout(() => { console.log('WATCHDOG 6min -> exit'); process.exit(1); }, 360000).unref(); // 2026-06-25: kein FIFO-Hang
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const AI_ONLY = process.argv.includes('--ai');

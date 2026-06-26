@@ -9,6 +9,7 @@
  * ENV: SHOPIFY_SHOP=au3j0y-hq.myshopify.com · MAX=300
  * Lauf:  MAX=300 node automation/fix_shipping_text.mjs   (mehrmals bis "0 geaendert")
  */
+setTimeout(() => { console.log('WATCHDOG 8min -> exit'); process.exit(1); }, 480000).unref(); // 2026-06-25: kein FIFO-Hang
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const MAX = parseInt(process.env.MAX || '300', 10);
 const API = `https://${SHOP}/admin/api/2025-01/graphql.json`;

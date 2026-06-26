@@ -29,6 +29,7 @@ const END = new Date(START.getTime() + RUN_DAYS*24*60*60*1000);
 const LANDING = process.env.LANDING || 'https://luxestyle.ch/collections/wasserfester-schmuck';
 const DRY = process.env.DRY === '1';
 import fs from 'node:fs';
+setTimeout(() => { console.log('WATCHDOG 6min -> exit'); process.exit(1); }, 360000).unref(); // 2026-06-25: kein FIFO-Hang
 const log = (...a) => console.log(...a);
 const report = (o) => { try { fs.mkdirSync('reports',{recursive:true}); fs.writeFileSync('reports/campaign-api-last-run.json', JSON.stringify({ ts:new Date().toISOString(), daily:DAILY, total_cap:TOTAL, run_days:RUN_DAYS, ...o }, null, 2)); } catch {} };
 
