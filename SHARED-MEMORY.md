@@ -1,5 +1,12 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🎯 CONVERSION-MASTERPLAN (CizQ6 2026-06-26, 5-Agenten-Schwarm) — Theme + User
+**Voll: dropship/CONVERSION-MASTERPLAN-2026.md + dropship/KLAVIYO-FIX-2026.md.** Engpass = Trust + mobile PDP + Zahlung, NICHT Traffic.
+**THEME-SESSION (Prio):** (1) Sticky-ATC DRAWER-Stil mobil (Dawn nicht nativ, +5.2% Orders belegt) · (2) LCP-Hero loading=eager+fetchpriority=high+preload (59% lazy-loaden=−3s) · (3) Accelerated-Checkout-Buttons sichtbar · (4) Varianten als Swatches/Tap-Buttons · (5) Risk-Reversal-Block bei ATC (30-Tage-Garantie + Anlauf-Garantie + See-Test-GIF + 316L/PVD-Material) ersetzt 0 Reviews.
+**USER (Settings/Konto):** TWINT an + Test-Checkout · Klaviyo (E3 live, Smart-Sending aus, URL→.ch, Währung→CHF, EN/US-Doppel-Flows weg) · Judge.me Reviews · Creator-Seeding 50-100 CH-Nanos (Gratis+Code+10-15% Provision).
+⚖️ NUR echte Urgency (SECO), KEINE Fake-compare-at-Preise (illegal), CHF inkl. MwSt (PBV).
+
+
 # 🟢🟢 KAMPAGNE-GO FREIGEGEBEN (User 2026-06-25 „mach du kampagne go · andere session lädt es hoch")
 **Status:** User hat den Kampagnen-Start KLAR freigegeben. Budget: CH-Kampagne **≤ 350 CHF gesamt** (freigegeben), wir starten konservativ **70 CHF Lifetime-Cap** (20/Tag, harte Obergrenze) — NIE eigenmächtig erhöhen.
 **Primärer Weg (gequeued, PC führt aus):** `campaign-traffic` in `automation/local/cloud-commands.json` (id `2026-06-25-KAMPAGNE-GO-traffic`) → cmd-poll am PC: TT_OBJECTIVE=Traffic, 20/Tag, TT_TOTAL_BUDGET=70 (Lifetime-Cap), Browser-Bot `tiktok-campaign-port.mjs` über die **eingeloggte Brave-Session** (kein Marketing-API-Token nötig). Bot ist **frisch crash-gefixt** (pickFromSearch nutzte p.keyboard → crashte im Stagehand-Modus, jetzt ab.act()). **Voraussetzung: PC AN + Brave 9222 bei ads.tiktok.com eingeloggt.**
