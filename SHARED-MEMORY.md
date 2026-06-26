@@ -2095,3 +2095,19 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   `@media(max-width:749px)` → Breadcrumb-Links `padding:.28rem .15rem` (vorher 0, zu klein zum Tippen);
   Pill-Chips `.rte a[style*="border-radius:999px"]` → `padding:.52rem 1.05rem !important; font-size:.92rem` (vorher .35rem/.8rem ≈26px, jetzt ≈40px, near 44px-Guideline). Live (themeFilesUpsert userErrors=[], auf Collection-Seite bestätigt).
 - **Lehre:** In Cloud-Sessions OHNE Browser → Mobile-QA via `curl -A "<iPhone-UA>"` + HTML/CSS-Inspektion (Media-Queries, Tap-Target-Padding) statt Screenshot. Pill-Chips per Inline-Style → Mobile-Override nur via `.rte a[style*="..."] !important` möglich.
+
+---
+**🎯 2026-06-26 (MoMike-YouTube-Lehre + Trend-Gadget-DEDUP — CJ/Theme-Session):**
+- **User-Auftrag (YouTube-Link):** Video „How I Make $100/Day Only Working 1 Hour" (MoMike Chamberlin) ausgewertet →
+  Kernthese = **EIN Winning-Product + organische Kurzvideo-Reichweite (kein Ad-Budget) + Shop schliesst den Verkauf.**
+  Deckt sich 1:1 mit unserer Klaviyo-Diagnose (Reichweite=Engpass). Playbook + fertige Hook-Skripte/Captions für unsere
+  2 Sommer-Winner in **`dropship/MOMIKE-VIRAL-PLAYBOOK.md`** (Nackenventilator CHF16.90 · Sternenhimmel-Projektor CHF23.90,
+  beide live/kaufbar). Posten/Autopost-Webhook bleibt User-Klick (kein ffmpeg in Cloud-Session).
+- **🧹 7 LIVE-DUBLETTEN gedraftet** (tag:viral/klima/hype, 465 Produkte gescannt, 25 SKU-Gruppen mit Mehrfach,
+  davon **7 mit ZWEI ACTIVE** = echte sichtbare Dublette): je das keyword-schwächere Listing auf DRAFT, das SEO-bessere
+  (keyword-first Titel) behalten. Betroffen SKU 797855/889080/965919/996535/1144802/1193580/1300500 (Haltungstrainer,
+  Massage, Liegestuhl, Projektor, Massagepistole×2). Skript: `/tmp/dedup_act.mjs` (gebatchte productUpdate status=DRAFT).
+- **🔧 ROOT-CAUSE-FLAG an die Import-Session:** Der Trend-Gadget/Klima-Import legt denselben BigBuy-SKU **zweimal** an —
+  einmal mit benefit-Titel („Muskel-Entspannung…"), einmal mit keyword-Titel („Massagepistole…") → Dedup-Ledger
+  (`bigbuy_done.txt`) greift nicht, weil die Titel/Handles differieren. **Fix-Bitte:** Dedup im Importer auf **SKU/EAN**
+  prüfen, nicht auf Titel/Handle. Die 18 anderen SKU-Gruppen sind unkritisch (jeweils nur 1 ACTIVE + 1 bereits DRAFT).
