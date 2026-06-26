@@ -330,5 +330,55 @@ export const PRODUCTS = [
     "name": "anpassbarer-haltungstrainer-fur-perfekte-korperhal-81502",
     "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/v0101117_010_mkt9.jpg",
     "label": "Anpassbarer Haltungstrainer"
+  },
+  {
+    "name": "kompakte-kuhlung-angenehme-frische-fur-sie-1193638",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8021183020274_R00.jpg",
+    "label": "Kompakte Kühlung"
+  },
+  {
+    "name": "die-mobile-kuhle-ihr-flexibler-klimakomfort-1167256",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5901750508493_S91120944_P00.jpg",
+    "label": "Die mobile Kühle"
+  },
+  {
+    "name": "ihr-mobiler-frische-profi-uberall-kuhlen-1167255",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5901750508509_S91120943_P00.jpg",
+    "label": "Ihr mobiler Frische-Profi"
+  },
+  {
+    "name": "klimaanlage-fur-unterwegs-kuhle-wo-sie-wollen-1167252",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5901750508554_S91120939_P00.jpg",
+    "label": "Klimaanlage für unterwegs"
+  },
+  {
+    "name": "mobile-frische-ihr-kompakter-klimabringer-1167251",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5901750508547_S91120940_P00.jpg",
+    "label": "Mobile Frische"
+  },
+  {
+    "name": "ihr-luftreiniger-fur-ein-plus-an-lebensqualitat-1088996",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8013240890920_S7927292_P00.jpg",
+    "label": "Ihr Luftreiniger"
+  },
+  {
+    "name": "raumluft-optimierer-atmen-sie-auf-jeden-tag-891597",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3701542102708_S71001684_P00.jpg",
+    "label": "Raumluft-Optimierer"
+  },
+  {
+    "name": "duo-luftreiniger-fur-umfassend-saubere-atemluft-776176",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8435322500853_S2226400_P0_icon0.jpg",
+    "label": "Duo-Luftreiniger"
+  },
+  {
+    "name": "atemluft-booster-fur-spurbar-reinere-raumluft-681734",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5901299955314_R01.jpg",
+    "label": "Atemluft-Booster"
+  },
+  {
+    "name": "design-luftreiniger-fur-reine-luft-und-wohlgefuhl-681670",
+    "image_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5901299954584_R01.jpg",
+    "label": "Design-Luftreiniger"
   }
 ];
