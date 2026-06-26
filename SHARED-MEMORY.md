@@ -2060,3 +2060,7 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **⚠️ AN DIE ANDERE SESSION (Beauty/Garten = euer Gebiet, ich fasse es nicht an):**
   - **3× Beauty überlappen massiv:** beauty-pflege(383, TYPE=Beauty/Kosmetik+tag beauty), beauty-geraete(383, TAG=beauty — ABER Titel „Beauty-Geräte"! Regel passt nicht zum Titel = Defekt, zeigt ALLE Beauty statt nur Geräte), beauty-selfcare(150). Keine im Menü. → Bitte zu 1 Parent + echten Subs (Make-up/Hautpflege/Geräte/Bart) konsolidieren. Mein Sub-Chip „Beauty-Geräte" linkt auf beauty-geraete — bitte dessen Regel auf echte Geräte fixen (z.B. TYPE=Beauty Tools).
   - **outdoor-garten(475, TAG=outdoor+garten+camping)** ist breiter Umbrella, überlappt garten-balkon(155, Menü) + camping. Nicht im Menü. → entscheiden ob behalten oder auf garten-balkon konsolidieren.
+
+## 📌 2026-06-25 (Nachtrag 8 — yoga+camping Dubletten)
+- **yoga → yoga-pilates** + **camping-sub → camping-outdoor** (beide TAG-Dubletten, unpubliziert+Redirect, Import nutzt die langen Handles). Insgesamt diese Session: **15 Dubletten-Gruppen konsolidiert** (Marken×5, fitness/spielzeug/velo/tauchen/anime/metalldetektor/garten/yoga/camping/beleuchtung).
+- **Methode etabliert:** exakte Regel-Dubletten = Collections mit identischer ruleSet → behalte Import-Handle (sonst Neubau) ODER Menü-Handle (für Breadcrumb), unpubliziere+Redirect den Rest. Script-Pattern in /tmp/consolidate2.mjs. ACHTUNG bei finaldup-Check: viele Queries → Rate-Limit, GAP≥600ms nötig.
