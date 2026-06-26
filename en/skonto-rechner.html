@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cash Discount Calculator (Skonto) · aban news</title>
+<meta name="description" content="Free cash-discount (Skonto) calculator: work out the discount amount, the amount to pay and the effective annual rate of an early-payment discount — enter invoice amount, discount %, discount period and payment term. Local in your browser, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/en/skonto-rechner.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/skonto-rechner.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/skonto-rechner.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/skonto-rechner.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/skonto-rechner.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/skonto-rechner.html">
+<meta property="og:title" content="Cash Discount Calculator (Skonto)">
+<meta property="og:description" content="Work out the discount amount, amount to pay &amp; effective annual rate of a cash discount. Local in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/en/skonto-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cash Discount Calculator (Skonto)",
+"url":"https://abannews.com/en/skonto-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Calculates the discount amount, amount to pay and effective annual rate of a cash discount.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.lbl{display:block;font-weight:600;font-size:13px;margin:0 0 5px;color:var(--ink2)}
+input{width:100%;font-family:inherit;font-size:15px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink)}
+input:focus{outline:2px solid var(--amber-lt);border-color:var(--amber)}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+.kpi{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.kpi .v{font-size:clamp(18px,3vw,23px);font-weight:800;color:var(--amber-dk);line-height:1.2}
+.kpi.big .v{color:var(--ok)}
+.kpi .k{font-size:.8rem;color:var(--muted);margin-top:3px}
+.hint{font-size:.9rem;color:var(--ink2);margin-top:14px;padding:12px 14px;background:var(--cream);border-radius:10px}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Cash discount</span> calculator</h1>
+    <p>Is the early-payment discount worth it? Enter the invoice amount, discount percentage and the deadlines — and see the discount amount, the amount to pay and the effective annual rate. You'll instantly know whether paying early beats your credit interest. All local, nothing is sent.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div><label class="lbl" for="amount">Invoice amount (gross)</label><input type="number" id="amount" min="0" max="100000000" step="10" value="1000"></div>
+      <div><label class="lbl" for="skonto">Discount %</label><input type="number" id="skonto" min="0" max="99" step="0.1" value="2"></div>
+      <div><label class="lbl" for="frist">Discount period (days)</label><input type="number" id="frist" min="0" max="365" step="1" value="10"></div>
+      <div><label class="lbl" for="ziel">Payment term (days)</label><input type="number" id="ziel" min="0" max="365" step="1" value="30"></div>
+    </div>
+    <div class="cards">
+      <div class="kpi"><div class="v" id="kSkonto">–</div><div class="k">Discount amount</div></div>
+      <div class="kpi big"><div class="v" id="kPay">–</div><div class="k">Amount to pay with discount</div></div>
+      <div class="kpi"><div class="v" id="kRate">–</div><div class="k">Effective annual rate</div></div>
+    </div>
+    <div class="hint" id="hint"></div>
+    <p class="note">Effective annual rate = discount / (100 − discount) × 360 / (payment term − discount period). If it exceeds your overdraft/credit rate, taking the discount almost always pays off — even by pre-financing with credit. Calculated on a 360-day year. Not tax/financial advice. All local, no upload.</p>
+  </section>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for the self-employed.</p>
+    <p><a class="btn" href="/en/rechnung-generator.html">Write an invoice</a>
+      <a class="btn ghost" href="/en/mwst-rechner.html">VAT calculator</a>
+      <a class="btn ghost" href="/en/online-tools.html">All tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe any time.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe free →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/en/rechnung-generator.html">Invoice</a> · <a href="/en/mwst-rechner.html">VAT calculator</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/en/impressum.html">Imprint</a> · <a href="/en/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var amount=document.getElementById("amount"),skonto=document.getElementById("skonto"),frist=document.getElementById("frist"),ziel=document.getElementById("ziel"),
+      kSkonto=document.getElementById("kSkonto"),kPay=document.getElementById("kPay"),kRate=document.getElementById("kRate"),hint=document.getElementById("hint");
+  var cf=new Intl.NumberFormat("en-GB",{style:"currency",currency:"EUR",minimumFractionDigits:2,maximumFractionDigits:2});
+  var pf=new Intl.NumberFormat("en-GB",{minimumFractionDigits:1,maximumFractionDigits:1});
+  function num(el,min,max){var v=parseFloat(el.value);if(!isFinite(v))v=0;if(v<min)v=min;if(v>max)v=max;return v;}
+  function build(){
+    var a=num(amount,0,100000000),s=num(skonto,0,99),f=num(frist,0,365),z=num(ziel,0,365);
+    var sBetrag=a*s/100,pay=a-sBetrag,days=z-f;
+    kSkonto.textContent=cf.format(sBetrag);
+    kPay.textContent=cf.format(pay);
+    if(s<=0){
+      kRate.textContent="–";
+      hint.textContent="Enter a discount percentage to see the effective annual rate.";
+    }else if(days<=0){
+      kRate.textContent="–";
+      hint.textContent="The payment term must be longer than the discount period for an annual rate to be calculated.";
+    }else{
+      var eff=s/(100-s)*360/days*100;
+      kRate.textContent=pf.format(eff)+" %";
+      hint.textContent="Taking the discount effectively earns about "+pf.format(eff)+" % p.a. If your credit interest is lower, paying early pays off — even on credit.";
+    }
+  }
+  [amount,skonto,frist,ziel].forEach(function(el){el.addEventListener("input",build);});
+  build();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
