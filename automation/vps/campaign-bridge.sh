@@ -44,4 +44,12 @@ ERR1=$(grep -oE 'AI_[A-Za-z]+Error[^"]{0,60}' "$RUNLOG" | head -1)
 SUMMARY="${GO:+GO }${GO:-DRY} model=$MODEL ai_err=$AIERR acts=$ACTS presubmit=$PRESUBMIT submit=$SUBMIT err=[$ERR1] @ $(date -u +%H:%MZ)"
 STAMP_KEY="campaign_dry_status" STAMP_VALUE="$SUMMARY" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
 echo "[bridge] STATUS: $SUMMARY"
+
+# 👁️ TEXT-TRACE (2026-06-26 "such ne weg", KEIN Bild-Upload = kein Privacy-Leak): die letzten "nicht gefunden"/
+# "pruefen"/Fehler-Zeilen + den letzten erreichten DIAG-Schritt ins Metafeld stempeln, damit die Cloud sieht WO
+# der Bot haengt (rein textuell, nichts wird extern publiziert).
+LASTSTEP="$(grep -oE 'DIAG\[[a-z-]+\]' "$RUNLOG" | tail -1)"
+TRACE="$(grep -oiE '[a-zäöü-]*feld nicht gefunden|nicht gefunden|Selektor pr[uü]fen|kein Datei-Input|Budgetfeld[^.]*' "$RUNLOG" | sort -u | head -4 | tr '\n' '; ')"
+STAMP_KEY="campaign_trace" STAMP_VALUE="laststep=$LASTSTEP | $TRACE @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
+echo "[bridge] TRACE: laststep=$LASTSTEP | $TRACE"
 rm -f "$RUNLOG"

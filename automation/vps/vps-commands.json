@@ -1,3 +1,4 @@
 [
-  { "id": "2026-06-26-DIAG-1", "cmd": "diag" }
+  { "id": "2026-06-26-DIAG-1", "cmd": "diag" },
+  { "id": "2026-06-26-DRY-EYES", "cmd": "campaign-dry" }
 ]
