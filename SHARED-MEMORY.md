@@ -2132,3 +2132,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   `strand` lieferte diesen Pass 0 Treffer. **GAP/Rate-Limit:** DRY-Lauf schafft in 180s oft nicht mal 1 Kategorie → künftig **LIVE im Hintergrund in Logfile** (nicht `| tail`, das buffert bis EOF) laufen lassen, Ledger ist `bb:<id>`-keyed = dedup-sicher.
 - **🧹 33 echte BigBuy-Dubletten gedraftet** (katalogweit, `BB-S…`-SKU, Grösse-2-Paare): Espressokocher/Weingläser/Blumentöpfe/Küchenhelfer — gleicher SKU, 2 verschiedene AI-Titel. Keyword-reicheren Titel behalten.
 - **🛑 WICHTIGE DEDUP-FALLE (teuer, fast 267 Produkte zerstört):** Naiver „group by SKU/EAN über ALLE status:active" findet **523 ‚Dubletten' — FALSCH!** Die grossen Gruppen (267× / 50× / 31× …) sind **Print-on-Demand-Designs** (Swiss-Edition Sticker/Shirt/Tasse/Tasche/Kissen), die sich **eine Platzhalter-Basis-SKU `9000001_*` teilen**, aber völlig verschiedene Motive sind (Matterhorn ≠ Edelweiss). **REGEL: Dedup NUR über echte `BB-S…`-SKUs (BigBuy) und NUR Grösse-2-Gruppen; POD-SKUs `9000001_*` NIE als Dublette behandeln.** DRY-First hat's gerettet.
+
+---
+**🤖 2026-06-26 (AUTONOM-LOOP R2/R3 — Sommer-Saison-Fokus):**
+- **+3 Grill/BBQ** importiert (Sommer-saisonal: Antihaft-Matten CHF9.90, Kontaktgrill CHF73.90, 2200W-Grill CHF92.90 — alle ACTIVE/SEO✓/8 Kanäle/sommer-2026+outdoor-garten). Küchenhelfer-Welle läuft noch im Hintergrund → nächster Tick sammelt ein.
+- **📚 Lern-Lehre (data-backed):** Sommer-Nachfrage bricht **ab Anfang August** ein → Strand/Grill/Kühlung/Ventilator JETZT pushen. Loop-Rotation darauf getrimmt. `dropship/YOUTUBE-LEARNINGS.md` führt das Lern-Log.
+- **Loop-Hygiene:** NIE zwei Importe parallel (Ledger-Race). Ledger pro Tick committen, bevor evtl. `git reset`. Dedup-Falle (POD-SKU `9000001_*`) bleibt tabu.
