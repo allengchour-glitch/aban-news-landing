@@ -2064,3 +2064,8 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 ## 📌 2026-06-25 (Nachtrag 8 — yoga+camping Dubletten)
 - **yoga → yoga-pilates** + **camping-sub → camping-outdoor** (beide TAG-Dubletten, unpubliziert+Redirect, Import nutzt die langen Handles). Insgesamt diese Session: **15 Dubletten-Gruppen konsolidiert** (Marken×5, fitness/spielzeug/velo/tauchen/anime/metalldetektor/garten/yoga/camping/beleuchtung).
 - **Methode etabliert:** exakte Regel-Dubletten = Collections mit identischer ruleSet → behalte Import-Handle (sonst Neubau) ODER Menü-Handle (für Breadcrumb), unpubliziere+Redirect den Rest. Script-Pattern in /tmp/consolidate2.mjs. ACHTUNG bei finaldup-Check: viele Queries → Rate-Limit, GAP≥600ms nötig.
+
+## 📌 2026-06-25 (Nachtrag 9 — GOOGLE-FEED-FIX gross + Produkt-Dubletten + Health)
+- **🇫🇷 FRANZÖSISCH-LOCALE UNPUBLIZIERT (User-OK):** Riesen-Fund aus Google-Merchant-CSV (11'121 „Fehler"): **8'674 (78%) waren Phantom-Französisch-Feed** — fr war publiziert aber 0 Übersetzungen → /fr/ = 404 → „page unavailable". `shopLocaleUpdate(locale:"fr",published:false)`. Sprachen jetzt: de(primär)/en/it on, fr OFF. Google droppt die 8674 beim Re-Crawl. **en/it geben 200 (untranslated=Deutsch-Inhalt), bewusst gelassen** (Markt-Entscheid User). User soll im Google-Channel Feed re-syncen, dann „Request review" (Cooldown ~7T).
+- **32 Produkt-Dubletten bereinigt** (gleiche BigBuy-ID, durch viele Wellen) → DRAFT. Danach 0 Gruppen.
+- **Health-Check:** 4685 aktiv, alle bigbuy vertieft (0 offen), ß=0, 298 Collections, Sub-Chip-Links alle 200 (Konsolidierung sauber). Rest Google-CSV: ~201 de-Geister (selbstheilend) + ~33 Bild/Overlay + ~10 Dessous-Adult (inhärent).
