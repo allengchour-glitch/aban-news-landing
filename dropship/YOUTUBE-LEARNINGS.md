@@ -37,3 +37,7 @@
 ## Runde 4b-Ernte — 2026-06-26
 - **+4 Handy-Zubehör** (Impuls <CHF13: Schnellladekabel CHF12.90, 3× Handy-Geldbeutel rosa/blau/beige CHF11.90) — genau die Impuls-Preisklasse, die laut Trenddaten schnell konvertiert. `phone` war doch nicht ganz Decke (nur sehr langsam wg. vieler Ledger-Treffer beim Scan). Anime-Welle lief danach an.
 - **Lehre Scan-Tempo:** `phone` brauchte ~10 Min für 4 Picks (hunderte Kandidaten, meiste schon im Ledger → langsamer Durchlauf trotz Ledger-Skip). Bei langsamen Kategorien einfach Hintergrund laufen lassen, nächster Tick erntet.
+
+## Runde 5-Ernte — 2026-06-26
+- **+4 Anime/Figuren** (3× Shazam-Sammlerfiguren CHF25.90 ok; **1× „D-Batterien" war Anker-Fehlmatch → gedraftet**). Anime-Decke fast erreicht (nur noch Randtreffer).
+- **🔧 Anker-Lehre:** `anime`-Anker fischt generische Accessoires (Batterien) mit → künftig Ban `batterie/battery/akku-zelle` in anime-CONFIG sinnvoll. Bis dahin: neue Anime-Importe per QA auf Fehlmatch prüfen.
