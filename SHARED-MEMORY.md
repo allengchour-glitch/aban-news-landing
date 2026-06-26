@@ -2080,3 +2080,18 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   **GEMINI-BILDGENERIERUNG (funktioniert, gratis, Top-Qualität!):** Model `gemini-2.5-flash-image`, Endpoint `generateContent`, `generationConfig:{responseModalities:["IMAGE"]}`, Antwort in `candidates[0].content.parts[].inlineData.data` (base64). Prompt = englisch, „wide cinematic horizontal banner, premium flat-lay, [Motiv], soft daylight, no text, no people, negative space, 16:9". Erzeugt ~1-2MB PNG, sehr edel.
   **UPLOAD zu Shopify:** stagedUploadsCreate(resource:IMAGE) → multipart POST (FormData: parameters + file Blob) an stagedTarget.url → fileCreate(originalSource:resourceUrl,contentType:IMAGE). Datei dann als `shopify://shop_images/FILENAME.png` im Theme referenzierbar. Banner-Setting-Key = `image_1`. Dateien brauchen ~Sekunden bis fileStatus=READY.
   Neue Banner: luxe-banner-design.png (Apparel), luxe-banner-swiss.png (Gold-Uhr/Edelweiss), luxe-banner-lifestyle.png (Schal/Kerze). Hero behält Strand. **→ Diese Gemini-Technik für ALLE künftigen Bild-Bedürfnisse nutzen statt Stock/immer-gleich.**
+
+---
+**📱 2026-06-26 (MOBILE-POLISH + Mobile-Verifikation — CJ/Theme-Session):**
+- **Mobile verifiziert** (via curl mit iPhone-UA, da Playwright-Chromium in dieser Cloud-Session NICHT
+  durch den Egress-Proxy tunneln kann — `ERR_CONNECTION_CLOSED` proxy-weit, auch example.com; curl geht, Browser nicht).
+  Geprüft an Home / Collection (premium-schmuck) / Produktseite bei 390px:
+  - Breadcrumb rendert mit echtem Inhalt + `flex-wrap:wrap` (Home › Schmuck › 📿 Halsketten › Titel). ✓
+  - Sub-Chips rendern (Ringe · Ohrringe · Halsketten), liegen in `.rte`-Container. ✓
+  - 4 verschiedene Banner-Bilder im HTML (design/swiss/lifestyle/herov2). ✓
+  - Mega-Menü-Hover-Brücke ist auf Mobile per `@media(max-width:749px)` deaktiviert (Mobile = Tap-Drawer). ✓
+  - `<menu-drawer>` + rotierende Announcement-Bar + viewport-meta vorhanden. ✓
+- **NEU: Mobile-Tap-Target-Fix** in `sections/header-group.json` → `lux_menufix`-`<style>` erweitert (Marker `ls-mobile-polish`):
+  `@media(max-width:749px)` → Breadcrumb-Links `padding:.28rem .15rem` (vorher 0, zu klein zum Tippen);
+  Pill-Chips `.rte a[style*="border-radius:999px"]` → `padding:.52rem 1.05rem !important; font-size:.92rem` (vorher .35rem/.8rem ≈26px, jetzt ≈40px, near 44px-Guideline). Live (themeFilesUpsert userErrors=[], auf Collection-Seite bestätigt).
+- **Lehre:** In Cloud-Sessions OHNE Browser → Mobile-QA via `curl -A "<iPhone-UA>"` + HTML/CSS-Inspektion (Media-Queries, Tap-Target-Padding) statt Screenshot. Pill-Chips per Inline-Style → Mobile-Override nur via `.rte a[style*="..."] !important` möglich.
