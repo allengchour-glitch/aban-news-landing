@@ -15,7 +15,7 @@ export CDP_URL="http://${CDP_HOST:-100.71.8.47}:9222"   # PC-Brave ueber Tailnet
 export TT_OBJECTIVE="Traffic"
 export TT_DAILY_BUDGET="20"
 export TT_TOTAL_BUDGET="70"                              # in den freigegebenen 350, hart gecappt
-export TT_VIDEO="reels/seedance-wasserfest.mp4"          # TOP-Creative (4.8Mbps See-Test)
+export TT_VIDEO="reels/seedance-wasserfest-sound.mp4"          # TOP-Creative (4.8Mbps See-Test)
 export TT_LANDING="https://luxestyle.ch/discount/WELCOME10?redirect=/collections/wasserfester-schmuck"
 export TT_ADTEXT="Bliebt das wirklich Gold? Wasserfeschte Edelstahl-Schmuck - lauft nid a, kei gruene Hut. -10% mit WELCOME10."
 
