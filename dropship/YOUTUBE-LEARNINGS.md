@@ -19,3 +19,10 @@
 - **Transparenz schlägt Luxus-Claims:** konkrete Material-/Maß-Angaben bauen Vertrauen (Vagheit = Misstrauen). → unser „Produktdetails"-Block (Marke/Maße/EAN) ist genau das ✓.
 - **Speed:** komprimierte WebP + Lazy-Load = grösster technischer Win (v. a. Mobile).
 - **Umsetzbar autonom (meine Territorien):** About-Story schärfen, Benefit-Zeile, Bild-Kompression-Check, Lieferzeit verifizieren. Reichweite bleibt User-Klick.
+
+## Runde 2 — 2026-06-26 (Trending Sommer-Produkte 2026, data-backed)
+**Quelle:** trendtrack.io, super-ds, tradelle, cjdropshipping (Juni-2026-Picks).
+- **Sommer-Winner mit Daten:** tragbare/Nacken-Ventilatoren (Hitze-Vorsorge, Alltagsprodukt) ✓ haben wir · **isolierte Cooler-/Tote-Bags** (Trend-Spike, Doppelfunktion) · Strandmode/Outdoor · **personalisierte Haustier-Accessoires** (stärkstes Reichweiten-Signal) · Hunde-Kühlweste · Amphibien-Schuhe · Strandschirme/Pool-Floats (low margin, high velocity).
+- **⏰ TIMING-LEHRE (wichtig):** Sommer-Nachfrage **bricht ab Anfang August stark ein**; Ware nach ~20. Juli bleibt bis nächsten Mai liegen → **Strand/Kühlung/Ventilator JETZT (Juni) pushen**, nicht später. → Loop-Rotation priorisiert jetzt: strand, grill, klima/akkuventi, kuechenhelfer.
+- **Marge:** Nacken-Ventilator/Cooler-Bags/Stretch-Boards = 35–50 % Brutto (gesund). Sonnencreme/Floats = dünner, aber Volumen.
+- **Anwendung:** Kategorie-Rotation auf Sommer-Saison getrimmt; unsere 2 Winner (Nackenventilator/Galaxy-Projektor) sind genau im Trend → Posting-Handoff steht.
