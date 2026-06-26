@@ -2040,3 +2040,8 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **20 Sub-Collections existieren** (sub-ringe/ohrringe/halsketten/armbaender/kleider/roecke/bademode/deko/beleuchtung/kueche/reise/yoga-fitness/taschen/haustier/baby-kids/uhren/trinkflaschen/aroma-diffuser/massage/bart-rasur).
 - **NEU: Sub-Kategorie-Chip-Reihen** (Galaxus-Stil) oben in den Beschreibungen von 5 Haupt-Collections: premium-schmuck, damen-mode, wohnen-dekoration, fur-ihn, outdoor-garten (Marker `<!--ls-subchips-->`, klickbare Pill-Links zu Sub-Collections). + Breadcrumbs (Produkt+Collection) für „1 Ebene zurück".
 - **⚠️ ÜBERLAPPUNGEN gesehen (andere Session?):** 3× Garten (outdoor-garten/garten-balkon/garten), 3× Beauty (beauty-pflege/beauty-geraete/beauty-selfcare). NICHT angefasst — bitte konsolidieren wer zuständig ist. Beauty(383)/Gaming(169)/Parfum(153) haben noch keine Sub-Kategorien — Kandidaten für Sub-Chips.
+
+## 📌 2026-06-25 (Nachtrag 4 — Sub-Chips Welle 2 + neue Sub-Collections)
+- **5 NEUE Sub-Collections erstellt** (smart, publiziert, Hero): `damen-duefte`(19, tag parfum+damen), `herren-duefte`(10, parfum+herren), `gaming-maeuse`(32, gaming+Titel Maus), `gaming-headsets`(14, gaming+Headset), `gaming-controller`(19, gaming+Controller).
+- **Sub-Kategorie-Chips** ergänzt auf: beauty-pflege (Beauty-Geräte/Bart&Rasur/Massage/Aroma), parfum-duefte (Damen-/Herren-Düfte), gaming (Mäuse/Headsets/Controller), sub-haustier (Haustier-Tech). **→ Jetzt 9 Hauptkategorien mit Sub-Chips total** (vorher: schmuck/damen-mode/wohnen/fur-ihn/outdoor-garten).
+- Smart-Collection-Lehre: TITLE CONTAINS füllt asynchron (Minuten Verzögerung) — nicht sofort 0=kaputt annehmen.
