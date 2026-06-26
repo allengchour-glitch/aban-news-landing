@@ -31,6 +31,8 @@ log "TikTok-Pixel-Healthcheck (Storefront -> Metafeld luxe.pixel_status)..."
 "$NODE" automation/vps/pixel_check.mjs 2>&1 | tail -3 || log "pixel_check uebersprungen (weiter)"
 log "TikTok-Ad-Stats (nur falls TIKTOK_ACCESS_TOKEN gesetzt) -> Metafeld luxe.tiktok_stats..."
 "$NODE" automation/vps/tiktok-stats.mjs 2>&1 | tail -3 || log "tiktok-stats uebersprungen (weiter)"
+log "TikTok-Ads-Reporting via Tailscale-Bruecke aus PC-Brave lesen (No-op falls PC aus) -> luxe.tiktok_stats..."
+CDP_HOST="${CDP_HOST:-100.71.8.47}" "$NODE" automation/vps/tiktok-ads-read.mjs 2>&1 | tail -4 || log "tiktok-ads-read uebersprungen (weiter)"
 log "Proof-of-Life Metafeld stempeln (luxe.vps_last_run)..."
 "$NODE" automation/vps/stamp_alive.mjs 2>&1 | tail -3 || log "stamp uebersprungen (weiter)"
 
