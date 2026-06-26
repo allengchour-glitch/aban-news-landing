@@ -81,6 +81,7 @@ let kbhub = 0;
 let kihub = 0;
 let aeohub = 0;
 let svc = 0;
+let hreflanged = 0;
 const hubs = [];
 for (const f of files) {
   const base = f.split(sep).pop();
@@ -293,6 +294,25 @@ for (const f of files) {
       if (add) { html = html.slice(0, pos2) + add + "\n" + html.slice(pos2); healed++; changed = true; }
     }
   }
+  // (8) Hreflang-Tags für Schweiz-Lokalisierung (de-CH + x-default), idempotent
+  if (!noindex && html.indexOf('hreflang=') < 0) {
+    const hpos = html.toLowerCase().lastIndexOf("</head>");
+    if (hpos >= 0) {
+      const canonical = canonicalOf(html, pageUrl(f));
+      const rel = f.split(sep).join("/");
+      const isEn = rel.includes("/en/");
+      let add = "";
+      if (isEn) {
+        add = '<link rel="alternate" hreflang="en" href="' + canonical + '">' +
+              '<link rel="alternate" hreflang="x-default" href="' + canonical + '">';
+      } else {
+        add = '<link rel="alternate" hreflang="de-CH" href="' + canonical + '">' +
+              '<link rel="alternate" hreflang="x-default" href="' + canonical + '">';
+      }
+      html = html.slice(0, hpos) + add + "\n" + html.slice(hpos);
+      hreflanged++; changed = true;
+    }
+  }
   if (changed) { try { writeFileSync(f, html); } catch { skipped++; } } else skipped++;
 }
-console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + kihub + " KI-Backlinks + " + aeohub + " AEO-Backlinks + " + svc + " Service-CTAs + " + healed + " Meta-Heilungen injiziert, " + skipped + " übersprungen (von " + files.length + ").");
+console.log("inject-engine: " + injected + " Engine + " + ld + " JSON-LD + " + related + " Related + " + kbhub + " Kaufberater-Backlinks + " + kihub + " KI-Backlinks + " + aeohub + " AEO-Backlinks + " + svc + " Service-CTAs + " + healed + " Meta-Heilungen + " + hreflanged + " Hreflang injiziert, " + skipped + " übersprungen (von " + files.length + ").");
