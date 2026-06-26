@@ -60,8 +60,11 @@ export async function aiBrowser({ cdp = CDP } = {}) {
       // im Modellnamen + die Pakete @ai-sdk/groq & @ai-sdk/google installiert (Poller tut das) + Key in ENV
       // (GROQ_API_KEY bzw. GOOGLE_GENERATIVE_AI_API_KEY, oben gespiegelt). KEIN OPENAI-Override mehr.
       // GROQ ZUERST: grosszuegiges Free-Limit; Gemini-Quota war frueher mal leer.
-      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
+      // GEMINI ZUERST (2026-06-26 Umkehr): Groq-Free-TPM-Limit sprengt der grosse DOM-Kontext nach ~2 act()-Calls
+      // (ai_err=2, acts=2). Gemini 2.0 Flash hat riesigen Kontext + jetzt korrekt installiert (@ai-sdk/google) ->
+      // robuster fuer Browser-Automation. Groq bleibt Fallback.
       if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'google/gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
+      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
       for (const c of candidates) {
         try {
           const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl }, modelName: c.modelName,

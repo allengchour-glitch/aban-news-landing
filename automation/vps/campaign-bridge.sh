@@ -39,7 +39,8 @@ AIERR=$(grep -cE 'AI_LoadAPIKeyError|AI_APICallError|gpt-4.1-mini' "$RUNLOG")
 ACTS=$(grep -cE '^[0-9].*act! ' "$RUNLOG")
 PRESUBMIT=$(grep -qE 'ai-pre-submit|pre-submit' "$RUNLOG" && echo y || echo n)
 SUBMIT=$(grep -qiE 'Kampagne (gesendet|abgesendet|live)|Submit ok|erfolgreich erstellt' "$RUNLOG" && echo y || echo n)
-SUMMARY="${GO:+GO }${GO:-DRY} model=$MODEL ai_err=$AIERR acts=$ACTS presubmit=$PRESUBMIT submit=$SUBMIT @ $(date -u +%H:%MZ)"
+ERR1=$(grep -oE 'AI_[A-Za-z]+Error[^"]{0,60}' "$RUNLOG" | head -1)
+SUMMARY="${GO:+GO }${GO:-DRY} model=$MODEL ai_err=$AIERR acts=$ACTS presubmit=$PRESUBMIT submit=$SUBMIT err=[$ERR1] @ $(date -u +%H:%MZ)"
 STAMP_KEY="campaign_dry_status" STAMP_VALUE="$SUMMARY" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
 echo "[bridge] STATUS: $SUMMARY"
 rm -f "$RUNLOG"
