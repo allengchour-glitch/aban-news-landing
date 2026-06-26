@@ -2053,3 +2053,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 ## 📌 2026-06-25 (Nachtrag 6 — Produkt-Ideen + beleuchtung-Konsolidierung)
 - **+24 Produkte (selbst recherchierte Ideen, was BigBuy WIRKLICH hat):** Whisky-/Wein-Gläser-Sets → bar-wein (99); RGB-Stimmungslicht/Nachtlicht/Lichterketten/LED-Tornado → Beleuchtung. (NICHT verfügbar bei BigBuy: Lichtwecker, Touch-Lampen-Paar, Whisky-Steine, Aroma-Kette, Pflanzensensor — nicht erfunden.)
 - **13. Dublette konsolidiert:** beleuchtung-lampen (kaputte Regel TAG=home+beleuchtung=6, nicht im Menü) → unpubliziert+Redirect → **sub-beleuchtung** (119, im Menü, Titel-Regel um Lichterkette/Stimmungslicht erweitert). Import-CONFIG beleuchtung-Handle → 'sub-beleuchtung'.
+
+## 📌 2026-06-25 (Nachtrag 7 — garten-Dublette + Sport-Chips + Beauty-Flag)
+- **garten (TAG=Garten Grossbuchstabe) → unpubliziert+Redirect → garten-balkon** (exakte Dublette, Case-Unterschied). Import nutzt eh garten-balkon.
+- **Sub-Chips für sport-outdoor** (Yoga & Fitness/Fitness/Velo/Tauchen) → jetzt 10 Hauptkategorien mit Sub-Chips total.
+- **⚠️ AN DIE ANDERE SESSION (Beauty/Garten = euer Gebiet, ich fasse es nicht an):**
+  - **3× Beauty überlappen massiv:** beauty-pflege(383, TYPE=Beauty/Kosmetik+tag beauty), beauty-geraete(383, TAG=beauty — ABER Titel „Beauty-Geräte"! Regel passt nicht zum Titel = Defekt, zeigt ALLE Beauty statt nur Geräte), beauty-selfcare(150). Keine im Menü. → Bitte zu 1 Parent + echten Subs (Make-up/Hautpflege/Geräte/Bart) konsolidieren. Mein Sub-Chip „Beauty-Geräte" linkt auf beauty-geraete — bitte dessen Regel auf echte Geräte fixen (z.B. TYPE=Beauty Tools).
+  - **outdoor-garten(475, TAG=outdoor+garten+camping)** ist breiter Umbrella, überlappt garten-balkon(155, Menü) + camping. Nicht im Menü. → entscheiden ob behalten oder auf garten-balkon konsolidieren.
