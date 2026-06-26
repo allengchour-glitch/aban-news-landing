@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube-Einnahmen-Rechner — Verdienst schätzen · aban news</title>
+<meta name="description" content="Kostenloser YouTube-Einnahmen-Rechner: aus Aufrufen und einem geschätzten RPM den möglichen Werbeverdienst abschätzen — pro Video, Monat und Jahr. Realistische Spanne, keine Garantie. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/youtube-einnahmen-rechner.html">
+<meta property="og:title" content="YouTube-Einnahmen-Rechner — Verdienst schätzen">
+<meta property="og:description" content="Aus Aufrufen + RPM den YouTube-Werbeverdienst abschätzen — pro Video/Monat/Jahr, als Spanne. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/youtube-einnahmen-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube-Einnahmen-Rechner",
+"url":"https://abannews.com/youtube-einnahmen-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Schätzt aus Aufrufen und einem RPM-Wert den möglichen YouTube-Werbeverdienst pro Video, Monat und Jahr als Spanne. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was ist RPM und CPM?","acceptedAnswer":{"@type":"Answer","text":"CPM ist, was Werbetreibende pro 1.000 Anzeigen-Einblendungen zahlen. RPM ist, was bei dir pro 1.000 Videoaufrufe nach YouTubes Anteil tatsächlich ankommt — die für Creator entscheidende Zahl. RPM schwankt stark nach Thema, Land und Jahreszeit."}},
+{"@type":"Question","name":"Wie zuverlässig ist die Schätzung?","acceptedAnswer":{"@type":"Answer","text":"Es ist eine grobe Orientierung, keine Garantie. Nur ein Teil der Aufrufe wird überhaupt monetarisiert, und Finanz- oder B2B-Themen erzielen ein Vielfaches von Unterhaltung. Der Rechner zeigt deshalb eine Spanne statt einer einzelnen Zahl."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:5px}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.out{margin-top:16px;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:6px 16px}
+.out table{width:100%;border-collapse:collapse;font-size:.95rem}
+.out td{padding:9px 0;border-bottom:1px solid var(--line)}
+.out tr:last-child td{border-bottom:0}
+.out td:last-child{text-align:right;font-weight:800;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--amber-dk)}
+.big{font-size:1.4rem}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">YouTube-Einnahmen</span> schätzen</h1>
+    <p>Aus Aufrufen und einem geschätzten RPM den möglichen Werbeverdienst abschätzen — pro Video, Monat und Jahr, als realistische Spanne. Keine Garantie. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Gibt eine ehrliche Größenordnung — kein „Reich-mit-YouTube"-Versprechen. Der RPM schwankt enorm nach Thema und Land.</p>
+
+  <section class="panel" id="tool">
+    <div class="grid">
+      <div class="fld"><label for="views">Aufrufe (pro Monat)</label><input id="views" type="number" value="50000" min="0" step="1000"></div>
+      <div class="fld"><label for="thema">Themenfeld (RPM-Annahme)</label><select id="thema">
+        <option value="0.5,1.5">Unterhaltung / Vlog (niedrig)</option>
+        <option value="1,3" selected>Allgemein / How-to (mittel)</option>
+        <option value="3,8">Tech / Bildung (höher)</option>
+        <option value="6,20">Finanzen / B2B (hoch)</option>
+        <option value="custom">eigener RPM …</option>
+      </select></div>
+    </div>
+    <div class="grid" id="customBox" style="display:none;margin-top:12px">
+      <div class="fld"><label for="rpmLow">RPM von (€)</label><input id="rpmLow" type="number" value="1" min="0" step="0.5"></div>
+      <div class="fld"><label for="rpmHigh">RPM bis (€)</label><input id="rpmHigh" type="number" value="3" min="0" step="0.5"></div>
+    </div>
+    <div class="fld" style="margin-top:12px"><label for="monet">Anteil monetarisierter Aufrufe (%)</label><input id="monet" type="number" value="60" min="0" max="100" step="5"></div>
+    <div class="out" id="out" aria-live="polite"></div>
+    <p class="note">RPM = Verdienst je 1.000 Aufrufe nach YouTube-Anteil. Grobe Schätzung, keine Garantie, keine Steuern. Alles lokal.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Video &amp; Geld.</p>
+    <p><a class="btn" href="/roi-rechner.html">ROI-Rechner</a>
+      <a class="btn ghost" href="/youtube-thumbnail.html">YouTube-Thumbnail</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/roi-rechner.html">ROI-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v;}
+  function eur(v){return v.toLocaleString("de-DE",{minimumFractionDigits:0,maximumFractionDigits:0})+" €";}
+  var thema=document.getElementById("thema");
+  function render(){
+    var views=num("views"), monet=Math.max(0,Math.min(100,num("monet")))/100, out=document.getElementById("out");
+    var low,high;
+    if(thema.value==="custom"){ low=num("rpmLow"); high=num("rpmHigh"); }
+    else { var p=thema.value.split(","); low=parseFloat(p[0]); high=parseFloat(p[1]); }
+    if(high<low){ var t=low;low=high;high=t; }
+    var effViews=views*monet;
+    var mLow=effViews/1000*low, mHigh=effViews/1000*high;
+    out.innerHTML="<table><tbody>"+
+      '<tr><td>Pro Monat (Spanne)</td><td class="big">'+eur(mLow)+" – "+eur(mHigh)+"</td></tr>"+
+      "<tr><td>Pro Jahr</td><td>"+eur(mLow*12)+" – "+eur(mHigh*12)+"</td></tr>"+
+      "<tr><td>Monetarisierte Aufrufe</td><td>"+Math.round(effViews).toLocaleString("de-DE")+"</td></tr>"+
+      "<tr><td>RPM-Annahme</td><td>"+low.toLocaleString("de-DE")+" – "+high.toLocaleString("de-DE")+" €</td></tr></tbody></table>";
+  }
+  thema.addEventListener("change",function(){ document.getElementById("customBox").style.display=thema.value==="custom"?"grid":"none"; render(); });
+  ["views","monet","rpmLow","rpmHigh"].forEach(function(id){document.getElementById(id).addEventListener("input",render);});
+  render();
+})();
+</script>
+</body>
+</html>
