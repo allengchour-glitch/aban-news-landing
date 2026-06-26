@@ -368,7 +368,7 @@ async function pickFromSearch(p, value, ab) {
       await A('click the Next or Continue button to go to the ad creation step', 'ad-start', 4000);
       // Creative: Datei-Input direkt setzen (Stagehand-Page = Playwright-kompatibel)
       try { let upVid = C.video; if (process.env.CAMPAIGN_KEEP_AUDIO !== '1') { const { execSync } = await import('node:child_process'); const os = (await import('node:os')).default; const sv = path.join(os.tmpdir(), 'camp-' + path.basename(C.video)); try { execSync(`ffmpeg -y -nostdin -i "${C.video}" -c:v copy -an "${sv}"`, { stdio: 'ignore' }); if (fs.existsSync(sv) && fs.statSync(sv).size > 10000) upVid = sv; } catch {} }
-        const inp = await p.$('input[type="file"]'); if (inp) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(9000); } else log('⚠️ AI: kein Datei-Input — Screenshot ai-ad-start pruefen'); } catch (e) { log('Creative-Upload:', String(e).slice(0, 60)); }
+        const inp = p.locator('input[type="file"]').first(); if (await inp.count().catch(() => 0)) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(9000); } else log('⚠️ AI: kein Datei-Input — Screenshot ai-ad-start pruefen'); } catch (e) { log('Creative-Upload:', String(e).slice(0, 60)); }
       await diag(p, 'ai-creative-uploaded'); // 2026-06-24: Beweis, ob das Video durchkam (Upload kann lange dauern/scheitern)
       await A(`fill the ad text/caption with: ${C.adtext}`, 'ad-text');
       await A(`set the call to action to "${C.cta}"`, 'ad-cta');
@@ -436,8 +436,8 @@ async function pickFromSearch(p, value, ab) {
         if (fs.existsSync(sv) && fs.statSync(sv).size > 10000) { upVid = sv; log('🔇 Creative tonlos (Musik-Copyright-Schutz fuers Ad-Review).'); }
       } catch (e) { log('Tonlos-Hinweis:', e.message); }
     }
-    const inp = await p.$('input[type="file"]');
-    if (inp) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(8000); }
+    const inp = p.locator('input[type="file"]').first();
+    if (await inp.count().catch(() => 0)) { await inp.setInputFiles(upVid); log('Creative gesetzt:', path.basename(upVid)); await sleep(8000); }
     else log('⚠️ Kein Datei-Input — evtl. erst "Upload" klicken (Screenshot).');
   } catch (e) { log('Video-Upload-Hinweis:', e.message); }
   await fillAny(p, 'Text', C.adtext).catch(() => {});

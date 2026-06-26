@@ -18,6 +18,7 @@ export TT_TOTAL_BUDGET="70"                              # in den freigegebenen 
 export TT_VIDEO="reels/seedance-wasserfest-sound.mp4"          # TOP-Creative (4.8Mbps See-Test)
 export TT_LANDING="https://luxestyle.ch/discount/WELCOME10?redirect=/collections/wasserfester-schmuck"
 export TT_ADTEXT="Bliebt das wirklich Gold? Wasserfeschte Edelstahl-Schmuck - lauft nid a, kei gruene Hut. -10% mit WELCOME10."
+export CAMPAIGN_KEEP_AUDIO="1"   # SOUND-ON Ad behalten (Musik-Lehre: TikTok-Ads nie stumm) — kein -an-Strip
 
 echo "[bridge] CDP_URL=$CDP_URL  Objective=$TT_OBJECTIVE  Creative=$TT_VIDEO"
 if [ "${GO:-0}" = "1" ]; then

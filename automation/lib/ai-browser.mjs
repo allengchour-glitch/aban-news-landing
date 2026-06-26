@@ -14,6 +14,13 @@
  */
 const CDP = process.env.CDP_URL || 'http://localhost:9222';
 
+// 🔑 AI-SDK-KEY-ALIAS (FIX 2026-06-26): Neuere Stagehand nutzt das Vercel-AI-SDK. Dessen Provider lesen ihre
+// Keys NUR aus den Standard-ENV-Namen — sonst faellt der Client still auf OpenAI zurueck ("OpenAI API key is
+// missing", jeder act() schlaegt fehl). Vorhandene Keys auf die AI-SDK-Namen spiegeln -> KEIN neuer Key noetig.
+if (process.env.GEMINI_API_KEY && !process.env.GOOGLE_GENERATIVE_AI_API_KEY) process.env.GOOGLE_GENERATIVE_AI_API_KEY = process.env.GEMINI_API_KEY;
+if (process.env.GOOGLE_GENERATIVE_AI_API_KEY && !process.env.GEMINI_API_KEY) process.env.GEMINI_API_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+// (Groq/Vercel liest GROQ_API_KEY direkt — kein Alias noetig.)
+
 let lastInitError = null; // letzter Stagehand-Init-Fehler (fuer Diagnose im Bot-Report)
 
 export async function aiBrowser({ cdp = CDP } = {}) {
