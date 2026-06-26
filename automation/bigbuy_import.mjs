@@ -197,8 +197,8 @@ const CONFIG = {
   // ── Strand & Wasserspass 2026 (User: Gummiboot/Badesachen — Sommer) ──
   wasserstrand: { coll: { handle: 'strand-wasserspass', title: '🏖️ Strand & Wasserspass', tag: 'strand' },
     extraTags: ['strand', 'sommer', 'pool', 'wasser', 'outdoor'], type: 'Strand & Wasser', maxCost: 110,
-    anchor: ['aufblasbarer boot', 'schlauchboot', 'gummiboot', 'paddelboot', 'schwimmring', 'schwimmreifen', 'strandmatte', 'strandtuch', 'badetuch', 'sonnenliege', 'schwimmbrille', 'taucherbrille', 'schnorchel', 'luftmatratze', 'strandmuschel', 'strandzelt', 'wasserball', 'planschbecken', 'schwimmflügel', 'schwimmweste kinder'],
-    ban: ['ersatzventil', 'ventil einzeln', 'pumpe einzeln', 'reparaturset', 'flicken', 'auto', 'kfz', 'ersatz', 'rettungsweste profi'],
+    anchor: ['aufblasbarer boot', 'schlauchboot', 'gummiboot', 'paddelboot', 'schwimmring', 'schwimmreifen', 'strandmatte', 'strandtuch', 'badetuch', 'sonnenliege', 'schwimmbrille', 'taucherbrille', 'schnorchel', 'luftmatratze', 'strandmuschel', 'strandzelt', 'wasserball', 'planschbecken', 'schwimmflügel', 'schwimmweste kinder', 'luftpumpe', 'elektrische luftpumpe', 'elektropumpe', 'elektrische pumpe', 'fusspumpe', 'fußpumpe', 'handpumpe', 'akku-pumpe', 'aufblaspumpe'],
+    ban: ['ersatzventil', 'ventil einzeln', 'reparaturset', 'flicken', 'auto', 'kfz', 'ersatz', 'rettungsweste profi', 'düse für', 'filterpumpe', 'sandfilter', 'poolpumpe'],
     bullets: ['Sommer-Spass am Wasser', 'Perfekt für Pool, See &amp; Strand', 'Schnell aufgepumpt', 'Für die ganze Familie'] },
   // ── Akku-/Mobile Ventilatoren 2026 (User: mobile venti akku — Nacken/Hand/USB, für unterwegs) ──
   akkuventi: { coll: { handle: 'klima-ventilatoren', title: '❄️ Klima & Ventilatoren', tag: 'klima' },
