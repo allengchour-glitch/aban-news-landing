@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Stopwatch (with laps) · aban news</title>
+<meta name="description" content="Free online stopwatch: start, stop, lap and reset — with hundredths of a second and a lap list. Local in your browser, no login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/en/stoppuhr.html">
+<link rel="alternate" hreflang="de" href="https://abannews.com/stoppuhr.html">
+<link rel="alternate" hreflang="en" href="https://abannews.com/en/stoppuhr.html">
+<link rel="alternate" hreflang="fr" href="https://abannews.com/fr/stoppuhr.html">
+<link rel="alternate" hreflang="it" href="https://abannews.com/it/stoppuhr.html">
+<link rel="alternate" hreflang="x-default" href="https://abannews.com/stoppuhr.html">
+<meta property="og:title" content="Online Stopwatch (with laps)">
+<meta property="og:description" content="Start, stop, lap &amp; reset — with hundredths of a second. Local in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/en/stoppuhr.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="en_GB"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Online Stopwatch (with laps)",
+"url":"https://abannews.com/en/stoppuhr.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Web",
+"inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Online stopwatch with start/stop, laps and reset, accurate to hundredths of a second.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.85rem}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;text-align:center}
+.clock{font-size:clamp(48px,15vw,104px);font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:var(--amber-dk);margin:10px 0}
+.clock .cs{font-size:.5em;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 4px}
+.controls .btn{min-width:104px;padding:12px 18px;font-size:1rem}
+.tbl{margin-top:18px;overflow-x:auto;text-align:left}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink2);font-weight:700;font-size:12px}
+.note{font-size:.85rem;color:var(--muted);margin-top:14px}
+.cta{margin:24px 0;background:linear-gradient(135deg,var(--cream),var(--card));border:1px solid var(--amber-lt);border-radius:14px;padding:18px;text-align:center}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to tool</a>
+<header class="site"><div class="wrap"><a href="/en/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Free newsletter</a></div></header>
+<main><div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Stopwatch</span> online</h1>
+    <p>A simple stopwatch for workouts, cooking or measuring: start, stop, record laps and reset — accurate to a hundredth of a second. All local in your browser, nothing is sent.</p>
+  </section>
+  <section class="panel" id="tool">
+    <div class="clock" id="clock" role="timer" aria-live="off">00:00<span class="cs" id="cs">.00</span></div>
+    <div class="controls">
+      <button class="btn" id="startBtn" type="button">Start</button>
+      <button class="btn ghost" id="lapBtn" type="button" disabled>Lap</button>
+      <button class="btn ghost" id="resetBtn" type="button" disabled>Reset</button>
+    </div>
+    <div class="tbl" id="tblwrap" hidden>
+      <table>
+        <thead><tr><th>Lap</th><th>Lap time</th><th>Total time</th></tr></thead>
+        <tbody id="laps"></tbody>
+      </table>
+    </div>
+    <p class="note">The stopwatch measures real elapsed time (even if the tab was briefly in the background). "Lap" records a split without stopping the clock. All local, no upload, no API.</p>
+  </section>
+  <div class="cta"><strong>More tools</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">for productive work.</p>
+    <p><a class="btn" href="/en/pomodoro-timer.html">Pomodoro timer</a>
+      <a class="btn ghost" href="/en/arbeitszeit-rechner.html">Working-hours calculator</a>
+      <a class="btn ghost" href="/en/online-tools.html">All tools</a></p></div>
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Found this useful? 5 minutes of AI without the hype — every weekday.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news is the AI newsletter for the self-employed: short, honest, no buzzword bingo. Free, unsubscribe any time.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Subscribe free →</a>
+</aside>
+</div></main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/en/pomodoro-timer.html">Pomodoro timer</a> · <a href="/en/arbeitszeit-rechner.html">Working-hours calculator</a> ·
+  <a href="/en/ki-werkzeug.html">AI tool</a> &middot; <a href="/en/online-tools.html">All tools</a> &middot; <a href="/en/impressum.html">Imprint</a> · <a href="/en/datenschutz.html">Privacy</a></div></footer>
+<script>
+(function(){
+  var clock=document.getElementById("clock"),cs=document.getElementById("cs"),
+      startBtn=document.getElementById("startBtn"),lapBtn=document.getElementById("lapBtn"),resetBtn=document.getElementById("resetBtn"),
+      tblwrap=document.getElementById("tblwrap"),laps=document.getElementById("laps");
+  var acc=0,startAt=0,running=false,timer=null,lapCount=0,lastLap=0;
+  function now(){return Date.now();}
+  function elapsed(){return acc+(running?now()-startAt:0);}
+  function two(n){return (n<10?"0":"")+n;}
+  function fmtMain(ms){var t=Math.floor(ms/1000),h=Math.floor(t/3600),m=Math.floor((t%3600)/60),s=t%60;
+    return (h>0?h+":"+two(m):two(m))+":"+two(s);}
+  function fmtCs(ms){return "."+two(Math.floor((ms%1000)/10));}
+  function fmtFull(ms){return fmtMain(ms)+fmtCs(ms);}
+  function render(){var e=elapsed();clock.firstChild.textContent=fmtMain(e);cs.textContent=fmtCs(e);}
+  function tick(){render();}
+  function start(){
+    if(running){
+      acc=elapsed();running=false;if(timer){clearInterval(timer);timer=null;}
+      startBtn.textContent="Resume";lapBtn.disabled=true;render();
+    }else{
+      startAt=now();running=true;startBtn.textContent="Stop";
+      lapBtn.disabled=false;resetBtn.disabled=false;
+      timer=setInterval(tick,33);render();
+    }
+  }
+  function lap(){
+    if(!running)return;
+    var e=elapsed(),d=e-lastLap;lastLap=e;lapCount++;
+    tblwrap.hidden=false;
+    var tr=document.createElement("tr");
+    function cell(txt){var td=document.createElement("td");td.textContent=txt;tr.appendChild(td);}
+    cell(""+lapCount);cell(fmtFull(d));cell(fmtFull(e));
+    if(laps.firstChild)laps.insertBefore(tr,laps.firstChild);else laps.appendChild(tr);
+  }
+  function reset(){
+    if(timer){clearInterval(timer);timer=null;}
+    acc=0;startAt=0;running=false;lapCount=0;lastLap=0;
+    startBtn.textContent="Start";lapBtn.disabled=true;resetBtn.disabled=true;
+    while(laps.firstChild)laps.removeChild(laps.firstChild);tblwrap.hidden=true;
+    render();
+  }
+  startBtn.addEventListener("click",start);
+  lapBtn.addEventListener("click",lap);
+  resetBtn.addEventListener("click",reset);
+  render();
+})();
+</script>
+<script defer src="/js/announce.js"></script>
+</body>
+</html>
