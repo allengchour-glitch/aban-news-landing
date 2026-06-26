@@ -69,7 +69,9 @@ const C = {
   // Kampagne DIREKT im richtigen, fertig eingerichteten Werbekonto "LuxeStyle CH Ads" - kein falsches/leeres Konto,
   // keine Onboarding-Wand. Voraussetzung: der eingeloggte TikTok-User hat Zugriff auf dieses Advertiser-Konto.
   advertiserId: process.env.TT_ADVERTISER_ID || '7646349875793182738',
-  creationUrl: process.env.CREATION_URL || ('https://ads.tiktok.com/i18n/perf/creation/campaign?aadvid=' + (process.env.TT_ADVERTISER_ID || '7646349875793182738')),
+  // FIX 2026-06-25 (Recherche): die alte URL /i18n/perf/creation/campaign leitet auf die LISTE um (= unser Symptom,
+  // Bot landete nie im Wizard). Korrekte aktuelle Erstellungs-URL: /i18n/campaign/ad-campaign/create (+reset_cache=1).
+  creationUrl: process.env.CREATION_URL || ('https://ads.tiktok.com/i18n/campaign/ad-campaign/create?aadvid=' + (process.env.TT_ADVERTISER_ID || '7646349875793182738') + '&reset_cache=1'),
 };
 const LEDGER = path.join(ROOT, 'automation', 'local', 'tiktok-campaign-ledger.txt');
 const SHOTS = path.join(ROOT, 'automation', 'local', 'campaign-shots');
