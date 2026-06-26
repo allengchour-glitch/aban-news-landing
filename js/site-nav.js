@@ -213,7 +213,11 @@
       ["Skischuhe kaufen Schweiz", "/skischuhe-kaufen-schweiz.html", "Start", "Flex-Index & Passform — Ratgeber (CH)"],
       ["Inlineskates kaufen Schweiz", "/inlineskates-kaufen-schweiz.html", "Start", "Fitness, Freestyle & Kinder (CH)"],
       ["Kletterwand kaufen Schweiz", "/kletterwand-kaufen-schweiz.html", "Start", "Indoor-Kletterwand & Klettergriffe (CH)"],
-      ["YouTuber-Setup kaufen Schweiz", "/youtuber-setup-kaufen-schweiz.html", "Start", "Kamera, Mikrofon & Beleuchtung (CH)"]
+      ["YouTuber-Setup kaufen Schweiz", "/youtuber-setup-kaufen-schweiz.html", "Start", "Kamera, Mikrofon & Beleuchtung (CH)"],
+      ["KI-Brille kaufen Schweiz", "/ki-brille-kaufen-schweiz.html", "Start", "Ray-Ban Meta & Smart Glasses — Ratgeber (CH)"],
+      ["LED-Gesichtsmaske kaufen Schweiz", "/led-gesichtsmaske-kaufen-schweiz.html", "Start", "Lichttherapie für Akne & Falten — Ratgeber (CH)"],
+      ["KI-Übersetzer kaufen Schweiz", "/ki-uebersetzer-kaufen-schweiz.html", "Start", "Echtzeit-Übersetzer für CH (4 Sprachen) — Ratgeber (CH)"],
+      ["Seedance KI-Video 2026", "/seedance-ki-video.html", "KI", "ByteDance 30-Sek. 4K-Video — Seedance 2.5 erklärt"]
     ];
 
     function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
