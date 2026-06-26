@@ -26,3 +26,20 @@ super league
 fussballfans
 fußballfans
 soccer
+# --- OFF-BRAND-PRODUKT-KATEGORIEN (2026-06-26): NICHT in den Frauen-Schmuck/Mode-Social-Feed.
+# Der Katalog ist breit (andere Session), aber die MARKEN-FACE (Social) bleibt Schmuck/Mode/Frauen.
+# Camping/Garten/Wandern/Werkzeug/Büro/Baby/Fitness verwässern das Profil (User zeigt Grid wiederholt).
+garten
+pavillon
+wander
+camping
+zelt
+werkzeug
+bohrmaschine
+akkuschrauber
+messerblock
+schreibtischlampe
+resistance
+fitnessband
+baby
+lätzchen
