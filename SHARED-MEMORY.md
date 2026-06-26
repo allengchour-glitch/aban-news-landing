@@ -4,7 +4,7 @@
 > UND demselben Shopify-Shop (LuxeStyle, `au3j0y-hq.myshopify.com` / luxestyle.ch).**
 > Diese Datei verhindert, dass sie sich gegenseitig überschreiben. **Jede Session:** erst hier rein,
 > dann die eigene Detail-Memory. **Nach grösseren Aktionen:** Abschnitt „Live-Stand" unten aktualisieren.
-> Stand: 2026-06-13.
+> Stand: 2026-06-26.
 
 ---
 
@@ -53,6 +53,13 @@
 ---
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
+
+**2026-06-26 (abannews-projekt-Session, Branch `claude/abannews-projekt-JSw9l`) — ⚠️ DOPPELARBEIT entdeckt + Konsolidierung auf `main`:**
+- **Problem:** Diese Session hat auf einem **284 Commits alten Branch** parallel eine große Gratis-Tool-Suite (DE/EN/FR/IT, Tool #1–#56) gebaut. Die Tool-Einträge standen **nur im SHARED-MEMORY meines Branches** und haben `main` nie erreicht → die **abannews/Tool-Session hat dieselben Tools auf `main` gebaut**. Echte Doppel-Implementierungen (gleicher Dateiname, anderer Inhalt): `youtube-thumbnail`, `youtube-einnahmen-rechner`, `pomodoro-timer`, `zinseszins-rechner`, `skonto-rechner`, `roemische-zahlen`, `email-signatur-generator`, `favicon-generator`. Quasi-Duplikate (anderer Name): meins `youtube-embed`/`youtube-timestamp`/`kredit-rechner`/`passwort-staerke` vs. main `youtube-embed-generator`/`youtube-zeitstempel`/`kreditrechner`/`passwort-staerke-check`.
+- **Architektur-Unterschied:** **main's Tools sind alle DE-only** (kein en/fr/it, kein Tool-Hub in en/fr/it). Mein Branch hatte alles 4-sprachig + `tools/zweites_gehirn.mjs` (keyless Syntax/XSS-Bot) + `tools/i18n_audit.py`. main's DE-Tools sind dafür reicher (FAQPage-Schema, „Was macht das?"-Box, Hublink).
+- **Entscheid (User 2026-06-26): „auf main umstellen + dedupen, beides main".** → Diese Session baut ab jetzt **von `main` aus** (Branch `claude/abannews-tools-main`, PR statt Direkt-Push) und **prüft VOR jedem Tool, ob es auf main schon existiert** (nur Netto-Neues). **Keine main-DE-Dateien überschreiben** (deren SEO bleibt).
+- **Netto-NEU (existiert NICHT auf main, bringe ich):** `stoppuhr.html` (Stoppuhr mit Runden) + `gross-kleinschreibung.html` (GROSS/klein/Titel/Satz-Umwandler).
+- **Angebot an die Tool-Session:** Ich kann EN/FR/IT-Versionen + den `zweites_gehirn.mjs`-QA-Bot beisteuern, falls die Tools mehrsprachig werden sollen — bitte hier kurz abstimmen, sonst bleiben Tools DE-only.
 
 **2026-06-16 (abannews/Tool-Session) — QA-Tools geeicht statt Symptome verstecken (3 PRs auf `main`):**
 - **Preise vereinheitlicht (#1017):** Site war widersprüchlich (€9/€89 vs €19/€190 vs €29 vs €149). Kanon = realer Stand
