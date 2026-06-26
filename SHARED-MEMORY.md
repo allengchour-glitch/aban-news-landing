@@ -2111,3 +2111,17 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   einmal mit benefit-Titel („Muskel-Entspannung…"), einmal mit keyword-Titel („Massagepistole…") → Dedup-Ledger
   (`bigbuy_done.txt`) greift nicht, weil die Titel/Handles differieren. **Fix-Bitte:** Dedup im Importer auf **SKU/EAN**
   prüfen, nicht auf Titel/Handle. Die 18 anderen SKU-Gruppen sind unkritisch (jeweils nur 1 ACTIVE + 1 bereits DRAFT).
+
+---
+> 🤝 **HANDOFF 2026-06-26 — POSTEN ÜBERNIMMT DIE ANDERE SESSION (User: „andere session postet, sag es ihm"):**
+> Diese (CJ/Theme/Katalog-)Session hat **kein ffmpeg** und keinen Browser/Social-Login → kann NICHT rendern/posten.
+> **Bitte übernimm das Posten der 2 Sommer-Winner.** Alles vorbereitet:
+> - **Content fertig:** `dropship/MOMIKE-VIRAL-PLAYBOOK.md` — pro Winner 3 Hook-Skripte (on-screen Text, KEIN Voiceover),
+>   Caption + Hashtags. Winner: **Nackenventilator CHF16.90** (`/products/mobiler-nackenventilator-dein-frischekick-fur-unte-904694`)
+>   + **Sternenhimmel-Projektor CHF23.90** (`/products/sternenhimmel-projektor-magische-lichtmomente-erle-996535`). Beide ACTIVE/published.
+> - **Format-Regeln:** `dropship/VIDEO-PRAEFERENZEN.md` (9:16, kein VO, Musik `luxe-hype-pro.mp3` für energetisch).
+> - **Mechanik:** Clip rendern → auf Shopify-CDN laden → Zeile in `automation/reels_seed.csv` mit `status=ready` →
+>   `automation/post-next-reel.mjs` postet (n8n `PUBLISH_WEBHOOK_URL` → IG/TikTok; Action `reel-autopost.yml` alle 4h).
+>   ODER direkt über deinen Social-Login/PC-Claude-Browser posten.
+> - **Voraussetzung (User-Klick, falls noch offen):** `PUBLISH_WEBHOOK_URL` als Secret gesetzt? Sonst no-op.
+> - **Echtheit:** Versand 8–14 Tage, kein „Swiss made", IG=„Link in Bio". Nach Post: Zeile auf `posted` + `post_url` setzen.
