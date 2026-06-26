@@ -14,7 +14,7 @@ CTA2_END = re.compile(r'(<div class="cta2">.*?</div>)', re.DOTALL)
 
 LINK_TMPL = (
     '\n  <p class="rel" style="margin-top:6px;font-size:.82rem" data-aban-ebay-link>'
-    '<a href="/go/ebay?q={q}" rel="nofollow sponsored" style="color:var(--muted)">'
+    '<a href="/go/ebay?q={q}" rel="nofollow sponsored" style="color:#b45309">'
     'Preise auf eBay.ch prüfen →</a>'
     ' <small style="color:#9ca3af">(Partner-Link)</small></p>\n'
 )
