@@ -33,6 +33,11 @@
   }
  },
  {
+  "id": "svc-ki-automation",
+  "status": "ready",
+  "text": "Du verlierst keine Kunden, weil du schlecht bist — sondern weil das Telefon klingelt, während du auf der Leiter stehst.\n\nKennst du das? Der Malerbetrieb, die Physiopraxis, das Gartenbau-Team: Anfrage kommt rein, niemand kann ran, der Kunde ruft den Nächsten an. Auftrag weg, ohne dass du's merkst.\n\nEin Chatbot oder Buchungssystem beantwortet die immer gleichen Fragen und nimmt Termine entgegen — du rufst nur noch dort zurück, wo es sich lohnt.\n\nKein halbjähriges Projekt: Wir fangen mit einer Aufgabe an, die in zwei Wochen läuft. Ab 900 CHF, ohne IT-Abteilung.\n\nFrag den Demo-Bot selbst, bevor du zahlst: https://abannews.com/ki-automation.html\n\n#KMU #Automatisierung"
+ },
+ {
   "id": "w1-datenschutz-tipp",
   "status": "posted",
   "text": "Der häufigste KI-Fehler im Mittelstand kostet kein Geld — sondern Daten.\n\nViele tippen Kundennamen, Angebote oder ganze Verträge in die Gratis-Version eines KI-Tools. Das Problem: bei vielen Gratis-Tarifen werden deine Eingaben zum Training weiterverwendet.\n\n3 Dinge, die du in 2 Minuten prüfst, bevor du etwas Sensibles eingibst:\n\n1. Steht „wird nicht zum Training genutzt“ im Geschäfts-/Team-Tarif? Nur der zählt.\n2. Wo steht der Server? EU-Hosting oder Auftragsverarbeitungs-Vertrag (AVV) vorhanden?\n3. Anonymisieren: Platzhalter statt echter Namen/Zahlen — die KI formuliert trotzdem sauber.\n\nFaustregel: keine vollständigen Personendaten in kostenlose Versionen.\n\nSolche praxisnahen Checks gibt's bei mir täglich in 5 Minuten: https://abannews.com\n\n#Datenschutz #DSGVO #KI #Mittelstand",
@@ -66,6 +71,11 @@
   "text": "Der Unterschied zwischen einer mittelmäßigen und einer brauchbaren KI-Antwort sind meist drei Zeilen Kontext.\n\nViele tippen: „Schreib mir eine Angebots-Mail.“\nBesser:\n\n→ Rolle: „Du bist mein Vertriebsassistent.“\n→ Kontext: „Kunde ist ein Handwerksbetrieb, wir hatten ein Telefonat, er will ein Angebot für X.“\n→ Beispiel/Ton: „Sachlich, du-Form, max. 120 Wörter, kein Marketing-Sprech.“\n\nGleiches Modell, völlig andere Qualität — weil du der KI gibst, was ein Mitarbeiter auch bräuchte.\n\nSolche Handgriffe gibt's bei mir täglich in 5 Minuten: https://abannews.com\n\n#KI #Prompting #Produktivität #DACH"
  },
  {
+  "id": "svc-ki-sichtbarkeit",
+  "status": "ready",
+  "text": "Deine Kunden googeln nicht mehr nur — sie fragen ChatGPT: «Wer macht das in meiner Region?»\n\nWenn dort dein Mitbewerber genannt wird und du nicht, merkst du das nicht — verlierst den Auftrag aber trotzdem.\n\nSEO und KI-Sichtbarkeit sind nicht dasselbe. Darum prüfen wir zuerst gratis, ob ChatGPT, Perplexity und Googles KI-Antworten deinen Betrieb heute schon nennen.\n\nKein Abo-Zwang: ab 490 CHF einmalig bringen wir deine Basis-Infos so in Form, dass KI-Systeme dich sauber zitieren können.\n\nMach den Gratis-Erstcheck: https://abannews.com/ki-sichtbarkeit.html\n\n#AEO #ChatGPT"
+ },
+ {
   "id": "evg-halluzination",
   "status": "ready",
   "text": "KI erfindet Dinge — und zwar überzeugend. Das ist kein Bug, das ist eingebaut.\n\nMeine simple Routine, damit mich das nicht erwischt:\n\n1. Bei Fakten/Zahlen immer nachfragen: „Woher stammt das? Nenne die Quelle.“\n2. Quelle selbst kurz prüfen — nicht blind übernehmen.\n3. Für Wichtiges: zweites Modell oder eine echte Suche gegenchecken.\n\nFaustregel: KI ist top für Formulieren, Strukturieren, Brainstorming. Bei Fakten ist sie ein Praktikant, kein Lexikon.\n\nIch teste Tools mit genau diesem Blick — ehrlich, ohne Hype: https://abannews.com\n\n#KI #KünstlicheIntelligenz #Datenkompetenz #DACH"
@@ -89,6 +99,11 @@
   "id": "evg-bewertung-vorlage",
   "status": "ready",
   "text": "Schlechte Online-Bewertung bekommen? KI hilft dir, ruhig statt trotzig zu antworten.\n\nPrompt:\n„Formuliere eine sachliche, freundliche Antwort auf diese Bewertung. Kein Rechtfertigen, kein Streit, Lösung anbieten, max. 80 Wörter. [Bewertung einfügen]“\n\nLies drüber, mach es zu deiner Stimme, poste es selbst. Die KI nimmt dir nur die erste Hürde — den kühlen Kopf.\n\nFunktioniert genauso für Reklamations-Mails.\n\nPraxis-Tipps wie diesen gibt's täglich: https://abannews.com\n\n#KI #Kundenservice #Mittelstand #Kommunikation"
+ },
+ {
+  "id": "svc-wann-nicht",
+  "status": "ready",
+  "text": "Wann sich ein Chatbot NICHT lohnt — ehrlich gesagt.\n\nIch verkaufe KI-Automation. Trotzdem rate ich regelmässig ab. Drei Fälle, in denen du dein Geld behalten solltest:\n\n1. Kleines Anfragevolumen. Bei zwei Mails pro Woche regelst du das selber schneller.\n2. Sehr individuelles Geschäft. Wenn jede Anfrage ein Gespräch braucht, nervt ein Bot deine Kunden nur.\n3. Du erreichst ohnehin jeden Anruf. Dann fehlt der Schmerz.\n\nFaustregel: fünf verpasste Anfragen pro Woche mal deinem Auftragswert. Liegt das unter 149 CHF im Monat, lass es bleiben.\n\nSpar-Rechner zum Nachrechnen: https://abannews.com/ki-automation.html\n\n#KMU #KI"
  },
  {
   "id": "evg-eine-aufgabe",
