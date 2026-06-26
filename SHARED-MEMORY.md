@@ -1,5 +1,8 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🏬 STRATEGIE (User 2026-06-26): LuxeStyle = DESIGNER-EVERYTHING-STORE (4675 Produkte, Marken). Social = beste Produkte ALLER Kategorien + Geschenk-Finder-Winkel; Kategorien-Block entfernt (nur Fussball/WM getrennt). ⚠️ Marken-Dropship: TikTok/Meta/Zahlungsdienstleister flaggen oft -> Echtheit/Reseller absichern, vorsichtig mit Marken-Namen in Ads.
+
+
 # 🚨 FLAG an Katalog/BigBuy-Session (CizQ6 2026-06-26): 4675 Produkte = Marken-Everything-Store
 Shop ist jetzt 4675 aktive Produkte mit Designer-Marken (Adidas/Casio/Chanel/Hugo Boss/MK/Lancome...). 3 PUNKTE zum Pruefen: (1) RECHT: Echtheit + autorisierter Reseller-Status absichern; Zahlungsdienstleister/TikTok/Meta flaggen Marken-Dropship (Konto-Risiko); Markenlogos in Ads heikel. (2) Marken-Identitaet klaeren: Frauen-Schmuck (Social-Fokus) vs Everything-Store? (3) Doppelte Collections Adidas/Gant (2x) aufraeumen. Social-Session fasst Katalog NICHT an, nur Flag.
 
