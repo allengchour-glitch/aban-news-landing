@@ -1,4 +1,3 @@
 [
-  { "id": "2026-06-26-DIAG-2", "cmd": "diag" },
-  { "id": "2026-06-26-DRY-SELECTORS", "cmd": "campaign-dry" }
+  { "id": "2026-06-26-DOM-DUMP", "cmd": "campaign-dry" }
 ]

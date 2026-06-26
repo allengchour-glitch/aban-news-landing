@@ -443,6 +443,9 @@ async function pickFromSearch(p, value, ab) {
 
   // ---- Schritt 5: Budget — Lifetime-Cap (harte Obergrenze) bevorzugt ----
   await clickAny(p, ['Lifetime', 'Laufzeitbudget', 'Gesamtbudget']);
+  // DOM-LABEL-DUMP (2026-06-26 "such ne weg"): echte Button-Texte + Input-Attribute am Budget-Schritt loggen
+  // (nur UI-Labels, kein Privacy-Leak) -> Cloud sieht wie TikTok Budget/Upload nennt -> praeziser Selektor.
+  try { const ctl = await p.evaluate(() => { const btn = [...document.querySelectorAll('button,[role=button]')].map(b => (b.innerText || b.getAttribute('aria-label') || '').trim()).filter(Boolean).slice(0, 18); const inp = [...document.querySelectorAll('input')].map(i => i.type + ':' + (i.placeholder || i.getAttribute('aria-label') || i.name || '?')).slice(0, 12); return 'BTN[' + btn.join('|') + '] INP[' + inp.join('|') + ']'; }); log('CONTROLS[budget]: ' + String(ctl).slice(0, 400)); } catch {}
   if (!await fillBudget(p, C.total)) log('⚠️ Budgetfeld nicht gefunden (Screenshot).'); else log('Budget gesetzt:', C.total);
   await fillAny(p, 'Daily', C.daily).catch(() => {});
   await diag(p, 'budget');

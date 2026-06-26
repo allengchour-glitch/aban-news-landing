@@ -52,4 +52,7 @@ LASTSTEP="$(grep -oE 'DIAG\[[a-z-]+\]' "$RUNLOG" | tail -1)"
 TRACE="$(grep -oiE '[a-zäöü-]*feld nicht gefunden|nicht gefunden|Selektor pr[uü]fen|kein Datei-Input|Budgetfeld[^.]*' "$RUNLOG" | sort -u | head -4 | tr '\n' '; ')"
 STAMP_KEY="campaign_trace" STAMP_VALUE="laststep=$LASTSTEP | $TRACE @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
 echo "[bridge] TRACE: laststep=$LASTSTEP | $TRACE"
+# DOM-Labels (CONTROLS[...]) separat stempeln -> Cloud sieht die echten TikTok-Button/Input-Namen
+CONTROLS="$(grep -oE 'CONTROLS\[[a-z]+\]: .*' "$RUNLOG" | tail -1)"
+[ -n "$CONTROLS" ] && { STAMP_KEY="campaign_dom" STAMP_VALUE="${CONTROLS:0:250}" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1; echo "[bridge] $CONTROLS"; }
 rm -f "$RUNLOG"
