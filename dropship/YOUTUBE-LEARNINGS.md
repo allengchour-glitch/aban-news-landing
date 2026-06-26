@@ -41,3 +41,10 @@
 ## Runde 5-Ernte — 2026-06-26
 - **+4 Anime/Figuren** (3× Shazam-Sammlerfiguren CHF25.90 ok; **1× „D-Batterien" war Anker-Fehlmatch → gedraftet**). Anime-Decke fast erreicht (nur noch Randtreffer).
 - **🔧 Anker-Lehre:** `anime`-Anker fischt generische Accessoires (Batterien) mit → künftig Ban `batterie/battery/akku-zelle` in anime-CONFIG sinnvoll. Bis dahin: neue Anime-Importe per QA auf Fehlmatch prüfen.
+
+## Runde 6 — 2026-06-26 (Ethische Urgency/Scarcity — GUARDRAIL)
+**Quelle:** easyappsecom Urgency/Scarcity/Social-Proof-Guides 2026, twinr, provesrc.
+- **Echte Urgency = 8–32% Conversion-Lift**, ABER nur wenn WAHR. Fake Stock/Resetting-Timer = dauerhafter Vertrauensverlust (Kunden merken's 2026, Reviews/Returns leiden).
+- **⛔ GUARDRAIL für unseren Shop:** Inventar ist `tracked:false` (unbegrenzt verkaufbar) → **NIE „nur noch X auf Lager"** zeigen (wäre gelogen). Versand 8–14 Tage → **kein „heute verschickt"-Cutoff-Timer**. Beides verboten (deckt sich mit CLAUDE.md-Ehrlichkeit).
+- **✅ EHRLICHE Hebel, die wir nutzen DÜRFEN:** echte Saison-Promo (Sommer 2026, an reales Datum gebunden), **WELCOME10** (real), E-Mail-Early-Access (real exklusiv), Social Proof aus ECHTEN Reviews (sobald vorhanden).
+- **Anwendung:** KEIN Fake-Urgency-Widget bauen (bewusst NICHT). Stattdessen Reichweite + echte Reviews priorisieren. Lehre verhindert teuren Vertrauens-Schaden.
