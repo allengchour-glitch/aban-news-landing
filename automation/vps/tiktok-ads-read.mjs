@@ -88,10 +88,16 @@ async function stamp(summary) {
     await page.waitForTimeout(9000); // SPA-Tabelle laden lassen
     const text = await page.evaluate(() => document.body.innerText).catch(() => '');
     if (!text || text.length < 50) { log('Seite leer/nicht eingeloggt -> skip'); await browser.close().catch(() => {}); process.exit(0); }
+    // DIAGNOSE: zeigt was die Seite wirklich sagt (Regex/Gemini koennen sonst still danebenliegen).
+    const snippet = text.replace(/\n{2,}/g, '\n').slice(0, 700);
+    log('SEITEN-SCHNIPSEL ↓↓↓\n' + snippet + '\n↑↑↑ ENDE SCHNIPSEL');
+    const reviewHits = (text.match(/Not delivering|Review not approved|Rejected|In review|Under review|No data|Keine Daten/gi) || []).slice(0, 4);
+    if (reviewHits.length) log('STATUS-Hinweise auf der Seite:', reviewHits.join(' | '));
     const data = (await extractWithGemini(text)) || extractWithRegex(text);
     const summary = `7T impr=${data.impressions || 0} clicks=${data.clicks || 0} spend=CHF${(+data.spend || 0).toFixed(2)} status=${data.status || 'unknown'} @ ${new Date().toISOString()}`;
     await stamp(summary);
     console.log('\n✅ ' + summary);
+    if (!GEM) log('HINWEIS: kein GEMINI_API_KEY geladen -> nur Regex (ungenau). Lauf mit: set -a; . /opt/luxe/.env; set +a; davor.');
   } catch (e) { log('Fehler', String(e).slice(0, 120)); }
   finally { await browser.close().catch(() => {}); }
 })();
