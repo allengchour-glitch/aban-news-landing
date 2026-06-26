@@ -1,4 +1,4 @@
 [
-  { "id": "2026-06-25-KAMPAGNE-URLFIX", "cmd": "campaign-traffic" },
-  { "id": "2026-06-25-KAMPAGNE-API-GO2", "cmd": "campaign-api-go" }
+  { "id": "2026-06-26-TT-DELETE-TOPRIGHT", "cmd": "tt-delete-sneaker" },
+  { "id": "2026-06-26-KAMPAGNE-URLFIX2", "cmd": "campaign-traffic" }
 ]

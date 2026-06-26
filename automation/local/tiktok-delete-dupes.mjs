@@ -56,12 +56,13 @@ function writeStatus(o) { try { fs.writeFileSync(STATUS, JSON.stringify({ ts: ne
           // ⚠️ LEHRE 2026-06-25: das Stagehand-page-Objekt hat KEIN .keyboard/.mouse — NIE p.keyboard/p.mouse
           // benutzen (wirft -> deleted:0). Alles ueber ab.act() (Stagehand hovert/scrollt selber).
           if (!GO) { log(`[dry] Dublette ${i + 1} geoeffnet (Screenshot), NICHT geloescht.`); await ab.act('close the open post and go back to the profile grid').catch(() => {}); await sleep(1500); continue; }
-          // Recherche 2026: das TikTok ⋮-Menue liegt UNTEN RECHTS neben dem Video (nicht oben) + braucht echtes Hover -> Stagehand macht das Hover selbst.
+          // FIX 2026-06-26 (Recherche, vorher FALSCH herum = deleted:0): im geoeffneten Video liegt das
+          // ⋮-Mehr-Menue OBEN RECHTS in der Ecke (nicht unten). Klick die Share-/More-Leiste oben rechts.
           await ab.act(PLATFORM === 'tiktok'
-            ? 'move the mouse over the action bar at the BOTTOM-RIGHT next to the open video, then click the three-dots (more / "..." options) button that appears there — it is NOT at the top of the page'
+            ? 'in the opened video view, click the three-dots "more" (...) button in the TOP-RIGHT corner of the video (next to the share/report icons)'
             : 'click the more options button (three dots) on this post');
-          await sleep(1500);
-          await ab.act('in the menu, click the item whose text is Delete or Löschen');
+          await sleep(1800); await p.screenshot({ path: path.join(SHOT, `menu-${i + 1}.png`) });
+          await ab.act('in the menu that opened, click the item whose text is Delete or Löschen');
           await sleep(1500);
           await ab.act('in the confirmation dialog, click the button labeled Delete or Löschen (never Cancel/Abbrechen)');
           await sleep(3500); await p.screenshot({ path: path.join(SHOT, `after-${i + 1}.png`) });
