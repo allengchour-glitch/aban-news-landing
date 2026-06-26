@@ -203,7 +203,17 @@
       ["Geld & KI", "/geld-und-ki.html", "KI", "Mit KI Geld sparen und verdienen"],
       ["Über aban", "/about.html", "Info", "Wer hinter aban steckt"],
       ["Impressum", "/impressum.html", "Info", "Rechtliche Angaben"],
-      ["Datenschutz", "/datenschutz.html", "Info", "Datenschutzerklärung"]
+      ["Datenschutz", "/datenschutz.html", "Info", "Datenschutzerklärung"],
+      ["Mountainbike kaufen Schweiz", "/mountainbike-kaufen-schweiz.html", "Start", "Hardtail, Fully & E-MTB — Ratgeber (CH)"],
+      ["Couchtisch kaufen Schweiz", "/couchtisch-kaufen-schweiz.html", "Start", "Holz, Glas & Metall — Ratgeber (CH)"],
+      ["TV-Board kaufen Schweiz", "/tv-board-kaufen-schweiz.html", "Start", "Lowboard & TV-Möbel — Ratgeber (CH)"],
+      ["Gaming-Headset kaufen Schweiz", "/gaming-headset-kaufen-schweiz.html", "Start", "PC, PS5 & Xbox Headsets — Ratgeber (CH)"],
+      ["Nespresso kaufen Schweiz", "/nespresso-kaufen-schweiz.html", "Start", "Originalline & Vertuo — Ratgeber (CH)"],
+      ["Laufschuhe kaufen Schweiz", "/laufschuhe-kaufen-schweiz.html", "Start", "Pronation, Dämpfung & Tipps (CH)"],
+      ["Skischuhe kaufen Schweiz", "/skischuhe-kaufen-schweiz.html", "Start", "Flex-Index & Passform — Ratgeber (CH)"],
+      ["Inlineskates kaufen Schweiz", "/inlineskates-kaufen-schweiz.html", "Start", "Fitness, Freestyle & Kinder (CH)"],
+      ["Kletterwand kaufen Schweiz", "/kletterwand-kaufen-schweiz.html", "Start", "Indoor-Kletterwand & Klettergriffe (CH)"],
+      ["YouTuber-Setup kaufen Schweiz", "/youtuber-setup-kaufen-schweiz.html", "Start", "Kamera, Mikrofon & Beleuchtung (CH)"]
     ];
 
     function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
