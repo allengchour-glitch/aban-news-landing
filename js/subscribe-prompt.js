@@ -1,11 +1,11 @@
 /* aban news — dezenter Exit-Intent / Scroll-Subscribe-Prompt.
    Kein Tracking, kein externes Skript, DSGVO-safe. Zeigt sich einmal pro
-   30 Tage (localStorage), bei Verlassen-Absicht (Desktop) oder 60% Scroll.
+   14 Tage (localStorage), bei Verlassen-Absicht (Desktop) oder 40% Scroll.
    Respektiert prefers-reduced-motion, schliessbar per Button/Esc/Backdrop. */
 (function () {
   "use strict";
   var KEY = "aban_sub_prompt_seen";
-  var DAYS = 30;
+  var DAYS = 14;
 
   // already subscribed (came back via willkommen) or recently seen -> skip
   try {
@@ -28,15 +28,15 @@
     wrap.innerHTML =
       '<div class="aban-sp-box">' +
         '<button class="aban-sp-close" type="button" aria-label="Schliessen">&times;</button>' +
-        '<p class="aban-sp-kicker">☕ Bevor du gehst</p>' +
-        '<p class="aban-sp-title">aban news: Mo&ndash;Fr morgens, 3&ndash;5 Min, kein Hype.</p>' +
-        '<p class="aban-sp-sub">Der ehrliche KI-Newsletter f&uuml;r DACH. Kostenlos, jederzeit 1-Klick abbestellbar.</p>' +
+        '<p class="aban-sp-kicker">💡 KI-Wissen kostenlos</p>' +
+        '<p class="aban-sp-title">Jeden Morgen 5 praxistaugliche KI-Tipps &mdash; kein Hype, kein Verkaufsdruck.</p>' +
+        '<p class="aban-sp-sub">Mo&ndash;Fr · 5 Min · ehrlich &uuml;ber KI f&uuml;r KMU und Solopreneure in der DACH-Region.</p>' +
         '<form class="aban-sp-form" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>' +
           '<label class="aban-sp-sronly" for="aban-sp-email">E-Mail-Adresse</label>' +
           '<input id="aban-sp-email" type="email" name="email" required placeholder="deine@email.de" autocomplete="email">' +
-          '<button type="submit">Kostenlos abonnieren &rarr;</button>' +
+          '<button type="submit">Ich will KI-Updates &rarr;</button>' +
         '</form>' +
-        '<p class="aban-sp-trust">DSGVO-konform &middot; kein Spam &middot; kein Tracking-Pixel</p>' +
+        '<p class="aban-sp-trust">DSGVO-konform &middot; kein Spam &middot; 1-Klick abmelden</p>' +
       '</div>';
     return wrap;
   }
@@ -98,14 +98,14 @@
   document.addEventListener("mouseout", function (e) {
     if (!e.relatedTarget && e.clientY <= 0) show();
   });
-  // Trigger 2: scrolled past 50% (works on mobile/touch)
+  // Trigger 2: scrolled past 40% (works on mobile/touch)
   window.addEventListener("scroll", function () {
     var h = document.documentElement;
     var pct = (h.scrollTop + window.innerHeight) / h.scrollHeight;
-    if (pct >= 0.5) show();
+    if (pct >= 0.40) show();
   }, { passive: true });
-  // Trigger 3: nach 30 s engagierter Lesezeit (fängt Leser, die nicht scrollen; respektvoll, nicht aggressiv)
-  setTimeout(show, 30000);
+  // Trigger 3: nach 8 s engagierter Lesezeit (fängt Leser, die nicht scrollen)
+  setTimeout(show, 8000);
   // Esc closes
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") close();
