@@ -26,3 +26,10 @@
 - **⏰ TIMING-LEHRE (wichtig):** Sommer-Nachfrage **bricht ab Anfang August stark ein**; Ware nach ~20. Juli bleibt bis nächsten Mai liegen → **Strand/Kühlung/Ventilator JETZT (Juni) pushen**, nicht später. → Loop-Rotation priorisiert jetzt: strand, grill, klima/akkuventi, kuechenhelfer.
 - **Marge:** Nacken-Ventilator/Cooler-Bags/Stretch-Boards = 35–50 % Brutto (gesund). Sonnencreme/Floats = dünner, aber Volumen.
 - **Anwendung:** Kategorie-Rotation auf Sommer-Saison getrimmt; unsere 2 Winner (Nackenventilator/Galaxy-Projektor) sind genau im Trend → Posting-Handoff steht.
+
+## Runde 4 — 2026-06-26 (Virale TikTok-Gadgets <CHF 30)
+**Quelle:** cjdropshipping TikTok-Viral-2026, findniche, accio.
+- **🎯 BESTÄTIGT: Galaxy/Sternenhimmel-Projektor = Top-Winner** — ein $15-LED-Galaxy-Projektor war Q1-2026-TikTok-Breakout: **10.000 Bestellungen in 2 Wochen aus EINEM viralen „bedroom glow-up"-Clip** (Creator-Kooperation). → Wir haben ihn (CHF 23.90)! Posting-Handoff-Priorität bestätigt.
+- **Cool & impulsfreundlich (<CHF 30, schnelle Checkouts):** Bewegungssensor-Lichter, Voice-Plugs, Mini-Diffuser, Snack-Bag-Sealer, Tierhaar-Roller, 3-in-1-Ladegerät, Karaoke-Mics, Platzspar-Organizer. Gemeinsam: **sofort sichtbarer, satisfying Nutzen** (perfekt fürs Kurzvideo).
+- **Preisregel:** $10–30 = niedrige Hemmschwelle = schneller Kauf. → Import-Filter bevorzugt Impuls-Preise in `viral`/`kuechenhelfer`/`phone`.
+- **Anwendung:** viral+akkuventi importiert; künftige viral-Wellen gezielt auf Bewegungslicht/Diffuser/Snack-Sealer-Anker.
