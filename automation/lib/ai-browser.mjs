@@ -60,11 +60,13 @@ export async function aiBrowser({ cdp = CDP } = {}) {
       // im Modellnamen + die Pakete @ai-sdk/groq & @ai-sdk/google installiert (Poller tut das) + Key in ENV
       // (GROQ_API_KEY bzw. GOOGLE_GENERATIVE_AI_API_KEY, oben gespiegelt). KEIN OPENAI-Override mehr.
       // GROQ ZUERST: grosszuegiges Free-Limit; Gemini-Quota war frueher mal leer.
-      // GEMINI ZUERST (2026-06-26 Umkehr): Groq-Free-TPM-Limit sprengt der grosse DOM-Kontext nach ~2 act()-Calls
-      // (ai_err=2, acts=2). Gemini 2.0 Flash hat riesigen Kontext + jetzt korrekt installiert (@ai-sdk/google) ->
-      // robuster fuer Browser-Automation. Groq bleibt Fallback.
-      if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'google/gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
+      // GROQ ZUERST mit 8b-instant (2026-06-26, bewiesen: Groq-Provider RESOLVED korrekt = model=groq lief 2 Klicks;
+      // Gemini 'google/..' faellt in dieser Stagehand-Version STILL auf OpenAI zurueck = AI_LoadAPIKeyError, taugt nicht).
+      // 70b-versatile war nach 2 Calls rate-limited (12k TPM) -> 8b-instant hat ~30k TPM = ~2.5x Headroom, schnell,
+      // reicht fuers Button-Klicken. 70b + Gemini bleiben als Fallback.
+      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.1-8b-instant', apiKey: process.env.GROQ_API_KEY });
       if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
+      if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'google/gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
       for (const c of candidates) {
         try {
           const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl }, modelName: c.modelName,
