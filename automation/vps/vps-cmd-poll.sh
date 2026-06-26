@@ -14,7 +14,14 @@ BR="claude/luxestyle-product-CizQ6"
 cd "$(dirname "$0")/../.." || exit 1
 LOG(){ echo "[$(date -u +%FT%TZ)] vps-poll: $*"; }
 DONE="automation/vps/.vps-cmd-done"; touch "$DONE"
-NODE="$(command -v node || echo /usr/bin/node)"
+# PATH-FIX (FALLE 2026-06-26): im cron ist der PATH minimal -> node/npm/git nicht gefunden -> Parser lief leer
+# durch ("Durchlauf fertig" ohne Ausfuehrung). Bekannte node-Pfade + nvm voranstellen, damit cron==interaktiv.
+export PATH="/opt/node22/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH"
+for d in /root/.nvm/versions/node/*/bin /home/*/.nvm/versions/node/*/bin; do [ -d "$d" ] && PATH="$d:$PATH"; done
+NODE="$(command -v node || true)"
+if [ -z "$NODE" ]; then for c in /opt/node22/bin/node /usr/local/bin/node /usr/bin/node; do [ -x "$c" ] && NODE="$c" && break; done; fi
+[ -z "$NODE" ] && { LOG "FEHLER: node nicht gefunden (PATH=$PATH) -> Abbruch."; exit 1; }
+LOG "node = $NODE"
 
 # --install: cron-Zeile (*/10) setzen, falls noch nicht da, + einmal durchlaufen
 if [ "${1:-}" = "--install" ]; then
@@ -38,7 +45,8 @@ FILE="automation/vps/vps-commands.json"
 mapfile -t ROWS < <("$NODE" -e '
   const a=JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"));
   for(const c of a) console.log((c.id||"")+"\t"+(c.cmd||""));
-' "$FILE" 2>/dev/null)
+' "$FILE")
+LOG "${#ROWS[@]} Befehl(e) in der Queue."
 
 for row in "${ROWS[@]}"; do
   id="${row%%$'\t'*}"; cmd="${row##*$'\t'}"
