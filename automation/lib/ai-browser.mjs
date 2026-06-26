@@ -54,20 +54,18 @@ export async function aiBrowser({ cdp = CDP } = {}) {
         }
       } catch (e) { console.log('CDP /json/version nicht erreichbar (' + String(e).slice(0, 50) + ') -> nutze ' + cdp); }
       const candidates = [];
-      // OpenAI-KOMPATIBEL (FIX 2026-06-26, teuer gelernt): die neue Stagehand nutzt das Vercel-AI-SDK und faellt
-      // auf ihren OpenAI-Client zurueck — 'google/gemini-2.0-flash' wird IGNORIERT -> jeder act() warf
-      // "AI_LoadAPIKeyError: OpenAI API key is missing". Loesung: genau diesen OpenAI-Client auf die
-      // OpenAI-/v1-Endpunkte von Groq bzw. Gemini richten (beide bieten einen). PLAIN Modellname (kein
-      // Provider-Prefix!) + OPENAI_API_KEY/OPENAI_BASE_URL setzen -> Klicks laufen ueber Groq/Gemini.
+      // AI-SDK-PROVIDER (FIX 2026-06-26, mehrfach teuer gelernt): die neue Stagehand loest Modelle ueber das
+      // Vercel-AI-SDK per PROVIDER-PREFIX auf ('groq/..', 'google/..'). Fehlt das Provider-Paket -> Fallback auf
+      // OpenAI -> "AI_LoadAPIKeyError"/Default-Modell 'gpt-4.1-mini' (das Groq nicht hat). Loesung: Provider-Prefix
+      // im Modellnamen + die Pakete @ai-sdk/groq & @ai-sdk/google installiert (Poller tut das) + Key in ENV
+      // (GROQ_API_KEY bzw. GOOGLE_GENERATIVE_AI_API_KEY, oben gespiegelt). KEIN OPENAI-Override mehr.
       // GROQ ZUERST: grosszuegiges Free-Limit; Gemini-Quota war frueher mal leer.
-      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY, baseURL: 'https://api.groq.com/openai/v1' });
-      if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY, baseURL: 'https://generativelanguage.googleapis.com/v1beta/openai/' });
+      if (process.env.GROQ_API_KEY) candidates.push({ modelName: 'groq/llama-3.3-70b-versatile', apiKey: process.env.GROQ_API_KEY });
+      if (process.env.GEMINI_API_KEY) candidates.push({ modelName: 'google/gemini-2.0-flash', apiKey: process.env.GEMINI_API_KEY });
       for (const c of candidates) {
         try {
-          process.env.OPENAI_API_KEY = c.apiKey;      // Stagehand/AI-SDK OpenAI-Client liest das ...
-          process.env.OPENAI_BASE_URL = c.baseURL;    // ... und zeigt damit auf Groq/Gemini statt api.openai.com
           const sh = new Stagehand({ env: 'LOCAL', localBrowserLaunchOptions: { cdpUrl }, modelName: c.modelName,
-            modelClientOptions: { apiKey: c.apiKey, baseURL: c.baseURL }, verbose: 0,
+            modelClientOptions: { apiKey: c.apiKey }, verbose: 0,
             domSettleTimeoutMs: parseInt(process.env.DOM_SETTLE_MS || '12000', 10) }); // schwere SPAs settlen nie -> nicht ewig warten
           await sh.init();
           await new Promise(r => setTimeout(r, 1500)); // sh.page populiert teils verzoegert nach init

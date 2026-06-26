@@ -34,9 +34,9 @@ git fetch origin "$BR" 2>/dev/null && git reset --hard "origin/$BR" 2>/dev/null 
 [ -f /opt/luxe/.env ] && { set -a; . /opt/luxe/.env; set +a; }
 
 # 2) Stagehand sicherstellen (KI-Klicks fuer den Kampagnen-Bot; ohne -> starrer Fallback haengt)
-if [ ! -d node_modules/@browserbasehq/stagehand ] || [ ! -d node_modules/@ai-sdk/google ]; then
-  LOG "installiere @browserbasehq/stagehand + @ai-sdk/google (Gemini-Provider) ..."
-  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i @browserbasehq/stagehand @ai-sdk/google --no-audit --no-fund >/dev/null 2>&1 && LOG "Stagehand+Google-Provider installiert." || LOG "npm-Install fehlgeschlagen (weiter)."
+if [ ! -d node_modules/@browserbasehq/stagehand ] || [ ! -d node_modules/@ai-sdk/groq ] || [ ! -d node_modules/@ai-sdk/google ]; then
+  LOG "installiere @browserbasehq/stagehand + @ai-sdk/groq + @ai-sdk/google (AI-SDK-Provider) ..."
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i @browserbasehq/stagehand @ai-sdk/groq @ai-sdk/google --no-audit --no-fund >/dev/null 2>&1 && LOG "Stagehand+Provider installiert." || LOG "npm-Install fehlgeschlagen (weiter)."
 fi
 
 # 3) Befehle lesen + neue ausfuehren (Dedup via .vps-cmd-done)
