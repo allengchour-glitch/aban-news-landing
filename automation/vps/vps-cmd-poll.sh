@@ -64,6 +64,7 @@ for row in "${ROWS[@]}"; do
     ads-read)     CDP_HOST="${CDP_HOST:-100.71.8.47}" "$NODE" automation/vps/tiktok-ads-read.mjs 2>&1 | tail -4 ;;
     ad-decision)  "$NODE" automation/ad_manager.mjs 2>&1 | tail -4 ;;
     pixel)        "$NODE" automation/vps/pixel_check.mjs 2>&1 | tail -3 ;;
+    diag)         "$NODE" automation/vps/bot_diag.mjs 2>&1 | tail -3 ;;
     jobs)         bash automation/vps/run-api-jobs.sh 2>&1 | tail -6 ;;
     campaign-dry) bash automation/vps/campaign-bridge.sh 2>&1 | tail -20 ;;
     *) LOG "unbekannter Befehl '$cmd' (ignoriert; campaign-go/echtes Geld laeuft NIE automatisch)" ;;
