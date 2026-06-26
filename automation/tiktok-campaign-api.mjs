@@ -26,7 +26,8 @@ const RUN_DAYS = Math.max(2, Math.floor(TOTAL / DAILY));
 const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:00`;
 const START = new Date(Date.now() + 10*60*1000);          // in 10 Min (TikTok verlangt Zukunft)
 const END = new Date(START.getTime() + RUN_DAYS*24*60*60*1000);
-const LANDING = process.env.LANDING || 'https://luxestyle.ch/collections/wasserfester-schmuck';
+// Auto-Apply-Rabatt: /discount/CODE?redirect=PATH setzt WELCOME10 (-10%) automatisch -> weniger Reibung, mehr Conversion.
+const LANDING = process.env.LANDING || 'https://luxestyle.ch/discount/WELCOME10?redirect=/collections/wasserfester-schmuck';
 const DRY = process.env.DRY === '1';
 import fs from 'node:fs';
 setTimeout(() => { console.log('WATCHDOG 6min -> exit'); process.exit(1); }, 360000).unref(); // 2026-06-25: kein FIFO-Hang
