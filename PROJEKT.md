@@ -57,7 +57,18 @@
   + gebündelt mergen, sobald frei. (4) Brain-Artefakte (brain-state.json/brain.html/IMPROVEMENT-REPORT.md)
   vor Commit verwerfen (Konflikte mit Parallel-Sessions).
 
-## 🧰 2026-06-20/24 — 71 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 📺 2026-06-24 — YouTube-Tool-Welle (User: „lern youtube tool … recherchieren … umsetzen auto")
+> Recherche: yt-dlp installierbar (für Website-Tools NICHT nötig). **i.ytimg.com-Thumbnails liefern HTTP 200**
+> → client-seitige YouTube-Tools funktionieren OHNE API-Key. ID-Extraktion-Regex (watch/youtu.be/shorts/embed/live/
+> reine ID) mit Node getestet. Genau **kein** Scraping/CORS-abhängiges (Tags/Transkript) — nur was clientseitig geht.
+- **Gebaut #batch-36-yt:** youtube-thumbnail (Thumbnail aller Auflösungen, maxres→hq-Fallback, Öffnen/Speichern) +
+  youtube-embed-generator (iframe mit Startzeit/Autoplay-stumm/Loop/responsiv/**youtube-nocookie**, Live-Vorschau, Copy).
+- **Pipeline (auto, nächste Batches):** youtube-zeitstempel-link (?t=) · youtube-einnahmen-rechner (Views×CPM-Schätzung) ·
+  youtube-kapitel-generator (Timestamps→Beschreibung) · video-id-extractor · youtube-titel/beschreibung-längen (tlw. via zeichen-limit).
+- ⚠️ Thumbnail-„Download" cross-origin: `download`-Attribut greift nicht → stattdessen „Öffnen/Speichern"-Link (ehrlich).
+- Hub: in „Text, Farbe & Web" eingereiht (kein eigener YT-Bereich nötig). Memory-Lehren (Sitemap-Anker, 0 Null-Bytes, JSON-LD-Schlusszitat „…") gelten weiter.
+
+## 🧰 2026-06-20/24 — 73 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**

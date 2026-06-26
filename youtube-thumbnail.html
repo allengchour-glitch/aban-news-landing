@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube-Thumbnail herunterladen — alle Auflösungen · aban news</title>
+<meta name="description" content="Kostenloses Tool: YouTube-Thumbnail aus einem Video-Link anzeigen und in allen Auflösungen (HD bis klein) herunterladen. Einfach Link einfügen. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/youtube-thumbnail.html">
+<meta property="og:title" content="YouTube-Thumbnail herunterladen — alle Auflösungen">
+<meta property="og:description" content="YouTube-Vorschaubild aus einem Link anzeigen & in allen Auflösungen laden. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/youtube-thumbnail.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube-Thumbnail-Downloader",
+"url":"https://abannews.com/youtube-thumbnail.html","applicationCategory":"MultimediaApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Zeigt das Vorschaubild (Thumbnail) eines YouTube-Videos aus dem Link an und bietet es in mehreren Auflösungen zum Öffnen und Speichern. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie lade ich ein YouTube-Thumbnail herunter?","acceptedAnswer":{"@type":"Answer","text":"Füge den Link des Videos ein. Das Tool erkennt die Video-ID und zeigt das Vorschaubild in mehreren Auflösungen. Mit einem Klick öffnest du die gewünschte Größe in voller Auflösung und speicherst sie über das Kontextmenü oder den Download-Button."}},
+{"@type":"Question","name":"Welche Auflösungen gibt es?","acceptedAnswer":{"@type":"Answer","text":"YouTube stellt mehrere Größen bereit: maxresdefault (bis 1280×720, nicht für jedes Video), sddefault (640×480), hqdefault (480×360), mqdefault (320×180) und default (120×90). Nicht jedes Video hat die höchste Auflösung."}},
+{"@type":"Question","name":"Darf ich fremde Thumbnails verwenden?","acceptedAnswer":{"@type":"Answer","text":"Vorschaubilder sind urheberrechtlich geschützt. Nutze sie nur, wenn du die Rechte hast oder es z. B. für eigene Videos, Vorschauen oder zulässige Zitate ist. Das Tool selbst lädt nichts hoch und speichert nichts."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#a01616;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.82rem;font-weight:700;color:var(--ink2)}
+input{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+.err{color:var(--bad);font-weight:700;font-size:.88rem;min-height:1.1em;margin-top:8px}
+.main-thumb{margin-top:14px;text-align:center}
+.main-thumb img{max-width:100%;border-radius:12px;border:1px solid var(--line)}
+.sizes{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.size{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--field);text-align:center}
+.size b{font-size:.85rem}.size span{display:block;font-size:.74rem;color:var(--muted);margin-bottom:6px}
+.size a{font-size:.82rem;font-weight:700}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">YouTube-Thumbnail</span> laden</h1>
+    <p>Video-Link einfügen → Vorschaubild in allen Auflösungen anzeigen und herunterladen. Funktioniert mit normalen Videos und Shorts. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Holt das Vorschaubild direkt von YouTube — praktisch zum Analysieren guter Thumbnails oder fürs eigene Video. Nutze nur Bilder, an denen du die Rechte hast.</p>
+
+  <section class="panel" id="tool">
+    <label for="url">YouTube-Link oder Video-ID</label>
+    <input id="url" type="text" spellcheck="false" autocomplete="off" placeholder="https://www.youtube.com/watch?v=…">
+    <div class="err" id="err"></div>
+    <div class="main-thumb" id="main"></div>
+    <div class="sizes" id="sizes"></div>
+    <p class="note">maxres gibt es nicht für jedes Video. Bild öffnet sich in voller Größe — dann speichern. Alles lokal, kein Upload, kein Tracking.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Video &amp; Web.</p>
+    <p><a class="btn" href="/youtube-embed-generator.html">YouTube-Embed-Code</a>
+      <a class="btn ghost" href="/seitenverhaeltnis-rechner.html">Seitenverhältnis</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/youtube-embed-generator.html">YouTube-Embed</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var inp=document.getElementById("url"), err=document.getElementById("err"), main=document.getElementById("main"), sizes=document.getElementById("sizes");
+  function getId(u){
+    u=(u||"").trim();
+    var m=u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{11})/);
+    if(m)return m[1];
+    if(/^[A-Za-z0-9_-]{11}$/.test(u))return u;
+    return null;
+  }
+  var RES=[["maxresdefault","HD (bis 1280×720)"],["sddefault","640×480"],["hqdefault","480×360"],["mqdefault","320×180"],["default","120×90"]];
+  function render(){
+    err.textContent=""; main.innerHTML=""; sizes.innerHTML="";
+    var v=inp.value.trim(); if(!v)return;
+    var id=getId(v);
+    if(!id){ err.textContent="Konnte keine Video-ID erkennen. Bitte einen YouTube-Link einfügen."; return; }
+    var big="https://i.ytimg.com/vi/"+id+"/maxresdefault.jpg", hq="https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
+    var im=document.createElement("img"); im.alt="Thumbnail"; im.src=big;
+    im.onerror=function(){ if(im.src!==hq)im.src=hq; };
+    main.appendChild(im);
+    sizes.innerHTML=RES.map(function(r){
+      var url="https://i.ytimg.com/vi/"+id+"/"+r[0]+".jpg";
+      return '<div class="size"><b>'+r[0]+'</b><span>'+r[1]+'</span><a class="btn ghost" href="'+url+'" target="_blank" rel="noopener">Öffnen / Speichern</a></div>';
+    }).join("");
+  }
+  inp.addEventListener("input",render);
+})();
+</script>
+</body>
+</html>
