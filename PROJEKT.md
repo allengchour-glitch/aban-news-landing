@@ -103,7 +103,8 @@
 - ⚠️ Thumbnail-„Download" cross-origin: `download`-Attribut greift nicht → stattdessen „Öffnen/Speichern"-Link (ehrlich).
 - Hub: in „Text, Farbe & Web" eingereiht (kein eigener YT-Bereich nötig). Memory-Lehren (Sitemap-Anker, 0 Null-Bytes, JSON-LD-Schlusszitat „…") gelten weiter.
 
-## 🧰 2026-06-20/24 — 73 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+## 🧰 2026-06-20/24 — 75 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
+> YouTube-Welle Forts.: youtube-zeitstempel (Start-Link + Kapitel-Liste) + youtube-einnahmen-rechner (Views×RPM-Spanne, ehrlich) [batch-37-yt]. Hub 136. Offen: kapitel→eigenes Tool teils erledigt, video-id-extractor.
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
