@@ -19,6 +19,7 @@ export TT_VIDEO="reels/seedance-wasserfest-sound.mp4"          # TOP-Creative (4
 export TT_LANDING="https://luxestyle.ch/discount/WELCOME10?redirect=/collections/wasserfester-schmuck"
 export TT_ADTEXT="Bliebt das wirklich Gold? Wasserfeschte Edelstahl-Schmuck - lauft nid a, kei gruene Hut. -10% mit WELCOME10."
 export CAMPAIGN_KEEP_AUDIO="1"   # SOUND-ON Ad behalten (Musik-Lehre: TikTok-Ads nie stumm) — kein -an-Strip
+export TT_LANG="German"          # NUR Deutsch (User 2026-06-26): Mundart-Content -> Deutschschweiz, NICHT Romandie/French
 
 echo "[bridge] CDP_URL=$CDP_URL  Objective=$TT_OBJECTIVE  Creative=$TT_VIDEO"
 RUNLOG="$(mktemp)"

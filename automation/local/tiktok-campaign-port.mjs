@@ -61,7 +61,7 @@ const C = {
   location: process.env.TT_LOCATION || 'Switzerland',
   gender: process.env.TT_GENDER || 'Female',
   age: (process.env.TT_AGE || '18-24,25-34').split(','),
-  lang: (process.env.TT_LANG || 'German,French').split(','),
+  lang: (process.env.TT_LANG || 'German').split(','),
   adtext: process.env.TT_ADTEXT || 'Premium-Looks zu faire Priis. -10% mit Code WELCOME10.',
   cta: process.env.TT_CTA || 'Shop Now',
   autoLaunch: process.env.AUTO_LAUNCH === '1',
