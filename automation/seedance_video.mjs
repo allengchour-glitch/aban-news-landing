@@ -18,7 +18,10 @@ const KEY = process.env.FAL_KEY || '';
 // ⚠️ FIX 2026-06-26: korrekte fal-Modell-ID OHNE 'fal-ai/'-Praefix (sonst ApiError Not Found).
 const MODEL = process.env.SEEDANCE_MODEL || 'bytedance/seedance-2.0/fast/image-to-video';
 const IMG = val('--image');
-const PROMPT = val('--prompt', 'cinematic gentle camera motion, the product comes alive, soft natural light, premium, no text');
+// PROMPT-LEHRE 2026-06-26 (YouTube Seedance 2.0 / Julian): KURZE englische Ad-Keywords schlagen lange
+// ueberspezifizierte Prompts; "environmental sound only, no music" (Audio differiert pro Clip -> Musik backen
+// wir selbst in Post). Produkt-Referenzbild = Original-Foto (nie ein AI-Re-Edit, das degradiert).
+const PROMPT = val('--prompt', 'high-budget commercial ad, cinematic gentle camera motion, the product comes alive, soft natural daylight, premium, no text, environmental sound only no music');
 const RES = val('--res', '720p');           // 480p|720p|1080p (Fast = max 720p)
 const DUR = parseInt(val('--dur', '5'), 10); // 4-15s
 const AR = val('--ar', '9:16');
