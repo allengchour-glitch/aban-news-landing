@@ -363,7 +363,7 @@ const CONFIG = {
     anchor: ['zelt', 'wurfzelt', 'festivalzelt', 'pop-up zelt', 'igluzelt', 'schlafsack', 'campingstuhl', 'klappstuhl', 'faltstuhl', 'campingsessel', 'campinghocker', 'klapphocker', 'anglerstuhl', 'isomatte', 'luftbett', 'stirnlampe', 'kühlbox', 'kühltasche', 'campinggeschirr', 'campinglampe', 'feldbett', 'campingtisch', 'klapptisch', 'picknickkorb', 'picknickdecke', 'thermoskanne'],
     ban: ['kinder', 'spielzeug', 'spielzelt', 'kinderzelt', 'pop-up spielzelt', 'gaming', 'bürostuhl', 'gartenstuhl set', 'esszimmerstuhl'],
     bullets: ['Für jedes Outdoor-Abenteuer', 'Leicht & wetterfest', 'Kompakt verstaubar', '100% Original, schnelle EU-Lieferung'] },
-  beleuchtung: { coll: { handle: 'beleuchtung-lampen', title: '💡 Beleuchtung & Lampen', tag: 'beleuchtung' },
+  beleuchtung: { coll: { handle: 'sub-beleuchtung', title: '💡 Beleuchtung & Lampen', tag: 'beleuchtung' },
     extraTags: ['wohnen', 'beleuchtung', 'premium'], type: 'Beleuchtung', maxCost: MAX_COST_EUR,
     anchor: ['tischlampe', 'stehlampe', 'nachttischlampe', 'led-streifen', 'led-stripe', 'wandleuchte', 'deckenleuchte', 'stimmungslicht', 'led-projektor', 'lichterkette', 'schreibtischlampe', 'leselampe', 'nachtlicht', 'rgb-leuchte', 'rgb leuchte', 'mood light', 'salzlampe', 'lavalampe', 'projektionslampe', 'ambiente-licht', 'sternenlicht'],
     ban: ['kinder', 'spielzeug', 'taschenlampe billig', 'auto', 'fahrradlicht'],
