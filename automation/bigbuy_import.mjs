@@ -235,7 +235,7 @@ const CONFIG = {
   // ── Viral/Trending 2026 (TikTok-Hype: Galaxy/Sunset/Mond-Lampen, LED, Massagepistole, Haltungskorrektor) ──
   viral: { coll: { handle: 'trend-gadgets', title: '🔥 Trend-Gadgets', tag: 'viral' },
     extraTags: ['viral', 'trend', 'tiktok', 'hype-2026', 'geschenk'], type: 'Trend-Gadget', maxCost: MAX_COST_EUR,
-    anchor: ['sternenprojektor', 'galaxy projektor', 'galaxie projektor', 'sternenhimmel projektor', 'led projektor sterne', 'sunset lampe', 'sonnenuntergang lampe', 'sunset projektor', 'mondlampe', 'mond lampe', 'levitation', 'schwebende', 'led strip', 'led-streifen', 'led streifen', 'rgb streifen', 'lichterkette led', 'massagepistole', 'massage pistole', 'massagegerät tiefen', 'faszien-pistole', 'haltungskorrektor', 'haltungstrainer', 'rückenstütze haltung', 'aurora projektor', 'nordlicht projektor', 'flammen lampe', 'schwerelos', 'tischlampe touch', 'astronaut projektor'],
+    anchor: ['lámpara luna levitante', 'schwebende mondlampe', 'levitations-lampe', 'lámpara flotante magnética', 'altavoz levitante', 'altavoz flotante magnético', 'schwebender lautsprecher', 'levitations-lautsprecher', 'lámpara atardecer', 'sonnenuntergang lampe', 'sternenprojektor', 'galaxy projektor', 'galaxie projektor', 'sternenhimmel projektor', 'led projektor sterne', 'sunset lampe', 'sonnenuntergang lampe', 'sunset projektor', 'mondlampe', 'mond lampe', 'levitation', 'schwebende', 'led strip', 'led-streifen', 'led streifen', 'rgb streifen', 'lichterkette led', 'massagepistole', 'massage pistole', 'massagegerät tiefen', 'faszien-pistole', 'haltungskorrektor', 'haltungstrainer', 'rückenstütze haltung', 'aurora projektor', 'nordlicht projektor', 'flammen lampe', 'schwerelos', 'tischlampe touch', 'astronaut projektor'],
     ban: ['kinder', 'spielzeug', 'ersatz', 'fernbedienung einzeln', 'netzteil einzeln', 'glühbirne', 'auto', 'kfz', 'reifen'],
     bullets: ['Viraler TikTok-Hit', 'Sofort Stimmung im Raum', 'Tolles Geschenk', 'Einfach Plug & Play'] },
   // ── Tier-A Trendprodukte 2026 (Research 06-24: Wellness/Schlaf/Spa-zuhause, DE+ES-Keywords für BigBuy) ──
@@ -319,7 +319,7 @@ const CONFIG = {
     bullets: ['Maskuliner Schnitt', 'Marken-Mode, EU-Lager', 'Vielseitig kombinierbar', '100% Original, schnelle EU-Lieferung'] },
   kueche: { coll: { handle: 'sub-kueche', title: '🍳 Küche', tag: 'kueche' },
     extraTags: ['wohnen', 'kueche', 'geschenk', 'premium'], type: 'Küche', maxCost: MAX_COST_EUR,
-    anchor: ['küche', 'küchen', 'schneidebrett', 'küchenmesser', 'messerset', 'kochtopf', 'bratpfanne', 'pfannen-set', 'küchenhelfer', 'geschirr', 'besteck-set'],
+    anchor: ['molinillo de sal y pimienta eléctrico', 'molinillo eléctrico especias', 'elektrische salz- und pfeffermühle', 'elektrische gewürzmühle', 'espumador de leche', 'milchaufschäumer', 'envasadora al vacío', 'vakuumierer', 'selladora al vacío', 'dispensador de jabón automático', 'seifenspender sensor', 'automatischer seifenspender', 'küche', 'küchen', 'schneidebrett', 'küchenmesser', 'messerset', 'kochtopf', 'bratpfanne', 'pfannen-set', 'küchenhelfer', 'geschirr', 'besteck-set'],
     ban: ['kinder', 'spielzeug', 'playmobil', 'spiel-küche'],
     bullets: ['Praktisch in der Küche', 'Hochwertige Materialien', 'Schöne Geschenkidee', '100% Original, schnelle EU-Lieferung'] },
   reise: { coll: { handle: 'sub-reise', title: '🧳 Reise & Camping', tag: 'reise' },
@@ -385,7 +385,7 @@ const CONFIG = {
     bullets: ['Salon-Styling für zuhause', 'Schonend & schnell', 'Marken-Qualität', '100% Original, schnelle EU-Lieferung'] },
   bar: { coll: { handle: 'bar-wein', title: '🍸 Bar & Wein', tag: 'bar' },
     extraTags: ['wohnen', 'geschenk', 'premium'], type: 'Bar & Wein', maxCost: MAX_COST_EUR,
-    anchor: ['weinglas', 'cocktailshaker', 'cocktail-set', 'barzubehör', 'bar-set', 'flaschenöffner', 'dekanter', 'weinkühler', 'weinbelüfter', 'whiskygläser', 'sektgläser', 'korkenzieher'],
+    anchor: ['ahumador de cócteles', 'ahumador de whisky', 'cocktail smoker', 'whisky smoker', 'getränke-smoker', 'molde bolas de hielo', 'eiskugelform', 'eiskugel-presse', 'prensa de hielo', 'abridor de vino eléctrico', 'sacacorchos automático', 'sacacorchos eléctrico', 'elektrischer korkenzieher', 'elektrischer flaschenöffner wein', 'weinglas', 'cocktailshaker', 'cocktail-set', 'barzubehör', 'bar-set', 'flaschenöffner', 'dekanter', 'weinkühler', 'weinbelüfter', 'whiskygläser', 'sektgläser', 'korkenzieher'],
     ban: ['kinder', 'spielzeug', 'plastikbecher', 'einweg'],
     bullets: ['Stilvoll geniessen & servieren', 'Edles Geschenk für Geniesser', 'Premium-Materialien', '100% Original, schnelle EU-Lieferung'] },
 };
