@@ -33,3 +33,33 @@ Mehrere konkurrierende Flows laufen parallel → Kunde kriegt evtl. mehrere/engl
 4. (Später) Double-Opt-In prüfen + Browse-Abandonment-Flow ergänzen.
 
 *(Best-Practice-Copy/Timing-Details folgen aus dem laufenden Recherche-Agenten.)*
+
+---
+
+## 📚 Best-Practice (Recherche-Schwarm 2026-06-26, 3 Agenten, quellenbelegt)
+
+### Höchster fehlender Hebel: Review-Request (gegen 0 Reviews!)
+- **Post-Purchase Review-Mail 7 Tage NACH LIEFERUNG** (nicht nach Bestellung) = die wichtigste Mail für einen 0-Reviews-Shop. Existiert (Post-Purchase · Order + Review), aber EN/US-Duplikat aufräumen + auf Deutsch + Trigger prüfen.
+- **Legal in CH:** Mails an echte Käufer sind durch die **Soft-Opt-in-Ausnahme** (UWG Art. 3(1)(o)) gedeckt — kein separater Marketing-Consent nötig. Foto-Review = kleiner Anreiz ok (kein Fake).
+
+### Abandoned-Recovery-Copy (für NEUE Marke ohne Reviews)
+- **Betreff (direkt schlägt clever):** „Dini LuxeStyle-Tasche" / „Hesch öppis vergässe?" (branded/Frage konvertiert am besten; 30–50 Zeichen, Wichtiges zuerst).
+- **Trust STATT Rabatt zuerst** (92% misstrauen unbekannten Shops): Geld-zurück/„Gratis zurück innert 30 Täg", Sicher-Checkout-Badge beim Button, **„Versand us de Schwiz"**, Gründer-Story. Rabatt erst in Mail 2/3.
+- **Body:** 1 Spalte, dynamischer Warenkorb-Block (Bild/Name/Preis), EINE CTA oben, echter HTML-Text (kein Text-im-Bild), mobil min. 16px.
+- **Risk-Reversal:** „Liebe es oder gib's gratis zurück" schlägt „Rückgabe innert 30 Tagen".
+
+### ⚖️ Urgency NUR echt (SECO/Temu-Urteil + EU-DSA = Fake ist ILLEGAL in CH)
+- ERLAUBT: echtes Rabattcode-Ablaufdatum, echter Lagerbestand, echtes Sale-Ende.
+- VERBOTEN: Fake-Countdown (der resettet), „nur noch wenige!" wenn nicht wahr, „Sie müssen JETZT handeln!" / „Wir bedauern…"-Druck.
+
+### CH-Pflichten (Email + Shop)
+- **Email-Text = Hochdeutsch mit „ss" (kein ß, kein Mundart)** — Mundart bleibt im Social-Video.
+- **Absender klar nennen + Gratis-Abmeldung** (Pflicht, UWG/BAKOM).
+- **Preise CHF inkl. MwSt schon beim Angebot** zeigen (Preisbekanntgabe-Verordnung PBV).
+- **TWINT + Kauf-auf-Rechnung** = grösste CH-Trust/Conversion-Hebel (8,5% brechen ab, wenn Zahlart fehlt).
+
+### Smart-Sending (warum E-Mails still verschwinden)
+- Default-Fenster **16 h** (Email): wer in 16 h was anderes kriegt, wird **still übersprungen** → bei zeit-kritischen Flows (Abandoned/Welcome) **AUS**. Klaviyos eigene Vorlagen haben es aus, Custom-Flows meist AN.
+
+### Build-Reihenfolge (neue Marke)
+1 Welcome · 2 Abandoned Cart · 3 Abandoned Checkout + Browse-Abandonment · 4 Post-Purchase inkl. Review · dann Win-Back/Back-in-Stock.
