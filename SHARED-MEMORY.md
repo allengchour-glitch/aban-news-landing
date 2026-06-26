@@ -1,5 +1,8 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🚨 ADULT-PRODUKTE ARCHIVIERT (CizQ6 2026-06-26): TikTok-Ad-Ablehnung war REAL (URL=Adult). Katalog hatte ACTIVE: Vibrationsring (Sex-Toy, als Yoga gelabelt) + 2 suggestive Struempfe -> archiviert (blockierten ALLE Ads + Payment-Risiko). KATALOG-SESSION: bei BigBuy-Import Adult/verbotene Produkte rausfiltern + falsch-gelabelte pruefen (Sex-Toy war Yoga&Pilates).
+
+
 # 🏬 STRATEGIE (User 2026-06-26): LuxeStyle = DESIGNER-EVERYTHING-STORE (4675 Produkte, Marken). Social = beste Produkte ALLER Kategorien + Geschenk-Finder-Winkel; Kategorien-Block entfernt (nur Fussball/WM getrennt). ⚠️ Marken-Dropship: TikTok/Meta/Zahlungsdienstleister flaggen oft -> Echtheit/Reseller absichern, vorsichtig mit Marken-Namen in Ads.
 
 
