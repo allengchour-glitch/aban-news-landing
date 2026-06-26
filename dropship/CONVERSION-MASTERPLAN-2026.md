@@ -5,7 +5,7 @@
 > Schnellste Gewinne = Conversion-Fixes, nicht mehr Traffic. Reihenfolge nach Wirkung/Aufwand.
 
 ## 🔴 TIER 1 — diese Woche, grösster Hebel
-1. **TWINT aktivieren** (Shopify Payments → Lokale Zahlarten) + **echten mobilen Test-Checkout** (Karte + TWINT). TWINT = ~70% der CH-Mobile-Zahlungen; 70% brechen ab, wenn ihre Zahlart fehlt. **[USER, Settings]**
+1. ✅ **TWINT aktiviert + Checkout funktioniert** (User verifiziert 2026-06-26) — grösster CH-Zahlungs-Hebel ERLEDIGT, Kaufweg durchgängig.
 2. **Sticky Add-to-Cart (Drawer-Stil) auf Mobile** — best-belegter Einzel-Gewinn (+5,2% Mobile-Orders, unabhängiger A/B). Dawn hat das NICHT nativ → Theme-Code oder App. **[THEME]**
 3. **LCP-Hero-Bild fixen** — 59% der Shops lazy-loaden ihr Hauptbild (−3s). Above-the-fold-Bild `loading="eager"` + `fetchpriority="high"` + Preload; <180KB. **[THEME-CODE]**
 4. **Accelerated-Checkout-Buttons** auf mobiler PDP sichtbar (Theme-Editor → Buy-Buttons → „Show accelerated checkout"). ShopPay/Apple/Google. **[THEME-EDITOR]**
