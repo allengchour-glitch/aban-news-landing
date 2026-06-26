@@ -243,6 +243,40 @@ for (const f of files) {
       }
     }
   }
+  // (6f) Sticky-Suche-CTA auf Kaufberater-Seiten (erscheint nach 200px Scroll), idempotent
+  {
+    const base = f.split(sep).pop();
+    if (!noindex && base.endsWith("-kaufen-schweiz.html") && html.indexOf("data-aban-sticky-cta") < 0) {
+      const ctaM = html.match(/<a\s+class="bigcta"\s+href="([^"]+)"[^>]*>([^<]+)<\/a>/);
+      const h1M = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+      if (ctaM && h1M) {
+        const ctaHref = esc(ctaM[1]);
+        const label = h1M[1].replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&[a-z]+;/gi, "").trim().slice(0, 48);
+        const block =
+          `<div data-aban-sticky-cta style="position:fixed;bottom:0;left:0;right:0;z-index:8888;`+
+          `background:#1f2937;color:#fff;padding:10px 16px;display:flex;align-items:center;`+
+          `justify-content:space-between;gap:12px;font-size:.92rem;`+
+          `transform:translateY(100%);transition:transform .25s ease">`+
+          `<span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#d1d5db">`+
+          `${esc(label)}</span>`+
+          `<a href="${ctaHref}" style="color:#fbbf24;font-weight:800;text-decoration:none;white-space:nowrap;`+
+          `background:#d97706;border-radius:20px;padding:7px 16px">Jetzt suchen &#8594;</a>`+
+          `<button onclick="this.closest('[data-aban-sticky-cta]').style.display='none'" `+
+          `style="background:none;border:0;color:#9ca3af;cursor:pointer;font-size:1.3rem;line-height:1;`+
+          `padding:2px 4px" aria-label="Schliessen">&#215;</button></div>`+
+          `<script>!function(){`+
+          `var el=document.querySelector('[data-aban-sticky-cta]');`+
+          `if(!el)return;`+
+          `var shown=false;`+
+          `window.addEventListener('scroll',function(){`+
+          `if(!shown&&window.scrollY>220){shown=true;el.style.transform='translateY(0)'}`+
+          `},{passive:true});`+
+          `}()</script>`;
+        const bpos = html.toLowerCase().lastIndexOf("</body>");
+        if (bpos >= 0) { html = html.slice(0, bpos) + block + "\n" + html.slice(bpos); changed = true; }
+      }
+    }
+  }
   // (7) Selbstheilung fehlender Meta-Tags (Social/Mobile), nur indexierbare Seiten
   if (!noindex) {
     const pos2 = html.toLowerCase().lastIndexOf("</head>");
