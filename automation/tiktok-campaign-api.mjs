@@ -16,7 +16,9 @@
 const TOK = process.env.TT_MKT_TOKEN;
 const ADV = process.env.TT_ADV_ID || '7646349875793182738';
 const BASE = process.env.TT_MKT_BASE || 'https://business-api.tiktok.com/open_api/v1.3';
-const VIDEO_URL = process.env.VIDEO_URL || 'https://cdn.shopify.com/videos/c/vp/7179ec99ac744848bf5e6c6cca31cc34/7179ec99ac744848bf5e6c6cca31cc34.HD-1080p-2.5Mbps-87232833.mp4';
+// TOP-CREATIVE 2026-06-26 ("sauber neu mit top ads"): 4.8Mbps See-Test-Reel (wasserfest, anlauffrei) = bester
+// Hook ("Bliebt das wirklich Gold?") + schaerfste Aufloesung + adult-safe Schmuck-Landing. Loest das alte 2.5Mbps ab.
+const VIDEO_URL = process.env.VIDEO_URL || 'https://cdn.shopify.com/videos/c/vp/0dff8a9a8782422b82ca516d8b0defe3/0dff8a9a8782422b82ca516d8b0defe3.HD-1080p-4.8Mbps-87508608.mp4';
 const DAILY = parseFloat(process.env.DAILY_BUDGET || '20');
 // 🛑 HARTE GELD-OBERGRENZE (User-Freigabe: 350 CHF Gesamt; wir nutzen konservativ TOTAL). Ohne Cap würde
 // die Adgroup mit BUDGET_MODE_DAY + SCHEDULE_FROM_NOW UNENDLICH weiterlaufen -> 350 gesprengt. Darum

@@ -1,4 +1,3 @@
 [
-  { "id": "2026-06-26-TT-DELETE-TOPRIGHT", "cmd": "tt-delete-sneaker" },
-  { "id": "2026-06-26-KAMPAGNE-URLFIX2", "cmd": "campaign-traffic" }
+  { "id": "2026-06-26-AD-SAUBER-DRY", "cmd": "campaign-dry" }
 ]
