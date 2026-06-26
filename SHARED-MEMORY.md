@@ -2125,3 +2125,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 >   ODER direkt über deinen Social-Login/PC-Claude-Browser posten.
 > - **Voraussetzung (User-Klick, falls noch offen):** `PUBLISH_WEBHOOK_URL` als Secret gesetzt? Sonst no-op.
 > - **Echtheit:** Versand 8–14 Tage, kein „Swiss made", IG=„Link in Bio". Nach Post: Zeile auf `posted` + `post_url` setzen.
+
+---
+**🤖 2026-06-26 (AUTONOM-LOOP Runde 1 — Import + katalogweiter Dedup, CJ/Theme-Session):**
+- **+3 Smartwatches** importiert (CATS=smartwatch, BigBuy Denver/DCU, CHF 56–76, alle ACTIVE/SEO✓/8 Kanäle/Geschenk+Fitness-Colls). Ledger +3.
+  `strand` lieferte diesen Pass 0 Treffer. **GAP/Rate-Limit:** DRY-Lauf schafft in 180s oft nicht mal 1 Kategorie → künftig **LIVE im Hintergrund in Logfile** (nicht `| tail`, das buffert bis EOF) laufen lassen, Ledger ist `bb:<id>`-keyed = dedup-sicher.
+- **🧹 33 echte BigBuy-Dubletten gedraftet** (katalogweit, `BB-S…`-SKU, Grösse-2-Paare): Espressokocher/Weingläser/Blumentöpfe/Küchenhelfer — gleicher SKU, 2 verschiedene AI-Titel. Keyword-reicheren Titel behalten.
+- **🛑 WICHTIGE DEDUP-FALLE (teuer, fast 267 Produkte zerstört):** Naiver „group by SKU/EAN über ALLE status:active" findet **523 ‚Dubletten' — FALSCH!** Die grossen Gruppen (267× / 50× / 31× …) sind **Print-on-Demand-Designs** (Swiss-Edition Sticker/Shirt/Tasse/Tasche/Kissen), die sich **eine Platzhalter-Basis-SKU `9000001_*` teilen**, aber völlig verschiedene Motive sind (Matterhorn ≠ Edelweiss). **REGEL: Dedup NUR über echte `BB-S…`-SKUs (BigBuy) und NUR Grösse-2-Gruppen; POD-SKUs `9000001_*` NIE als Dublette behandeln.** DRY-First hat's gerettet.
