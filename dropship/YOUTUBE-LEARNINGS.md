@@ -48,3 +48,8 @@
 - **⛔ GUARDRAIL für unseren Shop:** Inventar ist `tracked:false` (unbegrenzt verkaufbar) → **NIE „nur noch X auf Lager"** zeigen (wäre gelogen). Versand 8–14 Tage → **kein „heute verschickt"-Cutoff-Timer**. Beides verboten (deckt sich mit CLAUDE.md-Ehrlichkeit).
 - **✅ EHRLICHE Hebel, die wir nutzen DÜRFEN:** echte Saison-Promo (Sommer 2026, an reales Datum gebunden), **WELCOME10** (real), E-Mail-Early-Access (real exklusiv), Social Proof aus ECHTEN Reviews (sobald vorhanden).
 - **Anwendung:** KEIN Fake-Urgency-Widget bauen (bewusst NICHT). Stattdessen Reichweite + echte Reviews priorisieren. Lehre verhindert teuren Vertrauens-Schaden.
+
+## Runde 7-Ernte — 2026-06-26
+- **strand = Decke** (0 geeignete Kandidaten) → meiden.
+- **caps lieferte 3 FEHLMATCHES** (T-Shirts statt Caps, überteuert CHF42–48) → alle 3 gedraftet. **caps-Anker zu locker** (fischt Shirts). Caps künftig meiden oder Anker härten (`anchor:['kappe','cap','mütze','hut','beanie','snapback']` + ban `t-shirt/shirt`).
+- **Lehre verfestigt:** BigBuy-Apparel-Kategorien (caps/hoodies/socken) liefern oft überteuerte Basics + Fehlmatches → Tech/Gadget-Kategorien mit klaren Ankern (drohnen/beamer/smartwatch/kaffee/grill) sind ergiebiger & ‚cooler'. Rotation darauf fokussieren.
