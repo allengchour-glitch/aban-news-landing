@@ -48,6 +48,13 @@ async function get(path, params) {
 
 (async () => {
   if (!TOK) { log('❌ Kein TT_MKT_TOKEN. Marketing-API-App genehmigen lassen + Konto autorisieren → Token. Anleitung: dropship/TIKTOK-CAMPAIGN-API.md'); report({ result: 'NO_TOKEN', note: 'TT_MKT_TOKEN fehlt -> Browser-Pfad campaign-traffic nutzen' }); process.exit(0); }
+  // 🛡️ DOPPEL-LAUNCH-SCHUTZ (Idempotenz): wurde schon eine LIVE-Kampagne erstellt, NICHT nochmal (sonst 2x Spend).
+  // FORCE=1 zum bewussten Neu-Erstellen.
+  if (!DRY && process.env.FORCE !== '1') {
+    try { const prev = JSON.parse(fs.readFileSync('reports/campaign-api-last-run.json', 'utf8'));
+      if (prev && prev.result === 'LIVE' && prev.campaign_id) { log('⏭️ Bereits LIVE-Kampagne', prev.campaign_id, '(', prev.ts, ') → No-op (kein Doppel-Spend). FORCE=1 zum Neu-Erstellen.'); process.exit(0); }
+    } catch {}
+  }
   log(`🎯 TikTok-Traffic-Kampagne via API · Konto ${ADV} · ${DRY ? 'DRY' : BASE.includes('sandbox') ? 'SANDBOX' : 'PROD'} · Cap ${TOTAL} CHF (${DAILY}/Tag × ${RUN_DAYS} Tage), Ende ${fmt(END)}`);
   try {
     // 0) CH-Region-Code via Tool verifizieren (nicht raten)
