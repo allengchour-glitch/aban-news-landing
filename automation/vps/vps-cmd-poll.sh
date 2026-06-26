@@ -34,9 +34,15 @@ git fetch origin "$BR" 2>/dev/null && git reset --hard "origin/$BR" 2>/dev/null 
 [ -f /opt/luxe/.env ] && { set -a; . /opt/luxe/.env; set +a; }
 
 # 2) Stagehand sicherstellen (KI-Klicks fuer den Kampagnen-Bot; ohne -> starrer Fallback haengt)
-if [ ! -d node_modules/@browserbasehq/stagehand ] || [ ! -d node_modules/@ai-sdk/groq ] || [ ! -d node_modules/@ai-sdk/google ]; then
-  LOG "installiere @browserbasehq/stagehand + @ai-sdk/groq + @ai-sdk/google (AI-SDK-Provider) ..."
-  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i @browserbasehq/stagehand @ai-sdk/groq @ai-sdk/google --no-audit --no-fund >/dev/null 2>&1 && LOG "Stagehand+Provider installiert." || LOG "npm-Install fehlgeschlagen (weiter)."
+# VERSION PIN (2026-06-26): die neue Stagehand (2.x/3.x) benutzt beim act() IMMER OpenAI/gpt-4.1-mini, egal welches
+# Modell konfiguriert ist -> AI_LoadAPIKeyError (kein OpenAI-Key). Der Code ist fuer 1.x geschrieben (modelName
+# 'google/..'/'groq/..' + modelClientOptions.apiKey). 1.x RESPEKTIERT die Modell-Wahl -> Groq/Gemini klicken wirklich.
+PIN="1.14.0"
+if [ ! -f node_modules/.stagehand-pin-$PIN ]; then
+  LOG "pinne @browserbasehq/stagehand@$PIN + @ai-sdk/groq + @ai-sdk/google ..."
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i @browserbasehq/stagehand@$PIN @ai-sdk/groq @ai-sdk/google --no-audit --no-fund >/dev/null 2>&1 \
+    && { mkdir -p node_modules; touch node_modules/.stagehand-pin-$PIN; rm -f node_modules/.stagehand-pin-* 2>/dev/null; touch node_modules/.stagehand-pin-$PIN; LOG "Stagehand@$PIN gepinnt."; } \
+    || LOG "npm-Pin fehlgeschlagen (weiter)."
 fi
 
 # 3) Befehle lesen + neue ausfuehren (Dedup via .vps-cmd-done)
