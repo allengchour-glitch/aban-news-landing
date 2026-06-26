@@ -21,11 +21,25 @@ export TT_ADTEXT="Bliebt das wirklich Gold? Wasserfeschte Edelstahl-Schmuck - la
 export CAMPAIGN_KEEP_AUDIO="1"   # SOUND-ON Ad behalten (Musik-Lehre: TikTok-Ads nie stumm) — kein -an-Strip
 
 echo "[bridge] CDP_URL=$CDP_URL  Objective=$TT_OBJECTIVE  Creative=$TT_VIDEO"
+RUNLOG="$(mktemp)"
 if [ "${GO:-0}" = "1" ]; then
   echo "[bridge] !!! REAL-LAUNCH (AUTO_LAUNCH=1, Cap 70 CHF) !!!"
-  AUTO_LAUNCH=1 "$NODE" automation/local/tiktok-campaign-port.mjs
+  AUTO_LAUNCH=1 "$NODE" automation/local/tiktok-campaign-port.mjs 2>&1 | tee "$RUNLOG"
 else
   echo "[bridge] DRY-Lauf (nur Screenshots in automation/local/campaign-shots/, kein Spend)."
-  "$NODE" automation/local/tiktok-campaign-port.mjs --dry
+  "$NODE" automation/local/tiktok-campaign-port.mjs --dry 2>&1 | tee "$RUNLOG"
 fi
 echo "[bridge] fertig. Screenshots: automation/local/campaign-shots/  ·  Report: reports/campaign-last-run.json"
+
+# 👁️ SELBST-MELDUNG (2026-06-26): VPS hat keine Push-Rechte -> Ergebnis ins Metafeld luxe.campaign_dry_status
+# stempeln, damit die Cloud-Session es liest (kein Log-Paste noetig). Wichtige Signale aus dem Lauf ziehen.
+MODEL="$(grep -oE 'Stagehand aktiv mit Modell [^ ]+' "$RUNLOG" | tail -1 | sed 's/Stagehand aktiv mit Modell //')"
+[ -z "$MODEL" ] && MODEL="$(grep -q 'Playwright-Fallback' "$RUNLOG" && echo 'playwright-fallback' || echo '?')"
+AIERR=$(grep -cE 'AI_LoadAPIKeyError|AI_APICallError|gpt-4.1-mini' "$RUNLOG")
+ACTS=$(grep -cE '^[0-9].*act! ' "$RUNLOG")
+PRESUBMIT=$(grep -qE 'ai-pre-submit|pre-submit' "$RUNLOG" && echo y || echo n)
+SUBMIT=$(grep -qiE 'Kampagne (gesendet|abgesendet|live)|Submit ok|erfolgreich erstellt' "$RUNLOG" && echo y || echo n)
+SUMMARY="${GO:+GO }${GO:-DRY} model=$MODEL ai_err=$AIERR acts=$ACTS presubmit=$PRESUBMIT submit=$SUBMIT @ $(date -u +%H:%MZ)"
+STAMP_KEY="campaign_dry_status" STAMP_VALUE="$SUMMARY" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
+echo "[bridge] STATUS: $SUMMARY"
+rm -f "$RUNLOG"
