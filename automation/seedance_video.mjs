@@ -39,13 +39,22 @@ async function imageUrl(src) {
   log('Seedance', MODEL, '·', RES, DUR + 's', AR, AUDIO ? '+Audio' : 'stumm');
   if (DRY) { log('[dry] wuerde generieren:', JSON.stringify(body).slice(0, 200), '->', OUT); process.exit(0); }
 
-  // 1) Job einreichen (fal queue API)
-  const sub = await fetch(`https://queue.fal.run/${MODEL}`, {
-    method: 'POST', headers: { Authorization: `Key ${KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  if (!sub.ok) { log('Submit-Fehler', sub.status, (await sub.text()).slice(0, 200)); process.exit(1); }
-  const job = await sub.json();
-  const statusUrl = job.status_url, responseUrl = job.response_url;
-  log('Job', job.request_id, '- warte...');
+  // 1) Job einreichen (fal queue API) — mit Retry (Submit kann leer/transient zurueckkommen)
+  let id = null;
+  for (let t = 0; t < 4 && !id; t++) {
+    if (t) await sleep(3000 * t);
+    const sub = await fetch(`https://queue.fal.run/${MODEL}`, {
+      method: 'POST', headers: { Authorization: `Key ${KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const txt = await sub.text();
+    let job = {}; try { job = JSON.parse(txt); } catch {}
+    if (sub.ok && job.request_id) { id = job.request_id; break; }
+    log('Submit-Versuch', t + 1, sub.status, txt.slice(0, 120));
+  }
+  if (!id) { log('❌ Submit dauerhaft fehlgeschlagen.'); process.exit(1); }
+  // ⚠️ FIX 2026-06-26: fals job.response_url ist abgeschnitten (404). Status/Result-URL mit VOLLEM Modell-Pfad bauen.
+  const statusUrl = `https://queue.fal.run/${MODEL}/requests/${id}/status`;
+  const resultUrl = `https://queue.fal.run/${MODEL}/requests/${id}`;
+  log('Job', id, '- warte...');
 
   // 2) Pollen bis COMPLETED (max ~10 Min)
   let done = false;
@@ -59,7 +68,7 @@ async function imageUrl(src) {
   if (!done) { log('Timeout beim Pollen'); process.exit(1); }
 
   // 3) Ergebnis holen + Video laden
-  const res = await (await fetch(responseUrl, { headers: { Authorization: `Key ${KEY}` } })).json();
+  const res = await (await fetch(resultUrl, { headers: { Authorization: `Key ${KEY}` } })).json();
   const url = res?.video?.url;
   if (!url) { log('Kein Video in der Antwort:', JSON.stringify(res).slice(0, 200)); process.exit(1); }
   const vb = Buffer.from(await (await fetch(url)).arrayBuffer());
