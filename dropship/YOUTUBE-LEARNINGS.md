@@ -53,3 +53,7 @@
 - **strand = Decke** (0 geeignete Kandidaten) → meiden.
 - **caps lieferte 3 FEHLMATCHES** (T-Shirts statt Caps, überteuert CHF42–48) → alle 3 gedraftet. **caps-Anker zu locker** (fischt Shirts). Caps künftig meiden oder Anker härten (`anchor:['kappe','cap','mütze','hut','beanie','snapback']` + ban `t-shirt/shirt`).
 - **Lehre verfestigt:** BigBuy-Apparel-Kategorien (caps/hoodies/socken) liefern oft überteuerte Basics + Fehlmatches → Tech/Gadget-Kategorien mit klaren Ankern (drohnen/beamer/smartwatch/kaffee/grill) sind ergiebiger & ‚cooler'. Rotation darauf fokussieren.
+
+## Runde 8-Ernte — 2026-06-26 (Anker-Matching unzuverlässig — Strategie-Wechsel)
+- **drohnen lieferte 3 FEHLMATCHES** (Kinderschuhe CHF85–95!) → gedraftet. Drittes Fehlmatch-Muster in Folge (anime→Batterien, caps→T-Shirts, drohnen→Kinderschuhe).
+- **🔑 STRATEGIE-LEHRE:** BigBuys Anker-Matching greift bei vielen Kategorien daneben + zieht überteuerte Fehltreffer. **Saubere Treffer kamen nur aus:** smartwatch, grill, kuechenhelfer, phone (Tech/Küchen-Gadgets mit eindeutigen Namen). **→ Loop importiert ab jetzt NUR aus dieser Whitelist; sonst Fokus auf FIXES** (Dedup/SEO/QA/Cross-Sell/Storefront-Politur) statt weiter Fehltreffer zu produzieren. Mehr Masse ist nicht das Ziel (CLAUDE.md) — Qualität schon.
