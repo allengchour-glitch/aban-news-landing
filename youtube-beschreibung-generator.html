@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube-Beschreibungs-Generator — Vorlage erstellen · aban news</title>
+<meta name="description" content="Kostenloser YouTube-Beschreibungs-Generator: aus Kurzbeschreibung, Links, Kapiteln und Hashtags eine saubere Videobeschreibung bauen — fertig zum Kopieren. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/youtube-beschreibung-generator.html">
+<meta property="og:title" content="YouTube-Beschreibungs-Generator — Vorlage erstellen">
+<meta property="og:description" content="Saubere YouTube-Videobeschreibung aus Text, Links, Kapiteln & Hashtags — zum Kopieren. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/youtube-beschreibung-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"YouTube-Beschreibungs-Generator",
+"url":"https://abannews.com/youtube-beschreibung-generator.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Baut aus Kurzbeschreibung, Links, Kapiteln und Hashtags eine saubere YouTube-Videobeschreibung zum Kopieren. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was gehört in eine gute YouTube-Beschreibung?","acceptedAnswer":{"@type":"Answer","text":"Die ersten ein bis zwei Zeilen sind am wichtigsten (sie erscheinen in der Suche): ein klarer Satz, worum es geht. Danach folgen wichtige Links, Kapitel mit Zeitstempeln, ein Aufruf zum Abonnieren und einige passende Hashtags."}},
+{"@type":"Question","name":"Wie viele Zeichen sind erlaubt?","acceptedAnswer":{"@type":"Answer","text":"Bis zu 5.000 Zeichen. Der Generator zeigt die Länge an. Wichtig ist vor allem der Anfang — die ersten rund 150 Zeichen werden oft abgeschnitten angezeigt."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal im Browser, es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+textarea{resize:vertical;line-height:1.5}
+.fld{margin-bottom:10px}
+.out{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;background:var(--field);border:1px solid var(--line);border-radius:9px;padding:12px;min-height:260px}
+.meta{font-size:.8rem;color:var(--muted);margin-top:6px;text-align:right}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.note{color:var(--muted);font-size:.82rem;margin-top:10px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">YouTube-Beschreibung</span> bauen</h1>
+    <p>Aus Kurzbeschreibung, Links, Kapiteln und Hashtags eine saubere, gut strukturierte Videobeschreibung erstellen — fertig zum Kopieren. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Gibt deiner Beschreibung Struktur — starker Einstieg, Links, Kapitel, CTA, Hashtags. Inhalte schreibst du selbst (kein KI-Text).</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div>
+        <div class="fld"><label for="kurz">Kurzbeschreibung (erste Zeilen, am wichtigsten)</label><textarea id="kurz" rows="3">In diesem Video zeige ich, wie du …</textarea></div>
+        <div class="fld"><label for="links">Links (eine pro Zeile: Text | URL)</label><textarea id="links" rows="3">Newsletter | https://abannews.com
+Website | https://abannews.com</textarea></div>
+        <div class="fld"><label for="kapitel">Kapitel (eine pro Zeile: 0:00 Titel)</label><textarea id="kapitel" rows="3">0:00 Intro
+1:30 Hauptteil
+8:00 Fazit</textarea></div>
+        <div class="fld"><label for="cta">Call-to-Action</label><input id="cta" type="text" value="👉 Abonniere für mehr ehrliche KI-Tipps!"></div>
+        <div class="fld"><label for="tags">Hashtags (mit oder ohne #, Komma/Leerzeichen)</label><input id="tags" type="text" value="KI, Selbstständig, Produktivität"></div>
+      </div>
+      <div>
+        <label>Ergebnis</label>
+        <div class="out" id="out"></div>
+        <div class="meta" id="meta"></div>
+        <div class="row"><button type="button" class="btn" id="copy">📋 Beschreibung kopieren</button></div>
+      </div>
+    </div>
+    <p class="note">Max. 5.000 Zeichen. Die ersten ~150 Zeichen erscheinen in der Vorschau. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Video &amp; Text.</p>
+    <p><a class="btn" href="/youtube-zeitstempel.html">Zeitstempel &amp; Kapitel</a>
+      <a class="btn ghost" href="/zeichen-limit-social.html">Zeichen-Limits</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/youtube-zeitstempel.html">Zeitstempel</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function val(id){return document.getElementById(id).value;}
+  var out=document.getElementById("out"), meta=document.getElementById("meta"), text="";
+  function build(){
+    var parts=[];
+    var kurz=val("kurz").trim(); if(kurz)parts.push(kurz);
+    var links=val("links").split("\n").map(function(l){return l.trim();}).filter(Boolean).map(function(l){
+      var i=l.indexOf("|"); if(i>=0){ return l.slice(0,i).trim()+": "+l.slice(i+1).trim(); } return l;
+    });
+    if(links.length){ parts.push("🔗 Links:\n"+links.join("\n")); }
+    var kap=val("kapitel").split("\n").map(function(l){return l.trim();}).filter(Boolean);
+    if(kap.length){ parts.push("⏱️ Kapitel:\n"+kap.join("\n")); }
+    var cta=val("cta").trim(); if(cta)parts.push(cta);
+    var tags=val("tags").split(/[,\s]+/).map(function(t){return t.replace(/^#/,"").trim();}).filter(Boolean);
+    if(tags.length){ parts.push(tags.map(function(t){return "#"+t;}).join(" ")); }
+    text=parts.join("\n\n");
+    out.textContent=text||"(Felder ausfüllen …)";
+    var n=text.length;
+    meta.textContent=n.toLocaleString("de-DE")+" / 5000 Zeichen"+(n>5000?" — zu lang!":"");
+    meta.style.color=n>5000?"#a01616":"var(--muted)";
+  }
+  ["kurz","links","kapitel","cta","tags"].forEach(function(id){document.getElementById(id).addEventListener("input",build);});
+  document.getElementById("copy").addEventListener("click",function(){var b=this;if(text&&navigator.clipboard)navigator.clipboard.writeText(text).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1500);});});
+  build();
+})();
+</script>
+</body>
+</html>
