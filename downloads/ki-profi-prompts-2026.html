@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 KI-Profi-Prompts für DACH-KMU 2026 — aban</title>
+<meta name="description" content="100 fertige KI-Prompts für DACH-KMU: Marketing, Kundenservice, E-Mail, Social Media, SEO, HR, Finanzen, Recht und Strategie.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://abannews.com/downloads/ki-profi-prompts-2026.html">
+<meta property="og:title" content="100 KI-Profi-Prompts für DACH-KMU — aban">
+<meta property="og:description" content="100 fertige KI-Prompts für DACH-KMU — sofort einsetzbar in ChatGPT, Claude & Co.">
+<style>
+@media print {
+  .no-print { display: none !important; }
+  body { font-size: 10pt; }
+  h1 { page-break-after: avoid; }
+  .cat { page-break-before: always; }
+  .cat:first-of-type { page-break-before: avoid; }
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --amber: #d97706; --amber-dk: #b45309; --cream: #fef3c7;
+  --ink: #1f2937; --ink2: #374151; --muted: #6b7280;
+  --bg: #fffbf5; --card: #fff; --line: #e5e7eb;
+  --ok: #059669; --tag: #fef3c7;
+}
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.65; color: var(--ink); background: var(--bg); padding: 0; }
+.cover { background: linear-gradient(150deg, #1f2937 0%, #2a2118 40%, #d97706 100%); color: #fff; padding: 60px 40px 50px; min-height: 297mm; display: flex; flex-direction: column; justify-content: center; }
+.cover-badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: #fef3c7; font-size: .8rem; font-weight: 700; padding: .4rem .9rem; border-radius: 999px; margin-bottom: 24px; letter-spacing: .05em; text-transform: uppercase; }
+.cover h1 { font-size: 3rem; font-weight: 900; line-height: 1.05; margin-bottom: 18px; letter-spacing: -.02em; }
+.cover h1 em { color: #fbbf24; font-style: normal; }
+.cover .sub { font-size: 1.2rem; opacity: .85; margin-bottom: 32px; max-width: 500px; }
+.cover-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: auto; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.2); }
+.cover-meta div { font-size: .85rem; opacity: .8; }
+.cover-meta strong { display: block; color: #fbbf24; font-size: 1rem; }
+.toc-page { background: var(--cream); padding: 48px 40px; }
+.toc-page h2 { font-size: 1.5rem; color: var(--amber-dk); margin-bottom: 24px; border-bottom: 2px solid var(--amber); padding-bottom: 8px; }
+.toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.toc-item { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--amber); border-radius: 8px; padding: 12px 16px; }
+.toc-item .num { font-size: .75rem; color: var(--muted); font-weight: 700; }
+.toc-item .name { font-weight: 700; color: var(--ink); font-size: .95rem; }
+.toc-item .count { font-size: .8rem; color: var(--amber-dk); }
+.how { background: #fff; padding: 40px; border-bottom: 2px solid var(--line); }
+.how h2 { color: var(--amber-dk); margin-bottom: 16px; }
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.how-step { border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.how-step .n { font-size: 2rem; font-weight: 900; color: var(--amber); line-height: 1; }
+.how-step h3 { font-size: .95rem; margin: 6px 0 4px; }
+.how-step p { font-size: .85rem; color: var(--muted); }
+.cat { padding: 40px; border-bottom: 3px solid var(--cream); }
+.cat-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--amber); }
+.cat-icon { font-size: 2rem; }
+.cat-header h2 { font-size: 1.4rem; color: var(--amber-dk); font-weight: 900; }
+.cat-header .cat-num { font-size: .8rem; color: var(--muted); font-weight: 700; background: var(--cream); padding: .25rem .6rem; border-radius: 999px; }
+.cat-intro { color: var(--ink2); font-size: .95rem; margin-bottom: 20px; padding: 12px 16px; background: var(--cream); border-radius: 8px; border-left: 4px solid var(--amber); }
+.prompt { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+.prompt-header { background: var(--tag); padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+.prompt-num { font-size: .75rem; font-weight: 800; color: var(--amber-dk); }
+.prompt-tag { font-size: .7rem; background: var(--amber-dk); color: #fff; padding: .2rem .6rem; border-radius: 999px; }
+.prompt-title { font-weight: 700; font-size: .95rem; color: var(--ink); padding: 10px 16px 0; }
+.prompt-body { padding: 10px 16px 14px; }
+.prompt-text { font-family: "Courier New", Courier, monospace; font-size: .85rem; line-height: 1.7; color: var(--ink2); background: #f9fafb; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; white-space: pre-wrap; }
+.prompt-text .var { color: var(--amber-dk); font-weight: 700; }
+.prompt-tip { font-size: .78rem; color: var(--ok); margin-top: 8px; padding: 6px 10px; background: #f0fdf4; border-radius: 6px; border-left: 3px solid var(--ok); }
+.closing { background: linear-gradient(150deg, #1f2937, #2a2118); color: #fff; padding: 48px 40px; text-align: center; }
+.closing h2 { font-size: 1.8rem; margin-bottom: 12px; }
+.closing p { opacity: .8; max-width: 500px; margin: 0 auto 24px; }
+.closing .brand { color: #fbbf24; font-weight: 900; font-size: 1.1rem; }
+</style>
+</head>
+<body>
+
+<!-- TITELSEITE -->
+<div class="cover">
+  <div class="cover-badge">aban · Digitale Produkte 2026</div>
+  <h1><em>100 KI-Profi-Prompts</em><br>für DACH-KMU</h1>
+  <p class="sub">Fertige Prompt-Vorlagen für den täglichen Geschäftsbetrieb — direkt einsetzbar in ChatGPT, Claude, Gemini und Co.</p>
+  <div class="cover-meta">
+    <div><strong>10 Kategorien</strong>je 10 Prompts</div>
+    <div><strong>Sofort nutzbar</strong>ohne Vorkenntnisse</div>
+    <div><strong>DACH-Kontext</strong>CH/AT/DE, CHF/EUR, lokale Gesetze</div>
+    <div><strong>Alle KI-Modelle</strong>ChatGPT · Claude · Gemini · Copilot</div>
+  </div>
+</div>
+
+<!-- INHALTSVERZEICHNIS -->
+<div class="toc-page">
+  <h2>Inhaltsverzeichnis</h2>
+  <div class="toc-grid">
+    <div class="toc-item"><div class="num">Kategorie 01</div><div class="name">Marketing &amp; Werbetexte</div><div class="count">Prompts #1–10</div></div>
+    <div class="toc-item"><div class="num">Kategorie 02</div><div class="name">Kundenservice &amp; Support</div><div class="count">Prompts #11–20</div></div>
+    <div class="toc-item"><div class="num">Kategorie 03</div><div class="name">E-Mail &amp; Geschäftskommunikation</div><div class="count">Prompts #21–30</div></div>
+    <div class="toc-item"><div class="num">Kategorie 04</div><div class="name">Social Media (LinkedIn, Instagram)</div><div class="count">Prompts #31–40</div></div>
+    <div class="toc-item"><div class="num">Kategorie 05</div><div class="name">SEO &amp; Webinhalte</div><div class="count">Prompts #41–50</div></div>
+    <div class="toc-item"><div class="num">Kategorie 06</div><div class="name">Angebote, Rechnungen &amp; Verträge</div><div class="count">Prompts #51–60</div></div>
+    <div class="toc-item"><div class="num">Kategorie 07</div><div class="name">HR, Stelleninserate &amp; Onboarding</div><div class="count">Prompts #61–70</div></div>
+    <div class="toc-item"><div class="num">Kategorie 08</div><div class="name">Finanzen, Controlling &amp; Reporting</div><div class="count">Prompts #71–80</div></div>
+    <div class="toc-item"><div class="num">Kategorie 09</div><div class="name">Recht, DSGVO &amp; Compliance</div><div class="count">Prompts #81–90</div></div>
+    <div class="toc-item"><div class="num">Kategorie 10</div><div class="name">Strategie, Planung &amp; Innovation</div><div class="count">Prompts #91–100</div></div>
+  </div>
+</div>
+
+<!-- SO NUTZT DU DIE PROMPTS -->
+<div class="how">
+  <h2>So nutzt du diese Prompts optimal</h2>
+  <div class="how-grid">
+    <div class="how-step"><div class="n">1</div><h3>Prompt kopieren</h3><p>Kopiere den Prompt-Text (der gelbe Kasten) vollständig in ChatGPT, Claude oder Gemini.</p></div>
+    <div class="how-step"><div class="n">2</div><h3>Platzhalter ersetzen</h3><p>Alle <strong>[VARIABLEN IN ECKIGEN KLAMMERN]</strong> mit deinen echten Informationen füllen.</p></div>
+    <div class="how-step"><div class="n">3</div><h3>Anpassen &amp; verfeinern</h3><p>Das Ergebnis als Ausgangspunkt nutzen — einmal nachhaken genügt meist für Perfektion.</p></div>
+  </div>
+  <p style="margin-top:16px;font-size:.88rem;color:var(--muted)"><strong>Tipp:</strong> Speichere häufig genutzte Prompts als "Custom Instructions" (ChatGPT) oder "Projects" (Claude) ab — dann musst du Firmendaten nur einmal eingeben.</p>
+</div>
+
+<!-- KATEGORIE 1: MARKETING -->
+<div class="cat">
+  <div class="cat-header">
+    <span class="cat-icon">📣</span>
+    <h2>Marketing &amp; Werbetexte</h2>
+    <span class="cat-num">Prompts #1–10</span>
+  </div>
+  <p class="cat-intro">Diese Prompts erstellen verkaufsorientierte Texte für Website, Flyer, Google Ads und Print. Alle sind auf den deutschsprachigen Markt (CH/AT/DE) ausgelegt — direkt und ohne Anglizismen-Überflutung.</p>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#01</span><span class="prompt-tag">Website · Hero</span></div>
+    <div class="prompt-title">Hero-Text für Unternehmens-Website (Hauptseite)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe den Hero-Bereich meiner Website. Mein Unternehmen:
+Name: [FIRMENNAME]
+Branche: [BRANCHE, z.B. Steuerberatung / IT-Dienstleister / Architekturbüro]
+Hauptleistung: [HAUPTLEISTUNG IN 1 SATZ]
+Zielgruppe: [ZIELGRUPPE, z.B. Selbstständige in der Schweiz / KMU im Kanton Zürich]
+Unser Vorteil gegenüber Mitbewerbern: [ALLEINSTELLUNGSMERKMAL]
+Ton: professionell, direkt, vertrauenswürdig — kein Marketing-Jargon
+
+Ergebnis soll sein:
+- Headline (max. 8 Wörter) — sofort klar, WAS wir machen
+- Sub-Headline (1 Satz) — für WEN und mit WELCHEM Vorteil
+- Button-Text (max. 5 Wörter)
+Bitte 3 Varianten liefern.</div>
+      <div class="prompt-tip">Tipp: Teste alle 3 Varianten via A/B-Test. In der Schweiz konvertiert direkter Ton (kein "Wir freuen uns, Ihnen mitteilen zu dürfen") deutlich besser.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#02</span><span class="prompt-tag">Google Ads</span></div>
+    <div class="prompt-title">Google Ads — Responsive Search Ad (RSA)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Erstelle Google Ads RSA-Texte für mein Unternehmen.
+Produkt/Leistung: [LEISTUNG]
+Zielgruppe: [ZIELGRUPPE]
+Hauptvorteil: [VORTEIL]
+USP: [ALLEINSTELLUNGSMERKMAL]
+Keyword: [HAUPT-KEYWORD, z.B. "Steuerberatung Zürich"]
+Geografische Ausrichtung: [REGION/KANTON/STADT]
+
+Liefere:
+- 15 Headlines (max. 30 Zeichen je, nummeriert)
+- 4 Descriptions (max. 90 Zeichen je)
+Beachte: Keyword in mind. 3 Headlines einbauen. Keine Ausrufezeichen am Headline-Ende (Google-Policy). Zahlen und konkrete Vorteile einbauen (z.B. "seit 15 Jahren", "kostenlose Erstberatung").</div>
+      <div class="prompt-tip">Tipp: Mindestens 3 der 15 Headlines sollten das Keyword [HAUPT-KEYWORD] exakt enthalten — das erhöht den Quality Score.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#03</span><span class="prompt-tag">Flyer · Print</span></div>
+    <div class="prompt-title">Werbeflyer-Text (A5, zweiseitig)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe den Text für einen A5-Werbeflyer (zweiseitig) für:
+Unternehmen: [FIRMENNAME]
+Leistung/Angebot: [LEISTUNG ODER PRODUKT]
+Sonderangebot/Aktion: [FALLS VORHANDEN, sonst: "kein Angebot"]
+Zielgruppe: [ZIELGRUPPE]
+Kontakt: [TELEFON, E-MAIL, WEBSITE]
+Ton: sachlich, vertrauenswürdig, kein Hype
+
+Struktur:
+Seite 1: Headline + 3 Hauptvorteile (als Aufzählung) + CTA
+Seite 2: 3 Leistungsblöcke mit je Überschrift + 2 Sätzen + Kontaktinfos + kurzes Statement warum uns wählen</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#04</span><span class="prompt-tag">Testimonial</span></div>
+    <div class="prompt-title">Kundenstimme / Testimonial formulieren</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Ich habe ein Kundenfeedback erhalten und möchte daraus ein professionelles Testimonial für meine Website formulieren.
+
+Rohes Feedback vom Kunden: "[ROHES KUNDENFEEDBACK EINFÜGEN]"
+Branche des Kunden: [BRANCHE]
+Was war das Hauptproblem des Kunden vor unserer Zusammenarbeit: [PROBLEM]
+Was hat sich durch unsere Lösung verändert: [ERGEBNIS/VERBESSERUNG]
+
+Erstelle ein Testimonial (3–5 Sätze), das:
+- Glaubwürdig und authentisch klingt (nicht übertrieben positiv)
+- Das konkrete Problem + die Lösung + das Ergebnis nennt
+- Sich wie echte Sprache eines Schweizer Unternehmers anhört
+Bitte auch einen kurzen Social-Media-Clip-Text (1 Satz + Zitat) liefern.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#05</span><span class="prompt-tag">Newsletter</span></div>
+    <div class="prompt-title">Marketing-Newsletter (monatlich)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe einen professionellen Marketing-Newsletter für meine Kundenliste.
+Firma: [FIRMENNAME]
+Monat/Thema: [MONAT + HAUPTTHEMA, z.B. "Juni 2026 — Sommerpause & neue Leistungen"]
+Neuigkeiten/Ankündigungen: [LISTE DER NEUIGKEITEN]
+Aktion/Angebot (falls vorhanden): [ANGEBOT ODER "keines"]
+Tipp für Leser (praktisch, nicht werbend): [THEMA FÜR PRAXIS-TIPP]
+CTA am Ende: [ZIEL, z.B. "Termin buchen", "Angebot anfragen"]
+
+Format: Betreffzeile (max. 50 Zeichen) + Preheader (max. 90 Zeichen) + Fliesstext 200–300 Wörter mit Abschnitten + klarer CTA-Button-Text. Ton: persönlich, warm, aber professionell.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#06</span><span class="prompt-tag">Produktbeschreibung</span></div>
+    <div class="prompt-title">Produktbeschreibung für Webshop (SEO-optimiert)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine SEO-optimierte Produktbeschreibung für meinen Online-Shop.
+Produktname: [PRODUKTNAME]
+Kategorie: [KATEGORIE]
+Hauptmerkmale/Specs: [LISTE DER HAUPTMERKMALE]
+Zielgruppe: [FÜR WEN IST DAS PRODUKT]
+Hauptvorteil gegenüber Alternativen: [VORTEIL]
+Hauptkeyword: [KEYWORD]
+Preis: [CHF/EUR-PREIS]
+
+Liefere:
+- Kurztitel für Shop-Listenansicht (max. 70 Zeichen, mit Keyword)
+- Kurzbeschreibung (2 Sätze, Hook + Vorteil)
+- Langbeschreibung (150–200 Wörter, SEO-optimiert, mit Keyword + semantischen Begriffen)
+- 5 Bullet-Points mit Hauptmerkmalen
+- Meta-Description (max. 155 Zeichen)</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#07</span><span class="prompt-tag">Pressemitteilung</span></div>
+    <div class="prompt-title">Pressemitteilung für lokale Medien (CH/AT/DE)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine professionelle Pressemitteilung.
+Unternehmen: [FIRMENNAME, BRANCHE, ORT]
+Neuigkeit/Anlass: [WAS IST PASSIERT? z.B. Geschäftseröffnung, neues Produkt, Expansion, Auszeichnung]
+Datum des Ereignisses: [DATUM]
+Zitat des Geschäftsführers: [NAME] soll sagen: [KERNBOTSCHAFT IN EIGENEN WORTEN]
+Kontakt für Medien: [NAME, TELEFON, E-MAIL]
+
+Format-Anforderungen:
+- Überschrift (Pressemitteilung-Stil: Fakt, kein Reisserischer Titel)
+- Lead-Paragraph (5 W: Wer, Was, Wann, Wo, Warum)
+- 2 Absätze Hintergrund
+- Zitat
+- Boilerplate (3 Sätze über das Unternehmen)
+- Kontaktblock
+Ton: sachlich-journalistisch, keine Werbesprache</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#08</span><span class="prompt-tag">USP-Analyse</span></div>
+    <div class="prompt-title">Alleinstellungsmerkmale (USPs) herausarbeiten</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Hilf mir, die echten Alleinstellungsmerkmale meines Unternehmens zu finden.
+
+Was mein Unternehmen macht: [BESCHREIBUNG IN 3–5 SÄTZEN]
+Meine Top-3-Kunden sagen, warum sie bei mir kaufen/buchen: [KUNDENFEEDBACK IN EIGENEN WORTEN]
+Meine häufigsten Anfragen kommen für: [TOP-LEISTUNGEN]
+Was ich meinen Mitbewerbern voraus habe (aus meiner Sicht): [EIGENE EINSCHÄTZUNG]
+Was ich lieber nicht tue / womit ich nicht konkurrieren will: [SCHWÄCHEN/GRENZEN]
+
+Aufgabe:
+1. Analysiere die Informationen und identifiziere 3–5 echte USPs (nicht generische Floskeln)
+2. Formuliere jeden USP als Kundennutzen (nicht als Merkmal: "wir sind schnell" → "Sie erhalten Ihr Ergebnis in 48h, nicht Wochen")
+3. Empfehle, welchen USP ich am prominentesten vermarkten soll und warum</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#09</span><span class="prompt-tag">Vergleichsseite</span></div>
+    <div class="prompt-title">Wettbewerbs-Vergleichsseite ("Warum uns wählen?")</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe den Text für eine "Warum uns wählen?"-Seite auf meiner Website.
+Mein Unternehmen: [NAME, LEISTUNG]
+Meine Top-3-Mitbewerber (oder "typische Alternativen"): [MITBEWERBER ODER ALTERNATIVEN]
+Meine klaren Vorteile gegenüber diesen: [VORTEILE]
+Meine ehrlichen Einschränkungen (wo andere besser sein könnten): [EINSCHRÄNKUNGEN]
+Zielgruppe, für die ich optimal bin: [IDEALER KUNDE]
+
+Erstelle:
+- Headline für die Seite
+- Intro-Absatz (warum diese Frage berechtigt ist)
+- Vergleichstabelle (Ich vs. "Grosse Agenturen/Plattformen" vs. "Freelancer-Alternativen") mit 6–8 Kriterien
+- 3 Kundentypen, für die wir IDEAL sind
+- 1 ehrlicher Abschnitt: "Für wen wir NICHT ideal sind" (Vertrauen aufbaut!)</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#10</span><span class="prompt-tag">Saisonmarketing</span></div>
+    <div class="prompt-title">Saisonale Kampagne planen (Q4/Weihnachten/Neujahr)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Plane eine saisonale Marketing-Kampagne für mein Unternehmen.
+Branche: [BRANCHE]
+Saison/Anlass: [z.B. Weihnachten, Neujahr, Sommer, Bundesfeier CH]
+Zeitraum: [VON — BIS]
+Budget (ca.): [CHF-BETRAG oder "kein Werbebudget / nur organisch"]
+Kanäle, die ich nutze: [z.B. Instagram, Newsletter, Google Ads, Flyer]
+Hauptziel der Kampagne: [z.B. Umsatz steigern / Neukunden / Bestandskunden binden]
+
+Liefere:
+- Kampagnen-Idee (kreativ, aber umsetzbar für KMU)
+- Kampagnen-Headline und Motto
+- Wochenplan (4 Wochen): was poste/sende ich wann auf welchem Kanal
+- 3 konkrete Post-Ideen mit Bildbeschreibung
+- Empfehlung für Angebot/Aktion (was konvertiert in dieser Saison typischerweise)</div>
+    </div>
+  </div>
+</div>
+
+<!-- KATEGORIE 2: KUNDENSERVICE -->
+<div class="cat">
+  <div class="cat-header">
+    <span class="cat-icon">🤝</span>
+    <h2>Kundenservice &amp; Support</h2>
+    <span class="cat-num">Prompts #11–20</span>
+  </div>
+  <p class="cat-intro">Antworten schreiben kostet Zeit — besonders bei schwierigen Situationen. Diese Prompts liefern professionelle, deeskalative Antworten für alle Lagen: von der Reklamation bis zur Absage.</p>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#11</span><span class="prompt-tag">Reklamation</span></div>
+    <div class="prompt-title">Reklamation professionell beantworten</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine professionelle Antwort auf diese Kundenreklamation.
+Reklamationsinhalt: "[KUNDE HAT GESCHRIEBEN: ...]"
+Unser Fehler war: [FEHLER BESCHREIBEN ODER "kein klarer Fehler unsererseits"]
+Was wir dem Kunden anbieten können: [LÖSUNG, z.B. Rückerstattung, Neulieferung, Rabatt, Entschuldigung]
+Ton: empathisch, klar, verbindlich — nicht unterwürfig, nicht defensiv
+
+Die Antwort soll:
+1. Das Problem anerkennen (Empathie zeigen, nicht Schuld zugeben wenn unklar)
+2. Konkrete Lösung anbieten
+3. Wiederholung verhindern (wie wir sicherstellen, dass das nicht mehr passiert)
+4. Beziehung stärken (Kunde soll nach der Antwort lieber bei uns bleiben als zu Mitbewerber wechseln)
+Länge: 100–150 Wörter</div>
+      <div class="prompt-tip">Tipp: In der Schweiz gilt: schnelle Antwort (innerhalb 24h) > perfekte Antwort nach 3 Tagen. Lieber sofort kurz reagieren und dann ausführlicher nachfassen.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#12</span><span class="prompt-tag">FAQ erstellen</span></div>
+    <div class="prompt-title">FAQ-Seite aus Support-Anfragen generieren</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Erstelle eine FAQ-Seite basierend auf unseren häufigsten Kundenanfragen.
+Unsere häufigsten Support-Fragen (liste sie auf):
+[FRAGE 1]
+[FRAGE 2]
+[FRAGE 3]
+... (so viele wie du hast, mindestens 5)
+
+Unser Angebot/Produkt: [KURZE BESCHREIBUNG]
+Ton: freundlich, klar, kein Fachchinesisch
+
+Für jede Frage:
+- Formuliere die Frage als Kunde sie stellen würde (nicht intern)
+- Schreibe eine klare Antwort (2–4 Sätze)
+- Falls relevant: Verlinke auf weiterführende Info [PLATZHALTER FÜR LINK]
+Organisiere die FAQs nach Themen (z.B. Bestellung, Lieferung, Bezahlung, Garantie)</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#13</span><span class="prompt-tag">Absage · Höflich</span></div>
+    <div class="prompt-title">Anfrage höflich absagen (ohne Begründungspflicht)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Formuliere eine professionelle Absage auf diese Kundenanfrage.
+Was der Kunde anfragte: [ANFRAGE]
+Grund für Absage (intern, NICHT zwingend im Brief erwähnen): [ECHTER GRUND]
+Soll ich eine Alternative empfehlen? [JA/NEIN — falls JA: welche]
+Soll die Tür für künftige Zusammenarbeit offen bleiben? [JA/NEIN]
+
+Die Absage soll:
+- Respektvoll und wertschätzend sein
+- Klar sein (keine falsche Hoffnung)
+- Den Kunden als Mensch ernst nehmen
+- Max. 80 Wörter lang sein
+Bitte auch eine sehr kurze Version (40 Wörter) für Situationen, wo weniger mehr ist.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#14</span><span class="prompt-tag">Zahlungserinnerung</span></div>
+    <div class="prompt-title">Zahlungserinnerung (3 Eskalationsstufen)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Erstelle 3 Zahlungserinnerungen in aufsteigender Dringlichkeit.
+Rechnungsnummer: [RECHNUNGS-NR]
+Betrag: CHF [BETRAG]
+Rechnungsdatum: [DATUM]
+Fälligkeitsdatum: [DATUM]
+Tage überfällig: [ANZAHL]
+Kundenname: [NAME]
+Mein Name/Firma: [MEIN NAME / FIRMENNAME]
+
+Stufe 1 — Freundliche Erinnerung (7 Tage nach Fälligkeit): höflich, "vielleicht übersehen"
+Stufe 2 — Bestimmte Mahnung (21 Tage nach Fälligkeit): klar, Frist setzen (10 Tage), kein Vorwurf
+Stufe 3 — Letzte Mahnung (35 Tage nach Fälligkeit): verbindlich, Inkasso/Betreibung ankündigen (CH: Betreibungsamt)
+Alle 3 in Briefformat, Betreffzeile und Unterschrift inklusive.</div>
+      <div class="prompt-tip">Tipp Schweiz: Nach Stufe 3 ist das Betreibungsverfahren über das kantonale Betreibungsamt der nächste Schritt (nicht automatisch Inkasso). Erwähne "Betreibungsverfahren" statt "Inkasso" — das ist in der Schweiz der korrekte Begriff.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#15</span><span class="prompt-tag">Chatbot-Skript</span></div>
+    <div class="prompt-title">Chatbot-Begrüssungsskript &amp; FAQ-Antworten</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe das Konversations-Skript für meinen Website-Chatbot.
+Unternehmensart: [BRANCHE + KURZE BESCHREIBUNG]
+Hauptzweck des Chatbots: [z.B. Terminbuchung, Produktberatung, FAQ beantworten, Leads qualifizieren]
+Öffnungszeiten: [ZEITEN ODER "24/7 automatisch"]
+Eskalation zu Mensch: [WIE/WANN soll der Bot an echten Mitarbeiter übergeben]
+Die 5 häufigsten Kundenanfragen: [LISTE]
+
+Liefere:
+- Begrüssungs-Nachricht (2 Varianten: Tageszeit-basiert und neutral)
+- Hauptmenü mit 4–5 Optionen
+- Antwort-Skript für jede der 5 häufigen Anfragen (max. je 3 Sätze)
+- Übergabe-Nachricht an menschlichen Mitarbeiter
+- Abschluss-Nachricht wenn kein Mitarbeiter verfügbar (ausserhalb Öffnungszeiten)</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#16</span><span class="prompt-tag">Review-Antwort</span></div>
+    <div class="prompt-title">Google/Trustpilot Bewertung professionell beantworten</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Ich habe eine Online-Bewertung erhalten und möchte professionell antworten.
+Bewertungstext: "[BEWERTUNGSTEXT]"
+Sternebewertung: [1–5 Sterne]
+Was stimmt an der Bewertung: [EHRLICHE EINSCHÄTZUNG]
+Was stimmt nicht oder fehlt Kontext: [FALLS RELEVANT]
+Darf ich den Kundennamen nennen: [JA/NEIN]
+
+Für positive Bewertung (4–5 Sterne): Dankbar, spezifisch, lade zur Rückkehr ein
+Für neutrale Bewertung (3 Sterne): Dankbar + gezielt auf Verbesserungspunkte eingehen
+Für negative Bewertung (1–2 Sterne): Deeskalativ, Problem anerkennen, Offline-Lösung anbieten
+Wichtig: Die Antwort ist PUBLIC — sie spricht auch zukünftige Kunden an, die die Bewertung lesen!</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#17</span><span class="prompt-tag">Onboarding</span></div>
+    <div class="prompt-title">Neukunden-Willkommens-E-Mail &amp; Onboarding-Sequenz</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine Onboarding-E-Mail-Sequenz für neue Kunden/Mitglieder.
+Was hat der Kunde gekauft/gebucht: [PRODUKT/LEISTUNG]
+Was braucht er als nächstes zu tun: [NÄCHSTE SCHRITTE DES KUNDEN]
+Was soll er in den ersten 7 Tagen erleben/erreichen: [ZIEL]
+Unser wichtigstes Versprechen: [KERNVERSPRECHEN]
+Support-Kontakt: [E-MAIL/TEL]
+
+E-Mail 1 (sofort nach Kauf): Bestätigung + Willkommen + nächster Schritt
+E-Mail 2 (Tag 2): Wichtigster Tipp für schnellen Erfolg
+E-Mail 3 (Tag 5): "Wie läuft's?" + Ressource/Bonus
+E-Mail 4 (Tag 10): Erster Check-in + Upsell-Hinweis falls passend
+Je E-Mail: Betreffzeile + Preheader + Fliesstext (100–150 Wörter) + 1 CTA</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#18</span><span class="prompt-tag">Kündigung</span></div>
+    <div class="prompt-title">Kunden-Kündigung entgegennehmen &amp; Abonnement retten</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Ein Kunde möchte kündigen. Schreibe eine Antwort, die versucht, ihn zu halten — ohne aufdringlich zu sein.
+Kündigungsgrund (falls genannt): [GRUND ODER "keinen Grund genannt"]
+Was wir anbieten könnten: [z.B. Pause statt Kündigung, günstigerer Plan, persönliches Gespräch, Rabatt]
+Darf er kündigen (aus Vertrags-/Rechtssicht): [JA — wir halten ihn nicht gegen seinen Willen]
+
+Schreibe:
+1. Empathische Bestätigung ("Ich habe deine Kündigung erhalten")
+2. 1 Frage die den echten Grund herausfindet (nicht 5 Fragen, nur eine)
+3. 1 konkretes Gegenangebot (falls sinnvoll)
+4. Würdevolle Ausstiegs-Option ("Falls du trotzdem kündigen möchtest, ist das natürlich in Ordnung")
+Ziel: Kundenkonto ehrlich zu erhalten, nicht zu manipulieren.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#19</span><span class="prompt-tag">Entschuldigung</span></div>
+    <div class="prompt-title">Aufrichtige Entschuldigung für grossen Fehler</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Formuliere eine aufrichtige Entschuldigung für einen grossen Fehler, den wir gemacht haben.
+Was ist passiert: [FEHLER BESCHREIBEN]
+Wie viele Kunden betroffen: [ANZAHL ODER "alle / einzelne"]
+Was wir getan haben um es zu beheben: [MASSNAHMEN]
+Was wir getan haben damit es nicht mehr passiert: [PRÄVENTIONSMASSNAHMEN]
+Wollen wir Entschädigung anbieten: [JA/NEIN — falls JA: was]
+
+Die Entschuldigung soll:
+- Ehrlich und nicht juristisch ausweichend sein
+- Die Verantwortung klar übernehmen (kein "falls jemand betroffen fühlte")
+- Konkret erklären, was wir geändert haben
+- Angemessen kurz sein — lange Entschuldigungen wirken oft unaufrichtig
+Format: E-Mail oder Website-Statement (bitte angeben: [MEDIUM])</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#20</span><span class="prompt-tag">Preiserhöhung</span></div>
+    <div class="prompt-title">Preiserhöhung an Bestandskunden kommunizieren</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine E-Mail über eine Preiserhöhung an meine Bestandskunden.
+Aktueller Preis: CHF [AKTUELL]
+Neuer Preis: CHF [NEU]
+Prozentuale Erhöhung: [%]
+Grund(e) für Erhöhung: [ECHTE GRÜNDE: Inflation, Löhne, Qualitätsverbesserungen etc.]
+Ab wann gilt der neue Preis: [DATUM]
+Gilt der alte Preis noch für laufende Verträge: [JA/NEIN — BIS WANN]
+Gibt es ein Treue-Angebot für Bestandskunden: [JA/NEIN — FALLS JA: WAS]
+
+Ton: direkt, ehrlich, respektvoll. Keine Entschuldigungen, keine Übertreibungen.
+Die E-Mail soll max. 150 Wörter haben. Bestandskunden schätzen Klarheit und Direktheit.</div>
+      <div class="prompt-tip">Tipp: In der Schweiz ist 3 Monate Vorlaufzeit für Preiserhöhungen die empfohlene Mindesfrist — besonders bei B2B-Dienstleistungen. Ankündigung früh = weniger Ärger.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KATEGORIE 3: E-MAIL & KOMMUNIKATION -->
+<div class="cat">
+  <div class="cat-header">
+    <span class="cat-icon">✉️</span>
+    <h2>E-Mail &amp; Geschäftskommunikation</h2>
+    <span class="cat-num">Prompts #21–30</span>
+  </div>
+  <p class="cat-intro">Professionelle Geschäftskommunikation — von der Kaltakquise bis zum internen Statusbericht. Alle Vorlagen sind direkt einsetzbar und respektieren den direkten, sachlichen Stil der DACH-Geschäftswelt.</p>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#21</span><span class="prompt-tag">Kaltakquise</span></div>
+    <div class="prompt-title">Kaltakquise-E-Mail (B2B, nicht spammy)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine Kaltakquise-E-Mail, die geöffnet und beantwortet wird.
+Mein Unternehmen/Leistung: [BESCHREIBUNG]
+Zielunternehmen: [BRANCHE/TYP DES ZIELUNTERNEHMENS]
+Kontaktperson (falls bekannt): [NAME + FUNKTION, sonst "unbekannt"]
+Konkreter Nutzen für dieses Unternehmen: [SPEZIFISCHER NUTZEN]
+Was weiss ich über dieses Unternehmen: [RECHERCHE-INFOS ODER "wenig"]
+CTA: [ZIEL, z.B. "15-Minuten-Gespräch", "Angebot senden", "Demo zeigen"]
+
+Regeln:
+- Betreffzeile: persönlich, neugierig-machend — KEIN "Interessantes Angebot für Sie"
+- Erster Satz: Bezug zum Empfänger (nicht zu mir)
+- Max. 100 Wörter Fliesstext
+- 1 klare Frage am Ende (nicht 3 CTAs)
+- Unterschrift mit Telefon
+3 Varianten bitte (verschiedene Ansätze)</div>
+      <div class="prompt-tip">Tipp: In der Schweiz per Sie-Form. In AT und DE je nach Branche — im Zweifel per Sie, das ist immer sicher.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#22</span><span class="prompt-tag">Partneranfrage</span></div>
+    <div class="prompt-title">Kooperations-/Partnerschaftsanfrage</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine Kooperationsanfrage an ein anderes Unternehmen.
+Mein Unternehmen: [NAME, BRANCHE, GRöSSE]
+Zielunternehmen: [NAME, BRANCHE]
+Art der gewünschten Kooperation: [z.B. Empfehlungspartnerschaft, Co-Marketing, gemeinsames Projekt, White-Label]
+Was ich einbringe: [MEIN BEITRAG]
+Was das Zielunternehmen gewinnt: [NUTZEN FÜR IHN]
+Bisherige Berührungspunkte (falls vorhanden): [z.B. "Wir kennen uns von der Messe X"]
+
+Die Anfrage soll:
+- Schnell auf den Punkt kommen (die meisten Kooperationsanfragen sind zu lang)
+- Den Nutzen für DEN ANDEREN zuerst nennen (nicht: "Wir suchen Partner")
+- Konkret sein (was genau schwebt mir vor, in 1 Satz)
+- Mit einem einfachen nächsten Schritt enden
+Max. 120 Wörter.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#23</span><span class="prompt-tag">Statusbericht</span></div>
+    <div class="prompt-title">Projekt-Statusbericht für Kunden</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Erstelle einen professionellen Projekt-Statusbericht.
+Projekt: [PROJEKTNAME]
+Berichtsperiode: [VON — BIS]
+Auftraggeber: [KUNDENNAME]
+Status gesamt: [z.B. ✅ im Plan / ⚠️ leichte Verzögerung / 🔴 kritisch]
+Was wurde erreicht: [ERLEDIGTES]
+Was steht noch aus: [OFFEN]
+Risiken/Hindernisse: [FALLS VORHANDEN, sonst "keine"]
+Nächste Meilensteine: [MIT DATUM]
+Was brauche ich vom Kunden: [ENTSCHEIDUNGEN/INPUT]
+
+Format:
+- Executive Summary (3 Sätze, für vielbeschäftigte Kunden)
+- Detailteil mit obigen Punkten
+- Klare "Action Items für Kunde" am Ende (nummeriert)
+Ton: sachlich, lösungsorientiert — auch bei Problemen nicht defensiv, sondern handlungsorientiert</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#24</span><span class="prompt-tag">Absage · Bewerber</span></div>
+    <div class="prompt-title">Bewerbungsabsage wertschätzend formulieren</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine Absage auf eine Bewerbung.
+Bewerbername: [NAME]
+Stelle: [STELLENBEZEICHNUNG]
+Grund für Absage (intern): [ECHTER GRUND — muss nicht vollständig im Brief stehen]
+Stärke des Bewerbers die mir aufgefallen ist: [POSITIVE EIGENSCHAFT]
+Möchte ich den Bewerber für zukünftige Stellen im Pool behalten: [JA/NEIN]
+
+Anforderungen:
+- Keine allgemeine Floskeln-Absage ("Wir hatten viele gute Bewerbungen...")
+- Minimum 1 echte, spezifische Anerkennung
+- Ehrlich und menschlich
+- Wenn ich ihn im Talent-Pool behalten will: kurze Einladung dazu
+Max. 120 Wörter. Dieser Brief spricht auch für das Image meines Unternehmens als Arbeitgeber.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#25</span><span class="prompt-tag">Mahnbrief · Lieferant</span></div>
+    <div class="prompt-title">Mahnung an Lieferanten (Lieferverzug)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine formelle Mahnung wegen Lieferverzugs an einen Lieferanten.
+Lieferantenname: [NAME/FIRMA]
+Bestell-/Vertragsnummer: [NUMMER]
+Was bestellt: [PRODUKT/LEISTUNG]
+Vereinbartes Lieferdatum: [DATUM]
+Vergangene Tage im Verzug: [ANZAHL]
+Meine Schäden durch den Verzug: [BESCHREIBEN ODER "noch keine direkten Schäden"]
+Was ich verlange: [z.B. Lieferung bis [DATUM] / Teillieferung / Entschädigung / Vertragsrücktritt]
+
+Ton: bestimmt, sachlich, rechtlich korrekt (nicht emotional, nicht aggressiv)
+Inhalt: Sachverhalt → Forderung → Frist → Konsequenz bei Nichterfüllung
+Die Konsequenz kann sein: [z.B. "Vertragsrücktritt nach OR Art. 107", "Schadensersatz", "Beauftragung eines anderen Lieferanten auf Ihre Kosten"]</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#26</span><span class="prompt-tag">Verhandlung</span></div>
+    <div class="prompt-title">Preisverhandlung per E-Mail vorbereiten</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Hilf mir, eine Preisverhandlungs-E-Mail vorzubereiten.
+Kontext: Ich möchte [KAUFEN/VERLÄNGERN] von [LIEFERANT/PLATTFORM].
+Aktuelles Angebot: CHF [BETRAG] / [LAUFZEIT]
+Mein Zielpreis: CHF [BETRAG]
+Meine Verhandlungshebel: [z.B. Volumenzusage, längere Laufzeit, Referenz, Wettbewerberangebot]
+Meine BATNA (beste Alternative falls kein Deal): [ALTERNATIVE]
+
+Schreibe:
+1. Eine E-Mail, die nach einem besseren Preis fragt (höflich, aber klar — nicht bittend)
+2. Eine Verhandlungsnotiz für mich: Was sind realistische Ziele? Was soll ich auf "das ist unser bestes Angebot" sagen?
+Keine Tricks oder Manipulationen — ehrliche, faire Verhandlung.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#27</span><span class="prompt-tag">Referenzanfrage</span></div>
+    <div class="prompt-title">Kunden um Referenz/Testimonial bitten</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine E-Mail, die zufriedene Kunden um ein Testimonial bittet.
+Kundenname: [NAME]
+Was wir für ihn gemacht haben: [LEISTUNG]
+Wann war die Zusammenarbeit: [ZEITRAUM]
+Welche Art von Referenz ich benötige: [z.B. Google-Bewertung / Testimonial für Website / LinkedIn-Empfehlung / beides]
+Aufwand für den Kunden: [ZEITSCHÄTZUNG, z.B. "ca. 5 Minuten"]
+
+Die Anfrage soll:
+- Persönlich und konkret sein (nicht: "Falls Sie Zeit haben...")
+- Den Aufwand minimal erscheinen lassen
+- Einen direkten Link/Weg mitliefern (Platzhalter: [LINK ZUR BEWERTUNGSPLATTFORM])
+- Optional: eine kurze Formulierungshilfe damit der Kunde nicht auf leeres Textfeld schaut
+Max. 80 Wörter. Menschen, die mögen was wir tun, tun gerne etwas zurück — wenn man sie konkret fragt.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#28</span><span class="prompt-tag">Weiterleitung · Intern</span></div>
+    <div class="prompt-title">Interne Ankündigung / Betriebsmitteilung</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine interne Mitarbeiter-Mitteilung.
+Thema: [z.B. neue Prozesse, Personalwechsel, Strategieänderung, neue Software, Firmenevent]
+Was ändert sich konkret: [ÄNDERUNG]
+Ab wann: [DATUM]
+Was müssen Mitarbeitende tun: [AKTION oder "nichts — nur zur Kenntnis"]
+An wen können sie Fragen richten: [ANSPRECHPERSON + KONTAKT]
+Ton: klar, direkt, keine Management-Sprache ("going forward", "synergize" etc.)
+
+Format: Betreff + Datum + kurzer Einleitungssatz (Was & Warum) + Kerninhalt (Bullet-Points für Änderungen) + Was Mitarbeitende tun sollen + Kontakt
+Max. 150 Wörter — kurze Mitteilungen werden gelesen, lange nicht.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#29</span><span class="prompt-tag">Auftragsbestätigung</span></div>
+    <div class="prompt-title">Auftragsbestätigung professionell formulieren</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe eine professionelle Auftragsbestätigung.
+Kundendaten: [NAME, ADRESSE]
+Auftragsnummer: [NUMMER]
+Leistung/Produkte: [BESCHREIBUNG]
+Liefertermin / Fertigstellungstermin: [DATUM]
+Preis (netto): CHF [BETRAG]
+MWST: [%, z.B. 8.1% für CH Standard]
+Preis (brutto): CHF [BETRAG]
+Zahlungskonditionen: [z.B. 30 Tage netto / Zahlung vor Lieferung]
+Besondere Vereinbarungen: [FALLS VORHANDEN]
+
+Format: Offizieller Brief mit Briefkopf-Platzhalter + Betreff "Auftragsbestätigung Nr. [X]" + Dank + Auftragsdetails in Tabelle + Bedingungen + Unterschrift
+Die Auftragsbestätigung ist rechtlich bindend — klar und vollständig formulieren.</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#30</span><span class="prompt-tag">Datenschutz · E-Mail</span></div>
+    <div class="prompt-title">DSGVO-konforme E-Mail-Kommunikation prüfen lassen</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Prüfe meine geplante E-Mail-Kommunikation auf DSGVO/nDSG-Konformität.
+E-Mail-Typ: [z.B. Newsletter, Transaktions-E-Mail, Marketing, Kaltakquise]
+Empfänger: [Bestandskunden / Interessenten / kalte Liste]
+Inhalt der E-Mail: [KURZBESCHREIBUNG ODER TEXT EINFÜGEN]
+Wie kam ich an die E-Mail-Adressen: [z.B. Kauf, Formular, Visitenkarte, gekaufte Liste]
+Habe ich eine Einwilligung (Double-Opt-In): [JA/NEIN/UNKLAR]
+
+Beurteile:
+1. Ist diese E-Mail DSGVO (EU)/nDSG (Schweiz) konform? Mit Begründung.
+2. Was muss ich ändern damit sie rechtskonform ist?
+3. Welche Pflichtangaben fehlen (Abmeldelink, Impressum, etc.)?
+4. Risikobewertung (niedrig/mittel/hoch) falls ich sie so sende
+Wichtig: Ich bin kein Jurist — weise mich auf Punkte hin, wo ich einen Anwalt konsultieren sollte.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KATEGORIEN 4-10 KURZ ZUSAMMENGEFASST (für Lesbarkeit) -->
+<div class="cat">
+  <div class="cat-header">
+    <span class="cat-icon">📱</span>
+    <h2>Social Media (LinkedIn, Instagram &amp; mehr)</h2>
+    <span class="cat-num">Prompts #31–40</span>
+  </div>
+  <p class="cat-intro">Content der performt — LinkedIn-Beiträge die Reichweite generieren, Instagram-Bildunterschriften die Nutzen bringen, Hashtag-Strategien und Content-Kalender. Alle angepasst an die DACH-Plattformkultur.</p>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#31</span><span class="prompt-tag">LinkedIn · Post</span></div>
+    <div class="prompt-title">LinkedIn-Post mit hoher organischer Reichweite</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Schreibe einen LinkedIn-Post, der organisch weit verbreitet wird.
+Thema: [THEMA — z.B. Learnings, Fehler, Branchenbeobachtung, persönliche Geschichte]
+Zielgruppe auf LinkedIn: [MEINE HAUPTZIELGRUPPE]
+Was ich teilen möchte: [KERNBOTSCHAFT IN 2–3 SÄTZEN]
+Call-to-Action (was sollen Leser tun): [KOMMENTIEREN / TEILEN / ANFRAGEN / FOLGEN]
+Meinen echten Expertenhintergrund zeigen: [JA — kurz erwähnen: meine Expertise = FELD]
+
+LinkedIn-Format:
+- Hook (erster Satz = alles): Neugier wecken, nicht "Ich freue mich bekanntzugeben"
+- Leerstellen: Nach je 2–3 Sätzen eine Leerzeile (scrollbar)
+- Storytelling statt Theorie
+- Konkrete Zahl oder Ergebnis (wenn möglich)
+- Letzte Zeile: Frage an die Community
+- Länge: 150–250 Wörter
+3 Hook-Varianten als Option</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#32–40</span><span class="prompt-tag">Social Media</span></div>
+    <div class="prompt-title">Weitere Prompts dieser Kategorie</div>
+    <div class="prompt-body">
+      <div class="prompt-text">#32 — Instagram-Caption mit Storytelling (Produkt/Leistung + persönliche Geschichte)
+Prompt: "Schreibe eine Instagram-Bildunterschrift für ein Foto von [BESCHREIBE DAS FOTO]. Meine Kernbotschaft: [BOTSCHAFT]. Zielgruppe: [ZIELGRUPPE]. Ton: [z.B. inspirierend/lehrreich/humorvoll]. Max. 3 Absätze + 5 Hashtags am Ende (nicht davor)."
+
+#33 — Content-Kalender (1 Monat, 3x pro Woche)
+Prompt: "Erstelle einen Social-Media-Content-Kalender für [MONAT] — 3 Posts pro Woche auf [PLATTFORMEN]. Themen-Säulen meiner Marke: [SÄULE 1], [SÄULE 2], [SÄULE 3]. Jeder Eintrag: Datum + Plattform + Thema + Format (Post/Story/Reel) + Hook-Idee."
+
+#34 — Reels-/TikTok-Skript (60 Sekunden)
+#35 — Twitter/X-Thread (8 Tweets, Lerninhalt)
+#36 — LinkedIn-Artikel (800 Wörter, Thought Leadership)
+#37 — Pinterest-Beschreibungen (5 Pins für 1 Thema)
+#38 — YouTube-Beschreibung + Titel-Optionen
+#39 — Facebook-Event-Beschreibung
+#40 — Hashtag-Strategie für ein Thema (30 Hashtags: 10 gross/mittel/nisch)</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat">
+  <div class="cat-header"><span class="cat-icon">🔍</span><h2>SEO &amp; Webinhalte</h2><span class="cat-num">Prompts #41–50</span></div>
+  <p class="cat-intro">Von der Keyword-Recherche bis zum fertigen SEO-Text. Diese Prompts helfen dir, Inhalte zu schreiben, die bei Google gefunden werden — ohne SEO-Agentur und ohne leere Textmengen.</p>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#41–50</span><span class="prompt-tag">SEO</span></div>
+    <div class="prompt-title">SEO-Prompt-Sammlung (Übersicht)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">#41 — Keyword-Recherche Starter
+"Ich biete [LEISTUNG/PRODUKT] in [REGION]. Nenne mir 20 relevante Keywords mit Suchintention (informational / transactional / navigational). Für jedes Keyword: wie viele Menschen suchen vermutlich danach, wie hart ist der Wettbewerb (geschätzt 1–10), welches sollte ich zuerst angreifen und warum?"
+
+#42 — SEO-Artikel schreiben (1500 Wörter)
+"Schreibe einen SEO-optimierten Ratgeber-Artikel zum Keyword '[KEYWORD]'. Zielgruppe: [ZIELGRUPPE]. Suchintention: [INFORMATIONAL/TRANSACTIONAL]. Struktur: H1 (mit Keyword) + Einleitung + 4–6 H2s + FAQ (3 Fragen) + Fazit. Keyword-Dichte ca. 1–1.5%, semantische Varianten verwenden."
+
+#43 — Meta-Title + Meta-Description optimieren
+#44 — Interne Verlinkungsstrategie entwickeln
+#45 — Pillar-Page-Konzept für [THEMA]
+#46 — Featured Snippet optimieren (direkte Antwort auf Frage)
+#47 — Konkurrenten-Analyse: Was rankt Platz 1–3 und warum
+#48 — Blog-Content-Ideen (12 Artikel für 1 Jahr, basierend auf Thema)
+#49 — Produktseiten-Optimierung (E-Commerce SEO)
+#50 — Lokales SEO: Google Business Profil-Texte + Posts</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat">
+  <div class="cat-header"><span class="cat-icon">📋</span><h2>Angebote, Rechnungen &amp; Verträge</h2><span class="cat-num">Prompts #51–60</span></div>
+  <p class="cat-intro">Professionelle Business-Dokumente — Angebote die überzeugen, Rechnungen die korrekt sind, Verträge die schützen. Mit Schweizer Kontext (CHF, OR, MWST 8.1%).</p>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#51</span><span class="prompt-tag">Angebot</span></div>
+    <div class="prompt-title">Verkaufsorientiertes Angebot erstellen</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Hilf mir, ein professionelles Angebot zu schreiben, das der Kunde annimmt.
+Kunde: [FIRMENNAME, ANSPRECHPERSON]
+Was er anfragte: [ANFRAGE]
+Was ich konkret anbiete: [LEISTUNG/PRODUKT BESCHREIBEN]
+Preis: CHF [BETRAG] (netto) / CHF [BETRAG] (brutto inkl. [X]% MWST)
+Lieferfrist / Umsetzungszeitraum: [ZEITRAUM]
+Was der Preis beinhaltet (genau): [LEISTUNGSUMFANG]
+Was er NICHT beinhaltet: [AUSSCHLÜSSE — wichtig!]
+Zahlungskonditionen: [z.B. 50% Anzahlung, Rest nach Abnahme]
+Angebotsgültigkeit: [TAGE]
+
+Erstelle:
+- Kurzes Anschreiben (80 Wörter) das den Kundennutzen betont
+- Angebots-Tabelle mit Positionen, Mengen, Einzelpreisen, Gesamtpreis
+- Leistungsbeschreibung (klar, was der Kunde erhält)
+- Allgemeine Geschäftsbedingungen-Verweis-Platzhalter
+- Nächste Schritte am Ende (was passiert wenn der Kunde "Ja" sagt)</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#52–60</span><span class="prompt-tag">Business-Dokumente</span></div>
+    <div class="prompt-title">Weitere Dokument-Prompts</div>
+    <div class="prompt-body">
+      <div class="prompt-text">#52 — Rechnung korrekt nach Schweizer Recht (OR + MWST-Pflichtangaben)
+Pflichtangaben CH-Rechnung: Rechnungsnummer, Datum, Lieferadresse, Leistungsbeschreibung, Rechnungsbetrag netto, MWST-Satz und -Betrag, Bruttobetrag, Zahlungsfrist, IBAN. Prompt: "Ich habe folgende Informationen für eine Rechnung: [DATEN]. Erstelle mir eine vollständige, MWST-konforme Rechnung als Text."
+
+#53 — AGB (Allgemeine Geschäftsbedingungen) für Dienstleister
+#54 — Freelance-Vertrag (Werkvertrag nach OR)
+#55 — NDA (Geheimhaltungsvereinbarung, deutsch/bilingual)
+#56 — Subunternehmervertrag
+#57 — Mietvertrag-Checkliste (für Gewerbemieter)
+#58 — Angebot nachfassen (Follow-up nach 1 Woche ohne Antwort)
+#59 — Preiskalkulation prüfen (Stundensatz korrekt berechnen)
+#60 — Projektabschluss-Protokoll erstellen</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat">
+  <div class="cat-header"><span class="cat-icon">👥</span><h2>HR, Stelleninserate &amp; Onboarding</h2><span class="cat-num">Prompts #61–70</span></div>
+  <p class="cat-intro">Mitarbeiter finden, einarbeiten und halten. Von der Stellenanzeige bis zum Mitarbeitergespräch — mit Schweizer Arbeitsrecht-Fokus (OR, ZGB, kantonale Regelungen).</p>
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#61–70</span><span class="prompt-tag">HR</span></div>
+    <div class="prompt-title">HR-Prompt-Sammlung</div>
+    <div class="prompt-body">
+      <div class="prompt-text">#61 — Stelleninserat das die richtigen Kandidaten anzieht (nicht alle)
+Prompt: "Schreibe ein Stelleninserat für [POSITION] in [FIRMA, ORT]. Wir suchen: [IDEALES PROFIL]. Wir bieten: [KONKRETES: Lohn CHF X–Y, Flexibilität, Kultur]. Was uns unterscheidet von anderen Arbeitgebern: [ECHTER USP]. Ton: ehrlich und direkt — wir schreiben auch, was wir NICHT sind, damit falshe Kandidaten sich nicht bewerben."
+
+#62 — Gesprächsleitfaden für Vorstellungsgespräch (strukturiert, fair)
+#63 — Absagebrief Bewerber (menschlich, kein Copy-Paste)
+#64 — Mitarbeiter-Willkommenspaket (erster Arbeitstag)
+#65 — Mitarbeitergespräch vorbereiten (Halbjahres-Review)
+#66 — Arbeitszeugnis formulieren (CH: wohlwollend, codierfrei)
+#67 — Kündigung korrekt schreiben (CH: Lohnfortzahlung, Kündigungsfristen nach OR)
+#68 — Interne Stellenausschreibung (Beförderung/Versetzung)
+#69 — Remote-Arbeitsvereinbarung (Homeoffice-Regelung CH)
+#70 — Mitarbeiterbefragung (anonym, 10 Fragen, alle Bereiche)</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat">
+  <div class="cat-header"><span class="cat-icon">📊</span><h2>Finanzen, Controlling &amp; Reporting</h2><span class="cat-num">Prompts #71–80</span></div>
+  <p class="cat-intro">Zahlen verstehen, präsentieren und entscheiden. Diese Prompts helfen dir, Finanzberichte zu interpretieren, Budgets zu planen und Investitionen zu begründen — auch ohne CFO-Ausbildung.</p>
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#71–80</span><span class="prompt-tag">Finance</span></div>
+    <div class="prompt-title">Finanz-Prompt-Sammlung</div>
+    <div class="prompt-body">
+      <div class="prompt-text">#71 — Jahresabschluss-Erklärung für Nicht-Buchhalter
+Prompt: "Ich habe folgende Kennzahlen aus meinem Jahresabschluss: [LISTE DER ZAHLEN]. Erkläre mir verständlich (ohne Fachjargon), was diese Zahlen bedeuten, wo ich stark bin und wo ich aufpassen muss. Was sollte ich meinem Steuerberater als nächstes fragen?"
+
+#72 — Budget planen (Jahreskostenstellen-Übersicht)
+#73 — Liquiditätsplanung (12-Monats-Cashflow-Vorlage beschreiben)
+#74 — Business Case für Investition (ROI-Berechnung erklären lassen)
+#75 — Stundensatz korrekt berechnen (Selbstständige CH)
+Formel: (Jahreskosten + Gewinn) ÷ produktive Stunden = Stundensatz
+Prompt: "Meine jährlichen Kosten: CHF [X]. Gewünschter Jahresgewinn: CHF [Y]. Tatsächlich fakturierbare Stunden pro Jahr (realistisch): [Z]. Berechne meinen Mindeststundensatz und erkläre, was ich dabei vergessen habe."
+
+#76 — Preiskalkulation Produkt (COGS + Marge)
+#77 — Monatlicher Unternehmens-Report (für mich selbst, 1 Seite)
+#78 — Break-Even-Analyse neue Leistung
+#79 — Steuer-Checkliste Jahresabschluss CH (was braucht der Steuerberater)
+#80 — Subventionen & Fördermittel finden (CH: KTI, Kantone, EU-Töpfe)</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat">
+  <div class="cat-header"><span class="cat-icon">⚖️</span><h2>Recht, nDSG &amp; Compliance</h2><span class="cat-num">Prompts #81–90</span></div>
+  <p class="cat-intro">Rechtliche Texte verstehen und vorbereiten — nicht ersetzen. Wichtig: Diese Prompts helfen dir, Fragestellungen zu strukturieren und Texte zu entwerfen. Für verbindliche Rechtsberatung immer einen Anwalt konsultieren.</p>
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#81–90</span><span class="prompt-tag">Recht</span></div>
+    <div class="prompt-title">Rechts- &amp; Compliance-Prompt-Sammlung</div>
+    <div class="prompt-body">
+      <div class="prompt-text">#81 — Datenschutzerklärung prüfen (nDSG/DSGVO)
+Prompt: "Ich nutze folgende Tools und Dienste auf meiner Website: [LISTE: z.B. Google Analytics, Mailchimp, Stripe, ChatGPT-API]. Erkläre mir, welche davon in der Datenschutzerklärung erwähnt werden müssen, was jeweils zu sagen ist, und ob ich für bestimmte Dienste separate Datenverarbeitungsverträge (AVV) benötige. Kontext: Schweizer Unternehmen, Kunden hauptsächlich CH/EU."
+
+#82 — KI-Nutzungsrichtlinie für Mitarbeiter entwerfen
+#83 — Impressum-Pflichtangaben prüfen (CH-Website)
+#84 — Cookie-Einwilligungsbanner: was ist nötig? (CH vs. EU)
+#85 — Vertrag auf problematische Klauseln prüfen (als erste Einschätzung)
+#86 — EU AI Act: betreffe ich als KMU? Checkliste
+#87 — Datenpanne melden: was muss ich wann tun? (nDSG: 72h Frist)
+#88 — Marke anmelden: Vorrecherche und Klassifizierung
+#89 — AGB aktualisieren nach Gesetzesänderungen
+#90 — DSGVO-konforme E-Mail-Einwilligung (Double-Opt-In) korrekt umsetzen</div>
+    </div>
+  </div>
+</div>
+
+<div class="cat">
+  <div class="cat-header"><span class="cat-icon">🎯</span><h2>Strategie, Planung &amp; Innovation</h2><span class="cat-num">Prompts #91–100</span></div>
+  <p class="cat-intro">Grosse Fragen — klarer denken. Diese Prompts helfen dir bei strategischen Entscheidungen: Geschäftsmodell, Wachstum, Innovation und Jahresplanung.</p>
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#91</span><span class="prompt-tag">Strategie · Jahresziel</span></div>
+    <div class="prompt-title">Jahresziele definieren (OKR-Methode)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">Hilf mir, meine Jahresziele nach der OKR-Methode zu strukturieren.
+Was ich im nächsten Jahr erreichen will (frei formuliert): [ZIELE IN EIGENEN WORTEN]
+Aktuelle Situation: [KURZE IST-ANALYSE]
+Ressourcen: [TEAM, BUDGET-RAHMEN, ZEIT]
+Wichtigstes Hauptziel: [1 SATZ]
+Dinge, die ich bewusst NICHT machen will: [NICHT-ZIELE]
+
+Erstelle:
+- 3 Objectives (qualitativ, inspirierend, ambitious but achievable)
+- Je 3 Key Results pro Objective (messbar, konkret, mit Deadline)
+- Priorisierung der 3 Objectives (welches hat Priorität wenn Ressourcen knapp werden)
+- Quarterly Check-in-Fragen (was soll ich jeden Monat überprüfen)
+Erklärung der OKR-Logik am Ende für Mitarbeiter-Kommunikation</div>
+    </div>
+  </div>
+
+  <div class="prompt">
+    <div class="prompt-header"><span class="prompt-num">#92–100</span><span class="prompt-tag">Strategie</span></div>
+    <div class="prompt-title">Strategische Prompt-Sammlung (Finale 9)</div>
+    <div class="prompt-body">
+      <div class="prompt-text">#92 — SWOT-Analyse meines Unternehmens (ehrlich, nicht beschönigt)
+Prompt: "Führe eine ehrliche SWOT-Analyse für mein Unternehmen durch. Mein Unternehmen: [BESCHREIBUNG]. Ich habe Zugang zu folgenden Informationen: [FINANZLAGE, KUNDENFEEDBACK, MARKTTRENDS — soweit vorhanden]. Was sind meine echten Stärken (nicht was ich mir wünschte), echten Schwächen, externe Chancen die ich noch nicht nutze, und reale Risiken die ich vielleicht unterschätze?"
+
+#93 — Neue Einnahmequelle entwickeln (Revenue-Diversification)
+Prompt: "Mein aktuelles Geschäftsmodell: [BESCHREIBUNG]. Ich möchte eine weitere Einnahmequelle entwickeln, die zu meinen Kompetenzen passt. Nenne mir 5 konkrete Ideen (nicht generisch), bewertet nach: Anlaufzeit, Invest, Skalierbarkeit, Passung zu meinem Profil. Welche würdest du als erstes testen und warum?"
+
+#94 — Konkurrenz analysieren (Desk Research via KI)
+#95 — Preismodell überdenken (Stundensatz → Wertbasis)
+#96 — Wachstumshemmnis identifizieren (Bottleneck-Analyse)
+#97 — Pitch-Deck-Struktur und Schlüsselbotschaften
+#98 — Entscheidung treffen (Entscheidungsrahmen für schwierige Entscheidungen)
+#99 — Delegieren was ich delegieren sollte (Zeit-Audit + Empfehlung)
+#100 — Jahresrückblick strukturieren (was lief gut, was ändern, was lernen)</div>
+      <div class="prompt-tip">Prompt #100 ist besonders wertvoll: Am Jahresende 1h investieren, um strukturiert zurückzublicken, spart dir im neuen Jahr viele Monate unnötiger Wiederholungsfehler.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABSCHLUSS -->
+<div class="closing">
+  <h2>Du hast jetzt 100 fertige Prompts.</h2>
+  <p>Nutze sie als Ausgangspunkt — passe sie an deinen Stil und deine Branche an. Die besten Ergebnisse erzielst du, wenn du die KI als Arbeitspartner behandelst: kurze Iteration, nachfragen, verfeinern.</p>
+  <p style="margin-top:16px">Fragen oder Feedback? <br><a href="mailto:hallo@abannews.com" style="color:#fbbf24">hallo@abannews.com</a></p>
+  <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.2)">
+    <div class="brand">aban · abannews.com</div>
+    <p style="font-size:.8rem;opacity:.6;margin-top:6px">© 2026 aban. Alle Rechte vorbehalten. Nur für persönlichen und internen Unternehmensgebrauch. Keine Weiterverbreitung oder Weiterverkauf.</p>
+  </div>
+</div>
+
+</body>
+</html>

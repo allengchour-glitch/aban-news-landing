@@ -1,131 +1,288 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop — KI-Starter-Kits für DACH-Profis | aban news</title>
-  <meta name="description" content="Kompakte, ehrliche KI-Starter-Kits pro Branche: Spickzettel, erprobte Prompts, Checklisten. Kein Hype, sofort nutzbar.">
-  <link rel="canonical" href="https://abannews.com/shop.html">
-  <meta property="og:title" content="aban news Shop — KI-Starter-Kits">
-  <meta property="og:description" content="Ehrliche KI-Pakete pro Branche: Prompts, Spickzettel, Checklisten.">
-  <meta property="og:image" content="https://abannews.com/og-ki-tools.png">
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"Was ist in einem Kit?","acceptedAnswer":{"@type":"Answer","text":"Ein Spickzettel als PDF (die realistischen KI-Anwendungen deiner Branche), eine Sammlung erprobter Prompts zum Kopieren und eine kurze Datenschutz-/Praxis-Checkliste."}},
-    {"@type":"Question","name":"In welchem Format bekomme ich es?","acceptedAnswer":{"@type":"Answer","text":"Als ZIP mit PDF und Text-/Markdown-Dateien, sofort nach dem Kauf herunterladbar. Du brauchst keine besondere Software."}},
-    {"@type":"Question","name":"Wie bezahle ich?","acceptedAnswer":{"@type":"Answer","text":"Sicher per Karte über Stripe. Beim internationalen Checkout kann der Betrag in deiner Landeswährung angezeigt werden."}},
-    {"@type":"Question","name":"Kann ich zurückgeben?","acceptedAnswer":{"@type":"Answer","text":"Bei digitalen Inhalten erlischt das Widerrufsrecht, sobald der Download startet — solange du noch nicht heruntergeladen hast, ist ein Widerruf innerhalb von 14 Tagen möglich. Details in den AGB & Widerruf."}},
-    {"@type":"Question","name":"Brauche ich Vorkenntnisse?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Kits sind für Einsteiger gemacht: kopieren, eigene Angaben einsetzen, Ergebnis prüfen. KI liefert Entwürfe — die fachliche Endkontrolle bleibt bei dir."}}
-  ]}
-  </script>
-  <style>
-    *{box-sizing:border-box;margin:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:#1f2937;background:#fffbf5;line-height:1.6}
-    .wrap{max-width:880px;margin:0 auto;padding:1.25rem}
-    header{border-bottom:1px solid #ece3d4;background:#fff}
-    header .wrap{display:flex;justify-content:space-between;align-items:center}
-    a.brand{font-weight:900;text-decoration:none;color:#1f2937;font-size:1.15rem}
-    h1{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;margin:1.6rem 0 .4rem}
-    .lead{color:#374151;max-width:60ch;margin:0 0 1.6rem}
-    .grid{display:grid;gap:1.1rem;grid-template-columns:1fr}
-    @media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
-    .card{background:#fff;border:1px solid #ece3d4;border-radius:16px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
-    .card h2{font-size:1.15rem;margin:0 0 .4rem}
-    .card p{color:#374151;font-size:.96rem;flex:1}
-    .price{font-weight:800;color:#1f2937;margin:.7rem 0}
-    .btn{display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:10px;text-align:center}
-    .btn.soon{background:#f3eee4;color:#9a7b4f;pointer-events:none}
-    .fine{color:#6b7280;font-size:.85rem;margin:1.4rem 0}
-    footer{border-top:1px solid #ece3d4;margin-top:2rem;color:#6b7280;font-size:.85rem}
-  </style>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"ItemList","name":"aban news KI-Starter-Kits","url":"https://abannews.com/shop.html","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Product","name":"Alle KI-Starter-Kits (Bundle)","description":"Alle Branchen-Kits zusammen — deutlich günstiger als einzeln. Spickzettel, Prompts & Checklisten für jede Branche.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"79","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/6oUbJ38iicfq4kf2El5wI0m"}}},{"@type":"ListItem","position":2,"item":{"@type":"Product","name":"KI-Starter-Kit für Ärzte & Praxen","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/eVq5kF422bbm5oj4Mt5wI00"}}},{"@type":"ListItem","position":3,"item":{"@type":"Product","name":"KI-Starter-Kit für Handwerk","description":"Angebote, Mails, Bewertungen schneller schreiben.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/cNi9AV9mmbbmaID1Ah5wI01"}}},{"@type":"ListItem","position":4,"item":{"@type":"Product","name":"KI-Starter-Kit für Steuerberatung","description":"Mandanten-Kommunikation, Standardschreiben, Recherche.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/6oU5kF4226V65ojen35wI02"}}},{"@type":"ListItem","position":5,"item":{"@type":"Product","name":"KI-Starter-Kit für Kanzleien","description":"Entwürfe, lange Dokumente, Mandantentexte — mit Grenzen.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/fZu14p7ee3IU03ZdiZ5wI03"}}},{"@type":"ListItem","position":6,"item":{"@type":"Product","name":"KI-Starter-Kit für Gastronomie","description":"Bewertungen, Social, Speisekarten-Texte.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/cNi9AVdCCgvG9Ez4Mt5wI04"}}},{"@type":"ListItem","position":7,"item":{"@type":"Product","name":"KI-Starter-Kit für Coaches & Berater","description":"Angebote, Posts, Session-Vorbereitung — ohne Hype.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/28E14p1TUenycQL1Ah5wI08"}}},{"@type":"ListItem","position":8,"item":{"@type":"Product","name":"KI-Starter-Kit für Immobilienmakler","description":"Exposés, Anfragen-Antworten, Inserate schneller.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/eVqeVf9mm0wI2c72El5wI09"}}},{"@type":"ListItem","position":9,"item":{"@type":"Product","name":"KI-Starter-Kit für Friseure & Salons","description":"Social-Posts, Bewertungen, Terminmails.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/cNiaEZ1TUa7i9Ez6UB5wI0a"}}},{"@type":"ListItem","position":10,"item":{"@type":"Product","name":"KI-Starter-Kit für Fotografen","description":"Angebote, Bildtexte, Kundenkommunikation.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/28E3cx2XYdjug2Xgvb5wI0b"}}},{"@type":"ListItem","position":11,"item":{"@type":"Product","name":"KI-Starter-Kit für Architekturbüros","description":"Texte, Ausschreibungen, Recherche — mit Grenzen.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/8x25kF6aa7Za7wrbaR5wI0c"}}},{"@type":"ListItem","position":12,"item":{"@type":"Product","name":"KI-Starter-Kit für Fitnessstudios","description":"Social, Mitglieder-Mails, Kurs-Beschreibungen.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/3cIbJ3cyya7i8Ava6N5wI0d"}}},{"@type":"ListItem","position":13,"item":{"@type":"Product","name":"KI-Starter-Kit für Kosmetik- & Nagelstudios","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/5kQ28taqqcfq8Av5Qx5wI0e"}}},{"@type":"ListItem","position":14,"item":{"@type":"Product","name":"KI-Starter-Kit für KFZ-Werkstätten","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/6oU6oJeGGa7iaIDgvb5wI0f"}}},{"@type":"ListItem","position":15,"item":{"@type":"Product","name":"KI-Starter-Kit für Maler & Lackierer","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/00w28t1TU1AM8AvceV5wI0g"}}},{"@type":"ListItem","position":16,"item":{"@type":"Product","name":"KI-Starter-Kit für Hotels & Pensionen","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/7sYaEZ1TU4MYeYTen35wI0h"}}},{"@type":"ListItem","position":17,"item":{"@type":"Product","name":"KI-Starter-Kit für Physiotherapie-Praxen","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/7sY9AVbuu4MYbMH2El5wI0i"}}},{"@type":"ListItem","position":18,"item":{"@type":"Product","name":"KI-Starter-Kit für Reinigungsfirmen","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/5kQ7sNfKK2EQ03Z7YF5wI0j"}}},{"@type":"ListItem","position":19,"item":{"@type":"Product","name":"KI-Starter-Kit für Garten- & Landschaftsbau","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/4gMdRb8iidju5oj0wd5wI0k"}}},{"@type":"ListItem","position":20,"item":{"@type":"Product","name":"KI-Starter-Kit für Goldschmiede & Juweliere","description":"Spickzettel + erprobte Prompts + Datenschutz-Checkliste.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"12","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/5kQeVf2XY4MY2c71Ah5wI0l"}}},{"@type":"ListItem","position":21,"item":{"@type":"Product","name":"KI-Prompt-Bibliothek für DACH-Solopreneure","description":"100+ erprobte Prompts zum Kopieren — Akquise, Kunden, Marketing, Admin & Recherche. Branchen-übergreifend, ehrlich, ohne Hype.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"19","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/28E4gBgOO0wI3gben35wI0n"}}},{"@type":"ListItem","position":22,"item":{"@type":"Product","name":"Fertige Text-Vorlagen für Solopreneure","description":"40 sofort nutzbare Vorlagen für Angebote, Mails, Rechnungen & Absagen. Kopieren, Platzhalter ersetzen, abschicken.","brand":{"@type":"Brand","name":"aban news"},"offers":{"@type":"Offer","price":"19","priceCurrency":"CHF","availability":"https://schema.org/InStock","url":"https://buy.stripe.com/9B63cxaqq5R2aIDgvb5wI0o"}}}]}
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitaler Shop — KI-Produkte für Selbstständige (CH/DACH) | aban</title>
+<meta name="description" content="KI-Prompt-Packs, Vorlagen und Compliance-Pakete für Schweizer KMU und Selbstständige. Sofort als PDF nutzbar.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/shop.html">
+<meta property="og:title" content="Digitaler Shop — KI-Produkte für Selbstständige | aban news">
+<meta property="og:description" content="KI-Prompt-Packs, Vorlagen und Compliance-Pakete für Schweizer KMU und Selbstständige. Sofort als PDF nutzbar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/shop.html">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<meta property="og:locale" content="de_CH">
+<meta property="og:site_name" content="aban news">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digitaler Shop — KI-Produkte für Selbstständige | aban news">
+<meta name="twitter:description" content="KI-Prompt-Packs, Vorlagen und Compliance-Pakete für Schweizer KMU. Sofort nutzbar.">
+<meta name="twitter:image" content="https://abannews.com/og-image.png">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Start", "item": "https://abannews.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Shop", "item": "https://abannews.com/shop.html"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was sind digitale Produkte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Digitale Produkte sind Dateien, die du sofort nach dem Kauf herunterladen kannst — kein Versand, keine Wartezeit. Hier handelt es sich um PDF-Dokumente, Word-Vorlagen und Markdown-Dateien, die du direkt in deinem Betrieb einsetzen und anpassen kannst."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie erhalte ich meine Datei nach dem Kauf?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nach dem Kauf über Gumroad erhältst du sofort einen Download-Link per E-Mail. Die Datei steht auch dauerhaft in deinem Gumroad-Konto zur Verfügung. Kein Abo, kein automatischer Folgeauftrag."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich die Vorlagen anpassen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, das ist ausdrücklich der Sinn der Vorlagen. Die Word-Dokumente und PDFs sind so aufgebaut, dass du Platzhalter mit deinen Firmenangaben füllst und die Texte an deinen Betrieb anpasst. Eine Weitergabe oder kommerzielle Weiterveräusserung der Rohdateien ist nicht erlaubt."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;
+  --cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;
+  --line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669
+}
+@media(prefers-color-scheme:dark){
+  :root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19}
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px;z-index:100}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none;font-size:1.05rem}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;border:0;cursor:pointer;font-size:1rem}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt);text-align:center}
+.btn-buy{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--amber),var(--amber-dk));
+  color:#fff;text-decoration:none;
+  font-weight:800;font-size:1.1rem;
+  padding:16px 32px;border-radius:12px;
+  border:0;cursor:pointer;text-align:center;
+  box-shadow:0 4px 14px rgba(180,83,9,.25);
+  transition:filter .15s,transform .1s
+}
+.btn-buy:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.breadcrumb a{color:var(--muted);text-decoration:none}.breadcrumb a:hover{text-decoration:underline}
+.hero{padding:46px 0 22px;text-align:center}
+.hero h1{font-size:clamp(26px,4.6vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:14px}
+.hero h1 .a{color:var(--amber)}
+.hero p.lead{font-size:clamp(16px,2.2vw,18px);color:var(--ink2);max-width:640px;margin:0 auto}
+section{padding:18px 0}
+h2{font-size:1.3rem;font-weight:800;margin:20px 0 12px;letter-spacing:-.01em}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:12px 0}
+.product-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.product-card.featured{border-color:var(--amber-lt);box-shadow:0 0 0 2px color-mix(in srgb,var(--amber-lt) 60%,transparent)}
+.badge{display:inline-block;background:var(--cream);color:var(--amber-dk);font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:20px;width:fit-content}
+.badge.free{background:color-mix(in srgb,#d1fae5 70%,var(--card));color:var(--ok)}
+.product-card h3{font-size:1.1rem;font-weight:800;margin:0}
+.product-card .desc{font-size:.92rem;color:var(--ink2);flex-grow:1}
+.price-tag{font-size:1.5rem;font-weight:800;color:var(--ink)}
+.price-tag sup{font-size:.6em;vertical-align:super}
+.card-link{text-decoration:none;color:inherit}
+.card-link:hover h3{color:var(--amber-dk)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:12px 0}
+.why-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.why-item .icon{font-size:1.4rem;margin-bottom:8px}
+.why-item strong{display:block;font-size:.95rem;margin-bottom:4px}
+.why-item p{font-size:.875rem;color:var(--ink2);margin:0}
+.process-box{background:var(--cream);border:1px solid var(--amber-lt);border-radius:14px;padding:20px 24px;margin:14px 0}
+.process-box ol{margin:10px 0 0 20px}
+.process-box li{margin:6px 0;font-size:.92rem}
+.faq-list{margin:12px 0}
+.faq-list details{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:8px 0;background:var(--card)}
+.faq-list details summary{font-weight:700;cursor:pointer;list-style:none;font-size:.95rem}
+.faq-list details summary::-webkit-details-marker{display:none}
+.faq-list details summary::before{content:"+ ";color:var(--amber-dk);font-weight:800}
+.faq-list details[open] summary::before{content:"\2212  "}
+.faq-list details p{margin-top:10px;font-size:.9rem;color:var(--ink2)}
+hr.divider{border:0;border-top:1px solid var(--line);margin:10px 0}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:24px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+footer .inner{display:flex;flex-wrap:wrap;gap:6px 12px}
+</style>
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="/">☕ aban news</a><a class="btn" href="https://abannews.beehiiv.com/subscribe" style="padding:7px 14px">Newsletter</a></div></header>
-<main class="wrap">
-  <h1>KI-Starter-Kits — ehrlich, pro Branche</h1>
-  <p class="lead">Kompakte Pakete für DACH-Solo-/KMU-Profis: ein Spickzettel, erprobte Prompts zum Kopieren und eine Checkliste — kein Hype, sofort nutzbar. Kauf einmalig, Download direkt.</p>
-
-  <div style="background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:1rem 1.2rem;margin:0 0 1.6rem">
-    <strong style="display:block;margin-bottom:.4rem">Was in jedem Kit steckt:</strong>
-    <ul style="margin:0;padding-left:1.2rem;color:#374151;font-size:.95rem">
-      <li>Spickzettel: die realistischen KI-Anwendungen deiner Branche auf einen Blick</li>
-      <li>Erprobte Prompts zum Kopieren — getestet, mit klaren Grenzen</li>
-      <li>Datenschutz-/Praxis-Checkliste fürs sichere Loslegen</li>
-    </ul>
+<a class="skip" href="#main">Zum Hauptinhalt springen</a>
+<header class="site">
+  <div class="wrap">
+    <a href="/" class="brand">aban news</a>
+    <a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a>
   </div>
+</header>
 
-  <div class="grid" id="shop"></div>
+<main id="main">
+<div class="wrap">
 
-  <section style="margin:2.4rem 0 0">
-    <h2 style="font-size:1.3rem;margin:0 0 .8rem">Häufige Fragen</h2>
-    <div style="display:grid;gap:.7rem">
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
-        <summary style="font-weight:600;cursor:pointer">Was ist in einem Kit?</summary>
-        <p style="margin:.6rem 0 0;color:#374151">Ein Spickzettel als PDF (die realistischen KI-Anwendungen deiner Branche), eine Sammlung erprobter Prompts zum Kopieren und eine kurze Datenschutz-/Praxis-Checkliste.</p>
+  <section class="hero">
+    <p class="breadcrumb"><a href="/">Start</a> &rsaquo; <span>Shop</span></p>
+    <h1>Digitaler <span class="a">Shop</span></h1>
+    <p class="lead">Fertige KI-Werkzeuge für Selbstständige, Freelancer und KMU in der Schweiz und im DACH-Raum. Kein Abo, kein Login-Zwang — einmal kaufen, sofort nutzen.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section id="produkte">
+    <h2>Kostenpflichtige Produkte</h2>
+    <div class="product-grid">
+
+      <div class="product-card featured">
+        <span class="badge">Bestseller</span>
+        <a href="/ki-profi-prompts.html" class="card-link">
+          <h3>100 KI-Profi-Prompts</h3>
+        </a>
+        <p class="desc">100 fertige, sofort einsetzbare Prompts in 10 Kategorien — von Marketing und Kundenservice bis Recht und Strategie. Für alle gängigen KI-Tools (ChatGPT, Claude, Gemini). PDF + Markdown, A4-Format, 25+ Seiten.</p>
+        <div class="price-tag">CHF&nbsp;29.<sup>—</sup></div>
+        <a href="/ki-profi-prompts.html" class="btn-buy">Zur Produktseite &rarr;</a>
+      </div>
+
+      <div class="product-card featured">
+        <span class="badge">Compliance</span>
+        <a href="/ki-compliance-paket.html" class="card-link">
+          <h3>KI-Compliance Paket CH</h3>
+        </a>
+        <p class="desc">3 Dokumente für den rechtssicheren KI-Einsatz im Schweizer Betrieb: KI-Nutzungsrichtlinie (Word-Vorlage), DSGVO-Checkliste für KI-Tools (30 Punkte) und EU AI Act Kurzguide mit CH-Kontext. Sofort anpassbar.</p>
+        <div class="price-tag">CHF&nbsp;49.<sup>—</sup></div>
+        <a href="/ki-compliance-paket.html" class="btn-buy">Zur Produktseite &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="gratis">
+    <h2>Gratis-Downloads</h2>
+    <p style="font-size:.92rem;color:var(--ink2);margin-bottom:14px;">Wer erst reinschnuppern will, bekommt das hier ohne Kreditkarte.</p>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <span class="badge free">Gratis</span>
+        <h3>KI-Prompt-Pack (Gratis)</h3>
+        <p class="desc">20 ausgewählte Prompts für Solopreneure und KMU — als Markdown-Datei, direkt kopierbar. Ein guter Einstieg, bevor du dir die vollständige 100er-Version holst.</p>
+        <a href="/downloads/ki-prompt-pack-selbststaendige.md" class="btn ghost">Gratis herunterladen</a>
+      </div>
+
+      <div class="product-card">
+        <span class="badge free">Gratis</span>
+        <h3>Selbstständigen-Checklisten</h3>
+        <p class="desc">Praktische Checklisten für häufige Situationen: Neukunden-Onboarding, Jahresende-Steuervorbereitung, Tool-Evaluierung. Als Markdown zum Kopieren und Anpassen.</p>
+        <a href="/downloads/selbststaendigen-checklisten.md" class="btn ghost">Gratis herunterladen</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="warum">
+    <h2>Warum bei aban kaufen?</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="icon">🇨🇭</div>
+        <strong>DACH-Fokus</strong>
+        <p>Alle Vorlagen sind auf Schweizer und DACH-Kontext ausgerichtet. Kein US-Recht, kein dollar-basierter Kontext, keine sinnlosen Übersetzungen aus dem Englischen.</p>
+      </div>
+      <div class="why-item">
+        <div class="icon">⚡</div>
+        <strong>Sofort einsetzbar</strong>
+        <p>Keine Einrichtung, kein Kurs, kein Onboarding. Du lädst die Datei herunter und kannst sie heute noch nutzen — oder anpassen und als eigene Vorlage speichern.</p>
+      </div>
+      <div class="why-item">
+        <div class="icon">📄</div>
+        <strong>Kein Abo</strong>
+        <p>Einmalig zahlen, dauerhaft nutzen. Keine laufenden Kosten, kein automatischer Verlängerungs-Trick. Aktualisierungen bei Rechtsänderungen sind inklusive.</p>
+      </div>
+      <div class="why-item">
+        <div class="icon">🤝</div>
+        <strong>Ehrlich gemacht</strong>
+        <p>Diese Produkte sind von einem Selbstständigen für Selbstständige gebaut. Was draufsteht, ist drin. Kein Padding, kein aufgeblähter Kurs-Wrapper um 10 Seiten Inhalt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <h2>Wie der Kauf funktioniert</h2>
+    <div class="process-box">
+      <p>Alle kostenpflichtigen Produkte werden über <strong>Gumroad</strong> abgewickelt — eine etablierte Plattform für digitale Güter. So läuft es ab:</p>
+      <ol>
+        <li>Du klickst auf «Jetzt kaufen» und landest auf der Gumroad-Kaufseite.</li>
+        <li>Bezahlung per Kreditkarte, PayPal oder (wo verfügbar) Apple/Google Pay.</li>
+        <li><strong>Du erhältst sofort einen Download-Link per E-Mail.</strong></li>
+        <li>Die Datei steht dauerhaft in deinem Gumroad-Konto zum Wiederholungs-Download bereit.</li>
+      </ol>
+      <p style="margin-top:12px;font-size:.88rem;color:var(--muted)">Fragen? <a href="mailto:hallo@abannews.com">hallo@abannews.com</a> — Antwort meist innerhalb eines Werktags.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Häufige Fragen</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Was sind digitale Produkte?</summary>
+        <p>Digitale Produkte sind Dateien, die du sofort nach dem Kauf herunterladen kannst — kein Versand, keine Wartezeit. Hier handelt es sich um PDF-Dokumente, Word-Vorlagen und Markdown-Dateien, die du direkt in deinem Betrieb einsetzen und anpassen kannst.</p>
       </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
-        <summary style="font-weight:600;cursor:pointer">In welchem Format bekomme ich es?</summary>
-        <p style="margin:.6rem 0 0;color:#374151">Als ZIP mit PDF und Text-/Markdown-Dateien, sofort nach dem Kauf herunterladbar. Du brauchst keine besondere Software.</p>
+      <details>
+        <summary>Wie erhalte ich meine Datei nach dem Kauf?</summary>
+        <p>Nach dem Kauf über Gumroad erhältst du sofort einen Download-Link per E-Mail. Die Datei steht auch dauerhaft in deinem Gumroad-Konto zur Verfügung. Kein Abo, kein automatischer Folgeauftrag.</p>
       </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
-        <summary style="font-weight:600;cursor:pointer">Wie bezahle ich?</summary>
-        <p style="margin:.6rem 0 0;color:#374151">Sicher per Karte über Stripe. Beim internationalen Checkout kann der Betrag in deiner Landeswährung angezeigt werden.</p>
-      </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
-        <summary style="font-weight:600;cursor:pointer">Kann ich zurückgeben?</summary>
-        <p style="margin:.6rem 0 0;color:#374151">Bei digitalen Inhalten erlischt das Widerrufsrecht, sobald der Download startet — solange du noch nicht heruntergeladen hast, ist ein Widerruf innerhalb von 14 Tagen möglich. Details in den <a href="/agb.html" style="color:#b45309">AGB &amp; Widerruf</a>.</p>
-      </details>
-      <details style="background:#fff;border:1px solid #ece3d4;border-radius:12px;padding:.8rem 1rem">
-        <summary style="font-weight:600;cursor:pointer">Brauche ich Vorkenntnisse?</summary>
-        <p style="margin:.6rem 0 0;color:#374151">Nein. Die Kits sind für Einsteiger gemacht: kopieren, eigene Angaben einsetzen, Ergebnis prüfen. KI liefert Entwürfe — die fachliche Endkontrolle bleibt bei dir.</p>
+      <details>
+        <summary>Kann ich die Vorlagen anpassen?</summary>
+        <p>Ja, das ist ausdrücklich der Sinn der Vorlagen. Die Word-Dokumente und PDFs sind so aufgebaut, dass du Platzhalter mit deinen Firmenangaben füllst und die Texte an deinen Betrieb anpasst. Eine Weitergabe oder kommerzielle Weiterveräusserung der Rohdateien ist nicht erlaubt.</p>
       </details>
     </div>
   </section>
 
-  <p class="fine">Lieber erst gratis reinschnuppern? Für viele Branchen gibt es einen <a href="/ki-werkzeug.html">KI-Werkzeug</a> &middot; <a href="/online-tools.html" style="color:#b45309">kostenlosen Spickzettel</a> — und werktäglich KI ohne Hype im <a href="https://abannews.beehiiv.com/subscribe" style="color:#b45309">Gratis-Newsletter</a>.</p>
-  <p class="fine">Bezahlung sicher per <strong>Karte</strong> (Stripe). Sofort-Download nach Kauf. aban news ist unabhängig, werbefrei und ohne Tracking. Fragen? <a href="mailto:hallo@abannews.com" style="color:#b45309">hallo@abannews.com</a></p>
+</div>
 </main>
-<footer><div class="wrap">© 2026 aban news · <a href="/impressum.html" style="color:#6b7280">Impressum</a> · <a href="/datenschutz.html" style="color:#6b7280">Datenschutz</a> · <a href="/agb.html" style="color:#6b7280">AGB &amp; Widerruf</a></div></footer>
-<script src="/js/shop-config.js"></script>
-<script>
-  (function(){
-    var el=document.getElementById('shop');
-    // Kit-Slug -> KI-Sichtbarkeits-Seite bzw. Compliance-Paket (Cross-Sell-Schleife)
-    var SICHT={aerzte:'praxen',handwerker:'handwerk',steuerberater:'steuerberatung',anwaelte:'kanzleien',gastronomie:'gastronomie',coaches:'coaches',immobilienmakler:'immobilienmakler',friseure:'friseure',fotografen:'fotografen',architekten:'architekten',fitnessstudios:'fitnessstudios'};
-    var COMP={aerzte:'aerzte',anwaelte:'anwaelte',steuerberater:'steuerberater'};
-    function render(items){
-      if(!items||!items.length){el.innerHTML='<p>Pakete sind in Vorbereitung.</p>';return;}
-      el.innerHTML=items.map(function(p){
-        var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Kaufen — '+p.price+'</a>')
-                     :('<span class="btn soon">Bald verfügbar</span>');
-        var badge=p.bundle?'<span style="display:inline-block;background:#b45309;color:#fff;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:.5rem">SPAR-PAKET</span><br>':'';
-        var style='scroll-margin-top:1.5rem'+(p.bundle?';border-color:#b45309;box-shadow:0 0 0 2px rgba(180,83,9,.12)':'');
-        var lk='color:#b45309;font-size:.85rem;font-weight:600;text-decoration:none';
-        var rel='';
-        if(SICHT[p.slug]) rel+='<a href="/ki-sichtbarkeit-'+SICHT[p.slug]+'.html" style="'+lk+'">Wirst du von KI gefunden? →</a>';
-        if(COMP[p.slug]) rel+=(rel?' &nbsp;·&nbsp; ':'')+'<a href="/ki-compliance-'+COMP[p.slug]+'.html" style="'+lk+'">KI rechtssicher →</a>';
-        rel=rel?('<div style="margin-top:.6rem">'+rel+'</div>'):'';
-        return '<div class="card" id="kit-'+p.slug+'" style="'+style+'">'+badge+'<h2>'+p.title+'</h2><p>'+p.desc+'</p><div class="price">'+p.price+'</div>'+btn+rel+'</div>';
-      }).join('');
-      // Kommt der Besucher per #kit-<slug> aus einem Branchen-Hub: Karte hervorheben.
-      if(location.hash){
-        var t=document.getElementById(location.hash.slice(1));
-        if(t){t.style.borderColor='#b45309';t.style.boxShadow='0 0 0 2px rgba(180,83,9,.15)';
-              t.scrollIntoView({block:'center'});}
-      }
-    }
-    // Bevorzugt automatisch erzeugte Stripe-Produkte (data/shop-products.json), sonst Config-Fallback.
-    fetch('/data/shop-products.json',{cache:'no-store'})
-      .then(function(r){return r.ok?r.json():null;})
-      .then(function(d){ render((d&&d.length)?d:(window.ABAN_SHOP||[])); })
-      .catch(function(){ render(window.ABAN_SHOP||[]); });
-  })();
-</script>
+
+<footer>
+  <div class="wrap">
+    <div class="inner">
+      <span>© 2026 aban news · Allen Chour · Belp (CH)</span>
+      <a href="/shop.html">Shop</a>
+      <a href="/ki-profi-prompts.html">KI-Prompts</a>
+      <a href="/ki-compliance-paket.html">Compliance Paket</a>
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
 <script defer src="/js/assistant.js"></script>
 <script defer src="/js/announce.js"></script>
-<script defer src="/js/aff-track.js"></script>
 </body>
 </html>
