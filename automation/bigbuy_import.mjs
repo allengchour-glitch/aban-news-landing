@@ -194,6 +194,12 @@ const CONFIG = {
     anchor: ['heizkissen', 'heizdecke', 'wärmekissen', 'waermekissen', 'heizkissen nacken', 'wärmeunterbett', 'nackenwärmer', 'fusswärmer', 'fußwärmer', 'wärmflasche elektrisch'],
     ban: ['kinder', 'spielzeug', 'ersatz', 'heizlüfter', 'heizstrahler', 'auto', 'kfz'],
     bullets: ['Wohlige Wärme auf Knopfdruck', 'Lindert Verspannungen', 'Gemütlich an kalten Tagen', 'Energiesparend'] },
+  // ── Strand & Wasserspass 2026 (User: Gummiboot/Badesachen — Sommer) ──
+  wasserstrand: { coll: { handle: 'strand-wasserspass', title: '🏖️ Strand & Wasserspass', tag: 'strand' },
+    extraTags: ['strand', 'sommer', 'pool', 'wasser', 'outdoor'], type: 'Strand & Wasser', maxCost: 110,
+    anchor: ['aufblasbarer boot', 'schlauchboot', 'gummiboot', 'paddelboot', 'schwimmring', 'schwimmreifen', 'strandmatte', 'strandtuch', 'badetuch', 'sonnenliege', 'schwimmbrille', 'taucherbrille', 'schnorchel', 'luftmatratze', 'strandmuschel', 'strandzelt', 'wasserball', 'planschbecken', 'schwimmflügel', 'schwimmweste kinder'],
+    ban: ['ersatzventil', 'ventil einzeln', 'pumpe einzeln', 'reparaturset', 'flicken', 'auto', 'kfz', 'ersatz', 'rettungsweste profi'],
+    bullets: ['Sommer-Spass am Wasser', 'Perfekt für Pool, See &amp; Strand', 'Schnell aufgepumpt', 'Für die ganze Familie'] },
   // ── Akku-/Mobile Ventilatoren 2026 (User: mobile venti akku — Nacken/Hand/USB, für unterwegs) ──
   akkuventi: { coll: { handle: 'klima-ventilatoren', title: '❄️ Klima & Ventilatoren', tag: 'klima' },
     extraTags: ['klima', 'ventilator', 'akku', 'mobil', 'sommer', 'reise'], type: 'Akku-Ventilator', maxCost: 90,
