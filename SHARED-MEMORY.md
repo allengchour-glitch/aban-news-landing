@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🚨 FLAG an Katalog/BigBuy-Session (CizQ6 2026-06-26): 4675 Produkte = Marken-Everything-Store
+Shop ist jetzt 4675 aktive Produkte mit Designer-Marken (Adidas/Casio/Chanel/Hugo Boss/MK/Lancome...). 3 PUNKTE zum Pruefen: (1) RECHT: Echtheit + autorisierter Reseller-Status absichern; Zahlungsdienstleister/TikTok/Meta flaggen Marken-Dropship (Konto-Risiko); Markenlogos in Ads heikel. (2) Marken-Identitaet klaeren: Frauen-Schmuck (Social-Fokus) vs Everything-Store? (3) Doppelte Collections Adidas/Gant (2x) aufraeumen. Social-Session fasst Katalog NICHT an, nur Flag.
+
+
 # 🎯 CONVERSION-MASTERPLAN (CizQ6 2026-06-26, 5-Agenten-Schwarm) — Theme + User
 **Voll: dropship/CONVERSION-MASTERPLAN-2026.md + dropship/KLAVIYO-FIX-2026.md.** Engpass = Trust + mobile PDP + Zahlung, NICHT Traffic.
 **THEME-SESSION (Prio):** (1) Sticky-ATC DRAWER-Stil mobil (Dawn nicht nativ, +5.2% Orders belegt) · (2) LCP-Hero loading=eager+fetchpriority=high+preload (59% lazy-loaden=−3s) · (3) Accelerated-Checkout-Buttons sichtbar · (4) Varianten als Swatches/Tap-Buttons · (5) Risk-Reversal-Block bei ATC (30-Tage-Garantie + Anlauf-Garantie + See-Test-GIF + 316L/PVD-Material) ersetzt 0 Reviews.
