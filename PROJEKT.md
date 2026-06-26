@@ -105,6 +105,7 @@
 
 ## 🧰 2026-06-20/24 — 77 neue Gratis-Tools (Traffic→Newsletter, „voll gas loop")
 > YouTube-Welle (6 Tools) ABGESCHLOSSEN: thumbnail/embed #1254 · zeitstempel/einnahmen #1255 · video-id-extractor + youtube-beschreibung-generator [batch-38-yt]. Hub 138. Alle client-seitig, kein API-Key.
+> **batch-39:** hashtag-generator (Thema+Stichwörter→Hashtag-Sets breit/spezifisch/Marke, CamelCase-Option, Umlaut→ae, getestet) + favicon-generator (Emoji/Buchstaben→Canvas→PNG 16/32/180, Formen rounded/circle/square/transparent, Download + Code-Snippet). **Hub = 140 Tools.** ⚠️ `farbpalette-generator.html` (Singular) existiert schon → geplanten `farbpaletten`-Dublette verworfen (Thin-Content-Falle: vor Bau immer `ls`-Slug-Check inkl. Singular/Plural).
 > Session „weiter voll gas / ohne pause loop". Reichweite ist der Engpass → jedes Tool = neuer
 > Google-Einstiegspunkt + Newsletter-CTA, reines Browser-JS (0 KI-Tokens), DSGVO-sauber.
 - **Neu gebaut & live (alle mit WebApplication+FAQPage-Schema, in online-tools + sitemap, Brain 100/100):**
