@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notendurchschnitt-Rechner — gewichtet (DE & CH) · aban news</title>
+<meta name="description" content="Kostenloser Notendurchschnitt-Rechner: Noten eingeben, optional gewichten und den Durchschnitt berechnen — für deutsche (1–6) und Schweizer (6–1) Skala. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/notendurchschnitt-rechner.html">
+<meta property="og:title" content="Notendurchschnitt-Rechner — gewichtet (DE & CH)">
+<meta property="og:description" content="Noten eingeben, gewichten, Durchschnitt berechnen — deutsche & Schweizer Skala. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/notendurchschnitt-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Notendurchschnitt-Rechner",
+"url":"https://abannews.com/notendurchschnitt-rechner.html","applicationCategory":"EducationalApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet den gewichteten Notendurchschnitt für die deutsche (1–6) und Schweizer (6–1) Skala. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie wird der gewichtete Notendurchschnitt berechnet?","acceptedAnswer":{"@type":"Answer","text":"Jede Note wird mit ihrer Gewichtung multipliziert, alle Ergebnisse werden addiert und durch die Summe der Gewichtungen geteilt. Ohne Gewichtung zählt jede Note gleich (Gewichtung 1). Beispiel: Note 2 (Gewicht 2) und Note 4 (Gewicht 1) ergeben (2×2 + 4×1) ÷ 3 = 2,67."}},
+{"@type":"Question","name":"Unterstützt der Rechner die Schweizer Notenskala?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wähle oben „Schweiz (6 = beste)“, dann gelten die Schweizer Noten von 6 (sehr gut) bis 1. Für Deutschland wählst du „Deutschland (1 = beste)“ mit Noten von 1 bis 6. Das Rechenprinzip ist gleich, nur die Skala unterscheidet sich."}},
+{"@type":"Question","name":"Werden meine Noten gespeichert oder gesendet?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alle Berechnungen laufen lokal in deinem Browser. Es wird nichts hochgeladen oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#b91c1c;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--ok:#34d399;--bad:#f87171;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.seg button{font-size:.84rem;padding:8px 12px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:600}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+table{width:100%;border-collapse:collapse}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:left;padding:0 6px 6px;font-weight:700}
+td{padding:4px 6px}
+input[type=text],input[type=number]{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%}
+.row td:nth-child(2),.row td:nth-child(3){width:90px}
+.del{background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:1.1rem;padding:4px 8px}
+.del:hover{color:var(--bad)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.res{margin-top:18px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.res .big{font-size:clamp(28px,7vw,42px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.86rem;color:var(--ink2);margin-top:4px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Notendurchschnitt</span>-Rechner</h1>
+    <p>Trag deine Noten ein, gewichte sie optional (z. B. Klausur zählt doppelt) und sieh sofort deinen Durchschnitt — für die deutsche und die Schweizer Skala. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Es rechnet den gewichteten Mittelwert deiner Noten. Lass die Gewichtung auf 1, dann zählt jede Note gleich. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="seg" id="scale">
+      <button data-s="de" class="on">Deutschland (1 = beste)</button>
+      <button data-s="ch">Schweiz (6 = beste)</button>
+    </div>
+    <table>
+      <thead><tr><th>Fach / Prüfung</th><th>Note</th><th>Gewicht</th><th></th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="tools">
+      <button type="button" class="btn ghost" id="add">+ Zeile</button>
+      <button type="button" class="btn ghost" id="clear">Alle leeren</button>
+    </div>
+    <div class="res"><div class="big" id="avg">—</div><div class="sub" id="sub"></div></div>
+    <p class="note" id="hint"></p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Rechnen.</p>
+    <p><a class="btn" href="/durchschnitt-rechner.html">Durchschnitt-Rechner</a>
+      <a class="btn ghost" href="/prozent-rechner.html">Prozentrechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/durchschnitt-rechner.html">Durchschnitt-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var scale="de";
+  var rows=document.getElementById("rows");
+  function mkRow(name,note,w){
+    var tr=document.createElement("tr");tr.className="row";
+    tr.innerHTML='<td><input type="text" class="f" placeholder="z. B. Mathe" value="'+(name||"")+'"></td>'+
+      '<td><input type="number" class="n" inputmode="decimal" step="0.1" placeholder="Note" value="'+(note==null?"":note)+'"></td>'+
+      '<td><input type="number" class="w" inputmode="decimal" step="0.5" min="0" placeholder="1" value="'+(w==null?"":w)+'"></td>'+
+      '<td><button type="button" class="del" title="Zeile entfernen">✕</button></td>';
+    tr.querySelector(".del").addEventListener("click",function(){tr.remove();calc();});
+    tr.querySelectorAll("input").forEach(function(i){i.addEventListener("input",calc);});
+    rows.appendChild(tr);
+  }
+  function bounds(){return scale==="de"?[1,6]:[1,6];}
+  function calc(){
+    var sumW=0,sumWN=0,count=0,bad=false;var lo=bounds()[0],hi=bounds()[1];
+    rows.querySelectorAll(".row").forEach(function(tr){
+      var nv=tr.querySelector(".n").value.replace(",",".");
+      if(nv==="")return;
+      var n=parseFloat(nv);if(isNaN(n))return;
+      if(n<lo||n>hi)bad=true;
+      var wv=tr.querySelector(".w").value.replace(",",".");
+      var w=wv===""?1:parseFloat(wv);if(isNaN(w)||w<0)w=1;
+      sumW+=w;sumWN+=w*n;count++;
+    });
+    var avg=document.getElementById("avg"),sub=document.getElementById("sub"),hint=document.getElementById("hint");
+    if(count===0||sumW===0){avg.textContent="—";sub.textContent="Noten eingeben.";return;}
+    var a=sumWN/sumW;
+    avg.textContent=a.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2});
+    sub.textContent=count+" Note"+(count>1?"n":"")+" · Summe Gewichte "+sumW.toLocaleString("de-DE",{maximumFractionDigits:2});
+    var verdict;
+    if(scale==="de"){ verdict = a<=1.5?"sehr gut":a<=2.5?"gut":a<=3.5?"befriedigend":a<=4.0?"ausreichend":"nicht bestanden"; }
+    else { verdict = a>=5.5?"sehr gut":a>=4.5?"gut":a>=4.0?"genügend":"ungenügend"; }
+    hint.textContent=(bad?"⚠️ Mindestens eine Note liegt außerhalb der Skala "+lo+"–"+hi+". ":"")+"Einordnung: "+verdict+".";
+    hint.style.color=bad?"#b45309":"var(--muted)";
+  }
+  document.getElementById("add").addEventListener("click",function(){mkRow();});
+  document.getElementById("clear").addEventListener("click",function(){rows.innerHTML="";mkRow();mkRow();mkRow();calc();});
+  document.querySelectorAll("#scale button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#scale button").forEach(function(x){x.classList.remove("on");});
+    this.classList.add("on");scale=this.getAttribute("data-s");calc();});});
+  if(scale==="de"){mkRow("Deutsch",2,1);mkRow("Mathe",3,2);mkRow("Englisch",1.7,1);}
+  calc();
+})();
+</script>
+</body>
+</html>
