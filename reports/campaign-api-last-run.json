@@ -1,0 +1,8 @@
+{
+  "ts": "2026-06-26T04:32:03.606Z",
+  "daily": 20,
+  "total_cap": 70,
+  "run_days": 3,
+  "result": "NO_TOKEN",
+  "note": "TT_MKT_TOKEN fehlt -> Browser-Pfad campaign-traffic nutzen"
+}
