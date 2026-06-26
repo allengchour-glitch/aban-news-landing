@@ -57,3 +57,8 @@
 ## Runde 8-Ernte — 2026-06-26 (Anker-Matching unzuverlässig — Strategie-Wechsel)
 - **drohnen lieferte 3 FEHLMATCHES** (Kinderschuhe CHF85–95!) → gedraftet. Drittes Fehlmatch-Muster in Folge (anime→Batterien, caps→T-Shirts, drohnen→Kinderschuhe).
 - **🔑 STRATEGIE-LEHRE:** BigBuys Anker-Matching greift bei vielen Kategorien daneben + zieht überteuerte Fehltreffer. **Saubere Treffer kamen nur aus:** smartwatch, grill, kuechenhelfer, phone (Tech/Küchen-Gadgets mit eindeutigen Namen). **→ Loop importiert ab jetzt NUR aus dieser Whitelist; sonst Fokus auf FIXES** (Dedup/SEO/QA/Cross-Sell/Storefront-Politur) statt weiter Fehltreffer zu produzieren. Mehr Masse ist nicht das Ziel (CLAUDE.md) — Qualität schon.
+
+## Runde 9 — Elektronik/Audio (User: „elektronik gadgets und so?")
+- **🎧 Audio = 3542 frische Kandidaten** (Kopfhörer/Lautsprecher) — VIEL Stock, klare Elektronik-Gadgets. ABER Importer scannt extrem langsam (BigBuy-API throttelt/retryt in dieser Cloud-Session stark; 0 Kandidaten-Zeilen nach 6 Min). Läuft im Hintergrund, nächster Tick erntet.
+- **Beamer + Drohnen = Decke/Fehlmatch** (drohnen→Kinderschuhe). 
+- **Meta-Lehre:** Der BigBuy-Importer ist hier langsam+unzuverlässig (Rate-Limit, Hänger, Anker-Fehlmatch). Elektronik-Stock IST da (audio/phone/ladegeraet), aber Ernte ist zäh → Loop sollte Import im Hintergrund laufen lassen UND parallel zuverlässige Fixes/Politur machen, nicht aufs Import-Ende warten.
