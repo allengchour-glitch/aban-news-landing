@@ -1,5 +1,12 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-26 (Abend — 🌉 TAILSCALE-BRÜCKE LIVE + Ads-Reader + Katalog adult-sauber)
+- **🌉 DURCHBRUCH — VPS steuert PC-Brave (Tailnet):** `cdp-test.mjs` bestätigt: VPS sieht **10 Tabs** im PC-Brave (inkl. ads.tiktok.com, eingeloggt). `ai-browser.mjs` schreibt die WS-URL 127.0.0.1→Tailnet um + sendet `Host:127.0.0.1:9222`. Damit kann der VPS (Rechenzentrums-IP-Problem umgangen, weil über den PC mit Wohn-IP) den Ads-Browser fernsteuern — **24/7 ohne dass ich am PC sitze.**
+- **📊 ADS-READER gebaut (`automation/vps/tiktok-ads-read.mjs`):** liest die Reporting-Seite im PC-Brave, extrahiert Impr/Klicks/Spend/Status (Gemini + Regex-Fallback) und stempelt **`luxe.tiktok_stats`** → jede Session (auch Cloud, die den PC-Port NICHT erreicht) bekommt **echte Views+Klicks ohne Marketing-API-Token.** In `run-api-jobs.sh` (Cron) verdrahtet, no-op-sicher.
+- **🟢 PIXEL GRÜN:** `pid=1 load=1 page=1 wpm=1` (live geprüft + VPS-Cron 04:04). **VPS lebt** (`luxe.vps_last_run` heute).
+- **🧼 KATALOG ADULT-SAUBER:** 2× gesweept (status:active, ~30 Adult-Begriffe) = **0 Treffer**. Der „Adult Supplies"-Reject-Grund ist weg → Ad kann ohne Re-Reject neu eingereicht werden. Brain-Regel `ad_review_2026` verankert.
+- **🔴 NUR-USER:** (1) auf dem VPS einmal `cd /opt/luxe/repo && CDP_HOST=100.71.8.47 node automation/vps/tiktok-ads-read.mjs` → dann zeige ich Views+Klicks; (2) abgelehnte Ad in ads.tiktok.com neu einreichen (Katalog ist jetzt sauber). **Brain 332 Regeln.**
+
 ## 2026-06-25 (Nacht — Winning-Products gelernt + Delete-Bot ECHT gefixt)
 - **🎯 WINNING-PRODUCTS gelernt (`lerne im youtube`):** Doku `dropship/WINNING-PRODUCTS-2026.md` + Brain-Regel `winning_niches_2026`. Auto-Poster `top_products.csv` auf **Hero-first** umgestellt (Top 8 = wasserfeste Schmuck-Sets, Herz-Muschel, Geburtsstein, Ring-Set, Onyx, Moissanite, Zirkonia, Papillon), 4 Herren-Polos + Diffuser raus. Engpass bleibt **Trust/Conversion**, nicht Traffic.
 - **🛠️ DELETE-BOT ROOT-CAUSE GEFUNDEN + GEFIXT:** Nach 2× `deleted:0` war die alte Diagnose („Bot hängt auf Grid") FALSCH. Echte Ursache: `tiktok-delete-dupes.mjs` rief `p.mouse.move`/`p.keyboard.press` auf — das Stagehand-`ab.page` hat die **nicht** → Crash → break → `deleted:0`. Fix: Hover/Escape nur noch via `ab.act()`. Brain korrigiert. Delete-Befehl mit frischer ID neu gequeued zum Retest am PC. **Prävention (reset-proof Ledger + Token-Dedup) bleibt der Hauptschutz.**
