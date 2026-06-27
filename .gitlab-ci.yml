@@ -35,6 +35,7 @@ stages:
 # Manuell: Build → Pipelines → „Run pipeline".
 brain-improve:
   stage: brain
+  allow_failure: true
   image: python:3.11
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
@@ -68,6 +69,7 @@ brain-improve:
 # YouTube-API-Limit: ~6 Uploads/Tag → ersten Tag COUNT=6, nächsten Tag COUNT=7.
 aban-upload:
   stage: post
+  allow_failure: true   # blockiert NIE die brain-Stage (youtube-learn/shop-brain)
   image: python:3.11
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
@@ -105,6 +107,7 @@ aban-upload:
 # Idempotent über Ledger dropship/pinterest_done.txt (wird mit GITLAB_PUSH_TOKEN zurückgeschrieben).
 pinterest-publish:
   stage: traffic
+  allow_failure: true   # blockiert NIE die brain-Stage
   image: node:20
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
@@ -139,6 +142,7 @@ pinterest-publish:
 # Braucht CI/CD-Variablen SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (Masked).
 shop-brain:
   stage: brain
+  allow_failure: true
   image: node:20
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
