@@ -24,8 +24,13 @@ Drei Stufen mit fertigen Texten, wenn jemand nicht zahlt — sachlich statt stre
 
 Alle weiteren Gratis-Rechner und Helfer (MwSt, Stundensatz, Prozent, QR-Code …) findest du gebündelt hier: https://abannews.com/online-tools.html
 
-**Schon weiter? Fertige Branchen-Kits**
-Wenn du KI im Betrieb richtig nutzen willst, gibt es kompakte Kits pro Branche — Spickzettel, erprobte Prompts und eine Datenschutz-Checkliste, ab CHF 12: https://abannews.com/shop.html
+**Schon weiter? Fertige Vorlagen & Prompts (einmalig, kein Abo)**
+Wenn du dir das Tippen ganz sparen willst, gibt es fertige Pakete zum einmaligen Kauf — sofort herunterladbar, kein Monatsabo:
+- Branchen-Kit für deinen Beruf — Spickzettel, erprobte Prompts & Datenschutz-Checkliste, CHF 12.
+- 40 fertige Text-Vorlagen (Angebot, Mail, Rechnung, Absage) — kopieren, Platzhalter ersetzen, fertig, CHF 19.
+- 100+ erprobte Prompts für Akquise, Kunden & Admin, CHF 19.
+
+Alles ehrlich, ohne Hype, sicher per Karte: https://abannews.com/shop.html
 
 **Prompt zum Kopieren** (für eine höfliche erste Mahnung)
 „Schreibe eine freundliche, sachliche Zahlungserinnerung für eine offene Rechnung über [Betrag] vom [Datum]. Kurz, respektvoll, mit klarer Zahlungsfrist. Du-Ansprache, kein Druck-Ton."
