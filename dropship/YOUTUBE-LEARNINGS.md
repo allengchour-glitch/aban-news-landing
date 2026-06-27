@@ -130,3 +130,7 @@
 
 ## Runde 21-Ernte — 2026-06-27
 - **+4 Audio** (Bluetooth-Kopfhörer CHF62.90, **Sonnenaufgangswecker CHF37.90** = cooles Gadget, Drahtlos-Kopfhörer CHF27.90, Lautsprecherhalter CHF47.90). SKU-Dedup 0. Audio liefert noch Mischung aus Kopfhörern + Gadgets.
+
+## Runde 21-Politur — sommer-2026 (323p) Beschreibung aufgewertet
+- War: dünn (136ch). Jetzt: Premium-Saison-Beschreibung (Sub-Linien Grill/Kühlung/Kaffee/Outdoor + Trust + WELCOME10 + saisonaler Tipp). Hero+SEO waren schon ok.
+- **⚠️ Politur-Territorium:** `beauty-geraete` (393p) + `waerme-komfort` (213p, Wellness) haben Hero✗/SEO✗ — gehören aber der ANDEREN Session (Beauty/Wellness laut CLAUDE.md) → NICHT angefasst, nur flaggen. Meine Politur-Kandidaten: sommer-2026✓, beleuchtung-lampen, bar-wein-accessoires, kinderspielzeug, schuhe-sneaker, camping-schlafen, klima-ventilatoren.
