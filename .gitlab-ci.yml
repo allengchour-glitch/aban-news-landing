@@ -228,3 +228,36 @@ autopilot-intel:
       else
         echo "Keine neuen Reports."
       fi
+
+# 🛒 Shop-Autopilot (Phase 2) — READ-ONLY Shopify-Intelligenz. Braucht SHOPIFY_CLIENT_ID/SECRET.
+# conversion_radar (Reviews/SEO/Bild-Lecks) + merchant_feed (Google-Shopping) + shop_seo_guides.
+# Pusht Reports/Feed auf EIGENEN Branch `brain/intel` (nie main). Optional Telegram (TELEGRAM_*).
+shop-autopilot:
+  stage: brain
+  allow_failure: true
+  image: node:20
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - when: manual
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git
+  script:
+    - test -n "$GH_PUSH_TOKEN" || { echo "GH_PUSH_TOKEN fehlt — Abbruch"; exit 1; }
+    - git clone --depth=1 "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" gh
+    - cd gh
+    - node automation/autopilot/conversion_radar.mjs
+    - node automation/autopilot/merchant_feed.mjs
+    - node automation/autopilot/shop_seo_guides.mjs
+    - |
+      git config user.email "brain@aban"; git config user.name "aban-brain"
+      git fetch origin brain/intel:brain/intel 2>/dev/null || true
+      git checkout -B brain/intel
+      git add -A -- automation/autopilot/CONVERSION-RADAR.md automation/autopilot/google-merchant-feed.xml automation/autopilot/guides/
+      if ! git diff --cached --quiet; then
+        git commit -m "shop-autopilot: Conversion-Radar + Merchant-Feed + SEO-Guides (GitLab-CI) [skip ci]"
+        git push -f "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" "HEAD:brain/intel"
+        echo "→ Shop-Autopilot-Reports auf Branch 'brain/intel' gepusht."
+      else
+        echo "Keine neuen Shop-Reports."
+      fi

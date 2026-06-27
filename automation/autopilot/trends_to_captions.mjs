@@ -32,7 +32,8 @@ if (!tagsets.length) { console.log('Keine gelernten Hashtag-Pools → No-Op.'); 
 let products = [];
 try {
   const rows = fs.readFileSync(GOOD, 'utf8').trim().split('\n').slice(1);
-  products = rows.map(r => { const c = r.split(','); return { label: (c[2] || '').trim(), handle: (c[3] || '').trim() }; })
+  // good_products.csv = name,image_url,label → Spalte 0 (name) IST der Handle.
+  products = rows.map(r => { const c = r.split(','); return { handle: (c[0] || '').trim(), label: (c[2] || '').trim() }; })
     .filter(p => p.label);
 } catch {}
 if (!products.length) { console.log('good_products.csv leer → No-Op.'); process.exit(0); }
