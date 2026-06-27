@@ -45,8 +45,14 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   watsonx/IBM) = `true` (14). Gehedgte „EU-Region prüfen"/keine = `null` (9: Ada, Forethought,
   Drift, Gorgias, Kustomer, Help Scout, Chatbase, Voiceflow, Botpress). ManyChat (US-Hosting) = `false`.
 
+- **voice-radar (22 Tools):** Firmensitze belegt, Marker gehoben. `eu_lager` (DSGVO-Hosting):
+  EU = `true` (Amberscript NL, Happy Scribe IE, Noota FR, aTrain/Uni Graz AT, tl;dv GmbH DE);
+  US ohne EU-Region = `false` (Otter, Fireflies, Fathom, Descript, Sonix, Rev, Deepgram,
+  AssemblyAI, ElevenLabs, Murf); UK/unklar/Self-host-abhängig = `null` (Speechmatics, Trint,
+  Krisp, Sembly, Supernormal, OpenAI-Whisper).
+
 ## Offen (gleicher Ansatz, nächste Radars)
-voice-, video-, newsletter-, automatisierung-, dropshipping-radar
+video-, newsletter-, automatisierung-, dropshipping-radar
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 
