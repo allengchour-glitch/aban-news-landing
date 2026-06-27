@@ -73,6 +73,17 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-27 (abannews/Tool-Session) — 🤖 Money/SEO-Guard-Bot (autonom, GitLab) gebaut:**
+- **Neuer Bot `money-seo-guard`** in `.gitlab-ci.yml` (Pendant zu `brain-improve`, für Umsatz/SEO).
+  Orchestrator `automation/money_seo_guard.py` führt die idempotenten Tools aus, pusht auf
+  **eigenen Branch `brain/money-seo`** (NIE main). Doku `docs/GITLAB-SETUP.md §8`. Braucht `GH_PUSH_TOKEN`.
+- **Selbstheilend (#1341):** `tools/autofix_money_gap.py` schliesst NEUE Money-Gaps dynamisch
+  (money_gap_audit-Erkennung + Founding-Block) → keine feste Seitenliste mehr nötig.
+- **Telegram-Alarm (#1342):** nur bei echten Befunden (offene Gaps/defekte Links), sonst kein Spam;
+  no-op ohne `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID`.
+- **⚠️ Für andere Sessions:** Branch `brain/money-seo` = Auto-Vorschläge dieses Bots (per PR prüfen/mergen),
+  nicht löschen/verwechseln. PRs #1339/#1341/#1342.
+
 **2026-06-27 (abannews/Tool-Session) — 💰 eBay-Affiliate site-weit SCHARF (User hat EPN aktiviert):**
 - **User ist beim eBay Partner Network angemeldet** (Konto `abannews`, Kampagne `aban`, **campid `5339156671`**).
   Die campid ist öffentlich (steht in jedem Affiliate-Link) → fest im Code, per Cloudflare-Env
