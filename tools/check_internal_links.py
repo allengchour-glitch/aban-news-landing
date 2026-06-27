@@ -14,6 +14,11 @@ Bewusst ausgeschlossen:
   - Inhalte in <script>…</script> (JS-Template-Strings sind keine Links)
   - Platzhalter mit ${…}, {merge_tag} oder [PLATZHALTER] (Newsletter-Vorlagen)
 
+Als gültig anerkannt (kein Fehlalarm), obwohl keine statische Datei:
+  - Pretty-URLs aus _redirects
+  - **Cloudflare-Pages-Functions** unter functions/  (z. B. /go/ebay -> functions/go/ebay.js,
+    /api/* -> functions/api/*.js, dynamische Routen wie functions/inserat/[id].js)
+
 Reine Standardbibliothek, kein Netz, kein Tracking.
 
 Beispiele:
@@ -51,8 +56,46 @@ def is_skippable(url: str) -> bool:
     return False
 
 
+def function_routes() -> tuple[set[str], list[re.Pattern]]:
+    """Cloudflare-Pages-Functions als gültige Routen anerkennen.
+
+    functions/go/ebay.js      -> /go/ebay        (statisch)
+    functions/api/chat.js     -> /api/chat       (statisch)
+    functions/inserat/[id].js -> /inserat/<*>    (dynamisch, ein Segment)
+    functions/x/[[rest]].js   -> /x/<*…>         (dynamisch, Catch-all)
+    Helfer (_*.mjs) und *.test.* werden ignoriert.
+    """
+    static: set[str] = set()
+    dynamic: list[re.Pattern] = []
+    base = Path("functions")
+    if not base.is_dir():
+        return static, dynamic
+    for f in base.rglob("*"):
+        if f.suffix not in (".js", ".mjs") or f.name.startswith("_") or ".test." in f.name:
+            continue
+        parts = list(f.relative_to(base).with_suffix("").parts)
+        if parts and parts[-1] == "index":
+            parts = parts[:-1]
+        if not parts:
+            continue
+        if any("[" in p for p in parts):
+            segs = []
+            for p in parts:
+                if p.startswith("[[") and p.endswith("]]"):
+                    segs.append(".+")
+                elif p.startswith("[") and p.endswith("]"):
+                    segs.append("[^/]+")
+                else:
+                    segs.append(re.escape(p))
+            dynamic.append(re.compile("^/" + "/".join(segs) + "$"))
+        else:
+            static.add("/" + "/".join(parts))
+    return static, dynamic
+
+
 def scan() -> dict[str, list[str]]:
     os.chdir(REPO)
+    fn_static, fn_dynamic = function_routes()
     # Pretty-URLs aus _redirects als gültige Ziele anerkennen (kein Fehlalarm).
     redirects: set[str] = set()
     rp = Path("_redirects")
@@ -91,6 +134,9 @@ def scan() -> dict[str, list[str]]:
                 continue
             # Pretty-URL per _redirects? -> gültig
             if path.rstrip("/") in redirects:
+                continue
+            # Cloudflare-Pages-Function (z. B. /go/ebay, /api/*, /inserat/<id>)? -> gültig
+            if path in fn_static or any(p.match(path) for p in fn_dynamic):
                 continue
             if path.startswith("/"):
                 tgt = Path(path.lstrip("/"))
