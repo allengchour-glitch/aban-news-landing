@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GGT- & kgV-Rechner — größter Teiler, kleinstes Vielfaches · aban news</title>
+<meta name="description" content="Kostenloser GGT- und kgV-Rechner: größten gemeinsamen Teiler und kleinstes gemeinsames Vielfaches mehrerer Zahlen berechnen — mit Rechenweg und Primfaktoren. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/ggt-kgv-rechner.html">
+<meta property="og:title" content="GGT- & kgV-Rechner — größter Teiler, kleinstes Vielfaches">
+<meta property="og:description" content="GGT und kgV mehrerer Zahlen berechnen — mit Rechenweg & Primfaktoren. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/ggt-kgv-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"GGT- & kgV-Rechner",
+"url":"https://abannews.com/ggt-kgv-rechner.html","applicationCategory":"EducationalApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet den größten gemeinsamen Teiler (GGT) und das kleinste gemeinsame Vielfache (kgV) mehrerer Zahlen mit Rechenweg und Primfaktoren. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was ist der Unterschied zwischen GGT und kgV?","acceptedAnswer":{"@type":"Answer","text":"Der größte gemeinsame Teiler (GGT) ist die größte Zahl, durch die sich alle eingegebenen Zahlen ohne Rest teilen lassen — nützlich zum Kürzen von Brüchen. Das kleinste gemeinsame Vielfache (kgV) ist die kleinste Zahl, die ein Vielfaches aller eingegebenen Zahlen ist — nützlich zum Gleichnamigmachen von Brüchen."}},
+{"@type":"Question","name":"Wie wird der GGT berechnet?","acceptedAnswer":{"@type":"Answer","text":"Der Rechner nutzt den euklidischen Algorithmus: Er teilt wiederholt die größere durch die kleinere Zahl und rechnet mit dem Rest weiter, bis der Rest 0 ist. Das kgV ergibt sich aus dem Produkt der Zahlen geteilt durch ihren GGT."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.res{border:1px solid var(--amber-lt);background:var(--cream);border-radius:12px;padding:16px;text-align:center}
+.res .lab{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);font-weight:700}
+.res .big{font-size:clamp(26px,6vw,38px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em;line-height:1.1}
+.res .way{font-size:.78rem;color:var(--ink2);margin-top:5px;font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-word}
+.note{color:var(--muted);font-size:.82rem;margin-top:14px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">GGT &amp; kgV</span> berechnen</h1>
+    <p>Größter gemeinsamer Teiler und kleinstes gemeinsames Vielfaches für zwei oder mehr Zahlen — mit Rechenweg und Primfaktoren. Praktisch zum Kürzen und Gleichnamigmachen von Brüchen. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Tipp einfach mehrere ganze Zahlen ein (mit Komma oder Leerzeichen getrennt). Der Rechner ermittelt GGT und kgV exakt — über den euklidischen Algorithmus. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <label for="nums">Zahlen (Komma oder Leerzeichen getrennt)</label>
+    <input id="nums" type="text" inputmode="numeric" value="12, 18, 24" spellcheck="false">
+    <div class="cols">
+      <div class="res"><div class="lab">GGT</div><div class="big" id="ggt">—</div><div class="way" id="ggtw"></div></div>
+      <div class="res"><div class="lab">kgV</div><div class="big" id="kgv">—</div><div class="way" id="kgvw"></div></div>
+    </div>
+    <p class="note" id="hint">Nur positive ganze Zahlen. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Rechnen.</p>
+    <p><a class="btn" href="/bruchrechner.html">Bruchrechner</a>
+      <a class="btn ghost" href="/dreisatz-rechner.html">Dreisatz</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/bruchrechner.html">Bruchrechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){var t=b;b=a%b;a=t;}return a;}
+  function factor(n){var f={},d=2;while(d*d<=n){while(n%d===0){f[d]=(f[d]||0)+1;n/=d;}d++;}if(n>1)f[n]=(f[n]||0)+1;return f;}
+  function factorStr(n){if(n<=1)return ""+n;var f=factor(n),parts=[];Object.keys(f).map(Number).sort(function(a,b){return a-b;}).forEach(function(p){parts.push(f[p]>1?p+"^"+f[p]:""+p);});return parts.join(" × ");}
+  function calc(){
+    var raw=document.getElementById("nums").value.split(/[,\s]+/).map(function(x){return x.trim();}).filter(Boolean);
+    var nums=[],bad=false;
+    raw.forEach(function(x){var n=parseInt(x,10);if(isNaN(n)||n<=0||(""+n)!==x.replace(/^0+(?=\d)/,""))bad=true;else nums.push(n);});
+    var ggtEl=document.getElementById("ggt"),kgvEl=document.getElementById("kgv"),
+        ggtw=document.getElementById("ggtw"),kgvw=document.getElementById("kgvw"),hint=document.getElementById("hint");
+    if(nums.length<2){ggtEl.textContent="—";kgvEl.textContent="—";ggtw.textContent="";kgvw.textContent="";
+      hint.textContent="Mindestens zwei positive ganze Zahlen eingeben.";return;}
+    var g=nums[0], over=false;
+    var k=nums[0];
+    for(var i=1;i<nums.length;i++){
+      g=gcd(g,nums[i]);
+      var gg=gcd(k,nums[i]);
+      k=k/gg*nums[i];
+      if(!isFinite(k)||k>Number.MAX_SAFE_INTEGER)over=true;
+    }
+    ggtEl.textContent=g.toLocaleString("de-DE");
+    kgvEl.textContent=over?"zu groß":k.toLocaleString("de-DE");
+    ggtw.textContent=g>1?"= "+factorStr(g):"teilerfremd (1)";
+    kgvw.textContent=over?"":(k<=1e7?"= "+factorStr(k):"");
+    hint.textContent=(bad?"⚠️ Nicht-ganze oder ungültige Eingaben wurden ignoriert. ":"")+nums.length+" Zahlen: "+nums.join(", ");
+    hint.style.color=bad?"#b45309":"var(--muted)";
+  }
+  document.getElementById("nums").addEventListener("input",calc);
+  calc();
+})();
+</script>
+</body>
+</html>

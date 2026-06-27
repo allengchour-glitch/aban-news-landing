@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeit-Rechner — Uhrzeit plus/minus Dauer · aban news</title>
+<meta name="description" content="Kostenloser Zeit-Rechner: zu einer Uhrzeit eine Dauer addieren oder abziehen, Dauern zusammenrechnen und in Stunden/Minuten umrechnen. Mit Tagesüberlauf. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/zeitrechner.html">
+<meta property="og:title" content="Zeit-Rechner — Uhrzeit plus/minus Dauer">
+<meta property="og:description" content="Uhrzeit + Dauer addieren/abziehen, Dauern summieren, in Stunden umrechnen. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/zeitrechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Zeit-Rechner",
+"url":"https://abannews.com/zeitrechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Addiert oder subtrahiert eine Dauer zu einer Uhrzeit und rechnet Dauern in Stunden und Minuten um, mit Tagesüberlauf. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was kann der Zeit-Rechner?","acceptedAnswer":{"@type":"Answer","text":"Du gibst eine Startuhrzeit ein und eine Dauer in Stunden und Minuten. Der Rechner addiert oder subtrahiert sie und zeigt die neue Uhrzeit — inklusive Hinweis, wenn das Ergebnis auf den nächsten oder vorherigen Tag fällt."}},
+{"@type":"Question","name":"Wie addiere ich mehrere Zeitspannen?","acceptedAnswer":{"@type":"Answer","text":"Im Modus „Dauern addieren“ trägst du mehrere Dauern im Format Stunden:Minuten ein (eine pro Zeile). Der Rechner summiert sie und zeigt die Gesamtdauer sowie den Wert in Dezimalstunden — praktisch für die Abrechnung von Arbeitszeiten."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.seg button{font-size:.84rem;padding:8px 12px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:600}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input,textarea,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+textarea{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;resize:vertical;font-weight:400}
+.fld{margin-bottom:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:520px){.cols{grid-template-columns:1fr}}
+.res{margin-top:18px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.res .big{font-size:clamp(28px,7vw,42px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.88rem;color:var(--ink2);margin-top:6px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Zeit</span>-Rechner</h1>
+    <p>Zu einer Uhrzeit eine Dauer addieren oder abziehen — oder mehrere Dauern zusammenrechnen und in Dezimalstunden umwandeln. Mit Tagesüberlauf. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> „Wann bin ich fertig, wenn ich um 14:30 starte und 2 h 45 brauche?" oder „Wie viele Stunden sind 3×1:15?" — genau dafür. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="seg" id="mode">
+      <button data-m="addtime" class="on">Uhrzeit ± Dauer</button>
+      <button data-m="sum">Dauern addieren</button>
+    </div>
+    <div id="body"></div>
+    <div class="res"><div class="big" id="big">—</div><div class="sub" id="sub"></div></div>
+    <p class="note">Dauer-Format: Stunden:Minuten (z. B. 2:45) oder Minuten als Zahl. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Zeit &amp; Planung.</p>
+    <p><a class="btn" href="/zeitspanne-rechner.html">Zeitspanne-Rechner</a>
+      <a class="btn ghost" href="/arbeitstage-rechner.html">Arbeitstage</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zeitspanne-rechner.html">Zeitspanne-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var mode="addtime";
+  function parseDur(v){v=(""+v).trim();if(!v)return null;
+    if(v.indexOf(":")>=0){var p=v.split(":");var h=parseInt(p[0],10),m=parseInt(p[1],10);
+      if(isNaN(h)||isNaN(m))return null;return h*60+m;}
+    var n=parseFloat(v.replace(",","."));if(isNaN(n))return null;return Math.round(n);}
+  function parseTime(v){if(!v)return null;var p=v.split(":");if(p.length<2)return null;
+    var h=+p[0],m=+p[1];if(isNaN(h)||isNaN(m))return null;return h*60+m;}
+  function fmtClock(mins){var day=Math.floor(mins/1440);mins=((mins%1440)+1440)%1440;
+    var h=Math.floor(mins/60),m=mins%60;return{t:String(h).padStart(2,"0")+":"+String(m).padStart(2,"0"),day:day};}
+  function fmtDur(total){var neg=total<0;total=Math.abs(total);var h=Math.floor(total/60),m=total%60;
+    return (neg?"−":"")+h+" h "+String(m).padStart(2,"0")+" min";}
+  function calc(){
+    var big=document.getElementById("big"),sub=document.getElementById("sub");
+    if(mode==="addtime"){
+      var t=parseTime(document.getElementById("t").value),
+          d=parseDur(document.getElementById("d").value),
+          op=document.getElementById("op").value;
+      if(t==null||d==null){big.textContent="—";sub.textContent="Uhrzeit und Dauer eingeben.";return;}
+      var r=op==="minus"?t-d:t+d;var f=fmtClock(r);
+      big.textContent=f.t;
+      var dayTxt=f.day>0?" (+"+f.day+" Tag"+(f.day>1?"e":"")+")":f.day<0?" ("+f.day+" Tag"+(f.day<-1?"e":"")+")":"";
+      sub.textContent=(op==="minus"?"− ":"+ ")+fmtDur(d)+dayTxt;
+    } else {
+      var lines=document.getElementById("list").value.split("\n").map(function(l){return l.trim();}).filter(Boolean);
+      var total=0,ok=0,bad=false;
+      lines.forEach(function(l){var d=parseDur(l);if(d==null){bad=true;}else{total+=d;ok++;}});
+      if(ok===0){big.textContent="—";sub.textContent="Mindestens eine Dauer eingeben (z. B. 1:30).";return;}
+      big.textContent=fmtDur(total);
+      sub.textContent=ok+" Dauern · "+(total/60).toLocaleString("de-DE",{maximumFractionDigits:2})+" Dezimalstunden"+(bad?" · ⚠️ ungültige Zeilen ignoriert":"");
+    }
+  }
+  function setMode(m){mode=m;var b=document.getElementById("body");
+    if(m==="addtime"){
+      b.innerHTML='<div class="cols">'+
+        '<div class="fld"><label for="t">Uhrzeit</label><input id="t" type="time" value="14:30"></div>'+
+        '<div class="fld"><label for="op">Rechnung</label><select id="op"><option value="plus">plus (+)</option><option value="minus">minus (−)</option></select></div>'+
+        '<div class="fld"><label for="d">Dauer (h:min)</label><input id="d" type="text" inputmode="numeric" value="2:45"></div>'+
+        '</div>';
+      ["t","op","d"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+    } else {
+      b.innerHTML='<div class="fld"><label for="list">Dauern (eine pro Zeile, h:min)</label><textarea id="list" rows="4">1:30\n0:45\n2:15</textarea></div>';
+      document.getElementById("list").addEventListener("input",calc);
+    }
+    calc();
+  }
+  document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");});
+    this.classList.add("on");setMode(this.getAttribute("data-m"));});});
+  setMode("addtime");
+})();
+</script>
+</body>
+</html>
