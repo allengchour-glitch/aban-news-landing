@@ -69,8 +69,13 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   (Self-host/Enterprise-iPaaS mit unklarer EU-Region: Activepieces, Workato, Tray, UiPath, AA,
   Albato, Latenode, Boomi, Celigo, Cyclr/UK, Windmill, Trigger.dev/UK, Temporal).
 
+- **dropshipping-radar (22 Tools):** Marker gehoben. Hier meint `eu_lager` = **EU-Warenlager**:
+  5 `true` (BigBuy/ES, vidaXL/NL, Printful, Gelato, Brandsdistribution/IT), 4 `false` (US-Lager:
+  DSers/AliExpress, Zendrop, Sellvia, Trendsi), 13 `null` (Plattformen/Marktplätze ohne eigenes
+  Lager bzw. gemischte Standorte: Shopify, WooCommerce, Spocket, Syncee, CJ, Printify u. a.).
+
 ## Offen (gleicher Ansatz, nächste Radars)
-dropshipping-radar
+`data/tools.json` (Haupt-Tool-Liste, 33 offene Marker) — als nächstes.
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 
