@@ -48,6 +48,8 @@
       ["Rechnung Vorlagen Bundle Schweiz", "/rechnung-vorlagen-bundle.html", "Leistungen", "Rechnung, Angebot & Mahnung für CH — Download CHF 29"],
       ["Datenschutzerklärung Vorlage Schweiz", "/datenschutzerklaerung-vorlage-schweiz.html", "Leistungen", "nDSG-konforme Datenschutzerklärung für Websites & KMU — Download CHF 49"],
       ["Arbeitsvertrag Vorlage Schweiz", "/arbeitsvertrag-vorlage-schweiz.html", "Leistungen", "OR-konformer Musterarbeitsvertrag CH — Download CHF 39"],
+      ["Mietvertrag Vorlage Schweiz", "/mietvertrag-vorlage-schweiz.html", "Leistungen", "OR/VMWG-konformer Mietvertrag Wohnung & Gewerbe — Download CHF 49"],
+      ["AHV-Rechner Freelancer Schweiz", "/ahv-rechner-freelancer.html", "Business", "AHV/IV/EO-Beiträge 2025 kostenlos berechnen (10.1%)"],
       ["KI-Themen A–Z (Übersicht)", "/ki-themen.html", "Start", "Alle KI-Ratgeber & Erklärungen auf einen Blick"],
       ["Universal-Suche", "/suche.html", "Start", "Jobs, Angebote & Inserate mit einer Suche auf einmal"],
       ["Kaufberater Schweiz (Übersicht)", "/kaufberater-schweiz.html", "Start", "Alle 244 ehrlichen Kaufberater auf einen Blick"],

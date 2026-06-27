@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AHV-Rechner Freelancer Schweiz 2025 — kostenlos berechnen</title>
+<meta name="description" content="Kostenloser AHV-Rechner für Selbstständige in der Schweiz: AHV/IV/EO-Beiträge berechnen (2025), Beitragssatz 10.1%, Mindestbeitrag CHF 514/Jahr. Lokal im Browser.">
+<link rel="canonical" href="https://abannews.com/ahv-rechner-freelancer.html">
+<meta property="og:title" content="AHV-Rechner Freelancer Schweiz 2025 — kostenlos">
+<meta property="og:description" content="Berechne deine AHV/IV/EO-Beiträge als Selbstständiger: Beitragssatz 10.1%, Mindestbeitrag CHF 514, ALV und Freibetrag berücksichtigt.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--amber:#b45309;--cream:#fffbeb;--muted:#6b7280;--dk:#1f2937;--green:#15803d}
+body{margin:0;font-family:system-ui,sans-serif;color:var(--dk);background:#fff;line-height:1.6}
+.hero{background:linear-gradient(135deg,#1f2937,#1e3a1a 55%,#15803d);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"🧮";position:absolute;right:-18px;top:-14px;font-size:130px;opacity:.08}
+.hero .in{max-width:780px;margin:0 auto;padding:38px 18px 34px;position:relative;z-index:1}
+.hero h1{margin:0 0 10px;font-size:clamp(1.45rem,4vw,2.1rem);font-weight:800;line-height:1.22}
+.hero p{margin:0;opacity:.88;font-size:1.05rem}
+main{max-width:780px;margin:0 auto;padding:28px 18px 48px}
+h2{font-size:1.25rem;font-weight:700;border-left:4px solid var(--amber);padding-left:10px;margin-top:34px}
+.calc-box{background:var(--cream);border:2px solid var(--amber);border-radius:16px;padding:26px 28px;margin:24px 0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:540px){.field-row{grid-template-columns:1fr}}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:4px;color:#374151}
+input,select{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:1rem;box-sizing:border-box;background:#fff}
+input:focus,select:focus{outline:2px solid var(--amber);border-color:transparent}
+.calc-btn{background:var(--amber);color:#fff;border:none;padding:14px 32px;border-radius:10px;font-weight:800;font-size:1.05rem;cursor:pointer;margin-top:8px;width:100%}
+.result-box{background:#fff;border:1px solid #d1d5db;border-radius:12px;padding:20px;margin-top:16px;display:none}
+.result-box.show{display:block}
+.res-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:.95rem}
+.res-row:last-child{border-bottom:none;font-weight:700;font-size:1.05rem;padding-top:12px}
+.res-label{color:#374151}
+.res-val{font-weight:600;color:var(--dk)}
+.res-total{color:var(--amber)}
+.note-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px 16px;margin:20px 0;font-size:.9rem}
+details{border:1px solid #e5e7eb;border-radius:10px;margin:10px 0;padding:0}
+summary{padding:13px 16px;cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"＋";color:var(--amber)}
+details[open] summary::after{content:"－"}
+details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin:18px 0}
+th{background:var(--dk);color:#fff;text-align:left;padding:9px 11px}
+td{padding:8px 11px;border-bottom:1px solid #e5e7eb}
+tr:nth-child(even) td{background:#f9fafb}
+.cta{display:inline-block;background:var(--amber);color:#fff;padding:12px 26px;border-radius:9px;font-weight:700;text-decoration:none;margin-top:8px}
+.rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="in">
+    <div style="font-size:2.2rem;margin-bottom:8px">🧮</div>
+    <h1>AHV-Rechner für Freelancer Schweiz 2025</h1>
+    <p>AHV/IV/EO-Beiträge als Selbstständige:r schnell berechnen — inklusive Sonderregelung, Mindestbeitrag und Rücklagen-Empfehlung. Kostenlos, lokal im Browser.</p>
+  </div>
+</header>
+<main>
+  <div class="calc-box">
+    <div class="field-row">
+      <div>
+        <label for="einkommen">Jahreseinkommen (Reingewinn CHF)</label>
+        <input type="number" id="einkommen" min="0" max="9999999" step="100" value="80000" placeholder="z. B. 80000">
+      </div>
+      <div>
+        <label for="alv">ALV/Pensionskasse abziehen?</label>
+        <select id="alv">
+          <option value="0">Nein (reine AHV-Berechnung)</option>
+          <option value="1" selected>Ja — BVG-Beitrag schätzen</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div>
+        <label for="kanton">Kanton (für kantonale Ausgleichskasse)</label>
+        <select id="kanton">
+          <option value="ZH">Zürich</option>
+          <option value="BE" selected>Bern</option>
+          <option value="VD">Waadt</option>
+          <option value="AG">Aargau</option>
+          <option value="SG">St. Gallen</option>
+          <option value="GE">Genf</option>
+          <option value="LU">Luzern</option>
+          <option value="TI">Tessin</option>
+          <option value="andere">Anderer Kanton</option>
+        </select>
+      </div>
+      <div>
+        <label for="alter">Alter</label>
+        <select id="alter">
+          <option value="voll" selected>unter 65 (volle Beiträge)</option>
+          <option value="pensioniert">65+ (AHV-Altersbeitrag, 50%)</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="berechne()">Beiträge berechnen →</button>
+    <div class="result-box" id="result">
+      <div class="res-row"><span class="res-label">Reingewinn (Basis)</span><span class="res-val" id="r-einkommen">—</span></div>
+      <div class="res-row"><span class="res-label">AHV/IV/EO-Beitrag (10.1 %)</span><span class="res-val" id="r-ahv">—</span></div>
+      <div class="res-row"><span class="res-label">Verwaltungskosten Ausgleichskasse (ca. 2–6 %)</span><span class="res-val" id="r-verwalt">—</span></div>
+      <div class="res-row"><span class="res-label" id="bvg-label">BVG-Schätzung (ca. 18 % des koordinierten Lohns)</span><span class="res-val" id="r-bvg">—</span></div>
+      <div class="res-row"><span class="res-label">➡️ Gesamte Sozialversicherungskosten (Schätzung)</span><span class="res-val res-total" id="r-total">—</span></div>
+      <div class="res-row" style="border-bottom:none;font-size:.88rem;color:var(--muted);font-weight:400"><span>Empfohlene Rücklage (% vom Einkommen)</span><span id="r-ruecklage">—</span></div>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:12px">⚠️ Schätzung, keine Steuerberatung. Massgebend ist die Verfügung Ihrer kantonalen Ausgleichskasse.</p>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>📌 Wichtigste Zahlen 2025:</strong> AHV/IV/EO-Beitragssatz Selbstständige = <strong>10.1 %</strong> (Angestellte: 5.3 % + AG 5.3 %). Mindestbeitrag: <strong>CHF 514/Jahr</strong>. Einkommensfreibetrag: <strong>CHF 17'800</strong> (nur Beitragsberechnung, nicht steuerfrei). Verwaltungskosten der Ausgleichskasse: je nach AK 2–6 % des AHV-Beitrags.
+  </div>
+
+  <h2>AHV-Beitragsplan Selbstständige 2025</h2>
+  <table>
+    <tr><th>Jahreseinkommen</th><th>AHV/IV/EO-Beitrag</th><th>Satz</th><th>Monatliche Rücklage</th></tr>
+    <tr><td>unter CHF 9'800</td><td>Mindestbeitrag CHF 514/Jahr</td><td>Pauschal</td><td>CHF 43</td></tr>
+    <tr><td>CHF 9'800–17'800</td><td>gleitende Skala (5.371–10.1 %)</td><td>gleitend</td><td>CHF 44–150</td></tr>
+    <tr><td>CHF 17'800–58'800</td><td>10.1 % auf den Gewinn</td><td>10.1 %</td><td>CHF 150–495</td></tr>
+    <tr><td>CHF 58'800–120'000</td><td>10.1 % (max. CHF 12'120)</td><td>10.1 %</td><td>CHF 495–1'010</td></tr>
+    <tr><td>CHF 120'000+</td><td>fixe 10.1 % (kein AHV-Maximum!)</td><td>10.1 %</td><td>CHF 1'010+</td></tr>
+  </table>
+  <p style="font-size:.85rem;color:var(--muted)">Hinweis: Bei Selbstständigen gibt es — anders als beim Angestellten-Lohn — <strong>keine AHV-Obergrenze</strong> (bis Versicherter-Rentenalter). Alle Einnahmen sind beitragspflichtig.</p>
+
+  <h2>Häufige Fragen</h2>
+  <details>
+    <summary>Wann muss ich mich bei der Ausgleichskasse anmelden?</summary>
+    <div>Sobald du <strong>selbstständig erwerbstätig</strong> bist (keine Abhängigkeit von einem Arbeitgeber, auf eigene Rechnung). Die Anmeldung erfolgt bei der <strong>kantonalen Ausgleichskasse</strong> deines Wohnsitzes oder der Berufsverbands-AK. Frist: innerhalb 3 Monaten nach Aufnahme der selbstständigen Tätigkeit. Ohne Anmeldung entstehen Verzugszinsen (5 % p.a.).</div>
+  </details>
+  <details>
+    <summary>Wie werden AHV-Beiträge berechnet?</summary>
+    <div>Basis ist der <strong>steuerrechtliche Reingewinn</strong> (Einnahmen minus Betriebskosten). Davon wird der Einkommensfreibetrag von CHF 17'800 abgezogen. Auf den verbleibenden Betrag werden 10.1 % (AHV 8.7 % + IV 1.4 %) berechnet. Achtung: Altersversicherungs-Beiträge selbst sind <strong>nicht</strong> abzugsfähig bei der eigenen AHV-Berechnung (im Gegensatz zu Pensionskasse).</div>
+  </details>
+  <details>
+    <summary>Was ist die Ausgleichskasse und welche soll ich wählen?</summary>
+    <div>Ausgleichskassen (AK) verwalten die AHV-Beiträge. Es gibt <strong>kantonale AKs</strong> und <strong>Verbands-AKs</strong> (z. B. Gewerbeverband, Coopzeiger, Suisa). Die Verwaltungskosten variieren (2–6 % auf den AHV-Beitrag). Mitglieder eines Berufsverbands profitieren oft von tieferen Kosten. Kantonale AK ist immer eine Option, wenn kein Verband existiert.</div>
+  </details>
+  <details>
+    <summary>Brauche ich als Freelancer auch eine Pensionskasse (BVG)?</summary>
+    <div>Selbstständige sind <strong>nicht obligatorisch</strong> der beruflichen Vorsorge (BVG) angeschlossen. Du kannst aber freiwillig in die Pensionskasse einzahlen — entweder über einen Verband oder die Auffangeinrichtung (BVG-Sammelstiftung). Alternativ ermöglicht die <strong>Säule 3a</strong> steuerlich privilegiertes Sparen (max. CHF 7'056/Jahr 2025). Selbstständige ohne PK können bis CHF 35'280 (20 % des Einkommens, max.) in die Säule 3a einzahlen.</div>
+  </details>
+  <details>
+    <summary>Welche Rücklagen sollte ich als Freelancer bilden?</summary>
+    <div>Daumenregel für Schweizer Freelancer: <strong>25–30 % des Brutto-Einkommens</strong> zurücklegen:
+    <ul style="margin:8px 0;padding-left:18px">
+      <li>~10 % AHV/IV/EO</li>
+      <li>~2–3 % Verwaltungskosten AK</li>
+      <li>~10–15 % Einkommenssteuern (kantonsabhängig)</li>
+      <li>~5–8 % Pensionskasse / Säule 3a</li>
+    </ul>
+    Separate Rücklagenkonto führen — nicht im Geschäftskonto lassen.</div>
+  </details>
+
+  <div style="margin-top:28px;background:var(--cream);border:1px solid #f3dca0;border-radius:12px;padding:18px;text-align:center">
+    <strong style="font-size:1.05rem">📄 Brauche eine Steuererklärung-Checkliste?</strong>
+    <p style="font-size:.9rem;color:var(--muted);margin:8px 0 12px">Freelancer Steuer-Checkliste CH: AHV, MWST, Abzüge & Fristen. Download CHF 19.</p>
+    <a class="cta" href="/freelancer-steuern-checkliste.html">Checkliste ansehen →</a>
+  </div>
+
+  <div data-ad-slot="landing-mid" style="margin-top:28px"></div>
+  <p class="rel">Weitere Tools für Freelancer: <a href="/stundensatz-freelancer.html">Stundensatz-Rechner</a> · <a href="/mwst-rechner.html">MWST-Rechner</a> · <a href="/rechnung-generator.html">Rechnung-Generator gratis</a></p>
+  <p class="rel">Verwandte Themen: <a href="/scheinselbststaendigkeit.html">Scheinselbstständigkeit CH</a> · <a href="/freelancer-steuern-checkliste.html">Steuer-Checkliste CHF 19</a> · <a href="/ki-automation.html">KI-Automation für KMU</a></p>
+
+  <section style="margin-top:26px;background:var(--cream);border:1px solid #f3dca0;border-radius:14px;padding:18px;text-align:center">
+    <strong style="font-size:1.05rem">📬 Gratis: Freelancer-Tipps aus der Schweiz</strong>
+    <p style="margin:8px 0 14px;font-size:.9rem;color:var(--muted)">Einmal pro Woche — kein Spam.</p>
+    <a href="/stellenangebote.html" style="background:var(--amber);color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700">Jobs &amp; Deals ansehen</a>
+  </section>
+</main>
+<script>
+function chf(n){return 'CHF '+Math.round(n).toLocaleString('de-CH');}
+function berechne(){
+  var ein = parseFloat(document.getElementById('einkommen').value)||0;
+  var bvgAn = document.getElementById('alv').value==='1';
+  var alter = document.getElementById('alter').value;
+  var satz = alter==='pensioniert' ? 0.05 : 0.101;
+  var freibetrag = 17800;
+  var basis = Math.max(0, ein - freibetrag);
+  if(ein < 9800){ var ahv = 514; }
+  else if(ein < freibetrag){ ahv = Math.round(basis * satz * 0.5 + 514/2); }
+  else { ahv = Math.round(basis * satz); }
+  var mindest = alter==='pensioniert' ? 257 : 514;
+  ahv = Math.max(ahv, mindest);
+  var verwalt = Math.round(ahv * 0.04);
+  var bvg = bvgAn ? Math.round(Math.max(0, ein - 26460) * 0.18) : 0;
+  var total = ahv + verwalt + bvg;
+  var rueck = Math.round(total / ein * 100);
+  document.getElementById('r-einkommen').textContent = chf(ein);
+  document.getElementById('r-ahv').textContent = chf(ahv);
+  document.getElementById('r-verwalt').textContent = chf(verwalt);
+  document.getElementById('r-bvg').textContent = bvgAn ? chf(bvg) : 'nicht einbez.';
+  document.getElementById('bvg-label').textContent = bvgAn ? 'BVG-Schätzung (ca. 18% des koordinierten Lohns)' : 'BVG (ausgeblendet)';
+  document.getElementById('r-total').textContent = chf(total);
+  document.getElementById('r-ruecklage').textContent = rueck + '% des Einkommens';
+  document.getElementById('result').classList.add('show');
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question","name": "Wie hoch ist der AHV-Beitrag für Selbstständige 2025?","acceptedAnswer": {"@type": "Answer","text": "Selbstständige zahlen in der Schweiz 10.1 % (AHV 8.7 % + IV 1.4 %) auf den Reingewinn. Hinzu kommen Verwaltungskosten der Ausgleichskasse (2–6 %). Mindestbeitrag: CHF 514 pro Jahr (2025). Einkommensfreibetrag: CHF 17'800."}},
+    {"@type": "Question","name": "Wann muss ich mich als Freelancer bei der AHV anmelden?","acceptedAnswer": {"@type": "Answer","text": "Innerhalb von 3 Monaten nach Aufnahme der selbstständigen Tätigkeit bei der kantonalen Ausgleichskasse des Wohnsitzes oder einer Verbands-AK. Ohne Anmeldung fallen Verzugszinsen von 5 % p.a. an."}},
+    {"@type": "Question","name": "Brauche ich als Freelancer eine Pensionskasse?","acceptedAnswer": {"@type": "Answer","text": "Nein — Selbstständige sind nicht obligatorisch BVG-pflichtig. Sie können freiwillig einzahlen oder über die Säule 3a (max. CHF 35'280 oder 20 % des Einkommens) vorsorgen."}},
+    {"@type": "Question","name": "Was sollte ich als Freelancer monatlich zurücklegen?","acceptedAnswer": {"@type": "Answer","text": "Daumenregel: 25–30 % des Brutto-Einkommens. Davon ca. 10 % AHV/IV, 2–3 % Verwaltungskosten, 10–15 % Steuern, 5–8 % Säule 3a / BVG. Separate Rücklagenkonto empfohlen."}}
+  ]
+}
+</script>
+</body>
+</html>
