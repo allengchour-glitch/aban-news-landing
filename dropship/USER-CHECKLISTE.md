@@ -65,6 +65,9 @@
 **Optional:**
 - [ ] `JUDGEME_PRIVATE_TOKEN` + `JUDGEME_SHOP_DOMAIN=au3j0y-hq.myshopify.com` → echte Reviews importieren (`reviews-import.mjs`).
 - [ ] `YT_CLIENT_ID` / `YT_CLIENT_SECRET` / `YT_REFRESH_TOKEN` → YouTube-Shorts-Auto-Upload (Tool existiert).
+- [ ] **`YT_API_KEY`** → **24/7 Wissenssammler** (`youtube-learn.yml`, alle 2 h): lernt echte YouTube-Trends
+      (Hooks/Hashtags/Keywords) → `automation/youtube-learnings.md` (geteilte Memory). Key: Google Cloud →
+      „YouTube Data API v3" aktivieren → Anmeldedaten → API-Schlüssel. Ohne Key sauberer No-op.
 
 > Ohne Secrets passiert **nichts Schlimmes**: alle Workflows sind no-op-safe (sauberer Leerlauf).
 

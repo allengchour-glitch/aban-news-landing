@@ -37,6 +37,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-27 (WISSENSSAMMLER — 24/7 YouTube-Lernen → geteilte Memory):**
+- **Neu gebaut:** `automation/learn_from_youtube.mjs` + `.github/workflows/youtube-learn.yml` (Cron **alle 2 h, rund
+  um die Uhr**). Zieht echte YouTube-Daten zu allen Themen (Mode/Reels, Dropshipping-Strategie, KI-News),
+  destilliert **Hooks/Trend-Hashtags/Keywords** → `automation/youtube-learnings.md` (geteilte Memory, neueste
+  Läufe oben, jede Session liest sie) + Reel-Pool `automation/learned_youtube_pools.sh`. No-op-safe, nur echte
+  API-Daten (keine erfundenen Fakten), Hooks = Inspiration nicht kopieren.
+- **User-Schritt (1×):** Repo-Secret **`YT_API_KEY`** setzen (Google Cloud → YouTube Data API v3 → API-Schlüssel).
+  Ohne Key sauberer Leerlauf. Quota-sicher (~4.920 von 10.000 Einheiten/Tag).
+
 **📌 2026-06-27 (LIVE-AUDIT — Shopify-Token via Client-Credentials, ZUERST LESEN):**
 - **✅ Live-Zugriff lief** (User pastete Client-ID + `shpss_`-Schlüssel im Chat → Admin-Token per Client-Credentials,
   in-Memory, NICHT im Repo). Damit erstmals seit Wochen wieder echte Shop-Queries.

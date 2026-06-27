@@ -1,0 +1,46 @@
+name: YouTube Learn (24/7 Wissenssammler → geteilte Memory)
+
+# Sammelt rund um die Uhr echte YouTube-Daten zu allen Projekt-Themen (Mode/Reels, Dropshipping,
+# KI-News) und destilliert Hooks/Trend-Hashtags/Keywords nach automation/youtube-learnings.md
+# (geteilte Memory, die jede Session liest) + automation/learned_youtube_pools.sh (Reel-Hashtags).
+# No-op-safe: ohne Secret YT_API_KEY passiert nichts. Nur echte API-Daten, keine erfundenen Fakten.
+#
+# Quota-Hinweis: YouTube Data API v3 = 10.000 Einheiten/Tag. search.list=100/Aufruf, 4 Themen/Lauf
+# → ~410 Einheiten/Lauf. Alle 2 h = 12 Läufe/Tag ≈ 4.920 Einheiten — sicher im Limit, „durch den Tag".
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'        # alle 2 Stunden, rund um die Uhr
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: youtube-learn
+  cancel-in-progress: false
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Wissenssammeln aus YouTube
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: node automation/learn_from_youtube.mjs
+      - name: Commit gesammeltes Wissen
+        run: |
+          if ! git diff --quiet -- automation/youtube-learnings.md automation/learned_youtube_pools.sh ; then
+            git config user.name "luxestyle-learn-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add automation/youtube-learnings.md automation/learned_youtube_pools.sh
+            git commit -m "chore(learn): YouTube-Wissenslauf → geteilte Memory [skip ci]"
+            git push
+          else
+            echo "Keine neuen Lerndaten (No-op ohne YT_API_KEY oder ohne Quota)."
+          fi
