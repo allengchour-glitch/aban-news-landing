@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MWST-Rechner Schweiz — 8,1 % / 2,6 % / 3,8 % berechnen · aban news</title>
+<meta name="description" content="Kostenloser MWST-Rechner für die Schweiz: Mehrwertsteuer mit 8,1 %, 2,6 % oder 3,8 % aufschlagen oder herausrechnen — Netto, MWST-Betrag und Brutto auf einen Blick. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/mwst-rechner-schweiz.html">
+<meta property="og:title" content="MWST-Rechner Schweiz — 8,1 % / 2,6 % / 3,8 %">
+<meta property="og:description" content="Schweizer Mehrwertsteuer aufschlagen oder herausrechnen — Netto, MWST & Brutto. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/mwst-rechner-schweiz.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"MWST-Rechner Schweiz",
+"url":"https://abannews.com/mwst-rechner-schweiz.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de-CH","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},
+"description":"Berechnet die Schweizer Mehrwertsteuer (8,1 %, 2,6 %, 3,8 %): aufschlagen oder herausrechnen, mit Netto, MWST-Betrag und Brutto. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Welche MWST-Sätze gelten in der Schweiz?","acceptedAnswer":{"@type":"Answer","text":"Seit 1. Januar 2024 gilt der Normalsatz 8,1 %, der reduzierte Satz 2,6 % (z. B. Lebensmittel, Bücher, Medikamente) und der Sondersatz für Beherbergung 3,8 %. Wähle im Rechner den passenden Satz."}},
+{"@type":"Question","name":"Wie rechne ich die MWST aus einem Bruttobetrag heraus?","acceptedAnswer":{"@type":"Answer","text":"Du teilst den Bruttobetrag durch 1 plus den Satz. Beispiel bei 8,1 %: Netto = Brutto ÷ 1,081. Die MWST ist die Differenz. Im Modus „herausrechnen“ macht der Rechner das automatisch."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert. Für die verbindliche Abrechnung gilt die Eidgenössische Steuerverwaltung."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.seg button{font-size:.84rem;padding:8px 12px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:600}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}
+.unit input{font:inherit;padding:11px 48px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.82rem}
+.fld{margin-bottom:12px}
+.res{margin-top:6px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:520px){.res{grid-template-columns:1fr}}
+.rc{background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.rc .lab{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);font-weight:700}
+.rc .big{font-size:clamp(20px,5vw,28px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">MWST-Rechner</span> Schweiz</h1>
+    <p>Schweizer Mehrwertsteuer (8,1 % · 2,6 % · 3,8 %) aufschlagen oder herausrechnen — Netto, MWST-Betrag und Brutto sofort. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Hast du einen Netto-Preis und willst die MWST <strong>drauf</strong>? → „aufschlagen". Hast du einen Brutto-Preis (inkl. MWST) und willst die Steuer <strong>raus</strong>? → „herausrechnen". Seit 2024: Normalsatz 8,1 %. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="seg" id="mode">
+      <button data-m="add" class="on">MWST aufschlagen (Netto → Brutto)</button>
+      <button data-m="extract">MWST herausrechnen (Brutto → Netto)</button>
+    </div>
+    <div class="fld"><label for="betrag" id="lbl">Netto-Betrag</label><div class="unit"><input id="betrag" type="number" inputmode="decimal" value="100" min="0"><span>CHF</span></div></div>
+    <div class="fld"><label for="satz">MWST-Satz</label>
+      <div class="seg" id="rate">
+        <button data-r="8.1" class="on">8,1 % Normal</button>
+        <button data-r="2.6">2,6 % reduziert</button>
+        <button data-r="3.8">3,8 % Beherbergung</button>
+        <button data-r="0">0 % / eigener</button>
+      </div>
+      <div class="unit" id="customWrap" hidden><input id="custom" type="number" inputmode="decimal" value="8.1" step="0.1"><span>%</span></div>
+    </div>
+    <div class="res">
+      <div class="rc"><div class="lab">Netto</div><div class="big" id="o-netto">—</div></div>
+      <div class="rc"><div class="lab">MWST</div><div class="big" id="o-mwst">—</div></div>
+      <div class="rc"><div class="lab">Brutto</div><div class="big" id="o-brutto">—</div></div>
+    </div>
+    <p class="note">Sätze seit 1.1.2024: Normal 8,1 % · reduziert 2,6 % · Beherbergung 3,8 %. Verbindlich ist die ESTV. Alles lokal.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">fürs Geschäftliche.</p>
+    <p><a class="btn" href="/freelancer-cockpit.html">Freelancer-Cockpit</a>
+      <a class="btn ghost" href="/mehrwertsteuer-eu.html">MwSt EU</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ehrliche Tipps für Selbstständige in der Schweiz — werktäglich 5 Min</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/freelancer-cockpit.html">Freelancer-Cockpit</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var mode="add", rate=8.1;
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function chf(n){return (isFinite(n)?n:0).toLocaleString("de-CH",{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function calc(){
+    var b=num("betrag");var r=rate;
+    var netto,mwst,brutto;
+    if(!isFinite(b)){document.getElementById("o-netto").textContent="—";document.getElementById("o-mwst").textContent="—";document.getElementById("o-brutto").textContent="—";return;}
+    if(mode==="add"){netto=b;mwst=b*r/100;brutto=netto+mwst;}
+    else{brutto=b;netto=b/(1+r/100);mwst=brutto-netto;}
+    document.getElementById("o-netto").textContent=chf(netto);
+    document.getElementById("o-mwst").textContent=chf(mwst);
+    document.getElementById("o-brutto").textContent=chf(brutto);
+  }
+  document.querySelectorAll("#mode button").forEach(function(x){x.addEventListener("click",function(){
+    document.querySelectorAll("#mode button").forEach(function(y){y.classList.remove("on");});this.classList.add("on");
+    mode=this.getAttribute("data-m");
+    document.getElementById("lbl").textContent=mode==="add"?"Netto-Betrag":"Brutto-Betrag (inkl. MWST)";calc();});});
+  document.querySelectorAll("#rate button").forEach(function(x){x.addEventListener("click",function(){
+    document.querySelectorAll("#rate button").forEach(function(y){y.classList.remove("on");});this.classList.add("on");
+    var r=this.getAttribute("data-r");var cw=document.getElementById("customWrap");
+    if(r==="0"){cw.hidden=false;rate=num("custom")||0;}else{cw.hidden=true;rate=parseFloat(r);}calc();});});
+  document.getElementById("custom").addEventListener("input",function(){rate=num("custom")||0;calc();});
+  document.getElementById("betrag").addEventListener("input",calc);
+  calc();
+})();
+</script>
+</body>
+</html>

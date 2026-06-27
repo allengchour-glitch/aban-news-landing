@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feiertage & Arbeitstage Schweiz — pro Kanton berechnen · aban news</title>
+<meta name="description" content="Kostenloser Schweizer Feiertags- & Arbeitstage-Rechner: Wähle deinen Kanton, sieh die Feiertage des Jahres und zähle die Arbeitstage zwischen zwei Daten — ohne Wochenende und Feiertage. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/feiertage-arbeitstage-kanton.html">
+<meta property="og:title" content="Feiertage & Arbeitstage Schweiz — pro Kanton">
+<meta property="og:description" content="Kanton wählen → Feiertage des Jahres + Arbeitstage zwischen zwei Daten zählen (ohne Wochenende & Feiertage). Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/feiertage-arbeitstage-kanton.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Feiertage & Arbeitstage Schweiz",
+"url":"https://abannews.com/feiertage-arbeitstage-kanton.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de-CH","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},
+"description":"Zeigt die Schweizer Feiertage pro Kanton und zählt die Arbeitstage zwischen zwei Daten ohne Wochenende und Feiertage. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Warum sind Feiertage je Kanton verschieden?","acceptedAnswer":{"@type":"Answer","text":"In der Schweiz ist nur der 1. August ein landesweiter gesetzlicher Feiertag. Alle anderen legen die Kantone fest. Darum zeigt der Rechner die gängigen Feiertage deines Kantons — du kannst jeden einzelnen an- oder abwählen, falls in deiner Gemeinde etwas abweicht."}},
+{"@type":"Question","name":"Wie werden bewegliche Feiertage wie Ostern berechnet?","acceptedAnswer":{"@type":"Answer","text":"Karfreitag, Ostermontag, Auffahrt, Pfingstmontag und Fronleichnam hängen vom Osterdatum ab. Der Rechner berechnet Ostern für jedes Jahr automatisch (gregorianische Osterformel) und leitet die übrigen Tage davon ab."}},
+{"@type":"Question","name":"Ist die Feiertagsliste verbindlich?","acceptedAnswer":{"@type":"Answer","text":"Es ist eine gängige Auswahl je Kanton; regionale oder halbe Feiertage können abweichen. Im Zweifel prüfe die offizielle Liste deines Kantons. Du kannst die Auswahl anpassen. Alles wird lokal berechnet."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:560px){.cols,.cols3{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.res{margin-top:6px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.res .big{font-size:clamp(26px,7vw,38px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.86rem;color:var(--ink2);margin-top:4px}
+.hl{margin-top:14px}
+.hl h3{font-size:.95rem;margin-bottom:8px;color:var(--ink2)}
+.hday{display:flex;align-items:center;gap:9px;padding:6px 0;border-top:1px solid var(--line);font-size:.9rem}
+.hday input{width:auto}
+.hday .d{color:var(--muted);font-variant-numeric:tabular-nums;flex:0 0 96px}
+.hday .n{flex:1}
+.hday .wd{color:var(--muted);font-size:.8rem}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Feiertage & Arbeitstage</span><br>Schweiz — pro Kanton</h1>
+    <p>Wähl deinen Kanton: Sieh die Feiertage des Jahres und zähl die Arbeitstage zwischen zwei Daten — ohne Wochenende und Feiertage. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> In der Schweiz ist nur der <strong>1. August</strong> landesweit Feiertag — der Rest ist <strong>kantonal</strong>. Wähl deinen Kanton, passe einzelne Feiertage bei Bedarf an, und der Rechner zählt deine echten Arbeitstage. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols3">
+      <div class="fld"><label for="kanton">Kanton</label><select id="kanton"></select></div>
+      <div class="fld"><label for="start">Von</label><input id="start" type="date"></div>
+      <div class="fld"><label for="end">Bis</label><input id="end" type="date"></div>
+    </div>
+    <div class="res"><div class="big" id="days">—</div><div class="sub" id="sub"></div></div>
+    <div class="hl"><h3 id="hl-title">Feiertage</h3><div id="hl-list"></div></div>
+    <p class="note">Mo–Fr gezählt, Feiertage (angehakt) abgezogen. Gängige Auswahl je Kanton — regionale/halbe Feiertage können abweichen, einzeln anpassbar. Alles lokal.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Planung &amp; Zeit.</p>
+    <p><a class="btn" href="/arbeitstage-rechner.html">Arbeitstage-Rechner</a>
+      <a class="btn ghost" href="/zeitspanne-rechner.html">Zeitspanne</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ehrliche Tipps für Selbstständige in der Schweiz — werktäglich 5 Min</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/arbeitstage-rechner.html">Arbeitstage-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  // Osterdatum (gregorianisch, Meeus/Jones/Butcher)
+  function easter(y){var a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1;return new Date(y,mo-1,da);}
+  function off(base,n){var d=new Date(base);d.setDate(d.getDate()+n);return d;}
+  // Feiertags-Definitionen: name + Datumsfunktion(jahr)->Date
+  var HOL={
+    neujahr:["Neujahr",function(y){return new Date(y,0,1);}],
+    berchtold:["Berchtoldstag",function(y){return new Date(y,0,2);}],
+    dreikoenige:["Heilige Drei Könige",function(y){return new Date(y,0,6);}],
+    josef:["Josefstag",function(y){return new Date(y,2,19);}],
+    karfreitag:["Karfreitag",function(y){return off(easter(y),-2);}],
+    ostermontag:["Ostermontag",function(y){return off(easter(y),1);}],
+    tagderarbeit:["Tag der Arbeit",function(y){return new Date(y,4,1);}],
+    auffahrt:["Auffahrt",function(y){return off(easter(y),39);}],
+    pfingstmontag:["Pfingstmontag",function(y){return off(easter(y),50);}],
+    fronleichnam:["Fronleichnam",function(y){return off(easter(y),60);}],
+    nationalfeiertag:["Bundesfeier (1. August)",function(y){return new Date(y,7,1);}],
+    mariahimmelfahrt:["Mariä Himmelfahrt",function(y){return new Date(y,7,15);}],
+    allerheiligen:["Allerheiligen",function(y){return new Date(y,10,1);}],
+    mariaempfaengnis:["Mariä Empfängnis",function(y){return new Date(y,11,8);}],
+    weihnachten:["Weihnachten",function(y){return new Date(y,11,25);}],
+    stephan:["Stephanstag",function(y){return new Date(y,11,26);}]
+  };
+  var BASE=["neujahr","auffahrt","nationalfeiertag","weihnachten"]; // landesweit gebräuchlich
+  var KT={
+    ZH:["Zürich",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","stephan"]],
+    BE:["Bern",["berchtold","karfreitag","ostermontag","pfingstmontag","stephan"]],
+    LU:["Luzern",["berchtold","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    UR:["Uri",["dreikoenige","josef","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    SZ:["Schwyz",["dreikoenige","josef","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    OW:["Obwalden",["karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    NW:["Nidwalden",["josef","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    GL:["Glarus",["berchtold","karfreitag","ostermontag","pfingstmontag","allerheiligen","stephan"]],
+    ZG:["Zug",["berchtold","karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    FR:["Freiburg",["karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","stephan"]],
+    SO:["Solothurn",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","stephan"]],
+    BS:["Basel-Stadt",["karfreitag","ostermontag","tagderarbeit","pfingstmontag","stephan"]],
+    BL:["Basel-Landschaft",["karfreitag","ostermontag","tagderarbeit","pfingstmontag","stephan"]],
+    SH:["Schaffhausen",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","stephan"]],
+    AR:["Appenzell A.Rh.",["karfreitag","ostermontag","pfingstmontag","stephan"]],
+    AI:["Appenzell I.Rh.",["karfreitag","ostermontag","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    SG:["St. Gallen",["karfreitag","ostermontag","pfingstmontag","allerheiligen","stephan"]],
+    GR:["Graubünden",["karfreitag","ostermontag","pfingstmontag","stephan"]],
+    AG:["Aargau",["berchtold","karfreitag","ostermontag","pfingstmontag","stephan"]],
+    TG:["Thurgau",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","stephan"]],
+    TI:["Tessin",["dreikoenige","josef","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis","stephan"]],
+    VD:["Waadt",["berchtold","karfreitag","ostermontag","pfingstmontag"]],
+    VS:["Wallis",["josef","fronleichnam","mariahimmelfahrt","allerheiligen","mariaempfaengnis"]],
+    NE:["Neuenburg",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag"]],
+    GE:["Genf",["karfreitag","ostermontag","pfingstmontag"]],
+    JU:["Jura",["berchtold","karfreitag","ostermontag","tagderarbeit","pfingstmontag","fronleichnam","mariahimmelfahrt","allerheiligen","stephan"]]
+  };
+  var WD=["So","Mo","Di","Mi","Do","Fr","Sa"];
+  function pad(n){return String(n).padStart(2,"0");}
+  function iso(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
+  function parse(v){if(!v)return null;var p=v.split("-");var d=new Date(+p[0],+p[1]-1,+p[2]);return isNaN(d)?null:d;}
+  var checked={}; // key -> bool (for current canton/year)
+  function keysFor(kt){var arr=BASE.concat((KT[kt]||["",[]])[1]);var seen={},out=[];arr.forEach(function(k){if(!seen[k]){seen[k]=1;out.push(k);}});return out;}
+  function buildHolidaySet(){
+    var s=parse(document.getElementById("start").value),e=parse(document.getElementById("end").value);
+    var years={};if(s)years[s.getFullYear()]=1;if(e)years[e.getFullYear()]=1;
+    var yNow=(s||new Date(2026,0,1)).getFullYear();
+    return {years:Object.keys(years).map(Number),yNow:yNow};
+  }
+  function renderList(){
+    var kt=document.getElementById("kanton").value;
+    var yr=(parse(document.getElementById("start").value)||new Date(2026,0,1)).getFullYear();
+    document.getElementById("hl-title").textContent="Feiertage "+yr+" — "+(KT[kt]?KT[kt][0]:"");
+    var keys=keysFor(kt).map(function(k){return {k:k,d:HOL[k][1](yr),n:HOL[k][0]};}).sort(function(a,b){return a.d-b.d;});
+    var box=document.getElementById("hl-list");box.innerHTML="";
+    keys.forEach(function(o){
+      if(checked[o.k]===undefined)checked[o.k]=true;
+      var row=document.createElement("label");row.className="hday";
+      var cb=document.createElement("input");cb.type="checkbox";cb.checked=checked[o.k];
+      cb.addEventListener("change",function(){checked[o.k]=cb.checked;calc();});
+      var d=document.createElement("span");d.className="d";d.textContent=pad(o.d.getDate())+"."+pad(o.d.getMonth()+1)+"."+yr;
+      var n=document.createElement("span");n.className="n";n.textContent=o.n;
+      var wd=document.createElement("span");wd.className="wd";wd.textContent=WD[o.d.getDay()];
+      row.appendChild(cb);row.appendChild(d);row.appendChild(n);row.appendChild(wd);box.appendChild(row);
+    });
+  }
+  function calc(){
+    var kt=document.getElementById("kanton").value;
+    var s=parse(document.getElementById("start").value),e=parse(document.getElementById("end").value);
+    var days=document.getElementById("days"),sub=document.getElementById("sub");
+    if(!s||!e){days.textContent="—";sub.textContent="Von- und Bis-Datum wählen.";return;}
+    if(e<s){days.textContent="—";sub.textContent="Bis-Datum liegt vor dem Start.";return;}
+    // Feiertags-Set (nur angehakte) für alle Jahre im Bereich
+    var holset={};
+    for(var y=s.getFullYear();y<=e.getFullYear();y++){
+      keysFor(kt).forEach(function(k){if(checked[k]===false)return;var d=HOL[k][1](y);holset[iso(d)]=1;});
+    }
+    var cnt=0,hol=0,cur=new Date(s);
+    while(cur<=e){var wd=cur.getDay();
+      if(wd>=1&&wd<=5){ if(holset[iso(cur)])hol++; else cnt++; }
+      cur.setDate(cur.getDate()+1);}
+    days.textContent=cnt.toLocaleString("de-CH")+(cnt===1?" Arbeitstag":" Arbeitstage");
+    sub.textContent=hol+" Feiertag"+(hol!==1?"e":"")+" (werktags) abgezogen · Mo–Fr im Zeitraum";
+  }
+  // init
+  var sel=document.getElementById("kanton");
+  Object.keys(KT).sort(function(a,b){return KT[a][0].localeCompare(KT[b][0]);}).forEach(function(code){
+    var o=document.createElement("option");o.value=code;o.textContent=KT[code][0]+" ("+code+")";sel.appendChild(o);});
+  sel.value="ZH";
+  var today=new Date();document.getElementById("start").value=iso(new Date(today.getFullYear(),0,1));
+  document.getElementById("end").value=iso(new Date(today.getFullYear(),11,31));
+  sel.addEventListener("change",function(){checked={};renderList();calc();});
+  ["start","end"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){renderList();calc();});});
+  renderList();calc();
+})();
+</script>
+</body>
+</html>
