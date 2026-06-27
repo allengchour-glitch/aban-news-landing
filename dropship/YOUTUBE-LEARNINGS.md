@@ -104,3 +104,10 @@
 ## Runde 16-Ernte — 2026-06-27
 - **+4 Kaffeemaschinen sauber** (Moka CHF18.90/43.90/50.90 + Filtermaschine) — on-category, kein Fehlmatch, SKU-Dedup 0. **kaffee = saubere Whitelist-Kategorie.**
 - **🔧 Mini-Fix Cross-Contamination:** „Aromatisch…Filterkaffeemaschine" rutschte via Smart-Rule (TITLE enthält „Aroma") in `sub-aroma-diffuser` → re-titelt „Filterkaffeemaschine: Schnell & aromatisch gebrüht" (keyword-first, raus aus Diffuser). **Lehre:** Smart-Collections mit TITLE-CONTAINS-Regeln fangen Fremd-Produkte ein → bei QA Titel prüfen, die fremde Trigger-Wörter (Aroma/Luna/Galaxy etc.) enthalten.
+
+## Runde 17 — 2026-06-27 (Reviews/Social Proof — Guardrail + Backlog)
+**Quelle:** wiserreview, easyappsecom Social-Proof, okendo, klaviyo (2026).
+- **Reviews = riesiger Hebel:** PDP mit Reviews = **3.5× Conversion**; 5+ Reviews = +270% Kaufwahrscheinlichkeit; **92% zögern ohne Reviews**. UGC 5× wirksamer als Profi-Fotos.
+- **⛔ EHRLICH NICHT FAKEBAR:** Wir haben 0 Reviews (0 Verkäufe). Fake-Reviews = FTC-Verstoss + Vertrauenstod (CLAUDE.md). NICHT bauen.
+- **✅ RICHTIGER WEG (greift ab 1. Verkauf):** Review-Request im **Klaviyo-Post-Purchase-Flow** (3–7 Tage nach Lieferung) — Flows existieren schon. Sobald Reichweite→Verkäufe da sind, sammeln sich Reviews automatisch → Compounding. **Chicken-Egg löst sich über REICHWEITE (User-Hebel).**
+- **Backlog (wenn Verkäufe starten):** Reviews-App (Judge.me/Shopify Reviews) installieren = User-Klick; Klaviyo-Review-Request-Mail aktivieren; Google-Business-Profil für Reviews.
