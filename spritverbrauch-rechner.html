@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spritverbrauch-Rechner — Verbrauch in L/100km · aban news</title>
+<meta name="description" content="Kostenloser Spritverbrauch-Rechner: aus getankten Litern und gefahrenen Kilometern den echten Verbrauch in L/100km berechnen — plus Kosten pro 100 km und pro Strecke. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/spritverbrauch-rechner.html">
+<meta property="og:title" content="Spritverbrauch-Rechner — Verbrauch in L/100km">
+<meta property="og:description" content="Echten Verbrauch (L/100km) aus getankten Litern & gefahrenen km berechnen, plus Kosten. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/spritverbrauch-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Spritverbrauch-Rechner",
+"url":"https://abannews.com/spritverbrauch-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet den echten Spritverbrauch in L/100km aus getankten Litern und gefahrenen Kilometern, plus Kosten pro 100 km und pro Strecke. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie berechne ich den Spritverbrauch?","acceptedAnswer":{"@type":"Answer","text":"Du teilst die getankten Liter durch die gefahrenen Kilometer und multiplizierst mit 100. Beispiel: 45 Liter auf 600 km ergeben 45 ÷ 600 × 100 = 7,5 Liter pro 100 km. Am genauesten ist es, wenn du nach dem Volltanken den Kilometerstand notierst und beim nächsten Volltanken erneut misst."}},
+{"@type":"Question","name":"Was ist der Unterschied zum Fahrtkosten-Rechner?","acceptedAnswer":{"@type":"Answer","text":"Dieser Rechner ermittelt deinen tatsächlichen Verbrauch aus echten Tankdaten. Der Fahrtkosten-Rechner geht den umgekehrten Weg: Er schätzt die Kosten einer geplanten Strecke aus einem bekannten Verbrauch und dem Spritpreis."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}
+.unit input{font:inherit;padding:11px 44px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.82rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.res{margin-top:6px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:18px;text-align:center}
+.res .big{font-size:clamp(28px,7vw,40px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.9rem;color:var(--ink2);margin-top:4px}
+.extra{margin-top:12px;font-size:.88rem;color:var(--ink2);display:grid;gap:6px}
+.extra div{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:6px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Spritverbrauch</span>-Rechner</h1>
+    <p>Wie viel verbraucht dein Auto wirklich? Aus getankten Litern und gefahrenen Kilometern den echten Verbrauch in L/100km — plus Kosten pro 100 km und pro Strecke. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Am genauesten: bei Volltank den km-Stand notieren, beim nächsten Volltanken die getankten Liter und die seither gefahrenen km eingeben. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div class="fld"><label for="liter">Getankte Liter</label><div class="unit"><input id="liter" type="number" inputmode="decimal" value="45" min="0"><span>L</span></div></div>
+      <div class="fld"><label for="km">Gefahrene Strecke</label><div class="unit"><input id="km" type="number" inputmode="decimal" value="600" min="0"><span>km</span></div></div>
+      <div class="fld"><label for="preis">Spritpreis (optional)</label><div class="unit"><input id="preis" type="number" inputmode="decimal" value="1.79" min="0" step="0.01"><span>/L</span></div></div>
+    </div>
+    <div class="res"><div class="big" id="verbrauch">—</div><div class="sub">Liter pro 100 km</div></div>
+    <div class="extra" id="extra"></div>
+    <p class="note">Formel: Liter ÷ km × 100. Kosten erscheinen, wenn du einen Spritpreis eingibst. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Auto &amp; Kosten.</p>
+    <p><a class="btn" href="/fahrtkosten-rechner.html">Fahrtkosten-Rechner</a>
+      <a class="btn ghost" href="/einheiten-umrechner.html">Einheiten-Umrechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/fahrtkosten-rechner.html">Fahrtkosten-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function calc(){
+    var l=num("liter"),km=num("km"),p=num("preis");
+    var v=document.getElementById("verbrauch"),extra=document.getElementById("extra");
+    if(!isFinite(l)||!isFinite(km)||km<=0||l<0){v.textContent="—";extra.innerHTML="";return;}
+    var verbrauch=l/km*100;
+    v.textContent=verbrauch.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" L";
+    var html="";
+    if(isFinite(p)&&p>0){
+      var pro100=verbrauch*p, proKm=l*p/km, gesamt=l*p;
+      html+='<div><span>Kosten pro 100 km</span><b>'+pro100.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+'</b></div>';
+      html+='<div><span>Kosten pro km</span><b>'+proKm.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:3})+'</b></div>';
+      html+='<div><span>Kosten dieser Tankfüllung</span><b>'+gesamt.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+'</b></div>';
+    }
+    html+='<div><span>Reichweite je Tankfüllung</span><b>'+km.toLocaleString("de-DE",{maximumFractionDigits:0})+' km</b></div>';
+    extra.innerHTML=html;
+  }
+  ["liter","km","preis"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
