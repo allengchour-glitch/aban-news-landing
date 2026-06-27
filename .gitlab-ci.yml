@@ -305,3 +305,43 @@ shop-autopilot:
       else
         echo "Keine neuen Shop-Reports."
       fi
+
+# 🎬 Luma-Clips (NUR GENERIEREN, postet NICHT → kein Doppelpost-Risiko). Erzeugt aus Produktfotos
+# (automation/good_products.csv, Pointer-Rotation = keine Wiederholung) KI-Hook-Clips via Luma Dream
+# Machine, lädt sie auf die Shopify-CDN und reiht sie als status=ready in social/video_queue.csv ein.
+# EIN Poster (video-autopost-meta.mjs, Video-Session) postet jede ready-Zeile GENAU EINMAL.
+#
+# CI/CD-Variablen: LUMA_API_KEY (Pflicht; ohne = No-op) · SHOPIFY_CLIENT_ID/SECRET/SHOP (CDN-Upload) · GH_PUSH_TOKEN.
+# ⚠️ Luma kostet pro Clip (~$0.3–0.5). MAX_CLIPS=1 → 1 Clip/Lauf. Ohne LUMA_API_KEY passiert NICHTS.
+luma-clips:
+  stage: brain
+  allow_failure: true
+  image: node:20
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - when: manual
+  variables:
+    MAX_CLIPS: "1"
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git ffmpeg
+  script:
+    - test -n "$GH_PUSH_TOKEN" || { echo "GH_PUSH_TOKEN fehlt — Abbruch"; exit 1; }
+    - git clone --depth=1 "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" gh
+    - cd gh
+    # NUR generieren → social/video_queue.csv (ready). KEIN Posten hier (vermeidet Doppelpost).
+    - node automation/luma-hero-clip.mjs
+    # neue ready-Zeile + Pointer zurück nach main (rebase-retry gegen parallele Pushes)
+    - |
+      if ! git diff --quiet -- social/video_queue.csv automation/.luma_pointer; then
+        git config user.email "brain@aban"; git config user.name "aban-luma"
+        git add social/video_queue.csv automation/.luma_pointer
+        git commit -m "luma: KI-Clip generiert → video_queue (ready) [skip ci]"
+        for i in 1 2 3 4 5; do
+          git push "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" HEAD:main && break
+          git pull --rebase --autostash "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" main || true
+          sleep 3
+        done
+      else
+        echo "Kein neuer Clip (No-op: kein LUMA_API_KEY o. nichts Neues)."
+      fi
