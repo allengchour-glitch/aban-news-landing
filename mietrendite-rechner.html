@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mietrendite-Rechner — Brutto- & Nettorendite · aban news</title>
+<meta name="description" content="Kostenloser Mietrendite-Rechner: Brutto- und Nettomietrendite einer Immobilie aus Kaufpreis, Miete und Kosten berechnen — inklusive Kaufnebenkosten. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/mietrendite-rechner.html">
+<meta property="og:title" content="Mietrendite-Rechner — Brutto- & Nettorendite">
+<meta property="og:description" content="Brutto- & Nettomietrendite aus Kaufpreis, Miete und Kosten — mit Kaufnebenkosten. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/mietrendite-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Mietrendite-Rechner",
+"url":"https://abannews.com/mietrendite-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet Brutto- und Nettomietrendite einer Immobilie aus Kaufpreis, Jahresmiete, Kaufnebenkosten und laufenden Kosten. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie wird die Bruttomietrendite berechnet?","acceptedAnswer":{"@type":"Answer","text":"Die Bruttomietrendite ist die Jahreskaltmiete geteilt durch den Kaufpreis, mal 100. Beispiel: 12.000 € Jahresmiete bei 300.000 € Kaufpreis ergeben 4,0 %. Sie ist eine schnelle erste Kennzahl, lässt aber Kosten außer Acht."}},
+{"@type":"Question","name":"Was ist der Unterschied zur Nettomietrendite?","acceptedAnswer":{"@type":"Answer","text":"Die Nettomietrendite ist realistischer: Sie zieht von der Jahresmiete die nicht umlegbaren Bewirtschaftungskosten ab und rechnet die Kaufnebenkosten (Notar, Grundbuch, Makler, Grunderwerb- bzw. Handänderungssteuer) zum Kaufpreis hinzu. So siehst du, was tatsächlich übrig bleibt."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert. Der Rechner ist eine Orientierung und ersetzt keine Finanz- oder Steuerberatung."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}
+.unit input{font:inherit;padding:11px 40px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem}
+.fld{margin-bottom:12px}
+.cur{display:flex;gap:8px;align-items:center;font-size:.85rem;color:var(--ink2);margin-bottom:6px}
+.cur select{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+.res{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rc{background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.rc .lab{font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);font-weight:700}
+.rc .big{font-size:clamp(24px,6vw,34px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.extra{margin-top:12px;font-size:.86rem;color:var(--ink2);display:grid;gap:6px}
+.extra div{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:6px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Mietrendite</span>-Rechner</h1>
+    <p>Brutto- und Nettomietrendite einer Immobilie aus Kaufpreis, Jahresmiete und Kosten — inklusive Kaufnebenkosten. Eine ehrliche Orientierung, kein Anlageversprechen. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Die Bruttorendite ist nur die grobe Faustzahl. Die Nettorendite rechnet Nebenkosten beim Kauf und laufende Kosten ein — das ist die ehrlichere Zahl. Keine Beratung, nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cur"><label for="ccy" style="margin:0">Währung:</label>
+      <select id="ccy"><option value="€">€ (EUR)</option><option value="CHF">CHF</option></select></div>
+    <div class="cols">
+      <div class="fld"><label for="price">Kaufpreis</label><div class="unit"><input id="price" type="number" inputmode="decimal" value="300000" min="0"><span class="cy">€</span></div></div>
+      <div class="fld"><label for="rent">Monatsmiete (kalt)</label><div class="unit"><input id="rent" type="number" inputmode="decimal" value="1000" min="0"><span class="cy">€</span></div></div>
+      <div class="fld"><label for="side">Kaufnebenkosten</label><div class="unit"><input id="side" type="number" inputmode="decimal" value="9" min="0"><span>%</span></div></div>
+      <div class="fld"><label for="costs">Laufende Kosten / Jahr (nicht umlegbar)</label><div class="unit"><input id="costs" type="number" inputmode="decimal" value="1800" min="0"><span class="cy">€</span></div></div>
+    </div>
+    <div class="res">
+      <div class="rc"><div class="lab">Bruttorendite</div><div class="big" id="gross">—</div></div>
+      <div class="rc"><div class="lab">Nettorendite</div><div class="big" id="net">—</div></div>
+    </div>
+    <div class="extra" id="extra"></div>
+    <p class="note">Faustregeln: Brutto = Jahresmiete ÷ Kaufpreis. Netto = (Jahresmiete − laufende Kosten) ÷ (Kaufpreis + Kaufnebenkosten). Orientierung, keine Finanz-/Steuerberatung. Alles lokal.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Geld &amp; Investieren.</p>
+    <p><a class="btn" href="/zinseszins-rechner.html">Zinseszins-Rechner</a>
+      <a class="btn ghost" href="/kreditrechner.html">Kreditrechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zinseszins-rechner.html">Zinseszins-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function eur(n,cy){return n.toLocaleString("de-DE",{maximumFractionDigits:0})+" "+cy;}
+  function pct(n){return n.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" %";}
+  function calc(){
+    var cy=document.getElementById("ccy").value;
+    document.querySelectorAll(".cy").forEach(function(s){s.textContent=cy;});
+    var price=num("price"),rent=num("rent"),side=num("side"),costs=num("costs");
+    var g=document.getElementById("gross"),n=document.getElementById("net"),extra=document.getElementById("extra");
+    if(!isFinite(price)||price<=0||!isFinite(rent)||rent<0){g.textContent="—";n.textContent="—";extra.innerHTML="";return;}
+    if(!isFinite(side))side=0; if(!isFinite(costs))costs=0;
+    var annual=rent*12;
+    var gross=annual/price*100;
+    var totalCost=price*(1+side/100);
+    var net=(annual-costs)/totalCost*100;
+    g.textContent=pct(gross);
+    n.textContent=pct(net);
+    var nebenk=price*side/100;
+    extra.innerHTML=
+      '<div><span>Jahreskaltmiete</span><b>'+eur(annual,cy)+'</b></div>'+
+      '<div><span>Kaufnebenkosten ('+side.toLocaleString("de-DE",{maximumFractionDigits:1})+' %)</span><b>'+eur(nebenk,cy)+'</b></div>'+
+      '<div><span>Gesamtinvestition</span><b>'+eur(totalCost,cy)+'</b></div>'+
+      '<div><span>Netto-Mietüberschuss / Jahr</span><b>'+eur(annual-costs,cy)+'</b></div>'+
+      '<div><span>Kaufpreisfaktor (Jahre)</span><b>'+(price/annual).toLocaleString("de-DE",{maximumFractionDigits:1})+'×</b></div>';
+  }
+  ["ccy","price","rent","side","costs"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
