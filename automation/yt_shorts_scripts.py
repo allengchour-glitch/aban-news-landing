@@ -32,6 +32,12 @@ SEED = [
     "kostenlose-ki-tools", "ki-text-umschreiben", "ki-praesentation-erstellen",
     "ki-spar-rechner", "ki-dsgvo-check", "ki-text-humanisieren",
     "text-zusammenfassen-ki", "ki-logo-erstellen", "ki-uebersetzen",
+    # 2. Tranche (≈1 Monat täglicher Content)
+    "ki-bilder-erstellen-kostenlos", "ki-website-erstellen", "ki-chatbot-erstellen",
+    "ki-musik-erstellen", "ki-untertitel-erstellen", "ki-video-erstellen",
+    "ki-prompt-checker", "ki-readiness-check", "ki-kosten-rechner",
+    "ki-stimmen", "ki-voiceover", "ki-automation",
+    "mwst-rechner", "stundensatz-rechner",
 ]
 
 TITLE = re.compile(r"<title>(.*?)</title>", re.S | re.I)

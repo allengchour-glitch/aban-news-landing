@@ -119,6 +119,17 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-27 (abannews/Tool-Session) — 🎬 YouTube-Neustart-Konzept + 28 Short-Skripte (→ HANDOFF Video-Session):**
+- **User-Entscheidung:** ABAN-Files-Kanal ist tot (Konzept-Fehler) → **behalten, nur stoppen** (nichts löschen,
+  Render-/TTS-Pipeline bleibt). **Neuer Kanal** für echte Views.
+- **Recherchiertes Konzept** `docs/YOUTUBE-NEUSTART-2026.md`: Nische **„KI fürs Business für Selbstständige"**
+  (höchste RPM + on-brand + füttert Newsletter/Pro/Affiliate). Format: Shorts 50–60s + Hybrid-Longform.
+- **🤝 HANDOFF an die Video-Session:** **28 fertige Short-Skripte** liegen in **`automation/yt-shorts/`**
+  (+ `INDEX.md`-Queue) — Hook/3 Value-Punkte/CTA/Voiceover/B-Roll-Keywords. **Bitte mit eurer vorhandenen
+  Pipeline rendern + via YouTube-API hochladen.** Generator `automation/yt_shorts_scripts.py` (reine Stdlib,
+  kein Key) erzeugt aus weiteren Website-Guides beliebig viele nach.
+- Ich (Tool-Session) baue **keine zweite Render-Pipeline** (Duplikat-Vermeidung) — nur Skript-Nachschub.
+
 **2026-06-27 (abannews/Tool-Session) — 🤖 Money/SEO-Guard-Bot (autonom, GitLab) gebaut:**
 - **Neuer Bot `money-seo-guard`** in `.gitlab-ci.yml` (Pendant zu `brain-improve`, für Umsatz/SEO).
   Orchestrator `automation/money_seo_guard.py` führt die idempotenten Tools aus, pusht auf
