@@ -48,6 +48,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **✅ LIVE geseedet:** User gab `YT_API_KEY` im Chat → in-Memory ein Hardcore-Lauf gefahren, `youtube-learnings.md`
   trägt erste echte Daten, 24-h-Fenster gestartet (bis 2026-06-28T13:34Z). **Key NICHT im Repo** (Chat-Keys gelten
   als exponiert → als Repo-Secret `YT_API_KEY` setzen; ggf. rotieren). **Cron läuft live erst ab `main`-Merge.**
+- **🧠 ZWEITES GEHIRN (Selbst-Verbesserung):** `automation/second_brain.mjs` + `second-brain.yml` (stündlich, 0 API-Kosten)
+  verdichtet ALLE rohen Lernläufe → **`automation/SECOND-BRAIN.md`** (deduplizierte Wissensbasis: Konsens-Hashtags,
+  Top-Hooks, Trend-Keywords, **Selbst-Verbesserungs-Vorschläge**, Evolutions-Log) + Konsens-Pool `brain_pools.sh`.
+  **Jede Session liest künftig SECOND-BRAIN.md statt der Rohläufe** — wird mit jedem Lauf reicher/genauer. No-op-safe.
 
 **📌 2026-06-27 (LIVE-AUDIT — Shopify-Token via Client-Credentials, ZUERST LESEN):**
 - **✅ Live-Zugriff lief** (User pastete Client-ID + `shpss_`-Schlüssel im Chat → Admin-Token per Client-Credentials,

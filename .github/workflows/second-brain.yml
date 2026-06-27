@@ -1,0 +1,41 @@
+name: Second Brain (Wissens-Synthese + Selbst-Verbesserung)
+
+# Verdichtet die rohen Lernläufe (automation/youtube-learnings.md + TikTok-Reports) zu einer
+# deduplizierten, ranggeordneten Wissensbasis automation/SECOND-BRAIN.md und leitet Verbesserungen
+# ab (Konsens-Hashtag-Pool automation/brain_pools.sh). Kostet KEINE API-Einheiten (reine Synthese)
+# → läuft stündlich, hält die Wissensbasis während des 24/7-Sammelns frisch. No-op-safe ohne Quellen.
+
+on:
+  schedule:
+    - cron: '30 * * * *'        # stündlich (versetzt zum Sammler, damit frische Daten da sind)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: second-brain
+  cancel-in-progress: false
+
+jobs:
+  synthesize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Wissen verdichten + Verbesserungen ableiten
+        run: node automation/second_brain.mjs
+      - name: Commit Wissensbasis
+        run: |
+          if ! git diff --quiet -- automation/SECOND-BRAIN.md automation/brain_pools.sh ; then
+            git config user.name "luxestyle-brain-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add automation/SECOND-BRAIN.md automation/brain_pools.sh
+            git commit -m "chore(brain): Wissensbasis verdichtet + Konsens-Pool [skip ci]"
+            git push
+          else
+            echo "Keine Änderung an der Wissensbasis."
+          fi
