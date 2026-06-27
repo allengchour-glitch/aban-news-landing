@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binär-Rechner — binär rechnen & Bit-Operationen · aban news</title>
+<meta name="description" content="Kostenloser Binär-Rechner: zwei Zahlen binär addieren, subtrahieren, multiplizieren, dividieren und Bit-Operationen (UND, ODER, XOR, Shift) ausführen — mit Ergebnis in Binär, Dezimal und Hex. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/binaer-rechner.html">
+<meta property="og:title" content="Binär-Rechner — binär rechnen & Bit-Operationen">
+<meta property="og:description" content="Binär addieren, subtrahieren, AND/OR/XOR/Shift — Ergebnis in Binär, Dezimal & Hex. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/binaer-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Binär-Rechner",
+"url":"https://abannews.com/binaer-rechner.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Rechnet zwei Zahlen binär (Addition, Subtraktion, Multiplikation, Division) und führt Bit-Operationen (UND, ODER, XOR, Shift) aus, mit Ergebnis in Binär, Dezimal und Hex. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie gebe ich die Zahlen ein?","acceptedAnswer":{"@type":"Answer","text":"Du kannst je Feld wählen, ob du die Zahl als Binär (nur 0 und 1), Dezimal oder Hexadezimal eingibst. Der Rechner wandelt intern um, rechnet und zeigt das Ergebnis in allen drei Systemen an."}},
+{"@type":"Question","name":"Welche Operationen gibt es?","acceptedAnswer":{"@type":"Answer","text":"Grundrechenarten (Addition, Subtraktion, Multiplikation, ganzzahlige Division mit Rest) und bitweise Operationen: UND (AND), ODER (OR), XOR, sowie Links- und Rechts-Shift. Letztere arbeiten direkt auf den einzelnen Bits."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#b91c1c;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bad:#f87171;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.78rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:4px}
+input,select{font:inherit;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+input{font-family:ui-monospace,Menlo,Consolas,monospace}
+.opnd{display:flex;gap:10px;align-items:flex-end;margin-bottom:10px}
+.opnd .v{flex:1}
+.opnd .b{flex:0 0 96px}
+.oprow{margin:10px 0 4px}
+.oprow select{font-family:inherit}
+.res{margin-top:16px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px}
+.res .rowr{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--amber-lt);padding:8px 0 0;margin-top:8px;font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-all}
+.res .rowr:first-child{border-top:0;margin-top:0;padding-top:0}
+.res b{color:var(--ink2);font-family:-apple-system,sans-serif;flex:0 0 auto}
+.res span{color:var(--amber-dk);font-weight:800;text-align:right}
+.err{color:var(--bad);font-size:.85rem;margin-top:10px;font-weight:600}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Binär</span>-Rechner</h1>
+    <p>Zwei Zahlen binär addieren, subtrahieren, multiplizieren, dividieren — oder Bit-Operationen wie UND, ODER, XOR und Shift. Eingabe wahlweise binär, dezimal oder hex, Ergebnis in allen drei. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Du musst nicht im Kopf umrechnen: gib jede Zahl im gewünschten System ein, wähl die Operation, und du bekommst das Ergebnis sofort in Binär, Dezimal und Hex. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="opnd">
+      <div class="v"><label for="a">Zahl A</label><input id="a" type="text" value="1010" spellcheck="false"></div>
+      <div class="b"><label for="ab">System</label><select id="ab"><option value="2">Binär</option><option value="10">Dezimal</option><option value="16">Hex</option></select></div>
+    </div>
+    <div class="oprow"><label for="op">Operation</label>
+      <select id="op">
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraktion (−)</option>
+        <option value="*">Multiplikation (×)</option>
+        <option value="/">Division (÷, ganzzahlig + Rest)</option>
+        <option value="and">UND (AND)</option>
+        <option value="or">ODER (OR)</option>
+        <option value="xor">XOR</option>
+        <option value="shl">Links-Shift (&lt;&lt;)</option>
+        <option value="shr">Rechts-Shift (&gt;&gt;)</option>
+      </select>
+    </div>
+    <div class="opnd">
+      <div class="v"><label for="b">Zahl B</label><input id="b" type="text" value="11" spellcheck="false"></div>
+      <div class="b"><label for="bb">System</label><select id="bb"><option value="2">Binär</option><option value="10">Dezimal</option><option value="16">Hex</option></select></div>
+    </div>
+    <div class="res" id="res"></div>
+    <p class="err" id="err" hidden></p>
+    <p class="note">Arbeitet mit ganzen Zahlen. Bei Shift gibt B an, um wie viele Stellen verschoben wird. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Zahlen &amp; Code.</p>
+    <p><a class="btn" href="/zahlensystem-umrechner.html">Zahlensystem-Umrechner</a>
+      <a class="btn ghost" href="/taschenrechner.html">Taschenrechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zahlensystem-umrechner.html">Zahlensystem-Umrechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function parseVal(str,base){
+    str=str.trim().toLowerCase().replace(/^0b/,"").replace(/^0x/,"");
+    if(str==="")return null;
+    var re = base===2?/^[01]+$/ : base===16?/^[0-9a-f]+$/ : /^\d+$/;
+    if(!re.test(str))return null;
+    var n=parseInt(str,base);
+    return isNaN(n)?null:n;
+  }
+  function row(lab,val){return '<div class="rowr"><b>'+lab+'</b><span>'+val+'</span></div>';}
+  function calc(){
+    var res=document.getElementById("res"),err=document.getElementById("err");err.hidden=true;
+    var a=parseVal(document.getElementById("a").value, +document.getElementById("ab").value);
+    var b=parseVal(document.getElementById("b").value, +document.getElementById("bb").value);
+    if(a===null||b===null){res.innerHTML="";err.hidden=false;err.textContent="⚠️ Ungültige Eingabe für das gewählte Zahlensystem.";return;}
+    var op=document.getElementById("op").value, r, rest=null;
+    switch(op){
+      case "+": r=a+b;break; case "-": r=a-b;break; case "*": r=a*b;break;
+      case "/": if(b===0){res.innerHTML="";err.hidden=false;err.textContent="⚠️ Division durch 0 ist nicht definiert.";return;}
+        r=Math.floor(a/b);rest=a%b;break;
+      case "and": r=a&b;break; case "or": r=a|b;break; case "xor": r=a^b;break;
+      case "shl": r=a<<b;break; case "shr": r=a>>b;break;
+    }
+    var html="";
+    if(r<0){ html+=row("Binär","− "+Math.abs(r).toString(2)); }
+    else html+=row("Binär", r.toString(2));
+    html+=row("Dezimal", r.toLocaleString("de-DE"));
+    html+=row("Hexadezimal", (r<0?"−0x"+Math.abs(r).toString(16).toUpperCase():"0x"+r.toString(16).toUpperCase()));
+    if(rest!==null)html+=row("Rest", rest.toString(2)+" (binär) · "+rest+" (dez)");
+    res.innerHTML=html;
+  }
+  ["a","b","ab","bb","op"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
