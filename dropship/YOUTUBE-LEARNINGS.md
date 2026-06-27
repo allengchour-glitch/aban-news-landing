@@ -66,3 +66,8 @@
 ## Runde 10-Ernte — 2026-06-27 (ELEKTRONIK funktioniert!)
 - **+4 Audio sauber** (kein Fehlmatch!): Kopfhörer m. Mikro CHF30.90/115.90, Bluetooth-Lautsprecher CHF16.90, Kopfhörer schwarz CHF30.90. Alle ACTIVE/SEO✓/8 Kanäle/audio-sub+Geschenk-Colls.
 - **🎯 BESTÄTIGT: `audio` ist eine ergiebige & saubere Whitelist-Kategorie** (3542 Kandidaten, klarer Anker, echte Elektronik-Treffer). Ladegeräte (2409 Kandidaten) läuft → nächster Tick erntet. Elektronik = die richtige Antwort auf „coole Produkte".
+
+## Runde 10-Fix — SKU-Dedup deckt Import-Schwäche auf
+- **8 frische BB-S-Dubletten gedraftet**: u.a. die 3 Handy-Geldbeutel (= Dubletten von „Handy-Geldbörse") + Schnellladekabel + 3 Ladegeräte (Wand/Batterie/Akku-Set) + Vakuumierfolie. **= meine letzten phone/ladegeraet-Importe erzeugten teils SKU-Dubletten.**
+- **🔧 WURZEL:** BigBuy hat MEHRERE Katalog-IDs pro SKU → der ID-basierte Ledger (`bb:<id>`) verhindert keine SKU-Dublette. **Fix-Bitte an Importer:** vor `create-product` prüfen, ob die **SKU** schon im Shop existiert (nicht nur die BigBuy-ID im Ledger). Bis dahin: **SKU-Dedup nach jedem Import-Tick laufen lassen** (macht der Loop jetzt).
+- **Netto-Ehrlichkeit:** „+4 phone" letzte Runde waren real nur ~1 unique (3 Geldbeutel = Dubletten, jetzt gedraftet). Audio (+4) war dagegen sauber unique. **Audio bleibt die beste Elektronik-Quelle; ladegeraet erzeugt viele Dubletten → depriorisieren.**
