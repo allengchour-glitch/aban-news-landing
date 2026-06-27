@@ -58,7 +58,7 @@ function ldFor(html, file) {
     crumbs.push({ "@type": "ListItem", position: 2, name, item });
   }
   const graph = [
-    { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png", sameAs: ["https://x.com/abannews"], founder: { "@id": SITE + "/#person" } },
+    { "@type": "Organization", "@id": SITE + "/#org", name: "aban news", url: SITE + "/", logo: SITE + "/android-chrome-512x512.png", sameAs: ["https://x.com/abannews"], founder: { "@id": SITE + "/#person" }, address: { "@type": "PostalAddress", addressCountry: "CH", addressRegion: "Bern" }, areaServed: { "@type": "Country", name: "Schweiz", sameAs: "https://www.wikidata.org/wiki/Q39" } },
     { "@type": "Person", "@id": SITE + "/#person", name: "Allen Chour", alternateName: "Aban", url: SITE + "/about.html", sameAs: ["https://www.linkedin.com/in/aban-news-019b21239"] }
   ];
   if (html.indexOf("BreadcrumbList") < 0) {
