@@ -15,11 +15,11 @@
 | # | Automation | Tool | Status |
 |---|---|---|---|
 | 1 | ⭐ Auto-Reviews (Sterne → Conversion) | `automation/cj_reviews_import.mjs` | **gebaut** — als GitLab-Job einhängen |
-| 2 | 🩹 Conversion-Leak-Radar (Shopify) | `autopilot/conversion_radar.mjs` | **Phase 2** (Shopify-Read) |
+| 2 | 🩹 Conversion-Leak-Radar (Shopify) | `autopilot/conversion_radar.mjs` | ✅ **LIVE (Phase 2)** — Job `shop-autopilot` |
 | 3 | 🧹 Katalog-Hygiene (Marken/Safety→DRAFT) | `dropship/shop_audit.mjs` (+ Aktion) | **Audit gebaut**, Aktion auf User-Freigabe |
 | 4 | 📌 Pinterest-Auto-Pin (Gratis-Traffic) | `automation/pinterest_publish.mjs` | **gebaut** — wartet auf Pinterest Standard-Access |
-| 5 | 📝 Programmatic-SEO Shop-Guides | `autopilot/shop_seo_guides.mjs` | **Phase 2** |
-| 6 | 🛒 Google-Merchant-Feed (Gratis-Listings) | `autopilot/merchant_feed.mjs` | **Phase 2** (Shopify-Read) |
+| 5 | 📝 Programmatic-SEO Shop-Guides | `autopilot/shop_seo_guides.mjs` | ✅ **LIVE (Phase 2)** |
+| 6 | 🛒 Google-Merchant-Feed (Gratis-Listings) | `autopilot/merchant_feed.mjs` | ✅ **LIVE (Phase 2)** — Job `shop-autopilot` |
 | 7 | 🔁 Trend → Produkt-Ideen | `autopilot/trend_to_products.mjs` | ✅ **LIVE (Phase 1)** |
 | 8 | ✍️ Trends → Caption-Vorschläge | `autopilot/trends_to_captions.mjs` | ✅ **LIVE (Phase 1)** |
 | 9 | 📊 Tages-Intelligence-Digest (Telegram) | `autopilot/intelligence_digest.mjs` | ✅ **LIVE (Phase 1)** |
