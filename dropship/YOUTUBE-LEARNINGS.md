@@ -100,3 +100,7 @@
 - Audio: +1 behalten (Bluetooth-Lautsprecher CHF44.90); **3 Ohrpolster CHF48–92 gedraftet** (überteuerte Ersatzteile, kein Appeal — 2.6x-Marge auf €35-Polster = absurd).
 - **🔭 Audio nähert sich der nützlichen Decke:** kippt von Kopfhörern/Speakern zu Zubehör (Ohrpolster/Kabel). Kern-Headphones grösstenteils importiert. → Audio noch 1–2 Wellen, dann auf grill/kuechenhelfer/kaffee/fitness rotieren.
 - **🔧 Margen-Lehre:** 2.6x-Marge macht günstige Zubehörteile absurd teuer (CHF92-Ohrpolster). QA muss überteuerte Low-Appeal-Items draften (tut der Loop jetzt). Optional: Importer maxCost/Marge für Zubehör senken.
+
+## Runde 16-Ernte — 2026-06-27
+- **+4 Kaffeemaschinen sauber** (Moka CHF18.90/43.90/50.90 + Filtermaschine) — on-category, kein Fehlmatch, SKU-Dedup 0. **kaffee = saubere Whitelist-Kategorie.**
+- **🔧 Mini-Fix Cross-Contamination:** „Aromatisch…Filterkaffeemaschine" rutschte via Smart-Rule (TITLE enthält „Aroma") in `sub-aroma-diffuser` → re-titelt „Filterkaffeemaschine: Schnell & aromatisch gebrüht" (keyword-first, raus aus Diffuser). **Lehre:** Smart-Collections mit TITLE-CONTAINS-Regeln fangen Fremd-Produkte ein → bei QA Titel prüfen, die fremde Trigger-Wörter (Aroma/Luna/Galaxy etc.) enthalten.
