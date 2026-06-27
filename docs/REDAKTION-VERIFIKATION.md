@@ -74,8 +74,15 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   DSers/AliExpress, Zendrop, Sellvia, Trendsi), 13 `null` (Plattformen/Marktplätze ohne eigenes
   Lager bzw. gemischte Standorte: Shopify, WooCommerce, Spocket, Syncee, CJ, Printify u. a.).
 
-## Offen (gleicher Ansatz, nächste Radars)
-`data/tools.json` (Haupt-Tool-Liste, 33 offene Marker) — als nächstes.
+- **data/tools.json (Haupt-Tool-Liste):** Bei den 33 markierten Einträgen `eu_lager` für eindeutige
+  Fälle gesetzt — 8 `true` (EU: Mistral/Le Chat·FR, Freepik·ES, Magnific·ES, Submagic·FR, Dust·FR,
+  Systeme.io·FR, Tana·NO, mymind·AT), 11 `false` (US/CN: Poe, Lindy, Coda, Luma, Kling, Hailuo,
+  OpusClip, Gumloop, Relay, Zed, Devin). **Marker bleiben**, weil sie „prüfen & *bewerten*" lauten —
+  die Bewertung (`worth_it_score`) ist subjektiv und bleibt `null` (kein Vortäuschen).
+
+## Offen (für einen Menschen)
+- **Bewertungen (`worth_it_score`) & Preise (`preis_eur`)** überall — bewusst `null`, bis ein Mensch
+  sie real setzt. KI verifiziert nur dauerhafte Fakten, erfindet keine Zahlen.
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 

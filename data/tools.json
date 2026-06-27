@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-05-27",
+  "last_updated": "2026-06-27",
   "source": "aban news — kuratiert aus 30 Newsletter-Ausgaben + DACH-Standard-Stack",
   "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
   "rating_scale": "1-10 (10 = täglich, würd ich kaufen)",
@@ -4106,7 +4106,8 @@
         "claude",
         "gemini"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "notebooklm",
@@ -4252,7 +4253,8 @@
         "mem",
         "reflect"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     },
     {
       "id": "napkin-ai",
@@ -4341,7 +4343,8 @@
         "zapier",
         "n8n"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "spinach",
@@ -4400,7 +4403,8 @@
         "claude",
         "gemini"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     },
     {
       "id": "coda-ai",
@@ -4428,7 +4432,8 @@
       "alternatives": [
         "notion-ai"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "goblin-tools",
@@ -4481,7 +4486,8 @@
         "reflect",
         "obsidian"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     },
     {
       "id": "freepik-ai",
@@ -4511,7 +4517,8 @@
         "ideogram",
         "dalle"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     },
     {
       "id": "magnific",
@@ -4540,7 +4547,8 @@
         "topaz-photo-ai",
         "freepik-ai"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     },
     {
       "id": "topaz-photo-ai",
@@ -4625,7 +4633,8 @@
         "kling",
         "sora"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "kling",
@@ -4654,7 +4663,8 @@
         "luma-dream-machine",
         "sora"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "hailuo-ai",
@@ -4682,7 +4692,8 @@
         "luma-dream-machine",
         "runway"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "cartesia",
@@ -4771,7 +4782,8 @@
         "vizard",
         "descript"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "submagic",
@@ -4801,7 +4813,8 @@
         "vizard",
         "capcut"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     },
     {
       "id": "vizard",
@@ -4890,7 +4903,8 @@
         "n8n",
         "zapier"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "relay-app",
@@ -4919,7 +4933,8 @@
         "zapier",
         "n8n"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "dust-ai",
@@ -4947,7 +4962,8 @@
       "alternatives": [
         "glean"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     },
     {
       "id": "zed",
@@ -4975,7 +4991,8 @@
         "windsurf",
         "aider"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "devin",
@@ -5005,7 +5022,8 @@
         "github-copilot",
         "claude-code"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": false
     },
     {
       "id": "systeme",
@@ -5037,7 +5055,8 @@
         "make",
         "zapier"
       ],
-      "ausgaben_mentions": []
+      "ausgaben_mentions": [],
+      "eu_lager": true
     }
   ]
 }
