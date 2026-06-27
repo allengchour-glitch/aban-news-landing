@@ -145,6 +145,10 @@ def scan() -> dict[str, list[str]]:
             tgt = Path(os.path.normpath(tgt))
             if path.endswith("/") or tgt.is_dir():
                 tgt = tgt / "index.html"
+            # Cloudflare-Pages Clean-URLs: /foo wird aus foo.html serviert
+            # (extensionsloser Link ohne Schrägstrich, dessen .html existiert).
+            elif not tgt.suffix and Path(str(tgt) + ".html").exists():
+                continue
             if not tgt.exists():
                 broken[url].append(f.as_posix())
     return broken
