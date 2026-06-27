@@ -79,7 +79,15 @@ def wrap(draw, text, font, maxw):
     return lines
 
 
-def render(title: str, out: Path):
+FOOTERS = {
+    "": "abannews.com · KI verständlich für Selbstständige",
+    "en": "abannews.com · AI made clear for the self-employed",
+    "fr": "abannews.com · l'IA clairement, pour les indépendants",
+    "it": "abannews.com · l'IA spiegata, per chi lavora in proprio",
+}
+
+
+def render(title: str, out: Path, footer: str = FOOTERS[""]):
     img = Image.new("RGB", (W, H), CREAM)
     d = ImageDraw.Draw(img)
     d.rectangle([0, 0, 16, H], fill=AMBER)                      # linker Akzentbalken
@@ -97,14 +105,13 @@ def render(title: str, out: Path):
     for ln in lines:
         d.text((70, y), ln, font=tf, fill=INK)
         y += size + 14
-    d.text((70, H - 74), "abannews.com · KI verständlich für Selbstständige",
-           font=ImageFont.truetype(REG, 29), fill=MUTED)
+    d.text((70, H - 74), footer, font=ImageFont.truetype(REG, 29), fill=MUTED)
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out, "PNG", optimize=True)
 
 
-def inject(text: str, slug: str) -> str:
-    url = f"{BASE}/og/{slug}.png"
+def inject(text: str, ogpath: str) -> str:
+    url = f"{BASE}/og/{ogpath}.png"
     tags = (f'<meta property="og:image" content="{url}">\n'
             f'<meta property="og:image:width" content="1200">\n'
             f'<meta property="og:image:height" content="630">\n'
@@ -120,24 +127,27 @@ def main() -> int:
     args = ap.parse_args()
 
     done = 0
-    targets = []
-    for f in sorted(glob.glob(str(ROOT / "*.html"))):
-        text = Path(f).read_text(encoding="utf-8", errors="ignore")
-        if HAS_OGIMG.search(text) or NOINDEX.search(text):
-            continue
-        targets.append((Path(f), text))
+    targets = []  # (path, text, ogpath, footer)
+    for lang in ("", "en", "fr", "it"):
+        pat = str(ROOT / (f"{lang}/*.html" if lang else "*.html"))
+        for f in sorted(glob.glob(pat)):
+            text = Path(f).read_text(encoding="utf-8", errors="ignore")
+            if HAS_OGIMG.search(text) or NOINDEX.search(text):
+                continue
+            slug = Path(f).stem
+            ogpath = f"{lang}/{slug}" if lang else slug
+            targets.append((Path(f), text, ogpath, FOOTERS[lang]))
 
     print(f"Seiten ohne og:image: {len(targets)}")
-    for path, text in targets:
-        slug = path.stem
+    for path, text, ogpath, footer in targets:
         title = card_title(text)
         if not title:
             continue
         if args.dry:
-            print(f"  würde Karte bauen: og/{slug}.png  ←  {title[:60]}")
+            print(f"  würde Karte bauen: og/{ogpath}.png  ←  {title[:60]}")
             continue
-        render(title, OGDIR / f"{slug}.png")
-        path.write_text(inject(text, slug), encoding="utf-8")
+        render(title, OGDIR / f"{ogpath}.png", footer)
+        path.write_text(inject(text, ogpath), encoding="utf-8")
         done += 1
     if not args.dry:
         print(f"✓ {done} Karten erzeugt + og:image/twitter eingebunden.")
