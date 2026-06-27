@@ -64,6 +64,11 @@ const THEMES = [
   { key: 'tiktokshop', project: 'luxestyle', label: '[LuxeStyle] TikTok-Shop/Viral-Produkte', pool: true, region: 'DE', lang: 'de', queries: [
     'tiktok made me buy it mode', 'viral fashion finds 2026', 'amazon mode favoriten', 'tiktok shop haul deutsch',
     'sommer must haves 2026', 'trend produkte mode', 'aliexpress fashion finds', 'günstige trend teile'] },
+  // ── Werbevideo-HANDWERK: WIE baut man eine gute Ad (erst Daten, dann bauen) ──
+  { key: 'adcraft', project: 'luxestyle', label: '[LuxeStyle] Werbevideo-Handwerk (wie macht man gute Ads)', pool: false, region: 'DE', lang: 'de', queries: [
+    'viral reel struktur erklärt', 'fashion ad video breakdown', 'tiktok hook formel deutsch', 'ugc werbevideo beispiel mode',
+    'produktvideo erstellen tipps', 'kurzvideo schnitt tricks', 'instagram reels retention hook', 'beste werbespots mode kurz',
+    'ai video ad product', 'kling ai video tutorial', 'luma dream machine product video', 'short form video editing tips'] },
   // ── mehr: aban-news (KI-Geld/Berufe) ──
   { key: 'kiberufe', project: 'abannews', label: '[abannews] KI für Berufe/Branchen', pool: false, region: 'DE', lang: 'de', queries: [
     'KI für selbstständige', 'KI im handwerk', 'KI für steuerberater', 'KI für ärzte praxis',
