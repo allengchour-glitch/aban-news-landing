@@ -28,9 +28,13 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   - bestätigt EU: Jimdo (Hamburg), IONOS (Montabaur), STRATO (Berlin), one.com (DK), Hostinger (LT);
     bestätigt Nicht-EU (US): Squarespace, Webflow, Durable, Carrd, GoDaddy.
   - Quellen: Northdata/Creditsafe/Dun&Bradstreet, EIF-Armenia/TechCrunch + Firmen-Impressen.
+- **buchhaltung-radar (22 Tools):** Firmensitze verifiziert, `aban_note`-Marker gehoben. Fast alle
+  sind DACH/EU (deutsche GmbHs, DATEV eG, Agicap/FR, Pleo/DK). Korrektur: Zoho Books → Zoho
+  Corporation (Chennai/Indien) → nicht EU (war „unbekannt"). Bestätigt Nicht-EU: Xero (NZ),
+  QuickBooks/Intuit (US), FreshBooks (Kanada). Preise/Scores bleiben `null`.
 
 ## Offen (gleicher Ansatz, nächste Radars)
-voice-, video-, chatbot-, buchhaltung-, newsletter-, automatisierung-, dropshipping-radar
+voice-, video-, chatbot-, newsletter-, automatisierung-, dropshipping-radar
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 
