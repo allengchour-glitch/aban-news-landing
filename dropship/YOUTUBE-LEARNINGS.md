@@ -123,3 +123,7 @@
 ## Runde 20-Ernte — 2026-06-27
 - **+4 Kaffee-Zubehör/Maschinen** (Wasserfilter CHF59.90, Milchaufschäumer CHF76.90, Filtermaschine CHF94.90, French Press CHF70.90) — on-category, etwas hochpreisig (Marge), aber legit/Premium-vertretbar. SKU-Dedup 0. Audio-Welle läuft → nächster Tick.
 - **Beobachtung:** kaffee kippt zu Zubehör (Filter/Aufschäumer/French Press) — wie audio. Kern-Maschinen grösstenteils drin. Noch 1–2 Wellen, dann v.a. Storefront-Politur fahren.
+
+## Runde 20-Politur — kuechenhelfer Collection (206 Produkte!) aufgewertet
+- War: **kein Hero, keine SEO, 100ch Desc** (grosse Collection, ungepflegt). Jetzt: Hero aus Produktbild gesetzt + SEO-Titel/Description + Premium-Beschreibung (Sub-Linien Zerkleinerer/Schneider · Mixer/Aufschäumer · Gadgets + Trust EU-Lager/WELCOME10).
+- **Politur-Backlog (weitere ungepflegte Collections suchen):** Methode = collectionByHandle prüfen auf Hero✗/SEO✗/Desc<150ch → aufwerten wie audio-sub/kuechenhelfer. Jede Runde 1 Collection.
