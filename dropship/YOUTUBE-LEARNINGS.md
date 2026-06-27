@@ -115,3 +115,7 @@
 ## Runde 18-Ernte — 2026-06-27
 - **+4 Grill/BBQ sauber** (Holzkohlegrill m. Deckel CHF100.90, ohne CHF54.90, Grillofen CHF27.90, E-Tischgrill CHF64.90) — Sommer-saisonal, alle ACTIVE/SEO✓/8 Kanäle/outdoor-garten+sommer-2026. SKU-Dedup 0.
 - **fitness = Decke** (0 geeignete) → aus der Rotation nehmen. Saubere Rest-Whitelist: **grill, kuechenhelfer, kaffee, audio, smartwatch.**
+
+## Runde 19-Ernte — 2026-06-27
+- **+8 sauber:** 4 Küchen-Zerkleinerer (Mini CHF15.90, 7-in-1 Gemüseschneider CHF30.90, 700W CHF55.90, 1.2L CHF60.90) + 4 Smartwatches (3× schwarz CHF60–70, 1× grün). Alle ACTIVE/8 Kanäle. SKU-Dedup 0.
+- **🔧 Titel-Artefakt-Fix:** „Grüne Smartwatch **Deutsch – Geprüft & wie neu** erleben" → klang nach Gebraucht-Ware, ist aber NICHT refurb (Beschreibung geprüft). Re-titelt „Grüne Smartwatch – Dein smarter Begleiter". **Lehre:** KI-Titler streut manchmal „geprüft/wie neu/Deutsch"-Floskeln ein → bei QA solche Refurb-klingenden Wörter entfernen (Vertrauens-Risiko).
