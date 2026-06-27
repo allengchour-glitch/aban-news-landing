@@ -61,6 +61,16 @@
   Mode/Dropship-Kurzvideos baut (3-Sek-Hook, 2–4s-Schnitte, on-screen Text, luxe-premium-Musik, KI-Clip-Prompts für
   Kling/Luma/Veo, Plattform-Längen, CTA pro Kanal, Verbote). **Die Video-Session liest das vor dem Bauen/Posten.**
   Morgen-Übergabe: Video-Session macht weiter mit **Posten (alle Kanäle, TikTok im Griff)** + nutzt Playbook + adcraft-Daten.
+- **📊 RECHERCHE-REPORTS (NEU 06-27, 20 Agenten) — INFO für Produkt-/Shop-Session, keine Imports durch Autopilot:**
+  - **`dropship/PRODUKT-CHANCEN.md`** (~80 Ideen, 11 Kategorien). **Top-5 (saison-/bedarfsstark, dropship-tauglich):**
+    1. Bügelloser Nacken-Ventilator USB-C `bladeless neck fan portable` · 2. Gel-Kühlmatte Hund/Katze `pet cooling mat gel`
+    · 3. Vakuum-Kleidersäcke+Pumpe `vacuum storage bags clothes` · 4. Luftdichte Vorratsdosen (Decanting-Trend) `airtight food storage set`
+    · 5. MagSafe-Auto-Halter Qi2 `magnetic wireless car charger 15W magsafe`. (CHF = Ziel-VK, EK/Marge prüfen.)
+  - **`dropship/WEBSITE-AUDIT.md`** (luxestyle.ch live). **Top-5 Quick-Wins:** 1. **🚨 echte Markennamen (Nike/Adidas/Chanel/
+    Hugo Boss…) aus Menü+Shop RAUS** (Markenrecht-/Stripe-PayPal-Sperr-Risiko — deckt sich mit BigBuy-Marken-Warnung!) ·
+    2. Menü 17→5–7 Top-Level (sub-*-Collections nutzen) · 3. Startseite mobil entschlacken (20→6–8 Sections, 2,17 MB→<1 MB,
+    Bild-`width=3840`→~1080) · 4. Lieferzeiten vereinheitlichen (3 widersprüchliche Angaben = Trust-Leck) · 5. Judge.me-Sterne
+    auf Kacheln+Hero aktivieren. **→ Engpass bleibt Traffic-Qualität, aber diese Fixes heben die Conversion.**
 - **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
   CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
   AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
