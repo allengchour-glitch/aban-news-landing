@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelancer-Cockpit — Gratis All-in-1-App für Selbstständige · aban news</title>
+<meta name="description" content="Kostenlose All-in-1-App für Selbstständige: Stundensatz kalkulieren, Angebote & Rechnungen kalkulieren, Zeit erfassen, Textbausteine, Skonto & Verzugszinsen, Notizen — alles in einer Seite, lokal gespeichert, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/freelancer-cockpit.html">
+<meta property="og:title" content="Freelancer-Cockpit — Gratis All-in-1-App für Selbstständige">
+<meta property="og:description" content="Stundensatz, Kalkulation, Zeiterfassung, Textbausteine, Skonto & Notizen — alles in einer App, lokal gespeichert.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/freelancer-cockpit.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Freelancer-Cockpit",
+"url":"https://abannews.com/freelancer-cockpit.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"All-in-1-App für Selbstständige: Stundensatz-Kalkulator, Angebots-/Rechnungs-Kalkulation, Zeiterfassung, Textbausteine, Skonto & Verzugszinsen, Notizen. Lokal gespeichert, ohne Login.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Werden meine Daten gespeichert oder gesendet?","acceptedAnswer":{"@type":"Answer","text":"Alles bleibt auf deinem Gerät. Die App speichert deine Eingaben nur lokal im Browser (localStorage) — es wird nichts hochgeladen, kein Konto, kein Tracking. Wenn du den Browser-Speicher löschst, sind die Daten weg."}},
+{"@type":"Question","name":"Was kann das Freelancer-Cockpit?","acceptedAnswer":{"@type":"Answer","text":"Sechs Module in einer Seite: Stundensatz kalkulieren, Angebote und Rechnungen rechnerisch zusammenstellen, Arbeitszeit per Timer erfassen, fertige Textbausteine für Angebot/Mahnung/Absage, Skonto und Verzugszinsen berechnen und Notizen festhalten."}},
+{"@type":"Question","name":"Ersetzt das eine Buchhaltungssoftware?","acceptedAnswer":{"@type":"Answer","text":"Nein. Es ist ein kostenloses Rechen- und Organisations-Cockpit für den Alltag. Für echte Rechnungen mit QR-Code, Kundenverwaltung und offenen Posten gibt es das kostenpflichtige Business-Cockpit. Die fachliche und steuerliche Endkontrolle bleibt immer bei dir."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#b91c1c;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--ok:#34d399;--bad:#f87171;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 14px;border-radius:9px;border:0;cursor:pointer;font-size:.9rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.btn.sm{padding:6px 11px;font-size:.84rem}
+.hero{padding:30px 0 6px;text-align:center}
+.hero h1{font-size:clamp(23px,4.4vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:10px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(14px,2.1vw,16px);color:var(--ink2);max-width:620px;margin:0 auto}
+.app{display:grid;grid-template-columns:210px 1fr;gap:16px;margin:18px 0}
+@media(max-width:720px){.app{grid-template-columns:1fr}}
+.nav{display:flex;flex-direction:column;gap:4px;align-self:start;position:sticky;top:64px}
+@media(max-width:720px){.nav{flex-direction:row;flex-wrap:wrap;position:static}}
+.nav button{text-align:left;background:var(--card);border:1px solid var(--line);color:var(--ink2);border-radius:9px;padding:9px 12px;cursor:pointer;font-weight:600;font-size:.9rem}
+.nav button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;min-height:260px}
+.panel h2{font-size:1.2rem;margin-bottom:4px}
+.panel .sub{color:var(--muted);font-size:.86rem;margin-bottom:14px}
+.view{display:none}.view.on{display:block}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:4px}
+input,select,textarea{font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+textarea{resize:vertical;line-height:1.5}
+.row{display:grid;gap:12px}
+.row.two{grid-template-columns:1fr 1fr}.row.three{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:560px){.row.two,.row.three{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.big{font-size:clamp(24px,6vw,34px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.kpi{background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:14px;text-align:center}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:12px}
+.kpi .lab{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);font-weight:700}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);text-align:left;padding:0 6px 6px;font-weight:700}
+td{padding:4px 6px;vertical-align:middle}
+td input{padding:7px 8px}
+.del{background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:1.05rem}
+.del:hover{color:var(--bad)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.sum{display:flex;justify-content:flex-end;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:.95rem}
+.sum b{color:var(--amber-dk)}
+.note{color:var(--muted);font-size:.8rem;margin-top:12px}
+.out{white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;background:var(--field);border:1px solid var(--line);border-radius:9px;padding:11px;margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{font-size:.82rem;border-radius:8px;padding:6px 11px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:600}
+.chip.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.timer{font-size:clamp(30px,9vw,52px);font-weight:800;letter-spacing:.02em;text-align:center;font-variant-numeric:tabular-nums;margin:6px 0}
+.todo{display:flex;align-items:center;gap:9px;padding:7px 0;border-top:1px solid var(--line)}
+.todo input[type=checkbox]{width:auto}
+.todo.done span{text-decoration:line-through;color:var(--muted)}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:26px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:9px 16px;border-radius:9px;font-size:.86rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}
+.toast.show{opacity:1}
+@media print{header.site,.nav,.hero,.cta,footer,[data-aban-news-cta],.noprint{display:none!important}.app{grid-template-columns:1fr}.view:not(.on){display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#app">Zur App</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost sm">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:960px;margin:10px auto 0;padding:0 16px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Freelancer-Cockpit</span> — alles in einer App</h1>
+    <p>Stundensatz kalkulieren, Angebote & Rechnungen rechnen, Zeit erfassen, Textbausteine, Skonto & Verzugszinsen, Notizen — sechs Werkzeuge in einer Seite. Lokal gespeichert, kein Login, kein Tracking.</p>
+  </section>
+
+  <div class="app" id="app">
+    <nav class="nav" id="nav" aria-label="Module">
+      <button data-v="dash" class="on">📊 Übersicht</button>
+      <button data-v="rate">⏱️ Stundensatz</button>
+      <button data-v="calc">🧾 Kalkulation</button>
+      <button data-v="time">⏲️ Zeiterfassung</button>
+      <button data-v="text">✍️ Textbausteine</button>
+      <button data-v="fin">💸 Skonto & Verzug</button>
+      <button data-v="notes">📝 Notizen</button>
+    </nav>
+
+    <div>
+      <!-- DASHBOARD -->
+      <section class="panel view on" id="v-dash">
+        <h2>Übersicht</h2>
+        <p class="sub">Dein Tag auf einen Blick — alles lokal in diesem Browser gespeichert.</p>
+        <div class="kpis">
+          <div class="kpi"><div class="lab">Stundensatz</div><div class="big" id="d-rate">—</div></div>
+          <div class="kpi"><div class="lab">Erfasste Zeit heute</div><div class="big" id="d-time">—</div></div>
+          <div class="kpi"><div class="lab">Wert erfasste Zeit</div><div class="big" id="d-val">—</div></div>
+          <div class="kpi"><div class="lab">Offene To-dos</div><div class="big" id="d-todo">—</div></div>
+        </div>
+        <p class="note">Tipp: Lege oben links los — die Module merken sich deine Eingaben automatisch. <button type="button" class="btn ghost sm noprint" id="wipe">Alle App-Daten löschen</button></p>
+      </section>
+
+      <!-- STUNDENSATZ -->
+      <section class="panel view" id="v-rate">
+        <h2>Stundensatz-Kalkulator</h2>
+        <p class="sub">Was musst du pro Stunde verlangen, damit es sich trägt?</p>
+        <div class="row three">
+          <div class="fld"><label for="r-ziel">Ziel-Jahresgewinn</label><input id="r-ziel" type="number" inputmode="decimal" value="60000"></div>
+          <div class="fld"><label for="r-kosten">Betriebskosten / Jahr</label><input id="r-kosten" type="number" inputmode="decimal" value="12000"></div>
+          <div class="fld"><label for="r-wochen">Arbeitswochen / Jahr</label><input id="r-wochen" type="number" inputmode="decimal" value="44"></div>
+        </div>
+        <div class="row three">
+          <div class="fld"><label for="r-std">Abrechenbare Std / Woche</label><input id="r-std" type="number" inputmode="decimal" value="25"></div>
+          <div class="fld"><label for="r-aufschlag">Risiko-/Gewinn-Aufschlag %</label><input id="r-aufschlag" type="number" inputmode="decimal" value="10"></div>
+          <div class="fld"><label for="r-mwst">MwSt-Satz % (Anzeige)</label><input id="r-mwst" type="number" inputmode="decimal" value="8.1"></div>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><div class="lab">Netto-Stundensatz</div><div class="big" id="r-netto">—</div></div>
+          <div class="kpi"><div class="lab">inkl. MwSt</div><div class="big" id="r-brutto">—</div></div>
+          <div class="kpi"><div class="lab">Abrechenbar / Jahr</div><div class="big" id="r-jahresstd">—</div></div>
+        </div>
+        <p class="note">Formel: (Zielgewinn + Kosten) ÷ abrechenbare Jahresstunden, dann Aufschlag. Richtwert — deine Steuern/AHV nicht vergessen.</p>
+      </section>
+
+      <!-- KALKULATION -->
+      <section class="panel view" id="v-calc">
+        <h2>Angebots-/Rechnungs-Kalkulation</h2>
+        <p class="sub">Positionen zusammenstellen, MwSt & Summe rechnen, drucken. (Echte Rechnungen mit QR → Business-Cockpit.)</p>
+        <table>
+          <thead><tr><th>Beschreibung</th><th style="width:80px">Menge</th><th style="width:110px">Einzelpreis</th><th style="width:100px">Summe</th><th></th></tr></thead>
+          <tbody id="calc-rows"></tbody>
+        </table>
+        <div class="tools">
+          <button type="button" class="btn ghost sm" id="calc-add">+ Position</button>
+          <label style="display:inline-flex;align-items:center;gap:6px;margin:0;font-weight:600">MwSt %<input id="calc-mwst" type="number" value="8.1" style="width:80px;padding:6px 8px"></label>
+        </div>
+        <div class="sum">
+          <span>Netto: <b id="calc-netto">—</b></span>
+          <span>MwSt: <b id="calc-tax">—</b></span>
+          <span>Brutto: <b id="calc-brutto">—</b></span>
+        </div>
+        <div class="tools noprint"><button type="button" class="btn sm" id="calc-print">🖨️ Drucken / PDF</button></div>
+      </section>
+
+      <!-- ZEITERFASSUNG -->
+      <section class="panel view" id="v-time">
+        <h2>Zeiterfassung</h2>
+        <p class="sub">Timer starten, Einträge sammeln, Wert nach Stundensatz sehen.</p>
+        <div class="fld"><label for="t-task">Woran arbeitest du?</label><input id="t-task" type="text" placeholder="z. B. Website für Kunde X"></div>
+        <div class="timer" id="t-disp">00:00:00</div>
+        <div class="tools" style="justify-content:center">
+          <button type="button" class="btn" id="t-toggle">▶ Start</button>
+          <button type="button" class="btn ghost" id="t-add">+ Manuell (Min)</button>
+        </div>
+        <table style="margin-top:14px">
+          <thead><tr><th>Aufgabe</th><th style="width:90px">Dauer</th><th style="width:100px">Wert</th><th></th></tr></thead>
+          <tbody id="t-rows"></tbody>
+        </table>
+        <div class="sum"><span>Summe: <b id="t-sum">0:00 h</b></span><span>Wert: <b id="t-val">—</b></span></div>
+        <p class="note">Wert = erfasste Stunden × dein Netto-Stundensatz (aus dem Modul „Stundensatz").</p>
+      </section>
+
+      <!-- TEXTBAUSTEINE -->
+      <section class="panel view" id="v-text">
+        <h2>Textbausteine</h2>
+        <p class="sub">Fertige Vorlagen — Platzhalter ersetzen, kopieren, abschicken.</p>
+        <div class="chips" id="tpl-chips"></div>
+        <div class="out" id="tpl-out"></div>
+        <div class="tools noprint"><button type="button" class="btn sm" id="tpl-copy">📋 Kopieren</button></div>
+        <p class="note">Mehr Prompts? <a href="/gratis-ki-prompts.html">11 KI-Prompts gratis</a> · 40 fertige Vorlagen im <a href="/shop.html">Shop</a>.</p>
+      </section>
+
+      <!-- FINANZ -->
+      <section class="panel view" id="v-fin">
+        <h2>Skonto & Verzugszinsen</h2>
+        <p class="sub">Zwei schnelle Rechnungen für den Zahlungsalltag.</p>
+        <div class="row two">
+          <div>
+            <h3 style="font-size:1rem;margin-bottom:8px">Skonto</h3>
+            <div class="fld"><label for="s-betrag">Rechnungsbetrag</label><input id="s-betrag" type="number" inputmode="decimal" value="1000"></div>
+            <div class="fld"><label for="s-prozent">Skonto %</label><input id="s-prozent" type="number" inputmode="decimal" value="2"></div>
+            <div class="kpi"><div class="lab">Du zahlst</div><div class="big" id="s-out">—</div><div class="lab" id="s-spar"></div></div>
+          </div>
+          <div>
+            <h3 style="font-size:1rem;margin-bottom:8px">Verzugszinsen</h3>
+            <div class="fld"><label for="v-betrag">Offener Betrag</label><input id="v-betrag" type="number" inputmode="decimal" value="1000"></div>
+            <div class="row two">
+              <div class="fld"><label for="v-satz">Zinssatz % p.a.</label><input id="v-satz" type="number" inputmode="decimal" value="5"></div>
+              <div class="fld"><label for="v-tage">Verzugstage</label><input id="v-tage" type="number" inputmode="decimal" value="30"></div>
+            </div>
+            <div class="kpi"><div class="lab">Verzugszinsen</div><div class="big" id="v-out">—</div><div class="lab" id="v-ges"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTIZEN -->
+      <section class="panel view" id="v-notes">
+        <h2>Notizen & To-dos</h2>
+        <p class="sub">Schnell festhalten — bleibt lokal in diesem Browser.</p>
+        <div class="tools" style="margin:0 0 10px"><input id="todo-in" type="text" placeholder="Neues To-do + Enter" style="flex:1"><button type="button" class="btn sm" id="todo-add">+</button></div>
+        <div id="todo-list"></div>
+        <div class="fld" style="margin-top:16px"><label for="notes-area">Notizblock</label><textarea id="notes-area" rows="6" placeholder="Ideen, Telefonnotizen, Aufgaben …"></textarea></div>
+        <p class="note">Automatisch gespeichert.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="cta noprint"><strong>Echte Rechnungen mit QR, Kunden & offenen Posten?</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">Dieses Cockpit ist gratis fürs Rechnen & Organisieren. Für volle Rechnungsstellung:</p>
+    <p><a class="btn" href="/business-cockpit.html">Business-Cockpit (Pro) ansehen</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Gratis-Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">5 Minuten KI ohne Hype — jeden Werktag für Selbstständige</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/online-tools.html">Alle Tools</a> · <a href="/shop.html">Shop</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+  var LS="aban_cockpit_v1";
+  var state={rate:{},calc:[],time:[],notes:"",todos:[],timer:{running:false,start:0,acc:0,task:""}};
+  try{var s=JSON.parse(localStorage.getItem(LS));if(s)state=Object.assign(state,s);}catch(e){}
+  function save(){try{localStorage.setItem(LS,JSON.stringify(state));}catch(e){}}
+  function eur(n){return (isFinite(n)?n:0).toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function $(id){return document.getElementById(id);}
+  var to;function toast(m){clearTimeout(to);var t=$("toast");t.textContent=m;t.classList.add("show");to=setTimeout(function(){t.classList.remove("show");},1200);}
+
+  // ---- nav ----
+  document.querySelectorAll("#nav button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#nav button").forEach(function(x){x.classList.remove("on");});
+    document.querySelectorAll(".view").forEach(function(v){v.classList.remove("on");});
+    this.classList.add("on");$("v-"+this.getAttribute("data-v")).classList.add("on");
+    if(this.getAttribute("data-v")==="dash")renderDash();
+  });});
+
+  // ---- Stundensatz ----
+  var rIds=["r-ziel","r-kosten","r-wochen","r-std","r-aufschlag","r-mwst"];
+  function num(id){var v=$(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function calcRate(){
+    var ziel=num("r-ziel"),kosten=num("r-kosten"),wochen=num("r-wochen"),std=num("r-std"),auf=num("r-aufschlag"),mwst=num("r-mwst");
+    var jahresStd=wochen*std;
+    var base=(ziel+kosten)/jahresStd;
+    var netto=base*(1+(isFinite(auf)?auf:0)/100);
+    state.rate={netto:netto,jahresStd:jahresStd};
+    if(isFinite(netto)&&jahresStd>0){
+      $("r-netto").textContent=eur(netto);
+      $("r-brutto").textContent=eur(netto*(1+(isFinite(mwst)?mwst:0)/100));
+      $("r-jahresstd").textContent=Math.round(jahresStd).toLocaleString("de-DE")+" h";
+    } else {$("r-netto").textContent="—";$("r-brutto").textContent="—";$("r-jahresstd").textContent="—";}
+    save();
+  }
+  rIds.forEach(function(id){var el=$(id);if(state.rate&&state.rate["_"+id]!=null)el.value=state.rate["_"+id];
+    el.addEventListener("input",function(){state.rate["_"+id]=el.value;calcRate();});});
+  calcRate();
+
+  // ---- Kalkulation ----
+  function calcRowEl(item,i){
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td><input class="c-desc" type="text" value="'+(item.desc||"").replace(/"/g,"&quot;")+'" placeholder="Leistung"></td>'+
+      '<td><input class="c-qty" type="number" inputmode="decimal" value="'+(item.qty!=null?item.qty:1)+'"></td>'+
+      '<td><input class="c-price" type="number" inputmode="decimal" value="'+(item.price!=null?item.price:0)+'"></td>'+
+      '<td class="c-sum">—</td><td><button type="button" class="del" title="Entfernen">✕</button></td>';
+    tr.querySelector(".del").addEventListener("click",function(){state.calc.splice(i,1);renderCalc();});
+    tr.querySelectorAll("input").forEach(function(inp){inp.addEventListener("input",function(){
+      state.calc[i]={desc:tr.querySelector(".c-desc").value,qty:parseFloat(tr.querySelector(".c-qty").value)||0,price:parseFloat(tr.querySelector(".c-price").value)||0};
+      sumCalc();save();});});
+    return tr;
+  }
+  function sumCalc(){
+    var netto=0;
+    document.querySelectorAll("#calc-rows tr").forEach(function(tr){
+      var q=parseFloat(tr.querySelector(".c-qty").value)||0,p=parseFloat(tr.querySelector(".c-price").value)||0;
+      tr.querySelector(".c-sum").textContent=eur(q*p);netto+=q*p;});
+    var mwst=parseFloat($("calc-mwst").value)||0;var tax=netto*mwst/100;
+    $("calc-netto").textContent=eur(netto);$("calc-tax").textContent=eur(tax);$("calc-brutto").textContent=eur(netto+tax);
+  }
+  function renderCalc(){var b=$("calc-rows");b.innerHTML="";
+    if(!state.calc.length)state.calc=[{desc:"",qty:1,price:0}];
+    state.calc.forEach(function(it,i){b.appendChild(calcRowEl(it,i));});sumCalc();save();}
+  $("calc-add").addEventListener("click",function(){state.calc.push({desc:"",qty:1,price:0});renderCalc();});
+  if(state.calcMwst!=null)$("calc-mwst").value=state.calcMwst;
+  $("calc-mwst").addEventListener("input",function(){state.calcMwst=$("calc-mwst").value;sumCalc();save();});
+  $("calc-print").addEventListener("click",function(){window.print();});
+  renderCalc();
+
+  // ---- Zeiterfassung ----
+  var tick=null;
+  function fmtDur(ms){var s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor((s%3600)/60),se=s%60;
+    return String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(se).padStart(2,"0");}
+  function curMs(){return state.timer.acc+(state.timer.running?(Date.now()-state.timer.start):0);}
+  function dispTimer(){$("t-disp").textContent=fmtDur(curMs());}
+  function startTick(){if(tick)clearInterval(tick);tick=setInterval(dispTimer,1000);}
+  $("t-toggle").addEventListener("click",function(){
+    if(state.timer.running){state.timer.acc=curMs();state.timer.running=false;clearInterval(tick);
+      var min=Math.round(state.timer.acc/60000);
+      if(min>0){state.time.push({task:$("t-task").value||state.timer.task||"Ohne Titel",min:min});state.timer.acc=0;renderTime();}
+      this.textContent="▶ Start";dispTimer();
+    } else {state.timer.running=true;state.timer.start=Date.now();state.timer.task=$("t-task").value;startTick();this.textContent="⏸ Stop & buchen";}
+    save();
+  });
+  $("t-add").addEventListener("click",function(){
+    var m=prompt("Wie viele Minuten erfassen?","30");if(m===null)return;m=parseInt(m,10);if(isNaN(m)||m<=0)return;
+    state.time.push({task:$("t-task").value||"Manuell",min:m});renderTime();save();});
+  function renderTime(){
+    var b=$("t-rows");b.innerHTML="";var total=0;
+    var rate=(state.rate&&state.rate.netto)||0;
+    state.time.forEach(function(e,i){total+=e.min;
+      var tr=document.createElement("tr");
+      tr.innerHTML='<td>'+(e.task||"").replace(/</g,"&lt;")+'</td><td>'+Math.floor(e.min/60)+":"+String(e.min%60).padStart(2,"0")+" h</td><td>"+eur(e.min/60*rate)+'</td><td><button type="button" class="del">✕</button></td>';
+      tr.querySelector(".del").addEventListener("click",function(){state.time.splice(i,1);renderTime();save();});
+      b.appendChild(tr);});
+    $("t-sum").textContent=Math.floor(total/60)+":"+String(total%60).padStart(2,"0")+" h";
+    $("t-val").textContent=eur(total/60*rate);
+  }
+  if(state.timer.running){startTick();$("t-toggle").textContent="⏸ Stop & buchen";}
+  dispTimer();renderTime();
+
+  // ---- Textbausteine ----
+  var TPL=[
+    ["Angebot","Sehr geehrte/r [Name],\n\nvielen Dank für Ihre Anfrage. Gerne unterbreite ich Ihnen folgendes Angebot für [Leistung]:\n\n- [Position 1]\n- [Position 2]\n\nGesamtpreis: [Betrag] (zzgl. MwSt). Gültig bis [Datum].\n\nBei Fragen bin ich gerne für Sie da.\n\nFreundliche Grüße\n[Dein Name]"],
+    ["Auftragsbestätigung","Hallo [Name],\n\nvielen Dank für den Auftrag! Ich bestätige: [Leistung] zum vereinbarten Preis von [Betrag]. Geplante Fertigstellung: [Datum].\n\nIch melde mich, sobald es Neuigkeiten gibt.\n\nBeste Grüße\n[Dein Name]"],
+    ["1. Mahnung (freundlich)","Hallo [Name],\n\nsicher ist es nur untergegangen: Die Rechnung [Nr.] über [Betrag] vom [Datum] ist noch offen. Ich bitte um Begleichung bis [neues Datum].\n\nFalls bereits bezahlt, ist diese Nachricht gegenstandslos.\n\nFreundliche Grüße\n[Dein Name]"],
+    ["2. Mahnung (bestimmt)","Sehr geehrte/r [Name],\n\ntrotz Erinnerung ist die Rechnung [Nr.] über [Betrag] weiterhin offen. Ich setze eine letzte Frist bis [Datum]. Danach sehe ich mich gezwungen, weitere Schritte einzuleiten.\n\nMit freundlichen Grüßen\n[Dein Name]"],
+    ["Höfliche Absage","Hallo [Name],\n\nvielen Dank für Ihre Anfrage. Aktuell bin ich leider voll ausgelastet und kann [Leistung] nicht in der gewünschten Zeit übernehmen. Gerne dürfen Sie sich später wieder melden.\n\nFreundliche Grüße\n[Dein Name]"],
+    ["Terminerinnerung","Hallo [Name],\n\nkurze Erinnerung an unseren Termin am [Datum] um [Uhrzeit] für [Anlass]. Passt das noch? Bei Verhinderung freue ich mich über eine kurze Rückmeldung.\n\nBis dahin, beste Grüße\n[Dein Name]"]
+  ];
+  var tplCur=0;
+  function renderTpl(){var c=$("tpl-chips");c.innerHTML="";
+    TPL.forEach(function(t,i){var b=document.createElement("button");b.className="chip"+(i===tplCur?" on":"");b.textContent=t[0];
+      b.addEventListener("click",function(){tplCur=i;renderTpl();});c.appendChild(b);});
+    $("tpl-out").textContent=TPL[tplCur][1];}
+  $("tpl-copy").addEventListener("click",function(){if(navigator.clipboard)navigator.clipboard.writeText(TPL[tplCur][1]).then(function(){toast("Vorlage kopiert ✓");});});
+  renderTpl();
+
+  // ---- Finanz ----
+  function calcFin(){
+    var sb=num("s-betrag"),sp=num("s-prozent");
+    if(isFinite(sb)&&isFinite(sp)){var rab=sb*sp/100;$("s-out").textContent=eur(sb-rab);$("s-spar").textContent="spart "+eur(rab);}
+    else{$("s-out").textContent="—";$("s-spar").textContent="";}
+    var vb=num("v-betrag"),vs=num("v-satz"),vt=num("v-tage");
+    if(isFinite(vb)&&isFinite(vs)&&isFinite(vt)){var z=vb*vs/100*vt/365;$("v-out").textContent=eur(z);$("v-ges").textContent="gesamt "+eur(vb+z);}
+    else{$("v-out").textContent="—";$("v-ges").textContent="";}
+  }
+  ["s-betrag","s-prozent","v-betrag","v-satz","v-tage"].forEach(function(id){$(id).addEventListener("input",calcFin);});
+  calcFin();
+
+  // ---- Notizen & To-dos ----
+  function renderTodos(){var l=$("todo-list");l.innerHTML="";
+    state.todos.forEach(function(t,i){var d=document.createElement("div");d.className="todo"+(t.done?" done":"");
+      var cb=document.createElement("input");cb.type="checkbox";cb.checked=!!t.done;
+      cb.addEventListener("change",function(){state.todos[i].done=cb.checked;renderTodos();save();});
+      var sp=document.createElement("span");sp.textContent=t.text;sp.style.flex="1";
+      var del=document.createElement("button");del.className="del";del.textContent="✕";
+      del.addEventListener("click",function(){state.todos.splice(i,1);renderTodos();save();});
+      d.appendChild(cb);d.appendChild(sp);d.appendChild(del);l.appendChild(d);});}
+  function addTodo(){var v=$("todo-in").value.trim();if(!v)return;state.todos.push({text:v,done:false});$("todo-in").value="";renderTodos();save();}
+  $("todo-add").addEventListener("click",addTodo);
+  $("todo-in").addEventListener("keydown",function(e){if(e.key==="Enter")addTodo();});
+  $("notes-area").value=state.notes||"";
+  $("notes-area").addEventListener("input",function(){state.notes=$("notes-area").value;save();});
+  renderTodos();
+
+  // ---- Dashboard ----
+  function renderDash(){
+    $("d-rate").textContent=(state.rate&&state.rate.netto&&isFinite(state.rate.netto))?eur(state.rate.netto):"—";
+    var min=state.time.reduce(function(a,e){return a+e.min;},0);
+    $("d-time").textContent=Math.floor(min/60)+":"+String(min%60).padStart(2,"0")+" h";
+    var rate=(state.rate&&state.rate.netto)||0;$("d-val").textContent=eur(min/60*rate);
+    $("d-todo").textContent=state.todos.filter(function(t){return !t.done;}).length;
+  }
+  $("wipe").addEventListener("click",function(){if(confirm("Wirklich alle lokal gespeicherten App-Daten löschen?")){localStorage.removeItem(LS);location.reload();}});
+  renderDash();
+})();
+</script>
+</body>
+</html>
