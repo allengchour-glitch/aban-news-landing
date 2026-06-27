@@ -31,20 +31,32 @@ const MODE = (process.env.YT_MODE || 'normal').toLowerCase() === 'hardcore' ? 'h
 const HARDCORE_HOURS = 24;
 
 // Themen mit großem Query-Pool (User: „alles" + „hardcore"). pool=true → fließt in Reel-Hashtag-Pool.
+// project: 'luxestyle' (Shop) | 'abannews' (KI-Newsletter/Tools/GEO). pool=true → Reel-Hashtag-Pool (nur Shop).
 const THEMES = [
-  { key: 'mode', label: 'LuxeStyle Mode/Reels-Trends', pool: true, region: 'CH', lang: 'de', queries: [
+  // ── LuxeStyle (Shop) ──
+  { key: 'mode', project: 'luxestyle', label: '[LuxeStyle] Mode/Reels-Trends', pool: true, region: 'CH', lang: 'de', queries: [
     'sommer mode outfit reel 2026', 'sommerkleid styling damen', 'beach outfit lookbook', 'mode trend sommer 2026',
     'ootd reel sommer', 'leichte sommerkleider haul', 'strand accessoires mode', 'boho kleid styling'] },
-  { key: 'fashion', label: 'Fashion Hooks (DACH)', pool: true, region: 'DE', lang: 'de', queries: [
+  { key: 'fashion', project: 'luxestyle', label: '[LuxeStyle] Fashion Hooks (DACH)', pool: true, region: 'DE', lang: 'de', queries: [
     'ootd fashion haul deutsch', 'modetrends 2026 frauen', 'capsule wardrobe sommer', 'fashion reel hooks',
     'outfit inspiration deutsch', 'try on haul sommer', 'styling tipps damen', 'günstige mode finds'] },
-  { key: 'dropship', label: 'Dropshipping/Shopify-Strategie', pool: false, region: 'DE', lang: 'de', queries: [
+  { key: 'dropship', project: 'luxestyle', label: '[LuxeStyle] Dropshipping/Shopify-Strategie', pool: false, region: 'DE', lang: 'de', queries: [
     'dropshipping shopify conversion 2026', 'shopify store optimieren umsatz', 'tiktok ads dropshipping strategie',
     'shopify conversion rate tipps', 'dropshipping winning products 2026', 'meta ads ecommerce 2026',
     'shopify seo deutsch', 'ugc content ecommerce'] },
-  { key: 'kinews', label: 'KI-News/Tools (aban-news)', pool: false, region: 'DE', lang: 'de', queries: [
+  // ── aban-news (KI-Newsletter / Tools / GEO) ──
+  { key: 'kitools', project: 'abannews', label: '[abannews] KI-Tools & Reviews', pool: false, region: 'DE', lang: 'de', queries: [
     'KI tools 2026 deutsch', 'beste ki tools business', 'ki automatisierung kmu', 'neue ki tools test',
-    'chatgpt claude vergleich', 'ki marketing tools', 'ki news deutsch', 'ki produktivität tools'] },
+    'chatgpt claude vergleich', 'ki marketing tools', 'ki tools selbstständige', 'ki produktivität tools'] },
+  { key: 'kinews', project: 'abannews', label: '[abannews] KI-News & Trends', pool: false, region: 'DE', lang: 'de', queries: [
+    'ki news deutsch 2026', 'openai google ki update', 'ki wochenrückblick', 'neue ki modelle',
+    'ki für unternehmen news', 'ki regulierung eu', 'ki agenten 2026', 'ki business news'] },
+  { key: 'geo', project: 'abannews', label: '[abannews] GEO/AI-Sichtbarkeit & SEO', pool: false, region: 'DE', lang: 'de', queries: [
+    'generative engine optimization', 'AI overviews seo strategie', 'in chatgpt gefunden werden', 'answer engine optimization',
+    'seo 2026 ki', 'perplexity sichtbarkeit', 'programmatic seo deutsch', 'zero click search strategie'] },
+  { key: 'newsletter', project: 'abannews', label: '[abannews] Newsletter/Creator-Wachstum', pool: false, region: 'DE', lang: 'de', queries: [
+    'newsletter wachstum strategie', 'beehiiv tipps deutsch', 'lead magnet ideen', 'newsletter monetarisieren',
+    'linkedin reichweite aufbauen', 'content creator einkommen', 'affiliate marketing deutsch', 'digitale produkte verkaufen'] },
 ];
 
 const STOP = new Set(['und','der','die','das','mit','für','von','ich','dein','the','for','and','you','your','this','how','best','top','2024','2025','2026','review','deutsch','german','neue','beste']);
@@ -66,12 +78,10 @@ const now = new Date();
 const marker = readMarker();
 const windowActive = marker && now < marker;
 
+// Hardcore (optional, nur GitHub-Zwei-Workflow-Aufbau) limitiert sich selbst auf 24 h.
+// Auf GitLab läuft NUR der Normal-Modus (ein Job) → KEINE Selbst-Pause (sonst 24 h Stillstand).
 if (MODE === 'hardcore' && marker && !windowActive) {
-  console.log(`Hardcore-Fenster beendet (bis ${marker.toISOString()}) → No-Op. Der 2-h-Normallauf übernimmt.`);
-  process.exit(0);
-}
-if (MODE === 'normal' && windowActive) {
-  console.log(`Hardcore-Fenster aktiv (bis ${marker.toISOString()}) → Normallauf pausiert (kein Quota-Konflikt).`);
+  console.log(`Hardcore-Fenster beendet (bis ${marker.toISOString()}) → No-Op.`);
   process.exit(0);
 }
 
