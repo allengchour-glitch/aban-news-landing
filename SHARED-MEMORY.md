@@ -99,6 +99,10 @@
 - **1 Repo**, **1 `main`** → vor jedem Push `git pull --rebase`; **nie zwei Sessions gleichzeitig nach `main`**.
 - **`social/posts_image.csv`** = Post-Queue (der Autopost-Bot committet sie auf `main`).
 - **Bildpipeline** `automation/gen_image_gemini.py` (Vertex) ist für alle nutzbar.
+- **🤖 KI-Provider (Cross-Session, User 06-27):** verfügbar sind **OpenAI/ChatGPT, DeepSeek, Groq, Grok (xAI), Gemini**
+  (+ Veo via Gemini, Luma, fal.ai für Video). → Für Text (Captions/Produkt-Beschreibungen/DE-Übersetzung/Synthese)
+  **Groq/DeepSeek = schnell & günstig**, GPT/Grok/Gemini = stark. Tools können den passenden Provider wählen (Key als
+  Env/CI-Variable). Keys liegen bei der jeweiligen Session — vor Nutzung prüfen, welcher Key wo gesetzt ist.
 
 ## 🔑 Secrets-Status (geteilt — Stand 2026-06-08)
 | Secret | Status |
