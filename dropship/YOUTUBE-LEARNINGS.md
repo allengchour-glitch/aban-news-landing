@@ -119,3 +119,7 @@
 ## Runde 19-Ernte — 2026-06-27
 - **+8 sauber:** 4 Küchen-Zerkleinerer (Mini CHF15.90, 7-in-1 Gemüseschneider CHF30.90, 700W CHF55.90, 1.2L CHF60.90) + 4 Smartwatches (3× schwarz CHF60–70, 1× grün). Alle ACTIVE/8 Kanäle. SKU-Dedup 0.
 - **🔧 Titel-Artefakt-Fix:** „Grüne Smartwatch **Deutsch – Geprüft & wie neu** erleben" → klang nach Gebraucht-Ware, ist aber NICHT refurb (Beschreibung geprüft). Re-titelt „Grüne Smartwatch – Dein smarter Begleiter". **Lehre:** KI-Titler streut manchmal „geprüft/wie neu/Deutsch"-Floskeln ein → bei QA solche Refurb-klingenden Wörter entfernen (Vertrauens-Risiko).
+
+## Runde 20-Ernte — 2026-06-27
+- **+4 Kaffee-Zubehör/Maschinen** (Wasserfilter CHF59.90, Milchaufschäumer CHF76.90, Filtermaschine CHF94.90, French Press CHF70.90) — on-category, etwas hochpreisig (Marge), aber legit/Premium-vertretbar. SKU-Dedup 0. Audio-Welle läuft → nächster Tick.
+- **Beobachtung:** kaffee kippt zu Zubehör (Filter/Aufschäumer/French Press) — wie audio. Kern-Maschinen grösstenteils drin. Noch 1–2 Wellen, dann v.a. Storefront-Politur fahren.
