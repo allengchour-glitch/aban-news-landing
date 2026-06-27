@@ -57,8 +57,13 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   Pictory, InVideo, Fliki, Kapwing); 6 `null` (UK/IL/Adobe/Topaz-lokal: Synthesia, D-ID,
   Colossyan, VEED, Adobe Firefly, Topaz).
 
+- **newsletter-radar (21 Tools):** Marker gehoben. `eu_lager`: 9 `true` (CleverReach/rapidmail/
+  HubSpot-DE-Region, Brevo/FR, GetResponse/PL, Mailjet/Sinch, KlickTipp-DE-Server, **MailerLite &
+  Sender/Litauen**); 8 `false` (US: Mailchimp, Kit, ActiveCampaign, Klaviyo, beehiiv, Substack,
+  Buttondown, Loops); 4 `null` (Omnisend, Ghost-Self-host, EmailOctopus/UK, Resend).
+
 ## Offen (gleicher Ansatz, nächste Radars)
-newsletter-, automatisierung-, dropshipping-radar
+automatisierung-, dropshipping-radar
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 
