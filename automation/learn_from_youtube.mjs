@@ -57,6 +57,20 @@ const THEMES = [
   { key: 'newsletter', project: 'abannews', label: '[abannews] Newsletter/Creator-Wachstum', pool: false, region: 'DE', lang: 'de', queries: [
     'newsletter wachstum strategie', 'beehiiv tipps deutsch', 'lead magnet ideen', 'newsletter monetarisieren',
     'linkedin reichweite aufbauen', 'content creator einkommen', 'affiliate marketing deutsch', 'digitale produkte verkaufen'] },
+  // ── mehr: LuxeStyle (Shop) ──
+  { key: 'schmuck', project: 'luxestyle', label: '[LuxeStyle] Schmuck & Accessoires', pool: true, region: 'CH', lang: 'de', queries: [
+    'schmuck trend 2026', 'ketten ohrringe styling', 'sonnenbrillen trend sommer', 'accessoires outfit damen',
+    'gold schmuck kombinieren', 'armband layering', 'statement schmuck', 'geschenkidee schmuck'] },
+  { key: 'tiktokshop', project: 'luxestyle', label: '[LuxeStyle] TikTok-Shop/Viral-Produkte', pool: true, region: 'DE', lang: 'de', queries: [
+    'tiktok made me buy it mode', 'viral fashion finds 2026', 'amazon mode favoriten', 'tiktok shop haul deutsch',
+    'sommer must haves 2026', 'trend produkte mode', 'aliexpress fashion finds', 'günstige trend teile'] },
+  // ── mehr: aban-news (KI-Geld/Berufe) ──
+  { key: 'kiberufe', project: 'abannews', label: '[abannews] KI für Berufe/Branchen', pool: false, region: 'DE', lang: 'de', queries: [
+    'KI für selbstständige', 'KI im handwerk', 'KI für steuerberater', 'KI für ärzte praxis',
+    'KI für anwälte kanzlei', 'KI für immobilienmakler', 'KI für coaches', 'KI für kleine unternehmen'] },
+  { key: 'kigeld', project: 'abannews', label: '[abannews] Online Geld verdienen (KI)', pool: false, region: 'DE', lang: 'de', queries: [
+    'mit KI geld verdienen 2026', 'passives einkommen online deutsch', 'nebeneinkommen ideen 2026', 'online business starten deutsch',
+    'mit ki automatisieren geld', 'faceless content geld', 'print on demand deutsch', 'dropshipping deutschland 2026'] },
 ];
 
 const STOP = new Set(['und','der','die','das','mit','für','von','ich','dein','the','for','and','you','your','this','how','best','top','2024','2025','2026','review','deutsch','german','neue','beste']);
