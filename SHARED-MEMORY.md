@@ -44,6 +44,12 @@
      → fixen, dann in Merchant Center „Request website check".
   3. **Weiter Produkte holen/pflegen** (CJ + BigBuy) wie gehabt — du regelst nachher alles.
   Was diese Session liefert: Trend-Wissen (`brain/youtube`), Produkt-Ideen/Captions/Reports (`brain/intel`), Merchant-Feed.
+- **🎬 VIDEO + ⚠️ KEINE DOPPELPOSTS (Regel, User 06-27):** Es gibt MEHRERE Poster (`post-next-reel.mjs`→`reels_seed.csv`,
+  `video-autopost-meta.mjs`→`social/video_queue.csv`, `tiktok-autopost`, `story-autopost`) → wenn zwei dasselbe ready posten,
+  doppelt. **REGEL: pro Queue/Plattform NUR EIN aktiver Poster.** Generatoren (`luma-hero-clip.mjs`, `auto_render.sh`, fal)
+  schreiben NUR `status=ready`, posten NIE. **NEU auf GitLab:** Job **`luma-clips`** = NUR Generator (Luma Dream Machine,
+  `LUMA_API_KEY`, Pointer-Dedup, MAX_CLIPS=1) → `social/video_queue.csv` (ready), postet nicht. Posten bleibt 1 Poster
+  (Video-Session). ⚠️ Luma kostet ~$0.3–0.5/Clip; ohne `LUMA_API_KEY` No-op.
 - **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
   CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
   AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
