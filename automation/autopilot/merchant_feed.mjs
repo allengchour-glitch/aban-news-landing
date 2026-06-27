@@ -29,17 +29,23 @@ const esc = s => String(s || '').replace(/[<>&]/g, m => ({ '<': '&lt;', '>': '&g
 TOKEN = await getToken();
 if (!TOKEN) { console.log('Keine Shopify-Creds → No-Op.'); process.exit(0); }
 
-const Q = after => `{products(first:50, query:"status:active tag:cj-real"${after ? `, after:"${after}"` : ''}){pageInfo{hasNextPage endCursor} edges{node{
+// cj-real + BigBuy, ABER Marken-/Safety-Risiko RAUS (Google sperrt Konten wegen Markenware/Safety).
+// Query schließt tag:marke aus; Safety zusätzlich per Titel-Filter unten.
+const QUERY = process.env.FEED_QUERY || 'status:active (tag:cj-real OR tag:bigbuy) -tag:marke';
+const SAFETY = /baby|kinder|lern-tablet|schwimm|pool.?float|schwimmring|schwimmbrille|badeschuhe|nike|adidas|puma|disney|frozen|reebok|converse|vans/i;
+const Q = after => `{products(first:50, query:${JSON.stringify(QUERY)}${after ? `, after:"${after}"` : ''}){pageInfo{hasNextPage endCursor} edges{node{
   title handle onlineStoreUrl descriptionPlainSummary: description(truncateAt:400)
-  featuredImage{url} productType vendor
+  featuredImage{url} productType vendor tags
   priceRangeV2{minVariantPrice{amount currencyCode}}
   variants(first:1){edges{node{availableForSale sku}}}
 }}}}`;
-let c = null, items = [];
+let c = null, items = [], skipped = 0;
 while (true) {
   const p = (await gql(Q(c))).data?.products; if (!p) break;
   for (const e of p.edges) {
     const x = e.node; if (!x.featuredImage?.url) continue;
+    // Safety-/Marken-Restrisiko per Titel/Vendor aussortieren (Google-Policy-Schutz)
+    if (SAFETY.test(x.title) || SAFETY.test(x.vendor || '') || (x.tags || []).includes('marke')) { skipped++; continue; }
     const price = x.priceRangeV2?.minVariantPrice;
     const link = x.onlineStoreUrl || `${STORE}/products/${x.handle}`;
     const avail = x.variants.edges[0]?.node?.availableForSale !== false ? 'in stock' : 'out of stock';
@@ -69,4 +75,4 @@ ${items.join('\n')}
 </channel>
 </rss>`;
 fs.writeFileSync(OUT, xml);
-console.log(`✅ ${path.relative(ROOT, OUT)}: ${items.length} Produkte im Google-Merchant-Feed.`);
+console.log(`✅ ${path.relative(ROOT, OUT)}: ${items.length} Produkte im Google-Merchant-Feed (cj-real + BigBuy) · ${skipped} Marken/Safety ausgeschlossen.`);
