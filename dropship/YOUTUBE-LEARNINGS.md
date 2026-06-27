@@ -127,3 +127,6 @@
 ## Runde 20-Politur — kuechenhelfer Collection (206 Produkte!) aufgewertet
 - War: **kein Hero, keine SEO, 100ch Desc** (grosse Collection, ungepflegt). Jetzt: Hero aus Produktbild gesetzt + SEO-Titel/Description + Premium-Beschreibung (Sub-Linien Zerkleinerer/Schneider · Mixer/Aufschäumer · Gadgets + Trust EU-Lager/WELCOME10).
 - **Politur-Backlog (weitere ungepflegte Collections suchen):** Methode = collectionByHandle prüfen auf Hero✗/SEO✗/Desc<150ch → aufwerten wie audio-sub/kuechenhelfer. Jede Runde 1 Collection.
+
+## Runde 21-Ernte — 2026-06-27
+- **+4 Audio** (Bluetooth-Kopfhörer CHF62.90, **Sonnenaufgangswecker CHF37.90** = cooles Gadget, Drahtlos-Kopfhörer CHF27.90, Lautsprecherhalter CHF47.90). SKU-Dedup 0. Audio liefert noch Mischung aus Kopfhörern + Gadgets.
