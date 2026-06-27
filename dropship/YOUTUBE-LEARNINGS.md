@@ -78,3 +78,8 @@
 - **Elektronik gesamt ~69% Brutto-Marge** — lightweight, Massenappeal, Upsell-Potenzial (Cases/Kabel).
 - **🔑 RETOUREN-VORTEIL:** EU-Regional-Fulfillment = **11,3% Retouren** vs. **35%+** bei Plattform-Sourcing ohne QC. → BigBuy ist EU-Lager (DDP) = niedrige Retouren = echter Trust-/Marge-Vorteil, den wir ehrlich messagen dürfen (z.B. „EU-Versand, geprüfte Ware").
 - **Anwendung:** Audio-Importe gezielt auf **Earbuds/TWS** (Anker „kabellose ohrhörer/earbuds/tws/in-ear") priorisieren statt nur Over-Ear; Bluetooth-Lautsprecher (CHF16.90 schon drin) sind Top-Impuls. Ladegeräte/Cases als Upsell.
+
+## Runde 12-Ernte — 2026-06-27
+- **+4 Audio** (2 Headsets CHF66/100, 2 Over-Ear CHF69) — ABER 2 Over-Ear hatten **identischen Titel** „Voller Sound: Dein Over-Ear" (verschiedene SKU/Farbe, Titler liess Farbe weg). 1 behalten, 1 gedraftet (Titel-Dublette sieht im Shop wie Bug).
+- **🔧 Importer-Bitte:** Bei Farbvarianten **Farbe in den Titel** (sonst 2× identischer Name). Über-Ear/Headsets bei CHF66–100 = ok, aber **Earbuds/TWS wären margenstärker** — Anker daraufhin schärfen.
+- **Netto Audio bisher:** ~7 unique (Kopfhörer/Bluetooth-Speaker/Headset/Over-Ear). Audio bleibt sauberste Elektronik-Quelle.
