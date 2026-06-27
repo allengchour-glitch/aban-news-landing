@@ -72,9 +72,8 @@ aban-upload:
   allow_failure: true   # blockiert NIE die brain-Stage (youtube-learn/shop-brain)
   image: python:3.11
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "web"'      # manuell über „Run pipeline"
-    - when: manual                            # sonst nur auf Klick (verbrennt keine Minuten)
+    - if: '$CI_PIPELINE_SOURCE == "web"'      # NUR manuell „Run pipeline" — NICHT im Zeitplan (spart Minuten)
+    - when: manual
   variables:
     COUNT: "6"
     PRIVACY: "public"
@@ -110,9 +109,8 @@ pinterest-publish:
   allow_failure: true   # blockiert NIE die brain-Stage
   image: node:20
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-    - if: '$CI_PIPELINE_SOURCE == "web"'      # manuell über „Run pipeline"
-    - when: manual                            # sonst nur auf Klick (verbrennt keine Minuten)
+    - if: '$CI_PIPELINE_SOURCE == "web"'      # NUR manuell — NICHT im Zeitplan (spart Minuten)
+    - when: manual
   variables:
     LIMIT: "5"      # neue Pins pro Lauf (kein Spam)
     DRY: "false"    # "true" = nur testen, nichts posten
