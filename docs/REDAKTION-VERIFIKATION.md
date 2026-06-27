@@ -62,8 +62,15 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   Sender/Litauen**); 8 `false` (US: Mailchimp, Kit, ActiveCampaign, Klaviyo, beehiiv, Substack,
   Buttondown, Loops); 4 `null` (Omnisend, Ghost-Self-host, EmailOctopus/UK, Resend).
 
+- **automatisierung-radar (36 Tools):** Marker gehoben. `eu_lager`: 10 `true` (DE-GmbHs n8n/
+  Camunda/Bryter/SeaTable/Locoia/Konfuzio, Make/Celonis, + Power Automate & Azure Logic Apps
+  [Azure-EU-Region], Zoho Flow [EU-DC]); 13 `false` (US/IN: Zapier, Pipedream, IFTTT, Bardeen,
+  Gumloop, Lindy, Relay, Parabola, Pabbly, Integrately, Inngest, Axiom, Magical); 13 `null`
+  (Self-host/Enterprise-iPaaS mit unklarer EU-Region: Activepieces, Workato, Tray, UiPath, AA,
+  Albato, Latenode, Boomi, Celigo, Cyclr/UK, Windmill, Trigger.dev/UK, Temporal).
+
 ## Offen (gleicher Ansatz, nächste Radars)
-automatisierung-, dropshipping-radar
+dropshipping-radar
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-06-02",
+  "last_updated": "2026-06-27",
   "source": "aban news — kuratierte Liste echter KI- & Workflow-Automatisierungs-Tools (No-Code-Automatisierung, iPaaS, KI-Agenten, RPA, Prozess-Orchestrierung). Preise/Bewertungen bewusst nicht erfunden: '[Redaktion: prüfen]' oder null.",
   "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
   "rating_scale": "1-10 (10 = uneingeschränkt empfehlenswert). null = noch nicht redaktionell geprüft.",
@@ -58,7 +58,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Self-Hosting kostenlos (Fair-Code), gehostete Cloud im Abo. EU-Region wählbar.",
       "preismodell": "Self-Hosting / Abo",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Berliner Anbieter, fair-code und self-hostbar: gut, wenn du Daten in der EU oder auf dem eigenen Server halten willst und vor Code-Knoten nicht zurückschreckst. Mächtig, aber kein reines Klick-Tool — etwas technisches Verständnis hilft."
+      "aban_note": "Berliner Anbieter, fair-code und self-hostbar: gut, wenn du Daten in der EU oder auf dem eigenen Server halten willst und vor Code-Knoten nicht zurückschreckst. Mächtig, aber kein reines Klick-Tool — etwas technisches Verständnis hilft."
     },
     {
       "id": "make",
@@ -97,7 +97,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Einstiegstarif, danach nach Operationen pro Monat. EU-Rechenzentrum wählbar.",
       "preismodell": "pro Operation",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — visueller Szenario-Editor (ehemals Integromat) mit deutscher Oberfläche und EU-Hosting-Option. Guter Mittelweg zwischen Einfachheit und Tiefe; bei sehr vielen Schritten wird die Abrechnung nach Operationen schnell zum Thema."
+      "aban_note": "visueller Szenario-Editor (ehemals Integromat) mit deutscher Oberfläche und EU-Hosting-Option. Guter Mittelweg zwischen Einfachheit und Tiefe; bei sehr vielen Schritten wird die Abrechnung nach Operationen schnell zum Thema."
     },
     {
       "id": "zapier",
@@ -135,7 +135,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif mit Limit, danach nach Tasks/Monat. Datenverarbeitung überwiegend USA.",
       "preismodell": "pro Task",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — die größte App-Bibliothek und am einfachsten für schnelle Verknüpfungen, aber englische Oberfläche und US-Hosting. Für DSGVO-sensible personenbezogene Daten AVV und Drittlandtransfer vorher prüfen."
+      "aban_note": "die größte App-Bibliothek und am einfachsten für schnelle Verknüpfungen, aber englische Oberfläche und US-Hosting. Für DSGVO-sensible personenbezogene Daten AVV und Drittlandtransfer vorher prüfen."
     },
     {
       "id": "power-automate",
@@ -167,12 +167,12 @@
         "SQL Server"
       ],
       "deutsche_oberflaeche": true,
-      "eu_lager": null,
+      "eu_lager": true,
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — teils in Microsoft-365-Plänen enthalten, RPA-Funktionen kosten extra. EU-Datenregion abhängig vom Tenant.",
       "preismodell": "Lizenz / pro Nutzer",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — naheliegend, wenn dein Unternehmen ohnehin auf Microsoft 365 läuft: deutsche Oberfläche, RPA für Desktop-Aufgaben. Datenregion hängt vom Tenant ab — EU-Hosting nicht automatisch gegeben, im Admin-Center prüfen."
+      "aban_note": "naheliegend, wenn dein Unternehmen ohnehin auf Microsoft 365 läuft: deutsche Oberfläche, RPA für Desktop-Aufgaben. Datenregion hängt vom Tenant ab — EU-Hosting nicht automatisch gegeben, im Admin-Center prüfen."
     },
     {
       "id": "locoia",
@@ -210,7 +210,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Geschäftskunden-Tarife auf Anfrage. Hosting in Deutschland/EU.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — iPaaS aus Köln mit EU-Hosting, deutscher Oberfläche und deutschem Support. Stärke ist genau der DACH-/DSGVO-Fokus; kleinerer Konnektor-Katalog als die US-Riesen, dafür näher am hiesigen Datenschutz."
+      "aban_note": "iPaaS aus Köln mit EU-Hosting, deutscher Oberfläche und deutschem Support. Stärke ist genau der DACH-/DSGVO-Fokus; kleinerer Konnektor-Katalog als die US-Riesen, dafür näher am hiesigen Datenschutz."
     },
     {
       "id": "camunda",
@@ -245,7 +245,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Open-Source-Kern plus Enterprise-/SaaS-Tarife. SaaS in EU-Region, Self-Hosting möglich.",
       "preismodell": "Open Source / Enterprise",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Berliner Anbieter für echte Prozess-Orchestrierung nach BPMN. Das ist Entwickler-Terrain, kein No-Code-Klick-Tool — sinnvoll, wenn du komplexe Geschäftsprozesse über mehrere Systeme steuern und self-hosten willst."
+      "aban_note": "Berliner Anbieter für echte Prozess-Orchestrierung nach BPMN. Das ist Entwickler-Terrain, kein No-Code-Klick-Tool — sinnvoll, wenn du komplexe Geschäftsprozesse über mehrere Systeme steuern und self-hosten willst."
     },
     {
       "id": "bryter",
@@ -280,7 +280,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Geschäftskunden-Tarife auf Anfrage. Hosting in der EU.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutsches No-Code-Werkzeug mit Schwerpunkt auf Recht, Compliance und Entscheidungslogik. Gut, wenn Fachabteilungen ohne Programmierung interne Anwendungen bauen sollen und EU-Hosting Pflicht ist."
+      "aban_note": "deutsches No-Code-Werkzeug mit Schwerpunkt auf Recht, Compliance und Entscheidungslogik. Gut, wenn Fachabteilungen ohne Programmierung interne Anwendungen bauen sollen und EU-Hosting Pflicht ist."
     },
     {
       "id": "seatable",
@@ -316,7 +316,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif, Cloud-Abos und Self-Hosting. Server in Deutschland.",
       "preismodell": "Self-Hosting / Abo",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — No-Code-Datenbank (Airtable-Alternative) aus Deutschland mit Automatisierungs-Regeln, deutscher Oberfläche und Self-Hosting. Eher Daten-/Tabellen-zentriert als ein klassischer Workflow-Verbinder."
+      "aban_note": "No-Code-Datenbank (Airtable-Alternative) aus Deutschland mit Automatisierungs-Regeln, deutscher Oberfläche und Self-Hosting. Eher Daten-/Tabellen-zentriert als ein klassischer Workflow-Verbinder."
     },
     {
       "id": "activepieces",
@@ -352,7 +352,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Open Source und self-hostbar (auch in der EU), gehostete Tarife zusätzlich.",
       "preismodell": "Open Source / Abo",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — quelloffene Zapier-/Make-Alternative (MIT-Lizenz). Self-Hosting macht EU-Datenhaltung möglich, ist aber dein eigener Betrieb. Jünger und kleiner als die etablierten Tools — Konnektor-Katalog wächst noch."
+      "aban_note": "quelloffene Zapier-/Make-Alternative (MIT-Lizenz). Self-Hosting macht EU-Datenhaltung möglich, ist aber dein eigener Betrieb. Jünger und kleiner als die etablierten Tools — Konnektor-Katalog wächst noch."
     },
     {
       "id": "pipedream",
@@ -388,7 +388,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — großzügiger Gratis-Tarif, danach nach Credits. Datenverarbeitung überwiegend USA.",
       "preismodell": "Credits",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — für Entwickler stark: eigener Code zwischen den Integrationen, viele APIs. Englisch und US-Hosting; weniger für Klick-ohne-Code-Teams, mehr für Leute, die kleine Skripte schreiben."
+      "aban_note": "für Entwickler stark: eigener Code zwischen den Integrationen, viele APIs. Englisch und US-Hosting; weniger für Klick-ohne-Code-Teams, mehr für Leute, die kleine Skripte schreiben."
     },
     {
       "id": "workato",
@@ -424,7 +424,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Enterprise-Tarife auf Anfrage. EU-Datenregion verfügbar, vor Vertrag prüfen.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Enterprise-iPaaS für größere Unternehmen mit vielen Systemen. Leistungsfähig und entsprechend teuer; für Einzelunternehmer oder kleine Teams meist überdimensioniert."
+      "aban_note": "Enterprise-iPaaS für größere Unternehmen mit vielen Systemen. Leistungsfähig und entsprechend teuer; für Einzelunternehmer oder kleine Teams meist überdimensioniert."
     },
     {
       "id": "tray-ai",
@@ -460,7 +460,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Tarife auf Anfrage. EU-Region verfügbar, vor Vertrag prüfen.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — iPaaS mit starkem KI-Akzent (Merlin), gedacht für Marketing-/RevOps-Teams in größeren Firmen. Englisch und enterprise-orientiert; Datenregion und Konditionen individuell klären."
+      "aban_note": "iPaaS mit starkem KI-Akzent (Merlin), gedacht für Marketing-/RevOps-Teams in größeren Firmen. Englisch und enterprise-orientiert; Datenregion und Konditionen individuell klären."
     },
     {
       "id": "uipath",
@@ -497,7 +497,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenlose Community-Edition, Enterprise-Tarife auf Anfrage. Cloud-Regionen inkl. EU.",
       "preismodell": "Lizenz / auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — einer der RPA-Marktführer: automatisiert Klicks und Eingaben in Altsystemen ohne API. Mächtig für Enterprise-Prozesse, aber komplex und mit eigener Lernkurve — nichts für mal-eben-nebenbei."
+      "aban_note": "einer der RPA-Marktführer: automatisiert Klicks und Eingaben in Altsystemen ohne API. Mächtig für Enterprise-Prozesse, aber komplex und mit eigener Lernkurve — nichts für mal-eben-nebenbei."
     },
     {
       "id": "automation-anywhere",
@@ -533,7 +533,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Enterprise-Tarife auf Anfrage, Community-Edition verfügbar. EU-Region vor Vertrag prüfen.",
       "preismodell": "Lizenz / auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — RPA-Plattform für große Organisationen, vergleichbar mit UiPath. Englisch-zentriert und enterprise-lastig; sinnvoll bei hohem Volumen wiederkehrender Vorgänge in Altsystemen."
+      "aban_note": "RPA-Plattform für große Organisationen, vergleichbar mit UiPath. Englisch-zentriert und enterprise-lastig; sinnvoll bei hohem Volumen wiederkehrender Vorgänge in Altsystemen."
     },
     {
       "id": "ifttt",
@@ -567,7 +567,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif mit wenigen Applets, danach Abo. Datenverarbeitung überwiegend USA.",
       "preismodell": "Abo (Freemium)",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — simpel und eher für Privates/Smart-Home gedacht („wenn X, dann Y“). Für ernsthafte Geschäftsprozesse zu wenig Tiefe — gegen Make oder Zapier fällt es im Business-Kontext schnell ab."
+      "aban_note": "simpel und eher für Privates/Smart-Home gedacht („wenn X, dann Y“). Für ernsthafte Geschäftsprozesse zu wenig Tiefe — gegen Make oder Zapier fällt es im Business-Kontext schnell ab."
     },
     {
       "id": "bardeen",
@@ -603,7 +603,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif, Pro-Abo für KI-Funktionen. Datenverarbeitung überwiegend USA.",
       "preismodell": "Abo (Freemium)",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — automatisiert Abläufe direkt im Browser (z. B. Daten von Webseiten ziehen). Praktisch für Vertrieb/Recherche; läuft als Erweiterung im Browser, achte bei Scraping auf die Nutzungsbedingungen der Zielseiten."
+      "aban_note": "automatisiert Abläufe direkt im Browser (z. B. Daten von Webseiten ziehen). Praktisch für Vertrieb/Recherche; läuft als Erweiterung im Browser, achte bei Scraping auf die Nutzungsbedingungen der Zielseiten."
     },
     {
       "id": "gumloop",
@@ -639,7 +639,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Einstieg mit Credits, danach Abo. Datenverarbeitung überwiegend USA.",
       "preismodell": "Credits",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — No-Code-Plattform mit KI im Zentrum, gut für Aufgaben wie Recherche, Textaufbereitung oder Dokumente. Jung und englischsprachig; KI-Schritte verbrauchen Credits, das vorher durchrechnen."
+      "aban_note": "No-Code-Plattform mit KI im Zentrum, gut für Aufgaben wie Recherche, Textaufbereitung oder Dokumente. Jung und englischsprachig; KI-Schritte verbrauchen Credits, das vorher durchrechnen."
     },
     {
       "id": "lindy",
@@ -674,7 +674,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif mit Credits, danach Abo. Datenverarbeitung überwiegend USA.",
       "preismodell": "Credits",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — baut KI-Assistenten, die E-Mails, Termine oder kleine Aufgaben übernehmen. Spannend, aber neu: KI-Agenten machen Fehler, also mit Kontrolle einsetzen und nicht blind auf Autopilot vertrauen."
+      "aban_note": "baut KI-Assistenten, die E-Mails, Termine oder kleine Aufgaben übernehmen. Spannend, aber neu: KI-Agenten machen Fehler, also mit Kontrolle einsetzen und nicht blind auf Autopilot vertrauen."
     },
     {
       "id": "relay-app",
@@ -710,7 +710,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif, danach nach Schritten/Monat. Datenverarbeitung überwiegend USA.",
       "preismodell": "pro Schritt",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — aufgeräumte Zapier-Alternative mit eingebauten Freigabe-Schritten (Mensch bestätigt, bevor es weitergeht). Gut, wenn KI nicht allein entscheiden soll; englisch und US-Hosting."
+      "aban_note": "aufgeräumte Zapier-Alternative mit eingebauten Freigabe-Schritten (Mensch bestätigt, bevor es weitergeht). Gut, wenn KI nicht allein entscheiden soll; englisch und US-Hosting."
     },
     {
       "id": "parabola",
@@ -745,7 +745,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif, danach Abo. Datenverarbeitung überwiegend USA.",
       "preismodell": "Abo",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — spezialisiert auf wiederkehrende Daten-Aufgaben: Tabellen zusammenführen, bereinigen, weiterschicken. Stark bei E-Commerce-/Reporting-Routinen, weniger für App-zu-App-Trigger im Allgemeinen."
+      "aban_note": "spezialisiert auf wiederkehrende Daten-Aufgaben: Tabellen zusammenführen, bereinigen, weiterschicken. Stark bei E-Commerce-/Reporting-Routinen, weniger für App-zu-App-Trigger im Allgemeinen."
     },
     {
       "id": "albato",
@@ -780,7 +780,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Abos nach Transaktionen. Datenregion vor Nutzung prüfen.",
       "preismodell": "pro Transaktion",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — günstigere iPaaS-Alternative mit ordentlichem App-Katalog und Embedded-Option für eigene Produkte. Kleiner als Zapier/Make; vor dem Einsatz Datenregion und Konnektor-Reife für deine Apps prüfen."
+      "aban_note": "günstigere iPaaS-Alternative mit ordentlichem App-Katalog und Embedded-Option für eigene Produkte. Kleiner als Zapier/Make; vor dem Einsatz Datenregion und Konnektor-Reife für deine Apps prüfen."
     },
     {
       "id": "latenode",
@@ -816,7 +816,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Abrechnung nach Ausführungszeit statt pro Task, kostenloser Einstieg. Datenregion vor Nutzung prüfen.",
       "preismodell": "nach Laufzeit",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Mischung aus No-Code und echtem Code plus KI-Knoten; Abrechnung nach Laufzeit kann bei vielen Schritten günstiger sein. Jünger und englischsprachig — für Bastler mit etwas Technik-Affinität."
+      "aban_note": "Mischung aus No-Code und echtem Code plus KI-Knoten; Abrechnung nach Laufzeit kann bei vielen Schritten günstiger sein. Jünger und englischsprachig — für Bastler mit etwas Technik-Affinität."
     },
     {
       "id": "zoho-flow",
@@ -847,12 +847,12 @@
         "HTTP/REST"
       ],
       "deutsche_oberflaeche": null,
-      "eu_lager": null,
+      "eu_lager": true,
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Abos nach Tasks. Zoho bietet eine EU-Datenregion, vor Nutzung im Konto prüfen.",
       "preismodell": "pro Task",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — günstiges iPaaS, besonders naheliegend, wenn du ohnehin Zoho-Apps nutzt. EU-Datenregion ist verfügbar, hängt aber vom gewählten Konto-Standort ab — vor dem Start prüfen."
+      "aban_note": "günstiges iPaaS, besonders naheliegend, wenn du ohnehin Zoho-Apps nutzt. EU-Datenregion ist verfügbar, hängt aber vom gewählten Konto-Standort ab — vor dem Start prüfen."
     },
     {
       "id": "pabbly-connect",
@@ -886,7 +886,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — bekannt für günstige Tarife (teils mit Einmalkauf-Angeboten). Datenverarbeitung außerhalb der EU.",
       "preismodell": "Abo (Tasks inkl.)",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — preisgünstige Zapier-Alternative, beliebt bei Solo-Selbstständigen, die mit kleinem Budget viele Workflows brauchen. Englisch und Hosting außerhalb der EU — bei personenbezogenen Daten AVV und Drittlandtransfer prüfen."
+      "aban_note": "preisgünstige Zapier-Alternative, beliebt bei Solo-Selbstständigen, die mit kleinem Budget viele Workflows brauchen. Englisch und Hosting außerhalb der EU — bei personenbezogenen Daten AVV und Drittlandtransfer prüfen."
     },
     {
       "id": "integrately",
@@ -919,7 +919,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Abos nach Tasks, günstiger Einstieg. Datenverarbeitung außerhalb der EU.",
       "preismodell": "Abo",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — setzt auf fertige 1-Klick-Automationen, dadurch besonders einsteigerfreundlich. Englisch und US-/Drittland-Hosting; für DSGVO-sensible Daten vorher Konditionen prüfen."
+      "aban_note": "setzt auf fertige 1-Klick-Automationen, dadurch besonders einsteigerfreundlich. Englisch und US-/Drittland-Hosting; für DSGVO-sensible Daten vorher Konditionen prüfen."
     },
     {
       "id": "microsoft-azure-logic-apps",
@@ -950,12 +950,12 @@
         "REST-APIs"
       ],
       "deutsche_oberflaeche": null,
-      "eu_lager": null,
+      "eu_lager": true,
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — verbrauchsbasiert (pro Aktion) oder im Standard-Plan. EU-Region über Azure wählbar, abhängig vom Setup.",
       "preismodell": "nach Verbrauch",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — das iPaaS innerhalb von Azure (getrennt von Power Automate), gedacht für Entwickler- und Enterprise-Integrationen. EU-Datenregion ist möglich, hängt aber vom Azure-Setup ab — nicht automatisch gegeben."
+      "aban_note": "das iPaaS innerhalb von Azure (getrennt von Power Automate), gedacht für Entwickler- und Enterprise-Integrationen. EU-Datenregion ist möglich, hängt aber vom Azure-Setup ab — nicht automatisch gegeben."
     },
     {
       "id": "boomi",
@@ -989,7 +989,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Enterprise-Tarife auf Anfrage. EU-Runtime/Cloud verfügbar, vor Vertrag prüfen.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — etabliertes Enterprise-iPaaS für größere Unternehmen mit vielen Systemen (ERP, CRM). Leistungsfähig und entsprechend teuer; für kleine Teams meist überdimensioniert."
+      "aban_note": "etabliertes Enterprise-iPaaS für größere Unternehmen mit vielen Systemen (ERP, CRM). Leistungsfähig und entsprechend teuer; für kleine Teams meist überdimensioniert."
     },
     {
       "id": "celigo",
@@ -1022,7 +1022,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Tarife auf Anfrage, kostenloser Einstieg für einfache Flows. Datenregion vor Vertrag prüfen.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — iPaaS mit Stärke bei E-Commerce- und ERP-Anbindungen (vor allem NetSuite). Englisch-zentriert; sinnvoll, wenn genau diese Systeme dein Kern sind."
+      "aban_note": "iPaaS mit Stärke bei E-Commerce- und ERP-Anbindungen (vor allem NetSuite). Englisch-zentriert; sinnvoll, wenn genau diese Systeme dein Kern sind."
     },
     {
       "id": "cyclr",
@@ -1056,7 +1056,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Tarife auf Anfrage. Anbieter aus UK/EU, Datenregion vor Vertrag prüfen.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Embedded iPaaS, um Integrationen ins eigene SaaS-Produkt einzubauen — weniger ein Tool für Endanwender. UK/EU-Anbieter, was die Datenhaltung näher an Europa rückt; im Vertrag prüfen."
+      "aban_note": "Embedded iPaaS, um Integrationen ins eigene SaaS-Produkt einzubauen — weniger ein Tool für Endanwender. UK/EU-Anbieter, was die Datenhaltung näher an Europa rückt; im Vertrag prüfen."
     },
     {
       "id": "windmill",
@@ -1091,7 +1091,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Open Source und self-hostbar (auch in der EU), gehostete Tarife zusätzlich.",
       "preismodell": "Open Source / Abo",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — quelloffene Plattform, die Skripte und visuelle Flows verbindet. Self-Hosting macht EU-Datenhaltung möglich, ist aber dein eigener Betrieb. Entwickler-Terrain, kein reines Klick-Tool."
+      "aban_note": "quelloffene Plattform, die Skripte und visuelle Flows verbindet. Self-Hosting macht EU-Datenhaltung möglich, ist aber dein eigener Betrieb. Entwickler-Terrain, kein reines Klick-Tool."
     },
     {
       "id": "trigger-dev",
@@ -1126,7 +1126,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Open Source und self-hostbar, gehostete Tarife nach Nutzung.",
       "preismodell": "Open Source / Abo",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — für Entwickler, die langlaufende Hintergrund-Jobs und KI-Tasks im eigenen Code orchestrieren wollen. Self-Hosting möglich; kein No-Code-Tool für Fachabteilungen."
+      "aban_note": "für Entwickler, die langlaufende Hintergrund-Jobs und KI-Tasks im eigenen Code orchestrieren wollen. Self-Hosting möglich; kein No-Code-Tool für Fachabteilungen."
     },
     {
       "id": "inngest",
@@ -1160,7 +1160,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — nach ausgeführten Schritten/Events, kostenloser Einstieg. Datenverarbeitung überwiegend USA.",
       "preismodell": "nach Verbrauch",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — event-getriebene, ausfallsichere Workflows für Entwickler (Retries, Schritte, Wartezeiten). Stark im Code-Kontext, nichts für Klick-ohne-Code; englisch und überwiegend US-Hosting."
+      "aban_note": "event-getriebene, ausfallsichere Workflows für Entwickler (Retries, Schritte, Wartezeiten). Stark im Code-Kontext, nichts für Klick-ohne-Code; englisch und überwiegend US-Hosting."
     },
     {
       "id": "temporal",
@@ -1193,7 +1193,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Open-Source-Kern kostenlos, Temporal Cloud nach Verbrauch. Cloud-Regionen inkl. EU, vor Nutzung prüfen.",
       "preismodell": "Open Source / nach Verbrauch",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Engine für ausfallsichere, langlaufende Prozesse über viele Microservices — reines Entwickler-Werkzeug. Mächtig bei komplexer Orchestrierung, mit eigener Lernkurve; kein No-Code."
+      "aban_note": "Engine für ausfallsichere, langlaufende Prozesse über viele Microservices — reines Entwickler-Werkzeug. Mächtig bei komplexer Orchestrierung, mit eigener Lernkurve; kein No-Code."
     },
     {
       "id": "konfuzio",
@@ -1229,7 +1229,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — Tarife auf Anfrage, Open-Source-Komponenten verfügbar. Hosting in Deutschland/EU, On-Premise möglich.",
       "preismodell": "auf Anfrage",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter für Dokumenten-KI (Belege, Verträge auslesen) mit EU-Hosting, deutscher Oberfläche und On-Premise-Option. Starker DACH-Kandidat, wenn du Papier-/PDF-Prozesse automatisieren willst."
+      "aban_note": "deutscher Anbieter für Dokumenten-KI (Belege, Verträge auslesen) mit EU-Hosting, deutscher Oberfläche und On-Premise-Option. Starker DACH-Kandidat, wenn du Papier-/PDF-Prozesse automatisieren willst."
     },
     {
       "id": "axiom-ai",
@@ -1262,7 +1262,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Einstieg, Abos nach Laufzeit/Runs. Datenverarbeitung außerhalb der EU.",
       "preismodell": "Abo (Freemium)",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — No-Code-Bots, die im Browser klicken, tippen und Daten auslesen — ähnlich Bardeen. Praktisch für Seiten ohne API; achte beim Scraping auf die Nutzungsbedingungen der Zielseiten."
+      "aban_note": "No-Code-Bots, die im Browser klicken, tippen und Daten auslesen — ähnlich Bardeen. Praktisch für Seiten ohne API; achte beim Scraping auf die Nutzungsbedingungen der Zielseiten."
     },
     {
       "id": "magical",
@@ -1295,7 +1295,7 @@
       "preis_hinweis": "[Redaktion: prüfen] — kostenloser Tarif, Pro-Abo für mehr. Datenverarbeitung außerhalb der EU.",
       "preismodell": "Abo (Freemium)",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — spart Tipparbeit über Textbausteine und Autofill direkt im Browser; eher Produktivitäts-Helfer als vollwertige Workflow-Engine. Englisch und Hosting außerhalb der EU."
+      "aban_note": "spart Tipparbeit über Textbausteine und Autofill direkt im Browser; eher Produktivitäts-Helfer als vollwertige Workflow-Engine. Englisch und Hosting außerhalb der EU."
     }
   ]
 }
