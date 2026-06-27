@@ -83,3 +83,9 @@
 - **+4 Audio** (2 Headsets CHF66/100, 2 Over-Ear CHF69) — ABER 2 Over-Ear hatten **identischen Titel** „Voller Sound: Dein Over-Ear" (verschiedene SKU/Farbe, Titler liess Farbe weg). 1 behalten, 1 gedraftet (Titel-Dublette sieht im Shop wie Bug).
 - **🔧 Importer-Bitte:** Bei Farbvarianten **Farbe in den Titel** (sonst 2× identischer Name). Über-Ear/Headsets bei CHF66–100 = ok, aber **Earbuds/TWS wären margenstärker** — Anker daraufhin schärfen.
 - **Netto Audio bisher:** ~7 unique (Kopfhörer/Bluetooth-Speaker/Headset/Over-Ear). Audio bleibt sauberste Elektronik-Quelle.
+
+## Runde 13 — 2026-06-27 (⛔ KRITISCHE GUARDRAIL: Title-Dedup ist GEFÄHRLICH)
+- Smartwatch-Import: +4 (3× „Smartwatch Schutzglas" = Display-Schutzgläser versch. Grössen + 1 echte Smartwatch CHF95.90). Ledger committed.
+- **⛔ NIE einen katalogweiten „identische-Titel"-Dedup LIVE laufen lassen!** DRY zeigte **221 ‚Dubletten' — die meisten sind GRÖSSEN-/FARBVARIANTEN** (Lockenstab ×5 = 5 Durchmesser, Damenring (18)/(24) = Ringgrössen, Fahrradhelm/Turnschuhe = S/M/L, Schutzglas ×3 = Display-Grössen). Verschiedene SKU = verschiedene echte Produkte; der Titler liess nur Grösse/Farbe weg. Draften = **legitime Varianten zerstören** (wie die POD-SKU-Falle). 
+- **✅ KORREKT bleibt NUR SKU-Dedup** (gleiche `BB-S…`-SKU = echtes Duplikat). Title-Dedup verworfen.
+- **Backlog (richtiger Fix):** identische Titel per **Re-Titling** mit Grösse/Farbe differenzieren (braucht BigBuy-Attribut-Lookup) — NICHT draften. Korrektur: meine letzte „Voller Sound"-Draft (Farbvariante) war grenzwertig; künftig re-titeln statt draften.
