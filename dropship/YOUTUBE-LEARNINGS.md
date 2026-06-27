@@ -111,3 +111,7 @@
 - **⛔ EHRLICH NICHT FAKEBAR:** Wir haben 0 Reviews (0 Verkäufe). Fake-Reviews = FTC-Verstoss + Vertrauenstod (CLAUDE.md). NICHT bauen.
 - **✅ RICHTIGER WEG (greift ab 1. Verkauf):** Review-Request im **Klaviyo-Post-Purchase-Flow** (3–7 Tage nach Lieferung) — Flows existieren schon. Sobald Reichweite→Verkäufe da sind, sammeln sich Reviews automatisch → Compounding. **Chicken-Egg löst sich über REICHWEITE (User-Hebel).**
 - **Backlog (wenn Verkäufe starten):** Reviews-App (Judge.me/Shopify Reviews) installieren = User-Klick; Klaviyo-Review-Request-Mail aktivieren; Google-Business-Profil für Reviews.
+
+## Runde 18-Ernte — 2026-06-27
+- **+4 Grill/BBQ sauber** (Holzkohlegrill m. Deckel CHF100.90, ohne CHF54.90, Grillofen CHF27.90, E-Tischgrill CHF64.90) — Sommer-saisonal, alle ACTIVE/SEO✓/8 Kanäle/outdoor-garten+sommer-2026. SKU-Dedup 0.
+- **fitness = Decke** (0 geeignete) → aus der Rotation nehmen. Saubere Rest-Whitelist: **grill, kuechenhelfer, kaffee, audio, smartwatch.**
