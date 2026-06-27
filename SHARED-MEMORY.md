@@ -50,6 +50,13 @@
   schreiben NUR `status=ready`, posten NIE. **NEU auf GitLab:** Job **`luma-clips`** = NUR Generator (Luma Dream Machine,
   `LUMA_API_KEY`, Pointer-Dedup, MAX_CLIPS=1) → `social/video_queue.csv` (ready), postet nicht. Posten bleibt 1 Poster
   (Video-Session). ⚠️ Luma kostet ~$0.3–0.5/Clip; ohne `LUMA_API_KEY` No-op.
+- **🔒 POSTING-EIGENTUM (FEST, User 06-27): die Video-/Kampagnen-Session POSTET ALLES** (TikTok „im Griff" + IG/FB/
+  alle Kanäle). **Die Autopilot-/Lern-Session (diese) POSTET NIE** — sie generiert nur (Clips, Bilder) + füttert die
+  Queues als `status=ready`. So gibt es garantiert KEINE Doppelposts. Wer ein neues Posting-Tool baut: NICHT — erst
+  mit der Video-Session abstimmen.
+- **🎬 Werbevideo „erst Daten, dann bauen" (User 06-27):** Lern-Thema `adcraft` sammelt „wie macht man gute Ads".
+  Andere Session hat schon etwas gesammelt, aber **zu wenig** → täglicher Lerner legt nach. Video-Assembler wird erst
+  gebaut, wenn genug adcraft-Daten in `SECOND-BRAIN.md` sind (datengetrieben, kein Random). Output → `video_queue.csv` (ready), NICHT posten.
 - **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
   CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
   AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
