@@ -89,3 +89,9 @@
 - **⛔ NIE einen katalogweiten „identische-Titel"-Dedup LIVE laufen lassen!** DRY zeigte **221 ‚Dubletten' — die meisten sind GRÖSSEN-/FARBVARIANTEN** (Lockenstab ×5 = 5 Durchmesser, Damenring (18)/(24) = Ringgrössen, Fahrradhelm/Turnschuhe = S/M/L, Schutzglas ×3 = Display-Grössen). Verschiedene SKU = verschiedene echte Produkte; der Titler liess nur Grösse/Farbe weg. Draften = **legitime Varianten zerstören** (wie die POD-SKU-Falle). 
 - **✅ KORREKT bleibt NUR SKU-Dedup** (gleiche `BB-S…`-SKU = echtes Duplikat). Title-Dedup verworfen.
 - **Backlog (richtiger Fix):** identische Titel per **Re-Titling** mit Grösse/Farbe differenzieren (braucht BigBuy-Attribut-Lookup) — NICHT draften. Korrektur: meine letzte „Voller Sound"-Draft (Farbvariante) war grenzwertig; künftig re-titeln statt draften.
+
+## Runde 14 — 2026-06-27 (Category-Page-SEO + audio-sub poliert)
+**Quelle:** gofishdigital, shopify.com/blog category-SEO, keytomic (2026).
+- **Collection-Page-Best-Practice:** 50–100 Wörter Kontext oben + tiefere SEO unten; Schema **BreadcrumbList (haben✓) + ItemList + Product** = Vorteil bei Google UND AI-Overviews 2026. Interne Links: Breadcrumb✓, 5–10 Produkte (Grid✓), 2–4 Sub-/Schwester-Kategorien, 1–2 Ratgeber.
+- **✅ ANGEWANDT:** `audio-sub` (102 Produkte) Beschreibung+SEO poliert — vorher holprig („Verlängerungskopfhörerkabel von Startech…"), jetzt premium: Lead + Sub-Linien (Kopfhörer/Earbuds · Lautsprecher · Headsets) + Trust (EU-Lager, 8–14 Tage, 30 Tage Rückgabe, WELCOME10). SEO-Titel „Kopfhörer, Earbuds & Bluetooth-Lautsprecher | LuxeStyle".
+- **Backlog:** ItemList-Schema auf Collection-Pages (Theme-Block) für AI-Overview-Vorteil — lohnender Theme-Fix für später.
