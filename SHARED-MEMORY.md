@@ -57,6 +57,10 @@
 - **🎬 Werbevideo „erst Daten, dann bauen" (User 06-27):** Lern-Thema `adcraft` sammelt „wie macht man gute Ads".
   Andere Session hat schon etwas gesammelt, aber **zu wenig** → täglicher Lerner legt nach. Video-Assembler wird erst
   gebaut, wenn genug adcraft-Daten in `SECOND-BRAIN.md` sind (datengetrieben, kein Random). Output → `video_queue.csv` (ready), NICHT posten.
+- **📘 SUPER-VIDEO-PLAYBOOK (NEU 06-27): `dropship/SUPER-VIDEO-PLAYBOOK.md`** — konkrete Tipps, WIE man zugkräftige
+  Mode/Dropship-Kurzvideos baut (3-Sek-Hook, 2–4s-Schnitte, on-screen Text, luxe-premium-Musik, KI-Clip-Prompts für
+  Kling/Luma/Veo, Plattform-Längen, CTA pro Kanal, Verbote). **Die Video-Session liest das vor dem Bauen/Posten.**
+  Morgen-Übergabe: Video-Session macht weiter mit **Posten (alle Kanäle, TikTok im Griff)** + nutzt Playbook + adcraft-Daten.
 - **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
   CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
   AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
