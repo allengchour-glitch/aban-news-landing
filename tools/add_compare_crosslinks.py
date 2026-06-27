@@ -49,6 +49,8 @@ RELATED = {
                           ("rechnung-generator", "Rechnung erstellen")],
     "selbststaendig-krankenversicherung": [("selbststaendig-ratgeber", "Ratgeber Selbstständigkeit"),
                                            ("steuern-sparen-selbststaendige", "Steuern sparen")],
+    "hypothek-tragbarkeit": [("hypothek-rechner-schweiz", "Hypothek-Rechner Schweiz"),
+                             ("broker-vergleich", "Online-Broker im Vergleich")],
 }
 
 
