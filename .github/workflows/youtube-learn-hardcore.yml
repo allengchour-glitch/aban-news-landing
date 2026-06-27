@@ -1,0 +1,45 @@
+name: YouTube Learn HARDCORE (erste 24 h intensiv)
+
+# Intensives Wissenssammeln in den ERSTEN 24 h: ALLE 15 MIN, pro Lauf 1 rotierendes Thema (alle 4
+# einmal/Stunde), maxResults 25. Selbst-limitiert über die Marker-Datei automation/.yt_hardcore_until
+# (24 h ab dem 1. erfolgreichen Lauf) → danach No-Op, der ruhige 2-h-Lauf (youtube-learn.yml) übernimmt.
+# No-op-safe ohne YT_API_KEY. Quota: 1 Query/Lauf × 100 × 96 Läufe/Tag ≈ 9.600/10.000 Einheiten — im Limit.
+# Hinweis: GitHub-Cron ist „best effort" — hochfrequente Pläne können verzögert/ausgelassen werden.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'      # alle 15 Min (nur in den ersten 24 h aktiv, dann Selbst-No-Op)
+  workflow_dispatch:            # manuell starten = 24-h-Fenster jetzt beginnen
+
+permissions:
+  contents: write
+
+concurrency:
+  group: youtube-learn          # teilt sich die Gruppe mit dem Normallauf → keine Überlappung
+  cancel-in-progress: false
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Hardcore-Wissenssammeln aus YouTube
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          YT_MODE: hardcore
+        run: node automation/learn_from_youtube.mjs
+      - name: Commit gesammeltes Wissen
+        run: |
+          if ! git diff --quiet -- automation/youtube-learnings.md automation/learned_youtube_pools.sh automation/.yt_hardcore_until ; then
+            git config user.name "luxestyle-learn-bot"
+            git config user.email "bot@users.noreply.github.com"
+            git add automation/youtube-learnings.md automation/learned_youtube_pools.sh automation/.yt_hardcore_until
+            git commit -m "chore(learn): YouTube HARDCORE-Lauf → geteilte Memory [skip ci]"
+            git push
+          else
+            echo "Keine neuen Lerndaten (No-op: kein Key, Quota, oder Hardcore-Fenster beendet)."
+          fi

@@ -37,14 +37,17 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
-**📌 2026-06-27 (WISSENSSAMMLER — 24/7 YouTube-Lernen → geteilte Memory):**
-- **Neu gebaut:** `automation/learn_from_youtube.mjs` + `.github/workflows/youtube-learn.yml` (Cron **alle 2 h, rund
-  um die Uhr**). Zieht echte YouTube-Daten zu allen Themen (Mode/Reels, Dropshipping-Strategie, KI-News),
-  destilliert **Hooks/Trend-Hashtags/Keywords** → `automation/youtube-learnings.md` (geteilte Memory, neueste
-  Läufe oben, jede Session liest sie) + Reel-Pool `automation/learned_youtube_pools.sh`. No-op-safe, nur echte
-  API-Daten (keine erfundenen Fakten), Hooks = Inspiration nicht kopieren.
-- **User-Schritt (1×):** Repo-Secret **`YT_API_KEY`** setzen (Google Cloud → YouTube Data API v3 → API-Schlüssel).
-  Ohne Key sauberer Leerlauf. Quota-sicher (~4.920 von 10.000 Einheiten/Tag).
+**📌 2026-06-27 (WISSENSSAMMLER — YouTube-Lernen → geteilte Memory, LIVE geseedet):**
+- **Neu gebaut:** `automation/learn_from_youtube.mjs` + 2 Workflows. Zieht echte YouTube-Daten zu allen Themen
+  (Mode/Reels, Dropshipping-Strategie, KI-News), destilliert **Hooks/Trend-Hashtags/Keywords** →
+  `automation/youtube-learnings.md` (geteilte Memory, neueste oben, jede Session liest sie) + Reel-Pool
+  `automation/learned_youtube_pools.sh`. No-op-safe, nur echte API-Daten, Hooks = Inspiration nicht kopieren.
+- **Zwei Takte:** `youtube-learn-hardcore.yml` = **alle 15 Min in den ERSTEN 24 h** (pro Lauf 1 rotierendes Thema →
+  quota-sicher ~9.600/10.000 Einheiten/Tag; Selbst-Stopp via Marker `automation/.yt_hardcore_until`).
+  Danach `youtube-learn.yml` = **alle 2 h** Dauerbetrieb. Normallauf pausiert, solange Hardcore-Fenster aktiv.
+- **✅ LIVE geseedet:** User gab `YT_API_KEY` im Chat → in-Memory ein Hardcore-Lauf gefahren, `youtube-learnings.md`
+  trägt erste echte Daten, 24-h-Fenster gestartet (bis 2026-06-28T13:34Z). **Key NICHT im Repo** (Chat-Keys gelten
+  als exponiert → als Repo-Secret `YT_API_KEY` setzen; ggf. rotieren). **Cron läuft live erst ab `main`-Merge.**
 
 **📌 2026-06-27 (LIVE-AUDIT — Shopify-Token via Client-Credentials, ZUERST LESEN):**
 - **✅ Live-Zugriff lief** (User pastete Client-ID + `shpss_`-Schlüssel im Chat → Admin-Token per Client-Credentials,
