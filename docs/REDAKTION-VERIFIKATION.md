@@ -39,8 +39,14 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   (Firma Indien, aber offizielle EU-Rechenzentren Amsterdam/Dublin = DSGVO-Hosting möglich).
   Klar kein EU-Hosting: Xero (NZ), QuickBooks/Intuit (US), FreshBooks (Kanada). Preise/Scores `null`.
 
+- **chatbot-radar (24 Tools):** Firmensitze belegt, Marker gehoben, `eu_lager` nach DSGVO-Hosting:
+  EU-Firmen (Cognigy/Parloa/moin.ai/Userlike DE, Crisp FR, Tidio/LiveChat PL, Landbot ES) +
+  Anbieter mit belegter EU-Region (Zendesk, Freshchat, HubSpot, Intercom, Dialogflow/Google,
+  watsonx/IBM) = `true` (14). Gehedgte „EU-Region prüfen"/keine = `null` (9: Ada, Forethought,
+  Drift, Gorgias, Kustomer, Help Scout, Chatbase, Voiceflow, Botpress). ManyChat (US-Hosting) = `false`.
+
 ## Offen (gleicher Ansatz, nächste Radars)
-voice-, video-, chatbot-, newsletter-, automatisierung-, dropshipping-radar
+voice-, video-, newsletter-, automatisierung-, dropshipping-radar
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 
