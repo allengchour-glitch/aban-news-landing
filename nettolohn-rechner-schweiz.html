@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nettolohn Rechner Schweiz 2025 — AHV, BVG, Steuern online berechnen</title>
+<meta name="description" content="Schweizer Nettolohn Rechner: Brutto-Netto kostenlos berechnen (AHV 8.7 %, BVG, ALV, NBU). Kanton, Zivilstand & Quellensteuer berücksichtigt. 2025.">
+<link rel="canonical" href="https://abannews.com/nettolohn-rechner-schweiz.html">
+<meta property="og:title" content="Nettolohn Rechner Schweiz 2025 — Brutto-Netto berechnen">
+<meta property="og:description" content="Nettolohn Schweiz kostenlos berechnen: AHV 8.7 %, BVG, ALV, NBU und Quellensteuer-Näherung. Für Angestellte und Freelancer.">
+<meta property="og:type" content="article">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--amber:#b45309;--cream:#fffbeb;--muted:#6b7280;--dk:#1f2937;--green:#15803d}
+body{margin:0;font-family:system-ui,sans-serif;color:var(--dk);background:#fff;line-height:1.6}
+.hero{background:linear-gradient(135deg,#1f2937,#1a2a12 55%,#166534);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"💼";position:absolute;right:-18px;top:-14px;font-size:130px;opacity:.08}
+.hero .in{max-width:780px;margin:0 auto;padding:38px 18px 34px;position:relative;z-index:1}
+.hero h1{margin:0 0 10px;font-size:clamp(1.45rem,4vw,2.1rem);font-weight:800;line-height:1.22}
+.hero p{margin:0;opacity:.88;font-size:1.05rem}
+main{max-width:780px;margin:0 auto;padding:28px 18px 48px}
+h2{font-size:1.25rem;font-weight:700;border-left:4px solid var(--amber);padding-left:10px;margin-top:34px}
+.calc-box{background:var(--cream);border:2px solid #f3dca0;border-radius:16px;padding:28px 24px;margin:24px 0}
+.calc-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;align-items:flex-end}
+.calc-row label{font-weight:600;font-size:.92rem;display:block;margin-bottom:4px;color:#374151}
+.calc-row input,.calc-row select{border:1px solid #d1d5db;border-radius:8px;padding:9px 12px;font-size:1rem;font-family:inherit;width:100%;background:#fff}
+.calc-row input:focus,.calc-row select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+.field{flex:1;min-width:140px}
+.btn{background:var(--amber);color:#fff;border:0;border-radius:9px;padding:12px 28px;font-size:1.05rem;font-weight:700;cursor:pointer;width:100%;margin-top:6px}
+.btn:hover{background:#a04708}
+.result-box{display:none;background:#fff;border:2px solid var(--green);border-radius:14px;padding:22px 24px;margin-top:18px}
+.result-box.show{display:block}
+.result-line{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:.95rem}
+.result-line:last-child{border-bottom:0;font-weight:800;font-size:1.1rem;color:var(--green)}
+.result-line .lbl{color:#374151}
+.result-line .val{font-weight:600}
+.result-line.deduct .val{color:#dc2626}
+.result-line.netto .val{color:var(--green)}
+.disclaimer{font-size:.82rem;color:var(--muted);margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin:18px 0}
+th{background:var(--dk);color:#fff;text-align:left;padding:9px 11px}
+td{padding:8px 11px;border-bottom:1px solid #e5e7eb}
+tr:nth-child(even) td{background:#f9fafb}
+details{border:1px solid #e5e7eb;border-radius:10px;margin:10px 0;padding:0}
+summary{padding:13px 16px;cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"＋";color:var(--amber)}
+details[open] summary::after{content:"－"}
+details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
+.rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="in">
+    <div style="font-size:2.2rem;margin-bottom:8px">💼</div>
+    <h1>Nettolohn Rechner Schweiz 2025</h1>
+    <p>Brutto-Netto online berechnen — AHV/IV/EO, BVG, ALV und Quellensteuer-Näherung (2025)</p>
+  </div>
+</div>
+<main>
+
+<div class="calc-box">
+  <h2 style="margin-top:0;border:0;padding:0;font-size:1.15rem">Brutto-Netto Rechner</h2>
+  <div class="calc-row">
+    <div class="field">
+      <label for="brutto">Bruttomonatslohn (CHF)</label>
+      <input type="number" id="brutto" placeholder="z.B. 7000" min="0" step="100">
+    </div>
+    <div class="field">
+      <label for="pensum">Beschäftigungsgrad (%)</label>
+      <input type="number" id="pensum" value="100" min="1" max="100">
+    </div>
+  </div>
+  <div class="calc-row">
+    <div class="field">
+      <label for="alter">Alter</label>
+      <input type="number" id="alter" placeholder="z.B. 35" min="17" max="70">
+    </div>
+    <div class="field">
+      <label for="zivilstand">Zivilstand</label>
+      <select id="zivilstand">
+        <option value="ledig">Ledig (ohne Kinder)</option>
+        <option value="verheiratet">Verheiratet / eingetragene Partnerschaft</option>
+        <option value="kinder">Ledig mit Kindern</option>
+      </select>
+    </div>
+  </div>
+  <div class="calc-row">
+    <div class="field">
+      <label for="kanton">Kanton (Quellensteuer-Näherung)</label>
+      <select id="kanton">
+        <option value="ZH">Zürich (ZH)</option>
+        <option value="BE">Bern (BE)</option>
+        <option value="VD">Waadt (VD)</option>
+        <option value="GE">Genf (GE)</option>
+        <option value="AG">Aargau (AG)</option>
+        <option value="LU">Luzern (LU)</option>
+        <option value="SG">St. Gallen (SG)</option>
+        <option value="BS">Basel-Stadt (BS)</option>
+        <option value="TI">Tessin (TI)</option>
+        <option value="VS">Wallis (VS)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="bvg">BVG-Koordinationsabzug</label>
+      <select id="bvg">
+        <option value="standard">Standard (CHF 26'460/Jahr)</option>
+        <option value="kein">Kein Abzug (eigenes Pensionskassen-Modell)</option>
+        <option value="halv">Halbierter Koordinationsabzug (Teilzeit)</option>
+      </select>
+    </div>
+  </div>
+  <button class="btn" onclick="berechneNetto()">Nettolohn berechnen</button>
+
+  <div class="result-box" id="result">
+    <div class="result-line"><span class="lbl">Bruttolohn</span><span class="val" id="r-brutto">—</span></div>
+    <div class="result-line deduct"><span class="lbl">AHV/IV/EO (8.7%)</span><span class="val" id="r-ahv">—</span></div>
+    <div class="result-line deduct"><span class="lbl">ALV (1.1%, bis CHF 148'200 Lohn)</span><span class="val" id="r-alv">—</span></div>
+    <div class="result-line deduct"><span class="lbl">NBUV / Unfallversicherung (ca. 0.5%)</span><span class="val" id="r-nbu">—</span></div>
+    <div class="result-line deduct"><span class="lbl">BVG Arbeitnehmer-Anteil (ca. 8–14%)</span><span class="val" id="r-bvg">—</span></div>
+    <div class="result-line deduct"><span class="lbl">Quellensteuer (Näherung)</span><span class="val" id="r-qs">—</span></div>
+    <div class="result-line netto"><span class="lbl">Nettolohn (Näherung)</span><span class="val" id="r-netto">—</span></div>
+    <p class="disclaimer">⚠️ Diese Berechnung ist eine <strong>Näherung</strong> und ersetzt keine offizielle Lohnabrechnung. BVG-Satz variiert je nach Pensionskasse und Lohnklasse. Quellensteuer-Näherung basiert auf kantonalen Durchschnittssätzen 2025 — für die genaue QST wende dich an die kantonale Steuerverwaltung.</p>
+  </div>
+</div>
+
+<h2>Was wird vom Lohn abgezogen?</h2>
+<p>In der Schweiz unterscheidet man zwischen Pflichtabzügen (gesetzlich vorgeschrieben) und freiwilligen Abzügen. Pflicht: AHV/IV/EO (8.7 % Arbeitnehmeranteil ab 2025), ALV (1.1 % auf erstem Lohnanteil bis CHF 148'200/Jahr), NBUV (Nichtberufsunfallversicherung, ca. 0.5–1 %, bei Vollzeit trägt Arbeitgeber BUUV). BVG (Pensionskasse): Arbeitnehmer zahlt i.d.R. den halben Beitrag — je nach Lohnklasse ca. 7–18 %.</p>
+<p>Einkommenssteuer: Anders als in Deutschland wird sie in der Schweiz nicht direkt vom Lohn einbehalten, ausser bei Quellensteuer-Pflicht (Ausländer ohne Niederlassungsbewilligung C). Alle übrigen zahlen ihre Steuern selbst per Steuererklärung. Das macht den Vergleich zwischen Brutto und Netto in der Schweiz schwieriger.</p>
+
+<table>
+  <thead>
+    <tr><th>Abzug</th><th>Satz (AN-Anteil)</th><th>Grundlage</th><th>Bemerkung</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>AHV/IV/EO</td><td>8.7 % (ab 2025)</td><td>Gesamtlohn</td><td>Arbeitgeber zahlt nochmals 8.7 %</td></tr>
+    <tr><td>ALV</td><td>1.1 %</td><td>Lohn bis CHF 148'200/Jahr</td><td>Zusatzbeitrag 0.5 % auf Teil über 148'200</td></tr>
+    <tr><td>BVG (Pensionskasse)</td><td>ca. 8–14 %</td><td>Koordinierter Lohn</td><td>Variiert stark je nach Pensionskasse</td></tr>
+    <tr><td>NBUV (Nichtberufsunfall)</td><td>ca. 0.5–1.5 %</td><td>Lohn bis CHF 316'800/Jahr</td><td>Nur bei ≥ 8h/Woche Arbeit beim gleichen AG</td></tr>
+    <tr><td>Krankentaggeld (KTG)</td><td>ca. 0.3–0.8 %</td><td>Gesamtlohn</td><td>Je nach Arbeitgeber-Modell</td></tr>
+    <tr><td>Quellensteuer</td><td>Variiert stark</td><td>Bruttolohn</td><td>Nur für QST-Pflichtige, kantonale Tarife</td></tr>
+  </tbody>
+</table>
+
+<h2>Häufige Fragen zum Nettolohn in der Schweiz</h2>
+
+<details>
+  <summary>Warum ist der Unterschied zwischen Brutto und Netto in der Schweiz kleiner als in Deutschland?</summary>
+  <div>In der Schweiz gibt es keine direkte Lohnsteuer-Quellenabzugspflicht für Schweizer Bürger und Niedergelassene (Ausweis C). Die Einkommenssteuer wird per jährlicher Steuererklärung abgerechnet. Das bedeutet: Der monatliche Nettolohn ist netto höher als man denkt — aber man muss selbst Steuergelder zurücklegen. Als Faustregel: Für Zürich ca. 20–30 % Einkommenssteuer auf das steuerbare Einkommen einplanen. Quellensteuer-Pflichtige (Ausländer ohne C-Ausweis) zahlen direkt vom Lohn.</div>
+</details>
+
+<details>
+  <summary>Was ist der Unterschied zwischen AHV-Pflicht und BVG-Pflicht?</summary>
+  <div>AHV (Alters- und Hinterlassenenversicherung) ist für alle Erwerbstätigen ab dem ersten Franken Lohn Pflicht — keine Einkommensschwelle, kein Mindestalter. BVG (Berufliche Vorsorge, 2. Säule) ist erst ab einem Jahreslohn von CHF 22'050 (2025) und ab Alter 17 obligatorisch. Teilzeitbeschäftigte unter dieser Schwelle sind nicht BVG-versichert. Obergrenze: BVG gilt bis CHF 90'720 koordinierter Lohn/Jahr — höhere Anteile werden nur mit überobligatorischen Modellen versichert.</div>
+</details>
+
+<details>
+  <summary>Wie berechnet sich die Quellensteuer in der Schweiz?</summary>
+  <div>Quellensteuer gilt nur für Personen ohne Niederlassungsbewilligung C (meist B-Ausweis-Inhaber oder Kurzaufenthalter). Der Satz variiert je nach Kanton, Bruttolohn, Zivilstand und Anzahl Kinder. Beispiel Zürich, ledig, CHF 6'000 Brutto/Monat: ca. 12–16 % Quellensteuer. Verheiratet mit 2 Kindern: deutlich weniger. Wer mehr als CHF 120'000/Jahr verdient, muss trotz Quellensteuer eine ordentliche Steuererklärung einreichen (nachträgliche ordentliche Veranlagung, NOV).</div>
+</details>
+
+<details>
+  <summary>Kann ich meinen Nettolohn erhöhen?</summary>
+  <div>Ja — durch legale Steueroptimierung: Freiwillige BVG-Einkäufe (3. Säule a, max. CHF 7'258/Jahr für Angestellte, CHF 36'288 für Selbständige) sind vollständig steuerbar abzugsfähig. Berufsauslagen (Fahrkosten, auswärtige Verpflegung, Weiterbildung) reduzieren das steuerbare Einkommen. Hypothekarschulden bei Wohneigentum sind abziehbar. Für Quellensteuer-Pflichtige kann eine Korrektur der Tarife bei der kantonalen Steuerverwaltung beantragt werden.</div>
+</details>
+
+<section style="background:var(--cream);border-radius:14px;padding:22px 24px;margin-top:32px;text-align:center">
+  <strong style="font-size:1.05rem">📬 Gratis: Lohn- &amp; Steuer-Tipps für die Schweiz</strong>
+  <p style="margin:8px 0 14px;color:#374151;font-size:.9rem">Einmal pro Woche — kein Spam.</p>
+  <a href="/stellenangebote.html" style="display:inline-block;background:var(--amber);color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700">Jobs &amp; Deals ansehen</a>
+</section>
+
+<div data-ad-slot="landing-mid" style="margin-top:18px"></div>
+
+<p class="rel">Verwandte Tools: <a href="/ahv-rechner-freelancer.html">AHV-Rechner Freelancer</a> · <a href="/mwst-rechner.html">MWST-Rechner</a> · <a href="/stellenangebote.html">Jobs in der Schweiz</a> · <a href="/marktplatz.html">Marktplatz</a></p>
+</main>
+
+<script>
+function chf(n){return 'CHF '+Math.round(n).toLocaleString('de-CH')}
+function berechneNetto(){
+  var brutto=parseFloat(document.getElementById('brutto').value)||0;
+  var pensum=parseFloat(document.getElementById('pensum').value)||100;
+  var alter=parseInt(document.getElementById('alter').value)||35;
+  var zivilstand=document.getElementById('zivilstand').value;
+  var kanton=document.getElementById('kanton').value;
+  var bvgModus=document.getElementById('bvg').value;
+  if(brutto<=0){alert('Bitte einen Bruttolohn eingeben.');return;}
+  // AHV/IV/EO
+  var ahv=brutto*0.087;
+  // ALV: 1.1% bis Jahresmaximum 148200/12=12350/Monat
+  var alvBasis=Math.min(brutto,12350);
+  var alv=alvBasis*0.011;
+  // NBU: ca 0.7% (Durchschnitt)
+  var nbu=brutto*0.007;
+  // BVG: koordinierter Lohn = Brutto - Koordinationsabzug 26460/12=2205/Monat
+  var bvgAnteil=0;
+  if(bvgModus!=='kein'){
+    var koordAbzug=bvgModus==='halv'?1102.5:2205;
+    var koordLohn=Math.max(0,brutto-koordAbzug);
+    // BVG-Satz nach Alter
+    var bvgSatz=(alter<25)?0:alter<35?0.07:alter<45?0.10:alter<55?0.15:0.18;
+    bvgAnteil=koordLohn*bvgSatz*0.5; // AN-Anteil ~50%
+  }
+  // Quellensteuer-Näherung (kantonale Durchschnittssätze ledig 2025)
+  var qstSaetze={ZH:0.12,BE:0.14,VD:0.16,GE:0.17,AG:0.11,LU:0.12,SG:0.11,BS:0.13,TI:0.12,VS:0.11};
+  var qstBase=qstSaetze[kanton]||0.13;
+  // Zivilstandsmodifikation
+  if(zivilstand==='verheiratet') qstBase*=0.85;
+  if(zivilstand==='kinder') qstBase*=0.78;
+  // Brutto-Staffel
+  if(brutto<4000) qstBase*=0.7;
+  else if(brutto<7000) qstBase*=0.9;
+  else if(brutto>12000) qstBase*=1.15;
+  var qs=brutto*qstBase;
+  var totalAbzug=ahv+alv+nbu+bvgAnteil+qs;
+  var netto=brutto-totalAbzug;
+  document.getElementById('r-brutto').textContent=chf(brutto);
+  document.getElementById('r-ahv').textContent='−'+chf(ahv);
+  document.getElementById('r-alv').textContent='−'+chf(alv);
+  document.getElementById('r-nbu').textContent='−'+chf(nbu);
+  document.getElementById('r-bvg').textContent='−'+chf(bvgAnteil);
+  document.getElementById('r-qs').textContent='−'+chf(qs);
+  document.getElementById('r-netto').textContent=chf(netto);
+  var el=document.getElementById('result');
+  el.classList.add('show');
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Warum ist der Unterschied zwischen Brutto und Netto in der Schweiz kleiner als in Deutschland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In der Schweiz gibt es keine direkte Lohnsteuer-Quellenabzugspflicht für Schweizer Bürger und Niedergelassene (Ausweis C). Die Einkommenssteuer wird per jährlicher Steuererklärung abgerechnet. Als Faustregel für Zürich: ca. 20–30 % Einkommenssteuer auf das steuerbare Einkommen einplanen. Quellensteuer-Pflichtige (Ausländer ohne C-Ausweis) zahlen direkt vom Lohn."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist der Unterschied zwischen AHV-Pflicht und BVG-Pflicht?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AHV ist für alle Erwerbstätigen ab dem ersten Franken Pflicht. BVG (2. Säule) ist erst ab einem Jahreslohn von CHF 22'050 (2025) und ab Alter 17 obligatorisch. Teilzeitbeschäftigte unter dieser Schwelle sind nicht BVG-versichert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie berechnet sich die Quellensteuer in der Schweiz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quellensteuer gilt nur für Personen ohne Niederlassungsbewilligung C (meist B-Ausweis-Inhaber). Der Satz variiert je nach Kanton, Bruttolohn, Zivilstand und Anzahl Kinder. Wer mehr als CHF 120'000/Jahr verdient, muss trotz Quellensteuer eine ordentliche Steuererklärung einreichen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich meinen Nettolohn erhöhen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja — durch legale Steueroptimierung: Freiwillige BVG-Einkäufe (3. Säule a, max. CHF 7'258/Jahr für Angestellte) sind vollständig steuerbar abzugsfähig. Berufsauslagen (Fahrkosten, auswärtige Verpflegung, Weiterbildung) reduzieren das steuerbare Einkommen."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
