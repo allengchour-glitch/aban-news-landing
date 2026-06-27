@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pensum Rechner Schweiz — 80%, 60%, 50% Pensum berechnen</title>
+<meta name="description" content="Pensum Rechner Schweiz: Teilzeit-Lohn, Stunden und Ferien bei 80%, 60%, 50% oder beliebigem Pensum berechnen. Kostenlos & sofort.">
+<link rel="canonical" href="https://abannews.com/pensum-rechner-schweiz.html">
+<meta property="og:title" content="Pensum Rechner Schweiz — 80%, 60%, 50% Pensum berechnen">
+<meta property="og:description" content="Pensum Rechner: Lohn, Stunden und Ferien bei beliebigem Beschäftigungsgrad berechnen. Für Schweizer Teilzeitangestellte und Arbeitgeber.">
+<meta property="og:type" content="article">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--amber:#b45309;--cream:#fffbeb;--muted:#6b7280;--dk:#1f2937;--blue:#1d4ed8}
+body{margin:0;font-family:system-ui,sans-serif;color:var(--dk);background:#fff;line-height:1.6}
+.hero{background:linear-gradient(135deg,#1f2937,#1a1f2a 55%,#1e3a5f);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"📊";position:absolute;right:-18px;top:-14px;font-size:130px;opacity:.08}
+.hero .in{max-width:780px;margin:0 auto;padding:38px 18px 34px;position:relative;z-index:1}
+.hero h1{margin:0 0 10px;font-size:clamp(1.45rem,4vw,2.1rem);font-weight:800;line-height:1.22}
+.hero p{margin:0;opacity:.88;font-size:1.05rem}
+main{max-width:780px;margin:0 auto;padding:28px 18px 48px}
+h2{font-size:1.25rem;font-weight:700;border-left:4px solid var(--amber);padding-left:10px;margin-top:34px}
+.calc-box{background:var(--cream);border:2px solid #f3dca0;border-radius:16px;padding:28px 24px;margin:24px 0}
+.calc-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;align-items:flex-end}
+.calc-row label{font-weight:600;font-size:.92rem;display:block;margin-bottom:4px;color:#374151}
+.calc-row input,.calc-row select{border:1px solid #d1d5db;border-radius:8px;padding:9px 12px;font-size:1rem;font-family:inherit;width:100%;background:#fff}
+.calc-row input:focus,.calc-row select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+.field{flex:1;min-width:140px}
+.btn{background:var(--amber);color:#fff;border:0;border-radius:9px;padding:12px 28px;font-size:1.05rem;font-weight:700;cursor:pointer;width:100%;margin-top:6px}
+.btn:hover{background:#a04708}
+.result-grid{display:none;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:18px}
+.result-grid.show{display:grid}
+.res-card{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:16px;text-align:center}
+.res-card .num{font-size:1.6rem;font-weight:900;color:var(--blue)}
+.res-card .lbl{font-size:.82rem;color:var(--muted);margin-top:4px}
+.quick-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.qb{background:#fff;border:1.5px solid var(--amber);border-radius:8px;padding:7px 14px;font-size:.9rem;font-weight:600;cursor:pointer;color:var(--amber)}
+.qb:hover,.qb.active{background:var(--amber);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin:18px 0}
+th{background:var(--dk);color:#fff;text-align:left;padding:9px 11px}
+td{padding:8px 11px;border-bottom:1px solid #e5e7eb}
+tr:nth-child(even) td{background:#f9fafb}
+details{border:1px solid #e5e7eb;border-radius:10px;margin:10px 0;padding:0}
+summary{padding:13px 16px;cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"＋";color:var(--amber)}
+details[open] summary::after{content:"－"}
+details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
+.rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="in">
+    <div style="font-size:2.2rem;margin-bottom:8px">📊</div>
+    <h1>Pensum Rechner Schweiz</h1>
+    <p>Lohn, Stunden, Ferien und Sozialabzüge bei 80 %, 60 %, 50 % oder beliebigem Beschäftigungsgrad berechnen</p>
+  </div>
+</div>
+<main>
+
+<div class="calc-box">
+  <h2 style="margin-top:0;border:0;padding:0;font-size:1.15rem">Pensum berechnen</h2>
+  <p style="font-size:.9rem;color:#374151;margin-top:4px;margin-bottom:14px">Schnellauswahl:</p>
+  <div class="quick-btns">
+    <button class="qb" onclick="setPensum(100)">100 %</button>
+    <button class="qb" onclick="setPensum(90)">90 %</button>
+    <button class="qb" onclick="setPensum(80)">80 %</button>
+    <button class="qb" onclick="setPensum(70)">70 %</button>
+    <button class="qb" onclick="setPensum(60)">60 %</button>
+    <button class="qb" onclick="setPensum(50)">50 %</button>
+    <button class="qb" onclick="setPensum(40)">40 %</button>
+  </div>
+  <div class="calc-row">
+    <div class="field">
+      <label for="brutto100">Bruttolohn 100 % (CHF/Monat)</label>
+      <input type="number" id="brutto100" placeholder="z.B. 8000" min="0" step="100">
+    </div>
+    <div class="field">
+      <label for="pensum">Gewünschtes Pensum (%)</label>
+      <input type="number" id="pensum" placeholder="z.B. 80" min="1" max="100">
+    </div>
+  </div>
+  <div class="calc-row">
+    <div class="field">
+      <label for="stunden100">Wochenstunden 100 % (Standard CH: 42)</label>
+      <input type="number" id="stunden100" value="42" min="20" max="50">
+    </div>
+    <div class="field">
+      <label for="ferien100">Ferientage 100 % (Werktage/Jahr)</label>
+      <input type="number" id="ferien100" value="25" min="20" max="40">
+    </div>
+  </div>
+  <button class="btn" onclick="berechnePensum()">Pensum berechnen</button>
+
+  <div class="result-grid" id="resultGrid">
+    <div class="res-card"><div class="num" id="r-lohn">—</div><div class="lbl">Monatslohn (CHF)</div></div>
+    <div class="res-card"><div class="num" id="r-stunden">—</div><div class="lbl">Wochenstunden</div></div>
+    <div class="res-card"><div class="num" id="r-ferien">—</div><div class="lbl">Ferientage / Jahr</div></div>
+    <div class="res-card"><div class="num" id="r-jahres">—</div><div class="lbl">Jahreslohn (CHF)</div></div>
+  </div>
+</div>
+
+<h2>Pensum-Tabelle: Übersicht</h2>
+<table>
+  <thead>
+    <tr><th>Pensum</th><th>Monatslohn (Basis CHF 8'000)</th><th>Wochenstunden (Basis 42h)</th><th>Ferien (Basis 25 Tage)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>100 %</td><td>CHF 8'000</td><td>42 h</td><td>25 Tage</td></tr>
+    <tr><td>90 %</td><td>CHF 7'200</td><td>37.8 h</td><td>22.5 Tage</td></tr>
+    <tr><td>80 %</td><td>CHF 6'400</td><td>33.6 h</td><td>20 Tage</td></tr>
+    <tr><td>70 %</td><td>CHF 5'600</td><td>29.4 h</td><td>17.5 Tage</td></tr>
+    <tr><td>60 %</td><td>CHF 4'800</td><td>25.2 h</td><td>15 Tage</td></tr>
+    <tr><td>50 %</td><td>CHF 4'000</td><td>21 h</td><td>12.5 Tage</td></tr>
+    <tr><td>40 %</td><td>CHF 3'200</td><td>16.8 h</td><td>10 Tage</td></tr>
+  </tbody>
+</table>
+
+<h2>Was ändert sich beim Pensum?</h2>
+<p>In der Schweiz wird das Teilzeitpensum linear berechnet: Lohn, Stunden und Ferienanspruch sind alle proportional zum Vollzeitpensum (100 %). Das ist gesetzlich so geregelt — diskriminierende Schlechterstellung von Teilzeitangestellten bei Lohn oder Ferien ist unzulässig (Gleichstellungsgesetz GlG).</p>
+<p>Wichtige Sonderregeln: AHV-Beiträge fallen ab dem ersten Franken an, unabhängig vom Pensum. BVG (Pensionskasse) ist jedoch erst ab einem Jahreslohn über CHF 22'050 obligatorisch — wer unter 50 % arbeitet und einen Lohn unter dieser Schwelle hat, ist oft nicht BVG-versichert. Bei zwei Teilzeitstellen gilt: Jeder Arbeitgeber rechnet separat. Krankentaggeld und NBUV gelten ab 8 Stunden pro Woche beim gleichen Arbeitgeber.</p>
+
+<h2>Häufige Fragen zum Pensum</h2>
+
+<details>
+  <summary>Wie berechne ich den Lohn bei einem anderen Pensum?</summary>
+  <div>Formel: Lohn = Vollzeit-Bruttolohn × (Pensum / 100). Beispiel: CHF 8'000 × 0.8 = CHF 6'400 bei 80 %. Diese lineare Berechnung gilt auch für Ferien (Ferientage 100 % × Pensum-Faktor) und Wochenstunden. Sonderregelungen können per Arbeitsvertrag vereinbart werden, dürfen aber nicht zu Lasten des Arbeitnehmers abweichen.</div>
+</details>
+
+<details>
+  <summary>Wie viele Ferien stehen mir bei Teilzeit zu?</summary>
+  <div>Der Ferienanspruch wird anteilig berechnet: Bei 80 % Pensum und 25 Tagen Ferienanspruch stehen dir 20 Tage zu. Gesetzliches Minimum in der Schweiz: 4 Wochen (20 Arbeitstage) für Vollzeit — also 16 Tage bei 80 %, 10 Tage bei 50 %. Viele Gesamtarbeitsverträge (GAV) sehen 25 oder 30 Tage vor. Als Tage werden dabei Arbeitstage gezählt, nicht Kalendertage.</div>
+</details>
+
+<details>
+  <summary>Was gilt bei mehreren Teilzeitstellen gleichzeitig?</summary>
+  <div>Jeder Arbeitgeber rechnet seinen Anteil separat ab: Lohn, AHV, ALV, BVG-Pflicht. Die Gesamtsumme der AHV-Beiträge aller Stellen wird zusammengerechnet. Für das BVG-Obligatorium zählt jede Stelle einzeln — wer bei Arbeitgeber A 40 % mit CHF 3'200/Monat verdient, unterschreitet die BVG-Eintrittsschwelle (CHF 22'050/Jahr), ist dort also nicht BVG-pflichtversichert. Es empfiehlt sich, die Pensionskasse freiwillig zu informieren, damit keine Versicherungslücken entstehen.</div>
+</details>
+
+<details>
+  <summary>Kann mein Arbeitgeber das Pensum einseitig ändern?</summary>
+  <div>Nein — das Pensum ist ein wesentlicher Vertragsbestandteil. Eine einseitige Änderung des Pensums durch den Arbeitgeber ist nur mit schriftlicher Zustimmung des Arbeitnehmers oder als Änderungskündigung möglich (Kündigung mit Angebot eines neuen Vertrags mit verändertem Pensum). Ausnahme: Verträge mit ausdrücklicher Bandbreite (z. B. «60–80 %») lassen dem Arbeitgeber mehr Flexibilität.</div>
+</details>
+
+<section style="background:var(--cream);border-radius:14px;padding:22px 24px;margin-top:32px;text-align:center">
+  <strong style="font-size:1.05rem">📬 Gratis: Lohn- &amp; Arbeitsrecht-Tipps</strong>
+  <p style="margin:8px 0 14px;color:#374151;font-size:.9rem">Einmal pro Woche — kein Spam.</p>
+  <a href="/stellenangebote.html" style="display:inline-block;background:var(--amber);color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700">Jobs &amp; Deals ansehen</a>
+</section>
+
+<div data-ad-slot="landing-mid" style="margin-top:18px"></div>
+
+<p class="rel">Weitere Rechner: <a href="/nettolohn-rechner-schweiz.html">Nettolohn Rechner</a> · <a href="/ahv-rechner-freelancer.html">AHV-Rechner Freelancer</a> · <a href="/mwst-rechner.html">MWST-Rechner</a> · <a href="/stellenangebote.html">Jobs Schweiz</a></p>
+</main>
+
+<script>
+function setPensum(p){
+  document.getElementById('pensum').value=p;
+  document.querySelectorAll('.qb').forEach(function(b){b.classList.toggle('active',parseInt(b.textContent)===p);});
+}
+function chf(n){return 'CHF '+Math.round(n).toLocaleString('de-CH')}
+function berechnePensum(){
+  var b=parseFloat(document.getElementById('brutto100').value)||0;
+  var p=parseFloat(document.getElementById('pensum').value)||0;
+  var h=parseFloat(document.getElementById('stunden100').value)||42;
+  var f=parseFloat(document.getElementById('ferien100').value)||25;
+  if(b<=0||p<=0){alert('Bitte Bruttolohn und Pensum eingeben.');return;}
+  var faktor=p/100;
+  document.getElementById('r-lohn').textContent=chf(b*faktor);
+  document.getElementById('r-stunden').textContent=(h*faktor).toFixed(1)+' h';
+  document.getElementById('r-ferien').textContent=(f*faktor).toFixed(1)+' Tage';
+  document.getElementById('r-jahres').textContent=chf(b*faktor*13.0); // 13. Monatslohn
+  document.getElementById('resultGrid').classList.add('show');
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie berechne ich den Lohn bei einem anderen Pensum?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Formel: Lohn = Vollzeit-Bruttolohn × (Pensum / 100). Beispiel: CHF 8'000 × 0.8 = CHF 6'400 bei 80 %. Diese lineare Berechnung gilt auch für Ferien (Ferientage 100 % × Pensum-Faktor) und Wochenstunden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie viele Ferien stehen mir bei Teilzeit zu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Ferienanspruch wird anteilig berechnet: Bei 80 % Pensum und 25 Tagen Ferienanspruch stehen dir 20 Tage zu. Gesetzliches Minimum in der Schweiz: 4 Wochen (20 Arbeitstage) für Vollzeit, also 16 Tage bei 80 %, 10 Tage bei 50 %."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was gilt bei mehreren Teilzeitstellen gleichzeitig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jeder Arbeitgeber rechnet seinen Anteil separat ab. Für das BVG-Obligatorium zählt jede Stelle einzeln — wer bei einem Arbeitgeber unter die Eintrittsschwelle (CHF 22'050/Jahr) fällt, ist dort nicht BVG-pflichtversichert."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann mein Arbeitgeber das Pensum einseitig ändern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein — das Pensum ist ein wesentlicher Vertragsbestandteil. Eine einseitige Änderung ist nur mit schriftlicher Zustimmung oder als Änderungskündigung möglich. Ausnahme: Verträge mit ausdrücklicher Bandbreite (z.B. 60–80 %) lassen dem Arbeitgeber mehr Flexibilität."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
