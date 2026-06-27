@@ -8,6 +8,25 @@
 
 ---
 
+## 🤖 NEU 2026-06-27 — Aban Autopilot Suite + Lern-Maschine auf GitLab-CI (ZUERST LESEN)
+> GitHub Actions ist gesperrt → **alle Automationen laufen jetzt auf GitLab-CI** (Projekt `aban-ci`,
+> `gitlab.com/allengchour/aban-ci`). Doku: **`automation/autopilot/AUTOPILOT.md`** + `docs/GITLAB-SETUP.md`.
+- **Ergebnis-Branches (nie `main`, von Sessions lesbar):**
+  - `brain/youtube` → `automation/SECOND-BRAIN.md` (gelernte YouTube-Trends: Hashtags/Hooks/Keywords).
+  - `brain/intel` → `automation/autopilot/`-Reports: PRODUKT-IDEEN, CAPTION-VORSCHLAEGE, TAGES-DIGEST,
+    CONVERSION-RADAR, google-merchant-feed.xml, guides/.
+  - `brain/auto` → Seiten-Selbstverbesserung (aban-news).
+- **GitLab-Jobs:** `youtube-learn` (Trend-Lernen; `YT_PROJECT=luxestyle` = nur Shop), `second_brain`,
+  `autopilot-intel` (Produkt-Ideen/Captions/Digest), `shop-autopilot` (Conversion-Radar/Merchant-Feed/SEO-Guides),
+  `shop-brain`. Langsame Jobs (`aban-upload`/`pinterest`) NUR manuell (nicht im Schedule → Minuten-Budget).
+- **🔴 DATENBELEG (conversion_radar, live 06-27): 518/529 cj-real-Produkte (98 %) OHNE Sterne/Reviews.**
+  → Größter Gratis-Conversion-Hebel = **Reviews-Importer** (`automation/cj_reviews_import.mjs`, braucht
+  `JUDGEME_PRIVATE_TOKEN`). Katalog sonst sauber (0 FAILED-Bilder, 0 fehlende SEO).
+- **GitLab-Variablen gesetzt:** `YT_API_KEY`, `GH_PUSH_TOKEN` (Contents:RW), `SHOPIFY_CLIENT_ID/SECRET/SHOP`.
+  Offen für vollen Wert: `JUDGEME_PRIVATE_TOKEN` (Reviews), Pinterest Standard-Access, Pipeline-Schedule.
+
+---
+
 ## 👥 Die Sessions & wem was „gehört" (Konflikte vermeiden)
 | Session | Aufgabe | Detail-Memory | Branch |
 |---|---|---|---|
