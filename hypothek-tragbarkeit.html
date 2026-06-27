@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypothek-Tragbarkeit-Rechner Schweiz — kann ich mir das Haus leisten? · aban news</title>
+<meta name="description" content="Kostenloser Tragbarkeits-Rechner für die Schweiz: Prüfe nach den üblichen Bankregeln, ob du dir eine Immobilie leisten kannst — Eigenkapital, Belehnung, kalkulatorische Wohnkosten und die 33-%-Regel. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/hypothek-tragbarkeit.html">
+<meta property="og:title" content="Hypothek-Tragbarkeit-Rechner Schweiz">
+<meta property="og:description" content="Kann ich mir das Haus leisten? Nach den üblichen CH-Bankregeln: Eigenkapital, Belehnung, 33-%-Tragbarkeit. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/hypothek-tragbarkeit.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Hypothek-Tragbarkeit-Rechner Schweiz",
+"url":"https://abannews.com/hypothek-tragbarkeit.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de-CH","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},
+"description":"Prüft nach den üblichen Schweizer Bankregeln, ob eine Immobilie tragbar ist: Eigenkapital, Belehnung, kalkulatorische Wohnkosten und die 33-Prozent-Regel. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was bedeutet Tragbarkeit?","acceptedAnswer":{"@type":"Answer","text":"Tragbarkeit heißt: Die jährlichen Wohnkosten sollten höchstens rund ein Drittel (33 %) deines Brutto-Einkommens ausmachen. Banken rechnen dabei nicht mit dem heutigen Tiefzins, sondern mit einem kalkulatorischen Zins von meist 5 %, plus rund 1 % Nebenkosten/Unterhalt und der Amortisation. So stellen sie sicher, dass du dir die Immobilie auch bei höheren Zinsen leisten kannst."}},
+{"@type":"Question","name":"Wie viel Eigenkapital brauche ich in der Schweiz?","acceptedAnswer":{"@type":"Answer","text":"Mindestens 20 % des Kaufpreises. Davon müssen mindestens 10 % aus „harten“ Mitteln stammen (Erspartes, Säule 3a, Schenkung) — nicht aus der Pensionskasse (2. Säule). Die Bank finanziert also höchstens 80 % als Hypothek."}},
+{"@type":"Question","name":"Ist das Ergebnis verbindlich?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Rechner nutzt die in der Schweiz üblichen Faustregeln und liefert einen Richtwert. Jede Bank rechnet leicht anders (z. B. anrechenbares Einkommen, kalkulatorischer Zins). Für eine verbindliche Aussage frag deine Bank oder einen unabhängigen Hypothekarberater. Alles wird nur lokal in deinem Browser berechnet."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#b91c1c;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--ok:#34d399;--bad:#f87171;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}
+.unit input{font:inherit;padding:11px 52px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.82rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.verdict{border-radius:12px;padding:16px;text-align:center;margin-top:4px;border:1px solid var(--amber-lt);background:var(--cream)}
+.verdict .big{font-size:clamp(22px,5.5vw,30px);font-weight:800;letter-spacing:-.02em}
+.verdict.ok .big{color:var(--ok)}.verdict.no .big{color:var(--bad)}
+.bar{height:14px;border-radius:8px;background:var(--field);border:1px solid var(--line);overflow:hidden;margin:12px 0 4px}
+.bar i{display:block;height:100%;background:var(--amber-dk)}
+.rows{margin-top:14px;display:grid;gap:7px;font-size:.92rem}
+.rows div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:7px}
+.rows b{color:var(--ink2)}
+.rows span{font-weight:700;text-align:right}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.warn{color:var(--bad);font-size:.86rem;font-weight:600;margin-top:8px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Kann ich mir das leisten?</span><br>Hypothek-Tragbarkeit Schweiz</h1>
+    <p>Prüf in 30 Sekunden nach den üblichen Schweizer Bankregeln, ob eine Immobilie für dich tragbar ist — Eigenkapital, Belehnung und die 33-%-Regel. Ehrlich, lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach erklärt:</strong> Banken rechnen nicht mit dem heutigen Tiefzins, sondern mit <strong>5 % kalkulatorisch</strong>. Deine jährlichen Wohnkosten dürfen höchstens <strong>ein Drittel (33 %)</strong> deines Brutto-Lohns sein. Hier siehst du sofort, ob es reicht. Richtwert, keine Bankzusage — nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div class="fld"><label for="preis">Kaufpreis der Immobilie</label><div class="unit"><input id="preis" type="number" inputmode="decimal" value="1000000" min="0"><span>CHF</span></div></div>
+      <div class="fld"><label for="ek">Eigenkapital</label><div class="unit"><input id="ek" type="number" inputmode="decimal" value="200000" min="0"><span>CHF</span></div></div>
+      <div class="fld"><label for="einkommen">Brutto-Jahreseinkommen (Haushalt)</label><div class="unit"><input id="einkommen" type="number" inputmode="decimal" value="180000" min="0"><span>CHF</span></div></div>
+      <div class="fld"><label for="zins">Kalkulatorischer Zins</label><div class="unit"><input id="zins" type="number" inputmode="decimal" value="5" step="0.1"><span>%</span></div></div>
+    </div>
+    <details style="margin-bottom:6px"><summary style="cursor:pointer;font-size:.86rem;color:var(--amber-dk);font-weight:600">Weitere Annahmen anpassen</summary>
+      <div class="cols" style="margin-top:10px">
+        <div class="fld"><label for="neben">Nebenkosten/Unterhalt</label><div class="unit"><input id="neben" type="number" inputmode="decimal" value="1" step="0.1"><span>%</span></div></div>
+        <div class="fld"><label for="istzins">Echter Hypozins (für Ist-Kosten)</label><div class="unit"><input id="istzins" type="number" inputmode="decimal" value="2" step="0.1"><span>%</span></div></div>
+      </div>
+    </details>
+    <div class="verdict" id="verdict"><div class="big" id="v-big">—</div><div id="v-sub" style="font-size:.9rem;color:var(--ink2);margin-top:4px"></div>
+      <div class="bar"><i id="v-bar" style="width:0%"></i></div>
+      <div style="font-size:.78rem;color:var(--muted)">Tragbarkeitsquote (Ziel: ≤ 33 %)</div>
+    </div>
+    <div class="rows" id="rows"></div>
+    <p class="warn" id="warn" hidden></p>
+    <p class="note">Übliche CH-Faustregeln: max. 80 % Belehnung (≥ 20 % Eigenkapital), kalkulatorisch 5 % Zins + 1 % Nebenkosten, Tragbarkeit ≤ 33 % vom Brutto. Richtwert — verbindlich ist nur deine Bank.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Geld &amp; Wohnen.</p>
+    <p><a class="btn" href="/kreditrechner.html">Kreditrechner</a>
+      <a class="btn ghost" href="/zinseszins-rechner.html">Zinseszins</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ehrliche Geld- &amp; KI-Tipps für die Schweiz — werktäglich in 5 Min</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige Newsletter für Selbstständige &amp; KMU: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/kreditrechner.html">Kreditrechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function chf(n){return (isFinite(n)?Math.round(n):0).toLocaleString("de-CH")+" CHF";}
+  function row(l,v){return '<div><b>'+l+'</b><span>'+v+'</span></div>';}
+  function calc(){
+    var preis=num("preis"),ek=num("ek"),eink=num("einkommen"),zins=num("zins"),neben=num("neben"),istzins=num("istzins");
+    var V=document.getElementById("verdict"),big=document.getElementById("v-big"),sub=document.getElementById("v-sub"),
+        bar=document.getElementById("v-bar"),rows=document.getElementById("rows"),warn=document.getElementById("warn");
+    if(!isFinite(preis)||preis<=0||!isFinite(ek)||!isFinite(eink)||eink<=0){
+      big.textContent="—";sub.textContent="Kaufpreis, Eigenkapital und Einkommen eingeben.";rows.innerHTML="";bar.style.width="0%";warn.hidden=true;V.className="verdict";return;}
+    if(!isFinite(zins))zins=5;if(!isFinite(neben))neben=1;
+    var hypo=preis-ek;
+    if(hypo<0)hypo=0;
+    var belehnung=hypo/preis*100;
+    // Amortisation: 2. Hypothek (Teil über 66.67% Belehnung) in 15 Jahren amortisieren
+    var zweiteHypo=Math.max(0,hypo-preis*(2/3));
+    var amort=zweiteHypo/15;
+    var zinsKosten=hypo*zins/100;
+    var nebenKosten=preis*neben/100;
+    var wohnkostenKalk=zinsKosten+nebenKosten+amort;
+    var quote=wohnkostenKalk/eink*100;
+    var noetigesEink=wohnkostenKalk/0.33;
+    var minEK=preis*0.20;
+    // verdict
+    var tragbar=quote<=33.0;
+    var ekOk=ek>=minEK-0.5;
+    big.textContent= (tragbar&&ekOk) ? "✓ Tragbar" : (!ekOk ? "Eigenkapital zu tief" : "✗ Knapp / nicht tragbar");
+    V.className="verdict "+((tragbar&&ekOk)?"ok":"no");
+    sub.textContent="Tragbarkeitsquote: "+quote.toLocaleString("de-CH",{maximumFractionDigits:1})+" % vom Brutto-Einkommen";
+    bar.style.width=Math.min(100,quote/0.33)+"%";
+    bar.style.background= tragbar ? "var(--ok)" : "var(--bad)";
+    var istKosten = isFinite(istzins) ? (hypo*istzins/100+nebenKosten+amort) : null;
+    var html="";
+    html+=row("Hypothek (Fremdkapital)",chf(hypo));
+    html+=row("Belehnung",belehnung.toLocaleString("de-CH",{maximumFractionDigits:1})+" %"+(belehnung>80?" ⚠️ über 80 %":""));
+    html+=row("Kalkulatorischer Zins (5 %)",chf(zinsKosten)+" / Jahr");
+    html+=row("Nebenkosten/Unterhalt",chf(nebenKosten)+" / Jahr");
+    html+=row("Amortisation (2. Hypothek, 15 J.)",chf(amort)+" / Jahr");
+    html+=row("Kalkulatorische Wohnkosten",chf(wohnkostenKalk)+" / Jahr");
+    html+=row("Nötiges Brutto-Einkommen",chf(noetigesEink));
+    if(istKosten!=null) html+=row("Ist-Wohnkosten bei "+istzins+" %",chf(istKosten)+" / Jahr ("+chf(istKosten/12)+"/Mt.)");
+    rows.innerHTML=html;
+    // warnings
+    var msgs=[];
+    if(ek<minEK) msgs.push("Eigenkapital unter 20 % ("+chf(minEK)+" nötig).");
+    if(belehnung>80) msgs.push("Belehnung über 80 % — Banken finanzieren das in der Regel nicht.");
+    if(msgs.length){warn.hidden=false;warn.textContent="⚠️ "+msgs.join(" ");}else warn.hidden=true;
+  }
+  ["preis","ek","einkommen","zins","neben","istzins"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
