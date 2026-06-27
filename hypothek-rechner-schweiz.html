@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypothekenrechner Schweiz 2026 — Zinsen, Tragbarkeit & Amortisation berechnen</title>
+<meta name="description" content="Schweizer Hypothekenrechner: 1. und 2. Hypothek, Zinskosten, Amortisation und Tragbarkeit (33%-Regel) kostenlos online berechnen. Inkl. Kaufpreisrechner.">
+<link rel="canonical" href="https://abannews.com/hypothek-rechner-schweiz.html">
+<meta property="og:title" content="Hypothekenrechner Schweiz 2026 — Zinsen & Tragbarkeit berechnen">
+<meta property="og:description" content="Hypothek Schweiz kostenlos berechnen: 1./2. Hypothek, Monatszinsen, Amortisation und Tragbarkeitsregel 33% — mit Kaufpreis-Schnellauswahl.">
+<meta property="og:type" content="article">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{--amber:#b45309;--cream:#fffbeb;--muted:#6b7280;--dk:#1f2937;--green:#14532d;--green-light:#dcfce7;--red:#dc2626}
+body{margin:0;font-family:system-ui,sans-serif;color:var(--dk);background:#fff;line-height:1.6}
+.hero{background:linear-gradient(135deg,#1f2937,#1a2a1a 55%,#14532d);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"🏠";position:absolute;right:-18px;top:-14px;font-size:130px;opacity:.08}
+.hero .in{max-width:780px;margin:0 auto;padding:38px 18px 34px;position:relative;z-index:1}
+.hero h1{margin:0 0 10px;font-size:clamp(1.45rem,4vw,2.1rem);font-weight:800;line-height:1.22}
+.hero p{margin:0;opacity:.88;font-size:1.05rem}
+main{max-width:780px;margin:0 auto;padding:28px 18px 48px}
+h2{font-size:1.25rem;font-weight:700;border-left:4px solid var(--amber);padding-left:10px;margin-top:34px}
+.answer-first{background:var(--cream);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:14px 18px;margin:20px 0;font-size:.95rem}
+.answer-first strong{display:block;margin-bottom:6px;color:var(--amber);font-size:1rem}
+.calc-box{background:var(--cream);border:2px solid #f3dca0;border-radius:16px;padding:28px 24px;margin:24px 0}
+.quick-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.qbtn{background:#fff;border:2px solid #d1d5db;border-radius:8px;padding:8px 14px;font-size:.9rem;font-weight:700;cursor:pointer;color:var(--dk);transition:all .15s}
+.qbtn:hover,.qbtn.active{background:var(--amber);color:#fff;border-color:var(--amber)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:520px){.calc-grid{grid-template-columns:1fr}}
+.field label{font-weight:600;font-size:.88rem;display:block;margin-bottom:4px;color:#374151}
+.field input,.field select{border:1px solid #d1d5db;border-radius:8px;padding:9px 12px;font-size:1rem;font-family:inherit;width:100%;box-sizing:border-box;background:#fff}
+.field input:focus,.field select:focus{outline:2px solid var(--amber);border-color:var(--amber)}
+.field .hint{font-size:.78rem;color:var(--muted);margin-top:3px}
+.hyp2-section{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px 16px;margin:10px 0 16px}
+.hyp2-section .field2-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.hyp2-section .field2-grid{grid-template-columns:1fr}}
+.hyp2-title{font-size:.85rem;font-weight:700;color:#15803d;margin-bottom:10px}
+.btn{background:var(--green);color:#fff;border:0;border-radius:9px;padding:13px 28px;font-size:1.05rem;font-weight:700;cursor:pointer;width:100%;margin-top:8px;transition:background .15s}
+.btn:hover{background:#166534}
+.result-box{display:none;background:#fff;border:2px solid var(--green);border-radius:14px;padding:22px 24px;margin-top:22px}
+.result-box.show{display:block}
+.result-section-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 0 6px;padding-top:14px;border-top:1px solid #e5e7eb}
+.result-section-title:first-child{margin-top:0;padding-top:0;border-top:none}
+.result-line{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid #f3f4f6;font-size:.93rem}
+.result-line:last-child{border-bottom:0}
+.result-line .lbl{color:#374151}
+.result-line .val{font-weight:600;white-space:nowrap}
+.result-line.total{font-weight:800;font-size:1.05rem;border-top:2px solid #e5e7eb;margin-top:4px;padding-top:10px;border-bottom:none}
+.result-line.total .val{color:#14532d}
+.result-line.warn .val{color:var(--red)}
+.result-line.ok .val{color:#14532d}
+.trag-box{border-radius:10px;padding:14px 16px;margin-top:14px;font-size:.92rem}
+.trag-ok{background:#dcfce7;border:1px solid #86efac}
+.trag-warn{background:#fef2f2;border:1px solid #fca5a5}
+.trag-box strong{display:block;margin-bottom:4px}
+.disclaimer{font-size:.8rem;color:var(--muted);margin-top:12px;line-height:1.5}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin:18px 0}
+th{background:var(--dk);color:#fff;text-align:left;padding:9px 11px}
+td{padding:8px 11px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+tr:nth-child(even) td{background:#f9fafb}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:20px 0}
+.tip{background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px}
+.tip strong{display:block;margin-bottom:5px;color:var(--dk);font-size:.9rem}
+.tip p{margin:0;font-size:.84rem;color:var(--muted)}
+details{border:1px solid #e5e7eb;border-radius:10px;margin:10px 0;padding:0}
+summary{padding:13px 16px;cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--amber);font-weight:700}
+details[open] summary::after{content:"－"}
+details div{padding:4px 16px 14px;color:#374151;font-size:.96rem}
+.rel{margin-top:24px;font-size:.9rem;color:var(--muted)}
+.rel a{color:var(--amber);text-decoration:none}
+.rel a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="in">
+    <div style="font-size:2.2rem;margin-bottom:8px">🏠</div>
+    <h1>Hypothekenrechner Schweiz 2026</h1>
+    <p>1. und 2. Hypothek, Zinskosten, Amortisation und Tragbarkeit (33%-Regel) kostenlos online berechnen — nach Schweizer Bankstandard.</p>
+  </div>
+</header>
+<main>
+  <div class="answer-first">
+    <strong>Faustregel Hypothek Schweiz</strong>
+    Mindestens <strong>20% Eigenkapital</strong> (davon max. 10% aus Pensionskasse/3a) · Die erste Hypothek beträgt max. <strong>65% des Kaufpreises</strong> (nicht amortisierungspflichtig) · Die zweite Hypothek (bis 80%) muss <strong>innerhalb von 15 Jahren</strong> amortisiert sein · Die jährliche Gesamtbelastung darf <strong>max. 33% des Bruttoeinkommens</strong> betragen (Tragbarkeitsregel der Banken).
+  </div>
+
+  <h2>Hypothek berechnen</h2>
+  <div class="calc-box">
+    <div style="font-size:.85rem;font-weight:600;color:#374151;margin-bottom:8px">Kaufpreis schnell wählen:</div>
+    <div class="quick-btns">
+      <button class="qbtn" onclick="setKaufpreis(600000)">CHF 600'000</button>
+      <button class="qbtn active" onclick="setKaufpreis(800000)">CHF 800'000</button>
+      <button class="qbtn" onclick="setKaufpreis(1200000)">CHF 1'200'000</button>
+      <button class="qbtn" onclick="setKaufpreis(1500000)">CHF 1'500'000</button>
+    </div>
+
+    <div class="calc-grid">
+      <div class="field">
+        <label for="kaufpreis">Kaufpreis (CHF)</label>
+        <input type="number" id="kaufpreis" value="800000" min="100000" max="10000000" step="10000">
+        <div class="hint">Gesamtpreis der Liegenschaft</div>
+      </div>
+      <div class="field">
+        <label for="eigenkapital">Eigenkapital (CHF)</label>
+        <input type="number" id="eigenkapital" value="160000" min="0" step="5000">
+        <div class="hint">Min. 20% des Kaufpreises (CH-Standard)</div>
+      </div>
+      <div class="field">
+        <label for="zins1">Zinssatz 1. Hypothek (%)</label>
+        <input type="number" id="zins1" value="2.0" min="0.1" max="10" step="0.05">
+        <div class="hint">Aktuelle Richtwerte: 1.5–2.5% (Festhypothek)</div>
+      </div>
+      <div class="field">
+        <label for="laufzeit">Laufzeit Festhypothek</label>
+        <select id="laufzeit">
+          <option value="15">15 Jahre</option>
+          <option value="20" selected>20 Jahre</option>
+          <option value="25">25 Jahre</option>
+          <option value="30">30 Jahre</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hyp2-section" id="hyp2-section">
+      <div class="hyp2-title">⬇️ 2. Hypothek (falls Belehnungsgrad &gt; 65%)</div>
+      <div class="field2-grid">
+        <div class="field">
+          <label for="zins2">Zinssatz 2. Hypothek (%)</label>
+          <input type="number" id="zins2" value="1.0" min="0.1" max="10" step="0.05">
+          <div class="hint">Meist 0.2–0.5% über 1. Hypothek</div>
+        </div>
+        <div class="field">
+          <label for="amort">Amortisationsdauer (Jahre)</label>
+          <select id="amort">
+            <option value="10">10 Jahre</option>
+            <option value="15" selected>15 Jahre (CH-Standard)</option>
+            <option value="20">20 Jahre</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="berechnen()">Hypothek berechnen →</button>
+
+    <div class="result-box" id="result-box">
+      <div class="result-section-title">Hypothek-Struktur</div>
+      <div class="result-line"><span class="lbl">Kaufpreis</span><span class="val" id="r-kaufpreis">—</span></div>
+      <div class="result-line"><span class="lbl">Eigenkapital</span><span class="val" id="r-ek">—</span></div>
+      <div class="result-line"><span class="lbl">Eigenkapital-Anteil</span><span class="val" id="r-ek-pct">—</span></div>
+      <div class="result-line"><span class="lbl">Hypothekarbetrag total</span><span class="val" id="r-hyp-total">—</span></div>
+      <div class="result-line"><span class="lbl">1. Hypothek (bis 65% des Kaufpreises)</span><span class="val" id="r-hyp1">—</span></div>
+      <div class="result-line" id="row-hyp2"><span class="lbl">2. Hypothek (65%–80%)</span><span class="val" id="r-hyp2">—</span></div>
+      <div class="result-line" id="row-belehnung"><span class="lbl">Belehnungsgrad</span><span class="val" id="r-belehnung">—</span></div>
+
+      <div class="result-section-title">Monatliche Kosten</div>
+      <div class="result-line"><span class="lbl">Zinsen 1. Hypothek / Monat</span><span class="val" id="r-zins1-mo">—</span></div>
+      <div class="result-line" id="row-zins2-mo"><span class="lbl">Zinsen 2. Hypothek / Monat</span><span class="val" id="r-zins2-mo">—</span></div>
+      <div class="result-line" id="row-amort-mo"><span class="lbl">Amortisation 2. Hypothek / Monat</span><span class="val" id="r-amort-mo">—</span></div>
+      <div class="result-line total"><span class="lbl">Gesamtbelastung / Monat</span><span class="val" id="r-total-mo">—</span></div>
+
+      <div class="result-section-title">Jährliche Kosten &amp; Tragbarkeit</div>
+      <div class="result-line"><span class="lbl">Gesamtbelastung / Jahr</span><span class="val" id="r-total-year">—</span></div>
+      <div class="result-line"><span class="lbl">Mindest-Bruttoeinkommen (33%-Regel)</span><span class="val" id="r-min-income">—</span></div>
+      <div class="result-line" id="row-trag"><span class="lbl">Tragbarkeit</span><span class="val" id="r-trag-val">—</span></div>
+
+      <div id="trag-box-div"></div>
+      <div class="disclaimer">Richtwert-Berechnung — Banken verwenden ggf. kalkulatorische Zinssätze (oft 5%) für die Tragbarkeitsprüfung. Ohne Gewähr. Bitte Bankberater oder unabhängigen Finanzberater beiziehen.</div>
+    </div>
+  </div>
+
+  <h2>Hypothekenarten im Vergleich</h2>
+  <table data-aban-compare>
+    <tr>
+      <th>Hypothekenart</th>
+      <th>Zinsbindung</th>
+      <th>Risiko</th>
+      <th>Typische Laufzeit</th>
+      <th>Empfehlung</th>
+    </tr>
+    <tr>
+      <td><strong>Festhypothek</strong></td>
+      <td>Fix für die gesamte Laufzeit</td>
+      <td>Niedrig (Planungssicherheit)</td>
+      <td>2–15 Jahre</td>
+      <td>Bei erwartetem Zinsanstieg, bevorzugt 5–10 Jahre</td>
+    </tr>
+    <tr>
+      <td><strong>SARON-Hypothek</strong></td>
+      <td>Variabel (tägl. SARON + Marge)</td>
+      <td>Mittel (Zinsschwankungen)</td>
+      <td>Offene Laufzeit (3 Mt. Kündigungsfrist)</td>
+      <td>Bei erwartetem Zinssinkflug, mit Rücklagenpolster</td>
+    </tr>
+    <tr>
+      <td><strong>Variable Hypothek</strong></td>
+      <td>Variabel, keine fixe Bindung</td>
+      <td>Mittel–Hoch</td>
+      <td>Unbefristet (6 Mt. Kündigung)</td>
+      <td>Selten empfehlenswert; Überbrückung/Flexibilität</td>
+    </tr>
+    <tr>
+      <td><strong>2. Hypothek</strong></td>
+      <td>Fest oder variabel, wie 1. Hyp.</td>
+      <td>Mittel (Amortisierungspflicht)</td>
+      <td>Max. 15 Jahre bis Tilgung</td>
+      <td>Pflicht bei Belehnungsgrad 65–80%</td>
+    </tr>
+  </table>
+
+  <h2>Wichtige Regeln</h2>
+  <div class="tips">
+    <div class="tip">
+      <strong>🏦 20%-Eigenkapital-Regel</strong>
+      <p>Mindestens 20% des Kaufpreises als Eigenkapital, davon höchstens 10% aus der Pensionskasse (PK-Vorbezug). Der Rest muss «hartes» Eigenkapital sein (Ersparnisse, Wertschriften, 3a-Guthaben).</p>
+    </div>
+    <div class="tip">
+      <strong>📊 Tragbarkeit 33%</strong>
+      <p>Die jährliche Gesamtbelastung (Zinsen + Amortisation + Nebenkosten) darf maximal ein Drittel des Bruttoeinkommens betragen. Banken rechnen dabei oft mit einem kalkulatorischen Zins von 5% — nicht dem aktuellen Marktzins.</p>
+    </div>
+    <div class="tip">
+      <strong>📈 SARON vs. Festhypothek</strong>
+      <p>SARON (Swiss Average Rate Overnight) ist günstiger bei sinkenden Zinsen, birgt aber das Risiko steigender Raten. Festhypothek bietet Planungssicherheit. Viele Haushalte wählen einen Mix.</p>
+    </div>
+    <div class="tip">
+      <strong>💰 Indirekte Amortisation (3a)</strong>
+      <p>Statt direkter Schuldenrückzahlung zahlen Sie in die Säule 3a ein — und können diese bei Fälligkeit für die Amortisation nutzen. Steuerlich vorteilhaft: die Schuldzinsen bleiben abzugsfähig.</p>
+    </div>
+  </div>
+
+  <div data-ad-slot="landing-mid" style="margin-top:28px;min-height:90px"></div>
+
+  <h2>Häufige Fragen zur Hypothek Schweiz</h2>
+  <details>
+    <summary>Wie viel Eigenkapital brauche ich für eine Hypothek in der Schweiz?</summary>
+    <div>
+      <p>Schweizer Banken verlangen grundsätzlich <strong>mindestens 20% des Kaufpreises</strong> als Eigenkapital. Bei einem Kaufpreis von CHF 800'000 sind das CHF 160'000.</p>
+      <p><strong>Zusammensetzung:</strong></p>
+      <ul>
+        <li>Mindestens <strong>10% muss «hartes» Eigenkapital</strong> sein: Ersparnisse, Wertschriften, Schenkungen, Erbvorempfang oder Guthaben aus der Säule 3a.</li>
+        <li>Die restlichen bis 10% dürfen aus der <strong>Pensionskasse (BVG-Vorbezug)</strong> stammen. Achtung: Ein PK-Vorbezug reduziert Ihre Altersrente und löst Steuern aus.</li>
+      </ul>
+      <p>Bei Renditeliegenschaften verlangen viele Banken sogar 25–35% Eigenkapital. Wenn Sie unter 20% kommen, ist eine Hypothek in der Schweiz i.d.R. nicht möglich.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Was ist die Tragbarkeitsregel bei Schweizer Hypotheken?</summary>
+    <div>
+      <p>Die <strong>Tragbarkeitsregel</strong> besagt, dass die jährliche Belastung aus einer Hypothek nicht mehr als <strong>33% (ein Drittel) des Bruttoeinkommens</strong> betragen darf. Banken berechnen die Tragbarkeit meist mit einem <strong>kalkulatorischen Zinssatz von 5%</strong> — unabhängig vom aktuell tiefen Marktzins — plus 1% Unterhaltskosten und Amortisation.</p>
+      <p><strong>Beispiel bei CHF 800'000 Kaufpreis / CHF 640'000 Hypothek:</strong></p>
+      <ul>
+        <li>Kalkulatorische Jahreskosten bei 5%: CHF 32'000 Zinsen</li>
+        <li>Plus 1% Unterhaltskosten: CHF 8'000</li>
+        <li>Plus Amortisation 2. Hypothek: ~CHF 10'000/Jahr</li>
+        <li>Total: ~CHF 50'000/Jahr → Mindest-Bruttoeinkommen ~CHF 150'000</li>
+      </ul>
+      <p>Dieser Rechner zeigt die <strong>marktzinsbasierte</strong> Tragbarkeit. Für die Bankberechnung ist der kalkulatorische Satz massgebend.</p>
+    </div>
+  </details>
+  <details>
+    <summary>SARON oder Festhypothek — was ist besser?</summary>
+    <div>
+      <p>Beide haben ihre Berechtigung — die Wahl hängt von Ihrer Risikobereitschaft und Markteinschätzung ab:</p>
+      <p><strong>Festhypothek:</strong> Zinssatz für die gesamte Laufzeit fix. Planungssicherheit, kein Zinsrisiko. Wird teuer, wenn die Zinsen fallen. Ausstieg vor Laufzeitende kostet Vorfälligkeitsentschädigung. Empfehlung: 5–10 Jahre, wenn Sie Ruhe und Planbarkeit bevorzugen.</p>
+      <p><strong>SARON-Hypothek:</strong> Referenzzins ist der SARON (Swiss Average Rate Overnight, Nachfolger des LIBOR) plus eine Bank-Marge. Täglich angepasst, quartalsweise abgerechnet. Günstiger wenn Zinsen tief bleiben oder fallen. Risiko: bei Zinsanstieg steigen Ihre Kosten. Empfehlung: wenn Sie Liquiditätsreserven haben und Marktschwankungen tolerieren können.</p>
+      <p>Viele CH-Haushalte fahren eine <strong>Split-Strategie</strong>: Einen Teil als Festhypothek, einen Teil als SARON-Hypothek.</p>
+    </div>
+  </details>
+  <details>
+    <summary>Was bedeutet indirekte Amortisation über die Säule 3a?</summary>
+    <div>
+      <p>Bei der <strong>indirekten Amortisation</strong> zahlen Sie die Hypothek nicht direkt zurück. Stattdessen zahlen Sie regelmässig in ein <strong>Säule-3a-Konto</strong> (oder eine Lebensversicherung) ein. Bei Fälligkeit (Pensionierung oder Vertragsende) wird das angesparte Kapital für die Amortisation der Hypothek verwendet.</p>
+      <p><strong>Steuerlicher Vorteil:</strong> Die Hypothekschuld bleibt während der Laufzeit bestehen. Das bedeutet, die Schuldzinsen bleiben steuerlich abzugsfähig (Vermögenssteuer). Gleichzeitig reduzieren die 3a-Einzahlungen (max. CHF 7'258 p.a. für Angestellte, 2026) das steuerbare Einkommen.</p>
+      <p>Nachteil: Die Schuld sinkt nicht im Laufe der Zeit. Bei der Auflösung wird das 3a-Kapital zu einem reduzierten Satz als Kapitalleistung besteuert. Lassen Sie sich individuell beraten — indirekte Amortisation ist nicht für jeden Haushalt optimal.</p>
+    </div>
+  </details>
+
+  <p class="rel">Weitere Rechner: <a href="/nettolohn-rechner-schweiz.html">Nettolohn Rechner Schweiz</a> · <a href="/ahv-rechner-freelancer.html">AHV Rechner Freelancer</a> · <a href="/mwst-rechner.html">MWST Rechner</a> · <a href="/pensum-rechner-schweiz.html">Pensum Rechner</a></p>
+  <p class="rel">Verwandte Themen: <a href="/marktplatz.html">Marktplatz</a> · <a href="/stellenangebote.html">Stellenangebote</a> · <a href="/scheinselbststaendigkeit.html">Scheinselbstständigkeit CH</a></p>
+
+  <section style="margin-top:26px;background:var(--cream);border:1px solid #f3dca0;border-radius:14px;padding:18px;text-align:center">
+    <strong style="font-size:1.05rem">📬 Gratis: Finanz-Tipps &amp; News aus der Schweiz</strong>
+    <p style="margin:8px 0 14px;font-size:.9rem;color:var(--muted)">Einmal pro Woche — kein Spam.</p>
+    <a href="/stellenangebote.html" style="background:var(--amber);color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700">Jobs &amp; Deals ansehen</a>
+  </section>
+</main>
+
+<script>
+function fmt(n){
+  if(isNaN(n)||n===null)return'—';
+  return'CHF '+Math.round(n).toLocaleString('de-CH');
+}
+function fmtPct(n){
+  return n.toFixed(1)+'%';
+}
+
+function setKaufpreis(val){
+  document.getElementById('kaufpreis').value=val;
+  // Update Eigenkapital to 20%
+  document.getElementById('eigenkapital').value=Math.round(val*0.20);
+  // Update active button
+  document.querySelectorAll('.qbtn').forEach(function(b){
+    b.classList.remove('active');
+    if(parseInt(b.textContent.replace(/[^0-9]/g,''))===val) b.classList.add('active');
+  });
+}
+
+function berechnen(){
+  var kaufpreis=parseFloat(document.getElementById('kaufpreis').value)||0;
+  var ek=parseFloat(document.getElementById('eigenkapital').value)||0;
+  var zins1=parseFloat(document.getElementById('zins1').value)||0;
+  var zins2=parseFloat(document.getElementById('zins2').value)||0;
+  var amortJahre=parseInt(document.getElementById('amort').value)||15;
+
+  var hypTotal=kaufpreis-ek;
+  var hyp1max=kaufpreis*0.65;
+  var hyp1=Math.min(hypTotal,hyp1max);
+  var hyp2=Math.max(0,hypTotal-hyp1);
+  var belehnung=(hypTotal/kaufpreis)*100;
+  var ekPct=(ek/kaufpreis)*100;
+
+  var zins1mo=hyp1*(zins1/100)/12;
+  var zins2mo=hyp2*(zins2/100)/12;
+  var amortJaehr=hyp2>0?hyp2/amortJahre:0;
+  var amortMo=amortJaehr/12;
+  var totalMo=zins1mo+zins2mo+amortMo;
+  var totalYear=totalMo*12;
+  var minIncome=totalYear*3;
+
+  // Display
+  document.getElementById('r-kaufpreis').textContent=fmt(kaufpreis);
+  document.getElementById('r-ek').textContent=fmt(ek);
+  document.getElementById('r-ek-pct').textContent=fmtPct(ekPct);
+  document.getElementById('r-hyp-total').textContent=fmt(hypTotal);
+  document.getElementById('r-hyp1').textContent=fmt(hyp1);
+  document.getElementById('r-hyp2').textContent=hyp2>0?fmt(hyp2):'keine (Belehnungsgrad ≤65%)';
+  document.getElementById('r-belehnung').textContent=fmtPct(belehnung);
+  document.getElementById('r-zins1-mo').textContent=fmt(zins1mo)+' / Mt.';
+
+  var row2z=document.getElementById('row-zins2-mo');
+  var row2a=document.getElementById('row-amort-mo');
+  if(hyp2>0){
+    document.getElementById('r-zins2-mo').textContent=fmt(zins2mo)+' / Mt.';
+    document.getElementById('r-amort-mo').textContent=fmt(amortMo)+' / Mt.';
+    row2z.style.display='';
+    row2a.style.display='';
+  } else {
+    row2z.style.display='none';
+    row2a.style.display='none';
+  }
+
+  document.getElementById('r-total-mo').textContent=fmt(totalMo)+' / Mt.';
+  document.getElementById('r-total-year').textContent=fmt(totalYear)+' / Jahr';
+  document.getElementById('r-min-income').textContent=fmt(minIncome)+' / Jahr';
+
+  // Tragbarkeit
+  var tragBox=document.getElementById('trag-box-div');
+  var rowTrag=document.getElementById('row-trag');
+  var ekOk=ekPct>=20;
+  var belehnungOk=belehnung<=80;
+  var issues=[];
+  if(!ekOk) issues.push('Eigenkapital unter 20% ('+fmtPct(ekPct)+')');
+  if(!belehnungOk) issues.push('Belehnungsgrad über 80% ('+fmtPct(belehnung)+')');
+
+  if(issues.length>0){
+    document.getElementById('r-trag-val').textContent='⚠️ Prüfen';
+    rowTrag.className='result-line warn';
+    tragBox.innerHTML='<div class="trag-box trag-warn"><strong>⚠️ Hinweise</strong>'+issues.map(function(i){return'<div>• '+i+'</div>';}).join('')+'<div style="margin-top:6px;font-size:.85rem">Schweizer Banken verlangen min. 20% Eigenkapital und max. 80% Belehnungsgrad.</div></div>';
+  } else {
+    document.getElementById('r-trag-val').textContent='✅ Struktur OK';
+    rowTrag.className='result-line ok';
+    tragBox.innerHTML='<div class="trag-box trag-ok"><strong>✅ Grundstruktur entspricht CH-Standard</strong><div>Eigenkapital: '+fmtPct(ekPct)+' (min. 20%) · Belehnungsgrad: '+fmtPct(belehnung)+' (max. 80%)</div><div style="margin-top:4px;font-size:.85rem">Für die effektive Bankprüfung gilt der kalkulatorische Zins (oft 5%) — unabhängig vom Marktzins.</div></div>';
+  }
+
+  document.getElementById('result-box').classList.add('show');
+  document.getElementById('result-box').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// Allow Enter key to trigger calculation
+document.addEventListener('keydown',function(e){if(e.key==='Enter')berechnen();});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie viel Eigenkapital brauche ich für eine Hypothek in der Schweiz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mindestens 20% des Kaufpreises. Davon müssen mindestens 10% hartes Eigenkapital sein (Ersparnisse, Wertschriften, Säule 3a). Bis zu 10% dürfen aus der Pensionskasse stammen (BVG-Vorbezug). Bei einem Kaufpreis von CHF 800'000 sind das mindestens CHF 160'000 Eigenkapital."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist die Tragbarkeitsregel bei Schweizer Hypotheken?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die jährliche Gesamtbelastung (Zinsen + Amortisation + Nebenkosten) darf maximal 33% des Bruttoeinkommens betragen. Banken rechnen dabei mit einem kalkulatorischen Zinssatz von 5%, unabhängig vom aktuellen Marktzins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "SARON oder Festhypothek — was ist besser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Festhypothek bietet Planungssicherheit mit fixem Zinssatz für die gesamte Laufzeit. Die SARON-Hypothek ist an den tagesaktualisierten SARON-Referenzzins gebunden und profitiert von sinkenden Zinsen, trägt aber das Zinserhöhungsrisiko. Viele Haushalte wählen eine Split-Strategie aus beiden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was bedeutet indirekte Amortisation über die Säule 3a?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Statt direkter Schuldenrückzahlung zahlen Sie in ein Säule-3a-Konto ein. Bei Fälligkeit wird das angesparte Kapital für die Amortisation eingesetzt. Steuerlicher Vorteil: Die Hypothekschuld bleibt abzugsfähig, und 3a-Einzahlungen reduzieren das steuerbare Einkommen."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
