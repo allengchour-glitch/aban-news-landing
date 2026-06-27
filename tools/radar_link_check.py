@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -28,6 +29,11 @@ KNOWN_BOT_BLOCKERS = ("make.com", "azure.microsoft.com", "openai.com", "adobe.co
                       "midjourney.com", "lusha.com", "freepik.com", "phind.com",
                       "ada.cx", "manychat.com", "bigbuy.eu", "vidaxl.com", "gelato.com")
 
+# HTTP-Status, die „Server lebt, blockt nur den Bot" bedeuten — domänenunabhängig
+# als WAF/vermutlich-ok werten (sonst Falsch-Alarm bei jeder neuen WAF-Domain wie
+# z. B. GoDaddy). Echt tot ist DNS/Connection-Refused/404/410.
+WAF_STATUS = (401, 403, 429, 503)
+
 
 def radar_data_files():
     for p in sorted(ROOT.glob("*-radar/data/anbieter.json")):
@@ -35,11 +41,16 @@ def radar_data_files():
 
 
 def check(url: str):
+    last = ""
     for method in ("HEAD", "GET"):
         try:
             req = urllib.request.Request(url, method=method, headers={"User-Agent": UA})
             with urllib.request.urlopen(req, timeout=12) as r:
                 return r.status, ""
+        except urllib.error.HTTPError as ex:
+            # Server hat geantwortet (lebt) — Status-Code direkt zurückgeben,
+            # damit WAF-Codes (401/403/429/503) erkannt werden statt als "tot".
+            return ex.code, f"HTTP {ex.code} {ex.reason}"
         except Exception as ex:
             last = f"{type(ex).__name__}: {str(ex)[:60]}"
     return None, last
@@ -74,7 +85,7 @@ def main() -> int:
         ok = status is not None and status < 400
         if ok:
             continue
-        if any(d in u for d in KNOWN_BOT_BLOCKERS):
+        if any(d in u for d in KNOWN_BOT_BLOCKERS) or status in WAF_STATUS:
             botblock.append((r, n, u, status, err))
         else:
             broken.append((r, n, u, status, err))
