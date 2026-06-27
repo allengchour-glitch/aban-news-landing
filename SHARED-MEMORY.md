@@ -54,6 +54,23 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-27 (abannews/Tool-Session) — Monetarisierungs-Lücken geschlossen + GitLab aktiv (4 PRs auf `main`):**
+- **money_gap_audit (#1315):** neues read-only Tool `tools/money_gap_audit.py` — findet Kaufabsicht-Seiten
+  OHNE Geld-Pfad (Affiliate/Produkt/Founding/Stripe). Kalibriert gg. Falsch-Positive. Fand 12 Lücken.
+- **Founding-Nudge auf 12 Seiten (#1316):** per `add_tool_premium_nudge.py` den Founding-Block (€69, echtes
+  Produkt) auf die 12 funnel-losen Vergleichs-/Kaufabsicht-Seiten gesetzt. money_gap_audit danach: **0 Lücken**.
+- **Vergleichs-Querverweise (#1318):** neues `tools/add_compare_crosslinks.py` — die isolierten Vergleichsseiten
+  (Broker/Geschäftskonto/Buchhaltung/KI-Tools) intern verknüpft (`data-aban-relcompare`, idempotent). SEO + Funnel.
+  ⚠️ **Cluster bleibt gesättigt** — KEINE neuen Vergleichsseiten gebaut, nur bestehende verlinkt (Doorway-Regel beachtet).
+- **Orphan-Fix + Memory-Sync (dieser PR):** `angebot-vs-kostenvoranschlag` hatte 0 interne Inbound-Links →
+  Querverweis von `angebot-schreiben` ergänzt. + dieser Live-Stand-Eintrag.
+- **🦊 GitLab-CI aktiv (User 2026-06-27):** User hat **GitLab.com** als Gratis-CI-Ersatz für die gesperrten GitHub
+  Actions eingerichtet (Repo-Import). Setup-Doku `docs/GITLAB-SETUP.md`, Pipeline `.gitlab-ci.yml`. Relevante Jobs:
+  `brain-improve` (Website-Selbstverbesserung → Branch `brain/auto`, braucht `GH_PUSH_TOKEN`), `pinterest-publish`,
+  `aban-upload`. **Automation künftig über GitLab routen, nicht über die tote GitHub-Action.** Gratis-Limit ~400 CI-Min/Monat → sparsam.
+- **ℹ️ GitHub-MCP-API hat eigenes Stunden-Rate-Limit** (getrennt von der Actions-Sperre): PRs ggf. von Hand
+  „Ready"+mergen oder kurz warten. Git-Push/Pull läuft normal.
+
 **2026-06-16 (abannews/Tool-Session) — QA-Tools geeicht statt Symptome verstecken (3 PRs auf `main`):**
 - **Preise vereinheitlicht (#1017):** Site war widersprüchlich (€9/€89 vs €19/€190 vs €29 vs €149). Kanon = realer Stand
   **aban Pro €19/Monat · €190/Jahr · Founding €69** (Flaggschiff `ki-studio.html` hat die echten Bezahllinks). 20 Stellen in 9 Seiten

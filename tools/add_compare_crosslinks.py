@@ -44,6 +44,9 @@ RELATED = {
                            ("ki-tools-fuer-selbststaendige", "KI-Tools für Selbstständige")],
     "angebot-vs-kostenvoranschlag": [("angebot-schreiben", "Angebot schreiben"),
                                      ("rechnung-generator", "Rechnung erstellen")],
+    # gibt der sonst verwaisten Seite einen internen Inbound-Link (Orphan-Fix)
+    "angebot-schreiben": [("angebot-vs-kostenvoranschlag", "Angebot vs. Kostenvoranschlag — der Unterschied"),
+                          ("rechnung-generator", "Rechnung erstellen")],
     "selbststaendig-krankenversicherung": [("selbststaendig-ratgeber", "Ratgeber Selbstständigkeit"),
                                            ("steuern-sparen-selbststaendige", "Steuern sparen")],
 }
