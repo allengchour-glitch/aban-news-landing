@@ -47,6 +47,7 @@ PAGES = [
     "selbststaendig-krankenversicherung.html",
     "marktplatz.html",
     "stellenangebote.html",
+    "hypothek-tragbarkeit.html",
 ]
 
 NUDGE_DE = (
