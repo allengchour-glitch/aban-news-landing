@@ -109,7 +109,12 @@ function pickQuery(theme) {
   return theme.queries[i];
 }
 const MAXRES = MODE === 'hardcore' ? '25' : '12';
-const THEMES_THIS_RUN = MODE === 'hardcore' ? [THEMES[slot % THEMES.length]] : THEMES;
+// Projekt-Filter: YT_PROJECT=luxestyle | abannews | both (Default both).
+const PROJECT = (process.env.YT_PROJECT || 'both').toLowerCase();
+const ACTIVE_THEMES = PROJECT === 'both' ? THEMES : THEMES.filter(t => t.project === PROJECT);
+const THEMES_POOL = ACTIVE_THEMES.length ? ACTIVE_THEMES : THEMES;
+const THEMES_THIS_RUN = MODE === 'hardcore' ? [THEMES_POOL[slot % THEMES_POOL.length]] : THEMES_POOL;
+if (PROJECT !== 'both') console.log(`Projekt-Filter: ${PROJECT} → ${THEMES_POOL.length} Themen`);
 
 async function learnTheme(t) {
   const q = pickQuery(t);
