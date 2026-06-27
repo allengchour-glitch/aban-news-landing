@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Würfel-Roller — online würfeln (W6, W20 & mehr) · aban news</title>
+<meta name="description" content="Kostenloser Würfel-Roller: online würfeln mit W4, W6, W8, W10, W12, W20 oder W100 — mehrere Würfel auf einmal, mit Modifikator und Summe. Fairer Krypto-Zufall. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/wuerfel-roller.html">
+<meta property="og:title" content="Würfel-Roller — online würfeln (W6, W20 & mehr)">
+<meta property="og:description" content="Online würfeln: W4–W100, mehrere Würfel, Modifikator & Summe. Fairer Zufall. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/wuerfel-roller.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Würfel-Roller",
+"url":"https://abannews.com/wuerfel-roller.html","applicationCategory":"GameApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Online würfeln mit W4, W6, W8, W10, W12, W20 oder W100, mehrere Würfel gleichzeitig, mit Modifikator und Summe. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Welche Würfel gibt es?","acceptedAnswer":{"@type":"Answer","text":"Die gängigen Spielwürfel W4, W6, W8, W10, W12, W20 und W100. „W“ steht für die Anzahl der Seiten – ein W20 zeigt also Werte von 1 bis 20. Du kannst auch mehrere Würfel gleichzeitig werfen und einen Modifikator addieren, etwa 2W6 + 3."}},
+{"@type":"Question","name":"Ist das Ergebnis wirklich zufällig?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der Roller nutzt die kryptografische Zufallsquelle deines Browsers (crypto.getRandomValues), damit jede Augenzahl gleich wahrscheinlich ist – fairer als so mancher echte Würfel."}},
+{"@type":"Question","name":"Werden meine Würfe gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal in deinem Browser. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.seg button{font-size:.86rem;padding:8px 13px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:700}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.ctrl{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px}
+.ctrl .f{flex:1 1 100px}
+label{font-size:.78rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:4px}
+input{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.dice{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:56px;align-items:center;margin:8px 0}
+.die{min-width:48px;height:48px;padding:0 8px;border-radius:11px;background:var(--card);border:2px solid var(--amber-dk);color:var(--amber-dk);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem}
+.die.max{background:var(--amber-dk);color:#fff}
+.sum{text-align:center;margin-top:8px}
+.sum .big{font-size:clamp(28px,7vw,40px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.sum .det{font-size:.84rem;color:var(--ink2);font-family:ui-monospace,Menlo,Consolas,monospace;margin-top:4px;word-break:break-word}
+.bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Würfel</span>-Roller</h1>
+    <p>Online würfeln — W4, W6, W8, W10, W12, W20 oder W100, mehrere auf einmal, mit Modifikator und Summe. Fairer Krypto-Zufall, ideal für Brett- und Rollenspiele. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Ersatz für echte Würfel: wähl die Würfelart, die Anzahl und optional einen Modifikator (z. B. 2W6 + 3). Jede Augenzahl ist gleich wahrscheinlich. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="seg" id="type">
+      <button data-d="4">W4</button><button data-d="6" class="on">W6</button><button data-d="8">W8</button>
+      <button data-d="10">W10</button><button data-d="12">W12</button><button data-d="20">W20</button><button data-d="100">W100</button>
+    </div>
+    <div class="ctrl">
+      <div class="f"><label for="cnt">Anzahl Würfel</label><input id="cnt" type="number" value="2" min="1" max="50"></div>
+      <div class="f"><label for="mod">Modifikator (+/−)</label><input id="mod" type="number" value="0"></div>
+    </div>
+    <div class="dice" id="dice"></div>
+    <div class="sum"><div class="big" id="sum">—</div><div class="det" id="det"></div></div>
+    <div class="bar"><button type="button" class="btn" id="roll">🎲 Würfeln</button>
+      <button type="button" class="btn ghost" id="copy">📋 Kopieren</button></div>
+    <p class="note">Höchstwerte sind hervorgehoben. Fairer Zufall via crypto.getRandomValues. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Zufall &amp; Spiel.</p>
+    <p><a class="btn" href="/zufalls-generator.html">Zufalls-Generator</a>
+      <a class="btn ghost" href="/lottozahlen-generator.html">Lottozahlen</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zufalls-generator.html">Zufalls-Generator</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var sides=6;
+  function randInt(max){var arr=new Uint32Array(1),limit=Math.floor(4294967296/max)*max,x;
+    do{crypto.getRandomValues(arr);x=arr[0];}while(x>=limit);return x%max;}
+  var lastText="";
+  function roll(){
+    var cnt=parseInt(document.getElementById("cnt").value,10),mod=parseInt(document.getElementById("mod").value,10);
+    if(isNaN(cnt)||cnt<1)cnt=1;if(cnt>50)cnt=50;if(isNaN(mod))mod=0;
+    var dice=document.getElementById("dice");dice.innerHTML="";
+    var rolls=[],total=0;
+    for(var i=0;i<cnt;i++){var v=randInt(sides)+1;rolls.push(v);total+=v;
+      var d=document.createElement("div");d.className="die"+(v===sides?" max":"");d.textContent=v;dice.appendChild(d);}
+    var sum=total+mod;
+    document.getElementById("sum").textContent=sum.toLocaleString("de-DE");
+    var modTxt=mod!==0?(mod>0?" + "+mod:" − "+Math.abs(mod)):"";
+    document.getElementById("det").textContent=cnt+"W"+sides+modTxt+" = ["+rolls.join(", ")+"]"+modTxt+" = "+sum;
+    lastText=cnt+"W"+sides+modTxt+" = "+sum+"  ("+rolls.join(", ")+")";
+  }
+  document.querySelectorAll("#type button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#type button").forEach(function(x){x.classList.remove("on");});
+    this.classList.add("on");sides=parseInt(this.getAttribute("data-d"),10);roll();});});
+  document.getElementById("roll").addEventListener("click",roll);
+  ["cnt","mod"].forEach(function(id){document.getElementById(id).addEventListener("input",roll);});
+  document.getElementById("copy").addEventListener("click",function(){var b=this;
+    if(lastText&&navigator.clipboard)navigator.clipboard.writeText(lastText).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1400);});});
+  roll();
+})();
+</script>
+</body>
+</html>
