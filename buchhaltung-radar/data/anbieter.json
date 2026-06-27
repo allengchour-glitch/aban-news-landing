@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-06-02",
+  "last_updated": "2026-06-27",
   "source": "aban news — kuratierte Liste echter KI-Buchhaltungs- & Rechnungs-Tools für Selbstständige & KMU (DACH-Fokus). Viele mit KI-Funktionen wie OCR-Belegscan, automatischer Belegerkennung und Kategorisierung. Preise/Bewertungen bewusst nicht erfunden: '[Redaktion: prüfen]' oder null.",
   "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
   "rating_scale": "1-10 (10 = uneingeschränkt empfehlenswert). null = noch nicht redaktionell geprüft.",
@@ -56,7 +56,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Testphase üblich. Preise beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter (Haufe-Lexware) mit Hosting in Deutschland, sehr verbreitet bei Selbstständigen und kleinen Firmen. Stark bei Rechnungen, Belegerfassung und DATEV-Export für die Zusammenarbeit mit dem Steuerbüro. GoBD-Konformität hängt von sauberer Nutzung ab."
+      "aban_note": "deutscher Anbieter (Haufe-Lexware) mit Hosting in Deutschland, sehr verbreitet bei Selbstständigen und kleinen Firmen. Stark bei Rechnungen, Belegerfassung und DATEV-Export für die Zusammenarbeit mit dem Steuerbüro. GoBD-Konformität hängt von sauberer Nutzung ab."
     },
     {
       "id": "sevdesk",
@@ -93,7 +93,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Monatstarife je nach Funktionsumfang, Testphase üblich.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Offenburger Anbieter mit Hosting in Deutschland, beliebt bei Freelancern und kleinen Betrieben. OCR-Belegscan per App, DATEV-Schnittstelle und ELSTER-Anbindung. Funktionsumfang je nach Tarif vor dem Abschluss prüfen."
+      "aban_note": "Offenburger Anbieter mit Hosting in Deutschland, beliebt bei Freelancern und kleinen Betrieben. OCR-Belegscan per App, DATEV-Schnittstelle und ELSTER-Anbindung. Funktionsumfang je nach Tarif vor dem Abschluss prüfen."
     },
     {
       "id": "datev-unternehmen-online",
@@ -127,7 +127,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Lizenz/Abrechnung meist über die Steuerkanzlei. Konditionen beim Steuerberater oder DATEV erfragen.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Standard für die digitale Belegübergabe an die Steuerkanzlei im DACH-Raum, Hosting bei DATEV in Deutschland. Sinnvoll, wenn dein Steuerberater mit DATEV arbeitet; eigenständige Nutzung ohne Kanzlei weniger üblich."
+      "aban_note": "Standard für die digitale Belegübergabe an die Steuerkanzlei im DACH-Raum, Hosting bei DATEV in Deutschland. Sinnvoll, wenn dein Steuerberater mit DATEV arbeitet; eigenständige Nutzung ohne Kanzlei weniger üblich."
     },
     {
       "id": "fastbill",
@@ -164,7 +164,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Konditionen beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Frankfurter Anbieter mit Fokus auf Rechnungen und Beleg-Workflow für Selbstständige und kleine Teams. DATEV-Export und Banking-Anbindung vorhanden; Hosting/EU-Frage und genauer Leistungsumfang vor dem Start prüfen."
+      "aban_note": "Frankfurter Anbieter mit Fokus auf Rechnungen und Beleg-Workflow für Selbstständige und kleine Teams. DATEV-Export und Banking-Anbindung vorhanden; Hosting/EU-Frage und genauer Leistungsumfang vor dem Start prüfen."
     },
     {
       "id": "papierkram",
@@ -199,7 +199,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg für kleine Nutzung, darüber gestaffelte Tarife.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter mit Hosting in Deutschland, kombiniert Buchhaltung mit Projekt- und Zeiterfassung. Gut für Freelancer mit EÜR; Funktionsumfang der Gratis-Stufe und DATEV-Bedarf vorher abklären."
+      "aban_note": "deutscher Anbieter mit Hosting in Deutschland, kombiniert Buchhaltung mit Projekt- und Zeiterfassung. Gut für Freelancer mit EÜR; Funktionsumfang der Gratis-Stufe und DATEV-Bedarf vorher abklären."
     },
     {
       "id": "buchhaltungsbutler",
@@ -234,7 +234,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife nach Belegmenge. Preise beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter mit Hosting in Deutschland, Schwerpunkt auf automatischer Belegerkennung und Banking-Abgleich. Richtet sich an Unternehmen mit höherem Belegvolumen; DATEV-Export für die Kanzlei vorhanden."
+      "aban_note": "deutscher Anbieter mit Hosting in Deutschland, Schwerpunkt auf automatischer Belegerkennung und Banking-Abgleich. Richtet sich an Unternehmen mit höherem Belegvolumen; DATEV-Export für die Kanzlei vorhanden."
     },
     {
       "id": "easybill",
@@ -269,7 +269,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife nach Dokumentenzahl.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter mit Hosting in Deutschland, stark bei der Rechnungsstellung für Online-Händler (Amazon, eBay, Shopify). DATEV-Export vorhanden; weniger eine Voll-Buchhaltung als ein spezialisiertes Rechnungstool."
+      "aban_note": "deutscher Anbieter mit Hosting in Deutschland, stark bei der Rechnungsstellung für Online-Händler (Amazon, eBay, Shopify). DATEV-Export vorhanden; weniger eine Voll-Buchhaltung als ein spezialisiertes Rechnungstool."
     },
     {
       "id": "billomat",
@@ -303,7 +303,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Konditionen beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Nürnberger Anbieter für Rechnungen und einfache Buchhaltung, gerichtet auf Selbstständige und kleine Firmen. DATEV-Export und Banking-Anbindung vorhanden; aktuellen Funktionsumfang vor dem Wechsel prüfen."
+      "aban_note": "Nürnberger Anbieter für Rechnungen und einfache Buchhaltung, gerichtet auf Selbstständige und kleine Firmen. DATEV-Export und Banking-Anbindung vorhanden; aktuellen Funktionsumfang vor dem Wechsel prüfen."
     },
     {
       "id": "getmyinvoices",
@@ -337,7 +337,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife nach Belegmenge und Quellen.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter, spezialisiert auf das automatische Einsammeln von Rechnungen aus Portalen und Postfächern. Ergänzt eine Buchhaltungs-Software (lexoffice, sevDesk, DATEV) eher, als sie zu ersetzen."
+      "aban_note": "deutscher Anbieter, spezialisiert auf das automatische Einsammeln von Rechnungen aus Portalen und Postfächern. Ergänzt eine Buchhaltungs-Software (lexoffice, sevDesk, DATEV) eher, als sie zu ersetzen."
     },
     {
       "id": "candis",
@@ -371,7 +371,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Belegvolumen, oft auf Anfrage.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Berliner Anbieter für automatisierte Rechnungsfreigabe und Kreditorenbuchhaltung im Mittelstand. Spielt seine Stärke bei vielen Eingangsrechnungen und Freigabe-Workflows aus; DATEV-Export vorhanden."
+      "aban_note": "Berliner Anbieter für automatisierte Rechnungsfreigabe und Kreditorenbuchhaltung im Mittelstand. Spielt seine Stärke bei vielen Eingangsrechnungen und Freigabe-Workflows aus; DATEV-Export vorhanden."
     },
     {
       "id": "kontist",
@@ -405,7 +405,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Kontomodelle mit/ohne Buchhaltung, teils mit Steuerservice. Preise beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutsches Angebot rund um Geschäftskonto plus Buchhaltung für Selbstständige, mit automatischer Steuerrücklage. Praktisch als Kombi aus Konto und Buchhaltung; Leistungsumfang und Steuerservice-Optionen genau prüfen."
+      "aban_note": "deutsches Angebot rund um Geschäftskonto plus Buchhaltung für Selbstständige, mit automatischer Steuerrücklage. Praktisch als Kombi aus Konto und Buchhaltung; Leistungsumfang und Steuerservice-Optionen genau prüfen."
     },
     {
       "id": "accountable",
@@ -440,7 +440,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber Abo. Konditionen beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — App-zentriertes Tool für Solo-Selbstständige, das Buchhaltung und Steuererklärung (UStVA, EÜR) zusammenbringt. Gut für Einsteiger ohne Steuerberater; bei komplexerer Buchhaltung an Grenzen prüfen."
+      "aban_note": "App-zentriertes Tool für Solo-Selbstständige, das Buchhaltung und Steuererklärung (UStVA, EÜR) zusammenbringt. Gut für Einsteiger ohne Steuerberater; bei komplexerer Buchhaltung an Grenzen prüfen."
     },
     {
       "id": "norman",
@@ -474,7 +474,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber Abo. Preise beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — junges Tool für Freelancer und kleine Firmen, das Buchhaltung, Rechnungen und Steuer-Voranmeldungen bündelt. Eher für einfache Fälle; bei Wachstum DATEV-Anbindung und Funktionsumfang prüfen."
+      "aban_note": "junges Tool für Freelancer und kleine Firmen, das Buchhaltung, Rechnungen und Steuer-Voranmeldungen bündelt. Eher für einfache Fälle; bei Wachstum DATEV-Anbindung und Funktionsumfang prüfen."
     },
     {
       "id": "wiso-mein-buero",
@@ -511,7 +511,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Web- und Desktop-Varianten mit gestaffelten Tarifen.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — deutscher Anbieter (Buhl) mit lange etablierter Bürosoftware für kleine und mittlere Betriebe, als Web- und Desktop-Version. Breiter Funktionsumfang inkl. Auftragsverwaltung; passenden Tarif und Web/Desktop-Frage klären."
+      "aban_note": "deutscher Anbieter (Buhl) mit lange etablierter Bürosoftware für kleine und mittlere Betriebe, als Web- und Desktop-Version. Breiter Funktionsumfang inkl. Auftragsverwaltung; passenden Tarif und Web/Desktop-Frage klären."
     },
     {
       "id": "tidely",
@@ -543,7 +543,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Funktionsumfang, oft auf Anfrage.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Münchner Anbieter für Liquiditätsplanung und Cashflow-Prognosen, kein Ersatz für eine Buchhaltung, sondern eine Ergänzung. Sinnvoll, wenn du deine Zahlungsfähigkeit aktiv planen willst; an Buchhaltung/Banking angebunden."
+      "aban_note": "Münchner Anbieter für Liquiditätsplanung und Cashflow-Prognosen, kein Ersatz für eine Buchhaltung, sondern eine Ergänzung. Sinnvoll, wenn du deine Zahlungsfähigkeit aktiv planen willst; an Buchhaltung/Banking angebunden."
     },
     {
       "id": "agicap",
@@ -576,7 +576,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Tarife meist auf Anfrage je nach Unternehmensgröße.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — französischer Anbieter (mit deutscher Oberfläche) für Liquiditäts- und Cashflow-Management im Mittelstand. Ergänzt die Buchhaltung um Planung; eigenständige Buchführung ersetzt es nicht."
+      "aban_note": "französischer Anbieter (mit deutscher Oberfläche) für Liquiditäts- und Cashflow-Management im Mittelstand. Ergänzt die Buchhaltung um Planung; eigenständige Buchführung ersetzt es nicht."
     },
     {
       "id": "pleo",
@@ -610,7 +610,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Nutzerzahl, teils mit Gratis-Einstieg.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — dänischer Anbieter für Firmenkreditkarten und Ausgabenmanagement mit Beleg-Foto und DATEV-Export. Löst das Problem von Mitarbeiter-Ausgaben und Belegen, ist aber keine vollständige Buchhaltung."
+      "aban_note": "dänischer Anbieter für Firmenkreditkarten und Ausgabenmanagement mit Beleg-Foto und DATEV-Export. Löst das Problem von Mitarbeiter-Ausgaben und Belegen, ist aber keine vollständige Buchhaltung."
     },
     {
       "id": "moss",
@@ -644,7 +644,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Tarife nach Funktionsumfang und Nutzerzahl.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Berliner Anbieter für Firmenkarten, Ausgaben- und Rechnungsmanagement mit DATEV-Anbindung. Stark bei Teams, die Ausgaben und Freigaben digital steuern wollen; ergänzt die Buchhaltung."
+      "aban_note": "Berliner Anbieter für Firmenkarten, Ausgaben- und Rechnungsmanagement mit DATEV-Anbindung. Stark bei Teams, die Ausgaben und Freigaben digital steuern wollen; ergänzt die Buchhaltung."
     },
     {
       "id": "xero",
@@ -679,7 +679,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Preise beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — international sehr verbreitete Buchhaltungs-Software (NZ/UK), stark bei Bankabgleich und Reporting. Auf den deutschen Markt (DATEV, ELSTER, UStVA, GoBD) aber nur eingeschränkt zugeschnitten — für DACH genau prüfen."
+      "aban_note": "international sehr verbreitete Buchhaltungs-Software (NZ/UK), stark bei Bankabgleich und Reporting. Auf den deutschen Markt (DATEV, ELSTER, UStVA, GoBD) aber nur eingeschränkt zugeschnitten — für DACH genau prüfen."
     },
     {
       "id": "quickbooks",
@@ -713,7 +713,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, regionale Verfügbarkeit prüfen.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — weltweit verbreitete Buchhaltung von Intuit. Für den deutschen Markt aber kaum zugeschnitten (kein nativer DATEV-/ELSTER-Fokus, Oberfläche englisch, US-Anbieter) — im DACH-Raum eher Sonderfall."
+      "aban_note": "weltweit verbreitete Buchhaltung von Intuit. Für den deutschen Markt aber kaum zugeschnitten (kein nativer DATEV-/ELSTER-Fokus, Oberfläche englisch, US-Anbieter) — im DACH-Raum eher Sonderfall."
     },
     {
       "id": "zoho-books",
@@ -745,11 +745,11 @@
         "Zoho-Suite"
       ],
       "deutsche_oberflaeche": true,
-      "eu_lager": null,
+      "eu_lager": true,
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, teils Gratis-Stufe.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Teil der Zoho-Suite mit deutscher Oberfläche und EU-Rechenzentrum-Option (vor Nutzung prüfen). Solide Buchhaltung, aber DATEV-/ELSTER-Integration und GoBD-Tauglichkeit für DACH genau gegenprüfen."
+      "aban_note": "Teil der Zoho-Suite mit deutscher Oberfläche und offizieller EU-Rechenzentrum-Region (Amsterdam/Dublin) — DSGVO-Hosting möglich (bei Anlage EU-DC wählen). Solide Buchhaltung, aber DATEV-/ELSTER-Integration und GoBD-Tauglichkeit für DACH genau prüfen."
     },
     {
       "id": "freshbooks",
@@ -782,7 +782,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, Preise beim Anbieter.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — kanadisches Tool, beliebt bei Freelancern für Rechnungen und Zeiterfassung. Oberfläche englisch, US-/CA-Hosting, kein DATEV-/ELSTER-Fokus — für den DACH-Raum nur eingeschränkt geeignet."
+      "aban_note": "kanadisches Tool, beliebt bei Freelancern für Rechnungen und Zeiterfassung. Oberfläche englisch, US-/CA-Hosting, kein DATEV-/ELSTER-Fokus — für den DACH-Raum nur eingeschränkt geeignet."
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2026-06-02",
+  "last_updated": "2026-06-27",
   "source": "aban news — kuratierte Liste echter KI-Voice- & Transkriptions-Tools (Meeting-Transkription, Untertitel, Text-to-Speech). Preise/Bewertungen bewusst nicht erfunden: '[Redaktion: prüfen]' oder null.",
   "license": "CC-BY-4.0 (Attribution: aban news, abannews.com)",
   "rating_scale": "1-10 (10 = uneingeschränkt empfehlenswert). null = noch nicht redaktionell geprüft.",
@@ -53,7 +53,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Selbstbedienung pro Stunde Audio plus optionaler manueller Service.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — niederländischer Anbieter mit starker deutscher Spracherkennung und EU-Datenverarbeitung. Mischung aus automatischer und menschlicher Transkription; gut für Untertitel und DSGVO-sensible Inhalte."
+      "aban_note": "niederländischer Anbieter mit starker deutscher Spracherkennung und EU-Datenverarbeitung. Mischung aus automatischer und menschlicher Transkription; gut für Untertitel und DSGVO-sensible Inhalte."
     },
     {
       "id": "happy-scribe",
@@ -87,7 +87,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Abrechnung pro Stunde oder Abo, automatisch günstiger als manuell.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — irischer Anbieter mit EU-Sitz, deutscher Oberfläche und vielen Sprachen. Stark bei Untertiteln und Medien-Workflows; automatische und menschliche Variante wählbar."
+      "aban_note": "irischer Anbieter mit EU-Sitz, deutscher Oberfläche und vielen Sprachen. Stark bei Untertiteln und Medien-Workflows; automatische und menschliche Variante wählbar."
     },
     {
       "id": "noota",
@@ -121,7 +121,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber abo- und minutenbasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — europäischer Meeting-Assistent (Bot zeichnet auf, fasst zusammen) mit deutscher Oberfläche und EU-Hosting-Option. Praktisch für Recruiting und Vertrieb; AVV und Einwilligung der Teilnehmenden trotzdem klären."
+      "aban_note": "europäischer Meeting-Assistent (Bot zeichnet auf, fasst zusammen) mit deutscher Oberfläche und EU-Hosting-Option. Praktisch für Recruiting und Vertrieb; AVV und Einwilligung der Teilnehmenden trotzdem klären."
     },
     {
       "id": "atrain",
@@ -154,7 +154,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Open Source, kostenlos nutzbar; läuft lokal auf dem eigenen Rechner.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — kostenlose, quelloffene Transkription der Uni Graz auf Whisper-Basis, läuft komplett lokal — kein Cloud-Upload, dadurch DSGVO-stark. Braucht eine gewisse Rechenleistung; nichts für schnelle Klick-Workflows."
+      "aban_note": "kostenlose, quelloffene Transkription der Uni Graz auf Whisper-Basis, läuft komplett lokal — kein Cloud-Upload, dadurch DSGVO-stark. Braucht eine gewisse Rechenleistung; nichts für schnelle Klick-Workflows."
     },
     {
       "id": "speechmatics",
@@ -186,7 +186,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — nutzungsbasierte API-Preise, On-Premise auf Anfrage.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — britische Spracherkennungs-Engine mit guter Mehrsprachigkeit und On-Premise-Option für sensible Daten. Eher für Entwickler und Teams mit eigenem Workflow; keine fertige Klick-Oberfläche."
+      "aban_note": "britische Spracherkennungs-Engine mit guter Mehrsprachigkeit und On-Premise-Option für sensible Daten. Eher für Entwickler und Teams mit eigenem Workflow; keine fertige Klick-Oberfläche."
     },
     {
       "id": "krisp",
@@ -218,7 +218,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif für Geräuschunterdrückung, Transkription im Abo.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — bekannt für KI-Geräuschunterdrückung, transkribiert und fasst Meetings inzwischen ebenfalls zusammen. Oberfläche englisch; Hosting-/EU-Frage und AVV vor Geschäftseinsatz prüfen."
+      "aban_note": "bekannt für KI-Geräuschunterdrückung, transkribiert und fasst Meetings inzwischen ebenfalls zusammen. Oberfläche englisch; Hosting-/EU-Frage und AVV vor Geschäftseinsatz prüfen."
     },
     {
       "id": "otter-ai",
@@ -250,7 +250,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif mit Minutenlimit, darüber abobasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — sehr verbreiteter Meeting-Assistent mit Live-Transkription und Zusammenfassungen, aber Fokus auf Englisch. Für deutsche Meetings nur eingeschränkt; US-Hosting — AVV und Drittlandtransfer prüfen."
+      "aban_note": "sehr verbreiteter Meeting-Assistent mit Live-Transkription und Zusammenfassungen, aber Fokus auf Englisch. Für deutsche Meetings nur eingeschränkt; US-Hosting — AVV und Drittlandtransfer prüfen."
     },
     {
       "id": "fireflies-ai",
@@ -283,7 +283,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif, darüber nutzer-/abobasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Meeting-Bot mit guter CRM-Anbindung und Suchfunktion über Gesprächsinhalte; unterstützt mehrere Sprachen inkl. Deutsch. US-Anbieter, Oberfläche englisch — AVV und Hosting prüfen."
+      "aban_note": "Meeting-Bot mit guter CRM-Anbindung und Suchfunktion über Gesprächsinhalte; unterstützt mehrere Sprachen inkl. Deutsch. US-Anbieter, Oberfläche englisch — AVV und Hosting prüfen."
     },
     {
       "id": "tldv",
@@ -312,11 +312,11 @@
         "CRM"
       ],
       "deutsche_oberflaeche": true,
-      "eu_lager": null,
+      "eu_lager": true,
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — großzügiger Gratis-Tarif, darüber abobasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Meeting-Recorder mit deutscher Oberfläche (Anbieter in Deutschland ansässig) und großzügigem Gratis-Tarif. Hosting-/EU-Detailfrage und AVV vor dem produktiven Einsatz beim Anbieter prüfen."
+      "aban_note": "Meeting-Recorder mit deutscher Oberfläche (Anbieter in Deutschland ansässig) und großzügigem Gratis-Tarif. Hosting-/EU-Detailfrage und AVV vor dem produktiven Einsatz beim Anbieter prüfen."
     },
     {
       "id": "fathom",
@@ -348,7 +348,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — funktionsreicher Gratis-Tarif, Team-Funktionen im Abo.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Meeting-Assistent mit überraschend starkem Gratis-Tarif, schnelle Zusammenfassungen. Fokus Englisch, US-Hosting — für deutsche Meetings vorher testen, AVV und Drittlandtransfer prüfen."
+      "aban_note": "Meeting-Assistent mit überraschend starkem Gratis-Tarif, schnelle Zusammenfassungen. Fokus Englisch, US-Hosting — für deutsche Meetings vorher testen, AVV und Drittlandtransfer prüfen."
     },
     {
       "id": "sembly",
@@ -381,7 +381,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif, darüber abobasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Meeting-Assistent mit Fokus auf Action-Items und mehrsprachiger Transkription inkl. Deutsch. Oberfläche überwiegend englisch; Hosting-Region und AVV beim Anbieter prüfen."
+      "aban_note": "Meeting-Assistent mit Fokus auf Action-Items und mehrsprachiger Transkription inkl. Deutsch. Oberfläche überwiegend englisch; Hosting-Region und AVV beim Anbieter prüfen."
     },
     {
       "id": "supernormal",
@@ -414,7 +414,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber abobasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Meeting-Notiz-Tool mit Vorlagen und automatischen Protokollen, unterstützt mehrere Sprachen. Oberfläche englisch; Hosting-/EU-Frage und AVV vor dem Einsatz prüfen."
+      "aban_note": "Meeting-Notiz-Tool mit Vorlagen und automatischen Protokollen, unterstützt mehrere Sprachen. Oberfläche englisch; Hosting-/EU-Frage und AVV vor dem Einsatz prüfen."
     },
     {
       "id": "descript",
@@ -446,7 +446,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Tarif mit Limit, darüber abobasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Audio-/Video-Editor, bei dem du über das Transkript schneidest — stark für Podcasts und Videos inkl. Untertiteln. Deutsche Transkription schwächer als englische; US-Hosting, Oberfläche englisch."
+      "aban_note": "Audio-/Video-Editor, bei dem du über das Transkript schneidest — stark für Podcasts und Videos inkl. Untertiteln. Deutsche Transkription schwächer als englische; US-Hosting, Oberfläche englisch."
     },
     {
       "id": "trint",
@@ -478,7 +478,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — abobasiert, eher im Profi-/Redaktionssegment.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — britischer Anbieter mit Fokus auf Redaktionen und Teamarbeit, viele Sprachen inkl. Deutsch. Oberfläche englisch; Hosting-Region und AVV vor dem Einsatz beim Anbieter prüfen."
+      "aban_note": "britischer Anbieter mit Fokus auf Redaktionen und Teamarbeit, viele Sprachen inkl. Deutsch. Oberfläche englisch; Hosting-Region und AVV vor dem Einsatz beim Anbieter prüfen."
     },
     {
       "id": "sonix",
@@ -510,7 +510,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Abrechnung pro Stunde oder Abo.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — solide automatische Transkription mit vielen Sprachen und Untertitel-Export. Oberfläche englisch, US-Hosting — bei deutschen Audio-Inhalten testen, AVV und Drittlandtransfer prüfen."
+      "aban_note": "solide automatische Transkription mit vielen Sprachen und Untertitel-Export. Oberfläche englisch, US-Hosting — bei deutschen Audio-Inhalten testen, AVV und Drittlandtransfer prüfen."
     },
     {
       "id": "rev",
@@ -541,7 +541,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — automatisch pro Minute, menschliche Transkription teurer.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — US-Anbieter, bekannt für sehr genaue menschliche Transkription auf Englisch. Für deutsche Inhalte weniger geeignet; US-Hosting, Oberfläche englisch — AVV prüfen."
+      "aban_note": "US-Anbieter, bekannt für sehr genaue menschliche Transkription auf Englisch. Für deutsche Inhalte weniger geeignet; US-Hosting, Oberfläche englisch — AVV prüfen."
     },
     {
       "id": "deepgram",
@@ -573,7 +573,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — nutzungsbasierte API-Preise, Gratis-Startguthaben.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — schnelle Spracherkennungs-API für Entwickler, mit Echtzeit, Diarisierung und eigener Text-to-Speech-Schiene; unterstützt Deutsch. Kein fertiges Endprodukt, US-Anbieter — AVV und Region prüfen."
+      "aban_note": "schnelle Spracherkennungs-API für Entwickler, mit Echtzeit, Diarisierung und eigener Text-to-Speech-Schiene; unterstützt Deutsch. Kein fertiges Endprodukt, US-Anbieter — AVV und Region prüfen."
     },
     {
       "id": "assemblyai",
@@ -605,7 +605,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — nutzungsbasierte API-Preise, Gratis-Startguthaben.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Entwickler-API für Transkription plus Audio-Auswertung (Themen, Zusammenfassungen), unterstützt mehrere Sprachen inkl. Deutsch. Für eigene Anwendungen gedacht; US-Anbieter — Region und AVV prüfen."
+      "aban_note": "Entwickler-API für Transkription plus Audio-Auswertung (Themen, Zusammenfassungen), unterstützt mehrere Sprachen inkl. Deutsch. Für eigene Anwendungen gedacht; US-Anbieter — Region und AVV prüfen."
     },
     {
       "id": "openai-whisper",
@@ -637,7 +637,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Modell quelloffen und lokal kostenlos, gehostete API nutzungsbasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — das Spracherkennungs-Modell hinter vielen Tools; gute deutsche Erkennung. Lokal quelloffen und kostenlos (DSGVO-stark, aber technisch) oder als OpenAI-API (US-Anbieter) — je nach Weg AVV/Region prüfen."
+      "aban_note": "das Spracherkennungs-Modell hinter vielen Tools; gute deutsche Erkennung. Lokal quelloffen und kostenlos (DSGVO-stark, aber technisch) oder als OpenAI-API (US-Anbieter) — je nach Weg AVV/Region prüfen."
     },
     {
       "id": "elevenlabs",
@@ -670,7 +670,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Kontingent pro Monat, darüber zeichenbasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — führend bei natürlich klingender Text-to-Speech und Stimmenklonen, auch mit guten deutschen Stimmen. Beim Klonen fremder Stimmen Rechte/Einwilligung beachten; US-Anbieter, Oberfläche englisch."
+      "aban_note": "führend bei natürlich klingender Text-to-Speech und Stimmenklonen, auch mit guten deutschen Stimmen. Beim Klonen fremder Stimmen Rechte/Einwilligung beachten; US-Anbieter, Oberfläche englisch."
     },
     {
       "id": "murf",
@@ -702,7 +702,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Gratis-Einstieg, darüber abobasiert.",
       "worth_it_score": null,
-      "aban_note": "[Redaktion: prüfen] — Voiceover-Studio mit vielen Stimmen für Videos und E-Learning, inkl. deutscher Stimmen. Oberfläche englisch, US-Anbieter — vor kommerziellem Einsatz Lizenz und AVV prüfen."
+      "aban_note": "Voiceover-Studio mit vielen Stimmen für Videos und E-Learning, inkl. deutscher Stimmen. Oberfläche englisch, US-Anbieter — vor kommerziellem Einsatz Lizenz und AVV prüfen."
     }
   ]
 }
