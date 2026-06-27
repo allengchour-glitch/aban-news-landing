@@ -62,3 +62,7 @@
 - **🎧 Audio = 3542 frische Kandidaten** (Kopfhörer/Lautsprecher) — VIEL Stock, klare Elektronik-Gadgets. ABER Importer scannt extrem langsam (BigBuy-API throttelt/retryt in dieser Cloud-Session stark; 0 Kandidaten-Zeilen nach 6 Min). Läuft im Hintergrund, nächster Tick erntet.
 - **Beamer + Drohnen = Decke/Fehlmatch** (drohnen→Kinderschuhe). 
 - **Meta-Lehre:** Der BigBuy-Importer ist hier langsam+unzuverlässig (Rate-Limit, Hänger, Anker-Fehlmatch). Elektronik-Stock IST da (audio/phone/ladegeraet), aber Ernte ist zäh → Loop sollte Import im Hintergrund laufen lassen UND parallel zuverlässige Fixes/Politur machen, nicht aufs Import-Ende warten.
+
+## Runde 10-Ernte — 2026-06-27 (ELEKTRONIK funktioniert!)
+- **+4 Audio sauber** (kein Fehlmatch!): Kopfhörer m. Mikro CHF30.90/115.90, Bluetooth-Lautsprecher CHF16.90, Kopfhörer schwarz CHF30.90. Alle ACTIVE/SEO✓/8 Kanäle/audio-sub+Geschenk-Colls.
+- **🎯 BESTÄTIGT: `audio` ist eine ergiebige & saubere Whitelist-Kategorie** (3542 Kandidaten, klarer Anker, echte Elektronik-Treffer). Ladegeräte (2409 Kandidaten) läuft → nächster Tick erntet. Elektronik = die richtige Antwort auf „coole Produkte".
