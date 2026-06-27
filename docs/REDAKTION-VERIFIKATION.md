@@ -20,6 +20,15 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   - AIVA (Luxemburg) bestätigt; Stable Audio → Stability AI (UK), nicht EU
   - Quellen: jeweilige Firmen-/Profilseiten (siehe Commit-Recherche).
 
+- **webbaukasten-radar (15 Tools):** Firmensitze verifiziert, EU-Flags gesetzt (0 „unbekannt",
+  vorher 4), `aban_note`-Marker gehoben. Korrekturen u. a.:
+  - Webnode AG → Zürich/Schweiz → nicht EU (DACH/DSGVO-nah)
+  - Wix → Tel Aviv/Israel · 10Web (TenWeb) → Yerevan/Armenien → beide nicht EU
+  - Framer B.V. → Amsterdam/NL ✓ · Softr Platforms GmbH → Berlin/DE ✓ (beide EU)
+  - bestätigt EU: Jimdo (Hamburg), IONOS (Montabaur), STRATO (Berlin), one.com (DK), Hostinger (LT);
+    bestätigt Nicht-EU (US): Squarespace, Webflow, Durable, Carrd, GoDaddy.
+  - Quellen: Northdata/Creditsafe/Dun&Bradstreet, EIF-Armenia/TechCrunch + Firmen-Impressen.
+
 ## Offen (gleicher Ansatz, nächste Radars)
 voice-, video-, chatbot-, buchhaltung-, newsletter-, automatisierung-, dropshipping-radar
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
