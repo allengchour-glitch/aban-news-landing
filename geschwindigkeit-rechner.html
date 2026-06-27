@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geschwindigkeits-Rechner — Geschwindigkeit, Strecke, Zeit · aban news</title>
+<meta name="description" content="Kostenloser Geschwindigkeits-Rechner: aus zwei Werten den dritten berechnen — Geschwindigkeit, Strecke oder Zeit. Mit km/h ↔ m/s und Durchschnittstempo. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/geschwindigkeit-rechner.html">
+<meta property="og:title" content="Geschwindigkeits-Rechner — Geschwindigkeit, Strecke, Zeit">
+<meta property="og:description" content="Geschwindigkeit, Strecke oder Zeit berechnen — mit km/h ↔ m/s. Lokal im Browser, ohne Login.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/geschwindigkeit-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Geschwindigkeits-Rechner",
+"url":"https://abannews.com/geschwindigkeit-rechner.html","applicationCategory":"EducationalApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet aus zwei der drei Größen Geschwindigkeit, Strecke und Zeit die dritte, mit km/h ↔ m/s. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie hängen Geschwindigkeit, Strecke und Zeit zusammen?","acceptedAnswer":{"@type":"Answer","text":"Es gilt: Geschwindigkeit = Strecke ÷ Zeit. Daraus folgt: Strecke = Geschwindigkeit × Zeit und Zeit = Strecke ÷ Geschwindigkeit. Kennst du zwei der drei Werte, berechnet der Rechner den dritten."}},
+{"@type":"Question","name":"Rechnet das Tool km/h in m/s um?","acceptedAnswer":{"@type":"Answer","text":"Ja. 1 m/s entspricht 3,6 km/h. Der Rechner zeigt die Geschwindigkeit immer in beiden Einheiten an, egal welche du eingibst."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.seg button{font-size:.84rem;padding:8px 12px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:600}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.row{display:flex;gap:8px;align-items:flex-end;margin-bottom:12px}
+.row .v{flex:1}
+.row .u{flex:0 0 110px}
+input,select{font:inherit;padding:10px 11px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.res{margin-top:6px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:18px;text-align:center}
+.res .big{font-size:clamp(26px,6vw,38px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.9rem;color:var(--ink2);margin-top:4px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Geschwindigkeits</span>-Rechner</h1>
+    <p>Aus zwei Werten den dritten berechnen: Geschwindigkeit, Strecke oder Zeit. Mit km/h ↔ m/s und passenden Einheiten. Praktisch für Reise, Sport und Schule. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Wähl, was du berechnen willst, und gib die beiden anderen Werte ein. Grundlage ist v = s ÷ t. Geschwindigkeit erscheint immer in km/h und m/s. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="seg" id="mode">
+      <button data-m="v" class="on">Geschwindigkeit</button>
+      <button data-m="s">Strecke</button>
+      <button data-m="t">Zeit</button>
+    </div>
+    <div id="inputs"></div>
+    <div class="res"><div class="big" id="big">—</div><div class="sub" id="sub"></div></div>
+    <p class="note">1 m/s = 3,6 km/h. Zeit als Dezimalstunden (1,5 = 1 h 30 min) oder Minuten – je nach Einheit. Alles lokal.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Zeit &amp; Strecke.</p>
+    <p><a class="btn" href="/zeitrechner.html">Zeit-Rechner</a>
+      <a class="btn ghost" href="/einheiten-umrechner.html">Einheiten-Umrechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zeitrechner.html">Zeit-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var mode="v";
+  function num(id){var el=document.getElementById(id);if(!el)return NaN;var v=el.value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function fmt(n,d){return n.toLocaleString("de-DE",{maximumFractionDigits:d==null?2:d});}
+  // distance to meters, time to seconds, speed to m/s
+  function distM(val,u){return u==="km"?val*1000:u==="m"?val:val*1000;}
+  function timeS(val,u){return u==="h"?val*3600:u==="min"?val*60:val;}
+  function calc(){
+    var big=document.getElementById("big"),sub=document.getElementById("sub");
+    if(mode==="v"){
+      var s=distM(num("s"),document.getElementById("su").value), t=timeS(num("t"),document.getElementById("tu").value);
+      if(!isFinite(s)||!isFinite(t)||t<=0){big.textContent="—";sub.textContent="Strecke und Zeit (>0) eingeben.";return;}
+      var ms=s/t, kmh=ms*3.6;
+      big.textContent=fmt(kmh)+" km/h";
+      sub.textContent="= "+fmt(ms)+" m/s";
+    } else if(mode==="s"){
+      var vu=document.getElementById("vu").value; var vraw=num("v");
+      var v_ms = vu==="kmh"? vraw/3.6 : vraw;
+      var t2=timeS(num("t"),document.getElementById("tu").value);
+      if(!isFinite(v_ms)||!isFinite(t2)){big.textContent="—";sub.textContent="Geschwindigkeit und Zeit eingeben.";return;}
+      var m=v_ms*t2;
+      big.textContent=fmt(m/1000)+" km";
+      sub.textContent="= "+fmt(m)+" m";
+    } else {
+      var vu2=document.getElementById("vu").value; var vraw2=num("v");
+      var v2 = vu2==="kmh"? vraw2/3.6 : vraw2;
+      var s2=distM(num("s"),document.getElementById("su").value);
+      if(!isFinite(v2)||v2<=0||!isFinite(s2)){big.textContent="—";sub.textContent="Strecke und Geschwindigkeit (>0) eingeben.";return;}
+      var sec=s2/v2;
+      var h=Math.floor(sec/3600),mn=Math.floor((sec%3600)/60),se=Math.round(sec%60);
+      big.textContent=(h>0?h+" h ":"")+(mn>0||h>0?mn+" min ":"")+se+" s";
+      sub.textContent="= "+fmt(sec/3600,3)+" Stunden · "+fmt(sec,0)+" Sekunden";
+    }
+  }
+  function setMode(m){mode=m;var box=document.getElementById("inputs");
+    var vSel='<select id="vu"><option value="kmh">km/h</option><option value="ms">m/s</option></select>';
+    var sSel='<select id="su"><option value="km">km</option><option value="m">m</option></select>';
+    var tSel='<select id="tu"><option value="h">Stunden</option><option value="min">Minuten</option><option value="s">Sekunden</option></select>';
+    if(m==="v"){
+      box.innerHTML='<div class="row"><div class="v"><label for="s">Strecke</label><input id="s" type="number" inputmode="decimal" value="100"></div><div class="u"><label>Einheit</label>'+sSel+'</div></div>'+
+        '<div class="row"><div class="v"><label for="t">Zeit</label><input id="t" type="number" inputmode="decimal" value="1.5"></div><div class="u"><label>Einheit</label>'+tSel+'</div></div>';
+    } else if(m==="s"){
+      box.innerHTML='<div class="row"><div class="v"><label for="v">Geschwindigkeit</label><input id="v" type="number" inputmode="decimal" value="60"></div><div class="u"><label>Einheit</label>'+vSel+'</div></div>'+
+        '<div class="row"><div class="v"><label for="t">Zeit</label><input id="t" type="number" inputmode="decimal" value="2"></div><div class="u"><label>Einheit</label>'+tSel+'</div></div>';
+    } else {
+      box.innerHTML='<div class="row"><div class="v"><label for="s">Strecke</label><input id="s" type="number" inputmode="decimal" value="100"></div><div class="u"><label>Einheit</label>'+sSel+'</div></div>'+
+        '<div class="row"><div class="v"><label for="v">Geschwindigkeit</label><input id="v" type="number" inputmode="decimal" value="50"></div><div class="u"><label>Einheit</label>'+vSel+'</div></div>';
+    }
+    box.querySelectorAll("input,select").forEach(function(i){i.addEventListener("input",calc);});
+    calc();
+  }
+  document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");});
+    this.classList.add("on");setMode(this.getAttribute("data-m"));});});
+  setMode("v");
+})();
+</script>
+</body>
+</html>
