@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arbeitstage-Rechner — Werktage zwischen zwei Daten · aban news</title>
+<meta name="description" content="Kostenloser Arbeitstage-Rechner: Werktage (ohne Wochenende) zwischen zwei Daten zählen, eigene Feiertage abziehen und gearbeitete Stunden schätzen. Für Projektplanung & Rechnungen. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/arbeitstage-rechner.html">
+<meta property="og:title" content="Arbeitstage-Rechner — Werktage zwischen zwei Daten">
+<meta property="og:description" content="Werktage zählen (ohne Wochenende), Feiertage abziehen, Stunden schätzen — für Projekte & Rechnungen. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/arbeitstage-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Arbeitstage-Rechner",
+"url":"https://abannews.com/arbeitstage-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Zählt Werktage (ohne Wochenende) zwischen zwei Daten, zieht eigene Feiertage ab und schätzt die gearbeiteten Stunden. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was zählt der Arbeitstage-Rechner?","acceptedAnswer":{"@type":"Answer","text":"Er zählt alle Tage von Montag bis Freitag zwischen Start- und Enddatum (beide inklusive) und lässt Samstage und Sonntage weg. Optional kannst du Samstag mitzählen und eigene Feiertage abziehen."}},
+{"@type":"Question","name":"Wie ziehe ich Feiertage ab?","acceptedAnswer":{"@type":"Answer","text":"Trag die Feiertage als Datum (eines pro Zeile, Format JJJJ-MM-TT) in das Feld ein. Der Rechner zieht nur die ab, die im Zeitraum liegen und auf einen gezählten Wochentag fallen. Feiertage sind je nach Land und Kanton bzw. Bundesland unterschiedlich — du gibst deine eigenen ein."}},
+{"@type":"Question","name":"Werden meine Daten gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+label{font-size:.82rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%}
+textarea{resize:vertical;line-height:1.5;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+.fld{margin-bottom:12px}
+.opts{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:.88rem;color:var(--ink2);margin-bottom:4px}
+.opts label{display:inline-flex;align-items:center;gap:6px;margin:0;font-weight:600}
+.opts input{width:auto}
+.hrs{display:flex;gap:8px;align-items:center;font-size:.88rem;color:var(--ink2);margin-top:8px}
+.hrs input{width:88px}
+.res{margin-top:18px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.res .big{font-size:clamp(28px,7vw,42px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.88rem;color:var(--ink2);margin-top:6px}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Arbeitstage</span>-Rechner</h1>
+    <p>Zähl die Werktage zwischen zwei Daten — ohne Wochenende, mit deinen eigenen Feiertagen, plus optional die gearbeiteten Stunden. Ideal für Projektplanung und Rechnungen. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Es rechnet Kalendertage in echte Arbeitstage um. Feiertage sind je Land/Kanton verschieden — die gibst du selbst ein, damit das Ergebnis wirklich stimmt. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div class="fld"><label for="start">Startdatum</label><input id="start" type="date"></div>
+      <div class="fld"><label for="end">Enddatum</label><input id="end" type="date"></div>
+    </div>
+    <div class="opts">
+      <label><input type="checkbox" id="sat"> Samstag mitzählen</label>
+      <label><input type="checkbox" id="incl" checked> Enddatum einschließen</label>
+    </div>
+    <div class="fld"><label for="hol">Feiertage abziehen (eines pro Zeile, JJJJ-MM-TT)</label><textarea id="hol" rows="3" placeholder="2026-12-25&#10;2026-12-26"></textarea></div>
+    <div class="hrs"><label for="hpd" style="margin:0">Stunden/Tag (optional):</label><input id="hpd" type="number" inputmode="decimal" step="0.5" min="0" placeholder="8"></div>
+    <div class="res"><div class="big" id="days">—</div><div class="sub" id="sub"></div></div>
+    <p class="note">Gezählt werden Mo–Fr (optional + Sa) im Zeitraum, abzüglich passender Feiertage. Alles lokal, kein Upload.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Planung &amp; Zeit.</p>
+    <p><a class="btn" href="/tage-rechner.html">Tage-Rechner</a>
+      <a class="btn ghost" href="/zeitspanne-rechner.html">Zeitspanne</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/tage-rechner.html">Tage-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function parse(v){if(!v)return null;var p=v.split("-");if(p.length!==3)return null;
+    var d=new Date(+p[0],+p[1]-1,+p[2]);return isNaN(d)?null:d;}
+  function calc(){
+    var s=parse(document.getElementById("start").value),e=parse(document.getElementById("end").value);
+    var daysEl=document.getElementById("days"),sub=document.getElementById("sub");
+    if(!s||!e){daysEl.textContent="—";sub.textContent="Start- und Enddatum wählen.";return;}
+    if(e<s){daysEl.textContent="—";sub.textContent="Das Enddatum liegt vor dem Start.";return;}
+    var sat=document.getElementById("sat").checked, incl=document.getElementById("incl").checked;
+    var holSet={};
+    document.getElementById("hol").value.split("\n").forEach(function(l){l=l.trim();var d=parse(l);if(d)holSet[d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()]=1;});
+    var end=new Date(e);if(!incl)end.setDate(end.getDate()-1);
+    var count=0,hol=0,cur=new Date(s);
+    while(cur<=end){
+      var wd=cur.getDay(); // 0=So,6=Sa
+      var work=(wd>=1&&wd<=5)||(sat&&wd===6);
+      if(work){
+        if(holSet[cur.getFullYear()+"-"+cur.getMonth()+"-"+cur.getDate()]){hol++;}
+        else count++;
+      }
+      cur.setDate(cur.getDate()+1);
+    }
+    daysEl.textContent=count.toLocaleString("de-DE")+(count===1?" Arbeitstag":" Arbeitstage");
+    var parts=[];
+    if(hol>0)parts.push(hol+" Feiertag"+(hol>1?"e":"")+" abgezogen");
+    var hpd=parseFloat((document.getElementById("hpd").value||"").replace(",","."));
+    if(isFinite(hpd)&&hpd>0)parts.push("≈ "+(count*hpd).toLocaleString("de-DE",{maximumFractionDigits:1})+" Stunden");
+    parts.push(sat?"Mo–Sa gezählt":"Mo–Fr gezählt");
+    sub.textContent=parts.join(" · ");
+  }
+  function today(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+  var s=document.getElementById("start"),e=document.getElementById("end");
+  s.value=today();
+  var in30=new Date();in30.setDate(in30.getDate()+30);
+  e.value=in30.getFullYear()+"-"+String(in30.getMonth()+1).padStart(2,"0")+"-"+String(in30.getDate()).padStart(2,"0");
+  ["start","end","sat","incl","hol","hpd"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
