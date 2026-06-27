@@ -64,6 +64,49 @@ brain-improve:
         echo "Keine Änderungen — Seite war schon sauber. Nichts zu tun."
       fi
 
+# 💰 Money/SEO-Guard — hält die Geld- & SEO-Hebel automatisch in Schuss (umgeht die
+# Actions-Sperre). Holt frisch von GitHub, führt die erprobten IDEMPOTENTEN Tools aus
+# (eBay-Tracking + customid auch auf NEUEN Kaufberater-Seiten, Vergleichs-Crosslinks,
+# Founding-Geld-Pfad, money_gap_audit + growth_audit + interne Links) und pusht die
+# Änderungen + Befund-Reports auf den EIGENEN Branch `brain/money-seo` — NIE main, KEIN
+# Auto-Deploy. Mensch/Claude prüft per PR. So bleiben neue Seiten dauerhaft monetarisiert
+# & getrackt, ohne dass jemand pro Mal eingreift.
+#
+# CI/CD-Variable (GitLab → Settings → CI/CD → Variables, „Masked"):
+#   GH_PUSH_TOKEN   GitHub Fine-grained PAT, Repo allengchour-glitch/aban-news-landing,
+#                   Permission „Contents: Read and write"   (PFLICHT — pusht nur auf brain/money-seo)
+#
+# Automatisch (sparsam!): GitLab → Build → Pipeline schedules → z. B. täglich 05:00 UTC
+# (reine Python-stdlib, läuft in ~1 Min, kaum CI-Minuten). Manuell: „Run pipeline".
+money-seo-guard:
+  stage: brain
+  allow_failure: true
+  image: python:3.11
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - when: manual
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git
+  script:
+    - test -n "$GH_PUSH_TOKEN" || { echo "GH_PUSH_TOKEN fehlt — Abbruch"; exit 1; }
+    - git clone --depth=1 "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" gh
+    - cd gh
+    # idempotente Geld-/SEO-Wartung (Auto-Fixes + Audits + Link-Check)
+    - python3 automation/money_seo_guard.py
+    # nur die Seiten-Änderungen auf EIGENEN Branch brain/money-seo pushen (NIE main)
+    - |
+      git config user.email "brain@aban"; git config user.name "aban-money-seo"
+      git checkout -B brain/money-seo
+      git add -A -- '*.html'
+      if ! git diff --cached --quiet; then
+        git commit -m "money-seo-guard: eBay-Tracking/customid/Crosslinks aktualisiert (GitLab-CI) [skip ci]"
+        git push -f "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" "HEAD:brain/money-seo"
+        echo "→ Auf Branch 'brain/money-seo' gepusht. PR öffnen, prüfen, mergen, deployen."
+      else
+        echo "Keine Änderungen — Geld/SEO-Hebel schon vollständig. No-op."
+      fi
+
 # ABAN-Files-Folgen auf YouTube hochladen.
 # Start: GitLab → Build → Pipelines → „Run pipeline" → Variable COUNT setzen (z. B. 6) → Job starten.
 # YouTube-API-Limit: ~6 Uploads/Tag → ersten Tag COUNT=6, nächsten Tag COUNT=7.

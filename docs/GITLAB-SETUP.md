@@ -98,8 +98,32 @@ Läuft in ~1 Minute durch (reine Python-stdlib), verbraucht kaum CI-Minuten.
 > aktiviert; wenn du das willst, sag Bescheid — das ist eine eigene, bewusste Entscheidung.
 > Den GitHub-PAT erstellst du unter GitHub → Settings → Developer settings → Fine-grained tokens.
 
+## 8. 💰 Money/SEO-Guard: Geld- & SEO-Hebel automatisch in Schuss halten
+Der Job **`money-seo-guard`** ist der autonome Geld-/SEO-Bot (Pendant zu `brain-improve`,
+aber für Umsatz statt Hype-Check). Er holt frisch den GitHub-Stand und führt die erprobten
+**idempotenten** Tools aus:
+- `add_ebay_customid.py` + `route_ebay_direct_links.py` → **neue** Kaufberater-Seiten werden
+  automatisch eBay-getrackt (campid) + bekommen `customid` (EPN-Attribution).
+- `add_compare_crosslinks.py` + `add_tool_premium_nudge.py` → Vergleichs-Querverweise + Founding-Geld-Pfad.
+- `money_gap_audit.py` + `growth_audit.py` + `check_internal_links.py` → Befund-Reports + Link-Check.
+
+Er pusht die Änderungen auf den **eigenen Branch `brain/money-seo`** — **nie** `main`, **kein**
+Auto-Deploy. Du (oder Claude) öffnest einen PR, prüfst, merged, deployst.
+
+**Variable** (GitLab → Settings → CI/CD → Variables, „Masked"):
+
+| Variable | Wert | Pflicht |
+|---|---|---|
+| `GH_PUSH_TOKEN` | GitHub Fine-grained PAT, Repo `allengchour-glitch/aban-news-landing`, **Contents: Read and write** | ✅ |
+
+**Manuell:** Build → Pipelines → Run pipeline → Job `money-seo-guard`.
+**Automatisch (sparsam):** Build → Pipeline schedules → z. B. **täglich 05:00 UTC** (reine
+Python-stdlib, ~1 Min). So bleiben **neue Seiten dauerhaft monetarisiert & getrackt**, ohne dass
+pro Mal jemand eingreift.
+
 ## Sicherheit
 - Secrets **nur** in GitLab-Variablen (Masked), **nie** in den Code/Chat.
 - `.gitlab-ci.yml` enthält keine Geheimnisse, nur Variablen-Namen.
 - `GH_PUSH_TOKEN` eng halten (nur dieses eine Repo, nur Contents) und bei Bedarf widerrufen.
-- Der Brain-Job schreibt nur auf `brain/auto` — `main` und Produktion bleiben menschen-kontrolliert.
+- Der Brain-Job schreibt nur auf `brain/auto`, der Money/SEO-Guard nur auf `brain/money-seo` —
+  `main` und Produktion bleiben menschen-kontrolliert.
