@@ -34,6 +34,19 @@ PAGES = [
     "rechnung-generator.html",
     "angebot-schreiben.html",
     "auftragsbestaetigung-schreiben.html",
+    # Kaufabsicht-/Vergleichsseiten ohne Geld-Pfad (money_gap_audit) — funneln bisher nichts.
+    "angebot-vs-kostenvoranschlag.html",
+    "broker-vergleich.html",
+    "buchhaltungssoftware-vergleich.html",
+    "chatgpt-vs-claude.html",
+    "geschaeftskonto-kostenlos.html",
+    "geschaeftskonto-vergleich.html",
+    "ki-tools-vergleich.html",
+    "lexoffice-vs-sevdesk.html",
+    "qonto-vs-kontist.html",
+    "selbststaendig-krankenversicherung.html",
+    "marktplatz.html",
+    "stellenangebote.html",
 ]
 
 NUDGE_DE = (
