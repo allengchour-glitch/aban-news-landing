@@ -23,7 +23,16 @@
   → Größter Gratis-Conversion-Hebel = **Reviews-Importer** (`automation/cj_reviews_import.mjs`, braucht
   `JUDGEME_PRIVATE_TOKEN`). Katalog sonst sauber (0 FAILED-Bilder, 0 fehlende SEO).
 - **GitLab-Variablen gesetzt:** `YT_API_KEY`, `GH_PUSH_TOKEN` (Contents:RW), `SHOPIFY_CLIENT_ID/SECRET/SHOP`.
-  Offen für vollen Wert: `JUDGEME_PRIVATE_TOKEN` (Reviews), Pinterest Standard-Access, Pipeline-Schedule.
+- **✅ Pipeline-Schedule LIVE (06-27):** GitLab `aban-ci`, Cron `7 8 * * *` (täglich 08:07 Europe/Zurich, Branch `main`)
+  → alle brain-/autopilot-Jobs laufen jetzt **vollautomatisch 1×/Tag**. (Langsame `aban-upload`/`pinterest` nur manuell.)
+- **✅ Google-Merchant-Feed LIVE:** `merchant_feed.mjs` deckt **cj-real + BigBuy = 3186 Produkte** ab (Marken/Safety
+  ausgeschlossen, Google-Policy-Schutz). Datei auf Branch `brain/intel`, öffentliche Feed-URL für „Scheduled Fetch":
+  `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/brain/intel/automation/autopilot/google-merchant-feed.xml`
+- **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
+  CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
+  AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
+- **Offen (nur User):** Google-Merchant-Center: Feed-URL als „geplanter Abruf" eintragen + Free Listings an (→ Gratis-
+  Traffic) · Pinterest Standard-Access · die 3 Wachstums-Klicks (TikTok-Pixel/Kampagne/AGB).
 
 ---
 
