@@ -37,6 +37,20 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-27 (LIVE-AUDIT — Shopify-Token via Client-Credentials, ZUERST LESEN):**
+- **✅ Live-Zugriff lief** (User pastete Client-ID + `shpss_`-Schlüssel im Chat → Admin-Token per Client-Credentials,
+  in-Memory, NICHT im Repo). Damit erstmals seit Wochen wieder echte Shop-Queries.
+- **✅ Kern-Katalog makellos:** 529 `cj-real` ACTIVE gescannt → **0 FAILED-Bilder, 0 fehlende SEO, 0 leere Alt-Texte.**
+  Funnel gesund: 5 aktive Rabatte (WELCOME10/TIKTOK10/BUNDLE20/FIRST15/BEAUTYDUO), alle 6 Policies. `autopilot-needs-copy`=0.
+- **🔴 GROSSER BEFUND — BigBuy/KI-Massen-Import (Juni 2026):** Shop hat **4.780 ACTIVE** (statt ~533 im 06-08-Memory).
+  Davon **4.251 OHNE `cj-real`** = im Juni via **BigBuy** (Tag `bigbuy`=3.336) + KI-Texte (`ls-ai-deep/desc`) importiert
+  und live geschaltet. SKU: 3.932 Fake · 308 keine · 11 CJ → nicht CJ-fulfillbar. **Risiko (gegen §5/§9):**
+  **765 Marken/IP** (Adidas/Puma/Nike/Disney/Frozen…), **113 Safety** (Baby/Kinder/Schwimm), **293 Dubletten** =
+  **1.082 Risiko-Produkte**. Vermutlich BigBuy-App ohne die CJ-Hartfilter. **Widerspricht der CJ-only-Strategie.**
+- **Aktion:** Voller Befund + Empfehlung in **`dropship/BIGBUY-IMPORT-BEFUND.md`**, alle Risiko-IDs mit Admin-Links
+  in **`dropship/bigbuy-risiko-kandidaten.csv`**. **User-Entscheid diese Session: nur Liste, NICHTS am Shop geändert.**
+  Offen für Folge-Session/User: Marken+Safety auf DRAFT (reversibel) + Strategie-Frage „BigBuy-Fulfillment-App da?".
+
 **📌 2026-06-27 (REPO-KONSOLIDIERUNG & CLEANUP — ohne Creds, reine Repo-Arbeit):**
 - **⚠️ Branch-Fragmentierung bereinigt:** Es gab 5+ parallele Dropship-Branches mit teils **duplizierten** Commits
   (gleiche Arbeit, andere SHAs) und divergierender Memory. `claude/dropshipping-session-LehDs` war der **aktuellste
