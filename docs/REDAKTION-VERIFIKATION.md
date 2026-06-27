@@ -51,8 +51,14 @@ Dieses Doc hält fest, **wie** geprüft wird und **was** schon erledigt ist.
   AssemblyAI, ElevenLabs, Murf); UK/unklar/Self-host-abhängig = `null` (Speechmatics, Trint,
   Krisp, Sembly, Supernormal, OpenAI-Whisper).
 
+- **video-radar (22 Tools):** Firmensitze belegt, Marker gehoben. `eu_lager`: 3 `true`
+  (Submagic/FR, Elai/Estland, Google-Veo via Vertex-EU-Region); 13 `false` (US/CN-Generatoren:
+  Runway, Pika, Luma, Kling/Kuaishou, Sora, HeyGen, Descript, CapCut/ByteDance, OpusClip,
+  Pictory, InVideo, Fliki, Kapwing); 6 `null` (UK/IL/Adobe/Topaz-lokal: Synthesia, D-ID,
+  Colossyan, VEED, Adobe Firefly, Topaz).
+
 ## Offen (gleicher Ansatz, nächste Radars)
-video-, newsletter-, automatisierung-, dropshipping-radar
+newsletter-, automatisierung-, dropshipping-radar
 + `data/tools.json`. Pro Radar: Herkunft/URL prüfen, EU-Flag setzen, Marker heben;
 Preise/Scores bewusst `null` lassen.
 
