@@ -219,7 +219,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     return p;
   }
   function renderPortals(){var box=$("#portals");if(!box)return;var q=$("#q").value.trim(),t=encodeURIComponent(q||"");
-    var L=[{n:"🟡 Tutti",u:q?"https://www.tutti.ch/de/q/"+t:"https://www.tutti.ch/de"},{n:"🟢 Anibis",u:q?"https://www.anibis.ch/de/q/"+t:"https://www.anibis.ch/de"},{n:"🔵 Ricardo",u:q?"https://www.ricardo.ch/de/s/"+t:"https://www.ricardo.ch/de"},{n:"🛒 eBay",u:q?"https://www.ebay.ch/sch/i.html?_nkw="+t:"https://www.ebay.ch"},{n:"🟣 Galaxus",u:q?"https://www.galaxus.ch/search?q="+t:"https://www.galaxus.ch"}];
+    var L=[{n:"🟡 Tutti",u:q?"https://www.tutti.ch/de/q/"+t:"https://www.tutti.ch/de"},{n:"🟢 Anibis",u:q?"https://www.anibis.ch/de/q/"+t:"https://www.anibis.ch/de"},{n:"🔵 Ricardo",u:q?"https://www.ricardo.ch/de/s/"+t:"https://www.ricardo.ch/de"},{n:"🛒 eBay",u:q?"/go/ebay?customid=angebote-suche"+t:"https://www.ebay.ch"},{n:"🟣 Galaxus",u:q?"https://www.galaxus.ch/search?q="+t:"https://www.galaxus.ch"}];
     box.innerHTML='<span style="font-size:.86rem;font-weight:800;width:100%">🇨🇭 Auch auf Schweizer Portalen suchen'+(q?' nach „'+esc(q)+'“':'')+':</span>'+L.map(function(p){return '<a href="'+esc(p.u)+'" target="_blank" rel="noopener nofollow" style="font-size:.83rem;font-weight:700;color:var(--ink2);background:#f8f5ef;border:1px solid var(--line);border-radius:16px;padding:6px 11px;text-decoration:none">'+esc(p.n)+' →</a>'}).join("");}
   function search(){
     var q=$("#q").value.trim();
