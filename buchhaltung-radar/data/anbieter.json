@@ -745,11 +745,11 @@
         "Zoho-Suite"
       ],
       "deutsche_oberflaeche": true,
-      "eu_lager": false,
+      "eu_lager": true,
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — gestaffelte Monatstarife, teils Gratis-Stufe.",
       "worth_it_score": null,
-      "aban_note": "Teil der Zoho-Suite mit deutscher Oberfläche und EU-Rechenzentrum-Option (vor Nutzung prüfen). Solide Buchhaltung, aber DATEV-/ELSTER-Integration und GoBD-Tauglichkeit für DACH genau gegenprüfen."
+      "aban_note": "Teil der Zoho-Suite mit deutscher Oberfläche und offizieller EU-Rechenzentrum-Region (Amsterdam/Dublin) — DSGVO-Hosting möglich (bei Anlage EU-DC wählen). Solide Buchhaltung, aber DATEV-/ELSTER-Integration und GoBD-Tauglichkeit für DACH genau prüfen."
     },
     {
       "id": "freshbooks",

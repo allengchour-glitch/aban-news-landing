@@ -181,9 +181,9 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Freemium plus Premium-Stufen, mehrsprachige Tarife.",
       "worth_it_score": null,
-      "eu_lager": false,
+      "eu_lager": true,
       "deutsche_oberflaeche": true,
-      "aban_note": "Schweizer Anbieter (Webnode AG, Zürich) mit starker Mehrsprachigkeit — praktisch für DACH + internationales Publikum. Einfach, vorlagengetrieben; Design-Freiheit begrenzt. Als Nicht-EU-Anbieter (CH) Hosting/DSGVO-Details selbst prüfen."
+      "aban_note": "Schweizer Anbieter (Webnode AG, Zürich) — Schweiz ist DSGVO-adäquat (Angemessenheitsbeschluss), Hosting in Europa. Starke Mehrsprachigkeit (praktisch für DACH + international). Einfach, vorlagengetrieben; Design-Freiheit begrenzt."
     },
     {
       "id": "hostinger",
@@ -249,7 +249,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Freemium (mit Wix-Werbung) plus mehrere Premium-Stufen.",
       "worth_it_score": null,
-      "eu_lager": false,
+      "eu_lager": null,
       "deutsche_oberflaeche": true,
       "aban_note": "israelischer Anbieter, sehr breiter Funktionsumfang (Shop, Buchung, Apps), deutsche Oberfläche. KI baut komplette Seiten. Hosting-Standort/DSGVO-Details musst du selbst prüfen; Umzug weg von Wix ist aufwendig."
     },
@@ -412,7 +412,7 @@
       "preis_eur": null,
       "preis_hinweis": "[Redaktion: prüfen] — Abo inkl. Hosting; Tarife nach Anzahl Websites/Traffic.",
       "worth_it_score": null,
-      "eu_lager": false,
+      "eu_lager": null,
       "deutsche_oberflaeche": false,
       "aban_note": "armenischer Anbieter (10Web, Yerevan): generiert per KI eine echte WordPress-Seite (du bleibst portabel, weil WordPress) inkl. Managed Hosting. Englisch; interessant, wenn du WordPress willst, ohne es selbst aufzusetzen. Nicht-EU — Hosting-Region prüfen."
     },
