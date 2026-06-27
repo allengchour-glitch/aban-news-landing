@@ -95,3 +95,8 @@
 - **Collection-Page-Best-Practice:** 50–100 Wörter Kontext oben + tiefere SEO unten; Schema **BreadcrumbList (haben✓) + ItemList + Product** = Vorteil bei Google UND AI-Overviews 2026. Interne Links: Breadcrumb✓, 5–10 Produkte (Grid✓), 2–4 Sub-/Schwester-Kategorien, 1–2 Ratgeber.
 - **✅ ANGEWANDT:** `audio-sub` (102 Produkte) Beschreibung+SEO poliert — vorher holprig („Verlängerungskopfhörerkabel von Startech…"), jetzt premium: Lead + Sub-Linien (Kopfhörer/Earbuds · Lautsprecher · Headsets) + Trust (EU-Lager, 8–14 Tage, 30 Tage Rückgabe, WELCOME10). SEO-Titel „Kopfhörer, Earbuds & Bluetooth-Lautsprecher | LuxeStyle".
 - **Backlog:** ItemList-Schema auf Collection-Pages (Theme-Block) für AI-Overview-Vorteil — lohnender Theme-Fix für später.
+
+## Runde 15-Ernte — 2026-06-27
+- Audio: +1 behalten (Bluetooth-Lautsprecher CHF44.90); **3 Ohrpolster CHF48–92 gedraftet** (überteuerte Ersatzteile, kein Appeal — 2.6x-Marge auf €35-Polster = absurd).
+- **🔭 Audio nähert sich der nützlichen Decke:** kippt von Kopfhörern/Speakern zu Zubehör (Ohrpolster/Kabel). Kern-Headphones grösstenteils importiert. → Audio noch 1–2 Wellen, dann auf grill/kuechenhelfer/kaffee/fitness rotieren.
+- **🔧 Margen-Lehre:** 2.6x-Marge macht günstige Zubehörteile absurd teuer (CHF92-Ohrpolster). QA muss überteuerte Low-Appeal-Items draften (tut der Loop jetzt). Optional: Importer maxCost/Marge für Zubehör senken.
