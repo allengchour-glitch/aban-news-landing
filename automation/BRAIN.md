@@ -68,3 +68,19 @@ Drei Wege, je nach Plattform-Lage:
 - Performance-Checks (große Inline-Bilder, fehlendes `loading="lazy"`).
 - Score pro Bereich (Business / KI / Tools) statt nur gesamt.
 - Hype-Wörter-Vorschläge (Ersatz-Formulierung) statt nur Fund.
+
+---
+
+## 🧠 Gehirn 2 — Tool-Selbstheilung (`tools/tool_brain.py`)
+Ergänzt das erste Gehirn (Inhalt/SEO) um die **technische Gesundheit der interaktiven
+Tools & Apps** (alles mit `data-aban-news-cta`). Prüft je Seite: 0 Null-Bytes, gültiges
+JSON-LD, `node --check` des Logik-Scripts, canonical, viewport, `<title>`/description,
+Newsletter-Link & Hub-Rücklink.
+
+- Scan:   `python3 tools/tool_brain.py`
+- Heilen: `python3 tools/tool_brain.py --fix`  (entfernt Null-Bytes; Rest = Report)
+- Schreibt `reports/TOOL-BRAIN-REPORT.md` + `automation/tool-brain-state.json`.
+
+**Routine-Loop (beide Gehirne):**
+`python3 tools/daily_improvement_scan.py --fix && python3 tools/tool_brain.py --fix`
+→ Top-Befunde beheben → committen → PR → merge.
