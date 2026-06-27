@@ -46,11 +46,11 @@ const THEMES = [
     'shopify seo deutsch', 'ugc content ecommerce'] },
   // ── aban-news (KI-Newsletter / Tools / GEO) ──
   { key: 'kitools', project: 'abannews', label: '[abannews] KI-Tools & Reviews', pool: false, region: 'DE', lang: 'de', queries: [
-    'KI tools 2026 deutsch', 'beste ki tools business', 'ki automatisierung kmu', 'neue ki tools test',
-    'chatgpt claude vergleich', 'ki marketing tools', 'ki tools selbstständige', 'ki produktivität tools'] },
+    'künstliche intelligenz tools deutsch', 'beste KI software unternehmen', 'KI automatisierung mittelstand', 'neue KI tools test deutsch',
+    'chatgpt claude vergleich deutsch', 'KI marketing werkzeuge', 'KI tools selbstständige', 'KI produktivität deutsch'] },
   { key: 'kinews', project: 'abannews', label: '[abannews] KI-News & Trends', pool: false, region: 'DE', lang: 'de', queries: [
-    'ki news deutsch 2026', 'openai google ki update', 'ki wochenrückblick', 'neue ki modelle',
-    'ki für unternehmen news', 'ki regulierung eu', 'ki agenten 2026', 'ki business news'] },
+    'künstliche intelligenz news deutsch', 'openai google update deutsch', 'KI wochenrückblick deutsch', 'neue KI modelle erklärt',
+    'künstliche intelligenz unternehmen', 'KI regulierung eu act', 'KI agenten erklärt deutsch', 'künstliche intelligenz business'] },
   { key: 'geo', project: 'abannews', label: '[abannews] GEO/AI-Sichtbarkeit & SEO', pool: false, region: 'DE', lang: 'de', queries: [
     'generative engine optimization', 'AI overviews seo strategie', 'in chatgpt gefunden werden', 'answer engine optimization',
     'seo 2026 ki', 'perplexity sichtbarkeit', 'programmatic seo deutsch', 'zero click search strategie'] },
