@@ -50,6 +50,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Aktion:** Voller Befund + Empfehlung in **`dropship/BIGBUY-IMPORT-BEFUND.md`**, alle Risiko-IDs mit Admin-Links
   in **`dropship/bigbuy-risiko-kandidaten.csv`**. **User-Entscheid diese Session: nur Liste, NICHTS am Shop geändert.**
   Offen für Folge-Session/User: Marken+Safety auf DRAFT (reversibel) + Strategie-Frage „BigBuy-Fulfillment-App da?".
+- **🛠️ Wiederverwendbar:** `dropship/shop_audit.mjs` = **read-only** Gesundheitscheck (holt Token via
+  `SHOPIFY_CLIENT_ID/SECRET` oder `SHOPIFY_ADMIN_TOKEN`, druckt Bestand + cj-real-QA + Nicht-cj-real-Aufschlüsselung,
+  schreibt die Risiko-CSV neu). Eine Folge-Session fährt den Stand so in EINEM Befehl, ohne etwas zu ändern.
 
 **📌 2026-06-27 (REPO-KONSOLIDIERUNG & CLEANUP — ohne Creds, reine Repo-Arbeit):**
 - **⚠️ Branch-Fragmentierung bereinigt:** Es gab 5+ parallele Dropship-Branches mit teils **duplizierten** Commits
