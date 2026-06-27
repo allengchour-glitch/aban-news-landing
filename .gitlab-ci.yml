@@ -295,11 +295,12 @@ shop-autopilot:
     - node automation/autopilot/merchant_feed.mjs
     - node automation/autopilot/shop_seo_guides.mjs
     - node automation/autopilot/shop_pulse.mjs   # 📈 Tages-Cockpit (Bestellungen/Umsatz) → Telegram
+    - node automation/autopilot/conversion_guard.mjs   # 🛡️ Funnel-Wächter: Alarm bei Kauf-Blockern → Telegram
     - |
       git config user.email "brain@aban"; git config user.name "aban-brain"
       git fetch origin brain/intel:brain/intel 2>/dev/null || true
       git checkout -B brain/intel
-      git add -A -- automation/autopilot/CONVERSION-RADAR.md automation/autopilot/google-merchant-feed.xml automation/autopilot/guides/ automation/autopilot/SHOP-PULSE.md
+      git add -A -- automation/autopilot/CONVERSION-RADAR.md automation/autopilot/google-merchant-feed.xml automation/autopilot/guides/ automation/autopilot/SHOP-PULSE.md automation/autopilot/CONVERSION-GUARD.md
       if ! git diff --cached --quiet; then
         git commit -m "shop-autopilot: Conversion-Radar + Merchant-Feed + SEO-Guides (GitLab-CI) [skip ci]"
         git push -f "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" "HEAD:brain/intel"
