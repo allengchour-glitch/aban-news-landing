@@ -191,3 +191,40 @@ youtube-learn:
       else
         echo "Keine neuen Lerndaten (No-op: kein Key, Quota, oder nichts Neues)."
       fi
+
+# 🤖 Autopilot-Intelligence (Phase 1) — macht das Gehirn HANDLUNGSFÄHIG. Reines Node, KEIN API/Quota.
+# Liest die gelernte Wissensbasis (von brain/youtube) + Katalog → erzeugt Produkt-Ideen, Caption-
+# Vorschläge und einen Tages-Digest. Pusht Reports auf EIGENEN Branch `brain/intel` (nie main).
+# Optional Telegram-Digest: CI/CD-Variablen TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID. Doku: automation/autopilot/AUTOPILOT.md
+autopilot-intel:
+  stage: brain
+  allow_failure: true
+  image: node:20
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - when: manual
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq git
+  script:
+    - test -n "$GH_PUSH_TOKEN" || { echo "GH_PUSH_TOKEN fehlt — Abbruch"; exit 1; }
+    - git clone --depth=1 "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" gh
+    - cd gh
+    # frische Wissensbasis vom Sammel-Branch holen
+    - git fetch origin brain/youtube:brain/youtube 2>/dev/null && git checkout brain/youtube -- automation/SECOND-BRAIN.md automation/brain_pools.sh automation/learned_youtube_pools.sh 2>/dev/null || echo "noch keine Wissensbasis"
+    # Brain → Handlung: Produkt-Ideen, Captions, Digest
+    - node automation/autopilot/trend_to_products.mjs
+    - node automation/autopilot/trends_to_captions.mjs
+    - node automation/autopilot/intelligence_digest.mjs
+    # Reports auf EIGENEN Branch brain/intel pushen (nie main)
+    - |
+      git config user.email "brain@aban"; git config user.name "aban-brain"
+      git checkout -B brain/intel
+      git add -A -- automation/autopilot/PRODUKT-IDEEN.md automation/autopilot/CAPTION-VORSCHLAEGE.md automation/autopilot/TAGES-DIGEST.md
+      if ! git diff --cached --quiet; then
+        git commit -m "autopilot: Produkt-Ideen + Captions + Digest (GitLab-CI) [skip ci]"
+        git push -f "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" "HEAD:brain/intel"
+        echo "→ Autopilot-Reports auf Branch 'brain/intel' gepusht."
+      else
+        echo "Keine neuen Reports."
+      fi
