@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lottozahlen-Generator — Zufallstipp für Lotto & Co. · aban news</title>
+<meta name="description" content="Kostenloser Lottozahlen-Generator: zufällige Tipps für Lotto 6 aus 49, Swiss Lotto, EuroMillions, Eurojackpot oder eigene Regeln — fair per Krypto-Zufall. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/lottozahlen-generator.html">
+<meta property="og:title" content="Lottozahlen-Generator — Zufallstipp für Lotto & Co.">
+<meta property="og:description" content="Zufällige Tipps für Lotto 6 aus 49, Swiss Lotto, EuroMillions, Eurojackpot oder eigene Regeln. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/lottozahlen-generator.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Lottozahlen-Generator",
+"url":"https://abannews.com/lottozahlen-generator.html","applicationCategory":"GameApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Erzeugt zufällige Lotto-Tipps für Lotto 6 aus 49, Swiss Lotto, EuroMillions, Eurojackpot oder eigene Regeln, fair per Krypto-Zufall. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Sind die Zahlen wirklich zufällig?","acceptedAnswer":{"@type":"Answer","text":"Ja. Der Generator nutzt die kryptografische Zufallsquelle deines Browsers (crypto.getRandomValues) und zieht ohne Zurücklegen, sodass keine Zahl doppelt vorkommt. Jede Kombination ist gleich wahrscheinlich."}},
+{"@type":"Question","name":"Erhöhen bestimmte Zahlen meine Gewinnchance?","acceptedAnswer":{"@type":"Answer","text":"Nein. Beim Lotto ist jede Kombination gleich wahrscheinlich — es gibt keine „besseren“ Zahlen. Ein Zufallstipp ist statistisch genauso gut wie jeder andere. Wer seltener gewählte Zahlen tippt, teilt einen möglichen Gewinn nur mit weniger Menschen, gewinnt aber nicht häufiger."}},
+{"@type":"Question","name":"Werden meine Tipps gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles läuft lokal in deinem Browser. Es wird nichts gesendet oder gespeichert. Spiel verantwortungsvoll — Lotto ist Unterhaltung, keine Geldanlage."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--bg:#1a1712;--card:#231f19;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(25px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.seg button{font-size:.82rem;padding:8px 11px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:600}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+.custom{display:none;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px}
+.custom.on{display:flex}
+.custom .f{flex:1 1 90px}
+label{font-size:.78rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:4px}
+input{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.balls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:56px;align-items:center}
+.ball{width:48px;height:48px;border-radius:50%;background:var(--amber-dk);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15rem;box-shadow:0 2px 6px rgba(180,83,9,.3)}
+.ball.extra{background:var(--cream);color:var(--amber-dk);border:2px solid var(--amber-dk)}
+.lbl{text-align:center;font-size:.78rem;color:var(--muted);margin:10px 0 2px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.note{color:var(--muted);font-size:.82rem;margin-top:14px}
+.err{color:#b91c1c;font-size:.85rem;margin-top:10px;font-weight:600}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Tool</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Lottozahlen</span>-Generator</h1>
+    <p>Ein fairer Zufallstipp auf Knopfdruck — für Lotto 6 aus 49, Swiss Lotto, EuroMillions, Eurojackpot oder deine eigenen Regeln. Per Krypto-Zufall, ohne Zurücklegen. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Es zieht zufällige, nicht doppelte Zahlen im richtigen Bereich. Ehrlich: Beim Lotto ist jede Kombination gleich wahrscheinlich — ein Zufallstipp ist genauso gut wie jeder andere. Spiel verantwortungsvoll. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="seg" id="game">
+      <button data-g="49" class="on">Lotto 6 aus 49</button>
+      <button data-g="swiss">Swiss Lotto</button>
+      <button data-g="euromillions">EuroMillions</button>
+      <button data-g="eurojackpot">Eurojackpot</button>
+      <button data-g="custom">Eigene Regeln</button>
+    </div>
+    <div class="custom" id="customBox">
+      <div class="f"><label for="cnt">Wie viele</label><input id="cnt" type="number" value="6" min="1" max="50"></div>
+      <div class="f"><label for="lo">von</label><input id="lo" type="number" value="1"></div>
+      <div class="f"><label for="hi">bis</label><input id="hi" type="number" value="49"></div>
+    </div>
+    <div class="lbl" id="mainLbl"></div>
+    <div class="balls" id="balls"></div>
+    <div id="extraWrap" hidden><div class="lbl" id="extraLbl"></div><div class="balls" id="extra"></div></div>
+    <p class="err" id="err" hidden></p>
+    <div class="bar"><button type="button" class="btn" id="draw">🎲 Zahlen ziehen</button>
+      <button type="button" class="btn ghost" id="copy">📋 Kopieren</button></div>
+    <p class="note">Fairer Zufall via crypto.getRandomValues, ohne Zurücklegen. Lotto ist Unterhaltung, keine Geldanlage — spiel mit Maß.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Zufall &amp; Entscheidung.</p>
+    <p><a class="btn" href="/zufalls-generator.html">Zufalls-Generator</a>
+      <a class="btn ghost" href="/passwort-generator.html">Passwort-Generator</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Fandst du das nützlich? 5 Minuten KI ohne Hype — jeden Werktag.</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news ist der deutschsprachige KI-Newsletter für Selbstständige: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/zufalls-generator.html">Zufalls-Generator</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var game="49";
+  var GAMES={
+    "49":{main:{n:6,lo:1,hi:49,label:"6 Zahlen aus 1–49"},extra:{n:1,lo:0,hi:9,label:"Superzahl (0–9)"}},
+    "swiss":{main:{n:6,lo:1,hi:42,label:"6 Zahlen aus 1–42"},extra:{n:1,lo:1,hi:6,label:"Glückszahl (1–6)"}},
+    "euromillions":{main:{n:5,lo:1,hi:50,label:"5 Zahlen aus 1–50"},extra:{n:2,lo:1,hi:12,label:"2 Sternzahlen (1–12)"}},
+    "eurojackpot":{main:{n:5,lo:1,hi:50,label:"5 Zahlen aus 1–50"},extra:{n:2,lo:1,hi:12,label:"2 Eurozahlen (1–12)"}}
+  };
+  function randInt(max){ // 0..max-1, unbiased
+    var arr=new Uint32Array(1), limit=Math.floor(4294967296/max)*max, x;
+    do{crypto.getRandomValues(arr);x=arr[0];}while(x>=limit);
+    return x%max;
+  }
+  function drawSet(n,lo,hi){
+    var pool=[];for(var i=lo;i<=hi;i++)pool.push(i);
+    var out=[];n=Math.min(n,pool.length);
+    for(var k=0;k<n;k++){var idx=randInt(pool.length);out.push(pool[idx]);pool.splice(idx,1);}
+    return out.sort(function(a,b){return a-b;});
+  }
+  function balls(el,nums,extra){el.innerHTML="";nums.forEach(function(z){var d=document.createElement("div");
+    d.className="ball"+(extra?" extra":"");d.textContent=z;el.appendChild(d);});}
+  var last="";
+  function draw(){
+    var err=document.getElementById("err");err.hidden=true;
+    var mainCfg,extraCfg;
+    if(game==="custom"){
+      var n=parseInt(document.getElementById("cnt").value,10),
+          lo=parseInt(document.getElementById("lo").value,10),
+          hi=parseInt(document.getElementById("hi").value,10);
+      if(isNaN(n)||isNaN(lo)||isNaN(hi)||hi<lo||n<1||n>(hi-lo+1)){
+        err.hidden=false;err.textContent="⚠️ Ungültige Regeln: „Wie viele“ muss zwischen 1 und der Anzahl der möglichen Zahlen liegen.";
+        document.getElementById("balls").innerHTML="";document.getElementById("extraWrap").hidden=true;return;}
+      mainCfg={n:n,lo:lo,hi:hi,label:n+" Zahlen aus "+lo+"–"+hi};extraCfg=null;
+    } else { mainCfg=GAMES[game].main; extraCfg=GAMES[game].extra; }
+    var m=drawSet(mainCfg.n,mainCfg.lo,mainCfg.hi);
+    document.getElementById("mainLbl").textContent=mainCfg.label;
+    balls(document.getElementById("balls"),m,false);
+    var ew=document.getElementById("extraWrap");
+    if(extraCfg){var e=drawSet(extraCfg.n,extraCfg.lo,extraCfg.hi);
+      document.getElementById("extraLbl").textContent=extraCfg.label;
+      balls(document.getElementById("extra"),e,true);ew.hidden=false;
+      last=m.join(", ")+"  |  "+e.join(", ");
+    } else {ew.hidden=true;last=m.join(", ");}
+  }
+  document.querySelectorAll("#game button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#game button").forEach(function(x){x.classList.remove("on");});
+    this.classList.add("on");game=this.getAttribute("data-g");
+    document.getElementById("customBox").classList.toggle("on",game==="custom");draw();});});
+  document.getElementById("draw").addEventListener("click",draw);
+  ["cnt","lo","hi"].forEach(function(id){document.getElementById(id).addEventListener("input",function(){if(game==="custom")draw();});});
+  document.getElementById("copy").addEventListener("click",function(){var b=this;
+    if(last&&navigator.clipboard)navigator.clipboard.writeText(last).then(function(){var o=b.textContent;b.textContent="Kopiert ✓";setTimeout(function(){b.textContent=o;},1400);});});
+  draw();
+})();
+</script>
+</body>
+</html>
