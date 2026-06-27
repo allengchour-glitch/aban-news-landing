@@ -36,6 +36,14 @@
 - **⚠️⚠️ KONTO-RISIKO:** Native Shopify→Google-Sync zieht AUCH Markenware (Timberland/Nike/Disney…) → Google kann
   das Konto wegen Markenfälschung sperren. **TODO:** im Shopify-„Google & YouTube"-Kanal Marken-/Safety-Produkte
   vom Google-Kanal AUSSCHLIESSEN (mein XML-Feed filtert sie, die native Sync nicht).
+- **📨 HANDOFF an die Produkt-/LuxeStyle-Session (sie „regelt den Katalog", Beschluss User 06-27):** Die Autopilot-/
+  Lern-Session (diese hier) **fasst den Shop-Katalog NICHT an** — du regelst Produkte & Google-Fixes. Bitte übernehmen:
+  1. **Google-Konto schützen:** Marken (`tag:marke`, ~520) + Safety (Baby/Kinder/Schwimm) aus dem **Google-Verkaufskanal**
+     nehmen (`publishableUnpublish` Google-Publication `gid://shopify/Publication/302872297857`), sonst Sperrgefahr.
+  2. **„Product page unavailable" (13.416):** Ursache prüfen (Produkte im **Onlineshop** publiziert? `onlineStoreUrl` gesetzt?)
+     → fixen, dann in Merchant Center „Request website check".
+  3. **Weiter Produkte holen/pflegen** (CJ + BigBuy) wie gehabt — du regelst nachher alles.
+  Was diese Session liefert: Trend-Wissen (`brain/youtube`), Produkt-Ideen/Captions/Reports (`brain/intel`), Merchant-Feed.
 - **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
   CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
   AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
