@@ -253,17 +253,19 @@ autopilot-intel:
     - test -n "$GH_PUSH_TOKEN" || { echo "GH_PUSH_TOKEN fehlt — Abbruch"; exit 1; }
     - git clone --depth=1 "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" gh
     - cd gh
-    # frische Wissensbasis vom Sammel-Branch holen
+    # frische Wissensbasis + Shop-Reports von den Sammel-Branches holen (für Meta-Brain)
     - git fetch origin brain/youtube:brain/youtube 2>/dev/null && git checkout brain/youtube -- automation/SECOND-BRAIN.md automation/brain_pools.sh automation/learned_youtube_pools.sh 2>/dev/null || echo "noch keine Wissensbasis"
-    # Brain → Handlung: Produkt-Ideen, Captions, Digest
+    - git fetch origin brain/intel:brain/intel 2>/dev/null && git checkout brain/intel -- automation/autopilot/SHOP-PULSE.md automation/autopilot/CONVERSION-RADAR.md 2>/dev/null || echo "noch keine Shop-Reports"
+    # Brain → Handlung: Produkt-Ideen, Captions, Digest, + Meta-Brain (2 Gehirne + Selbstverbesserung)
     - node automation/autopilot/trend_to_products.mjs
     - node automation/autopilot/trends_to_captions.mjs
     - node automation/autopilot/intelligence_digest.mjs
+    - node automation/autopilot/meta_brain.mjs
     # Reports auf EIGENEN Branch brain/intel pushen (nie main)
     - |
       git config user.email "brain@aban"; git config user.name "aban-brain"
       git checkout -B brain/intel
-      git add -A -- automation/autopilot/PRODUKT-IDEEN.md automation/autopilot/CAPTION-VORSCHLAEGE.md automation/autopilot/TAGES-DIGEST.md
+      git add -A -- automation/autopilot/PRODUKT-IDEEN.md automation/autopilot/CAPTION-VORSCHLAEGE.md automation/autopilot/TAGES-DIGEST.md automation/autopilot/META-BRAIN.md
       if ! git diff --cached --quiet; then
         git commit -m "autopilot: Produkt-Ideen + Captions + Digest (GitLab-CI) [skip ci]"
         git push -f "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" "HEAD:brain/intel"
