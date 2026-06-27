@@ -71,3 +71,10 @@
 - **8 frische BB-S-Dubletten gedraftet**: u.a. die 3 Handy-Geldbeutel (= Dubletten von „Handy-Geldbörse") + Schnellladekabel + 3 Ladegeräte (Wand/Batterie/Akku-Set) + Vakuumierfolie. **= meine letzten phone/ladegeraet-Importe erzeugten teils SKU-Dubletten.**
 - **🔧 WURZEL:** BigBuy hat MEHRERE Katalog-IDs pro SKU → der ID-basierte Ledger (`bb:<id>`) verhindert keine SKU-Dublette. **Fix-Bitte an Importer:** vor `create-product` prüfen, ob die **SKU** schon im Shop existiert (nicht nur die BigBuy-ID im Ledger). Bis dahin: **SKU-Dedup nach jedem Import-Tick laufen lassen** (macht der Loop jetzt).
 - **Netto-Ehrlichkeit:** „+4 phone" letzte Runde waren real nur ~1 unique (3 Geldbeutel = Dubletten, jetzt gedraftet). Audio (+4) war dagegen sauber unique. **Audio bleibt die beste Elektronik-Quelle; ladegeraet erzeugt viele Dubletten → depriorisieren.**
+
+## Runde 11 — 2026-06-27 (Audio-Elektronik Marktdaten)
+**Quelle:** productlair (Electronics 69% Marge), alibaba electronics, zikanalytics, soundguys CES 2026.
+- **Wireless Earbuds/TWS = heißeste Audio-Nische** (28–41% Netto-Marge bei $40–60 Retail). Bluetooth-Geräte → 7,4 Mrd Stück bis 2028.
+- **Elektronik gesamt ~69% Brutto-Marge** — lightweight, Massenappeal, Upsell-Potenzial (Cases/Kabel).
+- **🔑 RETOUREN-VORTEIL:** EU-Regional-Fulfillment = **11,3% Retouren** vs. **35%+** bei Plattform-Sourcing ohne QC. → BigBuy ist EU-Lager (DDP) = niedrige Retouren = echter Trust-/Marge-Vorteil, den wir ehrlich messagen dürfen (z.B. „EU-Versand, geprüfte Ware").
+- **Anwendung:** Audio-Importe gezielt auf **Earbuds/TWS** (Anker „kabellose ohrhörer/earbuds/tws/in-ear") priorisieren statt nur Over-Ear; Bluetooth-Lautsprecher (CHF16.90 schon drin) sind Top-Impuls. Ladegeräte/Cases als Upsell.
