@@ -115,6 +115,11 @@ Auto-Deploy. Du (oder Claude) öffnest einen PR, prüfst, merged, deployst.
 | Variable | Wert | Pflicht |
 |---|---|---|
 | `GH_PUSH_TOKEN` | GitHub Fine-grained PAT, Repo `allengchour-glitch/aban-news-landing`, **Contents: Read and write** | ✅ |
+| `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` (oder `TELEGRAM_CHANNEL`) | für den optionalen Alarm aufs Handy | ⬜ optional |
+
+> **Telegram-Alarm:** Ist Bot-Token + Chat gesetzt, schickt der Guard **nur bei echten Handlungs-Befunden**
+> eine Nachricht (offene Money-Gaps, die der Autofix nicht schliessen konnte, oder defekte interne Links).
+> Bei sauberem Stand: **kein** Alarm (kein Spam). Ohne Secrets: stiller No-op.
 
 **Manuell:** Build → Pipelines → Run pipeline → Job `money-seo-guard`.
 **Automatisch (sparsam):** Build → Pipeline schedules → z. B. **täglich 05:00 UTC** (reine
