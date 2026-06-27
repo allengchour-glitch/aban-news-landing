@@ -28,6 +28,22 @@
 - **✅ Google-Merchant-Feed LIVE:** `merchant_feed.mjs` deckt **cj-real + BigBuy = 3186 Produkte** ab (Marken/Safety
   ausgeschlossen, Google-Policy-Schutz). Datei auf Branch `brain/intel`, öffentliche Feed-URL für „Scheduled Fetch":
   `https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/brain/intel/automation/autopilot/google-merchant-feed.xml`
+- **✅✅ GOOGLE MERCHANT CENTER LIVE (06-27, Konto `LuxeStyle CH` 5797470070):** Google hat per nativer Shopify-
+  Integration den GANZEN Katalog gezogen (38.937 Angebote). **CH: 32.812 freigegeben (84,3 %)** → riesige Gratis-
+  Shopping-Reichweite. Telegram-Bot (@LuxestyleCHbot) + Schedule + GEMINI auch gesetzt. **Offen:** „Product page
+  unavailable" (13.416, Online-Store-Crawl) → andere Session fixt + „Request website check". DE/US = Country-Setup
+  unvollständig (Versand). 151 webp-Bilder, 36 adult-geflaggt, 9 recalled.
+- **⚠️⚠️ KONTO-RISIKO:** Native Shopify→Google-Sync zieht AUCH Markenware (Timberland/Nike/Disney…) → Google kann
+  das Konto wegen Markenfälschung sperren. **TODO:** im Shopify-„Google & YouTube"-Kanal Marken-/Safety-Produkte
+  vom Google-Kanal AUSSCHLIESSEN (mein XML-Feed filtert sie, die native Sync nicht).
+- **📨 HANDOFF an die Produkt-/LuxeStyle-Session (sie „regelt den Katalog", Beschluss User 06-27):** Die Autopilot-/
+  Lern-Session (diese hier) **fasst den Shop-Katalog NICHT an** — du regelst Produkte & Google-Fixes. Bitte übernehmen:
+  1. **Google-Konto schützen:** Marken (`tag:marke`, ~520) + Safety (Baby/Kinder/Schwimm) aus dem **Google-Verkaufskanal**
+     nehmen (`publishableUnpublish` Google-Publication `gid://shopify/Publication/302872297857`), sonst Sperrgefahr.
+  2. **„Product page unavailable" (13.416):** Ursache prüfen (Produkte im **Onlineshop** publiziert? `onlineStoreUrl` gesetzt?)
+     → fixen, dann in Merchant Center „Request website check".
+  3. **Weiter Produkte holen/pflegen** (CJ + BigBuy) wie gehabt — du regelst nachher alles.
+  Was diese Session liefert: Trend-Wissen (`brain/youtube`), Produkt-Ideen/Captions/Reports (`brain/intel`), Merchant-Feed.
 - **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
   CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
   AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
