@@ -37,6 +37,22 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Memory, damit jede neue Session nahtlos weitermacht.
 
 ## Stand
+**📌 2026-06-27 (REPO-KONSOLIDIERUNG & CLEANUP — ohne Creds, reine Repo-Arbeit):**
+- **⚠️ Branch-Fragmentierung bereinigt:** Es gab 5+ parallele Dropship-Branches mit teils **duplizierten** Commits
+  (gleiche Arbeit, andere SHAs) und divergierender Memory. `claude/dropshipping-session-LehDs` war der **aktuellste
+  Superset** (bis 06-13: Paar-Welt/POD + Gemini-Polish). → **LehDs in `claude/lade-projekt-luxestyle-fUo70` gemergt**
+  (Union-Auflösung der 3 Konflikte: CLAUDE.md + CJ-IMPORT-LOG = beide Stände behalten; `posts_image.csv` = der
+  „posted"-Stand von fUo70 mit echten Post-IDs behalten, nicht der ältere „ready"-Stand). fUo70 trägt jetzt **alles**.
+  **Lehre für künftige Sessions:** Auf EINEN Dropship-Branch konsolidieren, nicht weiter forken; vor Arbeit
+  `git log --oneline origin/<anderer-branch>..HEAD` prüfen, ob ein Branch weiter ist.
+- **🧹 Cleanup:** `dropship/assets/draft-ids.jsonl` war ein korrupter Google-Storage-Fehlerblob (405 B, von keinem
+  Skript referenziert) → entfernt. (Die valide `archived-draft-ids.jsonl` mit 4027 IDs bleibt.)
+- **Verifiziert:** Post-Queue parst sauber (7 posted, 0 ready — Reichweite weiter still); neue POD-Pipeline Syntax OK.
+- **Sicherheits-Audit:** Voll-Repo + Git-History nach Keys/Tokens durchsucht → **0 geleakte Secrets** (alles via
+  Env/GitHub-Secrets, by design). `docs/API-KEYS.md` ist reine Anleitung, keine Werte.
+- **Stand-Hinweis:** Heutiges Datum 2026-06-27, jüngste inhaltliche Arbeit war 06-13 → Live-Stände (Kampagne/
+  Reichweite/Bestellungen) sind ggf. veraltet; bei nächstem Live-Zugriff zuerst neu verifizieren.
+
 **📌 2026-06-13 (SESSION — ZUERST LESEN: Shopify-MCP VERBUNDEN + komplette Paar-Welt + Gemini-Polish):**
 - **✅ Shopify-MCP war VERBUNDEN** (LuxeStyle/au3j0y-hq/CHF) → Live-Shop-Ops liefen direkt aus der Session
   (create-product, graphql, collections, menu, staged uploads). CJ-Token kam **vom User per Chat** (nicht in Env);
