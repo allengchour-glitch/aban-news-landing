@@ -73,6 +73,19 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-27 (abannews/Tool-Session) — 💰 eBay-Affiliate site-weit SCHARF (User hat EPN aktiviert):**
+- **User ist beim eBay Partner Network angemeldet** (Konto `abannews`, Kampagne `aban`, **campid `5339156671`**).
+  Die campid ist öffentlich (steht in jedem Affiliate-Link) → fest im Code, per Cloudflare-Env
+  `EBAY_CAMPAIGN_ID` überschreibbar.
+- **#1332:** `functions/go/ebay.js` trackt jetzt — Ziel **eBay.ch → eBay.de** (siteid 77, mkrid 707-53477-19255-0,
+  passend zu den Konto-Parametern; eBay.ch trackt mit DE-Params nicht), volle EPN-Parameter, optional `&customid=<seite>`.
+- **#1333:** Tool `tools/route_ebay_direct_links.py` — 102 direkte `ebay.ch/sch`-Links auf 67 Seiten auf `/go/ebay`
+  umgestellt. **→ ALLE ~289 eBay-Links der Site verdienen jetzt mit.** 0 direkte Links übrig.
+- **Nächster Hebel = Traffic** zu den Kaufberater-Seiten (Tracking ist fertig; Klicks brauchen Besucher).
+- ⚠️ Andere Geschäftskonto-/Buchhaltungs-Affiliates (Qonto/Kontist/sevDesk/lexoffice/bexio) sind **gratis & offen**,
+  aber NOCH NICHT angemeldet → Slots in `js/affiliate-config.js` leer (qonto-vs-kontist/lexoffice-vs-sevdesk/
+  geschaeftskonto-kostenlos sind bereits verdrahtet, schalten bei gefülltem Slot automatisch scharf).
+
 **2026-06-27 (abannews/Tool-Session) — Monetarisierungs-Lücken geschlossen + GitLab aktiv (4 PRs auf `main`):**
 - **money_gap_audit (#1315):** neues read-only Tool `tools/money_gap_audit.py` — findet Kaufabsicht-Seiten
   OHNE Geld-Pfad (Affiliate/Produkt/Founding/Stripe). Kalibriert gg. Falsch-Positive. Fand 12 Lücken.
