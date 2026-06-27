@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krankenkassen-Franchise-Rechner Schweiz — welche Franchise lohnt sich? · aban news</title>
+<meta name="description" content="Kostenloser Franchise-Rechner für die Schweizer Krankenkasse: Vergleiche tiefe und hohe Franchise anhand deiner erwarteten Gesundheitskosten und finde heraus, welche dich günstiger kommt. Mit Break-even. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/krankenkassen-franchise-rechner.html">
+<meta property="og:title" content="Krankenkassen-Franchise-Rechner Schweiz">
+<meta property="og:description" content="Welche Franchise lohnt sich? Tiefe vs. hohe Franchise vergleichen, inkl. Selbstbehalt & Break-even. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/krankenkassen-franchise-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Krankenkassen-Franchise-Rechner Schweiz",
+"url":"https://abannews.com/krankenkassen-franchise-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de-CH","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},
+"description":"Vergleicht für die Schweizer Grundversicherung eine tiefe und eine hohe Franchise anhand der erwarteten Gesundheitskosten inklusive Selbstbehalt und zeigt den Break-even. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie funktioniert die Franchise in der Schweiz?","acceptedAnswer":{"@type":"Answer","text":"Die Franchise ist der Betrag, den du pro Jahr selbst zahlst, bevor die Grundversicherung etwas übernimmt. Wählbar sind 300, 500, 1000, 1500, 2000 oder 2500 Franken. Eine höhere Franchise bedeutet eine tiefere Monatsprämie — du trägst dafür im Krankheitsfall mehr selbst."}},
+{"@type":"Question","name":"Was ist der Selbstbehalt?","acceptedAnswer":{"@type":"Answer","text":"Über die Franchise hinaus zahlst du 10 % der weiteren Kosten selbst — den sogenannten Selbstbehalt, höchstens aber 700 Franken pro Jahr (bei Erwachsenen). Der Rechner berücksichtigt das automatisch."}},
+{"@type":"Question","name":"Welche Franchise lohnt sich für mich?","acceptedAnswer":{"@type":"Answer","text":"Faustregel: Wer wenig Gesundheitskosten erwartet, fährt mit der hohen Franchise (2500) meist günstiger. Wer regelmäßig hohe Kosten hat, oft mit der tiefen (300). Der Rechner zeigt dir den Break-even — ab welchen Jahreskosten sich was lohnt. Es bleibt eine Schätzung; verbindlich sind die Offerten der Kassen."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--ok:#34d399;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit{position:relative}.unit input{padding-right:48px}.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.82rem}
+.fld{margin-bottom:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.opt{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.opt.win{border-color:var(--ok);box-shadow:0 0 0 2px color-mix(in srgb,var(--ok) 25%,transparent)}
+.opt h3{font-size:.95rem;margin-bottom:4px}
+.opt .big{font-size:clamp(20px,5vw,28px);font-weight:800;color:var(--amber-dk)}
+.opt .small{font-size:.78rem;color:var(--muted);margin-top:4px}
+.opt .tag{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--ok);border-radius:99px;padding:2px 9px;margin-top:6px}
+.summary{margin-top:14px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:14px;text-align:center;font-size:.95rem}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Welche Franchise lohnt sich?</span><br>Krankenkassen-Rechner CH</h1>
+    <p>Tiefe oder hohe Franchise? Gib deine Prämien und deine erwarteten Gesundheitskosten ein — der Rechner zeigt, welche Variante dich günstiger kommt, inkl. Selbstbehalt und Break-even. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Hohe Franchise = tiefere Prämie, aber mehr selbst zahlen im Krankheitsfall. Über die Franchise hinaus zahlst du <strong>10 % selbst, max. 700 CHF/Jahr</strong>. Der Rechner vergleicht beide Varianten ehrlich. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="fld"><label for="kosten">Erwartete Gesundheitskosten / Jahr</label><div class="unit"><input id="kosten" type="number" inputmode="decimal" value="800" min="0"><span>CHF</span></div></div>
+    <div class="cols">
+      <div>
+        <div class="fld"><label for="fa">Variante A — Franchise</label><select id="fa"><option>300</option><option>500</option><option>1000</option><option>1500</option><option>2000</option><option>2500</option></select></div>
+        <div class="fld"><label for="pa">Prämie A / Monat</label><div class="unit"><input id="pa" type="number" inputmode="decimal" value="380"><span>CHF</span></div></div>
+      </div>
+      <div>
+        <div class="fld"><label for="fb">Variante B — Franchise</label><select id="fb"><option>300</option><option>500</option><option>1000</option><option>1500</option><option>2000</option><option selected>2500</option></select></div>
+        <div class="fld"><label for="pb">Prämie B / Monat</label><div class="unit"><input id="pb" type="number" inputmode="decimal" value="300"><span>CHF</span></div></div>
+      </div>
+    </div>
+    <div class="vs">
+      <div class="opt" id="oa"><h3 id="oa-t">Variante A</h3><div class="big" id="oa-big">—</div><div class="small" id="oa-small"></div><div id="oa-tag"></div></div>
+      <div class="opt" id="ob"><h3 id="ob-t">Variante B</h3><div class="big" id="ob-big">—</div><div class="small" id="ob-small"></div><div id="ob-tag"></div></div>
+    </div>
+    <div class="summary" id="summary"></div>
+    <p class="note">Modell der Grundversicherung (KVG): Selbstbehalt 10 % über der Franchise, max. CHF 700/Jahr (Erwachsene). Prämien je nach Kasse/Region/Modell — gib deine echten Offerten ein. Richtwert, keine Versicherungsberatung.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Geld &amp; Alltag CH.</p>
+    <p><a class="btn" href="/schweizer-lohnrechner.html">Lohnrechner</a>
+      <a class="btn ghost" href="/saeule-3a-rechner.html">Säule 3a</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ehrliche Geld-Tipps für die Schweiz — werktäglich 5 Min</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/schweizer-lohnrechner.html">Lohnrechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var SB_MAX=700;
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function chf(n){return (isFinite(n)?Math.round(n):0).toLocaleString("de-CH")+" CHF";}
+  // Eigenanteil = min(kosten,franchise) + 10% über Franchise, gedeckelt mit SB_MAX
+  function eigen(kosten,fr){if(kosten<=fr)return kosten;var sb=Math.min((kosten-fr)*0.1,SB_MAX);return fr+sb;}
+  function total(kosten,fr,praemie){return praemie*12+eigen(kosten,fr);}
+  function breakeven(fa,pa,fb,pb){
+    // finde Kosten k, wo total A == total B (Suchlauf 0..fa+fb+10000)
+    var prev=null;
+    for(var k=0;k<=10000;k+=10){var d=total(k,fa,pa)-total(k,fb,pb);
+      if(prev!==null && ((prev<=0&&d>0)||(prev>=0&&d<0))){return k;}prev=d;}
+    return null;
+  }
+  function calc(){
+    var k=num("kosten"),fa=parseFloat(document.getElementById("fa").value),pa=num("pa"),fb=parseFloat(document.getElementById("fb").value),pb=num("pb");
+    if(!isFinite(k)||!isFinite(pa)||!isFinite(pb)){document.getElementById("summary").textContent="Bitte Kosten und beide Prämien eingeben.";return;}
+    var ta=total(k,fa,pa),tb=total(k,fb,pb);
+    document.getElementById("oa-t").textContent="Franchise "+fa;
+    document.getElementById("ob-t").textContent="Franchise "+fb;
+    document.getElementById("oa-big").textContent=chf(ta);
+    document.getElementById("ob-big").textContent=chf(tb);
+    document.getElementById("oa-small").textContent="Prämie "+chf(pa*12)+" + Eigenanteil "+chf(eigen(k,fa));
+    document.getElementById("ob-small").textContent="Prämie "+chf(pb*12)+" + Eigenanteil "+chf(eigen(k,fb));
+    var oa=document.getElementById("oa"),ob=document.getElementById("ob");
+    oa.classList.toggle("win",ta<tb);ob.classList.toggle("win",tb<ta);
+    document.getElementById("oa-tag").innerHTML=ta<tb?'<span class="tag">günstiger</span>':"";
+    document.getElementById("ob-tag").innerHTML=tb<ta?'<span class="tag">günstiger</span>':"";
+    var diff=Math.abs(ta-tb);
+    var be=breakeven(fa,pa,fb,pb);
+    var s="";
+    if(ta===tb)s="Beide kosten dich gleich viel: "+chf(ta)+" pro Jahr.";
+    else s="<strong>Franchise "+(ta<tb?fa:fb)+"</strong> ist bei "+chf(k)+" Kosten um <strong>"+chf(diff)+"/Jahr günstiger.</strong>";
+    if(be!==null)s+="<br><span style=\"color:var(--muted);font-size:.86rem\">Break-even: ab ca. "+chf(be)+" Jahreskosten lohnt sich die andere Variante.</span>";
+    document.getElementById("summary").innerHTML=s;
+  }
+  ["kosten","fa","pa","fb","pb"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
