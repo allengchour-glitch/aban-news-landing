@@ -305,7 +305,7 @@ function loop(t){
     var cs=speed+(dashActive?0.9:0);
     if(combo>0){comboTimer--;if(comboTimer<=0)combo=0;}
     phaseTimer--;if(phaseTimer<=0){phaseTimer=1320;biomeIndex++;var bb=applyBiome(biomeIndex);speed+=0.05;announce("» "+bb.name+" «",bb.accent);beep(180,.4,"sawtooth",.1);}
-    if(tick-lastSpawn>Math.max(18,42-speed*8)){spawn();lastSpawn=tick;}
+    if(tick>80&&tick-lastSpawn>Math.max(18,42-speed*8)){spawn();lastSpawn=tick;}
     // move pillars
     pillars.forEach(function(p){if(!p.active)return;p.m.position.z+=cs;p.m.rotation.y+=0.005;
       var pdx=Math.abs(p.m.position.x-shipX);
