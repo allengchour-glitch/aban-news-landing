@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wortbrücke — das tägliche Kompositum-Rätsel | aban news</title>
+<meta name="description" content="Wortbrücke: Finde täglich das Brücken-Wort, das mit beiden Seiten ein zusammengesetztes Wort bildet (GARTEN_?_TÜR → HAUS). Gratis, deutsch, teilbar.">
+<link rel="canonical" href="https://abannews.com/wortbruecke.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wortbrücke — tägliches deutsches Kompositum-Rätsel">
+<meta property="og:description" content="Finde das verbindende Wort zwischen zwei Begriffen. Neu jeden Tag, Ergebnis teilen.">
+<meta property="og:url" content="https://abannews.com/wortbruecke.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Game","name":"Wortbrücke","url":"https://abannews.com/wortbruecke.html","genre":"Wortspiel","inLanguage":"de","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"aban news"}}
+</script>
+<style>
+:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#6aaa64}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+header{border-bottom:1px solid var(--line);text-align:center;padding:10px}
+header b{color:var(--amber);font-size:1.05rem}
+header .sub{display:block;font-size:.78rem;color:#6b7280;margin-top:2px}
+main{flex:1;max-width:540px;width:100%;margin:0 auto;padding:14px;text-align:center}
+h1{font-size:1.3rem;margin:.6rem 0 .2rem}
+.lead{font-size:.88rem;color:#6b7280;margin:0 0 1rem}
+.bridge{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}
+.word{background:#fff;border:2px solid var(--line);border-radius:12px;padding:12px 16px;font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.mid{background:linear-gradient(135deg,#fef3c7,#fffdf9);border:2px dashed var(--amber);color:var(--amber);min-width:120px}
+.plus{font-size:1.4rem;color:#cbb59a;font-weight:800}
+.slots{letter-spacing:6px;font-size:1.3rem;font-weight:800}
+#msg{min-height:24px;font-weight:700;color:var(--amber);margin:6px 0}
+.row{display:flex;gap:8px;max-width:380px;margin:10px auto;justify-content:center}
+input{flex:1;padding:12px 14px;border:2px solid var(--line);border-radius:10px;font-size:1.05rem;text-transform:uppercase;text-align:center;outline:none}
+input:focus{border-color:var(--amber)}
+.btn{border:0;cursor:pointer;font-weight:800;padding:12px 18px;border-radius:10px;color:#fff;background:var(--amber);font-size:1rem}
+.btn.ghost{background:#fff;color:var(--amber);border:1px solid #e7c98a}
+.stats{display:flex;gap:20px;justify-content:center;margin:14px 0;font-size:.85rem;color:#374151}
+.stats b{display:block;font-size:1.2rem;color:var(--ink)}
+.solved{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.solved .big{font-size:1.3rem;font-weight:800;color:var(--ok)}
+.cta{max-width:520px;margin:8px auto;padding:14px 16px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9)}
+.cta p{margin:.3rem 0 .7rem;font-size:.9rem;color:#374151}
+footer{border-top:1px solid var(--line);text-align:center;padding:12px;font-size:.8rem;color:#6b7280}
+footer a{color:var(--amber);text-decoration:none}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<header><b>aban news</b><span class="sub">Wortbrücke · tägliches Kompositum-Rätsel</span></header>
+<main>
+  <h1>Wortbrücke 🌉</h1>
+  <p class="lead">Finde das <b>Brücken-Wort</b>: Es bildet mit dem linken UND dem rechten Wort je ein zusammengesetztes Wort. <span id="puzzlenr"></span></p>
+
+  <div class="bridge">
+    <span class="word" id="left">—</span>
+    <span class="plus">+</span>
+    <span class="word mid"><span class="slots" id="slots">?</span></span>
+    <span class="plus">+</span>
+    <span class="word" id="right">—</span>
+  </div>
+
+  <div id="msg"></div>
+
+  <div id="play">
+    <div class="row">
+      <input id="guess" type="text" autocomplete="off" autocapitalize="characters" placeholder="Brücken-Wort…" maxlength="20">
+      <button class="btn" id="go">Raten</button>
+    </div>
+    <button class="btn ghost" id="hint">💡 Hinweis (Buchstabe)</button>
+  </div>
+
+  <div class="stats">
+    <span>Serie<b id="streak">0</b></span>
+    <span>Versuche<b id="tries">0</b></span>
+    <span>Hinweise<b id="hints">0</b></span>
+  </div>
+
+  <div class="solved hide" id="solved"></div>
+
+  <aside class="cta hide" id="cta">
+    <strong>Mochtest du das?</strong>
+    <p>5 Minuten KI ohne Hype, werktäglich — für Selbstständige. Gratis.</p>
+    <button class="btn" id="share">Ergebnis teilen 📋</button>
+    <a class="btn ghost" href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter →</a>
+  </aside>
+</main>
+<footer>© 2026 aban news · <a href="/wort-des-tages.html">Wort des Tages</a> · <a href="/online-tools.html">Alle Tools</a> · <a href="/impressum.html">Impressum</a></footer>
+<script>
+(function(){
+  "use strict";
+  // Kuratierte Rätsel: [LINKS, BRÜCKE(Lösung), RECHTS] — LINKS+BRÜCKE und BRÜCKE+RECHTS sind echte Komposita.
+  var P=[
+    ["GARTEN","HAUS","TÜR"],["SOMMER","HAUS","HALT"],["HAND","SCHUH","KARTON"],
+    ["AUGEN","BLICK","KONTAKT"],["TASCHEN","GELD","BÖRSE"],["WINTER","SCHLAF","ZIMMER"],
+    ["APFEL","BAUM","STAMM"],["ARBEITS","PLATZ","ANGST"],["KINDER","GARTEN","ZAUN"],
+    ["NACHT","TISCH","DECKE"],["REGEN","BOGEN","SCHÜTZE"],["ZEIT","PUNKT","ZAHL"],
+    ["FUSS","BALL","SPIEL"],["WASSER","FALL","SCHIRM"],["TISCH","BEIN","BRUCH"],
+    ["SPIEL","PLATZ","REGEN"],["HAAR","SCHNITT","STELLE"],["TRAUM","LAND","KARTE"],
+    ["STERN","BILD","SCHIRM"],["ABEND","BROT","ZEIT"],["MORGEN","ROT","WEIN"],
+    ["WELT","RAUM","SCHIFF"],["FEUER","WEHR","DIENST"],["KOPF","KISSEN","BEZUG"],
+    ["BUCH","LADEN","TÜR"],["HONIG","KUCHEN","TEIG"],["HAUS","TÜR","SCHLOSS"],
+    ["LIEBES","BRIEF","KASTEN"],["SONNEN","BRAND","WUNDE"],["ZAHN","ARZT","PRAXIS"],
+    ["HALS","BAND","WURM"],["FAHR","RAD","WEG"],["WAND","UHR","ZEIGER"]
+  ];
+  function norm(s){return (s||"").toUpperCase().replace(/Ä/g,"AE").replace(/Ö/g,"OE").replace(/Ü/g,"UE").replace(/ß/g,"SS").replace(/[^A-Z]/g,"");}
+
+  var dayNo=Math.floor(Date.now()/864e5);
+  var idx=((dayNo%P.length)+P.length)%P.length;
+  var cur=P[idx], LEFT=cur[0], ANS=cur[1], RIGHT=cur[2];
+  document.getElementById("puzzlenr").textContent="(Rätsel #"+(dayNo+1)+")";
+  document.getElementById("left").textContent=LEFT;
+  document.getElementById("right").textContent=RIGHT;
+
+  var SK="aban_brk", st=load();
+  var tries=0, hints=0, revealed=0, done=false;
+
+  function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}");}catch(e){return {};}}
+  function save(){try{localStorage.setItem(SK,JSON.stringify(st));}catch(e){}}
+
+  function renderSlots(){
+    var s="";
+    for(var i=0;i<ANS.length;i++){s+= i<revealed ? ANS[i] : "_";}
+    document.getElementById("slots").textContent=s;
+  }
+  function setMsg(t){document.getElementById("msg").textContent=t;}
+  function upStats(){document.getElementById("tries").textContent=tries;document.getElementById("hints").textContent=hints;document.getElementById("streak").textContent=st.streak||0;}
+
+  function guess(){
+    if(done)return;
+    var v=document.getElementById("guess").value;
+    if(norm(v).length<2){setMsg("Bitte ein Wort eingeben.");return;}
+    tries++;
+    if(norm(v)===norm(ANS)){win();}
+    else{setMsg("Nicht ganz — versuch's nochmal oder nimm einen Hinweis.");document.getElementById("guess").value="";}
+    upStats();
+  }
+  function hint(){
+    if(done)return;
+    if(revealed<ANS.length-1){revealed++;hints++;renderSlots();upStats();}
+    else{setMsg("Fast alles verraten — jetzt raten! 😄");}
+  }
+  function win(){
+    done=true;
+    document.getElementById("play").classList.add("hide");
+    document.getElementById("slots").textContent=ANS;
+    setMsg("");
+    // Serie nur bei „heute zum ersten Mal gelöst"
+    if(st.day!==dayNo){
+      st.streak=(st.lastDay===dayNo-1?(st.streak||0):0)+1;
+      st.day=dayNo; st.lastDay=dayNo; st.lastTries=tries; st.lastHints=hints; save();
+    }
+    var sol=document.getElementById("solved");
+    sol.classList.remove("hide");
+    sol.innerHTML="<div class='big'>✓ "+ANS+"</div><div style='margin-top:8px'>"+
+      "<b>"+LEFT+ANS.toLowerCase()+"</b> &nbsp;·&nbsp; <b>"+ANS+RIGHT.toLowerCase()+"</b></div>"+
+      "<div style='color:#6b7280;font-size:.85rem;margin-top:8px'>"+tries+" Versuch(e), "+hints+" Hinweis(e)</div>";
+    document.getElementById("cta").classList.remove("hide");
+    upStats();
+  }
+
+  document.getElementById("go").onclick=guess;
+  document.getElementById("hint").onclick=hint;
+  document.getElementById("guess").addEventListener("keydown",function(e){if(e.key==="Enter")guess();});
+  document.getElementById("share").onclick=function(){
+    var txt="aban Wortbrücke #"+(dayNo+1)+" 🌉 — gelöst mit "+tries+" Versuch(en), "+hints+" Hinweis(en)\nabannews.com/wortbruecke.html";
+    if(navigator.share){navigator.share({text:txt}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){document.getElementById("share").textContent="Kopiert 📋";});}
+  };
+
+  // schon heute gelöst?
+  if(st.day===dayNo){revealed=ANS.length;tries=st.lastTries||0;hints=st.lastHints||0;win();}
+  renderSlots(); upStats();
+})();
+</script>
+</body>
+</html>
