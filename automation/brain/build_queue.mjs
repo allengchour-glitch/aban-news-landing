@@ -259,7 +259,10 @@ function loadReels() {
   // MIX (2026-06-23, Daten: IG-Reels 16-43 V vs statische Karten 0-12 V = 5-10x): REELS DOMINIEREN,
   // Karten sind in der Minderheit. IG/TikTok pushen 2026 fast nur Reels -> Reel-getriebene Schleife.
   const out = []; let ci = 0, si = 0, cpi = DAYOFF;
-  const maxReels = Math.min(reels.length, 8);
+  // DOPPELPOST-FIX (User 2026-06-28 "doppelpost wieder"): der Worker ueberspringt die letzten 30 geposteten Medien.
+  // War die Queue nur ~16 -> nach 16 Posts ist ALLES "kuerzlich" -> Worker MUSS ein Doppel posten. Queue jetzt
+  // deutlich >30 (20 Reels + 8 Carousels + Stories/Karten ~35-40) -> immer frische Items, kein Zwangs-Doppel.
+  const maxReels = Math.min(reels.length, 20);
   if (maxReels > 0) {
     for (let i = 0; i < maxReels; i++) {
       out.push(reels[i]);                                            // Reel = Rückgrat

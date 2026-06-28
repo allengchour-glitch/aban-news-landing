@@ -362,8 +362,11 @@ async function run(env, doPost = true) {
     // Key = TYP + URL: derselbe Clip als Reel UND Story ist ERLAUBT (Cross-Post), 2x identischer Reel nicht.
     // Karussell: nach 1. Bild keyen (sonst saehen alle Karussells gleich aus -> faelschlich geblockt).
     const mediaOf = (it) => (it ? ((it.type || "image") + "|" + (it.video || it.image || (Array.isArray(it.images) && it.images[0]) || it.img || it.media || "")) : "");
+    // 🛡️ FENSTER ADAPTIV (User 2026-06-28 „doppelpost wieder"): das Dedup-Fenster darf NIE >= Queue-Groesse sein,
+    // sonst sind nach <Fenster> Posts ALLE Items „kuerzlich" -> Zwangs-Doppel. Immer >=2 frische Slots lassen.
+    const recentN = Math.max(2, Math.min(30, q.length - 2));
     let recent = [];
-    try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, 30).map((p) => p.u).filter(Boolean); } catch {}
+    try { recent = JSON.parse((await env.LUXE_KV.get("post_log")) || "[]").slice(0, recentN).map((p) => p.u).filter(Boolean); } catch {}
     // 🔍 LIVE-PROFIL-CHECK (User 2026-06-20 „check mit den Seiten ab, sonst postest du das gleiche wieder"):
     // die letzten 25 ECHTEN IG-Posts abrufen + ueberspringen was schon online ist (Caption-Signatur).
     const sig = (c) => (c || "").split("\n")[0].replace(/\s+/g, " ").trim().toLowerCase().slice(0, 45);
