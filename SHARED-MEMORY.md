@@ -2147,3 +2147,13 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   - **Konsolen nackt (PS5/Xbox/Switch-Gerät): praktisch keine** (Distributor verkauft Zubehör+Spiele, nicht die Konsole) → Zubehör ist der Weg.
   - Smart-TV 2546 / Power-Bank 191 / Patinete(E-Scooter) 32 vorhanden, aber TV=Elektronik-Hardware (Trust/Versand-Hürde), bewusst nicht.
 - **Männer-Sachen breit abgedeckt:** herrenmode/auto/whisky/grill/werkzeug(1623 Kand)/survival(neu)/gaming.
+
+---
+**🎨 2026-06-27 (SELBST-GESTALTEN EDITOR auf MOBILE — Diagnose, ANDERE Session/POD-Territorium):**
+> User meldet: „Selbst gestalten — der Bearbeitungs-Tool ist auf Mobile weg, der konnte alles bearbeiten, bitte wieder hinzufügen."
+- **Gründliche Diagnose (CJ/Theme-Session, kann aber Gelato-App nicht ändern):**
+  - `/pages/selbst-gestalten` = nur Hub mit `lspod-`-Produktkarten → verlinkt auf Gestalten-Produktseiten. `display:none` im Body sind NUR Filter (`.lspod-card.is-hidden`) + FAQ-Marker, NICHT der Editor.
+  - **Editor = Gelato** (`ecommerce-editor-connector.live.gelato.tech/.../shopify.esm.js`), sitzt auf den PRODUKTseiten (z.B. `/products/klassisches-unisex-t-shirt-selbst-gestalten`).
+  - **Mobile-HTML = Desktop-HTML identisch:** Gelato-Script (1×) + `ecommerce-editor` (2×) + `personalize` (1×) + **„Jetzt gestalten"-Buttons (2×) sind auf Mobile VORHANDEN.** **KEIN Mobile-Hide-CSS** für gelato/editor/personalize (theme-seitig nichts weggeschnitten).
+  - **→ Schlussfolgerung:** Theme/Repo-seitig fehlt nichts. Das Problem liegt **in der Gelato-App-Runtime/Mobile-Rendering** (deren Widget öffnet/rendert auf Mobile nicht), NICHT im Theme-Code. Konnte es nicht live testen (Cloud-Session hat keinen Browser, Proxy blockt Chromium).
+- **🔧 NÄCHSTE SCHRITTE (für POD/andere Session ODER User):** (1) Gelato-App-Einstellungen prüfen (Editor-Mobile-Toggle/„Personalize button"-Sichtbarkeit). (2) Auf echtem Handy testen: lädt das Gelato-Editor-Modal beim Tap auf „Jetzt gestalten"? (3) Falls die andere Session einen CUSTOM-Designer (designer.js-Worker/personalize.js) gebaut hat, prüfen ob der Worker auf Mobile 200 liefert. **Diese Session fasst die Gelato/POD-Konfig NICHT blind an (Territorium + Bruch-Risiko).**
