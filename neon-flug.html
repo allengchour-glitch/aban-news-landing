@@ -37,6 +37,7 @@ canvas{display:block}
 <div id="wrap"></div>
 <div id="hud"><span id="score">0</span><span class="best">Rekord <span id="best">0</span></span></div>
 <div id="flash"></div>
+<div id="upg" class="overlay hide" style="background:rgba(6,7,15,.82);backdrop-filter:blur(4px)"></div>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · 3D-Arcade</div>
@@ -131,10 +132,39 @@ function burst(x,y,z,color){
 
 // State
 var running=false,score=0,best=+(localStorage.getItem("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
+var shield=0,magnet=false,scoreMult=1,orbsCollected=0,nextUp=6,choosing=false;
 document.getElementById("best").textContent=best;
+
+var UPGRADES=[
+  {id:"magnet",name:"🧲 Magnet"},{id:"shield",name:"🛡️ Schild +1"},{id:"double",name:"✨ Doppel-Punkte"},
+  {id:"calm",name:"🐢 Ruhe (langsamer)"},{id:"orbs",name:"🟡 Mehr Orbs"}
+];
+var curChoices=[];
+function offerUpgrade(){
+  choosing=true;
+  curChoices=UPGRADES.slice().sort(function(){return Math.random()-0.5;}).slice(0,3);
+  var box=document.getElementById("upg");
+  box.innerHTML="<div style='font-weight:800;margin-bottom:12px'>⬆️ Upgrade wählen</div>"+
+    curChoices.map(function(u,i){return "<button class='btn' data-i='"+i+"' style='margin:6px;display:block;width:100%'>["+(i+1)+"] "+u.name+"</button>";}).join("");
+  box.classList.remove("hide");
+  box.querySelectorAll("button").forEach(function(b){b.onclick=function(){applyUpgrade(+b.getAttribute("data-i"));};});
+}
+function applyUpgrade(i){
+  if(i<0||i>=curChoices.length)return;
+  var id=curChoices[i].id;
+  if(id==="magnet")magnet=true;
+  else if(id==="shield")shield++;
+  else if(id==="double")scoreMult++;
+  else if(id==="calm")speed=Math.max(0.5,speed-0.15);
+  else if(id==="orbs")window._orbBoost=(window._orbBoost||0)+1;
+  choosing=false;document.getElementById("upg").classList.add("hide");
+  beep(520,.12,"triangle",.08);
+}
 
 function reset(){
   score=0;speed=0.6;targetX=0;shipX=0;shake=0;tick=0;
+  shield=0;magnet=false;scoreMult=1;orbsCollected=0;nextUp=6;choosing=false;window._orbBoost=0;
+  document.getElementById("upg").classList.add("hide");
   pillars.forEach(function(p){p.active=false;p.m.position.z=-200;});
   orbs.forEach(function(o){o.active=false;o.m.position.z=-200;});
 }
@@ -154,7 +184,7 @@ function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
 window.addEventListener("mousemove",function(e){if(running)setTarget(e.clientX);});
 window.addEventListener("touchmove",function(e){if(running&&e.touches[0]){setTarget(e.touches[0].clientX);e.preventDefault();}},{passive:false});
 var keyL=false,keyR=false;
-window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();});
+window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
 window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
 
 // Audio (WebAudio, kein Asset)
@@ -179,7 +209,8 @@ function spawn(){
     p.m.position.set(lane,p.h/2-2,spawnZ);p.active=true;
   }
   var fo=orbs.filter(function(o){return !o.active;});
-  if(fo.length&&Math.random()<.8){var o=fo[0];o.m.position.set(gap+(Math.random()*2-1),0,spawnZ-6);o.active=true;}
+  var orbProb=Math.min(0.99,0.8+0.12*(window._orbBoost||0));
+  if(fo.length&&Math.random()<orbProb){var o=fo[0];o.m.position.set(gap+(Math.random()*2-1),0,spawnZ-6);o.active=true;}
 }
 
 var lastSpawn=0;
@@ -187,7 +218,7 @@ function loop(t){
   requestAnimationFrame(loop);
   tick++;
   // ship movement
-  if(running){
+  if(running&&!choosing){
     if(keyL)targetX-=0.4;if(keyR)targetX+=0.4;
     targetX=Math.max(-7.5,Math.min(7.5,targetX));
     shipX+=(targetX-shipX)*0.18;
@@ -199,12 +230,16 @@ function loop(t){
     // move pillars
     pillars.forEach(function(p){if(!p.active)return;p.m.position.z+=speed;p.m.rotation.y+=0.005;
       if(p.m.position.z>14){p.active=false;p.m.position.z=-200;}
-      else if(Math.abs(p.m.position.z)<1.6&&Math.abs(p.m.position.x-shipX)<1.5){burst(shipX,0,0,0xff4d6d);beep(90,.3,"sawtooth",.12);gameOver();}
+      else if(Math.abs(p.m.position.z)<1.6&&Math.abs(p.m.position.x-shipX)<1.5){
+        if(shield>0){shield--;p.active=false;p.m.position.z=-200;burst(shipX,0,0,0x5ef2ff);beep(300,.2,"square",.1);shake=0.8;}
+        else{burst(shipX,0,0,0xff4d6d);beep(90,.3,"sawtooth",.12);gameOver();}
+      }
     });
     // orbs
     orbs.forEach(function(o){if(!o.active)return;o.m.position.z+=speed;o.m.rotation.x+=0.06;o.m.rotation.y+=0.05;
+      if(magnet&&o.m.position.z>-60){o.m.position.x+=(shipX-o.m.position.x)*0.05;}
       if(o.m.position.z>14){o.active=false;o.m.position.z=-200;}
-      else if(Math.abs(o.m.position.z)<1.4&&Math.abs(o.m.position.x-shipX)<1.4){o.active=false;o.m.position.z=-200;score+=1;document.getElementById("score").textContent=score;burst(shipX,0,0,0xffd166);beep(660+score*4,.1,"triangle",.07);}
+      else if(Math.abs(o.m.position.z)<1.4&&Math.abs(o.m.position.x-shipX)<1.4){o.active=false;o.m.position.z=-200;score+=scoreMult;orbsCollected++;document.getElementById("score").textContent=score;burst(shipX,0,0,0xffd166);beep(660+score*4,.1,"triangle",.07);if(orbsCollected>=nextUp){nextUp+=6;offerUpgrade();}}
     });
     document.getElementById("score").textContent=score;
   }
