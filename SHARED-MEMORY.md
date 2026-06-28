@@ -71,6 +71,13 @@
     2. Menü 17→5–7 Top-Level (sub-*-Collections nutzen) · 3. Startseite mobil entschlacken (20→6–8 Sections, 2,17 MB→<1 MB,
     Bild-`width=3840`→~1080) · 4. Lieferzeiten vereinheitlichen (3 widersprüchliche Angaben = Trust-Leck) · 5. Judge.me-Sterne
     auf Kacheln+Hero aktivieren. **→ Engpass bleibt Traffic-Qualität, aber diese Fixes heben die Conversion.**
+- **🔬 DETAIL-DEEPDIVE (06-27, Multi-Agenten) — `dropship/PRODUKT-DEEPDIVE-REPORT.md` + `dropship/TRAFFIC-ZU-KAEUFERN.md`:**
+  - **Produkt-Urteil ehrlich: KEIN klarer GO** — alle VORSICHT/SKIP. Beste bedingte Wetten: **1. Vakuum-Kleidersäcke (Akku, EU-Lager, ~72% Marge)
+    · 2. Katzen-Trinkbrunnen (Edelstahl, Filter=Recurring) · 3. MagSafe/Qi2-Auto-Halter (einziges Trend-↑).** SKIP: Vorratsdosen
+    (brand-gesättigt, Versand-Marge negativ), Bambus-Organizer (sperrig/Retouren), Gemüse-Chopper (Ad-Fatigue, GPSR/LFGB). EK = Schätzung, vor Import verifizieren.
+  - **Traffic-Report = der Kern:** Engpass ist **Traffic-Qualität, nicht Sortiment** (mehr Produkte/Posts = 0-Hebel, bewiesen).
+    Einzige Hebel zu ersten echten Käufen = **3 User-Klicks: AGB-Domain · TikTok-Pixel · Conversion-Kampagne 20 CHF/Tag (Ziel „Kauf", nicht „Reichweite")**.
+    Pinterest = bester Gratis-Kanal, greift aber erst ~Woche 6. 30-Tage-Fahrplan im Report (W1 gratis Funnel+Pinterest, W2–3 bezahlt, W4 auswerten).
 - **Reviews = Sackgasse (entschieden 06-27):** kein Judge.me-Token im Free-Plan + BigBuy hat KEINE Review-API +
   CJ nur ~3 → KEIN Reviews-Bot. Einziger Gratis-Weg: Judge.me-Auto-Mails (organisch, nach Käufen) o. manueller
   AliExpress-Import (Browser/PC-Claude). Nicht weiter jagen.
