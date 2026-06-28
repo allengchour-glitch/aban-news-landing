@@ -163,3 +163,9 @@
 ## Runde 24-Ernte — 🚗 Auto-Gadgets (Werkstatt-Kollege)
 - **+5 Reifen-Kompressoren/Inflatoren** (CHF 15.90/31.90/62.90/63.90/121.90) in auto-zubehoer — echte nützliche Auto-Gadgets, passen zum Werkstatt-/Auto-Winkel. Die 119 Auto-Kandidaten waren erstmal Kompressor-lastig → nächste auto-Welle holt OBD2/Starthilfe/Sauger (Anker decken sie ab). 1× CHF121.90 etwas hochpreisig (Marge), aber legit Profi-Kompressor.
 - **Nächster Tick:** auto-QA (Ersatzteile draften, Gadgets behalten) + SKU-Dedup.
+
+## Runde 25 — 🔧 Werkzeug + 🏕️ Survival + Männer-Sachen (User-Batch)
+- **werkzeug-Kategorie existierte** (coll elektriker-werkzeug, Anker schraubendreher/akkuschrauber/bohrer) → Welle gestartet. Passt zu Männer/Werkstatt-Kollege.
+- **survival-Kategorie NEU** (→ camping-outdoor, ES-Keywords: navaja multiusos/multitool, linterna táctica, kit de supervivencia, paracord, klappmesser, kompass). Männer/Outdoor/Gadget-Winkel.
+- **Männer-Abdeckung schon breit:** herrenmode (fur-ihn), auto, whisky, grill, werkzeug, survival, gaming — alles männer-leaning. Gut versorgt.
+- **Konsolen/Tablet:** BigBuy hat KEINE echten Konsolen (PS5/Xbox) — spanischer Distributor, nur Zubehör. Tablets = billige No-Name-IT (Junk-Risiko) → bewusst NICHT, audio/gaming-Zubehör deckt Elektronik-Gadgets ab.
