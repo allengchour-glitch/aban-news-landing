@@ -237,9 +237,9 @@ function reset(){
   orbs.forEach(function(o){o.active=false;o.m.position.z=-200;});
   gates.forEach(function(g){g.active=false;g.scored=false;g.m.position.z=-200;});
 }
-function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");}
+function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");startMusic();}
 function gameOver(){
-  running=false;shake=1.2;flash();
+  running=false;shake=1.2;flash();stopMusic();
   if(score>best){best=score;localStorage.setItem("aban_neon_best",best);}
   xp+=score;try{localStorage.setItem("aban_neon_xp",xp);}catch(e){}renderSkins();
   document.getElementById("best").textContent=best;
@@ -262,6 +262,24 @@ window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="ar
 var actx=null,muted=false; try{muted=localStorage.getItem("aban_neon_muted")==="1";}catch(e){}
 (function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";try{localStorage.setItem("aban_neon_muted",muted?"1":"0");}catch(e){}}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 function beep(freq,dur,type,vol){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=type||"sine";o.frequency.value=freq;g.gain.value=vol||.06;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(dur||.12));o.stop(actx.currentTime+(dur||.12));}catch(e){}}
+
+// Prozedurale Hintergrundmusik (WebAudio, kein Asset) — treibender Neon-Loop, Tempo steigt mit Speed.
+var music={timer:null,next:0,step:0,master:null};
+var MSCALE=[0,3,5,7,10]; // Moll-Pentatonik
+function mfreq(s){return 220*Math.pow(2,s/12);}
+function mtone(f,t,d,type,v){try{var o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(v,t+0.012);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.connect(g);g.connect(music.master||actx.destination);o.start(t);o.stop(t+d+0.03);}catch(e){}}
+function schedMusic(){
+  if(!actx||muted||paused||!running){if(actx)music.next=actx.currentTime;return;}
+  while(music.next<actx.currentTime+0.25){
+    var t=music.next, bpm=110+Math.min(50,speed*40), beat=60/bpm/2;
+    if(music.step%4===0)mtone(mfreq(MSCALE[0]-12),t,beat*4*0.9,"sawtooth",0.05);
+    var n=MSCALE[(music.step*2)%MSCALE.length]+((music.step%8)<4?0:12);
+    mtone(mfreq(n),t,beat*0.8,"triangle",0.04);
+    music.next+=beat;music.step++;
+  }
+}
+function startMusic(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return;}if(!music.master){music.master=actx.createGain();music.master.gain.value=0.9;music.master.connect(actx.destination);}music.next=actx.currentTime;music.step=0;if(music.timer)clearInterval(music.timer);music.timer=setInterval(schedMusic,40);}
+function stopMusic(){if(music.timer){clearInterval(music.timer);music.timer=null;}}
 
 document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
 document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
