@@ -45,6 +45,7 @@ canvas{display:block}
   <p>Steuere den Gleiter durch den Neon-Canyon. Weiche den Säulen aus, sammle die leuchtenden Orbs. Je weiter, desto schneller.</p>
   <p style="font-size:.85rem;color:#8890b8">Steuern: ← → / A D / Maus / Finger ziehen</p>
   <button class="btn" id="startBtn">Start ▶</button>
+  <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
   <div class="small">Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a></div>
 </div>
 
@@ -133,6 +134,11 @@ function burst(x,y,z,color){
 // State
 var running=false,score=0,best=+(localStorage.getItem("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
 var shield=0,magnet=false,scoreMult=1,orbsCollected=0,nextUp=6,choosing=false;
+// Tages-Challenge: deterministischer Seed pro Tag → alle spielen denselben Lauf, Score vergleichbar/teilbar.
+var dailyMode=false, dayNo=Math.floor((Date.now()/864e5)), _seed=0;
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var _srng=mulberry32(123);
+function rnd(){return dailyMode?_srng():Math.random();}
 document.getElementById("best").textContent=best;
 
 var UPGRADES=[
@@ -162,6 +168,7 @@ function applyUpgrade(i){
 }
 
 function reset(){
+  if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);
   score=0;speed=0.6;targetX=0;shipX=0;shake=0;tick=0;
   shield=0;magnet=false;scoreMult=1;orbsCollected=0;nextUp=6;choosing=false;window._orbBoost=0;
   document.getElementById("upg").classList.add("hide");
@@ -191,10 +198,12 @@ window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="ar
 var actx=null;
 function beep(freq,dur,type,vol){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=type||"sine";o.frequency.value=freq;g.gain.value=vol||.06;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(dur||.12));o.stop(actx.currentTime+(dur||.12));}catch(e){}}
 
-document.getElementById("startBtn").onclick=start;
+document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
+document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
 document.getElementById("againBtn").onclick=start;
 document.getElementById("shareBtn").onclick=function(){
-  var txt="Neon-Flug 🚀 — "+score+" Punkte (Rekord "+best+")\nSpiel gratis: abannews.com/neon-flug.html";
+  var tag=dailyMode?("Tages-Challenge #"+dayNo):"Endlos";
+  var txt="Neon-Flug 🚀 "+tag+" — "+score+" Punkte (Rekord "+best+")\nSpiel gratis: abannews.com/neon-flug.html";
   if(navigator.share){navigator.share({text:txt}).catch(function(){});}
   else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});}
 };
@@ -202,15 +211,15 @@ document.getElementById("shareBtn").onclick=function(){
 var spawnZ=-160;
 function spawn(){
   // pillar row with a gap
-  var gap=(Math.random()*10-5);
+  var gap=(rnd()*10-5);
   var freePillars=pillars.filter(function(p){return !p.active;});
   for(var s=0;s<2&&freePillars.length;s++){
-    var p=freePillars.pop();var lane=gap+(s===0?-4:4)+(Math.random()*2-1);
+    var p=freePillars.pop();var lane=gap+(s===0?-4:4)+(rnd()*2-1);
     p.m.position.set(lane,p.h/2-2,spawnZ);p.active=true;
   }
   var fo=orbs.filter(function(o){return !o.active;});
   var orbProb=Math.min(0.99,0.8+0.12*(window._orbBoost||0));
-  if(fo.length&&Math.random()<orbProb){var o=fo[0];o.m.position.set(gap+(Math.random()*2-1),0,spawnZ-6);o.active=true;}
+  if(fo.length&&rnd()<orbProb){var o=fo[0];o.m.position.set(gap+(rnd()*2-1),0,spawnZ-6);o.active=true;}
 }
 
 var lastSpawn=0;
