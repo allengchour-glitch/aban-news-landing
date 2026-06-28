@@ -2164,3 +2164,11 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **✅ CH-Stecker-Hinweis gesetzt auf 14 Netz-Geräten** (Elektrogrills/Vakuumierer/Kontaktgrill/Filterkaffeemaschine/Raclette/Sandwichmaker/Milchaufschäumer): „🇨🇭 Lieferung mit EU-Stecker (Typ F). Für CH-Steckdose T13 genügt günstiger Reiseadapter." Marker `<!--ls-plug-note-->`, Tool `/tmp/plugnote.mjs`. **Fehlmatch-Filter:** kein tasse/folie/beutel/kabellos/akku/usb/12v/moka/holzkohle/french-press (Moka/Holzkohle/Akku = kein Netzstecker).
 - **✅ Defensive Stecker-Bans** in Importer-Kategorien werkzeug/auto/home/beleuchtung ergänzt (steckdosenleiste/verlängerungskabel/kabeltrommel/regleta/alargador/ladrón/schuko) → power-distribution wird nie importiert.
 - **LOOP-REGEL fest:** Nach jedem Elektro-Import `/tmp/plugnote.mjs` LIVE laufen (Netz-Geräte → CH-Stecker-Hinweis). Pure Steckdosenleisten/Kabeltrommeln NIE (Euro/Schuko unbrauchbar in CH).
+
+---
+**🐛 2026-06-27 (KATEGORIE-FEHLMATCH-FIX + Bekleidung auffüllen — CJ/Theme-Session, User-Screenshot):**
+- **User-Screenshot:** Collection „🚁 Drohnen & Kameras" zeigte **SNEAKER** (Vans-Style Damen/Herren). Befund: **15 Sneaker waren als `drohne` getaggt** (alter loser drohne-Anker fing Schuhe) → in falscher Collection.
+- **✅ Gefixt:** 15 Sneaker umgetaggt `drohne`→`schuhe` (productType=Schuhe) statt gedraftet (echte gute Sneaker!) → raus aus Drohnen, **schuhe-Collection jetzt 146** (Bug weg + Schuhe aufgefüllt). Drohnen-Collection räumt async auf. Tool `/tmp/fix_drohne_shoes.mjs`.
+- **Survival-Fehlmatch:** „Kompass-Wanduhr" + „Zirkel" (Schul-Zirkel) matchten `kompass/brújula` → gedraftet + survival-ban um wanduhr/zirkel/uhr/schule gehärtet.
+- **NEU wandern-Kategorie** (ES senderismo/montaña/trekking) + Bekleidungs-Auffüllung läuft (schuhe/socken/damen/herren über Ticks, User „voll auffüllen").
+- **LEHRE:** Smart-Collections nach Umtaggen brauchen Minuten (async). Lose Anker (drohne→Schuhe, kompass→Uhr/Zirkel) immer per QA gegenprüfen + umtaggen statt draften wenn Produkt gut.
