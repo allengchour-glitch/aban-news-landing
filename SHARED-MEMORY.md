@@ -2172,3 +2172,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Survival-Fehlmatch:** „Kompass-Wanduhr" + „Zirkel" (Schul-Zirkel) matchten `kompass/brújula` → gedraftet + survival-ban um wanduhr/zirkel/uhr/schule gehärtet.
 - **NEU wandern-Kategorie** (ES senderismo/montaña/trekking) + Bekleidungs-Auffüllung läuft (schuhe/socken/damen/herren über Ticks, User „voll auffüllen").
 - **LEHRE:** Smart-Collections nach Umtaggen brauchen Minuten (async). Lose Anker (drohne→Schuhe, kompass→Uhr/Zirkel) immer per QA gegenprüfen + umtaggen statt draften wenn Produkt gut.
+
+---
+**🗂️ 2026-06-27 (KATEGORIE-/MENÜ-AUDIT — User „kategorie mit hilfe anpassen?", CJ/Theme-Session):**
+- **Menü auditiert** (main-menu gid 310224093569, 17 Top-Level): **alle neuen Kategorien sind bereits auffindbar** — Gaming/Audio/Smartwatch/Auto→„Trends & Gadgets", Werkzeug→„🔧 Werkzeug & Garten", Survival/Wandern→„Camping & Outdoor", Whisky/Bar→„Garten·Outdoor → Bar & Wein/Gläser". **Nichts fehlt.**
+- **Beobachtung (Galaxus-Research):** Menü ist umfassend aber lang (17 Top-Level, Mega-Menüs mit 18–22 Items = flach statt 3-Ebenen-Filter). Die dokumentierte Konsolidierung (17→~10 Departments) **NICHT umgesetzt** — `menuUpdate` ersetzt das GANZE Menü (Datenverlust-Risiko) UND betrifft Garten/Wohnen/Wellness = **andere Session**. Braucht klares User-OK + Koordination, nicht blind. Socken evtl. nicht direkt im Frauen/Herren-Untermenü (Sub-Add = auch full menuUpdate, riskant) → offen.
+- **Bekleidung-Auffüllung läuft** (schuhe+socken +10, jetzt damenmode+herrenmode) — User „voll auffüllen".
