@@ -148,3 +148,6 @@
 ## Runde 23-Ernte — Tier-A ES-Keywords getestet
 - **whisky = 2 Treffer** (Whiskygläser-Sets CHF75.90/85.90) — ES `vasos de whisky` ✓ funktioniert, in bar-wein-accessoires.
 - **touchlampen = 0** (`lámparas de amistad` nicht in BigBuy), **ultraschall = 1 Kandidat/0 Pick** (`limpiador de joyas` quasi leer). → Beide ES-Keywords haben kaum BigBuy-Stock. **Lehre:** Nicht jeder Tier-A-Trend ist bei BigBuy (spanisch) verfügbar — whisky ja, Friendship-Lamps/Ultraschall nein. Diese 2 aus Rotation, whisky behalten.
+
+## Runde 23-Politur — bar-wein-accessoires aufgewertet
+- Desc war 136ch → Premium-Beschreibung (Whisky-Sets/Weingläser/Cocktail-Tools + Trust + WELCOME10) + frischer SEO-Titel/Desc. Passend, da Whiskygläser gerade dort landen.
