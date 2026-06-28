@@ -1,11 +1,11 @@
 {
-  "ts": "2026-06-27 21:53 UTC",
-  "files": 134,
-  "score": 91.6,
+  "ts": "2026-06-27 22:13 UTC",
+  "files": 135,
+  "score": 100.0,
   "counts": {
     "hoch": 0,
     "mittel": 0,
-    "niedrig": 21,
+    "niedrig": 0,
     "fix": 0
   }
 }
