@@ -160,6 +160,10 @@ function loadReels() {
         cap = cap.replace(/\s*[·\-–]*\s*[–-]?10\s*%?\s*(mit\s*)?WELCOME10/gi, '').replace(/  +/g, ' ').trim();
       if (reels.length % 3 === 2 && cap && !/Schweizer Shop|sichere Bstellig|TWINT/.test(cap))
         cap += `\n${TRUST_LINES[reels.length % TRUST_LINES.length]}`;
+      // SHARE/SAVE-CTA SICHERSTELLEN (Algo-Lehre 2026-06-28: Shares+Saves wiegen weit mehr als Likes, Rewatch=Top-Signal).
+      // Hat die Caption keinen Teil-/Speicher-Hinweis -> einen rotierenden TRIGGER (alle share/save/tag-orientiert) anhaengen.
+      if (cap && !/(schick|teil|markier|↗️|spicher|speicher|💾|merk['’]?s|folg)/i.test(cap))
+        cap += `\n${TRIGGERS[reels.length % TRIGGERS.length]}`;
       seen.add(video); reels.push({ type: 'reel', video, caption: cap });
     }
     // NEUESTE ZUERST (Self-Improve 2026-06-23): neue Reels werden ans CSV-Ende angehängt → umdrehen,
