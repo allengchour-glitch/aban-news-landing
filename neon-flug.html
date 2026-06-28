@@ -165,6 +165,7 @@ var shield=0,magnet=false,orbsCollected=0,nextUp=6,choosing=false,paused=false;
 var combo=0,comboTimer=0,comboTime=180,nearWindow=1.6,orbValue=1;
 var dashCharge=0,dashActive=false,dashTimer=0,dashRecharge=0.0035;
 var biomeIndex=0,phaseTimer=1320;
+var gauntlet=0,gauntTimer=600;
 var BIOMES=[
   {name:"CYAN-SEKTOR",fog:0x06070f,accent:0x5ef2ff},
   {name:"MAGENTA-ZONE",fog:0x0c0610,accent:0xff7ad9},
@@ -204,8 +205,8 @@ function renderSkins(){var el=document.getElementById("skins");if(!el)return;var
 
 // i18n DE/EN
 var T={
-  de:{startTag:"aban news · 3D-Arcade",intro:'Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.',controls:"Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen",start:"Start ▶",daily:"🗓️ Tages-Challenge",startFoot:'Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a>',over:"Game Over",again:"Nochmal ▶",share:"Ergebnis teilen 📋",copied:"Kopiert 📋",overFoot:'5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a>',best:"Rekord",pauseTxt:"Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.",setTitle:"Einstellungen",sound:"Ton",lang:"Sprache",on:"an",off:"aus",skin:"Skin",xpTotal:"Gesamt-XP",nextSkin:"nächster Skin bei",allFree:"alle frei 🏆",locked:"🔒",newRec:"Neuer Rekord! 🏆",verdicts:["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"],upgrade:"⬆️ Upgrade wählen",endless:"Endlos",dailyTag:"Tages-Challenge",pts:"Punkte",playFree:"Gratis spielen"},
-  en:{startTag:"aban news · 3D arcade",intro:'Fly the glider through the neon canyon. Graze obstacles (near-miss = <b>Combo ×</b>), grab orbs, fly through <b>rings</b> for a PERFECT bonus, charge your <b>Dash</b>. The further you go, the faster it gets.',controls:"Move: ← → / A D / mouse / finger · Dash: SPACE / ↑ / tap",start:"Start ▶",daily:"🗓️ Daily Challenge",startFoot:'Runs in your browser, no download · <a href="/online-tools.html">more tools</a>',over:"Game Over",again:"Again ▶",share:"Share result 📋",copied:"Copied 📋",overFoot:'5 min of AI without hype, on weekdays — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">free newsletter →</a>',best:"Best",pauseTxt:"Press <b>ESC</b> / <b>P</b> or the button to resume.",setTitle:"Settings",sound:"Sound",lang:"Language",on:"on",off:"off",skin:"Skin",xpTotal:"Total XP",nextSkin:"next skin at",allFree:"all unlocked 🏆",locked:"🔒",newRec:"New record! 🏆",verdicts:["Practice makes perfect!","Solid!","Nicely flown!","Getting better!"],upgrade:"⬆️ Choose an upgrade",endless:"Endless",dailyTag:"Daily Challenge",pts:"pts",playFree:"Play free"}
+  de:{startTag:"aban news · 3D-Arcade",intro:'Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.',controls:"Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen",start:"Start ▶",daily:"🗓️ Tages-Challenge",startFoot:'Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a>',over:"Game Over",again:"Nochmal ▶",share:"Ergebnis teilen 📋",copied:"Kopiert 📋",overFoot:'5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a>',best:"Rekord",pauseTxt:"Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.",setTitle:"Einstellungen",sound:"Ton",lang:"Sprache",on:"an",off:"aus",skin:"Skin",xpTotal:"Gesamt-XP",nextSkin:"nächster Skin bei",allFree:"alle frei 🏆",locked:"🔒",newRec:"Neuer Rekord! 🏆",verdicts:["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"],upgrade:"⬆️ Upgrade wählen",endless:"Endlos",dailyTag:"Tages-Challenge",pts:"Punkte",playFree:"Gratis spielen",gauntlet:"TOR-WELLE!"},
+  en:{startTag:"aban news · 3D arcade",intro:'Fly the glider through the neon canyon. Graze obstacles (near-miss = <b>Combo ×</b>), grab orbs, fly through <b>rings</b> for a PERFECT bonus, charge your <b>Dash</b>. The further you go, the faster it gets.',controls:"Move: ← → / A D / mouse / finger · Dash: SPACE / ↑ / tap",start:"Start ▶",daily:"🗓️ Daily Challenge",startFoot:'Runs in your browser, no download · <a href="/online-tools.html">more tools</a>',over:"Game Over",again:"Again ▶",share:"Share result 📋",copied:"Copied 📋",overFoot:'5 min of AI without hype, on weekdays — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">free newsletter →</a>',best:"Best",pauseTxt:"Press <b>ESC</b> / <b>P</b> or the button to resume.",setTitle:"Settings",sound:"Sound",lang:"Language",on:"on",off:"off",skin:"Skin",xpTotal:"Total XP",nextSkin:"next skin at",allFree:"all unlocked 🏆",locked:"🔒",newRec:"New record! 🏆",verdicts:["Practice makes perfect!","Solid!","Nicely flown!","Getting better!"],upgrade:"⬆️ Choose an upgrade",endless:"Endless",dailyTag:"Daily Challenge",pts:"pts",playFree:"Play free",gauntlet:"GAUNTLET!"}
 };
 var lang=localStorage.getItem("aban_neon_lang")||((navigator.language||"").indexOf("de")===0?"de":"en");
 if(lang!=="de"&&lang!=="en")lang="de";
@@ -263,7 +264,7 @@ function reset(){
   shield=0;magnet=false;orbValue=1;orbsCollected=0;nextUp=6;choosing=false;paused=false;window._orbBoost=0;
   document.getElementById("pause").classList.add("hide");
   combo=0;comboTimer=0;comboTime=180;nearWindow=1.6;dashCharge=0;dashActive=false;dashTimer=0;dashRecharge=0.0035;
-  biomeIndex=0;phaseTimer=1320;applyBiome(0);
+  biomeIndex=0;phaseTimer=1320;gauntlet=0;gauntTimer=600;applyBiome(0);
   document.getElementById("combo").textContent="";document.getElementById("dashfill").style.width="0";
   document.getElementById("upg").classList.add("hide");
   pillars.forEach(function(p){p.active=false;p.m.position.z=-200;});
@@ -329,13 +330,16 @@ document.getElementById("shareBtn").onclick=function(){
 
 var spawnZ=-160;
 function spawn(){
-  // pillar row with a gap
+  // pillar row with a gap (in der Tor-Welle: engere Lücke, keine Orbs)
+  var tight=gauntlet>0;
   var gap=(rnd()*10-5);
+  var off=tight?2.9:4;
   var freePillars=pillars.filter(function(p){return !p.active;});
   for(var s=0;s<2&&freePillars.length;s++){
-    var p=freePillars.pop();var lane=gap+(s===0?-4:4)+(rnd()*2-1);
+    var p=freePillars.pop();var lane=gap+(s===0?-off:off)+(rnd()*(tight?1:2)-(tight?0.5:1));
     p.m.position.set(lane,p.h/2-2,spawnZ);p.active=true;p.scored=false;
   }
+  if(tight)return;
   var fo=orbs.filter(function(o){return !o.active;});
   var orbProb=Math.min(0.99,0.8+0.12*(window._orbBoost||0));
   if(fo.length&&rnd()<orbProb){var o=fo[0];o.m.position.set(gap+(rnd()*2-1),0,spawnZ-6);o.active=true;}
@@ -358,7 +362,10 @@ function loop(t){
     var cs=speed+(dashActive?0.9:0);
     if(combo>0){comboTimer--;if(comboTimer<=0)combo=0;}
     phaseTimer--;if(phaseTimer<=0){phaseTimer=1320;biomeIndex++;var bb=applyBiome(biomeIndex);speed+=0.05;announce("» "+bb.name+" «",bb.accent);beep(180,.4,"sawtooth",.1);}
-    if(tick>80&&tick-lastSpawn>Math.max(18,42-speed*8)){spawn();lastSpawn=tick;}
+    // Tor-Welle (Boss-artiger Rhythmus-Peak): dichte Engstellen-Sektion, angekündigt.
+    gauntTimer--;if(gauntTimer<=0&&gauntlet<=0&&tick>200){gauntlet=150;gauntTimer=960;announce("⚠ "+tr("gauntlet"),0xff4d6d);beep(140,.5,"sawtooth",.1);}
+    if(gauntlet>0)gauntlet--;
+    if(tick>80&&tick-lastSpawn>(gauntlet>0?14:Math.max(18,42-speed*8))){spawn();lastSpawn=tick;}
     // move pillars
     pillars.forEach(function(p){if(!p.active)return;p.m.position.z+=cs;p.m.rotation.y+=0.005;
       var pdx=Math.abs(p.m.position.x-shipX);
