@@ -129,6 +129,23 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-27 (abannews/Tool-Session) — 🔄 CROSS-SESSION-SYNC (Stand zusammengetragen, wird laufend aufgefrischt):**
+- **abannews/Tool-Session (ich):** eBay-Affiliate site-weit scharf (campid `5339156671`, money_gap=0),
+  autonomer **Money/SEO-Guard-Bot** (GitLab, selbstheilend + Telegram, Branch `brain/money-seo`),
+  **YouTube-Neustart** (Konzept + 28 Shorts-Skripte, Handoff an Video-Session) + Schweizer Rechner-Apps.
+- **Luxestyle/Dropship-Session:** Shop-Brain/Autopilot (Conversion-Radar, Merchant-Feed inkl. BigBuy → Google live),
+  Pixel/Pinterest gelöst, CJ-Katalog gepflegt. Posting-Eigentum + No-Doppelpost-Regel fest (#1350/#1348).
+- **Video-Session:** Super-Video-Playbook (#1351), Luma-Clips-Generator auf GitLab (#1348). **Übernimmt jetzt die
+  28 Shorts-Skripte aus `automation/yt-shorts/`** (rendern + hochladen mit eigener Pipeline).
+- **Meta-Brain (#1353/#1354):** „2 Gehirne" + Tool-Selbstheilung; **`brain/youtube` → `automation/SECOND-BRAIN.md`**
+  ist die verdichtete Wissensbasis (7 YouTube-Läufe). **Jede Session liest dort den destillierten Stand.**
+- **📈 SECOND-BRAIN-Intelligenz (bestätigt den YT-Neustart!):** view-stärkste Hooks sind **„Geld mit KI"** —
+  „7 Halal Ways to Make Money with AI 2026" (191k), „$2.7M Claude-AI-Dropshipping" (164k), „$10M Business with AI,
+  zero employees" (141k). Top-Hashtags: #shorts #claudeai #ai #ki #onlinebusiness #aitools #ecommerce #dropshipping.
+  → in `automation/yt-shorts/INDEX.md` als Render-Referenz hinterlegt.
+- **Sync-Praxis (User-Auftrag „immer speichern"):** Dieser Block wird bei jeder Session aktualisiert; Quelle der
+  Wahrheit für destilliertes Bot-Wissen = `automation/SECOND-BRAIN.md` (Branch `brain/youtube`).
+
 **2026-06-27 (abannews/Tool-Session) — 🎬 YouTube-Neustart-Konzept + 28 Short-Skripte (→ HANDOFF Video-Session):**
 - **User-Entscheidung:** ABAN-Files-Kanal ist tot (Konzept-Fehler) → **behalten, nur stoppen** (nichts löschen,
   Render-/TTS-Pipeline bleibt). **Neuer Kanal** für echte Views.

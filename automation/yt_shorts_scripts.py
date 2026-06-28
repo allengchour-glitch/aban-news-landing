@@ -143,7 +143,12 @@ def main() -> int:
     existing = sorted(q.stem for q in OUT.glob("*.md") if q.name != "INDEX.md")
     idx = ["# YouTube-Shorts — Skript-Queue", "",
            "Entwürfe aus den Website-Guides (Konzept: docs/YOUTUBE-NEUSTART-2026.md).",
-           "Feinschliff → rendern (Pipeline/Tool) → Upload (YouTube-API).", ""]
+           "Feinschliff → rendern (Pipeline/Tool) → Upload (YouTube-API).", "",
+           "## 📈 Intelligenz aus SECOND-BRAIN (Branch `brain/youtube`, Cross-Session)",
+           "View-staerkste Hook-Muster = GELD MIT KI: 'X Ways to Make Money with AI 2026',",
+           "'$Xk mit Claude-AI', 'Build a $XM Business with AI, zero employees'. → Hooks danach formulieren.",
+           "**Hashtags (Konsens):** #shorts #claudeai #ai #ki #onlinebusiness #aitools #ecommerce #dropshipping",
+           "**Format:** 50-60s, eigene Stimme (Algo-Bonus), Untertitel Pflicht, klarer Hook in 3s.", ""]
     idx += [f"- [ ] `{n}.md`" for n in existing]
     (OUT / "INDEX.md").write_text("\n".join(idx) + "\n", encoding="utf-8")
 
