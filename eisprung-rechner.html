@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eisprung-Rechner — fruchtbare Tage & Eisprung berechnen · aban news</title>
+<meta name="description" content="Kostenloser Eisprung-Rechner: fruchtbare Tage, voraussichtlichen Eisprung und nächste Periode aus dem letzten Periodenstart und der Zykluslänge berechnen. Orientierung, keine Verhütung. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/eisprung-rechner.html">
+<meta property="og:title" content="Eisprung-Rechner — fruchtbare Tage & Eisprung">
+<meta property="og:description" content="Fruchtbare Tage, Eisprung & nächste Periode aus Zyklusdaten. Orientierung, keine Verhütung. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/eisprung-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Eisprung-Rechner",
+"url":"https://abannews.com/eisprung-rechner.html","applicationCategory":"HealthApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet fruchtbare Tage, voraussichtlichen Eisprung und nächste Periode aus letztem Periodenstart und Zykluslänge. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wann ist der Eisprung?","acceptedAnswer":{"@type":"Answer","text":"Der Eisprung findet typischerweise rund 14 Tage vor der nächsten Periode statt — bei einem 28-Tage-Zyklus also etwa an Zyklustag 14. Der Rechner nimmt deine Zykluslänge und rechnet von der erwarteten nächsten Periode 14 Tage zurück."}},
+{"@type":"Question","name":"Welche Tage sind fruchtbar?","acceptedAnswer":{"@type":"Answer","text":"Das fruchtbare Fenster umfasst grob die fünf Tage vor dem Eisprung und den Eisprungtag selbst, weil Spermien mehrere Tage überleben. Der Rechner markiert dieses Fenster."}},
+{"@type":"Question","name":"Kann ich das zur Verhütung nutzen?","acceptedAnswer":{"@type":"Answer","text":"Nein. Diese Schätzung ist nur eine grobe Orientierung (z. B. bei Kinderwunsch). Der echte Eisprung schwankt von Zyklus zu Zyklus. Zur Verhütung ist die Methode nicht sicher — sprich mit deiner Ärztin/deinem Arzt. Alles wird nur lokal berechnet."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.res{margin-top:6px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:18px;text-align:center}
+.res .big{font-size:clamp(20px,5vw,28px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.88rem;color:var(--ink2);margin-top:4px}
+.rows{margin-top:14px;display:grid;gap:7px;font-size:.92rem}
+.rows div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:7px}
+.rows b{color:var(--ink2)}.rows span{font-weight:700;text-align:right}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Eisprung &amp; fruchtbare Tage</span></h1>
+    <p>Berechne voraussichtlichen Eisprung, fruchtbares Fenster und nächste Periode aus deinem letzten Periodenstart und der Zykluslänge. Orientierung bei Kinderwunsch. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Eisprung ≈ 14 Tage vor der nächsten Periode; fruchtbar sind die ~5 Tage davor + der Eisprungtag. Nur eine Schätzung, <strong>nicht zur Verhütung</strong> geeignet. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div class="fld"><label for="lmp">Erster Tag der letzten Periode</label><input id="lmp" type="date"></div>
+      <div class="fld"><label for="zyklus">Zykluslänge (Tage)</label><input id="zyklus" type="number" inputmode="numeric" value="28" min="20" max="45"></div>
+    </div>
+    <div class="res"><div class="big" id="o-es">—</div><div class="sub" id="o-es-sub">voraussichtlicher Eisprung</div></div>
+    <div class="rows" id="rows"></div>
+    <p class="note">Annahme: Eisprung = nächste Periode − 14 Tage; fruchtbares Fenster Eisprung −5 bis +1 Tag. Echte Zyklen schwanken — Orientierung, keine Verhütung, kein Arztersatz.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">rund um Zyklus &amp; Schwangerschaft.</p>
+    <p><a class="btn" href="/ssw-rechner.html">SSW &amp; Geburtstermin</a>
+      <a class="btn ghost" href="/zeitspanne-rechner.html">Zeitspanne</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">5 Minuten KI ohne Hype — jeden Werktag</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/ssw-rechner.html">SSW-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function parse(v){if(!v)return null;var p=v.split("-");var d=new Date(+p[0],+p[1]-1,+p[2]);return isNaN(d)?null:d;}
+  function pad(n){return String(n).padStart(2,"0");}
+  function fmt(d){var wd=["So","Mo","Di","Mi","Do","Fr","Sa"][d.getDay()];return wd+", "+pad(d.getDate())+"."+pad(d.getMonth()+1)+"."+d.getFullYear();}
+  function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
+  function calc(){
+    var lmp=parse(document.getElementById("lmp").value),z=parseInt(document.getElementById("zyklus").value,10);
+    if(isNaN(z)||z<20)z=28;
+    var es=document.getElementById("o-es"),sub=document.getElementById("o-es-sub"),rows=document.getElementById("rows");
+    if(!lmp){es.textContent="—";sub.textContent="Datum der letzten Periode wählen.";rows.innerHTML="";return;}
+    var naechste=add(lmp,z);
+    var eisprung=add(naechste,-14);
+    var fStart=add(eisprung,-5), fEnd=add(eisprung,1);
+    es.textContent=fmt(eisprung);
+    sub.textContent="voraussichtlicher Eisprung (Zyklustag "+(z-14)+")";
+    var html="";
+    html+='<div><b>Fruchtbare Tage</b><span>'+pad(fStart.getDate())+"."+pad(fStart.getMonth()+1)+". – "+fmt(fEnd)+'</span></div>';
+    html+='<div><b>Nächste Periode</b><span>'+fmt(naechste)+'</span></div>';
+    html+='<div><b>Zykluslänge</b><span>'+z+' Tage</span></div>';
+    rows.innerHTML=html;
+  }
+  var d0=new Date();d0.setDate(d0.getDate()-7);
+  document.getElementById("lmp").value=d0.getFullYear()+"-"+pad(d0.getMonth()+1)+"-"+pad(d0.getDate());
+  ["lmp","zyklus"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSW-Rechner — Schwangerschaftswoche & Geburtstermin · aban news</title>
+<meta name="description" content="Kostenloser SSW-Rechner: aktuelle Schwangerschaftswoche (SSW) und voraussichtlichen Geburtstermin aus dem ersten Tag der letzten Periode berechnen — mit Zykluslänge, Trimester und Resttagen. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/ssw-rechner.html">
+<meta property="og:title" content="SSW-Rechner — Schwangerschaftswoche & Geburtstermin">
+<meta property="og:description" content="Aktuelle SSW & voraussichtlicher Geburtstermin aus der letzten Periode — mit Trimester & Resttagen. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/ssw-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"SSW-Rechner",
+"url":"https://abannews.com/ssw-rechner.html","applicationCategory":"HealthApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet die aktuelle Schwangerschaftswoche (SSW) und den voraussichtlichen Geburtstermin aus dem ersten Tag der letzten Periode, inkl. Zykluslänge und Trimester. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie wird der Geburtstermin berechnet?","acceptedAnswer":{"@type":"Answer","text":"Nach der Naegele-Regel: erster Tag der letzten Periode plus 280 Tage (40 Wochen). Bei einem von 28 Tagen abweichenden Zyklus wird die Differenz dazugerechnet. Nur etwa 4 % der Babys kommen genau am errechneten Termin — er ist eine Orientierung, kein fixes Datum."}},
+{"@type":"Question","name":"Was bedeutet SSW 12+3?","acceptedAnswer":{"@type":"Answer","text":"Das sind 12 abgeschlossene Schwangerschaftswochen plus 3 Tage. Gezählt wird ab dem ersten Tag der letzten Periode — du bist rechnerisch also schon rund 2 Wochen „schwanger“, bevor die Befruchtung stattfand."}},
+{"@type":"Question","name":"Ersetzt das den Arzt?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Rechner gibt eine Orientierung. Die verbindliche SSW und der Termin werden ärztlich per Ultraschall bestimmt. Bei Fragen wende dich an deine Frauenärztin oder Hebamme. Alles wird nur lokal berechnet."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+input{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.res{margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.res{grid-template-columns:1fr}}
+.rc{background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:16px;text-align:center}
+.rc .lab{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);font-weight:700}
+.rc .big{font-size:clamp(22px,5.5vw,30px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.rc .u{font-size:.74rem;color:var(--muted)}
+.bar{height:12px;border-radius:7px;background:var(--field);border:1px solid var(--line);overflow:hidden;margin:14px 0 4px}
+.bar i{display:block;height:100%;background:var(--amber-dk)}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">SSW &amp; Geburtstermin</span> berechnen</h1>
+    <p>In welcher Schwangerschaftswoche bist du, und wann ist der voraussichtliche Termin? Aus dem ersten Tag der letzten Periode — mit Zykluslänge, Trimester und Resttagen. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Gezählt wird ab dem <strong>1. Tag der letzten Periode</strong> (Naegele-Regel, + 280 Tage). Nur ~4 % kommen genau am Termin — er ist eine Orientierung. Verbindlich ist der Ultraschall. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div class="fld"><label for="lmp">Erster Tag der letzten Periode</label><input id="lmp" type="date"></div>
+      <div class="fld"><label for="zyklus">Zykluslänge (Tage)</label><input id="zyklus" type="number" inputmode="numeric" value="28" min="20" max="45"></div>
+    </div>
+    <div class="res">
+      <div class="rc"><div class="lab">Aktuelle SSW</div><div class="big" id="o-ssw">—</div><div class="u" id="o-ssw-u"></div></div>
+      <div class="rc"><div class="lab">Voraussichtlicher Termin</div><div class="big" id="o-termin">—</div><div class="u" id="o-termin-u"></div></div>
+    </div>
+    <div class="bar"><i id="o-bar" style="width:0%"></i></div>
+    <div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>SSW 0</span><span id="o-tri"></span><span>SSW 40</span></div>
+    <p class="note">Naegele: Termin = letzte Periode + 280 Tage (± Zyklusabweichung von 28). SSW „X+Y" = X volle Wochen + Y Tage seit der letzten Periode. Orientierung, kein Arztersatz.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">rund um Zyklus &amp; Datum.</p>
+    <p><a class="btn" href="/eisprung-rechner.html">Eisprung-Rechner</a>
+      <a class="btn ghost" href="/zeitspanne-rechner.html">Zeitspanne</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">5 Minuten KI ohne Hype — jeden Werktag</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/eisprung-rechner.html">Eisprung-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function parse(v){if(!v)return null;var p=v.split("-");var d=new Date(+p[0],+p[1]-1,+p[2]);return isNaN(d)?null:d;}
+  function pad(n){return String(n).padStart(2,"0");}
+  function fmt(d){var wd=["So","Mo","Di","Mi","Do","Fr","Sa"][d.getDay()];return wd+", "+pad(d.getDate())+"."+pad(d.getMonth()+1)+"."+d.getFullYear();}
+  function calc(){
+    var lmp=parse(document.getElementById("lmp").value),z=parseInt(document.getElementById("zyklus").value,10);
+    if(isNaN(z))z=28;
+    var ssw=document.getElementById("o-ssw"),sswU=document.getElementById("o-ssw-u"),
+        ter=document.getElementById("o-termin"),terU=document.getElementById("o-termin-u"),
+        bar=document.getElementById("o-bar"),tri=document.getElementById("o-tri");
+    if(!lmp){ssw.textContent="—";sswU.textContent="Datum der letzten Periode wählen.";ter.textContent="—";terU.textContent="";bar.style.width="0%";tri.textContent="";return;}
+    var termin=new Date(lmp);termin.setDate(termin.getDate()+280+(z-28));
+    var today=new Date();today.setHours(0,0,0,0);
+    var tage=Math.floor((today-lmp)/86400000);
+    if(tage<0){ssw.textContent="—";sswU.textContent="Datum liegt in der Zukunft.";ter.textContent=fmt(termin);terU.textContent="";bar.style.width="0%";tri.textContent="";return;}
+    var w=Math.floor(tage/7),d=tage%7;
+    ssw.textContent="SSW "+(w+1);
+    sswU.textContent=w+"+"+d+" (≈ "+w+" volle Wochen)";
+    ter.textContent=fmt(termin);
+    var rest=Math.ceil((termin-today)/86400000);
+    terU.textContent=rest>0?("noch "+rest+" Tage"):(rest===0?"heute!":"Termin überschritten ("+(-rest)+" T.)");
+    bar.style.width=Math.max(0,Math.min(100,tage/280*100))+"%";
+    tri.textContent= w<13?"1. Trimester" : w<27?"2. Trimester" : "3. Trimester";
+  }
+  // default LMP: heute - 8 Wochen
+  var d0=new Date();d0.setDate(d0.getDate()-56);
+  document.getElementById("lmp").value=d0.getFullYear()+"-"+pad(d0.getMonth()+1)+"-"+pad(d0.getDate());
+  ["lmp","zyklus"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
