@@ -134,3 +134,13 @@
 ## Runde 21-Politur — sommer-2026 (323p) Beschreibung aufgewertet
 - War: dünn (136ch). Jetzt: Premium-Saison-Beschreibung (Sub-Linien Grill/Kühlung/Kaffee/Outdoor + Trust + WELCOME10 + saisonaler Tipp). Hero+SEO waren schon ok.
 - **⚠️ Politur-Territorium:** `beauty-geraete` (393p) + `waerme-komfort` (213p, Wellness) haben Hero✗/SEO✗ — gehören aber der ANDEREN Session (Beauty/Wellness laut CLAUDE.md) → NICHT angefasst, nur flaggen. Meine Politur-Kandidaten: sommer-2026✓, beleuchtung-lampen, bar-wein-accessoires, kinderspielzeug, schuhe-sneaker, camping-schlafen, klima-ventilatoren.
+
+## Runde 22 — 2026-06-27 (🤝 Research der ANDEREN Session genutzt!)
+**Quelle:** `dropship/RESEARCH-CRO-PRODUKTE-2026-06-24.md` (andere Session, 2 YouTube/Web-Recherche-Agenten).
+- **🎯 Tier-A-Trendprodukte mit ES-Keywords übernommen** (BigBuy=spanisch → ES-Anker führen). Bestätigt meinen Sonnenaufgangswecker = ihr Tier-A „Lichtwecker". **3 neue Import-Kategorien angelegt** (brechen die Kategorie-Decke):
+  - `whisky` → bar-wein-accessoires (ES `piedras de whisky / vasos de whisky / set de whisky`)
+  - `touchlampen` → beleuchtung-lampen (ES `lámparas de amistad / lámpara táctil` — emotionales Paar-Geschenk, Top-Marge)
+  - `ultraschall` → trend-gadgets (ES `limpiador ultrasónico / limpiador de joyas` — Schmuck+Brillen-Synergie)
+  - (Heated Mug `taza calentadora` ist schon im kaffee-Anker.)
+- **CRO-Backlog aus ihrem Doc (ehrlich, für später):** Gratis-Versand-Fortschrittsbalken im Cart-Drawer („Noch CHF X bis gratis") = höchster Cart-Hebel; Varianten als Pills (44px); Produkt-Video als 2. Galeriebild. Fake-Scarcity bleibt verboten (deckt sich mit meiner Guardrail).
+- **Bestätigte gemeinsame Lehre:** ES-Keywords führen, Problemlöser > „cooler Junk", Premium-Marken (Dyson) NIE bulk-importieren (×2.6-Marge = absurd).
