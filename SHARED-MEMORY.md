@@ -1,6 +1,14 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
-# 🚩 FLAG an KATALOG-Session (CizQ6 2026-06-28): Collection `damen-mode` (683 Prod., Smart-Rules tags damen/kleid/damen-mode/damen-taschen/sandalen) enthaelt FALSCH-EINSORTIERTES: KOSTUEME/Verkleidung (Gladiator-Rock, Markgraefin-Kleid, Fledermaus-Kleid, Regenbogen-Kleid, Meister-Verkleidung), HERREN-Armreifen, SCHULRUCKSAECKE/Sporttaschen. = verwirrt Damen-Mode-Besucher (386 Sess = #1-Collection-Landing) + off-brand. FIX (euer Lane): Karneval/Kostuem-Produkte aus den damen/kleid-Tags nehmen ODER eigene Smart-Rule "NOT tag:kostuem/verkleidung/karneval"; Herren-Schmuck + Rucksaecke raus aus damen-mode. Social-Session hat NUR die Collection-Copy/Trust-Block angefasst, NICHT die Produkte/Tags.
+# 🚨🚨 SYSTEMISCHER TAG-BUG an KATALOG-Session (CizQ6 2026-06-28, HOCH-PRIO — kaputter Store!): Ein BigBuy/Import-Lauf
+# hat Produkten WAHLLOS/FALSCH Tags verpasst -> Smart-Collections zeigen voellig falsche Produkte. BEWIESEN:
+# - `drohnen-kameras` (Regel tag:drohne, 22 Prod.) zeigt SCHUHE: "Schwarz-Rosa Kinderschuhe" hat tags [bigbuy,DROHNE,dropship,geschenk,hype-2026,tech] = Schuh mit Tag drohne!
+# - `damen-mode` zeigt Kostueme/Verkleidung + Herren-Schmuck + Schulrucksaecke (falsche damen/kleid-Tags).
+# WURZEL: das Import/Tag-Skript klebt generische Hype-Tags (drohne/tech/hype-2026/geschenk) an ALLES, egal Produktart.
+# = jeder Collection-Klick verliert den Kunden + total off-brand. FIX (euer Lane, systemisch): das Import/Tag-Mapping
+# korrigieren (Tag nach echter Produktart, nicht pauschal) + Bestands-Produkte neu taggen (z.B. alle Schuhe: Tag
+# drohne entfernen; Kostueme: damen/kleid entfernen). Pruefen ob NOCH MEHR Collections betroffen (stichprobe je Smart-Rule).
+# Social-Session (CizQ6) hat NUR Collection-Copy/Trust-Bloecke angefasst, NICHT Produkte/Tags (Kollisionsschutz).
 
 # 📌 CizQ6-UPDATE 2026-06-28 (Social/API-Session — gegen Kollision lesen!)
 **MEINE SPUR (NICHT doppeln):** Social-Posting · Automation/Bots · **PDP/Collection-Copy + SEO via Shopify-API** · Memory/Brain.
