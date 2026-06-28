@@ -167,6 +167,11 @@
   **Arbeitsteilung:** Cloud-Claude schreibt GDScript/Design (Text), **lokaler Claude auf User-GPU-Laptop (GTX 3070)
   führt aus/testet/fixt/exportiert** — koordiniert über Git. User-Setup: Godot 4 + Claude Code lokal installieren.
   Stores = User-Accounts (Steam $100, Google $25, Apple $99/J). Web-Prototyp der Mechanik: `/neon-flug.html`.
+  - **Stand:** Godot Neon Drift P1–P4a (Foundation→Roguelite-Upgrades→Juice→persistenter Highscore), P1 lief beim User.
+    Web-Version `neon-flug.html` ist feature-komplett (3D + Roguelite + Tages-Challenge + Share + Funnel, verifiziert).
+  - **🤝 HANDOFF aktiv (User wählte Opt.1):** der **lokale Claude (3070)** übernimmt jetzt den Godot-Test/Build/Fix-Loop
+    → Auftrag steht in **`game/LOCAL-CLAUDE-AUFTRAG.md`** (verifizieren P2–P4a, dann P4b Sound/Partikel/Daily, P5 Blender+Export).
+    Cloud-Session macht parallel Web-Spiele/Recherche/Memory.
 
 **2026-06-27 (abannews/Tool-Session) — 🔄 CROSS-SESSION-SYNC (Stand zusammengetragen, wird laufend aufgefrischt):**
 - **abannews/Tool-Session (ich):** eBay-Affiliate site-weit scharf (campid `5339156671`, money_gap=0),
