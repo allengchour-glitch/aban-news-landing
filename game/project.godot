@@ -1,0 +1,37 @@
+; aban Spielentwickler-Bot — Godot 4 Projekt (Foundation)
+; In Godot 4.x öffnen: "Import" → diese project.godot wählen.
+; Lokaler Claude (auf dem GPU-Laptop) baut/testet/exportiert von hier.
+
+config_version=5
+
+[application]
+
+config/name="Neon Drift (aban)"
+config/description="Flüssiges 3D-Arcade-Roguelite. Ein Codebase → Steam, Android, iOS, Web."
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1152
+window/size/viewport_height=648
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[input]
+
+move_left={
+"deadzone": 0.2,
+"events": []
+}
+move_right={
+"deadzone": 0.2,
+"events": []
+}
+
+[rendering]
+
+renderer/rendering_method="forward_plus"
+environment/defaults/default_clear_color=Color(0.024, 0.027, 0.059, 1)

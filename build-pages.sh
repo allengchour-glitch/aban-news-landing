@@ -39,6 +39,7 @@ tar -cf - \
   --exclude='./.github' \
   --exclude='./_site' \
   --exclude='./node_modules' \
+  --exclude='./game' \
   --exclude='./video-prototypes' \
   --exclude='./reels' \
   --exclude='./social' \

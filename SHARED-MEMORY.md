@@ -147,6 +147,12 @@
 - **Tooling-Realität (für alle):** Umgebung = node+python, **KEIN Blender/Godot/GPU**. 3D nur via WebGL (Three.js,
   rendert auf Spieler-GPU). Natives Steam-Spiel nicht autonom baubar → Web→Electron-Wrap oder Godot; Steam-Release = User.
 - Jedes Spiel = Traffic-Magnet → Newsletter/Pro/Affiliate. Verkauf als HTML5-Template (itch.io) = User-Konto.
+- **🚀 GROSSES STEAM-PROJEKT (User 2026-06-28):** Engine-Entscheidung = **Godot 4** (gratis, ein Codebase →
+  Steam+Android+iOS+Web). Foundation gescaffoldet in **`game/`** (project.godot + Main.gd, code-only, läuft;
+  `GAME-DESIGN.md` = volle Vision „Neon Drift" Arcade-Roguelite). Aus dem Web-Build ausgeschlossen (build-pages.sh).
+  **Arbeitsteilung:** Cloud-Claude schreibt GDScript/Design (Text), **lokaler Claude auf User-GPU-Laptop (GTX 3070)
+  führt aus/testet/fixt/exportiert** — koordiniert über Git. User-Setup: Godot 4 + Claude Code lokal installieren.
+  Stores = User-Accounts (Steam $100, Google $25, Apple $99/J). Web-Prototyp der Mechanik: `/neon-flug.html`.
 
 **2026-06-27 (abannews/Tool-Session) — 🔄 CROSS-SESSION-SYNC (Stand zusammengetragen, wird laufend aufgefrischt):**
 - **abannews/Tool-Session (ich):** eBay-Affiliate site-weit scharf (campid `5339156671`, money_gap=0),
