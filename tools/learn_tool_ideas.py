@@ -37,6 +37,7 @@ IDEAS = [
     ("ferien-anspruch-rechner", "Ferien-Anspruch-Rechner", "Anteilige Ferientage pro rata (Eintritt/Austritt, Pensum)", 2, ["ferientage-rechner"]),
     ("zinssatz-vergleich", "Effektiver-Zins-Rechner", "Nominal- vs. Effektivzins eines Kredits", 3, ["effektivzins-rechner"]),
     ("kalorien-defizit", "Abnehm-Rechner (Kaloriendefizit)", "Defizit & Dauer bis Zielgewicht (mit Disclaimer)", 2, ["abnehm-rechner","kaloriendefizit-rechner"]),
+    ("seo-roi-rechner", "SEO-ROI-Rechner (KMU)", "Lohnt sich SEO? Traffic × Conversion × Auftragswert vs. Budget (Recherche-validiert 2026)", 2, ["seo-rechner","roi-seo-rechner"]),
 ]
 
 def existing_slugs():

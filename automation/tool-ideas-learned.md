@@ -4,7 +4,7 @@
 > baut sie sauber (eigene Recherche/Quellen, keine erfundenen Zahlen), und beim nächsten
 > Lauf fällt sie via Bestands-Dedupe raus. Nicht manuell abarbeiten nötig.
 
-Stand: 2026-06-28 17:22 UTC · 13 offen · 5 bereits abgedeckt
+Stand: 2026-06-28 18:36 UTC · 14 offen · 5 bereits abgedeckt
 
 ## ▶️ Offen (nach Priorität)
 - **P2** `eigenmietwert-rechner.html` — **Eigenmietwert-Rechner (CH)**: Grobschätzung Eigenmietwert + Steuer-Effekt (Richtwert)
@@ -13,6 +13,7 @@ Stand: 2026-06-28 17:22 UTC · 13 offen · 5 bereits abgedeckt
 - **P2** `koerperfett-rechner.html` — **Körperfett-Rechner**: Körperfettanteil per Umfang-Methode (US-Navy)
 - **P2** `quadratmeter-preis.html` — **Quadratmeterpreis-Rechner**: Preis pro m² aus Preis & Fläche (Miete/Kauf vergleichen)
 - **P2** `rentenluecke-rechner.html` — **Rentenlücke-Rechner (CH)**: Grobe Vorsorgelücke 1./2./3. Säule abschätzen
+- **P2** `seo-roi-rechner.html` — **SEO-ROI-Rechner (KMU)**: Lohnt sich SEO? Traffic × Conversion × Auftragswert vs. Budget (Recherche-validiert 2026)
 - **P2** `teilzeit-lohn-rechner.html` — **Teilzeit-Lohn-Rechner**: Lohn & Pensum umrechnen (100 % ↔ Teilzeit)
 - **P2** `wasserbedarf-rechner.html` — **Wasserbedarf-Rechner**: Täglicher Trinkbedarf nach Gewicht & Aktivität (Faustregel)
 - **P3** `kalorien-verbrennen.html` — **Kalorienverbrauch-Rechner**: Verbrauchte Kalorien je Sportart & Dauer (MET-Werte)
