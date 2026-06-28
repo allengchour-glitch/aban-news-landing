@@ -142,7 +142,10 @@
 - **Charter + Ideen-Backlog: `docs/SPIELENTWICKLER-BOT.md`** (zuerst lesen). Regeln: originale, self-contained
   Browser-Spiele (kein Backend, mobil, deutsch), kein IP kopieren, Branch+PR, aus `online-tools.html` verlinken,
   fremde Lanes (dropship/video/social) nicht anfassen.
-- **Erstes Spiel live:** `wort-des-tages.html` (tägliches Worträtsel, Share-Grid, Newsletter-Funnel).
+- **Spiele live:** `wort-des-tages.html` (tägliches Worträtsel) + `neon-flug.html` (**flüssiges 3D-WebGL-Arcade**,
+  Three.js lokal in `js/vendor/three.min.js`). Beide aus `online-tools.html` verlinkt, Newsletter-Funnel.
+- **Tooling-Realität (für alle):** Umgebung = node+python, **KEIN Blender/Godot/GPU**. 3D nur via WebGL (Three.js,
+  rendert auf Spieler-GPU). Natives Steam-Spiel nicht autonom baubar → Web→Electron-Wrap oder Godot; Steam-Release = User.
 - Jedes Spiel = Traffic-Magnet → Newsletter/Pro/Affiliate. Verkauf als HTML5-Template (itch.io) = User-Konto.
 
 **2026-06-27 (abannews/Tool-Session) — 🔄 CROSS-SESSION-SYNC (Stand zusammengetragen, wird laufend aufgefrischt):**
