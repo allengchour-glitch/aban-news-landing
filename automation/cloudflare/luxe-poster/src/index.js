@@ -379,7 +379,11 @@ async function run(env, doPost = true) {
     const ig = await postInstagram(ids, item).catch((e) => ({ error: String(e) }));
     const fb = await postFacebook(ids, item).catch((e) => ({ error: String(e) }));
     const tt = await postTikTok(item, env).catch((e) => ({ error: String(e) }));
-    if (ig.ok || fb.ok || tt.ok) await env.LUXE_KV.put("cursor", String(cursor + 1));
+    // CURSOR-RESILIENZ (User 2026-06-28 „alles auto 24/7"): IMMER weiterruecken, auch wenn ein Post scheitert.
+    // SONST haengt der Worker bei einem fehlschlagenden Item ewig fest (z.B. Meta-Token-Scope-Fehler) und spamt
+    // dasselbe -> tote Maschine, die sich wie „laeuft" anfuehlt. Bei Fehler zykelt er jetzt den Content weiter;
+    // sobald die Creds wieder stimmen, postet er ab dem aktuellen Cursor. (Queue loopt -> kein Content geht verloren.)
+    await env.LUXE_KV.put("cursor", String(cursor + 1));
     out.index = cursor; out.item = item.caption.split("\n")[0]; out.ig = ig; out.fb = fb; out.tt = tt;
     // Post-Log (Observability): letzte 40 Posts mit Erfolg pro Kanal -> abrufbar via ?health=1
     try {
