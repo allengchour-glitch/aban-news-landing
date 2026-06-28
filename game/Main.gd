@@ -59,6 +59,7 @@ var cam_base_x := 0.0
 var run_time := 0.0
 var spawn_timer := 0.0
 var stripe_timer := 0.0
+var gate_timer := 0.0
 
 # Combo / Flow
 var combo := 0
@@ -93,6 +94,7 @@ var target_fov := 72.0
 var obstacles: Array = []
 var orbs: Array = []
 var stripes: Array = []
+var gates: Array = []
 
 # Nodes
 var player: MeshInstance3D
@@ -399,6 +401,10 @@ func _process_play(delta: float) -> void:
 	if stripe_timer <= 0.0:
 		_spawn_stripe()
 		stripe_timer = 0.25
+	gate_timer -= delta
+	if gate_timer <= 0.0:
+		_spawn_gate()
+		gate_timer = max(4.0, 8.0 - run_time * 0.04)
 
 	# --- Combo-Verfall ---
 	if combo > 0:
@@ -409,6 +415,7 @@ func _process_play(delta: float) -> void:
 	_update_obstacles(cur_speed, delta)
 	_update_orbs(cur_speed, delta)
 	_update_stripes(cur_speed, delta)
+	_update_gates(cur_speed, delta)
 
 	cam_base_x = lerp(cam_base_x, player.position.x * 0.42, 0.08)
 	_update_hud()
@@ -464,6 +471,47 @@ func _spawn_stripe() -> void:
 	s.position = Vector3(0, -1.48, -200)
 	add_child(s)
 	stripes.append(s)
+
+
+# Bonus-Ringe (Skill-Event, Rhythmuswechsel): durchfliegen = großer Combo/Score/Dash-Bonus.
+func _spawn_gate() -> void:
+	var g := MeshInstance3D.new()
+	var rm := TorusMesh.new()
+	rm.inner_radius = 2.2
+	rm.outer_radius = 2.6
+	g.mesh = rm
+	g.rotation_degrees = Vector3(90, 0, 0)
+	var c: Color = _biome()["edge"]
+	g.material_override = _mat(c, c)
+	g.position = Vector3(rng.randf_range(-5.0, 5.0), 0.4, -210)
+	g.set_meta("scored", false)
+	add_child(g)
+	gates.append(g)
+
+
+func _update_gates(cur_speed: float, delta: float) -> void:
+	for g in gates.duplicate():
+		g.position.z += cur_speed * delta
+		g.rotate_z(delta * 1.2)
+		if not g.get_meta("scored", false) and abs(g.position.z) < 1.5 and abs(g.position.x - player.position.x) < 2.2:
+			g.set_meta("scored", true)
+			_ring_bonus(g.position)
+		if g.position.z > 14.0:
+			gates.erase(g)
+			g.queue_free()
+
+
+func _ring_bonus(pos: Vector3) -> void:
+	combo += 3
+	combo_timer = combo_time
+	var bonus := 5 * _mult()
+	score += bonus
+	dash_charge = min(1.0, dash_charge + 0.5)
+	shake = max(shake, 0.3)
+	_flash(_biome()["edge"], 0.4)
+	_burst(pos, _biome()["edge"], 28, 9.0)
+	_announce("PERFEKT! +%d" % bonus, _biome()["edge"])
+	_play("levelup")
 
 
 func _update_obstacles(cur_speed: float, delta: float) -> void:
@@ -716,6 +764,7 @@ func _start(daily: bool) -> void:
 	run_time = 0.0
 	spawn_timer = 0.0
 	stripe_timer = 0.0
+	gate_timer = 0.0
 	combo = 0
 	combo_timer = 0.0
 	combo_time = 3.0
@@ -781,6 +830,9 @@ func _clear_world() -> void:
 		orb.queue_free()
 	for s in stripes:
 		s.queue_free()
+	for g in gates:
+		g.queue_free()
+	gates.clear()
 	obstacles.clear()
 	orbs.clear()
 	stripes.clear()
