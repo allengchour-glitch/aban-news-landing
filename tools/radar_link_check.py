@@ -80,12 +80,19 @@ def main() -> int:
             status, err = fut.result()
             results.append((r, n, u, status, err))
 
+    # TLS-/SSL-Handshake-Fehler = Server ist da (DNS löst, TLS-Layer antwortet),
+    # aber der Bot/Proxy kann den Handshake nicht aushandeln (Cipher-/Fingerprint-
+    # Quirk). Im echten Browser läuft die Seite i. d. R. → NICHT als „tot" werten,
+    # sondern als „lebt, TLS-Quirk (ggf. prüfen)". Echt tot = DNS/refused/404/410.
+    TLS_HINTS = ("ssl", "tlsv1 alert", "certificate", "sslerror", "ssleof")
+
     broken, botblock = [], []
     for r, n, u, status, err in results:
         ok = status is not None and status < 400
         if ok:
             continue
-        if any(d in u for d in KNOWN_BOT_BLOCKERS) or status in WAF_STATUS:
+        tls_quirk = bool(err) and any(h in err.lower() for h in TLS_HINTS)
+        if any(d in u for d in KNOWN_BOT_BLOCKERS) or status in WAF_STATUS or tls_quirk:
             botblock.append((r, n, u, status, err))
         else:
             broken.append((r, n, u, status, err))
@@ -94,7 +101,7 @@ def main() -> int:
     print(f"OK: {len(tasks)-len(broken)-len(botblock)} · Bot-Sperre (vermutlich ok): "
           f"{len(botblock)} · echte Probleme: {len(broken)}")
     for r, n, u, status, err in botblock:
-        print(f"  ~ [{r}] {n}: {u} (WAF {status or err} — vermutlich ok)")
+        print(f"  ~ [{r}] {n}: {u} (lebt/Quirk: {status or err} — vermutlich ok)")
     for r, n, u, status, err in broken:
         print(f"  ✗ [{r}] {n}: {u} -> {status or ''} {err}")
     if not broken:
