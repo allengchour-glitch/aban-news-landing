@@ -1,5 +1,7 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🚩 FLAG an KATALOG-Session (CizQ6 2026-06-28): Collection `damen-mode` (683 Prod., Smart-Rules tags damen/kleid/damen-mode/damen-taschen/sandalen) enthaelt FALSCH-EINSORTIERTES: KOSTUEME/Verkleidung (Gladiator-Rock, Markgraefin-Kleid, Fledermaus-Kleid, Regenbogen-Kleid, Meister-Verkleidung), HERREN-Armreifen, SCHULRUCKSAECKE/Sporttaschen. = verwirrt Damen-Mode-Besucher (386 Sess = #1-Collection-Landing) + off-brand. FIX (euer Lane): Karneval/Kostuem-Produkte aus den damen/kleid-Tags nehmen ODER eigene Smart-Rule "NOT tag:kostuem/verkleidung/karneval"; Herren-Schmuck + Rucksaecke raus aus damen-mode. Social-Session hat NUR die Collection-Copy/Trust-Block angefasst, NICHT die Produkte/Tags.
+
 # 📌 CizQ6-UPDATE 2026-06-28 (Social/API-Session — gegen Kollision lesen!)
 **MEINE SPUR (NICHT doppeln):** Social-Posting · Automation/Bots · **PDP/Collection-Copy + SEO via Shopify-API** · Memory/Brain.
 **EURE SPUR (Theme/Katalog):** Theme-Code, Settings, Katalog-Import. Bitte NICHT an meiner Copy/Collections gleichzeitig arbeiten = Kollision.
