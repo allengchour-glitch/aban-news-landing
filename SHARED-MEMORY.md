@@ -136,6 +136,37 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+### 🤝 HANDOFF — „Tools/Apps/Gehirne"-Session (Stand 2026-06-28, für andere Sessions zuerst lesen)
+**Was diese Session besitzt & gebaut hat (abannews, voll-lokal, kein Server/Token):**
+- **Hub = 182 Karten in `online-tools.html`** (~155 echte voll-lokale Tools + Branchen-/CH-Links). Jedes Tool:
+  self-contained HTML, Inline-CSS Amber-Theme + Dark-Mode, 2× JSON-LD (WebApplication+FAQPage),
+  `data-aban-news-cta` (Newsletter) + `data-aban-hublink` (zurück zum Hub), Logik in letztem `<script>`.
+- **🇨🇭 Schweizer Geld-Serie (9 Apps) + Landing `schweizer-geld-center.html`:** hypothek-tragbarkeit,
+  schweizer-lohnrechner, saeule-3a-rechner, krankenkassen-franchise-rechner, arbeitgeberkosten-rechner,
+  mwst-rechner-schweiz, feiertage-arbeitstage-kanton, mietzins-senkung-rechner, pensionskasse-einkauf-rechner.
+- **App `freelancer-cockpit.html`** (6 Module, localStorage) · **Lead-Magnet `gratis-ki-prompts.html`**.
+- **Klick-Insights** (transparent, OFF): `js/click-insights.js` + `functions/api/click.js|click-stats.js` +
+  `klick-statistik.html` — Setup `automation/KLICK-INSIGHTS-SETUP.md`. NICHT auf „kein Tracking"-Seiten.
+
+**3 Gehirne / Routine-Loop (jede Charge so fahren):**
+`python3 tools/daily_improvement_scan.py --fix` (Inhalt/SEO) `&& python3 tools/tool_brain.py --fix`
+(Tool-Technik) `&& python3 tools/learn_tool_ideas.py` (Ideen-Backlog → `automation/tool-ideas-learned.md`,
+aktuell 18 offen). Beide Score-Gehirne 100/100. Doku: `automation/BRAIN.md`.
+
+**Arbeitsweise (bewährt):** je Charge eigener `claude/<thema>`-Branch → PR → **squash-merge nach `main`**
+(GitHub-MCP). Build-Artefakte vor Commit verwerfen (`git checkout -- automation/brain-state.json brain.html
+reports/IMPROVEMENT-REPORT.md automation/tool-brain-state.json`). Validierung je Tool: JSON-LD parsen,
+`node --check` des Logik-Scripts, 0 Null-Bytes, `tools/check_internal_links.py`, Mathe per `node` gegenrechnen.
+
+**Leitplanken / Lehren:** keine erfundenen Zahlen (offizielle Sätze fix, Variables als Eingabe + „prüfen"-Hinweis);
+vor Bau Slug-Check inkl. Singular/Plural/Bindestrich/Synonyme (Dubletten-Falle); Sitemap-Einträge NACH eigenem
+Anker einfügen (Parallel-Session-Konflikte); **verstecktes Tracking ist tabu** (Marke „kein Tracking" auf 84 Seiten).
+NICHT anfassen: video-prototypes/reels/social/pod/dropship/luxestyle.
+
+**Offen — nur User:** `DOWNLOAD_SALT` (Kit-Downloads) & `CF_WEB_ANALYTICS_TOKEN` in `js/analytics.js` setzen;
+3 Newsletter (`data/newsletter-versandbereit*.md`) via beehiiv senden; YouTube-Paket `data/youtube-ankuendigung.md` hochladen.
+**Detail-Memory:** `PROJEKT.md`.
+
 **2026-06-28 — 📊 Klick-Insights (transparent, OFF by default):** Verstecktes Tracking wurde ABGELEHNT
 (bricht „kein Tracking" auf 84 Seiten + DSGVO). Stattdessen anonymer, cookieloser Klick-Zähler gebaut,
 **standardmäßig AUS**: `js/click-insights.js`, `functions/api/click.js` (KV `CLICK_KV`), `functions/api/click-stats.js`
