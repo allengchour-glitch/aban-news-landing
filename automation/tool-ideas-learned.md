@@ -4,12 +4,9 @@
 > baut sie sauber (eigene Recherche/Quellen, keine erfundenen Zahlen), und beim nächsten
 > Lauf fällt sie via Bestands-Dedupe raus. Nicht manuell abarbeiten nötig.
 
-Stand: 2026-06-28 10:22 UTC · 18 offen · 0 bereits abgedeckt
+Stand: 2026-06-28 15:51 UTC · 15 offen · 3 bereits abgedeckt
 
 ## ▶️ Offen (nach Priorität)
-- **P1** `eisprung-rechner.html` — **Eisprung-/Fruchtbarkeits-Rechner**: Fruchtbare Tage & Eisprung aus Zyklusdaten
-- **P1** `promille-rechner.html` — **Promille-Rechner**: Blutalkohol nach Widmark schätzen (mit klarem Disclaimer)
-- **P1** `ssw-rechner.html` — **Schwangerschaftswochen-Rechner**: SSW & voraussichtlicher Geburtstermin aus letzter Periode
 - **P2** `benzin-vs-elektro.html` — **Benzin-vs-Elektro-Rechner**: Spritkosten vs. Stromkosten pro 100 km vergleichen
 - **P2** `eigenmietwert-rechner.html` — **Eigenmietwert-Rechner (CH)**: Grobschätzung Eigenmietwert + Steuer-Effekt (Richtwert)
 - **P2** `ferien-anspruch-rechner.html` — **Ferien-Anspruch-Rechner**: Anteilige Ferientage pro rata (Eintritt/Austritt, Pensum)
@@ -27,4 +24,6 @@ Stand: 2026-06-28 10:22 UTC · 18 offen · 0 bereits abgedeckt
 - **P3** `zinssatz-vergleich.html` — **Effektiver-Zins-Rechner**: Nominal- vs. Effektivzins eines Kredits
 
 ## ✅ Bereits abgedeckt (Dedupe)
-- (keine)
+- `promille-rechner` → vorhanden als `promille-rechner.html`
+- `ssw-rechner` → vorhanden als `ssw-rechner.html`
+- `eisprung-rechner` → vorhanden als `eisprung-rechner.html`

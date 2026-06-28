@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promille-Rechner — Blutalkohol schätzen (Widmark) · aban news</title>
+<meta name="description" content="Kostenloser Promille-Rechner: Blutalkohol nach der Widmark-Formel aus Getränken, Gewicht und Geschlecht schätzen — inkl. Abbauzeit bis 0,5 ‰ und 0,0 ‰. Nur eine grobe Schätzung, nie zum Fahren. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/promille-rechner.html">
+<meta property="og:title" content="Promille-Rechner — Blutalkohol schätzen (Widmark)">
+<meta property="og:description" content="Blutalkohol nach Widmark aus Getränken, Gewicht & Geschlecht schätzen, inkl. Abbauzeit. Grobe Schätzung, nie fahren. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/promille-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Promille-Rechner",
+"url":"https://abannews.com/promille-rechner.html","applicationCategory":"HealthApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Schätzt den Blutalkohol nach der Widmark-Formel aus Getränken, Gewicht und Geschlecht, inklusive Abbauzeit. Nur eine grobe Schätzung. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie wird der Promillewert berechnet?","acceptedAnswer":{"@type":"Answer","text":"Mit der Widmark-Formel: Promille = Alkoholmenge in Gramm geteilt durch (Körpergewicht in kg × Verteilungsfaktor). Der Faktor ist bei Männern rund 0,7 und bei Frauen rund 0,6. Pro Stunde baut der Körper grob 0,1 bis 0,15 ‰ ab. All das sind Durchschnittswerte."}},
+{"@type":"Question","name":"Wie genau ist das Ergebnis?","acceptedAnswer":{"@type":"Answer","text":"Es ist nur eine grobe Schätzung. Der echte Wert hängt von vielen Dingen ab: was und wann du gegessen hast, Tagesform, Medikamente, individueller Abbau. Verlass dich niemals darauf, ob du fahren darfst — der einzige sichere Wert ist 0,0 ‰."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#b91c1c;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--ok:#34d399;--bad:#f87171;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.alert{max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef2f2;border:1px solid #fecaca;border-left:4px solid #b91c1c;border-radius:10px;color:#7f1d1d;font-size:.9rem;line-height:1.5}
+@media(prefers-color-scheme:dark){.alert{background:#3a1c1c;border-color:#7f1d1d;color:#fecaca}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;margin-bottom:14px}
+.seg button{flex:1;font-size:.86rem;padding:8px 12px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:700}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}
+.unit input{font:inherit;padding:11px 44px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.82rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.drinks{display:flex;gap:8px;flex-wrap:wrap;margin:-2px 0 10px}
+.drinks button{font-size:.82rem;padding:6px 10px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:600}
+.res{margin-top:6px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:18px;text-align:center}
+.res .big{font-size:clamp(30px,8vw,46px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em;line-height:1}
+.res .sub{font-size:.9rem;color:var(--ink2);margin-top:6px}
+.rows{margin-top:14px;display:grid;gap:7px;font-size:.92rem}
+.rows div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:7px}
+.rows b{color:var(--ink2)}.rows span{font-weight:700;text-align:right}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Promille-Rechner</span></h1>
+    <p>Schätze deinen Blutalkohol nach der Widmark-Formel — aus Getränken, Gewicht und Geschlecht, inkl. Abbauzeit. Lokal im Browser.</p>
+  </section>
+  <p class="alert">⚠️ <strong>Nur eine grobe Schätzung — niemals als Freigabe zum Fahren!</strong> Der echte Wert schwankt stark (Essen, Tagesform, Medikamente). Der einzige sichere Wert zum Fahren ist <strong>0,0 ‰</strong>. Im Zweifel: stehen lassen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div class="fld"><label>Geschlecht</label>
+        <div class="seg" id="sex"><button data-s="m" class="on">Mann</button><button data-s="w">Frau</button></div></div>
+      <div class="fld"><label for="kg">Körpergewicht</label><div class="unit"><input id="kg" type="number" inputmode="decimal" value="75" min="30"><span>kg</span></div></div>
+    </div>
+    <div class="cols">
+      <div class="fld"><label for="ml">Getrunkene Menge</label><div class="unit"><input id="ml" type="number" inputmode="decimal" value="500" min="0"><span>ml</span></div>
+        <div class="drinks"><button type="button" data-ml="330" data-v="5">Bier 0,33</button><button type="button" data-ml="500" data-v="5">Bier 0,5</button><button type="button" data-ml="100" data-v="12">Wein 1dl</button><button type="button" data-ml="40" data-v="40">Schnaps 4cl</button></div></div>
+      <div class="fld"><label for="vol">Alkoholgehalt</label><div class="unit"><input id="vol" type="number" inputmode="decimal" value="5" step="0.1"><span>%</span></div></div>
+    </div>
+    <div class="fld"><label for="std">Stunden seit dem ersten Getränk</label><div class="unit"><input id="std" type="number" inputmode="decimal" value="1" step="0.5" min="0"><span>h</span></div></div>
+    <div class="res"><div class="big" id="o-bak">—</div><div class="sub" id="o-sub">geschätzte Promille</div></div>
+    <div class="rows" id="rows"></div>
+    <p class="note">Widmark: ‰ = Alkohol(g) ÷ (kg × Faktor); Faktor ♂ ≈ 0,7 / ♀ ≈ 0,6; Abbau ≈ 0,15 ‰/h. Alkohol(g) = ml × %/100 × 0,8. Grobe Schätzung, keine medizinische/rechtliche Auskunft.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Gesundheit &amp; Alltag.</p>
+    <p><a class="btn" href="/kalorienbedarf-rechner.html">Kalorienbedarf</a>
+      <a class="btn ghost" href="/bmi-rechner.html">BMI-Rechner</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">5 Minuten KI ohne Hype — jeden Werktag</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/bmi-rechner.html">BMI-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var sex="m", ABBAU=0.15;
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function calc(){
+    var kg=num("kg"),ml=num("ml"),vol=num("vol"),std=num("std");
+    var big=document.getElementById("o-bak"),sub=document.getElementById("o-sub"),rows=document.getElementById("rows");
+    if(!isFinite(kg)||kg<=0||!isFinite(ml)||!isFinite(vol)){big.textContent="—";sub.textContent="Gewicht & Getränk eingeben.";rows.innerHTML="";return;}
+    var faktor=sex==="m"?0.7:0.6;
+    var gramm=ml*(vol/100)*0.8;
+    var bakPeak=gramm/(kg*faktor);          // ‰ ohne Abbau
+    var abbau=ABBAU*(isFinite(std)&&std>0?std:0);
+    var bak=Math.max(0,bakPeak-abbau);
+    big.textContent=bak.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" ‰";
+    sub.textContent="geschätzte Promille jetzt";
+    var html="";
+    html+='<div><b>Reiner Alkohol</b><span>'+gramm.toLocaleString("de-DE",{maximumFractionDigits:1})+" g</span></div>";
+    html+='<div><b>Höchstwert (ohne Abbau)</b><span>'+bakPeak.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" ‰</span></div>";
+    // Abbauzeit bis Grenzen ab JETZT
+    function bis(grenze){var d=bak-grenze;if(d<=0)return "erreicht";var h=d/ABBAU;var hh=Math.floor(h),mm=Math.round((h-hh)*60);return (hh>0?hh+" h ":"")+mm+" min";}
+    html+='<div><b>Bis 0,5 ‰</b><span>'+bis(0.5)+'</span></div>';
+    html+='<div><b>Bis 0,3 ‰</b><span>'+bis(0.3)+'</span></div>';
+    html+='<div><b>Bis 0,0 ‰ (nüchtern)</b><span>'+bis(0)+'</span></div>';
+    rows.innerHTML=html;
+  }
+  document.querySelectorAll("#sex button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#sex button").forEach(function(x){x.classList.remove("on");});this.classList.add("on");sex=this.getAttribute("data-s");calc();});});
+  document.querySelectorAll("[data-ml]").forEach(function(b){b.addEventListener("click",function(){
+    document.getElementById("ml").value=this.getAttribute("data-ml");document.getElementById("vol").value=this.getAttribute("data-v");calc();});});
+  ["kg","ml","vol","std"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
