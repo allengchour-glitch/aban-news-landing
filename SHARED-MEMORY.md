@@ -136,6 +136,13 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-28 — 📊 Klick-Insights (transparent, OFF by default):** Verstecktes Tracking wurde ABGELEHNT
+(bricht „kein Tracking" auf 84 Seiten + DSGVO). Stattdessen anonymer, cookieloser Klick-Zähler gebaut,
+**standardmäßig AUS**: `js/click-insights.js`, `functions/api/click.js` (KV `CLICK_KV`), `functions/api/click-stats.js`
+(Env `CLICK_STATS_KEY`), `klick-statistik.html` (noindex). NICHT auf „kein Tracking"-Seiten verdrahtet.
+Aktivierung + Datenschutz-Textbaustein: `automation/KLICK-INSIGHTS-SETUP.md`. Einfacher Weg: Cloudflare
+Web Analytics (`js/analytics.js`, Token fehlt noch).
+
 **2026-06-28 — 🧰 Tools/Apps-Session (Reichweite, voll-lokal, Detail in `PROJEKT.md`):**
 - **Hub ~137 voll-lokale Tools** (kein Server/Token). Diese Session NEU u. a.: 18 Utility-Tools,
   Lead-Magnet `gratis-ki-prompts.html`, **All-in-1-App `freelancer-cockpit.html`**, und eine
