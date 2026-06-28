@@ -4,15 +4,13 @@
 > baut sie sauber (eigene Recherche/Quellen, keine erfundenen Zahlen), und beim nächsten
 > Lauf fällt sie via Bestands-Dedupe raus. Nicht manuell abarbeiten nötig.
 
-Stand: 2026-06-28 15:51 UTC · 15 offen · 3 bereits abgedeckt
+Stand: 2026-06-28 17:22 UTC · 13 offen · 5 bereits abgedeckt
 
 ## ▶️ Offen (nach Priorität)
-- **P2** `benzin-vs-elektro.html` — **Benzin-vs-Elektro-Rechner**: Spritkosten vs. Stromkosten pro 100 km vergleichen
 - **P2** `eigenmietwert-rechner.html` — **Eigenmietwert-Rechner (CH)**: Grobschätzung Eigenmietwert + Steuer-Effekt (Richtwert)
 - **P2** `ferien-anspruch-rechner.html` — **Ferien-Anspruch-Rechner**: Anteilige Ferientage pro rata (Eintritt/Austritt, Pensum)
 - **P2** `kalorien-defizit.html` — **Abnehm-Rechner (Kaloriendefizit)**: Defizit & Dauer bis Zielgewicht (mit Disclaimer)
 - **P2** `koerperfett-rechner.html` — **Körperfett-Rechner**: Körperfettanteil per Umfang-Methode (US-Navy)
-- **P2** `leasing-vs-kauf.html` — **Leasing-vs-Kauf-Rechner**: Auto: Leasingrate vs. Kauf über die Jahre vergleichen
 - **P2** `quadratmeter-preis.html` — **Quadratmeterpreis-Rechner**: Preis pro m² aus Preis & Fläche (Miete/Kauf vergleichen)
 - **P2** `rentenluecke-rechner.html` — **Rentenlücke-Rechner (CH)**: Grobe Vorsorgelücke 1./2./3. Säule abschätzen
 - **P2** `teilzeit-lohn-rechner.html` — **Teilzeit-Lohn-Rechner**: Lohn & Pensum umrechnen (100 % ↔ Teilzeit)
@@ -27,3 +25,5 @@ Stand: 2026-06-28 15:51 UTC · 15 offen · 3 bereits abgedeckt
 - `promille-rechner` → vorhanden als `promille-rechner.html`
 - `ssw-rechner` → vorhanden als `ssw-rechner.html`
 - `eisprung-rechner` → vorhanden als `eisprung-rechner.html`
+- `benzin-vs-elektro` → vorhanden als `benzin-vs-elektro.html`
+- `leasing-vs-kauf` → vorhanden als `leasing-vs-kauf.html`
