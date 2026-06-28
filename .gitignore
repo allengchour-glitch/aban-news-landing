@@ -46,3 +46,4 @@ session-check.png
 
 # Cloudflare-Pages-Build-Output (lokal/CI generiert)
 _site/
+dist/
