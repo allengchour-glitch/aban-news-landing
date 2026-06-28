@@ -136,6 +136,32 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-28 — 📚 Sammler-Session (Recherche, NUR Info — kein Posting/Import): 2 grosse Recherche-Reports.**
+- **`dropship/GRATIS-KAEUFER-TRAFFIC-PLAYBOOK.md`** (8 Kanäle): wie man GRATIS kaufabsicht-starken Traffic
+  bekommt. Top-Hebel sortiert nach Kaufabsicht×Aufwand: (1) **Google Merchant Free Listings** (schnellster,
+  wirkt in Tagen), (2) **E-Mail-Pop-up** (Liste aufbauen), (3) **Abandoned-Cart/Welcome-Flows**,
+  (4) **Pinterest organisch** (Katalog-Sync, Aufbau 3–6 Mt.), (5) **Long-Tail/CH-Nischen-SEO**,
+  (6) **Gifting an CH-Nano-Creator + Code**, (7) Browse/Post-Purchase, (8) **Erstkauf-CRO** (Reviews +270 %,
+  Express-Checkout/TWINT, Gast-Checkout, ehrliche Lieferzeit). Bewusst NICHT top: TikTok/IG/FB organisch
+  (low-intent, = das 3000-Sessions-0-Käufe-Muster).
+- **`dropship/WACHSTUMS-WISSENSBASIS.md`** (12 Felder, quellenbelegt): Wettbewerb/CH-Markt, Fulfillment/Lieferzeit,
+  Branding, Pricing, KI-Tools, Loyalty, **CH-Recht**, Marketing-Kalender 2026, TikTok/IG/Reels 2026, Influencer/UGC
+  DACH, Reviews. **🚨 WICHTIGSTE NEUE BEFUNDE:**
+  - **CH-RECHT real-riskant:** Konsumentenschutz hat **18.07.2025 17 „Schweizer" Dropship-Shops abgemahnt,
+    gegen 8 Strafanzeige.** UWG-Fallen = vorgetäuschter CH-Sitz, **„Swiss made"/Schweizerkreuz** auf Importware
+    (Swissness-Gesetz: bis 5 J. Haft / 1,08 Mio CHF — IGE klagt aktiv seit 26.08.2025), Fake-/ungekennzeichnete
+    Reviews, unrealistische Lieferzeit, nicht-belegbare Streichpreise (PBV, ≥30-Tage-Regel, Busse bis 20k).
+    **revDSG:** China-Datenfluss (CJ) offenlegen, Busse bis 250k gegen Person. **Kein gesetzliches Widerrufsrecht
+    in CH** → Rückgabe als freiwilligen Service positionieren. ⚠️ Edelweiss/Matterhorn/„schweiz-edition"-Tags
+    juristisch gegenchecken. (Recherche, keine Rechtsberatung → kritische Texte anwaltlich prüfen.)
+  - **CH-Produktsuche startet zu 54 % bei Galaxus/Digitec** (überholt Google 51 %), Social nur 2 % →
+    bestätigt erneut: Social-Masse = 0-Hebel; Intent-Kanäle (Suche/KI-Suche/Pinterest/Reviews) zählen.
+  - **NEUER Gratis-Intent-Kanal: KI-Suche** (ChatGPT-Shopping/Perplexity) — Feed-Vollständigkeit (CHF/ISO-4217,
+    GTIN, Live-Daten) + JSON-LD Product+Offer+Review + OAI-SearchBot/PerplexityBot in robots.txt erlauben.
+  - **Reviews = billigster Conversion-Hebel** (+270 % ab 5 Reviews) und braucht KEINE der 3 User-Klicks.
+- Beide Reports tragen `NUR INFO`-Header. **Für die Produkt-/Shop-/Posting-Session** zum Umsetzen — die
+  Sammler-Session postet/importiert NICHT. (Branch `docs/recherche-wachstum` → Draft-PR.)
+
 **2026-06-28 — 🧰 Tools/Apps-Session (Reichweite, voll-lokal, Detail in `PROJEKT.md`):**
 - **Hub ~137 voll-lokale Tools** (kein Server/Token). Diese Session NEU u. a.: 18 Utility-Tools,
   Lead-Magnet `gratis-ki-prompts.html`, **All-in-1-App `freelancer-cockpit.html`**, und eine
