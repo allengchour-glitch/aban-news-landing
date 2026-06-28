@@ -219,6 +219,14 @@ Web Analytics (`js/analytics.js`, Token fehlt noch).
     Mute-Toggle (#1410). Hub `spiele.html` zeigt persönliche Rekorde pro Spiel (#1412).
     **Beide Web-Spiele jetzt FEATURE-GLEICH: persistenter Rekord + Mute (Taste M) + Tages-Challenge + Newsletter-Funnel.**
     Steam-Store-Text in `game/STEAM-STORE.md` (#1408). Playbook: `game/MASTERPLAN.md`, `QUALITAET-CHECKLISTE.md`, `UX-LAYOUT.md`.
+  - **🤖 AUTONOME WEB-SPIEL-QA (2026-06-28, WICHTIG für alle Sessions):** Die Cloud-Box hat Playwright + Chromium
+    (`/opt/pw-browsers/chromium-1194/...`, Playwright im Repo-`node_modules`). Werkzeug **`tools/game_smoke.cjs`**
+    startet Mini-Server + headless Chromium, lädt jedes Web-Spiel, prüft auf JS-Laufzeitfehler und macht Screenshots
+    (Menü + Live). → **Web-Spiele kann die Cloud-Session KOMPLETT selbst verifizieren (bauen→starten→sehen→fixen),
+    ohne GPU/Desktop/User.** Lauf: `node tools/game_smoke.cjs` (cwd=Repo). Verifiziert: alle 5 Spiele 0 Fehler,
+    neon-flug rendert (Menü+3D+HUD). **Godot/native** braucht weiterhin GPU → lokaler Claude (gdparse fängt nur Syntax).
+    Konsequenz: Für ein „komplettes Spiel ohne User" ist der **Web-Build der autonome Pfad** (itch.io/Web/Electron-Wrap),
+    Godot = native Portierung durch lokalen Claude.
 
 **2026-06-27 (abannews/Tool-Session) — 🔄 CROSS-SESSION-SYNC (Stand zusammengetragen, wird laufend aufgefrischt):**
 - **abannews/Tool-Session (ich):** eBay-Affiliate site-weit scharf (campid `5339156671`, money_gap=0),
