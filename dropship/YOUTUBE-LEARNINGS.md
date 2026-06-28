@@ -185,3 +185,8 @@
 - **wandern-Kategorie NEU** (ES: bastón de senderismo/botas de montaña/mochila senderismo + Wanderschuhe/-stöcke/-rucksack/-socken) → camping-outdoor.
 - **Bekleidung:** Kategorien existieren (schuhe/socken/hoodies/damenmode/herrenmode/sets). Andere-Session-Lehre: generische Anker bringen Basics+Fehlmatch → trotzdem auffüllen (User-Wunsch „egal was voll"), aber QA gegen Fehlmatch. Schuhe-Welle (schuhe-sneaker 81p hat Stock) + socken + damen/herren über Ticks.
 - **auto = kompressor-lastig** (8 Kompressoren bisher) → nach dieser Runde auto pausieren, OBD2/Starthilfe-Anker greifen kaum.
+
+## Runde 30-Ernte — Bekleidung: Herren-Polos gut, Damen=Kostüme
+- **Herren: +5 Polos** (CHF 38–52, schwarz/blau/rot/granatrot/beige) — legit Bekleidung, behalten.
+- **Damen: 4 Kostüme gedraftet** (Totenköpfe/Hexen-Tunika/Reitende-Hexe-Kostüm/Regenbogen-Fransenkleid = Halloween/Party). Der `kleid`-Anker fängt Kostüme (andere-Session-Lehre bestätigt). **damenmode-Anker geschärft** (kleid /rock /dress /skirt /tunika raus) + Ban kostüm/hexe/halloween/disney/lingerie. Tennisrock + echte Kleider bleiben.
+- Bekleidung-Bilanz: schuhe(146)+socken+herren-polos sauber; damenmode bleibt BigBuy-Schwachstelle (Kostüme) → vorsichtig.
