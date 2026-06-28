@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Neon Survivor — 3D-Roguelite-Survival | aban news</title>
+<meta name="description" content="Neon Survivor: 3D-Roguelite im Browser. Bewege dich, auto-feuere auf Gegner-Schwärme, sammle XP, wähle Upgrades, überlebe so lange wie möglich. Gratis, kein Download.">
+<link rel="canonical" href="https://abannews.com/neon-survivor.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Neon Survivor — 3D-Roguelite-Survival">
+<meta property="og:description" content="Bewegen, auto-feuern, XP sammeln, Upgrades wählen, überleben. Gratis im Browser.">
+<meta property="og:url" content="https://abannews.com/neon-survivor.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Neon Survivor","url":"https://abannews.com/neon-survivor.html","genre":"Roguelite","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:#06070f;color:#fff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+#wrap{position:fixed;inset:0}
+canvas{display:block}
+#hud{position:fixed;top:0;left:0;right:0;padding:10px 14px;pointer-events:none;font-weight:700;text-shadow:0 2px 6px #000}
+.bar{height:10px;border-radius:6px;background:#1b2040;overflow:hidden;margin-top:4px}
+.bar>i{display:block;height:100%;width:100%}
+#hpFill{background:linear-gradient(90deg,#ff6b6b,#ff9e7a)}
+#xpFill{background:linear-gradient(90deg,#5ef2ff,#b98bff)}
+#hudTop{display:flex;justify-content:space-between;font-size:.95rem}
+#hpwrap{max-width:240px} #xpwrap{margin-top:6px;max-width:100%}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(6,7,15,.93));padding:20px;backdrop-filter:blur(3px)}
+.overlay h1{font-size:2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem}
+.overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:.95rem;line-height:1.5}
+.tag{font-size:.72rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
+.btn{margin-top:8px;border:0;cursor:pointer;font-weight:800;font-size:1.02rem;padding:13px 28px;border-radius:40px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
+.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.9rem;padding:10px 20px}
+#ups{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px;margin-top:10px}
+.up{cursor:pointer;background:#10142b;border:1px solid #2a3170;border-radius:12px;padding:14px;text-align:left;color:#e6e9ff;font-weight:700}
+.up:hover{border-color:#5ef2ff}
+.up small{display:block;color:#8890b8;font-weight:500;margin-top:3px}
+.small{font-size:.8rem;color:#8890b8;margin-top:16px}.small a{color:#9fb2ff}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<div id="hud" class="hide">
+  <div id="hudTop"><span id="lvl">Lv 1</span><span id="time">0s</span><span id="kills">☠ 0</span></div>
+  <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
+  <div id="xpwrap"><div class="bar"><i id="xpFill" style="width:0%"></i></div></div>
+</div>
+
+<div class="overlay" id="start">
+  <div class="tag">aban news · 3D-Roguelite</div>
+  <h1>NEON SURVIVOR</h1>
+  <p>Überlebe die Schwärme. Du bewegst dich — geschossen wird <b>automatisch</b>. Sammle XP, wähle Upgrades, werde stärker.</p>
+  <p style="font-size:.85rem;color:#8890b8">Bewegen: WASD / Pfeile / Finger ziehen</p>
+  <button class="btn" id="startBtn">Start ▶</button>
+  <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
+</div>
+
+<div class="overlay hide" id="levelup">
+  <div class="tag">Level Up!</div>
+  <h1 id="luTitle">Wähle ein Upgrade</h1>
+  <div id="ups"></div>
+</div>
+
+<div class="overlay hide" id="over">
+  <div class="tag">Game Over</div>
+  <h1 id="finalT">Überlebt: 0s</h1>
+  <p id="verdict"></p>
+  <button class="btn" id="againBtn">Nochmal ▶</button>
+  <button class="btn ghost" id="shareBtn">Teilen 📋</button>
+  <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter →</a></p>
+</div>
+
+<script src="/js/vendor/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var THREE=window.THREE, W=innerWidth, H=innerHeight;
+var renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+document.getElementById("wrap").appendChild(renderer.domElement);
+var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,30,90);
+var camera=new THREE.PerspectiveCamera(60,W/H,0.1,300);
+scene.add(new THREE.AmbientLight(0x556099,1.2));
+var dir=new THREE.DirectionalLight(0xffffff,0.7); dir.position.set(6,14,6); scene.add(dir);
+
+var ARENA=46;
+var floor=new THREE.Mesh(new THREE.PlaneGeometry(ARENA*2,ARENA*2),new THREE.MeshStandardMaterial({color:0x0c1030,emissive:0x05060f}));
+floor.rotation.x=-Math.PI/2; scene.add(floor);
+var grid=new THREE.GridHelper(ARENA*2,40,0x2a3170,0x161a3a); grid.position.y=0.02; scene.add(grid);
+
+function mat(c,e){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:1.1,flatShading:true}); return m;}
+var player=new THREE.Mesh(new THREE.IcosahedronGeometry(0.9,0),mat(0x5ef2ff,0x1a6f8c)); player.position.y=0.9; scene.add(player);
+var glow=new THREE.PointLight(0x5ef2ff,1.5,18); scene.add(glow);
+
+var bullets=[],enemies=[],orbs=[],fx=[];
+function getMesh(pool,make){for(var i=0;i<pool.length;i++)if(!pool[i].active)return pool[i];var o=make();pool.push(o);return o;}
+function bulletMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.28,8,8),mat(0xffffff,0x88ffff)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0};}
+function enemyMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.1,1.1),mat(0xff5577,0xaa1133)); m.active=false; scene.add(m); return {m:m,active:false,hp:1,spd:1};}
+function orbMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(0xffd166,0xffd166)); m.active=false; scene.add(m); return {m:m,active:false}; }
+
+// State + Upgrades
+var S={};
+function reset(){
+  S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:5,
+     dmg:1,fireCD:0.55,fireT:0,speed:9,multishot:1,pickup:3.2,spawnT:0,spawnEvery:1.4};
+  [bullets,enemies,orbs,fx].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
+  player.position.set(0,0.9,0);
+}
+var moveX=0,moveZ=0,keys={};
+addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
+var touch=null;
+addEventListener("touchstart",function(e){if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
+addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;}e.preventDefault();},{passive:false});
+addEventListener("touchend",function(){touch=null;});
+
+function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){var en=enemies[i];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}return best;}
+
+function spawnEnemy(){
+  var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true;
+  var a=Math.random()*Math.PI*2, r=ARENA*0.9;
+  en.m.position.set(player.position.x+Math.cos(a)*r,0.7,player.position.z+Math.sin(a)*r);
+  en.hp=1+Math.floor(S.t/25); en.spd=2.4+Math.random()*1.2+S.t*0.02;
+}
+function fire(){
+  var tgt=nearestEnemy(); if(!tgt)return;
+  var bx=tgt.m.position.x-player.position.x, bz=tgt.m.position.z-player.position.z;
+  var base=Math.atan2(bz,bx);
+  for(var k=0;k<S.multishot;k++){
+    var ang=base+(k-(S.multishot-1)/2)*0.18;
+    var b=getMesh(bullets,bulletMesh); b.active=true; b.m.visible=true;
+    b.m.position.set(player.position.x,0.9,player.position.z);
+    b.vx=Math.cos(ang)*26; b.vz=Math.sin(ang)*26; b.life=1.4; b.dmg=S.dmg;
+  }
+  beep(720,.05,"square",.04);
+}
+function burst(x,z,c){var n=10;for(var i=0;i<n;i++){var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.16,6,6),mat(0xffffff,0xffffff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(c);p.m.material.emissive.setHex(c);p.m.position.set(x,0.9,z);var a=Math.random()*6.28,s=2+Math.random()*4;p.vx=Math.cos(a)*s;p.vz=Math.sin(a)*s;p.vy=Math.random()*4;p.life=0.5;}}
+
+var actx=null; function beep(f,d,t,v){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
+
+var UPS=[
+ {n:"🔥 Mehr Schaden",d:"+50% Schaden",f:function(){S.dmg*=1.5;}},
+ {n:"⚡ Schussrate",d:"feuert schneller",f:function(){S.fireCD=Math.max(0.12,S.fireCD*0.8);}},
+ {n:"🎯 Multishot",d:"+1 Projektil",f:function(){S.multishot++;}},
+ {n:"👟 Tempo",d:"+15% Bewegung",f:function(){S.speed*=1.15;}},
+ {n:"🧲 Magnet",d:"grösserer Sammel-Radius",f:function(){S.pickup+=1.6;}},
+ {n:"❤️ Vitalität",d:"+25 max HP & heilen",f:function(){S.maxhp+=25;S.hp=Math.min(S.maxhp,S.hp+40);}}
+];
+var paused=false;
+function levelUp(){
+  paused=true; var box=document.getElementById("ups"); box.innerHTML="";
+  var pick=UPS.slice().sort(function(){return Math.random()-0.5;}).slice(0,3);
+  pick.forEach(function(u){var b=document.createElement("button");b.className="up";b.innerHTML=u.n+"<small>"+u.d+"</small>";b.onclick=function(){u.f();paused=false;document.getElementById("levelup").classList.add("hide");beep(520,.12,"triangle",.07);};box.appendChild(b);});
+  document.getElementById("luTitle").textContent="Level "+S.lvl+" — wähle ein Upgrade";
+  document.getElementById("levelup").classList.remove("hide");
+}
+
+var shake=0,running=false,last=performance.now();
+function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");}
+function gameOver(){running=false;shake=1.2;document.getElementById("finalT").textContent="Überlebt: "+Math.floor(S.t)+"s";document.getElementById("verdict").textContent="Level "+S.lvl+" · "+S.kills+" Gegner besiegt";document.getElementById("over").classList.remove("hide");}
+
+document.getElementById("startBtn").onclick=start;
+document.getElementById("againBtn").onclick=start;
+document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
+
+function loop(now){
+  requestAnimationFrame(loop);
+  var dt=Math.min(0.05,(now-last)/1000); last=now;
+  if(running&&!paused){
+    S.t+=dt;
+    // Bewegung
+    var mx=0,mz=0;
+    if(keys["a"]||keys["arrowleft"])mx-=1; if(keys["d"]||keys["arrowright"])mx+=1;
+    if(keys["w"]||keys["arrowup"])mz-=1; if(keys["s"]||keys["arrowdown"])mz+=1;
+    if(touch){var tx=(touch.x/W*2-1),ty=(touch.y/H*2-1);mx=tx*2;mz=ty*2;}
+    var ml=Math.hypot(mx,mz); if(ml>1){mx/=ml;mz/=ml;}
+    player.position.x=Math.max(-ARENA,Math.min(ARENA,player.position.x+mx*S.speed*dt));
+    player.position.z=Math.max(-ARENA,Math.min(ARENA,player.position.z+mz*S.speed*dt));
+    player.rotation.y+=dt*1.5;
+    glow.position.set(player.position.x,2,player.position.z);
+    // Feuern
+    S.fireT-=dt; if(S.fireT<=0){fire();S.fireT=S.fireCD;}
+    // Spawnen
+    S.spawnT-=dt; var rate=Math.max(0.25,S.spawnEvery-S.t*0.012);
+    if(S.spawnT<=0){spawnEnemy();if(S.t>20)spawnEnemy();S.spawnT=rate;}
+    // Bullets
+    for(var i=0;i<bullets.length;i++){var b=bullets[i];if(!b.active)continue;b.m.position.x+=b.vx*dt;b.m.position.z+=b.vz*dt;b.life-=dt;if(b.life<=0){b.active=false;b.m.visible=false;b.m.position.y=-99;continue;}
+      for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-b.m.position.x,dz=en.m.position.z-b.m.position.z;if(dx*dx+dz*dz<1.2){en.hp-=b.dmg;b.active=false;b.m.visible=false;b.m.position.y=-99;if(en.hp<=0){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,0xff5577);dropOrb(en.m.position.x,en.m.position.z);en.m.position.y=-99;S.kills++;beep(300,.08,"sawtooth",.05);}break;}}
+    }
+    // Enemies → Spieler
+    for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active)continue;var ex=player.position.x-e2.m.position.x,ez=player.position.z-e2.m.position.z;var ed=Math.hypot(ex,ez)||1;e2.m.position.x+=ex/ed*e2.spd*dt;e2.m.position.z+=ez/ed*e2.spd*dt;e2.m.rotation.x+=dt*2;
+      if(ed<1.4){S.hp-=22*dt;shake=Math.max(shake,0.12);}
+    }
+    // Orbs einsammeln (Magnet)
+    for(i=0;i<orbs.length;i++){var o=orbs[i];if(!o.active)continue;var ox=player.position.x-o.m.position.x,oz=player.position.z-o.m.position.z;var od=Math.hypot(ox,oz)||1;if(od<S.pickup){o.m.position.x+=ox/od*12*dt;o.m.position.z+=oz/od*12*dt;}o.m.rotation.y+=dt*3;
+      if(od<1.0){o.active=false;o.m.visible=false;o.m.position.y=-99;S.xp++;if(S.xp>=S.xpNeed){S.xp=0;S.lvl++;S.xpNeed=Math.floor(S.xpNeed*1.4)+2;levelUp();}}
+    }
+    if(S.hp<=0){S.hp=0;gameOver();}
+    updHUD();
+  }
+  // FX
+  for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=8*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;p.m.position.y=-99;}}
+  // Kamera (top-down folgt)
+  if(shake>0)shake-=dt*1.5;
+  camera.position.set(player.position.x+(Math.random()-.5)*shake*3,22,player.position.z+13+(Math.random()-.5)*shake*3);
+  camera.lookAt(player.position.x,0,player.position.z);
+  renderer.render(scene,camera);
+}
+function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
+function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=Math.floor(S.t)+"s";document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";}
+reset(); requestAnimationFrame(loop);
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+})();
+</script>
+</body>
+</html>
