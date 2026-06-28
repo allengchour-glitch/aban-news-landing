@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benzin vs. Elektro Rechner — Spritkosten vs. Stromkosten · aban news</title>
+<meta name="description" content="Kostenloser Benzin-vs-Elektro-Rechner: Vergleiche die Energiekosten von Benziner und E-Auto pro 100 km und pro Jahr — aus Verbrauch, Sprit- und Strompreis. Zeigt die jährliche Ersparnis. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/benzin-vs-elektro.html">
+<meta property="og:title" content="Benzin vs. Elektro — Kostenvergleich pro 100 km & Jahr">
+<meta property="og:description" content="Spritkosten vs. Stromkosten vergleichen — pro 100 km & Jahr, mit Ersparnis. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/benzin-vs-elektro.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Benzin-vs-Elektro-Rechner",
+"url":"https://abannews.com/benzin-vs-elektro.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Vergleicht die Energiekosten von Benziner und Elektroauto pro 100 km und pro Jahr aus Verbrauch, Sprit- und Strompreis. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was vergleicht dieser Rechner?","acceptedAnswer":{"@type":"Answer","text":"Nur die reinen Energiekosten: Benzin/Diesel gegen Strom, pro 100 km und pro Jahr. Anschaffung, Versicherung, Wartung, Steuern und Wertverlust sind nicht enthalten — die unterscheiden sich je nach Modell stark und gehören separat betrachtet."}},
+{"@type":"Question","name":"Mit welchen Werten rechne ich?","acceptedAnswer":{"@type":"Answer","text":"Du gibst den Verbrauch beider Autos ein (Liter pro 100 km bzw. kWh pro 100 km) und die Preise (pro Liter bzw. pro kWh). Beim E-Auto macht es einen großen Unterschied, ob du zu Hause günstig oder an der Schnellladesäule teurer lädst — trag deinen realistischen Preis ein."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--ok:#34d399;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}.unit input{font:inherit;padding:11px 56px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.78rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.opt{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.opt.win{border-color:var(--ok);box-shadow:0 0 0 2px color-mix(in srgb,var(--ok) 25%,transparent)}
+.opt h3{font-size:.95rem;margin-bottom:4px}.opt .big{font-size:clamp(20px,5vw,28px);font-weight:800;color:var(--amber-dk)}
+.opt .small{font-size:.78rem;color:var(--muted);margin-top:4px}.opt .tag{display:inline-block;font-size:.72rem;font-weight:700;color:#fff;background:var(--ok);border-radius:99px;padding:2px 9px;margin-top:6px}
+.summary{margin-top:14px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:14px;text-align:center;font-size:.95rem}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Benzin vs. Elektro</span></h1>
+    <p>Was kostet dich Fahren wirklich? Vergleiche die reinen Energiekosten von Benziner und E-Auto — pro 100 km und pro Jahr, mit Ersparnis. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Nur die <strong>Energiekosten</strong> (Sprit vs. Strom). Anschaffung, Versicherung, Wartung & Wertverlust sind <strong>nicht</strong> drin — die gehören separat. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="fld"><label for="km">Fahrleistung pro Jahr</label><div class="unit"><input id="km" type="number" inputmode="decimal" value="15000" min="0"><span>km</span></div></div>
+    <div class="cols">
+      <div>
+        <h3 style="font-size:1rem;margin-bottom:8px">⛽ Benziner/Diesel</h3>
+        <div class="fld"><label for="bv">Verbrauch</label><div class="unit"><input id="bv" type="number" inputmode="decimal" value="7" step="0.1"><span>L/100</span></div></div>
+        <div class="fld"><label for="bp">Spritpreis</label><div class="unit"><input id="bp" type="number" inputmode="decimal" value="1.80" step="0.01"><span>/L</span></div></div>
+      </div>
+      <div>
+        <h3 style="font-size:1rem;margin-bottom:8px">⚡ Elektro</h3>
+        <div class="fld"><label for="ev">Verbrauch</label><div class="unit"><input id="ev" type="number" inputmode="decimal" value="18" step="0.1"><span>kWh/100</span></div></div>
+        <div class="fld"><label for="ep">Strompreis</label><div class="unit"><input id="ep" type="number" inputmode="decimal" value="0.30" step="0.01"><span>/kWh</span></div></div>
+      </div>
+    </div>
+    <div class="vs">
+      <div class="opt" id="ob"><h3>⛽ Benziner</h3><div class="big" id="ob-big">—</div><div class="small" id="ob-small"></div><div id="ob-tag"></div></div>
+      <div class="opt" id="oe"><h3>⚡ Elektro</h3><div class="big" id="oe-big">—</div><div class="small" id="oe-small"></div><div id="oe-tag"></div></div>
+    </div>
+    <div class="summary" id="summary"></div>
+    <p class="note">Kosten/100km = Verbrauch × Preis. Kosten/Jahr = ×(km÷100). Nur Energie, keine Fixkosten. Richtwert.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Auto &amp; Kosten.</p>
+    <p><a class="btn" href="/spritverbrauch-rechner.html">Spritverbrauch</a>
+      <a class="btn ghost" href="/leasing-vs-kauf.html">Leasing vs. Kauf</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">5 Minuten KI ohne Hype — jeden Werktag</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/spritverbrauch-rechner.html">Spritverbrauch</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function m(n){return (isFinite(n)?n:0).toLocaleString("de-CH",{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function calc(){
+    var km=num("km"),bv=num("bv"),bp=num("bp"),ev=num("ev"),ep=num("ep");
+    var sum=document.getElementById("summary");
+    if([km,bv,bp,ev,ep].some(function(x){return !isFinite(x);})){sum.textContent="Bitte alle Felder ausfüllen.";return;}
+    var b100=bv*bp, e100=ev*ep, bJ=b100*km/100, eJ=e100*km/100;
+    document.getElementById("ob-big").textContent=m(bJ)+" /Jahr";
+    document.getElementById("oe-big").textContent=m(eJ)+" /Jahr";
+    document.getElementById("ob-small").textContent=m(b100)+" / 100 km";
+    document.getElementById("oe-small").textContent=m(e100)+" / 100 km";
+    var ob=document.getElementById("ob"),oe=document.getElementById("oe");
+    ob.classList.toggle("win",bJ<eJ);oe.classList.toggle("win",eJ<bJ);
+    document.getElementById("ob-tag").innerHTML=bJ<eJ?'<span class="tag">günstiger</span>':"";
+    document.getElementById("oe-tag").innerHTML=eJ<bJ?'<span class="tag">günstiger</span>':"";
+    var diff=Math.abs(bJ-eJ);
+    sum.innerHTML= bJ===eJ ? "Beide kosten gleich viel Energie." :
+      "<strong>"+(eJ<bJ?"⚡ Elektro":"⛽ Benziner")+"</strong> spart <strong>"+m(diff)+" pro Jahr</strong> Energiekosten ("+m(diff*5)+" in 5 Jahren).";
+  }
+  ["km","bv","bp","ev","ep"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
