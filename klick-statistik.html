@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klick-Statistik (intern) · aban news</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;color:#1f2937;background:#fffbf5;max-width:840px;margin:0 auto;padding:22px}
+h1{font-size:1.5rem;margin-bottom:6px}
+.sub{color:#6b7280;font-size:.9rem;margin-bottom:16px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+input{font:inherit;padding:9px 11px;border:1px solid #ece3d4;border-radius:9px;background:#fffdf9;min-width:220px}
+button{font:inherit;font-weight:700;background:#b45309;color:#fff;border:0;border-radius:9px;padding:9px 16px;cursor:pointer}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th{text-align:left;font-size:.74rem;text-transform:uppercase;color:#6b7280;padding:6px 8px;border-bottom:1px solid #ece3d4}
+td{padding:7px 8px;border-bottom:1px solid #f0e9da;font-size:.92rem;vertical-align:top}
+td.n{text-align:right;font-weight:800;color:#b45309;white-space:nowrap}
+.path{color:#6b7280;font-size:.8rem}
+.msg{margin-top:12px;color:#6b7280;font-size:.9rem}
+.note{margin-top:22px;color:#6b7280;font-size:.82rem;border-top:1px solid #ece3d4;padding-top:12px}
+</style>
+</head>
+<body>
+<h1>📊 Klick-Statistik <span style="font-size:.8rem;color:#6b7280">(intern)</span></h1>
+<p class="sub">Anonyme, aggregierte Klicks (cookielos, keine Personendaten). Nur sichtbar mit deinem Stats-Schlüssel.</p>
+<div class="bar">
+  <input id="key" type="password" placeholder="CLICK_STATS_KEY" autocomplete="off" spellcheck="false">
+  <button id="go" type="button">Laden</button>
+  <label style="font-size:.85rem;color:#374151"><input type="checkbox" id="remember"> merken (lokal)</label>
+</div>
+<div id="out"></div>
+<p class="msg" id="msg"></p>
+<p class="note">Quelle: <code>/api/click-stats</code> (geschützt durch Env <code>CLICK_STATS_KEY</code>). Es werden ausschließlich Pfad, Klick-Label und Anzahl gespeichert — keine IP, keine Cookies, kein Fingerprint. Aktivierung: <code>js/click-insights.js</code> → <code>ON=true</code> + KV-Bindung <code>CLICK_KV</code>. Diese Seite ist noindex.</p>
+<script>
+(function(){
+  var keyEl=document.getElementById("key"),out=document.getElementById("out"),msg=document.getElementById("msg");
+  try{var saved=localStorage.getItem("aban_ck");if(saved){keyEl.value=saved;document.getElementById("remember").checked=true;}}catch(e){}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+  function load(){
+    var k=keyEl.value.trim();if(!k){msg.textContent="Bitte Schlüssel eingeben.";return;}
+    try{ if(document.getElementById("remember").checked)localStorage.setItem("aban_ck",k); else localStorage.removeItem("aban_ck"); }catch(e){}
+    msg.textContent="Lade …";out.innerHTML="";
+    fetch("/api/click-stats?key="+encodeURIComponent(k),{cache:"no-store"})
+      .then(function(r){if(r.status===404)throw new Error("Falscher Schlüssel oder Statistik nicht konfiguriert (Env CLICK_STATS_KEY).");return r.json();})
+      .then(function(d){
+        if(!d.items||!d.items.length){msg.textContent="Noch keine Klicks erfasst (oder CLICK_KV nicht gebunden).";return;}
+        msg.textContent=d.total.toLocaleString("de-CH")+" Klicks gesamt · Top "+d.items.length;
+        var rows=d.items.map(function(it){return '<tr><td>'+esc(it.label)+'<div class="path">'+esc(it.path)+'</div></td><td class="n">'+it.clicks.toLocaleString("de-CH")+'</td></tr>';}).join("");
+        out.innerHTML='<table><thead><tr><th>Klick (Label / Seite)</th><th style="text-align:right">Klicks</th></tr></thead><tbody>'+rows+'</tbody></table>';
+      })
+      .catch(function(e){msg.textContent="⚠️ "+e.message;});
+  }
+  document.getElementById("go").addEventListener("click",load);
+  keyEl.addEventListener("keydown",function(e){if(e.key==="Enter")load();});
+})();
+</script>
+</body>
+</html>
