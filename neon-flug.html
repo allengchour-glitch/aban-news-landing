@@ -35,8 +35,9 @@ canvas{display:block}
 </head>
 <body>
 <div id="wrap"></div>
-<div id="hud"><span id="score">0</span><span class="best">Rekord <span id="best">0</span></span></div>
+<div id="hud"><span id="score">0</span><span class="best"><span id="bestLbl">Rekord</span> <span id="best">0</span></span></div>
 <button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:8px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer">🔊</button>
+<button id="setBtn" title="Einstellungen" style="position:fixed;top:8px;right:58px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer">⚙️</button>
 <div id="flash"></div>
 <div id="combo" style="position:fixed;top:44px;left:16px;font-weight:800;font-size:1.4rem;text-shadow:0 2px 8px #000;pointer-events:none"></div>
 <div id="dashbar" style="position:fixed;top:78px;left:16px;width:180px;height:10px;background:rgba(16,20,43,.6);border-radius:6px;overflow:hidden;pointer-events:none"><i id="dashfill" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd166,#ff7ad9)"></i></div>
@@ -44,29 +45,36 @@ canvas{display:block}
 <div id="upg" class="overlay hide" style="background:rgba(6,7,15,.82);backdrop-filter:blur(4px)"></div>
 
 <div class="overlay" id="start">
-  <div class="tag">aban news · 3D-Arcade</div>
+  <div class="tag" id="tStartTag">aban news · 3D-Arcade</div>
   <h1>NEON-FLUG</h1>
-  <p>Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.</p>
-  <p style="font-size:.85rem;color:#8890b8">Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen</p>
+  <p id="tIntro">Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.</p>
+  <p id="tControls" style="font-size:.85rem;color:#8890b8">Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen</p>
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
   <div id="skins" style="margin-top:16px;font-size:.9rem;color:#c7cbe6"></div>
-  <div class="small">Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a></div>
+  <div class="small" id="tStartFoot">Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a></div>
 </div>
 
 <div class="overlay hide" id="over">
-  <div class="tag">Game Over</div>
+  <div class="tag" id="tOverTag">Game Over</div>
   <h1 id="finalScore">0</h1>
   <p id="verdict">Nicht schlecht!</p>
   <button class="btn" id="againBtn">Nochmal ▶</button>
   <button class="btn ghost" id="shareBtn">Ergebnis teilen 📋</button>
-  <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a></p>
+  <p class="small" id="tOverFoot">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a></p>
+</div>
+
+<div class="overlay hide" id="settings">
+  <div class="tag">Einstellungen · Settings</div>
+  <h1 style="font-size:1.5rem" id="tSetTitle">Einstellungen</h1>
+  <div id="setBody" style="margin-top:10px;font-size:.95rem;color:#c7cbe6"></div>
+  <button class="btn" id="setCloseBtn">OK</button>
 </div>
 
 <div class="overlay hide" id="pause">
   <div class="tag">Pause</div>
   <h1>⏸</h1>
-  <p>Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.</p>
+  <p id="tPauseTxt">Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.</p>
   <button class="btn" id="resumeBtn">Weiter ▶</button>
 </div>
 
@@ -189,24 +197,49 @@ var selSkin=+(localStorage.getItem("aban_neon_skin")||0);
 function unlocked(i){return xp>=SKINS[i].need;}
 function applySkin(i){if(!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
 function renderSkins(){var el=document.getElementById("skins");if(!el)return;var next=null;for(var n=0;n<SKINS.length;n++){if(xp<SKINS[n].need){next=SKINS[n];break;}}
-  var html="🛸 Skin: "+SKINS.map(function(s,i){var u=unlocked(i);return "<button data-i='"+i+"' style='margin:2px;padding:5px 10px;border-radius:8px;cursor:"+(u?"pointer":"default")+";border:1px solid "+(i===selSkin?"#5ef2ff":"#3a4170")+";background:"+(u?"#10142b":"#0a0c18")+";color:"+(u?"#e6e9ff":"#555c80")+"'>"+(u?s.name:"🔒")+"</button>";}).join("");
-  html+="<div style='margin-top:6px;font-size:.8rem;color:#8890b8'>Gesamt-XP: "+xp+(next?(" · nächster Skin bei "+next.need):" · alle frei 🏆")+"</div>";
+  var html="🛸 "+tr("skin")+": "+SKINS.map(function(s,i){var u=unlocked(i);return "<button data-i='"+i+"' style='margin:2px;padding:5px 10px;border-radius:8px;cursor:"+(u?"pointer":"default")+";border:1px solid "+(i===selSkin?"#5ef2ff":"#3a4170")+";background:"+(u?"#10142b":"#0a0c18")+";color:"+(u?"#e6e9ff":"#555c80")+"'>"+(u?s.name:tr("locked"))+"</button>";}).join("");
+  html+="<div style='margin-top:6px;font-size:.8rem;color:#8890b8'>"+tr("xpTotal")+": "+xp+(next?(" · "+tr("nextSkin")+" "+next.need):" · "+tr("allFree"))+"</div>";
   el.innerHTML=html;
   el.querySelectorAll("button").forEach(function(b){b.onclick=function(){var i=+b.getAttribute("data-i");if(unlocked(i)){applySkin(i);renderSkins();beep(520,.1,"triangle",.06);}};});}
-applySkin(selSkin);renderSkins();
+
+// i18n DE/EN
+var T={
+  de:{startTag:"aban news · 3D-Arcade",intro:'Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.',controls:"Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen",start:"Start ▶",daily:"🗓️ Tages-Challenge",startFoot:'Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a>',over:"Game Over",again:"Nochmal ▶",share:"Ergebnis teilen 📋",copied:"Kopiert 📋",overFoot:'5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a>',best:"Rekord",pauseTxt:"Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.",setTitle:"Einstellungen",sound:"Ton",lang:"Sprache",on:"an",off:"aus",skin:"Skin",xpTotal:"Gesamt-XP",nextSkin:"nächster Skin bei",allFree:"alle frei 🏆",locked:"🔒",newRec:"Neuer Rekord! 🏆",verdicts:["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"],upgrade:"⬆️ Upgrade wählen",endless:"Endlos",dailyTag:"Tages-Challenge",pts:"Punkte",playFree:"Gratis spielen"},
+  en:{startTag:"aban news · 3D arcade",intro:'Fly the glider through the neon canyon. Graze obstacles (near-miss = <b>Combo ×</b>), grab orbs, fly through <b>rings</b> for a PERFECT bonus, charge your <b>Dash</b>. The further you go, the faster it gets.',controls:"Move: ← → / A D / mouse / finger · Dash: SPACE / ↑ / tap",start:"Start ▶",daily:"🗓️ Daily Challenge",startFoot:'Runs in your browser, no download · <a href="/online-tools.html">more tools</a>',over:"Game Over",again:"Again ▶",share:"Share result 📋",copied:"Copied 📋",overFoot:'5 min of AI without hype, on weekdays — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">free newsletter →</a>',best:"Best",pauseTxt:"Press <b>ESC</b> / <b>P</b> or the button to resume.",setTitle:"Settings",sound:"Sound",lang:"Language",on:"on",off:"off",skin:"Skin",xpTotal:"Total XP",nextSkin:"next skin at",allFree:"all unlocked 🏆",locked:"🔒",newRec:"New record! 🏆",verdicts:["Practice makes perfect!","Solid!","Nicely flown!","Getting better!"],upgrade:"⬆️ Choose an upgrade",endless:"Endless",dailyTag:"Daily Challenge",pts:"pts",playFree:"Play free"}
+};
+var lang=localStorage.getItem("aban_neon_lang")||((navigator.language||"").indexOf("de")===0?"de":"en");
+if(lang!=="de"&&lang!=="en")lang="de";
+function tr(k){return (T[lang]&&T[lang][k]!=null)?T[lang][k]:T.de[k];}
+function setText(id,html){var e=document.getElementById(id);if(e)e.innerHTML=html;}
+function applyLang(){try{localStorage.setItem("aban_neon_lang",lang);}catch(e){}document.documentElement.lang=lang;
+  setText("tStartTag",tr("startTag"));setText("tIntro",tr("intro"));setText("tControls",tr("controls"));
+  setText("startBtn",tr("start"));setText("dailyBtn",tr("daily"));setText("tStartFoot",tr("startFoot"));
+  setText("tOverTag",tr("over"));setText("againBtn",tr("again"));setText("shareBtn",tr("share"));setText("tOverFoot",tr("overFoot"));
+  setText("bestLbl",tr("best"));setText("tPauseTxt",tr("pauseTxt"));setText("tSetTitle",tr("setTitle"));renderSkins();}
+var setWasRunning=false;
+function renderSettings(){var el=document.getElementById("setBody");if(!el)return;
+  el.innerHTML="<div style='margin:8px 0'>"+tr("lang")+": "+
+    "<button data-l='de' style='margin:2px;padding:6px 14px;border-radius:8px;cursor:pointer;border:1px solid "+(lang==="de"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>DE</button>"+
+    "<button data-l='en' style='margin:2px;padding:6px 14px;border-radius:8px;cursor:pointer;border:1px solid "+(lang==="en"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>EN</button></div>"+
+    "<div style='margin:8px 0'>"+tr("sound")+": <button id='setSound' style='margin:2px;padding:6px 14px;border-radius:8px;cursor:pointer;border:1px solid #3a4170;background:#10142b;color:#e6e9ff'>"+(muted?tr("off"):tr("on"))+"</button></div>";
+  el.querySelectorAll("button[data-l]").forEach(function(b){b.onclick=function(){lang=b.getAttribute("data-l");applyLang();renderSettings();beep(520,.1,"triangle",.06);};});
+  var sb=document.getElementById("setSound");if(sb)sb.onclick=function(){muted=!muted;try{localStorage.setItem("aban_neon_muted",muted?"1":"0");}catch(e){}var mb=document.getElementById("muteBtn");if(mb)mb.textContent=muted?"🔇":"🔊";renderSettings();};}
+function openSettings(){setWasRunning=running&&!paused;if(setWasRunning)paused=true;renderSettings();document.getElementById("settings").classList.remove("hide");}
+function closeSettings(){document.getElementById("settings").classList.add("hide");if(setWasRunning){paused=false;setWasRunning=false;}}
+applySkin(selSkin);applyLang();
 
 var UPGRADES=[
-  {id:"magnet",name:"🧲 Magnet"},{id:"shield",name:"🛡️ Schild +1"},{id:"double",name:"✨ Doppel-Orbs"},
-  {id:"dash_cd",name:"⚡ Turbo-Dash"},{id:"flow",name:"🌊 Flow-Meister"},{id:"nearmiss",name:"🎯 Risiko-Profi"},
-  {id:"orbs",name:"🟡 Mehr Orbs"}
+  {id:"magnet",name:"🧲 Magnet",en:"🧲 Magnet"},{id:"shield",name:"🛡️ Schild +1",en:"🛡️ Shield +1"},{id:"double",name:"✨ Doppel-Orbs",en:"✨ Double orbs"},
+  {id:"dash_cd",name:"⚡ Turbo-Dash",en:"⚡ Turbo dash"},{id:"flow",name:"🌊 Flow-Meister",en:"🌊 Flow master"},{id:"nearmiss",name:"🎯 Risiko-Profi",en:"🎯 Risk pro"},
+  {id:"orbs",name:"🟡 Mehr Orbs",en:"🟡 More orbs"}
 ];
 var curChoices=[];
 function offerUpgrade(){
   choosing=true;
   curChoices=UPGRADES.slice().sort(function(){return Math.random()-0.5;}).slice(0,3);
   var box=document.getElementById("upg");
-  box.innerHTML="<div style='font-weight:800;margin-bottom:12px'>⬆️ Upgrade wählen</div>"+
-    curChoices.map(function(u,i){return "<button class='btn' data-i='"+i+"' style='margin:6px;display:block;width:100%'>["+(i+1)+"] "+u.name+"</button>";}).join("");
+  box.innerHTML="<div style='font-weight:800;margin-bottom:12px'>"+tr("upgrade")+"</div>"+
+    curChoices.map(function(u,i){return "<button class='btn' data-i='"+i+"' style='margin:6px;display:block;width:100%'>["+(i+1)+"] "+((lang==="en"&&u.en)?u.en:u.name)+"</button>";}).join("");
   box.classList.remove("hide");
   box.querySelectorAll("button").forEach(function(b){b.onclick=function(){applyUpgrade(+b.getAttribute("data-i"));};});
 }
@@ -244,7 +277,7 @@ function gameOver(){
   xp+=score;try{localStorage.setItem("aban_neon_xp",xp);}catch(e){}renderSkins();
   document.getElementById("best").textContent=best;
   document.getElementById("finalScore").textContent=score;
-  document.getElementById("verdict").textContent=score>best-1&&score>0?"Neuer Rekord! 🏆":["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"][Math.min(3,(score/15)|0)];
+  document.getElementById("verdict").textContent=(score>best-1&&score>0)?tr("newRec"):tr("verdicts")[Math.min(3,(score/15)|0)];
   document.getElementById("over").classList.remove("hide");
 }
 function flash(){var f=document.getElementById("flash");f.style.opacity=".6";setTimeout(function(){f.style.opacity="0";},80);}
@@ -254,7 +287,7 @@ function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
 window.addEventListener("mousemove",function(e){if(running)setTarget(e.clientX);});
 window.addEventListener("touchmove",function(e){if(running&&e.touches[0]){setTarget(e.touches[0].clientX);e.preventDefault();}},{passive:false});
 var keyL=false,keyR=false;
-window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing&&!paused)doDash();if((k==="escape"||k==="p")&&running&&!choosing)togglePause();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
+window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing&&!paused)doDash();if((k==="escape"||k==="p")&&running&&!choosing&&document.getElementById("settings").classList.contains("hide"))togglePause();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
 window.addEventListener("touchstart",function(){if(running&&!choosing)doDash();},{passive:true});
 window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
 
@@ -285,11 +318,13 @@ document.getElementById("startBtn").onclick=function(){dailyMode=false;start();}
 document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
 document.getElementById("againBtn").onclick=start;
 document.getElementById("resumeBtn").onclick=function(){if(paused)togglePause();};
+document.getElementById("setBtn").onclick=openSettings;
+document.getElementById("setCloseBtn").onclick=closeSettings;
 document.getElementById("shareBtn").onclick=function(){
-  var tag=dailyMode?("Tages-Challenge #"+dayNo):"Endlos";
-  var txt="Neon-Flug 🚀 "+tag+" — "+score+" Punkte (Rekord "+best+")\nSpiel gratis: abannews.com/neon-flug.html";
+  var tag=dailyMode?(tr("dailyTag")+" #"+dayNo):tr("endless");
+  var txt="Neon-Flug 🚀 "+tag+" — "+score+" "+tr("pts")+" ("+tr("best")+" "+best+")\n"+tr("playFree")+": abannews.com/neon-flug.html";
   if(navigator.share){navigator.share({text:txt}).catch(function(){});}
-  else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});}
+  else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent=tr("copied");});}
 };
 
 var spawnZ=-160;
