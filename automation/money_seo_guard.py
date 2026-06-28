@@ -62,6 +62,7 @@ STEPS = [
     ("Vergleichs-Querverweise", ["python3", "tools/add_compare_crosslinks.py"], False),
     ("Founding-Nudge (Tool-Seiten)", ["python3", "tools/add_tool_premium_nudge.py"], False),
     ("Money-Gaps dynamisch schliessen", ["python3", "tools/autofix_money_gap.py"], False),
+    ("Cross-Session-Status auffrischen", ["python3", "automation/cross_session_sync.py"], False),
     ("money_gap_audit (Report)", ["python3", "tools/money_gap_audit.py"], True),
     ("growth_audit (Report)", ["python3", "tools/growth_audit.py"], True),
     ("interne Links prüfen", ["python3", "tools/check_internal_links.py"], True),

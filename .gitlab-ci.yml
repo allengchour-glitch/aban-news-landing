@@ -98,7 +98,7 @@ money-seo-guard:
     - |
       git config user.email "brain@aban"; git config user.name "aban-money-seo"
       git checkout -B brain/money-seo
-      git add -A -- '*.html'
+      git add -A -- '*.html' automation/CROSS-SESSION-STATUS.md
       if ! git diff --cached --quiet; then
         git commit -m "money-seo-guard: eBay-Tracking/customid/Crosslinks aktualisiert (GitLab-CI) [skip ci]"
         git push -f "https://x-access-token:${GH_PUSH_TOKEN}@github.com/allengchour-glitch/aban-news-landing.git" "HEAD:brain/money-seo"
