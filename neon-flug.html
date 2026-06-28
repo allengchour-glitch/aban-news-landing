@@ -50,6 +50,7 @@ canvas{display:block}
   <p style="font-size:.85rem;color:#8890b8">Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen</p>
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
+  <div id="skins" style="margin-top:16px;font-size:.9rem;color:#c7cbe6"></div>
   <div class="small">Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a></div>
 </div>
 
@@ -168,6 +169,24 @@ var _srng=mulberry32(123);
 function rnd(){return dailyMode?_srng():Math.random();}
 document.getElementById("best").textContent=best;
 
+// Meta-Progression: Gesamt-XP (Summe aller Scores) schaltet Schiff-Skins frei.
+var SKINS=[
+  {name:"Cyan",body:0x5ef2ff,em:0x1a6f8c,wing:0xb98bff,need:0},
+  {name:"Magenta",body:0xff7ad9,em:0x6f1a4f,wing:0x5ef2ff,need:250},
+  {name:"Smaragd",body:0x6aff9e,em:0x1a6f3f,wing:0xffd166,need:800},
+  {name:"Gold",body:0xffd166,em:0x6f5a1a,wing:0xff7ad9,need:2000}
+];
+var xp=+(localStorage.getItem("aban_neon_xp")||0);
+var selSkin=+(localStorage.getItem("aban_neon_skin")||0);
+function unlocked(i){return xp>=SKINS[i].need;}
+function applySkin(i){if(!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
+function renderSkins(){var el=document.getElementById("skins");if(!el)return;var next=null;for(var n=0;n<SKINS.length;n++){if(xp<SKINS[n].need){next=SKINS[n];break;}}
+  var html="🛸 Skin: "+SKINS.map(function(s,i){var u=unlocked(i);return "<button data-i='"+i+"' style='margin:2px;padding:5px 10px;border-radius:8px;cursor:"+(u?"pointer":"default")+";border:1px solid "+(i===selSkin?"#5ef2ff":"#3a4170")+";background:"+(u?"#10142b":"#0a0c18")+";color:"+(u?"#e6e9ff":"#555c80")+"'>"+(u?s.name:"🔒")+"</button>";}).join("");
+  html+="<div style='margin-top:6px;font-size:.8rem;color:#8890b8'>Gesamt-XP: "+xp+(next?(" · nächster Skin bei "+next.need):" · alle frei 🏆")+"</div>";
+  el.innerHTML=html;
+  el.querySelectorAll("button").forEach(function(b){b.onclick=function(){var i=+b.getAttribute("data-i");if(unlocked(i)){applySkin(i);renderSkins();beep(520,.1,"triangle",.06);}};});}
+applySkin(selSkin);renderSkins();
+
 var UPGRADES=[
   {id:"magnet",name:"🧲 Magnet"},{id:"shield",name:"🛡️ Schild +1"},{id:"double",name:"✨ Doppel-Orbs"},
   {id:"dash_cd",name:"⚡ Turbo-Dash"},{id:"flow",name:"🌊 Flow-Meister"},{id:"nearmiss",name:"🎯 Risiko-Profi"},
@@ -213,6 +232,7 @@ function start(){reset();running=true;document.getElementById("start").classList
 function gameOver(){
   running=false;shake=1.2;flash();
   if(score>best){best=score;localStorage.setItem("aban_neon_best",best);}
+  xp+=score;try{localStorage.setItem("aban_neon_xp",xp);}catch(e){}renderSkins();
   document.getElementById("best").textContent=best;
   document.getElementById("finalScore").textContent=score;
   document.getElementById("verdict").textContent=score>best-1&&score>0?"Neuer Rekord! 🏆":["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"][Math.min(3,(score/15)|0)];
