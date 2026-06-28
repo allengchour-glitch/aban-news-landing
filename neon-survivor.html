@@ -93,7 +93,7 @@ var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,30,90);
+var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,40,150);
 var camera=new THREE.PerspectiveCamera(60,W/H,0.1,300);
 scene.add(new THREE.AmbientLight(0x556099,1.2));
 var dir=new THREE.DirectionalLight(0xffffff,0.7); dir.position.set(6,14,6); scene.add(dir);
@@ -101,11 +101,46 @@ var dir=new THREE.DirectionalLight(0xffffff,0.7); dir.position.set(6,14,6); scen
 var ARENA=46;
 var floor=new THREE.Mesh(new THREE.PlaneGeometry(ARENA*2,ARENA*2),new THREE.MeshStandardMaterial({color:0x0c1030,emissive:0x05060f}));
 floor.rotation.x=-Math.PI/2; scene.add(floor);
-var grid=new THREE.GridHelper(ARENA*2,40,0x2a3170,0x161a3a); grid.position.y=0.02; scene.add(grid);
+var grid=new THREE.GridHelper(ARENA*2,40,0x4458b0,0x222a55); grid.position.y=0.02; scene.add(grid);
 
 function mat(c,e){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:1.1,flatShading:true}); return m;}
 var player=new THREE.Mesh(new THREE.IcosahedronGeometry(0.9,0),mat(0x5ef2ff,0x1a6f8c)); player.position.y=0.9; scene.add(player);
 var glow=new THREE.PointLight(0x5ef2ff,1.5,18); scene.add(glow);
+
+// ================= "Geile Map": umrandete Neon-Arena mit Deko + Map-Themes =================
+var MAPS=[
+  {name:"CYAN-ARENA",accent:0x5ef2ff,accent2:0xb98bff,fog:0x06070f,floor:0x070a1c},
+  {name:"MAGENTA-NEXUS",accent:0xff7ad9,accent2:0x9b5cff,fog:0x0c0610,floor:0x140716},
+  {name:"TOXIC-GRID",accent:0x6aff9e,accent2:0xffd166,fog:0x06100a,floor:0x07140d},
+  {name:"GOLD-DOMINION",accent:0xffd166,accent2:0xff7ad9,fog:0x100c06,floor:0x140f06}
+];
+var mapWalls=[],mapDeco=[],mapLights=[];
+// Umrandungs-Wände
+function buildWall(x,z,w,d){var m=new THREE.Mesh(new THREE.BoxGeometry(w,2.4,d),mat(0x5ef2ff,0x5ef2ff));m.position.set(x,0.2,z);scene.add(m);mapWalls.push(m);}
+buildWall(0,ARENA+1,ARENA*2+4,1.4);buildWall(0,-ARENA-1,ARENA*2+4,1.4);buildWall(ARENA+1,0,1.4,ARENA*2+4);buildWall(-ARENA-1,0,1.4,ARENA*2+4);
+// Zentrales Emblem (Ring auf dem Boden)
+var emblem=new THREE.Mesh(new THREE.TorusGeometry(6,0.25,8,40),mat(0x5ef2ff,0x5ef2ff));emblem.rotation.x=-Math.PI/2;emblem.position.y=0.05;scene.add(emblem);mapDeco.push(emblem);
+var emblem2=new THREE.Mesh(new THREE.TorusGeometry(3,0.18,8,32),mat(0xb98bff,0xb98bff));emblem2.rotation.x=-Math.PI/2;emblem2.position.y=0.05;scene.add(emblem2);mapDeco.push(emblem2);
+// Skyline-Pylone hinter den Wänden (Backdrop, keine Kollision)
+for(var pi=0;pi<26;pi++){var ang=pi/26*Math.PI*2,rr=ARENA+8+Math.random()*30,hh=6+Math.random()*22;
+  var py=new THREE.Mesh(new THREE.BoxGeometry(2+Math.random()*2,hh,2+Math.random()*2),mat(0x223066,(pi%2)?0x5ef2ff:0xb98bff));
+  py.position.set(Math.cos(ang)*rr,hh/2-1.5,Math.sin(ang)*rr);py.material.emissiveIntensity=0.5;scene.add(py);mapDeco.push(py);}
+// Boden-Runen (flache Leucht-Quads für Textur)
+for(var ri=0;ri<5;ri++){var rune=new THREE.Mesh(new THREE.RingGeometry(8+ri*7,8.4+ri*7,48),new THREE.MeshBasicMaterial({color:0x2a3170,transparent:true,opacity:0.25,side:THREE.DoubleSide}));rune.rotation.x=-Math.PI/2;rune.position.y=0.03;scene.add(rune);mapDeco.push(rune);}
+// Farbige Eck-Lichter
+for(var li=0;li<4;li++){var L=new THREE.PointLight(0x5ef2ff,2.2,90);L.position.set((li<2?-1:1)*ARENA,10,(li%2?-1:1)*ARENA);scene.add(L);mapLights.push(L);}
+var starsGeo=new THREE.BufferGeometry();var sps=new Float32Array(160*3);
+for(var sx=0;sx<160;sx++){sps[sx*3]=(Math.random()-.5)*260;sps[sx*3+1]=Math.random()*60+12;sps[sx*3+2]=(Math.random()-.5)*260;}
+starsGeo.setAttribute("position",new THREE.BufferAttribute(sps,3));
+scene.add(new THREE.Points(starsGeo,new THREE.PointsMaterial({color:0x9aa2d8,size:0.7,transparent:true,opacity:.7})));
+function applyMap(idx){var m=MAPS[idx%MAPS.length];
+  scene.background.setHex(m.fog);scene.fog.color.setHex(m.fog);floor.material.color.setHex(m.floor);
+  for(var i=0;i<mapWalls.length;i++){mapWalls[i].material.color.setHex(m.accent);mapWalls[i].material.emissive.setHex(m.accent);}
+  emblem.material.color.setHex(m.accent);emblem.material.emissive.setHex(m.accent);
+  emblem2.material.color.setHex(m.accent2);emblem2.material.emissive.setHex(m.accent2);
+  for(i=0;i<mapLights.length;i++)mapLights[i].color.setHex(i%2?m.accent2:m.accent);
+  glow.color.setHex(m.accent);player.material.emissive.setHex(m.accent);
+  return m;}
 
 var bullets=[],enemies=[],orbs=[],fx=[];
 function getMesh(pool,make){for(var i=0;i<pool.length;i++)if(!pool[i].active)return pool[i];var o=make();pool.push(o);return o;}
@@ -213,7 +248,8 @@ function levelUp(){
 }
 
 var shake=0,running=false,last=performance.now();
-function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");}
+function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
+  var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");}
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";}
 function gameOver(){running=false;shake=1.2;var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
@@ -265,6 +301,7 @@ function loop(now){
   }
   // FX
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=8*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;p.m.position.y=-99;}}
+  emblem.rotation.z+=dt*0.3; emblem2.rotation.z-=dt*0.5;
   // Kamera (top-down folgt)
   if(shake>0)shake-=dt*1.5;
   camera.position.set(player.position.x+(Math.random()-.5)*shake*3,22,player.position.z+13+(Math.random()-.5)*shake*3);
