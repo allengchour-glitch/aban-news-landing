@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wort des Tages — das tägliche deutsche Worträtsel | aban news</title>
+<meta name="description" content="Errate jeden Tag das geheime deutsche 5-Buchstaben-Wort in 6 Versuchen. Gratis, kein Download, neues Rätsel jeden Tag. Teile dein Ergebnis.">
+<link rel="canonical" href="https://abannews.com/wort-des-tages.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wort des Tages — tägliches deutsches Worträtsel">
+<meta property="og:description" content="Ein neues 5-Buchstaben-Rätsel pro Tag. 6 Versuche. Gratis. Teile dein Ergebnis.">
+<meta property="og:url" content="https://abannews.com/wort-des-tages.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Game","name":"Wort des Tages","url":"https://abannews.com/wort-des-tages.html","genre":"Wortspiel","inLanguage":"de","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"aban news"}}
+</script>
+<style>
+:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#6aaa64;--mid:#c9b458;--no:#787c7e;--key:#d3d6da}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+header{border-bottom:1px solid var(--line);text-align:center;padding:10px}
+header b{color:var(--amber);font-size:1.05rem;letter-spacing:.3px}
+header .sub{display:block;font-size:.78rem;color:#6b7280;margin-top:2px}
+main{flex:1;max-width:500px;width:100%;margin:0 auto;padding:10px;display:flex;flex-direction:column;align-items:center}
+h1{font-size:1.25rem;margin:.6rem 0 .2rem;text-align:center}
+.lead{font-size:.85rem;color:#6b7280;margin:0 0 .8rem;text-align:center}
+#board{display:grid;grid-template-rows:repeat(6,1fr);gap:6px;margin:6px 0 10px}
+.row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.tile{width:56px;height:56px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;text-transform:uppercase;color:var(--ink);background:#fff;transition:transform .15s}
+.tile.filled{border-color:#b9b9b9}
+.tile.pop{transform:scale(1.08)}
+.tile.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.tile.mid{background:var(--mid);border-color:var(--mid);color:#fff}
+.tile.no{background:var(--no);border-color:var(--no);color:#fff}
+#msg{min-height:22px;font-weight:700;color:var(--amber);font-size:.9rem;text-align:center}
+#kb{width:100%;max-width:500px;margin-top:auto}
+.krow{display:flex;justify-content:center;gap:5px;margin-bottom:6px}
+.key{flex:1;max-width:42px;height:52px;border:0;border-radius:6px;background:var(--key);font-weight:700;font-size:1rem;cursor:pointer;text-transform:uppercase}
+.key.wide{max-width:64px;font-size:.72rem}
+.key.ok{background:var(--ok);color:#fff}.key.mid{background:var(--mid);color:#fff}.key.no{background:var(--no);color:#fff}
+.cta{max-width:500px;margin:14px auto 4px;padding:14px 16px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9);text-align:center}
+.cta strong{color:var(--ink)} .cta p{margin:.3rem 0 .7rem;font-size:.9rem;color:#374151}
+.btn{display:inline-block;background:var(--amber);color:#fff;text-decoration:none;font-weight:700;padding:9px 16px;border-radius:9px;font-size:.92rem;border:0;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--amber);border:1px solid #e7c98a}
+footer{border-top:1px solid var(--line);text-align:center;padding:12px;font-size:.8rem;color:#6b7280}
+footer a{color:var(--amber);text-decoration:none}
+.stats{display:flex;gap:18px;justify-content:center;margin:.4rem 0;font-size:.85rem;color:#374151}
+.stats b{display:block;font-size:1.2rem;color:var(--ink)}
+</style>
+</head>
+<body>
+<header><b>aban news</b><span class="sub">Wort des Tages · tägliches Worträtsel</span></header>
+<main>
+  <h1>Wort des Tages</h1>
+  <p class="lead">Errate das geheime 5-Buchstaben-Wort in 6 Versuchen. Jeden Tag ein neues. <span id="puzzlenr"></span></p>
+  <div id="msg"></div>
+  <div id="board" aria-label="Spielfeld"></div>
+  <div class="stats">
+    <span>Serie<b id="streak">0</b></span>
+    <span>Gespielt<b id="played">0</b></span>
+    <span>Gewonnen<b id="winpct">0%</b></span>
+  </div>
+  <div id="kb"></div>
+
+  <aside class="cta" id="endcta" style="display:none">
+    <strong id="ctah">Stark gelöst! 🎉</strong>
+    <p>Magst du täglich 5 Minuten KI ohne Hype — für Selbstständige? Gratis, werktäglich.</p>
+    <button class="btn" id="sharebtn">Ergebnis teilen 📋</button>
+    <a class="btn ghost" href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a>
+  </aside>
+</main>
+<footer>
+  © 2026 aban news · <a href="/online-tools.html">Alle Tools</a> · <a href="/ki-themen.html">KI-Ratgeber</a> · <a href="/impressum.html">Impressum</a>
+  <div style="margin-top:6px;font-size:.72rem">Originalspiel von aban news. Wortliste deutsch, 5 Buchstaben.</div>
+</footer>
+<script>
+(function(){
+  "use strict";
+  // Originale Wortliste (deutsch, 5 Buchstaben, A–Z). Mechanik = Wordle-Prinzip (frei), Umsetzung eigen.
+  var WORDS=["TISCH","STUHL","BLUME","APFEL","BIRNE","KATZE","PFERD","TIGER","HOTEL","RADIO","PIANO","GEIGE","WOLKE","REGEN","SONNE","STERN","FEUER","LICHT","NACHT","HUNDE","VOGEL","FISCH","HASEN","AFFEN","ZEBRA","KAMEL","LAMPE","REGAL","SPIEL","BRIEF","KARTE","BUCHE","TASSE","GABEL","PFLUG","ACKER","BLATT","ASTER","ROSEN","TULPE","NELKE","HONIG","BROTE","TORTE","KEKSE","SAHNE","SUPPE","NUDEL","REISE","AUTOS","BOOTE","INSEL","STADT","HAFEN","BERGE","TALER","FLUSS","SEELE","ARMEN","BEINE","AUGEN","OHREN","NASEN","HAARE","KLEID","HOSEN","SCHUH","SOCKE","JACKE","RINGE","KETTE","PERLE","EISEN","STEIN","WIESE","WEIDE","BODEN","STUFE","BESEN","EIMER","SEIFE","SALAT","PIZZA","CURRY","KAKAO","WEINE","BIERE","MILCH"];
+  var WORDSET={}; WORDS.forEach(function(w){WORDSET[w]=1;});
+  var EPOCH=Date.UTC(2026,0,1);
+  var today=new Date(); var dayNo=Math.floor((Date.UTC(today.getFullYear(),today.getMonth(),today.getDate())-EPOCH)/864e5);
+  var idx=((dayNo%WORDS.length)+WORDS.length)%WORDS.length;
+  var TARGET=WORDS[idx];
+  document.getElementById("puzzlenr").textContent="(Rätsel #"+(dayNo+1)+")";
+
+  var LS="aban_wdt", SK="aban_wdt_stats";
+  var state=load(); var stats=loadStats();
+  var row=state.row||0, cur="", done=state.done||false, guesses=state.guesses||[];
+
+  var board=document.getElementById("board"), tiles=[];
+  for(var r=0;r<6;r++){var rd=document.createElement("div");rd.className="row";var tr=[];for(var c=0;c<5;c++){var t=document.createElement("div");t.className="tile";rd.appendChild(t);tr.push(t);}board.appendChild(rd);tiles.push(tr);}
+
+  var KB=["QWERTZUIOP","ASDFGHJKL","ENTER YXCVBNM ⌫"];
+  var kb=document.getElementById("kb"), keyEls={};
+  KB.forEach(function(rowstr){var kr=document.createElement("div");kr.className="krow";rowstr.split(" ").forEach(function(seg){
+    seg.split("").forEach(function(){});
+    if(seg==="ENTER"||seg==="⌫"){var b=mkkey(seg,true);kr.appendChild(b);}
+    else{seg.split("").forEach(function(ch){var b=mkkey(ch,false);kr.appendChild(b);keyEls[ch]=b;});}
+  });kb.appendChild(kr);});
+
+  function mkkey(label,wide){var b=document.createElement("button");b.className="key"+(wide?" wide":"");b.textContent=label;b.addEventListener("click",function(){press(label);});return b;}
+
+  // replay vorherige Versuche
+  guesses.forEach(function(g,ri){paint(ri,g,true);});
+  row=guesses.length;
+  updateStats();
+  if(done){finish(guesses[guesses.length-1]===TARGET);}
+
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Enter")press("ENTER");
+    else if(e.key==="Backspace")press("⌫");
+    else{var k=e.key.toUpperCase();if(/^[A-Z]$/.test(k))press(k);}
+  });
+
+  function press(k){
+    if(done)return;
+    if(k==="ENTER"){submit();return;}
+    if(k==="⌫"){cur=cur.slice(0,-1);render();return;}
+    if(/^[A-Z]$/.test(k)&&cur.length<5){cur+=k;render();}
+  }
+  function render(){for(var c=0;c<5;c++){var t=tiles[row][c];var ch=cur[c]||"";t.textContent=ch;t.className="tile"+(ch?" filled":"");}}
+  function submit(){
+    if(cur.length<5){msg("Zu kurz");return;}
+    if(!WORDSET[cur]){msg("Nicht in der Wortliste");shake();return;}
+    paint(row,cur,false);
+    guesses.push(cur);
+    var won=cur===TARGET;
+    save();
+    if(won){win();}
+    else{row++;cur="";if(row>=6){lose();}}
+  }
+  function paint(ri,guess,instant){
+    var tcount={};for(var i=0;i<5;i++){tcount[TARGET[i]]=(tcount[TARGET[i]]||0)+1;}
+    var res=new Array(5).fill("no");
+    for(i=0;i<5;i++){if(guess[i]===TARGET[i]){res[i]="ok";tcount[guess[i]]--;}}
+    for(i=0;i<5;i++){if(res[i]==="ok")continue;if(tcount[guess[i]]>0){res[i]="mid";tcount[guess[i]]--;}}
+    for(i=0;i<5;i++){(function(i){var t=tiles[ri][i];var d=instant?0:i*180;
+      setTimeout(function(){t.textContent=guess[i];t.classList.add("pop");t.classList.add(res[i]);
+        var ke=keyEls[guess[i]];if(ke){if(res[i]==="ok")ke.className="key ok";else if(res[i]==="mid"&&!ke.classList.contains("ok"))ke.className="key mid";else if(res[i]==="no"&&!ke.classList.contains("ok")&&!ke.classList.contains("mid"))ke.className="key no";}
+        setTimeout(function(){t.classList.remove("pop");},120);
+      },d);})(i);}
+  }
+  function win(){done=true;save();bumpStats(true,guesses.length);setTimeout(function(){msg(["Genial!","Stark!","Sehr gut!","Gut!","Geschafft!","Puh, knapp!"][guesses.length-1]||"Geschafft!");finish(true);},900);}
+  function lose(){done=true;save();bumpStats(false,0);setTimeout(function(){msg("Lösung: "+TARGET);finish(false);},900);}
+  function finish(won){document.getElementById("endcta").style.display="block";document.getElementById("ctah").textContent=won?"Stark gelöst! 🎉":("Morgen wieder! Heute war's: "+TARGET);updateStats();}
+
+  function shareText(){
+    var lines=guesses.map(function(g){var tcount={};for(var i=0;i<5;i++){tcount[TARGET[i]]=(tcount[TARGET[i]]||0)+1;}
+      var res=new Array(5).fill("⬜");for(i=0;i<5;i++){if(g[i]===TARGET[i]){res[i]="🟩";tcount[g[i]]--;}}
+      for(i=0;i<5;i++){if(res[i]==="🟩")continue;if(tcount[g[i]]>0){res[i]="🟨";tcount[g[i]]--;}}return res.join("");}).join("\n");
+    var score=(guesses[guesses.length-1]===TARGET)?guesses.length:"X";
+    return "aban Wort des Tages #"+(dayNo+1)+" "+score+"/6\n"+lines+"\nabannews.com/wort-des-tages.html";
+  }
+  document.getElementById("sharebtn").addEventListener("click",function(){
+    var txt=shareText();
+    if(navigator.share){navigator.share({text:txt}).catch(function(){});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){msg("Ergebnis kopiert 📋");});}
+    else{msg("Kopieren nicht möglich");}
+  });
+
+  function msg(s){var m=document.getElementById("msg");m.textContent=s;}
+  function shake(){tiles[row].forEach(function(t){t.style.transform="translateX(-4px)";setTimeout(function(){t.style.transform="";},120);});}
+
+  function load(){try{var o=JSON.parse(localStorage.getItem(LS)||"{}");if(o.day!==dayNo)return {day:dayNo,row:0,guesses:[],done:false};return o;}catch(e){return {day:dayNo,row:0,guesses:[],done:false};}}
+  function save(){try{localStorage.setItem(LS,JSON.stringify({day:dayNo,row:row,guesses:guesses,done:done}));}catch(e){}}
+  function loadStats(){try{return JSON.parse(localStorage.getItem(SK)||"{}");}catch(e){return {};}}
+  function bumpStats(won,tries){
+    stats.played=(stats.played||0)+1;
+    if(won){stats.wins=(stats.wins||0)+1;stats.streak=(stats.lastDay===dayNo-1?(stats.streak||0):0)+1;}
+    else{stats.streak=0;}
+    stats.lastDay=dayNo;
+    try{localStorage.setItem(SK,JSON.stringify(stats));}catch(e){}
+    updateStats();
+  }
+  function updateStats(){
+    document.getElementById("streak").textContent=stats.streak||0;
+    document.getElementById("played").textContent=stats.played||0;
+    document.getElementById("winpct").textContent=(stats.played?Math.round(100*(stats.wins||0)/stats.played):0)+"%";
+  }
+})();
+</script>
+</body>
+</html>
