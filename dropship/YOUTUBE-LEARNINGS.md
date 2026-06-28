@@ -144,3 +144,7 @@
   - (Heated Mug `taza calentadora` ist schon im kaffee-Anker.)
 - **CRO-Backlog aus ihrem Doc (ehrlich, für später):** Gratis-Versand-Fortschrittsbalken im Cart-Drawer („Noch CHF X bis gratis") = höchster Cart-Hebel; Varianten als Pills (44px); Produkt-Video als 2. Galeriebild. Fake-Scarcity bleibt verboten (deckt sich mit meiner Guardrail).
 - **Bestätigte gemeinsame Lehre:** ES-Keywords führen, Problemlöser > „cooler Junk", Premium-Marken (Dyson) NIE bulk-importieren (×2.6-Marge = absurd).
+
+## Runde 23-Ernte — Tier-A ES-Keywords getestet
+- **whisky = 2 Treffer** (Whiskygläser-Sets CHF75.90/85.90) — ES `vasos de whisky` ✓ funktioniert, in bar-wein-accessoires.
+- **touchlampen = 0** (`lámparas de amistad` nicht in BigBuy), **ultraschall = 1 Kandidat/0 Pick** (`limpiador de joyas` quasi leer). → Beide ES-Keywords haben kaum BigBuy-Stock. **Lehre:** Nicht jeder Tier-A-Trend ist bei BigBuy (spanisch) verfügbar — whisky ja, Friendship-Lamps/Ultraschall nein. Diese 2 aus Rotation, whisky behalten.
