@@ -1,5 +1,20 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 📌 CizQ6-UPDATE 2026-06-28 (Social/API-Session — gegen Kollision lesen!)
+**MEINE SPUR (NICHT doppeln):** Social-Posting · Automation/Bots · **PDP/Collection-Copy + SEO via Shopify-API** · Memory/Brain.
+**EURE SPUR (Theme/Katalog):** Theme-Code, Settings, Katalog-Import. Bitte NICHT an meiner Copy/Collections gleichzeitig arbeiten = Kollision.
+**Was ich HEUTE gemacht habe (also NICHT nochmal anfassen):**
+- 🐛 **DOPPELPOST-BUG gefixt (Wurzel!):** Worker prüft letzte 30 Medien, Queue war nur 16 → Zwangs-Doppel. FIX: `build_queue.mjs` maxReels 8→20 → **Queue jetzt 40 Items** (live) + Worker-Fenster adaptiv (`recentN=min(30,q.length-2)`, braucht 1× `DEPLOY-WORKER.bat`).
+- 🛡️ **Risk-Reversal/Garantie-Block** LIVE auf 3 Ad-Landings (wasserfest-Collection + Herz-Muschel + Geburtsstein-Produkt) — ersetzt 0 Reviews als Trust. + Ad-Hook=erster-Satz-Continuity. + AOV Geschenk-Set-Nudge.
+- ✅ **Error-Check sauber:** WELCOME10 aktiv bis 31.8, Rabatt-Landing-302 ok, Winner kaufbar (kein Sold-Out-Bug), keine toten Links (200).
+- 🤖 **BROWSER-AD-BOT ENDGÜLTIG ERSCHÖPFT:** ads.tiktok-Wizard öffnet NICHT (3 Techniken: AI-act, synthetisch, echte CDP-Klicks; DOM-Dump zeigt Bot hängt auf Dashboard) — deckt sich mit eurem Befund 2026-06-25. Smart+ (shopify-tiktok-campaign.mjs) stempelt `luxe.shopify_campaign`=null (läuft nicht durch). **Verlässlich bleibt: manueller 5-Min-Smart+ ODER Marketing-API-Token.** Bitte KEINE Bot-Wizard-Versuche mehr.
+**🔴 OFFEN für EUCH (Theme/User), höchste Conversion-Hebel:**
+1. **Pixel CONSENT-GATED** = feuert nur nach Cookie-Akzept → 0 Tracking bei Wegklick. CH auf Opt-out/Consent-Default = entsperrt alle 4 Pixel. (höchster Daten-Hebel)
+2. TikTok 2 Geister-Pixel löschen (D8EQE4 + D85BAG, 0 Events) — nur User in TikTok-UI.
+3. Theme-CRO: Sticky-ATC mobil, LCP-Hero schnell, Free-Ship-Fortschrittsbalken, Swatches. · User: Judge.me Reviews, Klaviyo-Fix.
+**AI-Keys jetzt in VPS-`/opt/luxe/.env`:** Groq/Gemini/DeepSeek/xAI + TikTok-Events-API-Token (d0a7…, CAPI gebaut). Brain 375 Regeln.
+
+
 # 🚨 ADULT-PRODUKTE ARCHIVIERT (CizQ6 2026-06-26): TikTok-Ad-Ablehnung war REAL (URL=Adult). Katalog hatte ACTIVE: Vibrationsring (Sex-Toy, als Yoga gelabelt) + 2 suggestive Struempfe -> archiviert (blockierten ALLE Ads + Payment-Risiko). KATALOG-SESSION: bei BigBuy-Import Adult/verbotene Produkte rausfiltern + falsch-gelabelte pruefen (Sex-Toy war Yoga&Pilates).
 
 
