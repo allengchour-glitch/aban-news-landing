@@ -136,6 +136,19 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
+**Reichweite/Distribution 2026 (Web-Recherche):**
+- **Organische Social-Reichweite sinkt weiter; Facebook-Gruppen sind 2026 organisch faktisch tot** außer 3 Nischen
+  (lokale Dienstleister mit Standort, High-Ticket-Coaching ≥5k, Second-Hand-B2C). → Für abannews **kein** FB-Gruppen-Fokus.
+- **Reddit ist eine der letzten Plattformen mit echter organischer Reichweite** — aber nur mit *authentischem Mehrwert*
+  (kein Spam). → Lead-Magnet/Tools als ehrlicher Tipp in passende Subs (r/Finanzen, r/Schweiz, r/Selbststaendig, Branchen-Subs).
+- **Dauerhaftes, algorithmus-unabhängiges Asset = eigene E-Mail-Liste + Website/Tools.** Bestätigt die Strategie:
+  Tools/SEO (Owned) → Newsletter. Hebel bleibt: Leser über Owned-Content + Reddit, dann beehiiv.
+**Gefragte Tools (validiert):** Brutto-Netto-/Gehaltsrechner = dauerhaft hohes Suchvolumen (✓ schweizer-lohnrechner vorhanden);
+Finanz-/Steuerrechner generell stark (✓ CH-Geld-Center). **Neue validierte Idee „SEO-ROI-Rechner" für KMU** ist 2026 in der CH
+ein Trend-Tool → in Backlog `automation/tool-ideas-learned.md` (via learn_tool_ideas.py) aufgenommen.
+**Quellen:** famefact (FB-Gruppen 2026), awareness-marketing.de, coco.one, ad-hoc-news/seoboost.ch (SEO-ROI CH), expert-select.com (Brutto-Netto).
+
 ### 🤝 HANDOFF — „Tools/Apps/Gehirne"-Session (Stand 2026-06-28, für andere Sessions zuerst lesen)
 **Was diese Session besitzt & gebaut hat (abannews, voll-lokal, kein Server/Token):**
 - **Hub = 182 Karten in `online-tools.html`** (~155 echte voll-lokale Tools + Branchen-/CH-Links). Jedes Tool:
