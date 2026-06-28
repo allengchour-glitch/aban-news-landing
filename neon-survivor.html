@@ -247,6 +247,29 @@ function levelUp(){
   document.getElementById("levelup").classList.remove("hide");
 }
 
+// ================= Bloom-Post-Processing (Neon-Glow → "teurer" Look) =================
+var bloomVert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
+var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
+var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt);
+var bw=Math.max(1,Math.floor(W/2)),bh=Math.max(1,Math.floor(H/2));
+var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
+var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.5}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:1.0}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
+function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
+function renderBloom(){
+  renderer.setRenderTarget(rtScene);renderer.render(scene,camera);
+  brightMat.uniforms.tDiffuse.value=rtScene.texture;blit(brightMat,rtA);
+  blurMat.uniforms.res.value.set(bw,bh);
+  blurMat.uniforms.dir.value.set(1,0);blurMat.uniforms.tDiffuse.value=rtA.texture;blit(blurMat,rtB);
+  blurMat.uniforms.dir.value.set(0,1);blurMat.uniforms.tDiffuse.value=rtB.texture;blit(blurMat,rtA);
+  compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blit(compMat,null);
+  renderer.setRenderTarget(null);
+}
+function resizeBloom(){rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
+
 var shake=0,running=false,last=performance.now();
 function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");}
@@ -306,12 +329,12 @@ function loop(now){
   if(shake>0)shake-=dt*1.5;
   camera.position.set(player.position.x+(Math.random()-.5)*shake*3,22,player.position.z+13+(Math.random()-.5)*shake*3);
   camera.lookAt(player.position.x,0,player.position.z);
-  renderer.render(scene,camera);
+  renderBloom();
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=Math.floor(S.t)+"s";document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";}
 reset(); showBest(); requestAnimationFrame(loop);
-addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
 })();
 </script>
 </body>
