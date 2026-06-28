@@ -169,3 +169,6 @@
 - **survival-Kategorie NEU** (→ camping-outdoor, ES-Keywords: navaja multiusos/multitool, linterna táctica, kit de supervivencia, paracord, klappmesser, kompass). Männer/Outdoor/Gadget-Winkel.
 - **Männer-Abdeckung schon breit:** herrenmode (fur-ihn), auto, whisky, grill, werkzeug, survival, gaming — alles männer-leaning. Gut versorgt.
 - **Konsolen/Tablet:** BigBuy hat KEINE echten Konsolen (PS5/Xbox) — spanischer Distributor, nur Zubehör. Tablets = billige No-Name-IT (Junk-Risiko) → bewusst NICHT, audio/gaming-Zubehör deckt Elektronik-Gadgets ab.
+
+## Runde 25-Ernte — 🔧 Werkzeug
+- **+5 Werkzeug** (Werkzeug-Halter/Gürtel-Clips CHF66–107 + **Akku-Schrauber für Reifen CHF91.90** = ideal für Werkstatt-Kollege). 1623 Kandidaten → viel Nachschub. Tool-Halter etwas hochpreisig, aber Profi-tauglich. Nächster Tick: QA (schwere Maschinen draften) + Dedup + gaming/survival/auto-Wellen.
