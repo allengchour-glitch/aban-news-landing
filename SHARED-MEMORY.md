@@ -210,6 +210,10 @@ Web Analytics (`js/analytics.js`, Token fehlt noch).
   - **🤝 HANDOFF aktiv (User wählte Opt.1):** der **lokale Claude (3070)** übernimmt jetzt den Godot-Test/Build/Fix-Loop
     → Auftrag steht in **`game/LOCAL-CLAUDE-AUFTRAG.md`** (verifizieren P2–P4a, dann P4b Sound/Partikel/Daily, P5 Blender+Export).
     Cloud-Session macht parallel Web-Spiele/Recherche/Memory.
+  - **Funnel-Politur Cloud-Seite (2026-06-28):** `neon-survivor.html` auf Definition-of-Done gehoben (#1407 Boss-Wellen/
+    3 Gegner-Typen/Pause; #1409 persistenter Rekord+Upgrade-HUD-Row+Mute). `neon-flug.html` Mute-Toggle (#1410).
+    **Beide Web-Spiele jetzt einheitlich: persistenter Rekord + Mute (Taste M) + Newsletter-Funnel.** Steam-Store-Text
+    Entwurf in `game/STEAM-STORE.md` (#1408). Playbook-Docs: `game/MASTERPLAN.md`, `QUALITAET-CHECKLISTE.md`, `UX-LAYOUT.md`.
 
 **2026-06-27 (abannews/Tool-Session) — 🔄 CROSS-SESSION-SYNC (Stand zusammengetragen, wird laufend aufgefrischt):**
 - **abannews/Tool-Session (ich):** eBay-Affiliate site-weit scharf (campid `5339156671`, money_gap=0),
