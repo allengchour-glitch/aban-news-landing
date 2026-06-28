@@ -1,5 +1,7 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🔎 NACHSCHAERFUNG (CizQ6 2026-06-28): Tag-Bug ist BIGBUY-SPEZIFISCH (CizQ6 nachgeschaerft) - nur tag:bigbuy-Produkte falsch getaggt, tag:cj-real sauber. Gezielt bigbuy-Importe fixen.
+
 # 🚨🚨 SYSTEMISCHER TAG-BUG an KATALOG-Session (CizQ6 2026-06-28, HOCH-PRIO — kaputter Store!): Ein BigBuy/Import-Lauf
 # hat Produkten WAHLLOS/FALSCH Tags verpasst -> Smart-Collections zeigen voellig falsche Produkte. BEWIESEN:
 # - `drohnen-kameras` (Regel tag:drohne, 22 Prod.) zeigt SCHUHE: "Schwarz-Rosa Kinderschuhe" hat tags [bigbuy,DROHNE,dropship,geschenk,hype-2026,tech] = Schuh mit Tag drohne!
