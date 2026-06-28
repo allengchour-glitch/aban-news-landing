@@ -18,8 +18,12 @@
 
 ## 🔧 Iterationen
 - **P1:** lief, aber **zu dunkel + kein sichtbarer Score** (User-Screenshot).
-- **P2 (jetzt):** Ambient+Glow+hellere Lichter, `fog_density` 0.02→0.006, **Neon-Randstreifen** (Canyon-Gefühl),
+- **P2:** Ambient+Glow+hellere Lichter, `fog_density` 0.02→0.006, **Neon-Randstreifen** (Canyon-Gefühl),
   **HUD** (Punkte + Rekord) + **Game-Over-Text** mit Neustart-Hinweis.
+- **P3 (Roguelite + Juice):** **Variable-Reward-Upgrades** (Wahl 1/2/3 aus 6: Magnet/Schild/Doppel/Schmaler/Ruhe/
+  Mehr-Orbs) — der Sucht-Kern laut Recherche. + **Juice:** Screenshake (Crash/Near-Miss/Pickup), Orb-Pop (Scale),
+  **Near-Miss-Bonus** (knapp vorbei = Punkt + Shake). Schild absorbiert 1 Treffer. Alles code-only, kein Asset nötig.
+  Godot-Fakten verifiziert: `set_meta/has_meta` für Near-Miss-Flag, `Array.shuffle/slice`, `match` mit String, `randf()`.
 
 ## ⏭️ Nächste Learnings/To-dos (für lokalen Claude mit GPU-Test)
 - Sound (WebAudio-Äquivalent: `AudioStreamPlayer` + generierte Töne oder kleine .ogg).
