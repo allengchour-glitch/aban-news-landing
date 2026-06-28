@@ -151,3 +151,11 @@
 
 ## Runde 23-Politur — bar-wein-accessoires aufgewertet
 - Desc war 136ch → Premium-Beschreibung (Whisky-Sets/Weingläser/Cocktail-Tools + Trust + WELCOME10) + frischer SEO-Titel/Desc. Passend, da Whiskygläser gerade dort landen.
+
+## Runde 24 — 🚗 Auto-Werkstatt-Winkel (User: Kollege hat Auto-Werkstatt)
+- **`auto`-Kategorie verstärkt** mit coolen Auto-Tech-Gadget-Keywords (ES für BigBuy): OBD2-Scanner `escáner obd`, Akku-Starthilfe `arrancador de baterías`, Reifen-Kompressor `inflador/compresor de aire`, Auto-Sauger `aspirador de coche`, Reifendruck-Messer `manómetro`, Batterie-Ladegerät, LED-Arbeitsleuchte. Bans verschärft gegen schwere Ersatzteile (Bremsbelag/Zündkerze/Ölfilter/Stoßstange — passen NICHT zu LuxeStyle).
+- **Strategie:** Auto-GADGETS (Tech/Komfort) statt Werkstatt-Hardware — interessiert Auto-Leute UND passt zum Lifestyle-Shop. auto-zubehoer Collection hat 18 Prod, wird gefüllt.
+- **Nutzt Memory der anderen Session:** deren Lehre „BigBuy-auto = 90% Hardware → streng filtern" → genau darum nur kuratierte Gadget-Anker + harte Ersatzteil-Bans.
+
+## Runde 24 — gtin_fill der anderen Session angewendet
+- Ihr Tool `automation/bigbuy_gtin_fill.mjs` LIVE: **703 echte Hersteller + 642 EAN/GTIN gesetzt, 577 custom_product-Flags bereinigt** (3342 BigBuy-Produkte gescannt). Fixt Google-Merchant „identifier exists"-Disapprovals auf meinen Importen (die hatten vendor=LuxeStyle + keinen Barcode). **Lehre für meinen Importer: barcode+vendor direkt mitgeben.**
