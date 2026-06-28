@@ -176,3 +176,7 @@
 ## Runde 26 — Werkzeug-QA sauber + 5 Dubletten + Gaming gestartet
 - Werkzeug: 6 Produkte alle ACTIVE/SEO✓/8 Kanäle, keine schweren Maschinen → alle behalten. SKU-Dedup: 5 Dubletten gedraftet.
 - **Gaming-Welle läuft: 1116 Kandidaten** (Marken-Controller/Headsets) → nächster Tick erntet + QA (Küchen-Fehlmatch bereits gebannt).
+
+## Runde 27 — beleuchtung-lampen (129p) poliert + auto/survival-Welle
+- beleuchtung-lampen: dünne Desc → Premium-Beschreibung (LED-Strips/Projektoren · Lampen · Stimmungslicht + Trust + WELCOME10) + SEO. Auto+Survival-Import läuft (Werkstatt-Vielfalt: OBD2/Starthilfe + Survival).
+- Politur-Backlog (mine, schwach): fitness-training 152p, kinderspielzeug 117p, schuhe-sneaker 81p, camping-schlafen 71p, klima-ventilatoren 62p, gaming-maeuse (Desc=0!), kaffee-maschinen 41p.
