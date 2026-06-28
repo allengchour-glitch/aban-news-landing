@@ -36,6 +36,7 @@ canvas{display:block}
 <body>
 <div id="wrap"></div>
 <div id="hud"><span id="score">0</span><span class="best">Rekord <span id="best">0</span></span></div>
+<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:8px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer">🔊</button>
 <div id="flash"></div>
 <div id="upg" class="overlay hide" style="background:rgba(6,7,15,.82);backdrop-filter:blur(4px)"></div>
 
@@ -195,8 +196,9 @@ window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="
 window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
 
 // Audio (WebAudio, kein Asset)
-var actx=null;
-function beep(freq,dur,type,vol){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=type||"sine";o.frequency.value=freq;g.gain.value=vol||.06;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(dur||.12));o.stop(actx.currentTime+(dur||.12));}catch(e){}}
+var actx=null,muted=false; try{muted=localStorage.getItem("aban_neon_muted")==="1";}catch(e){}
+(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";try{localStorage.setItem("aban_neon_muted",muted?"1":"0");}catch(e){}}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
+function beep(freq,dur,type,vol){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=type||"sine";o.frequency.value=freq;g.gain.value=vol||.06;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(dur||.12));o.stop(actx.currentTime+(dur||.12));}catch(e){}}
 
 document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
 document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
