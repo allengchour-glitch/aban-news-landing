@@ -63,6 +63,13 @@ canvas{display:block}
   <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a></p>
 </div>
 
+<div class="overlay hide" id="pause">
+  <div class="tag">Pause</div>
+  <h1>⏸</h1>
+  <p>Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.</p>
+  <button class="btn" id="resumeBtn">Weiter ▶</button>
+</div>
+
 <script src="/js/vendor/three.min.js"></script>
 <script>
 (function(){
@@ -145,7 +152,7 @@ function burst(x,y,z,color){
 
 // State
 var running=false,score=0,best=+(localStorage.getItem("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
-var shield=0,magnet=false,orbsCollected=0,nextUp=6,choosing=false;
+var shield=0,magnet=false,orbsCollected=0,nextUp=6,choosing=false,paused=false;
 // Meisterklasse-Mechaniken (spiegeln den Godot-Build): Flow/Combo, Dash, Biome.
 var combo=0,comboTimer=0,comboTime=180,nearWindow=1.6,orbValue=1;
 var dashCharge=0,dashActive=false,dashTimer=0,dashRecharge=0.0035;
@@ -161,7 +168,8 @@ function hex2css(h){return "#"+("000000"+(h>>>0).toString(16)).slice(-6);}
 function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);return b;}
 function announce(txt,colorHex){var a=document.getElementById("announce");a.style.color=hex2css(colorHex);a.textContent=txt;a.style.opacity="1";clearTimeout(window._annT);window._annT=setTimeout(function(){a.style.opacity="0";},1300);}
 function nearMiss(){combo++;comboTimer=comboTime;score+=mult();if(shake<0.25)shake=0.25;beep(720+combo*6,.05,"square",.04);}
-function doDash(){if(!running||choosing||dashActive||dashCharge<1)return;dashActive=true;dashTimer=26;dashCharge=0;if(shake<0.6)shake=0.6;burst(shipX,0,1,BIOMES[biomeIndex%BIOMES.length].accent);beep(880,.12,"square",.08);}
+function doDash(){if(!running||choosing||paused||dashActive||dashCharge<1)return;dashActive=true;dashTimer=26;dashCharge=0;if(shake<0.6)shake=0.6;burst(shipX,0,1,BIOMES[biomeIndex%BIOMES.length].accent);beep(880,.12,"square",.08);}
+function togglePause(){if(!running||choosing)return;paused=!paused;document.getElementById("pause").classList.toggle("hide",!paused);}
 // Tages-Challenge: deterministischer Seed pro Tag → alle spielen denselben Lauf, Score vergleichbar/teilbar.
 var dailyMode=false, dayNo=Math.floor((Date.now()/864e5)), _seed=0;
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
@@ -219,7 +227,8 @@ function applyUpgrade(i){
 function reset(){
   if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);
   score=0;speed=0.6;targetX=0;shipX=0;shake=0;tick=0;
-  shield=0;magnet=false;orbValue=1;orbsCollected=0;nextUp=6;choosing=false;window._orbBoost=0;
+  shield=0;magnet=false;orbValue=1;orbsCollected=0;nextUp=6;choosing=false;paused=false;window._orbBoost=0;
+  document.getElementById("pause").classList.add("hide");
   combo=0;comboTimer=0;comboTime=180;nearWindow=1.6;dashCharge=0;dashActive=false;dashTimer=0;dashRecharge=0.0035;
   biomeIndex=0;phaseTimer=1320;applyBiome(0);
   document.getElementById("combo").textContent="";document.getElementById("dashfill").style.width="0";
@@ -245,7 +254,7 @@ function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
 window.addEventListener("mousemove",function(e){if(running)setTarget(e.clientX);});
 window.addEventListener("touchmove",function(e){if(running&&e.touches[0]){setTarget(e.touches[0].clientX);e.preventDefault();}},{passive:false});
 var keyL=false,keyR=false;
-window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing)doDash();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
+window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing&&!paused)doDash();if((k==="escape"||k==="p")&&running&&!choosing)togglePause();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
 window.addEventListener("touchstart",function(){if(running&&!choosing)doDash();},{passive:true});
 window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
 
@@ -257,6 +266,7 @@ function beep(freq,dur,type,vol){if(muted)return;try{if(!actx)actx=new (window.A
 document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
 document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
 document.getElementById("againBtn").onclick=start;
+document.getElementById("resumeBtn").onclick=function(){if(paused)togglePause();};
 document.getElementById("shareBtn").onclick=function(){
   var tag=dailyMode?("Tages-Challenge #"+dayNo):"Endlos";
   var txt="Neon-Flug 🚀 "+tag+" — "+score+" Punkte (Rekord "+best+")\nSpiel gratis: abannews.com/neon-flug.html";
@@ -283,7 +293,7 @@ function loop(t){
   requestAnimationFrame(loop);
   tick++;
   // ship movement
-  if(running&&!choosing){
+  if(running&&!choosing&&!paused){
     if(keyL)targetX-=0.4;if(keyR)targetX+=0.4;
     targetX=Math.max(-7.5,Math.min(7.5,targetX));
     shipX+=(targetX-shipX)*0.18;
