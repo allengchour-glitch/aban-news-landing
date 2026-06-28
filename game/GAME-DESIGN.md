@@ -32,6 +32,12 @@ Tod → **sofortiger** Neustart (1 Tastendruck) → „diesmal weiter". Kurze Ru
 - **P4:** Blender-Modelle + Shader + Settings + Lokalisierung (DE/EN).
 - **P5:** Export-Polish + Store-Assets (Trailer/Screens) + Wishlist → Release.
 
+## ⚖️ KI-Kennzeichnung (Pflicht beim Release!)
+**Steam verlangt die Angabe von KI-generierten Inhalten** (Juni 2026: ~35 % der neuen Spiele mussten KI
+deklarieren). Wir nutzen **Meshy (3D-Modelle), ElevenLabs (Sound), KI-Code** → im Steamworks-Formular die
+**„AI-generated content"-Disclosure ausfüllen** (Pre-generated: 3D/Audio/Code). Gleiches sinngemäß für
+Google Play / App Store, falls gefragt. **Ehrlich deklarieren** (passt zu aban) — nicht verschweigen.
+
 ## Tech-Notizen
 - Foundation ist code-only (kein Asset-Import-Risiko). Ab P4 echte Modelle.
 - Performance-Budget: 60 fps auf Mid-Range + Mobile (Godot leicht). Objekt-Pooling statt queue_free-Spam (P2).
