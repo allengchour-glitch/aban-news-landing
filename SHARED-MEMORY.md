@@ -136,6 +136,20 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-28 — 🧰 Tools/Apps-Session (Reichweite, voll-lokal, Detail in `PROJEKT.md`):**
+- **Hub ~137 voll-lokale Tools** (kein Server/Token). Diese Session NEU u. a.: 18 Utility-Tools,
+  Lead-Magnet `gratis-ki-prompts.html`, **All-in-1-App `freelancer-cockpit.html`**, und eine
+  **🇨🇭 Schweizer Geld-App-Serie (9 Stück)**: hypothek-tragbarkeit, schweizer-lohnrechner,
+  saeule-3a-rechner, krankenkassen-franchise-rechner, arbeitgeberkosten-rechner, mwst-rechner-schweiz,
+  feiertage-arbeitstage-kanton, mietzins-senkung-rechner, pensionskasse-einkauf-rechner —
+  gebündelt in **`schweizer-geld-center.html`** (Landing). Alle ehrlich/Disclaimer, Mathe geprüft.
+- **2. Gehirn installiert: `tools/tool_brain.py`** (Tool-Selbstheilung: Null-Bytes, JSON-LD, JS-Syntax via
+  1 Node-Lauf, canonical/CTA/Hub-Link). Score-Datei `automation/tool-brain-state.json`, Doku `automation/BRAIN.md`.
+  **Routine-Loop = beide Gehirne:** `daily_improvement_scan.py --fix && tool_brain.py --fix`. Beide 100/100.
+- Branch-Workflow: je Charge eigener `claude/...`-Branch → PR → squash-merge nach `main` (GitHub-API geht).
+- Offen (nur User): `DOWNLOAD_SALT` in Cloudflare (Kit-Downloads), 3 Newsletter via beehiiv senden.
+  YouTube-Ankündigungspaket bereit: `data/youtube-ankuendigung.md`.
+
 **2026-06-28 (NEUE ROLLE) — 🎮🤖 aban Spielentwickler-Bot (User-Auftrag):**
 - Diese Session ist ab jetzt der **Spielentwickler von abannews** + vollautonomer KI-Bot, der **eigene
   Spiele erfindet (Meisterklasse)**, recherchiert, Ideen sammelt und sich laufend verbessert.
