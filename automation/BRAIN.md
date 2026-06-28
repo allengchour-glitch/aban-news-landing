@@ -84,3 +84,16 @@ Newsletter-Link & Hub-Rücklink.
 **Routine-Loop (beide Gehirne):**
 `python3 tools/daily_improvement_scan.py --fix && python3 tools/tool_brain.py --fix`
 → Top-Befunde beheben → committen → PR → merge.
+
+---
+
+## 🧠 Lern-Sammler — Tool-Ideen (`tools/learn_tool_ideas.py`)
+Kopiert das „Wissenssammler"-Muster (wie `learn_from_youtube.mjs`) für den Tool-/App-Loop:
+kennt den Bestand, hält kuratierte, gefragte DE/CH-Ideen, dedupliziert gegen vorhandene Slugs
+(inkl. Synonyme) und schreibt einen priorisierten Backlog → `automation/tool-ideas-learned.md`.
+
+**Voller autonomer Loop (3 Schritte):**
+`python3 tools/daily_improvement_scan.py --fix && python3 tools/tool_brain.py --fix && python3 tools/learn_tool_ideas.py`
+→ oberste offene Idee aus `tool-ideas-learned.md` sauber bauen (eigene Quellen, keine erfundenen
+Zahlen) → Hub/Sitemap/Homepage → committen → PR → squash-merge → **PROJEKT.md + SHARED-MEMORY.md**.
+Wissensbasis erweitern: Liste `IDEAS` in `tools/learn_tool_ideas.py`.
