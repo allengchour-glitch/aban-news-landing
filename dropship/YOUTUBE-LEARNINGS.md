@@ -159,3 +159,7 @@
 
 ## Runde 24 — gtin_fill der anderen Session angewendet
 - Ihr Tool `automation/bigbuy_gtin_fill.mjs` LIVE: **703 echte Hersteller + 642 EAN/GTIN gesetzt, 577 custom_product-Flags bereinigt** (3342 BigBuy-Produkte gescannt). Fixt Google-Merchant „identifier exists"-Disapprovals auf meinen Importen (die hatten vendor=LuxeStyle + keinen Barcode). **Lehre für meinen Importer: barcode+vendor direkt mitgeben.**
+
+## Runde 24-Ernte — 🚗 Auto-Gadgets (Werkstatt-Kollege)
+- **+5 Reifen-Kompressoren/Inflatoren** (CHF 15.90/31.90/62.90/63.90/121.90) in auto-zubehoer — echte nützliche Auto-Gadgets, passen zum Werkstatt-/Auto-Winkel. Die 119 Auto-Kandidaten waren erstmal Kompressor-lastig → nächste auto-Welle holt OBD2/Starthilfe/Sauger (Anker decken sie ab). 1× CHF121.90 etwas hochpreisig (Marge), aber legit Profi-Kompressor.
+- **Nächster Tick:** auto-QA (Ersatzteile draften, Gadgets behalten) + SKU-Dedup.
