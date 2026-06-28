@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eigenmietwert-Rechner Schweiz — Grobschätzung & Steuer-Effekt · aban news</title>
+<meta name="description" content="Kostenloser Eigenmietwert-Rechner für die Schweiz: grobe Schätzung des Eigenmietwerts aus Marktmiete oder Liegenschaftswert plus geschätzter Steuer-Effekt (abzüglich Unterhalt & Schuldzinsen). Richtwert, kantonal verschieden. Lokal im Browser.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/eigenmietwert-rechner.html">
+<meta property="og:title" content="Eigenmietwert-Rechner Schweiz — Grobschätzung">
+<meta property="og:description" content="Eigenmietwert grob schätzen + Steuer-Effekt (mit Unterhalt & Schuldzinsen). Richtwert, kantonal verschieden. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/eigenmietwert-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_CH"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Eigenmietwert-Rechner Schweiz",
+"url":"https://abannews.com/eigenmietwert-rechner.html","applicationCategory":"FinanceApplication","operatingSystem":"Web",
+"inLanguage":"de-CH","offers":{"@type":"Offer","price":"0","priceCurrency":"CHF"},
+"description":"Grobe Schätzung des Eigenmietwerts aus Marktmiete oder Liegenschaftswert plus geschätztem Steuer-Effekt. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Was ist der Eigenmietwert?","acceptedAnswer":{"@type":"Answer","text":"Wer in den eigenen vier Wänden wohnt, muss in der Schweiz einen fiktiven Mietwert als Einkommen versteuern — den Eigenmietwert. Im Gegenzug darfst du Schuldzinsen und Unterhaltskosten abziehen. Der Eigenmietwert liegt grob bei 60–70 % der ortsüblichen Marktmiete, je nach Kanton."}},
+{"@type":"Question","name":"Wie genau ist diese Schätzung?","acceptedAnswer":{"@type":"Answer","text":"Es ist nur ein Richtwert. Den verbindlichen Eigenmietwert legt dein Kanton fest (amtliche Schätzung) — die Methoden unterscheiden sich stark. Nutze diesen Rechner, um die Größenordnung und den Steuer-Effekt abzuschätzen, nicht für die Steuererklärung selbst."}},
+{"@type":"Question","name":"Wird der Eigenmietwert abgeschafft?","acceptedAnswer":{"@type":"Answer","text":"Eine Abschaffung des Eigenmietwerts ist in der Schweiz politisch seit Jahren in Diskussion und könnte künftig kommen. Bis zu einer rechtskräftigen Umsetzung gilt aber die heutige Regelung. Prüfe den aktuellen Stand bei deiner Steuerverwaltung. Alles wird nur lokal berechnet."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#b91c1c;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--ok:#34d399;--bad:#f87171;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+.seg{display:flex;gap:6px;margin-bottom:14px}
+.seg button{flex:1;font-size:.84rem;padding:8px 12px;border-radius:8px;border:1px solid var(--amber-lt);background:transparent;color:var(--amber-dk);cursor:pointer;font-weight:700}
+.seg button.on{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}.unit input{font:inherit;padding:11px 48px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.82rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.res{margin-top:6px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:18px;text-align:center}
+.res .big{font-size:clamp(24px,6vw,34px);font-weight:800;color:var(--amber-dk);letter-spacing:-.02em}
+.res .sub{font-size:.88rem;color:var(--ink2);margin-top:4px}
+.rows{margin-top:14px;display:grid;gap:7px;font-size:.92rem}
+.rows div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:7px}
+.rows b{color:var(--ink2)}.rows span{font-weight:700;text-align:right}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Eigenmietwert</span> grob schätzen</h1>
+    <p>Wie viel Eigenmietwert musst du als Eigenheimbesitzer versteuern — und was kostet bzw. spart das? Grobe Schätzung aus Marktmiete oder Liegenschaftswert, mit Steuer-Effekt. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Eigenmietwert ≈ <strong>60–70 % der Marktmiete</strong> (du versteuerst ihn als Einkommen). Dagegen rechnen darfst du <strong>Unterhalt + Schuldzinsen</strong>. Stark <strong>kantonal verschieden</strong> — nur Richtwert, nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="seg" id="mode">
+      <button data-m="miete" class="on">aus Marktmiete</button>
+      <button data-m="wert">aus Liegenschaftswert</button>
+    </div>
+    <div id="inp-miete">
+      <div class="fld"><label for="miete">Geschätzte Marktmiete / Monat</label><div class="unit"><input id="miete" type="number" inputmode="decimal" value="2500"><span>CHF</span></div></div>
+    </div>
+    <div id="inp-wert" hidden>
+      <div class="cols">
+        <div class="fld"><label for="wert">Liegenschaftswert (Verkehrswert)</label><div class="unit"><input id="wert" type="number" inputmode="decimal" value="1000000"><span>CHF</span></div></div>
+        <div class="fld"><label for="rendite">Brutto-Mietrendite-Annahme</label><div class="unit"><input id="rendite" type="number" inputmode="decimal" value="3.5" step="0.1"><span>%</span></div></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="fld"><label for="quote">Eigenmietwert-Quote (% der Marktmiete)</label><div class="unit"><input id="quote" type="number" inputmode="decimal" value="65" step="1"><span>%</span></div></div>
+      <div class="fld"><label for="grenz">Grenzsteuersatz</label><div class="unit"><input id="grenz" type="number" inputmode="decimal" value="30" step="1"><span>%</span></div></div>
+    </div>
+    <div class="cols">
+      <div class="fld"><label for="unterhalt">Abzug Unterhalt / Jahr</label><div class="unit"><input id="unterhalt" type="number" inputmode="decimal" value="0"><span>CHF</span></div></div>
+      <div class="fld"><label for="zinsen">Abzug Schuldzinsen / Jahr</label><div class="unit"><input id="zinsen" type="number" inputmode="decimal" value="0"><span>CHF</span></div></div>
+    </div>
+    <div class="res"><div class="big" id="o-emw">—</div><div class="sub">geschätzter Eigenmietwert / Jahr</div></div>
+    <div class="rows" id="rows"></div>
+    <p class="note">Marktmiete×12×Quote = Eigenmietwert. Steuer-Effekt = (Eigenmietwert − Unterhalt − Schuldzinsen) × Grenzsteuersatz. Richtwert, kantonal verschieden, keine Steuerberatung.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Wohnen &amp; Steuern CH.</p>
+    <p><a class="btn" href="/hypothek-tragbarkeit.html">Hypothek-Tragbarkeit</a>
+      <a class="btn ghost" href="/schweizer-geld-center.html">Geld-Center</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ehrliche Geld-Tipps für die Schweiz — werktäglich 5 Min</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/schweizer-geld-center.html">Geld-Center</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  var mode="miete";
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function chf(n){return (isFinite(n)?Math.round(n):0).toLocaleString("de-CH")+" CHF";}
+  function calc(){
+    var quote=num("quote"),grenz=num("grenz"),unt=num("unterhalt"),zins=num("zinsen");
+    if(!isFinite(quote))quote=65;
+    var marktJahr;
+    if(mode==="miete"){var m=num("miete");marktJahr=isFinite(m)?m*12:NaN;}
+    else{var w=num("wert"),r=num("rendite");marktJahr=(isFinite(w)&&isFinite(r))?w*r/100:NaN;}
+    var emw=document.getElementById("o-emw"),rows=document.getElementById("rows");
+    if(!isFinite(marktJahr)){emw.textContent="—";rows.innerHTML="";return;}
+    var eigen=marktJahr*quote/100;
+    emw.textContent=chf(eigen);
+    var abzug=(isFinite(unt)?unt:0)+(isFinite(zins)?zins:0);
+    var steuerbar=eigen-abzug;
+    var effekt=isFinite(grenz)?steuerbar*grenz/100:NaN;
+    var html="";
+    html+='<div><b>Marktmiete / Jahr (Basis)</b><span>'+chf(marktJahr)+'</span></div>';
+    html+='<div><b>Eigenmietwert ('+quote.toLocaleString("de-CH",{maximumFractionDigits:0})+' %)</b><span>'+chf(eigen)+'</span></div>';
+    if(abzug>0)html+='<div><b>− Unterhalt + Schuldzinsen</b><span>'+chf(abzug)+'</span></div>';
+    html+='<div><b>Steuerbar (netto)</b><span>'+chf(steuerbar)+'</span></div>';
+    if(isFinite(effekt))html+='<div><b>Geschätzte Mehr-Steuer / Jahr</b><span>'+chf(effekt)+'</span></div>';
+    rows.innerHTML=html;
+  }
+  document.querySelectorAll("#mode button").forEach(function(b){b.addEventListener("click",function(){
+    document.querySelectorAll("#mode button").forEach(function(x){x.classList.remove("on");});this.classList.add("on");
+    mode=this.getAttribute("data-m");
+    document.getElementById("inp-miete").hidden=(mode!=="miete");
+    document.getElementById("inp-wert").hidden=(mode!=="wert");calc();});});
+  ["miete","wert","rendite","quote","grenz","unterhalt","zinsen"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>

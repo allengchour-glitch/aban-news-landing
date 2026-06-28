@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO-ROI-Rechner — lohnt sich SEO für dein KMU? · aban news</title>
+<meta name="description" content="Kostenloser SEO-ROI-Rechner für KMU: Rechne aus, ob sich SEO lohnt — aus erwartetem Traffic, Conversion-Rate, Auftragswert und SEO-Budget. Zeigt Umsatz, Gewinn, ROI und Break-even. Lokal im Browser, ohne Login.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abannews.com/seo-roi-rechner.html">
+<meta property="og:title" content="SEO-ROI-Rechner — lohnt sich SEO für dein KMU?">
+<meta property="og:description" content="Traffic × Conversion × Auftragswert vs. SEO-Budget → Umsatz, Gewinn, ROI & Break-even. Lokal im Browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abannews.com/seo-roi-rechner.html">
+<meta property="og:image" content="https://abannews.com/og-tools.png">
+<meta property="og:locale" content="de_DE"><meta property="og:site_name" content="aban news">
+<meta name="theme-color" content="#d97706">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"SEO-ROI-Rechner",
+"url":"https://abannews.com/seo-roi-rechner.html","applicationCategory":"BusinessApplication","operatingSystem":"Web",
+"inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+"description":"Berechnet den ROI von SEO aus erwartetem Traffic, Conversion-Rate, Auftragswert und Budget, inkl. Umsatz, Gewinn und Break-even. Lokal im Browser.",
+"publisher":{"@type":"Organization","name":"aban news","url":"https://abannews.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wie wird der SEO-ROI berechnet?","acceptedAnswer":{"@type":"Answer","text":"Erwartete Kunden = Besucher × Conversion-Rate. Umsatz = Kunden × durchschnittlicher Auftragswert (optional × Wiederkäufe). Gewinn = Umsatz × Marge − SEO-Kosten. ROI = Gewinn ÷ SEO-Kosten × 100. So siehst du, ob sich das Budget rechnet."}},
+{"@type":"Question","name":"Welche Werte soll ich nehmen?","acceptedAnswer":{"@type":"Answer","text":"Nimm realistische Schätzungen: monatlicher Such-Traffic, den du erreichen willst, eine konservative Conversion-Rate (oft 1–3 %), deinen echten Auftragswert und deine Marge. Lieber vorsichtig rechnen — SEO wirkt zudem erst nach einigen Monaten."}},
+{"@type":"Question","name":"Werden meine Eingaben gespeichert?","acceptedAnswer":{"@type":"Answer","text":"Nein. Alles wird lokal in deinem Browser berechnet. Es wird nichts gesendet oder gespeichert. Das Ergebnis ist eine Orientierung, keine Garantie."}}
+]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--amber-lt:#fde9c8;--cream:#fef3c7;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#059669;--bad:#b91c1c;--field:#fffdf9}
+@media(prefers-color-scheme:dark){:root{--amber:#f0a93a;--amber-dk:#fbbf24;--amber-lt:#5a4422;--cream:#3a2f1c;--ink:#f3ede2;--ink2:#d6cdbd;--muted:#9c9384;--line:#3a352d;--ok:#34d399;--bad:#f87171;--field:#1f1b15}}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+a{color:var(--amber-dk)}
+:focus-visible{outline:3px solid var(--amber-dk);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}.skip:focus{left:8px;top:8px;background:var(--amber-dk);color:#fff;padding:10px;border-radius:8px}
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;color:var(--amber);text-decoration:none}
+.btn{display:inline-block;background:var(--amber-dk);color:#fff;text-decoration:none;font-weight:700;padding:9px 15px;border-radius:9px;border:0;cursor:pointer;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--amber-dk);border:1px solid var(--amber-lt)}
+.hero{padding:40px 0 8px;text-align:center}
+.hero h1{font-size:clamp(24px,4.4vw,33px);font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-bottom:12px}
+.hero h1 .a{color:var(--amber)}
+.hero p{font-size:clamp(15px,2.2vw,17px);color:var(--ink2);max-width:600px;margin:0 auto}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0}
+label{font-size:.8rem;font-weight:700;color:var(--ink2);display:block;margin-bottom:5px}
+.unit{position:relative}.unit input{font:inherit;padding:11px 48px 11px 12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:var(--ink);width:100%;font-weight:700}
+.unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.82rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.cols{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}
+.res{margin-top:6px;background:var(--cream);border:1px solid var(--amber-lt);border-radius:12px;padding:18px;text-align:center}
+.res .big{font-size:clamp(28px,7vw,42px);font-weight:800;letter-spacing:-.02em;color:var(--amber-dk)}
+.res .big.pos{color:var(--ok)}.res .big.neg{color:var(--bad)}
+.res .sub{font-size:.9rem;color:var(--ink2);margin-top:4px}
+.rows{margin-top:14px;display:grid;gap:7px;font-size:.92rem}
+.rows div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:7px}
+.rows b{color:var(--ink2)}.rows span{font-weight:700;text-align:right}
+.note{color:var(--muted);font-size:.82rem;margin-top:12px}
+.cta{text-align:center;margin:22px 0 4px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 0;font-size:.82rem;color:var(--muted)}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#tool">Zum Rechner</a>
+<header class="site"><div class="wrap"><a href="/" class="brand">aban news</a>
+<a href="https://abannews.beehiiv.com/subscribe" class="btn ghost">Newsletter gratis</a></div></header>
+<main>
+<p data-aban-hublink style="display:block;max-width:760px;margin:10px auto 0;padding:0 20px;font-size:.9rem">&#8592; <a href="/online-tools.html" style="color:#b45309;font-weight:600;text-decoration:none">Alle Gratis-Tools</a></p>
+<div class="wrap">
+  <section class="hero">
+    <h1><span class="a">Lohnt sich SEO?</span><br>SEO-ROI-Rechner</h1>
+    <p>Rechne ehrlich aus, ob sich Suchmaschinen-Optimierung für dein KMU lohnt — aus Traffic, Conversion, Auftragswert und Budget. Mit Umsatz, Gewinn, ROI und Break-even. Lokal im Browser.</p>
+  </section>
+  <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Einfach:</strong> Besucher × Conversion = Kunden; × Auftragswert = Umsatz; × Marge − SEO-Kosten = Gewinn. Rechne <strong>konservativ</strong> — SEO wirkt erst nach Monaten. Orientierung, keine Garantie. Nichts wird hochgeladen.</p>
+
+  <section class="panel" id="tool">
+    <div class="cols">
+      <div class="fld"><label for="traffic">Erwartete Besucher / Monat (aus SEO)</label><div class="unit"><input id="traffic" type="number" inputmode="decimal" value="1000"><span>/Mt</span></div></div>
+      <div class="fld"><label for="cr">Conversion-Rate</label><div class="unit"><input id="cr" type="number" inputmode="decimal" value="2" step="0.1"><span>%</span></div></div>
+      <div class="fld"><label for="wert">Ø Auftragswert</label><div class="unit"><input id="wert" type="number" inputmode="decimal" value="300"><span>CHF</span></div></div>
+      <div class="fld"><label for="marge">Gewinn-Marge</label><div class="unit"><input id="marge" type="number" inputmode="decimal" value="40" step="1"><span>%</span></div></div>
+      <div class="fld"><label for="budget">SEO-Budget / Monat</label><div class="unit"><input id="budget" type="number" inputmode="decimal" value="1500"><span>/Mt</span></div></div>
+      <div class="fld"><label for="repeat">Käufe pro Kunde / Jahr</label><div class="unit"><input id="repeat" type="number" inputmode="decimal" value="1" step="0.1"><span>×</span></div></div>
+    </div>
+    <div class="res"><div class="big" id="o-roi">—</div><div class="sub">ROI pro Monat (Gewinn ÷ SEO-Budget)</div></div>
+    <div class="rows" id="rows"></div>
+    <p class="note">Kunden = Besucher × CR. Umsatz = Kunden × Auftragswert × Käufe/Kunde. Gewinn = Umsatz × Marge − Budget. ROI = Gewinn ÷ Budget × 100. Richtwert, keine Erfolgsgarantie.</p>
+  </section>
+
+  <div class="cta"><strong>Passt dazu</strong>
+    <p class="note" style="margin:.4rem 0 .8rem">für Marketing &amp; Wachstum.</p>
+    <p><a class="btn" href="/roi-rechner.html">ROI- &amp; ROAS-Rechner</a>
+      <a class="btn ghost" href="/break-even-rechner.html">Break-even</a>
+      <a class="btn ghost" href="/online-tools.html">Alle Tools</a></p></div>
+
+<aside data-aban-news-cta style="max-width:760px;margin:26px auto 4px;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:14px;padding:20px;text-align:center">
+  <strong style="font-size:1.08rem;color:#1f2937">Ehrliches Marketing &amp; KI ohne Hype — werktäglich 5 Min</strong>
+  <p style="color:#374151;font-size:.93rem;margin:.45rem auto .9rem;max-width:520px">aban news: kurz, ehrlich, kein Buzzword-Bingo. Gratis, jederzeit abbestellbar.</p>
+  <a href="https://abannews.beehiiv.com/subscribe" style="display:inline-block;background:#b45309;color:#fff;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:9px;font-size:.95rem">Newsletter gratis abonnieren →</a>
+</aside>
+</div>
+</main>
+<footer><div class="wrap">© 2026 aban news · Allen Chour · Belp (CH) ·
+  <a href="/roi-rechner.html">ROI-Rechner</a> · <a href="/online-tools.html">Alle Tools</a> &middot; <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></div></footer>
+<script>
+(function(){
+  function num(id){var v=document.getElementById(id).value.replace(",",".");return v===""?NaN:parseFloat(v);}
+  function chf(n){return (isFinite(n)?Math.round(n):0).toLocaleString("de-CH")+" CHF";}
+  function calc(){
+    var t=num("traffic"),cr=num("cr"),w=num("wert"),m=num("marge"),b=num("budget"),rep=num("repeat");
+    if(!isFinite(rep)||rep<=0)rep=1;
+    var roiEl=document.getElementById("o-roi"),rows=document.getElementById("rows");
+    if([t,cr,w,m,b].some(function(x){return !isFinite(x);})||b<=0){roiEl.textContent="—";rows.innerHTML="";return;}
+    var kunden=t*cr/100;
+    var umsatz=kunden*w*rep;
+    var gewinn=umsatz*m/100-b;
+    var roi=gewinn/b*100;
+    roiEl.textContent=(roi>=0?"+":"")+roi.toLocaleString("de-CH",{maximumFractionDigits:0})+" %";
+    roiEl.className="big "+(roi>=0?"pos":"neg");
+    var breakeven=(w*m/100*rep)>0 ? b/(w*m/100*rep) : NaN; // nötige Kunden, damit Gewinn 0
+    var html="";
+    html+='<div><b>Neue Kunden / Monat</b><span>'+kunden.toLocaleString("de-CH",{maximumFractionDigits:1})+'</span></div>';
+    html+='<div><b>Umsatz / Monat</b><span>'+chf(umsatz)+'</span></div>';
+    html+='<div><b>Deckungsbeitrag (× Marge)</b><span>'+chf(umsatz*m/100)+'</span></div>';
+    html+='<div><b>Gewinn nach SEO-Budget</b><span>'+chf(gewinn)+'</span></div>';
+    if(isFinite(breakeven))html+='<div><b>Break-even: nötige Kunden/Mt</b><span>'+breakeven.toLocaleString("de-CH",{maximumFractionDigits:1})+'</span></div>';
+    html+='<div><b>Gewinn / Jahr</b><span>'+chf(gewinn*12)+'</span></div>';
+    rows.innerHTML=html;
+  }
+  ["traffic","cr","wert","marge","budget","repeat"].forEach(function(id){document.getElementById(id).addEventListener("input",calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
