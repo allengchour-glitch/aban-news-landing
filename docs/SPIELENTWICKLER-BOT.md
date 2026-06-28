@@ -37,6 +37,15 @@
 
 ## Spiele — Status
 - ✅ **Wort des Tages** (`/wort-des-tages.html`) — tägliches 5-Buchstaben-Rätsel, Share-Grid, Serie, Funnel.
+- ✅ **Neon-Flug** (`/neon-flug.html`) — flüssiges **3D-WebGL-Arcade** (Three.js lokal, `js/vendor/three.min.js`):
+  Gleiter durch Neon-Canyon, ausweichen/Orbs sammeln, Partikel/Screenshake/WebAudio, Rekord, Share, Funnel.
+
+## ⚙️ Tooling-Realität (ehrlich — Umgebung)
+- **Vorhanden:** node + python (headless). **KEIN** Blender/Godot/GPU/Display/ffmpeg.
+- **→ 3D geht via WebGL/Three.js** (rendert auf der GPU des SPIELERS, nicht hier) — flüssig & „nicht billig",
+  self-contained. Geometrie prozedural/Low-Poly im Code (kein Blender nötig).
+- **Natives Steam-Spiel:** nicht autonom hier baubar; Web-Spiel → **Electron/NW.js**-Wrap = realer Steam-Pfad,
+  ODER später in **Godot** nachbauen. Steam-Release = User (Steamworks-Account, $100, Windows-Build, Review).
 
 ## 💡 Ideen-Backlog (recherchiert, nach Hebel sortiert)
 | # | Spiel | Format | Warum | Aufwand |

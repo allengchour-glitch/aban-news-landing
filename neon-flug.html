@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Neon-Flug — 3D-Arcade-Spiel | aban news</title>
+<meta name="description" content="Neon-Flug: flüssiges 3D-Arcade-Spiel im Browser. Steuere den Gleiter durch den Neon-Canyon, weiche Säulen aus, sammle Orbs. Gratis, kein Download, 60 fps.">
+<link rel="canonical" href="https://abannews.com/neon-flug.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Neon-Flug — 3D-Arcade im Browser">
+<meta property="og:description" content="Flüssiges 3D-Spiel, kein Download. Weiche aus, sammle Orbs, knacke deinen Rekord.">
+<meta property="og:url" content="https://abannews.com/neon-flug.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Neon-Flug","url":"https://abannews.com/neon-flug.html","genre":"Arcade","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#06070f;font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#fff;-webkit-tap-highlight-color:transparent}
+#wrap{position:fixed;inset:0}
+canvas{display:block}
+#hud{position:fixed;top:12px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;font-weight:800;font-size:1.1rem;text-shadow:0 2px 8px #000;pointer-events:none}
+#hud .best{opacity:.8;font-size:.95rem}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.7),rgba(6,7,15,.92));backdrop-filter:blur(3px);padding:20px}
+.overlay h1{font-size:2.1rem;letter-spacing:1px;margin-bottom:.2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.overlay p{color:#c7cbe6;max-width:340px;margin:.5rem 0;font-size:.95rem;line-height:1.5}
+.btn{margin-top:14px;border:0;cursor:pointer;font-weight:800;font-size:1.05rem;padding:13px 30px;border-radius:40px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
+.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.92rem;padding:10px 22px}
+.small{font-size:.8rem;color:#8890b8;margin-top:18px}
+.small a{color:#9fb2ff}
+.hide{display:none!important}
+.tag{font-size:.75rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;transition:opacity .08s}
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<div id="hud"><span id="score">0</span><span class="best">Rekord <span id="best">0</span></span></div>
+<div id="flash"></div>
+
+<div class="overlay" id="start">
+  <div class="tag">aban news · 3D-Arcade</div>
+  <h1>NEON-FLUG</h1>
+  <p>Steuere den Gleiter durch den Neon-Canyon. Weiche den Säulen aus, sammle die leuchtenden Orbs. Je weiter, desto schneller.</p>
+  <p style="font-size:.85rem;color:#8890b8">Steuern: ← → / A D / Maus / Finger ziehen</p>
+  <button class="btn" id="startBtn">Start ▶</button>
+  <div class="small">Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a></div>
+</div>
+
+<div class="overlay hide" id="over">
+  <div class="tag">Game Over</div>
+  <h1 id="finalScore">0</h1>
+  <p id="verdict">Nicht schlecht!</p>
+  <button class="btn" id="againBtn">Nochmal ▶</button>
+  <button class="btn ghost" id="shareBtn">Ergebnis teilen 📋</button>
+  <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a></p>
+</div>
+
+<script src="/js/vendor/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var THREE=window.THREE;
+var wrap=document.getElementById("wrap");
+var W=window.innerWidth,H=window.innerHeight;
+
+var renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+renderer.setSize(W,H);wrap.appendChild(renderer.domElement);
+
+var scene=new THREE.Scene();
+scene.background=new THREE.Color(0x06070f);
+scene.fog=new THREE.Fog(0x06070f,40,150);
+
+var camera=new THREE.PerspectiveCamera(70,W/H,0.1,300);
+camera.position.set(0,3.2,9);
+
+scene.add(new THREE.AmbientLight(0x404a8c,1.1));
+var dir=new THREE.DirectionalLight(0xffffff,0.7);dir.position.set(5,12,8);scene.add(dir);
+var glow=new THREE.PointLight(0x5ef2ff,1.4,60);scene.add(glow);
+
+// Floor grid (neon)
+var grid=new THREE.GridHelper(400,80,0x2a3170,0x161a3a);
+grid.position.y=-2;scene.add(grid);
+
+// Player glider (low-poly)
+var ship=new THREE.Group();
+var body=new THREE.Mesh(new THREE.ConeGeometry(0.7,2.2,4),
+  new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x1a6f8c,metalness:.4,roughness:.3,flatShading:true}));
+body.rotation.x=Math.PI/2;ship.add(body);
+var wing=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.12,0.7),
+  new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0x3a1a6f,flatShading:true}));
+wing.position.z=0.3;ship.add(wing);
+ship.position.set(0,0,0);scene.add(ship);
+
+// Trail particles
+var TRN=60,trail=[],trailGeo=new THREE.BufferGeometry();
+var tpos=new Float32Array(TRN*3);
+for(var i=0;i<TRN;i++){trail.push({x:0,y:0,z:0});}
+trailGeo.setAttribute("position",new THREE.BufferAttribute(tpos,3));
+var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.45,transparent:true,opacity:.75});
+var trailPts=new THREE.Points(trailGeo,trailMat);scene.add(trailPts);
+
+// Object pools
+var COLORS=[0xff7ad9,0xb98bff,0x5ef2ff,0xffd166,0x6aff9e];
+var pillars=[],orbs=[],bursts=[];
+function pillar(){
+  var h=6+Math.random()*10;
+  var m=new THREE.Mesh(new THREE.BoxGeometry(1.6,h,1.6),
+    new THREE.MeshStandardMaterial({color:0x222a55,emissive:COLORS[(Math.random()*COLORS.length)|0],emissiveIntensity:.5,flatShading:true,metalness:.3,roughness:.4}));
+  m.position.set(0,h/2-2,-200);scene.add(m);return {m:m,h:h,active:false};
+}
+function orb(){
+  var m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.6,0),
+    new THREE.MeshStandardMaterial({color:0xffd166,emissive:0xffd166,emissiveIntensity:.8,flatShading:true}));
+  m.position.set(0,0,-200);scene.add(m);return {m:m,active:false};
+}
+for(i=0;i<14;i++)pillars.push(pillar());
+for(i=0;i<10;i++)orbs.push(orb());
+
+// Burst particle effect on collect/crash
+function burst(x,y,z,color){
+  var g=new THREE.BufferGeometry();var n=24;var p=new Float32Array(n*3);
+  for(var k=0;k<n;k++){p[k*3]=x;p[k*3+1]=y;p[k*3+2]=z;}
+  g.setAttribute("position",new THREE.BufferAttribute(p,3));
+  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:color,size:0.5,transparent:true,opacity:1}));
+  scene.add(pts);
+  var vel=[];for(k=0;k<n;k++){vel.push([(Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7]);}
+  bursts.push({pts:pts,vel:vel,life:1});
+}
+
+// State
+var running=false,score=0,best=+(localStorage.getItem("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
+document.getElementById("best").textContent=best;
+
+function reset(){
+  score=0;speed=0.6;targetX=0;shipX=0;shake=0;tick=0;
+  pillars.forEach(function(p){p.active=false;p.m.position.z=-200;});
+  orbs.forEach(function(o){o.active=false;o.m.position.z=-200;});
+}
+function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");}
+function gameOver(){
+  running=false;shake=1.2;flash();
+  if(score>best){best=score;localStorage.setItem("aban_neon_best",best);}
+  document.getElementById("best").textContent=best;
+  document.getElementById("finalScore").textContent=score;
+  document.getElementById("verdict").textContent=score>best-1&&score>0?"Neuer Rekord! 🏆":["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"][Math.min(3,(score/15)|0)];
+  document.getElementById("over").classList.remove("hide");
+}
+function flash(){var f=document.getElementById("flash");f.style.opacity=".6";setTimeout(function(){f.style.opacity="0";},80);}
+
+// Input
+function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
+window.addEventListener("mousemove",function(e){if(running)setTarget(e.clientX);});
+window.addEventListener("touchmove",function(e){if(running&&e.touches[0]){setTarget(e.touches[0].clientX);e.preventDefault();}},{passive:false});
+var keyL=false,keyR=false;
+window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();});
+window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
+
+// Audio (WebAudio, kein Asset)
+var actx=null;
+function beep(freq,dur,type,vol){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=type||"sine";o.frequency.value=freq;g.gain.value=vol||.06;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(dur||.12));o.stop(actx.currentTime+(dur||.12));}catch(e){}}
+
+document.getElementById("startBtn").onclick=start;
+document.getElementById("againBtn").onclick=start;
+document.getElementById("shareBtn").onclick=function(){
+  var txt="Neon-Flug 🚀 — "+score+" Punkte (Rekord "+best+")\nSpiel gratis: abannews.com/neon-flug.html";
+  if(navigator.share){navigator.share({text:txt}).catch(function(){});}
+  else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});}
+};
+
+var spawnZ=-160;
+function spawn(){
+  // pillar row with a gap
+  var gap=(Math.random()*10-5);
+  var freePillars=pillars.filter(function(p){return !p.active;});
+  for(var s=0;s<2&&freePillars.length;s++){
+    var p=freePillars.pop();var lane=gap+(s===0?-4:4)+(Math.random()*2-1);
+    p.m.position.set(lane,p.h/2-2,spawnZ);p.active=true;
+  }
+  var fo=orbs.filter(function(o){return !o.active;});
+  if(fo.length&&Math.random()<.8){var o=fo[0];o.m.position.set(gap+(Math.random()*2-1),0,spawnZ-6);o.active=true;}
+}
+
+var lastSpawn=0;
+function loop(t){
+  requestAnimationFrame(loop);
+  tick++;
+  // ship movement
+  if(running){
+    if(keyL)targetX-=0.4;if(keyR)targetX+=0.4;
+    targetX=Math.max(-7.5,Math.min(7.5,targetX));
+    shipX+=(targetX-shipX)*0.18;
+    ship.position.x=shipX;
+    ship.rotation.z=(shipX-targetX)*0.12 - (targetX-shipX)*0.25;
+    ship.position.y=Math.sin(tick*0.08)*0.25;
+    speed+=0.0006; score+=0;
+    if(tick-lastSpawn>Math.max(18,42-speed*8)){spawn();lastSpawn=tick;}
+    // move pillars
+    pillars.forEach(function(p){if(!p.active)return;p.m.position.z+=speed;p.m.rotation.y+=0.005;
+      if(p.m.position.z>14){p.active=false;p.m.position.z=-200;}
+      else if(Math.abs(p.m.position.z)<1.6&&Math.abs(p.m.position.x-shipX)<1.5){burst(shipX,0,0,0xff4d6d);beep(90,.3,"sawtooth",.12);gameOver();}
+    });
+    // orbs
+    orbs.forEach(function(o){if(!o.active)return;o.m.position.z+=speed;o.m.rotation.x+=0.06;o.m.rotation.y+=0.05;
+      if(o.m.position.z>14){o.active=false;o.m.position.z=-200;}
+      else if(Math.abs(o.m.position.z)<1.4&&Math.abs(o.m.position.x-shipX)<1.4){o.active=false;o.m.position.z=-200;score+=1;document.getElementById("score").textContent=score;burst(shipX,0,0,0xffd166);beep(660+score*4,.1,"triangle",.07);}
+    });
+    document.getElementById("score").textContent=score;
+  }
+  // trail
+  for(var i=trail.length-1;i>0;i--){trail[i].x=trail[i-1].x;trail[i].y=trail[i-1].y;trail[i].z=trail[i-1].z;}
+  trail[0].x=ship.position.x;trail[0].y=ship.position.y;trail[0].z=ship.position.z+1.2;
+  for(i=0;i<TRN;i++){tpos[i*3]=trail[i].x;tpos[i*3+1]=trail[i].y;tpos[i*3+2]=trail[i].z+i*0.05;}
+  trailGeo.attributes.position.needsUpdate=true;
+  // bursts
+  for(i=bursts.length-1;i>=0;i--){var b=bursts[i];var arr=b.pts.geometry.attributes.position.array;
+    for(var k=0;k<arr.length/3;k++){arr[k*3]+=b.vel[k][0];arr[k*3+1]+=b.vel[k][1];arr[k*3+2]+=b.vel[k][2];}
+    b.pts.geometry.attributes.position.needsUpdate=true;b.life-=0.04;b.pts.material.opacity=Math.max(0,b.life);
+    if(b.life<=0){scene.remove(b.pts);bursts.splice(i,1);}}
+  // scenery scroll
+  grid.position.z=(grid.position.z+ (running?speed:0.15))%20;
+  glow.position.set(ship.position.x,2,ship.position.z+2);
+  // camera shake + follow
+  if(shake>0)shake-=0.04;
+  camera.position.x+=((shipX*0.4)-camera.position.x)*0.08 + (Math.random()-.5)*shake;
+  camera.position.y=3.2+(Math.random()-.5)*shake;
+  camera.lookAt(shipX*0.5,0,-10);
+  // color cycle
+  var hue=(tick*0.2)%360;
+  trailMat.color.setHSL(((hue)%360)/360,.8,.6);
+  renderer.render(scene,camera);
+}
+requestAnimationFrame(loop);
+
+window.addEventListener("resize",function(){W=window.innerWidth;H=window.innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+})();
+</script>
+</body>
+</html>
