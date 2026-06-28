@@ -136,6 +136,15 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+**2026-06-28 (NEUE ROLLE) — 🎮🤖 aban Spielentwickler-Bot (User-Auftrag):**
+- Diese Session ist ab jetzt der **Spielentwickler von abannews** + vollautonomer KI-Bot, der **eigene
+  Spiele erfindet (Meisterklasse)**, recherchiert, Ideen sammelt und sich laufend verbessert.
+- **Charter + Ideen-Backlog: `docs/SPIELENTWICKLER-BOT.md`** (zuerst lesen). Regeln: originale, self-contained
+  Browser-Spiele (kein Backend, mobil, deutsch), kein IP kopieren, Branch+PR, aus `online-tools.html` verlinken,
+  fremde Lanes (dropship/video/social) nicht anfassen.
+- **Erstes Spiel live:** `wort-des-tages.html` (tägliches Worträtsel, Share-Grid, Newsletter-Funnel).
+- Jedes Spiel = Traffic-Magnet → Newsletter/Pro/Affiliate. Verkauf als HTML5-Template (itch.io) = User-Konto.
+
 **2026-06-27 (abannews/Tool-Session) — 🔄 CROSS-SESSION-SYNC (Stand zusammengetragen, wird laufend aufgefrischt):**
 - **abannews/Tool-Session (ich):** eBay-Affiliate site-weit scharf (campid `5339156671`, money_gap=0),
   autonomer **Money/SEO-Guard-Bot** (GitLab, selbstheilend + Telegram, Branch `brain/money-seo`),
