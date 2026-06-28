@@ -15,14 +15,18 @@ var orbs: Array = []
 var speed := BASE_SPEED
 var target_x := 0.0
 var score := 0
+var best := 0
 var alive := true
 var spawn_timer := 0.0
 var rng := RandomNumberGenerator.new()
+var score_label: Label
+var center_label: Label
 
 func _ready() -> void:
 	rng.randomize()
 	_build_world()
 	_build_player()
+	_build_hud()
 
 func _build_world() -> void:
 	var amb := WorldEnvironment.new()
@@ -30,30 +34,47 @@ func _build_world() -> void:
 	env.background_mode = Environment.BG_COLOR
 	env.background_color = Color(0.024, 0.027, 0.059)
 	env.fog_enabled = true
-	env.fog_light_color = Color(0.06, 0.07, 0.15)
-	env.fog_density = 0.02
+	env.fog_light_color = Color(0.12, 0.16, 0.35)
+	env.fog_density = 0.006
+	env.glow_enabled = true
+	env.glow_intensity = 0.9
+	env.glow_bloom = 0.25
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color(0.25, 0.30, 0.55)
+	env.ambient_light_energy = 1.2
 	amb.environment = env
 	add_child(amb)
 
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-55, -30, 0)
-	sun.light_energy = 0.9
+	sun.light_energy = 1.3
 	add_child(sun)
 
 	var fill := OmniLight3D.new()
 	fill.light_color = Color(0.37, 0.95, 1.0)
-	fill.omni_range = 40.0
-	fill.position = Vector3(0, 4, 4)
+	fill.light_energy = 3.0
+	fill.omni_range = 60.0
+	fill.position = Vector3(0, 5, 4)
 	add_child(fill)
 
-	# Boden (lange Bahn)
+	# Boden (lange Bahn) — hellere Neon-Optik
 	var floor_mi := MeshInstance3D.new()
 	var pm := PlaneMesh.new()
 	pm.size = Vector2(24, 600)
 	floor_mi.mesh = pm
 	floor_mi.position = Vector3(0, -1.5, -250)
-	floor_mi.material_override = _mat(Color(0.07, 0.08, 0.18), Color(0.02, 0.03, 0.1))
+	floor_mi.material_override = _mat(Color(0.10, 0.12, 0.28), Color(0.05, 0.08, 0.22))
 	add_child(floor_mi)
+
+	# Neon-Randstreifen links/rechts (Canyon-Gefühl)
+	for side in [-1.0, 1.0]:
+		var edge := MeshInstance3D.new()
+		var em := BoxMesh.new()
+		em.size = Vector3(0.4, 0.4, 600)
+		edge.mesh = em
+		edge.position = Vector3(side * 9.0, -1.2, -250)
+		edge.material_override = _mat(Color(0.37, 0.95, 1.0), Color(0.37, 0.95, 1.0))
+		add_child(edge)
 
 	camera = Camera3D.new()
 	camera.position = Vector3(0, 4.5, 11)
@@ -77,6 +98,22 @@ func _mat(albedo: Color, emission: Color) -> StandardMaterial3D:
 	m.emission = emission
 	m.emission_energy_multiplier = 1.3
 	return m
+
+func _build_hud() -> void:
+	var hud := CanvasLayer.new()
+	add_child(hud)
+	score_label = Label.new()
+	score_label.position = Vector2(22, 16)
+	score_label.add_theme_font_size_override("font_size", 30)
+	score_label.add_theme_color_override("font_color", Color(0.37, 0.95, 1.0))
+	hud.add_child(score_label)
+	center_label = Label.new()
+	center_label.anchors_preset = Control.PRESET_CENTER
+	center_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	center_label.add_theme_font_size_override("font_size", 40)
+	center_label.add_theme_color_override("font_color", Color(1, 0.48, 0.85))
+	center_label.text = ""
+	hud.add_child(center_label)
 
 func _spawn() -> void:
 	var gap := rng.randf_range(-4.0, 4.0)
@@ -140,9 +177,13 @@ func _process(delta: float) -> void:
 			score += 1
 
 	camera.position.x = lerp(camera.position.x, player.position.x * 0.4, 0.08)
+	score_label.text = "Punkte: %d   Rekord: %d" % [score, best]
 
 func _die() -> void:
 	alive = false
+	if score > best:
+		best = score
+	center_label.text = "Game Over\nPunkte: %d\n\n[Leertaste] nochmal" % score
 
 func _restart() -> void:
 	for ob in obstacles: ob.queue_free()
@@ -150,3 +191,4 @@ func _restart() -> void:
 	obstacles.clear(); orbs.clear()
 	speed = BASE_SPEED; target_x = 0.0; score = 0; spawn_timer = 0.0; alive = true
 	player.position = Vector3(0, 0, 0)
+	center_label.text = ""
