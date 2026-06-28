@@ -205,7 +205,11 @@ Web Analytics (`js/analytics.js`, Token fehlt noch).
   **Arbeitsteilung:** Cloud-Claude schreibt GDScript/Design (Text), **lokaler Claude auf User-GPU-Laptop (GTX 3070)
   führt aus/testet/fixt/exportiert** — koordiniert über Git. User-Setup: Godot 4 + Claude Code lokal installieren.
   Stores = User-Accounts (Steam $100, Google $25, Apple $99/J). Web-Prototyp der Mechanik: `/neon-flug.html`.
-  - **Stand:** Godot Neon Drift P1–P4a (Foundation→Roguelite-Upgrades→Juice→persistenter Highscore), P1 lief beim User.
+  - **Stand:** Godot Neon Drift = **MEISTERKLASSE-Build (#1415, 2026-06-28)** — `Main.gd` komplett hochgezogen:
+    Flow/Combo (Near-Miss-Risiko→Multiplikator ×1..9 = Sucht-Loop), Dash mit Aufladung, Biome-Wechsel (22s),
+    CPUParticles-Juice (Trail/Pickup/Explosion), Screen-Flash/Shake/dyn.FOV, State-Machine (Menü/Pause/Dead),
+    7 Upgrades, Tages-Challenge (Seed), Ton(M), persistenter Rekord, Touch. Statisch verifiziert: **gdparse exit 0**,
+    nur Tabs, Dictionary-Zugriff per `["key"]`, Event-Casts. ⚠️ NICHT GPU-getestet → lokaler Claude: F5/Bugs/Balancing.
     Web-Version `neon-flug.html` ist feature-komplett (3D + Roguelite + Tages-Challenge + Share + Funnel, verifiziert).
   - **🤝 HANDOFF aktiv (User wählte Opt.1):** der **lokale Claude (3070)** übernimmt jetzt den Godot-Test/Build/Fix-Loop
     → Auftrag steht in **`game/LOCAL-CLAUDE-AUFTRAG.md`** (verifizieren P2–P4a, dann P4b Sound/Partikel/Daily, P5 Blender+Export).

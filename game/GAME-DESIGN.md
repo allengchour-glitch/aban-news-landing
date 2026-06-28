@@ -7,6 +7,18 @@
 Endloser 3D-Flug durch einen Neon-Canyon. Ausweichen + Orbs sammeln → Tempo steigt →
 Tod → **sofortiger** Neustart (1 Tastendruck) → „diesmal weiter". Kurze Runden, klarer Fortschritt.
 
+## ✅ IMPLEMENTIERT (Stand 2026-06-28, `Main.gd` — Meisterklasse-Build, gdparse-validiert)
+Der Kern ist gebaut; was das Spiel über „irgendeins" hebt, läuft bereits im Code (GPU-Test/Tuning offen):
+- **FLOW/COMBO (der Sucht-Hebel):** Near-Miss (knapp an Hindernis vorbei) + Orb-Pickup bauen Combo →
+  Multiplikator ×1..9 auf ALLE Punkte, verfällt nach `combo_time` s. Risiko (eng dran fahren) = Belohnung.
+- **DASH:** lädt durch Orbs (`dash_charge`), gibt Speed-Boost + kurze Unverwundbarkeit → Skill + Wow-Momente.
+- **BIOME:** alle `PHASE_TIME` (22) s Farb- + Schwierigkeitswechsel mit Ansage → Meilensteine + Frische.
+- **JUICE:** CPUParticles3D Trail/Pickup/Explosion, Screen-Flash, Shake, Scale-Pop, dyn. FOV, Boden-Speedstripes.
+- **Struktur:** State-Machine (Menü/Play/Choose/Pause/Dead), 7 Roguelite-Upgrades, Tages-Challenge (Seed),
+  Ton-Toggle (M), persistenter Rekord (`user://`), Touch-Steuerung, guarded SFX aus `assets/sfx/`.
+- **Offen (lokaler Claude, GPU):** Balancing/Feintuning, evtl. `GPUParticles3D`, Musik-Loop, Blender-Modelle,
+  Export. Stolperstellen-Liste in `LOCAL-CLAUDE-AUFTRAG.md`.
+
 ## Was es „krass" macht (Polish-Backlog, lokaler Claude mit GPU)
 1. **Juice:** Screenshake, Hit-Stop, Partikel-Bursts, Trail, Bloom/Glow, Kamera-FOV-Kick bei Speed.
 2. **Sound/Musik:** dynamischer Beat (schneller bei Tempo), Pickup-/Crash-SFX, Combo-Pings.
@@ -26,11 +38,12 @@ Tod → **sofortiger** Neustart (1 Tastendruck) → „diesmal weiter". Kurze Ru
 - Cross-Promo: aban-Branding dezent (Logo im Menü), Link zur Website.
 
 ## Umfang in Phasen (damit es fertig + bug-frei wird)
-- **P1 (Foundation, fertig):** Loop, Steuerung, Spawner, Score, Restart. ✅
-- **P2:** Juice + Sound + Menü/HUD + Highscore-Persistenz + Pause.
-- **P3:** Roguelite-Upgrades + Skins + tägliche Challenge.
-- **P4:** Blender-Modelle + Shader + Settings + Lokalisierung (DE/EN).
-- **P5:** Export-Polish + Store-Assets (Trailer/Screens) + Wishlist → Release.
+- **P1 (Foundation):** Loop, Steuerung, Spawner, Score, Restart. ✅
+- **P2 (Juice+HUD+Highscore+Pause):** ✅ im Code (Menü/Pause/Flash/Shake/Combo-HUD/Dash-Bar).
+- **P3 (Roguelite-Upgrades + tägliche Challenge):** ✅ im Code (7 Upgrades, Flow, Dash, Biome, Seed).
+- **P4 (lokal/GPU):** Blender-Modelle + Shader + Settings + Lokalisierung (DE/EN) + Balancing + Musik. ⏳
+- **P5:** Export-Polish + Store-Assets (Trailer/Screens) + Wishlist → Release. ⏳
+> Hinweis: Code-Phasen sind blind geschrieben + `gdparse`-validiert; „fertig" = erst nach GPU-Test (lokaler Claude).
 
 ## ⚖️ KI-Kennzeichnung (Pflicht beim Release!)
 **Steam verlangt die Angabe von KI-generierten Inhalten** (Juni 2026: ~35 % der neuen Spiele mussten KI
