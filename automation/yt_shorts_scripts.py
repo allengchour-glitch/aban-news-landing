@@ -71,6 +71,43 @@ def points(text: str) -> list[str]:
     return pts
 
 
+def core_topic(title: str) -> str:
+    return title.split(" — ")[0].split(" (")[0].split(":")[0].strip()
+
+
+def hook_for(slug: str, title: str) -> str:
+    """Neugier-/Nutzen-Hook (Muster aus SECOND-BRAIN: konkreter Nutzen, kein Generik)."""
+    c = core_topic(title)
+    has_ki = "ki" in c.lower()
+    s = slug.lower()
+    # spezifische Admin-/Geld-Aufgaben & Rechner (kein "kosten" → würde "kostenlos" fangen)
+    if any(k in s for k in ("rechner", "rechnung", "angebot", "mwst", "steuer",
+                            "stundensatz", "lohn")):
+        return f"Mach das nie wieder von Hand: {c} in unter 2 Minuten — gratis."
+    # Kreativ/Medien-Aufgaben
+    if any(k in s for k in ("bilder", "logo", "video", "musik", "stimmen", "voiceover", "untertitel")):
+        tail = "— in Minuten, ohne Vorkenntnisse."
+        return f"{c} {tail}" if has_ki else f"{c} mit KI {tail}"
+    if "prompt" in s:
+        return "Die KI-Prompts, die wirklich funktionieren — zum Kopieren."
+    if "kostenlose" in s or s.endswith("ki-tools") or "tools" in s:
+        return "Diese KI-Tools nutzen clevere Selbstständige 2026 — und sie sind gratis."
+    tail = ": schneller und besser, als die meisten denken."
+    return f"{c}{tail}" if has_ki else f"{c} mit KI{tail}"
+
+
+def hashtags_for(slug: str, title: str) -> str:
+    base = ["#shorts", "#ki", "#ai", "#selbststaendig", "#aitools"]
+    t = (slug + " " + title).lower()
+    if "chatgpt" in t or "claude" in t or "prompt" in t:
+        base.append("#claudeai")
+    if any(k in t for k in ("rechnung", "angebot", "steuer", "buchhaltung", "business")):
+        base.append("#onlinebusiness")
+    if any(k in t for k in ("tool", "kostenlose", "gratis")):
+        base.append("#kitools")
+    return " ".join(dict.fromkeys(base))  # dedupe, Reihenfolge erhalten
+
+
 def script_for(slug: str) -> str | None:
     p = ROOT / f"{slug}.html"
     if not p.is_file():
@@ -87,7 +124,8 @@ def script_for(slug: str) -> str | None:
     pts = pts[:3]
 
     topic = title
-    hook = f"{topic} — in unter einer Minute, ehrlich erklärt."
+    hook = hook_for(slug, title)
+    tags = hashtags_for(slug, title)
     vo = (f"{hook} "
           f"Erstens: {pts[0]}. "
           f"Zweitens: {pts[1]}. "
@@ -101,7 +139,7 @@ def script_for(slug: str) -> str | None:
 > Quelle: /{slug}.html · Niche: KI fürs Business für Selbstständige · Format: Short 9:16
 
 **Hook (0–3 s):** {hook}
-**On-Screen:** {topic}
+**On-Screen:** {core_topic(title)}
 
 **Value (3–45 s) — On-Screen-Stichpunkte:**
 1. {pts[0]}
@@ -113,6 +151,8 @@ def script_for(slug: str) -> str | None:
 **Voiceover (am Stück, ~55 s):**
 {vo}
 
+**Titel-Vorschlag:** {core_topic(title)} (mit KI) | aban news
+**Hashtags:** {tags}
 **B-Roll-Keywords (Pexels):** {broll}, screen recording, deutsch, selbstständig
 **Musik:** ruhiger Beat, dezent · **Untertitel:** Pflicht (eigene Stimme = Algo-Bonus 2026)
 """

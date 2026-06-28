@@ -2,8 +2,8 @@
 
 > Quelle: /ki-voiceover.html · Niche: KI fürs Business für Selbstständige · Format: Short 9:16
 
-**Hook (0–3 s):** Videos & Reels mit KI-Stimme vertonen — Anleitung — in unter einer Minute, ehrlich erklärt.
-**On-Screen:** Videos & Reels mit KI-Stimme vertonen — Anleitung
+**Hook (0–3 s):** Videos & Reels mit KI-Stimme vertonen — in Minuten, ohne Vorkenntnisse.
+**On-Screen:** Videos & Reels mit KI-Stimme vertonen
 
 **Value (3–45 s) — On-Screen-Stichpunkte:**
 1. In 4 Schritten zum fertigen Voiceover
@@ -13,7 +13,9 @@
 **CTA (45–55 s):** „Ganze Anleitung gratis bei aban news — Link in Bio." → /ki-voiceover.html + Newsletter
 
 **Voiceover (am Stück, ~55 s):**
-Videos & Reels mit KI-Stimme vertonen — Anleitung — in unter einer Minute, ehrlich erklärt. Erstens: In 4 Schritten zum fertigen Voiceover. Zweitens: Womit? Meine zwei Empfehlungen. Drittens: Worauf du achten solltest. Die ganze Anleitung — gratis — gibt's bei aban news. Folge für mehr KI-Tipps für Selbstständige.
+Videos & Reels mit KI-Stimme vertonen — in Minuten, ohne Vorkenntnisse. Erstens: In 4 Schritten zum fertigen Voiceover. Zweitens: Womit? Meine zwei Empfehlungen. Drittens: Worauf du achten solltest. Die ganze Anleitung — gratis — gibt's bei aban news. Folge für mehr KI-Tipps für Selbstständige.
 
+**Titel-Vorschlag:** Videos & Reels mit KI-Stimme vertonen (mit KI) | aban news
+**Hashtags:** #shorts #ki #ai #selbststaendig #aitools
 **B-Roll-Keywords (Pexels):** Videos, Reels, Stimme, vertonen, screen recording, deutsch, selbstständig
 **Musik:** ruhiger Beat, dezent · **Untertitel:** Pflicht (eigene Stimme = Algo-Bonus 2026)

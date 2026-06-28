@@ -2,8 +2,8 @@
 
 > Quelle: /ki-stimmen.html · Niche: KI fürs Business für Selbstständige · Format: Short 9:16
 
-**Hook (0–3 s):** KI-Stimmen & Text-to-Speech für DACH — ehrlich getestet — in unter einer Minute, ehrlich erklärt.
-**On-Screen:** KI-Stimmen & Text-to-Speech für DACH — ehrlich getestet
+**Hook (0–3 s):** KI-Stimmen & Text-to-Speech für DACH — in Minuten, ohne Vorkenntnisse.
+**On-Screen:** KI-Stimmen & Text-to-Speech für DACH
 
 **Value (3–45 s) — On-Screen-Stichpunkte:**
 1. Was KI-Text-to-Speech 2026 kann — und was nicht
@@ -13,7 +13,9 @@
 **CTA (45–55 s):** „Ganze Anleitung gratis bei aban news — Link in Bio." → /ki-stimmen.html + Newsletter
 
 **Voiceover (am Stück, ~55 s):**
-KI-Stimmen & Text-to-Speech für DACH — ehrlich getestet — in unter einer Minute, ehrlich erklärt. Erstens: Was KI-Text-to-Speech 2026 kann — und was nicht. Zweitens: Worauf du bei der Auswahl achtest. Drittens: ElevenLabs — die natürlichste Stimme (2026 unser Favorit). Die ganze Anleitung — gratis — gibt's bei aban news. Folge für mehr KI-Tipps für Selbstständige.
+KI-Stimmen & Text-to-Speech für DACH — in Minuten, ohne Vorkenntnisse. Erstens: Was KI-Text-to-Speech 2026 kann — und was nicht. Zweitens: Worauf du bei der Auswahl achtest. Drittens: ElevenLabs — die natürlichste Stimme (2026 unser Favorit). Die ganze Anleitung — gratis — gibt's bei aban news. Folge für mehr KI-Tipps für Selbstständige.
 
+**Titel-Vorschlag:** KI-Stimmen & Text-to-Speech für DACH (mit KI) | aban news
+**Hashtags:** #shorts #ki #ai #selbststaendig #aitools
 **B-Roll-Keywords (Pexels):** Stimmen, Text, Speech, DACH, screen recording, deutsch, selbstständig
 **Musik:** ruhiger Beat, dezent · **Untertitel:** Pflicht (eigene Stimme = Algo-Bonus 2026)
