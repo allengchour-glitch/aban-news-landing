@@ -180,3 +180,8 @@
 ## Runde 27 — beleuchtung-lampen (129p) poliert + auto/survival-Welle
 - beleuchtung-lampen: dünne Desc → Premium-Beschreibung (LED-Strips/Projektoren · Lampen · Stimmungslicht + Trust + WELCOME10) + SEO. Auto+Survival-Import läuft (Werkstatt-Vielfalt: OBD2/Starthilfe + Survival).
 - Politur-Backlog (mine, schwach): fitness-training 152p, kinderspielzeug 117p, schuhe-sneaker 81p, camping-schlafen 71p, klima-ventilatoren 62p, gaming-maeuse (Desc=0!), kaffee-maschinen 41p.
+
+## Runde 28 — 🥾 Wandern + Bekleidung auffüllen (User „wandern + kleider/schuhe/socken/hosen voll")
+- **wandern-Kategorie NEU** (ES: bastón de senderismo/botas de montaña/mochila senderismo + Wanderschuhe/-stöcke/-rucksack/-socken) → camping-outdoor.
+- **Bekleidung:** Kategorien existieren (schuhe/socken/hoodies/damenmode/herrenmode/sets). Andere-Session-Lehre: generische Anker bringen Basics+Fehlmatch → trotzdem auffüllen (User-Wunsch „egal was voll"), aber QA gegen Fehlmatch. Schuhe-Welle (schuhe-sneaker 81p hat Stock) + socken + damen/herren über Ticks.
+- **auto = kompressor-lastig** (8 Kompressoren bisher) → nach dieser Runde auto pausieren, OBD2/Starthilfe-Anker greifen kaum.
