@@ -66,10 +66,12 @@ for row in "${ROWS[@]}"; do
     pixel)        "$NODE" automation/vps/pixel_check.mjs 2>&1 | tail -3 ;;
     diag)         "$NODE" automation/vps/bot_diag.mjs 2>&1 | tail -3 ;;
     shopify-campaign) # GANZ ANDERER WEG: Smart+ in der Shopify-App (admin.shopify.com/.../tiktok-ads-2/ad_creation),
-                      # NICHT der kaputte ads.tiktok.com-Wizard. Einfacher Flow (Collection->Targeting->Budget). DRY (kein AUTO_LAUNCH).
+                      # NICHT der kaputte ads.tiktok.com-Wizard. BULLETPROOF: stempelt IMMER (auch Login-Wand/Crash).
                       SCLOG="$(mktemp)"
-                      CDP_URL="http://${CDP_HOST:-100.71.8.47}:9222" SHOP_HANDLE=luxestyle-ch TT_DAILY_BUDGET=15 TT_COLLECTION=wasserfester-schmuck "$NODE" automation/local/shopify-tiktok-campaign.mjs 2>&1 | tee "$SCLOG" | tail -18
-                      SCSTEP="$(grep -oE 'DIAG\[[a-z-]+\]|Smart|Senden|gesendet|Budget|Login|login|Wizard|Modus: [a-z]+' "$SCLOG" | tail -3 | tr '\n' '; ')"
+                      ( CDP_URL="http://${CDP_HOST:-100.71.8.47}:9222" SHOP_HANDLE=luxestyle-ch TT_DAILY_BUDGET=15 TT_COLLECTION=wasserfester-schmuck "$NODE" automation/local/shopify-tiktok-campaign.mjs ) >"$SCLOG" 2>&1 || echo "SCRIPT-EXIT-FEHLER($?)" >>"$SCLOG"
+                      tail -20 "$SCLOG"
+                      SCSTEP="$(grep -oiE 'login|anmelden|sign in|DIAG\[[a-z-]+\]|Smart\+?|Senden|gesendet|Budget|Wizard|Modus: [a-z]+|Fehler|error|SCRIPT-EXIT|connectOverCDP|aiBrowser' "$SCLOG" | tail -5 | tr '\n' ';')"
+                      [ -z "$SCSTEP" ] && SCSTEP="(kein Treffer; $(wc -l <"$SCLOG") Logzeilen; Kopf: $(head -c 80 "$SCLOG" | tr '\n' ' '))"
                       STAMP_KEY="shopify_campaign" STAMP_VALUE="${SCSTEP:0:240} @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
                       rm -f "$SCLOG" ;;
     jobs)         bash automation/vps/run-api-jobs.sh 2>&1 | tail -6 ;;
