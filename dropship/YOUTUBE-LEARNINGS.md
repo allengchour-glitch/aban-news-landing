@@ -172,3 +172,7 @@
 
 ## Runde 25-Ernte — 🔧 Werkzeug
 - **+5 Werkzeug** (Werkzeug-Halter/Gürtel-Clips CHF66–107 + **Akku-Schrauber für Reifen CHF91.90** = ideal für Werkstatt-Kollege). 1623 Kandidaten → viel Nachschub. Tool-Halter etwas hochpreisig, aber Profi-tauglich. Nächster Tick: QA (schwere Maschinen draften) + Dedup + gaming/survival/auto-Wellen.
+
+## Runde 26 — Werkzeug-QA sauber + 5 Dubletten + Gaming gestartet
+- Werkzeug: 6 Produkte alle ACTIVE/SEO✓/8 Kanäle, keine schweren Maschinen → alle behalten. SKU-Dedup: 5 Dubletten gedraftet.
+- **Gaming-Welle läuft: 1116 Kandidaten** (Marken-Controller/Headsets) → nächster Tick erntet + QA (Küchen-Fehlmatch bereits gebannt).
