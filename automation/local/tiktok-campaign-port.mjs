@@ -331,14 +331,19 @@ async function pickFromSearch(p, value, ab) {
       await p.goto(C.creationUrl, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
     }
     await sleep(4000);
-    // 🔑 FIX 2026-06-26 (DOM-Dump zeigte Buttons "Create campaign" + "Create anyway" auf dem Dashboard): nach
-    // jedem Versuch den Wizard-Eintritt ueber die ECHTEN Button-Texte forcieren — "Create campaign" startet,
-    // "Create anyway" klickt durch den Asset-Sync/Warn-Dialog (sonst bleibt der Bot auf dem Dashboard haengen).
-    await pTimeout(p.evaluate(() => {
-      const click = re => { const b = [...document.querySelectorAll('button,a,[role="button"]')].find(e => re.test((e.innerText || '').trim()) && (e.innerText || '').length < 40); if (b) { b.click(); return true; } return false; };
-      click(/^create campaign$|^kampagne erstellen$/i) || click(/^create$|^erstellen$/i);
-    }), 6000, 'click-create-campaign'); await sleep(2500);
-    await pTimeout(p.evaluate(() => { const b = [...document.querySelectorAll('button,a,[role="button"]')].find(e => /create anyway|trotzdem erstellen|trotzdem fortfahren/i.test((e.innerText || '').trim()) && (e.innerText || '').length < 40); if (b) b.click(); }), 6000, 'create-anyway'); await sleep(3500);
+    // 🔑 FIX 2026-06-26 (cross-session Lehre: SPA ignoriert synthetische p.evaluate-/ab.act-Klicks): ECHTE
+    // Playwright/CDP-Klicks (getByRole/getByText -> echter Pointer-Event) auf die per DOM-Dump bekannten Buttons
+    // "Create campaign" + "Create anyway". Das hat KEINE der beiden Sessions probiert (die nutzten AI/synthetisch).
+    const realClick = async (re) => {
+      for (const loc of [p.getByRole('button', { name: re }).first(), p.getByText(re).first()]) {
+        try { if (await loc.isVisible({ timeout: 2500 }).catch(() => false)) { await loc.click({ timeout: 5000 }); return true; } } catch {}
+      }
+      return false;
+    };
+    if (await realClick(/^create campaign$|^kampagne erstellen$/i) || await realClick(/^create$|^\+ ?create$|^erstellen$/i)) log('echter Klick: Create campaign');
+    await sleep(2500);
+    if (await realClick(/create anyway|trotzdem erstellen|trotzdem fortfahren/i)) log('echter Klick: Create anyway');
+    await sleep(3500);
     await diag(p, 'enter-try-' + (attempt + 1));
     inWiz = (await stateNow()).inWizard;
     if (inWiz) { log('✅ Wizard ist offen (Ziel-Karten erkannt) → AI fuellt jetzt aus.'); break; }
