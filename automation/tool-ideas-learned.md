@@ -4,16 +4,14 @@
 > baut sie sauber (eigene Recherche/Quellen, keine erfundenen Zahlen), und beim nächsten
 > Lauf fällt sie via Bestands-Dedupe raus. Nicht manuell abarbeiten nötig.
 
-Stand: 2026-06-28 18:36 UTC · 14 offen · 5 bereits abgedeckt
+Stand: 2026-06-28 18:55 UTC · 12 offen · 7 bereits abgedeckt
 
 ## ▶️ Offen (nach Priorität)
-- **P2** `eigenmietwert-rechner.html` — **Eigenmietwert-Rechner (CH)**: Grobschätzung Eigenmietwert + Steuer-Effekt (Richtwert)
 - **P2** `ferien-anspruch-rechner.html` — **Ferien-Anspruch-Rechner**: Anteilige Ferientage pro rata (Eintritt/Austritt, Pensum)
 - **P2** `kalorien-defizit.html` — **Abnehm-Rechner (Kaloriendefizit)**: Defizit & Dauer bis Zielgewicht (mit Disclaimer)
 - **P2** `koerperfett-rechner.html` — **Körperfett-Rechner**: Körperfettanteil per Umfang-Methode (US-Navy)
 - **P2** `quadratmeter-preis.html` — **Quadratmeterpreis-Rechner**: Preis pro m² aus Preis & Fläche (Miete/Kauf vergleichen)
 - **P2** `rentenluecke-rechner.html` — **Rentenlücke-Rechner (CH)**: Grobe Vorsorgelücke 1./2./3. Säule abschätzen
-- **P2** `seo-roi-rechner.html` — **SEO-ROI-Rechner (KMU)**: Lohnt sich SEO? Traffic × Conversion × Auftragswert vs. Budget (Recherche-validiert 2026)
 - **P2** `teilzeit-lohn-rechner.html` — **Teilzeit-Lohn-Rechner**: Lohn & Pensum umrechnen (100 % ↔ Teilzeit)
 - **P2** `wasserbedarf-rechner.html` — **Wasserbedarf-Rechner**: Täglicher Trinkbedarf nach Gewicht & Aktivität (Faustregel)
 - **P3** `kalorien-verbrennen.html` — **Kalorienverbrauch-Rechner**: Verbrauchte Kalorien je Sportart & Dauer (MET-Werte)
@@ -26,5 +24,7 @@ Stand: 2026-06-28 18:36 UTC · 14 offen · 5 bereits abgedeckt
 - `promille-rechner` → vorhanden als `promille-rechner.html`
 - `ssw-rechner` → vorhanden als `ssw-rechner.html`
 - `eisprung-rechner` → vorhanden als `eisprung-rechner.html`
+- `eigenmietwert-rechner` → vorhanden als `eigenmietwert-rechner.html`
 - `benzin-vs-elektro` → vorhanden als `benzin-vs-elektro.html`
 - `leasing-vs-kauf` → vorhanden als `leasing-vs-kauf.html`
+- `seo-roi-rechner` → vorhanden als `seo-roi-rechner.html`
