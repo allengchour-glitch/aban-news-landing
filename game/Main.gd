@@ -5,6 +5,7 @@ extends Node3D
 
 const LANE_LIMIT := 7.0
 const BASE_SPEED := 16.0
+const SAVE_PATH := "user://neondrift.save"
 const UPGRADES := [
 	{"id": "magnet", "name": "🧲 Magnet — Orbs ziehen an"},
 	{"id": "schild", "name": "🛡️ Schild — +1 Treffer frei"},
@@ -43,9 +44,23 @@ var center_label: Label
 
 func _ready() -> void:
 	rng.randomize()
+	_load_best()
 	_build_world()
 	_build_player()
 	_build_hud()
+
+func _load_best() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
+		if f:
+			best = int(f.get_line())
+			f.close()
+
+func _save_best() -> void:
+	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if f:
+		f.store_line(str(best))
+		f.close()
 
 func _build_world() -> void:
 	var amb := WorldEnvironment.new()
@@ -276,9 +291,13 @@ func _update_hud() -> void:
 func _die() -> void:
 	alive = false
 	shake = 0.6
+	var rec := false
 	if score > best:
 		best = score
-	center_label.text = "Game Over\nPunkte: %d\n\n[Leertaste] nochmal" % score
+		rec = true
+		_save_best()
+	var head := "🏆 NEUER REKORD!" if rec else "Game Over"
+	center_label.text = "%s\nPunkte: %d\n\n[Leertaste] nochmal" % [head, score]
 
 func _restart() -> void:
 	for ob in obstacles:
