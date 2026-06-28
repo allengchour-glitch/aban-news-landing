@@ -328,6 +328,16 @@ function loadReels() {
   });
   const removed = out.length - deduped.length;
   out.length = 0; out.push(...deduped);
+  // 🔁 SHARE/SAVE-CTA-GARANTIE (Algo-Lehre 2026-06-28: Shares+Saves >> Likes): JEDER Post mit Caption (ausser
+  // Stories) muss einen Teil-/Speicher-/Markier-Hinweis haben, sonst rotierenden TRIGGER anhaengen.
+  out.forEach((p, i) => {
+    if (p.type === 'story' || !p.caption) return;
+    if (!/(schick|teil|markier|↗️|spicher|speicher|💾|merk['’]?s|folg)/i.test(p.caption)) {
+      const lines = p.caption.split('\n');
+      lines.splice(Math.max(1, lines.length - 1), 0, TRIGGERS[i % TRIGGERS.length]); // vor die letzte Zeile (Hashtags)
+      p.caption = lines.join('\n');
+    }
+  });
   // 🇨🇭 Mundart-Sanitizer auf alle Captions (Teutonismen -> Mundart, schützt URLs/Hashtags).
   for (const x of out) if (x.caption) x.caption = sanitizeCaption(x.caption);
   const dcounts = out.reduce((a, x) => (a[x.type] = (a[x.type] || 0) + 1, a), {});
