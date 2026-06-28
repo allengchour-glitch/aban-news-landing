@@ -37,6 +37,10 @@ canvas{display:block}
 .up:hover{border-color:#5ef2ff}
 .up small{display:block;color:#8890b8;font-weight:500;margin-top:3px}
 .small{font-size:.8rem;color:#8890b8;margin-top:16px}.small a{color:#9fb2ff}
+#upRow{margin-top:7px;font-size:1.05rem;letter-spacing:2px;text-shadow:0 2px 6px #000}
+#best{color:#ffd166;font-weight:800;margin-top:2px;font-size:.95rem}
+#muteBtn{position:fixed;top:8px;right:10px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
+.rec{color:#5ef2ff!important}
 .hide{display:none!important}
 </style>
 </head>
@@ -46,7 +50,9 @@ canvas{display:block}
   <div id="hudTop"><span id="lvl">Lv 1</span><span id="time">0s</span><span id="kills">☠ 0</span></div>
   <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
   <div id="xpwrap"><div class="bar"><i id="xpFill" style="width:0%"></i></div></div>
+  <div id="upRow"></div>
 </div>
+<button id="muteBtn" title="Ton an/aus (M)">🔊</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · 3D-Roguelite</div>
@@ -54,6 +60,7 @@ canvas{display:block}
   <p>Überlebe die Schwärme. Du bewegst dich — geschossen wird <b>automatisch</b>. Sammle XP, wähle Upgrades, werde stärker.</p>
   <p style="font-size:.85rem;color:#8890b8">Bewegen: WASD / Pfeile / Finger ziehen</p>
   <button class="btn" id="startBtn">Start ▶</button>
+  <div id="best"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
 </div>
 
@@ -104,7 +111,8 @@ function orbMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(
 var S={};
 function reset(){
   S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:5,
-     dmg:1,fireCD:0.55,fireT:0,speed:9,multishot:1,pickup:3.2,spawnT:0,spawnEvery:1.4,bossT:30};
+     dmg:1,fireCD:0.55,fireT:0,speed:9,multishot:1,pickup:3.2,spawnT:0,spawnEvery:1.4,bossT:30,ups:{}};
+  document.getElementById("upRow").innerHTML="";
   [bullets,enemies,orbs,fx].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
   player.position.set(0,0.9,0);
 }
@@ -150,28 +158,42 @@ function fire(){
 }
 function burst(x,z,c){var n=10;for(var i=0;i<n;i++){var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.16,6,6),mat(0xffffff,0xffffff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(c);p.m.material.emissive.setHex(c);p.m.position.set(x,0.9,z);var a=Math.random()*6.28,s=2+Math.random()*4;p.vx=Math.cos(a)*s;p.vz=Math.sin(a)*s;p.vy=Math.random()*4;p.life=0.5;}}
 
-var actx=null; function beep(f,d,t,v){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
+var actx=null,muted=false; try{muted=localStorage.getItem("ns_muted")==="1";}catch(e){}
+function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
+var muteBtn=document.getElementById("muteBtn");
+function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("ns_muted",muted?"1":"0");}catch(e){}}
+applyMute();
+muteBtn.onclick=function(){muted=!muted;applyMute();};
+addEventListener("keydown",function(e){if(e.key.toLowerCase()==="m"){muted=!muted;applyMute();}});
+function bestTime(){try{return parseInt(localStorage.getItem("ns_best")||"0",10)||0;}catch(e){return 0;}}
+function setBest(v){try{localStorage.setItem("ns_best",String(v));}catch(e){}}
 
 var UPS=[
- {n:"🔥 Mehr Schaden",d:"+50% Schaden",f:function(){S.dmg*=1.5;}},
- {n:"⚡ Schussrate",d:"feuert schneller",f:function(){S.fireCD=Math.max(0.12,S.fireCD*0.8);}},
- {n:"🎯 Multishot",d:"+1 Projektil",f:function(){S.multishot++;}},
- {n:"👟 Tempo",d:"+15% Bewegung",f:function(){S.speed*=1.15;}},
- {n:"🧲 Magnet",d:"grösserer Sammel-Radius",f:function(){S.pickup+=1.6;}},
- {n:"❤️ Vitalität",d:"+25 max HP & heilen",f:function(){S.maxhp+=25;S.hp=Math.min(S.maxhp,S.hp+40);}}
+ {i:"🔥",n:"🔥 Mehr Schaden",d:"+50% Schaden",f:function(){S.dmg*=1.5;}},
+ {i:"⚡",n:"⚡ Schussrate",d:"feuert schneller",f:function(){S.fireCD=Math.max(0.12,S.fireCD*0.8);}},
+ {i:"🎯",n:"🎯 Multishot",d:"+1 Projektil",f:function(){S.multishot++;}},
+ {i:"👟",n:"👟 Tempo",d:"+15% Bewegung",f:function(){S.speed*=1.15;}},
+ {i:"🧲",n:"🧲 Magnet",d:"grösserer Sammel-Radius",f:function(){S.pickup+=1.6;}},
+ {i:"❤️",n:"❤️ Vitalität",d:"+25 max HP & heilen",f:function(){S.maxhp+=25;S.hp=Math.min(S.maxhp,S.hp+40);}}
 ];
+function renderUpRow(){var o=S.ups||{},out="";for(var k in o)if(o[k])out+=k+(o[k]>1?"·"+o[k]+" ":" ");document.getElementById("upRow").innerHTML=out;}
 var paused=false;
 function levelUp(){
   paused=true; var box=document.getElementById("ups"); box.innerHTML="";
   var pick=UPS.slice().sort(function(){return Math.random()-0.5;}).slice(0,3);
-  pick.forEach(function(u){var b=document.createElement("button");b.className="up";b.innerHTML=u.n+"<small>"+u.d+"</small>";b.onclick=function(){u.f();paused=false;document.getElementById("levelup").classList.add("hide");beep(520,.12,"triangle",.07);};box.appendChild(b);});
+  pick.forEach(function(u){var b=document.createElement("button");b.className="up";b.innerHTML=u.n+"<small>"+u.d+"</small>";b.onclick=function(){u.f();S.ups[u.i]=(S.ups[u.i]||0)+1;renderUpRow();paused=false;document.getElementById("levelup").classList.add("hide");beep(520,.12,"triangle",.07);};box.appendChild(b);});
   document.getElementById("luTitle").textContent="Level "+S.lvl+" — wähle ein Upgrade";
   document.getElementById("levelup").classList.remove("hide");
 }
 
 var shake=0,running=false,last=performance.now();
 function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");}
-function gameOver(){running=false;shake=1.2;document.getElementById("finalT").textContent="Überlebt: "+Math.floor(S.t)+"s";document.getElementById("verdict").textContent="Level "+S.lvl+" · "+S.kills+" Gegner besiegt";document.getElementById("over").classList.remove("hide");}
+function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";}
+function gameOver(){running=false;shake=1.2;var s=Math.floor(S.t),b=bestTime(),rec=s>b;if(rec)setBest(s);
+  document.getElementById("finalT").textContent="Überlebt: "+s+"s";
+  var f=document.getElementById("finalT");f.className=rec?"rec":"";
+  document.getElementById("verdict").innerHTML=(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ")+"Level "+S.lvl+" · "+S.kills+" Gegner besiegt";
+  document.getElementById("over").classList.remove("hide");}
 
 document.getElementById("startBtn").onclick=start;
 document.getElementById("againBtn").onclick=start;
@@ -223,7 +245,7 @@ function loop(now){
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=Math.floor(S.t)+"s";document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";}
-reset(); requestAnimationFrame(loop);
+reset(); showBest(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 })();
 </script>
