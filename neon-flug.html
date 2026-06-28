@@ -92,7 +92,7 @@ renderer.setSize(W,H);wrap.appendChild(renderer.domElement);
 
 var scene=new THREE.Scene();
 scene.background=new THREE.Color(0x06070f);
-scene.fog=new THREE.Fog(0x06070f,40,150);
+scene.fog=new THREE.Fog(0x06070f,50,240);
 
 var camera=new THREE.PerspectiveCamera(70,W/H,0.1,300);
 camera.position.set(0,3.2,9);
@@ -101,9 +101,25 @@ scene.add(new THREE.AmbientLight(0x404a8c,1.1));
 var dir=new THREE.DirectionalLight(0xffffff,0.7);dir.position.set(5,12,8);scene.add(dir);
 var glow=new THREE.PointLight(0x5ef2ff,1.4,60);scene.add(glow);
 
-// Floor grid (neon)
-var grid=new THREE.GridHelper(400,80,0x2a3170,0x161a3a);
+// Floor grid (neon) — heller für mehr Präsenz
+var grid=new THREE.GridHelper(400,80,0x4a58b0,0x232a55);
 grid.position.y=-2;scene.add(grid);
+
+// Neon-Canyon-Wände (füllen den leeren Raum, geben "Canyon"-Gefühl)
+var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:1.2,flatShading:true}));
+wallL.position.set(-9.6,-0.4,-300);scene.add(wallL);
+var wallR=wallL.clone();wallR.material=wallL.material.clone();wallR.position.x=9.6;scene.add(wallR);
+// Untere Leuchtleisten an den Wänden
+var stripL=new THREE.Mesh(new THREE.BoxGeometry(0.25,0.25,800),new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0xb98bff,emissiveIntensity:1.4}));
+stripL.position.set(-9.0,-1.8,-300);scene.add(stripL);
+var stripR=stripL.clone();stripR.material=stripL.material.clone();stripR.position.x=9.0;scene.add(stripR);
+
+// Sterne/Tiefe im Hintergrund
+var starGeo=new THREE.BufferGeometry();var sp=new Float32Array(220*3);
+for(var si=0;si<220;si++){sp[si*3]=(Math.random()-.5)*140;sp[si*3+1]=Math.random()*45+6;sp[si*3+2]=-Math.random()*320;}
+starGeo.setAttribute("position",new THREE.BufferAttribute(sp,3));
+var stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0x9aa2d8,size:0.55,transparent:true,opacity:.8}));
+scene.add(stars);
 
 // Player glider (low-poly)
 var ship=new THREE.Group();
@@ -129,7 +145,7 @@ var pillars=[],orbs=[],bursts=[];
 function pillar(){
   var h=6+Math.random()*10;
   var m=new THREE.Mesh(new THREE.BoxGeometry(1.6,h,1.6),
-    new THREE.MeshStandardMaterial({color:0x222a55,emissive:COLORS[(Math.random()*COLORS.length)|0],emissiveIntensity:.5,flatShading:true,metalness:.3,roughness:.4}));
+    new THREE.MeshStandardMaterial({color:0x222a55,emissive:COLORS[(Math.random()*COLORS.length)|0],emissiveIntensity:.9,flatShading:true,metalness:.3,roughness:.4}));
   m.position.set(0,h/2-2,-200);scene.add(m);return {m:m,h:h,active:false};
 }
 function orb(){
@@ -174,7 +190,7 @@ var BIOMES=[
 ];
 function mult(){return Math.min(9,1+((combo/6)|0));}
 function hex2css(h){return "#"+("000000"+(h>>>0).toString(16)).slice(-6);}
-function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);return b;}
+function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);wallL.material.color.setHex(b.accent);wallL.material.emissive.setHex(b.accent);wallR.material.color.setHex(b.accent);wallR.material.emissive.setHex(b.accent);return b;}
 function announce(txt,colorHex){var a=document.getElementById("announce");a.style.color=hex2css(colorHex);a.textContent=txt;a.style.opacity="1";clearTimeout(window._annT);window._annT=setTimeout(function(){a.style.opacity="0";},1300);}
 function nearMiss(){combo++;comboTimer=comboTime;score+=mult();if(shake<0.25)shake=0.25;beep(720+combo*6,.05,"square",.04);}
 function doDash(){if(!running||choosing||paused||dashActive||dashCharge<1)return;dashActive=true;dashTimer=26;dashCharge=0;if(shake<0.6)shake=0.6;burst(shipX,0,1,BIOMES[biomeIndex%BIOMES.length].accent);beep(880,.12,"square",.08);}
