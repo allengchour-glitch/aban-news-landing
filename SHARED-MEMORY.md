@@ -2138,3 +2138,12 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **+3 Grill/BBQ** importiert (Sommer-saisonal: Antihaft-Matten CHF9.90, Kontaktgrill CHF73.90, 2200W-Grill CHF92.90 — alle ACTIVE/SEO✓/8 Kanäle/sommer-2026+outdoor-garten). Küchenhelfer-Welle läuft noch im Hintergrund → nächster Tick sammelt ein.
 - **📚 Lern-Lehre (data-backed):** Sommer-Nachfrage bricht **ab Anfang August** ein → Strand/Grill/Kühlung/Ventilator JETZT pushen. Loop-Rotation darauf getrimmt. `dropship/YOUTUBE-LEARNINGS.md` führt das Lern-Log.
 - **Loop-Hygiene:** NIE zwei Importe parallel (Ledger-Race). Ledger pro Tick committen, bevor evtl. `git reset`. Dedup-Falle (POD-SKU `9000001_*`) bleibt tabu.
+
+---
+**🎮 2026-06-27 (KONSOLEN/TABLET/ELEKTRONIK — empirisch im BigBuy-Katalog geprüft, CJ/Theme-Session):**
+- **BigBuy-Katalog (`/tmp/bb_info.json`, 313k Namen) durchsucht** auf User-Wunsch Konsolen/Tablet/Elektronik:
+  - **Gaming HAT echten Stock:** 385 Controller (Logitech/Nintendo Joy-Con/Krom/Ewent/Gembird), 279 Gaming-Headsets (Logitech G432/Krom/Hiditec/Nintendo). → **gaming reaktiviert** (war zu früh „gesättigt"), Anker auf „gaming controller/gamepad/gaming headset/joy-con/playstation/xbox/nintendo switch" geschärft + Bans gegen Küchen-Fehlmatch (Mandoline/Reibe matchte „mando") + Taschen/Hüllen.
+  - **Tablets als Gerät = kaum** (1507 „Treffer" sind fast nur Tablet-TASCHEN/-Rucksäcke; echte Hüllen/Ständer nur ~8). → KEINE eigene Tablet-Kategorie, Tablet-Taschen gehören zu taschen.
+  - **Konsolen nackt (PS5/Xbox/Switch-Gerät): praktisch keine** (Distributor verkauft Zubehör+Spiele, nicht die Konsole) → Zubehör ist der Weg.
+  - Smart-TV 2546 / Power-Bank 191 / Patinete(E-Scooter) 32 vorhanden, aber TV=Elektronik-Hardware (Trust/Versand-Hürde), bewusst nicht.
+- **Männer-Sachen breit abgedeckt:** herrenmode/auto/whisky/grill/werkzeug(1623 Kand)/survival(neu)/gaming.
