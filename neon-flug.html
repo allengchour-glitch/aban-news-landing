@@ -46,7 +46,7 @@ canvas{display:block}
 <div class="overlay" id="start">
   <div class="tag">aban news · 3D-Arcade</div>
   <h1>NEON-FLUG</h1>
-  <p>Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, lade den <b>Dash</b>. Je weiter, desto schneller.</p>
+  <p>Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.</p>
   <p style="font-size:.85rem;color:#8890b8">Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen</p>
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
@@ -121,8 +121,15 @@ function orb(){
     new THREE.MeshStandardMaterial({color:0xffd166,emissive:0xffd166,emissiveIntensity:.8,flatShading:true}));
   m.position.set(0,0,-200);scene.add(m);return {m:m,active:false};
 }
+// Bonus-Ringe (Skill-Event, Rhythmuswechsel): durchfliegen = großer Combo/Score/Dash-Bonus.
+function gate(){
+  var m=new THREE.Mesh(new THREE.TorusGeometry(2.4,0.22,8,28),
+    new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:.9,flatShading:true}));
+  m.position.set(0,0.4,-200);scene.add(m);return {m:m,active:false,scored:false};
+}
 for(i=0;i<14;i++)pillars.push(pillar());
 for(i=0;i<10;i++)orbs.push(orb());
+var gates=[];for(i=0;i<4;i++)gates.push(gate());
 
 // Burst particle effect on collect/crash
 function burst(x,y,z,color){
@@ -200,6 +207,7 @@ function reset(){
   document.getElementById("upg").classList.add("hide");
   pillars.forEach(function(p){p.active=false;p.m.position.z=-200;});
   orbs.forEach(function(o){o.active=false;o.m.position.z=-200;});
+  gates.forEach(function(g){g.active=false;g.scored=false;g.m.position.z=-200;});
 }
 function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");}
 function gameOver(){
@@ -250,7 +258,7 @@ function spawn(){
   if(fo.length&&rnd()<orbProb){var o=fo[0];o.m.position.set(gap+(rnd()*2-1),0,spawnZ-6);o.active=true;}
 }
 
-var lastSpawn=0;
+var lastSpawn=0,lastGate=0;
 function loop(t){
   requestAnimationFrame(loop);
   tick++;
@@ -287,6 +295,13 @@ function loop(t){
       if(magnet&&o.m.position.z>-60){o.m.position.x+=(shipX-o.m.position.x)*0.05;}
       if(o.m.position.z>14){o.active=false;o.m.position.z=-200;}
       else if(Math.abs(o.m.position.z)<1.4&&Math.abs(o.m.position.x-shipX)<1.4){o.active=false;o.m.position.z=-200;combo++;comboTimer=comboTime;score+=orbValue*mult();orbsCollected++;dashCharge=Math.min(1,dashCharge+0.34);burst(shipX,0,0,0xffd166);beep(660+combo*8,.1,"triangle",.07);if(orbsCollected>=nextUp){nextUp+=6;offerUpgrade();}}
+    });
+    // Bonus-Ringe (Skill-Event)
+    if(tick-lastGate>Math.max(280,520-speed*40)){var fg=gates.filter(function(g){return !g.active;});if(fg.length){var acc=BIOMES[biomeIndex%BIOMES.length].accent;var g0=fg[0];g0.m.position.set((rnd()*10-5),0.4,spawnZ-10);g0.m.material.color.setHex(acc);g0.m.material.emissive.setHex(acc);g0.active=true;g0.scored=false;}lastGate=tick;}
+    gates.forEach(function(g){if(!g.active)return;g.m.position.z+=cs;g.m.rotation.z+=0.02;
+      var gdx=Math.abs(g.m.position.x-shipX);
+      if(!g.scored&&Math.abs(g.m.position.z)<1.4&&gdx<2.2){g.scored=true;var bo=5*mult();combo+=3;comboTimer=comboTime;score+=bo;dashCharge=Math.min(1,dashCharge+0.5);var ac=BIOMES[biomeIndex%BIOMES.length].accent;burst(shipX,0.4,0,ac);announce("PERFEKT! +"+bo,ac);flash();beep(990,.14,"square",.08);}
+      if(g.m.position.z>14){g.active=false;g.m.position.z=-200;}
     });
     document.getElementById("score").textContent=score;
     var cb=document.getElementById("combo");cb.textContent=combo>0?("COMBO "+combo+"  ×"+mult()):"";cb.style.color=combo>0?hex2css(BIOMES[biomeIndex%BIOMES.length].accent):"#fff";
