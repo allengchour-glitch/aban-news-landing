@@ -2,7 +2,8 @@
 
 ## 2026-06-29 (Tag — Conversion-Polish + Katalog-/Inventar-Check, autonom)
 - **🟢 PIXEL grün** (`pid=1 load=1 page=1 wpm=1` @ 04:04). **👁️ Views/Klicks: impr=0 · clicks=0 · CHF0** (Ad noch nicht live — PC-Brave gerade aus → Bot-Driver wartet; launcht automatisch sobald PC an, finaler GO-Klick = User).
-- **❓ FAQ-Block auf Geburtsstein-Kette PDP** (Ad-Angle Geschenk-Produkt): 4 Bedenken beantwortet (welcher Stein / personalisierbar / Versand / Rückgabe) — Einwand-Handling für mehr ATC.
+- **❓ FAQ-Blöcke auf 2 Ad-Angle-PDPs:** **Geburtsstein-Kette** (welcher Stein / personalisierbar / Versand / Rückgabe) + **Herz-Muschel wasserfest** (läuft nicht an? / duschen+schwimmen? / Farbe / Versand) — Einwand-Handling für mehr ATC. (Amore hatte FAQ schon.)
+- **🩺 Stack-Health geprüft:** Binaries ok (ffmpeg/yt-dlp/piper/node/curl/gallery-dl), Daten ok (11 Musik, 27 top_products, Trends erreichbar). Kein Syntax-/Daten-Bug. `wrangler=fehlt` (nur auf Worker-Deploy-Maschine nötig).
 - **✅ HIDDEN-BUG-CHECK (User „check ob wirklich kein fehler wie anderen"):** Geburtsstein-Varianten = `inventoryPolicy CONTINUE` + `tracked:false` → trotz Lager 0 voll kaufbar (kein verstecktes Verkaufs-Blockier-Bug). Katalog-Spot-Check: `🚁 Drohnen & Kameras` jetzt sauber (7 Drohnen, **kein Sneaker mehr** — alter Fehlkategorisierungs-Bug behoben).
 - **🔴 Echte Engpässe (NUR-USER):** Traffic-Quellen beide blockiert ohne User → (1) TikTok-Ad: PC an + finaler GO-Klick; (2) Organic IG/FB: Meta-Token-Scopes (`pages_manage_posts`). Conversion-Seite (Trust/FAQ/Collections) ist autonom maximal poliert.
 
