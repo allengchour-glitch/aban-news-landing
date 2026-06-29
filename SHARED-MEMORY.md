@@ -2436,3 +2436,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **🔴 WICHTIGE LEHRE — `yoga`-Anker zog einen SEX-TOY rein:** „The Screaming O **Yoga**" (Vibrationsring) → „Roter Vibrationsring: Flexible Lust…" matchte yoga über den Produktnamen. Adult-Content auf General-Shop → sofort gedraftet (15442526142849). **yoga-CONFIG braucht ban: ['screaming o','vibrationsring','penisring','vibrator','lust','erotik'] ODER yoga ganz meiden** (BigBuy-Yoga = teils Deko-Figuren + Sex-Toys, kaum echte Yoga-Matten). Breiter Adult-Scan: keine weiteren (3 „Vibration"-Treffer = legit Massage/Haltung).
 - Keeper: 2 Yoga-Deko-Figuren (DKD Scandi), 3 Schnorchel/Tauchring (Intex, Sommer ✓), 2 mobile Klimaanlagen (EDM CHF94.90 / Activejet CHF275.90 — Sommer, pricey aber Markt-ok).
 - **Heute frische Kategorien: +28 Keeper** (Ladung 15–18). Ledger: $LED.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 19 — +4 Keeper; FRISCHE Kategorien jetzt auch grösstenteils durch):**
+- CATS=etrotti,haustiertech,auto,sets PER=2 → 4 Keeper. **etrotti(118)/sets(37)=Decke.** haustiertech: 2 Trixie-Trinkbrunnen CHF9.90/16.90. auto: 2 Kompressor-Zubehör-Sets (Michelin CHF98.90, Stanley CHF49.90). ß=0, distinct.
+- **📌 BILANZ FRISCHE KATEGORIEN (Ladung 15–19): +32 Keeper.** Beste frische Quellen: beautydevice, massage, luftreiniger, waerme (cool + ergiebig). Mittel: home/velo/wasserstrand/tauchen/mobilklima/haustiertech/auto (generisch-nützlich). Decke (BigBuy führt's kaum): touchlampen, ultraschall, whisky, fishing, metalldetektor, trenda, etrotti, sets. Gefahr: yoga (Sex-Toy-Fehlmatch).
+- **🛑 BigBuy jetzt WIRKLICH durchgearbeitet** — original-Whitelist (hängt bei Re-Tap) + frische Kategorien (+32, Rest Decke). Verbleibende Kategorien = Apparel (andere Session) oder Decke/Bad (dyson/drohnen/beamer/caps). **Für mehr/neue Produkte: CJ (User-Creds).** Ledger: 3015.
