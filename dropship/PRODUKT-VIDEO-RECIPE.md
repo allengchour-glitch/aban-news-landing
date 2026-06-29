@@ -17,3 +17,9 @@ Läuft am **PC** (Keys liegen dort: `FAL_KEY` + `GEMINI_API_KEY` + `ELEVENLABS_A
 - **Bild-Check Pflicht:** jedes Quellbild ansehen (keine asiatische Schrift/Watermark) vor Nutzung.
 - **Sound-Regel:** TikTok = stumm hochladen (Trend-Sound in App); Meta/IG+FB = Musik einbacken.
 - **3D echt vs Pseudo:** Seedance(fal)=echte 3D-Bewegung (gewählt). Luma=403 (Key fixen). Veo=Google-Setup. „Alle" nur bei Bedarf (Kosten).
+
+## 🎬 LEHRE — TikTok Smart+ Video-Upload (User 2026-06-29 „du musst lernen klick / merke für spätere videos")
+- Nach `setInputFiles` meldet TikTok oft **„Fehlgeschlagen — Optimierung erforderlich"** (Reel-Specs nicht 100% konform).
+- **FIX (im Bot eingebaut):** Haken **„Fehlgeschlagene Videos optimieren"** setzen (alle Checkboxen mit „optimier" im Label) + den blauen **„Hochladen"**-Button im Modal per DOM-Klick → TikTok optimiert das Video selbst.
+- **Besser/präventiv:** Reels VOR dem Upload TikTok-konform encodieren — `ffmpeg -vf scale=720:1280 -c:v libx264 -pix_fmt yuv420p -r 30 -b:v 4M -movflags +faststart` (9:16, H.264, ≤~500MB). Dann keine Optimierungs-Schleife nötig.
+- Allgemein „klick lernen": fiddlige Buttons/Checkboxen lieber per `frame.evaluate(()=>el.click())` (DOM-Klick) als per Playwright-Locator — umgeht Overlay/Actionability-Probleme.

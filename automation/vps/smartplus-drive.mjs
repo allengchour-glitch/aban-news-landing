@@ -160,7 +160,16 @@ async function clickAny(ctx, res) {
         const af = await appFrame();
         let fileInput = af.locator('input[type=file]').first();
         if (!(await fileInput.count())) { await clickAny(af, [/Hochladen/i]); await p.waitForTimeout(1800); fileInput = (await appFrame()).locator('input[type=file]').first(); }
-        if (await fileInput.count()) { await fileInput.setInputFiles('reels/luma-test-wasserfest-9x16.mp4'); T('c-video Upload gestartet (luma-test-wasserfest)'); await p.waitForTimeout(12000); }
+        if (await fileInput.count()) {
+          await fileInput.setInputFiles('reels/luma-test-wasserfest-9x16.mp4'); T('c-video Upload gestartet (luma-test-wasserfest)'); await p.waitForTimeout(9000);
+          // LERN-FIX 2026-06-29: TikTok meldet oft 'Fehlgeschlagen - Optimierung erforderlich'. Haken 'optimieren' setzen + 'Hochladen' klicken.
+          try {
+            const mf = await appFrame();
+            await mf.evaluate(() => { document.querySelectorAll('input[type=checkbox]').forEach(c => { const lbl = (c.closest('label')?.innerText || c.parentElement?.innerText || ''); if (!c.checked && /optimier/i.test(lbl)) c.click(); }); });
+            let clicked = await mf.evaluate(() => { const b = [...document.querySelectorAll('button')].find(x => /^\s*Hochladen\s*$/i.test(x.innerText || '') && !x.disabled && x.offsetParent !== null); if (b) { b.click(); return true; } return false; });
+            T('c-video optimieren+Hochladen=' + clicked); await p.waitForTimeout(18000);
+          } catch (e2) { T('c-video modal err ' + String(e2).slice(0, 40)); }
+        }
         else T('c-video kein file-input gefunden');
       } catch (e) { T('c-video err ' + String(e).slice(0, 50)); }
       T('c-PRE-SUBMIT ' + (await controls(fr)));
