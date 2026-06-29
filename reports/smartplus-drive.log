@@ -1,6 +1,8 @@
-﻿smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#20 | about:blank#11 | about:blank#0]
+﻿smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#20 | about:blank#11]
 smartplus: c-picker-open=true
-smartplus: c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: c-probe NO-LEAF
+smartplus: c-cbclick no-leaf
+smartplus: c-picker added=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: c-event BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: c-budget kein Zahlenfeld
 smartplus: c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
