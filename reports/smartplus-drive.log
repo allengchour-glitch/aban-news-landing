@@ -1,21 +1,17 @@
-﻿smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#13]
+﻿smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#24]
 smartplus: c-picker-open=false
 smartplus: c-probe NO-LEAF
 smartplus: c-cbclick no-leaf
-smartplus: c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
-smartplus: c-event-opts [admin.shopify.co]["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskan├ñle\nTikTok","TikTok","Apps\nSimGym","SimGym"] []["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Select all","Algerien","Argentinien","Aserbaidschan","Australien","Bahrain","Bangladesh","Belgien","Bolivien (Plurinationaler Staat)","Brasilien","Chile"]
-smartplus: c-event-set=Startseite
-smartplus: c-identity-opts [admin.shopify.co]["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskan├ñle\nTikTok","TikTok","Apps\nSimGym","SimGym"] []["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
-smartplus: c-identity-set=Vertriebskan├ñle
-TikTok
-smartplus: c-budget 15 gesetzt
-smartplus: c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: c-picker added=false BTN[Men├╝ umschalten|Suchen
+STRG
+K|Sidekick|LuxeStyle|Vertriebskan├ñle|TikTok|Apps|SimGym|Sidekick-Unterhaltungen|Brief Voice Conversation|App-Einbettung anpassen|Sidekick] INP[]
+smartplus: c-event-opts ["├£bersicht","Ads","Einstellungen","Hilfecenter","Marketing","Ads-Manager-Konto","Zahlungsmethode","Targeting-Standorte","Produktkatalog","Datenfreigabe","In-App-Zahlung","Konten","TikTok-Anzeigen-Manager","Trennen","Schweiz","Best├ñtigen"]
+smartplus: c-event-set=no-match
+smartplus: c-identity-opts ["├£bersicht","Ads","Einstellungen","Hilfecenter","Marketing","Ads-Manager-Konto","Zahlungsmethode","Targeting-Standorte","Produktkatalog","Datenfreigabe","In-App-Zahlung","Konten","TikTok-Anzeigen-Manager","Trennen","Schweiz","Best├ñtigen"]
+smartplus: c-identity-set=Ads-Manager-Konto
+smartplus: c-budget kein Zahlenfeld
+smartplus: c-PRE-SUBMIT BTN[Men├╝ umschalten|Suchen
+STRG
+K|Sidekick|LuxeStyle|Vertriebskan├ñle|TikTok|Apps|SimGym|Sidekick-Unterhaltungen|Brief Voice Conversation|App-Einbettung anpassen|Sidekick] INP[]
 smartplus: DRY: stoppe vor Senden (kein Spend)
 smartplus: stamp-fehler SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
-node.exe : Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\win\async.c, line 94
-In C:\luxe\automation\local\cmd-poll.ps1:131 Zeichen:295
-+ ... ONTINUE="1"; & node "automation/vps/smartplus-drive.mjs" 2>&1 | Out-F ...
-+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (Assertion faile...sync.c, line 94:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
