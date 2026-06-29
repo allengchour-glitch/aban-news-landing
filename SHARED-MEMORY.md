@@ -2410,3 +2410,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **🖊️ DEEP-DESCRIPTIONS 100%:** Enrichment für 266 Produkte fertig → **alle 3.534 aktiven BigBuy-Produkte haben tiefe 4-Sektionen-Texte** (verifiziert `tag:bigbuy -tag:ls-ai-deep`=0). Katalog komplett Premium-Copy.
 - **🗂️ KATEGORIE-RESORT (15 korrigiert):** 2× Duracell-Batterien (anime-Fehlmatch)→gedraftet · „Fantasy Brettspiel"+„Action-Bausteine"→productType Spielzeug (raus aus Anime/Drohnen) · „Samurai-Schwert"→Deko · „Zirkel"→raus aus Survival, Büro · 2× Hemden als Cap→Shirts · 7× New Era Roh-Titel (NEYYAN/CHIWHI/CHIBUL/LOSLAK/MILBUC aufgelöst), davon Sportshorts→Hosen, Gürteltasche→Taschen. Verifiziert: drohne→0 Schuhe/Toys, 33 Caps=echt, Cap-Tees=0.
 - **🛒 BigBuy ENDGÜLTIG ausgereizt:** Curated-Import (uhren/sonnenbrillen/haustier PER=2) hing WIEDER auf uhren (Ledger-Skip über 9565) → gekillt, 0 angelegt. **Jeder Re-Tap hängt → für neue Produkte NUR CJ (braucht CJ_EMAIL/CJ_API_KEY vom User).**
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 15 — FRISCHE ungetappte Kategorien! +6 Keeper):**
+- **DURCHBRUCH:** Importer hat ~70 Kategorien (nicht 22!) — viele ungetappt. **touchlampen=0, ultraschall=1 (Decke — die Tier-A-Trends sind Marktforschung, NICHT in BigBuy).** Aber **beautydevice (46) + massage (293) liefern frisch!**
+- **+6 Keeper:** Beauty-Tech (Beurer FC45 + 2× Inface Sonic Gesichtsbürsten CHF19.90–36.90) + Wellness (Fussmassage/Anti-Cellulite/Akupressur-Schuhe InnovaGoods CHF14.90–19.90). ß=0. 2 identische Sonic-Titel differenziert (Premium/Sanft).
+- **🔑 NEU: noch ~12 ungetappte BigBuy-Kategorien zum Probieren** (frisch = kein Hänger): luftreiniger, mobilklima, waerme, whisky, yoga, velo, fishing, tauchen, metalldetektor, wasserstrand, home, trenda. Ledger: 2988.
