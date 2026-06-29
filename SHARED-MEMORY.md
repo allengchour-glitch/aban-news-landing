@@ -2351,3 +2351,11 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - Uhren: Bobroff-Herrenuhr CHF86.90 + 3 Haurex (Damen/Unisex) CHF16.90. Sonnenbrillen: 4 Italia Independent CHF23.90–47.90 (distinct Untertitel). Bar: 3 Chef&Sommelier Weinglas-Sets (280/380/450ml).
 - **QA:** ß=0, alle distinct. **1 gedraftet:** „Edles Cocktail-Set" CHF96.90 = 5. Cocktail-Set (bar gesättigt) + teuer + fast titelgleich zu bestehendem CHF71.90.
 - **Hinweis Lane:** User hat diesen Import explizit DIESER Session zugewiesen („mach du"/„hole mehr produkte") trotz Lane-Split — Ledger vorher gepullt, um Dubletten mit anderer Session zu vermeiden. Ledger jetzt: 2966.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 12 — „mehr weiter", +9 Keeper):**
+- **CATS=smartwatch,phone,sonnenbrillen PER=4** → 12 angelegt, **9 Keeper** (3 gedraftet).
+- Keeper: 4 Sonnenbrillen (Herren/Damen CHF31.90–47.90), USB-C 57W CHF22.90, Handyhülle CHF11.90, Akku-Ladegerät 60W CHF30.90, 2 generische Smartwatches (CHF87.90/100.90). ß=0, distinct.
+- **3 gedraftet:** Wandladegerät 15W CHF122.90 (absurd für 15W) + Rotgold/Graue Smartwatch CHF109.90 (= Samsung-Galaxy-Fit-Farbvarianten IDs 998914/998921, preis-transparent ~CHF55, wie die 998913 vorhin).
+- **LEHRE verfestigt:** smartwatch-Kategorie zieht Samsung-Galaxy-Fit (998913–998921) = preis-transparent → diese IDs künftig draften/meiden; generische no-name Smartwatches <CHF90 ok.
+- Ledger: 2978. **Tagesbilanz Import gesamt: ~150 Keeper über den Tag.**
