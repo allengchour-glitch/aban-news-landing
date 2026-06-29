@@ -1,6 +1,5 @@
-2026-06-29T21:34:21.297Z DRY
-continue-goto ad_creation (war: https://admin.shopify.com/store/luxestyle-ch/apps/)
-continue-start frames=2 [admin.shopify.com/store/luxestyle-ch/a#17 | shopify.bytegration.com/ad_creation?em#0]
+2026-06-29T21:36:40.717Z DRY
+continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#11]
 c-picker-open=false
 c-probe NO-LEAF
 c-cbclick no-leaf
