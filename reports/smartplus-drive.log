@@ -4,14 +4,15 @@ smartplus: c-picker-open=false
 smartplus: c-probe NO-LEAF
 smartplus: c-cbclick no-leaf
 smartplus: c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
-smartplus: c-event-opts ["Budget\n?","CHF","Video verwenden\nWeitere erstellen"]
+smartplus: c-event-opts ["Budget\n?\nCHF","Budget\n?","CHF","Video verwenden\nWeitere erstellen"]
 smartplus: c-event-set=no-match
-smartplus: c-identity-opts ["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
+smartplus: c-identity-opts ["Budget\n?\nCHF","Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
 smartplus: c-identity-set=Dein TikTok Konto
 aban
 192aban
 smartplus: c-adtext gesetzt
 smartplus: c-budget 30 gesetzt
-smartplus: c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: c-video Upload gestartet (luma-test-wasserfest)
+smartplus: c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren|Datei hinzuf├╝gen|Hochladen] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: DRY: stoppe vor Senden (kein Spend)
 smartplus: stamp-fehler SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
