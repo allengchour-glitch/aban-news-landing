@@ -2378,3 +2378,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **+8 Kategorie-Seiten** auf Premium: bar-wein, bar-glaeser, lederwaren, auto-zubehoer, garten-pflanzgefaesse, camping-kueche, portemonnaie, beauty-tools.
 - **🔴 DEFEKT gefunden + gefixt:** bar-wein & bar-glaeser hatten **falsche Auto-Cross-Links** (verlinkten auf Rucksäcke/Schulrucksäcke/Haarstyling statt Bar/Küche!). → korrigiert. **Lehre:** der Auto-Cross-Link-Generator (ls-xlink) setzte bei manchen Collections zufällige/falsche „Auch beliebt"-Links → bei dünnen Collections immer Cross-Links gegenprüfen.
 - **Heute gesamt: 19 Kategorie-Seiten** aufgewertet (Teil 1–4). Verbleibende dünne Collections sind kleiner/Nischen.
+
+---
+**💎 2026-06-29 (KATEGORIE-SWEEP Teil 5+6 — Vollautomode, +7 Seiten):**
+- **+7 weitere Kategorie-Seiten** auf Premium: garten-leuchten, garten-deko-outdoor, recovery, auto-halterungen, buro-home-office, sub-baby-kids, sub-reise.
+- **HEUTE GESAMT: 26 Kategorie-Seiten** aufgewertet (Teil 1–6). **Der gesamte Kern-/Medium-Katalog ist jetzt auf Grossretailer-Niveau** (keyword-reiche Titel + Stil-Listen + Trust + korrekte Cross-Links). Geprüft-schon-gut bleiben: elektriker-werkzeug, marken-sport, mode-marken, guertel, anime, sub-massage, sub-aroma-diffuser etc. Verbleibend = nur Mini-Nischen (wenige Produkte).
+- **Wiederkehrender Defekt-Typ dokumentiert:** Auto-Cross-Link-Generator (ls-xlink) setzte bei mehreren Collections FALSCHE „Auch beliebt"-Links (bar→Rucksäcke, haarstyling→Garten) → bei Sweeps immer gegenprüfen. Gefixt wo gefunden.
