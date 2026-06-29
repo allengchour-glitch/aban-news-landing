@@ -2336,3 +2336,11 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **🔴 OFFEN (USER-UI, kann ich nicht via API):** Google-Feed auf **nur Schweiz** stellen — Shopify → Vertriebskanäle → **Google & YouTube → Zielmarkt = nur Schweiz** (DE+andere raus) → dann GMC „Request website check". Killt beide Fehler (alles CHF, keine DE-Seiten).
 - **Minor (NICHT manuell klicken):** GMC „add missing color/size/age group"-Popups = synchronisieren NICHT (Warnung im Popup selbst), gehen beim Feed-Update verloren. Attribute gehören in Shopify-Produktdaten/Metafelder → Feed automatisch. Niedrige Prio.
 - **Bezug:** Google/Search = einziger Qualitäts-Traffic (4,4% Checkout) → sauberer CH-Feed = direkt mehr sichtbare Produkte = mehr echte Käufer.
+
+---
+**✅ 2026-06-29 (GMC-WURZELFIX: 7 fremde Märkte gelöscht → Shop nur noch CH):**
+- **Ursache bestätigt:** Eine frühere Session (MARKETS-US-UK-Setup) hatte 8 Märkte angelegt → Google-Feed an 8 Länder (38.6K ≈ 4.900×8) → 99,9% Währungsfehler + DE „page unavailable".
+- **FIX (per API, marketDelete):** 7 disabled Nicht-CH-Märkte gelöscht (DACH, France, Italy, Rest-EU, Global, UK, US). **Switzerland (enabled, primary) bleibt.** Verifiziert: nur noch 1 Markt = Switzerland.
+- **Erwartung:** Google-Feed re-synct (Shopify→Merchant Center, Stunden bis 1–2 Tage) → 38.6K kollabiert auf ~4.900 CHF-Einträge → Währungsfehler + DE-„unavailable" lösen sich auf. **User kann in GMC „Request website check" klicken zum Beschleunigen.**
+- Zusammen mit en+it-Locale-unpubliziert (de-only) = Feed-Hygiene komplett auf CH-Deutsch.
+- **Reversibel:** DACH-Markt für Deutschland-Plan später in Sekunden neu anlegbar (marketCreate), wenn Verkäufe + CH-Firma/UID + OSS stehen.
