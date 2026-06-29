@@ -2429,3 +2429,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - CATS=velo,fishing,wasserstrand,metalldetektor PER=3 → 6 Keeper. fishing(27)/metalldetektor(2)=Decke.
 - velo(122): 2 Fahrrad-Handyhalter + Fahrradständer CHF11.90–15.90. wasserstrand(684): Kinder-Schwimmbrille + 2 Schnorchelsets CHF9.90–18.90 (Sommer ✓). ß=0, alle distinct.
 - **Heute frische Kategorien gesamt: +21 Keeper** (Ladung 15–17). Ledger: 3003.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 18 — +7 Keeper, 🔴 SEX-TOY-FEHLMATCH gecatcht!):**
+- CATS=yoga,tauchen,mobilklima,trenda PER=3 → 8 angelegt, **1 GEDRAFTET (kritisch)**. trenda=Decke.
+- **🔴 WICHTIGE LEHRE — `yoga`-Anker zog einen SEX-TOY rein:** „The Screaming O **Yoga**" (Vibrationsring) → „Roter Vibrationsring: Flexible Lust…" matchte yoga über den Produktnamen. Adult-Content auf General-Shop → sofort gedraftet (15442526142849). **yoga-CONFIG braucht ban: ['screaming o','vibrationsring','penisring','vibrator','lust','erotik'] ODER yoga ganz meiden** (BigBuy-Yoga = teils Deko-Figuren + Sex-Toys, kaum echte Yoga-Matten). Breiter Adult-Scan: keine weiteren (3 „Vibration"-Treffer = legit Massage/Haltung).
+- Keeper: 2 Yoga-Deko-Figuren (DKD Scandi), 3 Schnorchel/Tauchring (Intex, Sommer ✓), 2 mobile Klimaanlagen (EDM CHF94.90 / Activejet CHF275.90 — Sommer, pricey aber Markt-ok).
+- **Heute frische Kategorien: +28 Keeper** (Ladung 15–18). Ledger: $LED.
