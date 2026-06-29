@@ -545,7 +545,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     await ensureColl(cfg);
     for (let i = 0; i < picks.length; i++) {
       const p = picks[i];
-      const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').trim();
+      const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').replace(/ß/g, 'ss').trim(); // Swiss-DE: kein ß
       const price = chf(p.cost);
       const handle = ((title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 50) || 'bigbuy') + '-' + p.id;
       const tags = [cfg.coll.tag, ...cfg.extraTags, 'bigbuy', 'dropship'];
