@@ -106,24 +106,25 @@ async function clickAny(ctx, res) {
     let named = false; try { const nm = fr.getByPlaceholder(/Aktivitätsname|activity name|Kampagnenname/i).first(); if (await nm.count()) { await nm.fill('Wasserfest CH Juni'); named = true; } } catch {}
     T('p2-name set=' + named);
     // 3) Produkt auswaehlen -> Picker, "wasserfest" suchen + waehlen + bestaetigen
-    const c3 = await clickAny(fr, [/Produkt auswählen|Produkte auswählen|Sammlung auswählen|select product|select collection/i]); await p.waitForTimeout(3500);
-    const pagesNow = br.contexts().flatMap(c => c.pages());
-    T('p3-picker click=' + c3 + ' pages=' + pagesNow.length + '\nALLFRAMES:\n' + (await allDump(p)));
-    // Suchfeld im Frame finden, der eines hat (Picker-Overlay kann in irgendeinem Frame liegen)
-    let pf = await bestFrame(p);
-    for (const f of p.frames()) { try { if (await f.locator('input[type=search],input[type=text]').first().count()) { pf = f; break; } } catch {} }
-    try { const sb = pf.locator('input[type=search],input[type=text]').first(); if (await sb.count()) { await sb.fill('wasserfest'); await p.waitForTimeout(2500); } } catch {}
-    T('p3b-suche \n' + (await allDump(p)));
-    await clickAny(pf, [/wasserfest/i]); await p.waitForTimeout(800);
-    await clickAny(pf, [/Hinzufügen|Auswählen|Bestätigen|Add\b|Done|Fertig|Speichern|Übernehmen/i]); await p.waitForTimeout(2000); fr = await bestFrame(p);
-    T('p3c-nach-picker ' + (await controls(fr)));
-    // 4) Optimierungsereignis -> In den Warenkorb / Add to Cart
-    await clickAny(fr, [/Optimierungsereignis|Optimierungs|optimization event|Please select/i]); await p.waitForTimeout(1200);
+    const c3 = await clickAny(fr, [/Sammlung auswählen|Produkt auswählen|Produkte auswählen|select product|select collection/i]); await p.waitForTimeout(3500);
+    T('p3-picker click=' + c3 + ' pages=' + br.contexts().flatMap(c => c.pages()).length);
+    // Picker oeffnet im admin.shopify.com-Frame (Shopify ResourcePicker): Feld "Kollektionen suchen" + Checkboxen.
+    const adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
+    try { const sb = adminFr.getByPlaceholder(/Kollektion|collection/i).first(); if (await sb.count()) { await sb.fill('wasserfest'); await p.waitForTimeout(2800); } } catch {}
+    T('p3b-suche\n' + (await allDump(p)));
+    let picked = false;
+    try { await clickAny(adminFr, [/wasserfester schmuck|wasserfest/i]); await p.waitForTimeout(900); } catch {}
+    try { picked = await clickAny(adminFr, [/^Hinzufügen$|^Auswählen$|^Fertig$|^Speichern$|^Add$|^Done$|^Select$/i]); } catch {}
+    await p.waitForTimeout(2500); fr = await bestFrame(p);
+    T('p3c-nach-picker picked=' + picked + '\n' + (await allDump(p)));
+    // 4) Optimierungsereignis -> In den Warenkorb (Dropdown-Overlay per allDump sichtbar machen)
+    await clickAny(fr, [/Optimierungsereignis|Optimierungs|optimization event/i]); await p.waitForTimeout(1500);
+    T('p4a-event-open\n' + (await allDump(p)));
     await clickAny(await bestFrame(p), [/In den Warenkorb|Warenkorb|Add to Cart|Add to cart/i]); await p.waitForTimeout(1000); fr = await bestFrame(p);
     T('p4-event ' + (await controls(fr)));
     // 5) Identitaet -> erste Option
-    await clickAny(fr, [/Identität auswählen|Identität|identity/i]); await p.waitForTimeout(1000); pf = await bestFrame(p);
-    T('p5-identitaet ' + (await controls(pf)));
+    await clickAny(fr, [/Identität auswählen|Identität|identity/i]); await p.waitForTimeout(1500);
+    T('p5-identitaet\n' + (await allDump(p)));
     // 6) Budget 15 (falls ein Zahlenfeld existiert)
     fr = await bestFrame(p);
     try { const bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await bi.count()) { await bi.fill('15'); T('p6-budget 15 gesetzt'); } else T('p6-budget KEIN Zahlenfeld sichtbar'); } catch { T('p6-budget Fehler'); }
