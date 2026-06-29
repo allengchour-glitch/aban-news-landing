@@ -1,5 +1,6 @@
-2026-06-29T19:40:48.795Z DRY
-continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#20 | about:blank#11]
+2026-06-29T19:46:01.726Z DRY
+continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#20 | about:blank#11 | about:blank#0]
+c-picker-open=true
 c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 c-event BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 c-budget kein Zahlenfeld
