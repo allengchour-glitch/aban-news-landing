@@ -66,6 +66,8 @@ for row in "${ROWS[@]}"; do
     pixel)        "$NODE" automation/vps/pixel_check.mjs 2>&1 | tail -3 ;;
     diag)         "$NODE" automation/vps/bot_diag.mjs 2>&1 | tail -3 ;;
     campaign-error) CDP_HOST="${CDP_HOST:-100.71.8.47}" "$NODE" automation/vps/tiktok-campaign-error.mjs 2>&1 | tail -5 ;;
+    smartplus-drive) CDP_HOST="${CDP_HOST:-100.71.8.47}" "$NODE" automation/vps/smartplus-drive.mjs 2>&1 | tail -8 ;;
+    smartplus-go) CDP_HOST="${CDP_HOST:-100.71.8.47}" GO=1 "$NODE" automation/vps/smartplus-drive.mjs 2>&1 | tail -8 ;;
     shopify-campaign) # GANZ ANDERER WEG: Smart+ in der Shopify-App (admin.shopify.com/.../tiktok-ads-2/ad_creation),
                       # NICHT der kaputte ads.tiktok.com-Wizard. BULLETPROOF: stempelt IMMER (auch Login-Wand/Crash).
                       SCLOG="$(mktemp)"
