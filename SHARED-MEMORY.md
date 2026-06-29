@@ -2267,3 +2267,13 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **⚠️ SÄTTIGUNG erkannt:** Katalog hat jetzt **11 „Zerkleinerer" + 10 „Vakuumierer"** → `kuechenhelfer` (nur 259 Kandidaten) ist nach 2 Taps **gesättigt/repetitiv** → meiden. Keine Dubletten (distinct), aber Segment voll.
 - **📌 FAZIT IMPORT-TAG (7 Läufe, +54 Keeper, Ledger ~2888):** Die sauberen Whitelist-Kategorien sind jetzt **gut abgegrast**. Frische Wellen bringen zunehmend Decke (viral/fitness/akkuventi/beamer) oder Sättigung (kueche) oder schlechte Qualität (gaming/schmuck). **→ Import-Phase hat ihren Wert geliefert; Loop sollte zurück auf Wächter/QA-Modus** bis neue BigBuy-Ware oder andere Quelle (CJ) verfügbar ist. Tiefe Kategorien (audio 3538, ladegeraet 2409, phone 2700, haustier 3826, sonnenbrillen 8666, garten 1130, taschen 6330) haben zwar noch Masse, aber Re-Taps werden repetitiv (ähnliche Kopfhörer/Kabel/Näpfe).
 - Ledger Stand: 2888.
+
+---
+**🛑 2026-06-29 (Nachtrag 12 — IMPORT Ladung 8: +9, SÄTTIGUNG EMPIRISCH BESTÄTIGT → Import-Stopp):**
+- **8. Lauf (Deep-Re-Tap):** CATS=garten,taschen,ladegeraet PER=3 → 9 angelegt, ABER alle aus EINER Produktfamilie je Kategorie:
+  - garten → **nur Pflanzkästen/Blumentöpfe** (jetzt 6 grosse im Shop)
+  - taschen → **nur BlackFit8-Schultaschen** (Katalog eh voll davon)
+  - ladegeraet → **nur Startech-USB-Kabel** (1× 3m für CHF46.90 = hoch für ein Kabel)
+- **= BigBuys „tiefe" Kategorien sind monoton** (garten=Töpfe, taschen=Schulbags, ladegeraet=Kabel, audio=Kopfhörer, kueche=Zerkleinerer). Re-Taps liefern nur Varianten-Wiederholung, keine echte Sortiments-Breite.
+- **📌 ENDGÜLTIGES FAZIT IMPORT-TAG: 8 Läufe, +63 Keeper** (Ledger ~2897). **Import-Phase ist ausgereizt** — weitere BigBuy-Läufe = Wiederholung/Decke/Sättigung. **EMPFEHLUNG für künftige Sessions: KEINE weiteren BigBuy-Importe** bis (a) neue BigBuy-Ware, oder (b) CJ-Quelle reaktiviert (braucht CJ_EMAIL/CJ_API_KEY als Env — nach Reset weg, beim User anfragen). Loop → Wächter/QA-Modus. Mehr Masse ist nicht das Ziel (CLAUDE.md).
+- Ledger: 2897. Heutige aktive Keeper-Bilanz: +63 (8 Läufe), QA: 5 schwache gedraftet, ß durable gefixt.
