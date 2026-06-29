@@ -1,8 +1,11 @@
-2026-06-29T18:01:59.896Z DRY
-start BTN[] INP[]
-s1 BTN[] INP[]
-s2-ziel BTN[] INP[]
-s3-budget BTN[] INP[]
-PRE-SUBMIT BTN[] INP[]
+2026-06-29T18:09:33.944Z DRY
+DIAG topurl=admin.shopify.com/store/luxestyle-ch/apps/tik bodylen=358 frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | shopify.bytegration.com/ad_creation?em#11 | solution.tiktokshop.com/tts_open_widge#0]
+start BTN[Menü umschalten|Suchen
+STRG
+K|Sidekick|LuxeStyle|Vertriebskanäle|TikTok|Apps|SimGym|Sidekick-Unterhaltungen|Brief Voice Conversation|App-Einbettung anpassen|Sidekick] INP[]
+s1 BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
+s2-ziel BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
+s3-budget BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
+PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 DRY: stoppe vor Senden (kein Spend)
 ENDE
