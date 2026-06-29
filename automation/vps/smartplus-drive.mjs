@@ -128,12 +128,19 @@ async function clickAny(ctx, res) {
       if (!added) { try { added = await adminFr.evaluate(() => { const b = [...document.querySelectorAll('button')].find(x => /Hinzufügen/i.test(x.textContent || '') && !x.disabled); if (b) { b.click(); return true; } return false; }); } catch {} }
       await p.waitForTimeout(2500); let fr = await bestFrame(p);
       T('c-picker added=' + added + ' ' + (await controls(fr)));
-      // Optimierungsereignis -> In den Warenkorb
-      await clickAny(fr, [/Optimierungsereignis|Optimierungs/i]); await p.waitForTimeout(1300);
-      await clickAny(await bestFrame(p), [/In den Warenkorb|Warenkorb|Add to Cart|Add to cart/i]); await p.waitForTimeout(1000); fr = await bestFrame(p);
-      T('c-event ' + (await controls(fr)));
-      // Budget 15 falls Zahlenfeld da
-      try { const bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await bi.count()) { await bi.fill('15'); T('c-budget 15 gesetzt'); } else T('c-budget kein Zahlenfeld'); } catch {}
+      // Dropdown-Handler (DOM): Feld oeffnen -> Optionen dumpen -> beste per DOM-Klick waehlen.
+      async function pickDropdown(label, openRe, prefRe) {
+        await clickAny(fr, openRe); await p.waitForTimeout(1500); fr = await bestFrame(p);
+        let dump=''; try { dump = await fr.evaluate(()=>{ const o=[...document.querySelectorAll('[role=option],[role=menuitem],li,.Polaris-Listbox__Option')].map(x=>(x.innerText||'').trim()).filter(s=>s&&s.length>0&&s.length<44); return JSON.stringify([...new Set(o)].slice(0,12)); }); } catch {}
+        T('c-'+label+'-options '+dump);
+        let set=''; try { set = await fr.evaluate((re)=>{ const rx=new RegExp(re,'i'); const opts=[...document.querySelectorAll('[role=option],[role=menuitem],li,.Polaris-Listbox__Option')].filter(x=>(x.offsetParent!==null)&&(x.innerText||'').trim().length>0&&(x.innerText||'').length<60); const pref=opts.find(x=>rx.test(x.innerText||''))||opts[0]; if(pref){pref.click(); return (pref.innerText||'').trim().slice(0,30);} return 'no-opt'; }, prefRe.source); } catch(e){ set='err'; }
+        await p.waitForTimeout(1200); fr = await bestFrame(p);
+        T('c-'+label+'-set='+set);
+      }
+      await pickDropdown('event', [/Optimierungsereignis|Optimierungs|Please select|Wähle bitte einen/i], /warenkorb|add to cart|in den warenkorb|kauf|complete payment|purchase/i);
+      await pickDropdown('identity', [/Identität auswählen|Identität|identity/i], /luxe|tiktok|@|.+/i);
+      // Budget: Zahlenfeld suchen (evtl. erst jetzt sichtbar), sonst Feld per Placeholder
+      try { let bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if(!(await bi.count())){ bi = fr.getByPlaceholder(/budget|betrag|CHF/i).first(); } if (await bi.count()) { await bi.fill('15'); T('c-budget 15 gesetzt'); } else T('c-budget kein Zahlenfeld'); } catch { T('c-budget err'); }
       T('c-PRE-SUBMIT ' + (await controls(fr)));
       if (GO) { const s = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch/i]); T(s ? 'GO: Senden geklickt' : 'GO: Senden nicht gefunden'); } else T('DRY: stoppe vor Senden (kein Spend)');
       writeT('CONTINUE-ENDE'); await stamp('CONTINUE | ' + trace.join(' >> ').slice(0, 420)); await br.close().catch(() => {}); process.exit(0);
