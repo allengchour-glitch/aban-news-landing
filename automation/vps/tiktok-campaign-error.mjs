@@ -38,12 +38,14 @@ async function stamp(val) {
     if (!page) { page = await (browser.contexts()[0] || await browser.newContext()).newPage(); await page.goto('https://admin.shopify.com/store/luxestyle-ch/apps/tiktok-ads-2/ad_creation', { waitUntil: 'domcontentloaded', timeout: 40000 }).catch(() => {}); opened = true; await page.waitForTimeout(8000); }
     const info = await page.evaluate(() => {
       const t = document.body.innerText || '';
-      // Fehler-naher Text: Zeilen mit Error/Fehler/can't/cannot/invalid/required/rejected/not + die ersten 400 Zeichen.
       const lines = t.split('\n').map(s => s.trim()).filter(Boolean);
-      const errLines = lines.filter(l => /(error|fehler|can.?t|cannot|invalid|required|rejected|abgelehnt|nicht möglich|fehlgeschlagen|problem|denied|expired|payment|zahlung|billing|insufficient|limit|verify|verifizier)/i.test(l)).slice(0, 6);
-      return { url: location.href, title: document.title, err: errLines.join(' | '), head: lines.slice(0, 12).join(' | ') };
-    }).catch(() => ({ url: page.url(), err: '(evaluate fehlgeschlagen)', head: '' }));
-    const out = `url=${info.url.slice(0, 60)} ${opened ? '(geoeffnet)' : '(offener Tab)'} | ERR: ${info.err || '(keine Fehlerzeile gefunden)'} | KOPF: ${info.head}`;
+      const errLines = lines.filter(l => /(error|fehler|can.?t|cannot|invalid|required|rejected|abgelehnt|nicht möglich|fehlgeschlagen|problem|denied|expired|payment|zahlung|billing|insufficient|limit|verify|verifizier|login|anmelden)/i.test(l)).slice(0, 5);
+      // SMART+-UI auslesen (Sicht vor Fix): echte Button-Texte + Input-Felder -> Cloud baut den pure-playwright-Driver.
+      const btn = [...document.querySelectorAll('button,[role=button],a[href]')].map(b => (b.innerText || b.getAttribute('aria-label') || '').trim()).filter(s => s && s.length < 30).slice(0, 16);
+      const inp = [...document.querySelectorAll('input,select,textarea')].map(i => (i.tagName + ':' + (i.type || '') + ':' + (i.placeholder || i.getAttribute('aria-label') || i.name || '?')).slice(0, 30)).slice(0, 10);
+      return { url: location.href, title: document.title, err: errLines.join(' | '), btn: btn.join('|'), inp: inp.join('|') };
+    }).catch(() => ({ url: page.url(), err: '(evaluate fehlgeschlagen)', btn: '', inp: '' }));
+    const out = `url=${info.url.slice(0, 55)} ${opened ? '(auf)' : '(tab)'} | ERR:${info.err || '-'} | BTN[${info.btn}] | INP[${info.inp}]`;
     console.log('\n' + out);
     await stamp(out);
   } catch (e) { await stamp('Lese-Fehler: ' + String(e).slice(0, 100)); }

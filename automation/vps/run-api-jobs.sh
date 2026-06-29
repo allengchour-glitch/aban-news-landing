@@ -35,6 +35,8 @@ log "TikTok-Ads-Reporting via Tailscale-Bruecke aus PC-Brave lesen (No-op falls 
 CDP_HOST="${CDP_HOST:-100.71.8.47}" "$NODE" automation/vps/tiktok-ads-read.mjs 2>&1 | tail -4 || log "tiktok-ads-read uebersprungen (weiter)"
 log "Ad-Kill/Scale-Entscheidung (Simo-Formel) -> Metafeld luxe.ad_decision..."
 "$NODE" automation/ad_manager.mjs 2>&1 | tail -4 || log "ad_manager uebersprungen (weiter)"
+log "Smart+/Ads-Probe via Bruecke (liest Shopify-TikTok-Ad-Seite -> luxe.campaign_error, Sicht fuer den Bot-Driver)..."
+CDP_HOST="${CDP_HOST:-100.71.8.47}" "$NODE" automation/vps/tiktok-campaign-error.mjs 2>&1 | tail -4 || log "campaign-error-probe uebersprungen (weiter)"
 log "TikTok Events API / CAPI: bezahlte Orders server-seitig an TikTok (No-op ohne Token/Orders)..."
 "$NODE" automation/vps/tiktok_capi.mjs 2>&1 | tail -4 || log "tiktok_capi uebersprungen (weiter)"
 log "Proof-of-Life Metafeld stempeln (luxe.vps_last_run)..."
