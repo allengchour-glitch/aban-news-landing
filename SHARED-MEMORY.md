@@ -2404,3 +2404,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   - 🔲 **OFFEN (Pass nach Enrichment, braucht Tag-Schema):** „Action-Bausteine" (15439069118849, productType Drohnen → Spielzeug/Bausets), „Samurai-Schwert Deko" (15433464512897, Anime→Deko), „Fantasy Brettspiel" (15438240940417, Anime→spielzeug-brettspiele). Funko-Pop-Figuren in Anime = OK (Pop-Culture). RC-Heli in Drohnen = OK (RC).
 - **METHODE Resort:** `tag:<kat> -title:<erwartete Begriffe>` findet Fehlmatches; bei echtem Produkt UM-taggen (nicht draften), bei Junk/preis-transparent draften. Cap-Tees=0, leere productTypes=0 ✓.
 - **NACH Enrichment-Abschluss:** (1) verifizieren ls-ai-deep, (2) Toys/Games re-kategorisieren, (3) breiteren Fehlmatch-Scan (weitere Risiko-Kategorien: survival/caps/sport), (4) Wächter-Loop scharf.
+
+---
+**✅ 2026-06-29 (DEEP-DESC 100% + KATEGORIE-RESORT + BigBuy endgültig durch):**
+- **🖊️ DEEP-DESCRIPTIONS 100%:** Enrichment für 266 Produkte fertig → **alle 3.534 aktiven BigBuy-Produkte haben tiefe 4-Sektionen-Texte** (verifiziert `tag:bigbuy -tag:ls-ai-deep`=0). Katalog komplett Premium-Copy.
+- **🗂️ KATEGORIE-RESORT (15 korrigiert):** 2× Duracell-Batterien (anime-Fehlmatch)→gedraftet · „Fantasy Brettspiel"+„Action-Bausteine"→productType Spielzeug (raus aus Anime/Drohnen) · „Samurai-Schwert"→Deko · „Zirkel"→raus aus Survival, Büro · 2× Hemden als Cap→Shirts · 7× New Era Roh-Titel (NEYYAN/CHIWHI/CHIBUL/LOSLAK/MILBUC aufgelöst), davon Sportshorts→Hosen, Gürteltasche→Taschen. Verifiziert: drohne→0 Schuhe/Toys, 33 Caps=echt, Cap-Tees=0.
+- **🛒 BigBuy ENDGÜLTIG ausgereizt:** Curated-Import (uhren/sonnenbrillen/haustier PER=2) hing WIEDER auf uhren (Ledger-Skip über 9565) → gekillt, 0 angelegt. **Jeder Re-Tap hängt → für neue Produkte NUR CJ (braucht CJ_EMAIL/CJ_API_KEY vom User).**
