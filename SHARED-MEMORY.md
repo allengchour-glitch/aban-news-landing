@@ -2423,3 +2423,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **luftreiniger** (26 Kand.): Xiaomi Air Purifier 4 Lite CHF77.90, Leitz CHF70.90, AEG CHF291.90 (Premium). **waerme** (58): Heizdecke/Fusswärmer/Wärmekissen CHF30.90–45.90 (nützlich, aber Winter=off-season jetzt). **home** (7094): 3 generische Naturals-Kissenbezüge CHF9.90–12.90 — waren 3× identischer Titel → nach Design differenziert (Sore/Altea/Schlicht).
 - **LEHRE frische Kategorien:** beautydevice/massage/luftreiniger/waerme = ergiebig & frisch (kein Hänger trotz teils grosser Kand.-Zahl, weil viele NEU statt Ledger-Skip). home = grosse Zahl aber generisch (Kissenbezüge, low-value). Decke: touchlampen/ultraschall/whisky.
 - **Noch zu probieren (frisch):** yoga, velo, fishing, tauchen, metalldetektor, wasserstrand, mobilklima, trenda. Ledger: 2997. Heute frische Kategorien gesamt: +15 Keeper.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 17 — +6 Keeper, frische Sommer/Hobby):**
+- CATS=velo,fishing,wasserstrand,metalldetektor PER=3 → 6 Keeper. fishing(27)/metalldetektor(2)=Decke.
+- velo(122): 2 Fahrrad-Handyhalter + Fahrradständer CHF11.90–15.90. wasserstrand(684): Kinder-Schwimmbrille + 2 Schnorchelsets CHF9.90–18.90 (Sommer ✓). ß=0, alle distinct.
+- **Heute frische Kategorien gesamt: +21 Keeper** (Ladung 15–17). Ledger: 3003.
