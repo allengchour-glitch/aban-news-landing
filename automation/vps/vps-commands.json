@@ -1,4 +1,4 @@
 [
-  { "id": "2026-06-29-SMARTPLUS-PROBE", "cmd": "campaign-error" },
-  { "id": "2026-06-29-SMARTPLUS-DRIVE", "cmd": "smartplus-drive" }
+  { "id": "2026-06-29-PROBE-1530", "cmd": "campaign-error" },
+  { "id": "2026-06-29-SMARTPLUS-DRIVE-1530", "cmd": "smartplus-drive" }
 ]
