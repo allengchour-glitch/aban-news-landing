@@ -1,18 +1,20 @@
-2026-06-29T21:29:36.230Z DRY
-continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#24]
+2026-06-29T21:34:21.297Z DRY
+continue-goto ad_creation (war: https://admin.shopify.com/store/luxestyle-ch/apps/)
+continue-start frames=2 [admin.shopify.com/store/luxestyle-ch/a#17 | shopify.bytegration.com/ad_creation?em#0]
 c-picker-open=false
 c-probe NO-LEAF
 c-cbclick no-leaf
 c-picker added=false BTN[Menü umschalten|Suchen
 STRG
-K|Sidekick|LuxeStyle|Vertriebskanäle|TikTok|Apps|SimGym|Sidekick-Unterhaltungen|Brief Voice Conversation|App-Einbettung anpassen|Sidekick] INP[]
-c-event-opts ["Übersicht","Ads","Einstellungen","Hilfecenter","Marketing","Ads-Manager-Konto","Zahlungsmethode","Targeting-Standorte","Produktkatalog","Datenfreigabe","In-App-Zahlung","Konten","TikTok-Anzeigen-Manager","Trennen","Schweiz","Bestätigen"]
+K|Sidekick|LuxeStyle|Vertriebskanäle|TikTok|Apps|Search & Discovery|Sidekick-Unterhaltungen|Brief Voice Conversation|Sidekick] INP[]
+c-event-opts ["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSearch & Discovery","Search & Discovery","Shopify Payments payouts overview","Alternativen zu CartFlow für Shopify","Brief Voice Conversation","Einstellungen"]
 c-event-set=no-match
-c-identity-opts ["Übersicht","Ads","Einstellungen","Hilfecenter","Marketing","Ads-Manager-Konto","Zahlungsmethode","Targeting-Standorte","Produktkatalog","Datenfreigabe","In-App-Zahlung","Konten","TikTok-Anzeigen-Manager","Trennen","Schweiz","Bestätigen"]
-c-identity-set=Ads-Manager-Konto
+c-identity-opts ["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSearch & Discovery","Search & Discovery","Shopify Payments payouts overview","Alternativen zu CartFlow für Shopify","Brief Voice Conversation","Einstellungen"]
+c-identity-set=Vertriebskanäle
+TikTok
 c-budget kein Zahlenfeld
 c-PRE-SUBMIT BTN[Menü umschalten|Suchen
 STRG
-K|Sidekick|LuxeStyle|Vertriebskanäle|TikTok|Apps|SimGym|Sidekick-Unterhaltungen|Brief Voice Conversation|App-Einbettung anpassen|Sidekick] INP[]
+K|Sidekick|LuxeStyle|Vertriebskanäle|TikTok|Apps|Search & Discovery|Sidekick-Unterhaltungen|Brief Voice Conversation|Sidekick] INP[]
 DRY: stoppe vor Senden (kein Spend)
 CONTINUE-ENDE
