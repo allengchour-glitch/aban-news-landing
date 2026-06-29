@@ -1,15 +1,16 @@
-2026-06-29T21:41:30.900Z DRY
+2026-06-29T21:44:04.294Z DRY
 continue-formReady=true
-continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#11 | about:blank#0]
+continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#13 | about:blank#0]
 c-picker-open=false
-c-probe leaf<SPAN> row<SPAN > cbs=1
-c-cbclick cb-clicked
-c-picker added=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
-c-event-opts ["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSearch & Discovery","Search & Discovery","Shopify Payments payouts overview","Alternativen zu CartFlow für Shopify","Brief Voice Conversation","Einstellungen"]
+c-probe NO-LEAF
+c-cbclick no-leaf
+c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
+c-event-opts ["Budget\n?","CHF","Video verwenden\nWeitere erstellen"]
 c-event-set=no-match
-c-identity-opts ["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSearch & Discovery","Search & Discovery","Shopify Payments payouts overview","Alternativen zu CartFlow für Shopify","Brief Voice Conversation","Einstellungen"]
-c-identity-set=Vertriebskanäle
-TikTok
+c-identity-opts ["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
+c-identity-set=Dein TikTok Konto
+aban
+192aban
 c-budget 15 gesetzt
 c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 DRY: stoppe vor Senden (kein Spend)
