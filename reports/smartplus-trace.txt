@@ -1,21 +1,9 @@
-2026-06-29T22:29:27.413Z DRY
+2026-06-29T22:36:18.554Z DRY
 continue-formReady=true
-continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#19 | about:blank#0]
+continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#22 | about:blank#0]
 c-picker-open=false
 c-probe NO-LEAF
 c-cbclick no-leaf
 c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren|Datei hinzufügen|Hochladen] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 c-event-opts ["Alle Videos 2/10 Schnelle Optimierung\n?","01\n00:05\n02\n00:10","01","02","Budget\n?\nCHF","Budget\n?","CHF","Video verwenden\nWeitere erstellen"]
 c-event-set=no-match
-c-identity-opts ["Alle Videos 2/10 Schnelle Optimierung\n?","01\n00:05\n02\n00:10","01","02","Budget\n?\nCHF","Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
-c-identity-set=Dein TikTok Konto
-aban
-192aban
-c-adtext gesetzt
-c-budget 30 gesetzt
-c-video Upload gestartet (luma-test-wasserfest)
-c-video optimieren+Hochladen=false
-c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren|Datei hinzufügen|Hochladen] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
-DRY: stoppe vor Senden (kein Spend)
-c-screenshot err TimeoutError: page.screenshot: Timeout 3
-CONTINUE-ENDE
