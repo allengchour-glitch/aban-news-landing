@@ -2199,3 +2199,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **1× Fehl-Naming** „Gaming-Set 104 Tasten" → „Gaming-Tastatur 104 Tasten" (war eine Tastatur).
 - SEO-Titel jeweils mitgezogen. Verifiziert: `*pcs*`=0, `*Mujer*`=0, `*unidades*`=0.
 - **Geprüft = KEIN Defekt (bewusst gelassen):** „Black"-Treffer sind Marken (BlackFit8, Black Limba, Black Panther/Diamond/Series), „White" = Parfümnamen (Elie Saab „in White"), „El Niño" = Koffermarke, „Set of"-Treffer = legit DE „…-Set". BlackFit8-Schulranzen mit abgeschnittenen Massangaben „(32 x 42 x 15" = kosmetisch/lesbar, nicht editiert.
+
+---
+**🎒 2026-06-29 (Nachtrag 2 — Schulranzen-Welle + Rest-Farbleaks, 17 Produkte, CJ/Theme-Session):**
+- **13× kaputte Schul-Taschen-Titel** (BigBuy-Schulbedarf-Charge) gefixt: abgeschnittene Masse mitten im Titel („… (32 x 42 x 15" / „33 X 45 X"), doppelte Tokens („Moos Camel Camel", „13 x 45 x 31 cm 31 x 45 x 13 cm"), 9-stellige Roh-SKUs (611753280 / 60357026) → entfernt. Schulrucksäcke (BlackFit8 Oxford/Evolution/Compact, Valencia, Espanyol/Levante/Gijón, New Era Stadium, Pincello) + Moos-Kulturbeutel.
+- **⚠️ BEWUSST NICHT pauschal Masse/Codes gestrippt:** die Schul-Taschen kommen als viele fast-identische Varianten (Linien 705/805/905, Evolution/Compact, Grössen) = separate SKUs. Masse/Modellcode komplett raus → **Dubletten-Titel** (SEO-schädlich). Darum nur die WIRKLICH kaputten (Trunkierung/Doppelung/Roh-SKU) gefixt, vollständige-aber-cluttered Titel als Varianten-Unterscheider gelassen.
+- **+4 Rest-Leaks:** 2× Atlético-Tasche „In Blue Marineblau" → „– Marineblau"; Moos-Kulturbeutel „Negro Schwarz" → „Schwarz"; Police-Armband „Steel" → „Edelstahl".
+- **Stand Titel-Bereinigung gesamt (3 Runden):** Marken-Apparel (46) + Sprach-/Einheiten-Leaks (22) + Schulranzen/Farbleaks (17) = **85 Produkte** mit sauberen DE-Titeln + SEO. Katalog auf den geprüften Achsen (OS TEE/HOODED/pcs/Mujer/unidades/Cap-Tees) = 0.
