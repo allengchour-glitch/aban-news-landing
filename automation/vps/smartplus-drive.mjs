@@ -91,6 +91,8 @@ async function clickAny(ctx, res) {
     const ctx = br.contexts()[0] || await br.newContext();
     const p = (br.contexts().flatMap(c => c.pages()).find(x => { try { return /apps\/tiktok/.test(x.url()); } catch { return false; } })) || await ctx.newPage();
     if (CONTINUE) {
+      // SICHERSTELLEN dass der Tab auf der Ad-Creation-Seite ist (User/Bot kann woanders hin navigiert sein).
+      if (!/ad_creation/.test(p.url())) { T('continue-goto ad_creation (war: ' + p.url().slice(0, 50) + ')'); await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {}); await p.waitForTimeout(8000); }
       // An den OFFENEN Brave anhaengen (kein Neustart). Picker selbst oeffnen falls noetig (Timing-sicher).
       T('continue-start ' + (await frameDiag(p)));
       let adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
