@@ -103,7 +103,7 @@ async function clickAny(ctx, res) {
       }
       T('c-picker-open=' + pickerOpen);
       // Suche "wasserfest" ins spezifische Feld
-      try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(2800); } } catch {}
+      try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.fill(''); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(2800); } } catch {}
       // DOM-Probe: exakte Struktur der Wasserfester-Schmuck-Zeile + Checkbox.
       let probe = ''; try { probe = await adminFr.evaluate(() => {
         const leaf = [...document.querySelectorAll('*')].find(e => e.children.length === 0 && /Wasserfester Schmuck/i.test(e.textContent || ''));
@@ -160,7 +160,7 @@ async function clickAny(ctx, res) {
     // Picker oeffnet im admin.shopify.com-Frame (Shopify ResourcePicker): Feld "Kollektionen suchen" + Checkboxen.
     const adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
     // ECHTE Tastenanschlaege ins SPEZIFISCHE "Kollektionen suchen"-Feld (NICHT die globale "Suchen"-Leiste!).
-    try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(3000); } } catch {}
+    try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.fill(''); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(3000); } } catch {}
     // Sammlungs-Namen NUR aus dem Picker-Dialog dumpen (nicht die Admin-Seitenleiste).
     let rows = []; try { rows = await adminFr.evaluate(() => { const d = document.querySelector('[role=dialog],[aria-modal="true"]') || document.body; return [...d.querySelectorAll('[role=row],[role=option],li,label,tr')].map(x => (x.innerText || '').trim()).filter(s => s && s.length > 1 && s.length < 44); }); } catch {}
     T('p3b-rows ' + JSON.stringify([...new Set(rows)].slice(0, 16)));
