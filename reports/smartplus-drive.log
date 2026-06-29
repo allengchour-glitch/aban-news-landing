@@ -1,10 +1,13 @@
 ﻿smartplus: DIAG topurl=admin.shopify.com/store/luxestyle-ch/apps/tik bodylen=358 frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | shopify.bytegration.com/ad_creation?em#11 | solution.tiktokshop.com/tts_open_widge#0]
-smartplus: start BTN[Men├╝ umschalten|Suchen
-STRG
-K|Sidekick|LuxeStyle|Vertriebskan├ñle|TikTok|Apps|SimGym|Sidekick-Unterhaltungen|Brief Voice Conversation|App-Einbettung anpassen|Sidekick] INP[]
-smartplus: s1 BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
-smartplus: s2-ziel BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
-smartplus: s3-budget BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
-smartplus: PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: form BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p1-sammlung click=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p2-name set=true
+smartplus: p3-picker click=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p3b-suche BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p3c-nach-picker BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p4-event BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p5-identitaet BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p6-budget KEIN Zahlenfeld sichtbar
+smartplus: PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: DRY: stoppe vor Senden (kein Spend)
 smartplus: stamp-fehler SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
