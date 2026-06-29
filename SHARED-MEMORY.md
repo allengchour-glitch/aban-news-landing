@@ -2344,3 +2344,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Erwartung:** Google-Feed re-synct (Shopify→Merchant Center, Stunden bis 1–2 Tage) → 38.6K kollabiert auf ~4.900 CHF-Einträge → Währungsfehler + DE-„unavailable" lösen sich auf. **User kann in GMC „Request website check" klicken zum Beschleunigen.**
 - Zusammen mit en+it-Locale-unpubliziert (de-only) = Feed-Hygiene komplett auf CH-Deutsch.
 - **Reversibel:** DACH-Markt für Deutschland-Plan später in Sekunden neu anlegbar (marketCreate), wenn Verkäufe + CH-Firma/UID + OSS stehen.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 11 — User „hole mehr produkte", +11 Keeper):**
+- **CATS=uhren,sonnenbrillen,bar PER=4** → 12 angelegt, **11 Keeper** (1 gedraftet). Frische, wenig-getappte Kategorien.
+- Uhren: Bobroff-Herrenuhr CHF86.90 + 3 Haurex (Damen/Unisex) CHF16.90. Sonnenbrillen: 4 Italia Independent CHF23.90–47.90 (distinct Untertitel). Bar: 3 Chef&Sommelier Weinglas-Sets (280/380/450ml).
+- **QA:** ß=0, alle distinct. **1 gedraftet:** „Edles Cocktail-Set" CHF96.90 = 5. Cocktail-Set (bar gesättigt) + teuer + fast titelgleich zu bestehendem CHF71.90.
+- **Hinweis Lane:** User hat diesen Import explizit DIESER Session zugewiesen („mach du"/„hole mehr produkte") trotz Lane-Split — Ledger vorher gepullt, um Dubletten mit anderer Session zu vermeiden. Ledger jetzt: 2966.
