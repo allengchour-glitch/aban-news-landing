@@ -13,9 +13,13 @@ const HOST = process.env.CDP_HOST || '100.71.8.47';
 const GO = process.env.GO === '1';
 const ID = process.env.SHOPIFY_CLIENT_ID, SEC = process.env.SHOPIFY_CLIENT_SECRET, SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const URL = 'https://admin.shopify.com/store/luxestyle-ch/apps/tiktok-ads-2/ad_creation';
+import { writeFileSync } from 'node:fs';
 const log = (...a) => console.log('smartplus:', ...a);
 const trace = [];
-const T = m => { trace.push(m); log(m); };
+const T = m => { trace.push(m); log(m); writeT(); };
+function writeT(extra) {
+  try { writeFileSync('reports/smartplus-trace.txt', `${new Date().toISOString()} ${GO ? 'GO' : 'DRY'}\n` + trace.join('\n') + (extra ? '\n' + extra : '') + '\n'); } catch {}
+}
 
 async function stamp(val) {
   if (!ID || !SEC) { log('keine Shopify-Creds -> kein Stamp:', val); return; }
@@ -45,14 +49,14 @@ async function clickAny(p, res) {
   try {
     const j = await (await fetch(`http://${HOST}:9222/json/version`, { headers: { Host: '127.0.0.1:9222' }, signal: AbortSignal.timeout(8000) })).json();
     br = await chromium.connectOverCDP(j.webSocketDebuggerUrl.replace(/127\.0\.0\.1|localhost/, HOST));
-  } catch (e) { await stamp('Brave nicht erreichbar: ' + String(e).slice(0, 70)); process.exit(0); }
+  } catch (e) { writeT('CONNECT-FAIL: ' + String(e).slice(0, 70)); await stamp('Brave nicht erreichbar: ' + String(e).slice(0, 70)); process.exit(0); }
   try {
     const ctx = br.contexts()[0] || await br.newContext();
     const p = (br.contexts().flatMap(c => c.pages()).find(x => { try { return /apps\/tiktok/.test(x.url()); } catch { return false; } })) || await ctx.newPage();
     await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {}); await p.waitForTimeout(9000);
     const body = (await p.evaluate(() => document.body.innerText).catch(() => '')) || '';
     if (/login|anmelden|sign in|log in to shopify/i.test(body) && !/Smart|Kampagne|campaign|Budget|Ziel/i.test(body)) {
-      await stamp('LOGIN-WAND: brave-agent-Profil ist NICHT bei admin.shopify.com eingeloggt -> dort 1x einloggen. ' + (await controls(p))); process.exit(0);
+      writeT('LOGIN-WAND: brave-agent nicht bei admin.shopify.com eingeloggt. ' + (await controls(p))); await stamp('LOGIN-WAND: brave-agent-Profil ist NICHT bei admin.shopify.com eingeloggt -> dort 1x einloggen. ' + (await controls(p))); process.exit(0);
     }
     T('start ' + (await controls(p)));
     // Schritt 1: Start/Weiter (Smart+ auswaehlen falls Auswahl)
@@ -74,6 +78,7 @@ async function clickAny(p, res) {
     } else T('DRY: stoppe vor Senden (kein Spend)');
   } catch (e) { T('Fehler: ' + String(e).slice(0, 90)); }
   finally {
+    writeT('ENDE');
     await stamp(`${GO ? 'GO' : 'DRY'} | ${trace.join(' >> ').slice(0, 440)}`);
     await br.close().catch(() => {});
   }
