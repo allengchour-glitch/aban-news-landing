@@ -161,7 +161,7 @@ async function clickAny(ctx, res) {
         let fileInput = af.locator('input[type=file]').first();
         if (!(await fileInput.count())) { await clickAny(af, [/Hochladen/i]); await p.waitForTimeout(1800); fileInput = (await appFrame()).locator('input[type=file]').first(); }
         if (await fileInput.count()) {
-          await fileInput.setInputFiles('reels/luma-test-wasserfest-9x16.mp4'); T('c-video Upload gestartet (luma-test-wasserfest)'); await p.waitForTimeout(9000);
+          await fileInput.setInputFiles('reels/wasserfest-tiktok-ready.mp4'); T('c-video Upload gestartet (luma-test-wasserfest)'); await p.waitForTimeout(9000);
           // LERN-FIX 2026-06-29: TikTok meldet oft 'Fehlgeschlagen - Optimierung erforderlich'. Haken 'optimieren' setzen + 'Hochladen' klicken.
           try {
             const mf = await appFrame();
@@ -174,6 +174,7 @@ async function clickAny(ctx, res) {
       } catch (e) { T('c-video err ' + String(e).slice(0, 50)); }
       T('c-PRE-SUBMIT ' + (await controls(fr)));
       if (GO) { const s = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch/i]); T(s ? 'GO: Senden geklickt' : 'GO: Senden nicht gefunden'); } else T('DRY: stoppe vor Senden (kein Spend)');
+      try { await p.screenshot({ path: 'reports/smartplus-shot.png' }); T('c-screenshot reports/smartplus-shot.png'); } catch (e) { T('c-screenshot err ' + String(e).slice(0, 40)); }
       writeT('CONTINUE-ENDE'); await stamp('CONTINUE | ' + trace.join(' >> ').slice(0, 420)); await br.close().catch(() => {}); process.exit(0);
     }
     await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {}); await p.waitForTimeout(9000);
