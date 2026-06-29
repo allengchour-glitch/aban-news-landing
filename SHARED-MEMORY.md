@@ -2190,3 +2190,12 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **SEO-Titel jeweils mitgezogen** (sonst blieb der rohe Code im Meta-Title). Markennamen bewusst BEHALTEN (Trust/SEO; ist legit Markenware, kein „Marke:BigBuy"-Leak).
 - **Verifiziert sauber:** `OS TEE`=0, `HOODED`=0, `CREWNECK`=0, `Cap`-Tees=0. Restliche „für Erwachsene"-Treffer (Helme/Schuhe mit Marke+Farbe) sind lesbar = kein Defekt, bewusst gelassen.
 - **LEHRE (verfestigt):** Die BigBuy-Marken-Apparel-Charge setzt oft rohen Lieferanten-Titel + falschen productType (`Cap` für Tees). Bei künftigen Apparel-Importen IMMER Titel (DE, ohne SKU) UND productType direkt mitgeben + per QA `product_type:Cap title:*T-Shirt*` gegenprüfen.
+---
+**🌐 2026-06-29 (Nachtrag — SPRACH-/EINHEITEN-LEAKS bereinigt, 22 Produkte, CJ/Theme-Session):**
+- **15× englische Einheit „pcs"** → DE: „(6 pcs)"→„(6-teilig)" bzw. „(N Stück)"; Socken „(3 pcs)"→„(3 Paar)". Betraf Ferrestock-Schraubendreher, Quid-Sets, Duracell, Amefa, Nike/Puma-Socken, Harry-Potter-Stifte.
+- **3× spanisch „Mujer"** (Sporthosen Black Limba/Under Armour/Ditchil) → „(Damen)" + doppelten Markennamen entfernt.
+- **2× spanisch „unidades"** (Weingläser Luminarc/Chef & Sommelier) → „6 Stück".
+- **1× roher SKU** „Michael Kors 35F2GTVD0L-BLACK" → „Damen Kartenetui Michael Kors – Schwarz".
+- **1× Fehl-Naming** „Gaming-Set 104 Tasten" → „Gaming-Tastatur 104 Tasten" (war eine Tastatur).
+- SEO-Titel jeweils mitgezogen. Verifiziert: `*pcs*`=0, `*Mujer*`=0, `*unidades*`=0.
+- **Geprüft = KEIN Defekt (bewusst gelassen):** „Black"-Treffer sind Marken (BlackFit8, Black Limba, Black Panther/Diamond/Series), „White" = Parfümnamen (Elie Saab „in White"), „El Niño" = Koffermarke, „Set of"-Treffer = legit DE „…-Set". BlackFit8-Schulranzen mit abgeschnittenen Massangaben „(32 x 42 x 15" = kosmetisch/lesbar, nicht editiert.
