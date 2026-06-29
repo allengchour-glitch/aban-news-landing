@@ -1,5 +1,11 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-29 (Tag — Conversion-Polish + Katalog-/Inventar-Check, autonom)
+- **🟢 PIXEL grün** (`pid=1 load=1 page=1 wpm=1` @ 04:04). **👁️ Views/Klicks: impr=0 · clicks=0 · CHF0** (Ad noch nicht live — PC-Brave gerade aus → Bot-Driver wartet; launcht automatisch sobald PC an, finaler GO-Klick = User).
+- **❓ FAQ-Block auf Geburtsstein-Kette PDP** (Ad-Angle Geschenk-Produkt): 4 Bedenken beantwortet (welcher Stein / personalisierbar / Versand / Rückgabe) — Einwand-Handling für mehr ATC.
+- **✅ HIDDEN-BUG-CHECK (User „check ob wirklich kein fehler wie anderen"):** Geburtsstein-Varianten = `inventoryPolicy CONTINUE` + `tracked:false` → trotz Lager 0 voll kaufbar (kein verstecktes Verkaufs-Blockier-Bug). Katalog-Spot-Check: `🚁 Drohnen & Kameras` jetzt sauber (7 Drohnen, **kein Sneaker mehr** — alter Fehlkategorisierungs-Bug behoben).
+- **🔴 Echte Engpässe (NUR-USER):** Traffic-Quellen beide blockiert ohne User → (1) TikTok-Ad: PC an + finaler GO-Klick; (2) Organic IG/FB: Meta-Token-Scopes (`pages_manage_posts`). Conversion-Seite (Trust/FAQ/Collections) ist autonom maximal poliert.
+
 ## 2026-06-26 (NACHT — 🎵 TikTok-Musik gemeistert + 🌉 Brücke baut Ads + 6 YouTube-Videos gelernt)
 - **🌉 BRÜCKE BAUT ADS (bewiesen):** `campaign-bridge.sh` (DRY) — der **VPS steuerte den PC-Brave** durch Objective→Adgroup→Pixel→Placement→Targeting. End-to-end-Fernsteuerung über Tailscale läuft. **Offen:** Stagehand auf VPS installieren (sonst starrer Playwright-Fallback → Timeouts). Fix-Cmd: `npm i @browserbasehq/stagehand`.
 - **🎵 TIKTOK-MUSIK GEMEISTERT (3 Tutorials + Daten):** Business-Account → nur **Commercial Music Library** (Trend-Pop gesperrt). **Ads nie stumm** (+72% Stop, +6% Kaufabsicht, +9% Präferenz, Sound=8× Erinnerung). Neu: `make_sound_ad.mjs` backt legale CC-BY-Musik ein → Ad-Creative `seedance-wasserfest-sound.mp4`. Favoriten-Trick = Lizenz-Filter. Doku `TIKTOK-MUSIK-MASTERPLAN-2026.md`. **Alte Stumm-Regel korrigiert** (galt nur Personal).
