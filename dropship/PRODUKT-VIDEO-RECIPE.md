@@ -30,3 +30,11 @@ Stil eines erfolgreichen KI-Schmuck-Ads zum Klauen:
 - **CUTOUT + PFEIL-Element:** kleines freigestelltes Produktbild (weisser BG) eingeblendet + geschwungener Pfeil (drawtext/Overlay) der auf die getragene Stelle zeigt = "Produkt -> so sitzt es". Starker Aufmerksamkeits-Hook.
 - **Warme Editorial-Toene** (beige/gold), cleane Komposition, ~12s, Hashtags #aijewelry #adcreative #editorial.
 - ANWENDEN: aurora-ai/jewelry-Reels -> 1x On-Model-Hero (Nano Banana) + 1x Produkt-Cutout, Seedance-Bewegung, Cutout-Pfeil-Overlay in der ffmpeg-Assembly.
+
+## 📺 GELERNT — ÉBISA (ebisa.ch, SCHWEIZER KONKURRENT!) "Personalisierte Gravur-Halskette" (User 2026-06-29)
+- 🇨🇭 DIREKTER CH-Konkurrent (ebisa.ch): personalisierte Gravur-Schmuck, Geschenk-/Emotions-Positionierung. Beobachten!
+- STIL = STORY/EMOTION, nicht Produkt: cinematische KI-Szene (2 Freundinnen Cafe, golden hour, Bokeh, eine traegt+beruehrt die Kette). Verkauft das GEFUEHL/den Moment.
+- Cinematic-Film-Look + REALISTISCHE MENSCHEN (echter Werbespot-Look, KI). Produkt subtil getragen, kein Close-up.
+- Geschenk-Bedeutungs-Copy ("Schmuck, der Erinnerungen traegt", Name/Datum/Botschaft gravieren).
+- ANWENDEN: warme Geschenk-Story-Copy + getragene Kette. Volle KI-Menschen-Szenen (ÉBISA-Niveau) = Text-zu-Video (Veo/Kling/Runway) noetig -> fuer spaeter, wenn Zugang/Budget. Bis dahin: On-Model-Hero (Nano Banana) + emotionale Geschenk-Hooks.
+- KOMBI-REZEPT Schmuck-Ad: (1) On-Model getragen (Runway-Bliss-Stil) + (2) Geschenk-Emotion-Hook (ÉBISA-Stil) + (3) Cutout+Pfeil + (4) warmes Editorial-Grade.
