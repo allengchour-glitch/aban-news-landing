@@ -91,13 +91,30 @@ async function clickAny(ctx, res) {
     const ctx = br.contexts()[0] || await br.newContext();
     const p = (br.contexts().flatMap(c => c.pages()).find(x => { try { return /apps\/tiktok/.test(x.url()); } catch { return false; } })) || await ctx.newPage();
     if (CONTINUE) {
-      // An den OFFENEN Zustand anhaengen (User hat den Picker offen): KEIN goto, KEIN Neustart.
-      const adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
+      // An den OFFENEN Brave anhaengen (kein Neustart). Picker selbst oeffnen falls noetig (Timing-sicher).
       T('continue-start ' + (await frameDiag(p)));
-      // Wasserfester Schmuck im offenen Picker anhaken (Klick auf die Zeile toggelt die Checkbox) + Hinzufügen.
+      let adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
+      let pickerOpen = false; try { pickerOpen = (await adminFr.getByPlaceholder(/Kollektion/i).count()) > 0; } catch {}
+      if (!pickerOpen) {
+        let fr0 = await bestFrame(p);
+        await clickAny(fr0, [/^Sammlung$/i]); await p.waitForTimeout(800);
+        await clickAny(fr0, [/Sammlung auswählen|Produkt auswählen/i]); await p.waitForTimeout(3500);
+        adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
+      }
+      T('c-picker-open=' + pickerOpen);
+      // Suche "wasserfest" ins spezifische Feld
+      try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(2800); } } catch {}
+      // CHECKBOX in der Wasserfester-Schmuck-Zeile gezielt anklicken (nicht nur Text)
       let added = false;
-      try { await clickAny(adminFr, [/Wasserfester Schmuck/i]); await p.waitForTimeout(1000); } catch {}
-      try { added = await clickAny(adminFr, [/^Hinzufügen$|hinzufügen|^auswählen$|^fertig$|^add$|^done$/i]); } catch {}
+      try {
+        const row = adminFr.locator('[role=row],tr,li,label,div').filter({ hasText: /Wasserfester Schmuck/i }).first();
+        const cb = row.getByRole('checkbox').first();
+        if (await cb.count()) { await cb.click({ force: true }); } else { await row.click(); }
+        await p.waitForTimeout(1000);
+      } catch { try { await clickAny(adminFr, [/Wasserfester Schmuck/i]); } catch {} }
+      // Hinzufügen (jetzt aktiv)
+      try { const hz = adminFr.getByRole('button', { name: /Hinzufügen/i }).first(); if (await hz.count()) { await hz.click({ timeout: 5000 }); added = true; } } catch {}
+      if (!added) { try { added = await clickAny(adminFr, [/hinzufügen|^auswählen$|^fertig$|^add$|^done$/i]); } catch {} }
       await p.waitForTimeout(2500); let fr = await bestFrame(p);
       T('c-picker added=' + added + ' ' + (await controls(fr)));
       // Optimierungsereignis -> In den Warenkorb
