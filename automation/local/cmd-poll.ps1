@@ -51,7 +51,7 @@ function Ensure-Brave {
   $o = Get-NetTCPConnection -LocalPort 9222 -State Listen -EA SilentlyContinue
   if (-not $o -and (Test-Path $brave)) {
     Get-Process brave -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue; Start-Sleep 3
-    Start-Process $brave -ArgumentList "--remote-debugging-port=9222","--user-data-dir=$env:USERPROFILE\brave-agent"; Start-Sleep 18
+    Start-Process $brave -ArgumentList "--remote-debugging-port=9222","--remote-allow-origins=*","--user-data-dir=$env:USERPROFILE\brave-agent"; Start-Sleep 18
   }
 }
 try {
