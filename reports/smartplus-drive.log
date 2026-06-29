@@ -1,4 +1,5 @@
-﻿smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#11]
+﻿smartplus: continue-formReady=true
+smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#11 | about:blank#0]
 smartplus: c-picker-open=false
 smartplus: c-probe NO-LEAF
 smartplus: c-cbclick no-leaf
