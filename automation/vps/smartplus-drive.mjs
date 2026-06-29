@@ -51,6 +51,21 @@ async function frameDiag(p) {
   }
   return `frames=${p.frames().length} [${out.join(' | ')}]`;
 }
+// Tiefen-Dump: jeder Frame mit Button-/Feld-Texten — um zu finden, wo ein Picker/Dropdown-Overlay aufgeht.
+async function allDump(p) {
+  const out = [];
+  for (const f of p.frames()) {
+    try {
+      const d = await f.evaluate(() => {
+        const b = [...document.querySelectorAll('button,[role=button],[role=option],li[role]')].map(x => (x.innerText || x.getAttribute('aria-label') || '').trim()).filter(s => s && s.length < 26).slice(0, 10);
+        const i = [...document.querySelectorAll('input')].map(x => (x.type || 't') + ':' + (x.placeholder || x.getAttribute('aria-label') || '').slice(0, 14)).filter(s => s.length > 2).slice(0, 6);
+        return b.length + 'b/' + i.length + 'i [' + b.join(',') + '] (' + i.join(',') + ')';
+      });
+      out.push('  ' + (f.url() || 'blank').replace(/^https?:\/\//, '').slice(0, 32) + ' ' + d);
+    } catch { out.push('  ' + (f.url() || 'blank').slice(0, 32) + ' [cross-origin]'); }
+  }
+  return out.join('\n');
+}
 async function clickAny(ctx, res) {
   for (const re of res) {
     for (const loc of [ctx.getByRole('button', { name: re }).first(), ctx.getByText(re).first()]) {
@@ -91,10 +106,14 @@ async function clickAny(ctx, res) {
     let named = false; try { const nm = fr.getByPlaceholder(/Aktivitätsname|activity name|Kampagnenname/i).first(); if (await nm.count()) { await nm.fill('Wasserfest CH Juni'); named = true; } } catch {}
     T('p2-name set=' + named);
     // 3) Produkt auswaehlen -> Picker, "wasserfest" suchen + waehlen + bestaetigen
-    const c3 = await clickAny(fr, [/Produkt auswählen|Produkte auswählen|Sammlung auswählen|select product|select collection/i]); await p.waitForTimeout(3000); let pf = await bestFrame(p);
-    T('p3-picker click=' + c3 + ' ' + (await controls(pf)));
+    const c3 = await clickAny(fr, [/Produkt auswählen|Produkte auswählen|Sammlung auswählen|select product|select collection/i]); await p.waitForTimeout(3500);
+    const pagesNow = br.contexts().flatMap(c => c.pages());
+    T('p3-picker click=' + c3 + ' pages=' + pagesNow.length + '\nALLFRAMES:\n' + (await allDump(p)));
+    // Suchfeld im Frame finden, der eines hat (Picker-Overlay kann in irgendeinem Frame liegen)
+    let pf = await bestFrame(p);
+    for (const f of p.frames()) { try { if (await f.locator('input[type=search],input[type=text]').first().count()) { pf = f; break; } } catch {} }
     try { const sb = pf.locator('input[type=search],input[type=text]').first(); if (await sb.count()) { await sb.fill('wasserfest'); await p.waitForTimeout(2500); } } catch {}
-    T('p3b-suche ' + (await controls(pf)));
+    T('p3b-suche \n' + (await allDump(p)));
     await clickAny(pf, [/wasserfest/i]); await p.waitForTimeout(800);
     await clickAny(pf, [/Hinzufügen|Auswählen|Bestätigen|Add\b|Done|Fertig|Speichern|Übernehmen/i]); await p.waitForTimeout(2000); fr = await bestFrame(p);
     T('p3c-nach-picker ' + (await controls(fr)));
