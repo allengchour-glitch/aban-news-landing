@@ -1,20 +1,16 @@
-2026-06-29T21:38:54.742Z DRY
+2026-06-29T21:41:30.900Z DRY
 continue-formReady=true
 continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#11 | about:blank#0]
 c-picker-open=false
-c-probe NO-LEAF
-c-cbclick no-leaf
-c-picker added=false BTN[Menü umschalten|Suchen
-STRG
-K|Sidekick|LuxeStyle|Vertriebskanäle|TikTok|Apps|Search & Discovery|Sidekick-Unterhaltungen|Brief Voice Conversation|Sidekick] INP[]
+c-probe leaf<SPAN> row<SPAN > cbs=1
+c-cbclick cb-clicked
+c-picker added=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 c-event-opts ["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSearch & Discovery","Search & Discovery","Shopify Payments payouts overview","Alternativen zu CartFlow für Shopify","Brief Voice Conversation","Einstellungen"]
 c-event-set=no-match
 c-identity-opts ["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSearch & Discovery","Search & Discovery","Shopify Payments payouts overview","Alternativen zu CartFlow für Shopify","Brief Voice Conversation","Einstellungen"]
 c-identity-set=Vertriebskanäle
 TikTok
-c-budget kein Zahlenfeld
-c-PRE-SUBMIT BTN[Menü umschalten|Suchen
-STRG
-K|Sidekick|LuxeStyle|Vertriebskanäle|TikTok|Apps|Search & Discovery|Sidekick-Unterhaltungen|Brief Voice Conversation|Sidekick] INP[]
+c-budget 15 gesetzt
+c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 DRY: stoppe vor Senden (kein Spend)
 CONTINUE-ENDE
