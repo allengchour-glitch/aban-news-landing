@@ -50,3 +50,10 @@ Prinzip aus den YouTube-Lehren auf ALLE Produkte uebertragen: zeig das Produkt I
 - **Wasserfest-Schmuck:** See-/Wasser-Test ("lauft nid a"), Wasser-Szene. [seetest]
 GEMEINSAM (immer): Hook in 1. Sek, getragen/in-use statt nur Produktfoto, warmes Kino-Grade + Vignette, Safe-Zone-Text (y<=1500), Mundart-CH-Hook + Preis/WELCOME10/luxestyle.ch am Ende, TikTok stumm / Meta mit Musik, junge weibliche ElevenLabs-Stimme wo VO passt. Quelle-Bild IMMER ansehen (keine asiat. Schrift).
 MACHE BESSER (laufend): je Reel 1 Element vom Vorbild stehlen (On-Model/Cutout-Pfeil/Emotion-Story/golden-hour); Gewinner-Formate merken, Verlierer droppen.
+
+## 📺 GELERNT — Magnific/Freepik "Turning objects into Ads" (97k Views, User 2026-06-29)
+- STIL = "Hero-Produkt in epischer KI-Umgebung": Produkt (z.B. Parfum) schwebt in DRAMATISCHER Szene (Rauch/Nebel, fliessende Holz-/Canyon-Texturen, dramatisches Kino-Licht). Scroll-stopper, High-End-Kampagne. Statt Produkt-auf-Weiss.
+- TOOL: Freepik AI Suite / Magnific (Objekt->Kampagne, Stil-konsistent) = paid SaaS. GRATIS-AEQUIVALENT bei uns: Nano Banana (Gemini, GEMINI_API_KEY) -> dann Seedance fuer Bewegung (Rauch/Kamera).
+- NANO-PROMPT (dramatic hero): "the product floating/nestled in a dramatic cinematic environment, swirling smoke and mist, flowing organic textures, moody dramatic studio lighting, premium luxury campaign, photoreal, no text".
+- BEST FUER: Parfum/Duft, Beauty, Premium-Schmuck, Uhren (alles wo Drama+Luxus passt). NICHT fuer billige Alltags-Gadgets (da eher in-use).
+- 3 STILE jetzt im Repertoire: (A) On-Model getragen [Runway Bliss], (B) Emotion/Geschenk-Story cinematic [ÉBISA, CH-Konkurrent], (C) Hero-Produkt epische KI-Umgebung [Magnific/Freepik]. Pro Produkt den passenden waehlen.
