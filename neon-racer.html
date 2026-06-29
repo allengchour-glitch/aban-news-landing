@@ -92,9 +92,11 @@ var sGlow=new THREE.PointLight(0x5ef2ff,1.6,22); scene.add(sGlow);
 // Strecken-Boden (Ribbon-Segmente) + Rail-Posten (werden je Frame neu positioniert)
 var N=46, SP=5.0;
 var leftRail=[],rightRail=[],tiles=[];
-function railMesh(c){var m=new THREE.Mesh(new THREE.BoxGeometry(0.5,1.4,SP*0.7),mat(c,c,1.3));scene.add(m);return m;}
-function tileMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(HALF*2,0.12,SP*0.92),mat(0x0c1230,0x0a1838,0.7));scene.add(m);return m;}
-for(var i=0;i<N;i++){leftRail.push(railMesh(0x5ef2ff));rightRail.push(railMesh(0xb98bff));tiles.push(tileMesh());}
+function railMesh(c){var m=new THREE.Mesh(new THREE.BoxGeometry(0.45,1.3,SP*0.72),mat(c,c,0.85));scene.add(m);return m;}
+function tileMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(HALF*2,0.12,SP*0.94),mat(0x111a3e,0x0c1838,0.55));scene.add(m);return m;}
+var midLine=[];
+function midMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(0.35,0.14,SP*0.5),mat(0xffd166,0xffd166,0.8));scene.add(m);return m;}
+for(var i=0;i<N;i++){leftRail.push(railMesh(0x5ef2ff));rightRail.push(railMesh(0xb98bff));tiles.push(tileMesh());midLine.push(midMesh());}
 
 // Backdrop-Pylone + Sterne
 for(i=0;i<30;i++){var hh=10+Math.random()*30;var py=new THREE.Mesh(new THREE.BoxGeometry(3,hh,3),mat(0x202c5c,(i%2)?0x5ef2ff:0xb98bff,0.4));py.position.set((Math.random()<0.5?-1:1)*(20+Math.random()*60),hh/2-2,-Math.random()*300);scene.add(py);}
@@ -112,9 +114,9 @@ var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt);
 var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.55}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.7}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:1.0}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.85}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
 function renderBloom(){
@@ -197,6 +199,7 @@ function loop(now){
     for(var i=0;i<N;i++){var di=dist+i*SP-frac;var cx=centerX(di);var z=-(i*SP-frac);
       leftRail[i].position.set(cx-HALF,0.7,z); rightRail[i].position.set(cx+HALF,0.7,z);
       tiles[i].position.set(cx,0.0,z);
+      midLine[i].position.set(cx,0.08,z); midLine[i].visible=(i%2===0);
     }
     // Ship-Position/Banking
     var trackC=centerX(dist);
