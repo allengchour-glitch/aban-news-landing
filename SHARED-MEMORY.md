@@ -2327,3 +2327,12 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   - **camping-outdoor**: war 1 Zeile → Kühltaschen/Camping-Tisch/Outdoor-Licht.
 - **Bereits EXZELLENT (nicht angefasst, andere Session top):** sonnenbrillen-eyewear, parfum-duefte, schuhe, premium-schmuck, kuechenhelfer, audio-sub, haustier, gaming.
 - **Lane-Hinweis:** SEO ist eigentlich andere-Session-Lane — hier nur die nachweislich DÜNNEN gefixt (additiv, keine Dublette). Falls die andere Session diese 4 ohnehin auf dem Plan hatte: ist erledigt.
+
+---
+**🛒 2026-06-29 (GOOGLE-MERCHANT-CENTER-DIAGNOSE + Locale-Fix — Conversion/SEO-Lane):**
+- **User-Screenshots GMC Next:** 2 Blocker: „Mismatched currency in shipping" **38.6K Prod. (99,9%)** + „Product page unavailable" **5.4K (14%)** (verhindert Anzeige in DE **und CH**, Anstieg seit ~16.6.).
+- **Wurzel:** 38.6K ≈ 4.900 × 8 → Google-Feed zielt auf ~8 Länder (alle Märkte: CH/DE/AT/FR/IT/EU/UK/US), aber Shop bedient **nur CH**. → Nicht-CH = Währungsfehler (EUR vs CHF) + nicht-bediente Länder (DE) = Seite „unavailable".
+- **✅ FIX Shopify-Seite (gemacht):** `en` + `it`-Locales auf `published:false` → Shop **nur Deutsch**. Entfernt /en//it/-URLs, die Google nicht crawlen kann (Teil der 5.4K). (fr war schon aus.) **Reversibel.** ⚠️ Damit ist der Translate-App-Mehrsprachen-Plan wieder aus — bewusst, da CH-Deutsch-Shop + 0 Umsatz + GMC-Schaden.
+- **🔴 OFFEN (USER-UI, kann ich nicht via API):** Google-Feed auf **nur Schweiz** stellen — Shopify → Vertriebskanäle → **Google & YouTube → Zielmarkt = nur Schweiz** (DE+andere raus) → dann GMC „Request website check". Killt beide Fehler (alles CHF, keine DE-Seiten).
+- **Minor (NICHT manuell klicken):** GMC „add missing color/size/age group"-Popups = synchronisieren NICHT (Warnung im Popup selbst), gehen beim Feed-Update verloren. Attribute gehören in Shopify-Produktdaten/Metafelder → Feed automatisch. Niedrige Prio.
+- **Bezug:** Google/Search = einziger Qualitäts-Traffic (4,4% Checkout) → sauberer CH-Feed = direkt mehr sichtbare Produkte = mehr echte Käufer.
