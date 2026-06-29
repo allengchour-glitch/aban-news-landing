@@ -2250,7 +2250,7 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 
 ---
 **🛒 2026-06-29 (Nachtrag 9 — IMPORT Ladung 5: 3 Sonnenbrillen-Keeper, 3 Ringe gedraftet, SCHMUCK-LEHRE):**
-- **5. Lauf:** CATS=sonnenbrillen,schmuck,fitness PER=3 → 6 angelegt. =Decke (101 Kandidaten, 0 geeignet).
+- **5. Lauf:** CATS=sonnenbrillen,schmuck,fitness PER=3 → 6 angelegt. fitness=Decke (101 Kandidaten, 0 geeignet).
 - **3 Sonnenbrillen KEEPER:** Italia Independent (echte Premium-Marke, Markt CHF 80–150) für CHF 19.90/41.90/44.90 = **echtes Schnäppchen**, 3 Titel distinct. Bild/SEO ok, 0 ß.
-- **🔴 SCHMUCK-LEHRE (wie caps/anime): 3 Cristian-Lay-Damenringe gedraftet** — BigBuys Ringe haben generische Namen („Damenring Cristian Lay") → Generator machte **3× IDENTISCHE Titel + Description** (nur Ring-Design unterschiedlich, nicht zuverlässig differenzierbar). Identische Titel = SEO-Kannibalisierung + low quality, Shop hat eh 107 Premium-Schmuck. **Lehre:**  (Cristian Lay) liefert generische Dubletten-Titel → meiden oder nur mit Bild-Differenzierung. Whitelist NICHT erweitern um schmuck.
+- **🔴 SCHMUCK-LEHRE (wie caps/anime): 3 Cristian-Lay-Damenringe gedraftet** — BigBuys Ringe haben generische Namen („Damenring Cristian Lay") → Generator machte **3× IDENTISCHE Titel + Description** (nur Ring-Design unterschiedlich, nicht zuverlässig differenzierbar). Identische Titel = SEO-Kannibalisierung + low quality, Shop hat eh 107 Premium-Schmuck. **Lehre:** schmuck (Cristian Lay) liefert generische Dubletten-Titel → meiden oder nur mit Bild-Differenzierung. Whitelist NICHT erweitern um schmuck.
 - **Import gesamt heute: +42 Keeper** (Läufe 15+9+6+9+3), Ledger 2876. QA-Disziplin: diese Session 5 überteuerte/dupe-Titel gedraftet (2 Gaming + 3 Ringe), Dubletten/ß/Fehlmatch abgefangen.
