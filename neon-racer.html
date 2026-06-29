@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Neon Racer — Anti-Grav-Rennspiel (PSP-Style) | aban news</title>
+<meta name="description" content="Neon Racer: futuristischer Anti-Grav-Racer im Browser, im Stil der PSP-Klassiker. Folge der kurvigen Neon-Strecke, nutze Boost, weiche aus, werde immer schneller. Gratis, kein Download.">
+<link rel="canonical" href="https://abannews.com/neon-racer.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Neon Racer — Anti-Grav-Rennspiel (PSP-Style)">
+<meta property="og:description" content="Futuristischer Neon-Racer im Browser. Kurvige Strecke, Boost, immer schneller. Gratis.">
+<meta property="og:url" content="https://abannews.com/neon-racer.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Neon Racer","url":"https://abannews.com/neon-racer.html","genre":"Racing","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:#04050d;color:#fff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+#wrap{position:fixed;inset:0}
+canvas{display:block}
+#hud{position:fixed;top:12px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;font-weight:800;text-shadow:0 2px 8px #000;pointer-events:none}
+#spd{font-size:1.5rem}#spd small{font-size:.8rem;color:#9fb2ff;font-weight:600}
+.best{opacity:.85;font-size:.95rem;text-align:right}
+#shieldwrap{position:fixed;top:52px;left:16px;width:200px;height:10px;background:rgba(16,20,43,.6);border-radius:6px;overflow:hidden;pointer-events:none}
+#shieldFill{display:block;height:100%;width:100%;background:linear-gradient(90deg,#5ef2ff,#b98bff)}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(4,5,13,.93));padding:20px;backdrop-filter:blur(3px)}
+.overlay h1{font-size:2.1rem;letter-spacing:1px;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem}
+.overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:.95rem;line-height:1.5}
+.tag{font-size:.72rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
+.btn{margin-top:12px;border:0;cursor:pointer;font-weight:800;font-size:1.05rem;padding:13px 30px;border-radius:40px;color:#04050d;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
+.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.92rem;padding:10px 22px}
+.small{font-size:.8rem;color:#8890b8;margin-top:18px}.small a{color:#9fb2ff}
+#muteBtn{position:fixed;top:8px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<div id="hud" class="hide">
+  <div id="spd">0 <small>km/h</small></div>
+  <div class="best"><span id="dist">0</span> m<br><span style="opacity:.7">Rekord <span id="best">0</span> m</span></div>
+</div>
+<div id="shieldwrap" class="hide"><i id="shieldFill"></i></div>
+<button id="muteBtn" title="Ton an/aus (M)">🔊</button>
+
+<div class="overlay" id="start">
+  <div class="tag">aban news · Anti-Grav · PSP-Style</div>
+  <h1>NEON RACER</h1>
+  <p>Folge der kurvigen Neon-Strecke. Lenke in die Kurven, halte den <b>Boost</b>, weiche roten Barrieren aus. Je weiter, desto schneller.</p>
+  <p style="font-size:.85rem;color:#8890b8">Lenken: ← → / A D / Maus / Finger · Bremse: ↓ / LEER</p>
+  <button class="btn" id="startBtn">Start ▶</button>
+  <div id="best2" class="small"></div>
+  <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
+</div>
+
+<div class="overlay hide" id="over">
+  <div class="tag">Crash</div>
+  <h1 id="finalT">0 m</h1>
+  <p id="verdict"></p>
+  <button class="btn" id="againBtn">Nochmal ▶</button>
+  <button class="btn ghost" id="shareBtn">Teilen 📋</button>
+  <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter →</a></p>
+</div>
+
+<script src="/js/vendor/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var THREE=window.THREE, W=innerWidth, H=innerHeight;
+var renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+document.getElementById("wrap").appendChild(renderer.domElement);
+var scene=new THREE.Scene(); scene.background=new THREE.Color(0x04050d); scene.fog=new THREE.Fog(0x04050d,60,220);
+var camera=new THREE.PerspectiveCamera(72,W/H,0.1,400);
+scene.add(new THREE.AmbientLight(0x4a5590,1.1));
+var sun=new THREE.DirectionalLight(0xffffff,0.7); sun.position.set(5,12,8); scene.add(sun);
+
+function mat(c,e,ei){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:ei||1.1,flatShading:true});return m;}
+
+// ---- Track-Funktion: kurvige Strecke als Funktion der Distanz ----
+var HALF=7.0;
+function centerX(d){return Math.sin(d*0.012)*9 + Math.sin(d*0.005)*7;}
+
+// Ship (Hover-Gleiter)
+var ship=new THREE.Group();
+var sBody=new THREE.Mesh(new THREE.ConeGeometry(0.8,2.6,4),mat(0x5ef2ff,0x1a6f8c)); sBody.rotation.x=Math.PI/2; ship.add(sBody);
+var sWing=new THREE.Mesh(new THREE.BoxGeometry(3.0,0.16,0.9),mat(0xb98bff,0x3a1a6f)); sWing.position.z=0.4; ship.add(sWing);
+ship.position.set(0,0.6,0); scene.add(ship);
+var sGlow=new THREE.PointLight(0x5ef2ff,1.6,22); scene.add(sGlow);
+
+// Strecken-Boden (Ribbon-Segmente) + Rail-Posten (werden je Frame neu positioniert)
+var N=46, SP=5.0;
+var leftRail=[],rightRail=[],tiles=[];
+function railMesh(c){var m=new THREE.Mesh(new THREE.BoxGeometry(0.5,1.4,SP*0.7),mat(c,c,1.3));scene.add(m);return m;}
+function tileMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(HALF*2,0.12,SP*0.92),mat(0x0c1230,0x0a1838,0.7));scene.add(m);return m;}
+for(var i=0;i<N;i++){leftRail.push(railMesh(0x5ef2ff));rightRail.push(railMesh(0xb98bff));tiles.push(tileMesh());}
+
+// Backdrop-Pylone + Sterne
+for(i=0;i<30;i++){var hh=10+Math.random()*30;var py=new THREE.Mesh(new THREE.BoxGeometry(3,hh,3),mat(0x202c5c,(i%2)?0x5ef2ff:0xb98bff,0.4));py.position.set((Math.random()<0.5?-1:1)*(20+Math.random()*60),hh/2-2,-Math.random()*300);scene.add(py);}
+var stG=new THREE.BufferGeometry();var sp=new Float32Array(200*3);for(i=0;i<200;i++){sp[i*3]=(Math.random()-.5)*400;sp[i*3+1]=Math.random()*80+15;sp[i*3+2]=-Math.random()*360;}stG.setAttribute("position",new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(stG,new THREE.PointsMaterial({color:0x9aa2d8,size:0.8,transparent:true,opacity:.7})));
+
+// Hindernisse / Boost-Pads (am Distanz-Wert verankert)
+var things=[];
+function thingMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(2.4,1.6,1.0),mat(0xff4d6d,0xff4d6d,1.3));m.visible=false;scene.add(m);return {m:m,active:false,d:0,off:0,boost:false};}
+for(i=0;i<14;i++)things.push(thingMesh());
+
+// ---- Bloom-Post-Processing (Neon-Glow) ----
+var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
+var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
+var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt);
+var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
+var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
+var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.55}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:1.0}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
+function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
+function renderBloom(){
+  renderer.setRenderTarget(rtScene);renderer.render(scene,camera);
+  brightMat.uniforms.tDiffuse.value=rtScene.texture;blit(brightMat,rtA);
+  blurMat.uniforms.res.value.set(bw,bh);
+  blurMat.uniforms.dir.value.set(1,0);blurMat.uniforms.tDiffuse.value=rtA.texture;blit(blurMat,rtB);
+  blurMat.uniforms.dir.value.set(0,1);blurMat.uniforms.tDiffuse.value=rtB.texture;blit(blurMat,rtA);
+  compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blit(compMat,null);
+  renderer.setRenderTarget(null);
+}
+
+// ---- Audio ----
+var actx=null,muted=false; try{muted=localStorage.getItem("nr_muted")==="1";}catch(e){}
+function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
+var muteBtn=document.getElementById("muteBtn");
+function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nr_muted",muted?"1":"0");}catch(e){}}
+applyMute(); muteBtn.onclick=function(){muted=!muted;applyMute();};
+addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;applyMute();}});
+
+function bestM(){try{return parseInt(localStorage.getItem("nr_best")||"0",10)||0;}catch(e){return 0;}}
+function setBestM(v){try{localStorage.setItem("nr_best",String(v));}catch(e){}}
+
+// ---- State ----
+var dist=0,speed=0,shipX=0,steer=0,shield=100,running=false,paused=false,camX=0,bank=0,spawnD=0,last=performance.now();
+var keyL=false,keyR=false,brake=false;
+function reset(){dist=0;speed=42;shipX=centerX(0);steer=0;shield=100;camX=shipX;bank=0;spawnD=40;
+  ship.position.set(shipX,0.6,0);
+  for(var i=0;i<things.length;i++){things[i].active=false;things[i].m.visible=false;}}
+
+addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if(k==="arrowdown"||k===" ")brake=true;if((k===" "||k==="enter")&&!running){e.preventDefault&&e.preventDefault();start();}});
+addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;if(k==="arrowdown"||k===" ")brake=false;});
+var touchX=null;
+addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].clientX;if(!running)start();},{passive:true});
+addEventListener("touchmove",function(e){if(e.touches[0])touchX=e.touches[0].clientX;e.preventDefault();},{passive:false});
+addEventListener("touchend",function(){touchX=null;});
+
+function spawnThing(){
+  var t=null;for(var i=0;i<things.length;i++)if(!things[i].active){t=things[i];break;}if(!t)return;
+  t.active=true;t.m.visible=true;t.d=spawnD;t.off=(Math.random()*2-1)*(HALF-1.5);
+  t.boost=Math.random()<0.32;
+  var c=t.boost?0x6aff9e:0xff4d6d;t.m.material.color.setHex(c);t.m.material.emissive.setHex(c);
+  t.m.scale.set(1,t.boost?0.4:1,1);
+}
+
+function burst(x,y,z,c){/* simple spark via reusing tiles? minimal: flash via shield bar */}
+
+function start(){reset();running=true;paused=false;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");}
+function showBest(){var b=bestM();document.getElementById("best").textContent=b;document.getElementById("best2").textContent=b>0?("🏆 Rekord: "+b+" m"):"";}
+function gameOver(){running=false;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
+  document.getElementById("finalT").textContent=m+" m";
+  document.getElementById("verdict").innerHTML=(rec&&m>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+" m · ")+"Top-Speed "+Math.floor(speed*3.0)+" km/h";
+  document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");
+  beep(90,.4,"sawtooth",.12);}
+
+document.getElementById("startBtn").onclick=start;
+document.getElementById("againBtn").onclick=start;
+document.getElementById("shareBtn").onclick=function(){var txt="Neon Racer 🏎️ — "+Math.floor(dist)+" m, "+Math.floor(speed*3.0)+" km/h\nGratis spielen: abannews.com/neon-racer.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
+
+function loop(now){
+  requestAnimationFrame(loop);
+  var dt=Math.min(0.05,(now-last)/1000); last=now;
+  if(running&&!paused){
+    // Steuerung
+    var sx=0; if(keyL)sx-=1; if(keyR)sx+=1;
+    if(touchX!=null){sx=((touchX/W)*2-1)*1.6;}
+    steer+=(sx-steer)*0.2;
+    brake=keyL||keyR?brake:brake; // (kept simple)
+    // Beschleunigung (Zone-Style), Bremse senkt Tempo & schärft Lenkung
+    var maxSpeed=42+dist*0.05;
+    speed+=(maxSpeed-speed)*0.4*dt + 6*dt;
+    if(brake)speed-=40*dt;
+    speed=Math.max(20,Math.min(maxSpeed+30,speed));
+    shipX+=steer*(brake?22:16)*dt*1.0 + (centerX(dist+1)-centerX(dist)); // folgt leicht der Kurve
+    dist+=speed*dt;
+    // Hindernisse spawnen entlang der Strecke
+    if(dist+200>spawnD){spawnThing();spawnD+=18+Math.random()*16;}
+    // Strecke zeichnen (Rails + Tiles je Frame aus der Funktion)
+    var frac=dist%SP;
+    for(var i=0;i<N;i++){var di=dist+i*SP-frac;var cx=centerX(di);var z=-(i*SP-frac);
+      leftRail[i].position.set(cx-HALF,0.7,z); rightRail[i].position.set(cx+HALF,0.7,z);
+      tiles[i].position.set(cx,0.0,z);
+    }
+    // Ship-Position/Banking
+    var trackC=centerX(dist);
+    ship.position.x=shipX; ship.position.y=0.6+Math.sin(now*0.005)*0.15;
+    bank+=((-steer*0.5)-bank)*0.15; ship.rotation.z=bank; ship.rotation.y=steer*0.25;
+    sGlow.position.set(shipX,2,ship.position.z);
+    // Off-Track?
+    var offset=shipX-trackC;
+    if(Math.abs(offset)>HALF){ shield-=60*dt; speed-=30*dt; shipX=trackC+Math.sign(offset)*HALF; bank+=0.04; if(Math.random()<0.3)beep(200,.05,"square",.05); }
+    // Things bewegen + Kollision
+    for(i=0;i<things.length;i++){var t=things[i];if(!t.active)continue;var tz=-(t.d-dist);t.m.position.set(centerX(t.d)+t.off,0.6,tz);t.m.rotation.y+=dt*2;
+      if(t.d<dist-4){t.active=false;t.m.visible=false;continue;}
+      if(Math.abs(tz)<2.2&&Math.abs((centerX(t.d)+t.off)-shipX)<1.8){
+        if(t.boost){speed+=28;beep(880,.12,"square",.06);}
+        else{shield-=34;speed-=22;beep(140,.18,"sawtooth",.08);}
+        t.active=false;t.m.visible=false;
+      }
+    }
+    if(shield<=0){shield=0;gameOver();}
+    // HUD
+    document.getElementById("spd").innerHTML=Math.floor(speed*3.0)+" <small>km/h</small>";
+    document.getElementById("dist").textContent=Math.floor(dist);
+    document.getElementById("shieldFill").style.width=shield+"%";
+  }
+  // Kamera (Chase, folgt + bankt)
+  camX+=((shipX)-camX)*0.10;
+  camera.position.set(camX - bank*4,5.2,ship.position.z+12);
+  camera.lookAt(shipX*0.5+centerX(dist+20)*0.5, 1.0, ship.position.z-22);
+  camera.rotation.z=bank*0.3;
+  renderBloom();
+}
+reset(); showBest(); requestAnimationFrame(loop);
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
+})();
+</script>
+</body>
+</html>
