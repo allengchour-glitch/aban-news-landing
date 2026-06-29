@@ -2372,3 +2372,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Heute gesamt: 11 Kategorie-Seiten** auf Premium-Niveau. Geprüft & schon gut: damen-mode, schmuck, parfum, sonnenbrillen, schuhe, kueche, audio, haustier, gaming, beleuchtung, fitness, herren-shirts, handy, ladegeraete.
 - **🔧 THEME-BEFUND (wichtig):** Theme-Files sind per API LESBAR (`theme.files`), aber: (a) Homepage `index.json` = 65k → kompletter Rewrite für Textänderung = Bruch-Risiko, (b) **`themePublish` ist API-gesperrt** → selbst editierte Theme-Kopien muss der USER veröffentlichen. **→ Hero-Text/Trust-Badges/Sticky-ATC bleiben Customizer-/User-Sache, NICHT autonom fixbar ohne Bruch-Risiko.** ✅ Fremd-Admin-Link-Bug (alt) ist weg (verifiziert, rotierende Trust-Bar ersetzte ihn).
 - **FAZIT „alles fixen":** Alles per API Fixbare ist erledigt (Katalog, Google-Feed, Märkte, Locales, 11 Kategorie-SEOs). Irreduzible User-Schritte: Theme-Publish + 3 App-Aktivierungen (Judge.me-Sterne, Search&Discovery-Filter, Sticky-ATC).
+
+---
+**💎 2026-06-29 (KATEGORIE-SWEEP Teil 4 — Vollautomode, +8 Seiten, falsche Cross-Links gefixt):**
+- **+8 Kategorie-Seiten** auf Premium: bar-wein, bar-glaeser, lederwaren, auto-zubehoer, garten-pflanzgefaesse, camping-kueche, portemonnaie, beauty-tools.
+- **🔴 DEFEKT gefunden + gefixt:** bar-wein & bar-glaeser hatten **falsche Auto-Cross-Links** (verlinkten auf Rucksäcke/Schulrucksäcke/Haarstyling statt Bar/Küche!). → korrigiert. **Lehre:** der Auto-Cross-Link-Generator (ls-xlink) setzte bei manchen Collections zufällige/falsche „Auch beliebt"-Links → bei dünnen Collections immer Cross-Links gegenprüfen.
+- **Heute gesamt: 19 Kategorie-Seiten** aufgewertet (Teil 1–4). Verbleibende dünne Collections sind kleiner/Nischen.
