@@ -93,6 +93,10 @@ async function clickAny(ctx, res) {
     if (CONTINUE) {
       // SICHERSTELLEN dass der Tab auf der Ad-Creation-Seite ist (User/Bot kann woanders hin navigiert sein).
       if (!/ad_creation/.test(p.url())) { T('continue-goto ad_creation (war: ' + p.url().slice(0, 50) + ')'); await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {}); await p.waitForTimeout(8000); }
+      // AKTIV warten bis das App-Formular geladen ist (bytegration-iframe mit 'Aktivitätsname/Sammlung/Optimierung').
+      let formReady = false;
+      for (let w = 0; w < 14; w++) { for (const f of p.frames()) { try { if (await f.evaluate(() => /Aktivitätsname|Sammlung ausw|Optimierungsereignis|Einzelnes Produkt/i.test(document.body.innerText || ''))) { formReady = true; break; } } catch {} } if (formReady) break; await p.waitForTimeout(2500); }
+      T('continue-formReady=' + formReady);
       // An den OFFENEN Brave anhaengen (kein Neustart). Picker selbst oeffnen falls noetig (Timing-sicher).
       T('continue-start ' + (await frameDiag(p)));
       let adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
