@@ -2247,3 +2247,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **✅ ß-PATCH VERIFIZIERT:** alle Titel Swiss-korrekt („Weiss"/„Grün"/„Grosser"/„Schön") — kein ß mehr, der Importer-Fix (Z.548) wirkt automatisch. Keine Nachbesserung nötig.
 - **QA sauber:** Bild/SEO/Marge/Collections ok. Haustier-Collection (sub-haustier, Regel TAG=haustier) füllt async (wie grill). 0 Fehlmatch, 0 überteuert (Töpfe sind echte Grossware).
 - **Import gesamt heute: +39 Keeper** (4 Läufe: 15+9+6+9), Ledger jetzt 2870. Whitelist bewährt: audio/smartwatch/kueche/ladegeraet/grill/klima/kaffee/bar/phone/werkzeug **+ haustier/garten/camping** (on-brand, nicht preis-transparent).
+
+---
+**🛒 2026-06-29 (Nachtrag 9 — IMPORT Ladung 5: 3 Sonnenbrillen-Keeper, 3 Ringe gedraftet, SCHMUCK-LEHRE):**
+- **5. Lauf:** CATS=sonnenbrillen,schmuck,fitness PER=3 → 6 angelegt. =Decke (101 Kandidaten, 0 geeignet).
+- **3 Sonnenbrillen KEEPER:** Italia Independent (echte Premium-Marke, Markt CHF 80–150) für CHF 19.90/41.90/44.90 = **echtes Schnäppchen**, 3 Titel distinct. Bild/SEO ok, 0 ß.
+- **🔴 SCHMUCK-LEHRE (wie caps/anime): 3 Cristian-Lay-Damenringe gedraftet** — BigBuys Ringe haben generische Namen („Damenring Cristian Lay") → Generator machte **3× IDENTISCHE Titel + Description** (nur Ring-Design unterschiedlich, nicht zuverlässig differenzierbar). Identische Titel = SEO-Kannibalisierung + low quality, Shop hat eh 107 Premium-Schmuck. **Lehre:**  (Cristian Lay) liefert generische Dubletten-Titel → meiden oder nur mit Bild-Differenzierung. Whitelist NICHT erweitern um schmuck.
+- **Import gesamt heute: +42 Keeper** (Läufe 15+9+6+9+3), Ledger 2876. QA-Disziplin: diese Session 5 überteuerte/dupe-Titel gedraftet (2 Gaming + 3 Ringe), Dubletten/ß/Fehlmatch abgefangen.
