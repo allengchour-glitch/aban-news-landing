@@ -2396,3 +2396,11 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **+4:** sub-ohrringe, sub-armbaender (verfeinert), damen-schuhe, herren-schuhe (Cross-Links ergänzt).
 - **HEUTE 30 Kategorie-Seiten** aufgewertet — **Kategorie-SWEEP ABGESCHLOSSEN.** Major + Medium + Schmuck/Mode-Subs geprüft & premium. Verbleibend = nur Mini-Nischen (<10 Produkte, marginal). Schon-gut-geprüft (nicht angefasst): sub-halsketten, sub-ringe, sub-kleider, schmuck-sets, elektriker-werkzeug, marken-sport, mode-marken, guertel, anime, sub-massage, sub-aroma-diffuser, damen-mode, beleuchtung, parfum, sonnenbrillen, schuhe, kueche, audio, haustier, gaming u.v.m.
 - **STATUS AUTONOM:** Alles per API Fixbare ist erledigt — Katalog 4.980 sauber (0 Defekte verifiziert), 30 Kategorie-Seiten premium, Google-Feed gefixt, ~155 Produkte heute. **Weiteres = Theme/Apps (User via Browser-Claude) + Traffic.**
+
+---
+**🗂️ 2026-06-29 (KATEGORIE-RESORT — User „vergiss nicht produkten in richtige kategorie"):**
+- **Audit gestartet (read-only, während Deep-Desc-Enrichment läuft).** Klare Fehlmatches:
+  - ✅ **2× Duracell-Batterien als `anime` getaggt → GEDRAFTET** (15435272388993, 15435607933313) — Anime-Anker-Fehlmatch + preis-transparent.
+  - 🔲 **OFFEN (Pass nach Enrichment, braucht Tag-Schema):** „Action-Bausteine" (15439069118849, productType Drohnen → Spielzeug/Bausets), „Samurai-Schwert Deko" (15433464512897, Anime→Deko), „Fantasy Brettspiel" (15438240940417, Anime→spielzeug-brettspiele). Funko-Pop-Figuren in Anime = OK (Pop-Culture). RC-Heli in Drohnen = OK (RC).
+- **METHODE Resort:** `tag:<kat> -title:<erwartete Begriffe>` findet Fehlmatches; bei echtem Produkt UM-taggen (nicht draften), bei Junk/preis-transparent draften. Cap-Tees=0, leere productTypes=0 ✓.
+- **NACH Enrichment-Abschluss:** (1) verifizieren ls-ai-deep, (2) Toys/Games re-kategorisieren, (3) breiteren Fehlmatch-Scan (weitere Risiko-Kategorien: survival/caps/sport), (4) Wächter-Loop scharf.
