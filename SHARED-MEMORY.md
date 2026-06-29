@@ -2384,3 +2384,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **+7 weitere Kategorie-Seiten** auf Premium: garten-leuchten, garten-deko-outdoor, recovery, auto-halterungen, buro-home-office, sub-baby-kids, sub-reise.
 - **HEUTE GESAMT: 26 Kategorie-Seiten** aufgewertet (Teil 1–6). **Der gesamte Kern-/Medium-Katalog ist jetzt auf Grossretailer-Niveau** (keyword-reiche Titel + Stil-Listen + Trust + korrekte Cross-Links). Geprüft-schon-gut bleiben: elektriker-werkzeug, marken-sport, mode-marken, guertel, anime, sub-massage, sub-aroma-diffuser etc. Verbleibend = nur Mini-Nischen (wenige Produkte).
 - **Wiederkehrender Defekt-Typ dokumentiert:** Auto-Cross-Link-Generator (ls-xlink) setzte bei mehreren Collections FALSCHE „Auch beliebt"-Links (bar→Rucksäcke, haarstyling→Garten) → bei Sweeps immer gegenprüfen. Gefixt wo gefunden.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 13 — +4 Uhren, dann Abbruch wg. Ledger-Skip-Hänger):**
+- CATS=uhren,taschen,werkzeug PER=4 → uhren lieferte **4 Keeper** (CHF16.90–22.90, generische Haurex, ß=0). Dann **TASCHEN hing** (6330 Kandidaten, schon 2× getappt → tausende Ledger-Skips, jeder mit Detail-Abruf = praktisch endlos) → Prozess gekillt.
+- **🔑 WICHTIGE LEHRE:** Kategorien, die schon **2×+ getappt** sind, im Importer MEIDEN — der Ledger-Skip-Scan über tausende bereits-importierte Kandidaten lässt den Import hängen. Künftig nur **frische/wenig-getappte** Kategorien ODER kleines PER. Importierbare-frische-Quellen sind weitgehend ausgeschöpft.
+- Ledger: 2982. **Import-Phase praktisch ausgereizt** — weitere Läufe = Hänger oder Wiederholung. Fokus zurück auf Fixes/Politur/Monitoring.
