@@ -110,13 +110,14 @@ async function clickAny(ctx, res) {
     T('p3-picker click=' + c3 + ' pages=' + br.contexts().flatMap(c => c.pages()).length);
     // Picker oeffnet im admin.shopify.com-Frame (Shopify ResourcePicker): Feld "Kollektionen suchen" + Checkboxen.
     const adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
-    // ECHTE Tastenanschlaege (fill() triggert die ResourcePicker-Suche NICHT).
-    try { const sb = adminFr.getByPlaceholder(/Kollektion|suchen|search/i).first(); if (await sb.count()) { await sb.click(); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(3000); } } catch {}
-    // Sammlungs-Namen im Picker dumpen, damit ich die echten Labels sehe.
-    let rows = []; try { rows = await adminFr.evaluate(() => [...document.querySelectorAll('[role=row],[role=option],li,label,tr,td')].map(x => (x.innerText || '').trim()).filter(s => s && s.length > 1 && s.length < 44)); } catch {}
+    // ECHTE Tastenanschlaege ins SPEZIFISCHE "Kollektionen suchen"-Feld (NICHT die globale "Suchen"-Leiste!).
+    try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(3000); } } catch {}
+    // Sammlungs-Namen NUR aus dem Picker-Dialog dumpen (nicht die Admin-Seitenleiste).
+    let rows = []; try { rows = await adminFr.evaluate(() => { const d = document.querySelector('[role=dialog],[aria-modal="true"]') || document.body; return [...d.querySelectorAll('[role=row],[role=option],li,label,tr')].map(x => (x.innerText || '').trim()).filter(s => s && s.length > 1 && s.length < 44); }); } catch {}
     T('p3b-rows ' + JSON.stringify([...new Set(rows)].slice(0, 16)));
     let picked = false;
-    try { await clickAny(adminFr, [/wasserfester schmuck|wasserfest/i]); await p.waitForTimeout(1000); } catch {}
+    // Treffer-Zeile/Checkbox im Dialog anklicken
+    try { const dlg = adminFr.locator('[role=dialog],[aria-modal="true"]').first(); const hit = dlg.getByText(/wasserfest/i).first(); if (await hit.count()) { await hit.click({ timeout: 4000 }); await p.waitForTimeout(1000); } else { await clickAny(adminFr, [/wasserfester schmuck|wasserfest/i]); } } catch { try { await clickAny(adminFr, [/wasserfest/i]); } catch {} }
     try { picked = await clickAny(adminFr, [/hinzufügen|auswählen|fertig|speichern|bestätigen|add\b|^done$|select/i]); } catch {}
     await p.waitForTimeout(2500); fr = await bestFrame(p);
     T('p3c-nach-picker picked=' + picked + ' ' + (await controls(fr)));
