@@ -2365,3 +2365,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **+3 dünne Kategorie-Collections auf Premium-Niveau** (Stil-Listen + Trust + Cross-Links, House-Style): pool-schwimmen, kinderspielzeug, rucksaecke (waren nur 1 Zeile).
 - **Heute gesamt 7 Kategorie-Seiten aufgewertet** (uhren/kaffee/klima/camping + pool/kinder/rucksaecke). Geprüft schon Premium (nicht angefasst): damen-mode, beleuchtung, schmuck, parfum, sonnenbrillen, schuhe, kueche, audio, haustier, gaming, handy, ladegeraete.
 - **„MediaMarkt"-Realität dokumentiert:** Shop schlägt MediaMarkt bei Produkt-Storytelling/Kuration/CH-Service (per API machbar ✓). MediaMarkts Vorsprung = Reviews + Filter + Design = Theme/App/Customizer (Judge.me-Sterne, Search&Discovery-Filter, Hero/Trust-Badges, Sticky-ATC) = USER-Klicks, nicht API. Liste in WEBSITE-KRITIK.md + SEITE-VERBESSERUNGEN.md.
+
+---
+**💎 2026-06-29 (KATEGORIE-SWEEP Teil 3 + Theme-Befund — User „behebe alles ohne fragen"):**
+- **+4 Kategorie-Seiten** (Beauty-Bereich): beauty-makeup (war 1 Zeile), damen-duefte (war LEER!), haarstyling-tools (dünn + falsche Garten-Cross-Links → korrigiert auf Beauty), hautpflege (generisch → Routine-Struktur).
+- **Heute gesamt: 11 Kategorie-Seiten** auf Premium-Niveau. Geprüft & schon gut: damen-mode, schmuck, parfum, sonnenbrillen, schuhe, kueche, audio, haustier, gaming, beleuchtung, fitness, herren-shirts, handy, ladegeraete.
+- **🔧 THEME-BEFUND (wichtig):** Theme-Files sind per API LESBAR (`theme.files`), aber: (a) Homepage `index.json` = 65k → kompletter Rewrite für Textänderung = Bruch-Risiko, (b) **`themePublish` ist API-gesperrt** → selbst editierte Theme-Kopien muss der USER veröffentlichen. **→ Hero-Text/Trust-Badges/Sticky-ATC bleiben Customizer-/User-Sache, NICHT autonom fixbar ohne Bruch-Risiko.** ✅ Fremd-Admin-Link-Bug (alt) ist weg (verifiziert, rotierende Trust-Bar ersetzte ihn).
+- **FAZIT „alles fixen":** Alles per API Fixbare ist erledigt (Katalog, Google-Feed, Märkte, Locales, 11 Kategorie-SEOs). Irreduzible User-Schritte: Theme-Publish + 3 App-Aktivierungen (Judge.me-Sterne, Search&Discovery-Filter, Sticky-ATC).
