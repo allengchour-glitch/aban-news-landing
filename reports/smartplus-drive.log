@@ -1,9 +1,9 @@
 ﻿smartplus: continue-formReady=true
-smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#14 | about:blank#0]
+smartplus: continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#16 | about:blank#0]
 smartplus: c-picker-open=false
 smartplus: c-probe NO-LEAF
 smartplus: c-cbclick no-leaf
-smartplus: c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren|Hochladen] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren|Datei hinzuf├╝gen|Hochladen] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: c-event-opts ["Alle Videos┬á2/10┬áSchnelle Optimierung\n?","01\n00:05\n02\n00:10","01","02","Budget\n?\nCHF","Budget\n?","CHF","Video verwenden\nWeitere erstellen"]
 smartplus: c-event-set=no-match
 smartplus: c-identity-opts ["Alle Videos┬á2/10┬áSchnelle Optimierung\n?","01\n00:05\n02\n00:10","01","02","Budget\n?\nCHF","Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
