@@ -1,4 +1,5 @@
-2026-06-29T17:46:45.704Z DRY
+2026-06-29T17:51:39.440Z DRY
 
-CONNECT-FAIL: TimeoutError: browserType.connectOverCDP: Timeout 30000ms exceeded.
-Ca
+CONNECT-FAIL: TimeoutError: browserType.connectOverCDP: Timeout 20000ms exceeded.
+Call log:
+[2m  - <ws 
