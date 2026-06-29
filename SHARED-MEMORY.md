@@ -2254,3 +2254,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **3 Sonnenbrillen KEEPER:** Italia Independent (echte Premium-Marke, Markt CHF 80–150) für CHF 19.90/41.90/44.90 = **echtes Schnäppchen**, 3 Titel distinct. Bild/SEO ok, 0 ß.
 - **🔴 SCHMUCK-LEHRE (wie caps/anime): 3 Cristian-Lay-Damenringe gedraftet** — BigBuys Ringe haben generische Namen („Damenring Cristian Lay") → Generator machte **3× IDENTISCHE Titel + Description** (nur Ring-Design unterschiedlich, nicht zuverlässig differenzierbar). Identische Titel = SEO-Kannibalisierung + low quality, Shop hat eh 107 Premium-Schmuck. **Lehre:** schmuck (Cristian Lay) liefert generische Dubletten-Titel → meiden oder nur mit Bild-Differenzierung. Whitelist NICHT erweitern um schmuck.
 - **Import gesamt heute: +42 Keeper** (Läufe 15+9+6+9+3), Ledger 2876. QA-Disziplin: diese Session 5 überteuerte/dupe-Titel gedraftet (2 Gaming + 3 Ringe), Dubletten/ß/Fehlmatch abgefangen.
+
+---
+**🛒 2026-06-29 (Nachtrag 10 — IMPORT Ladung 6: +6 Taschen/Haustier, alle Keeper):**
+- **6. Lauf:** CATS=taschen,haustier PER=3 → 6 ACTIVE, alle Keeper (0 gedraftet). Taschen: 3 Schulranzen (Real Sporting/Zaragoza/Valencia Basket, distinct Farben) CHF 19.90–27.90. Haustier: 2 Hundenäpfe (versch. Grössen) + Hunter Hundehalsband rosa CHF 16.90–25.90.
+- Alle distinct Titel, Bild/Preis ok, ß-frei (Patch hält). `taschen` zieht v.a. Schulranzen/-taschen (nicht Handtaschen) — sauber, on-brand für rucksaecke-schule.
+- **Import gesamt heute: +48 Keeper** (6 Läufe), Ledger 2882.
