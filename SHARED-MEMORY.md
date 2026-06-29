@@ -2277,3 +2277,12 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **= BigBuys „tiefe" Kategorien sind monoton** (garten=Töpfe, taschen=Schulbags, ladegeraet=Kabel, audio=Kopfhörer, kueche=Zerkleinerer). Re-Taps liefern nur Varianten-Wiederholung, keine echte Sortiments-Breite.
 - **📌 ENDGÜLTIGES FAZIT IMPORT-TAG: 8 Läufe, +63 Keeper** (Ledger ~2897). **Import-Phase ist ausgereizt** — weitere BigBuy-Läufe = Wiederholung/Decke/Sättigung. **EMPFEHLUNG für künftige Sessions: KEINE weiteren BigBuy-Importe** bis (a) neue BigBuy-Ware, oder (b) CJ-Quelle reaktiviert (braucht CJ_EMAIL/CJ_API_KEY als Env — nach Reset weg, beim User anfragen). Loop → Wächter/QA-Modus. Mehr Masse ist nicht das Ziel (CLAUDE.md).
 - Ledger: 2897. Heutige aktive Keeper-Bilanz: +63 (8 Läufe), QA: 5 schwache gedraftet, ß durable gefixt.
+
+---
+**🛒 2026-06-29 (Nachtrag 13 — IMPORT Ladung 9: +9 Uhren/Sonnenbrillen/Camping, Bild-Differenzierung):**
+- **9. Lauf:** CATS=uhren,sonnenbrillen,camping PER=3 → 9 Keeper.
+- **✅ `uhren` FUNKTIONIERT** (neu in Whitelist): zieht generische XTRESS-Fashion-Uhren (NICHT preis-transparent wie Casio/Festina) CHF12.90–18.90, distinct Titel. → uhren ist OK solange generische Marken kommen; bei Casio/Festina/Seiko (preis-transparent) draften.
+- **🕶️ Sonnenbrillen-Dubletten-Titel via BILD gelöst:** Gemini gab 3× identischen Titel „Stilvolle Sonnenbrille…" für 3 versch. Italia Independent. **Technik:** Bilder per curl geladen + Read angeschaut → distinct gebrandet betitelt (Blau-Camouflage / Pink-Camouflage / Rot-Leopard, verspiegelt). **Wiederverwendbar:** bei Dubletten-Titeln guter Produkte Bild ansehen + nach Farbe/Muster differenzieren statt draften.
+- **⛺ Camping frisch:** 2 Kühltaschen (Sommer-Trend lt. Learnings) + 1 Klapptisch. 
+- **Import gesamt heute: 9 Läufe, +72 Keeper** (Ledger ~2906). Whitelist final: audio/smartwatch/kueche/ladegeraet/grill/klima/kaffee/bar/phone/werkzeug/haustier/garten/camping/taschen/sonnenbrillen/**uhren**. Meiden: gaming/schmuck/viral/fitness/akkuventi/beamer.
+- Ledger: 2906.
