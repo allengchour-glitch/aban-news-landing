@@ -104,17 +104,28 @@ async function clickAny(ctx, res) {
       T('c-picker-open=' + pickerOpen);
       // Suche "wasserfest" ins spezifische Feld
       try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(2800); } } catch {}
-      // CHECKBOX in der Wasserfester-Schmuck-Zeile gezielt anklicken (nicht nur Text)
+      // DOM-Probe: exakte Struktur der Wasserfester-Schmuck-Zeile + Checkbox.
+      let probe = ''; try { probe = await adminFr.evaluate(() => {
+        const leaf = [...document.querySelectorAll('*')].find(e => e.children.length === 0 && /Wasserfester Schmuck/i.test(e.textContent || ''));
+        if (!leaf) return 'NO-LEAF';
+        let row = leaf; for (let i = 0; i < 7 && row; i++) { if (row.querySelector && row.querySelector('input[type=checkbox],[role=checkbox]')) break; row = row.parentElement; }
+        const cbs = row ? row.querySelectorAll('input[type=checkbox],[role=checkbox]').length : 0;
+        return 'leaf<' + leaf.tagName + '> row<' + (row ? row.tagName + ' ' + (row.getAttribute('role') || '') : '-') + '> cbs=' + cbs;
+      }); } catch (e) { probe = 'probe-err ' + String(e).slice(0, 40); }
+      T('c-probe ' + probe);
+      // Direkter DOM-Klick auf die Checkbox dieser Zeile (umgeht Actionability/Overlay-Probleme).
+      let cbres = ''; try { cbres = await adminFr.evaluate(() => {
+        const leaf = [...document.querySelectorAll('*')].find(e => e.children.length === 0 && /Wasserfester Schmuck/i.test(e.textContent || ''));
+        if (!leaf) return 'no-leaf';
+        let row = leaf; for (let i = 0; i < 7 && row; i++) { const cb = row.querySelector && row.querySelector('input[type=checkbox],[role=checkbox]'); if (cb) { cb.click(); return 'cb-clicked'; } row = row.parentElement; }
+        const r = leaf.closest && leaf.closest('[role=option],[role=row],li,tr'); if (r) { r.click(); return 'row-clicked'; }
+        leaf.click(); return 'leaf-clicked';
+      }); } catch (e) { cbres = 'cb-err ' + String(e).slice(0, 40); }
+      await p.waitForTimeout(1300); T('c-cbclick ' + cbres);
+      // Hinzufügen klicken (Playwright + DOM-Fallback, nur wenn aktiv).
       let added = false;
-      try {
-        const row = adminFr.locator('[role=row],tr,li,label,div').filter({ hasText: /Wasserfester Schmuck/i }).first();
-        const cb = row.getByRole('checkbox').first();
-        if (await cb.count()) { await cb.click({ force: true }); } else { await row.click(); }
-        await p.waitForTimeout(1000);
-      } catch { try { await clickAny(adminFr, [/Wasserfester Schmuck/i]); } catch {} }
-      // Hinzufügen (jetzt aktiv)
       try { const hz = adminFr.getByRole('button', { name: /Hinzufügen/i }).first(); if (await hz.count()) { await hz.click({ timeout: 5000 }); added = true; } } catch {}
-      if (!added) { try { added = await clickAny(adminFr, [/hinzufügen|^auswählen$|^fertig$|^add$|^done$/i]); } catch {} }
+      if (!added) { try { added = await adminFr.evaluate(() => { const b = [...document.querySelectorAll('button')].find(x => /Hinzufügen/i.test(x.textContent || '') && !x.disabled); if (b) { b.click(); return true; } return false; }); } catch {} }
       await p.waitForTimeout(2500); let fr = await bestFrame(p);
       T('c-picker added=' + added + ' ' + (await controls(fr)));
       // Optimierungsereignis -> In den Warenkorb
