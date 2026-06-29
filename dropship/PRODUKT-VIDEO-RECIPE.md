@@ -38,3 +38,15 @@ Stil eines erfolgreichen KI-Schmuck-Ads zum Klauen:
 - Geschenk-Bedeutungs-Copy ("Schmuck, der Erinnerungen traegt", Name/Datum/Botschaft gravieren).
 - ANWENDEN: warme Geschenk-Story-Copy + getragene Kette. Volle KI-Menschen-Szenen (ÉBISA-Niveau) = Text-zu-Video (Veo/Kling/Runway) noetig -> fuer spaeter, wenn Zugang/Budget. Bis dahin: On-Model-Hero (Nano Banana) + emotionale Geschenk-Hooks.
 - KOMBI-REZEPT Schmuck-Ad: (1) On-Model getragen (Runway-Bliss-Stil) + (2) Geschenk-Emotion-Hook (ÉBISA-Stil) + (3) Cutout+Pfeil + (4) warmes Editorial-Grade.
+
+## 🎯 WERBESTIL PRO PRODUKT-KATEGORIE (User 2026-06-29 "lerne so mit anderen Produkten, muss passen / merke / mache besser")
+Prinzip aus den YouTube-Lehren auf ALLE Produkte uebertragen: zeig das Produkt IM EINSATZ/getragen + EMOTION + Kino-Look. Pro Typ passend:
+- **Schmuck (Kette/Ring/Ohrring/Armband):** On-Model getragen (Hals/Hand), Geschenk-Emotion ("Schmuck, der Erinnerungen traegt"), Cutout+Pfeil, warmes Editorial. [Nano style: jewelry]
+- **Mode (Kleid/Hemd/Polo/Blazer):** Model traegt + Bewegung/Walk, Lifestyle-Szene (Strasse/Cafe), Vibe > Specs. [model]
+- **Taschen/Accessoires:** getragen (Schulter/Hand) + 1 Detail-Close-up (Material/Reissverschluss), urban-chic. [bag]
+- **Tech/Gadget:** IN-USE (Haende, Alltag), Hook = Problem->Loesung in 1 Sek, schnelle Schnitte. [home/tech]
+- **Beauty/Pflege:** Application/Glow, Vorher-Nachher-Andeutung, sanftes Licht (KEINE Heilversprechen - SECO). [beauty]
+- **Home/Deko/Diffuser:** im Raum/Ambiente, gemuetliche Stimmung, Abend-Licht. [home]
+- **Wasserfest-Schmuck:** See-/Wasser-Test ("lauft nid a"), Wasser-Szene. [seetest]
+GEMEINSAM (immer): Hook in 1. Sek, getragen/in-use statt nur Produktfoto, warmes Kino-Grade + Vignette, Safe-Zone-Text (y<=1500), Mundart-CH-Hook + Preis/WELCOME10/luxestyle.ch am Ende, TikTok stumm / Meta mit Musik, junge weibliche ElevenLabs-Stimme wo VO passt. Quelle-Bild IMMER ansehen (keine asiat. Schrift).
+MACHE BESSER (laufend): je Reel 1 Element vom Vorbild stehlen (On-Model/Cutout-Pfeil/Emotion-Story/golden-hour); Gewinner-Formate merken, Verlierer droppen.
