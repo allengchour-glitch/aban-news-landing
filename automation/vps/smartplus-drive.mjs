@@ -128,17 +128,21 @@ async function clickAny(ctx, res) {
       if (!added) { try { added = await adminFr.evaluate(() => { const b = [...document.querySelectorAll('button')].find(x => /Hinzufügen/i.test(x.textContent || '') && !x.disabled); if (b) { b.click(); return true; } return false; }); } catch {} }
       await p.waitForTimeout(2500); let fr = await bestFrame(p);
       T('c-picker added=' + added + ' ' + (await controls(fr)));
-      // Dropdown-Handler (DOM): Feld oeffnen -> Optionen dumpen -> beste per DOM-Klick waehlen.
-      async function pickDropdown(label, openRe, prefRe) {
-        await clickAny(fr, openRe); await p.waitForTimeout(1500); fr = await bestFrame(p);
-        let dump=''; try { dump = await fr.evaluate(()=>{ const o=[...document.querySelectorAll('[role=option],[role=menuitem],li,.Polaris-Listbox__Option')].map(x=>(x.innerText||'').trim()).filter(s=>s&&s.length>0&&s.length<44); return JSON.stringify([...new Set(o)].slice(0,12)); }); } catch {}
-        T('c-'+label+'-options '+dump);
-        let set=''; try { set = await fr.evaluate((re)=>{ const rx=new RegExp(re,'i'); const opts=[...document.querySelectorAll('[role=option],[role=menuitem],li,.Polaris-Listbox__Option')].filter(x=>(x.offsetParent!==null)&&(x.innerText||'').trim().length>0&&(x.innerText||'').length<60); const pref=opts.find(x=>rx.test(x.innerText||''))||opts[0]; if(pref){pref.click(); return (pref.innerText||'').trim().slice(0,30);} return 'no-opt'; }, prefRe.source); } catch(e){ set='err'; }
-        await p.waitForTimeout(1200); fr = await bestFrame(p);
+      // Dropdown-Handler v2: INPUT-Feld selbst klicken (nicht Label) -> Optionen ueber ALLE Frames breit suchen/klicken.
+      const OPTSEL = '[role=option],[role=menuitem],[aria-selected],li,[class*=ption],[class*=Item],[class*=item],[data-value],[data-option]';
+      async function pickDropdown(label, placeRe, prefRe) {
+        let opened=false;
+        for (const f of p.frames()) { try { const inp=f.getByPlaceholder(placeRe).first(); if (await inp.count()) { await inp.click({timeout:3000}); opened=true; break; } } catch {} }
+        if(!opened){ try { await clickAny(fr,[placeRe]); } catch {} }
+        await p.waitForTimeout(1700);
+        let dump=''; for (const f of p.frames()){ try { const d=await f.evaluate((s)=>{ const o=[...document.querySelectorAll(s)].filter(x=>x.offsetParent!==null).map(x=>(x.innerText||'').trim()).filter(t=>t&&t.length<40); return [...new Set(o)].slice(0,14); }, OPTSEL); if(d&&d.length) dump+=' ['+(f.url()||'').replace(/^https?:\/\//,'').slice(0,16)+']'+JSON.stringify(d); } catch {} }
+        T('c-'+label+'-opts'+(dump||' (leer)'));
+        let set='no-opt'; for (const f of p.frames()){ try { const r=await f.evaluate((args)=>{ const [s,re]=args; const rx=new RegExp(re,'i'); const opts=[...document.querySelectorAll(s)].filter(x=>x.offsetParent!==null&&(x.innerText||'').trim()&&(x.innerText||'').length<60); const pref=opts.find(x=>rx.test(x.innerText||''))||opts[0]; if(pref){pref.click(); return (pref.innerText||'').trim().slice(0,30);} return ''; }, [OPTSEL, prefRe.source]); if(r){ set=r; break; } } catch {} }
+        await p.waitForTimeout(1200); fr=await bestFrame(p);
         T('c-'+label+'-set='+set);
       }
-      await pickDropdown('event', [/Optimierungsereignis|Optimierungs|Please select|Wähle bitte einen/i], /warenkorb|add to cart|in den warenkorb|kauf|complete payment|purchase/i);
-      await pickDropdown('identity', [/Identität auswählen|Identität|identity/i], /luxe|tiktok|@|.+/i);
+      await pickDropdown('event', /Optimierungs|Please select|Wähle bitte/i, /warenkorb|add to cart|in den warenkorb|kauf|complete payment|purchase|conversion/i);
+      await pickDropdown('identity', /Identität|identity/i, /luxe|tiktok|@/i);
       // Budget: Zahlenfeld suchen (evtl. erst jetzt sichtbar), sonst Feld per Placeholder
       try { let bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if(!(await bi.count())){ bi = fr.getByPlaceholder(/budget|betrag|CHF/i).first(); } if (await bi.count()) { await bi.fill('15'); T('c-budget 15 gesetzt'); } else T('c-budget kein Zahlenfeld'); } catch { T('c-budget err'); }
       T('c-PRE-SUBMIT ' + (await controls(fr)));
