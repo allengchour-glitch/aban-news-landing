@@ -319,7 +319,8 @@ const CONFIG = {
     bullets: ['Weicher, warmer Tragekomfort', 'Marken-Streetwear, EU-Lager', 'Vielseitig kombinierbar', '100% Original, schnelle EU-Lieferung'] },
   socken: { coll: { handle: 'socken-strumpfe', title: '🧦 Socken & Strümpfe', tag: 'socken' },
     extraTags: ['accessoire', 'streetwear', 'geschenk', 'premium'], type: 'Socken', maxCost: MAX_COST_EUR,
-    anchor: ['socken', 'sportsocken', 'sneakersocken', 'strümpfe', 'kniestrümpfe', 'tennissocken', 'calcetines'],
+    anchor: ['socken', 'sportsocken', 'sneakersocken', 'kniestrümpfe', 'tennissocken', 'calcetines'],
+    ban: ['weihnacht', 'christmas', 'deko', 'nikolaus', 'kostüm', 'halloween'],
     ban: ['kinder', 'baby', 'kids', 'mädchen', 'junge', 'schuhanzieher', 'sockenauszieher', 'stützstrümpfe medizin', 'kompressionsstrümpfe medizin', 'minnie', 'mickey', 'paw patrol', 'disney', 'seven til midnight', 'marvel'],
     bullets: ['Bequem & atmungsaktiv', 'Cooles Design', 'Tolles kleines Geschenk', '100% Original, schnelle EU-Lieferung'] },
   // ── GROSSE ABTEILUNGEN (volle BigBuy-Breite) ──
