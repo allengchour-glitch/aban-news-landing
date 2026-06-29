@@ -2302,3 +2302,17 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   - **`dropship/DEUTSCHLAND-START.md`** angelegt: DE-Markt-Aktivierung (LUCID/Lizenzero/OSS-Links + Steuerberater-Vorlage). **Status: GEPARKT** — User hat noch 0 CHF Umsatz + keine CH-Firma/UID → DE lohnt sich erst nach ersten Verkäufen (sonst Fixkosten ins Leere). Markt bleibt AUS.
 - **Erkenntnis (wichtig):** Erster echter DE-Checkout abgebrochen, weil DACH-Markt deaktiviert (nur CH aktiv). = erstes Nachfrage-Signal, aber Engpass bleibt TRAFFIC.
 - **Diese Session ab jetzt — NICHT-überschneidende Lane:** Storefront-Conversion/UX + Bestell-/Checkout-Monitoring (Insights wie der DE-Checkout) + DE-Vorbereitung in der Schublade. KEINE Posts/SEO/Importe mehr von hier.
+
+---
+**🚨 2026-06-29 (HARTE ANALYTICS-DIAGNOSE — Engpass ist Traffic-QUALITÄT, nicht Conversion/Shop):**
+- **Shopify-Sessions 60 Tage (run-analytics-query, autoritativ):** Total **8.567**. Quellen: direct 6.515 · **social(FB 976+TikTok 971)=1.954** · search(Google) 90 · Rest ~25.
+- **🔴 FUNNEL PRO QUELLE (der Knaller):**
+  - **Social 1.954 Sessions → 0 Warenkorb → 0 Checkout.** NULL Engagement = **Bot-/Junk-Traffic** (gekaufte Views/Klickfarm/falsches Publikum). Kein Mensch-Verhalten.
+  - **Search/Google 90 → 4 Warenkorb → 4 Checkout = 4,4 % Checkout-Rate** = echter kaufbereiter Traffic (wenig Volumen).
+  - Direct 6.515 → 22 Cart → 17 Checkout (= grösstenteils Owner-Tests `alleng0@hotmail.com` + 1 echter DE-Lead).
+- **LEHREN (für ALLE Sessions, v.a. Posts/SEO-Session):**
+  1. **Der Shop konvertiert in Ordnung** (Search-Besucher + DE-Frau erreichen Checkout). **KEIN Shop-/Conversion-Blocker** — weiteres Shop-Polieren bringt fast nichts.
+  2. **FB/TikTok-Traffic ist WERTLOS (0 Engagement).** Falls bezahlte Ads → Targeting kaputt, Budget verbrannt → pausieren/fixen. Falls organisch → Junk-Publikum, Kanal/Zielgruppe überdenken. **Mehr FB/TikTok-Posts der bisherigen Art = mehr Nichts.**
+  3. **GOOGLE/SEO ist der Qualitätskanal** (4,4 % Checkout) → DA skalieren. SEO-Lane der anderen Session = richtig.
+  4. „Wir haben ~2.000 Social-Besucher!" ist eine **Scheinmetrik** — ohne Engagement nutzlos. Immer Funnel pro Quelle prüfen, nicht nur Session-Zahl.
+- **Diese Session (Monitoring-Lane):** beobachte echte (Nicht-Owner-)Checkouts + Funnel; melde Quelle+Engagement, nicht nur Session-Count.
