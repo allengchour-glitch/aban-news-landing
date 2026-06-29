@@ -2416,3 +2416,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **DURCHBRUCH:** Importer hat ~70 Kategorien (nicht 22!) — viele ungetappt. **touchlampen=0, ultraschall=1 (Decke — die Tier-A-Trends sind Marktforschung, NICHT in BigBuy).** Aber **beautydevice (46) + massage (293) liefern frisch!**
 - **+6 Keeper:** Beauty-Tech (Beurer FC45 + 2× Inface Sonic Gesichtsbürsten CHF19.90–36.90) + Wellness (Fussmassage/Anti-Cellulite/Akupressur-Schuhe InnovaGoods CHF14.90–19.90). ß=0. 2 identische Sonic-Titel differenziert (Premium/Sanft).
 - **🔑 NEU: noch ~12 ungetappte BigBuy-Kategorien zum Probieren** (frisch = kein Hänger): luftreiniger, mobilklima, waerme, whisky, yoga, velo, fishing, tauchen, metalldetektor, wasserstrand, home, trenda. Ledger: 2988.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 16 — weitere frische Kategorien, +9 Keeper):**
+- CATS=home,luftreiniger,waerme,whisky PER=3 → **9 Keeper** (whisky=Decke, 4 Kand.). Kein Hänger.
+- **luftreiniger** (26 Kand.): Xiaomi Air Purifier 4 Lite CHF77.90, Leitz CHF70.90, AEG CHF291.90 (Premium). **waerme** (58): Heizdecke/Fusswärmer/Wärmekissen CHF30.90–45.90 (nützlich, aber Winter=off-season jetzt). **home** (7094): 3 generische Naturals-Kissenbezüge CHF9.90–12.90 — waren 3× identischer Titel → nach Design differenziert (Sore/Altea/Schlicht).
+- **LEHRE frische Kategorien:** beautydevice/massage/luftreiniger/waerme = ergiebig & frisch (kein Hänger trotz teils grosser Kand.-Zahl, weil viele NEU statt Ledger-Skip). home = grosse Zahl aber generisch (Kissenbezüge, low-value). Decke: touchlampen/ultraschall/whisky.
+- **Noch zu probieren (frisch):** yoga, velo, fishing, tauchen, metalldetektor, wasserstrand, mobilklima, trenda. Ledger: 2997. Heute frische Kategorien gesamt: +15 Keeper.
