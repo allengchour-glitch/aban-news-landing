@@ -151,7 +151,10 @@ async function clickAny(ctx, res) {
       await pickDropdown('event', /Optimierungsereignis|Optimierungs/i, /warenkorb|add to cart|in den warenkorb|kauf|complete payment|purchase|conversion|formular|lead|registr|klick/i);
       await pickDropdown('identity', /Identität/i, /aban|192aban|tiktok|konto/i);
       // Budget: Zahlenfeld suchen (evtl. erst jetzt sichtbar), sonst Feld per Placeholder
-      try { let bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if(!(await bi.count())){ bi = fr.getByPlaceholder(/budget|betrag|CHF/i).first(); } if (await bi.count()) { await bi.fill('15'); T('c-budget 15 gesetzt'); } else T('c-budget kein Zahlenfeld'); } catch { T('c-budget err'); }
+      // Anzeigentext (Werbetext) befuellen
+      try { const at = (await appFrame()).getByPlaceholder(/Werbetext|Anzeigentext|ad text/i).first(); if (await at.count()) { await at.fill('Wasserfeschte Edelstahl-Schmuck wo nid alauft. -10% mit Code WELCOME10. Jetzt entdecke!'); T('c-adtext gesetzt'); } else T('c-adtext kein Feld'); } catch {}
+      // Budget: TikTok-Minimum = 30 CHF/Tag (15 wird abgelehnt). 30/Tag, innerhalb der 350-Freigabe.
+      try { let bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if(!(await bi.count())){ bi = fr.getByPlaceholder(/budget|betrag|CHF/i).first(); } if (await bi.count()) { await bi.fill('30'); T('c-budget 30 gesetzt'); } else T('c-budget kein Zahlenfeld'); } catch { T('c-budget err'); }
       T('c-PRE-SUBMIT ' + (await controls(fr)));
       if (GO) { const s = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch/i]); T(s ? 'GO: Senden geklickt' : 'GO: Senden nicht gefunden'); } else T('DRY: stoppe vor Senden (kein Spend)');
       writeT('CONTINUE-ENDE'); await stamp('CONTINUE | ' + trace.join(' >> ').slice(0, 420)); await br.close().catch(() => {}); process.exit(0);
@@ -198,7 +201,7 @@ async function clickAny(ctx, res) {
     T('p5-identitaet\n' + (await allDump(p)));
     // 6) Budget 15 (falls ein Zahlenfeld existiert)
     fr = await bestFrame(p);
-    try { const bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await bi.count()) { await bi.fill('15'); T('p6-budget 15 gesetzt'); } else T('p6-budget KEIN Zahlenfeld sichtbar'); } catch { T('p6-budget Fehler'); }
+    try { const bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await bi.count()) { await bi.fill('30'); T('p6-budget 30 gesetzt'); } else T('p6-budget KEIN Zahlenfeld sichtbar'); } catch { T('p6-budget Fehler'); }
     T('PRE-SUBMIT ' + (await controls(fr)));
     if (GO) {
       const sent = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch|absenden|kampagne starten|submit/i]);
