@@ -1,5 +1,8 @@
-2026-06-29T17:56:33.702Z DRY
-
-CONNECT-FAIL: TimeoutError: browserType.connectOverCDP: Timeout 20000ms exceeded.
-Call log:
-[2m  - <ws 
+2026-06-29T18:01:59.896Z DRY
+start BTN[] INP[]
+s1 BTN[] INP[]
+s2-ziel BTN[] INP[]
+s3-budget BTN[] INP[]
+PRE-SUBMIT BTN[] INP[]
+DRY: stoppe vor Senden (kein Spend)
+ENDE
