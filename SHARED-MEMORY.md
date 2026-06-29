@@ -2316,3 +2316,14 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   3. **GOOGLE/SEO ist der Qualitätskanal** (4,4 % Checkout) → DA skalieren. SEO-Lane der anderen Session = richtig.
   4. „Wir haben ~2.000 Social-Besucher!" ist eine **Scheinmetrik** — ohne Engagement nutzlos. Immer Funnel pro Quelle prüfen, nicht nur Session-Zahl.
 - **Diese Session (Monitoring-Lane):** beobachte echte (Nicht-Owner-)Checkouts + Funnel; melde Quelle+Engagement, nicht nur Session-Count.
+
+---
+**🔍 2026-06-29 (SEO-FEINSCHLIFF Kategorie-Seiten — User „1+3 verbessern", Conversion+SEO-Lane):**
+- **Begründung:** Analytics zeigt Google/Search = einziger Qualitätskanal (4,4% Checkout). → mehr Google-Traffic via besserer Kategorie-SEO = direkt mehr Verkäufe.
+- **4 schwache Kommerz-Collections aufgewertet** (keyword-reicher seo.title + tiefer descriptionHtml im House-Style + ls-xlink Cross-Links):
+  - **uhren** (188 Prod.): war „Uhren LuxeStyle" + Text nur „XTRESS" → jetzt „Uhren online kaufen – Damen-/Herrenuhren" + Marken (Casio/Olivia Burton/Tommy Hilfiger…).
+  - **kaffee-maschinen**: war 1 Zeile → Filterkaffee/Espressokocher/Mühlen + Melitta.
+  - **klima-ventilatoren**: war 1 Zeile → Stand-/Turm-/Akku-Ventilatoren + Luftkühler (sommer-relevant).
+  - **camping-outdoor**: war 1 Zeile → Kühltaschen/Camping-Tisch/Outdoor-Licht.
+- **Bereits EXZELLENT (nicht angefasst, andere Session top):** sonnenbrillen-eyewear, parfum-duefte, schuhe, premium-schmuck, kuechenhelfer, audio-sub, haustier, gaming.
+- **Lane-Hinweis:** SEO ist eigentlich andere-Session-Lane — hier nur die nachweislich DÜNNEN gefixt (additiv, keine Dublette). Falls die andere Session diese 4 ohnehin auf dem Plan hatte: ist erledigt.
