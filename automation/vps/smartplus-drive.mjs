@@ -47,9 +47,15 @@ async function clickAny(p, res) {
 (async () => {
   let br;
   try {
-    const j = await (await fetch(`http://${HOST}:9222/json/version`, { headers: { Host: '127.0.0.1:9222' }, signal: AbortSignal.timeout(8000) })).json();
-    br = await chromium.connectOverCDP(j.webSocketDebuggerUrl.replace(/127\.0\.0\.1|localhost/, HOST));
-  } catch (e) { writeT('CONNECT-FAIL: ' + String(e).slice(0, 70)); await stamp('Brave nicht erreichbar: ' + String(e).slice(0, 70)); process.exit(0); }
+    if (HOST === '127.0.0.1' || HOST === 'localhost') {
+      // PC-lokal: direkter HTTP-Endpoint = robusteste Methode (Playwright macht den /json/version + WS-Handshake selbst,
+      // umgeht den Host-Header/ws-URL-Stolperstein der manuellen Methode).
+      br = await chromium.connectOverCDP('http://127.0.0.1:9222', { timeout: 20000 });
+    } else {
+      const j = await (await fetch(`http://${HOST}:9222/json/version`, { headers: { Host: '127.0.0.1:9222' }, signal: AbortSignal.timeout(8000) })).json();
+      br = await chromium.connectOverCDP(j.webSocketDebuggerUrl.replace(/127\.0\.0\.1|localhost/, HOST), { timeout: 20000 });
+    }
+  } catch (e) { writeT('CONNECT-FAIL: ' + String(e).slice(0, 90)); await stamp('Brave nicht erreichbar: ' + String(e).slice(0, 70)); process.exit(0); }
   try {
     const ctx = br.contexts()[0] || await br.newContext();
     const p = (br.contexts().flatMap(c => c.pages()).find(x => { try { return /apps\/tiktok/.test(x.url()); } catch { return false; } })) || await ctx.newPage();
