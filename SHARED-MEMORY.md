@@ -2260,3 +2260,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **6. Lauf:** CATS=taschen,haustier PER=3 → 6 ACTIVE, alle Keeper (0 gedraftet). Taschen: 3 Schulranzen (Real Sporting/Zaragoza/Valencia Basket, distinct Farben) CHF 19.90–27.90. Haustier: 2 Hundenäpfe (versch. Grössen) + Hunter Hundehalsband rosa CHF 16.90–25.90.
 - Alle distinct Titel, Bild/Preis ok, ß-frei (Patch hält). `taschen` zieht v.a. Schulranzen/-taschen (nicht Handtaschen) — sauber, on-brand für rucksaecke-schule.
 - **Import gesamt heute: +48 Keeper** (6 Läufe), Ledger 2882.
+
+---
+**🛒 2026-06-29 (Nachtrag 11 — IMPORT Ladung 7: +6 Audio/Küche + SÄTTIGUNGS-SIGNAL):**
+- **7. Lauf:** CATS=viral,audio,kuechenhelfer PER=3 → 6 Keeper. **`viral`=Decke** (nur 21 BigBuy-Kandidaten, 0 geeignet → BigBuy hat kaum „virale" Gadgets, meiden). Audio: SPC/Aiwa/T'NB Kopfhörer CHF10.90–104.90. Küche: 2 Zerkleinerer + Vakuumiergerät.
+- **⚠️ SÄTTIGUNG erkannt:** Katalog hat jetzt **11 „Zerkleinerer" + 10 „Vakuumierer"** → `kuechenhelfer` (nur 259 Kandidaten) ist nach 2 Taps **gesättigt/repetitiv** → meiden. Keine Dubletten (distinct), aber Segment voll.
+- **📌 FAZIT IMPORT-TAG (7 Läufe, +54 Keeper, Ledger ~2888):** Die sauberen Whitelist-Kategorien sind jetzt **gut abgegrast**. Frische Wellen bringen zunehmend Decke (viral/fitness/akkuventi/beamer) oder Sättigung (kueche) oder schlechte Qualität (gaming/schmuck). **→ Import-Phase hat ihren Wert geliefert; Loop sollte zurück auf Wächter/QA-Modus** bis neue BigBuy-Ware oder andere Quelle (CJ) verfügbar ist. Tiefe Kategorien (audio 3538, ladegeraet 2409, phone 2700, haustier 3826, sonnenbrillen 8666, garten 1130, taschen 6330) haben zwar noch Masse, aber Re-Taps werden repetitiv (ähnliche Kopfhörer/Kabel/Näpfe).
+- Ledger Stand: 2888.
