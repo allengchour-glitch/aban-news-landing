@@ -3,18 +3,8 @@ smartplus: form BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt ausw├ñhlen|
 smartplus: p1-sammlung click=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: p2-name set=true
 smartplus: p3-picker click=true pages=1
-smartplus: p3b-suche
-  admin.shopify.com/store/luxestyl 10b/6i [Men├╝ umschalten,Suchen
-STRG
-K,Sidekick,LuxeStyle,Vertriebskan├ñle,TikTok,Apps,SimGym,Sidekick-Unterhaltungen,Brief Voice Conversation] (text:Kollektionen s,checkbox:,checkbox:,checkbox:,checkbox:,checkbox:)
-  shopify.bytegration.com/ad_creat 8b/6i [Einzelnes Produkt,Sammlung,Startseite,Sammlung ausw├ñhlen,Verlassen,Als Entwurf speichern,Senden,Aktualisieren] (text:Aktivit├ñtsname,text:,checkbox:,text:Identit├ñt ausw,checkbox:,text:W├ñhle bitte ei)
-  solution.tiktokshop.com/tts_open 0b/0i [] ()
-smartplus: p3c-nach-picker picked=false
-  admin.shopify.com/store/luxestyl 10b/6i [Men├╝ umschalten,Suchen
-STRG
-K,Sidekick,LuxeStyle,Vertriebskan├ñle,TikTok,Apps,SimGym,Sidekick-Unterhaltungen,Brief Voice Conversation] (text:Kollektionen s,checkbox:,checkbox:,checkbox:,checkbox:,checkbox:)
-  shopify.bytegration.com/ad_creat 8b/6i [Einzelnes Produkt,Sammlung,Startseite,Sammlung ausw├ñhlen,Verlassen,Als Entwurf speichern,Senden,Aktualisieren] (text:Aktivit├ñtsname,text:,checkbox:,text:Identit├ñt ausw,checkbox:,text:W├ñhle bitte ei)
-  solution.tiktokshop.com/tts_open 0b/0i [] ()
+smartplus: p3b-rows ["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskan├ñle\nTikTok","TikTok","Apps\nSimGym","SimGym","Brief Voice Conversation","App-Einbettung anpassen"]
+smartplus: p3c-nach-picker picked=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: p4a-event-open
   admin.shopify.com/store/luxestyl 10b/6i [Men├╝ umschalten,Suchen
 STRG
