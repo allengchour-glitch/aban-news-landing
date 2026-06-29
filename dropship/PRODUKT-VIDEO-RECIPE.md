@@ -23,3 +23,10 @@ Läuft am **PC** (Keys liegen dort: `FAL_KEY` + `GEMINI_API_KEY` + `ELEVENLABS_A
 - **FIX (im Bot eingebaut):** Haken **„Fehlgeschlagene Videos optimieren"** setzen (alle Checkboxen mit „optimier" im Label) + den blauen **„Hochladen"**-Button im Modal per DOM-Klick → TikTok optimiert das Video selbst.
 - **Besser/präventiv:** Reels VOR dem Upload TikTok-konform encodieren — `ffmpeg -vf scale=720:1280 -c:v libx264 -pix_fmt yuv420p -r 30 -b:v 4M -movflags +faststart` (9:16, H.264, ≤~500MB). Dann keine Optimierungs-Schleife nötig.
 - Allgemein „klick lernen": fiddlige Buttons/Checkboxen lieber per `frame.evaluate(()=>el.click())` (DOM-Klick) als per Playwright-Locator — umgeht Overlay/Actionability-Probleme.
+
+## 📺 GELERNT von YouTube — "AI Jewelry ad" (Runway Bliss, 12k Views, User 2026-06-29)
+Stil eines erfolgreichen KI-Schmuck-Ads zum Klauen:
+- **ON-MODEL statt nur Produktfoto:** Schmuck AN einer Frau getragen (Hals/Dekolleté), warmes Editorial-Licht → emotionaler + konversionsstärker als Produkt-auf-Seide. Nano-Banana-Prompt: "elegant young woman wearing this exact necklace on her neck, warm editorial lighting, soft beige tones, premium fashion editorial, photoreal, close-up neck/decollete".
+- **CUTOUT + PFEIL-Element:** kleines freigestelltes Produktbild (weisser BG) eingeblendet + geschwungener Pfeil (drawtext/Overlay) der auf die getragene Stelle zeigt = "Produkt -> so sitzt es". Starker Aufmerksamkeits-Hook.
+- **Warme Editorial-Toene** (beige/gold), cleane Komposition, ~12s, Hashtags #aijewelry #adcreative #editorial.
+- ANWENDEN: aurora-ai/jewelry-Reels -> 1x On-Model-Hero (Nano Banana) + 1x Produkt-Cutout, Seedance-Bewegung, Cutout-Pfeil-Overlay in der ffmpeg-Assembly.
