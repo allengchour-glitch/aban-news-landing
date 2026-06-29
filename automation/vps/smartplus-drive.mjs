@@ -155,6 +155,14 @@ async function clickAny(ctx, res) {
       try { const at = (await appFrame()).getByPlaceholder(/Werbetext|Anzeigentext|ad text/i).first(); if (await at.count()) { await at.fill('Wasserfeschte Edelstahl-Schmuck wo nid alauft. -10% mit Code WELCOME10. Jetzt entdecke!'); T('c-adtext gesetzt'); } else T('c-adtext kein Feld'); } catch {}
       // Budget: TikTok-Minimum = 30 CHF/Tag (15 wird abgelehnt). 30/Tag, innerhalb der 350-Freigabe.
       try { let bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if(!(await bi.count())){ bi = fr.getByPlaceholder(/budget|betrag|CHF/i).first(); } if (await bi.count()) { await bi.fill('30'); T('c-budget 30 gesetzt'); } else T('c-budget kein Zahlenfeld'); } catch { T('c-budget err'); }
+      // VIDEO hochladen (setInputFiles, Reel liegt im Repo -> PC hat es via git). Nur wenn noch 0 Videos.
+      try {
+        const af = await appFrame();
+        let fileInput = af.locator('input[type=file]').first();
+        if (!(await fileInput.count())) { await clickAny(af, [/Hochladen/i]); await p.waitForTimeout(1800); fileInput = (await appFrame()).locator('input[type=file]').first(); }
+        if (await fileInput.count()) { await fileInput.setInputFiles('reels/luma-test-wasserfest-9x16.mp4'); T('c-video Upload gestartet (luma-test-wasserfest)'); await p.waitForTimeout(12000); }
+        else T('c-video kein file-input gefunden');
+      } catch (e) { T('c-video err ' + String(e).slice(0, 50)); }
       T('c-PRE-SUBMIT ' + (await controls(fr)));
       if (GO) { const s = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch/i]); T(s ? 'GO: Senden geklickt' : 'GO: Senden nicht gefunden'); } else T('DRY: stoppe vor Senden (kein Spend)');
       writeT('CONTINUE-ENDE'); await stamp('CONTINUE | ' + trace.join(' >> ').slice(0, 420)); await br.close().catch(() => {}); process.exit(0);
