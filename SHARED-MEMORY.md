@@ -2178,3 +2178,15 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Menü auditiert** (main-menu gid 310224093569, 17 Top-Level): **alle neuen Kategorien sind bereits auffindbar** — Gaming/Audio/Smartwatch/Auto→„Trends & Gadgets", Werkzeug→„🔧 Werkzeug & Garten", Survival/Wandern→„Camping & Outdoor", Whisky/Bar→„Garten·Outdoor → Bar & Wein/Gläser". **Nichts fehlt.**
 - **Beobachtung (Galaxus-Research):** Menü ist umfassend aber lang (17 Top-Level, Mega-Menüs mit 18–22 Items = flach statt 3-Ebenen-Filter). Die dokumentierte Konsolidierung (17→~10 Departments) **NICHT umgesetzt** — `menuUpdate` ersetzt das GANZE Menü (Datenverlust-Risiko) UND betrifft Garten/Wohnen/Wellness = **andere Session**. Braucht klares User-OK + Koordination, nicht blind. Socken evtl. nicht direkt im Frauen/Herren-Untermenü (Sub-Add = auch full menuUpdate, riskant) → offen.
 - **Bekleidung-Auffüllung läuft** (schuhe+socken +10, jetzt damenmode+herrenmode) — User „voll auffüllen".
+
+---
+**🏷️ 2026-06-29 (RAW-TITEL-BEREINIGUNG Marken-Apparel-Welle — CJ/Theme-Session, autonom):**
+- **46 Produkte mit rohen Lieferanten-Titeln gefixt** (BigBuy-Apparel-Charge IDs ~15435xxx). Defekt: sichtbarer Titel hatte SKU-/Modellcodes + englischen POD-Text, obwohl der Handle schon ein sauberer DE-Marketing-Slug war (Titel-Generator lief beim Import nicht durch).
+  - **21 New Era T-Shirts** „Kurzärmliges Sport T-Shirt New Era WORDMARK OS TEE NEYYAN 60435524" → „Sport T-Shirt New Era Wordmark – Schwarz" usw. NBA-Codes aufgelöst (LOSLAK=LA Lakers, LOSDOD=LA Dodgers, CHIBUL=Chicago Bulls, BOSCEL=Boston Celtics, BRONET=Brooklyn Nets).
+  - **🔴 productType-Fehler mitgefixt:** dieselben 21 Tees waren als **`Cap`** typisiert (Tees im Kappen-Filter!) → auf `Shirts` korrigiert. Verifiziert: `product_type:Cap title:*T-Shirt*` jetzt **0**.
+  - **17 Sweatshirts/Hoodies** (Champion HOODED/CREWNECK 220xxx, Puma Man City, Joma, Kappa, Under Armour, Nike) → saubere DE-Titel, „für Erwachsene"/SKU raus.
+  - **5 New Era Caps** (9FORTY YAN/NEYYAN + Nummern) → „Sportkappe New Era 9FORTY Yankees/Basic – <Farbe>".
+  - **+ Nike Park20 Hoodie, 1 Reebok-Helm (HTREKKS09), 1 New Balance Laufschuh (MPESULL1)** mit SKU-Codes.
+- **SEO-Titel jeweils mitgezogen** (sonst blieb der rohe Code im Meta-Title). Markennamen bewusst BEHALTEN (Trust/SEO; ist legit Markenware, kein „Marke:BigBuy"-Leak).
+- **Verifiziert sauber:** `OS TEE`=0, `HOODED`=0, `CREWNECK`=0, `Cap`-Tees=0. Restliche „für Erwachsene"-Treffer (Helme/Schuhe mit Marke+Farbe) sind lesbar = kein Defekt, bewusst gelassen.
+- **LEHRE (verfestigt):** Die BigBuy-Marken-Apparel-Charge setzt oft rohen Lieferanten-Titel + falschen productType (`Cap` für Tees). Bei künftigen Apparel-Importen IMMER Titel (DE, ohne SKU) UND productType direkt mitgeben + per QA `product_type:Cap title:*T-Shirt*` gegenprüfen.
