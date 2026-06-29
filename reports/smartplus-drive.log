@@ -10,7 +10,8 @@ smartplus: c-identity-opts ["Budget\n?","CHF","Video verwenden\nWeitere erstelle
 smartplus: c-identity-set=Dein TikTok Konto
 aban
 192aban
-smartplus: c-budget 15 gesetzt
+smartplus: c-adtext gesetzt
+smartplus: c-budget 30 gesetzt
 smartplus: c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: DRY: stoppe vor Senden (kein Spend)
 smartplus: stamp-fehler SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
