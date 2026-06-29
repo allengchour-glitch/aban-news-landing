@@ -1,13 +1,14 @@
-2026-06-29T21:20:48.232Z DRY
+2026-06-29T21:22:57.123Z DRY
 continue-start frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | about:blank#13]
 c-picker-open=false
 c-probe NO-LEAF
 c-cbclick no-leaf
 c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
-c-event-options []
-c-event-set=no-opt
-c-identity-options []
-c-identity-set=no-opt
+c-event-opts [admin.shopify.co]["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSimGym","SimGym"] []["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Select all","Algerien","Argentinien","Aserbaidschan","Australien","Bahrain","Bangladesh","Belgien","Bolivien (Plurinationaler Staat)","Brasilien","Chile"]
+c-event-set=Startseite
+c-identity-opts [admin.shopify.co]["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskanäle\nTikTok","TikTok","Apps\nSimGym","SimGym"] []["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
+c-identity-set=Vertriebskanäle
+TikTok
 c-budget 15 gesetzt
 c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ändern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 DRY: stoppe vor Senden (kein Spend)

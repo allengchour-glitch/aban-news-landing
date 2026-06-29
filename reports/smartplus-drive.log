@@ -3,10 +3,11 @@ smartplus: c-picker-open=false
 smartplus: c-probe NO-LEAF
 smartplus: c-cbclick no-leaf
 smartplus: c-picker added=false BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
-smartplus: c-event-options []
-smartplus: c-event-set=no-opt
-smartplus: c-identity-options []
-smartplus: c-identity-set=no-opt
+smartplus: c-event-opts [admin.shopify.co]["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskan├ñle\nTikTok","TikTok","Apps\nSimGym","SimGym"] []["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Select all","Algerien","Argentinien","Aserbaidschan","Australien","Bahrain","Bangladesh","Belgien","Bolivien (Plurinationaler Staat)","Brasilien","Chile"]
+smartplus: c-event-set=Startseite
+smartplus: c-identity-opts [admin.shopify.co]["Startseite","Bestellungen\n1","Produkte","Kunden","Wachstum","Rabatte","Inhalt","Markets","Finanzen","Statistiken","Vertriebskan├ñle\nTikTok","TikTok","Apps\nSimGym","SimGym"] []["Budget\n?","CHF","Video verwenden\nWeitere erstellen","Dein TikTok Konto\naban\n192aban","Dein TikTok Konto","aban\n192aban"]
+smartplus: c-identity-set=Vertriebskan├ñle
+TikTok
 smartplus: c-budget 15 gesetzt
 smartplus: c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñndern|Video verwenden|Weitere erstellen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: DRY: stoppe vor Senden (kein Spend)
