@@ -1,15 +1,15 @@
 {
-  "ts": "2026-06-29T11:28:03.075Z",
+  "ts": "2026-06-29T17:28:35.918Z",
   "platforms": {
     "tiktok": {
       "result": "SOUND_DIAG",
       "reason": "Sound-Panel-Screenshots erstellt",
       "file": "mw-statement-ohrringe-onyx-geom.mp4",
-      "vor_min": 5179
+      "vor_min": 5540
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 4020
+      "vor_min": 4381
     },
     "meta": {
       "index": 25,
@@ -21,7 +21,7 @@
             "message": "(#10) Application does not have permission for this action",
             "type": "OAuthException",
             "code": 10,
-            "fbtrace_id": "AHi0SVu3hX2WReitGLS2bX7"
+            "fbtrace_id": "ATFFVQu-GqPHZTFqxOltn7W"
           }
         }
       },
@@ -32,7 +32,7 @@
             "message": "(#200) Subject does not have permission to post videos on this target, due to lack of pages_manage_posts permission.",
             "type": "OAuthException",
             "code": 200,
-            "fbtrace_id": "ABMXxlUCRolOFhL1jWnyaja"
+            "fbtrace_id": "A4W93ndN8x1sQudR4cKP3ZF"
           }
         }
       },
@@ -40,7 +40,7 @@
         "skipped": "keine TikTok-Creds"
       },
       "insights": {
-        "ts": "2026-06-29T11:28",
+        "ts": "2026-06-29T17:28",
         "ig": {
           "posts": 0,
           "eng": 0,
