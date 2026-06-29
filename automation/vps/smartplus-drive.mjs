@@ -11,6 +11,7 @@
 import { chromium } from 'playwright-core';
 const HOST = process.env.CDP_HOST || '100.71.8.47';
 const GO = process.env.GO === '1';
+const CONTINUE = process.env.CONTINUE === '1'; // an OFFENEN Brave anhaengen (kein Neustart, kein goto) + Picker abschliessen
 const ID = process.env.SHOPIFY_CLIENT_ID, SEC = process.env.SHOPIFY_CLIENT_SECRET, SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
 const URL = 'https://admin.shopify.com/store/luxestyle-ch/apps/tiktok-ads-2/ad_creation';
 import { writeFileSync } from 'node:fs';
@@ -89,6 +90,26 @@ async function clickAny(ctx, res) {
   try {
     const ctx = br.contexts()[0] || await br.newContext();
     const p = (br.contexts().flatMap(c => c.pages()).find(x => { try { return /apps\/tiktok/.test(x.url()); } catch { return false; } })) || await ctx.newPage();
+    if (CONTINUE) {
+      // An den OFFENEN Zustand anhaengen (User hat den Picker offen): KEIN goto, KEIN Neustart.
+      const adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
+      T('continue-start ' + (await frameDiag(p)));
+      // Wasserfester Schmuck im offenen Picker anhaken (Klick auf die Zeile toggelt die Checkbox) + Hinzufügen.
+      let added = false;
+      try { await clickAny(adminFr, [/Wasserfester Schmuck/i]); await p.waitForTimeout(1000); } catch {}
+      try { added = await clickAny(adminFr, [/^Hinzufügen$|hinzufügen|^auswählen$|^fertig$|^add$|^done$/i]); } catch {}
+      await p.waitForTimeout(2500); let fr = await bestFrame(p);
+      T('c-picker added=' + added + ' ' + (await controls(fr)));
+      // Optimierungsereignis -> In den Warenkorb
+      await clickAny(fr, [/Optimierungsereignis|Optimierungs/i]); await p.waitForTimeout(1300);
+      await clickAny(await bestFrame(p), [/In den Warenkorb|Warenkorb|Add to Cart|Add to cart/i]); await p.waitForTimeout(1000); fr = await bestFrame(p);
+      T('c-event ' + (await controls(fr)));
+      // Budget 15 falls Zahlenfeld da
+      try { const bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await bi.count()) { await bi.fill('15'); T('c-budget 15 gesetzt'); } else T('c-budget kein Zahlenfeld'); } catch {}
+      T('c-PRE-SUBMIT ' + (await controls(fr)));
+      if (GO) { const s = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch/i]); T(s ? 'GO: Senden geklickt' : 'GO: Senden nicht gefunden'); } else T('DRY: stoppe vor Senden (kein Spend)');
+      writeT('CONTINUE-ENDE'); await stamp('CONTINUE | ' + trace.join(' >> ').slice(0, 420)); await br.close().catch(() => {}); process.exit(0);
+    }
     await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {}); await p.waitForTimeout(9000);
     const body = (await p.evaluate(() => document.body.innerText).catch(() => '')) || '';
     // DIAGNOSE: Top-URL, Body-Laenge + alle Frames mit Button-Anzahl (Shopify-App liegt in einem iframe).
