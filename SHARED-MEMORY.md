@@ -2359,3 +2359,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **3 gedraftet:** Wandladegerät 15W CHF122.90 (absurd für 15W) + Rotgold/Graue Smartwatch CHF109.90 (= Samsung-Galaxy-Fit-Farbvarianten IDs 998914/998921, preis-transparent ~CHF55, wie die 998913 vorhin).
 - **LEHRE verfestigt:** smartwatch-Kategorie zieht Samsung-Galaxy-Fit (998913–998921) = preis-transparent → diese IDs künftig draften/meiden; generische no-name Smartwatches <CHF90 ok.
 - Ledger: 2978. **Tagesbilanz Import gesamt: ~150 Keeper über den Tag.**
+
+---
+**💎 2026-06-29 (KATEGORIE-PREMIUM-SWEEP Teil 2 — User „besser als mediamarkt"):**
+- **+3 dünne Kategorie-Collections auf Premium-Niveau** (Stil-Listen + Trust + Cross-Links, House-Style): pool-schwimmen, kinderspielzeug, rucksaecke (waren nur 1 Zeile).
+- **Heute gesamt 7 Kategorie-Seiten aufgewertet** (uhren/kaffee/klima/camping + pool/kinder/rucksaecke). Geprüft schon Premium (nicht angefasst): damen-mode, beleuchtung, schmuck, parfum, sonnenbrillen, schuhe, kueche, audio, haustier, gaming, handy, ladegeraete.
+- **„MediaMarkt"-Realität dokumentiert:** Shop schlägt MediaMarkt bei Produkt-Storytelling/Kuration/CH-Service (per API machbar ✓). MediaMarkts Vorsprung = Reviews + Filter + Design = Theme/App/Customizer (Judge.me-Sterne, Search&Discovery-Filter, Hero/Trust-Badges, Sticky-ATC) = USER-Klicks, nicht API. Liste in WEBSITE-KRITIK.md + SEITE-VERBESSERUNGEN.md.
