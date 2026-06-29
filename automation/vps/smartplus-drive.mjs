@@ -136,11 +136,12 @@ async function clickAny(ctx, res) {
       T('c-picker added=' + added + ' ' + (await controls(fr)));
       // Dropdown-Handler v3: NUR im App-Frame (bytegration) arbeiten (Admin-Nav ausschliessen) + Feld gezielt.
       const OPTSEL = '[role=option],[role=menuitem],[aria-selected],li,[class*=ption],[class*=Item],[class*=item],[data-value],[data-option]';
-      const appFrame = () => p.frames().find(f => /bytegration|tiktokshop|ad_creation/i.test(f.url())) || (p.frames().find(f => !/admin\.shopify/.test(f.url()) && !/about:blank/.test(f.url()))) || fr;
+      // appFrame: NICHT-admin-Frame mit den meisten Controls = das App-Formular (bytegration meldet url oft 'about:blank').
+      const appFrame = async () => { let best=null,max=-1; for(const f of p.frames()){ if(/admin\.shopify/.test(f.url())) continue; try{ const n=await f.evaluate(()=>document.querySelectorAll('button,[role=button],input,select,a,[role=option]').length); if(n>max){max=n;best=f;} }catch{} } return best || p.mainFrame(); };
       async function pickDropdown(label, placeRe, prefRe) {
-        let af = appFrame();
+        let af = await appFrame();
         try { const inp = af.getByPlaceholder(placeRe).first(); if (await inp.count()) { await inp.click({ timeout: 3000 }); } else { await clickAny(af, [placeRe]); } } catch {}
-        await p.waitForTimeout(1800); af = appFrame();
+        await p.waitForTimeout(1800); af = await appFrame();
         let dump=''; try { const d=await af.evaluate((s)=>{ const o=[...document.querySelectorAll(s)].filter(x=>x.offsetParent!==null).map(x=>(x.innerText||'').trim()).filter(t=>t&&t.length<40); return [...new Set(o)].slice(0,18); }, OPTSEL); dump=JSON.stringify(d); } catch {}
         T('c-'+label+'-opts '+dump);
         let set='no-match'; try { set=await af.evaluate((args)=>{ const [s,re]=args; const rx=new RegExp(re,'i'); const opts=[...document.querySelectorAll(s)].filter(x=>x.offsetParent!==null&&(x.innerText||'').trim()&&(x.innerText||'').length<60); const pref=opts.find(x=>rx.test(x.innerText||'')); if(pref){pref.click(); return (pref.innerText||'').trim().slice(0,30);} return 'no-match'; }, [OPTSEL, prefRe.source]); } catch { set='err'; }
