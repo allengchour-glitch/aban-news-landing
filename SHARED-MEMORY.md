@@ -26,6 +26,14 @@
 3. Theme-CRO: Sticky-ATC mobil, LCP-Hero schnell, Free-Ship-Fortschrittsbalken, Swatches. · User: Judge.me Reviews, Klaviyo-Fix.
 **AI-Keys jetzt in VPS-`/opt/luxe/.env`:** Groq/Gemini/DeepSeek/xAI + TikTok-Events-API-Token (d0a7…, CAPI gebaut). Brain 375 Regeln.
 
+# 📌 CizQ6-UPDATE 2026-06-29 (Katalog-QA + tote Collections — gegen Kollision lesen!)
+**Was ich gemacht habe (Shopify-API, NICHT doppeln):**
+- 💸 **„Bestseller unter CHF 50" (war 4 Produkte, beworben aber fast leer = Trust-Leck)** → Smart-Collection **„💸 Lieblinge unter CHF 50"** (Regel `Preis<50`) = **4 → 2904 Produkte**. Name ehrlich gemacht (kein Fake-„Bestseller" bei 0 Verkäufen).
+- 🍼 **Baby & Kleinkind** (war 2) → Smart-Regel `TYPE=Baby & Kleinkind OR TAG=baby` = **2 → 6** (Katalog hat nur 6 Baby-Produkte → mehr geht nur per Import).
+- 🧹 **Katalog-QA Stichprobe sauber:** Premium-Schmuck/Drohnen&Kameras/Im-Video-vorgestellt — keine Fehlkategorisierung.
+- ❓ **FAQ-Blöcke** auf Geburtsstein- + Herz-Muschel-PDP (Einwand-Handling, ergänzt die Garantie-Blöcke).
+**🔴 FÜR EUCH (Theme/Nav): 2 Collections sind GENUINE LEER (je 1 Produkt) = sehen kaputt aus →** bitte aus Menü/Nav **ausblenden** ODER Inventar importieren: **„Self-Care & Wellness"** (`/self-care-wellness-1`, 1) + **„Schule & Büro"** (`/schule-buro`, 1). Reviven per Regel geht nicht — Katalog hat dafür keinen Bestand. (Ich fasse die Nav nicht an = euer Bereich.)
+
 
 # 🚨 ADULT-PRODUKTE ARCHIVIERT (CizQ6 2026-06-26): TikTok-Ad-Ablehnung war REAL (URL=Adult). Katalog hatte ACTIVE: Vibrationsring (Sex-Toy, als Yoga gelabelt) + 2 suggestive Struempfe -> archiviert (blockierten ALLE Ads + Payment-Risiko). KATALOG-SESSION: bei BigBuy-Import Adult/verbotene Produkte rausfiltern + falsch-gelabelte pruefen (Sex-Toy war Yoga&Pilates).
 
