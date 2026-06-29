@@ -2286,3 +2286,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **⛺ Camping frisch:** 2 Kühltaschen (Sommer-Trend lt. Learnings) + 1 Klapptisch. 
 - **Import gesamt heute: 9 Läufe, +72 Keeper** (Ledger ~2906). Whitelist final: audio/smartwatch/kueche/ladegeraet/grill/klima/kaffee/bar/phone/werkzeug/haustier/garten/camping/taschen/sonnenbrillen/**uhren**. Meiden: gaming/schmuck/viral/fitness/akkuventi/beamer.
 - Ledger: 2906.
+
+---
+**🛒 2026-06-29 (Nachtrag 14 — GROSSER 16-KATEGORIEN-LAUF: +48, QA, 2 gedraftet):**
+- **„alles"-Lauf:** alle 16 Whitelist-Kategorien in 1 Durchlauf → **48 angelegt**, alle Kategorien lieferten 3.
+- **QA:** ß=0 katalogweit (Patch hält über alle 48 ✓). **Keine Dubletten-Titel** (Generator gab diesmal variierte Untertitel, auch bei Sonnenbrillen). **2 überteuerte preis-transparente gedraftet:** Samsung Galaxy Fit „Elegante Fitnessuhr Silber" CHF109.90 (Markt ~55) + Melitta Filterkaffee CHF124.90. Rest = Keeper (generische Artikel ohne Marken-Preis-Anker: Cocktail-Sets/Töpfe/Schrauber/Ventilatoren/Kühltaschen).
+- **→ 46 Keeper aus diesem Lauf.** Tagesbilanz Import gesamt: ~**118 Keeper** (Läufe 1-9 + grosser Lauf), Ledger-Stand siehe Datei.
