@@ -18,10 +18,3 @@ smartplus: c-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ├ñ
 smartplus: DRY: stoppe vor Senden (kein Spend)
 smartplus: c-screenshot err TimeoutError: page.screenshot: Timeout 3
 smartplus: stamp-fehler SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
-node.exe : Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\win\async.c, line 94
-In C:\luxe\automation\local\cmd-poll.ps1:131 Zeichen:295
-+ ... ONTINUE="1"; & node "automation/vps/smartplus-drive.mjs" 2>&1 | Out-F ...
-+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (Assertion faile...sync.c, line 94:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
