@@ -2390,3 +2390,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - CATS=uhren,taschen,werkzeug PER=4 → uhren lieferte **4 Keeper** (CHF16.90–22.90, generische Haurex, ß=0). Dann **TASCHEN hing** (6330 Kandidaten, schon 2× getappt → tausende Ledger-Skips, jeder mit Detail-Abruf = praktisch endlos) → Prozess gekillt.
 - **🔑 WICHTIGE LEHRE:** Kategorien, die schon **2×+ getappt** sind, im Importer MEIDEN — der Ledger-Skip-Scan über tausende bereits-importierte Kandidaten lässt den Import hängen. Künftig nur **frische/wenig-getappte** Kategorien ODER kleines PER. Importierbare-frische-Quellen sind weitgehend ausgeschöpft.
 - Ledger: 2982. **Import-Phase praktisch ausgereizt** — weitere Läufe = Hänger oder Wiederholung. Fokus zurück auf Fixes/Politur/Monitoring.
+
+---
+**💎 2026-06-29 (KATEGORIE-SWEEP ABSCHLUSS — Teil 7, +4 Seiten = 30 GESAMT heute):**
+- **+4:** sub-ohrringe, sub-armbaender (verfeinert), damen-schuhe, herren-schuhe (Cross-Links ergänzt).
+- **HEUTE 30 Kategorie-Seiten** aufgewertet — **Kategorie-SWEEP ABGESCHLOSSEN.** Major + Medium + Schmuck/Mode-Subs geprüft & premium. Verbleibend = nur Mini-Nischen (<10 Produkte, marginal). Schon-gut-geprüft (nicht angefasst): sub-halsketten, sub-ringe, sub-kleider, schmuck-sets, elektriker-werkzeug, marken-sport, mode-marken, guertel, anime, sub-massage, sub-aroma-diffuser, damen-mode, beleuchtung, parfum, sonnenbrillen, schuhe, kueche, audio, haustier, gaming u.v.m.
+- **STATUS AUTONOM:** Alles per API Fixbare ist erledigt — Katalog 4.980 sauber (0 Defekte verifiziert), 30 Kategorie-Seiten premium, Google-Feed gefixt, ~155 Produkte heute. **Weiteres = Theme/Apps (User via Browser-Claude) + Traffic.**
