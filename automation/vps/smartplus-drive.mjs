@@ -110,13 +110,16 @@ async function clickAny(ctx, res) {
     T('p3-picker click=' + c3 + ' pages=' + br.contexts().flatMap(c => c.pages()).length);
     // Picker oeffnet im admin.shopify.com-Frame (Shopify ResourcePicker): Feld "Kollektionen suchen" + Checkboxen.
     const adminFr = p.frames().find(f => /admin\.shopify\.com/.test(f.url())) || p.mainFrame();
-    try { const sb = adminFr.getByPlaceholder(/Kollektion|collection/i).first(); if (await sb.count()) { await sb.fill('wasserfest'); await p.waitForTimeout(2800); } } catch {}
-    T('p3b-suche\n' + (await allDump(p)));
+    // ECHTE Tastenanschlaege (fill() triggert die ResourcePicker-Suche NICHT).
+    try { const sb = adminFr.getByPlaceholder(/Kollektion|suchen|search/i).first(); if (await sb.count()) { await sb.click(); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(3000); } } catch {}
+    // Sammlungs-Namen im Picker dumpen, damit ich die echten Labels sehe.
+    let rows = []; try { rows = await adminFr.evaluate(() => [...document.querySelectorAll('[role=row],[role=option],li,label,tr,td')].map(x => (x.innerText || '').trim()).filter(s => s && s.length > 1 && s.length < 44)); } catch {}
+    T('p3b-rows ' + JSON.stringify([...new Set(rows)].slice(0, 16)));
     let picked = false;
-    try { await clickAny(adminFr, [/wasserfester schmuck|wasserfest/i]); await p.waitForTimeout(900); } catch {}
-    try { picked = await clickAny(adminFr, [/^Hinzufügen$|^Auswählen$|^Fertig$|^Speichern$|^Add$|^Done$|^Select$/i]); } catch {}
+    try { await clickAny(adminFr, [/wasserfester schmuck|wasserfest/i]); await p.waitForTimeout(1000); } catch {}
+    try { picked = await clickAny(adminFr, [/hinzufügen|auswählen|fertig|speichern|bestätigen|add\b|^done$|select/i]); } catch {}
     await p.waitForTimeout(2500); fr = await bestFrame(p);
-    T('p3c-nach-picker picked=' + picked + '\n' + (await allDump(p)));
+    T('p3c-nach-picker picked=' + picked + ' ' + (await controls(fr)));
     // 4) Optimierungsereignis -> In den Warenkorb (Dropdown-Overlay per allDump sichtbar machen)
     await clickAny(fr, [/Optimierungsereignis|Optimierungs|optimization event/i]); await p.waitForTimeout(1500);
     T('p4a-event-open\n' + (await allDump(p)));
