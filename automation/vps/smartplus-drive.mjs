@@ -31,15 +31,30 @@ async function stamp(val) {
     log('luxe.smartplus_status gestempelt');
   } catch (e) { log('stamp-fehler', String(e).slice(0, 80)); }
 }
-const controls = async (p) => p.evaluate(() => {
+const controls = async (ctx) => ctx.evaluate(() => {
   const b = [...document.querySelectorAll('button,[role=button]')].map(x => (x.innerText || x.getAttribute('aria-label') || '').trim()).filter(s => s && s.length < 28).slice(0, 14);
   const i = [...document.querySelectorAll('input,select')].map(x => (x.type || x.tagName) + ':' + (x.placeholder || x.getAttribute('aria-label') || x.name || '?').slice(0, 18)).slice(0, 8);
   return 'BTN[' + b.join('|') + '] INP[' + i.join('|') + ']';
 }).catch(() => '');
-async function clickAny(p, res) {
+// Shopify Embedded-Apps rendern in iframes -> den Frame mit den meisten Steuerelementen waehlen (= eigentliche App-UI).
+async function bestFrame(p) {
+  let best = p.mainFrame(), max = -1;
+  for (const f of p.frames()) {
+    try { const n = await f.evaluate(() => document.querySelectorAll('button,[role=button],input,select,a').length); if (n > max) { max = n; best = f; } } catch {}
+  }
+  return best;
+}
+async function frameDiag(p) {
+  const out = [];
+  for (const f of p.frames()) {
+    try { const n = await f.evaluate(() => document.querySelectorAll('button,[role=button]').length); out.push((f.url() || 'about:blank').replace(/^https?:\/\//, '').slice(0, 38) + '#' + n); } catch {}
+  }
+  return `frames=${p.frames().length} [${out.join(' | ')}]`;
+}
+async function clickAny(ctx, res) {
   for (const re of res) {
-    for (const loc of [p.getByRole('button', { name: re }).first(), p.getByText(re).first()]) {
-      try { if (await loc.isVisible({ timeout: 1500 }).catch(() => false)) { await loc.click({ timeout: 4000 }); await p.waitForTimeout(2500); return true; } } catch {}
+    for (const loc of [ctx.getByRole('button', { name: re }).first(), ctx.getByText(re).first()]) {
+      try { if (await loc.isVisible({ timeout: 1500 }).catch(() => false)) { await loc.click({ timeout: 4000 }); await ctx.waitForTimeout(2500); return true; } } catch {}
     }
   } return false;
 }
@@ -61,25 +76,31 @@ async function clickAny(p, res) {
     const p = (br.contexts().flatMap(c => c.pages()).find(x => { try { return /apps\/tiktok/.test(x.url()); } catch { return false; } })) || await ctx.newPage();
     await p.goto(URL, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {}); await p.waitForTimeout(9000);
     const body = (await p.evaluate(() => document.body.innerText).catch(() => '')) || '';
+    // DIAGNOSE: Top-URL, Body-Laenge + alle Frames mit Button-Anzahl (Shopify-App liegt in einem iframe).
+    T('DIAG topurl=' + p.url().replace(/^https?:\/\//, '').slice(0, 45) + ' bodylen=' + body.length + ' ' + (await frameDiag(p)));
     if (/login|anmelden|sign in|log in to shopify/i.test(body) && !/Smart|Kampagne|campaign|Budget|Ziel/i.test(body)) {
       writeT('LOGIN-WAND: brave-agent nicht bei admin.shopify.com eingeloggt. ' + (await controls(p))); await stamp('LOGIN-WAND: brave-agent-Profil ist NICHT bei admin.shopify.com eingeloggt -> dort 1x einloggen. ' + (await controls(p))); process.exit(0);
     }
-    T('start ' + (await controls(p)));
-    // Schritt 1: Start/Weiter (Smart+ auswaehlen falls Auswahl)
-    await clickAny(p, [/smart\+?/i, /create campaign|kampagne erstellen/i, /get started|los geht/i, /continue|weiter|next/i]);
-    T('s1 ' + (await controls(p)));
+    let fr = await bestFrame(p);
+    T('start ' + (await controls(fr)));
+    // Schritt 1: Start/Weiter (Smart+ auswaehlen falls Auswahl) — Frame nach jeder Navigation neu waehlen
+    await clickAny(fr, [/smart\+?/i, /create campaign|kampagne erstellen/i, /get started|los geht/i, /continue|weiter|next/i]);
+    fr = await bestFrame(p);
+    T('s1 ' + (await controls(fr)));
     // Schritt 2: Ziel
-    await clickAny(p, [/traffic|besuche|website/i, /sales|verkäufe|conversions/i]);
-    await clickAny(p, [/continue|weiter|next/i]);
-    T('s2-ziel ' + (await controls(p)));
+    await clickAny(fr, [/traffic|besuche|website/i, /sales|verkäufe|conversions/i]);
+    await clickAny(fr, [/continue|weiter|next/i]);
+    fr = await bestFrame(p);
+    T('s2-ziel ' + (await controls(fr)));
     // Schritt 3: Budget 15 in ein Zahlen-Input
-    try { const ni = p.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await ni.count()) { await ni.fill('15'); T('budget 15 gesetzt'); } } catch {}
-    await clickAny(p, [/continue|weiter|next/i]);
-    T('s3-budget ' + (await controls(p)));
+    try { const ni = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await ni.count()) { await ni.fill('15'); T('budget 15 gesetzt'); } } catch {}
+    await clickAny(fr, [/continue|weiter|next/i]);
+    fr = await bestFrame(p);
+    T('s3-budget ' + (await controls(fr)));
     // Schritt 4: pre-submit Zustand
-    T('PRE-SUBMIT ' + (await controls(p)));
+    T('PRE-SUBMIT ' + (await controls(fr)));
     if (GO) {
-      const sent = await clickAny(p, [/veröffentlichen|publish|launch|absenden|senden|kampagne starten|submit/i]);
+      const sent = await clickAny(fr, [/veröffentlichen|publish|launch|absenden|senden|kampagne starten|submit/i]);
       T(sent ? 'GO: abgesendet' : 'GO: Senden-Button nicht gefunden');
     } else T('DRY: stoppe vor Senden (kein Spend)');
   } catch (e) { T('Fehler: ' + String(e).slice(0, 90)); }
