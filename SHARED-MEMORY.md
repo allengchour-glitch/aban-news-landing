@@ -2292,3 +2292,13 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **„alles"-Lauf:** alle 16 Whitelist-Kategorien in 1 Durchlauf → **48 angelegt**, alle Kategorien lieferten 3.
 - **QA:** ß=0 katalogweit (Patch hält über alle 48 ✓). **Keine Dubletten-Titel** (Generator gab diesmal variierte Untertitel, auch bei Sonnenbrillen). **2 überteuerte preis-transparente gedraftet:** Samsung Galaxy Fit „Elegante Fitnessuhr Silber" CHF109.90 (Markt ~55) + Melitta Filterkaffee CHF124.90. Rest = Keeper (generische Artikel ohne Marken-Preis-Anker: Cocktail-Sets/Töpfe/Schrauber/Ventilatoren/Kühltaschen).
 - **→ 46 Keeper aus diesem Lauf.** Tagesbilanz Import gesamt: ~**118 Keeper** (Läufe 1-9 + grosser Lauf), Ledger-Stand siehe Datei.
+
+---
+**🚦 2026-06-29 (LANE-SPLIT vom User: „andere session macht post, seo und produkten"):**
+- **User-Ansage:** Die ANDERE Session übernimmt ab jetzt **Social-Posts · SEO · Produkt-Import**. Diese Session (71a03e05) hält sich da RAUS → keine Dubletten/Konflikte.
+- **Was DIESE Session heute (2026-06-29) gemacht hat — bitte NICHT doppeln/überschreiben:**
+  - **+~118 BigBuy-Produkte importiert** (9 Einzel-Läufe + 1 grosser 16-Kat-Lauf), Ledger `dropship/bigbuy_done.txt` aktuell. QA durch (ß=0 via durablem Importer-Patch Z.548; 7 überteuerte/Dubletten gedraftet). **→ Import gilt für heute als erledigt, andere Session muss nicht nachlegen.**
+  - **`dropship/SOCIAL-POSTS-WINNERS.md`** angelegt: 6 fertige Gratis-Reichweite-Posts (Galaxy-Projektor/LED-Strip/Nackenventi/Jade-Roller/Sternenhimmel/HY300) — als Vorlage für die Social-Session.
+  - **`dropship/DEUTSCHLAND-START.md`** angelegt: DE-Markt-Aktivierung (LUCID/Lizenzero/OSS-Links + Steuerberater-Vorlage). **Status: GEPARKT** — User hat noch 0 CHF Umsatz + keine CH-Firma/UID → DE lohnt sich erst nach ersten Verkäufen (sonst Fixkosten ins Leere). Markt bleibt AUS.
+- **Erkenntnis (wichtig):** Erster echter DE-Checkout abgebrochen, weil DACH-Markt deaktiviert (nur CH aktiv). = erstes Nachfrage-Signal, aber Engpass bleibt TRAFFIC.
+- **Diese Session ab jetzt — NICHT-überschneidende Lane:** Storefront-Conversion/UX + Bestell-/Checkout-Monitoring (Insights wie der DE-Checkout) + DE-Vorbereitung in der Schublade. KEINE Posts/SEO/Importe mehr von hier.
