@@ -57,3 +57,11 @@ MACHE BESSER (laufend): je Reel 1 Element vom Vorbild stehlen (On-Model/Cutout-P
 - NANO-PROMPT (dramatic hero): "the product floating/nestled in a dramatic cinematic environment, swirling smoke and mist, flowing organic textures, moody dramatic studio lighting, premium luxury campaign, photoreal, no text".
 - BEST FUER: Parfum/Duft, Beauty, Premium-Schmuck, Uhren (alles wo Drama+Luxus passt). NICHT fuer billige Alltags-Gadgets (da eher in-use).
 - 3 STILE jetzt im Repertoire: (A) On-Model getragen [Runway Bliss], (B) Emotion/Geschenk-Story cinematic [ÉBISA, CH-Konkurrent], (C) Hero-Produkt epische KI-Umgebung [Magnific/Freepik]. Pro Produkt den passenden waehlen.
+
+## 📺 GELERNT — "Perfekte Produktfotos mit KI" (AMZ Ecosystem, 31-Min-Workflow, User 2026-06-29)
+Bestaetigt + verfeinert unseren Bild-Workflow:
+- TOOLS: **Nano Banana (Gemini)** + **Flux** = die zwei besten fuer KI-Produktfotos. Gleichen Prompt durch beide jagen, besseres nehmen. (Wir nutzen Nano Banana schon; Flux als Alternative/Fallback verfuegbar via fal/Replicate.)
+- ⭐ TOP-TIPP: **Den Bild-Prompt von einer Text-KI (ChatGPT/GROQ/DeepSeek) schreiben lassen** statt selbst schlecht prompten: "schreib mir einen detaillierten Bild-Prompt fuer [Produkt] im [Stil: editorial/dramatic/on-model]". -> dann an Nano Banana. WIR HABEN GROQ/DEEPSEEK -> automatisierbar in nanobanana_lifestyle.mjs (Prompt-Vorstufe).
+- Pfeil/Annotation-Element (bestaetigt Cutout-Pfeil aus Runway Bliss).
+- Workflow: echtes Produktfoto hochladen (nie AI-Re-Edit als Quelle) -> guter Prompt -> Hintergrund/Lifestyle -> Pfeil/Text -> Qualitaet hoch.
+- ANWENDEN/MACHE BESSER: in nanobanana_lifestyle.mjs eine Prompt-Vorstufe (GROQ/DeepSeek generiert den Bild-Prompt aus Produkt+Stil) einbauen = bessere, konsistentere Hero-Bilder ohne Handarbeit. Flux als 2. Engine fuer A/B.
