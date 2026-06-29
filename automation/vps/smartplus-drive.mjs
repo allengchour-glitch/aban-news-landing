@@ -81,27 +81,37 @@ async function clickAny(ctx, res) {
     if (/login|anmelden|sign in|log in to shopify/i.test(body) && !/Smart|Kampagne|campaign|Budget|Ziel/i.test(body)) {
       writeT('LOGIN-WAND: brave-agent nicht bei admin.shopify.com eingeloggt. ' + (await controls(p))); await stamp('LOGIN-WAND: brave-agent-Profil ist NICHT bei admin.shopify.com eingeloggt -> dort 1x einloggen. ' + (await controls(p))); process.exit(0);
     }
+    // SMART+-FORMULAR (single-page, im bytegration-iframe). Felder gezielt befuellen, Trace nach jedem Schritt.
     let fr = await bestFrame(p);
-    T('start ' + (await controls(fr)));
-    // Schritt 1: Start/Weiter (Smart+ auswaehlen falls Auswahl) — Frame nach jeder Navigation neu waehlen
-    await clickAny(fr, [/smart\+?/i, /create campaign|kampagne erstellen/i, /get started|los geht/i, /continue|weiter|next/i]);
+    T('form ' + (await controls(fr)));
+    // 1) Produkt-Typ = Sammlung
+    const c1 = await clickAny(fr, [/^Sammlung$/i, /^Collection$/i]); await p.waitForTimeout(1500); fr = await bestFrame(p);
+    T('p1-sammlung click=' + c1 + ' ' + (await controls(fr)));
+    // 2) Aktivitaetsname
+    let named = false; try { const nm = fr.getByPlaceholder(/Aktivitätsname|activity name|Kampagnenname/i).first(); if (await nm.count()) { await nm.fill('Wasserfest CH Juni'); named = true; } } catch {}
+    T('p2-name set=' + named);
+    // 3) Produkt auswaehlen -> Picker, "wasserfest" suchen + waehlen + bestaetigen
+    const c3 = await clickAny(fr, [/Produkt auswählen|Produkte auswählen|Sammlung auswählen|select product|select collection/i]); await p.waitForTimeout(3000); let pf = await bestFrame(p);
+    T('p3-picker click=' + c3 + ' ' + (await controls(pf)));
+    try { const sb = pf.locator('input[type=search],input[type=text]').first(); if (await sb.count()) { await sb.fill('wasserfest'); await p.waitForTimeout(2500); } } catch {}
+    T('p3b-suche ' + (await controls(pf)));
+    await clickAny(pf, [/wasserfest/i]); await p.waitForTimeout(800);
+    await clickAny(pf, [/Hinzufügen|Auswählen|Bestätigen|Add\b|Done|Fertig|Speichern|Übernehmen/i]); await p.waitForTimeout(2000); fr = await bestFrame(p);
+    T('p3c-nach-picker ' + (await controls(fr)));
+    // 4) Optimierungsereignis -> In den Warenkorb / Add to Cart
+    await clickAny(fr, [/Optimierungsereignis|Optimierungs|optimization event|Please select/i]); await p.waitForTimeout(1200);
+    await clickAny(await bestFrame(p), [/In den Warenkorb|Warenkorb|Add to Cart|Add to cart/i]); await p.waitForTimeout(1000); fr = await bestFrame(p);
+    T('p4-event ' + (await controls(fr)));
+    // 5) Identitaet -> erste Option
+    await clickAny(fr, [/Identität auswählen|Identität|identity/i]); await p.waitForTimeout(1000); pf = await bestFrame(p);
+    T('p5-identitaet ' + (await controls(pf)));
+    // 6) Budget 15 (falls ein Zahlenfeld existiert)
     fr = await bestFrame(p);
-    T('s1 ' + (await controls(fr)));
-    // Schritt 2: Ziel
-    await clickAny(fr, [/traffic|besuche|website/i, /sales|verkäufe|conversions/i]);
-    await clickAny(fr, [/continue|weiter|next/i]);
-    fr = await bestFrame(p);
-    T('s2-ziel ' + (await controls(fr)));
-    // Schritt 3: Budget 15 in ein Zahlen-Input
-    try { const ni = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await ni.count()) { await ni.fill('15'); T('budget 15 gesetzt'); } } catch {}
-    await clickAny(fr, [/continue|weiter|next/i]);
-    fr = await bestFrame(p);
-    T('s3-budget ' + (await controls(fr)));
-    // Schritt 4: pre-submit Zustand
+    try { const bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await bi.count()) { await bi.fill('15'); T('p6-budget 15 gesetzt'); } else T('p6-budget KEIN Zahlenfeld sichtbar'); } catch { T('p6-budget Fehler'); }
     T('PRE-SUBMIT ' + (await controls(fr)));
     if (GO) {
-      const sent = await clickAny(fr, [/veröffentlichen|publish|launch|absenden|senden|kampagne starten|submit/i]);
-      T(sent ? 'GO: abgesendet' : 'GO: Senden-Button nicht gefunden');
+      const sent = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch|absenden|kampagne starten|submit/i]);
+      T(sent ? 'GO: Senden geklickt' : 'GO: Senden-Button nicht gefunden');
     } else T('DRY: stoppe vor Senden (kein Spend)');
   } catch (e) { T('Fehler: ' + String(e).slice(0, 90)); }
   finally {
