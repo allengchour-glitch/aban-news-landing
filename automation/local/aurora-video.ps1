@@ -16,13 +16,22 @@ $img = "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3d48340e-cc7f-4d1
 $prompt = "Cinematic luxury jewelry commercial. The rainbow-gemstone necklace slowly rotates and turns, dazzling sparkle and glossy light reflections across the colourful stones. Elegant dark background with soft golden bokeh and a subtle aurora light glow. Slow smooth stabilized motion. The necklace stays true to the reference image, same colours and design, no distortion. No text, no logo, no watermark. Vertical 9:16, high quality."
 $out = "reels/veo-aurora.mp4"
 
+$log = "reports/aurora-bat.log"
+New-Item -ItemType Directory -Force -Path reports | Out-Null
+"=== aurora-video.ps1 @ $(Get-Date -Format o) ===" | Out-File -Encoding utf8 $log
+
 Write-Host "Schritt 1: Veo via Gemini-Guthaben - rendert, kann 1 bis 6 Minuten dauern..."
-node automation/veo_product_clip.mjs --image $img --prompt $prompt --aspect 9:16 --seconds 8 --out $out
+node automation/veo_product_clip.mjs --image $img --prompt $prompt --aspect 9:16 --seconds 8 --out $out 2>&1 | Tee-Object -FilePath $log -Append
 
 if (-not (Test-Path $out)) {
   Write-Host "Veo kein Output. Schritt 2: Fallback fal Seedance..."
-  node automation/seedance_video.mjs --image $img --prompt $prompt --res 720p --dur 5 --ar 9:16 --out $out
+  node automation/seedance_video.mjs --image $img --prompt $prompt --res 720p --dur 5 --ar 9:16 --out $out 2>&1 | Tee-Object -FilePath $log -Append
 }
+# Log IMMER zurueck pushen (auch bei Fehler), damit Claude die Ursache sieht
+git add -f $log 2>$null
+git commit -m "aurora-video log" 2>$null
+git pull --rebase origin claude/luxestyle-product-CizQ6 2>$null
+git push origin claude/luxestyle-product-CizQ6 2>$null
 
 if (Test-Path $out) {
   $mb = [math]::Round((Get-Item $out).Length / 1MB, 2)
