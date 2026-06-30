@@ -2,6 +2,9 @@
 
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
+> 🤖 **Dann die `AUTOBOT-LERNSCHLEIFE` (am Ende von SHARED-MEMORY) verinnerlichen** — 7 Dauerregeln, damit
+> jede Session schärfer wird: verifizieren vor „Defekt", am echten Signal messen (Events/Bestellungen, nicht
+> HTML/Annahmen), MCP-Tools jede Session neu testen, recherchieren statt raten, jede Lehre sofort ins Memory.
 
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
