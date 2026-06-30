@@ -2615,3 +2615,16 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   - **⚠️ Collection-Quirk:** `geschenke-unter-30` hat Tag-Regel `tag:geschenk` (NICHT Preis!) → teure „geschenk"-Produkte landen fälschlich drin.
     Drum bei teuren Stücken generisches „geschenk"-Tag WEGLASSEN; Preis-Collections (geschenke-unter-50/100-franken) greifen korrekt.
 - Ledger: `dropship/cj_niche_done.txt` (+5 pids).
+
+---
+**💎🎬 2026-06-30 (Moissanit-Linie angereichert + Kollektion + VIDEO-Lehre — „nimm videos mit, alle bilder texte"):**
+- **Alle Bilder ergänzt:** Die 5 Moissanit-Stücke haben jetzt volle Galerien (8/7/4/6/6 Bilder) via `productCreateMedia` aus CJ `productImageSet`. 0 Fehler.
+- **✅ Kollektion erstellt + publiziert:** `/collections/moissanit-schmuck` („💎 Moissanit-Schmuck — die clevere Diamant-Alternative",
+  Collection-ID 689518379393, manuell, 5 Produkte) mit Premium-SEO (Long-Tail „Moissanit-Schmuck Schweiz / Diamant-Alternative / 925 Silber").
+  Marktfähige Landingpage für den Gewinner-Winkel.
+- **🎬 VIDEO-LEHRE (wichtig):** (1) **CJ-Produkte haben fast nie Videos** — `productVideo` war bei allen geprüften Schmuck- UND Gadget-Produkten (16+) LEER.
+  (2) **Cloud-Session hat KEIN ffmpeg** → kann selbst keine Slideshow-Reels rendern (Musik `luxe-premium.wav` ist da, aber kein Encoder).
+  → **Produkt-Videos laufen NUR über die Reel-Pipeline:** Cloudflare-Autopilot (Luma image-to-video, PR #851) ODER PC-Claude/lokal mit ffmpeg.
+  Für die 5 Moissanit-Heroes: PC-Claude/Cloudflare kann aus den jetzt vorhandenen Galerie-Bildern Reels bauen (On-Screen-Text + luxe-premium.wav, VIDEO-PRAEFERENZEN).
+- **🔑 CJ-Premium-Schmuck-Nische ERSCHÖPFT:** Nachsuche (tennis bracelet/pendant/halo ring) ergab nur Dubletten der schon importierten 5-6.
+  Das gute Material ist endlich — NICHT künstlich weiter-importieren (gleiche Lehre wie BigBuy). Nächste Charge → andere Gewinner-Kategorie (Kleider/Uhren).
