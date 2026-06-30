@@ -1,4 +1,4 @@
-2026-06-30T17:49:08.202Z DRY
+2026-06-30T20:47:06.588Z DRY
 DIAG topurl=admin.shopify.com/store/luxestyle-ch/apps/tik bodylen=393 frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | shopify.bytegration.com/ad_creation?em#11 | solution.tiktokshop.com/tts_open_widge#0]
 form BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 p1-sammlung click=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
