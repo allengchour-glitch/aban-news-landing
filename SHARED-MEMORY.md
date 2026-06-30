@@ -2461,3 +2461,11 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - CATS=massage,beautydevice,tauchen,velo PER=3 → 10 Keeper (beautydevice nur noch 1 → wird tapped, 46 Kand. fast durch).
 - massage: Nacken-/Gesichts-/Anti-Cellulite-Geräte. tauchen: 3 Erwachsenen-Schwimmbrillen (polarisiert, Sommer). velo: Fahrradkorbhalter + 2 Lazer-Helme (CHF87.90/92.90, Markt-ok). Distinct, sane.
 - **Loop-Strategie:** Rotiere die 4–6 sauberen Reststock-Kategorien (massage/tauchen/velo/wasserstrand/luftreiniger/home) → liefert zuverlässig 8–12 Keeper/Runde ohne Fehlmatch. beautydevice fast leer.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 23 — Loop, +11 Keeper; ⚠️ Loop degradiert leicht):**
+- CATS=wasserstrand,luftreiniger,home,massage PER=3 → 12, **1 gedraftet** (Adult), 2 Titel gefixt.
+- **🔴 massage zieht AUCH Adult-Produkte:** „Intensives Massagegerät Liebe Panty Rosa" → Intim-Produkt → gedraftet (wie yoga-Sex-Toy). **Lehre: massage-Anker bei „Panty/Liebe/sinnlich/intim" bannen.**
+- **🔴 Murks-Titel von Gemini:** „Einfach Aufpumpen: Dein Luft-Shop" + „Wasserschlacht: Dein Ballon-Shop" → gefixt (Luftpumpe / Wasserballons-Set).
+- home = noch ein Kissenbezug (6.) + Deko-Affen. luftreiniger = teure Marken (DeLonghi CHF301.90, Xiaomi CHF148.90, preis-transparent grenzwertig). 
+- **⚠️ LOOP DEGRADIERT:** mehr QA-Cleanup/Runde (Adult/Murks-Titel/Repetition/teure Marken), weniger saubere Keeper. Die wirklich guten Picks sind raus. **Empfehlung: Loop verlangsamen/auf Wächter umschalten.** Ledger: $LED.
