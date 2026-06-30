@@ -81,6 +81,15 @@ canvas{display:block}
   <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter →</a></p>
 </div>
 
+<div class="overlay hide" id="win">
+  <div class="tag">Sieg</div>
+  <h1 id="winT" class="rec">🏆 DURCHGESPIELT!</h1>
+  <p id="winV"></p>
+  <button class="btn" id="winAgainBtn">Nochmal ▶</button>
+  <button class="btn ghost" id="winShareBtn">Teilen 📋</button>
+  <p class="small">Geschafft! Mehr Spiele: <a href="/spiele.html">spiele</a></p>
+</div>
+
 <script src="/js/vendor/three.min.js"></script>
 <script>
 (function(){
@@ -154,7 +163,7 @@ var S={};
 function reset(){
   S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:5,
      dmg:1,speed:9,multishot:1,pickup:3.2,area:1,haste:1,
-     spawnT:0,spawnEvery:1.4,bossT:30,weapons:{bolt:1},wt:{},bladeA:0,ups:{}};
+     spawnT:0,spawnEvery:1.4,bossT:30,phase:1,finalBoss:false,won:false,weapons:{bolt:1},wt:{},bladeA:0,ups:{}};
   document.getElementById("upRow").innerHTML="";
   [bullets,enemies,orbs,fx,blades].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
   player.position.set(0,0.9,0);
@@ -185,12 +194,19 @@ function spawnEnemy(boss){
     else { en.hp=1+Math.floor(S.t/25); en.spd=2.4+rnd()*1.2+S.t*0.02; en.xp=1; en.m.scale.set(1,1,1);
       en.m.material.color.setHex(0xff5577); en.m.material.emissive.setHex(0xaa1133); }
   }
-  en.baseEmissive=en.m.material.emissive.getHex(); en.flash=0;
+  en.baseEmissive=en.m.material.emissive.getHex(); en.flash=0; en.finalBoss=false;
 }
 function announce(txt){var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:18%;left:0;right:0;text-align:center;font-weight:800;font-size:1.6rem;color:#ff7ad9;text-shadow:0 2px 10px #000;pointer-events:none;transition:opacity .4s";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";setTimeout(function(){c.style.opacity="0";},1600);}
+function mmss(t){var s=Math.max(0,Math.floor(t));return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2);}
+var RUN_T=600, PHASE_T=120; // 10-Min-Run, 5 Phasen
+function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"sawtooth",.12);shake=1.0;
+  var en=getMesh(enemies,enemyMesh);en.active=true;en.m.visible=true;en.boss=true;en.finalBoss=true;
+  var a=rnd()*6.283;en.m.position.set(player.position.x+Math.cos(a)*ARENA*0.8,0.9,player.position.z+Math.sin(a)*ARENA*0.8);
+  en.hp=800+S.kills*1.2;en.spd=2.4;en.xp=50;en.m.scale.set(4,4,4);
+  en.m.material.color.setHex(0xffd166);en.m.material.emissive.setHex(0xffaa00);en.baseEmissive=0xffaa00;en.flash=0;}
 // ---------- Waffen-System: mehrere Waffen (je 6 Level) → Build-Vielfalt ----------
 function spawnBullet(x,z,ang,spd,dmg,life,pierce,color){var b=getMesh(bullets,bulletMesh);b.active=true;b.m.visible=true;b.m.position.set(x,0.9,z);b.vx=Math.cos(ang)*spd;b.vz=Math.sin(ang)*spd;b.life=life;b.dmg=dmg;b.pierce=pierce||0;b.m.material.color.setHex(color||0x88ffff);b.m.material.emissive.setHex(color||0x88ffff);}
-function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;announce("Boss besiegt! 🏆");}beep(en.boss?160:300,.1,"sawtooth",.06);}
+function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;announce("Boss besiegt! 🏆");}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
 function hitEnemy(en,dmg){if(!en.active)return;en.hp-=dmg;if(en.hp<=0)killEnemy(en);else en.flash=0.09;}
 function novaFx(R){var n=20;for(var i=0;i<n;i++){var a=i/n*6.283;var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.18,6,6),mat(0x9bd0ff,0x9bd0ff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(0x9bd0ff);p.m.material.emissive.setHex(0x9bd0ff);p.m.position.set(player.position.x,0.9,player.position.z);p.vx=Math.cos(a)*R*2.4;p.vz=Math.sin(a)*R*2.4;p.vy=0;p.life=0.4;}}
 function chainLightning(L){var hops=2+L,used=[],fx0=player.position.x,fz0=player.position.z;
@@ -273,7 +289,7 @@ function renderBloom(){
 function resizeBloom(){rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
 
 var shake=0,running=false,last=performance.now(),hurt=0,hurtEl=document.getElementById("hurt");
-function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
+function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;
   var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");}
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";}
@@ -283,10 +299,15 @@ function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;var s=
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner besiegt";
   document.getElementById("over").classList.remove("hide");}
+function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;
+  document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner besiegt";
+  document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);}
 
 document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
 document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
 document.getElementById("againBtn").onclick=start;
+document.getElementById("winAgainBtn").onclick=start;
+document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor 🏆 DURCHGESPIELT in "+mmss(S.t)+" — Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("winShareBtn").textContent="Kopiert 📋";});};
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
 function loop(now){
@@ -306,10 +327,15 @@ function loop(now){
     glow.position.set(player.position.x,2,player.position.z);
     // Waffen (mehrere, je eigener Takt) + Orbit-Klingen
     weaponTick(dt); updateBlades(dt);
-    // Spawnen
-    S.spawnT-=dt; var rate=Math.max(0.25,S.spawnEvery-S.t*0.012);
-    if(S.spawnT<=0){spawnEnemy();if(S.t>20)spawnEnemy();S.spawnT=rate;}
-    if(S.t>=S.bossT){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=35;beep(120,.4,"sawtooth",.1);}
+    // Phasen-Struktur (5×120s) → härter; danach Endboss
+    var ph=Math.min(5,1+Math.floor(S.t/PHASE_T));
+    if(ph!==S.phase){S.phase=ph;announce("⚠ PHASE "+ph+"/5 — schneller!");beep(160,.3,"sawtooth",.08);}
+    if(!S.finalBoss){
+      S.spawnT-=dt; var rate=Math.max(0.16,(S.spawnEvery-S.t*0.012)-(S.phase-1)*0.12);
+      if(S.spawnT<=0){spawnEnemy();if(S.t>20)spawnEnemy();if(S.phase>=4)spawnEnemy();S.spawnT=rate;}
+      if(S.t>=S.bossT){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);}
+      if(S.t>=RUN_T){S.finalBoss=true;spawnFinalBoss();}
+    }
     // Bullets
     for(var i=0;i<bullets.length;i++){var b=bullets[i];if(!b.active)continue;b.m.position.x+=b.vx*dt;b.m.position.z+=b.vz*dt;b.life-=dt;if(b.life<=0){b.active=false;b.m.visible=false;b.m.position.y=-99;continue;}
       for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-b.m.position.x,dz=en.m.position.z-b.m.position.z;if(dx*dx+dz*dz<1.2){hitEnemy(en,b.dmg);if(b.pierce>0){b.pierce--;}else{b.active=false;b.m.visible=false;b.m.position.y=-99;}break;}}
@@ -337,7 +363,7 @@ function loop(now){
   renderBloom();
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
-function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=Math.floor(S.t)+"s";document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";}
+function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";}
 reset(); showBest(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
 })();
