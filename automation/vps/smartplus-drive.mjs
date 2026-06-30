@@ -250,8 +250,13 @@ async function clickAny(ctx, res) {
     for (const f of p.frames()) { try { const at = f.getByPlaceholder(/Werbetext|Anzeigentext|ad text|Gib Werbetext/i).first(); if (await at.count()) { await at.fill('Bliebt das würkli Gold? Wasserfeschte Schmuck wo nid alauft. -10% mit Code WELCOME10. Jetzt entdecke!'); adtextSet = true; break; } } catch {} }
     T(adtextSet ? 'p7-adtext gesetzt' : 'p7-adtext kein Feld');
     let videoUp = false;
-    try { let fileInput = null; for (const f of p.frames()) { const fi = await f.$('input[type=file]'); if (fi) { fileInput = fi; break; } } if (fileInput) { const vid = (await import('node:fs')).existsSync('reels/aurora-hero-final.mp4') ? 'reels/aurora-hero-final.mp4' : 'reels/wasserfest-tiktok-ready.mp4'; await fileInput.setInputFiles(vid); videoUp = true; await p.waitForTimeout(10000); } } catch (e) { T('p7-video err ' + String(e).slice(0, 40)); }
-    T(videoUp ? 'p7-video Upload gestartet' : 'p7-video kein Input');
+    const vidFile = (await import('node:fs')).existsSync('reels/aurora-hero-final.mp4') ? 'reels/aurora-hero-final.mp4' : 'reels/wasserfest-tiktok-ready.mp4';
+    // 1) direkter input[type=file] (oft hidden im DOM)
+    try { for (const f of p.frames()) { const fi = await f.$('input[type=file]'); if (fi) { await fi.setInputFiles(vidFile); videoUp = true; break; } } } catch {}
+    // 2) FIX 2026-06-30: sonst erst "Hochladen" klicken -> Datei-Dialog (filechooser) abfangen + Datei setzen.
+    if (!videoUp) { try { const fcP = p.waitForEvent('filechooser', { timeout: 9000 }).catch(() => null); await clickAny(fr, [/Hochladen|hochladen|upload|Video hochladen|Lade eine vorhandene/i]); const fc = await fcP; if (fc) { await fc.setFiles(vidFile); videoUp = true; } } catch (e) { T('p7-video err ' + String(e).slice(0, 40)); } }
+    if (videoUp) await p.waitForTimeout(10000);
+    T(videoUp ? 'p7-video Upload gestartet' : 'p7-video kein Input/Button');
     fr = await bestFrame(p);
     T('PRE-SUBMIT ' + (await controls(fr)));
     if (GO) {
