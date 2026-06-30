@@ -9,6 +9,7 @@
  * Lauf: ( set -a; source /tmp/lux_env.sh; source /tmp/shopify_creds.env; set +a; GROUPS=parfum,skincare node automation/bigbuy_brand_fill.mjs )
  */
 import fs from 'node:fs';
+import { buildGalaxusDesc } from './lib/galaxus_desc.mjs';
 const BB=(process.env.BIGBUY_API_KEY||'').trim();
 const SHOP=(process.env.SHOPIFY_SHOP||'au3j0y-hq.myshopify.com').replace(/^https?:\/\//,'').replace(/\/.*/,'');
 const CID=process.env.SHOPIFY_CLIENT_ID, CSEC=process.env.SHOPIFY_CLIENT_SECRET, API='2025-01';
@@ -77,7 +78,7 @@ for(const gk of want){
   const title=clean(p.name); if(title.length<5)continue;
   if(DRY){console.log(`  [DRY] CHF${chf(eur)} | ${title}`);got++;total++;continue;}
   const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,48)+'-bb'+p.id;
-  const desc=`<p><strong>${title}</strong> — ${g.blurb}, 100 % Original.</p><ul><li>✅ Original-Markenware</li><li>🚚 <strong>EU-Lager – Lieferung ca. 3–7 Tage</strong></li><li>🎁 Auch als Geschenk beliebt</li></ul><p>🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · <strong>WELCOME10</strong> = –10 %</p>`;
+  const desc=buildGalaxusDesc(p.description, {title, blurb:g.blurb}); // Galaxus-Stil: Intro + Specs + Trust
   const input={title,handle:slug,productType:g.type,vendor:'LuxeStyle',status:'ACTIVE',tags:g.tags,descriptionHtml:desc,
    seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – ${g.blurb}, 100% Original bei LuxeStyle Schweiz. EU-Lager, schnelle Lieferung. Gratis-Versand ab CHF 65.`).slice(0,320)},
    productOptions:[{name:'Variante',values:[{name:'Standard'}]}],

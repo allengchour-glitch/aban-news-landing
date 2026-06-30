@@ -2714,3 +2714,13 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **Befund:** Die MEISTEN Collections haben bereits reiche Texte (damen-mode/premium-schmuck/wasserfester-schmuck/hautpflege/beauty-makeup = top) → nur die dünnen gezielt gefixt, gute nicht gechurnt.
 - **⚠️ Live-Theme/Homepage-Texte:** via MCP NICHT editierbar (MAIN-Theme-Write gesperrt) → Homepage-Copy müsste über Theme-Customizer/PC-Claude. Collection-Texte (frei via API) sind der Hebel, den ich habe.
 - **Welle-1-Marken-Import LÄUFT:** 244 Produkte gescannt (Parfum/Skincare/Make-up/Uhren/Taschen/Sonnenbrillen), autorun2 legt sie an (EU-Lager-Marken: Chanel/Burberry/Paco Rabanne/CK…). Lehre: bb_big_scan-Datei-Ansatz war fragil (Timing) → künftig `bigbuy_brand_fill.mjs` (inline, kein Zwischenfile).
+
+---
+**📖 2026-06-30 (GALAXUS-BESCHREIBUNGEN + Welle-1 244 Marken fertig):**
+- **✅ Welle 1: 244 Marken-Produkte importiert** (Parfum/Skincare/Make-up/Uhren/Taschen/Sonnenbrillen — Chanel/Dior/CK/Burberry/Paco Rabanne/Casio/Michael Kors/Ray-Ban…), EU-Lager, auf 6 Kanälen. Ledger +244.
+- **🆕 GALAXUS-FORMATTER `automation/lib/galaxus_desc.mjs`** — baut aus BigBuy-Rohdaten (Feld `description` aus productsinformation) Galaxus-Stil-Beschreibungen:
+  **Marketing-Intro + strukturierte „Eigenschaften"-Specs-Liste** (Geschlecht/Art/Kapazität/Material/Inhaltsstoffe…) + Trust/Versand-Block. Entity-Decode + Intro-Fallback.
+- **🆕 `automation/bb_galaxus_descriptions.mjs`** — Backfill: findet BigBuy-Produkte (SKU `BB-*`/`bb-*`, Map per id UND sku), re-beschreibt Galaxus-Stil.
+  **WICHTIG: nur `-tag:ls-ai-deep`** (360 neue), die 3.784 AI-Deep-Produkte der anderen Session bleiben unberührt. (PRODUCT_QUERY override, DRY=1.)
+- **`bigbuy_brand_fill.mjs` nutzt jetzt den Galaxus-Formatter** → künftige Marken-Imports kriegen direkt Galaxus-Beschreibungen (kein generisches Template mehr).
+- **Lehre:** BigBuy `productsinformation.description` enthält Marketing + inline „Label: Value"-Specs → ideal für Galaxus-Qualität, ohne Extra-API-Call (steckt schon im Katalog-Load).
