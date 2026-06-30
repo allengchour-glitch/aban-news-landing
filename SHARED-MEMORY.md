@@ -2682,3 +2682,16 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   Max Factor, Artdeco, Beter-Tools, InnovaGoods-UV-Lampe. 2.054 Nagel-Treffer. Scan-Skript `/tmp/bb_beauty_scan.mjs` (Marken-Filter, Nagel/Wimper/Make-up).
   ⚠️ Viele BigBuy-Beauty haben nur 1 (Profi-)Bild — ok bei Marken. **BigBuy-Beauty-Import folgt** (Marken-Pflege/Make-up als Premium-Ergänzung zu CJ-Trend).
 - **LEHRE:** Für Beauty ist **BigBuy (Marken, EU-Lager) > CJ** bei Pflege/Make-up; **CJ > BigBuy** bei Trend/Gadgets (Press-on, magnetische Wimpern, Lampen). Kombi nutzen.
+
+---
+**💄 2026-06-30 (BEAUTY VOLL — +26 BigBuy-Marken-Beauty, EU-Lager; Nägel/Wimpern/Make-up komplett):**
+- **+26 echte Marken-Beauty von BigBuy (EU-Lager → Lieferung 3–7 Tage, viel besser als CJ 8–16!):**
+  - **Nägel (9):** InnovaGoods UV-Lampe, **Mavala** (Nagelhärter/Nagelschutz – Schweizer Marke!), Artdeco Nagelglanz, **Revlon/Essie** Nagellack, Beter Nagelknipser, Mia Cosmetics.
+  - **Wimpern/Mascara (7):** **Chanel** Le Volume CHF66.90, **L'Oréal** Volume Million Lashes, **Benefit**, **Elizabeth Arden**, Maybelline, Artdeco ×2.
+  - **Make-up (10):** Revlon/Max Factor Rouge, Artdeco Lidschatten, Rimmel Kajal, Eyeliner (Artdeco/Max Factor/NYX/Maybelline).
+- **Import via `push_prepared.mjs`** (Generator putzt BigBuy-Namen → v4_create/_media; EU-Lager-Versandzeile in Description). 26/26, 0 Fehler.
+- **Routing:** Nagel-Tools→Nägel-Collection · Mascara→Wimpern · Eyeliner/Rouge/Lidschatten/Nagellack→„💋 Make-up & Kosmetik" (TITLE-Regel, +Wimperntusche/Kajal ergänzt, jetzt 102).
+- **GESAMT-BEAUTY heute:** 11 CJ (Lampen/Press-on/Wimpern-Trend) + 26 BigBuy-Marken = **37 neue Beauty-Produkte**, 3 Kategorien (Nägel/Wimpern/Make-up).
+- **📌 GMC-CSV (frisch, 30.06.) gegengeprüft:** „Unsupported image type" (13 Produkte) = **alle gelöscht/null in Shopify** → veraltete Feed-Einträge, fallen beim Sync weg.
+  „Product page unavailable" = fr-Locale, löst sich per Review. **Nichts aktiv zu fixen — Feed hinkt nach.** Katalog jetzt 5.120 aktiv.
+- **Ledger:** dropship/bigbuy_done.txt (+26). BigBuy-Beauty-Vein riesig (2.054 Nagel + viele Make-up-Marken) → viele weitere Runden möglich.
