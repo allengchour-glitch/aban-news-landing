@@ -2644,3 +2644,17 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   - **⚠️ Offen (nur via frischem GMC-Export targetbar):** „Unsupported image type [image_link]" 99 (Screenshot) — CSV-Beispiele waren gelöscht; ohne aktuelle Item-Liste nicht zuordenbar.
     Optionaler Beschleuniger (User/PC-Claude im Google-Channel/GMC): fr/en/it-Sprach-Targeting im Feed entfernen → Google prüft die toten URLs gar nicht erst.
 - Ledger: cj_niche_done.txt (+2).
+
+---
+**💎🔁 2026-06-30 (CJ-LOOP DURCHBRUCH — Kategorie-Browse statt Keyword: +10 Premium-S925, Vein ist TIEF):**
+- **🔑 SCHLÜSSEL-LEHRE:** CJ-**Keyword-Suche taugt nicht** (liefert Grab-Bag-Junk: Bead-Ketten, Rohstein, sogar Honigwaben-Pfanne).
+  **Stattdessen per `categoryId` browsen!** Die Premium-Vein = Kategorie **`552F095A-904C-40E4-A43B-0CD1CE15D29F`**
+  („Jewelry & Watches / Fine Jewelry / 925 Silver Jewelry", Lieferant „Tongshang Lianda") = **12.011 saubere S925-Stücke**.
+  Damit ist die frühere „Nische erschöpft"-Annahme widerlegt — es war nur die schlechte Keyword-Suche.
+- **✅ +10 Premium-S925 angelegt** (CHF 54.90–117.90, je volle Galerie 4–7 Bilder, handgeschriebene DE-Titel+SEO, 6 Kanäle, in premium-schmuck):
+  Moissanit-Ohrstecker Duo/Schleife/Trilogie/Bogen, Ohrhänger Halo, Schmetterling-Marquise · Edelstein-Halskette/Kreuz/Blüten-Halo/Kleeblatt (Rubin/Saphir).
+- **LOOP-REZEPT (für nächste Runden):** `product/list?categoryId=552F095A…&pageNum=N` paginieren → Filter (S925 im Namen, Preis 8–90, Bilder≥3,
+  Dedup via `cj_niche_done.txt`, ban men/anklet/moq) → Bilder aus `productImageSet` → productSet + productCreateMedia + publish + collectionAdd.
+  Skript-Muster in /tmp (cj_925batch picker + v_create/v_media generator). Pro Runde ~10 Stück sauber. **Vein reicht für viele Runden.**
+- **Andere Premium-Kategorien zum Browsen (CJ Fine Jewelry):** via product/query.categoryId weiterer Stücke entdeckbar (Uhren, Gold-Vermeil etc.).
+- Ledger cj_niche_done.txt (+10). **CJ-Schmuck-Total dieser Session: 17 Premium-Stücke** (5 Moissanit + 2 Edelstein + 10 neue).
