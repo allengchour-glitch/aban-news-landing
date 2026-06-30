@@ -2535,3 +2535,28 @@ Live-Storefront `luxestyle.ch` HTML gezogen + Tracking-Snippets seziert. **Endli
   24 sub-/sg-/Spezial-Collections (sub-kleider/taschen/uhren/halsketten, sg-*, wm-fussball-2026, klima-ventilatoren, unter-chf-25=1596, erste-august=256) alle ≥3 Produkte.
 - **📌 Ergebnis:** Shop-seitig nichts Defektes mehr — Qualitätsarbeit ist verifiziert abgeschlossen. Einziger offener Hebel bleibt TRAFFIC/Tracking
   (Port-Bot wartet auf User-Ausführung). Weiteres Shop-Polishing = ins Leere; nicht fortsetzen.
+
+---
+**🤖 2026-06-30 (AUTOBOT-LERNSCHLEIFE + Tracking-Wahrheit — „update und teile memory das ihr autobot werded"):**
+
+### 🔬 TRACKING — die KORRIGIERTE Wahrheit (vorherige Diagnose war halb falsch — wichtig!)
+- **`girally_facebook_id=''` im Theme = TOTER Alt-Schnipsel, KEINE girally-App installiert** (PC-Claude hat alle 32 Apps + Kanäle durchsucht). `fbq('init','')` ist ein harmloser No-Op. **Das echte FB-Pixel läuft über den nativen Vertriebskanal „Facebook & Instagram" + Einstellungen→Kundenereignisse** („Verbunden / Optimiert"). → Lehre: aus einem HTML-Schnipsel NICHT „Pixel tot" schliessen; erst prüfen, wo das Tracking WIRKLICH herkommt.
+- **Meta-Pixel-IDs (aus Events Manager):** „LuxeStyle Social" = **`1680844973132194`** (DAS verwenden) · „Alleng Chour – Pixel" = `1638023400757046`. Beide zeigen **0 Events** — **0 Events ≠ kaputt, evtl. einfach 0 Besucher.** Einziger echter Beweis = **Testereignis** (Events Manager → Testereignisse + luxestyle.ch öffnen). Niemals aus „0 Events" oder HTML-String auf Defekt schliessen.
+- **Klaviyo:** Account `website_url=luxestyle.com.co` (falsch, →.ch) + Währung `USD` (→CHF); Onsite-`klaviyo.js?company_id=XWqMAD` lädt nicht (nur Subscribe-Form). Fix = Klaviyo→Settings→Account + Integration→Onsite aktivieren. **Kein update_account-Tool im MCP → UI/Browser-only.**
+- **TikTok-Pixel LEBT:** `D8EKVR3C77U6KT5BTBD0` → bei Budget zuerst TikTok.
+- **3-Akteur-Modell klar geworden:** (a) diese Cloud-Session = Katalog/Tooling/Infra, (b) andere Cloud-Session = Imports/Posts/SEO/Produkte, (c) **PC-Claude (Brave Port 9222)** = Browser/App-Setup (Meta/Klaviyo/Shopify-Apps). Browser-Aufgaben → Prompt an PC-Claude (Vorlage: `dropship/BROWSER-CLAUDE-AUFTRAG-TRACKING.md`).
+
+### ✅ Diese Session live erledigt
+- **WELCOME10-Ablauf** 31.08.2026 → **31.12.2027** verlängert (beworbener Code wäre sonst gestorben).
+- **Importer-ADULT_BAN** (`bigbuy_import.mjs`): blockt prostat/dildo/vibrator/love-panty/screaming-o/… global → keine Sex-Toy-Leaks mehr.
+- **QA-Sweep:** 0 Adult-Produkte ACTIVE, kein toter Menü-Link (48 Collections geprüft), Bilder/Titel sauber, Deep-Desc 100%.
+- **PC-Claude fertig (3 Conversion-Hebel):** Search&Discovery-Filter (Produkttyp+Marke+5 Synonyme) · Judge.me-Sterne (keine Fake-Reviews, 0=normal) · SEOWILL Sticky-ATC (⚠️ Free-Plan 25 Klicks/Mt, erst bei Traffic upgraden).
+
+### 🧠 AUTOBOT-LERNSCHLEIFE (DAUERHAFT — so wird jede Session besser; vor dem Loslegen lesen)
+1. **VERIFIZIEREN VOR „DEFEKT".** Zweimal diese Session fast falsch gehandelt: D&G-Link galt als „kaputt" (war live gültig, 8 Produkte); girally galt als „Pixel tot" (war toter Schnipsel). **Regel:** vor jedem Fix/Schluss die LIVE-Quelle prüfen (`collectionByHandle`, Test-Event, echte App-Liste, Live-HTML) — nie aus Erinnerung/Annahme.
+2. **AM ECHTEN SIGNAL MESSEN,** nicht an Proxys. Erfolg = Events kommen an / Bestellungen / Checkout — NICHT HTML-Strings, productsCount, „sieht fertig aus". 0 von etwas kann „kaputt" ODER „kein Traffic" heissen → mit Testereignis/Test-Order entscheiden.
+3. **FÄHIGKEITEN JEDE SESSION NEU TESTEN.** Tools ändern sich: Semrush-MCP (`keyword_research`/`organic_research`) ist jetzt geladen (früher „nicht im Plan") — also bei SEO/Recherche IMMER erst die MCP-Tools probieren statt aus dem Gedächtnis zu antworten. Gilt für alle MCPs (Klaviyo/Shopify/GitHub/Figma/Adobe…).
+4. **RECHERCHIEREN STATT RATEN.** Für Markt/Keyword/Trend/Wettbewerb: WebSearch + Semrush + die Playbooks (`dropship/YOUTUBE-LEARNINGS.md`, `MOMIKE-VIRAL-PLAYBOOK.md`, `SOCIAL-POSTS-WINNERS.md`) nutzen, dann handeln.
+5. **JEDE LEHRE SOFORT INS MEMORY.** Teuer Gelerntes (Fallen, IDs, was nur der User kann) hier festhalten, damit es die nächste Session NICHT neu lernt. Memory ist das Gehirn über Sessions hinweg.
+6. **NICHT INS LEERE OPTIMIEREN.** Wenn der Katalog/Shop verifiziert sauber ist (wie jetzt), NICHT Busywork erfinden — auf den echten Engpass pivotieren (aktuell: Traffic/Tracking, liegt am User + Pixel/Budget). Ehrlich sagen, was nur der User kann.
+7. **GIT bei geteiltem Checkout:** parallele Session bewegt denselben Branch → lokal kann zurückfallen. `git merge --ff-only origin/…` (sauber) statt `reset --hard` (geblockt). Vor Push immer `pull --rebase`; Memory-Konflikte = beide Blöcke behalten (Marker-Zeilen löschen).
