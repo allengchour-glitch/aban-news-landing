@@ -2706,3 +2706,11 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **`automation/push_prepared.mjs`** — generischer Importer für vorbereitete `<prefix>_create/_media/_pids.json` (CJ ODER BigBuy) → Shopify.
 - **Pattern für Loop/Fill:** Brand-Fill-Tool für BigBuy (deutsch, EU-Lager, skaliert) · für CJ: categoryId-Browse-Picker (/tmp) + push_prepared.
 - **Credentials:** nur in /tmp (lux_env.sh = BIGBUY_API_KEY/SHOPIFY_*; cj via email+apiKey 2534f19e…). NIE committen. Token frisch pro Lauf.
+
+---
+**📝 2026-06-30 (KATEGORIE-TEXTE angereichert + Welle-1-Import läuft):**
+- **7 dünne Collection-Beschreibungen auf volle Copy gehoben** (Lead + h3-Sektionen + ul + Trust + xlinks, im Shop-Muster):
+  naegel-manikuere, wimpern-lashes (neue Beauty-Kats), sonnenbrillen-damen, schmuck-sets, sub-massage, haustier-tech, pool.
+- **Befund:** Die MEISTEN Collections haben bereits reiche Texte (damen-mode/premium-schmuck/wasserfester-schmuck/hautpflege/beauty-makeup = top) → nur die dünnen gezielt gefixt, gute nicht gechurnt.
+- **⚠️ Live-Theme/Homepage-Texte:** via MCP NICHT editierbar (MAIN-Theme-Write gesperrt) → Homepage-Copy müsste über Theme-Customizer/PC-Claude. Collection-Texte (frei via API) sind der Hebel, den ich habe.
+- **Welle-1-Marken-Import LÄUFT:** 244 Produkte gescannt (Parfum/Skincare/Make-up/Uhren/Taschen/Sonnenbrillen), autorun2 legt sie an (EU-Lager-Marken: Chanel/Burberry/Paco Rabanne/CK…). Lehre: bb_big_scan-Datei-Ansatz war fragil (Timing) → künftig `bigbuy_brand_fill.mjs` (inline, kein Zwischenfile).
