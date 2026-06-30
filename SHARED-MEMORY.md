@@ -2695,3 +2695,14 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **📌 GMC-CSV (frisch, 30.06.) gegengeprüft:** „Unsupported image type" (13 Produkte) = **alle gelöscht/null in Shopify** → veraltete Feed-Einträge, fallen beim Sync weg.
   „Product page unavailable" = fr-Locale, löst sich per Review. **Nichts aktiv zu fixen — Feed hinkt nach.** Katalog jetzt 5.120 aktiv.
 - **Ledger:** dropship/bigbuy_done.txt (+26). BigBuy-Beauty-Vein riesig (2.054 Nagel + viele Make-up-Marken) → viele weitere Runden möglich.
+
+---
+**🔧 2026-06-30 (TOOLS gebaut — Fill-Pipeline als Repo-Tools, „installiere tools die helfen"):**
+- **`automation/bigbuy_brand_fill.mjs`** — EIN Befehl füllt den Shop mit echten BigBuy-Marken (EU-Lager). Scan (Katalog 1× laden) →
+  Titel putzen → productSet+Media+Publish(6 Kanäle) → Ledger. Dedup via bigbuy_done.txt. Marken-Katalog eingebaut:
+  parfum/skincare/makeup/haircare/uhr/tasche/sonnenbrille (echte Brands: Chanel/Dior/CK/Mavala/Casio/Michael Kors/Ray-Ban…).
+  Lauf: `( set -a; source /tmp/lux_env.sh; source /tmp/shopify_creds.env; set +a; GROUPS=parfum,uhr CAP=50 node automation/bigbuy_brand_fill.mjs )`
+  Optionen: `GROUPS=` (Default alle) · `CAP=`/`CAP_<grp>=` Stück/Gruppe · `DRY=1` nur zeigen.
+- **`automation/push_prepared.mjs`** — generischer Importer für vorbereitete `<prefix>_create/_media/_pids.json` (CJ ODER BigBuy) → Shopify.
+- **Pattern für Loop/Fill:** Brand-Fill-Tool für BigBuy (deutsch, EU-Lager, skaliert) · für CJ: categoryId-Browse-Picker (/tmp) + push_prepared.
+- **Credentials:** nur in /tmp (lux_env.sh = BIGBUY_API_KEY/SHOPIFY_*; cj via email+apiKey 2534f19e…). NIE committen. Token frisch pro Lauf.
