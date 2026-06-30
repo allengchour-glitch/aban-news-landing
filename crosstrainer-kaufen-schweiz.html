@@ -132,11 +132,11 @@ img{max-width:100%;height:auto;display:block}
 
 /* ── topnav ── */
 .topnav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
-.topnav .wrap{display:flex;align-items:center;gap:1.5rem;height:52px;flex-wrap:wrap}
-.topnav .brand{font-weight:700;color:var(--accent-dk);font-size:1.05rem;letter-spacing:.02em}
-.topnav nav{display:flex;gap:1.2rem;font-size:.88rem}
-.topnav nav a{color:var(--ink2);white-space:nowrap}
-.topnav nav a:hover{color:var(--accent)}
+.tn-in{max-width:900px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:1.5rem;height:52px}
+.tn-brand{font-weight:700;color:var(--accent-dk);font-size:1.05rem;letter-spacing:.02em;text-decoration:none}
+.tn-links{display:flex;gap:1.2rem;font-size:.88rem}
+.tn-links a{color:var(--ink2);white-space:nowrap;text-decoration:none}
+.tn-links a:hover{color:var(--accent)}
 
 /* ── breadcrumb ── */
 .breadcrumb{font-size:.82rem;color:var(--muted);padding:.65rem 0;border-bottom:1px solid var(--line)}
@@ -252,17 +252,16 @@ footer a:hover{color:#fff}
 <body>
 
 <!-- ── TOPNAV ── -->
-<header class="topnav">
-  <div class="wrap">
-    <a class="brand" href="/">aban news</a>
-    <nav>
-      <a href="https://www.ebay.ch/" target="_blank" rel="noopener noreferrer">Marktplatz</a>
-      <a href="/kaufberater-schweiz.html">Kaufberater</a>
-      <a href="/jobs-schweiz.html">Jobs</a>
-      <a href="/angebote-schweiz.html">Angebote</a>
-    </nav>
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
   </div>
-</header>
+</nav>
 
 <!-- ── BREADCRUMB ── -->
 <div class="breadcrumb">
