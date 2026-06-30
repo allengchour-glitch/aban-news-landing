@@ -2449,3 +2449,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - spielzeug: Plüsch-Sound-Anhänger + Hot Wheels. lederwaren: Barbie/Captain-America-Geldbeutel (Kids-Charakter, generisch). beleuchtung: 2 LED-Lichterketten (16.5m/21m).
 - **🔴 LEHRE — `guertel`-Anker zieht Müll:** „Spanngurt" (Transport-Gurt, KEIN Kleidungsgürtel)→re-tagged Werkzeug + „Akyga 700W PC-Netzteil" (Computer-Netzteil!)→re-tagged Gaming. **guertel-Anker matcht über „Gürtel"/Substring random Tech/Transport → MEIDEN oder Anker härten.**
 - **FAZIT: BigBuys verbleibende Kategorien = low quality** (Fehlmatches/generisch). Die guten frischen (beautydevice/massage/luftreiniger/waerme) sind geerntet. Ledger: $LED.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 21 — „eine Runde": +12 saubere Keeper, 0 Fehlmatch):**
+- **Strategie bewährt:** Re-Tap der GUTEN frischen Kategorien (viel Reststock) statt neuer Fehlmatch-Kategorien. CATS=massage,beautydevice,haustiertech,auto PER=3 → **12 Keeper, 0 Fehlmatch, kein Hänger.**
+- massage: Knie-Akupressur/Magnet-Einlagen/Anti-Cellulite (InnovaGoods). beautydevice: Drakefor/Geske/IDC Schallbürsten CHF10.90–88.90. haustiertech: 3 Trixie-Brunnen (Grössen). auto: 3 Luftkompressoren (Michelin/Bestway/Fartools CHF45.90–122.90). ß=0, distinct.
+- **LEHRE:** Die ergiebigen sauberen Quellen (massage 293, beautydevice 46, haustiertech 43, auto 119 Kand.) haben noch Reststock → **Re-Tap dieser 4 = zuverlässig saubere Keeper ohne Fehlmatch-Drama** (im Gegensatz zu neuen Kategorien wie guertel/yoga). Bei „mehr BigBuy" künftig DIESE re-tappen.
