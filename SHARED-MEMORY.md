@@ -2724,3 +2724,13 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   **WICHTIG: nur `-tag:ls-ai-deep`** (360 neue), die 3.784 AI-Deep-Produkte der anderen Session bleiben unberührt. (PRODUCT_QUERY override, DRY=1.)
 - **`bigbuy_brand_fill.mjs` nutzt jetzt den Galaxus-Formatter** → künftige Marken-Imports kriegen direkt Galaxus-Beschreibungen (kein generisches Template mehr).
 - **Lehre:** BigBuy `productsinformation.description` enthält Marketing + inline „Label: Value"-Specs → ideal für Galaxus-Qualität, ohne Extra-API-Call (steckt schon im Katalog-Load).
+
+---
+**🎉 2026-06-30 (GROSSE MARKEN-FILL-WELLE — +480 Produkte autonom, Galaxus-beschrieben):**
+- **`bigbuy_brand_fill.mjs` Lauf: +480 Marken-Produkte** in einer autonomen Welle: parfum 120 · skincare 70 · makeup 90 ·
+  haircare 60 · uhr 70 · tasche 25 · sonnenbrille 45. Alle mit Galaxus-Beschreibung (Intro+Specs), allen verfügbaren Bildern, 6 Kanälen, Ledger-Dedup.
+- **Katalog: 5.870 aktive Produkte** (Session-Start ~5.087 → +~780). marke-Tag 1.271 · Parfum 354 · Uhren 307.
+- **Marken live:** Chanel, Dior, Calvin Klein, Hugo Boss, Paco Rabanne, Jean Paul Gaultier, Burberry, Carolina Herrera, Davidoff,
+  Montblanc (Parfum) · Clinique, Vichy, Garnier, L'Oréal (Skincare) · Maybelline, Max Factor, Artdeco, NYX (Make-up) · Casio/Festina/Citizen/Guess (Uhren) · Ray-Ban etc.
+- **Bild-Lehre:** BigBuy productimages oft 0–2 Bilder/Produkt (manche Marken 0 → übersprungen, kein Bild=kein Import). Cap auf 20 (=alle) gesetzt. CJ hat volle Galerien.
+- **Tempo-Lehre:** BigBuy-API ist langsam/gedrosselt → ~480 Produkte ≈ 40–50 Min. uhr/tasche-Gruppen am langsamsten (viele 0-Bild-Marken → viele Skips). Für grosse Fills: CAP pro Gruppe + im Hintergrund laufen lassen + Monitor.
