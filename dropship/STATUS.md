@@ -1,5 +1,11 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-30 (Abend — Doppelpost-Check + Posting-Memory verifiziert, autonom)
+- **🔁 DOPPELPOST geprüft (User „doppelpost? behebe alles, bessere memory"):** Lösch-Bot `tt-delete-go` lief → **`deleted:0` = KEINE exakte Dublette**. TikTok-Profil-Grid (Screenshot) = **12 verschiedene Produkte** (Samsara/Rosée/Minou/Étincelle/Couleur/Cascade/Gua-Sha/blaue-Stein-Kette/Mode/Taschen) → kein echter Doppel sichtbar.
+- **🧠 POSTING-MEMORY verifiziert = bereits robust+reset-fest:** committer Ledger `tiktok-upload-done.txt` + **gitignored** reset-fester `.tiktok-posted.local` (überlebt `git reset --hard` ✓ geprüft) + **Produkt-Token-Dedup** (`sharesProduct` gegen ALLE bisher, nicht nur 30) + Rotation-Keep + Sofort-Commit nach jedem Post. Worker(IG/FB) dedupt via KV cursor+post_log+live-IG-Captions.
+- **🩹 KORREKTUR meiner Fehldiagnose:** „git hängt" war FALSCH — `cloud-commands-done.txt` ist **gitignored**, drum sieht die Cloud nur einen alten Snapshot, nicht den echten PC-Stand. Der Bot **läuft normal** (TikTok gepostet 18:31, stündliches Auto-Learn, Commits heute). **Lehre:** echten Stand aus `reports/*.json` + `git log` lesen, NIE aus dem done-file.
+- **🧹 Stale-Befehl entfernt:** `seedance-kette` scheiterte am fal-Key (kein `reels/seedance-aurora-1.mp4`) → aus `cloud-commands.json` raus (Kanal sauber). Brain-Regel 399 + `REVIVE-GIT.bat` (allg. git-Unstick) ergänzt.
+
 ## 2026-06-30 (Daten-Sweep + Ad-Landing veredelt, autonom)
 - **🔍 ECHTE-DATEN-LEHRE (Shopify-Analytics 14T):** 5'519 Sessions, ABER **85% = `direct` (4'671) = Bot/Junk-Traffic** (niemand tippt einen unbekannten neuen Shop 4'671× direkt ein). Echter Mensch-Traffic ≈ **Facebook 763 + TikTok 37 + Google 36 ≈ 840/14T (~60/Tag)** — fast nur FB-Gruppen-Stöberer (low Buy-Intent). → Die „0.15% Mobile-ATC" hat einen aufgeblähten Nenner; **Session-Zahl NICHT feiern.** Landing-Pages diffus (Home 184, Produkte je 4–6) = keine Konzentration = bestätigt diffuser Low-Intent.
 - **🎯 KONSEQUENZ:** Der EINZIGE Kanal für qualifizierte Käufer = die **bezahlte TikTok-Smart+-Ad (auf „Add to cart" optimiert)**. Daten stützen den User-Wunsch, sie zu starten. Geld-Klick „Senden" = NUR User (fixe Sicherheitssperre).
