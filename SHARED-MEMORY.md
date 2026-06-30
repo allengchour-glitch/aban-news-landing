@@ -2598,3 +2598,20 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   - `sub-bademode`: + Bikinis/Tankinis/Strandkleider, saisonal Sommer 2026.
 - **Sortierung geprüft (Regel #1 verifizieren):** `sub-uhren` PRICE_DESC führt mit ECHTEN Premium-Marken (Jaguar/Seiko/Citizen/Certina Swiss Made) = starker Eindruck → **NICHT geändert** (kein Defekt). Andere Gewinner BEST_SELLING = ok.
 - **Import bewusst NICHT gemacht:** Katalog hat 5.087 ACTIVE, BigBuy ist ausgeschöpft (Big-Run bewies Sex-Toys+Dubletten), und die Daten zeigen: Engpass = Traffic, nicht Produktzahl. Mehr Produkte ≠ mehr Kunden. Qualität > Menge.
+---
+**💎 2026-06-30 (CJ-IMPORT: 5 handverlesene Moissanit-Premium-Stücke — Qualität statt Masse):**
+- **CJ-API funktioniert wieder** (User gab neuen Key 2026-06-30). Auth: `email=allengchour@gmail.com` + `apiKey` (32-hex), Body `{email,apiKey}`,
+  Token gültig ~6 Mt. **Creds NUR in /tmp/cj_env.sh (nie committet).** ⚠️ `pointsInfo.remaining=0` — product/list ging trotzdem.
+- **🔑 LEHRE Bulk-CJ = Junk:** Bulk-Suche „zirconia ring" = 47.903 Treffer, aber Filter (must/ban) ergab nur **4 saubere von ~150**,
+  meist billig ($0.13–5, CN-Lager 8–16 Tage). → **Bulk-CJ verwässert.** NUR handverlesen lohnt.
+- **✅ GEMACHT: 5 echte Premium-Stücke** (S925 Sterling-Silber + zertifizierter Moissanit D-VVS1), via Shopify-MCP productSet,
+  handgeschriebene DE-Titel + SEO (Diamant-Alternative-Winkel) + ehrliche Lieferzeit (8–16 T), ACTIVE, 6 Kanäle publiziert:
+  Ring «Marquise» 4ct CHF39.90 · Halskette «Aurora» 1ct CHF45.90 · Ohrstecker «Blüte» CHF95.90 · Ohrstecker «Solitär» 3ct CHF138.90 · Verlobungsring 1ct CHF98.90.
+  **Heben den AOV** (vs. bisher ~CHF26) und treffen den Organic-Gewinner (Schmuck/Zirkonia) + Premium-Positionierung.
+- **🗂️ Categorisierungs-Lehren (wichtig für künftige Schmuck-Importe):**
+  - `sub-ringe`-Regel = **TAG „ring" (Singular!)** — nicht „ringe". Beide Tags setzen.
+  - `premium-schmuck` (688724560769) ist **MANUELL** (ruleSet=null) → Produkte per `collectionAddProducts` manuell zufügen (erledigt).
+  - `sub-ohrringe`/`sub-halsketten` = Tag „ohrringe"/„halsketten" (Plural, greift automatisch).
+  - **⚠️ Collection-Quirk:** `geschenke-unter-30` hat Tag-Regel `tag:geschenk` (NICHT Preis!) → teure „geschenk"-Produkte landen fälschlich drin.
+    Drum bei teuren Stücken generisches „geschenk"-Tag WEGLASSEN; Preis-Collections (geschenke-unter-50/100-franken) greifen korrekt.
+- Ledger: `dropship/cj_niche_done.txt` (+5 pids).
