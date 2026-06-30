@@ -73,7 +73,7 @@ for(const gk of want){
   if(!d||!(d.active===true||d.active===1))continue;
   const eur=Number(d.wholesalePrice)||0; if(!eur||eur>g.cap)continue;
   const im=await bb(`/rest/catalog/productimages/${p.id}.json`); await sleep(250);
-  const imgs=((im&&im.images)||[]).map(x=>x.url).filter(u=>/^https/.test(u)).slice(0,6);
+  const imgs=((im&&im.images)||[]).map(x=>x.url).filter(u=>/^https/.test(u)).slice(0,20); // ALLE verfügbaren Bilder
   if(!imgs.length)continue;
   const title=clean(p.name); if(title.length<5)continue;
   if(DRY){console.log(`  [DRY] CHF${chf(eur)} | ${title}`);got++;total++;continue;}
