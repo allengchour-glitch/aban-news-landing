@@ -2495,3 +2495,18 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **📌 STAND Katalog:** ~5.087 ACTIVE, alles SEO+Deep, Premium-Collection edel, Adult-Falle geschlossen. **BigBuy bleibt
   ausgeschöpft** (Big-Run bewies: nur noch Sex-Toys+Dubletten) → kein weiterer Volumen-Import. **Engpass unverändert =
   TRAFFIC** (User-§10: Pixel/Kampagne/Budget). Shop-seitig nichts Sinnvolles mehr offen — nicht ins Leere optimieren.
+---
+**🔬 2026-06-30 (TRACKING-FORENSIK am Live-HTML — harte Befunde, „mach du"):**
+Live-Storefront `luxestyle.ch` HTML gezogen + Tracking-Snippets seziert. **Endlich harte Belege, WARUM der Funnel leer ist:**
+- **🔴 Facebook-Pixel TOT:** `girally_facebook_id = '';` (leer) → `fbq('init','')` feuert ins Nichts. AddToCart/PageView-Events
+  gehen verloren, **keine Retargeting-Audience, keine Conversion-Messung.** App „girally" (gratis FB/Google-Feed) hat KEINE Pixel-ID hinterlegt.
+- **🔴 Google-Conversion TOT:** `var girally_google_id = ''` (leer) → keine Google-Ads-Conversion. Kein echtes GA4/gtag gefunden.
+- **🔴 Klaviyo Onsite-Tracking FEHLT:** nur das Subscribe-Form (`a.klaviyo.com/client/subscriptions`), aber **kein**
+  `static.klaviyo.com/onsite/js/klaviyo.js?company_id=XWqMAD` → **das ist der Grund für „Viewed Product = 0"** (nicht nur 0 Traffic —
+  das Onsite-JS lädt gar nicht). Klaviyo-Account `website_url=luxestyle.com.co` + Währung `USD` bestätigen: Integration gegen FALSCHE Domain gebaut.
+- **🟢 TikTok-Pixel LEBT:** `TIKTOK_PIXEL_ID="D8EKVR3C77U6KT5BTBD0"` aktiv (feuert ttq.page). Einziger funktionierender Pixel.
+- **Fazit:** Selbst wenn Traffic käme, würden FB/Google ihn NICHT erfassen (leere IDs) → kein Audience-Aufbau, kein Retargeting,
+  Klaviyo-Flows bleiben ohne Onsite-Events. **Das ist ein doppelter Engpass: (a) zu wenig Traffic UND (b) das bisschen Traffic wird nicht getrackt.**
+- **⛔ Warum ich es nicht selbst fixen kann:** FB/Google-IDs liegen in der „girally"-App-Config (kein MCP-Zugriff) und brauchen die
+  echten Pixel-IDs aus dem Meta-/Google-Konto des Users (OAuth). Klaviyo-Onsite + website_url/Währung sind Klaviyo-UI-only (kein update_account-Tool).
+  Theme-MAIN-Write ist im MCP gesperrt. → Diese 3 Fixes sind physisch User-Klicks; ich habe sie auf Minuten-Aufgaben eingedampft.
