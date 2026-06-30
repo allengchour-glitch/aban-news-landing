@@ -201,12 +201,34 @@ async function clickAny(ctx, res) {
     // ECHTE Tastenanschlaege ins SPEZIFISCHE "Kollektionen suchen"-Feld (NICHT die globale "Suchen"-Leiste!).
     try { const sb = adminFr.getByPlaceholder(/Kollektion/i).first(); if (await sb.count()) { await sb.click(); await sb.fill(''); await sb.pressSequentially('wasserfest', { delay: 90 }); await p.waitForTimeout(3000); } } catch {}
     // Sammlungs-Namen NUR aus dem Picker-Dialog dumpen (nicht die Admin-Seitenleiste).
-    let rows = []; try { rows = await adminFr.evaluate(() => { const d = document.querySelector('[role=dialog],[aria-modal="true"]') || document.body; return [...d.querySelectorAll('[role=row],[role=option],li,label,tr')].map(x => (x.innerText || '').trim()).filter(s => s && s.length > 1 && s.length < 44); }); } catch {}
-    T('p3b-rows ' + JSON.stringify([...new Set(rows)].slice(0, 16)));
+    // FIX 2026-06-30 (User „bot so machen das es geht"): Shopify-Picker zeigt nach der Suche ALLE Collections
+    // (nicht gefiltert) -> die Zeile mit "Wasserfester" gezielt finden und ihre ROW/Checkbox per DOM anklicken
+    // (Polaris: Klick auf die Zeile toggelt die Auswahl). Vorher wurde nur der Text geklickt -> Checkbox blieb leer.
+    let pickInfo = '';
+    try {
+      pickInfo = await adminFr.evaluate(() => {
+        const cbs = [...document.querySelectorAll('input[type=checkbox],[role=checkbox]')];
+        for (const cb of cbs) {
+          let row = cb;
+          for (let i = 0; i < 9 && row; i++) {
+            const t = (row.innerText || row.textContent || '');
+            if (/wasserfest/i.test(t)) {
+              const node = cb.closest('label,li,[role=option],[role=row],tr') || row;
+              node.click();
+              return 'gewaehlt: ' + t.slice(0, 40).replace(/\s+/g, ' ');
+            }
+            row = row.parentElement;
+          }
+        }
+        return 'KEINE wasserfest-Zeile (checkboxes=' + cbs.length + ')';
+      });
+    } catch (e) { pickInfo = 'err ' + String(e).slice(0, 50); }
+    T('p3b-pick ' + pickInfo);
+    await p.waitForTimeout(900);
     let picked = false;
-    // Treffer-Zeile/Checkbox im Dialog anklicken
-    try { const dlg = adminFr.locator('[role=dialog],[aria-modal="true"]').first(); const hit = dlg.getByText(/wasserfest/i).first(); if (await hit.count()) { await hit.click({ timeout: 4000 }); await p.waitForTimeout(1000); } else { await clickAny(adminFr, [/wasserfester schmuck|wasserfest/i]); } } catch { try { await clickAny(adminFr, [/wasserfest/i]); } catch {} }
-    try { picked = await clickAny(adminFr, [/hinzufügen|auswählen|fertig|speichern|bestätigen|add\b|^done$|select/i]); } catch {}
+    // Hinzufügen klicken (Playwright + DOM-Fallback, nur wenn aktiv)
+    try { const hz = adminFr.getByRole('button', { name: /Hinzufügen/i }).first(); if (await hz.count()) { await hz.click({ timeout: 5000 }); picked = true; } } catch {}
+    if (!picked) { try { picked = await adminFr.evaluate(() => { const b = [...document.querySelectorAll('button')].find(x => /Hinzufügen/i.test(x.textContent || '') && !x.disabled); if (b) { b.click(); return true; } return false; }); } catch {} }
     await p.waitForTimeout(2500); fr = await bestFrame(p);
     T('p3c-nach-picker picked=' + picked + ' ' + (await controls(fr)));
     // 4) Optimierungsereignis -> In den Warenkorb (Dropdown-Overlay per allDump sichtbar machen)
@@ -219,7 +241,18 @@ async function clickAny(ctx, res) {
     T('p5-identitaet\n' + (await allDump(p)));
     // 6) Budget 15 (falls ein Zahlenfeld existiert)
     fr = await bestFrame(p);
-    try { const bi = fr.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (await bi.count()) { await bi.fill('30'); T('p6-budget 30 gesetzt'); } else T('p6-budget KEIN Zahlenfeld sichtbar'); } catch { T('p6-budget Fehler'); }
+    // Budget: erscheint oft erst NACH Collection-Auswahl -> ALLE Frames durchsuchen (FIX 2026-06-30).
+    let budgetSet = false;
+    for (const f of p.frames()) { try { let bi = f.locator('input[type=number],input[inputmode=numeric],input[inputmode=decimal]').first(); if (!(await bi.count())) bi = f.getByPlaceholder(/budget|betrag|CHF|tagesbudget/i).first(); if (await bi.count()) { await bi.fill('30'); budgetSet = true; break; } } catch {} }
+    T(budgetSet ? 'p6-budget 30 gesetzt' : 'p6-budget KEIN Zahlenfeld sichtbar');
+    // 7) Anzeigentext + Video (FIX 2026-06-30: Haupt-Flow fuellte die bisher nicht) — alle Frames absuchen.
+    let adtextSet = false;
+    for (const f of p.frames()) { try { const at = f.getByPlaceholder(/Werbetext|Anzeigentext|ad text|Gib Werbetext/i).first(); if (await at.count()) { await at.fill('Bliebt das würkli Gold? Wasserfeschte Schmuck wo nid alauft. -10% mit Code WELCOME10. Jetzt entdecke!'); adtextSet = true; break; } } catch {} }
+    T(adtextSet ? 'p7-adtext gesetzt' : 'p7-adtext kein Feld');
+    let videoUp = false;
+    try { let fileInput = null; for (const f of p.frames()) { const fi = await f.$('input[type=file]'); if (fi) { fileInput = fi; break; } } if (fileInput) { const vid = (await import('node:fs')).existsSync('reels/aurora-hero-final.mp4') ? 'reels/aurora-hero-final.mp4' : 'reels/wasserfest-tiktok-ready.mp4'; await fileInput.setInputFiles(vid); videoUp = true; await p.waitForTimeout(10000); } } catch (e) { T('p7-video err ' + String(e).slice(0, 40)); }
+    T(videoUp ? 'p7-video Upload gestartet' : 'p7-video kein Input');
+    fr = await bestFrame(p);
     T('PRE-SUBMIT ' + (await controls(fr)));
     if (GO) {
       const sent = await clickAny(fr, [/^Senden$/i, /veröffentlichen|publish|launch|absenden|kampagne starten|submit/i]);
