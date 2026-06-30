@@ -86,8 +86,15 @@ for row in "${ROWS[@]}"; do
                   AUPROMPT="Cinematic luxury jewelry commercial. The rainbow-gemstone necklace slowly rotates and turns, dazzling sparkle and glossy light reflections across the colourful stones. Elegant dark background with soft golden bokeh and a subtle aurora light glow. Slow, smooth, stabilized motion. The necklace stays true to the reference image, same colours and design, no distortion. No text, no logo, no watermark. Vertical 9:16, high quality."
                   "$NODE" automation/veo_product_clip.mjs --image "$AUIMG" --prompt "$AUPROMPT" --aspect 9:16 --seconds 8 --out reels/veo-aurora.mp4 2>&1 | tail -20
                   SZ=$([ -f reels/veo-aurora.mp4 ] && wc -c < reels/veo-aurora.mp4 || echo 0)
-                  STAMP_KEY="aurora_video" STAMP_VALUE="bytes=$SZ gemini=$([ -n "${GEMINI_API_KEY:-}" ] && echo ja || echo NEIN) @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
-                  if [ "${SZ:-0}" -gt 50000 ]; then git add -f reels/veo-aurora.mp4 && git -c user.email=vps@luxe -c user.name=vps-bot commit -m "auto(vps): Aurora Veo rotierendes Video" >/dev/null 2>&1 && git push origin "$BR" 2>&1 | tail -2 || LOG "aurora-veo: Push fehlgeschlagen (kein Token?) - Datei nur lokal"; else LOG "aurora-veo: kein/zu kleines Output (GEMINI_API_KEY fehlt auf VPS? siehe Veo-Log oben)"; fi ;;
+                  if [ "${SZ:-0}" -gt 50000 ]; then
+                    # VPS kann NICHT git-pushen (read-only) -> Video auf Shopify-CDN hochladen + URL ins Metafeld stempeln.
+                    AUURL=$("$NODE" automation/upload_to_shopify_cdn.mjs reels/veo-aurora.mp4 "Aurora Veo Video" 2>&1 | grep -oE 'https://cdn.shopify.com[^ "]+' | tail -1)
+                    STAMP_KEY="aurora_video" STAMP_VALUE="${AUURL:-upload-fehler} bytes=$SZ @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
+                    LOG "aurora-veo CDN-URL: ${AUURL:-(keine)}"
+                  else
+                    STAMP_KEY="aurora_video" STAMP_VALUE="FEHLER bytes=$SZ gemini=$([ -n "${GEMINI_API_KEY:-}" ] && echo ja || echo NEIN) @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
+                    LOG "aurora-veo: kein Output (GEMINI_API_KEY billing? siehe Veo-Log oben)"
+                  fi ;;
     *) LOG "unbekannter Befehl '$cmd' (ignoriert; campaign-go/echtes Geld laeuft NIE automatisch)" ;;
   esac
   LOG "fertig: $cmd"
