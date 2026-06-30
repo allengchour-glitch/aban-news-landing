@@ -2469,3 +2469,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **🔴 Murks-Titel von Gemini:** „Einfach Aufpumpen: Dein Luft-Shop" + „Wasserschlacht: Dein Ballon-Shop" → gefixt (Luftpumpe / Wasserballons-Set).
 - home = noch ein Kissenbezug (6.) + Deko-Affen. luftreiniger = teure Marken (DeLonghi CHF301.90, Xiaomi CHF148.90, preis-transparent grenzwertig). 
 - **⚠️ LOOP DEGRADIERT:** mehr QA-Cleanup/Runde (Adult/Murks-Titel/Repetition/teure Marken), weniger saubere Keeper. Die wirklich guten Picks sind raus. **Empfehlung: Loop verlangsamen/auf Wächter umschalten.** Ledger: $LED.
+
+---
+**🛒 2026-06-29 (BIG-RUN „nimm alles" — +42, davon 6 Sex-Toys gedraftet; BEWEIS für Junk-Warnung):**
+- CATS=home,massage,wasserstrand,tauchen,velo,luftreiniger,auto,haustiertech PER=6 → 42 angelegt. luftreiniger=Decke.
+- **🔴 6× „Prostata-Massagegerät" (Sex-Toys) → GEDRAFTET** (massage-Anker zieht Adult-Linie massiv). **+ die 36 Keeper sind generische Fast-Dubletten:** 6 nahezu identische Kompressoren („Druckluft-Profi/Kraftvolle Druckluft/Robuste Kompressoren"…), 4 Trinkbrunnen, 6 Gold-Affen-Deko, mehrere Schwimmbrillen/Tauchmasken.
+- **📌 BEWEIS: „nimm alles" = Junk.** Volumen-Import aus den Rest-Kategorien produziert Sex-Toys + Dubletten-Spam. **Behalten auf User-Wunsch (Volumen), aber das ist das ENDE des sinnvollen BigBuy** — mehr = Shop vermüllen. **massage-Anker MUSS Adult bannen: prostata/panty/lust/intim/sinnlich/dildo/vibrator.**
+- Ledger: $LED.
