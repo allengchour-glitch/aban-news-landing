@@ -254,7 +254,7 @@ async function clickAny(ctx, res) {
     // 1) direkter input[type=file] (oft hidden im DOM)
     try { for (const f of p.frames()) { const fi = await f.$('input[type=file]'); if (fi) { await fi.setInputFiles(vidFile); videoUp = true; break; } } } catch {}
     // 2) FIX 2026-06-30: sonst erst "Hochladen" klicken -> Datei-Dialog (filechooser) abfangen + Datei setzen.
-    if (!videoUp) { try { const fcP = p.waitForEvent('filechooser', { timeout: 9000 }).catch(() => null); await clickAny(fr, [/Hochladen|hochladen|upload|Video hochladen|Lade eine vorhandene/i]); const fc = await fcP; if (fc) { await fc.setFiles(vidFile); videoUp = true; } } catch (e) { T('p7-video err ' + String(e).slice(0, 40)); } }
+    if (!videoUp) { try { const fcP = p.waitForEvent('filechooser', { timeout: 10000 }).catch(() => null); let clicked = false; for (const f of p.frames()) { try { if (await clickAny(f, [/^Hochladen$|Video hochladen|Lade eine vorhandene|upload video|hochladen/i])) { clicked = true; break; } } catch {} } T('p7-hochladen-klick=' + clicked); const fc = await fcP; if (fc) { await fc.setFiles(vidFile); videoUp = true; } } catch (e) { T('p7-video err ' + String(e).slice(0, 40)); } }
     if (videoUp) await p.waitForTimeout(10000);
     T(videoUp ? 'p7-video Upload gestartet' : 'p7-video kein Input/Button');
     fr = await bestFrame(p);
