@@ -2658,3 +2658,14 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   Skript-Muster in /tmp (cj_925batch picker + v_create/v_media generator). Pro Runde ~10 Stück sauber. **Vein reicht für viele Runden.**
 - **Andere Premium-Kategorien zum Browsen (CJ Fine Jewelry):** via product/query.categoryId weiterer Stücke entdeckbar (Uhren, Gold-Vermeil etc.).
 - Ledger cj_niche_done.txt (+10). **CJ-Schmuck-Total dieser Session: 17 Premium-Stücke** (5 Moissanit + 2 Edelstein + 10 neue).
+
+---
+**💎🔁 2026-06-30 (CJ-LOOP Runde 2 — „alle mögliche Kategorie": +5 über mehrere Fine-Jewelry-Kategorien):**
+- **CJ-Schmuck-Kategoriebaum kartiert** (`product/getCategory`): Fine Jewelry = 925-Silver / Various-Gemstones (391F1C45) / K-Gold (7BCF191E) / Pearls (84ED4B7F) /
+  Fine-Earrings (D7CE9827) / Men's-Fine (E403FB8A) / Sets (E8B256EF). + Men's/Women's Watches (Quartz/Mechanical/Dress/Bracelet…). IDs im Memory.
+- **+5 saubere Stücke** (volle Galerie, DE-Texte+SEO, 6 Kanäle, premium-schmuck): Vergoldete Blatt-Halskette CHF30.90 (K-Gold) ·
+  Süsswasserperlen-Halskette CHF14.90 (Pearls) · **925-Silber-Set «Trio» CHF51.90** (Sets, top!) · Zirkonia-Fächer-Ohrringe grün CHF31.90 · Malachit-Armband CHF14.90.
+- **🔑 QUALITÄTS-LEHRE:** Die **925-Silver-Kategorie ist die SAUBERSTE Vein** (uniform premium). K-Gold/Gemstones/Pearls/Sets sind **verrauschter**
+  (Gibberish-Namen „Double Egg Noodles", DIY-Handtaschen-Beads, Heilkristalle) → dort **cherry-picken**, nicht blind importieren. 12 gezogen → nur 5 sauber.
+  **Empfehlung Loop:** weiter primär 925-Silver (552F095A, 12k tief) abgrasen + aus anderen Kats nur die klaren Treffer. Uhren = eigene Runde (Varianten-Sorgfalt).
+- Ledger +5. **CJ-Schmuck total Session: 22 Premium-Stücke.**
