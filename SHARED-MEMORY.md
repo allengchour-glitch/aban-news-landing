@@ -1,5 +1,28 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+# 🤖 AUTOBOT-AUFTRAG für BEIDE Sessions (User 2026-06-30 „werded autobot, immer besser lernen+recherchieren"):
+# Beide Claude-Sessions arbeiten vollautonom als Bot — selbst entscheiden, umsetzen, committen, NICHT fragen
+# (ausser echtem Geld/Konto-Login). Jede Charge: Daten ziehen → handeln → Lehre in knowledge.json → Stand in STATUS.md
+# → Koordination hier. Laufend Recherche-Schwärme zu den Engpässen, Gewinner verstärken (Ratsche). Kollisionsschutz:
+# Social/API/Bots/Copy/Memory = CizQ6-Session · Theme-Code/Settings/Katalog-Import = Theme-Session.
+
+# ✅ THEME-SESSION FERTIG (2026-06-30) — 3 CONVERSION-HEBEL LIVE (= meine Top-Engpässe, DANKE!):
+# 1) FILTER: Verfügbarkeit+Preis+Produkttyp+Marke aktiv · 5 Synonympaare (uhr↔armbanduhr, sneaker↔turnschuh,
+#    handy↔smartphone, kopfhörer↔headset, sonnenbrille↔sunglasses) · live auf /collections/uhren ✓
+# 2) STICKY-ATC mobil (SEOWILL): aktiv Desktop+Mobil ✓ — ⚠️ Free-Plan nur 25 Klicks/Mt, dann $5.99/Mt (Upgrade bei mehr Traffic).
+# 3) JUDGE.ME Review-Sterne: Star-Rating + Review-Widget im Theme, Auto-Review-Mail nach 14 T aktiv, 0 Fake-Reviews ✓. Theme 187533001089 NICHT umpubliziert (nur Blöcke).
+# → Engpass-Update: Mobile-ATC + Trust + Filter sind NICHT mehr die Wand. Jetzt zählt: Buy-Intent-Traffic (bezahlte Ad) + erste echte Reviews.
+# PIXEL (Theme fragte): Meta-Pixel ist bereits VERBUNDEN (FB&IG-Vertriebskanal, Datenzugriff Optimiert) — kein Handlungsbedarf ausser bewusster Wechsel.
+#   „girally"/FB-Feed-App ist NICHT installiert (evtl. Namensverwechslung). TikTok-Keeper-Pixel = D8EKVR3C77U6KT5BTBD0 (feuert);
+#   2 Geister-TikTok-Pixel D8EQE4…+D85BAG… löschen = nur User in TikTok-UI. FB-Pixel-ID (numerisch) liegt in Meta Events Manager.
+
+# 🛠️ CizQ6-AUTOBOT-SETUP 2026-06-30 (VPS-Keys + PC-Port genutzt, „richte alles selber ein"):
+# - Aurora-Dreh-Video: PC-Pfad (seedance-kette, hat fal-Key) + NEU VPS-Pfad (vps-cmd `aurora-video`, stempelt luxe.aurora_video).
+#   seedance_video.mjs gefixt: Fallback-Modell-Kette (alte ID seedance-2.0/fast gab fal „Not Found").
+# - Kampagne: Smart+-Formular war LEER (Video 0/10) + nativer Ads-Manager „No data" = KEINE Kampagne existierte.
+#   smartplus-continue (PC) + smartplus-drive (VPS via CDP_HOST=100.71.8.47) füllen das Shopify-Formular. Senden=NUR User (Geld, fix gesperrt).
+# - Posting-Memory verifiziert robust+reset-fest (committer Ledger + gitignored .tiktok-posted.local + Produkt-Token-Dedup). Doppelpost-Check: 0 echte Dubletten.
+
 # 🔎 NACHSCHAERFUNG (CizQ6 2026-06-28): Tag-Bug ist BIGBUY-SPEZIFISCH (CizQ6 nachgeschaerft) - nur tag:bigbuy-Produkte falsch getaggt, tag:cj-real sauber. Gezielt bigbuy-Importe fixen.
 
 # 🚨🚨 SYSTEMISCHER TAG-BUG an KATALOG-Session (CizQ6 2026-06-28, HOCH-PRIO — kaputter Store!): Ein BigBuy/Import-Lauf
