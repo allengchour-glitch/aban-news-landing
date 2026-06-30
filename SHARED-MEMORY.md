@@ -2628,3 +2628,19 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   Für die 5 Moissanit-Heroes: PC-Claude/Cloudflare kann aus den jetzt vorhandenen Galerie-Bildern Reels bauen (On-Screen-Text + luxe-premium.wav, VIDEO-PRAEFERENZEN).
 - **🔑 CJ-Premium-Schmuck-Nische ERSCHÖPFT:** Nachsuche (tennis bracelet/pendant/halo ring) ergab nur Dubletten der schon importierten 5-6.
   Das gute Material ist endlich — NICHT künstlich weiter-importieren (gleiche Lehre wie BigBuy). Nächste Charge → andere Gewinner-Kategorie (Kleider/Uhren).
+
+---
+**💎 2026-06-30 (CJ +2 Edelstein-Stücke + GMC-Issue-CSV analysiert):**
+- **+2 Premium-Edelstein-Stücke** (Lab-Rubin/Smaragd in 925 Silber, platiniert): Halskette Doppel-Halo CHF93.90 + Anhänger 2ct CHF66.90.
+  Volle Galerien (je 6 Bilder), handgeschriebene DE-Texte+SEO, 6 Kanäle, in premium-schmuck. Erweitert die Moissanit-Linie um Farbe.
+  **CJ-Premium-Schmuck-Linie damit ~7 Stück (5 Moissanit weiss + 2 Edelstein farbig) — Nische erschöpft, Rest = Dubletten/Billig.**
+- **📊 GMC-Issue-CSV (User, 24.06., 11.121 Zeilen / 3.478 Items) analysiert — GRÖSSTENTEILS VERALTET/SCHON GEFIXT:**
+  - **9.360× „Product page unavailable" (überwiegend Sprache `fr`, 2.877 Items):** WURZEL = Fremd-Locales. **Schon gefixt:** `shopLocales`
+    zeigt nur `de` published (en/fr/it = published:false). **Live verifiziert:** `/fr/products/…` = HTTP 404, Sitemap nur Deutsch.
+    → Google droppt die fr-Einträge beim Re-Crawl automatisch (sinkt schon: CSV 2.877 → GMC-Screenshot 1.958). **Kein Eingriff nötig, nur Geduld.**
+  - **Fehlende Bilder (CSV 8):** Live-Produkte haben jetzt Bilder (Handyhülle/Kopfhörer/JBL je 1) → veraltet. Nur „aban news Founding-Member" (DRAFT, Fremdprojekt) ohne — egal.
+  - **Falsches Bildformat (CSV 3):** alle gelöscht. **Adult-Flag (CSV 7):** 5 gelöscht; **2 = fälschlich geflaggte echte Kleider** („Anaïs Innocence/Splash Schwarz").
+    Model-Bild triggert Googles Adult-Filter, aber das ist das beste Verkaufsbild → NICHT geopfert (Google <1% Klick-Potenzial für die 2). Bewusst ACTIVE gelassen.
+  - **⚠️ Offen (nur via frischem GMC-Export targetbar):** „Unsupported image type [image_link]" 99 (Screenshot) — CSV-Beispiele waren gelöscht; ohne aktuelle Item-Liste nicht zuordenbar.
+    Optionaler Beschleuniger (User/PC-Claude im Google-Channel/GMC): fr/en/it-Sprach-Targeting im Feed entfernen → Google prüft die toten URLs gar nicht erst.
+- Ledger: cj_niche_done.txt (+2).
