@@ -2669,3 +2669,16 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   (Gibberish-Namen „Double Egg Noodles", DIY-Handtaschen-Beads, Heilkristalle) → dort **cherry-picken**, nicht blind importieren. 12 gezogen → nur 5 sauber.
   **Empfehlung Loop:** weiter primär 925-Silver (552F095A, 12k tief) abgrasen + aus anderen Kats nur die klaren Treffer. Uhren = eigene Runde (Varianten-Sorgfalt).
 - Ledger +5. **CJ-Schmuck total Session: 22 Premium-Stücke.**
+
+---
+**💅👁️ 2026-06-30 (BEAUTY-AUSBAU — Nägel + Wimpern, CJ+BigBuy, eigene Kategorien):**
+- **2 neue Smart-Collections** (tag-basiert, künftige Produkte joinen auto): **`/collections/naegel-manikuere`** (💅 Nägel & Maniküre, tag:nagel) +
+  **`/collections/wimpern-lashes`** (👁️ Wimpern & Lashes, tag:wimpern). Beide mit SEO + publiziert.
+- **+11 CJ-Produkte** (volle Galerien, DE-Texte+SEO, 6 Kanäle): 6 Nägel (2 UV-LED-Lampen, 2 Press-on, Polygel-Kit 6-tlg, Übungshand+300Tips) +
+  5 Wimpern (Cluster 30D/Glue-Free, magnetisch ×2, selbstklebend 3D).
+- **🔧 NEUER REUSABLE IMPORTER `automation/push_prepared.mjs`** — liest vorbereitete `<prefix>_create/_media/_pids.json` → productSet+Media+Publish+Ledger
+  direkt via Shopify-API (Client-Credentials-Token). **Spart riesige MCP-JSON-Pastes** → Loop viel effizienter. Muster: picker-Skript schreibt JSON, push_prepared legt an.
+- **🏷️ BigBuy = GOLD für Beauty:** Katalog-Scan fand **echte Marken mit EU-Lager** (schneller Versand!): **Mavala** (Schweizer Nagelpflege!), OPI, Rimmel,
+  Max Factor, Artdeco, Beter-Tools, InnovaGoods-UV-Lampe. 2.054 Nagel-Treffer. Scan-Skript `/tmp/bb_beauty_scan.mjs` (Marken-Filter, Nagel/Wimper/Make-up).
+  ⚠️ Viele BigBuy-Beauty haben nur 1 (Profi-)Bild — ok bei Marken. **BigBuy-Beauty-Import folgt** (Marken-Pflege/Make-up als Premium-Ergänzung zu CJ-Trend).
+- **LEHRE:** Für Beauty ist **BigBuy (Marken, EU-Lager) > CJ** bei Pflege/Make-up; **CJ > BigBuy** bei Trend/Gadgets (Press-on, magnetische Wimpern, Lampen). Kombi nutzen.
