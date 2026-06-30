@@ -2560,3 +2560,18 @@ Live-Storefront `luxestyle.ch` HTML gezogen + Tracking-Snippets seziert. **Endli
 5. **JEDE LEHRE SOFORT INS MEMORY.** Teuer Gelerntes (Fallen, IDs, was nur der User kann) hier festhalten, damit es die nächste Session NICHT neu lernt. Memory ist das Gehirn über Sessions hinweg.
 6. **NICHT INS LEERE OPTIMIEREN.** Wenn der Katalog/Shop verifiziert sauber ist (wie jetzt), NICHT Busywork erfinden — auf den echten Engpass pivotieren (aktuell: Traffic/Tracking, liegt am User + Pixel/Budget). Ehrlich sagen, was nur der User kann.
 7. **GIT bei geteiltem Checkout:** parallele Session bewegt denselben Branch → lokal kann zurückfallen. `git merge --ff-only origin/…` (sauber) statt `reset --hard` (geblockt). Vor Push immer `pull --rebase`; Memory-Konflikte = beide Blöcke behalten (Marker-Zeilen löschen).
+---
+**📊 2026-06-30 (HARTE TRAFFIC-/UMSATZ-DATEN aus Shopify-Analytics — Diagnose endgültig geschärft, „weiter autobot"):**
+Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL `sessions`+`sales`, 90 Tage:
+- **Traffic EXISTIERT:** 8.614 Sessions/90T, sogar ein Spike-Woche mit 5.254 (06-22). Also NICHT „kein Traffic".
+- **🔴 SOCIAL = BEWIESENER JUNK:** 1.960 Sessions → **0 Warenkorb, 0 Käufe.** FB/TikTok-Traffic ist 100% Bounce/Bots.
+  **→ Kein Ad-Budget in Social stecken, solange das so ist — reine Geldverbrennung.**
+- **🟢 ORGANIC SEARCH = beste Qualität, aber ausgehungert:** nur 92 Sessions, aber 4 Warenkorb (**4,3% Add-to-Cart**, mit Abstand höchste Rate).
+  **→ DER Hebel für „Kunden die kaufen" = organisches SEO-Wachstum** (92 → tausende). Validiert „Organic ist der einzige Qualitätskanal".
+- **direct:** 6.554 Sessions, 24 Warenkorb, **2 Käufe** (gemischt: echte Käufer + Bot-Spike).
+- **✅ 2 ECHTE BESTELLUNGEN** (server-seitig, autoritativ): CHF 26.90 (06-15) + CHF 24.90 (06-22, net -2 = retourniert). AOV ~CHF 26.
+  **→ KORRIGIERT die alte „0 Orders"-Annahme** (das war nur Klaviyos kaputtes Tracking). **Der Shop KONVERTIERT echten Traffic.**
+- **STRATEGISCHE KONSEQUENZ (für User-§10-Entscheidung):** (1) Shop ist nicht das Problem — er verkauft. (2) Social-Ads NICHT
+  finanzieren (0 ROI bewiesen). (3) Budget/Energie → **Organic SEO + ev. TikTok-organic** (Pixel lebt). (4) AOV ~CHF26 niedrig
+  (Billig-Artikel) → für spürbaren Umsatz entweder Organic-Volumen ODER AOV heben (Bundles/teurere Hero-Produkte pushen).
+- **Semrush-MCP getestet (Regel #3): NICHT im User-Plan** → Keyword-Recherche darüber nicht möglich (Alternative: WebSearch/GSC).
