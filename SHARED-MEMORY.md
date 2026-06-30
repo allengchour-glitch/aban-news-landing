@@ -2442,3 +2442,10 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - CATS=etrotti,haustiertech,auto,sets PER=2 → 4 Keeper. **etrotti(118)/sets(37)=Decke.** haustiertech: 2 Trixie-Trinkbrunnen CHF9.90/16.90. auto: 2 Kompressor-Zubehör-Sets (Michelin CHF98.90, Stanley CHF49.90). ß=0, distinct.
 - **📌 BILANZ FRISCHE KATEGORIEN (Ladung 15–19): +32 Keeper.** Beste frische Quellen: beautydevice, massage, luftreiniger, waerme (cool + ergiebig). Mittel: home/velo/wasserstrand/tauchen/mobilklima/haustiertech/auto (generisch-nützlich). Decke (BigBuy führt's kaum): touchlampen, ultraschall, whisky, fishing, metalldetektor, trenda, etrotti, sets. Gefahr: yoga (Sex-Toy-Fehlmatch).
 - **🛑 BigBuy jetzt WIRKLICH durchgearbeitet** — original-Whitelist (hängt bei Re-Tap) + frische Kategorien (+32, Rest Decke). Verbleibende Kategorien = Apparel (andere Session) oder Decke/Bad (dyson/drohnen/beamer/caps). **Für mehr/neue Produkte: CJ (User-Creds).** Ledger: 3015.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 20 — +8 Keeper, 🔴 guertel-Anker BAD):**
+- CATS=spielzeug,lederwaren,beleuchtung,guertel PER=2 → 8 angelegt, 2 re-kategorisiert.
+- spielzeug: Plüsch-Sound-Anhänger + Hot Wheels. lederwaren: Barbie/Captain-America-Geldbeutel (Kids-Charakter, generisch). beleuchtung: 2 LED-Lichterketten (16.5m/21m).
+- **🔴 LEHRE — `guertel`-Anker zieht Müll:** „Spanngurt" (Transport-Gurt, KEIN Kleidungsgürtel)→re-tagged Werkzeug + „Akyga 700W PC-Netzteil" (Computer-Netzteil!)→re-tagged Gaming. **guertel-Anker matcht über „Gürtel"/Substring random Tech/Transport → MEIDEN oder Anker härten.**
+- **FAZIT: BigBuys verbleibende Kategorien = low quality** (Fehlmatches/generisch). Die guten frischen (beautydevice/massage/luftreiniger/waerme) sind geerntet. Ledger: $LED.
