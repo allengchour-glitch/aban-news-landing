@@ -1,5 +1,11 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-30 (Nacht — ✅ AURORA-VIDEO GELIEFERT + Veo-Pipeline bewiesen)
+- **🎉 AURORA-DREH-VIDEO FERTIG + an User geliefert:** `reels/aurora-veo-final.mp4` (1080×1920). Veo (Gemini-Guthaben) rendert die echte Regenbogen-Kette mit goldenem Bokeh in 50s → cropdetect-entbalkt (Veo liefert 720×720 letterboxed!) → Mundart-Text + WELCOME10-CTA in Safe-Zone. QA bestanden (produkttreu, kein Warping/Schrift). **1-Klick `AURORA-VIDEO.bat` bewiesen** (nach ps1-Fix).
+- **🧠 Lehren (Brain 401):** Veo-Format = oft SQUARE letterboxed → immer cropdetect+scale-to-fill; ffmpeg drawtext `%` bricht (strftime) → nie % im Text; ElevenLabs-Voice nur am PC/VPS (Cloud ohne Key).
+- **⚠️ PC cmd-poll-Poller steht seit 17:28** (Heartbeat stale) → on-demand-Befehle (smartplus etc.) laufen nicht autonom bis CLOUD-AN.bat neu startet. Manuelle .bat-Läufe pushen aber (AURORA-VIDEO.bat lief manuell durch).
+- **📊 ECHTE AD-HISTORIE (User-Dashboard):** Kampagne lief schon mal: **19'160 Impressions, CTR 0.65%, 17.82 CHF** → 0 Käufe = war Conversion (jetzt Theme-Fix). Available 332 CHF. Re-Launch sollte konvertieren.
+
 ## 2026-06-30 (Spät — Video-Pipeline auf Veo umgestellt + Ad-Landing verstärkt + 1 Video/Tag, autonom)
 - **🎬 AURORA-VIDEO Pipeline gefixt:** fal-Modell-ID war falsch (`seedance-2.0/fast`=Not Found) → Fallback-Kette. User zeigte: **fal $31.46 + Gemini 51 CHF + Luma ~50 CHF Guthaben** = 3 bezahlte Engines. **Veo (Gemini)** als Hauptweg (`veo_product_clip.mjs`), fal Fallback. 1-Klick-Bot **`AURORA-VIDEO.bat`** (rendert+pusht, startet Brave NICHT) + PC-Cmd `aurora-veo` + VPS-Cmd (liefert via Shopify-CDN, da VPS keine git-push-Rechte). ps1-Parse-Bug gefixt.
 - **💧 AD-LANDING verstärkt:** Wasserfest-Collection **7 → ~18** echte Edelstahl-Teile (Damen-Ketten/Ohrringe/Ringe + Marken Tommy Hilfiger/Radiant/Guess/Calvin Klein für Trust). Perlen bewusst NICHT (kein Chlor/Salz = keine Falschaussage). Ad-Landing-Redirect WELCOME10→Collection verifiziert (302→200).
