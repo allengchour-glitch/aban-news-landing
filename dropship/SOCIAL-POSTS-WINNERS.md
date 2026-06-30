@@ -94,3 +94,20 @@
 5. **Konsistenz schlägt Perfektion:** täglich posten > 1× perfekt. Erste 1–2 Wochen testen, was greift, dann das Winner-Format wiederholen.
 
 > 💡 Der erste Verkauf bringt dir auch die **erste echte Review** — und genau die fehlt dem Shop noch als Social Proof. Reichweite löst beides.
+
+---
+
+## 7) 💎 Moissanite-Kette «Aurora» — CHF 199  ⭐ TikTok-Trend (Diamant-Alternative)
+**Warum:** Moissanit = „Diamant-Look ohne Diamant-Preis" ist 2026 ein riesiger TikTok-/Reels-Trend. GRA-Zertifikat = Echtheits-Beweis, perfekt für Trust-Content. Premium-Preis (CHF 199) = hoher Warenkorbwert.
+**Link:** luxestyle.ch/products/moissanite-kette-aurora-925-silber-gra-zertifiziert
+
+**Hook (erste Sekunde, on-screen):** „Diamant? … Nein. 💎 Schau genauer."
+**Clip-Idee:** Extreme Close-ups vom Funkeln (Licht drüber schwenken = „Feuer"/Regenbogen-Reflexe), Kette auf der Haut/am Hals, dann das **GRA-Zertifikat** kurz einblenden. ASMR-ruhig, glitzernd. 10–15 Sek.
+**On-Screen-Text-Folge:** „Sieht aus wie ein Diamant 💎" → „Ist Moissanit (mehr Feuer!)" → „GRA-zertifiziert ✓ · 925 Silber" → „Diamant: CHF 2000+ · Aurora: CHF 199" → „Link in Bio"
+**Caption:**
+> Der Diamant-Look ohne den Diamant-Preis ✨💎 Moissanite-Kette «Aurora» — 925 Silber, GRA-zertifiziert. Mehr Feuer & Brillanz als ein echter Diamant, für einen Bruchteil. CHF 199.
+> 🇨🇭 Schweizer Shop · Gratis-Versand · 30 Tage Rückgabe · WELCOME10 = –10%
+> 👉 Link in Bio
+**Hashtags:** #moissanite #moissanitejewelry #diamondalternative #halskette #schmuck #tiktokmademebuyit #luxusfürweniger #schweiz #jewelrytok #fyp
+
+> 💡 **Stärkstes Format:** „Diamant vs. Moissanit"-Vergleich oder „Rate den Preis"-Hook — beides performt bei Schmuck extrem gut. Echtes GRA-Zertifikat zeigen = Trust-Boost.
