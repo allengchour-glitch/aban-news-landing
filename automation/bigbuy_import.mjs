@@ -44,6 +44,12 @@ const DRY = process.env.LIVE !== '1';                              // DRY ist De
 const CATS = (process.env.CATS || 'schmuck,taschen,uhren,sonnenbrillen').split(',').map(s => s.trim()).filter(Boolean);
 // Global: Wholesale-Grosspackungen / Mehrstück-Sets (für Einzelhandel unpassend) kategorieübergreifend ausschliessen
 const GLOBAL_BAN = ['pcs)', ' pcs', '(18', '(24', '(36', '(48', '(12 ', '(6 pcs', '12 pcs', '18 pcs', '24 pcs', '36 pcs', '48 pcs', '50 pcs', '100 pcs', ' uds)', ' uds.', 'großpack', 'grosspack', 'bulk', 'wholesale', 'display 12', 'display 24'];
+// Adult/Erotik global bannen — massage/yoga-Anker zogen wiederholt Sex-Toys (Prostata-Massager, Love-Panty,
+// Screaming-O). Diese NIE importieren (Premium-Shop, jugendfrei). EN+DE Schlüsselwörter, lowercase-Substring.
+const ADULT_BAN = ['prostat', 'massager love', 'love panty', 'liebe panty', 'lust', 'dildo', 'vibrator', 'vibrador',
+  'masturbat', 'penis', 'vaginal', 'clitor', 'klitor', 'anal', 'butt plug', 'g-spot', 'g spot', 'g-punkt',
+  'erotic', 'erotik', 'sex toy', 'sexspielzeug', 'screaming o', 'cock ring', 'penisring', 'nipple', 'bdsm',
+  'fetish', 'fetisch', 'bondage', 'lubricant', 'gleitgel', 'kondom', 'condom', 'orgasm', 'orgasmus', 'intim'];
 
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
@@ -516,6 +522,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     const cand = info.filter(p => {
       const nm = (p.name || '').toLowerCase(); if (!nm) return false;
       if (GLOBAL_BAN.some(x => nm.includes(x))) return false; // Wholesale-Multipacks etc. global ausschliessen
+      if (ADULT_BAN.some(x => nm.includes(x))) return false;  // Adult/Erotik nie (massage/yoga-Anker zogen Sex-Toys)
       return cfg.anchor.some(a => nm.includes(a)) && !(cfg.ban || []).some(x => nm.includes(x));
     });
     console.log(`  ${cand.length} on-brand Kandidaten im Katalog.`);

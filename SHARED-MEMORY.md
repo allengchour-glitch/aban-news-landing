@@ -2476,3 +2476,22 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **🔴 6× „Prostata-Massagegerät" (Sex-Toys) → GEDRAFTET** (massage-Anker zieht Adult-Linie massiv). **+ die 36 Keeper sind generische Fast-Dubletten:** 6 nahezu identische Kompressoren („Druckluft-Profi/Kraftvolle Druckluft/Robuste Kompressoren"…), 4 Trinkbrunnen, 6 Gold-Affen-Deko, mehrere Schwimmbrillen/Tauchmasken.
 - **📌 BEWEIS: „nimm alles" = Junk.** Volumen-Import aus den Rest-Kategorien produziert Sex-Toys + Dubletten-Spam. **Behalten auf User-Wunsch (Volumen), aber das ist das ENDE des sinnvollen BigBuy** — mehr = Shop vermüllen. **massage-Anker MUSS Adult bannen: prostata/panty/lust/intim/sinnlich/dildo/vibrator.**
 - Ledger: $LED.
+
+---
+**🛡️ 2026-06-30 (HÄRTUNG + Verifikation — Adult-Ban im Importer, Katalog sauber bestätigt):**
+- **🔴→✅ DURABLE FIX: `automation/bigbuy_import.mjs` ADULT_BAN** eingebaut (global, vor jeder Kategorie). Bannt
+  prostat/dildo/vibrator/love-panty/screaming-o/anal/intim/erotik/kondom… (EN+DE). **Behebt endgültig** die wiederholte
+  Falle, dass massage/yoga-Anker Sex-Toys ziehen (6× Prostata-Massager in Big-Run, Screaming-O-Yoga, Liebe-Panty).
+  Getestet: alle 3 Leak-Produkte BANNED, Knie-/Nacken-/Gesichts-Massager bleiben. `node --check` grün. Künftige
+  „mehr BigBuy"-Runs sind jetzt jugendfrei-sicher — kein manuelles Drafting mehr nötig.
+- **✅ Big-Run-Commit gefixt+gepusht:** fc8bc074 hatte unverified committer → amended b4eddb9a (author/committer
+  noreply@anthropic.com), `push --force-with-lease`. origin=local=b4eddb9a, sauber.
+- **✅ Deep-Descriptions 100 %:** `productsCount(tag:bigbuy AND -tag:ls-ai-deep)` = **0**. Enrichment-Backfill (36 Big-Run-Keeper) durch.
+- **✅ Katalog-Stichprobe SEO sauber:** 20 neueste bigbuy-Produkte alle mit `seo.title`+`description` (Trinkbrunnen/Kompressoren/
+  Fahrrad/Schwimmbrillen). SEO-Lücke aus Plan-Phase-C existiert nicht mehr — Importer setzt SEO direkt mit.
+- **✅ Premium-Collection verifiziert (Plan-Phase-A):** Beschreibung markengenau, Sort PRICE_DESC (live führen ACTIVE-Marken, teure
+  Drafts unsichtbar), Bild gesetzt. **D&G-Link NICHT entfernt** — Annahme im alten Plan war veraltet: `collectionByHandle(dolce-gabbana)`
+  existiert mit **8 echten D&G-Parfums (ACTIVE)** → Link gültig. (Lehre: vor „Defekt"-Fix immer live prüfen.)
+- **📌 STAND Katalog:** ~5.087 ACTIVE, alles SEO+Deep, Premium-Collection edel, Adult-Falle geschlossen. **BigBuy bleibt
+  ausgeschöpft** (Big-Run bewies: nur noch Sex-Toys+Dubletten) → kein weiterer Volumen-Import. **Engpass unverändert =
+  TRAFFIC** (User-§10: Pixel/Kampagne/Budget). Shop-seitig nichts Sinnvolles mehr offen — nicht ins Leere optimieren.
