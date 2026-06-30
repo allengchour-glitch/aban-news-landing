@@ -79,15 +79,15 @@ for row in "${ROWS[@]}"; do
                       rm -f "$SCLOG" ;;
     jobs)         bash automation/vps/run-api-jobs.sh 2>&1 | tail -6 ;;
     campaign-dry) bash automation/vps/campaign-bridge.sh 2>&1 | tail -20 ;;
-    aurora-video) # Rotierendes, glaenzendes Aurora-Ketten-Video via fal.ai Seedance (Fallback-Modell-Kette in
-                  # seedance_video.mjs). Braucht FAL_KEY in /opt/luxe/.env. Stempelt IMMER luxe.aurora_video
-                  # (bytes/fal-ja-nein sichtbar fuer die Cloud, auch ohne Push) + pusht das mp4, falls Push-Rechte da.
+    aurora-video|aurora-veo) # Rotierendes, glaenzendes Aurora-Ketten-Video via VEO (Google, ueber das GEMINI-Guthaben
+                  # in /opt/luxe/.env) — NICHT fal (separates Konto, evtl. leer). Stempelt IMMER luxe.aurora_video
+                  # (bytes/gemini-ja-nein sichtbar fuer die Cloud) + pusht das mp4, falls Push-Rechte da.
                   AUIMG="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3d48340e-cc7f-4d18-8f74-cd2c8d463c9b.jpg?v=1781380333"
-                  AUPROMPT="luxury jewelry commercial, the rainbow gemstone necklace slowly rotating on a turntable, dazzling sparkle and glossy light reflections, elegant dark background with soft golden bokeh and aurora glow, cinematic slow motion, photoreal, no text"
-                  "$NODE" automation/seedance_video.mjs --image "$AUIMG" --prompt "$AUPROMPT" --res 720p --dur 5 --ar 9:16 --out reels/seedance-aurora-1.mp4 2>&1 | tail -20
-                  SZ=$([ -f reels/seedance-aurora-1.mp4 ] && wc -c < reels/seedance-aurora-1.mp4 || echo 0)
-                  STAMP_KEY="aurora_video" STAMP_VALUE="bytes=$SZ fal=$([ -n "${FAL_KEY:-}" ] && echo ja || echo NEIN) @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
-                  if [ "${SZ:-0}" -gt 50000 ]; then git add -f reels/seedance-aurora-1.mp4 && git -c user.email=vps@luxe -c user.name=vps-bot commit -m "auto(vps): Aurora Seedance rotierendes Video" >/dev/null 2>&1 && git push origin "$BR" 2>&1 | tail -2 || LOG "aurora-video: Push fehlgeschlagen (kein Token?) - Datei nur lokal"; else LOG "aurora-video: kein/zu kleines Output (FAL_KEY fehlt auf VPS? siehe seedance-Log oben)"; fi ;;
+                  AUPROMPT="Cinematic luxury jewelry commercial. The rainbow-gemstone necklace slowly rotates and turns, dazzling sparkle and glossy light reflections across the colourful stones. Elegant dark background with soft golden bokeh and a subtle aurora light glow. Slow, smooth, stabilized motion. The necklace stays true to the reference image, same colours and design, no distortion. No text, no logo, no watermark. Vertical 9:16, high quality."
+                  "$NODE" automation/veo_product_clip.mjs --image "$AUIMG" --prompt "$AUPROMPT" --aspect 9:16 --seconds 8 --out reels/veo-aurora.mp4 2>&1 | tail -20
+                  SZ=$([ -f reels/veo-aurora.mp4 ] && wc -c < reels/veo-aurora.mp4 || echo 0)
+                  STAMP_KEY="aurora_video" STAMP_VALUE="bytes=$SZ gemini=$([ -n "${GEMINI_API_KEY:-}" ] && echo ja || echo NEIN) @ $(date -u +%H:%MZ)" "$NODE" automation/vps/stamp.mjs 2>&1 | tail -1
+                  if [ "${SZ:-0}" -gt 50000 ]; then git add -f reels/veo-aurora.mp4 && git -c user.email=vps@luxe -c user.name=vps-bot commit -m "auto(vps): Aurora Veo rotierendes Video" >/dev/null 2>&1 && git push origin "$BR" 2>&1 | tail -2 || LOG "aurora-veo: Push fehlgeschlagen (kein Token?) - Datei nur lokal"; else LOG "aurora-veo: kein/zu kleines Output (GEMINI_API_KEY fehlt auf VPS? siehe Veo-Log oben)"; fi ;;
     *) LOG "unbekannter Befehl '$cmd' (ignoriert; campaign-go/echtes Geld laeuft NIE automatisch)" ;;
   esac
   LOG "fertig: $cmd"
