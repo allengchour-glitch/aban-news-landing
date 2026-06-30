@@ -1,5 +1,12 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-30 (Spät — Video-Pipeline auf Veo umgestellt + Ad-Landing verstärkt + 1 Video/Tag, autonom)
+- **🎬 AURORA-VIDEO Pipeline gefixt:** fal-Modell-ID war falsch (`seedance-2.0/fast`=Not Found) → Fallback-Kette. User zeigte: **fal $31.46 + Gemini 51 CHF + Luma ~50 CHF Guthaben** = 3 bezahlte Engines. **Veo (Gemini)** als Hauptweg (`veo_product_clip.mjs`), fal Fallback. 1-Klick-Bot **`AURORA-VIDEO.bat`** (rendert+pusht, startet Brave NICHT) + PC-Cmd `aurora-veo` + VPS-Cmd (liefert via Shopify-CDN, da VPS keine git-push-Rechte). ps1-Parse-Bug gefixt.
+- **💧 AD-LANDING verstärkt:** Wasserfest-Collection **7 → ~18** echte Edelstahl-Teile (Damen-Ketten/Ohrringe/Ringe + Marken Tommy Hilfiger/Radiant/Guess/Calvin Klein für Trust). Perlen bewusst NICHT (kein Chlor/Salz = keine Falschaussage). Ad-Landing-Redirect WELCOME10→Collection verifiziert (302→200).
+- **📉 1 VIDEO/TAG (User „sozial uf 1 video pro tag"):** Giga-Bot nur noch 18:30, IG/FB 19:00, Worker POST_HOURS=[17]. Qualität > Quantität.
+- **🤖 VPS-Rolle geklärt (User „für was hetzner"):** 24/7-Engine, läuft daily 04:00 (Feed/SEO/Pixel/Stats via Shopify-API, read-only=kein Push/Posting=Safety). On-Demand-Befehle brauchen den 10-Min-Poller (`vps-cmd-poll.sh --install`, einmalig per SSH = nur User). Video liefert VPS via CDN-Upload+Metafeld.
+- **🔴 NUR USER:** Kampagne absenden (Geld-Klick) · VPS-Poller-Install (SSH) · Meta-Token-Scope (IG/FB-Posting).
+
 ## 2026-06-30 (Abend — Doppelpost-Check + Posting-Memory verifiziert, autonom)
 - **🔁 DOPPELPOST geprüft (User „doppelpost? behebe alles, bessere memory"):** Lösch-Bot `tt-delete-go` lief → **`deleted:0` = KEINE exakte Dublette**. TikTok-Profil-Grid (Screenshot) = **12 verschiedene Produkte** (Samsara/Rosée/Minou/Étincelle/Couleur/Cascade/Gua-Sha/blaue-Stein-Kette/Mode/Taschen) → kein echter Doppel sichtbar.
 - **🧠 POSTING-MEMORY verifiziert = bereits robust+reset-fest:** committer Ledger `tiktok-upload-done.txt` + **gitignored** reset-fester `.tiktok-posted.local` (überlebt `git reset --hard` ✓ geprüft) + **Produkt-Token-Dedup** (`sharesProduct` gegen ALLE bisher, nicht nur 30) + Rotation-Keep + Sofort-Commit nach jedem Post. Worker(IG/FB) dedupt via KV cursor+post_log+live-IG-Captions.
