@@ -2523,3 +2523,15 @@ Live-Storefront `luxestyle.ch` HTML gezogen + Tracking-Snippets seziert. **Endli
 - **Warum hybrid (Skript erntet+öffnet, PC-Claude klickt):** Blindes Auto-Fill über 3 fremde App-UIs (girally/Klaviyo) ist zu
   fragil zu garantieren; PC-Claude mit Vision macht den Eintipp-Teil robust. TikTok-Pixel lebt schon → Budget zuerst TikTok.
 - **User-Aktion:** `node automation/local/tracking-fix-browser.mjs` auf dem PC ODER den Auftrag an PC-Claude geben.
+---
+**✅ 2026-06-30 (AUTO-QA-SWEEP „mach auto alles" — 1 echter Fix, Shop verifiziert sauber):**
+- **🔧 FIX WELCOME10-Ablauf verlängert:** Code lief am **31.08.2026** ab (in 2 Mt.), wird aber überall beworben („–10% mit WELCOME10").
+  → `discountCodeBasicUpdate` endsAt auf **2027-12-31** gesetzt. Verhindert, dass das beworbene Einsteiger-Incentive (Audience-Aufbau!)
+  zum gebrochenen Versprechen wird. (Andere Welcome-Codes existieren parallel: WELCOME15/TIKTOK2026/LUXESTYLE10 — alle aktiv, belassen.)
+- **🔒 SICHERHEIT bestätigt:** 0 Adult-Produkte ACTIVE (Suche prostata/panty/lust/vibrator/dildo/intim/erotik → nur „Revlon Super Lustrous"
+  Lippenstift = Fehlalarm). Adult-Draft-Disziplin + neuer Importer-ADULT_BAN greifen.
+- **✅ Katalog clean:** Murks-Titel-Suche (Dein-X-Shop/Wasserschlacht) = nur legitime Marketing-Copy, kein Defekt. Bild-Stichprobe 15 ACTIVE = alle mit Bild.
+- **✅ Menü verifiziert (kein toter Link):** 24 Brand-Collections (marke-nike…project-x-paris, +marken-sport/mode/tech/beauty-marken) alle gefüllt (6–250).
+  24 sub-/sg-/Spezial-Collections (sub-kleider/taschen/uhren/halsketten, sg-*, wm-fussball-2026, klima-ventilatoren, unter-chf-25=1596, erste-august=256) alle ≥3 Produkte.
+- **📌 Ergebnis:** Shop-seitig nichts Defektes mehr — Qualitätsarbeit ist verifiziert abgeschlossen. Einziger offener Hebel bleibt TRAFFIC/Tracking
+  (Port-Bot wartet auf User-Ausführung). Weiteres Shop-Polishing = ins Leere; nicht fortsetzen.
