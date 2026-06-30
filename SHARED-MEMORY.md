@@ -2455,3 +2455,9 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Strategie bewährt:** Re-Tap der GUTEN frischen Kategorien (viel Reststock) statt neuer Fehlmatch-Kategorien. CATS=massage,beautydevice,haustiertech,auto PER=3 → **12 Keeper, 0 Fehlmatch, kein Hänger.**
 - massage: Knie-Akupressur/Magnet-Einlagen/Anti-Cellulite (InnovaGoods). beautydevice: Drakefor/Geske/IDC Schallbürsten CHF10.90–88.90. haustiertech: 3 Trixie-Brunnen (Grössen). auto: 3 Luftkompressoren (Michelin/Bestway/Fartools CHF45.90–122.90). ß=0, distinct.
 - **LEHRE:** Die ergiebigen sauberen Quellen (massage 293, beautydevice 46, haustiertech 43, auto 119 Kand.) haben noch Reststock → **Re-Tap dieser 4 = zuverlässig saubere Keeper ohne Fehlmatch-Drama** (im Gegensatz zu neuen Kategorien wie guertel/yoga). Bei „mehr BigBuy" künftig DIESE re-tappen.
+
+---
+**🛒 2026-06-29 (IMPORT Ladung 22 — Loop, +10 Keeper, 0 Fehlmatch):**
+- CATS=massage,beautydevice,tauchen,velo PER=3 → 10 Keeper (beautydevice nur noch 1 → wird tapped, 46 Kand. fast durch).
+- massage: Nacken-/Gesichts-/Anti-Cellulite-Geräte. tauchen: 3 Erwachsenen-Schwimmbrillen (polarisiert, Sommer). velo: Fahrradkorbhalter + 2 Lazer-Helme (CHF87.90/92.90, Markt-ok). Distinct, sane.
+- **Loop-Strategie:** Rotiere die 4–6 sauberen Reststock-Kategorien (massage/tauchen/velo/wasserstrand/luftreiniger/home) → liefert zuverlässig 8–12 Keeper/Runde ohne Fehlmatch. beautydevice fast leer.
