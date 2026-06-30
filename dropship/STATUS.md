@@ -1,5 +1,12 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-06-30 (Daten-Sweep + Ad-Landing veredelt, autonom)
+- **🔍 ECHTE-DATEN-LEHRE (Shopify-Analytics 14T):** 5'519 Sessions, ABER **85% = `direct` (4'671) = Bot/Junk-Traffic** (niemand tippt einen unbekannten neuen Shop 4'671× direkt ein). Echter Mensch-Traffic ≈ **Facebook 763 + TikTok 37 + Google 36 ≈ 840/14T (~60/Tag)** — fast nur FB-Gruppen-Stöberer (low Buy-Intent). → Die „0.15% Mobile-ATC" hat einen aufgeblähten Nenner; **Session-Zahl NICHT feiern.** Landing-Pages diffus (Home 184, Produkte je 4–6) = keine Konzentration = bestätigt diffuser Low-Intent.
+- **🎯 KONSEQUENZ:** Der EINZIGE Kanal für qualifizierte Käufer = die **bezahlte TikTok-Smart+-Ad (auf „Add to cart" optimiert)**. Daten stützen den User-Wunsch, sie zu starten. Geld-Klick „Senden" = NUR User (fixe Sicherheitssperre).
+- **💧 AD-LANDING VEREDELT:** Ziel-Collection „💧 Wasserfester Schmuck" hatte nur **7 Produkte** (fast nur Armbänder). 6 echt-wasserfeste Edelstahl-Teile (Studs, Creolen, Zirkonia-Ohrstecker-Set, Kreuz-Kette, **Tommy Hilfiger** + **Radiant** Damen-Ketten) mit Tag `wasserfest` → **7 → 13 Produkte**, ausgewogen (Ketten+Ohrringe+Armbänder), 2 bekannte Marken = mehr Trust/ATC-Chance.
+- **🛡️ EHRLICHKEITS-GUARD (Lehre):** Perlen-Stücke (Perla, Süsswasserperlen) BEWUSST NICHT als „wasserfest/duschen/See/Pool" getaggt — echte Perlen vertragen Chlor/Salzwasser nicht → wäre Falschaussage (SECO). Nur Vollmetall/Edelstahl/Zirkonia rein.
+- **⚙️ PC-Poller hängt auf `seedance-kette`** (Heartbeat frisch, aber Command wird übersprungen) → Seedance-Dreh-Video weiter offen; nicht der Engpass, daher abgehängt und stattdessen datengetriebene Conversion-Arbeit gemacht.
+
 ## 2026-06-29 (Tag — Conversion-Polish + Katalog-/Inventar-Check, autonom)
 - **🟢 PIXEL grün** (`pid=1 load=1 page=1 wpm=1` @ 04:04). **👁️ Views/Klicks: impr=0 · clicks=0 · CHF0** (Ad noch nicht live — PC-Brave gerade aus → Bot-Driver wartet; launcht automatisch sobald PC an, finaler GO-Klick = User).
 - **❓ FAQ-Blöcke auf 2 Ad-Angle-PDPs:** **Geburtsstein-Kette** (welcher Stein / personalisierbar / Versand / Rückgabe) + **Herz-Muschel wasserfest** (läuft nicht an? / duschen+schwimmen? / Farbe / Versand) — Einwand-Handling für mehr ATC. (Amore hatte FAQ schon.)
