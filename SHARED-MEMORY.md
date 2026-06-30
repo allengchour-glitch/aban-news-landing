@@ -2575,3 +2575,15 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   finanzieren (0 ROI bewiesen). (3) Budget/Energie → **Organic SEO + ev. TikTok-organic** (Pixel lebt). (4) AOV ~CHF26 niedrig
   (Billig-Artikel) → für spürbaren Umsatz entweder Organic-Volumen ODER AOV heben (Bundles/teurere Hero-Produkte pushen).
 - **Semrush-MCP getestet (Regel #3): NICHT im User-Plan** → Keyword-Recherche darüber nicht möglich (Alternative: WebSearch/GSC).
+
+---
+**🔍 2026-06-30 (ORGANIC-SEO-CHANCEN recherchiert — „suche mehr alles" → Daten-Artefakt):**
+- Neues `dropship/ORGANIC-SEO-CHANCEN.md`: Shop-eigene Organic-Gewinner (Landing-Pages + Top-Produkte) + WebSearch-Marktrecherche
+  → konkrete **Long-Tail-Keyword-Ziele** je Gewinner-Kategorie (Kleider/Schmuck-Zirkonia/Herrenuhren/Sommer-Gadgets) + To-Do-Liste.
+- **Gewinner (Traffic 90T):** damen-mode (387), sommer (204), highlights (240); Top-Produkte Herrenuhr, **Zirkonia-Blumenring**,
+  Etuikleid/Midikleid/Strandkleid, Strand-Cardigan, Wireless-Charger, Flame-Diffuser, Galaxy-Projektor, Sommerhemd, Boston-Tasche.
+- **Strategie-Regel:** Head-Terms („Sommerkleider Damen") gehören Zalando/Lascana/Jelmoli/bonprix → chancenlos. NUR Long-Tail mit
+  Kaufabsicht (Leinenkleid/Slip-Dress-Satin/Strandkleid/verstellbarer-Zirkonia-Ring/Herrenuhr-Saphirglas). Trend-Anker 2026:
+  Türkis/Pink/Pastell, Leinen/Viskose, Volants, Blumen-/Animal-Print, Slip-Dress; Zirkonia = günstige Diamant-Alternative.
+- **To-Do (SEO/Produkt-Session + PC-Claude):** Gewinner-Produkt-Titel/SEO auf Long-Tail trimmen · Collection-Texte damen-mode/sommer
+  anreichern · 2–3 Ratgeber-Blogposts · GSC-Queries der 92 Organic-Sessions prüfen (User) · TikTok-organic auf Gewinner-Produkte.
