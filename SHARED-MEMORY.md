@@ -2587,3 +2587,14 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   Türkis/Pink/Pastell, Leinen/Viskose, Volants, Blumen-/Animal-Print, Slip-Dress; Zirkonia = günstige Diamant-Alternative.
 - **To-Do (SEO/Produkt-Session + PC-Claude):** Gewinner-Produkt-Titel/SEO auf Long-Tail trimmen · Collection-Texte damen-mode/sommer
   anreichern · 2–3 Ratgeber-Blogposts · GSC-Queries der 92 Organic-Sessions prüfen (User) · TikTok-organic auf Gewinner-Produkte.
+
+---
+**🗂️ 2026-06-30 (COLLECTION-SEO der Gewinner-Kategorien verbessert — „hilf andere session, kategorie besser, sortiere super, seo"):**
+- **Spur-sauber:** andere Session macht Einzelprodukte → ich mache **Collection-Ebene** (kollisionsfrei). Nur die SCHWACHEN Texte angefasst, die starken (damen-mode/sommer/premium-schmuck/highlights/blusen/hosen/ohrringe/armbaender/wasserfest = bereits exzellent) NICHT gechurnt.
+- **4 Collection-SEO live verbessert** (Long-Tail aus ORGANIC-SEO-CHANCEN):
+  - `sub-uhren`: generisch → „Uhren Damen & Herren – Edelstahl, Saphirglas & Smartwatches" + Herrenuhr-Saphirglas/50m/Damenuhren/Swiss-Made.
+  - `sub-kleider`: + Leinenkleider/Strandkleider/Etui-/Maxikleider, Trendfarben 2026.
+  - `sub-ringe`: **+ Zirkonia (Top-Gewinner-Produkt!)** „Zirkonia, verstellbar & Statement-Ringe" + Diamant-Alternative-Winkel.
+  - `sub-bademode`: + Bikinis/Tankinis/Strandkleider, saisonal Sommer 2026.
+- **Sortierung geprüft (Regel #1 verifizieren):** `sub-uhren` PRICE_DESC führt mit ECHTEN Premium-Marken (Jaguar/Seiko/Citizen/Certina Swiss Made) = starker Eindruck → **NICHT geändert** (kein Defekt). Andere Gewinner BEST_SELLING = ok.
+- **Import bewusst NICHT gemacht:** Katalog hat 5.087 ACTIVE, BigBuy ist ausgeschöpft (Big-Run bewies Sex-Toys+Dubletten), und die Daten zeigen: Engpass = Traffic, nicht Produktzahl. Mehr Produkte ≠ mehr Kunden. Qualität > Menge.
