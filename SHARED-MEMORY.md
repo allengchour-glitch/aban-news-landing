@@ -2510,3 +2510,16 @@ Live-Storefront `luxestyle.ch` HTML gezogen + Tracking-Snippets seziert. **Endli
 - **⛔ Warum ich es nicht selbst fixen kann:** FB/Google-IDs liegen in der „girally"-App-Config (kein MCP-Zugriff) und brauchen die
   echten Pixel-IDs aus dem Meta-/Google-Konto des Users (OAuth). Klaviyo-Onsite + website_url/Währung sind Klaviyo-UI-only (kein update_account-Tool).
   Theme-MAIN-Write ist im MCP gesperrt. → Diese 3 Fixes sind physisch User-Klicks; ich habe sie auf Minuten-Aufgaben eingedampft.
+---
+**🤖 2026-06-30 (PORT-BOT-AUFTRAG für Tracking-Fix gebaut — „mache du bitte port bot"):**
+- Cloud-Session hat keinen Browser → die 3 Tracking-Fixes (FB/Google-Pixel, Klaviyo-Onsite, Klaviyo-Account) brauchen den
+  eingeloggten Brave (Port 9222). **Gebaut statt nur delegiert:**
+  - **`automation/local/tracking-fix-browser.mjs`** (playwright-core, CDP→9222): erntet Meta-Pixel-ID(s) aus dem Events Manager,
+    öffnet die 3 Reparatur-Seiten in Tabs (girally-App, Klaviyo-Shopify-Integration, Klaviyo-Account), screenshottet, druckt
+    glasklare 3-Schritt-Checkliste MIT echter Pixel-ID. Defensiv, nichts Destruktives. `node --check` grün.
+  - **`dropship/BROWSER-CLAUDE-AUFTRAG-TRACKING.md`**: präziser Schritt-für-Schritt-Auftrag für PC-Claude (Vision-Agent füllt die
+    Formulare adaptiv) — exakte URLs (admin.shopify.com/store/au3j0y-hq/apps, business.facebook.com/events_manager2,
+    klaviyo.com/integration/shopify + /settings/account), Gegenchecks am Live-HTML, Fertig-Meldung.
+- **Warum hybrid (Skript erntet+öffnet, PC-Claude klickt):** Blindes Auto-Fill über 3 fremde App-UIs (girally/Klaviyo) ist zu
+  fragil zu garantieren; PC-Claude mit Vision macht den Eintipp-Teil robust. TikTok-Pixel lebt schon → Budget zuerst TikTok.
+- **User-Aktion:** `node automation/local/tracking-fix-browser.mjs` auf dem PC ODER den Auftrag an PC-Claude geben.
