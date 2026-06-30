@@ -37,12 +37,15 @@ try { @{ ts = (Get-Date).ToString("o"); task = "cmd-poll"; head = (git rev-parse
 # SINGLE-INSTANCE, aber STALE-TOLERANT (FIX 2026-06-20 v2 "PC immer aktiv, Queue waechst trotzdem"):
 # Der alte Global-Mutex blockierte FUER IMMER, wenn ein Lauf an einem Browser/node-Aufruf haengen blieb
 # (Lock nie freigegeben -> jeder neue Poll stieg sofort aus -> Kanal tot). Jetzt: Lock-DATEI mit Zeitstempel.
-# Ist der Lock juenger als 12 Min = echte laufende Instanz -> nicht stapeln. Aelter = haengengeblieben -> uebernehmen.
+# Anti-Stacking-Lock. FIX 2026-06-30 (User „nächstes mal alles autonom"): 12 Min war ZU lang — CLOUD-AN ruft
+# cmd-poll alle 2 Min, sequenziell (wartet auf Ende) -> der frische Lock liess den Poller fast jede Runde sofort
+# aussteigen -> gequeuete Cloud-Befehle liefen nie autonom. 90 s = kein echtes Stapeln (CLOUD-AN ist synchron),
+# aber der Poller arbeitet jetzt JEDE 2-Min-Runde -> Cloud-Befehle laufen autonom in ~2-4 Min.
 $lock = Join-Path $env:TEMP "luxe-cmdpoll.lock"
 if (Test-Path $lock) {
   $age = (Get-Date) - (Get-Item $lock).LastWriteTime
-  if ($age.TotalMinutes -lt 12) { exit }   # frischer Lock = laeuft noch -> raus
-}                                            # sonst: stale -> uebernehmen
+  if ($age.TotalSeconds -lt 90) { exit }   # frischer Lock (<90s) = laeuft noch -> raus
+}                                            # sonst: uebernehmen
 Set-Content -Path $lock -Value "$PID" -ErrorAction SilentlyContinue
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
