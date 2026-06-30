@@ -36,7 +36,8 @@ where yt-dlp >nul 2>&1 || powershell -NoProfile -Command "try{Invoke-WebRequest 
 
 echo [3/6] Direkt-Tasks registrieren (VOLLAUTOMAT, kein git im Hot-Path)...
 schtasks /create /f /tn "LuxeUpdate"  /sc daily /st 05:00 /tr "%PSF% \"%VA%\" -Mode update"
-schtasks /create /f /tn "LuxePost-10" /sc daily /st 10:00 /tr "%PSF% \"%VA%\" -Mode post"
+REM 1 Post/Tag (User 2026-06-30 "sozial uf 1 video pro tag"): nur Primetime 19:00; 10:00-Slot loeschen.
+schtasks /delete /tn "LuxePost-10" /f >nul 2>&1
 schtasks /create /f /tn "LuxePost-19" /sc daily /st 19:00 /tr "%PSF% \"%VA%\" -Mode post"
 schtasks /create /f /tn "LuxeEng-09"  /sc daily /st 09:00 /tr "%PSF% \"%VA%\" -Mode engage"
 schtasks /create /f /tn "LuxeEng-12"  /sc daily /st 12:00 /tr "%PSF% \"%VA%\" -Mode engage"
@@ -48,8 +49,8 @@ echo [3b/6] NEU: GIGA-Bot (ALLE TikTok-Wege Fallback) + Fernsteuerung + SEO...
 set "AB=%DIR%tiktok-giga-bot.ps1"
 set "CP=%DIR%cmd-poll.ps1"
 set "SP=%REPO%\automation\seo_polish.mjs"
-REM GIGA-Bot 2x/Tag: API -> Browser -> Browserbase (erster Erfolg gewinnt, postet nur 1x)
-schtasks /create /f /tn "LuxeAutobot-11" /sc daily /st 11:30 /tr "%PSF% \"%AB%\""
+REM 1 Video/Tag (User 2026-06-30 "sozial uf 1 video pro tag"): NUR EIN Giga-Bot-Lauf zur Primetime (18:30). Qualitaet > Quantitaet.
+schtasks /delete /tn "LuxeAutobot-11" /f >nul 2>&1
 schtasks /create /f /tn "LuxeAutobot-18" /sc daily /st 18:30 /tr "%PSF% \"%AB%\""
 REM Fernsteuerung: holt Cloud-Befehle alle 10 Min (du steuerst vom Handy)
 schtasks /create /f /tn "LuxeCmd" /sc minute /mo 10 /tr "%PSF% \"%CP%\""

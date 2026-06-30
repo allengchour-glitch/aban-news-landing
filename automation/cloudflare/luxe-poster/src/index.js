@@ -400,7 +400,7 @@ async function run(env, doPost = true) {
   return out;
 }
 
-const POST_HOURS = [9, 17];  // UTC -> CH 11(Mittag)/19(Primetime) = 2 Posts/Tag (muss zu cron "0 9,17" passen!)
+const POST_HOURS = [17];  // 1 Post/Tag (User 2026-06-30 "sozial uf 1 video pro tag"): nur 17 UTC = 19:00 CH Primetime. Analyse/Chat laeuft weiter bei allen cron-Slots.
 
 export default {
   async scheduled(event, env, ctx) {
