@@ -165,11 +165,11 @@ function orbMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(
 // State + Upgrades
 var S={};
 function reset(){
-  S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:5,
+  S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:4,
      dmg:1,speed:9,multishot:1,pickup:3.2,area:1,haste:1,
-     spawnT:0,spawnEvery:1.4,bossT:30,phase:1,finalBoss:false,won:false,weapons:{bolt:1},wt:{},bladeA:0,ups:{}};
+     spawnT:0,spawnEvery:1.6,bossT:40,phase:1,finalBoss:false,won:false,weapons:{bolt:1},wt:{},bladeA:0,ups:{}};
   var meta=loadMeta();
-  S.maxhp=100+(meta.hp||0)*20; S.hp=S.maxhp;
+  S.maxhp=120+(meta.hp||0)*20; S.hp=S.maxhp;
   S.dmg=1+(meta.dmg||0)*0.1;
   S.speed=9*(1+(meta.spd||0)*0.05);
   S.pickup=3.2+(meta.mag||0)*0.6;
@@ -409,8 +409,8 @@ function loop(now){
     var ph=Math.min(5,1+Math.floor(S.t/PHASE_T));
     if(ph!==S.phase){S.phase=ph;announce("⚠ PHASE "+ph+"/5 — schneller!");beep(160,.3,"sawtooth",.08);}
     if(!S.finalBoss){
-      S.spawnT-=dt; var rate=Math.max(0.16,(S.spawnEvery-S.t*0.012)-(S.phase-1)*0.12);
-      if(S.spawnT<=0){spawnEnemy();if(S.t>20)spawnEnemy();if(S.phase>=4)spawnEnemy();S.spawnT=rate;}
+      S.spawnT-=dt; var rate=Math.max(0.28,(S.spawnEvery-S.t*0.009)-(S.phase-1)*0.07);
+      if(S.spawnT<=0){spawnEnemy();if(S.t>40)spawnEnemy();if(S.phase>=5)spawnEnemy();S.spawnT=rate;}
       if(S.t>=S.bossT){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);}
       if(S.t>=RUN_T){S.finalBoss=true;spawnFinalBoss();}
     }
@@ -422,15 +422,15 @@ function loop(now){
     for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active)continue;var ex=player.position.x-e2.m.position.x,ez=player.position.z-e2.m.position.z;var ed=Math.hypot(ex,ez)||1;
       var mv=(e2.shooter&&ed<13)?0:1;  // Schützen halten Abstand
       e2.m.position.x+=ex/ed*e2.spd*dt*mv;e2.m.position.z+=ez/ed*e2.spd*dt*mv;e2.m.rotation.x+=dt*2;
-      if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ed<42){enemyShoot(e2.m.position.x,e2.m.position.z,15);e2.shootT=2.0;}}
-      if(e2.boss){e2.shootT-=dt;if(e2.shootT<=0){for(var rr=0;rr<(e2.finalBoss?18:12);rr++){var ang2=rr/(e2.finalBoss?18:12)*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*12;eb2.vz=Math.sin(ang2)*12;eb2.life=4;}e2.shootT=e2.finalBoss?2.0:3.0;beep(120,.3,"sawtooth",.07);}}
+      if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ed<42){enemyShoot(e2.m.position.x,e2.m.position.z,13);e2.shootT=2.8;}}
+      if(e2.boss){e2.shootT-=dt;if(e2.shootT<=0){for(var rr=0;rr<(e2.finalBoss?14:10);rr++){var ang2=rr/(e2.finalBoss?14:10)*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*9;eb2.vz=Math.sin(ang2)*9;eb2.life=4;}e2.shootT=e2.finalBoss?3.0:4.2;beep(120,.3,"sawtooth",.07);}}
       if(e2.flash>0){e2.flash-=dt;e2.m.material.emissive.setHex(e2.flash>0?0xffffff:e2.baseEmissive);}
-      if(ed<1.4){S.hp-=22*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}
+      if(ed<1.4){S.hp-=13*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}
     }
     // Gegner-Projektile
     for(i=0;i<ebullets.length;i++){var eb=ebullets[i];if(!eb.active)continue;eb.m.position.x+=eb.vx*dt;eb.m.position.z+=eb.vz*dt;eb.life-=dt;
       var pdx=player.position.x-eb.m.position.x,pdz=player.position.z-eb.m.position.z;
-      if(pdx*pdx+pdz*pdz<1.4){S.hp-=12;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
+      if(pdx*pdx+pdz*pdz<1.4){S.hp-=7;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
       else if(eb.life<=0){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}}
     if(hurt>0)hurt=Math.max(0,hurt-dt*2.2); hurtEl.style.opacity=hurt;
     // Orbs einsammeln (Magnet)
