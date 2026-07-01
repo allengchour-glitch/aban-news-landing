@@ -2787,3 +2787,11 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **Parfum-Collection 685→833** · Damen-Düfte 283 · Herren-Düfte 198. marke-Tag 3.011 · Gadgets 440.
 - **Katalog: 7.821 aktive Produkte** (Session-Start ~5.087 → **+~2.730 diese Session!**).
 - **Selbstheilendes Fill-Muster bewährt:** `heal()` (git fetch+ff-merge, sonst checkout automation/) am Script-Start + vor jeder Phase → überlebt Container-Resets, die vorher 2× Wellen abbrachen. Für grosse Fills IMMER so.
+
+---
+**🧸 2026-06-30 (SPIELZEUG-WELLE + weiter2 — Katalog fast 9.000):**
+- **weiter2-Welle: +646** (parfum 125 · makeup 130 · gadget 90 · skincare 90 · haircare 80 · uhr 70 · sonnenbrille 50 · tasche 11), Parfum-Sub-Collections auto-genudged.
+- **Spielzeug-Welle: +490** — davon **200 Marken-Spielzeuge** (LEGO/Playmobil/Mattel/Funko/Ravensburger/Simba/Barbie/Hot-Wheels…, Vein 1503 Kand. TIEF) + 290 andere Kat.
+  `bigbuy_brand_fill.mjs` hat jetzt `spielzeug`-Gruppe (Brand-Filter B.toy + Keywords). Toys → `kinderspielzeug`-Collection (Regel tag:spielzeug) auto → 314 Produkte.
+- **Katalog: 8.957 aktive Produkte** (Session-Start ~5.087 → **+~3.870 diese Session!**). marke-Tag 4.147 · Spielzeug-Tag 319.
+- **⚠️ Kleiner Tool-Bug:** `GROUPS=spielzeug` restringiert nicht immer (lief alle Gruppen), `CAP_<grp>` greift aber. → Für Single-Kategorie ggf. verifizieren; unkritisch (füllt mehr, kein Junk dank Brand-Filter).
