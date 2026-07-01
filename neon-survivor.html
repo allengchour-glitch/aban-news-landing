@@ -116,7 +116,12 @@ floor.rotation.x=-Math.PI/2; scene.add(floor);
 var grid=new THREE.GridHelper(ARENA*2,40,0x4458b0,0x222a55); grid.position.y=0.02; scene.add(grid);
 
 function mat(c,e){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:1.1,flatShading:true}); return m;}
-var player=new THREE.Mesh(new THREE.IcosahedronGeometry(0.9,0),mat(0x5ef2ff,0x1a6f8c)); player.position.y=0.9; scene.add(player);
+var player=new THREE.Mesh(new THREE.IcosahedronGeometry(0.62,0),mat(0x5ef2ff,0x1a6f8c)); player.position.y=0.9; scene.add(player);
+// Composite-Spieler-Modell (Kern + rotierende Ringe + Finnen + Glow) statt einzelner Blob
+var pRing=new THREE.Mesh(new THREE.TorusGeometry(1.15,0.13,8,22),mat(0xb98bff,0xb98bff)); pRing.rotation.x=Math.PI/2; player.add(pRing);
+var pRing2=new THREE.Mesh(new THREE.TorusGeometry(0.9,0.07,8,18),mat(0x5ef2ff,0x5ef2ff)); pRing2.rotation.x=Math.PI/2; player.add(pRing2);
+var pCore=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),mat(0xffffff,0xffffff)); player.add(pCore);
+for(var _fi=0;_fi<4;_fi++){var fin=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.14,0.9),mat(0x5ef2ff,0x1a6f8c));var fa=_fi/4*Math.PI*2;fin.position.set(Math.cos(fa)*0.95,0,Math.sin(fa)*0.95);fin.rotation.y=-fa;player.add(fin);}
 var glow=new THREE.PointLight(0x5ef2ff,1.5,18); scene.add(glow);
 
 // ================= "Geile Map": umrandete Neon-Arena mit Deko + Map-Themes =================
@@ -416,7 +421,7 @@ function loop(now){
     var ml=Math.hypot(mx,mz); if(ml>1){mx/=ml;mz/=ml;}
     player.position.x=Math.max(-ARENA,Math.min(ARENA,player.position.x+mx*S.speed*dt));
     player.position.z=Math.max(-ARENA,Math.min(ARENA,player.position.z+mz*S.speed*dt));
-    player.rotation.y+=dt*1.5;
+    player.rotation.y+=dt*1.5; pRing.rotation.z+=dt*2.2; pRing2.rotation.z-=dt*3.4; pCore.rotation.y+=dt*4; pCore.scale.setScalar(1+Math.sin(S.t*6)*0.12);
     glow.position.set(player.position.x,2,player.position.z);
     // Waffen (mehrere, je eigener Takt) + Orbit-Klingen
     weaponTick(dt); updateBlades(dt);
