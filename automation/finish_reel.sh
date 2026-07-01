@@ -11,6 +11,16 @@ FONT="/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 CTA="Mit Code WELCOME10 sparen"
 [ -f "$IN" ] || { echo "IN fehlt: $IN"; exit 1; }
 
+# MUSIK-VARIATION (User 2026-07-01 "musik nervt, jedes mal andere"): ohne explizite Musik/Stimme automatisch
+# einen eleganten CC-BY-Track waehlen - per Titel-Hash, damit jedes Produkt einen ANDEREN, aber konsistenten Track hat.
+MUSICDIR="automation/music/lib"
+if [ -z "$VOICE" ] && [ -z "$MUSIC" ]; then
+  TRACKS=(dreams-become-real inspired smooth-lovin bossa-antigua local-forecast-elevator carefree easy-lemon funkorama)
+  H=$(echo -n "$TITLE" | cksum | cut -d' ' -f1); IDX=$(( H % ${#TRACKS[@]} ))
+  CAND="$MUSICDIR/${TRACKS[$IDX]}.mp3"
+  [ -f "$CAND" ] && MUSIC="$CAND" && echo "auto-Musik: ${TRACKS[$IDX]}"
+fi
+
 # 1) Schwarze Balken (Veo liefert oft quadratisch/letterbox) automatisch erkennen
 CROP=$(ffmpeg -ss 2 -i "$IN" -vframes 8 -vf cropdetect=24:2:0 -f null - 2>&1 | grep -o 'crop=[0-9:]*' | tail -1)
 CROPF=""; [ -n "$CROP" ] && CROPF="${CROP},"
