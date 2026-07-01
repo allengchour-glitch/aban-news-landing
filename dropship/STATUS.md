@@ -1,5 +1,13 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-02 (Nacht — Daten-Verifikation + Amore-Video auf Veo umgestellt)
+- **DATEN GEPRUEFT (info ist a und o):** Orders = nur #1004 (User-Testkauf 31.9 PAID) + #1003 (EXPIRED) → 0 echte Fremdkaeufe. Bottleneck bleibt Conversion/Trust, NICHT Katalog.
+- **SEO-Metas aktiver Katalog verifiziert komplett + hochwertig** (50 Top-Produkte gecheckt, alle mit sauberer Meta-Description) — Cloud-SEO ist erledigt, kein Nachholbedarf.
+- **Rabattcodes verifiziert:** WELCOME10, TIKTOK10, BUNDLE20, FIRST15, COMEBACK10, REVIEW10 = alle ACTIVE. Der ueberall referenzierte WELCOME10 funktioniert = kein Trust-Leak.
+- **AMORE-Meisterwerk-Video auf Veo umgestellt:** fal/Seedance lieferte nicht (Poller-Queue undrained, kein Output). Neuer Cmd `amore-veo` (veo_product_clip.mjs, Gemini-Quota-Reset) + Queue `2026-07-02-AMORE-VEO-A` gepusht → rendert `reels/amore-raw.mp4` sobald PC-Poller laeuft.
+- **Ehrlich:** AI-Video (Veo/fal) braucht PC-Keys (luxe-secrets.ps1) — Cloud hat sie nicht. Laeuft nur wenn CLOUD-AN.bat am PC an ist.
+- **🔴 NUR USER (unveraendert der echte Engpass):** ⭐ Reviews-Import (Judge.me) · 📱 Mobile-Speed/Sticky-ATC (Theme) · 📧 4 Klaviyo-Klicks (Smart-Sending aus, Absender=LuxeStyle, E3 live) · 🎬 Kampagne-Freigabe abwarten · 🚚 Versand 65→50.
+
 ## 2026-07-01 (GROSSER TAG — Kampagne ABGESENDET + TikTok-MCP verbunden)
 - **KAMPAGNE LIVE EINGEREICHT:** "Wasserfest CH Juni" abgesendet (Shopify-Smart+, Bot fuellte 5/5 vor, User klickte Senden) — Status "Wird ueberprueft" seit 1.7. Freigabe meist <24h. Budget 30/Tag.
 - **TIKTOK-ADS MCP VERBUNDEN (Durchbruch):** claude.ai-Connector `https://business-api.tiktok.com/open_mcp/tt-ads-mcp-flat`, 211 Lese-Tools auf "Immer erlauben", gilt 30 Tage. NEUE Sessions lesen Kampagnen-Zahlen DIREKT per API (kein Browser-Bot). Advertiser 7646349875793182738. Marketing-API-App "LuxeStyle Bot" pending = obsolet.
