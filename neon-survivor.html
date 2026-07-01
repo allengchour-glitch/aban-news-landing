@@ -105,8 +105,8 @@ var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,40,150);
-var camera=new THREE.PerspectiveCamera(60,W/H,0.1,300);
+var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,50,460);
+var camera=new THREE.PerspectiveCamera(60,W/H,0.1,2000);
 scene.add(new THREE.AmbientLight(0x556099,1.2));
 var dir=new THREE.DirectionalLight(0xffffff,0.7); dir.position.set(6,14,6); scene.add(dir);
 
@@ -150,7 +150,40 @@ var starsGeo=new THREE.BufferGeometry();var sps=new Float32Array(160*3);
 for(var sx=0;sx<160;sx++){sps[sx*3]=(Math.random()-.5)*260;sps[sx*3+1]=Math.random()*60+12;sps[sx*3+2]=(Math.random()-.5)*260;}
 starsGeo.setAttribute("position",new THREE.BufferAttribute(sps,3));
 scene.add(new THREE.Points(starsGeo,new THREE.PointsMaterial({color:0x9aa2d8,size:0.7,transparent:true,opacity:.7})));
+// Emblem etwas dezenter (Bloom blies es aus)
+emblem.material.emissiveIntensity=0.5; emblem2.material.emissiveIntensity=0.5;
+
+// ================= Landschaft: Gradient-Himmel, Berge, Mond, Aurora, Partikel =================
+var skyMat=new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,fog:false,uniforms:{cTop:{value:new THREE.Color(0x04050e)},cHor:{value:new THREE.Color(0x241640)},cLow:{value:new THREE.Color(0x02030a)}},
+  vertexShader:"varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"uniform vec3 cTop;uniform vec3 cHor;uniform vec3 cLow;varying vec3 vP;void main(){float h=normalize(vP).y;vec3 c=h>0.0?mix(cHor,cTop,pow(h,0.5)):mix(cHor,cLow,pow(-h,0.4));gl_FragColor=vec4(c,1.0);}"});
+var sky=new THREE.Mesh(new THREE.SphereGeometry(900,32,16),skyMat); scene.add(sky);
+// Mond
+var moon=new THREE.Mesh(new THREE.SphereGeometry(22,24,24),new THREE.MeshBasicMaterial({color:0xcdd8ff,fog:false})); moon.position.set(-150,150,-320); scene.add(moon);
+var moonHalo=new THREE.Mesh(new THREE.SphereGeometry(30,24,24),new THREE.MeshBasicMaterial({color:0x8fb0ff,transparent:true,opacity:0.18,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})); moonHalo.position.copy(moon.position); scene.add(moonHalo);
+// Ferne Berg-Silhouetten
+var mountains=[];
+for(var mni=0;mni<70;mni++){var mna=mni/70*Math.PI*2, mnr=210+Math.random()*110, mnh=40+Math.random()*90;
+  var mnt=new THREE.Mesh(new THREE.ConeGeometry(35+Math.random()*45,mnh,4),new THREE.MeshStandardMaterial({color:0x090b1c,emissive:0x141838,emissiveIntensity:0.5,flatShading:true}));
+  mnt.position.set(Math.cos(mna)*mnr,mnh/2-8,Math.sin(mna)*mnr); mnt.rotation.y=Math.random()*3.14; scene.add(mnt); mountains.push(mnt);}
+// Aurora-Bänder (additiv)
+var auroras=[];
+for(var aui=0;aui<3;aui++){var au=new THREE.Mesh(new THREE.PlaneGeometry(500,70),new THREE.MeshBasicMaterial({color:aui===0?0x5ef2ff:(aui===1?0xb98bff:0xff7ad9),transparent:true,opacity:0.09,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide,fog:false}));
+  au.position.set(0,95+aui*26,-230); au.rotation.x=-0.55-aui*0.08; scene.add(au); auroras.push(au);}
+// Umgebungs-Partikel (Glühwürmchen)
+var ambGeo=new THREE.BufferGeometry(), ambN=150, ambPos=new Float32Array(ambN*3), ambV=[];
+for(var qi=0;qi<ambN;qi++){ambPos[qi*3]=(Math.random()-.5)*200;ambPos[qi*3+1]=Math.random()*45;ambPos[qi*3+2]=(Math.random()-.5)*200;ambV.push(2+Math.random()*4);}
+ambGeo.setAttribute("position",new THREE.BufferAttribute(ambPos,3));
+var ambParticles=new THREE.Points(ambGeo,new THREE.PointsMaterial({color:0x8fe8ff,size:0.55,transparent:true,opacity:0.75,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(ambParticles);
+function updateLandscape(dt,t){
+  for(var i=0;i<auroras.length;i++){auroras[i].material.opacity=0.06+0.05*Math.sin(t*0.5+i);auroras[i].position.x=Math.sin(t*0.12+i)*35;}
+  var pa=ambGeo.attributes.position.array;
+  for(i=0;i<ambN;i++){pa[i*3+1]+=ambV[i]*dt;if(pa[i*3+1]>48){pa[i*3+1]=0;pa[i*3]=(Math.random()-.5)*200;pa[i*3+2]=(Math.random()-.5)*200;}}
+  ambGeo.attributes.position.needsUpdate=true;
+}
 function applyMap(idx){var m=MAPS[idx%MAPS.length];
+  var hor=new THREE.Color(m.fog).lerp(new THREE.Color(m.accent),0.16); skyMat.uniforms.cHor.value.copy(hor);
+  skyMat.uniforms.cTop.value.set(0x03040c); auroras[0].material.color.setHex(m.accent); auroras[1].material.color.setHex(m.accent2);
   scene.background.setHex(m.fog);scene.fog.color.setHex(m.fog);floor.material.color.setHex(m.floor);
   for(var i=0;i<mapWalls.length;i++){mapWalls[i].material.color.setHex(m.accent);mapWalls[i].material.emissive.setHex(m.accent);}
   emblem.material.color.setHex(m.accent);emblem.material.emissive.setHex(m.accent);
@@ -465,8 +498,10 @@ function loop(now){
   emblem.rotation.z+=dt*0.3; emblem2.rotation.z-=dt*0.5;
   // Kamera (top-down folgt)
   if(shake>0)shake-=dt*1.5;
-  camera.position.set(player.position.x+(Math.random()-.5)*shake*3,22,player.position.z+13+(Math.random()-.5)*shake*3);
-  camera.lookAt(player.position.x,0,player.position.z);
+  updateLandscape(dt,performance.now()*0.001);
+  sky.position.set(player.position.x,0,player.position.z);
+  camera.position.set(player.position.x+(Math.random()-.5)*shake*3,19,player.position.z+20+(Math.random()-.5)*shake*3);
+  camera.lookAt(player.position.x,6,player.position.z-12);
   renderBloom();
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
