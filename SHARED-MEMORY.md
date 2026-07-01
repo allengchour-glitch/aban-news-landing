@@ -2862,3 +2862,16 @@ DIESE Session bleibt Katalog/Import/Kategorien/SEO. TikTok-Feed-Qualität ist be
   **Merke:** vor neuer Kategorie IMMER die Ziel-Collection-Regel lesen (`ruleSet.rules`) und Tags exakt matchen.
 - **Re-Index:** Neue Produkte laggen in tag-basierten Smart-Collections → identische ruleSet neu speichern stupst sofort an.
 - **Tagesbilanz Import:** 4 neue Kat. (Papeterie/Haustier/Garten/Bar) +221, Vertiefung +230, Auto/Beleuchtung +86 = **~537 neue Marken-Produkte**.
+---
+**📌 2026-07-01 (⚡ ENERGIELABEL A–G bei Leuchtmitteln — `automation/energy_labels.mjs`):**
+- EU-Energieeffizienzklasse-Badge (A–G-Skala, korrekte EU-Farben grün→rot, betroffene Klasse hervorgehoben)
+  in Produktbeschreibungen eingefügt + Tags `energielabel`/`energie-<X>`.
+- **QUELLE (ehrlich, nichts erfunden):** BigBuy kodiert die Klasse als einzelnen Buchstaben im Namen direkt vor
+  der Wattzahl („LED-Lampe Philips **E** 6,5 W …" → E). **Gegen BigBuy `productinformation`-Feld
+  „Energieklassifizierung: X" verifiziert** (Classic A→A, Philips D→D — Titel == BigBuy-Feld, 100 % Treffer).
+- Nur echte Lichtquellen (LED-Lampe/Glühbirne/Leuchtmittel) mit eindeutigem Klassen-Buchstaben → **9 Produkte**
+  (F:2, E:5, D:1, A:1). Lampen ohne Klassen-Buchstabe im Titel bewusst übersprungen (kein Raten).
+- **Kein Groß-Weißware im Katalog** (Dropship = keine Kühlschränke/Waschmaschinen) → Beleuchtung ist der
+  vollständige relevante Scope. Kleingeräte (Wasserkocher etc.) tragen kein EU-Label.
+- **Wichtig (Safety):** Tags via `tagsAdd` (additiv) — `productUpdate(tags:)` würde ALLE Tags ersetzen. Beschreibung
+  via `productUpdate(descriptionHtml:)`. Badge wird nach dem Intro-`</p>` eingefügt. Dedup über Tag `energielabel`.
