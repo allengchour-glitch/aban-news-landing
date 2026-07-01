@@ -2752,3 +2752,11 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **🆕 Galaxus-Gadget-Texte:** `automation/lib/gadget_desc.mjs` (typ-basierte Eigenschaften-Specs — bei Gadgets typtypisch korrekt) + `cj_gadget_galaxus.mjs` (Backfill). **205 Gadget-Produkte** haben jetzt Galaxus-Stil (Intro + Eigenschaften-Liste + Trust) statt generischem Template. `cj_gadget_fill.mjs` nutzt die Lib direkt für neue.
 - **Katalog: 6.074 aktive Produkte** (Session-Start ~5.087 → **+~990 diese Session!**). Gadgets 205.
 - **🔑 Gadget-Lehre gefestigt:** CJ = Gadget-Quelle (volle Galerien), BigBuy = bild-arm für Gadgets. CJ-Titler (Typ-Erkennung + Modell-Pool) macht CJ-Kauderwelsch zu sauberen DE-Titeln ohne Dubletten. Tools dauerhaft im Repo (`cj_gadget_fill.mjs` + `lib/gadget_desc.mjs` + `cj_gadget_galaxus.mjs`).
+
+---
+**🎉🎉 2026-06-30 (FÜLLE-ALLES — +642 Produkte in einem Rutsch; Katalog 6.716):**
+- **BigBuy-Marken-Welle: +577** (parfum 150 · makeup 110 · skincare 80 · haircare 70 · uhr 60 · sonnenbrille 45 · gadget 40 · tasche 22) — alle Galaxus-beschrieben, EU-Lager, 6 Kanäle.
+- **CJ-Gadgets: +65** (2. Welle) + alle 310 Gadgets Galaxus-beschrieben.
+- **Katalog: 6.716 aktive Produkte** — Session-Start ~5.087 → **+~1.630 diese Session!** marke-Tag 1.906 · Parfum 504 · Gadgets 310.
+- **⚠️ Container-Reset-Lehre:** Grosse Fills können an einem Container-Reset scheitern (Tool-Datei kurz weg → MODULE_NOT_FOUND). Robustheit: nach Reset `git merge --ff-only origin/…` (Tools zurück), dann Fill neu starten. Bei Chained-Orchestrator besser pro Phase einzeln starten + Zwischenstand committen.
+- **Tooling-Stand (dauerhaft im Repo):** `bigbuy_brand_fill.mjs` (Marken, Galaxus, alle Bilder) · `cj_gadget_fill.mjs` + `lib/gadget_desc.mjs` (Gadgets, Galaxus) · `push_prepared.mjs` · `lib/galaxus_desc.mjs` + `bb_galaxus_descriptions.mjs` · `cj_gadget_galaxus.mjs`. Jede Session füllt jede Kategorie mit einem Befehl, Galaxus-beschrieben.
