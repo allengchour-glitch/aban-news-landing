@@ -2795,3 +2795,12 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   `bigbuy_brand_fill.mjs` hat jetzt `spielzeug`-Gruppe (Brand-Filter B.toy + Keywords). Toys → `kinderspielzeug`-Collection (Regel tag:spielzeug) auto → 314 Produkte.
 - **Katalog: 8.957 aktive Produkte** (Session-Start ~5.087 → **+~3.870 diese Session!**). marke-Tag 4.147 · Spielzeug-Tag 319.
 - **⚠️ Kleiner Tool-Bug:** `GROUPS=spielzeug` restringiert nicht immer (lief alle Gruppen), `CAP_<grp>` greift aber. → Für Single-Kategorie ggf. verifizieren; unkritisch (füllt mehr, kein Junk dank Brand-Filter).
+
+---
+**📝 2026-06-30 (SEO-CONTENT für neue Kategorien + Schuh-Beschreibungen):**
+- **Ratgeber-Blog hat schon 94 Artikel** (andere Session: Herrenuhr/Moissanite/Edelstahl-Schmuck/Smartwatch/Sommerkleider/Sonnenbrillen…) → NICHT dupliziert.
+- **+4 neue Artikel für die NEUEN Kategorie-Lücken** (selbst als Claude geschrieben, published, mit internen Links zu den Gewinner-Collections):
+  „Parfum finden: EdP vs EdT & 4 Duftfamilien" (grösster Gap, 833 Parfums!) · „Nägel & Maniküre zuhause" · „Magnetische Wimpern auftragen" · „Werkzeug-Grundausstattung".
+- **Schuh-Beschreibungen (`/tmp/shoe_desc.mjs`):** GMC-CSV („add Farbe/Größe/Material") → 404 Schuhe kriegen saubere Produktdetails-Sektion (Marke/Farbe/Typ aus Titel + Material + Grössen-Hinweis + Trust). Shopify-API, kein BigBuy-Konflikt.
+- **LLM-Keys:** nur GEMINI_API_KEY in /tmp/lux_env.sh (für Massen-SEO nutzbar); Blog-Artikel schreibe ich aber selbst = Top-Qualität.
+- **Competitor-Sichtbarkeit (User-Screenshot GMC):** CH Apparel Top = Zalando/Shein/AboutYou/Temu/bonprix, Overlap mit LuxeStyle 0.0% → bestätigt: NICHT Head-Terms gegen Riesen, sondern NISCHEN + Content-Qualität (besser als Shein/Temu). Sichtbarkeits-Sprung = Traffic/Autorität = User-Hebel.
