@@ -154,8 +154,10 @@ function applyMap(idx){var m=MAPS[idx%MAPS.length];
   glow.color.setHex(m.accent);player.material.emissive.setHex(m.accent);
   return m;}
 
-var bullets=[],enemies=[],orbs=[],fx=[];
+var bullets=[],enemies=[],orbs=[],fx=[],ebullets=[];
 function getMesh(pool,make){for(var i=0;i<pool.length;i++)if(!pool[i].active)return pool[i];var o=make();pool.push(o);return o;}
+function ebulletMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.35,8,8),mat(0xff5566,0xff3344)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0};}
+function enemyShoot(fx0,fz0,spd){var b=getMesh(ebullets,ebulletMesh);b.active=true;b.m.visible=true;b.m.position.set(fx0,0.8,fz0);var dx=player.position.x-fx0,dz=player.position.z-fz0,d=Math.hypot(dx,dz)||1;b.vx=dx/d*spd;b.vz=dz/d*spd;b.life=4;beep(300,.05,"square",.03);}
 function bulletMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.28,8,8),mat(0xffffff,0x88ffff)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0};}
 function enemyMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.1,1.1),mat(0xff5577,0xaa1133)); m.active=false; scene.add(m); return {m:m,active:false,hp:1,spd:1};}
 function orbMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(0xffd166,0xffd166)); m.active=false; scene.add(m); return {m:m,active:false}; }
@@ -178,7 +180,7 @@ function reset(){
   S.weapons={}; S.weapons[ch.weap]=1;
   S.maxhp*=ch.hp; S.hp=S.maxhp; S.dmg*=ch.dmg; S.speed*=ch.spd; S.haste*=ch.haste; S.area*=ch.area;
   renderUpRow();
-  [bullets,enemies,orbs,fx,blades].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
+  [bullets,enemies,orbs,fx,blades,ebullets].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
   player.position.set(0,0.9,0);
 }
 var moveX=0,moveZ=0,keys={};
@@ -193,17 +195,22 @@ function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){v
 
 function spawnEnemy(boss){
   var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true; en.boss=!!boss;
+  en.shooter=false; en.splitter=false; en.shootT=0;
   var a=rnd()*Math.PI*2, r=ARENA*0.9;
   en.m.position.set(player.position.x+Math.cos(a)*r,0.7,player.position.z+Math.sin(a)*r);
   if(boss){
-    en.hp=40+Math.floor(S.t/3); en.spd=1.8; en.xp=8; en.m.scale.set(2.6,2.6,2.6);
+    en.hp=40+Math.floor(S.t/3); en.spd=1.8; en.xp=8; en.m.scale.set(2.6,2.6,2.6); en.shootT=2.5;
     en.m.material.color.setHex(0xff2266); en.m.material.emissive.setHex(0xff2266);
   } else {
     var roll=rnd();
-    if(roll<0.25){ en.hp=1; en.spd=4.6+S.t*0.03; en.xp=1; en.m.scale.set(0.7,0.7,0.7);
+    if(roll<0.20){ en.hp=1; en.spd=4.6+S.t*0.03; en.xp=1; en.m.scale.set(0.7,0.7,0.7);
       en.m.material.color.setHex(0xffaa33); en.m.material.emissive.setHex(0xaa5500); }
-    else if(roll<0.45){ en.hp=4+Math.floor(S.t/15); en.spd=1.6+S.t*0.01; en.xp=3; en.m.scale.set(1.5,1.5,1.5);
+    else if(roll<0.36){ en.hp=4+Math.floor(S.t/15); en.spd=1.6+S.t*0.01; en.xp=3; en.m.scale.set(1.5,1.5,1.5);
       en.m.material.color.setHex(0x9b5cff); en.m.material.emissive.setHex(0x5522aa); }
+    else if(roll<0.52){ en.hp=3+Math.floor(S.t/18); en.spd=1.8; en.xp=3; en.shooter=true; en.shootT=1.5+rnd(); en.m.scale.set(1.1,1.1,1.1);
+      en.m.material.color.setHex(0x33d0ff); en.m.material.emissive.setHex(0x1188cc); }
+    else if(roll<0.66){ en.hp=5+Math.floor(S.t/14); en.spd=2.0; en.xp=4; en.splitter=true; en.m.scale.set(1.3,1.3,1.3);
+      en.m.material.color.setHex(0x44ee88); en.m.material.emissive.setHex(0x22aa55); }
     else { en.hp=1+Math.floor(S.t/25); en.spd=2.4+rnd()*1.2+S.t*0.02; en.xp=1; en.m.scale.set(1,1,1);
       en.m.material.color.setHex(0xff5577); en.m.material.emissive.setHex(0xaa1133); }
   }
@@ -219,7 +226,9 @@ function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"s
   en.m.material.color.setHex(0xffd166);en.m.material.emissive.setHex(0xffaa00);en.baseEmissive=0xffaa00;en.flash=0;}
 // ---------- Waffen-System: mehrere Waffen (je 6 Level) → Build-Vielfalt ----------
 function spawnBullet(x,z,ang,spd,dmg,life,pierce,color){var b=getMesh(bullets,bulletMesh);b.active=true;b.m.visible=true;b.m.position.set(x,0.9,z);b.vx=Math.cos(ang)*spd;b.vz=Math.sin(ang)*spd;b.life=life;b.dmg=dmg;b.pierce=pierce||0;b.m.material.color.setHex(color||0x88ffff);b.m.material.emissive.setHex(color||0x88ffff);}
-function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;announce("Boss besiegt! 🏆");checkEvolutions();}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
+function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);
+  if(en.splitter){var px=en.m.position.x,pz=en.m.position.z;for(var sp2=0;sp2<2;sp2++){var mi=getMesh(enemies,enemyMesh);mi.active=true;mi.m.visible=true;mi.boss=false;mi.shooter=false;mi.splitter=false;mi.shootT=0;mi.hp=1;mi.spd=4.5;mi.xp=1;mi.m.scale.set(0.6,0.6,0.6);mi.m.material.color.setHex(0x44ee88);mi.m.material.emissive.setHex(0x22aa55);mi.baseEmissive=0x22aa55;mi.flash=0;mi.finalBoss=false;mi.m.position.set(px+(rnd()-.5)*2.4,0.7,pz+(rnd()-.5)*2.4);}}
+  en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;announce("Boss besiegt! 🏆");checkEvolutions();}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
 function hitEnemy(en,dmg){if(!en.active)return;en.hp-=dmg;if(en.hp<=0)killEnemy(en);else en.flash=0.09;}
 function novaFx(R){var n=20;for(var i=0;i<n;i++){var a=i/n*6.283;var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.18,6,6),mat(0x9bd0ff,0x9bd0ff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(0x9bd0ff);p.m.material.emissive.setHex(0x9bd0ff);p.m.position.set(player.position.x,0.9,player.position.z);p.vx=Math.cos(a)*R*2.4;p.vz=Math.sin(a)*R*2.4;p.vy=0;p.life=0.4;}}
 function chainLightning(L){var ev=S.evolved.chain;var hops=2+L+(ev?3:0),used=[],fx0=player.position.x,fz0=player.position.z;
@@ -410,10 +419,19 @@ function loop(now){
       for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-b.m.position.x,dz=en.m.position.z-b.m.position.z;if(dx*dx+dz*dz<1.2){hitEnemy(en,b.dmg);if(b.pierce>0){b.pierce--;}else{b.active=false;b.m.visible=false;b.m.position.y=-99;}break;}}
     }
     // Enemies → Spieler
-    for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active)continue;var ex=player.position.x-e2.m.position.x,ez=player.position.z-e2.m.position.z;var ed=Math.hypot(ex,ez)||1;e2.m.position.x+=ex/ed*e2.spd*dt;e2.m.position.z+=ez/ed*e2.spd*dt;e2.m.rotation.x+=dt*2;
+    for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active)continue;var ex=player.position.x-e2.m.position.x,ez=player.position.z-e2.m.position.z;var ed=Math.hypot(ex,ez)||1;
+      var mv=(e2.shooter&&ed<13)?0:1;  // Schützen halten Abstand
+      e2.m.position.x+=ex/ed*e2.spd*dt*mv;e2.m.position.z+=ez/ed*e2.spd*dt*mv;e2.m.rotation.x+=dt*2;
+      if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ed<42){enemyShoot(e2.m.position.x,e2.m.position.z,15);e2.shootT=2.0;}}
+      if(e2.boss){e2.shootT-=dt;if(e2.shootT<=0){for(var rr=0;rr<(e2.finalBoss?18:12);rr++){var ang2=rr/(e2.finalBoss?18:12)*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*12;eb2.vz=Math.sin(ang2)*12;eb2.life=4;}e2.shootT=e2.finalBoss?2.0:3.0;beep(120,.3,"sawtooth",.07);}}
       if(e2.flash>0){e2.flash-=dt;e2.m.material.emissive.setHex(e2.flash>0?0xffffff:e2.baseEmissive);}
       if(ed<1.4){S.hp-=22*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}
     }
+    // Gegner-Projektile
+    for(i=0;i<ebullets.length;i++){var eb=ebullets[i];if(!eb.active)continue;eb.m.position.x+=eb.vx*dt;eb.m.position.z+=eb.vz*dt;eb.life-=dt;
+      var pdx=player.position.x-eb.m.position.x,pdz=player.position.z-eb.m.position.z;
+      if(pdx*pdx+pdz*pdz<1.4){S.hp-=12;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
+      else if(eb.life<=0){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}}
     if(hurt>0)hurt=Math.max(0,hurt-dt*2.2); hurtEl.style.opacity=hurt;
     // Orbs einsammeln (Magnet)
     for(i=0;i<orbs.length;i++){var o=orbs[i];if(!o.active)continue;var ox=player.position.x-o.m.position.x,oz=player.position.z-o.m.position.z;var od=Math.hypot(ox,oz)||1;if(od<S.pickup){o.m.position.x+=ox/od*12*dt;o.m.position.z+=oz/od*12*dt;}o.m.rotation.y+=dt*3;
