@@ -172,6 +172,7 @@ function reset(){
   S.pickup=3.2+(meta.mag||0)*0.6;
   S.xpMul=1+(meta.xp||0)*0.08;
   S.revives=(meta.rev||0);
+  S.evolved={};
   document.getElementById("upRow").innerHTML="";
   [bullets,enemies,orbs,fx,blades].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
   player.position.set(0,0.9,0);
@@ -214,26 +215,34 @@ function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"s
   en.m.material.color.setHex(0xffd166);en.m.material.emissive.setHex(0xffaa00);en.baseEmissive=0xffaa00;en.flash=0;}
 // ---------- Waffen-System: mehrere Waffen (je 6 Level) → Build-Vielfalt ----------
 function spawnBullet(x,z,ang,spd,dmg,life,pierce,color){var b=getMesh(bullets,bulletMesh);b.active=true;b.m.visible=true;b.m.position.set(x,0.9,z);b.vx=Math.cos(ang)*spd;b.vz=Math.sin(ang)*spd;b.life=life;b.dmg=dmg;b.pierce=pierce||0;b.m.material.color.setHex(color||0x88ffff);b.m.material.emissive.setHex(color||0x88ffff);}
-function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;announce("Boss besiegt! 🏆");}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
+function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;announce("Boss besiegt! 🏆");checkEvolutions();}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
 function hitEnemy(en,dmg){if(!en.active)return;en.hp-=dmg;if(en.hp<=0)killEnemy(en);else en.flash=0.09;}
 function novaFx(R){var n=20;for(var i=0;i<n;i++){var a=i/n*6.283;var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.18,6,6),mat(0x9bd0ff,0x9bd0ff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(0x9bd0ff);p.m.material.emissive.setHex(0x9bd0ff);p.m.position.set(player.position.x,0.9,player.position.z);p.vx=Math.cos(a)*R*2.4;p.vz=Math.sin(a)*R*2.4;p.vy=0;p.life=0.4;}}
-function chainLightning(L){var hops=2+L,used=[],fx0=player.position.x,fz0=player.position.z;
-  for(var h=0;h<hops;h++){var best=null,bd=(h===0?1e9:196);for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active||used.indexOf(en)>=0)continue;var dx=en.m.position.x-fx0,dz=en.m.position.z-fz0;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}if(!best)break;used.push(best);burst(best.m.position.x,best.m.position.z,0xfff066);fx0=best.m.position.x;fz0=best.m.position.z;hitEnemy(best,S.dmg*(2+L*0.8));}
+function chainLightning(L){var ev=S.evolved.chain;var hops=2+L+(ev?3:0),used=[],fx0=player.position.x,fz0=player.position.z;
+  for(var h=0;h<hops;h++){var best=null,bd=(h===0?1e9:196);for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active||used.indexOf(en)>=0)continue;var dx=en.m.position.x-fx0,dz=en.m.position.z-fz0;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}if(!best)break;used.push(best);burst(best.m.position.x,best.m.position.z,0xfff066);fx0=best.m.position.x;fz0=best.m.position.z;hitEnemy(best,S.dmg*(2+L*0.8)*(ev?1.6:1));}
   beep(900,.06,"square",.04);}
 // Orbit-Klingen (passive Aura)
 var blades=[];function bladeMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.5,0),mat(0x5ef2ff,0x5ef2ff));m.active=false;scene.add(m);return {m:m,active:false};}
-for(var _bi=0;_bi<8;_bi++)blades.push(bladeMesh());
-function updateBlades(dt){var L=S.weapons.orbit||0;var cnt=L?Math.min(8,2+L):0;S.bladeA=(S.bladeA||0)+dt*2.4;var R=3.0*S.area;
+for(var _bi=0;_bi<12;_bi++)blades.push(bladeMesh());
+function updateBlades(dt){var L=S.weapons.orbit||0;var ev=S.evolved&&S.evolved.orbit;var cnt=L?Math.min(12,2+L+(ev?3:0)):0;S.bladeA=(S.bladeA||0)+dt*(ev?3.4:2.4);var R=3.0*S.area;
   for(var i=0;i<blades.length;i++){var bl=blades[i];if(i<cnt){bl.active=true;bl.m.visible=true;var a=S.bladeA+i/cnt*6.283;bl.m.position.set(player.position.x+Math.cos(a)*R,0.9,player.position.z+Math.sin(a)*R);bl.m.rotation.y+=dt*6;
-      for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-bl.m.position.x,dz=en.m.position.z-bl.m.position.z;if(dx*dx+dz*dz<1.4)hitEnemy(en,S.dmg*(2+L*0.6)*dt*5);}
+      for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-bl.m.position.x,dz=en.m.position.z-bl.m.position.z;if(dx*dx+dz*dz<1.4)hitEnemy(en,S.dmg*(2+L*0.6)*(ev?1.6:1)*dt*5);}
     }else{bl.active=false;bl.m.visible=false;bl.m.position.y=-99;}}}
 var WEAPONS={
- bolt:{i:"🔹",n:"Plasma-Bolt",d:"schiesst auf den nächsten Gegner",max:6,cd:function(L){return Math.max(0.14,0.55-L*0.06);},fire:function(L){var tgt=nearestEnemy();if(!tgt)return;var base=Math.atan2(tgt.m.position.z-player.position.z,tgt.m.position.x-player.position.x);var shots=S.multishot+Math.floor((L-1)/2);for(var k=0;k<shots;k++){var ang=base+(k-(shots-1)/2)*0.16;spawnBullet(player.position.x,player.position.z,ang,28,S.dmg*(1+L*0.35),1.4,L>=4?1:0,0x88ffff);}beep(720,.04,"square",.03);}},
- nova:{i:"💥",n:"Nova-Welle",d:"Schockwelle trifft alles um dich",max:6,cd:function(L){return Math.max(1.1,3.0-L*0.3);},fire:function(L){var R=(4+L*0.9)*S.area;novaFx(R);for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;if(dx*dx+dz*dz<R*R)hitEnemy(en,S.dmg*(1.6+L*0.7));}shake=Math.max(shake,0.18);beep(140,.18,"sawtooth",.05);}},
+ bolt:{i:"🔹",n:"Plasma-Bolt",d:"schiesst auf den nächsten Gegner",max:6,cd:function(L){return Math.max(0.14,0.55-L*0.06);},fire:function(L){var ev=S.evolved.bolt;var tgt=nearestEnemy();if(!tgt)return;var base=Math.atan2(tgt.m.position.z-player.position.z,tgt.m.position.x-player.position.x);var shots=S.multishot+Math.floor((L-1)/2)+(ev?3:0);for(var k=0;k<shots;k++){var ang=base+(k-(shots-1)/2)*0.16;spawnBullet(player.position.x,player.position.z,ang,28,S.dmg*(1+L*0.35)*(ev?1.6:1),1.4,ev?2:(L>=4?1:0),ev?0xffe066:0x88ffff);}beep(720,.04,"square",.03);}},
+ nova:{i:"💥",n:"Nova-Welle",d:"Schockwelle trifft alles um dich",max:6,cd:function(L){return Math.max(1.1,3.0-L*0.3);},fire:function(L){var ev=S.evolved.nova;var R=(4+L*0.9)*S.area*(ev?1.6:1);novaFx(R);for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;if(dx*dx+dz*dz<R*R)hitEnemy(en,S.dmg*(1.6+L*0.7)*(ev?1.9:1));}shake=Math.max(shake,ev?0.3:0.18);beep(140,.18,"sawtooth",.05);}},
  chain:{i:"⚡",n:"Ketten-Blitz",d:"springt zwischen Gegnern",max:6,cd:function(L){return Math.max(0.45,1.6-L*0.18);},fire:function(L){chainLightning(L);}},
  orbit:{i:"🛡️",n:"Orbit-Klingen",d:"rotierende Klingen, Dauer-Schaden",max:6,cd:function(){return 9999;},fire:function(){}}
 };
-function weaponTick(dt){for(var id in S.weapons){var L=S.weapons[id];if(!L||id==="orbit")continue;S.wt[id]=(S.wt[id]||0)-dt;if(S.wt[id]<=0){WEAPONS[id].fire(L);S.wt[id]=WEAPONS[id].cd(L)*(S.haste||1);}}}
+function weaponTick(dt){for(var id in S.weapons){var L=S.weapons[id];if(!L||id==="orbit")continue;S.wt[id]=(S.wt[id]||0)-dt;if(S.wt[id]<=0){WEAPONS[id].fire(L);S.wt[id]=WEAPONS[id].cd(L)*(S.haste||1)*(S.evolved[id]?0.7:1);}}}
+// P3 Waffen-Evolutionen: Waffe max + passendes Passiv + Boss-Kill → Super-Waffe.
+var EVO={
+ bolt:{name:"🌩️ Sturm-Salve",  need:"Multishot ×3", cond:function(){return S.multishot>=3;}},
+ nova:{name:"☀️ Supernova",     need:"Wirkung ↑",    cond:function(){return S.area>=1.4;}},
+ chain:{name:"⛈️ Gewitter",     need:"Schaden ↑",    cond:function(){return S.dmg>=1.6;}},
+ orbit:{name:"🌀 Klingen-Orkan", need:"Schussrate ↑", cond:function(){return (S.haste||1)<=0.72;}}
+};
+function checkEvolutions(){for(var id in EVO){if((S.weapons[id]||0)>=WEAPONS[id].max && !S.evolved[id] && EVO[id].cond()){S.evolved[id]=true;announce("⚡ EVOLUTION: "+EVO[id].name+"!");beep(1046,.4,"triangle",.1);shake=Math.max(shake,0.7);renderUpRow();}}}
 function burst(x,z,c){var n=10;for(var i=0;i<n;i++){var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.16,6,6),mat(0xffffff,0xffffff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(c);p.m.material.emissive.setHex(c);p.m.position.set(x,0.9,z);var a=Math.random()*6.28,s=2+Math.random()*4;p.vx=Math.cos(a)*s;p.vz=Math.sin(a)*s;p.vy=Math.random()*4;p.life=0.5;}}
 
 var actx=null,muted=false; try{muted=localStorage.getItem("ns_muted")==="1";}catch(e){}
@@ -275,7 +284,7 @@ var PASSIVES=[
  {i:"⭕",n:"⭕ Wirkung",d:"+20% Flächen & Reichweite",f:function(){S.area*=1.2;}},
  {i:"❤️",n:"❤️ Vitalität",d:"+25 max HP & heilen",f:function(){S.maxhp+=25;S.hp=Math.min(S.maxhp,S.hp+40);}}
 ];
-function renderUpRow(){var out="";for(var id in S.weapons){if(S.weapons[id])out+=WEAPONS[id].i+S.weapons[id]+" ";}document.getElementById("upRow").innerHTML=out;}
+function renderUpRow(){var out="";for(var id in S.weapons){if(S.weapons[id])out+=WEAPONS[id].i+S.weapons[id]+(S.evolved&&S.evolved[id]?"⭐":"")+" ";}document.getElementById("upRow").innerHTML=out;}
 function buildChoices(){
   var pool=[];
   for(var id in WEAPONS){var L=S.weapons[id]||0,w=WEAPONS[id];
