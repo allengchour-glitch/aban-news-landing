@@ -4,6 +4,7 @@
  * ENV: CJ_EMAIL/CJ_API_KEY (oder Defaults) · SHOPIFY_CLIENT_ID/SECRET[/SHOP] · CAP=80 · DRY=1
  */
 import fs from 'node:fs';
+import { buildGadgetDesc } from './lib/gadget_desc.mjs';
 const CJ_EMAIL=process.env.CJ_EMAIL||'allengchour@gmail.com';
 const CJ_KEY=process.env.CJ_API_KEY||'2534f19e725b4e87bbaee17f5a547713';
 const SHOP=(process.env.SHOPIFY_SHOP||'au3j0y-hq.myshopify.com').replace(/^https?:\/\//,'').replace(/\/.*/,'');
@@ -79,7 +80,7 @@ for(const [cat,label] of CATS){
    const title=`${de[0]} «${pool[i%pool.length]}»${de[1]?' '+de[1]:''}`.slice(0,70);
    if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[«»]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
-   const desc=`<p><strong>${title}</strong> — cooles Tech-Gadget für Zuhause & unterwegs.</p><ul><li>✨ Trendiges Design, einfache Bedienung</li><li>🔋 Wiederaufladbar / stromsparend</li><li>🎁 Auch als Geschenk beliebt</li></ul><p style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;">📦 <strong>Lieferzeit:</strong> 🇨🇭 CH/EU ca. 8–16 Tage (inkl. Prüfung & Versand)</p><p>🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · <strong>WELCOME10</strong> = –10 %</p>`;
+   const desc=buildGadgetDesc(title); // Galaxus-Stil: Intro + typtypische Eigenschaften-Specs + Trust
    const input={title,handle:slug,productType:'Gadgets',vendor:'LuxeStyle',status:'ACTIVE',tags:['gadgets','tech','trend','cj-real','dropship'],descriptionHtml:desc,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – cooles Tech-Gadget bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions:[{name:'Variante',values:[{name:'Standard'}]}],
