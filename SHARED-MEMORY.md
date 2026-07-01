@@ -2831,3 +2831,18 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **🐞 LEKTION 2 (Heap):** BigBuy `productsinformation.json?isoCode=de` ist auf **~388 MB / 313.270 Produkte**
   gewachsen → default-Node-Heap OOM beim `r.json()`-Parse → Skript meldet „Katalog-Fehler" OBWOHL curl HTTP 200
   liefert (verwirrend!). Fix: **alle Läufe mit `--max-old-space-size=6144`**. Parse braucht ~2GB transient, 818MB final.
+
+---
+**📌 2026-07-01 (🎨 HOMEPAGE-LAYOUT poliert — Horizon-Theme, live via Admin-API):**
+- **Theme:** „Horizon · LuxeStyle + Email-Popup" (MAIN, id 187533001089). Startseite `templates/index.json`
+  (12 Sektionen) live via `themeFilesUpsert` (Client-Credentials-Token, kein MCP-Limit bei 59k-Payload).
+- **Reihenfolge optimiert (Funnel):** vorher führte die 1. Produktzeile mit `wm-fussball-2026` (saisonal, 24 Prod.)
+  → jetzt führt **`topseller`** (769), dann Top-10-Bestseller, Trust-Hero, Neu, Highlights, Premium-Geschenke,
+  WM (saisonal nach unten), Collection-Liste, Marken-Hero, JSON-LD. Stärkster kommerzieller Content oben.
+- **Veraltete Zahl gefixt:** Marken-Hero sagte „Über 3'500 Markenprodukte" → **„Über 10'000 Produkte"** (Katalog ist 10k+).
+- **collection-list:** leeres color_scheme → `scheme-1` (Konsistenz).
+- **Backup:** `dropship/theme-backups/index.json.bak-2026-07-01` (Original vor Änderung).
+- **Verifiziert:** Storefront HTTP 200, 0 Liquid-Fehler, Live-Re-Fetch zeigt neue Zahl + neue Reihenfolge.
+- **Bereits stark (NICHT angefasst):** Header/Announcement-Bar (korrekt „Gratis-Versand ab CHF 65", WELCOME10,
+  EU-Lager 2–7 Tage), Custom-Sticky-Suchleiste mit Autocomplete, Mega-Menü-Hover-Bridge, Mobile-Tap-Polish,
+  JSON-LD-SEO-Block (Organization+WebSite). Alles sauber → keine Änderung nötig, nur Homepage-Funnel poliert.
