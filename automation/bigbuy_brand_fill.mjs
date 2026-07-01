@@ -39,6 +39,8 @@ const B={
  haustier:/trixie|ferplast|zolux|flamingo|kerbl|\bnobby\b|savic|\bkong\b|\bhunter\b|beeztees|karlie|europet|croci|\bmpets\b|\bcamon\b/i,
  garten:/gardena|nortene|altadex|\bcelaya\b|\bnatuur\b|verdemax|\bfiskars\b|\bralm\b|\boutsunny\b|\bkinzo\b|\bpalisad\b|\bbradas\b/i,
  bar:/vacu.?vin|peugeot|\bwmf\b|\bbra\b|\bibili\b|\bquid\b|\bluminarc\b|\barcoroc\b|\bbormioli\b|\briedel\b|\bvin bouquet\b|\bpulltex\b|\bbodum\b/i,
+ auto:/michelin|\bbosch\b|\bosram\b|sonax|turtle wax|\bkärcher\b|karcher|bottari|\bsumex\b|\blampa\b|goodyear|simoniz|\bpingi\b|\bcartrend\b|\bmannol\b|\bpetronas\b|\bfoliatec\b/i,
+ beleuchtung:/philips|\bosram\b|ledvance|innovagoods|xanlite|\bgarza\b|\bnedis\b|\btrio\b|\beglo\b|paulmann|activejet|\blutec\b|\bvelamp\b|\bfischer\b/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -72,6 +74,12 @@ const GROUPS={
  bar:        {re:/weinglas|weingläser|sektglas|champagner|cocktail|shaker|dekanter|karaffe|korkenzieher|flaschenverschluss|weinkühler|barzubehör|gläser.?set|trinkglas|whiskyglas|bierglas|untersetzer|eiswürfel|barmaß|zapf/i,
               ban:/kinder|plastik.?becher|einweg/i,
               brand:B.bar, cap:100, type:'Bar & Wein', tags:['bar','wein','kueche','marke','bigbuy','dropship'], blurb:'Marken-Barzubehör'},
+ auto:       {re:/auto|\bkfz\b|fahrzeug|scheibenwischer|sitzbezug|sitzauflage|kofferraum|autopflege|autowäsche|autoshampoo|felgen|reifen|starthilfe|abdeckplane|autolampe|standlicht|nebelscheinwerfer|innenraum|armaturen|luftauffrischer|lufterfrischer|autozubehör|dachträger|anhänger|scheibenreiniger|frostschutz|wagenheber|warndreieck|verbandskasten/i,
+              ban:/spielzeug|kinder|modellauto|rc-|ferngesteuert|halterung für handy|handyhalterung/i,
+              brand:B.auto, cap:110, type:'Auto & KFZ', tags:['auto','kfz','zubehoer','marke','bigbuy','dropship'], blurb:'Marken-Autozubehör'},
+ beleuchtung:{re:/lampe|leuchte|glühbirne|\bled\b|deckenleuchte|stehlampe|tischlampe|wandleuchte|leuchtmittel|birne|strahler|spot|lichterkette|nachttischlampe|schreibtischlampe|pendelleuchte|solarleuchte|taschenlampe|leuchtröhre|beleuchtung/i,
+              ban:/spielzeug|kinder|projektor|auto|kfz|nagel|uv-lampe für näg/i,
+              brand:B.beleuchtung, cap:110, type:'Beleuchtung & Lampen', tags:['beleuchtung','lampen','wohnen','marke','bigbuy','dropship'], blurb:'Marken-Leuchte'},
 };
 
 function clean(n){return n
