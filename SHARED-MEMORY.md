@@ -2894,3 +2894,14 @@ Kompositum „Sporthose" nicht (kein Wortgrenze vor „hose"). **Fix:** `re` nur
 Sizeless-Bekleidungsteile auf DRAFT gesetzt (gehören zum Varianten-Importer mit Grössen, nicht als „Standard").
 Fitness-Collection = jetzt reines Equipment (Wilson-Bälle/Head-Schläger/Umbro-Hanteln). **Lehre:** Sport-Marken
 (Adidas/Puma/Nike) sind bei BigBuy überwiegend BEKLEIDUNG → Equipment-Kategorien brauchen enge Keyword-`re` + Komposit-sichere Bans.
+---
+**📌 2026-07-01 (🧹 QUALITÄTS-SWEEP „andere Richtung" — Shop ist reif, Titel geputzt):**
+- **Katalog-Reife bestätigt:** Titel sauber (0 span./engl. Reste), Hauptmenü deckt ALLE 9 neuen Kategorien ab,
+  Kategorie-Collections haben SEO-Titel+Meta+Subchips+Cross-Links, **Ratgeber-Blog = 98 Artikel** (inkl. Bar/Garten/
+  Beleuchtung/Haustier/Fitness/Küche/Schmuck/Auto — jede neue Kategorie hat schon einen Long-Tail-Artikel). Shop top gebaut.
+- **`automation/title_polish.mjs` (neu):** entfernt Roh-Artefakte aus Titeln — Artikel-Codes `[A-Z]{2,4}\d{3,}`
+  (+ Farb-Code danach, z. B. „FZ7553 359"), Dubletten („Größe 5 5"→„5"), schliesst offene „(Größe 6"→„(Größe 6)".
+  **Safety:** Spec-Zahlen mit Einheit (20000 mAh) + Modellnummern bleiben; nur title+seo.title, Handle unverändert.
+  **Ergebnis: 88/4014 Marken-Titel geputzt.** Unit-getestet vor Live-Lauf.
+- **Lehre:** Bei Titel-Cleanups Einheiten-Kollision vermeiden (Lookahead `W`/`K` traf „Wasserdicht"/„Kautschuk")
+  → riskante blanke `\d{5,}`-Regel ganz weggelassen; der Code-Remover mit optionalem Trailing-Zahl-Teil reicht.
