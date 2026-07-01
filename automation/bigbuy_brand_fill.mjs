@@ -76,7 +76,7 @@ const GROUPS={
               brand:B.bar, cap:100, type:'Bar & Wein', tags:['bar','wein','kueche','marke','bigbuy','dropship'], blurb:'Marken-Barzubehör'},
  auto:       {re:/auto|\bkfz\b|fahrzeug|scheibenwischer|sitzbezug|sitzauflage|kofferraum|autopflege|autowäsche|autoshampoo|felgen|reifen|starthilfe|abdeckplane|autolampe|standlicht|nebelscheinwerfer|innenraum|armaturen|luftauffrischer|lufterfrischer|autozubehör|dachträger|anhänger|scheibenreiniger|frostschutz|wagenheber|warndreieck|verbandskasten/i,
               ban:/spielzeug|kinder|modellauto|rc-|ferngesteuert|halterung für handy|handyhalterung/i,
-              brand:B.auto, cap:110, type:'Auto & KFZ', tags:['auto','kfz','zubehoer','marke','bigbuy','dropship'], blurb:'Marken-Autozubehör'},
+              brand:B.auto, cap:110, type:'Auto & KFZ', tags:['auto','auto-zubehoer','kfz','marke','bigbuy','dropship'], blurb:'Marken-Autozubehör'},
  beleuchtung:{re:/lampe|leuchte|glühbirne|\bled\b|deckenleuchte|stehlampe|tischlampe|wandleuchte|leuchtmittel|birne|strahler|spot|lichterkette|nachttischlampe|schreibtischlampe|pendelleuchte|solarleuchte|taschenlampe|leuchtröhre|beleuchtung/i,
               ban:/spielzeug|kinder|projektor|auto|kfz|nagel|uv-lampe für näg/i,
               brand:B.beleuchtung, cap:110, type:'Beleuchtung & Lampen', tags:['beleuchtung','lampen','wohnen','marke','bigbuy','dropship'], blurb:'Marken-Leuchte'},
