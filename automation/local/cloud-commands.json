@@ -1,5 +1,4 @@
 [
-  { "id": "2026-07-01-FRESHFAL-A", "cmd": "fresh-fal" },
-  { "id": "2026-07-01-FRESHVEO-A", "cmd": "fresh-veo" },
-  { "id": "2026-07-01-SMARTPLUS-A", "cmd": "smartplus-dry" }
+  { "id": "2026-07-01-FRESHVEO-B", "cmd": "fresh-veo" },
+  { "id": "2026-07-01-FRESHFAL-B", "cmd": "fresh-fal" }
 ]

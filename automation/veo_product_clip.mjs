@@ -14,7 +14,11 @@ import path from 'node:path';
 
 const val = (f, d = '') => { const i = process.argv.indexOf(f); return i > -1 ? process.argv[i + 1] : d; };
 const KEY = process.env.GEMINI_API_KEY || '';
-const MODEL = process.env.VEO_MODEL || 'veo-3.0-fast-generate-001';
+// FIX 2026-07-01: veo-3.0-fast-generate-001 gab ploetzlich 404 NOT_FOUND -> Fallback-Kette bewaehrter Veo-Modelle.
+const MODELS = process.env.VEO_MODEL ? [process.env.VEO_MODEL] : [
+  'veo-3.0-fast-generate-001', 'veo-3.0-generate-001', 'veo-2.0-generate-001',
+  'veo-3.0-fast-generate-preview', 'veo-3.0-generate-preview', 'veo-3.1-fast-generate-preview',
+];
 const ASPECT = val('--aspect', '9:16');
 const SECONDS = parseInt(val('--seconds', '8'), 10) || 8;
 const IMG = val('--image');
@@ -30,8 +34,8 @@ async function fetchImageBase64(url) {
   const ct = r.headers.get('content-type') || (url.endsWith('.webp') ? 'image/webp' : 'image/jpeg');
   return { b64: Buffer.from(await r.arrayBuffer()).toString('base64'), mime: ct.split(';')[0] };
 }
-async function startVeo(prompt, img) {
-  const url = `${BASE}/models/${MODEL}:predictLongRunning?key=${encodeURIComponent(KEY)}`;
+async function startVeo(prompt, img, model) {
+  const url = `${BASE}/models/${model}:predictLongRunning?key=${encodeURIComponent(KEY)}`;
   const body = { instances: [{ prompt, image: { bytesBase64Encoded: img.b64, mimeType: img.mime } }],
     parameters: { aspectRatio: ASPECT, durationSeconds: SECONDS, personGeneration: 'allow_adult', sampleCount: 1 } };
   const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
@@ -69,10 +73,10 @@ async function downloadVideo(v, outFile) {
 (async () => {
   if (!IMG) { log('--image fehlt'); process.exit(1); }
   if (!KEY) { log('⚠️ GEMINI_API_KEY fehlt → No-op (am PC luxe-secrets.ps1 / VPS /opt/luxe/.env).'); process.exit(0); }
-  log('Veo', MODEL, ASPECT, SECONDS + 's →', OUT);
+  log('Veo Kandidaten:', MODELS.join(','), ASPECT, SECONDS + 's →', OUT);
   try {
     const img = await fetchImageBase64(IMG);
-    const op = await startVeo(PROMPT, img); if (!op) process.exit(1);
+    let op = null; for (const m of MODELS) { op = await startVeo(PROMPT, img, m); if (op) { log('✅ Veo-Modell akzeptiert:', m); break; } } if (!op) { log('Kein Veo-Modell verfuegbar (alle 404) — fal-Fallback nutzen.'); process.exit(1); }
     const resp = await pollVeo(op); if (!resp) process.exit(1);
     const v = extractVideo(resp);
     if (!v) { log('Video in Antwort nicht gefunden:', JSON.stringify(resp).slice(0, 400)); process.exit(1); }
