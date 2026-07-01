@@ -29,8 +29,12 @@ const B={
  watch:/casio|festina|lotus|citizen|swatch|tommy hilfiger|guess|michael kors|calvin klein|police|viceroy|tous|skagen|fossil|nixon|breil/i,
  bag:/michael kors|guess|calvin klein|tommy hilfiger|lacoste|desigual|pepe jeans|david jones/i,
  sun:/ray.?ban|hugo boss|guess|police|carrera|calvin klein|tommy hilfiger|vogue|arnette|persol/i,
+ gadget:/innovagoods|ksix|xiaomi|nedis|denver|forever|celly|muvit|\bspc\b|hama|aukey|baseus|anker/i,
 };
 const GROUPS={
+ gadget:     {re:/projektor|beamer|\bled\b|\brgb\b|sternenhimmel|galaxy|bluetooth|lautsprecher|kopfhörer|earbuds|ohrhörer|smartwatch|fitness.?tracker|drohne|roboter|sauger|diffusor|luftbefeuchter|ringlicht|selfie|powerbank|wireless|kabellos|ladegerät|ventilator|nachtlicht|projektion|smart.?home|karaoke|mini.?drucker/i,
+              ban:/hülle|case|schutzglas|panzerglas|ersatz|kabel(?!los)|adapter|halterung|ständer|stativ|mopp|filter|zubehör|schutzfolie|tasche für|beutel/i,
+              brand:B.gadget, cap:220, type:'Gadgets', tags:['gadgets','tech','trend','marke','dropship'], blurb:'cooles Tech-Gadget'},
  parfum:     {re:/eau de toilette|eau de parfum|\bedt\b|\bedp\b|parfum|cologne/i, brand:B.parfum, cap:160, type:'Parfum & Düfte', tags:['parfum','duft','marke','bigbuy-beauty','dropship'], blurb:'Original-Markenparfüm'},
  skincare:   {re:/creme|cream|serum|feuchtigkeit|gesichts|moistur|reinigung|cleanser|pflege|lotion|maske|peeling|sonnenschutz/i, brand:B.skin, cap:90, type:'Hautpflege', tags:['beauty','skincare','hautpflege','marke','bigbuy-beauty','dropship'], blurb:'Marken-Hautpflege'},
  makeup:     {re:/lippenstift|lipstick|lidschatten|eyeshadow|foundation|rouge|blush|highlighter|eyeliner|kajal|concealer|primer|mascara|wimperntusche|puder|powder/i, brand:B.makeup, cap:60, type:'Make-up', tags:['beauty','makeup','marke','bigbuy-beauty','dropship'], blurb:'Original-Marken-Make-up'},
@@ -64,7 +68,7 @@ const tok=DRY?null:await shToken();
 let total=0;
 for(const gk of want){
  const g=GROUPS[gk]; const cap=parseInt(process.env['CAP_'+gk]||DEFCAP,10);
- const cands=arr.filter(p=>g.re.test(p.name||'')&&g.brand.test(p.name||'')&&!done.has(String(p.id))&&!/set |coffret|display|tester|\bpack\b/i.test(p.name||''));
+ const cands=arr.filter(p=>g.re.test(p.name||'')&&g.brand.test(p.name||'')&&!done.has(String(p.id))&&!/set |coffret|display|tester|\bpack\b/i.test(p.name||'')&&!(g.ban&&g.ban.test(p.name||'')));
  console.log(`\n=== ${gk}: ${cands.length} Kandidaten, Ziel ${cap} ===`);
  let got=0;
  for(const p of cands){
