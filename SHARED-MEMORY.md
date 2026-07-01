@@ -2804,3 +2804,12 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **Schuh-Beschreibungen (`/tmp/shoe_desc.mjs`):** GMC-CSV („add Farbe/Größe/Material") → 404 Schuhe kriegen saubere Produktdetails-Sektion (Marke/Farbe/Typ aus Titel + Material + Grössen-Hinweis + Trust). Shopify-API, kein BigBuy-Konflikt.
 - **LLM-Keys:** nur GEMINI_API_KEY in /tmp/lux_env.sh (für Massen-SEO nutzbar); Blog-Artikel schreibe ich aber selbst = Top-Qualität.
 - **Competitor-Sichtbarkeit (User-Screenshot GMC):** CH Apparel Top = Zalando/Shein/AboutYou/Temu/bonprix, Overlap mit LuxeStyle 0.0% → bestätigt: NICHT Head-Terms gegen Riesen, sondern NISCHEN + Content-Qualität (besser als Shein/Temu). Sichtbarkeits-Sprung = Traffic/Autorität = User-Hebel.
+
+---
+**🏆 2026-06-30 (10.000 PRODUKTE + Langtext-Beschreibungen):**
+- **Katalog: 10.000 aktive Produkte!** (Session-Start ~5.087 → **+~4.900 diese Session**). marke-Tag 5.537 · Werkzeug 335 · Haushalt ~490.
+- **Handwerker-Welle +494** (werkzeug 169, haushalt 120, +Rest). Werkzeug-Gruppe deckt alle Handwerker-Bereiche (Bosch/Makita/DeWalt/Stanley...).
+- **📖 Langtext-Beschreibungen (`automation/gemini_descriptions.mjs`, Gemini 2.5-flash):** baut spec-reiche Kurz-Beschreibungen zu langen Galaxus-Texten aus (Intro + 4 h3-Sektionen). GROUNDED: Spec-Schutz (skip wenn <2 Specs) → **verhindert Halluzination** (Gemini erfand sonst Duftnoten bei Parfums!). Läuft auf `tag:marke -ls-ai-deep -cj-real`, taggt `gemini-desc`, ~8s/Stück, thinkingBudget:0 + maxTokens 2500 (sonst Text abgeschnitten). Parfum/Schmuck bleiben bei akkuraten Spec-Texten.
+- **Langtext-Status:** 208+ und laufend. Zusammen mit 3.793 `ls-ai-deep` = ~4.000 Produkte mit langen Galaxus-Texten.
+- **🔑 LEHRE:** LLM-Massen-Beschreibungen NUR grounded (echte Specs im Prompt) — sonst Halluzination. Bewährtes Tool der anderen Session = `ai_product_descriptions_deep.mjs` (OpenAI→Gemini→Groq, tag ls-ai-deep, zielt tag:bigbuy). Meine Imports haben tag:marke → separat via gemini_descriptions.
+- **+4 Ratgeber-Artikel** (Parfum/Nägel/Wimpern/Werkzeug) + **404 Schuh-Beschreibungen** (GMC Farbe/Größe/Material) fertig.
