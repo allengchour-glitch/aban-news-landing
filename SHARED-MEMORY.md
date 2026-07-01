@@ -2734,3 +2734,14 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   Montblanc (Parfum) · Clinique, Vichy, Garnier, L'Oréal (Skincare) · Maybelline, Max Factor, Artdeco, NYX (Make-up) · Casio/Festina/Citizen/Guess (Uhren) · Ray-Ban etc.
 - **Bild-Lehre:** BigBuy productimages oft 0–2 Bilder/Produkt (manche Marken 0 → übersprungen, kein Bild=kein Import). Cap auf 20 (=alle) gesetzt. CJ hat volle Galerien.
 - **Tempo-Lehre:** BigBuy-API ist langsam/gedrosselt → ~480 Produkte ≈ 40–50 Min. uhr/tasche-Gruppen am langsamsten (viele 0-Bild-Marken → viele Skips). Für grosse Fills: CAP pro Gruppe + im Hintergrund laufen lassen + Monitor.
+
+---
+**🎮 2026-06-30 (COOLE GADGETS — CJ statt BigBuy, +16 mit vollen Galerien):**
+- **🔑 LEHRE: BigBuy-Gadgets sind BILD-ARM** (Xiaomi/Denver/Ksix oft 0 Bilder in der API, nur ~1/8 hat welche) → Gadget-Fill unproduktiv (0 nach 5 Min), gestoppt.
+  Gadget-Gruppe bleibt im Fill-Tool (`bigbuy_brand_fill.mjs`) für die wenigen InnovaGoods-mit-Bild, aber **für Gadgets ist CJ die Quelle** (volle Galerien 5–8 Bilder).
+- **✅ +16 coole CJ-Gadgets** (volle Galerien, DE-Titel, 6 Kanäle, tag gadgets/tech/trend → trends-gadgets-Collection): 4 Projektoren (Mini-Beamer WLAN/Sunset/LED),
+  6 Bluetooth-Speaker, 5 kabellose Kopfhörer (TWS). CHF 16.90–149.90.
+- **🆕 CJ-Gadget-Titler (Typ-Erkennung):** CJ-Namen sind englisches Kauderwelsch → Skript erkennt Typ (star projector→Sternenhimmel-Projektor, bluetooth speaker→Bluetooth-Lautsprecher,
+  tws earbuds→Kabellose Kopfhörer…) + vergibt **eindeutige Modell-Namen aus Pool** (CineHome/CinePro/Beamly, SoundBox/Pulse/BoomBox, AirBeat/SoundPods…) → keine Titel-Dubletten.
+  CJ-Kategorie-IDs: Projektoren 0AC6B44A · Speaker C1AB7563 · Kopfhörer DAECCC3B · SmartHome 36F73513 · Drohnen 907BBB40. Muster in /tmp (cj_gadgets picker).
+- Ledger cj_niche_done.txt +16.
