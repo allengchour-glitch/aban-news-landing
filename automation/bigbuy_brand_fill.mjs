@@ -86,7 +86,9 @@ const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){p
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
 
-const want=(process.env.GROUPS||Object.keys(GROUPS).join(',')).split(',').map(s=>s.trim()).filter(g=>GROUPS[g]);
+// ⚠️ GROUPS ist eine bash-Spezialvariable (readonly) → `GROUPS=x node …` reicht sie NICHT durch!
+//    Darum GRP als Alias (immer nutzbar) ODER `env GROUPS=x node …`.
+const want=(process.env.GRP||process.env.GROUPS||Object.keys(GROUPS).join(',')).split(',').map(s=>s.trim()).filter(g=>GROUPS[g]);
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('bb:','').trim()).filter(Boolean):[]);
 
 console.log('Lade BigBuy-Katalog…');
