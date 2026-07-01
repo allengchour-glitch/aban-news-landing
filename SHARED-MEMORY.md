@@ -2875,3 +2875,14 @@ DIESE Session bleibt Katalog/Import/Kategorien/SEO. TikTok-Feed-Qualität ist be
   vollständige relevante Scope. Kleingeräte (Wasserkocher etc.) tragen kein EU-Label.
 - **Wichtig (Safety):** Tags via `tagsAdd` (additiv) — `productUpdate(tags:)` würde ALLE Tags ersetzen. Beschreibung
   via `productUpdate(descriptionHtml:)`. Badge wird nach dem Intro-`</p>` eingefügt. Dedup über Tag `energielabel`.
+
+---
+**📌 2026-07-01 (🍳💍🏋️ +3 Kategorien Küche/Schmuck/Fitness, +219):**
+- **Küche & Kochen** (WMF/BRA/Quid/Ibili, 779 Kand.) → 90 → `sub-kueche` (Regel um TAG=kueche erweitert;
+  zog auch alle Haushalt-tag:kueche rein → 79→628) + `kuechenhelfer`.
+- **Schmuck** (Morellato/Guess/Police/Viceroy, 2817 Kand.) → 100 → landet in Title-Sub-Collections
+  (sub-halsketten/ohrringe/ringe/armbaender). premium-schmuck ist MANUELL (nicht angetastet).
+- **Fitness & Sport** (Wilson/Puma/Nike-Equipment, 180 Kand.) → 29 → `fitness-training` (TAG=fitness).
+  Ban gegen Bekleidung (Tanktop/Trikot/Shorts) geschärft → nur echtes Equipment (Bälle/Hanteln/Matten).
+- **Tagesbilanz gesamt:** 6 Kat. (+537) + Küche/Schmuck/Fitness (+219) = **~756 neue Marken-Produkte** heute,
+  plus Energielabel (9 Leuchtmittel) + Homepage-Funnel poliert + 8 Kategorie-Collections re-indexed.
