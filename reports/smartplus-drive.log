@@ -20,8 +20,8 @@ K,Sidekick,LuxeStyle,Vertriebskan├ñle,TikTok,Apps,Marketplace Connect,Sidekic
   solution.tiktokshop.com/tts_open 0b/0i [] ()
 smartplus: p6-budget 30 gesetzt
 smartplus: p7-adtext gesetzt
-smartplus: p7-hochladen-klick=false
-smartplus: p7-video kein Input/Button
-smartplus: PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
+smartplus: p7-hochladen-domklick=true
+smartplus: p7-video Upload gestartet
+smartplus: PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung ausw├ñhlen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren|Datei hinzuf├╝gen|Hochladen] INP[text:Aktivit├ñtsnamen ei|text:?|checkbox:?|text:Identit├ñt ausw├ñhle|checkbox:?|text:W├ñhle bitte einen |text:Optimierungsereign|text:Please select]
 smartplus: DRY: stoppe vor Senden (kein Spend)
 smartplus: stamp-fehler SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON

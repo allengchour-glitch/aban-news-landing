@@ -1,4 +1,4 @@
-2026-06-30T21:49:23.068Z DRY
+2026-07-01T09:33:41.249Z DRY
 DIAG topurl=admin.shopify.com/store/luxestyle-ch/apps/tik bodylen=393 frames=3 [admin.shopify.com/store/luxestyle-ch/a#17 | shopify.bytegration.com/ad_creation?em#11 | solution.tiktokshop.com/tts_open_widge#0]
 form BTN[Einzelnes Produkt|Sammlung|Startseite|Produkt auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 p1-sammlung click=true BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
@@ -21,8 +21,8 @@ K,Sidekick,LuxeStyle,Vertriebskanäle,TikTok,Apps,Marketplace Connect,Sidekick-U
   solution.tiktokshop.com/tts_open 0b/0i [] ()
 p6-budget 30 gesetzt
 p7-adtext gesetzt
-p7-hochladen-klick=false
-p7-video kein Input/Button
-PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
+p7-hochladen-domklick=true
+p7-video Upload gestartet
+PRE-SUBMIT BTN[Einzelnes Produkt|Sammlung|Startseite|Sammlung auswählen|Verlassen|Als Entwurf speichern|Senden|Aktualisieren|Datei hinzufügen|Hochladen] INP[text:Aktivitätsnamen ei|text:?|checkbox:?|text:Identität auswähle|checkbox:?|text:Wähle bitte einen |text:Optimierungsereign|text:Please select]
 DRY: stoppe vor Senden (kein Spend)
 ENDE
