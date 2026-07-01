@@ -2745,3 +2745,10 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
   tws earbuds→Kabellose Kopfhörer…) + vergibt **eindeutige Modell-Namen aus Pool** (CineHome/CinePro/Beamly, SoundBox/Pulse/BoomBox, AirBeat/SoundPods…) → keine Titel-Dubletten.
   CJ-Kategorie-IDs: Projektoren 0AC6B44A · Speaker C1AB7563 · Kopfhörer DAECCC3B · SmartHome 36F73513 · Drohnen 907BBB40. Muster in /tmp (cj_gadgets picker).
 - Ledger cj_niche_done.txt +16.
+
+---
+**🎮📖 2026-06-30 (GADGET-LOOP +120 & GALAXUS-GADGET-TEXTE — 205 Gadgets total):**
+- **`cj_gadget_fill.mjs`-Loop: 3 Runden × 40 = +120 CJ-Gadgets** (Projektoren, Bluetooth-Speaker, TWS-Kopfhörer, Drohnen, Smartwatches, Fitness-Tracker, Diffuser, Powerbanks, Charger, LED). Volle Galerien, eindeutige DE-Modell-Titel, 6 Kanäle, Ledger-Dedup.
+- **🆕 Galaxus-Gadget-Texte:** `automation/lib/gadget_desc.mjs` (typ-basierte Eigenschaften-Specs — bei Gadgets typtypisch korrekt) + `cj_gadget_galaxus.mjs` (Backfill). **205 Gadget-Produkte** haben jetzt Galaxus-Stil (Intro + Eigenschaften-Liste + Trust) statt generischem Template. `cj_gadget_fill.mjs` nutzt die Lib direkt für neue.
+- **Katalog: 6.074 aktive Produkte** (Session-Start ~5.087 → **+~990 diese Session!**). Gadgets 205.
+- **🔑 Gadget-Lehre gefestigt:** CJ = Gadget-Quelle (volle Galerien), BigBuy = bild-arm für Gadgets. CJ-Titler (Typ-Erkennung + Modell-Pool) macht CJ-Kauderwelsch zu sauberen DE-Titeln ohne Dubletten. Tools dauerhaft im Repo (`cj_gadget_fill.mjs` + `lib/gadget_desc.mjs` + `cj_gadget_galaxus.mjs`).
