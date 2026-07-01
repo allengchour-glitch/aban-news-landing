@@ -2846,3 +2846,8 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **Bereits stark (NICHT angefasst):** Header/Announcement-Bar (korrekt „Gratis-Versand ab CHF 65", WELCOME10,
   EU-Lager 2–7 Tage), Custom-Sticky-Suchleiste mit Autocomplete, Mega-Menü-Hover-Bridge, Mobile-Tap-Polish,
   JSON-LD-SEO-Block (Organization+WebSite). Alles sauber → keine Änderung nötig, nur Homepage-Funnel poliert.
+
+---
+**📌 2026-07-01 (🤝 KOORDINATION — TikTok delegiert):** User hat die **TikTok-Kampagne selbst erstellt**
+(„hab erstellt lass es andere session machen"). Ads/Reichweite/Kampagnen-Management = **andere Session** (Reach-Lane).
+DIESE Session bleibt Katalog/Import/Kategorien/SEO. TikTok-Feed-Qualität ist bereit (85 genehmigt, 0 abgelehnt).
