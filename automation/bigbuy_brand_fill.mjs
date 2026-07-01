@@ -31,8 +31,16 @@ const B={
  sun:/ray.?ban|hugo boss|guess|police|carrera|calvin klein|tommy hilfiger|vogue|arnette|persol/i,
  gadget:/innovagoods|ksix|xiaomi|nedis|denver|forever|celly|muvit|\bspc\b|hama|aukey|baseus|anker/i,
  toy:/lego|playmobil|mattel|hasbro|funko|ravensburger|\bsimba\b|clementoni|bandai|hot wheels|barbie|\bnerf\b|play.?doh|fisher.?price|disney|marvel|paw patrol|lansay|educa|famosa|pinypon|bizak|\bjuguetes\b|cefa/i,
+ home:/cecotec|taurus|jata|orbegozo|princess|russell hobbs|tefal|innovagoods|bra\b|masterpro|beper|create|kitchenware/i,
+ tool:/black.?decker|michelin|bellota|fartools|bosch|makita|einhell|stanley|wolfcraft|mannesmann|bahco/i,
 };
 const GROUPS={
+ haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
+              ban:/ersatz|filter für|zubehör|beutel|hülle/i,
+              brand:B.home, cap:150, type:'Haushalt & Küche', tags:['haushalt','kueche','marke','dropship'], blurb:'Marken-Haushaltsgerät'},
+ werkzeug:   {re:/werkzeug|bohrer|akkuschrauber|schraubendreher|säge|schleifer|zange|hammer|wasserwaage|maßband|steckschlüssel|werkzeugkoffer|multitool|schraubenschlüssel|bohrmaschine|winkelschleifer/i,
+              ban:/ersatz|zubehör|klinge für|einzeln/i,
+              brand:B.tool, cap:120, type:'Werkzeug', tags:['werkzeug','heimwerker','marke','dropship'], blurb:'Marken-Werkzeug'},
  spielzeug:  {re:/spielzeug|puppe|figur|puzzle|plüsch|baustein|spielset|brettspiel|kuscheltier|actionfigur|modellauto|lernspiel|steckspiel|kartenspiel|holzspielzeug|bauklötze|spielfigur|sammelfigur|stofftier|rutscher|kinderspiel/i,
               ban:/erwachsene|adult|messer|munition|softair|laserpointer|batterie(?!n inkl)/i,
               brand:B.toy, cap:200, type:'Spielzeug', tags:['spielzeug','kinder','geschenk','marke','dropship'], blurb:'Marken-Spielzeug'},
