@@ -30,8 +30,12 @@ const B={
  bag:/michael kors|guess|calvin klein|tommy hilfiger|lacoste|desigual|pepe jeans|david jones/i,
  sun:/ray.?ban|hugo boss|guess|police|carrera|calvin klein|tommy hilfiger|vogue|arnette|persol/i,
  gadget:/innovagoods|ksix|xiaomi|nedis|denver|forever|celly|muvit|\bspc\b|hama|aukey|baseus|anker/i,
+ toy:/lego|playmobil|mattel|hasbro|funko|ravensburger|\bsimba\b|clementoni|bandai|hot wheels|barbie|\bnerf\b|play.?doh|fisher.?price|disney|marvel|paw patrol|lansay|educa|famosa|pinypon|bizak|\bjuguetes\b|cefa/i,
 };
 const GROUPS={
+ spielzeug:  {re:/spielzeug|puppe|figur|puzzle|plüsch|baustein|spielset|brettspiel|kuscheltier|actionfigur|modellauto|lernspiel|steckspiel|kartenspiel|holzspielzeug|bauklötze|spielfigur|sammelfigur|stofftier|rutscher|kinderspiel/i,
+              ban:/erwachsene|adult|messer|munition|softair|laserpointer|batterie(?!n inkl)/i,
+              brand:B.toy, cap:200, type:'Spielzeug', tags:['spielzeug','kinder','geschenk','marke','dropship'], blurb:'Marken-Spielzeug'},
  gadget:     {re:/projektor|beamer|\bled\b|\brgb\b|sternenhimmel|galaxy|bluetooth|lautsprecher|kopfhörer|earbuds|ohrhörer|smartwatch|fitness.?tracker|drohne|roboter|sauger|diffusor|luftbefeuchter|ringlicht|selfie|powerbank|wireless|kabellos|ladegerät|ventilator|nachtlicht|projektion|smart.?home|karaoke|mini.?drucker/i,
               ban:/hülle|case|schutzglas|panzerglas|ersatz|kabel(?!los)|adapter|halterung|ständer|stativ|mopp|filter|zubehör|schutzfolie|tasche für|beutel/i,
               brand:B.gadget, cap:220, type:'Gadgets', tags:['gadgets','tech','trend','marke','dropship'], blurb:'cooles Tech-Gadget'},
