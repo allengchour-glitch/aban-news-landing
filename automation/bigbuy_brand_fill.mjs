@@ -31,7 +31,7 @@ const B={
  sun:/ray.?ban|hugo boss|guess|police|carrera|calvin klein|tommy hilfiger|vogue|arnette|persol/i,
  gadget:/innovagoods|ksix|xiaomi|nedis|denver|forever|celly|muvit|\bspc\b|hama|aukey|baseus|anker/i,
  toy:/lego|playmobil|mattel|hasbro|funko|ravensburger|\bsimba\b|clementoni|bandai|hot wheels|barbie|\bnerf\b|play.?doh|fisher.?price|disney|marvel|paw patrol|lansay|educa|famosa|pinypon|bizak|\bjuguetes\b|cefa/i,
- home:/cecotec|taurus|jata|orbegozo|princess|russell hobbs|tefal|innovagoods|bra\b|masterpro|beper|create|kitchenware/i,
+ home:/cecotec|taurus|jata|orbegozo|princess|russell hobbs|tefal|innovagoods|bra\b|masterpro|beper|create|kitchenware|delonghi|de'?longhi|rowenta|moulinex|braun|philips|severin|bomann|melitta|\bwmf\b|kenwood|krups|\bbosch\b|electrolux|\baeg\b|smeg|ariete|\bufesa\b|\bsogo\b|nevir|mellerware/i,
  tool:/black.?decker|michelin|bellota|fartools|bosch|makita|einhell|stanley|wolfcraft|mannesmann|bahco|dewalt|metabo|\bskil\b|ryobi|gedore|\bwera\b|knipex|wiha|tacklife|worx|\bks tools\b|facom|\bpg\b|imex|silverline|gsc|vorel|toptul/i,
 };
 const GROUPS={
