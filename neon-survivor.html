@@ -63,6 +63,7 @@ canvas{display:block}
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
   <div id="best"></div>
+  <div id="chars" style="margin-top:12px;max-width:360px;width:100%;font-size:.9rem"></div>
   <div id="shop" style="margin-top:14px;max-width:360px;width:100%;font-size:.9rem"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
 </div>
@@ -173,7 +174,10 @@ function reset(){
   S.xpMul=1+(meta.xp||0)*0.08;
   S.revives=(meta.rev||0);
   S.evolved={};
-  document.getElementById("upRow").innerHTML="";
+  var ch=CHARS[loadChar()]||CHARS[0];
+  S.weapons={}; S.weapons[ch.weap]=1;
+  S.maxhp*=ch.hp; S.hp=S.maxhp; S.dmg*=ch.dmg; S.speed*=ch.spd; S.haste*=ch.haste; S.area*=ch.area;
+  renderUpRow();
   [bullets,enemies,orbs,fx,blades].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
   player.position.set(0,0.9,0);
 }
@@ -274,6 +278,20 @@ function renderShop(){var el=document.getElementById("shop");if(!el)return;var c
   }).join("");
   el.innerHTML=html;
   el.querySelectorAll("button[data-id]").forEach(function(b){b.onclick=function(){var id=b.getAttribute("data-id"),m=loadMeta(),l=m[id]||0,def=null;for(var i=0;i<META.length;i++)if(META[i].id===id)def=META[i];if(!def||l>=def.max)return;var c=def.cost(l),cr=loadCores();if(cr<c)return;saveCores(cr-c);m[id]=l+1;saveMeta(m);renderShop();beep(660,.1,"triangle",.07);};});}
+// ---------- P4: Charaktere (verschiedene Start-Waffe + Stat-Profil) ----------
+function loadChar(){try{return parseInt(localStorage.getItem("ns_char")||"0",10)||0;}catch(e){return 0;}}
+function saveChar(v){try{localStorage.setItem("ns_char",String(v));}catch(e){}}
+var CHARS=[
+ {n:"🔹 Pilot",   d:"Plasma-Bolt · ausgewogen",             weap:"bolt", hp:1.0, dmg:1.0, spd:1.0,  haste:1.0, area:1.0},
+ {n:"💥 Bomber",  d:"Nova · +30% HP & Wirkung, langsamer",  weap:"nova", hp:1.3, dmg:1.0, spd:0.9,  haste:1.0, area:1.15},
+ {n:"⚡ Techno",   d:"Ketten-Blitz · +15% Tempo, schneller feuern, weniger HP", weap:"chain", hp:0.85, dmg:1.0, spd:1.15, haste:0.9, area:1.0},
+ {n:"🛡️ Wächter", d:"Orbit-Klingen · +25% HP & Wirkung",    weap:"orbit", hp:1.25, dmg:1.0, spd:0.95, haste:1.0, area:1.25}
+];
+function renderChars(){var el=document.getElementById("chars");if(!el)return;var sel=loadChar();if(sel<0||sel>=CHARS.length)sel=0;
+  el.innerHTML="<div style='font-weight:800;color:#9fb2ff;margin-bottom:6px'>👤 Pilot wählen</div>"+
+    CHARS.map(function(c,i){return "<button data-i='"+i+"' style='margin:3px;padding:6px 11px;border-radius:8px;cursor:pointer;border:1px solid "+(i===sel?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff;font-size:.86rem'>"+c.n+"</button>";}).join("")+
+    "<div style='font-size:.78rem;color:#8890b8;margin-top:5px'>"+CHARS[sel].d+"</div>";
+  el.querySelectorAll("button[data-i]").forEach(function(b){b.onclick=function(){saveChar(+b.getAttribute("data-i"));renderChars();beep(520,.08,"triangle",.05);};});}
 
 var PASSIVES=[
  {i:"🔥",n:"🔥 Mehr Schaden",d:"+25% Schaden (alle Waffen)",f:function(){S.dmg*=1.25;}},
@@ -403,7 +421,7 @@ function loop(now){
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";}
-reset(); showBest(); renderShop(); requestAnimationFrame(loop);
+reset(); showBest(); renderShop(); renderChars(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
 })();
 </script>
