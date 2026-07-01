@@ -2760,3 +2760,15 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **Katalog: 6.716 aktive Produkte** — Session-Start ~5.087 → **+~1.630 diese Session!** marke-Tag 1.906 · Parfum 504 · Gadgets 310.
 - **⚠️ Container-Reset-Lehre:** Grosse Fills können an einem Container-Reset scheitern (Tool-Datei kurz weg → MODULE_NOT_FOUND). Robustheit: nach Reset `git merge --ff-only origin/…` (Tools zurück), dann Fill neu starten. Bei Chained-Orchestrator besser pro Phase einzeln starten + Zwischenstand committen.
 - **Tooling-Stand (dauerhaft im Repo):** `bigbuy_brand_fill.mjs` (Marken, Galaxus, alle Bilder) · `cj_gadget_fill.mjs` + `lib/gadget_desc.mjs` (Gadgets, Galaxus) · `push_prepared.mjs` · `lib/galaxus_desc.mjs` + `bb_galaxus_descriptions.mjs` · `cj_gadget_galaxus.mjs`. Jede Session füllt jede Kategorie mit einem Befehl, Galaxus-beschrieben.
+
+---
+**🌸 2026-06-30 (PARFUM-SEITE auf Galaxus-Niveau + Sub-Collections gefixt):**
+- **🔴→✅ Grosser Regel-Fix `parfum-duefte`:** Regel war nur `TYPE=Parfum`, neue Imports haben Typ „Parfum & Düfte" → ~350 Parfums FEHLTEN.
+  Regel = OR[TYPE=Parfum, TYPE=Parfum & Düfte, TAG=parfum] → **Collection 157 → 507 Produkte.**
+- **📖 Galaxus-Beschreibung:** alle Top-Marken (Chanel/Dior/Paco Rabanne/JPG/Armani/Burberry…) + **Duftfamilien-Guide** (blumig/orientalisch/holzig/frisch)
+  + **EDP-vs-EDT-Erklärung** + Trust. Genau Galaxus-Stil (erklärend + strukturiert). SEO aktualisiert.
+- **Gender-Tags nachgezogen** (`/tmp/parfum_gender.mjs`): 386 Parfums per Titel (Damenparfüm→damen, Herrenparfüm→herren, Unisex→unisex) getaggt.
+  Damen-Düfte 19→**192**, Herren-Düfte 10→**131**.
+- **🔑 LEHRE Smart-Collection-Re-Index:** Tag-Änderungen an Produkten re-indexieren Smart-Collections nur VERZÖGERT. **Sofort-Nudge:** die Collection-Regel
+  identisch neu speichern (`collectionUpdate.ruleSet`) → triggert sofortige Neu-Auswertung. (Regel-Änderung = sofort; Produkt-Tag-Änderung = lazy.)
+- **Katalog: ~6.778 aktiv.** Parfum-Fill läuft weiter (alle Kategorien, selbstheilend gegen Container-Resets).
