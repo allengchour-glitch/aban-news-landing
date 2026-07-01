@@ -89,8 +89,8 @@ const GROUPS={
  schmuck:    {re:/kette|halskette|armband|armreif|ohrring|ohrstecker|anhänger|\bring\b|collier|creolen|schmuckset|manschettenknöpfe|brosche|fußkette|choker/i,
               ban:/schlüssel|vorhang|gardinen|schmuckkasten|schmuckständer|uhr\b|werkzeug|kette für|fahrrad|hunde/i,
               brand:B.schmuck, cap:160, type:'Schmuck', tags:['schmuck','damen-schmuck','marke','accessoire','bigbuy','dropship'], blurb:'Marken-Schmuck'},
- fitness:    {re:/hantel|kurzhantel|gewicht|kettlebell|widerstandsband|fitnessband|yogamatte|gymnastikmatte|springseil|fitness|training|bauchtrainer|klimmzug|laufband|heimtrainer|liegestütz|balance|faszienrolle|dumbbell|expander|sportmatte|boxsack|fussball|basketball|volleyball|tennisschläger/i,
-              ban:/spielzeug|kinder|nahrungsergänz|protein|supplement|kleidung|shirt|schuhe|tanktop|trikot|jersey|shorts|\bhose|jacke|socken|\btop\b|cap\b|mütze|sweatshirt|leggings/i,
+ fitness:    {re:/hantel|kurzhantel|kettlebell|widerstandsband|fitnessband|yogamatte|gymnastikmatte|springseil|bauchtrainer|klimmzug|laufband|heimtrainer|faszienrolle|dumbbell|expander|sportmatte|boxsack|\bfussball\b|\bfußball\b|basketball|volleyball|tennisschläger|schienbeinschützer|basketballkorb|hanteln/i,
+              ban:/spielzeug|kinder|nahrungsergänz|protein|supplement|kleidung|shirt|schuhe|tanktop|trikot|jersey|shorts|hose|anzug|jacke|socken|\btop\b|cap\b|mütze|sweatshirt|leggings|deko/i,
               brand:B.fitness, cap:150, type:'Fitness & Sport', tags:['fitness','sport','marke','bigbuy','dropship'], blurb:'Marken-Sportartikel'},
 };
 

@@ -2886,3 +2886,11 @@ DIESE Session bleibt Katalog/Import/Kategorien/SEO. TikTok-Feed-Qualität ist be
   Ban gegen Bekleidung (Tanktop/Trikot/Shorts) geschärft → nur echtes Equipment (Bälle/Hanteln/Matten).
 - **Tagesbilanz gesamt:** 6 Kat. (+537) + Küche/Schmuck/Fitness (+219) = **~756 neue Marken-Produkte** heute,
   plus Energielabel (9 Leuchtmittel) + Homepage-Funnel poliert + 8 Kategorie-Collections re-indexed.
+
+**📌 2026-07-01 (Nachtrag — Fitness-Bereinigung „nur echtes Equipment"):** Fitness-Welle zog ~8 Bekleidungsteile
+rein (Trainingshose/Sporthose/Trainingsanzug), weil `re` „training" zu breit war + Ban `\bhose` griff bei
+Kompositum „Sporthose" nicht (kein Wortgrenze vor „hose"). **Fix:** `re` nur noch konkrete Equipment-Begriffe
+(Ball/Hantel/Matte/Schläger/Schienbeinschützer…), Ban `hose|anzug|deko` OHNE `\b` (fängt Komposita). Die 8
+Sizeless-Bekleidungsteile auf DRAFT gesetzt (gehören zum Varianten-Importer mit Grössen, nicht als „Standard").
+Fitness-Collection = jetzt reines Equipment (Wilson-Bälle/Head-Schläger/Umbro-Hanteln). **Lehre:** Sport-Marken
+(Adidas/Puma/Nike) sind bei BigBuy überwiegend BEKLEIDUNG → Equipment-Kategorien brauchen enge Keyword-`re` + Komposit-sichere Bans.
