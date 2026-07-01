@@ -29,11 +29,22 @@ setTimeout(() => { T('WATCHDOG 5min -> exit'); process.exit(1); }, 300000).unref
     }
     T('edit-open=' + opened);
     await p.waitForTimeout(2500);
-    // Bio-Feld finden + setzen
+    // Bio-Feld finden + setzen. FIX 2026-07-01: fill() triggert TikToks React-State NICHT -> Speichern bleibt
+    // disabled. ECHTE Tastenanschlaege (Ctrl+A, Delete, pressSequentially) noetig - gleiche Lehre wie Shopify-Picker.
     let set = false;
     for (const sel of ['[data-e2e="edit-profile-bio"] textarea', 'textarea']) {
-      try { const t = p.locator(sel).first(); if (await t.count()) { await t.click(); await t.fill(''); await t.fill(BIO); set = true; break; } } catch {}
+      try {
+        const t = p.locator(sel).first();
+        if (await t.count()) {
+          await t.click();
+          await p.keyboard.press('Control+a');
+          await p.keyboard.press('Delete');
+          await t.pressSequentially(BIO, { delay: 25 });
+          set = true; break;
+        }
+      } catch {}
     }
+    await p.waitForTimeout(1200);
     T('bio-set=' + set + ' text=' + BIO);
     // Speichern
     let saved = false;
