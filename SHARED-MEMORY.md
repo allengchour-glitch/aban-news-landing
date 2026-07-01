@@ -2779,3 +2779,11 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **Parfum-Collection 507→685** · Damen-Düfte →260 · Herren-Düfte →182 (Gender-Tagger 2× gelaufen + Regel-Nudge).
 - **Katalog: 7.157 aktive Produkte** (Session-Start ~5.087 → **+~2.070 diese Session!**). marke-Tag 2.347.
 - **TODO nächste Session (klein):** `bigbuy_brand_fill.mjs` parfum-Gruppe könnte Gender-Tag (damen/herren/unisex per Titel) direkt beim Anlegen setzen → spart den separaten `/tmp/parfum_gender.mjs`-Lauf. (Tagger ist idempotent, bis dahin einfach nach Parfum-Fill neu laufen + Sub-Collection-Regel-Nudge.)
+
+---
+**🚀 2026-06-30 („weiter"-Welle — +664 Produkte; Katalog 7.821):**
+- **BigBuy-Marken (alle Kat.): +664** (parfum 150 · makeup 120 · gadget 90 · skincare 90 · haircare 80 · uhr 70 · sonnenbrille 50 · tasche 14) — Galaxus, EU-Lager, selbstheilend gg. Container-Resets.
+- **CJ-Gadgets: 0 NEU** → coole CJ-Gadget-Veins ausgeschöpft (Dedup, kein Junk). 440 Gadgets Galaxus-beschrieben.
+- **Parfum-Collection 685→833** · Damen-Düfte 283 · Herren-Düfte 198. marke-Tag 3.011 · Gadgets 440.
+- **Katalog: 7.821 aktive Produkte** (Session-Start ~5.087 → **+~2.730 diese Session!**).
+- **Selbstheilendes Fill-Muster bewährt:** `heal()` (git fetch+ff-merge, sonst checkout automation/) am Script-Start + vor jeder Phase → überlebt Container-Resets, die vorher 2× Wellen abbrachen. Für grosse Fills IMMER so.
