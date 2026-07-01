@@ -2772,3 +2772,10 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **🔑 LEHRE Smart-Collection-Re-Index:** Tag-Änderungen an Produkten re-indexieren Smart-Collections nur VERZÖGERT. **Sofort-Nudge:** die Collection-Regel
   identisch neu speichern (`collectionUpdate.ruleSet`) → triggert sofortige Neu-Auswertung. (Regel-Änderung = sofort; Produkt-Tag-Änderung = lazy.)
 - **Katalog: ~6.778 aktiv.** Parfum-Fill läuft weiter (alle Kategorien, selbstheilend gegen Container-Resets).
+
+---
+**🌸✅ 2026-06-30 (PARFUM-WELLE fertig — Katalog 7.157):**
+- **BigBuy-Fill (alle Kat.): +441** (parfum 184 · gadget 40 · skincare/makeup/haircare/uhr/sonnenbrille je 40 · tasche 17) — Galaxus-beschrieben, EU-Lager.
+- **Parfum-Collection 507→685** · Damen-Düfte →260 · Herren-Düfte →182 (Gender-Tagger 2× gelaufen + Regel-Nudge).
+- **Katalog: 7.157 aktive Produkte** (Session-Start ~5.087 → **+~2.070 diese Session!**). marke-Tag 2.347.
+- **TODO nächste Session (klein):** `bigbuy_brand_fill.mjs` parfum-Gruppe könnte Gender-Tag (damen/herren/unisex per Titel) direkt beim Anlegen setzen → spart den separaten `/tmp/parfum_gender.mjs`-Lauf. (Tagger ist idempotent, bis dahin einfach nach Parfum-Fill neu laufen + Sub-Collection-Regel-Nudge.)
