@@ -2813,3 +2813,21 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 - **Langtext-Status:** 208+ und laufend. Zusammen mit 3.793 `ls-ai-deep` = ~4.000 Produkte mit langen Galaxus-Texten.
 - **🔑 LEHRE:** LLM-Massen-Beschreibungen NUR grounded (echte Specs im Prompt) — sonst Halluzination. Bewährtes Tool der anderen Session = `ai_product_descriptions_deep.mjs` (OpenAI→Gemini→Groq, tag ls-ai-deep, zielt tag:bigbuy). Meine Imports haben tag:marke → separat via gemini_descriptions.
 - **+4 Ratgeber-Artikel** (Parfum/Nägel/Wimpern/Werkzeug) + **404 Schuh-Beschreibungen** (GMC Farbe/Größe/Material) fertig.
+
+---
+**📌 2026-07-01 (📱 TikTok-Kanal LIVE + 4 neue BigBuy-Kategorien + 2 teure Lektionen):**
+- **TikTok-Verkaufskanal ist in Shopify installiert & synct** (Markt Schweiz): 85 Produkte **genehmigt**,
+  5.782 ausstehend, **0 nicht genehmigt** → Feed besteht TikTok-Policy fehlerfrei (Titel/Bilder/Preise ok).
+  3–5 Tage Review pro Charge = normal. **User-only-Hebel (§10 Reichweite):** „Kampagne erstellen" (Smart+)
+  → Tagesbudget (CHF 5–10 reicht) → „Kampagne einreichen". Ziel = Conversions/Produktverkäufe (nicht Reichweite),
+  TikTok-Pixel im Flow prüfen. Budget/Absenden = nur Kontoinhaber. **Das ist der direkte Traffic-Unlock, Feed ist bereit.**
+- **4 neue Marken-Kategorien in `bigbuy_brand_fill.mjs`:** papeterie (Bic/Pilot/Milan/Staedtler…, 1159 Kand.),
+  haustier (Trixie/Hunter/Ferplast…, 4485 Kand.), garten (Gardena/Fiskars/Altadex…, 177), bar (Luminarc/Arcoroc/
+  Vin Bouquet…, 201). Alle mit tag:bigbuy → landen in Premium-Collection + werden vom Langtext-Tool erfasst.
+- **🐞 LEKTION 1 (bash-Falle, kostete Zeit):** `GROUPS` ist eine **bash-Spezialvariable (readonly)** →
+  `GROUPS=x node …` reicht sie NICHT ans Skript weiter (immer undefined → es liefen IMMER alle Gruppen).
+  Das war der alte „GROUPS-Restriction-Bug". Fix: Skript liest jetzt **`GRP`** als Alias (`process.env.GRP||GROUPS`).
+  Nutzung: `GRP=papeterie,haustier … node …` ODER `env GROUPS=… node …`. Nie wieder `GROUPS=` als bash-Prefix.
+- **🐞 LEKTION 2 (Heap):** BigBuy `productsinformation.json?isoCode=de` ist auf **~388 MB / 313.270 Produkte**
+  gewachsen → default-Node-Heap OOM beim `r.json()`-Parse → Skript meldet „Katalog-Fehler" OBWOHL curl HTTP 200
+  liefert (verwirrend!). Fix: **alle Läufe mit `--max-old-space-size=6144`**. Parse braucht ~2GB transient, 818MB final.
