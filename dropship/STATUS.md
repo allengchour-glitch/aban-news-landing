@@ -1,5 +1,14 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-01 (GROSSER TAG — Kampagne ABGESENDET + TikTok-MCP verbunden)
+- **KAMPAGNE LIVE EINGEREICHT:** "Wasserfest CH Juni" abgesendet (Shopify-Smart+, Bot fuellte 5/5 vor, User klickte Senden) — Status "Wird ueberprueft" seit 1.7. Freigabe meist <24h. Budget 30/Tag.
+- **TIKTOK-ADS MCP VERBUNDEN (Durchbruch):** claude.ai-Connector `https://business-api.tiktok.com/open_mcp/tt-ads-mcp-flat`, 211 Lese-Tools auf "Immer erlauben", gilt 30 Tage. NEUE Sessions lesen Kampagnen-Zahlen DIREKT per API (kein Browser-Bot). Advertiser 7646349875793182738. Marketing-API-App "LuxeStyle Bot" pending = obsolet.
+- **Ad-Bot 5/5 bewiesen** (Collection+Budget+Text+Video autonom). Video-Stack: Aurora/Onyx/Gala + Montage, finish_reel.sh mit AUTO-MUSIK-VARIATION (jedes Produkt anderer CC-BY-Track), Stile rotieren (nicht immer Funkel), Text nie ueber Produkt.
+- **SEO-Metas komplett:** 18 wasserfest-Produkte + 9 Collections (wasserfest/premium/highlights/sets/herren + halsketten/ohrringe/armbaender/fuer-sie).
+- **Heute 126 Sessions** (2x gestern), 1 ATC, 1 Checkout, 0 Kauf — warten auf Ad-Freigabe (= erster Buy-Intent-Traffic).
+- **User-Praeferenzen NEU:** KEINE Emojis in Antworten · alte 282 Clips = Reserve (nur Ads, nie organisch reposten) · 1 Video/Tag.
+- **NAECHSTE SESSION:** ToolSearch "tiktok" -> Review-Status + Zahlen von "Wasserfest CH Juni" lesen -> wenn aktiv: optimieren; wenn rejected: Grund fixen + neu einreichen.
+
 ## 2026-06-30 (Nacht — ✅ AURORA-VIDEO GELIEFERT + Veo-Pipeline bewiesen)
 - **🎉 AURORA-DREH-VIDEO FERTIG + an User geliefert:** `reels/aurora-veo-final.mp4` (1080×1920). Veo (Gemini-Guthaben) rendert die echte Regenbogen-Kette mit goldenem Bokeh in 50s → cropdetect-entbalkt (Veo liefert 720×720 letterboxed!) → Mundart-Text + WELCOME10-CTA in Safe-Zone. QA bestanden (produkttreu, kein Warping/Schrift). **1-Klick `AURORA-VIDEO.bat` bewiesen** (nach ps1-Fix).
 - **🧠 Lehren (Brain 401):** Veo-Format = oft SQUARE letterboxed → immer cropdetect+scale-to-fill; ffmpeg drawtext `%` bricht (strftime) → nie % im Text; ElevenLabs-Voice nur am PC/VPS (Cloud ohne Key).
