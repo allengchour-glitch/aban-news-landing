@@ -2851,3 +2851,14 @@ Regel #2 angewendet (am echten Signal messen, nicht Klaviyo/Annahme). ShopifyQL 
 **📌 2026-07-01 (🤝 KOORDINATION — TikTok delegiert):** User hat die **TikTok-Kampagne selbst erstellt**
 („hab erstellt lass es andere session machen"). Ads/Reichweite/Kampagnen-Management = **andere Session** (Reach-Lane).
 DIESE Session bleibt Katalog/Import/Kategorien/SEO. TikTok-Feed-Qualität ist bereit (85 genehmigt, 0 abgelehnt).
+
+---
+**📌 2026-07-01 (🚗💡 +2 Kategorien Auto/KFZ & Beleuchtung, +86 Produkte):**
+- **Auto & KFZ** (Sonax/Goodyear/Foliatec/Michelin, 164 Kand.) → 28 Produkte → Collection `auto-zubehoer`.
+- **Beleuchtung** (Philips/Osram/Ledvance, 423 Kand.) → 58 Produkte → `beleuchtung-lampen` (131→188) + `sub-beleuchtung` (235→273).
+- **🐞 LEKTION (Tag↔Collection-Mismatch):** `auto-zubehoer`-Collection-Regel = `TAG=auto-zubehoer` (Bindestrich!),
+  Importer taggte aber `auto`+`zubehoer` getrennt → Produkte wären NICHT gelandet. Fix: Collection-Regel disjunktiv
+  auf [TAG=auto-zubehoer OR TAG=auto] erweitert (fängt laufende Welle) + Importer taggt jetzt `auto-zubehoer`.
+  **Merke:** vor neuer Kategorie IMMER die Ziel-Collection-Regel lesen (`ruleSet.rules`) und Tags exakt matchen.
+- **Re-Index:** Neue Produkte laggen in tag-basierten Smart-Collections → identische ruleSet neu speichern stupst sofort an.
+- **Tagesbilanz Import:** 4 neue Kat. (Papeterie/Haustier/Garten/Bar) +221, Vertiefung +230, Auto/Beleuchtung +86 = **~537 neue Marken-Produkte**.
