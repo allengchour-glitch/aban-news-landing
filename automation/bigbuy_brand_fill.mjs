@@ -41,6 +41,9 @@ const B={
  bar:/vacu.?vin|peugeot|\bwmf\b|\bbra\b|\bibili\b|\bquid\b|\bluminarc\b|\barcoroc\b|\bbormioli\b|\briedel\b|\bvin bouquet\b|\bpulltex\b|\bbodum\b/i,
  auto:/michelin|\bbosch\b|\bosram\b|sonax|turtle wax|\bkärcher\b|karcher|bottari|\bsumex\b|\blampa\b|goodyear|simoniz|\bpingi\b|\bcartrend\b|\bmannol\b|\bpetronas\b|\bfoliatec\b/i,
  beleuchtung:/philips|\bosram\b|ledvance|innovagoods|xanlite|\bgarza\b|\bnedis\b|\btrio\b|\beglo\b|paulmann|activejet|\blutec\b|\bvelamp\b|\bfischer\b/i,
+ kueche:/\bwmf\b|masterpro|\bquid\b|\bibili\b|san ignacio|bergner|\barcos\b|\bmonix\b|\bbra\b|tramontina|\bnirosta\b|zwilling|fissler|\btefal\b|\bpyrex\b|\bkitchenaid\b|\bvictorinox\b|\btaurus\b|\bbergner\b|\brösle\b|\bwesco\b/i,
+ schmuck:/lotus silver|\bviceroy\b|morellato|\bradiant\b|\btous\b|\bcluse\b|rosefield|\bmarea\b|\bracimo\b|calvin klein|michael kors|\bguess\b|\bpolice\b|swarovski|\bfossil\b|daniel wellington|\bpandora\b/i,
+ fitness:/\badidas\b|\bnike\b|\bpuma\b|reebok|\bsoftee\b|atipick|\bavento\b|\bkelme\b|\bspokey\b|body sculpture|\bsveltus\b|\bpure2improve\b|\btunturi\b|\bwilson\b|\bhead\b|\bmolten\b|\bumbro\b/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -80,6 +83,15 @@ const GROUPS={
  beleuchtung:{re:/lampe|leuchte|glühbirne|\bled\b|deckenleuchte|stehlampe|tischlampe|wandleuchte|leuchtmittel|birne|strahler|spot|lichterkette|nachttischlampe|schreibtischlampe|pendelleuchte|solarleuchte|taschenlampe|leuchtröhre|beleuchtung/i,
               ban:/spielzeug|kinder|projektor|auto|kfz|nagel|uv-lampe für näg/i,
               brand:B.beleuchtung, cap:110, type:'Beleuchtung & Lampen', tags:['beleuchtung','lampen','wohnen','marke','bigbuy','dropship'], blurb:'Marken-Leuchte'},
+ kueche:     {re:/topf|pfanne|bratpfanne|kochtopf|kasserolle|schmortopf|messerset|küchenmesser|schneidebrett|schüssel|auflaufform|backform|siebe?\b|reibe|schneebesen|kochlöffel|pfannenwender|salatschleuder|dosen|vorratsdose|frischhalte|kaffeekanne|teekanne|mixbecher|küchenwaage|servierplatte|besteck|geschirr/i,
+              ban:/spielzeug|kinder|deko-|elektr|akku|batterie/i,
+              brand:B.kueche, cap:150, type:'Küche & Kochen', tags:['kueche','kochen','haushalt','marke','bigbuy','dropship'], blurb:'Marken-Küchenhelfer'},
+ schmuck:    {re:/kette|halskette|armband|armreif|ohrring|ohrstecker|anhänger|\bring\b|collier|creolen|schmuckset|manschettenknöpfe|brosche|fußkette|choker/i,
+              ban:/schlüssel|vorhang|gardinen|schmuckkasten|schmuckständer|uhr\b|werkzeug|kette für|fahrrad|hunde/i,
+              brand:B.schmuck, cap:160, type:'Schmuck', tags:['schmuck','damen-schmuck','marke','accessoire','bigbuy','dropship'], blurb:'Marken-Schmuck'},
+ fitness:    {re:/hantel|kurzhantel|gewicht|kettlebell|widerstandsband|fitnessband|yogamatte|gymnastikmatte|springseil|fitness|training|bauchtrainer|klimmzug|laufband|heimtrainer|liegestütz|balance|faszienrolle|dumbbell|expander|sportmatte|boxsack|fussball|basketball|volleyball|tennisschläger/i,
+              ban:/spielzeug|kinder|nahrungsergänz|protein|supplement|kleidung|shirt|schuhe|tanktop|trikot|jersey|shorts|\bhose|jacke|socken|\btop\b|cap\b|mütze|sweatshirt|leggings/i,
+              brand:B.fitness, cap:150, type:'Fitness & Sport', tags:['fitness','sport','marke','bigbuy','dropship'], blurb:'Marken-Sportartikel'},
 };
 
 function clean(n){return n
