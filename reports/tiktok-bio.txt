@@ -1,0 +1,4 @@
+edit-open=true
+bio-set=true text=Wasserfester Schmuck & Mode aus der Schweiz | -10% mit Code WELCOME10
+saved=true
+ENDE OK
