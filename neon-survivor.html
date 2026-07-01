@@ -63,6 +63,7 @@ canvas{display:block}
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
   <div id="best"></div>
+  <div id="shop" style="margin-top:14px;max-width:360px;width:100%;font-size:.9rem"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
 </div>
 
@@ -164,6 +165,13 @@ function reset(){
   S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:5,
      dmg:1,speed:9,multishot:1,pickup:3.2,area:1,haste:1,
      spawnT:0,spawnEvery:1.4,bossT:30,phase:1,finalBoss:false,won:false,weapons:{bolt:1},wt:{},bladeA:0,ups:{}};
+  var meta=loadMeta();
+  S.maxhp=100+(meta.hp||0)*20; S.hp=S.maxhp;
+  S.dmg=1+(meta.dmg||0)*0.1;
+  S.speed=9*(1+(meta.spd||0)*0.05);
+  S.pickup=3.2+(meta.mag||0)*0.6;
+  S.xpMul=1+(meta.xp||0)*0.08;
+  S.revives=(meta.rev||0);
   document.getElementById("upRow").innerHTML="";
   [bullets,enemies,orbs,fx,blades].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
   player.position.set(0,0.9,0);
@@ -237,6 +245,26 @@ muteBtn.onclick=function(){muted=!muted;applyMute();};
 addEventListener("keydown",function(e){if(e.key.toLowerCase()==="m"){muted=!muted;applyMute();}});
 function bestTime(){try{return parseInt(localStorage.getItem("ns_best")||"0",10)||0;}catch(e){return 0;}}
 function setBest(v){try{localStorage.setItem("ns_best",String(v));}catch(e){}}
+// ---------- Meta-Progression: Kerne (Währung) → permanente Werkstatt-Upgrades ----------
+function loadCores(){try{return parseInt(localStorage.getItem("ns_cores")||"0",10)||0;}catch(e){return 0;}}
+function saveCores(v){try{localStorage.setItem("ns_cores",String(Math.max(0,Math.floor(v))));}catch(e){}}
+function loadMeta(){try{return JSON.parse(localStorage.getItem("ns_meta")||"{}")||{};}catch(e){return {};}}
+function saveMeta(m){try{localStorage.setItem("ns_meta",JSON.stringify(m));}catch(e){}}
+var META=[
+ {id:"hp", n:"❤️ Panzerung",  d:"+20 Start-HP",         max:6, cost:function(l){return 20+l*25;}},
+ {id:"dmg",n:"🔥 Waffenkern",  d:"+10% Start-Schaden",   max:6, cost:function(l){return 25+l*30;}},
+ {id:"spd",n:"👟 Servos",      d:"+5% Tempo",            max:5, cost:function(l){return 20+l*25;}},
+ {id:"mag",n:"🧲 Magnetfeld",  d:"+0.6 Sammel-Radius",   max:5, cost:function(l){return 20+l*20;}},
+ {id:"xp", n:"💠 Lernchip",    d:"+8% XP",               max:5, cost:function(l){return 25+l*30;}},
+ {id:"rev",n:"✨ Notkern",     d:"1× Wiederbelebung/Run", max:1, cost:function(){return 250;}}
+];
+function renderShop(){var el=document.getElementById("shop");if(!el)return;var cores=loadCores(),meta=loadMeta();
+  var html="<div style='font-weight:800;color:#ffd166;margin-bottom:8px'>🔩 Werkstatt · "+cores+" ⬢ Kerne</div>";
+  html+=META.map(function(u){var l=meta[u.id]||0,maxed=l>=u.max,c=u.cost(l),afford=cores>=c&&!maxed;
+    return "<button data-id='"+u.id+"' "+(afford?"":"disabled")+" style='display:block;width:100%;text-align:left;margin:4px 0;padding:8px 10px;border-radius:10px;border:1px solid "+(maxed?"#2a7f4a":"#2a3170")+";background:#10142b;color:"+(afford?"#e6e9ff":"#7a83ad")+";cursor:"+(afford?"pointer":"default")+"'>"+u.n+"<span style='float:right'>"+(maxed?"MAX":(c+" ⬢"))+"</span><br><small style='color:#8890b8'>"+u.d+" · Lv "+l+"/"+u.max+"</small></button>";
+  }).join("");
+  el.innerHTML=html;
+  el.querySelectorAll("button[data-id]").forEach(function(b){b.onclick=function(){var id=b.getAttribute("data-id"),m=loadMeta(),l=m[id]||0,def=null;for(var i=0;i<META.length;i++)if(META[i].id===id)def=META[i];if(!def||l>=def.max)return;var c=def.cost(l),cr=loadCores();if(cr<c)return;saveCores(cr-c);m[id]=l+1;saveMeta(m);renderShop();beep(660,.1,"triangle",.07);};});}
 
 var PASSIVES=[
  {i:"🔥",n:"🔥 Mehr Schaden",d:"+25% Schaden (alle Waffen)",f:function(){S.dmg*=1.25;}},
@@ -297,10 +325,12 @@ function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;var s=
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
-  document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner besiegt";
+  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);renderShop();
+  document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("over").classList.remove("hide");}
 function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;
-  document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner besiegt";
+  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
+  document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);}
 
 document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
@@ -348,9 +378,9 @@ function loop(now){
     if(hurt>0)hurt=Math.max(0,hurt-dt*2.2); hurtEl.style.opacity=hurt;
     // Orbs einsammeln (Magnet)
     for(i=0;i<orbs.length;i++){var o=orbs[i];if(!o.active)continue;var ox=player.position.x-o.m.position.x,oz=player.position.z-o.m.position.z;var od=Math.hypot(ox,oz)||1;if(od<S.pickup){o.m.position.x+=ox/od*12*dt;o.m.position.z+=oz/od*12*dt;}o.m.rotation.y+=dt*3;
-      if(od<1.0){o.active=false;o.m.visible=false;o.m.position.y=-99;S.xp++;if(S.xp>=S.xpNeed){S.xp=0;S.lvl++;S.xpNeed=Math.floor(S.xpNeed*1.4)+2;levelUp();}}
+      if(od<1.0){o.active=false;o.m.visible=false;o.m.position.y=-99;S.xp+=(S.xpMul||1);if(S.xp>=S.xpNeed){S.xp=0;S.lvl++;S.xpNeed=Math.floor(S.xpNeed*1.4)+2;levelUp();}}
     }
-    if(S.hp<=0){S.hp=0;gameOver();}
+    if(S.hp<=0){if(S.revives>0){S.revives--;S.hp=S.maxhp*0.6;announce("✨ Wiederbelebt!");beep(880,.3,"triangle",.09);shake=1.0;}else{S.hp=0;gameOver();}}
     updHUD();
   }
   // FX
@@ -364,7 +394,7 @@ function loop(now){
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";}
-reset(); showBest(); requestAnimationFrame(loop);
+reset(); showBest(); renderShop(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
 })();
 </script>
