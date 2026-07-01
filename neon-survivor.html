@@ -158,12 +158,16 @@ var skyMat=new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,fog:fa
   vertexShader:"varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
   fragmentShader:"uniform vec3 cTop;uniform vec3 cHor;uniform vec3 cLow;varying vec3 vP;void main(){float h=normalize(vP).y;vec3 c=h>0.0?mix(cHor,cTop,pow(h,0.5)):mix(cHor,cLow,pow(-h,0.4));gl_FragColor=vec4(c,1.0);}"});
 var sky=new THREE.Mesh(new THREE.SphereGeometry(900,32,16),skyMat); scene.add(sky);
-// Mond
-var moon=new THREE.Mesh(new THREE.SphereGeometry(22,24,24),new THREE.MeshBasicMaterial({color:0xcdd8ff,fog:false})); moon.position.set(-150,150,-320); scene.add(moon);
-var moonHalo=new THREE.Mesh(new THREE.SphereGeometry(30,24,24),new THREE.MeshBasicMaterial({color:0x8fb0ff,transparent:true,opacity:0.18,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})); moonHalo.position.copy(moon.position); scene.add(moonHalo);
+// Retro-Synthwave-Sonne (Sega/OutRun-Signatur) — Farbverlauf + horizontale Streifen
+var sunMat=new THREE.ShaderMaterial({fog:false,depthWrite:false,transparent:true,uniforms:{cHi:{value:new THREE.Color(0xffe14d)},cLo:{value:new THREE.Color(0xff2d6f)}},
+  vertexShader:"varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"uniform vec3 cHi;uniform vec3 cLo;varying vec2 vU;void main(){float y=vU.y;vec3 c=mix(cLo,cHi,pow(y,0.8));float band=y<0.55?step(0.42,fract(y*13.0)):1.0;if(y<0.55&&band<0.5)discard;gl_FragColor=vec4(c,1.0);}"});
+var sun=new THREE.Mesh(new THREE.CircleGeometry(80,48),sunMat); sun.position.set(0,50,-430); scene.add(sun);
+var sunGlow=new THREE.Mesh(new THREE.CircleGeometry(120,48),new THREE.MeshBasicMaterial({color:0xff5c8a,transparent:true,opacity:0.14,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})); sunGlow.position.set(0,50,-436); scene.add(sunGlow);
 // Ferne Berg-Silhouetten
 var mountains=[];
 for(var mni=0;mni<70;mni++){var mna=mni/70*Math.PI*2, mnr=210+Math.random()*110, mnh=40+Math.random()*90;
+  if(Math.sin(mna)<-0.78)mnh*=0.28;  // Tal Richtung Sonne (im Norden) → Gipfel rahmen die Sonne
   var mnt=new THREE.Mesh(new THREE.ConeGeometry(35+Math.random()*45,mnh,4),new THREE.MeshStandardMaterial({color:0x090b1c,emissive:0x141838,emissiveIntensity:0.5,flatShading:true}));
   mnt.position.set(Math.cos(mna)*mnr,mnh/2-8,Math.sin(mna)*mnr); mnt.rotation.y=Math.random()*3.14; scene.add(mnt); mountains.push(mnt);}
 // Aurora-Bänder (additiv)
