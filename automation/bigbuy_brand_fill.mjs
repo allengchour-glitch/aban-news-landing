@@ -6,7 +6,9 @@
  * ENV: BIGBUY_API_KEY · SHOPIFY_CLIENT_ID/SECRET[/SHOP]
  *      GROUPS=parfum,uhr,tasche  (Default: alle)  ·  CAP=40 (Default-Stück/Gruppe, per CAP_<grp> überschreibbar)
  *      DRY=1 (nur scannen/zeigen, nichts anlegen)
- * Lauf: ( set -a; source /tmp/lux_env.sh; source /tmp/shopify_creds.env; set +a; GROUPS=parfum,skincare node automation/bigbuy_brand_fill.mjs )
+ * Lauf: ( set -a; source /tmp/lux_env.sh; source /tmp/shopify_creds.env; set +a; GROUPS=parfum,skincare node --max-old-space-size=6144 automation/bigbuy_brand_fill.mjs )
+ * ⚠️ HEAP: productsinformation.json ist ~388 MB / 313k Produkte → IMMER mit --max-old-space-size=6144 laufen,
+ *          sonst OOM beim r.json()-Parse und "Katalog-Fehler" (curl liefert trotzdem 200 → nicht verwirren lassen).
  */
 import fs from 'node:fs';
 import { buildGalaxusDesc } from './lib/galaxus_desc.mjs';
@@ -33,6 +35,10 @@ const B={
  toy:/lego|playmobil|mattel|hasbro|funko|ravensburger|\bsimba\b|clementoni|bandai|hot wheels|barbie|\bnerf\b|play.?doh|fisher.?price|disney|marvel|paw patrol|lansay|educa|famosa|pinypon|bizak|\bjuguetes\b|cefa/i,
  home:/cecotec|taurus|jata|orbegozo|princess|russell hobbs|tefal|innovagoods|bra\b|masterpro|beper|create|kitchenware|delonghi|de'?longhi|rowenta|moulinex|braun|philips|severin|bomann|melitta|\bwmf\b|kenwood|krups|\bbosch\b|electrolux|\baeg\b|smeg|ariete|\bufesa\b|\bsogo\b|nevir|mellerware/i,
  tool:/black.?decker|michelin|bellota|fartools|bosch|makita|einhell|stanley|wolfcraft|mannesmann|bahco|dewalt|metabo|\bskil\b|ryobi|gedore|\bwera\b|knipex|wiha|tacklife|worx|\bks tools\b|facom|\bpg\b|imex|silverline|gsc|vorel|toptul/i,
+ papeterie:/bic|pilot|faber.?castell|\bmilan\b|staedtler|stabilo|pelikan|maped|pentel|edding|\buni.?ball\b|tombow|paper.?mate|sharpie|post.?it|oxford|\bapli\b|liderpapel|\bcanson\b|rotring|lamy/i,
+ haustier:/trixie|ferplast|zolux|flamingo|kerbl|\bnobby\b|savic|\bkong\b|\bhunter\b|beeztees|karlie|europet|croci|\bmpets\b|\bcamon\b/i,
+ garten:/gardena|nortene|altadex|\bcelaya\b|\bnatuur\b|verdemax|\bfiskars\b|\bralm\b|\boutsunny\b|\bkinzo\b|\bpalisad\b|\bbradas\b/i,
+ bar:/vacu.?vin|peugeot|\bwmf\b|\bbra\b|\bibili\b|\bquid\b|\bluminarc\b|\barcoroc\b|\bbormioli\b|\briedel\b|\bvin bouquet\b|\bpulltex\b|\bbodum\b/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -54,6 +60,18 @@ const GROUPS={
  uhr:        {re:/\buhr\b|armbanduhr|herrenuhr|damenuhr|watch/i, brand:B.watch, cap:260, type:'Uhren', tags:['uhren','marke','accessoire','dropship'], blurb:'Marken-Armbanduhr'},
  tasche:     {re:/tasche|handtasche|umhängetasche|rucksack|geldbörse|portemonnaie|clutch|shopper/i, brand:B.bag, cap:200, type:'Taschen', tags:['taschen','damen','marke','accessoire','dropship'], blurb:'Marken-Tasche'},
  sonnenbrille:{re:/sonnenbrille|sunglasses/i, brand:B.sun, cap:160, type:'Sonnenbrillen', tags:['sonnenbrillen','eyewear','marke','accessoire','dropship'], blurb:'Marken-Sonnenbrille'},
+ papeterie:  {re:/kugelschreiber|kuli|füller|füllfeder|filzstift|fineliner|marker|textmarker|bleistift|buntstift|radiergummi|notizbuch|notizblock|heft|ordner|mappe|locher|hefter|tacker|schere|klebe|tinte|patrone|malen|zeichnen|schulbedarf|büro|schreibwaren|federmäppchen|etui/i,
+              ban:/spielzeug|kinder-schmink|nagel|toner|drucker/i,
+              brand:B.papeterie, cap:120, type:'Schreibwaren & Büro', tags:['papeterie','buero','schule','marke','bigbuy','dropship'], blurb:'Marken-Schreibwaren'},
+ haustier:   {re:/hund|katze|hunde|katzen|napf|leine|halsband|kratzbaum|transportbox|katzentoilette|hundebett|katzenbett|spielzeug für|kausnack|futterautomat|aquarium|nager|kaninchen|vogel|haustier|tier/i,
+              ban:/mensch|kinder-|baby(?!.?tier)|plüsch(?!tier für)|deko/i,
+              brand:B.haustier, cap:150, type:'Haustierbedarf', tags:['haustier','hund','katze','marke','bigbuy','dropship'], blurb:'Marken-Haustierbedarf'},
+ garten:     {re:/garten|balkon|terrasse|gartenschlauch|schlauch|gießkanne|gartenschere|rasen|pflanz|blumentopf|übertopf|sprüher|gartenhandschuh|spaten|harke|rechen|schubkarre|sonnenschirm|hängematte|gartenmöbel|grill|pflanzkübel|bewässerung|unkraut|hecke/i,
+              ban:/kunstblume|deko-|spielzeug|kinder/i,
+              brand:B.garten, cap:120, type:'Garten & Balkon', tags:['garten','balkon','outdoor','marke','bigbuy','dropship'], blurb:'Marken-Gartenprodukt'},
+ bar:        {re:/weinglas|weingläser|sektglas|champagner|cocktail|shaker|dekanter|karaffe|korkenzieher|flaschenverschluss|weinkühler|barzubehör|gläser.?set|trinkglas|whiskyglas|bierglas|untersetzer|eiswürfel|barmaß|zapf/i,
+              ban:/kinder|plastik.?becher|einweg/i,
+              brand:B.bar, cap:100, type:'Bar & Wein', tags:['bar','wein','kueche','marke','bigbuy','dropship'], blurb:'Marken-Barzubehör'},
 };
 
 function clean(n){return n
