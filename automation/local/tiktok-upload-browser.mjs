@@ -50,6 +50,16 @@ function writeStatus(result, reason, extra = {}) {
   try { fs.mkdirSync(path.dirname(STATUS), { recursive: true });
     fs.writeFileSync(STATUS, JSON.stringify({ ts: new Date().toISOString(), result, reason, ...extra }, null, 2) + '\n'); } catch {}
 }
+// ANTI-MEHRFACHPOST-RIEGEL (User 2026-07-01 "das video hast du 10 mal gepostet"): egal wie oft der Befehl
+// faelschlich erneut laeuft (Mehrfach-Instanzen/Queue-Bug) - wenn der letzte Lauf < 6 h her ist und POSTED
+// war, wird NICHT nochmal gepostet. Status-Datei ist committet -> Riegel gilt auch ueber Repo-Klone hinweg.
+try {
+  const _st = JSON.parse(fs.readFileSync(STATUS, 'utf8'));
+  if (_st && _st.result === 'POSTED' && (Date.now() - Date.parse(_st.ts)) < 6 * 3600 * 1000) {
+    console.log('Anti-Doppelpost-Riegel: letzter POST vor <6h (' + _st.ts + ') -> No-op.');
+    process.exit(0);
+  }
+} catch {}
 
 function pickReel() {
   if (argFile) return path.resolve(argFile);

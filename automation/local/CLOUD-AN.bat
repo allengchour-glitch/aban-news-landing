@@ -9,12 +9,25 @@ REM  Fenster offen lassen. Damit kann die Cloud-Session ALLES selbst ausloesen -
 REM ============================================================================
 title LuxeStyle CLOUD-AN  (NICHT schliessen - PC hoert auf Cloud-Befehle)
 cd /d "%~dp0..\.."
+REM SINGLE-INSTANZ (User 2026-07-01 "10 mal gepostet" = mehrere Fenster liefen parallel):
+REM wenn schon eine CLOUD-AN-Schleife lebt (Lock < 150 s alt), beendet sich dieses Fenster sofort.
+powershell -NoProfile -Command "$l=Join-Path $env:TEMP 'luxe-cloudan.lock'; if(Test-Path $l){ $a=((Get-Date)-(Get-Item $l).LastWriteTime).TotalSeconds; if($a -lt 150){ exit 7 } }; exit 0"
+if errorlevel 7 (
+  echo.
+  echo   CLOUD-AN laeuft BEREITS in einem anderen Fenster.
+  echo   Dieses Fenster schliesst sich - NIE mehrere gleichzeitig laufen lassen.
+  echo.
+  pause
+  exit /b
+)
 echo ============================================================
 echo   LuxeStyle CLOUD-AN laeuft. Fenster offen lassen.
 echo   Der PC fuehrt jetzt Cloud-Befehle automatisch aus.
 echo ============================================================
 
 :loop
+REM Lebenszeichen fuer den Single-Instanz-Check (alle 2 Min erneuert)
+powershell -NoProfile -Command "Set-Content -Path (Join-Path $env:TEMP 'luxe-cloudan.lock') -Value $PID" 2>nul
 REM --- HAENGE-WACHHUND (2026-06-24): killt node-Bots >15 Min (echte Haenger). 15 statt 8, damit der LANGE
 REM     Campaign-Wizard (~12 Min, eigener Watchdog) NICHT vorzeitig gekillt wird. Loop kann trotzdem nicht ewig einfrieren.
 powershell -NoProfile -Command "Get-Process node -EA SilentlyContinue | Where-Object {$_.StartTime -lt (Get-Date).AddMinutes(-15)} | Stop-Process -Force -EA SilentlyContinue" 2>nul

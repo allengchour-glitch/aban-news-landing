@@ -46,6 +46,10 @@ if (Test-Path $lock) {
   $age = (Get-Date) - (Get-Item $lock).LastWriteTime
   if ($age.TotalSeconds -lt 90) { exit }   # frischer Lock (<90s) = laeuft noch -> raus
 }                                            # sonst: uebernehmen
+# HARTER SINGLE-INSTANCE-RIEGEL (User 2026-07-01 "10 mal gepostet"): globaler Named-Mutex wirkt maschinenweit,
+# also auch wenn mehrere CLOUD-AN-Fenster ODER mehrere Repo-Kopien laufen. Zweite Instanz steigt sofort aus.
+$global:LuxeMtx = New-Object System.Threading.Mutex($false, "Global\LuxeCmdPoll")
+if (-not $global:LuxeMtx.WaitOne(500)) { Write-Host "cmd-poll laeuft bereits (Mutex) -> exit"; exit }
 Set-Content -Path $lock -Value "$PID" -ErrorAction SilentlyContinue
 $secrets = "$env:USERPROFILE\luxe-secrets.ps1"; if (Test-Path $secrets) { . $secrets }
 $brave = "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
