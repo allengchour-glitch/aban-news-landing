@@ -2033,3 +2033,15 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   heisst auch: keine irreführenden/kryptischen Suffixe an gute Titel hängen. Modell-Codes nur wo echt nötig (generische CJ).
 - **Lehre:** „Doppelter Titel" ≠ „Defekt". Vor Massen-Rename prüfen, ob es echte Verwechslungsgefahr ist (marken-los)
   oder legitime Modell-Vielfalt (Marke + versch. Modelle). Auto-Spec-Differenzierer (ml/cm) greifen oft Verpackungsmasse ab → unbrauchbar.
+
+---
+**📌 2026-07-02 (Nachtrag — 32 CJ-Generik-Titel natürlich umformuliert):**
+- Maschinen-Typnamen → lesbare, professionelle DE-Titel (ehrlich, nur Produkttyp klarer): „Ergo-Mauspad"→
+  „Ergonomisches Gaming-Mauspad", „Farbwechsel-Maus"→„Gaming-Maus mit RGB-Beleuchtung", „Mechanische-Tastatur"→
+  „Mechanische Gaming-Tastatur", „Grosse Maus-Matte"→„XXL Gaming-Mauspad", „Fischer-Station mit Rollen"→
+  „Angel-Sitzkiepe mit Rollen", „Bluetooth-Headset"→„Kabelloses Bluetooth-Headset" usw. Tool: `automation/cj_rephrase_titles.mjs`.
+- **„(Typ <Ref>)" bleibt** als einziger echter Unterscheider — Grund: **CJ-API-Key abgelaufen** (getAccessToken →
+  „APIkey is wrong") UND gespeicherte Specs zu dünn (nur Material+Gewicht, Kategorie oft falsch „Furniture").
+  Ohne echte Produktdaten keine Farb-/Switch-/Anschluss-Angaben → NICHTS erfunden, nur Typname professionalisiert.
+- **Offen für später:** wenn CJ-API-Key erneuert wird, `product/query?pid=` je Produkt → echte Namen/Attribute →
+  dann „(Typ …)" durch echte Specs (Switch/Farbe/Grösse) ersetzen. Bis dahin ist der Zustand sauber & eindeutig.
