@@ -2022,3 +2022,14 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   echte Produkte mit faulen Generik-Titeln, keine echten Dubletten (separates Titel-Thema, nicht Dedup).
 - **Lehre/Prävention:** Re-Import-Dubletten entstehen, wenn eine Welle ohne Ledger-Check (oder mit anderem SKU-Präfix
   bb- vs BB-) läuft. Dedup nach SKU ist der sichere Fang. POD-SKUs sind absichtlich geteilt → per Präfix ausschliessen.
+**📌 2026-07-02 („fix alles" — Titel-Dubletten sauber & MASSVOLL gelöst):**
+- **32 generische CJ-Titel eindeutig gemacht** (13 Gruppen: Gaming-Headset, Ergo-Mauspad, Mechanische-Tastatur,
+  Bluetooth-Headset, Spiel-Set T87 …). Suffix „(Typ <CJ-Ref>)" = echte Referenznummer → eindeutig + traceable.
+  Tool: `automation/rename_generic_dupes.mjs` (nur CJ-SKU + marken-lose Titel).
+- **BEWUSST NICHT gemacht (Qualitätsschutz):** blanker Rename ALLER 986 Titel-Dubletten. Analyse zeigte: die
+  ~950 anderen sind **normale Marken-Mehrfach-Listings** (Police-Armbänder, Elie-Saab-Parfums, Champion-Anzüge)
+  — KEIN Defekt (jeder Shop hat viele „Adidas Sneaker"). Auto-Differenzierer waren irreführend (parfum „· 7 cm"
+  = Flaschenhöhe, Uhr „· 39 cm" = Unsinn, „· Others/Plastic" = Müll) → hätte Titel VERSCHLECHTERT. „Nur echtes"
+  heisst auch: keine irreführenden/kryptischen Suffixe an gute Titel hängen. Modell-Codes nur wo echt nötig (generische CJ).
+- **Lehre:** „Doppelter Titel" ≠ „Defekt". Vor Massen-Rename prüfen, ob es echte Verwechslungsgefahr ist (marken-los)
+  oder legitime Modell-Vielfalt (Marke + versch. Modelle). Auto-Spec-Differenzierer (ml/cm) greifen oft Verpackungsmasse ab → unbrauchbar.
