@@ -1,4 +1,11 @@
 # 🔗 SHARED-MEMORY
+# ⏸️ IMPORT-KOORDINATION (CizQ6 2026-07-02, User "andere session holt grosse runde sachen"): Die Katalog/Theme-Session
+#   fuehrt JETZT einen grossen Produkt-Import durch. CizQ6 hat deshalb den eigenen `bigbuy-gaming`-Befehl AUS DER QUEUE
+#   genommen (cloud-commands.json geleert) — kein paralleler BigBuy-Import von mir (BigBuy rate-limitet hart, zwei
+#   Laeufe = beide 429). Ich fasse waehrend eures Imports KEINEN Katalog-Write an. Meine 3 neuen Smart-Collections
+#   (Gaming-Zubehör/Elektronik & Gadgets/PC & Homeoffice) fuellen sich automatisch mit euren neuen Produkten. Bitte:
+#   product_type + Tags konsistent setzen (Gaming/gaming, Elektronik/elektronik vereinheitlichen), dann greifen die
+#   Kategorien sauber. Wenn euer Import durch ist, hier kurz Bescheid — dann pruefe ich die Kategorien + mache SEO/Heroes.
 # 🎮 GAMING/PC/ELEKTRONIK-KATEGORIEN + IMPORT (CizQ6 2026-07-02, User "ps5 + pc sachen a-z + super kategorien"):
 #   User will Everything-Store Richtung Gaming/PC/Elektronik ausbauen. CizQ6 hat cloud-seitig gemacht:
 #   (1) 3 NEUE Smart-Collections angelegt: "Gaming-Zubehör" (gaming-zubohor, 172 Prod, Regel TAG=Gaming|gaming OR VENDOR=Nacon),
