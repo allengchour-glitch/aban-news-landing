@@ -2045,3 +2045,14 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   Ohne echte Produktdaten keine Farb-/Switch-/Anschluss-Angaben → NICHTS erfunden, nur Typname professionalisiert.
 - **Offen für später:** wenn CJ-API-Key erneuert wird, `product/query?pid=` je Produkt → echte Namen/Attribute →
   dann „(Typ …)" durch echte Specs (Switch/Farbe/Grösse) ersetzen. Bis dahin ist der Zustand sauber & eindeutig.
+**📌 2026-07-02 (✅ CJ-Titel mit ECHTEN Namen — neuer Token, 17/32 aufgelöst):**
+- **CJ-Access-Token direkt vom User** (Format `MCP@<acc>@CJ:<jwt>`; `getAccessToken` mit apiKey scheitert für diesen
+  Account-Typ → Token direkt nutzen). Header: **`CJ-Access-Token: <jwt>`**. Endpoint das FUNKTIONIERT:
+  `GET product/query?productSku=<sku-ohne-CJ-Präfix>` → `productNameEn` + pid. (variantSku → „Product not found".)
+  Token nur in `/tmp/cj_token.txt` (NIE ins Repo). Quota: 50'000/Tag, reichlich.
+- **17 der 32 Generik-Produkte** mit echtem CJ-Namen sauber betitelt (z. B. „Ergo-Mauspad"→„Ergonomisches Mauspad
+  mit Memory-Foam-Handauflage", „Hydraulikventil"→„Hydraulik-Steuerventil · 1 Spool · 25 GPM", „Angel-Sitzkiepe"→
+  „Angelruten-Organizer-Wagen mit Rollen & Lochwand", „Gaming-Tastatur T87"→„Kabelloses Gaming-Set «T87»: Tastatur
+  & Maus · RGB"). 2 echte Gleich-Produkte (NJ61, T87) behalten (Typ)-Suffix zur Eindeutigkeit.
+- **15 nicht gefunden** (bei CJ delisted) → behalten die aufgeräumten reworded Titel. Tool `automation/cj_lookup_titles.mjs`
+  (scannt (Typ-Produkte, holt CJ-Namen). Bei Bedarf später erneut laufen, falls CJ die Produkte wieder listet.
