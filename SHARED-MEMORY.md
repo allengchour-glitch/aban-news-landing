@@ -2012,3 +2012,13 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Technik:** product-list-Sektion ist self-contained (Heading = `{{closest.collection.title}}` → dynamisch), darum
   einfach geklont + `settings.collection` getauscht. USP = custom-liquid. **Falle:** `max_collections` ≤ **16** (Horizon-Limit,
   22 warf userError). Backup: `dropship/theme-backups/index.json.live-2026-07-02`. Verifiziert: HTTP 200, 0 Liquid-Fehler, USP+alle Kacheln sichtbar.
+**📌 2026-07-02 (🧹 DUBLETTEN bereinigt — Shop-Brain-Report „11 Dubletten" → tatsächlich 60):**
+- `automation/dedup_products.mjs`: scannt aktive Produkte, gruppiert nach **Variant-SKU**. Bereinigt NUR echte
+  Supplier-Dubletten: SKU `^(bb-|BB-|CJ-)`, Gruppengrösse 2–4, KEINE POD (`9000001_*`/`GLOBAL-*` = geteilte
+  POD-SKUs, INTENTIONAL, nicht anfassen!). Behält je Gruppe das **älteste Original aktiv**, setzt die Kopie auf DRAFT.
+- **60 versehentliche Doppel-Importe auf DRAFT** (bb-* Schuhe/Tech vom 16.06 doppelt; BB-* Werkzeug/Beauty/Blumentöpfe
+  vom 25./26.06 am 29./30.06 nochmal importiert). Produkt bleibt je über das Original verfügbar — non-destruktiv.
+- **NICHT angetastet:** CJ-Titel-Dubletten mit UNTERSCHIEDLICHEN SKUs (z. B. „Gaming-Headset" 3×) = verschiedene
+  echte Produkte mit faulen Generik-Titeln, keine echten Dubletten (separates Titel-Thema, nicht Dedup).
+- **Lehre/Prävention:** Re-Import-Dubletten entstehen, wenn eine Welle ohne Ledger-Check (oder mit anderem SKU-Präfix
+  bb- vs BB-) läuft. Dedup nach SKU ist der sichere Fang. POD-SKUs sind absichtlich geteilt → per Präfix ausschliessen.
