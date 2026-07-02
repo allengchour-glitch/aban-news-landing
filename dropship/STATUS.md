@@ -1,5 +1,13 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-02 (Abend — Reichweite: Alt-Texte + Musik-System + Off-Brand-Cleanup + 2 frische Videos)
+- **📊 REICHWEITE-DATEN 60T:** 9202 Sessions — direct 7002, social 2096 (funktioniert!), **Google-Suche nur 95 (1%)**. Ursache: neue Domain (Zeit+Backlinks+Search-Console=User). robots.txt+Sitemap OK.
+- **🖼️ BILD-ALT-TEXTE (Google-Bildersuche-Reichweite):** waren KATALOGWEIT leer → `alt_text_backfill.mjs` gebaut (idempotent, MAX/Lauf) + in VPS-Daily (ALT_MAX=120/Tag); 6 Winner sofort gesetzt (18 Bilder).
+- **🎵 MUSIK vibe-passend + rotierend:** finish_reel.sh waehlt Track nach Produkttyp (Schmuck/Uhr=elegant, Mode/Brille=lebhaft, Beauty=ruhig) + Anti-Wiederholung. 8 Tracks vom User freigegeben (Hoerproben).
+- **🎬 2 FRISCHE flimmerfreie Videos geliefert:** "Fuer Sie und Ihn" (Schmuck/Uhren, Bild4/5 auf Wunsch getauscht) + "Sonnenbrillen" (3 Damen/2 Herren) — statisch+crossfade (kein zoompan=kein Flackern), je andere Musik.
+- **🧽 OFF-BRAND-CLEANUP:** 46 einzeln geprueft archiviert (40 Ventilatoren, 5 Bau-Strahler, 1 Heizung). LEHRE: Shopify-Freitext-Suche unscharf (Batterie→Uhren, Werkzeug→GuaSha) → NIE massen-archivieren; Rest praezise an Katalog-Session geflaggt (SHARED-MEMORY).
+- **🎥 VEO-BATCH (frische KI-Clips, wartet auf PC):** 5 Produkte Sie&Ihn, mehrschichtig Veo→fal-Fallback. PC seit 05:36 aus → laeuft sobald User `CLOUD-AN.bat` startet.
+
 ## 2026-07-02 (Tag — Versand 65→50 gesenkt + Klaviyo-Flows geprueft + 24/7-Fix)
 - **🚚 FREE-SHIPPING CH 65 → 50 CHF (User-OK "auf 50 senken"):** Shopify sperrte das Editieren der alten >=65-Rate (neue Rate-Config) → NEUE Rate "Kostenloser Versand" >=50 CHF per API angelegt (funktioniert). Effektiv Gratisversand ab 50. Alte >=65 redundant (User kann im UI loeschen). SEO-Texte "ab 49/65" → auf "ab 50" vereinheitlichen (offen).
 - **✅ 5 DRAFTS GEPRUEFT + PUBLIZIERT (User-OK):** Marken-Trainingshosen (Puma/Adidas Hyperglam/Nike/Adidas Tiro/Umbro), alle Bilder visuell gecheckt (sauber, keine asiat. Schrift/Watermark), inventoryPolicy=CONTINUE=verkaufbar, live auf luxestyle.ch. Nike-Meta ergaenzt (war leer). Methode: Bild curl→Read-Tool→selbst pruefen (kein Gemini-Key noetig). ⚠️ Kinderschuhe-Drafts haben noch Groesse-XS-XL-Bug (nicht publiziert). 267 Drafts total, 5 durch.
