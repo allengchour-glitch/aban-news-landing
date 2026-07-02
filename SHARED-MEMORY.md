@@ -2096,3 +2096,13 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   → Collection-Regel disjunktiv [nagel OR naegel] + Importer taggt jetzt beides. Nail-Collection war vorher fast leer (15).
 - **Muster:** CJ-Kategorie-IDs via `product/getCategory` (Baum). Nächste frische Kategorien einfach als GROUPS-Eintrag
   ergänzen (Küche/Barware/Makeup/Skin Care-IDs schon notiert). Gemini-Titel = ehrlich & natürlich (kein invented Pool-Name).
+
+---
+**📌 2026-07-02 (CJ-Kategorien-Serie via cj_category_fill: Nagel +45, Makeup +45, Küche/Bar +45 = +135):**
+- Da BigBuy gedrosselt → `cj_category_fill.mjs` (echte CJ-Namen → Gemini DE-Titel+Beschreibung) über 3 frische
+  Kategorien: **Nageldesign** (→ `naegel-manikuere` 15→60), **Make-up** (→ `make-up` via Titel-Regeln + beauty),
+  **Küche & Bar** (Cooking Tools/Knives/Drinkware/Barware → `sub-kueche` via TAG=kueche).
+- **Kategorie-IDs** kommen aus CJ `product/getCategory`. Weitere GROUPS-Kandidaten notiert: Skin Care, Barware pur,
+  Pet, Home Storage. Jede neue Kategorie = 1 GROUPS-Eintrag + `GRP=x CAP=45 node …`. Gemini-Titel ehrlich & natürlich.
+- **Heute total ~2'110 neue echte Produkte** (BigBuy 8 Wellen + CJ Drohnen/Nagel/Makeup/Küche). CJ = zuverlässige
+  Nicht-gedrosselt-Quelle wenn BigBuy limitiert.
