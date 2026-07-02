@@ -31,8 +31,10 @@ if [ -z "$VOICE" ] && [ -z "$MUSIC" ]; then
   [ -f "$CAND" ] && MUSIC="$CAND" && printf '%s' "$PICK" > automation/music/.last_track 2>/dev/null && echo "auto-Musik ($MOOD): $PICK"
 fi
 
-# 1) Schwarze Balken (Veo liefert oft quadratisch/letterbox) automatisch erkennen
-CROP=$(ffmpeg -ss 2 -i "$IN" -vframes 8 -vf cropdetect=24:2:0 -f null - 2>&1 | grep -o 'crop=[0-9:]*' | tail -1)
+# 1) Schwarze Balken (Veo liefert oft quadratisch/letterbox) automatisch erkennen.
+#    Grenzwert 10 (NICHT 24): nur ECHT-schwarze Balken entfernen. 24 hielt dunkle Studio-Szenen
+#    (z.B. Sonnenbrille auf dunklem Grund) faelschlich fuer Balken -> extremer Ueberzoom. Lehre 2026-07-02.
+CROP=$(ffmpeg -ss 2 -i "$IN" -vframes 8 -vf cropdetect=10:2:0 -f null - 2>&1 | grep -o 'crop=[0-9:]*' | tail -1)
 CROPF=""; [ -n "$CROP" ] && CROPF="${CROP},"
 
 # 2) Text OBEN (y=250/330) im freien Bereich — Produkt sitzt meist mittig/unten, drum ist oben frei.
