@@ -54,4 +54,13 @@ try {
     }
   } } else { Write-Host "  keine offenen Befehle" }
 } catch { Write-Host "  (keine Verbindung)" }
+
+# 5) GIT-BEFEHLSKANAL drainen (2026-07-02): der Worker-Kanal oben kennt nur alte Fix-Befehle. Der
+#     zuverlaessige stuendliche Task muss AUCH cmd-poll.ps1 laufen lassen - der liest cloud-commands.json
+#    (git-Kanal), hat ALLE neuen Befehle (amore-veo etc.), self-updated, drained + pusht. So laufen
+#    On-Demand-Jobs INNERHALB EINER STUNDE, auch wenn CLOUD-AN.bat gerade nicht laeuft. cmd-poll hat einen
+#    globalen Mutex -> kein Doppellauf, falls CLOUD-AN parallel lebt.
+Write-Host "[5] Git-Befehlskanal (cloud-commands.json) via cmd-poll drainen..."
+try { & powershell -ExecutionPolicy Bypass -File "automation\local\cmd-poll.ps1" } catch { Write-Host "  (cmd-poll Fehler)" }
+
 Write-Host "[fertig] Selbst-Verbesserung durch."
