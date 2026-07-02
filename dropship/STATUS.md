@@ -6,7 +6,8 @@
 - **Rabattcodes verifiziert:** WELCOME10, TIKTOK10, BUNDLE20, FIRST15, COMEBACK10, REVIEW10 = alle ACTIVE. Der ueberall referenzierte WELCOME10 funktioniert = kein Trust-Leak.
 - **AMORE-Meisterwerk-Video auf Veo umgestellt:** fal/Seedance lieferte nicht (Poller-Queue undrained, kein Output). Neuer Cmd `amore-veo` (veo_product_clip.mjs, Gemini-Quota-Reset) + Queue `2026-07-02-AMORE-VEO-A` gepusht → rendert `reels/amore-raw.mp4` sobald PC-Poller laeuft.
 - **Ehrlich:** AI-Video (Veo/fal) braucht PC-Keys (luxe-secrets.ps1) — Cloud hat sie nicht. Laeuft nur wenn CLOUD-AN.bat am PC an ist.
-- **🔴 NUR USER (unveraendert der echte Engpass):** ⭐ Reviews-Import (Judge.me) · 📱 Mobile-Speed/Sticky-ATC (Theme) · 📧 4 Klaviyo-Klicks (Smart-Sending aus, Absender=LuxeStyle, E3 live) · 🎬 Kampagne-Freigabe abwarten · 🚚 Versand 65→50.
+- **📧 KLAVIYO ABANDONED-CHECKOUT via API VERIFIZIERT (Flow Vse76a, live):** E1(nach 1h)+E2(nach 24h) live, ABER Absender=**"Aban"** (soll LuxeStyle CH), reply-to=**allengchour@gmail.com** (Gmail, soll info@luxestyle.ch), Smart-Sending an. E3(nach 48h)=**DRAFT** + Betreff-Platzhalter "Email #3 Subject". Alle Fixes = Flow-Send-Settings = **NUR Klaviyo-UI** (kein update_flow-Tool in der API). Genaue Klick-Liste an User gegeben, Edit: klaviyo.com/flow/Vse76a/edit.
+- **🔴 NUR USER (unveraendert der echte Engpass):** ⭐ Reviews-Import (Judge.me) · 📱 Mobile-Speed/Sticky-ATC (Theme) · 📧 4 Klaviyo-Klicks (s.o., exakte Werte verifiziert) · 🎬 Kampagne-Freigabe abwarten · 🚚 Versand 65→50.
 
 ## 2026-07-01 (GROSSER TAG — Kampagne ABGESENDET + TikTok-MCP verbunden)
 - **KAMPAGNE LIVE EINGEREICHT:** "Wasserfest CH Juni" abgesendet (Shopify-Smart+, Bot fuellte 5/5 vor, User klickte Senden) — Status "Wird ueberprueft" seit 1.7. Freigabe meist <24h. Budget 30/Tag.
