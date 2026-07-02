@@ -50,6 +50,7 @@ const B={
  reise:/gabol|american tourister|roncato|delsey|samsonite|\bmovom\b|national geographic|\btotto\b|\bantler\b|\bskpat\b|\bitaca\b/i,
  zahn:/oral.?b|sonicare|\bphilips\b|cecotec|\bwaterpik\b|\bforeo\b|colgate|\bbraun\b|panasonic|\bcuraprox\b|\bfairywill\b/i,
  wellness:/beurer|medisana|\bhomedics\b|\bnaipo\b|\brenpho\b|\bsalter\b|cecotec|\btaurus\b|\bpangao\b|\betekcity\b|\borbegozo\b/i,
+ deko:/\bwenko\b|\bbalvi\b|\bversa\b|\bsecret de gourmet\b|\batmosphera\b|\bhome deco\b|\bpresent time\b|\bumbra\b|\bqualy\b|\brivadossi\b|yankee candle|\bwoodwick\b|\bpartylite\b|\bcolombina\b|excelsa/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -116,6 +117,9 @@ const GROUPS={
  wellness:   {re:/massage|massagegerät|massagepistole|blutdruck|blutdruckmessgerät|fieberthermometer|körperwaage|personenwaage|heizkissen|heizdecke|nackenmassage|fussmassage|shiatsu|pulsoximeter|inhalator|akupressur/i,
               ban:/spielzeug|kinder|tier|auto/i,
               brand:B.wellness, cap:100, type:'Wellness & Gesundheit', tags:['wellness','gesundheit','koerperpflege','bigbuy','marke','dropship'], blurb:'Marken-Wellnessgerät'},
+ deko:       {re:/kerze|duftkerze|teelicht|kerzenhalter|vase|bilderrahmen|fotorahmen|windlicht|dekofigur|wanddeko|dekoschale|übertopf|kunstblume|spiegel|wanduhr|schmuckkästchen|aufbewahrungsbox|kissen|tischläufer|laterne/i,
+              ban:/kinder|spielzeug|auto|werkzeug|elektr/i,
+              brand:B.deko, cap:80, type:'Deko & Wohnaccessoires', tags:['deko','wohnen','marke','bigbuy','dropship'], blurb:'Marken-Wohndeko'},
 };
 
 function clean(n){return n
