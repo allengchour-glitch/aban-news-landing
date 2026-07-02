@@ -2115,3 +2115,18 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - Bestand war schon stark: Breadcrumb+JSON-LD, Subkategorie-Chips, Review-Sterne, 4-Spalten-Grid, Infinite-Scroll,
   24/Seite, Grid-Density, FAQ. Jetzt zusätzlich Sidebar-Filter + USP = Galaxus-Look. Verifiziert: HTTP 200, 0 Liquid-Fehler.
 - Backup: `dropship/theme-backups/collection.json.live-2026-07-02`. Startseite war bereits Galaxus-revamped (17 Sektionen).
+
+---
+**📌 2026-07-02 (🔓 BigBuy 429-RETRY entsperrt + Elektronik + Sale + Header/Sort-Fixes):**
+- **🔓 BigBuy-Rate-Limit gelöst:** Limit = 1 Req/kurzes Fenster (Reset alle paar Sek). Fix in `bb()`:
+  bei 429 auf `x-ratelimit-reset` warten (statt Produkt zu verlieren) → Wellen laufen langsam aber vollständig.
+  **BigBuy ist wieder voll nutzbar.**
+- **Elektronik-Gruppe `refurb`** (User zeigte BigBuy Refurbished/Summer): DE-Refurbished-Feed dünn (3), aber 5447
+  echte Geräte (Asus/HP/BenQ-Monitore, Epson/Acer-Beamer, Medion, Samsung-Smartwatches). re=Gerät, ban=Zubehör.
+  → **+30** → neue Collection **`elektronik-computer`** (TAG=elektronik/computer, publiziert, PRICE_DESC, SEO).
+- **🏷️ Sale `SOMMER20` –20%** angelegt (User: „preise zu teuer"). Option offen: Grund-Marge ×2.6→×2.2 senken.
+- **🔧 Desktop-Header-Fix:** Custom-Suchleiste (`lux_searchbar` sticky) kollidierte mit `enable_sticky_header:always`
+  → „Header spinnt/geht weg" + „finde nichts". Fix: Custom-Leiste per Media-Query auf Desktop aus (Mobile behält sie).
+- **🔀 Tech-Sortierung:** 13 Tech-Collections BEST_SELLING→PRICE_DESC (Hero-Produkte führen, kein „durcheinander").
+- **✍️ Gadget-Titelfix läuft** (`cj_fix_gadgets.mjs`): 951 CJ-Gadgets → echte CJ-Namen (Beamer-als-„Gamekonsole" etc.).
+- **Offene User-Wünsche (BigBuy jetzt möglich):** werkzeug, arbeitskleider, heissleimpistole. CJ: ps4/5-gaming, xiaomi, ai-brille.
