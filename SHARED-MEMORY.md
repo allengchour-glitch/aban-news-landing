@@ -2084,3 +2084,15 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   gesundheit) — **sofort 264 Produkte** (fing bestehende wellness-getaggte mit ein!). Sehr reiche Kategorie ab Tag 1.
 - **Vertieft:** schmuck +100, gadget +59, haushalt +70. Ledger 9456→9708.
 - **Muster bestätigt:** neue Smart-Collection mit breiter Tag-Regel füllt sich oft sofort aus bestehendem Bestand.
+
+---
+**📌 2026-07-02 (💅 CJ-Nageldesign +45 — allgemeiner CJ-Importer, BigBuy war gedrosselt):**
+- **BigBuy hart rate-limited** (`x-ratelimit-remaining:0`, limit 1) → auf CJ ausgewichen (dein Token, nicht gedrosselt).
+- **NEU: `automation/cj_category_fill.mjs`** — allgemeiner CJ-Import mit ECHTEN Namen: Kategorie-Browse →
+  `product/query` (echter productNameEn, Bilder, Preis) → **Gemini** macht DE-Titel + Galaxus-Beschreibung
+  (ein JSON-Call, grounded, nichts erfinden) → productSet+Media+Publish. Erste Kategorie **Nageldesign & Maniküre**
+  (6 CJ-Subkat: Nail Gel/Dryers/Art Kits/Decorations/Glitters/Stickers) → **45 Produkte** (UV-Lampen, Gele, French Nails…).
+- **Routing-Fix (Tag-Falle):** Collection `naegel-manikuere` wollte Tag `nagel` (Singular), Importer taggte `naegel` (Plural)
+  → Collection-Regel disjunktiv [nagel OR naegel] + Importer taggt jetzt beides. Nail-Collection war vorher fast leer (15).
+- **Muster:** CJ-Kategorie-IDs via `product/getCategory` (Baum). Nächste frische Kategorien einfach als GROUPS-Eintrag
+  ergänzen (Küche/Barware/Makeup/Skin Care-IDs schon notiert). Gemini-Titel = ehrlich & natürlich (kein invented Pool-Name).
