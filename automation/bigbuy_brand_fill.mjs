@@ -46,6 +46,8 @@ const B={
  fitness:/\badidas\b|\bnike\b|\bpuma\b|reebok|\bsoftee\b|atipick|\bavento\b|\bkelme\b|\bspokey\b|body sculpture|\bsveltus\b|\bpure2improve\b|\btunturi\b|\bwilson\b|\bhead\b|\bmolten\b|\bumbro\b/i,
  camping:/bestway|\bintex\b|\baktive\b|regatta|coleman|campingaz|\bmilestone\b|\bhosa\b|\baktive\b|\bjocca\b|\bderyan\b|\bhi-?gear\b|trespass|\bezcool\b|\bcao\b|\bmoncamp\b/i,
  baby:/chicco|\bnuk\b|suavinex|\bsaro\b|bright starts|tommee tippee|philips avent|badabulle|\bbebé?\b|\bnenuco\b|\bmustela\b|\bhaba\b|\bkinderkraft\b|\bolmitos\b|\bminiland\b|\binnovababy\b/i,
+ grooming:/\bbraun\b|\bphilips\b|remington|\bwahl\b|panasonic|babyliss|\browenta\b|\bcarrera\b|hatteker|\bcecotec\b|\btaurus\b|\bjata\b|kensington/i,
+ reise:/gabol|american tourister|roncato|delsey|samsonite|\bmovom\b|national geographic|\btotto\b|\bantler\b|\bskpat\b|\bitaca\b/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -100,6 +102,12 @@ const GROUPS={
  baby:       {re:/baby|säugling|schnuller|fläschchen|babyflasche|lätzchen|strampler|babyphone|wickel|windel|hochstuhl|laufgitter|babytrage|kinderwagen|babyschale|beißring|spucktuch|babypflege|babydecke|nuckel|milchpumpe|sterilisator/i,
               ban:/spielzeug|erwachsene|damen|herren|hund|katze/i,
               brand:B.baby, cap:120, type:'Baby & Kleinkind', tags:['baby','baby-kids','bigbuy','marke','dropship'], blurb:'Marken-Babyartikel'},
+ grooming:   {re:/rasierer|rasierapparat|barttrimmer|bartschneider|haarschneider|haarschneidemaschine|langhaarschneider|trimmer|epilierer|nasenhaartrimmer|haartrockner|föhn|glätteisen|lockenstab|haarglätter|multigroomer|bodygroomer/i,
+              ban:/klinge für|ersatz|scherkopf|aufsatz|zubehör|kinder/i,
+              brand:B.grooming, cap:120, type:'Rasur & Haarpflege', tags:['rasur','grooming','haarstyling','beauty','bigbuy','marke','dropship'], blurb:'Marken-Rasierer/Grooming'},
+ reise:      {re:/koffer|trolley|reisetasche|reisekoffer|kabinentrolley|hartschalenkoffer|weekender|reisegepäck|bordtasche|kulturbeutel|packwürfel|reiseset|handgepäck/i,
+              ban:/kinder|spielzeug|deko/i,
+              brand:B.reise, cap:120, type:'Koffer & Reise', tags:['reise','koffer','gepaeck','bigbuy','marke','dropship'], blurb:'Marken-Reisegepäck'},
 };
 
 function clean(n){return n
