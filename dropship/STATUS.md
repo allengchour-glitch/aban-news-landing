@@ -1,5 +1,9 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-02 (Tag — Versand 65→50 gesenkt + Klaviyo-Flows geprueft + 24/7-Fix)
+- **🚚 FREE-SHIPPING CH 65 → 50 CHF (User-OK "auf 50 senken"):** Shopify sperrte das Editieren der alten >=65-Rate (neue Rate-Config) → NEUE Rate "Kostenloser Versand" >=50 CHF per API angelegt (funktioniert). Effektiv Gratisversand ab 50. Alte >=65 redundant (User kann im UI loeschen). SEO-Texte "ab 49/65" → auf "ab 50" vereinheitlichen (offen).
+- **Autorisiert weiter (User):** Drafts pruefen+publizieren · frisches Video aus Assets · mehr Collection/SEO. In Arbeit.
+
 ## 2026-07-02 (Nacht — Daten-Verifikation + Amore-Video auf Veo umgestellt)
 - **DATEN GEPRUEFT (info ist a und o):** Orders = nur #1004 (User-Testkauf 31.9 PAID) + #1003 (EXPIRED) → 0 echte Fremdkaeufe. Bottleneck bleibt Conversion/Trust, NICHT Katalog.
 - **SEO-Metas aktiver Katalog verifiziert komplett + hochwertig** (50 Top-Produkte gecheckt, alle mit sauberer Meta-Description) — Cloud-SEO ist erledigt, kein Nachholbedarf.
