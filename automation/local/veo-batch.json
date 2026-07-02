@@ -1,0 +1,20 @@
+{
+  "_hinweis": "Frische Veo-Rohclips fuer NEUE organische Videos (nie geposteter Content). Der PC-Task rendert jeden Eintrag mit veo_product_clip.mjs, wenn 'out' noch nicht existiert (idempotent). Nach dem Rendern in der Cloud finishen (finish_reel.sh) + liefern. NUR saubere, markenkonforme Produkte (Bild vorher visuell gecheckt).",
+  "clips": [
+    {
+      "out": "reels/amore-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9d93cf1e-e3b1-4981-951e-caaf6644cdd3.jpg?v=1781585419",
+      "prompt": "luxury jewelry commercial, the gold heart charm bracelet slowly rotating on a white marble turntable, soft studio light, gentle glossy reflections, elegant minimal background, shallow depth of field, no text, no watermark, vertical 9:16"
+    },
+    {
+      "out": "reels/viceroy-earrings-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8431283540358_S7289829_P00.jpg?v=1782967557",
+      "prompt": "elegant sterling silver stud earrings with sparkling zirconia slowly rotating on a soft white studio background, delicate dazzling light reflections, premium jewelry commercial, shallow depth of field, no text, no watermark, vertical 9:16"
+    },
+    {
+      "out": "reels/viceroy-bangle-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8431283574780_S7278403_P00.jpg?v=1782967530",
+      "prompt": "elegant pastel gemstone and pearl bracelet with gold clasp slowly rotating on a soft white marble surface, gentle glossy reflections, feminine premium jewelry commercial, shallow depth of field, no text, no watermark, vertical 9:16"
+    }
+  ]
+}
