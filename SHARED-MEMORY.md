@@ -2056,3 +2056,14 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   & Maus · RGB"). 2 echte Gleich-Produkte (NJ61, T87) behalten (Typ)-Suffix zur Eindeutigkeit.
 - **15 nicht gefunden** (bei CJ delisted) → behalten die aufgeräumten reworded Titel. Tool `automation/cj_lookup_titles.mjs`
   (scannt (Typ-Produkte, holt CJ-Namen). Bei Bedarf später erneut laufen, falls CJ die Produkte wieder listet.
+
+---
+**📌 2026-07-02 (📝 CJ-Beschreibungen aus ECHTEN Specs angereichert — 17/17):**
+- `automation/cj_enrich_descriptions.mjs`: holt CJ `product/query?productSku` (description, materialNameEn, variants
+  mit Masse mm→cm, productWeight, entryNameEn), übersetzt den echten Feature-Text via **Gemini 2.5-flash**
+  (thinkingBudget:0, grounded — NICHTS erfinden) → Galaxus-Stil DE-HTML: Intro-<p> + „Das zeichnet es aus" (3-4 <li>)
+  + „Gut zu wissen" + **Eigenschaften-Liste aus echten Specs** (Produktart, Material, Masse, Gewicht, Ausführung) + Trust.
+- **17/17 Gaming-/CJ-Produkte** angereichert (Mauspads, mech. Tastaturen, Gaming-Sets, Headsets, Hydraulikventil,
+  Angelruten-Wagen). Tag `cj-real-desc`. **CJ-Felder sind JSON-Strings** (materialNameEn=`["Others"]` als String!)
+  → mit `arr()`-Helper parsen. „Others"-Material rausgefiltert, Gewicht gerundet, entryNameEn→DE gemappt.
+- CJ-Token nur `/tmp/cj_token.txt`, Gemini-Key `/tmp/gemini_key` — NIE ins Repo.
