@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Frische Veo-Rohclips fuer NEUE organische Videos (nie geposteter Content). Der PC-Task rendert jeden Eintrag mit veo_product_clip.mjs, wenn 'out' noch nicht existiert (idempotent). Nach dem Rendern in der Cloud finishen (finish_reel.sh) + liefern. NUR saubere, markenkonforme Produkte (Bild vorher visuell gecheckt).",
+  "_hinweis": "Frische KI-Rohclips fuer NEUE organische Videos (nie geposteter Content). Der PC-Task rendert jeden Eintrag MEHRSCHICHTIG: 1) Veo (Gemini), faellt es aus/Quota -> 2) fal Seedance. Idempotent (rendert nur wenn 'out' fehlt). Luma bleibt separater Pfad (luma_product_video.mjs, produkt-id-basiert). Nach dem Rendern in der Cloud finishen (statisch+crossfade, KEIN zoompan wegen Flicker; rotierende Musik) + liefern. NUR saubere, markenkonforme Produkte (Bild vorher visuell gecheckt).",
   "clips": [
     {
       "out": "reels/amore-raw.mp4",
