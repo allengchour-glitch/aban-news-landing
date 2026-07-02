@@ -51,6 +51,7 @@ const B={
  zahn:/oral.?b|sonicare|\bphilips\b|cecotec|\bwaterpik\b|\bforeo\b|colgate|\bbraun\b|panasonic|\bcuraprox\b|\bfairywill\b/i,
  wellness:/beurer|medisana|\bhomedics\b|\bnaipo\b|\brenpho\b|\bsalter\b|cecotec|\btaurus\b|\bpangao\b|\betekcity\b|\borbegozo\b/i,
  deko:/\bwenko\b|\bbalvi\b|\bversa\b|\bsecret de gourmet\b|\batmosphera\b|\bhome deco\b|\bpresent time\b|\bumbra\b|\bqualy\b|\brivadossi\b|yankee candle|\bwoodwick\b|\bpartylite\b|\bcolombina\b|excelsa/i,
+ refurb:/medion|dangbei|\bhp\b|lenovo|\basus\b|\bacer\b|apple|macbook|\bipad\b|samsung|xiaomi|\bmsi\b|\blg\b|\bdell\b|microsoft|surface|epson|\bbenq\b|toshiba|huawei|\bhonor\b|\bnokia\b|\bviewsonic\b|gigabyte/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -120,6 +121,9 @@ const GROUPS={
  deko:       {re:/kerze|duftkerze|teelicht|kerzenhalter|vase|bilderrahmen|fotorahmen|windlicht|dekofigur|wanddeko|dekoschale|übertopf|kunstblume|spiegel|wanduhr|schmuckkästchen|aufbewahrungsbox|kissen|tischläufer|laterne/i,
               ban:/kinder|spielzeug|auto|werkzeug|elektr/i,
               brand:B.deko, cap:80, type:'Deko & Wohnaccessoires', tags:['deko','wohnen','marke','bigbuy','dropship'], blurb:'Marken-Wohndeko'},
+ refurb:     {re:/refurbished|renewed|reacondicionado|generalüberholt|\brefurb\b/i,
+              ban:/zubehör|ersatz|hülle|tasche für/i,
+              brand:B.refurb, cap:700, type:'Refurbished Elektronik', tags:['refurbished','elektronik','pc','tech','marke','bigbuy','dropship'], blurb:'generalüberholte Marken-Elektronik'},
 };
 
 function clean(n){return n
@@ -127,7 +131,9 @@ function clean(n){return n
  .replace(/\bN[ºo°]\b/gi,' ').replace(/\b(EDP|EDT)\b(?:\s+\1\b)+/gi,'$1')
  .replace(/\bMake Up\b/g,'').replace(/\s{2,}/g,' ').replace(/\s*\(\s*\)/g,'').trim().slice(0,70);}
 
-async function bb(path){try{const r=await fetch('https://api.bigbuy.eu'+path,{headers:{'Authorization':`Bearer ${BB}`,'Accept':'application/json'}});if(r.status!==200)return null;return await r.json();}catch{return null;}}
+async function bb(path){for(let i=0;i<8;i++){try{const r=await fetch('https://api.bigbuy.eu'+path,{headers:{'Authorization':`Bearer ${BB}`,'Accept':'application/json'}});
+ if(r.status===429){const reset=Number(r.headers.get('x-ratelimit-reset'))||0;const wait=reset?Math.min(Math.max(reset*1000-Date.now()+400,600),4000):1200;await sleep(wait);continue;}
+ if(r.status!==200)return null;return await r.json();}catch{await sleep(1000);}}return null;}
 async function shToken(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});const j=await r.json();if(!j.access_token)throw new Error('shopify token fail');return j.access_token;}
 async function sgql(tok,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':tok},body:JSON.stringify({query:q,variables:v})});return r.json();}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
