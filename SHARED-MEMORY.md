@@ -2003,3 +2003,12 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Ledger 8922→9236.** Container-Reset zu Wellenbeginn: Working-Tree hatte STALE Ledger (2575 Zeilen) → aus origin
   restauriert (8922) VOR dem Lauf → keine Duplikate. **Lehre:** nach Reset IMMER `git checkout origin/… -- dropship/bigbuy_done.txt automation/` bevor eine Welle startet.
 - **Heap:** weiterhin `--max-old-space-size=6144` Pflicht (Katalog 313k).
+**📌 2026-07-02 (🎨 STARTSEITE voller — Galaxus-Stil, live via API):**
+- User: „Startseite zu klein, nicht wie Galaxus". Startseite von 12→**17 Sektionen** erweitert:
+  1. Hero → 2. **USP-Leiste** (custom-liquid: 🚚 Gratis-Versand · ↩️ 30 Tage · 🇨🇭 Schweizer Shop · 🔒 Sichere Zahlung · ✅ Original)
+  → 3. **Kategorie-Grid nach oben + 16 Kacheln** (vorher 12, unten vergraben) → dann 10 Produkt-Karussells
+  (topseller, neu, trends-gadgets*, Top-10, beauty-pflege*, wohnen-dekoration*, highlights, garten-balkon*, premium-geschenke, wm)
+  im Wechsel mit Heroes → JSON-LD. (* = neu geklont.)
+- **Technik:** product-list-Sektion ist self-contained (Heading = `{{closest.collection.title}}` → dynamisch), darum
+  einfach geklont + `settings.collection` getauscht. USP = custom-liquid. **Falle:** `max_collections` ≤ **16** (Horizon-Limit,
+  22 warf userError). Backup: `dropship/theme-backups/index.json.live-2026-07-02`. Verifiziert: HTTP 200, 0 Liquid-Fehler, USP+alle Kacheln sichtbar.
