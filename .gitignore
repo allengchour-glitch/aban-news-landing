@@ -49,3 +49,4 @@ automation/local/*.log
 automation/local/cloud-commands-done.txt
 automation/local/.tiktok-posted.local
 automation/local/.fb-groups-done.local
+automation/music/.last_track

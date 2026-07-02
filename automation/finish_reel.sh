@@ -11,14 +11,24 @@ FONT="/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 CTA="Mit Code WELCOME10 sparen"
 [ -f "$IN" ] || { echo "IN fehlt: $IN"; exit 1; }
 
-# MUSIK-VARIATION (User 2026-07-01 "musik nervt, jedes mal andere"): ohne explizite Musik/Stimme automatisch
-# einen eleganten CC-BY-Track waehlen - per Titel-Hash, damit jedes Produkt einen ANDEREN, aber konsistenten Track hat.
+# MUSIK VIBE-PASSEND + ROTIEREND (User 2026-07-02 "mache alles passend" / "immer das gleiche" nervt):
+# Track-Pool nach Produkt-Typ (aus dem Titel erkannt), Auswahl per Titel-Hash (konsistent je Produkt),
+# und NIE zweimal hintereinander derselbe Track (Anti-Wiederholung ueber automation/music/.last_track).
 MUSICDIR="automation/music/lib"
 if [ -z "$VOICE" ] && [ -z "$MUSIC" ]; then
-  TRACKS=(dreams-become-real inspired smooth-lovin bossa-antigua local-forecast-elevator carefree easy-lemon funkorama)
-  H=$(echo -n "$TITLE" | cksum | cut -d' ' -f1); IDX=$(( H % ${#TRACKS[@]} ))
-  CAND="$MUSICDIR/${TRACKS[$IDX]}.mp3"
-  [ -f "$CAND" ] && MUSIC="$CAND" && echo "auto-Musik: ${TRACKS[$IDX]}"
+  LT=$(printf '%s' "$TITLE" | tr '[:upper:]' '[:lower:]')
+  if echo "$LT" | grep -qE 'schmuck|kette|halskette|ohrring|ring|armband|armreif|armreif|uhr|perle|gold|silber|diamant|moissanit|manschett'; then
+    POOL=(dreams-become-real inspired); MOOD="elegant"
+  elif echo "$LT" | grep -qE 'beauty|serum|creme|kerze|wellness|gua|roller|seide|diffuser|pflege|maske|augen|bad|duft'; then
+    POOL=(smooth-lovin local-forecast-elevator); MOOD="ruhig"
+  else
+    POOL=(bossa-antigua easy-lemon funkorama carefree); MOOD="lebhaft"
+  fi
+  H=$(printf '%s' "$TITLE" | cksum | cut -d' ' -f1); IDX=$(( H % ${#POOL[@]} )); PICK="${POOL[$IDX]}"
+  LAST=""; [ -f automation/music/.last_track ] && LAST=$(cat automation/music/.last_track 2>/dev/null)
+  if [ "$PICK" = "$LAST" ] && [ ${#POOL[@]} -gt 1 ]; then IDX=$(( (IDX+1) % ${#POOL[@]} )); PICK="${POOL[$IDX]}"; fi
+  CAND="$MUSICDIR/$PICK.mp3"
+  [ -f "$CAND" ] && MUSIC="$CAND" && printf '%s' "$PICK" > automation/music/.last_track 2>/dev/null && echo "auto-Musik ($MOOD): $PICK"
 fi
 
 # 1) Schwarze Balken (Veo liefert oft quadratisch/letterbox) automatisch erkennen
