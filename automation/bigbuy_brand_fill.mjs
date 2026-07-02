@@ -44,6 +44,8 @@ const B={
  kueche:/\bwmf\b|masterpro|\bquid\b|\bibili\b|san ignacio|bergner|\barcos\b|\bmonix\b|\bbra\b|tramontina|\bnirosta\b|zwilling|fissler|\btefal\b|\bpyrex\b|\bkitchenaid\b|\bvictorinox\b|\btaurus\b|\bbergner\b|\brösle\b|\bwesco\b/i,
  schmuck:/lotus silver|\bviceroy\b|morellato|\bradiant\b|\btous\b|\bcluse\b|rosefield|\bmarea\b|\bracimo\b|calvin klein|michael kors|\bguess\b|\bpolice\b|swarovski|\bfossil\b|daniel wellington|\bpandora\b/i,
  fitness:/\badidas\b|\bnike\b|\bpuma\b|reebok|\bsoftee\b|atipick|\bavento\b|\bkelme\b|\bspokey\b|body sculpture|\bsveltus\b|\bpure2improve\b|\btunturi\b|\bwilson\b|\bhead\b|\bmolten\b|\bumbro\b/i,
+ camping:/bestway|\bintex\b|\baktive\b|regatta|coleman|campingaz|\bmilestone\b|\bhosa\b|\baktive\b|\bjocca\b|\bderyan\b|\bhi-?gear\b|trespass|\bezcool\b|\bcao\b|\bmoncamp\b/i,
+ baby:/chicco|\bnuk\b|suavinex|\bsaro\b|bright starts|tommee tippee|philips avent|badabulle|\bbebé?\b|\bnenuco\b|\bmustela\b|\bhaba\b|\bkinderkraft\b|\bolmitos\b|\bminiland\b|\binnovababy\b/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -92,6 +94,12 @@ const GROUPS={
  fitness:    {re:/hantel|kurzhantel|kettlebell|widerstandsband|fitnessband|yogamatte|gymnastikmatte|springseil|bauchtrainer|klimmzug|laufband|heimtrainer|faszienrolle|dumbbell|expander|sportmatte|boxsack|\bfussball\b|\bfußball\b|basketball|volleyball|tennisschläger|schienbeinschützer|basketballkorb|hanteln/i,
               ban:/spielzeug|kinder|nahrungsergänz|protein|supplement|kleidung|shirt|schuhe|tanktop|trikot|jersey|shorts|hose|anzug|jacke|socken|\btop\b|cap\b|mütze|sweatshirt|leggings|deko/i,
               brand:B.fitness, cap:150, type:'Fitness & Sport', tags:['fitness','sport','marke','bigbuy','dropship'], blurb:'Marken-Sportartikel'},
+ camping:    {re:/zelt|schlafsack|isomatte|luftmatratze|campingstuhl|campingtisch|kühlbox|kühltasche|campingkocher|gaskocher|feldbett|hängematte|planschbecken|pool\b|luftbett|thermoskanne|trekking|wanderstock|stirnlampe|taschenlampe|feldflasche|campinggeschirr|outdoor|picknick/i,
+              ban:/spielzeug|kinder(?!pool)|deko|auto|kfz/i,
+              brand:B.camping, cap:130, type:'Camping & Outdoor', tags:['camping','outdoor','bigbuy','marke','dropship'], blurb:'Marken-Campingausrüstung'},
+ baby:       {re:/baby|säugling|schnuller|fläschchen|babyflasche|lätzchen|strampler|babyphone|wickel|windel|hochstuhl|laufgitter|babytrage|kinderwagen|babyschale|beißring|spucktuch|babypflege|babydecke|nuckel|milchpumpe|sterilisator/i,
+              ban:/spielzeug|erwachsene|damen|herren|hund|katze/i,
+              brand:B.baby, cap:120, type:'Baby & Kleinkind', tags:['baby','baby-kids','bigbuy','marke','dropship'], blurb:'Marken-Babyartikel'},
 };
 
 function clean(n){return n
