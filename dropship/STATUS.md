@@ -5,6 +5,9 @@
 - **✅ 5 DRAFTS GEPRUEFT + PUBLIZIERT (User-OK):** Marken-Trainingshosen (Puma/Adidas Hyperglam/Nike/Adidas Tiro/Umbro), alle Bilder visuell gecheckt (sauber, keine asiat. Schrift/Watermark), inventoryPolicy=CONTINUE=verkaufbar, live auf luxestyle.ch. Nike-Meta ergaenzt (war leer). Methode: Bild curl→Read-Tool→selbst pruefen (kein Gemini-Key noetig). ⚠️ Kinderschuhe-Drafts haben noch Groesse-XS-XL-Bug (nicht publiziert). 267 Drafts total, 5 durch.
 - **🎬 FRISCHES VIDEO gebaut (cloud-only, kein PC):** `reels/luxestyle-eleganz-montage.mp4` (12.6s, 1080×1920) — Aurora-Kette + Brise/Daisy/Sirène/Cosy-Frauenmode, Crossfades, Hook "Schweizer Eleganz" oben, End-CTA "Gratis Versand ab CHF 50 · WELCOME10 · luxestyle.ch", Musik (inspired). 3-Frame-QA bestanden. An User geliefert.
 - **✅ Draft-Charge 2:** nur 1 sauber (Adidas Tiro 23 L publiziert +Meta). Rest raus: Parfum-Preis-Bug (477-539 CHF), Titel/Bild-Mismatch (Shorts als "Hose"), Halloween-Kostueme (off-brand), 3 Dubletten-Ringe (1 Foto, gothic = off-brand). Erkenntnis: Draft-Pool hat viel Auto-Import-Muell → einzeln pruefen bleibt Pflicht.
+- **♻️ REPOST-PROBLEM geloest (User: "veo schon x-mal gepostet ausser ads"):** alte Veo-Clips nur noch fuer Ads. Zwei FRISCHE Pipelines: (1) `veo-batch.json`+PC-Cmd `veo-batch` = 5 frische Veo-KI-Clips Sie&Ihn (amore, Viceroy-Ohrringe/-Armreif, Police-Uhr, Viceroy-Herrenarmband), idempotent, braucht PC an. (2) Ken-Burns cloud-only aus nie geposteten Produktfotos (kein Key noetig). User will Damen UND Herren.
+- **🎬 Ken-Burns "Fuer Sie und Ihn" rendert** (5 frische, visuell gepruefte Produktfotos, 2 Damen + 3 Herren) → reels/luxestyle-sie-und-ihn.mp4.
+- **⚠️ PC seit 05:36 AUS** → veo-batch (frische KI-Clips) rendert erst wenn CLOUD-AN.bat laeuft. Ken-Burns geht cloud-seitig ohne PC.
 - **Autorisiert offen (User):** mehr Collection/SEO · weitere Drafts.
 
 ## 2026-07-02 (Nacht — Daten-Verifikation + Amore-Video auf Veo umgestellt)
