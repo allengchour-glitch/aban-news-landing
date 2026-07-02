@@ -19,6 +19,12 @@ const GROUPS={
  nagel:{cats:[['9F96CE84-962D-4992-81DC-BF79A4A9002D','Nail Gel'],['E157D35B-156B-49F6-A678-7C55D4E81D6C','Nail Dryers'],['EADB666A-12A5-4FA1-AD1F-BC351A7E7AF5','Nail Art Kits'],['26F7660F-A00A-468A-BA29-E61A465C0D0B','Nail Decorations'],['1B1A9B82-1833-4721-88CA-86F5F542D7A5','Nail Glitters'],['25A6516D-3AE3-4207-BA00-6FD3CCE20201','Nail Stickers']],
    type:'Nageldesign', tags:['naegel','nagel','nageldesign','maniküre','beauty','cj-real','dropship'], kat:'Nageldesign & Maniküre',
    ban:/wholesale|\bfor salon only\b/i, minImg:3, minP:2, maxP:70},
+ makeup:{cats:[['A30E8F55-DC2C-4842-9372-91B96DEFDCC2','Makeup Brushes'],['426792A7-4906-403D-AD17-8293AFF00E66','Makeup Set'],['8FB2C16C-4C1B-4B5A-89F8-BC30FB2C442A','Eyeshadow'],['B68DF53F-4DD5-4659-A530-66D414CF2147','Lipstick'],['E31E5996-7B86-4FEC-B929-9AEB11E76853','False Eyelashes']],
+   type:'Make-up', tags:['makeup','kosmetik','beauty','cj-real','dropship'], kat:'Make-up & Kosmetik',
+   ban:/wholesale|salon only|\bsample\b/i, minImg:3, minP:2, maxP:60},
+ kueche:{cats:[['E448A723-43DC-4BD8-A9AD-2FB9699338B4','Cooking Tools'],['23ADD7CB-065A-4A02-B8E8-43D3F041B90B','Kitchen Knives'],['CF330457-0E5B-4FAF-9BAE-7D2C247BD8DE','Drinkware'],['BEDFD1CC-E7CC-438F-9050-D7737904203D','Barware']],
+   type:'Küche & Bar', tags:['kueche','kochen','haushalt','cj-real','dropship'], kat:'Küche, Bar & Kochen',
+   ban:/wholesale|salon only/i, minImg:3, minP:3, maxP:60},
 };
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
