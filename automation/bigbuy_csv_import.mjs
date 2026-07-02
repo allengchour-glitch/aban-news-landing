@@ -77,7 +77,7 @@ for(const file of files){
    files:[{originalSource:imgUrl,contentType:'IMAGE'}]};
   const rr=await gql(T,SET,{i:input}); const e=rr.data?.productSet?.userErrors||[]; const pid=rr.data?.productSet?.product?.id;
   const invId=rr.data?.productSet?.product?.variants?.nodes?.[0]?.inventoryItem?.id;
-  if(e.length||!pid){console.log('  ✗',name.slice(0,30),JSON.stringify(e).slice(0,90));continue;}
+  if(e.length||!pid){if(JSON.stringify(e).includes('already in use')){fs.appendFileSync(LEDGER,'bb:csv-'+sku+'\n');done.add('csv-'+sku);}else console.log('  ✗',name.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
   if(invId)await gql(T,INV,{id:invId,loc:LOC,q:st});
   await gql(T,PUB,{id:pid,p:PUBS});
   fs.appendFileSync(LEDGER,'bb:csv-'+sku+'\n'); done.add('csv-'+sku);
