@@ -3,7 +3,9 @@
 ## 2026-07-02 (Tag — Versand 65→50 gesenkt + Klaviyo-Flows geprueft + 24/7-Fix)
 - **🚚 FREE-SHIPPING CH 65 → 50 CHF (User-OK "auf 50 senken"):** Shopify sperrte das Editieren der alten >=65-Rate (neue Rate-Config) → NEUE Rate "Kostenloser Versand" >=50 CHF per API angelegt (funktioniert). Effektiv Gratisversand ab 50. Alte >=65 redundant (User kann im UI loeschen). SEO-Texte "ab 49/65" → auf "ab 50" vereinheitlichen (offen).
 - **✅ 5 DRAFTS GEPRUEFT + PUBLIZIERT (User-OK):** Marken-Trainingshosen (Puma/Adidas Hyperglam/Nike/Adidas Tiro/Umbro), alle Bilder visuell gecheckt (sauber, keine asiat. Schrift/Watermark), inventoryPolicy=CONTINUE=verkaufbar, live auf luxestyle.ch. Nike-Meta ergaenzt (war leer). Methode: Bild curl→Read-Tool→selbst pruefen (kein Gemini-Key noetig). ⚠️ Kinderschuhe-Drafts haben noch Groesse-XS-XL-Bug (nicht publiziert). 267 Drafts total, 5 durch.
-- **Autorisiert offen (User):** frisches Video aus Assets · mehr Collection/SEO · weitere Drafts.
+- **🎬 FRISCHES VIDEO gebaut (cloud-only, kein PC):** `reels/luxestyle-eleganz-montage.mp4` (12.6s, 1080×1920) — Aurora-Kette + Brise/Daisy/Sirène/Cosy-Frauenmode, Crossfades, Hook "Schweizer Eleganz" oben, End-CTA "Gratis Versand ab CHF 50 · WELCOME10 · luxestyle.ch", Musik (inspired). 3-Frame-QA bestanden. An User geliefert.
+- **✅ Draft-Charge 2:** nur 1 sauber (Adidas Tiro 23 L publiziert +Meta). Rest raus: Parfum-Preis-Bug (477-539 CHF), Titel/Bild-Mismatch (Shorts als "Hose"), Halloween-Kostueme (off-brand), 3 Dubletten-Ringe (1 Foto, gothic = off-brand). Erkenntnis: Draft-Pool hat viel Auto-Import-Muell → einzeln pruefen bleibt Pflicht.
+- **Autorisiert offen (User):** mehr Collection/SEO · weitere Drafts.
 
 ## 2026-07-02 (Nacht — Daten-Verifikation + Amore-Video auf Veo umgestellt)
 - **DATEN GEPRUEFT (info ist a und o):** Orders = nur #1004 (User-Testkauf 31.9 PAID) + #1003 (EXPIRED) → 0 echte Fremdkaeufe. Bottleneck bleibt Conversion/Trust, NICHT Katalog.
