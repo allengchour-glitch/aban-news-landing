@@ -121,9 +121,9 @@ const GROUPS={
  deko:       {re:/kerze|duftkerze|teelicht|kerzenhalter|vase|bilderrahmen|fotorahmen|windlicht|dekofigur|wanddeko|dekoschale|übertopf|kunstblume|spiegel|wanduhr|schmuckkästchen|aufbewahrungsbox|kissen|tischläufer|laterne/i,
               ban:/kinder|spielzeug|auto|werkzeug|elektr/i,
               brand:B.deko, cap:80, type:'Deko & Wohnaccessoires', tags:['deko','wohnen','marke','bigbuy','dropship'], blurb:'Marken-Wohndeko'},
- refurb:     {re:/refurbished|renewed|reacondicionado|generalüberholt|\brefurb\b/i,
-              ban:/zubehör|ersatz|hülle|tasche für/i,
-              brand:B.refurb, cap:700, type:'Refurbished Elektronik', tags:['refurbished','elektronik','pc','tech','marke','bigbuy','dropship'], blurb:'generalüberholte Marken-Elektronik'},
+ refurb:     {re:/\blaptop\b|notebook|\btablet\b|beamer|projektor|projector|\bmonitor\b|smartphone|handy\b|spielekonsole|\bkonsole\b|smartwatch|e-reader|\bpc\b|mini-?pc|all-?in-?one|refurbished|renewed/i,
+              ban:/tasche|hülle|\bcase\b|kabel|ladekabel|ständer|halterung|schutz|adapter|maus\b|tastatur|zubehör|reinigung|folie|cover|dock|hub|stift|pen\b|ersatz|halter|arm\b|wandhalter|schutzglas|panzerglas|sleeve|rucksack/i,
+              brand:B.refurb, cap:700, type:'Elektronik & Computer', tags:['elektronik','pc','tech','computer','marke','bigbuy','dropship'], blurb:'Marken-Elektronik'},
 };
 
 function clean(n){return n
