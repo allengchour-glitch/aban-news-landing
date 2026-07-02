@@ -1,30 +1,30 @@
 {
-  "_hinweis": "Frische KI-Rohclips fuer NEUE organische Videos (nie geposteter Content). Der PC-Task rendert jeden Eintrag MEHRSCHICHTIG: 1) Veo (Gemini), faellt es aus/Quota -> 2) fal Seedance. Idempotent (rendert nur wenn 'out' fehlt). Luma bleibt separater Pfad (luma_product_video.mjs, produkt-id-basiert). Nach dem Rendern in der Cloud finishen (statisch+crossfade, KEIN zoompan wegen Flicker; rotierende Musik) + liefern. NUR saubere, markenkonforme Produkte (Bild vorher visuell gecheckt).",
+  "_hinweis": "Frische KI-Rohclips fuer NEUE organische Videos. PC rendert MEHRSCHICHTIG: 1) Veo (Gemini), sonst 2) fal Seedance. Idempotent (nur wenn 'out' fehlt). Cloud-Finish: statisch/finish_reel (kein zoompan=kein Flicker; cropdetect=10), rotierende vibe-Musik. NUR saubere, markenkonforme Produkte (Bild vorher visuell gecheckt). STIL 2026-07-02 (User 'nicht zu funkelig'): weiches Naturlicht, matt, ruhig-editorial - KEIN Glitzer/Lens-Flare/Blitzen.",
   "clips": [
     {
-      "out": "reels/amore-raw.mp4",
-      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9d93cf1e-e3b1-4981-951e-caaf6644cdd3.jpg?v=1781585419",
-      "prompt": "luxury jewelry commercial, the gold heart charm bracelet slowly rotating on a white marble turntable, soft studio light, gentle glossy reflections, elegant minimal background, shallow depth of field, no text, no watermark, vertical 9:16"
+      "out": "reels/olivia-watch-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7613272387552_S0378584_P01.jpg?v=1781567716",
+      "prompt": "elegant women's wristwatch with a floral dial and black leather strap, slowly and gently rotating on a soft neutral linen surface, soft diffused daylight, matte calm editorial mood, minimal clean background, no harsh glints, no lens flare, no sparkle, no text, no watermark, vertical 9:16"
     },
     {
-      "out": "reels/viceroy-earrings-raw.mp4",
-      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8431283540358_S7289829_P00.jpg?v=1782967557",
-      "prompt": "elegant sterling silver stud earrings with sparkling zirconia slowly rotating on a soft white studio background, delicate dazzling light reflections, premium jewelry commercial, shallow depth of field, no text, no watermark, vertical 9:16"
+      "out": "reels/kennethcole-watch-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8431242501437_S0300739_P03.jpg?v=1781777925",
+      "prompt": "classic men's wristwatch with silver dial and brown leather strap, slowly rotating on a warm matte wooden surface, soft diffused daylight, calm editorial mood, minimal background, no harsh glints, no lens flare, no sparkle, no text, no watermark, vertical 9:16"
     },
     {
-      "out": "reels/viceroy-bangle-raw.mp4",
-      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8431283574780_S7278403_P00.jpg?v=1782967530",
-      "prompt": "elegant pastel gemstone and pearl bracelet with gold clasp slowly rotating on a soft white marble surface, gentle glossy reflections, feminine premium jewelry commercial, shallow depth of field, no text, no watermark, vertical 9:16"
+      "out": "reels/tissot-watch-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7611608305157_S72143412_P00.jpg?v=1781614681",
+      "prompt": "elegant petite rose gold women's wristwatch, slowly rotating on a soft beige fabric surface, gentle soft daylight, calm minimal editorial mood, subtle reflections only, no harsh glints, no lens flare, no sparkle, no text, no watermark, vertical 9:16"
     },
     {
-      "out": "reels/police-watch-raw.mp4",
-      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4895220901659_S7206085_P01.jpg?v=1782925545",
-      "prompt": "premium men's watch with deep blue dial and blue mesh strap slowly rotating on a dark slate surface, cinematic studio light, glossy metallic reflections, masculine luxury watch commercial, shallow depth of field, no text, no watermark, vertical 9:16"
+      "out": "reels/casio-watch-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4549526175299_R02.jpg?v=1781566924",
+      "prompt": "classic gold women's wristwatch with a matte black dial, slowly rotating on a soft dark fabric surface, soft diffused light, calm elegant editorial mood, subtle reflections only, no harsh glints, no lens flare, no sparkle, no text, no watermark, vertical 9:16"
     },
     {
-      "out": "reels/boss-sunglasses-raw.mp4",
-      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0716736847863_S0383201_P00.jpg?v=1782931542",
-      "prompt": "premium men's aviator sunglasses slowly rotating on a dark slate surface, cinematic studio light, glossy metallic frame and lens reflections, masculine luxury eyewear commercial, shallow depth of field, no text, no watermark, vertical 9:16"
+      "out": "reels/newera-bag-raw.mp4",
+      "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0195489631736_S2030328_P00.jpg?v=1781974797",
+      "prompt": "matte black belt bag, slowly rotating on a plain light concrete surface, soft even daylight, calm minimal streetwear editorial mood, no harsh reflections, no glare, no text overlay, no watermark, vertical 9:16"
     }
   ]
 }
