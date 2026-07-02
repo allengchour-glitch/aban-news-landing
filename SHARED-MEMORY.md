@@ -2075,3 +2075,12 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **Uhr vertieft +100** (Pool 1922), **Parfum vertieft +78** (Pool 454). Ledger 9236→9456.
 - **⚠️ Edit-Falle:** Beim Hinzufügen versehentlich baby-Regex durch „false" ersetzt (falscher new_string) → sofort
   gefixt. Danach Rebase-Konflikt im Tool (andere Session editierte es auch) → beide Änderungen behalten, Syntax geprüft.
+
+---
+**📌 2026-07-02 (Welle7 — +252: 2 FRISCHE Kategorien Zahnpflege & Wellness + Vertiefung):**
+- **NEU: 🦷 Zahnpflege** (Oral-B/Sonicare/Braun) → 8 → neue Smart-Collection `zahnpflege` (TAG=zahnpflege OR
+  Titel Zahnbürste/Munddusche, publiziert, SEO). Pool 138, viele über EUR-Cap (teure E-Zahnbürsten).
+- **NEU: 💚 Wellness & Gesundheit** (Beurer/Medisana) → 15 → neue Collection `wellness-gesundheit` (TAG=wellness OR
+  gesundheit) — **sofort 264 Produkte** (fing bestehende wellness-getaggte mit ein!). Sehr reiche Kategorie ab Tag 1.
+- **Vertieft:** schmuck +100, gadget +59, haushalt +70. Ledger 9456→9708.
+- **Muster bestätigt:** neue Smart-Collection mit breiter Tag-Regel füllt sich oft sofort aus bestehendem Bestand.
