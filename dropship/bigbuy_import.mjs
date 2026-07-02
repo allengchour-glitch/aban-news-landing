@@ -33,6 +33,8 @@ const MIN_PRICE = Number(process.env.MIN_PRICE || 9);
 const BRANDED_ONLY = process.env.BRANDED_ONLY !== '0';        // nur Produkte mit ECHTEM Hersteller (Markenware)
 const MIN_COST_EUR = Number(process.env.MIN_COST_EUR || 3);   // ultra-billig (<3 EUR EK) = meist Junk -> raus
 const MIN_IMGS = Number(process.env.MIN_IMGS || 2);           // gute Produkte haben mehrere Bilder
+const NAME_FILTER = process.env.NAME_FILTER ? new RegExp(process.env.NAME_FILTER, 'i') : null; // nur Produkte deren Name matcht (z.B. "ps5|playstation|dualsense" fuer gezielten Gaming-Import)
+const SCAN_MAX = Number(process.env.SCAN_MAX || 0);          // max gescannte Produkte (0=alle) - schuetzt vor endlosem Rate-Limit-Scan bei seltenem NAME_FILTER
 const JUNK_RE = /(karneval|carnival|fasching|kost(ü|ue)m|disfraz|verkleidung|per(ü|ue)cke|fancy dress|aufblasbar|erotik|dessous|sexy)/i;
 const DRY = process.env.DRY === '1';
 const LEDGER = path.join(ROOT_DIR, 'dropship', 'bigbuy-imported-eans.txt');
@@ -114,16 +116,18 @@ const TRUST = '<hr><p><strong>LuxeStyle CH</strong> · Gratis-Versand ab CHF 49 
   }
   log(`BigBuy Root ${root}: ${list.length} Produkte · Ziel: ${MAX} neue (Markup ${MARKUP}) ${DRY ? '(DRY)' : ''}`);
   const seen = seenEans();
-  let made = 0; const created = [];
+  let made = 0; let scanned = 0; const created = [];
 
   for (const prod of list) {
     if (made >= MAX) break;
     if (!prod.active || !prod.ean13 || !(prod.retailPrice > 0)) continue;
     if (seen.has(prod.ean13)) continue;
+    if (SCAN_MAX && (++scanned) > SCAN_MAX) { log(`SCAN_MAX ${SCAN_MAX} erreicht (${made} gefunden) → Stop.`); break; }
     let info, imgs;
     try { info = await bbGet(`/catalog/productinformation/${prod.id}.json?isoCode=de`); } catch { continue; }
     const name = (info?.name || '').trim();
     if (!name || /china|made in/i.test(name)) continue;
+    if (NAME_FILTER && !NAME_FILTER.test(name)) continue;
     try { imgs = await bbGet(`/catalog/productimages/${prod.id}.json`); } catch { imgs = []; }
     const urls = (imgs || []).map(i => i.url).filter(Boolean).slice(0, 6);
     if (!urls.length) continue;
