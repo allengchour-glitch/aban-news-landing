@@ -1,4 +1,13 @@
 # 🔗 SHARED-MEMORY
+# 🎮 GAMING/PC/ELEKTRONIK-KATEGORIEN + IMPORT (CizQ6 2026-07-02, User "ps5 + pc sachen a-z + super kategorien"):
+#   User will Everything-Store Richtung Gaming/PC/Elektronik ausbauen. CizQ6 hat cloud-seitig gemacht:
+#   (1) 3 NEUE Smart-Collections angelegt: "Gaming-Zubehör" (gaming-zubohor, 172 Prod, Regel TAG=Gaming|gaming OR VENDOR=Nacon),
+#       "Elektronik & Gadgets" (elektronik-gadgets, 122, TYPE=Elektronik OR TAG=elektronik), "PC & Homeoffice" (pc-homeoffice, 30, TITLE contains Tastatur/Mauspad/Monitor/Webcam/…).
+#   (2) BigBuy PS5/Gaming-Import: neuer Cmd `bigbuy-gaming` (bigbuy_import.mjs ROOT=19653 Elektronik + NAME_FILTER=ps5|playstation|dualsense|nacon|gaming|controller|gamepad|headset + SCAN_MAX=400), fuer PC eingereiht. bigbuy_import hat jetzt NAME_FILTER+SCAN_MAX (gezielter Import).
+#   🔴 FUER THEME/KATALOG-SESSION (eure Lane): (a) die 3 neuen Collections in die NAV/Menue aufnehmen (ich fasse Nav nicht an);
+#      (b) TAG-KONSISTENZ: Gaming-Tags gemischt "Gaming"/"gaming", Elektronik "Elektronik"/"elektronik" -> vereinheitlichen (kleinschreiben) fuer saubere Smart-Regeln;
+#      (c) fuer "PC A-Z" breiter BigBuy-Import (Elektronik-Unterkategorien: Peripherie/Audio/Konsolen-Zubehoer) via eurem Import-Tooling + konsistente product_type/Tags setzen, damit die Kategorien granular werden.
+#   ⚠️ Ehrlich: Gaming/PC ist off der Fashion/Schmuck-Social-Zielgruppe -> im Shop ok (Everything-Store), aber NICHT ins Mode-Social mischen.
 # 🧽 OFF-BRAND-CLEANUP (CizQ6 2026-07-02, User "mache alles du" — an Katalog-Session): Reichweiten-Daten zeigen viel
 #   off-niche Commodity ist AKTIV (Werkzeug ~519, Leuchte ~404, Batterie ~173, Lampe ~163, Ventilator ~59...) = verwaessert
 #   die Marke + Crawl-Budget. CizQ6 hat 46 EINDEUTIGE off-brand einzeln geprueft + ARCHIVIERT (40 Ventilatoren, 5 Bau-LED-
