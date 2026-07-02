@@ -2106,3 +2106,12 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   Pet, Home Storage. Jede neue Kategorie = 1 GROUPS-Eintrag + `GRP=x CAP=45 node …`. Gemini-Titel ehrlich & natürlich.
 - **Heute total ~2'110 neue echte Produkte** (BigBuy 8 Wellen + CJ Drohnen/Nagel/Makeup/Küche). CJ = zuverlässige
   Nicht-gedrosselt-Quelle wenn BigBuy limitiert.
+
+---
+**📌 2026-07-02 (🎨 KOLLEKTIONSSEITEN Galaxus-optimiert, live via API):**
+- `templates/collection.json`: **Filter auf VERTIKAL/links** (`filter_style:vertical, filter_width:left, show_filter_label:true`)
+  = Galaxus-Facetten-Sidebar. **USP-Trust-Strip** (`lux_usp_coll` custom-liquid: Gratis-Versand/30 Tage/CH/TWINT/WELCOME10)
+  neu nach den Subchips. Reihenfolge: breadcrumb › subchips › USP › heading › main(Grid+Filter) › FAQ.
+- Bestand war schon stark: Breadcrumb+JSON-LD, Subkategorie-Chips, Review-Sterne, 4-Spalten-Grid, Infinite-Scroll,
+  24/Seite, Grid-Density, FAQ. Jetzt zusätzlich Sidebar-Filter + USP = Galaxus-Look. Verifiziert: HTTP 200, 0 Liquid-Fehler.
+- Backup: `dropship/theme-backups/collection.json.live-2026-07-02`. Startseite war bereits Galaxus-revamped (17 Sektionen).
