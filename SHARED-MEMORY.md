@@ -2067,3 +2067,11 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
   Angelruten-Wagen). Tag `cj-real-desc`. **CJ-Felder sind JSON-Strings** (materialNameEn=`["Others"]` als String!)
   → mit `arr()`-Helper parsen. „Others"-Material rausgefiltert, Gewicht gerundet, entryNameEn→DE gemappt.
 - CJ-Token nur `/tmp/cj_token.txt`, Gemini-Key `/tmp/gemini_key` — NIE ins Repo.
+
+---
+**📌 2026-07-02 (Welle6 — +220: Rasur/Grooming & Reise neu + Uhr/Parfum vertieft):**
+- **Rasur & Grooming** (Braun/Philips/Babyliss/JATA) → 40 → tag `haarstyling`→`haarstyling-tools` + Bart/Rasier→`sub-bart-rasur` (Titel).
+- **Reise/Koffer** → nur 2 (Pool dünn: 13 Kand., meist über Preis-Cap; Titel Koffer/Reise→`sub-reise`).
+- **Uhr vertieft +100** (Pool 1922), **Parfum vertieft +78** (Pool 454). Ledger 9236→9456.
+- **⚠️ Edit-Falle:** Beim Hinzufügen versehentlich baby-Regex durch „false" ersetzt (falscher new_string) → sofort
+  gefixt. Danach Rebase-Konflikt im Tool (andere Session editierte es auch) → beide Änderungen behalten, Syntax geprüft.
