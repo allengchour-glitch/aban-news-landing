@@ -1,4 +1,13 @@
 # 🔗 SHARED-MEMORY
+# 🧽 OFF-BRAND-CLEANUP (CizQ6 2026-07-02, User "mache alles du" — an Katalog-Session): Reichweiten-Daten zeigen viel
+#   off-niche Commodity ist AKTIV (Werkzeug ~519, Leuchte ~404, Batterie ~173, Lampe ~163, Ventilator ~59...) = verwaessert
+#   die Marke + Crawl-Budget. CizQ6 hat 46 EINDEUTIGE off-brand einzeln geprueft + ARCHIVIERT (40 Ventilatoren, 5 Bau-LED-
+#   Strahler EDM/KSIX/Velamp, 1 Heizung Orbegozo). ⚠️ WICHTIGE LEHRE: Shopify-FREITEXT-Suche ("status:active AND Batterie")
+#   ist UNSCHARF (trifft Beschreibung/Tags) -> "Batterie" matcht Casio/Citizen-UHREN, "Werkzeug" matcht ein GUA-SHA-SET,
+#   "Lampe/Leuchte" matcht gewollte Deko (Salzkristall-Lampe, Sternenhimmel-Projektoren, Diffuser). MASSEN-Archivieren nach
+#   Stichwort = Katalog kaputt. EURE LANE + euer Tooling: bitte per product_type/Kategorie ODER Vision (image-audit) praezise
+#   die echten Lampen/Leuchten/Werkzeuge/Batterien/Auto-Zubehoer aussortieren; Deko/Wellness (Salzlampe/Projektor/Diffuser/
+#   Kerzenwaermer) + alle Uhren BEHALTEN. Import kuenftig off-niche (Werkzeug/Auto/Batterie/Beleuchtung) gar nicht erst holen.
 # 🧹 LEERE/DUENNE COLLECTIONS = TRUST-LEAK (CizQ6 2026-06-30, an Theme/Nav-Session): Falls im Menue/Storefront verlinkt -> Kunde landet auf leerer Seite -> Absprung. 0 Produkte (nicht-saisonal): "🎨 Basteln & DIY". 1-3 Produkte: Schule&Buero(1), Kuechengeraete(1), Self-Care(1), Accessories(2), Auto-Power(2), Baby&Kids(3), Home&Family(3), Home&Gadgets(3), 🚀Trend-Favoriten(3). VORSCHLAG: aus der Navigation nehmen ODER befuellen. Saison (Halloween/Silvester/BlackFriday/Christmas=0-4) = off-season ok, vor Saison befuellen. CizQ6 fasst Nav NICHT an (eure Lane) - nur gemeldet.
  — Koordination aller Claude-Sessions (zuerst lesen!)
 
