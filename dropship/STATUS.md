@@ -2,7 +2,8 @@
 
 ## 2026-07-02 (Tag — Versand 65→50 gesenkt + Klaviyo-Flows geprueft + 24/7-Fix)
 - **🚚 FREE-SHIPPING CH 65 → 50 CHF (User-OK "auf 50 senken"):** Shopify sperrte das Editieren der alten >=65-Rate (neue Rate-Config) → NEUE Rate "Kostenloser Versand" >=50 CHF per API angelegt (funktioniert). Effektiv Gratisversand ab 50. Alte >=65 redundant (User kann im UI loeschen). SEO-Texte "ab 49/65" → auf "ab 50" vereinheitlichen (offen).
-- **Autorisiert weiter (User):** Drafts pruefen+publizieren · frisches Video aus Assets · mehr Collection/SEO. In Arbeit.
+- **✅ 5 DRAFTS GEPRUEFT + PUBLIZIERT (User-OK):** Marken-Trainingshosen (Puma/Adidas Hyperglam/Nike/Adidas Tiro/Umbro), alle Bilder visuell gecheckt (sauber, keine asiat. Schrift/Watermark), inventoryPolicy=CONTINUE=verkaufbar, live auf luxestyle.ch. Nike-Meta ergaenzt (war leer). Methode: Bild curl→Read-Tool→selbst pruefen (kein Gemini-Key noetig). ⚠️ Kinderschuhe-Drafts haben noch Groesse-XS-XL-Bug (nicht publiziert). 267 Drafts total, 5 durch.
+- **Autorisiert offen (User):** frisches Video aus Assets · mehr Collection/SEO · weitere Drafts.
 
 ## 2026-07-02 (Nacht — Daten-Verifikation + Amore-Video auf Veo umgestellt)
 - **DATEN GEPRUEFT (info ist a und o):** Orders = nur #1004 (User-Testkauf 31.9 PAID) + #1003 (EXPIRED) → 0 echte Fremdkaeufe. Bottleneck bleibt Conversion/Trust, NICHT Katalog.
