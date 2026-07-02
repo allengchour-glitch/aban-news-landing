@@ -25,6 +25,8 @@ log "Falsch-markierte Feed-Bloecke bereinigen (Schmuck/Beauty/Accessoires, idemp
 MAX="${STRIP_MAX:-600}" "$NODE" automation/strip_nonapparel_feedblock.mjs 2>&1 | tail -5 || log "strip Fehler (weiter)"
 log "Leere SEO-Meta-Beschreibungen fuellen (ganzer Katalog, idempotent)..."
 MAX="${SEO_MAX:-200}" "$NODE" automation/seo_polish.mjs 2>&1 | tail -8 || log "seo_polish Fehler (weiter)"
+log "Leere Bild-Alt-Texte fuellen (Google-Bildersuche-Reichweite, idempotent, gedrosselt)..."
+MAX="${ALT_MAX:-120}" "$NODE" automation/alt_text_backfill.mjs 2>&1 | tail -5 || log "alt_text_backfill Fehler (weiter)"
 log "Trend-Scan CH (Google-Trends gratis + AI-Ideen, stateless/safe)..."
 "$NODE" automation/trends/trend_scan.mjs 2>&1 | tail -12 || log "trend_scan uebersprungen (weiter)"
 log "TikTok-Pixel-Healthcheck (Storefront -> Metafeld luxe.pixel_status)..."
