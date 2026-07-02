@@ -48,6 +48,8 @@ const B={
  baby:/chicco|\bnuk\b|suavinex|\bsaro\b|bright starts|tommee tippee|philips avent|badabulle|\bbebé?\b|\bnenuco\b|\bmustela\b|\bhaba\b|\bkinderkraft\b|\bolmitos\b|\bminiland\b|\binnovababy\b/i,
  grooming:/\bbraun\b|\bphilips\b|remington|\bwahl\b|panasonic|babyliss|\browenta\b|\bcarrera\b|hatteker|\bcecotec\b|\btaurus\b|\bjata\b|kensington/i,
  reise:/gabol|american tourister|roncato|delsey|samsonite|\bmovom\b|national geographic|\btotto\b|\bantler\b|\bskpat\b|\bitaca\b/i,
+ zahn:/oral.?b|sonicare|\bphilips\b|cecotec|\bwaterpik\b|\bforeo\b|colgate|\bbraun\b|panasonic|\bcuraprox\b|\bfairywill\b/i,
+ wellness:/beurer|medisana|\bhomedics\b|\bnaipo\b|\brenpho\b|\bsalter\b|cecotec|\btaurus\b|\bpangao\b|\betekcity\b|\borbegozo\b/i,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -108,6 +110,12 @@ const GROUPS={
  reise:      {re:/koffer|trolley|reisetasche|reisekoffer|kabinentrolley|hartschalenkoffer|weekender|reisegepäck|bordtasche|kulturbeutel|packwürfel|reiseset|handgepäck/i,
               ban:/kinder|spielzeug|deko/i,
               brand:B.reise, cap:120, type:'Koffer & Reise', tags:['reise','koffer','gepaeck','bigbuy','marke','dropship'], blurb:'Marken-Reisegepäck'},
+ zahn:       {re:/zahnbürste|elektrische zahnbürste|schallzahnbürste|munddusche|zahnpflege|aufsteckbürste|zahnreinigung|zungenreiniger|zahnseide/i,
+              ban:/kinder(?!.?zahn)|ersatz|nur aufsteck|manuell/i,
+              brand:B.zahn, cap:80, type:'Zahnpflege', tags:['zahnpflege','beauty','koerperpflege','bigbuy','marke','dropship'], blurb:'Marken-Zahnpflege'},
+ wellness:   {re:/massage|massagegerät|massagepistole|blutdruck|blutdruckmessgerät|fieberthermometer|körperwaage|personenwaage|heizkissen|heizdecke|nackenmassage|fussmassage|shiatsu|pulsoximeter|inhalator|akupressur/i,
+              ban:/spielzeug|kinder|tier|auto/i,
+              brand:B.wellness, cap:100, type:'Wellness & Gesundheit', tags:['wellness','gesundheit','koerperpflege','bigbuy','marke','dropship'], blurb:'Marken-Wellnessgerät'},
 };
 
 function clean(n){return n
