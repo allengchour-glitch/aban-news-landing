@@ -23,6 +23,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Kampagne+Budget, §10) kann ich nicht selbst — die klar benennen.
 
 ## 🔁 Daueraufträge (FEST)
+- **🤝 ALLES EHRLICH — KEINE FAKE-ANGABEN (FEST, User 2026-07-03 „alles ehrlich"):** Nirgends geschönte/erfundene
+  Angaben. Konkret verboten: fake Reviews/Sterne (nur echte via Judge.me), fake Verknappung/Countdown/„nur noch X",
+  fake „X schauen grad", aufgeblasene Streichpreise (compareAt), „Swiss Made"/„Schweizer Qualität" auf nicht-Schweizer
+  Produkten, zu knappe Lieferzeiten. Lieber konservativ/ehrlich angeben und über-liefern als über-versprechen und
+  enttäuschen. Bei jeder Copy/Preis/Zeit-Angabe: nur was stimmt. (Lieferzeiten 2026-07-03 realistisch gesetzt in
+  `automation/delivery_block.mjs`.)
 - **🧠 SELBST ENTSCHEIDEN + VERBESSERN, INFO IST DAS A UND O (FEST, User 2026-06-20 „entscheide verbessere selbst ohne zu fragen, merke. info ist a und o"):**
   Immer selbst entscheiden und umsetzen — NIE fragen (ausser echtem Geld/Budget oder Konto-Login). **Daten/Information
   haben oberste Priorität:** jede Session zuerst die echten Zahlen ziehen (Shopify-Analytics: Sessions/Quellen/abgebrochene
