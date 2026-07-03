@@ -16,6 +16,25 @@
 # Zahlungsmethode für Auto-Billing: gespeicherte Mastercard …1878 bereits im Account hinterlegt, dient als
 # Zahlungsmethode. WICHTIG: NUR diese eine Bestellung PF165452870 wurde platziert — kein zweites Mal bestellt.
 
+# 📱🔴 DESIGNER AUF MOBILE UNSICHTBAR — AN THEME-SESSION (CizQ6 2026-07-03, User „mach die bearbeitungs tool sichtbar, sehe sie nicht auf mobile"): DRINGEND.
+#   Der Personalisierungs-Designer (`<div class="lspod-designer">` + abannews.com/pod/designer.js) steckt in der PRODUKT-
+#   BESCHREIBUNG. Auf Mobile blendet das Theme die Beschreibung vermutlich in einem eingeklappten Accordion/„Mehr anzeigen"
+#   ein → Kunde sieht den Designer NICHT → kauft blank (genau der #1005-Bug). FIX (Theme-Lane): den Designer auf der
+#   Produktseite PROMINENT + ausgeklappt rendern, idealerweise direkt bei/über dem Add-to-Cart, auf Mobile IMMER sichtbar
+#   (nicht im Beschreibungs-Accordion). Gilt für WM-Trikot + alle „selbst gestalten"/POD-Produkte mit designer.js.
+#   Ideal zugleich: Standard-ATC gaten, damit nicht ohne Designer gekauft werden kann. CizQ6 kann Theme nicht anfassen (Lane).
+# 🧾 OFFENE CLOUD-TASKS WM-TRIKOT (CizQ6 2026-07-03, warten auf Shopify-MCP-Reconnect + User-Preisentscheid):
+#   1. DUPLIKAT bereinigen: 2x Blank-Rot-Entwurf angelegt (Shopify-ID 15447486759297 + 15447487480193). EINES behalten
+#      (15447486759297), das andere (15447487480193) ARCHIVIEREN. Personalisiertes Original 15433948070273 NICHT anfassen.
+#   2. PREISE hoch (Printful-Trikot kostet ~CHF 40 landed → CHF 34.90 = Verlust). User-Wahl offen: Variante A Blank 49.90 /
+#      Perso 59.90  ODER  Variante B beide 54.90. Danach honesten Streichpreis (~1.5x) setzen.
+#   3. #1005 als VERSENDET markieren, sobald Browser-Claude Alains Printful-Tracking meldet (manuelle Printful-Order ist
+#      NICHT mit Shopify-Order verknüpft → Tracking von Hand in #1005 eintragen).
+#   4. PERSO-BRÜCKE bauen: Printful-Katalog „Recyceltes Unisex-Trikot AOP", XL-Variant-ID #55872511017345 (weitere Grössen
+#      vom PC nachliefern lassen). Bridge liest Bestell-Eigenschaft „🖼️ Druckdatei" → Printful-API-Order mit Print-File.
+#   ⚠️ Shopify-MCP war 2026-07-03 getrennt/braucht Re-Auth (claude.ai Connector-Settings) → Tasks 1-3 erst danach ausführbar.
+#   ✅ UPDATE: Bestellung PF165452870 ist BEZAHLT (Alain, XL Blank) — Task 3 wartet nur noch aufs Printful-Tracking.
+#      Printful-Variant-IDs komplett: S=#55872510919041 M=#55872510951809 L=#55872510984577 XL=#55872511017345 2XL=#55872511050113.
 # 🖥️ DESKTOP-VIEW VERBESSERN — AN THEME-SESSION (CizQ6 2026-07-03, User „desktop sicht verbessern mit header, wie Galaxus, alle verbesserung"):
 #   User will klickbare Kategorie-Navigation wie Galaxus (Header + Mega-Menü + Breadcrumbs + Sidebar-Filter). Kompletter
 #   priorisierter Bauplan in `dropship/DESKTOP-VERBESSERUNGEN-BAUPLAN.md`. Top-Hebel: (1) Sticky Header m. grosser Suche+Cart,
