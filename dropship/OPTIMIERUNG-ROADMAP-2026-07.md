@@ -94,6 +94,12 @@ Benchmarks: owayo, spized, JAKO, 11teamsports, klubtrikot.ch · On, PKZ, Beldona
 
 **Ownership:** Zahlungen/Judge.me/Klaviyo/Test-Checkout = **User-Klicks** · Sticky-ATC/Trust-Bar/Mega-Menü/Speed/Bundles/hreflang = **Theme-Session** · Rename/Copy/SEO-Metas/JSON-LD/Alt/Landingpage/Traffic-Content = **CizQ6 (ich)** · Mockups/Makro-Fotos/Alains-Order = **Browser/Printful**.
 
+## 🎬 FINALE-TASK (User 2026-07-03 „am Schluss geiles Video der Webseite mit allen Produkten") — ERST WENN KATALOG VOLL
+- **Trigger:** NICHT jetzt. Erst wenn die andere Session die grosse Produktrunde (~100k) importiert hat und genug TOLLE Produkte live sind.
+- **Ziel:** Ein hochwertiges Marken-/Werbevideo der ganzen Seite — durch alle Kategorien (Mode/Schmuck/Beauty/Gadgets/Gaming/Fan-Trikot/Selbst-gestalten), geiler Schnitt, Musik (Musik-Tool, kommerziell-frei/vibe-passend), Hook + CTA (luxestyle.ch · Gratis-Versand ab 50 · WELCOME10), Safe-Zone-Text, 9:16 + evtl. 16:9/1:1.
+- **Vorbereitung (jetzt schon recherchierbar):** beste Formate für Shop-Showcase-/Werbevideos 2026, virale Hooks, Schnitt-Rhythmus, Trend-Sounds; Assets-Quellen (echte Produktbilder/CDN, Veo/fal-Clips, Ken-Burns). Bestehende Builder: `dropship/ads/render_brand_video.py`, `render_masterpiece.sh`, `automation/music/music_library.mjs`.
+- **Regeln:** kein Funkel-Overkill, kein asiat.-Schrift/Watermark-Bild, ehrlich, strikt CH, Safe-Zone (Text ≤78 % Höhe). Am Ende an User liefern + optional CDN/Queue.
+
 ## Umsetzungs-Lanes
 - **CizQ6 (ich), sobald Shopify verbunden / per PC-Skript:** Rename Trikot (generisch), Collection-Metas + Intros, JSON-LD, Copy (Kosten/Lieferzeit/Garantie/How-to), Alt-Texte, Landingpage-Copy.
 - **Theme-Session:** Sticky-ATC, TWINT/Klarna-Badges, Trust-Bar, Mega-Menü, Speed/LCP, hreflang.
