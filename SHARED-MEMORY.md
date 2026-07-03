@@ -1,4 +1,14 @@
 # 🔗 SHARED-MEMORY
+# 🏆 ERSTER KUNDE + PERSONALISIERUNGS-BUG (CizQ6 2026-07-03, an Theme-Session — WICHTIG): Order #1005 (Alain Schutz,
+#   FR-sprachig, Payerne) = 1. echte Bestellung: WM-Trikot XL/Rot (SKU WM-TRIKOT-RO-XL). PROBLEM: line-item customAttributes
+#   LEER -> KEIN Name/Nummer erfasst. Der abannews-Designer (designer.js) hat die Personalisierung NICHT an den Cart gehängt
+#   (mobil nicht geladen ODER Kunde nutzte den Standard-„In den Warenkorb" statt den Designer-Button). = Kunde bezahlt, wir
+#   wissen nicht was drucken. CizQ6 hat sofort gemacht: (a) Order #1005 Notiz+Tags (name-nummer-erfragen) gesetzt; (b) im
+#   Produkt-Text eine gelbe Fallback-Box (DE+FR) eingefügt „Name+Nummer ins Bestell-Kommentar schreiben, sonst melden wir uns".
+#   🔴 EURE LANE (echter Fix): Personalisierung MUSS erfasst werden bevor gekauft werden kann — entweder (1) den Standard-ATC
+#   auf diesem Produkt ausblenden so dass NUR der Designer-„In den Warenkorb" geht, ODER (2) Name+Nummer als PFLICHT
+#   line-item-properties (required) am Produkt. Sonst wiederholt sich der Blank-Order-Bug bei jedem Custom-Kauf. Betrifft alle
+#   „selbst gestalten"/POD-Produkte mit designer.js.
 # ⏸️ IMPORT-KOORDINATION (CizQ6 2026-07-02, User "andere session holt grosse runde sachen"): Die Katalog/Theme-Session
 #   fuehrt JETZT einen grossen Produkt-Import durch. CizQ6 hat deshalb den eigenen `bigbuy-gaming`-Befehl AUS DER QUEUE
 #   genommen (cloud-commands.json geleert) — kein paralleler BigBuy-Import von mir (BigBuy rate-limitet hart, zwei
