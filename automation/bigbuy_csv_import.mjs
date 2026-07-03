@@ -66,6 +66,7 @@ for(const file of files){
   const st=(+r[ix.stock_a]||0)+(+r[ix.stock_b]||0)+(+r[ix.stock_c]||0); if(st<1)continue;
   const img=r[ix.images]; if(!img||img==='-')continue;
   const pvr=parseFloat((''+r[ix.pvr]).replace(',','.'))||0; if(pvr<5)continue;
+  if(process.env.REFURB_ONLY==='1' && !/Restauriert|Refurbished/i.test(r[ix.name]||''))continue; // nur Refurbished-Gems
   let name=cleanName(r[ix.name]||''); if(name.length<5)continue;
   if(TR){const de=await gtranslate(name); if(de){name=de;await sleep(3800);} else if(isEng(name))continue;} // TRANSLATE=1 → alles übersetzen (englische Feeds)
   const rt=route(r[ix.category]); const refurb=/Restauriert|Generalüberholt|generalüberholt/i.test(r[ix.name]||'')||/Generalüberholt/i.test(name);
