@@ -24,8 +24,9 @@
 #   (nicht im Beschreibungs-Accordion). Gilt für WM-Trikot + alle „selbst gestalten"/POD-Produkte mit designer.js.
 #   Ideal zugleich: Standard-ATC gaten, damit nicht ohne Designer gekauft werden kann. CizQ6 kann Theme nicht anfassen (Lane).
 # 🧾 OFFENE CLOUD-TASKS WM-TRIKOT (CizQ6 2026-07-03, warten auf Shopify-MCP-Reconnect + User-Preisentscheid):
-#   1. DUPLIKAT bereinigen: 2x Blank-Rot-Entwurf angelegt (Shopify-ID 15447486759297 + 15447487480193). EINES behalten
-#      (15447486759297), das andere (15447487480193) ARCHIVIEREN. Personalisiertes Original 15433948070273 NICHT anfassen.
+#   1. DUPLIKAT bereinigen: 2x Blank-Rot-Entwurf. KORREKTUR: BEHALTEN = 15447487480193 (das mit Printful verbundene, für
+#      Bestellung PF165452870 genutzte). ARCHIVIEREN = 15447486759297 (älteres Duplikat). Personalisiertes Original
+#      15433948070273 NICHT anfassen. (Vor Archivieren prüfen, dass das behaltene wirklich das Printful-verbundene ist.)
 #   2. PREISE hoch (Printful-Trikot kostet ~CHF 40 landed → CHF 34.90 = Verlust). User-Wahl offen: Variante A Blank 49.90 /
 #      Perso 59.90  ODER  Variante B beide 54.90. Danach honesten Streichpreis (~1.5x) setzen.
 #   3. #1005 als VERSENDET markieren, sobald Browser-Claude Alains Printful-Tracking meldet (manuelle Printful-Order ist
