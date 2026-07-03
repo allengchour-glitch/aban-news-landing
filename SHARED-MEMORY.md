@@ -7,6 +7,12 @@
 #   Danach zurückmelden: Printful-Produkt-ID + verbundene Shopify-Varianten + Tracking-Nr. → in SHARED-MEMORY schreiben,
 #   damit Cloud-Claude die Perso-Druckdatei-Brücke (liest Bestell-Eigenschaft „🖼️ Druckdatei") an die Printful-Variante-IDs andocken kann.
 #   Cloud kann Brave NICHT erreichen (PC-Port) → dieser Schritt MUSS am PC laufen. Bei Login/Zahlung-Blocker: STOPP + melden.
+#   ↳ UPDATE 2026-07-03 (nach PC-Rückmeldung „kann Printful-Design nicht an bestehendes Produkt anhängen"): KEIN Merge!
+#     Es werden bewusst ZWEI Produkte: (A) BLANK-Trikot = neues Printful-Produkt (Draft veröffentlichen, nativ auto);
+#     (B) PERSONALISIERT = bestehendes WM-Trikot bleibt, Cloud baut Druckdatei-Brücke. PC-Claude: Blank als NEUES
+#     Shopify-Produkt (Draft) veröffentlichen, bestehendes NICHT anfassen; Auto-Fulfill+Billing an; #1005 als manuelle
+#     Printful-Order (blank XL/Rot) an Alain liefern; dann zurückmelden: neue Shopify-Produkt-ID + Printful-KATALOG-Variant-IDs
+#     (Grösse/Farbe) + Alain-Tracking. Cloud braucht die Variant-IDs für die Perso-Brücke.
 # 🚚 WM-TRIKOT HAT KEIN FULFILLMENT-BACKEND (CizQ6 2026-07-03, teuer gelernt an Order #1005): Das Produkt
 #   "⚽ WM-Trikot selbst gestalten" (SKU WM-TRIKOT-RO-XL etc.) ist ein SELBST GEBAUTES Mockup-Produkt — nur mit Tag
 #   printful_personalized_product versehen, aber NIE zu Printful synchronisiert. Beweis: Variante tracked:false,
