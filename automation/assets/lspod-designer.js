@@ -511,6 +511,10 @@
     }
   }
 
-  function initAll(){ var n=document.querySelectorAll('.lspod-designer'); Array.prototype.forEach.call(n,function(x){ if(x.getAttribute('data-init'))return; x.setAttribute('data-init','1'); try{ build(x); }catch(e){} }); }
+  function initAll(){ var n=document.querySelectorAll('.lspod-designer'); Array.prototype.forEach.call(n,function(x){ if(x.getAttribute('data-init')==='1')return; x.setAttribute('data-init','1'); try{ build(x); }catch(e){ x.setAttribute('data-init','err'); if(window.console&&console.error) console.error('[lspod] build error:', e); } }); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initAll); else initAll();
+  // Robust gegen spaet vom Theme injizierte Beschreibung (Section-Rendering) + gegen einmalige Init-Fehler:
+  // mehrfach nachfassen; Fehler werden geloggt statt verschluckt.
+  window.addEventListener('load', initAll);
+  var _lspodTries=0; var _lspodIv=setInterval(function(){ Array.prototype.forEach.call(document.querySelectorAll('.lspod-designer[data-init="err"]'),function(x){ x.removeAttribute('data-init'); }); initAll(); if(++_lspodTries>=12) clearInterval(_lspodIv); }, 700);
 })();
