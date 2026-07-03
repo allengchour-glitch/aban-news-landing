@@ -1,4 +1,12 @@
 # 🔗 SHARED-MEMORY
+# 🖥️➡️ PC-/BROWSER-CLAUDE — JETZT AUSFÜHREN (CizQ6 2026-07-03, User „mach alles fix fertig, schick an Kunde via browser claude, brave on"):
+#   AUFGABE: Lies `automation/local/PRINTFUL-SETUP-BROWSER-TASK.md` und arbeite sie im Brave (Printful eingeloggt) ab:
+#   (1) echtes Printful-SPORT-TRIKOT (jersey, KEIN T-Shirt) mit dem BESTEHENDEN Shopify-Produkt „WM-Trikot selbst gestalten" verknüpfen,
+#   (2) Auto-Fulfillment + Auto-Billing an, (3) erste Bestellung #1005 BLANK XL/Rot als manuelle Printful-Order an
+#   Alain Schutz, Rue du Pavement 24, 1530 Payerne, +41 79 453 79 86 (bezahlen = vom User freigegeben, ~CHF 15-25).
+#   Danach zurückmelden: Printful-Produkt-ID + verbundene Shopify-Varianten + Tracking-Nr. → in SHARED-MEMORY schreiben,
+#   damit Cloud-Claude die Perso-Druckdatei-Brücke (liest Bestell-Eigenschaft „🖼️ Druckdatei") an die Printful-Variante-IDs andocken kann.
+#   Cloud kann Brave NICHT erreichen (PC-Port) → dieser Schritt MUSS am PC laufen. Bei Login/Zahlung-Blocker: STOPP + melden.
 # 🚚 WM-TRIKOT HAT KEIN FULFILLMENT-BACKEND (CizQ6 2026-07-03, teuer gelernt an Order #1005): Das Produkt
 #   "⚽ WM-Trikot selbst gestalten" (SKU WM-TRIKOT-RO-XL etc.) ist ein SELBST GEBAUTES Mockup-Produkt — nur mit Tag
 #   printful_personalized_product versehen, aber NIE zu Printful synchronisiert. Beweis: Variante tracked:false,
