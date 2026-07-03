@@ -366,60 +366,60 @@ const CONFIG = {
     ban: ['kinder', 'spielzeug', 'nordic walking pad', 'gehstock senioren', 'krücke'],
     bullets: ['Für jede Tour gerüstet', 'Leicht & robust', 'Bequem auf langen Wegen', '100% Original, schnelle EU-Lieferung'] },
   knipex: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'knipex', 'heimwerker', 'profi', 'zange', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'knipex', 'heimwerker', 'profi', 'zange', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['knipex'],
     ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original KNIPEX – Made in Germany', 'Profi-Qualität für Handwerk & Werkstatt', 'Extrem langlebig & präzise', '100% Original, schnelle EU-Lieferung'] },
   wera: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'wera', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'wera', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['wera'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica', 'aloe', 'wera bella', 'primavera', 'severa'],
     bullets: ['Original WERA – Profi-Qualität', 'Schraubwerkzeug für Werkstatt & Montage', 'Ergonomisch & langlebig', '100% Original, schnelle EU-Lieferung'] },
   wiha: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'wiha', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'wiha', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['wiha'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original Wiha – Profi-Werkzeug', 'Präzise & robust', 'Für Handwerk & Elektro', '100% Original, schnelle EU-Lieferung'] },
   gedore: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'gedore', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'gedore', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['gedore'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original GEDORE – Made in Germany', 'Profi-Handwerkzeug', 'Extrem belastbar', '100% Original, schnelle EU-Lieferung'] },
   bahco: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'bahco', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'bahco', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['bahco'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original BAHCO – Profi-Werkzeug', 'Sägen, Zangen & Schlüssel', 'Robust & langlebig', '100% Original, schnelle EU-Lieferung'] },
   facom: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'facom', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'facom', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['facom'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original FACOM – Profi-Werkzeug', 'Für Werkstatt & KFZ', 'Präzise & belastbar', '100% Original, schnelle EU-Lieferung'] },
   hazet: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'hazet', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'hazet', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['hazet'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original HAZET – Made in Germany', 'Profi-Werkstattwerkzeug', 'Extrem langlebig', '100% Original, schnelle EU-Lieferung'] },
   makita: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'makita', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'makita', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['makita'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original Makita – Profi-Elektrowerkzeug', 'Bohren, Schrauben, Schleifen', 'Kraftvoll & zuverlässig', '100% Original, schnelle EU-Lieferung'] },
   milwaukee: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'milwaukee', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'milwaukee', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['milwaukee'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica', 'brewers', 'bucks'],
     bullets: ['Original Milwaukee – Profi-Power', 'Akku-Werkzeug für harte Einsätze', 'Robust & leistungsstark', '100% Original, schnelle EU-Lieferung'] },
   dewalt: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'dewalt', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'dewalt', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['dewalt'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original DeWalt – Profi-Elektrowerkzeug', 'Kraftvoll auf der Baustelle', 'Langlebig & robust', '100% Original, schnelle EU-Lieferung'] },
   metabo: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'metabo', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'metabo', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['metabo'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original Metabo – Made in Germany', 'Profi-Elektrowerkzeug', 'Präzise & kraftvoll', '100% Original, schnelle EU-Lieferung'] },
   hikoki: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'hikoki', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'hikoki', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['hikoki', 'hitachi power', 'metabo hpt'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
     bullets: ['Original HiKOKI – Profi-Elektrowerkzeug', 'Kraftvoll & ausdauernd', 'Für harte Einsätze', '100% Original, schnelle EU-Lieferung'] },
   boschpro: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'bosch', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'bosch', 'elektrowerkzeug', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['bosch professional'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica', 'kühlschrank', 'waschmaschine', 'geschirrspüler', 'staubsauger', 'kaffee', 'backofen', 'akku-schrauber spielzeug'],
     bullets: ['Original Bosch Professional', 'Blaue Profi-Serie für Handwerk', 'Kraftvoll & langlebig', '100% Original, schnelle EU-Lieferung'] },
   stanley: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
-    extraTags: ['werkzeug', 'stanley', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    extraTags: ['werkzeug', 'stanley', 'heimwerker', 'profi', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400, word: true,
     anchor: ['stanley'], ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica', 'thermo', 'thermos', 'becher', 'trinkflasche', 'flasche', 'tasse', 'isolierflasche', 'kühlbox', 'lunchbox', 'cooler', 'mug', 'termo', 'botella', 'stanley cup'],
     bullets: ['Original STANLEY – Werkzeug-Klassiker', 'Für Handwerk & Heimwerker', 'Robust & bewährt', '100% Original, schnelle EU-Lieferung'] },
   buero: { coll: { handle: 'buero-schreibwaren', title: '🖊️ Büro & Schreibwaren', tag: 'buero' },
@@ -576,11 +576,15 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     const cfg = CONFIG[cat]; if (!cfg) { console.log(`Unbekannte Kategorie ${cat}`); continue; }
     console.log(`\n=== ${cat.toUpperCase()} (${cfg.coll.title}) ===`);
     // 1) Kandidaten: on-brand Name-Match aus productsinformation + Ban-Filter
+    // cfg.word=true → Anker als GANZES Wort (Wortgrenze), damit z.B. Marke "wera" nicht in "Powera" trifft.
+    const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const wordHit = (nm, a) => new RegExp(`(^|[^a-z0-9])${reEsc(a)}([^a-z0-9]|$)`, 'i').test(nm);
     const cand = info.filter(p => {
       const nm = (p.name || '').toLowerCase(); if (!nm) return false;
       if (GLOBAL_BAN.some(x => nm.includes(x))) return false; // Wholesale-Multipacks etc. global ausschliessen
       if (ADULT_BAN.some(x => nm.includes(x))) return false;  // Adult/Erotik nie (massage/yoga-Anker zogen Sex-Toys)
-      return cfg.anchor.some(a => nm.includes(a)) && !(cfg.ban || []).some(x => nm.includes(x));
+      const hit = cfg.word ? cfg.anchor.some(a => wordHit(nm, a)) : cfg.anchor.some(a => nm.includes(a));
+      return hit && !(cfg.ban || []).some(x => nm.includes(x));
     });
     console.log(`  ${cand.length} on-brand Kandidaten im Katalog.`);
     // 2) Pro Kandidat: Detail (Preis/aktiv) + Bilder prüfen, bis PER Picks
