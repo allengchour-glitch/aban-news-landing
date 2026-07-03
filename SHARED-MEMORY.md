@@ -2139,3 +2139,9 @@ Joysticks/Handhelds) → 45 Produkte (Retro-Handhelds, Bluetooth-Controller, Hal
 **📌 2026-07-02 (Nachtrag — CJ Pet +40 & Sport +40):** cj_category_fill GRP=pet (Kau-/Chase-/Sound-Spielzeug, Näpfe,
 Futterspender) + sport (Balance-Scooter, Velo-Helme/-Lichter, Fitness, Camping) — echte DE-Namen via Gemini.
 Tags haustier→sub-haustier, sport→sport-outdoor/fitness.
+
+**📌 2026-07-02 (Nachtrag — CSV-Importer kann jetzt ENGLISCH→DE übersetzen):** `bigbuy_csv_import.mjs TRANSLATE=1`
+→ Gemini übersetzt englische Feed-Namen ins Deutsche beim Import (Netzteil/Lüfter/Wärmeleitpaste…). Für englische
+Refurbished-Feeds (z.B. products_15: PC-Gehäuse/Netzteile/RAM). Langsam (~1 Produkt/5s wg. Gemini). Deutsche Feeds
+(1–7) laufen OHNE TRANSLATE (schnell). Englischer ALLGEMEIN-Katalog (9-13) bleibt übersprungen (Überschneidung+Müll).
+Refurbished-Total wächst weiter. „fix alles+SEO": 299 SEO-Texte gefüllt, englische Reste gedraftet.
