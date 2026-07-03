@@ -2135,3 +2135,7 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 **📌 2026-07-02 (🎮 CJ-Gaming +45 — PS4/PS5/Xbox-Zubehör):** cj_category_fill GRP=gaming (CJ Gamepads/Konsolen/
 Joysticks/Handhelds) → 45 Produkte (Retro-Handhelds, Bluetooth-Controller, Halter) mit echten Namen via Gemini →
 `gaming`-Collection (182→226). Tag `gaming` matcht Regel TAG=Gaming (case-insensitiv).
+
+**📌 2026-07-02 (Nachtrag — CJ Pet +40 & Sport +40):** cj_category_fill GRP=pet (Kau-/Chase-/Sound-Spielzeug, Näpfe,
+Futterspender) + sport (Balance-Scooter, Velo-Helme/-Lichter, Fitness, Camping) — echte DE-Namen via Gemini.
+Tags haustier→sub-haustier, sport→sport-outdoor/fitness.
