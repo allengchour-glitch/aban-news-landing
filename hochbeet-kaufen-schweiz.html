@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
       "name": "Wie viel Gewicht trägt ein Balkon für ein Hochbeet?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Die Schweizer Norm für Balkone liegt bei rund 300 kg/m². Altbauten können weniger tragen. Da 1 Liter Erde etwa 1 kg wiegt, empfiehlt sich für Balkon-Hochbeete eine Mischung aus Leichterde und Perlit, um das Gesamtgewicht zu reduzieren. Vor dem Aufstellen den Vermieter oder Statiker befragen."
+        "text": "Die Schweizer Norm für Balkone (SIA 261) liegt bei rund 300 kg/m². Altbauten können weniger tragen. Da 1 Liter Erde etwa 1 kg wiegt, empfiehlt sich für Balkon-Hochbeete eine Mischung aus Leichterde und Perlit, um das Gesamtgewicht zu reduzieren. Vor dem Aufstellen den Vermieter informieren und im Zweifel einen Statiker befragen."
       }
     },
     {
@@ -59,7 +59,7 @@
   "@type": "Article",
   "headline": "Hochbeet kaufen Schweiz 2026",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-27",
+  "dateModified": "2026-07-03",
   "author": {"@id": "https://abannews.com/#person"},
   "publisher": {"@id": "https://abannews.com/#org"},
   "mainEntityOfPage": "https://abannews.com/hochbeet-kaufen-schweiz.html",
@@ -68,6 +68,17 @@
     "@type": "SpeakableSpecification",
     "cssSelector": ["h1", ".answer-first"]
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Start", "item": "https://abannews.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Kaufberater Schweiz", "item": "https://abannews.com/kaufberater-schweiz.html"},
+    {"@type": "ListItem", "position": 3, "name": "Hochbeet kaufen Schweiz 2026", "item": "https://abannews.com/hochbeet-kaufen-schweiz.html"}
+  ]
 }
 </script>
 <style>
@@ -81,12 +92,20 @@
   --muted:#6b7280;
   --line:#d9f99d;
   --bg:#f9fef0;
-  --card:#fff
+  --card:#fff;
+  --accent:#4d7c0f
 }
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;color:var(--ink);background:var(--bg)}
 a{color:var(--amber-dk)}
 a:hover{color:#2d4a0a}
 .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.topnav{position:sticky;top:0;z-index:60;background:#14210f;border-bottom:1px solid rgba(163,230,53,.25)}
+.tn-in{max-width:960px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.tn-brand{font-weight:800;color:#fff;text-decoration:none;font-size:1.08rem;letter-spacing:.02em}
+.tn-brand:hover{color:#d9f99d}
+.tn-links{display:flex;gap:18px;flex-wrap:wrap}
+.tn-links a{color:#d9f99d;text-decoration:none;font-size:.88rem;font-weight:600}
+.tn-links a:hover{color:#fff}
 .hero{background:linear-gradient(135deg,#14210f,#365314 55%,#4d7c0f);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(163,230,53,.2),transparent 45%),radial-gradient(circle at 8% 90%,rgba(77,124,15,.28),transparent 42%);pointer-events:none}
 .hero .wm{position:absolute;right:-10px;bottom:-18px;font-size:8rem;opacity:.08;pointer-events:none;user-select:none;z-index:0}
@@ -124,10 +143,6 @@ details p{margin-top:9px;color:var(--ink2);font-size:.95rem;margin-bottom:0}
 .cta-box a.btn:hover{background:var(--amber-dk)}
 .nl{background:var(--cream);border:1px solid #a3e635;border-radius:14px;padding:20px;text-align:center;margin-top:26px}
 .nl p{font-size:.88rem;color:var(--ink2);margin:5px 0 12px}
-.nl form{display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap}
-.nl input[type=email]{flex:1;min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem}
-.nl button{background:var(--amber);color:#fff;border:0;border-radius:24px;padding:10px 20px;font-weight:700;cursor:pointer;font-size:.95rem}
-.nl button:hover{background:var(--amber-dk)}
 .rel{margin-top:20px;font-size:.9rem;color:var(--muted)}
 .rel a{color:var(--muted)}
 .rel a:hover{color:var(--amber-dk)}
@@ -143,7 +158,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var
 footer a{color:var(--muted)}
 footer a:hover{color:var(--amber-dk)}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
-@media(max-width:520px){.hero h1{font-size:1.35rem}.tips{grid-template-columns:1fr}}
+@media(max-width:520px){.hero h1{font-size:1.35rem}.tips{grid-template-columns:1fr}.tn-links{gap:10px}.tn-links a{font-size:.8rem}}
 </style>
 <style data-aban-compare-css>
 .ctable{width:100%;border-collapse:collapse;margin:6px 0 22px;font-size:.91rem}
@@ -157,6 +172,17 @@ footer a:hover{color:var(--amber-dk)}
 </style>
 </head>
 <body>
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
+
 <nav class="abn-bc" style="max-width:760px;margin:0 auto;padding:9px 18px;font-size:.8rem;color:#6b7280" aria-label="Brotkrumen">
   <a href="/" style="color:var(--amber-dk)">Start</a> ›
   <a href="/kaufberater-schweiz.html" style="color:var(--amber-dk)">Kaufberater Schweiz</a> ›
@@ -164,11 +190,11 @@ footer a:hover{color:var(--amber-dk)}
 </nav>
 
 <header class="hero">
-  <div class="wm" aria-hidden="true">🌿</div>
+  <div class="wm" aria-hidden="true">🌱</div>
   <div class="in">
-    <div class="ic" aria-hidden="true">🌿</div>
+    <div class="ic" aria-hidden="true">🌱</div>
     <h1>Hochbeet kaufen Schweiz 2026 — Holz, Metall, Wicking &amp; Balkon-Varianten</h1>
-    <p>Materialwahl, Befüllung, Grösse, Balkon-Gewicht und Schweizer Preise auf einen Blick.</p>
+    <p>Materialwahl, Befüllung, Grösse, Balkon-Gewicht, Bewässerung, Schädlingsschutz und Schweizer Preise auf einen Blick.</p>
     <a class="bigcta" href="/angebote-suche.html?q=Hochbeet">Hochbeete vergleichen →</a>
     <div class="trust">
       <span>🇨🇭 Schweiz-fokussiert</span>
@@ -181,7 +207,7 @@ footer a:hover{color:var(--amber-dk)}
 <main>
 <div class="wrap">
 
-<p class="answer-first"><strong>Auf einen Blick:</strong> Lärchenholz ist in der Schweiz die beliebteste Wahl (natürlich, 10–15 Jahre haltbar). Cortenstahl hält Jahrzehnte, rostet nur aussen. Für Balkone sind Wicking-Modelle aus Kunststoff ideal — leichter und selbstbewässernd. Rückenfreundliche Höhe: 60–80 cm. Breite maximal 80–100 cm, damit man von allen Seiten bequem herankommt.</p>
+<p class="answer-first"><strong>Auf einen Blick:</strong> Lärchenholz ist in der Schweiz die beliebteste Wahl (natürlich, 10–15 Jahre haltbar). Cortenstahl hält Jahrzehnte, rostet nur aussen. Für Balkone sind Wicking-Modelle aus Kunststoff ideal — leichter und selbstbewässernd. Rückenfreundliche Höhe: 75–90 cm zum Stehen ohne Bücken, 60–75 cm für die meisten Gärtnerinnen und Gärtner. Breite maximal 80–100 cm, damit man von allen Seiten bequem herankommt. Preise reichen von CHF 50 für einfache Bausätze bis CHF 800 für massgefertigte Cortenstahl- oder Schreiner-Modelle.</p>
 
 <div class="tips">
   <div class="tip">
@@ -190,7 +216,7 @@ footer a:hover{color:var(--amber-dk)}
   </div>
   <div class="tip">
     <h3>Grösse &amp; Höhe</h3>
-    <p>Breite max. 80–100 cm, Höhe 60–80 cm. Rückenfreundlich und ohne Hocken erreichbar.</p>
+    <p>Breite max. 80–100 cm, Höhe 60–90 cm. Rückenfreundlich und ohne Hocken erreichbar.</p>
   </div>
   <div class="tip">
     <h3>Wicking-System</h3>
@@ -204,7 +230,7 @@ footer a:hover{color:var(--amber-dk)}
 
 <!-- ===== VERGLEICHSTABELLE ===== -->
 <div class="compare-section">
-  <h2>Materialvergleich: Holz, Metall, Kunststoff, Wicking</h2>
+  <h2>Materialvergleich: Holz, Metall, Kunststoff, WPC, Stein, Wicking</h2>
   <table class="ctable" data-aban-compare>
     <thead>
       <tr>
@@ -224,6 +250,14 @@ footer a:hover{color:var(--amber-dk)}
         <td>Natürlich, warm</td>
         <td>80–250</td>
         <td>Garten, Terrasse</td>
+      </tr>
+      <tr>
+        <td class="ck0">Douglasie</td>
+        <td>10–15 Jahre</td>
+        <td>Mittel</td>
+        <td>Natürlich, rötlich</td>
+        <td>90–260</td>
+        <td>Garten, Alternative zu Lärche</td>
       </tr>
       <tr>
         <td class="ck0">Fichtenholz</td>
@@ -250,6 +284,22 @@ footer a:hover{color:var(--amber-dk)}
         <td>Garten, günstig</td>
       </tr>
       <tr>
+        <td class="ck1">Stein/Beton</td>
+        <td>30+ Jahre</td>
+        <td>Sehr schwer</td>
+        <td>Massiv, dauerhaft</td>
+        <td>300–800</td>
+        <td>Feste Einbauten, Terrasse</td>
+      </tr>
+      <tr>
+        <td class="ck2">WPC (Holz-Kunststoff)</td>
+        <td>15–20 Jahre</td>
+        <td>Mittel</td>
+        <td>Holzoptik, pflegeleicht</td>
+        <td>150–400</td>
+        <td>Terrasse, wenig Pflege</td>
+      </tr>
+      <tr>
         <td class="ck2">Kunststoff (PP/PE)</td>
         <td>10–20 Jahre</td>
         <td>Leicht</td>
@@ -272,11 +322,11 @@ footer a:hover{color:var(--amber-dk)}
 <!-- ===== MATERIALWAHL ===== -->
 <h2>1. Materialwahl: Was hält wie lange?</h2>
 
-<h3 class="sub">Lärchenholz — Schweizer Favorit</h3>
-<p>Lärchenholz ist in der Schweiz die mit Abstand beliebteste Wahl für Hochbeete. Das Holz enthält natürliche Öle und Harze, die es witterungsbeständig machen — ohne chemische Behandlung. Im Aussenbereich hält Lärche unter normalen Bedingungen 10 bis 15 Jahre, manchmal länger. Die Optik ist warm und fügt sich harmonisch in jeden Garten ein. Der Nachteil: Lärchenholz ist teurer als Fichte und schwerer zu beschaffen.</p>
+<h3 class="sub">Lärchenholz und Douglasie — Schweizer Favoriten</h3>
+<p>Lärchenholz ist in der Schweiz die mit Abstand beliebteste Wahl für Hochbeete. Das Holz enthält natürliche Öle und Harze, die es witterungsbeständig machen — ohne chemische Behandlung. Im Aussenbereich hält Lärche unter normalen Bedingungen 10 bis 15 Jahre, manchmal länger. Die Optik ist warm und fügt sich harmonisch in jeden Garten ein. Douglasie ist eine gute Alternative mit ähnlicher Haltbarkeit und einem etwas rötlicheren Farbton. Beide Holzarten kommen oft aus Schweizer oder süddeutschen Wäldern, was kurze Transportwege bedeutet. Der Nachteil: Beide sind teurer als Fichte und in grossen Stärken (4–5 cm) nicht überall auf Lager.</p>
 
 <h3 class="sub">Fichtenholz — günstiger Einstieg</h3>
-<p>Viele Bausatz-Hochbeete aus dem Handel bestehen aus Fichtenholz. Es ist günstiger und leicht zu bearbeiten, aber weniger witterungsbeständig als Lärche. Ohne Schutzanstrich oder Folie im Innern hält Fichte im Aussenbereich rund 5–8 Jahre. Eine Folie im Innenbereich (nicht auf Lebensmittelkontakt ausgelegt) oder ein jährlicher Leinöl-Anstrich verlängert die Lebensdauer spürbar.</p>
+<p>Viele Bausatz-Hochbeete aus dem Handel bestehen aus Fichtenholz. Es ist günstiger und leicht zu bearbeiten, aber weniger witterungsbeständig als Lärche oder Douglasie. Ohne Schutzanstrich oder Folie im Innern hält Fichte im Aussenbereich rund 5–8 Jahre. Eine Folie im Innenbereich (nicht auf Lebensmittelkontakt ausgelegt) oder ein jährlicher Leinöl-Anstrich verlängert die Lebensdauer spürbar.</p>
 
 <h3 class="sub">Cortenstahl — modern und dauerhaft</h3>
 <p>Cortenstahl bildet absichtlich eine Rostschicht an der Oberfläche, die das darunter liegende Metall schützt. Innen rostet er nicht. Cortenstahl-Hochbeete sehen modern und urban aus und halten bei korrekter Verarbeitung mehrere Jahrzehnte. Sie sind schwerer als Holz und teurer, eignen sich aber hervorragend für gepflegte Design-Gärten. Beim Kauf auf saubere Schweissnähte und eine Mindestblechstärke von 2 mm achten.</p>
@@ -284,18 +334,30 @@ footer a:hover{color:var(--amber-dk)}
 <h3 class="sub">Verzinkter Stahl — günstige Langzeit-Option</h3>
 <p>Verzinkte Stahl-Hochbeete — oft als Wellblech-Hochbeet angeboten — sind günstig, leicht aufzubauen und sehr langlebig. Die Verzinkung schützt vor Rost. Optisch wirken sie etwas industriell, was aber in modernen Gärten gut aussieht. Vorsicht: minderwertige Produkte aus dünnem Blech verformen sich unter dem Druck der Erde.</p>
 
+<h3 class="sub">Stein und Beton — massiv und dauerhaft</h3>
+<p>Gemauerte oder aus Betonsteinen aufgebaute Hochbeete sind die dauerhafteste, aber auch teuerste und schwerste Lösung. Sie eignen sich für feste Einbauten im Garten, nicht für Balkone oder wechselnde Standorte. Vorteile sind die enorme Haltbarkeit (30 Jahre und mehr), gute Wärmespeicherung und eine repräsentative Optik. Nachteile sind hohe Kosten, aufwändiger Aufbau und die fehlende Flexibilität — ein einmal gemauertes Hochbeet lässt sich nicht mehr versetzen.</p>
+
+<h3 class="sub">WPC — Holz-Kunststoff-Verbund</h3>
+<p>WPC (Wood-Plastic-Composite) verbindet Holzfasern mit Kunststoff. Das Ergebnis sieht aus wie Holz, verrottet aber nicht und braucht keinen Anstrich. WPC-Hochbeete kosten mehr als reines Holz, halten dafür 15–20 Jahre ohne Pflege. Für Terrassen, auf denen ein natürlicher Look gewünscht ist, aber niemand Zeit für Holzpflege hat, ist WPC ein guter Kompromiss.</p>
+
 <h3 class="sub">Kunststoff — leicht, pflegeleicht, für den Balkon</h3>
 <p>Hochbeete aus Polypropylen (PP) oder Polyethylen (PE) sind leicht, frost- und witterungsbeständig und brauchen keine Pflege. Ihre Optik wirkt weniger natürlich als Holz. Für den Balkon sind sie ideal, weil sie das Gesamtgewicht deutlich reduzieren. Auf UV-Stabilisierung achten — minderwertige Kunststoffe werden spröde.</p>
 
-<!-- ===== GRÖSSE ===== -->
-<h2>2. Grösse: Breite, Höhe und Länge richtig wählen</h2>
+<!-- ===== GRÖSSE / ERGONOMIE ===== -->
+<h2>2. Grösse, Höhe und Ergonomie: Rückenschonend gärtnern</h2>
 <p>Die Breite ist die wichtigste Masse. Faustregel: Von einer Seite bepflanzbar = max. 60–80 cm. Von beiden Seiten zugänglich = max. 100–120 cm. Bei mehr Breite reicht der Arm nicht mehr in die Mitte — man müsste ins Beet steigen und beschädigt die Erde.</p>
 <ul>
   <li><strong>Höhe 40–50 cm:</strong> Einstiegsklasse, für kniende Arbeit geeignet</li>
-  <li><strong>Höhe 60–70 cm:</strong> Standard für die meisten Gärtnerinnen, angenehmes Arbeiten</li>
-  <li><strong>Höhe 80–90 cm:</strong> Rückenfreundlichste Variante, ideal bei Rückenproblemen</li>
+  <li><strong>Höhe 60–75 cm:</strong> Standard für die meisten Gärtnerinnen und Gärtner, angenehmes Arbeiten im Sitzen oder leicht gebückt</li>
+  <li><strong>Höhe 75–90 cm:</strong> Rückenschonendste Variante — Arbeiten im Stehen, ohne sich zu bücken. Empfohlen bei Rückenproblemen, Knieproblemen oder für ältere Gärtnerinnen und Gärtner</li>
   <li><strong>Länge:</strong> Beliebig — 80 cm bis mehrere Meter, je nach Platzverhältnissen</li>
 </ul>
+
+<h3 class="sub">Altersgerechtes Gärtnern</h3>
+<p>Für Menschen mit eingeschränkter Beweglichkeit oder im Rollstuhl empfehlen sich Hochbeete mit 75–90 cm Höhe und einer maximalen Breite von 60 cm, damit man sitzend beidseitig erreichen kann. Manche Anbieter führen spezielle „Seniorenhochbeete" mit abgerundeten Kanten, rutschfesten Standfüssen und optionaler Unterfahrbarkeit für Rollstühle. In Alters- und Pflegeheimen sowie bei Reha-Gärten in der Schweiz sind solche Modelle zunehmend Standard, weil sie selbstständiges Gärtnern ohne Helfer ermöglichen.</p>
+
+<h3 class="sub">Balkon-Hochbeete: niedriger und kompakter</h3>
+<p>Auf Balkon und Terrasse sind niedrigere Modelle (30–50 cm) oft praktischer, weil sie weniger wiegen und sich leichter transportieren lassen. Wer Rückenschonung will, stellt ein niedriges Hochbeet auf einen stabilen Rollwagen oder ein Podest — das kombiniert Ergonomie mit geringem Gewicht.</p>
 
 <div class="callout">
   <strong>Tipp:</strong> Wer viele Pflanzen und wenig Platz hat, kombiniert ein langes Hochbeet (120–200 cm) mit einem kurzen zweiten, um den Garten effizient zu nutzen.
@@ -305,11 +367,14 @@ footer a:hover{color:var(--amber-dk)}
 <h2>3. Befüllung: Die Lasagne-Methode</h2>
 <p>Die Befüllmethode hat grossen Einfluss auf Pflanzenwachstum und Haltbarkeit. Die sogenannte Lasagne-Methode nutzt biologisches Material, das sich langsam zersetzt und dabei Wärme erzeugt — ideal für eine frühere Ernte.</p>
 <ol>
-  <li><strong>Unterste Schicht (10–20 cm):</strong> Grobe Äste, Holzschnitt, Stroh oder Zapfen. Sorgt für Drainage und zersetzt sich langsam zu Humus.</li>
+  <li><strong>Drainage-Schicht (10–20 cm):</strong> Grobe Äste, Holzschnitt, Stroh oder Zapfen. Sorgt für Wasserabzug und zersetzt sich langsam zu Humus.</li>
   <li><strong>Mittlere Schicht (10–15 cm):</strong> Grünschnitt, Laub, halb verrotteter Kompost. Hier entsteht die meiste Wärme durch Zersetzung.</li>
   <li><strong>Obere Schicht (20–30 cm):</strong> Hochwertige Gartenerde gemischt mit reifem Kompost (Verhältnis ca. 60:40). Das ist die Pflanzschicht.</li>
 </ol>
 <p>Der Vorteil: Das Hochbeet wärmt sich durch die biologische Aktivität auf — die Bodentemperatur liegt oft 5–10 °C höher als auf ebener Erde. Das erlaubt eine frühere Aussaat (ab Februar/März) und eine längere Saison bis in den Herbst.</p>
+
+<h3 class="sub">Selbstkompostierte Schweizer Gartenabfälle nutzen</h3>
+<p>Für die Drainage- und Mittelschicht eignen sich Schnittgut aus dem eigenen Garten hervorragend: Baum- und Heckenschnitt (grob gehäckselt), Rasenschnitt in dünnen Lagen (nicht zu dick, sonst fault er ohne Sauerstoff), Laub im Herbst und Küchenabfälle aus dem eigenen Komposthaufen. Wer keinen eigenen Kompost hat, kann bei vielen Gemeinden Grüngut in haushaltsüblichen Mengen kostenlos oder gegen eine kleine Gebühr an der Sammelstelle abgeben oder in umgekehrter Richtung fertigen Kompost beziehen. Das reduziert Kosten und schliesst den Kreislauf im eigenen Garten.</p>
 <p>Wichtig: Das Volumen der Füllung setzt sich im ersten Jahr um bis zu 20 % ab. Jährlich 5–10 cm Kompost nachfüllen, um den Stand zu halten.</p>
 
 <!-- ===== WICKING ===== -->
@@ -336,7 +401,7 @@ footer a:hover{color:var(--amber-dk)}
 </div>
 
 <!-- ===== BALKON ===== -->
-<h2>5. Hochbeet auf dem Balkon: Gewicht und Planung</h2>
+<h2>5. Hochbeet auf Balkon und Terrasse: Gewicht, Miete und Bewilligung</h2>
 <p>Der grösste Fehler bei Balkon-Hochbeeten ist das Unterschätzen des Gewichts. Erde ist schwer: 1 Liter normale Gartenerde wiegt rund 1 kg. Ein Hochbeet mit 100 Litern Inhalt bringt also schon 100 kg auf die Waage — plus das Eigengewicht des Behälters.</p>
 
 <h3 class="sub">Belastungsgrenzen in der Schweiz</h3>
@@ -347,18 +412,113 @@ footer a:hover{color:var(--amber-dk)}
   <li>Das Hochbeet möglichst an einer tragenden Wand (Gebäudeseite) aufstellen</li>
 </ul>
 
+<h3 class="sub">Mietwohnung: Was braucht eine Bewilligung?</h3>
+<p>Wer zur Miete wohnt, muss die Mietsache gemäss <strong>Art. 257f OR</strong> sorgfältig behandeln und auf Nachbarn Rücksicht nehmen. Ein leichtes, freistehendes Hochbeet auf dem Balkon fällt in der Regel unter den normalen, vertragsgemässen Gebrauch und braucht keine gesonderte Erlaubnis. Anders sieht es aus bei:</p>
+<ul>
+  <li><strong>Bohrungen oder festen Befestigungen</strong> an Balkonbrüstung oder Fassade — hier ist die Zustimmung des Vermieters nötig</li>
+  <li><strong>Sehr schweren Hochbeeten</strong> nahe der Tragfähigkeitsgrenze — der Vermieter sollte informiert werden, auch um Haftungsfragen zu klären</li>
+  <li><strong>Sichtbarkeit von der Strasse oder für Nachbarn</strong> — in manchen Stockwerkeigentümer-Reglementen ist die Aussenoptik des Balkons geregelt</li>
+</ul>
+<p>Im Zweifel lohnt sich eine kurze schriftliche Anfrage an die Verwaltung — das schützt vor Streit und im schlimmsten Fall vor einer Rückbauforderung.</p>
+
+<h3 class="sub">Dachterrassen-Nutzung</h3>
+<p>Dachterrassen tragen oft mehr als klassische Balkone, weil sie direkt auf der Gebäudedecke aufliegen, aber auch hier gilt: die Statik im Baugesuch oder beim Verwalter prüfen lassen, besonders bei mehreren grossen Hochbeeten. Zusätzlich ist auf die Abdichtung der Dachhaut zu achten — Hochbeete sollten auf Unterlegklötzen oder Drainage-Matten stehen, damit Staunässe die Abdichtung nicht beschädigt und Kontrollgänge für die Hausverwaltung möglich bleiben.</p>
+
 <h3 class="sub">Gewicht reduzieren</h3>
 <ul>
-  <li><strong>Leichterde</strong> (Torffrei, mit Perlite) statt schwerer Gartenerde: ca. 0,4–0,6 kg/L</li>
-  <li><strong>Perlite oder Blähton</strong> als Drain-Schicht statt Holz und Steine</li>
+  <li><strong>Leichterde</strong> (torffrei, mit Perlit) statt schwerer Gartenerde: ca. 0,4–0,6 kg/L</li>
+  <li><strong>Perlit oder Blähton</strong> als Drainage-Schicht statt Holz und Steine</li>
   <li><strong>Kompaktere Masse:</strong> Hochbeet 30–40 cm tief statt 80 cm — reicht für die meisten Kräuter und Salate</li>
   <li>Kunststoff-Hochbeet statt Holz oder Metall: deutlich leichter</li>
 </ul>
-
 <p>Unbedingt auf Abfluss achten: Ohne Abflusslöcher staut sich Wasser und schädigt die Wurzeln. Unter das Hochbeet eine Abtropfwanne oder eine Drainage-Matte legen, die Wasser sammelt und nicht den Balkonboden beschädigt.</p>
 
+<!-- ===== BEWÄSSERUNG ===== -->
+<h2>6. Bewässerung: Systeme, Regenwasser und Tröpfchenbewässerung</h2>
+<p>Ein Hochbeet trocknet wegen der guten Drainage und der erhöhten Position schneller aus als ein Gartenbeet auf ebener Erde. Eine durchdachte Bewässerung entscheidet über Ertrag und Zeitaufwand.</p>
+
+<h3 class="sub">Automatische Bewässerungssysteme</h3>
+<p>Für alle, die nicht täglich giessen wollen oder oft abwesend sind, lohnt sich ein Bewässerungscomputer mit Zeitschaltuhr. Ein Perlschlauch oder Tropfschlauch wird knapp unter der Erdoberfläche verlegt und gibt Wasser direkt an der Wurzel ab — das spart bis zu 50 % Wasser gegenüber dem Giessen mit der Kanne und reduziert Pilzkrankheiten, weil das Blattwerk trocken bleibt. Batteriebetriebene Bewässerungscomputer aus dem Gartenfachhandel reichen für die meisten Hochbeet-Grössen aus und kosten CHF 30–80.</p>
+
+<h3 class="sub">Tröpfchenbewässerung im Detail</h3>
+<p>Bei der Tröpfchenbewässerung wird ein Schlauch mit eingebauten Tropfstellen (Abstand meist 20–30 cm) mäanderförmig im Hochbeet verlegt. Der Wasserdruck sollte über einen Druckminderer reguliert werden, damit die Tropfstellen nicht überlastet werden. Für ein Hochbeet von 100×50 cm reichen meist 2–3 Schlauchbahnen. Die Investition (Schlauch, Verbinder, Druckminderer) liegt bei CHF 40–100 und amortisiert sich durch den geringeren Wasserverbrauch schnell.</p>
+
+<h3 class="sub">Regenwasser sinnvoll kombinieren</h3>
+<p>Das Sammeln von Regenwasser für den Garten ist in der Schweiz grundsätzlich erlaubt, unterliegt aber kantonalen Regelungen. In den meisten Kantonen darf Regenwasser in Tonnen oder Zisternen gesammelt und für die Gartenbewässerung genutzt werden. Eine Regentonne (200–300 Liter) neben dem Hochbeet, kombiniert mit einer kleinen Tauchpumpe und dem Tropfschlauch-System, ergibt eine kostenlose, halbautomatische Bewässerung: Die Pumpe fördert Regenwasser aus der Tonne durch den Bewässerungscomputer ins Hochbeet. Das reduziert den Trinkwasserverbrauch und liefert kalkfreies Wasser, das viele Pflanzen bevorzugen. Vor der Installation einer grösseren Zisterne die kantonale Wassergesetzgebung prüfen.</p>
+
+<!-- ===== SCHÄDLINGSSCHUTZ ===== -->
+<h2>7. Schädlingsschutz: Schnecken, Vögel und Wühlmäuse</h2>
+<p>Ein Hochbeet ist zwar besser vor Bodenschädlingen geschützt als ein ebenes Beet, aber nicht automatisch schädlingsfrei. In der Schweiz sind vor allem drei Problemgruppen relevant.</p>
+
+<h3 class="sub">Schneckenzaun gegen Nacktschnecken</h3>
+<p>Die Spanische Wegschnecke ist in weiten Teilen der Schweiz das grösste Problem für Salate, Kohl und junge Setzlinge. Ein Schneckenzaun (gebogenes Profil aus Metall oder Kunststoff, das oben nach aussen abgewinkelt ist) am oberen Rand des Hochbeets verhindert, dass Schnecken über die Wand kriechen können. Alternativ funktioniert ein umlaufendes Kupferband, weil die Schnecken einen leichten Stromschlag durch die Oxidation vermeiden. Wichtig: Das Hochbeet selbst schützt schon einen Teil, weil Schnecken raue Holzkanten und Höhe meiden — ein Zaun ist aber die zuverlässigere Lösung bei starkem Befall.</p>
+
+<h3 class="sub">Vogelnetz für Beeren und Jungpflanzen</h3>
+<p>Amseln und andere Vögel picken gerne Beeren, aber auch frisch gesäte Samen und junge Triebe. Ein feinmaschiges Vogelnetz, das über einen Bogenrahmen gespannt wird, schützt Erdbeeren und Beerensträucher im Hochbeet zuverlässig, ohne die Pflanzen im Wachstum zu behindern. Bei Aussaat von Salat oder Kräutern reicht oft schon ein Kulturschutznetz (Vlies), das zusätzlich vor Frost und Insekten schützt.</p>
+
+<h3 class="sub">Wühlmausgitter gegen die Schermaus</h3>
+<p>Die Schermaus (im Volksmund oft „Wühlmaus" genannt) ist in vielen Schweizer Regionen ein ernsthaftes Problem für Wurzeln und Knollen. Da ein Hochbeet erhöht steht, ist der Schutz einfacher als im Gartenbeet: Ein feinmaschiges Volierendraht-Gitter (Maschenweite max. 13 mm) wird vor dem Befüllen auf dem Boden des Hochbeets ausgelegt und an den Seitenwänden hochgezogen. So können Wühlmäuse nicht von unten eindringen. Bei bereits befüllten Hochbeeten lässt sich das Gitter nachträglich nur mit Aufwand einbauen — deshalb gehört es von Anfang an in die Planung.</p>
+
+<div class="callout">
+  <strong>Weitere Schweizer Gartenschädlinge:</strong> Dickmaulrüssler-Larven schädigen Wurzeln (Nützlingseinsatz mit Nematoden hilft), Blattläuse lassen sich mit Marienkäfern oder Schmierseifenlösung eindämmen. Ein Hochbeet mit sauberem Rand und regelmässiger Kontrolle bleibt meist deutlich schädlingsärmer als ein offenes Gartenbeet.
+</div>
+
+<!-- ===== KLIMA / HÖHENLAGEN ===== -->
+<h2>8. Schweizer Klima und Höhenlagen: Vegetationsperiode verlängern</h2>
+<p>Die Schweiz hat je nach Region und Höhenlage sehr unterschiedliche Vegetationsperioden. Am Genfersee oder im Tessin kann von März bis November angebaut werden, in Bergregionen wie Graubünden oder dem Oberwallis bleiben oft nur 3–4 Monate frostfreie Zeit.</p>
+
+<table class="price-table">
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Höhenlage</th>
+      <th>Frostfreie Zeit (ca.)</th>
+      <th>Hochbeet-Empfehlung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Genfersee, Tessin</td>
+      <td>bis 500 m ü. M.</td>
+      <td>März–November</td>
+      <td>Kaum Zusatzschutz nötig, lange Saison</td>
+    </tr>
+    <tr>
+      <td>Mittelland (Zürich, Bern, Basel)</td>
+      <td>400–700 m ü. M.</td>
+      <td>April–Oktober</td>
+      <td>Mulchen im Herbst, Vlies bei Spätfrost</td>
+    </tr>
+    <tr>
+      <td>Voralpen, Mittelgebirge</td>
+      <td>700–1000 m ü. M.</td>
+      <td>Mai–September</td>
+      <td>Frühbeet-Aufsatz empfohlen</td>
+    </tr>
+    <tr>
+      <td>Alpine Lagen (Graubünden, Oberwallis)</td>
+      <td>über 1000 m ü. M.</td>
+      <td>Juni–August/September</td>
+      <td>Frühbeet-Aufsatz + starkes Mulchen Pflicht</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="sub">Kurze Vegetationsperiode in Bergregionen</h3>
+<p>In Höhenlagen ab etwa 1000 m ü. M. verkürzt sich die frostfreie Zeit deutlich, und Spätfröste bis in den Juni hinein sind möglich. Ein Hochbeet hilft hier doppelt: Es erwärmt sich durch die dunkle Erdoberfläche und die erhöhte Position schneller als der gewachsene Boden, und die Lasagne-Befüllung liefert zusätzliche Wärme durch die Verrottung. Damit lässt sich die effektive Anbausaison um mehrere Wochen verlängern.</p>
+
+<h3 class="sub">Frühbeet-Kombination</h3>
+<p>Ein Frühbeet-Aufsatz — ein transparenter Deckel aus Glas, Plexiglas oder Folie auf einem Rahmen, der auf das Hochbeet gesetzt wird — verwandelt das Hochbeet in ein Mini-Gewächshaus. Das erlaubt eine Aussaat schon im Februar/März, auch in höheren Lagen, weil der Deckel Frost und Wind abhält. Viele Hersteller bieten passende Aufsätze für Standardgrössen an; alternativ lässt sich ein einfacher Foliendach-Rahmen selbst bauen.</p>
+
+<h3 class="sub">Mulchen für Kälteschutz</h3>
+<p>Eine Mulchschicht aus Stroh, Rindenmulch oder Herbstlaub (5–10 cm) schützt den Boden vor Austrocknung im Sommer und vor Frost im Winter. In Höhenlagen ist Mulchen im Herbst besonders wichtig, um die Wurzeln mehrjähriger Pflanzen vor starkem Frost zu schützen. Zusätzlich verringert Mulch den Unkrautdruck und hält die Feuchtigkeit gleichmässiger.</p>
+
+<div class="callout">
+  <strong>Eisheilige beachten:</strong> Auch im Flachland gelten die „Eisheiligen" Mitte Mai als letzte Frostgefahr. Wärmeliebende Pflanzen (Tomaten, Peperoni) erst danach auspflanzen — in Höhenlagen entsprechend später.
+</div>
+
 <!-- ===== BEPFLANZUNG ===== -->
-<h2>6. Bepflanzung: Was wächst am besten im Hochbeet?</h2>
+<h2>9. Bepflanzung: Was wächst am besten im Hochbeet?</h2>
 <p>Das Hochbeet ist warm, gut drainiert und nährstoffreich — ideale Bedingungen für viele Nutzpflanzen. Wichtig ist die Tiefe der Wurzeln beim Planen.</p>
 
 <table class="price-table">
@@ -402,7 +562,7 @@ footer a:hover{color:var(--amber-dk)}
 <p><strong>Fruchtfolge:</strong> Gleiche Pflanzenfamilien nicht mehrere Jahre hintereinander am selben Ort pflanzen — wechseln reduziert Krankheitsdruck und erhält die Bodenqualität.</p>
 
 <!-- ===== CH-SPEZIFIK ===== -->
-<h2>7. Schweizer Besonderheiten: Erde, Kompost und Regenwasser</h2>
+<h2>10. Schweizer Besonderheiten: Erde, Kompost und torffreie Mischungen</h2>
 
 <h3 class="sub">Qualitätserde und Kompost</h3>
 <p>In der Schweiz produzieren Kehrichtverwertungsanlagen (KVA) und Kompostierwerke hochwertigen Kompost. Produkte mit dem Gütesiegel <strong>„Kompost Schweiz"</strong> (vergeben von Kompost Schweiz / ASCO) erfüllen definierte Qualitätsstandards bezüglich Schadstoffen, Reife und Nährstoffgehalt. Im Gartencenter erkennst du diese Produkte am entsprechenden Logo.</p>
@@ -412,21 +572,124 @@ footer a:hover{color:var(--amber-dk)}
   <li>Kommunale Kompostplätze bieten in manchen Kantonen kostenlosen Kompost an</li>
 </ul>
 
-<h3 class="sub">Regenwasser auffangen</h3>
-<p>Das Auffangen von Regenwasser für den Garten ist in der Schweiz grundsätzlich erlaubt, unterliegt aber kantonalen Regelungen. In den meisten Kantonen darf man Regenwasser in Tonnen oder Zisternen sammeln und für die Gartenbewässerung nutzen. Einschränkungen betreffen vor allem die Nutzung im Haushalt. Vor der Installation einer Regenwasserzisterne die kantonale Wassergesetzgebung prüfen.</p>
-
 <h3 class="sub">Torffreie Erde</h3>
 <p>Torfabbau schädigt Moore — eine wichtige Kohlenstoffsenke. In der Schweiz gibt es eine starke Bewegung hin zu torffreier Erde. Die meisten grossen Anbieter (Migros, Landi, Hornbach) führen mittlerweile gute torffreie Hochbeetmischungen. Diese performen gleichwertig zu Torferde, wenn sie mit reifem Kompost gemischt werden.</p>
 
-<!-- ===== PFLEGE ===== -->
-<h2>8. Pflege und Winterschutz</h2>
+<!-- ===== GEMEINSCHAFTSGÄRTEN ===== -->
+<h2>11. Gemeinschaftsgärten in der Schweiz: Urban Gardening</h2>
+<p>Wer keinen eigenen Garten oder Balkon hat, muss auf das Hochbeet nicht verzichten. In den grösseren Schweizer Städten gibt es ein wachsendes Angebot an Gemeinschaftsgärten mit fertig installierten Hochbeeten.</p>
+
+<h3 class="sub">Zürich</h3>
+<p>Grün Stadt Zürich unterstützt zahlreiche Quartiergärten und Interkulturelle Gärten, in denen Bewohnerinnen und Bewohner ein eigenes Hochbeet-Parzellenstück gegen eine kleine Jahresgebühr pachten können. Genossenschaftliche Siedlungen bauen zunehmend eigene Gemeinschaftshochbeete direkt in Innenhöfen, oft organisiert über Siedlungsvereine.</p>
+
+<h3 class="sub">Basel</h3>
+<p>Die Stadtgärtnerei Basel und mehrere Quartiervereine betreiben interkulturelle Gärten mit Hochbeet-Parzellen, die besonders in dicht bebauten Quartieren beliebt sind. Wartelisten sind je nach Standort üblich, eine frühzeitige Anmeldung lohnt sich.</p>
+
+<h3 class="sub">Bern</h3>
+<p>Stadtgrün Bern fördert Quartiergärten und stellt teilweise städtische Flächen für Gemeinschaftsprojekte mit Hochbeeten zur Verfügung. Auch hier läuft die Vergabe meist über Quartiervereine oder eigens gegründete Gartengruppen.</p>
+
+<h3 class="sub">Genossenschaftsgärten und Quartiergärten allgemein</h3>
+<p>Das Prinzip ist in den meisten Städten ähnlich: Eine Trägerschaft (Verein, Genossenschaft oder Stadtverwaltung) stellt die Fläche, die Mitglieder bauen und pflegen die Hochbeete gemeinsam oder auf eigenen Parzellen. Mitgliedschaften kosten meist eine kleine Jahresgebühr (oft CHF 20–100) und beinhalten häufig Zugang zu Gemeinschaftswerkzeug, Wasseranschluss und organisiertem Kompost. Für Familien und Neuzuzüger sind solche Gärten auch ein guter Weg, das eigene Quartier kennenzulernen.</p>
+
+<table class="price-table">
+  <thead>
+    <tr>
+      <th>Stadt</th>
+      <th>Trägerschaft</th>
+      <th>Kosten pro Jahr</th>
+      <th>Warteliste</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Zürich</td>
+      <td>Grün Stadt Zürich, Quartiervereine, Siedlungsgenossenschaften</td>
+      <td>meist CHF 20–80</td>
+      <td>Häufig, je nach Quartier</td>
+    </tr>
+    <tr>
+      <td>Basel</td>
+      <td>Stadtgärtnerei Basel, interkulturelle Gartenvereine</td>
+      <td>meist CHF 20–60</td>
+      <td>Üblich in zentralen Quartieren</td>
+    </tr>
+    <tr>
+      <td>Bern</td>
+      <td>Stadtgrün Bern, Quartiervereine</td>
+      <td>meist CHF 20–70</td>
+      <td>Teilweise, regional unterschiedlich</td>
+    </tr>
+    <tr>
+      <td>Kleinere Städte/Gemeinden</td>
+      <td>lokale Vereine, Kirchgemeinden, Schulen</td>
+      <td>oft kostenlos bis CHF 30</td>
+      <td>Selten, meist freie Plätze</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== FÖRDERGELDER ===== -->
+<h2>12. Fördergelder und Programme für Urban Gardening</h2>
+<p>Einzelne Schweizer Gemeinden und Kantone unterstützen Urban-Gardening-Projekte finanziell oder mit Infrastruktur, auch wenn es keine landesweit einheitliche Förderung gibt.</p>
+<ul>
+  <li><strong>Kommunale Förderprogramme:</strong> Manche Städte stellen im Rahmen von Klimafonds oder Quartierentwicklungs-Budgets Fördergelder für Gemeinschaftsgärten, Hochbeet-Bauprojekte oder Begrünungsinitiativen in Aussicht. Anfragen lohnt sich direkt bei der Stadtgärtnerei oder dem Quartiersekretariat der jeweiligen Gemeinde.</li>
+  <li><strong>Schulgärten-Projekte:</strong> Umweltbildungsorganisationen wie Pusch (Praktischer Umweltschutz Schweiz) unterstützen Schulen bei der Anlage von Schulgärten mit Hochbeeten, oft inklusive Unterrichtsmaterial und Beratung. Viele Kantone fördern solche Projekte im Rahmen der Umweltbildung an Volksschulen.</li>
+  <li><strong>Vereine und Stiftungen:</strong> Lokale Umwelt- und Quartiervereine bieten teilweise Materialbeiträge oder Bausätze für Hochbeete an, wenn ein Gemeinschaftsprojekt entsteht (z. B. ein Quartiergarten oder ein Pausenplatz-Beet).</li>
+</ul>
+<p>Da Förderprogramme sich von Gemeinde zu Gemeinde stark unterscheiden und häufig ändern, lohnt sich vor einem grösseren Gemeinschaftsprojekt eine direkte Anfrage bei der Wohngemeinde.</p>
+
+<!-- ===== SELBSTBAU VS KAUF ===== -->
+<h2>13. Selbstbau vs. Kauf: Bausatz, Schreiner oder Fertigprodukt</h2>
+<p>Ob sich Selbstbau lohnt, hängt von handwerklichem Geschick, Zeit und gewünschter Optik ab. Drei Wege sind in der Schweiz üblich.</p>
+
+<h3 class="sub">DIY-Bausätze</h3>
+<p>Bausätze aus dem Baumarkt (Hornbach, Obi, Landi) enthalten vorgefräste Bretter, Eckverbinder und Anleitung. Der Aufbau dauert meist 30–90 Minuten ohne Spezialwerkzeug. Bausätze kosten CHF 60–250, je nach Grösse und Holzart, und sind die schnellste Lösung für alle ohne Werkstatt.</p>
+
+<h3 class="sub">Reiner Selbstbau aus losem Material</h3>
+<p>Wer eine Handkreissäge oder Stichsäge besitzt, kann Bretter direkt im Baumarkt zuschneiden lassen oder selbst ablängen. Vier Bretter Lärchenholz (3 cm stark, unbehandelt) für ein Hochbeet von rund 100×50×70 cm kosten inklusive Verbindungsmaterial etwa CHF 40–90 — deutlich günstiger als ein fertiges Modell in vergleichbarer Grösse und Materialqualität. Der Aufwand liegt bei 2–4 Stunden Arbeit.</p>
+
+<h3 class="sub">Massanfertigung durch die lokale Schreinerei</h3>
+<p>Für ungewöhnliche Masse, hochwertige Verarbeitung oder eine Optik, die exakt zum Haus passt, lohnt sich eine Anfrage bei der Schreinerei im Ort. Massgefertigte Hochbeete aus Lärche oder Douglasie kosten je nach Grösse und Ausstattung (z. B. mit integriertem Sitzrand oder Rankgitter) CHF 300–800, dafür ist die Verarbeitung meist hochwertiger und langlebiger als bei Serienprodukten. Diese Option eignet sich besonders für sichtbare Standorte wie Vorgärten oder Terrassen, wo Optik eine grosse Rolle spielt.</p>
+
+<table class="price-table">
+  <thead>
+    <tr>
+      <th>Weg</th>
+      <th>Zeitaufwand</th>
+      <th>Kosten (CHF, ca. 100×50×70 cm)</th>
+      <th>Am besten für</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DIY-Bausatz</td>
+      <td>30–90 Min.</td>
+      <td>60–250</td>
+      <td>Schnelle Lösung, kein Werkzeug nötig</td>
+    </tr>
+    <tr>
+      <td>Selbstbau aus losem Holz</td>
+      <td>2–4 Std.</td>
+      <td>40–90</td>
+      <td>Budget, handwerklich Geübte</td>
+    </tr>
+    <tr>
+      <td>Schreiner-Massanfertigung</td>
+      <td>Bestellung, keine Eigenarbeit</td>
+      <td>300–800</td>
+      <td>Individuelle Masse, hochwertige Optik</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ===== PFLEGE / WINTERFESTMACHUNG ===== -->
+<h2>14. Pflege und Winterfestmachung</h2>
 
 <h3 class="sub">Holzhochbeet pflegen</h3>
 <ul>
   <li><strong>Leinöl-Anstrich:</strong> 1× pro Jahr im Frühjahr aussen und innen (falls nicht mit Folie ausgelegt). Leinöl ist lebensmittelsicher und schützt natürlich.</li>
   <li><strong>Holzschutzfarbe:</strong> Wasserbasierte Produkte auf Naturbasis bevorzugen — kein Lösungsmittel in Bodennähe zu den Pflanzenwurzeln.</li>
   <li><strong>Innenfolie:</strong> Eine PE-Folie im Innenbereich verlängert die Lebensdauer massgeblich. Löcher am Boden für Drainage einstechen.</li>
-  <li><strong>Im Winter:</strong> Leeres Hochbeet trocken lassen oder mit Herbstblättern abdecken. Kein Wasser darin stehen lassen.</li>
 </ul>
 
 <h3 class="sub">Metall-Hochbeet pflegen</h3>
@@ -435,11 +698,20 @@ footer a:hover{color:var(--amber-dk)}
   <li><strong>Verzinkter Stahl:</strong> Auf Beschädigungen der Verzinkungsschicht achten. Kratzer mit Zink-Spray ausbessern.</li>
 </ul>
 
+<h3 class="sub">Winterfestmachung: Was bleibt, was wird geschützt?</h3>
+<p>Im Herbst entscheidet sich, wie gut das Hochbeet über den Winter kommt und wie schnell es im Frühjahr wieder startklar ist.</p>
+<ul>
+  <li><strong>Frostschutz für mehrjährige Pflanzen:</strong> Rosmarin, Thymian, Salbei und andere winterharte Kräuter können bei milderen Wintern (Mittelland) im Hochbeet bleiben, wenn die Wurzelzone mit einer dicken Schicht Stroh oder Reisig abgedeckt wird. In rauen Lagen empfiehlt sich zusätzlich ein Gartenvlies.</li>
+  <li><strong>Abdeckung:</strong> Ein Vlies oder eine spezielle Hochbeet-Abdeckhaube schützt die oberste Erdschicht vor Auswaschung durch Regen und hält das Bodenleben aktiver. Eine transparente Folie (Frühbeet-Deckel) erlaubt zusätzlich eine Restnutzung für Winterkulturen wie Feldsalat.</li>
+  <li><strong>Was im Winter im Hochbeet bleiben kann:</strong> Lauch, Federkohl (Grünkohl) und Rosenkohl vertragen leichten Frost problemlos und können bis in den Winter hinein geerntet werden. Knoblauch wird oft im Herbst gesteckt und überwintert direkt im Beet für die Ernte im Folgesommer.</li>
+  <li><strong>Leeres Hochbeet:</strong> Wer im Herbst abräumt, lässt das Hochbeet trocken oder deckt es mit Herbstlaub ab. Kein Wasser darin stehen lassen — das begünstigt Fäulnis am Holz und Frostschäden am Behälter.</li>
+</ul>
+
 <h3 class="sub">Jährliche Nachfüllung</h3>
 <p>Die Erde setzt sich im ersten Jahr stark, in den Folgejahren moderat ab. Im Frühjahr 5–10 cm reifen Kompost auffüllen und leicht einarbeiten. Das hält das Nährstoffniveau hoch und ersetzt die abgebaute organische Masse.</p>
 
 <!-- ===== PREISE ===== -->
-<h2>9. Preisbereiche in der Schweiz (CHF)</h2>
+<h2>15. Preisbereiche in der Schweiz (CHF)</h2>
 <table class="price-table">
   <thead>
     <tr>
@@ -452,12 +724,12 @@ footer a:hover{color:var(--amber-dk)}
   <tbody>
     <tr>
       <td>Holz Einstieg (Fichte)</td>
-      <td>60–150</td>
+      <td>50–150</td>
       <td>80×40×60 cm</td>
       <td><span class="badge-ok">Budget</span></td>
     </tr>
     <tr>
-      <td>Holz Mittelklasse (Lärche)</td>
+      <td>Holz Mittelklasse (Lärche/Douglasie)</td>
       <td>150–300</td>
       <td>100×50×75 cm</td>
       <td><span class="badge-gut">Empfohlen</span></td>
@@ -475,8 +747,20 @@ footer a:hover{color:var(--amber-dk)}
       <td><span class="badge-info">Design</span></td>
     </tr>
     <tr>
+      <td>WPC</td>
+      <td>150–400</td>
+      <td>100×50×70 cm</td>
+      <td><span class="badge-info">Wenig Pflege</span></td>
+    </tr>
+    <tr>
+      <td>Stein/Beton (fest eingebaut)</td>
+      <td>300–800</td>
+      <td>Individuell</td>
+      <td><span class="badge-info">Dauerhaft</span></td>
+    </tr>
+    <tr>
       <td>Kunststoff kompakt</td>
-      <td>60–200</td>
+      <td>50–200</td>
       <td>80×40×50 cm</td>
       <td><span class="badge-ok">Balkon</span></td>
     </tr>
@@ -492,24 +776,69 @@ footer a:hover{color:var(--amber-dk)}
       <td>60×30×40 cm</td>
       <td><span class="badge-info">Platzsparend</span></td>
     </tr>
+    <tr>
+      <td>Schreiner-Massanfertigung</td>
+      <td>300–800</td>
+      <td>Individuell</td>
+      <td><span class="badge-info">Hochwertig</span></td>
+    </tr>
   </tbody>
 </table>
 <p>Die Preise variieren je nach Grösse, Holzstärke und Anbieter. Im Frühling (März–April) gibt es oft Aktionspreise bei Migros, Landi und Hornbach.</p>
 
 <!-- ===== SHOPS ===== -->
-<h2>10. Wo kaufen in der Schweiz?</h2>
+<h2>16. Wo kaufen in der Schweiz? Marken und Händler</h2>
 <ul>
-  <li><strong>Migros/Migros Garden:</strong> Gutes Sortiment an Holz- und Kunststoff-Hochbeeten, torffreie Erden. Saisonpreise im Frühling.</li>
+  <li><strong>Migros/Do it + Garden:</strong> Gutes Sortiment an Holz- und Kunststoff-Hochbeeten, torffreie Erden. Saisonpreise im Frühling, oft Aktionen mit dem Cumulus-Punktesystem.</li>
   <li><strong>LANDI (Fenaco):</strong> Besonders empfehlenswert für ländliche Regionen. Grosse Auswahl, kompetente Beratung, oft Schweizer Holzware.</li>
   <li><strong>Hornbach:</strong> Günstigste Preise für Holzbalken zum Selbstbau und grosse Mengen Erde. Breites Sortiment an Fertigbeeten.</li>
-  <li><strong>Obi und Jumbo:</strong> Vergleichbares Sortiment zu Hornbach, etwas weniger Auswahl bei grossen Formaten.</li>
+  <li><strong>OBI und Jumbo:</strong> Vergleichbares Sortiment zu Hornbach, etwas weniger Auswahl bei grossen Formaten, dafür oft gute Bausatz-Aktionen.</li>
   <li><strong>Gardena, Palram, Vitavia:</strong> Marken mit guten Kunststoff- und Gewächshaus-Hochbeeten, erhältlich online und im Fachhandel.</li>
   <li><strong>Online (digitec/galaxus, Brack):</strong> Gute Preisvergleiche, Lieferung nach Hause, grosse Auswahl. Auf Versandkosten bei schweren Metallbeeten achten.</li>
   <li><strong>Ricardo.ch und anibis.ch:</strong> Gebrauchte Hochbeete, oft günstig. Auf Fäulnis und Rost prüfen.</li>
+  <li><strong>Lokale Schreinereien:</strong> Für Massanfertigungen und individuelle Grössen — Preise CHF 300–800, dafür massgeschneidert und meist besonders langlebig.</li>
 </ul>
 
 <div class="callout">
-  <strong>Tipp Selbstbau:</strong> Wer handwerklich begabt ist, spart viel Geld. 4 Bretter Lärchenholz (3 cm stark, unbehandelt) aus dem Baumarkt kosten rund CHF 40–80. Das fertige Hochbeet ist massgeschneidert und hält genauso lange wie gekaufte Modelle.
+  <strong>Tipp Selbstbau:</strong> Wer handwerklich begabt ist, spart viel Geld. 4 Bretter Lärchenholz (3 cm stark, unbehandelt) aus dem Baumarkt kosten rund CHF 40–90. Das fertige Hochbeet ist massgeschneidert und hält genauso lange wie gekaufte Modelle.
+</div>
+
+<!-- ===== ZUBEHÖR ===== -->
+<h2>17. Zubehör: Rankgitter, Sitzbank, Netz und Frühbeet-Aufsatz</h2>
+<p>Das passende Zubehör macht ein Hochbeet praktischer, ertragreicher und langlebiger. Die folgenden Ergänzungen lohnen sich je nach Standort und Nutzung.</p>
+
+<h3 class="sub">Rankgitter für Kletterpflanzen</h3>
+<p>Ein Rankgitter an der Rückwand oder Stirnseite des Hochbeets schafft zusätzliche Anbaufläche in der Vertikalen — ideal für Stangenbohnen, Erbsen, Gurken oder kleine Kürbissorten. Das spart Grundfläche und sorgt für bessere Luftzirkulation, was Pilzkrankheiten vorbeugt. Viele Hersteller bieten passende Steckgitter aus Metall oder Holz für Standardgrössen an, ein einfaches Gitter lässt sich aber auch aus Baustahlmatte oder Holzlatten selbst bauen.</p>
+
+<h3 class="sub">Sitzbank und Ablagerand</h3>
+<p>Ein aufgesetzter Sitz- oder Ablagerand entlang der Hochbeet-Kante erlaubt kurze Pausen beim Jäten und dient gleichzeitig als Abstellfläche für Werkzeug, Giesskanne oder Erntekorb. Bei Modellen mit 60–75 cm Höhe ist ein solcher Rand auch eine praktische Sitzgelegenheit für Kinder oder ältere Gärtnerinnen und Gärtner, die nicht lange stehen können.</p>
+
+<h3 class="sub">Netzsysteme und Bogenrahmen</h3>
+<p>Ein Bogenrahmen aus flexiblen Stäben, der über das Hochbeet gespannt wird, ist die Basis für mehrere Schutzsysteme: Insektenschutznetz gegen Kohlweissling und Möhrenfliege, Vogelnetz gegen Amseln bei Beeren, oder eine Frostschutzfolie im Frühjahr und Herbst. Ein einziger Rahmen mit austauschbarer Bespannung deckt damit die wichtigsten saisonalen Schutzbedürfnisse ab.</p>
+
+<h3 class="sub">Frühbeet-Aufsatz</h3>
+<p>Ein transparenter Deckel aus Hohlkammerplatten oder Glas verwandelt das Hochbeet temporär in ein Mini-Gewächshaus. Das verlängert die Saison an beiden Enden — frühere Aussaat im Frühjahr, längere Ernte bis in den Spätherbst — und ist besonders in höheren Lagen oder bei kühlen Frühjahren ein spürbarer Vorteil.</p>
+
+<!-- ===== CHECKLISTE ===== -->
+<h2>18. Checkliste vor dem Kauf</h2>
+<p>Vor dem Kauf eines Hochbeets lohnt sich eine kurze, strukturierte Prüfung. Die folgenden Punkte decken die wichtigsten Entscheidungen ab.</p>
+<ul>
+  <li><strong>Standort geklärt?</strong> Garten, Balkon oder Terrasse — davon hängen Material und Gewicht ab.</li>
+  <li><strong>Tragfähigkeit geprüft?</strong> Bei Balkon/Terrasse Statik und Vermieter-Rücksprache (Art. 257f OR) klären.</li>
+  <li><strong>Material passend zum Budget?</strong> Fichte für Einstieg, Lärche/Douglasie für Langzeitnutzung, Metall oder Stein für maximale Haltbarkeit.</li>
+  <li><strong>Höhe rückenschonend gewählt?</strong> 75–90 cm bei Rücken- oder Knieproblemen, 60–75 cm als Standard.</li>
+  <li><strong>Breite maximal 80–100 cm</strong> (bei beidseitigem Zugang bis 120 cm), damit die Mitte erreichbar bleibt.</li>
+  <li><strong>Befüllung geplant?</strong> Lasagne-Methode mit Drainage-, Grünschnitt- und Erdschicht vorbereiten.</li>
+  <li><strong>Bewässerung organisiert?</strong> Tropfschlauch, Bewässerungscomputer oder Wicking-System je nach Zeitbudget.</li>
+  <li><strong>Schädlingsschutz eingeplant?</strong> Wühlmausgitter vor dem Befüllen einbauen, Schneckenzaun und Vogelnetz bereithalten.</li>
+  <li><strong>Winterfest?</strong> Abdeckung, Mulch und Frostschutz für mehrjährige Pflanzen einplanen.</li>
+  <li><strong>Lieferung/Abholung geklärt?</strong> Schwere Metall- oder Steinmodelle brauchen oft Anlieferung mit Kran oder Hubwagen.</li>
+</ul>
+
+<div class="callout">
+  <strong>Fazit:</strong> Wer die eigene Situation ehrlich einschätzt — Standort, Budget, Zeit fürs Giessen und körperliche Belastbarkeit — findet in der Schweiz für praktisch jede Wohnform ein passendes Hochbeet: vom günstigen Fichten-Bausatz über das selbstbewässernde Wicking-Modell auf dem Balkon bis zur massgefertigten Cortenstahl-Lösung im Garten.
+  <br><br>
+  Die Investition zahlt sich meist schon in der ersten Saison durch eigene Ernte und geringeren Pflegeaufwand aus. Wer unsicher ist, beginnt am besten mit einem kleinen, günstigen Modell und erweitert den Bestand im nächsten Jahr um ein zweites, grösseres Hochbeet.
 </div>
 
 <!-- ===== FAQ ===== -->
@@ -546,13 +875,10 @@ footer a:hover{color:var(--amber-dk)}
 <div class="nl">
   <strong style="font-size:1.04rem">📬 Gratis: Garten-Tipps &amp; Schnäppchen-Alerts</strong>
   <p>Das Beste aus dem Marktplatz + saisonale Garten-Deals, Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.</p>
-  <form action="https://abannews.beehiiv.com/subscribe" method="get">
-    <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail-Adresse">
-    <button type="submit">Abonnieren</button>
-  </form>
+  <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
 </div>
 
-<p class="rel" style="margin-top:22px">Weitere Kaufberater: <a href="/kaufberater-schweiz.html">Alle Kaufberater</a> · <a href="/gartenhaus-kaufen-schweiz.html">Gartenhaus</a> · <a href="/gartenpumpe-kaufen-schweiz.html">Gartenpumpe</a> · <a href="/kompressor-kaufen-schweiz.html">Kompressor</a> · <a href="/kuehlbox-kaufen-schweiz.html">Kühlbox</a> · <a href="/wanderrucksack-kaufen-schweiz.html">Wanderrucksack</a></p>
+<p class="rel" style="margin-top:22px">Weitere Kaufberater: <a href="/kaufberater-schweiz.html">Alle Kaufberater ansehen</a></p>
 
 </div>
 </main>
@@ -560,9 +886,10 @@ footer a:hover{color:var(--amber-dk)}
 <footer>
   <div class="wrap">
     aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
-    <a href="/kaufberater-schweiz.html">Alle Kaufberater</a> ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
     <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
