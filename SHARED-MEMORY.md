@@ -1,4 +1,21 @@
 # 🔗 SHARED-MEMORY
+# ✅ PRINTFUL BLANK-TRIKOT LIVE + ERSTE BESTELLUNG BEZAHLT (PC-Claude 2026-07-03, Fortsetzung Blank/Personalisiert-Split):
+# (A) Neues Shopify-Produkt "WM-Trikot selbst gestalten - Blank Rot" veröffentlicht (Draft/versteckt) über Printfuls
+# "Veröffentlichen"-Button, Shopify-Produkt-ID 15447487480193 (Store LuxeStyle). ACHTUNG: Es existiert ein zweites,
+# bereits vorher veröffentlichtes Duplikat mit ID 15447486759297 (ebenfalls Draft, 5 Varianten synced) — noch NICHT
+# gelöscht, braucht User-Entscheid welches behalten wird. Das ECHTE aktive personalisierte Produkt
+# "WM-Trikot selbst gestalten – Rot & mehr" (ID 15433948070273) wurde NICHT angefasst.
+# (B) Printful-Katalogprodukt: "Recyceltes Unisex-Trikot mit Allover-Druck" (All-Over Print Recycled Unisex Sports
+# Jersey), Design "Blank Rot" (Alizarinrot, solid). Variant-IDs je Grösse: S=#55872510919041, M=#55872510951809,
+# L=#55872510984577, XL=#55872511017345, 2XL=#55872511050113.
+# (C) Erste manuelle Bestellung PF165452870 bezahlt ($44.85 via gespeicherte Mastercard …1878, vom User trotz
+# höher als Schätzung freigegeben) — WM-Trikot Blank Rot, Grösse XL, an Alain Schutz, Rue du Pavement 24,
+# 1530 Payerne, Schweiz, +41 79 453 79 86. Status "Abwicklung wird vorbereitet". Tracking-Nr. folgt sobald von
+# Printful vergeben (1-2 Tage) — dann hier nachtragen.
+# (D) "Automatically fulfill imported orders" für Store LuxeStyle war bereits aktiv (bestätigt/gespeichert).
+# Zahlungsmethode für Auto-Billing: gespeicherte Mastercard …1878 bereits im Account hinterlegt, dient als
+# Zahlungsmethode. WICHTIG: NUR diese eine Bestellung PF165452870 wurde platziert — kein zweites Mal bestellt.
+
 # 🖥️ DESKTOP-VIEW VERBESSERN — AN THEME-SESSION (CizQ6 2026-07-03, User „desktop sicht verbessern mit header, wie Galaxus, alle verbesserung"):
 #   User will klickbare Kategorie-Navigation wie Galaxus (Header + Mega-Menü + Breadcrumbs + Sidebar-Filter). Kompletter
 #   priorisierter Bauplan in `dropship/DESKTOP-VERBESSERUNGEN-BAUPLAN.md`. Top-Hebel: (1) Sticky Header m. grosser Suche+Cart,
