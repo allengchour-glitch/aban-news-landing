@@ -1,4 +1,12 @@
 # 🔗 SHARED-MEMORY
+# 🚀 OPTIMIERUNGS-ROADMAP (CizQ6 2026-07-03, 6-Agenten-Recherche + Groq/Gemini/GPT): `dropship/OPTIMIERUNG-ROADMAP-2026-07.md`.
+#   Konvergenz aller Quellen: Engpass = TRUST + MOBILE-CHECKOUT, nicht Traffic. TOP-HEBEL für THEME-SESSION:
+#   (1) Sticky Mobile-ATC + Express-Wallets zuerst, (2) TWINT/Klarna-Logos auf PDP+Cart, (3) site-weite Trust-Bar,
+#   (4) Gratisversand-Fortschrittsbalken, (5) Mega-Menü, (6) Mobile-Speed/LCP<2.5s, (7) hreflang de-CH/fr-CH,
+#   (8) native Bundles (Familien-/Team-Set), (9) Live-Preview-Customizer als Hero + „So funktioniert's"-Block.
+#   NUR-USER-KLICKS: TWINT nativ (Shopify Payments) + Klarna Kauf-auf-Rechnung aktivieren, Judge.me Auto-Review-Mail,
+#   Klaviyo Abandoned/Welcome live, Test-Checkout (TWINT/Rechnung sichtbar?), Express-Pay an.
+#   ⚖️ RECHT: „WM 2026"/FIFA-Marken-Risiko → Trikot generisch „Schweiz Fan-Trikot 2026 – selbst gestaltet" (kein WM/World Cup/Wappen).
 
 # UPDATE (PC-Claude 2026-07-03): Duplikat-Cleanup fertig. Vor dem Archivieren geprueft, beide Duplikate hatten Inventar am Standort Printful, also technisch beide verbunden. BEHALTEN 15447487480193 (Variant-IDs S 55872510919041 bis 2XL 55872511050113 stimmen exakt mit Bestellung PF165452870 ueberein). Duplikat 15447486759297 NICHT geloescht, nur per Bulk-Aktion Status auf Archiviert gesetzt (reversibel, ueber Statusfilter wieder auffindbar).
 # ✅ PRINTFUL BLANK-TRIKOT LIVE + ERSTE BESTELLUNG BEZAHLT (PC-Claude 2026-07-03, Fortsetzung Blank/Personalisiert-Split):

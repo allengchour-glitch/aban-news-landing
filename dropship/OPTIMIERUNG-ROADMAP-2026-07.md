@@ -55,8 +55,44 @@
 - **TIER 3 (Moat):** On-Site-Trust-Stack (multipliziert ALLE Kanäle) · Pinterest/Google-Evergreen-SEO für Nicht-WM-Kategorien · Reviews/UGC-Engine.
 - **Top-3 diese Woche:** WM-Sprint + TikTok auf ATC · Tracking-Fix + Klaviyo-Flows · On-Site-Trust-Quick-Wins (Reviews + Sticky-ATC + TWINT).
 
-## ⏳ Noch offen (1 Agent läuft)
-- Konkurrenz-Teardown (copybare Tactics) — wird ergänzt.
+## ⚔️ KONKURRENZ-TEARDOWN (Competitor-Agent) — copybare Tactics
+Benchmarks: owayo, spized, JAKO, 11teamsports, klubtrikot.ch · On, PKZ, Beldona, Ochsner, Digitec, MUAU.
+1. **Voller CH-Zahlungs-Stack + Logos** (klubtrikot/MUAU zeigen TWINT+Rechnung+PostFinance+PayPal+Karten auf PDP+Footer). TWINT nativ via Shopify Payments (seit 06/2025, braucht CHF+Impressum/AGB).
+2. **Kauf auf Rechnung via Klarna** (nicht Powerpay/Cembra = 100k-Barriere). Klarna 14/30-T, Exposure begrenzen (CHF 60–300 + Bonicheck).
+3. **Sticky Mobile-ATC + Express-Wallets zuerst** (Apple/TWINT/Google Pay über den Kartenfeldern).
+4. **Echtes Review-Siegel auf PDP** (owayo eKomi 4.8/3132, klubtrikot Google-Reviews). Judge.me + Foto-Review-Mail 7–14 T nach Lieferung.
+5. **Site-weite USP/Trust-Bar** (Versand/Lieferung/Rückgabe/Zahlung).
+6. **Gratisversand ~CHF 50–60 + Fortschrittsbalken** („Noch CHF X bis Gratisversand") = schnellster AOV-Hebel.
+7. **Live-Preview/Customizer als Hero** der Trikot-Seite + „So funktioniert's".
+8. **Mengen-/Team-Staffelpreise live im Warenkorb** (owayo 1/10/50, JAKO ab 6 Stück).
+9. **Ehrliche Event-Deadline** (11teamsports WM-Nation-Landingpages „+3–4 Werktage"). EU-DSA verbietet Fake-Urgency.
+10. **Risk-Reversal-Rückgabe benannt + grosszügig** (On „30 Tage, wir zahlen Rückversand"; Perso ausgeschlossen ehrlich deklarieren).
+11. **Bundles / Matching-Sets + „Frequently bought together"** (Shopify native Bundles).
+12. **Newsletter-Incentive 10 % (füttert Klaviyo) + benannte Security** (SSL/Zahlungslogos + Schweizer-Shop-Signal).
+
+---
+
+## ✅ KONSOLIDIERTE PRIORITÄT (Konvergenz aller 6 Agenten)
+**Der Engpass ist überall gleich benannt: Trust + Mobile-Checkout, NICHT Traffic.** Reihenfolge:
+
+**A. SOFORT / höchste Sicherheit (meist User/Theme-Klicks):**
+1. **TWINT nativ aktivieren + Klarna Kauf-auf-Rechnung + Logos auf PDP/Cart/Footer** (von 4 Agenten als #1 CH-Hebel genannt).
+2. **Sticky Mobile-ATC + Express-Wallets** (fixt den 9×-Mobile-Leak).
+3. **Judge.me Review-Siegel + Foto-Review-Mail 7–14 T nach Lieferung** (killt die 0★-Wand) — Alain als ersten fragen.
+4. **Server-Pixel (Events-API/CAPI) verifizieren + Klaviyo Abandoned/Welcome live** BEVOR Ad-Spend.
+
+**B. DIESE WOCHE (WM-Fenster, schliesst ~19.7):**
+5. **Trikot generisch umbenennen** („Schweiz Fan-Trikot 2026 – selbst gestaltet", kein WM/FIFA) — Recht + Ehrlichkeit.
+6. **Echte Printful-Mockups + „So funktioniert's" + Makro-Fotos** (1:1, läuft schon).
+7. **TikTok-Kampagne auf Add-to-Cart** (CH-geo, Mundart, 1 Produkt), Keepsake-Framing + ehrliche Lieferzeit.
+8. **PDP-Copy:** Benefit-H1, Kosten+Lieferzeit sichtbar, Gratisversand-Nudge, Vorschau-Garantie, FAQ (Copy-Blöcke A/B/C).
+
+**C. 2–6 WOCHEN (Moat):**
+9. **SEO:** „Fan-Trikot selbst gestalten"-Landingpage (DE+FR), Collection-Metas+Intros, JSON-LD, hreflang.
+10. **AOV:** Familien-/Team-Set + Staffelpreise + Matching-Accessoires + Gratisversand-Fortschrittsbalken.
+11. **Traffic-Moat:** Pinterest-SEO, Google Merchant/Business, WhatsApp, Micro-Influencer-Gifting CH, FB-Gruppen.
+
+**Ownership:** Zahlungen/Judge.me/Klaviyo/Test-Checkout = **User-Klicks** · Sticky-ATC/Trust-Bar/Mega-Menü/Speed/Bundles/hreflang = **Theme-Session** · Rename/Copy/SEO-Metas/JSON-LD/Alt/Landingpage/Traffic-Content = **CizQ6 (ich)** · Mockups/Makro-Fotos/Alains-Order = **Browser/Printful**.
 
 ## Umsetzungs-Lanes
 - **CizQ6 (ich), sobald Shopify verbunden / per PC-Skript:** Rename Trikot (generisch), Collection-Metas + Intros, JSON-LD, Copy (Kosten/Lieferzeit/Garantie/How-to), Alt-Texte, Landingpage-Copy.
