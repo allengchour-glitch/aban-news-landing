@@ -1,4 +1,13 @@
 # 🔗 SHARED-MEMORY
+# 🚚 WM-TRIKOT HAT KEIN FULFILLMENT-BACKEND (CizQ6 2026-07-03, teuer gelernt an Order #1005): Das Produkt
+#   "⚽ WM-Trikot selbst gestalten" (SKU WM-TRIKOT-RO-XL etc.) ist ein SELBST GEBAUTES Mockup-Produkt — nur mit Tag
+#   printful_personalized_product versehen, aber NIE zu Printful synchronisiert. Beweis: Variante tracked:false,
+#   Bestand nur am "Shop location", SKU im Eigenformat. Die ECHTEN Printful-Produkte (T-Shirt/Hoodie/Tasse/Cap/
+#   Taschen "selbst gestalten") haben dagegen Printful-SKUs (zahl_zahl), tracked:true, Bestand am Printful-Standort ->
+#   die laufen vollautomatisch (Produktion + Tracking-Sync). FOLGE: WM-Trikot-Bestellungen landen auf "manuell",
+#   KEIN Lieferant produziert/verschickt -> muss selbst versendet werden (Swiss-Post-Tracking von Hand eintragen).
+#   🔴 ENTSCHEIDUNG NÖTIG (User/Theme): entweder WM-Trikot auf ein ECHTES Printful/Gelato-Trikot mappen (dann auto),
+#   ODER bewusst als Eigenversand-Produkt führen (Lagerbestand/Beschaffung klären). Bis dahin: jede WM-Bestellung manuell.
 # 🏆 ERSTER KUNDE + PERSONALISIERUNGS-BUG (CizQ6 2026-07-03, an Theme-Session — WICHTIG): Order #1005 (Alain Schutz,
 #   FR-sprachig, Payerne) = 1. echte Bestellung: WM-Trikot XL/Rot (SKU WM-TRIKOT-RO-XL). PROBLEM: line-item customAttributes
 #   LEER -> KEIN Name/Nummer erfasst. Der abannews-Designer (designer.js) hat die Personalisierung NICHT an den Cart gehängt
