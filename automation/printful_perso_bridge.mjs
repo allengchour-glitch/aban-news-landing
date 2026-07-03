@@ -25,8 +25,9 @@ const CID=(process.env.SHOPIFY_CLIENT_ID||'').trim(); const CSEC=(process.env.SH
 const GO=process.env.GO==='1'; const AUTO_CONFIRM=process.env.AUTO_CONFIRM==='1'; const API='2025-01';
 let SHOP=(process.env.SHOPIFY_SHOP||'').replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
 const PERSO_PRODUCT_ID='gid://shopify/Product/15433948070273';
-// Printful-Katalog-Variant-IDs je Grösse (⚠️ VOR LIVE gegen Printful-Katalog verifizieren — siehe Kopf):
-const PF_VARIANT={ S:55872510919041, M:55872510951809, L:55872510984577, XL:55872511017345, '2XL':55872511050113 };
+// Printful-Katalog-Variant-IDs je Grösse (VERIFIZIERT 2026-07-03 via Printful-Katalog-API, Produkt 644
+// "All-Over Print Recycled Unisex Sports Jersey"; bestätigt via SKU-Suffix z.B. 1962737_16260):
+const PF_VARIANT={ S:16260, M:16261, L:16262, XL:16263, '2XL':16264 };
 const LEDGER='reports/perso-orders-done.json';
 
 if(!PF_KEY){ console.log('Kein PRINTFUL_API_KEY → No-op (Brücke wartet auf Key).'); process.exit(0); }
