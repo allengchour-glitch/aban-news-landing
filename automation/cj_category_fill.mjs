@@ -77,6 +77,12 @@ const GROUPS={
    type:'Haustierbedarf', tags:['haustier','hund','katze','pet','cj-real','dropship'], kat:'Haustierbedarf',
    ban:/wholesale|\bsample\b|human|for people/i, minImg:2, minP:2, maxP:80},
 };
+// Externe Auto-Gruppen (Mega-Abdeckung aller CJ-Kategorien) mergen; ban-String → RegExp.
+if(process.env.GROUPS_FILE && fs.existsSync(process.env.GROUPS_FILE)){
+ const ext=JSON.parse(fs.readFileSync(process.env.GROUPS_FILE,'utf8'));
+ for(const k in ext){const g=ext[k]; if(typeof g.ban==='string')g.ban=new RegExp(g.ban,'i'); GROUPS[k]=g;}
+}
+const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
 async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
@@ -114,11 +120,11 @@ for(const [cat,label] of grp.cats){
    if(total>=CAP)break;
    const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||(grp.ban&&grp.ban.test(nm)))continue;
    const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<grp.minP||pr>grp.maxP)continue;
-   const dj=await cj(`/product/query?pid=${p.pid}`); await sleep(950);
+   const dj=await cj(`/product/query?pid=${p.pid}`); await sleep(CJSLEEP);
    const d=dj.data||{}; const imgs=((d.productImageSet)||[]).filter(u=>/^https/.test(u)).slice(0,8);
    if(imgs.length<grp.minImg)continue;
    const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-   const g=await gemini(nm,feats,grp.kat); await sleep(4200);
+   const g=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
    if(!g){console.log('  skip(gemini)',nm.slice(0,30));continue;}
    const title=g.title.slice(0,70);
    if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
