@@ -33,8 +33,12 @@
 #      (alle 20 Varianten) → 59.90 (compareAt 79.90). Beide Ratios ~1.3-1.4x = honest, unter der 1.85x-Schwelle (honest_compareat lässt sie in Ruhe).
 #   3. #1005 als VERSENDET markieren, sobald Browser-Claude Alains Printful-Tracking meldet (manuelle Printful-Order ist
 #      NICHT mit Shopify-Order verknüpft → Tracking von Hand in #1005 eintragen).
-#   4. PERSO-BRÜCKE bauen: Printful-Katalog „Recyceltes Unisex-Trikot AOP", XL-Variant-ID #55872511017345 (weitere Grössen
-#      vom PC nachliefern lassen). Bridge liest Bestell-Eigenschaft „🖼️ Druckdatei" → Printful-API-Order mit Print-File.
+#   4. ✅ PERSO-BRÜCKE GEBAUT: automation/printful_perso_bridge.mjs (liest offene Orders m. Perso-Produkt → Druckdatei aus
+#      Line-Item-Property „🖼️ Druckdatei" + Grösse → Printful-Order mit custom print files). SICHER: Default DRY/Entwurf,
+#      kein Geld. ZUM SCHARFSCHALTEN FEHLT: (a) PRINTFUL_API_KEY in ENV/luxe-secrets, (b) PRÜFEN ob PF_VARIANT-IDs im Skript
+#      die Printful-KATALOG-Variant-IDs sind (die vom Browser gemeldeten könnten SYNC-IDs sein — für custom files braucht v1
+#      die CATALOG-ID; PC-/Browser-Claude: bitte die Katalog-Variant-IDs des „Recyceltes Unisex-Trikot AOP" je Grösse melden),
+#      (c) 1× DRY testen, dann GO=1 (Entwurf), dann AUTO_CONFIRM=1 für Vollautomatik.
 #   ⚠️ Shopify-MCP war 2026-07-03 getrennt/braucht Re-Auth (claude.ai Connector-Settings) → Tasks 1-3 erst danach ausführbar.
 #   ✅ UPDATE: Bestellung PF165452870 ist BEZAHLT (Alain, XL Blank) — Task 3 wartet nur noch aufs Printful-Tracking.
 #      Printful-Variant-IDs komplett: S=#55872510919041 M=#55872510951809 L=#55872510984577 XL=#55872511017345 2XL=#55872511050113.
