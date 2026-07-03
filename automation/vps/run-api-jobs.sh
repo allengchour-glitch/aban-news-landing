@@ -29,6 +29,8 @@ log "Leere Bild-Alt-Texte fuellen (Google-Bildersuche-Reichweite, idempotent, ge
 MAX="${ALT_MAX:-120}" "$NODE" automation/alt_text_backfill.mjs 2>&1 | tail -5 || log "alt_text_backfill Fehler (weiter)"
 log "Realistische Lieferzeit-Bloecke + Metafeld custom.lieferzeit (idempotent, ganzer Katalog)..."
 LIMIT="${LIEFER_MAX:-1000}" "$NODE" automation/delivery_block.mjs 2>&1 | tail -4 || log "delivery_block Fehler (weiter)"
+log "Ehrliche Streichpreise: aufgeblasene compareAt (>=1.85x) auf ~1.5x senken (PBV-konform, idempotent)..."
+LIMIT="${COMPAREAT_MAX:-2000}" "$NODE" automation/honest_compareat.mjs 2>&1 | tail -4 || log "honest_compareat Fehler (weiter)"
 log "Trend-Scan CH (Google-Trends gratis + AI-Ideen, stateless/safe)..."
 "$NODE" automation/trends/trend_scan.mjs 2>&1 | tail -12 || log "trend_scan uebersprungen (weiter)"
 log "TikTok-Pixel-Healthcheck (Storefront -> Metafeld luxe.pixel_status)..."
