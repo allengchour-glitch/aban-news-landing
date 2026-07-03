@@ -37,6 +37,12 @@ const GROUPS={
  sport:{cats:[['2410301013021610400','Scooters'],['3D0169CF-0F24-4EEA-948E-E48C3980862E','Bicycle Helmets'],['161FA128-487C-4451-8B49-CB81B5A30A54','Bicycle Lights'],['C20B25A2-348C-48C8-A2C8-FE33749A40DE','Fitness & Bodybuilding'],['EA851596-F20F-4AA5-8869-4BB5CA1968DC','Camping & Hiking']],
    type:'Sport & Outdoor', tags:['sport','outdoor','fitness','cj-real','dropship'], kat:'Sport, Fitness & Outdoor',
    ban:/wholesale|\bsample\b/i, minImg:3, minP:3, maxP:90},
+ storage:{cats:[['2502140315331600200','Storage Bags & Cases & Boxes'],['56845C3D-4D9E-4729-B5D4-6D7DE310C031','Kitchen Storage'],['B62EE40F-7650-4715-A7A5-BA227540593C','Bathroom Storage'],['A0E89009-FFD6-4B2E-906A-8076DF45B32C','Clothing & Wardrobe Storage'],['87CF251F-8D11-4DE0-A154-9694D9858EB3','Home Office Storage']],
+   type:'Aufbewahrung & Organizer', tags:['aufbewahrung','organizer','wohnen','haushalt','cj-real','dropship'], kat:'Aufbewahrung & Organizer',
+   ban:/wholesale|\bsample\b|adult/i, minImg:3, minP:2, maxP:50},
+ musik:{cats:[['2502140306571605000','Guitars'],['2502140307181607100','Violins'],['2603180848241600400','Steel Tongue Drum']],
+   type:'Musikinstrumente', tags:['musik','instrument','hobby','cj-real','dropship'], kat:'Musikinstrumente',
+   ban:/wholesale|\bsample\b|zubehör.?set für/i, minImg:3, minP:5, maxP:120},
 };
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
