@@ -16,11 +16,12 @@ const GAP=Number(process.env.GAP||1100);
 const MAX=Number(process.env.MAX||0);
 const LEDGER=process.env.LEDGER||'dropship/backfill_done.txt';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function fetchT(url,opts={},ms=20000){const ac=new AbortController();const to=setTimeout(()=>ac.abort(),ms);try{return await fetch(url,{...opts,signal:ac.signal});}finally{clearTimeout(to);}}
 const tok=async()=>{const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return(await r.json()).access_token;};
 let T=await tok();
-const gql=async(q,v)=>{for(let a=0;a<6;a++){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':T},body:JSON.stringify({query:q,variables:v})});if(r.status===401){T=await tok();continue;}if(r.status===429||r.status>=500){await sleep((a+1)*2000);continue;}return r.json();}return null;};
-async function bb(p){for(let i=0;i<7;i++){let r,t;try{r=await fetch('https://api.bigbuy.eu'+p,{headers:{Authorization:'Bearer '+BB,Accept:'application/json'}});t=await r.text();}catch{await sleep((i+1)*3000);continue;}if(r.status===429||/rate limit/i.test(t)){await sleep((i+1)*4000);continue;}if(!r.ok)return null;try{return JSON.parse(t);}catch{return null;}}return null;}
-async function ok(u){try{const r=await fetch(u,{method:'HEAD'});if(r.ok)return true;const g=await fetch(u);return g.ok;}catch{return false;}}
+const gql=async(q,v)=>{for(let a=0;a<6;a++){let r;try{r=await fetchT(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':T},body:JSON.stringify({query:q,variables:v})},25000);}catch{await sleep((a+1)*2000);continue;}if(r.status===401){T=await tok();continue;}if(r.status===429||r.status>=500){await sleep((a+1)*2000);continue;}return r.json();}return null;};
+async function bb(p){for(let i=0;i<7;i++){let r,t;try{r=await fetchT('https://api.bigbuy.eu'+p,{headers:{Authorization:'Bearer '+BB,Accept:'application/json'}},25000);t=await r.text();}catch{await sleep((i+1)*3000);continue;}if(r.status===429||/rate limit/i.test(t)){await sleep((i+1)*4000);continue;}if(!r.ok)return null;try{return JSON.parse(t);}catch{return null;}}return null;}
+async function ok(u){try{const r=await fetchT(u,{method:'HEAD'},12000);if(r.ok)return true;const g=await fetchT(u,{},12000);return g.ok;}catch{return false;}}
 const fname=u=>{try{return decodeURIComponent(new URL(u).pathname.split('/').pop().split('?')[0]).replace(/^\d+_/,'').toLowerCase();}catch{return (u||'').toLowerCase();}};
 const textlen=h=>(h||'').replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/g,' ').trim().length;
 const sanit=h=>(h||'').replace(/<script[\s\S]*?<\/script>/gi,'').replace(/ on\w+="[^"]*"/gi,'').trim();
