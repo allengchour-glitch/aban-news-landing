@@ -43,6 +43,15 @@ a:hover{text-decoration-color:var(--accent)}
 .hero .sub{color:#a7ddd8;font-size:1.03rem;max-width:640px;line-height:1.55}
 .hero .trust{margin-top:16px;display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.83rem;color:#a7ddd8}
 
+/* Topnav */
+.topnav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
+.tn-in{max-width:800px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:20px;height:48px}
+.tn-brand{font-weight:900;font-size:1.15rem;color:var(--accent-dk);text-decoration:none;letter-spacing:-.5px}
+.tn-brand:hover{color:var(--accent);text-decoration:none}
+.tn-links{display:flex;gap:16px;font-size:.88rem}
+.tn-links a{color:var(--ink2);text-decoration:none}
+.tn-links a:hover{color:var(--accent-dk);text-decoration:underline}
+
 /* Breadcrumb */
 .bc{font-size:.8rem;color:var(--muted);padding:9px 0}
 .bc a{color:var(--accent-dk)}
@@ -110,7 +119,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var
 footer a{color:var(--muted)}
 
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
-@media(max-width:540px){.ctable{font-size:.82rem}.tips{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.ctable{font-size:.82rem}.tips{grid-template-columns:1fr 1fr}.tn-links{gap:10px;font-size:.82rem}}
 </style>
 
 <!-- FAQPage JSON-LD -->
@@ -186,6 +195,17 @@ footer a{color:var(--muted)}
 </script>
 </head>
 <body>
+
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
 
 <!-- Breadcrumb -->
 <nav class="bc wrap" aria-label="Brotkrumen">
@@ -474,6 +494,361 @@ footer a{color:var(--muted)}
 </ul>
 <p>Tipp: Vor dem Onlinekauf einer Badewanne in eine Ausstellung gehen. Material, Tiefe und Ergonomie lassen sich online schlecht beurteilen.</p>
 
+<!-- Section 12: Mietwohnung -->
+<h2>Bad-Umbau in der Mietwohnung: Was das Obligationenrecht sagt</h2>
+<p>Wer in einer Mietwohnung lebt, darf bauliche Änderungen am Badezimmer nicht einfach vornehmen. Nach <strong>Art. 260a des Obligationenrechts (OR)</strong> braucht jede Erneuerung oder Änderung, die über den vertragsgemässen Gebrauch hinausgeht, die <strong>schriftliche Zustimmung der Vermieterschaft</strong>. Fehlt diese, kann bei Auszug ein Rückbau auf eigene Kosten verlangt werden — bereits investiertes Geld ist dann verloren.</p>
+
+<h3>Reversibel vs. fest verbaut</h3>
+<div style="overflow-x:auto">
+<table class="ctable">
+  <thead>
+    <tr><th>Reversibel (meist ohne Zustimmung möglich)</th><th>Fest verbaut (Zustimmung nötig)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Handbrause oder Duschschlauch austauschen</td><td>Whirlpool-Einbau mit Fliesenarbeiten</td></tr>
+    <tr><td>Duschsäule ohne Bohren (Klemmstange)</td><td>Bodengleiche Dusche mit neuem Gefälle-Estrich</td></tr>
+    <tr><td>Duschvorhang statt Festkabine</td><td>Neue Unterputz-Armatur</td></tr>
+    <tr><td>Mobiler Spiegelschrank oder Regal</td><td>Fest installierte Sauna oder Infrarot-Kabine (angeschraubt)</td></tr>
+    <tr><td>Rutschfeste Badematte mit Saugnapf</td><td>Neue Fliesen oder Bodenbelag</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>So gehst du vor</h3>
+<ol>
+  <li>Schriftliche Anfrage an Vermieterschaft oder Verwaltung mit genauer Beschreibung der geplanten Arbeiten und Kostenvoranschlag einreichen.</li>
+  <li>In der Zustimmung gleich regeln, ob bei Auszug ein Rückbau erfolgt oder eine Entschädigung für die Wertsteigerung vereinbart wird.</li>
+  <li>Vor Baubeginn den Ist-Zustand fotografisch dokumentieren — hilfreich bei späteren Differenzen über die Wohnungsabgabe.</li>
+  <li>Bei Stockwerkeigentum zusätzlich prüfen, ob Gemeinschaftseigentum betroffen ist (z. B. Steigleitungen) — dafür braucht es meist einen Beschluss der Eigentümerversammlung.</li>
+  <li>Ohne Zustimmung ausgeführte Festeinbauten gelten als Vertragsverletzung und können im Streitfall zu Schadenersatzforderungen führen.</li>
+</ol>
+<p>Kleine, leicht rückgängig zu machende Verschönerungen wie eine neue Handbrause oder ein Duschvorhang benötigen in der Regel keine gesonderte Zustimmung, sollten aber bei grösseren Vorhaben trotzdem vorgängig mit der Verwaltung besprochen werden.</p>
+
+<!-- Section 13: Barrierefreiheit -->
+<h2>Barrierefreies Bad: SIA 500-Norm und Finanzierungshilfen</h2>
+<p>Mit der alternden Bevölkerung gewinnt das hindernisfreie Bad in der Schweiz an Bedeutung. Die massgebende Norm ist <strong>SIA 500 (Hindernisfreie Bauten)</strong>, die Mindestmasse und Ausstattungsmerkmale für den barrierefreien Zugang festlegt.</p>
+
+<h3>Wichtige Masse nach SIA 500</h3>
+<ul>
+  <li>Bewegungsfläche von mindestens 150 × 150 cm vor WC, Lavabo und Dusche für Rollstuhlnutzer</li>
+  <li>Bodengleiche Dusche ohne Schwelle ist bei hindernisfreier Planung Pflicht</li>
+  <li>Haltegriffe mit einer Traglast von mindestens 100 kg, montiert in eine verstärkte Wandkonstruktion</li>
+  <li>Unterfahrbares Lavabo (Höhe ca. 80 cm, Freiraum für Rollstuhl darunter)</li>
+  <li>Rutschhemmender Bodenbelag der Bewertungsgruppe B oder höher gemäss den einschlägigen SN-Normen für Nassbereiche</li>
+</ul>
+
+<h3>Wer beteiligt sich an den Kosten?</h3>
+<ul>
+  <li><strong>IV (Invalidenversicherung)</strong>: übernimmt bei anerkanntem Anspruch Kosten für behindertengerechte Anpassungen im Eigenheim im Rahmen der Hilfsmittelliste (HVI)</li>
+  <li><strong>Ergänzungsleistungen (EL) zu AHV/IV</strong>: können anteilig für Umbaukosten aufkommen, wenn die finanziellen Voraussetzungen erfüllt sind</li>
+  <li><strong>Pro Senectute</strong>: vermittelt kantonale Fonds und teils zinslose Darlehen für altersgerechte Wohnungsanpassungen</li>
+  <li><strong>Kantonale Wohnbauförderung</strong>: einzelne Kantone gewähren zusätzliche Beiträge für hindernisfreies Bauen</li>
+</ul>
+<p>Wichtig: Die Abklärung sollte vor Baubeginn über die zuständige IV-Stelle oder Pro Senectute erfolgen — rückwirkende Gesuche werden in der Regel nicht bewilligt.</p>
+
+<!-- Section 14: Marken -->
+<h2>Marken im Vergleich: Duravit, Villeroy &amp; Boch, Hansgrohe, Grohe, Doris Sauna, Klafs</h2>
+<p>Der Schweizer Fachhandel führt meist mehrere der folgenden Marken parallel — ein Vergleich vor Ort in der Ausstellung lohnt sich, weil Verarbeitungsqualität und Ergonomie sich am besten live beurteilen lassen.</p>
+<div style="overflow-x:auto">
+<table class="ctable">
+  <thead>
+    <tr><th>Marke</th><th>Herkunft</th><th>Schwerpunkt</th><th>Preissegment</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Duravit</strong></td><td>Deutschland (Hornberg)</td><td>Keramik-Waschbecken, Design-Badewannen, WCs</td><td>Mittel bis Premium</td></tr>
+    <tr><td><strong>Villeroy &amp; Boch</strong></td><td>Deutschland / Luxemburg</td><td>Keramik, Komplettbäder, spülrandlose WCs</td><td>Mittel bis Premium</td></tr>
+    <tr><td><strong>Hansgrohe</strong></td><td>Deutschland (Schiltach)</td><td>Armaturen, Brausen, Regendusch-Systeme</td><td>Mittel bis Premium</td></tr>
+    <tr><td><strong>Grohe</strong></td><td>Deutschland</td><td>Armaturen, Thermostate, breites Sortiment</td><td>Einstieg bis Premium</td></tr>
+    <tr><td><strong>KWC</strong></td><td>Schweiz (Unterkulm AG)</td><td>Küchen- und Bad-Armaturen, Schweizer Fertigung</td><td>Mittel bis Premium</td></tr>
+    <tr><td><strong>Doris Sauna</strong></td><td>Schweiz (Sirnach TG)</td><td>Vollholz-Saunen, Massanfertigung</td><td>Premium</td></tr>
+    <tr><td><strong>Klafs</strong></td><td>Deutschland, mit Vertretungen in der Schweiz</td><td>Sauna, Dampfbad, Spa-Anlagen für privat und öffentlich</td><td>Premium bis Luxus</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Doris Sauna ist einer der wenigen Schweizer Hersteller im Segment und fertigt Vollholz-Saunen nach Mass — interessant, wenn ein Raum unregelmässige Masse hat und Standardkabinen nicht passen. Klafs bedient sowohl den Privat- als auch den Objektbereich (Hotels, Fitnesscenter) und ist in der Schweiz über Fachpartner erhältlich.</p>
+
+<!-- Section 15: Sicherheit -->
+<h2>Sicherheit im Badezimmer: Rutschfestigkeit, Haltegriffe, FI-Schutzschalter</h2>
+
+<h3>Rutschfeste Bodenbeläge</h3>
+<p>Für Nassbereiche gelten eigene Bewertungsgruppen für Barfussbereiche (A, B, C), die sich von den Rutschhemmungsklassen für Schuhbereiche (R9–R13) unterscheiden. Für Duschflächen empfiehlt sich mindestens Bewertungsgruppe B.</p>
+<ul>
+  <li>Matte, strukturierte Fliesen statt Hochglanzoberflächen in der Dusche wählen</li>
+  <li>Antirutsch-Matten als einfache Nachrüstlösung in Miet- und Altbauten</li>
+  <li>Korrektes Gefälle (1,5–2 %) ausführen lassen, um Pfützenbildung zu vermeiden</li>
+</ul>
+
+<h3>Haltegriffe und Sitzflächen</h3>
+<p>Haltegriffe sind nicht nur für ältere Personen sinnvoll — auch in Familien mit Kindern erhöhen sie die Sicherheit beim Ein- und Aussteigen. Vor der Montage prüfen, ob die Wand ausreichend verstärkt ist, damit die Traglast von mindestens 100 kg sicher aufgenommen wird. Bei Trockenbauwänden braucht es zusätzliche Unterkonstruktionen.</p>
+
+<h3>FI-Schutzschalter (RCD) — Pflicht in Nassräumen</h3>
+<p>Nach der Niederspannungs-Installationsnorm <strong>NIN 2020</strong> müssen alle Steckdosen und fest angeschlossenen Geräte in Nassräumen über einen Fehlerstromschutzschalter (FI/RCD) mit maximal 30 mA Auslösestrom abgesichert sein. In älteren Gebäuden (Installation vor den 1990er-Jahren) fehlt dieser Schutz häufig — ein Nachrüsten im Rahmen einer Renovation ist vor allem vor der Installation eines Whirlpools oder einer Sauna dringend zu empfehlen. Der Prüftaster am FI-Schalter sollte periodisch getestet werden; die Installation selbst ist ausschliesslich konzessionierten Elektrikern vorbehalten.</p>
+
+<!-- Section 16: Baubewilligung -->
+<h2>Baubewilligung, Ablauf und Zeitrahmen einer Bad-Renovation in der Schweiz</h2>
+
+<h3>Wann ist eine Bewilligung nötig?</h3>
+<ul>
+  <li>Reiner Austausch von Sanitärobjekten im selben Raum (WC, Lavabo, Badewanne gegen Dusche) ist meist bewilligungsfrei</li>
+  <li>Das Verschieben tragender Wände oder eine Erweiterung der Nasszelle in andere Räume ist in der Regel bewilligungspflichtig</li>
+  <li>Neue Dachflächenfenster für zusätzliches Licht sind häufig meldepflichtig</li>
+  <li>Änderungen an der Gebäudehülle oder Fassade sind praktisch immer bewilligungspflichtig</li>
+</ul>
+<p>Auskunft erteilt das kantonale Bauamt oder die Bauverwaltung der Gemeinde — die Praxis unterscheidet sich von Kanton zu Kanton, weshalb eine frühzeitige Anfrage sinnvoll ist.</p>
+
+<h3>Typischer Zeitrahmen</h3>
+<div style="overflow-x:auto">
+<table class="ctable">
+  <thead>
+    <tr><th>Projektumfang</th><th>Planung</th><th>Bauzeit</th><th>Gesamtdauer</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Austausch Armaturen / WC</td><td>1–2 Wochen</td><td>1–3 Tage</td><td>ca. 2–3 Wochen</td></tr>
+    <tr><td>Neues Duschsystem / Bodenbelag</td><td>2–4 Wochen</td><td>1–2 Wochen</td><td>ca. 4–6 Wochen</td></tr>
+    <tr><td>Komplettsanierung (Fliesen, Sanitär, Elektrik)</td><td>4–8 Wochen</td><td>3–6 Wochen</td><td>ca. 2–4 Monate</td></tr>
+    <tr><td>Anbau / Erweiterung mit Bewilligung</td><td>8–16 Wochen</td><td>2–4 Monate</td><td>ca. 4–8 Monate</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Einen Zeitpuffer einplanen: Lieferfristen für Sanitärkeramik können bei Spezialbestellungen 6–10 Wochen betragen, und in stark nachgefragten Regionen wie Zürich oder Genf sind Wartezeiten auf Handwerker keine Seltenheit.</p>
+
+<!-- Section 17: Wellness vs Therme -->
+<h2>Wellness zuhause oder Therme: Ein Kostenvergleich</h2>
+<p>Bevor grössere Summen in ein eigenes Wellness-Bad investiert werden, lohnt sich ein Blick auf die Alternative: der regelmässige Besuch einer öffentlichen Therme.</p>
+<div style="overflow-x:auto">
+<table class="ctable">
+  <thead>
+    <tr><th>Angebot</th><th>Eintritt pro Tag (ca.)</th><th>Bemerkung</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Bad Zurzach (Aquarena)</td><td>CHF 33 – 40</td><td>Preise variieren je nach Saison und Wochentag</td></tr>
+    <tr><td>Leukerbad Therme</td><td>CHF 27 – 37</td><td>Mehrere Becken, alpine Lage</td></tr>
+    <tr><td>Therme Vals</td><td>CHF 75 – 100+</td><td>Premium-Segment, Architektur von Peter Zumthor</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Bei wöchentlichen Besuchen übersteigen die Jahreskosten pro Person schnell CHF 1'500 bis 2'500 — vergleichbar mit der Investition in eine einfache Infrarot-Sauna oder ein hochwertiges Duschsystem zuhause, das über viele Jahre nutzbar bleibt. Für gelegentliche Nutzung, etwa in den Ferien oder zu besonderen Anlässen, bleibt der Thermenbesuch die günstigere Option, weil Anschaffungs- und Betriebskosten (Strom, Wasser, Wartung) zuhause entfallen.</p>
+
+<h3>Wann lohnt sich die Investition zuhause?</h3>
+<ul>
+  <li>Tägliche oder wöchentliche Nutzung ist geplant</li>
+  <li>Mehrere Personen im Haushalt profitieren von der Anschaffung</li>
+  <li>Langfristiger Wohnsitz (Eigenheim oder langfristiger Mietvertrag mit Zustimmung der Vermieterschaft)</li>
+  <li>Regelmässiger gesundheitlicher Bedarf, etwa bei chronischen Rückenbeschwerden</li>
+</ul>
+<p>Eine Therme bleibt sinnvoll bei gelegentlicher Nutzung, dem Wunsch nach einem grösseren Angebot (Becken, Rutschen, Massagen) oder wenn ein Umbau in der aktuellen Wohnsituation nicht möglich ist.</p>
+
+<!-- Section 18: Pflegeprodukte -->
+<h2>Pflegeprodukte und nachhaltige Bad-Produkte aus der Schweiz</h2>
+<ul>
+  <li><strong>Weleda</strong> (Arlesheim, BL): Naturkosmetik seit 1921, Körperöle und Pflegeprodukte auf pflanzlicher Basis, breit erhältlich in Schweizer Drogerien und Apotheken</li>
+  <li><strong>Farfalla</strong> (Ipsach, BE): ätherische Öle und Aromatherapie-Produkte, gut geeignet für Aufguss in Sauna oder Aroma-Funktion in der Dampfdusche</li>
+  <li><strong>Plastikfreie Alternativen</strong>: feste Seifen und Shampoo-Bars statt Kunststoffflaschen, Zahnbürsten aus Bambus, nachfüllbare Seifenspender</li>
+  <li><strong>Refill-Stationen</strong>: einzelne Schweizer Drogerieketten bieten Nachfüllstationen für Duschgel und Shampoo an und reduzieren so Verpackungsabfall</li>
+</ul>
+
+<h3>Aufguss und Duft in Sauna und Dampfdusche</h3>
+<p>Ätherische Öle wie Eukalyptus, Latschenkiefer oder Zitrone gehören ausschliesslich in den dafür vorgesehenen Aufgusswasser-Behälter oder Verdampfer — nicht direkt auf Heizelemente, da sonst Brandgefahr und Materialschäden drohen. Bei Dampfduschen mit Aroma-Funktion ist zudem die Freigabe des Herstellers zu beachten, da nicht jedes Öl für die eingebaute Dosierpumpe geeignet ist.</p>
+
+<!-- Section 19: Energieeffizienz -->
+<h2>Energieeffizienz: Durchlauferhitzer, Boiler und Wärmepumpe im Vergleich</h2>
+<div style="overflow-x:auto">
+<table class="ctable">
+  <thead>
+    <tr><th>System</th><th>Funktionsweise</th><th>Effizienz</th><th>Eignung</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Elektro-Durchlauferhitzer</strong></td><td>erwärmt Wasser direkt beim Zapfen, ohne Speicher</td><td>hoher Momentanverbrauch (Anschluss 18–27 kW nötig), aber keine Bereitschaftsverluste</td><td>kleine Wohnungen, punktueller Bedarf</td></tr>
+    <tr><td><strong>Elektroboiler</strong></td><td>Wasser wird im Speicher konstant warmgehalten</td><td>Bereitschaftsverluste, Wirkungsgrad nahe 1</td><td>einfache Installation, älterer Standard</td></tr>
+    <tr><td><strong>Wärmepumpenboiler</strong></td><td>nutzt Raum- oder Aussenluft zur Wassererwärmung</td><td>deutlich sparsamer (Leistungszahl 3–4)</td><td>Neubau/Sanierung mit Platz für Luftansaugung</td></tr>
+    <tr><td><strong>Warmwasser-Zirkulation</strong></td><td>Leitung hält warmes Wasser ständig verfügbar</td><td>zusätzlicher Energiebedarf durch Zirkulationsverluste, dafür kein Wasserverlust beim Warten</td><td>grössere Wohnungen mit langen Leitungswegen</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Die Amortisationszeit eines Wärmepumpenboilers gegenüber einem Elektroboiler liegt in der Schweiz meist bei 4 bis 6 Jahren, abhängig vom lokalen Strompreis und allfälligen Fördermitteln. Viele Kantone unterstützen den Ersatz von Elektroboilern im Rahmen des Gebäudeprogramms — Auskunft erteilt die kantonale Energiefachstelle.</p>
+
+<!-- Section 20: Dampfdusche -->
+<h2>Dampfdusche: Funktion, Kosten und Einbau</h2>
+<p>Eine Dampfdusche kombiniert die normale Dusche mit der Funktion eines kleinen Dampfbads. Ein Dampfgenerator erzeugt in wenigen Minuten Wasserdampf, der über eine Düse in die vollständig geschlossene Kabine geleitet wird.</p>
+
+<h3>Aufbau und Technik</h3>
+<ul>
+  <li>Dampfgenerator mit 2–3,5 kW Leistung erzeugt Dampf bei ca. 40–45 °C innerhalb weniger Minuten</li>
+  <li>Die Kabine muss vollständig geschlossen und abgedichtet sein — Decke und Türen brauchen eine passende Dichtung, sonst entweicht der Dampf</li>
+  <li>Eine Sitzbank ist für längere Anwendungen empfehlenswert</li>
+  <li>Aroma- und Farblicht-Funktionen lassen sich bei vielen Modellen nachrüsten oder sind bereits integriert</li>
+</ul>
+
+<h3>Kosten</h3>
+<ul>
+  <li>Kompaktkabinen mit integrierter Dampf-Funktion: CHF 2'500 – 6'000</li>
+  <li>Nachrüstsätze mit separatem Dampfgenerator für bestehende Duschen: CHF 1'500 – 3'500 zzgl. Installation</li>
+  <li>Stromanschluss: kleinere Geräte laufen mit 230 V, ab etwa 3 kW ist häufig ein 400-V-Anschluss nötig — vorab mit dem Elektriker abklären</li>
+</ul>
+
+<h3>Wartung</h3>
+<p>Der Dampfgenerator sollte je nach lokaler Wasserhärte alle drei bis sechs Monate entkalkt werden. Die Dichtungen der Kabine gehören einmal jährlich geprüft, da undichte Stellen zu Feuchtigkeitsschäden und Schimmelbildung im Mauerwerk führen können.</p>
+
+<!-- Section 21: Massagegeräte -->
+<h2>Massagegeräte fürs Bad: Whirlpool-Düsen, Shiatsu und Zubehör</h2>
+<ul>
+  <li><strong>Wasserstrahl-Massagedüsen</strong>: in Whirlpool oder Duschsystem integriert, mit verstellbarem Druck gezielt auf Rücken oder Nacken ausrichtbar</li>
+  <li><strong>Shiatsu-Massagesitze oder -auflagen</strong>: eigenständige Elektrogeräte, meist nicht wasserfest und daher für den Bereich ausserhalb der eigentlichen Nasszone gedacht</li>
+  <li><strong>Fussmassage-Wannen</strong> mit Sprudel- und Wärmefunktion: günstige Ergänzung ab CHF 40 – 120</li>
+  <li><strong>Wasserfeste Handmassagegeräte</strong>: für den direkten Einsatz unter der Dusche geeignet</li>
+</ul>
+<p>Bei Elektrogeräten in Bad-Nähe gilt: Nur Modelle mit Schutzklasse IPX4 oder höher in der Nähe von Dusche oder Badewanne verwenden. Steckdosen im Nassbereich sind ohnehin gemäss NIN 2020 mit einem FI-Schutzschalter abgesichert (siehe Kapitel „Sicherheit im Badezimmer").</p>
+
+<!-- Section 22: Warmwasserkosten -->
+<h2>Warmwasserkosten: Was ein Bad in der Schweiz wirklich kostet</h2>
+<p>Die Kosten für ein Vollbad hängen stark von der Energiequelle für die Warmwasseraufbereitung ab.</p>
+<div style="overflow-x:auto">
+<table class="ctable">
+  <thead>
+    <tr><th>Energiequelle</th><th>Kosten pro Vollbad (ca. 160 l)</th><th>Bemerkung</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Strom (Elektroboiler)</td><td>CHF 1.20 – 1.80</td><td>abhängig vom lokalen Strompreis (ca. 20–28 Rp./kWh)</td></tr>
+    <tr><td>Wärmepumpenboiler</td><td>CHF 0.40 – 0.70</td><td>dank hoher Effizienz deutlich günstiger</td></tr>
+    <tr><td>Ölheizung mit Warmwasseranbindung</td><td>CHF 0.90 – 1.40</td><td>abhängig vom Ölpreis, meist an die zentrale Heizung gekoppelt</td></tr>
+    <tr><td>Gasheizung mit Warmwasseranbindung</td><td>CHF 0.80 – 1.30</td><td>ähnliche Grössenordnung wie Öl</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Die durchschnittlichen Wasserpreise in der Schweiz liegen bei CHF 2 – 4 pro m³ (1'000 Liter) inklusive Abwassergebühren, je nach Gemeinde teils deutlich höher oder tiefer. Die aktuellen Tarife veröffentlicht das jeweilige Gemeinde-Wasserwerk.</p>
+
+<h3>Sparduschkopf als einfachste Massnahme</h3>
+<p>Ein Sparduschkopf reduziert den Durchfluss von 15–18 l/min auf 6–9 l/min, ohne dass der Komfort spürbar leidet — moderne Modelle mischen dafür Luft in den Wasserstrahl. Bei einer achtminütigen Dusche pro Tag ergibt das eine Einsparung von rund 40–70 Litern Warmwasser täglich, was sich über ein Jahr auf mehrere hundert Franken an Energie- und Wasserkosten pro Person summieren kann.</p>
+
+<!-- Section 23: Garantie -->
+<h2>Garantie, Gewährleistung und Reklamationen in der Schweiz</h2>
+<p>Beim Kauf von Bad- und Wellness-Produkten in der Schweiz gilt die gesetzliche Sachgewährleistung nach <strong>Art. 197 ff. OR</strong>: Mängel müssen innerhalb von zwei Jahren ab Lieferung gerügt werden; bei gebrauchter Ware kann diese Frist vertraglich auf ein Jahr verkürzt werden. Anders als in der EU besteht in der Schweiz kein gesetzliches Widerrufsrecht für Online-Käufe — ein Rückgaberecht ist freiwillige Kulanz des Händlers.</p>
+
+<h3>Praktische Tipps</h3>
+<ul>
+  <li>Kaufbeleg oder Rechnung unbedingt aufbewahren — er ist der einzig gültige Nachweis für Gewährleistungsansprüche</li>
+  <li>Herstellergarantien (z. B. mehrjährige Garantie auf Armaturen) sind freiwillige Zusatzleistungen der Hersteller, unabhängig von der gesetzlichen Gewährleistung, und oft an eine Registrierung gebunden</li>
+  <li>Mängel schriftlich und mit Foto oder Beschreibung reklamieren — eine sofortige Mängelrüge ist empfehlenswert, um Fristen nicht zu verpassen</li>
+  <li>Bei Installationsfehlern haftet in erster Linie der ausführende Handwerksbetrieb, nicht der Produkthersteller</li>
+</ul>
+
+<h3>Rückgaberecht beim Online-Kauf</h3>
+<p>Viele Schweizer Online-Händler gewähren freiwillig ein Rückgaberecht von 14 bis 30 Tagen — das ist Kulanz und keine gesetzliche Pflicht. Die Bedingungen (Originalverpackung, unbenutzter Zustand) sollten vor dem Kauf genau gelesen werden, insbesondere bei sperrigen Produkten wie Badewannen oder Saunakabinen, bei denen ein Rückversand aufwändig und teuer sein kann.</p>
+
+<!-- Section 24: Ausstellungsstücke -->
+<h2>Ausstellungsstücke, Occasionen und Outlet-Angebote</h2>
+<p>Wer Kosten sparen will, findet in der Schweiz mehrere Wege zu reduzierten Preisen.</p>
+<ul>
+  <li><strong>Ausstellungsstücke</strong> in Baumärkten oder Bad-Ausstellungen: Rabatte von 20–50 % bei Modellwechsel oder Schauraum-Umbau, meist funktionstüchtig, Garantie aber oft eingeschränkt</li>
+  <li><strong>Online-Occasionsplattformen</strong> (Tutti.ch, Ricardo.ch): gebrauchte Armaturen oder Whirlpools von Privatpersonen — vor dem Kauf Funktionstest verlangen und nach der Herkunft fragen (z. B. Wasserschaden)</li>
+  <li><strong>Outlet-Websites der Hersteller</strong>: teils Restposten oder Ware zweiter Wahl mit optischen Mängeln zu reduzierten Preisen</li>
+  <li><strong>Rückläufer-Kategorien</strong> bei grossen Online-Händlern: geprüfte, retournierte Ware mit Preisnachlass</li>
+</ul>
+<p>Bei sanitären Occasionen, insbesondere gebrauchten Whirlpools, unbedingt auf den Zustand von Dichtungen, Pumpe und Rohrleitungssystem achten — Ersatzteile sind bei älteren oder importierten Modellen mitunter schwer erhältlich.</p>
+
+<!-- Section 25: Checkliste -->
+<h2>Checkliste: In 7 Schritten zum neuen Bad</h2>
+<ol>
+  <li><strong>Bedarf klären</strong>: Wer nutzt das Bad, wie oft, mit welchen Ansprüchen (Familie, Barrierefreiheit, Wellness)?</li>
+  <li><strong>Budget festlegen</strong>: inklusive Reserve von 10–15 % für Unvorhergesehenes</li>
+  <li><strong>Raum ausmessen</strong>: Grundriss, Türbreiten sowie Anschlüsse für Wasser, Abwasser und Strom dokumentieren</li>
+  <li><strong>Bei Mietwohnung</strong>: schriftliche Zustimmung der Vermieterschaft einholen (siehe Kapitel „Bad-Umbau in der Mietwohnung")</li>
+  <li><strong>Offerten einholen</strong>: mindestens drei unabhängige Angebote von SVGW-konzessionierten Installateuren vergleichen</li>
+  <li><strong>Bewilligung prüfen</strong>: bei grösseren Eingriffen frühzeitig beim zuständigen Bauamt nachfragen</li>
+  <li><strong>Lieferzeiten einplanen</strong>: besonders bei Spezialbestellungen und in Stosszeiten im Frühling und Herbst genügend Vorlauf einrechnen</li>
+</ol>
+
+<!-- Section 26: Pflege -->
+<h2>Pflege und Reinigung: Acryl, Emaille und Mineralguss richtig pflegen</h2>
+<p>Die richtige Pflege verlängert die Lebensdauer einer Badewanne erheblich und erhält ihren optischen Zustand über viele Jahre.</p>
+
+<h3>Acryl</h3>
+<ul>
+  <li>Keine Scheuermittel oder Stahlwolle verwenden — Kratzer bleiben sichtbar</li>
+  <li>Milde Seifenlauge und ein weicher Schwamm oder Mikrofasertuch genügen für die Reinigung</li>
+  <li>Kleine Kratzer lassen sich mit spezieller Acryl-Polierpaste auffrischen</li>
+  <li>Hitzeeinwirkung über 60 °C vermeiden — es besteht Verformungsgefahr</li>
+</ul>
+
+<h3>Emaille</h3>
+<ul>
+  <li>Robuster gegen Kratzer als Acryl, bei starken Stössen sind aber Absplitterungen bis zum Gusseisen-Kern möglich</li>
+  <li>Aggressive Entkalker auf Essigsäure-Basis sparsam einsetzen — der Glanz kann darunter leiden</li>
+  <li>Regelmässiges Trockenwischen verhindert hartnäckige Kalk- und Seifenränder</li>
+</ul>
+
+<h3>Mineralguss und Resin</h3>
+<ul>
+  <li>Porenarme Oberfläche, dadurch grundsätzlich pflegeleicht</li>
+  <li>Feine Kratzer lassen sich gemäss Herstelleranleitung teils selbst mit feinem Schleifpapier (Korn 1000 oder feiner) ausbessern</li>
+  <li>Bei hellen Farbtönen kann jahrelange direkte Sonneneinstrahlung zu leichter Vergilbung führen — Fenster mit UV-Schutzfolie oder Vorhang schützen die Oberfläche</li>
+</ul>
+
+<!-- Section 27: Smart-Bad -->
+<h2>Smart-Bad: Digitale Armaturen und smarte Steuerung</h2>
+<p>Vernetzte Bad-Technik verbreitet sich auch in der Schweiz zunehmend, ist aber im Vergleich zu klassischen Armaturen noch im mittleren bis oberen Preissegment angesiedelt.</p>
+<ul>
+  <li><strong>Digitale Thermostate mit Memory-Funktion</strong>: speichern bevorzugte Temperatur und Wassermenge, Aufpreis ca. CHF 200 – 500 gegenüber einem klassischen Thermostat</li>
+  <li><strong>App-gesteuerte Duschsysteme</strong>: erlauben die Vorwahl von Duschprogrammen sowie teils Licht- und Musikstimmung über eine Smartphone-App</li>
+  <li><strong>Dusch-WCs mit Bidet-Funktion</strong>: in der Schweiz noch wenig verbreitet; Nachrüst-Sitze ab CHF 400, vollintegrierte Modelle ab CHF 1'500</li>
+  <li><strong>Bewegungsmelder-Beleuchtung</strong>: einfache Energiesparoption, besonders praktisch für die nächtliche Nutzung</li>
+</ul>
+<p>Bei App-gesteuerten Systemen lohnt sich ein Blick auf die Update-Politik des Herstellers: Firmware-Updates und Datenschutz sollten über mehrere Jahre zugesichert sein, damit die Steuerung nicht vorzeitig veraltet.</p>
+
+<!-- Section 28: Steuerabzüge -->
+<h2>Steuerabzüge und Fördermittel für die Bad-Sanierung</h2>
+<p>Wer in der Schweiz eine Bad-Sanierung plant und Wohneigentum besitzt, kann unter bestimmten Voraussetzungen von Steuerabzügen und kantonalen Fördermitteln profitieren.</p>
+<ul>
+  <li><strong>Werterhaltende Unterhaltskosten</strong> (Ersatz von Armaturen, Sanitärkeramik oder Fliesen) lassen sich in den meisten Kantonen als Liegenschaftsunterhalt vom steuerbaren Einkommen abziehen</li>
+  <li><strong>Wertvermehrende Investitionen</strong> (z. B. ein Anbau oder die Erstinstallation einer Sauna) sind steuerlich nicht direkt abzugsfähig, erhöhen aber die Anlagekosten und reduzieren dadurch später die Grundstückgewinnsteuer beim Verkauf</li>
+  <li><strong>Energetische Verbesserungen</strong> wie ein Wärmepumpenboiler oder eine Abwasser-Wärmerückgewinnung werden über das Gebäudeprogramm von Bund und Kantonen gefördert — die Beitragshöhe unterscheidet sich je Kanton</li>
+  <li><strong>Pauschal- vs. effektive Abzugsmethode</strong>: Bei grösseren Sanierungen lohnt sich meist die Deklaration der effektiven Kosten anstelle der Pauschale</li>
+</ul>
+<p>Empfehlung: Vor Baubeginn bei der kantonalen Steuerverwaltung oder einer Treuhandstelle abklären, welche Kosten abzugsfähig sind — das kann die Planung der Aufteilung zwischen wertvermehrenden und werterhaltenden Massnahmen beeinflussen.</p>
+
+<!-- Section 29: Glossar -->
+<h2>Glossar: Wichtige Begriffe rund ums Schweizer Bad</h2>
+<ul>
+  <li><strong>SVGW</strong>: Schweizerischer Verein des Gas- und Wasserfaches — zertifiziert Fachbetriebe und Produkte für Trinkwasser-Installationen</li>
+  <li><strong>SIA 500</strong>: Norm für hindernisfreies Bauen, regelt Mindestmasse und Ausstattung für barrierefreie Bäder</li>
+  <li><strong>SIA 243</strong>: Norm zur Verbundabdichtung in Nassbereichen, Pflicht unter Fliesen in Duschen und Wannennischen</li>
+  <li><strong>SIA 382/1</strong>: Norm zu Lüftungs- und Klimaanlagen, legt den Mindestluftwechsel im Badezimmer fest</li>
+  <li><strong>NIN 2020</strong>: Niederspannungs-Installationsnorm, regelt unter anderem die Pflicht zum FI-Schutzschalter in Nassräumen</li>
+  <li><strong>OR Art. 260a</strong>: Artikel im Obligationenrecht, der die Zustimmungspflicht der Vermieterschaft bei baulichen Änderungen regelt</li>
+  <li><strong>°fH (Französischer Härtegrad)</strong>: Mass für die Wasserhärte in der Schweiz, gibt den Kalkgehalt des Trinkwassers an</li>
+  <li><strong>IPX-Schutzklasse</strong>: Kennzeichnung für den Schutz von Elektrogeräten gegen Wasser (z. B. IPX4 = spritzwassergeschützt)</li>
+  <li><strong>COP (Coefficient of Performance)</strong>: Leistungszahl einer Wärmepumpe — zeigt, wie viel Wärmeenergie pro eingesetzter Stromeinheit erzeugt wird</li>
+  <li><strong>RCD / FI-Schutzschalter</strong>: Fehlerstromschutzschalter, unterbricht den Stromkreis bei Fehlerströmen und schützt vor Stromschlägen</li>
+  <li><strong>Bewertungsgruppe (Rutschhemmung)</strong>: Klassifizierung von Bodenbelägen für Barfussbereiche nach ihrer Rutschfestigkeit</li>
+  <li><strong>Wannenträger</strong>: Stahl- oder Kunststoffgestell, das eine Einbau-Badewanne stabil und schwingungsfrei hält</li>
+  <li><strong>Perlator</strong>: Luftbeimischer am Auslauf von Armaturen, reduziert den Wasserverbrauch und mindert Spritzwasser</li>
+  <li><strong>Verbundabdichtung</strong>: wasserdichte Schicht unter Fliesen in Nassbereichen, verhindert das Eindringen von Feuchtigkeit ins Mauerwerk</li>
+</ul>
+
+<!-- Section 30: Regendusche -->
+<h2>Regendusche: Kopfbrausen-Grösse und Wasserdruck richtig wählen</h2>
+<p>Die Regendusche gehört zu den beliebtesten Nachrüstungen bei Dusch-Renovationen, funktioniert aber nur mit ausreichend Wasserdruck zufriedenstellend.</p>
+<ul>
+  <li>Kopfbrausen mit 20–30 cm Durchmesser genügen für die meisten Bäder; Modelle ab 30 cm eignen sich eher für Neubauten mit ausreichendem Wasserdruck</li>
+  <li>Für einen befriedigenden Regeneffekt ist ein Mindest-Fliessdruck von 2–3 bar nötig — in oberen Stockwerken älterer Liegenschaften kann dieser Wert unterschritten sein, eine Druckerhöhungsanlage schafft in solchen Fällen Abhilfe</li>
+  <li>Deckenmontage erfordert eine Rohrverlegung in der Decke und lässt sich meist nur im Neubau oder bei einer Kernsanierung wirtschaftlich umsetzen; ein Wandausleger ist die einfachere Nachrüstlösung</li>
+  <li>Die Durchflussmenge liegt je nach Modell zwischen 8 und 20 l/min — Regenduschen ohne Durchflussbegrenzer erhöhen den Wasserverbrauch spürbar, weshalb sich Modelle mit Eco-Taste oder integriertem Perlator lohnen</li>
+</ul>
+<p>Tipp: Vor dem Kauf den Fliessdruck der eigenen Wohnung bei der Hauswartung oder Verwaltung erfragen oder mit einem einfachen Manometer am Wasserhahn selbst messen.</p>
+
+<!-- Section 31: Zusammenfassung -->
+<h2>Zusammenfassung: Die wichtigsten Punkte auf einen Blick</h2>
+<ul>
+  <li>Preisspannen kennen: von der Einbau-Badewanne ab CHF 400 bis zur Komplettsanierung im gehobenen Segment über CHF 15'000</li>
+  <li>Installationen an Wasser- und Elektroleitungen gehören ausschliesslich in die Hände konzessionierter Fachbetriebe</li>
+  <li>In Mietwohnungen vor jedem Festeinbau die schriftliche Zustimmung der Vermieterschaft nach OR Art. 260a einholen</li>
+  <li>Wasserhärte der eigenen Gemeinde kennen und Armaturen sowie Pflege danach ausrichten</li>
+  <li>Wärmepumpenboiler und Sparduschköpfe senken die laufenden Kosten spürbar und amortisieren sich meist innerhalb weniger Jahre</li>
+  <li>Bei grösseren Umbauten frühzeitig beim Bauamt abklären, ob eine Bewilligung nötig ist, und genug Zeitpuffer für Lieferungen einplanen</li>
+  <li>Mindestens drei Offerten vergleichen — Preisunterschiede von 20–30 % zwischen Anbietern sind in der Schweiz üblich</li>
+  <li>Für barrierefreie Lösungen frühzeitig mit der IV-Stelle oder Pro Senectute Kontakt aufnehmen, da rückwirkende Gesuche meist nicht möglich sind</li>
+</ul>
+
 <!-- FAQ -->
 <h2>Häufige Fragen (FAQ)</h2>
 
@@ -524,6 +899,7 @@ footer a{color:var(--muted)}
     <button type="submit">Anmelden</button>
   </form>
   <p style="font-size:.78rem;margin-top:8px;color:var(--muted)">Mit Klick auf „Anmelden" akzeptierst du unsere <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+  <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
 </div>
 
 </div><!-- .wrap -->
@@ -531,15 +907,11 @@ footer a{color:var(--muted)}
 
 <footer>
   <div class="wrap">
-    <p>aban news · Bad &amp; Wellness Kaufberater Schweiz · Unabhängige Verbraucherinfos · © 2026</p>
-    <p style="margin-top:6px">
-      <a href="/">Start</a> ·
-      <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
-      <a href="/marktplatz.html">Marktplatz</a> ·
-      <a href="/impressum.html">Impressum</a> ·
-      <a href="/datenschutz.html">Datenschutz</a>
-    </p>
-    <p style="margin-top:6px;font-size:.75rem">Preisangaben ohne Gewähr, Stand Juni 2026. Kein Ersatz für individuelle Fachberatung. Installationen durch konzessionierte Fachbetriebe ausführen lassen.</p>
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
+    <a href="/impressum.html">Impressum</a> ·
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
