@@ -2,10 +2,11 @@
 /* LuxeStyle — delivery_block.mjs
  * Lieferzeit-Anzeige je nach Bestellort (Phase 1): schreibt pro Produkt einen Regions-Block in die Beschreibung
  * UND ein Metafeld custom.lieferzeit (json) — Herkunft aus den Lieferanten-Tags abgeleitet:
- *   • EU-Druck (printful/prodigi_personalized_product) → CH/EU 3–7 T · USA 5–9 T
- *   • EU-Lager  (eu-lager)                             → CH/EU 5–10 T
- *   • China-Lager (cj-real, Default)                   → CH/EU 8–14 T · USA 10–20 T
- *   • sonst Fallback generisch.
+ *   • EU-Druck (printful/prodigi_personalized_product) → CH/EU 7–14 T · USA 6–12 T
+ *   • EU-Lager  (eu-lager)                             → CH/EU 5–12 T
+ *   • China-Lager (cj-real, Default)                   → CH/EU 10–18 T · USA 12–22 T
+ *   • sonst Fallback generisch                         → CH/EU 8–16 T · USA 12–20 T
+ *   (Ranges 2026-07-03 realistisch gesetzt — Produktion + echter Versand + CH-Zoll; keine geschoenten Zeiten.)
  * Idempotent (Marker class="ls-liefer" → kein Doppeln; Update ersetzt alten Block). No-op ohne Creds. DRY_RUN=1.
  * Das Metafeld custom.lieferzeit nutzt Phase 2 (Theme-Snippet) für die landesabhängige, einsprachige Anzeige.
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · [LIMIT=500] · [DRY_RUN=1]
@@ -23,10 +24,12 @@ async function token(){ if(ADMIN_TOKEN&&await works(ADMIN_TOKEN))return ADMIN_TO
 
 // Herkunfts-Tier → Lieferzeit-Regionen (Tage-Range als String)
 function tier(tags){ const t=tags.map(x=>String(x).toLowerCase());
-  if(t.includes('printful_personalized_product')||t.includes('prodigi_personalized_product')) return {key:'eu-druck', ch_eu:'3–7', us:'5–9'};
-  if(t.includes('eu-lager')) return {key:'eu-lager', ch_eu:'5–10', us:null};
-  if(t.includes('cj-real')) return {key:'china', ch_eu:'8–14', us:'10–20'};
-  return {key:'standard', ch_eu:'6–12', us:'9–16'};
+  // REALISTISCHE Ranges (User 2026-07-03 "alles realistisch, keine fake"): Produktion 2–5 WT + echter Versand +
+  // CH=EFTA (Zoll) einkalkuliert. Lieber ehrlich/etwas grosszuegig als geschoent -> weniger Beschwerden/Rueckfragen.
+  if(t.includes('printful_personalized_product')||t.includes('prodigi_personalized_product')) return {key:'eu-druck', ch_eu:'7–14', us:'6–12'};
+  if(t.includes('eu-lager')) return {key:'eu-lager', ch_eu:'5–12', us:null};
+  if(t.includes('cj-real')) return {key:'china', ch_eu:'10–18', us:'12–22'};
+  return {key:'standard', ch_eu:'8–16', us:'12–20'};
 }
 function blockHtml(z){ const parts=[`🇨🇭 CH / 🇪🇺 EU: <strong>${z.ch_eu} Tage</strong>`]; if(z.us) parts.push(`🇺🇸 USA: <strong>${z.us} Tage</strong>`);
   return `<p class="ls-liefer" data-tier="${z.key}" style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;">📦 <strong>Lieferzeit</strong> (je nach Land): ${parts.join(' · ')} <span style="opacity:.7;">· Werktage, inkl. Produktion</span></p>`;
