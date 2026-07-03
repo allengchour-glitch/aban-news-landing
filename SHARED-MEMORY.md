@@ -29,8 +29,8 @@
 #   1. DUPLIKAT bereinigen: 2x Blank-Rot-Entwurf. KORREKTUR: BEHALTEN = 15447487480193 (das mit Printful verbundene, für
 #      Bestellung PF165452870 genutzte). ARCHIVIEREN = 15447486759297 (älteres Duplikat). Personalisiertes Original
 #      15433948070273 NICHT anfassen. (Vor Archivieren prüfen, dass das behaltene wirklich das Printful-verbundene ist.)
-#   2. PREISE hoch (Printful-Trikot kostet ~CHF 40 landed → CHF 34.90 = Verlust). User-Wahl offen: Variante A Blank 49.90 /
-#      Perso 59.90  ODER  Variante B beide 54.90. Danach honesten Streichpreis (~1.5x) setzen.
+#   2. PREISE (User-OK 2026-07-03): BLANK-Produkt 15447487480193 → 49.90 (compareAt 69.90). PERSONALISIERT 15433948070273
+#      (alle 20 Varianten) → 59.90 (compareAt 79.90). Beide Ratios ~1.3-1.4x = honest, unter der 1.85x-Schwelle (honest_compareat lässt sie in Ruhe).
 #   3. #1005 als VERSENDET markieren, sobald Browser-Claude Alains Printful-Tracking meldet (manuelle Printful-Order ist
 #      NICHT mit Shopify-Order verknüpft → Tracking von Hand in #1005 eintragen).
 #   4. PERSO-BRÜCKE bauen: Printful-Katalog „Recyceltes Unisex-Trikot AOP", XL-Variant-ID #55872511017345 (weitere Grössen
