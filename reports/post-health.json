@@ -1,19 +1,19 @@
 {
-  "ts": "2026-07-02T23:28:04.392Z",
+  "ts": "2026-07-03T05:28:04.115Z",
   "platforms": {
     "tiktok": {
       "result": "SOUND_DIAG",
       "reason": "Sound-Panel-Screenshots erstellt",
       "file": "mw-statement-ohrringe-onyx-geom.mp4",
-      "vor_min": 10219
+      "vor_min": 10579
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 9060
+      "vor_min": 9420
     },
     "meta": {
-      "index": 25,
-      "item": "Sommer-Looks wo uffalle ☀️ Premium-Mode us de Schwiz ab CHF 34.90. 💾 Spicher dr's · welä Look? 👇 –10% WELCOME10 → luxestyle.ch #sommerkleid #schweizmode #ootdschweiz #fyp",
+      "index": 6,
+      "item": "Weles isch dis Lieblingsteil? 🤍 Herren-Set «Costa»",
       "ig": {
         "error": "IG container",
         "detail": {
@@ -21,26 +21,26 @@
             "message": "(#10) Application does not have permission for this action",
             "type": "OAuthException",
             "code": 10,
-            "fbtrace_id": "Ax-vEZVO-YJkUsaKGF__FBO"
+            "fbtrace_id": "A-sGHdojNDuLlbVOzcEeGBk"
           }
         }
       },
       "fb": {
-        "error": "video_reels start",
+        "error": "FB photo",
         "detail": {
           "error": {
-            "message": "(#200) Subject does not have permission to post videos on this target, due to lack of pages_manage_posts permission.",
+            "message": "(#200) Permissions error",
             "type": "OAuthException",
             "code": 200,
-            "fbtrace_id": "AfSsaZJcpEMcKNFpJScnP5n"
+            "fbtrace_id": "Ayz-nhf8Y79K-xYkzVwXABC"
           }
         }
       },
       "tt": {
-        "skipped": "keine TikTok-Creds"
+        "skipped": "kein Video"
       },
       "insights": {
-        "ts": "2026-07-02T23:28",
+        "ts": "2026-07-03T05:28",
         "ig": {
           "posts": 0,
           "eng": 0,
