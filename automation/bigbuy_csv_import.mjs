@@ -38,6 +38,13 @@ function cleanName(n){let s=n.replace(/\b\d{6,}\b/g,' ')
  .replace(/\(Restauriert\s*([ABC])\)/i,'· Generalüberholt (Note $1)')
  .replace(/\s{2,}/g,' ').replace(/\s+·/g,' ·').trim();return s.slice(0,90);}
 const chf=pvr=>{const p=parseFloat((''+pvr).replace(',','.'))||0;return (Math.max(Math.floor(p),5)+0.90).toFixed(2);};
+const TR=process.env.TRANSLATE==='1';
+const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):'').trim();
+const isEng=n=>/\b(for|with|the|and|Box|Black|White|Wireless|Refurbished|Portable|Adjustable|Waterproof|Charger|Holder|Stand|Case)\b/.test(n) && !/für|mit|und|[äöü]|Schwarz|Weiss|Generalüberholt/i.test(n);
+async function gtranslate(en){ if(!GK)return null;
+ const prompt=`Übersetze diesen Produktnamen in einen KURZEN, natürlichen DEUTSCHEN Produkttitel (max 80 Zeichen). "Refurbished A/B/C" → "Generalüberholt (Note A/B/C)". Keine Anführungszeichen, nur der Titel:\n${en}`;
+ for(let i=0;i<3;i++){try{const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GK}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.3,maxOutputTokens:120,thinkingConfig:{thinkingBudget:0}}})});const j=await r.json();if(j.error){if(j.error.code===429){await sleep(12000);continue;}return null;}let t=(j.candidates?.[0]?.content?.parts?.[0]?.text||'').replace(/^["']|["']$/g,'').trim();if(t.length>4)return t.slice(0,90);}catch{}}
+ return null;}
 
 async function tok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
 async function gql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});return r.json();}
@@ -59,8 +66,9 @@ for(const file of files){
   const st=(+r[ix.stock_a]||0)+(+r[ix.stock_b]||0)+(+r[ix.stock_c]||0); if(st<1)continue;
   const img=r[ix.images]; if(!img||img==='-')continue;
   const pvr=parseFloat((''+r[ix.pvr]).replace(',','.'))||0; if(pvr<5)continue;
-  const name=cleanName(r[ix.name]||''); if(name.length<5)continue;
-  const rt=route(r[ix.category]); const refurb=/Restauriert|Generalüberholt/i.test(r[ix.name]||'');
+  let name=cleanName(r[ix.name]||''); if(name.length<5)continue;
+  if(TR){const de=await gtranslate(name); if(de){name=de;await sleep(3800);} else if(isEng(name))continue;} // TRANSLATE=1 → alles übersetzen (englische Feeds)
+  const rt=route(r[ix.category]); const refurb=/Restauriert|Generalüberholt|generalüberholt/i.test(r[ix.name]||'')||/Generalüberholt/i.test(name);
   const price=chf(pvr);
   const imgUrl=encodeURI(img.split('|')[0].trim());
   if(DRY){console.log(`  [DRY] CHF${price} (RRP ${pvr}) Lager:${st} ${refurb?'♻️':''} | ${name.slice(0,55)} [${rt.t}]`);total++;continue;}
