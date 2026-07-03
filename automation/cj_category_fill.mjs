@@ -28,6 +28,9 @@ const GROUPS={
  skincare:{cats:[['EDE3FAD9-0E6C-4F7C-9016-A2299469AA7C','Facial Care'],['88AF62DE-5586-40E4-A287-864523D9AE50','Face Masks'],['E0238E88-0C63-427F-812E-BA1FCE4C67B4','Body Care'],['CB1A9CEF-8333-4D2F-B19A-418C6DE376C7','Essential Oil'],['B6A8B971-793B-4F9E-AA56-3A5D12F63827','Sun Care']],
    type:'Hautpflege', tags:['skincare','hautpflege','beauty','pflege','cj-real','dropship'], kat:'Hautpflege & Gesichtspflege',
    ban:/wholesale|salon only|\bsample\b|injection|needle/i, minImg:3, minP:3, maxP:55},
+ gaming:{cats:[['1F23F16D-0A39-4D38-AB9C-1F21EEDEBEDD','Gamepads'],['56892B7E-0C59-4DAB-8336-57C6CA548043','Video Game Consoles'],['A96C59E8-C39A-4C8E-BA75-5B4AA347FCCC','Joysticks'],['2F6CCFAA-853F-41EF-8B91-24028A333948','Handheld Game Players']],
+   type:'Gaming-Zubehör', tags:['gaming','ps4','ps5','xbox','konsole','gadgets','cj-real','dropship'], kat:'Gaming & Konsolen-Zubehör (PS4/PS5/Xbox)',
+   ban:/wholesale|salon only|\bsample\b/i, minImg:3, minP:3, maxP:80},
 };
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
