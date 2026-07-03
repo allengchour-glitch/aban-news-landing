@@ -18,25 +18,31 @@ async function cc(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_tok
 async function token(){ if(ADMIN_TOKEN&&await works(ADMIN_TOKEN))return ADMIN_TOKEN; if(CID&&CSEC){const t=await cc(); if(t&&await works(t))return t;} console.error('❌ Auth'); process.exit(0); }
 
 const tok=await token();
-// 1) CDN-URL zur Datei-ID holen (GenericFile für .js; MediaImage als Fallback)
-const NQ=`query($id:ID!){ node(id:$id){ __typename ... on GenericFile { url } ... on MediaImage { image { url } } } }`;
-const nr=await gql(tok,NQ,{id:`gid://shopify/GenericFile/${FILE_ID}`});
-let CDN=nr?.data?.node?.url || nr?.data?.node?.image?.url || '';
-if(!CDN){ // 2. Versuch als MediaImage-GID
-  const nr2=await gql(tok,NQ,{id:`gid://shopify/MediaImage/${FILE_ID}`}); CDN=nr2?.data?.node?.image?.url || nr2?.data?.node?.url || '';
+// 1) CDN-URL ermitteln: zuerst per Dateiname (neueste lspod-designer*.js), sonst per fester FILE_ID.
+let CDN='';
+const FQ=`query{ files(first:20, query:"filename:lspod-designer", sortKey:CREATED_AT, reverse:true){ edges{ node{ __typename ... on GenericFile{ url } ... on MediaImage{ image{ url } } } } } }`;
+try{ const fr=await gql(tok,FQ); const edges=fr?.data?.files?.edges||[];
+  for(const {node} of edges){ const u=node?.url||node?.image?.url||''; if(u && /lspod-designer/i.test(u)){ CDN=u; break; } }
+}catch(e){}
+if(!CDN){ // Fallback: feste FILE_ID (GenericFile, sonst MediaImage)
+  const NQ=`query($id:ID!){ node(id:$id){ __typename ... on GenericFile { url } ... on MediaImage { image { url } } } }`;
+  const nr=await gql(tok,NQ,{id:`gid://shopify/GenericFile/${FILE_ID}`}); CDN=nr?.data?.node?.url||nr?.data?.node?.image?.url||'';
+  if(!CDN){ const nr2=await gql(tok,NQ,{id:`gid://shopify/MediaImage/${FILE_ID}`}); CDN=nr2?.data?.node?.image?.url||nr2?.data?.node?.url||''; }
 }
-if(!CDN){ console.error(`❌ Konnte CDN-URL zur FILE_ID ${FILE_ID} nicht ermitteln (Typ?/Recht?).`); process.exit(1); }
+if(!CDN){ console.error('❌ Konnte CDN-URL des lspod-designer nicht ermitteln (kein Treffer per Name/ID).'); process.exit(1); }
 console.log('CDN-URL:', CDN);
 
-const OLD='https://abannews.com/pod/designer.js';
+// matcht abannews.com/pod/designer.js UND eine evtl. schon gesetzte cdn.shopify…lspod-designer….js
+const reFind=()=>/https?:\/\/[^"'\s)]*(?:pod\/designer\.js|lspod-designer[^"'\s)]*?\.js)/g;
 const Q=`query($n:Int!,$after:String){ products(first:$n, after:$after, query:"status:active"){ pageInfo{ hasNextPage endCursor } edges{ node{ id title descriptionHtml } } } }`;
 const M=`mutation($p:ProductUpdateInput!){ productUpdate(product:$p){ product{ id } userErrors{ field message } } }`;
 let after=null, seen=0, changed=0, fails=[];
 while(true){
   const r=await gql(tok,Q,{n:50,after}); const conn=r?.data?.products; if(!conn) break;
   for(const {node:p} of conn.edges){
-    seen++; const d=p.descriptionHtml||''; if(d.indexOf(OLD)<0) continue;
-    const nd=d.split(OLD).join(CDN);
+    seen++; const d=p.descriptionHtml||''; const ms=d.match(reFind()); if(!ms) continue;
+    if(ms.every(m=>m===CDN)) continue; // schon auf aktueller CDN-URL
+    const nd=d.replace(reFind(), CDN);
     if(DRY){ console.log(`DRY ${p.title}: abannews → CDN`); changed++; continue; }
     const ur=await gql(tok,M,{p:{id:p.id,descriptionHtml:nd}}); const ue=ur?.data?.productUpdate?.userErrors||[];
     if(ue.length){ fails.push(`${p.title}: ${JSON.stringify(ue).slice(0,120)}`); continue; }
