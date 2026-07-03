@@ -31,6 +31,12 @@ const GROUPS={
  gaming:{cats:[['1F23F16D-0A39-4D38-AB9C-1F21EEDEBEDD','Gamepads'],['56892B7E-0C59-4DAB-8336-57C6CA548043','Video Game Consoles'],['A96C59E8-C39A-4C8E-BA75-5B4AA347FCCC','Joysticks'],['2F6CCFAA-853F-41EF-8B91-24028A333948','Handheld Game Players']],
    type:'Gaming-Zubehör', tags:['gaming','ps4','ps5','xbox','konsole','gadgets','cj-real','dropship'], kat:'Gaming & Konsolen-Zubehör (PS4/PS5/Xbox)',
    ban:/wholesale|salon only|\bsample\b/i, minImg:3, minP:3, maxP:80},
+ pet:{cats:[['2410110339451623300','Pet Chew Toys'],['2410110339311602900','Pet Chase Toys'],['2410110340161623400','Pet Sound Toys'],['2410110341061612000','Pet Bowls'],['2410110341451628800','Pet Feeding Tools']],
+   type:'Haustierbedarf', tags:['haustier','hund','katze','pet','cj-real','dropship'], kat:'Haustierbedarf für Hund & Katze',
+   ban:/wholesale|human|for people/i, minImg:3, minP:2, maxP:50},
+ sport:{cats:[['2410301013021610400','Scooters'],['3D0169CF-0F24-4EEA-948E-E48C3980862E','Bicycle Helmets'],['161FA128-487C-4451-8B49-CB81B5A30A54','Bicycle Lights'],['C20B25A2-348C-48C8-A2C8-FE33749A40DE','Fitness & Bodybuilding'],['EA851596-F20F-4AA5-8869-4BB5CA1968DC','Camping & Hiking']],
+   type:'Sport & Outdoor', tags:['sport','outdoor','fitness','cj-real','dropship'], kat:'Sport, Fitness & Outdoor',
+   ban:/wholesale|\bsample\b/i, minImg:3, minP:3, maxP:90},
 };
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
