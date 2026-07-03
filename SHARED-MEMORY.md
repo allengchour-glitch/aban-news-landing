@@ -2130,3 +2130,8 @@ Katalog danach: 3064 aktive BigBuy, **0 Dubletten-Gruppen** (verifiziert).
 - **🔀 Tech-Sortierung:** 13 Tech-Collections BEST_SELLING→PRICE_DESC (Hero-Produkte führen, kein „durcheinander").
 - **✍️ Gadget-Titelfix läuft** (`cj_fix_gadgets.mjs`): 951 CJ-Gadgets → echte CJ-Namen (Beamer-als-„Gamekonsole" etc.).
 - **Offene User-Wünsche (BigBuy jetzt möglich):** werkzeug, arbeitskleider, heissleimpistole. CJ: ps4/5-gaming, xiaomi, ai-brille.
+
+---
+**📌 2026-07-02 (🎮 CJ-Gaming +45 — PS4/PS5/Xbox-Zubehör):** cj_category_fill GRP=gaming (CJ Gamepads/Konsolen/
+Joysticks/Handhelds) → 45 Produkte (Retro-Handhelds, Bluetooth-Controller, Halter) mit echten Namen via Gemini →
+`gaming`-Collection (182→226). Tag `gaming` matcht Regel TAG=Gaming (case-insensitiv).
