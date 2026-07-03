@@ -3,113 +3,185 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spiele — kostenlose Browser-Games von aban news</title>
-<meta name="description" content="Kostenlose Browser-Spiele von aban news: tägliche Worträtsel, ein flüssiges 3D-Arcade und das Kompositum-Rätsel Wortbrücke. Kein Download, sofort spielen.">
+<title>aban Arcade — kostenlose 3D-Browser-Games &amp; tägliche Rätsel</title>
+<meta name="description" content="Die aban Arcade: kostenlose Browser-Games im Neon-Look — 3D-Boss-Fight, Roguelites, Racer, Platformer und tägliche Worträtsel. Kein Download, sofort spielen.">
 <link rel="canonical" href="https://abannews.com/spiele.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="aban Spiele — kostenlose Browser-Games">
-<meta property="og:description" content="Tägliche Rätsel & 3D-Arcade, gratis im Browser. Neu jeden Tag.">
+<meta property="og:title" content="aban Arcade — kostenlose Neon-Browser-Games">
+<meta property="og:description" content="3D-Boss-Fight, Roguelites, Racer & tägliche Rätsel. Gratis im Browser, kein Download.">
 <meta property="og:url" content="https://abannews.com/spiele.html">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#06070f">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CollectionPage","name":"aban Spiele","url":"https://abannews.com/spiele.html","inLanguage":"de","about":"Kostenlose Browser-Spiele","publisher":{"@type":"Organization","name":"aban news"}}
+{"@context":"https://schema.org","@type":"CollectionPage","name":"aban Arcade","url":"https://abannews.com/spiele.html","inLanguage":"de","about":"Kostenlose Browser-Spiele","publisher":{"@type":"Organization","name":"aban news"}}
 </script>
 <style>
-*{box-sizing:border-box;margin:0}
-body{background:#fffbf5;color:#1f2937;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
-header{border-bottom:1px solid #ece3d4;text-align:center;padding:14px}
-header b{color:#b45309;font-size:1.1rem}
-.wrap{max-width:880px;margin:0 auto;padding:24px 16px}
-h1{font-size:1.8rem;margin:.2rem 0}
-.lead{color:#6b7280;margin:.4rem 0 1.6rem;font-size:1rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid #ece3d4;border-radius:16px;padding:20px;transition:transform .12s,box-shadow .12s}
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(180,83,9,.12)}
-.card .emo{font-size:2.2rem}
-.card h2{font-size:1.2rem;margin:.5rem 0 .3rem;color:#1f2937}
-.card p{color:#4b5563;font-size:.92rem;margin:0 0 .8rem}
-.tag{display:inline-block;font-size:.72rem;font-weight:700;color:#b45309;background:#fef3c7;border-radius:20px;padding:3px 10px}
-.play{display:inline-block;margin-top:10px;font-weight:800;color:#b45309}
-.rec{display:none;font-size:.8rem;font-weight:800;color:#0e7490;background:#cffafe;border-radius:20px;padding:3px 10px;margin-top:4px}
+:root{--cyan:#5ef2ff;--purple:#b98bff;--pink:#ff6ec7;--amber:#ffcf6e;--green:#6affab}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#06070f;color:#eaf0ff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;overflow-x:hidden;position:relative;min-height:100vh}
+/* ---- Synthwave-Hintergrund (reines CSS, self-contained) ---- */
+.bg{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,#02030a 0%,#0a0620 42%,#1a0a2e 60%,#2a1140 74%,#0a0618 100%)}
+.bg .sun{position:absolute;left:50%;top:32%;width:300px;height:300px;transform:translate(-50%,-50%);border-radius:50%;
+  background:linear-gradient(180deg,#ffe14d 0%,#ff9a3d 42%,#ff2d6f 100%);filter:blur(1px);
+  box-shadow:0 0 120px 30px rgba(255,90,140,.35);
+  -webkit-mask:repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 17px);mask:repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 17px);
+  -webkit-mask-composite:source-over}
+.bg .sun::after{content:"";position:absolute;inset:0;top:-40%;border-radius:50%;background:linear-gradient(180deg,#ffe14d,#ff6a3d);-webkit-mask:linear-gradient(180deg,#000 55%,transparent 55%);mask:linear-gradient(180deg,#000 55%,transparent 55%)}
+.bg .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 15%,#fff,transparent),radial-gradient(1px 1px at 70% 25%,#cfe,transparent),radial-gradient(1px 1px at 40% 8%,#fff,transparent),radial-gradient(1px 1px at 85% 12%,#adf,transparent),radial-gradient(1px 1px at 55% 30%,#fff,transparent),radial-gradient(1px 1px at 10% 33%,#fff,transparent);opacity:.7}
+.bg .grid{position:absolute;left:-25%;right:-25%;bottom:0;height:46vh;
+  background-image:linear-gradient(90deg,rgba(94,242,255,.5) 1px,transparent 1px),linear-gradient(0deg,rgba(94,242,255,.35) 1px,transparent 1px);
+  background-size:44px 44px;transform:perspective(340px) rotateX(74deg);transform-origin:bottom;
+  -webkit-mask:linear-gradient(180deg,transparent,#000 55%);mask:linear-gradient(180deg,transparent,#000 55%);
+  animation:grid 2.6s linear infinite}
+@keyframes grid{to{background-position:0 44px}}
+.bg .glowline{position:absolute;left:0;right:0;top:calc(32% + 148px);height:2px;background:linear-gradient(90deg,transparent,#ff6ec7,#5ef2ff,transparent);opacity:.6;box-shadow:0 0 24px #ff6ec7}
+@media(prefers-reduced-motion:reduce){.bg .grid{animation:none}}
+/* ---- Layout ---- */
+.top{display:flex;align-items:center;justify-content:space-between;max-width:1080px;margin:0 auto;padding:16px 20px}
+.top a.brand{color:var(--cyan);font-weight:900;letter-spacing:.14em;text-decoration:none;font-size:.9rem;text-shadow:0 0 14px rgba(94,242,255,.5)}
+.top nav a{color:#b9c4ee;text-decoration:none;font-size:.85rem;margin-left:16px;font-weight:600}
+.top nav a:hover{color:#fff}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 20px 60px;position:relative;z-index:1}
+.hero{text-align:center;padding:46px 0 10px;position:relative}
+.hero::before{content:"";position:absolute;left:50%;top:46%;width:660px;max-width:112%;height:260px;transform:translate(-50%,-50%);z-index:-1;
+  background:radial-gradient(ellipse at center,rgba(6,7,15,.82) 30%,rgba(6,7,15,.45) 55%,transparent 72%)}
+.hero .kick{letter-spacing:.5em;font-size:.72rem;color:#a9b8ff;text-transform:uppercase;margin-bottom:12px;text-shadow:0 2px 10px #000}
+.hero h1{font-size:clamp(2.6rem,10vw,5rem);font-weight:900;line-height:.95;letter-spacing:.01em;
+  background:linear-gradient(92deg,#5ef2ff,#b98bff 45%,#ff6ec7);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 20px rgba(10,7,20,.9)) drop-shadow(0 0 34px rgba(150,110,255,.4))}
+.hero p{color:#dbe3ff;max-width:560px;margin:16px auto 0;font-size:1.02rem;text-shadow:0 2px 12px #05060e,0 0 20px #05060e}
+.grid-games{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px;margin-top:30px}
+.card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:18px;padding:22px;
+  background:linear-gradient(160deg,rgba(24,28,52,.72),rgba(12,14,28,.72));border:1px solid rgba(120,140,255,.16);
+  backdrop-filter:blur(6px);overflow:hidden;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.card::before{content:"";position:absolute;inset:0;border-radius:18px;padding:1px;background:linear-gradient(140deg,var(--c,#5ef2ff),transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.5;transition:opacity .16s}
+.card:hover{transform:translateY(-5px);border-color:transparent;box-shadow:0 16px 46px -12px var(--c,#5ef2ff),0 0 0 1px rgba(255,255,255,.05) inset}
+.card:hover::before{opacity:1}
+.card.feat{grid-column:1/-1;flex-direction:row;align-items:center;gap:24px;flex-wrap:wrap;padding:26px 28px;background:linear-gradient(120deg,rgba(40,18,60,.8),rgba(12,14,28,.72))}
+.card.feat .emo{font-size:4rem}
+.card.feat .body{flex:1;min-width:220px}
+.card .emo{font-size:2.4rem;filter:drop-shadow(0 0 12px var(--c,#5ef2ff))}
+.tag{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--c,#5ef2ff);
+  border:1px solid color-mix(in srgb,var(--c,#5ef2ff) 45%,transparent);border-radius:20px;padding:3px 10px;margin:12px 0 8px;background:color-mix(in srgb,var(--c,#5ef2ff) 12%,transparent)}
+.card h2{font-size:1.28rem;margin:.1rem 0 .35rem;color:#fff;letter-spacing:.01em}
+.card.feat h2{font-size:1.7rem}
+.card p{color:#aeb8e0;font-size:.9rem;margin:0 0 12px;flex:1}
+.rec{display:none;font-size:.76rem;font-weight:800;color:#0a1020;background:var(--c,#5ef2ff);border-radius:20px;padding:3px 11px;margin-bottom:10px;width:max-content;box-shadow:0 0 16px color-mix(in srgb,var(--c,#5ef2ff) 60%,transparent)}
 .rec.on{display:inline-block}
-.cta{margin:28px auto 0;max-width:620px;text-align:center;background:linear-gradient(135deg,#fef3c7,#fffdf9);border:1px solid #fde9c8;border-radius:16px;padding:22px}
-.cta a{display:inline-block;margin-top:10px;background:#b45309;color:#fff;text-decoration:none;font-weight:800;padding:11px 22px;border-radius:10px}
-footer{border-top:1px solid #ece3d4;text-align:center;padding:16px;color:#6b7280;font-size:.85rem}
-footer a{color:#b45309;text-decoration:none}
+.play{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--c,#5ef2ff);margin-top:auto}
+.play::after{content:"▶";font-size:.7em;transition:transform .16s}
+.card:hover .play::after{transform:translateX(4px)}
+.cta{margin:44px auto 0;max-width:640px;text-align:center;background:linear-gradient(120deg,rgba(40,20,60,.7),rgba(14,16,30,.7));
+  border:1px solid rgba(255,110,199,.28);border-radius:20px;padding:26px;backdrop-filter:blur(6px)}
+.cta strong{font-size:1.15rem;color:#fff}
+.cta p{color:#c3ccf0;margin:.5rem 0 0}
+.cta a{display:inline-block;margin-top:14px;background:linear-gradient(92deg,#ff7ad9,#ff9a4a);color:#1a0a20;text-decoration:none;font-weight:900;padding:12px 26px;border-radius:40px;box-shadow:0 8px 30px rgba(255,110,199,.35)}
+footer{border-top:1px solid rgba(120,140,255,.14);text-align:center;padding:22px 16px;color:#8b93b8;font-size:.85rem;max-width:1080px;margin:40px auto 0}
+footer a{color:var(--purple);text-decoration:none}
 </style>
 </head>
 <body>
-<header><b>aban news</b></header>
-<div class="wrap">
-  <h1>🎮 Spiele</h1>
-  <p class="lead">Kostenlose Browser-Games — kein Download, sofort spielen, jeden Tag etwas Neues. Gebaut von aban news.</p>
+<div class="bg" aria-hidden="true"><div class="stars"></div><div class="sun"></div><div class="glowline"></div><div class="grid"></div></div>
 
-  <div class="grid">
-    <a class="card" href="/neon-colossus.html">
+<div class="top">
+  <a class="brand" href="/">◂ ABAN NEWS</a>
+  <nav><a href="/online-tools.html">Tools</a><a href="/ki-themen.html">KI-Ratgeber</a></nav>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kick">aban arcade</div>
+    <h1>🎮 SPIELE</h1>
+    <p>Kostenlose Browser-Games im Neon-Look — 3D-Action, Roguelites, Racer &amp; tägliche Rätsel. Kein Download, sofort spielen, direkt im Browser.</p>
+  </div>
+
+  <div class="grid-games">
+    <a class="card feat" href="/neon-colossus.html" style="--c:#ff6ec7">
       <div class="emo">🗡️</div>
-      <span class="tag">3D · Boss-Fight</span>
-      <h2>Neon Colossus</h2>
-      <p>Cinematisches Boss-Duell: weiche telegrafierten Angriffen aus, dashe mit i-Frames durch den Kugelhagel und bezwinge drei mehrphasige Kolosse. Mit Retro-Sonne, Bloom, Schadenszahlen & eskalierender Musik.</p>
-      <span class="rec" data-best="nc_best" data-suffix=" / 3 Kolosse"></span>
-      <span class="play">Spielen →</span>
+      <div class="body">
+        <span class="tag">3D · Boss-Fight · neu</span>
+        <h2>Neon Colossus</h2>
+        <p>Cinematisches Boss-Duell: weiche telegrafierten Angriffen aus, dashe mit i-Frames durch den Kugelhagel und bezwinge drei mehrphasige Kolosse. Mit Retro-Sonne, Bloom, Zeitlupe-Momenten, Schadenszahlen &amp; eskalierender Musik.</p>
+        <span class="rec" data-best="nc_best" data-suffix=" / 3 Kolosse"></span>
+        <span class="play">Arena betreten</span>
+      </div>
     </a>
-    <a class="card" href="/wort-des-tages.html">
-      <div class="emo">🔤</div>
-      <span class="tag">täglich</span>
-      <h2>Wort des Tages</h2>
-      <p>Errate das geheime 5-Buchstaben-Wort in 6 Versuchen. Neues Rätsel jeden Tag, Ergebnis teilen.</p>
-      <span class="play">Spielen →</span>
-    </a>
-    <a class="card" href="/neon-flug.html">
-      <div class="emo">🚀</div>
-      <span class="tag">3D · Roguelite</span>
-      <h2>Neon-Flug</h2>
-      <p>Flüssiges 3D-Arcade: durch den Neon-Canyon fliegen, ausweichen, Orbs sammeln, Upgrades wählen. Tages-Challenge inklusive.</p>
-      <span class="rec" data-best="aban_neon_best" data-suffix=" Punkte"></span>
-      <span class="play">Spielen →</span>
-    </a>
-    <a class="card" href="/wortbruecke.html">
-      <div class="emo">🌉</div>
-      <span class="tag">täglich</span>
-      <h2>Wortbrücke</h2>
-      <p>Finde das Brücken-Wort, das beide Seiten zu einem zusammengesetzten Wort verbindet (Garten·?·Tür → Haus).</p>
-      <span class="play">Spielen →</span>
-    </a>
-    <a class="card" href="/neon-survivor.html">
+
+    <a class="card" href="/neon-survivor.html" style="--c:#5ef2ff">
       <div class="emo">🛡️</div>
       <span class="tag">3D · Roguelite</span>
       <h2>Neon Survivor</h2>
-      <p>Überlebe die Gegner-Schwärme: bewegen, auto-feuern, XP sammeln, Upgrades wählen, immer stärker werden. Vampire-Survivors-Stil. Tages-Challenge inklusive.</p>
+      <p>Überlebe die Gegner-Schwärme: bewegen, auto-feuern, XP sammeln, Upgrades &amp; Waffen-Evolutionen wählen, Bosse legen. Vampire-Survivors-Stil mit Meta-Progression.</p>
       <span class="rec" data-best="ns_best" data-suffix="s überlebt"></span>
-      <span class="play">Spielen →</span>
+      <span class="play">Spielen</span>
     </a>
-    <a class="card" href="/neon-jump.html">
+
+    <a class="card" href="/neon-abyss.html" style="--c:#b98bff">
+      <div class="emo">⚔️</div>
+      <span class="tag">3D · Action-RPG</span>
+      <h2>Neon Abyss</h2>
+      <p>Diablo-Style-ARPG: Klick zum Laufen, Auto-Angriff, drei Skills (Nova · Blink · Heilen), Loot mit Seltenheitsstufen, Gegner-Wellen &amp; Boss alle fünf Wellen.</p>
+      <span class="rec" data-best="na_best" data-suffix=". Welle"></span>
+      <span class="play">Spielen</span>
+    </a>
+
+    <a class="card" href="/neon-jump.html" style="--c:#ff6ec7">
       <div class="emo">🏃</div>
       <span class="tag">3D · Platformer</span>
       <h2>Neon Jump</h2>
-      <p>Synthwave-Jump-and-Run: renne, spring (mit Doppelsprung!) über Neon-Plattformen und Abgründe, sammle Münzen, erreiche das Ziel. Mit Retro-Sonne + Bloom.</p>
+      <p>Synthwave-Jump-and-Run: renne, spring mit Doppelsprung über Neon-Plattformen und Abgründe, sammle Münzen, erreiche das Ziel. Mit Retro-Sonne + Bloom.</p>
       <span class="rec" data-best="nj_best" data-suffix="s Bestzeit"></span>
-      <span class="play">Spielen →</span>
+      <span class="play">Spielen</span>
     </a>
-    <a class="card" href="/neon-racer.html">
+
+    <a class="card" href="/neon-racer.html" style="--c:#6affab">
       <div class="emo">🏎️</div>
       <span class="tag">3D · Racer</span>
       <h2>Neon Racer</h2>
       <p>Anti-Grav-Rennen im PSP/Wipeout-Stil: folge der kurvigen Neon-Strecke, nimm Boost-Pads mit, weiche Barrieren aus, werde immer schneller. Mit Neon-Glow.</p>
       <span class="rec" data-best="nr_best" data-suffix=" m Rekord"></span>
-      <span class="play">Spielen →</span>
+      <span class="play">Spielen</span>
+    </a>
+
+    <a class="card" href="/neon-flug.html" style="--c:#5ef2ff">
+      <div class="emo">🚀</div>
+      <span class="tag">3D · Arcade</span>
+      <h2>Neon-Flug</h2>
+      <p>Flüssiges 3D-Arcade: durch den Neon-Canyon fliegen, ausweichen, Orbs sammeln, Upgrades wählen. Tages-Challenge inklusive.</p>
+      <span class="rec" data-best="aban_neon_best" data-suffix=" Punkte"></span>
+      <span class="play">Spielen</span>
+    </a>
+
+    <a class="card" href="/wort-des-tages.html" style="--c:#ffcf6e">
+      <div class="emo">🔤</div>
+      <span class="tag">täglich · Rätsel</span>
+      <h2>Wort des Tages</h2>
+      <p>Errate das geheime 5-Buchstaben-Wort in 6 Versuchen. Neues Rätsel jeden Tag, Ergebnis teilbar.</p>
+      <span class="play">Spielen</span>
+    </a>
+
+    <a class="card" href="/wortbruecke.html" style="--c:#6affab">
+      <div class="emo">🌉</div>
+      <span class="tag">täglich · Rätsel</span>
+      <h2>Wortbrücke</h2>
+      <p>Finde das Brücken-Wort, das beide Seiten zu einem zusammengesetzten Wort verbindet (Garten·?·Tür → Haus).</p>
+      <span class="play">Spielen</span>
     </a>
   </div>
 
   <div class="cta">
     <strong>Mehr von aban?</strong>
-    <p style="color:#374151;margin:.4rem 0 0">5 Minuten KI ohne Hype — werktäglich, für Selbstständige. Gratis.</p>
+    <p>5 Minuten KI ohne Hype — werktäglich, für Selbstständige. Gratis.</p>
     <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis abonnieren →</a>
   </div>
 </div>
+
 <footer>© 2026 aban news · <a href="/online-tools.html">Alle Tools</a> · <a href="/ki-themen.html">KI-Ratgeber</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
+
 <script>
-(function(){try{var els=document.querySelectorAll(".rec");for(var i=0;i<els.length;i++){var el=els[i],v=parseInt(localStorage.getItem(el.getAttribute("data-best"))||"0",10)||0;if(v>0){el.textContent="🏆 Dein Rekord: "+v+el.getAttribute("data-suffix");el.className="rec on";}}}catch(e){}})();
+(function(){try{var els=document.querySelectorAll(".rec");for(var i=0;i<els.length;i++){var el=els[i],v=parseInt(localStorage.getItem(el.getAttribute("data-best"))||"0",10)||0;if(v>0){el.textContent="🏆 Rekord: "+v+el.getAttribute("data-suffix");el.className="rec on";}}}catch(e){}})();
 </script>
 </body>
 </html>
