@@ -88,3 +88,6 @@
 2026-07-01-SMARTPLUS-A
 2026-07-01-SMARTPLUS-FILL-C
 set-prices-20260703
+upload-designer-20260703
+repoint-designer-20260703d
+perso-dry-20260703d
