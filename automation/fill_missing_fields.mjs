@@ -23,7 +23,7 @@ const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
 
 // Phase 1: alle Kandidaten mit ihren aktuellen Feldern sammeln
-const Q=`query($c:String){ products(first:50, query:"${QUERY}", after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title productType vendor descriptionHtml seo{title description} } } } }`;
+const Q=`query($c:String){ products(first:50, query:"${QUERY}", after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id title productType vendor status descriptionHtml seo{title description} featuredMedia{id} } } } }`;
 let c=null, items=[], seen=new Set(), stall=0, pages=0;
 do{
   const r=await gql(t,Q,{c}); const pg=r?.data?.products;
@@ -37,8 +37,14 @@ do{
 }while(c);
 console.log(`Phase 1: ${items.length} Produkte gescannt.`);
 
+// Bild-Lücken: aktive Produkte ohne Bild sind Verkaufs-Defekte → auf DRAFT setzen
+const DRAFT_NOIMG=process.env.DRAFT_NOIMG==='1';
+const noImg=items.filter(n=>n.status==='ACTIVE' && !n.featuredMedia);
+console.log(`Bild-Lücken (aktiv, ohne Bild): ${noImg.length}`);
+for(const n of noImg)console.log(`   • ${n.id}  ${n.title}`);
+
 // Phase 2: nur echte Lücken füllen
-let seoN=0, descN=0, batch=[];
+let seoN=0, descN=0, imgN=0, batch=[];
 async function flush(){
   if(!batch.length)return;
   const al=batch.map((b,i)=>`u${i}:productUpdate(input:$i${i}){userErrors{message}}`).join('\n');
@@ -63,4 +69,11 @@ for(const n of items){
   if(touch&&LIVE){ batch.push(input); if(batch.length>=10)await flush(); }
 }
 if(LIVE)await flush();
-console.log(`Fertig. SEO-Lücken gefüllt: ${seoN} · Beschreibungs-Lücken gefüllt: ${descN} ${LIVE?'':'(DRY — nichts geschrieben)'}`);
+// Bildlose aktive Produkte auf DRAFT (nur mit DRAFT_NOIMG=1 & LIVE=1)
+if(DRAFT_NOIMG&&LIVE&&noImg.length){
+  let db=[];
+  async function dflush(){ if(!db.length)return; const al=db.map((b,i)=>`u${i}:productUpdate(input:$i${i}){userErrors{message}}`).join('\n'); const vars=`(${db.map((b,i)=>`$i${i}:ProductInput!`).join(',')})`; const r=await gql(t,`mutation${vars}{${al}}`,Object.fromEntries(db.map((b,i)=>[`i${i}`,b]))); const e=Object.values(r?.data||{}).flatMap(x=>x.userErrors||[]); if(e.length)console.log(' ⚠️',JSON.stringify(e).slice(0,160)); db=[]; }
+  for(const n of noImg){ db.push({id:n.id,status:'DRAFT'}); imgN++; if(db.length>=10)await dflush(); }
+  await dflush();
+}
+console.log(`Fertig. SEO-Lücken gefüllt: ${seoN} · Beschreibungs-Lücken gefüllt: ${descN} · bildlose aktive→DRAFT: ${imgN} ${LIVE?'':'(DRY — nichts geschrieben)'}`);
