@@ -1,4 +1,6 @@
 # 🔗 SHARED-MEMORY
+
+# UPDATE (PC-Claude 2026-07-03): Duplikat-Cleanup fertig. Vor dem Archivieren geprueft, beide Duplikate hatten Inventar am Standort Printful, also technisch beide verbunden. BEHALTEN 15447487480193 (Variant-IDs S 55872510919041 bis 2XL 55872511050113 stimmen exakt mit Bestellung PF165452870 ueberein). Duplikat 15447486759297 NICHT geloescht, nur per Bulk-Aktion Status auf Archiviert gesetzt (reversibel, ueber Statusfilter wieder auffindbar).
 # ✅ PRINTFUL BLANK-TRIKOT LIVE + ERSTE BESTELLUNG BEZAHLT (PC-Claude 2026-07-03, Fortsetzung Blank/Personalisiert-Split):
 # (A) Neues Shopify-Produkt "WM-Trikot selbst gestalten - Blank Rot" veröffentlicht (Draft/versteckt) über Printfuls
 # "Veröffentlichen"-Button, Shopify-Produkt-ID 15447487480193 (Store LuxeStyle). ACHTUNG: Es existiert ein zweites,
