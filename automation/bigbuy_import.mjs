@@ -555,12 +555,17 @@ async function titlesDE(names) {
 }
 
 // Gestaffelte Marge: teure Einkaufspreise bekommen kleineren Multiplikator (sonst absurde Preise, z.B. €200×2.6=CHF494).
+// Gestaffelte Marge: billige Artikel bleiben WIRKLICH billig, teure werden konkurrenzfähig
+// (User: "Leute finden es teuer"). Untergrenze CHF 4.90 statt 9.90 → echte Budget-Preise möglich.
 const chf = (eur) => {
-  let m = MARGIN;
-  if (eur > 150) m = Math.min(MARGIN, 1.5);
-  else if (eur > 80) m = Math.min(MARGIN, 1.8);
-  else if (eur > 40) m = Math.min(MARGIN, 2.2);
-  let p = Math.max(9.9, eur * EUR_CHF * m);
+  const c = eur * EUR_CHF;               // Einkauf in CHF
+  let m;
+  if (c > 150) m = 1.65;
+  else if (c > 80) m = 1.8;
+  else if (c > 40) m = 1.95;
+  else if (c > 15) m = 2.1;
+  else m = 2.3;                          // günstige Basics: moderate Marge, aber tiefer Endpreis
+  let p = Math.max(4.90, c * m);
   return (Math.ceil(p) - 0.1).toFixed(2);
 };
 
