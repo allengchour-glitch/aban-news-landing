@@ -586,6 +586,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     if (ex) return ex.id;
     const r = await sgql(stok, COLL_CREATE, { input: { handle: cfg.coll.handle, title: cfg.coll.title,
       descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz. Gratis-Versand ab CHF 65.</p>`,
+      sortOrder: 'PRICE_DESC',  // von Geburt an sauber sortiert (nie zufälliges BEST_SELLING)
       ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: cfg.coll.tag }] } } });
     return r?.data?.collectionCreate?.collection?.id;
   }
