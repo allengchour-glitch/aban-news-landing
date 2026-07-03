@@ -510,9 +510,10 @@ const CONFIG = {
 };
 
 // ── Shopify (1:1 aus cj_gaps_import.mjs, bewährt) ──
+async function fetchT(url, opts = {}, ms = 25000) { const ac = new AbortController(); const to = setTimeout(() => ac.abort(), ms); try { return await fetch(url, { ...opts, signal: ac.signal }); } finally { clearTimeout(to); } }
 async function sgql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
+  const r = await fetchT(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) }, 30000);
   return r.json();
 }
 async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
@@ -541,7 +542,7 @@ async function bbGet(path, timeoutMs = 30000) {
 const bbInfoAll = () => bbGet('/rest/catalog/productsinformation.json?isoCode=de', 420000); // [{id,sku,name,description}] — grosser Download (~388MB), 420s Timeout
 const bbProduct = (id) => bbGet(`/rest/catalog/product/${id}.json?isoCode=de`);     // {wholesalePrice,retailPrice,active,...}
 const bbImages = (id) => bbGet(`/rest/catalog/productimages/${id}.json`);           // {id, images:[{url,...}]}
-async function img200(u) { try { const r = await fetch(u, { method: 'HEAD' }); if (r.ok) return true; const g = await fetch(u); return g.ok; } catch { return false; } }
+async function img200(u) { try { const r = await fetchT(u, { method: 'HEAD' }, 12000); if (r.ok) return true; const g = await fetchT(u, {}, 12000); return g.ok; } catch { return false; } }
 
 // ── Gemini Batch-Übersetzung → knackiger DE-Titel (1:1 aus Vorlage) ──
 async function titlesDE(names) {
