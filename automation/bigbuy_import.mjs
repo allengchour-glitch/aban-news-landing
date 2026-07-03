@@ -365,6 +365,11 @@ const CONFIG = {
     anchor: ['bastón de senderismo', 'bastones de trekking', 'botas de montaña', 'mochila de senderismo', 'wanderstock', 'trekkingstöcke', 'wanderschuhe', 'wanderrucksack', 'trekkingrucksack', 'wandersocken', 'trinkblase', 'wanderstöcke', 'trekkingstock', 'wanderhose', 'softshelljacke', 'regenjacke wandern'],
     ban: ['kinder', 'spielzeug', 'nordic walking pad', 'gehstock senioren', 'krücke'],
     bullets: ['Für jede Tour gerüstet', 'Leicht & robust', 'Bequem auf langen Wegen', '100% Original, schnelle EU-Lieferung'] },
+  knipex: { coll: { handle: 'elektriker-werkzeug', title: '🔧 Werkzeug', tag: 'elektriker' },
+    extraTags: ['werkzeug', 'knipex', 'heimwerker', 'profi', 'zange', 'premium', 'marken'], type: 'Werkzeug', maxCost: 400,
+    anchor: ['knipex'],
+    ban: ['kinder', 'spielzeug', 'kostüm', 'nachahmung', 'replica'],
+    bullets: ['Original KNIPEX – Made in Germany', 'Profi-Qualität für Handwerk & Werkstatt', 'Extrem langlebig & präzise', '100% Original, schnelle EU-Lieferung'] },
   buero: { coll: { handle: 'buero-schreibwaren', title: '🖊️ Büro & Schreibwaren', tag: 'buero' },
     extraTags: ['buero', 'schule', 'geschenk', 'premium'], type: 'Büro', maxCost: MAX_COST_EUR,
     anchor: ['kugelschreiber', 'füller', 'notizbuch', 'ordner', 'locher', 'tacker', 'schreibwaren', 'taschenrechner', 'stiftehalter', 'schreibset'],
@@ -452,7 +457,7 @@ async function bbGet(path, timeoutMs = 30000) {
   console.log(`  ⚠️ BigBuy ${path.split('?')[0]} → Rate-Limit, aufgegeben.`);
   return null;
 }
-const bbInfoAll = () => bbGet('/rest/catalog/productsinformation.json?isoCode=de', 180000); // [{id,sku,name,description}] — grosser Download, 180s Timeout
+const bbInfoAll = () => bbGet('/rest/catalog/productsinformation.json?isoCode=de', 420000); // [{id,sku,name,description}] — grosser Download (~388MB), 420s Timeout
 const bbProduct = (id) => bbGet(`/rest/catalog/product/${id}.json?isoCode=de`);     // {wholesalePrice,retailPrice,active,...}
 const bbImages = (id) => bbGet(`/rest/catalog/productimages/${id}.json`);           // {id, images:[{url,...}]}
 async function img200(u) { try { const r = await fetch(u, { method: 'HEAD' }); if (r.ok) return true; const g = await fetch(u); return g.ok; } catch { return false; } }
