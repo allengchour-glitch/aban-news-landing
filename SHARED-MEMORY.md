@@ -1,4 +1,10 @@
 # 🔗 SHARED-MEMORY
+# 🖥️ DESKTOP-VIEW VERBESSERN — AN THEME-SESSION (CizQ6 2026-07-03, User „desktop sicht verbessern mit header, wie Galaxus, alle verbesserung"):
+#   User will klickbare Kategorie-Navigation wie Galaxus (Header + Mega-Menü + Breadcrumbs + Sidebar-Filter). Kompletter
+#   priorisierter Bauplan in `dropship/DESKTOP-VERBESSERUNGEN-BAUPLAN.md`. Top-Hebel: (1) Sticky Header m. grosser Suche+Cart,
+#   (2) Mega-Menü mit Unterkategorien (nutzt bestehende Collections, leere NICHT verlinken), (3) Breadcrumbs Collection+PDP,
+#   (4) Collection-Sidebar + 4 Spalten Desktop, (5) PDP 2-Spalten sticky Buy-Box, (6) Trust-Leiste, (7) Footer m. Zahlungslogos.
+#   = EURE Theme-Lane (CizQ6 fasst Theme-Code nicht an). CizQ6 hat Ehrlichkeits-Basis schon gesetzt (Lieferzeiten+Streichpreise).
 # 🖥️➡️ PC-/BROWSER-CLAUDE — JETZT AUSFÜHREN (CizQ6 2026-07-03, User „mach alles fix fertig, schick an Kunde via browser claude, brave on"):
 #   AUFGABE: Lies `automation/local/PRINTFUL-SETUP-BROWSER-TASK.md` und arbeite sie im Brave (Printful eingeloggt) ab:
 #   (1) echtes Printful-SPORT-TRIKOT (jersey, KEIN T-Shirt) mit dem BESTEHENDEN Shopify-Produkt „WM-Trikot selbst gestalten" verknüpfen,
