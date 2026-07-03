@@ -59,7 +59,7 @@ const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\
 const T=DRY?null:await tok();
 let total=0;
 for(const file of files){
- const rows=parseCSV(fs.readFileSync(file,'utf8')); const H=rows[0]; const ix={}; H.forEach((h,i)=>ix[h]=i);
+ const rows=parseCSV(fs.readFileSync(file,'utf8')); const H=rows[0]; if(!H||!Array.isArray(H)){console.log('  (leer übersprungen)',file.split('/').pop());continue;} const ix={}; H.forEach((h,i)=>ix[h]=i);
  for(const r of rows.slice(1)){
   if(total>=LIMIT)break;
   const sku=r[ix.sku]; if(!sku||done.has(sku)||done.has('csv-'+sku))continue;
