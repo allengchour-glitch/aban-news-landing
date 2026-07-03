@@ -516,5 +516,6 @@
   // Robust gegen spaet vom Theme injizierte Beschreibung (Section-Rendering) + gegen einmalige Init-Fehler:
   // mehrfach nachfassen; Fehler werden geloggt statt verschluckt.
   window.addEventListener('load', initAll);
-  var _lspodTries=0; var _lspodIv=setInterval(function(){ Array.prototype.forEach.call(document.querySelectorAll('.lspod-designer[data-init="err"]'),function(x){ x.removeAttribute('data-init'); }); initAll(); if(++_lspodTries>=12) clearInterval(_lspodIv); }, 700);
+  // Feste, selbst-terminierende Nachfass-Versuche (kein Interval/Zaehler -> kein Endlos-Loop moeglich):
+  [300,800,1500,2500,4000,6000,8000].forEach(function(ms){ setTimeout(function(){ Array.prototype.forEach.call(document.querySelectorAll('.lspod-designer[data-init="err"]'),function(x){ x.removeAttribute('data-init'); }); initAll(); }, ms); });
 })();
