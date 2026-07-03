@@ -13,7 +13,7 @@ const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
 const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;const p=Math.max(u*2.6,9.9);return (Math.floor(p)+0.90).toFixed(2);};
+const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;const p=Math.max(u*m,4.90);return (Math.floor(p)+0.90).toFixed(2);};
 
 const GROUPS={
  nagel:{cats:[['9F96CE84-962D-4992-81DC-BF79A4A9002D','Nail Gel'],['E157D35B-156B-49F6-A678-7C55D4E81D6C','Nail Dryers'],['EADB666A-12A5-4FA1-AD1F-BC351A7E7AF5','Nail Art Kits'],['26F7660F-A00A-468A-BA29-E61A465C0D0B','Nail Decorations'],['1B1A9B82-1833-4721-88CA-86F5F542D7A5','Nail Glitters'],['25A6516D-3AE3-4207-BA00-6FD3CCE20201','Nail Stickers']],
@@ -43,6 +43,12 @@ const GROUPS={
  musik:{cats:[['2502140306571605000','Guitars'],['2502140307181607100','Violins'],['2603180848241600400','Steel Tongue Drum']],
    type:'Musikinstrumente', tags:['musik','instrument','hobby','cj-real','dropship'], kat:'Musikinstrumente',
    ban:/wholesale|\bsample\b|zubehör.?set für/i, minImg:3, minP:5, maxP:120},
+ cjelektronik:{cats:[['6DB79FAF-593D-4F52-B6FF-AB1D14331862','Charger'],['A0D39205-3770-4F0B-91BD-65E711263577','Batteries'],['D8515A8C-ECAC-422B-9963-14D7B07E10DB','TV Sticks'],['11D33F89-9B90-4D1A-B977-DE229BAA7E86','Wearable Devices'],['895CF515-0F6B-481D-8A32-604EDCBEFBED','Smart Wristbands'],['C83EF2A0-8FA3-4713-9901-2FD6E4554D97','Smart Watches'],['AD21D6F7-42CB-44E7-89B2-542692C7D101','Action Cameras'],['0AC6B44A-12CC-456F-831F-54064C77D303','Projectors'],['C1AB7563-AED4-44D8-9F01-05BD91C65307','Speakers'],['DAECCC3B-13D8-4978-86A8-61D3DF186134','Earphones'],['8FD4CA46-AA88-4CDC-8EBA-EBD8412152E2','Microphones'],['491E5474-524C-4666-BDD7-4E35E38900EA','Power Bank'],['9170B3F9-5B9C-4C39-8CD6-7DC00E481D47','Holders & Stands'],['4D3B9582-E92E-46BF-B00E-715E70FB4742','SSD'],['591E8920-019B-42FA-AE0B-420052E6C4F0','USB Flash Drives'],['7E65A403-CF6E-4B55-96FF-B7C3C376A47A','Memory Cards'],['C62BC6BF-BA2B-41ED-AB12-599A6D7FCAA5','External Hard Drives'],['1F23F16D-0A39-4D38-AB9C-1F21EEDEBEDD','Gamepads'],['2F6CCFAA-853F-41EF-8B91-24028A333948','Handheld Game Players']],
+   type:'Elektronik', tags:['elektronik','tech','gadget','cj-real','dropship'], kat:'Elektronik & Technik',
+   ban:/wholesale|\bsample\b|replacement part|ersatzteil|kinder|for kids/i, minImg:2, minP:2, maxP:120},
+ cjgadgets:{cats:[['907BBB40-C131-4D3C-BA05-794D47EEBC90','Camera Drones'],['E95322D2-FF23-4837-A0C0-0CA686B9F062','Smart Remote Controls'],['36F73513-6A5A-445D-87F9-BF3D6629E649','Smart Home Appliances'],['599DFE31-C6AD-42D2-93AA-762126BBA475','Home Electronic Accessories'],['76B88FB8-9B37-4B55-AA09-082C5627DFE8','HDD Enclosures']],
+   type:'Gadget', tags:['elektronik','gadget','tech','trend','cj-real','dropship'], kat:'Coole Gadgets & Technik',
+   ban:/wholesale|\bsample\b|replacement part|ersatzteil|kinder/i, minImg:2, minP:2, maxP:110},
 };
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
