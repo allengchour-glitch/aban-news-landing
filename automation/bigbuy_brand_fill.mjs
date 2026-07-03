@@ -52,6 +52,7 @@ const B={
  wellness:/beurer|medisana|\bhomedics\b|\bnaipo\b|\brenpho\b|\bsalter\b|cecotec|\btaurus\b|\bpangao\b|\betekcity\b|\borbegozo\b/i,
  deko:/\bwenko\b|\bbalvi\b|\bversa\b|\bsecret de gourmet\b|\batmosphera\b|\bhome deco\b|\bpresent time\b|\bumbra\b|\bqualy\b|\brivadossi\b|yankee candle|\bwoodwick\b|\bpartylite\b|\bcolombina\b|excelsa/i,
  refurb:/medion|dangbei|\bhp\b|lenovo|\basus\b|\bacer\b|apple|macbook|\bipad\b|samsung|xiaomi|\bmsi\b|\blg\b|\bdell\b|microsoft|surface|epson|\bbenq\b|toshiba|huawei|\bhonor\b|\bnokia\b|\bviewsonic\b|gigabyte/i,
+ workwear:/./,
 };
 const GROUPS={
  haushalt:   {re:/küche|kaffee|mixer|standmixer|pfanne|topf|wasserkocher|toaster|fritteuse|airfryer|staubsauger|bügeleisen|waffeleisen|kontaktgrill|zerkleinerer|entsafter|milchaufschäumer|reiskocher|heizung|ventilator|luftreiniger|haushalt/i,
@@ -124,6 +125,9 @@ const GROUPS={
  refurb:     {re:/\blaptop\b|notebook|\btablet\b|beamer|projektor|projector|\bmonitor\b|smartphone|handy\b|spielekonsole|\bkonsole\b|smartwatch|e-reader|\bpc\b|mini-?pc|all-?in-?one|refurbished|renewed/i,
               ban:/tasche|hülle|\bcase\b|kabel|ladekabel|ständer|halterung|schutz|adapter|maus\b|tastatur|zubehör|reinigung|folie|cover|dock|hub|stift|pen\b|ersatz|halter|arm\b|wandhalter|schutzglas|panzerglas|sleeve|rucksack/i,
               brand:B.refurb, cap:700, type:'Elektronik & Computer', tags:['elektronik','pc','tech','computer','marke','bigbuy','dropship'], blurb:'Marken-Elektronik'},
+ workwear:   {re:/arbeitshose|arbeitsjacke|arbeitsshirt|arbeits.?overall|latzhose|warnschutz|warnweste|sicherheitsschuh|arbeitshandschuh|schutzhose|zunfthose|malerhose|arbeitskleidung|berufskleidung|arbeitskittel|blaumann/i,
+              ban:/kostüm|verkleidung|puppe|spielzeug|baby|my other me|karneval|\breig\b/i,
+              brand:B.workwear, cap:200, type:'Arbeitskleidung', tags:['arbeitskleidung','workwear','handwerker','beruf','bigbuy','dropship'], blurb:'Arbeitskleidung'},
 };
 
 function clean(n){return n
