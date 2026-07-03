@@ -312,6 +312,13 @@ const CONFIG = {
     anchor: ['fußballtrikot', 'fussballtrikot', 'football trikot', 'soccer jersey', 'fußball-trikot', 'camiseta de fútbol', 'camiseta fútbol'],
     ban: ['radtrikot', 'rad-trikot', 'cycling', 'velo', 'fahrrad', 'maillot ciclismo', 'kinder', 'jr.', 'jr ', 'baby', '11-12 jahre', '7-8 jahre', '9-10 jahre', '3-4 jahre', '5-6 jahre'],
     bullets: ['Trikot im Team-Look', 'Atmungsaktiv & sportlich', 'Top für Stadion & Public Viewing', '100% Original, schnelle EU-Lieferung'] },
+  // Rotes, BLANKES Fussballtrikot (Schweizer Fan-Look, ohne Name/Nr.) — must:rot-Farbe
+  trikotrot: { coll: { handle: 'wm-fussball-2026', title: '⚽ WM & Fussball 2026', tag: 'wm-2026' },
+    extraTags: ['fussball', 'fan', 'sport', 'wm', 'trikot', 'rot', 'schweiz-fan', 'nati'], type: 'Trikot', maxCost: MAX_COST_EUR, sized: true,
+    anchor: ['fußballtrikot', 'fussballtrikot', 'football trikot', 'soccer jersey', 'fußball-trikot', 'camiseta de fútbol', 'camiseta fútbol'],
+    must: ['rot', 'roja', 'rojo', ' red'],
+    ban: ['radtrikot', 'rad-trikot', 'cycling', 'velo', 'fahrrad', 'maillot ciclismo', 'kinder', 'jr.', 'jr ', 'baby', '11-12 jahre', '7-8 jahre', '9-10 jahre', '3-4 jahre', '5-6 jahre', 'brot', 'karotte', 'weiß rot blau', 'blau rot', 'schwarz rot gold', 'deutschland', 'england', 'spanien', 'espana', 'belgien', 'marokko', 'türkei', 'portugal'],
+    bullets: ['Rotes Trikot im Schweizer Fan-Look', 'BLANKO – ohne Name & Nummer', 'Atmungsaktiv & sportlich', 'Top für Stadion & Public Viewing'] },
   // ── COOLE MARKEN-WELT (BigBuy-Markenkatalog: New Era, Puma, Adidas, lizenzierte Merch) ──
   caps: { coll: { handle: 'caps-huete', title: '🧢 Caps & Hüte', tag: 'Hut' },
     extraTags: ['accessoire', 'hype-2026', 'streetwear', 'premium'], type: 'Cap', maxCost: MAX_COST_EUR,
@@ -596,7 +603,8 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       if (GLOBAL_BAN.some(x => nm.includes(x))) return false; // Wholesale-Multipacks etc. global ausschliessen
       if (ADULT_BAN.some(x => nm.includes(x))) return false;  // Adult/Erotik nie (massage/yoga-Anker zogen Sex-Toys)
       const hit = cfg.word ? cfg.anchor.some(a => wordHit(nm, a)) : cfg.anchor.some(a => nm.includes(a));
-      return hit && !(cfg.ban || []).some(x => nm.includes(x));
+      const mustOk = !cfg.must || cfg.must.some(m => nm.includes(m)); // Zusatzbedingung (z.B. Farbe rot)
+      return hit && mustOk && !(cfg.ban || []).some(x => nm.includes(x));
     });
     console.log(`  ${cand.length} on-brand Kandidaten im Katalog.`);
     // 2) Pro Kandidat: Detail (Preis/aktiv) + Bilder prüfen, bis PER Picks
