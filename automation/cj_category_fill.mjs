@@ -15,6 +15,31 @@ const PUBS=['301970915713','301971014017','302032716161','302566834561','3028722
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;const p=Math.max(u*m,4.90);return (Math.floor(p)+0.90).toFixed(2);};
 
+// ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
+const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude',multicolor:'Bunt',multi:'Bunt'};
+const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
+const deColor=c=>{const t=(c||'').trim();return DECOLOR[t.toLowerCase()]||t;};
+const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||/^\d{1,2}$/.test(u)||/^(EU|US|UK)?\s?\d{2}$/.test(u);};
+const SORDER=['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL','6XL'];
+function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null;
+ if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=b.toUpperCase();}else color=k;}
+ else if(isSize(k))size=k.toUpperCase();else color=k||null;
+ return {color:color?deColor(color):null,size:size||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
+function buildFashion(d){
+ const vs=(d.variants||[]).map(parseVar).filter(v=>v.color||v.size); if(!vs.length)return null;
+ const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
+ const sizes=[...new Set(vs.map(v=>v.size).filter(Boolean))].sort((a,b)=>{const ia=SORDER.indexOf(a),ib=SORDER.indexOf(b);if(ia>=0&&ib>=0)return ia-ib;return (parseInt(a)||99)-(parseInt(b)||99)||a.localeCompare(b);});
+ const useC=colors.length>1||(colors.length===1&&!sizes.length), useS=sizes.length>0;
+ const opts=[]; if(useC)opts.push({name:'Farbe',values:colors}); if(useS)opts.push({name:'Grösse',values:sizes});
+ if(!opts.length)return null;
+ const seen=new Set(),variants=[];
+ for(const v of vs){const ov=[]; if(useC)ov.push({optionName:'Farbe',name:v.color||colors[0]}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
+  const key=ov.map(x=>x.name).join('|'); if(seen.has(key))continue; seen.add(key);
+  variants.push({optionValues:ov,price:chf(v.price),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'});
+  if(variants.length>=100)break;}
+ return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants};
+}
+
 const GROUPS={
  nagel:{cats:[['9F96CE84-962D-4992-81DC-BF79A4A9002D','Nail Gel'],['E157D35B-156B-49F6-A678-7C55D4E81D6C','Nail Dryers'],['EADB666A-12A5-4FA1-AD1F-BC351A7E7AF5','Nail Art Kits'],['26F7660F-A00A-468A-BA29-E61A465C0D0B','Nail Decorations'],['1B1A9B82-1833-4721-88CA-86F5F542D7A5','Nail Glitters'],['25A6516D-3AE3-4207-BA00-6FD3CCE20201','Nail Stickers']],
    type:'Nageldesign', tags:['naegel','nagel','nageldesign','maniküre','beauty','cj-real','dropship'], kat:'Nageldesign & Maniküre',
@@ -59,10 +84,10 @@ const GROUPS={
    type:'Uhren', tags:['uhren','accessoire','geschenk','cj-real','dropship'], kat:'Armbanduhren',
    ban:/wholesale|\bsample\b|smart ?watch|wall clock/i, minImg:2, minP:3, maxP:90},
  cjdamen:{cats:[['D2432903-0D4E-4787-886F-D3D9DA7890D9','Lady Dresses'],['5A3E7341-18B5-4C61-BFCD-8965B3479A9A','Blouses & Shirts'],['5E656DFB-9BAE-44DD-A755-40AFA2E0E686','Woman Hoodies & Sweatshirts'],['DE9C662C-3F48-4855-87E7-E18733EFF6D2','Sweaters'],['3B8946E7-B608-4DAB-B2F0-C425B7875035','Skirts'],['396E962A-5632-49C2-B9BF-9529DE3B9141','Leggings'],['63584B9B-5275-4268-8BEA-7D3C7A7BB925','Woman Jeans'],['7B69E34F-43A3-4143-A22D-30786EE97998','Jumpsuits']],
-   type:'Damenmode', tags:['damen','mode','cj-real','dropship'], kat:'Damen-Mode & Kleider', sized:true,
+   type:'Damenmode', tags:['damen','mode','cj-real','dropship'], kat:'Damen-Mode & Kleider', fashion:true,
    ban:/wholesale|\bsample\b|wedding|bridal|bridesmaid|prom dress|flower girl|kinder|kids/i, minImg:2, minP:3, maxP:70},
  cjherren:{cats:[['2409230540121629100','Mens Shirts'],['2409230540351618000','Mens Jackets'],['976399B4-534B-46F0-B18A-62075824A717','Man Hoodies & Sweatshirts'],['1357252400104214528','Mens Sweaters'],['911754C0-443D-4ECF-9083-DF04C907BD81','Man Jeans'],['846D76D8-095D-4DD8-89DF-1E48D869F60C','Cargo Pants'],['BE11EEDB-B765-4A39-8A3D-F6015FC7A846','Print T-Shirts'],['655B8008-6BB9-4AA1-8025-6206ACFF018A','Solid T-Shirts']],
-   type:'Herrenmode', tags:['herren','mode','cj-real','dropship'], kat:'Herren-Mode', sized:true,
+   type:'Herrenmode', tags:['herren','mode','cj-real','dropship'], kat:'Herren-Mode', fashion:true,
    ban:/wholesale|\bsample\b|damen|women|kinder|kids/i, minImg:2, minP:3, maxP:70},
  cjtaschen:{cats:[['CDCCB9B1-D5DD-4C20-AF32-101FE427B63C','Backpacks'],['EA292A58-E696-428B-8BEB-DE105690DDB3','Crossbody Bags'],['E89AC661-0B9E-4967-A0A3-7B0C6DEDDC7D','Luggage & Travel Bags'],['B701FAC3-80F0-43B1-9EA5-2C05C55F582A','Waist Bags'],['F3F4B418-17DF-49A1-AD76-A436B7618FFC','Wallets']],
    type:'Taschen', tags:['tasche','accessoire','cj-real','dropship'], kat:'Taschen & Rucksäcke',
@@ -130,10 +155,12 @@ for(const [cat,label] of grp.cats){
    if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`;
+   const fash=grp.fashion?buildFashion(d):null;
+   const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
+   const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
    const input={title,handle:slug,productType:grp.type,vendor:'LuxeStyle',status:'ACTIVE',tags:grp.tags,descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe.`).slice(0,320)},
-    productOptions:[{name:'Variante',values:[{name:'Standard'}]}],
-    variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}],
+    productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
