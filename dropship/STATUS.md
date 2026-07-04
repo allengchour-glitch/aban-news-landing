@@ -1,5 +1,14 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (VOLL-GAS-WERBUNG — 20-Agenten-Werbepaket + Render gequeued)
+- **🎬 20 WERBE-AGENTEN (User „mach krasse werbung"):** 187 Ad-Assets → Creative-Director kuratiert: **12 postbare Captions** (7 TikTok-Mundart/4 IG/1 FB),
+  **6 Seedance-Prompts**, **15 On-Screen-Hooks** (≤42 Zeichen, Safe-Zone), Tagline „Schmuck, den du nie mehr ausziehen musst" + USP + Offer. Doc: `dropship/WERBEPAKET-2026-07-04.md`.
+- **✅ EHRLICH DURCHGEZOGEN:** alle 9 Winner-Preise gegen Live-PDP verifiziert (Compare-at 24.90/39.90 = ECHT, keine Fake-Strikes) · kein #swissmade/Swiss-Made (nur die ehrliche FB-Disclosure „nicht Swiss Made, EU-Lager") · keine Fake-Verknappung/Reviews · Lieferzeit 5-12 Werktage · nur CH-Tags.
+- **🎥 RENDER GEQUEUED:** `cmd render-winners` (`automation/render_winners.mjs` + `winner_render_jobs.json`, 6 Winner mit echten Bildern) — Seedance **v1/pro-first gefixt** (2.0 lieferte 2× 0 Clips trotz gültigem FAL-Key). PC rendert → `reels/winner-*.mp4` → finish_reel.sh (Hook+Musik) → Queue.
+- **🐛 KURATOR FAND KATALOG-DEFEKTE (ins Gehirn):** Ring-Set Eternità = Datenwiderspruch 3 vs 5 Ringe + „Fixi Grössä XS-XL" (Kleidergrössen auf einem RING, XS-XL-Feed-Bug) → NICHT bewerben bis PDP-Fix ·
+  „echt Leder/Perlmutt/Moissanite"-Materialclaims brauchen Lieferanten-Beleg, sonst „…-Optik". · `#swissmade` an der Quelle raus (build_queue → #schweizshop, im Gehirn gesperrt).
+
+
 ## 2026-07-04 (SPÄT-NACHT — 20-Agenten-Informier-Runde + Lernen + Gratis-Quellen-Check)
 - **🔬 20-AGENTEN-LIVE-AUDIT (User „informiere ne runde, 20 agenten, dann lernen"):** 20 Lanes (Live-Shop-Fetch + CH-Recherche), 85 Kandidaten-Lehren →
   **17 neue Gehirn-Regeln** in `knowledge.json` (deduped). Diesmal HARTE, verifizierte Defekte statt Prinzipien:
