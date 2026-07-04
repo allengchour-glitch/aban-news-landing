@@ -102,3 +102,5 @@ scrub-germany-20260704
 seo-pages-20260704
 rename-wm-coll-20260704b
 set-trikot-imgs-20260704
+seo-pages2-20260704
+blog-posts-20260704
