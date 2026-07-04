@@ -2295,3 +2295,16 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   (BigBuy hat all das: Taxonomie 17855/21313/8312/26678…; Shop hatte 0 Robo-Sauger/VR!). Collection = tag:hightech
   (Import-gefüttert) + sichere Title-Terms, CREATED_DESC, 8 Kanäle, 27 Startprodukte. Im Tech-Menü zuoberst.
 - **Loops nach 2. Reset neu:** bb_loop (CATS mit hightech ergänzt) + cj_loop (CJGRPS). Beide laufen.
+
+---
+**📌 2026-07-04 (🔎 GOOGLE-NACHFRAGE-getriebener Import — echte Trend-Lücken gefüllt):**
+- **Semrush-MCP weiter NICHT im Plan** → Nachfrage via WebSearch (Shopify/Google-Trends-2026-Reports) recherchiert.
+- **Top-Trends 2026 mit 0-Abdeckung im Shop identifiziert + BigBuy hat sie:**
+  - **Beauty-Tech / At-Home-Beauty-Geräte** (Nachfrage +18%): IPL-Haarentfernung, Epilierer, LED-Gesichtsmasken,
+    Gesichtsreiniger, Gua Sha → **Config `beautytech`** (BigBuy: 191 Kandidaten!), Collection `beauty-geraete`.
+  - **Auto-/KFZ-Zubehör** (Nachfrage +140%): Dashcam, Starthilfe, Reifendruckmesser, KFZ-Sets, Handyhalter →
+    **Config `autozubehoer`**, Collection `auto-kfz-zubehoer`. (BigBuy-Taxonomie: Autozubehör 280, KFZ-Sets 4039.)
+  - Heizdecken (BigBuy 2561) als Trend notiert (Shop nur 3) — optional als nächste Welle.
+- Beide Configs word:true, im bb_loop ZUERST in Rotation (beautytech,autozubehoer,hightech,…). Collections publiziert (8 Kanäle).
+- **Lehre:** Ohne Semrush = WebSearch auf Trend-Reports + BigBuy-Taxonomie-Abgleich → Nachfrage-Lücken finden, die
+  der Shop noch nicht deckt. Effektivster Sortiments-Hebel: importieren was gesucht wird UND wo Abdeckung = 0.
