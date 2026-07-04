@@ -141,6 +141,11 @@ const CONFIG = {
     anchor: ['heizdecke', 'wärmeunterbett', 'wärmedecke', 'elektrische decke', 'elektrische heizdecke', 'wärmezudecke', 'kuscheldecke', 'flauschdecke', 'sherpa-decke', 'fleecedecke', 'tagesdecke', 'wohndecke', 'manta eléctrica', 'calientacamas'],
     ban: ['kinder', 'baby', 'spielzeug', 'hund', 'katze', 'haustier', 'auto', 'picknick'],
     bullets: ['Wohlige Wärme an kalten Tagen', 'Kuschelig weich & gemütlich', 'Energiesparend heizen', '100% Original, schnelle EU-Lieferung'] },
+  raucherzubehoer: { coll: { handle: 'raucherzubehoer', title: '🚬 Raucher- & Dreh-Zubehör', tag: 'raucher' },
+    extraTags: ['raucher', 'zubehoer', '18plus'], type: 'Raucherzubehör', maxCost: 90, word: true, onlineOnly: true,
+    anchor: ['tabakpfeife', 'tabakmühle', 'kräutermühle', 'grinder', 'zigarettendrehmaschine', 'drehmaschine tabak', 'tischdrehmaschine', 'zigarettenetui', 'zigarettenspitze', 'sturmfeuerzeug', 'benzinfeuerzeug', 'shisha', 'wasserpfeife', 'picadora tabaco', 'liar cigarrillos', 'cachimba', 'pipa de tabaco', 'mechero gasolina'],
+    ban: ['kinder', 'spielzeug', 'baby', 'signalpfeife', 'hundepfeife', 'trillerpfeife', 'vape', 'e-zigarette', 'e-shisha', 'nikotin', 'liquid', 'cbd', 'thc', 'cannabis', 'auto', 'deko'],
+    bullets: ['Für Genießer & Selbstdreher', 'Robuste, langlebige Qualität', 'Diskret verpackt geliefert', 'Nur für Erwachsene ab 18 Jahren'] },
   anime: { coll: { handle: 'anime-manga', title: '🎌 Anime & Manga', tag: 'anime' },
     extraTags: ['anime', 'geschenk', 'hype-2026', 'sammler'], type: 'Anime', maxCost: MAX_COST_EUR,
     anchor: ['anime', 'manga', 'funko', 'cosplay', 'otaku', 'dragon ball', 'naruto', 'one piece', 'sammelfigur'],
@@ -639,7 +644,7 @@ if (!BB_KEY) { console.log('Kein BIGBUY_API_KEY → No-op (Connector startklar, 
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
 const SET = `mutation($input:ProductSetInput!){ productSet(synchronous:true,input:$input){ product{ id handle } userErrors{ field message } } }`;
-const PUBQ = `{ publications(first:20){ edges{ node{ id } } } }`;
+const PUBQ = `{ publications(first:20){ edges{ node{ id name } } } }`;
 const PUB = `mutation($id:ID!,$pubs:[PublicationInput!]!){ publishablePublish(id:$id,input:$pubs){ userErrors{ message } } }`;
 const COLL_FIND = `query($q:String!){ collections(first:1, query:$q){ edges{ node{ id handle } } } }`;
 const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$input){ collection{ id handle } userErrors{ message } } }`;
@@ -654,7 +659,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
   console.log(`Katalog: ${info.length} Produkte mit DE-Namen.`);
 
   const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
-  const pubs = DRY ? [] : ((await sgql(stok, PUBQ))?.data?.publications?.edges || []).map(e => ({ publicationId: e.node.id }));
+  const allPubs = DRY ? [] : ((await sgql(stok, PUBQ))?.data?.publications?.edges || []).map(e => ({ publicationId: e.node.id, name: e.node.name || '' }));
 
   async function ensureColl(cfg) {
     if (DRY) return null;
@@ -732,7 +737,9 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const r = await sgql(stok, SET, { input }); const e = r?.data?.productSet?.userErrors || [];
       const pid = r?.data?.productSet?.product?.id;
       if (e.length || !pid) { fails.push(`${title.slice(0, 40)}: ${JSON.stringify(e.length ? e : r).slice(0, 160)}`); continue; }
-      if (pubs.length) await sgql(stok, PUB, { id: pid, pubs });
+      // onlineOnly (z.B. Raucherzubehör): NUR Online Store + POS — NIE Google/Meta/TikTok/Pinterest (Policy)
+      const usePubs = cfg.onlineOnly ? allPubs.filter(p => /online store|point of sale/i.test(p.name)) : allPubs;
+      if (usePubs.length) await sgql(stok, PUB, { id: pid, pubs: usePubs.map(p => ({ publicationId: p.publicationId })) });
       fs.appendFileSync(LEDGER, 'bb:' + p.id + '\n');
       created++; console.log(`  ✅ ${title.slice(0, 50)} → CHF ${price} (${handle})`);
       await sleep(400);
