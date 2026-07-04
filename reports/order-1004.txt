@@ -1,0 +1,9 @@
+
+=== Bestellung #1004 ===
+Datum: 2026-06-25T12:54:09Z
+Kunde: alleng chour <alleng0@hotmail.com>
+Lieferadresse: romy marti, 2540 grenchen (CH)
+Betrag: 31.9 CHF
+Zahlung: PAID · Fulfillment: FULFILLED
+Positionen: 1× LED-Laterne «Boho» · Rattan-Optik, kabellos
+Sendung: status=SUCCESS · 2026-06-27T21:16:55Z · Tracking: bb-S3414715 (Other) https://8420327578013
