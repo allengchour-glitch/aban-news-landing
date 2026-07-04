@@ -24,11 +24,14 @@ const KEY = process.env.FAL_KEY || '';
 // NACH VORNE (war nur letzter Fallback -> wir liefen faktisch auf v1). 2.0 = native Audio, echte Physik,
 // Director-Kamera. fal-IDs per fal.ai verifiziert (April 2026 live). Kosten 2.0: fast 720p ~$0.24/Sek
 // (~$1.20 pro 5-Sek-Clip), standard bis 1080p ~$0.30/Sek. v1 bleibt als guenstiger Fallback (Not-Found/Credits).
+// REIHENFOLGE-FIX 2026-07-04 (winner-reels lieferte mit 2.0-first ZWEIMAL 0 Clips trotz gueltigem FAL_KEY):
+// v1/pro ZUERST = bewaehrt+zuverlaessig mit diesen Params (res/dur/ar) → wir bekommen SICHER Video.
+// 2.0 danach nur als Bonus-Versuch (bricht bei erstem Erfolg ab, also greift v1 fast immer). SEEDANCE_MODEL uebersteuert.
 const MODELS = process.env.SEEDANCE_MODEL ? [process.env.SEEDANCE_MODEL] : [
-  'bytedance/seedance-2.0/fast/image-to-video',   // 2.0 Fast (max 720p) — bester Preis/Qualitaet-Default
-  'bytedance/seedance-2.0/image-to-video',        // 2.0 Standard (bis 1080p) — Hero/Final-Ads
-  'bytedance/seedance/v1/pro/image-to-video',     // v1 Fallback falls 2.0 Not-Found/Credits leer
-  'bytedance/seedance/v1/lite/image-to-video',
+  'bytedance/seedance/v1/pro/image-to-video',     // v1 Pro — zuverlaessig, gute Qualitaet, guenstig
+  'bytedance/seedance/v1/lite/image-to-video',    // v1 Lite — Fallback
+  'bytedance/seedance-2.0/fast/image-to-video',   // 2.0 Fast — Bonus, falls auf dem Account verfuegbar
+  'bytedance/seedance-2.0/image-to-video',        // 2.0 Standard
 ];
 const IMG = val('--image');
 // PROMPT-LEHRE 2026-06-26 (YouTube Seedance 2.0 / Julian): KURZE englische Ad-Keywords schlagen lange
