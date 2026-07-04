@@ -369,7 +369,7 @@ const CONFIG = {
     bullets: ['Für Heimwerker & Profis', 'Robust & langlebig', 'Praktischer Helfer', '100% Original, schnelle EU-Lieferung'] },
   druck3d: { coll: { handle: '3d-druck', title: '🖨️ 3D-Druck', tag: '3d-druck' },
     extraTags: ['3d-druck', '3d-drucker', 'filament', 'tech', 'hobby', 'premium'], type: '3D-Druck', maxCost: 350, word: true,
-    anchor: ['3d-drucker', '3d drucker', '3d-stift', '3d stift', 'filament', 'pla-filament', 'pla filament', 'petg', 'resin drucker', 'harz drucker', 'druckbett', '3d-druck', '3d-scanner', 'impresora 3d', 'filamento', 'lápiz 3d'],
+    anchor: ['3d-drucker', '3d drucker', '3d-stift', '3d stift', 'filament', 'pla-filament', 'pla filament', 'petg', 'abs filament', 'tpu filament', 'resin drucker', 'harz drucker', 'harz 3d', 'resin 3d', 'druckbett', 'druckplatte', 'bauplatte', 'pei-platte', 'pei sheet', 'düse 3d', '3d düse', 'nozzle 3d', 'boquilla 3d', 'extruder', 'hotend', 'heizbett', 'ptfe schlauch', 'bowden', 'filament-trockner', 'filament dryer', 'filamenttrockner', 'spachtel 3d', 'kalibrier', 'filament spule', 'filament spool', '3d-druck', '3d-scanner', 'impresora 3d', 'filamento', 'lápiz 3d', 'resina 3d'],
     ban: ['kinder', 'spielzeug', 'aufkleber', 'kostüm', 'malbuch', 'puzzle'],
     bullets: ['Für 3D-Druck-Fans & Maker', 'Präzise Ergebnisse', 'Tolles Hobby & Geschenk', '100% Original, schnelle EU-Lieferung'] },
   bambu3d: { coll: { handle: '3d-druck', title: '🖨️ 3D-Druck', tag: '3d-druck' },
