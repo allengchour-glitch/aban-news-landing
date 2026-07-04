@@ -174,8 +174,8 @@ var bossParts=[];
 function clearBoss(){for(var i=boss.children.length-1;i>=0;i--)boss.remove(boss.children[i]);bossParts=[];}
 // Baut je nach Typ eine imposante Komposit-Figur; gibt Liste rotierender Teile zurück
 function buildBoss(kind,c1,c2){clearBoss();
-  var core=new THREE.Mesh(new THREE.IcosahedronGeometry(2.6,0),mat(c1,c1,1.2));boss.add(core);boss.userData.core=core;
-  var inner=new THREE.Mesh(new THREE.OctahedronGeometry(1.5,0),mat(0xffffff,0xffffff,1.4));boss.add(inner);boss.userData.inner=inner;
+  var core=new THREE.Mesh(new THREE.IcosahedronGeometry(2.6,0),mat(c1,c1,0.85));boss.add(core);boss.userData.core=core;
+  var inner=new THREE.Mesh(new THREE.OctahedronGeometry(1.5,0),mat(0xdfe9ff,c1,0.75));boss.add(inner);boss.userData.inner=inner;
   if(kind===0){ // WÄCHTER: 3 rotierende Ringe + orbitierende Knoten
     for(var r=0;r<3;r++){var rg=new THREE.Mesh(new THREE.TorusGeometry(3.6+r*0.9,0.22,10,40),mat(c2,c2,1.1));rg.rotation.x=Math.random();rg.rotation.y=Math.random();boss.add(rg);bossParts.push({m:rg,rx:0.4+r*0.2,ry:0.3-r*0.15});}
     for(var n=0;n<6;n++){var nd=new THREE.Mesh(new THREE.OctahedronGeometry(0.55,0),mat(c1,c1,1.3));boss.add(nd);bossParts.push({m:nd,orbit:n/6*6.28,orad:4.6,ospd:0.8});}
@@ -359,7 +359,7 @@ function update(dt){
       if(bp.orbit!==undefined){bp.orbit+=(bp.ospd||1)*dt;bp.m.position.set(Math.cos(bp.orbit)*bp.orad,bp.fixedY!==undefined?bp.fixedY:Math.sin(bp.orbit*0.7)*1.5,Math.sin(bp.orbit)*bp.orad);}
       if(bp.flap!==undefined)bp.m.rotation.z=bp.base+Math.sin(G.t*3)*0.25*bp.flap;
       if(bp.clock){bp.m.rotation.y+=dt*(0.6+G.phase*0.5);}}
-    if(boss.userData.inner){boss.userData.inner.rotation.y+=dt*3;boss.userData.inner.rotation.x+=dt*2;if(G.bhitFlash>0){G.bhitFlash-=dt;}else boss.userData.inner.material.emissiveIntensity=1.4;
+    if(boss.userData.inner){boss.userData.inner.rotation.y+=dt*3;boss.userData.inner.rotation.x+=dt*2;if(G.bhitFlash>0){G.bhitFlash-=dt;}else boss.userData.inner.material.emissiveIntensity=0.85;
       var bhp2=boss.userData.hitPunch||0;if(bhp2>0){boss.userData.hitPunch=bhp2-dt;boss.userData.inner.scale.setScalar(1+Math.max(0,bhp2)*1.6);}else boss.userData.inner.scale.setScalar(1);}
     // Uhrzeiger-Beam (Nexus Phase>=2): schadet auf der Linie
     if(G.stage===2&&boss.userData.hand&&G.phase>=2&&G.running){var ha=boss.userData.hand.rotation.y;var dpx=player.position.x-boss.position.x,dpz=player.position.z-boss.position.z;var pdist=Math.hypot(dpx,dpz);var pang=Math.atan2(dpz,dpx);var da=Math.abs(((pang-(-ha))+Math.PI*3)%(Math.PI*2)-Math.PI);if(pdist<8&&da<0.14)hitPlayer(14*dt*60*0.016);}
@@ -443,7 +443,7 @@ var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt);
 var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.55}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.66}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
 var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:1.05},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
 "uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;uniform float uTime;varying vec2 vUv;",
