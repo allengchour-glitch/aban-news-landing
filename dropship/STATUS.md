@@ -1,5 +1,14 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (20-Agenten-Content-Schwarm + TikTok-Dedup-Fix)
+- **🤖 20-AGENTEN-SCHWARM abgeschlossen:** 10 SEO-Kategorie-Landingpages + 5 SEO-Ratgeber-Blogartikel + 25 Reel-/TikTok-Konzepte (5 Themen). Alle Collection-/Produkt-CTAs per HTTP-200 verifiziert, ehrlich, strikt CH.
+  - **Landingpages (`create_seo_pages_batch2.mjs`, gequeued `seo-pages2`):** Uhren, Sonnenbrillen, Herren-Mode, wasserfester Schmuck, Taschen, Sommermode, Geschenke für Männer, Selbst gestalten, Anime/Funko, Wohnen/Deko.
+  - **Blogs (`create_blog_posts.mjs`, gequeued `blog-posts`, articleCreate idempotent):** wasserfester-Schmuck-Ratgeber, Geschenkideen-Frauen-2026, Fan-Trikot-selbst-gestalten, Sicher-bezahlen-TWINT/Klarna (Trust), Sommer-Styling-2026.
+  - **Reels (`dropship/REEL-KONZEPTE-2026-07.md`):** Schmuck-See-Test · Trikot-POD · Sommermode · Geschenkideen · Beauty-Self-Care — Mundart, Safe-Zone, ehrlich, TikTok stumm / IG+FB Musik.
+- **✅ TikTok-Dubletten-Fix (User „immer das gleiche löschen nervt", 3× „Chetti Stella"):** `tiktok-upload-browser.mjs` postet bei erschöpften Reels **kein Re-Post mehr** (No-Op statt cand[0]-Rotation).
+- **⏳ Wartet auf PC (CLOUD-AN.bat):** `seo-pages2` + `blog-posts` laufen sobald PC an ist (brauchen Shopify-Creds aus luxe-secrets.ps1). `create_seo_pages.mjs` (6 Seiten, Batch 1) bereits live.
+- **Engpass unverändert:** Trust (Reviews sichtbar) + Mobile-Conversion — Content-Schub zahlt auf SEO-Reichweite ein, ersetzt aber die User-Klicks (Judge.me, Kampagne auf ATC) nicht.
+
 ## 2026-07-02 (Abend — Reichweite: Alt-Texte + Musik-System + Off-Brand-Cleanup + 2 frische Videos)
 - **📊 REICHWEITE-DATEN 60T:** 9202 Sessions — direct 7002, social 2096 (funktioniert!), **Google-Suche nur 95 (1%)**. Ursache: neue Domain (Zeit+Backlinks+Search-Console=User). robots.txt+Sitemap OK.
 - **🖼️ BILD-ALT-TEXTE (Google-Bildersuche-Reichweite):** waren KATALOGWEIT leer → `alt_text_backfill.mjs` gebaut (idempotent, MAX/Lauf) + in VPS-Daily (ALT_MAX=120/Tag); 6 Winner sofort gesetzt (18 Bilder).
