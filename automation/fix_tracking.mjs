@@ -28,8 +28,9 @@ if(!o){ W(`Keine Bestellung #${NAME} gefunden.`); process.exit(0); }
 const fs=(o.fulfillments||[]).filter(f=>f.status==='SUCCESS'||f.status==='success'||true);
 if(!fs.length){ W(`#${NAME}: keine Sendung/Fulfillment vorhanden → nichts zu reparieren.`); process.exit(0); }
 const FORCE=process.env.FORCE==='1';
-// echte Carrier-Nummer = längster reiner Ziffernblock (>=8) aus URL ODER Nummer (bb-... = BigBuy-Interne, nicht trackbar)
-const carrierNum = ti => { const cand=[String(ti.url||''),String(ti.number||'')].map(s=>(s.match(/\d{8,}/)||[])[0]).filter(Boolean); return cand[0]||String(ti.number||''); };
+const OVERRIDE=(process.env.TRACK_NUM||'').trim(); // feste echte Carrier-Nummer erzwingen (z.B. 8420327578013, aus urspr. kaputter URL gerettet)
+// echte Carrier-Nummer = OVERRIDE, sonst längster reiner Ziffernblock (>=8) aus URL ODER Nummer (bb-... = BigBuy-Interne, nicht trackbar)
+const carrierNum = ti => { if(OVERRIDE) return OVERRIDE; const cand=[String(ti.url||''),String(ti.number||'')].map(s=>(s.match(/\d{8,}/)||[])[0]).filter(Boolean); return cand[0]||String(ti.number||''); };
 const okUrl = u => /^https?:\/\/[^\/]+\.[^\/]+/.test(String(u||''));
 const M=`mutation($id:ID!,$ti:FulfillmentTrackingInput!,$n:Boolean){ fulfillmentTrackingInfoUpdate(fulfillmentId:$id, trackingInfoInput:$ti, notifyCustomer:$n){ fulfillment{ id trackingInfo{ number url company } } userErrors{ field message } } }`;
 let fixed=0;
@@ -42,7 +43,7 @@ for(const f of fs){
   const newUrl=`https://parcelsapp.com/en/tracking/${encodeURIComponent(cn)}`;
   W(`   → kaputte/fehlende URL → setze funktionierenden Link: ${newUrl}${NOTIFY?' (+Kunde benachrichtigen)':' (ohne Kunden-Mail)'}`);
   if(DRY){ W('   [DRY] nichts geändert.'); continue; }
-  const rr=await gql(M,{id:f.id, ti:{ number:ti.number, url:newUrl, company: ti.company||'BigBuy' }, n:NOTIFY});
+  const rr=await gql(M,{id:f.id, ti:{ number:cn, url:newUrl, company: ti.company||'BigBuy' }, n:NOTIFY});
   const ue=rr?.data?.fulfillmentTrackingInfoUpdate?.userErrors||[];
   if(ue.length){ W('   ✗ Fehler: '+JSON.stringify(ue).slice(0,160)); continue; }
   const nti=rr?.data?.fulfillmentTrackingInfoUpdate?.fulfillment?.trackingInfo?.[0]||{};
