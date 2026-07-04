@@ -1,0 +1,14 @@
+6 Policies gefunden.
+Contact: keine Ziel-Strings.
+Legal notice: keine Ziel-Strings.
+Privacy policy: keine Ziel-Strings.
+Refund policy: keine Ziel-Strings.
+
+Shipping:
+   "CHF 65"→"CHF 50" ×1
+   "7–12 Werktage"→"5–12 Werktage" ×1
+   "Wir versenden weltweit — Schweiz, Liechtenst"→"Wir versenden ausschliesslich " ×1
+   ✗ Fehler 406 
+Terms of service: keine Ziel-Strings.
+
+Fertig: 0 geändert.
