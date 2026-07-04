@@ -2375,3 +2375,14 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   Discoverability läuft übers Menü. Banner in pod/hero/ für später.
 - **⚠️ Content-Inkonsistenz (User prüfen):** FAQ sagt „nur CH-Versand, Gratis ab CHF 50", andere Seiten „DE/weltweit, CHF 65" → angleichen.
 - Katalog **~21'000 aktiv**.
+
+---
+**📌 2026-07-04 (🇨🇭 SHOPCOM CH-LIEFERANT — B2B-Anmeldung GESENDET, Connector pending):**
+- **Shopcom AG** (Büron, info@shopcom.ch, Tel 044 515 48 40) = Schweizer Dropship-Lieferant, **CH-Lager, 1–3 Tage, zollfrei**
+  (Die Post) — grosser Conversion-Vorteil ggü. BigBuy (EU 3–7T) / CJ (China 10–20T).
+- **B2B-Dropshipping-Anmeldung per Gmail-Entwurf ausgefüllt + vom User GESENDET** an info@shopcom.ch (2026-07-04).
+  Firmendaten: LuxeStyle CH, Allen Chour, Hühnerhubelstrasse 37, 3123 Belp, +41 79 538 28 14, info@luxestyle.ch,
+  Shopify, Lieferanten BigBuy+CJ, Umsatz bis CHF 5k, Einzelunternehmen (nicht im HR).
+- **➡️ NÄCHSTER SCHRITT (sobald Shopcom antwortet):** Zugangsdaten/Produkt-Feed (CSV/API) → **Connector bauen** wie
+  bei BigBuy/CJ, Produkte mit „🇨🇭 Express-Lieferung 1–3 Tage"-Auszeichnung importieren. User sagt „schau mail" wenn Antwort da.
+- **Gmail-MCP funktioniert** (Konto allengchour@gmail.com) — kann Mails suchen/lesen + Entwürfe anlegen (nicht senden).
