@@ -137,6 +137,17 @@ const TOPICS=[
  ['Starthilfe & Reifendruck: Auto-Notfall-Basics','starthilfe reifendruck','auto-kfz-zubehoer','Auto & KFZ-Zubehör'],
  ['Laptop-Rucksack richtig wählen','laptop rucksack wählen','laptop-tablet-zubehoer','Laptop- & Tablet-Zubehör'],
  ['E-Scooter kaufen: worauf achten?','e-scooter kaufen','hightech-gadgets','Hightech & Gadgets'],
+ // ── Welle 6: neue Ratgeber (Handles gegen Live-Katalog verifiziert, alle mit Produkten) ──
+ ['Herren-Grooming: die tägliche Pflege-Routine für ein gepflegtes Auftreten','herren grooming','sub-bart-rasur','Bart & Rasur'],
+ ['Wellness zuhause: entspannen & regenerieren nach Feierabend','wellness zuhause','sub-massage','Massage & Wellness'],
+ ['Kofferpacken wie ein Profi: die clevere Packliste für jede Reise','kofferpacken packliste','reise-outdoor','Reise & Outdoor'],
+ ['Homeoffice ergonomisch einrichten: gesünder & produktiver arbeiten','homeoffice ergonomisch','elektronik-computer','Elektronik & Computer'],
+ ['Haustier-Gadgets: smarte Helfer für Hund & Katze','haustier gadgets','haustier-tech','Haustier-Tech'],
+ ['Küchen-Gadgets, die sich wirklich lohnen: clevere Helfer für jeden Tag','küchen gadgets','kuechenhelfer','Küchenhelfer & Gadgets'],
+ ['Balkon gemütlich gestalten: kleine Fläche, grosse Wirkung','balkon gestalten','garten-balkon','Garten & Balkon'],
+ ['Camping-Küche: unterwegs kochen wie zuhause','camping küche','camping-outdoor','Camping & Outdoor'],
+ ['Auto-Innenraum organisieren: Ordnung & Komfort im Fahrzeug','auto innenraum organisieren','auto-kfz-zubehoer','Auto & KFZ-Zubehör'],
+ ['Outdoor-Ausrüstung für Wanderungen: die richtige Grundausstattung','outdoor ausrüstung wandern','sport-outdoor','Sport & Outdoor'],
 ];
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 async function gemini(title,coll,collName){
