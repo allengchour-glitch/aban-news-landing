@@ -148,6 +148,17 @@ const TOPICS=[
  ['Camping-Küche: unterwegs kochen wie zuhause','camping küche','camping-outdoor','Camping & Outdoor'],
  ['Auto-Innenraum organisieren: Ordnung & Komfort im Fahrzeug','auto innenraum organisieren','auto-kfz-zubehoer','Auto & KFZ-Zubehör'],
  ['Outdoor-Ausrüstung für Wanderungen: die richtige Grundausstattung','outdoor ausrüstung wandern','sport-outdoor','Sport & Outdoor'],
+ // ── Welle 7: neue Ratgeber (Handles gegen Live-Katalog verifiziert, alle mit Produkten) ──
+ ['LED-Ambiente schaffen: Stimmungslicht für dein Zuhause einrichten','led ambiente stimmungslicht','beleuchtung-lampen','Beleuchtung & Lampen'],
+ ['Drohne fliegen lernen: der Einsteiger-Guide für den ersten Flug','drohne fliegen lernen','drohnen-kameras','Drohnen & Kameras'],
+ ['Smartwatch richtig nutzen: Funktionen, Tipps & Alltag optimal ausschöpfen','smartwatch nutzen','elektronik-technik','Elektronik & Technik'],
+ ['ANC-Kopfhörer-Guide: Noise Cancelling verstehen & richtig wählen','anc kopfhörer noise cancelling','elektronik-technik','Elektronik & Technik'],
+ ['Nachhaltig leben: einfache Tipps für weniger Verbrauch im Alltag','nachhaltig leben tipps','wohnen-dekoration','Wohnen & Dekoration'],
+ ['Geschenkideen für ihn & sie: die passende Idee für jeden Anlass','geschenkideen ihn sie','premium-geschenke','Geschenke'],
+ ['SSD, USB-Stick oder externe Festplatte? Der grosse Speicher-Guide','ssd usb-stick speicher','elektronik-computer','Elektronik & Computer'],
+ ['Küchenwaage & Mess-Zubehör: präzise wiegen beim Kochen & Backen','küchenwaage zubehör','kuechenhelfer','Küchenhelfer & Gadgets'],
+ ['Heizdecke sicher nutzen: warme & sorgenfreie Anwendung im Alltag','heizdecke sicher nutzen','waerme-komfort','Wärme & Komfort'],
+ ['Gaming-Setup Basics: die Grundausstattung für deinen Spielplatz','gaming setup basics','gaming','Gaming'],
 ];
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 async function gemini(title,coll,collName){
