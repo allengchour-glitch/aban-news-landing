@@ -108,6 +108,7 @@ if(process.env.GROUPS_FILE && fs.existsSync(process.env.GROUPS_FILE)){
  for(const k in ext){const g=ext[k]; if(typeof g.ban==='string')g.ban=new RegExp(g.ban,'i'); GROUPS[k]=g;}
 }
 const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
+const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||0); // tiefere Paginierung fürs „voll"-Füllen
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
 async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
@@ -137,8 +138,8 @@ const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\
 const st=DRY?null:await shTok();
 let total=0;
 for(const [cat,label] of grp.cats){
- if(total>=CAP)break; let got=0;
- for(let page=1;page<=5 && total<CAP && got<Math.ceil(CAP/3);page++){
+ if(total>=CAP)break; let got=0; const perCat=PERCAT||Math.ceil(CAP/3);
+ for(let page=1;page<=MAXPAGE && total<CAP && got<perCat;page++){
   const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}`); await sleep(700);
   const list=(j.data&&j.data.list)||[]; if(!list.length)break;
   for(const p of list){
