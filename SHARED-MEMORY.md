@@ -2328,3 +2328,20 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   → kein Ablehnungsgrund.) **⚠️ Skript-Falle:** feed_details_fill wrappt die ID selbst in gid:// → IDS-Datei braucht NUMERISCHE IDs.
 - **Google-Merchant-Review-Antrag = grünes Licht** (Katalog-Seite sauber: keine Waffen [„waffe"=Waffeleisen/Waffelstrick],
   0 Draft-im-Kanal, gender/age komplett). Nur-User-Klick; Feed erst re-syncen lassen, dann 1× drücken (nicht spammen, ~7-Tage-Fenster).
+
+---
+**📌 2026-07-04 (🏬 20-AGENTEN-FLOTTE #4 — Warenhaus-Departements + Lifestyle-Kategorien + Menü):**
+- **Browse-by-Typ-Departements gebaut/verifiziert** (wie Elektronik-Erfolg): 
+  - 👗 Damenmode 6 Typen (Kleider 320/Blusen 150/Hosen 189/Röcke 195/**Jacken 408 NEU**/**Strick 385 NEU**)
+  - 💎 Schmuck 4 Typen (existierten; **Fehltreffer gefixt**: sub-halsketten -12 Kettensägen/Schneeketten, sub-armbaender -38 Smartwatch-Bänder)
+  - 🔧 Werkzeug 4 Typen NEU (Handwerkzeug 307/Elektrowerkzeug 93/Messwerkzeug 52/Koffer-Sets 50; „akku-"/„messgerät"-Fehltreffer raus)
+  - 👟 Schuhe (existierten; Sneaker +Sportschuh→122, Sandalen +Slides→20)
+- **9 NEUE Lifestyle/Trend-Collections** (alle Fehltreffer-geprüft, 8 Kanäle): 🧔 herren-grooming 34 · 🧘 wellness-selfcare 46 ·
+  🐾 haustier-gadgets 23 · 🧳 reise-gadgets 33 · 🖥️ home-office-setup 19 · 💡 led-ambiente 32 · 🎁 geschenke-fuer-ihn/sie/kinder (58/400/698).
+- **🏬 Menü zu Warenhaus umgebaut** (`automation/enrich_menu.mjs`): 6 Top-Level-Punkte zu Browse-by-Typ-Dropdowns erweitert
+  (Frauen 7 · Schmuck 6 · Herren 3 · Werkzeug 5 · Wohnen&Wellness 6 · Trends&Gadgets 5) + Elektronik 10. Alle 19 Top-Level erhalten, alle Handles verifiziert.
+- **Backlogs weitergeführt:** Vendor-Marken **+700** (Ledger 1'200, ~944 Rest) · Duplikat-Titel läuft · SEO-Titel +36 ·
+  Feed-Details +92 katalogweit · Ratgeber Welle 6 +10 (Blog ~127) · ProductType/Beschreibungen 0 nötig (sauber).
+- **📊 Katalog ~20'800 aktive Produkte.**
+- **Wieder-Lehre:** Smart-Collection TITLE-CONTAINS = LITERAL substring (nicht tokenisiert wie die Search-API). Agenten prüfen
+  Terme gegen ALLE Live-Titel literal, bevor sie Regeln setzen → 0 Fehltreffer. NOT_CONTAINS-Guards für Substring-Kollisionen (Kette→Kettensäge).
