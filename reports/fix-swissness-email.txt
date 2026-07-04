@@ -1,0 +1,106 @@
+Page „datenschutz": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „versand-lieferung": "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „rueckgabe": "allengchour@gmail.com"→"info@luxestyle.ch"×3
+  ✓
+Page „ueber-uns": "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „garantie": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „groessentabelle": "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „pflegehinweise": "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „tracking": "allengchour@gmail.com"→"info@luxestyle.ch"×3
+  ✓
+Page „kontakt-support": "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „versand-lieferzeiten": "support@luxestyle.ch"→"info@luxestyle.ch"×2
+  ✓
+Page „intern-faq-50": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „uber-uns": "Direkt-ab-Werk-Versand reduziert CO₂ um "→""×1 · " 1% von jedem Verkauf geht an Schweizer "→""×1 · "Made with"→"Kuratiert mit"×1 · "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-klaviyo-setup": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-launch-day": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „versand-deutschland": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „widerruf-deutschland": "hello@luxestyle.ch"→"info@luxestyle.ch"×2
+  ✓
+Page „internal-klaviyo-emails": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-make-detailed": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-tiktok-hooks-2": "Made with"→"Kuratiert mit"×1
+  ✓
+Page „internal-klaviyo-advanced": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „faq-luxestyle": "hello@luxestyle.ch"→"info@luxestyle.ch"×2
+  ✓
+Page „internal-popup-footer": "Made with"→"Kuratiert mit"×1
+  ✓
+Page „internal-30day-marketing": "hello@luxestyle.ch"→"info@luxestyle.ch"×2
+  ✓
+Page „zahlungsmethoden": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-make-blueprints": "allengchour@gmail.com"→"info@luxestyle.ch"×3
+  ✓
+Page „internal-tiktok-werbung": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-pinterest-strategie": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-cowork-setup": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „warum-luxestyle": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-meta-judgeme-setup": "hello@luxestyle.ch"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-pipeline-v5": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-footer-setup": "Made with"→"Kuratiert mit"×1 · "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „internal-brand-strategy": "Made with"→"Kuratiert mit"×1 · "Schweizer Präzision"→"feine Verarbeitung"×1
+  ✓
+Page „internal-meta-ads-pack": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „internal-klaviyo-emails-v2": "allengchour@gmail.com"→"info@luxestyle.ch"×5
+  ✓
+Page „internal-influencer-zero": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „about-us-en": "Swiss Quality"→"geprüfte Qualität"×1 · "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „faq-en": "allengchour@gmail.com"→"info@luxestyle.ch"×5
+  ✓
+Page „why-luxestyle-en": "Swiss Quality"→"geprüfte Qualität"×1 · "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „widerrufsbelehrung": "allengchour@gmail.com"→"info@luxestyle.ch"×3
+  ✓
+Page „agb-luxestyle": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „a-propos-fr": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „chi-siamo-it": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „terms-en": "allengchour@gmail.com"→"info@luxestyle.ch"×1
+  ✓
+Page „privacy-policy-en": "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „refund-policy-en": "allengchour@gmail.com"→"info@luxestyle.ch"×2
+  ✓
+Page „faq-rueckgabe-umtausch": "support@luxestyle.ch"→"info@luxestyle.ch"×2
+  ✓
+Collection „fur-ihn": "Swiss Made"→"geprüfte Qualität"×1
+  ✓
+Collection „premium-schmuck": "Eleganz und Schweizer Präzision vereint"→"Eleganz und feine Verarb"×1
+  ✓
+Collection „swatch": "Swiss Made"→"geprüfte Qualität"×1
+  ✓
+Collection „uhren": "Swiss Made"→"geprüfte Qualität"×1
+  ✓
+Collection „herren-uhren": "Swiss Made"→"geprüfte Qualität"×1
+  ✓
+
+Fertig: 210 Pages/358 Collections gescannt · 47 Pages + 5 Collections geändert.
