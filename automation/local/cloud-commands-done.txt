@@ -127,3 +127,5 @@ policy-shipping-go-20260704
 theme-shipping-go-20260704
 theme-dump-20260704
 theme-shipping-go2-20260704
+theme-shipping-go3-20260704
+theme-dump2-20260704
