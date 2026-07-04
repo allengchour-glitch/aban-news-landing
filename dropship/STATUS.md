@@ -1,5 +1,22 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (SPÄT — Ehrlichkeits-Fixes LIVE per API + 4 Content-Schwärme + Bestell-/Liefer-Handling)
+- **✅ EHRLICHKEITS-VERSTÖSSE AUTONOM BEHOBEN (Shopify Pages- + Theme-Asset-API):** Der Live-Audit fand echte Verstösse — jetzt gefixt:
+  Versandschwelle überall **CHF 50** (war widersprüchlich 65/50/65/99) · Lieferzeit realistisch **5–12 Werktage** (war unehrlich „2–7") ·
+  **Deutschland/international + CHF 99** aus /pages/faq raus (strikt CH) · verbotener **„Schweizer Qualität"-Claim → „geprüfte Qualität"**.
+  Geschrieben in `sections/header-group.json` + `templates/index.json` + /pages/faq. Tool: `fix_theme_shipping.mjs` (gezielt, exakte Strings, DRY/DUMP/SCAN).
+  ⏳ Bleibt (embedded App-UI): Judge.me „hide when empty" (englisches „No reviews" ausblenden) = 2 User-Klicks.
+- **📚 4 CONTENT-SCHWÄRME (70+ Agenten):** 20 SEO-Landingpages + 8 Ratgeber-Blogs + 5 FAQ/Guide-Seiten (alle live) · 3 Buy-Intent-Vergleichsblogs (live) ·
+  8 Winner-Ad-Kits (Seedance+Hooks+Paid+PDP+Pinterest, `WINNER-AD-KITS-2026-07.md`) · 25+ Reel-Konzepte · 20+ Seedance-2.0-Prompts ·
+  3 E-Mail-Sequenzen (Welcome/Review/Abandoned, deploy-ready für Klaviyo) · Pinterest 9 Boards/36 Pins · Google-Feed-GMC-Muster · CRO-Recherche.
+  ⚠️ **Gua-Sha GESPERRT** (fremdes HEMP-Watermark). Winner-Liste in `SCHWARM3-ASSETS` + `WINNER-AD-KITS`.
+- **📦 BESTELLUNGEN:** #1004 (LED-Laterne, Romy Marti/Grenchen) = Carrier **ShipRocket**, Status „order ready" (hängt seit 27.06, noch nicht im Transit) —
+  Shopify-Tracking auf ShipRocket + Track123-Link korrigiert; Lieferant sollte angestossen werden. #1005 (Alain, Trikot) = bei Printful in Produktion.
+  **Liefer-Watchdog** (`delivery_watchdog.mjs`, VPS-daily) flaggt künftig hängende Sendungen automatisch.
+- **🔌 NEUE PORT/API-TOOLS:** klaviyo-tracking-port, judgeme-reviews-port, bigbuy-order-port, order_lookup, fix_tracking, fix_theme_shipping, fix_shipping_policy.
+  **Lehre:** Agent-Brave = eigenes Profil (Shopify eingeloggt, BigBuy nicht); Klaviyo bekommt 0 Shop-Events (Integration tot → User-Reconnect); Cloud hat kein SHOPIFY_CLIENT_SECRET (Shopify läuft über PC).
+- **🔴 Engpass unverändert = 3 User-Unlocks:** Klaviyo↔Shopify-Tracking reconnecten · Judge.me Auto-Request + Reviews sichtbar · 3–5 echte Seed-Käufe. Rest ist gebaut/autonom.
+
 ## 2026-07-04 (Bestellungen #1004/#1005 geklärt + Port-Automatik + Liefer-Watchdog + Session-Lehren)
 - **📦 #1004 (LED-Laterne, an Romy Marti/Grenchen, CHF 31.90, bezahlt):** Carrier lt. Track123 = **ShipRocket** (Indien-Aggregator, NICHT BigBuy!),
   Status **„order ready"** — Label erstellt, aber seit 27.06 NICHT im Transit (hängt). Tracking `8420327578013`. Shopify-Fulfillment korrigiert:
