@@ -27,6 +27,9 @@ const o=(r?.data?.orders?.edges||[]).map(e=>e.node)[0];
 if(!o){ W(`Keine Bestellung #${NAME} gefunden.`); process.exit(0); }
 const fs=(o.fulfillments||[]).filter(f=>f.status==='SUCCESS'||f.status==='success'||true);
 if(!fs.length){ W(`#${NAME}: keine Sendung/Fulfillment vorhanden → nichts zu reparieren.`); process.exit(0); }
+const FORCE=process.env.FORCE==='1';
+// echte Carrier-Nummer = längster reiner Ziffernblock (>=8) aus URL ODER Nummer (bb-... = BigBuy-Interne, nicht trackbar)
+const carrierNum = ti => { const cand=[String(ti.url||''),String(ti.number||'')].map(s=>(s.match(/\d{8,}/)||[])[0]).filter(Boolean); return cand[0]||String(ti.number||''); };
 const okUrl = u => /^https?:\/\/[^\/]+\.[^\/]+/.test(String(u||''));
 const M=`mutation($id:ID!,$ti:FulfillmentTrackingInput!,$n:Boolean){ fulfillmentTrackingInfoUpdate(fulfillmentId:$id, trackingInfoInput:$ti, notifyCustomer:$n){ fulfillment{ id trackingInfo{ number url company } } userErrors{ field message } } }`;
 let fixed=0;
@@ -34,8 +37,9 @@ for(const f of fs){
   const ti=(f.trackingInfo||[])[0]||{};
   W(`#${NAME} Fulfillment ${f.id} · status=${f.status} · Nr=${ti.number||'—'} · URL=${ti.url||'—'} · Carrier=${ti.company||'—'}`);
   if(!ti.number){ W('   → keine Tracking-Nummer, überspringe.'); continue; }
-  if(okUrl(ti.url)){ W('   → URL ist bereits gültig, keine Änderung (idempotent).'); continue; }
-  const newUrl=`https://parcelsapp.com/en/tracking/${encodeURIComponent(ti.number)}`;
+  const cn=carrierNum(ti);
+  if(!FORCE && okUrl(ti.url) && String(ti.url).includes(cn)){ W('   → URL bereits gültig + enthält Carrier-Nummer, keine Änderung (idempotent).'); continue; }
+  const newUrl=`https://parcelsapp.com/en/tracking/${encodeURIComponent(cn)}`;
   W(`   → kaputte/fehlende URL → setze funktionierenden Link: ${newUrl}${NOTIFY?' (+Kunde benachrichtigen)':' (ohne Kunden-Mail)'}`);
   if(DRY){ W('   [DRY] nichts geändert.'); continue; }
   const rr=await gql(M,{id:f.id, ti:{ number:ti.number, url:newUrl, company: ti.company||'BigBuy' }, n:NOTIFY});
