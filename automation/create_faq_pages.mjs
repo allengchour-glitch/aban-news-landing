@@ -15,6 +15,23 @@ async function cc(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_tok
 async function token(){ if(ADMIN_TOKEN&&await works(ADMIN_TOKEN))return ADMIN_TOKEN; if(CID&&CSEC){const t=await cc(); if(t&&await works(t))return t;} console.error('❌ Auth'); process.exit(0); }
 
 const PAGES=[
+ // ÜBERSCHREIBT die veraltete /pages/faq (hatte Deutschland/international + CHF 99/65-Widerspruch — Audit 2026-07-04).
+ { handle:'faq', title:'Häufige Fragen (FAQ)',
+   tt:'FAQ – Häufige Fragen | LuxeStyle Schweiz',
+   dt:'Häufige Fragen zu Versand, Zahlung, Rückgabe und Pflege bei LuxeStyle. Gratis Versand ab CHF 50, TWINT & Klarna, 30 Tage Rückgabe. Nur Schweiz.',
+   body:`<h2>Häufige Fragen (FAQ)</h2>
+<p>Hier findest du schnelle Antworten – und für Details die passende Themenseite. Wir liefern ausschliesslich innerhalb der Schweiz (inkl. Liechtenstein).</p>
+<h3>Versand & Lieferung</h3>
+<p><strong>Gratis Versand ab CHF 50.</strong> Lieferzeit je nach Produkt in der Regel ca. 5–12 Werktage (personalisierte/Print-on-Demand- und Übersee-Artikel ca. 7–14 Werktage). Sendungsverfolgung per E-Mail. Mehr: <a href="/pages/faq-versand-lieferung">FAQ Versand & Lieferung</a>.</p>
+<h3>Zahlung & Sicherheit</h3>
+<p>Bezahlen mit <strong>TWINT, Klarna (Kauf auf Rechnung/Raten), Visa/Mastercard und PayPal</strong>. Datenschutz nach Schweizer revDSG. Mehr: <a href="/pages/faq-zahlung-sicherheit">FAQ Zahlung & Sicherheit</a>.</p>
+<h3>Rückgabe & Umtausch</h3>
+<p><strong>30 Tage Rückgaberecht.</strong> Mehr: <a href="/pages/faq-rueckgabe-umtausch">FAQ Rückgabe & Umtausch</a>.</p>
+<h3>Schmuck-Pflege & Grössen</h3>
+<p>Wasserfester Edelstahl-Schmuck, Pflege und Materialien: <a href="/pages/faq-schmuck-pflege-material">FAQ Schmuck-Pflege</a>. Grössen, Ringgrösse und Kettenlängen: <a href="/pages/groessen-material-guide">Grössen- & Material-Guide</a>.</p>
+<h3>Über LuxeStyle</h3>
+<p>LuxeStyle ist ein Schweizer Online-Shop. Unsere Produkte stammen von qualifizierten internationalen Herstellern und werden für die Schweiz geliefert. Fragen? Schreib uns – wir helfen gerne persönlich weiter.</p>` },
+
  { handle:'faq-versand-lieferung', title:'Versand & Lieferung – FAQ',
    tt:'Versand & Lieferung – FAQ | LuxeStyle Schweiz',
    dt:'Alle Antworten zu Versand & Lieferung bei LuxeStyle: Lieferzeiten, Gratis-Versand ab CHF 50, Sendungsverfolgung und was bei Verzögerungen gilt. Nur Schweiz.',
