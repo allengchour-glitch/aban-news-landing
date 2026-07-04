@@ -1,5 +1,15 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (Bewertungen ehrlich automatisieren + Funnel-bis-Verkauf-Map)
+- **⭐ User „mach die Bewertung selber irgendwie" → KEINE Fake-Reviews** (User-eigener Dauerauftrag „alles ehrlich" + illegal CH/UWG
+  + Shop-Sperr-Risiko). Stattdessen ehrliche Bewertungs-Maschine dokumentiert in `dropship/REVIEWS-UND-VERKAUF-AUTOMATION-2026-07.md`:
+  (1) Judge.me AliExpress-Import echter Käufer-Reviews desselben Produkts (legale Abkürzung, moderat), (2) Auto-Review-Request nach
+  Lieferung (Judge.me + Klaviyo Post-Purchase-Flow, feuert erst nach Tracking-Fix), (3) 3–5 echte Seed-Käufe. Fertige ehrliche
+  Review-Request-Mail (CH-Hochdeutsch, Dank-Rabatt für EHRLICHE Bewertung, nicht an Positivität gekoppelt).
+- **🛒 „Alles bis zum Verkauf" ehrlich gemappt:** Traffic/SEO/Copy/Ads/Checkout/Zahlung = automatisiert oder steht. Der Weg zum
+  1. Verkauf hängt an **3 User-Unlocks** (kein KI-Klick möglich): Klaviyo↔Shopify-Tracking reparieren · Judge.me aktivieren+Reviews
+  importieren · 3–5 echte Seed-Käufe. Danach zieht die gebaute Maschine (Traffic→Trust→Recovery→Review-Request) selbst.
+
 ## 2026-07-04 (Klaviyo-Datencheck + Perso-Trikot-Fulfillment-Lücke geschlossen)
 - **🚨 KLAVIYO empfängt 0 Shop-Events (mit echten Zahlen):** Checkout Started=0, Placed Order=0, Viewed Product=0 über 90 Tage
   (bei tausenden Sessions) → Klaviyo-Shopify-Integration/Onsite-Tracking sendet nichts, ALLE verhaltensbasierten Flows feuern nie.
