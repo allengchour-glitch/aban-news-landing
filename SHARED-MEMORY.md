@@ -2145,3 +2145,14 @@ Tags haustier→sub-haustier, sport→sport-outdoor/fitness.
 Refurbished-Feeds (z.B. products_15: PC-Gehäuse/Netzteile/RAM). Langsam (~1 Produkt/5s wg. Gemini). Deutsche Feeds
 (1–7) laufen OHNE TRANSLATE (schnell). Englischer ALLGEMEIN-Katalog (9-13) bleibt übersprungen (Überschneidung+Müll).
 Refurbished-Total wächst weiter. „fix alles+SEO": 299 SEO-Texte gefüllt, englische Reste gedraftet.
+
+---
+**📌 2026-07-04 (🛡️ GOOGLE-MERCHANT-COMPLIANCE — Dauerregel, IMMER beachten):**
+Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (aus Feed-Reports gelernt):
+- **Mode/Kleidung:** braucht **Farbe + Grösse** (aus Varianten — Fashion-Modus in `cj_category_fill.mjs`) UND Metafelder **`mm-google-shopping.gender` + `age_group`** (Import-Kontrolle eingebaut; Bestand via `automation/feed_attributes_fill.mjs`).
+- **Bilder:** ≥2 gültige, kein WebP-only/zu klein/kaputt (sonst „Unsupported image type"/„Image too small").
+- **Adult/Recalled/Supplements:** MÜSSEN Draft + aus allen Kanälen (Compliance) — nie live.
+- **Produktseite erreichbar:** gedraftete Produkte NICHT im Google-Kanal lassen (sonst „Product page unavailable").
+- Tools: `feed_details_fill.mjs` (Farbe/Muster/Material-Block), `feed_attributes_fill.mjs` (gender/age_group).
+- **Container-Reset-Recovery:** origin ist sicher → `git fetch && git merge --ff-only origin/claude/memory-2026-06-13`, dann /tmp-Loop-Dateien (cj_cats/mega_groups/keys, cj_mega.sh) regenerieren + Loops (BigBuy-Import + CJ-Mega) neu starten. Ledger verhindert Doppelte.
+- **Nachfrage-getrieben beschaffen:** Google-„Products customers are buying"-Reports → gefragte Marken gezielt importieren (`beautybrands`-Gruppe). Bester Traffic-Hebel.
