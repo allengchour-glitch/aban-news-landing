@@ -83,6 +83,9 @@ h1{font-size:clamp(2.2rem,8vw,4rem);font-weight:900;letter-spacing:.02em;line-he
     <div id="hpRow"><span class="heart">❤️</span><div id="hpOuter"><div id="hpFill"></div></div><span id="hpTxt">100/100</span></div>
     <div id="dashRow"><span>⚡ Dash</span><div id="dashOuter"><div id="dashFill" class="ready"></div></div></div>
   </div>
+  <div id="playerbar2" class="hide" style="position:absolute;right:16px;bottom:16px;width:min(300px,58vw)">
+    <div style="display:flex;align-items:center;gap:8px;flex-direction:row-reverse"><span style="font-size:1.1rem">💠</span><div style="flex:1;height:16px;border-radius:9px;background:rgba(10,12,26,.72);border:1px solid rgba(185,139,255,.5);overflow:hidden"><div id="hpFill2" style="height:100%;width:100%;background:linear-gradient(90deg,#b98bff,#ff6ec7)"></div></div><span id="hpTxt2" style="font-size:.8rem;font-weight:800;color:#e6d5ff;min-width:56px;text-align:right">100/100</span></div>
+  </div>
   <div id="hint"></div>
 </div>
 <div id="dmg"></div>
@@ -92,8 +95,11 @@ h1{font-size:clamp(2.2rem,8vw,4rem);font-weight:900;letter-spacing:.02em;line-he
   <div class="kicker">aban news · Boss-Fight-Arena · 3D</div>
   <h1>NEON COLOSSUS</h1>
   <p class="sub">Drei Kolosse. Ein Arena. Weiche <b>telegrafierten</b> Angriffen aus, <b>dashe</b> mit i-Frames durch den Kugelhagel und brich die Panzerung — jeder Koloss hat <b>drei Phasen</b> und wird bösartiger, je näher der Tod kommt.</p>
-  <div class="keys"><span><b>WASD</b> / Pfeile bewegen</span><span><b>Maus</b> zielen · auto-feuern</span><span><b>Leertaste</b> / Shift Dash</span><span><b>M</b> Ton</span></div>
-  <button class="btn" id="startBtn">Arena betreten ▶</button>
+  <div class="keys"><span><b>P1: WASD</b> + <b>Maus</b> + <b>Space</b></span><span><b>P2: Pfeile</b> + auto-ziel + <b>Enter</b></span><span><b>M</b> Ton</span></div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px">
+    <button class="btn" id="startBtn">1 Spieler ▶</button>
+    <button class="btn" id="startCoBtn" style="background:linear-gradient(92deg,#5ef2ff,#b98bff);box-shadow:0 10px 40px rgba(120,180,255,.4)">2 Spieler · Koop ▶</button>
+  </div>
   <div id="best"></div>
   <div class="foot">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
 </div>
@@ -188,11 +194,20 @@ function collectMats(obj){var m=[];obj.traverse(function(o){if(o.isMesh&&o.mater
 function loadModel(url,key,target,emis,cb){if(!gLoader){if(cb)cb(null);return;}
   gLoader.load(url,function(g){var root=g.scene||(g.scenes&&g.scenes[0]);if(!root){if(cb)cb(null);return;}fitModel(root,target,emis);MODELS[key]=root;if(cb)cb(root);},undefined,function(){if(cb)cb(null);});}
 // Held-Charakter → ersetzt den Primitiv-Körper (Neon-Ringe bleiben als Flair)
-loadModel("/models/char.glb","hero",2.6,0x5ef2ff,function(m){if(!m)return;pBody.visible=false;pRing.scale.setScalar(0.8);pRing2.visible=false;var h=m.clone(true);h.position.y=0;player.add(h);player.userData.heroModel=h;});
+loadModel("/models/char.glb","hero",2.6,0x5ef2ff,function(m){if(!m)return;pBody.visible=false;pCore.visible=false;pRing.scale.setScalar(0.8);pRing2.visible=false;var h=m.clone(true);h.position.y=0;player.add(h);player.userData.heroModel=h;});
 // Boss-Modelle vorladen (in buildBoss geklont; fehlende → Primitiv-Fallback)
 loadModel("/models/boss_warden.glb","warden",7.5,0x5ef2ff);
 loadModel("/models/boss_seraph.glb","seraph",8.0,0xffd166);
 loadModel("/models/boss_nexus.glb","nexus",8.5,0xff4d6d);
+
+// ===== Spieler 2 (lokaler Koop) — verborgen bis Koop-Modus =====
+var player2=new THREE.Group();player2.position.set(4,0,26);player2.visible=false;scene.add(player2);
+var p2Body=new THREE.Mesh(new THREE.IcosahedronGeometry(0.72,0),mat(0xd7b3ff,0x6a3ab0));p2Body.position.y=0.95;player2.add(p2Body);
+var p2Ring=new THREE.Mesh(new THREE.TorusGeometry(1.25,0.14,8,24),mat(0xff6ec7,0xff6ec7));p2Ring.rotation.x=Math.PI/2;p2Ring.position.y=0.95;player2.add(p2Ring);
+var p2Core=new THREE.Mesh(new THREE.OctahedronGeometry(0.38,0),mat(0xffffff,0xffffff));p2Core.position.y=0.95;player2.add(p2Core);
+var p2Glow=new THREE.PointLight(0xb98bff,1.6,22);scene.add(p2Glow);
+var aim2=new THREE.Vector3(0,0,-1),aimMk2=new THREE.Mesh(new THREE.ConeGeometry(0.35,1.1,4),mat(0xff9ae0,0xff9ae0));aimMk2.rotation.x=Math.PI/2;aimMk2.visible=false;scene.add(aimMk2);
+function attachHero2(){if(MODELS.hero&&!player2.userData.heroModel){p2Body.visible=false;p2Ring.scale.setScalar(0.8);var h=MODELS.hero.clone(true);h.position.y=0;h.traverse(function(o){if(o.isMesh&&o.material){o.material=o.material.clone();o.material.emissive=new THREE.Color(0xb98bff);o.material.emissiveIntensity=0.4;}});player2.add(h);player2.userData.heroModel=h;}}
 
 // ===================== Boss =====================
 var boss=new THREE.Group();scene.add(boss);boss.visible=false;
@@ -255,13 +270,17 @@ var COLOSSI=[
 ];
 
 // ===================== Spielzustand =====================
-var G={};
+var G={},coopMode=false;
 function resetState(){
   G={hp:100,maxhp:100,speed:17,dashCD:0,dashT:0,iframe:0,fireCD:0,fireRate:0.11,dmg:9,
      stage:0,t:0,running:false,alive:true,bhp:0,bmax:0,phase:1,bAtkCD:1.2,bMoveA:0,bSpiral:0,intro:0,bAngle:0,dead:false,
-     slowT:0,slowVal:1,pPop:0};
-  player.position.set(0,0,26);player.rotation.y=0;
-  aimDir.set(0,0,-1);
+     slowT:0,slowVal:1,pPop:0,
+     co:coopMode,hp2:100,maxhp2:100,iframe2:0,dashCD2:0,dashT2:0,dashDir2:{x:0,z:0},pPop2:0,fireCD2:0,alive2:coopMode};
+  player.position.set(coopMode?-4:0,0,26);player.rotation.y=0;player.visible=true;
+  player2.position.set(4,0,26);player2.visible=coopMode;
+  aimDir.set(0,0,-1);aim2.set(0,0,-1);
+  document.getElementById("playerbar2").classList.toggle("hide",!coopMode);
+  if(coopMode)attachHero2();
   for(var i=0;i<eb.length;i++){eb[i].active=false;eb[i].m.visible=false;}
   for(i=0;i<pb.length;i++){pb[i].active=false;pb[i].m.visible=false;}
   for(i=0;i<fx.length;i++){fx[i].active=false;fx[i].m.visible=false;}
@@ -288,7 +307,8 @@ var ray=new THREE.Raycaster(),groundPlane=new THREE.Plane(new THREE.Vector3(0,1,
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k==="m"){muted=!muted;applyMute();}
   if((k===" "||k==="shift")&&G.running)doDash();
-  if(k===" ")e.preventDefault();
+  if(k==="enter"&&G.running&&G.co)doDash2();
+  if(k===" "||k.indexOf("arrow")===0)e.preventDefault();
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 function pointerAim(cx,cy){ray.setFromCamera({x:(cx/W)*2-1,y:-(cy/H)*2+1},camera);if(ray.ray.intersectPlane(groundPlane,tmpV)){aimDir.set(tmpV.x-player.position.x,0,tmpV.z-player.position.z);if(aimDir.lengthSq()>0.01)aimDir.normalize();}}
@@ -303,7 +323,12 @@ touchEl.addEventListener("touchend",function(e){for(var i=0;i<e.changedTouches.l
 addEventListener("touchstart",function(){if(!isTouch)enableTouch();},{once:true});
 
 function doDash(){if(G.dashCD>0||!G.alive)return;var mv=moveVec();if(mv.x===0&&mv.z===0){mv.x=aimDir.x;mv.z=aimDir.z;}var l=Math.hypot(mv.x,mv.z)||1;G.dashDir={x:mv.x/l,z:mv.z/l};G.dashT=0.16;G.iframe=0.34;G.dashCD=1.15;G.pPop=0.16;slowmo(0.09,0.5);beep(660,0.12,"sawtooth",0.05);burst(player.position.x,0.95,player.position.z,0x7de3ff,10,4);}
-function moveVec(){var x=0,z=0;if(keys.w||keys.arrowup)z-=1;if(keys.s||keys.arrowdown)z+=1;if(keys.a||keys.arrowleft)x-=1;if(keys.d||keys.arrowright)x+=1;if(isTouch&&touchId!==null){var m=Math.hypot(touchVec.x,touchVec.y);if(m>12){x=touchVec.x/m;z=touchVec.y/m;}}return {x:x,z:z};}
+function moveVec(p2){var x=0,z=0;
+  if(p2){if(keys.arrowup)z-=1;if(keys.arrowdown)z+=1;if(keys.arrowleft)x-=1;if(keys.arrowright)x+=1;return {x:x,z:z};}
+  if(keys.w)z-=1;if(keys.s)z+=1;if(keys.a)x-=1;if(keys.d)x+=1;
+  if(!G.co){if(keys.arrowup)z-=1;if(keys.arrowdown)z+=1;if(keys.arrowleft)x-=1;if(keys.arrowright)x+=1;}
+  if(isTouch&&touchId!==null){var m=Math.hypot(touchVec.x,touchVec.y);if(m>12){x=touchVec.x/m;z=touchVec.y/m;}}return {x:x,z:z};}
+function doDash2(){if(G.dashCD2>0||!G.alive2)return;var mv=moveVec(true);if(mv.x===0&&mv.z===0){mv.x=aim2.x;mv.z=aim2.z;}var l=Math.hypot(mv.x,mv.z)||1;G.dashDir2={x:mv.x/l,z:mv.z/l};G.dashT2=0.16;G.iframe2=0.34;G.dashCD2=1.15;G.pPop2=0.16;slowmo(0.09,0.5);beep(560,0.12,"sawtooth",0.05);burst(player2.position.x,0.95,player2.position.z,0xff9ae0,10,4);}
 
 // ===================== Schaden / Tod =====================
 var flashEl=document.getElementById("flash"),hurt=0;
@@ -311,7 +336,15 @@ var impactEl=document.getElementById("impact");impactEl._o=0;
 function flashImpact(v){impactEl._o=Math.max(impactEl._o,v);}
 function slowmo(dur,val){G.slowT=Math.max(G.slowT,dur);G.slowVal=val;}
 function hitPlayer(dmg){if(G.iframe>0||!G.alive)return;G.hp-=dmg;G.iframe=0.55;hurt=1;shake=Math.max(shake,0.5);beep(140,0.18,"sawtooth",0.07);burst(player.position.x,0.95,player.position.z,0xff4d6d,10,3);
-  if(G.hp<=0){G.hp=0;G.alive=false;die();}}
+  if(G.hp<=0){G.hp=0;G.alive=false;player.visible=false;checkGameOver(1);}}
+function hitPlayer2(dmg){if(G.iframe2>0||!G.alive2)return;G.hp2-=dmg;G.iframe2=0.55;hurt=1;shake=Math.max(shake,0.5);beep(150,0.18,"sawtooth",0.07);burst(player2.position.x,0.95,player2.position.z,0xff6ec7,10,3);
+  if(G.hp2<=0){G.hp2=0;G.alive2=false;player2.visible=false;checkGameOver(2);}}
+function checkGameOver(who){var p1=G.alive,p2=(!G.co)||G.alive2;
+  if(!p1&&!p2){die();return;}
+  showHint((who===1?"P1":"P2")+" gefallen — Verbündeter kämpft weiter!");beep(90,0.3,"sawtooth",0.08);}
+function hitByIdx(i,dmg){if(i===0)hitPlayer(dmg);else hitPlayer2(dmg);}
+function playerList(){return G.co?[player,player2]:[player];}
+function idxAlive(i){return i===0?G.alive:G.alive2;}
 function damageBoss(d,wx,wz){G.bhp-=d;dmgNum(d,wx,1.6,wz,G.stage===2?0xffb0c0:0xbfe9ff);var _fm=boss.userData.flashMats||[boss.userData.inner.material];for(var _fi=0;_fi<_fm.length;_fi++)_fm[_fi].emissiveIntensity=(_fm[_fi]._baseEmis!==undefined?_fm[_fi]._baseEmis:0.75)+0.55;G.bhitFlash=0.05;boss.userData.hitPunch=0.1;
   var frac=G.bhp/G.bmax,np=frac<=0.3?3:(frac<=0.6?2:1);
   if(np>G.phase){G.phase=np;updBossPips();shake=Math.max(shake,0.8);flashImpact(0.5);slowmo(0.25,0.4);showHint("Phase "+np+"!");beep(880,0.3,"triangle",0.09);spawnNova(boss.position.x,boss.position.z,20,10,0,COLOSSI[G.stage].c2);burst(boss.position.x,4,boss.position.z,COLOSSI[G.stage].c1,26,6);}
@@ -320,7 +353,10 @@ function bossDown(){G.bhp=0;shake=1.4;slowmo(0.7,0.22);flashImpact(0.85);burst(b
   boss.visible=false;for(var i=0;i<eb.length;i++){eb[i].active=false;eb[i].m.visible=false;}for(i=0;i<tg.length;i++){tg[i].active=false;tg[i].line.visible=false;tg[i].ring.visible=false;}
   if(G.stage>=COLOSSI.length-1){win();return;}
   G.running=false;showHint("KOLOSS BEZWUNGEN — +40 HP");
-  setTimeout(function(){if(G.dead)return;G.hp=Math.min(G.maxhp,G.hp+40);startStage(G.stage+1);G.running=true;},2000);
+  setTimeout(function(){if(G.dead)return;
+    if(!G.alive){G.alive=true;G.hp=Math.round(G.maxhp*0.5);}else{G.hp=Math.min(G.maxhp,G.hp+40);}player.visible=true;
+    if(G.co){if(!G.alive2){G.alive2=true;G.hp2=Math.round(G.maxhp2*0.5);}else{G.hp2=Math.min(G.maxhp2,G.hp2+40);}player2.visible=true;}
+    startStage(G.stage+1);G.running=true;},2000);
 }
 
 // ===================== Boss-KI (Attack-Timeline pro Phase) =====================
@@ -366,24 +402,42 @@ function bossThink(dt){
 var shake=0,hitstop=0,last=performance.now();
 function update(dt){
   G.t+=dt;
-  // Spieler bewegen
+  // Spieler 1 bewegen (im Koop nur wenn lebt)
   var mv=moveVec(),spd=G.speed;
-  if(G.dashT>0){G.dashT-=dt;player.position.x+=G.dashDir.x*46*dt;player.position.z+=G.dashDir.z*46*dt;}
-  else if(mv.x||mv.z){var l=Math.hypot(mv.x,mv.z);player.position.x+=mv.x/l*spd*dt;player.position.z+=mv.z/l*spd*dt;}
-  // Arena-Grenze (Kreis)
-  var pr=Math.hypot(player.position.x,player.position.z);if(pr>ARENA-1.2){player.position.x*=(ARENA-1.2)/pr;player.position.z*=(ARENA-1.2)/pr;}
-  // Ausrichtung + Aim-Marker
+  if(G.alive){
+    if(G.dashT>0){G.dashT-=dt;player.position.x+=G.dashDir.x*46*dt;player.position.z+=G.dashDir.z*46*dt;}
+    else if(mv.x||mv.z){var l=Math.hypot(mv.x,mv.z);player.position.x+=mv.x/l*spd*dt;player.position.z+=mv.z/l*spd*dt;}
+    var pr=Math.hypot(player.position.x,player.position.z);if(pr>ARENA-1.2){player.position.x*=(ARENA-1.2)/pr;player.position.z*=(ARENA-1.2)/pr;}
+  }
   if(isTouch&&boss.visible){aimDir.set(boss.position.x-player.position.x,0,boss.position.z-player.position.z);if(aimDir.lengthSq()>0.01)aimDir.normalize();}
   player.rotation.y=Math.atan2(aimDir.x,aimDir.z);
-  aimMk.position.set(player.position.x+aimDir.x*2.2,0.95,player.position.z+aimDir.z*2.2);aimMk.rotation.z=-Math.atan2(aimDir.z,aimDir.x)-Math.PI/2;
+  aimMk.visible=G.alive;aimMk.position.set(player.position.x+aimDir.x*2.2,0.95,player.position.z+aimDir.z*2.2);aimMk.rotation.z=-Math.atan2(aimDir.z,aimDir.x)-Math.PI/2;
   pGlow.position.set(player.position.x,2,player.position.z);
   pRing.rotation.z+=dt*2.5;pRing2.rotation.z-=dt*3.5;pCore.rotation.y+=dt*4;pCore.rotation.x+=dt*2;
+  var _pv=player.userData.heroModel;
   if(G.pPop>0){G.pPop-=dt;pBody.scale.setScalar(1+Math.max(0,G.pPop)*2.2);}else pBody.scale.setScalar(1);
-  if(G.iframe>0){G.iframe-=dt;var vis=(Math.floor(G.t*30)%2===0);pBody.visible=vis;pCore.visible=vis;}else{pBody.visible=true;pCore.visible=true;}
+  if(G.iframe>0){G.iframe-=dt;var vis=(Math.floor(G.t*30)%2===0);if(_pv)_pv.visible=vis;else{pBody.visible=vis;pCore.visible=vis;}}else{if(_pv)_pv.visible=true;else{pBody.visible=true;pCore.visible=true;}}
   if(G.dashCD>0)G.dashCD-=dt;
-  // Auto-Feuer
+  // Auto-Feuer P1
   if(G.fireCD>0)G.fireCD-=dt;
-  if(G.running&&G.fireCD<=0&&boss.visible){var ang=Math.atan2(aimDir.z,aimDir.x);spawnPlayerBullet(player.position.x+aimDir.x*1.6,player.position.z+aimDir.z*1.6,ang,44,G.dmg);G.fireCD=G.fireRate;beep(1200,0.03,"square",0.014);}
+  if(G.running&&G.alive&&G.fireCD<=0&&boss.visible){var ang=Math.atan2(aimDir.z,aimDir.x);spawnPlayerBullet(player.position.x+aimDir.x*1.6,player.position.z+aimDir.z*1.6,ang,44,G.dmg);G.fireCD=G.fireRate;beep(1200,0.03,"square",0.014);}
+  // Spieler 2 (Koop)
+  if(G.co&&G.alive2){
+    var mv2=moveVec(true);
+    if(G.dashT2>0){G.dashT2-=dt;player2.position.x+=G.dashDir2.x*46*dt;player2.position.z+=G.dashDir2.z*46*dt;}
+    else if(mv2.x||mv2.z){var l2=Math.hypot(mv2.x,mv2.z);player2.position.x+=mv2.x/l2*G.speed*dt;player2.position.z+=mv2.z/l2*G.speed*dt;}
+    var pr2=Math.hypot(player2.position.x,player2.position.z);if(pr2>ARENA-1.2){player2.position.x*=(ARENA-1.2)/pr2;player2.position.z*=(ARENA-1.2)/pr2;}
+    if(boss.visible){aim2.set(boss.position.x-player2.position.x,0,boss.position.z-player2.position.z);if(aim2.lengthSq()>0.01)aim2.normalize();}
+    player2.rotation.y=Math.atan2(aim2.x,aim2.z);
+    aimMk2.visible=true;aimMk2.position.set(player2.position.x+aim2.x*2.2,0.95,player2.position.z+aim2.z*2.2);aimMk2.rotation.z=-Math.atan2(aim2.z,aim2.x)-Math.PI/2;
+    p2Glow.position.set(player2.position.x,2,player2.position.z);p2Ring.rotation.z+=dt*2.5;p2Core.rotation.y+=dt*4;
+    var _p2v=player2.userData.heroModel;
+    if(G.pPop2>0){G.pPop2-=dt;p2Body.scale.setScalar(1+Math.max(0,G.pPop2)*2.2);}else p2Body.scale.setScalar(1);
+    if(G.iframe2>0){G.iframe2-=dt;var v2=(Math.floor(G.t*30)%2===0);if(_p2v)_p2v.visible=v2;else{p2Body.visible=v2;p2Core.visible=v2;}}else{if(_p2v)_p2v.visible=true;else{p2Body.visible=true;p2Core.visible=true;}}
+    if(G.dashCD2>0)G.dashCD2-=dt;
+    if(G.fireCD2>0)G.fireCD2-=dt;
+    if(G.running&&G.fireCD2<=0&&boss.visible){var ang2=Math.atan2(aim2.z,aim2.x);spawnPlayerBullet(player2.position.x+aim2.x*1.6,player2.position.z+aim2.z*1.6,ang2,44,G.dmg);G.fireCD2=G.fireRate;}
+  } else { aimMk2.visible=false; }
   // Boss
   if(boss.visible){
     if(G.running)bossThink(dt);
@@ -395,7 +449,7 @@ function update(dt){
       if(G.bhitFlash>0){G.bhitFlash-=dt;}else{var _rm=boss.userData.flashMats||[boss.userData.inner.material];for(var _ri=0;_ri<_rm.length;_ri++)_rm[_ri].emissiveIntensity=(_rm[_ri]._baseEmis!==undefined?_rm[_ri]._baseEmis:0.85);}
       var bhp2=boss.userData.hitPunch||0,_pt=boss.userData.punchTarget||boss.userData.inner,_pb=boss.userData.punchBase||1;if(bhp2>0){boss.userData.hitPunch=bhp2-dt;_pt.scale.setScalar(_pb*(1+Math.max(0,bhp2)*1.6));}else _pt.scale.setScalar(_pb);}
     // Uhrzeiger-Beam (Nexus Phase>=2): schadet auf der Linie
-    if(G.stage===2&&boss.userData.hand&&G.phase>=2&&G.running){var ha=boss.userData.hand.rotation.y;var dpx=player.position.x-boss.position.x,dpz=player.position.z-boss.position.z;var pdist=Math.hypot(dpx,dpz);var pang=Math.atan2(dpz,dpx);var da=Math.abs(((pang-(-ha))+Math.PI*3)%(Math.PI*2)-Math.PI);if(pdist<8&&da<0.14)hitPlayer(14*dt*60*0.016);}
+    if(G.stage===2&&boss.userData.hand&&G.phase>=2&&G.running){var ha=boss.userData.hand.rotation.y;var _pl=playerList();for(var _ci=0;_ci<_pl.length;_ci++){if(!idxAlive(_ci))continue;var pp=_pl[_ci].position,dpx=pp.x-boss.position.x,dpz=pp.z-boss.position.z,pdist=Math.hypot(dpx,dpz),pang=Math.atan2(dpz,dpx),da=Math.abs(((pang-(-ha))+Math.PI*3)%(Math.PI*2)-Math.PI);if(pdist<8&&da<0.14)hitByIdx(_ci,14*dt*60*0.016);}}
   }
   // Player-Bullets
   for(i=0;i<pb.length;i++){var b=pb[i];if(!b.active)continue;b.m.position.x+=b.vx*dt;b.m.position.z+=b.vz*dt;b.life-=dt;
@@ -407,7 +461,7 @@ function update(dt){
     e.m.position.x+=e.vx*dt;e.m.position.z+=e.vz*dt;e.life-=dt;e.m.rotation.x+=dt*4;e.m.rotation.y+=dt*3;
     var er=Math.hypot(e.m.position.x,e.m.position.z);
     if(e.life<=0||er>ARENA+6){e.active=false;e.m.visible=false;continue;}
-    var pdx=e.m.position.x-player.position.x,pdz=e.m.position.z-player.position.z;var rr2=(e.r+0.7);if(pdx*pdx+pdz*pdz<rr2*rr2){hitPlayer(e.dmg);e.active=false;e.m.visible=false;}}
+    var _pl=playerList(),_hit=false;for(var _pi=0;_pi<_pl.length;_pi++){if(!idxAlive(_pi))continue;var pp=_pl[_pi].position,pdx=e.m.position.x-pp.x,pdz=e.m.position.z-pp.z,rr2=(e.r+0.7);if(pdx*pdx+pdz*pdz<rr2*rr2){hitByIdx(_pi,e.dmg);_hit=true;break;}}if(_hit){e.active=false;e.m.visible=false;}}
   // Telegrafen
   for(i=0;i<tg.length;i++){var g=tg[i];if(!g.active)continue;g.t+=dt;
     if(g.fired){g.firedT-=dt;var o=Math.max(0,g.firedT/0.18);if(g.type===0)g.line.material.opacity=o*0.9;else g.ring.material.opacity=o*0.9;if(g.firedT<=0){g.active=false;g.line.visible=false;g.ring.visible=false;}continue;}
@@ -417,12 +471,10 @@ function update(dt){
     if(g.t>=g.delay){ // feuern → Schaden prüfen
       g.fired=1;g.firedT=0.18;
       if(g.type===0){g.line.material.color.setHex(0xffffff);
-        // Punkt-zu-Segment-Abstand
-        var ax=g.x,az=g.z,bx2=g.x+Math.cos(g.ang)*g.len,bz2=g.z+Math.sin(g.ang)*g.len;
-        var tX=player.position.x-ax,tZ=player.position.z-az,dX=bx2-ax,dZ=bz2-az;var tt=Math.max(0,Math.min(1,(tX*dX+tZ*dZ)/(dX*dX+dZ*dZ)));var cX=ax+dX*tt,cZ=az+dZ*tt;var dist=Math.hypot(player.position.x-cX,player.position.z-cZ);
-        if(dist<g.wid/2+0.6)hitPlayer(g.dmg);
+        var ax=g.x,az=g.z,bx2=g.x+Math.cos(g.ang)*g.len,bz2=g.z+Math.sin(g.ang)*g.len,dX=bx2-ax,dZ=bz2-az;
+        var _pl=playerList();for(var _pi=0;_pi<_pl.length;_pi++){if(!idxAlive(_pi))continue;var pp=_pl[_pi].position,tX=pp.x-ax,tZ=pp.z-az,tt=Math.max(0,Math.min(1,(tX*dX+tZ*dZ)/(dX*dX+dZ*dZ))),cX=ax+dX*tt,cZ=az+dZ*tt;if(Math.hypot(pp.x-cX,pp.z-cZ)<g.wid/2+0.6)hitByIdx(_pi,g.dmg);}
         shake=Math.max(shake,0.35);beep(200,0.15,"sawtooth",0.05);
-      }else{g.ring.material.color.setHex(0xffffff);var dc=Math.hypot(player.position.x-g.x,player.position.z-g.z);if(dc<g.rad+0.6&&dc>g.rad-2.2)hitPlayer(g.dmg);shake=Math.max(shake,0.3);beep(180,0.18,"sawtooth",0.05);}
+      }else{g.ring.material.color.setHex(0xffffff);var _pl2=playerList();for(var _qi=0;_qi<_pl2.length;_qi++){if(!idxAlive(_qi))continue;var pp2=_pl2[_qi].position,dc=Math.hypot(pp2.x-g.x,pp2.z-g.z);if(dc<g.rad+0.6&&dc>g.rad-2.2)hitByIdx(_qi,g.dmg);}shake=Math.max(shake,0.3);beep(180,0.18,"sawtooth",0.05);}
     }}
   // FX
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=9*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2.2);p.m.material.transparent=true;p.m.scale.multiplyScalar(1-dt*1.5);if(p.life<=0){p.active=false;p.m.visible=false;}}
@@ -433,7 +485,8 @@ function update(dt){
   if(G.running||!G.alive){document.getElementById("hpFill").style.width=(100*G.hp/G.maxhp)+"%";document.getElementById("hpTxt").textContent=Math.max(0,Math.ceil(G.hp))+"/"+G.maxhp;
     document.getElementById("bossHp").style.width=(100*Math.max(0,G.bhp)/G.bmax)+"%";
     var df=document.getElementById("dashFill");df.style.width=(100*Math.max(0,1-G.dashCD/1.15))+"%";df.className=G.dashCD<=0?"ready":"";
-    document.getElementById("timer").textContent=G.t.toFixed(1)+"s";}
+    document.getElementById("timer").textContent=G.t.toFixed(1)+"s";
+    if(G.co){document.getElementById("hpFill2").style.width=(100*Math.max(0,G.hp2)/G.maxhp2)+"%";document.getElementById("hpTxt2").textContent=Math.max(0,Math.ceil(G.hp2))+"/"+G.maxhp2;}}
   // Hurt-Vignette
   if(hurt>0){hurt-=dt*2;flashEl.style.opacity=Math.max(0,hurt*0.8);}
   updateDmgNums(dt);
@@ -453,6 +506,8 @@ function clearDmgNums(){for(var i=0;i<dmgActive.length;i++){dmgActive[i].el.styl
 // ===================== Kamera =====================
 function updateCamera(dt){
   var px=player.position.x,pz=player.position.z;
+  if(G.co&&G.alive&&G.alive2){px=(player.position.x+player2.position.x)/2;pz=(player.position.z+player2.position.z)/2;}
+  else if(G.co&&!G.alive&&G.alive2){px=player2.position.x;pz=player2.position.z;}
   // Boss-Intro: dramatische Kamera rahmt den Koloss, zieht dann zurück
   if(G.running&&G.intro>0&&boss.visible){var k=Math.max(0,Math.min(1,G.intro/1.4));
     var cx=boss.position.x*0.4,cy=7+k*3,cz=boss.position.z+16-k*2;
@@ -535,7 +590,8 @@ function win(){G.dead=true;G.running=false;bestSet(3);shake=1.2;
   var el=document.getElementById("over");document.getElementById("overKick").textContent="Triumph";document.getElementById("overTitle").textContent="🏆 KOLOSS BEZWUNGEN";document.getElementById("overTitle").style.color="";
   document.getElementById("overSub").innerHTML="Alle drei Kolosse gefallen in <b>"+G.t.toFixed(1)+"s</b>. Du bist der Arena-Meister.<br>Schaffst du es schneller?";
   el.classList.remove("hide");document.getElementById("hud").classList.add("hide");beep(1046,0.6,"triangle",0.1);beep(1318,0.7,"triangle",0.08);showBest();}
-document.getElementById("startBtn").onclick=begin;
+document.getElementById("startBtn").onclick=function(){coopMode=false;begin();};
+document.getElementById("startCoBtn").onclick=function(){coopMode=true;begin();};
 document.getElementById("againBtn").onclick=begin;
 
 // ===================== Main-Loop =====================
