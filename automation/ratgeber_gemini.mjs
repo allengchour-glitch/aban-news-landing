@@ -161,6 +161,8 @@ for(const [title,kw,coll,collName] of TOPICS){
   const r=await gql(CREATE,{a:{blogId:blog,title,body:html,summary,isPublished:true,tags:['ratgeber','kaufberatung',kw],author:{name:'LuxeStyle Redaktion'}}});
   const e=r?.data?.articleCreate?.userErrors||[];
   if(e.length){console.log(' ⚠️',title.slice(0,30),JSON.stringify(e).slice(0,120));continue;}
+  // Guard: null-Antwort (gql nach Retries fehlgeschlagen) NICHT als Erfolg werten → sonst falsch als „done" markiert, Artikel fehlt
+  if(!r?.data?.articleCreate?.article?.id){console.log(' ⚠️',title.slice(0,30),'keine Article-ID (gql null) → nicht als done markiert');continue;}
   done.add(title);fs.writeFileSync(LEDGER,[...done].join('\n')+'\n');made++;console.log(`✅ ${title}`);
   await sleep(500);
  } else {console.log(`[DRY] ${title} (${html.length} Zeichen)`);made++;}
