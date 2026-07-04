@@ -187,12 +187,12 @@ function loadReels() {
   // Discovery-Tags #tiktokmademebuyit/#musthave ziehen Low-Intent → Algo-Strafe-Risiko). 1 Reach-Tag (#fyp) ok.
   const SAFE = [
     '#schweizmode #ootdschweiz #swissstyle #shoppingschweiz #fyp',
-    '#schweiz #swissmade #swissfashion #modeschweiz #foryou',
+    '#schweiz #schweizshop #swissfashion #modeschweiz #foryou',
     '#ootdschweiz #schweizershop #swissstyle #schweizmode #fyp',
   ];
   const tagsets = SAFE;
   // SCHWEIZWEIT (User 2026-06-14 „nicht nur Bern"): rotierend über CH-Städte/Tags statt immer #bern.
-  const CH_WIDE = ['#zürich', '#basel', '#luzern', '#bern', '#genf', '#swissmade'];
+  const CH_WIDE = ['#zürich', '#basel', '#luzern', '#bern', '#genf', '#schweizshop'];
   const goods = loadGood();
   if (!goods.length) { console.log('Keine good_products.csv → No-op.'); process.exit(0); }
   const prices = await priceMap();
@@ -238,7 +238,7 @@ function loadReels() {
     { handle: 'beauty-pflege', label: 'Beauty & Pflege 💄', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0309979139019_0_P03.jpg?v=1781873705' },
   ];
   const collPosts = COLLECTIONS.map((c, i) => ({ type: 'image', image: c.image,
-    caption: `Entdeck d ganzi ${c.label}\n${TRUST_LINES[i % TRUST_LINES.length]}\n👉 luxestyle.ch/collections/${c.handle} · –10% mit WELCOME10\n#schweiz #schweizmode #ootdschweiz #swissmade #fyp` }));
+    caption: `Entdeck d ganzi ${c.label}\n${TRUST_LINES[i % TRUST_LINES.length]}\n👉 luxestyle.ch/collections/${c.handle} · –10% mit WELCOME10\n#schweiz #schweizmode #ootdschweiz #schweizshop #fyp` }));
   // 🎁 GESCHENKFINDER-WERBUNG (smart: hilft Unentschlossenen → Conversion + Engagement; eigene Tool-Seite)
   collPosts.push({ type: 'image', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/0679602161121_0_P01.jpg?v=1781640714',
     caption: 'Wüsstsch nid was schänke? 🎁 Üse Geschänk-Finder hilft dir – nach Typ & Budget. Probier en us 👉 luxestyle.ch/pages/geschenkfinder\n🇨🇭 Schweizer Shop · –10% mit WELCOME10\n#geschenkidee #schweiz #geschenk #ootdschweiz #fyp' });
@@ -247,7 +247,7 @@ function loadReels() {
     caption: 'Mach dys eiges Teil 🎨🇨🇭 Eigeni Sprüch & Motive uf Aufkleber, Shirt, Hoodie & Tasse — du gestaltisch, mir drucke. Einzigartig & kei Mindestmänge 👉 luxestyle.ch/products/kiss-cut-aufkleber-selbst-gestalten\n–10% mit WELCOME10\n#selbstgestalten #schweiz #mundart #diy #fyp' });
   // 🇨🇭 EINZIGARTIG: Schwiizer Sticker (Matterhorn/Edelwyss/Fondue) — Mundart/CH-Kultur, unverwechselbar
   collPosts.push({ type: 'image', image: 'https://cdn.shopify.com/s/files/1/0943/6856/3585/files/matterhorn_d6efa14d-6932-4864-9769-5705c82b4f4c.png?v=1781135405',
-    caption: 'Es bitzeli Schwiiz für überall 🇨🇭 Schwiizer Sticker – Matterhorn, Edelwyss, Schwiizerchrüz, Fondue. Wetterfescht & einzigartig 👉 luxestyle.ch/products/schweiz-sticker-matterhorn\n–10% mit WELCOME10\n#schweiz #sticker #matterhorn #swissmade #fyp' });
+    caption: 'Es bitzeli Schwiiz für überall 🇨🇭 Schwiizer Sticker – Matterhorn, Edelwyss, Schwiizerchrüz, Fondue. Wetterfescht & einzigartig 👉 luxestyle.ch/products/schweiz-sticker-matterhorn\n–10% mit WELCOME10\n#schweiz #sticker #matterhorn #schweizshop #fyp' });
 
   // 🖼️ KARUSSELL (User 2026-06-20 „ab jetzt Fotokarussell"): je 3 Produktbilder → 1 Wisch-Karussell
   // (mehr Engagement als Einzelfotos). Reels + Stories bleiben unverändert. Rest-Einzelbild bleibt Einzelbild.
@@ -257,7 +257,7 @@ function loadReels() {
     if (grp.length < 2) { carousels.push(grp[0]); continue; }
     const lead = grp[0].caption.split('\n')[0];
     carousels.push({ type: 'carousel', images: grp.map(g => g.image),
-      caption: `${lead} — wüsch durch für meh 👉\n🇨🇭 luxestyle.ch · Schweizer Shop\n#schweizmode #ootdschweiz #swissmade #fyp` });
+      caption: `${lead} — wüsch durch für meh 👉\n🇨🇭 luxestyle.ch · Schweizer Shop\n#schweizmode #ootdschweiz #schweizshop #fyp` });
   }
 
   // MIX (2026-06-23, Daten: IG-Reels 16-43 V vs statische Karten 0-12 V = 5-10x): REELS DOMINIEREN,

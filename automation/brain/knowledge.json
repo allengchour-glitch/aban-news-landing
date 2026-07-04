@@ -482,6 +482,7 @@
   "54": "2026-07-04 POSTFACH-INTEL PINTEREST-KANAL OFFEN: Pinterest-Business-Team (Alex) bot proaktiv Unterstuetzung an (Mail 01.07. an info@luxestyle.ch) = gratis Buy-Intent-Kanal fuer CH-Frauen-Mode/Schmuck; Boards/Pins-Setup existiert bereits; Antwort = User-Login.",
   "55": "2026-07-04 POSTFACH-INTEL NEUER CH-LIEFERANT: B2B-Dropshipping-Anmeldung an shopcom.ch raus (04.07.) - potenziell CH-naher Lieferant (kuerzere Lieferzeit als EU/CN-Lager); bei Freischaltung fuer Trust/Lieferzeit-Vorteil pruefen.",
   "56": "2026-07-04 KEYCHECK-BEFUND: luxe-secrets.ps1 auf dem PC — Shopify-Secret gueltig (write_products), FAL_KEY GUELTIG (HTTP200, d.h. Winner-Reels-Render scheitert am CODE/Modell-Parameter NICHT am Key), Gemini/Groq/DeepSeek ok. BLOCKER: PRINTFUL_API_KEY = HTTP 403 (ungueltig/abgelaufen) -> naechste Perso-Trikot-Bridge-Order scheitert, neuer Printful-Key noetig (User-Login). TT_API_LIVE=NEIN (TikTok laeuft ueber Browser). Diagnose-Tool: automation/keycheck.mjs (cmd keycheck), leakt nie Werte.",
+  "57": "2026-07-04 HASHTAG-EHRLICHKEIT: #swissmade (und #swissfashion) auf Dropship-Produkten = falscher Herkunfts-Claim (Produkte nicht swiss-made) -> in build_queue.mjs durch #schweizshop ersetzt (ehrlich: wir SIND ein CH-Shop) + in blocked_hashtags gesperrt. Queue regeneriert sich beim naechsten build_queue-Lauf ohne den Tag.",
   "reach": [
    "#fyp",
    "#foryou"
@@ -513,7 +514,9 @@
    "#deutschershop",
    "#berlin",
    "#munchen",
-   "#hamburg"
+   "#hamburg",
+   "#swissmade",
+   "#swissfashion"
   ],
   "blocked_reason": "Marken-Tags = Discovery-Sackgasse. ZUSAETZLICH Deutschland-Tags geblockt: User-Regel 2026-06-14 'falls in Deutschland, erweitere nicht' -> Shop bleibt STRIKT Schweiz (CHF, CH-Versand, CH-Zielgruppe). Keine DE-Maerkte/Staedte/Tags. Mundart (Schwiizerduetsch) ist erwuenscht, da es DE automatisch ausfiltert.",
   "geo_focus": "Schweiz only, aber SCHWEIZWEIT (User 2026-06-14 'nicht nur Bern'): ganz CH ansprechen — Zuerich/Basel/Luzern/Genf/Bern, nicht auf eine Stadt fixieren. CH-Stadt-Tags rotieren. NIE Deutschland/Oesterreich: kein DE-Markt/EUR-Pricing/#deutschland/DE-Targeting. Mundart (Schwiizerduetsch, CH-weit verstanden) bevorzugen — filtert DE automatisch raus.",
