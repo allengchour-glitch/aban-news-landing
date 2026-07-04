@@ -13,9 +13,12 @@ const STORE=process.env.STORE||'luxestyle-ch';
 const SHOTS='automation/local/meta-shots';
 try{ mkdirSync(SHOTS,{recursive:true}); mkdirSync('reports',{recursive:true}); }catch{}
 const rep=[]; const R=m=>{ rep.push(m); console.log('meta:',m); try{ writeFileSync('reports/fix-homepage-meta.txt',`${new Date().toISOString()} ${GO?'GO':'DRY'}\n`+rep.join('\n')+'\n'); }catch{} };
+const MYSHOP=process.env.SHOPIFY_SHOP||'au3j0y-hq.myshopify.com';
 const URLS=[
   `https://admin.shopify.com/store/${STORE}/online_store/preferences`,
-  `https://admin.shopify.com/store/${STORE}/settings/preferences`,
+  `https://admin.shopify.com/store/${STORE}/online-store/preferences`,
+  `https://${MYSHOP}/admin/online_store/preferences`,
+  `https://${MYSHOP}/admin/online_store/preferences.json`.replace('.json',''),
 ];
 (async()=>{
   let chromium; try{({chromium}=await import('playwright'));}catch{try{({chromium}=await import('playwright-core'));}catch(e){R('❌ playwright fehlt: '+e.message);process.exit(1);}}
@@ -57,6 +60,19 @@ const URLS=[
       await page.waitForTimeout(2500); await page.screenshot({path:`${SHOTS}/prefs-after.png`,fullPage:true}).catch(()=>{});
       break;
     }catch(e){ R('   Fehler '+url+': '+String(e.message).slice(0,120)); }
+  }
+  // Fallback: über die Admin-Navigation klicken (Online Store → Präferenzen)
+  if(!done){
+    try{
+      R('→ Nav-Klickweg: Admin → Online Store → Präferenzen');
+      await page.goto(`https://admin.shopify.com/store/${STORE}`,{waitUntil:'domcontentloaded',timeout:45000}); await page.waitForTimeout(4000);
+      for(const os of ['Online Store','Onlineshop','Online-Shop','Vertriebskanäle']){ try{ const l=page.getByRole('link',{name:new RegExp(os,'i')}).first(); if(await l.count()){ await l.click({timeout:5000}); await page.waitForTimeout(3000); R('   „'+os+'" geklickt → '+page.url()); break; } }catch{} }
+      for(const pr of ['Präferenzen','Preferences']){ try{ const l=page.getByRole('link',{name:new RegExp('^'+pr,'i')}).first(); if(await l.count()){ await l.click({timeout:5000}); await page.waitForTimeout(4000); R('   „'+pr+'" geöffnet → '+page.url()); break; } }catch{} }
+      await page.screenshot({path:`${SHOTS}/prefs-nav.png`,fullPage:true}).catch(()=>{});
+      const f2=await page.evaluate(()=>{ const els=[...document.querySelectorAll('textarea,input[type=text]')]; return els.map((e,i)=>({i,val:(e.value||'').slice(0,300)})).filter(f=>/Deutschland/i.test(f.val)); });
+      R('   Felder mit „Deutschland" (nav): '+JSON.stringify(f2).slice(0,400));
+      if(f2.length){ done=true; R('   → Feld gefunden via Nav. Für Fix: meta-de-go.'); }
+    }catch(e){ R('   Nav-Fehler: '+String(e.message).slice(0,120)); }
   }
   if(!done) R('⚠️ Meta-Feld nicht erreicht — Screenshots '+SHOTS+'/ prüfen (Login/URL/Wortlaut).');
   R('Fertig ('+(GO?'GO':'DRY')+'). reports/fix-homepage-meta.txt');
