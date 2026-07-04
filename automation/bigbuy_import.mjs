@@ -335,7 +335,7 @@ const CONFIG = {
     extraTags: ['beauty', 'pflege', 'marken', 'nachgefragt', 'premium'], type: 'Beauty & Pflege', maxCost: 220, word: true,
     anchor: ['la roche-posay', 'la roche posay', 'roche-posay', 'nivea', 'eucerin', 'weleda', "l'oréal", 'loreal', "l'oreal", 'vichy', 'cerave', 'bioderma', 'caudalie', 'garnier', 'maybelline', 'nyx', 'clinique', 'lancôme', 'lancome', 'estée lauder', 'estee lauder', 'shiseido', 'lattafa', 'yves saint laurent', 'armani', 'prada', 'carolina herrera', 'hugo boss', 'guerlain', 'biotherm', 'clarins', 'avène', 'avene', 'rimmel', 'revlon', 'max factor', 'catrice', 'bourjois', 'elizabeth arden', 'kenzo', 'paco rabanne', 'jean paul gaultier', 'versace', 'dolce', 'givenchy', 'lancaster'],
     ban: ['kinder', 'spielzeug', 'toy', 'nachahmung', 'replica', 'tester', 'sample', 'probe'],
-    bullets: ['100 % Original-Markenware', 'Beliebte Marke – bei Google-Kunden gefragt', 'Schnelle EU-Lieferung', 'Gratis-Versand ab CHF 65'] },
+    bullets: ['100 % Original-Markenware', 'Beliebte Marke – bei Google-Kunden gefragt', 'Schnelle EU-Lieferung', 'Gratis-Versand ab CHF 50'] },
   home: { coll: { handle: 'wohnen-dekoration', title: '🏠 Wohnen & Dekoration', tag: 'dekoration' },
     extraTags: ['wohnen', 'dekoration', 'geschenk', 'premium'], type: 'Wohnen & Deko', maxCost: MAX_COST_EUR,
     anchor: ['vase', 'kerzenhalter', 'dekofigur', 'deko-figur', 'wandbild', 'bilderrahmen', 'kissenbezug', 'dekokissen', 'übertopf', 'windlicht', 'aufbewahrungsbox', 'laterne', 'dekoration', 'figura decorativa', 'jarrón', 'portafoto', 'wanduhr'],
@@ -671,7 +671,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     const ex = (await sgql(stok, COLL_FIND, { q: `handle:${cfg.coll.handle}` }))?.data?.collections?.edges?.[0]?.node;
     if (ex) return ex.id;
     const r = await sgql(stok, COLL_CREATE, { input: { handle: cfg.coll.handle, title: cfg.coll.title,
-      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz. Gratis-Versand ab CHF 65.</p>`,
+      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz. Gratis-Versand ab CHF 50.</p>`,
       sortOrder: 'PRICE_DESC',  // von Geburt an sauber sortiert (nie zufälliges BEST_SELLING)
       ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: cfg.coll.tag }] } } });
     return r?.data?.collectionCreate?.collection?.id;
@@ -725,9 +725,9 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const handle = ((title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 50) || 'bigbuy') + '-' + p.id;
       const tags = [cfg.coll.tag, ...cfg.extraTags, 'bigbuy', 'dropship'];
       const desc = `<p><strong>${title}</strong></p><ul>${cfg.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
-        + `<p>📦 Lieferung aus EU-Lager, schnell · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
+        + `<p>📦 Lieferung aus EU-Lager, schnell · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
       const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: 'ACTIVE', tags,
-        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, schnelle EU-Lieferung, Gratis-Versand ab CHF 65.` },
+        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, schnelle EU-Lieferung, Gratis-Versand ab CHF 50.` },
         files: p.imgs.map(u => ({ originalSource: u, contentType: 'IMAGE' })) };
       if (cfg.sized) {
         const SIZES = ['S', 'M', 'L', 'XL', 'XXL'];

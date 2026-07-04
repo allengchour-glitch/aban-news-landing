@@ -77,10 +77,10 @@ for(const file of files){
   const desc=`<p><strong>${name}</strong></p>`
    +(refurb?`<div style="background:#eef6ff;border:1px solid #cfe3f7;border-radius:10px;padding:11px 14px;margin:10px 0;font-size:14px;"><strong>♻️ Generalüberholt (Refurbished):</strong> Geprüft, gereinigt & voll funktionsfähig. Note gemäss Titel (A=wie neu · B=leichte Gebrauchsspuren · C=sichtbare Spuren). Nachhaltig & günstiger als neu.</div>`:'')
    +`<h3>Eigenschaften</h3><ul><li><strong>Kategorie:</strong> ${(r[ix.category]||'').slice(0,40)}</li><li><strong>Verfügbarkeit:</strong> ${st} an Lager · Lieferung ca. 3–7 Tage (EU-Lager)</li>${refurb?'<li><strong>Zustand:</strong> Generalüberholt</li>':''}</ul>`
-   +`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Original-Markenware · \u{1F69A} EU-Lager 3–7 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop.</div>\n<p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+   +`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Original-Markenware · \u{1F69A} EU-Lager 3–7 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
   const tags=[...rt.g,'bigbuy','csv-import','dropship',...(refurb?['refurbished','generalueberholt']:[])];
   const input={title:name,handle:slug,productType:rt.t,vendor:'LuxeStyle',status:'ACTIVE',tags,descriptionHtml:desc,
-   seo:{title:(name+' | LuxeStyle CH').slice(0,70),description:(`${name} – bei LuxeStyle Schweiz. ${refurb?'Generalüberholt, ':''}EU-Lager, 30 Tage Rückgabe, Gratis-Versand ab CHF 65.`).slice(0,320)},
+   seo:{title:(name+' | LuxeStyle CH').slice(0,70),description:(`${name} – bei LuxeStyle Schweiz. ${refurb?'Generalüberholt, ':''}EU-Lager, 30 Tage Rückgabe, Gratis-Versand ab CHF 50.`).slice(0,320)},
    productOptions:[{name:'Variante',values:[{name:'Standard'}]}],
    variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price,inventoryItem:{sku:'CSV-'+sku,tracked:true},inventoryPolicy:'DENY'}],
    files:[{originalSource:imgUrl,contentType:'IMAGE'}]};

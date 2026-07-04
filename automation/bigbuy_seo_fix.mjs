@@ -29,7 +29,7 @@ async function flush(){ if(!batch.length)return; const al=batch.map((b,i)=>`u${i
 for(const node of items){
   const ct=clean(node.title||''); if(!ct) continue;
   const seoTitle=cut(`${ct} kaufen | LuxeStyle Schweiz`,70);
-  const seoDesc=cut(`${ct} online kaufen bei LuxeStyle: Marken-Original, Premium-Qualität, Gratis-Versand ab CHF 65, schnelle Lieferung in die Schweiz.`,160);
+  const seoDesc=cut(`${ct} online kaufen bei LuxeStyle: Marken-Original, Premium-Qualität, Gratis-Versand ab CHF 50, schnelle Lieferung in die Schweiz.`,160);
   if(LIVE){ batch.push({id:node.id, seo:{title:seoTitle, description:seoDesc}}); if(batch.length>=10) await flush(); }
   done++; if(done%200===0)console.log(`  … ${done}/${items.length} SEO gesetzt`);
 }

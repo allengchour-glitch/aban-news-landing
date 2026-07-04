@@ -174,7 +174,7 @@ for(const gk of want){
   const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,48)+'-bb'+p.id;
   const desc=buildGalaxusDesc(p.description, {title, blurb:g.blurb}); // Galaxus-Stil: Intro + Specs + Trust
   const input={title,handle:slug,productType:g.type,vendor:'LuxeStyle',status:'ACTIVE',tags:g.tags,descriptionHtml:desc,
-   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – ${g.blurb}, 100% Original bei LuxeStyle Schweiz. EU-Lager, schnelle Lieferung. Gratis-Versand ab CHF 65.`).slice(0,320)},
+   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – ${g.blurb}, 100% Original bei LuxeStyle Schweiz. EU-Lager, schnelle Lieferung. Gratis-Versand ab CHF 50.`).slice(0,320)},
    productOptions:[{name:'Variante',values:[{name:'Standard'}]}],
    variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(eur),inventoryItem:{sku:'BB-'+p.id,tracked:false},inventoryPolicy:'CONTINUE'}],
    files:[{originalSource:imgs[0],contentType:'IMAGE'}]};

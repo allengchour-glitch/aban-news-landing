@@ -106,10 +106,10 @@ for(const cat of CATS){
     const handle=(title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')).slice(0,55)+'-'+String(p.pid).slice(-6);
     const desc=`<p style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;">📦 <strong>Lieferzeit</strong>: 🇨🇭 CH/EU 8–16 Tage · inkl. Produktion</p>`
       +`<p><strong>${title}</strong></p><ul><li>Top für ${cfg.coll.title.replace(/[^\wäöüÄÖÜ &]/g,'').trim()}</li><li>Beliebt & gefragt</li><li>Gutes Preis-Leistungs-Verhältnis</li></ul>`
-      +`<p>🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>`;
+      +`<p>🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>`;
     if(DRY){console.log('  [DRY]',title,'CHF',p.price);created++;continue;}
     const input={title,handle,productType:cfg.type,vendor:'LuxeStyle',status:'ACTIVE',tags:[cfg.coll.tag,...cfg.tags,'cj-real','dropship'],
-      descriptionHtml:desc,seo:{title:`${title} | LuxeStyle`.slice(0,70),description:`${title} – jetzt bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe, –10% mit WELCOME10.`.slice(0,320)},
+      descriptionHtml:desc,seo:{title:`${title} | LuxeStyle`.slice(0,70),description:`${title} – jetzt bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, –10% mit WELCOME10.`.slice(0,320)},
       productOptions:[{name:'Titel',values:[{name:'Standard'}]}],
       variants:[{optionValues:[{optionName:'Titel',name:'Standard'}],price:p.price,inventoryItem:{sku:`CJ-${p.sku}`.slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}],
       files:[{originalSource:p.img,contentType:'IMAGE'}]};

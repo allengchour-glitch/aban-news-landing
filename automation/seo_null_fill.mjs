@@ -45,7 +45,7 @@ async function flush(){
 for(const n of targets){
   const ct=clean(n.title); if(!ct) continue;
   const seoTitle=cut(`${ct} | LuxeStyle`,70);
-  const seoDesc=cut(`${ct} online kaufen bei LuxeStyle: Premium-Qualität, Gratis-Versand ab CHF 65, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz.`,160);
+  const seoDesc=cut(`${ct} online kaufen bei LuxeStyle: Premium-Qualität, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz.`,160);
   if(LIVE){ batch.push({id:n.id, seo:{title:seoTitle, description:seoDesc}}); if(batch.length>=10) await flush(); }
   done++; if(done%100===0)console.log(`  … ${done}/${targets.length} SEO gesetzt`);
 }

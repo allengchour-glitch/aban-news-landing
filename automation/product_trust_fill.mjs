@@ -7,8 +7,8 @@
 const SHOP=process.env.SHOPIFY_SHOP,CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET,API='2025-01';
 const LIVE=process.env.LIVE==='1';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const TRUST=`<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>`;
-const HAS=/Gratis-Versand ab CHF 65|30 Tage Rückgabe|WELCOME10|Sichere Bezahlung|TWINT/i;
+const TRUST=`<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>`;
+const HAS=/Gratis-Versand ab CHF 50|30 Tage Rückgabe|WELCOME10|Sichere Bezahlung|TWINT/i;
 async function tk(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return(await r.json()).access_token;}
 async function gql(t,q,v){for(let a=0;a<5;a++){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});if(r.status===429||r.status>=500){await sleep((a+1)*2000);continue;}return r.json();}return null;}
 

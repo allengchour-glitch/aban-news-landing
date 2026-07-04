@@ -13,7 +13,7 @@ const OPENAI=(process.env.OPENAI_API_KEY||rd('/tmp/openai.key')).trim();
 const GEMINI=(process.env.GEMINI_API_KEY||rd('/tmp/gemini_key')).trim();
 const GROQ=(process.env.GROQ_API_KEY||rd('/tmp/groq_key.txt')).trim();
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const TRUST='<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>';
+const TRUST='<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>';
 const SYS='Du bist Senior-Produkttexter für den Schweizer Premium-Shop LuxeStyle. Schreibst tiefgehende, verkaufsstarke, ehrliche deutsche Produktbeschreibungen. Schweizer Rechtschreibung: IMMER ss statt ß. Antwortest NUR mit HTML, nichts davor/danach.';
 let quota={openai:false,groq:false,gemini:false};
 async function openai(p){if(!OPENAI||quota.openai)return null;try{const r=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Authorization':`Bearer ${OPENAI}`,'Content-Type':'application/json'},body:JSON.stringify({model:'gpt-4o-mini',temperature:0.75,max_tokens:1500,messages:[{role:'system',content:SYS},{role:'user',content:p}]})});if(r.status===429||r.status===401){quota.openai=true;return null;}const j=await r.json();return j?.choices?.[0]?.message?.content||null;}catch{return null;}}

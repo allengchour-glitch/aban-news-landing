@@ -15,7 +15,7 @@ const GROQ=(process.env.GROQ_API_KEY||rd('/tmp/groq_key.txt')).trim();
 const DEEPSEEK=(process.env.DEEPSEEK_API_KEY||rd('/tmp/deepseek.key')).trim();
 const OPENAI=(process.env.OPENAI_API_KEY||rd('/tmp/openai.key')).trim();
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const TRUST='<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>';
+const TRUST='<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>';
 const SYS='Du bist Senior-Produkttexter für den Schweizer Shop LuxeStyle. Schreibst einzigartige, verkaufsstarke, ehrliche deutsche Produktbeschreibungen. Antwortest NUR mit HTML (<p>/<ul>/<li>), nichts davor/danach.';
 async function tk(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return(await r.json()).access_token;}
 async function gql(t,q,v){for(let a=0;a<5;a++){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});if(r.status===429||r.status>=500){await sleep((a+1)*2000);continue;}return r.json();}return null;}

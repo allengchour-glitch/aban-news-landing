@@ -13,7 +13,7 @@ const TAGS=['beautytech','auto','hightech','basteln','maker'];
 const LEDGER='/tmp/desc_newcats_done.txt';
 const GEMINI=(process.env.GEMINI_API_KEY||'').trim();
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const TRUST='<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>';
+const TRUST='<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>';
 const SYS='Du bist Senior-Produkttexter für den Schweizer Shop LuxeStyle. Du schreibst einzigartige, ehrliche deutsche Produktbeschreibungen in Du-Ansprache. Du erfindest KEINE technischen Daten, Masse, Materialien oder Claims — nur was aus Titel/Kategorie sicher hervorgeht. Antwortest NUR mit HTML (<p>/<ul>/<li>), nichts davor/danach.';
 
 if(!GEMINI){console.error('Kein GEMINI_API_KEY');process.exit(1);}

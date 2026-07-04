@@ -24,7 +24,7 @@ while(true){
     const base=clean(p.title);
     const s={};
     s.title = needT ? `${base} | LuxeStyle`.slice(0,70) : p.seo.title;
-    s.description = needD ? `${base}${p.productType?(' – '+p.productType):''} bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe, sichere Zahlung (TWINT/Karte/PayPal), –10% mit Code WELCOME10.`.slice(0,320) : p.seo.description;
+    s.description = needD ? `${base}${p.productType?(' – '+p.productType):''} bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, sichere Zahlung (TWINT/Karte/PayPal), –10% mit Code WELCOME10.`.slice(0,320) : p.seo.description;
     const u=await gql(tok,M,{id:p.id,s});
     if(!(u?.data?.productUpdate?.userErrors||[]).length) fixed++; else if(fixed<3) console.log('err',base,JSON.stringify(u?.data?.productUpdate?.userErrors));
     await sleep(200);

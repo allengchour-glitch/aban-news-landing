@@ -26,7 +26,7 @@ const CATS=[
 
 for(const c of CATS){
   const rules=c.terms.map(term=>({column:'TITLE',relation:'CONTAINS',condition:term}));
-  const seo={title:(c.t.replace(/^[^\p{L}]+/u,'')+' kaufen | LuxeStyle Schweiz').slice(0,70), description:(c.d+' Gratis-Versand ab CHF 65, 30 Tage Rückgabe.').slice(0,160)};
+  const seo={title:(c.t.replace(/^[^\p{L}]+/u,'')+' kaufen | LuxeStyle Schweiz').slice(0,70), description:(c.d+' Gratis-Versand ab CHF 50, 30 Tage Rückgabe.').slice(0,160)};
   // existiert?
   const ex=(await gql(`{collectionByHandle(handle:"${c.h}"){id}}`))?.data?.collectionByHandle;
   let id;

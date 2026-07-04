@@ -22,9 +22,9 @@ function desc(title){
   +`<li>💻 Perfekt für Laptop, Trinkflasche, Auto, Handy, Notizbuch, Koffer &amp; Helm</li>`
   +`<li>🇨🇭 Schönes Schweizer Souvenir &amp; kleines Geschenk</li>`
   +`<li>♻️ Rückstandsarm ablösbar, langlebige Farben</li></ul>`
-  +`<p><strong>📦 Service:</strong> 🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · TWINT/Karte/PayPal · Code <strong>WELCOME10</strong> = –10%</p>`;
+  +`<p><strong>📦 Service:</strong> 🇨🇭 Schweizer Shop · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · TWINT/Karte/PayPal · Code <strong>WELCOME10</strong> = –10%</p>`;
 }
-const seoDesc=(title)=>{ const mo=motifOf(title); return `Vinyl-Sticker «${mo}» – wetterfest, UV- & kratzbeständig, Kiss-Cut in 3 Grössen (7,6–14 cm). Für Laptop, Flasche, Auto & mehr. Schweizer Shop, Gratis-Versand ab CHF 65, –10% mit WELCOME10.`.slice(0,320); };
+const seoDesc=(title)=>{ const mo=motifOf(title); return `Vinyl-Sticker «${mo}» – wetterfest, UV- & kratzbeständig, Kiss-Cut in 3 Grössen (7,6–14 cm). Für Laptop, Flasche, Auto & mehr. Schweizer Shop, Gratis-Versand ab CHF 50, –10% mit WELCOME10.`.slice(0,320); };
 
 const M=`mutation($id:ID!,$d:String!,$s:SEOInput!){ productUpdate(input:{id:$id,descriptionHtml:$d,seo:$s}){ userErrors{message} } }`;
 

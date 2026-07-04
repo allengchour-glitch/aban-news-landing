@@ -82,7 +82,7 @@ for(const [cat,label] of CATS){
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[«»]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
    const desc=buildGadgetDesc(title); // Galaxus-Stil: Intro + typtypische Eigenschaften-Specs + Trust
    const input={title,handle:slug,productType:'Gadgets',vendor:'LuxeStyle',status:'ACTIVE',tags:['gadgets','tech','trend','cj-real','dropship'],descriptionHtml:desc,
-    seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – cooles Tech-Gadget bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe.`).slice(0,320)},
+    seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – cooles Tech-Gadget bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions:[{name:'Variante',values:[{name:'Standard'}]}],
     variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}],
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};

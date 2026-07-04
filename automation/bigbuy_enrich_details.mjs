@@ -30,7 +30,7 @@ function block(p){
   if(w>0&&h>0&&d>0) li.push(`<li><strong>Abmessungen (ca.):</strong> ${w} × ${h} × ${d} cm</li>`);
   if(+p.weight>0) li.push(`<li><strong>Gewicht:</strong> ${(+p.weight).toLocaleString('de-CH')} kg</li>`);
   if(p.ean13&&/^\d{8,14}$/.test(String(p.ean13))) li.push(`<li><strong>EAN:</strong> ${p.ean13}</li>`);
-  li.push('<li><strong>Versand:</strong> aus EU-Lager · 3–7 Tage · gratis ab CHF 65</li>');
+  li.push('<li><strong>Versand:</strong> aus EU-Lager · 3–7 Tage · gratis ab CHF 50</li>');
   li.push('<li><strong>Rückgabe:</strong> 30 Tage</li>');
   return `\n<div class="ls-feed-details">\n<h4>Produktdetails</h4>\n<ul>\n${li.join('\n')}\n</ul>\n</div>`;
 }

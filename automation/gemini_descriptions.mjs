@@ -22,7 +22,7 @@ function extract(html){
  // Eigenschaften-<ul> + Trust-<div> aus vorhandener Beschreibung ziehen (behalten)
  const ul=(html.match(/<h3>Eigenschaften<\/h3>\s*<ul>[\s\S]*?<\/ul>/i)||[''])[0];
  const trust=(html.match(/<div style="background:#f7faf7[\s\S]*?<\/div>\s*(?:<p>[^<]*WELCOME10[\s\S]*?<\/p>)?/i)||[''])[0]
-   || `<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ 100 % Original-Markenware · \u{1F69A} EU-Lager – Lieferung ca. 3–7 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop.</div>\n<p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+   || `<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ 100 % Original-Markenware · \u{1F69A} EU-Lager – Lieferung ca. 3–7 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
  // Fakten = Text der ul-Items
  // NUR echte Spec-Fakten (aus Eigenschaften-Liste) — verhindert Halluzination bei spec-armen Produkten (Parfum/Schmuck)
  const facts=[...ul.matchAll(/<li>[\s\S]*?<strong>([^<]+)<\/strong>\s*([^<]*)<\/li>/gi)].map(m=>`${m[1].replace(/:$/,'')}: ${m[2].trim()}`).join(' · ');

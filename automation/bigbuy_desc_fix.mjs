@@ -24,7 +24,7 @@ function details(p){ const li=[]; const b=mans.get(String(p.manufacturer)); if(b
   const w=+p.width,h=+p.height,d=+p.depth; if(w>0&&h>0&&d>0) li.push(`<li><strong>Abmessungen (ca.):</strong> ${w} × ${h} × ${d} cm</li>`);
   if(+p.weight>0) li.push(`<li><strong>Gewicht:</strong> ${(+p.weight).toLocaleString('de-CH')} kg</li>`);
   if(p.ean13&&/^\d{8,14}$/.test(String(p.ean13))) li.push(`<li><strong>EAN:</strong> ${p.ean13}</li>`);
-  li.push('<li><strong>Versand:</strong> aus EU-Lager · 3–7 Tage · gratis ab CHF 65</li>','<li><strong>Rückgabe:</strong> 30 Tage</li>');
+  li.push('<li><strong>Versand:</strong> aus EU-Lager · 3–7 Tage · gratis ab CHF 50</li>','<li><strong>Rückgabe:</strong> 30 Tage</li>');
   return `<div class="ls-feed-details">\n<h4>Produktdetails</h4>\n<ul>\n${li.join('\n')}\n</ul>\n</div>`; }
 const titleClean=s=>s.replace(/^[^\p{L}\p{N}]+/u,'').trim();
 
@@ -51,7 +51,7 @@ for(const node of items){
   const ttl=titleClean(node.title||''); const ul=specs[rec.id]; if(ul) withSpec++;
   const html=`<p><strong>${ttl}</strong> – Premium-Qualität bei LuxeStyle, sorgfältig für die Schweiz ausgewählt.</p>`
     +(ul?`<p><strong>✨ Eigenschaften</strong></p>\n${ul}`:'')
-    +`<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>\n`
+    +`<p>🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · Code <strong>WELCOME10</strong> = –10%</p>\n`
     +details(rec.p);
   if(LIVE){ batch.push({id:node.id, descriptionHtml:html}); if(batch.length>=10) await flush(); }
   done++; if(MAXP&&done>=MAXP) break;

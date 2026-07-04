@@ -24,7 +24,7 @@ function block(d){
   if(+d.productWeight>0){ const g=+d.productWeight; li.push(`<li><strong>Gewicht:</strong> ${g>=1000?(g/1000).toLocaleString('de-CH')+' kg':g+' g'}</li>`); }
   if(d.categoryName){ const c=String(d.categoryName).split('/').pop().trim(); if(c) li.push(`<li><strong>Kategorie:</strong> ${c}</li>`); }
   li.push('<li><strong>Versand:</strong> 🇨🇭 CH/EU ca. 8–16 Tage · inkl. Produktion</li>');
-  li.push('<li><strong>Rückgabe:</strong> 30 Tage · Gratis-Versand ab CHF 65</li>');
+  li.push('<li><strong>Rückgabe:</strong> 30 Tage · Gratis-Versand ab CHF 50</li>');
   return `\n<div class="ls-feed-details">\n<h4>Produktdetails</h4>\n<ul>\n${li.join('\n')}\n</ul>\n</div>`;
 }
 const t=await tok(); if(!t){console.error('Kein Shopify-Token');process.exit(1);}
@@ -39,7 +39,7 @@ do{
     let sku=e.node.variants?.edges?.[0]?.node?.sku||''; sku=sku.replace(/^CJ-/,'').trim();
     let d=null;
     if(!process.env.GENERIC){ if(sku){ d=await cj(sku); await sleep(GAP); } }
-    const GEN=`\n<div class="ls-feed-details">\n<h4>Produktdetails</h4>\n<ul>\n<li><strong>Versand:</strong> 🇨🇭 CH/EU ca. 8–16 Tage · inkl. Produktion</li>\n<li><strong>Rückgabe:</strong> 30 Tage · Gratis-Versand ab CHF 65</li>\n<li><strong>Sicher einkaufen:</strong> Code <strong>WELCOME10</strong> = –10% · TWINT &amp; Karte</li>\n</ul>\n</div>`;
+    const GEN=`\n<div class="ls-feed-details">\n<h4>Produktdetails</h4>\n<ul>\n<li><strong>Versand:</strong> 🇨🇭 CH/EU ca. 8–16 Tage · inkl. Produktion</li>\n<li><strong>Rückgabe:</strong> 30 Tage · Gratis-Versand ab CHF 50</li>\n<li><strong>Sicher einkaufen:</strong> Code <strong>WELCOME10</strong> = –10% · TWINT &amp; Karte</li>\n</ul>\n</div>`;
     if(!d && !process.env.GENERIC){ nodata++; continue; }
     const nh=(e.node.descriptionHtml||'')+(d?block(d):GEN);
     if(LIVE){ batch.push({id:e.node.id, descriptionHtml:nh}); if(batch.length>=10) await flush(); }

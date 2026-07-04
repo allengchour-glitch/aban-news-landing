@@ -27,9 +27,9 @@ do{
     const ct=clean(x.title)||x.handle;
     const input={id:x.id}; let touch=false;
     if(!x.image){ const cand=(x.products?.edges||[]).map(e=>e.node).filter(n=>n.status==='ACTIVE'&&n.featuredImage?.url); const pi=(cand[0]||x.products?.edges?.find(e=>e.node.featuredImage?.url)?.node)?.featuredImage?.url; if(pi){ input.image={src:pi, altText:ct}; fImg++; touch=true; } }
-    if(!x.seo?.title){ input.seo={title:cut(`${ct} kaufen | LuxeStyle Schweiz`,70), description:cut(`${ct} online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 65, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz.`,160)}; fSeo++; touch=true; }
+    if(!x.seo?.title){ input.seo={title:cut(`${ct} kaufen | LuxeStyle Schweiz`,70), description:cut(`${ct} online kaufen bei LuxeStyle: kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, schnelle Lieferung in die Schweiz.`,160)}; fSeo++; touch=true; }
     const txt=(x.descriptionHtml||'').replace(/<[^>]*>/g,'').trim();
-    if(txt.length<40){ input.descriptionHtml=`<p><strong>${ct}</strong> bei LuxeStyle – kuratierte Auswahl für die Schweiz.</p><ul><li>✓ Premium-Qualität, sorgfältig ausgewählt</li><li>🚚 Gratis-Versand ab CHF 65</li><li>↩️ 30 Tage Rückgabe · TWINT, Karte &amp; PayPal</li><li>🇨🇭 Schweizer Shop · schnelle Lieferung</li></ul>`; fDesc++; touch=true; }
+    if(txt.length<40){ input.descriptionHtml=`<p><strong>${ct}</strong> bei LuxeStyle – kuratierte Auswahl für die Schweiz.</p><ul><li>✓ Premium-Qualität, sorgfältig ausgewählt</li><li>🚚 Gratis-Versand ab CHF 50</li><li>↩️ 30 Tage Rückgabe · TWINT, Karte &amp; PayPal</li><li>🇨🇭 Schweizer Shop · schnelle Lieferung</li></ul>`; fDesc++; touch=true; }
     if(touch && LIVE){ const u=await gql(t,`mutation($i:CollectionInput!){collectionUpdate(input:$i){userErrors{message}}}`,{i:input}); const er=u?.data?.collectionUpdate?.userErrors||[]; if(er.length) console.log('  ⚠️',x.handle,JSON.stringify(er).slice(0,120)); await sleep(120); }
   }
   c=pg.pageInfo.hasNextPage?pg.pageInfo.endCursor:null;

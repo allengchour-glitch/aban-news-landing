@@ -39,7 +39,7 @@ const clean=await groqTitles(real.map(n=>n.title));
 let upd=0;
 for(let i=0;i<real.length;i++){
   const nt=(clean[i]||'').trim(); if(!nt||nt.length<8) continue;
-  const seo={title:`${nt} | LuxeStyle`.slice(0,70), description:`${nt} – 100% Original, Marken-Sportswear, schnelle EU-Lieferung (2–7 Tage), Gratis-Versand ab CHF 65, –10% mit WELCOME10.`.slice(0,320)};
+  const seo={title:`${nt} | LuxeStyle`.slice(0,70), description:`${nt} – 100% Original, Marken-Sportswear, schnelle EU-Lieferung (2–7 Tage), Gratis-Versand ab CHF 50, –10% mit WELCOME10.`.slice(0,320)};
   const r=await gql(tok,UPD,{id:real[i].id,t:nt.slice(0,64),s:seo});
   if(!(r?.data?.productUpdate?.userErrors||[]).length){upd++;console.log('✓',real[i].title.slice(0,40),'→',nt);} else console.log('err',JSON.stringify(r?.data?.productUpdate?.userErrors));
   await sleep(300);

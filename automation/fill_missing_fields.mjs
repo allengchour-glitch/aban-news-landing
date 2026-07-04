@@ -17,7 +17,7 @@ const clean=s=>(s||'').replace(/^[^\p{L}\p{N}]+/u,'').replace(/\s+/g,' ').trim()
 const cut=(s,n)=>s.length<=n?s:s.slice(0,n-1).trim()+'…';
 const textLen=h=>(h||'').replace(/<[^>]+>/g,'').replace(/&[a-z]+;/g,' ').trim().length;
 
-const TRUST='<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>🛡️ Sorglos shoppen:</strong> ✅ 100 % Original-Markenware · 🚚 EU-Lager – Lieferung ca. 3–7 Tage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>';
+const TRUST='<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>🛡️ Sorglos shoppen:</strong> ✅ 100 % Original-Markenware · 🚚 EU-Lager – Lieferung ca. 3–7 Tage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>';
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
@@ -58,7 +58,7 @@ for(const n of items){
   const input={id:n.id}; let touch=false;
   const seo={};
   if(!n.seo?.title||!n.seo.title.trim()){ seo.title=cut(`${ct} kaufen | LuxeStyle CH`,70); seoN++; touch=true; }
-  if(!n.seo?.description||!n.seo.description.trim()){ seo.description=cut(`${ct} online kaufen bei LuxeStyle Schweiz – Original-Qualität, schnelle EU-Lieferung, Gratis-Versand ab CHF 65.`,160); if(!('title'in seo))seoN++; touch=true; }
+  if(!n.seo?.description||!n.seo.description.trim()){ seo.description=cut(`${ct} online kaufen bei LuxeStyle Schweiz – Original-Qualität, schnelle EU-Lieferung, Gratis-Versand ab CHF 50.`,160); if(!('title'in seo))seoN++; touch=true; }
   if(Object.keys(seo).length)input.seo=seo;
   // Beschreibung nur bei ECHTER Leere/Trivialität (Enrichment-Loop macht die Langtexte separat)
   if(textLen(n.descriptionHtml)<40){

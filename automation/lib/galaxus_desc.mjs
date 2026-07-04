@@ -50,5 +50,5 @@ export function buildGalaxusDesc(rawDesc, {title, blurb}){
  return `<p>${intro}</p>\n${specHtml}`
   +`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">`
   +`<strong>🛡️ Sorglos shoppen:</strong> ✅ 100 % Original-Markenware · 🚚 EU-Lager – Lieferung ca. 3–7 Tage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>`
-  +`<p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+  +`<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
 }

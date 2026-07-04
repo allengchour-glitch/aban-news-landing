@@ -19,7 +19,7 @@ let T=await tok();
 const gql=async(q,v)=>{for(let a=0;a<5;a++){let r;try{r=await fetchT(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':T},body:JSON.stringify({query:q,variables:v})},30000);}catch{await sleep(1500);continue;}if(r.status===401){T=await tok();continue;}if(r.status===429||r.status>=500){await sleep((a+1)*1500);continue;}return r.json();}return null;};
 const clean=s=>(s||'').replace(/^[^\p{L}\p{N}]+/u,'').trim();
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const USP='<p>✔ Geprüfte Qualität · 🚚 Schnelle Lieferung · Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p>';
+const USP='<p>✔ Geprüfte Qualität · 🚚 Schnelle Lieferung · Gratis-Versand ab CHF 50 · ↩️ 30 Tage Rückgabe · –10 % mit Code WELCOME10</p>';
 
 async function gemini(title,samples){
   if(!GK)return null;

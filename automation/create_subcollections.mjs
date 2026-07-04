@@ -52,7 +52,7 @@ for(const s of SUBS){
  const rules=s.words.map(w=>({column:'TITLE',relation:'CONTAINS',condition:w}));
  if(!LIVE){console.log('（DRY) würde anlegen:',s.handle,'·',s.title,'·',rules.length,'Regeln');created++;continue;}
  const r=await gql(t,`mutation($i:CollectionInput!){collectionCreate(input:$i){collection{id} userErrors{message}}}`,
-   {i:{handle:s.handle,title:s.title,ruleSet:{appliedDisjunctively:true,rules},descriptionHtml:`<p>${s.title} bei LuxeStyle – kuratierte Auswahl. 🇨🇭 Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · Code WELCOME10 = –10%.</p>`,seo:{title:`${s.title.replace(/^[^\p{L}]+/u,'')} kaufen | LuxeStyle Schweiz`,description:`${s.title.replace(/^[^\p{L}]+/u,'')} online kaufen bei LuxeStyle – Gratis-Versand ab CHF 65.`}}});
+   {i:{handle:s.handle,title:s.title,ruleSet:{appliedDisjunctively:true,rules},descriptionHtml:`<p>${s.title} bei LuxeStyle – kuratierte Auswahl. 🇨🇭 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Code WELCOME10 = –10%.</p>`,seo:{title:`${s.title.replace(/^[^\p{L}]+/u,'')} kaufen | LuxeStyle Schweiz`,description:`${s.title.replace(/^[^\p{L}]+/u,'')} online kaufen bei LuxeStyle – Gratis-Versand ab CHF 50.`}}});
  const e=r?.data?.collectionCreate?.userErrors||[];
  if(e.length){console.log('⚠️',s.handle,JSON.stringify(e).slice(0,120));skipped++;continue;}
  const id=r.data.collectionCreate.collection.id;

@@ -22,7 +22,7 @@ const rules=[
  {column:'TITLE',relation:'CONTAINS',condition:'kleinkind'},
  {column:'TITLE',relation:'CONTAINS',condition:'säugling'},
 ];
-const seo={title:'Baby & Kleinkind kaufen | LuxeStyle Schweiz', description:('Baby & Kleinkind: Spielzeug, Plüsch, Body, Lätzchen, Pflege & Ausstattung für die Kleinsten. '+'Gratis-Versand ab CHF 65, 30 Tage Rückgabe.').slice(0,160)};
+const seo={title:'Baby & Kleinkind kaufen | LuxeStyle Schweiz', description:('Baby & Kleinkind: Spielzeug, Plüsch, Body, Lätzchen, Pflege & Ausstattung für die Kleinsten. '+'Gratis-Versand ab CHF 50, 30 Tage Rückgabe.').slice(0,160)};
 
 const ex=(await gql(`{collectionByHandle(handle:"${h}"){id}}`))?.data?.collectionByHandle;
 let id;

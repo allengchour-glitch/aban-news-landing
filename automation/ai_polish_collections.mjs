@@ -42,7 +42,7 @@ Beispielprodukte dieser Kategorie: ${sampleProducts.slice(0,6).join('; ')||'(kei
 Schreibe:
 1) "description_html": ZWEI vollständige Absätze als HTML (<p>..</p><p>..</p>). JEDER Absatz mindestens 22 und höchstens 38 Wörter, in ganzen Sätzen. Absatz 1: emotionaler Nutzen/Lifestyle. Absatz 2: konkret was es hier gibt (Marken/Stile/Qualität, falls aus den Beispielprodukten erkennbar — keine Marken erfinden). Keine Emojis.
 2) "seo_title": max 60 Zeichen, enthält die Kategorie + "LuxeStyle".
-3) "seo_description": max 155 Zeichen, verkaufsstark, mit Hinweis "Gratis-Versand ab CHF 65".
+3) "seo_description": max 155 Zeichen, verkaufsstark, mit Hinweis "Gratis-Versand ab CHF 50".
 
 Antworte NUR als JSON: {"description_html":"...","seo_title":"...","seo_description":"..."}`;
   let raw=await groq(prompt);
@@ -50,7 +50,7 @@ Antworte NUR als JSON: {"description_html":"...","seo_title":"...","seo_descript
   if(!j){raw=await gemini(prompt);j=parseJson(raw);}
   if(!j||!j.description_html)return null;
   // Trust-Zeile einheitlich anhängen
-  const trust='<p><strong>100 % Original · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · Code WELCOME10 = 10 %</strong></p>';
+  const trust='<p><strong>100 % Original · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Code WELCOME10 = 10 %</strong></p>';
   return {
     descriptionHtml: j.description_html.trim()+trust,
     seoTitle: (j.seo_title||title).slice(0,70),

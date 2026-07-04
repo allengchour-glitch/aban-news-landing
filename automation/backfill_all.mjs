@@ -29,7 +29,7 @@ const textlen=h=>(h||'').replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/g,' ').tri
 const sanit=h=>(h||'').replace(/<script[\s\S]*?<\/script>/gi,'').replace(/ on\w+="[^"]*"/gi,'').trim();
 
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.trim()).filter(Boolean):[]);
-const TRUST='<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>🛡️ Sorglos shoppen:</strong> ✅ 100 % Original-Markenware · 🚚 EU-Lager – Lieferung ca. 3–7 Tage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>';
+const TRUST='<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>🛡️ Sorglos shoppen:</strong> ✅ 100 % Original-Markenware · 🚚 EU-Lager – Lieferung ca. 3–7 Tage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>';
 const ENRICHED=/(^|,)(gemini-desc|ls-ai-deep|ls-ai-desc)(,|$)/;
 
 const Q=`query($c:String){products(first:40,query:"${QUERY}",after:$c){pageInfo{hasNextPage endCursor}edges{node{id handle tags descriptionHtml media(first:20){nodes{preview{image{url}}}}}}}}`;

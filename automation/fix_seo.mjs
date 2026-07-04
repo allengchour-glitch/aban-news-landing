@@ -29,7 +29,7 @@ while(true){
   const st=(p.seo?.title||'').trim(), sd=(p.seo?.description||'').trim();
   if(!st||!sd){
    const nt=(p.title+' | LuxeStyle CH').slice(0,70);
-   const nd=(`${p.title} – ${p.productType||'Produkt'} bei LuxeStyle Schweiz. 100% geprüft, EU-Lager, 30 Tage Rückgabe, Gratis-Versand ab CHF 65.`).slice(0,320);
+   const nd=(`${p.title} – ${p.productType||'Produkt'} bei LuxeStyle Schweiz. 100% geprüft, EU-Lager, 30 Tage Rückgabe, Gratis-Versand ab CHF 50.`).slice(0,320);
    if(!DRY){const u=await gql(T,UPSEO,{id:p.id,t:nt,d:nd}); if((u.data?.productUpdate?.userErrors||[]).length)continue;}
    seoFixed++;
    if(!DRY)await sleep(70);

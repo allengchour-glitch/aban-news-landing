@@ -52,5 +52,5 @@ export function buildGadgetDesc(title){
  return `<p><strong>${esc(title)}</strong> — ${esc(hook)}</p>\n${specHtml}`
   +`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;">`
   +`<strong>🛡️ Sorglos shoppen:</strong> 🇨🇭 Schweizer Shop · 📦 Lieferung ca. 8–16 Tage · 🔄 30 Tage Rückgabe · 💳 TWINT, Karte &amp; Klarna.</div>`
-  +`<p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+  +`<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
 }

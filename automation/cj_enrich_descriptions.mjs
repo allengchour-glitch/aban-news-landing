@@ -21,7 +21,7 @@ HTML: 1 Einleitungs-<p>, dann <h3>Das zeichnet es aus</h3> mit 3-4 <li> in einem
   let t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';t=t.replace(/```html?/g,'').replace(/```/g,'').trim();if(t.length>120)return t;}
  return null;
 }
-const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung ca. 8–16 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung ca. 8–16 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
 function specsList(d){
  const li=[]; const v=(d.variants||[])[0]||{};
  const TMAP={'Mouse Pad':'Mauspad','Rubber Mouse Pad':'Mauspad (Gummi)','Keyboard':'Tastatur','Gaming Keyboard':'Gaming-Tastatur','Mouse':'Maus','Gaming Mouse':'Gaming-Maus','Headset':'Headset','Headphone':'Kopfhörer','Earphone':'Kopfhörer'};const type=TMAP[d.entryNameEn]||d.entryNameEn||''; if(type)li.push(`<li><strong>Produktart:</strong> ${type}</li>`);

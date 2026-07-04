@@ -20,7 +20,7 @@ const c={
 };
 
 const rules=c.terms.map(term=>({column:'TITLE',relation:'CONTAINS',condition:term}));
-const seo={title:('Winter & Kälte · Heizung, Heizdecke, Handschuhe | LuxeStyle').slice(0,70), description:(c.d+' Gratis-Versand ab CHF 65, 30 Tage Rückgabe.').slice(0,160)};
+const seo={title:('Winter & Kälte · Heizung, Heizdecke, Handschuhe | LuxeStyle').slice(0,70), description:(c.d+' Gratis-Versand ab CHF 50, 30 Tage Rückgabe.').slice(0,160)};
 
 const ex=(await gql(`{collectionByHandle(handle:"${c.h}"){id}}`))?.data?.collectionByHandle;
 let id;
