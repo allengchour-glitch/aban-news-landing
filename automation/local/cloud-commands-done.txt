@@ -122,3 +122,5 @@ watchdog-20260704
 faq-pages-20260704
 faq-pages-fix-20260704
 blog-posts3-20260704
+theme-shipping-dry-20260704
+policy-shipping-go-20260704

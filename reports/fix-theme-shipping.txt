@@ -1,0 +1,8 @@
+Theme: Horizon · LuxeStyle + Email-Popup (Claude) (id 187533001089, role main)
+211 Kandidaten-Assets werden geprüft…
+
+templates/index.json:
+   "ab CHF 65"→"ab CHF 50" ×1
+   [DRY] nicht geschrieben.
+
+Fertig: 92 Assets gescannt, 0 geändert (DRY).
