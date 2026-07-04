@@ -206,6 +206,16 @@ footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var
 footer a{color:var(--muted)}
 footer a:hover{color:var(--accent-dk)}
 
+/* Sticky topnav */
+.topnav{position:sticky;top:0;z-index:100;background:#0f0f0f;border-bottom:2px solid var(--accent)}
+.tn-in{max-width:780px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:52px}
+.tn-brand{font-size:1.25rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-0.5px}
+.tn-brand:hover{color:var(--accent)}
+.tn-links{display:flex;gap:22px}
+.tn-links a{color:#d1d5db;text-decoration:none;font-size:.88rem;font-weight:500;transition:color .15s}
+.tn-links a:hover{color:#fff}
+@media(max-width:480px){.tn-links{gap:12px}.tn-links a{font-size:.78rem}}
+
 @media(max-width:600px){
   .hero .in{padding:32px 16px 28px}
   h2{font-size:1.15rem}
@@ -217,6 +227,17 @@ footer a:hover{color:var(--accent-dk)}
 </style>
 </head>
 <body>
+
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
 
 <nav class="bc" aria-label="Brotkrumen">
   <a href="/">Start</a> ›
@@ -599,6 +620,295 @@ footer a:hover{color:var(--accent-dk)}
     <p>Trinkflaschen sind ein oft vergessenes Nachhaltigkeits-Detail beim Training: <a href="/trinkflaschen-kaufen-schweiz.html">Trinkflaschen Schweiz</a> — Edelstahl vs. Kunststoff im Vergleich.</p>
   </section>
 
+  <!-- ===================== SECTION 13: HOME-YOGA VS. STUDIO ===================== -->
+  <section class="section-box">
+    <h2>Home-Yoga vs. Yogastudio: Kostenvergleich für die Schweiz</h2>
+    <p>Die grösste Weichenstellung vor jedem Equipment-Kauf ist die Grundsatzfrage: trainiert ihr zuhause, im Studio — oder in einer Kombination aus beidem? Beide Wege haben in der Schweiz unterschiedliche Kostenstrukturen.</p>
+
+    <div class="ctable-wrap">
+      <table class="ctable" aria-label="Kostenvergleich Home-Yoga und Yogastudio">
+        <thead>
+          <tr>
+            <th>Modell</th>
+            <th>Kosten CHF</th>
+            <th>Vorteile</th>
+            <th>Nachteile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cat">🏠 Home-Yoga</td>
+            <td class="price">CHF 60–200 einmalig</td>
+            <td>Flexible Zeiten, kein Anfahrtsweg, langfristig günstiger</td>
+            <td>Weniger Korrektur der Haltung, braucht Selbstdisziplin</td>
+          </tr>
+          <tr>
+            <td class="cat">🧘 Yogastudio-Abo</td>
+            <td class="price">CHF 100–200/Monat</td>
+            <td>Direkte Korrektur durch Lehrpersonen, soziale Motivation, feste Termine</td>
+            <td>Laufende Kosten, an Öffnungszeiten und Standort gebunden</td>
+          </tr>
+          <tr>
+            <td class="cat">🔀 Hybrid</td>
+            <td class="price">CHF 50–100/Monat + Grundausstattung</td>
+            <td>1–2× Studio pro Woche für Technik, Rest zuhause üben</td>
+            <td>Erfordert etwas Planung, zwei Budgetposten statt einem</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Ein Yogastudio-Abo in Zürich, Bern, Basel oder Genf kostet je nach Anbieter zwischen CHF 100 und CHF 200 pro Monat für unlimitierten Zugang, Zehnerkarten liegen meist bei CHF 180–280. Wer 2–3× pro Woche trainiert, zahlt damit über ein Jahr gerechnet deutlich mehr als für eine vollständige Home-Ausrüstung, die mehrere Jahre hält.</p>
+
+    <div class="hl-box">
+      <p><strong>Rechenbeispiel:</strong> Ein Studio-Abo für CHF 150/Monat kostet über 12 Monate CHF 1'800. Eine Premium-Home-Ausrüstung (Matte, Blöcke, Gurt, Bolster) liegt einmalig bei CHF 150–250 und hält bei guter Pflege 5–8 Jahre. Wer die Technik einmal im Studio gelernt hat, kann danach vollständig oder teilweise zuhause weiterüben.</p>
+    </div>
+
+    <p>In der Praxis funktioniert für viele Schweizer Haushalte eine Kombination am besten: Grundlagen und Ausrichtung im Studio lernen, Routine und Wiederholung zuhause aufbauen.</p>
+  </section>
+
+  <!-- ===================== SECTION 14: GRUNDAUSSTATTUNG BUDGET VS PREMIUM ===================== -->
+  <section class="section-box">
+    <h2>Grundausstattung Home-Yoga: Budget-Set vs. Premium-Set</h2>
+    <p>Für ein vollständiges Home-Yoga-Setup braucht es fünf Kernelemente: Matte, Block, Gurt, Bolster und eine Decke. Wie viel ihr investiert, hängt davon ab, wie regelmässig ihr übt.</p>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="tier">Budget-Set</div>
+        <div class="amount">CHF 65–95</div>
+        <p>TPE-Matte, 2 Schaumstoffblöcke, Baumwollgurt, gerolltes Badetuch statt Bolster. Solide Basis für den Einstieg.</p>
+      </div>
+      <div class="price-card">
+        <div class="tier">Premium-Set</div>
+        <div class="amount">CHF 220–350</div>
+        <p>Kork- oder NR-Matte, 2 Korkblöcke, Baumwollgurt mit Metallschnalle, gefüllter Bolster, Wolldecke. Langlebig und komfortabel.</p>
+      </div>
+    </div>
+
+    <p>Die Decke wird oft unterschätzt: Sie dient als Sitzunterlage in Meditation, als Wärmequelle in der Endentspannung (Savasana) und als zusätzliche Polsterung unter den Knien. Eine einfache Wolldecke reicht — spezielle „Yoga-Decken" sind meist nur teurer bedrucktes Standardmaterial.</p>
+
+    <h3>Reihenfolge beim Aufbau der Ausstattung</h3>
+    <ol>
+      <li>Matte zuerst — sie beeinflusst jede Übung direkt.</li>
+      <li>Nach 2–4 Wochen: Blöcke, sobald ihr merkt, wo Unterstützung fehlt (z. B. bei Vorwärtsbeugen).</li>
+      <li>Gurt, sobald Übungen mit gestreckten Armen/Beinen schwerfallen.</li>
+      <li>Bolster erst, wenn Yin- oder Restorative-Yoga fester Bestandteil der Routine wird.</li>
+    </ol>
+  </section>
+
+  <!-- ===================== SECTION 15: YOGASTILE SCHWEIZ ===================== -->
+  <section class="section-box">
+    <h2>Yogastile in der Schweiz: Welche Ausrüstung passt zu welchem Stil?</h2>
+    <p>Schweizer Studios bieten meist mehrere Stile parallel an. Wer weiss, welcher Stil zusagt, kann die Ausrüstung gezielter zusammenstellen:</p>
+
+    <h3>Hatha Yoga</h3>
+    <p>Langsames Tempo, Haltungen werden länger gehalten. Gut geeignet für Einsteiger. Ausrüstung: Standardmatte 5–6 mm, 1–2 Blöcke für Ausrichtungshilfe.</p>
+
+    <h3>Vinyasa Yoga</h3>
+    <p>Fliessende Bewegungsabläufe im Atemrhythmus, schweisstreibender als Hatha. Ausrüstung: griffige Matte (Kork oder Naturkautschuk), da Hände und Füsse bei Sonnengrüssen stark beansprucht werden.</p>
+
+    <h3>Yin Yoga</h3>
+    <p>Passive, lange gehaltene Dehnhaltungen (3–5 Minuten). Ausrüstung: Bolster, mehrere Blöcke, Decke — Props sind hier zentral, nicht optional.</p>
+
+    <h3>Ashtanga Yoga</h3>
+    <p>Feste Übungsreihe mit hoher körperlicher Intensität. Ausrüstung: rutschfeste, gut haftende Matte, Handtuch bei starkem Schwitzen (Hot-Ashtanga-Varianten in einigen Studios).</p>
+
+    <h3>Pilates (oft parallel angeboten)</h3>
+    <p>Fokus auf Rumpfstabilität, viele Bodenübungen in Rückenlage. Ausrüstung: dickere Gymnastikmatte (10–15 mm) statt dünner Yogamatte, Pilates-Ring oder kleiner Ball als Ergänzung.</p>
+
+    <div class="hl-box">
+      <p><strong>Praxistipp:</strong> Wer den Stil noch nicht kennt, sollte vor dem Kauf einer teuren Spezialausrüstung 2–3 Probestunden in unterschiedlichen Stilen besuchen. Die meisten Schweizer Studios stellen Matten für Schnupperstunden kostenlos zur Verfügung.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 16: SCHWEIZER YOGA-SZENE ===================== -->
+  <section class="section-box">
+    <h2>Die Schweizer Yoga-Szene: Studios, Ausbildungen und Outdoor-Yoga</h2>
+    <p>Die Schweiz hat eine vergleichsweise dichte und professionelle Yoga-Szene, was sich auch auf Qualität und Angebot an Kursen und Zubehör auswirkt.</p>
+
+    <h3>Grosse Studios in den Städten</h3>
+    <p>In Zürich, Basel und Genf gibt es mehrere etablierte Studio-Ketten mit grossem Kursangebot, teils mit eigenem Matten- und Prop-Verleih vor Ort. Das ist praktisch für den Einstieg, da ihr nicht sofort eigenes Equipment mitbringen müsst.</p>
+
+    <h3>Yogalehrer-Ausbildungen (Yoga Alliance)</h3>
+    <p>Viele Schweizer Lehrpersonen sind nach den Standards der internationalen Yoga Alliance zertifiziert (200-Stunden- oder 500-Stunden-Ausbildung). Das ist ein nützliches Qualitätsmerkmal bei der Studio- oder Kurswahl, auch wenn es keine gesetzliche Vorschrift in der Schweiz ist.</p>
+
+    <h3>Outdoor-Yoga im Sommer</h3>
+    <p>Von Mai bis September bieten viele Studios und freischaffende Lehrpersonen Outdoor-Yoga in Parkanlagen an — etwa am Rhein in Basel, an der Limmat in Zürich oder in Genfer Seeuferparks. Für Outdoor-Sessions eignet sich eine robustere, leichter zu reinigende Matte besser als eine empfindliche Premium-Matte, da Gras, Erde und gelegentlich Feuchtigkeit stärker beanspruchen.</p>
+
+    <div class="warn-box">
+      <p>⚠️ <strong>Outdoor-Hinweis:</strong> Nach dem Training im Freien die Matte immer ausklopfen und trocken einrollen — feucht aufgerollte Matten entwickeln in der Tragetasche schnell Schimmel, besonders bei Naturmaterialien wie Kork.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 17: FITNESS-KLEINGERÄTE ===================== -->
+  <section class="section-box">
+    <h2>Fitness-Kleingeräte: vielseitig und platzsparend</h2>
+    <p>Neben Matte und Gewichten lohnt sich eine kleine Sammlung an Kleingeräten — sie nehmen kaum Platz weg, lassen sich einfach verstauen und decken viele Trainingsziele ab.</p>
+
+    <h3>Faszienrolle</h3>
+    <p>Zur Selbstmassage nach dem Training, löst Verspannungen in Oberschenkel, Rücken und Waden. Preis CHF 20–55, Standardlänge 33 cm passt in jeden Schrank.</p>
+
+    <h3>Gymnastikball (Swiss Ball)</h3>
+    <p>Für Rumpfstabilität, Rückentraining und als Sitzalternative im Homeoffice. Grösse nach Körpergrösse wählen: 55 cm bis 165 cm, 65 cm bis 185 cm, 75 cm darüber. Preis CHF 15–35.</p>
+
+    <h3>Springseil</h3>
+    <p>Effizientes Cardio-Training auf kleinstem Raum, gut für Intervalltraining. Achtung auf Deckenhöhe (siehe Raumplanung unten) und einen belastbaren Boden — auf Parkett besser mit dickerer Unterlage springen.</p>
+
+    <h3>Pilates-Ring und kleine Bälle</h3>
+    <p>Für gezieltes Training der inneren Oberschenkel- und Rückenmuskulatur, ergänzen Matten-Workouts sinnvoll. Preis CHF 10–25.</p>
+
+    <p>Diese Kleingeräte passen alle in eine Sporttasche oder einen kleinen Korb neben der zusammengerollten Matte — ideal für Wohnungen ohne separaten Trainingsraum.</p>
+  </section>
+
+  <!-- ===================== SECTION 18: HOME-GYM RAUMPLANUNG ===================== -->
+  <section class="section-box">
+    <h2>Home-Gym-Raumplanung: Platzbedarf, Deckenhöhe und Mietwohnung</h2>
+    <p>Bevor Equipment angeschafft wird, lohnt sich eine kurze Raumplanung — gerade in Schweizer Mietwohnungen mit begrenztem Platz und dünnen Zwischendecken.</p>
+
+    <h3>Mindestplatzbedarf</h3>
+    <ul>
+      <li><strong>Matten-Training:</strong> mindestens 2,5 m² freie Fläche (Matte plus Bewegungsspielraum für Arme und Beine).</li>
+      <li><strong>Kettlebell-Swings, Springseil:</strong> 3 × 3 m empfohlen, plus ausreichend Deckenhöhe für Überkopfbewegungen und Sprünge (mind. 2,3–2,4 m).</li>
+      <li><strong>Home-Gym mit Bank und Hanteln:</strong> ab 4–6 m² für Bank, Gewichte und Bewegungsfreiheit beim Heben.</li>
+    </ul>
+
+    <h3>Rücksicht auf Nachbarn in Mietwohnungen</h3>
+    <p>Springseil, Sprünge und das Ablegen von Kettlebells oder Hanteln übertragen sich in Schweizer Mehrfamilienhäusern oft deutlich auf die Etage darunter. Eine dicke Gummimatte oder spezielle Bodenschutzfliesen (Puzzle-Fliesen, CHF 25–60 für 4 m²) dämpfen Trittschall spürbar und schützen zugleich den Parkettboden vor Abdrücken durch Gewichte.</p>
+
+    <h3>Spiegel richtig anbringen</h3>
+    <p>Ein Wandspiegel hilft enorm bei der Haltungskontrolle, etwa bei Kniebeugen oder Yoga-Ausrichtung. In Mietwohnungen empfiehlt sich ein freistehender Standspiegel oder ein an einer Leiste eingehängter Spiegel statt fest verschraubter Wandmontage — das vermeidet Bohrlöcher, die beim Auszug Diskussionen mit der Verwaltung auslösen können.</p>
+
+    <div class="hl-box">
+      <p><strong>Praxistipp:</strong> Wer wenig Platz hat, richtet einen klappbaren oder verstaubaren Trainingsbereich ein — Matte und Kleingeräte in einer Ecke stapeln, statt einen festen Raum zu blockieren. Wandhalterungen für Matten und Bänder (CHF 15–25) halten den Boden frei.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 19: KRANKENKASSEN-ZUSCHÜSSE ===================== -->
+  <section class="section-box">
+    <h2>Krankenkassen-Zuschüsse: Fitness- und Yoga-Kosten sparen</h2>
+    <p>Viele Schweizer Zusatzversicherungen beteiligen sich an Kosten für Bewegung und Prävention — das wird beim Equipment-Budget oft vergessen.</p>
+
+    <h3>Typische Leistungen (Zusatzversicherung, Bonus-Programme)</h3>
+    <ul>
+      <li><strong>CSS:</strong> Bonus-Programm mit Beiträgen an Fitnessabos und anerkannte Präventionskurse, abhängig vom gewählten Zusatzmodell.</li>
+      <li><strong>Helsana:</strong> Beteiligung an Fitnesscenter-Abos und Bewegungskursen über bestimmte Zusatzversicherungen (z. B. Helsana Plus-Programme).</li>
+      <li><strong>Sanitas:</strong> Zuschüsse an geprüfte Präventionskurse, teils inklusive Yoga- oder Pilates-Kurse mit anerkannter Zertifizierung.</li>
+      <li><strong>Weitere Kassen (Swica, Concordia, Visana u. a.):</strong> bieten ähnliche Bonusprogramme, Details unterscheiden sich stark je nach Zusatzpolice.</li>
+    </ul>
+
+    <h3>Voraussetzungen</h3>
+    <p>Meist ist eine Zusatzversicherung (nicht die Grundversicherung) nötig, und der Kurs muss von einer anerkannten Stelle zertifiziert sein (z. B. Qualicert oder vergleichbare Prüfsiegel für Präventionskurse). Reine Selbstanschaffung von Equipment wird in der Regel nicht bezuschusst — es geht meist um Kursbeiträge oder Abo-Kosten, nicht um Matten oder Hanteln.</p>
+
+    <div class="warn-box">
+      <p>⚠️ <strong>Vor dem Kurskauf prüfen:</strong> Die genauen Bedingungen (Höchstbetrag pro Jahr, Anzahl Belege, anerkannte Anbieter) unterscheiden sich je nach Kasse und Modell stark. Am besten vor Kursbeginn direkt bei der eigenen Krankenkasse nachfragen, ob der gewählte Yoga- oder Fitnesskurs anrechenbar ist — im Nachhinein eingereichte Belege werden sonst oft abgelehnt.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 20: APP-GESTÜTZTES TRAINING ===================== -->
+  <section class="section-box">
+    <h2>App-gestütztes Training: Equipment und Apps sinnvoll kombinieren</h2>
+    <p>Physische Ausrüstung liefert die Grundlage, Trainings-Apps liefern die Struktur. Eine gute Kombination hält die Motivation über Monate hinweg aufrecht.</p>
+
+    <h3>Down Dog</h3>
+    <p>Generiert bei jedem Start eine neue Yoga-Sequenz, wählbar nach Stil (Hatha, Vinyasa, Yin), Dauer und Level. Praktisch, um nicht immer dieselben Abläufe zu wiederholen. Abo ca. CHF 8–13/Monat.</p>
+
+    <h3>Peloton App</h3>
+    <p>Breites Kursangebot für Kraft, Yoga, Laufen und Radfahren, teils mit Anbindung an eigenes Equipment (Bike, Laufband). Funktioniert auch ohne Peloton-Hardware mit normaler Matte und Gewichten. Abo ca. CHF 13–20/Monat.</p>
+
+    <h3>Strong / Fitbod (Krafttraining)</h3>
+    <p>Trainingsplan-Apps, die Übungen basierend auf vorhandenem Equipment (Kettlebell, Kurzhanteln, Bänder) vorschlagen und den Fortschritt automatisch protokollieren.</p>
+
+    <h3>Insight Timer</h3>
+    <p>Gratis-App mit riesiger Auswahl an geführten Meditationen — gute Ergänzung nach dem Yoga-Training oder als eigenständige Achtsamkeitspraxis.</p>
+
+    <p>Wer eine App nutzt, sollte das Smartphone oder Tablet stabil positionieren (Ständer, CHF 15–30) statt es während der Übung in der Hand zu halten — das verbessert sowohl Sicherheit als auch Ausführung der Bewegungen.</p>
+  </section>
+
+  <!-- ===================== SECTION 21: LOKALE MANUFAKTUREN ===================== -->
+  <section class="section-box">
+    <h2>Lokale Manufakturen und plastikfreies Zubehör</h2>
+    <p>Neben grossen internationalen Marken gibt es in der Schweiz kleinere Hersteller und Werkstätten, die Yoga- und Fitnesszubehör aus natürlichen Materialien fertigen. Das lohnt sich besonders bei Produkten, die lange im direkten Hautkontakt stehen.</p>
+
+    <h3>Was lokale Manufakturen oft anders machen</h3>
+    <ul>
+      <li>Kürzere Transportwege als Ware aus Übersee, dadurch teils geringerer CO₂-Fussabdruck bei vergleichbarer Materialqualität.</li>
+      <li>Verwendung von Naturmaterialien wie Bio-Baumwolle, Wolle (für Decken und Bolster) oder unbehandeltem Kork.</li>
+      <li>Kleinere Produktionsmengen — dadurch oft weniger Einwegverpackung, teils in Papier statt Plastikfolie verschickt.</li>
+    </ul>
+
+    <h3>Worauf beim Kauf achten</h3>
+    <p>Anbieter, die Herkunft und Herstellungsprozess offenlegen (Materialangabe, Produktionsland, Zertifikate wie GOTS für Bio-Baumwolle), sind glaubwürdiger als reine Marketing-Aussagen wie „natürlich" ohne weitere Belege. Bewertungen und Rückgaberecht sollten auch bei kleineren Anbietern selbstverständlich sein.</p>
+
+    <div class="hl-box">
+      <p><strong>Kompromiss statt Alles-oder-nichts:</strong> Nicht jedes Produkt muss aus lokaler Fertigung stammen. Sinnvoll ist es, gezielt bei Produkten mit viel Hautkontakt (Decke, Bolster, Gurt) auf Naturmaterialien zu achten, während technische Teile (Kettlebell, Widerstandsband-Griffe) ruhig aus Standardproduktion kommen können.</p>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 22: WELLNESS-KOMBINATION ===================== -->
+  <section class="section-box">
+    <h2>Wellness-Kombination: Meditation, Achtsamkeit und Aromatherapie</h2>
+    <p>Yoga und Fitness lassen sich sinnvoll mit weiteren Entspannungsritualen kombinieren, die den Trainingsraum zuhause aufwerten, ohne viel zusätzlichen Platz zu beanspruchen.</p>
+
+    <h3>Meditationskissen (Zafu)</h3>
+    <p>Ein gefülltes rundes Sitzkissen (CHF 40–90) erleichtert das aufrechte, entspannte Sitzen bei Meditation und Atemübungen deutlich mehr als ein Sofakissen. Füllung meist Buchweizenschalen oder Kapok — beide passen sich der Sitzposition an.</p>
+
+    <h3>Atemübungen und Achtsamkeit</h3>
+    <p>Kurze Atemübungen (Pranayama) vor oder nach dem Training brauchen kein Equipment, wirken sich aber spürbar auf Erholung und Stresslevel aus. Viele Yoga-Apps (siehe oben) bieten geführte 5–10-Minuten-Sequenzen an.</p>
+
+    <h3>Aromatherapie als Ergänzung</h3>
+    <p>Ätherische Öle über einen Diffuser (etwa mit Lavendel für Entspannung oder Eukalyptus für Wachheit) können die Trainingsatmosphäre unterstützen. Details zu Auswahl und Betrieb von Diffusern behandelt der separate Ratgeber zu Aroma-Diffusern.</p>
+
+    <p>Diese Ergänzungen ersetzen keine Grundausstattung, machen aber aus einer Trainingsecke einen kleinen Wellness-Bereich — gerade in kleinen Schweizer Wohnungen, wo ein eigener Raum fürs Training selten möglich ist.</p>
+  </section>
+
+  <!-- ===================== SECTION 23: VEREINS- UND FIRMENFITNESS ===================== -->
+  <section class="section-box">
+    <h2>Vereins- und Firmenfitness: Gruppentraining in der Schweiz</h2>
+    <p>Nicht jedes Training muss allein zuhause oder in einem kommerziellen Studio stattfinden. Die Schweiz hat eine breite Vereinskultur, die auch Yoga und Fitness abdeckt.</p>
+
+    <h3>Turnvereine mit Yoga- und Fitnessangebot</h3>
+    <p>Viele lokale Turnvereine (Mitglied im Eidgenössischen Turnverband) bieten neben klassischem Turnen auch Yoga-, Pilates- oder Fitnessriegen an — meist deutlich günstiger als kommerzielle Studios (Jahresbeitrag oft unter CHF 200) und mit starker sozialer Komponente. Eigenes Equipment ist hier selten nötig, da Vereine meist Matten und Kleingeräte stellen.</p>
+
+    <h3>Betriebliches Gesundheitsmanagement (BGM)</h3>
+    <p>Zunehmend mehr Schweizer Arbeitgeber bieten im Rahmen von Gesundheitsförderungsprogrammen vergünstigte Fitnessabos, interne Yoga-Pausen oder Zuschüsse an Bewegungskurse an. Es lohnt sich, beim eigenen Arbeitgeber oder der HR-Abteilung gezielt nachzufragen — solche Angebote werden oft zu wenig genutzt, weil sie nicht aktiv beworben werden.</p>
+
+    <h3>Vorteile von Gruppentraining</h3>
+    <ul>
+      <li>Feste Termine schaffen Verbindlichkeit und reduzieren Ausfälle im Vergleich zu reinem Home-Training.</li>
+      <li>Soziale Motivation — gemeinsames Training hält Anfänger oft länger bei der Stange als Solo-Training.</li>
+      <li>Geteilte Kosten für Equipment (Matten, Bänder, Gymnastikbälle), das der Verein oder Arbeitgeber anschafft.</li>
+    </ul>
+  </section>
+
+  <!-- ===================== SECTION 24: GEBRAUCHT KAUFEN ===================== -->
+  <section class="section-box">
+    <h2>Gebraucht kaufen: Ricardo, Anibis und Studio-Liquidationen</h2>
+    <p>Nicht jedes Yoga- und Fitness-Equipment muss neu gekauft werden. Gerade bei robusteren Produkten lohnt sich ein Blick auf den Occasion-Markt.</p>
+
+    <h3>Ricardo und Anibis</h3>
+    <p>Auf den grossen Schweizer Occasion-Plattformen finden sich regelmässig gebrauchte Kettlebells, Hantelsets, Gymnastikbälle und teils auch Yogamatten. Bei Matten und textilen Produkten (Bolster, Decken) ist der Zustand entscheidend — Risse, starke Abnutzung oder Gerüche sind Ausschlusskriterien. Bei Metallgeräten (Kettlebells, Kurzhanteln) spielt der Zustand kaum eine Rolle, solange keine sichtbare Korrosion oder Beschädigung vorliegt.</p>
+
+    <h3>Was sich gebraucht gut kauft</h3>
+    <ul>
+      <li><strong>Kettlebells und Hantelscheiben:</strong> praktisch unverwüstlich, oft 30–50 % günstiger als neu.</li>
+      <li><strong>Hantelbänke und Klimmzugstangen:</strong> solange Schweissnähte und Polsterung intakt sind, unproblematisch.</li>
+      <li><strong>Gymnastikbälle:</strong> vor dem Kauf auf Materialermüdung (Risse, poröse Stellen) prüfen.</li>
+    </ul>
+
+    <h3>Was besser neu gekauft wird</h3>
+    <ul>
+      <li><strong>Yogamatten:</strong> Hygiene- und Hautkontaktprodukt — gebraucht nur bei sehr gutem Zustand und gründlicher Reinigung sinnvoll.</li>
+      <li><strong>Resistance-Bands:</strong> Material altert unsichtbar (Mikrorisse), Reissgefahr bei gebrauchten Bändern deutlich höher.</li>
+    </ul>
+
+    <h3>Studio-Liquidationen für Grossgeräte</h3>
+    <p>Wenn Schweizer Fitnessstudios schliessen oder ihr Equipment erneuern, verkaufen sie grössere Geräte (Hantelbänke, Gewichtsscheiben-Sets, teils Cardiogeräte) oft gebündelt und deutlich unter Neupreis. Solche Angebote tauchen unregelmässig auf Occasion-Plattformen oder in lokalen Anzeigen auf — ein gelegentlicher Suchlauf nach „Fitnessstudio Auflösung" oder „Studio Liquidation" in der eigenen Region kann sich lohnen, besonders für teure Grossgeräte wie Hantelbänke oder Klimmzugstangen.</p>
+
+    <div class="warn-box">
+      <p>⚠️ <strong>Vorsicht bei Elektronik:</strong> Gebrauchte Fitnesstracker, Smartwatches oder elektronische Trainingsgeräte mit Akku sollten immer vor Ort getestet werden — Akkuzustand und Softwareunterstützung sind bei älteren Occasion-Geräten oft eingeschränkt.</p>
+    </div>
+  </section>
+
   <!-- ===================== SHOP ROW ===================== -->
   <section style="margin-top:8px">
     <h2 style="margin-bottom:4px">🛍️ Aus dem Shop — versandfertig (CH)</h2>
@@ -644,6 +954,7 @@ footer a:hover{color:var(--accent-dk)}
       <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail-Adresse">
       <button type="submit">Anmelden</button>
     </form>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </div>
 
   <!-- ===================== RELATED LINKS ===================== -->
@@ -664,13 +975,11 @@ footer a:hover{color:var(--accent-dk)}
 
 <footer>
   <div class="wrap">
-    aban news · Yoga &amp; Fitness Kaufberater Schweiz 2026 ·
-    <a href="/">Start</a> ·
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
     <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
-    <a href="/marktplatz.html">Marktplatz</a> ·
     <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a>
-    <br><small>Preisangaben in CHF, Stand Juni 2026. Ohne Gewähr. Keine bezahlte Platzierung.</small>
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
