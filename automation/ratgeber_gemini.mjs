@@ -110,6 +110,22 @@ const TOPICS=[
  ['Damen-Blusen & Tops richtig kombinieren: der Styling-Guide','damen bluse top','damen-blusen','Damen-Blusen & Tops'],
  ['Schnellladegerät & USB-C: das richtige Ladegerät für dein Handy','schnellladegerät usb-c','ladegeraete','Ladegeräte'],
  ['Socken & Strümpfe: das richtige Paar für Sport, Business & Alltag','socken strümpfe','socken-strumpfe','Socken & Strümpfe'],
+ // ── Welle 4: neue Long-Tail-Kaufberatungen (Handles gegen Live-Katalog verifiziert) ──
+ ['Gaming-Headset kaufen: Sound, Mikrofon & Komfort im Vergleich','gaming headset','gaming-headsets','Gaming-Headsets'],
+ ['Gaming-Controller-Guide: der richtige Controller für dein Spielgefühl','gaming controller','gaming-controller','Gaming-Controller'],
+ ['Portemonnaie & Geldbörse: das richtige Modell für Alltag & Reise','portemonnaie','portemonnaie','Portemonnaies'],
+ ['Gürtel-Guide: Breite, Material & Schnalle richtig wählen','gürtel','guertel','Gürtel'],
+ ['Caps & Hüte: die passende Kopfbedeckung für jeden Look','caps hüte','caps-huete','Caps & Hüte'],
+ ['Herren-Schuhe-Guide: vom Business-Schuh bis zum Freizeit-Sneaker','herren schuhe','herren-schuhe','Herren-Schuhe'],
+ ['Halsketten-Guide: Länge, Material & Stil richtig kombinieren','halskette','sub-halsketten','Halsketten'],
+ ['Ringgrösse bestimmen: so findest du den perfekt sitzenden Ring','ringgrösse','sub-ringe','Ringe'],
+ ['Ohrringe-Guide: Stecker, Creolen & Hänger für jeden Anlass','ohrringe','sub-ohrringe','Ohrringe'],
+ ['Herren-Uhren-Guide: welcher Uhrentyp passt zu deinem Stil?','herrenuhr','herren-uhren','Herren-Uhren'],
+ ['Bademode-Guide: Bikini, Badeanzug & Badeshorts richtig wählen','bademode','sub-bademode','Bademode'],
+ ['Metalldetektor kaufen: der grosse Einsteiger-Ratgeber zur Schatzsuche','metalldetektor','metalldetektoren-schatzsuche','Metalldetektoren'],
+ ['Haarstyling-Tools: Föhn, Glätteisen & Lockenstab richtig einsetzen','haarstyling tools','haarstyling-tools','Haarstyling-Tools'],
+ ['Laptop-Rucksack-Guide: Schutz, Komfort & Stauraum fürs Büro','laptop rucksack','rucksaecke-laptop','Laptop-Rucksäcke'],
+ ['Angeln für Einsteiger: die richtige Grundausstattung zum Start','angeln einsteiger','angeln','Angeln'],
 ];
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 async function gemini(title,coll,collName){
