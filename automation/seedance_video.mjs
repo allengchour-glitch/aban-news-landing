@@ -20,10 +20,15 @@ const KEY = process.env.FAL_KEY || '';
 // „Not Found" -> kein Output. Jetzt FALLBACK-KETTE bewaehrter fal-Seedance-Modelle: probiert der Reihe
 // nach durch, bis eins liefert (SEEDANCE_MODEL-ENV hat Vorrang, sonst die Kette). Jeder Fehlschlag wird
 // klar geloggt -> ich sehe im seedance.log genau welche ID fal akzeptiert.
+// FIX 2026-07-04 (User-Video „Fastest Way to Create Product Ads Using Seedance 2 + Claude"): Seedance 2.0
+// NACH VORNE (war nur letzter Fallback -> wir liefen faktisch auf v1). 2.0 = native Audio, echte Physik,
+// Director-Kamera. fal-IDs per fal.ai verifiziert (April 2026 live). Kosten 2.0: fast 720p ~$0.24/Sek
+// (~$1.20 pro 5-Sek-Clip), standard bis 1080p ~$0.30/Sek. v1 bleibt als guenstiger Fallback (Not-Found/Credits).
 const MODELS = process.env.SEEDANCE_MODEL ? [process.env.SEEDANCE_MODEL] : [
-  'bytedance/seedance/v1/pro/image-to-video',
+  'bytedance/seedance-2.0/fast/image-to-video',   // 2.0 Fast (max 720p) — bester Preis/Qualitaet-Default
+  'bytedance/seedance-2.0/image-to-video',        // 2.0 Standard (bis 1080p) — Hero/Final-Ads
+  'bytedance/seedance/v1/pro/image-to-video',     // v1 Fallback falls 2.0 Not-Found/Credits leer
   'bytedance/seedance/v1/lite/image-to-video',
-  'bytedance/seedance-2.0/fast/image-to-video',
 ];
 const IMG = val('--image');
 // PROMPT-LEHRE 2026-06-26 (YouTube Seedance 2.0 / Julian): KURZE englische Ad-Keywords schlagen lange
@@ -47,7 +52,7 @@ async function imageUrl(src) {
 
 (async () => {
   if (!IMG) { log('--image fehlt'); process.exit(1); }
-  if (!KEY && !DRY) { log('❌ Kein FAL_KEY. fal.ai-Key in ENV setzen (Fast-Tier ~$0.022/Sek). Dann erneut.'); process.exit(0); }
+  if (!KEY && !DRY) { log('❌ Kein FAL_KEY. fal.ai-Key in ENV setzen (2.0 Fast ~$0.24/Sek, v1 ~$0.02-0.09/Sek). Dann erneut.'); process.exit(0); }
   const input = { prompt: PROMPT, image_url: await imageUrl(IMG), resolution: RES, duration: DUR, aspect_ratio: AR, generate_audio: AUDIO };
   log('Seedance Kandidaten:', MODELS.join(' | '), '·', RES, DUR + 's', AR, AUDIO ? '+Audio' : 'stumm');
   if (DRY) { log('[dry] wuerde generieren:', JSON.stringify(input).slice(0, 200), '->', OUT); process.exit(0); }
