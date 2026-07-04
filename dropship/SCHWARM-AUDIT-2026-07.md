@@ -32,3 +32,11 @@
 - **CizQ6 autonom (Copy/Struktur/Metas/Nav):** 4, 12, 13, 14, 15 + Produkt-Metas · Landingpages (Skript) · Collection-Rename.
 - **Theme-Session:** 1(Estimator), 8, 9, 10, 11, Sticky-ATC, Payment-Badges, Homepage-Meta.
 - **NUR User:** 3(Versandprofil), 5(Judge.me), 6/7(Policy/Beschaffung), Sprint A/B/C, Google-CSS.
+
+## 🖼️ BILD-AUDIT (Agent 10, 6.500+ Produkte visuell inspiziert)
+- **SAUBER (kein Handlungsbedarf):** Mode, Fan-Artikel/Trikots, Anime-Funkos, Marken-Schmuck, Marken-Beauty (Chanel/Clinique…). Fan-Trikot-Cartoon-Falle bereits gefixt.
+- **🔴 ROOT-CAUSE (~80% aller Fundstellen):** Elektronik/Gadgets/Gaming (BigBuy/CJ) haben als **Position-1-Bild Lieferanten-Infographics mit Fremd-Watermark + engl. Text** (VEVOR/AUMEON-Batterien, RADIOMASTER-RC, TOMI-Uhren, Nagellampen, Gaming-Controller, Drohnen). Meist existiert ein sauberes Weissbild weiter hinten → FIX = **Media umsortieren** (`productReorderMedia`, per Skript+Gemini-Vision), wo kein sauberes Bild: archivieren. [CizQ6/PC-Gemini]
+- **Fremd-Watermark auf Premium-Schmuck** („REAL STERLING SILVER S925"-Stempel, engl. Banner) — Trust-Segment! → umsortieren/wegcroppen.
+- **1 Cartoon-Fund:** Rena-Rouge-Puppe (Zeichentrick-Art statt Foto) + falsch in beauty-makeup → Foto/archivieren + recategorisieren.
+- **Falsche Kategorien:** Schulterstütze/Plüschtier in gaming/beauty; KFZ-/Motorrad-Batterien, POS-Monitore, SSDs unter Marke „LuxeStyle" → aus Nav/Trust-Collections raus (Root-Cause). [KATALOG-SESSION — die importieren gerade]
+- **Alt-Text:** überwiegend gut; nur ein Tippfehler-Platzhalter `alt="prodcut img"` im Theme-Snippet → auf `{{ image.alt | default: product.title }}`. [THEME, 1 Snippet]
