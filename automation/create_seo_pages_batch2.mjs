@@ -138,6 +138,33 @@ const PAGES=[
 <h2>Darauf kannst du zählen</h2>
 <p>🇨🇭 Schweizer Shop · Bezahlung mit TWINT & Klarna · Gratis Versand ab CHF 50 · 30 Tage Rückgaberecht. Mit dem Code <strong>WELCOME10</strong> sparst du bei deiner ersten Bestellung.</p>
 <p><a href="/collections/sg-alle"><strong>Jetzt dein Unikat gestalten →</strong></a></p>` },
+
+ { handle:'anime-figuren-funko-pop-schweiz', title:'Anime Figuren & Funko Pop online kaufen',
+   tt:'Anime Figuren & Funko Pop online kaufen Schweiz | LuxeStyle',
+   dt:'Anime Figuren, Funko Pop & Sammelfiguren online kaufen in der Schweiz. Naruto, Dragon Ball & Co. Bezahlung mit TWINT/Klarna, Gratis-Versand ab CHF 50.',
+   body:`<h1>Anime Figuren & Funko Pop online kaufen in der Schweiz</h1>
+<p>Du suchst Anime Figuren, Funko Pop! oder Sammelfiguren deiner Lieblingsserien? Bei LuxeStyle findest du eine wachsende Auswahl an Figuren rund um Anime & Manga, von Naruto über Dragon Ball bis zu beliebten Funko Pop! Charakteren. Ob für die eigene Sammlung oder als Geschenk für Fans, hier entdeckst du Stücke, die auf jedem Regal, Schreibtisch oder Gaming-Setup eine gute Figur machen.</p>
+<h2>Sammelfiguren für Anime- und Manga-Fans</h2>
+<p>Von detailreichen Actionfiguren wie dem Dragon Ball Limit Breaker Goku bis zu kompakten Funko Pop! Figuren, die sich ideal stapeln und kombinieren lassen: Unsere Auswahl richtet sich an alle, die ihre Lieblingshelden gerne sichtbar in Szene setzen. Viele Figuren eignen sich auch bestens als Geschenk zu Geburtstag, Weihnachten oder einfach zwischendurch.</p>
+<h2>Warum bei LuxeStyle bestellen?</h2>
+<p>Wir sind ein Schweizer Onlineshop und liefern in die ganze Schweiz. Du bezahlst bequem und sicher mit TWINT, Klarna, Kredit- oder Debitkarte. Ab einem Bestellwert von CHF 50 ist der Versand gratis, und dank 30 Tagen Rückgaberecht kannst du in Ruhe entscheiden. Mit dem Code WELCOME10 erhältst du bei deiner ersten Bestellung einen Rabatt.</p>
+<p><strong>🇨🇭 Schweizer Shop · TWINT & Klarna · Gratis-Versand ab CHF 50 · 30 Tage Rückgaberecht</strong></p>
+<h2>Jetzt Anime Figuren & Funko Pop entdecken</h2>
+<p>Stöbere durch die aktuelle Auswahl und finde deine nächste Figur. Das Sortiment wird laufend ergänzt, ein Blick lohnt sich also regelmässig.</p>
+<p><a href="/collections/anime"><strong>➡️ Zur Anime & Manga Kollektion</strong></a></p>` },
+
+ { handle:'wohnen-deko-home-accessoires-schweiz', title:'Wohnen & Deko – Home-Accessoires',
+   tt:'Wohnen & Deko online kaufen | Home-Accessoires Schweiz',
+   dt:'Wohnen & Deko für dein Zuhause: Vasen, Wandkunst, Aroma-Diffuser & mehr. Gratis Lieferung ab CHF 50, Zahlung mit TWINT/Klarna, 30 Tage Rückgabe.',
+   body:`<h2>Wohnen & Deko für dein Zuhause</h2>
+<p>Ein schönes Zuhause beginnt bei den Details. In unserer Kategorie <strong>Wohnen & Deko</strong> findest du Home-Accessoires, die Wohnzimmer, Schlafzimmer, Küche und Eingangsbereich wohnlicher machen – vom Deko-Objekt bis zum praktischen Alltagshelfer. Ob du eine leere Ecke füllen, einen Raum neu gestalten oder einfach etwas Frisches ausprobieren möchtest: Hier stöberst du in Ruhe durch eine grosse, laufend erweiterte Auswahl.</p>
+<h2>Vasen, Wandkunst, Beleuchtung & mehr</h2>
+<p>Unser Sortiment reicht von <strong>Vasen</strong> und Wandbildern über stimmungsvolle Beleuchtung und Aroma-Diffuser bis zu Aufbewahrung, Kissen und kleinen Deko-Highlights. So kombinierst du unterschiedliche Stile – von schlicht und modern bis warm und gemütlich – ganz nach deinem Geschmack. Viele Artikel eignen sich auch als Geschenk für Einzug, Geburtstag oder als kleine Aufmerksamkeit zwischendurch.</p>
+<h2>Warum bei LuxeStyle bestellen</h2>
+<p>Wir liefern in die ganze Schweiz und legen Wert auf eine ehrliche, unkomplizierte Bestellung. Preise und Lieferzeiten geben wir so an, wie sie tatsächlich sind – ohne künstlichen Druck.</p>
+<p><strong>🇨🇭 Versand in die ganze Schweiz · Bezahlen mit TWINT & Klarna · Gratis Lieferung ab CHF 50 · 30 Tage Rückgabe</strong></p>
+<h2>Jetzt Home-Accessoires entdecken</h2>
+<p>Bereit, dein Zuhause neu einzurichten? Entdecke die komplette Auswahl in unserer Kategorie <a href="/collections/wohnen-dekoration"><strong>Wohnen & Dekoration</strong></a> und finde die passenden Deko-Ideen für jeden Raum. Neue Produkte kommen regelmässig dazu – ein Blick lohnt sich immer wieder.</p>` },
 ];
 
 const tok=await token();
