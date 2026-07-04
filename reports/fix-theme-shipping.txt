@@ -1,5 +1,314 @@
 Theme: Horizon · LuxeStyle + Email-Popup (Claude) (id 187533001089, role main)
-5 Ziel-Assets werden geprüft…
+211 Ziel-Assets werden geprüft…
 
-Fertig: 5 Assets gescannt, 0 geändert.
-Hinweis: keine Ziel-Strings gefunden — evtl. steht der Banner-Text in Theme-Settings unter anderem Wortlaut. reports/fix-theme-shipping.txt + settings_data prüfen.
+[DUMP] locales/bg.json:
+   "load_video": "Зареждане на видео: {{ description }}",
+   "blog_post_description": "Откъс от съдържанието на Вашата публикация в блога"
+
+[DUMP] locales/cs.json:
+   "load_video": "Načíst video: {{ description }}",
+   "blog_post_description": "Úryvek z obsahu vašeho blogového příspěvku"
+
+[DUMP] locales/cs.schema.json:
+   "product_description": "Popis",
+   "collection_description": "Popis kolekce",
+   "description": "Popis",
+   "description": "Popis",
+   "description_preset": "Popis",
+   "gift_card_form_description": "Zákazníci mohou posílat dárkové karty na e‑mail příjemce s osobní zprávou. [Více informací](https:\/\/help.shopify.com\/manual\/products\/gift-card-p
+
+[DUMP] locales/da.json:
+   "load_video": "Indlæs video: {{ description }}",
+   "blog_post_description": "Et uddrag fra dit blogopslag"
+
+[DUMP] locales/da.schema.json:
+   "product_description": "Beskrivelse",
+   "collection_description": "Kollektionsbeskrivelse",
+   "description": "Beskrivelse",
+   "description": "Beskrivelse",
+   "description_preset": "Beskrivelse",
+   "gift_card_form_description": "Kunder kan sende gavekort til en modtagers mail med en personlig besked. [Få mere at vide](https:\/\/help.shopify.com\/manual\/products\/gift-card-pr
+
+[DUMP] locales/de.json:
+   "load_video": "Video laden: {{ description }}",
+   "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Inkl. Zollgebühren und Steuern. Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden beim Checkout berechnet."
+   "duties_and_taxes_included_shipping_at_checkout_without_policy": "Inkl. Zollgebühren und Steuern. Rabatte und Versand werden beim Checkout berechnet.",
+   "taxes_included_shipping_at_checkout_with_policy_html": "Inkl. Steuern. Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden beim Checkout berechnet.",
+   "taxes_included_shipping_at_checkout_without_policy": "Inkl. Steuern. Rabatte und Versand werden beim Checkout berechnet.",
+   "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Inkl. Zollgebühren. Steuern, Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden beim Checkout berech
+   "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Inkl. Zollgebühren. Steuern, Rabatte und Versand werden beim Checkout berechnet.",
+   "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Steuern, Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden beim Checkout berechnet.",
+   "taxes_at_checkout_shipping_at_checkout_without_policy": "Steuern, Rabatte und Versand werden beim Checkout berechnet.",
+   "shipping_policy_html": "<a href=\"{{ link }}\">Versand<\/a> wird beim Checkout berechnet.",
+   "duties_and_taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Inkl. Zollgebühren und Steuern. Versand wird beim Checkout berechnet.",
+   "duties_and_taxes_included_shipping_at_checkout_without_policy_without_discounts": "Inkl. Zollgebühren und Steuern. Versand wird beim Checkout berechnet.",
+
+[DUMP] locales/de.schema.json:
+   "product_description": "Beschreibung",
+   "collection_description": "Kollektionsbeschreibung",
+   "description": "Beschreibung",
+   "description": "Beschreibung",
+   "description_preset": "Beschreibung",
+   "gift_card_form_description": "Kunden können Gutscheine mit einer persönlichen Nachricht an die E-Mail-Adresse eines Empfängers senden. [Mehr erfahren](https:\/\/help.shopify.com\/
+   "free_shipping_over": "<p>Kostenloser Versand ab 50 $<\/p>",
+   "shipping_based_on_location": "<p>Der Versand wird basierend auf deinem Standort und den Artikeln in deiner Bestellung berechnet. Du erfährst den Versandpreis immer, bevor du den K
+   "work_quickly_to_ship": "<p>Wir werden deine Bestellung so schnell wie möglich versenden. Sobald deine Bestellung versandt wurde, erhältst du eine E-Mail mit weiteren Informationen
+   "how_much_for_shipping": "Wie hoch sind die Versandkosten?",
+   "shipping": "Versand",
+
+[DUMP] locales/el.json:
+   "load_video": "Φόρτωση βίντεο: {{ description }}",
+   "blog_post_description": "Απόσπασμα από το περιεχόμενο της ανάρτησης στο ιστολόγιό σας"
+
+[DUMP] locales/en.default.json:
+   "load_video": "Load video: {{ description }}",
+   "blog_post_description": "An excerpt of your blog post's content"
+
+[DUMP] locales/en.default.schema.json:
+   "gift_card_form_description": "Customers can send gift cards to a recipient's email with a personal message. [Learn more](https:\/\/help.shopify.com\/manual\/products\/gift-card-pr
+   "collection_description": "Collection description",
+   "description": "Description",
+   "product_description": "Description",
+   "description": "Description",
+   "description_preset": "Description",
+
+[DUMP] locales/es.json:
+   "load_video": "Cargar video: {{ description }}",
+   "blog_post_description": "Un extracto del contenido de tus artículos del blog"
+
+[DUMP] locales/es.schema.json:
+   "product_description": "Descripción",
+   "collection_description": "Descripción de la colección",
+   "description": "Descripción",
+   "description": "Descripción",
+   "description_preset": "Descripción",
+   "gift_card_form_description": "Los clientes pueden enviar tarjetas de regalo al correo electrónico del destinatario con un mensaje personal. [Más información](https:\/\/help.shopif
+
+[DUMP] locales/fi.json:
+   "load_video": "Lataa video: {{ description }}",
+   "blog_post_description": "Ote blogipostauksesi sisällöstä"
+
+[DUMP] locales/fi.schema.json:
+   "product_description": "Kuvaus",
+   "collection_description": "Kokoelman kuvaus",
+   "description": "Kuvaus",
+   "description": "Kuvaus",
+   "description_preset": "Kuvaus",
+   "gift_card_form_description": "Asiakkaat voivat lähettää lahjakortteja vastaanottajan sähköpostiin henkilökohtaisen viestin kera. [Lue lisää](https:\/\/help.shopify.com\/manual\/pr
+
+[DUMP] locales/fr.json:
+   "load_video": "Charger la vidéo : {{ description }}",
+   "blog_post_description": "Un extrait du contenu de votre article de blog"
+
+[DUMP] locales/fr.schema.json:
+   "product_description": "Description",
+   "collection_description": "Description de la collection",
+   "description": "Description",
+   "description": "Description",
+   "description_preset": "Description",
+   "gift_card_form_description": "Les clients peuvent envoyer des cartes-cadeaux à l’e-mail d’un destinataire avec un message personnel. [En savoir plus](https:\/\/help.shopify.com\/m
+
+[DUMP] locales/hr.json:
+   "load_video": "Učitaj videozapis: {{ description }}",
+   "blog_post_description": "Izvadak sadržaja vašeg bloga"
+
+[DUMP] locales/hu.json:
+   "load_video": "Videó betöltése: {{ description }}",
+   "blog_post_description": "Összefoglaló a blogbejegyzésed tartalmáról"
+
+[DUMP] locales/id.json:
+   "load_video": "Muat video: {{ description }}",
+   "blog_post_description": "Cuplikan dari konten postingan blog Anda"
+
+[DUMP] locales/it.json:
+   "load_video": "Carica il video: {{ description }}",
+   "blog_post_description": "Un estratto dal contenuto del tuo articolo del blog"
+
+[DUMP] locales/it.schema.json:
+   "product_description": "Descrizione",
+   "collection_description": "Descrizione della collezione",
+   "description": "Descrizione",
+   "description": "Descrizione",
+   "description_preset": "Descrizione",
+   "gift_card_form_description": "I clienti possono inviare buoni regalo all'email di un destinatario con un messaggio personale. [Maggiori informazioni](https:\/\/help.shopify.com\/m
+
+[DUMP] locales/ja.json:
+   "load_video": "ビデオを読み込む: {{ description }}",
+   "blog_post_description": "ブログ記事の内容の抜粋"
+
+[DUMP] locales/ja.schema.json:
+   "product_description": "説明",
+   "collection_description": "コレクションの説明",
+   "description": "説明",
+   "description": "説明",
+   "description_preset": "説明",
+   "gift_card_form_description": "お客様は、パーソナルメッセージを添えて、受取人のメールアドレスにギフトカードを送信できます。[詳細はこちら](https:\/\/help.shopify.com\/manual\/products\/gift-card-products)",
+
+[DUMP] locales/ko.json:
+   "load_video": "동영상 로드: {{ description }}",
+   "blog_post_description": "블로그 게시물 콘텐츠의 요약"
+
+[DUMP] locales/ko.schema.json:
+   "product_description": "설명",
+   "collection_description": "컬렉션 설명",
+   "description": "설명",
+   "description": "설명",
+   "description_preset": "설명",
+   "gift_card_form_description": "고객은 개인 메시지와 함께 수신자의 이메일로 기프트 카드를 보낼 수 있습니다. [자세히 알아보기](https:\/\/help.shopify.com\/manual\/products\/gift-card-products)",
+
+[DUMP] locales/lt.json:
+   "load_video": "Įkelti vaizdo įrašą „{{ description }}“",
+   "blog_post_description": "Jūsų tinklaraščio įrašo turinio ištrauka"
+
+[DUMP] locales/nb.json:
+   "load_video": "Last inn video: {{ description }}",
+   "blog_post_description": "Et utdrag av blogginnleggets innhold"
+
+[DUMP] locales/nb.schema.json:
+   "product_description": "Beskrivelse",
+   "collection_description": "Samlingsbeskrivelse",
+   "description": "Beskrivelse",
+   "description": "Beskrivelse",
+   "description_preset": "Beskrivelse",
+   "gift_card_form_description": "Kunder kan sende gavekort til en mottakers e-postadresse med en personlig melding. [Finn ut mer](https:\/\/help.shopify.com\/manual\/products\/gift-c
+
+[DUMP] locales/nl.json:
+   "load_video": "Video laden: {{ description }}",
+   "blog_post_description": "Een uittreksel van de content van je blogpost"
+
+[DUMP] locales/nl.schema.json:
+   "product_description": "Beschrijving",
+   "collection_description": "Collectiebeschrijving",
+   "description": "Beschrijving",
+   "description": "Beschrijving",
+   "description_preset": "Beschrijving",
+   "gift_card_form_description": "Klanten kunnen cadeaubonnen naar het e-mailadres van een ontvanger sturen met een persoonlijk bericht. [Meer informatie](https:\/\/help.shopify.com\/
+
+[DUMP] locales/pl.json:
+   "load_video": "Załaduj film: {{ description }}",
+   "blog_post_description": "Fragment Twojego posta na blogu"
+
+[DUMP] locales/pl.schema.json:
+   "product_description": "Opis",
+   "collection_description": "Opis kolekcji",
+   "description": "Opis",
+   "description": "Opis",
+   "description_preset": "Opis",
+   "gift_card_form_description": "Klienci mogą wysyłać karty prezentowe na adres e-mail odbiorcy z osobistą wiadomością. [Dowiedz się więcej](https:\/\/help.shopify.com\/manual\/produ
+
+[DUMP] locales/pt-BR.json:
+   "load_video": "Carregar vídeo: {{ description }}",
+   "blog_post_description": "Um resumo do conteúdo do seu post no blog"
+
+[DUMP] locales/pt-BR.schema.json:
+   "product_description": "Descrição",
+   "collection_description": "Descrição da coleção",
+   "description": "Descrição",
+   "description": "Descrição",
+   "description_preset": "Descrição",
+   "gift_card_form_description": "Os clientes podem enviar cartões-presente para o e-mail de um destinatário com uma mensagem pessoal. [Saiba mais](https:\/\/help.shopify.com\/manual\
+
+[DUMP] locales/pt-PT.json:
+   "load_video": "Carregar vídeo: {{ description }}",
+   "blog_post_description": "Um excerto do conteúdo da sua publicação no blogue"
+
+[DUMP] locales/pt-PT.schema.json:
+   "product_description": "Descrição",
+   "collection_description": "Descrição da coleção",
+   "description": "Descrição",
+   "description": "Descrição",
+   "description_preset": "Descrição",
+   "gift_card_form_description": "Os clientes podem enviar cartões de oferta para o e-mail de um destinatário com uma mensagem pessoal. [Saber mais](https:\/\/help.shopify.com\/manual
+
+[DUMP] locales/ro.json:
+   "load_video": "Încarcă clipul video: {{ description }}",
+   "blog_post_description": "Un fragment din postarea pe blog"
+
+[DUMP] locales/ru.json:
+   "load_video": "Загрузить видео: {{ description }}",
+   "blog_post_description": "Фрагмент текста вашей записи в блоге"
+
+[DUMP] locales/sk.json:
+   "load_video": "Načítať video: {{ description }}",
+   "blog_post_description": "Úryvok obsahu vášho blogového príspevku"
+
+[DUMP] locales/sl.json:
+   "load_video": "Naloži videoposnetek: {{ description }}",
+   "blog_post_description": "Odlomek vsebine vaše objave v spletnem dnevniku"
+
+[DUMP] locales/sv.json:
+   "load_video": "Ladda video: {{ description }}",
+   "blog_post_description": "Ett utdrag ur bloggpostens innehåll"
+
+[DUMP] locales/sv.schema.json:
+   "product_description": "Beskrivning",
+   "collection_description": "Produktseriebeskrivning",
+   "description": "Beskrivning",
+   "description": "Beskrivning",
+   "description_preset": "Beskrivning",
+   "gift_card_form_description": "Kunder kan skicka presentkort till en mottagares e-postadress med ett personligt meddelande. [Läs mer](https:\/\/help.shopify.com\/manual\/products\/
+
+[DUMP] locales/th.json:
+   "load_video": "โหลดวิดีโอ: {{ description }}",
+   "blog_post_description": "เนื้อหาบางส่วนจากเนื้อหาของบล็อกโพสต์"
+
+[DUMP] locales/th.schema.json:
+   "product_description": "คำอธิบาย",
+   "collection_description": "คำอธิบายคอลเลกชัน",
+   "description": "คำอธิบาย",
+   "description": "คำอธิบาย",
+   "description_preset": "คำอธิบาย",
+   "gift_card_form_description": "ลูกค้าสามารถส่งบัตรของขวัญไปยังอีเมลของผู้รับพร้อมข้อความส่วนตัวได้ [ดูข้อมูลเพิ่มเติม](https:\/\/help.shopify.com\/manual\/products\/gift-card-produ
+
+[DUMP] locales/tr.json:
+   "load_video": "Videoyu yükle: {{ description }}",
+   "blog_post_description": "Blog gönderinizin içeriğinden bir alıntı"
+
+[DUMP] locales/tr.schema.json:
+   "product_description": "Açıklama",
+   "collection_description": "Koleksiyon açıklaması",
+   "description": "Açıklama",
+   "description": "Açıklama",
+   "description_preset": "Açıklama",
+   "gift_card_form_description": "Müşteriler, kişisel bir mesajla alıcının e-posta adresine hediye kartları gönderebilir. [Daha fazla bilgi edinin](https:\/\/help.shopify.com\/manual\
+
+[DUMP] locales/vi.json:
+   "load_video": "Tải video: {{ description }}",
+   "blog_post_description": "Một đoạn trích nội dung bài viết blog của bạn"
+
+[DUMP] locales/zh-CN.json:
+   "load_video": "加载视频：{{ description }}",
+   "blog_post_description": "博客文章内容摘录"
+
+[DUMP] locales/zh-CN.schema.json:
+   "product_description": "描述",
+   "collection_description": "产品系列描述",
+   "description": "描述",
+   "description": "描述",
+   "description_preset": "描述",
+   "gift_card_form_description": "客户可以通过电子邮件将礼品卡发送给收件人，并附上个人留言。[了解更多](https:\/\/help.shopify.com\/manual\/products\/gift-card-products)",
+
+[DUMP] locales/zh-TW.json:
+   "load_video": "載入影片：{{ description }}",
+   "blog_post_description": "您部落格貼文的內容摘錄"
+
+[DUMP] locales/zh-TW.schema.json:
+   "product_description": "說明",
+   "collection_description": "商品系列說明",
+   "description": "說明",
+   "description": "說明",
+   "description_preset": "說明",
+   "gift_card_form_description": "顧客可以將禮品卡與個人訊息寄送至收件人的電子郵件。[瞭解詳情](https:\/\/help.shopify.com\/manual\/products\/gift-card-products)",
+
+[DUMP] sections/featured-blog-posts.liquid:
+   "blog-post-description": {
+   "type": "_blog-post-description",
+   "blog-post-description": {
+   "type": "_blog-post-description",
+   "blog-post-description": {
+   "type": "_blog-post-description",
+
+[DUMP] templates/gift_card.liquid:
+   name="description"
+
+Fertig: 98 Assets gescannt, 0 geändert (DRY).
