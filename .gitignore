@@ -47,3 +47,6 @@ session-check.png
 # Cloudflare-Pages-Build-Output (lokal/CI generiert)
 _site/
 dist/
+
+# Meshy-Rohmodelle (unoptimiert) — die komprimierten Web-Modelle liegen in models/
+game/assets/*.glb
