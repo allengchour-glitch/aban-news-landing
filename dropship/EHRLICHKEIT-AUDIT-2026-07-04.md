@@ -17,6 +17,11 @@
 - Kein „Swiss Made" auf Produkten (nur „Schweizer Shop" + ehrliche Klarstellung „Produkte von internationalen Herstellern"). ✅
 - Deutschland auf Home/Collections/policies nicht vorhanden. ✅
 
-## Owner
-- ✅ **Autonom erledigt:** /pages/faq bereinigt (Deutschland + CHF 99 raus, CHF 50 + korrekte Zeiten, FAQ-Hub).
-- ⏳ **Theme/User (können Skripte nicht):** Header-Announcement (CHF 65→50, 2-7→5-12 Werktage), shipping-policy (CHF 65→50), Judge.me hide-when-empty + DE-Lokalisierung.
+## Owner / STATUS
+- ✅ **Autonom erledigt (Pages-API):** /pages/faq bereinigt (Deutschland + CHF 99 raus, CHF 50 + korrekte Zeiten, FAQ-Hub).
+- ✅ **Autonom erledigt (Theme-Asset-API, `fix_theme_shipping.mjs`, 2026-07-04):**
+  - `sections/header-group.json` (shopweiter Header): „ab CHF 65"→„ab CHF 50", „2–7 Werktage"→„5–12 Werktage" ✓ geschrieben.
+  - `templates/index.json` (Homepage-Banner): „ab CHF 65"→„ab CHF 50", „Schweizer Qualität"→„geprüfte Qualität" ✓ geschrieben.
+  - Versand-Policy: keine per-API-Policy vorhanden (Text kam aus dem Theme = miterfasst).
+- ⏳ **Bleibt (embedded App-UI, per Port/2 Klicks):** Judge.me „hide when empty" — englisches „No reviews" an Produkten ausblenden (Judge.me → Settings → Widget → bei 0 Reviews ausblenden + DE-Lokalisierung). Reviews-Import = User.
+- 🛠️ **Tool für künftige Theme-Ehrlichkeits-Fixes:** `fix_theme_shipping.mjs` (gezielt auf header-group.json/index.json, exakte Strings, DRY_RUN/DUMP/SCAN-Modi) — Muster für weitere Theme-Text-Korrekturen per API.
