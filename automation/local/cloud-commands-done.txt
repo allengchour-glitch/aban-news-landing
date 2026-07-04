@@ -139,3 +139,5 @@ chf65-sweep-20260704
 swissness-20260704
 keycheck-20260704
 policies-dump-20260704
+render-winners-20260704
+policies-rewrite-20260704

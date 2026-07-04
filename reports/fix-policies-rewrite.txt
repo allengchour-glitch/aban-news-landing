@@ -1,0 +1,8 @@
+Shipping „Shipping": Body ersetzen.
+   ✗ Fehler 406 
+Refund „Refund policy": Body ersetzen.
+   ✗ Fehler 406 
+Privacy „Privacy policy": revDSG-Abschnitt voranstellen.
+   ✗ Fehler 406 
+
+Fertig: 0 geschrieben.
