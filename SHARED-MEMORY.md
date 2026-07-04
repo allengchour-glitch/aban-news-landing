@@ -2232,3 +2232,17 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   **gefixt**: iteriert jetzt über Einzel-Tags (damen/herren/kinder/schuhe/baby/socken/bademode…) statt einer riesigen OR-Kette
   (die Query-Complexity-Fehler auslöste UND Kinder/Schuhe/Baby übersprang). Kinderkleidung braucht `age_group=kids` für Google.
 - **Unkategorisierte Produkte:** 0 echte (17'499 gescannt; 100% Collection-Abdeckung by design via Preis-/Tag-Catch-all-Collections).
+
+---
+**📌 2026-07-04 (♻️ CONTAINER-RESET überstanden + Recovery — Wachstum bestätigt):**
+- **Container-Reset** (git zurück auf ead4d7c8, /tmp-Loop-Dateien weg, Prozesse tot). Recovery nach Runbook:
+  `git fetch+merge --ff-only origin/claude/memory-2026-06-13` (alle Commits sicher auf origin) → HEAD 1ccb5e6d wieder da.
+- **Loops neu gestartet:** BigBuy (`/tmp/bb_loop.sh`, 3D→Basteln→Maker→Gaming→Rest) + **CJ neu vereinfacht**
+  (`/tmp/cj_loop.sh`) — nutzt jetzt die **20 eingebauten CJ-Gruppen** (cjdamen/cjherren/makeup/skincare/nagel/kueche/
+  gaming/cjelektronik/cjgadgets/cj3d/cjschmuck/cjuhren/cjtaschen/cjhome/cjbeautytools/cjhaustier/pet/sport/storage/musik)
+  statt der 527 externen Mega-Groups (robuster ggü. Reset — kein externes File nötig, nur cj_token.txt). CJ-Token (Jun 13) noch gültig.
+- **📊 Wachstum (echte Zahlen nach Recovery):** aktiv **18'324** (REST products/count) · CJ-real **4'801** (+1'039 diese Session) ·
+  **325 Collections** (+6: gaming-Subcolls, 3d-filament/-drucker/-zubehoer, angebote, basteln-diy, maker-elektronik).
+- **⚠️ Reset-Verlust:** SEO-Titel-Audit-Skript (scratchpad, nicht committet) weg — die ~1000 bereits gefixten Titel bleiben
+  LIVE, ~1000 restliche ellipsis-abgeschnittene Titel offen (künftiger Lauf; Defekt = Auto-SEO-App schneidet Titel mit „…" ab,
+  oft Marke weg). **Lehre: wiederkehrende Cleanup-Skripte ins Repo committen, nicht im Scratchpad lassen** (Reset-fest).
