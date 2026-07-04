@@ -2256,3 +2256,18 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   (z.B. „Ärmelloses Leinenkleid"). BigBuy-Loop (`/tmp/bb_loop.sh`) parallel gesund.
 - **SEO-Titel-Tool jetzt reset-fest im Repo:** `automation/seo_title_fix.mjs` (Ledger `dropship/seo_title_fix_done.txt`).
   Katalog-SEO-Titel praktisch komplett sauber (nur 2 Reste gefixt).
+
+---
+**📌 2026-07-04 (📱 „BESSER ALS INTERDISCOUNT" — Elektronik-Departement gebaut):**
+- **Problem:** 767 Elektronik-Produkte lagen in EINEM Bucket („📱 Elektronik & Technik") ohne Browse-by-Typ.
+  Interdiscount gewinnt genau da: man kann in Kopfhörer/Tastaturen/Speicher reindrillen.
+- **7 Typ-Smart-Collections gebaut** (`automation/build_tech_departement.mjs`, TITLE-CONTAINS disjunktiv, PRICE_ASC,
+  8 Kanäle, DE-Desc+SEO+Hero): 🎧 kopfhoerer-audio **416** · 📱 handy-zubehoer **336** · 🖥️ computer-zubehoer **196** ·
+  💾 speicher-datentraeger **47** · ⌚ smartwatches-wearables **159** · 🚁 drohnen-fpv **69** · 📽️ beamer-heimkino **42**
+  (~1'265 Produkte navigierbar). Beamer-Regel getightet (bare „projektor" raus → Sternenhimmel-Nachtlichter waren Fehltreffer).
+- **Menu-Dropdown „📱 Elektronik & Technik"** (`automation/add_tech_menu.mjs`) mit 8 Unterpunkten (inkl. Gaming) im
+  Main-Menu, alle bestehenden 17 Items 1:1 erhalten.
+- **Ehrlichkeit:** Keine Fake-Flaggschiffe (Apple/Samsung/Sony gibt's nicht bei BigBuy/CJ — Direktvertrieb). LuxeStyle
+  schlägt Interdiscount NICHT bei Marken-Geräten, sondern bei **breitem, sauber gegliedertem Zubehör/Gadget-Longtail + Preis**.
+- **Lehre:** Browse-by-Typ via TITLE-CONTAINS-Smart-Collections ist der schnelle Weg, vorhandene Produkte wie ein
+  grosser Elektronik-Händler zu gliedern — Regeln aber IMMER am echten Treffer prüfen (projektor-Falle).
