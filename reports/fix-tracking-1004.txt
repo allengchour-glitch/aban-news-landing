@@ -1,5 +1,5 @@
-#1004 Fulfillment gid://shopify/Fulfillment/8492902351233 · status=SUCCESS · Nr=bb-S3414715 · URL=https://8420327578013 · Carrier=Other
+#1004 Fulfillment gid://shopify/Fulfillment/8492902351233 · status=SUCCESS · Nr=bb-S3414715 · URL=https://parcelsapp.com/en/tracking/bb-S3414715 · Carrier=Other
    → kaputte/fehlende URL → setze funktionierenden Link: https://parcelsapp.com/en/tracking/bb-S3414715 (ohne Kunden-Mail)
-   ✓ aktualisiert → URL=https://parcelsapp.com/en/tracking/bb-S3414715
+   ✓ aktualisiert → URL=?
 
 Fertig: 1 Sendung(en) repariert.
