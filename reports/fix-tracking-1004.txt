@@ -1,5 +1,5 @@
-#1004 Fulfillment gid://shopify/Fulfillment/8492902351233 · status=SUCCESS · Nr=bb-S3414715 · URL=https://parcelsapp.com/en/tracking/bb-S3414715 · Carrier=Other
-   → kaputte/fehlende URL → setze funktionierenden Link: https://parcelsapp.com/en/tracking/8420327578013 (ohne Kunden-Mail)
-   ✓ aktualisiert → URL=https://parcelsapp.com/en/tracking/8420327578013
+#1004 Fulfillment gid://shopify/Fulfillment/8492902351233 · status=SUCCESS · Nr=8420327578013 · URL=https://parcelsapp.com/en/tracking/8420327578013 · Carrier=Other
+   → kaputte/fehlende URL → setze funktionierenden Link: https://luxestyle.ch/apps/track123?nums=8420327578013 (ohne Kunden-Mail)
+   ✓ aktualisiert → URL=https://luxestyle.ch/apps/track123?nums=8420327578013
 
 Fertig: 1 Sendung(en) repariert.
