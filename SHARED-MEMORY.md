@@ -2345,3 +2345,17 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **📊 Katalog ~20'800 aktive Produkte.**
 - **Wieder-Lehre:** Smart-Collection TITLE-CONTAINS = LITERAL substring (nicht tokenisiert wie die Search-API). Agenten prüfen
   Terme gegen ALLE Live-Titel literal, bevor sie Regeln setzen → 0 Fehltreffer. NOT_CONTAINS-Guards für Substring-Kollisionen (Kette→Kettensäge).
+
+---
+**📌 2026-07-04 (🚬 RAUCHER-/DREH-ZUBEHÖR — legal+compliant, onlineOnly-Flag) + 🛋️ Heizdecken:**
+- **Heizdecke-Config** (BigBuy-Kat. 2561) → Collection `kuschel-heizdecken`, Trend-Lücke gefüllt (Shop hatte nur 9).
+- **🚬 Raucher-/Dreh-Zubehör** (User-Wunsch „Filter/Papes/Rips"): **legal in CH ab 18**, aber Google-Shopping & Meta
+  VERBIETEN Raucher-/Drogen-Zubehör → würde das Merchant-Konto gefährden. Lösung:
+  - **NEUES `onlineOnly`-Flag in bigbuy_import.mjs**: publiziert Produkte NUR auf Online Store + POS, NIE
+    Google&YouTube/Meta/TikTok/Pinterest (PUBQ um `name` erweitert, publish filtert per cfg.onlineOnly).
+  - Config `raucherzubehoer`: Pfeifen/Drehmaschinen/Grinder/Aschenbecher/Sturmfeuerzeuge/Shisha (BigBuy legal EU) +
+    CJ-Grinder (1489). ban: vape/e-zigarette/nikotin/liquid/cbd/thc/cannabis (nur ZUBEHÖR, keine Substanzen). 18+.
+  - Collection `raucherzubehoer` „🚬 Raucher- & Dreh-Zubehör (18+)" — **nur Online Store + POS publiziert**, kein Drogen-Marketing in Titel/SEO.
+  - **Papers/Rips selbst** sind bei BigBuy/CJ dünn (keine eigene Zigarettenpapier-Kategorie) → Zubehör drumherum ja.
+- **⚠️ Lehre (Compliance):** Legale-aber-eingeschränkte Produkte (Raucher, später evtl. Erotik) IMMER mit onlineOnly-Flag
+  importieren → schützt Google-Merchant + Meta-Konten. Nie auf alle 8 Kanäle. Katalog ~20'700 aktiv.
