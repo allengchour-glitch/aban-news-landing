@@ -63,7 +63,7 @@
   "@type": "Article",
   "headline": "Körperwaage kaufen Schweiz 2026 — Personenwaage &amp; Körperanalyse",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-27",
+  "dateModified": "2026-07-01",
   "author": {"@id": "https://abannews.com/#person"},
   "publisher": {"@id": "https://abannews.com/#org"},
   "mainEntityOfPage": "https://abannews.com/koerperwaage-kaufen-schweiz.html",
@@ -104,15 +104,16 @@ a:hover{color:var(--accent)}
 .wrap{max-width:760px;margin:0 auto;padding:0 18px}
 
 /* ── Top nav ── */
-.topnav{background:var(--ink);padding:0}
-.topnav .in{max-width:760px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:0;flex-wrap:wrap}
+.topnav{background:var(--ink);padding:0;position:sticky;top:0;z-index:100}
+.tn-in{max-width:760px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:0;flex-wrap:wrap}
 .topnav a{color:#ccfbf1;font-size:.82rem;padding:10px 12px;display:inline-block;text-decoration:none;white-space:nowrap}
 .topnav a:hover{color:#fff;background:rgba(255,255,255,.08)}
-.topnav .brand{font-weight:800;letter-spacing:-.5px;color:#fff;font-size:.95rem}
+.tn-brand{font-weight:800;letter-spacing:-.5px;color:#fff !important;font-size:.95rem}
+.tn-links{display:flex;flex-wrap:wrap}
 
 /* ── Hero ── */
-.hero{background:linear-gradient(135deg,#042f2e,#134e4a 55%,#0d9488);color:#fff;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(94,234,212,.25),transparent 45%),radial-gradient(circle at 8% 90%,rgba(13,148,136,.22),transparent 42%);pointer-events:none}
+.hero{background:linear-gradient(135deg,#042f2e,#134e4a 55%,#0f766e);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(94,234,212,.25),transparent 45%),radial-gradient(circle at 8% 90%,rgba(15,118,110,.22),transparent 42%);pointer-events:none}
 .hero .in{max-width:780px;margin:0 auto;padding:40px 18px 36px;position:relative;z-index:1}
 .hero .ic{font-size:2rem;width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:18px;margin-bottom:10px}
 .hero h1{font-size:clamp(1.55rem,4.5vw,2.1rem);margin:4px 0 10px;line-height:1.18}
@@ -156,6 +157,14 @@ li{margin-bottom:5px}
 .infobox{background:#fff;border:1px solid var(--line2);border-radius:12px;padding:14px 16px;margin:14px 0 18px}
 .infobox p{margin-bottom:0}
 
+/* ── Warning box ── */
+.warnbox{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #f59e0b;border-radius:12px;padding:13px 16px;margin:14px 0 18px}
+.warnbox p{margin-bottom:0;color:#78350f}
+
+/* ── Highlight box ── */
+.hlbox{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0 18px}
+.hlbox p{margin-bottom:0;color:var(--ink2)}
+
 /* ── FAQ details ── */
 details{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:13px 16px;margin-bottom:10px;transition:border-color .15s}
 details[open]{border-color:var(--accent)}
@@ -178,8 +187,6 @@ details p{margin-top:10px;color:var(--ink2);font-size:.95rem;margin-bottom:0}
 .newsletter{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;margin-top:30px}
 .newsletter strong{font-size:1.05rem}
 .newsletter p{font-size:.88rem;color:var(--ink2);margin:6px 0 12px}
-.newsletter form{display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap}
-.newsletter input[type=email]{flex:1;min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:inherit;color:var(--ink);background:#fff}
 
 /* ── Related / footer ── */
 .related{margin-top:26px;padding:18px 0 0;border-top:1px solid var(--line2)}
@@ -195,6 +202,9 @@ footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var
 footer a{color:var(--muted)}
 footer a:hover{color:var(--accent-dk)}
 
+/* ── Price badge ── */
+.price-badge{display:inline-block;background:var(--accent-dk);color:#fff;border-radius:6px;font-size:.78rem;font-weight:700;padding:2px 7px;margin-left:6px;vertical-align:middle}
+
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
 @media(max-width:520px){.ctable{font-size:.83rem}.ctable th,.ctable td{padding:7px 8px}}
 </style>
@@ -203,12 +213,13 @@ footer a:hover{color:var(--accent-dk)}
 
 <!-- ── Top navigation ── -->
 <nav class="topnav" aria-label="Hauptnavigation">
-  <div class="in">
-    <a class="brand" href="/">aban</a>
-    <a href="/marktplatz.html">Marktplatz</a>
-    <a href="/stellenangebote.html">Jobs</a>
-    <a href="/angebote-suche.html">Angebote</a>
-    <a href="/kaufberater-schweiz.html">Kaufberater</a>
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
   </div>
 </nav>
 
@@ -274,7 +285,7 @@ footer a:hover{color:var(--accent-dk)}
     </thead>
     <tbody>
       <tr>
-        <td>Mechanische Personenwaage</td>
+        <td>Mechanische Personenwaage (Federwaage)</td>
         <td>CHF 15–40</td>
         <td>±1 kg</td>
         <td>Kein Strom nötig, wartungsfrei, grosse Anzeige</td>
@@ -310,7 +321,7 @@ footer a:hover{color:var(--accent-dk)}
   <h2>Körperwaage kaufen Schweiz — Überblick 2026</h2>
   <p>Der Schweizer Waagen-Markt ist breit aufgestellt: im Detailhandel (Migros, Coop, Manor) findet man einfache Digital- und Glaswaagen ab CHF 20, im Fachhandel (Interdiscount, Media Markt, Galaxus) auch smarte BIA-Waagen und Profi-Modelle. Online bietet Galaxus.ch den grössten Vergleich — über 200 Modelle mit echten Kundenbewertungen.</p>
   <p>2026 sind folgende Trends sichtbar: smarte WLAN-Waagen mit App-Integration haben deutlich zugenommen, die Einstiegspreise für BIA sind gesunken, und Datenschutz bei Cloud-Anbindungen ist für viele Kaufende ein Thema. Gleichzeitig ist das Grundprinzip einer Digitalwaage unverändert — wer schlicht das Körpergewicht verfolgen möchte, braucht keine App und kein WLAN.</p>
-  <p>Wichtig für die Schweiz: Das Messmittelgesetz (MessMG) schreibt Eichpflicht nur für <em>gewerbliche</em> Waagen vor. Heimgeräte aus dem Handel sind ohne Einschränkungen legal verwendbar.</p>
+  <p>Wichtig für die Schweiz: Das Messmittelgesetz (MessMG) schreibt Eichpflicht nur für <em>gewerbliche</em> Waagen vor (etwa Metzgereien, Apotheken, Marktwaagen). Heimgeräte aus dem Handel sind ohne Einschränkungen legal verwendbar. Die Akkreditierungsstelle METAS (Eidgenössisches Institut für Metrologie) ist in der Schweiz für die Zulassung geeichter Waagen im gewerblichen Bereich zuständig — für Heimanwendungen spielt das keine Rolle.</p>
 
   <!-- ── Section 2 ── -->
   <h2>Personenwaage vs. Körperanalysewaage: Was brauchen Sie?</h2>
@@ -336,61 +347,197 @@ footer a:hover{color:var(--accent-dk)}
   <!-- ── Section 3 ── -->
   <h2>BIA — Bioelektrische Impedanzanalyse erklärt</h2>
   <p>BIA ist das Messprinzip hinter Körperanalysewaagen. Die Waage leitet einen sehr schwachen Wechselstrom (typisch 50 kHz, unter 1 mA — nicht spürbar) durch den Körper. Wasser und Muskeln leiten elektrischen Strom gut; Fettgewebe hat einen deutlich höheren elektrischen Widerstand (Impedanz). Aus dem gemessenen Widerstand berechnet die Firmware — zusammen mit dem im Profil hinterlegten Alter, Grösse und Geschlecht — den Körperfettanteil und weitere Kennwerte.</p>
-  <h3 class="sub">Was BIA gut kann</h3>
+  <h3 class="sub">Was BIA misst</h3>
+  <p>Je nach Modell werden folgende Parameter ausgegeben:</p>
   <ul>
-    <li>Trends über Wochen und Monate sichtbar machen</li>
-    <li>Veränderungen von Muskelmasse beim Training grob dokumentieren</li>
-    <li>Motivation durch Zahlen und Kurven erhöhen</li>
+    <li><strong>Körperfettanteil (KFA):</strong> Prozentsatz des Körpergewichts, der aus Fettgewebe besteht. Normalbereich Männer: 10–20 %, Frauen: 20–30 % (abhängig von Alter und Fitness).</li>
+    <li><strong>Muskelmasse:</strong> Anteil der Skelettmuskulatur am Körpergewicht in Kilogramm.</li>
+    <li><strong>Körperwasseranteil:</strong> Der menschliche Körper besteht zu 50–70 % aus Wasser; dieser Wert schwankt mit Hydratation und Trainingsstand.</li>
+    <li><strong>Knochenmasse (geschätzt):</strong> Grober Richtwert auf Basis von Algorithmen — keine Ersatzmessung für eine DEXA-Knochendichtemessung.</li>
+    <li><strong>Viszeralfett:</strong> Besonders gesundheitsrelevantes inneres Bauchfett (Skala 1–59 oder ähnlich je nach Hersteller); erhöhtes Risiko ab Stufe 13 (Withings-Skala).</li>
+    <li><strong>Körperwasserbilanz und BMI:</strong> Werden aus Gewicht und Grösse berechnet, nicht durch BIA.</li>
   </ul>
   <h3 class="sub">Einschränkungen von BIA</h3>
   <ul>
     <li><strong>Hydratation:</strong> Wer viel getrunken hat, Sport getrieben oder geschwitzt hat, erhält abweichende Werte. Deshalb: morgens, nüchtern, nach dem Toilettengang messen.</li>
     <li><strong>Formeln variieren:</strong> Jeder Hersteller verwendet andere Algorithmen. Werte zwischen Garmin, Withings und Xiaomi sind nicht direkt vergleichbar.</li>
-    <li><strong>Schwangerschaft und Herzschrittmacher:</strong> BIA ist für Schwangere und Personen mit implantierten elektrischen Geräten (Herzschrittmacher, Defibrillatoren) nicht geeignet.</li>
-    <li><strong>Kinder:</strong> BIA-Algorithmen sind für Erwachsene kalibriert. Bei Kindern unter 16 Jahren liefert die Körperfett-Schätzung unzuverlässige Werte.</li>
+    <li><strong>Schwangerschaft:</strong> BIA ist für Schwangere nicht geeignet. Die bioelektrische Messung kann keine verlässlichen Werte liefern, wenn sich die Körperzusammensetzung schnell verändert.</li>
+    <li><strong>Herzschrittmacher und Implantate:</strong> Personen mit implantierten elektrischen Geräten (Herzschrittmacher, Defibrillatoren, Insulin-Pumpen) sollten BIA-Waagen nicht verwenden — Rücksprache mit der Ärztin oder dem Arzt empfohlen.</li>
+    <li><strong>Kinder unter 16:</strong> BIA-Algorithmen sind für Erwachsene kalibriert. Kinderalgorithmen existieren bei wenigen Modellen (z. B. Withings Body+ Kindermodus), liefern aber trotzdem unzuverlässigere Werte als bei Erwachsenen.</li>
+    <li><strong>Alkohol:</strong> Alkohol entwässert den Körper kurzfristig und verfälscht BIA-Ergebnisse erheblich. Niemals nach einem Abend mit Alkohol messen.</li>
   </ul>
 
   <!-- ── Section 4 ── -->
   <h2>4-Elektroden vs. 8-Elektroden Waagen</h2>
   <p>Der Unterschied liegt in der Präzision der Messung:</p>
   <h3 class="sub">4-Elektroden (Fussplatten)</h3>
-  <p>Die grosse Mehrheit der Heimwaagen — auch teure WLAN-Modelle wie Withings Body+ — hat vier Elektroden in der Standfläche. Der Strom fliesst nur durch die untere Körperhälfte (Beine). Arme und Oberkörper werden über Formeln <em>geschätzt</em>. Das ist für Trendbeobachtungen ausreichend, aber nicht so präzise wie eine Ganzkörpermessung.</p>
+  <p>Die grosse Mehrheit der Heimwaagen — auch teure WLAN-Modelle wie Withings Body+ — hat vier Elektroden in der Standfläche. Der Strom fliesst nur durch die untere Körperhälfte (Beine). Arme und Oberkörper werden über Formeln <em>geschätzt</em>. Das ist für Trendbeobachtungen ausreichend, aber nicht so präzise wie eine Ganzkörpermessung. Wichtig: Fussunterseiten müssen trocken sein (trockene vs. nasse Füsse beeinflussen den Hautwiderstand und damit die BIA-Messung). Auf nassen Fliessen in einem Schweizer Badezimmer — kurz mit einem Tuch trocknen.</p>
   <h3 class="sub">8-Elektroden (Fuss + Handgriff)</h3>
-  <p>Hochwertige Modelle wie die Withings Body Scan (CHF 220–280) oder Tanita-Profimodelle (ab CHF 300) haben zusätzliche Handgriff-Elektroden. Der Strom fliesst durch den gesamten Körper — Oberkörper und Arme werden direkt gemessen, nicht nur geschätzt. Ergebnis: deutlich genauere Körperfett- und Muskelmasseangaben, teilweise auch segmentale Werte (linkes/rechtes Bein separat).</p>
+  <p>Hochwertige Modelle wie die Withings Body Scan (CHF 220–280) oder Tanita-Profimodelle (ab CHF 300) haben zusätzliche Handgriff-Elektroden. Der Strom fliesst durch den gesamten Körper — Oberkörper und Arme werden direkt gemessen, nicht nur geschätzt. Ergebnis: deutlich genauere Körperfett- und Muskelmasseangaben, teilweise auch segmentale Werte (linkes/rechtes Bein separat, linker/rechter Arm). Diese Modelle sind besonders nützlich für Personen mit Trainingszielen für den Oberkörper.</p>
   <div class="infobox">
     <p><strong>Empfehlung:</strong> Für den normalen Hausgebrauch reicht ein 4-Elektroden-Modell. Wer intensiv Sport treibt und präzise Segmentdaten möchte, investiert in ein 8-Elektroden-Gerät ab CHF 150.</p>
   </div>
 
   <!-- ── Section 5 ── -->
-  <h2>Genauigkeit: Was sagen die Werte wirklich aus?</h2>
-  <p>Genauigkeit bei Körperwaagen hat zwei Dimensionen: die Gewichtsgenauigkeit und die BIA-Genauigkeit.</p>
-  <h3 class="sub">Gewichtsgenauigkeit</h3>
-  <ul>
-    <li><strong>±200 g (mechanisch):</strong> ausreichend für gelegentliches Wiegen</li>
-    <li><strong>±100 g (digital):</strong> gut für wöchentliches Monitoring</li>
-    <li><strong>±50 g (medizinisch):</strong> nötig nur bei Dialyse, Säuglingen, klinischer Überwachung</li>
-  </ul>
-  <p>Achtung: Eine Waage mit 100-g-Anzeige muss nicht ±100 g genau sein — die Skalenauflösung und die tatsächliche Messgenauigkeit sind verschiedene Dinge. Qualitative Dehnungsmessstreifen-Sensoren sind der entscheidende Faktor.</p>
-  <h3 class="sub">BIA-Genauigkeit</h3>
-  <p>±3–5 % Körperfettanteil bei Heimgeräten ist normal. Zum Vergleich: DEXA-Scans (Röntgendensitometrie) haben ±1–2 %, kosten in der Schweiz aber CHF 150–300 pro Messung. BIA-Werte sind als Verlaufsmarker nützlich — als absolute Diagnosewerte sind sie nicht geeignet.</p>
-  <p>Auf hartem, ebenem Untergrund (Fliesen, Parkett) messen: Auf Teppich können Abweichungen von 0,5–2 kg auftreten, weil die Auflagepunkte ungleichmässig einsinken.</p>
+  <h2>Schweizer Gesundheitsnormen: BMI und Übergewicht</h2>
+  <p>Das Bundesamt für Gesundheit (BAG) orientiert sich bei Gewichtsbeurteilungen an den internationalen BMI-Referenzwerten der Weltgesundheitsorganisation (WHO). Der Body-Mass-Index (BMI) errechnet sich aus Gewicht in kg geteilt durch Körpergrösse in Meter zum Quadrat.</p>
+  <table class="ctable" style="margin-top:10px">
+    <thead>
+      <tr>
+        <th>BMI-Bereich</th>
+        <th>Kategorie (BAG/WHO)</th>
+        <th>Bemerkung</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>unter 18,5</td>
+        <td>Untergewicht</td>
+        <td>Ärztliche Abklärung empfohlen</td>
+      </tr>
+      <tr>
+        <td>18,5 – 24,9</td>
+        <td>Normalgewicht</td>
+        <td>Gesundheitlich günstiger Bereich</td>
+      </tr>
+      <tr>
+        <td>25,0 – 29,9</td>
+        <td>Übergewicht (Präadipositas)</td>
+        <td>Erhöhtes Risiko für Folgeerkrankungen</td>
+      </tr>
+      <tr>
+        <td>30,0 – 34,9</td>
+        <td>Adipositas Grad I</td>
+        <td>Deutlich erhöhtes Risiko</td>
+      </tr>
+      <tr>
+        <td>35,0 und höher</td>
+        <td>Adipositas Grad II/III</td>
+        <td>Medizinische Begleitung empfohlen</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Laut Schweizerischer Gesundheitsbefragung (SGB 2022) sind in der Schweiz rund 41 % der erwachsenen Bevölkerung übergewichtig oder adipös (BMI ≥ 25), darunter 11 % mit Adipositas (BMI ≥ 30). Dieser Anteil hat sich in den letzten 30 Jahren mehr als verdoppelt. Eine Personenwaage mit regelmässigem Monitoring kann ein einfaches Mittel zur Selbstbeobachtung sein — ersetzt aber nicht eine ärztliche Beratung.</p>
+  <div class="warnbox">
+    <p><strong>Wichtig:</strong> Der BMI ist ein grober Orientierungswert. Er unterscheidet nicht zwischen Muskelmasse und Fettmasse. Sportlich aktive Menschen können einen hohen BMI haben, obwohl ihr Körperfettanteil im Normalbereich liegt. Ältere Menschen hingegen können bei normalem BMI zu viel Körperfett haben (sog. «normale Gewichts-Adipositas» oder Sarkopenie). Eine Körperanalysewaage mit BIA liefert hier differenziertere Anhaltspunkte.</p>
+  </div>
 
   <!-- ── Section 6 ── -->
+  <h2>Genauigkeit und Eichpflicht in der Schweiz</h2>
+  <p>In der Schweiz regelt das <strong>Messmittelgesetz (MessMG)</strong> von 2001 und die dazugehörige Messmittelverordnung (MessMV) den Einsatz von Waagen. Die <strong>Eichpflicht gilt ausschliesslich für den gewerblichen Einsatz</strong> — also überall dort, wo der Preis einer Ware direkt vom gemessenen Gewicht abhängt: Metzgereien, Bäckereien, Märkte, Apotheken, Labore.</p>
+  <h3 class="sub">METAS — Metrologie Schweiz</h3>
+  <p>Das Eidgenössische Institut für Metrologie (METAS) mit Sitz in Bern-Wabern ist die nationale Metrologie-Behörde der Schweiz. METAS akkreditiert Kalibrierlaboratorien und verwaltet die nationalen Referenzmasse. Für gewerbliche Waagen gilt die OIML-Zulassung (Organisation Internationale de Métrologie Légale). Für Heimwaagen spielt METAS keine direkte Rolle.</p>
+  <h3 class="sub">Mettler Toledo — Schweizer Traditionshersteller</h3>
+  <p>Mettler Toledo, gegründet 1945 in der Schweiz (heute Hauptsitz Greifensee ZH), ist der weltweit führende Hersteller von Präzisionswaagen für Labor, Industrie und Handel. Heimwaagen für Endverbraucher sind nicht das Kerngeschäft von Mettler Toledo — wer eine Schweizer Marke für den Heimgebrauch sucht, findet bessere Optionen bei deutschen Herstellern wie Soehnle oder Beurer.</p>
+  <h3 class="sub">Gewichtsgenauigkeit für den Heimgebrauch</h3>
+  <ul>
+    <li><strong>±200 g (mechanisch):</strong> Für gelegentliches Wiegen ausreichend</li>
+    <li><strong>±100 g (digital, 0,1 kg Anzeige):</strong> Standard für Heimgeräte, gut für wöchentliches Monitoring</li>
+    <li><strong>±50 g (medizinisch, 0,05 kg Anzeige):</strong> Relevant bei Nierenerkrankungen, Dialyse oder klinischer Beobachtung</li>
+  </ul>
+  <p>Achtung: Eine Anzeige in 50-Gramm-Schritten (0,05 kg) bedeutet nicht automatisch ±50 g Messgenauigkeit. Die effektive Genauigkeit hängt von der Qualität der Dehnungsmessstreifen (Loadcells) ab, nicht allein von der Anzeigeauflösung.</p>
+
+  <!-- ── Section 7 ── -->
   <h2>Smarte Waagen: Bluetooth, WLAN und App-Integration</h2>
   <p>Smarte Waagen verbinden sich mit dem Smartphone und übertragen Messdaten automatisch in eine App. Das Hauptargument: Trendkurven über Wochen und Monate, ohne manuell Werte aufschreiben zu müssen.</p>
   <h3 class="sub">Bluetooth vs. WLAN</h3>
-  <p><strong>Bluetooth-only:</strong> Das Smartphone muss beim Wiegen in Reichweite sein (ca. 10 m). Vorteil: einfaches Setup, keine WLAN-Konfiguration, Daten bleiben optional lokal. Günstigere Modelle (Xiaomi, Renpho, Beurer BF 700) nutzen Bluetooth.</p>
-  <p><strong>WLAN:</strong> Die Waage überträgt Daten direkt ins Internet — ohne Smartphone in der Nähe. Messungen werden cloud-seitig gespeichert und sind sofort in der App sichtbar. Withings und Garmin Index S2 sind die bekanntesten WLAN-Waagen in der Schweiz.</p>
-  <h3 class="sub">App-Ökosysteme</h3>
+  <p><strong>Bluetooth-only:</strong> Das Smartphone muss beim Wiegen in Reichweite sein (ca. 10 m). Vorteil: einfaches Setup, keine WLAN-Konfiguration, Daten bleiben optional lokal. Günstigere Modelle (Xiaomi Mi Body Composition Scale 2, Renpho ES-CS20M, Beurer BF 700) nutzen Bluetooth.</p>
+  <p><strong>WLAN (Wi-Fi):</strong> Die Waage überträgt Daten direkt ins Internet — ohne Smartphone in der Nähe. Messungen werden cloud-seitig gespeichert und sind sofort in der App sichtbar. Withings Body+, Withings Body Comp und Garmin Index S2 sind die bekanntesten WLAN-Waagen in der Schweiz. Hinweis: Ältere Modelle unterstützen teilweise nur 2,4-GHz-WLAN, nicht das modernere 5-GHz-Band — vor dem Kauf prüfen, welche Frequenzen der Heimrouter sendet.</p>
+  <h3 class="sub">App-Ökosysteme im Vergleich</h3>
   <ul>
     <li><strong>Apple Health (iOS):</strong> Withings, Renpho, Beurer, Garmin — alle können Daten nach Apple Health exportieren. Gute Integration in das Fitness-Dashboard von iPhone.</li>
     <li><strong>Samsung Health (Android):</strong> Kompatibel mit Renpho, Withings und Xiaomi; setzt ein Samsung-Konto voraus.</li>
-    <li><strong>Garmin Connect:</strong> Ideal für bestehende Garmin-Nutzer — Gewicht und BIA werden automatisch mit Trainingsaktivitäten verknüpft.</li>
-    <li><strong>Fitbit / Google Fit:</strong> Withings und Renpho haben Fitbit-Sync. Google Fit funktioniert mit den meisten Android-kompatiblen Waagen.</li>
-    <li><strong>openScale (Open Source, Android):</strong> Für alle, die keine Cloud-Anbindung möchten — Daten bleiben lokal auf dem Gerät.</li>
+    <li><strong>Garmin Connect:</strong> Ideal für bestehende Garmin-Nutzer — Gewicht und BIA werden automatisch mit Trainingsaktivitäten verknüpft. Laufkadenz, VO2max und Körperzusammensetzung in einer Ansicht.</li>
+    <li><strong>Google Fit:</strong> Withings und Renpho haben Google-Fit-Sync. Wird von Google langfristig durch Health Connect ersetzt.</li>
+    <li><strong>openScale (Open Source, Android):</strong> Für alle, die keine Cloud-Anbindung möchten — Daten bleiben lokal auf dem Gerät, keine Account-Pflicht, kein Abo.</li>
   </ul>
+  <h3 class="sub">Mehrpersonenspeicher und Nutzererkennung</h3>
+  <p>Familienwaagen speichern mehrere Nutzerprofile. Smarte Modelle erkennen automatisch, wer auf der Waage steht (anhand des Gewichts und Profils), ohne dass man manuell auswählen muss:</p>
+  <ul>
+    <li>Withings Body+: bis zu 8 Nutzerprofile, automatische Erkennung</li>
+    <li>Garmin Index S2: bis zu 16 Nutzerprofile</li>
+    <li>Xiaomi Mi Body Composition Scale 2: bis zu 16 Profile via App</li>
+    <li>Renpho ES-CS20M: unbegrenzte Profile in der App (auf dem Gerät selbst nur eine aktive Sitzung)</li>
+  </ul>
+  <p>Ein Kindermodus (separate Algorithmen, kein BIA für unter 16-Jährige) bieten nur wenige Modelle explizit an — Withings Health Mate erlaubt das Anlegen von Kinderprofilen, zeigt aber nur Gewicht und BMI, keine BIA-Werte.</p>
 
-  <!-- ── Section 7 ── -->
+  <!-- ── Section 8 ── -->
+  <h2>Withings Body Comp, Garmin Index S2, Xiaomi und Co. — Modellvergleich</h2>
+  <p>Das sind die meistgefragten smarten Waagen im Schweizer Markt 2026:</p>
+  <h3 class="sub">Withings Body+ <span class="price-badge">ca. CHF 80–110</span></h3>
+  <p>WLAN + Bluetooth, 4-Elektroden-BIA, misst Gewicht, Körperfett, Wasser, Muskelmasse. Automatisches Erkennen von bis zu 8 Nutzerprofilen. Die Health-Mate-App ist ausgereift und zeigt Langzeit-Trendkurven. Integration in Apple Health, Google Fit und Nest. Withings Body+ ist die beliebteste WLAN-Waage in Europa und eine gute Wahl für Haushalte ausserhalb des Garmin-Ökosystems.</p>
+  <h3 class="sub">Withings Body Comp <span class="price-badge">ca. CHF 140–180</span></h3>
+  <p>Erweitertes Modell mit zusätzlicher Herzfrequenz-Erkennung über die Fussplatten und Nervenleitfähigkeits-Assessment. Misst Viszeralfett als eigenständigen Wert. Für Personen mit erhöhtem kardiovaskulärem Risiko interessant — aber der Mehrpreis gegenüber dem Body+ ist nur für spezifische Bedürfnisse gerechtfertigt.</p>
+  <h3 class="sub">Garmin Index S2 <span class="price-badge">ca. CHF 130–160</span></h3>
+  <p>WLAN, 4-Elektroden-BIA, 16 Nutzerprofile. Direkte Synchronisation mit Garmin Connect — Gewicht erscheint automatisch neben Lauf- und Radkennzahlen. Farbdisplay mit Wetterdaten. Macht nur Sinn für bestehende Garmin-Nutzer (Forerunner, Fenix, Venu, Epix etc.).</p>
+  <h3 class="sub">Xiaomi Mi Body Composition Scale 2 <span class="price-badge">ca. CHF 25–40</span></h3>
+  <p>Bluetooth, 13 BIA-Kennwerte via Mi Fit / Zepp Life App, bis zu 16 Profile, iOS und Android. Sehr günstiger Einstieg in BIA mit überraschend gutem Preis-Leistungs-Verhältnis. Keine WLAN-Funktion. Datenschutz: Serverstandort China — für datenschutz-bewusste Personen weniger geeignet.</p>
+  <h3 class="sub">Renpho ES-CS20M <span class="price-badge">ca. CHF 30–50</span></h3>
+  <p>Bluetooth-only, 13 BIA-Kennwerte, Renpho-App (iOS und Android). Integration in Apple Health, Samsung Health, Fitbit. Gut bewertet für den Preis. Datenschutz: Serverstandort Taiwan/USA.</p>
+  <h3 class="sub">Beurer BF 700 / BF 960 <span class="price-badge">ca. CHF 50–120</span></h3>
+  <p>Deutsche Marke (Ulm), Bluetooth, 8-Elektroden-Technologie beim BF 960 (Handgriffe inklusive), Apple Health Integration. Beurer hat in Schweizer Elektrofachmärkten (Interdiscount, Media Markt) eine gute Verfügbarkeit und einen zuverlässigen Kundendienst in der DACH-Region.</p>
+  <div class="infobox">
+    <p><strong>Welche wählen?</strong> Garmin-Nutzer: Index S2. Apple-Health-fokussiert ohne Garmin: Withings Body+. Budget bis CHF 40: Xiaomi oder Renpho. Wer Datenschutz priorisiert: Withings (Server Frankreich, DSGVO) oder Beurer (Server Deutschland, DSGVO).</p>
+  </div>
+
+  <!-- ── Section 9 ── -->
+  <h2>Datenschutz bei smarten Waagen — DSG Schweiz</h2>
+  <p>Körper- und Gesundheitsdaten gehören zu den besonders schützenswerten Personendaten im Schweizer Datenschutzgesetz (DSG, revidierte Fassung in Kraft seit September 2023). Wer eine smarte Waage mit App und Cloud-Anbindung kauft, gibt Gewicht, Körperfett, Muskelmasse und Nutzungszeit in regelmässigen Abständen an den Hersteller weiter. Folgende Fragen sind vor dem Kauf relevant:</p>
+  <ul>
+    <li><strong>Serverstandort:</strong> Withings — Frankreich (EU/DSGVO-Schutz), gute Wahl für die Schweiz. Garmin — USA (Cloud Act, Datenzugriff durch US-Behörden möglich). Xiaomi und Renpho — China/USA (weniger transparent).</li>
+    <li><strong>Datenlöschung:</strong> Withings und Garmin bieten vollständige Account-Löschung inkl. Messdaten an. Prüfen Sie die Datenschutzerklärung des Herstellers.</li>
+    <li><strong>App-Berechtigungen:</strong> Gute BIA-Apps benötigen nur Bluetooth/WLAN, keine Standortdaten oder Mikrofon-Zugriff. Misstrauen ist angebracht, wenn eine Waagen-App nach Kamerarechten oder Kontakten fragt.</li>
+    <li><strong>Lokale Alternative:</strong> openScale (Android, Open Source) speichert alle Daten lokal auf dem Smartphone — kein Server-Upload, keine Hersteller-App.</li>
+  </ul>
+  <div class="hlbox">
+    <p><strong>CH-Tipp:</strong> Wer Wert auf europäischen Datenschutz legt, kauft Withings (Frankreich) oder Beurer (Deutschland). Beide Anbieter unterliegen der DSGVO, die mit dem Schweizer DSG weitgehend kompatibel ist. Das Swiss-EU-Datenschutzabkommen erleichtert die Datenübermittlung in beide Richtungen.</p>
+  </div>
+
+  <!-- ── Section 10 ── -->
+  <h2>Material, Design und Standfestigkeit auf Schweizer Böden</h2>
+  <p>Schweizer Badezimmer haben oft Keramik- oder Steinzeugfliesen — glatte, harte Oberflächen, die für Waagen ideal sind. Trotzdem gibt es Unterschiede zwischen Waagen-Modellen, die im Schweizer Alltag relevant werden:</p>
+  <h3 class="sub">Oberflächen-Materialien</h3>
+  <ul>
+    <li><strong>Gehärtetes Sicherheitsglas:</strong> Elegant, einfach zu reinigen, robust bei sachgemässem Gebrauch. Standardmaterial bei Mittel- und Oberklasse-Waagen. Mindestens 6 mm für 150 kg, 8 mm für 200 kg empfohlen. Nicht auf dem Rand belasten und nicht fallen lassen.</li>
+    <li><strong>Kunststoff (ABS):</strong> Leichter, günstiger, nicht so kratzanfällig wie Glas. Typisch bei Einsteiger-Digitalwaagen unter CHF 30. Wirkt weniger hochwertig, ist aber funktional gleichwertig.</li>
+    <li><strong>Edelstahl-Sensorplatten:</strong> Die Elektrodenflächen, mit denen Barfussmessungen für BIA durchgeführt werden. Edelstahl ist hygienisch und langlebig. Prüfen Sie, ob die Elektroden genug Fläche bieten — kleine Elektroden verfehlen leicht Fersen oder Zehen.</li>
+  </ul>
+  <h3 class="sub">Rutschfestigkeit</h3>
+  <p>Rutschfeste Gummifüsse an den Ecken sind Standard. Auf sehr glatten, nassen Fliessen kann es trotzdem rutschen. Waagen mit breiten Gummipads oder Anti-Rutsch-Matte (oft mitgeliefert) sind sicherer. Auf Teppich messen ist generell zu vermeiden: Die weiche Unterlage verfälscht die Wiegezelle und kann 0,5–2 kg Abweichung verursachen. Auf Schweizer Parkett (Eiche, Nussbaum) funktionieren Glaswaagen gut, sofern die Gummifüsse nicht kratzen.</p>
+  <h3 class="sub">Grösse und Gewicht der Waage selbst</h3>
+  <p>Standard-Waagen sind 28×28 cm oder 30×30 cm — ausreichend für alle Schuhgrössen. Schmalere Modelle (20 cm Breite) haben kleinere Standflächen und passen besser in kleine Badezimmer, bieten aber weniger Standstabilität. Gewicht der Waage: 1,5–2,5 kg, kein relevanter Faktor für die meisten Haushalte.</p>
+
+  <!-- ── Section 11 ── -->
+  <h2>Batterien, Akku und Stromversorgung</h2>
+  <p>Körperwaagen werden überwiegend batteriebetrieben. Das ist für den Heimgebrauch praktisch — keine Kabel im Badezimmer, kein Steckdosenbedarf. Aber es gibt wichtige Unterschiede:</p>
+  <h3 class="sub">Batterietypen und Schweizer Verfügbarkeit</h3>
+  <ul>
+    <li><strong>AAA-Batterien (Microbatterien):</strong> Am häufigsten für Körperwaagen. Überall in der Schweiz erhältlich: Migros, Coop, Landi, Apotheken, Tankstellen. Laufzeit typisch 1–2 Jahre bei normaler Nutzung (1× täglich).</li>
+    <li><strong>CR2032 Lithium-Knopfzellen:</strong> Bei sehr kompakten Miniwaagen oder als Backup-Batterie für den Speicher bei WLAN-Modellen.</li>
+    <li><strong>AA-Batterien:</strong> Grösser, bei manchen Modellen mit besonders hohem Energiebedarf (WLAN-Dauerverbindung).</li>
+  </ul>
+  <p>Rechtsschutz-Tipp: In der Schweiz gilt seit 2023 das revidierte Fernmeldeanlagensetz. Die EU-Vorschrift zu einheitlichen USB-C-Ladeanschlüssen gilt für die Schweiz nicht direkt, aber viele Hersteller passen ihre Produkte für den EU-Markt an, was auch Schweizer Importeuren zugute kommt.</p>
+  <h3 class="sub">Akkumodelle mit USB-C</h3>
+  <p>Einige neuere Modelle — darunter die Withings Body Scan und bestimmte Garmin-Varianten — setzen auf integrierten Akku mit USB-C-Ladefunktion. Vorteile: keine Batterie-Entsorgung, bequemes Laden mit dem ohnehin vorhandenen USB-C-Kabel. Nachteil: Wenn der Akku nach Jahren nicht mehr lädt, ist das Gerät am Ende seiner Lebenszeit.</p>
+  <div class="infobox">
+    <p><strong>Empfehlung für die Schweiz:</strong> Für normale Haushalte sind AAA-Batterie-Modelle wartungsärmer. Wiederaufladbare Akkus (Eneloop, Varta Ready2Use) passen in AAA-Fächer und reduzieren Elektroschrott — bei Migros und Interdiscount erhältlich.</p>
+  </div>
+
+  <!-- ── Section 12 ── -->
+  <h2>Kalibrierung, Wartung und Einfluss des Untergrunds</h2>
+  <p>Moderne Digitalwaagen kalibrieren sich automatisch beim Einschalten (Auto-Zero-Funktion). Manuelle Kalibrierung mit Kalibriergewichten ist bei Heimwaagen nicht nötig und selten vorgesehen. Trotzdem gibt es Faktoren, die die Messgenauigkeit langfristig beeinflussen:</p>
+  <h3 class="sub">Untergrundeinfluss</h3>
+  <ul>
+    <li><strong>Hartboden (Fliesen, Parkett, Beton):</strong> Ideal. Alle vier Wiegefüsse haben gleichmässigen Kontakt, die Lastmessung ist korrekt.</li>
+    <li><strong>Teppich:</strong> Die Wiegefüsse sinken unterschiedlich tief ein. Messabweichungen von 0,5–2 kg sind typisch. Wenn kein Hartboden verfügbar ist, eine stabile Holzplatte unter die Waage legen.</li>
+    <li><strong>Unebener Boden:</strong> Günstiger Schweizer Altbau hat manchmal unebene Böden. Waagen mit Libelle (Wasserwaage) oder automatischer Neigungskompensation (selten, nur bei Profi-Modellen) gleichen das aus.</li>
+  </ul>
+  <h3 class="sub">Feuchtigkeit in Schweizer Badezimmern</h3>
+  <p>Schweizer Bäder sind oft feucht, besonders nach dem Duschen. Elektronische Komponenten sind in der Regel ausreichend geschützt (IPX4 bei einigen Modellen — Spritzwasserschutz). Trotzdem gilt: Waage nicht im Duschbereich aufstellen, Kondenswasser auf der Glasfläche abtrocknen. Langfristige Feuchtigkeit kann Batterien rosten und interne Elektronik schädigen. Nach dem Duschen 10 Minuten warten, bevor man wiegt — das verbessert auch die BIA-Messung (trockene Füsse).</p>
+  <h3 class="sub">Lagerung und Transport</h3>
+  <p>Körperwaagen sind empfindlich gegenüber Stürzen — insbesondere die Wiegezelle (Loadcell) kann durch Schock beschädigt werden. Glaswaagen nicht aufrecht legen (Glasbruchrisiko), nicht stapeln. Im Winter nach einem Transport aus dem Freien erst auf Raumtemperatur kommen lassen (Kondensation auf der Elektronik möglich).</p>
+
+  <!-- ── Section 13 ── -->
   <h2>Wann und wie wiegen: Bedingungen für vergleichbare Werte</h2>
   <p>Der grösste Fehler beim täglichen Wiegen ist inkonsistente Messbedingungen. Natürliche Gewichtsschwankungen von 1–3 kg pro Tag sind normal — durch Mahlzeiten, Getränke, Wassereinlagerungen und Darminhalt. Um echte Trends zu erkennen, braucht man Konstanz:</p>
   <ul>
@@ -401,10 +548,10 @@ footer a:hover{color:var(--accent-dk)}
     <li><strong>Frequenz:</strong> Tägliches Wiegen eignet sich für Trendanalyse; wöchentliches Wiegen (immer am selben Wochentag) reicht für einfache Gewichtskontrolle.</li>
   </ul>
   <div class="infobox">
-    <p><strong>Tipp:</strong> Wer schwankt oder demotiviert ist, weil der Wert täglich springt, sollte auf den <em>gleitenden 7-Tage-Durchschnitt</em> schauen — viele Apps (Withings Health Mate, Happy Scale) bieten das an. Der Durchschnitt zeigt den echten Trend, die Tagesschwankungen verschwinden im Rauschen.</p>
+    <p><strong>Tipp:</strong> Wer schwankt oder demotiviert ist, weil der Wert täglich springt, sollte auf den <em>gleitenden 7-Tage-Durchschnitt</em> schauen — viele Apps (Withings Health Mate, Happy Scale für iOS) bieten das an. Der Durchschnitt zeigt den echten Trend, die Tagesschwankungen verschwinden im Rauschen.</p>
   </div>
 
-  <!-- ── Section 8 ── -->
+  <!-- ── Section 14 ── -->
   <h2>Maximales Körpergewicht und Sicherheit</h2>
   <p>Die meisten Heimwaagen sind auf 150–180 kg ausgelegt. Das reicht für den grössten Teil der Bevölkerung — wer aber deutlich über 100 kg wiegt, sollte explizit auf die Herstellerangabe zur Maximalbelastung achten.</p>
   <ul>
@@ -414,41 +561,33 @@ footer a:hover{color:var(--accent-dk)}
   </ul>
   <p>Zur Sicherheit: Glaswaagen mit 8 mm gehärtetem Sicherheitsglas (Temperglas) sind laut Herstellerangaben bis 200 kg sicher. Das Glas splittert bei Bruch in stumpfe Scherben (wie Autoscheibe) — anders als Fensterglas. Trotzdem: Glaswaagen nicht fallen lassen und nicht auf dem Rand belasten.</p>
 
-  <!-- ── Section 9 ── -->
-  <h2>Withings Body+ vs. Garmin Index S2 vs. Renpho in der Schweiz</h2>
-  <p>Das sind die drei meistgefragten smarten Waagen im Schweizer Markt 2026:</p>
-  <h3 class="sub">Withings Body+ (ca. CHF 80–110)</h3>
-  <p>WLAN + Bluetooth, 4-Elektroden-BIA, Gewicht / Körperfett / Wasser / Muskelmasse. Automatisches Erkennen von bis zu 8 Nutzerprofilen. Die Health-Mate-App ist ausgereift, DSGVO-konform (Server in Frankreich) und zeigt Langzeit-Trendkurven. Integration in Apple Health, Google Fit und Nest. Beliebteste WLAN-Waage in Europa — gute Wahl für den Haushalt ohne Garmin-Ökosystem.</p>
-  <h3 class="sub">Garmin Index S2 (ca. CHF 130–160)</h3>
-  <p>WLAN, 4-Elektroden-BIA, 16 Nutzerprofile. Direkte Synchronisation mit Garmin Connect — Gewicht erscheint automatisch neben Lauf- und Radkennzahlen. Farbdisplay mit Wetterdaten. Macht nur Sinn für bestehende Garmin-Nutzer (Forerunner, Fenix, Venu etc.). Datenschutz: Server in den USA (CLOUD Act). Exportmöglichkeit und Datenlöschung vorhanden.</p>
-  <h3 class="sub">Renpho ES-CS20M (ca. CHF 30–50)</h3>
-  <p>Bluetooth-only, 13 BIA-Kennwerte, Renpho-App (iOS und Android). Sehr günstiger Einstieg in BIA. Integration in Apple Health, Samsung Health, Fitbit. Gut bewertet für den Preis. Datenschutz: Serverstandort Taiwan/USA. Für Datenschutz-bewusste Personen weniger geeignet als europäische Alternativen.</p>
-  <div class="infobox">
-    <p><strong>Welche wählen?</strong> Garmin-Nutzer: Index S2. Apple-Health-fokussiert ohne Garmin: Withings Body+. Budget bis CHF 50: Renpho oder Beurer BF 700.</p>
-  </div>
-
-  <!-- ── Section 10 ── -->
-  <h2>Wo kaufen in der Schweiz</h2>
-  <p>Körperwaagen sind schweizweit breit erhältlich. Hier ein Überblick nach Kanal:</p>
+  <!-- ── Section 15 ── -->
+  <h2>Wo kaufen in der Schweiz — Preisvergleich nach Händler</h2>
+  <p>Körperwaagen sind schweizweit breit erhältlich. Hier ein Überblick nach Kanal und Preissegment:</p>
   <h3 class="sub">Online — grösste Auswahl</h3>
   <ul>
     <li><strong>Galaxus.ch:</strong> Über 200 Waagen-Modelle, echte Kundenbewertungen, Preisvergleich integriert, kostenlose Rücksendung. Empfehlenswert für den direkten Modellvergleich.</li>
-    <li><strong>Microspot.ch:</strong> Gutes Sortiment im mittleren Segment, oft attraktive Aktionspreise. Ebenfalls Kundenrezensionen vorhanden.</li>
+    <li><strong>Microspot.ch:</strong> Gutes Sortiment im mittleren Segment, oft attraktive Aktionspreise.</li>
     <li><strong>Ricardo.ch:</strong> Für günstige Gebrauchtgeräte oder Restposten. Besonders bei teuren WLAN-Modellen lohnt sich ein Blick auf gute Gebrauchtware.</li>
   </ul>
-  <h3 class="sub">Fachhandel</h3>
+  <h3 class="sub">Elektrofachhandel</h3>
   <ul>
-    <li><strong>Interdiscount:</strong> Breit aufgestellt, in vielen Schweizer Städten präsent. Beurer- und Withings-Modelle gut vorrätig. Möglichkeit zur physischen Beratung.</li>
+    <li><strong>Interdiscount:</strong> Breit aufgestellt, in vielen Schweizer Städten und Agglomerationen präsent. Beurer- und Withings-Modelle gut vorrätig. Möglichkeit zur physischen Beratung.</li>
     <li><strong>Media Markt:</strong> Ähnliches Sortiment, oft Sonderaktionen auf bekannte Marken. Rückgabe 30 Tage.</li>
   </ul>
   <h3 class="sub">Grossverteiler</h3>
   <ul>
-    <li><strong>Migros / Coop:</strong> Einfache Digitalwaagen und Marken wie Soehnle oder Beurer im unteren Segment (CHF 20–60). Praktisch wenn ohnehin eingekauft wird — kein breiter Markenvergleich.</li>
+    <li><strong>Migros / Coop:</strong> Einfache Digitalwaagen und Marken wie Soehnle oder Beurer im unteren Segment (CHF 20–60). Praktisch wenn ohnehin eingekauft wird. Batterieersatz ebenfalls gleich erhältlich.</li>
+    <li><strong>Landi:</strong> Vor allem im ländlichen Raum präsent. Gutes Sortiment im Einstiegs- bis Mittelsegment, häufig auch Soehnle-Modelle.</li>
     <li><strong>Manor:</strong> Etwas breiteres Sortiment als Migros/Coop, gelegentlich auch Withings oder Garmin im Regal.</li>
   </ul>
-  <p>Tipp: Preisvergleiche lohnen sich. Dasselbe Modell kann je nach Händler 20–40 CHF im Preis variieren. Galaxus zeigt Preisverlauf über Zeit — kurz prüfen, ob ein aktuelles Angebot unter dem historischen Durchschnitt liegt.</p>
+  <h3 class="sub">Apotheken und Drogerie</h3>
+  <p>In Apotheken (Amavita, Zur Rose, Coop Vitality) sind häufig medizinisch ausgerichtete Modelle erhältlich — besonders Waagen mit bariatrischer Kapazität oder für die Heimüberwachung bei chronischen Erkrankungen (Nierenkrankheit, Herzinsuffizienz). Preise sind oft höher als im Elektrofachhandel, dafür gibt es kompetente Beratung.</p>
+  <div class="hlbox">
+    <p><strong>Preisvergleich lohnt sich:</strong> Dasselbe Modell kann je nach Händler 20–40 CHF im Preis variieren. Galaxus zeigt den Preisverlauf über Zeit — kurz prüfen, ob ein aktuelles Angebot unter dem historischen Durchschnitt liegt, bevor man kauft.</p>
+  </div>
 
-  <!-- ── Section 11 ── -->
+  <!-- ── Section 16 ── -->
   <h2>Häufige Fehler beim Körperwaage-Kauf</h2>
   <ul>
     <li><strong>Skalenauflösung mit Messgenauigkeit verwechseln:</strong> 50-g-Anzeige bedeutet nicht automatisch ±50 g Genauigkeit. Billige Waagen mit feiner Anzeige können trotzdem ±300 g abweichen.</li>
@@ -457,8 +596,245 @@ footer a:hover{color:var(--accent-dk)}
     <li><strong>Zu viele Nutzerprofile ignorieren:</strong> Wer eine Familienwaage kauft, sollte auf die Anzahl speicherbarer Profile achten (Standard: 4–8, Garmin Index S2: 16).</li>
     <li><strong>WLAN-Waage kaufen ohne WLAN-Check:</strong> Manche ältere Modelle unterstützen nur 2,4-GHz-WLAN, nicht 5 GHz. Prüfen, ob der Heimrouter kompatibel ist.</li>
     <li><strong>Maximalgewicht unterschätzen:</strong> Standard-Modelle tragen bis 150 kg. Wer näher an dieser Grenze ist, wählt explizit ein 200-kg-Modell.</li>
-    <li><strong>App-Abhängigkeit nicht bedacht:</strong> Wenn der Hersteller die App einstellt oder den Cloud-Dienst abschaltet, verliert die smarte Waage ihre Hauptfunktion. Withings und Garmin haben sich bislang als langfristig stabil erwiesen.</li>
+    <li><strong>BIA bei Herzschrittmacher ignorieren:</strong> Kein BIA mit implantierten Herzgeräten. Nur eine reine Gewichtswaage ohne Bioimpedanz nutzen.</li>
+    <li><strong>App-Abhängigkeit nicht bedacht:</strong> Wenn der Hersteller die App einstellt oder den Cloud-Dienst abschaltet, verliert die smarte Waage ihre Hauptfunktion. Withings und Garmin haben sich bislang als langfristig stabil erwiesen — kleinere Anbieter weniger.</li>
   </ul>
+
+  <!-- ── Section 17 ── -->
+  <h2>Analogwaage vs. Digitalwaage: Wann lohnt sich welcher Typ?</h2>
+  <p>Analoge Federwaagen (Zeigerwaagen) werden in der Schweiz heute hauptsächlich noch aus drei Gründen gekauft: sie benötigen keine Batterie, haben grosse, gut lesbare Zifferblätter (vorteilhaft für Personen mit Sehproblemen) und sind nahezu wartungsfrei. Qualitativ hochwertige mechanische Modelle wie Soehnle oder Beurer halten Jahrzehnte, ohne jemals eine Batterie zu brauchen.</p>
+  <h3 class="sub">Vorteile der analogen Federwaage</h3>
+  <ul>
+    <li>Kein Batteriebedarf — immer einsatzbereit</li>
+    <li>Grosse Zifferblatt-Anzeige, gut ablesbar aus Distanz</li>
+    <li>Robust und langlebig (10–20+ Jahre)</li>
+    <li>Keine elektronischen Komponenten, die ausfallen können</li>
+    <li>Sehr günstig (CHF 15–40)</li>
+  </ul>
+  <h3 class="sub">Nachteile der analogen Federwaage</h3>
+  <ul>
+    <li>Genauigkeit nur ±0,5–1 kg — keine Zehntelkilogramm-Anzeige</li>
+    <li>Keine BIA-Messung möglich</li>
+    <li>Die Feder kann im Laufe der Zeit nachlassen (Nullpunktdrift)</li>
+    <li>Ablesefehler durch Parallaxe (schräge Blickrichtung auf das Zifferblatt)</li>
+    <li>Kein App-Sync, keine Trendkurven</li>
+  </ul>
+  <p>Für wen eignet sich eine analoge Waage in der Schweiz? Für ältere Personen, die keine Smartphone-Apps nutzen; für Haushalte ohne Batterien oder Steckdosen im Badezimmer; oder als Backup-Waage neben einem digitalen Modell. Für aktives Gewichtsmonitoring ist eine Digitalwaage deutlich zuverlässiger.</p>
+  <div class="infobox">
+    <p><strong>Kauftipp analog:</strong> Soehnle Classic (ca. CHF 20–30), Wido Original (ca. CHF 25–35) oder Beurer MS 01 (ca. CHF 15–25) sind bewährte, schweizweit im Handel erhältliche Modelle. Auf Federhärte ≥ 150 kg achten und sicherstellen, dass die Nullpunkt-Einstellung (Reset-Rädchen) vorhanden ist.</p>
+  </div>
+
+  <!-- ── Section 18 ── -->
+  <h2>Körperanalysewaagen im Medizinbereich und bei Erkrankungen</h2>
+  <p>In bestimmten medizinischen Situationen ist das regelmässige Wiegen zu Hause nicht nur komfortabel, sondern medizinisch empfohlen. In der Schweiz gibt es dafür spezifische Hinweise von Fachgesellschaften und dem BAG:</p>
+  <h3 class="sub">Herzinsuffizienz und Ödeme</h3>
+  <p>Patienten mit Herzinsuffizienz sollen laut Empfehlung der Schweizerischen Gesellschaft für Kardiologie täglich wiegen. Eine rasche Gewichtszunahme von mehr als 1 kg pro Tag oder 2 kg pro Woche kann auf Wassereinlagerung (Ödem) hinweisen und erfordert eine ärztliche Reaktion. Für diese Anwendung wird eine sehr genaue Personenwaage mit 50-g-Auflösung empfohlen — keine BIA-Funktion nötig (diese kann bei manchen Herzpatienten sogar kontraindiziert sein).</p>
+  <h3 class="sub">Nierenerkrankungen und Dialyse</h3>
+  <p>Dialysepatienten wiegen sich vor und nach jeder Dialysesitzung. Das Gewicht bestimmt die zu entzuführende Flüssigkeitsmenge. In Dialysezentren werden geeichte Präzisionswaagen verwendet. Zu Hause empfehlen Nephrologen Waagen mit mindestens 100-g-Auflösung und möglichst 0–200 kg Kapazität.</p>
+  <h3 class="sub">Adipositas-Therapie und Ernährungsberatung</h3>
+  <p>In Schweizer Ernährungsberatungsprogrammen (z. B. bei Helsana, der Sanitas-Gesundheitsapp oder bei KSA/Inselspital-Adipositassprechstunden) ist die Körperwaage ein Basismittel. BIA-Waagen werden in der Beratung eingesetzt, um zwischen Fett- und Muskelmasse-Veränderungen zu unterscheiden. Für die Heimanwendung sind 4-Elektroden-Modelle ausreichend.</p>
+  <h3 class="sub">Sporternährung und Personal Training</h3>
+  <p>Personal Trainer in Schweizer Fitnessstudios (z. B. Fitnessparks, Migros Fitness) nutzen oft Tanita-Profiwaagen mit 8-Elektroden (Tanita BC-601, BC-1000) für Eingangs- und Verlaufsanalysen. Für das Heimtraining empfehlen viele Schweizer Trainer die Withings Body Comp oder Garmin Index S2 als ausreichend präzise Kompromiisslösung zwischen Profigerät und Alltagstauglichkeit.</p>
+
+  <!-- ── Section 19 ── -->
+  <h2>Körpergewicht und Sport: Besonderheiten beim Messen für Aktive</h2>
+  <p>Wer regelmässig Sport treibt, merkt schnell, dass die Waage manchmal ein verwirrendes Bild abgibt. Gewichtszunahme bei gleichzeitiger Körperfettreduktion ist möglich — dann ist Muskelmasse aufgebaut worden, die schwerer ist als Fettgewebe. Umgekehrt kann kurzfristiger Gewichtsverlust durch intensiven Sport auf Wasserverlust zurückgehen, nicht auf Fettverlust.</p>
+  <h3 class="sub">Warum der Massstab für Sportler anders ist</h3>
+  <ul>
+    <li><strong>Muskeln wiegen mehr als Fett:</strong> Ein Liter Muskelgewebe wiegt ca. 1,06 kg, ein Liter Fettgewebe ca. 0,9 kg. Wer trainiert, kann schwerer werden und trotzdem schlanker aussehen.</li>
+    <li><strong>Wasserretention nach Training:</strong> Muskelreparatur nach intensivem Training bindet Wasser im Muskelgewebe. Das kann 1–3 Tage zu einem erhöhten Gewichtswert führen, ohne dass Fett zugenommen hat.</li>
+    <li><strong>Glykogenspeicher:</strong> Nach einer kohlenhydratreichen Mahlzeit speichert der Körper Glykogen in Muskeln und Leber — jedes Gramm Glykogen bindet ca. 3 g Wasser. Das kann das Gewicht kurzfristig um 0,5–2 kg erhöhen.</li>
+    <li><strong>Dehydration nach Ausdauerbelastung:</strong> Nach einem langen Lauf oder einer Radtour kann das Gewicht durch Schweissverlust 1–2 kg tiefer sein als normal. Dieser Wert normalisiert sich nach dem Trinken.</li>
+  </ul>
+  <h3 class="sub">Empfehlung für sportlich aktive Personen</h3>
+  <p>Für Personen mit Trainingszielen ist eine Körperanalysewaage mit BIA deutlich informativer als eine reine Personenwaage. Wichtig: BIA nie direkt nach dem Training messen (mindestens 3 Stunden Abstand). Der Körperfettanteil im Vergleich zur Muskelmasse ist aussagekräftiger als das absolute Körpergewicht. Eine 8-Elektroden-Waage (Beurer BF 960, Withings Body Scan, Tanita BC-730) liefert segmentale Daten pro Körperbereich — besonders nützlich für Kraftsportler, die gezielt bestimmte Muskelgruppen aufbauen.</p>
+
+  <!-- ── Section 20 ── -->
+  <h2>Rücksendung, Garantie und Schweizer Kaufrecht</h2>
+  <p>Beim Kauf einer Körperwaage in der Schweiz gelten bestimmte rechtliche Rahmenbedingungen, die sich von der EU unterscheiden:</p>
+  <h3 class="sub">Gewährleistung nach Schweizer Recht</h3>
+  <p>In der Schweiz beträgt die gesetzliche Gewährleistungsfrist <strong>2 Jahre</strong> ab Kaufdatum (OR Art. 210). Diese gilt für Mängel, die bei der Übergabe bereits vorhanden waren — nicht für Verschleiss oder Schäden durch unsachgemässe Nutzung. Viele Schweizer Händler (Galaxus, Interdiscount, Media Markt) bieten freiwillig erweiterte Garantien an.</p>
+  <h3 class="sub">Rückgaberecht beim Online-Kauf</h3>
+  <p>Im Gegensatz zur EU gibt es in der Schweiz kein gesetzliches Widerrufsrecht beim Fernkauf. Viele Schweizer Online-Händler bieten jedoch freiwillig ein Rückgaberecht von 14–30 Tagen an:</p>
+  <ul>
+    <li><strong>Galaxus.ch:</strong> 30 Tage kostenlose Rücksendung (auch bei originalverpackten geöffneten Geräten)</li>
+    <li><strong>Interdiscount.ch:</strong> 30 Tage Rückgabe in der Filiale oder per Post</li>
+    <li><strong>Media Markt Schweiz:</strong> 30 Tage Rückgabe in der Filiale</li>
+    <li><strong>Migros / Coop:</strong> In der Regel 30 Tage mit Kassenbon, auch ohne Originalverpackung</li>
+  </ul>
+  <h3 class="sub">Reparatur und Ersatzteile</h3>
+  <p>Für Körperwaagen gibt es kaum Reparaturdienstleistungen. Defekte Wiegezellen oder kaputte Glasscheiben werden meist nicht einzeln angeboten. Im Schadensfall ist es einfacher, das Gerät zurückzugeben (innerhalb der Garantie) oder ein neues zu kaufen. Umso wichtiger: ein Hersteller mit zuverlässigem Kundendienst in der Schweiz — Beurer (Ulm, D) hat einen deutschsprachigen Support; Withings bietet englischen/französischen Chat-Support.</p>
+
+  <!-- ── Section 21 ── -->
+  <h2>Nachhaltigkeit und Entsorgung in der Schweiz</h2>
+  <p>Körperwaagen fallen in der Schweiz unter die <strong>Verordnung über die Rückgabe, die Rücknahme und die Entsorgung elektrischer und elektronischer Geräte (VREG)</strong>. Das bedeutet:</p>
+  <ul>
+    <li><strong>Kostenlose Rückgabe:</strong> Defekte oder ausgediente Waagen können beim Händler, bei Interdiscount, Media Markt, Galaxus (Abgabe per Post) oder direkt bei einer Sammelstelle (z. B. SENS eRecycling, Verkaufsstellen von Elektrofachhändlern) kostenlos abgegeben werden.</li>
+    <li><strong>Batterien separat entsorgen:</strong> Batterien und Akkus nicht im Hausmüll entsorgen. In der Schweiz gibt es an fast jedem Verkaufspunkt (Coop, Migros, Tankstellen) Sammelboxen für Altbatterien. Die INOBAT (Interessengemeinschaft Entsorgung Batterien) organisiert das Rücknahmesystem.</li>
+    <li><strong>SENS eRecycling:</strong> Gibt dem Gerät einen «grünen Punkt» auf dem Schweizer Markt, wenn der Hersteller die VREG-Gebühren korrekt abführt. Bei günstigen Importwaren aus dem Direktversand (AliExpress, Temu) fehlt diese Gebühr oft — technisch illegal, in der Praxis selten durchgesetzt.</li>
+  </ul>
+  <p>Wer seine Waage möglichst lange nutzt, reduziert Elektroschrott am effektivsten. Viele Modelle — insbesondere mechanische und einfache Digitalwaagen — halten 10–15 Jahre, wenn sie nicht fallen gelassen und trocken gelagert werden.</p>
+
+  <!-- ── Section 22 ── -->
+  <h2>Top-5-Empfehlungen nach Bedarf — kompakt</h2>
+  <p>Folgende Modelle werden für den Schweizer Markt 2026 nach Einsatzszenario empfohlen. Die Preise sind Richtwerte; aktuelle Preise auf Galaxus oder in der <a href="/angebote-suche.html">aban Angebote-Suche</a> prüfen.</p>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Szenario</th>
+        <th>Empfehlung</th>
+        <th>Preis ca.</th>
+        <th>Warum</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Einfaches Wiegen ohne App</td>
+        <td>Beurer GS 27 / Soehnle Classic</td>
+        <td>CHF 25–35</td>
+        <td>Günstig, robust, grosse Anzeige, keine Batterie (analog)</td>
+      </tr>
+      <tr>
+        <td>Bestes Preis-Leistungs-Verhältnis BIA</td>
+        <td>Xiaomi Mi Body Composition Scale 2</td>
+        <td>CHF 25–40</td>
+        <td>13 BIA-Werte, iOS + Android, 16 Profile, bewährt</td>
+      </tr>
+      <tr>
+        <td>Familie mit bis zu 8 Personen</td>
+        <td>Withings Body+</td>
+        <td>CHF 80–110</td>
+        <td>WLAN, auto. Nutzererkennung, Health Mate App, DSGVO</td>
+      </tr>
+      <tr>
+        <td>Garmin-Ökosystem-Nutzer</td>
+        <td>Garmin Index S2</td>
+        <td>CHF 130–160</td>
+        <td>Direkt in Garmin Connect, 16 Profile, Farbdisplay</td>
+      </tr>
+      <tr>
+        <td>Sportler / Kraft + Körpersegmentdaten</td>
+        <td>Beurer BF 960 oder Withings Body Scan</td>
+        <td>CHF 120–280</td>
+        <td>8-Elektroden, segmentale BIA, Handgriffe, präziser</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── Section 23 ── -->
+  <h2>Körperwaage als Langzeit-Werkzeug: Realistische Erwartungen</h2>
+  <p>Eine Körperwaage ist kein Therapiegerät und kein Diagnoseinstrument. Sie ist ein <em>Messinstrument für Veränderungen über Zeit</em> — und als solches nützlich, wenn man weiss, was man von ihr erwarten kann und was nicht.</p>
+  <h3 class="sub">Was eine gute Waage leisten kann</h3>
+  <ul>
+    <li>Gewichtsveränderungen von mehr als 0,2 kg über Wochen zuverlässig sichtbar machen</li>
+    <li>Trends bei Körperfett und Muskelmasse über Monate zeigen (mit BIA)</li>
+    <li>Motivation durch sichtbare Fortschritte unterstützen</li>
+    <li>Frühwarnzeichen für gesundheitlich relevante Gewichtszunahmen (Ödeme bei Herzpatienten)</li>
+    <li>Daten für Gespräche mit Ärztin, Ernährungsberaterin oder Personal Trainer bereitstellen</li>
+  </ul>
+  <h3 class="sub">Was eine Waage nicht kann</h3>
+  <ul>
+    <li>Den exakten Körperfettanteil diagnostisch bestimmen (Abweichung ±3–5 % bei BIA)</li>
+    <li>Den Gesundheitszustand insgesamt beurteilen</li>
+    <li>Die Motivation auf Dauer allein aufrechterhalten</li>
+    <li>Einzelne Fettdepots messen (z. B. Bauchfett separat) — BIA-Schätzungen sind Ganzkörperwerte</li>
+    <li>Ohne konsistente Messbedingungen verlässliche Daten liefern</li>
+  </ul>
+  <p>Der grösste Nutzen einer Waage entsteht dann, wenn sie konsequent unter gleichen Bedingungen genutzt wird und die Messungen in einen grösseren Kontext eingebettet werden — Ernährung, Bewegung, Schlaf. Eine smarte Waage, die mit einer Fitness-App synchronisiert ist, kann diesen Kontext sichtbar machen. Wer jedoch eine Waage kauft und einmal pro Monat draufsteht, wird wenig davon haben.</p>
+  <div class="hlbox">
+    <p><strong>Fazit für den Schweizer Markt 2026:</strong> Für die meisten Haushalte ist eine solide Digitalwaage (CHF 25–50) oder eine BIA-Waage im Mittelfeld (CHF 50–120) der beste Kauf. Smarte WLAN-Modelle lohnen sich für Familien und Personen, die ihre Gesundheitsdaten app-gestützt verfolgen wollen. Wer sportlich aktiv ist und präzise Körpersegmentdaten will, investiert in ein 8-Elektroden-Modell. Wer nur wiegen möchte, kauft ein einfaches Digitalmodell — und gibt das gesparte Geld lieber für gesunde Lebensmittel aus.</p>
+  </div>
+
+  <!-- ── Section 24 ── -->
+  <h2>Preissegmente im Detail: Budget, Einkaufsort und Timing</h2>
+  <p>Für Kaufentscheidungen lohnt sich ein Blick darauf, welches Preissegment zu welchem Bedarf passt — und wo dieses Segment in der Schweiz am günstigsten oder am kompetentesten beraten verfügbar ist.</p>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Preissegment</th>
+        <th>Waagentyp</th>
+        <th>Beste Einkaufsorte</th>
+        <th>Hinweis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>unter CHF 30</td>
+        <td>Einfache Digital- oder Federwaage</td>
+        <td>Migros, Coop, Landi, Manor</td>
+        <td>Ausreichend für reines Gewichts-Monitoring, keine BIA-Funktion, sofort mitnehmbar</td>
+      </tr>
+      <tr>
+        <td>CHF 50–120</td>
+        <td>BIA-Körperanalysewaage (4-Elektroden)</td>
+        <td>Galaxus, Interdiscount, Media Markt</td>
+        <td>Bestes Preis-Leistungs-Verhältnis für die meisten Haushalte, grosse Modellauswahl</td>
+      </tr>
+      <tr>
+        <td>CHF 150–250</td>
+        <td>Smarte WLAN-Waage mit erweiterter Analyse</td>
+        <td>Galaxus, Herstellershop, Apotheke (Amavita, Zur Rose, Coop Vitality)</td>
+        <td>Für Familien mit App-Ökosystem oder bei medizinisch begründetem Bedarf</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Preislich lohnt sich in der Schweiz ein Blick auf saisonale Aktionen: Der Black-Friday-Zeitraum (Ende November) und die ersten Januarwochen (Neujahrsvorsätze, «Fitness-Saison») bringen bei Interdiscount, Media Markt und Galaxus regelmässig Rabatte von 15–30 % auf Körperwaagen, insbesondere auf smarte BIA-Modelle. Wer nicht dringend eine Waage braucht, wartet auf diese Fenster.</p>
+  <p>In Apotheken lohnt sich der Kauf vor allem, wenn eine fachliche Einordnung gewünscht ist — etwa bei Fragen zur Eignung bei Vorerkrankungen. Der reine Gerätepreis ist dort im Schnitt etwas höher als im Elektrofachhandel, da die Beratungsleistung eingepreist ist.</p>
+
+  <!-- ── Section 25 ── -->
+  <h2>Testberichte: Was Schweizer Konsumentenmagazine prüfen</h2>
+  <p>Schweizer Konsumentenschutz-Publikationen wie <strong>K-Tipp</strong>, <strong>saldo</strong> und die Vergleichsplattform <strong>test.ch</strong> (Stiftung für Konsumentenschutz) veröffentlichen periodisch Vergleichstests von Haushaltsgeräten, gelegentlich auch von Körper- und Personenwaagen. Für Kaufentscheidungen lohnt es sich, vor dem Kauf eine aktuelle Ausgabe zu konsultieren, da sich das Modellangebot laufend ändert.</p>
+  <h3 class="sub">Worauf diese Tests typischerweise achten</h3>
+  <ul>
+    <li><strong>Messgenauigkeit im Wiederholungstest:</strong> Dieselbe Person wird mehrfach hintereinander gewogen — gute Waagen liefern dabei nahezu identische Werte.</li>
+    <li><strong>Abweichung gegenüber Referenzgewichten:</strong> Vergleich mit geeichten Prüfgewichten, um systematische Fehler aufzudecken.</li>
+    <li><strong>Bedienungsfreundlichkeit:</strong> Lesbarkeit des Displays, Verständlichkeit der App, Einrichtungsaufwand.</li>
+    <li><strong>Datenschutzhinweise:</strong> Bei smarten Modellen prüfen Konsumentenmagazine zunehmend auch die Datenschutzerklärung und den Serverstandort.</li>
+    <li><strong>Verarbeitungsqualität:</strong> Stabilität der Standfläche, Materialstärke der Glasscheibe, Verarbeitung der Elektroden.</li>
+  </ul>
+  <div class="infobox">
+    <p><strong>Praxistipp:</strong> Da sich Testergebnisse und Modellgenerationen laufend ändern, ersetzt kein Ratgeber-Artikel den Blick in die jeweils aktuellste Ausgabe von K-Tipp oder saldo. Beide Publikationen sind in öffentlichen Bibliotheken der Schweiz kostenlos einsehbar, saldo und K-Tipp bieten zudem Online-Archive für Abonnentinnen und Abonnenten.</p>
+  </div>
+
+  <!-- ── Section 26 ── -->
+  <h2>Kostenübernahme: Krankenkasse, Zusatzversicherung und Prävention</h2>
+  <p>Die obligatorische Grundversicherung (KVG) übernimmt die Kosten für eine Körperwaage grundsätzlich nicht — sie gilt als Gegenstand der allgemeinen Lebensführung, nicht als medizinisches Hilfsmittel im engeren Sinn. Es gibt jedoch Ausnahmen und Nebenwege, die für Schweizer Haushalte relevant sein können.</p>
+  <h3 class="sub">Zusatzversicherung und Bonusprogramme</h3>
+  <p>Mehrere grosse Schweizer Krankenversicherer (etwa CSS, Helsana, Sanitas, Swica) bieten im Rahmen freiwilliger Zusatzversicherungen sogenannte Präventions- oder Gesundheitsbudgets an. Darüber lassen sich teilweise Beiträge an Fitness-Abos, Ernährungsberatung oder — je nach Anbieter und Vertragsjahr — auch an Gesundheits-Gadgets wie Fitness-Tracker oder Körperanalysewaagen geltend machen. Die konkreten Bedingungen (Höchstbetrag, Belegpflicht, förderfähige Produktkategorien) unterscheiden sich stark zwischen den Versicherern und ändern sich jährlich — vor dem Kauf lohnt sich ein Anruf bei der eigenen Krankenkasse oder ein Blick ins Kundenportal.</p>
+  <h3 class="sub">Medizinisch begründete Ausnahmen</h3>
+  <p>Bei ärztlich verordneter Heimüberwachung — etwa bei fortgeschrittener Herzinsuffizienz mit engmaschiger Gewichtskontrolle — kann in Einzelfällen eine Kostenbeteiligung über die Grundversicherung möglich sein, sofern die Waage im Rahmen eines anerkannten Behandlungsprogramms verschrieben wird. Das ist die Ausnahme, nicht die Regel, und muss individuell mit der behandelnden Ärztin oder dem Arzt sowie der Krankenkasse abgeklärt werden.</p>
+  <div class="warnbox">
+    <p><strong>Wichtig:</strong> Verlassen Sie sich nicht auf eine automatische Kostenübernahme. Klären Sie vor dem Kauf schriftlich mit Ihrer Krankenkasse ab, ob und in welcher Höhe eine Rückerstattung möglich ist, und bewahren Sie die Kaufquittung auf.</p>
+  </div>
+
+  <!-- ── Section 27 ── -->
+  <h2>Barrierefreiheit: Waagen für Senioren und Menschen mit Einschränkungen</h2>
+  <p>Für ältere Personen und Menschen mit eingeschränkter Beweglichkeit oder Sehkraft gelten beim Waagenkauf andere Prioritäten als reine Messgenauigkeit oder App-Funktionen.</p>
+  <h3 class="sub">Wichtige Merkmale</h3>
+  <ul>
+    <li><strong>Grosses, kontrastreiches Display:</strong> Ziffernhöhe ab 3,5 cm erleichtert das Ablesen ohne Bücken. Modelle mit beleuchtetem Display sind bei schlechtem Sehvermögen im Vorteil.</li>
+    <li><strong>Sprechende Waagen:</strong> Einige Modelle (u. a. von spezialisierten Hilfsmittel-Anbietern) geben das Gewicht per Sprachausgabe wieder — relevant für sehbehinderte und blinde Personen. Diese Geräte sind in der Schweiz meist über Fachgeschäfte für Hilfsmittel oder über die Pro Infirmis erhältlich, nicht im regulären Elektrofachhandel.</li>
+    <li><strong>Niedrige, breite Standfläche:</strong> Erleichtert das sichere Auf- und Absteigen, besonders wichtig bei Gleichgewichtsproblemen. Eine Standhöhe von unter 2,5 cm reduziert die Stolpergefahr gegenüber höheren Modellen.</li>
+    <li><strong>Rutschfeste Oberfläche statt Glas:</strong> Für Personen mit Sturzrisiko sind matte Kunststoff- oder beschichtete Oberflächen oft sicherer als glatte Glasscheiben, auch wenn Glas optisch hochwertiger wirkt.</li>
+    <li><strong>Einfache Bedienung ohne App-Zwang:</strong> Eine reine Digitalwaage mit Ein-Knopf-Bedienung ist für Personen ohne Smartphone-Erfahrung oft die bessere Wahl als ein smartes Modell mit komplexer App-Einrichtung.</li>
+  </ul>
+  <p>In Pflegeheimen und bei häuslicher Pflege in der Schweiz kommen zudem spezielle Personenlifter mit integrierter Wiegefunktion oder Rollstuhlwaagen zum Einsatz — diese ermöglichen ein Wiegen ohne Transfer aus dem Rollstuhl und sind über medizinische Fachhändler sowie über Spitex-Organisationen erhältlich, nicht über den regulären Detailhandel.</p>
+  <div class="hlbox">
+    <p><strong>Tipp:</strong> Angehörige, die eine Waage für eine ältere Person auswählen, sollten das Gerät nach Möglichkeit vor Ort testen lassen — insbesondere das Auf- und Absteigen sowie die Lesbarkeit des Displays aus der gewohnten Körperhaltung.</p>
+  </div>
+
+  <!-- ── Section 28 ── -->
+  <h2>Baby- und Kleinkindwaagen: eine eigene Gerätekategorie</h2>
+  <p>Für Säuglinge und Kleinkinder sind normale Personenwaagen ungeeignet — sie sind weder präzise genug noch für ein liegendes Kind konstruiert. Baby- und Kleinkindwaagen bilden deshalb eine eigene Produktkategorie mit anderen Anforderungen.</p>
+  <h3 class="sub">Unterschiede zur Erwachsenenwaage</h3>
+  <ul>
+    <li><strong>Feinere Auflösung:</strong> Babywaagen messen typischerweise in 10-g-Schritten statt in 50- oder 100-g-Schritten — relevant, weil bei Säuglingen bereits kleine Gewichtsveränderungen medizinisch bedeutsam sein können.</li>
+    <li><strong>Liegemulde:</strong> Eine konkave Wiegeschale hält das Baby sicher in Position, ohne dass es sich aufsetzen oder stehen muss.</li>
+    <li><strong>Umbaubar zur Kleinkindwaage:</strong> Viele Modelle (etwa von Beurer oder Medisana) lassen sich mit einer abnehmbaren Schale in eine stehfähige Kleinkindwaage umwandeln — nützlich, wenn das Kind vom Liege- ins Stehalter wächst.</li>
+    <li><strong>Tara-Funktion:</strong> Wichtig, um das Gewicht einer Windel oder Decke vor der Messung abzuziehen.</li>
+  </ul>
+  <h3 class="sub">Verfügbarkeit in der Schweiz</h3>
+  <p>Babywaagen sind bei Galaxus, in Fachgeschäften für Babyartikel sowie in grösseren Apotheken erhältlich, Preise liegen meist zwischen CHF 40 und CHF 90. Zusätzlich verleihen viele kommunale <strong>Mütter- und Väterberatungsstellen</strong> in der Schweiz kostenlos oder gegen eine kleine Gebühr Babywaagen zur Kontrolle der Gewichtsentwicklung zwischen den Vorsorgeterminen — ein Anruf bei der örtlichen Beratungsstelle lohnt sich, bevor ein eigenes Gerät angeschafft wird. Der Kinderarzt oder die Kinderärztin führt die massgeblichen Kontrollen ohnehin bei den Vorsorgeuntersuchungen durch; eine Waage zu Hause dient primär der zusätzlichen Beruhigung zwischen den Terminen, etwa in der Stillzeit.</p>
 
   <!-- ── FAQ details ── -->
   <h2 style="margin-top:34px">Häufige Fragen</h2>
@@ -470,7 +846,7 @@ footer a:hover{color:var(--accent-dk)}
 
   <details>
     <summary>Wie genau sind Körperfettwaagen?</summary>
-    <p>Heimwaagen mit BIA haben eine typische Schwankungsbreite von ±3–5 % beim Körperfettanteil. Das klingt viel — ist es auch. Als Absolutwert ist das wenig aussagekräftig. Als Trendindikator über mehrere Wochen (immer unter gleichen Bedingungen gemessen) sind diese Werte aber nützlich, um Veränderungen sichtbar zu machen. Profi-Methoden wie DEXA-Scans sind deutlich präziser (±1–2 %), kosten in der Schweiz aber CHF 150–300 pro Messung.</p>
+    <p>Heimwaagen mit BIA haben eine typische Schwankungsbreite von ±3–5 % beim Körperfettanteil. Das klingt viel — ist es auch. Als Absolutwert ist das wenig aussagekräftig. Als Trendindikator über mehrere Wochen (immer unter gleichen Bedingungen gemessen) sind diese Werte aber nützlich, um Veränderungen sichtbar zu machen. Profi-Methoden wie DEXA-Scans sind deutlich präziser (±1–2 %), kosten in der Schweiz aber CHF 150–300 pro Messung. BIA eignet sich nicht für Schwangere oder Personen mit Herzschrittmachern.</p>
   </details>
 
   <details>
@@ -480,38 +856,33 @@ footer a:hover{color:var(--accent-dk)}
 
   <details>
     <summary>Kann ich eine smarte Waage ohne Smartphone-App nutzen?</summary>
-    <p>Ja. Fast alle smarten Waagen zeigen das Gewicht auch ohne App direkt auf dem Display an. Für BIA-Werte (Körperfett, Muskelmasse) und Trendkurven wird die App mit gespeichertem Nutzerprofil benötigt. Wer keine Hersteller-App möchte, kann ein Bluetooth-Modell mit der Open-Source-App openScale (Android, kostenlos) nutzen — die Daten bleiben dann lokal auf dem Gerät, ohne Cloud-Upload.</p>
+    <p>Ja. Fast alle smarten Waagen zeigen das Gewicht auch ohne App direkt auf dem Display an. Für BIA-Werte (Körperfett, Muskelmasse) und Trendkurven wird die App mit gespeichertem Nutzerprofil benötigt. Wer keine Hersteller-App möchte, kann ein Bluetooth-Modell mit der Open-Source-App openScale (Android, kostenlos) nutzen — die Daten bleiben dann lokal auf dem Gerät, ohne Cloud-Upload und ohne Registrierung.</p>
   </details>
 
   <!-- ── CTA box ── -->
   <div class="cta-box">
     <strong>Körperwaage jetzt kaufen</strong>
-    <p>Vergleiche Modelle direkt auf Galaxus oder stöbere bei aban nach weiteren Fitness- und Gesundheitsgeräten.</p>
+    <p>Vergleiche aktuelle Modelle und Preise direkt auf Galaxus oder stöbere in der aban Angebote-Suche nach weiteren Gesundheitsgeräten.</p>
     <div class="btns">
       <a class="btn-primary" href="https://www.galaxus.ch/de/s1/producttype/personenwaage-334" target="_blank" rel="sponsored nofollow noopener noreferrer">Körperwaagen bei Galaxus →</a>
-      <a class="btn-sec" href="/fitnesstracker-kaufen-schweiz.html">Fitnesstracker kaufen</a>
+      <a class="btn-sec" href="/angebote-suche.html?q=Körperwaage">Angebote suchen</a>
     </div>
   </div>
 
-  <!-- ── Newsletter ── -->
+  <!-- ── Beehiiv Newsletter Embed ── -->
   <section class="newsletter">
     <strong>📬 Kaufberater &amp; Schnäppchen aus der Schweiz</strong>
     <p>Kurze, nützliche Updates — Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.</p>
-    <form action="https://abannews.beehiiv.com/subscribe" method="get">
-      <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail-Adresse">
-      <button class="bigcta" type="submit" style="border:0;cursor:pointer;margin-top:0;font-size:.93rem;padding:10px 20px">Abonnieren</button>
-    </form>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </section>
 
   <!-- ── Related pages ── -->
   <div class="related">
     <h3>Verwandte Kaufberater</h3>
     <ul>
-      <li><a href="/fitnesstracker-kaufen-schweiz.html">⌚ Fitnesstracker kaufen</a></li>
-      <li><a href="/fieberthermometer-kaufen-schweiz.html">🌡️ Fieberthermometer kaufen</a></li>
-      <li><a href="/blutdruckmessgeraet-kaufen-schweiz.html">❤️ Blutdruckmessgerät kaufen</a></li>
-      <li><a href="/yoga-fitness-kaufen-schweiz.html">🧘 Yoga &amp; Fitness</a></li>
       <li><a href="/kaufberater-schweiz.html">📋 Alle Kaufberater</a></li>
+      <li><a href="/marktplatz.html">🛒 Marktplatz</a></li>
+      <li><a href="/angebote-suche.html">🔍 Angebote suchen</a></li>
     </ul>
   </div>
 
@@ -522,24 +893,14 @@ footer a:hover{color:var(--accent-dk)}
 
 <footer>
   <div class="wrap">
-    aban news · Marktplatz Schweiz · Angaben ohne Gewähr · &copy; 2026 &nbsp;·&nbsp;
-    <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp;
-    <a href="/datenschutz.html">Datenschutz</a>
-    <br>
-    <span style="margin-top:6px;display:inline-block">Dieser Ratgeber enthält Partner-Links (Affiliate-Links). Beim Kauf über solche Links erhalten wir allenfalls eine Provision — für Sie entstehen keine Mehrkosten. Die redaktionellen Inhalte sind davon unabhängig.</span>
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
+    <a href="/impressum.html">Impressum</a> ·
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
-<script>
-(function(){
-  function makeLink(href, label, ext){
-    var relPrefix = ext ? "sponsored nofollow " : "";
-    return '<a class="pc" href="' + href + '" target="_blank" rel="' + relPrefix + 'noopener noreferrer">' + label + '</a>';
-  }
-  // partner-box injection hook — used by partner-box.js
-  window._abanMakeLink = makeLink;
-})();
-</script>
 <script src="/js/affiliate-config.js" defer></script>
 <script src="/js/partner-box.js" defer></script>
 <script src="/js/ads-config.js" defer></script>
