@@ -2359,3 +2359,19 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   - **Papers/Rips selbst** sind bei BigBuy/CJ dünn (keine eigene Zigarettenpapier-Kategorie) → Zubehör drumherum ja.
 - **⚠️ Lehre (Compliance):** Legale-aber-eingeschränkte Produkte (Raucher, später evtl. Erotik) IMMER mit onlineOnly-Flag
   importieren → schützt Google-Merchant + Meta-Konten. Nie auf alle 8 Kanäle. Katalog ~20'700 aktiv.
+
+---
+**📌 2026-07-04 (🌱 GROW-Zubehör + 30-Agenten-Flotte #5 Zwischenstand):**
+- **🌱 grow-Config** (BigBuy volle Range: Pflanzenlichter/Hydroponik/Anzucht/Bewässerung/Abluft) → Collection `indoor-grow`
+  „🌱 Indoor-Gärtnern & Grow", **onlineOnly** (raus aus Google/Meta, sicher), neutral gerahmt (Kräuter/Chili/Gemüse).
+- **⚠️ Loop-Reihenfolge-Lehre:** Heizdecke/Raucher/Grow wurden NIE importiert, weil ich den Loop zu oft neu startete
+  (jeder Restart → zurück auf Kategorie 1). **Fix: Spezial-/Neu-Kategorien ZUERST in CATS** (heizdecke,raucherzubehoer,grow,…),
+  dann Loop NICHT mehr neu starten. Heizdecken-Agent hat 10 Decken manuell einsortiert (kuschel-heizdecken).
+- **30-Agenten-Flotte #5 (läuft):** 🎨 Adobe-Hero-Banner lizenziert (pod/hero/luxestyle-hero-editorial-2400x1000.jpg) ·
+  Hightech-Drohnen-Fix 119→**186** (+67 echte Drohnen) · neue Collections: 🛋️ kissen-wohntextilien (240), 🎯 sets-bundles (537) ·
+  Menü-Dropdown „✨ Lifestyle & Trends" (8 Punkte) · FAQ um 18+-Hinweis (Raucher) ergänzt · Ratgeber Welle 7 +10 (Blog 137).
+- **Sauber/0-Befund:** Tag-Hygiene, Broken-Links, gender/age, Description-deep, ProductType, Featured-Collections, Collection-Heroes.
+- **⚠️ Homepage-25-Sektionen-Cap:** neue cl_lifestyle/cl_fashion-Reihen NICHT einfügbar (Theme-Limit 25, schon voll) →
+  Discoverability läuft übers Menü. Banner in pod/hero/ für später.
+- **⚠️ Content-Inkonsistenz (User prüfen):** FAQ sagt „nur CH-Versand, Gratis ab CHF 50", andere Seiten „DE/weltweit, CHF 65" → angleichen.
+- Katalog **~21'000 aktiv**.
