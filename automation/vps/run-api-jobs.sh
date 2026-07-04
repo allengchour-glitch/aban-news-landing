@@ -49,6 +49,9 @@ log "Smart+-Driver DRY (pure-playwright, faehrt den Ad-Flow durch, kein Spend) -
 CDP_HOST="${CDP_HOST:-100.71.8.47}" "$NODE" automation/vps/smartplus-drive.mjs 2>&1 | tail -5 || log "smartplus-drive uebersprungen (weiter)"
 log "TikTok Events API / CAPI: bezahlte Orders server-seitig an TikTok (No-op ohne Token/Orders)..."
 "$NODE" automation/vps/tiktok_capi.mjs 2>&1 | tail -4 || log "tiktok_capi uebersprungen (weiter)"
+log "Perso-Trikot-Bruecke: personalisierte Bestellungen als Printful-ENTWURF stagen (GO=Entwurf, confirm=0 -> KEINE Zahlung; No-op ohne PRINTFUL_API_KEY in /opt/luxe/.env)..."
+GO=1 "$NODE" automation/printful_perso_bridge.mjs 2>&1 | tail -6 || log "perso_bridge uebersprungen (weiter)"
+
 log "Proof-of-Life Metafeld stempeln (luxe.vps_last_run)..."
 "$NODE" automation/vps/stamp_alive.mjs 2>&1 | tail -3 || log "stamp uebersprungen (weiter)"
 

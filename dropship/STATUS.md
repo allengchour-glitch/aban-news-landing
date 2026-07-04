@@ -1,5 +1,18 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (Klaviyo-Datencheck + Perso-Trikot-Fulfillment-Lücke geschlossen)
+- **🚨 KLAVIYO empfängt 0 Shop-Events (mit echten Zahlen):** Checkout Started=0, Placed Order=0, Viewed Product=0 über 90 Tage
+  (bei tausenden Sessions) → Klaviyo-Shopify-Integration/Onsite-Tracking sendet nichts, ALLE verhaltensbasierten Flows feuern nie.
+  Details + Klick-Liste in `dropship/KLAVIYO-FIX-2026-07.md` (#0). **User:** Klaviyo → Integrations → Shopify prüfen/neu verbinden + Onsite-Tracking an.
+- **⚽ TRIKOT-PROJEKT abgeschlossen (Koordination mit Theme/Printful-Session):** Design (Schweizer Kreuz + weisser Kragen, linke Brust) sitzt
+  in allen 5 Rot-Grössen; neue Mockups verifiziert; Alains #1005 (blank) in Produktion, korrigiert, ohne Aufpreis; **native Printful-Abwicklung
+  am Perso-Produkt AUS** (damit Perso-Orders nicht das Master-Design drucken).
+- **🔧 FULFILLMENT-LÜCKE geschlossen (autonom):** Weil native Abwicklung aus ist, brauchen Perso-Orders die Druckdatei-Brücke. Diese lief nur DRY
+  + on-demand → jetzt: (1) `perso_bridge` **in VPS-Daily verdrahtet** (GO=Entwurf, confirm=0 → **KEINE Zahlung**, no-op ohne PRINTFUL_API_KEY),
+  läuft PC-unabhängig täglich; (2) `perso-go`-Befehl für PC-On-Demand ergänzt. Alains Blank-Order wird korrekt übersprungen (keine Druckdatei).
+  **NUR USER:** `PRINTFUL_API_KEY` (+`PRINTFUL_STORE_ID`=18288470) in VPS `/opt/luxe/.env` legen; dann werden Perso-Orders täglich als Printful-Entwurf
+  gestaged → Entwurf **bestätigen/bezahlen** bleibt bewusst manuell (echtes Geld), bis 1 Perso-Order end-to-end verifiziert; danach `AUTO_CONFIRM=1` für Vollauto.
+
 ## 2026-07-04 (20-Agenten-Content-Schwarm + TikTok-Dedup-Fix)
 - **🤖 20-AGENTEN-SCHWARM abgeschlossen:** 10 SEO-Kategorie-Landingpages + 5 SEO-Ratgeber-Blogartikel + 25 Reel-/TikTok-Konzepte (5 Themen). Alle Collection-/Produkt-CTAs per HTTP-200 verifiziert, ehrlich, strikt CH.
   - **Landingpages (`create_seo_pages_batch2.mjs`, gequeued `seo-pages2`):** Uhren, Sonnenbrillen, Herren-Mode, wasserfester Schmuck, Taschen, Sommermode, Geschenke für Männer, Selbst gestalten, Anime/Funko, Wohnen/Deko.
