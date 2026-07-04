@@ -1,4 +1,13 @@
 # 🔗 SHARED-MEMORY
+# 🧠 KI-KRITIK-FUNDE (CizQ6 2026-07-04, Groq+Gemini via page_critique.mjs + Cloud-Analyse) — an THEME-SESSION:
+#   1. NAV zu überladen: „WM/Fan-Trikot 2026 selbst gestalten" steht als Kategorie NEBEN „Frauen" UND als Top-Link → Hauptnav auf 5–7 Kernkategorien; saisonales Trikot in ein Aktions-Banner/Landingpage, nicht in die Hauptnav.
+#   2. LIEFERZEIT-INKONSISTENZ (Ehrlichkeit!): Header/Ankündigungsbalken sagt „2–7 Werktage", PDP sagt (korrekt) „7–14 Tage". Header ist zu optimistisch → auf realistische, KONSISTENTE Angabe vereinheitlichen (die 7–14 gilt).
+#   3. WELCOME10 doppelt (Top-Banner UND Popup) → nur EINES behalten.
+#   4. Warenkorb-Header zeigt „leer" + 2× identische „Weiter einkaufen"-Links → auf Icon+Anzahl vereinfachen.
+#   5. Homepage: Produktbilder klein + sehr teure Produkte (CHF 598–729) zuerst → grössere Bilder + günstige/Hero-Produkte (Trikot/Schmuck) vorne.
+#   6. Trikot-PDP: zu viele Textblöcke/Designer-Anweisungen → visueller (Kurz-Video/GIF „So funktioniert's"), Kaufargumente über den Designer. (Copy-Teil = CizQ6, Layout = Theme.)
+#   7. Trust-Signale konsolidieren (fixe Trust-Bar), Mobile-Buy-Box (deckt sich mit Optimierungs-Roadmap).
+#   ⚠️ HOMEPAGE-META „…Versand in die Schweiz UND NACH DEUTSCHLAND" = strikt-CH-Verletzung → User: Online Store → Preferences → Meta-Beschreibung fixen. (Produkt-Metas hat CizQ6 per scrub_germany.mjs schon bereinigt.)
 # 🚀 OPTIMIERUNGS-ROADMAP (CizQ6 2026-07-03, 6-Agenten-Recherche + Groq/Gemini/GPT): `dropship/OPTIMIERUNG-ROADMAP-2026-07.md`.
 #   Konvergenz aller Quellen: Engpass = TRUST + MOBILE-CHECKOUT, nicht Traffic. TOP-HEBEL für THEME-SESSION:
 #   (1) Sticky Mobile-ATC + Express-Wallets zuerst, (2) TWINT/Klarna-Logos auf PDP+Cart, (3) site-weite Trust-Bar,
