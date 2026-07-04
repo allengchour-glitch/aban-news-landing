@@ -1,0 +1,9 @@
+
+=== Bestellung #1005 ===
+Datum: 2026-07-03T10:03:09Z
+Kunde: Alain Schutz <alainschutz93@gmail.com>
+Lieferadresse: Alain Schutz, 1530 Payerne (CH)
+Betrag: 41.9 CHF
+Zahlung: PAID · Fulfillment: UNFULFILLED
+Positionen: 1× ⚽ WM-Trikot selbst gestalten – mit Name & Nummer (XL / Rot)
+Sendung: noch KEINE Fulfillment/Sendung angelegt (noch nicht verschickt).
