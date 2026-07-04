@@ -2246,3 +2246,13 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **⚠️ Reset-Verlust:** SEO-Titel-Audit-Skript (scratchpad, nicht committet) weg — die ~1000 bereits gefixten Titel bleiben
   LIVE, ~1000 restliche ellipsis-abgeschnittene Titel offen (künftiger Lauf; Defekt = Auto-SEO-App schneidet Titel mit „…" ab,
   oft Marke weg). **Lehre: wiederkehrende Cleanup-Skripte ins Repo committen, nicht im Scratchpad lassen** (Reset-fest).
+
+---
+**📌 2026-07-04 (🐛 RESET-RECOVERY-FALLE: bash `GROUPS` ist reserviert — merken!):**
+- Beim CJ-Loop-Neustart nach dem Reset: Variable im Loop-Skript hiess `GROUPS="cjdamen …"` → **`GROUPS` ist ein
+  reserviertes bash-Array (Gruppen-IDs des Users)!** `$GROUPS` expandierte zu `0` (root-gid) → jede Iteration
+  `GRP=0` → „unknown GRP", 11'000× Leerlauf. **Fix: Variable `CJGRPS` genannt** (nie GROUPS/PATH/HOME/UID/PWD/…).
+- CJ-Loop läuft jetzt sauber über die **20 eingebauten Gruppen** (`/tmp/cj_loop.sh`, `CJGRPS`), legt live an
+  (z.B. „Ärmelloses Leinenkleid"). BigBuy-Loop (`/tmp/bb_loop.sh`) parallel gesund.
+- **SEO-Titel-Tool jetzt reset-fest im Repo:** `automation/seo_title_fix.mjs` (Ledger `dropship/seo_title_fix_done.txt`).
+  Katalog-SEO-Titel praktisch komplett sauber (nur 2 Reste gefixt).
