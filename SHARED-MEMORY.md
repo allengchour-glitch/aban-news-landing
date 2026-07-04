@@ -1,4 +1,10 @@
 # 🔗 SHARED-MEMORY
+# ✅ TRIKOT 1:1 ECHT (CizQ6+Browser 2026-07-04): Echtes Printful-Design auf „Blank Rot" (15447487480193): rotes AOP-Trikot
+#   + weisse Naht (Kragen/Bündchen) + Schweizer Fahne (Printful-Clipart). Alains Order PF165452870 im Order-EDITOR aufs
+#   Kreuz-Design umgestellt (LEHRE: Druckdateien frieren beim Bestellzeitpunkt ein → Master-Design-Änderung reicht NICHT,
+#   direkt im Order-Editor nötig), $0 Aufpreis. ⏳ KORREKTUR LÄUFT: Kreuz war MITTIG → auf LINKE Brust (Trägerseite links)
+#   verschieben, dann neue Mockups. Danach: echte Mockups als Produktbilder auf 15433948070273 (Fake-Cartoons raus),
+#   andere Farben (Weiss/Schwarz/Blau) brauchen eigene Mockups ODER auf Rot reduzieren. Perso = Bridge (native OFF bei „Rot & mehr").
 # ⭐ GOOGLE CUSTOMER REVIEWS — PC-/BROWSER-CLAUDE-TASK (CizQ6 2026-07-04): kostenlose echte Käufer-Bewertungen +
 #   Google-Sterne-Siegel = greift den 0★-Trust-Blocker Nr.1 an. Snippet + Schritte: `automation/local/GOOGLE-REVIEWS-BROWSER-TASK.md`.
 #   In Shopify Einstellungen→Checkout→Bestellstatus-Seite→Zusätzliche Skripte einfügen (oder Google-Customer-Reviews-App).
