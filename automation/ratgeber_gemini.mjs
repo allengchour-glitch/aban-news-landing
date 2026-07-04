@@ -159,6 +159,17 @@ const TOPICS=[
  ['Küchenwaage & Mess-Zubehör: präzise wiegen beim Kochen & Backen','küchenwaage zubehör','kuechenhelfer','Küchenhelfer & Gadgets'],
  ['Heizdecke sicher nutzen: warme & sorgenfreie Anwendung im Alltag','heizdecke sicher nutzen','waerme-komfort','Wärme & Komfort'],
  ['Gaming-Setup Basics: die Grundausstattung für deinen Spielplatz','gaming setup basics','gaming','Gaming'],
+ // ── Welle 8: neue Ratgeber (Handles gegen Live-Katalog verifiziert, alle mit Produkten) ──
+ ['Fitness zuhause starten: dein Einstieg ins Training ohne Fitnessstudio','fitness zuhause starten','fitness-training','Fitness & Training'],
+ ['Camping-Packliste: die komplette Checkliste für deinen ersten Trip','camping packliste checkliste','camping-outdoor','Camping & Outdoor'],
+ ['Hundeerziehung für Anfänger: Basics & das richtige Zubehör','hundeerziehung basics','sub-haustier','Haustier'],
+ ['Katze glücklich halten: Beschäftigung, Zubehör & Wohlfühl-Tipps','katze glücklich halten','sub-haustier','Haustier'],
+ ['Kaffee zubereiten wie ein Barista: Techniken & Zubehör für zuhause','kaffee barista zubereiten','kaffee-maschinen','Kaffee & Espresso'],
+ ['Duftnoten verstehen: das richtige Parfum nach Duftfamilie finden','parfum duftnote finden','parfum-duefte','Parfum & Düfte'],
+ ['Uhren-Stil-Guide: die passende Uhr zu jedem Outfit & Anlass','uhren stil guide','uhren','Uhren'],
+ ['Schminktasche-Grundausstattung: diese Make-up-Produkte brauchst du wirklich','make-up grundausstattung','premium-beauty','Beauty'],
+ ['Nachhaltige Küche: plastikfrei kochen, lagern & aufbewahren','nachhaltige küche','kuche-kochen','Küche & Kochen'],
+ ['Zimmerpflanzen pflegen: der Guide für grünen Daumen ohne Aufwand','zimmerpflanzen pflegen','garten-balkon','Garten & Balkon'],
 ];
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 async function gemini(title,coll,collName){
