@@ -1,5 +1,13 @@
 Theme: Horizon · LuxeStyle + Email-Popup (Claude) (id 187533001089, role main)
-5 Ziel-Assets werden geprüft…
+211 Ziel-Assets werden geprüft…
 
-Fertig: 5 Assets gescannt, 0 geändert.
-Hinweis: keine Ziel-Strings gefunden — evtl. steht der Banner-Text in Theme-Settings unter anderem Wortlaut. reports/fix-theme-shipping.txt + settings_data prüfen.
+templates/collection.json:
+   "ab CHF 65"→"ab CHF 50" ×2
+   ✓ geschrieben.
+
+templates/product.json:
+   "ab CHF 65"→"ab CHF 50" ×2
+   "CHF 65"→"CHF 50" ×1
+   ✓ geschrieben.
+
+Fertig: 211 Assets gescannt (0 Fehl-Fetches), 2 geändert.
