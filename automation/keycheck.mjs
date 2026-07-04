@@ -51,7 +51,8 @@ W('  → Validierung: '+await geminiValid()+'\n');
 // --- PRINTFUL (Trikot-Bestellungen) ---
 W('## Printful (perso-Trikot)');
 W('  PRINTFUL_API_KEY = '+has('PRINTFUL_API_KEY'));
-async function pfValid(){ const k=g('PRINTFUL_API_KEY'); if(!k) return '⏭️ leer'; try{ const r=await fetch('https://api.printful.com/store',{headers:{'Authorization':'Bearer '+k}}); if(r.status===200) return '✅ gültig'; return '❌ HTTP '+r.status; }catch(e){ return '⚠️ '+(e?.message||'').slice(0,60); } }
+async function pfValid(){ const k=g('PRINTFUL_API_KEY'); if(!k) return '⏭️ leer'; try{ // /orders testen (Order-Scope), NICHT /store (braucht stores_list/read-Scope, den Order-Keys oft fehlt → falscher 403)
+  const r=await fetch('https://api.printful.com/orders?limit=1',{headers:{'Authorization':'Bearer '+k}}); if(r.status===200) return '✅ gültig (orders-Scope, Bridge-tauglich)'; if(r.status===401) return '❌ 401 Token ungültig/abgelaufen'; return '⚠️ HTTP '+r.status+' (Key erkannt, evtl. anderer Scope)'; }catch(e){ return '⚠️ '+(e?.message||'').slice(0,60); } }
 W('  → Validierung: '+await pfValid()+'\n');
 
 // --- Social-Tokens (nur Presence, keine Validierung um kein Rate-Limit/Log zu triggern) ---
