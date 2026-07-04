@@ -170,6 +170,17 @@ const TOPICS=[
  ['Schminktasche-Grundausstattung: diese Make-up-Produkte brauchst du wirklich','make-up grundausstattung','premium-beauty','Beauty'],
  ['Nachhaltige Küche: plastikfrei kochen, lagern & aufbewahren','nachhaltige küche','kuche-kochen','Küche & Kochen'],
  ['Zimmerpflanzen pflegen: der Guide für grünen Daumen ohne Aufwand','zimmerpflanzen pflegen','garten-balkon','Garten & Balkon'],
+ // ── Welle 9: neue Ratgeber (Handles gegen Live-Katalog verifiziert, alle mit Produkten) ──
+ ['Handtasche richtig wählen: Grösse, Material & Alltagstauglichkeit im Blick','handtasche wählen','sub-taschen','Taschen & Rucksäcke'],
+ ['Herrenhemd-Passform-Guide: so sitzt dein Hemd wie massgeschneidert','herrenhemd passform','herren-hemden','Herren-Hemden'],
+ ['Gartenmöbel pflegen: so bleiben Tisch, Stühle & Lounge lange schön','gartenmöbel pflegen','garten-balkon','Garten & Balkon'],
+ ['Grillen für Anfänger: die ersten Schritte zum perfekten BBQ','grillen anfänger','grill-bbq','Grill & BBQ'],
+ ['Auto-Innenreinigung: Tipps für ein sauberes Cockpit & frische Polster','auto innenreinigung','auto-kfz-zubehoer','Auto & KFZ-Zubehör'],
+ ['Winter-Essentials: die wichtigsten Dinge für warme & entspannte Wintertage','winter essentials','waerme-komfort','Wärme & Komfort'],
+ ['Rucksack für die Uni: der richtige Begleiter für Campus & Vorlesung','rucksack uni','rucksaecke','Rucksäcke'],
+ ['Chronograph oder Automatik? Uhrwerke verstehen & die richtige Uhr wählen','chronograph automatik','uhren','Uhren'],
+ ['Baby-Erstausstattung clever kaufen: das brauchst du wirklich','baby erstausstattung kaufen','sub-baby-kids','Baby & Kids'],
+ ['Home-Gym einrichten: Platz, Ausstattung & Aufbau für dein Training zuhause','home-gym einrichten','fitness-training','Fitness & Training'],
 ];
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 async function gemini(title,coll,collName){
