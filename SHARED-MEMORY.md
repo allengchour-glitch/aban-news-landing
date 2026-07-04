@@ -2156,3 +2156,17 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - Tools: `feed_details_fill.mjs` (Farbe/Muster/Material-Block), `feed_attributes_fill.mjs` (gender/age_group).
 - **Container-Reset-Recovery:** origin ist sicher → `git fetch && git merge --ff-only origin/claude/memory-2026-06-13`, dann /tmp-Loop-Dateien (cj_cats/mega_groups/keys, cj_mega.sh) regenerieren + Loops (BigBuy-Import + CJ-Mega) neu starten. Ledger verhindert Doppelte.
 - **Nachfrage-getrieben beschaffen:** Google-„Products customers are buying"-Reports → gefragte Marken gezielt importieren (`beautybrands`-Gruppe). Bester Traffic-Hebel.
+
+---
+**📌 2026-07-04 (🎮 GAMING-AUSBAU + Wachstums-Checkpoint — autonom):**
+- **Gaming-Anchor stark verbreitert** (`bigbuy_import.mjs`, `word:true`): PC/PS4/PS5/DualSense/DualShock/
+  Xbox/Nintendo/Switch/gaming-stuhl/spielkonsole/retro-konsole/handheld/arcade/gaming-monitor/capture-card/
+  streaming-mikrofon/controller-ladestation/rgb-tastatur/konsolen-zubehör. ban: lichtschalter/netzwerk-switch
+  (verhindert „xbox-switch"-Verwechslung). BigBuy-Katalog: **2642 Gaming-Kandidaten** → LIVE-Welle läuft.
+- **5 saubere Plattform-Sub-Collections** live (Smart, TITLE CONTAINS, PRICE_ASC, 6 Kanäle, KEIN Gemisch):
+  `pc-gaming` · `playstation` · `xbox` · `nintendo-switch` · `retro-handheld`. Für PC-/PS-/Konsolen-Gamer sortiert.
+- **📊 Wachstum (live Shopify-count, 2026-07-04):** CJ-real **3762** (+~1350 seit letztem Checkpoint) · BigBuy-Tag 9726 ·
+  Draft 375 · **319 Collections** · aktiv 10'000 (Shopify-count-Cap). CJ-Mega-Loop + BigBuy-Loop laufen weiter.
+- **User-Aufträge bestätigt umgesetzt:** „wie Temu für Schweiz" = Shop IST bereits Temu-artig (breit+günstig) aber als
+  vertrauenswürdige CH-Alternative positioniert (Budget-Collections `unter-chf-25`, Preis-aufsteigend). „immer Neuheiten
+  rein" + „alles Mögliche von allen Lieferanten" = Dauer-Loops (BigBuy+CJ) importieren kontinuierlich neu, Ledger gegen Doppelte.
