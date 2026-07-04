@@ -116,12 +116,11 @@ img{max-width:100%;height:auto;display:block}
 
 /* ── TOPNAV ── */
 .topnav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
-.topnav .in{max-width:1100px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:52px}
-.topnav .brand{font-weight:800;font-size:1.1rem;color:var(--ink);text-decoration:none;letter-spacing:-.5px}
-.topnav .brand span{color:var(--accent)}
-.topnav nav{display:flex;gap:4px}
-.topnav nav a{color:var(--ink2);text-decoration:none;font-size:.88rem;font-weight:500;padding:6px 12px;border-radius:6px;transition:background .15s}
-.topnav nav a:hover{background:var(--cream);color:var(--accent-dk)}
+.topnav .tn-in{max-width:1100px;margin:0 auto;padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:52px}
+.topnav .tn-brand{font-weight:800;font-size:1.1rem;color:var(--ink);text-decoration:none;letter-spacing:-.5px}
+.topnav .tn-links{display:flex;gap:4px}
+.topnav .tn-links a{color:var(--ink2);text-decoration:none;font-size:.88rem;font-weight:500;padding:6px 12px;border-radius:6px;transition:background .15s}
+.topnav .tn-links a:hover{background:var(--cream);color:var(--accent-dk)}
 
 /* ── BREADCRUMB ── */
 .bc{max-width:800px;margin:0 auto;padding:10px 18px;font-size:.8rem;color:var(--muted)}
@@ -249,13 +248,13 @@ footer a:hover{color:#fff}
 
 <!-- ── TOPNAV ── -->
 <nav class="topnav" aria-label="Hauptnavigation">
-  <div class="in">
-    <a href="/" class="brand">aban<span>.</span></a>
-    <nav>
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
       <a href="/marktplatz.html">Marktplatz</a>
-      <a href="/jobs.html">Jobs</a>
-      <a href="/kaufberater-schweiz.html">Angebote</a>
-    </nav>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
   </div>
 </nav>
 
@@ -829,8 +828,128 @@ footer a:hover{color:#fff}
     </ul>
   </div>
 
+  <!-- ── 16. WASSERHÄRTE ── -->
+  <h2 id="wasserhaerte">16. Wasserhärte in der Schweiz — wie oft wirklich entkalken?</h2>
+  <p>Wie schnell sich Kalk auf der Heizplatte eines elektrischen Aufschäumers absetzt, hängt stark davon ab, wo in der Schweiz das Leitungswasser herkommt. Die Härtegrade schwanken je nach Region erheblich — wer in einem Gebiet mit hartem Wasser wohnt, sollte deutlich häufiger entkalken als im Tessin oder in Genf.</p>
+
+  <div class="tscroll">
+    <table class="ctable" aria-label="Wasserhärte nach Schweizer Region">
+      <thead>
+        <tr>
+          <th>Region / Stadt</th>
+          <th>Härtegrad (°fH)</th>
+          <th>Einstufung</th>
+          <th>Entkalkungs-Intervall</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Zürich, Winterthur</td>
+          <td>25–35</td>
+          <td><span class="badge badge-r">Sehr hart</span></td>
+          <td>Alle 2 Wochen</td>
+        </tr>
+        <tr>
+          <td>Basel, Aargau</td>
+          <td>20–30</td>
+          <td><span class="badge badge-r">Hart</span></td>
+          <td>Alle 2–3 Wochen</td>
+        </tr>
+        <tr>
+          <td>Bern, Luzern</td>
+          <td>15–22</td>
+          <td><span class="badge badge-y">Mittel-hart</span></td>
+          <td>Monatlich</td>
+        </tr>
+        <tr>
+          <td>St. Gallen, Chur</td>
+          <td>12–18</td>
+          <td><span class="badge badge-y">Mittel</span></td>
+          <td>Alle 4–6 Wochen</td>
+        </tr>
+        <tr>
+          <td>Genf, Lausanne</td>
+          <td>6–12</td>
+          <td><span class="badge badge-g">Weich</span></td>
+          <td>Alle 6–8 Wochen</td>
+        </tr>
+        <tr>
+          <td>Tessin (Lugano, Bellinzona)</td>
+          <td>4–9</td>
+          <td><span class="badge badge-g">Sehr weich</span></td>
+          <td>Alle 8–10 Wochen</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Den genauen Härtegrad des eigenen Leitungswassers geben die kantonalen Wasserversorger auf ihrer Website an (oft direkt auf der Jahresrechnung vermerkt). Als Faustregel gilt: Wer eine sichtbare weissliche Schicht auf der Heizplatte oder am Behälterboden bemerkt, ist bereits im Verzug — dann hilft die Zitronensäurelösung aus Abschnitt 8 sofort, unabhängig vom Kalender.</p>
+
+  <!-- ── 17. ENERGIE & LAUTSTÄRKE ── -->
+  <h2 id="energie">17. Energieverbrauch, Standby &amp; Lautstärke</h2>
+  <p>Milchaufschäumer laufen nur kurz, trotzdem lohnt sich ein Blick auf Leistungsaufnahme und Geräuschentwicklung — besonders für die Küche am frühen Morgen oder im Büro.</p>
+
+  <h3>Leistungsaufnahme im Betrieb</h3>
+  <p>Elektrische Aufschäumer mit Heizelement liegen meist zwischen 400 und 650 Watt, automatische Milchkrüge (Sage, Breville) zwischen 500 und 700 Watt. Da ein Aufschäumvorgang nur 60–90 Sekunden dauert, bleibt der tatsächliche Stromverbrauch pro Tasse minimal — deutlich unter einem Rappen pro Anwendung, selbst bei mehrmals täglichem Gebrauch.</p>
+
+  <h3>Standby-Verbrauch</h3>
+  <p>Geräte ohne Display und ohne Bereitschaftsanzeige ziehen im Ruhezustand praktisch keinen Strom, sofern sie am Netzschalter oder über eine Steckdosenleiste ganz getrennt werden. Modelle mit Touch-Bedienfeld oder Statusleuchten (z. B. manche Automatik-Krüge) haben einen kleinen Dauerverbrauch im Standby — bei täglicher Nutzung vernachlässigbar, bei seltener Nutzung summiert es sich über Monate. Wer Wert auf minimalen Verbrauch legt, schaltet den Aufschäumer nach Gebrauch komplett vom Netz.</p>
+
+  <h3>Lautstärke im Vergleich</h3>
+  <ul>
+    <li><strong>Handrührer (Batterie):</strong> Motorgeräusch spürbar, gefühlt am lautesten wegen hoher Drehzahl und fehlender Dämmung — für ein ruhiges Büro am Morgen eher störend.</li>
+    <li><strong>Elektrischer Aufschäumer (Induktion):</strong> Deutlich leiser, da der Quirl langsamer dreht und das Gehäuse geschlossen ist — leichtes Surren, kaum wahrnehmbar in einer normalen Küche.</li>
+    <li><strong>Automatischer Milchkrug:</strong> Ähnlich leise wie der elektrische Aufschäumer, teils sogar leiser durch bessere Gehäusedämmung bei höherpreisigen Modellen.</li>
+    <li><strong>Dampfdüse:</strong> Deutliches Zischen durch den Dampfdruck — technikbedingt am lautesten, aber nur wenige Sekunden.</li>
+  </ul>
+  <p>Für offene Wohnküchen oder Büros mit dünnen Wänden lohnt sich also eher ein elektrischer oder automatischer Aufschäumer als ein Handrührer oder eine laute Einsteiger-Espressomaschine.</p>
+
+  <!-- ── 18. GARANTIE ── -->
+  <h2 id="garantie">18. Garantie &amp; Rückgaberecht in der Schweiz</h2>
+  <p>Beim Kauf eines Milchaufschäumers gelten in der Schweiz andere Regeln als in der EU — wer das nicht kennt, verschenkt im Reklamationsfall Rechte oder rechnet fälschlich mit einem Widerrufsrecht, das es gar nicht gibt.</p>
+
+  <h3>Gesetzliche Gewährleistung (OR Art. 197 ff.)</h3>
+  <p>Nach Schweizer Obligationenrecht haftet der Verkäufer für Mängel, die die Kaufsache bereits bei Übergabe hatte (Sachgewährleistung). Bei neuen Konsumgütern wie Milchaufschäumern gilt in der Praxis meist eine <strong>zweijährige Frist</strong> ab Kaufdatum, sofern nicht vertraglich anders (kürzer) vereinbart. Wichtig: Diese gesetzliche Gewährleistung ist etwas anderes als eine freiwillige Hersteller-Garantie — sie greift automatisch, ohne separate Garantiekarte, muss aber vom Käufer geltend gemacht werden.</p>
+
+  <h3>Herstellergarantie vs. gesetzliche Gewährleistung</h3>
+  <p>Marken wie Nespresso, Jura oder Breville bieten oft eine freiwillige Herstellergarantie (häufig 2 Jahre, teils mit Registrierung verlängerbar). Diese kann grosszügiger sein als die gesetzliche Mindestgewährleistung (z. B. kostenloser Ersatzversand), aber auch enger gefasst sein (z. B. Ausschluss von Verschleissteilen wie Dichtungen). Kassenzettel oder Online-Bestellbestätigung immer aufbewahren — ohne Kaufnachweis ist eine Reklamation kaum durchsetzbar.</p>
+
+  <h3>Kein gesetzliches Widerrufsrecht beim Online-Kauf</h3>
+  <p>Anders als in der EU gibt es in der Schweiz <strong>kein gesetzliches 14-Tage-Widerrufsrecht</strong> für Online-Käufe. Ein Rückgaberecht besteht nur, wenn der Händler es freiwillig einräumt. Grosse Schweizer Anbieter wie Galaxus, Digitec oder Fust gewähren meist grosszügige freiwillige Rückgabefristen (häufig 30 Tage, teils länger bei Aktionen) — die genauen Bedingungen stehen in den jeweiligen AGB und sollten vor dem Kauf geprüft werden, besonders bei teureren Automatik-Krügen.</p>
+
+  <div class="checklist">
+    <h3>Vor dem Kauf zu Garantie &amp; Rückgabe prüfen:</h3>
+    <ul>
+      <li>Wie lange ist die freiwillige Herstellergarantie, und was deckt sie konkret ab?</li>
+      <li>Bietet der Händler ein freiwilliges Rückgaberecht — und wie viele Tage?</li>
+      <li>Muss das Gerät originalverpackt und unbenutzt zurückgehen, oder reicht Funktionsprüfung?</li>
+      <li>Kassenzettel bzw. Bestellbestätigung digital und/oder physisch aufbewahren</li>
+    </ul>
+  </div>
+
+  <!-- ── 19. GEBRAUCHT KAUFEN ── -->
+  <h2 id="gebraucht">19. Gebraucht kaufen auf Ricardo &amp; Anibis — worauf achten</h2>
+  <p>Milchaufschäumer sind auf Occasion-Plattformen wie Ricardo oder Anibis häufig zu finden — oft aus Haushaltsauflösungen oder weil jemand auf ein anderes Kaffeesystem umgestiegen ist. Ein gebrauchtes Gerät kann sich lohnen, aber es gibt Punkte, die speziell bei Kleingeräten mit Lebensmittelkontakt wichtig sind.</p>
+
+  <h3>Hygiene hat Vorrang</h3>
+  <p>Milchreste in schwer erreichbaren Spalten (Dichtungen, Antriebswelle, Deckelrand) lassen sich oft nicht vollständig entfernen. Vor dem Kauf nach Fotos vom Innenraum fragen oder eine kurze Vorführung verlangen. Bei sichtbaren Verkrustungen, unangenehmem Geruch in der Beschreibung oder fehlendem Deckel lieber Abstand nehmen — insbesondere bei Geräten mit fest verbautem, nicht zerlegbarem Behälter.</p>
+
+  <h3>Funktion vor dem Kauf prüfen</h3>
+  <ul>
+    <li>Läuft der Motor bzw. die Heizung noch zuverlässig? Nach Video oder Vorführung vor Ort fragen</li>
+    <li>Ist das Original-Netzteil bzw. -Kabel dabei? Bei Fremdladern/Nachbauten Vorsicht wegen Sicherheit</li>
+    <li>Sind Verschleissteile (Quirl, Dichtungsring) noch original und intakt, oder müssen sie sofort ersetzt werden?</li>
+    <li>Bewertungsprofil des Verkäufers ansehen — Historie mit anderen Kleingeräte-Verkäufen ist ein gutes Zeichen</li>
+  </ul>
+
+  <h3>Gewährleistung bei Privatkäufen entfällt meist</h3>
+  <p>Zwischen Privatpersonen ist ein Ausschluss der Gewährleistung nach OR Art. 199 üblich und in den meisten Ricardo-/Anibis-Inseraten Standard — im Klartext: „gekauft wie gesehen", ohne Rückgaberecht bei Enttäuschung. Deshalb vor der Zahlung so viele Fragen wie möglich stellen und nach Möglichkeit eine funktionierende Vorführung vereinbaren, statt sich nur auf Fotos zu verlassen.</p>
+
+  <h3>Realistische Preisorientierung</h3>
+  <p>Als Richtwert gelten gebrauchte Milchaufschäumer in gutem, funktionierendem Zustand oft bei rund 40–60 % des ursprünglichen Neupreises — deutlich darüber lohnt sich der Vergleich mit einem neuen Einsteigermodell kaum noch, deutlich darunter lohnt sich eine besonders kritische Prüfung vor dem Kauf.</p>
+
   <!-- ── FAQ ── -->
-  <h2 id="faq">16. Häufige Fragen (FAQ)</h2>
+  <h2 id="faq">20. Häufige Fragen (FAQ)</h2>
 
   <div class="faq-list">
     <details>
@@ -870,23 +989,29 @@ footer a:hover{color:#fff}
   <div class="newsletter">
     <h3>Schweizer Kauftipps im Newsletter</h3>
     <p>Neue Vergleiche, Rabattaktionen und saisonale Empfehlungen — direkt ins Postfach. Kein Spam.</p>
-    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" title="Newsletter abonnieren" loading="lazy"></iframe>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </div>
 
   <!-- ── WEITERE KAUFBERATER ── -->
-  <h2 id="mehr">17. Weitere Kaufberater aus der Schweiz</h2>
+  <h2 id="mehr">21. Weitere Kaufberater aus der Schweiz</h2>
   <p>Alle Vergleiche, Checklisten und Saisonratgeber findest du auf dem <a href="/kaufberater-schweiz.html">Schweizer Kaufberater von aban</a> — von Haushaltsgeräten bis Elektronik.</p>
 
 </main>
 
 <footer>
-  <div class="wrap">aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 · <a href="/kaufberater-schweiz.html">Kaufberater</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a> · Affiliate-Hinweis: Diese Seite enthält Partnerlinks.</div>
+  <div class="wrap">
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
+    <a href="/impressum.html">Impressum</a> ·
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
+  </div>
 </footer>
 
-<script src="/affiliate-config.js" defer></script>
-<script src="/partner-box.js" defer></script>
-<script src="/ads-config.js" defer></script>
-<script src="/ad-slot.js" defer></script>
+<script src="/js/affiliate-config.js" defer></script>
+<script src="/js/partner-box.js" defer></script>
+<script src="/js/ads-config.js" defer></script>
+<script src="/js/ad-slot.js" defer></script>
 
 </body>
 </html>

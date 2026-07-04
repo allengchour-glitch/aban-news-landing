@@ -117,11 +117,13 @@ a:hover{text-decoration:underline;color:var(--accent)}
 .wrap{max-width:800px;margin:0 auto;padding:0 18px}
 
 /* ── NAV ── */
-.topnav{background:#fff;border-bottom:1px solid var(--line);padding:0 18px;position:sticky;top:0;z-index:100}
-.topnav-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;gap:20px;height:48px;flex-wrap:wrap}
-.topnav .logo{font-weight:800;font-size:1.1rem;color:var(--accent);text-decoration:none;letter-spacing:-.02em}
-.topnav a{font-size:.88rem;color:var(--ink2);white-space:nowrap}
-.topnav a:hover{color:var(--accent);text-decoration:none}
+.topnav{position:sticky;top:0;z-index:100;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.tn-in{max-width:800px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:20px;height:52px}
+.tn-brand{font-weight:900;font-size:1.18rem;color:var(--accent-dk);letter-spacing:-.02em;text-decoration:none}
+.tn-brand:hover{color:var(--accent);text-decoration:none}
+.tn-links{display:flex;gap:16px;font-size:.9rem}
+.tn-links a{color:var(--muted);text-decoration:none;transition:color .12s}
+.tn-links a:hover{color:var(--accent-dk)}
 
 /* ── BREADCRUMB ── */
 nav.bc{font-size:.82rem;color:var(--muted);padding:10px 18px;max-width:800px;margin:0 auto}
@@ -272,12 +274,13 @@ footer a:hover{color:var(--accent)}
 
 <!-- TOP NAV -->
 <nav class="topnav" aria-label="Hauptnavigation">
-  <div class="topnav-inner">
-    <a class="logo" href="/">aban</a>
-    <a href="/marktplatz.html">Marktplatz</a>
-    <a href="/stellenangebote.html">Jobs</a>
-    <a href="/angebote-suche.html">Angebote</a>
-    <a href="/kaufberater-schweiz.html">Kaufberater</a>
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
   </div>
 </nav>
 
@@ -818,7 +821,112 @@ footer a:hover{color:var(--accent)}
 
   <hr class="divider">
 
-  <!-- 15. FAQ -->
+  <!-- 15. ENERGIEVERBRAUCH -->
+  <h2>Energieverbrauch und Stromkosten im Alltag</h2>
+  <p>Ein Glätteisen zählt zu den kleineren Stromverbrauchern im Haushalt. Die Leistungsaufnahme liegt je nach Gerätetyp zwischen 25 und 90 Watt — deutlich weniger als ein Föhn (1200–2200 W) oder ein Backofen. Trotzdem lohnt sich ein kurzer Blick auf die Zahlen, um Mythen rund um „Stromfresser“ einzuordnen.</p>
+
+  <div class="table-wrap">
+  <table class="plain">
+    <thead>
+      <tr><th>Gerätetyp</th><th>Leistung</th><th>Nutzungsdauer/Anwendung</th><th>Kosten/Anwendung</th><th>Kosten/Jahr (3× wöchentl.)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mini-Reiseglätte</td><td>25–35 W</td><td>ca. 8 Min.</td><td>unter CHF 0.01</td><td>ca. CHF 0.20–0.30</td></tr>
+      <tr><td>Budget-Glätteisen</td><td>35–45 W</td><td>ca. 10 Min.</td><td>unter CHF 0.01</td><td>ca. CHF 0.30–0.40</td></tr>
+      <tr><td>Mittelklasse</td><td>45–65 W</td><td>ca. 10 Min.</td><td>ca. CHF 0.01</td><td>ca. CHF 0.40–0.55</td></tr>
+      <tr><td>Salon-Qualität</td><td>60–90 W</td><td>ca. 8 Min.</td><td>ca. CHF 0.01</td><td>ca. CHF 0.40–0.50</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Die Berechnung basiert auf einem Schweizer Durchschnittspreis von rund CHF 0.29–0.32 pro kWh (Stand 2026, je nach Kanton und Stromanbieter). Selbst bei täglicher Nutzung bleiben die Stromkosten eines Glätteisens unter CHF 1 pro Jahr — die Kaufentscheidung sollte sich daher an Temperaturgenauigkeit, Plattenqualität und Haltbarkeit orientieren, nicht am Wattverbrauch.</p>
+
+  <h3 class="sub-h">Aufheizzeit ist ein Zeit-, kein Stromthema</h3>
+  <p>Ein Gerät, das statt 60 Sekunden nur 15 Sekunden zum Aufheizen braucht, spart im Jahr keine nennenswerten Stromkosten — der Unterschied liegt allein im Zeitgewinn am Morgen. Wer eine schnelle Aufheizzeit sucht, sollte deshalb gezielt nach der Sekundenangabe im Datenblatt schauen und nicht nach vagen Bezeichnungen wie „Schnellheiz-Funktion“, die Hersteller unterschiedlich definieren.</p>
+
+  <div class="infobox">
+    <strong>Standby-Verbrauch:</strong> Die meisten modernen Glätteisen verbrauchen im ausgeschalteten Zustand (Stecker in der Dose, Gerät aus) praktisch keinen Strom mehr. Wer ganz sichergehen will, zieht den Stecker nach Gebrauch — das schont zusätzlich die automatische Abschaltung als Sicherheitsreserve und nicht als Regelfall.
+  </div>
+
+  <hr class="divider">
+
+  <!-- 16. GARANTIE & RÜCKGABERECHT -->
+  <h2>Garantie und Rückgaberecht in der Schweiz</h2>
+  <p>Anders als in der EU kennt das Schweizer Recht kein allgemeines gesetzliches Widerrufsrecht für Käufe im Laden oder online. Was viele Käuferinnen und Käufer als „14 Tage Rückgaberecht“ kennen, ist in der Schweiz eine freiwillige Kulanzleistung der Händler — keine gesetzliche Pflicht.</p>
+
+  <h3 class="sub-h">Gewährleistung vs. Garantie: der Unterschied</h3>
+  <p>Die gesetzliche <strong>Sachgewährleistung</strong> (Art. 197 ff. OR) verpflichtet den Verkäufer, für Mängel einzustehen, die bereits beim Kauf vorhanden waren — etwa ein Glätteisen, das von Anfang an nicht gleichmässig heizt. Die Verjährungsfrist dafür beträgt gemäss Art. 210 OR <strong>zwei Jahre</strong> ab Übergabe. Innerhalb der ersten 12 Monate muss der Käufer nicht beweisen, dass der Mangel schon beim Kauf bestand — danach liegt die Beweislast beim Käufer. Die <strong>Herstellergarantie</strong> ist davon unabhängig: Sie ist ein freiwilliges Versprechen des Herstellers (oft ebenfalls 2 Jahre, teils länger bei Premiummarken) und kann eigene Bedingungen (z. B. Kaufbeleg, keine Fremdeinwirkung) enthalten.</p>
+
+  <div class="table-wrap">
+  <table class="plain">
+    <thead>
+      <tr><th>Anspruch</th><th>Rechtsgrundlage</th><th>Dauer</th><th>Gilt für</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Gesetzliche Gewährleistung</td><td>Art. 197 ff., 210 OR</td><td>2 Jahre ab Übergabe</td><td>Mängel, die beim Kauf bereits bestanden</td></tr>
+      <tr><td>Herstellergarantie</td><td>Freiwillig (Herstellerbedingungen)</td><td>meist 2 Jahre, teils mehr</td><td>Material-/Verarbeitungsfehler laut Garantiekarte</td></tr>
+      <tr><td>Rückgaberecht ohne Mangel</td><td>Keine gesetzliche Pflicht</td><td>Händlerabhängig (oft 14–30 Tage)</td><td>Freiwillige Kulanz, meist nur unbenutzte Ware</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 class="sub-h">Rückgabepraxis grosser Schweizer Händler</h3>
+  <p>Viele Online-Händler räumen freiwillig ein Rückgaberecht ein, das über die gesetzliche Pflicht hinausgeht — etwa Galaxus.ch mit 30 Tagen auf unbenutzte, originalverpackte Ware. Stationäre Händler wie Migros, Coop oder dm handhaben Rückgaben meist kulant, aber ohne Rechtsanspruch. Wichtig für Glätteisen: Ein bereits benutztes Gerät (Platten mit Gebrauchsspuren, fehlende Originalverpackung) wird bei einer freiwilligen Rückgabe häufig abgelehnt — das betrifft die Kulanzregel, nicht die gesetzliche Gewährleistung bei einem tatsächlichen Mangel.</p>
+
+  <div class="tipbox">
+    <strong>Praxis-Tipp:</strong> Kaufbeleg (auch digital) immer aufbewahren — er ist die Grundlage für jede Gewährleistungs- oder Garantiemeldung. Bei Defekten innerhalb der ersten 24 Monate zuerst den Verkäufer (nicht zwingend den Hersteller) kontaktieren, da die gesetzliche Gewährleistung gegenüber dem Verkäufer greift.
+  </div>
+
+  <hr class="divider">
+
+  <!-- 17. GEBRAUCHT KAUFEN -->
+  <h2>Gebraucht kaufen auf Ricardo und Anibis: Worauf achten</h2>
+  <p>Auf Occasion-Plattformen wie Ricardo.ch oder Anibis.ch finden sich regelmässig gebrauchte Glätteisen, teils auch Premiummarken wie GHD oder BaByliss Pro zu 30–50 % unter Neupreis. Bei einem Haarstyling-Gerät, das direkt mit Kopfhaut und Haaransatz in Kontakt kommt, lohnt sich vor dem Kauf ein genauerer Blick.</p>
+
+  <h3 class="sub-h">Hygiene zuerst</h3>
+  <p>Anders als bei vielen anderen Occasion-Elektrogeräten sind Glätteisen ein Körperpflegeprodukt. Vor der ersten eigenen Nutzung sollten die Platten gründlich gereinigt werden (feuchtes Tuch, danach Isopropylalkohol 70 % auf abgekühlten Platten). Geräte mit sichtbaren Haarresten, Verfärbungen oder unangenehmem Geruch in den Scharnieren sind ein Warnsignal für mangelnde Pflege durch die Vorbesitzerin oder den Vorbesitzer.</p>
+
+  <h3 class="sub-h">Plattenzustand prüfen</h3>
+  <ul class="chk">
+    <li>Kratzer oder abgeplatzte Beschichtung auf den Platten (Fotos in der Anzeige genau ansehen oder vor Ort prüfen) — beschädigte Beschichtung überträgt sich direkt auf die Haarstruktur</li>
+    <li>Gleichmässiges Anliegen beider Platten beim Zusammendrücken, keine Lücke oder Verkantung</li>
+    <li>Funktionstest: Gerät heizt zuverlässig auf, Temperaturregler reagiert stufenweise und nicht sprunghaft</li>
+    <li>Kabel ohne Risse, Knicke oder freiliegende Adern — ein beschädigtes Kabel ist ein Sicherheitsrisiko, kein Verhandlungsdetail</li>
+    <li>Alter und Nutzungshäufigkeit erfragen; Verkäuferinnen und Verkäufer auf Ricardo/Anibis geben das meist ehrlich an, wenn gezielt gefragt wird</li>
+  </ul>
+
+  <div class="warnbox">
+    <strong>Gewährleistung bei Privatkauf:</strong> Beim Kauf von privat (nicht von einem gewerblichen Händler) darf die Gewährleistung gemäss Art. 199 OR wegbedungen werden — Formulierungen wie „gekauft wie gesehen, ohne Garantie“ sind auf Ricardo und Anibis üblich und rechtlich zulässig. Wer Sicherheit will, kauft ein gebrauchtes Gerät nur von Verkäuferinnen und Verkäufern mit ausführlicher, ehrlicher Beschreibung und Rückfragemöglichkeit vor dem Kauf.
+  </div>
+
+  <hr class="divider">
+
+  <!-- 18. PFLEGE & REINIGUNG DER PLATTEN -->
+  <h2>Pflege und Reinigung der Platten: Lebensdauer verlängern</h2>
+  <p>Ein gut gepflegtes Mittelklasse-Glätteisen hält oft länger als ein vernachlässigtes Profigerät. Die Plattenoberfläche ist der empfindlichste Teil des Geräts und bestimmt über Jahre hinweg die Stylingqualität.</p>
+
+  <h3 class="sub-h">Reinigungsroutine</h3>
+  <ol class="num">
+    <li>Gerät nach Gebrauch vollständig abkühlen lassen (mindestens 20–30 Minuten) — niemals warme Platten reinigen.</li>
+    <li>Platten mit einem leicht angefeuchteten, fusselfreien Mikrofasertuch abwischen, um Stylingprodukt- und Haarrückstände zu entfernen.</li>
+    <li>Bei hartnäckigen Rückständen ein wenig Isopropylalkohol (70 %) auf das Tuch geben — nie direkt auf die Platten sprühen.</li>
+    <li>Scharniere und Lüftungsschlitze mit einem trockenen, weichen Pinsel von Staub befreien.</li>
+    <li>Platten vollständig trocknen lassen, bevor das Gerät wieder eingeschaltet oder verstaut wird.</li>
+  </ol>
+
+  <h3 class="sub-h">Lagerung und Kabelpflege</h3>
+  <ul class="chk">
+    <li>Gerät nie aufwickeln, indem das Kabel eng um das heisse oder kalte Gehäuse gewickelt wird — das begünstigt Kabelbrüche an der Zugentlastung</li>
+    <li>Eine hitzefeste Schutzhülle oder -matte verhindert, dass die Platten direkt nach Gebrauch andere Gegenstände in der Tasche berühren</li>
+    <li>Trocken lagern — Feuchtigkeit begünstigt Korrosion an Metallteilen und Kontakten</li>
+    <li>Nicht auf dem Kabel oder mit schweren Gegenständen darauf liegend aufbewahren</li>
+  </ul>
+
+  <h3 class="sub-h">Warnzeichen für einen fälligen Ersatz</h3>
+  <p>Ein Glätteisen sollte ersetzt werden, wenn eines der folgenden Anzeichen auftritt: sichtbare Risse oder Abplatzungen in der Plattenbeschichtung, ungleichmässiges Glätten trotz korrekter Temperatur, Verfärbungen oder klebrige Rückstände, die sich nicht mehr entfernen lassen, ein beschädigtes oder brüchiges Kabel, oder ein Gerät, das nicht mehr zuverlässig aufheizt bzw. die eingestellte Temperatur nicht hält. Bei sichtbaren Kabelschäden gilt: sofort ausser Betrieb nehmen, nicht reparieren lassen — die Ersatzkosten für ein neues Budget- oder Mittelklassegerät liegen ohnehin unter den Reparaturkosten.</p>
+
+  <hr class="divider">
+
+  <!-- 19. FAQ -->
   <h2>Häufige Fragen zum Glätteisen kaufen Schweiz</h2>
 
   <details>
@@ -849,7 +957,7 @@ footer a:hover{color:var(--accent)}
 
   <hr class="divider">
 
-  <!-- 16. CTA -->
+  <!-- 20. CTA -->
   <div class="cta-box">
     <strong>Glätteisen für die Schweiz finden</strong>
     <p>Keramik, Titan und 2-in-1 Modelle — nach Plattenbreite, Temperatur und Budget vergleichen.</p>
@@ -863,17 +971,16 @@ footer a:hover{color:var(--accent)}
   <div class="nl">
     <strong>Gratis: Schweizer Kaufberater &amp; Schnäppchen</strong>
     <p>1 Tipp der Woche. Kein Spam.</p>
-    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" scrolling="no" title="Newsletter aban news"></iframe>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </div>
 
   <!-- RELATED -->
-  <h2 style="margin-top:32px;font-size:1.05rem;color:var(--muted);font-weight:600">Weitere Kaufberater</h2>
+  <h2 style="margin-top:32px;font-size:1.05rem;color:var(--muted);font-weight:600">Weiterführende Links</h2>
   <div class="related">
-    <a href="/haartrockner-kaufen-schweiz.html">Haartrockner kaufen Schweiz</a>
-    <a href="/epilierer-kaufen-schweiz.html">Epilierer kaufen Schweiz</a>
-    <a href="/beauty-tools-kaufen-schweiz.html">Beauty Tools</a>
-    <a href="/ipl-geraet-kaufen-schweiz.html">IPL-Geräte Schweiz</a>
     <a href="/kaufberater-schweiz.html">Alle Kaufberater</a>
+    <a href="/marktplatz.html">Marktplatz</a>
+    <a href="/angebote-suche.html">Angebote durchsuchen</a>
+    <a href="/stellenangebote.html">Stellenangebote</a>
   </div>
 
 </div><!-- .wrap -->
@@ -881,7 +988,11 @@ footer a:hover{color:var(--accent)}
 
 <footer>
   <div class="wrap">
-    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 · <a href="/kaufberater-schweiz.html">Kaufberater</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a> · Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
+    <a href="/impressum.html">Impressum</a> ·
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
