@@ -1,0 +1,34 @@
+# LuxeStyle Key-Check 2026-07-04T21:33:35.685Z
+# (nur present/valid — NIE der Wert)
+
+## Shopify (Writes: policies-ch, chf65-sweep, swissness)
+  SHOPIFY_CLIENT_ID     = ffe6c3a1326affdd7f461760ac1a8950  ✓ richtige installierte App
+  SHOPIFY_CLIENT_SECRET = ja (len 38)
+  SHOPIFY_ADMIN_TOKEN   = NEIN
+  → Validierung: ✅ gültig — Shop "LuxeStyle" erreichbar (write_products möglich)
+
+## fal.ai (winner-reels / Seedance)
+  FAL_KEY = ja (len 69)
+  → Validierung: ✅ Key akzeptiert (HTTP 200, kein 401/403)
+
+## Gemini (image-audit / KI-Text)
+  GEMINI_API_KEY = ja (len 39)
+  → Validierung: ✅ gültig
+
+## Printful (perso-Trikot)
+  PRINTFUL_API_KEY = ja (len 40)
+  → Validierung: ❌ HTTP 403
+
+## Social / KI-Router (nur present, keine Live-Validierung)
+  META_ACCESS_TOKEN      = ja (len 198)
+  TT_CLIENT_KEY          = ja (len 18)
+  TT_CLIENT_SECRET       = ja (len 32)
+  TT_ACCESS_TOKEN        = ja (len 72)
+  TT_REFRESH_TOKEN       = ja (len 72)
+  TT_API_LIVE            = NEIN
+  GROQ_API_KEY           = ja (len 56)
+  OPENROUTER_API_KEY     = NEIN
+  DEEPSEEK_API_KEY       = ja (len 35)
+  MISTRAL_API_KEY        = NEIN
+
+Fertig. Rot = Blocker für die jeweilige Command. Werte wurden NICHT ausgegeben.
