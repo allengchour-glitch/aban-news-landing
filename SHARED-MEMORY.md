@@ -2405,3 +2405,15 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **Backlogs komplett:** Vendor-Marken 2802 (erschöpft), Ratgeber Welle 7-9 (Blog **157**), Cross-Sell +500, Feed-Details +675, Collection-Polish 127 SEO.
 - **🚬 CJ-Raucher**: Script `cj_raucher.mjs` fertig (Online-Only), wartet auf CJ-Tagespunkte-Reset (heute 94'880 verbraucht). BigBuy-Raucher leer.
 - Katalog ~21'700 aktiv.
+
+**📌 2026-07-04 (🇨🇭 CH-ONLY + GRATIS-VERSAND CHF 50 — Launch-Politik katalogweit umgestellt):**
+- **User-Entscheid:** „nur ch jetzt" (Versand vorerst nur Schweiz) + „50 für anfang mal" → **Gratis-Versand-Schwelle CHF 65 → CHF 50** überall.
+- **Umsetzung live via Shopify GraphQL** (client_credentials-Token, throttle-retry, idempotent, additiv):
+  - **Pages:** 36 kundenseitige Seiten (inkl. **AGB/Terms**, Versand-, FAQ-Seiten DE+EN) „CHF 65"→„CHF 50". Coupon `SHIP50` unberührt. 0 „CHF 65" mehr auf Seiten.
+  - **Collections:** 360/377 Collections `descriptionHtml`+`seo.description` geflippt — **ohne `ruleSet`** (Smart-Regeln bleiben unangetastet, Lehre aus früher).
+  - **Blog/Ratgeber:** 57 Artikel `body` geflippt (⚠️ 200-Artikel-Scan-Cap exakt getroffen — evtl. Artikel >200 noch offen, Nachlauf-Sweep geplant).
+  - **Produktbeschreibungen:** bigbuy + non-bigbuy Batch-Flip (`automation/chf50_bigbuy_flip.mjs` + scratchpad-Skripte, Ledger `/tmp/chf50_*_done.txt`) — lief zuletzt bei bigbuy 1'239 / other 1'435, weiter im Hintergrund.
+  - **Import-Skripte:** 46 `automation/*`-Dateien per sed „CHF 65"→„CHF 50" (Commit `fa6ecbd0`), damit NEUE Produkte gleich CHF 50 tragen.
+- **⚠️ USER-KLICK (einziges Rest-To-do):** Shopify **Settings → Versand → Rate**: Free-Shipping-Schwelle auf **CHF 50** stellen (das ist die Checkout-Mechanik; Content ist bereits überall CHF 50). Region auf **nur Schweiz** prüfen. Per API/MCP nicht sauber automatisierbar → Admin-UI.
+- **Lehre:** Preis-/Schwellen-Politik lebt an 5 Stellen gleichzeitig (Pages, Collections, Blog, Produkt-HTML, Import-Skripte) — bei künftigen Schwellen-Änderungen ALLE 5 flippen, sonst widersprüchliche Angaben.
+- **📧 Mail/Orders (User-Dauercheck):** **Shopcom-B2B**: Reply kam („Formular ausfüllen") — User hat ausgefülltes **Dropshipping-Formular** bereits gesendet (21:38, „…FERTIG") → wartet auf Shopcom-Prüfung. **Order #1005** (Alain Schutz, WM-Trikot CHF 34.90) → an **Printful #PF165452870** übermittelt, in Fulfillment. Wochenreport: 5,25 K Sessions/Woche (Traffic da).
