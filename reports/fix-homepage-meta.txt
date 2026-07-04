@@ -1,0 +1,9 @@
+2026-07-04T19:48:45.828Z DRY
+→ öffne https://admin.shopify.com/store/luxestyle-ch/online_store/preferences
+Felder mit „Deutschland": []
+   Kein Feld mit „Deutschland" gefunden auf dieser Seite (evtl. andere URL/Wortlaut) — Screenshot prüfen.
+→ öffne https://admin.shopify.com/store/luxestyle-ch/settings/preferences
+Felder mit „Deutschland": []
+   Kein Feld mit „Deutschland" gefunden auf dieser Seite (evtl. andere URL/Wortlaut) — Screenshot prüfen.
+⚠️ Meta-Feld nicht erreicht — Screenshots automation/local/meta-shots/ prüfen (Login/URL/Wortlaut).
+Fertig (DRY). reports/fix-homepage-meta.txt
