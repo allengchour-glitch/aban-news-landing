@@ -2308,3 +2308,23 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - Beide Configs word:true, im bb_loop ZUERST in Rotation (beautytech,autozubehoer,hightech,…). Collections publiziert (8 Kanäle).
 - **Lehre:** Ohne Semrush = WebSearch auf Trend-Reports + BigBuy-Taxonomie-Abgleich → Nachfrage-Lücken finden, die
   der Shop noch nicht deckt. Effektivster Sortiments-Hebel: importieren was gesucht wird UND wo Abdeckung = 0.
+
+---
+**📌 2026-07-04 (🤖 20-AGENTEN-FLOTTE #3 + Google-Merchant-Beschreibungs-CSV abgearbeitet):**
+- **6 NEUE Trend-Collections gebaut** (alle Fehltreffer-geprüft, 8 Kanäle, PRICE_ASC, DE-Desc/SEO/Hero):
+  🍳 kuechen-gadgets **58** · 🌿 nachhaltig-eco **46** · 🤖 smart-home-gadgets **55** (gegen 18'975 Titel geprüft) ·
+  ✨ ipl-haarentfernung **23** · 💧 gesichtspflege-geraete **14** (Beauty-Sub-Collections). Heizdecken nur 9 → korrekt NICHT angelegt.
+- **🐛 Beauty-Geräte-Regel-Fix (wichtig):** `beauty-geraete` hatte fälschlich Regel `tag:beauty` (3'623 generische Produkte!)
+  statt `tag:beautytech` → korrigiert auf die 45 echten Geräte.
+- **Fehltreffer-Lehren (Smart-Collection TITLE-CONTAINS macht LITERAL substring):** bare `ipl`→Lipliner/Discipline-Shampoo;
+  `solar`→Parfum „Olympéa Solar"; `wiederverwendbar`→Wimpern/Nägel; `smart`→Smartwatches/Mode; `projektor`→Aurora-Nachtlicht;
+  `faltdrohne` matcht 0 (Drohnen heissen „Mini-Drohne…Faltbar"). IMMER am echten Treffer prüfen, spezifische Phrasen nutzen.
+- **Qualitäts-Sweeps (Katalog ~19'000 aktiv):** Cross-Sell-Links 0 kaputt · Drafts 0 auf Kanälen · neueste 600 sauber ·
+  Vendor-Marken +500 (Google-brand-Attribut, 1'644 Rest) · Duplikat-Titel +400 (Parfum/Robo-Sauger-Dubletten, 271 Rest) ·
+  Feed-Details +503 · gender/age_group komplett · Collection-Polish 329 · Homepage 🔥 Trend-Reihe (9 Kategorien) · Ratgeber +10.
+- **📊 GOOGLE-MERCHANT-„Beschreibungs-Details"-CSV** (User-Upload, „Shirts & Tops", 28'126 Zeilen = 1'421 Produkte):
+  Empfehlung „Farbe/Muster/Material ergänzen" = genau was `feed_details_fill.mjs` macht. Über die exakte Google-Produktliste
+  gelaufen → **106 neu ergänzt, 1'314 waren schon erledigt** → alle 1'421 abgedeckt. (Ist eine Optimierungs-, KEINE Policy-Empfehlung
+  → kein Ablehnungsgrund.) **⚠️ Skript-Falle:** feed_details_fill wrappt die ID selbst in gid:// → IDS-Datei braucht NUMERISCHE IDs.
+- **Google-Merchant-Review-Antrag = grünes Licht** (Katalog-Seite sauber: keine Waffen [„waffe"=Waffeleisen/Waffelstrick],
+  0 Draft-im-Kanal, gender/age komplett). Nur-User-Klick; Feed erst re-syncen lassen, dann 1× drücken (nicht spammen, ~7-Tage-Fenster).

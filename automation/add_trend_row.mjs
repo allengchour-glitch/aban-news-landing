@@ -13,7 +13,7 @@ const VERIFY=process.env.VERIFY==='1';
 const BACKUP='dropship/theme-backups/index.json.trendrow.bak';
 const KEY='cl_trends';
 const TITLE='🔥 Trend-Kategorien 2026';
-const HANDLES=['beauty-geraete','auto-kfz-zubehoer','hightech-gadgets','basteln-diy','laptop-tablet-zubehoer','angebote'];
+const HANDLES=['beauty-geraete','auto-kfz-zubehoer','hightech-gadgets','smart-home-gadgets','kuechen-gadgets','nachhaltig-eco','basteln-diy','laptop-tablet-zubehoer','angebote'];
 if(!SHOP||!CID||!CSEC){ console.log('no creds → no-op'); process.exit(0); }
 async function token(){
   const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},
