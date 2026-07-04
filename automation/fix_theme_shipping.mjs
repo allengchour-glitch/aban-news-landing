@@ -27,6 +27,7 @@ const REPL=[
   ['ab CHF 65','ab CHF 50'], ['CHF 65','CHF 50'], ['ab 65','ab 50'],
   ['2–7 Werktage','5–12 Werktage'], ['2-7 Werktage','5–12 Werktage'],
   ['2–7 Tage','5–12 Tage'], ['2-7 Tage','5–12 Tage'],
+  ['Schweizer Qualität','geprüfte Qualität'], // Swissness-Claim verboten (Nicht-CH-Produkte)
 ];
 const applyRepl=(s)=>{ let v=s, hits=[]; for(const [a,b] of REPL){ if(v.includes(a)){ const n=v.split(a).length-1; v=v.split(a).join(b); hits.push(`"${a}"→"${b}" ×${n}`); } } return {v,hits}; };
 
@@ -36,13 +37,16 @@ const theme=(th.j?.themes||[]).find(t=>t.role==='main')||(th.j?.themes||[])[0];
 if(!theme){ W('❌ Kein Theme gefunden.'); process.exit(0); }
 W(`Theme: ${theme.name} (id ${theme.id}, role ${theme.role})`);
 
-// 2) Asset-Liste, Kandidaten filtern
-const al=await rest(`themes/${theme.id}/assets.json`);
-const keys=(al.j?.assets||[]).map(a=>a.key).filter(k=>
-  k==='config/settings_data.json' || /^locales\/.*\.json$/.test(k) ||
-  /^(sections|snippets|templates)\/.*\.(liquid|json)$/.test(k)
-);
-W(`${keys.length} Kandidaten-Assets werden geprüft…`);
+// 2) GEZIELTE Dateien (zuverlässig; Voll-Scan war rate-limitiert/unvollständig). SCAN=1 = alle Kandidaten.
+let keys=['sections/header-group.json','templates/index.json','config/settings_data.json'];
+if(process.env.SCAN==='1'){
+  const al=await rest(`themes/${theme.id}/assets.json`);
+  keys=(al.j?.assets||[]).map(a=>a.key).filter(k=>
+    k==='config/settings_data.json' || /^locales\/.*\.json$/.test(k) ||
+    /^(sections|snippets|templates)\/.*\.(liquid|json)$/.test(k)
+  );
+}
+W(`${keys.length} Ziel-Assets werden geprüft…`);
 let changed=0, scanned=0;
 for(const key of keys){
   const a=await rest(`themes/${theme.id}/assets.json?asset[key]=${encodeURIComponent(key)}`);
