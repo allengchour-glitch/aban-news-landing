@@ -17,9 +17,9 @@ const R = m => { report.push(m); console.log('bigbuy:', m); try { writeFileSync(
 
 const URLS = [
   'https://www.bigbuy.eu/en/my-account/orders',
-  'https://www.bigbuy.eu/en/dropshipping/orders',
-  'https://www.bigbuy.eu/my-account/orders',
-  'https://www.bigbuy.eu/',
+  'https://www.bigbuy.eu/en/my-account.html',
+  'https://www.bigbuy.eu/en/order-history',
+  'https://www.bigbuy.eu/en/tiendab2b.html',
 ];
 async function readPage(page) {
   try {
@@ -39,33 +39,36 @@ async function readPage(page) {
   catch (e) { R('❌ Kein Brave auf ' + CDP + '. Brave 9222 + bei bigbuy.eu eingeloggt. ' + e.message); process.exit(1); }
   const ctx = browser.contexts()[0] || (await browser.newContext());
   const page = await ctx.newPage();
-  let ok = false;
+  let ok = false, shotN = 0;
+  const grab = async (tag) => { const shot = `${SHOTS}/bigbuy-${shotN++}-${tag}.png`; await page.screenshot({ path: shot, fullPage: true }).catch(() => {}); const v = await readPage(page); R('   Screenshot: ' + shot + '  URL: ' + page.url()); R('   Text: ' + (v.txt || '').slice(0, 700)); const t = v.txt || ''; const carrier = (t.match(/(Correos|GLS|SEUR|DHL|DPD|UPS|Swiss ?Post|Post CH|Colissimo|Chronopost|Envialia|CTT|Cainiao|Asendia|Packlink|InPost)/i) || [])[0]; if (/S3414715|Marti|Grenchen|8420327578013/i.test(t)) R('   → Bestellung/Empfänger gefunden.'); if (carrier) { R('   → Carrier: ' + carrier); ok = true; } return t; };
+  // 1) Direkte Order-URLs probieren
   for (const url of URLS) {
     try {
       R('→ öffne ' + url);
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
       await page.waitForTimeout(4500);
-      const cur = page.url();
-      if (/login|signin|connexion|iniciar/i.test(cur)) { R('⚠️ nicht eingeloggt (Login-Redirect): ' + cur + ' → im Brave bei bigbuy.eu einloggen.'); continue; }
-      // Falls ein Suchfeld existiert, Suchbegriff eingeben
-      try { const s = page.locator('input[type=search],input[name*=search i],input[placeholder*=order i],input[placeholder*=search i]').first(); if (await s.count()) { await s.fill(SEARCH); await s.press('Enter'); await page.waitForTimeout(3500); R('   Suche „' + SEARCH + '" eingegeben.'); } } catch {}
-      const v = await readPage(page);
-      const shot = `${SHOTS}/bigbuy-${URLS.indexOf(url)}.png`;
-      await page.screenshot({ path: shot, fullPage: true }).catch(() => {});
-      R('   Screenshot: ' + shot + '  URL: ' + cur);
-      R('   Text (Auszug): ' + (v.txt || '').slice(0, 900));
-      const t = (v.txt || '');
-      const found = /S3414715|Marti|Grenchen|8420327578013/i.test(t);
-      const carrier = (t.match(/(Correos|GLS|SEUR|DHL|DPD|UPS|Swiss ?Post|Post CH|Colissimo|Chronopost|Envialia|CTT|Cainiao|Asendia)/i) || [])[0];
-      const trk = (t.match(/\b\d{10,}\b/) || [])[0];
-      if (found) R('   → Bestellung/Empfänger im Text gefunden.');
-      if (carrier) R('   → Carrier erkannt: ' + carrier);
-      if (trk) R('   → mögliche Tracking-Nummer im Text: ' + trk);
-      if ((v.links || []).length) ok = true;
-      if (found || carrier) { ok = true; break; }
-    } catch (e) { R('   Fehler bei ' + url + ': ' + String(e.message).slice(0, 120)); }
+      if (/\/login|signin|connexion|iniciar-sesion/i.test(page.url())) { R('⚠️ Login-Redirect: ' + page.url()); continue; }
+      const t = await grab('url' + URLS.indexOf(url));
+      if (/S3414715|Marti|Grenchen/i.test(t)) { ok = true; break; }
+    } catch (e) { R('   Fehler ' + url + ': ' + String(e.message).slice(0, 100)); }
   }
-  if (!ok) R('⚠️ BigBuy-Bestellliste nicht erreicht — Screenshots prüfen (Login nötig oder andere URL/Panel).');
+  // 2) Über das Kontomenü klicken: "My account" -> Orders/My orders
+  if (!ok) {
+    try {
+      R('→ Kontomenü-Klickweg (My account → Orders)');
+      await page.goto('https://www.bigbuy.eu/en/tiendab2b.html', { waitUntil: 'domcontentloaded', timeout: 45000 });
+      await page.waitForTimeout(3500);
+      for (const acc of ['My account', 'Mein Konto', 'Account']) { try { const a = page.getByText(new RegExp(acc, 'i')).first(); if (await a.count()) { await a.click({ timeout: 4000 }); await page.waitForTimeout(1500); R('   „' + acc + '" geklickt'); break; } } catch {} }
+      await grab('accountmenu');
+      for (const ord of ['My orders', 'Orders', 'Bestellungen', 'Order history', 'Meine Bestellungen', 'Pedidos']) {
+        try { const l = page.getByRole('link', { name: new RegExp(ord, 'i') }).first(); if (await l.count()) { await l.click({ timeout: 5000 }); await page.waitForTimeout(4000); R('   „' + ord + '" geöffnet'); const t = await grab('orders'); if (/S3414715|Marti|Grenchen/i.test(t)) ok = true; break; } } catch {} }
+      // In die passende Bestellung klicken (Zeile mit Empfänger/Ref)
+      for (const key of ['S3414715', 'Marti', 'Grenchen', 'Laterne', 'Boho']) {
+        try { const row = page.getByText(new RegExp(key, 'i')).first(); if (await row.count()) { await row.click({ timeout: 4000 }); await page.waitForTimeout(3500); R('   Bestellung „' + key + '" geöffnet'); await grab('orderdetail'); ok = true; break; } } catch {}
+      }
+    } catch (e) { R('   Kontomenü-Fehler: ' + String(e.message).slice(0, 120)); }
+  }
+  if (!ok) R('⚠️ Bestellung/Carrier nicht sicher gelesen — Screenshots prüfen (ich sehe sie mir an).');
   R('Fertig. Screenshots ' + SHOTS + '/, Bericht reports/bigbuy-order.txt. (Für ETA: Carrier + Tracking-Nr aus dem Screenshot ablesen.)');
   try { await page.close(); } catch {}
   try { await browser.close(); } catch {}
