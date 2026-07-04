@@ -76,7 +76,7 @@ Benchmarks: owayo, spized, JAKO, 11teamsports, klubtrikot.ch · On, PKZ, Beldona
 **Der Engpass ist überall gleich benannt: Trust + Mobile-Checkout, NICHT Traffic.** Reihenfolge:
 
 **A. SOFORT / höchste Sicherheit (meist User/Theme-Klicks):**
-1. **TWINT nativ aktivieren + Klarna Kauf-auf-Rechnung + Logos auf PDP/Cart/Footer** (von 4 Agenten als #1 CH-Hebel genannt).
+1. ✅ **KORREKTUR (Memory): TWINT + Klarna sind AKTIV, Checkout vom User 2026-06-26 verifiziert = funktioniert.** Zahlung ist NICHT der Blocker. Offen NUR noch: (a) TWINT/Klarna-LOGOS auf PDP/Cart/Footer zeigen (Trust, Theme), (b) im mobilen Test-Checkout bestätigen, dass die Klarna-Rechnung-Option erscheint.
 2. **Sticky Mobile-ATC + Express-Wallets** (fixt den 9×-Mobile-Leak).
 3. **Judge.me Review-Siegel + Foto-Review-Mail 7–14 T nach Lieferung** (killt die 0★-Wand) — Alain als ersten fragen.
 4. **Server-Pixel (Events-API/CAPI) verifizieren + Klaviyo Abandoned/Welcome live** BEVOR Ad-Spend.

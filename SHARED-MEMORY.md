@@ -13,7 +13,10 @@
 #   (1) Sticky Mobile-ATC + Express-Wallets zuerst, (2) TWINT/Klarna-Logos auf PDP+Cart, (3) site-weite Trust-Bar,
 #   (4) Gratisversand-Fortschrittsbalken, (5) Mega-Menü, (6) Mobile-Speed/LCP<2.5s, (7) hreflang de-CH/fr-CH,
 #   (8) native Bundles (Familien-/Team-Set), (9) Live-Preview-Customizer als Hero + „So funktioniert's"-Block.
-#   NUR-USER-KLICKS: TWINT nativ (Shopify Payments) + Klarna Kauf-auf-Rechnung aktivieren, Judge.me Auto-Review-Mail,
+#   ✅ KORREKTUR (CizQ6 2026-07-04, User „lade memory wegen twint/klarna"): TWINT + Klarna sind AKTIV, Checkout vom User
+#   2026-06-26 verifiziert (CONVERSION-MASTERPLAN §1) = Zahlung ist NICHT der Blocker. NICHT nochmal „aktivieren" flaggen!
+#   Offen nur: TWINT/Klarna-LOGOS auf PDP/Cart zeigen (Trust) + Klarna-Rechnung im mobilen Test-Checkout bestätigen.
+#   NUR-USER-KLICKS: Judge.me Auto-Review-Mail,
 #   Klaviyo Abandoned/Welcome live, Test-Checkout (TWINT/Rechnung sichtbar?), Express-Pay an.
 #   ⚖️ RECHT: „WM 2026"/FIFA-Marken-Risiko → Trikot generisch „Schweiz Fan-Trikot 2026 – selbst gestaltet" (kein WM/World Cup/Wappen).
 
