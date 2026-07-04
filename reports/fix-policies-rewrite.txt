@@ -1,8 +1,9 @@
-Shipping „Shipping": Body ersetzen.
-   ✗ Fehler 406 
-Refund „Refund policy": Body ersetzen.
-   ✗ Fehler 406 
-Privacy „Privacy policy": revDSG-Abschnitt voranstellen.
-   ✗ Fehler 406 
+6 shopPolicies gelesen: CONTACT_INFORMATION, LEGAL_NOTICE, PRIVACY_POLICY, REFUND_POLICY, SHIPPING_POLICY, TERMS_OF_SERVICE
+Shipping: Body ersetzen.
+   ✓ geschrieben.
+Refund: Body ersetzen.
+   ✓ geschrieben.
+Privacy: revDSG-Abschnitt voranstellen.
+   ✗ [{"field":["shopPolicy"],"message":"Automatic management for Privacy Policy must be turned off in order to make changes."}]
 
-Fertig: 0 geschrieben.
+Fertig: 2 geschrieben.
