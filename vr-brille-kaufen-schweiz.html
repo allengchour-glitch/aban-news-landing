@@ -305,9 +305,27 @@ footer a{color:var(--muted);}
 .procon-box ul{margin-left:16px;margin-bottom:0;}
 .procon-box li{font-size:.88rem;color:var(--ink2);margin-bottom:3px;}
 @media(max-width:480px){.procon{grid-template-columns:1fr;}}
+.topnav{position:sticky;top:0;z-index:50;background:rgba(30,10,60,.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);}
+.tn-in{max-width:780px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.tn-brand{color:#fff;font-weight:800;font-size:1.05rem;text-decoration:none;letter-spacing:.02em;}
+.tn-links{display:flex;gap:16px;flex-wrap:wrap;}
+.tn-links a{color:#e9d5ff;font-size:.88rem;text-decoration:none;font-weight:600;}
+.tn-links a:hover{color:#fff;}
+@media(max-width:520px){.tn-links{gap:10px;}}
 </style>
 </head>
 <body>
+
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
 
 <nav class="bc" aria-label="Brotkrumen">
   <a href="/">Start</a> ›
