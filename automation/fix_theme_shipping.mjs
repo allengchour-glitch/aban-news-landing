@@ -47,6 +47,7 @@ let changed=0, scanned=0;
 for(const key of keys){
   const a=await rest(`themes/${theme.id}/assets.json?asset[key]=${encodeURIComponent(key)}`);
   const val=a.j?.asset?.value; if(typeof val!=='string'){ continue; } scanned++;
+  if(process.env.DUMP==='1'){ const lines=val.split(/\\n|\n/).filter(l=>/Werktag|Arbeitstag|EU-Lager|Lieferzeit|Lieferung|Versand|\b\d\s?[–-]\s?\d\b|CHF\s?\d/i.test(l)); if(lines.length){ W(`\n[DUMP] ${key}:`); lines.slice(0,12).forEach(l=>W('   '+l.trim().slice(0,160))); } }
   const {v,hits}=applyRepl(val);
   if(!hits.length) continue;
   W(`\n${key}:`); hits.forEach(h=>W('   '+h));
