@@ -2218,3 +2218,17 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **🐛 Bugs gefixt:** `ratgeber_gemini.mjs` (null-gql-Antwort wurde fälschlich als „done" markiert → Guard auf article.id),
   `collection_polish.mjs` (GraphQL-THROTTLED-Retry, brach vorher bei ~148 ab).
 - **📊 Katalog real ~17'400 AKTIV** (nicht 10k — das war Shopifys `productsCount`-Cap; echte Zahl via `products/count.json`).
+
+---
+**📌 2026-07-04 (Nachtrag — Duplikat-Titel-SEO-Fix + Feed-Attr-Kinder-Fix + Angebote-Collection):**
+- **Duplikat-Titel (echter SEO-Fund):** 592 Gruppen / 1'834 Produkte teilten sich exakt denselben Titel (BigBuy/CJ
+  vergaben generische „Marke+Kategorie"-Namen). **642 eindeutig gemacht** (`– Ref. {SKU}` angehängt, kollisionssicher,
+  1 Kanon-Titel je Gruppe bleibt sauber) — Ledger `/tmp/dup_title_done.txt` (642). Restliche 325 Gruppen (Parfum/Kosmetik
+  ohne sauberen Unterscheider + 33 echte Doppel-Importe) = **bewusst manuell** (Liste in scratchpad/manual_review.json),
+  kein Spam-Code auf Premium-Storefront, keine Auto-Löschung.
+- **🏷️ Angebote-Collection** live (`angebote`, „🏷️ Angebote & Deals"): Regel `IS_PRICE_REDUCED` (echter durchgestrichener
+  Vergleichspreis, KEIN Fake), **396 echte Deals**, PRICE_ASC, 8 Kanäle. `unter-chf-25` nicht dupliziert.
+- **Google-Merchant gender/age_group: 706 gesetzt** — v.a. **Kinder-Mode war fast ungedeckt** (644). `feed_attributes_fill.mjs`
+  **gefixt**: iteriert jetzt über Einzel-Tags (damen/herren/kinder/schuhe/baby/socken/bademode…) statt einer riesigen OR-Kette
+  (die Query-Complexity-Fehler auslöste UND Kinder/Schuhe/Baby übersprang). Kinderkleidung braucht `age_group=kids` für Google.
+- **Unkategorisierte Produkte:** 0 echte (17'499 gescannt; 100% Collection-Abdeckung by design via Preis-/Tag-Catch-all-Collections).
