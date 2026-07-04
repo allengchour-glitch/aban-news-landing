@@ -2386,3 +2386,22 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **➡️ NÄCHSTER SCHRITT (sobald Shopcom antwortet):** Zugangsdaten/Produkt-Feed (CSV/API) → **Connector bauen** wie
   bei BigBuy/CJ, Produkte mit „🇨🇭 Express-Lieferung 1–3 Tage"-Auszeichnung importieren. User sagt „schau mail" wenn Antwort da.
 - **Gmail-MCP funktioniert** (Konto allengchour@gmail.com) — kann Mails suchen/lesen + Entwürfe anlegen (nicht senden).
+
+---
+**📌 2026-07-04 (🇨🇭 CH-ONLY-VERSAND-Entscheid + Fokus-Flotte #7 + Live-Hero + Departments):**
+- **⚡ USER-ENTSCHEID: Versand NUR SCHWEIZ (inkl. Liechtenstein), gratis ab CHF 65.** Agent hat **41 Seiten** angeglichen
+  (16 Versand-/Policy-Seiten: weltweit/DACH/EU/USA-Tabellen + CHF 99/149 raus → CH+LI, CHF 65; 25 Kategorie-Seiten CHF 50→65;
+  ueber-uns/zahlungsmethoden/tracking/EN-Seiten/SHIP50-Labels). **KONSISTENT jetzt CH-only.**
+- **⚠️ OFFEN (nur User): 3 aktive Gratis-Versand-Codes widersprechen CHF-65-Policy** → SHIP50 (min CHF 50), FREESHIP49 (min CHF 49),
+  FREESHIP (min CHF 100). User muss auf CHF 65 anheben/archivieren (Discount-Codes = Umsatz, nicht autonom geändert). User „ja codes auf 65" → dann anheben.
+- **🎬 LIVE-HERO** (mobil-optimiert): Ken-Burns-Zoom + zarter Sheen auf dem Homepage-Hero via scoped CSS in theme.liquid (`ls-live-hero`),
+  `@media (prefers-reduced-motion)`, kein Video → schnell/Akku-schonend. Backup dropship/theme-backups/theme.liquid.livehero.bak.
+- **Neue Browse-Departments/Collections (Fehltreffer-geprüft):** Herrenmode (Jacken 37/Pullover 23), Taschen (Handtaschen 194/Reisegepäck 38),
+  Küche (Kochen&Backen 90/Trinken&Barware 98), Klima (Ventilatoren 58/Luftreiniger 22/Lampen 70), Grill&BBQ ausgebaut 4→42, Uhren-Chronographen 18,
+  Parfum Unisex&Sets 45, Fitness-Geräte 48, ❄️ Winter&Kälte 212, 🚗 Auto-Pflege 16, Haustier (Hund 311/Katze 102/Futter 62), Beauty (Haarpflege 115/Nägel 28).
+- **Parfum-Coverage-Fix:** Damen-Düfte 283→**645**, Herren-Düfte 198→**475** (Titel-Regel „Damenparfüm/Herrenparfüm" + Bridge-Tag `damenduft/herrenduft`
+  für 31 Premium-Marken-Orphans D&G/YSL/CK). Lehre: Shopify-Smart-Regel kann nicht (TAG AND TAG) OR TITLE → Bridge-Tag-Trick.
+- **Menü**: +💄 Beauty +🐾 Haustier Dropdowns; Herren auf 8 Unterpunkte; Klima&Ventilatoren zum Dropdown. Adobe-Editorial-Banner als Elektronik-Hero.
+- **Backlogs komplett:** Vendor-Marken 2802 (erschöpft), Ratgeber Welle 7-9 (Blog **157**), Cross-Sell +500, Feed-Details +675, Collection-Polish 127 SEO.
+- **🚬 CJ-Raucher**: Script `cj_raucher.mjs` fertig (Online-Only), wartet auf CJ-Tagespunkte-Reset (heute 94'880 verbraucht). BigBuy-Raucher leer.
+- Katalog ~21'700 aktiv.
