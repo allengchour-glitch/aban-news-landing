@@ -10,7 +10,9 @@ mkdirSync('reports',{recursive:true}); mkdirSync('reels',{recursive:true});
 const DUR=process.env.DUR||'6', RES=process.env.RES||'720p';
 const out=[]; const W=m=>{ out.push(m); console.log(m); try{ writeFileSync('reports/winner-render.txt', out.join('\n')+'\n'); }catch{} };
 let jobs=[]; try{ jobs=JSON.parse(readFileSync('automation/winner_render_jobs.json','utf8')); }catch(e){ W('Keine Jobs: '+e.message); process.exit(0); }
-if(!process.env.FAL_KEY){ W('Kein FAL_KEY → No-op (auf dem PC ausfuehren).'); process.exit(0); }
+const FK=(process.env.FAL_KEY||'').trim();
+W(`FAL_KEY: ${FK?('vorhanden, len '+FK.length):'FEHLT'} · SHOPIFY_CLIENT_SECRET: ${(process.env.SHOPIFY_CLIENT_SECRET||'')?'vorhanden':'fehlt'}`);
+if(!FK){ W('Kein FAL_KEY → No-op. (Auf dem PC: luxe-secrets.ps1 muss $env:FAL_KEY setzen; keycheck bestaetigte ihn — falls hier trotzdem FEHLT, wurde die cmd nicht mit gesourcten Secrets ausgefuehrt.)'); process.exit(0); }
 W(`Render ${jobs.length} Winner-Clips (res ${RES}, dur ${DUR}s, v1/pro-first)…`);
 let ok=0;
 for(const j of jobs){
