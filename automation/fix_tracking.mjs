@@ -40,10 +40,10 @@ for(const f of fs){
   if(!ti.number){ W('   → keine Tracking-Nummer, überspringe.'); continue; }
   const cn=carrierNum(ti);
   if(!FORCE && okUrl(ti.url) && String(ti.url).includes(cn)){ W('   → URL bereits gültig + enthält Carrier-Nummer, keine Änderung (idempotent).'); continue; }
-  const newUrl=`https://parcelsapp.com/en/tracking/${encodeURIComponent(cn)}`;
+  const newUrl=(process.env.TRACK_URL||'').trim() || `https://parcelsapp.com/en/tracking/${encodeURIComponent(cn)}`;
   W(`   → kaputte/fehlende URL → setze funktionierenden Link: ${newUrl}${NOTIFY?' (+Kunde benachrichtigen)':' (ohne Kunden-Mail)'}`);
   if(DRY){ W('   [DRY] nichts geändert.'); continue; }
-  const rr=await gql(M,{id:f.id, ti:{ number:cn, url:newUrl, company: ti.company||'BigBuy' }, n:NOTIFY});
+  const rr=await gql(M,{id:f.id, ti:{ number:cn, url:newUrl, company: (process.env.TRACK_COMPANY||'').trim()||ti.company||'ShipRocket' }, n:NOTIFY});
   const ue=rr?.data?.fulfillmentTrackingInfoUpdate?.userErrors||[];
   if(ue.length){ W('   ✗ Fehler: '+JSON.stringify(ue).slice(0,160)); continue; }
   const nti=rr?.data?.fulfillmentTrackingInfoUpdate?.fulfillment?.trackingInfo?.[0]||{};
