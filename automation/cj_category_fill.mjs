@@ -162,6 +162,9 @@ for(const [cat,label] of grp.cats){
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
+   // Google-Merchant-Pflichtattribute bei Mode: Gender + Altersgruppe (Farbe/Grösse kommen aus Varianten)
+   if(grp.fashion){const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
+    input.metafields=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},{namespace:'mm-google-shopping',key:'age_group',value:'adult',type:'single_line_text_field'}];}
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    if(imgs.length>1)await sgql(st,MED,{id:pid,m:imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}))});
