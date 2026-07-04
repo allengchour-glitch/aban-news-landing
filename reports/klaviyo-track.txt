@@ -1,0 +1,8 @@
+2026-07-04T12:08:12.578Z DRY
+→ öffne https://www.klaviyo.com/integrations/shopify
+   Screenshot: automation/local/klaviyo-shots/klaviyo-0.png
+   URL: https://www.klaviyo.com/integrations/shopify
+   Text (Auszug): Skip to content Sorry, that page isn't actually here. The address you asked for didn't work for some reason. Here are some possible reasons why: We have a bad link and you were unlucky enough to click it. You may have typed the page address incorrectly. This web server is bonkers right now. Go Back to Last Page Home Support @klaviyo
+   Buttons: Skip to content | Go Back to Last Page | Home | Support | @klaviyo
+   [DRY] nichts geklickt. Für Toggle: GO=1 erneut. (Re-Auth/Login macht das Skript NICHT — bleibt beim User.)
+Fertig (DRY). Screenshots in automation/local/klaviyo-shots/, Bericht reports/klaviyo-track.txt
