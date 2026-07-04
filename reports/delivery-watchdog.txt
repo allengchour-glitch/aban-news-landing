@@ -1,0 +1,2 @@
+Liefer-Watchdog: 1 Sendungen geprüft, 0 zugestellt, 0 HÄNGEN >7 Tage ohne Zustellung.
+✓ Keine hängenden Sendungen.
