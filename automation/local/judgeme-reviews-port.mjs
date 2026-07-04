@@ -61,11 +61,16 @@ async function readFrame(f) {
       await page.waitForTimeout(5000);
       const cur = page.url();
       if (/accounts\.shopify|login|signin/i.test(cur) && !/apps/.test(cur)) { R('⚠️ Login-Redirect: ' + cur + ' → im Brave einloggen, dann erneut.'); continue; }
-      // Apps-Liste: „Judge.me Reviews" anklicken (App ist installiert, aber Handle unbekannt)
-      if (/\/apps(\/)?$/.test(cur)) {
-        for (const name of ['Judge.me Reviews', 'JudgeMe Reviews', 'Judge.me']) {
-          try { const l = page.getByRole('link', { name: new RegExp(name, 'i') }).first(); if (await l.count()) { await l.click({ timeout: 5000 }); await page.waitForTimeout(5000); R('   „' + name + '" aus Apps-Liste geöffnet → ' + page.url()); break; } } catch {}
+      // Settings→Apps-Liste: in die Judge.me-Reviews-App-ZEILE klicken (App installiert, Handle unbekannt)
+      if (/\/apps|\/settings/.test(cur)) {
+        let clicked = false;
+        for (const name of ['Judge.me Reviews', 'JudgeMe Reviews']) {
+          for (const loc of [page.getByRole('link', { name: new RegExp('^' + name, 'i') }), page.getByText(new RegExp('^' + name + '$', 'i'))]) {
+            try { const el = loc.first(); if (await el.count()) { await el.click({ timeout: 5000 }); await page.waitForTimeout(6000); R('   „' + name + '"-Zeile geklickt → ' + page.url()); clicked = true; break; } } catch {}
+          }
+          if (clicked) break;
         }
+        if (clicked) { await page.screenshot({ path: `${SHOTS}/judgeme-app.png`, fullPage: true }).catch(() => {}); R('   Screenshot der App: ' + `${SHOTS}/judgeme-app.png`); }
       }
       const f = await bestFrame(page);
       const v = await readFrame(f);
