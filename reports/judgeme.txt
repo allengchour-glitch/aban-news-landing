@@ -1,0 +1,10 @@
+2026-07-04T12:08:22.586Z DRY
+→ öffne https://admin.shopify.com/store/luxestyle-ch/apps/judgeme-reviews
+   Screenshot: automation/local/judgeme-shots/judgeme-0.png  (aktiver Frame: https://admin.shopify.com/store/luxestyle-ch/apps/)
+   Text (Auszug): Skip to content Frühjahr 2026 Suchen STRG K LuxeStyle Startseite Bestellungen 2 Produkte Kunden Wachstum Rabatte Inhalt Markets Finanzen Statistiken Vertriebskanäle TikTok Apps Printful Sidekick-Unterhaltungen Zustimmung für Printful-Daten abfragen Apps in Shopify erweitern den Shop Erstellung einer Versandrichtlinie für Shopify Einstellungen Du hast diese App nicht installiert Installiere JudgeMe Reviews und versuche es erneut. JudgeMe Reviews 3.3 Kundenvertrauen aufbauen und Umsatz steigern mi
+   Buttons: Skip to content | Frühjahr 2026 | Suchen
+STRG
+K | LuxeStyle | Startseite | Bestellungen
+2 | Produkte | Kunden | Wachstum | Rabatte | Inhalt | Markets | Finanzen | Statistiken | Vertriebskanäle | TikTok | TikTok | Apps | Printful | Printful | Sidekick-Unterhaltungen | Zustimmung für Printful-Daten abfragen | Apps in Shopify erweitern den Shop | Einstellungen | JudgeMe Reviews | Installieren | Größe der Seitenleiste anpassen
+   [DRY] nichts geklickt. Für Auto-Request: GO=1 erneut.
+Fertig (DRY). Screenshots automation/local/judgeme-shots/, Bericht reports/judgeme.txt
