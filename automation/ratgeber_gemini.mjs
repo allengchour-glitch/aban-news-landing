@@ -126,6 +126,17 @@ const TOPICS=[
  ['Haarstyling-Tools: Föhn, Glätteisen & Lockenstab richtig einsetzen','haarstyling tools','haarstyling-tools','Haarstyling-Tools'],
  ['Laptop-Rucksack-Guide: Schutz, Komfort & Stauraum fürs Büro','laptop rucksack','rucksaecke-laptop','Laptop-Rucksäcke'],
  ['Angeln für Einsteiger: die richtige Grundausstattung zum Start','angeln einsteiger','angeln','Angeln'],
+ // ── Welle 5: neue Trend-/Nachfrage-Kategorien (Handles gegen Live-Katalog verifiziert) ──
+ ['IPL-Haarentfernung: Ratgeber für dauerhaft glatte Haut','ipl haarentfernung','beauty-geraete','Beauty-Geräte'],
+ ['Dashcam kaufen: worauf achten?','dashcam','auto-kfz-zubehoer','Auto & KFZ-Zubehör'],
+ ['Saugroboter-Ratgeber: den richtigen Robo-Sauger finden','saugroboter','hightech-gadgets','Hightech & Gadgets'],
+ ['Gua Sha & Gesichtsroller richtig anwenden','gua sha gesichtsroller','beauty-geraete','Beauty-Geräte'],
+ ['VR-Headset kaufen: Einsteiger-Guide','vr headset','hightech-gadgets','Hightech & Gadgets'],
+ ['Bastelideen für Kinder & Erwachsene','bastelideen','basteln-diy','Basteln & DIY'],
+ ['Arduino für Einsteiger: das erste Projekt','arduino einsteiger','maker-elektronik','Elektronik für Bastler'],
+ ['Starthilfe & Reifendruck: Auto-Notfall-Basics','starthilfe reifendruck','auto-kfz-zubehoer','Auto & KFZ-Zubehör'],
+ ['Laptop-Rucksack richtig wählen','laptop rucksack wählen','laptop-tablet-zubehoer','Laptop- & Tablet-Zubehör'],
+ ['E-Scooter kaufen: worauf achten?','e-scooter kaufen','hightech-gadgets','Hightech & Gadgets'],
 ];
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 async function gemini(title,coll,collName){
