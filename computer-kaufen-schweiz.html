@@ -62,7 +62,7 @@
   "@type": "Article",
   "headline": "Computer kaufen Schweiz 2026: Desktop-PC, iMac &amp; Workstation im Vergleich",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-27",
+  "dateModified": "2026-07-03",
   "author": {"@id": "https://abannews.com/#person"},
   "publisher": {"@id": "https://abannews.com/#org"},
   "mainEntityOfPage": "https://abannews.com/computer-kaufen-schweiz.html",
@@ -103,6 +103,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 a{color:var(--accent-dk)}
 a:hover{color:var(--accent)}
 .wrap{max-width:780px;margin:0 auto;padding:0 18px}
+
+/* Sticky topnav */
+.topnav{position:sticky;top:0;z-index:100;background:var(--accent-dk);border-bottom:2px solid var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.tn-in{max-width:1100px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;gap:2rem;height:52px}
+.tn-brand{font-weight:800;font-size:1.25rem;color:#fff;text-decoration:none;letter-spacing:-.5px}
+.tn-links{display:flex;gap:1.5rem;margin-left:auto}
+.tn-links a{color:#bae6fd;text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.tn-links a:hover{color:#fff}
+@media(max-width:520px){.tn-links{gap:.9rem}.tn-links a{font-size:.8rem}}
 
 /* Hero */
 .hero{background:linear-gradient(135deg,#0c1a2e 0%,#0f3460 55%,#0369a1 100%);color:#fff;position:relative;overflow:hidden}
@@ -211,6 +220,18 @@ footer a:hover{color:var(--accent-dk)}
 </style>
 </head>
 <body>
+
+<!-- Sticky topnav -->
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
 
 <!-- Breadcrumb -->
 <nav class="bc wrap" aria-label="Brotkrumen">
@@ -507,6 +528,14 @@ footer a:hover{color:var(--accent-dk)}
     <strong>tutti.ch</strong>
     <p>Kleinanzeigen für lokale Abholung. Kein Versandaufwand, direkt von Privat kaufen — Barangebot möglich, kein Käuferschutz.</p>
   </div>
+  <div class="shop-card">
+    <strong>STEG Electronics</strong>
+    <p>Schweizer Händler mit Filialen und Online-Shop, Fokus auf Gaming-PCs und Komponenten. Eigene Konfigurator-Tools für individuelle Systeme.</p>
+  </div>
+  <div class="shop-card">
+    <strong>Interdiscount</strong>
+    <p>Grösste Filialkette der Schweiz (Coop-Gruppe), viele Standorte für Beratung vor Ort und direkte Mitnahme statt Versandwartezeit.</p>
+  </div>
 </div>
 
 <div class="warnbox">
@@ -524,7 +553,232 @@ footer a:hover{color:var(--accent-dk)}
   <li><strong>Garantiebedingungen ignoriert:</strong> Die 2-jährige Gewährleistungspflicht (OR Art. 210) gilt gegenüber Schweizer Händlern. Bei Privatkäufen (Ricardo, tutti) gibt es keine gesetzliche Garantie — Produktbeschreibung genau lesen.</li>
   <li><strong>Zu schwache Grafikkarte für geplante Aufgaben:</strong> Wer nachträglich eine GPU nachrüstet, zahlt den gleichen Preis, aber oft nicht mehr in das Gehäuse (Platzbedarf, Netzteil-Wattage). Besser von Anfang an planen.</li>
   <li><strong>Apple-Geräte ohne Kompatibilitätsprüfung:</strong> Manche Profi-Software (bestimmte CAD, Buchhaltungsprogramme) läuft nicht nativ auf Apple Silicon — Parallels oder Rosetta 2 kann helfen, ist aber ein Workaround.</li>
+  <li><strong>Zubehör vergessen einzuplanen:</strong> Tastatur, Maus, Webcam und Überspannungsschutz treiben das Budget nachträglich um CHF 100–200 in die Höhe — besser von Anfang an mitrechnen.</li>
+  <li><strong>Backup erst nach dem ersten Datenverlust eingerichtet:</strong> Eine externe Festplatte oder ein Cloud-Backup sollte direkt bei der Ersteinrichtung konfiguriert werden, nicht erst als Reaktion auf einen Festplattenausfall.</li>
 </ul>
+
+<!-- Section 12 -->
+<h2>Homeoffice-Ausstattung: Firmengerät oder eigener Computer?</h2>
+
+<p>Seit Homeoffice in vielen Schweizer Branchen zum Alltag gehört, stellt sich für Angestellte und Arbeitgeber die gleiche Frage: Wer stellt den Computer, und wer bezahlt ihn? Grössere Firmen liefern meist ein Notebook mit vorinstallierter Firmensoftware, VPN-Client und zentraler IT-Verwaltung (Mobile Device Management). Das entlastet die Mitarbeitenden von Wartung und Haftung, schränkt aber die private Nutzung meist ein.</p>
+
+<p>Wer ohne Firmengerät im Homeoffice arbeitet, sollte klare Absprachen mit dem Arbeitgeber treffen: Wird ein Kostenanteil übernommen? Gibt es eine Pauschale für Homeoffice-Ausrüstung? Aus Datenschutzsicht ist es zudem sinnvoll, geschäftliche und private Daten strikt zu trennen — etwa über getrennte Benutzerkonten auf demselben Gerät.</p>
+
+<div class="infobox">
+  <strong>Steuerabzug für Homeoffice-Ausrüstung:</strong> Angestellte können in der Schweiz notwendige Berufsauslagen von den Steuern abziehen, wenn der Arbeitgeber keine oder nur eine Teilentschädigung leistet. Dazu zählen unter Umständen auch Computer, Monitor und Bürostuhl, sofern die Nutzung überwiegend beruflich ist und die Steuerverwaltung des Wohnkantons dies anerkennt. Die Praxis unterscheidet sich je nach Kanton — eine Belegsammlung und Rücksprache mit der zuständigen kantonalen Steuerverwaltung oder einer Treuhandstelle ist empfehlenswert, bevor Beträge in der Steuererklärung geltend gemacht werden.
+</div>
+
+<p>Beim Zugriff auf Firmenserver von zu Hause aus ist ein <strong>VPN</strong> (Virtual Private Network) praktisch Standard: Es verschlüsselt die Verbindung zwischen Heimnetzwerk und Firmennetz und verhindert, dass Daten im öffentlichen Internet mitgelesen werden können. Viele Firmen stellen einen eigenen VPN-Client bereit; wer privat zusätzlich öffentliche WLAN-Netze nutzt (Bahnhof, Café), sollte auch dort grundsätzlich ein VPN aktivieren.</p>
+
+<!-- Section 13 -->
+<h2>Datenschutz &amp; Sicherheit: Antivirus, Updates und Backup</h2>
+
+<p>Ein neuer Computer ist nur so sicher wie seine Konfiguration. Drei Grundpfeiler gehören für jeden Schweizer Haushalt und jedes Homeoffice dazu:</p>
+
+<ul>
+  <li><strong>Antivirus &amp; Firewall:</strong> Windows 11 bringt mit Microsoft Defender bereits einen soliden, kostenlosen Basisschutz mit. Für die meisten Privatanwender reicht das zusammen mit regelmässigen Updates völlig aus — zusätzliche kostenpflichtige Antivirus-Suiten bringen selten einen spürbaren Zusatznutzen, können aber bei Bedarf (z. B. Kindersicherung, VPN-Bundle) sinnvoll sein.</li>
+  <li><strong>Regelmässige Updates:</strong> Windows-, macOS- und Treiber-Updates schliessen Sicherheitslücken. Automatische Updates sollten aktiviert bleiben — auch wenn ein Neustart manchmal unpassend kommt.</li>
+  <li><strong>Backup-Strategie (3-2-1-Regel):</strong> Mindestens 3 Kopien wichtiger Daten, auf 2 unterschiedlichen Speichermedien, davon 1 Kopie ausser Haus (Cloud oder Offsite). In der Praxis heisst das: externe Festplatte oder NAS zu Hause plus ein Cloud-Backup.</li>
+</ul>
+
+<div class="two-col">
+  <div class="col-box">
+    <h4>Externe Festplatte / NAS</h4>
+    <ul>
+      <li>Einmalige Anschaffungskosten, kein Abo</li>
+      <li>Volle Kontrolle über den Speicherort</li>
+      <li>Kein Schutz bei Diebstahl/Brand im Haus</li>
+      <li>Manuelles oder automatisiertes Backup nötig</li>
+    </ul>
+  </div>
+  <div class="col-box">
+    <h4>Cloud-Backup</h4>
+    <ul>
+      <li>Automatisch, ortsunabhängig verfügbar</li>
+      <li>Laufende Abo-Kosten</li>
+      <li>Abhängig vom Serverstandort des Anbieters</li>
+      <li>Schweizer Anbieter für DSG-sensible Daten</li>
+    </ul>
+  </div>
+</div>
+
+<div class="infobox">
+  <strong>nDSG und Cloud-Speicher:</strong> Das revidierte Schweizer Datenschutzgesetz (nDSG, seit 2023 in Kraft) verlangt bei Bekanntgabe von Personendaten ins Ausland einen angemessenen Datenschutzstandard des Zielstaats. US-Cloud-Dienste (OneDrive, iCloud, Google Drive) fallen unter besondere Aufmerksamkeit, insbesondere für Selbständige und Firmen, die Kunden- oder Patientendaten speichern. Für sensible Geschäftsdaten sind Schweizer Rechenzentren (z. B. Infomaniak, cyon, Green.ch) eine rechtlich einfachere Option, da die Daten physisch in der Schweiz bleiben.
+</div>
+
+<p>Zwei weitere einfache, aber wirksame Massnahmen ergänzen die Basis-Sicherheit:</p>
+
+<ul>
+  <li><strong>Passwort-Manager:</strong> Erzeugt und speichert für jeden Dienst ein eigenes, langes Passwort. Verhindert, dass ein einzelnes gehacktes Konto (z. B. ein Online-Shop) den Zugriff auf E-Mail oder Online-Banking gefährdet.</li>
+  <li><strong>Zwei-Faktor-Authentifizierung (2FA):</strong> Für E-Mail-Konto, Online-Banking und Cloud-Speicher aktivieren, wo immer verfügbar. Ein zusätzlicher Code per App oder SMS schützt selbst dann, wenn das Passwort einmal bekannt wird.</li>
+</ul>
+
+<!-- Section 14 -->
+<h2>Garantie &amp; Reparatur: Was gilt in der Schweiz?</h2>
+
+<p>Beim Computerkauf überschneiden sich zwei unterschiedliche Rechtsinstitute, die oft verwechselt werden:</p>
+
+<ul>
+  <li><strong>Gesetzliche Gewährleistung (OR Art. 210):</strong> 2 Jahre ab Kaufdatum gegenüber dem Verkäufer, gilt für versteckte Mängel, die schon beim Kauf vorhanden waren. Greift automatisch bei jedem Kauf von einem Schweizer Händler.</li>
+  <li><strong>Herstellergarantie:</strong> Freiwillige Zusatzleistung des Herstellers (häufig ebenfalls 2 Jahre, bei Business-Geräten teils 3 Jahre), unabhängig vom Verkäufer. Bedingungen variieren stark zwischen Marken.</li>
+</ul>
+
+<p>Bei Apple-Geräten kann zusätzlich <strong>AppleCare+</strong> abgeschlossen werden — eine kostenpflichtige Verlängerung mit Abdeckung von Unfallschäden, die über die reguläre Garantie hinausgeht. Für Business-Notebooks bieten Lenovo, HP und Dell oft Vor-Ort-Service-Pakete (On-Site-Garantie) an, bei denen ein Techniker direkt zum Kunden kommt statt das Gerät einzuschicken — relevant für Firmen, die keinen Ausfall verkraften können.</p>
+
+<p>Für Reparaturen ausserhalb der Garantie stehen in der Schweiz unabhängige Fachhändler und Reparaturwerkstätten zur Verfügung, oft günstiger und schneller als der Hersteller-Support. Vor einer Reparatur lohnt sich immer ein Kostenvoranschlag, da bei älteren Geräten eine Neuanschaffung teils wirtschaftlicher ist.</p>
+
+<div class="infobox">
+  <strong>Recht auf Reparatur:</strong> Die EU hat mit der Right-to-Repair-Richtlinie Hersteller verpflichtet, Ersatzteile und Reparaturinformationen länger verfügbar zu halten. Die Schweiz ist nicht EU-Mitglied und daher nicht direkt an diese Richtlinie gebunden. In der Praxis wenden viele grosse Hersteller (Apple, Dell, HP, Lenovo) aber ähnliche Standards auch im Schweizer Markt an, da sie ohnehin europaweit einheitliche Produktlinien vertreiben. Ersatzteil-Verfügbarkeit lohnt sich vor dem Kauf kurz zu prüfen, besonders bei Nischenmarken.
+</div>
+
+<!-- Section 15 -->
+<h2>Leasing für Unternehmen: Wann lohnt es sich für KMU?</h2>
+
+<p>Für kleine und mittlere Unternehmen (KMU) ist Leasing eine Alternative zum Direktkauf von Computern und Workstations. Statt einer grossen Einmalinvestition zahlt die Firma eine monatliche Leasingrate über eine vereinbarte Laufzeit (meist 24–48 Monate).</p>
+
+<ul>
+  <li><strong>Liquidität schonen:</strong> Kein grosser Kapitalabfluss beim Kauf, planbare monatliche Kosten statt einer hohen Einmalzahlung.</li>
+  <li><strong>Immer aktuelle Hardware:</strong> Nach Ablauf der Leasingdauer wird meist auf ein neueres Modell gewechselt — relevant für Branchen mit hohem Rechenbedarf (Design, Video, Entwicklung).</li>
+  <li><strong>Steuerliche Behandlung:</strong> Leasingraten gelten in der Regel als voll abzugsfähiger Geschäftsaufwand und müssen nicht aktiviert und abgeschrieben werden wie ein Kaufobjekt — das vereinfacht die Buchhaltung.</li>
+  <li><strong>Wartung oft inklusive:</strong> Viele Leasinganbieter bündeln Reparatur- und Austauschservice in der Rate, was den administrativen Aufwand für kleine Firmen ohne eigene IT-Abteilung reduziert.</li>
+</ul>
+
+<p>Nachteil: Über die gesamte Laufzeit gerechnet ist Leasing meist teurer als ein Direktkauf, da der Leasinggeber eine Marge sowie das Ausfallrisiko einpreist. Für Firmen mit stabilem, planbarem Bedarf und ausreichend Eigenkapital kann der Kauf günstiger sein — die Entscheidung hängt stark von der individuellen Liquiditätslage und Steuersituation ab. Ein Vergleich mit der Treuhandstelle oder Bank ist vor Vertragsabschluss sinnvoll.</p>
+
+<!-- Section 16 -->
+<h2>Bildschirm &amp; Ergonomie am Arbeitsplatz</h2>
+
+<p>Wer täglich mehrere Stunden am Computer sitzt, profitiert direkt von einer durchdachten Bildschirm-Ergonomie — das beugt Nacken-, Rücken- und Augenbeschwerden vor.</p>
+
+<ul>
+  <li><strong>Bildschirmgrösse:</strong> Für reine Bürotätigkeit reichen 24–27 Zoll. Wer mit mehreren Fenstern parallel arbeitet, profitiert von 32 Zoll oder zwei kombinierten Monitoren.</li>
+  <li><strong>Abstand &amp; Höhe:</strong> Die Bildschirmoberkante sollte etwa auf Augenhöhe sitzen, der Betrachtungsabstand rund 50–70 cm betragen — das entspricht einer Armlänge.</li>
+  <li><strong>Blaulichtfilter:</strong> Viele Monitore und Betriebssysteme bieten einen Nachtmodus mit reduziertem Blauanteil. Er kann bei abendlicher Bildschirmarbeit das Einschlafen erleichtern, ist aber kein Ersatz für ausreichende Pausen.</li>
+  <li><strong>Matte statt spiegelnde Oberfläche:</strong> Reduziert störende Reflexionen bei Fensterlicht — besonders in Büros mit viel Tageslicht relevant.</li>
+</ul>
+
+<div class="infobox">
+  <strong>SUVA-Empfehlungen:</strong> Die Schweizerische Unfallversicherungsanstalt (SUVA) veröffentlicht praxisnahe Richtlinien für ergonomische Bildschirmarbeitsplätze — u. a. zu Sitzhaltung, Bildschirmposition und regelmässigen Bewegungspausen. Arbeitgeber sind laut Arbeitsgesetz verpflichtet, Bildschirmarbeitsplätze ergonomisch einzurichten. Die entsprechenden Merkblätter sind über <a href="https://www.suva.ch" target="_blank" rel="noopener noreferrer">suva.ch</a> öffentlich zugänglich und eine gute Grundlage für die eigene Homeoffice-Einrichtung.
+</div>
+
+<!-- Section 17 -->
+<h2>Konnektivität: USB-C, Thunderbolt, WLAN 6/6E und Docking-Stationen</h2>
+
+<p>Anschlüsse und Funkstandards bestimmen, wie flexibel sich ein Computer ins bestehende Homeoffice- oder Büro-Setup einfügen lässt.</p>
+
+<ul>
+  <li><strong>USB-C:</strong> Hat sich als universeller Anschluss für Datenübertragung, Videoausgabe und Stromversorgung durchgesetzt. Achte auf die Übertragungsgeschwindigkeit (USB 3.2, USB4) — nicht jeder USB-C-Port bietet die gleiche Leistung.</li>
+  <li><strong>Thunderbolt 4/5:</strong> Bietet die höchste Bandbreite (bis zu 80 Gbit/s bei Thunderbolt 5), unterstützt mehrere 4K-Monitore gleichzeitig und ist bei Apple-Geräten sowie vielen Business-Notebooks Standard. Relevant für Videobearbeitung mit externen SSDs oder Multi-Monitor-Setups.</li>
+  <li><strong>WLAN 6 / 6E:</strong> Deutlich stabilere Verbindung bei vielen gleichzeitig genutzten Geräten (Homeoffice mit Videokonferenzen) als älterer WLAN-5-Standard. WLAN 6E nutzt zusätzlich das weniger überlastete 6-GHz-Band — sinnvoll in Mehrfamilienhäusern mit vielen benachbarten Netzwerken.</li>
+  <li><strong>Docking-Station:</strong> Verbindet ein Notebook per einem einzigen Kabel mit Monitor(en), Tastatur, Maus, Netzwerk und Stromversorgung. Praktisch für Homeoffice-Arbeitsplätze, an denen morgens nur ein Kabel eingesteckt werden muss.</li>
+</ul>
+
+<p>Beim Kauf eines neuen Desktop-PCs oder Notebooks lohnt sich ein Blick auf die vorhandenen Anschlüsse im Verhältnis zum geplanten Zubehör — wer bereits einen Thunderbolt-Monitor oder eine bestimmte Docking-Station besitzt, sollte auf Kompatibilität achten, bevor er kauft.</p>
+
+<!-- Section 18 -->
+<h2>Cloud-Speicher &amp; Software-Lizenzen: Abo oder Einmalkauf?</h2>
+
+<p>Die drei grossen Cloud-Speicher-Ökosysteme decken unterschiedliche Bedürfnisse ab:</p>
+
+<ul>
+  <li><strong>Microsoft OneDrive:</strong> Tief in Windows integriert, bündelt Speicher meist mit einem Microsoft-365-Abo (inkl. Word, Excel, PowerPoint, Outlook).</li>
+  <li><strong>Apple iCloud:</strong> Nahtlose Synchronisation zwischen Mac, iPhone und iPad — praktisch, wer bereits im Apple-Ökosystem lebt.</li>
+  <li><strong>Google Drive:</strong> Plattformunabhängig, stark bei kollaborativem Arbeiten über Google Docs/Sheets, funktioniert gleichermassen gut unter Windows, macOS und Linux.</li>
+</ul>
+
+<p>Bei Office-Software stellt sich die Frage: <strong>Microsoft 365 im Abo</strong> (monatlich oder jährlich) oder <strong>Office 2024 als Einmalkauf</strong>? Das Abo bringt automatische Updates, 1 TB Cloud-Speicher pro Nutzer und läuft auf mehreren Geräten, kostet aber dauerhaft. Der Einmalkauf ist bei sehr sparsamer, langfristiger Nutzung ohne Zusatzfunktionen günstiger, erhält aber keine neuen Funktionen und irgendwann keine Sicherheitsupdates mehr. Für die meisten Haushalte und Homeoffice-Nutzer ist das Abo-Modell heute die praktischere Wahl, für Gelegenheitsnutzer mit einem einzelnen Gerät kann sich der Einmalkauf lohnen.</p>
+
+<table class="ctable">
+  <thead>
+    <tr>
+      <th>Modell</th>
+      <th>Kosten</th>
+      <th>Enthält</th>
+      <th>Passt für</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Microsoft 365 Family/Single</td>
+      <td>Laufendes Jahresabo</td>
+      <td>Word, Excel, PowerPoint, Outlook, 1 TB Cloud, mehrere Geräte, automatische Updates</td>
+      <td>Familien, Homeoffice, mehrere Geräte</td>
+    </tr>
+    <tr>
+      <td>Office 2024 Home &amp; Student</td>
+      <td>Einmalige Zahlung</td>
+      <td>Word, Excel, PowerPoint für 1 Gerät, kein Cloud-Speicher, keine neuen Funktionen</td>
+      <td>Gelegenheitsnutzer, ein einzelnes Gerät</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Section 19 -->
+<h2>Recycling &amp; Nachhaltigkeit: Was passiert mit dem alten Computer?</h2>
+
+<p>Elektronikschrott gehört in der Schweiz nicht in den Hausmüll. Für die fachgerechte Entsorgung von ausgedienten Computern, Monitoren und Zubehör ist <strong>SENS eRecycling</strong> zuständig — finanziert über die vorgezogene Recyclinggebühr (vRG), die bereits im Kaufpreis neuer Geräte enthalten ist. Rücknahmestellen finden sich bei praktisch jedem Elektrofachhändler in der Schweiz, unabhängig davon, wo das Gerät ursprünglich gekauft wurde.</p>
+
+<div class="infobox">
+  <strong>Kostenlose Rückgabe:</strong> Wer einen alten Computer, Monitor oder Drucker loswerden möchte, kann ihn kostenlos bei jedem Verkaufspunkt für Elektrogeräte abgeben (z. B. Filiale von Digitec Galaxus, Interdiscount, Fust) — auch ohne Kaufbeleg und unabhängig vom Neukauf. Details unter <a href="https://www.sens-eeecycling.ch" target="_blank" rel="noopener noreferrer">sens-eeecycling.ch</a>.
+</div>
+
+<p>Als nachhaltigere Alternative zum Neukauf lohnt sich ein Blick auf <strong>refurbished</strong> (generalüberholte) Geräte: professionell aufbereitete Business-Notebooks und Desktops durchlaufen dabei einen technischen Check, erhalten neue Verschleissteile (Akku, Lüfter) und werden mit einer Restgarantie verkauft. Der Preisvorteil gegenüber Neugeräten liegt oft bei 30–50%, bei vergleichbarer Zuverlässigkeit für Standardaufgaben wie Office und Surfen.</p>
+
+<!-- Section 20 -->
+<h2>Gebraucht kaufen: Occasion-Plattformen und Datenlöschung</h2>
+
+<p>Neben spezialisierten Refurbished-Händlern sind Ricardo.ch und die Occasion-Bereiche von Digitec Galaxus die wichtigsten Anlaufstellen für gebrauchte Computer in der Schweiz. Worauf beim Gebrauchtkauf zu achten ist:</p>
+
+<ul>
+  <li><strong>Akku-Zustand bei Notebooks:</strong> Die Akku-Gesundheit (Batteriezustand in %) lässt sich unter Windows und macOS über Bordmittel oder Zusatztools auslesen. Unter 80% Kapazität ist ein baldiger Akkutausch einzuplanen — das sollte beim Preis berücksichtigt werden.</li>
+  <li><strong>Herkunft &amp; Rechnung:</strong> Original-Kaufbeleg reduziert das Risiko eines Diebstahlgeräts und kann bei restlicher Herstellergarantie relevant sein.</li>
+  <li><strong>Funktionstest vor Ort:</strong> Start, Tastatur, Anschlüsse, Bildschirm auf Pixelfehler und Display-Einbrennen prüfen.</li>
+</ul>
+
+<div class="warnbox">
+  <strong>Datenlöschung vor dem Verkauf — unbedingt beachten:</strong> Bevor ein eigener Computer verkauft oder verschenkt wird, müssen alle persönlichen Daten sicher gelöscht werden. Ein einfaches „Löschen" reicht nicht — Dateien lassen sich damit oft wiederherstellen. Empfohlen: bei Windows die Option „Diesen PC zurücksetzen" mit vollständiger Laufwerksbereinigung nutzen, bei Mac „Alle Inhalte &amp; Einstellungen entfernen" im Systemeinstellungen-Menü. Bei SSDs mit Verschlüsselung (BitLocker, FileVault) genügt oft das Löschen des Schlüssels, um die Daten praktisch unlesbar zu machen. Vor der Rücksetzung unbedingt alle Konten (Microsoft, Apple-ID, Antivirus-Lizenzen) abmelden, sonst bleibt das Gerät für den Käufer gesperrt.
+</div>
+
+<!-- Section 21 -->
+<h2>Studenten-Rabatte: Günstiger an Hardware und Software kommen</h2>
+
+<p>Studierende und teils auch Lehrpersonen an Schweizer Hochschulen können bei mehreren Herstellern von Ausbildungsrabatten profitieren:</p>
+
+<ul>
+  <li><strong>Apple Education-Pricing:</strong> Über den Apple Education Store erhalten Studierende, Dozierende und teils auch Eltern von Schulkindern Rabatte auf Mac und iPad sowie teils zusätzliche Aktionen auf AirPods bei Semesterbeginn. Ein gültiger Nachweis (z. B. über UNiDAYS oder die Hochschul-E-Mail-Adresse) ist erforderlich.</li>
+  <li><strong>Microsoft-Education-Lizenzen:</strong> Viele Schweizer Hochschulen stellen Studierenden im Rahmen von Campus-Abkommen kostenlose oder stark vergünstigte Microsoft-365-Lizenzen zur Verfügung — meist direkt über das Hochschul-Login abrufbar.</li>
+  <li><strong>SWITCHdrive &amp; Hochschul-Cloud:</strong> Viele Universitäten und Fachhochschulen bieten Studierenden über SWITCH kostenlosen, in der Schweiz gehosteten Cloud-Speicher an — eine gute Alternative zu US-Cloud-Diensten für Semesterarbeiten.</li>
+</ul>
+
+<p>Es lohnt sich, vor dem Kauf direkt beim Hochschul-IT-Support oder auf der Website des Studierendensekretariats nachzufragen, welche Vergünstigungen aktuell gelten — die Angebote und Nachweisverfahren ändern sich von Semester zu Semester.</p>
+
+<!-- Section 22 -->
+<h2>Zubehör-Checkliste: Was zum neuen Computer noch dazugehört</h2>
+
+<p>Der Computer selbst ist meist nur der Anfang der Einkaufsliste. Folgendes Zubehör wird beim Budget häufig vergessen, gehört aber zu einem vollständigen Arbeitsplatz:</p>
+
+<ul>
+  <li><strong>Tastatur &amp; Maus:</strong> Bei Desktop-PCs oft nicht im Lieferumfang enthalten. Kabellose Sets im Mittelklassebereich (CHF 40–90) reichen für die meisten Anwendungen; mechanische Tastaturen sind bei Vielschreibern und Gamern beliebt.</li>
+  <li><strong>Webcam &amp; Headset:</strong> Für Videokonferenzen im Homeoffice unverzichtbar. Viele Notebooks haben eine integrierte Kamera, Desktop-PCs benötigen meist ein externes Modell (ab CHF 40).</li>
+  <li><strong>Überspannungsschutz:</strong> Eine Steckdosenleiste mit Überspannungsschutz schützt Computer und Peripherie vor Spannungsspitzen im Stromnetz — günstige Versicherung für teure Hardware, besonders in Gebieten mit häufigeren Gewittern.</li>
+  <li><strong>Schweizer Netzstecker (Typ J):</strong> Direkt aus dem Ausland bestellte Geräte (insbesondere Netzteile von US- oder UK-Importen) benötigen unter Umständen einen Adapter auf den Schweizer Steckertyp J — beim Import unbedingt vorab prüfen.</li>
+  <li><strong>USV (unterbrechungsfreie Stromversorgung):</strong> Für Homeoffice-Arbeitsplätze mit sensiblen Daten oder häufigen kurzen Stromausfällen überbrückt eine kleine USV einige Minuten und verhindert Datenverlust bei ungespeicherten Dokumenten.</li>
+</ul>
+
+<div class="infobox">
+  <strong>Budget-Faustregel:</strong> Für Tastatur, Maus, Webcam und eine einfache Steckdosenleiste mit Überspannungsschutz zusätzlich CHF 100–200 zum reinen Computerpreis einplanen — sonst folgt der Zubehörkauf oft ungeplant kurz nach der Anschaffung.
+</div>
+
+<!-- Section 23 -->
+<h2>Zusammenfassung: In 5 Schritten zum passenden Computer</h2>
+
+<ol>
+  <li><strong>Einsatzzweck festlegen:</strong> Office und Surfen, Homeoffice, Gaming oder professionelle Kreativarbeit — der Zweck bestimmt CPU-, RAM- und GPU-Klasse aus der Vergleichstabelle oben.</li>
+  <li><strong>Budget inklusive Zubehör planen:</strong> Monitor, Tastatur, Maus und Überspannungsschutz gehören mit ins Budget, nicht nur der reine Gerätepreis.</li>
+  <li><strong>Betriebssystem wählen:</strong> Windows für maximale Software- und Spielekompatibilität, macOS für das Apple-Ökosystem, Linux für Entwickler und ältere Hardware.</li>
+  <li><strong>Händler mit Schweizer Garantie wählen:</strong> Galaxus, Digitec, Brack, Microspot, STEG Electronics oder Interdiscount sichern die 2-jährige Gewährleistungspflicht (OR Art. 210) und unkomplizierte Retouren.</li>
+  <li><strong>Datenschutz &amp; Backup direkt einrichten:</strong> Passwort-Manager, 2FA und eine Backup-Strategie gehören ab dem ersten Tag zur Einrichtung, nicht erst nach einem Zwischenfall.</li>
+</ol>
 
 <!-- FAQ section -->
 <h2>Häufige Fragen (FAQ)</h2>
