@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +59,7 @@
   "@type": "Article",
   "headline": "Keyboard kaufen Schweiz 2026 — Digital-Piano, Synthesizer &amp; Einsteiger im Vergleich",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-27",
+  "dateModified": "2026-07-03",
   "author": {"@id": "https://abannews.com/#person"},
   "publisher": {"@id": "https://abannews.com/#org"},
   "mainEntityOfPage": "https://abannews.com/keyboard-musik-kaufen-schweiz.html",
@@ -99,6 +99,15 @@ a{color:var(--amber-dk)}
 a:hover{color:#5b21b6}
 .wrap{max-width:760px;margin:0 auto;padding:0 18px}
 
+/* Sticky topnav */
+.topnav{position:sticky;top:0;z-index:60;background:#1e1040;border-bottom:1px solid rgba(255,255,255,.1)}
+.tn-in{max-width:780px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.tn-brand{color:#fff;font-weight:800;font-size:1.12rem;text-decoration:none;letter-spacing:.2px}
+.tn-brand:hover{color:#e9d5ff}
+.tn-links{display:flex;gap:16px;flex-wrap:wrap}
+.tn-links a{color:#e9d5ff;font-size:.86rem;text-decoration:none;font-weight:600}
+.tn-links a:hover{color:#fff}
+
 /* Hero */
 .hero{background:linear-gradient(135deg,#1e1040,#4c1d95 55%,#7c3aed);color:#fff;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(167,139,250,.28),transparent 45%),radial-gradient(circle at 8% 90%,rgba(124,58,237,.25),transparent 42%);pointer-events:none}
@@ -136,6 +145,15 @@ h3.sub{font-size:1.06rem;margin:18px 0 6px;color:var(--ink)}
 p.prose{margin-bottom:12px;color:var(--ink2);font-size:.97rem}
 ul.prose-list{margin:6px 0 14px 20px;color:var(--ink2);font-size:.96rem}
 ul.prose-list li{margin-bottom:5px}
+
+/* Table of contents */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 0 26px}
+.toc h2{margin:0 0 10px;font-size:1.05rem}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:22px;font-size:.89rem;color:var(--ink2)}
+.toc li{margin-bottom:6px;break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+@media(max-width:560px){.toc ol{columns:1}}
 
 /* Compare table */
 .ctable{width:100%;border-collapse:collapse;margin:4px 0 22px;font-size:.9rem}
@@ -194,6 +212,17 @@ footer a:hover{color:var(--amber-dk)}
 </head>
 <body>
 
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
+
 <nav class="bc" aria-label="Breadcrumb">
   <a href="/">Start</a> › <a href="/kaufberater-schweiz.html">Kaufberater</a> › Keyboard kaufen Schweiz 2026
 </nav>
@@ -240,8 +269,36 @@ footer a:hover{color:var(--amber-dk)}
     </div>
   </div>
 
+  <!-- Table of contents -->
+  <nav class="toc" aria-label="Inhaltsverzeichnis">
+    <h2>Inhalt dieses Ratgebers</h2>
+    <ol>
+      <li><a href="#vergleich">Typen im Vergleich</a></li>
+      <li><a href="#typen">1. Keyboard-Typen im Überblick</a></li>
+      <li><a href="#tasten">2. Tasten-Anzahl und Oktaven</a></li>
+      <li><a href="#anschlagdynamik">3. Anschlagdynamik & Mechanik</a></li>
+      <li><a href="#klang">4. Klangqualität und Polyphonie</a></li>
+      <li><a href="#kinder">5. Für Kinder und Einsteiger</a></li>
+      <li><a href="#digitalpiano">6. Digital-Piano fürs Üben</a></li>
+      <li><a href="#synthesizer">7. Synthesizer</a></li>
+      <li><a href="#zubehoer">8. Anschlüsse und Zubehör</a></li>
+      <li><a href="#haendler">9. Händler und Musikschulen</a></li>
+      <li><a href="#preise">10. Preise und Marken</a></li>
+      <li><a href="#laerm">11. Mietwohnung und Lärmschutz</a></li>
+      <li><a href="#apps">12. Apps und Lernsoftware</a></li>
+      <li><a href="#midi">13. MIDI und Homerecording</a></li>
+      <li><a href="#occasion">14. Gebraucht kaufen</a></li>
+      <li><a href="#pflege">15. Pflege und Wartung</a></li>
+      <li><a href="#garantie">16. Garantie und Konsumentenschutz</a></li>
+      <li><a href="#versicherung">17. Versicherung</a></li>
+      <li><a href="#miete">18. Mieten statt kaufen</a></li>
+      <li><a href="#recycling">19. Entsorgung und Recycling</a></li>
+      <li><a href="#faq">Häufige Fragen</a></li>
+    </ol>
+  </nav>
+
   <!-- Main comparison table -->
-  <h2>Keyboard-Typen im Vergleich: Übersicht nach Typ, Tasten und Preis</h2>
+  <h2 id="vergleich">Keyboard-Typen im Vergleich: Übersicht nach Typ, Tasten und Preis</h2>
   <p class="prose">Diese Tabelle gibt dir einen schnellen Überblick, welcher Keyboard-Typ für welchen Zweck passt — von CHF 80 bis CHF 2000.</p>
 
   <div style="overflow-x:auto">
@@ -296,7 +353,7 @@ footer a:hover{color:var(--amber-dk)}
   </div>
 
   <!-- Section 1 -->
-  <h2>1. Keyboard-Typen im Überblick</h2>
+  <h2 id="typen">1. Keyboard-Typen im Überblick</h2>
   <p class="prose">Der Begriff „Keyboard" ist ein Oberbegriff für alle Instrumente mit Tasten, die elektrisch klingen. In der Praxis unterscheidet man fünf Hauptkategorien, die sich in Spielgefühl, Klangangebot und Einsatzbereich deutlich unterscheiden.</p>
 
   <h3 class="sub">Arranger-Keyboard</h3>
@@ -311,11 +368,17 @@ footer a:hover{color:var(--amber-dk)}
   <h3 class="sub">Synthesizer</h3>
   <p class="prose">Erzeugt Klänge durch Schwingungs-Synthese statt gesampelter Instrumente. Ideal für elektronische Musik, Sounddesign und experimentelle Stile. Oft kleinere Tastatur (25–61 Tasten), leichte Keys, viele Regler und Anschlüsse für Modular-Setup.</p>
 
+  <h3 class="sub">Workstation-Keyboard</h3>
+  <p class="prose">Eine Mischform aus Synthesizer und Arranger-Keyboard, gedacht für Produzenten: eingebauter Sequencer zum Aufnehmen mehrerer Spuren, umfangreiche Klangbearbeitung und oft ein Sampler. Modelle wie das Korg Kronos oder Yamaha Montage richten sich an fortgeschrittene Musikschaffende und kosten meist CHF 1500–3500 — für Einsteiger oder reines Klavierlernen ungeeignet und überdimensioniert.</p>
+
   <h3 class="sub">MIDI-Controller</h3>
   <p class="prose">Produziert selbst keinen Klang — steuert Software-Instrumente auf dem Computer (DAW). Kein Lautsprecher, kein Netzteil. Für Musikproduzenten, die ausschliesslich am Computer arbeiten. Preis ab CHF 60.</p>
 
+  <h3 class="sub">Heimorgel / Orgel-Keyboard</h3>
+  <p class="prose">Eine Sonderform des Arranger-Keyboards mit zusätzlicher Basstastatur für die Füsse (Pedal) und oft zwei Manualen — orientiert an der klassischen Kirchen- oder Konzertorgel. Heimorgeln richten sich an Spieler, die bereits Orgel- oder Harmonium-Erfahrung mitbringen, etwa aus dem Kirchenchor oder Organistendienst in der Gemeinde. Modelle wie die Yamaha Electone-Serie oder kompaktere Orgel-Keyboards mit aufgesetztem Pedalbrett kosten je nach Ausstattung CHF 800–4000. Für reine Klavier- oder Pop-Anwendungen ist eine Heimorgel überdimensioniert — sie lohnt sich gezielt für liturgisches Spiel oder Orgelunterricht.</p>
+
   <!-- Section 2 -->
-  <h2>2. Tasten-Anzahl und Oktaven — was bedeutet das in der Praxis?</h2>
+  <h2 id="tasten">2. Tasten-Anzahl und Oktaven — was bedeutet das in der Praxis?</h2>
   <p class="prose">Die Tastenzahl bestimmt, welche Musikstücke du spielen kannst und wie komfortabel das Spielen über mehrere Jahre bleibt.</p>
 
   <ul class="prose-list">
@@ -330,8 +393,11 @@ footer a:hover{color:var(--amber-dk)}
     <strong>Praxis-Beispiel:</strong> «Für Elise» von Beethoven braucht 5 Oktaven (61 Tasten genügen). Die «Mondscheinsonate» (3. Satz) braucht 7 Oktaven — da wird es ohne 88 Tasten eng.
   </div>
 
+  <h3 class="sub">Platzbedarf in Schweizer Mietwohnungen</h3>
+  <p class="prose">Schweizer Zimmer sind oft kompakter als in Nachbarländern — das spricht bei knappem Platz für ein 61- oder 76-Tasten-Keyboard auf einem klappbaren X-Ständer statt für ein 88-Tasten-Digital-Piano im Möbelgehäuse. Ein 88er-Modell in Konsolen-Bauweise (z. B. Yamaha Clavinova) braucht rund 1,3–1,4 m Breite und 30–45 cm Tiefe plus Bewegungsraum für die Bank. Wer zur Miete wohnt oder öfter umzieht, fährt mit einem leichten 88-Tasten-Slim-Modell (z. B. Casio PX-S1100, unter 12 kg) auf faltbarem Ständer meist besser als mit einem schweren Konsolen-Möbel.</p>
+
   <!-- Section 3 -->
-  <h2>3. Anschlagdynamik und Tastenmechanik</h2>
+  <h2 id="anschlagdynamik">3. Anschlagdynamik und Tastenmechanik</h2>
   <p class="prose">Die Tastenmechanik ist nach der Tastenzahl das wichtigste Kaufkriterium — sie bestimmt, wie sich das Spielen anfühlt und ob du später auf einem echten Klavier zurechtkommst.</p>
 
   <h3 class="sub">Touch-sensitive (anschlagdynamisch)</h3>
@@ -343,6 +409,9 @@ footer a:hover{color:var(--amber-dk)}
   <h3 class="sub">Hammer-Action (Hammermechanik)</h3>
   <p class="prose">Simuliert den schweren Hebelmechanismus eines Flügels: Die Taste ist schwerer in der tiefen Lage (Basstasten) und leichter in der Höhe — genau wie beim echten Klavier. Wer auf einem Digital-Piano mit Hammer-Action übt, kann problemlos auf ein Akustikklavier wechseln.</p>
 
+  <h3 class="sub">Warum Anspielen vor dem Kauf entscheidend ist</h3>
+  <p class="prose">Tastengefühl ist stark subjektiv — zwei Modelle mit derselben technischen Bezeichnung (z. B. „Hammer-Action") können sich in der Praxis unterschiedlich anfühlen, je nach Gewichtsverteilung und Rückstellkraft der Feder. Ein Besuch bei Musik Hug, Galaxy Musik oder einem anderen Fachhändler mit Ausstellungsraum lohnt sich vor jedem Digital-Piano-Kauf ab CHF 400 — zehn Minuten Anspielen sagen mehr aus als jede technische Spezifikation. Wer online bei Brack.ch oder Digitec.ch bestellt, sollte vorher zumindest ein vergleichbares Modell im Laden angespielt haben.</p>
+
   <h3 class="sub">GH, GHC, NWX — Yamaha-Bezeichnungen</h3>
   <ul class="prose-list">
     <li><strong>GH (Graded Hammer):</strong> Standard-Hammermechanik, tiefe Tasten schwerer. In Yamaha P-45.</li>
@@ -352,7 +421,7 @@ footer a:hover{color:var(--amber-dk)}
   </ul>
 
   <!-- Section 4 -->
-  <h2>4. Klangqualität und Polyphonie</h2>
+  <h2 id="klang">4. Klangqualität und Polyphonie</h2>
   <p class="prose">Polyphonie bezeichnet die Anzahl der Töne, die ein Keyboard gleichzeitig erzeugen kann. Das klingt technisch, hat aber direkte Auswirkungen auf das Spielerlebnis.</p>
 
   <h3 class="sub">Warum Polyphonie wichtig ist</h3>
@@ -367,12 +436,18 @@ footer a:hover{color:var(--amber-dk)}
   <p class="prose">Die meisten Digital-Pianos verwenden <strong>Sample-basierte Klänge</strong>: Aufnahmen echter Flügel, die für jede Taste und Anschlagsgeschwindigkeit separat aufgenommen wurden. Je mehr Samples und Layering-Stufen, desto natürlicher klingt das Ergebnis.</p>
   <p class="prose"><strong>Physical Modelling</strong> (Yamaha CLP-800, Roland V-Piano) berechnet den Klang mathematisch in Echtzeit — ohne gespeicherte Aufnahmen. Das erlaubt Nuancen wie Resonanz zwischen Saiten, die bei Sample-Playback fehlen.</p>
 
+  <h3 class="sub">Chorus, Tremolo und weitere Effekte</h3>
+  <p class="prose">Neben Hall bieten viele Keyboards Chorus (leichte Verdoppelung für volleren Klang, typisch bei E-Piano-Presets) und Tremolo/Rotary (schwankende Lautstärke bzw. rotierender Effekt, klassisch für Orgel-Sounds) an. Für reines Klavierspiel sind diese Effekte meist unwichtig, für Band-Sounds und Arranger-Anwendungen aber ein spürbarer Klanggewinn.</p>
+
   <h3 class="sub">Hall-Effekte und Raumklang</h3>
   <p class="prose">Eingebaute Hall-Effekte (Reverb) simulieren Konzertsaal, Kirche, Studio oder kleines Zimmer. Für realistische Übungsbedingungen empfohlen — besonders beim Kopfhörer-Üben, wo ohne Hall der Klang sehr trocken wirkt.</p>
 
+  <h3 class="sub">Eingebaute Lautsprecher und Wattzahl</h3>
+  <p class="prose">Einsteiger-Keyboards spielen meist über kleine 2–5-Watt-Lautsprecher ab — ausreichend für ein Kinderzimmer, aber schnell an der Grenze in einem grösseren Wohnzimmer. Digital-Pianos ab CHF 500 bieten oft 2×10 bis 2×20 Watt mit separatem Bass- und Hochtonlautsprecher und klingen dadurch deutlich voller und weniger blechern. Wer das Instrument auch für kleine Vorspiele ohne PA-Anlage nutzen will, sollte auf mindestens 2×10 Watt und zwei Lautsprecherpaare achten.</p>
+
   <!-- Section 5 -->
-  <h2>5. Für Kinder und Einsteiger — das richtige Keyboard ab CHF 80</h2>
-  <p class="prose">Für Kinder zwischen 8 und 12 Jahren und absolute Anfänger ohne Vorkenntnisse gibt es klare Empfehlungen. Überteurte Modelle bringen keinen Mehrwert — ein gutes Einsteiger-Keyboard für CHF 80–200 ist für Jahre geeignet.</p>
+  <h2 id="kinder">5. Für Kinder und Einsteiger — das richtige Keyboard ab CHF 80</h2>
+  <p class="prose">Für Kinder zwischen 8 und 12 Jahren und absolute Anfänger ohne Vorkenntnisse gibt es klare Empfehlungen. Ein zu teures Erstinstrument lohnt sich selten — ein gutes Einsteiger-Keyboard für CHF 80–200 ist für Jahre geeignet.</p>
 
   <h3 class="sub">Worauf Eltern achten sollten</h3>
   <ul class="prose-list">
@@ -381,6 +456,7 @@ footer a:hover{color:var(--amber-dk)}
     <li><strong>Eingebauter Lautsprecher:</strong> Sofort spielbereit, kein Verstärker nötig.</li>
     <li><strong>Lernfunktionen:</strong> Light-Up-Keys (Tasten leuchten auf), One-Key-Play (Melodie spielt sich teilautomatisch), eingebaute Liedliste.</li>
     <li><strong>Netzteil inklusive:</strong> Batterien werden schnell teuer.</li>
+    <li><strong>Sitzhöhe und Ergonomie:</strong> Eine höhenverstellbare Keyboardbank sorgt dafür, dass Unterarme beim Spielen etwa waagrecht zu den Tasten stehen — wichtig für Haltung und Handgelenke, gerade bei wachsenden Kindern.</li>
   </ul>
 
   <div class="highlight">
@@ -389,8 +465,14 @@ footer a:hover{color:var(--amber-dk)}
 
   <p class="prose">Für ernsthafte Klavierschüler (Kinder über 10, die Unterricht nehmen) lohnt sich der Sprung zu einem Digital-Piano mit Hammer-Action bereits ab CHF 400. Ohne gewichtete Tasten ist der Wechsel auf ein Schulklavier schwierig.</p>
 
+  <h3 class="sub">Wenn Geschwister sich das Instrument teilen</h3>
+  <p class="prose">Bei mehreren Kindern im Haushalt lohnt sich oft gleich ein Digital-Piano mit 88 Tasten statt eines reinen 61-Tasten-Einsteiger-Keyboards — so wächst das Instrument mit, wenn ein jüngeres Geschwister später ebenfalls Unterricht nimmt oder ein älteres Kind fortgeschrittenere Stücke spielt. Das vermeidet einen zweiten Kauf nach ein bis zwei Jahren.</p>
+
+  <h3 class="sub">Eignungsprüfung an der Musikschule</h3>
+  <p class="prose">Manche städtischen Musikschulen setzen für den Instrumentalunterricht keine Aufnahmeprüfung voraus, bieten aber eine kostenlose Schnupperlektion an, um Interesse und Eignung des Kindes einzuschätzen. Es lohnt sich, vor dem Kauf eines teureren Instruments zunächst diese Schnupperlektion zu nutzen oder mit einem geliehenen bzw. günstigen Einsteiger-Keyboard zu starten.</p>
+
   <!-- Section 6 -->
-  <h2>6. Digital-Piano für ernsthaftes Üben — ab CHF 400</h2>
+  <h2 id="digitalpiano">6. Digital-Piano für ernsthaftes Üben — ab CHF 400</h2>
   <p class="prose">Wer regelmässig Klavierunterricht nimmt oder von einem Akustikklavier wechselt, braucht ein Digital-Piano mit echter Hammermechanik. Die gute Neuigkeit: Schon ab CHF 400 gibt es solide Modelle.</p>
 
   <h3 class="sub">Empfohlene Modelle</h3>
@@ -407,9 +489,16 @@ footer a:hover{color:var(--amber-dk)}
   <h3 class="sub">Kopfhörerausgang für stilles Üben</h3>
   <p class="prose">Alle Digital-Pianos haben einen Kopfhöreranschluss (6,35 mm, meist auch 3,5 mm). Damit kann man nachts üben, ohne die Wohnung zu beschallen. Beim Kauf: schauen, ob der interne Lautsprecher beim Einstecken automatisch stumm geschaltet wird.</p>
 
+  <h3 class="sub">Digital-Piano als Alternative zum Akustikklavier</h3>
+  <p class="prose">Ein gebrauchtes Akustikklavier kostet in der Schweiz oft ab CHF 1500–3000, dazu kommen jährliche Stimmungen (CHF 120–180 pro Termin) und ein Transport, der wegen des Gewichts nur mit Spezialfirma möglich ist. Ein Digital-Piano entfällt diese laufenden Kosten komplett: Es verstimmt sich nie, ist unempfindlich gegenüber Heizungsluft und Luftfeuchtigkeit in der Schweizer Wohnung, und lässt sich bei einem Umzug von zwei Personen tragen. Der Klang moderner Modelle mit Hammer-Action liegt für Übungszwecke sehr nah am Original — für Konzertansprüche bleibt ein akustischer Flügel aber unerreicht.</p>
+  <p class="prose">Der grösste praktische Vorteil in Schweizer Mehrfamilienhäusern: Über Kopfhörer lässt sich zu jeder Tages- und Nachtzeit geräuschlos üben, ohne Nachbarn oder Hausordnung zu stören — bei einem Akustikklavier ist das unmöglich.</p>
+
   <!-- Section 7 -->
-  <h2>7. Synthesizer und elektronische Musik</h2>
+  <h2 id="synthesizer">7. Synthesizer und elektronische Musik</h2>
   <p class="prose">Synthesizer sind keine Allround-Instrumente — sie sind spezialisiert auf die Klangerzeugung durch Schwingungs-Synthese. Wer elektronische Musik produziert, Ambient, Techno oder Filmmusik macht, kommt an einem Synthie kaum vorbei.</p>
+
+  <h3 class="sub">Für wen sich ein Synthesizer lohnt</h3>
+  <p class="prose">Ein Synthesizer ist kein Ersatz für ein Klavier oder Keyboard, sondern eine Ergänzung für einen sehr spezifischen Anwendungsfall: eigene Klänge von Grund auf formen statt vorgefertigte Presets abzurufen. Wer vorrangig bekannte Songs nachspielen oder Klavier lernen möchte, ist mit einem Arranger-Keyboard oder Digital-Piano besser bedient. Wer Ambient-Flächen, Basslines für elektronische Musik oder experimentelle Klanglandschaften bauen will, findet im Synthesizer sein Hauptwerkzeug.</p>
 
   <h3 class="sub">Analoge vs. digitale Synthese</h3>
   <p class="prose"><strong>Analoge Synthese</strong> (Korg Minilogue, Moog Subsequent 25) erzeugt Klänge durch echte Schaltkreise mit Transistoren und Kondensatoren. Der Klang hat eine organische Wärme, die viele Musiker für nicht digital reproduzierbar halten. Empfindlicher, teurer, aber sehr begehrt.</p>
@@ -427,7 +516,7 @@ footer a:hover{color:var(--amber-dk)}
   <p class="prose">MIDI (Musical Instrument Digital Interface) erlaubt die Verbindung zwischen Keyboards, Computern und anderen Instrumenten. <strong>MIDI-DIN</strong> (5-poliger Rundstecker): klassischer Standard, in vielen Geräten noch vorhanden. <strong>USB-MIDI</strong>: direkt an Computer anschliessen, kein Interface nötig. <strong>CV/Gate</strong> (Control Voltage): älterer Standard für Modular-Synthesizer — für Nicht-Modular-Musiker nicht relevant.</p>
 
   <!-- Section 8 -->
-  <h2>8. Anschlüsse und Zubehör</h2>
+  <h2 id="zubehoer">8. Anschlüsse und Zubehör</h2>
   <p class="prose">Das Keyboard selbst ist nur ein Teil des Setups. Die richtigen Anschlüsse und passendes Zubehör machen den Unterschied zwischen «kann ich sofort spielen» und «brauche ich noch fünf Teile».</p>
 
   <h3 class="sub">Wichtige Anschlüsse</h3>
@@ -453,12 +542,17 @@ footer a:hover{color:var(--amber-dk)}
         <tr><td>Kopfhörer (geschlossen)</td><td>Stilles Üben, kein Klang nach aussen; geschlossen = besser für Details</td><td>30–120</td></tr>
         <tr><td>Klavierhocker / Keyboardbank</td><td>Richtige Sitzhöhe wichtig für Technik und Rücken</td><td>40–150</td></tr>
         <tr><td>Soft-Case / Gigbag</td><td>Transport, Schutz beim Gig</td><td>25–80</td></tr>
+        <tr><td>Aktivbox / PA-Lautsprecher</td><td>Für Auftritte ohne interne Lautsprecher (Stage-Piano, Synth)</td><td>150–400</td></tr>
+        <tr><td>Bluetooth-Adapter (falls kein BT eingebaut)</td><td>Musik vom Smartphone streamen, App-Verbindung nachrüsten</td><td>20–40</td></tr>
       </tbody>
     </table>
   </div>
 
+  <h3 class="sub">Externe Lautsprecher für Auftritte</h3>
+  <p class="prose">Stage-Pianos und viele Synthesizer haben aus Gewichtsgründen keinen eingebauten Lautsprecher — für Proben oder kleine Auftritte braucht es dann eine Aktivbox (Keyboard-Verstärker oder PA-Lautsprecher) mit Klinken- oder XLR-Eingang. Für den Heimgebrauch reicht oft ein einfacher Bluetooth-Lautsprecher, sofern das Instrument über einen Audio-Ausgang oder Bluetooth-Audio verfügt.</p>
+
   <!-- Section 9 -->
-  <h2>9. Wo in der Schweiz kaufen — Händler und Musikschulen</h2>
+  <h2 id="haendler">9. Wo in der Schweiz kaufen — Händler und Musikschulen</h2>
   <p class="prose">In der Schweiz gibt es mehrere gute Anlaufstellen für Keyboard-Kauf und Musikunterricht. Lokale Händler haben den Vorteil, dass man die Tasten anspielen kann — entscheidend beim Kauf eines Digital-Pianos.</p>
 
   <h3 class="sub">Händler in der Schweiz</h3>
@@ -470,12 +564,18 @@ footer a:hover{color:var(--amber-dk)}
     <li><strong>Musikhaus Thomann (DE, Versand CH):</strong> Europas grösster Musikversandhändler, sehr grosse Auswahl, gute Preise. Lieferung in die Schweiz möglich (Zollgebühren beachten für teurere Geräte).</li>
   </ul>
 
+  <h3 class="sub">Lieferzeiten und Versandkosten</h3>
+  <p class="prose">Online-Bestellungen bei Schweizer Händlern (Brack.ch, Digitec.ch, Musikhug-Onlineshop) werden meist innerhalb von 1–3 Werktagen geliefert, oft mit kostenlosem Versand ab CHF 50–100 Bestellwert. Grosse Digital-Pianos in Möbelbauweise werden teils per Spedition mit Terminvereinbarung zugestellt statt per Post — das Lieferdatum sollte beim Kauf explizit abgefragt werden, besonders wenn das Instrument zu einem festen Termin (Geburtstag, Unterrichtsbeginn) bereitstehen soll. Bestellungen bei Musikhaus Thomann (Versand aus Deutschland) dauern für die Schweiz meist 3–7 Werktage, dazu kommt bei höheren Warenwerten die Einfuhrverzollung an der Grenze.</p>
+
   <h3 class="sub">Musikschulen und Unterricht</h3>
   <p class="prose">Wer ein Keyboard kauft, sollte früh an Unterricht denken — Selbstlernen hat Grenzen, besonders bei der Technik. Der <strong>VMS (Verband Musikschulen Schweiz)</strong> listet alle anerkannten Musikschulen nach Kanton und bietet Qualitätsnachweise. musikschulen.ch</p>
   <p class="prose">Öffentliche Musikschulen in Gemeinden und Städten bieten oft günstigen Unterricht (CHF 30–80/Lektion). Private Musiklehrer sind über Plattformen wie Superprof oder TakeLessons auffindbar (CHF 50–120/Stunde).</p>
 
+  <h3 class="sub">Kantonale Förderung und Musikvereine</h3>
+  <p class="prose">Viele Kantone unterstützen den Instrumentalunterricht für Kinder und Jugendliche finanziell — die konkrete Ausgestaltung (Beitragshöhe, Elternbeteiligung) regelt jeder Kanton über sein Musikschulgesetz separat, Details gibt die jeweilige kommunale Musikschule oder Gemeindeverwaltung bekannt. Zusätzlich zur klassischen Musikschule bieten örtliche Musikvereine, Kirchenchöre und Jugendmusiken oft günstigen oder kostenlosen Zugang zu Tasteninstrumenten für den Übungsbedarf, bevor ein eigenes Instrument angeschafft wird — ein guter erster Schritt, um herauszufinden, ob das Interesse langfristig anhält.</p>
+
   <!-- Section 10 -->
-  <h2>10. Preisbereiche und Marken — was bekommt man für sein Geld?</h2>
+  <h2 id="preise">10. Preisbereiche und Marken — was bekommt man für sein Geld?</h2>
   <p class="prose">Der Markt reicht von CHF 79 für ein einfaches Kinder-Keyboard bis CHF 3000+ für ein Profi-Stage-Piano. Hier ist eine ehrliche Einschätzung der Kategorien.</p>
 
   <h3 class="sub">Budget CHF 80–300 (Einsteiger)</h3>
@@ -503,8 +603,222 @@ footer a:hover{color:var(--amber-dk)}
     </table>
   </div>
 
+  <h3 class="sub">Konkrete Modell-Empfehlungen nach Budget</h3>
+  <p class="prose">Diese Auswahl fasst die in diesem Ratgeber genannten Modelle noch einmal nach Budget zusammen — als schnelle Orientierung, ohne die einzelnen Abschnitte erneut durchsuchen zu müssen.</p>
+
+  <div style="overflow-x:auto">
+    <table class="ctable">
+      <thead>
+        <tr><th>Budget</th><th>Empfehlung</th><th>Warum</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>CHF 80–150</td><td>Casio CT-S300 / CT-S400</td><td>Günstigster solider Einstieg für Kinder, Lernfunktionen inklusive</td></tr>
+        <tr><td>CHF 150–250</td><td>Yamaha PSR-E383</td><td>Sehr viele Klänge/Rhythmen, bewährte Yamaha-Pädagogik</td></tr>
+        <tr><td>CHF 400–550</td><td>Yamaha P-45 / Casio PX-S1100</td><td>Erstes 88-Tasten-Digital-Piano mit echter Hammer-Action</td></tr>
+        <tr><td>CHF 600–700</td><td>Roland FP-30X / Yamaha P-125A</td><td>Bessere Polyphonie, Bluetooth, klar hörbarer Klangfortschritt</td></tr>
+        <tr><td>ab CHF 800</td><td>Roland RD-88 / Nord Piano 5</td><td>Bühnen- und Studiotauglichkeit, Premium-Mechanik</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 11 -->
+  <h2 id="laerm">11. Mietwohnung, Lärmschutz und Rücksicht auf Nachbarn</h2>
+  <p class="prose">Die meisten Menschen in der Schweiz wohnen zur Miete in Mehrfamilienhäusern — das Thema Lärm ist beim Instrumentenkauf deshalb kein Nebenschauplatz, sondern oft die Kaufentscheidung überhaupt erst wert. Wer ohne Rücksicht übt, riskiert Ärger mit Nachbarn oder sogar eine Mahnung der Verwaltung.</p>
+
+  <h3 class="sub">Ruhezeiten und Hausordnung</h3>
+  <p class="prose">Die klassische Schweizer Hausordnung kennt meist eine Mittagsruhe (ca. 12–13.30 Uhr), eine Nachtruhe (22–7 Uhr) und eine Sonntagsruhe. Instrumentalübung fällt grundsätzlich unter „gewöhnlichen Gebrauch" der Wohnung und ist tagsüber erlaubt — dennoch lohnt es sich, mit direkten Nachbarn frühzeitig zu sprechen, besonders bei einem Arranger-Keyboard mit lauten Rhythmus-Presets oder bei täglichem, mehrstündigem Üben von Kindern.</p>
+
+  <h3 class="sub">Warum die Kopfhörerbuchse das wichtigste Feature ist</h3>
+  <p class="prose">In einem Mehrfamilienhaus ist ein Kopfhöreranschluss praktisch unverzichtbar — er erlaubt geräuschloses Üben zu jeder Tageszeit, ganz ohne Konflikt mit der Hausordnung. Empfehlenswert sind geschlossene Kopfhörer (Over-Ear), die Schall gut abschirmen und Details im Klang hörbar machen, die offene Modelle verschlucken. Ein zweiter Kopfhörerausgang am Instrument erlaubt zudem gemeinsames Üben mit Lehrperson oder Elternteil, ohne die Nachbarschaft überhaupt zu bemerken.</p>
+
+  <ul class="prose-list">
+    <li><strong>Leise-Modus / Local-Control-Off:</strong> Viele Digital-Pianos dämpfen bei Kopfhörerbetrieb automatisch den internen Lautsprecher — beim Kauf prüfen.</li>
+    <li><strong>Tastenanschlaggeräusch:</strong> Auch mit Kopfhörer bleibt ein leises Klackern der Mechanik hörbar — bei sehr hellhörigen Altbauten (viele in Schweizer Städten) ein Faktor, der bei Testspielen im Laden beachtet werden sollte.</li>
+    <li><strong>Standort im Raum:</strong> Ein Keyboard an der Aussenwand statt an der Wand zum Nachbarn reduziert Körperschall-Übertragung zusätzlich.</li>
+    <li><strong>Gespräch vor dem Kauf:</strong> Ein kurzes Gespräch mit direkten Nachbarn oder der Verwaltung schafft Klarheit und beugt Beschwerden vor — besonders wichtig, wenn ein Kind mit täglichem Übungsplan des Musikschullehrers beginnt.</li>
+  </ul>
+
+  <!-- Section 12 -->
+  <h2 id="apps">12. Apps, Lernsoftware und digitales Klavierlernen</h2>
+  <p class="prose">Moderne Keyboards und Digital-Pianos lassen sich per Bluetooth oder USB mit Lern-Apps verbinden, die das Selbststudium deutlich erleichtern — praktisch für Erwachsene ohne Zeit für festen Unterricht und als Ergänzung zum klassischen Musikschulunterricht.</p>
+
+  <h3 class="sub">Herstellereigene Apps</h3>
+  <ul class="prose-list">
+    <li><strong>Yamaha Smart Pianist:</strong> Verbindet sich per Bluetooth mit kompatiblen Yamaha-Modellen (P-Serie, Clavinova), zeigt Notenblätter zu erkannten Songs, mischt Klavier-Aufnahmen automatisch mit passendem Akkordschema, steuert Klangeinstellungen bequem übers Tablet.</li>
+    <li><strong>Roland Piano App / Piano Partner 2:</strong> Bietet Übungsmodus mit visueller Rückmeldung, Metronom, Aufnahmefunktion und Zugriff auf Klangbibliothek für kompatible Roland-Digital-Pianos.</li>
+    <li><strong>Casio Music Space:</strong> Steuert Klänge und Einstellungen der Casio-Modelle, inklusive Song-Bibliothek zum Mitspielen.</li>
+  </ul>
+
+  <h3 class="sub">Unabhängige Lern-Apps</h3>
+  <p class="prose">Abo-basierte Apps wie <strong>Simply Piano</strong>, <strong>Flowkey</strong> oder <strong>Skoove</strong> erkennen per Mikrofon oder MIDI-Verbindung, welche Note gespielt wird, und geben in Echtzeit Rückmeldung — ähnlich einem Gitarren-Tuner, nur für Melodien und Akkorde. Sie eignen sich gut als Ergänzung zum Unterricht oder für Erwachsene, die im eigenen Tempo lernen wollen. Kosten liegen meist bei CHF 10–20 pro Monat oder rund CHF 100–150 im Jahresabo. Für die beste Erkennungsgenauigkeit lohnt sich eine MIDI- oder Bluetooth-MIDI-Verbindung gegenüber reiner Mikrofonerkennung.</p>
+
+  <h3 class="sub">Tablet-Halterung am Instrument</h3>
+  <p class="prose">Wer Lern-Apps regelmässig nutzt, profitiert von einer stabilen Tablet-Halterung, die auf dem serienmässigen Notenpult vieler Digital-Pianos befestigt wird (CHF 15–30). Ohne feste Halterung rutscht das Tablet beim intensiveren Spiel schnell — besonders bei Kindern ein häufiger Frustpunkt.</p>
+
+  <div class="highlight">
+    <strong>Praxis-Hinweis:</strong> Apps ersetzen keinen Musiklehrer, der Haltung, Fingersatz und Ausdruck korrigiert — sie sind aber eine gute Motivationshilfe zwischen den Unterrichtsstunden, besonders für Kinder, die gerne mit Bildschirm statt Notenheft üben.
+  </div>
+
+  <!-- Section 13 -->
+  <h2 id="midi">13. MIDI, Homerecording und DAW-Integration</h2>
+  <p class="prose">Wer eigene Musik aufnehmen oder produzieren möchte, profitiert von einem Keyboard mit sauberer USB-MIDI- und Audio-Anbindung an den Computer. Die gute Nachricht: Fast jedes moderne Modell ab CHF 300 bringt die nötigen Anschlüsse bereits mit.</p>
+
+  <h3 class="sub">DAW-Kompatibilität</h3>
+  <p class="prose">Über ein einfaches USB-Kabel verbindet sich ein Keyboard als MIDI-Controller mit gängiger Musikproduktions-Software (DAW – Digital Audio Workstation): <strong>GarageBand</strong> (kostenlos auf Mac/iPad vorinstalliert), <strong>Logic Pro</strong>, <strong>Ableton Live</strong> und <strong>Cubase</strong> erkennen die meisten Keyboards ohne zusätzliche Treiberinstallation. Gespielte Noten steuern virtuelle Instrumente in der Software — das eigentliche Klangergebnis kommt dann von der DAW, nicht vom Keyboard selbst.</p>
+
+  <h3 class="sub">Eingebautes USB-Audio-Interface</h3>
+  <p class="prose">Einige Digital-Pianos (z. B. Yamaha P-125A, Roland FP-30X) bieten zusätzlich eine <strong>USB-Audio-Funktion</strong>: Der tatsächliche Klang des Instruments (nicht nur die MIDI-Steuerdaten) lässt sich direkt per USB-Kabel in die DAW einspeisen — ein separates Audio-Interface (sonst CHF 80–200) wird damit überflüssig. Praktisch für alle, die den eingebauten Piano-Klang direkt aufnehmen wollen, statt ein Software-Instrument zu nutzen.</p>
+
+  <h3 class="sub">Latenz und Windows-Treiber</h3>
+  <p class="prose">Bei USB-Audio unter Windows lohnt sich die Installation eines herstellereigenen ASIO-Treibers (Yamaha Steinberg USB Driver, Roland USB Driver) — Standard-Windows-Treiber haben oft spürbare Verzögerung (Latenz) zwischen Tastenanschlag und hörbarem Ton, was das Spielen im Homerecording-Kontext erschwert. Mac-Nutzer haben dieses Problem meist nicht, da Core Audio die Verbindung nativ und latenzarm verwaltet.</p>
+
+  <h3 class="sub">DAW-Optionen im Überblick</h3>
+  <div style="overflow-x:auto">
+    <table class="ctable">
+      <thead>
+        <tr><th>Software</th><th>Plattform</th><th>Kosten</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>GarageBand</td><td>Mac / iPad</td><td>Kostenlos</td></tr>
+        <tr><td>Ableton Live Lite</td><td>Mac / Windows</td><td>Oft gratis beim Keyboard-Kauf beigelegt</td></tr>
+        <tr><td>Cakewalk by BandLab</td><td>Windows</td><td>Kostenlos</td></tr>
+        <tr><td>Logic Pro</td><td>Mac</td><td>Einmalig ca. CHF 230</td></tr>
+        <tr><td>Cubase Elements</td><td>Mac / Windows</td><td>Ca. CHF 100</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">Viele Digital-Pianos und Synthesizer legen beim Kauf einen Lizenzcode für eine abgespeckte DAW-Version (meist Ableton Live Lite oder Cubase AI) direkt bei — vor dem Zusatzkauf einer Software lohnt sich ein Blick in die Verpackung bzw. auf die Registrierungsseite des Herstellers.</p>
+
+  <!-- Section 14 -->
+  <h2 id="occasion">14. Gebraucht kaufen: Occasion, Ricardo und anibis</h2>
+  <p class="prose">Nicht jedes Keyboard muss neu sein. Gerade bei Digital-Pianos ab CHF 600 oder Synthesizern lohnt sich ein Blick auf den Occasion-Markt — hier sind Ersparnisse von 30–50 % gegenüber dem Neupreis üblich.</p>
+
+  <h3 class="sub">Wo gebrauchte Keyboards in der Schweiz kaufen</h3>
+  <ul class="prose-list">
+    <li><strong>Ricardo.ch:</strong> Grösste Schweizer Auktions- und Kleinanzeigenplattform, riesige Auswahl an gebrauchten Keyboards und Digital-Pianos, Bewertungssystem für Verkäufer schafft etwas Sicherheit.</li>
+    <li><strong>anibis.ch:</strong> Kleinanzeigenportal mit regionaler Suche — praktisch, um ein Instrument vor dem Kauf persönlich anzuspielen und Transport selbst zu organisieren.</li>
+    <li><strong>Klavierhäuser mit Occasion-Abteilung:</strong> Musik Hug und ähnliche Fachhändler nehmen gebrauchte Instrumente in Zahlung und verkaufen sie geprüft weiter — meist mit kurzer Gewährleistung, dafür etwas teurer als der Privatkauf.</li>
+  </ul>
+
+  <h3 class="sub">Worauf beim Occasion-Kauf achten</h3>
+  <ul class="prose-list">
+    <li><strong>Jede Taste einzeln testen:</strong> Klemmende oder ungleich schwere Tasten deuten auf Mechanik-Verschleiss oder Wasserschaden hin — bei gebrauchten Digital-Pianos der wichtigste Check.</li>
+    <li><strong>Alle Anschlüsse prüfen:</strong> Kopfhörerbuchse, USB, Pedalanschluss und Lautstärkeregler auf Wackelkontakt oder Kratzgeräusche testen.</li>
+    <li><strong>Zubehör vollständig?</strong> Netzteil, Notenpult, Pedal und Original-Verpackung sollten idealerweise dabei sein — fehlende Netzteile sind bei älteren Modellen teils schwer nachzubeschaffen.</li>
+    <li><strong>Betriebsstunden/Alter erfragen:</strong> Bei Verkäufen mit Begründung „kaum benutzt" nach dem Kaufdatum und Rechnungskopie fragen.</li>
+    <li><strong>Nur bei Privatkauf:</strong> keine Gewährleistung — persönliche Abholung mit Anspielen ist sicherer als reiner Fernkauf mit Versand.</li>
+  </ul>
+
+  <h3 class="sub">Typische Occasion-Preise</h3>
+  <div style="overflow-x:auto">
+    <table class="ctable">
+      <thead>
+        <tr><th>Modell (2–4 Jahre alt)</th><th>Neupreis CHF</th><th>Occasion CHF</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Yamaha P-45</td><td>~420</td><td>200–280</td></tr>
+        <tr><td>Roland FP-30</td><td>~650</td><td>350–450</td></tr>
+        <tr><td>Casio Privia PX-160</td><td>~500</td><td>250–350</td></tr>
+        <tr><td>Korg Minilogue</td><td>~550</td><td>350–420</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose">Diese Richtwerte schwanken je nach Zustand, Region und Nachfrage — sie dienen als grobe Orientierung, um ein faires Angebot auf Ricardo.ch oder anibis.ch von einem überteuerten zu unterscheiden.</p>
+
+  <!-- Section 15 -->
+  <h2 id="pflege">15. Pflege, Wartung und Firmware-Updates</h2>
+  <p class="prose">Digital-Keyboards brauchen — anders als ein Akustikklavier — keine jährliche Stimmung, aber ein wenig Pflege verlängert die Lebensdauer der Mechanik und Elektronik trotzdem deutlich.</p>
+
+  <h3 class="sub">Reinigung</h3>
+  <ul class="prose-list">
+    <li><strong>Tasten:</strong> Mit trockenem oder leicht feuchtem Mikrofasertuch abwischen, nie direkt Reinigungsmittel auf die Tasten sprühen — Flüssigkeit kann unter die Tastenmechanik laufen und Kontakte beschädigen.</li>
+    <li><strong>Staubschutz:</strong> Eine leichte Abdeckhaube schützt vor Staub, der sich sonst zwischen den Tasten ansammelt und auf Dauer zu klemmenden Tasten führt.</li>
+    <li><strong>Lüftungsschlitze:</strong> Bei Modellen mit eingebautem Verstärker regelmässig vorsichtig aussaugen, damit Lautsprecher nicht dumpf klingen.</li>
+  </ul>
+
+  <h3 class="sub">Firmware- und Software-Updates</h3>
+  <p class="prose">Yamaha, Roland und Casio veröffentlichen für viele Digital-Pianos gelegentlich Firmware-Updates — meist per USB-Stick oder über die zugehörige App installierbar. Updates beheben kleinere Fehler, verbessern gelegentlich die Bluetooth-Stabilität oder schalten zusätzliche Klänge frei. Es lohnt sich, vor einem grösseren Update-Vorgang das Handbuch zu konsultieren und das Instrument während der Installation nicht vom Strom zu trennen.</p>
+
+  <h3 class="sub">Lagerung, Klima und Transport</h3>
+  <p class="prose">Direkte Sonneneinstrahlung und starke Temperaturschwankungen sollten vermieden werden — besonders bei Premium-Mechaniken mit Holzelementen (z. B. NWX), die auf Feuchtigkeit empfindlicher reagieren als reine Kunststoffteile. Bei einem Winterumzug in der Schweiz gilt: Instrument nicht direkt aus einem kalten Auto in eine warme Wohnung tragen, sondern kurz akklimatisieren lassen, damit sich kein Kondenswasser in der Elektronik bildet. Für den Transport zu Konzerten oder Proben schützt ein gepolsterter Gigbag oder Hardcase vor Stössen und Kratzern.</p>
+
+  <!-- Section 16 -->
+  <h2 id="garantie">16. Garantie, Rückgaberecht und Konsumentenschutz in der Schweiz</h2>
+  <p class="prose">Die rechtlichen Rahmenbedingungen unterscheiden sich in der Schweiz spürbar von der EU — wer online oder im Ausland bestellt, sollte die Unterschiede kennen, bevor er ein teureres Digital-Piano oder Stage-Piano kauft.</p>
+
+  <h3 class="sub">Gesetzliche Gewährleistung</h3>
+  <p class="prose">In der Schweiz gilt gemäss Obligationenrecht eine Gewährleistungsfrist von grundsätzlich zwei Jahren ab Kaufdatum für versteckte Mängel — anders als oft angenommen, gibt es aber kein gesetzliches 14-tägiges Widerrufsrecht für Online-Käufe wie in der EU. Ob eine Rückgabe ohne Mangel möglich ist, hängt allein von der Kulanz des jeweiligen Händlers ab. Grössere Schweizer Händler (Musik Hug, Brack.ch, Digitec.ch) gewähren freiwillig 14–30 Tage Rückgaberecht — das lohnt sich vor dem Kauf schriftlich zu prüfen, besonders bei einem Digital-Piano, dessen Tastengefühl man erst nach ein paar Übungstagen wirklich beurteilen kann.</p>
+
+  <h3 class="sub">Herstellergarantie</h3>
+  <p class="prose">Zusätzlich zur gesetzlichen Gewährleistung geben Yamaha, Roland, Casio und Korg auf die meisten Modelle 2–5 Jahre Herstellergarantie in der Schweiz, sofern das Gerät über einen autorisierten Schweizer Händler bezogen wurde. Bei Direktimporten aus dem Ausland (z. B. via Thomann-Versand) gilt oft nur die Händlergarantie, nicht die volle lokale Herstellergarantie — bei einem Defekt kann das einen zusätzlichen Versand ins Ausland bedeuten. Kaufbeleg und Originalverpackung deshalb für die gesamte Garantiezeit aufbewahren.</p>
+
+  <h3 class="sub">Zoll und Mehrwertsteuer bei Importen</h3>
+  <p class="prose">Bestellungen von ausserhalb der Schweiz unterliegen ab bestimmten Warenwerten der Einfuhrmehrwertsteuer (aktuell 8,1 % Normalsatz) sowie ggf. Zollgebühren, die die Post oder der Kurierdienst bei Zustellung einzieht. Bei einem Digital-Piano im Wert von mehreren hundert Franken kann das den vermeintlich günstigeren Auslandspreis relativieren — ein Preisvergleich sollte diese Zusatzkosten immer einrechnen.</p>
+
+  <h3 class="sub">Reparatur und Ersatzteile in der Schweiz</h3>
+  <p class="prose">Bei einem Defekt ausserhalb der Garantie reparieren autorisierte Servicewerkstätten (z. B. bei Musik Hug) gängige Modelle von Yamaha, Roland und Casio — üblich sind Pauschalen für Diagnose (CHF 50–90) plus Ersatzteile und Arbeitszeit. Bei sehr günstigen Einsteiger-Keyboards (unter CHF 150) lohnt sich eine Reparatur wirtschaftlich oft nicht mehr; bei einem Digital-Piano ab CHF 400 mit Hammer-Action-Mechanik dagegen meist schon, da die Tastenmechanik den grössten Wertanteil ausmacht.</p>
+
+  <!-- Section 17 -->
+  <h2 id="versicherung">17. Versicherung und Diebstahlschutz</h2>
+  <p class="prose">Ein Digital-Piano oder Stage-Piano im Wert von mehreren hundert bis tausend Franken lohnt einen kurzen Blick auf den Versicherungsschutz — insbesondere, wenn das Instrument auch ausserhalb der Wohnung eingesetzt wird.</p>
+
+  <h3 class="sub">Hausratversicherung</h3>
+  <p class="prose">In der Regel deckt die Hausratversicherung Musikinstrumente zu Hause gegen Feuer, Wasserschaden und Einbruchdiebstahl automatisch mit ab, solange der Wert innerhalb der vereinbarten Versicherungssumme liegt. Bei besonders hochwertigen Instrumenten (Stage-Pianos, Synthesizer-Sammlungen) lohnt sich eine Nachfrage bei der Versicherung, ob eine Zusatzdeckung oder Einzelverzeichnung sinnvoll ist.</p>
+
+  <h3 class="sub">Unterwegs und bei Auftritten</h3>
+  <p class="prose">Sobald ein Instrument regelmässig zu Proben, Gigs oder Unterrichtsstunden transportiert wird, greift der Hausrat-Schutz oft nur eingeschränkt oder gar nicht mehr — hier bieten manche Versicherer optionale Zusatzbausteine für „Musikinstrumente ausser Haus" an, wie sie auch für Berufsmusiker und Vereinsmitglieder üblich sind. Für Occasion-Käufe empfiehlt sich zudem, die Seriennummer zu notieren und ein Foto des Zustands beim Kauf zu machen — hilfreich sowohl im Schadenfall als auch bei einem späteren Weiterverkauf.</p>
+
+  <!-- Section 18 -->
+  <h2 id="miete">18. Mieten statt kaufen: Testphase für Einsteiger</h2>
+  <p class="prose">Wer nicht sicher ist, ob das Interesse am Instrument über die ersten Monate hinaus anhält, muss nicht sofort kaufen. Mehrere Anbieter in der Schweiz ermöglichen eine Testphase, bevor Geld in ein eigenes Instrument fliesst.</p>
+
+  <h3 class="sub">Miete mit Kaufoption</h3>
+  <p class="prose">Einige Fachhändler (u. a. Musik Hug) bieten für Einsteiger-Digital-Pianos ein Mietkauf-Modell an: Die monatliche Miete wird bei späterem Kauf ganz oder teilweise an den Kaufpreis angerechnet. Das eignet sich besonders für Familien, die zunächst herausfinden wollen, ob das Kind langfristig am Klavierunterricht dranbleibt, bevor CHF 400–600 in ein eigenes Digital-Piano investiert werden.</p>
+
+  <h3 class="sub">Leihinstrumente der Musikschule</h3>
+  <p class="prose">Manche Musikschulen und lokale Musikvereine verfügen über einen kleinen Bestand an Leihinstrumenten für die ersten ein bis zwei Unterrichtsjahre — meist gegen eine geringe Depotgebühr. Das lohnt sich nachzufragen, bevor überhaupt ein Kauf geplant wird, besonders bei jüngeren Kindern, deren Interesse sich erst noch zeigen muss.</p>
+
+  <!-- Section 19 -->
+  <h2 id="recycling">19. Entsorgung und Recycling ausgedienter Geräte</h2>
+  <p class="prose">Ein altes Keyboard landet in der Schweiz nicht im Hauskehricht — Elektrogeräte unterliegen der vorgezogenen Recyclinggebühr (VRG), die bereits beim Kauf im Preis enthalten ist.</p>
+  <p class="prose">Ausgediente Keyboards, Digital-Pianos und Synthesizer können bei praktisch jedem Verkaufspunkt mit entsprechendem Sortiment kostenlos zur fachgerechten Entsorgung zurückgegeben werden — unabhängig davon, wo das Gerät ursprünglich gekauft wurde, und unabhängig von einem Neukauf. Wer noch funktionsfähige Instrumente aussortiert, findet über Ricardo.ch, anibis.ch oder Brockenhäuser oft interessierte Abnehmer, statt sie zu entsorgen — besonders bei soliden Einsteiger-Keyboards, die für ein zweites Kinderzimmer noch jahrelang taugen.</p>
+
+  <h3 class="sub">Schnellcheck: Welcher Typ passt zu mir?</h3>
+  <div style="overflow-x:auto">
+    <table class="ctable">
+      <thead>
+        <tr><th>Bedürfnis</th><th>Passender Typ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kind probiert Klavierunterricht erstmals aus</td><td>Einsteiger-Keyboard, 61 Tasten, touch-sensitive</td></tr>
+        <tr><td>Erwachsener will Klavier lernen / spielt bereits</td><td>Digital-Piano, 88 Tasten, Hammer-Action</td></tr>
+        <tr><td>Hobbyspieler will Songs mit Begleitautomatik spielen</td><td>Arranger-Keyboard, 61–76 Tasten</td></tr>
+        <tr><td>Auftritte, Bands, Studioarbeit</td><td>Stage-Piano, 88 Tasten, ohne Lautsprecher</td></tr>
+        <tr><td>Elektronische Musik, Sounddesign</td><td>Synthesizer, 25–61 Tasten</td></tr>
+        <tr><td>Nur Musikproduktion am Computer</td><td>MIDI-Controller ohne eigenen Klang</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Checklist -->
+  <div class="highlight">
+    <strong>Kurz-Checkliste vor dem Kauf:</strong>
+    <ul class="prose-list" style="margin-top:8px">
+      <li>Zweck geklärt: Hobby, Klavierunterricht, Produktion oder Bühne?</li>
+      <li>Tastenzahl passend zum Vorhaben gewählt (61 / 76 / 88)?</li>
+      <li>Anschlagdynamik mindestens touch-sensitive, für Klavierlernen Hammer-Action?</li>
+      <li>Kopfhöreranschluss vorhanden — wichtig in Mehrfamilienhäusern?</li>
+      <li>USB-MIDI für App- oder DAW-Anbindung geprüft?</li>
+      <li>Sustain-Pedal und Ständer im Budget mit eingerechnet?</li>
+      <li>Vor Ort angespielt oder zumindest ein vergleichbares Modell getestet?</li>
+      <li>Rückgabe- und Garantiebedingungen des Händlers gelesen?</li>
+      <li>Bei Occasion: Tasten einzeln getestet, Zubehör vollständig?</li>
+    </ul>
+  </div>
+
   <!-- FAQ Section -->
-  <h2>Häufige Fragen zum Keyboard-Kauf</h2>
+  <h2 id="faq">Häufige Fragen zum Keyboard-Kauf</h2>
+  <p class="prose">Die folgenden Antworten fassen die in diesem Ratgeber am häufigsten gestellten Fragen kompakt zusammen — für den schnellen Überblick ohne erneutes Durchlesen der einzelnen Abschnitte.</p>
 
   <details>
     <summary>Wie viele Tasten braucht ein Einsteiger-Keyboard?</summary>
@@ -548,6 +862,7 @@ footer a:hover{color:var(--amber-dk)}
       <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail-Adresse">
       <button type="submit">Abonnieren</button>
     </form>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </section>
 
   <!-- Related links -->
@@ -573,10 +888,11 @@ footer a:hover{color:var(--amber-dk)}
 
 <footer>
   <div class="wrap">
-    aban news · Marktplatz Schweiz · Angaben ohne Gewähr · © 2026 ·
-    <a href="/marktplatz.html">Marktplatz</a> ·
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
     <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 

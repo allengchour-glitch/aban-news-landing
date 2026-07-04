@@ -63,7 +63,7 @@
   "@type": "Article",
   "headline": "KI-Übersetzer kaufen Schweiz 2026: Echtzeit-Übersetzer & Sprachgeräte im Vergleich",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-27",
+  "dateModified": "2026-07-03",
   "author": {"@id": "https://abannews.com/#person"},
   "publisher": {"@id": "https://abannews.com/#org"},
   "mainEntityOfPage": "https://abannews.com/ki-uebersetzer-kaufen-schweiz.html",
@@ -104,6 +104,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 a{color:var(--accent-dk)}
 a:hover{text-decoration:underline}
 .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+/* Topnav */
+.topnav{position:sticky;top:0;z-index:100;background:#0f0f0f;border-bottom:2px solid var(--accent)}
+.tn-in{max-width:900px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:52px}
+.tn-brand{font-size:1.25rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.5px}
+.tn-brand:hover{color:var(--accent);text-decoration:none}
+.tn-links{display:flex;gap:24px}
+.tn-links a{color:#d1d5db;text-decoration:none;font-size:.9rem;font-weight:500;transition:color .15s}
+.tn-links a:hover{color:#fff;text-decoration:none}
+@media(max-width:520px){
+  .tn-links{gap:14px}
+  .tn-links a{font-size:.82rem}
+}
 
 /* Hero */
 .hero{background:linear-gradient(135deg,#0c1a2e 0%,#0f3054 50%,#0369a1 100%);color:#fff;position:relative;overflow:hidden}
@@ -213,6 +226,18 @@ footer a{color:var(--muted)}
 </head>
 <body>
 
+<!-- Topnav -->
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
+
 <!-- Breadcrumb -->
 <nav class="bc" aria-label="Brotkrumen">
   <a href="/">Start</a> ›
@@ -231,7 +256,7 @@ footer a{color:var(--muted)}
       <span>🇨🇭 Schweizer Markt</span>
       <span>✓ Preise in CHF</span>
       <span>✓ CH-DSG geprüft</span>
-      <span>✓ Stand: Juni 2026</span>
+      <span>✓ Stand: Juli 2026</span>
     </div>
   </div>
 </header>
@@ -241,7 +266,7 @@ footer a{color:var(--muted)}
 
 <!-- Answer First -->
 <div class="answer-first">
-  <strong>Direkte Antwort:</strong> Ein solider KI-Übersetzer kostet in der Schweiz zwischen <strong>CHF 130 und CHF 320</strong>. Das Timekettle M3 ist der günstige Einstieg (ab CHF 130), das Pocketalk S2 die komfortabelste Standalone-Lösung mit eingebauter SIM (ab CHF 250). Wer nur gelegentlich übersetzt, ist mit der <strong>kostenlosen DeepL-App</strong> — einem Schweizer Anbieter mit sehr guter DE/FR/IT-Abdeckung — oft besser bedient als mit einem teuren Gerät.
+  <strong>Direkte Antwort:</strong> Ein solider KI-Übersetzer kostet in der Schweiz zwischen <strong>CHF 130 und CHF 320</strong>. Das Timekettle M3 ist der günstige Einstieg (ab CHF 130), das Pocketalk S2 die komfortabelste Standalone-Lösung mit eingebauter SIM (ab CHF 250). Wer nur gelegentlich übersetzt, ist mit der <strong>kostenlosen DeepL-App</strong> — mit sehr guter DE/FR/IT-Abdeckung für den Schweizer Alltag — oft besser bedient als mit einem teuren Gerät.
 </div>
 
 <!-- Comparison Table -->
@@ -292,7 +317,7 @@ footer a{color:var(--muted)}
   </tbody>
 </table>
 </div>
-<p style="font-size:.83rem;color:var(--muted);margin-top:-16px;margin-bottom:22px">*Pocketalk S2: 2 Jahre SIM-Datenplan inklusive, danach ca. CHF 80/Jahr Verlängerung. Preisangaben von Galaxus.ch / Digitec.ch, Stand Juni 2026.</p>
+<p style="font-size:.83rem;color:var(--muted);margin-top:-16px;margin-bottom:22px">*Pocketalk S2: 2 Jahre SIM-Datenplan inklusive, danach ca. CHF 80/Jahr Verlängerung. Preisangaben von Galaxus.ch / Digitec.ch, Stand Juli 2026.</p>
 
 <!-- Tips Grid -->
 <div class="tips">
@@ -324,6 +349,15 @@ footer a{color:var(--muted)}
   <li><strong>Standalone-Geräte</strong> (Pocketalk S2, VASCO E1): Handgerät mit Mikrofon und Lautsprecher, das zwischen zwei Personen gehalten wird.</li>
   <li><strong>Smartphone-Apps</strong> (DeepL, Google Translate, ChatGPT): Nutzen die bereits vorhandene Smartphone-Hardware, erfordern kein zusätzliches Gerät.</li>
 </ul>
+
+<h3>Wie funktioniert die Technik: ASR, NMT und TTS</h3>
+<p>Damit ein Gerät gesprochene Sprache in eine andere Sprache übersetzt, laufen im Hintergrund drei technische Schritte ab:</p>
+<ul>
+  <li><strong>ASR (Automatic Speech Recognition):</strong> Die gesprochenen Worte werden in Text umgewandelt. Hier entscheidet sich bereits viel — undeutliche Aussprache, Hintergrundlärm oder starker Dialekt führen zu Erkennungsfehlern, die sich auf die gesamte Übersetzung auswirken.</li>
+  <li><strong>NMT (Neural Machine Translation):</strong> Der erkannte Text wird von einem neuronalen Übersetzungsmodell in die Zielsprache übertragen. Diese Modelle sind mit riesigen Textmengen trainiert — meist deutlich mehr Hochdeutsch als Schweizerdeutsch, mehr Standarditalienisch als Tessiner Dialekt, was die Qualitätsunterschiede erklärt.</li>
+  <li><strong>TTS (Text-to-Speech):</strong> Der übersetzte Text wird wieder in gesprochene Sprache umgewandelt und ausgegeben. Die Natürlichkeit der Stimme variiert je nach Hersteller und Sprache.</li>
+</ul>
+<p>Für Nutzer:innen bedeutet das in der Praxis: Deutlich und in ganzen, einfachen Sätzen sprechen verbessert die Erkennungsrate spürbar — unabhängig davon, welches Gerät oder welche App verwendet wird.</p>
 
 <!-- Section 2: Echtzeit vs. Text -->
 <h2>Echtzeit-Übersetzung vs. Text-Übersetzung</h2>
@@ -357,6 +391,12 @@ footer a{color:var(--muted)}
 <p>Keines der aktuell verfügbaren Geräte bietet eine vollwertige Rätoromanisch-Übersetzung. Die Sprache ist zu selten in Trainingsdaten vertreten. Für Rätoromanisch bleibt menschliche Vermittlung notwendig.</p>
 <h3>Schweizerdeutsch</h3>
 <p>Geräte und Apps übersetzen Schweizerdeutsch mit Einschränkungen. Standarddeutsch wird zuverlässig erkannt. Dialekte (Berndeutsch, Zürichdeutsch, Walliserdeutsch) bereiten allen Systemen noch Schwierigkeiten. Im Gespräch mit dem Gerät klar und langsam in Standarddeutsch sprechen.</p>
+
+<h3>Grenzverkehr Innerschweiz–Romandie</h3>
+<p>Entlang der Sprachgrenze pendeln täglich Tausende zwischen Deutschschweiz und Romandie — etwa im zweisprachigen Kanton Freiburg/Fribourg, in Biel/Bienne oder im Wirtschaftsraum Bern–Freiburg. Für diese Alltagssituationen reicht in aller Regel eine App: kurze Fragen im Laden, am Bahnschalter oder im Teammeeting lassen sich mit DeepL oder Google Translate in Sekunden klären, ohne ein zusätzliches Gerät mitzuführen. Wer hingegen regelmässig längere Kundengespräche über die Sprachgrenze hinweg führt — etwa im Detailhandel, in der Gastronomie oder im Kundendienst —, profitiert von einem In-Ear-Gerät wie dem Timekettle WT2 Edge, weil beide Seiten gleichzeitig zuhören und sprechen können.</p>
+
+<h3>Tessiner Dialekt und regionale Varianten</h3>
+<p>Ähnlich wie beim Schweizerdeutschen weicht das im Tessin und in den italienischsprachigen Bündner Tälern gesprochene Idiom vom Standarditalienisch ab. KI-Übersetzer und Apps sind auf Standarditalienisch trainiert und liefern bei starkem Tessiner Dialekt (insbesondere ländliche Ausdrücke und lombardische Einflüsse) spürbar schlechtere Ergebnisse als bei Hochitalienisch. Praxistipp: Gesprächspartner im Tessin sprechen im Kontakt mit Deutschschweizern meist ohnehin Standarditalienisch oder wechseln auf Wunsch dorthin — das erleichtert die maschinelle Übersetzung erheblich.</p>
 
 <!-- Section 4: Timekettle vs Pocketalk vs VASCO -->
 <h2>Timekettle vs. Pocketalk vs. VASCO: Der direkte Vergleich</h2>
@@ -393,6 +433,18 @@ footer a{color:var(--muted)}
   <li><strong>Für wen:</strong> Reisen in Regionen mit schlechtem Netz, Datenschutz-bewusste Nutzer, sensible Gespräche</li>
 </ul>
 
+<h3>ili (Einweg-Übersetzer, CHF 180–220)</h3>
+<p>ili unterscheidet sich von den drei Hauptkandidaten durch ein bewusst reduziertes Konzept: Das Gerät übersetzt nur in eine Richtung (z. B. Deutsch → Englisch) und arbeitet vollständig offline, ohne App und ohne Internetverbindung. Das macht es sehr schnell (unter 0,5 Sekunden Verzögerung) und robust auf Reisen, schränkt aber die Sprachauswahl auf wenige Sprachpaare ein. Für einfache Reisesituationen (Restaurant, Taxi, Einkauf) ist ili eine unkomplizierte Ergänzung — als Hauptgerät für vielseitige Gespräche eignet es sich wegen der Einbahn-Logik weniger.</p>
+
+<h3>Für wen lohnt sich welches Gerät?</h3>
+<ul>
+  <li><strong>Familien im Reiseurlaub:</strong> Pocketalk S2 — keine SIM-Karten-Sorgen, einfache Bedienung auch für Kinder und Grosseltern.</li>
+  <li><strong>Geschäftsreisende mit Kundengesprächen:</strong> Timekettle WT2 Edge — natürlichster Gesprächsfluss, professionelle Wirkung.</li>
+  <li><strong>Wanderungen und Trekking abseits des Netzes:</strong> VASCO Translator E1 — Offline-Pakete als Rückversicherung.</li>
+  <li><strong>Senior:innen mit gelegentlichem Reisebedarf:</strong> Timekettle M3 — einfache Bedienung, günstiger Einstieg, kein Abo nötig.</li>
+  <li><strong>Kurztrips mit wenig Gepäck:</strong> ili oder die kostenlose DeepL-App — kein zusätzliches Ladegerät, kein zusätzliches Gewicht.</li>
+</ul>
+
 <!-- Section 5: Smartphone-Apps -->
 <h2>Smartphone-Apps als Alternative: DeepL, Google Translate, ChatGPT</h2>
 <p>Wer bereits ein modernes Smartphone besitzt, sollte ernsthaft abwägen, ob ein zusätzliches Gerät nötig ist. Für viele Alltagssituationen reicht eine App vollständig aus.</p>
@@ -410,6 +462,16 @@ footer a{color:var(--muted)}
 
 <h3>ChatGPT / Claude als Übersetzer</h3>
 <p>Grosse Sprachmodelle wie ChatGPT können für kontextsensitive Übersetzungen besser sein als spezialisierte Tools — zum Beispiel bei formellen Briefen, Fachjargon oder wenn Tonalität wichtig ist. Sie sind aber nicht für Echtzeit-Gespräche konzipiert und erfordern manuelle Eingabe.</p>
+
+<h3>Wann lohnt sich ein zusätzliches Gerät?</h3>
+<p>Ein dediziertes Gerät rechtfertigt seinen Preis vor allem dann, wenn eine App an ihre Grenzen stösst:</p>
+<ul>
+  <li><strong>Beidseitiges Zuhören:</strong> Eine App erfordert, dass jemand das Handy hält und antippt. Ein In-Ear-Gerät lässt beide Personen gleichzeitig sprechen und hören — natürlicher bei längeren Gesprächen.</li>
+  <li><strong>Häufige Auslandreisen ohne Datentarif:</strong> Wer oft ausserhalb der EU reist und Roaming vermeiden will, profitiert von Pocketalks integrierter SIM oder VASCOs Offline-Paketen.</li>
+  <li><strong>Robustheit und Akkulaufzeit:</strong> Standalone-Geräte sind auf Übersetzung optimiert und verbrauchen den Smartphone-Akku nicht zusätzlich — relevant bei Ganztagesreisen ohne Lademöglichkeit.</li>
+  <li><strong>Kein eigenes Smartphone dabei:</strong> Senior:innen oder Personen, die bewusst ohne Smartphone reisen, brauchen ein eigenständiges Gerät.</li>
+</ul>
+<p>In allen anderen Fällen — gelegentliche Übersetzung, DE/FR/IT-Alltag, Business-E-Mails — deckt eine kostenlose oder günstige App den Bedarf meist vollständig ab.</p>
 
 <div class="infobox">
   <strong>Empfehlung für die Schweiz:</strong> Wer hauptsächlich zwischen Deutsch, Französisch und Italienisch übersetzen muss, sollte zuerst die <strong>kostenlose DeepL-App</strong> ausprobieren — oft ist kein Gerätekauf nötig.
@@ -431,6 +493,50 @@ footer a{color:var(--muted)}
   <li><strong>Pocketalk-SIM-Daten:</strong> Pocketalk speichert Sprachdaten auf Servern in Japan. Für Schweizer Verhältnisse ohne Senitivität vertretbar, bei heiklen Inhalten problematisch.</li>
 </ul>
 
+<h3>Serverstandorte im Überblick</h3>
+<p>Die folgende Übersicht zeigt, wo die grössten Anbieter Sprachdaten in der Regel verarbeiten (Angaben gemäss den jeweiligen Datenschutzerklärungen der Hersteller, Stand Juli 2026 — im Einzelfall lohnt sich ein Blick in die aktuelle Fassung):</p>
+
+<div class="ctable">
+<table>
+  <thead>
+    <tr>
+      <th>Anbieter</th>
+      <th>Verarbeitung</th>
+      <th>Serverstandort (üblich)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DeepL / DeepL Pro</td>
+      <td>Cloud</td>
+      <td>Deutschland (EU) — Pro ohne Speicherung</td>
+    </tr>
+    <tr>
+      <td>Google Translate</td>
+      <td>Cloud (Offline-Modus möglich)</td>
+      <td>Global verteilt (u. a. USA/EU)</td>
+    </tr>
+    <tr>
+      <td>Pocketalk</td>
+      <td>Cloud</td>
+      <td>Japan</td>
+    </tr>
+    <tr>
+      <td>Timekettle</td>
+      <td>Cloud (App-Anbindung)</td>
+      <td>Asien/USA, App-abhängig</td>
+    </tr>
+    <tr>
+      <td>VASCO Offline-Paket</td>
+      <td>On-Device</td>
+      <td>Kein Server — Daten bleiben lokal</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Diese Angaben können sich mit neuen App-Versionen ändern — vor dem Einsatz bei sensiblen Themen lohnt sich immer ein aktueller Blick in die Datenschutzerklärung des jeweiligen Herstellers.</p>
+
 <!-- Section 7: SIM/WiFi-Abhängigkeit -->
 <h2>SIM- und WLAN-Abhängigkeit: Was Sie wissen müssen</h2>
 <p>Die Internet-Abhängigkeit ist für viele Nutzer der grösste praktische Nachteil von KI-Übersetzern. Hier sind die wichtigsten Szenarien:</p>
@@ -443,6 +549,9 @@ footer a{color:var(--muted)}
 
 <h3>In Ländern ohne stabiles Netz</h3>
 <p>In Teilen Afrikas, Asiens und auf Kreuzfahrtschiffen ist das Netz unzuverlässig. Hier ist VASCO mit Offline-Paketen klar im Vorteil — auch wenn die Offline-Übersetzungsqualität rund 20–30 % hinter der Online-Variante liegt.</p>
+
+<h3>Bergregionen der Schweiz</h3>
+<p>Auch innerhalb der Schweiz gibt es Funklöcher: abgelegene Seitentäler in Graubünden, dem Wallis oder dem Berner Oberland haben teils lückenhaften Empfang. Für Wanderungen, Berghütten-Aufenthalte oder Ausflüge abseits der Hauptrouten empfiehlt sich, die relevanten Sprachpakete vorab herunterzuladen — sowohl bei VASCO als auch bei der Google-Translate-App, die ebenfalls Offline-Pakete anbietet. Wer touristische Gäste aus dem Ausland betreut (Hotellerie, Bergbahnen, Gastronomie in Feriendestinationen), sollte ein offline-fähiges Gerät im Haus haben, statt sich auf Hotel-WLAN zu verlassen.</p>
 
 <div class="infobox">
   <strong>Praxis-Tipp:</strong> Vor jeder Reise die wichtigsten Offline-Pakete herunterladen (soweit vom Gerät unterstützt). Bei Timekettle und Pocketalk: Sicherstellen, dass das Smartphone auf SIM-Daten umschalten kann, wenn kein WLAN vorhanden ist.
@@ -469,12 +578,11 @@ footer a{color:var(--muted)}
 
 <p>Für mehrtägige Reisen empfehlenswert: Eine 20'000-mAh-Powerbank (ca. CHF 30–50 bei Galaxus) für alle Geräte. Das vermeidet Stresssituationen bei leerem Akku zur Unzeit.</p>
 
-<!-- Section 9: Arzt/Behörden/Business -->
-<h2>KI-Übersetzer beim Arzt, bei Behörden und im Business-Einsatz</h2>
+<h3>Ladegerät und CH-Steckdose</h3>
+<p>Alle in der Schweiz verkauften KI-Übersetzer (Timekettle, Pocketalk, VASCO) laden über <strong>USB-C</strong> — das gleiche Kabel wie bei den meisten aktuellen Smartphones und Laptops. Ein separates Netzteil liegt nicht immer bei; oft genügt ein vorhandenes USB-C-Ladegerät mit Schweizer Typ-J-Stecker. Wichtig für Reisen ins Ausland: In der EU (Typ C/F), in Grossbritannien (Typ G) oder in den USA (Typ A/B) wird ein Reiseadapter benötigt, das Ladegerät selbst funktioniert dank Weitbereichs-Eingang (100–240 V) weltweit ohne Spannungswandler. Wer mehrere Geräte gleichzeitig lädt, profitiert von einem USB-C-Netzteil mit mehreren Ports (ab ca. CHF 25 bei Digitec) statt mehrerer Einzel-Ladegeräte.</p>
 
-<h3>Arzt und Spital</h3>
-<p>In der Schweiz gibt es eine bedeutende nicht-deutschsprachige Bevölkerung (rund 25 % Ausländeranteil). KI-Übersetzer können in medizinischen Gesprächen als <em>erste Orientierungshilfe</em> dienen — nicht als Ersatz für einen qualifizierten Dolmetscher.</p>
-<p>Für Basisinformationen (Symptome schildern, Termine vereinbaren, Anweisungen verstehen) sind Geräte wie VASCO oder die DeepL-App gut geeignet. Für komplexe Diagnosen, Operationsaufklärungen oder Einwilligungen ist ein zertifizierter Sprachmittler nach wie vor notwendig — und in vielen Kantonen bei schweren Erkrankungen vom Spital bereitgestellt.</p>
+<!-- Section 9: Behörden/Business -->
+<h2>KI-Übersetzer bei Behörden und im Business-Einsatz</h2>
 
 <h3>Behörden und Rechtsdienste</h3>
 <p>Bei Behördengesprächen (Migrationsamt, Sozialversicherungen, Gericht) sind KI-Übersetzer nicht zugelassen als offizielle Sprachmittlung. Die übersetzten Aussagen haben keine rechtliche Bindungswirkung. Für solche Gespräche stehen in vielen Kantonen <a href="https://www.interpret.ch/" rel="noopener noreferrer" target="_blank">qualifizierte Gemeindedolmetscher</a> zur Verfügung.</p>
@@ -503,8 +611,11 @@ footer a{color:var(--muted)}
 </ul>
 
 <div class="infobox">
-  <strong>Praxis-Check Preis:</strong> Timekettle WT2 Edge ist bei Galaxus.ch für ca. CHF 240 erhältlich (Stand Juni 2026). Bei Amazon.de liegt der Preis bei ca. EUR 180 — zzgl. ca. CHF 15 Versand und potenziell CHF 20 Zoll = CHF 210. Vorteil Amazon.de, aber Reklamation etwas aufwendiger.
+  <strong>Praxis-Check Preis:</strong> Timekettle WT2 Edge ist bei Galaxus.ch für ca. CHF 240 erhältlich (Stand Juli 2026). Bei Amazon.de liegt der Preis bei ca. EUR 180 — zzgl. ca. CHF 15 Versand und potenziell CHF 20 Zoll = CHF 210. Vorteil Amazon.de, aber Reklamation etwas aufwendiger.
 </div>
+
+<h3>Rückgabe, Garantie und Support</h3>
+<p>Bei Schweizer Händlern gilt in der Regel ein grosszügiges Rückgaberecht: Galaxus.ch und Digitec.ch bieten 30 Tage Rückgabe ohne Angabe von Gründen, sofern das Gerät unbeschädigt und mit Originalverpackung zurückgeschickt wird. Die gesetzliche Gewährleistung beträgt in der Schweiz 2 Jahre ab Kauf. Bei Direktimport aus Deutschland (Amazon.de) gilt EU-Recht mit 14 Tagen Widerrufsfrist — die Rücksendung ins Ausland ist umständlicher und der Versand geht meist zulasten der Käuferschaft, wenn kein Garantiefall vorliegt. Support-Anfragen (z. B. zu Firmware-Problemen) laufen bei allen drei Hauptmarken über Englisch-sprachigen E-Mail-Support; ein deutschsprachiger Support ist nicht garantiert.</p>
 
 <!-- Section 11: Häufige Fehler -->
 <h2>Häufige Fehler beim Kauf eines KI-Übersetzers</h2>
@@ -518,6 +629,167 @@ footer a{color:var(--muted)}
   <li><strong>Zu tiefe Erwartungen an die Übersetzungsqualität:</strong> KI-Übersetzer arbeiten gut für klare, einfache Sätze. Idiome, Ironie, Fachsprache und Dialekte bereiten allen Systemen Schwierigkeiten. Reden Sie langsam und klar.</li>
   <li><strong>Kein Test-Rückgaberecht prüfen:</strong> Viele Nutzer merken erst im Gespräch, ob ein Gerät zu ihrem Nutzungsverhalten passt. Galaxus.ch bietet 30 Tage Rückgaberecht — das nutzen, bevor man sich festlegt.</li>
 </ul>
+
+<!-- Section 12: Gesundheitswesen -->
+<h2>KI-Übersetzer im Gesundheitswesen: Chancen und rechtliche Grenzen</h2>
+<p>In der Schweiz hat rund ein Viertel der Bevölkerung keinen Schweizer Pass, dazu kommen zahlreiche Feriengäste und Grenzgänger. Spitäler, Arztpraxen und Apotheken stehen deshalb regelmässig vor Sprachbarrieren — KI-Übersetzer werden hier zunehmend als praktische Ergänzung eingesetzt.</p>
+
+<h3>Wofür sich Geräte eignen</h3>
+<ul>
+  <li>Aufnahmegespräch am Empfang: Name, Adresse, Versicherung erfassen</li>
+  <li>Einfache Symptomschilderung («Kopfschmerzen seit zwei Tagen»)</li>
+  <li>Terminvereinbarung und organisatorische Anweisungen («Bitte nüchtern erscheinen»)</li>
+  <li>Nachsorge-Hinweise und Medikamenten-Einnahmeschema in einfacher Sprache</li>
+</ul>
+
+<h3>Wo die rechtliche und praktische Grenze liegt</h3>
+<p>Für Diagnosegespräche, Operationsaufklärungen, Einwilligungserklärungen und psychiatrische Anamnesen ist ein KI-Übersetzer nicht ausreichend. Fehlübersetzungen können hier gesundheitliche und rechtliche Folgen haben. Schweizer Spitäler stellen bei Bedarf professionelle interkulturelle Übersetzer:innen (z. B. über <a href="https://www.aoz.ch/" rel="noopener noreferrer" target="_blank">kantonale Vermittlungsstellen</a>) zur Verfügung — dieser Anspruch besteht bei schwereren Fällen in den meisten Kantonen. Ein Gerät ersetzt diesen Dienst nicht, sondern überbrückt die Zeit bis zur Vermittlung oder hilft bei rein organisatorischen Anliegen.</p>
+
+<div class="warn">
+  <strong>Wichtig:</strong> Kein KI-Übersetzer sollte für die eigentliche Einwilligung zu einem medizinischen Eingriff verwendet werden. Verlangen Sie in diesem Fall aktiv einen menschlichen Dolmetscher — das ist Ihr gutes Recht als Patient:in.
+</div>
+
+<!-- Section 13: Bildungsbereich -->
+<h2>KI-Übersetzer in Schule, Integration und Erwachsenenbildung</h2>
+<p>Auch im Bildungsbereich gewinnen Übersetzungshilfen an Bedeutung — vom Kindergarten bis zur Erwachsenenbildung.</p>
+
+<h3>Schulen mit fremdsprachigen Kindern</h3>
+<p>Viele Schweizer Volksschulen haben Klassen mit Kindern, deren Eltern kein Deutsch, Französisch oder Italienisch sprechen. Für Elterngespräche und Elternabende setzen einzelne Schulen bereits Übersetzer-Apps oder Geräte wie das Timekettle M3 ein, um erste Verständigung zu ermöglichen. Für offizielle Standortgespräche, Beurteilungsgespräche oder bei heiklen Themen (Verhaltensauffälligkeiten, Schulausschluss) bleibt der Beizug interkultureller Vermittler:innen die korrekte Lösung — viele Gemeinden bieten diese kostenlos oder vergünstigt an.</p>
+
+<h3>Integrationskurse und Erwachsenenbildung</h3>
+<p>In Deutsch- und Sprachkursen für neu zugezogene Personen werden KI-Übersetzer teils als Lernhilfe genutzt — etwa um Vokabular zu klären oder Übungsanweisungen zu übersetzen. Wichtig: Für den eigentlichen Spracherwerb ersetzt ein Übersetzer das aktive Sprechen und Üben nicht. Lehrpersonen empfehlen Geräte meist nur als Übergangshilfe in den ersten Wochen, nicht als Dauerlösung — sonst bleibt der Lerneffekt aus.</p>
+
+<!-- Section 14: Cloud vs On-Device -->
+<h2>Cloud vs. On-Device: Wie KI-Übersetzer Ihre Daten technisch verarbeiten</h2>
+<p>Nicht alle Geräte verarbeiten Sprache auf die gleiche Weise. Der technische Unterschied hat direkte Folgen für den Datenschutz:</p>
+<ul>
+  <li><strong>Cloud-Verarbeitung:</strong> Die Audioaufnahme wird auf Server des Herstellers (oft in den USA oder Asien) übertragen, dort verarbeitet und das Ergebnis zurückgeschickt. Schnelle, gute Qualität, aber Daten verlassen die Schweiz. Betrifft die meisten Timekettle- und Pocketalk-Funktionen sowie Google Translate und die kostenlose DeepL-Version.</li>
+  <li><strong>On-Device-Verarbeitung:</strong> Die Übersetzung läuft direkt auf dem Gerät oder Smartphone, ohne Internetverbindung. Daten verlassen das Gerät nicht. Betrifft VASCOs Offline-Pakete und Google Translates Offline-Modus. Qualität ist meist etwas schwächer als Cloud-Übersetzung.</li>
+  <li><strong>Hybrid mit Zusicherung:</strong> DeepL Pro verarbeitet Texte in der Cloud, garantiert vertraglich aber, dass Inhalte nicht gespeichert oder zu Trainingszwecken verwendet werden — ein Mittelweg für Geschäftskunden mit CH-DSG-Anforderungen.</li>
+</ul>
+<p>Für die Praxis heisst das: Wer nDSG-/CH-DSG-Konformität ernst nimmt, sollte vor dem Kauf oder Einsatz in den Datenschutzbestimmungen des Herstellers nachlesen, in welchem Land Server stehen und wie lange Aufnahmen gespeichert werden. Bei sensiblen Inhalten (Gesundheit, Finanzen, Rechtsfragen) ist On-Device- oder Offline-Verarbeitung grundsätzlich vorzuziehen.</p>
+
+<!-- Section 15: Weitere Marken -->
+<h2>Weitere Marken im Überblick: ili, Langogo und Vasco Mini</h2>
+<p>Neben den drei Hauptkandidaten (Timekettle, Pocketalk, VASCO) tauchen im Schweizer Online-Handel weitere Marken auf:</p>
+
+<div class="price-grid">
+  <div class="pcard blue">
+    <div class="plabel" style="color:var(--accent-dk)">🗣️ ili</div>
+    <p>Einweg-Offline-Gerät ohne App, CHF 180–220. Sehr schnell, aber nur ein Sprachpaar pro Gerät. Ideal als Reise-Zusatzgerät.</p>
+  </div>
+  <div class="pcard green">
+    <div class="plabel" style="color:#059669">🌍 Langogo Genesis</div>
+    <p>Kombiniert eigene SIM (ähnlich Pocketalk) mit Hotspot-Funktion für weitere Geräte, CHF 220–300. In der Schweiz seltener im Handel, meist per Import.</p>
+  </div>
+  <div class="pcard purple">
+    <div class="plabel" style="color:#7c3aed">📟 VASCO Mini 2</div>
+    <p>Kleinere, günstigere Variante des E1 ohne Offline-Pakete, CHF 130–170. Guter Einstieg, wenn Offline-Funktion nicht zwingend nötig ist.</p>
+  </div>
+</div>
+
+<p>Für die meisten Schweizer Nutzer:innen bleiben Timekettle, Pocketalk und VASCO die verlässlichste Wahl, da sie bei Galaxus, Digitec und Brack mit Garantie und Rückgaberecht erhältlich sind. Nischenmarken lohnen sich vor allem für einen konkreten Zusatznutzen (z. B. ilis Offline-Tempo), nicht als Ersatz für ein Hauptgerät.</p>
+
+<!-- Section 16: Gebraucht kaufen -->
+<h2>Gebraucht kaufen: Ricardo, anibis und Software-Update-Verfügbarkeit</h2>
+<p>Wer Geld sparen möchte, findet KI-Übersetzer regelmässig gebraucht auf <a href="https://www.ricardo.ch/" rel="noopener noreferrer" target="_blank">Ricardo.ch</a> und <a href="https://www.anibis.ch/" rel="noopener noreferrer" target="_blank">anibis.ch</a> — oft 30–50 % günstiger als der Neupreis.</p>
+
+<h3>Worauf beim Gebrauchtkauf achten</h3>
+<ul>
+  <li><strong>Funktionstest verlangen:</strong> Vor dem Kauf ein kurzes Video-Telefonat mit Live-Übersetzungstest bitten, wo möglich — bei Ohrhörer-Geräten unbedingt Ladecase und beide Ohrhörer prüfen.</li>
+  <li><strong>Akkuzustand:</strong> Ältere Geräte (2+ Jahre) haben oft eine merklich reduzierte Akkulaufzeit. Nach der Zyklenzahl bzw. dem Kaufdatum fragen.</li>
+  <li><strong>Pocketalk-Abo prüfen:</strong> Beim S2 unbedingt klären, ob der SIM-Datenplan noch aktiv ist oder bereits abgelaufen — eine Verlängerung kostet ca. CHF 80/Jahr und muss ggf. neu abgeschlossen werden.</li>
+  <li><strong>Originalzubehör:</strong> Ladekabel und Case sollten idealerweise dabei sein; Ersatzteile sind für Nischenmarken teils schwer zu bekommen.</li>
+</ul>
+
+<h3>Software-Updates prüfen</h3>
+<p>KI-Übersetzer sind auf regelmässige Firmware- und Sprachmodell-Updates angewiesen, um mit der Übersetzungsqualität aktueller Modelle mithalten zu können. Vor dem Gebrauchtkauf lohnt sich ein Blick in die Hersteller-Website: Wird das Modell noch mit Updates versorgt, oder ist bereits ein Nachfolgemodell auf dem Markt, das die alte Version ablöst? Bei Timekettle und Pocketalk werden ältere Modelle in der Regel 3–4 Jahre lang unterstützt, danach verlangsamt sich die Update-Frequenz merklich. Ein Gerät ohne Update-Unterstützung liefert weiterhin brauchbare, aber zunehmend veraltete Übersetzungsqualität.</p>
+
+<div class="infobox">
+  <strong>Praxis-Tipp:</strong> Auf Ricardo.ch nach der Modellbezeichnung plus «wie neu» oder «OVP» (Originalverpackung) filtern — das reduziert das Risiko von stark abgenutzten Geräten. Zahlung nur über die plattforminterne Absicherung abwickeln, nie per Vorkasse ausserhalb der Plattform.
+</div>
+
+<!-- Section 16b: Zubehör -->
+<h2>Sinnvolles Zubehör für KI-Übersetzer</h2>
+<p>Ein passendes Zubehörpaket verlängert die Lebensdauer und erhöht die Alltagstauglichkeit des Geräts spürbar:</p>
+<ul>
+  <li><strong>Schutzhülle:</strong> Für Standalone-Geräte (Pocketalk, VASCO) reduziert eine Silikon- oder Hartschalenhülle das Sturzrisiko — wichtig bei häufigem Herausziehen aus der Tasche während Reisen. Kosten: CHF 10–20.</li>
+  <li><strong>Zusätzliches Ladekabel:</strong> Ein zweites USB-C-Kabel für zu Hause und unterwegs vermeidet, dass ein vergessenes Kabel die Reise beeinträchtigt. Kosten: CHF 8–15.</li>
+  <li><strong>Powerbank (min. 10'000 mAh):</strong> Für Ganztagesausflüge ohne Steckdose unverzichtbar, siehe Abschnitt Akku und Ladezeit weiter oben.</li>
+  <li><strong>Ersatz-Ohrspitzen (bei Timekettle):</strong> Für hygienischen und bequemen Sitz der In-Ear-Übersetzer, besonders wenn das Gerät von wechselnden Gesprächspartnern genutzt wird (z. B. an einer Rezeption).</li>
+  <li><strong>Trageband oder Lanyard:</strong> Praktisch für Standalone-Geräte im Berufsalltag (Rezeption, Messestand), damit das Gerät griffbereit bleibt statt in der Tasche zu verschwinden.</li>
+</ul>
+<p>Die meisten dieser Accessoires sind bei Galaxus, Digitec oder im freien Zubehörhandel (z. B. auf eBay.ch) günstig erhältlich und amortisieren sich schnell, wenn sie einen Geräteschaden verhindern.</p>
+
+<!-- Section 17: Kaufcheckliste -->
+<h2>Kaufcheckliste: In 5 Schritten zum passenden KI-Übersetzer</h2>
+<p>Wer zwischen den vorgestellten Optionen unschlüssig ist, kann sich an folgender Reihenfolge orientieren:</p>
+<ol>
+  <li><strong>Sprachbedarf klären:</strong> Welche Sprachpaare brauchen Sie wirklich? Für DE/FR/IT/EN reicht praktisch jedes Gerät und oft schon eine App. Für seltenere Sprachen (Thai, Arabisch, Ungarisch) lohnt der Blick auf die konkrete Sprachliste von Pocketalk oder VASCO.</li>
+  <li><strong>Nutzungsintensität einschätzen:</strong> Gelegentlich im Urlaub → App genügt. Wöchentlich für Business oder Kundenkontakt → dediziertes Gerät sinnvoll. Täglich im beruflichen Einsatz → In-Ear-Lösung (Timekettle) für natürliche Gespräche.</li>
+  <li><strong>Internet-Situation prüfen:</strong> Reisen Sie oft in Gebiete ohne stabiles Netz (Berge, entlegene Länder)? Dann VASCO mit Offline-Paketen oder eine App mit Offline-Modus wählen. Ist Netz meist vorhanden? Dann Timekettle oder Pocketalk.</li>
+  <li><strong>Budget und Folgekosten einplanen:</strong> Einmalpreis ist nicht alles — bei Pocketalk die SIM-Verlängerung ab Jahr 3 (ca. CHF 80/Jahr) einkalkulieren. Bei DeepL Pro die monatlichen Kosten (ca. CHF 8.74) gegen den Gerätekauf abwägen.</li>
+  <li><strong>Datenschutz-Anforderungen festlegen:</strong> Für private Reisegespräche unkritisch. Für Business, Gesundheit oder Recht: On-Device-/Offline-Verarbeitung oder DeepL Pro bevorzugen, siehe Abschnitt zu Cloud vs. On-Device weiter oben.</li>
+</ol>
+
+<div class="infobox">
+  <strong>Kurzfassung:</strong> Gelegenheitsnutzer mit DE/FR/IT-Bedarf → <strong>DeepL-App (gratis)</strong>. Vielreisende ohne festen Datentarif → <strong>Pocketalk S2</strong>. Business-Gespräche auf Augenhöhe → <strong>Timekettle WT2 Edge</strong>. Reisen ohne verlässliches Netz → <strong>VASCO Translator E1</strong>.
+</div>
+
+<!-- Section 17b: Praxisbeispiele -->
+<h2>Praxisbeispiele: KI-Übersetzer im Schweizer Alltag</h2>
+<p>Konkrete Situationen helfen, die Gerätewahl greifbar zu machen:</p>
+<ul>
+  <li><strong>Hotellerie im Berner Oberland:</strong> Eine Rezeption empfängt Gäste aus Asien, dem Nahen Osten und Osteuropa. Ein Standalone-Gerät mit vielen Sprachen (Pocketalk S2) an der Rezeption deckt den Grossteil der Check-in-Gespräche ab, ohne dass Personal mehrere Fremdsprachen beherrschen muss.</li>
+  <li><strong>KMU im Kanton Freiburg mit Kunden aus der Romandie:</strong> Für tägliche kurze DE↔FR-Telefonate reicht die DeepL-App auf dem Geschäftshandy. Bei wichtigen Vor-Ort-Terminen mit Neukunden kommt zusätzlich ein Timekettle-Ohrhörerpaar zum Einsatz, damit das Gespräch natürlicher wirkt.</li>
+  <li><strong>Rucksackreise durch Südostasien:</strong> Unzuverlässiges Netz in ländlichen Regionen spricht für VASCO mit vorab heruntergeladenen Offline-Paketen — ergänzt durch die Google-Translate-App als Backup für Kamera-Übersetzung von Speisekarten und Schildern.</li>
+  <li><strong>Behördengang einer zugezogenen Familie:</strong> Für das Ausfüllen von Formularen zu Hause hilft eine App. Beim eigentlichen Termin auf dem Gemeindeamt wird korrekt ein interkultureller Dolmetscher beigezogen — das Gerät dient hier nur der Vorbereitung.</li>
+  <li><strong>Bergrestaurant mit internationalen Wandergästen:</strong> Ein einfaches Einweggerät wie ili oder eine Offline-App-Karte genügt für Bestellungen und Wegbeschreibungen — ein teures Standalone-Gerät wäre hier überdimensioniert.</li>
+</ul>
+
+<!-- Section 17d: Mieten statt kaufen -->
+<h2>Mieten statt kaufen: Für einmalige Reisen sinnvoll?</h2>
+<p>Wer ein Gerät nur für eine einzelne Reise oder einen einmaligen Anlass (Hochzeit mit internationalen Gästen, einmalige Geschäftsreise) braucht, muss nicht zwingend kaufen. Einige Optionen für die Schweiz:</p>
+<ul>
+  <li><strong>Direkt beim Hersteller:</strong> Pocketalk bietet in einzelnen Märkten Kurzzeit-Mietmodelle an — für die Schweiz meist nur über den Umweg internationaler Anbieter verfügbar, Verfügbarkeit vorab beim Hersteller-Support erfragen.</li>
+  <li><strong>Elektronik-Verleihplattformen:</strong> Auf Plattformen wie Sharely oder in lokalen Repair-Cafés/Bibliotheken mit Gegenstands-Verleih (z. B. «Dinge-Bibliotheken» in einigen Schweizer Städten) tauchen KI-Übersetzer vereinzelt im Verleihangebot auf — Verfügbarkeit regional sehr unterschiedlich.</li>
+  <li><strong>Von Bekannten/Kolleg:innen ausleihen:</strong> Da die Geräte inzwischen relativ verbreitet sind, lohnt sich vor einem Kauf die Nachfrage im Bekanntenkreis oder Betrieb, ob bereits ein Gerät vorhanden ist.</li>
+  <li><strong>Kaufen mit Rückgaberecht als De-facto-Miete:</strong> Wer bei Galaxus.ch oder Digitec.ch kauft und innerhalb der 30-Tage-Frist unbenutzt bzw. im Originalzustand zurückgibt, kann das Gerät faktisch für eine einzelne Reise «testen» — solange die Rückgabebedingungen (Verpackung, Zustand) eingehalten werden.</li>
+</ul>
+<p>Für alle, die regelmässiger reisen oder das Gerät mehrfach im Jahr nutzen, rechnet sich ein Kauf meist schneller als wiederholte Miet- oder Leihlösungen — insbesondere bei den günstigeren Modellen ab CHF 130.</p>
+
+<!-- Section 17c: Nachhaltigkeit -->
+<h2>Nachhaltigkeit und Entsorgung in der Schweiz</h2>
+<p>KI-Übersetzer enthalten Akkus und Elektronik, die in der Schweiz nicht im Hausmüll entsorgt werden dürfen. Die vorgezogene Recyclinggebühr (vRG) ist beim Kauf bereits im Preis enthalten.</p>
+<ul>
+  <li><strong>Rückgabe an Verkaufsstellen:</strong> Nach dem Elektronikgesetz können Altgeräte kostenlos bei jeder Verkaufsstelle abgegeben werden, unabhängig davon, wo sie gekauft wurden — <a href="https://www.sens-eren.ch/" rel="noopener noreferrer" target="_blank">SENS eRecycling</a> koordiniert das Recycling-Netz in der Schweiz.</li>
+  <li><strong>Akku-Entsorgung getrennt möglich:</strong> Verbaute Lithium-Akkus in Übersetzergeräten werden im Recyclingprozess fachgerecht ausgebaut und separat verwertet, das muss nicht manuell vorbereitet werden.</li>
+  <li><strong>Reparatur statt Neukauf:</strong> Bei Timekettle und Pocketalk sind Ersatz-Ohrhörer und -Ladecases teils einzeln erhältlich, was eine Reparatur statt Komplett-Neukauf ermöglicht — im Zweifel beim Hersteller-Support anfragen.</li>
+  <li><strong>Gebrauchtverkauf vor Entsorgung prüfen:</strong> Ein funktionierendes, aber nicht mehr benötigtes Gerät lässt sich auf Ricardo.ch oder anibis.ch oft noch verkaufen, statt es zu entsorgen — siehe Abschnitt zum Gebrauchtkauf weiter oben.</li>
+</ul>
+
+<!-- Section 17e: Glossar -->
+<h2>Kurz-Glossar: Die wichtigsten Begriffe</h2>
+<ul>
+  <li><strong>ASR (Automatic Speech Recognition):</strong> Wandelt gesprochene Sprache in Text um — der erste Schritt jeder Sprachübersetzung.</li>
+  <li><strong>NMT (Neural Machine Translation):</strong> Neuronales Modell, das Text von einer Sprache in eine andere überträgt.</li>
+  <li><strong>TTS (Text-to-Speech):</strong> Wandelt übersetzten Text zurück in gesprochene Sprache um.</li>
+  <li><strong>CH-DSG:</strong> Revidiertes Schweizer Datenschutzgesetz, seit September 2023 in Kraft, regelt den Umgang mit Personendaten — inklusive Sprachaufnahmen.</li>
+  <li><strong>nDSG:</strong> Gebräuchliches Kürzel für das «neue» (revidierte) Datenschutzgesetz — meint dasselbe Gesetz wie CH-DSG.</li>
+  <li><strong>On-Device-Verarbeitung:</strong> Übersetzung läuft direkt auf dem Gerät, ohne Datenübertragung an externe Server.</li>
+  <li><strong>Röstigraben:</strong> Umgangssprachliche Bezeichnung für die Sprachgrenze zwischen Deutschschweiz und Romandie.</li>
+  <li><strong>Latenz:</strong> Zeitverzögerung zwischen gesprochenem Satz und ausgegebener Übersetzung — bei den getesteten Geräten zwischen 0,5 und 1,5 Sekunden.</li>
+  <li><strong>vRG (vorgezogene Recyclinggebühr):</strong> Im Kaufpreis enthaltene Gebühr, die die kostenlose Rückgabe des Altgeräts an Verkaufsstellen finanziert.</li>
+  <li><strong>Roaming:</strong> Nutzung des Mobilfunknetzes im Ausland über den eigenen (oder einen zusätzlichen) Vertrag — für Schweizer SIM-Karten ausserhalb der Schweiz meist kostenpflichtig.</li>
+</ul>
+<p>Dieses Glossar dient als schnelle Orientierung — die ausführlichen Erklärungen zu jedem Begriff finden Sie in den entsprechenden Abschnitten weiter oben.</p>
+
+<!-- Section 18: Fazit -->
+<h2>Fazit: Lohnt sich ein KI-Übersetzer für die Schweiz?</h2>
+<p>Für den Schweizer Alltag mit vier Landessprachen und viel internationalem Kontakt sind KI-Übersetzer eine sinnvolle Ergänzung — aber kein Ersatz für professionelle Sprachmittlung, wenn es wirklich darauf ankommt. Wer nur gelegentlich zwischen Deutsch, Französisch und Italienisch wechseln muss, kommt mit der kostenlosen DeepL-App meist ohne Zusatzkosten aus. Wer regelmässig reist, geschäftlich mit fremdsprachigen Partnern spricht oder in Regionen ohne verlässliches Netz unterwegs ist, profitiert klar von einem dedizierten Gerät.</p>
+<p>Die drei Referenzgeräte decken unterschiedliche Bedürfnisse ab: Timekettle für natürliche Gespräche auf Augenhöhe, Pocketalk für unkomplizierte Standalone-Nutzung mit globaler SIM, VASCO für Offline-Sicherheit in Regionen mit schwachem Netz. Bei sensiblen Themen — Gesundheit, Recht, Behörden, vertrauliche Geschäftsdaten — bleibt der Beizug einer qualifizierten menschlichen Sprachmittlung unverzichtbar, unabhängig davon, wie gut das jeweilige Gerät im Alltag funktioniert.</p>
+<p>Bevor Sie kaufen: Prüfen Sie den tatsächlichen Sprachbedarf, kalkulieren Sie Folgekosten (SIM-Abo, Datentarif) mit ein und nutzen Sie die grosszügigen Rückgabefristen der Schweizer Online-Händler, um das Gerät im echten Gespräch zu testen.</p>
+<p>Langfristig dürfte sich die Grenze zwischen dedizierten Geräten und Smartphone-Apps weiter verschieben, da Apps zunehmend bessere Offline-Modi und Echtzeit-Funktionen erhalten. Für die Schweiz mit ihrer besonderen Vielsprachigkeit bleibt aber schon heute klar: Ein gut gewähltes Werkzeug — ob App oder Gerät — überbrückt Sprachgrenzen im Alltag zuverlässig, ersetzt aber weder qualifizierte Dolmetscher noch das Erlernen einer der Landessprachen.</p>
 
 <!-- FAQ -->
 <h2>Häufige Fragen zu KI-Übersetzern in der Schweiz</h2>
@@ -557,10 +829,7 @@ footer a{color:var(--muted)}
 <section class="nl">
   <strong>📬 Gratis: Schnäppchen- &amp; KI-Updates für die Schweiz</strong>
   <p>Das Beste aus dem Kaufberater + 1 KI-Tipp pro Woche. Kein Spam, jederzeit abbestellbar.</p>
-  <form action="https://abannews.beehiiv.com/subscribe" method="get">
-    <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail-Adresse">
-    <button type="submit">Abonnieren</button>
-  </form>
+  <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
 </section>
 
 <!-- Related Pages -->
@@ -598,10 +867,11 @@ footer a{color:var(--muted)}
 
 <footer>
   <div class="wrap">
-    abannews · Kaufberater Schweiz · Angaben ohne Gewähr · Stand Juni 2026 · © 2026 ·
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
     <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
     <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
