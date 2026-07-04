@@ -9,13 +9,16 @@ const SHOP=process.env.SHOPIFY_SHOP,CID=process.env.SHOPIFY_CLIENT_ID,CSEC=proce
 const LIVE=process.env.LIVE==='1';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function tk(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return(await r.json()).access_token;}
-async function gql(t,q,v){for(let a=0;a<5;a++){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});if(r.status===429||r.status>=500){await sleep((a+1)*2000);continue;}return r.json();}return null;}
+async function gql(t,q,v){for(let a=0;a<7;a++){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});if(r.status===429||r.status>=500){await sleep((a+1)*2000);continue;}const j=await r.json();
+  // GraphQL-Level-Throttling (HTTP 200 + data:null + THROTTLED) ebenfalls erneut versuchen
+  if((j?.data==null)&&Array.isArray(j?.errors)&&j.errors.some(e=>/THROTTLED/i.test(e?.extensions?.code||e?.message||''))){await sleep((a+1)*2500);continue;}
+  return j;}return null;}
 const clean=s=>s.replace(/[^\p{L}\p{N}\s&·.,'-]/gu,'').replace(/\s+/g,' ').trim();
 const cut=(s,n)=>s.length<=n?s:s.slice(0,n-1).trim()+'…';
 
 const t=await tk(); if(!t){console.error('Kein Token');process.exit(1);}
 // products(first:30) + Status: Draft-/bildlose Produkte sortieren teils zuerst → erstes AKTIVES mit Bild nehmen
-const Q=`query($c:String){ collections(first:50, after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id handle title productsCount{count} image{url} descriptionHtml seo{title description} products(first:30){edges{node{status featuredImage{url}}}} } } } }`;
+const Q=`query($c:String){ collections(first:25, after:$c){ pageInfo{hasNextPage endCursor} edges{ node{ id handle title productsCount{count} image{url} descriptionHtml seo{title description} products(first:20){edges{node{status featuredImage{url}}}} } } } }`;
 let c=null, scanned=0, fImg=0, fSeo=0, fDesc=0;
 do{
   const r=await gql(t,Q,{c}); const pg=r?.data?.collections; if(!pg) break;
