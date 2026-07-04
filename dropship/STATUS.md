@@ -1,5 +1,21 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (NOCH SPÄTER — 20-Agenten-Rundum-Audit + 2. Ehrlichkeits-Welle gequeued)
+- **🔍 20 Agenten haben luxestyle.ch live durchgefetcht** (je 1 Bereich) → Vollreport `dropship/AUDIT-20AGENT-2026-07-04.md`.
+  Vieles SAUBER (20 Landingpages 200 · alle Collections befüllt · 88 interne Links 200 · compareAt plausibel · Impressum echt).
+- **✅ API-FIXES GEQUEUED (laufen auf dem PC, Cloud hat kein SHOPIFY_CLIENT_SECRET):**
+  - `policies-ch`: Shop-Policies „ab CHF 65"→50, „weltweit EU/UK/USA…"→„ausschliesslich CH+FL", „7–12"→„5–12 Werktage".
+  - `chf65-sweep`: „CHF 65"→„CHF 50" über ALLE Blog-Artikel + Pages (alte Texte hatten noch 65).
+  - `swissness` (NEU): unbelegte Claims RAUS — „CO₂ um 60%" (erfunden) + „1% von jedem Verkauf an Umweltprojekte" (unbelegt);
+    „Made with ❤ in der Schweiz"→„Kuratiert mit ❤ …" (Produkte nicht swiss-made); premium-schmuck „Schweizer Präzision"→„feine Verarbeitung".
+  - `swissness` fixt auch **Kontakt-E-Mail**: support@/hello@ → **info@luxestyle.ch**, und entfernt den **Privat-Leak `allengchour@gmail.com`**
+    auf /pages/kontakt-support (echte Privatadresse war öffentlich sichtbar).
+- **⚠️ Braucht noch echten Policy-Body (nächste Charge, nach `policies-ch`-DUMP):** privacy revDSG/EDÖB-Absatz · refund EU-14T → CH-only-30T.
+- **🎨 Nur Theme/App/User (kein API-Zugriff):** Doppelter Sticky-ATC (SEOWILL+Theme = Mobile-Leak, EINEN wählen) · Judge.me „No reviews" hide-empty ·
+  Homepage-Meta „nach Deutschland" (App/MetaShop) · 2 Produktbild-Import-Fallen (Gamepad/Joystick).
+- **⏳ Warten auf PC-Poll:** giga (TikTok-Push) + die 3 Fix-Commands sind gequeued (`cloud-commands.json`), noch nicht im Done-Ledger — PC committet Reports selbst zurück.
+
+
 ## 2026-07-04 (SPÄT — Ehrlichkeits-Fixes LIVE per API + 4 Content-Schwärme + Bestell-/Liefer-Handling)
 - **✅ EHRLICHKEITS-VERSTÖSSE AUTONOM BEHOBEN (Shopify Pages- + Theme-Asset-API):** Der Live-Audit fand echte Verstösse — jetzt gefixt:
   Versandschwelle überall **CHF 50** (war widersprüchlich 65/50/65/99) · Lieferzeit realistisch **5–12 Werktage** (war unehrlich „2–7") ·
