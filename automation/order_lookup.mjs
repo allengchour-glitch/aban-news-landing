@@ -10,7 +10,8 @@ const NAME=(process.env.ORDER_NAME||'1004').replace(/^#/,'').trim();
 let SHOP=(process.env.SHOPIFY_SHOP||'').replace(/^https?:\/\//,'').replace(/\/.*$/,'').trim(); if(!/myshopify\.com$/.test(SHOP)) SHOP='au3j0y-hq.myshopify.com';
 const API='2025-01';
 try{ mkdirSync('reports',{recursive:true}); }catch{}
-const out=[]; const W=m=>{ out.push(m); console.log(m); try{ writeFileSync('reports/order-lookup.txt', out.join('\n')+'\n'); }catch{} };
+const OUTF=`reports/order-${NAME}.txt`;
+const out=[]; const W=m=>{ out.push(m); console.log(m); try{ writeFileSync(OUTF, out.join('\n')+'\n'); }catch{} };
 if(!AT && !(CID&&CSEC)){ W('Keine Shopify-Creds → No-op.'); process.exit(0); }
 async function cc(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})}); const j=await r.json().catch(()=>({})); return j.access_token||null; }
 const tok = AT || await cc();
