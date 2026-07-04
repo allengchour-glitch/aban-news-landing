@@ -2192,3 +2192,29 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   while-true-Wrapper `/tmp/bb_loop.sh`. CJ-Mega-Loop läuft parallel (creating live). Beide = „immer Neuheiten von allen Lieferanten".
 - **Lehre:** Nie 2 bigbuy_import gleichzeitig (gemeinsames striktes BigBuy-Rate-Limit → beide verhungern). Ein
   Prozess mit interner Kategorie-Rotation ist effizienter (1× Katalog-Load statt pro Kategorie).
+
+---
+**📌 2026-07-04 (🎨 BASTELN/DIY + 🔌 MAKER-ELEKTRONIK + 3D-Ausbau + 20-Agenten-Flotte):**
+- **2 neue Nischen-Kategorien** (User-Wunsch „Basteln für Kinder & Erwachsene + Elektronik-Teile für Bastler"):
+  - `basteln` → Collection **🎨 Basteln & DIY** (`basteln-diy`): Moosgummi/Knetmasse/Fimo/Filz/Makramee/Häkeln/
+    Diamond-Painting/Kerzengiessen/Modellbau (DE+ES). BigBuy: **182 Kandidaten**, importiert echte Sachen
+    (Moosgummi Apli Kids, Epoxid-Knetmasse Pattex).
+  - `makerelektronik` → Collection **🔌 Elektronik für Bastler** (`maker-elektronik`): Arduino/Raspberry Pi/
+    Breadboard/Sensoren/Lötkolben/ESP32/Widerstände/Servo/Relais.
+  - Beide `word:true`, im Loop priorisiert (3D→basteln→maker→gaming→Rest).
+- **3D ausgebaut:** `druck3d`-Anchor um echtes Zubehör erweitert (Düsen/Druckplatten/Extruder/Hotend/Heizbett/
+  PTFE/Resin/Trockner) → erstellte z.B. „Extruder-Düsen" CHF 52.90. **BigBuy 3D bleibt dünn** (DRUCK3D nur 2 neue
+  Kandidaten, BAMBU3D 0 — Marken-Drucker gibt's nicht bei Distributoren, keine Fakes). Agent baute **3 saubere 3D-
+  Sub-Collections**: `3d-filament` (11) · `3d-drucker` (11) · `3d-zubehoer` (5).
+- **⚠️ 2 Fehltreffer-Fallen gefixt (Lehre für word-Anchors):** `arcade`→matchte „Arcoroc Arcade"-**Gläser** →
+  `arcade stick`/`arcade automat`. `perlen`→matchte „Thomas Sabo/Viceroy"-**Schmuckperlen** → `bügelperlen`/
+  `bastelperlen`/`holzperlen`. **Immer prüfen, was ein Anchor real matcht, bevor LIVE.** (Agent fand dieselbe Falle
+  bei Smart-Collection-TITLE-CONTAINS: „filament"+pla/pei/trockner saugte PlayStation/Platine/Haartrockner rein → präzisiert.)
+- **🤖 20-Agenten-Flotte (Shopify-seitig, um BigBuy/CJ-Rate-Limit nicht zu stören):** Ergebnisse:
+  Ratgeber **+15 Artikel** (Blog 190→**205**) · Feed-Detail-Blöcke **+273** · Tag-Hygiene 3 Junk-Tags raus ·
+  Vendor-Marke ~170+ korrigiert (läuft) · **Alles andere bereits sauber:** Beschreibungen 0 dünn (Katalog voll
+  beschrieben), Homepage 23 Sektionen valide, Cross-Sell 0 kaputt, ProductType 0 Junk (17'418 sauber, 258 Typen),
+  Preise 0 Fehler (800 echte Rabatte), Drafts 375 alle konform, Collections 315 alle poliert.
+- **🐛 Bugs gefixt:** `ratgeber_gemini.mjs` (null-gql-Antwort wurde fälschlich als „done" markiert → Guard auf article.id),
+  `collection_polish.mjs` (GraphQL-THROTTLED-Retry, brach vorher bei ~148 ab).
+- **📊 Katalog real ~17'400 AKTIV** (nicht 10k — das war Shopifys `productsCount`-Cap; echte Zahl via `products/count.json`).
