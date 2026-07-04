@@ -1,43 +1,14 @@
 Theme: Horizon · LuxeStyle + Email-Popup (Claude) (id 187533001089, role main)
-211 Kandidaten-Assets werden geprüft…
-
-[DUMP] locales/de.json:
-   "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Inkl. Zollgebühren und Steuern. Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden beim 
-   "duties_and_taxes_included_shipping_at_checkout_without_policy": "Inkl. Zollgebühren und Steuern. Rabatte und Versand werden beim Checkout berechnet.",
-   "taxes_included_shipping_at_checkout_with_policy_html": "Inkl. Steuern. Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden beim Checkout berechnet.",
-   "taxes_included_shipping_at_checkout_without_policy": "Inkl. Steuern. Rabatte und Versand werden beim Checkout berechnet.",
-   "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Inkl. Zollgebühren. Steuern, Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden 
-   "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Inkl. Zollgebühren. Steuern, Rabatte und Versand werden beim Checkout berechnet.",
-   "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Steuern, Rabatte und <a href=\"{{ link }}\">Versand<\/a> werden beim Checkout berechnet.",
-   "taxes_at_checkout_shipping_at_checkout_without_policy": "Steuern, Rabatte und Versand werden beim Checkout berechnet.",
-   "shipping_policy_html": "<a href=\"{{ link }}\">Versand<\/a> wird beim Checkout berechnet.",
-   "duties_and_taxes_included_shipping_at_checkout_with_policy_without_discounts_html": "Inkl. Zollgebühren und Steuern. Versand wird beim Checkout berechnet.",
-   "duties_and_taxes_included_shipping_at_checkout_without_policy_without_discounts": "Inkl. Zollgebühren und Steuern. Versand wird beim Checkout berechnet.",
-   "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_without_discounts_html": "Inkl. Zollgebühren. Versand wird beim Checkout berechnet.",
-
-[DUMP] locales/de.schema.json:
-   "free_shipping_over": "<p>Kostenloser Versand ab 50 $<\/p>",
-   "shipping_based_on_location": "<p>Der Versand wird basierend auf deinem Standort und den Artikeln in deiner Bestellung berechnet. Du erfährst den Versandpreis i
-   "work_quickly_to_ship": "<p>Wir werden deine Bestellung so schnell wie möglich versenden. Sobald deine Bestellung versandt wurde, erhältst du eine E-Mail mit we
-   "how_much_for_shipping": "Wie hoch sind die Versandkosten?",
-   "shipping": "Versand",
-
-[DUMP] sections/header-group.json:
-   "text": "🇨🇭 Schweizer Shop · 🚚 Gratis-Versand ab CHF 65 · ↩️ 30 Tage Rückgabe",
-   "text": "📦 Schneller Versand aus EU-Lager · 2–7 Werktage",
+3 Ziel-Assets werden geprüft…
 
 sections/header-group.json:
    "ab CHF 65"→"ab CHF 50" ×1
    "2–7 Werktage"→"5–12 Werktage" ×1
-   [DRY] nicht geschrieben.
-
-[DUMP] templates/index.json:
-   "text": "<p>LuxeStyle: Günstige Preise, Schweizer Qualität. Sicher bezahlen, ehrliche Lieferzeiten und 30 Tage Geld-zurück-Garantie.<\/p>",
-   "custom_liquid": "<div style=\"background:#faf7f1;border-block:1px solid #ece4d6;padding:14px 1rem;\"><div style=\"max-width:1200px;margin:0 auto;display:flex;f
-   "name": "💰 Günstige Lieblinge · alles unter CHF 25",
+   ✓ geschrieben.
 
 templates/index.json:
    "ab CHF 65"→"ab CHF 50" ×1
-   [DRY] nicht geschrieben.
+   "Schweizer Qualität"→"geprüfte Qualität" ×1
+   ✓ geschrieben.
 
-Fertig: 66 Assets gescannt, 0 geändert (DRY).
+Fertig: 3 Assets gescannt, 2 geändert.
