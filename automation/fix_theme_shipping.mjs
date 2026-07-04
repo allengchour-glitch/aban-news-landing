@@ -28,6 +28,11 @@ const REPL=[
   ['2–7 Werktage','5–12 Werktage'], ['2-7 Werktage','5–12 Werktage'],
   ['2–7 Tage','5–12 Tage'], ['2-7 Tage','5–12 Tage'],
   ['Schweizer Qualität','geprüfte Qualität'], // Swissness-Claim verboten (Nicht-CH-Produkte)
+  // Deutschland raus (strikt-CH); Meta/og/twitter-description „Versand in die Schweiz und nach Deutschland".
+  ['in die Schweiz und nach Deutschland','in die Schweiz'],
+  ['Schweiz und nach Deutschland','Schweiz'],
+  [' und nach Deutschland',''],
+  ['und nach Deutschland',''],
 ];
 const applyRepl=(s)=>{ let v=s, hits=[]; for(const [a,b] of REPL){ if(v.includes(a)){ const n=v.split(a).length-1; v=v.split(a).join(b); hits.push(`"${a}"→"${b}" ×${n}`); } } return {v,hits}; };
 
@@ -38,7 +43,7 @@ if(!theme){ W('❌ Kein Theme gefunden.'); process.exit(0); }
 W(`Theme: ${theme.name} (id ${theme.id}, role ${theme.role})`);
 
 // 2) GEZIELTE Dateien (zuverlässig; Voll-Scan war rate-limitiert/unvollständig). SCAN=1 = alle Kandidaten.
-let keys=['sections/header-group.json','templates/index.json','config/settings_data.json'];
+let keys=['sections/header-group.json','templates/index.json','config/settings_data.json','layout/theme.liquid','snippets/meta-tags.liquid'];
 if(process.env.SCAN==='1'){
   const al=await rest(`themes/${theme.id}/assets.json`);
   keys=(al.j?.assets||[]).map(a=>a.key).filter(k=>
@@ -51,7 +56,7 @@ let changed=0, scanned=0;
 for(const key of keys){
   const a=await rest(`themes/${theme.id}/assets.json?asset[key]=${encodeURIComponent(key)}`);
   const val=a.j?.asset?.value; if(typeof val!=='string'){ continue; } scanned++;
-  if(process.env.DUMP==='1'){ const lines=val.split(/\\n|\n/).filter(l=>/Werktag|Arbeitstag|EU-Lager|Lieferzeit|Lieferung|Versand|\b\d\s?[–-]\s?\d\b|CHF\s?\d/i.test(l)); if(lines.length){ W(`\n[DUMP] ${key}:`); lines.slice(0,12).forEach(l=>W('   '+l.trim().slice(0,160))); } }
+  if(process.env.DUMP==='1'){ const lines=val.split(/\\n|\n/).filter(l=>/Werktag|Arbeitstag|EU-Lager|Lieferzeit|Lieferung|Versand|Deutschland|meta_?desc|og:desc|description|\b\d\s?[–-]\s?\d\b|CHF\s?\d/i.test(l)); if(lines.length){ W(`\n[DUMP] ${key}:`); lines.slice(0,12).forEach(l=>W('   '+l.trim().slice(0,180))); } }
   const {v,hits}=applyRepl(val);
   if(!hits.length) continue;
   W(`\n${key}:`); hits.forEach(h=>W('   '+h));
