@@ -24,4 +24,12 @@
   - `templates/index.json` (Homepage-Banner): „ab CHF 65"→„ab CHF 50", „Schweizer Qualität"→„geprüfte Qualität" ✓ geschrieben.
   - Versand-Policy: keine per-API-Policy vorhanden (Text kam aus dem Theme = miterfasst).
 - ⏳ **Bleibt (embedded App-UI, per Port/2 Klicks):** Judge.me „hide when empty" — englisches „No reviews" an Produkten ausblenden (Judge.me → Settings → Widget → bei 0 Reviews ausblenden + DE-Lokalisierung). Reviews-Import = User.
-- 🛠️ **Tool für künftige Theme-Ehrlichkeits-Fixes:** `fix_theme_shipping.mjs` (gezielt auf header-group.json/index.json, exakte Strings, DRY_RUN/DUMP/SCAN-Modi) — Muster für weitere Theme-Text-Korrekturen per API.
+- 🛠️ **Tool für künftige Theme-Ehrlichkeits-Fixes:** `fix_theme_shipping.mjs` (Voll-Scan mit Retry/Throttle = zuverlässig alle 211 Assets, exakte Strings, DRY/DUMP/SCAN) — Muster für weitere Theme-Text-Korrekturen per API.
+
+## Nachtrag (Voll-Scan + Live-Verify 2026-07-04 spät)
+- ✅ **Voll-Scan fand 2 übersehene Fundstellen:** `templates/product.json` + `templates/collection.json` hatten noch „ab CHF 65" → CHF 50 korrigiert.
+  Damit ist „CHF 65" restlos aus dem GANZEN Shop (auch Produkt-/Kategorieseiten, wo gekauft wird).
+- ✅ **Live-Verify (echtes HTML) bestätigt:** CHF 50, 5–12 Werktage, „geprüfte Qualität", /pages/faq CH-only — alles gerendert, kein CDN-Cache.
+- ⚠️ **Homepage-Meta „…in die Schweiz und nach Deutschland" (nur meta/og/twitter-description, UNSICHTBAR):** verifiziert NICHT im Theme (211 Assets, 0 Treffer)
+  und NICHT im Online-Store-Präferenzen-Feld (4 URLs + Nav-Klick, kein Feld). → wird von einer **App** gesetzt, wahrscheinlich **MetaShop (Instagram & Facebook)**
+  oder ein SEO-App-Embed. **NUR USER/App-Setting:** in der betreffenden App die Meta-/og-Description von „und nach Deutschland" bereinigen. Reine SEO-Snippet-Kosmetik, keine sichtbare Seite betroffen.
