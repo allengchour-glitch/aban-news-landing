@@ -1,4 +1,8 @@
 # 🔗 SHARED-MEMORY
+# ⭐ GOOGLE CUSTOMER REVIEWS — PC-/BROWSER-CLAUDE-TASK (CizQ6 2026-07-04): kostenlose echte Käufer-Bewertungen +
+#   Google-Sterne-Siegel = greift den 0★-Trust-Blocker Nr.1 an. Snippet + Schritte: `automation/local/GOOGLE-REVIEWS-BROWSER-TASK.md`.
+#   In Shopify Einstellungen→Checkout→Bestellstatus-Seite→Zusätzliche Skripte einfügen (oder Google-Customer-Reviews-App).
+#   Google-Merchant-Feed ist vom User bereits sauber aufgesetzt (CH-Versand CHF7/gratis ab 50 · Lieferzeit 7-14 · Rückgabe 30T · strikt CH, KEIN DE/US/IT).
 # 🧠 KI-KRITIK-FUNDE (CizQ6 2026-07-04, Groq+Gemini via page_critique.mjs + Cloud-Analyse) — an THEME-SESSION:
 #   1. NAV zu überladen: „WM/Fan-Trikot 2026 selbst gestalten" steht als Kategorie NEBEN „Frauen" UND als Top-Link → Hauptnav auf 5–7 Kernkategorien; saisonales Trikot in ein Aktions-Banner/Landingpage, nicht in die Hauptnav.
 #   2. LIEFERZEIT-INKONSISTENZ (Ehrlichkeit!): Header/Ankündigungsbalken sagt „2–7 Werktage", PDP sagt (korrekt) „7–14 Tage". Header ist zu optimistisch → auf realistische, KONSISTENTE Angabe vereinheitlichen (die 7–14 gilt).
