@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -349,6 +349,7 @@ footer {
 footer a { color: #d1d5db; text-decoration: none; }
 footer a:hover { color: #fff; }
 footer .footer-links { margin-bottom: 8px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+footer .wrap { max-width: 760px; margin: 0 auto; }
 
 /* UTILITY */
 ul.check-list { padding-left: 20px; }
@@ -860,14 +861,7 @@ ul.check-list li::marker { content: "✓  "; color: var(--accent); }
   <div class="newsletter">
     <h3>📬 Deals &amp; Ratgeber direkt ins Postfach</h3>
     <p>Wöchentlich die besten Angebote aus der Schweiz – kostenlos, jederzeit abmeldbar.</p>
-    <form class="nl-form"
-          action="https://abannews.beehiiv.com/subscribe"
-          method="POST"
-          target="_blank"
-          rel="noopener noreferrer">
-      <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required autocomplete="email">
-      <button type="submit">Anmelden</button>
-    </form>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </div>
 
   <!-- RELATED PAGES -->
@@ -904,15 +898,18 @@ ul.check-list li::marker { content: "✓  "; color: var(--accent); }
 </main>
 
 <footer>
-  <div class="footer-links">
-    <a href="/">Start</a>
-    <a href="/kaufberater-schweiz.html">Kaufberater</a>
-    <a href="/werkzeug-kaufen-schweiz.html">Werkzeug</a>
-    <a href="/datenschutz.html">Datenschutz</a>
-    <a href="/impressum.html">Impressum</a>
+  <div class="wrap">
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
+    <a href="/impressum.html">Impressum</a> ·
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
-  <p style="margin:0">© 2026 abannews.com · Alle Preisangaben in CHF · Zuletzt aktualisiert: 27. Juni 2026</p>
 </footer>
 
+<script src="/js/affiliate-config.js" defer></script>
+<script src="/js/partner-box.js" defer></script>
+<script src="/js/ads-config.js" defer></script>
+<script src="/js/ad-slot.js" defer></script>
 </body>
 </html>
