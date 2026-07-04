@@ -52,6 +52,9 @@ log "TikTok Events API / CAPI: bezahlte Orders server-seitig an TikTok (No-op oh
 log "Perso-Trikot-Bruecke: personalisierte Bestellungen als Printful-ENTWURF stagen (GO=Entwurf, confirm=0 -> KEINE Zahlung; No-op ohne PRINTFUL_API_KEY in /opt/luxe/.env)..."
 GO=1 "$NODE" automation/printful_perso_bridge.mjs 2>&1 | tail -6 || log "perso_bridge uebersprungen (weiter)"
 
+log "Liefer-Watchdog: haengende Sendungen (>7T versandt, nicht zugestellt) flaggen -> luxe.stuck_shipments (Lehre aus #1004)..."
+"$NODE" automation/delivery_watchdog.mjs 2>&1 | tail -8 || log "delivery_watchdog uebersprungen (weiter)"
+
 log "Proof-of-Life Metafeld stempeln (luxe.vps_last_run)..."
 "$NODE" automation/vps/stamp_alive.mjs 2>&1 | tail -3 || log "stamp uebersprungen (weiter)"
 

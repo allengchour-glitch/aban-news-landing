@@ -1,5 +1,22 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (Bestellungen #1004/#1005 geklärt + Port-Automatik + Liefer-Watchdog + Session-Lehren)
+- **📦 #1004 (LED-Laterne, an Romy Marti/Grenchen, CHF 31.90, bezahlt):** Carrier lt. Track123 = **ShipRocket** (Indien-Aggregator, NICHT BigBuy!),
+  Status **„order ready"** — Label erstellt, aber seit 27.06 NICHT im Transit (hängt). Tracking `8420327578013`. Shopify-Fulfillment korrigiert:
+  carrier=ShipRocket + Track123-Store-Link (`luxestyle.ch/apps/track123?nums=8420327578013`). **Lehre:** Überseе-Lieferant chasen + ehrliche lange Lieferzeit ausweisen.
+  (BigBuy-Order 18128192/307€/15.06 ist eine SEPARATE Sache, nicht die Laterne.)
+- **⚽ #1005 (Alain, Trikot XL/Rot, CHF 41.90, bezahlt):** UNFULFILLED — bei Printful in Produktion (#PF165452870), Tracking kommt automatisch.
+- **🛡️ NEU: Liefer-Watchdog (`delivery_watchdog.mjs`, in VPS-Daily + cmd `watchdog`):** flaggt Sendungen, die >7T versandt aber nicht zugestellt sind
+  → luxe.stuck_shipments. Damit fällt „hängt bei order-ready" künftig SOFORT auf, nicht erst wenn der Kunde fragt (Lehre aus #1004).
+- **🔌 Port-Automatik gebaut:** `klaviyo-tracking-port`, `judgeme-reviews-port`, `bigbuy-order-port`, `fix_tracking`, `order_lookup` (alle DRY-first, CDP 9222).
+- **⚠️ WICHTIGE LEHREN (merken):**
+  - **Agent-Brave = eigenes Profil** (`--user-data-dir=%USERPROFILE%\brave-agent`, Port 9222) ≠ normaler Browser. Shopify-Admin IST dort eingeloggt (Judge.me/Apps klappt),
+    BigBuy NICHT (User loggt im normalen Browser ein). → Für BigBuy-Port-Tasks muss man im AGENT-Fenster einloggen. BigBuy-Order-Panel = **controlpanel.bigbuy.eu/orders** (nicht www.bigbuy.eu/my-account).
+  - **Judge.me IST installiert** (Reviews + Importer, Gratis-Test). Aktivierung der Auto-Bewertungs-Anfrage = 2 Klicks in der App (embedded iframe, blind schwer zu automatisieren). Auch installiert: **Track123** (Sendungsverfolgung!), **SEOWILL Sticky Cart** (mobiler ATC-Hebel), Printful, Marketplace Connect.
+  - **Klaviyo bekommt 0 Shop-Events** (API-verifiziert) → Integration/Tracking neu verbinden = User-OAuth (kein Skript).
+  - **Cloud hat KEIN SHOPIFY_CLIENT_SECRET** (nur CLIENT_ID) → Shopify-Abfragen laufen über den PC (cmd-poll). Gmail-MCP + Klaviyo-MCP sind im Cloud nutzbar.
+- **🔴 3 User-Unlocks bis zum 1. Verkauf (unverändert):** Klaviyo-Reconnect · Judge.me-Auto-Request an + Reviews · echte Seed-Käufe. Rest ist gebaut/autonom.
+
 ## 2026-07-04 (Bewertungen ehrlich automatisieren + Funnel-bis-Verkauf-Map)
 - **⭐ User „mach die Bewertung selber irgendwie" → KEINE Fake-Reviews** (User-eigener Dauerauftrag „alles ehrlich" + illegal CH/UWG
   + Shop-Sperr-Risiko). Stattdessen ehrliche Bewertungs-Maschine dokumentiert in `dropship/REVIEWS-UND-VERKAUF-AUTOMATION-2026-07.md`:
