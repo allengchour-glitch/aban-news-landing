@@ -52,9 +52,13 @@ if(process.env.SCAN==='1'){
   );
 }
 W(`${keys.length} Ziel-Assets werden geprüft…`);
-let changed=0, scanned=0;
+const sleep=ms=>new Promise(x=>setTimeout(x,ms));
+let changed=0, scanned=0, failed=0;
 for(const key of keys){
-  const a=await rest(`themes/${theme.id}/assets.json?asset[key]=${encodeURIComponent(key)}`);
+  // zuverlässig: Retry bei Rate-Limit/Fehler + Drosselung (sonst wird der Scan unvollständig)
+  let a, tries=0; while(true){ a=await rest(`themes/${theme.id}/assets.json?asset[key]=${encodeURIComponent(key)}`); if(a.status===200||++tries>=4) break; await sleep(600*tries); }
+  await sleep(120);
+  if(a.status!==200){ failed++; }
   const val=a.j?.asset?.value; if(typeof val!=='string'){ continue; } scanned++;
   if(process.env.DUMP==='1'){ const lines=val.split(/\\n|\n/).filter(l=>/Werktag|Arbeitstag|EU-Lager|Lieferzeit|Lieferung|Versand|Deutschland|meta_?desc|og:desc|description|\b\d\s?[–-]\s?\d\b|CHF\s?\d/i.test(l)); if(lines.length){ W(`\n[DUMP] ${key}:`); lines.slice(0,12).forEach(l=>W('   '+l.trim().slice(0,180))); } }
   const {v,hits}=applyRepl(val);
@@ -66,5 +70,5 @@ for(const key of keys){
   else { W('   ✗ Fehler '+up.status+' '+String(up.t).slice(0,120)); }
   await new Promise(x=>setTimeout(x,300));
 }
-W(`\nFertig: ${scanned} Assets gescannt, ${changed} geändert${DRY?' (DRY)':''}.`);
+W(`\nFertig: ${scanned} Assets gescannt (${failed} Fehl-Fetches), ${changed} geändert${DRY?' (DRY)':''}.`);
 if(!changed && !DRY) W('Hinweis: keine Ziel-Strings gefunden — evtl. steht der Banner-Text in Theme-Settings unter anderem Wortlaut. reports/fix-theme-shipping.txt + settings_data prüfen.');
