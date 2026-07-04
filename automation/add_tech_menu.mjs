@@ -17,6 +17,7 @@ const toInput=it=>({title:it.title, type:'HTTP', url:it.url, items:(it.items||[]
 const items=cur.items.map(toInput);
 
 const techItem={ title:'📱 Elektronik & Technik', type:'HTTP', url:'/collections/elektronik-technik', items:[
+ {title:'⚡ Hightech & Gadgets', type:'HTTP', url:'/collections/hightech-gadgets'},
  {title:'🎧 Kopfhörer & Audio', type:'HTTP', url:'/collections/kopfhoerer-audio'},
  {title:'📱 Handy-Zubehör', type:'HTTP', url:'/collections/handy-zubehoer'},
  {title:'🖥️ Computer & Zubehör', type:'HTTP', url:'/collections/computer-zubehoer'},

@@ -2282,3 +2282,16 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   Stationery-Fehltreffern → laptop/macbook/tablet-halter/-hülle/-ständer/ipad-hülle). Ins Tech-Menü-Dropdown gehängt (jetzt 9 Punkte).
 - **Homepage-Tech-Reihe** `cl_tech` live (collection-list nach pl_gaming): 7 Typ-Collections als Kacheln → „nach Typ shoppen".
   Skript `automation/add_tech_row.mjs`. Backup in dropship/theme-backups/.
+
+---
+**📌 2026-07-04 (⚡ HIGHTECH-Abteilung + ⚠️ PARALLEL-SESSION-KOLLISION in bigbuy_import.mjs):**
+- **⚠️ WICHTIG:** Eine PARALLEL-Session editiert ebenfalls `automation/bigbuy_import.mjs` (Commit „fix(import): Klima-Ban").
+  Beim Reset+Rebase gingen meine druck3d/bambu3d/basteln/makerelektronik-Configs verloren (gaming war OK/gemergt).
+  **Re-added additiv + Rebase-Konflikt gelöst** (meine 5 Configs behalten, deren gaming/anime/Klima-Ban unangetastet).
+  **Lehre:** bei bigbuy_import.mjs-Edits IMMER `git fetch+rebase` vor Commit, Konflikte additiv lösen — nicht die
+  andere Session überschreiben. Configs sind additive Objekt-Keys → Konflikt nur an der Einfüge-Grenze.
+- **NEU: hightech-Config + Collection** (`⚡ Hightech & Gadgets`, handle `hightech-gadgets`): Saugroboter/VR-Headset/
+  Action-Cam/Gimbal/E-Scooter/Hoverboard/E-Bike/Lasergravierer/Massagepistole/Überwachungskamera/Mähroboter
+  (BigBuy hat all das: Taxonomie 17855/21313/8312/26678…; Shop hatte 0 Robo-Sauger/VR!). Collection = tag:hightech
+  (Import-gefüttert) + sichere Title-Terms, CREATED_DESC, 8 Kanäle, 27 Startprodukte. Im Tech-Menü zuoberst.
+- **Loops nach 2. Reset neu:** bb_loop (CATS mit hightech ergänzt) + cj_loop (CJGRPS). Beide laufen.
