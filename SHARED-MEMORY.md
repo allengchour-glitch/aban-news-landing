@@ -2271,3 +2271,14 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
   schlägt Interdiscount NICHT bei Marken-Geräten, sondern bei **breitem, sauber gegliedertem Zubehör/Gadget-Longtail + Preis**.
 - **Lehre:** Browse-by-Typ via TITLE-CONTAINS-Smart-Collections ist der schnelle Weg, vorhandene Produkte wie ein
   grosser Elektronik-Händler zu gliedern — Regeln aber IMMER am echten Treffer prüfen (projektor-Falle).
+
+---
+**📌 2026-07-04 (Nachtrag — Laptop/Notebook-Frage + Homepage-Tech-Reihe):**
+- **Laptops/Notebooks/Tablets = NICHT verfügbar** (BigBuy-Taxonomie: nur „Laptop & Netbook-Zubehör", „Taschen f. Laptops",
+  „Tablet-Zubehör" — echte Geräte sind Marken-Direktvertrieb, wie Handys/Bambu-Lab). Keine Fakes. Für echte Laptops bräuchte
+  es Refurbished-IT-Lieferant/Distributor-Konto (User-Business-Entscheidung).
+- **Stattdessen echtes Sortiment gebündelt:** Collection **💻 laptop-tablet-zubehoer** (41 Produkte: Sleeves/Taschen/Ständer/
+  Ladekabel/Lautsprecher/Trolley/Tablet-Halter), TITLE-CONTAINS (bare „tablet"/„notebook" bewusst RAUS wg. Tablett/Tabletten/
+  Stationery-Fehltreffern → laptop/macbook/tablet-halter/-hülle/-ständer/ipad-hülle). Ins Tech-Menü-Dropdown gehängt (jetzt 9 Punkte).
+- **Homepage-Tech-Reihe** `cl_tech` live (collection-list nach pl_gaming): 7 Typ-Collections als Kacheln → „nach Typ shoppen".
+  Skript `automation/add_tech_row.mjs`. Backup in dropship/theme-backups/.

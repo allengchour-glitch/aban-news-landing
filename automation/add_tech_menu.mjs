@@ -20,6 +20,7 @@ const techItem={ title:'📱 Elektronik & Technik', type:'HTTP', url:'/collectio
  {title:'🎧 Kopfhörer & Audio', type:'HTTP', url:'/collections/kopfhoerer-audio'},
  {title:'📱 Handy-Zubehör', type:'HTTP', url:'/collections/handy-zubehoer'},
  {title:'🖥️ Computer & Zubehör', type:'HTTP', url:'/collections/computer-zubehoer'},
+ {title:'💻 Laptop- & Tablet-Zubehör', type:'HTTP', url:'/collections/laptop-tablet-zubehoer'},
  {title:'💾 Speicher & Datenträger', type:'HTTP', url:'/collections/speicher-datentraeger'},
  {title:'⌚ Smartwatches & Wearables', type:'HTTP', url:'/collections/smartwatches-wearables'},
  {title:'🚁 Drohnen & FPV', type:'HTTP', url:'/collections/drohnen-fpv'},
