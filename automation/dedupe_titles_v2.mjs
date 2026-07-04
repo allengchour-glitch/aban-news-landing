@@ -49,14 +49,19 @@ const clip=t=>t.length>255?t.slice(0,255):t;
 const t=await tk();if(!t){console.error('Kein Token');process.exit(1);}
 
 // 1) Paginate ALL active products
-let c=null,all=[];
+let c=null,all=[],pages=0;
 do{
-  const r=await gql(t,`query($c:String){products(first:100,after:$c,query:"status:active",sortKey:CREATED_AT){pageInfo{hasNextPage endCursor}nodes{id title variants(first:8){nodes{sku barcode selectedOptions{name value}}}}}}`,{c});
-  const pg=r?.data?.products;if(!pg){console.error('Fetch abgebrochen');break;}
-  all.push(...pg.nodes);
+  let pg=null;
+  for(let attempt=0;attempt<8 && !pg;attempt++){
+    const r=await gql(t,`query($c:String){products(first:100,after:$c,query:"status:active",sortKey:CREATED_AT){pageInfo{hasNextPage endCursor}nodes{id title variants(first:8){nodes{sku barcode selectedOptions{name value}}}}}}`,{c});
+    pg=r?.data?.products;
+    if(!pg){process.stderr.write(`\n  Seite-Retry ${attempt+1} (cursor ${c?c.slice(-8):'start'})\n`);await sleep((attempt+1)*3000);}
+  }
+  if(!pg){console.error('\nFetch endgültig abgebrochen bei cursor',c);break;}
+  all.push(...pg.nodes);pages++;
   c=pg.pageInfo.hasNextPage?pg.pageInfo.endCursor:null;
   process.stderr.write(`\rgeladen: ${all.length}`);
-  await sleep(120);
+  await sleep(150);
 }while(c);
 process.stderr.write(`\n`);
 console.log(`Aktive Produkte gescannt: ${all.length}`);
