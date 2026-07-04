@@ -1,4 +1,14 @@
 # 🔗 SHARED-MEMORY
+# 🔬 20-AGENTEN-LIVE-AUDIT (CizQ6 2026-07-04, User „informiere ne runde, 20 agenten, dann lernen") — HARTE DEFEKTE, an THEME-SESSION:
+#   Alle 20 Agenten konvergieren erneut: Engpass = TRUST(0 Reviews)+MOBILE-CONVERSION (87% Mobil-Traffic, 9x-Leak). Neu = KONKRET+verifiziert:
+#   [THEME] 1. PAYMENT-BADGES: 0 Zahlungs-Logos im PDP-HTML (gegrept!) obwohl Klarna AKTIV → TWINT/Klarna/Visa/MC/PayPal-Badge-Leiste an Buy-Box JEDER PDP + Footer, sichtbar VOR Klick. = stärkster CH-Hebel.
+#   [THEME] 2. PDP-SELBSTWIDERSPRUCH: dieselbe PDP zeigt Versand CHF 50 UND 65 + Lieferzeit 3-7 UND 7-14 → EINE Quelle (delivery_block.mjs), parallele Theme-/Metafeld-Snippets löschen. (CizQ6 fixt die Policy-/Page-Texte per API; Theme muss die Theme-Snippets ziehen.)
+#   [THEME] 3. JUDGE.ME 0-STERNE-ZEILE bei 0 Reviews AUSBLENDEN (rating_count>0) — leere Sternezeile signalisiert „nie gekauft", schadet mehr als kein Widget.
+#   [THEME] 4. HOMEPAGE: 4 rotierende Banner → 1; „Schweizer Shop" widerspricht „EU-Lager 5-12 Werktage" → ehrlich auflösen („Versand aus EU, 5-12 Werktage, Preis inkl. aller Gebühren, keine Zollüberraschung"). Hero-Claim „Premium & Günstig" schärfen. Haupt-CTA von /collections/sommer → kuratierte CHF-25-70-Frauen-Winner.
+#   [THEME] 5. GRATISVERSAND-FORTSCHRITTSBALKEN („Noch CHF X bis gratis") in Cart+Mini-Cart+PDP-Sticky — fehlt komplett; stärkster ehrlicher AOV-Hebel für Schmuck-Sets CHF 22-45.
+#   [THEME] 6. MOBILE-SPEED: UpPromote-JS + Microsoft Clarity aus Storefront-Render deferren (kein Käufernutzen), EIN LCP-Hero eager+fetchpriority=high (Rest lazy), preconnect/dns-prefetch für Klaviyo/Judge.me/TikTok/monorail. LCP<2.5s = +0.4-0.7 Conv-Punkte.
+#   [THEME/SEO] 7. INDEX-BLOAT: /collections/all = 21271 Artikel via auto-generierter Barcode-/UUID-Junk-Collections → noindex + aus Home-Nav; versteckte visually-hidden-H1 → sichtbare Keyword-H1. Home-Meta „nach Deutschland" streichen (App/Preferences, bekannt).
+#   [CizQ6/API — ich mache das autonom] Katalog: Topseller neu bestücken (CHF 300-675+Herrenuhren RAUS → CHF-25-70-Frauen-Winner), Fremdkörper (Hantel/Make-up-Pinsel/Socken) aus Frauen-Collections, CHF-4.90-Ramsch aussortieren (Preis-Cliff schliessen), PDP-Bilderpflicht (min. 3-4, CHF-675-Tasche hat nur 1). Policies: revDSG/EDÖB statt DSGVO, EU-Widerruf raus, Firmenname einheitlich „LuxeStyle CH, Inhaber Alleng Chour". Vollreport: `dropship/AUDIT-20AGENT-2026-07-04.md` + Gehirn-Regeln.
 # ✅ TRIKOT 1:1 ECHT (CizQ6+Browser 2026-07-04): Echtes Printful-Design auf „Blank Rot" (15447487480193): rotes AOP-Trikot
 #   + weisse Naht (Kragen/Bündchen) + Schweizer Fahne (Printful-Clipart). Alains Order PF165452870 im Order-EDITOR aufs
 #   Kreuz-Design umgestellt (LEHRE: Druckdateien frieren beim Bestellzeitpunkt ein → Master-Design-Änderung reicht NICHT,

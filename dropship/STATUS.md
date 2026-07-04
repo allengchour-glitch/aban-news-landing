@@ -1,5 +1,21 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-04 (SPÄT-NACHT — 20-Agenten-Informier-Runde + Lernen + Gratis-Quellen-Check)
+- **🔬 20-AGENTEN-LIVE-AUDIT (User „informiere ne runde, 20 agenten, dann lernen"):** 20 Lanes (Live-Shop-Fetch + CH-Recherche), 85 Kandidaten-Lehren →
+  **17 neue Gehirn-Regeln** in `knowledge.json` (deduped). Diesmal HARTE, verifizierte Defekte statt Prinzipien:
+  PDP zeigt gleichzeitig CHF 50 UND 65 + Lieferzeit 3-7 UND 7-14 · **0 Zahlungs-Logos im PDP-HTML** trotz aktivem Klarna ·
+  schädliche leere Judge.me-0-Sterne-Zeile · 4 konkurrierende Homepage-Banner (Schweizer-Shop-vs-EU-Lager-Widerspruch) ·
+  Topseller CHF 300-675 + Herrenuhren für kalten Traffic · Preis-Cliff (CHF 4.90 → 675 ohne Mittelbau) · Index-Bloat (21271 Barcode-Junk-Collections) · revDSG-Lücke.
+- **🎨 THEME-HEBEL an Theme-Session übergeben** (SHARED-MEMORY, oben): Payment-Badges an Buy-Box, 4→1 Banner, Judge.me-hide-empty,
+  Gratisversand-Fortschrittsbalken, Mobile-Speed (UpPromote/Clarity deferren, LCP-Hero, preconnect), Junk-Collections noindex. = die stärksten Conversion-Hebel.
+- **📦 CizQ6/API (autonom, teils gequeued):** Policy-`policies-dump` gequeued → dann revDSG/EDÖB-Rewrite + EU-Widerruf raus + Firmenname einheitlich.
+  Katalog-Neukuratierung (Topseller CHF-25-70-Frauen, Fremdkörper/Ramsch raus, PDP-Bilderpflicht) = nächste fokussierte Charge.
+- **🆓 GRATIS-QUELLEN-CHECK (User „benutze alles gratis was bringt"):** Semrush = kein MCP-Zugang bei diesem Plan (raus). Google-Trends-CH (keylos) läuft,
+  heute aber nur Sport/News (kein Shop-Signal). Aktiver Gratis-Motor = die Web-Recherche-Schwärme selbst. Nächste Gratis-Einsätze: Adobe-Express-Grafiken, Klaviyo-Flow-Vorlagen, Gmail-Monitoring.
+- **📧 POSTFACH-INTEL (Gmail):** Judge.me-AliExpress-Review-CSV war exportiert (Link ~3h, abgelaufen → Re-Export nötig) = ehrlicher Review-Weg bewiesen ·
+  Pinterest-Business-Team bot Support an (gratis Kanal) · B2B-Anmeldung an shopcom.ch raus (CH-Lieferant) · #1005 bei Printful in Produktion. Alles ins Gehirn.
+
+
 ## 2026-07-04 (NOCH SPÄTER — 20-Agenten-Rundum-Audit + 2. Ehrlichkeits-Welle gequeued)
 - **🔍 20 Agenten haben luxestyle.ch live durchgefetcht** (je 1 Bereich) → Vollreport `dropship/AUDIT-20AGENT-2026-07-04.md`.
   Vieles SAUBER (20 Landingpages 200 · alle Collections befüllt · 88 interne Links 200 · compareAt plausibel · Impressum echt).
