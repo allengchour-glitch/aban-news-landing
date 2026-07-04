@@ -100,22 +100,12 @@ function pickReel() {
   const cand = [...mont, ...mw, ...lmw, ...PRIO.filter(f => all.includes(f)), ...luxe]
     .filter(f => big(f) && !/-meta\.mp4$/.test(f) && !flagged.has(f) && !seen.has(f) && (seen.add(f), true));
   for (const f of cand) if (!done.includes(f) && !sharesProduct(f)) return path.join(REELS, f);
-  // PERPETUAL (User „mehrmals am Tag, suberi Lösig"): wenn ALLE schon gepostet → Rotation neu starten.
-  // FIX 2026-06-22 (User: Montana-Dublette 21.+22. auf TikTok): NICHT komplett leeren — sonst wird dasselbe
-  // Video (erstes der Liste) am Folgetag sofort wieder gepostet. Stattdessen die zuletzt geposteten N behalten,
-  // damit nach dem Reset zuerst die laenger nicht geposteten drankommen (kein Sofort-Wiederholer).
-  if (cand.length) {
-    const KEEP = Math.min(10, Math.max(0, cand.length - 1)); // mind. 1 Video bleibt waehlbar
-    try {
-      const lines = fs.existsSync(DONE) ? fs.readFileSync(DONE, 'utf8').split('\n').filter(Boolean) : [];
-      const keep = lines.slice(-KEEP);
-      fs.writeFileSync(DONE, keep.length ? keep.join('\n') + '\n' : '');
-    } catch { try { fs.writeFileSync(DONE, ''); } catch {} }
-    log('♻️ Alle Reels gepostet → Rotation startet neu (letzte ' + KEEP + ' behalten = keine Dublette).');
-    const done2 = readDone();
-    for (const f of cand) if (!done2.includes(f)) return path.join(REELS, f);
-    return path.join(REELS, cand[0]);
-  }
+  // FIX 2026-07-04 (User „immer das gleiche löschen nervt" — 3x „Chetti Stella" auf TikTok): KEIN Re-Post mehr.
+  // Wenn ALLE verfügbaren Reels schon gepostet sind → No-Op (nichts posten), statt das erste Video zu wiederholen.
+  // Der alte Perpetual-Rotation-Fallback (cand[0] erneut posten) war die Dubletten-Ursache. Mehr Frequenz =
+  // mehr FRISCHE Reels erzeugen (fresh-veo/veo-batch), nicht dasselbe nochmal. So gibt es NIE wieder Dubletten.
+  log('Alle verfügbaren Reels bereits gepostet → No-Op (kein Re-Post; warte auf neue Reels).');
+  return null;
   return null;
 }
 // Caption aus video_queue.csv ziehen (gleiche coole Mundart-Captions wie Meta), sonst reels-captions.json.
