@@ -1,4 +1,4 @@
-2026-07-04T15:01:59.052Z DRY
+2026-07-04T15:06:33.201Z DRY
 → öffne https://admin.shopify.com/store/luxestyle-ch/apps
    Screenshot: automation/local/judgeme-shots/judgeme-0.png  (aktiver Frame: https://admin.shopify.com/store/luxestyle-ch/setti)
    Text (Auszug): Skip to content Frühjahr 2026 Suchen STRG K LuxeStyle Startseite Bestellungen 2 Produkte Kunden Wachstum Rabatte Inhalt Markets Finanzen Statistiken Vertriebskanäle TikTok Apps Judge.me Reviews Sidekick-Unterhaltungen Zustimmung für Printful-Daten abfragen Apps in Shopify erweitern den Shop Erstellung einer Versandrichtlinie für Shopify Einstellungen Größe der Seitenleiste anpassen My Store 4 Shops Organisation Benutzer Abrechnung LuxeStyle luxestyle.ch Allgemein Plan Zahlungen Checkout Kundenko
