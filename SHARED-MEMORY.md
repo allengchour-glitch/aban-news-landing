@@ -2170,3 +2170,25 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **User-Aufträge bestätigt umgesetzt:** „wie Temu für Schweiz" = Shop IST bereits Temu-artig (breit+günstig) aber als
   vertrauenswürdige CH-Alternative positioniert (Budget-Collections `unter-chf-25`, Preis-aufsteigend). „immer Neuheiten
   rein" + „alles Mögliche von allen Lieferanten" = Dauer-Loops (BigBuy+CJ) importieren kontinuierlich neu, Ledger gegen Doppelte.
+
+---
+**📌 2026-07-04 (✅ SESSION-ABSCHLUSS — Gaming voll bedient, 6 Agenten, Loop konsolidiert):**
+- **6 Agenten fertig (alle live auf Shopify):**
+  - 🎨 Farben EN→DE: **303 Farbwerte** in 174 Mode-Produkten (Pfauenblau/Saphirblau/Weinrot…), 0 Fehler, 4520 gescannt.
+  - ✂️ Titel-Bereinigung: **193 Titel** (108 Doppelwort- + 85 rohe SKU/EAN-Codes entfernt), 168 riskante Strips
+    bewusst verworfen (Duplikat-Schutz). Ledger `/tmp/title_clean_done.txt`.
+  - 🔤 SEO-Backfill: **0 nötig** — Katalog-SEO ist komplett sauber (Importer setzen seo.title beim Anlegen).
+  - 🏠 Homepage: neue **🎮 Gaming**-Reihe (`pl_gaming`) live nach Elektronik, Backup `dropship/theme-backups/`.
+  - 🖼️ Collection-Politur: alle 315 Collections geprüft; nur die 5 Gaming-Sub-Collections hatten Lücken →
+    Hero+SEO gesetzt. **Bug in `collection_polish.mjs` gefixt** (kein Retry bei GraphQL-THROTTLED → brach still
+    bei ~148 ab; jetzt THROTTLED-Retry + kleinere Page-Size → paginiert zuverlässig alle 315).
+  - 🏷️ Alt-Texte: fertig.
+- **🎮 Gaming-Ergebnis:** 5 Plattform-Sub-Collections gefüllt & poliert (kein Gemisch): pc-gaming **145** ·
+  retro-handheld **133** · playstation **57** · xbox **53** · nintendo-switch **19** = **407 Produkte auto-sortiert**.
+  Homepage-Reihe live. BigBuy-Gaming ist **erschöpft** (11'463 BigBuy-Produkte bereits importiert, Ledger skippt
+  korrekt) → weiteres Gaming-Wachstum kommt aus CJ (Mega-Loop deckt 527 CJ-Kategorien ab).
+- **🔁 BigBuy-Loop konsolidiert:** vorher liefen 2 bigbuy_import-Prozesse parallel → Rate-Limit-Starvation. Jetzt
+  **1 Prozess** lädt den 388MB-Katalog EINMAL und rotiert alle 38 Kategorien (gaming zuerst), PER=45 GAP=1400,
+  while-true-Wrapper `/tmp/bb_loop.sh`. CJ-Mega-Loop läuft parallel (creating live). Beide = „immer Neuheiten von allen Lieferanten".
+- **Lehre:** Nie 2 bigbuy_import gleichzeitig (gemeinsames striktes BigBuy-Rate-Limit → beide verhungern). Ein
+  Prozess mit interner Kategorie-Rotation ist effizienter (1× Katalog-Load statt pro Kategorie).
