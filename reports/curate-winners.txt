@@ -1,0 +1,7 @@
+Winner aufgeloest: 20/20
+Collection existiert noch nicht.
+✓ Collection erstellt: gid://shopify/Collection/689722818945
+✓ 20 Produkte hinzugefuegt.
+✓ auf Online Store publiziert.
+
+Fertig: /collections/frauen-favoriten mit 20 Winnern. Theme-Session: Home-CTA/Nav hierauf zeigen lassen.
