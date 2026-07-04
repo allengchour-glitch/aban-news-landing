@@ -12,6 +12,10 @@
   Katalog-Neukuratierung (Topseller CHF-25-70-Frauen, Fremdkörper/Ramsch raus, PDP-Bilderpflicht) = nächste fokussierte Charge.
 - **🆓 GRATIS-QUELLEN-CHECK (User „benutze alles gratis was bringt"):** Semrush = kein MCP-Zugang bei diesem Plan (raus). Google-Trends-CH (keylos) läuft,
   heute aber nur Sport/News (kein Shop-Signal). Aktiver Gratis-Motor = die Web-Recherche-Schwärme selbst. Nächste Gratis-Einsätze: Adobe-Express-Grafiken, Klaviyo-Flow-Vorlagen, Gmail-Monitoring.
+- **🔑 KEYCHECK LIVE (PC, `reports/keycheck.txt`):** Shopify-Secret gültig · **FAL_KEY gültig** (→ Winner-Reels scheitern am Code/Modell, NICHT am Key) · Gemini/Groq/DeepSeek ok ·
+  **🔴 PRINTFUL_API_KEY = HTTP 403 (tot)** → nächste Perso-Trikot-Order scheitert, neuer Key nötig (User-Login) · TT_API_LIVE=NEIN (TikTok via Browser).
+- **✅ FIXES LIVE (PC-Reports):** `swissness` 47 Pages + 5 Collections (Privat-Leak allengchour@gmail.com + support@/hello@ → info@; „Swiss Made"→„geprüfte Qualität") ·
+  `chf65-sweep` 57 Artikel + 11 Pages (CHF 65→50) · `policies-ch` + `giga` + `keycheck` alle im Done-Ledger.
 - **📧 POSTFACH-INTEL (Gmail):** Judge.me-AliExpress-Review-CSV war exportiert (Link ~3h, abgelaufen → Re-Export nötig) = ehrlicher Review-Weg bewiesen ·
   Pinterest-Business-Team bot Support an (gratis Kanal) · B2B-Anmeldung an shopcom.ch raus (CH-Lieferant) · #1005 bei Printful in Produktion. Alles ins Gehirn.
 

@@ -481,6 +481,7 @@
   "53": "2026-07-04 POSTFACH-INTEL REVIEW-IMPORT-WEG BEWIESEN: Judge.me AliExpress-Review-CSV-Export laeuft (an info@luxestyle.ch geliefert 04.07.) - Download-Link gilt nur ~3h, also sofort nach Export importieren; ehrlicher Weg zu ersten Sternen ohne Fake. Bei Ablauf neu exportieren.",
   "54": "2026-07-04 POSTFACH-INTEL PINTEREST-KANAL OFFEN: Pinterest-Business-Team (Alex) bot proaktiv Unterstuetzung an (Mail 01.07. an info@luxestyle.ch) = gratis Buy-Intent-Kanal fuer CH-Frauen-Mode/Schmuck; Boards/Pins-Setup existiert bereits; Antwort = User-Login.",
   "55": "2026-07-04 POSTFACH-INTEL NEUER CH-LIEFERANT: B2B-Dropshipping-Anmeldung an shopcom.ch raus (04.07.) - potenziell CH-naher Lieferant (kuerzere Lieferzeit als EU/CN-Lager); bei Freischaltung fuer Trust/Lieferzeit-Vorteil pruefen.",
+  "56": "2026-07-04 KEYCHECK-BEFUND: luxe-secrets.ps1 auf dem PC — Shopify-Secret gueltig (write_products), FAL_KEY GUELTIG (HTTP200, d.h. Winner-Reels-Render scheitert am CODE/Modell-Parameter NICHT am Key), Gemini/Groq/DeepSeek ok. BLOCKER: PRINTFUL_API_KEY = HTTP 403 (ungueltig/abgelaufen) -> naechste Perso-Trikot-Bridge-Order scheitert, neuer Printful-Key noetig (User-Login). TT_API_LIVE=NEIN (TikTok laeuft ueber Browser). Diagnose-Tool: automation/keycheck.mjs (cmd keycheck), leakt nie Werte.",
   "reach": [
    "#fyp",
    "#foryou"
