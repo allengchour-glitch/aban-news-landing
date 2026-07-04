@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-CH">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,6 +55,26 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.topnav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#0f2d1a;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.tn-in{
+  max-width:760px;
+  margin:0 auto;
+  padding:10px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.tn-brand{font-weight:800;color:#fff;text-decoration:none;font-size:1.05rem;letter-spacing:.02em}
+.tn-links{display:flex;gap:16px;flex-wrap:wrap}
+.tn-links a{color:#d1fae5;text-decoration:none;font-size:.88rem;font-weight:600}
+.tn-links a:hover{color:#fff}
 :root{
   --amber:#15803d;
   --amber-lt:#16a34a;
@@ -278,8 +298,45 @@ footer{
   }
 }
 </script>
+<script type="application/ld+json" data-aban-breadcrumb>
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Start",
+      "item": "https://abannews.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kaufberater",
+      "item": "https://abannews.com/kaufberater-schweiz.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Fernglas kaufen Schweiz",
+      "item": "https://abannews.com/fernglas-kaufen-schweiz.html"
+    }
+  ]
+}
+</script>
 </head>
 <body>
+
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
 
 <nav class="abn-bc" style="max-width:760px;margin:0 auto;padding:9px 18px;font-size:.8rem;color:#6b7280" aria-label="Brotkrumen">
   <a href="/" style="color:#15803d">Start</a>
@@ -294,7 +351,7 @@ footer{
     <div class="ic">🔭</div>
     <h1>Fernglas kaufen Schweiz 2026</h1>
     <p>Der Schweizer Ratgeber zu Vergrösserung, Prismen, Wasserdichtigkeit und dem richtigen Modell für Wandern, Vogelbeobachtung und Alpeneinsatz.</p>
-    <a class="cta-btn" href="/go/ebay?q=fernglas&amp;customid=fernglas-kaufen-schweiz" target="_blank" rel="noopener noreferrer">
+    <a class="cta-btn" href="/go/ebay?q=fernglas&amp;customid=fernglas-kaufen-schweiz" target="_blank" rel="sponsored nofollow noopener noreferrer">
       Ferngläser auf eBay.ch ansehen →
     </a>
     <div class="trust">
@@ -761,6 +818,164 @@ footer{
     <li>Probehalten — Gewicht, Griffigkeit und Okularabstand persönlich testen</li>
   </ul>
 
+  <!-- 11. Top-Marken -->
+  <h2>11. Top-Marken im Vergleich</h2>
+  <p>
+    Die Markenwahl entscheidet stark über Optikqualität, Verarbeitung und Wiederverkaufswert. In der
+    Schweiz sind alle grossen Hersteller über Fachhandel und Onlineshops gut verfügbar — von der
+    Einstiegsserie bis zum jagdlichen Flaggschiff.
+  </p>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Marke</th>
+        <th>Herkunft</th>
+        <th>Bekannte Serien</th>
+        <th>CHF-Bereich</th>
+        <th>Besonderheit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="ck0">Swarovski Optik</td>
+        <td>Österreich</td>
+        <td>EL, NL Pure, SLC</td>
+        <td>1 200–3 000</td>
+        <td>Premium-Referenz, Jagd &amp; Naturbeobachtung</td>
+      </tr>
+      <tr>
+        <td class="ck1">Leica</td>
+        <td>Deutschland</td>
+        <td>Ultravid, Noctivid, Trinovid</td>
+        <td>900–2 800</td>
+        <td>Sehr hohe Kontrastwiedergabe, robuste Bauweise</td>
+      </tr>
+      <tr>
+        <td class="ck2">Zeiss</td>
+        <td>Deutschland</td>
+        <td>Victory SF, Conquest HD</td>
+        <td>700–2 900</td>
+        <td>Sehr grosses Sehfeld, exzellente Vergütung</td>
+      </tr>
+      <tr>
+        <td class="ck3">Nikon</td>
+        <td>Japan</td>
+        <td>Monarch, Prostaff, Aculon</td>
+        <td>150–1 100</td>
+        <td>Starkes Preis-Leistungs-Verhältnis, breite Modellpalette</td>
+      </tr>
+      <tr>
+        <td class="ck4">Kite Optics</td>
+        <td>Belgien</td>
+        <td>Petrel, Ibis, Toucan</td>
+        <td>250–1 200</td>
+        <td>Spezialisiert auf Vogelbeobachtung, leicht &amp; weitwinklig</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Für Einsteiger, die primär Wandern und gelegentlich beobachten, lohnt sich der Einstieg bei
+    Nikon oder vergleichbaren Mittelklasse-Marken ab CHF&nbsp;150–300. Wer regelmässig in der
+    Dämmerung unterwegs ist oder ein Fernglas fürs Leben sucht, profitiert von der Optik- und
+    Vergütungsqualität von Swarovski, Leica oder Zeiss — diese Hersteller geben zudem meist
+    10–30&nbsp;Jahre Herstellergarantie.
+  </p>
+
+  <!-- 12. Jagdfernglas -->
+  <h2>12. Jagdfernglas für die Ansitzjagd</h2>
+  <p>
+    Jagdferngläser stellen andere Anforderungen als reine Wander- oder Beobachtungsmodelle: Die
+    entscheidenden Momente auf dem Ansitz liegen oft in der Morgen- oder Abenddämmerung, wenn Wild
+    am aktivsten, das Licht aber am schwächsten ist.
+  </p>
+  <ul class="blist">
+    <li><strong>Grössere Objektive:</strong> 50–56&nbsp;mm statt 42&nbsp;mm sammeln mehr Licht
+    für die letzten Minuten vor Einbruch der Dunkelheit</li>
+    <li><strong>Hohe Lichttransmission:</strong> 90&nbsp;%+ ist bei Premium-Jagdoptik Standard —
+    entscheidet über erkennbare Details im Restlicht</li>
+    <li><strong>Robustes, wetterfestes Gehäuse:</strong> Gummiarmierung und Stickstofffüllung sind
+    Pflicht, da Ansitze bei jedem Wetter stattfinden</li>
+    <li><strong>Ruhiges, dunkles Erscheinungsbild:</strong> Mattschwarze oder tarnfarbene Gehäuse
+    ohne störende Reflexe bevorzugt</li>
+    <li><strong>Entfernungsmesser-Kombigeräte:</strong> Für die weidgerechte Schussdistanz-Einschätzung
+    zunehmend verbreitet, besonders im Gebirgsjagdrevier</li>
+  </ul>
+  <p>
+    Die Jagd ist in der Schweiz kantonal geregelt — Patentjagd oder Revierjagd je nach Kanton, mit
+    eigenen Jagdprüfungen und Ausrüstungsvorgaben der kantonalen Jagdverwaltung. Ein Fernglas gehört
+    zur Grundausrüstung, ist aber gesetzlich nicht vorgeschrieben; die kantonalen Jagdverbände
+    empfehlen jedoch durchweg lichtstarke 8×50- oder 10×50-Modelle für die Dämmerungsjagd im Wald
+    und in den Bergen. Vor dem Kauf lohnt sich eine Rücksprache mit dem zuständigen kantonalen
+    Jagdverband oder erfahrenen Jägern im Revier.
+  </p>
+
+  <!-- 13. Astronomie -->
+  <h2>13. Astronomie mit dem Fernglas</h2>
+  <p>
+    Ein Fernglas ist ein unterschätztes Astronomie-Einsteigergerät: leichter als ein Teleskop,
+    schnell einsatzbereit und mit beiden Augen ein natürlicheres Seherlebnis. Für Himmelsbeobachtung
+    zählen andere Prioritäten als beim Wandern.
+  </p>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Eignung</th>
+        <th>Stativ nötig?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="ck0">10×50</td>
+        <td>Mondkrater, Sternhaufen, helle Nebel</td>
+        <td>Optional, freihändig möglich</td>
+      </tr>
+      <tr>
+        <td class="ck1">15×70</td>
+        <td>Jupitermonde, Doppelsterne, feinere Details</td>
+        <td>Empfohlen</td>
+      </tr>
+      <tr>
+        <td class="ck2">20×80+</td>
+        <td>Tiefer-Himmel-Objekte, Galaxien</td>
+        <td>Zwingend, sonst kein ruhiges Bild</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Die meisten Astronomie-Ferngläser ab 10×50 verfügen über ein <strong>Stativgewinde</strong>
+    (meist unter einer Abdeckkappe zwischen den Tuben) für einen Standard-Stativadapter — damit lässt
+    sich auch bei höherer Vergrösserung ein ruhiges, zitterfreies Bild halten.
+  </p>
+  <p>
+    Ein grosser Vorteil der Schweiz für Hobby-Astronomen: Abseits der Städte, etwa in Teilen von
+    Graubünden und im Wallis, ist die <strong>Lichtverschmutzung</strong> deutlich geringer als im
+    dicht besiedelten Mittelland. Ausgewiesene Sternenparks und dunkle Alpentäler bieten damit sehr
+    gute Bedingungen für Fernglas-Astronomie ganz ohne Teleskop.
+  </p>
+
+  <!-- 14. Pflege und Zubehör -->
+  <h2>14. Pflege und Zubehör</h2>
+  <p>
+    Gute Optik verdient gute Pflege. Die richtige Reinigung und passendes Zubehör verlängern die
+    Lebensdauer eines Fernglases erheblich und erhalten die Bildschärfe über viele Jahre.
+  </p>
+  <ul class="checklist">
+    <li>Mikrofaser-Reinigungstuch für Fingerabdrücke und leichten Staub auf den Linsen</li>
+    <li>Optik-Reinigungsflüssigkeit oder -stift für hartnäckige Verschmutzungen, nie trocken reiben</li>
+    <li>Blasebalg oder weicher Pinsel, um groben Staub vor dem Wischen zu entfernen</li>
+    <li>Trockenmittel (Silica-Gel-Beutel) im Etui gegen Feuchtigkeit bei längerer Lagerung</li>
+    <li>Gepolstertes Trageetui für Transport und Aufbewahrung zwischen den Touren</li>
+    <li>Breiter, gepolsterter Trageriemen für Komfort auf mehrstündigen Wanderungen</li>
+    <li>Okular- und Objektivschutzkappen konsequent nutzen, auch bei kurzen Pausen</li>
+  </ul>
+  <p>
+    Nach nasser Nutzung das Fernglas bei Zimmertemperatur offen trocknen lassen, bevor es im Etui
+    verstaut wird — sonst kann sich eingeschlossene Feuchtigkeit später als Beschlag auf der
+    Innenseite der Linsen bemerkbar machen. Bei Stickstoff-gefüllten Modellen ist dieses Risiko
+    deutlich geringer, aber Etui-Trockenmittel bleibt trotzdem sinnvoll.
+  </p>
+
   <!-- FAQ -->
   <h2>Häufige Fragen zum Fernglas-Kauf</h2>
 
@@ -805,7 +1020,7 @@ footer{
     <strong style="font-size:1.1rem">Fernglas direkt vergleichen und kaufen</strong>
     <p>Auf eBay.ch findest du neue und gebrauchte Ferngläser aller Kategorien —
     von Kompakt bis Profi-Optik, mit Käuferschutz und Schweizer Versand.</p>
-    <a href="/go/ebay?q=fernglas&amp;customid=fernglas-kaufen-schweiz" target="_blank" rel="noopener noreferrer">
+    <a href="/go/ebay?q=fernglas&amp;customid=fernglas-kaufen-schweiz" target="_blank" rel="sponsored nofollow noopener noreferrer">
       Ferngläser auf eBay.ch ansehen →
     </a>
   </div>
@@ -813,9 +1028,7 @@ footer{
   <!-- Related guides -->
   <p class="rel" style="margin-top:28px">
     Weitere Kaufberater:
-    <a href="/kamera-kaufen-schweiz.html">Kamera kaufen Schweiz</a> ·
-    <a href="/drohne-kaufen-schweiz.html">Drohne kaufen Schweiz</a> ·
-    <a href="/kaufberater-schweiz.html">Alle Kaufberater</a>
+    <a href="/kaufberater-schweiz.html">Alle Kaufberater im Überblick</a>
   </p>
 
   <!-- Newsletter -->
@@ -824,15 +1037,7 @@ footer{
     <p style="font-size:.88rem;color:var(--ink2);margin:4px 0 10px">
       Das Beste aus dem Marktplatz + 1 Tipp, Mo–Fr in 5 Minuten. Kein Spam, jederzeit abbestellbar.
     </p>
-    <form action="https://abannews.beehiiv.com/subscribe" method="get"
-          style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap">
-      <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail"
-             style="flex:1;min-width:160px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:inherit">
-      <button type="submit"
-              style="background:#15803d;color:#fff;border:0;border-radius:24px;padding:10px 20px;font-weight:800;cursor:pointer">
-        Abonnieren
-      </button>
-    </form>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </section>
 
   <div data-ad-slot="landing-mid" style="margin-top:18px"></div>
@@ -845,7 +1050,8 @@ footer{
     aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
     <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
     <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
