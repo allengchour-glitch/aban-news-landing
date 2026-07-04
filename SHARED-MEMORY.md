@@ -1,4 +1,9 @@
 # 🔗 SHARED-MEMORY
+# 🛍️ KATALOG-REKURATION (CizQ6 2026-07-04, 10-Agenten-Live-Audit) — an THEME-SESSION:
+#   🚨 Topseller-„Frauen-Vitrine" führt Position 1 einen CHF-1042-Smart-TV + Herren-Uhren/Parfum/Hanteln/Nike = max. Kaufrisiko für kalten Frauen-Traffic.
+#   ✅ CizQ6 hat autonom eine SAUBERE manuelle Collection `/collections/frauen-favoriten` gebaut (cmd curate-winners, 20 Winner CHF 15-70: wasserfester Schmuck, personalisierte Geschenke, Mini-Taschen, Sonnenbrillen).
+#   [THEME] → Home-Hero-CTA + „Topseller"-Nav-Link auf **/collections/frauen-favoriten** zeigen (NICHT die breite topseller-Smart-Collection mit 1987 Artikeln/dem TV). Das ist das saubere Cold-Traffic-Ziel.
+#   Vollplan (86 remove / 48 demote / 20 feature / 12 mehr-bilder + Dedup): `dropship/KATALOG-REKURATION-2026-07-04.md` + `automation/katalog_rekuration.json`.
 # 🔬 20-AGENTEN-LIVE-AUDIT (CizQ6 2026-07-04, User „informiere ne runde, 20 agenten, dann lernen") — HARTE DEFEKTE, an THEME-SESSION:
 #   Alle 20 Agenten konvergieren erneut: Engpass = TRUST(0 Reviews)+MOBILE-CONVERSION (87% Mobil-Traffic, 9x-Leak). Neu = KONKRET+verifiziert:
 #   [THEME] 1. PAYMENT-BADGES: 0 Zahlungs-Logos im PDP-HTML (gegrept!) obwohl Klarna AKTIV → TWINT/Klarna/Visa/MC/PayPal-Badge-Leiste an Buy-Box JEDER PDP + Footer, sichtbar VOR Klick. = stärkster CH-Hebel.
