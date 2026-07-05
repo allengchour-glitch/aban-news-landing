@@ -53,6 +53,15 @@ const ADULT_BAN = ['prostat', 'massager love', 'love panty', 'liebe panty', 'lus
 
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
+  modellautos: { coll: { handle: 'modellautos', title: '🏎️ Modellautos & Sammlerfahrzeuge', tag: 'modellauto' },
+    extraTags: ['spielzeug', 'geschenk', 'sammler', 'kinder'], type: 'Modellauto', maxCost: MAX_COST_EUR,
+    anchor: ['spielzeugauto', 'modellauto', 'modellfahrzeug', 'die-cast', 'diecast', 'sammlerauto',
+             'bburago', 'maisto', 'majorette', 'hot wheels', 'welly', 'norev', 'rc-auto', 'ferngesteuertes auto',
+             'model car', 'coche de juguete', 'coche modelo', 'miniatur auto'],
+    ban: ['autositz', 'kindersitz', 'autoschale', 'sitzerhöhung', 'go-kart', 'gokart', 'rutschauto', 'tretauto',
+          'bobby', 'laufrad', 'ride-on', 'werkstatt', 'parkhaus', 'autoreiniger', 'reifen', 'batterie',
+          'ersatzteil', 'schlüsselanhänger', 'autozubehör', 'wachs', 'politur', 'halterung', 'organizer', 'aufkleber'],
+    bullets: ['Detailgetreues Sammler- & Spielmodell', 'Beliebte Marke', 'Ideal zum Spielen & Sammeln', 'Tolle Geschenkidee'] },
   schmuck: { coll: { handle: 'premium-schmuck', title: '💎 Premium Schmuck', tag: 'schmuck' },
     extraTags: ['damen', 'geschenk', 'premium'], type: 'Schmuck', maxCost: MAX_COST_EUR,
     anchor: ['halskette', 'kette', 'armband', 'ohrring', 'ohrstecker', 'ring ', 'anhänger', 'armreif', 'collier',
