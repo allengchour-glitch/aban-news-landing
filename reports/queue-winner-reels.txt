@@ -1,0 +1,8 @@
+✗ Upload fehlgeschlagen winner-set18k: SHOPIFY_SHOP fehlt → No-op.
+✗ Upload fehlgeschlagen winner-herzmuschel: SHOPIFY_SHOP fehlt → No-op.
+✗ Upload fehlgeschlagen winner-geburtsstein: SHOPIFY_SHOP fehlt → No-op.
+✗ Upload fehlgeschlagen winner-onyx: SHOPIFY_SHOP fehlt → No-op.
+✗ Upload fehlgeschlagen winner-eternita: SHOPIFY_SHOP fehlt → No-op.
+✗ Upload fehlgeschlagen winner-amore: SHOPIFY_SHOP fehlt → No-op.
+
+Fertig: 0 Reels in die Queue, 0 schon drin, 6 fehlgeschlagen.
