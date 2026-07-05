@@ -1,16 +1,17 @@
 {
-  "ts": "2026-07-05T04:00:13.016Z",
+  "ts": "2026-07-05T09:38:06.931Z",
   "provider": "groq",
   "google_trends_ch": [
-    "20",
-    "peter zeidler",
-    "olise",
-    "match france paraguay",
-    "philadelphia",
-    "france - paraguay",
-    "incendie monthey",
-    "france paraguay 2026",
-    "pilgrim"
+    "nachtzug",
+    "jassbach",
+    "heu",
+    "fuoco",
+    "climatisation",
+    "tennis",
+    "zlatan ibrahimovic",
+    "ironman",
+    "20 minutes.ch",
+    "resultat coupe du monde"
   ],
   "own_tiktok_report": "tiktok-upload-result.png",
   "music_moods_available": {
@@ -27,66 +28,62 @@
   "ideen": {
     "content_ideen": [
       {
-        "idee": "Sommer-Outfit mit Accessoires",
+        "idee": "Sommer-Outfit-Tipps fürs Nachtleben",
         "kategorie": "Damenmode",
-        "hook_mundart": "Chumm, lueg dir das a",
-        "musik_mood": "elegant",
+        "hook_mundart": "Chumm mit, mir zeig dir, wie mer stylish in d Nacht startet!",
+        "musik_mood": "upbeat-pop",
         "hashtags": [
-          "#schweiz",
           "#schweizmode",
+          "#zürich",
           "#ootdschweiz",
-          "#züri"
+          "#nachtleben"
         ]
       },
       {
         "idee": "Schmuck-Trends für die nächste Saison",
         "kategorie": "Schmuck",
-        "hook_mundart": "Wasch dir s chli Gäld",
-        "musik_mood": "cinematic",
+        "hook_mundart": "Was meisch, dass mer trendig bliibt, het mer für di!",
+        "musik_mood": "elegant",
         "hashtags": [
-          "#schweizmode",
           "#schweiz",
-          "#ootdschweiz",
-          "#bern"
+          "#bern",
+          "#schmucktrends"
         ]
       },
       {
-        "idee": "Küchenausstattung für den perfekten Sommer",
-        "kategorie": "Küche",
-        "hook_mundart": "Lädeli für de Summer",
-        "musik_mood": "upbeat-pop",
-        "hashtags": [
-          "#schweiz",
-          "#schweizmode",
-          "#ootdschweiz",
-          "#lausanne"
-        ]
-      },
-      {
-        "idee": "Beauty-Tipps für die warme Jahreszeit",
+        "idee": "Chillige Sommerfrisuren mit Heu-Accessoires",
         "kategorie": "Beauty",
-        "hook_mundart": "Gönd di summerglöggli",
+        "hook_mundart": "Lass los, mir zeig dir, wie mer diä Frisur zum Blühen bringt!",
         "musik_mood": "lofi",
         "hashtags": [
           "#schweizmode",
-          "#schweiz",
-          "#ootdschweiz",
-          "#basel"
+          "#basel",
+          "#sommerfrisuren"
         ]
       },
       {
-        "idee": "Taschen-Trends für den Sommer",
-        "kategorie": "Taschen",
-        "hook_mundart": "Chli Tasche, grossi Wirkig",
+        "idee": "Stilvolle Bademode für die Schweizer Seen",
+        "kategorie": "Bademode",
+        "hook_mundart": "Chumm mit, mir zeig dir, wie mer cool am See bliibt!",
         "musik_mood": "house",
         "hashtags": [
           "#schweiz",
+          "#genf",
+          "#bademode"
+        ]
+      },
+      {
+        "idee": "Fuoco- Inspiration für deinen nächsten Outdoor-Trip",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Was meisch, dass mer die nächsti Tour plant, het mer für di!",
+        "musik_mood": "cinematic",
+        "hashtags": [
           "#schweizmode",
-          "#ootdschweiz",
-          "#geneva"
+          "#luzern",
+          "#outdoortrip"
         ]
       }
     ],
-    "trend_musik_note": "Elegant und cinematic Moods sind aktuell sehr beliebt, gerade in Verbindung mit Mode und Schmuck"
+    "trend_musik_note": "Die eleganten und upbeat Moods sind derzeit besonders beliebt in der Schweiz"
   }
 }
