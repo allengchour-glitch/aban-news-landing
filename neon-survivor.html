@@ -55,6 +55,7 @@ canvas{display:block}
   <div id="ability" style="margin-top:5px;font-size:.95rem;font-weight:800"></div>
 </div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
+<button id="abBtn" title="Puls-Blast" style="position:fixed;right:18px;bottom:22px;z-index:7;width:74px;height:74px;border-radius:50%;border:2px solid #ffd166;background:rgba(60,48,20,.55);color:#ffd166;font-size:1.7rem;font-weight:800;cursor:pointer;display:none">⚡</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · 3D-Roguelite</div>
@@ -227,10 +228,14 @@ function reset(){
   player.position.set(0,0.9,0);
 }
 var moveX=0,moveZ=0,keys={};
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key==="Escape"||e.key.toLowerCase()==="p")&&running){paused=!paused;announce(paused?"⏸ Pause (Esc/P)":"");}if(e.key===" "&&running&&!paused){if(e.preventDefault)e.preventDefault();castAbility();}});
+addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key==="Escape"||e.key.toLowerCase()==="p")&&running&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;announce(paused?"⏸ Pause (Esc/P)":"");}if(e.key===" "&&running&&!paused){if(e.preventDefault)e.preventDefault();castAbility();}});
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var touch=null;
 addEventListener("touchstart",function(e){if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
+(function(){var ab=document.getElementById("abBtn");if(!ab)return;
+  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)ab.style.display="block";
+  ab.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();if(running&&!paused)castAbility();},{passive:false});
+  ab.addEventListener("click",function(e){e.stopPropagation();if(running&&!paused)castAbility();});})();
 addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;}e.preventDefault();},{passive:false});
 addEventListener("touchend",function(){touch=null;});
 
@@ -266,6 +271,7 @@ function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"s
   var en=getMesh(enemies,enemyMesh);en.active=true;en.m.visible=true;en.boss=true;en.finalBoss=true;
   var a=rnd()*6.283;en.m.position.set(player.position.x+Math.cos(a)*ARENA*0.8,0.9,player.position.z+Math.sin(a)*ARENA*0.8);
   en.hp=800+S.kills*1.2;en.spd=2.4;en.xp=50;en.m.scale.set(4,4,4);
+  en.shooter=false;en.splitter=false;en.shootT=3.0; // Pool-Altlasten zurücksetzen (sonst spawnt der Endboss beim Tod Splitter-Minions)
   en.m.material.color.setHex(0xffd166);en.m.material.emissive.setHex(0xffaa00);en.baseEmissive=0xffaa00;en.flash=0;}
 // ---------- Waffen-System: mehrere Waffen (je 6 Level) → Build-Vielfalt ----------
 function spawnBullet(x,z,ang,spd,dmg,life,pierce,color){var b=getMesh(bullets,bulletMesh);b.active=true;b.m.visible=true;b.m.position.set(x,0.9,z);b.vx=Math.cos(ang)*spd;b.vz=Math.sin(ang)*spd;b.life=life;b.dmg=dmg;b.pierce=pierce||0;b.m.material.color.setHex(color||0x88ffff);b.m.material.emissive.setHex(color||0x88ffff);}
@@ -542,7 +548,8 @@ function spawnLoot(x,z,bias){var g=getMesh(loot,lootMesh);var ri=rollRarity(bias
 function applyLoot(ri){var r=RARITY[ri],picks=[],pool=AFFIXES.slice();for(var k=0;k<r.cnt&&pool.length;k++){var af=pool.splice(Math.floor(rnd()*pool.length),1)[0];af.f(r.pow);picks.push(af.l);}
   announce("["+r.n+"] "+picks.join(" · "));beep(ri>=3?1046:660,.2,"triangle",.08);shake=Math.max(shake,0.2);burst(player.position.x,player.position.z,r.c);}
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";
-  var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent="⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}}
+  var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent="⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
+  var abb=document.getElementById("abBtn");if(abb){var rdy=(S.abilityCD||0)<=0;abb.style.opacity=rdy?"1":"0.45";abb.style.boxShadow=rdy?"0 0 16px #ffd166":"none";}}
 reset(); showBest(); renderShop(); renderChars(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
 })();

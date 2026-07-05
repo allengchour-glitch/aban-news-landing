@@ -162,13 +162,15 @@ addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft
 var touchEl=document.getElementById("touch");
 document.getElementById("tzL").addEventListener("touchstart",function(e){keyL=true;e.preventDefault();},{passive:false});
 document.getElementById("tzL").addEventListener("touchend",function(){keyL=false;});
+document.getElementById("tzL").addEventListener("touchcancel",function(){keyL=false;});
 document.getElementById("tzR").addEventListener("touchstart",function(e){keyR=true;e.preventDefault();},{passive:false});
 document.getElementById("tzR").addEventListener("touchend",function(){keyR=false;});
+document.getElementById("tzR").addEventListener("touchcancel",function(){keyR=false;});
 document.getElementById("tzJ").addEventListener("touchstart",function(e){if(!running)start();else jumpQ=true;e.preventDefault();},{passive:false});
 
 function start(){resetRun();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");if("ontouchstart"in window)touchEl.style.display="block";}
 function showBest(){var b=bestT();document.getElementById("best2").textContent=b>0?("🏆 Beste Zeit: "+b+"s"):"";}
-function finish(win){running=false;won=win;if("ontouchstart"in window)touchEl.style.display="none";
+function finish(win){running=false;won=win;keyL=false;keyR=false;jumpQ=false;if("ontouchstart"in window)touchEl.style.display="none";
   var secs=Math.floor(elapsed),b=bestT(),rec=win&&(b===0||secs<b);if(rec)setBestT(secs);
   document.getElementById("overTag").textContent=win?"Ziel erreicht!":"Game Over";
   document.getElementById("finalT").textContent=win?("🏁 "+secs+"s"):"Aufgegeben";
@@ -207,7 +209,7 @@ function loop(now){
     // Münzen
     for(i=0;i<coinMeshes.length;i++){var cm=coinMeshes[i];if(cm.userData.got)continue;cm.rotation.y+=dt*4;var C=COINS[i];if(Math.abs(P.x-C.x)<0.9&&Math.abs(P.y-C.y)<1.1){cm.userData.got=true;cm.visible=false;coins++;beep(1046,.08,"triangle",.05);}}
     // Ziel erreicht
-    if(P.x>goalX-1.2&&P.y>goalY-1&&P.y<goalY+3){finish(true);}
+    if(P.x>goalX-1.2&&P.y>-1&&P.y<goalY+3){finish(true);}
     P.sq=Math.min(1,P.sq+dt*4);
   }
   // Spieler-Darstellung
