@@ -134,18 +134,18 @@ Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichne
 }
 
 // Fallback: Groq (OpenAI-kompatibel), falls Gemini-Quota erschöpft (2026-07-05).
-const GROQ_KEY=(process.env.GROQ_API_KEY||'').trim();
+const GROQ_KEYS=[(process.env.GROQ_API_KEY||''),(process.env.GROQ_API_KEY2||'')].map(s=>s.trim()).filter(Boolean);
+const GROQ_MODELS=['llama-3.3-70b-versatile','qwen/qwen3-32b','meta-llama/llama-4-scout-17b-16e-instruct'];
 async function groq(prompt){
- if(!GROQ_KEY)return null;
- for(let i=0;i<3;i++){
+ for(const model of GROQ_MODELS)for(const key of GROQ_KEYS){
   try{
    const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${GROQ_KEY}`},
-    body:JSON.stringify({model:'llama-3.3-70b-versatile',temperature:0.5,max_tokens:1200,
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`},
+    body:JSON.stringify({model,temperature:0.5,max_tokens:1200,
      response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
-   if(r.status===429){await sleep(20000);continue;}
-   const j=await r.json(); if(j.error)break;
-   const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;
+   if(r.status===429)continue;
+   const j=await r.json(); if(j.error)continue;
+   const o=JSON.parse(j.choices?.[0]?.message?.content||''); if(o.title&&o.html)return o;
   }catch{}
  }
  return await deepseek(prompt);
