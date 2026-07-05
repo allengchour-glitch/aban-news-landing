@@ -24,14 +24,13 @@ const KEY = process.env.FAL_KEY || '';
 // NACH VORNE (war nur letzter Fallback -> wir liefen faktisch auf v1). 2.0 = native Audio, echte Physik,
 // Director-Kamera. fal-IDs per fal.ai verifiziert (April 2026 live). Kosten 2.0: fast 720p ~$0.24/Sek
 // (~$1.20 pro 5-Sek-Clip), standard bis 1080p ~$0.30/Sek. v1 bleibt als guenstiger Fallback (Not-Found/Credits).
-// REIHENFOLGE-FIX 2026-07-04 (winner-reels lieferte mit 2.0-first ZWEIMAL 0 Clips trotz gueltigem FAL_KEY):
-// v1/pro ZUERST = bewaehrt+zuverlaessig mit diesen Params (res/dur/ar) → wir bekommen SICHER Video.
-// 2.0 danach nur als Bonus-Versuch (bricht bei erstem Erfolg ab, also greift v1 fast immer). SEEDANCE_MODEL uebersteuert.
+// REIHENFOLGE VERIFIZIERT 2026-07-05 (seedance-test auf dem PC): v1/pro + v1/lite = "Not Found" auf diesem
+// fal-Account, NUR seedance-2.0/fast funktioniert (rendert 6/6 Winner erfolgreich). Darum 2.0/fast ZUERST =
+// kein Fehlversuch mehr. Root-Cause des fruehen Fehlschlags war das FEHLENDE @fal-ai/client-Paket, nicht das Modell.
 const MODELS = process.env.SEEDANCE_MODEL ? [process.env.SEEDANCE_MODEL] : [
-  'bytedance/seedance/v1/pro/image-to-video',     // v1 Pro — zuverlaessig, gute Qualitaet, guenstig
-  'bytedance/seedance/v1/lite/image-to-video',    // v1 Lite — Fallback
-  'bytedance/seedance-2.0/fast/image-to-video',   // 2.0 Fast — Bonus, falls auf dem Account verfuegbar
-  'bytedance/seedance-2.0/image-to-video',        // 2.0 Standard
+  'bytedance/seedance-2.0/fast/image-to-video',   // 2.0 Fast — EINZIGES funktionierendes Modell (verifiziert), max 720p
+  'bytedance/seedance-2.0/image-to-video',        // 2.0 Standard — Fallback
+  'bytedance/seedance/v1/pro/image-to-video',     // v1 (Not Found auf diesem Account, nur als Notnagel)
 ];
 const IMG = val('--image');
 // PROMPT-LEHRE 2026-06-26 (YouTube Seedance 2.0 / Julian): KURZE englische Ad-Keywords schlagen lange
