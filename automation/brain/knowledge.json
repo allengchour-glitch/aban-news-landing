@@ -1,7 +1,7 @@
 {
  "version": 2,
  "purpose": "Persistentes Gedaechtnis der LuxeStyle-Social-Lernschleife. brain.mjs liest ALLE historischen TikTok-Reports kumulativ hier hinein und leitet daraus die besten Hashtags/Hooks/Aktionen ab. RATSCHE: bewiesene Verlierer bleiben geblockt, kuratierte Gewinner bleiben erhalten -> das Gehirn kann nur besser werden, nie zurueckfallen.",
- "updated": "2026-07-04",
+ "updated": "2026-07-05",
  "signals": {
   "hashtags": {
    "#luxestyle": {
@@ -489,6 +489,9 @@
   "61": "2026-07-04 KATALOG-KERNBEFUND (10-Agenten-Audit): Topseller-Frauen-Vitrine mit Fremdkoerpern geflutet - Position 1 = CHF-1042-Smart-TV, dazu Herren-Uhren/Parfum/Boxershorts, Xiaomi-Hanteln, Nike-Laufschuhe, MK-Taschen CHF 598-675. Kaltem 0-Review-Frauen-Traffic = max. Kaufrisiko-Signal. FIX: saubere manuelle Collection frauen-favoriten (20 Winner CHF 15-70, cmd curate-winners) + Home/Nav dorthin (Theme). Plan: dropship/KATALOG-REKURATION-2026-07-04.md.",
   "62": "2026-07-04 REKURATIONS-REGEL: Cold-Traffic-Vitrinen (Topseller/Home-Hero/Kampagnenziel) NUR CHF 15-70 Frauen-Accessoires mit niedrigem Erstkauf-Risiko. Teure On-Brand-Artikel (CHF 100+) behalten aber DEMOTEN (nie Position 1). Herren/Kinder/Non-Fashion/Gadgets/CHF-4.90-Ramsch raus aus Frauen-Collections. Smart-Collections erst auf Typ pruefen bevor man Mitgliedschaft aendert (nicht blind mutieren).",
   "63": "2026-07-04 SHOPIFY-API-LEHRE (teuer): Shop-POLICIES (Versand/Rueckgabe/Datenschutz/AGB) sind NICHT per REST PUT /policies/{id}.json schreibbar -> HTTP 406. Richtig: GraphQL shopPolicyUpdate(shopPolicy:{type,body}), types SHIPPING_POLICY/REFUND_POLICY/PRIVACY_POLICY/... Lesen via {shop{shopPolicies{type body}}}. Das erklaerte warum fix_policies_ch (REST) die Versand-Policy nie aenderte. Jetzt fix_policies_rewrite.mjs = GraphQL.",
+  "64": "2026-07-05 TRUST-AUDIT (18 Agenten, 270 Flags): SYSTEMISCHES TRADEMARK-RISIKO - /collections/uhren (~970 Artikel) + Teile von Taschen/Beauty/Sonnenbrillen sind fremde Marken (Michael Kors/Chanel/Tissot/Calvin Klein/Guess/Hugo Boss/Casio/Police/Versace/Lacoste) via BigBuy-Dropship, Marke in Titel+Handle. ~62 klare Verstoesse. = USER-ENTSCHEID (echte Marken-Ware legal ODER raus), NICHT unilateral - grosser Umsatzteil. Doc: dropship/TRUST-AUDIT-2026-07-05.md.",
+  "65": "2026-07-05 AUTONOM GEDRAFTET (27, reversibel): Nicht-Mode-Fremdkoerper (Smart-TVs/Werkzeug/Hydraulikventile/Gamepads/SSD/Router/Staubsauger/E-Roller) + Bild-Import-Fallen + unbelegte Chanel-100%-Original-Claims -> status DRAFT (archive_drafts.mjs, cmd archive-drafts). Regel: Nicht-Mode-Fremdkoerper + unbelegte Echtheits-/Original-Claims gehoeren NICHT in die Frauen-Boutique.",
+  "66": "2026-07-05 KATALOG-EHRLICHKEIT weitere Funde: geschenke-unter-30 enthaelt 250 Produkte >CHF30 (Filter kaputt); Swiss-Made auf Nicht-CH-Uhren; aufgeblasene compareAt; rohe Lieferanten-SKU als Titel (35R3S4CH3L); spanische Feed-Rohtitel (Pintaunas); Emoji-/(R)-Handles -> saubere DE-Namen+301. Bild: image-audit-fix (Gemini-Vision) draftet asiatische Schrift/Watermark automatisch.",
   "reach": [
    "#fyp",
    "#foryou"

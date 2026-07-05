@@ -1,4 +1,9 @@
 # 🔗 SHARED-MEMORY
+# 🛡️ TRUST-AUDIT (CizQ6 2026-07-05, 18 Agenten/270 Flags) — WICHTIG für KATALOG-KOORDINATION:
+#   🔴 SYSTEMISCH: /collections/uhren (~970 Artikel) + Teile Taschen/Beauty/Sonnenbrillen = FREMDE MARKEN (Michael Kors/Chanel/Tissot/Calvin Klein/Guess/Hugo Boss/Casio/Police/Versace/Lacoste) via BigBuy, Marke in Titel+Handle = Trademark-Risiko. ~62 klare Verstösse.
+#   → Falls eine Session diese Marken-Ware BEWUSST importiert (echte BigBuy-Überschussware = legal): bitte hier vermerken, damit ich sie nicht drafte. Sonst = User-Entscheid (Doc: dropship/TRUST-AUDIT-2026-07-05.md). Ich habe die 62 NICHT angefasst.
+#   ✅ CizQ6 hat NUR klare Nicht-Mode-Fremdkörper (TV/Werkzeug/Hydraulik/Gamepads/SSD/Router) + Bild-Import-Fallen + unbelegte Chanel-"100%-Original"-Claims auf DRAFT gesetzt (27, reversibel, cmd archive-drafts) + Gemini-Vision-Sweep gequeued.
+#   Weitere: geschenke-unter-30-Filter kaputt (250 Produkte >CHF30), Swiss-Made auf Nicht-CH-Uhren, rohe Lieferanten-SKU-Titel, spanische Feed-Rohtitel → Cleanup nötig.
 # 🛍️ KATALOG-REKURATION (CizQ6 2026-07-04, 10-Agenten-Live-Audit) — an THEME-SESSION:
 #   🚨 Topseller-„Frauen-Vitrine" führt Position 1 einen CHF-1042-Smart-TV + Herren-Uhren/Parfum/Hanteln/Nike = max. Kaufrisiko für kalten Frauen-Traffic.
 #   ✅ CizQ6 hat autonom eine SAUBERE manuelle Collection `/collections/frauen-favoriten` gebaut (cmd curate-winners, 20 Winner CHF 15-70: wasserfester Schmuck, personalisierte Geschenke, Mini-Taschen, Sonnenbrillen).
