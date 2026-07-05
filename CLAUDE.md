@@ -59,12 +59,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-07-05 (🎉 ERSTE BESTELLUNG!):** Erste echte Kundenbestellung eingetroffen — **POD/Printful**
-(Bestellung 3.7., versandt 5.7. ab Printful-Lettland, ID `PF165452870`): „Recyceltes Unisex-Trikot mit
-Allover-Druck (White/XL)" → Kunde in Payerne VD. Kaufpfad = POD-Linie, nicht CJ. **5 offene Prüfungen**
-(Marge/AOP-Kosten!, Doppel-Druck-Falle, **Klaviyo-Sync kaputt** [0 Orders/2 Profile in Klaviyo trotz Bestellung
-→ Flows laufen ins Leere], TikTok-CompletePayment-Event, Fulfillment-Status) → Details im neuen Top-Block in
-`SHARED-MEMORY.md` §LIVE-STAND. Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts mehr (GitLab prüfen).
+**📌 2026-07-05 (🎉 ERSTE VERKÄUFE — Order-Audit live verifiziert):** **2 bezahlte Bestellungen:**
+**#1004 (25.6., erster Verkauf!)** LED-Laterne «Boho» (BigBuy `bb-S3414715`, fulfilled — ⚠️ BigBuy-Bestellung
+verifizieren!) + **#1005 (3.7.)** ⚽ WM-Trikot selbst gestalten (Printful `165452870`, in Produktion, **Shopify noch
+UNFULFILLED — manuell fulfillen sobald Tracking da**, kein App-Link/external_id). Trikot-Marge war ~0 (VK 34.90 vs.
+Kosten 44.85 USD) → **Preis jetzt 59.90 ✅**. **Klaviyo-Sync kaputt** (zeigt 0 Orders trotz 2 PAID → App neu
+verbinden, nur User). Katalog: **10'000+ aktiv** (Füll-Session). Details: Top-Block `SHARED-MEMORY.md` §LIVE-STAND.
+Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts (GitLab prüfen).
 
 **📌 2026-06-13 (vorheriger Stand — ⚠️ GitHub-Actions-Sperre + Autonom-Spielregeln + ehrliche Daten):**
 - **⚠️⚠️ GITHUB ACTIONS IST ACCOUNT-WEIT GESPERRT** („Actions has been disabled for this user", Grund: zu hohe

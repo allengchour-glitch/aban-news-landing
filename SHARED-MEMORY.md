@@ -136,27 +136,27 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
-### 🎉🎉 2026-07-05 — ERSTE ECHTE KUNDENBESTELLUNG (POD/Printful)! (Status-Session, ZUERST LESEN)
-- **Beleg (User-Screenshot, Printful-Packzettel):** Bestellung vom **3. Jul 2026**, versandt **5. Jul 2026** ab
-  Printful-Lettland (LuxeStyle, Lidostas Parks, Marupes novads LV-2167). **Bestell-ID `PF165452870`**, Packzettel
-  `165452870-81056358`. Produkt: **„Recyceltes Unisex-Trikot mit Allover-Druck (White / XL)" ×1** → Kunde
-  Alain Schutz, Payerne VD (Schweiz). ⇒ **Erster Kauf überhaupt** (nach ~6 Wochen 0-Conversion) — Kaufpfad war die
-  **POD-Linie** (Selbst-gestalten/Fertigdesigns via Printful), NICHT der CJ-Katalog.
-- **⚠️ OFFENE PRÜFUNGEN (nächste Session MIT Shopify-MCP — diese Status-Session hatte keine Shopify-Tools/Creds):**
-  1. **Marge prüfen:** Allover-Print-Trikot ist bei Printful teuer (Kosten oft >CHF 30). Alte Falle (ABEND-TODO §0):
-     POD teils unter Printful-Kosten bepreist. Shopify-VK dieser Bestellung ansehen; falls Verlust → `automation/printful_reprice.mjs` fahren.
-  2. **Doppel-Druck-Falle:** ABEND-TODO §1.3 warnt: Printful-App-Auto-Import + eigener Sync können ZWEI Druckaufträge
-     erzeugen. In Printful prüfen, dass nur EIN Auftrag für diese Bestellung existiert (und welche Quelle ihn angelegt hat).
-  3. **Klaviyo-Sync ist KAPUTT:** Klaviyo (live abgefragt 05.07.) zeigt **0 „Placed Order", 0 „Checkout Started" seit 1.6.**
-     und hat nur **2 Profile** (auch die 11 Popup-Leads fehlen) — obwohl diese Bestellung existiert. ⇒ Shopify→Klaviyo-
-     Integration prüfen/neu verbinden, sonst laufen alle 8 Flows (Post-Purchase!) ins Leere.
-  4. **TikTok-Pixel:** Check beim ersten Kauf (Eintrag 06-10, DataHash gekündigt): kam das CompletePayment-Event im
-     TikTok Events Manager an? Falls nein → native Anbindung nachschärfen.
-  5. **Fulfillment/Kunde:** Shopify-Order als fulfilled markiert + Tracking an Kunden? Post-Purchase-Mail (Klaviyo) ging
-     wegen Punkt 3 vermutlich NICHT raus.
-- **Weitere Live-Signale 05.07.:** GitLab-CI lebt (brain/youtube + brain/auto heute aktualisiert), aber **brain/intel
-  (Shop-Autopilot-Reports/Feed) letzter Push 27.06.** → `autopilot-intel`/`shop-autopilot`-Jobs liefern nichts mehr, in
-  GitLab prüfen. GitHub Actions weiterhin gesperrt.
+### 🎉🎉 2026-07-05 — ERSTE ECHTE VERKÄUFE! Voller Order-Audit (Status-Session, live per Admin-API verifiziert)
+**Es gibt inzwischen ZWEI bezahlte Kundenbestellungen (Klaviyo zeigt fälschlich 0):**
+- **#1004 (25.06., DER ERSTE VERKAUF): LED-Laterne «Boho» Rattan-Optik** (BigBuy, SKU `bb-S3414715`), CHF 24.90+7
+  Versand, PAID/**FULFILLED**. ⚠️ OFFEN: verifizieren, dass die Ware wirklich bei **BigBuy bestellt** wurde
+  (wer hat fulfilled? Braucht BIGBUY_API_KEY oder User-Bestätigung) — sonst wartet ein Kunde auf nichts!
+- **#1005 (03.07.): ⚽ Schweiz Fan-Trikot 2026 selbst gestalten** (SKU `WM-TRIKOT-RO-XL`), CHF 34.90+7, PAID/
+  **UNFULFILLED in Shopify**. Printful-Auftrag `165452870` existiert (manuell angelegt, `external_id=None` → KEIN
+  App-Link!): Status pending, bestätigt, kein Fehler, **noch nicht gedruckt** (printed=0, kein Tracking; AOP=Cut&Sew
+  2–5 Werktage; User-Packzettel war nur das vorbereitete Dokument). **Kosten 44.85 USD** (31.50 Produkt + 9.99 Versand).
+  ⇒ Verkauf zu 34.90 war ~Nullmarge; **Preis ist inzwischen auf CHF 59.90 gefixt** (alle 20 Varianten, ~CHF 28 Marge) ✅.
+  **📌 TODO sobald Printful Tracking liefert: Shopify-#1005 MANUELL fulfillen** (kein Auto-Sync wegen external_id=None)!
+- **#1003 (21.06.):** Vakuumierer (CJ) CHF 26.90 — EXPIRED/unbezahlt (abgebrochener Checkout, kein Verkauf).
+- **🔴 KLAVIYO-SYNC DEFINITIV KAPUTT:** 2 PAID-Orders existieren, Klaviyo (live abgefragt) zeigt **0 Placed Order,
+  0 Checkout Started, nur 2 Profile** (auch Popup-Leads fehlen). ⇒ Post-Purchase-/Abandoned-Flows laufen ins Leere.
+  **Fix = Shopify↔Klaviyo-App neu verbinden (nur User).**
+- **Offen zudem:** TikTok-CompletePayment-Event für #1004/#1005 im Events Manager prüfen (DataHash gekündigt).
+- **Weitere Live-Signale 05.07.:** Katalog inzwischen **10'000+ aktive Produkte** (Masse durch BigBuy/CJ-Füll-Session).
+  GitLab-CI lebt (brain/youtube + brain/auto 05.07. aktualisiert), aber **brain/intel letzter Push 27.06.** →
+  `autopilot-intel`/`shop-autopilot`-Jobs in GitLab prüfen. GitHub Actions weiterhin gesperrt.
+- **Shopify-Zugriff ohne MCP (Rezept bestätigt):** Client-Credentials-Grant (CLAUDE.md §Kernfakten) funktioniert —
+  Token ~24h, Scope reicht für Orders/Products/Preise. Order-Queries OHNE Kunden-PII abfragen (Adresse/Name weglassen).
 
 ### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
 **Reichweite/Distribution 2026 (Web-Recherche):**
