@@ -1,0 +1,142 @@
+<style>
+:root{
+  --cream:#f6f2ea; --paper:#fffdf8; --ink:#201d18; --ink-soft:#4a4238;
+  --gold:#c6a664; --gold-deep:#a8863f; --stone:#8a7f6d; --sage:#7d8a72;
+  --line:#e9e0cf; --shadow:28px 44px -30px rgba(40,30,12,.45);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{--cream:#17140f;--paper:#211c15;--ink:#f3ecdd;--ink-soft:#c7bca6;--line:#33291c;--shadow:28px 44px -30px rgba(0,0,0,.7);}}
+:root[data-theme="dark"]{--cream:#17140f;--paper:#211c15;--ink:#f3ecdd;--ink-soft:#c7bca6;--line:#33291c;--shadow:28px 44px -30px rgba(0,0,0,.7);}
+:root[data-theme="light"]{--cream:#f6f2ea;--paper:#fffdf8;--ink:#201d18;--ink-soft:#4a4238;--line:#e9e0cf;--shadow:28px 44px -30px rgba(40,30,12,.45);}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.phone{max-width:430px;margin:0 auto;position:relative;min-height:100vh}
+
+/* ambient premium aurora behind the whole shop */
+.aurora{position:fixed;inset:-12vh -12vw;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(42vw 42vw at 16% 12%,rgba(198,166,100,.20),transparent 60%),
+    radial-gradient(46vw 46vw at 92% 6%,rgba(125,138,114,.16),transparent 62%),
+    radial-gradient(54vw 54vw at 74% 96%,rgba(168,134,63,.16),transparent 64%);
+  animation:aurora 30s ease-in-out infinite alternate}
+@keyframes aurora{0%{transform:translate3d(0,0,0) scale(1);opacity:.85}100%{transform:translate3d(0,-2.5%,0) scale(1.08);opacity:1}}
+.shell{position:relative;z-index:1}
+
+/* slim sticky header */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:19px;letter-spacing:.02em;font-weight:700}
+.brand b{color:var(--gold-deep)}
+.bar .ic{display:flex;gap:16px;color:var(--ink-soft);font-size:17px}
+
+/* HERO BANNER */
+.hero{position:relative;height:74vh;min-height:530px;overflow:hidden;border-radius:0 0 30px 30px;box-shadow:var(--shadow)}
+.hero__img{position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 70% 20%,#5c4c39 0%,#3a3025 45%,#241d15 100%);
+  animation:kb 28s ease-in-out infinite alternate;will-change:transform;transform-origin:56% 42%}
+@keyframes kb{0%{transform:scale(1.02)}100%{transform:scale(1.12) translate(-1.6%,-1.2%)}}
+/* subject motif: soft draped-fabric highlights */
+.hero__img::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:screen;
+  background:
+    radial-gradient(60% 40% at 30% 30%,rgba(255,238,205,.25),transparent 70%),
+    radial-gradient(50% 60% at 80% 70%,rgba(198,166,100,.22),transparent 72%)}
+.sheen{position:absolute;inset:0;background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.16) 48%,transparent 63%);
+  background-size:230% 230%;mix-blend-mode:screen;animation:sheen 15s ease-in-out infinite alternate}
+@keyframes sheen{0%{background-position:0 0}100%{background-position:100% 100%}}
+.scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,12,.32) 0%,rgba(20,17,12,0) 34%,rgba(20,17,12,.30) 62%,rgba(20,17,12,.78) 100%)}
+.hero__in{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:26px 22px 30px;color:#fbf7ee}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.30em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-size:37px;line-height:1.08;font-weight:700;text-wrap:balance;text-shadow:0 3px 22px rgba(0,0,0,.5);margin-bottom:10px}
+.hero h1 em{font-style:italic;color:#f0d9a4}
+.hero p{font-size:15px;line-height:1.5;opacity:.94;max-width:32ch;margin-bottom:20px}
+.cta-row{display:flex;gap:11px}
+.cta{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:15px;padding:14px 24px;border-radius:44px;text-decoration:none;transition:transform .15s ease}
+.cta:active{transform:translateY(1px) scale(.99)}
+.cta.solid{background:linear-gradient(180deg,#d8b878,#c6a664);color:#241d12;box-shadow:0 10px 24px -10px rgba(198,166,100,.85)}
+.cta.ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(6px)}
+
+/* USP chip rail */
+.usp{display:flex;gap:9px;overflow-x:auto;padding:16px 16px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.usp::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-size:12.5px;font-weight:600;color:var(--ink-soft);white-space:nowrap;box-shadow:0 4px 12px -8px rgba(40,30,12,.3)}
+
+/* category quick-tiles */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px 16px 6px}
+.cat{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink)}
+.cat .disc{width:100%;aspect-ratio:1;border-radius:18px;display:grid;place-items:center;font-size:23px;
+  background:linear-gradient(155deg,var(--paper),color-mix(in srgb,var(--gold) 16%,var(--paper)));border:1px solid var(--line)}
+.cat span{font-size:11.5px;font-weight:600;color:var(--ink-soft)}
+
+/* product preview */
+.sec{padding:12px 16px 26px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:10px 2px 12px}
+.sec-h h2{font-family:var(--serif);font-size:21px;font-weight:700}
+.sec-h a{font-size:13px;color:var(--gold-deep);font-weight:600;text-decoration:none}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 20px -14px rgba(40,30,12,.4)}
+.card .ph{aspect-ratio:1;position:relative;background:linear-gradient(150deg,#efe7d6,#d8c7a6)}
+.card:nth-child(2) .ph{background:linear-gradient(150deg,#e7e9df,#c8cdb6)}
+.card .tag{position:absolute;top:9px;left:9px;background:var(--ink);color:var(--cream);font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:999px}
+.card .b{padding:10px 12px 13px}
+.card .t{font-size:13.5px;font-weight:600;line-height:1.25}
+.card .pr{margin-top:5px;font-size:13.5px;color:var(--gold-deep);font-weight:700;font-variant-numeric:tabular-nums}
+.card .old{color:var(--stone);font-weight:500;text-decoration:line-through;margin-left:6px;font-size:12px}
+
+.note{padding:6px 20px 34px;font-size:12px;color:var(--stone);text-align:center;line-height:1.6}
+
+@media (prefers-reduced-motion:reduce){.aurora,.hero__img,.sheen{animation:none}}
+</style>
+
+<div class="phone">
+  <div class="aurora"></div>
+  <div class="shell">
+    <header class="bar">
+      <div class="brand">Luxe<b>Style</b></div>
+      <div class="ic">☰ &nbsp; ⌕ &nbsp; ♡ &nbsp; ⛃</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero__img"></div>
+      <div class="sheen"></div>
+      <div class="scrim"></div>
+      <div class="hero__in">
+        <span class="eyebrow">LuxeStyle · Schweiz</span>
+        <h1>Sommer&#8209;Eleganz,<br><em>frisch eingetroffen</em></h1>
+        <p>Kleider, Schmuck &amp; Accessoires — kuratiert für dich. Gratis&#8209;Versand ab CHF&nbsp;50.</p>
+        <div class="cta-row">
+          <a class="cta solid" href="#">Jetzt entdecken →</a>
+          <a class="cta ghost" href="#">Neuheiten</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="usp">
+      <span class="chip">🚚 Gratis ab CHF 50</span>
+      <span class="chip">↩️ 30 Tage Rückgabe</span>
+      <span class="chip">🇨🇭 Schweizer Shop</span>
+      <span class="chip">🔒 Sichere Zahlung</span>
+    </div>
+
+    <nav class="cats">
+      <a class="cat" href="#"><span class="disc">👗</span><span>Kleider</span></a>
+      <a class="cat" href="#"><span class="disc">💍</span><span>Schmuck</span></a>
+      <a class="cat" href="#"><span class="disc">⌚</span><span>Uhren</span></a>
+      <a class="cat" href="#"><span class="disc">👜</span><span>Taschen</span></a>
+    </nav>
+
+    <section class="sec">
+      <div class="sec-h"><h2>✨ Neu für dich</h2><a href="#">Alle ansehen →</a></div>
+      <div class="grid">
+        <article class="card"><div class="ph"><span class="tag">NEU</span></div>
+          <div class="b"><div class="t">Midi&#8209;Swing&#8209;Kleid mit Puffärmeln</div><div class="pr">CHF 49.90</div></div></article>
+        <article class="card"><div class="ph"><span class="tag">−20%</span></div>
+          <div class="b"><div class="t">Halterneck Maxikleid, figurbetont</div><div class="pr">CHF 54.90 <span class="old">68.90</span></div></div></article>
+      </div>
+    </section>
+
+    <p class="note">Vorschau-Design · Mobile-Hero &amp; Live-Hintergrund für luxestyle.ch</p>
+  </div>
+</div>
