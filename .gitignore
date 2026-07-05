@@ -48,5 +48,6 @@ session-check.png
 _site/
 dist/
 
+# Meshy-Rohmodelle (unoptimiert) — die komprimierten Web-Modelle liegen in models/
 # Meshy-Rohmodelle (unoptimiert) — komprimierte Web-Modelle liegen in models/
 game/assets/*.glb
