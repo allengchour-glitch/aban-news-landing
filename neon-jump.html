@@ -30,6 +30,9 @@ canvas{display:block}
 #muteBtn{position:fixed;top:8px;right:10px;z-index:6;border:1px solid #5a3170;background:rgba(30,16,43,.7);color:#ffb0d8;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
 #touch{position:fixed;inset:0;z-index:5;display:none}
 #touch .z{position:absolute;bottom:0;top:0;width:33%;}
+#touch .z::after{content:attr(data-g);position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:2rem;font-weight:800;color:#ffb0d8;opacity:.28;pointer-events:none;text-shadow:0 2px 10px #000}
+#touch .z:active::after{opacity:.6}
+#tzJ::after{font-size:1.05rem!important;letter-spacing:2px;white-space:nowrap}
 .hide{display:none!important}
 </style>
 </head>
@@ -37,7 +40,7 @@ canvas{display:block}
 <div id="wrap"></div>
 <div id="hud" class="hide"><div>🪙 <span id="coins">0</span></div><div>💀 <span id="deaths">0</span> · ⏱ <span id="time">0s</span></div></div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
-<div id="touch"><div class="z" id="tzL" style="left:0"></div><div class="z" id="tzR" style="left:33%"></div><div class="z" id="tzJ" style="right:0;width:34%"></div></div>
+<div id="touch"><div class="z" id="tzL" style="left:0" data-g="◀"></div><div class="z" id="tzR" style="left:33%" data-g="▶"></div><div class="z" id="tzJ" style="right:0;width:34%" data-g="⤴ SPRUNG"></div></div>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · Synthwave-Platformer</div>

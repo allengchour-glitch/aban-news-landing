@@ -22,10 +22,11 @@
 - **neon-flug (Touch):** Tap lenkt jetzt (touchstart→setTarget), Dash nur bei kurzem Tipp (<200ms, <12px, touchend); Crash-Shake/Flash 340ms sichtbar vor Game-Over-Overlay (Guard !running).
 - **neon-racer:** Maus-Steuerung verdrahtet (mousemove→touchX; war im Start-Hinweis versprochen).
 
+- **neon-survivor:** relatives Touch-Joystick (Delta zum Aufsetzpunkt, 12px Totzone) statt Absolut-Position; ⏸-Pause-Button (pointer:coarse, respektiert Level-up-Guard).
+- **neon-jump:** Touch-Zonen sichtbar (◀ ▶ ⤴ SPRUNG als ::after-Glyphen, aktiv heller).
+- **neon-racer:** BREMSE-Touch-Button (links unten, pointer:coarse, stopPropagation gegen Lenk-Übernahme).
+
 ## ⏳ P1 offen (nächste Loop-Runden)
-- **neon-survivor:** relatives Touch-Joystick (aktuell Absolut-Position), On-Screen-Pause-Button.
-- **neon-jump:** Touch-Zonen sichtbar machen (◀ ▶ ⤴ Glyphen, ~.25 opacity), Mapping überdenken.
-- **neon-racer:** Touch-Brake-Button (Maus-Steuerung ✅ verdrahtet).
 - **neon-colossus:** Start-Screen-Text auf Touch anpassen (`enableTouch()` eager); (hitstop optional — slowmo deckt Juice schon ab).
 - **wort-des-tages:** Kachel-Flip-Reveal + Win-Dance (innerhalb der 900ms-Timeout, nicht mit `.pop` kollidieren); großes Gäste-Wörterbuch für Rate-Eingaben (aktuell nur 88-Antworten-Liste erlaubt) — größerer Aufwand.
 - **wortbruecke:** Shake bei falschem Tipp; Solve-Pop-Animation.

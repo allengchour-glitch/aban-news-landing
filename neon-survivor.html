@@ -56,6 +56,7 @@ canvas{display:block}
 </div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
 <button id="abBtn" title="Puls-Blast" style="position:fixed;right:18px;bottom:22px;z-index:7;width:74px;height:74px;border-radius:50%;border:2px solid #ffd166;background:rgba(60,48,20,.55);color:#ffd166;font-size:1.7rem;font-weight:800;cursor:pointer;display:none">⚡</button>
+<button id="pauseBtn" title="Pause (Esc/P)" style="position:fixed;top:8px;right:58px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.05rem;cursor:pointer;display:none">⏸</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · 3D-Roguelite</div>
@@ -236,6 +237,11 @@ addEventListener("touchstart",function(e){if(e.touches[0])touch={x:e.touches[0].
   if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)ab.style.display="block";
   ab.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();if(running&&!paused)castAbility();},{passive:false});
   ab.addEventListener("click",function(e){e.stopPropagation();if(running&&!paused)castAbility();});})();
+(function(){var pb=document.getElementById("pauseBtn");if(!pb)return;
+  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)pb.style.display="block";
+  function tgl(e){e.preventDefault&&e.preventDefault();e.stopPropagation();
+    if(running&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}}
+  pb.addEventListener("touchstart",tgl,{passive:false});pb.addEventListener("click",tgl);})();
 addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;}e.preventDefault();},{passive:false});
 addEventListener("touchend",function(){touch=null;});
 
@@ -467,7 +473,8 @@ function loop(now){
     var mx=0,mz=0;
     if(keys["a"]||keys["arrowleft"])mx-=1; if(keys["d"]||keys["arrowright"])mx+=1;
     if(keys["w"]||keys["arrowup"])mz-=1; if(keys["s"]||keys["arrowdown"])mz+=1;
-    if(touch){var tx=(touch.x/W*2-1),ty=(touch.y/H*2-1);mx=tx*2;mz=ty*2;}
+    if(touch){var dxT=touch.x-touch.sx,dyT=touch.y-touch.sy,mT=Math.hypot(dxT,dyT); // relatives Joystick: Delta zum Aufsetzpunkt, 12px Totzone
+      if(mT>12){mx=dxT/46;mz=dyT/46;}}
     var ml=Math.hypot(mx,mz); if(ml>1){mx/=ml;mz/=ml;}
     player.position.x=Math.max(-ARENA,Math.min(ARENA,player.position.x+mx*S.speed*dt));
     player.position.z=Math.max(-ARENA,Math.min(ARENA,player.position.z+mz*S.speed*dt));

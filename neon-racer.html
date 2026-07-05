@@ -43,6 +43,7 @@ canvas{display:block}
 </div>
 <div id="shieldwrap" class="hide"><i id="shieldFill"></i></div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
+<button id="brakeBtn" style="position:fixed;left:18px;bottom:22px;z-index:7;width:78px;height:78px;border-radius:50%;border:2px solid #ff6ec7;background:rgba(60,20,45,.5);color:#ff9ad9;font-size:.95rem;font-weight:800;display:none;-webkit-user-select:none;user-select:none">BREMSE</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · Anti-Grav · PSP-Style</div>
@@ -154,6 +155,11 @@ addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].cl
 addEventListener("touchmove",function(e){if(e.touches[0])touchX=e.touches[0].clientX;e.preventDefault();},{passive:false});
 addEventListener("touchend",function(){touchX=null;});
 addEventListener("mousemove",function(e){if(running)touchX=e.clientX;}); // "Maus" war im Hinweis versprochen, aber nie verdrahtet
+(function(){var bb=document.getElementById("brakeBtn");if(!bb)return;
+  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)bb.style.display="block";
+  bb.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();brake=true;},{passive:false});
+  bb.addEventListener("touchend",function(e){e.stopPropagation();brake=false;});
+  bb.addEventListener("touchcancel",function(){brake=false;});})();
 
 function spawnThing(){
   var t=null;for(var i=0;i<things.length;i++)if(!things[i].active){t=things[i];break;}if(!t)return;
