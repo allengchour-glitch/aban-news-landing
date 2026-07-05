@@ -32,7 +32,7 @@
       "name": "Darf ich mit meiner Türklingel in der Schweiz filmen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Den eigenen Eingangsbereich und die eigene Tür zu überwachen ist in der Schweiz zulässig. Verboten ist es, öffentliche Wege, Nachbargrundstücke oder Nachbars Garten dauerhaft zu erfassen. Das nDSG (in Kraft seit September 2023) verlangt ein sichtbares Hinweisschild am Eingang. In Mietwohnungen braucht man bei baulichen Veränderungen die schriftliche Einwilligung des Vermieters."
+        "text": "Den eigenen Eingangsbereich und die eigene Tür zu überwachen ist in der Schweiz zulässig. Verboten ist es, öffentliche Wege, Nachbargrundstücke oder Nachbars Garten dauerhaft zu erfassen. Relevant sind hier das nDSG (Informationspflicht, Hinweisschild seit September 2023), der zivilrechtliche Persönlichkeitsschutz nach Art. 28 ZGB sowie Art. 179quater StGB, der die unbefugte Aufnahme einer Person in ihrem Geheim- oder Privatbereich unter Strafe stellt. Da die Haustür oft direkt am Gehweg liegt, bewegt sich das unvermeidbare Miterfassen des öffentlichen Raums rechtlich in einer Grauzone — begrenzen Sie den erfassten Bereich mit Erkennungszonen so weit wie möglich. In Mietwohnungen braucht man bei baulichen Veränderungen zusätzlich die schriftliche Einwilligung des Vermieters."
       }
     },
     {
@@ -61,7 +61,7 @@
   "@type": "Article",
   "headline": "Smarte Türklingel kaufen in der Schweiz — Kaufberater 2026",
   "datePublished": "2026-06-01",
-  "dateModified": "2026-06-30",
+  "dateModified": "2026-07-04",
   "author": {"@id": "https://abannews.com/#person"},
   "publisher": {"@id": "https://abannews.com/#org"},
   "mainEntityOfPage": "https://abannews.com/tuerklingel-smart-kaufen-schweiz.html",
@@ -355,7 +355,7 @@ footer a{color:var(--muted);text-decoration:underline}
 <p>Solar-Panels laden den internen Akku bei genügend Sonneneinstrahlung dauerhaft nach. In der Deutschschweiz (Mittelland, Voralpen) reicht die Wintereinstrahlung in der Regel nicht aus, um den Akku vollständig zu erhalten — besonders wenn die Kamera viele Bewegungsaufnahmen macht. Solar empfiehlt sich für Eingänge mit direkter Südausrichtung ohne Schattenwurf durch Dachvorsprünge oder Bäume.</p>
 
 <div class="notice">
-  <strong>Tipp für Mietwohnungen:</strong> Akku-Modelle sind meist die einzige Option ohne Eingriff in die Elektrik. Viele lassen sich mit doppelseitigem Montageband befestigen — informieren Sie den Vermieter trotzdem vorher schriftlich, da Veränderungen an der Eingangstür genehmigungspflichtig sein können (mehr dazu in Abschnitt 10).
+  <strong>Tipp für Mietwohnungen:</strong> Akku-Modelle sind meist die einzige Option ohne Eingriff in die Elektrik. Viele lassen sich mit doppelseitigem Montageband befestigen — informieren Sie den Vermieter trotzdem vorher schriftlich, da Veränderungen an der Eingangstür genehmigungspflichtig sein können (mehr dazu in Abschnitt 14).
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -448,9 +448,35 @@ footer a{color:var(--muted);text-decoration:underline}
 </div>
 
 <!-- ══════════════════════════════════════════════
-     6. CLOUD vs. LOKALER SPEICHER
+     6. ERKENNUNGSZONEN EINSCHRÄNKEN
 ══════════════════════════════════════════════ -->
-<h2>6. Cloud vs. lokaler Speicher — MicroSD, NAS oder Abo</h2>
+<h2>6. Erkennungszonen gezielt einschränken — weniger öffentliche Fläche im Bild</h2>
+<p class="section-intro">Fast jede Video-Türklingel erfasst zwangsläufig einen Streifen öffentlichen Gehwegs, weil die Haustür oft direkt an der Strasse liegt. Mit den richtigen Einstellungen lässt sich der aufgezeichnete Bereich spürbar verkleinern.</p>
+
+<h3>Privacy Zones / Ausblendzonen</h3>
+<p>Die meisten Apps (Ring, Eufy, Reolink, Nest) erlauben es, rechteckige oder polygonale Bereiche im Kamerabild dauerhaft zu maskieren — etwa den gegenüberliegenden Gehweg, das Nachbargrundstück oder ein fremdes Fenster. Maskierte Bereiche werden weder angezeigt noch aufgezeichnet und lösen auch keinen Alarm mehr aus. Richten Sie diese Zonen direkt bei der Erstinstallation ein, bevor die Klingel produktiv läuft.</p>
+
+<h3>Erkennungsbereich statt volles Sichtfeld</h3>
+<p>Trennen Sie technisch zwischen dem, was die Kamera <em>sieht</em>, und dem, was sie als <em>Ereignis aufzeichnet</em>: Auch wenn das Objektiv weit erfasst, kann die Bewegungserkennung auf einen engeren Kernbereich — etwa die letzten zwei Meter vor der Tür — begrenzt werden. Das reduziert sowohl Fehlalarme als auch die Menge an aufgezeichnetem öffentlichem Raum.</p>
+
+<h3>Empfindlichkeit und Reichweite justieren</h3>
+<p>Reduzieren Sie die Erkennungsdistanz und -empfindlichkeit so weit, dass Personen erst im unmittelbaren Eingangsbereich registriert werden — nicht bereits, wenn jemand mehrere Meter entfernt auf dem Trottoir vorbeigeht. Ein eng eingestellter Bereich verringert sowohl die Anzahl gespeicherter Aufnahmen von Unbeteiligten als auch das datenschutzrechtliche Risiko.</p>
+
+<h3>Praktisches Vorgehen bei der Einrichtung</h3>
+<ul>
+  <li>Messen Sie die Breite Ihres Eingangsbereichs und richten Sie den Erkennungswinkel entsprechend eng aus.</li>
+  <li>Testen Sie die Aufnahme nach der Montage mit ein bis zwei Testdurchläufen und passen Sie Zonen bei Bedarf nach.</li>
+  <li>Prüfen Sie die Einstellungen erneut nach jedem grösseren Firmware-Update — Zonen werden gelegentlich zurückgesetzt.</li>
+</ul>
+
+<div class="notice">
+  <strong>Grundregel:</strong> Je enger die Erkennungszone auf die eigene Tür beschränkt bleibt, desto geringer ist das rechtliche Risiko und desto weniger Fehlalarme durch Passantinnen, Passanten oder Fahrzeuge erhalten Sie.
+</div>
+
+<!-- ══════════════════════════════════════════════
+     7. CLOUD vs. LOKALER SPEICHER
+══════════════════════════════════════════════ -->
+<h2>7. Cloud vs. lokaler Speicher — MicroSD, NAS oder Abo</h2>
 <p class="section-intro">Wo Ihre Aufnahmen gespeichert werden, hat grosse Auswirkungen auf Datenschutz, Kosten und Datenverfügbarkeit.</p>
 
 <h3>Cloud-Speicher</h3>
@@ -476,9 +502,9 @@ footer a{color:var(--muted);text-decoration:underline}
 </div>
 
 <!-- ══════════════════════════════════════════════
-     7. DATENSCHUTZ (nDSG / DSGVO CH)
+     8. DATENSCHUTZ (nDSG / DSGVO CH)
 ══════════════════════════════════════════════ -->
-<h2>7. Datenschutz nach nDSG — was gilt in der Schweiz?</h2>
+<h2>8. Datenschutz nach nDSG — was gilt in der Schweiz?</h2>
 <p class="section-intro">Das neue Schweizer Datenschutzgesetz (nDSG, in Kraft seit 1. September 2023) hat klare Anforderungen für Videoüberwachung. Wer diese nicht beachtet, riskiert Klagen durch betroffene Personen.</p>
 
 <h3>Was ist erlaubt?</h3>
@@ -502,10 +528,41 @@ footer a{color:var(--muted);text-decoration:underline}
 <h3>DSGVO vs. nDSG</h3>
 <p>In der Schweiz gilt das nDSG, nicht die europäische DSGVO. Die Grundprinzipien (Transparenz, Zweckbindung, Datensparsamkeit) sind jedoch ähnlich. Wenn Sie in der Schweiz wohnen und ausschliesslich für private Zwecke überwachen, greift die Haushaltsausnahme — kommerzielle Nutzung oder Überwachung von Angestellten unterliegt dem vollen nDSG.</p>
 
+<h3>Zivilrechtlicher Schutz: Art. 28 ZGB</h3>
+<p>Unabhängig vom nDSG kann sich eine gefilmte Person auch auf den allgemeinen Persönlichkeitsschutz nach <strong>Art. 28 ZGB</strong> berufen. Wer widerrechtlich in seiner Persönlichkeit verletzt wird — etwa durch systematisches Filmen vor dem eigenen Haus oder auf dem eigenen Grundstück — kann vor Zivilgericht auf Unterlassung, Beseitigung (z. B. Änderung des Kamerawinkels) und in gewissen Fällen Schadenersatz oder Genugtuung klagen. Diese Klage steht offen, unabhängig davon, ob zusätzlich eine nDSG-Verletzung vorliegt.</p>
+
+<h3>Strafrecht: Art. 179quater StGB</h3>
+<p><strong>Art. 179quater StGB</strong> stellt die unbefugte Aufnahme einer Person in ihrem Geheim- oder Privatbereich unter Strafe — etwa wenn eine Kamera gezielt in ein fremdes Wohnzimmer, auf eine private Terrasse oder in einen nicht öffentlich einsehbaren Garten hineinfilmt. Der Tatbestand greift beim blossen, unvermeidbaren Miterfassen des öffentlichen Gehwegs in der Regel <em>nicht</em>, weil dieser Bereich nicht als Geheim- oder Privatbereich gilt. Sobald jedoch bewusst in einen abgeschirmten Nachbarbereich hineingezoomt oder dieser dauerhaft erfasst wird, ist die Schwelle zur Strafbarkeit schnell überschritten.</p>
+
+<h3>Rechtliche Grauzone: der öffentliche Gehweg</h3>
+<p>Liegt die Haustür — wie in vielen Schweizer Städten und Dörfern üblich — direkt am Trottoir, lässt sich ein gewisses Miterfassen des öffentlichen Raums technisch kaum vermeiden. Weder nDSG noch StGB verbieten das pauschal, solange die Erfassung auf das technisch Unvermeidbare beschränkt bleibt, die Aufbewahrung kurz gehalten wird und keine systematische Auswertung stattfindet. Der Eidgenössische Datenschutz- und Öffentlichkeitsbeauftragte (EDÖB) empfiehlt in seinen Praxishinweisen, den erfassten öffentlichen Bereich so weit wie möglich durch Erkennungszonen (siehe Abschnitt 6) einzuschränken. Wer unsicher ist, sollte im Zweifel eine engere statt einer weiteren Einstellung wählen — <strong>diese Seite ersetzt keine Rechtsberatung im Einzelfall.</strong></p>
+
 <!-- ══════════════════════════════════════════════
-     8. SMARTHOME-INTEGRATION
+     9. EINWILLIGUNG VON BESUCHERN
 ══════════════════════════════════════════════ -->
-<h2>8. SmartHome-Integration — Ring, Nest, Reolink, Arlo, Eufy</h2>
+<h2>9. Einwilligung von Besuchern — Piktogramm, Paketboten, vorbeigehende Nachbarn</h2>
+<p class="section-intro">Nicht jede Person, die vor die Kamera gerät, muss vorher ausdrücklich zustimmen — aber die Informationspflicht und ein umsichtiger Umgang mit den Aufnahmen bleiben zentral.</p>
+
+<h3>Besucherinnen und Besucher, die klingeln</h3>
+<p>Wer bewusst auf den Klingelknopf drückt, nutzt eine erkennbar mit Kamera ausgestattete Vorrichtung — ein sichtbares Piktogramm oder Hinweisschild am Eingang informiert vorab. Eine gesonderte, ausdrückliche Einwilligung jeder einzelnen Person ist dafür nicht praktikabel und wird in der Praxis nicht verlangt; die Informationspflicht nach nDSG gilt jedoch weiterhin (siehe oben).</p>
+
+<h3>Post- und Paketboten</h3>
+<p>Die kurzzeitige Aufnahme von Zustellerinnen und Zustellern beim Abliefern eines Pakets gilt als sachlich begründeter Zweck (Nachweis der Zustellung, Schutz vor Diebstahl) und ist grundsätzlich zulässig. Speichern Sie solche Aufnahmen nicht länger als nötig und verzichten Sie darauf, Zustellpersonal-Aufnahmen öffentlich zu teilen oder in sozialen Netzwerken zu veröffentlichen.</p>
+
+<h3>Nachbarinnen, Nachbarn und Passanten</h3>
+<p>Personen, die nur beiläufig und kurz durchs Bild laufen (z. B. auf dem Gehweg), werden rechtlich anders behandelt als eine gezielte, dauerhafte Überwachung von Nachbargrundstücken. Entscheidend ist, dass diese Erfassung <strong>technisch unvermeidbar und zeitlich beiläufig</strong> bleibt — nicht das Ergebnis einer bewusst weiten Kameraausrichtung auf den Nachbargarten oder die Nachbarterrasse. Nutzen Sie Erkennungszonen, um diesen Anteil so gering wie möglich zu halten.</p>
+
+<h3>Piktogramm richtig anbringen</h3>
+<ul>
+  <li>Gut sichtbar auf Augenhöhe, bevor der überwachte Bereich betreten wird — nicht erst an der Tür selbst.</li>
+  <li>Symbol einer Kamera plus kurzer Text «Videoüberwachung» reicht aus; ein Kleber ist ab wenigen Franken im Baumarkt oder online erhältlich.</li>
+  <li>Bei Mehrparteienhäusern zusätzlich am Hauseingang anbringen, nicht nur an der eigenen Wohnungstür.</li>
+</ul>
+
+<!-- ══════════════════════════════════════════════
+     10. SMARTHOME-INTEGRATION
+══════════════════════════════════════════════ -->
+<h2>10. SmartHome-Integration — Ring, Nest, Reolink, Arlo, Eufy</h2>
 <p class="section-intro">Eine smarte Türklingel entfaltet ihren vollen Nutzen, wenn sie sich nahtlos in das bestehende SmartHome-System einfügt.</p>
 
 <h3>Amazon Alexa</h3>
@@ -531,9 +588,27 @@ footer a{color:var(--muted);text-decoration:underline}
 <p>Reolink Video Doorbell PoE und vergleichbare Modelle erhalten Strom und Daten über ein einziges Ethernet-Kabel. Das macht WLAN-Verbindungsabbrüche unmöglich und bietet maximale Stabilität — ideal für den Einbau durch einen Elektriker in Neubauten oder umfassenden Renovationen.</p>
 
 <!-- ══════════════════════════════════════════════
-     9. MONTAGE (KABELKANAL, UNTERPUTZ, AUFPUTZ)
+     11. ZUTRITTSKONTROLLE-KOMBINATION
 ══════════════════════════════════════════════ -->
-<h2>9. Montage — Kabelkanal, Unterputz, Aufputz</h2>
+<h2>11. Zutrittskontrolle kombinieren — Smart-Lock, Fernentriegelung, Zugangscodes</h2>
+<p class="section-intro">Viele Türklingel-Systeme lassen sich mit einem smarten Türschloss verbinden, sodass Besucherinnen und Besucher direkt aus der App eingelassen werden können — praktisch, aber auch ein sicherheitsrelevantes Feature.</p>
+
+<h3>Fernentriegelung aus der App</h3>
+<p>Ring, Nest und Eufy bieten — teils über Drittanbieter-Smart-Locks wie Nuki, August oder Yale — die Möglichkeit, die Tür direkt beim Anschauen des Live-Bilds zu entriegeln. Das ist nützlich, um einer Reinigungskraft, Handwerkerin oder einem Familienmitglied ohne eigenen Schlüssel Zutritt zu gewähren. Über Matter- oder Homebridge-Bridges lassen sich auch markenübergreifende Kombinationen realisieren.</p>
+
+<h3>Temporäre Zugangscodes</h3>
+<p>Smart-Locks erlauben oft die Vergabe zeitlich begrenzter PIN-Codes — etwa für eine Lieferung, eine Ferienvertretung oder eine Putzhilfe, die nur an bestimmten Wochentagen Zutritt braucht. Der Code lässt sich jederzeit widerrufen, ohne das Schloss physisch tauschen zu müssen.</p>
+
+<h3>Sicherheitsaspekte der Fernentriegelung</h3>
+<p>Da eine Fernentriegelung die physische Zutrittskontrolle direkt betrifft, sollte der App-Zugang zusätzlich mit Zwei-Faktor-Authentisierung abgesichert werden. Prüfen Sie regelmässig das Zutritts-Protokoll (Log), das die meisten Systeme führen, um zu sehen, wer wann entriegelt hat. Verzichten Sie auf die Fernentriegelung ohne Sichtprüfung — bestätigen Sie vor dem Öffnen stets per Video, wer tatsächlich vor der Tür steht.</p>
+
+<h3>Sinnvoll für Mehrfamilienhäuser</h3>
+<p>In Mehrfamilienhäusern mit einer gemeinsamen Haustür kann die Kombination aus Video-Türklingel und smartem Türöffner besonders praktisch sein, um Besuch für alle Parteien einzulassen, ohne dass jede Partei einen eigenen Schlüsselbund an Dritte weitergeben muss. Die Installation an Gemeinschaftseingängen erfordert jedoch die Zustimmung der Stockwerkeigentümerschaft bzw. der Hausverwaltung (siehe Abschnitt 14).</p>
+
+<!-- ══════════════════════════════════════════════
+     12. MONTAGE (KABELKANAL, UNTERPUTZ, AUFPUTZ)
+══════════════════════════════════════════════ -->
+<h2>12. Montage — Kabelkanal, Unterputz, Aufputz</h2>
 <p class="section-intro">Die Montage einer Video-Türklingel ist in den meisten Fällen ein DIY-Projekt. Dennoch gibt es einige wichtige Punkte zu beachten.</p>
 
 <h3>Aufputz-Montage</h3>
@@ -556,9 +631,33 @@ footer a{color:var(--muted);text-decoration:underline}
 </div>
 
 <!-- ══════════════════════════════════════════════
-     10. SCHWEIZER MIETRECHT
+     13. WINTERFESTIGKEIT
 ══════════════════════════════════════════════ -->
-<h2>10. Schweizer Mietrecht — darf die Kamera an die Mietwohnungstür?</h2>
+<h2>13. Winterfestigkeit — IP-Schutzklassen und Kälteresistenz im Schweizer Klima</h2>
+<p class="section-intro">Türklingeln hängen ganzjährig ungeschützt an der Fassade. Wer im Mittelland, in Voralpen- oder Alpenregionen mit strengen Wintern lebt, sollte auf Wetterfestigkeit und Kälteresistenz besonders achten.</p>
+
+<h3>IP-Schutzklassen verstehen</h3>
+<p>Die IP-Kennzeichnung (International Protection) beschreibt Schutz gegen Staub (erste Ziffer) und Wasser (zweite Ziffer). Für die Aussenmontage in der Schweiz empfiehlt sich mindestens <strong>IP65</strong> (staubdicht, geschützt gegen Strahlwasser); besser sind <strong>IP66</strong> oder <strong>IP67</strong>, die auch starkem Regen, Schneematsch und kurzzeitigem Untertauchen standhalten. Modelle unter IP65 sollten nur unter einem Vordach oder überdachten Eingang montiert werden.</p>
+
+<h3>Kälteresistenz bei Akku-Modellen</h3>
+<p>Lithium-Ionen-Akkus verlieren bei Kälte spürbar an Kapazität: Unter 0 °C ist mit 20–40 % geringerer Laufzeit zu rechnen, in exponierten Lagen (freistehende Fassade, Alpenregion) kann die Klingel bei starkem Frost zeitweise ganz ausfallen. Die meisten Hersteller geben einen Betriebstemperaturbereich von etwa −20 °C bis 45 °C an — prüfen Sie dies vor dem Kauf, wenn Sie in einer Region mit strengen Wintern wohnen.</p>
+
+<h3>Praktische Massnahmen für den Winter</h3>
+<ul>
+  <li>Kabelgebundene Modelle sind in kalten Regionen zuverlässiger, weil sie nicht von der Akkutemperatur abhängen.</li>
+  <li>Bei Akku-Betrieb den Akku bei anhaltendem Frost häufiger prüfen und bei Bedarf in der warmen Wohnung nachladen.</li>
+  <li>Solar-Panels im Winter regelmässig von Schnee befreien, da sie sonst keinen Ladestrom liefern.</li>
+  <li>Eine Montage unter einem Vordach schützt zusätzlich vor direkter Schneelast und Eisbildung auf der Linse.</li>
+</ul>
+
+<div class="notice">
+  <strong>Für Chalets und Höhenlagen:</strong> Wählen Sie wenn möglich ein kabelgebundenes Modell mit mindestens IP66 und einem ausgewiesenen Betriebstemperaturbereich bis mindestens −20 °C.
+</div>
+
+<!-- ══════════════════════════════════════════════
+     14. SCHWEIZER MIETRECHT
+══════════════════════════════════════════════ -->
+<h2>14. Schweizer Mietrecht — darf die Kamera an die Mietwohnungstür?</h2>
 <p class="section-intro">Mietrecht und Datenschutzrecht überschneiden sich beim Thema Türklingelkameras. Hier die wichtigsten Punkte für Mieterinnen und Mieter in der Schweiz.</p>
 
 <h3>Was gilt als «bauliche Veränderung»?</h3>
@@ -582,14 +681,39 @@ footer a{color:var(--muted);text-decoration:underline}
 <h3>Nachbarsituation im Mehrfamilienhaus</h3>
 <p>In Mehrfamilienhäusern ist die Türkamera eine besonders sensible Angelegenheit, weil potenziell auch Mitbewohnerinnen und Mitbewohner des Hauses erfasst werden. Informieren Sie die Hausverwaltung und, falls möglich, die direkten Nachbarn über die geplante Installation. Nutzen Sie Erkennungszonen, um den Aufnahmebereich auf Ihre eigene Wohnungstür zu beschränken.</p>
 
+<h3>Gemeinschaftseingänge im Stockwerkeigentum</h3>
+<p>Bei einer Liegenschaft im Stockwerkeigentum gehört der Hauseingang meist zu den gemeinschaftlichen Teilen. Eine Video-Türklingel am Gemeinschaftseingang zu montieren, ist keine private Angelegenheit einer einzelnen Partei, sondern eine bauliche Massnahme an gemeinschaftlichem Eigentum. Dafür braucht es grundsätzlich einen Beschluss der Stockwerkeigentümergemeinschaft — je nach Reglement eine einfache Mehrheit oder ein qualifiziertes Mehr. Ein einzelner Eigentümer darf nicht eigenmächtig eine Kamera anbringen, die den gemeinsamen Eingang, das Treppenhaus oder den Briefkastenbereich erfasst.</p>
+
 <div class="warn">
-  <strong>Wichtig:</strong> Eine Türkamera, die dauerhaft den gemeinsamen Korridor oder das Treppenhaus eines Mehrfamilienhauses erfasst, ist ohne Einwilligung aller Mitbewohner und der Hausverwaltung datenschutzrechtlich problematisch. In solchen Fällen empfehlen sich Modelle mit sehr engem Sichtwinkel oder Erkennungszonen, die nur die eigene Wohnungstür einschliessen.
+  <strong>Wichtig:</strong> Eine Türkamera, die dauerhaft den gemeinsamen Korridor oder das Treppenhaus eines Mehrfamilienhauses erfasst, ist ohne Einwilligung aller Mitbewohner und der Hausverwaltung bzw. Stockwerkeigentümergemeinschaft datenschutzrechtlich problematisch. In solchen Fällen empfehlen sich Modelle mit sehr engem Sichtwinkel oder Erkennungszonen, die nur die eigene Wohnungstür einschliessen.
 </div>
 
 <!-- ══════════════════════════════════════════════
-     11. CHF-PREISSEGMENTE
+     15. NACHBARSCHAFTSKONFLIKTE
 ══════════════════════════════════════════════ -->
-<h2>11. CHF-Preissegmente — was bekommt man wofür?</h2>
+<h2>15. Nachbarschaftskonflikte — richtiges Vorgehen bei Beschwerden</h2>
+<p class="section-intro">Wenn eine Nachbarin oder ein Nachbar sich durch Ihre Türklingelkamera gestört fühlt, lohnt sich ein abgestuftes Vorgehen — meist lässt sich der Konflikt ohne Behörden oder Gericht lösen.</p>
+
+<h3>Schritt 1: Das Gespräch suchen</h3>
+<p>Die grosse Mehrheit der Nachbarschaftskonflikte rund um Kameras lässt sich durch ein direktes, sachliches Gespräch klären. Zeigen Sie der betroffenen Person bei Bedarf die App-Einstellungen und die eingerichteten Erkennungszonen, um zu belegen, dass ihr Grundstück nicht gezielt erfasst wird.</p>
+
+<h3>Schritt 2: Kamerawinkel und Zonen anpassen</h3>
+<p>Oft reicht es, den Blickwinkel zu verkleinern oder eine zusätzliche Ausblendzone (siehe Abschnitt 6) einzurichten. Dokumentieren Sie die Anpassung mit einem Screenshot und Datum, falls die Angelegenheit später erneut zur Sprache kommt.</p>
+
+<h3>Schritt 3: Meldung beim EDÖB</h3>
+<p>Lässt sich der Konflikt nicht im direkten Gespräch lösen, kann sich die betroffene Person an den <strong>Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB)</strong> wenden. Der EDÖB kann bei Streitigkeiten zwischen Privaten empfehlend tätig werden und Auskunft über die Rechtslage geben, hat gegenüber Privatpersonen jedoch keine Sanktionsbefugnis wie bei Bundesorganen.</p>
+
+<h3>Schritt 4: Zivilklage nach Art. 28 ZGB</h3>
+<p>Als letzten Schritt kann die betroffene Person beim zuständigen Zivilgericht auf Unterlassung, Beseitigung der Kamera oder Anpassung des Aufnahmebereichs klagen, gestützt auf den Persönlichkeitsschutz nach Art. 28 ZGB. Ein Gerichtsverfahren ist für beide Seiten aufwändig und kostenintensiv — eine frühzeitige, kooperative Lösung ist praktisch immer die bessere Option.</p>
+
+<div class="notice">
+  <strong>Prävention statt Streit:</strong> Wer die Kamera von Anfang an eng auf den eigenen Eingang ausrichtet, das Hinweisschild anbringt und bei Bedarf das Gespräch mit den Nachbarn sucht, vermeidet die allermeisten Konflikte, bevor sie entstehen.
+</div>
+
+<!-- ══════════════════════════════════════════════
+     16. CHF-PREISSEGMENTE
+══════════════════════════════════════════════ -->
+<h2>16. CHF-Preissegmente — was bekommt man wofür?</h2>
 <p class="section-intro">Smarte Türklingeln beginnen bei CHF 60 und reichen bis über CHF 500. Hier ein ehrlicher Überblick über das, was in jedem Segment realistisch ist.</p>
 
 <table class="ctable">
@@ -644,9 +768,9 @@ footer a{color:var(--muted);text-decoration:underline}
 </ul>
 
 <!-- ══════════════════════════════════════════════
-     12. MARKEN IM VERGLEICH
+     17. MARKEN IM VERGLEICH
 ══════════════════════════════════════════════ -->
-<h2>12. Marken im Vergleich — Ring, Nest, Eufy, Reolink, Arlo, Netatmo, Siedle</h2>
+<h2>17. Marken im Vergleich — Ring, Nest, Eufy, Reolink, Arlo, Netatmo, Bosch, Siedle</h2>
 <p class="section-intro">Alle genannten Marken sind in der Schweiz bei Fachhandel, Mediamarkt, Digitec Galaxus und spezialisierten Online-Shops erhältlich.</p>
 
 <h3>Ring (Amazon)</h3>
@@ -670,10 +794,35 @@ footer a{color:var(--muted);text-decoration:underline}
 <h3>Siedle (DE/CH)</h3>
 <p>Siedle ist ein deutsches Unternehmen, das auf professionelle Türkommunikation für Mehrfamilienhäuser und gewerbliche Gebäude spezialisiert ist. Systeme von Siedle werden durch Elektriker installiert und bieten höchste Langlebigkeit (Garantie bis 20 Jahre auf Ersatzteile). Preise auf Anfrage beim Fachhandel; deutlich höher als Consumer-Produkte. Für private Einfamilienhäuser meist überdimensioniert, für Mehrfamilienhäuser mit Haustelefon-System interessant.</p>
 
+<h3>Bosch Smart Home</h3>
+<p>Bosch bietet mit der Smart Home Video-Türklingel eine Lösung, die stark auf das Zusammenspiel mit der übrigen Bosch-Smart-Home-Produktpalette (Rauchmelder, Heizungssteuerung, Fensterkontakte) ausgelegt ist. Die App speichert wahlweise lokal oder über einen optionalen Cloud-Dienst mit Serverstandort Europa. Bosch punktet mit solider Verarbeitung und langjährigem Software-Support, ist aber im Vergleich zu Eufy oder Reolink im mittleren bis oberen Preissegment angesiedelt (ab ca. CHF 200).</p>
+
 <!-- ══════════════════════════════════════════════
-     13. VERGLEICHSTABELLE 5 MODELLE
+     18. GEBRAUCHT KAUFEN
 ══════════════════════════════════════════════ -->
-<h2>13. Vergleichstabelle — 5 Modelle im direkten Vergleich</h2>
+<h2>18. Gebraucht kaufen — Ricardo, Anibis und worauf zu achten ist</h2>
+<p class="section-intro">Gebrauchte Video-Türklingeln sind auf Ricardo und Anibis eine gängige und oft deutlich günstigere Alternative zum Neukauf — mit ein paar Besonderheiten, die reine Elektronikartikel nicht haben.</p>
+
+<h3>Account-Reset ist Pflicht</h3>
+<p>Video-Türklingeln sind fast immer mit einem persönlichen Cloud-Konto der vorherigen Besitzerin oder des vorherigen Besitzers verknüpft. Vor der Übergabe muss das Gerät zwingend aus diesem Konto entfernt und auf Werkseinstellungen zurückgesetzt werden — sonst könnte die verkaufende Person theoretisch weiterhin auf Live-Bild oder gespeicherte Aufnahmen zugreifen, und Sie können das Gerät oft gar nicht neu einrichten, solange es noch an einen fremden Account gebunden ist. Fragen Sie beim Kauf aktiv danach und lassen Sie sich den Reset nach Möglichkeit vor Ort zeigen.</p>
+
+<h3>Kompatibilität prüfen</h3>
+<p>Bei kabelgebundenen Modellen: Passt die Spannung (8–24 V AC) zum vorhandenen Klingeltrafo? Bei App-gebundenen Systemen: Wird das konkrete Modell noch mit aktueller Firmware und Cloud-Anbindung unterstützt, oder handelt es sich um eine ältere Generation, deren Herstellersupport bereits ausgelaufen ist? Gerade bei Ring- und Nest-Modellen älterer Baujahre lohnt sich ein Blick auf die Support-Seite des Herstellers.</p>
+
+<h3>Akkuzustand separat beurteilen</h3>
+<p>Anders als bei den meisten Elektronikartikeln ist bei Akku-Türklingeln der Akkuzustand ein eigener Werttreiber: Nach 2–3 Jahren Nutzung hat ein Akku oft merklich an Kapazität verloren. Fragen Sie nach dem Kaufdatum und, falls möglich, nach der aktuellen Akkulaufzeit zwischen zwei Ladungen. Bei vielen Modellen lässt sich der Akku separat und günstig nachkaufen, was den Gesamtpreis eines gebrauchten Geräts weiterhin attraktiv machen kann.</p>
+
+<h3>Physischer Zustand und Zubehör</h3>
+<ul>
+  <li>Gehäuse auf Risse oder Feuchtigkeitsspuren prüfen — ein Zeichen für mangelhafte IP-Dichtigkeit im Vorleben des Geräts.</li>
+  <li>Prüfen, ob Original-Halterung, Schrauben, Dübel und Netzteil bzw. Ladekabel vollständig mitgeliefert werden.</li>
+  <li>Bei Angeboten ohne Karton oder Rechnung besonders auf Herkunft und Funktionsfähigkeit achten — im Zweifel vor Ort testen lassen.</li>
+</ul>
+
+<!-- ══════════════════════════════════════════════
+     19. VERGLEICHSTABELLE 5 MODELLE
+══════════════════════════════════════════════ -->
+<h2>19. Vergleichstabelle — 5 Modelle im direkten Vergleich</h2>
 <p class="section-intro">Fünf repräsentative Modelle aus verschiedenen Preissegmenten, verglichen nach den wichtigsten Kriterien.</p>
 
 <table class="ctable">
@@ -740,9 +889,9 @@ footer a{color:var(--muted);text-decoration:underline}
 <p class="section-intro" style="font-size:.85rem;color:var(--muted)">Preise sind Richtwerte (Stand 06/2026); können je nach Händler variieren. Alle genannten Modelle sind in der Schweiz erhältlich.</p>
 
 <!-- ══════════════════════════════════════════════
-     14. KAUFCHECKLISTE 8 PUNKTE
+     20. KAUFCHECKLISTE 8 PUNKTE
 ══════════════════════════════════════════════ -->
-<h2>14. Kaufcheckliste — 8 Punkte vor dem Kauf prüfen</h2>
+<h2>20. Kaufcheckliste — 8 Punkte vor dem Kauf prüfen</h2>
 <p class="section-intro">Diese acht Punkte helfen Ihnen, die richtige Video-Türklingel für Ihre spezifische Situation auszuwählen.</p>
 
 <ul class="checklist">
@@ -757,9 +906,9 @@ footer a{color:var(--muted);text-decoration:underline}
 </ul>
 
 <!-- ══════════════════════════════════════════════
-     15. FAQ DETAILS
+     21. FAQ DETAILS
 ══════════════════════════════════════════════ -->
-<h2>15. Häufige Fragen (FAQ)</h2>
+<h2>21. Häufige Fragen (FAQ)</h2>
 
 <details>
   <summary>Brauche ich wirklich ein Abo für meine Video-Türklingel?</summary>
@@ -768,7 +917,7 @@ footer a{color:var(--muted);text-decoration:underline}
 
 <details>
   <summary>Darf ich mit meiner Türklingel in der Schweiz filmen?</summary>
-  <p>Den eigenen Eingangsbereich und die eigene Tür zu überwachen ist in der Schweiz zulässig. Verboten ist es, öffentliche Wege, Nachbargrundstücke oder Nachbars Garten <strong>dauerhaft</strong> zu erfassen. Das nDSG (in Kraft seit September 2023) verlangt zudem ein gut sichtbares Hinweisschild «Videoüberwachung» vor dem überwachten Bereich. Nutzen Sie Erkennungszonen in der App, um den Aufnahmebereich auf Ihren eigenen Eingang zu beschränken. In Mehrfamilienhäusern ist auch die Hausverwaltung zu informieren.</p>
+  <p>Den eigenen Eingangsbereich und die eigene Tür zu überwachen ist in der Schweiz zulässig. Verboten ist es, öffentliche Wege, Nachbargrundstücke oder Nachbars Garten <strong>dauerhaft</strong> zu erfassen. Das nDSG (in Kraft seit September 2023) verlangt zudem ein gut sichtbares Hinweisschild «Videoüberwachung» vor dem überwachten Bereich; daneben gilt der zivilrechtliche Persönlichkeitsschutz nach <strong>Art. 28 ZGB</strong> und, bei gezieltem Filmen fremder Privatbereiche, <strong>Art. 179quater StGB</strong>. Weil viele Hauseingänge direkt am Gehweg liegen, lässt sich ein gewisses Miterfassen des öffentlichen Raums oft nicht ganz vermeiden — das gilt rechtlich als Grauzone, solange es auf das technisch Nötige beschränkt bleibt. Nutzen Sie Erkennungszonen in der App, um den Aufnahmebereich auf Ihren eigenen Eingang zu beschränken. In Mehrfamilienhäusern ist auch die Hausverwaltung bzw. die Stockwerkeigentümerschaft zu informieren. Diese Angaben ersetzen keine Rechtsberatung im Einzelfall.</p>
 </details>
 
 <details>
@@ -802,7 +951,7 @@ footer a{color:var(--muted);text-decoration:underline}
 <div class="nl-wrap">
   <strong>📬 Gratis: Schnäppchen- &amp; Technik-Updates für die Schweiz</strong>
   <p>Das Beste aus dem Marktplatz + 1 Praxis-Tipp pro Woche. Kein Spam, jederzeit abbestellbar.</p>
-  <iframe src="https://embeds.beehiiv.com/subscription-form" title="aban Newsletter abonnieren" loading="lazy" scrolling="no"></iframe>
+  <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
 </div>
 
 <p class="rel" style="margin-top:22px">

@@ -38,7 +38,10 @@ input:focus{border-color:var(--amber)}
 .stats{display:flex;gap:20px;justify-content:center;margin:14px 0;font-size:.85rem;color:#374151}
 .stats b{display:block;font-size:1.2rem;color:var(--ink)}
 .solved{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
-.solved .big{font-size:1.3rem;font-weight:800;color:var(--ok)}
+.solved .big{font-size:1.3rem;font-weight:800;color:var(--ok);animation:solvePop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes solvePop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+@keyframes wbshake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}}
+.shake{animation:wbshake .34s}
 .cta{max-width:520px;margin:8px auto;padding:14px 16px;border:1px solid #fde9c8;border-radius:14px;background:linear-gradient(135deg,#fef3c7,#fffdf9)}
 .cta p{margin:.3rem 0 .7rem;font-size:.9rem;color:#374151}
 footer{border-top:1px solid var(--line);text-align:center;padding:12px;font-size:.8rem;color:#6b7280}
@@ -132,7 +135,7 @@ footer a{color:var(--amber);text-decoration:none}
     if(norm(v).length<2){setMsg("Bitte ein Wort eingeben.");return;}
     tries++;
     if(norm(v)===norm(ANS)){win();}
-    else{setMsg("Nicht ganz — versuch's nochmal oder nimm einen Hinweis.");document.getElementById("guess").value="";}
+    else{setMsg("Nicht ganz — versuch's nochmal oder nimm einen Hinweis.");var gi=document.getElementById("guess");gi.value="";gi.classList.remove("shake");void gi.offsetWidth;gi.classList.add("shake");}
     upStats();
   }
   function hint(){
