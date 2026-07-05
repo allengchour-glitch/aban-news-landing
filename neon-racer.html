@@ -153,6 +153,7 @@ var touchX=null;
 addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].clientX;var el=e.target;if(el&&el.closest&&el.closest("button,a"))return;if(!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true});
 addEventListener("touchmove",function(e){if(e.touches[0])touchX=e.touches[0].clientX;e.preventDefault();},{passive:false});
 addEventListener("touchend",function(){touchX=null;});
+addEventListener("mousemove",function(e){if(running)touchX=e.clientX;}); // "Maus" war im Hinweis versprochen, aber nie verdrahtet
 
 function spawnThing(){
   var t=null;for(var i=0;i<things.length;i++)if(!things[i].active){t=things[i];break;}if(!t)return;

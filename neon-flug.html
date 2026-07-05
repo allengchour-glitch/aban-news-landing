@@ -298,17 +298,21 @@ function gameOver(){
   document.getElementById("best").textContent=best;
   document.getElementById("finalScore").textContent=score;
   document.getElementById("verdict").textContent=(score>best-1&&score>0)?tr("newRec"):tr("verdicts")[Math.min(3,(score/15)|0)];
-  document.getElementById("over").classList.remove("hide");
+  setTimeout(function(){if(!running)document.getElementById("over").classList.remove("hide");},340); // Crash-Shake/Flash erst sichtbar lassen (Guard: Space-Restart in der Lücke)
 }
 function flash(){var f=document.getElementById("flash");f.style.opacity=".6";setTimeout(function(){f.style.opacity="0";},80);}
 
 // Input
 function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
 window.addEventListener("mousemove",function(e){if(running)setTarget(e.clientX);});
-window.addEventListener("touchmove",function(e){if(running&&e.touches[0]){setTarget(e.touches[0].clientX);e.preventDefault();}},{passive:false});
+window.addEventListener("touchmove",function(e){if(e.touches[0]){if(Math.hypot(e.touches[0].clientX-tchX,e.touches[0].clientY-tchY)>12)tchMoved=true;if(running){setTarget(e.touches[0].clientX);e.preventDefault();}}},{passive:false});
 var keyL=false,keyR=false;
 window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing&&!paused)doDash();if((k==="escape"||k==="p")&&running&&!choosing&&document.getElementById("settings").classList.contains("hide"))togglePause();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
-window.addEventListener("touchstart",function(){if(running&&!choosing)doDash();},{passive:true});
+// Touch: Antippen LENKT (erster Kontakt = Ziel), Dash nur bei kurzem Tipp ohne Wischen
+var tchT=0,tchX=0,tchY=0,tchMoved=false;
+window.addEventListener("touchstart",function(e){if(!e.touches[0])return;tchT=performance.now();tchX=e.touches[0].clientX;tchY=e.touches[0].clientY;tchMoved=false;
+  if(running&&!choosing&&!paused)setTarget(e.touches[0].clientX);},{passive:true});
+window.addEventListener("touchend",function(){if(running&&!choosing&&!paused&&!tchMoved&&performance.now()-tchT<200)doDash();},{passive:true});
 window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
 
 // Audio (WebAudio, kein Asset)
