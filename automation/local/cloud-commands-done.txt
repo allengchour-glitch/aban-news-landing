@@ -150,3 +150,5 @@ seedance-test-20260705
 render-winners-20260705
 archive-drafts-20260705
 image-audit-fix-20260705
+soften-claims-20260705
+queue-winner-reels-20260705
