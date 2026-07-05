@@ -21,15 +21,16 @@ if (!EMAIL || !APIKEY) { console.error('FEHLER: CJ_EMAIL und CJ_API_KEY müssen 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Charge 2026-07-05: Lücken-Kategorien Reise/Strand/Handy + freie §6-Ideen (2-Token-must-Regel).
+// Charge 2026-07-05b: WM-Fan + 1.-August-Nische (Schweiz-Flagge = beide Anlässe).
 const KEYWORDS = [
-  { kw: 'travel organizer bag set',    must:['travel','organizer'], take: 1 },
-  { kw: 'passport holder cover',       must:['passport'],           take: 1 },
-  { kw: 'beach blanket waterproof',    must:['beach','blanket'],    take: 1 },
-  { kw: 'phone holder stand desk',     must:['phone','stand'],      take: 1 },
-  { kw: 'garlic press stainless',      must:['garlic','press'],     take: 1 },
-  { kw: 'lint roller clothes',         must:['lint'],               take: 1 },
-  { kw: 'monitor stand riser',         must:['monitor','stand'],    take: 1 },
-  { kw: 'insulated lunch bag',         must:['lunch','bag'],        take: 1 },
+  { kw: 'switzerland flag',            must:['switzerland','flag'], take: 2 },
+  { kw: 'swiss flag banner',           must:['swiss'],              take: 1 },
+  { kw: 'face paint stick fans',       must:['face','paint'],       take: 1 },
+  { kw: 'fan scarf football',          must:['scarf'],              take: 1 },
+  { kw: 'flag garland bunting',        must:['garland'],            take: 1 },
+  { kw: 'car flag window',             must:['car','flag'],         take: 1 },
+  { kw: 'football party decoration',   must:['football','party'],   take: 1 },
+  { kw: 'led foam stick cheer',        must:['foam','stick'],       take: 1 },
 ];
 
 let _b, _ctx;
