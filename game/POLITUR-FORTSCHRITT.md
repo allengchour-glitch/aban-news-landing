@@ -28,8 +28,7 @@
 
 ## ⏳ P1 offen (nächste Loop-Runden)
 - **neon-colossus:** Start-Screen-Text auf Touch anpassen (`enableTouch()` eager); (hitstop optional — slowmo deckt Juice schon ab).
-- **wort-des-tages:** Kachel-Flip-Reveal + Win-Dance (innerhalb der 900ms-Timeout, nicht mit `.pop` kollidieren); großes Gäste-Wörterbuch für Rate-Eingaben (aktuell nur 88-Antworten-Liste erlaubt) — größerer Aufwand.
-- **wortbruecke:** Shake bei falschem Tipp; Solve-Pop-Animation.
+- **wort-des-tages:** (offen) Kachel-Flip-Reveal (Win-Dance ✅ erledigt); großes Gäste-Wörterbuch für Rate-Eingaben (aktuell nur 88-Antworten-Liste) — größerer Aufwand.
 
 ## Zielbranches
 - neon-colossus-Politur → `claude/neon-colossus`
