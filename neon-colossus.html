@@ -159,6 +159,14 @@ for(var mni=0;mni<72;mni++){var mna=mni/72*Math.PI*2,mnr=230+Math.random()*120,m
   if(Math.sin(mna)<-0.76)mnh*=0.26;
   var mnt=new THREE.Mesh(new THREE.ConeGeometry(38+Math.random()*48,mnh,4),new THREE.MeshStandardMaterial({color:0x090b1c,emissive:0x161a3c,emissiveIntensity:0.5,flatShading:true}));
   mnt.position.set(Math.cos(mna)*mnr,mnh/2-10,Math.sin(mna)*mnr);mnt.rotation.y=Math.random()*3.14;scene.add(mnt);}
+// Phasen-Gewitter: Welt reagiert auf den Kampf (Blitze ab Phase 2, dichter in Phase 3)
+var storm={flash:0,next:3,base:new THREE.Color(0x2a1748),lit:new THREE.Color(0x5b3a92)};
+function stormTick(dt,active,phase){
+  if(active&&phase>=2){storm.next-=dt;if(storm.next<=0){storm.flash=0.16;storm.next=(phase>=3?1.5:3.2)+Math.random()*3;beep(46,0.3,"sawtooth",0.055);}}
+  if(storm.flash>0){storm.flash-=dt;var sf=Math.max(0,storm.flash)/0.16;
+    dl.intensity=0.9+sf*2.6;skyMat.uniforms.cHor.value.copy(storm.base).lerp(storm.lit,sf);sunGlow.material.opacity=0.13+sf*0.25;}
+  else if(dl.intensity!==0.9){dl.intensity=0.9;skyMat.uniforms.cHor.value.copy(storm.base);sunGlow.material.opacity=0.13;}
+}
 var auroras=[];for(var aui=0;aui<3;aui++){var au=new THREE.Mesh(new THREE.PlaneGeometry(560,80),new THREE.MeshBasicMaterial({color:aui===0?0x5ef2ff:(aui===1?0xb98bff:0xff7ad9),transparent:true,opacity:0.09,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide,fog:false}));
   au.position.set(0,105+aui*28,-250);au.rotation.x=-0.55-aui*0.08;scene.add(au);auroras.push(au);}
 var ambN=160,ambGeo=new THREE.BufferGeometry(),ambPos=new Float32Array(ambN*3),ambV=[];
@@ -379,7 +387,7 @@ function playerList(){return G.co?[player,player2]:[player];}
 function idxAlive(i){return i===0?G.alive:G.alive2;}
 function damageBoss(d,wx,wz){G.bhp-=d;dmgNum(d,wx,1.6,wz,G.stage===2?0xffb0c0:0xbfe9ff);var _fm=boss.userData.flashMats||[boss.userData.inner.material];for(var _fi=0;_fi<_fm.length;_fi++)_fm[_fi].emissiveIntensity=(_fm[_fi]._baseEmis!==undefined?_fm[_fi]._baseEmis:0.75)+0.55;G.bhitFlash=0.05;boss.userData.hitPunch=0.1;
   var frac=G.bhp/G.bmax,np=frac<=0.3?3:(frac<=0.6?2:1);
-  if(np>G.phase){G.phase=np;updBossPips();shake=Math.max(shake,0.8);flashImpact(0.5);slowmo(0.25,0.4);showHint("Phase "+np+"!");beep(880,0.3,"triangle",0.09);spawnNova(boss.position.x,boss.position.z,20,10,0,COLOSSI[G.stage].c2);burst(boss.position.x,4,boss.position.z,COLOSSI[G.stage].c1,26,6);}
+  if(np>G.phase){G.phase=np;updBossPips();shake=Math.max(shake,0.8);flashImpact(0.5);slowmo(0.25,0.4);storm.flash=0.22;storm.next=0.8;showHint("Phase "+np+"!");beep(880,0.3,"triangle",0.09);spawnNova(boss.position.x,boss.position.z,20,10,0,COLOSSI[G.stage].c2);burst(boss.position.x,4,boss.position.z,COLOSSI[G.stage].c1,26,6);}
   if(G.bhp<=0)bossDown();}
 function bossDown(){G.bhp=0;shake=1.4;slowmo(0.7,0.22);flashImpact(0.85);burst(boss.position.x,4,boss.position.z,COLOSSI[G.stage].c1,40,8);burst(boss.position.x,4,boss.position.z,0xffffff,30,6);beep(1046,0.5,"triangle",0.1);beep(523,0.6,"sawtooth",0.08);
   boss.visible=false;for(var i=0;i<eb.length;i++){eb[i].active=false;eb[i].m.visible=false;}for(i=0;i<tg.length;i++){tg[i].active=false;tg[i].line.visible=false;tg[i].ring.visible=false;}
@@ -525,6 +533,7 @@ function update(dt){
   for(i=0;i<auroras.length;i++){auroras[i].material.opacity=0.06+0.05*Math.sin(G.t*0.5+i);auroras[i].position.x=Math.sin(G.t*0.12+i)*40;}
   var pa=ambGeo.attributes.position.array;for(i=0;i<ambN;i++){pa[i*3+1]+=ambV[i]*dt;if(pa[i*3+1]>52){pa[i*3+1]=0;pa[i*3]=(Math.random()-.5)*220;pa[i*3+2]=(Math.random()-.5)*220;}}ambGeo.attributes.position.needsUpdate=true;
   for(i=0;i<crystals.length;i++){var cy=crystals[i];cy.rotation.y+=dt*cy.userData.s;cy.rotation.x+=dt*cy.userData.s*0.6;cy.position.y=cy.userData.y0+Math.sin(G.t*0.7+cy.userData.b)*2.2;}
+  stormTick(dt,G.running&&boss.visible,G.phase);
   // HUD
   if(G.running||!G.alive){document.getElementById("hpFill").style.width=(100*G.hp/G.maxhp)+"%";document.getElementById("hpTxt").textContent=Math.max(0,Math.ceil(G.hp))+"/"+G.maxhp;
     document.getElementById("bossHp").style.width=(100*Math.max(0,G.bhp)/G.bmax)+"%";
@@ -643,6 +652,7 @@ function idleAnim(dt){ // Landschaft + Player-Ringe leben auch im Menü/Over-Scr
   for(var i=0;i<auroras.length;i++){auroras[i].material.opacity=0.06+0.05*Math.sin((last*0.001)*0.5+i);auroras[i].position.x=Math.sin((last*0.001)*0.12+i)*40;}
   var pa=ambGeo.attributes.position.array;for(i=0;i<ambN;i++){pa[i*3+1]+=ambV[i]*dt;if(pa[i*3+1]>52){pa[i*3+1]=0;}}ambGeo.attributes.position.needsUpdate=true;
   for(i=0;i<crystals.length;i++){var cy=crystals[i];cy.rotation.y+=dt*cy.userData.s;cy.rotation.x+=dt*cy.userData.s*0.6;cy.position.y=cy.userData.y0+Math.sin((last*0.001)*0.7+cy.userData.b)*2.2;}
+  stormTick(dt,false,1); // Menü: nur Ausklingen/Reset
   pRing.rotation.z+=dt*1.2;pRing2.rotation.z-=dt*1.6;pCore.rotation.y+=dt*2;
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=9*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2.2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;}}
 }
