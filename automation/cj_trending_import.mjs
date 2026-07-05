@@ -184,7 +184,7 @@ for(let page=1;page<=PAGES;page++){
  for(const p of list){
   const nm=p.productNameEn||'';
   if(!nm||done.has(String(p.pid))||BAN.test(nm))continue;
-  const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<1.5||pr>90)continue;
+  const _pp=(''+p.sellPrice).split('--'); const _lo=parseFloat(_pp[0])||0, _hi=parseFloat(_pp[1]||_pp[0])||_lo; if(_hi<1.5||_lo>90)continue;
   cand.push(p);
  }
 }
