@@ -2430,3 +2430,14 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **Jetzt: 46 echte Produkte** in „🚬 Raucher- & Dreh-Zubehör (18+)" (Collection `689719673217`, Regel tag:raucher): Grinder/Tabakmühlen, Aschenbecher, Zigarettenetuis/-halter, **viel Shisha/Wasserpfeifen-Zubehör**. **Compliance ✓ nur Online Store + POS** (raus aus Google/Meta/TikTok/Pinterest).
 - **🔴 FILTER-LEHRE (teuer):** `cj_raucher` v1 mit loser Positiv-Phrase `grinder|pipe|tray` zog **massiv Fehltreffer** (Salz-/Pfeffer-/Kaffeemühle, Hunde-Krallenschleifer, Fuß-/Nagelschleifer, Winkelschleifer, Fleischwolf) → 15 gelöscht. **Fix:** strenge Positiv-Regex `SMOKE` (herb/tobacco grinder, rolling tray/paper/machine, pipe, hookah, shisha, ashtray, cigarette case) + massiv erweiterte `BAN` (mill/salt/pepper/spice/coffee/meat/nail/paw/claw/pet/angle grinder/drill/sander/cutting disc…). **IMMER DRY vor LIVE** — DRY zeigte 25/25 sauber, dann erst LIVE. Bei such-basiertem CJ-Import (keine passende Kategorie) ist der Positiv-Filter die halbe Miete.
 - **Nebenfix:** 3 Aktivkohlefilter (Komposter/Luft, harmlos) waren fälschlich productType „Raucherzubehör" → „Haushalt & Reinigung" korrigiert.
+
+**📌 2026-07-05 (🎨 DESIGN-POLISH LIVE + „besser als Soro"-SEO-Motor):**
+- **ratgeber_pro.mjs (NEU, „besser als Soro"):** 23 SEO-Kaufratgeber live mit **Rich-Schema (FAQPage + Article JSON-LD), TL;DR-Box** (die KI-Antwortmaschinen zitieren) + **Conversion-CTA** (Artikel→kaufbare Collection+WELCOME10). Gratis & unser statt Abo. Ledger `dropship/ratgeber_pro_done.txt`. Soro-Ad war Hype (41→14K); Content ist eh nicht der Engpass (Traffic ist es).
+- **LIVE-THEME editiert** (`layout/theme.liquid`, MAIN `187533001089`) — 3 additive/gescopte CSS-Blöcke im `<style>` vor `</head>`:
+  1. `ls-hero-aurora` — Gold-Aurora hinterm Hero (screen-blend, hinter Text)
+  2. `ls-card-polish` — dezenter Schatten auf `.product-card__content`/`.collection-card__content` + Hover
+  3. `ls-tile-polish` — border-radius 18px auf Kategorie-/Collection-Kacheln
+  **Backups:** `dropship/theme-backups/theme.liquid.pre-cardpolish.bak` (+ .livehero.bak). Reversibel.
+- **Mockups (freigegeben vom User „sieht gut aus"):** `dropship/mockups/luxe-mobile-hero.html` + `luxe-home.html` (Premium-Startseite, mit **Gemini Vision** iteriert: Hero-Lesbarkeit/CTA R1-Schwäche→R2-Stärke). Voller Startseiten-Umbau (Kategorie-Kacheln/Rails/Editorial im Mockup-Stil) NUR schrittweise mit User-Handy-Check — Live-Screenshot geht hier nicht (Browser kommt nicht durch Proxy, curl schon).
+- **QA:** 20/20 jüngste CJ-Kleider sauber (Bild+SEO+Damen-Collection). Import-Pipeline liefert Qualität.
+- **Vision-AI-Workflow etabliert:** Playwright (`/opt/node22/lib/node_modules/playwright`, PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers) rendert Mockup lokal (file://) → PNG → Gemini `gemini-2.5-flash` inline_data für Design-Kritik. Proxy blockt Chromium für externe URLs, file:// geht.
