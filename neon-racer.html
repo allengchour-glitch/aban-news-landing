@@ -162,11 +162,12 @@ function spawnThing(){
   t.m.scale.set(1,t.boost?0.4:1,1);
 }
 
-function burst(x,y,z,c){/* simple spark via reusing tiles? minimal: flash via shield bar */}
+var shake=0,_cyan=new THREE.Color(0x5ef2ff);
+function burst(x,y,z,c){shake=Math.max(shake,0.35);}
 
 function start(){reset();running=true;paused=false;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");}
 function showBest(){var b=bestM();document.getElementById("best").textContent=b;document.getElementById("best2").textContent=b>0?("🏆 Rekord: "+b+" m"):"";}
-function gameOver(){running=false;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
+function gameOver(){running=false;shake=1.4;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
   document.getElementById("finalT").textContent=m+" m";
   document.getElementById("verdict").innerHTML=(rec&&m>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+" m · ")+"Top-Speed "+Math.floor(speed*3.0)+" km/h";
   document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");
@@ -208,13 +209,13 @@ function loop(now){
     sGlow.position.set(shipX,2,ship.position.z);
     // Off-Track?
     var offset=shipX-trackC;
-    if(Math.abs(offset)>HALF){ shield-=60*dt; speed-=30*dt; shipX=trackC+Math.sign(offset)*HALF; bank+=0.04; if(Math.random()<0.3)beep(200,.05,"square",.05); }
+    if(Math.abs(offset)>HALF){ shield-=60*dt; speed-=30*dt; shipX=trackC+Math.sign(offset)*HALF; bank+=0.04; shake=Math.max(shake,0.3); if(Math.random()<0.3)beep(200,.05,"square",.05); }
     // Things bewegen + Kollision
     for(i=0;i<things.length;i++){var t=things[i];if(!t.active)continue;var tz=-(t.d-dist);t.m.position.set(centerX(t.d)+t.off,0.6,tz);t.m.rotation.y+=dt*2;
       if(t.d<dist-4){t.active=false;t.m.visible=false;continue;}
       if(Math.abs(tz)<Math.max(2.2,speed*dt*0.6+2.2)&&Math.abs((centerX(t.d)+t.off)-shipX)<1.8){
-        if(t.boost){speed+=28;beep(880,.12,"square",.06);}
-        else{shield-=34;speed-=22;beep(140,.18,"sawtooth",.08);}
+        if(t.boost){speed+=28;shake=Math.max(shake,0.25);sGlow.color.setHex(0x6aff9e);beep(880,.12,"square",.06);}
+        else{shield-=34;speed-=22;shake=Math.max(shake,0.7);sGlow.color.setHex(0xff4d6d);beep(140,.18,"sawtooth",.08);}
         t.active=false;t.m.visible=false;
       }
     }
@@ -226,8 +227,10 @@ function loop(now){
   }
   // Kamera (Chase, folgt + bankt)
   camX+=((shipX)-camX)*0.10;
-  camera.position.set(camX - bank*4,5.2,ship.position.z+12);
+  camera.position.set(camX - bank*4 + (Math.random()-0.5)*shake*2.4,5.2+(Math.random()-0.5)*shake*2.4,ship.position.z+12);
   camera.lookAt(shipX*0.5+centerX(dist+20)*0.5, 1.0, ship.position.z-22);
+  if(shake>0.001)shake*=0.86; else shake=0;
+  sGlow.color.lerp(_cyan,0.08); // Farbe nach Boost/Treffer zurück zu Cyan
   camera.rotation.z=bank*0.3;
   renderBloom();
 }

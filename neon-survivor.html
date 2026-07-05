@@ -251,7 +251,7 @@ function spawnEnemy(boss){
     en.m.material.color.setHex(0xff2266); en.m.material.emissive.setHex(0xff2266);
   } else {
     var roll=rnd();
-    if(roll<0.20){ en.hp=1; en.spd=4.6+S.t*0.03; en.xp=1; en.m.scale.set(0.7,0.7,0.7);
+    if(roll<0.20){ en.hp=1; en.spd=Math.min(8.4,4.6+S.t*0.03); en.xp=1; en.m.scale.set(0.7,0.7,0.7);
       en.m.material.color.setHex(0xffaa33); en.m.material.emissive.setHex(0xaa5500); }
     else if(roll<0.36){ en.hp=4+Math.floor(S.t/15); en.spd=1.6+S.t*0.01; en.xp=3; en.m.scale.set(1.5,1.5,1.5);
       en.m.material.color.setHex(0x9b5cff); en.m.material.emissive.setHex(0x5522aa); }
@@ -259,7 +259,7 @@ function spawnEnemy(boss){
       en.m.material.color.setHex(0x33d0ff); en.m.material.emissive.setHex(0x1188cc); }
     else if(roll<0.66){ en.hp=5+Math.floor(S.t/14); en.spd=2.0; en.xp=4; en.splitter=true; en.m.scale.set(1.3,1.3,1.3);
       en.m.material.color.setHex(0x44ee88); en.m.material.emissive.setHex(0x22aa55); }
-    else { en.hp=1+Math.floor(S.t/25); en.spd=2.4+rnd()*1.2+S.t*0.02; en.xp=1; en.m.scale.set(1,1,1);
+    else { en.hp=1+Math.floor(S.t/25); en.spd=Math.min(8.4,2.4+rnd()*1.2+S.t*0.02); en.xp=1; en.m.scale.set(1,1,1);
       en.m.material.color.setHex(0xff5577); en.m.material.emissive.setHex(0xaa1133); }
   }
   en.baseEmissive=en.m.material.emissive.getHex(); en.flash=0; en.finalBoss=false;
@@ -279,7 +279,7 @@ function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,
   if(en.splitter){var px=en.m.position.x,pz=en.m.position.z;for(var sp2=0;sp2<2;sp2++){var mi=getMesh(enemies,enemyMesh);mi.active=true;mi.m.visible=true;mi.boss=false;mi.shooter=false;mi.splitter=false;mi.shootT=0;mi.hp=1;mi.spd=4.5;mi.xp=1;mi.m.scale.set(0.6,0.6,0.6);mi.m.material.color.setHex(0x44ee88);mi.m.material.emissive.setHex(0x22aa55);mi.baseEmissive=0x22aa55;mi.flash=0;mi.finalBoss=false;mi.m.position.set(px+(rnd()-.5)*2.4,0.7,pz+(rnd()-.5)*2.4);}}
   var dc=en.finalBoss?1:(en.boss?1:(en.splitter?0.14:(en.shooter?0.10:0.05)));
   if(rnd()<dc)spawnLoot(en.m.position.x,en.m.position.z,en.finalBoss?3:(en.boss?2:0));
-  en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;announce("Boss besiegt! 🏆");checkEvolutions();}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
+  en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;hitstop=Math.max(hitstop,0.07);announce("Boss besiegt! 🏆");checkEvolutions();}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
 function hitEnemy(en,dmg){if(!en.active)return;en.hp-=dmg;if(en.hp<=0)killEnemy(en);else en.flash=0.09;}
 function novaFx(R){var n=20;for(var i=0;i<n;i++){var a=i/n*6.283;var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.18,6,6),mat(0x9bd0ff,0x9bd0ff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(0x9bd0ff);p.m.material.emissive.setHex(0x9bd0ff);p.m.position.set(player.position.x,0.9,player.position.z);p.vx=Math.cos(a)*R*2.4;p.vz=Math.sin(a)*R*2.4;p.vy=0;p.life=0.4;}}
 // Aktive Fähigkeit: PULS-BLAST (Taste LEER) — grosser AoE + Rückstoss, Cooldown
@@ -309,7 +309,7 @@ var EVO={
  chain:{name:"⛈️ Gewitter",     need:"Schaden ↑",    cond:function(){return S.dmg>=1.6;}},
  orbit:{name:"🌀 Klingen-Orkan", need:"Schussrate ↑", cond:function(){return (S.haste||1)<=0.72;}}
 };
-function checkEvolutions(){for(var id in EVO){if((S.weapons[id]||0)>=WEAPONS[id].max && !S.evolved[id] && EVO[id].cond()){S.evolved[id]=true;announce("⚡ EVOLUTION: "+EVO[id].name+"!");beep(1046,.4,"triangle",.1);shake=Math.max(shake,0.7);renderUpRow();}}}
+function checkEvolutions(){for(var id in EVO){if((S.weapons[id]||0)>=WEAPONS[id].max && !S.evolved[id] && EVO[id].cond()){S.evolved[id]=true;announce("⚡ EVOLUTION: "+EVO[id].name+"!");beep(1046,.4,"triangle",.1);shake=Math.max(shake,0.7);hitstop=Math.max(hitstop,0.1);renderUpRow();}}}
 function burst(x,z,c){var n=10;for(var i=0;i<n;i++){var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.16,6,6),mat(0xffffff,0xffffff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(c);p.m.material.emissive.setHex(c);p.m.position.set(x,0.9,z);var a=Math.random()*6.28,s=2+Math.random()*4;p.vx=Math.cos(a)*s;p.vz=Math.sin(a)*s;p.vy=Math.random()*4;p.life=0.5;}}
 
 var actx=null,muted=false; try{muted=localStorage.getItem("ns_muted")==="1";}catch(e){}
@@ -433,7 +433,7 @@ function renderBloom(){
 }
 function resizeBloom(){rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
 
-var shake=0,running=false,last=performance.now(),hurt=0,hurtEl=document.getElementById("hurt");
+var shake=0,hitstop=0,running=false,last=performance.now(),hurt=0,hurtEl=document.getElementById("hurt");
 function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;
   var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");startMusic();}
@@ -460,6 +460,7 @@ document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor �
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000); last=now;
+  if(hitstop>0){hitstop-=dt;dt*=0.12;} // Hitstop-Juice: kurzer Zeit-Stopp bei großen Treffern
   if(running&&!paused){
     S.t+=dt;
     // Bewegung

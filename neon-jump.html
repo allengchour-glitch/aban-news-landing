@@ -149,10 +149,10 @@ function setBestT(v){try{localStorage.setItem("nj_best",String(v));}catch(e){}}
 var P={x:4,y:2,vx:0,vy:0,onGround:false,coyote:0,jbuf:0,jumps:0,sq:1};
 var GRAV=52,MAXVX=13,ACC=95,FRIC=70,JUMPV=19,HW=0.42,HH=0.7;
 var coins=0,deaths=0,running=false,won=false,t0=0,elapsed=0,last=performance.now();
-var keyL=false,keyR=false,jumpQ=false;
+var keyL=false,keyR=false,jumpQ=false,shake=0;
 function resetRun(){P.x=4;P.y=2.2;P.vx=0;P.vy=0;P.onGround=false;P.jumps=0;coins=0;deaths=0;won=false;elapsed=0;
   for(var i=0;i<coinMeshes.length;i++){coinMeshes[i].userData.got=false;coinMeshes[i].visible=true;}}
-function respawn(){P.x=4;P.y=2.2;P.vx=0;P.vy=0;deaths++;beep(140,.2,"sawtooth",.08);}
+function respawn(){P.x=4;P.y=2.2;P.vx=0;P.vy=0;deaths++;shake=0.55;keyL=false;keyR=false;beep(140,.2,"sawtooth",.08);}
 function doJump(){if(P.coyote>0||P.jumps<2){P.vy=JUMPV*(P.jumps===0?1:0.92);P.coyote=0;P.jumps++;P.sq=0.6;beep(560+P.jumps*90,.08,"square",.05);}}
 
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;
@@ -170,7 +170,7 @@ document.getElementById("tzJ").addEventListener("touchstart",function(e){if(!run
 
 function start(){resetRun();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");if("ontouchstart"in window)touchEl.style.display="block";}
 function showBest(){var b=bestT();document.getElementById("best2").textContent=b>0?("🏆 Beste Zeit: "+b+"s"):"";}
-function finish(win){running=false;won=win;keyL=false;keyR=false;jumpQ=false;if("ontouchstart"in window)touchEl.style.display="none";
+function finish(win){running=false;won=win;keyL=false;keyR=false;jumpQ=false;shake=win?0.4:0.6;if("ontouchstart"in window)touchEl.style.display="none";
   var secs=Math.floor(elapsed),b=bestT(),rec=win&&(b===0||secs<b);if(rec)setBestT(secs);
   document.getElementById("overTag").textContent=win?"Ziel erreicht!":"Game Over";
   document.getElementById("finalT").textContent=win?("🏁 "+secs+"s"):"Aufgegeben";
@@ -201,7 +201,7 @@ function loop(now){
     for(var i=0;i<PLAT.length;i++){var pl=PLAT[i];if(overlaps(P.x,P.y,pl.x,pl.y,pl.w/2,pl.h/2)){if(P.x<pl.x){P.x=pl.x-pl.w/2-HW;}else{P.x=pl.x+pl.w/2+HW;}P.vx=0;}}
     // Move Y + resolve
     P.y+=P.vy*dt; P.onGround=false;
-    for(i=0;i<PLAT.length;i++){var p2=PLAT[i];if(overlaps(P.x,P.y,p2.x,p2.y,p2.w/2,p2.h/2)){if(P.vy<=0){P.y=p2.y+p2.h/2+HH;P.vy=0;P.onGround=true;P.jumps=0;}else{P.y=p2.y-p2.h/2-HH;P.vy=0;}}}
+    for(i=0;i<PLAT.length;i++){var p2=PLAT[i];if(overlaps(P.x,P.y,p2.x,p2.y,p2.w/2,p2.h/2)){if(P.vy<=0){if(P.vy<-11){P.sq=0.55;shake=Math.max(shake,0.18);}P.y=p2.y+p2.h/2+HH;P.vy=0;P.onGround=true;P.jumps=0;}else{P.y=p2.y-p2.h/2-HH;P.vy=0;}}}
     // Ziel-Basis als Boden
     if(overlaps(P.x,P.y,goalX,-0.2,4.5,1)){if(P.vy<=0&&P.y>-0.2){P.y=-0.2+1+HH;P.vy=0;P.onGround=true;P.jumps=0;}}
     // Abgrund
@@ -224,6 +224,7 @@ function loop(now){
   camera.position.x+=((P.x+3)-camera.position.x)*0.12;
   camera.position.y+=((Math.max(1,P.y)+3)-camera.position.y)*0.08;
   camera.position.z=17;
+  if(shake>0.001){camera.position.x+=(Math.random()-0.5)*shake*1.6;camera.position.y+=(Math.random()-0.5)*shake*1.6;shake*=0.85;}else shake=0;
   camera.lookAt(camera.position.x-1.5,camera.position.y-2.5,0);
   // Parallax
   sky.position.set(camera.position.x,camera.position.y,0);
