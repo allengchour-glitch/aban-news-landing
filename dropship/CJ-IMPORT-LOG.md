@@ -1792,3 +1792,13 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Swiss-Flag-Heart-Shirt/Tasse + Soccer-Ball-Sticker. Anlass: WM läuft (Final Mitte Juli) + 1.-August-Brücke.
 - **Optional offen:** Menü-Link auf die Fan-Zone (menuUpdate = ganze Struktur, wegen Parallel-Sessions
   bewusst nicht angefasst) + Fan-Zone im Hero/Startseite featuren (Customizer, nur User).
+
+## 2026-07-05 — 3. CJ-Runde (Thermometer/Grill-Lücke) + TAGES-FAZIT CJ
+- **0 Keeper** (CJ lieferte Fieber-Stirnthermometer statt Grill-Thermometer = Medizinprodukt/§5, 2 Bilder).
+  Keywords verbraucht: meat thermometer digital · grill thermometer wireless · bbq grill mat non stick.
+- **📊 TAGES-FAZIT (3 Runden, 27 Keywords, 9 Kandidaten, 0 Keeper):** Die CJ-**Namenssuche** ist für gezielte
+  Nischen praktisch unbrauchbar (Fehltreffer-Quote ~100%) UND der 10k-Katalog deckt fast alles ab.
+  **Empfehlung für künftige Sessions: CJ-Keyword-Fischen einstellen.** CJ nur noch (a) über Kategorie-Browse
+  (`cj_gaps_import.mjs`-Ansatz mit harten Ankern) oder (b) für konkrete Produkt-IDs aus Recherche-Reports.
+- **✅ Text-Abdeckung verifiziert (Stichproben neu+alt):** Alle geprüften cj-real haben DE-Body (350–1250 Z.)
+  + SEO-Title/Desc. Import-Session schreibt Text direkt mit. Kein Text-Rückstand im CJ-Katalog.

@@ -21,16 +21,11 @@ if (!EMAIL || !APIKEY) { console.error('FEHLER: CJ_EMAIL und CJ_API_KEY müssen 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 // Charge 2026-07-05: Lücken-Kategorien Reise/Strand/Handy + freie §6-Ideen (2-Token-must-Regel).
-// Charge 2026-07-05b: WM-Fan + 1.-August-Nische (Schweiz-Flagge = beide Anlässe).
+// Charge 2026-07-05c: gezielte Lücken (Thermometer=1 im Shop, Grill=52 stark).
 const KEYWORDS = [
-  { kw: 'switzerland flag',            must:['switzerland','flag'], take: 2 },
-  { kw: 'swiss flag banner',           must:['swiss'],              take: 1 },
-  { kw: 'face paint stick fans',       must:['face','paint'],       take: 1 },
-  { kw: 'fan scarf football',          must:['scarf'],              take: 1 },
-  { kw: 'flag garland bunting',        must:['garland'],            take: 1 },
-  { kw: 'car flag window',             must:['car','flag'],         take: 1 },
-  { kw: 'football party decoration',   must:['football','party'],   take: 1 },
-  { kw: 'led foam stick cheer',        must:['foam','stick'],       take: 1 },
+  { kw: 'meat thermometer digital',    must:['meat','thermometer'],  take: 2 },
+  { kw: 'grill thermometer wireless',  must:['thermometer'],         take: 1 },
+  { kw: 'bbq grill mat non stick',     must:['grill','mat'],         take: 1 },
 ];
 
 let _b, _ctx;
