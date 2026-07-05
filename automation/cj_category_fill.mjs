@@ -127,8 +127,26 @@ Name (EN): ${nameEn}
 Features (EN): ${(feats||'').slice(0,700)}
 Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß, keine Markdown-Fences).`;
  for(let i=0;i<3;i++){const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GK}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:0.5,maxOutputTokens:1500,thinkingConfig:{thinkingBudget:0},responseMimeType:'application/json'}})});
-  const j=await r.json(); if(j.error){if(j.error.code===429){await sleep(15000);continue;}return null;}
+  const j=await r.json(); if(j.error){if(j.error.code===429){await sleep(15000);continue;}break;}
   try{const t=j.candidates?.[0]?.content?.parts?.[0]?.text||'';const o=JSON.parse(t);if(o.title&&o.html)return o;}catch{}
+ }
+ return await groq(prompt);
+}
+
+// Fallback: Groq (OpenAI-kompatibel), falls Gemini-Quota erschöpft (2026-07-05).
+const GROQ_KEY=(process.env.GROQ_API_KEY||'').trim();
+async function groq(prompt){
+ if(!GROQ_KEY)return null;
+ for(let i=0;i<3;i++){
+  try{
+   const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${GROQ_KEY}`},
+    body:JSON.stringify({model:'llama-3.3-70b-versatile',temperature:0.5,max_tokens:1200,
+     response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
+   if(r.status===429){await sleep(20000);continue;}
+   const j=await r.json(); if(j.error)return null;
+   const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;
+  }catch{}
  }
  return null;
 }
