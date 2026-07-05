@@ -20,16 +20,16 @@ const TOKEN_FILE = '/tmp/cj_token.json';
 if (!EMAIL || !APIKEY) { console.error('FEHLER: CJ_EMAIL und CJ_API_KEY müssen gesetzt sein.'); process.exit(1); }
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-// Kuratierte Sommer/CH-2026-Kandidaten. must = alle Tokens müssen im Namen vorkommen.
+// Charge 2026-07-05: Lücken-Kategorien Reise/Strand/Handy + freie §6-Ideen (2-Token-must-Regel).
 const KEYWORDS = [
-  { kw: 'cutting board bamboo',         must:['cutting','board'], take: 1 },
-  { kw: 'led table lamp bedside',       must:['table','lamp'],    take: 1 },
-  { kw: 'sunset projector night lamp',  must:['night','lamp'],    take: 1 },
-  { kw: 'wall mirror decorative',       must:['wall','mirror'],   take: 1 },
-  { kw: 'artificial flower bouquet',    must:['artificial','flower'], take: 1 },
-  { kw: 'ceramic decorative vase',      must:['ceramic','vase'],  take: 1 },
-  { kw: 'storage jar canister kitchen', must:['storage','jar'],   take: 1 },
-  { kw: 'mushroom ambient table lamp',  must:['lamp'],            take: 1 },
+  { kw: 'travel organizer bag set',    must:['travel','organizer'], take: 1 },
+  { kw: 'passport holder cover',       must:['passport'],           take: 1 },
+  { kw: 'beach blanket waterproof',    must:['beach','blanket'],    take: 1 },
+  { kw: 'phone holder stand desk',     must:['phone','stand'],      take: 1 },
+  { kw: 'garlic press stainless',      must:['garlic','press'],     take: 1 },
+  { kw: 'lint roller clothes',         must:['lint'],               take: 1 },
+  { kw: 'monitor stand riser',         must:['monitor','stand'],    take: 1 },
+  { kw: 'insulated lunch bag',         must:['lunch','bag'],        take: 1 },
 ];
 
 let _b, _ctx;

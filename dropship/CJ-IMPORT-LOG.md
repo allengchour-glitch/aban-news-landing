@@ -1765,3 +1765,18 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Hero** live: weisser Titel + goldener Button + Premium-Bild (Schema 3).
 - Damit sind ALLE Produktseiten-/Hero-Baustellen erledigt. Offen nur noch: Judge.me-Token (mehr Reviews/Sterne),
   Cookie-Banner schmaler, Top-Bar-Schrift (alles optionaler Feinschliff).
+
+## 2026-07-05 — CJ-Charge (Status-Session, Token via User) — 0 Keeper, wichtiger Befund
+- **Umgebung:** Kein MCP; Shopify via Client-Credentials (Rezept CLAUDE.md), CJ via User-Token (`/tmp/cj_token.json`-Cache).
+- **2 Keyword-Runden** (Reise/Strand/Handy-Lücken + freie §6-Ideen): 16 Keywords → 5 Kandidaten → **alle aussortiert:**
+  - Wein-Dispenser CJHS296029801AZ: Varianten-Preis-Chaos $10–530 (§5) · iPhone-17-Case: modellspezifische Commodity.
+  - Reise-Adapter CJYD296282701AZ ($4.53, Bilder 24/24 HTTP-200): **Shop hat bereits 3 aktive Reiseadapter** (BigBuy).
+  - Mikrofaser-Auto-Tücher CJQT295981001AZ: „Premium Mikrofasertücher Set 12er Auto" existiert ACTIVE.
+  - Lunch-Tote CJNS296687401AZ ($1.74): Lunch-Kühltasche + Bento existieren; Plain-Commodity ohne Mehrwert.
+- **🧠 STRATEGISCHER BEFUND:** Katalog ist inzwischen **10'000+ aktiv** (BigBuy-Masse) → CJ-Keyword-Fischen kollidiert
+  fast immer mit Bestand. **Dubletten-Check (SKU + Titel-Synonyme!) ist jetzt Pflicht VOR jeder Anlage**; Lücken-Importe
+  nur noch gezielt nach echter Bestandsprüfung. Master-Lesson 11 gilt verschärft: Breite = 0-Hebel, Conversion first.
+- Verwendete Keywords (nicht wiederholen): packing cubes travel · luggage tag · travel adapter universal · sand free
+  beach mat · self watering planter pot · wine aerator decanter · spice rack organizer · bike light set usb · travel
+  organizer bag set · passport holder cover · beach blanket waterproof · phone holder stand desk · garlic press
+  stainless · lint roller clothes · monitor stand riser · insulated lunch bag.
