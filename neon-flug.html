@@ -136,7 +136,7 @@ var TRN=60,trail=[],trailGeo=new THREE.BufferGeometry();
 var tpos=new Float32Array(TRN*3);
 for(var i=0;i<TRN;i++){trail.push({x:0,y:0,z:0});}
 trailGeo.setAttribute("position",new THREE.BufferAttribute(tpos,3));
-var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.45,transparent:true,opacity:.75});
+var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.45,transparent:true,opacity:.75,blending:THREE.AdditiveBlending,depthWrite:false});
 var trailPts=new THREE.Points(trailGeo,trailMat);scene.add(trailPts);
 
 // Object pools
@@ -168,14 +168,17 @@ function burst(x,y,z,color){
   var g=new THREE.BufferGeometry();var n=24;var p=new Float32Array(n*3);
   for(var k=0;k<n;k++){p[k*3]=x;p[k*3+1]=y;p[k*3+2]=z;}
   g.setAttribute("position",new THREE.BufferAttribute(p,3));
-  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:color,size:0.5,transparent:true,opacity:1}));
+  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:color,size:0.5,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
   scene.add(pts);
   var vel=[];for(k=0;k<n;k++){vel.push([(Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7]);}
   bursts.push({pts:pts,vel:vel,life:1});
 }
 
+// Sicheres localStorage (wirft nicht in Private-Mode / Sandbox-iframes → sonst weißer Bildschirm)
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 // State
-var running=false,score=0,best=+(localStorage.getItem("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
+var running=false,score=0,best=+(lsGet("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
 var shield=0,magnet=false,orbsCollected=0,nextUp=6,choosing=false,paused=false;
 // Meisterklasse-Mechaniken (spiegeln den Godot-Build): Flow/Combo, Dash, Biome.
 var combo=0,comboTimer=0,comboTime=180,nearWindow=1.6,orbValue=1;
@@ -209,8 +212,8 @@ var SKINS=[
   {name:"Smaragd",body:0x6aff9e,em:0x1a6f3f,wing:0xffd166,need:800},
   {name:"Gold",body:0xffd166,em:0x6f5a1a,wing:0xff7ad9,need:2000}
 ];
-var xp=+(localStorage.getItem("aban_neon_xp")||0);
-var selSkin=+(localStorage.getItem("aban_neon_skin")||0);
+var xp=+(lsGet("aban_neon_xp")||0);
+var selSkin=+(lsGet("aban_neon_skin")||0);
 function unlocked(i){return xp>=SKINS[i].need;}
 function applySkin(i){if(!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
 function renderSkins(){var el=document.getElementById("skins");if(!el)return;var next=null;for(var n=0;n<SKINS.length;n++){if(xp<SKINS[n].need){next=SKINS[n];break;}}
@@ -224,7 +227,7 @@ var T={
   de:{startTag:"aban news · 3D-Arcade",intro:'Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.',controls:"Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen",start:"Start ▶",daily:"🗓️ Tages-Challenge",startFoot:'Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a>',over:"Game Over",again:"Nochmal ▶",share:"Ergebnis teilen 📋",copied:"Kopiert 📋",overFoot:'5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a>',best:"Rekord",pauseTxt:"Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.",setTitle:"Einstellungen",sound:"Ton",lang:"Sprache",on:"an",off:"aus",skin:"Skin",xpTotal:"Gesamt-XP",nextSkin:"nächster Skin bei",allFree:"alle frei 🏆",locked:"🔒",newRec:"Neuer Rekord! 🏆",verdicts:["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"],upgrade:"⬆️ Upgrade wählen",endless:"Endlos",dailyTag:"Tages-Challenge",pts:"Punkte",playFree:"Gratis spielen",gauntlet:"TOR-WELLE!"},
   en:{startTag:"aban news · 3D arcade",intro:'Fly the glider through the neon canyon. Graze obstacles (near-miss = <b>Combo ×</b>), grab orbs, fly through <b>rings</b> for a PERFECT bonus, charge your <b>Dash</b>. The further you go, the faster it gets.',controls:"Move: ← → / A D / mouse / finger · Dash: SPACE / ↑ / tap",start:"Start ▶",daily:"🗓️ Daily Challenge",startFoot:'Runs in your browser, no download · <a href="/online-tools.html">more tools</a>',over:"Game Over",again:"Again ▶",share:"Share result 📋",copied:"Copied 📋",overFoot:'5 min of AI without hype, on weekdays — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">free newsletter →</a>',best:"Best",pauseTxt:"Press <b>ESC</b> / <b>P</b> or the button to resume.",setTitle:"Settings",sound:"Sound",lang:"Language",on:"on",off:"off",skin:"Skin",xpTotal:"Total XP",nextSkin:"next skin at",allFree:"all unlocked 🏆",locked:"🔒",newRec:"New record! 🏆",verdicts:["Practice makes perfect!","Solid!","Nicely flown!","Getting better!"],upgrade:"⬆️ Choose an upgrade",endless:"Endless",dailyTag:"Daily Challenge",pts:"pts",playFree:"Play free",gauntlet:"GAUNTLET!"}
 };
-var lang=localStorage.getItem("aban_neon_lang")||((navigator.language||"").indexOf("de")===0?"de":"en");
+var lang=lsGet("aban_neon_lang")||((navigator.language||"").indexOf("de")===0?"de":"en");
 if(lang!=="de"&&lang!=="en")lang="de";
 function tr(k){return (T[lang]&&T[lang][k]!=null)?T[lang][k]:T.de[k];}
 function setText(id,html){var e=document.getElementById(id);if(e)e.innerHTML=html;}
@@ -290,22 +293,26 @@ function reset(){
 function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");startMusic();}
 function gameOver(){
   running=false;shake=1.2;flash();stopMusic();
-  if(score>best){best=score;localStorage.setItem("aban_neon_best",best);}
+  if(score>best){best=score;lsSet("aban_neon_best",best);}
   xp+=score;try{localStorage.setItem("aban_neon_xp",xp);}catch(e){}renderSkins();
   document.getElementById("best").textContent=best;
   document.getElementById("finalScore").textContent=score;
   document.getElementById("verdict").textContent=(score>best-1&&score>0)?tr("newRec"):tr("verdicts")[Math.min(3,(score/15)|0)];
-  document.getElementById("over").classList.remove("hide");
+  setTimeout(function(){if(!running)document.getElementById("over").classList.remove("hide");},340); // Crash-Shake/Flash erst sichtbar lassen (Guard: Space-Restart in der Lücke)
 }
 function flash(){var f=document.getElementById("flash");f.style.opacity=".6";setTimeout(function(){f.style.opacity="0";},80);}
 
 // Input
 function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
 window.addEventListener("mousemove",function(e){if(running)setTarget(e.clientX);});
-window.addEventListener("touchmove",function(e){if(running&&e.touches[0]){setTarget(e.touches[0].clientX);e.preventDefault();}},{passive:false});
+window.addEventListener("touchmove",function(e){if(e.touches[0]){if(Math.hypot(e.touches[0].clientX-tchX,e.touches[0].clientY-tchY)>12)tchMoved=true;if(running){setTarget(e.touches[0].clientX);e.preventDefault();}}},{passive:false});
 var keyL=false,keyR=false;
 window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing&&!paused)doDash();if((k==="escape"||k==="p")&&running&&!choosing&&document.getElementById("settings").classList.contains("hide"))togglePause();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
-window.addEventListener("touchstart",function(){if(running&&!choosing)doDash();},{passive:true});
+// Touch: Antippen LENKT (erster Kontakt = Ziel), Dash nur bei kurzem Tipp ohne Wischen
+var tchT=0,tchX=0,tchY=0,tchMoved=false;
+window.addEventListener("touchstart",function(e){if(!e.touches[0])return;tchT=performance.now();tchX=e.touches[0].clientX;tchY=e.touches[0].clientY;tchMoved=false;
+  if(running&&!choosing&&!paused)setTarget(e.touches[0].clientX);},{passive:true});
+window.addEventListener("touchend",function(){if(running&&!choosing&&!paused&&!tchMoved&&performance.now()-tchT<200)doDash();},{passive:true});
 window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
 
 // Audio (WebAudio, kein Asset)
@@ -370,7 +377,7 @@ var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.62}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.85}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.85}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);vec3 col=b.rgb+g.rgb*strength;gl_FragColor=vec4(vec3(1.0)-exp(-col*1.2),1.0);}"});
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
 function renderBloom(){
@@ -395,11 +402,11 @@ function loop(t){
     ship.position.x=shipX;
     ship.rotation.z=(shipX-targetX)*0.12 - (targetX-shipX)*0.25;
     ship.position.y=Math.sin(tick*0.08)*0.25;
-    speed+=0.0006;
+    speed=Math.min(2.6,speed+0.0006);
     if(dashActive){dashTimer--;if(dashTimer<=0)dashActive=false;}else{dashCharge=Math.min(1,dashCharge+dashRecharge);}
     var cs=speed+(dashActive?0.9:0);
     if(combo>0){comboTimer--;if(comboTimer<=0)combo=0;}
-    phaseTimer--;if(phaseTimer<=0){phaseTimer=1320;biomeIndex++;var bb=applyBiome(biomeIndex);speed+=0.05;announce("» "+bb.name+" «",bb.accent);beep(180,.4,"sawtooth",.1);}
+    phaseTimer--;if(phaseTimer<=0){phaseTimer=1320;biomeIndex++;var bb=applyBiome(biomeIndex);speed=Math.min(2.6,speed+0.05);announce("» "+bb.name+" «",bb.accent);beep(180,.4,"sawtooth",.1);}
     // Tor-Welle (Boss-artiger Rhythmus-Peak): dichte Engstellen-Sektion, angekündigt.
     gauntTimer--;if(gauntTimer<=0&&gauntlet<=0&&tick>200){gauntlet=150;gauntTimer=960;announce("⚠ "+tr("gauntlet"),0xff4d6d);beep(140,.5,"sawtooth",.1);}
     if(gauntlet>0)gauntlet--;

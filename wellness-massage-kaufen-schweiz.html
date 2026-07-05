@@ -85,33 +85,42 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --accent:#7c3aed;
-  --accent-lt:#a78bfa;
-  --accent-dk:#5b21b6;
-  --accent-bg:#f5f3ff;
+  --accent:#be185d;
+  --accent-lt:#f472b6;
+  --accent-dk:#831843;
+  --accent-bg:#fdf2f8;
   --ink:#1b1813;
   --ink2:#4a443c;
   --muted:#6b7280;
   --line:#e5e7eb;
-  --bg:#faf9ff;
+  --bg:#fdf7fa;
   --card:#fff;
-  --highlight:#ede9fe;
+  --highlight:#fce7f3;
 }
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;color:var(--ink);background:var(--bg)}
 a{color:var(--accent-dk)}
 a:hover{color:var(--accent)}
 .wrap{max-width:800px;margin:0 auto;padding:0 18px}
 
+/* ── TOPNAV ── */
+.topnav{position:sticky;top:0;z-index:50;background:#2b0718;border-bottom:1px solid rgba(255,255,255,.08)}
+.tn-in{max-width:800px;margin:0 auto;padding:0 18px;display:flex;align-items:center;gap:18px;height:46px}
+.tn-brand{font-weight:900;font-size:1.18rem;color:#fff;letter-spacing:-.5px;text-decoration:none}
+.tn-brand:hover{text-decoration:none;color:#f9a8d4}
+.tn-links{display:flex;gap:4px;flex-wrap:wrap}
+.tn-links a{color:#f9a8d4;font-size:.82rem;padding:4px 10px;border-radius:6px;transition:background .15s;text-decoration:none}
+.tn-links a:hover{background:rgba(255,255,255,.1);text-decoration:none;color:#fff}
+
 /* ── HERO ── */
 .hero{
-  background:linear-gradient(135deg,#1e1040 0%,#2d1b69 40%,#1a0a3d 75%,#0d0720 100%);
-  color:#f0ebff;
+  background:linear-gradient(135deg,#3d0a24 0%,#5c1030 40%,#2b0718 75%,#150309 100%);
+  color:#fbe7ef;
   position:relative;
   overflow:hidden;
 }
 .hero::before{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(124,58,237,.35),transparent 65%);
+  background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(190,24,93,.35),transparent 65%);
   pointer-events:none;
 }
 .hero::after{
@@ -123,7 +132,7 @@ a:hover{color:var(--accent)}
 .hero .ic{
   font-size:2rem;width:64px;height:64px;
   display:inline-flex;align-items:center;justify-content:center;
-  background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.45);
+  background:rgba(244,114,182,.15);border:1px solid rgba(244,114,182,.45);
   border-radius:18px;margin-bottom:10px;
 }
 .hero h1{
@@ -131,8 +140,8 @@ a:hover{color:var(--accent)}
   margin:6px 0 10px;line-height:1.18;letter-spacing:-.02em;
   color:#fff;
 }
-.hero .sub{color:#c4b8f0;font-size:1.04rem;max-width:640px;line-height:1.55}
-.hero .trust{margin-top:16px;display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.82rem;color:#b0a4d8}
+.hero .sub{color:#e8b3cc;font-size:1.04rem;max-width:640px;line-height:1.55}
+.hero .trust{margin-top:16px;display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.82rem;color:#d9a3bd}
 
 /* ── BREADCRUMB ── */
 .bc{max-width:800px;margin:0 auto;padding:10px 18px;font-size:.8rem;color:var(--muted)}
@@ -153,7 +162,7 @@ a:hover{color:var(--accent)}
 
 /* ── MAIN ── */
 main{padding:4px 0 60px}
-h2{font-size:1.28rem;margin:30px 0 12px;color:#1a0a3d;line-height:1.25}
+h2{font-size:1.28rem;margin:30px 0 12px;color:#3d0a24;line-height:1.25}
 h3{font-size:1.05rem;margin:18px 0 6px;color:var(--accent-dk)}
 p{margin-bottom:10px;color:var(--ink2)}
 ul,ol{padding-left:1.4em;color:var(--ink2);margin-bottom:10px}
@@ -181,8 +190,8 @@ strong{color:var(--ink)}
 }
 .ctable th{
   background:var(--highlight);padding:10px 14px;
-  border:1px solid #ddd6fe;font-weight:700;
-  text-align:left;color:#1a0a3d;
+  border:1px solid #fbcfe8;font-weight:700;
+  text-align:left;color:#3d0a24;
 }
 .ctable td{
   padding:9px 14px;border:1px solid var(--line);
@@ -193,7 +202,7 @@ strong{color:var(--ink)}
 .ctable .ck1{color:#d97706;font-weight:700;white-space:nowrap}
 .ctable .ck2{color:var(--accent);font-weight:700;white-space:nowrap}
 .ctable .ck3{color:#0891b2;font-weight:700;white-space:nowrap}
-.ctable .ck4{color:#be185d;font-weight:700;white-space:nowrap}
+.ctable .ck4{color:#0d9488;font-weight:700;white-space:nowrap}
 
 /* ── INFO BOX ── */
 .infobox{
@@ -204,7 +213,7 @@ strong{color:var(--ink)}
 
 /* ── PRICE TABLE ── */
 .ptable{width:100%;border-collapse:collapse;font-size:.9rem;margin:8px 0 20px}
-.ptable th{background:var(--highlight);padding:8px 12px;border:1px solid #ddd6fe;font-weight:700;text-align:left;color:#1a0a3d}
+.ptable th{background:var(--highlight);padding:8px 12px;border:1px solid #fbcfe8;font-weight:700;text-align:left;color:#3d0a24}
 .ptable td{padding:8px 12px;border:1px solid var(--line);vertical-align:top}
 .ptable tr:nth-child(even) td{background:#fafafe}
 .ptable .good{color:#059669;font-weight:700}
@@ -216,7 +225,7 @@ details{
   background:var(--card);border:1px solid var(--line);
   border-radius:12px;padding:12px 18px;margin-bottom:10px;
 }
-details[open]{border-color:#ddd6fe}
+details[open]{border-color:#fbcfe8}
 summary{font-weight:700;cursor:pointer;color:var(--ink);list-style:none;padding-right:4px}
 summary::marker,summary::-webkit-details-marker{display:none}
 summary::after{content:" +";color:var(--accent);font-weight:900}
@@ -227,11 +236,11 @@ details ul{margin-top:8px;color:var(--ink2);font-size:.95rem}
 /* ── CTA BOX ── */
 .cta-box{
   text-align:center;
-  background:linear-gradient(135deg,#ede9fe 0%,#f5f3ff 100%);
-  border:1px solid #ddd6fe;border-radius:16px;
+  background:linear-gradient(135deg,#fce7f3 0%,#fdf2f8 100%);
+  border:1px solid #fbcfe8;border-radius:16px;
   padding:28px 22px;margin-top:32px;
 }
-.cta-box h3{font-size:1.1rem;margin-bottom:6px;color:#1a0a3d}
+.cta-box h3{font-size:1.1rem;margin-bottom:6px;color:#3d0a24}
 .cta-box p{font-size:.93rem;color:var(--ink2);margin-bottom:14px}
 .btn-cta{
   display:inline-block;
@@ -239,10 +248,10 @@ details ul{margin-top:8px;color:var(--ink2);font-size:.95rem}
   border-radius:26px;padding:12px 28px;
   font-weight:800;font-size:.98rem;
   text-decoration:none;
-  box-shadow:0 6px 22px rgba(124,58,237,.30);
+  box-shadow:0 6px 22px rgba(190,24,93,.30);
   transition:background .15s,box-shadow .15s;
 }
-.btn-cta:hover{background:var(--accent-dk);color:#fff;box-shadow:0 10px 30px rgba(124,58,237,.40)}
+.btn-cta:hover{background:var(--accent-dk);color:#fff;box-shadow:0 10px 30px rgba(190,24,93,.40)}
 
 /* ── NEWSLETTER ── */
 .nl{
@@ -269,10 +278,10 @@ details ul{margin-top:8px;color:var(--ink2);font-size:.95rem}
 .rel .tags{display:flex;flex-wrap:wrap;gap:8px}
 .rel .tags a{
   background:var(--highlight);color:var(--accent-dk);
-  border:1px solid #ddd6fe;border-radius:20px;
+  border:1px solid #fbcfe8;border-radius:20px;
   padding:5px 13px;font-size:.85rem;text-decoration:none;
 }
-.rel .tags a:hover{background:#ddd6fe}
+.rel .tags a:hover{background:#fbcfe8}
 
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--line);padding:22px 0;font-size:.8rem;color:var(--muted);text-align:center}
@@ -290,7 +299,7 @@ footer a:hover{color:var(--accent-dk)}
 
 /* ── HIGHLIGHT BAND ── */
 .band{
-  background:var(--highlight);border:1px solid #ddd6fe;
+  background:var(--highlight);border:1px solid #fbcfe8;
   border-radius:12px;padding:14px 18px;margin:16px 0;
   font-size:.93rem;color:var(--ink2);
 }
@@ -306,6 +315,17 @@ footer a:hover{color:var(--accent-dk)}
 </style>
 </head>
 <body>
+
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
 
 <!-- BREADCRUMB -->
 <nav class="bc" aria-label="Brotkrumen">
@@ -666,6 +686,151 @@ footer a:hover{color:var(--accent-dk)}
     <div id="shopRow" class="prow"><div style="color:var(--muted);font-size:.9rem">Lade Produkte …</div></div>
   </section>
 
+  <!-- SECTION 12: NACKEN/SCHULTER -->
+  <h2>Nackenmassagegerät &amp; Schulter-/Rückenmassagegerät: Unterschiede</h2>
+  <p>Neben Massagepistole und Fussmassagegerät sind Nackenmassagegeräte und Schulter-/Rückenmassagegeräte die dritt- und vierthäufigste Wellness-Anschaffung in Schweizer Haushalten — vor allem bei Büroarbeit mit viel Sitzen. Die Bauformen unterscheiden sich deutlich in Handhabung und Preis.</p>
+  <h3>Nackenmassagegerät (CHF 30–150)</h3>
+  <p>Meist als Kissen oder U-förmiges Band um den Nacken getragen, mit rotierenden Shiatsu-Köpfen und optionaler Wärmefunktion. Kabellose Modelle (Akku) sind praktischer für Büro und Reise. Wichtig: Intensität in mindestens 2–3 Stufen regelbar, da der Nackenbereich empfindlicher reagiert als Rücken oder Beine.</p>
+  <h3>Schulter-/Rückenmassagegerät (CHF 60–250)</h3>
+  <p>Grössere Varianten mit Tragegurten, die auf dem Rücken getragen oder über eine Sitzlehne gehängt werden. Kombinieren Kneten, Vibration und teils Wärme über eine grössere Fläche. Für punktuelle Verspannung im oberen Rücken reicht oft schon ein einfacheres Modell; für den gesamten Rückenbereich sind Geräte mit verstellbaren Massageknoten (Positionierung) sinnvoll.</p>
+  <div class="band">
+    <strong>Kaufhinweis:</strong> Geräte mit festem Kabel schränken die Bewegungsfreiheit stark ein — für tägliche Nutzung am Schreibtisch sind Akku-Modelle mit mindestens 60–90 Minuten Laufzeit komfortabler.
+  </div>
+
+  <!-- SECTION 13: WISSENSCHAFTLICHE EINORDNUNG -->
+  <h2>Wissenschaftliche Einordnung: Was Massagegeräte wirklich leisten</h2>
+  <p>Massagegeräte für den Heimgebrauch werden in der Schweiz als Wellness- und Konsumprodukte verkauft, nicht als Medizinprodukte. Das bedeutet: Hersteller dürfen keine Heilversprechen machen, und seriöse Anbieter tun das auch nicht. Was üblicherweise beschrieben wird, ist eine <strong>subjektiv empfundene</strong> Entspannung der Muskulatur und eine kurzfristig angeregte lokale Durchblutung durch mechanischen Druck, Vibration oder Wärme.</p>
+  <p>Das ist etwas anderes als eine Behandlung: Ein Gerät ersetzt keine Diagnose, keine manuelle Therapie durch ausgebildetes Fachpersonal und keine gezielte Behandlung struktureller Probleme (z. B. Bandscheibenprobleme, chronische Schmerzsyndrome, Nervenkompression). Bei anhaltenden, wiederkehrenden oder sich verschlimmernden Schmerzen ist der Gang zu Hausarzt, Physiotherapie oder Chiropraktik der richtige erste Schritt — nicht der Kauf eines weiteren Geräts.</p>
+  <ul>
+    <li><strong>Gut geeignet für Geräte:</strong> gelegentliche Muskelverspannung nach Sport, langes Sitzen, allgemeines Entspannungsbedürfnis am Abend.</li>
+    <li><strong>Eher Fall für Fachpersonal:</strong> ausstrahlende Schmerzen (z. B. ins Bein), Taubheitsgefühle, Schmerzen, die auch in Ruhe bleiben, Schmerzen nach einem Unfall oder Sturz.</li>
+  </ul>
+  <p>Ein Massagegerät kann eine sinnvolle Ergänzung im Alltag sein — es ist aber kein Ersatz für eine ärztliche Abklärung, wenn Beschwerden länger als ein bis zwei Wochen anhalten oder sich verstärken.</p>
+
+  <!-- SECTION 14: KONTRAINDIKATIONEN -->
+  <h2>Kontraindikationen: Wann Massagegeräte nicht verwendet werden sollten</h2>
+  <p>Auch frei verkäufliche Wellnessgeräte sind nicht für jede Situation geeignet. Vor dem Kauf — und vor jeder Anwendung — lohnt sich ein Blick auf mögliche Gegenanzeigen. Im Zweifel gilt: vorher mit Hausarzt oder Physiotherapeutin abklären.</p>
+  <div class="infobox purple">
+    <strong>Nicht anwenden bzw. vorher ärztlich abklären bei:</strong>
+    <ul style="margin-top:8px">
+      <li><strong>Schwangerschaft:</strong> insbesondere im Bauch- und unteren Rückenbereich; viele Hersteller raten grundsätzlich zur Rücksprache mit der Frauenärztin.</li>
+      <li><strong>Thrombose-Risiko / Krampfadern:</strong> mechanischer Druck auf Beinvenen kann bei bestehendem Risiko ungünstig sein.</li>
+      <li><strong>Herzschrittmacher oder andere elektronische Implantate:</strong> insbesondere bei Geräten mit elektrischer Muskelstimulation (EMS) — vorher mit dem Kardiologen abklären.</li>
+      <li><strong>Offene Wunden, Hautverletzungen, Ausschläge oder frische Operationsnarben:</strong> Anwendung direkt auf der betroffenen Stelle vermeiden.</li>
+      <li><strong>Akute Entzündungen, Fieber oder frische Verletzungen:</strong> Wärme- und Vibrationsanwendung kann Beschwerden verschlimmern.</li>
+      <li><strong>Osteoporose oder starke Blutverdünner-Medikation:</strong> hoher Anpressdruck (Massagepistolen) nur nach Rücksprache mit dem Arzt.</li>
+    </ul>
+  </div>
+  <p>Diese Liste ersetzt keine medizinische Beratung. Wer unsicher ist, ob ein Gerät für die eigene gesundheitliche Situation geeignet ist, sollte vor dem Kauf Hausarzt, Physiotherapie oder Apotheke konsultieren.</p>
+
+  <!-- SECTION 15: MARKENVERGLEICH -->
+  <h2>Marken im Vergleich: Theragun, Hypervolt, Beurer, Medisana, Naipo</h2>
+  <p>Die Markenlandschaft bei Massagegeräten reicht vom Schweizer Fachhandel bis zu Direktimporten. Ein Überblick über die in der Schweiz am häufigsten erhältlichen Marken:</p>
+  <div class="ctable-wrap">
+    <table class="ctable">
+      <thead>
+        <tr><th>Marke</th><th>Segment</th><th>Preis CHF</th><th>Einordnung</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="ck2">Theragun (Therabody)</td><td>Premium-Massagepistole</td><td>280–600</td><td>App-Steuerung, sehr leise, lange Garantie; hoher Aufpreis für Markendesign</td></tr>
+        <tr><td class="ck2">Hypervolt (Hyperice)</td><td>Premium-Massagepistole</td><td>250–450</td><td>Bluetooth-Steuerung, bewährt im Sportbereich, guter Wiederverkaufswert</td></tr>
+        <tr><td class="ck0">Beurer</td><td>Breites Sortiment</td><td>30–300</td><td>Deutscher Hersteller mit Schweizer Vertrieb, solide Mittelklasse bei Nacken-/Fussgeräten</td></tr>
+        <tr><td class="ck0">Medisana</td><td>Breites Sortiment</td><td>25–250</td><td>Preisbewusst, oft bei Migros/Coop/Galaxus gelistet, ausreichend für Gelegenheitsnutzung</td></tr>
+        <tr><td class="ck1">Naipo</td><td>Einstieg–Mittelklasse</td><td>50–200</td><td>Gutes Preis-Leistungs-Verhältnis bei Nacken- und Fussmassagegeräten</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Für Massagestühle dominieren andere Marken (z. B. Casada, iRest, Repose je nach Fachhändler) — hier lohnt sich weniger der Markenname als das Probesitzen vor Ort.</p>
+
+  <!-- SECTION 16: MASSAGESESSEL PLATZ/TRANSPORT/STROM -->
+  <h2>Massagesessel in Schweizer Wohnungen: Platz, Gewicht, Stromverbrauch</h2>
+  <p>Ein Massagesessel ist die grösste Einzelinvestition in diesem Ratgeber (CHF 500–3'000 und mehr) — und in Schweizer Wohnungen mit oft begrenzter Quadratmeterzahl auch die anspruchsvollste Platzfrage.</p>
+  <h3>Platzbedarf realistisch einschätzen</h3>
+  <p>Ein Massagesessel benötigt in der Regel eine Grundfläche von 90×130 bis 100×160 cm plus 30–50 cm Freiraum zum Zurückfahren der Liegefunktion — in einer typischen Schweizer 2- bis 3-Zimmer-Wohnung entspricht das oft einer ganzen Zimmerecke. «Zero-Wall»-Modelle, die mit nur 5–10 cm Wandabstand zurücklehnen, sind für kleinere Wohnungen die praktischere Wahl.</p>
+  <h3>Gewicht und Transport</h3>
+  <p>Massagesessel wiegen je nach Ausstattung 40–90 kg. Das ist relevant für Lieferung in Mehrfamilienhäuser ohne Lift (Treppentransport oft nur mit 2 Personen möglich) sowie für einen späteren Umzug. Viele Fachhändler bieten Lieferung bis in die Wohnung inklusive Aufbau an — bei Bestellung ohne diesen Service unbedingt Treppenhausbreite und Türmasse vorab prüfen.</p>
+  <h3>Stromverbrauch</h3>
+  <p>Ein Massagesessel verbraucht im Betrieb meist 100–150 Watt (Standby nahezu 0). Bei 30 Minuten täglicher Nutzung ergeben sich bei Schweizer Strompreisen (CHF 0.28/kWh) Kosten von rund CHF 0.02–0.03 pro Anwendung — im Gegensatz zum Aufpreis für Zero-Gravity oder L-Track spielt der Stromverbrauch bei der Kaufentscheidung praktisch keine Rolle.</p>
+
+  <!-- SECTION 17: PHYSIOTHERAPIE -->
+  <h2>Physiotherapie und Massagegeräte: Ergänzung, nicht Ersatz</h2>
+  <p>Massagegeräte werden häufig als Ergänzung zwischen zwei Physiotherapie-Sitzungen eingesetzt — etwa um eine von der Physiotherapeutin gezeigte Eigenübung mit einer kurzen Massagepistolen-Anwendung an derselben Muskelgruppe zu unterstützen. Das ist ein sinnvoller Anwendungsfall, solange klar bleibt: Das Gerät führt keine Diagnostik durch und passt sich nicht individuell an ein bestehendes Beschwerdebild an.</p>
+  <p>Wer bereits in physiotherapeutischer Behandlung ist, sollte den Einsatz eines Heimgeräts kurz mit der behandelnden Fachperson besprechen — insbesondere bei akuten Beschwerden, nach Operationen oder bei bekannten strukturellen Problemen. Physiotherapeutinnen können auch einschätzen, welche Gerätekategorie (z. B. Wärme statt Perkussion) im individuellen Fall sinnvoller ist.</p>
+  <div class="band">
+    <strong>Faustregel:</strong> Geräte eignen sich für die Selbstanwendung bei allgemeiner Verspannung und Alltagsmüdigkeit der Muskulatur. Bei konkreten Diagnosen, Verletzungen oder anhaltenden Schmerzen ist Physiotherapie oder ärztliche Behandlung der richtige Weg — das Gerät kann dort höchstens begleitend eingesetzt werden.
+  </div>
+
+  <!-- SECTION 18: KRANKENKASSE -->
+  <h2>Krankenkasse und Zusatzversicherung: Was übernommen wird — und was nicht</h2>
+  <p>Ein häufiges Missverständnis beim Kauf: Massagegeräte für zuhause werden <strong>nicht</strong> von der obligatorischen Grundversicherung (KVG) übernommen, unabhängig vom Preis oder von Marketingaussagen einzelner Anbieter. Die Grundversicherung deckt ärztlich verordnete Physiotherapie-Behandlungen durch zugelassene Fachpersonen ab — nicht den Kauf von Konsumgeräten.</p>
+  <p>Bei der <strong>Zusatzversicherung</strong> (z. B. Komplementärmedizin- oder Wellness-Zusatz) sieht es differenzierter aus: Viele Schweizer Krankenkassen übernehmen einen Anteil an klassischer Massage, die von einer anerkannten Therapeutin oder einem Therapeuten durchgeführt wird (oft mit Methodenanerkennung, z. B. EMR oder ASCA). Das gilt für die Dienstleistung «Massage durch Fachperson» — nicht für den Kauf eines Geräts für die eigene Wohnung.</p>
+  <ul>
+    <li>Einige Zusatzversicherungen bieten Bonusprogramme (Cashback, Prämienrabatt) für Fitness- oder Wellness-Abos — auch hier zählt in der Regel die Mitgliedschaft in einem Studio, nicht der Gerätekauf.</li>
+    <li>Vor dem Kauf eines teureren Geräts lohnt sich der Blick ins eigene Zusatzversicherungs-Reglement: Wer ohnehin Anspruch auf mehrere bezahlte Massagesitzungen pro Jahr hat, kann abwägen, ob sich die Geräte-Investition oder mehr Sitzungen beim Fachpersonal eher lohnen.</li>
+  </ul>
+
+  <!-- SECTION 19: ZUHAUSE VS SPA -->
+  <h2>Wellness zuhause vs. Spa/Massage-Studio: Kostenvergleich</h2>
+  <p>Die Schweiz hat eine lange Spa- und Thermalbad-Tradition — Leukerbad und Bad Ragaz sind die bekanntesten Referenzen für professionelle Wellness-Infrastruktur mit Thermalwasser, Fachpersonal und Ambiente, das ein Heimgerät nicht ersetzen kann. Trotzdem lohnt sich ein nüchterner Kostenvergleich für die regelmässige Nutzung:</p>
+  <div class="ctable-wrap">
+    <table class="ptable">
+      <thead>
+        <tr><th>Option</th><th>Kosten</th><th>Häufigkeit realistisch</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Professionelle Massage (Therapeut/in)</td><td>CHF 80–150/Std.</td><td>1–2×/Monat üblich</td></tr>
+        <tr><td>Tageseintritt Thermalbad/Spa (z. B. Leukerbad, Bad Ragaz)</td><td>CHF 30–65/Eintritt</td><td>Ausflug, wenige Male pro Jahr</td></tr>
+        <tr><td>Eigene Massagepistole (Anschaffung)</td><td>CHF 80–400 einmalig</td><td>täglich nutzbar</td></tr>
+        <tr><td>Eigener Massagesessel (Anschaffung)</td><td>CHF 500–3'000 einmalig</td><td>täglich nutzbar, 5–8 Jahre Lebensdauer</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Eigene Geräte amortisieren sich bei häufiger Nutzung schnell, ersetzen aber weder die fachliche Behandlung noch das Spa-Erlebnis. Eine sinnvolle Kombination für viele Haushalte: Gerät für die tägliche Entspannung zuhause, professionelle Massage oder Thermalbad-Besuch als gelegentliches Extra.</p>
+
+  <!-- SECTION 20: REISEGRÖSSE -->
+  <h2>Unterwegs: Reisegrösse, Akkulaufzeit und Ladegerät</h2>
+  <p>Wer Geräte auch im Ferienhaus, auf Geschäftsreisen oder im Fitnessstudio nutzen möchte, sollte auf mobiltaugliche Ausführungen achten:</p>
+  <ul>
+    <li><strong>Mini-Massagepistolen (CHF 60–150):</strong> deutlich kleiner und leichter als Standardmodelle, oft mit reduzierter Stall-Force — ausreichend für unterwegs, aber kein Vollersatz für das Hauptgerät.</li>
+    <li><strong>Akkulaufzeit:</strong> für Reisen mindestens 4–6 Stunden Laufzeit pro Ladung anstreben; USB-C-Ladung ist praktischer als proprietäre Netzteile, da ein Reiseadapter/Kabel meist ohnehin dabei ist.</li>
+    <li><strong>Ladegerät-Kompatibilität:</strong> Schweizer Steckdosen (Typ J) unterscheiden sich von den meisten EU-Ländern — bei Direktimporten aus Deutschland oder Frankreich auf mitgeliefertes CH-Netzteil oder Universaladapter achten.</li>
+    <li><strong>Reisetaugliche Fussmassagegeräte:</strong> aufblasbare oder faltbare Modelle sparen Kofferraum, sind aber weniger intensiv als feste Geräte.</li>
+  </ul>
+  <p>Für reine Kurzstrecken (Wochenendausflug) reicht meist das Hauptgerät mit vollem Akku — eine separate Reiseversion lohnt sich erst bei regelmässigen, längeren Reisen.</p>
+
+  <!-- SECTION 21: HYGIENE -->
+  <h2>Hygiene: Reinigung, Familiennutzung und Desinfektion</h2>
+  <p>Massagegeräte haben direkten Hautkontakt — Hygiene ist deshalb kein Nebenthema, besonders wenn mehrere Familienmitglieder dasselbe Gerät nutzen.</p>
+  <ul>
+    <li><strong>Aufsätze reinigen:</strong> Massageköpfe von Massagepistolen und Fussmassagegeräten nach jeder Nutzung mit einem leicht feuchten Tuch abwischen; bei abnehmbaren Silikon- oder Schaumstoffaufsätzen: regelmässig mit milder Seife reinigen und vollständig trocknen lassen, bevor sie wieder aufgesetzt werden.</li>
+    <li><strong>Textilbezüge:</strong> Nacken- und Rückenmassagegeräte mit Stoffbezug — abnehmbare, waschbare Bezüge bevorzugen (Herstellerangabe prüfen, meist 30 °C Schonwaschgang).</li>
+    <li><strong>Familiennutzung:</strong> bei gemeinsamer Nutzung durch mehrere Personen (z. B. Fussmassagegerät) Aufsätze zwischen den Anwendungen desinfizieren, insbesondere bei Hautirritationen oder Fusspilzrisiko.</li>
+    <li><strong>Massagesessel-Bezüge:</strong> Kunstleder-Bezüge lassen sich mit mildem Reinigungsmittel abwischen; Stoffbezüge nach Herstellerangabe reinigen, um Materialschäden zu vermeiden.</li>
+  </ul>
+  <p>Bei Hautverletzungen, Ausschlägen oder ansteckenden Hauterkrankungen sollte das Gerät bis zur vollständigen Abheilung nicht gemeinsam genutzt oder pausiert werden.</p>
+
+  <!-- SECTION 22: NACHHALTIGKEIT -->
+  <h2>Nachhaltigkeit: Akku-Lebensdauer, Ersatzteile und Reparierbarkeit</h2>
+  <p>Akkubetriebene Massagegeräte unterliegen wie alle Lithium-Ionen-Geräte einem natürlichen Kapazitätsverlust über die Zeit. Für eine längere Nutzungsdauer:</p>
+  <ul>
+    <li><strong>Akku-Lebensdauer:</strong> übliche Angabe 300–500 Ladezyklen bis spürbarer Kapazitätsverlust; Gerät nach Möglichkeit nicht dauerhaft am Ladegerät lassen und nicht vollständig entladen lagern.</li>
+    <li><strong>Ersatzteile:</strong> Marken mit Schweizer oder europäischem Vertrieb (Beurer, Medisana, Theragun, Hyperice) bieten meist Ersatzaufsätze und teils Ersatzakkus über den Fachhandel an; bei No-Name-Importen ist die Ersatzteilverfügbarkeit unsicherer.</li>
+    <li><strong>Reparierbarkeit:</strong> Bei Massagestühlen und Infrarot-Zubehör lohnt sich vor dem Kauf die Frage nach lokalem Reparaturservice — bei Defekten nach Garantieablauf ist ein Neukauf sonst oft die einzige Option.</li>
+    <li><strong>Verpackung/Entsorgung:</strong> Elektrogeräte gehören in der Schweiz in die reguläre Elektroschrott-Rückgabe (SENS eRecycling) im Fachhandel — kostenlos, unabhängig davon, wo das Gerät gekauft wurde.</li>
+  </ul>
+
+  <!-- SECTION 23: GEBRAUCHT KAUFEN -->
+  <h2>Gebraucht kaufen: Wann Occasion sinnvoll ist — und wann nicht</h2>
+  <p>Auf Ricardo, Anibis und ähnlichen Schweizer Occasion-Plattformen werden regelmässig gebrauchte Wellnessgeräte angeboten. Hier lohnt sich eine Unterscheidung nach Gerätetyp:</p>
+  <ul>
+    <li><strong>Massagepistolen, Fussmassagegeräte, Nackenmassagegeräte:</strong> Direkter Hautkontakt und meist niedriger Neupreis sprechen gegen den Gebrauchtkauf — hygienische Bedenken (Hautkontakt, Schweiss, nicht rückstandsfrei reinigbare Innenteile) und unklare Restlebensdauer des Akkus überwiegen die Ersparnis. Für diese Kategorien wird ein Neukauf empfohlen.</li>
+    <li><strong>Massagesessel:</strong> Hier ist Occasion deutlich sinnvoller, da die Investition hoch ist (CHF 500–3'000+) und sich Wertverlust wie bei Möbeln verhält. Beim Gebrauchtkauf empfehlenswert: Probesitzen vor Ort, Funktionstest aller Programme, Prüfung auf Abnutzung der Bezüge, und — sofern noch vorhanden — Reinigung/Desinfektion des Bezugs vor Erstbenutzung.</li>
+    <li><strong>Infrarotsaunen/Kabinen:</strong> gebraucht möglich, aber Transport- und Aufbauaufwand sowie EMF-Werte älterer Modelle vorab prüfen; bei Bedarf mit dem Verkäufer den ursprünglichen Kaufbeleg/das Datenblatt anfragen.</li>
+  </ul>
+  <div class="band">
+    <strong>Faustregel:</strong> Je direkter der Hautkontakt und je günstiger der Neupreis, desto eher lohnt sich der Neukauf. Je grösser die Investition (Massagesessel, Sauna), desto eher lohnt sich der Blick in den Occasion-Markt.
+  </div>
+
   <!-- FAQ -->
   <h2 style="margin-top:32px">Häufige Fragen (FAQ)</h2>
 
@@ -724,10 +889,7 @@ footer a:hover{color:var(--accent-dk)}
   <div class="nl">
     <h3>Schweizer Kaufberater per E-Mail</h3>
     <p>Neue Ratgeber, Preistipps und Produktvergleiche — keine Werbung, kein Spam.</p>
-    <form action="/newsletter" method="post">
-      <input type="email" name="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail-Adresse">
-      <button type="submit">Anmelden</button>
-    </form>
+    <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
   </div>
 
   <p style="margin-top:22px;font-size:.82rem;color:var(--muted)">
@@ -742,12 +904,11 @@ footer a:hover{color:var(--accent-dk)}
 
 <footer>
   <div class="wrap">
-    aban news · Wellness &amp; Massage Schweiz 2026 ·
-    <a href="/luxestyle.html">Shop</a> ·
+    aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
     <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
-    <a href="/marktplatz.html">Marktplatz</a> ·
     <a href="/impressum.html">Impressum</a> ·
-    © 2026 abannews.com
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 

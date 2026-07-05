@@ -43,6 +43,7 @@ canvas{display:block}
 </div>
 <div id="shieldwrap" class="hide"><i id="shieldFill"></i></div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
+<button id="brakeBtn" style="position:fixed;left:18px;bottom:22px;z-index:7;width:78px;height:78px;border-radius:50%;border:2px solid #ff6ec7;background:rgba(60,20,45,.5);color:#ff9ad9;font-size:.95rem;font-weight:800;display:none;-webkit-user-select:none;user-select:none">BREMSE</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · Anti-Grav · PSP-Style</div>
@@ -150,9 +151,15 @@ function reset(){dist=0;speed=42;shipX=centerX(0);steer=0;shield=100;camX=shipX;
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if(k==="arrowdown"||k===" ")brake=true;if((k===" "||k==="enter")&&!running){e.preventDefault&&e.preventDefault();start();}});
 addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;if(k==="arrowdown"||k===" ")brake=false;});
 var touchX=null;
-addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].clientX;if(!running)start();},{passive:true});
+addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].clientX;var el=e.target;if(el&&el.closest&&el.closest("button,a"))return;if(!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true});
 addEventListener("touchmove",function(e){if(e.touches[0])touchX=e.touches[0].clientX;e.preventDefault();},{passive:false});
 addEventListener("touchend",function(){touchX=null;});
+addEventListener("mousemove",function(e){if(running)touchX=e.clientX;}); // "Maus" war im Hinweis versprochen, aber nie verdrahtet
+(function(){var bb=document.getElementById("brakeBtn");if(!bb)return;
+  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)bb.style.display="block";
+  bb.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();brake=true;},{passive:false});
+  bb.addEventListener("touchend",function(e){e.stopPropagation();brake=false;});
+  bb.addEventListener("touchcancel",function(){brake=false;});})();
 
 function spawnThing(){
   var t=null;for(var i=0;i<things.length;i++)if(!things[i].active){t=things[i];break;}if(!t)return;
@@ -162,11 +169,12 @@ function spawnThing(){
   t.m.scale.set(1,t.boost?0.4:1,1);
 }
 
-function burst(x,y,z,c){/* simple spark via reusing tiles? minimal: flash via shield bar */}
+var shake=0,_cyan=new THREE.Color(0x5ef2ff);
+function burst(x,y,z,c){shake=Math.max(shake,0.35);}
 
 function start(){reset();running=true;paused=false;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");}
 function showBest(){var b=bestM();document.getElementById("best").textContent=b;document.getElementById("best2").textContent=b>0?("🏆 Rekord: "+b+" m"):"";}
-function gameOver(){running=false;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
+function gameOver(){running=false;shake=1.4;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
   document.getElementById("finalT").textContent=m+" m";
   document.getElementById("verdict").innerHTML=(rec&&m>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+" m · ")+"Top-Speed "+Math.floor(speed*3.0)+" km/h";
   document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");
@@ -208,13 +216,13 @@ function loop(now){
     sGlow.position.set(shipX,2,ship.position.z);
     // Off-Track?
     var offset=shipX-trackC;
-    if(Math.abs(offset)>HALF){ shield-=60*dt; speed-=30*dt; shipX=trackC+Math.sign(offset)*HALF; bank+=0.04; if(Math.random()<0.3)beep(200,.05,"square",.05); }
+    if(Math.abs(offset)>HALF){ shield-=60*dt; speed-=30*dt; shipX=trackC+Math.sign(offset)*HALF; bank+=0.04; shake=Math.max(shake,0.3); if(Math.random()<0.3)beep(200,.05,"square",.05); }
     // Things bewegen + Kollision
     for(i=0;i<things.length;i++){var t=things[i];if(!t.active)continue;var tz=-(t.d-dist);t.m.position.set(centerX(t.d)+t.off,0.6,tz);t.m.rotation.y+=dt*2;
       if(t.d<dist-4){t.active=false;t.m.visible=false;continue;}
-      if(Math.abs(tz)<2.2&&Math.abs((centerX(t.d)+t.off)-shipX)<1.8){
-        if(t.boost){speed+=28;beep(880,.12,"square",.06);}
-        else{shield-=34;speed-=22;beep(140,.18,"sawtooth",.08);}
+      if(Math.abs(tz)<Math.max(2.2,speed*dt*0.6+2.2)&&Math.abs((centerX(t.d)+t.off)-shipX)<1.8){
+        if(t.boost){speed+=28;shake=Math.max(shake,0.25);sGlow.color.setHex(0x6aff9e);beep(880,.12,"square",.06);}
+        else{shield-=34;speed-=22;shake=Math.max(shake,0.7);sGlow.color.setHex(0xff4d6d);beep(140,.18,"sawtooth",.08);}
         t.active=false;t.m.visible=false;
       }
     }
@@ -226,8 +234,10 @@ function loop(now){
   }
   // Kamera (Chase, folgt + bankt)
   camX+=((shipX)-camX)*0.10;
-  camera.position.set(camX - bank*4,5.2,ship.position.z+12);
+  camera.position.set(camX - bank*4 + (Math.random()-0.5)*shake*2.4,5.2+(Math.random()-0.5)*shake*2.4,ship.position.z+12);
   camera.lookAt(shipX*0.5+centerX(dist+20)*0.5, 1.0, ship.position.z-22);
+  if(shake>0.001)shake*=0.86; else shake=0;
+  sGlow.color.lerp(_cyan,0.08); // Farbe nach Boost/Treffer zurück zu Cyan
   camera.rotation.z=bank*0.3;
   renderBloom();
 }

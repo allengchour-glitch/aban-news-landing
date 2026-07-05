@@ -49,6 +49,22 @@
         "@type": "Answer",
         "text": "Fichte und Abachi sind preiswert, hell und wärmen sich schnell. Erle ist harzarm und angenehm griffig. Zeder riecht aromatisch und ist von Natur aus feuchtigkeitsresistent. Hemlock ist sehr homogen und wirft sich kaum. Für Sitzflächen empfiehlt sich immer ein harzarmes, splitterfreies Holz wie Abachi oder Erle."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie oft muss ich die Saunasteine wechseln?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bei regelmässiger Nutzung empfiehlt sich ein Wechsel der Olivin-Diabas-Saunasteine etwa alle 1–2 Jahre. Steine mit sichtbaren Rissen oder Verfärbungen sollten sofort ersetzt werden, da sie sonst die Wärmeabgabe verschlechtern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist eine Sauna für Schwangere geeignet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Viele Fachstellen raten während der Schwangerschaft von der klassischen finnischen Sauna mit 80–100 °C ab. Eine mildere Bio-Sauna oder Infrarotkabine bei niedrigerer Temperatur gilt manchen als verträglicher. Vor dem Saunieren sollte individuell mit der Frauenärztin oder dem Frauenarzt Rücksprache gehalten werden."
+      }
     }
   ]
 }
@@ -80,6 +96,29 @@ body {
 a { color: var(--amber-dk); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .wrap { max-width: 760px; margin: 0 auto; padding: 0 18px; }
+
+/* Top navigation */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(26,15,0,.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.tn-in {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 11px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.tn-brand { color: #fff; font-weight: 800; font-size: 1.05rem; text-decoration: none; letter-spacing: .02em; }
+.tn-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.tn-links a { color: #fde3b0; font-size: .88rem; text-decoration: none; font-weight: 600; }
+.tn-links a:hover { color: #fff; }
 
 /* Hero */
 .hero {
@@ -316,10 +355,21 @@ footer {
 footer a { color: var(--muted); }
 
 :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; border-radius: 4px; }
-@media (max-width: 520px) { .tips { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .tips { grid-template-columns: 1fr; } .tn-links { gap: 10px; } }
 </style>
 </head>
 <body>
+
+<nav class="topnav" aria-label="Hauptnavigation">
+  <div class="tn-in">
+    <a href="/" class="tn-brand">aban</a>
+    <div class="tn-links">
+      <a href="/marktplatz.html">Marktplatz</a>
+      <a href="/stellenangebote.html">Jobs</a>
+      <a href="/angebote-suche.html">Angebote</a>
+    </div>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="in">
@@ -778,6 +828,231 @@ footer a { color: var(--muted); }
       Wohnen und Lifestyle.
     </p>
 
+    <!-- Section 11 -->
+    <h2>11. Platzbedarf &amp; Aufstellort: Keller, Bad oder Wellnessraum</h2>
+    <p>
+      Bevor eine Sauna bestellt wird, lohnt sich die genaue Vermessung des
+      geplanten Aufstellorts. Neben der Grundfläche entscheidet vor allem die
+      <strong>Deckenhöhe</strong> über die Auswahl: Die meisten Kabinen benötigen
+      mindestens 200 cm lichte Höhe, für eine bequeme Sitzbank auf zwei Ebenen
+      empfehlen Hersteller eher 210–220 cm. Bei niedrigen Kellerdecken (unter
+      195 cm) kommen nur Spezialanfertigungen oder Infrarotkabinen mit
+      niedrigerer Bauhöhe infrage.
+    </p>
+    <p>
+      Der <strong>Keller</strong> ist in der Schweiz der häufigste Aufstellort:
+      Er bietet meist einen wasserfesten Boden und ist unabhängig von der
+      Wohnnutzung. Wichtig ist eine funktionierende Be- und Entlüftung des
+      Kellerraums selbst, damit die beim Duschen und Saunieren entstehende
+      Feuchtigkeit nach draussen abgeführt wird und sich kein Schimmel an
+      Wänden oder Deckenbalken bildet. Ein separates Badezimmer oder ein
+      eigener Wellnessraum mit Bodenablauf ist ideal, aber nicht zwingend.
+    </p>
+    <p>
+      Auf den <strong>Feuchtigkeitsschutz der Umgebung</strong> ist besonders
+      bei Einbau in Wohnräumen zu achten: Eine korrekt montierte Sauna hat
+      zwischen Innenwand und Aussenverkleidung eine Dampfsperre (Alufolie oder
+      spezielle Sauna-Folie), damit Feuchtigkeit nicht in dahinterliegende
+      Bauteile eindringt. Zwischen Kabine und angrenzenden Wänden sollte ein
+      Abstand von mindestens 5–10 cm eingehalten werden, damit Luft zirkulieren
+      kann und Wartungsarbeiten am Ofen möglich bleiben. Ein rutschfester,
+      abflussfähiger Bodenbelag (Fliesen, Naturstein oder spezielle
+      Saunaroste) erleichtert die Reinigung erheblich.
+    </p>
+
+    <!-- Section 12 -->
+    <h2>12. Top-Marken für Heimsaunen in der Schweiz</h2>
+    <p>
+      Der Schweizer Markt wird von einer Mischung aus Premium-Herstellern und
+      preisgünstigeren Bausatz-Marken geprägt. Ein Überblick über die
+      bekanntesten Namen:
+    </p>
+    <ul>
+      <li>
+        <strong>Klafs:</strong> Deutscher Marktführer im Premium-Segment, in
+        der Schweiz mit eigenen Showrooms und Fachpartnern gut vertreten.
+        Massgefertigte Kabinen, hochwertige Verarbeitung, Preise meist ab
+        CHF 8 000 bis über CHF 15 000, dafür umfassender Planungs- und
+        Montageservice.
+      </li>
+      <li>
+        <strong>Karibu:</strong> Bekannt für solide Bausatz-Saunen aus
+        Fichte und Hemlock im mittleren Preissegment, häufig über Baumärkte
+        und Online-Händler erhältlich. Preise typischerweise CHF 2 000–6 000,
+        gutes Preis-Leistungs-Verhältnis für Einsteiger.
+      </li>
+      <li>
+        <strong>Weka:</strong> Deutscher Hersteller mit Schwerpunkt auf
+        Garten- und Aussen-Saunen, Fasssaunen und Blockbohlen-Kabinen.
+        Preise CHF 3 500–14 000 je nach Modell, robuste Konstruktionen für
+        die Aufstellung im Freien.
+      </li>
+      <li>
+        <strong>Interfun:</strong> Positioniert sich im Value-Segment mit
+        kompakten Heim- und Infrarotkabinen, oft über Fachhändler und
+        Online-Shops in der Schweiz erhältlich. Preise meist CHF 1 500–5 000,
+        solide Basisausstattung ohne viel Zusatzschnickschnack.
+      </li>
+    </ul>
+    <p>
+      Unabhängig von der Marke lohnt sich vor dem Kauf ein Blick auf
+      Garantiebedingungen, Ersatzteilverfügbarkeit (insbesondere Ofensteine
+      und Heizstäbe) und ob ein Schweizer Kundendienst oder nur ein
+      Versandhandel ohne lokalen Support dahintersteht.
+    </p>
+
+    <!-- Section 13 -->
+    <h2>13. Aufgusskultur, Saunazeremonien &amp; Ventilation</h2>
+    <p>
+      Der klassische Aufguss gehört zur finnischen Sauna wie die Steine zum
+      Ofen: Wasser, oft mit ein paar Tropfen ätherischem Öl versetzt, wird auf
+      die heissen Saunasteine gegossen. Der entstehende Dampfstoss senkt kurz
+      die Luftfeuchtigkeit im Raum nicht, sondern erhöht sie schlagartig und
+      lässt die gefühlte Hitze deutlich ansteigen — daher sollte sparsam und
+      in kleinen Mengen aufgegossen werden.
+    </p>
+    <p>
+      In grösseren Schweizer Thermen und Spas hat sich daraus eine eigene
+      <strong>Saunazeremonie-Kultur</strong> entwickelt: Ein Saunameister
+      choreografiert den Aufguss mit Handtuchschwenken, Musik und mehreren
+      Duftphasen für eine ganze Gruppe. Solche Zeremonien sind etwa in den
+      Thermalbädern von Bad Zurzach und Leukerbad ein fester Programmpunkt
+      und ziehen eigene Fangemeinden an. Für die Heimsauna lässt sich das
+      Prinzip im Kleinen übernehmen: ein ruhiger, dosierter Aufguss wirkt
+      angenehmer als mehrere hastige.
+    </p>
+    <p>
+      Nach jeder Saunasitzung ist eine kurze <strong>Ventilationsphase</strong>
+      wichtig: Tür öffnen, Ofen bei vielen Modellen noch einige Minuten
+      nachlaufen lassen, damit Restfeuchtigkeit aus Holz und Steinen entweicht.
+      Wer die Kabine sofort nach Gebrauch verschliesst, riskiert Stockflecken
+      und einen muffigen Geruch. Ein Lüftungsschlitz an der Tür oder unterhalb
+      der Bank sorgt zusätzlich für einen ständigen leichten Luftaustausch
+      während des Betriebs.
+    </p>
+
+    <!-- Section 14 -->
+    <h2>14. Gesundheitsaspekte &amp; wer vorsichtig sein sollte</h2>
+    <p>
+      Viele Saunagänger:innen berichten von einem subjektiven Gefühl der
+      Entspannung, besserer Durchblutung und ruhigerem Schlaf nach
+      regelmässigen Saunabesuchen. Diese Erfahrungen sind individuell und
+      keine medizinisch belegten Heilversprechen — eine Sauna ersetzt keine
+      ärztliche Behandlung und ist kein Mittel gegen Krankheiten.
+    </p>
+    <p>
+      Bei folgenden Situationen ist Vorsicht angebracht und eine Rücksprache
+      mit einer Ärztin oder einem Arzt vor dem Saunieren sinnvoll:
+    </p>
+    <ul>
+      <li>
+        <strong>Herz-Kreislauf-Erkrankungen:</strong> Instabiler Bluthochdruck,
+        frischer Herzinfarkt oder schwere Herzrhythmusstörungen gelten
+        allgemein als Grund zur Zurückhaltung.
+      </li>
+      <li>
+        <strong>Schwangerschaft:</strong> Die stark erhöhte Körperkerntemperatur
+        in der finnischen Sauna wird von vielen Fachstellen für Schwangere
+        nicht empfohlen; die mildere Infrarot- oder Bio-Sauna bei niedrigerer
+        Temperatur gilt manchen als verträglicher — im Zweifel vorher mit der
+        Frauenärztin oder dem Frauenarzt abklären.
+      </li>
+      <li>
+        <strong>Akute Entzündungen, Fieber oder Infekte:</strong> Der Körper ist
+        bereits belastet; ein zusätzlicher Hitzereiz kann den Kreislauf
+        überfordern.
+      </li>
+      <li>
+        <strong>Offene Wunden oder Hautkrankheiten:</strong> Hitze und Schwitzen
+        können den Heilungsprozess stören.
+      </li>
+    </ul>
+    <p>
+      Für gesunde Erwachsene ohne diese Einschränkungen gilt das regelmässige
+      Saunieren allgemein als gut verträglich. Wer unsicher ist, klärt dies
+      individuell mit der Hausärztin oder dem Hausarzt ab, bevor eine grössere
+      Anschaffung getätigt wird.
+    </p>
+
+    <!-- Section 15 -->
+    <h2>15. Energieverbrauch, Dämmung &amp; Vorheizzeit</h2>
+    <p>
+      Die laufenden Stromkosten hängen stark von Ofenleistung, Dämmqualität
+      und Vorheizzeit ab. Bei einem Schweizer Strompreis von rund
+      26 Rp./kWh lässt sich der Verbrauch grob abschätzen:
+    </p>
+    <ul>
+      <li>
+        <strong>Vorheizzeit:</strong> Eine gut gedämmte Kabine mit 6-kW-Ofen
+        erreicht 90 °C in etwa 30–40 Minuten. Schlecht isolierte oder ältere
+        Kabinen mit viel Glasfläche benötigen deutlich länger und verbrauchen
+        dabei spürbar mehr Strom.
+      </li>
+      <li>
+        <strong>Verbrauch pro Sitzung:</strong> Nach dem Aufheizen hält der Ofen
+        die Temperatur mit deutlich reduzierter Leistung; insgesamt fallen für
+        Aufheizen plus eine Stunde Nutzung meist 4–6 kWh an, was bei 26 Rp./kWh
+        rund CHF 1.05–1.55 pro Session entspricht.
+      </li>
+      <li>
+        <strong>Dämmwert der Kabine:</strong> Doppelwandige Konstruktionen mit
+        Mineralwolldämmung und dampfdichter Folie halten die Wärme deutlich
+        besser als einwandige Bausatz-Modelle und sparen über die Lebensdauer
+        gerechnet spürbar Stromkosten ein.
+      </li>
+      <li>
+        <strong>Standby und Steuerung:</strong> Eine programmierbare Vorlaufzeit-
+        Steuerung, die den Ofen erst kurz vor der geplanten Nutzung startet,
+        vermeidet unnötiges Dauerheizen und senkt die Jahresstromkosten.
+      </li>
+    </ul>
+    <p>
+      Im Vergleich dazu bleibt die Infrarotkabine mit 1,5–2,5 kWh pro Sitzung
+      die sparsamste Variante, da keine grosse Luftmasse aufgeheizt werden
+      muss (siehe Abschnitt 8).
+    </p>
+
+    <!-- Section 16 -->
+    <h2>16. Wartung &amp; Pflege: Holz, Ofensteine &amp; Lüftung</h2>
+    <p>
+      Eine gut gepflegte Sauna hält über viele Jahre ihren Wert und ihre
+      Optik. Die wichtigsten Routinen im Überblick:
+    </p>
+    <ul>
+      <li>
+        <strong>Holzpflege:</strong> Unbehandeltes Holz braucht keine Lackierung
+        — im Gegenteil, eine Versiegelung würde die Atmungsaktivität stören.
+        Gelegentliches Abschleifen dunkler Stellen und ein spezielles,
+        hitzebeständiges Sauna-Pflegeöl für Aussenverkleidungen reichen aus.
+        Zur Reinigung genügt milde Seifenlauge ohne aggressive Chemikalien.
+      </li>
+      <li>
+        <strong>Ofensteine wechseln:</strong> Saunasteine (meist Olivin-Diabas)
+        verlieren durch die ständigen Temperaturwechsel und Aufgüsse mit der
+        Zeit an Struktur und können reissen oder zerbröseln. Ein Wechsel alle
+        1–2 Jahre bei regelmässiger Nutzung ist üblich; poröse oder zerfallene
+        Steine sollten sofort ersetzt werden, da sie die Heizleistung
+        verschlechtern.
+      </li>
+      <li>
+        <strong>Lüftung zwischen Nutzungen:</strong> Tür nach der Sitzung offen
+        stehen lassen und den Ofen, falls das Modell dies unterstützt, kurz
+        nachlaufen lassen, damit Bänke und Wände vollständig trocknen. Das
+        verhindert Schimmelbildung und unangenehme Gerüche.
+      </li>
+      <li>
+        <strong>Dichtungen &amp; Scharniere:</strong> Türdichtung und
+        Glasscharniere einmal jährlich auf Verschleiss prüfen, da eine
+        undichte Tür die Aufheizzeit verlängert und den Stromverbrauch erhöht.
+      </li>
+    </ul>
+    <p>
+      Wer diese einfachen Wartungsschritte einhält, kann von einer
+      Lebensdauer der Kabine von 15–25 Jahren ausgehen; der Ofen selbst hält
+      bei guter Pflege meist 8–12 Jahre, bevor Heizstäbe ersetzt werden
+      müssen.
+    </p>
+
     <!-- FAQ -->
     <h2>Häufige Fragen</h2>
 
@@ -828,6 +1103,30 @@ footer a { color: var(--muted); }
       </p>
     </details>
 
+    <details>
+      <summary>Wie oft muss ich die Saunasteine wechseln?</summary>
+      <p>
+        Bei regelmässiger Nutzung (mehrmals wöchentlich) empfiehlt sich ein
+        Wechsel der Olivin-Diabas-Saunasteine etwa alle 1–2 Jahre. Steine, die
+        sichtbar Risse zeigen, bröckeln oder sich weiss verfärben, sollten
+        sofort ersetzt werden, da sie sonst die Wärmeabgabe verschlechtern und
+        beim Aufguss zerspringen können.
+      </p>
+    </details>
+
+    <details>
+      <summary>Ist eine Sauna für Schwangere geeignet?</summary>
+      <p>
+        Viele Fachstellen raten während der Schwangerschaft von der klassischen
+        finnischen Sauna mit 80–100 °C ab, da die stark erhöhte
+        Körperkerntemperatur unerwünscht sein kann. Manche empfinden eine
+        mildere Bio-Sauna oder Infrarotkabine bei niedrigerer Temperatur als
+        verträglicher. In jedem Fall gilt: individuelle Rücksprache mit der
+        Frauenärztin oder dem Frauenarzt vor dem Saunieren halten, da dies
+        keine allgemeingültige medizinische Empfehlung ersetzt.
+      </p>
+    </details>
+
     <div class="cta2">
       <strong>Saunen &amp; Infrarotkabinen jetzt vergleichen</strong>
       <p>
@@ -840,10 +1139,7 @@ footer a { color: var(--muted); }
     <div class="nl">
       <strong>📬 Gratis: Schnäppchen- &amp; Kaufberater-Updates</strong>
       <p>Das Beste aus dem Marktplatz + 1 Tipp pro Woche. Kein Spam, jederzeit abbestellbar.</p>
-      <form action="https://abannews.beehiiv.com/subscribe" method="get">
-        <input type="email" name="email" required placeholder="deine@mail.ch" aria-label="E-Mail-Adresse">
-        <button class="bigcta nl-btn" type="submit" style="border:0;cursor:pointer;margin-top:0">Abonnieren</button>
-      </form>
+      <iframe src="https://embeds.beehiiv.com/0a27d543-e5e1-4e80-a8d7-e2ea9d15d6b5" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius:12px;margin-top:12px"></iframe>
     </div>
 
     <p class="rel">
@@ -858,10 +1154,10 @@ footer a { color: var(--muted); }
 <footer>
   <div class="wrap">
     aban news · Kaufberater Schweiz · Angaben ohne Gewähr · © 2026 ·
-    <a href="/">Start</a> ·
-    <a href="/marktplatz.html">Marktplatz</a> ·
+    <a href="/kaufberater-schweiz.html">Kaufberater</a> ·
     <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/datenschutz.html">Datenschutz</a> ·
+    Affiliate-Hinweis: Diese Seite enthält Partnerlinks.
   </div>
 </footer>
 
