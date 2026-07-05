@@ -170,6 +170,35 @@ for(var sx=0;sx<200;sx++){sps[sx*3]=(Math.random()-.5)*300;sps[sx*3+1]=Math.rand
 starsGeo.setAttribute("position",new THREE.BufferAttribute(sps,3));
 scene.add(new THREE.Points(starsGeo,new THREE.PointsMaterial({color:0x9aa2d8,size:0.7,transparent:true,opacity:.7})));
 
+// ===== Neon-Metropole (InstancedMesh — 1 Drawcall pro Gruppe) =====
+var _dm=new THREE.Object3D();
+var twrN=64,twr=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial({color:0x0a0d22,emissive:0x11142e,emissiveIntensity:0.6,flatShading:true}),twrN);
+var winN=twrN*3,win=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshBasicMaterial({fog:true}),winN);
+var wc=0,winCols=[new THREE.Color(0x5ef2ff),new THREE.Color(0xb98bff),new THREE.Color(0xff7ad9),new THREE.Color(0xffcf6e)];
+for(var ti=0;ti<twrN;ti++){
+  var ta=ti/twrN*Math.PI*2+Math.random()*0.08,tr=120+Math.random()*70;
+  if(Math.sin(ta)<-0.72){continue;} // Lücke Richtung Kamera-Süden frei lassen
+  var tw=5+Math.random()*9,th=18+Math.random()*46,tx=Math.cos(ta)*tr,tz=Math.sin(ta)*tr;
+  _dm.position.set(tx,th/2-2,tz);_dm.scale.set(tw,th,tw);_dm.rotation.set(0,Math.random()*3.14,0);_dm.updateMatrix();twr.setMatrixAt(ti,_dm.matrix);
+  for(var wi2=0;wi2<3&&wc<winN;wi2++){ // Leucht-Fensterbänder
+    _dm.position.set(tx,4+Math.random()*(th-6),tz);_dm.scale.set(tw+0.5,0.5+Math.random()*0.9,tw+0.5);_dm.rotation.set(0,0,0);_dm.updateMatrix();
+    win.setMatrixAt(wc,_dm.matrix);win.setColorAt(wc,winCols[(Math.random()*4)|0]);wc++;}
+}
+twr.instanceMatrix.needsUpdate=true;win.instanceMatrix.needsUpdate=true;if(win.instanceColor)win.instanceColor.needsUpdate=true;
+scene.add(twr);scene.add(win);
+// Monolith-Ring um die Arena (Maßstab + Tiefe)
+var obN=14,ob=new THREE.InstancedMesh(new THREE.ConeGeometry(1.6,14,4),new THREE.MeshStandardMaterial({color:0x0c0f24,emissive:0x5ef2ff,emissiveIntensity:0.55,flatShading:true}),obN);
+for(var oi=0;oi<obN;oi++){var oa=oi/obN*Math.PI*2+0.22;_dm.position.set(Math.cos(oa)*(ARENA+14),5.4,Math.sin(oa)*(ARENA+14));_dm.scale.set(1,1,1);_dm.rotation.set(0,oa,0);_dm.updateMatrix();ob.setMatrixAt(oi,_dm.matrix);
+  ob.setColorAt&&ob.setColorAt(oi,oi%2?new THREE.Color(0x5ef2ff):new THREE.Color(0xb98bff));}
+ob.instanceMatrix.needsUpdate=true;if(ob.instanceColor)ob.instanceColor.needsUpdate=true;scene.add(ob);
+// Schwebende Kristalle (animiert in updateWorld)
+var crystals=[];for(var ci2=0;ci2<8;ci2++){var ca=ci2/8*Math.PI*2+0.5,cr2=ARENA+22+Math.random()*26;
+  var cry=new THREE.Mesh(new THREE.OctahedronGeometry(1.6+Math.random()*2.2,0),new THREE.MeshStandardMaterial({color:0x1a2050,emissive:ci2%2?0x7de3ff:0xc79bff,emissiveIntensity:0.9,flatShading:true,transparent:true,opacity:0.92}));
+  cry.position.set(Math.cos(ca)*cr2,10+Math.random()*16,Math.sin(ca)*cr2);cry.userData={b:Math.random()*6.28,s:0.3+Math.random()*0.5,y0:0};cry.userData.y0=cry.position.y;
+  scene.add(cry);crystals.push(cry);}
+// Boden-Glühringe außerhalb der Arena (Weite)
+for(var gri=0;gri<3;gri++){var gr2=new THREE.Mesh(new THREE.RingGeometry(58+gri*34,58.9+gri*34,72),new THREE.MeshBasicMaterial({color:gri===1?0xb98bff:0x2b3585,transparent:true,opacity:0.16-gri*0.04,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));gr2.rotation.x=-Math.PI/2;gr2.position.y=0.02;scene.add(gr2);}
+
 // ===================== Spieler =====================
 var player=new THREE.Group();player.position.set(0,0,26);scene.add(player);
 var pBody=new THREE.Mesh(new THREE.IcosahedronGeometry(0.72,0),mat(0x5ef2ff,0x1a6f8c));pBody.position.y=0.95;player.add(pBody);
@@ -277,7 +306,8 @@ function resetState(){
   G={hp:100,maxhp:100,speed:17,dashCD:0,dashT:0,iframe:0,fireCD:0,fireRate:0.11,dmg:9,
      stage:0,t:0,running:false,alive:true,bhp:0,bmax:0,phase:1,bAtkCD:1.2,bMoveA:0,bSpiral:0,intro:0,bAngle:0,dead:false,
      slowT:0,slowVal:1,pPop:0,
-     co:coopMode,hp2:100,maxhp2:100,iframe2:0,dashCD2:0,dashT2:0,dashDir2:{x:0,z:0},pPop2:0,fireCD2:0,alive2:coopMode};
+     co:coopMode,hp2:100,maxhp2:100,iframe2:0,dashCD2:0,dashT2:0,dashDir2:{x:0,z:0},pPop2:0,fireCD2:0,alive2:coopMode,
+     vx:0,vz:0,vx2:0,vz2:0,dashBuf:0,dashBuf2:0};
   player.position.set(coopMode?-4:0,0,26);player.rotation.y=0;player.visible=true;
   player2.position.set(4,0,26);player2.visible=coopMode;
   aimDir.set(0,0,-1);aim2.set(0,0,-1);
@@ -324,13 +354,13 @@ touchEl.addEventListener("touchmove",function(e){for(var i=0;i<e.changedTouches.
 touchEl.addEventListener("touchend",function(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===touchId){touchId=null;touchVec.x=0;touchVec.y=0;}}e.preventDefault();},{passive:false});
 addEventListener("touchstart",function(){if(!isTouch)enableTouch();},{once:true});
 
-function doDash(){if(G.dashCD>0||!G.alive)return;var mv=moveVec();if(mv.x===0&&mv.z===0){mv.x=aimDir.x;mv.z=aimDir.z;}var l=Math.hypot(mv.x,mv.z)||1;G.dashDir={x:mv.x/l,z:mv.z/l};G.dashT=0.16;G.iframe=0.34;G.dashCD=1.15;G.pPop=0.16;slowmo(0.09,0.5);beep(660,0.12,"sawtooth",0.05);burst(player.position.x,0.95,player.position.z,0x7de3ff,10,4);}
+function doDash(){if(!G.alive)return;if(G.dashCD>0){G.dashBuf=0.22;return;}var mv=moveVec();if(mv.x===0&&mv.z===0){mv.x=aimDir.x;mv.z=aimDir.z;}var l=Math.hypot(mv.x,mv.z)||1;G.dashDir={x:mv.x/l,z:mv.z/l};G.dashT=0.16;G.iframe=0.34;G.dashCD=1.15;G.pPop=0.16;slowmo(0.09,0.5);beep(660,0.12,"sawtooth",0.05);burst(player.position.x,0.95,player.position.z,0x7de3ff,10,4);}
 function moveVec(p2){var x=0,z=0;
   if(p2){if(keys.arrowup)z-=1;if(keys.arrowdown)z+=1;if(keys.arrowleft)x-=1;if(keys.arrowright)x+=1;return {x:x,z:z};}
   if(keys.w)z-=1;if(keys.s)z+=1;if(keys.a)x-=1;if(keys.d)x+=1;
   if(!G.co){if(keys.arrowup)z-=1;if(keys.arrowdown)z+=1;if(keys.arrowleft)x-=1;if(keys.arrowright)x+=1;}
   if(isTouch&&touchId!==null){var m=Math.hypot(touchVec.x,touchVec.y);if(m>12){x=touchVec.x/m;z=touchVec.y/m;}}return {x:x,z:z};}
-function doDash2(){if(G.dashCD2>0||!G.alive2)return;var mv=moveVec(true);if(mv.x===0&&mv.z===0){mv.x=aim2.x;mv.z=aim2.z;}var l=Math.hypot(mv.x,mv.z)||1;G.dashDir2={x:mv.x/l,z:mv.z/l};G.dashT2=0.16;G.iframe2=0.34;G.dashCD2=1.15;G.pPop2=0.16;slowmo(0.09,0.5);beep(560,0.12,"sawtooth",0.05);burst(player2.position.x,0.95,player2.position.z,0xff9ae0,10,4);}
+function doDash2(){if(!G.alive2)return;if(G.dashCD2>0){G.dashBuf2=0.22;return;}var mv=moveVec(true);if(mv.x===0&&mv.z===0){mv.x=aim2.x;mv.z=aim2.z;}var l=Math.hypot(mv.x,mv.z)||1;G.dashDir2={x:mv.x/l,z:mv.z/l};G.dashT2=0.16;G.iframe2=0.34;G.dashCD2=1.15;G.pPop2=0.16;slowmo(0.09,0.5);beep(560,0.12,"sawtooth",0.05);burst(player2.position.x,0.95,player2.position.z,0xff9ae0,10,4);}
 
 // ===================== Schaden / Tod =====================
 var flashEl=document.getElementById("flash"),hurt=0;
@@ -404,12 +434,16 @@ function bossThink(dt){
 var shake=0,hitstop=0,last=performance.now();
 function update(dt){
   G.t+=dt;
-  // Spieler 1 bewegen (im Koop nur wenn lebt)
+  // Spieler 1 bewegen — Geschwindigkeits-Glättung (Accel/Friction) statt Instant-Snap
   var mv=moveVec(),spd=G.speed;
+  if(G.dashBuf>0){G.dashBuf-=dt;if(G.dashCD<=0&&G.alive){G.dashBuf=0;doDash();}}
   if(G.alive){
-    if(G.dashT>0){G.dashT-=dt;player.position.x+=G.dashDir.x*46*dt;player.position.z+=G.dashDir.z*46*dt;}
-    else if(mv.x||mv.z){var l=Math.hypot(mv.x,mv.z);player.position.x+=mv.x/l*spd*dt;player.position.z+=mv.z/l*spd*dt;}
-    var pr=Math.hypot(player.position.x,player.position.z);if(pr>ARENA-1.2){player.position.x*=(ARENA-1.2)/pr;player.position.z*=(ARENA-1.2)/pr;}
+    if(G.dashT>0){G.dashT-=dt;player.position.x+=G.dashDir.x*46*dt;player.position.z+=G.dashDir.z*46*dt;G.vx=G.dashDir.x*spd;G.vz=G.dashDir.z*spd;}
+    else{var l=Math.hypot(mv.x,mv.z)||1,tvx=(mv.x/l)*spd*(mv.x||mv.z?1:0),tvz=(mv.z/l)*spd*(mv.x||mv.z?1:0);
+      var k=Math.min(1,dt*((mv.x||mv.z)?11:8)); // schneller ran als raus → knackig, aber weich
+      G.vx+=(tvx-G.vx)*k;G.vz+=(tvz-G.vz)*k;
+      player.position.x+=G.vx*dt;player.position.z+=G.vz*dt;}
+    var pr=Math.hypot(player.position.x,player.position.z);if(pr>ARENA-1.2){player.position.x*=(ARENA-1.2)/pr;player.position.z*=(ARENA-1.2)/pr;G.vx*=0.4;G.vz*=0.4;}
   }
   if(isTouch&&boss.visible){aimDir.set(boss.position.x-player.position.x,0,boss.position.z-player.position.z);if(aimDir.lengthSq()>0.01)aimDir.normalize();}
   player.rotation.y=Math.atan2(aimDir.x,aimDir.z);
@@ -417,6 +451,10 @@ function update(dt){
   pGlow.position.set(player.position.x,2,player.position.z);
   pRing.rotation.z+=dt*2.5;pRing2.rotation.z-=dt*3.5;pCore.rotation.y+=dt*4;pCore.rotation.x+=dt*2;
   var _pv=player.userData.heroModel;
+  if(_pv){ // Lean: Held neigt sich in die Bewegungsrichtung (lokaler Raum)
+    var _yw=player.rotation.y,_lx=Math.cos(_yw)*G.vx-Math.sin(_yw)*G.vz,_lz=Math.sin(_yw)*G.vx+Math.cos(_yw)*G.vz;
+    var _tz=Math.max(-0.22,Math.min(0.22,-_lx*0.014)),_tx=Math.max(-0.16,Math.min(0.16,_lz*0.009));
+    _pv.rotation.z+=(_tz-_pv.rotation.z)*Math.min(1,dt*10);_pv.rotation.x+=(_tx-_pv.rotation.x)*Math.min(1,dt*10);}
   if(G.pPop>0){G.pPop-=dt;pBody.scale.setScalar(1+Math.max(0,G.pPop)*2.2);}else pBody.scale.setScalar(1);
   if(G.iframe>0){G.iframe-=dt;var vis=(Math.floor(G.t*30)%2===0);if(_pv)_pv.visible=vis;else{pBody.visible=vis;pCore.visible=vis;}}else{if(_pv)_pv.visible=true;else{pBody.visible=true;pCore.visible=true;}}
   if(G.dashCD>0)G.dashCD-=dt;
@@ -426,9 +464,12 @@ function update(dt){
   // Spieler 2 (Koop)
   if(G.co&&G.alive2){
     var mv2=moveVec(true);
-    if(G.dashT2>0){G.dashT2-=dt;player2.position.x+=G.dashDir2.x*46*dt;player2.position.z+=G.dashDir2.z*46*dt;}
-    else if(mv2.x||mv2.z){var l2=Math.hypot(mv2.x,mv2.z);player2.position.x+=mv2.x/l2*G.speed*dt;player2.position.z+=mv2.z/l2*G.speed*dt;}
-    var pr2=Math.hypot(player2.position.x,player2.position.z);if(pr2>ARENA-1.2){player2.position.x*=(ARENA-1.2)/pr2;player2.position.z*=(ARENA-1.2)/pr2;}
+    if(G.dashBuf2>0){G.dashBuf2-=dt;if(G.dashCD2<=0){G.dashBuf2=0;doDash2();}}
+    if(G.dashT2>0){G.dashT2-=dt;player2.position.x+=G.dashDir2.x*46*dt;player2.position.z+=G.dashDir2.z*46*dt;G.vx2=G.dashDir2.x*G.speed;G.vz2=G.dashDir2.z*G.speed;}
+    else{var l2=Math.hypot(mv2.x,mv2.z)||1,tvx2=(mv2.x/l2)*G.speed*(mv2.x||mv2.z?1:0),tvz2=(mv2.z/l2)*G.speed*(mv2.x||mv2.z?1:0);
+      var k2=Math.min(1,dt*((mv2.x||mv2.z)?11:8));G.vx2+=(tvx2-G.vx2)*k2;G.vz2+=(tvz2-G.vz2)*k2;
+      player2.position.x+=G.vx2*dt;player2.position.z+=G.vz2*dt;}
+    var pr2=Math.hypot(player2.position.x,player2.position.z);if(pr2>ARENA-1.2){player2.position.x*=(ARENA-1.2)/pr2;player2.position.z*=(ARENA-1.2)/pr2;G.vx2*=0.4;G.vz2*=0.4;}
     if(boss.visible){aim2.set(boss.position.x-player2.position.x,0,boss.position.z-player2.position.z);if(aim2.lengthSq()>0.01)aim2.normalize();}
     player2.rotation.y=Math.atan2(aim2.x,aim2.z);
     aimMk2.visible=true;aimMk2.position.set(player2.position.x+aim2.x*2.2,0.95,player2.position.z+aim2.z*2.2);aimMk2.rotation.z=-Math.atan2(aim2.z,aim2.x)-Math.PI/2;
@@ -483,6 +524,7 @@ function update(dt){
   // Landschaft
   for(i=0;i<auroras.length;i++){auroras[i].material.opacity=0.06+0.05*Math.sin(G.t*0.5+i);auroras[i].position.x=Math.sin(G.t*0.12+i)*40;}
   var pa=ambGeo.attributes.position.array;for(i=0;i<ambN;i++){pa[i*3+1]+=ambV[i]*dt;if(pa[i*3+1]>52){pa[i*3+1]=0;pa[i*3]=(Math.random()-.5)*220;pa[i*3+2]=(Math.random()-.5)*220;}}ambGeo.attributes.position.needsUpdate=true;
+  for(i=0;i<crystals.length;i++){var cy=crystals[i];cy.rotation.y+=dt*cy.userData.s;cy.rotation.x+=dt*cy.userData.s*0.6;cy.position.y=cy.userData.y0+Math.sin(G.t*0.7+cy.userData.b)*2.2;}
   // HUD
   if(G.running||!G.alive){document.getElementById("hpFill").style.width=(100*G.hp/G.maxhp)+"%";document.getElementById("hpTxt").textContent=Math.max(0,Math.ceil(G.hp))+"/"+G.maxhp;
     document.getElementById("bossHp").style.width=(100*Math.max(0,G.bhp)/G.bmax)+"%";
@@ -522,7 +564,7 @@ function updateCamera(dt){
   camera.position.x+=(tx-camera.position.x)*Math.min(1,dt*6);
   camera.position.y+=(ty-camera.position.y)*Math.min(1,dt*6);
   camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*6);
-  camera.lookAt(px,3.0,pz-9.5);
+  camera.lookAt(px+aimDir.x*2.0,3.0,pz-9.5+Math.min(0,aimDir.z)*1.5); // sanfter Blick voraus Richtung Ziel
   if(shake>0)shake=Math.max(0,shake-dt*2.2);
 }
 
@@ -600,6 +642,7 @@ document.getElementById("againBtn").onclick=begin;
 function idleAnim(dt){ // Landschaft + Player-Ringe leben auch im Menü/Over-Screen
   for(var i=0;i<auroras.length;i++){auroras[i].material.opacity=0.06+0.05*Math.sin((last*0.001)*0.5+i);auroras[i].position.x=Math.sin((last*0.001)*0.12+i)*40;}
   var pa=ambGeo.attributes.position.array;for(i=0;i<ambN;i++){pa[i*3+1]+=ambV[i]*dt;if(pa[i*3+1]>52){pa[i*3+1]=0;}}ambGeo.attributes.position.needsUpdate=true;
+  for(i=0;i<crystals.length;i++){var cy=crystals[i];cy.rotation.y+=dt*cy.userData.s;cy.rotation.x+=dt*cy.userData.s*0.6;cy.position.y=cy.userData.y0+Math.sin((last*0.001)*0.7+cy.userData.b)*2.2;}
   pRing.rotation.z+=dt*1.2;pRing2.rotation.z-=dt*1.6;pCore.rotation.y+=dt*2;
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=9*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2.2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;}}
 }
