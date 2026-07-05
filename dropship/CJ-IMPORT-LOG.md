@@ -1837,3 +1837,19 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (Publication 302872297857). Onlineshop/übrige Kanäle bleiben — nur Google wird geschützt. Danach: Safety-Subset
   (Schwimmhilfen) prüfen. **Merchant-Feed-Alternative bleibt der gefilterte XML-Feed (brain/intel).**
 - Barcodes: CJ liefert keine GTINs (barcode null) → Google behandelt sie als „custom products" (ok, kein Blocker).
+
+## 2026-07-05 — 🔥 TRENDING-FEED KOMPLETT IMPORTIERT (User-Screenshots CJ Video/Trending Products)
+- **Neues Tool `automation/cj_trending_import.mjs`:** zieht CJ-Trending direkt via **`orderBy=listedNum`**
+  (unbekannter, aber funktionierender API-Param — Top-1 = G-Lampe 68k Lists, exakt der App-Feed!).
+  Fashion-aware Varianten, ALLE Bilder (bis 20) + **CJ-Produktvideo als Shopify-VIDEO-Media**, Copy via
+  **Groq-Rotation (2 Keys × 3 Modelle)**; Preisfilter nutzt Range-OBERGRENZE (Zubehör-Varianten-Falle).
+- **✅ 200 Top-Trending-Produkte LIVE** (Rang bis ~6'100 Lists), inkl. aller User-Screenshot-Produkte:
+  G-Lampe [68373], Halsmassager [48000], Etiketten-Drucker [37411], Klimaanlage/Luftkühler [29730],
+  Heimprojektor [28331], Heizjacke [22777], Isolier-Tumbler [30457], Campinglampe [10901] u.v.m.
+- **Neue Collection „🔥 Viral-Hits & TikTok-Trends"** (`viral-hits`, Regel TAG=video-hit, 211 Produkte,
+  6 Kanäle, live HTTP 200).
+- **✅ GOOGLE-SCHUTZ ABGESCHLOSSEN: 10'101 Marken-Produkte vom Google-Kanal depubliziert** (Tool
+  `google_unpublish_marke.mjs`, lief bis 0 offen — inkl. der parallel importierten).
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
