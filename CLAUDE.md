@@ -59,7 +59,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
-**📌 2026-06-13 (NEUESTER STAND — ⚠️ GitHub-Actions-Sperre + Autonom-Spielregeln + ehrliche Daten):**
+**📌 2026-07-05 (🎉 ERSTE BESTELLUNG!):** Erste echte Kundenbestellung eingetroffen — **POD/Printful**
+(Bestellung 3.7., versandt 5.7. ab Printful-Lettland, ID `PF165452870`): „Recyceltes Unisex-Trikot mit
+Allover-Druck (White/XL)" → Kunde in Payerne VD. Kaufpfad = POD-Linie, nicht CJ. **5 offene Prüfungen**
+(Marge/AOP-Kosten!, Doppel-Druck-Falle, **Klaviyo-Sync kaputt** [0 Orders/2 Profile in Klaviyo trotz Bestellung
+→ Flows laufen ins Leere], TikTok-CompletePayment-Event, Fulfillment-Status) → Details im neuen Top-Block in
+`SHARED-MEMORY.md` §LIVE-STAND. Zudem: `brain/intel`-Autopilot liefert seit 27.06. nichts mehr (GitLab prüfen).
+
+**📌 2026-06-13 (vorheriger Stand — ⚠️ GitHub-Actions-Sperre + Autonom-Spielregeln + ehrliche Daten):**
 - **⚠️⚠️ GITHUB ACTIONS IST ACCOUNT-WEIT GESPERRT** („Actions has been disabled for this user", Grund: zu hohe
   Nutzung — 158 Workflows, ~60 Crons = Fair-Use-Flag). **Nichts läuft mehr automatisch.** Repo ist public →
   kein Geld-Problem, nur Last. **Entsperren kann nur der User** (GitHub-Support / Sperr-Mail beantworten / Cooldown).

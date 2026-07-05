@@ -136,6 +136,28 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+### 🎉🎉 2026-07-05 — ERSTE ECHTE KUNDENBESTELLUNG (POD/Printful)! (Status-Session, ZUERST LESEN)
+- **Beleg (User-Screenshot, Printful-Packzettel):** Bestellung vom **3. Jul 2026**, versandt **5. Jul 2026** ab
+  Printful-Lettland (LuxeStyle, Lidostas Parks, Marupes novads LV-2167). **Bestell-ID `PF165452870`**, Packzettel
+  `165452870-81056358`. Produkt: **„Recyceltes Unisex-Trikot mit Allover-Druck (White / XL)" ×1** → Kunde
+  Alain Schutz, Payerne VD (Schweiz). ⇒ **Erster Kauf überhaupt** (nach ~6 Wochen 0-Conversion) — Kaufpfad war die
+  **POD-Linie** (Selbst-gestalten/Fertigdesigns via Printful), NICHT der CJ-Katalog.
+- **⚠️ OFFENE PRÜFUNGEN (nächste Session MIT Shopify-MCP — diese Status-Session hatte keine Shopify-Tools/Creds):**
+  1. **Marge prüfen:** Allover-Print-Trikot ist bei Printful teuer (Kosten oft >CHF 30). Alte Falle (ABEND-TODO §0):
+     POD teils unter Printful-Kosten bepreist. Shopify-VK dieser Bestellung ansehen; falls Verlust → `automation/printful_reprice.mjs` fahren.
+  2. **Doppel-Druck-Falle:** ABEND-TODO §1.3 warnt: Printful-App-Auto-Import + eigener Sync können ZWEI Druckaufträge
+     erzeugen. In Printful prüfen, dass nur EIN Auftrag für diese Bestellung existiert (und welche Quelle ihn angelegt hat).
+  3. **Klaviyo-Sync ist KAPUTT:** Klaviyo (live abgefragt 05.07.) zeigt **0 „Placed Order", 0 „Checkout Started" seit 1.6.**
+     und hat nur **2 Profile** (auch die 11 Popup-Leads fehlen) — obwohl diese Bestellung existiert. ⇒ Shopify→Klaviyo-
+     Integration prüfen/neu verbinden, sonst laufen alle 8 Flows (Post-Purchase!) ins Leere.
+  4. **TikTok-Pixel:** Check beim ersten Kauf (Eintrag 06-10, DataHash gekündigt): kam das CompletePayment-Event im
+     TikTok Events Manager an? Falls nein → native Anbindung nachschärfen.
+  5. **Fulfillment/Kunde:** Shopify-Order als fulfilled markiert + Tracking an Kunden? Post-Purchase-Mail (Klaviyo) ging
+     wegen Punkt 3 vermutlich NICHT raus.
+- **Weitere Live-Signale 05.07.:** GitLab-CI lebt (brain/youtube + brain/auto heute aktualisiert), aber **brain/intel
+  (Shop-Autopilot-Reports/Feed) letzter Push 27.06.** → `autopilot-intel`/`shop-autopilot`-Jobs liefern nichts mehr, in
+  GitLab prüfen. GitHub Actions weiterhin gesperrt.
+
 ### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
 **Reichweite/Distribution 2026 (Web-Recherche):**
 - **Organische Social-Reichweite sinkt weiter; Facebook-Gruppen sind 2026 organisch faktisch tot** außer 3 Nischen
