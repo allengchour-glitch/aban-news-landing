@@ -1,0 +1,28 @@
+FAL_KEY: vorhanden, len 69 · SHOPIFY_CLIENT_SECRET: vorhanden
+Render 6 Winner-Clips (res 720p, dur 6s, v1/pro-first)…
+
+→ reels/winner-set18k.mp4  (waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free)
+  05:18:30 -> versuche Modell: bytedance/seedance-2.0/fast/image-to-video | 05:21:04 ✅ Modell akzeptiert: bytedance/seedance-2.0/fast/image-to-video | 05:21:05 ✅ Seedance-Video gespeichert: reels/winner-set18k.mp4 2.57MB
+  ✓ Clip da (2635 KB)
+
+→ reels/winner-herzmuschel.mp4  (herz-muschel-anhanger-titanstahl-wasserfest-stahl-rosegold-gold)
+  05:21:06 -> versuche Modell: bytedance/seedance-2.0/fast/image-to-video | 05:23:36 ✅ Modell akzeptiert: bytedance/seedance-2.0/fast/image-to-video | 05:23:38 ✅ Seedance-Video gespeichert: reels/winner-herzmuschel.mp4 2.67MB
+  ✓ Clip da (2735 KB)
+
+→ reels/winner-geburtsstein.mp4  (geburtsstein-kette-12-monate)
+  05:23:39 -> versuche Modell: bytedance/seedance-2.0/fast/image-to-video | 05:25:51 ✅ Modell akzeptiert: bytedance/seedance-2.0/fast/image-to-video | 05:25:53 ✅ Seedance-Video gespeichert: reels/winner-geburtsstein.mp4 2.95MB
+  ✓ Clip da (3017 KB)
+
+→ reels/winner-onyx.mp4  (statement-ohrringe-onyx-geometrisch-schwarz)
+  05:25:54 -> versuche Modell: bytedance/seedance-2.0/fast/image-to-video | 05:27:51 ✅ Modell akzeptiert: bytedance/seedance-2.0/fast/image-to-video | 05:27:53 ✅ Seedance-Video gespeichert: reels/winner-onyx.mp4 2.27MB
+  ✓ Clip da (2325 KB)
+
+→ reels/winner-eternita.mp4  (ring-set-eternita-stapelbares-tropfen-ring-set-silber)
+  05:27:53 -> versuche Modell: bytedance/seedance-2.0/fast/image-to-video | 05:30:01 ✅ Modell akzeptiert: bytedance/seedance-2.0/fast/image-to-video | 05:30:03 ✅ Seedance-Video gespeichert: reels/winner-eternita.mp4 1.89MB
+  ✓ Clip da (1939 KB)
+
+→ reels/winner-amore.mp4  (edelstahl-armband-amore-herz-geburtsstein-gold)
+  05:30:04 -> versuche Modell: bytedance/seedance-2.0/fast/image-to-video | 05:32:42 ✅ Modell akzeptiert: bytedance/seedance-2.0/fast/image-to-video | 05:32:43 ✅ Seedance-Video gespeichert: reels/winner-amore.mp4 2.46MB
+  ✓ Clip da (2516 KB)
+
+Fertig: 6/6 Winner-Clips gerendert. Weiter: finish_reel.sh (Hook+Musik) → queue.
