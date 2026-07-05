@@ -1,5 +1,13 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-05 (GROSSE AUTONOM-SESSION — 6 Agenten-Runden, PC-Queue abgearbeitet)
+- **✅ LIVE (verifiziert):** CH-Rechts-Block KOMPLETT — Versand (CH-only/CHF 50/5–12 Werktage) + Rückgabe (CH, kein EU-14-Tage) + **Datenschutz revDSG/EDÖB** (via GraphQL shopPolicyUpdate; REST gab 406). Collection **`frauen-favoriten`** (20 Winner, publiziert). **6 SEO-Buy-Intent-Landingpages** (wasserfeste Goldkette/Geburtsstein/personalisierte Geschenke/hypoallergen/Stapelringe/Mini-Tasche).
+- **🎬 6 WINNER-VIDEO-REELS gerendert + veredelt + an User geschickt:** Seedance 2.0/fast (v1 = Not Found; Root-Cause des Fehlers war fehlendes @fal-ai/client-Paket, jetzt installiert) → finish_reel (Mundart-Hook + Musik) → `reels/winner-*-ig.mp4`. `queue-winner-reels` gequeued (CDN-Upload + video_queue.csv → Worker postet IG/FB).
+- **🛡️ TRUST-AUDIT (18 Agenten, 270 Flags):** **27 Nicht-Mode-Fremdkörper auf DRAFT** (TVs/Werkzeug/Hydraulik/Gamepads/SSD/Router). Gemini-Vision-Sweep = **0 Verstösse** (sauber). **~62 Marken-Ware** (MK/Chanel/Tissot/CK… ~970 Uhren) = User-Entscheid „behalten + entschärfen" → `soften-claims` (unbelegte 100%-Original + falsche Swiss-Made in Beschreibungen neutralisieren) gequeued.
+- **🧠 Gehirn + Docs:** ~23 neue Regeln. Docs: AUDIT-20AGENT, WERBEPAKET, KATALOG-REKURATION, TRUST-AUDIT (alle 2026-07). Lehren: Policies nur via GraphQL; Seedance-Render braucht @fal-ai/client; #swissmade an der Quelle raus.
+- **🔴 User-Klicks offen:** Theme-Hebel (Payment-Badges/Sticky-ATC/Banner/Judge.me-hide-empty — SHARED-MEMORY an Theme-Session); Klaviyo-Reconnect; echte Seed-Käufe; TikTok stumm hochladen (Trend-Sound in App).
+
+
 ## 2026-07-04 (VOLL-GAS-WERBUNG — 20-Agenten-Werbepaket + Render gequeued)
 - **🎬 20 WERBE-AGENTEN (User „mach krasse werbung"):** 187 Ad-Assets → Creative-Director kuratiert: **12 postbare Captions** (7 TikTok-Mundart/4 IG/1 FB),
   **6 Seedance-Prompts**, **15 On-Screen-Hooks** (≤42 Zeichen, Safe-Zone), Tagline „Schmuck, den du nie mehr ausziehen musst" + USP + Offer. Doc: `dropship/WERBEPAKET-2026-07-04.md`.
