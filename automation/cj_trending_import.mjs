@@ -196,7 +196,7 @@ for(const p of cand){
  if(total>=CAPT)break;
  const nm=p.productNameEn||'';
  const dj=await cj(`/product/query?pid=${p.pid}`); await sleep(CJSLEEP);
- const d=dj.data||{}; const imgs=((d.productImageSet)||[]).filter(u=>/^https/.test(u)).slice(0,8);
+ const d=dj.data||{}; const imgs=((d.productImageSet)||[]).filter(u=>/^https/.test(u)).slice(0,20);
  if(imgs.length<2){continue;}
  const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
  const g=await gemini(nm,feats,'Trend-Produkt (viral)'); await sleep(GSLEEP);
@@ -215,7 +215,9 @@ for(const p of cand){
   productOptions,variants,files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
  const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
  if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
- if(imgs.length>1)await sgql(st,MED,{id:pid,m:imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}))});
+ const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
+ if(d.productVideo&&/^https/.test(d.productVideo))media.push({originalSource:d.productVideo,mediaContentType:'VIDEO'});
+ if(media.length)await sgql(st,MED,{id:pid,m:media});
  await sgql(st,PUB,{id:pid,p:PUBS});
  fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
  total++; console.log(`✅ [${p.listedNum}] ${title} → ${pid.split('/').pop()}`);
