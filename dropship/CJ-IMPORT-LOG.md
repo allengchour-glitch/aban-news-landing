@@ -1825,3 +1825,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Regel) + 4 CREATED_DESC (Neuheiten = neueste zuerst ist dort richtig).
 - **Endstand: 238 BEST_SELLING · 7 MANUAL · 4 CREATED_DESC.** Verifiziert per Live-Query.
 - **QA neueste 40 Engine-Importe: 0 FAILED-Bilder, 0 ohne Bild, 0 unpubliziert** — beide Engines liefern sauber.
+
+## 2026-07-05 — Qualitätspaket: Varianten ✅ · Dubletten ✅ · Google-Merchant-Schutz LÄUFT
+- **Varianten verifiziert:** Engine-Importe haben echte **Farbe×Grösse-Optionen** mit CJ-SKU je Kombination
+  (Beispiel Midikleid: 4 Farben × 6 Grössen). Kein Nachbau nötig.
+- **Dubletten:** `merge_variants.mjs` (Session-2-Tool) SCANALL-DRY gefahren → **0 mergefähige Gruppen offen**
+  (29 saubere sind gemerged; Rest = bewusste Skips: keine klare Achse / inkohärente Preise, z. B. Casio-Ø-Varianten).
+- **🚨 GOOGLE-MERCHANT-SCHUTZ:** **7'922 tag:marke-Produkte waren auf dem Google-Kanal publiziert** (Juni: ~520 —
+  Massen-Füllung!). Neues Tool **`automation/google_unpublish_marke.mjs`** (paginiert, batch-unpublish 20er,
+  Throttle-Backoff, idempotent via publication_ids-Query) läuft im Hintergrund und nimmt alle vom Google-Kanal
+  (Publication 302872297857). Onlineshop/übrige Kanäle bleiben — nur Google wird geschützt. Danach: Safety-Subset
+  (Schwimmhilfen) prüfen. **Merchant-Feed-Alternative bleibt der gefilterte XML-Feed (brain/intel).**
+- Barcodes: CJ liefert keine GTINs (barcode null) → Google behandelt sie als „custom products" (ok, kein Blocker).
