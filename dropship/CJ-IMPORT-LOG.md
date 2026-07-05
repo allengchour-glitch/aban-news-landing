@@ -1802,3 +1802,54 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (`cj_gaps_import.mjs`-Ansatz mit harten Ankern) oder (b) für konkrete Produkt-IDs aus Recherche-Reports.
 - **✅ Text-Abdeckung verifiziert (Stichproben neu+alt):** Alle geprüften cj-real haben DE-Body (350–1250 Z.)
   + SEO-Title/Desc. Import-Session schreibt Text direkt mit. Kein Text-Rückstand im CJ-Katalog.
+
+## 2026-07-05 — 🏭 BEIDE MASSEN-ENGINES IN DIESER SESSION GESTARTET (100k-Auftrag des Users)
+- **User-Auftrag: „importiere alles mögliche / cj 100000 sachen"** → beide Session-2-Engines übernommen & gestartet:
+  1. **BigBuy:** `/tmp/bb_s2.mjs` (= `automation/bigbuy_import.mjs` vom Branch `claude/memory-2026-06-13`, 105 Kategorien;
+     hier 103 — `raucherzubehoer`+`grow` per §5 ausgelassen). LIVE=1, PER=4, Ledger `dropship/bigbuy_done.txt` (12'194 übernommen).
+  2. **CJ:** `automation/cj_perpetual.mjs` + `cj_category_fill.mjs` (von Session-2-Branch committet). Grindet CJ-Tagespunkte
+     (~50k/Tag, Code 16900500 = warten auf Reset) Richtung 100k. Ledger `dropship/cj_niche_done.txt` (5'802 übernommen).
+- **NEUSTART-REZEPT (nach Container-Reset / neue Session):**
+  1. CJ-Token nach `/tmp/cj_token.json` (User pastet Token; Format `{"accessToken":"…","exp":<ms>}`) + Gemini-Key nach `/tmp/gemini_key`.
+  2. `SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_CLIENT_ID=… SHOPIFY_CLIENT_SECRET=… node automation/cj_perpetual.mjs &`
+  3. BigBuy: Key vom User + `CATS=<liste> LIVE=1 node automation/bigbuy_import.mjs &` (Skript ggf. frisch vom Session-2-Branch).
+  Ledger IMMER vorher von origin (main + Session-2-Branch) vereinigen → keine Dubletten. Ledger-Drift regelmässig committen.
+- ⚠️ Bekannte BigBuy-Eigenheit: nahezu identische Titel als separate Produkte (RC-Motorräder 2×) → Session-2-Tool
+  `merge_variants.mjs` konsolidiert nachträglich (29 Gruppen bereits gemerged), bei Gelegenheit erneut fahren.
+
+## 2026-07-05 — 🗂️ Sortier-Sweep: 218 Collections auf BEST_SELLING (0 Fehler)
+- **Befund:** 205 Smart- + 17 Manual-Collections standen auf **PRICE_DESC („teuerste zuerst" = Conversion-Gift)** —
+  Session-2-Agenten hatten nur die 20 Hauptkategorien gefixt, der Long-Tail nicht.
+- **Fix:** alle PRICE_ASC/PRICE_DESC-Collections mit >0 Produkten → `sortOrder: BEST_SELLING` (218 Stück, Batch-
+  Mutationen à 20). **Bewusst unangetastet:** 7 kuratierte MANUAL (bestseller/highlights — „nicht zurücksortieren!"-
+  Regel) + 4 CREATED_DESC (Neuheiten = neueste zuerst ist dort richtig).
+- **Endstand: 238 BEST_SELLING · 7 MANUAL · 4 CREATED_DESC.** Verifiziert per Live-Query.
+- **QA neueste 40 Engine-Importe: 0 FAILED-Bilder, 0 ohne Bild, 0 unpubliziert** — beide Engines liefern sauber.
+
+## 2026-07-05 — Qualitätspaket: Varianten ✅ · Dubletten ✅ · Google-Merchant-Schutz LÄUFT
+- **Varianten verifiziert:** Engine-Importe haben echte **Farbe×Grösse-Optionen** mit CJ-SKU je Kombination
+  (Beispiel Midikleid: 4 Farben × 6 Grössen). Kein Nachbau nötig.
+- **Dubletten:** `merge_variants.mjs` (Session-2-Tool) SCANALL-DRY gefahren → **0 mergefähige Gruppen offen**
+  (29 saubere sind gemerged; Rest = bewusste Skips: keine klare Achse / inkohärente Preise, z. B. Casio-Ø-Varianten).
+- **🚨 GOOGLE-MERCHANT-SCHUTZ:** **7'922 tag:marke-Produkte waren auf dem Google-Kanal publiziert** (Juni: ~520 —
+  Massen-Füllung!). Neues Tool **`automation/google_unpublish_marke.mjs`** (paginiert, batch-unpublish 20er,
+  Throttle-Backoff, idempotent via publication_ids-Query) läuft im Hintergrund und nimmt alle vom Google-Kanal
+  (Publication 302872297857). Onlineshop/übrige Kanäle bleiben — nur Google wird geschützt. Danach: Safety-Subset
+  (Schwimmhilfen) prüfen. **Merchant-Feed-Alternative bleibt der gefilterte XML-Feed (brain/intel).**
+- Barcodes: CJ liefert keine GTINs (barcode null) → Google behandelt sie als „custom products" (ok, kein Blocker).
+
+## 2026-07-05 — 🔥 TRENDING-FEED KOMPLETT IMPORTIERT (User-Screenshots CJ Video/Trending Products)
+- **Neues Tool `automation/cj_trending_import.mjs`:** zieht CJ-Trending direkt via **`orderBy=listedNum`**
+  (unbekannter, aber funktionierender API-Param — Top-1 = G-Lampe 68k Lists, exakt der App-Feed!).
+  Fashion-aware Varianten, ALLE Bilder (bis 20) + **CJ-Produktvideo als Shopify-VIDEO-Media**, Copy via
+  **Groq-Rotation (2 Keys × 3 Modelle)**; Preisfilter nutzt Range-OBERGRENZE (Zubehör-Varianten-Falle).
+- **✅ 200 Top-Trending-Produkte LIVE** (Rang bis ~6'100 Lists), inkl. aller User-Screenshot-Produkte:
+  G-Lampe [68373], Halsmassager [48000], Etiketten-Drucker [37411], Klimaanlage/Luftkühler [29730],
+  Heimprojektor [28331], Heizjacke [22777], Isolier-Tumbler [30457], Campinglampe [10901] u.v.m.
+- **Neue Collection „🔥 Viral-Hits & TikTok-Trends"** (`viral-hits`, Regel TAG=video-hit, 211 Produkte,
+  6 Kanäle, live HTTP 200).
+- **✅ GOOGLE-SCHUTZ ABGESCHLOSSEN: 10'101 Marken-Produkte vom Google-Kanal depubliziert** (Tool
+  `google_unpublish_marke.mjs`, lief bis 0 offen — inkl. der parallel importierten).
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
