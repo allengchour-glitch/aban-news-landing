@@ -137,11 +137,12 @@
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
 ### 🎉🎉 2026-07-05 — ERSTE ECHTE VERKÄUFE! Voller Order-Audit (Status-Session, live per Admin-API verifiziert)
-**Es gibt inzwischen ZWEI bezahlte Kundenbestellungen (Klaviyo zeigt fälschlich 0):**
-- **#1004 (25.06., DER ERSTE VERKAUF): LED-Laterne «Boho» Rattan-Optik** (BigBuy, SKU `bb-S3414715`), CHF 24.90+7
-  Versand, PAID/**FULFILLED**. ⚠️ OFFEN: verifizieren, dass die Ware wirklich bei **BigBuy bestellt** wurde
-  (wer hat fulfilled? Braucht BIGBUY_API_KEY oder User-Bestätigung) — sonst wartet ein Kunde auf nichts!
-- **#1005 (03.07.): ⚽ Schweiz Fan-Trikot 2026 selbst gestalten** (SKU `WM-TRIKOT-RO-XL`), CHF 34.90+7, PAID/
+**Zwei bezahlte Bestellungen (Klaviyo zeigt fälschlich 0):**
+- **#1004 (25.06.) = USER-TESTKAUF (per Order-Events verifiziert):** LED-Laterne «Boho» (BigBuy `bb-S3414715`),
+  CHF 24.90+7, TWINT, vom User selbst bestellt/fulfilled/getrackt (Tracking 8420327578013, 04.07. aktualisiert).
+  ✅ Beweist: Checkout/TWINT/Payout funktionieren end-to-end. KEIN externer Kunde, kein Handlungsbedarf.
+- **#1005 (03.07.) = 🎉 DER ERSTE ECHTE KUNDENVERKAUF: ⚽ Schweiz Fan-Trikot 2026 selbst gestalten**
+  (SKU `WM-TRIKOT-RO-XL`), CHF 34.90+7, PAID/
   **UNFULFILLED in Shopify**. Printful-Auftrag `165452870` existiert (manuell angelegt, `external_id=None` → KEIN
   App-Link!): Status pending, bestätigt, kein Fehler, **noch nicht gedruckt** (printed=0, kein Tracking; AOP=Cut&Sew
   2–5 Werktage; User-Packzettel war nur das vorbereitete Dokument). **Kosten 44.85 USD** (31.50 Produkt + 9.99 Versand).
