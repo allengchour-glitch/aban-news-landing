@@ -2462,3 +2462,8 @@ Beim Importieren NEUER Produkte immer auf Google-Merchant-Konformität achten (a
 - **Machbares umgesetzt:** Collection **`modellautos`** „🏎️ Modellautos & Sammlerfahrzeuge" (ID 689725604225, Smart: tag `modellauto` OR title Spielzeugauto/Modellauto) — 6 echte Autos schon drin (Hot Wheels Fast & Furious, Playmobil Ferrari SF90, Bandai Marvel, Simba, Clementoni, RC-Fernsteuerung). 8 Kanäle. Menü: unter „Trends & Gadgets".
 - **BigBuy-Config `modellautos`** ergänzt (anchor: spielzeugauto/modellauto/bburago/maisto/majorette/hot wheels/welly/norev; ban: autositz/ride-on/go-kart/KFZ-Zubehör). Läuft via `CATS=modellautos,...` — füllt die Collection mit Marken-Modellautos.
 - **Lehre:** Nischen erst gegen CJ/BigBuy-Verfügbarkeit prüfen (ehrlich), bevor man aufbaut. Maker-Spezialprodukte (Dioramen) ≠ Dropship.
+
+**📌 2026-07-05 (📷 RC-AUTOS-NISCHE — User zeigte FPV-Kamera-RC-Car-Reel „Drive Capture"):**
+- CJ-Namenssuche für RC = KAPUTT (liefert Sport-BHs/Auto-Politur). **BigBuy dagegen: 39 RC-Kandidaten** via Anchor-Config gefunden.
+- **Config `rc_kamera`** (bigbuy_import): anchor ferngesteuert/funkgesteuert/rc-auto/stunt car/fpv/remote control; ban Rückfahrkamera/Dashcam/Autositz. **Collection `rc-ferngesteuert`** „📷 RC-Autos & Ferngesteuert" (689726030209, smart tag rc-auto), 8 Kanäle, Menü unter Trends & Gadgets.
+- FPV-Live-Kamera-Feature (Handy-Stream) nicht garantiert unter den 39 — meist normale ferngesteuerte Autos; trotzdem passende Gadget/Geschenk-Nische.
