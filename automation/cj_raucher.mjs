@@ -10,8 +10,11 @@ const CJT=(process.env.CJ_TOKEN||'').trim(), GK=process.env.GEMINI_API_KEY;
 const LIVE=process.env.LIVE==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_raucher_done.txt';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const TERMS=['herb grinder','tobacco grinder','rolling tray','smoking pipe','tobacco pipe','cigarette case','ashtray metal','rolling machine tobacco'];
-const BAN=/wholesale|\bsample\b|replacement|kinder|for kids|baby|cbd|thc|weed leaf|vape juice|e-liquid|nicotine/i;
+const TERMS=['herb grinder','weed grinder','rolling tray','tobacco rolling machine','smoking pipe','tobacco pipe','glass pipe','metal cigarette case','cigarette ashtray','hookah shisha'];
+// BAN: alles was KEIN Raucher-Zeug ist, aber „grinder/mill/pipe/tray" im Namen trägt (Küche/Haustier/Werkzeug/Sanitär).
+const BAN=/wholesale|\bsample\b|replacement|kinder|for kids|baby|cbd|thc|weed leaf|vape|e-liquid|nicotine|nail|paw|claw|\bpet\b|\bdog\b|\bcat\b|foot|callus|meat|coffee|\bsalt\b|pepper|spice|garlic|angle grinder|\bwood\b|granite|drill|chuck|blender|mincer|kitchen|\bmill\b|grain|flour|bench grinder|sander|polish|whetstone|sharpen|tool set|cutting disc|pvc|plumb|drain|garden|hose|meat|coffee|nut/i;
+// Positiv-Filter: Name MUSS eine raucher-spezifische Phrase enthalten (nicht bloss „grinder"/„pipe").
+const SMOKE=/herb grinder|weed grinder|tobacco grinder|rolling tray|rolling paper|rolling machine|smoking pipe|tobacco pipe|glass pipe|hand pipe|water pipe|bubbler|hookah|shisha|ashtray|cigarette case|cigarette holder|cigar case|snuff/i;
 const chf=u=>{u=parseFloat((''+u).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;return Math.max(4.9,Math.round(u*m)+0.9).toFixed(2);};
 async function cj(p){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+p,{headers:{'CJ-Access-Token':CJT}});return r.json();}
 async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return(await r.json()).access_token;}
@@ -38,7 +41,7 @@ for(const term of TERMS){
     for(const p of list){
       if(total>=CAP)break;
       const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||BAN.test(nm))continue;
-      if(!/grinder|pipe|rolling|tray|ashtray|tobacco|cigarette|smoking/i.test(nm))continue; // muss thematisch passen
+      if(!SMOKE.test(nm))continue; // muss raucher-spezifisch passen (strenge Positiv-Phrase)
       const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<1||pr>60)continue;
       const dj=await cj(`/product/query?pid=${p.pid}`); await sleep(700);
       const d=dj.data||{}; const imgs=((d.productImageSet)||[]).filter(u=>/^https/.test(u)).slice(0,6);
