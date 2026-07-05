@@ -1816,3 +1816,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Ledger IMMER vorher von origin (main + Session-2-Branch) vereinigen → keine Dubletten. Ledger-Drift regelmässig committen.
 - ⚠️ Bekannte BigBuy-Eigenheit: nahezu identische Titel als separate Produkte (RC-Motorräder 2×) → Session-2-Tool
   `merge_variants.mjs` konsolidiert nachträglich (29 Gruppen bereits gemerged), bei Gelegenheit erneut fahren.
+
+## 2026-07-05 — 🗂️ Sortier-Sweep: 218 Collections auf BEST_SELLING (0 Fehler)
+- **Befund:** 205 Smart- + 17 Manual-Collections standen auf **PRICE_DESC („teuerste zuerst" = Conversion-Gift)** —
+  Session-2-Agenten hatten nur die 20 Hauptkategorien gefixt, der Long-Tail nicht.
+- **Fix:** alle PRICE_ASC/PRICE_DESC-Collections mit >0 Produkten → `sortOrder: BEST_SELLING` (218 Stück, Batch-
+  Mutationen à 20). **Bewusst unangetastet:** 7 kuratierte MANUAL (bestseller/highlights — „nicht zurücksortieren!"-
+  Regel) + 4 CREATED_DESC (Neuheiten = neueste zuerst ist dort richtig).
+- **Endstand: 238 BEST_SELLING · 7 MANUAL · 4 CREATED_DESC.** Verifiziert per Live-Query.
+- **QA neueste 40 Engine-Importe: 0 FAILED-Bilder, 0 ohne Bild, 0 unpubliziert** — beide Engines liefern sauber.
