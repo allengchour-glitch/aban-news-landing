@@ -8,6 +8,8 @@
 import { readFileSync, writeFileSync, existsSync, appendFileSync, mkdirSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 const DRY=process.env.DRY_RUN==='1';
+// upload_to_shopify_cdn.mjs braucht SHOPIFY_SHOP explizit (luxe-secrets setzt es nicht) -> Default fuer den Child-Prozess.
+if(!process.env.SHOPIFY_SHOP) process.env.SHOPIFY_SHOP='au3j0y-hq.myshopify.com';
 mkdirSync('reports',{recursive:true});
 const out=[]; const W=m=>{ out.push(String(m)); console.log(m); try{ writeFileSync('reports/queue-winner-reels.txt', out.join('\n')+'\n'); }catch{} };
 let CAPS={}; try{ CAPS=JSON.parse(readFileSync('automation/winner_reel_captions.json','utf8')); }catch(e){ W('Keine winner_reel_captions.json → No-op.'); process.exit(0); }
