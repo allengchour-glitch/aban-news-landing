@@ -144,6 +144,24 @@ async function groq(prompt){
     body:JSON.stringify({model:'llama-3.3-70b-versatile',temperature:0.5,max_tokens:1200,
      response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
    if(r.status===429){await sleep(20000);continue;}
+   const j=await r.json(); if(j.error)break;
+   const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;
+  }catch{}
+ }
+ return await deepseek(prompt);
+}
+
+// 3. Stufe: DeepSeek (OpenAI-kompatibel), falls auch Groq klemmt.
+const DS_KEY=(process.env.DEEPSEEK_API_KEY||'').trim();
+async function deepseek(prompt){
+ if(!DS_KEY)return null;
+ for(let i=0;i<2;i++){
+  try{
+   const r=await fetch('https://api.deepseek.com/chat/completions',{method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${DS_KEY}`},
+    body:JSON.stringify({model:'deepseek-chat',temperature:0.5,max_tokens:1200,
+     response_format:{type:'json_object'},messages:[{role:'user',content:prompt}]})});
+   if(r.status===429){await sleep(10000);continue;}
    const j=await r.json(); if(j.error)return null;
    const o=JSON.parse(j.choices?.[0]?.message?.content||'');if(o.title&&o.html)return o;
   }catch{}
