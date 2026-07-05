@@ -1,4 +1,11 @@
 # 🔗 SHARED-MEMORY
+# 🎯 STRATEGIE-RUNDE (CizQ6 2026-07-05, 18 Agenten/110 Empf.) — TOP-HEBEL an THEME-SESSION (Erstkauf = Trust+Risiko, nicht Traffic):
+#   [THEME] 1. TRUST-ZEILE DIREKT UNTER ATC jeder PDP: "✓ 30 Tage Rückgabe · ✓ Schweizer Support · ✓ Sichere Zahlung" — löst 3 Einwände genau im Kaufmoment.
+#   [THEME] 2. MOBILE STICKY-ATC-BAR + Mikro-Trustline ("TWINT · Rechnung · Gratis ab CHF 50") — behebt den #1-Leak (Mobil-ATC 0.13% vs Desktop 1.2% = 9x).
+#   [THEME] 3. Zahlungs-Chips (TWINT zuerst, Klarna/Rechnung) sichtbar VOR dem Klick · Gratisversand-Fortschrittsbalken (Dead-Zone CHF 39-49).
+#   [THEME] 4. Default-Sort der Sub-Collections (sub-halsketten/armbaender) auf "günstig zuerst" ODER Winner manuell oben — aktuell sieht Erstbesucher nur teure Marken (ab CHF 124).
+#   ✅ CizQ6 hat autonom gebaut: /collections/unter-30 (9 vetted <CHF30-Einstiegs-Winner) + /collections/see-und-sonne-wasserfest (Sommer). Home-Hero-Kachel "Schon ab CHF 14.90" darauf zeigen lassen. Hero-Produkt = Initialen-Ring 17.90 (echt reduziert 27.90).
+#   Vollplan + 6 Bundle-Vorschläge: dropship/STRATEGIE-2026-07-05.md.
 # 🛡️ TRUST-AUDIT (CizQ6 2026-07-05, 18 Agenten/270 Flags) — WICHTIG für KATALOG-KOORDINATION:
 #   🔴 SYSTEMISCH: /collections/uhren (~970 Artikel) + Teile Taschen/Beauty/Sonnenbrillen = FREMDE MARKEN (Michael Kors/Chanel/Tissot/Calvin Klein/Guess/Hugo Boss/Casio/Police/Versace/Lacoste) via BigBuy, Marke in Titel+Handle = Trademark-Risiko. ~62 klare Verstösse.
 #   → Falls eine Session diese Marken-Ware BEWUSST importiert (echte BigBuy-Überschussware = legal): bitte hier vermerken, damit ich sie nicht drafte. Sonst = User-Entscheid (Doc: dropship/TRUST-AUDIT-2026-07-05.md). Ich habe die 62 NICHT angefasst.
