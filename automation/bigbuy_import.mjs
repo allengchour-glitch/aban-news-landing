@@ -53,6 +53,14 @@ const ADULT_BAN = ['prostat', 'massager love', 'love panty', 'liebe panty', 'lus
 
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
+  aiglasses: { coll: { handle: 'smart-glasses', title: '🕶️ Smart & Audio-Brillen', tag: 'smartbrille' },
+    extraTags: ['gadget', 'trend', 'tech', 'geschenk'], type: 'Smart-Brille', maxCost: MAX_COST_EUR,
+    anchor: ['smart glasses', 'smartbrille', 'smart brille', 'audio-brille', 'audiobrille', 'bluetooth-brille',
+             'bluetooth brille', 'kamera-brille', 'video-brille', 'ar-brille', 'ki-brille', 'gafas inteligentes',
+             'gafas bluetooth', 'smart glass'],
+    ban: ['lesebrille', 'brillenetui', 'brillenputz', 'brillenband', 'schutzbrille', 'taucherbrille', 'skibrille',
+          'schwimmbrille', 'lupenbrille', 'nachtsichtbrille', 'sonnenbrille ohne', '3d-brille'],
+    bullets: ['Musik & Anrufe direkt aus der Brille', 'Freihändig unterwegs', 'Modernes Gadget-Design', 'Tolles Tech-Geschenk'] },
   rc_kamera: { coll: { handle: 'rc-ferngesteuert', title: '📷 RC-Autos & Ferngesteuert', tag: 'rc-auto' },
     extraTags: ['gadget', 'trend', 'geschenk', 'spielzeug'], type: 'RC & Gadget', maxCost: MAX_COST_EUR,
     anchor: ['ferngesteuert', 'funkgesteuert', 'rc-auto', 'rc auto', 'rc-fahrzeug', 'ferngesteuertes auto',
