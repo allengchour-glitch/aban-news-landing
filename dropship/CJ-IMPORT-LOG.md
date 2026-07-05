@@ -1802,3 +1802,17 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (`cj_gaps_import.mjs`-Ansatz mit harten Ankern) oder (b) für konkrete Produkt-IDs aus Recherche-Reports.
 - **✅ Text-Abdeckung verifiziert (Stichproben neu+alt):** Alle geprüften cj-real haben DE-Body (350–1250 Z.)
   + SEO-Title/Desc. Import-Session schreibt Text direkt mit. Kein Text-Rückstand im CJ-Katalog.
+
+## 2026-07-05 — 🏭 BEIDE MASSEN-ENGINES IN DIESER SESSION GESTARTET (100k-Auftrag des Users)
+- **User-Auftrag: „importiere alles mögliche / cj 100000 sachen"** → beide Session-2-Engines übernommen & gestartet:
+  1. **BigBuy:** `/tmp/bb_s2.mjs` (= `automation/bigbuy_import.mjs` vom Branch `claude/memory-2026-06-13`, 105 Kategorien;
+     hier 103 — `raucherzubehoer`+`grow` per §5 ausgelassen). LIVE=1, PER=4, Ledger `dropship/bigbuy_done.txt` (12'194 übernommen).
+  2. **CJ:** `automation/cj_perpetual.mjs` + `cj_category_fill.mjs` (von Session-2-Branch committet). Grindet CJ-Tagespunkte
+     (~50k/Tag, Code 16900500 = warten auf Reset) Richtung 100k. Ledger `dropship/cj_niche_done.txt` (5'802 übernommen).
+- **NEUSTART-REZEPT (nach Container-Reset / neue Session):**
+  1. CJ-Token nach `/tmp/cj_token.json` (User pastet Token; Format `{"accessToken":"…","exp":<ms>}`) + Gemini-Key nach `/tmp/gemini_key`.
+  2. `SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_CLIENT_ID=… SHOPIFY_CLIENT_SECRET=… node automation/cj_perpetual.mjs &`
+  3. BigBuy: Key vom User + `CATS=<liste> LIVE=1 node automation/bigbuy_import.mjs &` (Skript ggf. frisch vom Session-2-Branch).
+  Ledger IMMER vorher von origin (main + Session-2-Branch) vereinigen → keine Dubletten. Ledger-Drift regelmässig committen.
+- ⚠️ Bekannte BigBuy-Eigenheit: nahezu identische Titel als separate Produkte (RC-Motorräder 2×) → Session-2-Tool
+  `merge_variants.mjs` konsolidiert nachträglich (29 Gruppen bereits gemerged), bei Gelegenheit erneut fahren.
