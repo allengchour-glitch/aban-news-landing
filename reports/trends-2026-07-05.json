@@ -1,17 +1,17 @@
 {
-  "ts": "2026-07-05T09:38:06.931Z",
+  "ts": "2026-07-05T16:38:06.955Z",
   "provider": "groq",
   "google_trends_ch": [
-    "nachtzug",
-    "jassbach",
-    "heu",
-    "fuoco",
-    "climatisation",
-    "tennis",
-    "zlatan ibrahimovic",
-    "ironman",
-    "20 minutes.ch",
-    "resultat coupe du monde"
+    "fc thun",
+    "isaac del toro",
+    "safiullin",
+    "charles leclerc",
+    "gold",
+    "aeroporto",
+    "kolumbianische fußballnationalmannschaft",
+    "rangieren",
+    "ätna",
+    "salmonella"
   ],
   "own_tiktok_report": "tiktok-upload-result.png",
   "music_moods_available": {
@@ -28,62 +28,64 @@
   "ideen": {
     "content_ideen": [
       {
-        "idee": "Sommer-Outfit-Tipps fürs Nachtleben",
-        "kategorie": "Damenmode",
-        "hook_mundart": "Chumm mit, mir zeig dir, wie mer stylish in d Nacht startet!",
-        "musik_mood": "upbeat-pop",
-        "hashtags": [
-          "#schweizmode",
-          "#zürich",
-          "#ootdschweiz",
-          "#nachtleben"
-        ]
-      },
-      {
-        "idee": "Schmuck-Trends für die nächste Saison",
+        "idee": "Glamourösi Abendlook mit LuxeStyle-Schmuck",
         "kategorie": "Schmuck",
-        "hook_mundart": "Was meisch, dass mer trendig bliibt, het mer für di!",
+        "hook_mundart": "Mach di schööns für dä Abig!",
         "musik_mood": "elegant",
         "hashtags": [
           "#schweiz",
-          "#bern",
-          "#schmucktrends"
+          "#schweizmode",
+          "#ootdschweiz",
+          "#züri"
         ]
       },
       {
-        "idee": "Chillige Sommerfrisuren mit Heu-Accessoires",
-        "kategorie": "Beauty",
-        "hook_mundart": "Lass los, mir zeig dir, wie mer diä Frisur zum Blühen bringt!",
-        "musik_mood": "lofi",
+        "idee": "Sommer-Outdoor-Looks mit LuxeStyle-Taschen",
+        "kategorie": "Taschen",
+        "hook_mundart": "Gönd mier en Summer-Vibe!",
+        "musik_mood": "upbeat-pop",
         "hashtags": [
           "#schweizmode",
-          "#basel",
-          "#sommerfrisuren"
+          "#ootdschweiz",
+          "#bern",
+          "#summermood"
         ]
       },
       {
-        "idee": "Stilvolle Bademode für die Schweizer Seen",
-        "kategorie": "Bademode",
-        "hook_mundart": "Chumm mit, mir zeig dir, wie mer cool am See bliibt!",
-        "musik_mood": "house",
+        "idee": "Gesundes Kochen mit LuxeStyle-Küche",
+        "kategorie": "Küche",
+        "hook_mundart": "Lässig chuchiere mit LuxeStyle!",
+        "musik_mood": "lofi",
         "hashtags": [
           "#schweiz",
-          "#genf",
-          "#bademode"
+          "#schweizmode",
+          "#ootdschweiz",
+          "#basel"
         ]
       },
       {
-        "idee": "Fuoco- Inspiration für deinen nächsten Outdoor-Trip",
-        "kategorie": "Outdoor/Camping",
-        "hook_mundart": "Was meisch, dass mer die nächsti Tour plant, het mer für di!",
+        "idee": "Strand-Beauty-Tipps mit LuxeStyle-Bademode",
+        "kategorie": "Bademode",
+        "hook_mundart": "Strandfääri mit Stil!",
         "musik_mood": "cinematic",
         "hashtags": [
           "#schweizmode",
-          "#luzern",
-          "#outdoortrip"
+          "#ootdschweiz",
+          "#genf"
+        ]
+      },
+      {
+        "idee": "Schönes Zuhause mit LuxeStyle-Accessoires",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Mach di zu Hause schööns!",
+        "musik_mood": "house",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#luzern"
         ]
       }
     ],
-    "trend_musik_note": "Die eleganten und upbeat Moods sind derzeit besonders beliebt in der Schweiz"
+    "trend_musik_note": "Die Musikmoods sind so ausgewählt, dass sie zu den jeweiligen Ideen passen und die Stimmung der Marke LuxeStyle widerspiegeln."
   }
 }
