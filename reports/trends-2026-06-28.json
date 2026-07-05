@@ -1,0 +1,63 @@
+{
+  "ts": "2026-06-28T16:39:16.119Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "france",
+    "stromausfall zürich",
+    "novak djokovic",
+    "lucas trejo",
+    "eau",
+    "weiningen",
+    "formula 1"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Summer-Vibes: Sonnige Tage mit stylishen Sonnenbrillen und coolem Schmuck",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Mach di ready für de Summer mit uns!",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#schweizmode",
+          "#zuerich",
+          "#schmuckliebe"
+        ]
+      },
+      {
+        "idee": "Stilvolle Abendgarderobe für den nächsten Anlass",
+        "kategorie": "Damenmode",
+        "hook_mundart": "De next Event? Mir hän di perfekt Outfit!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#ootdschweiz",
+          "#bern",
+          "#fashioninspo"
+        ]
+      },
+      {
+        "idee": "Schöne Accessoires für den täglichen Gebrauch",
+        "kategorie": "Taschen",
+        "hook_mundart": "Di täglichi Begleiter: Unsere stylishen Taschen!",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweiz",
+          "#basel",
+          "#accessorize"
+        ]
+      }
+    ],
+    "trend_musik_note": "Die Musikmoods sind auf die jeweiligen Kategorien und Ideen abgestimmt, um eine stilvolle Atmosphäre zu schaffen."
+  }
+}

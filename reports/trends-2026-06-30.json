@@ -1,0 +1,88 @@
+{
+  "ts": "2026-06-30T16:31:11.957Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "côte d&apos;ivoire vs norway",
+    "elfenbeinküste norwegen prognose",
+    "alexander zverev",
+    "letzigrund",
+    "philippe revaz",
+    "urs meier",
+    "fahrverbot",
+    "whatsapp benutzernamen reservieren",
+    "volkswagen ag",
+    "spoofing"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Schmuck-Trends für die nächste Saison",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Chumm, lueg dir das a, das isch di neuscht Schmuck-Kollektion!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweizmode",
+          "#schmuckliebe",
+          "#zuerich"
+        ]
+      },
+      {
+        "idee": "Sommer-Outfit-Ideen mit LuxeStyle",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Mir chönd Summerschwiizeri! Lueg dir di neuschte Outfits a",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#ootdschweiz",
+          "#schweiz",
+          "#bern"
+        ]
+      },
+      {
+        "idee": "Beauty-Tipps für den Alltag",
+        "kategorie": "Beauty",
+        "hook_mundart": "Schöni Tag, schöni Haut! Lueg dir di neuschte Beauty-Tipps a",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweizbeauty",
+          "#schweizmode",
+          "#basel"
+        ]
+      },
+      {
+        "idee": "Schuhe-Trends für die Stadt",
+        "kategorie": "Schuhe",
+        "hook_mundart": "Chumm, goh mit mir schuhe shoppe!",
+        "musik_mood": "house",
+        "hashtags": [
+          "#schweizschuhe",
+          "#zuerich",
+          "#schweizmode"
+        ]
+      },
+      {
+        "idee": "Taschen für den täglichen Gebrauch",
+        "kategorie": "Taschen",
+        "hook_mundart": "Di rächt Tasche für äveryday! Lueg dir di neuschte Kollektion a",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweiztaschen",
+          "#schweizmode",
+          "#geneva"
+        ]
+      }
+    ],
+    "trend_musik_note": "Die eleganten und upbeat-pop Moods sind aktuell sehr beliebt bei der jungen Generation in der Schweiz."
+  }
+}

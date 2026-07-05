@@ -1,0 +1,66 @@
+{
+  "ts": "2026-06-26T16:39:22.063Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "kadir inanır",
+    "armon orlik",
+    "2026",
+    "rapperswil-jona – fcb",
+    "france norvege",
+    "buckingham palace",
+    "amende",
+    "hund",
+    "paolo duca",
+    "festival niederlande abgesagt"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Sommer-Outfit-Tipps fürs Festival-Niveau",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Chumm, wie chasch dich für d'Festivals z'kleide?",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdschweiz",
+          "#zuerich"
+        ]
+      },
+      {
+        "idee": "Schmuck-Trends für die nächsti Saison",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Woti, was für ne Schmuck-Trends chömed jetzt?",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweiz",
+          "#schmuckliebe",
+          "#bern"
+        ]
+      },
+      {
+        "idee": "Küchentipps für die nächsti Outdoor-Grill-Party",
+        "kategorie": "Küche",
+        "hook_mundart": "Lueg, was mir für ne leckere Grillage hän",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweizmode",
+          "#kochen",
+          "#basel"
+        ]
+      }
+    ],
+    "trend_musik_note": "Die Schweizer liebed ihre entspannte, aber elegante Atmosphäre"
+  }
+}

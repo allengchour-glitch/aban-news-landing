@@ -1,0 +1,88 @@
+{
+  "ts": "2026-06-29T16:31:11.949Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "brésil – japon",
+    "schlangen",
+    "brasilien – japan",
+    "brazil vs japan",
+    "groupe e",
+    "roland kaiser",
+    "überholvorgang",
+    "blitz",
+    "tiertransport",
+    "extreme thunderstorm warning"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Schlangenmuster-Schmuck-Trend",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Schlangen sind trendy, ou!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#schmuckliebe"
+        ]
+      },
+      {
+        "idee": "Sommer-Strand-Outfit mit Hüten",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Mer gaht an Strand, mit Stil!",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#ootdschweiz",
+          "#schweizmode",
+          "#zürich"
+        ]
+      },
+      {
+        "idee": "Glamouröse Abendlooks mit Schuhen",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Abig mit Stil, ou, mit de schönen Schueh!",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#bern"
+        ]
+      },
+      {
+        "idee": "Sicherheits-Tipps fürs Camping mit stylishen Accessoires",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Sicher goht vor, ou, im Freie!",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdschweiz",
+          "#basel"
+        ]
+      },
+      {
+        "idee": "Schöne Küche mit eleganten Accessoires",
+        "kategorie": "Küche",
+        "hook_mundart": "D'Küche, s'Herz vom Huus, ou!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#genf"
+        ]
+      }
+    ],
+    "trend_musik_note": "D'Musig isch e wichtige Rolle bi unsere Content-Ideen, si git de richtige Stimmig ab."
+  }
+}

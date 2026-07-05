@@ -1,0 +1,93 @@
+{
+  "ts": "2026-07-02T16:38:56.547Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "transfrau",
+    "todesursache",
+    "smi index",
+    "eidgenössisches schwing- und älplerfest",
+    "zdf",
+    "alexander zverev",
+    "notizia",
+    "marisa burger",
+    "gare ferroviaire",
+    "mein schiff 6"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Schmuck-Trends fürs Eidgenössische Schwing- und Älplerfest",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Chumm mit uns go schmücke, vor em Fest!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#ootdschweiz",
+          "#züri"
+        ]
+      },
+      {
+        "idee": "Luxe-Backzüge für die nächschti Outdoor-Tour",
+        "kategorie": "Küche",
+        "hook_mundart": "Mit LuxeStyle go Outdoor, mit gueti Züge!",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#ootdschweiz",
+          "#bern"
+        ]
+      },
+      {
+        "idee": "Beauty-Tips für die nächschti Gare Ferroviaire-Reis",
+        "kategorie": "Beauty",
+        "hook_mundart": "Pfleg di, bevor d'Schwiiz erkundesch!",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdschweiz",
+          "#genf",
+          "#schweiz"
+        ]
+      },
+      {
+        "idee": "Maritime Accessoires für Mein Schiff 6",
+        "kategorie": "Damen-/Herrenmode",
+        "hook_mundart": "Chumm mit uns go maritim, uf Mein Schiff 6!",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdschweiz",
+          "#basel",
+          "#schweiz"
+        ]
+      },
+      {
+        "idee": "Taschen-Trends für die Stadt",
+        "kategorie": "Taschen",
+        "hook_mundart": "D'richti Tasche für d'Stadt, mit LuxeStyle!",
+        "musik_mood": "house",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdschweiz",
+          "#luzern",
+          "#schweiz"
+        ]
+      }
+    ],
+    "trend_musik_note": "Elegant und Cinematic sind momentan sehr gefragt"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "ts": "2026-07-04T21:30:13.304Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "paraguay",
+    "didier deschamps",
+    "incendie monthey",
+    "tippspiel",
+    "pilgrim",
+    "frankreich paraguay",
+    "hakimi",
+    "canada marocco",
+    "brahim diaz",
+    "matteo berrettini"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Sommer-Outfit-Tipps mit Schmuck-Akzenten",
+        "kategorie": "Damenmode",
+        "hook_mundart": "Chumm, lass di Summer-Style afo!",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdbern",
+          "#summerstyle"
+        ]
+      },
+      {
+        "idee": "Schöne Accessoires fürs Zelt-Adventure",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Zelt-Abenteuer chunnt – Accessoires nötig!",
+        "musik_mood": "lofi",
+        "hashtags": [
+          "#schweiz",
+          "#zuerichmode",
+          "#outdoorlove"
+        ]
+      },
+      {
+        "idee": "Strand-Beauty-Tipps mit Luxe-Produkten",
+        "kategorie": "Beauty",
+        "hook_mundart": "Sunne, Sand und Luxe-Beauty-Tipps!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweizmode",
+          "#ootdlausanne",
+          "#beautytipps"
+        ]
+      },
+      {
+        "idee": "Herbst-Taschen-Trends für die Stadt",
+        "kategorie": "Taschen",
+        "hook_mundart": "Herbst isch da – Taschen-Trends für di Stadt!",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweiz",
+          "#baselmode",
+          "#herbsttrends"
+        ]
+      },
+      {
+        "idee": "Hüte-Trends für die nächste Saison",
+        "kategorie": "Hüte",
+        "hook_mundart": "Hüte-Trends für di nächsti Saison – lass di inspiriere!",
+        "musik_mood": "house",
+        "hashtags": [
+          "#schweizmode",
+          "#genevamode",
+          "#hutetrends"
+        ]
+      }
+    ],
+    "trend_musik_note": "Die Musikmoods sind so gewählt, dass sie die verschiedenen Stimmungen und Atmosphären der Mode- und Schmuck-Kategorien widerspiegeln."
+  }
+}

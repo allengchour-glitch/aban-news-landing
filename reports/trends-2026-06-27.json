@@ -1,0 +1,69 @@
+{
+  "ts": "2026-06-27T16:39:19.758Z",
+  "provider": "groq",
+  "google_trends_ch": [
+    "la liberté",
+    "splügenpass",
+    "iranische fußballnationalmannschaft",
+    "bahnhof",
+    "luzern – stade-lausanne",
+    "st. gallen – scr altach",
+    "berne",
+    "krieg",
+    "ertrinken",
+    "kantonspolizei bern"
+  ],
+  "own_tiktok_report": "tiktok-upload-result.png",
+  "music_moods_available": {
+    "elegant,cinematic": 1,
+    "cinematic,elegant": 1,
+    "elegant,lofi": 2,
+    "lofi,elegant": 1,
+    "upbeat-pop,house": 2,
+    "house,upbeat-pop": 1,
+    "cinematic,house": 1,
+    "upbeat-pop,lofi": 1,
+    "upbeat-pop,cinematic": 1
+  },
+  "ideen": {
+    "content_ideen": [
+      {
+        "idee": "Ein Tag am Splügenpass: Wie man die Natur genießt und dabei stilvoll bleibt",
+        "kategorie": "Outdoor/Camping",
+        "hook_mundart": "Chum übere Bärge, aber mit Stil!",
+        "musik_mood": "cinematic",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#ootdschweiz",
+          "#luzern"
+        ]
+      },
+      {
+        "idee": "Schmuck-Trends für die nächste Saison: Elegant und stilvoll wie die Stadt Bern",
+        "kategorie": "Schmuck",
+        "hook_mundart": "Mache di schön, wie d' Stadt Bern!",
+        "musik_mood": "elegant",
+        "hashtags": [
+          "#schweizmode",
+          "#schweiz",
+          "#ootdschweiz",
+          "#berne"
+        ]
+      },
+      {
+        "idee": "Kochen mit Stil: Die perfekte Kombination aus Mode und Küche in St. Gallen",
+        "kategorie": "Küche",
+        "hook_mundart": "Chochere mit Stil, wie i d' Stadt St. Gallen!",
+        "musik_mood": "upbeat-pop",
+        "hashtags": [
+          "#schweiz",
+          "#schweizmode",
+          "#ootdschweiz",
+          "#stgallen"
+        ]
+      }
+    ],
+    "trend_musik_note": "Die cinematic und eleganten Musikmoods passen gut zu den aktuellen Trends und bieten eine elegante Atmosphäre für die Marke LuxeStyle."
+  }
+}
