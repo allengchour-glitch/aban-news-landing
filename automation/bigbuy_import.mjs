@@ -53,6 +53,14 @@ const ADULT_BAN = ['prostat', 'massager love', 'love panty', 'liebe panty', 'lus
 
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
+  rc_kamera: { coll: { handle: 'rc-ferngesteuert', title: '📷 RC-Autos & Ferngesteuert', tag: 'rc-auto' },
+    extraTags: ['gadget', 'trend', 'geschenk', 'spielzeug'], type: 'RC & Gadget', maxCost: MAX_COST_EUR,
+    anchor: ['ferngesteuert', 'funkgesteuert', 'rc-auto', 'rc auto', 'rc-fahrzeug', 'ferngesteuertes auto',
+             'rc-panzer', 'rc-truck', 'rc-buggy', 'stunt car', 'drift-auto', 'kamera-auto', 'fpv',
+             'remote control', 'rc car', 'radio control', 'coche teledirigido', 'radiocontrol'],
+    ban: ['rückfahrkamera', 'dashcam', 'einparkhilfe', 'kindersitz', 'autositz', 'ersatzteil', 'reifen',
+          'batterie', 'ladekabel', 'werkzeug', 'halterung', 'rasenmäher', 'garagentor', 'steckdose'],
+    bullets: ['Ferngesteuerter Fahrspass', 'Cooles Geschenk für Gross & Klein', 'Robust & wendig', 'Sofort losfahren'] },
   modellautos: { coll: { handle: 'modellautos', title: '🏎️ Modellautos & Sammlerfahrzeuge', tag: 'modellauto' },
     extraTags: ['spielzeug', 'geschenk', 'sammler', 'kinder'], type: 'Modellauto', maxCost: MAX_COST_EUR,
     anchor: ['spielzeugauto', 'modellauto', 'modellfahrzeug', 'die-cast', 'diecast', 'sammlerauto',
