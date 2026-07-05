@@ -16,6 +16,8 @@
 - **neon-racer:** `burst()`-Stub → echter Screenshake; Kollisions-Screenshake (off-track .3 / boost .25 / crash .7 / gameOver 1.4); Kamera-Jitter+Decay; Ship-Glow (sGlow) flasht grün (Boost)/rot (Treffer), lerpt zurück zu Cyan.
 - **neon-jump:** Landing-Squash bei hartem Fall (vy<-11 → P.sq); Kamera-Shake (respawn .55 / win .4 / lose .6) + Decay; keyL/keyR bei respawn geleert.
 - **neon-survivor:** Hitstop-System (dt*0.12) bei Boss-Kill (.07) + Evolution (.1); Gegner-Speed gedeckelt auf 8.4 (fast/chaser skalierten über Spieler-Tempo 9 → Kiten brach spät).
+- **wortbruecke:** Shake-Animation bei falschem Tipp (Input); Solve-Pop-Animation auf `.solved .big` (self-firing).
+- **wort-des-tages:** Win-Dance — gestaffelter Bounce (translateY) auf der Gewinnzeile, im 900ms-Fenster gestartet (kollidiert nicht mit `.pop`-Scale).
 
 ## ⏳ P1 offen (nächste Loop-Runden)
 - **neon-survivor:** relatives Touch-Joystick (aktuell Absolut-Position), On-Screen-Pause-Button.
