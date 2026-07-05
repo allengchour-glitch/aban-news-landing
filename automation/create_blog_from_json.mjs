@@ -21,7 +21,11 @@ async function cc(){ const r=await fetch(`https://${SHOP}/admin/oauth/access_tok
 let tok=AT&&await works(AT)?AT:null; if(!tok&&CID&&CSEC){ const t=await cc(); if(t&&await works(t)) tok=t; }
 if(!tok){ W('❌ Auth'); process.exit(0); }
 let blogId=null,blogTitle=null;
-try{ const r=await gql(tok,`{ blogs(first:5){ edges{ node{ id title handle } } } }`); const b=(r?.data?.blogs?.edges||[]).map(e=>e.node); const rat=b.find(x=>/ratgeber|blog|news/i.test(x.title||x.handle)); blogId=(rat||b[0])?.id||null; blogTitle=(rat||b[0])?.title||null; }catch(e){}
+// FIX 2026-07-05: den ECHTEN Ratgeber-Blog (handle "ratgeber", wo der Content lebt+erreichbar ist) bevorzugen,
+// NICHT den leeren "News"-Blog. Reihenfolge: exakt handle=ratgeber > title/handle enthaelt ratgeber > erster.
+try{ const r=await gql(tok,`{ blogs(first:20){ edges{ node{ id title handle } } } }`); const b=(r?.data?.blogs?.edges||[]).map(e=>e.node);
+  const pick=b.find(x=>(x.handle||'').toLowerCase()==='ratgeber') || b.find(x=>/ratgeber/i.test((x.handle||'')+(x.title||''))) || b.find(x=>!/news/i.test((x.handle||'')+(x.title||''))) || b[0];
+  blogId=pick?.id||null; blogTitle=pick?.title||null; }catch(e){}
 if(!blogId && !DRY){ const r=await gql(tok,`mutation($blog:BlogCreateInput!){ blogCreate(blog:{title:"Ratgeber"}){ blog{ id title } userErrors{ message } } }`); blogId=r?.data?.blogCreate?.blog?.id||null; blogTitle='Ratgeber'; }
 W(`Blog: ${blogTitle||'(neu)'} (${blogId||'DRY'})`);
 const Q=`query($q:String!){ articles(first:5, query:$q){ edges{ node{ id handle } } } }`;
@@ -34,7 +38,7 @@ for(const p of PS){
   if(DRY){ W(`[DRY] ${p.handle}: ${p.title}`); continue; }
   const ex=(await gql(tok,Q,{q:`handle:${p.handle}`}))?.data?.articles?.edges?.[0]?.node;
   let id=ex?.id;
-  if(ex){ const r=await gql(tok,UPD,{id:ex.id,a:{title:p.title,body:p.body_html,isPublished:true}}); const ue=r?.data?.articleUpdate?.userErrors||[]; if(ue.length){fails.push(`${p.handle}:${JSON.stringify(ue).slice(0,90)}`);continue;} updated++; W('~ '+p.handle); }
+  if(ex){ const r=await gql(tok,UPD,{id:ex.id,a:{blogId,title:p.title,body:p.body_html,isPublished:true}}); const ue=r?.data?.articleUpdate?.userErrors||[]; if(ue.length){fails.push(`${p.handle}:${JSON.stringify(ue).slice(0,90)}`);continue;} updated++; W('~ '+p.handle+' (-> '+(blogTitle||'ratgeber')+')'); }
   else { const r=await gql(tok,CRE,{a:{blogId,title:p.title,handle:p.handle,body:p.body_html,isPublished:true}}); const ue=r?.data?.articleCreate?.userErrors||[]; if(ue.length){fails.push(`${p.handle}:${JSON.stringify(ue).slice(0,120)}`);continue;} id=r?.data?.articleCreate?.article?.id; created++; W('+ '+p.handle); }
   if(id){ const tt=(p.title_tag||'').slice(0,70), dt=(p.meta_description||'').slice(0,320);
     await gql(tok,MF,{mf:[{ownerId:id,namespace:'global',key:'title_tag',type:'single_line_text_field',value:tt},{ownerId:id,namespace:'global',key:'description_tag',type:'single_line_text_field',value:dt}]}); }
