@@ -1780,3 +1780,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   beach mat · self watering planter pot · wine aerator decanter · spice rack organizer · bike light set usb · travel
   organizer bag set · passport holder cover · beach blanket waterproof · phone holder stand desk · garlic press
   stainless · lint roller clothes · monitor stand riser · insulated lunch bag.
+
+## 2026-07-05 — ⚽ Fan-Zone Schweiz LIVE (Merchandising statt Import) + 2. CJ-Runde leer
+- **CJ-Runde WM-Fan/Schweiz-Flagge: 0 Keeper** (CJ-Namenssuche liefert für die Nische nur Fehltreffer:
+  Paint-Remover/Satin-Kleid/Weihnachtsgirlande). Keywords verbraucht: switzerland flag · swiss flag banner ·
+  face paint stick fans · fan scarf football · flag garland bunting · car flag window · football party
+  decoration · led foam stick cheer. **CJ hat die Fan-Nische nicht** → Nische läuft über POD.
+- **✅ Neue Smart-Collection „⚽ Fan-Zone Schweiz – WM 2026"** (`fan-zone-schweiz`, Collection 689741267329,
+  Regel TAG=`fan-zone`, Beschreibung+SEO+Trust-Zeile, **in alle 6 Kanäle publiziert, live HTTP 200**).
+  7 Produkte via tagsAdd: WM-Trikot (der 1. echte Verkauf!) + Hopp-Schwiiz-Shirt/Tasse/Sticker +
+  Swiss-Flag-Heart-Shirt/Tasse + Soccer-Ball-Sticker. Anlass: WM läuft (Final Mitte Juli) + 1.-August-Brücke.
+- **Optional offen:** Menü-Link auf die Fan-Zone (menuUpdate = ganze Struktur, wegen Parallel-Sessions
+  bewusst nicht angefasst) + Fan-Zone im Hero/Startseite featuren (Customizer, nur User).
