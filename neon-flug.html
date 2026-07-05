@@ -174,8 +174,11 @@ function burst(x,y,z,color){
   bursts.push({pts:pts,vel:vel,life:1});
 }
 
+// Sicheres localStorage (wirft nicht in Private-Mode / Sandbox-iframes → sonst weißer Bildschirm)
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 // State
-var running=false,score=0,best=+(localStorage.getItem("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
+var running=false,score=0,best=+(lsGet("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
 var shield=0,magnet=false,orbsCollected=0,nextUp=6,choosing=false,paused=false;
 // Meisterklasse-Mechaniken (spiegeln den Godot-Build): Flow/Combo, Dash, Biome.
 var combo=0,comboTimer=0,comboTime=180,nearWindow=1.6,orbValue=1;
@@ -209,8 +212,8 @@ var SKINS=[
   {name:"Smaragd",body:0x6aff9e,em:0x1a6f3f,wing:0xffd166,need:800},
   {name:"Gold",body:0xffd166,em:0x6f5a1a,wing:0xff7ad9,need:2000}
 ];
-var xp=+(localStorage.getItem("aban_neon_xp")||0);
-var selSkin=+(localStorage.getItem("aban_neon_skin")||0);
+var xp=+(lsGet("aban_neon_xp")||0);
+var selSkin=+(lsGet("aban_neon_skin")||0);
 function unlocked(i){return xp>=SKINS[i].need;}
 function applySkin(i){if(!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
 function renderSkins(){var el=document.getElementById("skins");if(!el)return;var next=null;for(var n=0;n<SKINS.length;n++){if(xp<SKINS[n].need){next=SKINS[n];break;}}
@@ -224,7 +227,7 @@ var T={
   de:{startTag:"aban news · 3D-Arcade",intro:'Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.',controls:"Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen",start:"Start ▶",daily:"🗓️ Tages-Challenge",startFoot:'Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a>',over:"Game Over",again:"Nochmal ▶",share:"Ergebnis teilen 📋",copied:"Kopiert 📋",overFoot:'5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a>',best:"Rekord",pauseTxt:"Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.",setTitle:"Einstellungen",sound:"Ton",lang:"Sprache",on:"an",off:"aus",skin:"Skin",xpTotal:"Gesamt-XP",nextSkin:"nächster Skin bei",allFree:"alle frei 🏆",locked:"🔒",newRec:"Neuer Rekord! 🏆",verdicts:["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"],upgrade:"⬆️ Upgrade wählen",endless:"Endlos",dailyTag:"Tages-Challenge",pts:"Punkte",playFree:"Gratis spielen",gauntlet:"TOR-WELLE!"},
   en:{startTag:"aban news · 3D arcade",intro:'Fly the glider through the neon canyon. Graze obstacles (near-miss = <b>Combo ×</b>), grab orbs, fly through <b>rings</b> for a PERFECT bonus, charge your <b>Dash</b>. The further you go, the faster it gets.',controls:"Move: ← → / A D / mouse / finger · Dash: SPACE / ↑ / tap",start:"Start ▶",daily:"🗓️ Daily Challenge",startFoot:'Runs in your browser, no download · <a href="/online-tools.html">more tools</a>',over:"Game Over",again:"Again ▶",share:"Share result 📋",copied:"Copied 📋",overFoot:'5 min of AI without hype, on weekdays — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">free newsletter →</a>',best:"Best",pauseTxt:"Press <b>ESC</b> / <b>P</b> or the button to resume.",setTitle:"Settings",sound:"Sound",lang:"Language",on:"on",off:"off",skin:"Skin",xpTotal:"Total XP",nextSkin:"next skin at",allFree:"all unlocked 🏆",locked:"🔒",newRec:"New record! 🏆",verdicts:["Practice makes perfect!","Solid!","Nicely flown!","Getting better!"],upgrade:"⬆️ Choose an upgrade",endless:"Endless",dailyTag:"Daily Challenge",pts:"pts",playFree:"Play free",gauntlet:"GAUNTLET!"}
 };
-var lang=localStorage.getItem("aban_neon_lang")||((navigator.language||"").indexOf("de")===0?"de":"en");
+var lang=lsGet("aban_neon_lang")||((navigator.language||"").indexOf("de")===0?"de":"en");
 if(lang!=="de"&&lang!=="en")lang="de";
 function tr(k){return (T[lang]&&T[lang][k]!=null)?T[lang][k]:T.de[k];}
 function setText(id,html){var e=document.getElementById(id);if(e)e.innerHTML=html;}
@@ -290,7 +293,7 @@ function reset(){
 function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");startMusic();}
 function gameOver(){
   running=false;shake=1.2;flash();stopMusic();
-  if(score>best){best=score;localStorage.setItem("aban_neon_best",best);}
+  if(score>best){best=score;lsSet("aban_neon_best",best);}
   xp+=score;try{localStorage.setItem("aban_neon_xp",xp);}catch(e){}renderSkins();
   document.getElementById("best").textContent=best;
   document.getElementById("finalScore").textContent=score;
@@ -395,11 +398,11 @@ function loop(t){
     ship.position.x=shipX;
     ship.rotation.z=(shipX-targetX)*0.12 - (targetX-shipX)*0.25;
     ship.position.y=Math.sin(tick*0.08)*0.25;
-    speed+=0.0006;
+    speed=Math.min(2.6,speed+0.0006);
     if(dashActive){dashTimer--;if(dashTimer<=0)dashActive=false;}else{dashCharge=Math.min(1,dashCharge+dashRecharge);}
     var cs=speed+(dashActive?0.9:0);
     if(combo>0){comboTimer--;if(comboTimer<=0)combo=0;}
-    phaseTimer--;if(phaseTimer<=0){phaseTimer=1320;biomeIndex++;var bb=applyBiome(biomeIndex);speed+=0.05;announce("» "+bb.name+" «",bb.accent);beep(180,.4,"sawtooth",.1);}
+    phaseTimer--;if(phaseTimer<=0){phaseTimer=1320;biomeIndex++;var bb=applyBiome(biomeIndex);speed=Math.min(2.6,speed+0.05);announce("» "+bb.name+" «",bb.accent);beep(180,.4,"sawtooth",.1);}
     // Tor-Welle (Boss-artiger Rhythmus-Peak): dichte Engstellen-Sektion, angekündigt.
     gauntTimer--;if(gauntTimer<=0&&gauntlet<=0&&tick>200){gauntlet=150;gauntTimer=960;announce("⚠ "+tr("gauntlet"),0xff4d6d);beep(140,.5,"sawtooth",.1);}
     if(gauntlet>0)gauntlet--;

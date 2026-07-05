@@ -150,7 +150,7 @@ function reset(){dist=0;speed=42;shipX=centerX(0);steer=0;shield=100;camX=shipX;
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if(k==="arrowdown"||k===" ")brake=true;if((k===" "||k==="enter")&&!running){e.preventDefault&&e.preventDefault();start();}});
 addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;if(k==="arrowdown"||k===" ")brake=false;});
 var touchX=null;
-addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].clientX;if(!running)start();},{passive:true});
+addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].clientX;var el=e.target;if(el&&el.closest&&el.closest("button,a"))return;if(!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true});
 addEventListener("touchmove",function(e){if(e.touches[0])touchX=e.touches[0].clientX;e.preventDefault();},{passive:false});
 addEventListener("touchend",function(){touchX=null;});
 
@@ -212,7 +212,7 @@ function loop(now){
     // Things bewegen + Kollision
     for(i=0;i<things.length;i++){var t=things[i];if(!t.active)continue;var tz=-(t.d-dist);t.m.position.set(centerX(t.d)+t.off,0.6,tz);t.m.rotation.y+=dt*2;
       if(t.d<dist-4){t.active=false;t.m.visible=false;continue;}
-      if(Math.abs(tz)<2.2&&Math.abs((centerX(t.d)+t.off)-shipX)<1.8){
+      if(Math.abs(tz)<Math.max(2.2,speed*dt*0.6+2.2)&&Math.abs((centerX(t.d)+t.off)-shipX)<1.8){
         if(t.boost){speed+=28;beep(880,.12,"square",.06);}
         else{shield-=34;speed-=22;beep(140,.18,"sawtooth",.08);}
         t.active=false;t.m.visible=false;
