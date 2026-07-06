@@ -218,6 +218,8 @@ function _vnoise(x,z){var ix=Math.floor(x),iz=Math.floor(z),fx=x-ix,fz=z-iz;
   return a*(1-ux)*(1-uz)+b*ux*(1-uz)+c*(1-ux)*uz+d2*ux*uz;}
 var LAKE={x:14,z:-46,r:19};
 function heightAt(x,z){
+  if(x>350)return 0; // Dungeon-Areal "Die Tiefe" ist eben
+
   // 3 Octaves: Persistence 0.5, Lacunarity 2 (Sebastian-Lague-Standardwerte)
   var h=0,amp=1,freq=1/46,tot=0;
   for(var o=0;o<3;o++){h+=_vnoise(x*freq+50,z*freq+50)*amp;tot+=amp;amp*=0.5;freq*=2;}
@@ -389,7 +391,7 @@ function freshState(){return {
   inv:[],equip:{waffe:null,ruestung:null,relikt:null},
   quests:{},qstage:0,obel:[false,false,false],bossDead:false,
   t:0,px:0,pz:14,day:0};}
-function saveGame(){if(!G)return;G.px=player.position.x;G.pz=player.position.z;lsSet(SAVE_KEY,JSON.stringify(G));}
+function saveGame(){if(!G)return;if(inDungeon){G.px=portal.x;G.pz=portal.z+3;}else{G.px=player.position.x;G.pz=player.position.z;}lsSet(SAVE_KEY,JSON.stringify(G));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.lvl)?s:null;}catch(e){return null;}}
 
 // ===================== Eingabe =====================
@@ -585,7 +587,8 @@ function updEnemies(dt){
     }else if(e.state==="chase"){
       if(d>26&&!e.boss){e.state="patrol";}
       else if(d>e.r+1.1){var ang=Math.atan2(pz-ez,px-ex);
-        e.g.position.x+=Math.cos(ang)*e.spd*dt;e.g.position.z+=Math.sin(ang)*e.spd*dt;
+        var nx2=e.g.position.x+Math.cos(ang)*e.spd*dt,nz2=e.g.position.z+Math.sin(ang)*e.spd*dt;
+        if(!inDungeon||isFloor(nx2,nz2)){e.g.position.x=nx2;e.g.position.z=nz2;}
         e.g.rotation.y=-ang+Math.PI/2;}
       else{e.atkT-=dt;if(e.atkT<=0){e.atkT=e.boss?0.8:1.1;hitPlayer(e.atk);
         burst(px,1,pz,0xff4d6d,6,4);}}
@@ -733,7 +736,7 @@ function talkTo(np){
     else openDialog(np.n,"Brauchst du was? Öffne dein <b>Inventar [I]</b> und rüste aus, was du findest — Klick genügt.");
   }
   if(np.id==="kael"){
-    openDialog(np.n,ZONES[4].locked?"Die <b>Zitadelle im Südosten</b> ist versiegelt, bis die 3 Obelisken leuchten. Drinnen wartet der NEXUS — geh nicht unvorbereitet, Level "+Math.max(5,G.lvl)+"+ empfehle ich.":"Die Barriere ist gefallen! Der <b>NEXUS</b> wartet. Möge dein Puls [Q] treffen.");
+    openDialog(np.n,ZONES[4].locked?"Die <b>Zitadelle im Südosten</b> ist versiegelt, bis die 3 Obelisken leuchten. Drinnen wartet der NEXUS — geh nicht unvorbereitet, Level "+Math.max(5,G.lvl)+"+ empfehle ich. Und: In der <b>Ruinenstadt</b> flimmert ein violettes <b>Portal</b> in die Tiefe — dort liegt bessere Beute.":"Die Barriere ist gefallen! Der <b>NEXUS</b> wartet. Möge dein Puls [Q] treffen.");
   }
 }
 // Obelisk-Interaktion + Fortschritt
@@ -748,7 +751,18 @@ function doInteract(){
       announce("Obelisk aktiviert! ("+G.obel.filter(Boolean).length+"/3)","#6affab");
       if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d");}
       renderQuests();saveGame();return;}}
-  showHint("Hier gibt es nichts — [E] bei NPCs (Dorf) und Obelisken.");
+  if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5){enterDungeon();return;}
+  if(inDungeon){
+    if(dgn.chest&&!dgn.chestOpen&&Math.hypot(dgn.chest.x-px,dgn.chest.z-pz)<3.5){
+      dgn.chestOpen=true;if(dgn.chestMesh){dgn.chestMesh.material.emissiveIntensity=2.2;dgn.chestMesh.rotation.x=-0.5;}
+      var l1=rollItem(G.lvl+2);l1.r=Math.max(2,l1.r);l1.v=Math.round(l1.v*1.25);
+      var l2=rollItem(G.lvl+2);l2.r=Math.max(2,l2.r);l2.v=Math.round(l2.v*1.25);
+      G.inv.push(l1);G.inv.push(l2);G.shards+=20;
+      announce("SCHATZ! 2 seltene Funde +20 ◆","#ffcf6e");beep(1046,.5,"triangle",.09);
+      burst(dgn.chest.x,1,dgn.chest.z,0xffcf6e,26,7);camShake=0.5;updHUD();saveGame();return;}
+    if(dgn.exit&&Math.hypot(dgn.exit.x-px,dgn.exit.z-pz)<4){exitDungeon();return;}
+  }
+  showHint("Hier gibt es nichts — [E] bei NPCs, Obelisken und Portalen.");
 }
 // Quest-Stufen-Übergänge, die nicht über Dialog laufen
 function updQuests(){
@@ -802,6 +816,76 @@ function updBossTrigger(){
     var d=Math.hypot(player.position.x-ZONES[4].x,player.position.z-ZONES[4].z);
     if(d<ZONES[4].r*0.7)spawnBoss();}
 }
+// ===================== DUNGEON "Die Tiefe" (Drunkard's-Walk, pro Besuch neu generiert) =====================
+var DX=500,DZ=0,DCELL=3,DGRID=34,inDungeon=false;
+var dgn={group:null,floor:{},exit:null,chest:null,chestOpen:false,foes:[]};
+function dKey(cx,cz){return cx+","+cz;}
+function cellOf(x,z){return [Math.round((x-DX)/DCELL),Math.round((z-DZ)/DCELL)];}
+function isFloor(x,z){var c=cellOf(x,z);return !!dgn.floor[dKey(c[0],c[1])];}
+function genDungeon(){
+  if(dgn.group){scene.remove(dgn.group);}
+  dgn.group=new THREE.Group();scene.add(dgn.group);
+  dgn.floor={};dgn.chestOpen=false;
+  // Drunkard's Walk: 3 Gräber ab Zentrum, Ziel ~38% Boden (Lague/Bracket-Rezept)
+  var half=(DGRID/2)|0,target=DGRID*DGRID*0.38,carved=0,far=[0,0,0];
+  for(var w2=0;w2<3;w2++){var cx=0,cz=0;
+    for(var st=0;st<Math.ceil(target/3)+40&&carved<target;st++){
+      var k=dKey(cx,cz);if(!dgn.floor[k]){dgn.floor[k]=1;carved++;}
+      var dd=Math.hypot(cx,cz);if(dd>far[2]){far=[cx,cz,dd];}
+      var dir=(Math.random()*4)|0;
+      if(dir===0&&cx<half-2)cx++;else if(dir===1&&cx>-half+2)cx--;else if(dir===2&&cz<half-2)cz++;else if(dir===3&&cz>-half+2)cz--;}}
+  // Boden
+  var fl=new THREE.Mesh(new THREE.PlaneGeometry(DGRID*DCELL+8,DGRID*DCELL+8),new THREE.MeshStandardMaterial({color:0x0a0c1e,emissive:0x141033}));
+  fl.rotation.x=-Math.PI/2;fl.position.set(DX,-0.02,DZ);fl.receiveShadow=true;dgn.group.add(fl);
+  // Wände: Zellen neben Boden (InstancedMesh)
+  var wallList=[];
+  for(var gx=-half;gx<=half;gx++)for(var gz=-half;gz<=half;gz++){
+    if(dgn.floor[dKey(gx,gz)])continue;
+    var adj=dgn.floor[dKey(gx+1,gz)]||dgn.floor[dKey(gx-1,gz)]||dgn.floor[dKey(gx,gz+1)]||dgn.floor[dKey(gx,gz-1)]||dgn.floor[dKey(gx+1,gz+1)]||dgn.floor[dKey(gx-1,gz-1)]||dgn.floor[dKey(gx+1,gz-1)]||dgn.floor[dKey(gx-1,gz+1)];
+    if(adj)wallList.push([gx,gz]);}
+  var wim=new THREE.InstancedMesh(new THREE.BoxGeometry(DCELL,4.2,DCELL),new THREE.MeshStandardMaterial({color:0x120a26,emissive:0x6a3ab0,emissiveIntensity:0.5,flatShading:true}),wallList.length);
+  var _wd=new THREE.Object3D();
+  for(var wi3=0;wi3<wallList.length;wi3++){_wd.position.set(DX+wallList[wi3][0]*DCELL,2.1,DZ+wallList[wi3][1]*DCELL);_wd.updateMatrix();wim.setMatrixAt(wi3,_wd.matrix);}
+  wim.instanceMatrix.needsUpdate=true;dgn.group.add(wim);
+  // Leucht-Kristalle
+  var fkeys=Object.keys(dgn.floor);
+  for(var ci3=0;ci3<10;ci3++){var fk=fkeys[(Math.random()*fkeys.length)|0].split(","),gem=new THREE.Mesh(new THREE.OctahedronGeometry(0.5,0),new THREE.MeshBasicMaterial({color:ci3%2?0xb98bff:0x5ef2ff}));
+    gem.position.set(DX+(+fk[0])*DCELL+(Math.random()-.5),0.6,DZ+(+fk[1])*DCELL+(Math.random()-.5));dgn.group.add(gem);}
+  var dl3=new THREE.PointLight(0xb98bff,1.4,50);dl3.position.set(DX,8,DZ);dgn.group.add(dl3);
+  // Exit-Portal am weitesten Punkt, Truhe an zweitweitem Punkt
+  var ex=far[0],ez=far[1];
+  dgn.exit={x:DX+ex*DCELL,z:DZ+ez*DCELL};
+  var ep=new THREE.Mesh(new THREE.TorusGeometry(1.6,0.22,8,28),new THREE.MeshBasicMaterial({color:0x6affab}));
+  ep.position.set(dgn.exit.x,1.8,dgn.exit.z);dgn.group.add(ep);dgn.exitMesh=ep;
+  var best2=[0,0,0];for(var fi2=0;fi2<fkeys.length;fi2++){var pp2=fkeys[fi2].split(","),dd2=Math.hypot(+pp2[0]-ex,+pp2[1]-ez)+Math.hypot(+pp2[0],+pp2[1]);
+    if(dd2>best2[2])best2=[+pp2[0],+pp2[1],dd2];}
+  dgn.chest={x:DX+best2[0]*DCELL,z:DZ+best2[1]*DCELL};
+  var ch=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.1,1.1),mat(0x2a1a08,0xffcf6e,0.9));ch.position.set(dgn.chest.x,0.55,dgn.chest.z);dgn.group.add(ch);dgn.chestMesh=ch;
+  // 7 Eliten auf entfernten Bodenzellen
+  dgn.foes=[];
+  for(var si3=0;si3<7;si3++){var sk2=fkeys[(Math.random()*fkeys.length)|0].split(","),sx3=DX+(+sk2[0])*DCELL,sz3=DZ+(+sk2[1])*DCELL;
+    if(Math.hypot(sx3-DX,sz3-DZ)<12){si3--;continue;}
+    spawnEnemy((Math.random()*4)|0,sx3,sz3,true);dgn.foes.push(enemies[enemies.length-1]);}
+}
+function enterDungeon(){
+  genDungeon();inDungeon=true;
+  player.position.set(DX,0,DZ);vx=0;vz=0;
+  announce("DIE TIEFE","#b98bff");showHint("Finde die Truhe 🎁 und das grüne Rückportal!",3200);
+  beep(180,.4,"sawtooth",.07);camShake=0.5;saveGame();updHUD();
+}
+function exitDungeon(){
+  inDungeon=false;
+  // Dungeon-Gegner entfernen
+  for(var i=0;i<dgn.foes.length;i++){var f=dgn.foes[i];if(f.active){f.active=false;scene.remove(f.g);}}
+  dgn.foes=[];if(dgn.group){scene.remove(dgn.group);dgn.group=null;}
+  player.position.set(portal.x,0,portal.z+3);vx=0;vz=0;
+  announce("Zurück im Reich","#7de3ff");saveGame();
+}
+// Portal in der Ruinenstadt
+var portal={x:-118,z:-98};
+(function(){var pr3=new THREE.Mesh(new THREE.TorusGeometry(2.0,0.28,8,30),new THREE.MeshBasicMaterial({color:0xb98bff}));
+  pr3.position.set(portal.x,heightAt(portal.x,portal.z)+2.2,portal.z);scene.add(pr3);portal.mesh=pr3;
+  var pl3=new THREE.PointLight(0xb98bff,1.3,26);pl3.position.set(portal.x,heightAt(portal.x,portal.z)+3,portal.z);scene.add(pl3);})();
 // ===================== System-Hooks für die Hauptschleife =====================
 function initSystems(){
   renderQuests();
@@ -814,6 +898,11 @@ function updSystems(dt,dayA){
   for(var i=0;i<npcs.length;i++){npcs[i].mark.position.y=3.4+Math.sin(G.t*3+i)*0.25;npcs[i].mark.rotation.y+=dt*2;
     if(Math.hypot(npcs[i].x-px,npcs[i].z-pz)<3.6)near=npcs[i].n;}
   for(i=0;i<obelisks.length;i++){if(!obelisks[i].on&&Math.hypot(obelisks[i].x-px,obelisks[i].z-pz)<4)near="Obelisk";}
+  if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5)near="Portal: Die Tiefe";
+  if(inDungeon&&dgn.chest&&!dgn.chestOpen&&Math.hypot(dgn.chest.x-px,dgn.chest.z-pz)<3.5)near="Truhe öffnen";
+  if(inDungeon&&dgn.exit&&Math.hypot(dgn.exit.x-px,dgn.exit.z-pz)<4)near="Rückportal";
+  if(portal.mesh)portal.mesh.rotation.y+=dt*1.2;
+  if(inDungeon&&dgn.exitMesh)dgn.exitMesh.rotation.y+=dt*2;
   var ta=document.getElementById("tAct");
   if(near&&!dialogOpen){showHint("[E] "+near,600);if(isTouch)ta.classList.remove("hide");}
   else if(isTouch)ta.classList.add("hide");
@@ -848,8 +937,13 @@ function loop(now){
       var tvx=(mv.x/l)*spd*mvx,tvz=(mv.z/l)*spd*mvx,k=Math.min(1,dt*(mvx?11:8));
       vx+=(tvx-vx)*k;vz+=(tvz-vz)*k;
       player.position.x+=vx*dt;player.position.z+=vz*dt;}
-    var pr=Math.hypot(player.position.x,player.position.z);
-    if(pr>WORLD-2){player.position.x*=(WORLD-2)/pr;player.position.z*=(WORLD-2)/pr;vx*=0.4;vz*=0.4;}
+    if(inDungeon){ // Wand-Kollision pro Achse (Drunkard-Grid)
+      if(!isFloor(player.position.x,player.position.z)){
+        if(isFloor(player.position.x-vx*dt,player.position.z)){player.position.x-=vx*dt;vx=0;}
+        else if(isFloor(player.position.x,player.position.z-vz*dt)){player.position.z-=vz*dt;vz=0;}
+        else{player.position.x-=vx*dt;player.position.z-=vz*dt;vx=0;vz=0;}}}
+    else{var pr=Math.hypot(player.position.x,player.position.z);
+    if(pr>WORLD-2){player.position.x*=(WORLD-2)/pr;player.position.z*=(WORLD-2)/pr;vx*=0.4;vz*=0.4;}}
     player.position.y=heightAt(player.position.x,player.position.z);
     // Held-Animation: Lauf-Bob + Idle-Atmen + Staub-Schritte (prozedural, Modell ist unriggt)
     var _spd2=Math.hypot(vx,vz);
@@ -874,7 +968,7 @@ function loop(now){
     // Zone anzeigen
     var zn=zoneAt(player.position.x,player.position.z);
     var zt=document.getElementById("zoneTag");
-    var znName=zn?zn.n:"Niemandsland";
+    var znName=inDungeon?"Die Tiefe":(zn?zn.n:"Niemandsland");
     if(zt.textContent!==znName){zt.textContent=znName;zt.style.color="#"+("00000"+((zn?zn.c:0x8b93b8).toString(16))).slice(-6);announce(znName,zt.style.color);}
     if(typeof updSystems==="function")updSystems(dt,dayA);
     // Autosave alle 5s
