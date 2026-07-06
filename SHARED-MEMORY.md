@@ -159,6 +159,21 @@
 - **Shopify-Zugriff ohne MCP (Rezept bestätigt):** Client-Credentials-Grant (CLAUDE.md §Kernfakten) funktioniert —
   Token ~24h, Scope reicht für Orders/Products/Preise. Order-Queries OHNE Kunden-PII abfragen (Adresse/Name weglassen).
 
+### 🤝 2026-07-06 — KOORDINATION Collections/Menü (Status- + Katalog-Session arbeiten parallel!)
+- **⚠️ Es entstehen bereits DUBLETTEN-Collections:** `tauchen`=`tauchen-schnorcheln` (beide TAG=tauchen, 40) ·
+  `anime`=`anime-manga` (TAG=anime) · 4× Wellness-Überlappung (wellness-gesundheit/-massage/waerme-komfort/-komplettset).
+  **REGEL AB JETZT: vor JEDER Collection-Anlage `collectionByHandle` + Titel-Synonym-Check.** Dubletten-Bereinigung
+  bitte durch die Session, die sie angelegt hat (Lösch-Falle!).
+- **Diese Session (Status/Trending) besitzt/pflegt:** `viral-hits` (Menü Pos. 2) · `fan-zone-schweiz` (Sub unter WM 2026) ·
+  `schulstart` · Menü-Top „🧸 Kinder" · Demand-Collections `ventilatoren-kuehlung`/`haustier-kuehlung`/`ordnung-aufbewahrung`/
+  `kueche-organisation`/`auto-handy-laden`/`picknick-strand`/`solar-gartenlicht` (BigBuy-Demand-Configs).
+  ⚠️ `ventilatoren-kuehlung` überlappt thematisch mit eurem `klima-ventilatoren` — bei Gelegenheit zusammenlegen (Absprache).
+- **Menü:** menuUpdate ersetzt IMMER die ganze Struktur → **vor jedem Menü-Edit frisch laden** (diese Session hat
+  06.07. eingefügt: 🧸 Kinder + 🔥 Viral-Hits + Fan-Zone-Sub). Wer editiert, übernimmt die Items der anderen mit.
+- **Sortierung:** 218 Collections auf BEST_SELLING gesetzt (05.07.); kuratierte MANUAL + Neuheiten-CREATED_DESC geschützt.
+- **CJ-API-QPS:** 1 Req/Sek KONTOWEIT — parallele CJ-Konsumenten (Import-Engine + Tools) verhungern gegenseitig.
+  Diese Session pausiert ihre Engine für kurze Tool-Läufe; bitte grosse CJ-Läufe zeitlich staffeln.
+
 ### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
 **Reichweite/Distribution 2026 (Web-Recherche):**
 - **Organische Social-Reichweite sinkt weiter; Facebook-Gruppen sind 2026 organisch faktisch tot** außer 3 Nischen

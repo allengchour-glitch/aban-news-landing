@@ -1873,3 +1873,33 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   fileCreate → productCreateMedia) über tag:video-hit. Bilder (bis 20) kommen sauber an.
 - **Trikot #1005:** Printful weiter pending/printed=0 (Mo-Morgen, Produktionsstart erwartet; nichts hängt).
 - **CJ-Tagespunkte** resetten heute → Perpetual grindet den neuen Tag automatisch durch.
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
+  Heimprojektor [28331], Heizjacke [22777], Isolier-Tumbler [30457], Campinglampe [10901] u.v.m.
+- **Neue Collection „🔥 Viral-Hits & TikTok-Trends"** (`viral-hits`, Regel TAG=video-hit, 211 Produkte,
+  6 Kanäle, live HTTP 200).
+- **✅ GOOGLE-SCHUTZ ABGESCHLOSSEN: 10'101 Marken-Produkte vom Google-Kanal depubliziert** (Tool
+  `google_unpublish_marke.mjs`, lief bis 0 offen — inkl. der parallel importierten).
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
+
+## 2026-07-06 — 🌙 ÜBER-NACHT-BILANZ: ~1'400 neue Produkte, Engines liefen durch
+- **Container überlebte die Nacht** — alle 3 Hintergrund-Prozesse liefen durch: **CJ-Perpetual 1'080 ✅**,
+  Trending 210 ✅, BigBuy 101 ✅. Auto-Committer hielt alles gepusht (0 offene Commits am Morgen).
+- **QA neueste 30: 0 FAILED-Bilder**, 1 unpubliziert (Einzelfall). Katalog-Query capped bei 10'000
+  (productsCount-API-Limit) — realer Bestand darüber.
+- **⚠️ VIDEO-Media kommt NICHT an:** Shopify nimmt externe Video-URLs via productCreateMedia nicht
+  zuverlässig (VIDEO braucht Staged-Upload; zudem CJ-pid↔SKU-Mapping uneinheitlich bei Fashion-Varianten).
+  → TODO: eigenes Backfill-Tool nach `upload_to_shopify_cdn.mjs`-Muster (Video runterladen → stagedUpload →
+  fileCreate → productCreateMedia) über tag:video-hit. Bilder (bis 20) kommen sauber an.
+- **Trikot #1005:** Printful weiter pending/printed=0 (Mo-Morgen, Produktionsstart erwartet; nichts hängt).
+- **CJ-Tagespunkte** resetten heute → Perpetual grindet den neuen Tag automatisch durch.
+
+## 2026-07-06 — Vormittag: Copy-Kette geheilt · Menü komplettiert · Video-Backfill v2
+- **Copy-Rotation wirkt:** 5 Groq-Modelle (8b-instant zuerst, 500k TPD) → aktuelle Skip-Rate **0** (vorher 268/300).
+- **Menü:** „🔥 Viral-Hits" als Top-Level Pos. 2 + „🇨🇭 Fan-Zone Schweiz" als Sub unter „⚽ WM 2026" (23→24 Items).
+- **Video-Backfill v2:** pid-Herleitung jetzt über **productSku→pid-Map aus der Trending-Liste** (14 Seiten,
+  Präfix-Match) statt fragiler Einzelsuchen; QPS-Backoff gegen Engine-Kollision. Läuft über tag:video-hit.
+- Alle Collections publiziert-verifiziert (0 unpublizierte mit Produkten). Engines grinden weiter.
