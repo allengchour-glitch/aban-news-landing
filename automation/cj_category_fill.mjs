@@ -89,6 +89,18 @@ const GROUPS={
  cjherren:{cats:[['2409230540121629100','Mens Shirts'],['2409230540351618000','Mens Jackets'],['976399B4-534B-46F0-B18A-62075824A717','Man Hoodies & Sweatshirts'],['1357252400104214528','Mens Sweaters'],['911754C0-443D-4ECF-9083-DF04C907BD81','Man Jeans'],['846D76D8-095D-4DD8-89DF-1E48D869F60C','Cargo Pants'],['BE11EEDB-B765-4A39-8A3D-F6015FC7A846','Print T-Shirts'],['655B8008-6BB9-4AA1-8025-6206ACFF018A','Solid T-Shirts']],
    type:'Herrenmode', tags:['herren','mode','cj-real','dropship'], kat:'Herren-Mode', fashion:true,
    ban:/wholesale|\bsample\b|damen|women|kinder|kids/i, minImg:2, minP:3, maxP:70},
+ cjschuhedamen:{cats:[['AAB54987-4E92-40C7-B0F5-5E814C1E6980','Woman Sandals'],['1988B912-7A18-4ED2-B1E1-61ED290A0E82','Woman Boots'],['638284D0-3651-4FC9-9F25-B0A0BA323D83','Pumps'],['F35FC838-1CFE-49D1-A8CA-CF7401F9C444','Flats'],['1B559D30-B370-4C8E-8CFD-1E1BC47E217F','Woman Sneakers'],['8F756420-4840-474E-B2D6-6725ED219970','Woman Slippers']],
+   type:'Damenschuhe', tags:['schuhe','damenschuhe','damen','mode','cj-real','dropship'], kat:'Damenschuhe (Sandalen, Boots, Pumps, Sneaker, Ballerinas)', fashion:true,
+   ban:/wholesale|\bsample\b|nike|adidas|jordan|yeezy|puma|reebok|new ?balance|converse|vans|timberland|dr\.? ?martens|birkenstock|crocs|gucci|kinder|kids|children/i, minImg:3, minP:4, maxP:70},
+ cjschuheherren:{cats:[['F419006D-AE55-4691-93FC-52FEBB459DBA','Casual Shoes'],['0F0296D6-F057-4FD4-9E06-95D5DBCCE6EB','Man Boots'],['B8640E7B-F07D-4C0F-A5CF-8ACC533DA86F','Man Sneakers'],['D0E37ED0-65C8-43E3-8B84-C973040DCE9C','Man Sandals'],['11C9DE73-0438-40E2-80B8-72697795C9F2','Formal Shoes'],['312428E8-5075-4F74-A317-8EB051C0C068','Man Slippers']],
+   type:'Herrenschuhe', tags:['schuhe','herrenschuhe','herren','mode','cj-real','dropship'], kat:'Herrenschuhe (Sneaker, Boots, Business-Schuhe, Sandalen)', fashion:true,
+   ban:/wholesale|\bsample\b|nike|adidas|jordan|yeezy|puma|reebok|new ?balance|converse|vans|timberland|dr\.? ?martens|birkenstock|crocs|gucci|kinder|kids|children|women|damen/i, minImg:3, minP:4, maxP:80},
+ cjsneaker:{cats:[['24A29AC9-8B9B-4552-AF5E-431E6CF47C67','Running Shoes'],['5F140735-E3D7-46A0-A28D-34607B05B720','Hiking Shoes'],['C8FD79F7-DF24-495F-BE12-5F8585A8E5ED','Basketball Shoes'],['4B83DB4C-2D1F-4FA4-8844-FC39C6DBD60B','Skateboarding Shoes'],['3928EB2C-04C4-4862-BCBD-A4987005A629','Dance Shoes']],
+   type:'Sportschuhe', tags:['schuhe','sneaker','sportschuhe','sport','cj-real','dropship'], kat:'Sneaker, Lauf- & Wanderschuhe', fashion:true,
+   ban:/wholesale|\bsample\b|nike|adidas|jordan|yeezy|puma|reebok|new ?balance|converse|vans|timberland|dr\.? ?martens|birkenstock|crocs|gucci|soccer cleat|football boot/i, minImg:3, minP:5, maxP:80},
+ cjschuhekids:{cats:[['2502190154341624400','Childrens Shoes'],['5AF1783E-547C-44E5-AD8A-82B354860BCB','Boys Shoes'],['C6FBABFE-2E34-4BD8-B643-C3060E9D343B','Girls Shoes'],['C7FEF0C8-C59D-44DC-9715-7C377441ECFE','First Walkers']],
+   type:'Kinderschuhe', tags:['schuhe','kinderschuhe','kinder','baby-kids','cj-real','dropship'], kat:'Kinderschuhe & Lauflernschuhe', fashion:true,
+   ban:/wholesale|\bsample\b|nike|adidas|jordan|yeezy|puma|reebok|new ?balance|converse|vans|timberland|dr\.? ?martens|birkenstock|crocs|gucci|disney|frozen|spider/i, minImg:3, minP:3, maxP:50},
  cjtaschen:{cats:[['CDCCB9B1-D5DD-4C20-AF32-101FE427B63C','Backpacks'],['EA292A58-E696-428B-8BEB-DE105690DDB3','Crossbody Bags'],['E89AC661-0B9E-4967-A0A3-7B0C6DEDDC7D','Luggage & Travel Bags'],['B701FAC3-80F0-43B1-9EA5-2C05C55F582A','Waist Bags'],['F3F4B418-17DF-49A1-AD76-A436B7618FFC','Wallets']],
    type:'Taschen', tags:['tasche','accessoire','cj-real','dropship'], kat:'Taschen & Rucksäcke',
    ban:/wholesale|\bsample\b|kinder|kids|school bag/i, minImg:2, minP:3, maxP:80},
@@ -217,7 +229,8 @@ for(const [cat,label] of grp.cats){
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
    // Google-Merchant-Pflichtattribute bei Mode: Gender + Altersgruppe (Farbe/Grösse kommen aus Varianten)
    if(grp.fashion){const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
-    input.metafields=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},{namespace:'mm-google-shopping',key:'age_group',value:'adult',type:'single_line_text_field'}];}
+    const age=grp.tags.includes('kinder')||grp.tags.includes('baby-kids')?'kids':'adult';
+    input.metafields=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},{namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'}];}
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
