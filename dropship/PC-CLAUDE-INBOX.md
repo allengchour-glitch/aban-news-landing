@@ -9,7 +9,7 @@
 ## 🔁 DAUERAUFTRAG (bei JEDEM Lauf ausführen, nie abhaken)
 - Tages-Routine gemäss Playbook §1: IG+FB+TikTok Kommentare beantworten, DMs checken
   (Scam-Muster ignorieren), 1 Story (Produkt des Tages ab luxestyle.ch, Link-Sticker).
-- Max. 1 Reel/Tag aus `automation/reels_seed.csv` (nur `status=ready`, ⛔ Doppelpost-Check
+- QUALITÄT VOR MENGE (User 2026-07-06): max. 3–4 Posts/WOCHE, bevorzugt die langen Showcase-Videos; Reel nur posten wenn wirklich stark. Quelle `automation/reels_seed.csv` (nur `status=ready`, ⛔ Doppelpost-Check
   gegen Profil!). Nach Post: unten im Rapport-Block Queue-id + Plattform + URL + Zeit eintragen.
 - 1×/Woche (Montag): Wochen-Routine gemäss Playbook §2 (Follower-Wachstum organisch, Profil-Check).
 
