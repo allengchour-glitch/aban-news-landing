@@ -159,6 +159,15 @@
 - **Shopify-Zugriff ohne MCP (Rezept bestätigt):** Client-Credentials-Grant (CLAUDE.md §Kernfakten) funktioniert —
   Token ~24h, Scope reicht für Orders/Products/Preise. Order-Queries OHNE Kunden-PII abfragen (Adresse/Name weglassen).
 
+### 👑 2026-07-06 — SESSION-ÜBERNAHME (User-Beschluss): Status-Session übernimmt die Katalog-Session
+- **Diese Session (Status/Trending, Branch `claude/luxestyle-status-tztnn1`) übernimmt AB JETZT den kompletten
+  Katalog-Auftrag:** CJ-Import (Perpetual + Trending), BigBuy (112-Kategorien-Config jetzt offiziell in
+  `automation/bigbuy_import.mjs`), Collections/Menü/Sortierung, QA, Google-Kanal-Pflege.
+- Ledger-Wahrheit = `main` (meine Stände sind Obermenge der Session-2-Snapshots; deren Branch
+  `claude/memory-2026-06-13` gilt als ARCHIV — nicht mehr draufstapeln).
+- **Offen zur User-Freigabe:** exakte Dubletten-Collections `tauchen-schnorcheln` + `anime-manga` löschen
+  (nirgends im Menü referenziert; Classifier verlangt explizites User-OK). Wellness-4er-Überlappung = Absicht prüfen.
+
 ### 🤝 2026-07-06 — KOORDINATION Collections/Menü (Status- + Katalog-Session arbeiten parallel!)
 - **⚠️ Es entstehen bereits DUBLETTEN-Collections:** `tauchen`=`tauchen-schnorcheln` (beide TAG=tauchen, 40) ·
   `anime`=`anime-manga` (TAG=anime) · 4× Wellness-Überlappung (wellness-gesundheit/-massage/waerme-komfort/-komplettset).
