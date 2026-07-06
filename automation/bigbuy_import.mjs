@@ -55,6 +55,16 @@ const ADULT_BAN = ['prostat', 'massager love', 'love panty', 'liebe panty', 'lus
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
   // === DEMAND 2026-07: Google-/Amazon-validierte Suchnachfrage (dropship/PRODUKT-CHANCEN.md) ===
+  d_verpackung: { coll: { handle: 'verpackung-versand', title: '📦 Verpackung & Versandmaterial', tag: 'verpackung' },
+    extraTags: ['buero', 'haushalt'], type: 'Verpackungsmaterial', maxCost: 60, word: true,
+    anchor: ['versandtasche', 'luftpolster', 'karton', 'packband', 'klebeband', 'versandkarton', 'geschenkkarton', 'packpapier', 'seidenpapier', 'polsterfolie', 'stretchfolie', 'versandbeutel', 'briefumschlag', 'umschlag'],
+    ban: ['kinder', 'spielzeug'],
+    bullets: ['Stabil & zuverlässig verpackt', 'Für Zuhause, Büro & kleine Shops', 'Schneller Versand aus EU-Lager', 'Faire Mengen – kein Grosshandel nötig'] },
+  d_geschenkverp: { coll: { handle: 'geschenkverpackung', title: '🎀 Geschenkverpackung', tag: 'geschenkverpackung' },
+    extraTags: ['geschenk', 'deko'], type: 'Geschenkverpackung', maxCost: 40, word: true,
+    anchor: ['geschenkpapier', 'geschenktüte', 'geschenkbeutel', 'geschenkbox', 'geschenkband', 'schleife', 'organza', 'geschenkkorb', 'zellophan', 'geschenkanhänger', 'jutebeutel'],
+    ban: ['kinder-kostüm'],
+    bullets: ['Macht jedes Geschenk besonders', 'Für Geburtstag, Hochzeit & Feiertage', 'Wiederverwendbare Qualität', 'Schnell geliefert aus EU-Lager'] },
   d_smoke: { coll: { handle: 'smoke-zubehoer', title: '🌿 Smoke & Chill Zubehör', tag: 'smoke-zubehoer' },
     onlineOnly: true, // Policy: NIE in Google/Meta/TikTok/Pinterest (Drogen-Zubehör-Regeln) — nur Onlineshop/POS
     extraTags: ['raucherzubehoer', 'nur-onlineshop'], type: 'Raucherzubehör', maxCost: 40, word: true,
