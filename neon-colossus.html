@@ -65,7 +65,7 @@ h1{font-size:clamp(2.2rem,8vw,4rem);font-weight:900;letter-spacing:.02em;line-he
 #touch.on{display:block}
 #dashBtn{position:absolute;right:22px;bottom:38px;width:88px;height:88px;border-radius:50%;background:rgba(120,90,255,.22);border:2px solid rgba(180,140,255,.6);color:#eaf0ff;font-weight:900;font-size:.9rem;display:flex;align-items:center;justify-content:center;pointer-events:auto}
 @media(max-width:820px){#playerbar{width:min(240px,52vw)}}
-@media(pointer:coarse){#startCoBtn{display:none}} /* P2 braucht Tastatur+Enter → Koop nur an Desktop */
+@media(pointer:coarse){#startCoBtn{display:none}#keysHelp{display:none}} /* P2 braucht Tastatur+Enter → Koop nur an Desktop */
 </style>
 </head>
 <body>
@@ -89,6 +89,7 @@ h1{font-size:clamp(2.2rem,8vw,4rem);font-weight:900;letter-spacing:.02em;line-he
     <div style="display:flex;align-items:center;gap:8px;flex-direction:row-reverse"><span style="font-size:1.1rem">💠</span><div style="flex:1;height:16px;border-radius:9px;background:rgba(10,12,26,.72);border:1px solid rgba(185,139,255,.5);overflow:hidden"><div id="hpFill2" style="height:100%;width:100%;background:linear-gradient(90deg,#b98bff,#ff6ec7)"></div></div><span id="hpTxt2" style="font-size:.8rem;font-weight:800;color:#e6d5ff;min-width:56px;text-align:right">100/100</span></div>
   </div>
   <div id="hint"></div>
+  <div id="keysHelp" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.72rem;color:#9fb2ff;text-shadow:0 1px 6px #000;background:rgba(8,10,24,.45);border-radius:20px;padding:5px 14px;white-space:nowrap"></div>
 </div>
 <div id="dmg"></div>
 <div id="touch"><div id="dashBtn">DASH</div></div>
@@ -632,7 +633,10 @@ function bestSet(v){try{if(v>bestGet())localStorage.setItem("nc_best",String(v))
 function showBest(){var b=bestGet();document.getElementById("best").textContent=b>0?("🏆 Bestleistung: "+b+" / 3 Kolosse bezwungen"):"";}
 showBest();
 
-function begin(){resetState();G.dead=false;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
+function begin(){resetState();
+  document.getElementById("keysHelp").innerHTML=coopMode?
+    '<span style="color:#7de3ff"><b>P1:</b> WASD · Maus zielen · <b>SPACE</b> Dash</span><span style="color:#8b93b8"> · </span><span style="color:#e6b3ff"><b>P2:</b> Pfeile (auto-ziel) · <b>ENTER</b> Dash</span><span style="color:#8b93b8"> · <b>M</b> Ton</span>':
+    '<b style="color:#7de3ff">WASD</b> bewegen · <b style="color:#7de3ff">Maus</b> zielen (auto-feuer) · <b style="color:#7de3ff">SPACE/SHIFT</b> Dash · <b>M</b> Ton';G.dead=false;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   startStage(0);G.running=true;G.alive=true;startMusic();}
 function die(){G.dead=true;G.running=false;bestSet(G.stage);shake=1.0;
