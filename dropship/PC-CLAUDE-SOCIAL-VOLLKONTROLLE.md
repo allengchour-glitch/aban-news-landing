@@ -98,6 +98,11 @@ Feste Content-Regeln für LuxeStyle (verbindlich, nur der User darf sie ändern)
    FB: Link ok. Kein Preis IM Video (nur in der Caption), keine «Swiss made»-Claims.
 5. Bilder für Storys: nur echte Model-/Lifestyle-Shots (keine weissen Freisteller, keine
    KI-Stock-Optik, keine asiatischen Models — feste User-Regel), nur gut bewertete Produkte.
+6. ⛔ DOPPELPOST-VERBOT (User-Regel 2026-07-06, absolut): IMMER nur NEUES posten.
+   Vor JEDEM Post das eigene Profil (letzte ~20 Posts) prüfen: gleiches Video, gleiches
+   Produkt oder gleiches Motiv schon vorhanden → NICHT posten, nächsten Queue-Eintrag nehmen.
+   Gilt pro Plattform UND über Plattformen hinweg am selben Tag (nicht dasselbe Reel am
+   gleichen Tag auf IG UND TikTok — versetzt um mind. 1 Tag). Nie alte Posts recyceln.
 ```
 
 ---

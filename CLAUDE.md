@@ -47,7 +47,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    User-Klick «Verbinden» wieder an. Assets vorher auf Shopify-CDN stagen = nichts verloren.
 9. **Groq-Titel prüfen:** 8b-instant erfindet Produktkategorien (Frischematte→«Mauspad»).
    Bei Import unklarer Artikel (BigBuy-CSV ohne Kategorie-Anker) Titel gegen Bild plausibilisieren.
-10. **Voll-Automatik:** `bash automation/autostart.sh` bootet ALLES idempotent (Engines, Token,
+10. **⛔ Social-Doppelpost-Verbot (User 2026-07-06):** IMMER nur NEUES posten — vor jedem Post
+   Profil + `automation/reels_seed.csv`-Ledger prüfen (nur status=ready, nach Post → posted).
+   Gleiches Produkt/Video/Motiv nie zweimal, auch nicht plattformübergreifend am selben Tag.
+11. **Voll-Automatik:** `bash automation/autostart.sh` bootet ALLES idempotent (Engines, Token,
    Committer; Secrets aus Env). **CronCreate ist seit 07-06 VERFÜGBAR** (session-only, 7-Tage-Limit):
    jede lange Session legt sich einen Stunden-Wächter (Engines prüfen/Drift committen) + 08:43-
    Morgenreport (TikTok-Ads-Zahlen, Orders, #1005-Tracking). SessionStart-Hook für autostart in
