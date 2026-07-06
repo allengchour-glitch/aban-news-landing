@@ -569,6 +569,9 @@ function killEnemy(e,i){
     if(it.r>=2)announce(RARS[it.r].n+"er Fund!",RARS[it.r].c);}
   // Quest-Zähler
   if(G.qstage===1&&e.type===0){G.quests.kills=(G.quests.kills||0)+1;renderQuests();}
+  if(e.miniboss){announce("Wächter der Tiefe besiegt!","#b98bff");
+    var mi2=rollItem(G.lvl+3);mi2.r=Math.max(2,mi2.r);mi2.v=Math.round(mi2.v*1.3);G.inv.push(mi2);
+    G.shards+=15;showHint("🎁 "+RARS[mi2.r].n+": "+mi2.n+" (+"+mi2.v+" "+mi2.stat+") — [I]",3000);camShake=0.8;}
   if(e.boss){G.bossDead=true;onBossDead();}
   updHUD();saveGame();
 }
@@ -578,7 +581,7 @@ function updEnemies(dt){
     var ex=e.g.position.x,ez=e.g.position.z,d=Math.hypot(px-ex,pz-ez);
     if(e.body&&e.body.rotation)e.body.rotation.y+=dt*(e.boss?0.5:2);
     var _ms=e.mats||((e.body&&e.body.material)?[e.body.material]:[]);
-    for(var _mi=0;_mi<_ms.length;_mi++)_ms[_mi].emissiveIntensity=(e.flash>0)?2.4:(e.elite||e.boss?1.3:0.8);
+    for(var _mi=0;_mi<_ms.length;_mi++)_ms[_mi].emissiveIntensity=(e.flash>0)?((e.baseEmis!==undefined?e.baseEmis:1)+1.1):(e.baseEmis!==undefined?e.baseEmis:(e.elite||e.boss?1.3:0.8));
     if(e.flash>0)e.flash-=dt;
     if(e.state==="patrol"){
       e.pt-=dt;if(e.pt<=0){e.pa=Math.random()*6.283;e.pt=2+Math.random()*3;}
@@ -769,12 +772,17 @@ function updQuests(){
   if(G.qstage===1&&(G.quests.kills||0)>=5){G.qstage=2;announce("Aufgabe erfüllt — zurück zu Von!","#6affab");renderQuests();saveGame();}
 }
 // ===================== BOSS: NEXUS =====================
-var bossObj=null,bossModel=null;
+var bossObj=null,bossModel=null,wardenModel=null;
 if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/boss_nexus.glb",function(g){
   var o=g.scene,box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
   var k=7/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k+3.6,-ctr.z*k);
   o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.emissive=new THREE.Color(0xff4d6d);n.material.emissiveIntensity=0.35;}}});
-  bossModel=o;},undefined,function(){});}
+  bossModel=o;},undefined,function(){});
+new THREE.GLTFLoader().load("/models/boss_warden.glb",function(g){
+  var o=g.scene,box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
+  var k=4.6/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k+2.4,-ctr.z*k);
+  o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.emissive=new THREE.Color(0xb98bff);n.material.emissiveIntensity=0.4;}}});
+  wardenModel=o;},undefined,function(){});}
 function spawnBoss(){
   if(bossObj)return;
   var g=new THREE.Group();
@@ -784,7 +792,7 @@ function spawnBoss(){
   g.position.set(ZONES[4].x,0,ZONES[4].z);scene.add(g);
   var lvB=1+(G.lvl-1)*0.12;
   var bmats=[];g.traverse(function(n){if(n.isMesh&&n.material)bmats.push(n.material);});
-  bossObj={g:g,body:g.children[0],mats:bmats,hp:420*lvB,maxhp:420*lvB,atk:16*lvB,spd:4.6,xp:120,c:0xff4d6d,r:3.6,elite:false,boss:true,active:true,
+  bossObj={g:g,body:g.children[0],mats:bmats,hp:420*lvB,maxhp:420*lvB,atk:16*lvB,spd:4.6,xp:120,c:0xff4d6d,r:3.6,elite:false,boss:true,baseEmis:0.5,active:true,
     state:"chase",pa:0,pt:0,atkT:0,flash:0,hx:ZONES[4].x,hz:ZONES[4].z,novaT:4};
   enemies.push(bossObj);
   announce("☠ DER NEXUS ERWACHT","#ff4d6d");beep(70,.8,"sawtooth",.1);camShake=1.2;
@@ -861,6 +869,17 @@ function genDungeon(){
     if(dd2>best2[2])best2=[+pp2[0],+pp2[1],dd2];}
   dgn.chest={x:DX+best2[0]*DCELL,z:DZ+best2[1]*DCELL};
   var ch=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.1,1.1),mat(0x2a1a08,0xffcf6e,0.9));ch.position.set(dgn.chest.x,0.55,dgn.chest.z);dgn.group.add(ch);dgn.chestMesh=ch;
+  // Wächter der Tiefe: Miniboss bewacht die Truhe (Warden-Modell)
+  (function(){var g=new THREE.Group();
+    if(wardenModel)g.add(wardenModel.clone(true));
+    else{var b2=new THREE.Mesh(new THREE.IcosahedronGeometry(2.2,0),mat(0x1a0a2e,0xb98bff,1.0));b2.position.y=2.2;b2.castShadow=true;g.add(b2);}
+    var wl=new THREE.PointLight(0xb98bff,1.6,26);wl.position.y=4;g.add(wl);
+    g.position.set(dgn.chest.x+1.4,0,dgn.chest.z+1.4);scene.add(g);
+    var mats=[];g.traverse(function(n){if(n.isMesh&&n.material)mats.push(n.material);});
+    var lvB=1+(G.lvl-1)*0.12;
+    var mb={g:g,body:g.children[0],mats:mats,hp:170*lvB,maxhp:170*lvB,atk:13*lvB,spd:5.2,xp:70,c:0xb98bff,r:2.4,elite:true,boss:false,miniboss:true,baseEmis:0.5,active:true,
+      state:"chase",pa:0,pt:0,atkT:0,flash:0,hx:dgn.chest.x,hz:dgn.chest.z};
+    enemies.push(mb);dgn.foes.push(mb);})();
   // 7 Eliten auf entfernten Bodenzellen
   dgn.foes=[];
   for(var si3=0;si3<7;si3++){var sk2=fkeys[(Math.random()*fkeys.length)|0].split(","),sx3=DX+(+sk2[0])*DCELL,sz3=DZ+(+sk2[1])*DCELL;
