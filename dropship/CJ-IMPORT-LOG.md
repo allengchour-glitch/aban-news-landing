@@ -1942,3 +1942,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   🏠 Wohnen & Garten · 📱 Technik & Auto · 💄 Beauty & 🐾 Tier · ✨ Mehr & Sale. ALLE bisherigen Links blieben
   erhalten (als Ebene 2/3 verschachtelt — Shopify erlaubt 3 Ebenen).
 - **Rollback jederzeit:** komplette Alt-Struktur in `dropship/menu-backup-2026-07-06.json` (per menuUpdate zurückspielbar).
+
+## 2026-07-06 — 🎬 TikTok-Posting reaktiviert (Cloud → Entwürfe-Pfad bewiesen)
+- **Token-Kette lebt:** TT_REFRESH_TOKEN gültig (Scopes video.publish+upload), Refresh funktioniert.
+- **Direct-Public-Post weiter durch App-Audit gesperrt** → Tool-Fallback greift: Video wird per FILE_UPLOAD
+  in die **TikTok-Entwürfe/Inbox** des Kontos geladen (User postet mit 1 Tap in der App).
+- **✅ LIVE geschoben:** `luxestyle-win-selbstgestalten` (stumm, Video-Regeln-konform) → publish_id v_inbox_file~v2.765945…
+  Queue reels_seed.csv fortgeschrieben. 2 weitere ready.
+- **Voll-Auto-Weg:** User-Klick „Audit beantragen" (developers.tiktok.com, Anleitung TIKTOK-AUTOPOST-AKTIVIEREN.md)
+  → danach TT_PRIVACY_LEVEL=PUBLIC_TO_EVERYONE ohne Fallback.
