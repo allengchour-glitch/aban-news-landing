@@ -458,6 +458,7 @@ function drawMinimap(){
   for(i=0;i<obelisks.length;i++){var ob=obelisks[i];mm.fillStyle=ob.on?"#6affab":"#ffcf6e";mm.fillRect(mx(ob.x)-2,mz(ob.z)-2,4,4);}
   if(typeof npcs!=="undefined")for(i=0;i<npcs.length;i++){mm.fillStyle="#6affab";mm.beginPath();mm.arc(mx(npcs[i].x),mz(npcs[i].z),2.2,0,6.283);mm.fill();}
   if(typeof enemies!=="undefined")for(i=0;i<enemies.length;i++){if(!enemies[i].active)continue;mm.fillStyle=enemies[i].boss?"#ff4d6d":"rgba(255,77,109,0.7)";mm.fillRect(mx(enemies[i].g.position.x)-1.5,mz(enemies[i].g.position.z)-1.5,3,3);}
+  if(typeof seraph!=="undefined"&&seraph){mm.fillStyle="#ffd166";mm.beginPath();mm.arc(mx(seraph.g.position.x),mz(seraph.g.position.z),3.4,0,6.283);mm.fill();}
   mm.fillStyle="#7de3ff";mm.beginPath();mm.arc(mx(player.position.x),mz(player.position.z),3,0,6.283);mm.fill();
   mm.strokeStyle="rgba(125,227,255,0.5)";mm.strokeRect(0.5,0.5,139,139);
 }
@@ -639,6 +640,8 @@ function doAttack(){
   for(var ni=0;ni<enemies.length;ni++){var en2=enemies[ni];if(!en2.active)continue;
     var dd=Math.hypot(en2.g.position.x-player.position.x,en2.g.position.z-player.position.z)-en2.r;
     if(dd<nd){nd=dd;nb=en2;}}
+  if(seraph){var sdd=Math.hypot(seraph.g.position.x-player.position.x,seraph.g.position.z-player.position.z)-3;
+    if(sdd<nd){nd=sdd;nb=seraph;}}
   if(nb)player.rotation.y=Math.atan2(nb.g.position.x-player.position.x,nb.g.position.z-player.position.z);
   var fx2=Math.sin(player.rotation.y),fz2=Math.cos(player.rotation.y);
   // Schwungbogen-FX
@@ -655,6 +658,13 @@ function doAttack(){
         dmgNum(dmg,e.g.position.x,2.2,e.g.position.z,crit?"#ffd166":"#bfe9ff");
         var kb=e.boss?0.2:1.4;e.g.position.x+=fx2*kb*0.4;e.g.position.z+=fz2*kb*0.4;
         if(e.hp<=0)killEnemy(e,i);}}}
+  if(seraph){var sdx=seraph.g.position.x-player.position.x,sdz=seraph.g.position.z-player.position.z,sd=Math.hypot(sdx,sdz);
+    if(sd<3.4+3){var sdot=(sdx*fx2+sdz*fz2)/(sd||1);
+      if(sdot>0.1||sd<2){var sdmg=playerAtk()*(0.9+Math.random()*0.25);seraph.hp-=sdmg;hit=true;
+        for(var _si=0;_si<seraph.mats.length;_si++)seraph.mats[_si].emissiveIntensity=1.6;
+        setTimeout(function(){if(seraph)for(var _sj=0;_sj<seraph.mats.length;_sj++)seraph.mats[_sj].emissiveIntensity=0.4;},90);
+        dmgNum(sdmg,seraph.g.position.x,4,seraph.g.position.z,"#ffd166");
+        if(seraph.hp<=0)killSeraph();}}}
   if(hit){camShake=Math.max(camShake,0.12);beep(300,.05,"square",.045);}
 }
 function doBolt(){
@@ -672,6 +682,8 @@ function doBolt(){
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
     var d=Math.hypot(e.g.position.x-player.position.x,e.g.position.z-player.position.z);
     if(d<R+e.r){e.hp-=dmg;e.flash=0.1;dmgNum(dmg,e.g.position.x,2.4,e.g.position.z,"#ffd166");if(e.hp<=0)killEnemy(e,i);}}
+  if(seraph){var sd2=Math.hypot(seraph.g.position.x-player.position.x,seraph.g.position.z-player.position.z);
+    if(sd2<R+3){seraph.hp-=dmg;dmgNum(dmg,seraph.g.position.x,4,seraph.g.position.z,"#ffd166");if(seraph.hp<=0)killSeraph();}}
   camShake=Math.max(camShake,0.3);
 }
 function doDodge(){
@@ -772,7 +784,7 @@ function updQuests(){
   if(G.qstage===1&&(G.quests.kills||0)>=5){G.qstage=2;announce("Aufgabe erfüllt — zurück zu Von!","#6affab");renderQuests();saveGame();}
 }
 // ===================== BOSS: NEXUS =====================
-var bossObj=null,bossModel=null,wardenModel=null;
+var bossObj=null,bossModel=null,wardenModel=null,seraphModel=null;
 if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/boss_nexus.glb",function(g){
   var o=g.scene,box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
   var k=7/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k+3.6,-ctr.z*k);
@@ -782,7 +794,12 @@ new THREE.GLTFLoader().load("/models/boss_warden.glb",function(g){
   var o=g.scene,box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
   var k=4.6/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k+2.4,-ctr.z*k);
   o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.emissive=new THREE.Color(0xb98bff);n.material.emissiveIntensity=0.4;}}});
-  wardenModel=o;},undefined,function(){});}
+  wardenModel=o;},undefined,function(){});
+new THREE.GLTFLoader().load("/models/boss_seraph.glb",function(g){
+  var o=g.scene,box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
+  var k=6/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k);
+  o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.emissive=new THREE.Color(0xffd166);n.material.emissiveIntensity=0.4;}}});
+  seraphModel=o;},undefined,function(){});}
 function spawnBoss(){
   if(bossObj)return;
   var g=new THREE.Group();
@@ -905,13 +922,66 @@ var portal={x:-118,z:-98};
 (function(){var pr3=new THREE.Mesh(new THREE.TorusGeometry(2.0,0.28,8,30),new THREE.MeshBasicMaterial({color:0xb98bff}));
   pr3.position.set(portal.x,heightAt(portal.x,portal.z)+2.2,portal.z);scene.add(pr3);portal.mesh=pr3;
   var pl3=new THREE.PointLight(0xb98bff,1.3,26);pl3.position.set(portal.x,heightAt(portal.x,portal.z)+3,portal.z);scene.add(pl3);})();
+// ===================== SERAPH: nächtlicher Weltboss (Event) =====================
+var seraph=null,seraphCD=0,seraphWarnT=0;
+function spawnSeraph(){
+  if(seraph)return;
+  var zn=ZONES[1+((Math.random()*3)|0)]; // eine der 3 offenen Zonen
+  var a=Math.random()*6.283,r=18+Math.random()*20;
+  var sx=zn.x+Math.cos(a)*r,sz2=zn.z+Math.sin(a)*r;
+  var g=new THREE.Group();
+  if(seraphModel)g.add(seraphModel.clone(true));
+  else{var b3a=new THREE.Mesh(new THREE.OctahedronGeometry(2.6,0),mat(0x2a2008,0xffd166,1.0));b3a.castShadow=true;g.add(b3a);}
+  var sl=new THREE.PointLight(0xffd166,2.2,44);sl.position.y=3;g.add(sl);
+  g.position.set(sx,heightAt(sx,sz2)+5,sz2);scene.add(g);
+  var mats=[];g.traverse(function(n){if(n.isMesh&&n.material)mats.push(n.material);});
+  var lvB=1+(G.lvl-1)*0.12;
+  seraph={g:g,mats:mats,hp:300*lvB,maxhp:300*lvB,atk:14*lvB,x:sx,z:sz2,novaT:3.5,bob:0,active:true};
+  announce("🌟 DER SERAPH ERSCHEINT — "+zn.n+"!","#ffd166");beep(900,.5,"triangle",.09);
+  showHint("Weltboss! Besiege ihn vor Sonnenaufgang → LEGENDÄRER Fund",3600);
+}
+function despawnSeraph(msg){if(!seraph)return;scene.remove(seraph.g);seraph=null;
+  if(msg){announce("Der Seraph entschwindet ins Licht…","#ffd166");}}
+function killSeraph(){
+  if(!seraph)return;
+  burst(seraph.g.position.x,3,seraph.g.position.z,0xffd166,40,9);camShake=1.2;beep(1200,.6,"triangle",.1);
+  var it=rollItem(G.lvl+4);it.r=3;it.v=Math.round(it.v*1.4);G.inv.push(it);
+  G.shards+=30;gainXp(90);
+  announce("SERAPH BESIEGT — LEGENDÄR: "+it.n+"!","#ffcf6e");
+  scene.remove(seraph.g);seraph=null;seraphCD=DAYLEN*1.5;
+  updHUD();saveGame();
+}
+function updSeraph(dt,dayA){
+  if(seraphCD>0)seraphCD-=dt;
+  // Nachts erscheinen (ab Quest-Stufe 2, nicht im Dungeon), morgens verschwinden
+  if(!seraph&&dayA<0.12&&seraphCD<=0&&G.qstage>=2&&!inDungeon&&Math.random()<dt*0.25)spawnSeraph();
+  if(seraph&&dayA>0.2){despawnSeraph(true);seraphCD=DAYLEN*0.5;return;}
+  if(!seraph)return;
+  var sgp=seraph.g.position,px=player.position.x,pz=player.position.z,d=Math.hypot(px-sgp.x,pz-sgp.z);
+  // Schweben + langsame Jagd
+  seraph.bob+=dt;sgp.y=heightAt(sgp.x,sgp.z)+4.6+Math.sin(seraph.bob*1.4)*0.8;
+  if(d>7&&d<70){var ang=Math.atan2(pz-sgp.z,px-sgp.x);sgp.x+=Math.cos(ang)*3.4*dt;sgp.z+=Math.sin(ang)*3.4*dt;}
+  seraph.g.rotation.y+=dt*0.4;
+  // Nova-Angriff mit Warnring (wie NEXUS)
+  if(d<40){seraph.novaT-=dt;
+    if(seraph.novaT<=0){seraph.novaT=3.4;
+      var bx=sgp.x,bz=sgp.z,R=8;
+      var warn=new THREE.Mesh(new THREE.RingGeometry(R-0.4,R,40),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.5,side:THREE.DoubleSide}));
+      warn.rotation.x=-Math.PI/2;warn.position.set(bx,heightAt(bx,bz)+0.15,bz);scene.add(warn);beep(240,.3,"sawtooth",.06);
+      setTimeout(function(){scene.remove(warn);warn.material.dispose();warn.geometry.dispose();
+        if(!seraph)return;
+        var dd=Math.hypot(player.position.x-bx,player.position.z-bz);
+        if(dd<R+0.8)hitPlayer(seraph.atk*1.2);
+        burst(bx,1,bz,0xffd166,18,7);camShake=Math.max(camShake,0.4);},850);}}
+  // Spieler-Angriffe treffen den Seraph über die Melee/Puls-Wege (eigene Hitbox unten)
+}
 // ===================== System-Hooks für die Hauptschleife =====================
 function initSystems(){
   renderQuests();
   // Touch: E-Button zeigen, wenn Interaktion in Reichweite
 }
 function updSystems(dt,dayA){
-  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();
+  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);
   // NPC-Marker hüpfen + Interakt-Hinweis
   var near=null,px=player.position.x,pz=player.position.z;
   for(var i=0;i<npcs.length;i++){npcs[i].mark.position.y=3.4+Math.sin(G.t*3+i)*0.25;npcs[i].mark.rotation.y+=dt*2;
