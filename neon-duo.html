@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Neon Duo — das Koop-Spiel mit dem Band | aban news</title>
+<meta name="description" content="Neon Duo: echtes Koop-Design im Browser. Klinge & Funke können nur zusammen gewinnen — verbunden durch das Band, mit Wiederbeleben, Kombo-Novas und einem Boss, der beide braucht. 2 Spieler an einer Tastatur oder solo mit KI-Partner.">
+<link rel="canonical" href="https://abannews.com/neon-duo.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Neon Duo — Koop mit dem Band">
+<meta property="og:description" content="Zwei Rollen, ein Band, ein Ziel. Nur zusammen. Gratis im Browser.">
+<meta property="og:url" content="https://abannews.com/neon-duo.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Neon Duo","url":"https://abannews.com/neon-duo.html","genre":"Koop-Action","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+#wrap{position:fixed;inset:0}canvas{display:block}
+.hide{display:none!important}
+#hud{position:fixed;inset:0;pointer-events:none;z-index:10}
+.pbar{position:absolute;bottom:16px;width:min(280px,40vw)}
+.pbar .nm{font-weight:900;font-size:.8rem;letter-spacing:.1em;margin-bottom:3px;text-shadow:0 2px 8px #000}
+.pbar .bar{height:14px;border-radius:8px;background:rgba(8,10,24,.72);border:1px solid rgba(120,140,255,.35);overflow:hidden}
+.pbar .bar i{display:block;height:100%;transition:width .15s}
+#p1bar{left:16px}#p1bar .nm{color:#7de3ff}#p1bar i{background:linear-gradient(90deg,#5ef2ff,#7dffb0)}
+#p2bar{right:16px;text-align:right}#p2bar .nm{color:#ffb46e}#p2bar i{background:linear-gradient(90deg,#ffcf6e,#ff7ad9)}
+#wave{position:absolute;top:14px;left:50%;transform:translateX(-50%);text-align:center}
+#wave b{font-size:1.05rem;letter-spacing:.25em;color:#cfe0ff;text-shadow:0 2px 10px #000}
+#wave small{display:block;color:#8b93b8;font-size:.72rem;margin-top:2px}
+#bandTag{position:absolute;top:58px;left:50%;transform:translateX(-50%);font-size:.72rem;font-weight:800;color:#b98bff;text-shadow:0 0 12px #b98bff;opacity:0;transition:opacity .3s}
+#hint{position:absolute;bottom:110px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;max-width:90vw}
+#announce{position:absolute;top:24%;left:0;right:0;text-align:center;font-weight:900;font-size:2rem;letter-spacing:.06em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none}
+#combo{position:absolute;top:34%;left:0;right:0;text-align:center;font-weight:900;font-size:1.3rem;color:#ffd166;text-shadow:0 0 18px #ffd166;opacity:0;transition:opacity .25s;pointer-events:none}
+#dmg{position:fixed;inset:0;pointer-events:none;z-index:11}
+.dnum{position:absolute;font-weight:900;font-size:15px;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .7s ease-out,opacity .7s;opacity:1;will-change:transform,opacity}
+#hurt{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 55%,rgba(255,30,60,.5));opacity:0;transition:opacity .25s;z-index:9}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 38%,rgba(24,20,54,.8),rgba(5,6,15,.96));backdrop-filter:blur(4px);padding:20px;z-index:40}
+.overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#a9b8ff;text-transform:uppercase;margin-bottom:12px}
+.overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#5ef2ff,#ffcf6e 55%,#ff6ec7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 26px rgba(150,110,255,.4))}
+.overlay p{color:#c7cbe6;max-width:520px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
+.roles{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:.4rem 0 .8rem}
+.role{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:14px;padding:12px 16px;font-size:.82rem;max-width:250px;text-align:left}
+.role b{display:block;font-size:.95rem;margin-bottom:4px}
+.role.k b{color:#7de3ff}.role.f b{color:#ffb46e}
+.role small{color:#9aa6d8;line-height:1.45;display:block}
+.btn{border:0;cursor:pointer;font-weight:900;font-size:1.05rem;padding:14px 30px;border-radius:44px;color:#0a1020;background:linear-gradient(92deg,#5ef2ff,#b98bff);box-shadow:0 10px 40px rgba(94,242,255,.35);margin:4px}
+.btn.warm{background:linear-gradient(92deg,#ffcf6e,#ff7ad9);box-shadow:0 10px 40px rgba(255,180,110,.35)}
+.foot{margin-top:14px;font-size:.78rem;color:#8890b8}.foot a{color:#9fb2ff}
+#touchUI{position:fixed;inset:0;z-index:15;pointer-events:none;display:none}
+#joyBase{position:absolute;left:26px;bottom:96px;width:112px;height:112px;border-radius:50%;border:2px solid rgba(125,227,255,.4);background:rgba(10,14,32,.35)}
+#joyKnob{position:absolute;left:50%;top:50%;width:50px;height:50px;border-radius:50%;background:rgba(125,227,255,.5);transform:translate(-50%,-50%)}
+.tbtn{position:absolute;width:66px;height:66px;border-radius:50%;border:2px solid;font-size:1.4rem;font-weight:800;pointer-events:auto;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none}
+#tAtk{right:24px;bottom:120px;border-color:#5ef2ff;background:rgba(16,50,64,.55);color:#7de3ff}
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<div id="hurt"></div>
+<div id="hud" class="hide">
+  <div id="wave"><b id="waveTxt">WELLE 1</b><small id="waveSub"></small></div>
+  <div id="bandTag">⛓ DAS BAND IST AKTIV</div>
+  <div class="pbar" id="p1bar"><div class="nm">⚔ KLINGE</div><div class="bar"><i id="hp1" style="width:100%"></i></div></div>
+  <div class="pbar" id="p2bar"><div class="nm">✦ FUNKE</div><div class="bar"><i id="hp2" style="width:100%"></i></div></div>
+  <div id="hint"></div><div id="announce"></div><div id="combo">KOMBO!</div>
+</div>
+<div id="dmg"></div>
+<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:10px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🔊</button>
+<div id="touchUI"><div id="joyBase"><div id="joyKnob"></div></div><button class="tbtn" id="tAtk">⚔</button></div>
+
+<div class="overlay" id="start">
+  <div class="kicker">aban news · Koop-Arena · nach den Regeln der großen Koop-Spiele</div>
+  <h1>NEON DUO</h1>
+  <p>Zwei Held:innen, <b>ein Band</b>. Panzer-Gegner bricht nur die <b>Klinge</b>, Flieger trifft nur der <b>Funke</b> — und der Endboss braucht euch <b>beide</b>. Geht jemand zu Boden, kann der andere ihn <b>wiederbeleben</b>. Bleibt zusammen: euer <b>Band</b> verbrennt alles, was hindurchläuft.</p>
+  <div class="roles">
+    <div class="role k"><b>⚔ KLINGE (Spieler 1)</b><small><b>WASD</b> bewegen · <b>LEER</b> Hieb<br>Bricht 🛡 Panzer · Wiederbeleben: daneben stehen</small></div>
+    <div class="role f"><b>✦ FUNKE (Spieler 2)</b><small><b>Pfeile</b> bewegen · zielt &amp; feuert automatisch<br>Trifft 🪽 Flieger · Wiederbeleben: daneben stehen</small></div>
+  </div>
+  <div>
+    <button class="btn" id="startCoop">2 Spieler · eine Tastatur ▶</button>
+    <button class="btn warm" id="startSolo">Solo + KI-Partner ▶</button>
+  </div>
+  <div class="foot">Trefft denselben Gegner gleichzeitig → <b style="color:#ffd166">KOMBO-NOVA</b> · Kein Download · <a href="/spiele.html">aban Arcade</a></div>
+</div>
+<div class="overlay hide" id="over">
+  <div class="kicker" id="overKick">Beide gefallen</div>
+  <h1 id="overTitle">GAME OVER</h1>
+  <p id="overTxt"></p>
+  <button class="btn" id="againBtn">Nochmal ▶</button>
+  <div class="foot"><a href="/spiele.html">Mehr Spiele</a></div>
+</div>
+
+<script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
+<script>
+(function(){
+"use strict";
+var THREE=window.THREE,W=innerWidth,H=innerHeight;
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
+var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
+renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setSize(W,H);
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputEncoding=THREE.sRGBEncoding;
+document.getElementById("wrap").appendChild(renderer.domElement);
+var scene=new THREE.Scene();scene.background=new THREE.Color(0x090616);scene.fog=new THREE.Fog(0x090616,60,300);
+var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:i!==undefined?i:0.8,flatShading:true});}
+// Audio
+var actx=null,muted=lsGet("nd_muted")==="1";
+function beep(f,d,t,g){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
+(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("nd_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
+// ===== Arena (Synthwave) =====
+var ARENA=34;
+scene.add(new THREE.AmbientLight(0x8890c8,1.0));
+var dl=new THREE.DirectionalLight(0xffe0c0,0.85);dl.position.set(14,30,16);scene.add(dl);
+dl.castShadow=true;dl.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);dl.shadow.bias=-0.0007;
+dl.shadow.camera.near=1;dl.shadow.camera.far=140;dl.shadow.camera.left=-50;dl.shadow.camera.right=50;dl.shadow.camera.top=50;dl.shadow.camera.bottom=-50;
+var floor=new THREE.Mesh(new THREE.CircleGeometry(ARENA,56),new THREE.MeshStandardMaterial({color:0x0c1030,emissive:0x131a44}));
+floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+var grid=new THREE.GridHelper(ARENA*2,30,0x2a3585,0x1a2158);grid.position.y=0.02;scene.add(grid);
+var ring=new THREE.Mesh(new THREE.RingGeometry(ARENA-0.5,ARENA,72),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.4,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));
+ring.rotation.x=-Math.PI/2;ring.position.y=0.04;scene.add(ring);
+// Retro-Sonne + Berge + Sterne
+var sunMat=new THREE.ShaderMaterial({fog:false,depthWrite:false,transparent:true,
+  vertexShader:"varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"varying vec2 vU;void main(){float y=vU.y;vec3 c=mix(vec3(1.0,0.2,0.45),vec3(1.0,0.9,0.35),pow(y,0.8));if(y<0.55&&fract(y*12.0)<0.4)discard;gl_FragColor=vec4(c,1.0);}"});
+var sun=new THREE.Mesh(new THREE.CircleGeometry(70,48),sunMat);sun.position.set(0,42,-260);scene.add(sun);
+for(var mi=0;mi<44;mi++){var ma=mi/44*Math.PI*2,mr=150+Math.random()*80,mh=26+Math.random()*54;
+  if(Math.sin(ma)<-0.75)mh*=0.3;
+  var mnt=new THREE.Mesh(new THREE.ConeGeometry(24+Math.random()*26,mh,4),mat(0x0a0c20,0x1a1440,0.5));
+  mnt.position.set(Math.cos(ma)*mr,mh/2-8,Math.sin(ma)*mr);scene.add(mnt);}
+(function(){var g=new THREE.BufferGeometry(),p=new Float32Array(220*3);for(var i=0;i<220;i++){p[i*3]=(Math.random()-.5)*500;p[i*3+1]=40+Math.random()*160;p[i*3+2]=(Math.random()-.5)*500;}g.setAttribute("position",new THREE.BufferAttribute(p,3));scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x9aa2d8,size:1.0,transparent:true,opacity:.8})));})();
+// ===== Spieler =====
+function mkPlayer(cBody,cRing){
+  var g=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.IcosahedronGeometry(0.65,0),mat(0xbfe9ff,cBody));body.position.y=1.0;body.castShadow=true;g.add(body);
+  var rg=new THREE.Mesh(new THREE.TorusGeometry(1.1,0.12,8,22),new THREE.MeshBasicMaterial({color:cRing,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));
+  rg.rotation.x=Math.PI/2;rg.position.y=0.15;g.add(rg);
+  scene.add(g);return {g:g,body:body,ring:rg};
+}
+var P1=mkPlayer(0x2a6ab0,0x5ef2ff),P2=mkPlayer(0xb06a2a,0xffcf6e);
+P1.g.position.set(-4,0,10);P2.g.position.set(4,0,10);
+var g1=new THREE.PointLight(0x5ef2ff,1.1,18);scene.add(g1);
+var g2=new THREE.PointLight(0xffcf6e,1.1,18);scene.add(g2);
+// Echtes Held-Modell für beide (P2 warm getönt)
+if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/char.glb",function(gl){
+  function fit(o,tint){var box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
+    var k=2.3/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k+1.15,-ctr.z*k);
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();n.material.emissive=new THREE.Color(tint);n.material.emissiveIntensity=0.35;}}});return o;}
+  P1.body.visible=false;P1.model=fit(gl.scene.clone(true),0x5ef2ff);P1.g.add(P1.model);
+  P2.body.visible=false;P2.model=fit(gl.scene.clone(true),0xff9a4a);P2.g.add(P2.model);
+},undefined,function(){});}
+// ===== Das Band =====
+var bandGeo=new THREE.CylinderGeometry(0.09,0.09,1,6,1,true);
+var band=new THREE.Mesh(bandGeo,new THREE.MeshBasicMaterial({color:0xb98bff,transparent:true,opacity:0.75,blending:THREE.AdditiveBlending,depthWrite:false}));
+band.visible=false;scene.add(band);
+var BAND_RANGE=15;
+// ===== Zustand =====
+var G=null,running=false,solo=false;
+function freshState(){return {wave:0,hp1:100,hp2:100,max1:100,max2:100,
+  down1:0,down2:0,rev1:0,rev2:0, // down = Restzeit Ausbluten, rev = Wiederbelebe-Fortschritt
+  atkCD1:0,fireCD2:0,if1:0,if2:0,vx1:0,vz1:0,vx2:0,vz2:0,
+  t:0,kills:0,combo:{},lastHit1:{},lastHit2:{},spawnQ:0,between:2.5,boss:null};}
+// ===== Eingabe =====
+var keys={};
+addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
+  if(k===" "){e.preventDefault();if(running)p1Attack();}
+  if(k.indexOf("arrow")===0)e.preventDefault();
+});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
+var isTouch=("ontouchstart" in window);
+var joy={id:null,x:0,y:0};
+if(isTouch){document.getElementById("touchUI").style.display="block";
+  var jb=document.getElementById("joyBase"),jk=document.getElementById("joyKnob");
+  function jpos(t){var r=jb.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+    var dx=t.clientX-cx,dy=t.clientY-cy,m=Math.hypot(dx,dy),mx=r.width/2;
+    if(m>mx){dx*=mx/m;dy*=mx/m;}joy.x=dx/mx;joy.y=dy/mx;
+    jk.style.transform="translate(calc(-50% + "+dx+"px),calc(-50% + "+dy+"px))";}
+  addEventListener("touchstart",function(e){for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+    if(t.clientX<W*0.5&&joy.id===null){joy.id=t.identifier;jpos(t);}}},{passive:true});
+  addEventListener("touchmove",function(e){for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier===joy.id)jpos(t);}},{passive:true});
+  function jend(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===joy.id){joy.id=null;joy.x=0;joy.y=0;jk.style.transform="translate(-50%,-50%)";}}}
+  addEventListener("touchend",jend);addEventListener("touchcancel",jend);
+  var ta=document.getElementById("tAtk");
+  ta.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();if(running)p1Attack();},{passive:false});
+}
+function mv1(){var x=0,z=0;if(keys.w)z-=1;if(keys.s)z+=1;if(keys.a)x-=1;if(keys.d)x+=1;
+  if(joy.id!==null){x=joy.x;z=joy.y;}return {x:x,z:z};}
+function mv2(){var x=0,z=0;if(keys.arrowup)z-=1;if(keys.arrowdown)z+=1;if(keys.arrowleft)x-=1;if(keys.arrowright)x+=1;return {x:x,z:z};}
+// ===== HUD/FX =====
+function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2400);}
+function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#7de3ff";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2200);}
+var dmgLayer=document.getElementById("dmg");
+function dmgNum(v,x,y,z,col){var el=document.createElement("div");el.className="dnum";el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
+  var p=new THREE.Vector3(x,y,z).project(camera);if(p.z>1)return;
+  el.style.left=((p.x+1)/2*W)+"px";el.style.top=((-p.y+1)/2*H)+"px";
+  dmgLayer.appendChild(el);requestAnimationFrame(function(){el.style.transform="translate(-50%,-170%) scale(1.15)";el.style.opacity=0;});
+  setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},720);}
+var hurtEl=document.getElementById("hurt"),hurtT=0,camShake=0;
+var fxs=[];
+function burst(x,y,z,color,n,spd){for(var i=0;i<(n||8);i++){
+  var m=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.2,0.2),new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+  m.position.set(x,y,z);scene.add(m);
+  var a=Math.random()*6.283,up=Math.random()*4+2,sp=(spd||5)*(0.5+Math.random());
+  fxs.push({m:m,vx:Math.cos(a)*sp,vy:up,vz:Math.sin(a)*sp,life:0.55+Math.random()*0.3});}}
+function updFx(dt){for(var i=fxs.length-1;i>=0;i--){var f=fxs[i];f.life-=dt;
+  if(f.life<=0){scene.remove(f.m);f.m.material.dispose();f.m.geometry.dispose();fxs.splice(i,1);continue;}
+  f.vy-=13*dt;f.m.position.x+=f.vx*dt;f.m.position.y=Math.max(0.1,f.m.position.y+f.vy*dt);f.m.position.z+=f.vz*dt;
+  f.m.material.opacity=Math.min(1,f.life*2);f.m.rotation.x+=dt*6;}}
+function updHUD(){
+  document.getElementById("hp1").style.width=(100*Math.max(0,G.hp1)/G.max1)+"%";
+  document.getElementById("hp2").style.width=(100*Math.max(0,G.hp2)/G.max2)+"%";
+}
+// ===== Gegner =====
+// Typen: 0 normal (beide), 1 Panzer (nur Klinge), 2 Flieger (nur Funke)
+var enemies=[];
+function spawnEnemy(type,elite){
+  var a=Math.random()*6.283,r=ARENA-3;
+  var ex=Math.cos(a)*r,ez=Math.sin(a)*r;
+  var g=new THREE.Group(),c=type===1?0xb98bff:(type===2?0xff7ad9:0xff5d7d);
+  var body;
+  if(type===1){body=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.8,1.6),mat(0x141a3e,c,0.8));body.position.y=1.0;
+    var sh=new THREE.Mesh(new THREE.TorusGeometry(1.5,0.1,6,4),new THREE.MeshBasicMaterial({color:0xb98bff,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false}));
+    sh.rotation.x=Math.PI/2;sh.position.y=1.0;g.add(sh);g.userData.shield=sh;}
+  else if(type===2){body=new THREE.Mesh(new THREE.ConeGeometry(0.8,1.6,5),mat(0x141a3e,c,0.9));body.position.y=3.2;body.rotation.x=Math.PI;}
+  else{body=new THREE.Mesh(new THREE.OctahedronGeometry(0.85,0),mat(0x141a3e,c,0.8));body.position.y=1.0;}
+  body.castShadow=true;g.add(body);g.position.set(ex,0,ez);scene.add(g);
+  var wv=Math.max(1,G.wave),mult=(elite?2.2:1)*(1+wv*0.12);
+  enemies.push({g:g,body:body,type:type,hp:(type===1?26:(type===2?14:16))*mult,atk:(type===1?11:(type===2?7:8))*(1+wv*0.06),
+    spd:(type===1?4.2:(type===2?7:5.6))*(elite?1.15:1),c:c,r:type===1?1.4:0.95,elite:!!elite,
+    atkT:0,flash:0,fly:type===2,active:true,slow:0});
+}
+function killEnemy(e){
+  e.active=false;scene.remove(e.g);G.kills++;
+  burst(e.g.position.x,e.fly?3:1,e.g.position.z,e.c,e.elite?16:10,5);
+  beep(240,.12,"sawtooth",.05);camShake=Math.max(camShake,0.2);
+}
+function hitEnemy(e,dmg,who,col){
+  // Asymmetrie: Panzer nur Klinge (who=1), Flieger nur Funke (who=2)
+  if(e.type===1&&who===2){dmgNum(0,e.g.position.x,2.4,e.g.position.z,"#8b93b8");showHint("🛡 Panzer — nur die KLINGE bricht ihn!",1400);return;}
+  if(e.type===2&&who===1){dmgNum(0,e.g.position.x,4,e.g.position.z,"#8b93b8");showHint("🪽 Flieger — nur der FUNKE trifft ihn!",1400);return;}
+  e.hp-=dmg;e.flash=0.08;
+  dmgNum(dmg,e.g.position.x,e.fly?4:2.2,e.g.position.z,col);
+  // Kombo: beide treffen denselben Gegner binnen 0.6s -> Nova
+  var id=e.g.id,now=G.t;
+  if(who===1)G.lastHit1[id]=now;else G.lastHit2[id]=now;
+  if(G.lastHit1[id]!==undefined&&G.lastHit2[id]!==undefined&&Math.abs(G.lastHit1[id]-G.lastHit2[id])<0.6&&(!e.comboT||now-e.comboT>1.5)){
+    e.comboT=now;comboNova(e);}
+  if(e.hp<=0)killEnemy(e);
+}
+function comboNova(e){
+  var cx=e.g.position.x,cz=e.g.position.z;
+  var c=document.getElementById("combo");c.style.opacity=1;clearTimeout(c._t);c._t=setTimeout(function(){c.style.opacity=0;},900);
+  beep(1046,.2,"triangle",.08);beep(1318,.3,"triangle",.06);camShake=Math.max(camShake,0.45);
+  burst(cx,1.5,cz,0xffd166,22,8);
+  var rg2=new THREE.Mesh(new THREE.TorusGeometry(0.5,0.2,8,32),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
+  rg2.rotation.x=-Math.PI/2;rg2.position.set(cx,0.5,cz);scene.add(rg2);
+  var t0=performance.now();
+  (function grow(){var k=(performance.now()-t0)/300;if(k>=1){scene.remove(rg2);rg2.material.dispose();rg2.geometry.dispose();return;}
+    rg2.scale.setScalar(1+k*12);rg2.material.opacity=0.9*(1-k);requestAnimationFrame(grow);})();
+  for(var i=0;i<enemies.length;i++){var o=enemies[i];if(!o.active)continue;
+    var d=Math.hypot(o.g.position.x-cx,o.g.position.z-cz);
+    if(d<8){o.hp-=18;o.flash=0.1;dmgNum(18,o.g.position.x,o.fly?4:2.2,o.g.position.z,"#ffd166");if(o.hp<=0)killEnemy(o);}}
+  if(G.boss&&G.boss.active){var bd=Math.hypot(G.boss.g.position.x-cx,G.boss.g.position.z-cz);if(bd<9)bossHit(24,0,"#ffd166");}
+}
+// ===== Spieler-Aktionen =====
+function p1Attack(){
+  if(G.atkCD1>0||G.down1>0)return;G.atkCD1=0.4;
+  beep(760,.05,"square",.035);
+  // Auto-Face nächster Nicht-Flieger
+  var best=null,bd=6.5;
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.fly)continue;
+    var d=Math.hypot(e.g.position.x-P1.g.position.x,e.g.position.z-P1.g.position.z)-e.r;if(d<bd){bd=d;best=e;}}
+  if(G.boss&&G.boss.active&&G.boss.phase==="boden"){var dbb=Math.hypot(G.boss.g.position.x-P1.g.position.x,G.boss.g.position.z-P1.g.position.z)-3;if(dbb<bd){bd=dbb;best="boss";}}
+  if(best&&best!=="boss")P1.g.rotation.y=Math.atan2(best.g.position.x-P1.g.position.x,best.g.position.z-P1.g.position.z);
+  if(best==="boss")P1.g.rotation.y=Math.atan2(G.boss.g.position.x-P1.g.position.x,G.boss.g.position.z-P1.g.position.z);
+  var fx2=Math.sin(P1.g.rotation.y),fz2=Math.cos(P1.g.rotation.y);
+  var arc=new THREE.Mesh(new THREE.TorusGeometry(2.0,0.13,6,16,2.2),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
+  arc.position.set(P1.g.position.x+fx2*1.2,1.2,P1.g.position.z+fz2*1.2);
+  arc.rotation.x=-Math.PI/2;arc.rotation.z=-P1.g.rotation.y+Math.PI/2-1.1;scene.add(arc);
+  setTimeout(function(){scene.remove(arc);arc.material.dispose();arc.geometry.dispose();},130);
+  for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active)continue;
+    var dx=e2.g.position.x-P1.g.position.x,dz=e2.g.position.z-P1.g.position.z,d2=Math.hypot(dx,dz);
+    if(d2<3.4+e2.r){var dot=(dx*fx2+dz*fz2)/(d2||1);
+      if(dot>0.15||d2<1.6)hitEnemy(e2,14+Math.random()*5,1,"#7de3ff");}}
+  if(G.boss&&G.boss.active){var bdx=G.boss.g.position.x-P1.g.position.x,bdz=G.boss.g.position.z-P1.g.position.z,bd2=Math.hypot(bdx,bdz);
+    if(bd2<3.4+3&&G.boss.phase==="boden")bossHit(16,1,"#7de3ff");
+    else if(bd2<3.4+3&&G.boss.phase==="flug"){showHint("Der Boss fliegt — FUNKE muss ran!",1400);}}
+}
+function p2AutoFire(dt){
+  if(G.down2>0)return;
+  G.fireCD2-=dt;if(G.fireCD2>0)return;
+  // Ziel: nächster Gegner (Flieger bevorzugt), oder Boss in Flugphase
+  var best=null,bd=26;
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var d=Math.hypot(e.g.position.x-P2.g.position.x,e.g.position.z-P2.g.position.z)-(e.fly?6:0); // Flieger bevorzugen
+    if(d<bd){bd=d;best=e;}}
+  var tgtBoss=false;
+  if(G.boss&&G.boss.active&&G.boss.phase==="flug"){var dbb=Math.hypot(G.boss.g.position.x-P2.g.position.x,G.boss.g.position.z-P2.g.position.z)-8;if(dbb<bd){bd=dbb;best=null;tgtBoss=true;}}
+  if(!best&&!tgtBoss)return;
+  G.fireCD2=0.5;
+  var tx=tgtBoss?G.boss.g.position.x:best.g.position.x,tz=tgtBoss?G.boss.g.position.z:best.g.position.z;
+  var ty=tgtBoss?5:(best&&best.fly?3.2:1);
+  P2.g.rotation.y=Math.atan2(tx-P2.g.position.x,tz-P2.g.position.z);
+  beep(980,.05,"square",.03);
+  // Projektil-Trace (sofort, mit Linie)
+  var lg=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(P2.g.position.x,1.2,P2.g.position.z),new THREE.Vector3(tx,ty,tz)]);
+  var ln=new THREE.Line(lg,new THREE.LineBasicMaterial({color:0xffcf6e,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending}));
+  scene.add(ln);setTimeout(function(){scene.remove(ln);ln.material.dispose();lg.dispose();},110);
+  burst(tx,ty,tz,0xffcf6e,4,3);
+  if(tgtBoss)bossHit(11,2,"#ffcf6e");
+  else hitEnemy(best,9+Math.random()*4,2,"#ffcf6e");
+}
+function hitPlayer(who,dmg){
+  var ifr=who===1?G.if1:G.if2;if(ifr>0)return;
+  if(who===1){if(G.down1>0)return;G.hp1-=dmg;G.if1=0.5;if(G.hp1<=0){G.hp1=0;downPlayer(1);}}
+  else{if(G.down2>0)return;G.hp2-=dmg;G.if2=0.5;if(G.hp2<=0){G.hp2=0;downPlayer(2);}}
+  hurtT=1;camShake=Math.max(camShake,0.35);beep(140,.14,"sawtooth",.05);updHUD();
+}
+// ===== L4D-Revive =====
+function downPlayer(who){
+  if(who===1){G.down1=20;G.rev1=0;P1.g.rotation.z=Math.PI/2;}else{G.down2=20;G.rev2=0;P2.g.rotation.z=Math.PI/2;}
+  announce((who===1?"KLINGE":"FUNKE")+" IST AM BODEN!","#ff5d7d");
+  showHint("Partner: daneben stehen zum Wiederbeleben! ("+(who===1?"Funke → Klinge":"Klinge → Funke")+")",3200);
+  beep(90,.5,"sawtooth",.08);camShake=1.0;
+  if(G.down1>0&&G.down2>0)gameOver(false);
+}
+function revivePlayer(who){
+  if(who===1){G.down1=0;G.hp1=Math.round(G.max1*0.5);P1.g.rotation.z=0;}else{G.down2=0;G.hp2=Math.round(G.max2*0.5);P2.g.rotation.z=0;}
+  announce((who===1?"KLINGE":"FUNKE")+" IST ZURÜCK!","#6affab");
+  beep(880,.3,"triangle",.08);burst(who===1?P1.g.position.x:P2.g.position.x,1,who===1?P1.g.position.z:P2.g.position.z,0x6affab,16,6);
+  updHUD();
+}
+function updRevive(dt){
+  // Ausbluten + Wiederbeleben durch Nähe des Partners
+  if(G.down1>0){G.down1-=dt;if(G.down1<=0){gameOver(false);return;}
+    var d=Math.hypot(P1.g.position.x-P2.g.position.x,P1.g.position.z-P2.g.position.z);
+    if(d<3&&G.down2<=0){G.rev1+=dt;showHint("⛑ Wiederbeleben… "+Math.round(G.rev1/2*100)+"%",400);if(G.rev1>=2)revivePlayer(1);}
+    else G.rev1=Math.max(0,G.rev1-dt*0.5);}
+  if(G.down2>0){G.down2-=dt;if(G.down2<=0){gameOver(false);return;}
+    var d2=Math.hypot(P1.g.position.x-P2.g.position.x,P1.g.position.z-P2.g.position.z);
+    if(d2<3&&G.down1<=0){G.rev2+=dt;showHint("⛑ Wiederbeleben… "+Math.round(G.rev2/2*100)+"%",400);if(G.rev2>=2)revivePlayer(2);}
+    else G.rev2=Math.max(0,G.rev2-dt*0.5);}
+}
+// ===== Das Band: Schaden an Gegnern zwischen den Spielern =====
+function updBand(dt){
+  var dx=P2.g.position.x-P1.g.position.x,dz=P2.g.position.z-P1.g.position.z,d=Math.hypot(dx,dz);
+  var on=d<BAND_RANGE&&G.down1<=0&&G.down2<=0;
+  band.visible=on;
+  document.getElementById("bandTag").style.opacity=on?0.9:0;
+  if(!on)return;
+  band.position.set((P1.g.position.x+P2.g.position.x)/2,1.1,(P1.g.position.z+P2.g.position.z)/2);
+  band.scale.set(1,d,1);band.rotation.z=Math.PI/2;band.rotation.y=-Math.atan2(dz,dx);
+  band.material.opacity=0.55+Math.sin(G.t*6)*0.2;
+  // Punkt-zu-Segment-Abstand: Gegner am Band nehmen DoT + Slow
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.fly)continue;
+    var px=e.g.position.x-P1.g.position.x,pz=e.g.position.z-P1.g.position.z;
+    var t=Math.max(0,Math.min(1,(px*dx+pz*dz)/(d*d)));
+    var cx=P1.g.position.x+dx*t,cz=P1.g.position.z+dz*t;
+    var dist=Math.hypot(e.g.position.x-cx,e.g.position.z-cz);
+    if(dist<1.1){e.slow=0.4;e.hp-=16*dt;e.flash=0.05;
+      if(Math.random()<dt*8)burst(e.g.position.x,1,e.g.position.z,0xb98bff,2,2);
+      if(e.hp<=0)killEnemy(e);}}
+}
+// ===== Wellen =====
+var WAVES=[ // [normal, panzer, flieger, elite]
+ [4,0,0,0],[5,1,0,0],[4,2,2,0],[6,2,3,0],[5,3,4,1],[8,4,4,1],[6,5,6,2],[0,0,0,0] // Welle 8 = BOSS
+];
+function startWave(){
+  G.wave++;
+  if(G.wave>=8){spawnBoss();return;}
+  var w=WAVES[G.wave-1];
+  announce("WELLE "+G.wave,"#7de3ff");beep(520,.2,"triangle",.07);
+  document.getElementById("waveTxt").textContent="WELLE "+G.wave+" / 8";
+  document.getElementById("waveSub").textContent=(w[1]?w[1]+"×🛡 ":"")+(w[2]?w[2]+"×🪽 ":"")+(w[3]?w[3]+"×👑":"");
+  for(var i=0;i<w[0];i++)spawnEnemy(0,false);
+  for(i=0;i<w[1];i++)spawnEnemy(1,false);
+  for(i=0;i<w[2];i++)spawnEnemy(2,false);
+  for(i=0;i<w[3];i++)spawnEnemy((Math.random()*2)|0,true);
+}
+function updWaves(dt){
+  var alive=0;for(var i=0;i<enemies.length;i++)if(enemies[i].active)alive++;
+  if(alive===0&&(!G.boss||!G.boss.active)){
+    if(G.wave>=8&&G.boss&&G.boss.dead){return;}
+    G.between-=dt;
+    if(G.between<=0){G.between=3.2;startWave();
+      // Zwischen-Wellen-Heilung (Overcooked-Pause)
+      G.hp1=Math.min(G.max1,G.hp1+15);G.hp2=Math.min(G.max2,G.hp2+15);updHUD();}
+  }
+  for(i=enemies.length-1;i>=0;i--)if(!enemies[i].active)enemies.splice(i,1);
+}
+// ===== BOSS: DER ZWIESPALT (Seraph-Modell) — erzwingt Rollenwechsel =====
+var seraphModel=null;
+if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/boss_seraph.glb",function(gl){
+  var o=gl.scene,box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
+  var k=6.5/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k);
+  o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.emissive=new THREE.Color(0xffd166);n.material.emissiveIntensity=0.4;}}});
+  seraphModel=o;},undefined,function(){});}
+function spawnBoss(){
+  announce("☠ DER ZWIESPALT","#ff5d7d");beep(70,.8,"sawtooth",.1);camShake=1.2;
+  document.getElementById("waveTxt").textContent="ENDBOSS";
+  document.getElementById("waveSub").textContent="Boden = KLINGE · Flug = FUNKE";
+  var g=new THREE.Group();
+  if(seraphModel)g.add(seraphModel.clone(true));
+  else{var b=new THREE.Mesh(new THREE.IcosahedronGeometry(2.8,0),mat(0x2a2008,0xffd166,1.0));b.castShadow=true;g.add(b);}
+  var bl=new THREE.PointLight(0xffd166,2,40);bl.position.y=4;g.add(bl);
+  g.position.set(0,2.4,-14);scene.add(g);
+  var mats=[];g.traverse(function(n){if(n.isMesh&&n.material)mats.push(n.material);});
+  G.boss={g:g,mats:mats,hp:420,maxhp:420,active:true,dead:false,phase:"boden",phaseT:9,novaT:3,y:2.4};
+}
+function bossHit(dmg,who,col){
+  var b=G.boss;if(!b||!b.active)return;
+  b.hp-=dmg;dmgNum(dmg,b.g.position.x,6,b.g.position.z,col);
+  for(var i=0;i<b.mats.length;i++)b.mats[i].emissiveIntensity=1.4;
+  setTimeout(function(){if(G.boss)for(var j=0;j<b.mats.length;j++)b.mats[j].emissiveIntensity=0.4;},90);
+  if(b.hp<=0){b.active=false;b.dead=true;scene.remove(b.g);
+    burst(b.g.position.x,3,b.g.position.z,0xffd166,44,9);camShake=1.4;
+    gameOver(true);}
+}
+function updBoss(dt){
+  var b=G.boss;if(!b||!b.active)return;
+  b.phaseT-=dt;
+  if(b.phaseT<=0){b.phase=b.phase==="boden"?"flug":"boden";b.phaseT=9;
+    announce(b.phase==="boden"?"⚔ BODENPHASE — Klinge!":"🪽 FLUGPHASE — Funke!",b.phase==="boden"?"#7de3ff":"#ffcf6e");
+    beep(660,.25,"triangle",.07);}
+  var ty=b.phase==="flug"?7:2.4;b.y+=(ty-b.y)*Math.min(1,dt*2);
+  b.g.position.y=b.y+Math.sin(G.t*1.5)*0.5;b.g.rotation.y+=dt*0.5;
+  // Verfolgung des nächsten lebenden Spielers
+  var t1=G.down1<=0,t2=G.down2<=0;
+  var tx=0,tz=0;
+  if(t1&&t2){var d1=Math.hypot(P1.g.position.x-b.g.position.x,P1.g.position.z-b.g.position.z),
+    d2=Math.hypot(P2.g.position.x-b.g.position.x,P2.g.position.z-b.g.position.z);
+    if(d1<d2){tx=P1.g.position.x;tz=P1.g.position.z;}else{tx=P2.g.position.x;tz=P2.g.position.z;}}
+  else if(t1){tx=P1.g.position.x;tz=P1.g.position.z;}else{tx=P2.g.position.x;tz=P2.g.position.z;}
+  var ang=Math.atan2(tz-b.g.position.z,tx-b.g.position.x);
+  b.g.position.x+=Math.cos(ang)*3.2*dt;b.g.position.z+=Math.sin(ang)*3.2*dt;
+  // Nova mit Warnring
+  b.novaT-=dt;
+  if(b.novaT<=0){b.novaT=3.4;
+    var bx=b.g.position.x,bz=b.g.position.z,R=8;
+    var warn=new THREE.Mesh(new THREE.RingGeometry(R-0.4,R,40),new THREE.MeshBasicMaterial({color:0xff5d7d,transparent:true,opacity:0.5,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));
+    warn.rotation.x=-Math.PI/2;warn.position.set(bx,0.12,bz);scene.add(warn);beep(220,.3,"sawtooth",.06);
+    setTimeout(function(){scene.remove(warn);warn.material.dispose();warn.geometry.dispose();
+      if(!G.boss||!G.boss.active)return;
+      var dd1=Math.hypot(P1.g.position.x-bx,P1.g.position.z-bz);
+      var dd2=Math.hypot(P2.g.position.x-bx,P2.g.position.z-bz);
+      if(dd1<R+0.8)hitPlayer(1,16);if(dd2<R+0.8)hitPlayer(2,16);
+      burst(bx,1,bz,0xff5d7d,18,7);camShake=Math.max(camShake,0.5);},900);}
+}
+// ===== Gegner-Update =====
+function updEnemies(dt){
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var ms=e.body.material;ms.emissiveIntensity=(e.flash>0)?2.2:0.85;if(e.flash>0)e.flash-=dt;
+    if(e.userData&&e.userData.shield)e.userData.shield.rotation.z+=dt;
+    if(e.g.userData.shield)e.g.userData.shield.rotation.z+=dt*1.5;
+    e.body.rotation.y+=dt*2;
+    var slowF=e.slow>0?0.45:1;if(e.slow>0)e.slow-=dt;
+    // Ziel: Flieger jagen Funke, Panzer jagen Klinge, normale den Nächsten (Asymmetrie-Druck)
+    var tgt=e.type===2?P2:(e.type===1?P1:null);
+    if(!tgt){var da=Math.hypot(P1.g.position.x-e.g.position.x,P1.g.position.z-e.g.position.z),
+      db=Math.hypot(P2.g.position.x-e.g.position.x,P2.g.position.z-e.g.position.z);
+      tgt=(da<db&&G.down1<=0)||G.down2>0?P1:P2;}
+    if((tgt===P1&&G.down1>0)||(tgt===P2&&G.down2>0))tgt=tgt===P1?P2:P1; // Gefallene ignorieren
+    var tx=tgt.g.position.x,tz=tgt.g.position.z;
+    var d=Math.hypot(tx-e.g.position.x,tz-e.g.position.z);
+    if(d>e.r+1.0){var ang=Math.atan2(tz-e.g.position.z,tx-e.g.position.x);
+      e.g.position.x+=Math.cos(ang)*e.spd*slowF*dt;e.g.position.z+=Math.sin(ang)*e.spd*slowF*dt;
+      e.g.rotation.y=-ang+Math.PI/2;}
+    else{e.atkT-=dt;if(e.atkT<=0){e.atkT=1.1;hitPlayer(tgt===P1?1:2,e.atk);burst(tx,1,tz,0xff5d7d,5,4);}}
+  }
+}
+// ===== KI-Partner (Solo-Modus): folgt, feuert (auto), belebt wieder =====
+function updAI(dt){
+  if(!solo||G.down2>0)return;
+  var tx,tz;
+  if(G.down1>0){tx=P1.g.position.x;tz=P1.g.position.z;} // Zum Gefallenen!
+  else{ // Position halten: nah bei P1, aber mit Abstand (Band aktiv, nicht im Weg)
+    var a=Math.atan2(P2.g.position.z-P1.g.position.z,P2.g.position.x-P1.g.position.x);
+    tx=P1.g.position.x+Math.cos(a)*7;tz=P1.g.position.z+Math.sin(a)*7;
+    // Vor Fliegern zurückweichen
+    for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+      var d=Math.hypot(e.g.position.x-P2.g.position.x,e.g.position.z-P2.g.position.z);
+      if(d<4){var fa=Math.atan2(P2.g.position.z-e.g.position.z,P2.g.position.x-e.g.position.x);
+        tx=P2.g.position.x+Math.cos(fa)*5;tz=P2.g.position.z+Math.sin(fa)*5;break;}}}
+  var dd=Math.hypot(tx-P2.g.position.x,tz-P2.g.position.z);
+  if(dd>1.2){var ang=Math.atan2(tz-P2.g.position.z,tx-P2.g.position.x);
+    var sp=G.down1>0?13:10;
+    G.vx2+=(Math.cos(ang)*sp-G.vx2)*Math.min(1,dt*8);G.vz2+=(Math.sin(ang)*sp-G.vz2)*Math.min(1,dt*8);}
+  else{G.vx2*=0.8;G.vz2*=0.8;}
+}
+// ===== Game Over / Sieg =====
+function gameOver(win){
+  running=false;
+  var best=+(lsGet("nd_best")||0);
+  if(win&&G.wave>best)lsSet("nd_best",8);
+  else if(!win&&G.wave-1>best)lsSet("nd_best",G.wave-1);
+  document.getElementById("overKick").textContent=win?"DER ZWIESPALT IST GEEINT":"Beide gefallen";
+  document.getElementById("overTitle").textContent=win?"GEMEINSAM GEWONNEN!":"GAME OVER";
+  document.getElementById("overTxt").innerHTML=win?
+    ("Ihr habt alle 8 Wellen und den Boss <b>zusammen</b> bezwungen — "+G.kills+" Gegner, "+Math.round(G.t)+"s. Genau dafür ist Koop da. 🏆"):
+    ("Welle "+G.wave+" · "+G.kills+" Gegner · "+Math.round(G.t)+"s. Tipp: bleibt in Band-Reichweite und belebt euch gegenseitig wieder!");
+  document.getElementById("over").classList.remove("hide");
+  beep(win?1046:80,.6,win?"triangle":"sawtooth",.09);
+}
+// ===== Kamera: Mittelpunkt beider Spieler + Zoom nach Abstand =====
+function updateCamera(dt){
+  var mx=(P1.g.position.x+P2.g.position.x)/2,mz=(P1.g.position.z+P2.g.position.z)/2;
+  var d=Math.hypot(P1.g.position.x-P2.g.position.x,P1.g.position.z-P2.g.position.z);
+  var zoom=17+Math.min(14,d*0.55);
+  var tx=mx+(Math.random()-0.5)*camShake*2,ty=zoom+(Math.random()-0.5)*camShake*2,tz=mz+zoom*0.88;
+  camera.position.x+=(tx-camera.position.x)*Math.min(1,dt*4);
+  camera.position.y+=(ty-camera.position.y)*Math.min(1,dt*4);
+  camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*4);
+  camera.lookAt(mx,1.2,mz-2);
+  if(camShake>0.001)camShake*=0.86;else camShake=0;
+}
+camera.position.set(0,20,28);camera.lookAt(0,1,6);
+// ===== Hauptschleife =====
+var last=performance.now();
+function loop(now){
+  requestAnimationFrame(loop);
+  var dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(running&&G){
+    G.t+=dt;
+    // P1-Bewegung (Velocity-Glättung)
+    if(G.down1<=0){var m1=mv1(),l1=Math.hypot(m1.x,m1.z)||1,on1=(Math.abs(m1.x)+Math.abs(m1.z))>0.05?1:0;
+      G.vx1+=((m1.x/l1)*13*on1-G.vx1)*Math.min(1,dt*(on1?11:8));
+      G.vz1+=((m1.z/l1)*13*on1-G.vz1)*Math.min(1,dt*(on1?11:8));
+      P1.g.position.x+=G.vx1*dt;P1.g.position.z+=G.vz1*dt;
+      if(on1&&!isTouch){}else if(isTouch){ // Touch: Auto-Hieb, wenn Gegner nah
+        var nearE=false;for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.fly)continue;
+          if(Math.hypot(e.g.position.x-P1.g.position.x,e.g.position.z-P1.g.position.z)<3.2){nearE=true;break;}}
+        if(nearE&&G.atkCD1<=0)p1Attack();}
+    }
+    // P2-Bewegung (Mensch) — Solo übernimmt updAI die Velocity
+    if(!solo&&G.down2<=0){var m2=mv2(),l2=Math.hypot(m2.x,m2.z)||1,on2=(Math.abs(m2.x)+Math.abs(m2.z))>0.05?1:0;
+      G.vx2+=((m2.x/l2)*13*on2-G.vx2)*Math.min(1,dt*(on2?11:8));
+      G.vz2+=((m2.z/l2)*13*on2-G.vz2)*Math.min(1,dt*(on2?11:8));}
+    updAI(dt);
+    if(G.down2<=0){P2.g.position.x+=G.vx2*dt;P2.g.position.z+=G.vz2*dt;}
+    // Arena-Grenze
+    [P1,P2].forEach(function(P){var pr=Math.hypot(P.g.position.x,P.g.position.z);
+      if(pr>ARENA-1.2){P.g.position.x*=(ARENA-1.2)/pr;P.g.position.z*=(ARENA-1.2)/pr;}});
+    // Blick in Bewegungsrichtung (nur wenn Klinge kein Ziel hat — Auto-Face passiert im Angriff)
+    if(Math.hypot(G.vx1,G.vz1)>1.5&&G.down1<=0)P1.g.rotation.y=Math.atan2(G.vx1,G.vz1);
+    g1.position.set(P1.g.position.x,2,P1.g.position.z);g2.position.set(P2.g.position.x,2,P2.g.position.z);
+    P1.ring.rotation.z+=dt*2;P2.ring.rotation.z-=dt*2;
+    if(G.if1>0)G.if1-=dt;if(G.if2>0)G.if2-=dt;if(G.atkCD1>0)G.atkCD1-=dt;
+    // Blink bei i-Frames
+    var v1=(G.if1>0)?(Math.floor(G.t*30)%2===0):true;(P1.model||P1.body).visible=v1;
+    var v2=(G.if2>0)?(Math.floor(G.t*30)%2===0):true;(P2.model||P2.body).visible=v2;
+    p2AutoFire(dt);updEnemies(dt);updBand(dt);updRevive(dt);updWaves(dt);updBoss(dt);updFx(dt);
+    if(hurtT>0){hurtT-=dt*2;hurtEl.style.opacity=Math.max(0,hurtT*0.8);}
+  }
+  updateCamera(dt);
+  renderer.render(scene,camera);
+}
+requestAnimationFrame(loop);
+// ===== Start =====
+function begin(isSolo){
+  solo=isSolo;
+  G=freshState();
+  for(var i=0;i<enemies.length;i++)if(enemies[i].active)scene.remove(enemies[i].g);
+  enemies.length=0;if(G.boss&&G.boss.g)scene.remove(G.boss.g);
+  P1.g.position.set(-4,0,10);P2.g.position.set(4,0,10);P1.g.rotation.z=0;P2.g.rotation.z=0;
+  try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
+  document.getElementById("start").classList.add("hide");
+  document.getElementById("over").classList.add("hide");
+  document.getElementById("hud").classList.remove("hide");
+  document.getElementById("p2bar").querySelector(".nm").textContent=solo?"✦ FUNKE (KI)":"✦ FUNKE";
+  updHUD();running=true;
+  announce("NEON DUO","#b98bff");
+  showHint(solo?"Deine KI-Partnerin folgt, feuert und belebt dich wieder!":"Bleibt zusammen — das Band verbrennt Gegner dazwischen!",3600);
+}
+document.getElementById("startCoop").onclick=function(){begin(false);};
+document.getElementById("startSolo").onclick=function(){begin(true);};
+document.getElementById("againBtn").onclick=function(){begin(solo);};
+})();
+</script>
+</body>
+</html>
