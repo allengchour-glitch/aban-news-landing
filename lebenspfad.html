@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Lebenspfad — das große Würfel-Brettspiel | aban news</title>
+<meta name="description" content="Lebenspfad: das große Würfel-Brettspiel im Browser. Würfle dich durch 8 Lebenskapitel mit über 100 Ereignissen und echten Entscheidungen — am Ende schreibt das Spiel deine Biografie. 1–4 Spieler an einem Gerät.">
+<link rel="canonical" href="https://abannews.com/lebenspfad.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lebenspfad — das große Würfel-Brettspiel">
+<meta property="og:description" content="8 Lebenskapitel, 100+ Entscheidungen, deine Biografie am Ende. 1–4 Spieler, gratis im Browser.">
+<meta property="og:url" content="https://abannews.com/lebenspfad.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Lebenspfad","url":"https://abannews.com/lebenspfad.html","genre":"Brettspiel","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#0a0d1c;color:#eaf0ff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+#wrap{position:fixed;inset:0}canvas{display:block}
+.hide{display:none!important}
+#hud{position:fixed;inset:0;pointer-events:none;z-index:10}
+/* Spieler-Panel */
+#players{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;max-width:min(300px,60vw)}
+.pcard{background:rgba(10,14,30,.82);border:1px solid rgba(120,140,255,.25);border-radius:12px;padding:7px 11px;font-size:.78rem;transition:border-color .3s,box-shadow .3s}
+.pcard.on{border-color:#ffd166;box-shadow:0 0 18px rgba(255,209,102,.35)}
+.pcard .nm{font-weight:900;font-size:.85rem}
+.pcard .st{display:flex;gap:9px;color:#c3ccf0;margin-top:2px;flex-wrap:wrap}
+.pcard .st span{white-space:nowrap}
+#chapterTag{position:absolute;top:12px;left:50%;transform:translateX(-50%);text-align:center}
+#chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 2px 12px #000}
+#chapterTag small{display:block;color:#aeb8e0;font-size:.72rem;margin-top:2px;text-shadow:0 1px 6px #000}
+#turnTag{position:absolute;top:64px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.85rem;color:#ffd166;text-shadow:0 2px 8px #000}
+/* Würfel-Knopf */
+#rollBtn{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:50px;color:#1a1020;background:linear-gradient(92deg,#ffd166,#ff7ad9);box-shadow:0 12px 44px rgba(255,180,110,.4);transition:transform .12s,opacity .3s}
+#rollBtn:active{transform:translateX(-50%) scale(0.95)}
+#rollBtn:disabled{opacity:.35;cursor:default}
+#dice{position:fixed;bottom:104px;left:50%;transform:translateX(-50%);font-size:3rem;z-index:20;text-shadow:0 6px 24px rgba(255,209,102,.5);opacity:0;transition:opacity .3s;pointer-events:none}
+#announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.05em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#ffd166;pointer-events:none}
+#hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.95rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
+#keysHelp{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#8b93b8;text-shadow:0 1px 6px #000;white-space:nowrap}
+/* Ereignis-Karte */
+#card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(160deg,rgba(24,28,56,.98),rgba(12,14,30,.98));border:1px solid rgba(255,209,102,.5);border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-height:86vh;overflow:auto}
+#card.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+#card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#ffd166;margin-bottom:8px}
+#card h3{font-size:1.2rem;color:#fff;margin-bottom:8px;line-height:1.35}
+#card .txt{color:#d5ddf5;font-size:.94rem;line-height:1.55;margin-bottom:14px}
+#card .opts{display:flex;flex-direction:column;gap:8px}
+#card button{border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#e5ebff;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:.88rem;text-align:left;transition:border-color .15s,background .15s}
+#card button:hover{border-color:#ffd166;background:rgba(50,46,80,.9)}
+#card button small{display:block;color:#9aa6d8;font-weight:600;margin-top:3px;font-size:.76rem}
+/* Overlays */
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 36%,rgba(30,24,58,.85),rgba(8,8,18,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
+.overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#a9b8ff;text-transform:uppercase;margin-bottom:12px}
+.overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#ffd166,#ff7ad9 45%,#5ef2ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 26px rgba(255,180,120,.35))}
+.overlay p{color:#c7cbe6;max-width:540px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
+.btn{border:0;cursor:pointer;font-weight:900;font-size:1.02rem;padding:13px 30px;border-radius:44px;color:#1a1020;background:linear-gradient(92deg,#ffd166,#ff7ad9);box-shadow:0 10px 40px rgba(255,180,110,.35);margin:4px}
+.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.88rem;padding:10px 22px}
+.pselect{display:flex;gap:10px;justify-content:center;margin:8px 0 4px;flex-wrap:wrap}
+.pselect button{width:64px;height:64px;border-radius:16px;border:2px solid #3a4170;background:rgba(24,28,56,.8);color:#e5ebff;font-size:1.5rem;font-weight:900;cursor:pointer}
+.pselect button.on{border-color:#ffd166;box-shadow:0 0 16px rgba(255,209,102,.4)}
+.foot{margin-top:14px;font-size:.78rem;color:#8890b8}.foot a{color:#9fb2ff}
+/* Biografie */
+#bio{max-width:600px;text-align:left;background:rgba(14,16,34,.85);border:1px solid rgba(255,209,102,.35);border-radius:16px;padding:18px 22px;margin:10px 0;font-size:.9rem;line-height:1.65;color:#dbe3ff;max-height:44vh;overflow:auto}
+#bio h4{color:#ffd166;margin:10px 0 4px;font-size:.95rem}
+#scores{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.score{background:rgba(24,28,56,.85);border:1px solid #3a4170;border-radius:14px;padding:10px 16px;font-size:.85rem}
+.score b{display:block;font-size:1.25rem}
+.score.win{border-color:#ffd166;box-shadow:0 0 18px rgba(255,209,102,.35)}
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<div id="hud" class="hide">
+  <div id="players"></div>
+  <div id="chapterTag"><b id="chapTxt">KINDHEIT</b><small id="chapSub">Kapitel 1 von 8</small></div>
+  <div id="turnTag"></div>
+  <div id="announce"></div><div id="hint"></div>
+  <div id="keysHelp"><b>LEER</b>/Knopf würfeln · <b>M</b> Ton — Ereignisse: anklicken &amp; entscheiden</div>
+</div>
+<div id="dice">🎲</div>
+<button id="rollBtn" class="hide">🎲 Würfeln</button>
+<div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
+<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:10px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🔊</button>
+
+<div class="overlay" id="start">
+  <div class="kicker">aban news · das große Würfel-Brettspiel · 1–4 Spieler</div>
+  <h1>LEBENSPFAD</h1>
+  <p>Würfle dich durch <b>acht Kapitel eines ganzen Lebens</b> — von der Kindheit bis zum Lebensabend. Über <b>100 Ereignisse</b> mit echten Entscheidungen formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Trefft ihr euch auf einem Feld, gibt es eine <b>Begegnung</b> — gemeinsam ist das Leben besser. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
+  <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
+  <div class="pselect" id="pselect"></div>
+  <button class="btn" id="startBtn">Leben beginnen ▶</button>
+  <button class="btn ghost hide" id="contBtn">Weiterspielen (Spielstand) ▶</button>
+  <div class="foot">Ein Spiel dauert je nach Runde 20–60 Minuten · Spielstand wird gespeichert · <a href="/spiele.html">aban Arcade</a></div>
+</div>
+<div class="overlay hide" id="endO">
+  <div class="kicker">Der Pfad ist zu Ende</div>
+  <h1>EIN GANZES LEBEN</h1>
+  <div id="scores"></div>
+  <div id="bio"></div>
+  <button class="btn" id="newBtn">Neues Leben ▶</button>
+  <div class="foot"><a href="/spiele.html">Mehr Spiele</a></div>
+</div>
+
+<script>/* 104 Lebens-Ereignisse — geschrieben von Gemini (KI-Kollaboration), kuratiert von Claude */
+window.LP_EVENTS=[[{"t":"Der neue Spielplatz","x":"Ein brandneuer Spielplatz wird in der Nähe eröffnet, mit einer riesigen Rutsche und einem Klettergerüst, das aussieht wie ein Piratenschiff. Alle Kinder aus der Nachbarschaft strömen dorthin.","o":[{"l":"Sofort losstürmen!","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":2},"bio":"rannte begeistert zum neuen Spielplatz und fand schnell Anschluss."},{"l":"Erst mal vom Rand beobachten","fx":{"geld":0,"glueck":1,"wissen":1,"freunde":0},"bio":"beobachtete die anderen Kinder, bevor es sich vorsichtig näherte."},{"l":"Ein Freund fragen mitzukommen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":3},"bio":"fragte einen Freund, ob er mitkommen wollte, und teilte die Freude."}]},{"t":"Verstecken spielen","x":"Beim Verstecken spielen im Kindergarten bist du der Sucher. Du hast schon alle gefunden, außer einem Kind, das sich wirklich gut versteckt hat.","o":[{"l":"Weitersuchen, bis es gefunden ist","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":1},"bio":"suchte geduldig weiter, bis das letzte Kind gefunden war."},{"l":"Aufgeben und ein neues Spiel vorschlagen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":-1},"bio":"gab entmutigt auf und schlug ein anderes Spiel vor."}]},{"t":"Der verlorene Teddy","x":"Dein liebster Teddy ist plötzlich weg! Du hast ihn überall gesucht, aber er ist unauffindbar. Ohne ihn kannst du nicht einschlafen.","o":[{"l":"Mama und Papa um Hilfe bitten","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":0},"bio":"bat die Eltern um Hilfe, die den Teddy unter dem Bett fanden."},{"l":"Selbst weitersuchen, koste es was es wolle","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":0},"bio":"suchte hartnäckig weiter und entdeckte den Teddy in der Spielzeugkiste."}]},{"t":"Ein Bild für Oma","x":"Oma hat Geburtstag und du möchtest ihr etwas Besonderes schenken. Du beschließt, ein wunderschönes Bild für sie zu malen.","o":[{"l":"Ein buntes Fantasiebild malen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":0},"bio":"malte ein farbenfrohes Fantasiebild, das Oma sehr gefiel."},{"l":"Mama um Ideen für das Bild bitten","fx":{"geld":0,"glueck":1,"wissen":1,"freunde":0},"bio":"bat Mama um Ideen und malte dann etwas ganz Besonderes."}]},{"t":"Die erste Mutprobe","x":"Deine Freunde fordern dich heraus, die höchste Schaukel im Park ganz hoch zu schaukeln. Dein Herz klopft wie wild.","o":[{"l":"Augen zu und durch!","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":2},"bio":"nahm die Herausforderung an und schaukelte so hoch wie noch nie."},{"l":"Lieber nicht, das ist zu hoch","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":-1},"bio":"lehnte ab, da die Schaukel zu hoch und beängstigend war."}]},{"t":"Der geheimnisvolle Wald","x":"Ihr macht einen Spaziergang im Wald. Plötzlich siehst du einen kleinen Pfad, der tiefer in den Wald führt. Er sieht spannend aus!","o":[{"l":"Den Pfad erkunden","fx":{"geld":0,"glueck":2,"wissen":2,"freunde":0},"bio":"bog ab, um den geheimnisvollen Pfad zu erkunden und entdeckte viel Neues."},{"l":"Lieber auf dem Hauptweg bleiben","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"blieb lieber auf dem bekannten Hauptweg, um sich nicht zu verirren."}]},{"t":"Bauklötze-Krieg","x":"Im Kindergarten gibt es einen Streit um die besten Bauklötze. Zwei Kinder wollen gleichzeitig den größten Klotz haben.","o":[{"l":"Einen eigenen Turm bauen","fx":{"geld":0,"glueck":1,"wissen":1,"freunde":0},"bio":"mischte sich nicht ein und baute lieber einen eigenen, kleineren Turm."},{"l":"Versuchen zu schlichten","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":2},"bio":"versuchte, den Streit zu schlichten und eine Lösung zu finden."}]},{"t":"Das Regentag-Abenteuer","x":"Es regnet Bindfäden, und du kannst nicht raus zum Spielen. Langeweile macht sich breit.","o":[{"l":"Ein Höhlenabenteuer im Wohnzimmer starten","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":0},"bio":"baute eine gemütliche Höhle im Wohnzimmer und spielte darin."},{"l":"Mama fragen, ob sie vorlesen kann","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":0},"bio":"bat Mama, ihr ein spannendes Buch vorzulesen."}]},{"t":"Der erste Wackelzahn","x":"Unerwartet wackelt dein erster Zahn! Es ist ein aufregendes, aber auch etwas seltsames Gefühl.","o":[{"l":"Vorsichtig immer wieder daran wackeln","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":0},"bio":"wackelte immer wieder vorsichtig am Zahn, bis er herausfiel."},{"l":"Es erstmal niemandem erzählen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":-1},"bio":"behielt das Geheimnis des Wackelzahns erst einmal für sich."}]},{"t":"Ein verlorenes Tier","x":"Auf dem Heimweg vom Kindergarten siehst du einen kleinen Hund, der ganz alleine herumläuft und winselt. Er sieht verloren aus.","o":[{"l":"Mama und Papa Bescheid geben","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":0},"bio":"erzählte den Eltern von dem Hund, die halfen, ihn nach Hause zu bringen."},{"l":"Vorsichtig versuchen, ihn zu streicheln","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"versuchte, den Hund zu streicheln, doch er rannte weg."}]},{"t":"Der Geburtstagskuchen","x":"Du darfst Mama beim Backen deines Geburtstagskuchens helfen. Es riecht schon so lecker!","o":[{"l":"Den Teig naschen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":0},"bio":"naschte heimlich etwas vom Teig, als Mama nicht hinsah."},{"l":"Genau auf die Anweisungen hören","fx":{"geld":0,"glueck":1,"wissen":1,"freunde":0},"bio":"hörte genau zu und half fleißig beim Backen mit."}]},{"t":"Das neue Bilderbuch","x":"Deine Eltern haben dir ein wunderschönes neues Bilderbuch gekauft. Die Bilder sind toll und die Geschichte klingt sehr spannend.","o":[{"l":"Sofort anfangen zu 'lesen'","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":0},"bio":"blättert begeistert durch das neue Buch und 'las' die Geschichte."},{"l":"Die Eltern bitten, es vorzulesen","fx":{"geld":0,"glueck":3,"wissen":1,"freunde":0},"bio":"bat die Eltern, die spannende Geschichte aus dem neuen Buch vorzulesen."}]},{"t":"Ein kleiner Sturz","x":"Beim Toben im Garten stolperst du und fällst hin. Dein Knie schmerzt und ein paar Tränen kullern.","o":[{"l":"Tapfer sein und wieder aufstehen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"rappelte sich trotz Schmerz wieder auf und spielte weiter."},{"l":"Mama rufen, um getröstet zu werden","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":0},"bio":"rief nach Mama, die kam, um das Knie zu verarzten und zu trösten."}]}],[{"t":"Die erste 5","x":"Oh Schreck! Du hast deine erste richtig schlechte Note kassiert. Eine glatte 5 in Mathe. Deine Eltern werden nicht begeistert sein, aber vielleicht gibt es ja einen Weg, das wieder auszubügeln?","o":[{"l":"Sofort nachsitzen und lernen","fx":{"geld":0,"glueck":-2,"wissen":4,"freunde":0},"bio":"lernte fleißig nach und verbesserte sich"},{"l":"Mit einem Freund abschreiben","fx":{"geld":0,"glueck":3,"wissen":-2,"freunde":2},"bio":"nahm die Abkürzung und schummelte"},{"l":"Elternbrief fälschen","fx":{"geld":0,"glueck":-5,"wissen":0,"freunde":0},"bio":"versuchte, die Note zu vertuschen"}]},{"t":"Pausenhof-Schlägerei","x":"Auf dem Pausenhof geraten zwei Mitschüler aneinander. Es sieht so aus, als würde es gleich handgreiflich werden. Was tust du, wenn alle anderen nur zuschauen?","o":[{"l":"Eingreifen und schlichten","fx":{"geld":0,"glueck":-3,"wissen":0,"freunde":4},"bio":"stellte sich mutig zwischen die Streithähne"},{"l":"Schnell den Lehrer holen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":-1},"bio":"holte Hilfe und vermied Schlimmeres"},{"l":"Wegschauen und weitergehen","fx":{"geld":0,"glueck":0,"wissen":0,"freunde":-2},"bio":"blieb untätig und beobachtete"}]},{"t":"Das erste Taschengeld","x":"Deine Eltern haben beschlossen, dir ab jetzt regelmäßig Taschengeld zu geben. Nicht viel, aber immerhin! Was machst du mit dem ersten Geldschein?","o":[{"l":"Alles für Süßigkeiten ausgeben","fx":{"geld":-3,"glueck":4,"wissen":0,"freunde":0},"bio":"investierte das Geld in Zucker"},{"l":"Für etwas Großes sparen","fx":{"geld":2,"glueck":-1,"wissen":0,"freunde":0},"bio":"legte das Taschengeld beiseite"},{"l":"Teilen mit einem Freund","fx":{"geld":-2,"glueck":2,"wissen":0,"freunde":3},"bio":"teilte seinen bescheidenen Reichtum"}]},{"t":"Neue Clique","x":"Eine neue, coole Clique hat sich in der Schule gebildet und du wurdest eingeladen, mitzumachen. Sie sind lustig, aber auch ein bisschen rebellisch. Passt du dazu?","o":[{"l":"Sofort dazugehören wollen","fx":{"geld":0,"glueck":3,"wissen":-2,"freunde":4},"bio":"fand Anschluss bei einer neuen Gruppe"},{"l":"Lieber bei alten Freunden bleiben","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":2},"bio":"blieb seinen alten Freunden treu"},{"l":"Erst mal beobachten","fx":{"geld":0,"glueck":0,"wissen":1,"freunde":0},"bio":"evaluierte die neue Gruppe kritisch"}]},{"t":"Hausaufgaben-Dilemma","x":"Du hast vergessen, deine Mathe-Hausaufgaben zu machen, aber dein Sitznachbar ist der Klassenbeste und hat alles perfekt. Er sitzt gerade neben dir.","o":[{"l":"Schnell abschreiben","fx":{"geld":0,"glueck":2,"wissen":-1,"freunde":1},"bio":"nutzte die Gelegenheit zum Abschreiben"},{"l":"Sagen, dass du sie vergessen hast","fx":{"geld":0,"glueck":-1,"wissen":1,"freunde":0},"bio":"gab seine Vergesslichkeit zu"},{"l":"Den Nachbarn um Hilfe bitten","fx":{"geld":0,"glueck":0,"wissen":2,"freunde":2},"bio":"bekam Hilfe bei den Hausaufgaben"}]},{"t":"Sportfest-Held","x":"Beim jährlichen Sportfest steht der Staffellauf an. Dein Team liegt zurück, und du bist der Schlussläufer. Alle Augen sind auf dich gerichtet.","o":[{"l":"Alles geben und gewinnen","fx":{"geld":0,"glueck":4,"wissen":0,"freunde":3},"bio":"errang einen glorreichen Sieg für sein Team"},{"l":"Aus Versehen stolpern","fx":{"geld":0,"glueck":-2,"wissen":0,"freunde":-1},"bio":"hatte Pech beim entscheidenden Lauf"},{"l":"Mit dem Team anfeuern","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":1},"bio":"feuerte sein Team lautstark an"}]},{"t":"Der erste Schwarm","x":"Da ist jemand in deiner Klasse, der dich einfach nicht mehr loslässt. Jedes Mal, wenn du ihn/sie siehst, kribbelt es im Bauch. Was nun?","o":[{"l":"Einen Liebesbrief schreiben","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":-1},"bio":"fasste sich ein Herz und schrieb einen Brief"},{"l":"Beste Freunde um Rat fragen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":2},"bio":"suchte Rat bei seinen Vertrauten"},{"l":"Nichts tun und abwarten","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"ließ die Gefühle erst einmal für sich"}]},{"t":"Geburtstagsparty","x":"Du wurdest auf die Party des beliebtesten Mitschülers eingeladen. Das wird das Event des Jahres! Aber deine Eltern wollen, dass du zu Hause bleibst und lernst.","o":[{"l":"Heimlich zur Party schleichen","fx":{"geld":0,"glueck":5,"wissen":-3,"freunde":3},"bio":"schlich sich unerlaubt zur Party"},{"l":"Den Eltern gehorchen","fx":{"geld":0,"glueck":-2,"wissen":3,"freunde":-1},"bio":"entschied sich für die Pflicht"},{"l":"Verhandeln und Kompromiss finden","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":1},"bio":"verhandelte geschickt mit seinen Eltern"}]},{"t":"Das Referat","x":"Du musst ein Referat vor der ganzen Klasse halten. Dein Herz klopft bis zum Hals. Was tust du, um die Situation zu meistern?","o":[{"l":"Perfekt vorbereiten","fx":{"geld":0,"glueck":2,"wissen":4,"freunde":0},"bio":"bereitete sich akribisch auf das Referat vor"},{"l":"Lustige Witze einbauen","fx":{"geld":0,"glueck":3,"wissen":-1,"freunde":2},"bio":"lockerte das Referat mit Humor auf"},{"l":"So tun, als wärst du krank","fx":{"geld":0,"glueck":-3,"wissen":-2,"freunde":0},"bio":"versuchte, dem Referat auszuweichen"}]},{"t":"Hobby entdecken","x":"In der Schule werden neue AGs angeboten: Schach, Theater, Band oder Fußball. Du hast die Wahl, wie du deine Freizeit gestalten möchtest.","o":[{"l":"Der Theater-AG beitreten","fx":{"geld":0,"glueck":3,"wissen":1,"freunde":2},"bio":"fand seine Leidenschaft auf der Bühne"},{"l":"In der Band mitmachen","fx":{"geld":0,"glueck":4,"wissen":0,"freunde":3},"bio":"entdeckte sein musikalisches Talent"},{"l":"Schach spielen lernen","fx":{"geld":0,"glueck":1,"wissen":3,"freunde":1},"bio":"lernte die Strategie des Schachs"}]},{"t":"Der neue Lehrer","x":"Ein neuer, sehr strenger Lehrer übernimmt deine Klasse. Er hat den Ruf, keine Späße zu verstehen und sehr hohe Erwartungen zu haben. Was tust du?","o":[{"l":"Dich besonders anstrengen","fx":{"geld":0,"glueck":-1,"wissen":4,"freunde":0},"bio":"bemühte sich, dem Lehrer zu gefallen"},{"l":"Ihn ignorieren","fx":{"geld":0,"glueck":0,"wissen":-2,"freunde":0},"bio":"ignorierte die Strenge des Lehrers"},{"l":"Mit Freunden über ihn lästern","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":2},"bio":"verbündete sich mit Freunden gegen den Lehrer"}]},{"t":"Streit um ein Spielzeug","x":"Im Hof streitest du dich mit einem Mitschüler um einen Ball. Beide beanspruchen ihn für sich. Die Situation wird hitzig, und niemand will nachgeben.","o":[{"l":"Den Ball einfach nehmen","fx":{"geld":0,"glueck":-2,"wissen":0,"freunde":-3},"bio":"nahm den Ball an sich"},{"l":"Vorschlagen, ihn zu teilen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":3},"bio":"schlug eine faire Lösung vor"},{"l":"Auf den Ball verzichten","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":1},"bio":"gab nach, um den Frieden zu wahren"}]},{"t":"Klassenfahrt-Chaos","x":"Auf der Klassenfahrt herrscht im Zimmer deiner Freunde das totale Chaos. Sie wollen noch eine Kissenschlacht machen, obwohl der Lehrer gleich kontrolliert. Machst du mit?","o":[{"l":"Bei der Kissenschlacht mitmachen","fx":{"geld":0,"glueck":4,"wissen":-2,"freunde":3},"bio":"stürzte sich ins Getümmel"},{"l":"Versuchen, aufzuräumen","fx":{"geld":0,"glueck":1,"wissen":1,"freunde":-1},"bio":"versuchte, die Situation zu retten"},{"l":"Als Späher Ausschau halten","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":2},"bio":"warnte seine Freunde vor dem Lehrer"}]}],[{"t":"Abschlussfeier","x":"Dein Studium/Ausbildung ist geschafft! Die Abschlussfeier ist in vollem Gange. Sektkorken knallen, alte Geschichten werden erzählt. Du könntest jetzt schon nach Hause, oder noch bis in die frühen Morgenstunden mitfeiern.","o":[{"l":"Früh nach Hause gehen","fx":{"geld":5,"glueck":2,"wissen":0,"freunde":-3},"bio":"die party früh verlassen, um am nächsten tag fit zu sein"},{"l":"Bis spät in die Nacht feiern","fx":{"geld":-4,"glueck":4,"wissen":0,"freunde":3},"bio":"bis in die morgenstunden gefeiert und alte freundschaften vertieft"}]},{"t":"Wohnungssuche","x":"Du brauchst eine neue Bleibe. Eine kleine, teure Single-Wohnung oder ein Zimmer in einer chaotischen WG? Beide Optionen haben ihre Vor- und Nachteile. Was ist dir jetzt wichtiger?","o":[{"l":"Single-Wohnung mieten","fx":{"geld":-6,"glueck":3,"wissen":0,"freunde":-2},"bio":"eine kleine, ruhige wohnung bezogen und ruhe gefunden"},{"l":"In eine WG ziehen","fx":{"geld":3,"glueck":-3,"wissen":0,"freunde":5},"bio":"teil einer lebhaften wg geworden, mit viel trubel und spaß"}]},{"t":"Nebenjob-Dilemma","x":"Das Geld wird knapp. Ein anstrengender Job im Supermarkt oder lieber Nachhilfe geben, was besser zu deinem Studium passt, aber schlechter bezahlt ist? Du musst eine Entscheidung treffen.","o":[{"l":"Im Supermarkt arbeiten","fx":{"geld":5,"glueck":-3,"wissen":-1,"freunde":0},"bio":"im supermarkt gearbeitet, um die kasse aufzubessern"},{"l":"Nachhilfe geben","fx":{"geld":2,"glueck":2,"wissen":3,"freunde":0},"bio":"als nachhilfelehrer tätig gewesen und dabei selbst gelernt"}]},{"t":"Auslandssemester","x":"Ein Stipendium für ein Auslandssemester ist zum Greifen nah! Es wäre eine unglaubliche Erfahrung, aber es würde dich auch viel kosten und deine aktuellen Pläne durcheinanderbringen.","o":[{"l":"Stipendium annehmen","fx":{"geld":-5,"glueck":7,"wissen":4,"freunde":-2},"bio":"ein auslandssemester absolviert und viel von der welt gesehen"},{"l":"Stipendium ablehnen","fx":{"geld":2,"glueck":-2,"wissen":0,"freunde":3},"bio":"auf ein auslandssemester verzichtet, um hier zu bleiben"}]},{"t":"WG-Streit","x":"Die Spülmaschine ist mal wieder voll und niemand räumt sie aus. Ein klassischer WG-Streit bahnt sich an. Gehst du in die Konfrontation oder schluckst du es herunter und machst es selbst?","o":[{"l":"Konfrontation suchen","fx":{"geld":0,"glueck":-4,"wissen":0,"freunde":-3},"bio":"einen wg-streit angezettelt und die atmosphäre belastet"},{"l":"Selbst ausräumen","fx":{"geld":0,"glueck":-2,"wissen":0,"freunde":1},"bio":"die spülmaschine selbst ausgeräumt, um frieden zu bewahren"}]},{"t":"Spontaner Roadtrip","x":"Deine Freunde schlagen einen spontanen Roadtrip in den Süden vor. Du hast eigentlich für eine wichtige Prüfung gelernt. Die Versuchung ist groß, aber die Konsequenzen könnten es auch sein.","o":[{"l":"Mitfahren","fx":{"geld":-6,"glueck":5,"wissen":-4,"freunde":4},"bio":"einen spontanen roadtrip unternommen und unvergessliche momente erlebt"},{"l":"Lernen","fx":{"geld":0,"glueck":-3,"wissen":3,"freunde":-2},"bio":"auf einen roadtrip verzichtet, um sich auf eine prüfung zu konzentrieren"}]},{"t":"Neues Hobby","x":"Du entdeckst ein faszinierendes neues Hobby – es ist zeitaufwendig, aber es macht dir unheimlich viel Spaß und erweitert deinen Horizont. Solltest du dich voll reinhängen?","o":[{"l":"Voll reinhängen","fx":{"geld":-3,"glueck":5,"wissen":3,"freunde":2},"bio":"ein neues hobby mit leidenschaft verfolgt und viel gelernt"},{"l":"Es lassen","fx":{"geld":1,"glueck":-1,"wissen":0,"freunde":0},"bio":"ein mögliches hobby ignoriert und sich auf anderes konzentriert"}]},{"t":"Praktikumsangebot","x":"Du erhältst ein Praktikumsangebot bei einem angesehenen Unternehmen. Es wäre eine enorme Chance für deine Karriere, aber das Praktikum ist unbezahlt und sehr fordernd.","o":[{"l":"Praktikum annehmen","fx":{"geld":-7,"glueck":2,"wissen":6,"freunde":-3},"bio":"ein unbezahltes praktikum absolviert, das sich später auszahlte"},{"l":"Ablehnen","fx":{"geld":3,"glueck":-1,"wissen":-2,"freunde":1},"bio":"ein prestigeträchtiges praktikum zugunsten der freizeit abgelehnt"}]},{"t":"Fehlkauf","x":"Du hast dir etwas Teures geleistet, das du im Nachhinein gar nicht brauchst. Es war ein Fehlkauf, der dich jetzt ärgert. Solltest du versuchen, es zurückzugeben, oder es einfach akzeptieren?","o":[{"l":"Versuchen zurückzugeben","fx":{"geld":4,"glueck":-2,"wissen":0,"freunde":0},"bio":"einen fehlkauf erfolgreich zurückgegeben und geld gespart"},{"l":"Akzeptieren","fx":{"geld":-3,"glueck":-1,"wissen":0,"freunde":0},"bio":"einen fehlkauf akzeptiert und daraus gelernt"}]},{"t":"Krankheit","x":"Du liegst mit einer Grippe flach. Dein Studium/Arbeit leidet, und du fühlst dich elend. Musst du dich aufraffen oder gönnst du dir die nötige Pause zur Genesung?","o":[{"l":"Trotzdem weitermachen","fx":{"geld":0,"glueck":-5,"wissen":2,"freunde":-1},"bio":"trotz krankheit weitergemacht und sich dabei überanstrengt"},{"l":"Pause machen","fx":{"geld":0,"glueck":4,"wissen":-2,"freunde":0},"bio":"eine pause eingelegt, um sich von einer krankheit zu erholen"}]},{"t":"Mentoren-Treffen","x":"Ein Professor/Ausbilder bietet dir ein persönliches Mentoren-Treffen an. Es könnte deine Zukunft entscheidend beeinflussen. Nimmst du das Angebot an oder bist du zu schüchtern?","o":[{"l":"Angebot annehmen","fx":{"geld":0,"glueck":3,"wissen":5,"freunde":0},"bio":"ein mentoren-angebot angenommen und wertvolle tipps erhalten"},{"l":"Angebot ablehnen","fx":{"geld":0,"glueck":-1,"wissen":-2,"freunde":0},"bio":"ein mentoren-angebot aus schüchternheit ausgeschlagen"}]},{"t":"Sommerfest","x":"Deine Uni/Arbeitsstelle veranstaltet ein Sommerfest. Es ist eine gute Gelegenheit, neue Leute kennenzulernen und alte Freundschaften zu pflegen. Oder du bleibst lieber zu Hause.","o":[{"l":"Zum Fest gehen","fx":{"geld":-2,"glueck":4,"wissen":0,"freunde":5},"bio":"ein sommerfest besucht und viele interessante leute getroffen"},{"l":"Zu Hause bleiben","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":-2},"bio":"zu hause geblieben, statt auf ein sommerfest zu gehen"}]},{"t":"Zukunftsängste","x":"Die Zukunft wirkt manchmal beängstigend und unsicher. Du fühlst dich überfordert von den vielen Möglichkeiten und dem Druck. Wie gehst du damit um?","o":[{"l":"Mit Freunden reden","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":4},"bio":"mit freunden über zukunftsängste gesprochen und unterstützung gefunden"},{"l":"Ablenkung suchen","fx":{"geld":-3,"glueck":2,"wissen":-1,"freunde":0},"bio":"zukunftsängste mit ablenkung bekämpft, statt sie anzugehen"}]}],[{"t":"Die erste eigene Bude","x":"Endlich raus bei den Eltern! Deine erste eigene Wohnung ist zwar klein und hat einen gewissen 'Charme', aber sie ist DEIN Reich. Die Kaution war ein Batzen Geld. Wie gehst du mit den neuen Freiheiten um?","o":[{"l":"Einweihungsparty schmeißen!","fx":{"geld":-3,"glueck":4,"wissen":0,"freunde":3},"bio":"hat eine legendäre einweihungsparty geschmissen."},{"l":"Spartipps für die Einrichtung suchen","fx":{"geld":2,"glueck":1,"wissen":3,"freunde":0},"bio":"hat clever möbel auf dem flohmarkt gefunden."},{"l":"In Ruhe ankommen, Kisten auspacken","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":-1},"bio":"ist in seiner wohnung zur ruhe gekommen."}]},{"t":"Der erste 'richtige' Job","x":"Du hast deinen ersten Vertrag in der Tasche! Es ist nicht unbedingt dein Traumjob, aber ein Anfang. Die Kollegen sind nett, die Aufgaben okay. Wie startest du in die Arbeitswelt?","o":[{"l":"Voll reinhängen und beeindrucken","fx":{"geld":2,"glueck":-1,"wissen":4,"freunde":0},"bio":"hat sich sofort in seinen job gestürzt."},{"l":"Erstmal die Lage checken, beobachten","fx":{"geld":1,"glueck":1,"wissen":2,"freunde":1},"bio":"ist mit bedacht in die neue rolle gestartet."},{"l":"Feierabendbier mit den Kollegen","fx":{"geld":-1,"glueck":2,"wissen":0,"freunde":3},"bio":"hat sich schnell mit den kollegen angefreundet."}]},{"t":"Das erste Gehalt!","x":"HU-HU! Der erste Lohnzettel ist da und auf deinem Konto landet eine Summe, die noch nie dagewesen ist. Das fühlt sich gut an! Was machst du mit diesem unerwarteten Reichtum?","o":[{"l":"Endlich mal was gönnen!","fx":{"geld":-5,"glueck":5,"wissen":0,"freunde":0},"bio":"hat sich vom ersten gehalt etwas tolles gegönnt."},{"l":"Einen Notgroschen auf die Seite legen","fx":{"geld":4,"glueck":1,"wissen":2,"freunde":0},"bio":"hat vorausschauend für schlechte zeiten gespart."},{"l":"Eltern zum Essen einladen","fx":{"geld":-2,"glueck":3,"wissen":0,"freunde":2},"bio":"hat seine eltern großzügig zum essen ausgeführt."}]},{"t":"Wäscheberge und Supermarkt","x":"Der Alltag holt dich ein. Deine erste eigene Wohnung erfordert Organisation: Wäsche, Einkauf, Putzen. Plötzlich merkst du, dass Mama das alles nicht umsonst gemacht hat. Wie gehst du die neuen Aufgaben an?","o":[{"l":"Haushaltsplan erstellen, strikt folgen","fx":{"geld":1,"glueck":-1,"wissen":3,"freunde":0},"bio":"hat mit einem haushaltsplan den alltag gemeistert."},{"l":"Freunde um Tipps bitten","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":2},"bio":"hat von freunden wertvolle tipps bekommen."},{"l":"Im Chaos versinken und hoffen","fx":{"geld":-2,"glueck":-2,"wissen":-1,"freunde":0},"bio":"ist im wäsche- und putzchaos versunken."}]},{"t":"Die Stadt erkunden","x":"Du lebst jetzt in einer neuen Stadt, oder zumindest einem neuen Viertel. Es gibt so viel zu entdecken! Cafés, Parks, kuriose Läden. Was ziehst du zuerst in Augenschein?","o":[{"l":"Touristische Hotspots abklappern","fx":{"geld":-2,"glueck":3,"wissen":1,"freunde":0},"bio":"hat die bekannten sehenswürdigkeiten der stadt besucht."},{"l":"Abseits der Wege versteckte Ecken finden","fx":{"geld":0,"glueck":2,"wissen":2,"freunde":1},"bio":"hat die geheimen orte der stadt entdeckt."},{"l":"Mit Einheimischen ins Gespräch kommen","fx":{"geld":0,"glueck":1,"wissen":1,"freunde":3},"bio":"hat spannende gespräche mit einheimischen geführt."}]},{"t":"Der unerwartete Nachbar","x":"Dein Nachbar klopft an die Tür. Er ist neu eingezogen und hat ein kleines Problem, das er nicht alleine lösen kann. Er bittet dich um Hilfe. Was tust du?","o":[{"l":"Sofort helfen, was das Zeug hält","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":3},"bio":"hat seinem neuen nachbarn tatkräftig geholfen."},{"l":"Lieber vorsichtig sein, beobachten","fx":{"geld":0,"glueck":-1,"wissen":1,"freunde":0},"bio":"ist dem neuen nachbarn mit vorsicht begegnet."},{"l":"Auf später vertagen, keine Zeit haben","fx":{"geld":0,"glueck":-2,"wissen":0,"freunde":-2},"bio":"hat dem nachbarn die hilfe verweigert."}]},{"t":"Freizeitstress","x":"Deine Kollegen und Freunde haben viele Vorschläge für die Freizeit: Kino, Sport, Kneipe, Kochabend. Alles klingt verlockend, aber du kannst nicht alles gleichzeitig machen. Wofür entscheidest du dich?","o":[{"l":"Lieber mal entspannen, zu Hause bleiben","fx":{"geld":1,"glueck":3,"wissen":0,"freunde":-1},"bio":"hat sich für einen ruhigen abend entschieden."},{"l":"Den spannendsten Vorschlag auswählen","fx":{"geld":-2,"glueck":4,"wissen":1,"freunde":1},"bio":"hat sich für eine spannende freizeitaktivität entschieden."},{"l":"Aufteilen, mehrere Dinge unterbringen","fx":{"geld":-3,"glueck":2,"wissen":0,"freunde":2},"bio":"hat versucht, alle freizeitangebote zu nutzen."}]},{"t":"Der erste Möbelkauf","x":"Dein Sofa ist durchgesessen, der Schrank wackelt. Es ist Zeit, in richtige Möbel zu investieren. Aber wo? Ein großes Möbelhaus, ein kleiner lokaler Laden oder doch lieber online bestellen?","o":[{"l":"Ins große Möbelhaus fahren","fx":{"geld":-4,"glueck":2,"wissen":0,"freunde":0},"bio":"hat sich im möbelhaus neu eingerichtet."},{"l":"Lokalen Handwerker unterstützen","fx":{"geld":-6,"glueck":3,"wissen":0,"freunde":1},"bio":"hat einen lokalen handwerker beauftragt."},{"l":"Online bestellen, Preise vergleichen","fx":{"geld":3,"glueck":-1,"wissen":2,"freunde":0},"bio":"hat clever online möbel bestellt."}]},{"t":"Bürokratie-Wahnsinn","x":"Unerwartet flattert ein Brief vom Amt ins Haus. Es geht um irgendeine Anmeldung, die du vergessen hast, oder eine Gebühr. Du verstehst nur Bahnhof. Was nun?","o":[{"l":"Sofort anrufen und nachfragen","fx":{"geld":0,"glueck":1,"wissen":3,"freunde":0},"bio":"hat sich durch den bürokratie-dschungel gekämpft."},{"l":"Freunde um Rat bitten","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":2},"bio":"hat hilfe von freunden bei amtsproblemen bekommen."},{"l":"Ignorieren, wird schon nicht so schlimm","fx":{"geld":-3,"glueck":-3,"wissen":0,"freunde":0},"bio":"hat einen wichtigen brief vom amt ignoriert."}]},{"t":"Die erste Stromrechnung","x":"Überraschung! Deine erste Stromrechnung ist höher als erwartet. Plötzlich wird dir bewusst, dass Licht, Heizung und all die Geräte Geld kosten. Wie reagierst du auf diese Erkenntnis?","o":[{"l":"Sparmaßnahmen ergreifen","fx":{"geld":3,"glueck":-1,"wissen":2,"freunde":0},"bio":"hat begonnen, energiekosten zu sparen."},{"l":"Ist doch nur einmalig!","fx":{"geld":-2,"glueck":1,"wissen":0,"freunde":0},"bio":"hat die hohe rechnung weggesteckt."},{"l":"Freunde nach Tipps fragen","fx":{"geld":1,"glueck":0,"wissen":1,"freunde":1},"bio":"hat sich tipps zum energiesparen geholt."}]},{"t":"Neue Hobbys entdecken","x":"Der Arbeitsalltag ist etabliert, die Wohnung läuft. Dir fällt auf, dass du noch Zeit für dich hast! Was möchtest du gerne lernen oder ausprobieren? Ein Kurs, ein Sportverein, eine neue Leidenschaft?","o":[{"l":"Einen Sprachkurs belegen","fx":{"geld":-2,"glueck":2,"wissen":4,"freunde":1},"bio":"hat eine neue sprache gelernt."},{"l":"Einem Sportverein beitreten","fx":{"geld":-1,"glueck":3,"wissen":0,"freunde":3},"bio":"hat sich einem sportverein angeschlossen."},{"l":"Lieber entspannte Abende verbringen","fx":{"geld":1,"glueck":2,"wissen":0,"freunde":0},"bio":"hat die abende lieber gemütlich verbracht."}]},{"t":"Verirrte Touristen","x":"Du bist auf dem Weg zur Arbeit, als dich eine Gruppe Touristen anspricht. Sie haben sich verlaufen und suchen den Weg zu einer Sehenswürdigkeit. Du bist in Eile, aber sie sehen ziemlich ratlos aus.","o":[{"l":"Kurz den Weg erklären","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"hat verlorenen touristen den weg gezeigt."},{"l":"Persönlich hinbringen, wenn es nah ist","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":1},"bio":"hat hilfsbereit touristen zum ziel gebracht."},{"l":"Keine Zeit haben, weitergehen","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":-1},"bio":"hat keine zeit für touristen gefunden."}]},{"t":"Die nervige Baustelle","x":"Direkt vor deiner Wohnung beginnt eine Großbaustelle. Lärm und Dreck sind vorprogrammiert, und das für die nächsten Monate. Das nervt gewaltig! Wie gehst du damit um?","o":[{"l":"Gehörschutz kaufen und durchhalten","fx":{"geld":-1,"glueck":1,"wissen":0,"freunde":0},"bio":"hat sich an den baustellenlärm gewöhnt."},{"l":"Nach einer Lösung suchen, beschweren","fx":{"geld":0,"glueck":-2,"wissen":2,"freunde":0},"bio":"hat versucht, die baustelle zu beeinflussen."},{"l":"Mehr Zeit draußen verbringen","fx":{"geld":-1,"glueck":2,"wissen":0,"freunde":1},"bio":"hat der baustelle durch ausflüge entflohen."}]}],[{"t":"Karrieresprung oder Komfortzone?","x":"Dein Chef bietet dir eine Beförderung an, aber sie bedeutet auch mehr Verantwortung und Überstunden. Dein aktueller Job ist zwar weniger spannend, lässt dir aber viel Freizeit.","o":[{"l":"Beförderung annehmen","fx":{"geld":6,"glueck":3,"wissen":4,"freunde":-2},"bio":"nahm die beförderung an, opferte freizeit für den aufstieg."},{"l":"Komfortzone bleiben","fx":{"geld":-2,"glueck":4,"wissen":-1,"freunde":3},"bio":"blieb in der komfortzone, genoss die freizeit und freundschaften."}]},{"t":"Traumjob, aber weit weg","x":"Du hast ein unglaubliches Jobangebot in einer anderen Stadt bekommen, die hunderte Kilometer entfernt ist. Es wäre dein Traumjob, aber ein Umzug würde alles auf den Kopf stellen.","o":[{"l":"Angebot annehmen, umziehen","fx":{"geld":7,"glueck":5,"wissen":6,"freunde":-5},"bio":"zog für den traumjob um, ließ vieles zurück."},{"l":"Angebot ablehnen, hier bleiben","fx":{"geld":-3,"glueck":2,"wissen":0,"freunde":4},"bio":"lehnte den traumjob ab, blieb in vertrauter umgebung."}]},{"t":"Große Liebe gefunden!","x":"Du hast jemanden kennengelernt, der dein Herz im Sturm erobert hat. Es fühlt sich an, als sei es die große Liebe. Solltest du alles auf diese Beziehung setzen?","o":[{"l":"Alles auf Liebe setzen","fx":{"geld":-1,"glueck":8,"wissen":1,"freunde":2},"bio":"setzte alles auf die liebe, fand tiefes glück."},{"l":"Liebe langsam angehen","fx":{"geld":0,"glueck":4,"wissen":2,"freunde":3},"bio":"ging die liebe langsam an, schützte andere bereiche."}]},{"t":"Heiratsantrag!","x":"Dein Partner/deine Partnerin hat dir einen Heiratsantrag gemacht! Dein Herz sagt ja, aber dein Kopf fragt sich, ob ihr wirklich schon bereit seid für diesen großen Schritt.","o":[{"l":"Ja sagen!","fx":{"geld":2,"glueck":7,"wissen":0,"freunde":3},"bio":"sagte ja zum heiratsantrag, begann ein neues kapitel."},{"l":"Noch warten","fx":{"geld":0,"glueck":3,"wissen":2,"freunde":4},"bio":"wollte noch warten, um sicher zu sein."}]},{"t":"Karriere vs. Familie","x":"Du hast die Chance auf eine internationale Position, die viel Reisen erfordert. Gleichzeitig wünschst du dir, mehr Zeit für deine Familie und Freunde zu haben.","o":[{"l":"Internationale Karriere wählen","fx":{"geld":7,"glueck":2,"wissen":5,"freunde":-4},"bio":"wählte die internationale karriere, reiste viel."},{"l":"Mehr Zeit für Familie","fx":{"geld":-3,"glueck":5,"wissen":-1,"freunde":6},"bio":"priorisierte familie und freunde über die karriere."}]},{"t":"Unerwarteter Jobwechsel","x":"Dein aktueller Job macht dich unglücklich. Ein Freund bietet dir eine Stelle in seinem Start-up an, die riskant, aber vielversprechend klingt. Solltest du springen?","o":[{"l":"Zum Start-up wechseln","fx":{"geld":-4,"glueck":6,"wissen":5,"freunde":2},"bio":"wagte den sprung zum start-up, suchte neues glück."},{"l":"Im alten Job bleiben","fx":{"geld":3,"glueck":-3,"wissen":0,"freunde":0},"bio":"blieb im ungeliebten job, um sicherheit zu wahren."}]},{"t":"Haus kaufen oder mieten?","x":"Du hast genug gespart, um eine Anzahlung für ein Haus zu machen. Es wäre ein großer Schritt und eine hohe Belastung, aber auch eine Investition in die Zukunft.","o":[{"l":"Haus kaufen","fx":{"geld":-6,"glueck":4,"wissen":3,"freunde":-1},"bio":"kaufte ein haus, ging große verpflichtungen ein."},{"l":"Weiterhin mieten","fx":{"geld":2,"glueck":2,"wissen":0,"freunde":1},"bio":"entschied sich weiterhin zu mieten, blieb flexibel."}]},{"t":"Studium nachholen?","x":"Eine Weiterbildung oder ein Studium würde deine Karrierechancen enorm verbessern, aber es bedeutet auch, finanzielle Einbußen hinzunehmen und viel Zeit zu investieren.","o":[{"l":"Studium/Weiterbildung beginnen","fx":{"geld":-5,"glueck":3,"wissen":7,"freunde":-3},"bio":"begann ein studium, investierte in die zukunft."},{"l":"So weitermachen","fx":{"geld":1,"glueck":1,"wissen":0,"freunde":2},"bio":"entschied sich gegen ein studium, blieb beim bewährten."}]},{"t":"Freundschaft in Gefahr","x":"Dein bester Freund/deine beste Freundin braucht dringend deine Hilfe bei einem großen Projekt, das viel Zeit beanspruchen würde. Es würde aber mit deinen eigenen Plänen kollidieren.","o":[{"l":"Freund helfen","fx":{"geld":-2,"glueck":3,"wissen":0,"freunde":6},"bio":"half dem freund, stärkte die bindung."},{"l":"Eigene Pläne verfolgen","fx":{"geld":1,"glueck":0,"wissen":2,"freunde":-4},"bio":"verfolgte eigene pläne, enttäuschte den freund leicht."}]},{"t":"Auszeit für die Seele","x":"Du fühlst dich ausgebrannt und brauchst dringend eine Pause. Eine längere Reise würde dir guttun, aber dein Erspartes stark dezimieren und deine Karriere pausieren lassen.","o":[{"l":"Reise antreten","fx":{"geld":-7,"glueck":7,"wissen":3,"freunde":0},"bio":"machte eine auszeit, um neue energie zu schöpfen."},{"l":"Weiterarbeiten","fx":{"geld":3,"glueck":-4,"wissen":0,"freunde":1},"bio":"entschied sich weiterzuarbeiten, vernachlässigte die erholung."}]},{"t":"Investition mit Risiko","x":"Ein alter Bekannter bietet dir an, in ein vielversprechendes, aber auch sehr riskantes Geschäft zu investieren. Es könnte dich reich machen oder alles kosten.","o":[{"l":"Investieren","fx":{"geld":8,"glueck":0,"wissen":4,"freunde":-1},"bio":"investierte in ein riskantes geschäft, hoffte auf gewinn."},{"l":"Vorsichtig bleiben","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"blieb vorsichtig, vermied unnötige risiken."}]},{"t":"Liebe oder Freiheit?","x":"Deine große Liebe möchte mit dir zusammenziehen, aber du schätzt deine Unabhängigkeit sehr. Es ist eine Entscheidung zwischen Nähe und persönlichem Freiraum.","o":[{"l":"Zusammenziehen","fx":{"geld":1,"glueck":6,"wissen":0,"freunde":2},"bio":"zog mit der großen liebe zusammen, fand nähe."},{"l":"Eigene Wohnung behalten","fx":{"geld":-1,"glueck":3,"wissen":0,"freunde":0},"bio":"behielt die eigene wohnung, genoss die freiheit."}]},{"t":"Sabbatical für Leidenschaft","x":"Du hast die Möglichkeit, ein Jahr Auszeit zu nehmen, um eine lang gehegte Leidenschaft zu verfolgen. Es würde dir persönlich viel geben, aber dein Erspartes schrumpfen lassen.","o":[{"l":"Sabbatical nehmen","fx":{"geld":-6,"glueck":7,"wissen":5,"freunde":1},"bio":"nahm ein sabbatical, verfolgte leidenschaften."},{"l":"Weiterarbeiten","fx":{"geld":2,"glueck":-2,"wissen":0,"freunde":0},"bio":"entschied sich gegen ein sabbatical, blieb im arbeitsalltag."}]}],[{"t":"Kinderwunsch?","x":"Die Jahre vergehen und die Frage nach Kindern wird lauter. Ihr sprecht viel darüber, wägt ab und spürt den Wunsch, eine Familie zu gründen. Wie geht es weiter?","o":[{"l":"Wir wollen ein Kind!","fx":{"geld":-5,"glueck":7,"wissen":0,"freunde":0},"bio":"hat sich entschieden, eine familie zu gründen."},{"l":"Noch warten","fx":{"geld":2,"glueck":-3,"wissen":0,"freunde":0},"bio":"hat den kinderwunsch aufgeschoben."}]},{"t":"Hauskauf-Fieber","x":"Eure Mietwohnung wird zu klein. Beim Stöbern entdeckt ihr ein charmantes Haus, das bezahlbar scheint. Die Besichtigung war vielversprechend, aber der Kredit...","o":[{"l":"Haus kaufen!","fx":{"geld":-8,"glueck":5,"wissen":0,"freunde":0},"bio":"hat ein eigenes haus gekauft."},{"l":"Lieber mieten","fx":{"geld":3,"glueck":-2,"wissen":0,"freunde":0},"bio":"ist in einer größeren mietwohnung geblieben."}]},{"t":"Kita-Platz-Stress","x":"Der Kita-Platz für euer Kind ist heiß begehrt. Ihr rennt von einer Einrichtung zur nächsten, füllt Formulare aus und wartet gespannt auf Rückmeldungen.","o":[{"l":"Wunsch-Kita bekommen","fx":{"geld":-2,"glueck":4,"wissen":0,"freunde":0},"bio":"hat einen kita-platz für ihr kind gefunden."},{"l":"Kompromiss-Kita","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"musste eine alternative kita wählen."},{"l":"Kein Platz!","fx":{"geld":0,"glueck":-5,"wissen":0,"freunde":0},"bio":"hat vorerst keinen kita-platz bekommen."}]},{"t":"Elternabend-Debatte","x":"Beim Elternabend diskutieren alle hitzig über die Klassenfahrt. Die Meinungen gehen auseinander, und du fühlst dich mitten im Kreuzfeuer der Argumente.","o":[{"l":"Klar Position beziehen","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":2},"bio":"hat sich beim elternabend engagiert."},{"l":"Lieber raushalten","fx":{"geld":0,"glueck":0,"wissen":0,"freunde":-1},"bio":"ist beim elternabend still geblieben."}]},{"t":"Nachbarschaftshilfe","x":"Deine Nachbarin braucht dringend Hilfe beim Umzug. Eigentlich hast du viel zu tun, aber sie hat dir auch schon oft geholfen.","o":[{"l":"Sofort mit anpacken","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":3},"bio":"hat der nachbarin beim umzug geholfen."},{"l":"Aus Zeitmangel ablehnen","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":-2},"bio":"musste die nachbarin abweisen."}]},{"t":"Kredit-Umschuldung","x":"Die Zinsen sind gesunken! Du könntest deinen Immobilienkredit umschulden und monatlich eine Menge Geld sparen. Der Papierkram ist aber immens.","o":[{"l":"Kredit umschulden","fx":{"geld":5,"glueck":0,"wissen":2,"freunde":0},"bio":"hat erfolgreich ihren kredit umgeschuldet."},{"l":"Aufwand scheuen","fx":{"geld":-2,"glueck":0,"wissen":0,"freunde":0},"bio":"hat den aufwand der umschuldung gescheut."}]},{"t":"Vereinbarkeit","x":"Job und Familie unter einen Hut zu bekommen, ist eine echte Herausforderung. Du fühlst dich oft hin- und hergerissen zwischen Arbeit und den Bedürfnissen deiner Familie.","o":[{"l":"Flexible Arbeitszeit beantragen","fx":{"geld":-2,"glueck":3,"wissen":0,"freunde":0},"bio":"hat flexible arbeitszeiten beantragt."},{"l":"Mehr im Job geben","fx":{"geld":3,"glueck":-2,"wissen":0,"freunde":0},"bio":"hat dem job priorität eingeräumt."}]},{"t":"Schulbasar","x":"Die Schule deines Kindes veranstaltet einen Basar. Es wird dringend um Mithilfe gebeten – Kuchen backen, Standbetreuung oder Auf- und Abbau.","o":[{"l":"Aktiv mithelfen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":3},"bio":"hat beim schulbasar mitgeholfen."},{"l":"Nur etwas spenden","fx":{"geld":-1,"glueck":0,"wissen":0,"freunde":1},"bio":"hat nur eine kleine spende gemacht."}]},{"t":"Familienfeier","x":"Deine Familie plant ein großes Wiedersehen. Es wäre schön, alle mal wiederzusehen, aber die Anreise ist weit und die Unterkunft teuer.","o":[{"l":"Hinfahren und mitfeiern","fx":{"geld":-4,"glueck":6,"wissen":0,"freunde":0},"bio":"hat an der großen familienfeier teilgenommen."},{"l":"Lieber daheim bleiben","fx":{"geld":2,"glueck":-2,"wissen":0,"freunde":0},"bio":"ist der familienfeier ferngeblieben."}]},{"t":"Renovierungsstau","x":"Im Haus stapeln sich die kleinen Reparaturen. Eine Wand braucht einen neuen Anstrich, die Spülmaschine muckt und im Garten wuchert Unkraut.","o":[{"l":"Alles selbst machen","fx":{"geld":1,"glueck":-2,"wissen":3,"freunde":0},"bio":"hat alle reparaturen selbst erledigt."},{"l":"Handwerker beauftragen","fx":{"geld":-5,"glueck":3,"wissen":0,"freunde":0},"bio":"hat handwerker für die reparaturen engagiert."}]},{"t":"Haustier-Wunsch","x":"Die Kinder wünschen sich sehnlichst ein Haustier. Ein Hund oder eine Katze wäre toll, aber du weißt, dass viel Arbeit und Kosten damit verbunden sind.","o":[{"l":"Ein Haustier anschaffen","fx":{"geld":-3,"glueck":4,"wissen":0,"freunde":0},"bio":"hat der familie ein haustier geschenkt."},{"l":"Nein sagen","fx":{"geld":1,"glueck":-2,"wissen":0,"freunde":0},"bio":"hat den haustierwunsch abgelehnt."}]},{"t":"Ehrenamt gesucht","x":"Der Sportverein im Ort sucht neue Vorstandsmitglieder. Du hättest Lust, dich zu engagieren, aber deine Freizeit ist ohnehin schon knapp bemessen.","o":[{"l":"Im Verein mitarbeiten","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":4},"bio":"hat sich ehrenamtlich im sportverein engagiert."},{"l":"Keine Zeit finden","fx":{"geld":0,"glueck":0,"wissen":0,"freunde":-1},"bio":"hat die ehrenamtliche tätigkeit abgelehnt."}]},{"t":"Schulwechsel-Diskussion","x":"Dein Kind tut sich schwer in der Schule. Es gibt Überlegungen, die Schule zu wechseln, aber das wäre ein großer Schritt für die ganze Familie.","o":[{"l":"Schulwechsel wagen","fx":{"geld":-1,"glueck":3,"wissen":0,"freunde":-1},"bio":"hat den schulwechsel für das kind in die wege geleitet."},{"l":"An der Schule bleiben","fx":{"geld":0,"glueck":-2,"wissen":0,"freunde":1},"bio":"hat sich gegen einen schulwechsel entschieden."}]}],[{"t":"Die weise Mentorin","x":"Ein junger Kollege bittet dich um Rat bei einem wichtigen Projekt. Du könntest dein Wissen teilen oder dich zurückhalten, um ihn seine eigenen Erfahrungen machen zu lassen.","o":[{"l":"Gib umfassende Ratschläge","fx":{"geld":0,"glueck":3,"wissen":2,"freunde":1},"bio":"gab umfassende ratschläge und wurde zur geschätzten mentorin."},{"l":"Lass ihn selbst herausfinden","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"ließ den kollegen selbst herausfinden, was zu gemischten ergebnissen führte."},{"l":"Biete nur begrenzte Hilfe an","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":0},"bio":"bot begrenzte hilfe an, der kollege lernte trotzdem viel."}]},{"t":"Der unerwartete Umzug","x":"Deine Eltern müssen altersbedingt umziehen und brauchen deine Unterstützung. Das bedeutet jedoch eine längere Anreise und viel Aufwand für dich.","o":[{"l":"Hilf tatkräftig beim Umzug","fx":{"geld":-2,"glueck":4,"wissen":0,"freunde":0},"bio":"half tatkräftig beim umzug der eltern, opferte zeit und geld."},{"l":"Engagiere professionelle Helfer","fx":{"geld":-4,"glueck":2,"wissen":0,"freunde":0},"bio":"engagierte professionelle helfer für den eltern-umzug."},{"l":"Biete nur moralische Unterstützung","fx":{"geld":0,"glueck":-2,"wissen":0,"freunde":0},"bio":"bot den eltern nur moralische unterstützung, was sie enttäuschte."}]},{"t":"Alte Liebe rostet nicht","x":"Du triffst eine alte Jugendliebe wieder. Die Chemie stimmt immer noch und es knistert verdächtig. Was machst du?","o":[{"l":"Geh auf ein Date","fx":{"geld":0,"glueck":5,"wissen":0,"freunde":0},"bio":"ging auf ein date mit der jugendliebe, herzen klopften wieder."},{"l":"Bleib bei einer Freundschaft","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":2},"bio":"entschied sich für freundschaft, um keine alte beziehung zu stören."},{"l":"Ignoriere das Knistern","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"ignorierte das knistern, bereute es später ein wenig."}]},{"t":"Neues Hobby, neue Welt","x":"Ein Freund überredet dich, einen Töpferkurs zu besuchen. Du warst noch nie künstlerisch aktiv, aber es klingt interessant.","o":[{"l":"Melde dich sofort an","fx":{"geld":-1,"glueck":3,"wissen":2,"freunde":1},"bio":"meldete sich zu einem töpferkurs an, fand neue leidenschaft."},{"l":"Zögerst noch etwas","fx":{"geld":0,"glueck":0,"wissen":0,"freunde":0},"bio":"zögerte noch mit dem neuen hobby, die zeit verging."},{"l":"Lehne dankend ab","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"lehnte den töpferkurs ab, blieb bei gewohnten aktivitäten."}]},{"t":"Der unerwartete Scheck","x":"Du erhältst einen unerwarteten Scheck von einer entfernten Tante. Das Geld ist eine nette Überraschung.","o":[{"l":"Leiste dir etwas Schönes","fx":{"geld":5,"glueck":3,"wissen":0,"freunde":0},"bio":"leistete sich etwas schönes vom unerwarteten geldsegen."},{"l":"Spare das Geld","fx":{"geld":6,"glueck":1,"wissen":0,"freunde":0},"bio":"sparte das geld für schlechte zeiten, fühlte sich sicher."},{"l":"Spende einen Teil","fx":{"geld":3,"glueck":4,"wissen":0,"freunde":0},"bio":"spendete einen teil des geldes, tat etwas gutes."}]},{"t":"Die Gesundheits-App","x":"Ein Bekannter schwärmt von einer neuen Gesundheits-App, die dir helfen soll, fitter zu werden. Klingt nach viel Disziplin.","o":[{"l":"Lade die App herunter","fx":{"geld":-1,"glueck":2,"wissen":1,"freunde":0},"bio":"lud die gesundheits-app herunter, startete ein neues regime."},{"l":"Bleib bei alten Gewohnheiten","fx":{"geld":0,"glueck":0,"wissen":0,"freunde":0},"bio":"blieb bei alten gewohnheiten, mäßig gesund, aber bequem."},{"l":"Informiere dich kritisch","fx":{"geld":0,"glueck":1,"wissen":1,"freunde":0},"bio":"informierte sich kritisch über die app, traf bewusste entscheidung."}]},{"t":"Verlorene Brieftasche","x":"Du findest eine Brieftasche mit viel Geld und Ausweisen. Der Besitzer ist leicht zu ermitteln.","o":[{"l":"Gib alles zurück","fx":{"geld":0,"glueck":4,"wissen":0,"freunde":1},"bio":"gab die brieftasche zurück, erhielt dank und gutes karma."},{"l":"Behalte einen Teil des Geldes","fx":{"geld":3,"glueck":-2,"wissen":0,"freunde":0},"bio":"behielt einen teil des geldes, fühlte sich aber nicht ganz wohl."},{"l":"Gib nur die Ausweise zurück","fx":{"geld":4,"glueck":-3,"wissen":0,"freunde":0},"bio":"gab nur die ausweise zurück, das geld behielt ich."}]},{"t":"Das Familiengeheimnis","x":"Bei einem Familientreffen kommt ein altes Geheimnis ans Licht, das die Verhältnisse durcheinanderbringt. Du musst dich positionieren.","o":[{"l":"Sprich offen über alles","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":-2},"bio":"sprach offen über das familiengeheimnis, mit allen konsequenzen."},{"l":"Versuche zu schlichten","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":2},"bio":"versuchte, zwischen den parteien zu schlichten, mit mäßigem erfolg."},{"l":"Halt dich da raus","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":-1},"bio":"hielt sich aus dem familiengeheimnis raus, was nicht allen gefiel."}]},{"t":"Die alte Schulfreundin","x":"Eine alte Schulfreundin meldet sich nach Jahren wieder. Sie schlägt ein Wiedersehen vor, obwohl du viel zu tun hast.","o":[{"l":"Triff dich sofort","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":3},"bio":"traf sich sofort mit der schulfreundin, die alte vertrautheit war da."},{"l":"Vertage das Treffen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":1},"bio":"vertagte das treffen, hoffte auf bessere zeiten, die kamen."},{"l":"Lehne ab, keine Zeit","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":-2},"bio":"lehnte das treffen ab, hatte zu viel zu tun, was sie enttäuschte."}]},{"t":"Die Ehrenamtliche","x":"Ein lokaler Verein sucht dringend ehrenamtliche Helfer. Du könntest deine Fähigkeiten einbringen und etwas Gutes tun.","o":[{"l":"Engagiere dich sofort","fx":{"geld":0,"glueck":4,"wissen":1,"freunde":2},"bio":"engagierte sich sofort ehrenamtlich, fand neue erfüllung."},{"l":"Überlege es dir noch","fx":{"geld":0,"glueck":0,"wissen":0,"freunde":0},"bio":"überlegte sich das engagement, fand dann doch keine zeit."},{"l":"Lehne ab, zu viel Stress","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"lehnte ehrenamtliche arbeit ab, zu viel stress im alltag."}]},{"t":"Das unerwartete Erbe","x":"Du erhältst eine Nachricht von einem Notar: Ein entfernter Verwandter ist verstorben und hat dir ein kleines Erbe hinterlassen.","o":[{"l":"Nimm das Erbe an","fx":{"geld":7,"glueck":2,"wissen":0,"freunde":0},"bio":"nahm das erbe an, freute sich über den unerwarteten segen."},{"l":"Spende das Erbe","fx":{"geld":0,"glueck":5,"wissen":0,"freunde":0},"bio":"spendete das erbe, wollte selbst nichts davon behalten."},{"l":"Lehne das Erbe ab","fx":{"geld":-1,"glueck":-1,"wissen":0,"freunde":0},"bio":"lehnte das erbe ab, wollte keine verpflichtungen eingehen."}]},{"t":"Der Vortrag","x":"Man bittet dich, einen Vortrag über deine langjährige Berufserfahrung zu halten. Eine tolle Gelegenheit, dein Wissen weiterzugeben.","o":[{"l":"Bereite den Vortrag vor","fx":{"geld":0,"glueck":3,"wissen":2,"freunde":1},"bio":"bereitete den vortrag vor, teilte erfolgreich ihr wissen."},{"l":"Bitte um Aufschub","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"bat um aufschub, um den vortrag besser vorzubereiten."},{"l":"Lehne den Vortrag ab","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"lehnte den vortrag ab, schüchternheit siegte über die lust."}]},{"t":"Die Reise zum Ursprung","x":"Du entdeckst alte Fotos deiner Großeltern und verspürst den Wunsch, ihre Heimat zu besuchen. Eine Reise in die Vergangenheit.","o":[{"l":"Plane die Reise","fx":{"geld":-3,"glueck":4,"wissen":2,"freunde":0},"bio":"plante eine reise zu den wurzeln der familie, erfuhr viel neues."},{"l":"Recherchiere online","fx":{"geld":0,"glueck":2,"wissen":1,"freunde":0},"bio":"recherchierte online über die heimat der großeltern, entdeckte geschichte."},{"l":"Lass die Idee fallen","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"ließ die reiseidee fallen, andere dinge waren wichtiger."}]}],[{"t":"Enkel-Wirbelwind","x":"Deine Enkelkinder kommen zu Besuch und verwandeln dein Haus in einen Abenteuerspielplatz. Überall liegen Spielsachen und es ist laut, aber ihre Freude ist ansteckend.","o":[{"l":"Volle Kanne mitspielen","fx":{"geld":-2,"glueck":5,"wissen":0,"freunde":3},"bio":"viel gelacht und gespielt, aber auch etwas erschöpft gewesen"},{"l":"Ruhigere Aktivitäten vorschlagen","fx":{"geld":0,"glueck":3,"wissen":2,"freunde":2},"bio":"die ruhigen Momente mit den Enkeln genossen und ihnen vorgelesen"},{"l":"Pausen einlegen und beobachten","fx":{"geld":0,"glueck":4,"wissen":0,"freunde":0},"bio":"das bunte Treiben der Familie aus der Ferne beobachtet und geschmunzelt"}]},{"t":"Die alte Reiseapotheke","x":"Du findest beim Aufräumen eine alte, fast vergessene Reiseapotheke. Sie erinnert dich an eine unvergessliche Weltreise, die du vor vielen Jahren gemacht hast.","o":[{"l":"In Erinnerungen schwelgen","fx":{"geld":0,"glueck":4,"wissen":0,"freunde":0},"bio":"mit einem Lächeln an ferne Länder und Abenteuer gedacht"},{"l":"Alte Fotos heraussuchen","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":2},"bio":"alte Reisefotos gefunden und mit Freunden geteilt"},{"l":"Eine neue Reise planen","fx":{"geld":-5,"glueck":6,"wissen":0,"freunde":0},"bio":"den Entschluss gefasst, bald wieder die Koffer zu packen"}]},{"t":"Der Nachbarschaftstreff","x":"Im Gemeinschaftsraum wird ein Nachbarschaftstreff organisiert. Du bist unsicher, ob du hingehen sollst – es ist eine gute Gelegenheit, neue Leute kennenzulernen, aber auch ein Abend, der deine Routine durcheinanderbringt.","o":[{"l":"Hingehen und Kontakte knüpfen","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":4},"bio":"neue Bekanntschaften gemacht und alte Freundschaften vertieft"},{"l":"Einen ruhigen Abend zu Hause verbringen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":-1},"bio":"den Abend gemütlich auf dem Sofa verbracht und ein Buch gelesen"},{"l":"Kurz vorbeischauen und wieder gehen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":1},"bio":"einen kurzen Blick riskiert und dann doch lieber heimgegangen"}]},{"t":"Unerwarteter Brief","x":"Ein alter Freund, den du seit Jahrzehnten nicht mehr gesehen hast, schreibt dir überraschend einen Brief. Er möchte dich wieder treffen.","o":[{"l":"Sofort ein Treffen vereinbaren","fx":{"geld":-1,"glueck":5,"wissen":0,"freunde":5},"bio":"einen alten Freund nach langer Zeit wiedergetroffen und alte Zeiten aufleben lassen"},{"l":"Zuerst selbst einen Brief schreiben","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":3},"bio":"die Korrespondenz mit einem alten Freund wieder aufgenommen"},{"l":"Nichts tun, alte Wunden","fx":{"geld":0,"glueck":-2,"wissen":0,"freunde":-1},"bio":"den Brief ungelesen gelassen, alte Wunden nicht wieder geöffnet"}]},{"t":"Das defekte Erbstück","x":"Deine geliebte alte Spieluhr, ein Erbstück deiner Großmutter, ist kaputtgegangen. Sie hat einen hohen emotionalen, aber keinen großen materiellen Wert.","o":[{"l":"Professionell reparieren lassen","fx":{"geld":-4,"glueck":4,"wissen":0,"freunde":0},"bio":"die kaputte Spieluhr von einem Fachmann reparieren lassen"},{"l":"Selbst versuchen, sie zu reparieren","fx":{"geld":-1,"glueck":2,"wissen":3,"freunde":0},"bio":"sich an der Reparatur der Spieluhr versucht und dabei etwas gelernt"},{"l":"Sie als Erinnerung behalten","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"die defekte Spieluhr als Erinnerungsstück aufbewahrt"}]},{"t":"Senioren-Sportgruppe","x":"Man bietet in deinem Viertel eine neue Sportgruppe für Senioren an. Du könntest etwas für deine Fitness tun und gleichzeitig neue Leute treffen.","o":[{"l":"Gleich anmelden und mitmachen","fx":{"geld":-2,"glueck":4,"wissen":0,"freunde":4},"bio":"einer Sportgruppe beigetreten und neue Leute kennengelernt"},{"l":"Erst einmal zuschauen gehen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":1},"bio":"die Sportgruppe besucht, aber noch nicht aktiv teilgenommen"},{"l":"Lieber zu Hause entspannen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":-1},"bio":"den Abend lieber zu Hause verbracht und sich ausgeruht"}]},{"t":"Der unerwartete Anruf","x":"Ein ehemaliger Arbeitskollege ruft dich an und bittet dich um Rat bei einem Projekt, das er nicht lösen kann. Deine Erfahrung wäre sehr hilfreich.","o":[{"l":"Umfassend Ratschläge geben","fx":{"geld":0,"glueck":3,"wissen":4,"freunde":3},"bio":"einem ehemaligen Kollegen geholfen und dessen Projekt gerettet"},{"l":"Kurz und knapp antworten","fx":{"geld":0,"glueck":1,"wissen":2,"freunde":1},"bio":"kurze, prägnante Ratschläge gegeben und schnell aufgelegt"},{"l":"Sagen, dass du keine Zeit hast","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":-2},"bio":"den Kollegen abgewiesen, da man keine Zeit hatte"}]},{"t":"Altes Hobby wiederentdeckt","x":"Beim Aufräumen findest du Materialien für ein altes Hobby, das du vor langer Zeit aufgegeben hast. Es weckt schöne Erinnerungen und die Lust, es wieder aufzunehmen.","o":[{"l":"Sofort wieder loslegen","fx":{"geld":-2,"glueck":5,"wissen":3,"freunde":0},"bio":"ein altes Hobby wiederentdeckt und die Freude daran genossen"},{"l":"Anderen davon erzählen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":3},"bio":"von dem wiederentdeckten Hobby erzählt und Interesse geweckt"},{"l":"Es wieder zur Seite legen","fx":{"geld":0,"glueck":-1,"wissen":0,"freunde":0},"bio":"das alte Hobby zwar wiederentdeckt, aber doch zur Seite gelegt"}]},{"t":"Der verwilderte Garten","x":"Dein Garten ist über die Jahre etwas verwildert. Du könntest ihn wieder in Schuss bringen oder es einfach so lassen und die Wildnis genießen.","o":[{"l":"Mit viel Einsatz auf Vordermann bringen","fx":{"geld":-3,"glueck":4,"wissen":0,"freunde":0},"bio":"den verwilderten Garten wieder in eine grüne Oase verwandelt"},{"l":"Hilfe von Freunden annehmen","fx":{"geld":-1,"glueck":3,"wissen":0,"freunde":4},"bio":"gemeinsam mit Freunden den Garten auf Vordermann gebracht"},{"l":"Die Natur einfach walten lassen","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":0},"bio":"die Wildnis im Garten genossen und der Natur ihren Lauf gelassen"}]},{"t":"Einladung zum Vortrag","x":"Du erhältst eine Einladung, einen Vortrag über deine Lebenserfahrungen oder dein Fachwissen zu halten. Eine große Ehre, aber auch mit Aufwand verbunden.","o":[{"l":"Die Einladung annehmen","fx":{"geld":0,"glueck":5,"wissen":4,"freunde":2},"bio":"einen erfolgreichen Vortrag gehalten und das Wissen geteilt"},{"l":"Lieber schriftlich etwas verfassen","fx":{"geld":0,"glueck":3,"wissen":3,"freunde":1},"bio":"einen Beitrag verfasst und so das Wissen weitergegeben"},{"l":"Die Einladung dankend ablehnen","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":-1},"bio":"die Einladung zum Vortrag abgelehnt, da man die Ruhe bevorzugte"}]},{"t":"Das alte Sparbuch","x":"Beim Aufräumen findest du ein altes Sparbuch mit einem kleinen, aber unerwarteten Guthaben. Was machst du mit dem unverhofften Geld?","o":[{"l":"Eine Spende machen","fx":{"geld":-4,"glueck":4,"wissen":0,"freunde":0},"bio":"einen Teil des unerwarteten Geldes gespendet und Gutes getan"},{"l":"Einen lang gehegten Wunsch erfüllen","fx":{"geld":-5,"glueck":5,"wissen":0,"freunde":0},"bio":"sich mit dem gefundenen Geld einen lang gehegten Wunsch erfüllt"},{"l":"Das Geld einfach zur Seite legen","fx":{"geld":2,"glueck":1,"wissen":0,"freunde":0},"bio":"das gefundene Geld gespart und für schlechtere Zeiten aufbewahrt"}]},{"t":"Gelassenheitstest","x":"Ein kleineres Ärgernis tritt auf, das dich früher aus der Fassung gebracht hätte. Wie reagierst du jetzt darauf?","o":[{"l":"Ruhig und besonnen bleiben","fx":{"geld":0,"glueck":4,"wissen":0,"freunde":0},"bio":"mit Gelassenheit und Ruhe auf ein Ärgernis reagiert"},{"l":"Den Fehler beheben","fx":{"geld":-1,"glueck":3,"wissen":2,"freunde":0},"bio":"das Problem selbst in die Hand genommen und behoben"},{"l":"Sich kurz aufregen, dann abhaken","fx":{"geld":0,"glueck":1,"wissen":0,"freunde":0},"bio":"sich kurz aufgeregt, aber dann schnell zur Tagesordnung übergegangen"}]},{"t":"Die kleine Freude","x":"Ein kleiner Moment des Glücks ereilt dich im Alltag – sei es ein besonders schöner Sonnenuntergang oder ein freundliches Lächeln eines Fremden.","o":[{"l":"Den Moment bewusst genießen","fx":{"geld":0,"glueck":5,"wissen":0,"freunde":0},"bio":"einen kleinen, aber besonderen Moment der Freude bewusst genossen"},{"l":"Die Freude teilen","fx":{"geld":0,"glueck":3,"wissen":0,"freunde":3},"bio":"die kleine Freude mit einem Freund oder Familienmitglied geteilt"},{"l":"Daran denken und lächeln","fx":{"geld":0,"glueck":2,"wissen":0,"freunde":0},"bio":"mit einem Lächeln an den schönen Moment zurückgedacht"}]}]];</script>
+<script src="/js/vendor/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var THREE=window.THREE,W=innerWidth,H=innerHeight;
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
+var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
+var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
+renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setSize(W,H);
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.outputEncoding=THREE.sRGBEncoding;
+document.getElementById("wrap").appendChild(renderer.domElement);
+var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd8ef);scene.fog=new THREE.Fog(0x9fd8ef,120,420);
+var camera=new THREE.PerspectiveCamera(50,W/H,0.1,800);
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:0x000000,emissiveIntensity:i!==undefined?i:0.25,flatShading:true});}
+// Audio
+var actx=null,muted=lsGet("lp_muted")==="1";
+function beep(f,d,t,g){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
+(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
+// ===================== 8 Lebens-Kapitel: Farben wie echt (Frühling→Winter des Lebens) =====================
+var CHAPTERS=[
+ {n:"KINDHEIT",sub:"Alles beginnt mit Staunen",ground:0x7ecb62,sky:0x9fd8ef,accent:0xffd166,deko:"spielzeug"},
+ {n:"SCHULZEIT",sub:"Freunde, Pausenhof, erste Träume",ground:0x69bd6e,sky:0x8fd0f0,accent:0x5ea8ff,deko:"schule"},
+ {n:"AUSBILDUNG",sub:"Der eigene Weg zeichnet sich ab",ground:0xa8c85a,sky:0xa5daf0,accent:0xb98bff,deko:"campus"},
+ {n:"ERSTE SCHRITTE",sub:"Eigene Wohnung, erstes Gehalt",ground:0xd9b45e,sky:0xffd9a0,accent:0xff9a4a,deko:"stadt"},
+ {n:"KARRIERE & LIEBE",sub:"Die Jahre, in denen alles passiert",ground:0xe09a52,sky:0xffc188,accent:0xff6e8a,deko:"stadt2"},
+ {n:"FAMILIE & HAUS",sub:"Wurzeln schlagen",ground:0xc97f4e,sky:0xf0a878,accent:0xe06a5a,deko:"vorort"},
+ {n:"REIFE JAHRE",sub:"Ernten, was man gesät hat",ground:0x9a6a48,sky:0xd08a68,accent:0xc98a3a,deko:"herbst"},
+ {n:"LEBENSABEND",sub:"Der goldene Blick zurück",ground:0xd8e8f0,sky:0xf5d9e8,accent:0xf0c8ff,deko:"winter"}
+];
+var FIELDS_PER=16,NFIELDS=CHAPTERS.length*FIELDS_PER; // 128 Felder
+// ===================== Pfad: gewundene Spirale durch die Kapitel =====================
+var pathPts=[];
+(function(){
+  // Serpentinen-Kurve: 8 Segmente, jedes windet sich durch seine Zone
+  var pts=[],x=0,z=0,dir=1;
+  for(var c=0;c<CHAPTERS.length;c++){
+    var bx=c*46-160; // Kapitel entlang X
+    pts.push(new THREE.Vector3(bx,0,dir*22));
+    pts.push(new THREE.Vector3(bx+14,0,dir*-6));
+    pts.push(new THREE.Vector3(bx+30,0,dir*18*(c%2?-1:1)));
+    dir*=-1;
+  }
+  pts.push(new THREE.Vector3(CHAPTERS.length*46-160+44,0,0));
+  var curve=new THREE.CatmullRomCurve3(pts);
+  for(var i=0;i<NFIELDS;i++){var p=curve.getPoint(i/(NFIELDS-1));pathPts.push(p);}
+})();
+function chapterOf(tile){return Math.min(CHAPTERS.length-1,Math.floor(tile/FIELDS_PER));}
+// ===================== Licht =====================
+var hemi=new THREE.HemisphereLight(0xffffff,0x5a7a4a,0.72);scene.add(hemi);
+var sunL=new THREE.DirectionalLight(0xfff2d8,0.95);sunL.position.set(30,60,20);scene.add(sunL);
+sunL.castShadow=true;sunL.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);sunL.shadow.bias=-0.0008;
+sunL.shadow.camera.near=1;sunL.shadow.camera.far=260;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
+// ===================== Bunte Landschaft: Terrain mit Kapitel-Farbverlauf =====================
+function hsh(ix,iz){var n=ix*374761393+iz*668265263;n=(n^(n>>13))*1274126177;return ((n^(n>>16))>>>0)/4294967295;}
+function vnoise(x,z){var ix=Math.floor(x),iz=Math.floor(z),fx=x-ix,fz=z-iz;
+  var A=hsh(ix,iz),B=hsh(ix+1,iz),C=hsh(ix,iz+1),D=hsh(ix+1,iz+1),ux=fx*fx*(3-2*fx),uz=fz*fz*(3-2*fz);
+  return A*(1-ux)*(1-uz)+B*ux*(1-uz)+C*(1-ux)*uz+D*ux*uz;}
+function terrainH(x,z){
+  var h=(vnoise(x*0.02+7,z*0.02+7)*0.6+vnoise(x*0.06,z*0.06)*0.4-0.5)*2*5;
+  // Pfad-Korridor flach halten
+  var best=1e9;for(var i=0;i<pathPts.length;i+=2){var d=(x-pathPts[i].x)*(x-pathPts[i].x)+(z-pathPts[i].z)*(z-pathPts[i].z);if(d<best)best=d;}
+  best=Math.sqrt(best);
+  if(best<10)h*=Math.max(0,(best-4)/6);
+  return h;}
+(function(){
+  var geo=new THREE.PlaneGeometry(560,220,150,60);geo.rotateX(-Math.PI/2);geo.translate(20,0,0);
+  var pos=geo.attributes.position,cols=new Float32Array(pos.count*3);
+  var tmp=new THREE.Color(),g1=new THREE.Color(),g2=new THREE.Color();
+  for(var i=0;i<pos.count;i++){var x=pos.getX(i),z=pos.getZ(i),h=terrainH(x,z);
+    pos.setY(i,h-0.35);
+    // Kapitel-Farbe entlang X weich mischen ("alle Farben wie echt")
+    var t=Math.max(0,Math.min(CHAPTERS.length-1.001,(x+160)/46));
+    var ci=Math.floor(t),f=t-ci;
+    g1.setHex(CHAPTERS[ci].ground);g2.setHex(CHAPTERS[Math.min(CHAPTERS.length-1,ci+1)].ground);
+    tmp.copy(g1).lerp(g2,f);
+    var shade=0.72+Math.max(0,Math.min(1,(h+5)/10))*0.34;tmp.multiplyScalar(shade);
+    cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
+  geo.setAttribute("color",new THREE.BufferAttribute(cols,3));geo.computeVertexNormals();
+  var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:true}));
+  m.receiveShadow=true;scene.add(m);})();
+// ===================== Felder auf dem Pfad =====================
+// Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
+var FTYPE_COL={e:0xffffff,"g+":0xffd166,"g-":0xff6e6e,h:0xff9ad9,w:0x7db8ff,f:0x8affc0,m:0xffb84a};
+var fields=[];
+(function(){
+  var seq=["e","g+","e","h","e","w","g-","e","f","e","g+","e","h","w","e"]; // 15 + Meilenstein
+  for(var i=0;i<NFIELDS;i++){
+    var inChap=i%FIELDS_PER;
+    var ty=(inChap===FIELDS_PER-1)?"m":seq[inChap%seq.length];
+    if(i===0)ty="m";
+    var p=pathPts[i];
+    var disc=new THREE.Mesh(new THREE.CylinderGeometry(ty==="m"?2.6:1.9,ty==="m"?2.8:2.1,0.5,ty==="m"?8:16),
+      mat(FTYPE_COL[ty],FTYPE_COL[ty],ty==="m"?0.5:0.18));
+    disc.position.set(p.x,0.25,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+    fields.push({x:p.x,z:p.z,type:ty,disc:disc});
+    // Verbindungsstege
+    if(i>0){var q=pathPts[i-1],mx=(p.x+q.x)/2,mz=(p.z+q.z)/2,len=Math.hypot(p.x-q.x,p.z-q.z);
+      var bridge=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.14,len-3.4),mat(0xf5e8d0,0x000000,0));
+      bridge.position.set(mx,0.1,mz);bridge.rotation.y=-Math.atan2(p.x-q.x,p.z-q.z);bridge.receiveShadow=true;scene.add(bridge);}
+  }
+})();
+// ===================== Deko pro Kapitel (bunt, instanziert) =====================
+(function(){
+  var _d=new THREE.Object3D();
+  // Bäume: Stamm+Krone in Kapitel-Farbvarianten
+  var N=240;
+  var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.22,0.3,1.6,5),mat(0x8a5a3a),N);
+  var crown=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1.15,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),N);
+  var cTmp=new THREE.Color();
+  var placed=0,guard=0;
+  while(placed<N&&guard++<3000){
+    var x=-175+Math.random()*400,z=(Math.random()-0.5)*190;
+    var nearP=false;for(var i=0;i<pathPts.length;i+=2){if(Math.hypot(x-pathPts[i].x,z-pathPts[i].z)<7){nearP=true;break;}}
+    if(nearP)continue;
+    var h=terrainH(x,z),ci=Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((x+160)/46)));
+    var s=0.7+Math.random()*1.6;
+    _d.position.set(x,h+0.8*s,z);_d.scale.set(s,s,s);_d.rotation.set(0,Math.random()*3.14,0);_d.updateMatrix();
+    trunk.setMatrixAt(placed,_d.matrix);
+    _d.position.y=h+(1.7+Math.random()*0.5)*s;_d.updateMatrix();crown.setMatrixAt(placed,_d.matrix);
+    // Kronen-Farben: sattes Grün → Herbst-Orange → Winter-Rosa, mit Varianz
+    cTmp.setHex(CHAPTERS[ci].ground).offsetHSL((Math.random()-0.5)*0.12,0.28,Math.random()*0.06);
+    if(ci>=6)cTmp.setHex(ci===7?0xf0d8e8:0xe08a3a).offsetHSL((Math.random()-0.5)*0.06,0,Math.random()*0.1);
+    crown.setColorAt(placed,cTmp);placed++;}
+  trunk.count=placed;crown.count=placed;
+  trunk.instanceMatrix.needsUpdate=true;crown.instanceMatrix.needsUpdate=true;if(crown.instanceColor)crown.instanceColor.needsUpdate=true;
+  trunk.castShadow=true;crown.castShadow=true;scene.add(trunk);scene.add(crown);
+  // Blumen-Punkte (alle Farben)
+  var FN=700,fg=new THREE.BufferGeometry(),fp=new Float32Array(FN*3),fc=new Float32Array(FN*3);
+  for(var f2=0;f2<FN;f2++){var fx=-175+Math.random()*400,fz=(Math.random()-0.5)*190;
+    fp[f2*3]=fx;fp[f2*3+1]=terrainH(fx,fz)+0.15;fp[f2*3+2]=fz;
+    cTmp.setHSL(Math.random(),0.85,0.62);fc[f2*3]=cTmp.r;fc[f2*3+1]=cTmp.g;fc[f2*3+2]=cTmp.b;}
+  fg.setAttribute("position",new THREE.BufferAttribute(fp,3));fg.setAttribute("color",new THREE.BufferAttribute(fc,3));
+  scene.add(new THREE.Points(fg,new THREE.PointsMaterial({vertexColors:true,size:0.45})));
+  // Wolken
+  for(var w2=0;w2<14;w2++){var cl=new THREE.Group();
+    for(var b2=0;b2<3;b2++){var puff=new THREE.Mesh(new THREE.IcosahedronGeometry(2.2+Math.random()*2,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true,transparent:true,opacity:0.92}));
+      puff.position.set(b2*2.6-2.6,Math.random()*0.8,Math.random()*1.4);cl.add(puff);}
+    cl.position.set(-170+Math.random()*400,26+Math.random()*14,(Math.random()-0.5)*160);scene.add(cl);}
+})();
+// ===================== Spielfiguren =====================
+var PCOLORS=[0xff5d7d,0x5ea8ff,0x6acc5a,0xffd166];
+var PNAMES=["Rot","Blau","Grün","Gold"];
+function mkPawn(color){
+  var g=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.5,1.0,10),mat(color,color,0.12));body.position.y=0.5;body.castShadow=true;g.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.36,10,8),mat(color,color,0.12));head.position.y=1.25;head.castShadow=true;g.add(head);
+  scene.add(g);return g;}
+// ===================== Zustand =====================
+var SAVE_KEY="lp_save1";
+var G=null,running=false;
+function freshState(np){
+  var ps=[];
+  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false});
+  return {players:ps,turn:0,round:1,phase:"idle",t:0};}
+function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
+function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.players&&s.players.length)?s:null;}catch(e){return null;}}
+var pawns=[];
+// ===================== HUD =====================
+function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2600);}
+function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2400);}
+function updPlayers(){
+  var el=document.getElementById("players");el.innerHTML="";
+  G.players.forEach(function(p,i){
+    var d=document.createElement("div");d.className="pcard"+(i===G.turn&&!p.done?" on":"");
+    d.innerHTML="<div class='nm' style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.done?"🏁 ":"")+p.name+"</div>"+
+      "<div class='st'><span>💰 "+p.geld+"</span><span>❤️ "+p.glueck+"</span><span>🧠 "+p.wissen+"</span><span>👥 "+p.freunde+"</span></div>";
+    el.appendChild(d);});
+}
+function updChapter(){
+  var p=G.players[G.turn],c=CHAPTERS[chapterOf(p.tile)];
+  document.getElementById("chapTxt").textContent=c.n;
+  document.getElementById("chapSub").textContent="Kapitel "+(chapterOf(p.tile)+1)+" von 8 · "+c.sub;
+  document.getElementById("turnTag").textContent=p.done?"":("🎲 "+p.name+" ist dran (Runde "+G.round+")");
+  // Himmel weich zur Kapitel-Farbe
+  scene.background=new THREE.Color(c.sky);scene.fog.color.setHex(c.sky);
+}
+// ===================== Würfel & Bewegung =====================
+var diceEl=document.getElementById("dice"),rollBtn=document.getElementById("rollBtn");
+var DICE_FACES=["⚀","⚁","⚂","⚃","⚄","⚅"];
+var moveQ=0,hopT=0,hopFrom=null,camT={x:0,z:0};
+function roll(){
+  if(!running||G.phase!=="idle")return;
+  var p=G.players[G.turn];if(p.done){nextTurn();return;}
+  G.phase="rolling";rollBtn.disabled=true;
+  var n=1+((Math.random()*6)|0),ticks=0;
+  diceEl.style.opacity=1;beep(500,.06,"triangle",.05);
+  var iv=setInterval(function(){
+    diceEl.textContent=DICE_FACES[(Math.random()*6)|0];ticks++;
+    if(ticks>10){clearInterval(iv);diceEl.textContent=DICE_FACES[n-1];
+      beep(760,.12,"triangle",.06);
+      setTimeout(function(){diceEl.style.opacity=0;startMove(n);},600);}
+  },70);
+}
+rollBtn.onclick=roll;
+addEventListener("keydown",function(e){if(e.key===" "&&running){e.preventDefault();if(G.phase==="idle")roll();}});
+function startMove(n){
+  G.phase="moving";moveQ=n;hopT=0;
+  var p=G.players[G.turn];hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
+  announce(G.players[G.turn].name+" würfelt "+n+"!","#fff");
+}
+function updMove(dt){
+  if(G.phase!=="moving")return;
+  var p=G.players[G.turn],pw=pawns[G.turn];
+  hopT+=dt*3.2;
+  if(hopT>=1){
+    p.tile=Math.min(NFIELDS-1,p.tile+1);moveQ--;hopT=0;
+    hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
+    beep(620+Math.random()*160,.05,"triangle",.04);
+    if(p.tile>=NFIELDS-1){moveQ=0;}
+    if(moveQ<=0){G.phase="landed";onLand();return;}
+  }
+  var to=fields[Math.min(NFIELDS-1,p.tile+1)];
+  var k=hopT,x=hopFrom.x+(to.x-hopFrom.x)*k,z=hopFrom.z+(to.z-hopFrom.z)*k;
+  pw.position.set(x,Math.sin(k*Math.PI)*1.1+pawnOffset(G.turn).y,z);
+  var o=pawnOffset(G.turn);pw.position.x+=o.x;pw.position.z+=o.z;
+}
+function pawnOffset(i){var a=i/4*Math.PI*2;return {x:Math.cos(a)*0.55,y:0,z:Math.sin(a)*0.55};}
+function placePawn(i){var p=G.players[i],o=pawnOffset(i);pawns[i].position.set(fields[p.tile].x+o.x,0,fields[p.tile].z+o.z);}
+// ===================== Feld-Logik (Stufe 2 füllt EVENTS) =====================
+function onLand(){
+  var p=G.players[G.turn],f=fields[p.tile];
+  placePawn(G.turn);
+  // Begegnung: anderes Pawn auf demselben Feld -> beide +Freunde+Glück (Koop!)
+  for(var i=0;i<G.players.length;i++){if(i===G.turn||G.players[i].done)continue;
+    if(G.players[i].tile===p.tile){
+      announce("💫 BEGEGNUNG! "+p.name+" & "+G.players[i].name,"#8affc0");
+      p.freunde+=2;p.glueck+=2;G.players[i].freunde+=2;G.players[i].glueck+=2;
+      p.bio.push("traf "+G.players[i].name+" am Wegesrand — ein Tag voller Lachen");
+      beep(1046,.25,"triangle",.07);break;}}
+  if(p.tile>=NFIELDS-1){finishPlayer(p);return;}
+  if(typeof handleField==="function")handleField(p,f);
+  else endTurnSoon();
+}
+function endTurnSoon(){updPlayers();saveGame();setTimeout(nextTurn,450);}
+function nextTurn(){
+  if(!G)return;
+  var allDone=G.players.every(function(p){return p.done;});
+  if(allDone){showEnd();return;}
+  var tries=0;
+  do{G.turn=(G.turn+1)%G.players.length;if(G.turn===0)G.round++;tries++;}while(G.players[G.turn].done&&tries<8);
+  G.phase="idle";rollBtn.disabled=false;
+  updPlayers();updChapter();saveGame();
+}
+function finishPlayer(p){
+  p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
+  p.bio.push("erreichte den Lebensabend nach "+G.round+" Runden voller Geschichten");
+  beep(880,.4,"triangle",.08);
+  G.phase="idle";endTurnSoon();
+}
+// ===================== Ende: Punkte + Biografie =====================
+function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2;}
+function showEnd(){
+  running=false;lsDel(SAVE_KEY);
+  var sc=document.getElementById("scores");sc.innerHTML="";
+  var best=-1e9,bi=0;
+  G.players.forEach(function(p,i){var s=lifeScore(p);if(s>best){best=s;bi=i;}});
+  G.players.forEach(function(p,i){var s=lifeScore(p);
+    var d=document.createElement("div");d.className="score"+(i===bi?" win":"");
+    d.innerHTML="<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(i===bi?"👑 ":"")+p.name+"</b>"+s+" Lebenspunkte<br><small>💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>";
+    sc.appendChild(d);});
+  // Biografien
+  var bio=document.getElementById("bio");bio.innerHTML="";
+  G.players.forEach(function(p){
+    var h=document.createElement("h4");h.textContent="📖 Das Leben von "+p.name;bio.appendChild(h);
+    var t=document.createElement("div");
+    t.innerHTML=p.bio.length?("Es war ein Leben, das "+(p.glueck>p.geld?"dem Glück":"dem Ehrgeiz")+" gehörte. "+p.name+" "+p.bio.join(". Später ")+".")
+      :(p.name+" ging den Pfad still und stetig — und war am Ende zufrieden.");
+    bio.appendChild(t);});
+  document.getElementById("hud").classList.add("hide");
+  rollBtn.classList.add("hide");
+  document.getElementById("endO").classList.remove("hide");
+}
+// ===================== Kamera =====================
+var camShake=0;
+function updateCamera(dt){
+  var p=G?G.players[G.turn]:null;
+  var tx=p?pawns[G.turn].position.x:fields[0].x,tz=p?pawns[G.turn].position.z:fields[0].z;
+  camT.x+=(tx-camT.x)*Math.min(1,dt*3);camT.z+=(tz-camT.z)*Math.min(1,dt*3);
+  camera.position.x+=(camT.x+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*4);
+  camera.position.y+=(19-camera.position.y)*Math.min(1,dt*3);
+  camera.position.z+=(camT.z+17-camera.position.z)*Math.min(1,dt*4);
+  camera.lookAt(camT.x,0.5,camT.z-2);
+  if(camShake>0.001)camShake*=0.86;else camShake=0;
+}
+camera.position.set(fields[0].x,22,fields[0].z+24);camera.lookAt(fields[0].x,0,fields[0].z);
+// ===================== Hauptschleife =====================
+var last=performance.now();
+function loop(now){
+  requestAnimationFrame(loop);
+  var dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(running&&G){G.t+=dt;updMove(dt);
+    // Felder pulsieren leicht; aktives Feld stärker
+    for(var i=0;i<pawns.length;i++){if(G.phase!=="moving"||i!==G.turn){var pl=G.players[i];
+      pawns[i].rotation.y+=dt*(i===G.turn?1.4:0.3);}}
+  }
+  updateCamera(dt);
+  renderer.render(scene,camera);
+}
+requestAnimationFrame(loop);
+// ===================== Start =====================
+var selN=2;
+(function(){var ps=document.getElementById("pselect");
+  for(var i=1;i<=4;i++)(function(n){var b=document.createElement("button");b.textContent=n;if(n===selN)b.className="on";
+    b.onclick=function(){selN=n;ps.querySelectorAll("button").forEach(function(x){x.className="";});b.className="on";};
+    ps.appendChild(b);})(i);
+  if(loadGame())document.getElementById("contBtn").classList.remove("hide");
+})();
+function begin(saved){
+  G=saved||freshState(selN);
+  pawns.forEach(function(pw){scene.remove(pw);});pawns.length=0;
+  G.players.forEach(function(p,i){pawns.push(mkPawn(p.col));placePawn(i);});
+  try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
+  document.getElementById("start").classList.add("hide");
+  document.getElementById("endO").classList.add("hide");
+  document.getElementById("hud").classList.remove("hide");
+  rollBtn.classList.remove("hide");rollBtn.disabled=false;
+  G.phase="idle";running=true;
+  updPlayers();updChapter();
+  announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
+  if(!saved)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
+}
+document.getElementById("startBtn").onclick=function(){lsDel(SAVE_KEY);begin(null);};
+document.getElementById("contBtn").onclick=function(){begin(loadGame());};
+document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");};
+// ===================== Ereignis-Engine =====================
+// EVENTS[kapitel] = [{t:Titel, x:Text, o:[{l:Label, fx:{geld,glueck,wissen,freunde}, bio:Schnipsel}]}]
+var EVENTS=window.LP_EVENTS||[[],[],[],[],[],[],[],[]];
+var MILESTONES=[
+ "Der erste Schultag steht bevor — die Kindheit war ein einziges großes Abenteuer.",
+ "Zeugnis in der Hand, Herz voller Pläne: die Schulzeit ist geschafft.",
+ "Abschluss! Die Welt fragt nicht mehr nach Noten, sondern nach Mut.",
+ "Der erste eigene Schlüssel, das erste eigene Konto — es fühlt sich echt an.",
+ "Zwischen Beförderung und Herzklopfen sind Jahre vergangen wie Wochen.",
+ "Das Haus hat Kratzer im Parkett und Bilder an den Wänden — es ist ein Zuhause.",
+ "Die Hände wissen jetzt, was sie tun. Zeit, davon weiterzugeben.",
+ "Der Pfad wird weich und golden. Jeder Schritt ist ein Dankeschön."
+];
+var cardEl=document.getElementById("card");
+function showCard(kick,title,txt,opts){
+  document.getElementById("cKick").textContent=kick;
+  document.getElementById("cTitle").textContent=title;
+  document.getElementById("cTxt").innerHTML=txt;
+  var op=document.getElementById("cOpts");op.innerHTML="";
+  opts.forEach(function(o){var b=document.createElement("button");
+    b.innerHTML=o.l+(o.sub?"<small>"+o.sub+"</small>":"");
+    b.onclick=function(){cardEl.classList.remove("on");o.fn();};op.appendChild(b);});
+  cardEl.classList.add("on");beep(520,.08,"triangle",.05);
+}
+function fxLabel(fx){var parts=[];
+  if(fx.geld)parts.push((fx.geld>0?"+":"")+fx.geld+" 💰");
+  if(fx.glueck)parts.push((fx.glueck>0?"+":"")+fx.glueck+" ❤️");
+  if(fx.wissen)parts.push((fx.wissen>0?"+":"")+fx.wissen+" 🧠");
+  if(fx.freunde)parts.push((fx.freunde>0?"+":"")+fx.freunde+" 👥");
+  return parts.join(" · ")||"—";}
+function applyFx(p,fx){
+  p.geld=Math.max(0,p.geld+(fx.geld||0));
+  p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
+  p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
+  p.freunde=Math.max(0,p.freunde+(fx.freunde||0));
+}
+function handleField(p,f){
+  var ch=chapterOf(p.tile),acc="#"+("00000"+CHAPTERS[ch].accent.toString(16)).slice(-6);
+  if(f.type==="m"){
+    if(p.tile===0){endTurnSoon();return;}
+    showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
+      [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
+    camShake=0.3;beep(880,.3,"triangle",.07);return;}
+  if(f.type==="g+"){var g=3+ch*2;p.geld+=g;announce("+"+g+" 💰","#ffd166");beep(1046,.1,"triangle",.06);endTurnSoon();return;}
+  if(f.type==="g-"){var c2=2+ch;p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
+  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");beep(880,.1,"triangle",.05);endTurnSoon();return;}
+  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");beep(760,.1,"triangle",.05);endTurnSoon();return;}
+  if(f.type==="f"){p.freunde+=2;announce("+2 👥","#8affc0");beep(660,.1,"triangle",.05);endTurnSoon();return;}
+  // Ereignis-Feld: ungenutztes Ereignis des Kapitels ziehen
+  var pool=EVENTS[ch]||[];
+  if(!p.used)p.used={};if(!p.used[ch])p.used[ch]=[];
+  var avail=[];for(var i=0;i<pool.length;i++)if(p.used[ch].indexOf(i)<0)avail.push(i);
+  if(!avail.length){p.glueck+=1;announce("+1 ❤️ (ein stiller Tag)","#ff9ad9");endTurnSoon();return;}
+  var ei=avail[(Math.random()*avail.length)|0],ev=pool[ei];p.used[ch].push(ei);
+  showCard("Ereignis · "+CHAPTERS[ch].n,ev.t,ev.x,ev.o.map(function(o){
+    return {l:o.l,sub:fxLabel(o.fx),fn:function(){applyFx(p,o.fx);if(o.bio)p.bio.push(o.bio);
+      updPlayers();endTurnSoon();}};}));
+}
+})();
+</script>
+</body>
+</html>
