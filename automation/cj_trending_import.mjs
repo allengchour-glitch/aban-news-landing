@@ -116,6 +116,22 @@ async function sgql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
+// CJ-Produktvideo via Staged-Upload anhängen (externe URLs nimmt Shopify nicht an) — 2026-07-06
+async function attachVideo(st,productId,vurl,cjpid){
+ try{
+  const vr=await fetch(vurl,{signal:AbortSignal.timeout(90000)}); if(!vr.ok)return;
+  const buf=Buffer.from(await vr.arrayBuffer()); if(buf.length>60*1024*1024)return;
+  const stg=await sgql(st,`mutation($input:[StagedUploadInput!]!){stagedUploadsCreate(input:$input){stagedTargets{url resourceUrl parameters{name value}}userErrors{message}}}`,
+   {input:[{resource:'VIDEO',filename:`cj-${cjpid}.mp4`,mimeType:'video/mp4',httpMethod:'POST',fileSize:String(buf.length)}]});
+  const tgt=stg?.data?.stagedUploadsCreate?.stagedTargets?.[0]; if(!tgt)return;
+  const form=new FormData(); for(const pp of tgt.parameters)form.append(pp.name,pp.value);
+  form.append('file',new Blob([buf],{type:'video/mp4'}),`cj-${cjpid}.mp4`);
+  const up=await fetch(tgt.url,{method:'POST',body:form}); if(up.status!==201&&up.status!==200)return;
+  await sgql(st,MED,{id:productId,m:[{originalSource:tgt.resourceUrl,mediaContentType:'VIDEO'}]});
+  console.log('  🎬 Video angehängt');
+ }catch{}
+}
+
 const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung ca. 10–20 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
 
 async function gemini(nameEn,feats,kat){
@@ -216,9 +232,9 @@ for(const p of cand){
  const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
  if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
  const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
- if(d.productVideo&&/^https/.test(d.productVideo))media.push({originalSource:d.productVideo,mediaContentType:'VIDEO'});
  if(media.length)await sgql(st,MED,{id:pid,m:media});
  await sgql(st,PUB,{id:pid,p:PUBS});
+ if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
  fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
  total++; console.log(`✅ [${p.listedNum}] ${title} → ${pid.split('/').pop()}`);
  await sleep(300);
