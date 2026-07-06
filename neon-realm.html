@@ -40,6 +40,13 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.06em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none}
 #dmg{position:fixed;inset:0;pointer-events:none;z-index:11}
 .dnum{position:absolute;font-weight:900;font-size:15px;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .7s ease-out,opacity .7s;opacity:1;will-change:transform,opacity}
+#achToast{position:fixed;top:64px;left:50%;transform:translate(-50%,-16px);background:rgba(20,16,44,.95);border:1px solid #ffcf6e;border-radius:14px;padding:10px 20px;font-weight:800;color:#ffd166;z-index:50;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
+#achToast.on{opacity:1;transform:translate(-50%,0)}
+#achToast small{display:block;color:#cfd8ff;font-weight:600;font-size:.78rem}
+.achGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:14px}
+.ach{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:8px;font-size:.72rem;color:#8b93b8}
+.ach.on{border-color:#ffcf6e;color:#ffd166}
+.ach b{display:block;font-size:.78rem}
 #hurt{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 55%,rgba(255,30,60,.5));opacity:0;transition:opacity .25s;z-index:9}
 #keysHelp{position:absolute;bottom:12px;left:12px;font-size:.72rem;color:#8b93b8;text-shadow:0 1px 6px #000;line-height:1.6}
 /* Dialog */
@@ -114,6 +121,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff · <b>Q</b> Puls · <b>SHIFT</b> Ausweichen · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skills</div>
 </div>
 <div id="dmg"></div>
+<div id="achToast"><span id="achTxt">🏆</span><small id="achSub"></small></div>
 <button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:8px;right:160px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🔊</button>
 
 <div id="dialog" class="hide"><div class="who" id="dWho">—</div><div class="txt" id="dTxt">—</div><div class="opts" id="dOpts"></div></div>
@@ -390,6 +398,7 @@ function freshState(){return {
   skills:{macht:0,schutz:0,puls:0,tempo:0,vamp:0,fokus:0},
   inv:[],equip:{waffe:null,ruestung:null,relikt:null},
   quests:{},qstage:0,obel:[false,false,false],bossDead:false,
+  ach:{},kills:0,shardsEarned:0,legFound:0,dungeonRuns:0,
   t:0,px:0,pz:14,day:0};}
 function saveGame(){if(!G)return;if(inDungeon){G.px=portal.x;G.pz=portal.z+3;}else{G.px=player.position.x;G.pz=player.position.z;}lsSet(SAVE_KEY,JSON.stringify(G));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.lvl)?s:null;}catch(e){return null;}}
@@ -496,12 +505,17 @@ function renderInv(){
     er.appendChild(d);});
   var gr=document.getElementById("invGrid");gr.innerHTML="";
   if(!G.inv.length)gr.innerHTML="<div style='color:#8b93b8;font-size:.85rem'>Leer — besiege Gegner für Loot!</div>";
+  var ag=document.createElement("div");ag.className="achGrid";
+  ACH.forEach(function(a){var d2=document.createElement("div");d2.className="ach"+(G.ach[a[0]]?" on":"");
+    d2.innerHTML="<b>"+(G.ach[a[0]]?"🏆 ":"🔒 ")+a[1]+"</b>"+a[2];ag.appendChild(d2);});
+  gr._ach=ag;
   G.inv.forEach(function(it,idx){
     var d=document.createElement("div");d.className="slot r"+it.r;
     d.innerHTML="<div class='nm'>"+it.n+"</div><div class='st'>+"+it.v+" "+it.stat+" · "+RARS[it.r].n+"</div>";
     d.onclick=function(){var old=G.equip[it.t];G.equip[it.t]=it;G.inv.splice(idx,1);if(old)G.inv.push(old);
       if(G.hp>playerMaxHp())G.hp=playerMaxHp();beep(620,.08,"triangle",.05);renderInv();updHUD();};
     gr.appendChild(d);});
+  if(gr._ach){var _old=gr.parentNode.querySelector(".achGrid");if(_old)_old.parentNode.removeChild(_old);gr.parentNode.appendChild(gr._ach);gr._ach=null;}
 }
 // ===================== SKILLS =====================
 var SKILLS=[
@@ -560,12 +574,12 @@ function killEnemy(e,i){
   e.active=false;scene.remove(e.g);
   burst(e.g.position.x,1,e.g.position.z,e.c,e.boss?36:(e.elite?18:10),e.boss?9:5);
   beep(e.boss?110:220,.15,"sawtooth",.06);camShake=Math.max(camShake,e.boss?1.2:(e.elite?0.5:0.2));
-  gainXp(e.xp);
+  gainXp(e.xp);G.kills=(G.kills||0)+1;
   if(G.skills.vamp>0){G.hp=Math.min(playerMaxHp(),G.hp+G.skills.vamp);}
-  G.shards+=e.boss?25:(e.elite?5:(Math.random()<0.5?1:2));
+  var _sg=e.boss?25:(e.elite?5:(Math.random()<0.5?1:2));G.shards+=_sg;G.shardsEarned=(G.shardsEarned||0)+_sg;
   // Loot-Drop
   var dc=e.boss?1:(e.elite?0.75:0.18);
-  if(Math.random()<dc){var it=rollItem(G.lvl);G.inv.push(it);
+  if(Math.random()<dc){var it=rollItem(G.lvl);G.inv.push(it);if(it.r>=3)G.legFound=(G.legFound||0)+1;
     showHint("🎁 "+RARS[it.r].n+": "+it.n+" (+"+it.v+" "+it.stat+") — [I]",2600);
     if(it.r>=2)announce(RARS[it.r].n+"er Fund!",RARS[it.r].c);}
   // Quest-Zähler
@@ -772,7 +786,7 @@ function doInteract(){
       dgn.chestOpen=true;if(dgn.chestMesh){dgn.chestMesh.material.emissiveIntensity=2.2;dgn.chestMesh.rotation.x=-0.5;}
       var l1=rollItem(G.lvl+2);l1.r=Math.max(2,l1.r);l1.v=Math.round(l1.v*1.25);
       var l2=rollItem(G.lvl+2);l2.r=Math.max(2,l2.r);l2.v=Math.round(l2.v*1.25);
-      G.inv.push(l1);G.inv.push(l2);G.shards+=20;
+      G.inv.push(l1);G.inv.push(l2);G.shards+=20;G.shardsEarned=(G.shardsEarned||0)+20;G.dungeonRuns=(G.dungeonRuns||0)+1;if(l1.r>=3||l2.r>=3)G.legFound=(G.legFound||0)+1;
       announce("SCHATZ! 2 seltene Funde +20 ◆","#ffcf6e");beep(1046,.5,"triangle",.09);
       burst(dgn.chest.x,1,dgn.chest.z,0xffcf6e,26,7);camShake=0.5;updHUD();saveGame();return;}
     if(dgn.exit&&Math.hypot(dgn.exit.x-px,dgn.exit.z-pz)<4){exitDungeon();return;}
@@ -945,8 +959,8 @@ function despawnSeraph(msg){if(!seraph)return;scene.remove(seraph.g);seraph=null
 function killSeraph(){
   if(!seraph)return;
   burst(seraph.g.position.x,3,seraph.g.position.z,0xffd166,40,9);camShake=1.2;beep(1200,.6,"triangle",.1);
-  var it=rollItem(G.lvl+4);it.r=3;it.v=Math.round(it.v*1.4);G.inv.push(it);
-  G.shards+=30;gainXp(90);
+  var it=rollItem(G.lvl+4);it.r=3;it.v=Math.round(it.v*1.4);G.inv.push(it);G.legFound=(G.legFound||0)+1;
+  G.shards+=30;G.shardsEarned=(G.shardsEarned||0)+30;gainXp(90);
   announce("SERAPH BESIEGT — LEGENDÄR: "+it.n+"!","#ffcf6e");
   scene.remove(seraph.g);seraph=null;seraphCD=DAYLEN*1.5;
   updHUD();saveGame();
@@ -975,6 +989,28 @@ function updSeraph(dt,dayA){
         burst(bx,1,bz,0xffd166,18,7);camShake=Math.max(camShake,0.4);},850);}}
   // Spieler-Angriffe treffen den Seraph über die Melee/Puls-Wege (eigene Hitbox unten)
 }
+// ===================== Erfolge (Achievements, persistent im Save) =====================
+var ACH=[
+ ["blut","Erstes Blut","Besiege deinen ersten Gegner",function(){return G.kills>=1;}],
+ ["jaeger","Jäger","Besiege 50 Gegner",function(){return G.kills>=50;}],
+ ["schlaechter","Schlächter","Besiege 200 Gegner",function(){return G.kills>=200;}],
+ ["lv5","Aufsteiger","Erreiche Level 5",function(){return G.lvl>=5;}],
+ ["lv10","Veteran","Erreiche Level 10",function(){return G.lvl>=10;}],
+ ["sammler","Sammler","Verdiene 100 Scherben",function(){return G.shardsEarned>=100;}],
+ ["legende","Legendenjäger","Finde einen legendären Gegenstand",function(){return G.legFound>=1;}],
+ ["tiefe","In die Tiefe","Öffne die Truhe in der Tiefe",function(){return (G.dungeonRuns||0)>=1;}],
+ ["obelisk","Erwecker","Aktiviere alle 3 Obelisken",function(){return G.obel[0]&&G.obel[1]&&G.obel[2];}],
+ ["nexus","Reichseiniger","Besiege den NEXUS",function(){return !!G.bossDead;}]
+];
+var achPollT=0;
+function unlockAch(id,name,desc){if(G.ach[id])return;G.ach[id]=1;
+  var t=document.getElementById("achToast");
+  document.getElementById("achTxt").textContent="🏆 Erfolg: "+name;
+  document.getElementById("achSub").textContent=desc;
+  t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("on");},3200);
+  beep(1318,.25,"triangle",.07);saveGame();}
+function updAch(dt){achPollT-=dt;if(achPollT>0)return;achPollT=1.5;
+  for(var i=0;i<ACH.length;i++){var a=ACH[i];if(!G.ach[a[0]]&&a[3]())unlockAch(a[0],a[1],a[2]);}}
 // ===================== Prozedurale Musik (WebAudio: Pad + Pentatonik-Arp + Kampf-Layer) =====================
 var music={on:false,master:null,padGain:null,padOsc:[],step:0,stepT:0,chord:0,combat:0};
 var CHORDS=[[110,164.81,220],[87.31,130.81,174.61],[98,146.83,196],[130.81,196,261.63]]; // Am F G C (Grundtöne)
@@ -1021,7 +1057,7 @@ function initSystems(){
   // Touch: E-Button zeigen, wenn Interaktion in Reichweite
 }
 function updSystems(dt,dayA){
-  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);updMusic(dt,dayA);
+  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);updMusic(dt,dayA);updAch(dt);
   // NPC-Marker hüpfen + Interakt-Hinweis
   var near=null,px=player.position.x,pz=player.position.z;
   for(var i=0;i<npcs.length;i++){npcs[i].mark.position.y=3.4+Math.sin(G.t*3+i)*0.25;npcs[i].mark.rotation.y+=dt*2;
@@ -1119,6 +1155,7 @@ var dodgeT=0,dodgeCD=0,dodgeDir={x:0,z:1},iframe=0,atkCD=0,boltCD=0,stepT=0;
 function begin(){
   var saved=loadGame();
   G=saved||freshState();
+  G.ach=G.ach||{};G.kills=G.kills||0;G.shardsEarned=G.shardsEarned||0;G.legFound=G.legFound||0;G.dungeonRuns=G.dungeonRuns||0;
   player.position.set(G.px||0,0,G.pz||14);
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");
