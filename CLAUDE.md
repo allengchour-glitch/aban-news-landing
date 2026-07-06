@@ -50,9 +50,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 10. **⛔ Social-Doppelpost-Verbot (User 2026-07-06):** IMMER nur NEUES posten — vor jedem Post
    Profil + `automation/reels_seed.csv`-Ledger prüfen (nur status=ready, nach Post → posted).
    Gleiches Produkt/Video/Motiv nie zweimal, auch nicht plattformübergreifend am selben Tag.
-11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Groq (gratis) ist PRIMÄR für alle
-   Texte; Gemini (`/tmp/gemini_key`, 2.5-flash) NUR für Bild-Generierung + Not-Fallback.
-   Massen-Importe hatten CHF 46/Woche verbrannt — nie wieder Gemini als Erstwahl in Loops.
+11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO
+   (Video-Generierung, ~CHF 3–8/Clip)** — CHF 46 in 6 Tagen. Regel: Veo NUR für einzelne
+   Hero-/Kampagnen-Clips (max ~CHF 10 pro Anlass), NIE in Loops/Massenproduktion — tägliche
+   Reels macht die ffmpeg-Pipeline gratis. Texte: Groq (gratis) primär, Gemini 2.5-flash nur
+   Bild-Gen + Not-Fallback (Importe sind seit 07-06 auf Groq-first gepatcht).
 12. **🧠×🧠 Fremde Gehirne anzapfen (User 2026-07-06):** Vor Social/Content-Arbeit
    `git fetch origin brain/youtube brain/intel` und `origin/brain/youtube:automation/SECOND-BRAIN.md`
    lesen (destillierte YouTube/TikTok-Learnings: Konsens-Hashtags #shorts/#fashion/#ootd/…, Hooks).
