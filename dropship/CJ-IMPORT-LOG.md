@@ -1934,3 +1934,11 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Ledger-basiert) — bei Bedarf als eigene Chargen-Strecke fahren.
 - **Nur-User-Liste (unverändert):** Klaviyo-Reconnect · Meta-Posting-Token (4 Scopes) · DeepSeek/Gemini aufladen ·
   Dubletten-Lösch-OK (tauchen-schnorcheln/anime-manga) · GMC Feed-URL/Free-Listings-Klick · TikTok-Kampagne.
+
+## 2026-07-06 — 🧭 Findability: Menü 24 → 10 Welten (Audit-Empfehlung umgesetzt)
+- **Suche live getestet:** funktioniert (z. B. „trikot" → WM-Trikot als Top-Treffer). Kein Such-Problem.
+- **Menü umgebaut (menuUpdate, 0 Fehler):** 24 Top-Level → **10 klare Welten**: 🔥 Highlights (Topseller/Viral/
+  Premium/Marken/Schnell-finden/1.-August) · ⚽ WM 2026 · 👗 Damen · 👔 Herren · 💎 Schmuck & Uhren · 🧸 Kinder ·
+  🏠 Wohnen & Garten · 📱 Technik & Auto · 💄 Beauty & 🐾 Tier · ✨ Mehr & Sale. ALLE bisherigen Links blieben
+  erhalten (als Ebene 2/3 verschachtelt — Shopify erlaubt 3 Ebenen).
+- **Rollback jederzeit:** komplette Alt-Struktur in `dropship/menu-backup-2026-07-06.json` (per menuUpdate zurückspielbar).
