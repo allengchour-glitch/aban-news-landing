@@ -32,6 +32,7 @@ let SHOP = (process.env.SHOPIFY_SHOP || '').replace(/^https?:\/\//, '').replace(
 if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 const API = '2025-01';
 const LEDGER = 'dropship/bigbuy_done.txt';
+const IMG_LEDGER = 'dropship/bigbuy_img_seen.txt'; // Foto-Datei → schon importiert (gleiche Ware, andere Ref)
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 const PER = Math.max(1, parseInt(process.env.PER || '4', 10) || 4);
@@ -725,6 +726,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
   console.log(`Katalog: ${info.length} Produkte mit DE-Namen.`);
 
   const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
+  const imgSeen = new Set(fs.existsSync(IMG_LEDGER) ? fs.readFileSync(IMG_LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
   const allPubs = DRY ? [] : ((await sgql(stok, PUBQ))?.data?.publications?.edges || []).map(e => ({ publicationId: e.node.id, name: e.node.name || '' }));
 
   async function ensureColl(cfg) {
@@ -781,7 +783,12 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     await ensureColl(cfg);
     for (let i = 0; i < picks.length; i++) {
       const p = picks[i];
-      const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').replace(/ß/g, 'ss').trim(); // Swiss-DE: kein ß
+      const title = (titles[i] || p.nameEn).replace(/["<>]/g, '').replace(/ß/g, 'ss')
+        .replace(/\s*[–—-]?\s*Ref\.?:?\s*(BB[-_])?[A-Z0-9][\w-]*\s*$/i, '') // Lieferanten-Ref nie im Kundentitel
+        .trim(); // Swiss-DE: kein ß
+      // Bild-Dubletten-Wache: identische Foto-Datei = derselbe Artikel unter anderer BigBuy-Ref → überspringen
+      const imgKey = ((p.imgs && p.imgs[0]) || '').split('?')[0].split('/').pop();
+      if (imgKey && imgSeen.has(imgKey)) { console.log('  skip(dup-bild)', title.slice(0, 40)); continue; }
       const price = chf(p.cost);
       const handle = ((title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 50) || 'bigbuy') + '-' + p.id;
       const tags = [cfg.coll.tag, ...cfg.extraTags, 'bigbuy', 'dropship'];
@@ -807,6 +814,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const usePubs = cfg.onlineOnly ? allPubs.filter(p => /online store|point of sale/i.test(p.name)) : allPubs;
       if (usePubs.length) await sgql(stok, PUB, { id: pid, pubs: usePubs.map(p => ({ publicationId: p.publicationId })) });
       fs.appendFileSync(LEDGER, 'bb:' + p.id + '\n');
+      if (imgKey) { imgSeen.add(imgKey); fs.appendFileSync(IMG_LEDGER, imgKey + '\n'); }
       created++; console.log(`  ✅ ${title.slice(0, 50)} → CHF ${price} (${handle})`);
       await sleep(400);
     }
