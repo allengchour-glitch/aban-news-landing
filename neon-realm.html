@@ -208,11 +208,42 @@ function updDayNight(t){
   return dayA;
 }
 
-// ===================== Welt: Boden + 4 Zonen + Dorf =====================
+// ===================== Welt: prozedurales Terrain (Lague-Rezept: Octaves+Persistence+Lacunarity) =====================
 var WORLD=170; // Halbe Kantenlänge
-var ground=new THREE.Mesh(new THREE.PlaneGeometry(WORLD*2,WORLD*2,1,1),new THREE.MeshStandardMaterial({color:0x0c1030,emissive:0x05060f}));
-ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
-var grid=new THREE.GridHelper(WORLD*2,68,0x2a3585,0x181f4a);grid.position.y=0.02;scene.add(grid);
+// Deterministisches Value-Noise (seeded Hash + Smoothstep-Interpolation)
+function _hash(ix,iz){var n=ix*374761393+iz*668265263;n=(n^(n>>13))*1274126177;return ((n^(n>>16))>>>0)/4294967295;}
+function _vnoise(x,z){var ix=Math.floor(x),iz=Math.floor(z),fx=x-ix,fz=z-iz;
+  var a=_hash(ix,iz),b=_hash(ix+1,iz),c=_hash(ix,iz+1),d2=_hash(ix+1,iz+1);
+  var ux=fx*fx*(3-2*fx),uz=fz*fz*(3-2*fz);
+  return a*(1-ux)*(1-uz)+b*ux*(1-uz)+c*(1-ux)*uz+d2*ux*uz;}
+var LAKE={x:14,z:-46,r:19};
+function heightAt(x,z){
+  // 3 Octaves: Persistence 0.5, Lacunarity 2 (Sebastian-Lague-Standardwerte)
+  var h=0,amp=1,freq=1/46,tot=0;
+  for(var o=0;o<3;o++){h+=_vnoise(x*freq+50,z*freq+50)*amp;tot+=amp;amp*=0.5;freq*=2;}
+  h=(h/tot-0.5)*2*3.4; // -3.4..3.4
+  // Dorf + Quest-Punkte flach halten (Gameplay!)
+  var dv=Math.hypot(x,z);if(dv<40)h*=Math.max(0,Math.min(1,(dv-26)/14));
+  var dc=Math.hypot(x-100,z-95);if(dc<26)h*=Math.max(0,Math.min(1,(dc-14)/12)); // Zitadellen-Mitte
+  var _ob=[[60,-60],[-66,-52],[-60,66]];
+  for(var oi2=0;oi2<3;oi2++){var doo=Math.hypot(x-_ob[oi2][0],z-_ob[oi2][1]);if(doo<10)h*=Math.max(0,Math.min(1,(doo-5)/5));}
+  // See-Senke
+  var dl2=Math.hypot(x-LAKE.x,z-LAKE.z);if(dl2<LAKE.r+8)h-=2.6*Math.max(0,1-dl2/(LAKE.r+8));
+  return h;}
+// Terrain-Mesh: 120x120 Segmente, Höhen + Höhen/Zonen-Vertexfarben
+var ground=(function(){
+  var geo=new THREE.PlaneGeometry(WORLD*2,WORLD*2,120,120);geo.rotateX(-Math.PI/2);
+  var pos=geo.attributes.position,cols=new Float32Array(pos.count*3);
+  var cA=new THREE.Color(0x0a0d28),cB=new THREE.Color(0x1a2150),tmp=new THREE.Color(),zc=new THREE.Color();
+  for(var i=0;i<pos.count;i++){var x=pos.getX(i),z=pos.getZ(i),h=heightAt(x,z);
+    pos.setY(i,h);
+    var k=Math.max(0,Math.min(1,(h+3.4)/6.8));
+    tmp.copy(cA).lerp(cB,k); // dunkel unten, heller oben — Zonen-Tint folgt nach ZONES-Definition
+    cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
+  geo.setAttribute("color",new THREE.BufferAttribute(cols,3));
+  geo.computeVertexNormals();
+  var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,emissive:0x05060f,flatShading:true}));
+  m.receiveShadow=true;scene.add(m);return m;})();
 // Zonen: Mittelpunkt, Radius, Name, Akzentfarbe. Dorf in der Mitte (safe).
 var ZONES=[
  {n:"Nexus-Dorf",x:0,z:0,r:30,c:0x7de3ff,safe:true},
@@ -222,27 +253,63 @@ var ZONES=[
  {n:"Zitadelle",x:100,z:95,r:70,c:0xff4d6d,locked:true}
 ];
 function zoneAt(x,z){var best=null,bd=1e9;for(var i=0;i<ZONES.length;i++){var d=Math.hypot(x-ZONES[i].x,z-ZONES[i].z);if(d<ZONES[i].r&&d<bd){bd=d;best=ZONES[i];}}return best;}
+// Zonen-Tint auf die Terrain-Vertexfarben (subtile Färbung je Gebiet)
+(function(){var pos=ground.geometry.attributes.position,col=ground.geometry.attributes.color,zc=new THREE.Color(),cur=new THREE.Color();
+  for(var i=0;i<pos.count;i++){var zn=zoneAt(pos.getX(i),pos.getZ(i));if(!zn||zn.safe)continue;
+    zc.setHex(zn.c);cur.fromArray(col.array,i*3);cur.lerp(zc,0.10);cur.toArray(col.array,i*3);}
+  col.needsUpdate=true;})();
+// ===== See (ThinMatrix-Rezept: Sinus-Vertex-Wellen + Normalen-Update pro Frame) =====
+var water=(function(){
+  var g=new THREE.CircleGeometry(LAKE.r,26);g.rotateX(-Math.PI/2);
+  var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:0x08203c,emissive:0x0d3a62,emissiveIntensity:0.4,flatShading:true,transparent:true,opacity:0.85}));
+  m.position.set(LAKE.x,-0.85,LAKE.z);scene.add(m);
+  m.userData.base=[];var p=g.attributes.position;
+  for(var i=0;i<p.count;i++)m.userData.base.push([p.getX(i),p.getZ(i)]);
+  return m;})();
+function updWater(t){var p=water.geometry.attributes.position,b=water.userData.base;
+  for(var i=0;i<p.count;i++){var bx=b[i][0],bz=b[i][1];
+    p.setY(i,Math.sin(t*1.7+(bx+bz)*0.55)*0.16+Math.sin(t*2.6+bx*0.8-bz*0.4)*0.09);}
+  p.needsUpdate=true;water.geometry.computeVertexNormals();}
+// ===== Gras/Kristallhalme mit Wind-Sway (Shader-Injektion via onBeforeCompile) =====
+var grassUniforms={uTime:{value:0}};
+var grass=(function(){
+  var N=420,geo=new THREE.ConeGeometry(0.09,1.1,3);geo.translate(0,0.55,0);
+  var gmat=new THREE.MeshStandardMaterial({color:0x1a3a5c,emissive:0x2a7aa0,emissiveIntensity:0.7,flatShading:true});
+  gmat.onBeforeCompile=function(sh){sh.uniforms.uTime=grassUniforms.uTime;
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nuniform float uTime;")
+      .replace("#include <begin_vertex>","#include <begin_vertex>\n#ifdef USE_INSTANCING\n float ph=instanceMatrix[3].x*0.35+instanceMatrix[3].z*0.5;\n transformed.x+=sin(uTime*1.8+ph)*0.28*transformed.y;\n transformed.z+=cos(uTime*1.4+ph)*0.18*transformed.y;\n#endif");};
+  var im=new THREE.InstancedMesh(geo,gmat,N),placed=0,guard=0,col=new THREE.Color(),_gd=new THREE.Object3D();
+  while(placed<N&&guard++<4000){
+    var x=(Math.random()-0.5)*2*(WORLD-8),z=(Math.random()-0.5)*2*(WORLD-8),h=heightAt(x,z);
+    if(h<-0.7)continue; // nicht im See
+    var dv=Math.hypot(x,z);if(dv<26)continue; // nicht im Dorfkern
+    _gd.position.set(x,h,z);var s=0.7+Math.random()*1.5;_gd.scale.set(s,s,s);_gd.rotation.set(0,Math.random()*3.14,0);_gd.updateMatrix();
+    im.setMatrixAt(placed,_gd.matrix);
+    var zn=zoneAt(x,z);col.setHex(zn?zn.c:0x2a7aa0);col.multiplyScalar(0.8);im.setColorAt(placed,col);
+    placed++;}
+  im.count=placed;im.instanceMatrix.needsUpdate=true;if(im.instanceColor)im.instanceColor.needsUpdate=true;
+  scene.add(im);return im;})();
 var _dm=new THREE.Object3D();
 function seededRnd(s){return function(){s=(s*9301+49297)%233280;return s/233280;};}
 // -- Kristallwald: Kristall-Bäume (InstancedMesh)
 (function(){var rnd=seededRnd(7),N=90,im=new THREE.InstancedMesh(new THREE.ConeGeometry(1.1,5,5),mat(0x123050,0x5ef2ff,0.7),N);
  for(var i=0;i<N;i++){var a=rnd()*6.283,r=12+rnd()*62,x=ZONES[1].x+Math.cos(a)*r,z=ZONES[1].z+Math.sin(a)*r,s=0.7+rnd()*2.2;
-  _dm.position.set(x,2.5*s,z);_dm.scale.set(s,s,s);_dm.rotation.set(0,rnd()*3.14,0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
+  _dm.position.set(x,heightAt(x,z)+2.2*s,z);_dm.scale.set(s,s,s);_dm.rotation.set(0,rnd()*3.14,0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
 // -- Ruinenstadt: zerbrochene Säulen + Wände
 (function(){var rnd=seededRnd(13),N=70,im=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),mat(0x1a1436,0xb98bff,0.35),N);
  for(var i=0;i<N;i++){var a=rnd()*6.283,r=10+rnd()*62,x=ZONES[2].x+Math.cos(a)*r,z=ZONES[2].z+Math.sin(a)*r;
-  var w=1.2+rnd()*3.4,h=2+rnd()*9;_dm.position.set(x,h/2,z);_dm.scale.set(w,h,w*0.7);_dm.rotation.set(0,rnd()*3.14,rnd()<0.25?rnd()*0.5-0.25:0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
+  var w=1.2+rnd()*3.4,h=2+rnd()*9;_dm.position.set(x,heightAt(x,z)+h/2-0.3,z);_dm.scale.set(w,h,w*0.7);_dm.rotation.set(0,rnd()*3.14,rnd()<0.25?rnd()*0.5-0.25:0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
 // -- Ödland: Felsen + Stacheln
 (function(){var rnd=seededRnd(29),N=80,im=new THREE.InstancedMesh(new THREE.DodecahedronGeometry(1.3,0),mat(0x261408,0xff9a4a,0.25),N);
  for(var i=0;i<N;i++){var a=rnd()*6.283,r=10+rnd()*62,x=ZONES[3].x+Math.cos(a)*r,z=ZONES[3].z+Math.sin(a)*r,s=0.5+rnd()*2.6;
-  _dm.position.set(x,0.9*s,z);_dm.scale.set(s,s*(0.6+rnd()),s);_dm.rotation.set(rnd(),rnd()*3.14,rnd());_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
+  _dm.position.set(x,heightAt(x,z)+0.7*s,z);_dm.scale.set(s,s*(0.6+rnd()),s);_dm.rotation.set(rnd(),rnd()*3.14,rnd());_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
 // -- Zitadelle: dunkle Türme im Ring
 (function(){var N=10,im=new THREE.InstancedMesh(new THREE.ConeGeometry(2.4,16,4),mat(0x180a12,0xff4d6d,0.5),N);
  for(var i=0;i<N;i++){var a=i/N*6.283,x=ZONES[4].x+Math.cos(a)*34,z=ZONES[4].z+Math.sin(a)*34;
-  _dm.position.set(x,8,z);_dm.scale.set(1,1,1);_dm.rotation.set(0,a,0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
+  _dm.position.set(x,heightAt(x,z)+8,z);_dm.scale.set(1,1,1);_dm.rotation.set(0,a,0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
 // -- Dorf: Häuser + Laternen + Brunnen
 var village=new THREE.Group();scene.add(village);
@@ -336,7 +403,7 @@ function moveVec(){var x=0,z=0;
 function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2200);}
 function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#7de3ff";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2400);}
 var dmgLayer=document.getElementById("dmg"),dmgPool=[];
-function dmgNum(v,x,y,z,col){var el=dmgPool.pop()||document.createElement("div");el.className="dnum";el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
+function dmgNum(v,x,y,z,col){y+=heightAt(x,z);var el=dmgPool.pop()||document.createElement("div");el.className="dnum";el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
   var p=new THREE.Vector3(x,y,z).project(camera);if(p.z>1){return;}
   el.style.left=((p.x+1)/2*W)+"px";el.style.top=((-p.y+1)/2*H)+"px";el.style.transform="translate(-50%,-50%)";el.style.opacity=1;
   dmgLayer.appendChild(el);requestAnimationFrame(function(){el.style.transform="translate(-50%,-160%) scale(1.15)";el.style.opacity=0;});
@@ -430,7 +497,7 @@ function gainXp(v){G.xp+=v;while(G.xp>=G.xpNeed){G.xp-=G.xpNeed;G.lvl++;G.sp++;G
   updHUD();}
 // ===================== FX =====================
 var fxs=[];
-function burst(x,y,z,color,n,spd){for(var i=0;i<(n||8);i++){
+function burst(x,y,z,color,n,spd){y+=heightAt(x,z);for(var i=0;i<(n||8);i++){
   var m=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:1}));
   m.position.set(x,y,z);scene.add(m);
   var a=Math.random()*6.283,up=Math.random()*4+2,sp2=(spd||5)*(0.5+Math.random());
@@ -496,6 +563,7 @@ function updEnemies(dt){
       // Heimatzonen-Leine (außer Boss)
       if(!e.boss){var hd=Math.hypot(e.g.position.x-e.hx,e.g.position.z-e.hz);if(hd>40){e.state="patrol";e.pa=Math.atan2(e.hz-e.g.position.z,e.hx-e.g.position.x);}}
     }
+    e.g.position.y=heightAt(e.g.position.x,e.g.position.z);
     // Safe-Zone Dorf: Gegner bleiben draußen
     var dv=Math.hypot(e.g.position.x,e.g.position.z);
     if(dv<ZONES[0].r+4){var aOut=Math.atan2(e.g.position.z,e.g.position.x);
@@ -540,7 +608,7 @@ function doAttack(){
   var fx2=Math.sin(player.rotation.y),fz2=Math.cos(player.rotation.y);
   // Schwungbogen-FX
   var arc=new THREE.Mesh(new THREE.TorusGeometry(2.1,0.13,6,16,2.2),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.9}));
-  arc.position.set(player.position.x+fx2*1.2,1.2,player.position.z+fz2*1.2);
+  arc.position.set(player.position.x+fx2*1.2,player.position.y+1.2,player.position.z+fz2*1.2);
   arc.rotation.x=-Math.PI/2;arc.rotation.z=-player.rotation.y+Math.PI/2-1.1;scene.add(arc);
   setTimeout(function(){scene.remove(arc);arc.material.dispose();arc.geometry.dispose();},130);
   var hit=false;
@@ -561,7 +629,7 @@ function doBolt(){
   G.en-=cost;boltCD=0.8;updHUD();beep(980,.09,"sawtooth",.05);
   var R=7+G.skills.puls*1.2;
   var ring=new THREE.Mesh(new THREE.TorusGeometry(0.5,0.22,8,32),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.9}));
-  ring.rotation.x=-Math.PI/2;ring.position.set(player.position.x,0.6,player.position.z);scene.add(ring);
+  ring.rotation.x=-Math.PI/2;ring.position.set(player.position.x,player.position.y+0.6,player.position.z);scene.add(ring);
   var t0=performance.now();
   (function grow(){var k=(performance.now()-t0)/280;if(k>=1){scene.remove(ring);ring.material.dispose();ring.geometry.dispose();return;}
     ring.scale.setScalar(1+k*R*1.6);ring.material.opacity=0.9*(1-k);requestAnimationFrame(grow);})();
@@ -685,7 +753,7 @@ function updBoss(dt){
     // Nova: Warnring → Schaden
     var bx=bossObj.g.position.x,bz=bossObj.g.position.z,R=9;
     var warn=new THREE.Mesh(new THREE.RingGeometry(R-0.4,R,40),new THREE.MeshBasicMaterial({color:0xff4d6d,transparent:true,opacity:0.5,side:THREE.DoubleSide}));
-    warn.rotation.x=-Math.PI/2;warn.position.set(bx,0.1,bz);scene.add(warn);beep(200,.3,"sawtooth",.06);
+    warn.rotation.x=-Math.PI/2;warn.position.set(bx,heightAt(bx,bz)+0.15,bz);scene.add(warn);beep(200,.3,"sawtooth",.06);
     setTimeout(function(){scene.remove(warn);warn.material.dispose();warn.geometry.dispose();
       if(!bossObj||!bossObj.active)return;
       var d=Math.hypot(player.position.x-bx,player.position.z-bz);
@@ -725,12 +793,12 @@ function updSystems(dt,dayA){
 // ===================== Kamera =====================
 var camShake=0;
 function updateCamera(dt){
-  var px=player.position.x,pz=player.position.z;
-  var tx=px+(Math.random()-0.5)*camShake*2,ty=17+(Math.random()-0.5)*camShake*2,tz=pz+15;
+  var px=player.position.x,pz=player.position.z,py=player.position.y;
+  var tx=px+(Math.random()-0.5)*camShake*2,ty=17+py*0.8+(Math.random()-0.5)*camShake*2,tz=pz+15;
   camera.position.x+=(tx-camera.position.x)*Math.min(1,dt*5);
   camera.position.y+=(ty-camera.position.y)*Math.min(1,dt*5);
   camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*5);
-  camera.lookAt(px,1.5,pz-3);
+  camera.lookAt(px,py+1.5,pz-3);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
 }
 camera.position.set(0,17,30);camera.lookAt(0,1.5,10);
@@ -753,6 +821,12 @@ function loop(now){
       player.position.x+=vx*dt;player.position.z+=vz*dt;}
     var pr=Math.hypot(player.position.x,player.position.z);
     if(pr>WORLD-2){player.position.x*=(WORLD-2)/pr;player.position.z*=(WORLD-2)/pr;vx*=0.4;vz*=0.4;}
+    player.position.y=heightAt(player.position.x,player.position.z);
+    // Held-Animation: Lauf-Bob + Idle-Atmen + Staub-Schritte (prozedural, Modell ist unriggt)
+    var _spd2=Math.hypot(vx,vz);
+    if(heroModel){var _hb=player.userData.heroBaseY!==undefined?player.userData.heroBaseY:(player.userData.heroBaseY=heroModel.position.y);
+      heroModel.position.y=_hb+(_spd2>2?Math.abs(Math.sin(G.t*9.5))*0.2:Math.sin(G.t*1.8)*0.045);}
+    stepT-=dt;if(_spd2>6&&stepT<=0){stepT=0.26;burst(player.position.x,0.25,player.position.z,0x6f86c8,2,1.6);}
     // Zitadelle gesperrt bis alle Obelisken an
     var zc=ZONES[4];if(zc.locked){var dC=Math.hypot(player.position.x-zc.x,player.position.z-zc.z);
       if(dC<zc.r){var push=(zc.r-dC)+0.5,ang=Math.atan2(player.position.z-zc.z,player.position.x-zc.x);
@@ -762,7 +836,7 @@ function loop(now){
     if(Math.hypot(vx,vz)>1.2)player.rotation.y=Math.atan2(vx,vz);
     if(heroModel){var lean=Math.max(-0.2,Math.min(0.2,-((Math.cos(player.rotation.y)*vx-Math.sin(player.rotation.y)*vz))*0.012));
       heroModel.rotation.z+=(lean-heroModel.rotation.z)*Math.min(1,dt*10);}
-    pGlow.position.set(player.position.x,2,player.position.z);
+    pGlow.position.set(player.position.x,player.position.y+2,player.position.z);
     pGlow.intensity=0.7+(1-dayA)*1.1;
     // Energie-Regeneration
     G.en=Math.min(G.maxen,G.en+dt*(2.2+G.skills.fokus*0.9));
@@ -779,6 +853,7 @@ function loop(now){
     if(hurtT>0){hurtT-=dt*2;hurtEl.style.opacity=Math.max(0,hurtT*0.8);}
     drawMinimap();
   }
+  updWater(G?G.t:0);grassUniforms.uTime.value=(G?G.t:performance.now()*0.001);
   // Obelisk-Ringe drehen
   for(var i=0;i<obelisks.length;i++){obelisks[i].ring.rotation.z+=dt*(obelisks[i].on?2.2:0.4);
     obelisks[i].m.material.emissiveIntensity=obelisks[i].on?1.2+Math.sin(now*0.004)*0.3:0.35;}
@@ -787,7 +862,7 @@ function loop(now){
 }
 
 // ===================== Start =====================
-var dodgeT=0,dodgeCD=0,dodgeDir={x:0,z:1},iframe=0,atkCD=0,boltCD=0;
+var dodgeT=0,dodgeCD=0,dodgeDir={x:0,z:1},iframe=0,atkCD=0,boltCD=0,stepT=0;
 function begin(){
   var saved=loadGame();
   G=saved||freshState();
