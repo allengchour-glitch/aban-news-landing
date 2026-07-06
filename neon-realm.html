@@ -339,6 +339,35 @@ border.rotation.x=-Math.PI/2;border.position.y=0.05;scene.add(border);
 // Sterne
 (function(){var g=new THREE.BufferGeometry(),p=new Float32Array(300*3);for(var i=0;i<300;i++){p[i*3]=(Math.random()-.5)*700;p[i*3+1]=60+Math.random()*200;p[i*3+2]=(Math.random()-.5)*700;}g.setAttribute("position",new THREE.BufferAttribute(p,3));scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x9aa2d8,size:1.1,transparent:true,opacity:.8})));})();
 
+// ===================== Boids: Lichtvogel-Schwarm (Reynolds/Lague: Separation+Alignment+Kohäsion) =====================
+var BOIDS_N=36,boids=[],boidMesh=(function(){
+  var g=new THREE.ConeGeometry(0.35,1.4,3);g.rotateX(Math.PI/2); // Spitze zeigt in Flugrichtung (+z)
+  var m=new THREE.InstancedMesh(g,new THREE.MeshStandardMaterial({color:0x1a2150,emissive:0x9fd8ff,emissiveIntensity:1.1,flatShading:true}),BOIDS_N);
+  scene.add(m);return m;})();
+var _bc=[[60,-40],[-70,20],[20,80]]; // 3 Schwarm-Cluster, damit sich Nachbarn finden
+for(var bi2=0;bi2<BOIDS_N;bi2++){var cc=_bc[bi2%3];
+  boids.push({p:new THREE.Vector3(cc[0]+(Math.random()-0.5)*14,16+Math.random()*10,cc[1]+(Math.random()-0.5)*14),
+    v:new THREE.Vector3((Math.random()-0.5)*8,(Math.random()-0.5)*2,(Math.random()-0.5)*8)});}
+var _bd=new THREE.Object3D(),_bv1=new THREE.Vector3(),_bv2=new THREE.Vector3(),_bv3=new THREE.Vector3();
+function updBoids(dt){
+  for(var i=0;i<BOIDS_N;i++){var b=boids[i];
+    var sep=_bv1.set(0,0,0),ali=_bv2.set(0,0,0),coh=_bv3.set(0,0,0),nA=0,nC=0;
+    for(var j=0;j<BOIDS_N;j++){if(j===i)continue;var o=boids[j],dx=b.p.x-o.p.x,dy=b.p.y-o.p.y,dz=b.p.z-o.p.z,d2=dx*dx+dy*dy+dz*dz;
+      if(d2<16){var inv=1/Math.max(0.4,Math.sqrt(d2));sep.x+=dx*inv;sep.y+=dy*inv;sep.z+=dz*inv;} // Separation (r 4)
+      if(d2<196){ali.add(o.v);coh.x+=o.p.x;coh.y+=o.p.y;coh.z+=o.p.z;nA++;nC++;}} // Alignment+Kohäsion (r 14)
+    b.v.addScaledVector(sep,3.2*dt);
+    if(nA>0){ali.multiplyScalar(1/nA).sub(b.v);b.v.addScaledVector(ali,1.4*dt);}
+    if(nC>0){coh.multiplyScalar(1/nC).sub(b.p);b.v.addScaledVector(coh,0.9*dt);}
+    // Grenzen: Welt-Radius, Höhenband über Terrain
+    var pr2=Math.hypot(b.p.x,b.p.z);if(pr2>WORLD-24){b.v.x-=b.p.x/pr2*14*dt;b.v.z-=b.p.z/pr2*14*dt;}
+    var minY=heightAt(b.p.x,b.p.z)+9;if(b.p.y<minY)b.v.y+=12*dt;if(b.p.y>42)b.v.y-=8*dt;
+    // Tempo begrenzen (8..15)
+    var sp3=b.v.length();if(sp3>15)b.v.multiplyScalar(15/sp3);else if(sp3<8)b.v.multiplyScalar(sp3>0.01?8/sp3:1);
+    b.p.addScaledVector(b.v,dt);
+    _bd.position.copy(b.p);_bd.lookAt(b.p.x+b.v.x,b.p.y+b.v.y,b.p.z+b.v.z);_bd.updateMatrix();
+    boidMesh.setMatrixAt(i,_bd.matrix);}
+  boidMesh.instanceMatrix.needsUpdate=true;
+}
 // ===================== Spieler =====================
 var player=new THREE.Group();player.position.set(0,0,14);scene.add(player);
 var pBody=new THREE.Mesh(new THREE.IcosahedronGeometry(0.7,0),mat(0xbfe9ff,0x2a6ab0));pBody.position.y=1.0;pBody.castShadow=true;player.add(pBody);
@@ -854,6 +883,7 @@ function loop(now){
     drawMinimap();
   }
   updWater(G?G.t:0);grassUniforms.uTime.value=(G?G.t:performance.now()*0.001);
+  updBoids(dt);
   // Obelisk-Ringe drehen
   for(var i=0;i<obelisks.length;i++){obelisks[i].ring.rotation.z+=dt*(obelisks[i].on?2.2:0.4);
     obelisks[i].m.material.emissiveIntensity=obelisks[i].on?1.2+Math.sin(now*0.004)*0.3:0.35;}
