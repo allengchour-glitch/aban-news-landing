@@ -26,7 +26,7 @@ const now = () => new Date().toISOString().replace('T', ' ').slice(0, 19);
 // PRIORITY per Env übersteuerbar (Komma-Liste), Default Elektronik-Fokus (User-Auftrag 2026-07-06).
 const PRIORITY = (process.env.PRIORITY || 'cjelektronik,cjgadgets,gaming').split(',').map(s => s.trim()).filter(Boolean);
 const CLOTHES = ['cjdamen', 'cjherren'];
-const REST = ['cjbasteln', 'cjspielelektronik', 'cjschuhedamen', 'cjschuheherren', 'cjsneaker', 'cjschuhekids',
+const REST = ['cjauto', 'cjbasteln', 'cjspielelektronik', 'cjschuhedamen', 'cjschuheherren', 'cjsneaker', 'cjschuhekids',
   'cjtaschen', 'cjschmuck', 'cjuhren', 'cjhome', 'cjbeautytools', 'cjhaustier',
   'cjelektronik', 'cjgadgets', 'skincare', 'makeup', 'nagel', 'kueche', 'storage', 'sport', 'pet', 'gaming', 'musik', 'cj3d']
   .filter(g => !PRIORITY.includes(g));
