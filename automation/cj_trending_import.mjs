@@ -110,7 +110,17 @@ if(process.env.GROUPS_FILE && fs.existsSync(process.env.GROUPS_FILE)){
 const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
 const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||0); // tiefere Paginierung fürs „voll"-Füllen
 
-async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
+async function cj(path){
+ for(let a=0;a<7;a++){
+  try{
+   const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});
+   const j=await r.json();
+   if(j.code===1600200){await sleep(2600);continue;} // QPS — warten statt aufgeben
+   return j;
+  }catch{await sleep(2000);}
+ }
+ return {};
+}
 async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
 async function sgql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});return r.json();}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
@@ -207,7 +217,10 @@ let lastPage=PSTART;
 for(let page=PSTART;page<PSTART+PAGES;page++){
  const j=await cj(`/product/list?pageSize=50&pageNum=${page}&orderBy=listedNum`); await sleep(1100);
  const list=(j.data&&j.data.list)||[];
- if(!list.length){fs.writeFileSync(CURF,'1');console.log(`Katalog-Ende bei Seite ${page} — Cursor auf 1 zurückgesetzt.`);break;}
+ if(!list.length){
+  if(j.code===200||j.code===0){fs.writeFileSync(CURF,'1');console.log(`Katalog-Ende bei Seite ${page} — Cursor auf 1 zurückgesetzt.`);break;}
+  console.log(`Seite ${page}: API-Fehler code=${j.code} — überspringe (Cursor bleibt).`);continue;
+ }
  lastPage=page;
  for(const p of list){
   const nm=p.productNameEn||'';
