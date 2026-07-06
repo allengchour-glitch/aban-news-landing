@@ -59,6 +59,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   (die „neue Musik"). Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-07-06 (🚀 TIKTOK-ADS-KAMPAGNE LIVE — der grösste der «3 User-Klicks» ist erledigt!):** User hat den
+**TikTok-Ads-MCP-Konnektor** verbunden → Conversion-Kampagne voll autonom angelegt: Kampagne `1869987705486481`
++ Adgroup `1869987760755842` (CH/Frauen/18–34/DE+FR, 20 CHF/Tag, Pixel D8EKVR…, SHOPPING-Event) + Ad
+`1869987634760786` (Viral-Reel, SHOP_NOW → /collections/viral-hits) — **GENEHMIGT**, Guthaben CHF 332.18.
+Playbook: `dropship/TIKTOK-ADS-KAMPAGNE-REZEPT.md`. CJ-Perpetual hat jetzt **PRIORITY-Stufe**
+(Default Elektronik/Gadgets/Gaming zuerst, User-Auftrag «cj elektronik und alles mögliche»).
+Reel-Queue-Fix: CDN-URLs statt abannews.com. Offen: Printful #1005 Tracking (dann Shopify fulfillen),
+Klaviyo-Reconnect (User), Meta-Publish-Token (User).
+
 **📌 2026-07-05 (🎉 ERSTE VERKÄUFE — Order-Audit live verifiziert):** **2 bezahlte Bestellungen:**
 **#1004 (25.6., erster Verkauf!)** LED-Laterne «Boho» (BigBuy `bb-S3414715`, fulfilled — ⚠️ BigBuy-Bestellung
 verifizieren!) + **#1005 (3.7.)** ⚽ WM-Trikot selbst gestalten (Printful `165452870`, in Produktion, **Shopify noch

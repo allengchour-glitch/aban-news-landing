@@ -8,6 +8,22 @@
 
 ---
 
+## 🚀 NEU 2026-07-06 — TIKTOK-CONVERSION-KAMPAGNE LIVE (per TikTok-Ads-MCP, voll autonom angelegt)
+> Die 3-User-Klicks-Blockade ist teilweise GELÖST: User hat den **TikTok-Ads-MCP-Konnektor** verbunden
+> (claude.ai → Einstellungen → Konnektoren → TikTok Ads, `business-api.tiktok.com/open_mcp/tt-ads-mcp-flat`).
+> Damit sind Kampagnen/Adgroups/Ads/Reports per `mcp__TikTok_Ads__*` voll steuerbar.
+- **Kampagne `1869987705486481`** «LuxeStyle CH Conversion Juli 2026» (WEB_CONVERSIONS) — ✅ ENABLE
+- **Adgroup `1869987760755842`**: CH (2658434), Frauen 18–34, DE+FR, nur TikTok-Placement,
+  **20 CHF/Tag**, CONVERT→SHOPPING, Pixel `7646354888245739527` (D8EKVR…), BID_TYPE_NO_BID (Max Delivery),
+  Start 2026-07-06 18:00 UTC
+- **Ad `1869987634760786`**: frisches Viral-Reel (5 Produkte, ohne Voiceover, luxe-premium-Musik),
+  Identity BC_AUTH_TT «Luxestyle.ch», SHOP_NOW → `/collections/viral-hits` — **✅ GENEHMIGT** (ALL_AVAILABLE)
+- **Guthaben: CHF 332.18** (reicht ~16 Tage) · Konto APPROVED · alte «Sommer-Highlights»-Kampagne bleibt DISABLE
+- **Rezept/Playbook:** `dropship/TIKTOK-ADS-KAMPAGNE-REZEPT.md` (IDs, Fallen: kein Emoji im Ad-Text,
+  BC_AUTH_TT statt Custom-Identity, bid_type nötig sonst «cost per conversion»-Fehler)
+- **⚠️ Lehre MCP-Verbindung:** Container-Neustart trennt den Konnektor; laufende Session dockt erst wieder an,
+  wenn der User im UI neu verbindet (Toast «Connected to TikTok Ads»). Assets vorher auf Shopify-CDN staged = kein Verlust.
+
 ## 🤖 NEU 2026-06-27 — Aban Autopilot Suite + Lern-Maschine auf GitLab-CI (ZUERST LESEN)
 > GitHub Actions ist gesperrt → **alle Automationen laufen jetzt auf GitLab-CI** (Projekt `aban-ci`,
 > `gitlab.com/allengchour/aban-ci`). Doku: **`automation/autopilot/AUTOPILOT.md`** + `docs/GITLAB-SETUP.md`.

@@ -42,3 +42,10 @@
 - Ad-Texte ohne Emoji; Commercial-Music-Library-Musik ist im Reel schon berücksichtigt (Eigenproduktion luxe-premium.wav).
 - TikTok-Shopify-App legt automatisch WELTWEITE Smart-Kampagnen an → nach Anlage prüfen, dass keine Auto-Kampagnen aktiv sind.
 - Nur Pixel D8EKVR… verwenden (D8EQE4/D85BAG sind Karteileichen).
+
+---
+## ✅ AUSGEFÜHRT 2026-07-06 17:35 UTC (Ergebnis)
+- video_id: `v10033g50000d95ud0nog65pdp922tg0` · image_id: `ad-site-i18n-sg/20260706c7c71e7754e8b4504d9fbc5d`
+- Kampagne: `1869987705486481` · Adgroup: `1869987760755842` (Start 18:00 UTC) · Ad: `1869987634760786`
+- Review: **is_approved=true / ALL_AVAILABLE** (sofort genehmigt) · Guthaben: CHF 332.18
+- Fix nötig gewesen: `bid_type=BID_TYPE_NO_BID` ergänzen (sonst Fehler 40002 «Please enter a cost per conversion»)
