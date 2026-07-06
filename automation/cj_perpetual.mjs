@@ -95,9 +95,18 @@ do {
     if (exhausted(await points())) break;
     await run(g, REST_CAP, { MAXPAGE: '12', PERCAT: '20', GSLEEP: '3500', CJSLEEP: '900' });
   }
-  // 3) "CJ ALLES": globaler Sweep durch den ganzen Katalog (Cursor merkt sich die Seite)
+  // 3) Video-Kategorie kopieren: nur Produkte MIT CJ-Video (User 2026-07-06)
   if (!exhausted(await points())) {
-    console.log(`[${now()}] Stufe 3: CJ-ALLES-Sweep (globaler Katalog, Cursor-Fortsetzung).`);
+    console.log(`[${now()}] Stufe 3: VIDEO-Sweep (nur Produkte mit CJ-Video).`);
+    await new Promise(res => {
+      const env = { ...process.env, CJ_TOKEN: CJT, VIDEO_ONLY: '1', CAP: '120', PAGES: '40', GSLEEP: '3500', CJSLEEP: '1400' };
+      const ch = spawn('/opt/node22/bin/node', ['automation/cj_trending_import.mjs'], { env, stdio: ['ignore', 'inherit', 'inherit'] });
+      ch.on('exit', res); ch.on('error', () => res(-1));
+    });
+  }
+  // 4) "CJ ALLES": globaler Sweep durch den ganzen Katalog (Cursor merkt sich die Seite)
+  if (!exhausted(await points())) {
+    console.log(`[${now()}] Stufe 4: CJ-ALLES-Sweep (globaler Katalog, Cursor-Fortsetzung).`);
     await runAllSweep();
   }
   console.log(`[${now()}] Runde ${round} fertig.`);
