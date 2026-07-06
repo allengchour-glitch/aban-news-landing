@@ -1916,3 +1916,9 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Marge kann still erodieren. **Backlog: `bigbuy_price_guard.mjs`** — Rezept: Ledger `bb:<id>` iterieren →
   `/rest/catalog/product/{id}` wholesalePrice → Shopify-Produkt via Handle-Suffix `-<id>` → wenn Marge < Staffel-
   Minimum: Preis anheben oder Alarm. Lauf ~1 Req/Sek (Rate-Limit) → als Charge fahren, wenn Import-Engine ruht.
+
+## 2026-07-06 — Non-Stop-Füll-Kette armiert (User-Auftrag „fülle alles non stop weiter")
+- **Ketten-Ablauf (alles automatisch):** BigBuy-Charge 3 Pässe (läuft) → `bigbuy_price_guard` 400er-LIVE-Runde →
+  **Folge-Charge 8 Pässe** à 110 Kategorien (PER=8). CJ-Perpetual wacht beim Punkte-Reset selbst auf (by design).
+- Damit läuft die Füllung durchgehend, solange der Container lebt; jede Stufe bounded + Ledger-geschützt.
+- Preis-Wächter-Tool live armiert (Anhebungen werden 💰-geloggt; BigBuy-inaktive Produkte → price_guard_report.md).
