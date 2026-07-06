@@ -86,10 +86,11 @@ Feste Content-Regeln für LuxeStyle (verbindlich, nur der User darf sie ändern)
 
 1. KEIN Voiceover. Alle Reels sind stumm mit On-Screen-Text — nur die *-stumm.mp4 /
    *-text.mp4-Varianten posten, nie Stimmen-Versionen.
-2. MUSIK: Die Reels haben bereits die Marken-Musik (luxe-premium.wav) einkomponiert →
-   einfach posten. Für Trend-Sounds gibt es -clean.mp4-Varianten (ohne Musik): diese in der
-   TikTok-/IG-App hochladen und den Trend-Sound (bei TikTok: Commercial Music Library!)
-   in der App drüberlegen. NIE Trend-Sound über die Musik-Version legen.
+2. MUSIK (User-Update 2026-07-06: «Abwechslung, nie gleich!»): STANDARD ist jetzt die
+   -clean.mp4-Variante + AKTUELLER TREND-SOUND aus der TikTok Commercial Music Library
+   (bei IG: trending Audio) — bei jedem Post einen ANDEREN Sound, nie zweimal hintereinander
+   denselben. Die einkomponierte Marken-Musik (luxe-premium) nur noch sparsam einstreuen
+   (max. 1 von 4 Posts). NIE Trend-Sound über die Musik-Version legen.
 3. NIE dasselbe Produkt zweimal posten. Quelle der Wahrheit ist automation/reels_seed.csv:
    nur Einträge mit status=ready posten; posted/tiktok-entwurf/archived-* sind erledigt oder
    tot. Nach jedem Post: Queue-id + Zeitstempel + Post-URL rapportieren, damit die

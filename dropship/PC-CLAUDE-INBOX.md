@@ -30,8 +30,9 @@
   totem Link/PureMax/fremdem Branding → löschen, (c) schwache aber saubere Posts → stehen lassen,
   (d) Ausnahme: Posts mit >500 Views/Likes NIE löschen, nur rapportieren. Ergebnis-Liste
   (gelöscht/behalten/warum) in den Rapport-Block.
-- [NEU 2026-07-06b] Best-of-Mix posten: Queue-Eintrag bestof-20260706 (21s-Zusammenschnitt,
-  CDN-URL in reels_seed.csv) auf TikTok + IG als Reel — Doppelpost-Check beachten (1 Tag Versatz).
+- [NEU 2026-07-06b] Best-of-Mix posten: CLEAN-Variante nehmen (https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bestof-20260706-clean.mp4?v=1783369433)
+  und in der App einen AKTUELLEN Trend-Sound drüberlegen (Musik-Abwechslungs-Regel!). Caption aus
+  Queue-Eintrag bestof-20260706. TikTok + IG mit 1 Tag Versatz, Doppelpost-Check.
 
 ## 📤 RAPPORTE (PC-Claude trägt hier ein, neueste zuoberst)
 _(noch keine)_
