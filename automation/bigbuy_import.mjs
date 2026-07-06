@@ -55,6 +55,12 @@ const ADULT_BAN = ['prostat', 'massager love', 'love panty', 'liebe panty', 'lus
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
   // === DEMAND 2026-07: Google-/Amazon-validierte Suchnachfrage (dropship/PRODUKT-CHANCEN.md) ===
+  d_smoke: { coll: { handle: 'smoke-zubehoer', title: '🌿 Smoke & Chill Zubehör', tag: 'smoke-zubehoer' },
+    onlineOnly: true, // Policy: NIE in Google/Meta/TikTok/Pinterest (Drogen-Zubehör-Regeln) — nur Onlineshop/POS
+    extraTags: ['raucherzubehoer', 'nur-onlineshop'], type: 'Raucherzubehör', maxCost: 40, word: true,
+    anchor: ['grinder', 'kräutermühle', 'crusher', 'drehpapier', 'zigarettenpapier', 'rolling paper', 'drehmaschine', 'stopfmaschine', 'zigarettenetui', 'tabakbeutel', 'tabakdose', 'aschenbecher', 'rolling tray', 'drehunterlage', 'feuerzeug'],
+    ban: ['cbd', 'thc', 'cannabis', 'vape', 'e-zigarette', 'elektronische zigarette', 'e-liquid', 'bong', 'pfeife', 'wasserpfeife', 'shisha', 'hookah', 'kinder'],
+    bullets: ['Für Erwachsene ab 18 Jahren', 'Robuste Qualität für den Alltag', 'Diskreter Versand aus EU-Lager', 'Legales Zubehör – ohne Tabak/CBD-Inhalt'] },
   d_kuehlung: { coll: { handle: 'ventilatoren-kuehlung', title: '❄️ Ventilatoren & Kühlung', tag: 'kuehlung' },
     extraTags: ['sommer', 'gadget', 'hitze-hilfe'], type: 'Ventilator', maxCost: MAX_COST_EUR,
     anchor: ['nackenventilator', 'halsventilator', 'neck fan', 'ventilador de cuello', 'handventilator', 'mini-ventilator', 'mini ventilator', 'sprühnebel-ventilator', 'misting fan', 'tischventilator', 'turmventilator', 'standventilator', 'akku-ventilator'],
