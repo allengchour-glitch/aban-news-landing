@@ -1,16 +1,6 @@
-name,image_url,label
-gua-sha-set-jade-massage-tool-rosehip-ol,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a083eb57-fe88-4722-9860-1de863c00b06.jpg?v=1780949914,Gua-Sha-Set «Jade»
-herren-sneaker-marco-leder-optik-retro-trainer,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8769b498-4e79-4900-bde6-9d7316ed91a3.jpg?v=1780939727,Herren-Sneaker «Marco»
-statement-ohrringe-onyx-geometrisch-schwarz,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6fbe13b6-8b96-48de-b393-7f7c7cb7e3eb.jpg?v=1780945953,Statement-Ohrringe «Onyx»
-stiletto-sandalette-gala-violett-knochelriemen,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7bf5ab15-c1f2-4d08-8f90-d80f0ffcab79.jpg?v=1780945950,Stiletto-Sandalette «Gala»
-boden-stander-flexhold-fur-handy-tablet-hohenverstellbar,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/08ccb8bf-069c-4859-b815-cb5173a3e9f5.jpg?v=1780897582,Boden-Ständer «FlexHold»
-vitamin-c-serum-glow-straffend-strahlend,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6de4cd13-ce79-4c95-a35d-1d67563487a6.jpg?v=1780950381,Vitamin-C-Serum «Glow»
-herren-set-costa-kapuzen-shirt-jogger,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d3dddef-f807-44ac-9758-37c07591fe4c.jpg?v=1780944994,Herren-Set «Costa»
-zirkonia-kette-stella-kleeblatt-anhanger-silber-optik,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/58e9722c-2090-494a-9c55-985b92e6185b.jpg?v=1780945390,Zirkonia-Kette «Stella»
-plateau-sneaker-cloud-spitzen-mesh-geschnurt,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6d900035-347b-406c-8469-181668807d25.jpg?v=1780939378,Plateau-Sneaker «Cloud»
-leinen-set-lino-weste-weite-hose,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/19a35734-aee3-4996-99ec-d9ce9d725eef.jpg?v=1780945369,Leinen-Set «Lino»
-blazer-roma-tailliert-mit-bindegurtel-revers,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5ee0a6a3-63ee-4f7c-a0f8-ca7624c0437c.jpg?v=1780905339,Blazer «Roma»
-herren-slides-porto-cross-strap-wildleder-optik,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4de7e77f-06df-4347-b49d-09ab36b0ee88.jpg?v=1780944896,Herren-Slides «Porto»
-silber-armreif-serpent-s925-schlangenschuppen-optik,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10a3772d-1bb3-4aab-afb2-ef78b89c8377.jpg?v=1780902401,Silber-Armreif «Serpent»
-herren-strickhemd-amalfi-ajour-knit-camp-kragen,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/45240fe2-82b9-41d4-aecb-fac1e15da55c.jpg?v=1780944045,Herren-Strickhemd «Amalfi»
-moissanite-herzkette-coeur-s925-silber-infinity,https://cdn.shopify.com/s/files/1/0943/6856/3585/files/010b06fe-dd7e-4470-a288-9b868a06330c.jpg?v=1780901173,Moissanite-Herzkette «Coeur»
+name,url,label
+Klimaanlage Luftkühler,https://luxestyle.ch/products/klimaanlage-luftkuhler-662976,Mini-Klimaanlage · Viral-Hit
+Intelligente LED-Lampe,https://luxestyle.ch/products/intelligente-led-lampe-567488,Smarte G-Lampe · Bluetooth
+Isolier-Tumbler 40 Oz,https://luxestyle.ch/products/isolier-tumbler-40-oz-474560,40oz Tumbler · eiskalt den ganzen Tag
+Mini-Etiketten-Drucker,https://luxestyle.ch/products/mini-etiketten-drucker-770112,Mini-Drucker · Ordnungs-Trend
+LED-Campinglampe mit Touchsteuerung,https://luxestyle.ch/products/led-campinglampe-mit-touchsteuerung-und-kugeld-088192,Camping-Licht · Touch
