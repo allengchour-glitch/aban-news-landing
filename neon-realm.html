@@ -530,7 +530,7 @@ function gainXp(v){G.xp+=v;while(G.xp>=G.xpNeed){G.xp-=G.xpNeed;G.lvl++;G.sp++;G
 // ===================== FX =====================
 var fxs=[];
 function burst(x,y,z,color,n,spd){y+=heightAt(x,z);for(var i=0;i<(n||8);i++){
-  var m=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:1}));
+  var m=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
   m.position.set(x,y,z);scene.add(m);
   var a=Math.random()*6.283,up=Math.random()*4+2,sp2=(spd||5)*(0.5+Math.random());
   fxs.push({m:m,vx:Math.cos(a)*sp2,vy:up,vz:Math.sin(a)*sp2,life:0.6+Math.random()*0.3});}}
@@ -645,7 +645,7 @@ function doAttack(){
   if(nb)player.rotation.y=Math.atan2(nb.g.position.x-player.position.x,nb.g.position.z-player.position.z);
   var fx2=Math.sin(player.rotation.y),fz2=Math.cos(player.rotation.y);
   // Schwungbogen-FX
-  var arc=new THREE.Mesh(new THREE.TorusGeometry(2.1,0.13,6,16,2.2),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.9}));
+  var arc=new THREE.Mesh(new THREE.TorusGeometry(2.1,0.13,6,16,2.2),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
   arc.position.set(player.position.x+fx2*1.2,player.position.y+1.2,player.position.z+fz2*1.2);
   arc.rotation.x=-Math.PI/2;arc.rotation.z=-player.rotation.y+Math.PI/2-1.1;scene.add(arc);
   setTimeout(function(){scene.remove(arc);arc.material.dispose();arc.geometry.dispose();},130);
@@ -673,7 +673,7 @@ function doBolt(){
   if(G.en<cost){showHint("⚡ Zu wenig Energie");return;}
   G.en-=cost;boltCD=0.8;updHUD();beep(980,.09,"sawtooth",.05);
   var R=7+G.skills.puls*1.2;
-  var ring=new THREE.Mesh(new THREE.TorusGeometry(0.5,0.22,8,32),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.9}));
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(0.5,0.22,8,32),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
   ring.rotation.x=-Math.PI/2;ring.position.set(player.position.x,player.position.y+0.6,player.position.z);scene.add(ring);
   var t0=performance.now();
   (function grow(){var k=(performance.now()-t0)/280;if(k>=1){scene.remove(ring);ring.material.dispose();ring.geometry.dispose();return;}
@@ -975,13 +975,53 @@ function updSeraph(dt,dayA){
         burst(bx,1,bz,0xffd166,18,7);camShake=Math.max(camShake,0.4);},850);}}
   // Spieler-Angriffe treffen den Seraph über die Melee/Puls-Wege (eigene Hitbox unten)
 }
+// ===================== Prozedurale Musik (WebAudio: Pad + Pentatonik-Arp + Kampf-Layer) =====================
+var music={on:false,master:null,padGain:null,padOsc:[],step:0,stepT:0,chord:0,combat:0};
+var CHORDS=[[110,164.81,220],[87.31,130.81,174.61],[98,146.83,196],[130.81,196,261.63]]; // Am F G C (Grundtöne)
+var PENTA=[220,261.63,293.66,329.63,392,440,523.25,587.33]; // A-Moll-Pentatonik
+function musicStart(){
+  if(music.on||!actx)return;music.on=true;
+  music.master=actx.createGain();music.master.gain.value=0;music.master.connect(actx.destination);
+  var lp=actx.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1600;lp.connect(music.master);music.bus=lp;
+  music.padGain=actx.createGain();music.padGain.gain.value=0.12;music.padGain.connect(lp); // 3 Stimmen -> ~1/3 Headroom
+  for(var v=0;v<3;v++){var o=actx.createOscillator();o.type=v===1?"triangle":"sine";
+    var og=actx.createGain();og.gain.value=0.33;o.connect(og);og.connect(music.padGain);
+    o.frequency.value=CHORDS[0][v];o.start();music.padOsc.push(o);}
+}
+function musicNote(f,dur,type,vol,dest){if(!actx)return;var o=actx.createOscillator(),g=actx.createGain();
+  o.type=type||"triangle";o.frequency.value=f;g.gain.setValueAtTime(vol||0.05,actx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+dur);
+  o.connect(g);g.connect(dest||music.bus);o.start();o.stop(actx.currentTime+dur);}
+function updMusic(dt,dayA){
+  if(!music.on){if(actx&&running)musicStart();return;}
+  // Ziel-Lautstärke: aus + Mute-Respekt, sanftes Fade
+  var tgt=muted?0:0.16;
+  music.master.gain.value+=(tgt-music.master.gain.value)*Math.min(1,dt*2);
+  // Kampf-Intensität: Gegner in der Nähe (Crossfade-Idee aus der Recherche)
+  var near2=0;for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var d=Math.hypot(e.g.position.x-player.position.x,e.g.position.z-player.position.z);if(d<22)near2++;}
+  if(seraph)near2+=3;if(bossObj&&bossObj.active)near2+=4;
+  music.combat+=((near2>0?Math.min(1,near2/3):0)-music.combat)*Math.min(1,dt*1.5);
+  // 8tel-Sequencer (0.25s), Akkordwechsel alle 32 Steps
+  music.stepT+=dt;var stepLen=music.combat>0.5?0.19:0.25;
+  if(music.stepT<stepLen)return;music.stepT=0;music.step++;
+  if(music.step%32===0){music.chord=(music.chord+1)%CHORDS.length;
+    for(var v2=0;v2<3;v2++){try{music.padOsc[v2].frequency.setTargetAtTime(CHORDS[music.chord][v2]*(dayA<0.15?0.5:1),actx.currentTime,1.2);}catch(e){}}}
+  // Arp: nachts spärlicher+tiefer, im Kampf dichter+Bass-Puls
+  var dens=0.22+music.combat*0.5+(dayA<0.15?-0.08:0);
+  if(Math.random()<dens&&!muted){
+    var n=PENTA[(Math.random()*PENTA.length)|0]*(dayA<0.15?0.5:1);
+    musicNote(n,0.5,"triangle",0.035+music.combat*0.02);}
+  if(music.combat>0.4&&music.step%4===0&&!muted)musicNote(CHORDS[music.chord][0]*0.5,0.22,"sawtooth",0.05);
+  if(music.step%8===0&&!muted&&music.combat<0.3&&Math.random()<0.35)musicNote(PENTA[(Math.random()*4)|0]*2,1.4,"sine",0.018); // Glitzer oben
+}
 // ===================== System-Hooks für die Hauptschleife =====================
 function initSystems(){
   renderQuests();
   // Touch: E-Button zeigen, wenn Interaktion in Reichweite
 }
 function updSystems(dt,dayA){
-  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);
+  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);updMusic(dt,dayA);
   // NPC-Marker hüpfen + Interakt-Hinweis
   var near=null,px=player.position.x,pz=player.position.z;
   for(var i=0;i<npcs.length;i++){npcs[i].mark.position.y=3.4+Math.sin(G.t*3+i)*0.25;npcs[i].mark.rotation.y+=dt*2;
@@ -1021,7 +1061,7 @@ function loop(now){
     G.t+=dt;
     // Bewegung (Velocity-Glättung wie Colossus)
     var mv=moveVec(),spd=G.spd*(1+G.skills.tempo*0.08);
-    if(dodgeT>0){dodgeT-=dt;player.position.x+=dodgeDir.x*34*dt;player.position.z+=dodgeDir.z*34*dt;}
+    if(dodgeT>0){dodgeT-=dt;player.position.x+=dodgeDir.x*34*dt;player.position.z+=dodgeDir.z*34*dt;burst(player.position.x,0.6,player.position.z,0x7de3ff,2,1.2);}
     else{var l=Math.hypot(mv.x,mv.z)||1,mvx=(Math.abs(mv.x)+Math.abs(mv.z)>0.05)?1:0;
       var tvx=(mv.x/l)*spd*mvx,tvz=(mv.z/l)*spd*mvx,k=Math.min(1,dt*(mvx?11:8));
       vx+=(tvx-vx)*k;vz+=(tvz-vz)*k;
