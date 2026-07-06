@@ -55,6 +55,22 @@ const ADULT_BAN = ['prostat', 'massager love', 'love panty', 'liebe panty', 'lus
 /* On-brand TOP-Kategorien. `anchor` = Namens-Anker (DE/EN/ES) gegen den DE-Produktnamen aus productsinformation. */
 const CONFIG = {
   // === DEMAND 2026-07: Google-/Amazon-validierte Suchnachfrage (dropship/PRODUKT-CHANCEN.md) ===
+  d_markenjacken: { coll: { handle: 'jacken-outdoor', title: '🧥 Jacken & Outdoor-Mode', tag: 'jacke' },
+    noGoogle: true, extraTags: ['marke', 'mode', 'outdoor'], type: 'Jacke', maxCost: 120, word: true,
+    anchor: ['jacke', 'jacket', 'parka', 'windbreaker', 'softshell', 'daunenjacke', 'regenjacke', 'fleecejacke', 'weste'],
+    must: ['adidas', 'nike', 'puma', 'tommy', 'calvin', 'levi', 'jack & jones', 'only', 'north face', 'columbia', 'superdry', 'hugo', 'boss', 'lacoste', 'guess', 'pepe jeans', 'champion', 'ellesse', 'kappa', 'fila', 'reebok', 'timberland', 'napapijri', 'helly hansen', 'regatta', 'trespass'],
+    ban: ['kinder', 'baby', 'hund'],
+    bullets: ['Original-Markenware', 'Für Alltag, Sport & Outdoor', 'Schneller Versand aus EU-Lager', 'Grössen-Auswahl je nach Modell'] },
+  d_wandern: { coll: { handle: 'wandern-trekking', title: '🥾 Wandern & Trekking', tag: 'wandern' },
+    extraTags: ['outdoor', 'sport'], type: 'Wander-Ausrüstung', maxCost: 90, word: true,
+    anchor: ['wanderstock', 'trekkingstock', 'wanderstöcke', 'trekkingstöcke', 'wanderrucksack', 'trekkingrucksack', 'stirnlampe', 'thermosflasche', 'isomatte', 'schlafsack', 'campingstuhl', 'wanderschuhe', 'trekkingschuhe', 'kompass', 'fernglas', 'trinkblase', 'gamaschen', 'regenponcho'],
+    ban: ['kinder-kostüm', 'spielzeug'],
+    bullets: ['Bereit für Berg & Trail', 'Leicht & robust', 'Für Wanderung, Camping & Reise', 'Schneller Versand aus EU-Lager'] },
+  d_ersatz: { coll: { handle: 'ersatzteile-zubehoer', title: '🔧 Ersatzteile & Zubehör', tag: 'ersatzteil' },
+    extraTags: ['zubehoer'], type: 'Ersatzteil & Zubehör', maxCost: 60, word: true,
+    anchor: ['ersatzbürste', 'ersatzbürsten', 'ersatzfilter', 'ersatzkopf', 'ersatzköpfe', 'ersatzband', 'ersatzakku', 'ersatzglas', 'ersatzdichtung', 'ersatzklinge', 'ersatzklingen', 'ersatzpads', 'ersatzteil', 'uhrenarmband', 'armband kompatibel', 'ladekabel', 'ladegerät ersatz', 'filterkartusche', 'staubsaugerbeutel'],
+    ban: ['kinder-kostüm'],
+    bullets: ['Passendes Zubehör & Ersatz', 'Verlängert die Lebensdauer deiner Geräte', 'Original-kompatible Qualität', 'Schnell geliefert aus EU-Lager'] },
   d_verpackung: { coll: { handle: 'verpackung-versand', title: '📦 Verpackung & Versandmaterial', tag: 'verpackung' },
     extraTags: ['buero', 'haushalt'], type: 'Verpackungsmaterial', maxCost: 60, word: true,
     anchor: ['versandtasche', 'luftpolster', 'karton', 'packband', 'klebeband', 'versandkarton', 'geschenkkarton', 'packpapier', 'seidenpapier', 'polsterfolie', 'stretchfolie', 'versandbeutel', 'briefumschlag', 'umschlag'],
@@ -827,7 +843,9 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const pid = r?.data?.productSet?.product?.id;
       if (e.length || !pid) { fails.push(`${title.slice(0, 40)}: ${JSON.stringify(e.length ? e : r).slice(0, 160)}`); continue; }
       // onlineOnly (z.B. Raucherzubehör): NUR Online Store + POS — NIE Google/Meta/TikTok/Pinterest (Policy)
-      const usePubs = cfg.onlineOnly ? allPubs.filter(p => /online store|point of sale/i.test(p.name)) : allPubs;
+      const usePubs = cfg.onlineOnly ? allPubs.filter(p => /online store|point of sale/i.test(p.name))
+        : cfg.noGoogle ? allPubs.filter(p => !/google/i.test(p.name)) // Markenware: nie in den Google-Kanal (GMC-Sperr-Risiko)
+        : allPubs;
       if (usePubs.length) await sgql(stok, PUB, { id: pid, pubs: usePubs.map(p => ({ publicationId: p.publicationId })) });
       fs.appendFileSync(LEDGER, 'bb:' + p.id + '\n');
       if (imgKey) { imgSeen.add(imgKey); fs.appendFileSync(IMG_LEDGER, imgKey + '\n'); }
