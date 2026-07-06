@@ -194,7 +194,8 @@ async function deepseek(prompt){
 // (Popularität absteigend). Am Katalog-Ende springt der Cursor auf 1 zurück.
 const CAPT=parseInt(process.env.CAP||'108',10);
 const PAGES=parseInt(process.env.PAGES||'8',10);
-const CURF='dropship/_cj_all_page.txt';
+const VIDEO_ONLY=process.env.VIDEO_ONLY==='1'; // «Video-Kategorie kopieren»: nur Produkte MIT CJ-Video
+const CURF=VIDEO_ONLY?'dropship/_cj_video_page.txt':'dropship/_cj_all_page.txt';
 const PSTART=parseInt(process.env.PSTART||(fs.existsSync(CURF)?fs.readFileSync(CURF,'utf8').trim():'')||'1',10)||1;
 const BAN=/wholesale|\bsample\b|disney|marvel|frozen|spider|barbie|pokemon|nintendo|halloween|christmas|weihnacht|sex|adult|vibrat|cigarette|vape|hookah|shisha|knife|gun|weapon|swimming ring|swim ring|arm ?band.*swim/i;
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
@@ -227,6 +228,7 @@ for(const p of cand){
  const d=dj.data||{}; const imgs=((d.productImageSet)||[]).filter(u=>/^https/.test(u)).slice(0,20);
  if(imgs.length<2){continue;}
  const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+ if(VIDEO_ONLY&&!(d.productVideo&&/^https/.test(d.productVideo))){continue;} // ohne Video überspringen
  const g=await gemini(nm,feats,'Trend-Produkt (viral)'); await sleep(GSLEEP);
  if(!g){console.log('  skip(copy)',nm.slice(0,30));continue;}
  const title=g.title.slice(0,70);
@@ -238,7 +240,7 @@ for(const p of cand){
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
  const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
  const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
-  tags:['trend','viral','video-hit','cj-real','dropship','neu'],descriptionHtml:html,
+  tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neu']:['trend','viral','video-hit','cj-real','dropship','neu'],descriptionHtml:html,
   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – der Trend-Hit bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
   productOptions,variants,files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
  // Dubletten-Wache: gleicher Titel schon aktiv? → überspringen (Lieferant listet gleiche Artikel mehrfach)
