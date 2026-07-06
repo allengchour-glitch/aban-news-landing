@@ -231,6 +231,9 @@ for(const [cat,label] of grp.cats){
    if(grp.fashion){const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
     const age=grp.tags.includes('kinder')||grp.tags.includes('baby-kids')?'kids':'adult';
     input.metafields=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},{namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'}];}
+   // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
+   const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
+   if(dq.data?.products?.edges?.length){console.log('  skip(dup-titel)',title.slice(0,40));continue;}
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
