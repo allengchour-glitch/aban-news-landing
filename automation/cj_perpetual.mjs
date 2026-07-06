@@ -53,6 +53,16 @@ function run(grp, cap, extra) {
   });
 }
 
+// "CJ ALLES": globaler Katalog-Sweep (cj_trending_import mit Seiten-Cursor) — frisst Restpunkte der Welle.
+function runAllSweep() {
+  return new Promise(res => {
+    const env = { ...process.env, CJ_TOKEN: CJT, CAP: String(process.env.ALL_CAP || 300), PAGES: String(process.env.ALL_PAGES || 30), GSLEEP: '3500', CJSLEEP: '900' };
+    const ch = spawn('/opt/node22/bin/node', ['automation/cj_trending_import.mjs'], { env, stdio: ['ignore', 'inherit', 'inherit'] });
+    ch.on('exit', code => res(code));
+    ch.on('error', () => res(-1));
+  });
+}
+
 function exhausted(pt) { return pt.code === 16900500 || (pt.remaining !== null && pt.remaining < MINPTS); }
 
 async function waitForPoints() {
@@ -83,6 +93,11 @@ do {
   for (const g of REST) {
     if (exhausted(await points())) break;
     await run(g, REST_CAP, { MAXPAGE: '12', PERCAT: '20', GSLEEP: '3500', CJSLEEP: '900' });
+  }
+  // 3) "CJ ALLES": globaler Sweep durch den ganzen Katalog (Cursor merkt sich die Seite)
+  if (!exhausted(await points())) {
+    console.log(`[${now()}] Stufe 3: CJ-ALLES-Sweep (globaler Katalog, Cursor-Fortsetzung).`);
+    await runAllSweep();
   }
   console.log(`[${now()}] Runde ${round} fertig.`);
   await sleep(8000);

@@ -186,25 +186,34 @@ async function deepseek(prompt){
 }
 
 // ── TRENDING-Modus: Top-Produkte nach listedNum (CJ "Trending/Video Products") ──
+// Mit Seiten-Cursor (dropship/_cj_all_page.txt) wird daraus der "CJ ALLES"-Sweep:
+// jede Welle setzt dort fort, wo die letzte aufhörte → frisst sich durch den GANZEN Katalog
+// (Popularität absteigend). Am Katalog-Ende springt der Cursor auf 1 zurück.
 const CAPT=parseInt(process.env.CAP||'108',10);
 const PAGES=parseInt(process.env.PAGES||'8',10);
+const CURF='dropship/_cj_all_page.txt';
+const PSTART=parseInt(process.env.PSTART||(fs.existsSync(CURF)?fs.readFileSync(CURF,'utf8').trim():'')||'1',10)||1;
 const BAN=/wholesale|\bsample\b|disney|marvel|frozen|spider|barbie|pokemon|nintendo|halloween|christmas|weihnacht|sex|adult|vibrat|cigarette|vape|hookah|shisha|knife|gun|weapon|swimming ring|swim ring|arm ?band.*swim/i;
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
 
-// 1) Top-N nach listedNum einsammeln
+// 1) Top-N nach listedNum einsammeln (ab Cursor-Seite PSTART)
 const cand=[];
-for(let page=1;page<=PAGES;page++){
+let lastPage=PSTART;
+for(let page=PSTART;page<PSTART+PAGES;page++){
  const j=await cj(`/product/list?pageSize=50&pageNum=${page}&orderBy=listedNum`); await sleep(1100);
- const list=(j.data&&j.data.list)||[]; if(!list.length)break;
+ const list=(j.data&&j.data.list)||[];
+ if(!list.length){fs.writeFileSync(CURF,'1');console.log(`Katalog-Ende bei Seite ${page} — Cursor auf 1 zurückgesetzt.`);break;}
+ lastPage=page;
  for(const p of list){
   const nm=p.productNameEn||'';
   if(!nm||done.has(String(p.pid))||BAN.test(nm))continue;
   const _pp=(''+p.sellPrice).split('--'); const _lo=parseFloat(_pp[0])||0, _hi=parseFloat(_pp[1]||_pp[0])||_lo; if(_hi<1.5||_lo>90)continue;
   cand.push(p);
  }
+ fs.writeFileSync(CURF,String(page+1));
 }
-console.log(`${cand.length} Trending-Kandidaten nach Filter (Ziel: ${CAPT}).`);
+console.log(`Seiten ${PSTART}–${lastPage}: ${cand.length} Kandidaten nach Filter (Ziel: ${CAPT}). Nächste Welle ab Seite ${fs.existsSync(CURF)?fs.readFileSync(CURF,'utf8').trim():lastPage+1}.`);
 
 // 2) Anlegen wie gehabt (fashion-aware)
 let total=0;
