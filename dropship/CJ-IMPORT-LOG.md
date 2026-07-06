@@ -1922,3 +1922,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   **Folge-Charge 8 Pässe** à 110 Kategorien (PER=8). CJ-Perpetual wacht beim Punkte-Reset selbst auf (by design).
 - Damit läuft die Füllung durchgehend, solange der Container lebt; jede Stufe bounded + Ledger-geschützt.
 - Preis-Wächter-Tool live armiert (Anhebungen werden 💰-geloggt; BigBuy-inaktive Produkte → price_guard_report.md).
+
+## 2026-07-06 (Abend) — Voll-Auto-Sweep: Memory-TODOs abgearbeitet
+- **✅ Google-Safety-Depublizierung (2. Teil des 06-27-Handoffs): 36 Schwimm-Sicherheitsartikel**
+  (Schwimmhilfen/-ringe/-flügel/-westen) vom Google-Kanal genommen (Haftungs-/Policy-Schutz). Marken (10'101)
+  waren bereits erledigt → **Google-Handoff KOMPLETT**.
+- **Neustart-Resilienz bewiesen:** Container-Restart → alle 4 Jobs (CJ, BigBuy-Charge, Alt-Backfill, Auto-Committer)
+  in ~2 Min aus dem committeten Stand wieder hochgefahren. Alt-Backfill resumte am Cursor.
+- **Bekannte offene Lücke (gross, dokumentiert):** FR/IT/EN-Übersetzungen decken nur die alten ~517 Produkte;
+  die Massen-Importe (20k+) sind DE-only. Vollübersetzung = Grossprojekt (translate_content.mjs existiert,
+  Ledger-basiert) — bei Bedarf als eigene Chargen-Strecke fahren.
+- **Nur-User-Liste (unverändert):** Klaviyo-Reconnect · Meta-Posting-Token (4 Scopes) · DeepSeek/Gemini aufladen ·
+  Dubletten-Lösch-OK (tauchen-schnorcheln/anime-manga) · GMC Feed-URL/Free-Listings-Klick · TikTok-Kampagne.
