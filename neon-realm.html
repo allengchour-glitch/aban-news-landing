@@ -180,8 +180,9 @@ var THREE=window.THREE,W=innerWidth,H=innerHeight;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
-var renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);
+var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
+var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
+renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
@@ -198,7 +199,7 @@ function beep(f,d,t,g){if(muted)return;try{if(!actx)actx=new (window.AudioContex
 // ===================== Licht & Tag/Nacht =====================
 var hemi=new THREE.HemisphereLight(0x8890c8,0x1a1030,0.9);scene.add(hemi);
 var sunL=new THREE.DirectionalLight(0xffe0c0,0.9);sunL.position.set(40,80,30);scene.add(sunL);
-sunL.castShadow=true;sunL.shadow.mapSize.set(1024,1024);sunL.shadow.bias=-0.0008;
+sunL.castShadow=true;sunL.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);sunL.shadow.bias=-0.0008;
 sunL.shadow.camera.near=1;sunL.shadow.camera.far=300;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
 var DAYLEN=150; // Sekunden pro Tag
 var skyDay=new THREE.Color(0x1a2150),skyNight=new THREE.Color(0x05040f),skyDusk=new THREE.Color(0x3a1440);
@@ -276,14 +277,16 @@ var water=(function(){
   m.userData.base=[];var p=g.attributes.position;
   for(var i=0;i<p.count;i++)m.userData.base.push([p.getX(i),p.getZ(i)]);
   return m;})();
-function updWater(t){var p=water.geometry.attributes.position,b=water.userData.base;
+var _wFrame=0;
+function updWater(t){_wFrame++;if(_wFrame%2)return; // jeden 2. Frame reicht (unsichtbar, halbiert die Kosten)
+  var p=water.geometry.attributes.position,b=water.userData.base;
   for(var i=0;i<p.count;i++){var bx=b[i][0],bz=b[i][1];
     p.setY(i,Math.sin(t*1.7+(bx+bz)*0.55)*0.16+Math.sin(t*2.6+bx*0.8-bz*0.4)*0.09);}
   p.needsUpdate=true;water.geometry.computeVertexNormals();}
 // ===== Gras/Kristallhalme mit Wind-Sway (Shader-Injektion via onBeforeCompile) =====
 var grassUniforms={uTime:{value:0}};
 var grass=(function(){
-  var N=420,geo=new THREE.ConeGeometry(0.09,1.1,3);geo.translate(0,0.55,0);
+  var N=IS_COARSE?240:420,geo=new THREE.ConeGeometry(0.09,1.1,3);geo.translate(0,0.55,0);
   var gmat=new THREE.MeshStandardMaterial({color:0x1a3a5c,emissive:0x2a7aa0,emissiveIntensity:0.7,flatShading:true});
   gmat.onBeforeCompile=function(sh){sh.uniforms.uTime=grassUniforms.uTime;
     sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nuniform float uTime;")
@@ -1139,7 +1142,7 @@ function loop(now){
     // Autosave alle 5s
     saveT+=dt;if(saveT>5){saveT=0;saveGame();updHUD();}
     if(hurtT>0){hurtT-=dt*2;hurtEl.style.opacity=Math.max(0,hurtT*0.8);}
-    drawMinimap();
+    if((_wFrame%3)===0)drawMinimap();
   }
   updWater(G?G.t:0);grassUniforms.uTime.value=(G?G.t:performance.now()*0.001);
   updBoids(dt);
