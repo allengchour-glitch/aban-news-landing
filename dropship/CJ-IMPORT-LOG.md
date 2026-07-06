@@ -1903,3 +1903,16 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Video-Backfill v2:** pid-Herleitung jetzt über **productSku→pid-Map aus der Trending-Liste** (14 Seiten,
   Präfix-Match) statt fragiler Einzelsuchen; QPS-Backoff gegen Engine-Kollision. Läuft über tag:video-hit.
 - Alle Collections publiziert-verifiziert (0 unpublizierte mit Produkten). Engines grinden weiter.
+
+## 2026-07-06 — BigBuy-Preisstrategie-Mail (Multichannel) eingeordnet + unsere Staffel bestätigt
+- **Mail betrifft BigBuys Multichannel-Plattform** (deren gehosteter Kanal-Sync). **Wir nutzen sie NICHT** —
+  unser Import läuft per API mit eigener Preislogik; BigBuy überschreibt KEINE Preise im Shop (kein Sync verbunden).
+  „Preis-Updates stoppen"/CSV-Margen aus der Mail sind für uns gegenstandslos. NICHT zusätzlich die Multichannel-
+  Plattform mit demselben Shopify verbinden (Doppel-Import!).
+- **Empfohlene Staffelmarge ist bei uns LÄNGST implementiert** (bigbuy_import.mjs `chf()`), feiner als BigBuys
+  Vorschlag (5 statt 4 Staffeln, degressive Marge): Einkauf CHF ≤15 ×2.3 · ≤40 ×2.1 · ≤80 ×1.95 · ≤150 ×1.8 ·
+  >150 ×1.65, Untergrenze 4.90, Endung .90.
+- **⚠️ ECHTES Rest-Risiko: Preis-Drift.** BigBuy-Einkaufspreise ändern sich; unsere Retail-Preise sind statisch →
+  Marge kann still erodieren. **Backlog: `bigbuy_price_guard.mjs`** — Rezept: Ledger `bb:<id>` iterieren →
+  `/rest/catalog/product/{id}` wholesalePrice → Shopify-Produkt via Handle-Suffix `-<id>` → wenn Marge < Staffel-
+  Minimum: Preis anheben oder Alarm. Lauf ~1 Req/Sek (Rate-Limit) → als Charge fahren, wenn Import-Engine ruht.
