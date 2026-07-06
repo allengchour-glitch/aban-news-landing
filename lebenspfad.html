@@ -297,6 +297,31 @@ function updSeason(dt,ch){
 function jingle(){[523.25,659.25,783.99].forEach(function(f,i){setTimeout(function(){beep(f,.25,"triangle",.06);},i*130);});}
 // ===================== Spielfiguren =====================
 var PCOLORS=[0xff5d7d,0x5ea8ff,0x6acc5a,0xffd166];
+// Meshy-Modelle: niedliche Spielfigur + Lebensbaum (KI-generiert, komprimiert)
+var pawnTpl=null,treeDone=false;
+function fitModel(o,target){var box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();
+  box.getSize(sz);box.getCenter(ctr);var k=target/(Math.max(sz.x,sz.y,sz.z)||1);
+  o.scale.setScalar(k);o.position.set(-ctr.x*k,-box.min.y*k,-ctr.z*k);
+  o.traverse(function(n){if(n.isMesh)n.castShadow=true;});return o;}
+if(THREE.GLTFLoader){
+  new THREE.GLTFLoader().load("/models/lp_pawn.glb",function(g){
+    pawnTpl=fitModel(g.scene,1.7);
+    for(var i=0;i<pawns.length;i++)upgradePawn(i); // schon existierende Figuren aufwerten
+  },undefined,function(){});
+  new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
+    var tr=fitModel(g.scene,11);var f=fields[NFIELDS-1];
+    tr.position.x+=f.x;tr.position.z+=f.z-6;scene.add(tr);treeDone=true;
+    window._lpTree=tr;
+  },undefined,function(){});}
+function upgradePawn(i){
+  if(!pawnTpl||!pawns[i]||pawns[i].userData.upgraded)return;
+  var col=new THREE.Color(G&&G.players[i]?G.players[i].col:PCOLORS[i]);
+  var m=pawnTpl.clone(true);
+  m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
+    n.material.color.lerp(col,0.55);n.material.emissive=col.clone().multiplyScalar(0.12);}});
+  pawns[i].add(m);
+  for(var c=pawns[i].children.length-2;c>=0;c--)if(pawns[i].children[c]!==m)pawns[i].children[c].visible=false;
+  pawns[i].userData.upgraded=true;}
 var PNAMES=["Rot","Blau","Grün","Gold"];
 function mkPawn(color){
   var g=new THREE.Group();
@@ -541,6 +566,7 @@ function loop(now){
   if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);
     updSeason(dt,chapterOf(G.players[G.turn].tile));
     for(var fsI=0;fsI<fieldSprites.length;fsI++){var fs2=fieldSprites[fsI];fs2.sp.position.y=fs2.y0+Math.sin(G.t*1.6+fs2.b)*0.12;}
+    if(window._lpTree)window._lpTree.rotation.z=Math.sin(G.t*0.6)*0.02;
     // Felder pulsieren leicht; aktives Feld stärker
     for(var i=0;i<pawns.length;i++){if(G.phase!=="moving"||i!==G.turn){var pl=G.players[i];
       pawns[i].rotation.y+=dt*(i===G.turn?1.4:0.3);}}
@@ -567,7 +593,7 @@ function begin(saved){
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
     if(el&&el.value.trim())G.players[ni].name=el.value.trim().slice(0,12);}}
   pawns.forEach(function(pw){scene.remove(pw);});pawns.length=0;
-  G.players.forEach(function(p,i){pawns.push(mkPawn(p.col));placePawn(i);});
+  G.players.forEach(function(p,i){pawns.push(mkPawn(p.col));placePawn(i);upgradePawn(i);});
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");
   document.getElementById("endO").classList.add("hide");
