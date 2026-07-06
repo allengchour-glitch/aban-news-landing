@@ -22,10 +22,13 @@ if (!CJT) { console.error('Kein CJ_TOKEN (env oder /tmp/cj_token.json). Abbruch.
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const now = () => new Date().toISOString().replace('T', ' ').slice(0, 19);
 
-// Reihenfolge: Kleider/Mode zuerst (voll), dann breite Abdeckung aller sauberen Gruppen.
+// Reihenfolge: PRIORITY-Gruppen zuerst (tief), dann Kleider/Mode, dann breite Abdeckung.
+// PRIORITY per Env übersteuerbar (Komma-Liste), Default Elektronik-Fokus (User-Auftrag 2026-07-06).
+const PRIORITY = (process.env.PRIORITY || 'cjelektronik,cjgadgets,gaming').split(',').map(s => s.trim()).filter(Boolean);
 const CLOTHES = ['cjdamen', 'cjherren'];
 const REST = ['cjtaschen', 'cjschmuck', 'cjuhren', 'cjhome', 'cjbeautytools', 'cjhaustier',
-  'cjelektronik', 'cjgadgets', 'skincare', 'makeup', 'nagel', 'kueche', 'storage', 'sport', 'pet', 'gaming', 'musik', 'cj3d'];
+  'cjelektronik', 'cjgadgets', 'skincare', 'makeup', 'nagel', 'kueche', 'storage', 'sport', 'pet', 'gaming', 'musik', 'cj3d']
+  .filter(g => !PRIORITY.includes(g));
 
 const CLOTHES_CAP = Number(process.env.CLOTHES_CAP || 80);
 const REST_CAP = Number(process.env.REST_CAP || 40);
@@ -65,11 +68,16 @@ let round = 0;
 do {
   round++;
   const pt = await waitForPoints();
-  console.log(`[${now()}] Runde ${round}: ${pt.remaining} Punkte frei. Import-Welle — KLEIDER zuerst.`);
-  // 1) Kleider tief füllen
-  for (const g of CLOTHES) {
+  console.log(`[${now()}] Runde ${round}: ${pt.remaining} Punkte frei. Import-Welle — PRIORITY [${PRIORITY.join(', ')}] zuerst.`);
+  // 0) Prioritäts-Gruppen tief füllen (z. B. Elektronik)
+  for (const g of PRIORITY) {
     await run(g, CLOTHES_CAP, { MAXPAGE: '25', PERCAT: '40', GSLEEP: '3500', CJSLEEP: '900' });
     if (exhausted(await points())) break;
+  }
+  // 1) Kleider tief füllen
+  for (const g of CLOTHES) {
+    if (exhausted(await points())) break;
+    await run(g, CLOTHES_CAP, { MAXPAGE: '25', PERCAT: '40', GSLEEP: '3500', CJSLEEP: '900' });
   }
   // 2) Rest breit füllen
   for (const g of REST) {
