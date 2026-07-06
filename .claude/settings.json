@@ -6,6 +6,10 @@
           {
             "type": "command",
             "command": "bash automation/brain-wake.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash automation/autostart.sh"
           }
         ]
       }
