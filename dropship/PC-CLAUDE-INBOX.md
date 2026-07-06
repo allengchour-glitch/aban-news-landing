@@ -24,5 +24,14 @@
   Seite «LuxeStyle CH» 1049840534888592) und NUR die ersten 8 Zeichen hier rapportieren +
   vollständig als GitHub-Secret META_ACCESS_TOKEN setzen (gh CLI oder Web-UI) — NIE in eine Datei.
 
+- [NEU 2026-07-06b] POST-AUDIT ALLE KANÄLE (User-Freigabe: Löschen erlaubt!): Auf IG, FB und
+  TikTok JEDEN Post der letzten 60 Tage durchgehen: (a) Doppelposts/identische Reels → den
+  schwächeren LÖSCHEN (Freigabe User 2026-07-06 «wenn du willst auch löschen»), (b) Posts mit
+  totem Link/PureMax/fremdem Branding → löschen, (c) schwache aber saubere Posts → stehen lassen,
+  (d) Ausnahme: Posts mit >500 Views/Likes NIE löschen, nur rapportieren. Ergebnis-Liste
+  (gelöscht/behalten/warum) in den Rapport-Block.
+- [NEU 2026-07-06b] Best-of-Mix posten: Queue-Eintrag bestof-20260706 (21s-Zusammenschnitt,
+  CDN-URL in reels_seed.csv) auf TikTok + IG als Reel — Doppelpost-Check beachten (1 Tag Versatz).
+
 ## 📤 RAPPORTE (PC-Claude trägt hier ein, neueste zuoberst)
 _(noch keine)_
