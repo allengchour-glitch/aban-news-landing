@@ -136,6 +136,53 @@
 
 ## 📊 LIVE-STAND (von jeder Session nach Aktionen aktualisieren)
 
+### 🎉🎉 2026-07-05 — ERSTE ECHTE VERKÄUFE! Voller Order-Audit (Status-Session, live per Admin-API verifiziert)
+**Zwei bezahlte Bestellungen (Klaviyo zeigt fälschlich 0):**
+- **#1004 (25.06.) = USER-TESTKAUF (per Order-Events verifiziert):** LED-Laterne «Boho» (BigBuy `bb-S3414715`),
+  CHF 24.90+7, TWINT, vom User selbst bestellt/fulfilled/getrackt (Tracking 8420327578013, 04.07. aktualisiert).
+  ✅ Beweist: Checkout/TWINT/Payout funktionieren end-to-end. KEIN externer Kunde, kein Handlungsbedarf.
+- **#1005 (03.07.) = 🎉 DER ERSTE ECHTE KUNDENVERKAUF: ⚽ Schweiz Fan-Trikot 2026 selbst gestalten**
+  (SKU `WM-TRIKOT-RO-XL`), CHF 34.90+7, PAID/
+  **UNFULFILLED in Shopify**. Printful-Auftrag `165452870` existiert (manuell angelegt, `external_id=None` → KEIN
+  App-Link!): Status pending, bestätigt, kein Fehler, **noch nicht gedruckt** (printed=0, kein Tracking; AOP=Cut&Sew
+  2–5 Werktage; User-Packzettel war nur das vorbereitete Dokument). **Kosten 44.85 USD** (31.50 Produkt + 9.99 Versand).
+  ⇒ Verkauf zu 34.90 war ~Nullmarge; **Preis ist inzwischen auf CHF 59.90 gefixt** (alle 20 Varianten, ~CHF 28 Marge) ✅.
+  **📌 TODO sobald Printful Tracking liefert: Shopify-#1005 MANUELL fulfillen** (kein Auto-Sync wegen external_id=None)!
+- **#1003 (21.06.):** Vakuumierer (CJ) CHF 26.90 — EXPIRED/unbezahlt (abgebrochener Checkout, kein Verkauf).
+- **🔴 KLAVIYO-SYNC DEFINITIV KAPUTT:** 2 PAID-Orders existieren, Klaviyo (live abgefragt) zeigt **0 Placed Order,
+  0 Checkout Started, nur 2 Profile** (auch Popup-Leads fehlen). ⇒ Post-Purchase-/Abandoned-Flows laufen ins Leere.
+  **Fix = Shopify↔Klaviyo-App neu verbinden (nur User).**
+- **Offen zudem:** TikTok-CompletePayment-Event für #1004/#1005 im Events Manager prüfen (DataHash gekündigt).
+- **Weitere Live-Signale 05.07.:** Katalog inzwischen **10'000+ aktive Produkte** (Masse durch BigBuy/CJ-Füll-Session).
+  GitLab-CI lebt (brain/youtube + brain/auto 05.07. aktualisiert), aber **brain/intel letzter Push 27.06.** →
+  `autopilot-intel`/`shop-autopilot`-Jobs in GitLab prüfen. GitHub Actions weiterhin gesperrt.
+- **Shopify-Zugriff ohne MCP (Rezept bestätigt):** Client-Credentials-Grant (CLAUDE.md §Kernfakten) funktioniert —
+  Token ~24h, Scope reicht für Orders/Products/Preise. Order-Queries OHNE Kunden-PII abfragen (Adresse/Name weglassen).
+
+### 👑 2026-07-06 — SESSION-ÜBERNAHME (User-Beschluss): Status-Session übernimmt die Katalog-Session
+- **Diese Session (Status/Trending, Branch `claude/luxestyle-status-tztnn1`) übernimmt AB JETZT den kompletten
+  Katalog-Auftrag:** CJ-Import (Perpetual + Trending), BigBuy (112-Kategorien-Config jetzt offiziell in
+  `automation/bigbuy_import.mjs`), Collections/Menü/Sortierung, QA, Google-Kanal-Pflege.
+- Ledger-Wahrheit = `main` (meine Stände sind Obermenge der Session-2-Snapshots; deren Branch
+  `claude/memory-2026-06-13` gilt als ARCHIV — nicht mehr draufstapeln).
+- **Offen zur User-Freigabe:** exakte Dubletten-Collections `tauchen-schnorcheln` + `anime-manga` löschen
+  (nirgends im Menü referenziert; Classifier verlangt explizites User-OK). Wellness-4er-Überlappung = Absicht prüfen.
+
+### 🤝 2026-07-06 — KOORDINATION Collections/Menü (Status- + Katalog-Session arbeiten parallel!)
+- **⚠️ Es entstehen bereits DUBLETTEN-Collections:** `tauchen`=`tauchen-schnorcheln` (beide TAG=tauchen, 40) ·
+  `anime`=`anime-manga` (TAG=anime) · 4× Wellness-Überlappung (wellness-gesundheit/-massage/waerme-komfort/-komplettset).
+  **REGEL AB JETZT: vor JEDER Collection-Anlage `collectionByHandle` + Titel-Synonym-Check.** Dubletten-Bereinigung
+  bitte durch die Session, die sie angelegt hat (Lösch-Falle!).
+- **Diese Session (Status/Trending) besitzt/pflegt:** `viral-hits` (Menü Pos. 2) · `fan-zone-schweiz` (Sub unter WM 2026) ·
+  `schulstart` · Menü-Top „🧸 Kinder" · Demand-Collections `ventilatoren-kuehlung`/`haustier-kuehlung`/`ordnung-aufbewahrung`/
+  `kueche-organisation`/`auto-handy-laden`/`picknick-strand`/`solar-gartenlicht` (BigBuy-Demand-Configs).
+  ⚠️ `ventilatoren-kuehlung` überlappt thematisch mit eurem `klima-ventilatoren` — bei Gelegenheit zusammenlegen (Absprache).
+- **Menü:** menuUpdate ersetzt IMMER die ganze Struktur → **vor jedem Menü-Edit frisch laden** (diese Session hat
+  06.07. eingefügt: 🧸 Kinder + 🔥 Viral-Hits + Fan-Zone-Sub). Wer editiert, übernimmt die Items der anderen mit.
+- **Sortierung:** 218 Collections auf BEST_SELLING gesetzt (05.07.); kuratierte MANUAL + Neuheiten-CREATED_DESC geschützt.
+- **CJ-API-QPS:** 1 Req/Sek KONTOWEIT — parallele CJ-Konsumenten (Import-Engine + Tools) verhungern gegenseitig.
+  Diese Session pausiert ihre Engine für kurze Tool-Läufe; bitte grosse CJ-Läufe zeitlich staffeln.
+
 ### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
 **Reichweite/Distribution 2026 (Web-Recherche):**
 - **Organische Social-Reichweite sinkt weiter; Facebook-Gruppen sind 2026 organisch faktisch tot** außer 3 Nischen

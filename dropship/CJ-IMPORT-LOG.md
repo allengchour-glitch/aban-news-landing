@@ -1765,3 +1765,141 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Hero** live: weisser Titel + goldener Button + Premium-Bild (Schema 3).
 - Damit sind ALLE Produktseiten-/Hero-Baustellen erledigt. Offen nur noch: Judge.me-Token (mehr Reviews/Sterne),
   Cookie-Banner schmaler, Top-Bar-Schrift (alles optionaler Feinschliff).
+
+## 2026-07-05 — CJ-Charge (Status-Session, Token via User) — 0 Keeper, wichtiger Befund
+- **Umgebung:** Kein MCP; Shopify via Client-Credentials (Rezept CLAUDE.md), CJ via User-Token (`/tmp/cj_token.json`-Cache).
+- **2 Keyword-Runden** (Reise/Strand/Handy-Lücken + freie §6-Ideen): 16 Keywords → 5 Kandidaten → **alle aussortiert:**
+  - Wein-Dispenser CJHS296029801AZ: Varianten-Preis-Chaos $10–530 (§5) · iPhone-17-Case: modellspezifische Commodity.
+  - Reise-Adapter CJYD296282701AZ ($4.53, Bilder 24/24 HTTP-200): **Shop hat bereits 3 aktive Reiseadapter** (BigBuy).
+  - Mikrofaser-Auto-Tücher CJQT295981001AZ: „Premium Mikrofasertücher Set 12er Auto" existiert ACTIVE.
+  - Lunch-Tote CJNS296687401AZ ($1.74): Lunch-Kühltasche + Bento existieren; Plain-Commodity ohne Mehrwert.
+- **🧠 STRATEGISCHER BEFUND:** Katalog ist inzwischen **10'000+ aktiv** (BigBuy-Masse) → CJ-Keyword-Fischen kollidiert
+  fast immer mit Bestand. **Dubletten-Check (SKU + Titel-Synonyme!) ist jetzt Pflicht VOR jeder Anlage**; Lücken-Importe
+  nur noch gezielt nach echter Bestandsprüfung. Master-Lesson 11 gilt verschärft: Breite = 0-Hebel, Conversion first.
+- Verwendete Keywords (nicht wiederholen): packing cubes travel · luggage tag · travel adapter universal · sand free
+  beach mat · self watering planter pot · wine aerator decanter · spice rack organizer · bike light set usb · travel
+  organizer bag set · passport holder cover · beach blanket waterproof · phone holder stand desk · garlic press
+  stainless · lint roller clothes · monitor stand riser · insulated lunch bag.
+
+## 2026-07-05 — ⚽ Fan-Zone Schweiz LIVE (Merchandising statt Import) + 2. CJ-Runde leer
+- **CJ-Runde WM-Fan/Schweiz-Flagge: 0 Keeper** (CJ-Namenssuche liefert für die Nische nur Fehltreffer:
+  Paint-Remover/Satin-Kleid/Weihnachtsgirlande). Keywords verbraucht: switzerland flag · swiss flag banner ·
+  face paint stick fans · fan scarf football · flag garland bunting · car flag window · football party
+  decoration · led foam stick cheer. **CJ hat die Fan-Nische nicht** → Nische läuft über POD.
+- **✅ Neue Smart-Collection „⚽ Fan-Zone Schweiz – WM 2026"** (`fan-zone-schweiz`, Collection 689741267329,
+  Regel TAG=`fan-zone`, Beschreibung+SEO+Trust-Zeile, **in alle 6 Kanäle publiziert, live HTTP 200**).
+  7 Produkte via tagsAdd: WM-Trikot (der 1. echte Verkauf!) + Hopp-Schwiiz-Shirt/Tasse/Sticker +
+  Swiss-Flag-Heart-Shirt/Tasse + Soccer-Ball-Sticker. Anlass: WM läuft (Final Mitte Juli) + 1.-August-Brücke.
+- **Optional offen:** Menü-Link auf die Fan-Zone (menuUpdate = ganze Struktur, wegen Parallel-Sessions
+  bewusst nicht angefasst) + Fan-Zone im Hero/Startseite featuren (Customizer, nur User).
+
+## 2026-07-05 — 3. CJ-Runde (Thermometer/Grill-Lücke) + TAGES-FAZIT CJ
+- **0 Keeper** (CJ lieferte Fieber-Stirnthermometer statt Grill-Thermometer = Medizinprodukt/§5, 2 Bilder).
+  Keywords verbraucht: meat thermometer digital · grill thermometer wireless · bbq grill mat non stick.
+- **📊 TAGES-FAZIT (3 Runden, 27 Keywords, 9 Kandidaten, 0 Keeper):** Die CJ-**Namenssuche** ist für gezielte
+  Nischen praktisch unbrauchbar (Fehltreffer-Quote ~100%) UND der 10k-Katalog deckt fast alles ab.
+  **Empfehlung für künftige Sessions: CJ-Keyword-Fischen einstellen.** CJ nur noch (a) über Kategorie-Browse
+  (`cj_gaps_import.mjs`-Ansatz mit harten Ankern) oder (b) für konkrete Produkt-IDs aus Recherche-Reports.
+- **✅ Text-Abdeckung verifiziert (Stichproben neu+alt):** Alle geprüften cj-real haben DE-Body (350–1250 Z.)
+  + SEO-Title/Desc. Import-Session schreibt Text direkt mit. Kein Text-Rückstand im CJ-Katalog.
+
+## 2026-07-05 — 🏭 BEIDE MASSEN-ENGINES IN DIESER SESSION GESTARTET (100k-Auftrag des Users)
+- **User-Auftrag: „importiere alles mögliche / cj 100000 sachen"** → beide Session-2-Engines übernommen & gestartet:
+  1. **BigBuy:** `/tmp/bb_s2.mjs` (= `automation/bigbuy_import.mjs` vom Branch `claude/memory-2026-06-13`, 105 Kategorien;
+     hier 103 — `raucherzubehoer`+`grow` per §5 ausgelassen). LIVE=1, PER=4, Ledger `dropship/bigbuy_done.txt` (12'194 übernommen).
+  2. **CJ:** `automation/cj_perpetual.mjs` + `cj_category_fill.mjs` (von Session-2-Branch committet). Grindet CJ-Tagespunkte
+     (~50k/Tag, Code 16900500 = warten auf Reset) Richtung 100k. Ledger `dropship/cj_niche_done.txt` (5'802 übernommen).
+- **NEUSTART-REZEPT (nach Container-Reset / neue Session):**
+  1. CJ-Token nach `/tmp/cj_token.json` (User pastet Token; Format `{"accessToken":"…","exp":<ms>}`) + Gemini-Key nach `/tmp/gemini_key`.
+  2. `SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_CLIENT_ID=… SHOPIFY_CLIENT_SECRET=… node automation/cj_perpetual.mjs &`
+  3. BigBuy: Key vom User + `CATS=<liste> LIVE=1 node automation/bigbuy_import.mjs &` (Skript ggf. frisch vom Session-2-Branch).
+  Ledger IMMER vorher von origin (main + Session-2-Branch) vereinigen → keine Dubletten. Ledger-Drift regelmässig committen.
+- ⚠️ Bekannte BigBuy-Eigenheit: nahezu identische Titel als separate Produkte (RC-Motorräder 2×) → Session-2-Tool
+  `merge_variants.mjs` konsolidiert nachträglich (29 Gruppen bereits gemerged), bei Gelegenheit erneut fahren.
+
+## 2026-07-05 — 🗂️ Sortier-Sweep: 218 Collections auf BEST_SELLING (0 Fehler)
+- **Befund:** 205 Smart- + 17 Manual-Collections standen auf **PRICE_DESC („teuerste zuerst" = Conversion-Gift)** —
+  Session-2-Agenten hatten nur die 20 Hauptkategorien gefixt, der Long-Tail nicht.
+- **Fix:** alle PRICE_ASC/PRICE_DESC-Collections mit >0 Produkten → `sortOrder: BEST_SELLING` (218 Stück, Batch-
+  Mutationen à 20). **Bewusst unangetastet:** 7 kuratierte MANUAL (bestseller/highlights — „nicht zurücksortieren!"-
+  Regel) + 4 CREATED_DESC (Neuheiten = neueste zuerst ist dort richtig).
+- **Endstand: 238 BEST_SELLING · 7 MANUAL · 4 CREATED_DESC.** Verifiziert per Live-Query.
+- **QA neueste 40 Engine-Importe: 0 FAILED-Bilder, 0 ohne Bild, 0 unpubliziert** — beide Engines liefern sauber.
+
+## 2026-07-05 — Qualitätspaket: Varianten ✅ · Dubletten ✅ · Google-Merchant-Schutz LÄUFT
+- **Varianten verifiziert:** Engine-Importe haben echte **Farbe×Grösse-Optionen** mit CJ-SKU je Kombination
+  (Beispiel Midikleid: 4 Farben × 6 Grössen). Kein Nachbau nötig.
+- **Dubletten:** `merge_variants.mjs` (Session-2-Tool) SCANALL-DRY gefahren → **0 mergefähige Gruppen offen**
+  (29 saubere sind gemerged; Rest = bewusste Skips: keine klare Achse / inkohärente Preise, z. B. Casio-Ø-Varianten).
+- **🚨 GOOGLE-MERCHANT-SCHUTZ:** **7'922 tag:marke-Produkte waren auf dem Google-Kanal publiziert** (Juni: ~520 —
+  Massen-Füllung!). Neues Tool **`automation/google_unpublish_marke.mjs`** (paginiert, batch-unpublish 20er,
+  Throttle-Backoff, idempotent via publication_ids-Query) läuft im Hintergrund und nimmt alle vom Google-Kanal
+  (Publication 302872297857). Onlineshop/übrige Kanäle bleiben — nur Google wird geschützt. Danach: Safety-Subset
+  (Schwimmhilfen) prüfen. **Merchant-Feed-Alternative bleibt der gefilterte XML-Feed (brain/intel).**
+- Barcodes: CJ liefert keine GTINs (barcode null) → Google behandelt sie als „custom products" (ok, kein Blocker).
+
+## 2026-07-05 — 🔥 TRENDING-FEED KOMPLETT IMPORTIERT (User-Screenshots CJ Video/Trending Products)
+- **Neues Tool `automation/cj_trending_import.mjs`:** zieht CJ-Trending direkt via **`orderBy=listedNum`**
+  (unbekannter, aber funktionierender API-Param — Top-1 = G-Lampe 68k Lists, exakt der App-Feed!).
+  Fashion-aware Varianten, ALLE Bilder (bis 20) + **CJ-Produktvideo als Shopify-VIDEO-Media**, Copy via
+  **Groq-Rotation (2 Keys × 3 Modelle)**; Preisfilter nutzt Range-OBERGRENZE (Zubehör-Varianten-Falle).
+- **✅ 200 Top-Trending-Produkte LIVE** (Rang bis ~6'100 Lists), inkl. aller User-Screenshot-Produkte:
+  G-Lampe [68373], Halsmassager [48000], Etiketten-Drucker [37411], Klimaanlage/Luftkühler [29730],
+  Heimprojektor [28331], Heizjacke [22777], Isolier-Tumbler [30457], Campinglampe [10901] u.v.m.
+- **Neue Collection „🔥 Viral-Hits & TikTok-Trends"** (`viral-hits`, Regel TAG=video-hit, 211 Produkte,
+  6 Kanäle, live HTTP 200).
+- **✅ GOOGLE-SCHUTZ ABGESCHLOSSEN: 10'101 Marken-Produkte vom Google-Kanal depubliziert** (Tool
+  `google_unpublish_marke.mjs`, lief bis 0 offen — inkl. der parallel importierten).
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
+  Heimprojektor [28331], Heizjacke [22777], Isolier-Tumbler [30457], Campinglampe [10901] u.v.m.
+- **Neue Collection „🔥 Viral-Hits & TikTok-Trends"** (`viral-hits`, Regel TAG=video-hit, 211 Produkte,
+  6 Kanäle, live HTTP 200).
+- **✅ GOOGLE-SCHUTZ ABGESCHLOSSEN: 10'101 Marken-Produkte vom Google-Kanal depubliziert** (Tool
+  `google_unpublish_marke.mjs`, lief bis 0 offen — inkl. der parallel importierten).
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
+
+## 2026-07-06 — 🌙 ÜBER-NACHT-BILANZ: ~1'400 neue Produkte, Engines liefen durch
+- **Container überlebte die Nacht** — alle 3 Hintergrund-Prozesse liefen durch: **CJ-Perpetual 1'080 ✅**,
+  Trending 210 ✅, BigBuy 101 ✅. Auto-Committer hielt alles gepusht (0 offene Commits am Morgen).
+- **QA neueste 30: 0 FAILED-Bilder**, 1 unpubliziert (Einzelfall). Katalog-Query capped bei 10'000
+  (productsCount-API-Limit) — realer Bestand darüber.
+- **⚠️ VIDEO-Media kommt NICHT an:** Shopify nimmt externe Video-URLs via productCreateMedia nicht
+  zuverlässig (VIDEO braucht Staged-Upload; zudem CJ-pid↔SKU-Mapping uneinheitlich bei Fashion-Varianten).
+  → TODO: eigenes Backfill-Tool nach `upload_to_shopify_cdn.mjs`-Muster (Video runterladen → stagedUpload →
+  fileCreate → productCreateMedia) über tag:video-hit. Bilder (bis 20) kommen sauber an.
+- **Trikot #1005:** Printful weiter pending/printed=0 (Mo-Morgen, Produktionsstart erwartet; nichts hängt).
+- **CJ-Tagespunkte** resetten heute → Perpetual grindet den neuen Tag automatisch durch.
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
+  Heimprojektor [28331], Heizjacke [22777], Isolier-Tumbler [30457], Campinglampe [10901] u.v.m.
+- **Neue Collection „🔥 Viral-Hits & TikTok-Trends"** (`viral-hits`, Regel TAG=video-hit, 211 Produkte,
+  6 Kanäle, live HTTP 200).
+- **✅ GOOGLE-SCHUTZ ABGESCHLOSSEN: 10'101 Marken-Produkte vom Google-Kanal depubliziert** (Tool
+  `google_unpublish_marke.mjs`, lief bis 0 offen — inkl. der parallel importierten).
+- **⚠️ Copy-Lanes-Status:** Gemini-Quota LEER · DeepSeek-Key OHNE GUTHABEN („Insufficient Balance") →
+  einzige Lane = Groq-Rotation. User-Klick: Gemini-Billing ODER DeepSeek aufladen = Kette unerschöpflich.
+- Kinder-Findability: Menü „🧸 Kinder" (4 Subs) + Collection `schulstart` (109 Prod.) live — s. Einträge oben.
+
+## 2026-07-06 — 🌙 ÜBER-NACHT-BILANZ: ~1'400 neue Produkte, Engines liefen durch
+- **Container überlebte die Nacht** — alle 3 Hintergrund-Prozesse liefen durch: **CJ-Perpetual 1'080 ✅**,
+  Trending 210 ✅, BigBuy 101 ✅. Auto-Committer hielt alles gepusht (0 offene Commits am Morgen).
+- **QA neueste 30: 0 FAILED-Bilder**, 1 unpubliziert (Einzelfall). Katalog-Query capped bei 10'000
+  (productsCount-API-Limit) — realer Bestand darüber.
+- **⚠️ VIDEO-Media kommt NICHT an:** Shopify nimmt externe Video-URLs via productCreateMedia nicht
+  zuverlässig (VIDEO braucht Staged-Upload; zudem CJ-pid↔SKU-Mapping uneinheitlich bei Fashion-Varianten).
+  → TODO: eigenes Backfill-Tool nach `upload_to_shopify_cdn.mjs`-Muster (Video runterladen → stagedUpload →
+  fileCreate → productCreateMedia) über tag:video-hit. Bilder (bis 20) kommen sauber an.
+- **Trikot #1005:** Printful weiter pending/printed=0 (Mo-Morgen, Produktionsstart erwartet; nichts hängt).
+- **CJ-Tagespunkte** resetten heute → Perpetual grindet den neuen Tag automatisch durch.
+
+## 2026-07-06 — Vormittag: Copy-Kette geheilt · Menü komplettiert · Video-Backfill v2
+- **Copy-Rotation wirkt:** 5 Groq-Modelle (8b-instant zuerst, 500k TPD) → aktuelle Skip-Rate **0** (vorher 268/300).
+- **Menü:** „🔥 Viral-Hits" als Top-Level Pos. 2 + „🇨🇭 Fan-Zone Schweiz" als Sub unter „⚽ WM 2026" (23→24 Items).
+- **Video-Backfill v2:** pid-Herleitung jetzt über **productSku→pid-Map aus der Trending-Liste** (14 Seiten,
+  Präfix-Match) statt fragiler Einzelsuchen; QPS-Backoff gegen Engine-Kollision. Läuft über tag:video-hit.
+- Alle Collections publiziert-verifiziert (0 unpublizierte mit Produkten). Engines grinden weiter.
