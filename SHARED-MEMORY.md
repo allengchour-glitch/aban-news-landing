@@ -8,6 +8,24 @@
 
 ---
 
+## 🧹 2026-07-06 (Abend) — GROSSE QUALITÄTS-WELLE (Duplikate, Editor, Startseite, GMC)
+- **Bild-Entdoppelung katalogweit:** 1'747 Gruppen/3'936 Produkte gefunden (gleiche Foto-Datei,
+  andere Titel — mehrere Sessions importierten dieselben Artikel). ~2'007 → DRAFT
+  (`duplikat-auto-draft`), 59 Titel von «Ref.»-Leaks bereinigt. Tools:
+  `automation/dedup_by_image.mjs` + `dup_title_fix.mjs`. **Importer haben jetzt Titel- + Bild-Wachen.**
+- **«Selbst gestalten» repariert (31 Produkte):** 24 Canvas-404, 4 tote abannews-URLs, 5 falsche
+  Blanks (Shirt statt Hoodie/Beutel), Trikot-Vorschau (Streifen/Badge stimmten nicht mit Printful
+  überein) → alles mit echten Produktfotos gefixt, Wächter `automation/pod_editor_qa.mjs` (0 Befunde).
+- **Startseite:** Video-Spotlight (Viral-Reel, autoplay) + «⭐ Favoriten mit 5★-Bewertungen»
+  (4 Karten mit Kurz-Copy) live; 2 redundante Produktlisten entfernt (25-Sektionen-Limit!).
+- **GMC:** 2'169 Produkte bekommen «Farbe/Grösse/Material»-Detailblock (`gmc_desc_enrich.mjs`,
+  resümierbar) — Google-Report-CSV war die Quelle. US-«Checkout not live»-Warnung = User-Klick
+  (US-Zielland in GMC entfernen). Nachfrage-Signal CH: Fussball-Trikots → POD-Trikot in Viral-Hits.
+- **Vision-QA-Muster etabliert:** Kontaktbogen je Kollektion → Funde: Electrolux-Kühlschrankmatte
+  als «Mauspad» (umbenannt/umgetaggt), Waffenmatten-Collage als «Gaming-Mauspad» (DRAFT),
+  2 Hero-Bild-Rotationen. Nächste Kollektionen: Beauty/Wohnen/Schmuck.
+- **🧠 Eiserne Regeln jetzt in CLAUDE.md §GEHIRN** (User-Auftrag: «merken!») — dort NEUE Lektionen eintragen.
+
 ## 🚀 NEU 2026-07-06 — TIKTOK-CONVERSION-KAMPAGNE LIVE (per TikTok-Ads-MCP, voll autonom angelegt)
 > Die 3-User-Klicks-Blockade ist teilweise GELÖST: User hat den **TikTok-Ads-MCP-Konnektor** verbunden
 > (claude.ai → Einstellungen → Konnektoren → TikTok Ads, `business-api.tiktok.com/open_mcp/tt-ads-mcp-flat`).
