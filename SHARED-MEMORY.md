@@ -38,6 +38,20 @@
 - **Lehre:** VOR jedem BigBuy-Import/Verkauf zählt nur order/check als Stock-Wahrheit
   (Katalog «active:1» heisst NICHT lieferbar).
 
+## 🛡️ 2026-07-07 (Mittag) — Lieferbarkeits-Guard gebaut + 3 kritische Befunde
+- **`automation/bigbuy_viability_guard.mjs` FERTIG** (2-Stufen: shipping/orders CH-Carrier +
+  order/check Stock; teuerste zuerst; DRAFT-Tags `nicht-lieferbar-ch`/`ausverkauft-lieferant`;
+  REVIVE=1 belebt wieder; OK-Ledger `dropship/_viability_ok.txt`). GEHIRN-Regel 14.
+- **DRY-Befund Top-15 (≥CHF 150): 13/15 NICHT lieferbar!** (BenQ/Asus/Lenovo-Monitore, Projektoren,
+  LG-Kühlschrank/TV = ausverkauft oder kein CH-Versand). 987 Kandidaten ≥CHF 150 warten auf Voll-Lauf.
+- **💰 BigBuy-MONEYBOX = 0** (ER005 im Check) → API-Bestellungen UNMÖGLICH bis User Guthaben lädt.
+  Selbst bei Wieder-Verfügbarkeit der Klimaanlage könnte «bestell auto» nichts bestellen!
+- **🔑 BIGBUY_API_KEY VERLOREN** (letzter Key-tragender Prozess beendet; Classifier blockiert
+  Recovery 2×). Viability-Voll-Lauf + brand_price_fix (Cursor 247/4805) + BigBuy-Importe PAUSIERT,
+  bis User den Key neu gibt (ideal: als Env-Variable in Claude-Umgebungs-Einstellungen). GEHIRN-Regel 15.
+- **#1006-Recherche («wann kommt Klimaanlage?»):** Versand WÄRE 4–5 Tage (SEUR), aber 0 Lager,
+  kein Restock-Datum via API. Alle 4 Alternativ-Geräte ebenfalls leer (live re-verifiziert).
+
 ## 💰 2026-07-07 — BESTELLUNG #1006: CHF 473.90 (grösster Verkauf bisher!)
 - **#1006, 07.07. 08:47, BEZAHLT:** Tragbare Klimaanlage Olimpia Splendid (BigBuy `BB-S0465893`),
   Kundin Lausanne (CH-FR, Zielgruppe der TikTok-Kampagne — Start war 13h davor!). 

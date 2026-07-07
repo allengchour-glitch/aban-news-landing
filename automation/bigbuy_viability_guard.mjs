@@ -101,6 +101,8 @@ async function stockOk(ref, carrier) {
     products: [{ reference: ref, quantity: 1 }] } };
   const { status, j } = await bbCall('https://api.bigbuy.eu/rest/order/check.json', body);
   if (status >= 200 && status < 300) return { ok: true };
+  // ER005 «not enough money in moneybox» = Stock+Carrier OK, nur Guthaben fehlt → lieferbar
+  if (j?.code === 'ER005') return { ok: true };
   return { ok: false, code: j?.code || String(status), msg: String(j?.message || '').slice(0, 120) };
 }
 
