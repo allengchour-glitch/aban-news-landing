@@ -8,6 +8,22 @@
 
 ---
 
+## 🧹 2026-07-07 (Nacht) — SORTIER-GROSSPUTZ (User: «sortiere unbedingt alles von A bis Z»)
+- **Röcke-Skandal behoben:** sub-roecke filterte per TITLE CONTAINS «Rock» → Gleitmittel «ROCK ME!»,
+  Werkzeugkoffer «GT Line ROCK», Solarlampe «ROCKY» etc. lagen zwischen Röcken. Fix: 52 echte Röcke
+  präzise getaggt (`kategorie-rock`, Wortgrenzen+Mode-Kontext+Markenmuster «Rock <Marke> <Grösse>»),
+  Collection-Regel auf TAG umgestellt, Beschreibung neu (alte erwähnte «Game Controller»!). 255→52.
+- **Adult-Artikel gedraftet:** Gleitmittel «ROCK ME!» + Analdildo-Set (Tag `adult-auto-draft`).
+  Eucerin-Intimpflege etc. = normale Drogerie, bleibt.
+- **Erotik-Mode separiert (User-Wunsch):** 27 Artikel (Guilty Pleasure/Demoniq/Obsessive, Wetlook,
+  teils Oben-ohne-Produktbilder!) → Tag `erotik-mode`, eigene Smart-Collection
+  **dessous-reizwaesche** («Dessous & Reizwäsche», Menü unter 👗 Damen), NUR Onlineshop+POS —
+  aus Google/TikTok/Meta/Pinterest/Shop/Inbox ABGEZOGEN (Ad-Policy-Risiko nackte Haut).
+- **⚠️ TODO SORTIERUNG (gleiche Falle in weiteren Sub-Collections, TITLE-CONTAINS-Regeln):**
+  sub-kleider («Kleid» trifft Arbeitskleidung), sub-taschen («Tasche» trifft Werkzeugtaschen),
+  sub-uhren, sub-halsketten, sub-armbaender → nach Röcke-Muster auf präzise TAG-Regeln umstellen
+  (IMMER DRY zuerst, GEHIRN 9b). Variant-Merge-Kandidat: Guilty-Pleasure-Röcke S–XXL = 5 Einzelprodukte.
+
 ## 🛠️ 2026-07-07 (Abend) — Lager-Badge live + Mail-Automatik (Stand)
 - **«Auf Lager»-Badge auf ALLEN Produktseiten live:** `templates/product.json` → Block `lux_delivery`
   erweitert (grüner Punkt «Auf Lager · versandbereit» via closest.product.available, rot «Momentan
