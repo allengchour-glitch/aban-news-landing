@@ -30,9 +30,24 @@
   totem Link/PureMax/fremdem Branding → löschen, (c) schwache aber saubere Posts → stehen lassen,
   (d) Ausnahme: Posts mit >500 Views/Likes NIE löschen, nur rapportieren. Ergebnis-Liste
   (gelöscht/behalten/warum) in den Rapport-Block.
-- [NEU 2026-07-06b] Best-of-Mix posten: CLEAN-Variante nehmen (https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bestof-20260706-clean.mp4?v=1783369433)
-  und in der App einen AKTUELLEN Trend-Sound drüberlegen (Musik-Abwechslungs-Regel!). Caption aus
-  Queue-Eintrag bestof-20260706. TikTok + IG mit 1 Tag Versatz, Doppelpost-Check.
+- [NEU 2026-07-06b, ⚠️ AKTUALISIERT 07-07] Best-of-Mix posten: **NUR NOCH TIKTOK** — auf IG+FB hat
+  die Cloud-Session am 07.07. bereits automatisch gepostet (instagram.com/reel/DagJ_sgDjT_)!
+  CLEAN-Variante nehmen (https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bestof-20260706-clean.mp4?v=1783369433)
+  und in der App einen AKTUELLEN Trend-Sound drüberlegen. Caption aus Queue-Eintrag bestof-20260706.
+
+- [⭐ DAUERAUFTRAG 2026-07-07 — TIKTOK-POSTING-DIENST (User-Entscheid «Weg 2»)]
+  **Du übernimmst TikTok komplett.** WICHTIG: Die Cloud-Session postet IG+FB seit 07.07.
+  vollautomatisch per API (automation/meta_reel_post.mjs, 48h-Kadenz) — **du postest NIE mehr
+  selbst auf IG/FB** (Doppelpost-Gefahr!), nur noch TikTok + Stories + Community. Regeln:
+  1. **Kadenz:** 2 TikTok-Posts/Woche (z. B. Di + Fr, 18–20 Uhr).
+  2. **Quelle:** `automation/reels_seed.csv` — nur status=ready mit Plattform tiktok. Immer die
+     `-clean.mp4`-Variante + in der App einen **aktuellen Trend-Sound** (Commercial Music Library)
+     drüberlegen — jedes Mal einen anderen.
+  3. **Vor jedem Post:** (a) Ledger + eigenes Profil prüfen → NIE Doppelpost; (b) beworbenes
+     Produkt auf luxestyle.ch aufrufen — wenn 404/nicht kaufbar: Zeile auf
+     status=skip-produkt-offline setzen, nächstes Video nehmen.
+  4. **Nach jedem Post:** Zeile auf status=posted-tiktok + posted_at + Post-URL, committen, pushen.
+  5. **⛔ NIE auf Threads posten** (User-Stopp bis Follower da sind).
 
 ## 📤 RAPPORTE (PC-Claude trägt hier ein, neueste zuoberst)
 _(noch keine)_
