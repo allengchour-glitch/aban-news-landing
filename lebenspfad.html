@@ -656,7 +656,7 @@ var SAVE_KEY="lp_save1";
 var G=null,running=false;
 function freshState(np,adult){
   var ps=[];
-  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false}});
+  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},hist:[{g:20,h:10,w:5,f:5}]});
   return {v:3,adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
 function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.v===3&&s.players&&s.players.length)?s:null;}catch(e){return null;}}
@@ -787,7 +787,7 @@ function nextTurn(){
   if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
   if(!G.players[G.turn].done)emote(G.turn,"wink");
 }
-function finishPlayer(p){
+function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
   p.bio.push("erreichte den Lebensabend nach "+G.round+" Runden voller Geschichten");
   beep(880,.4,"triangle",.08);
@@ -842,8 +842,28 @@ function showEnd(){
     var d=document.createElement("div");d.className="score"+(i===bi?" win":"");
     d.innerHTML="<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(i===bi?"👑 ":""))+p.name+"</b>"+s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>";
     sc.appendChild(d);});
-  // Biografien
+  // Lebens-Chronik: Kurvenverlauf aller Werte pro Spieler
   var bio=document.getElementById("bio");bio.innerHTML="";
+  G.players.forEach(function(p){
+    if(!p.hist||p.hist.length<2)return;
+    var h4=document.createElement("h4");h4.textContent="📈 Der Lebensweg von "+p.name;bio.appendChild(h4);
+    var cv=document.createElement("canvas");cv.width=540;cv.height=110;cv.style.cssText="width:100%;max-width:540px;background:#fff8ea;border-radius:10px;border:1px solid #e8d8b0";
+    var cx=cv.getContext("2d");
+    var series=[["g","#d9a21f","💰"],["h","#ff5db8","❤️"],["w","#2f7dff","🧠"],["f","#1fb96a","👥"]];
+    var mx=1;p.hist.forEach(function(pt){mx=Math.max(mx,pt.g,pt.h,pt.w,pt.f);});
+    // Kapitel-Gitter
+    cx.strokeStyle="#eee0c0";cx.lineWidth=1;
+    for(var gx2=0;gx2<p.hist.length;gx2++){var xx=20+gx2/(p.hist.length-1)*500;
+      cx.beginPath();cx.moveTo(xx,8);cx.lineTo(xx,96);cx.stroke();}
+    series.forEach(function(sr){
+      cx.strokeStyle=sr[1];cx.lineWidth=2.5;cx.beginPath();
+      p.hist.forEach(function(pt,i2){var xx=20+i2/(p.hist.length-1)*500,yy=96-(pt[sr[0]]/mx)*84;
+        i2===0?cx.moveTo(xx,yy):cx.lineTo(xx,yy);});
+      cx.stroke();
+      // Endpunkt + Emoji-Label
+      var lp2=p.hist[p.hist.length-1],ly=96-(lp2[sr[0]]/mx)*84;
+      cx.font="12px serif";cx.fillText(sr[2],524,ly+4);});
+    bio.appendChild(cv);});
   G.players.forEach(function(p){
     var h=document.createElement("h4");h.textContent="📖 Das Leben von "+p.name;bio.appendChild(h);
     var t=document.createElement("div");
@@ -1066,6 +1086,7 @@ function handleField(p,f){
   if(f.type==="m"){
     if(p.tile===0){endTurnSoon();return;}
     confetti(fields[p.tile].x,fields[p.tile].z,CHAPTERS[ch].accent);jingle();
+    if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
     if(ch===2&&!p.job){ // Berufswahl! (Herzstück des Originals)
       var picks=[];while(picks.length<3){var j=JOBS[(Math.random()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
       showCard("Meilenstein · Berufswahl","💼 Was willst du werden?","Drei Türen stehen offen. Hinter jeder ein anderes Leben — Gehalt ist nicht alles.",
