@@ -8,6 +8,17 @@
 
 ---
 
+## 📧 2026-07-07 — info@luxestyle.ch ist jetzt eine ECHTE Mailbox (Zoho Mail, EU)
+- **Zoho Mail Lite** (zoho.eu, bezahlt bis 07/2027): Domain luxestyle.ch verifiziert, Postfach
+  **info@luxestyle.ch** (Superadmin) angelegt. Webmail: **mail.zoho.eu** · Admin: **mailadmin.zoho.eu**.
+- **DNS bei Namecheap** (luxestyle.ch, Advanced DNS): MX = mx.zoho.eu/10, mx2/20, mx3/50 ·
+  SPF `v=spf1 include:zohomail.eu ~all` · DKIM `zmail._domainkey` — alles live verifiziert (7.7.).
+  ⚠️ Alte Namecheap-Email-Weiterleitung ist AUS (Custom MX) — Empfang läuft jetzt über Zoho;
+  Weiterleitung Zoho→allengchour@gmail.com eingerichtet (Bestätigungslink in Gmail nötig).
+- **Nutzen:** Kundenmails (Entschuldigungen, Support) laufen ab jetzt professionell über
+  info@luxestyle.ch statt Gmail. Kandidat für spätere Automation: Zoho Mail API / SMTP
+  (Zugangsdaten NICHT im Repo — nur beim User).
+
 ## 🧹 2026-07-06 (Abend) — GROSSE QUALITÄTS-WELLE (Duplikate, Editor, Startseite, GMC)
 - **Bild-Entdoppelung katalogweit:** 1'747 Gruppen/3'936 Produkte gefunden (gleiche Foto-Datei,
   andere Titel — mehrere Sessions importierten dieselben Artikel). ~2'007 → DRAFT
