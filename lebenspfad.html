@@ -274,6 +274,48 @@ function updPonds(t){_pFrame++;if(_pFrame%2)return;
     for(var i3=0;i3<p3.count;i3++){var b3=pd.base[i3];
       p3.setY(i3,Math.sin(t*1.5+(b3[0]+b3[1])*0.5)*0.1+Math.sin(t*2.3+b3[0]*0.8)*0.06);}
     p3.needsUpdate=true;pd.m.geometry.computeVertexNormals();}}
+// Enten auf den Teichen (bobben auf der Welle)
+var ducks=[];
+ponds.forEach(function(pd,pi){for(var d3=0;d3<3;d3++){
+  var g=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.SphereGeometry(0.42,8,6),mat(0xfffdf0,0xf0e8d0,0.1));body.scale.set(1.3,0.8,1);g.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.22,8,6),mat(0xfffdf0,0xf0e8d0,0.1));head.position.set(0.42,0.35,0);g.add(head);
+  var beak=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.24,5),mat(0xff9a2a,0xff9a2a,0.3));beak.rotation.z=-Math.PI/2;beak.position.set(0.66,0.33,0);g.add(beak);
+  g.position.set(pd.m.position.x+(Math.random()-0.5)*8,0.35,pd.m.position.z+(Math.random()-0.5)*8);
+  scene.add(g);ducks.push({g:g,c:pd.m.position,a:Math.random()*6.28,ph:Math.random()*6.28});}});
+function updDucks(dt,t){for(var i=0;i<ducks.length;i++){var d=ducks[i];
+  d.a+=dt*0.25;
+  d.g.position.x=d.c.x+Math.cos(d.a+d.ph)*(3.5+Math.sin(d.ph)*2);
+  d.g.position.z=d.c.z+Math.sin(d.a+d.ph)*(3.5+Math.cos(d.ph)*2);
+  d.g.position.y=0.32+Math.sin(t*1.5+d.ph)*0.09;
+  d.g.rotation.y=-(d.a+d.ph)-Math.PI/2;}}
+// Luftballons am START (schwankende bunte Kugeln an Schnüren)
+var balloons=[];
+(function(){var f0=fields[0],cols=[0xff5d7d,0x2f8cff,0xffd91f,0x35d95a,0xff9ad9];
+  for(var i=0;i<5;i++){var g=new THREE.Group();
+    var b=new THREE.Mesh(new THREE.SphereGeometry(0.45,10,8),mat(cols[i],cols[i],0.35));b.scale.y=1.15;b.position.y=3.4+i*0.3;g.add(b);
+    var lg=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0.6,0),new THREE.Vector3(0,b.position.y-0.4,0)]);
+    g.add(new THREE.Line(lg,new THREE.LineBasicMaterial({color:0x8a8a96})));
+    g.position.set(f0.x-2.6+i*1.3,0,f0.z+3.4);scene.add(g);
+    balloons.push({g:g,ph:i*1.3,b:b});}})();
+function updBalloons(t){for(var i=0;i<balloons.length;i++){var bl=balloons[i];
+  bl.g.rotation.z=Math.sin(t*0.9+bl.ph)*0.09;bl.g.rotation.x=Math.cos(t*0.7+bl.ph)*0.07;}}
+// Wegweiser an Kapitelgrenzen ("→ SCHULZEIT")
+(function(){for(var c=1;c<CHAPTERS.length;c++){var f=fields[c*FIELDS_PER];
+  var post=new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.1,2.2,6),mat(0x8a5a3a));
+  post.position.set(f.x-2.6,1.1,f.z+2.2);scene.add(post);
+  var cv=document.createElement("canvas");cv.width=256;cv.height=48;var cx=cv.getContext("2d");
+  cx.fillStyle="#f5e8d0";cx.fillRect(0,0,256,48);cx.strokeStyle="#c9a86a";cx.lineWidth=4;cx.strokeRect(2,2,252,44);
+  cx.fillStyle="#6a4a2a";cx.font="bold 24px sans-serif";cx.textAlign="center";cx.fillText("→ "+CHAPTERS[c].n.slice(0,14),128,32);
+  var sgn=new THREE.Mesh(new THREE.PlaneGeometry(2.6,0.5),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),side:THREE.DoubleSide}));
+  sgn.position.set(f.x-2.6,1.9,f.z+2.2);sgn.rotation.y=0.5;scene.add(sgn);}})();
+// Kreide-Hüpfkästchen in der Kindheit
+(function(){var f2=fields[5];
+  for(var h=0;h<6;h++){var ring=new THREE.Mesh(new THREE.RingGeometry(0.55,0.7,4),
+    new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0.55,side:THREE.DoubleSide}));
+    ring.rotation.x=-Math.PI/2;ring.rotation.z=Math.PI/4;
+    ring.position.set(f2.x+4+(h%2)*1.5-(h>=4?0.75:0),terrainH(f2.x+4,f2.z+6)+0.05,f2.z+6+Math.floor(h/2)*1.5);
+    scene.add(ring);}})();
 // Schmetterlinge (flatternde Doppel-Quads, folgen lose der Kamera)
 var flies=[];
 (function(){for(var i=0;i<12;i++){var g=new THREE.Group();
@@ -462,6 +504,21 @@ function updFam(dt){
       var d=Math.hypot(tx-f.position.x,tz-f.position.z);
       f.position.y=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*0.35:0; // Hüpfen beim Laufen
       f.rotation.y+=dt;}}}
+// Aktiv-Marker: bobbing Pfeil über der Figur, die dran ist
+var turnArrow=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var cx=cv.getContext("2d");
+  cx.fillStyle="#fff";cx.beginPath();cx.moveTo(32,58);cx.lineTo(8,18);cx.lineTo(56,18);cx.closePath();cx.fill();
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true}));
+  sp.scale.setScalar(1.3);sp.visible=false;scene.add(sp);return sp;})();
+function updTurnMarker(dt){
+  if(!G||!running){turnArrow.visible=false;return;}
+  var p=G.players[G.turn];if(p.done){turnArrow.visible=false;return;}
+  var pw=pawns[G.turn];turnArrow.visible=true;
+  turnArrow.material.color.setHex(p.col);
+  turnArrow.position.set(pw.position.x,pw.position.y+2.5+Math.sin(performance.now()*0.005)*0.22,pw.position.z);
+  // aktives Feld pulsiert
+  for(var i=0;i<fields.length;i++){var d2=fields[i].disc;
+    d2.material.emissiveIntensity=(i===p.tile)?0.45+Math.sin(performance.now()*0.006)*0.25:(fields[i].type==="e"?0.1:0.32);}
+}
 // ===================== Zustand =====================
 var SAVE_KEY="lp_save1";
 var G=null,running=false;
@@ -515,7 +572,7 @@ function updDie(dt){if(!dieAnim||!die3d)return;
   if(t<0.9){ // taumeln + fallen
     die3d.rotation.x+=dt*11;die3d.rotation.y+=dt*8;die3d.rotation.z+=dt*6;
     die3d.position.y=3.4-t*2.4;}
-  else if(t<1.35){ // einrasten
+  else if(t<1.35){if(!dieAnim.thud){dieAnim.thud=1;beep(90,.14,"sine",.09);beep(180,.06,"triangle",.04);} // Aufprall
     var r=DIE_ROT[dieAnim.n],k=Math.min(1,(t-0.9)/0.35);
     die3d.rotation.x+=(r[0]-die3d.rotation.x)*k;die3d.rotation.y+=(r[1]-die3d.rotation.y)*k;die3d.rotation.z+=(r[2]-die3d.rotation.z)*k;
     die3d.position.y=1.0+Math.abs(Math.sin(k*Math.PI))*0.25;}
@@ -552,7 +609,7 @@ function updMove(dt){
   if(hopT>=1){
     p.tile=Math.min(NFIELDS-1,p.tile+1);moveQ--;hopT=0;
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
-    beep(620+Math.random()*160,.05,"triangle",.04);
+    beep(360+Math.random()*80,.04,"sine",.035); // weiches Tapsen
     if(p.tile>=NFIELDS-1){moveQ=0;}
     if(moveQ<=0){G.phase="landed";onLand();return;}
   }
@@ -745,7 +802,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);
     updSeason(dt,chapterOf(G.players[G.turn].tile));
     for(var fsI=0;fsI<fieldSprites.length;fsI++){var fs2=fieldSprites[fsI];fs2.sp.position.y=fs2.y0+Math.sin(G.t*1.6+fs2.b)*0.12;}
     if(window._lpTree)window._lpTree.rotation.z=Math.sin(G.t*0.6)*0.02;
