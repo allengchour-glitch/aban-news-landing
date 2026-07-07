@@ -52,6 +52,18 @@
 - **#1006-Recherche («wann kommt Klimaanlage?»):** Versand WÄRE 4–5 Tage (SEUR), aber 0 Lager,
   kein Restock-Datum via API. Alle 4 Alternativ-Geräte ebenfalls leer (live re-verifiziert).
 
+## 🚨 2026-07-07 (Mittag) — ORDER #1007: SCHON WIEDER eine Klimaanlage!
+- **#1007 (7.7. 08:10, PAID, CHF 265.90):** Mobil-Klima BB-S91120937, Kunde Suchthilfe Ost
+  (rebecca.wyss@suchthilfe-ost.ch), Lieferung: Ivica Sudic, Bahnhofstrasse 54 (Dachgeschoss),
+  4657 Dulliken, Tel 0782278813. Shopify UNFULFILLED.
+- **Sofortmassnahme:** ALLE 10 noch aktiven Mobil-Klimageräte → DRAFT (Tags
+  `ausverkauft-lieferant`+`unverifiziert`; REVIVE-Lauf des Guards re-aktiviert lieferbare, sobald
+  Key wieder da). Damit ist die Klima-Falle zu.
+- **Order-JSON bereit:** `/tmp/bb_order_1007.json` (S91120937, SEUR, Moneybox). **BLOCKIERT durch
+  2 User-Schritte:** (1) BIGBUY_API_KEY neu geben (Env-Var in Claude-Umgebung = dauerhaft),
+  (2) BigBuy-Moneybox aufladen (~EK+Versand, live prüfen sobald Key da). Danach: Stock-Check
+  S91120937 → wenn lieferbar bestellen, sonst Refund-Empfehlung wie #1004/#1006.
+
 ## 💰 2026-07-07 — BESTELLUNG #1006: CHF 473.90 (grösster Verkauf bisher!)
 - **#1006, 07.07. 08:47, BEZAHLT:** Tragbare Klimaanlage Olimpia Splendid (BigBuy `BB-S0465893`),
   Kundin Lausanne (CH-FR, Zielgruppe der TikTok-Kampagne — Start war 13h davor!). 
