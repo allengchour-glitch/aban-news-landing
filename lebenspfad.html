@@ -136,13 +136,13 @@ function beep(f,d,t,g){if(muted)return;try{if(!actx)actx=new (window.AudioContex
 (function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 // ===================== 8 Lebens-Kapitel: Farben wie echt (Frühling→Winter des Lebens) =====================
 var CHAPTERS=[
- {n:"KINDHEIT",sub:"Alles beginnt mit Staunen",ground:0x7ecb62,sky:0x9fd8ef,accent:0xffd166,deko:"spielzeug"},
- {n:"SCHULZEIT",sub:"Freunde, Pausenhof, erste Träume",ground:0x69bd6e,sky:0x8fd0f0,accent:0x5ea8ff,deko:"schule"},
- {n:"AUSBILDUNG",sub:"Der eigene Weg zeichnet sich ab",ground:0xa8c85a,sky:0xa5daf0,accent:0xb98bff,deko:"campus"},
- {n:"ERSTE SCHRITTE",sub:"Eigene Wohnung, erstes Gehalt",ground:0xd9b45e,sky:0xffd9a0,accent:0xff9a4a,deko:"stadt"},
- {n:"KARRIERE & LIEBE",sub:"Die Jahre, in denen alles passiert",ground:0xe09a52,sky:0xffc188,accent:0xff6e8a,deko:"stadt2"},
- {n:"FAMILIE & HAUS",sub:"Wurzeln schlagen",ground:0xc97f4e,sky:0xf0a878,accent:0xe06a5a,deko:"vorort"},
- {n:"REIFE JAHRE",sub:"Ernten, was man gesät hat",ground:0x9a6a48,sky:0xd08a68,accent:0xc98a3a,deko:"herbst"},
+ {n:"KINDHEIT",sub:"Alles beginnt mit Staunen",ground:0x54c445,sky:0x6ec8f5,accent:0xffcf3a,deko:"spielzeug"},
+ {n:"SCHULZEIT",sub:"Freunde, Pausenhof, erste Träume",ground:0x3dbd62,sky:0x62c2f2,accent:0x3f8cff,deko:"schule"},
+ {n:"AUSBILDUNG",sub:"Der eigene Weg zeichnet sich ab",ground:0x8fc832,sky:0x7fd0f0,accent:0xa86aff,deko:"campus"},
+ {n:"ERSTE SCHRITTE",sub:"Eigene Wohnung, erstes Gehalt",ground:0xe8b52f,sky:0xffd280,accent:0xff8c2a,deko:"stadt"},
+ {n:"KARRIERE & LIEBE",sub:"Die Jahre, in denen alles passiert",ground:0xf28c2f,sky:0xffb066,accent:0xff5a7d,deko:"stadt2"},
+ {n:"FAMILIE & HAUS",sub:"Wurzeln schlagen",ground:0xe0702f,sky:0xff9a5c,accent:0xe84a3a,deko:"vorort"},
+ {n:"REIFE JAHRE",sub:"Ernten, was man gesät hat",ground:0xb85c28,sky:0xe07848,accent:0xd9862a,deko:"herbst"},
  {n:"LEBENSABEND",sub:"Der goldene Blick zurück",ground:0xd8e8f0,sky:0xf5d9e8,accent:0xf0c8ff,deko:"winter"}
 ];
 var FIELDS_PER=18,NFIELDS=CHAPTERS.length*FIELDS_PER; // 144 Felder
@@ -191,14 +191,14 @@ function terrainH(x,z){
     var ci=Math.floor(t),f=t-ci;
     g1.setHex(CHAPTERS[ci].ground);g2.setHex(CHAPTERS[Math.min(CHAPTERS.length-1,ci+1)].ground);
     tmp.copy(g1).lerp(g2,f);
-    var shade=0.72+Math.max(0,Math.min(1,(h+5)/10))*0.34;tmp.multiplyScalar(shade);
+    var shade=0.82+Math.max(0,Math.min(1,(h+5)/10))*0.28;tmp.multiplyScalar(shade);
     cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
   geo.setAttribute("color",new THREE.BufferAttribute(cols,3));geo.computeVertexNormals();
   var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:true}));
   m.receiveShadow=true;scene.add(m);})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
-var FTYPE_COL={e:0xffffff,"g+":0xffd166,"g-":0xff6e6e,h:0xff9ad9,w:0x7db8ff,f:0x8affc0,m:0xffb84a};
+var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f};
 var fields=[];
 (function(){
   var seq=["e","g+","e","h","e","w","g-","e","f","e","g+","e","h","e","w","g-","f"]; // 17 + Meilenstein
@@ -207,12 +207,14 @@ var fields=[];
     var ty=(inChap===FIELDS_PER-1)?"m":seq[inChap%seq.length];
     if(i===0)ty="m";
     var p=pathPts[i];
-    var disc=new THREE.Mesh(new THREE.CylinderGeometry(ty==="m"?2.6:1.9,ty==="m"?2.8:2.1,0.5,ty==="m"?8:16),
-      mat(FTYPE_COL[ty],FTYPE_COL[ty],ty==="m"?0.5:0.18));
-    disc.position.set(p.x,0.25,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+    var rr0=ty==="m"?2.7:2.0,sg0=ty==="m"?8:18;
+    var sock=new THREE.Mesh(new THREE.CylinderGeometry(rr0+0.22,rr0+0.35,0.34,sg0),mat(0xffffff,0xf0f0f0,0.06)); // weißer Plastik-Sockel
+    sock.position.set(p.x,0.17,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
+    var disc=new THREE.Mesh(new THREE.CylinderGeometry(rr0,rr0+0.08,0.26,sg0),mat(FTYPE_COL[ty],FTYPE_COL[ty],ty==="e"?0.1:0.32)); // satter Farbdeckel
+    disc.position.set(p.x,0.47,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
     if(ty==="m"){ // Gold-Ring + Fähnchen
       var gr=new THREE.Mesh(new THREE.TorusGeometry(2.9,0.14,8,24),mat(0xffb84a,0xffb84a,0.7));
-      gr.rotation.x=Math.PI/2;gr.position.set(p.x,0.52,p.z);scene.add(gr);
+      gr.rotation.x=Math.PI/2;gr.position.set(p.x,0.62,p.z);scene.add(gr);
       var fp2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,5),mat(0xf0e8d8));fp2.position.set(p.x+1.9,1.55,p.z-1.4);scene.add(fp2);
       var fl2=new THREE.Mesh(new THREE.PlaneGeometry(1.1,0.7),new THREE.MeshBasicMaterial({color:CHAPTERS[Math.min(7,Math.ceil(i/FIELDS_PER))].accent,side:THREE.DoubleSide}));
       fl2.position.set(p.x+2.45,2.5,p.z-1.4);scene.add(fl2);}
@@ -226,6 +228,19 @@ var fields=[];
         stn.rotation.y=Math.random()*3.14;stn.receiveShadow=true;scene.add(stn);}}
   }
 })();
+// Regenbogen über der Brettmitte + Sonne (Spielzeug-Himmel)
+(function(){
+  var RB=[0xff4d4d,0xff9a2a,0xffd91f,0x35d95a,0x2f8cff,0x8c5aff];
+  for(var r=0;r<RB.length;r++){
+    var arc=new THREE.Mesh(new THREE.TorusGeometry(60-r*2.2,0.9,6,40,Math.PI),
+      new THREE.MeshBasicMaterial({color:RB[r],transparent:true,opacity:0.5,fog:false}));
+    arc.position.set(30,2,-95);scene.add(arc);}
+  var sun2=new THREE.Mesh(new THREE.CircleGeometry(14,24),new THREE.MeshBasicMaterial({color:0xfff2a8,transparent:true,opacity:0.95,fog:false}));
+  sun2.position.set(-110,64,-120);scene.add(sun2);
+  var glow2=new THREE.Mesh(new THREE.CircleGeometry(22,24),new THREE.MeshBasicMaterial({color:0xffe98a,transparent:true,opacity:0.3,fog:false,depthWrite:false}));
+  glow2.position.set(-110,64,-121);scene.add(glow2);
+  // Sonne+Regenbogen schauen zur Kamera
+  window._lpBillboards=[sun2,glow2];})();
 // START-Schild + ZIEL-Bogen
 (function(){
   var f0=fields[0],fz=fields[NFIELDS-1];
@@ -315,7 +330,7 @@ function updFlies(dt,t){for(var i=0;i<flies.length;i++){var f=flies[i];
     fp[f2*3]=fx;fp[f2*3+1]=terrainH(fx,fz)+0.15;fp[f2*3+2]=fz;
     cTmp.setHSL(Math.random(),0.85,0.62);fc[f2*3]=cTmp.r;fc[f2*3+1]=cTmp.g;fc[f2*3+2]=cTmp.b;}
   fg.setAttribute("position",new THREE.BufferAttribute(fp,3));fg.setAttribute("color",new THREE.BufferAttribute(fc,3));
-  scene.add(new THREE.Points(fg,new THREE.PointsMaterial({vertexColors:true,size:0.45})));
+  scene.add(new THREE.Points(fg,new THREE.PointsMaterial({vertexColors:true,size:0.62})));
   // Wolken
   for(var w2=0;w2<14;w2++){var cl=new THREE.Group();
     for(var b2=0;b2<3;b2++){var puff=new THREE.Mesh(new THREE.IcosahedronGeometry(2.2+Math.random()*2,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true,transparent:true,opacity:0.92}));
@@ -331,7 +346,7 @@ var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐"};
 var fieldSprites=[];
 (function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(f.type==="e")continue;
   var sp=emojiSprite(FIELD_EMO[f.type],f.type==="m"?2.0:1.25);
-  sp.position.set(f.x,f.type==="m"?2.4:1.6,f.z);scene.add(sp);fieldSprites.push({sp:sp,b:Math.random()*6.28,y0:sp.position.y});}})();
+  sp.position.set(f.x,f.type==="m"?2.6:1.8,f.z);scene.add(sp);fieldSprites.push({sp:sp,b:Math.random()*6.28,y0:sp.position.y});}})();
 // Konfetti (physisch fallende Farb-Plättchen)
 var confs=[];
 function confetti(x,z,accent){
@@ -684,6 +699,7 @@ function loop(now){
   }
   if(!running)updConfs(dt); // Finale-Konfetti auch nach Spielende animieren
   if(window._skyTarget){scene.background.lerp(window._skyTarget,Math.min(1,dt*1.2));scene.fog.color.copy(scene.background);}
+  if(window._lpBillboards)for(var bb=0;bb<window._lpBillboards.length;bb++)window._lpBillboards[bb].lookAt(camera.position);
   updateCamera(dt);
   renderer.render(scene,camera);
 }
