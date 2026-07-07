@@ -49,5 +49,13 @@
   4. **Nach jedem Post:** Zeile auf status=posted-tiktok + posted_at + Post-URL, committen, pushen.
   5. **⛔ NIE auf Threads posten** (User-Stopp bis Follower da sind).
 
+- [NEU 2026-07-07c — TIKTOK-APP NEU ERSTELLEN (alte «LuxeStyle Poster» ist Minidrama-Typ = kein Login Kit)]
+  Auf developers.tiktok.com: «Manage apps» → «Connect an app» → Name «LuxeStyle Publisher»,
+  Standard-Typ (NICHT Minidrama/Game). Dann: Add products → **Login Kit** + **Content Posting API**.
+  Login Kit (Web) → Redirect URI: `https://luxestyle.ch/pages/tiktok-callback`. Scopes:
+  user.info.basic, video.upload, video.publish. Falls Review nötig: **Sandbox** erstellen +
+  @luxestyle.ch als Zielkonto. Danach Client Key + Secret NUR rapportieren (erste 6 Zeichen)
+  und vollständig dem User für den Chat geben — NIE in eine Datei committen.
+
 ## 📤 RAPPORTE (PC-Claude trägt hier ein, neueste zuoberst)
 _(noch keine)_
