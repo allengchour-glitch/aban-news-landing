@@ -268,12 +268,19 @@ var ponds=[];
   var base=[];var pos2=g.attributes.position;
   for(var i2=0;i2<pos2.count;i2++)base.push([pos2.getX(i2),pos2.getZ(i2)]);
   ponds.push({m:m,base:base});});
+ponds.forEach(function(pd){var gN=16,gg=new THREE.BufferGeometry(),gp2=new Float32Array(gN*3);
+  for(var gi2=0;gi2<gN;gi2++){var ga=Math.random()*6.283,gr3=Math.random()*10;
+    gp2[gi2*3]=pd.m.position.x+Math.cos(ga)*gr3;gp2[gi2*3+1]=0.28;gp2[gi2*3+2]=pd.m.position.z+Math.sin(ga)*gr3;}
+  gg.setAttribute("position",new THREE.BufferAttribute(gp2,3));
+  pd.sparkle=new THREE.Points(gg,new THREE.PointsMaterial({color:0xffffff,size:0.5,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending,depthWrite:false}));
+  scene.add(pd.sparkle);});
 var _pFrame=0;
 function updPonds(t){_pFrame++;if(_pFrame%2)return;
   for(var pi2=0;pi2<ponds.length;pi2++){var pd=ponds[pi2],p3=pd.m.geometry.attributes.position;
     for(var i3=0;i3<p3.count;i3++){var b3=pd.base[i3];
       p3.setY(i3,Math.sin(t*1.5+(b3[0]+b3[1])*0.5)*0.1+Math.sin(t*2.3+b3[0]*0.8)*0.06);}
-    p3.needsUpdate=true;pd.m.geometry.computeVertexNormals();}}
+    p3.needsUpdate=true;pd.m.geometry.computeVertexNormals();
+    if(pd.sparkle)pd.sparkle.material.opacity=0.4+0.4*Math.sin(t*2.2+pi2*2);}}
 // Enten auf den Teichen (bobben auf der Welle)
 var ducks=[];
 ponds.forEach(function(pd,pi){for(var d3=0;d3<3;d3++){
@@ -428,6 +435,16 @@ function updFlies(dt,t){for(var i=0;i<flies.length;i++){var f=flies[i];
     cTmp.setHex(CHAPTERS[ci].ground).offsetHSL((Math.random()-0.5)*0.12,0.28,Math.random()*0.06);
     if(ci>=6)cTmp.setHex(ci===7?0xf0d8e8:0xe08a3a).offsetHSL((Math.random()-0.5)*0.06,0,Math.random()*0.1);
     crown.setColorAt(placed,cTmp);placed++;}
+  var cap2=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.7,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),N);
+  var _cd=new THREE.Object3D(),_cc=new THREE.Color();
+  for(var ci4=0;ci4<placed;ci4++){var mtx=new THREE.Matrix4();crown.getMatrixAt(ci4,mtx);
+    var pos4=new THREE.Vector3(),qq=new THREE.Quaternion(),sc4=new THREE.Vector3();mtx.decompose(pos4,qq,sc4);
+    _cd.position.set(pos4.x+0.2*sc4.x,pos4.y+0.75*sc4.y,pos4.z);_cd.scale.copy(sc4);_cd.rotation.set(0,0,0);_cd.updateMatrix();
+    cap2.setMatrixAt(ci4,_cd.matrix);
+    crown.getColorAt?crown.getColorAt(ci4,_cc):_cc.setHex(0x54c445);_cc.offsetHSL(0,0.02,0.14);
+    cap2.setColorAt(ci4,_cc);}
+  cap2.count=placed;cap2.instanceMatrix.needsUpdate=true;if(cap2.instanceColor)cap2.instanceColor.needsUpdate=true;
+  cap2.castShadow=true;scene.add(cap2);
   trunk.count=placed;crown.count=placed;
   trunk.instanceMatrix.needsUpdate=true;crown.instanceMatrix.needsUpdate=true;if(crown.instanceColor)crown.instanceColor.needsUpdate=true;
   trunk.castShadow=true;crown.castShadow=true;scene.add(trunk);scene.add(crown);
@@ -534,7 +551,26 @@ function mkPawn(color){
     eye.position.set(e[0],1.42,0.26);g.add(eye);});
   g.userData.limbs={ll:ll,rl:rl,la:la,ra:ra};g.userData.walk=0;
   scene.add(g);return g;}
-function animWalk(pw,moving,dt){var L=pw.userData.limbs;if(!L)return;
+function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
+  pw.userData.emote={k:kind,t:0};}
+function updEmotes(dt){
+  for(var i=0;i<pawns.length;i++){var pw=pawns[i],e=pw.userData.emote;if(!e)continue;
+    e.t+=dt;var L=pw.userData.limbs;
+    if(e.k==="jubel"){ // Arme hoch + Hüpfer
+      L.la.rotation.x=-2.6;L.ra.rotation.x=-2.6;
+      L.la.rotation.z=0.3+Math.sin(e.t*14)*0.25;L.ra.rotation.z=-0.3-Math.sin(e.t*14)*0.25;
+      pw.position.y=Math.abs(Math.sin(e.t*7))*0.5;
+      if(e.t>1.3){pw.position.y=0;L.la.rotation.z=0;L.ra.rotation.z=0;pw.userData.emote=null;}}
+    else if(e.k==="trauer"){ // hängen lassen
+      L.la.rotation.x=0.35;L.ra.rotation.x=0.35;
+      pw.rotation.x=Math.min(0.28,e.t*0.6);
+      if(e.t>1.4){pw.rotation.x=0;pw.userData.emote=null;}}
+    else if(e.k==="wink"){ // rechter Arm winkt
+      L.ra.rotation.x=-2.8;L.ra.rotation.z=-0.2+Math.sin(e.t*11)*0.5;
+      if(e.t>1.1){L.ra.rotation.z=0;pw.userData.emote=null;}}}}
+function animWalk(pw,moving,dt){
+  if(pw.userData.emote)return; // Emote hat Vorrang
+  var L=pw.userData.limbs;if(!L)return;
   if(moving){pw.userData.walk+=dt*11;var sw=Math.sin(pw.userData.walk)*0.75;
     L.ll.rotation.x=sw;L.rl.rotation.x=-sw;L.la.rotation.x=-sw*0.8;L.ra.rotation.x=sw*0.8;}
   else{["ll","rl","la","ra"].forEach(function(k){L[k].rotation.x*=Math.max(0,1-dt*8);});
@@ -719,8 +755,14 @@ function updMove(dt){
 function pawnOffset(i){var a=i/4*Math.PI*2;return {x:Math.cos(a)*0.55,y:0,z:Math.sin(a)*0.55};}
 function placePawn(i){var p=G.players[i],o=pawnOffset(i);pawns[i].position.set(fields[p.tile].x+o.x,0,fields[p.tile].z+o.z);}
 // ===================== Feld-Logik (Stufe 2 füllt EVENTS) =====================
+var discBounce=[];
+function updDiscBounce(dt){for(var i=discBounce.length-1;i>=0;i--){var db=discBounce[i];db.t+=dt*7;
+  var y=db.y0-Math.sin(Math.min(Math.PI,db.t))*0.14;
+  db.d.position.y=y;
+  if(db.t>=Math.PI){db.d.position.y=db.y0;discBounce.splice(i,1);}}}
 function onLand(){
   var p=G.players[G.turn],f=fields[p.tile];
+  discBounce.push({d:f.disc,y0:f.disc.position.y,t:0}); // Feld federt beim Landen
   placePawn(G.turn);
   // Begegnung: anderes Pawn auf demselben Feld -> beide +Freunde+Glück (Koop!)
   for(var i=0;i<G.players.length;i++){if(i===G.turn||G.players[i].done)continue;
@@ -743,6 +785,7 @@ function nextTurn(){
   G.phase="idle";rollBtn.disabled=false;
   updPlayers();updChapter();saveGame();
   if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
+  if(!G.players[G.turn].done)emote(G.turn,"wink");
 }
 function finishPlayer(p){
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
@@ -893,7 +936,8 @@ function updateCamera(dt){
   var p=G?G.players[G.turn]:null;
   var tx=p?pawns[G.turn].position.x:fields[0].x,tz=p?pawns[G.turn].position.z:fields[0].z;
   camT.x+=(tx-camT.x)*Math.min(1,dt*3);camT.z+=(tz-camT.z)*Math.min(1,dt*3);
-  camera.position.x+=(camT.x+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*4);
+  var swayX=Math.sin(performance.now()*0.00035)*1.2;
+  camera.position.x+=(camT.x+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*4);
   camera.position.y+=(19-camera.position.y)*Math.min(1,dt*3);
   camera.position.z+=(camT.z+17-camera.position.z)*Math.min(1,dt*4);
   camera.lookAt(camT.x,0.5,camT.z-2);
@@ -905,7 +949,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);
     if(window._lmSwingPivot)window._lmSwingPivot.rotation.z=Math.sin(G.t*1.7)*0.55; // Schaukel schwingt
     if(window._lmClockM){window._lmClockM.rotation.z=-G.t*0.5;window._lmClockH.rotation.z=-G.t*0.5/12;} // Uhr läuft
     if(window._lmBeam)window._lmBeam.rotation.y=G.t*0.9; // Leuchtturm-Strahl rotiert
@@ -1009,6 +1053,9 @@ function showFx(p,fx){var pw=pawns[G.players.indexOf(p)];if(!pw)return;
   defs.forEach(function(df){var v=fx[df[0]]||0;if(!v)return;
     floatStat((v>0?"+":"")+v+" "+df[1],v>0?df[2]:"#ff8a8a",pw.position.x,pw.position.z,d);d+=260;});}
 function applyFx(p,fx){showFx(p,fx);
+  var net=(fx.geld||0)+(fx.glueck||0)+(fx.wissen||0)+(fx.freunde||0);
+  var pi=G.players.indexOf(p);
+  if(pi>=0&&!G.players[pi].dead){if(net>2)emote(pi,"jubel");else if(net<-2)emote(pi,"trauer");}
   p.geld=Math.max(0,p.geld+(fx.geld||0));
   p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
   p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
