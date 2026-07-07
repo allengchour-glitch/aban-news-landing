@@ -1793,9 +1793,7 @@
       "Stroh-Shopper «Capri»\r",
       "Armkette «Papillon»\r"
     ],
-    "losers": [
-      "Stiletto-Sandalette «Gala»\r"
-    ],
+    "losers": [],
     "note": "Auto-gemessen aus IG-Engagement. top_products.csv ist nach Performance sortiert (Gewinner zuerst)."
   },
   "ai_bot_meisterschaft_2026": "AI-BOT-MEISTERSCHAFT (2026-06-21, User 'beherrsche ai bot'): Bewaehrter robuster Stack fuer ALLE Browser-Automation: (1) automation/lib/ai-browser.mjs = aiBrowser() -> Stagehand via Brave-CDP 9222. KERN-FALLEN geloest: CDP-WS-URL aufloesen (/json/version), Gemini-Modell zuerst, sh.act/extract/observe sind INSTANZ-Methoden (nicht sh.page.*), Page aus sh.context.pages(). (2) Helfer A(instr,name) = act + sleep + diag-Screenshot; Fehler werden geloggt nicht geworfen (Bot bricht nie). (3) DIAGNOSE-IN-REPORT: bei Problemen Object.keys/proto + Status in den GEPUSHTEN report schreiben (Konsole sieht man aus Cloud nicht). (4) KANAL: CLOUD-AN (selbstheilend, git checkout package.json je Runde + Autostart) -> Cloud queued, PC fuehrt aus + pusht Screenshots. (5) DRY-zuerst bei Loeschen/Senden, dann -go. (6) Pixel-Kampagne IMMER ueber Shopify-TikTok-Kanal (Konto 7646, Pixel da). VERBESSERUNGS-IDEE (noch offen): act-Verify (nach act pruefen ob Seite sich aenderte, sonst Retry) fuer noch hoehere Trefferquote."
