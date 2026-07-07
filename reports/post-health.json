@@ -1,64 +1,19 @@
 {
-  "ts": "2026-07-07T17:28:03.219Z",
+  "ts": "2026-07-07T23:28:03.437Z",
   "platforms": {
     "tiktok": {
       "result": "SOUND_DIAG",
       "reason": "Sound-Panel-Screenshots erstellt",
       "file": "mw-statement-ohrringe-onyx-geom.mp4",
-      "vor_min": 17059
+      "vor_min": 17419
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 15900
+      "vor_min": 16260
     },
     "meta": {
-      "index": 6,
-      "item": "Weles isch dis Lieblingsteil? 🤍 Herren-Set «Costa»",
-      "ig": {
-        "error": "IG container",
-        "detail": {
-          "error": {
-            "message": "(#10) Application does not have permission for this action",
-            "type": "OAuthException",
-            "code": 10,
-            "fbtrace_id": "AbxoksVWnqC-G5-tOwZMXfG"
-          }
-        }
-      },
-      "fb": {
-        "error": "FB photo",
-        "detail": {
-          "error": {
-            "message": "(#200) Permissions error",
-            "type": "OAuthException",
-            "code": 200,
-            "fbtrace_id": "A49bzCoHbGXE2qd8A5CHCs5"
-          }
-        }
-      },
-      "tt": {
-        "skipped": "kein Video"
-      },
-      "insights": {
-        "ts": "2026-07-07T17:28",
-        "ig": {
-          "posts": 0,
-          "eng": 0,
-          "avg": 0,
-          "top": null
-        },
-        "fb": {
-          "posts": 0,
-          "eng": 0,
-          "avg": 0,
-          "top": null
-        }
-      },
-      "replies": {
-        "ig": 0,
-        "fb": 0,
-        "skipped": 0
-      }
+      "result": "WORKER_NICHT_ERREICHBAR",
+      "detail": "TimeoutError: The operation was aborted due to timeout"
     }
   },
   "duplicates": [],
