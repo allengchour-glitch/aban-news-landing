@@ -75,8 +75,9 @@
     UNERFÜLLBAR, egal ob Stock/Guthaben.
   - CJ-Ersatz für alle 3 geprüft: nichts Gleichwertiges (nur Mini-USB-Kühler ≠ Klimaanlage).
 - **⇒ Empfehlung an User: alle 3 refunden**; **#1007 ERSTATTET ✅** (7.7. 13:13 UTC, CHF 265.90,
-  REFUND-Tx PENDING→settled automatisch; Freigabe User «1007 erstatte»). **#1004/#1006 offen** —
-  warten auf User-Wort («Erstatte 1004/1006» oder «warten»). Mail-Vorlagen: dropship/KUNDEN-MAILS-REFUNDS.md.
+  REFUND-Tx PENDING→settled automatisch; Freigabe User «1007 erstatte»). **#1004/#1006: User-Entscheid «warten»**
+  (7.7.) → Stunden-Cron macht Restock-Watch (order/check S3414715 + S0465893); sobald lieferbar
+  → User melden (Moneybox laden!) und bestellen. Mail-Vorlagen: dropship/KUNDEN-MAILS-REFUNDS.md.
 - **Wächter-Kette läuft wieder:** Viability-Guard (top-600 nach Preis) → danach brand_price_fix
   (Cursor 247/4805). Logs /tmp/viability_live.log, /tmp/brandprice.log.
 
