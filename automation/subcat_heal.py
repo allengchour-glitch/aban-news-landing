@@ -42,6 +42,14 @@ CFG = {
     echt=re.compile(r'\b(armband|herren|damen|automatik|quarz|smart|sport|chronograph|taucher|taschen)?(uhr|uhren|watch)\b', re.I),
     mode=None,
     ban=re.compile(r'wanduhr|standuhr|tischuhr|wecker|küchenuhr|uhrwerk|uhrenbox|uhrenbeweger|uhrenarmband|uhrband|uhrenschutz|sanduhr|eieruhr|parkuhr|stoppuhr|wasseruhr|uhrzeit|kuckucksuhr|reinigungsgerät|ultraschall|federstege', re.I)),
+ 'halsketten': dict(handle='sub-halsketten', tag='kategorie-halskette', searches=['kette', 'halskette', 'collier', 'anhänger'],
+    echt=re.compile(r'\b(hals|glieder|panzer|schlangen|perlen|silber|gold)?(kette|ketten|collier|necklace)\b|\banhänger\b', re.I),
+    mode=None,
+    ban=re.compile(r'lichterkette|glühbirnenkette|led-?kette|kettensäge|kettenöl|kettenschloss|fahrradkette|schneekette|kettenrad|schlüsselkette für werkzeug|absperrkette|kettenspanner|türkette|wc |spülkasten|schlüsselanhänger|taschenanhänger|auto-?anhänger|anhängerkupplung|deckenanhänger|wandanhänger|duftanhänger fürs auto', re.I)),
+ 'armbaender': dict(handle='sub-armbaender', tag='kategorie-armband', searches=['armband', 'armreif', 'bracelet'],
+    echt=re.compile(r'\b(armband|armbänder|armreif|armreifen|bracelet)\b', re.I),
+    mode=None,
+    ban=re.compile(r'uhrenarmband|uhrband|smartwatch|armbanduhr|\buhr\b|\buhren\b|herrenuhr|damenuhr|ersatzarmband für|fitness-?tracker|reflektorarmband|schwimm|sicherheitsarmband|mücken|insekten|festival-?kontroll|pager', re.I)),
 }
 
 if CAT not in CFG:
