@@ -15,6 +15,7 @@
   SPF `v=spf1 include:zohomail.eu ~all` · DKIM `zmail._domainkey` — alles live verifiziert (7.7.).
   ⚠️ Alte Namecheap-Email-Weiterleitung ist AUS (Custom MX) — Empfang läuft jetzt über Zoho;
   Weiterleitung Zoho→allengchour@gmail.com eingerichtet (Bestätigungslink in Gmail nötig).
+  **Testmail info@→Gmail 7.7. ERFOLGREICH zugestellt (Posteingang, kein Spam) — Setup komplett verifiziert ✅.**
 - **Nutzen:** Kundenmails (Entschuldigungen, Support) laufen ab jetzt professionell über
   info@luxestyle.ch statt Gmail. Kandidat für spätere Automation: Zoho Mail API / SMTP
   (Zugangsdaten NICHT im Repo — nur beim User).
