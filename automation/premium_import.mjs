@@ -82,10 +82,10 @@ const pubsQ = await gql(t, 'query{ publications(first:10){ edges{ node{ id name 
 const pubs = pubsQ.data.publications.edges.map(e => e.node).filter(p => !/google|inbox/i.test(p.name));
 
 // 1) Katalog paginiert einsammeln: NEW + aktiv + EK im Fenster
-console.log(`Sammle Katalog (bis ${PAGES} Seiten à 1000) …`);
+console.log(`Sammle Katalog (bis ${PAGES} Seiten à 250) …`);
 const cands = [];
 for (let page = 1; page <= PAGES; page++) {
-  const { status, j } = await bbCall(`https://api.bigbuy.eu/rest/catalog/products.json?isoCode=de&pageSize=1000&page=${page}`);
+  const { status, j } = await bbCall(`https://api.bigbuy.eu/rest/catalog/products.json?pageSize=250&page=${page}`);
   if (status !== 200 || !Array.isArray(j)) { console.log(`  Seite ${page}: Ende/Fehler (${status})`); break; }
   if (!j.length) break;
   for (const p of j) {
@@ -95,7 +95,7 @@ for (let page = 1; page <= PAGES; page++) {
     const imgs = Array.isArray(p.images) ? p.images.map(x => (typeof x === 'string' ? x : x?.url)).filter(Boolean) : [];
     cands.push({ id: p.id, sku: p.sku, ek, uvp: Number(p.retailPrice) || 0, images: imgs });
   }
-  if (page % 50 === 0) console.log(`  … Seite ${page}, bisher ${cands.length} Kandidaten`);
+  if (page % 40 === 0) console.log(`  … Seite ${page}, bisher ${cands.length} Kandidaten`);
   await sleep(700);
 }
 cands.sort((a, b) => b.ek - a.ek);

@@ -30,8 +30,12 @@ if [ -s /tmp/cj_token.json ] && ! running 'cj_perpetual.mjs'; then
   log "CJ-Perpetual gestartet (PID $!)"
 fi
 
+# ── VORFAHRT: Läuft der Premium-Import, bekommen andere BigBuy-Konsumenten PAUSE
+#    (BigBuy-Rate-Limit ist SHARED, GEHIRN 14 — sonst 429-Sturm und alle verhungern).
+PREMIUM_LAEUFT=0; running 'premium_import.mjs' && PREMIUM_LAEUFT=1
+
 # ── 2. BigBuy-Import ──
-if [ -n "$BIGBUY_API_KEY" ] && [ -s /tmp/bb_cats.txt ] && ! running 'bigbuy_import.mjs'; then
+if [ "$PREMIUM_LAEUFT" = "0" ] && [ -n "$BIGBUY_API_KEY" ] && [ -s /tmp/bb_cats.txt ] && ! running 'bigbuy_import.mjs'; then
   CATS="$(cat /tmp/bb_cats.txt)" PER="${PER:-8}" LIVE=1 \
     nohup "$NODE" automation/bigbuy_import.mjs >> /tmp/bb_live.log 2>&1 &
   log "BigBuy-Import gestartet (PID $!)"
@@ -50,14 +54,14 @@ fi
 # ── 3b. Lieferbarkeits-Wächter (GEHIRN 14, «nie wieder #1004/#1006/#1007»):
 #        prüft aktive BigBuy-Produkte (teuerste zuerst), draftet unlieferbare;
 #        OK-Ledger macht ihn inkrementell. Danach REVIVE-Pass (wieder-lieferbare zurückholen).
-if [ -n "$BIGBUY_API_KEY" ] && ! running 'bigbuy_viability_guard.mjs'; then
+if [ "$PREMIUM_LAEUFT" = "0" ] && [ -n "$BIGBUY_API_KEY" ] && ! running 'bigbuy_viability_guard.mjs'; then
   nohup bash -c "LIMIT=800 GAP=1800 '$NODE' automation/bigbuy_viability_guard.mjs >> /tmp/viability_live.log 2>&1; REVIVE=1 LIMIT=300 GAP=1800 '$NODE' automation/bigbuy_viability_guard.mjs >> /tmp/viability_live.log 2>&1" > /dev/null 2>&1 &
   log "Viability-Guard gestartet (PID $!, 800er-Tranche + REVIVE)"
 fi
 
 # ── 3c. Auto-Order-Radar: prüft bezahlte unerfüllte BigBuy-Orders (DRY → Bericht /tmp/bb_orders.log;
 #        echte Bestellung löst die Session mit CONFIRM=1 aus, nach Margen-Blick).
-if [ -n "$BIGBUY_API_KEY" ] && ! running 'bb_auto_order.mjs'; then
+if [ "$PREMIUM_LAEUFT" = "0" ] && [ -n "$BIGBUY_API_KEY" ] && ! running 'bb_auto_order.mjs'; then
   nohup "$NODE" automation/bb_auto_order.mjs >> /tmp/bb_orders.log 2>&1 &
   log "Auto-Order-Radar (DRY) gestartet (PID $!)"
 fi
