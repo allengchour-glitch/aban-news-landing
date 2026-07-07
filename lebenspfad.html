@@ -38,6 +38,7 @@ html,body{height:100%;overflow:hidden;background:#0a0d1c;color:#eaf0ff;font-fami
 #dice{position:fixed;bottom:104px;left:50%;transform:translateX(-50%);font-size:3rem;z-index:20;text-shadow:0 6px 24px rgba(255,209,102,.5);opacity:0;transition:opacity .3s;pointer-events:none}
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.05em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#ffd166;pointer-events:none}
 #hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.95rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
+.dnum{position:absolute;font-weight:900;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .75s ease-out,opacity .75s;opacity:1;will-change:transform,opacity}
 #keysHelp{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#8b93b8;text-shadow:0 1px 6px #000;white-space:nowrap}
 /* Ereignis-Karte */
 #card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(160deg,rgba(24,28,56,.98),rgba(12,14,30,.98));border:1px solid rgba(255,209,102,.5);border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-height:86vh;overflow:auto}
@@ -82,6 +83,7 @@ html,body{height:100%;overflow:hidden;background:#0a0d1c;color:#eaf0ff;font-fami
   </div>
   <div id="keysHelp"><b>LEER</b>/Knopf würfeln · <b>M</b> Ton — Ereignisse: anklicken &amp; entscheiden</div>
 </div>
+<div id="dmg" style="position:fixed;inset:0;pointer-events:none;z-index:12"></div>
 <div id="dice">🎲</div>
 <button id="rollBtn" class="hide">🎲 Würfeln</button>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
@@ -433,7 +435,7 @@ function updChapter(){
   document.getElementById("chapSub").textContent="Kapitel "+(chapterOf(p.tile)+1)+" von 8 · "+c.sub;
   document.getElementById("turnTag").textContent=p.done?"":("🎲 "+p.name+" ist dran (Runde "+G.round+")");
   // Himmel weich zur Kapitel-Farbe
-  scene.background=new THREE.Color(c.sky);scene.fog.color.setHex(c.sky);
+  window._skyTarget=new THREE.Color(c.sky);
 }
 // ===================== Würfel & Bewegung =====================
 var diceEl=document.getElementById("dice"),rollBtn=document.getElementById("rollBtn");
@@ -524,6 +526,7 @@ function nextTurn(){
   do{G.turn=(G.turn+1)%G.players.length;if(G.turn===0)G.round++;tries++;}while(G.players[G.turn].done&&tries<8);
   G.phase="idle";rollBtn.disabled=false;
   updPlayers();updChapter();saveGame();
+  if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
 }
 function finishPlayer(p){
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
@@ -535,6 +538,9 @@ function finishPlayer(p){
 function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2;}
 function showEnd(){
   running=false;lsDel(SAVE_KEY);
+  jingle();setTimeout(jingle,500);
+  var fz=fields[NFIELDS-1];
+  for(var cr=0;cr<5;cr++)setTimeout(function(){confetti(fz.x+(Math.random()-0.5)*8,fz.z+(Math.random()-0.5)*8,0xffd166);},cr*280);
   var sc=document.getElementById("scores");sc.innerHTML="";
   var best=-1e9,bi=0;
   G.players.forEach(function(p,i){var s=lifeScore(p);if(s>best){best=s;bi=i;}});
@@ -649,6 +655,8 @@ function loop(now){
     for(var i=0;i<pawns.length;i++){if(G.phase!=="moving"||i!==G.turn){var pl=G.players[i];
       pawns[i].rotation.y+=dt*(i===G.turn?1.4:0.3);}}
   }
+  if(!running)updConfs(dt); // Finale-Konfetti auch nach Spielende animieren
+  if(window._skyTarget){scene.background.lerp(window._skyTarget,Math.min(1,dt*1.2));scene.fog.color.copy(scene.background);}
   updateCamera(dt);
   renderer.render(scene,camera);
 }
@@ -723,7 +731,19 @@ function fxLabel(fx){var parts=[];
   if(fx.wissen)parts.push((fx.wissen>0?"+":"")+fx.wissen+" 🧠");
   if(fx.freunde)parts.push((fx.freunde>0?"+":"")+fx.freunde+" 👥");
   return parts.join(" · ")||"—";}
-function applyFx(p,fx){
+var statLayer=document.getElementById("dmg")||document.body;
+function floatStat(txt,col,x,z,delay){setTimeout(function(){
+  var el=document.createElement("div");el.className="dnum";el.textContent=txt;el.style.color=col;el.style.fontSize="17px";
+  var pr=new THREE.Vector3(x,2.2,z).project(camera);if(pr.z>1)return;
+  el.style.left=((pr.x+1)/2*W)+"px";el.style.top=((-pr.y+1)/2*H)+"px";
+  statLayer.appendChild(el);
+  requestAnimationFrame(function(){el.style.transform="translate(-50%,-190%) scale(1.1)";el.style.opacity=0;});
+  setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},780);},delay||0);}
+function showFx(p,fx){var pw=pawns[G.players.indexOf(p)];if(!pw)return;
+  var defs=[["geld","💰","#ffd166"],["glueck","❤️","#ff9ad9"],["wissen","🧠","#7db8ff"],["freunde","👥","#8affc0"]],d=0;
+  defs.forEach(function(df){var v=fx[df[0]]||0;if(!v)return;
+    floatStat((v>0?"+":"")+v+" "+df[1],v>0?df[2]:"#ff8a8a",pw.position.x,pw.position.z,d);d+=260;});}
+function applyFx(p,fx){showFx(p,fx);
   p.geld=Math.max(0,p.geld+(fx.geld||0));
   p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
   p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
@@ -754,7 +774,12 @@ function handleField(p,f){
   var avail=[];for(var i=0;i<pool.length;i++)if(p.used[ch].indexOf(i)<0)avail.push(i);
   if(!avail.length){p.glueck+=1;announce("+1 ❤️ (ein stiller Tag)","#ff9ad9");endTurnSoon();return;}
   var ei=avail[(Math.random()*avail.length)|0],ev=pool[ei];p.used[ch].push(ei);
-  showCard("Ereignis · "+CHAPTERS[ch].n,ev.t,ev.x,ev.o.map(function(o){
+  var domFx={geld:0,glueck:0,wissen:0,freunde:0};
+  ev.o.forEach(function(o){for(var k in domFx)domFx[k]+=Math.abs(o.fx[k]||0);});
+  var domK=Object.keys(domFx).sort(function(a,b){return domFx[b]-domFx[a];})[0];
+  var domEmo={geld:"💰",glueck:"❤️",wissen:"🧠",freunde:"👥"}[domK]||"✨";
+  cardEl.style.borderColor="#"+("00000"+CHAPTERS[ch].accent.toString(16)).slice(-6);
+  showCard("Ereignis · "+CHAPTERS[ch].n,domEmo+" "+ev.t,ev.x,ev.o.map(function(o){
     return {l:o.l,sub:fxLabel(o.fx),fn:function(){applyFx(p,o.fx);if(o.bio)p.bio.push(o.bio);
       updPlayers();endTurnSoon();}};}));
 }
