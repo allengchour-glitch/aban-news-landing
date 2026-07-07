@@ -401,12 +401,39 @@ function mkPawn(color){
   var body=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.5,1.0,10),mat(color,color,0.12));body.position.y=0.5;body.castShadow=true;g.add(body);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.36,10,8),mat(color,color,0.12));head.position.y=1.25;head.castShadow=true;g.add(head);
   scene.add(g);return g;}
+// ===================== Familie: Mini-Figuren laufen hinterher =====================
+var KIDNAMES=["Mio","Lena","Ben","Ida","Noah","Mara"];
+function syncFam(i){
+  var p=G.players[i],pw=pawns[i];if(!pw)return;
+  if(!pw.followers)pw.followers=[];
+  var want=(p.fam&&p.fam.partner?1:0)+(p.fam?p.fam.kids:0);
+  while(pw.followers.length<want){
+    var idx=pw.followers.length,isPartner=(idx===0&&p.fam.partner);
+    var g=new THREE.Group(),scale=isPartner?0.8:0.5;
+    if(pawnTpl){var m=pawnTpl.clone(true);
+      var col=new THREE.Color(isPartner?0xfff0f5:0xfff8e0);
+      m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.color.lerp(col,0.35);}});
+      m.scale.multiplyScalar(scale);g.add(m);}
+    else{var b=new THREE.Mesh(new THREE.CylinderGeometry(0.22*scale,0.36*scale,0.8*scale,8),mat(isPartner?0xffd8e8:0xffe8b0));b.position.y=0.4*scale;b.castShadow=true;g.add(b);
+      var h=new THREE.Mesh(new THREE.SphereGeometry(0.26*scale,8,6),mat(isPartner?0xffd8e8:0xffe8b0));h.position.y=0.95*scale;g.add(h);}
+    g.position.copy(pw.position);scene.add(g);pw.followers.push(g);}
+  while(pw.followers.length>want){var f=pw.followers.pop();scene.remove(f);}
+}
+function updFam(dt){
+  for(var i=0;i<pawns.length;i++){var pw=pawns[i];if(!pw||!pw.followers)continue;
+    for(var j=0;j<pw.followers.length;j++){var f=pw.followers[j];
+      var a=2.6+j*0.85,tx=pw.position.x+Math.cos(a)*(1.1+j*0.55),tz=pw.position.z+Math.sin(a)*(1.1+j*0.55);
+      f.position.x+=(tx-f.position.x)*Math.min(1,dt*4.5);
+      f.position.z+=(tz-f.position.z)*Math.min(1,dt*4.5);
+      var d=Math.hypot(tx-f.position.x,tz-f.position.z);
+      f.position.y=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*0.35:0; // Hüpfen beim Laufen
+      f.rotation.y+=dt;}}}
 // ===================== Zustand =====================
 var SAVE_KEY="lp_save1";
 var G=null,running=false;
 function freshState(np){
   var ps=[];
-  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false});
+  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false}});
   return {v:3,players:ps,turn:0,round:1,phase:"idle",t:0};}
 function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.v===3&&s.players&&s.players.length)?s:null;}catch(e){return null;}}
@@ -425,7 +452,7 @@ function updPlayers(){updProgMap();
   var el=document.getElementById("players");el.innerHTML="";
   G.players.forEach(function(p,i){
     var d=document.createElement("div");d.className="pcard"+(i===G.turn&&!p.done?" on":"");
-    d.innerHTML="<div class='nm' style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.done?"🏁 ":"")+p.name+(p.job?" <span style='font-weight:600;color:#9aa6d8'>"+p.job.i+" "+p.job.n+"</span>":"")+"</div>"+
+    d.innerHTML="<div class='nm' style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.done?"🏁 ":"")+p.name+(p.job?" <span style='font-weight:600;color:#9aa6d8'>"+p.job.i+" "+p.job.n+"</span>":"")+(p.fam&&p.fam.partner?" 💑":"")+(p.fam&&p.fam.kids?("👶".repeat(p.fam.kids)):"")+"</div>"+
       "<div class='st'><span>💰 "+p.geld+"</span><span>❤️ "+p.glueck+"</span><span>🧠 "+p.wissen+"</span><span>👥 "+p.freunde+"</span></div>";
     el.appendChild(d);});
 }
@@ -647,7 +674,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);
     updSeason(dt,chapterOf(G.players[G.turn].tile));
     for(var fsI=0;fsI<fieldSprites.length;fsI++){var fs2=fieldSprites[fsI];fs2.sp.position.y=fs2.y0+Math.sin(G.t*1.6+fs2.b)*0.12;}
     if(window._lpTree)window._lpTree.rotation.z=Math.sin(G.t*0.6)*0.02;
@@ -679,7 +706,7 @@ function begin(saved){
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
     if(el&&el.value.trim())G.players[ni].name=el.value.trim().slice(0,12);}}
   pawns.forEach(function(pw){scene.remove(pw);});pawns.length=0;
-  G.players.forEach(function(p,i){pawns.push(mkPawn(p.col));placePawn(i);upgradePawn(i);});
+  G.players.forEach(function(p,i){if(!p.fam)p.fam={partner:false,kids:0,askedK:false};pawns.push(mkPawn(p.col));placePawn(i);upgradePawn(i);syncFam(i);});
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");
   document.getElementById("endO").classList.add("hide");
@@ -760,11 +787,23 @@ function handleField(p,f){
         picks.map(function(j){return {l:j.i+" "+j.n,sub:j.d,fn:function(){p.job={i:j.i,n:j.n,mult:j.mult};applyFx(p,j.fx);
           p.bio.push("wurde "+j.n+" — und bereute es nie");updPlayers();endTurnSoon();}};}));
       return;}
+    if(ch===4&&!p.fam.partner){
+      showCard("Meilenstein · Die große Frage","💍 Willst du heiraten?","Ihr steht am See, die Sonne geht unter, und die Frage liegt in der Luft. Dein Herz klopft bis zum Hals.",
+        [{l:"💒 Ja — große Hochzeit!",sub:"−8 💰 · +6 ❤️ · +4 👥 · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-8,glueck:6,freunde:4});p.bio.push("heiratete die große Liebe mit einem rauschenden Fest");syncFam(G.turn);updPlayers();endTurnSoon();}},
+         {l:"💕 Ja — klein und heimlich",sub:"−2 💰 · +4 ❤️ · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-2,glueck:4});p.bio.push("heiratete still am Standesamt — und war überglücklich");syncFam(G.turn);updPlayers();endTurnSoon();}},
+         {l:"🕊 Noch nicht — die Freiheit ruft",sub:"+2 🧠 · +1 ❤️",fn:function(){applyFx(p,{wissen:2,glueck:1});p.bio.push("wählte die Freiheit — vorerst");updPlayers();endTurnSoon();}}]);
+      return;}
+    if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;
+      showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
+        [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(Math.random()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");syncFam(G.turn);updPlayers();endTurnSoon();}},
+         {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");syncFam(G.turn);updPlayers();endTurnSoon();}},
+         {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥",fn:function(){applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");updPlayers();endTurnSoon();}}]);
+      return;}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
       [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
     camShake=0.3;return;}
   if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");beep(1046,.1,"triangle",.06);endTurnSoon();return;}
-  if(f.type==="g-"){var c2=2+ch;p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
+  if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
   if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");beep(880,.1,"triangle",.05);endTurnSoon();return;}
   if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");beep(760,.1,"triangle",.05);endTurnSoon();return;}
   if(f.type==="f"){p.freunde+=2;announce("+2 👥","#8affc0");beep(660,.1,"triangle",.05);endTurnSoon();return;}
