@@ -74,7 +74,9 @@
     → Produkt-Tag auf `nicht-lieferbar-ch` korrigiert, bleibt DRAFT. Diese Order ist mit BigBuy
     UNERFÜLLBAR, egal ob Stock/Guthaben.
   - CJ-Ersatz für alle 3 geprüft: nichts Gleichwertiges (nur Mini-USB-Kühler ≠ Klimaanlage).
-- **⇒ Empfehlung an User: alle 3 refunden** («refund alle 3»); Entscheid offen. Refund = User-Freigabe nötig.
+- **⇒ Empfehlung an User: alle 3 refunden**; **#1007 ERSTATTET ✅** (7.7. 13:13 UTC, CHF 265.90,
+  REFUND-Tx PENDING→settled automatisch; Freigabe User «1007 erstatte»). **#1004/#1006 offen** —
+  warten auf User-Wort («Erstatte 1004/1006» oder «warten»). Mail-Vorlagen: dropship/KUNDEN-MAILS-REFUNDS.md.
 - **Wächter-Kette läuft wieder:** Viability-Guard (top-600 nach Preis) → danach brand_price_fix
   (Cursor 247/4805). Logs /tmp/viability_live.log, /tmp/brandprice.log.
 
