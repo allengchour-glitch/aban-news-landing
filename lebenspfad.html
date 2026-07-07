@@ -84,6 +84,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="keysHelp"><b>LEER</b>/Knopf würfeln · <b>M</b> Ton — Ereignisse: anklicken &amp; entscheiden</div>
 </div>
 <div id="dmg" style="position:fixed;inset:0;pointer-events:none;z-index:12"></div>
+<div id="mourn" style="position:fixed;inset:0;pointer-events:none;z-index:13;background:radial-gradient(circle,rgba(20,20,30,0) 30%,rgba(10,10,18,.88));opacity:0;transition:opacity 1.2s"></div>
 <div id="dice">🎲</div>
 <button id="rollBtn" class="hide">🎲 Würfeln</button>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
@@ -597,18 +598,40 @@ function finishPlayer(p){
   G.phase="idle";endTurnSoon();
 }
 // ===================== Ende: Punkte + Biografie =====================
+function tollBell(n){for(var i=0;i<n;i++)setTimeout(function(){beep(196,1.2,"sine",.09);beep(392,0.8,"sine",.04);},i*900);}
 function playerDeath(p,how){
   p.dead=true;p.done=true;
   var i=G.players.indexOf(p),pw=pawns[i];
-  announce("⚰️ "+p.name.toUpperCase()+" IST GESTORBEN","#5a6272");
-  showHint(how||"Das Leben ist kurz — manchmal kürzer.",3600);
-  beep(120,.6,"sawtooth",.08);beep(90,.9,"sawtooth",.06);camShake=0.8;
+  // Trauer-Moment: Welt verdunkelt sich, Glocke schlägt dreimal
+  var mo=document.getElementById("mourn");mo.style.opacity=1;
+  setTimeout(function(){mo.style.opacity=0;},3400);
+  tollBell(3);camShake=1.0;
+  announce("⚰️ "+p.name.toUpperCase()+" IST GESTORBEN","#8a8a9a");
+  showHint(how||"Das Leben ist kurz — manchmal kürzer.",3800);
   if(pw){pw.rotation.z=Math.PI/2;pw.position.y=0.3;
-    pw.traverse(function(n){if(n.isMesh&&n.material&&n.material.color)n.material.color.lerp(new THREE.Color(0x9a9aa8),0.65);});}
-  p.bio.push("verstarb — "+(how||"mitten im Leben")+" ⚰️");
+    pw.traverse(function(n){if(n.isMesh&&n.material&&n.material.color)n.material.color.lerp(new THREE.Color(0x9a9aa8),0.7);});
+    // Grabstein bleibt am Todesfeld stehen — mit Namens-Epitaph
+    var f=fields[p.tile],gx=f.x+1.6,gz=f.z+1.6;
+    var stone=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.5,0.3),mat(0x8a8a96,0x3a3a44,0.15));
+    stone.position.set(gx,0.75,gz);stone.castShadow=true;scene.add(stone);
+    var top=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.55,0.3,12,1,false,0,Math.PI),mat(0x8a8a96,0x3a3a44,0.15));
+    top.rotation.z=Math.PI/2;top.rotation.y=Math.PI/2;top.position.set(gx,1.5,gz);scene.add(top);
+    var cv=document.createElement("canvas");cv.width=128;cv.height=160;var cx=cv.getContext("2d");
+    cx.fillStyle="#8a8a96";cx.fillRect(0,0,128,160);cx.fillStyle="#2a2a34";cx.font="bold 20px serif";cx.textAlign="center";
+    cx.fillText("R.I.P.",64,44);cx.font="14px serif";cx.fillText(p.name.slice(0,10),64,78);
+    cx.font="11px serif";cx.fillText("Kapitel "+(chapterOf(p.tile)+1),64,104);
+    var face=new THREE.Mesh(new THREE.PlaneGeometry(0.95,1.2),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv)}));
+    face.position.set(gx,0.85,gz+0.16);scene.add(face);
+    // Graue Trauer-Schwaden steigen auf (eigene Mini-Partikel — burst existiert hier nicht)
+    for(var gp=0;gp<9;gp++){var pm=new THREE.Mesh(new THREE.PlaneGeometry(0.26,0.26),
+      new THREE.MeshBasicMaterial({color:0x9a9aa8,transparent:true,opacity:0.8,side:THREE.DoubleSide}));
+      pm.position.set(gx+(Math.random()-0.5)*1.2,0.6+Math.random(),gz+(Math.random()-0.5)*1.2);
+      scene.add(pm);
+      confs.push({m:pm,vx:(Math.random()-0.5)*0.5,vy:0.9+Math.random()*0.7,vz:(Math.random()-0.5)*0.5,rx:0,rz:0,life:2.2+Math.random(),heart:true});}}
+  p.bio.push("verstarb — "+(how||"mitten im Leben")+" ⚰️ Grabspruch: R.I.P., Kapitel "+(chapterOf(p.tile)+1));
   updPlayers();saveGame();
   var allDone=G.players.every(function(x){return x.done;});
-  setTimeout(function(){if(allDone)showEnd();else nextTurn();},1600);
+  setTimeout(function(){if(allDone)showEnd();else nextTurn();},2600);
 }
 function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2;}
 function showEnd(){
