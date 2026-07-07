@@ -54,6 +54,13 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 10. **⛔ Social-Doppelpost-Verbot (User 2026-07-06):** IMMER nur NEUES posten — vor jedem Post
    Profil + `automation/reels_seed.csv`-Ledger prüfen (nur status=ready, nach Post → posted).
    Gleiches Produkt/Video/Motiv nie zweimal, auch nicht plattformübergreifend am selben Tag.
+   **⛔ THREADS-STOPP (User 2026-07-07): auf Threads NICHTS mehr posten, bis Follower da sind.**
+   **🤖 Social-Autopilot IG+FB LIVE (2026-07-07):** `automation/meta_reel_post.mjs` postet das
+   nächste fällige ready-Video aus reels_seed.csv als IG-Reel + FB-Video (48h-Kadenz-Wache =
+   3–4 Posts/Woche, Ledger-Update, nie Threads). Token: User-Token → Seiten-Token in
+   /tmp/meta_page_token + IG-ID /tmp/meta_ig_id (Seite 1049840534888592, IG 17841480560863361).
+   Erster Auto-Post: instagram.com/reel/DagJ_sgDjT_. ⚠️ Vor Post prüfen, dass das beworbene
+   Produkt noch ACTIVE ist (Klimaanlagen-Reel-Falle: Queue bewarb gedraftete Ware → skip).
 11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO
    (Video-Generierung, ~CHF 3–8/Clip)** — CHF 46 in 6 Tagen. Regel: Veo NUR für einzelne
    Hero-/Kampagnen-Clips (max ~CHF 10 pro Anlass), NIE in Loops/Massenproduktion — tägliche
