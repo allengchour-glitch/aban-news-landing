@@ -19,10 +19,13 @@
   teils Oben-ohne-Produktbilder!) → Tag `erotik-mode`, eigene Smart-Collection
   **dessous-reizwaesche** («Dessous & Reizwäsche», Menü unter 👗 Damen), NUR Onlineshop+POS —
   aus Google/TikTok/Meta/Pinterest/Shop/Inbox ABGEZOGEN (Ad-Policy-Risiko nackte Haut).
-- **⚠️ TODO SORTIERUNG (gleiche Falle in weiteren Sub-Collections, TITLE-CONTAINS-Regeln):**
-  sub-kleider («Kleid» trifft Arbeitskleidung), sub-taschen («Tasche» trifft Werkzeugtaschen),
-  sub-uhren, sub-halsketten, sub-armbaender → nach Röcke-Muster auf präzise TAG-Regeln umstellen
-  (IMMER DRY zuerst, GEHIRN 9b). Variant-Merge-Kandidat: Guilty-Pleasure-Röcke S–XXL = 5 Einzelprodukte.
+- **✅ SORTIERUNG KOMPLETT (alle 6 Sub-Collections geheilt, Tool `automation/subcat_heal.py`):**
+  Röcke 255→51 · Kleider 463→199 (Puppenkleider/Verkleidungen raus) · Taschen 941→240
+  (Taschenlampen/-rechner raus) · Uhren 1359→170 (Uhrenboxen/Armband-Ersatz raus) ·
+  Halsketten 294→175 (KETTENSÄGEN raus!) · Armbänder 142→183 (Armbanduhren raus, echte rein).
+  Alle auf TAG-Regeln (kategorie-*). Kinderschuhe war LEER → 27 Marken-Kinderschuhe getaggt.
+  Dessous komplett (27). Aussortierte Produkte bleiben aktiv in ihren richtigen Kategorien.
+  Menü-Audit: alle 124 Ziele 200/nicht-leer. Variant-Merge-Kandidat: Guilty-Pleasure S–XXL.
 
 ## 🛠️ 2026-07-07 (Abend) — Lager-Badge live + Mail-Automatik (Stand)
 - **«Auf Lager»-Badge auf ALLEN Produktseiten live:** `templates/product.json` → Block `lux_delivery`
