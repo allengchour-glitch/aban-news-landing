@@ -47,6 +47,21 @@ if [ -f dropship/gmc_desc_ids.txt ] && ! running 'gmc_desc_enrich.mjs'; then
   fi
 fi
 
+# ── 3b. Lieferbarkeits-Wächter (GEHIRN 14, «nie wieder #1004/#1006/#1007»):
+#        prüft aktive BigBuy-Produkte (teuerste zuerst), draftet unlieferbare;
+#        OK-Ledger macht ihn inkrementell. Danach REVIVE-Pass (wieder-lieferbare zurückholen).
+if [ -n "$BIGBUY_API_KEY" ] && ! running 'bigbuy_viability_guard.mjs'; then
+  nohup bash -c "LIMIT=800 GAP=1800 '$NODE' automation/bigbuy_viability_guard.mjs >> /tmp/viability_live.log 2>&1; REVIVE=1 LIMIT=300 GAP=1800 '$NODE' automation/bigbuy_viability_guard.mjs >> /tmp/viability_live.log 2>&1" > /dev/null 2>&1 &
+  log "Viability-Guard gestartet (PID $!, 800er-Tranche + REVIVE)"
+fi
+
+# ── 3c. Auto-Order-Radar: prüft bezahlte unerfüllte BigBuy-Orders (DRY → Bericht /tmp/bb_orders.log;
+#        echte Bestellung löst die Session mit CONFIRM=1 aus, nach Margen-Blick).
+if [ -n "$BIGBUY_API_KEY" ] && ! running 'bb_auto_order.mjs'; then
+  nohup "$NODE" automation/bb_auto_order.mjs >> /tmp/bb_orders.log 2>&1 &
+  log "Auto-Order-Radar (DRY) gestartet (PID $!)"
+fi
+
 # ── 4. Auto-Committer (Ledger-Drift alle 5 Min) ──
 if ! running 'sleep 300; git add dropship'; then
   nohup bash -c 'while true; do sleep 300; git add dropship/ 2>/dev/null; git diff --cached --quiet || (git commit -q -m "Ledger-Drift (auto) #autocommit-loop" && git push -q); done' > /tmp/autocommit.log 2>&1 &

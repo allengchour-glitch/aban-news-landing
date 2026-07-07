@@ -706,6 +706,39 @@ async function bbGet(path, timeoutMs = 30000) {
 const bbInfoAll = () => bbGet('/rest/catalog/productsinformation.json?isoCode=de', 420000); // [{id,sku,name,description}] — grosser Download (~388MB), 420s Timeout
 const bbProduct = (id) => bbGet(`/rest/catalog/product/${id}.json?isoCode=de`);     // {wholesalePrice,retailPrice,active,...}
 const bbImages = (id) => bbGet(`/rest/catalog/productimages/${id}.json`);           // {id, images:[{url,...}]}
+// ── Lieferbarkeits-Wache (GEHIRN 14; Orders #1004/#1006/#1007): nie unlieferbare Ware anlegen ──
+// 2 Checks: shipping/orders CH (404 = nie versendbar) + order/check (ER003 = ausverkauft; ER005 = ok).
+async function bbViable(ref) {
+  const post = async (path, body) => {
+    for (let a = 0; a < 5; a++) {
+      try {
+        const r = await fetch(`${BB_BASE}${path}`, { method: 'POST',
+          headers: { 'Authorization': `Bearer ${BB_KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(body) });
+        const txt = await r.text();
+        if (r.status === 429 || /rate limit|too many/i.test(txt)) { await sleep((a + 1) * 6000); continue; }
+        let j = {}; try { j = JSON.parse(txt); } catch {}
+        return { status: r.status, j };
+      } catch { await sleep(4000); }
+    }
+    return { status: 0, j: {} };
+  };
+  const ship = await post('/rest/shipping/orders.json',
+    { order: { delivery: { isoCountry: 'CH', postcode: '8001' }, products: [{ reference: ref, quantity: 1 }] } });
+  const opt = (ship.j?.shippingOptions || [])[0];
+  if (ship.status === 404 || (!opt && /no shipping options/i.test(String(ship.j?.message || '')))) return { ok: false, why: 'nicht-lieferbar-ch' };
+  if (!opt) return { ok: false, why: 'shipping-unklar' };
+  await sleep(800);
+  const chk = await post('/rest/order/check.json', { order: { internalReference: 'import-viability', cashOnDelivery: false,
+    language: 'de', paymentMethod: 'moneybox', carriers: [{ name: (opt.shippingService?.name || 'seur').toLowerCase() }],
+    shippingAddress: { firstName: 'Check', lastName: 'Dry', country: 'CH', postcode: '8001', town: 'Zuerich',
+      address: 'Bahnhofstrasse 1', phone: '000000000', email: 'info@luxestyle.ch', comment: '' },
+    products: [{ reference: ref, quantity: 1 }] } });
+  if (chk.status >= 200 && chk.status < 300) return { ok: true };
+  if (chk.j?.code === 'ER005') return { ok: true }; // nur Moneybox leer → lieferbar
+  if (chk.j?.code === 'ER003') return { ok: false, why: 'ausverkauft-lieferant' };
+  return { ok: false, why: 'check-' + (chk.j?.code || chk.status) };
+}
 async function img200(u) { try { const r = await fetchT(u, { method: 'HEAD' }, 12000); if (r.ok) return true; const g = await fetchT(u, {}, 12000); return g.ok; } catch { return false; } }
 
 // ── Gemini Batch-Übersetzung → knackiger DE-Titel (1:1 aus Vorlage) ──
@@ -799,6 +832,9 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const cost = Number(d.wholesalePrice) || 0;
       if (!cost || cost > cfg.maxCost) continue;
       if (cost < MIN_COST_EUR) continue;   // High-End-Untergrenze: günstige Basics überspringen
+      // Lieferbarkeits-Wache VOR dem teuren Rest: unlieferbar/ausverkauft → gar nicht erst anlegen
+      const viab = await bbViable(c.sku || String(c.id)); await sleep(GAP);
+      if (!viab.ok) { console.log(`  skip(${viab.why})`, (c.name || '').slice(0, 45)); continue; }
       const imgD = await bbImages(c.id); await sleep(GAP);
       const urls = (imgD?.images || []).map(x => x.url).filter(Boolean);
       const good = [];
