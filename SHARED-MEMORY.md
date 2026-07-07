@@ -26,6 +26,13 @@
   Alle auf TAG-Regeln (kategorie-*). Kinderschuhe war LEER → 27 Marken-Kinderschuhe getaggt.
   Dessous komplett (27). Aussortierte Produkte bleiben aktiv in ihren richtigen Kategorien.
   Menü-Audit: alle 124 Ziele 200/nicht-leer. Variant-Merge-Kandidat: Guilty-Pleasure S–XXL.
+- **Runde 3 (Regel-Scan über ALLE 428 Collections, 87 riskante gefunden, 4 bestätigt + gefixt):**
+  garten-deko-outdoor («figur» fing 290 Actionfiguren → Regel präzisiert, 19 ehrliche Deko;
+  Actionfiguren in NEUE Collection `actionfiguren` (123 Stk., Menü unter 🧸 Kinder, publiziert)) ·
+  retro-handheld («Retro» fing Sonnenbrillen → Konsolen-Begriffe) · hautpflege («Maske» fing
+  Tauchmasken → Gesichtsmasken-Begriffe) · camping-kueche («thermo» fing Thermodrucker →
+  Thermosflasche/-kanne/-becher). Scan-Liste übrig in /tmp/risky_colls.json (Rest = geprüft
+  unkritisch od. Präzisions-Bedingungen wie SSD/NVMe).
 
 ## 🛠️ 2026-07-07 (Abend) — Lager-Badge live + Mail-Automatik (Stand)
 - **«Auf Lager»-Badge auf ALLEN Produktseiten live:** `templates/product.json` → Block `lux_delivery`
