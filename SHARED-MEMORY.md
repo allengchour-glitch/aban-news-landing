@@ -64,6 +64,20 @@
   (2) BigBuy-Moneybox aufladen (~EK+Versand, live prüfen sobald Key da). Danach: Stock-Check
   S91120937 → wenn lieferbar bestellen, sonst Refund-Empfehlung wie #1004/#1006.
 
+## ✅ 2026-07-07 (Nachmittag) — Key zurück, ALLE 3 Orders geprüft: BigBuy kann NICHT liefern
+- **User hat BIGBUY_API_KEY neu geschickt** (→ /tmp/bb_key, chmod 600, NIE ins Repo).
+  `user/purse.json` = **0.00 €** live bestätigt (MoneyBox leer; User weiss Bescheid, Anleitung geschickt).
+- **Finale Order-Verdicts (bb_auto_order DRY + Einzel-Verifikation):**
+  - **#1004** Laterne S3414715: Versandoption existiert (SEUR 27.94 €), aber **ER003 ausverkauft**.
+  - **#1006** Klima S0465893: **ER003 ausverkauft** (unverändert).
+  - **#1007** Klima S91120937: **404 No shipping options = NIE in die CH lieferbar** (2× verifiziert)
+    → Produkt-Tag auf `nicht-lieferbar-ch` korrigiert, bleibt DRAFT. Diese Order ist mit BigBuy
+    UNERFÜLLBAR, egal ob Stock/Guthaben.
+  - CJ-Ersatz für alle 3 geprüft: nichts Gleichwertiges (nur Mini-USB-Kühler ≠ Klimaanlage).
+- **⇒ Empfehlung an User: alle 3 refunden** («refund alle 3»); Entscheid offen. Refund = User-Freigabe nötig.
+- **Wächter-Kette läuft wieder:** Viability-Guard (top-600 nach Preis) → danach brand_price_fix
+  (Cursor 247/4805). Logs /tmp/viability_live.log, /tmp/brandprice.log.
+
 ## 💰 2026-07-07 — BESTELLUNG #1006: CHF 473.90 (grösster Verkauf bisher!)
 - **#1006, 07.07. 08:47, BEZAHLT:** Tragbare Klimaanlage Olimpia Splendid (BigBuy `BB-S0465893`),
   Kundin Lausanne (CH-FR, Zielgruppe der TikTok-Kampagne — Start war 13h davor!). 
