@@ -316,6 +316,68 @@ function updBalloons(t){for(var i=0;i<balloons.length;i++){var bl=balloons[i];
     ring.rotation.x=-Math.PI/2;ring.rotation.z=Math.PI/4;
     ring.position.set(f2.x+4+(h%2)*1.5-(h>=4?0.75:0),terrainH(f2.x+4,f2.z+6)+0.05,f2.z+6+Math.floor(h/2)*1.5);
     scene.add(ring);}})();
+// Kapitel-Bauwerke: jedes Lebenskapitel bekommt sein Wahrzeichen am Pfadrand
+(function(){
+  function at(ci,dx,dz){var f=fields[ci*FIELDS_PER+9];var g=new THREE.Group();
+    g.position.set(f.x+dx,terrainH(f.x+dx,f.z+dz),f.z+dz);scene.add(g);return g;}
+  function box(g,w,h,d,c,x,y,z,e){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c,e!==undefined?e:c,e!==undefined?0.3:0.12));
+    m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
+  function cone(g,r,h,c,x,y,z,seg){var m=new THREE.Mesh(new THREE.ConeGeometry(r,h,seg||4),mat(c,c,0.15));
+    m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
+  function cyl(g,r1,r2,h,c,x,y,z){var m=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,10),mat(c,c,0.12));
+    m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
+  // K1: Spielplatz — Rutsche + Schaukel
+  var k1=at(0,7,-8);
+  box(k1,0.3,2.6,0.3,0xff5d7d,0,1.3,0);box(k1,0.3,2.6,0.3,0xff5d7d,1.6,1.3,0);
+  var slide=box(k1,1.1,0.16,2.8,0xffd91f,0.8,1.4,1.2);slide.rotation.x=0.7;window._lmSwingPivot=new THREE.Group();window._lmSwingPivot.position.set(4.3,2.2,0);k1.add(window._lmSwingPivot);
+  box(k1,0.24,2.2,0.24,0x2f8cff,3.4,1.1,0);box(k1,0.24,2.2,0.24,0x2f8cff,5.2,1.1,0);
+  box(k1,2.1,0.14,0.14,0x2f8cff,4.3,2.2,0);
+  (function(){var seat=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.12,0.4),mat(0xff9a2a,0xff9a2a,0.12));seat.position.y=-1.3;seat.castShadow=true;
+    var l1=new THREE.Mesh(new THREE.BoxGeometry(0.05,1.3,0.05),mat(0xd8d8e0));l1.position.set(-0.3,-0.65,0);
+    var l2=l1.clone();l2.position.x=0.3;
+    window._lmSwingPivot.add(seat);window._lmSwingPivot.add(l1);window._lmSwingPivot.add(l2);})();
+  // K2: Schulhaus mit Turmuhr
+  var k2=at(1,8,7);
+  box(k2,4.4,2.8,3.2,0xf0d8b0,0,1.4,0);cone(k2,3.2,1.8,0xe06a5a,0,3.7,0).rotation.y=Math.PI/4;
+  var clock=cyl(k2,0.55,0.55,0.12,0xfffdf6,0,2.4,1.66);clock.rotation.x=Math.PI/2;
+  window._lmClockH=box(k2,0.06,0.34,0.05,0x2a3040,0,2.5,1.74);window._lmClockH.geometry.translate(0,0.17,0);window._lmClockH.position.y=2.4;
+  window._lmClockM=box(k2,0.05,0.44,0.05,0x2a3040,0,2.4,1.75);window._lmClockM.geometry.translate(0,0.22,0);
+  box(k2,0.8,1.2,0.1,0x8a5a3a,0,0.6,1.62);
+  // K3: Bücherturm (Wissen!)
+  var k3=at(2,-7,-8);
+  [[0xff5d7d,0],[0x2f8cff,0.5],[0x35d95a,1.0],[0xffd91f,1.5],[0xa86aff,2.0]].forEach(function(bk,i2){
+    var bx2=box(k3,2.4-i2*0.16,0.5,1.7-i2*0.1,bk[0],Math.sin(i2*1.6)*0.25,0.25+bk[1],0);bx2.rotation.y=Math.sin(i2*2.2)*0.22;});
+  // K4: bunte Stadthäuschen-Reihe
+  var k4=at(3,7,8);
+  [[0xff9a6a,0],[0x6ab8ff,2.1],[0xffd166,4.2]].forEach(function(hh,i3){
+    box(k4,1.8,2.2+i3*0.3,1.8,hh[0],hh[1],1.1+i3*0.15,0);cone(k4,1.4,1.0,0xe06a5a,hh[1],2.7+i3*0.3,0);
+    box(k4,0.5,0.7,0.06,0xfff2c8,hh[1],1.1,0.93,0xfff2c8);});
+  // K5: Büroturm mit Leucht-Fenstern
+  var k5=at(4,-8,-7);
+  box(k5,2.6,7.5,2.6,0x8ab0c8,0,3.75,0);
+  window._lmWins=[];for(var fl=0;fl<5;fl++)window._lmWins.push(box(k5,2.7,0.34,2.7,0xfff2c8,0,1.1+fl*1.35,0,0xfff2c8));
+  // K6: Garten — Zaun + Beete
+  var k6=at(5,7,-8);
+  for(var z2=0;z2<7;z2++)box(k6,0.14,0.8,0.14,0xf0e8d8,z2*0.75,0.4,0);
+  box(k6,5.0,0.1,0.14,0xf0e8d8,2.2,0.72,0);
+  [[0xff5d7d],[0xffd91f],[0xa86aff]].forEach(function(be,i4){box(k6,1.2,0.3,1.2,0x6a4a2a,0.6+i4*1.7,0.15,1.6);
+    cone(k6,0.34,0.6,be[0],0.6+i4*1.7,0.7,1.6,8);});
+  // K7: Weinberg — Fässer + Rebenreihen
+  var k7=at(6,-7,8);
+  cyl(k7,0.7,0.8,1.2,0x8a5a3a,0,0.6,0);cyl(k7,0.7,0.8,1.2,0x8a5a3a,1.8,0.6,0.4);
+  for(var rw=0;rw<3;rw++)box(k7,4.2,0.5,0.2,0x4a8a3a,1,0.9,1.6+rw*0.9);
+  // K8: Leuchtturm (weiss-rot) mit Licht
+  var k8=at(7,8,-8);
+  [[0xf8f8ff,0],[0xe84a3a,1],[0xf8f8ff,2],[0xe84a3a,3]].forEach(function(st4,i5){
+    cyl(k8,1.0-i5*0.09,1.1-i5*0.09,1.1,st4[0],0,0.55+i5*1.1,0);});
+  cyl(k8,0.6,0.6,0.8,0x2a3040,0,4.9,0);
+  var lamp=new THREE.Mesh(new THREE.SphereGeometry(0.4,10,8),new THREE.MeshBasicMaterial({color:0xfff2a8}));
+  lamp.position.y=4.9;k8.add(lamp);
+  var beam=new THREE.PointLight(0xfff2a8,1.4,30);beam.position.y=5;k8.add(beam);
+  // Rotierender Lichtstrahl (Kegel-Ebene, additiv)
+  window._lmBeam=new THREE.Mesh(new THREE.PlaneGeometry(9,1.4),new THREE.MeshBasicMaterial({color:0xfff2a8,transparent:true,opacity:0.35,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));
+  window._lmBeam.position.y=4.9;window._lmBeam.geometry.translate(4.5,0,0);k8.add(window._lmBeam);
+})();
 // Schmetterlinge (flatternde Doppel-Quads, folgen lose der Kamera)
 var flies=[];
 (function(){for(var i=0;i<12;i++){var g=new THREE.Group();
@@ -495,6 +557,40 @@ function syncFam(i){
     g.position.copy(pw.position);scene.add(g);pw.followers.push(g);}
   while(pw.followers.length>want){var f=pw.followers.pop();scene.remove(f);}
 }
+function weddingScene(i){
+  var pw=pawns[i];
+  // Hochzeitsglocken (Terz-Geläut) + Herzregen + Konfetti
+  [659.25,523.25,659.25,783.99,659.25].forEach(function(f,k){setTimeout(function(){beep(f,.5,"triangle",.07);beep(f/2,.7,"sine",.04);},k*320);});
+  for(var w2=0;w2<3;w2++)setTimeout(function(){hearts(pw.position.x,pw.position.z);},w2*400);
+  confetti(pw.position.x,pw.position.z,0xff9ad9);
+  announce("💒 HOCHZEIT!","#ff5db8");camShake=0.4;
+}
+var storks=[];
+function storkScene(i,kids){
+  var pw=pawns[i];
+  // Storch fliegt ein, wirft das Bündel ab, fliegt weiter
+  var g=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.SphereGeometry(0.4,8,6),mat(0xffffff,0xf0f0f0,0.1));body.scale.set(1.5,0.8,0.8);g.add(body);
+  var neck=new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.1,0.9,6),mat(0xffffff));neck.rotation.z=-0.9;neck.position.set(0.7,0.3,0);g.add(neck);
+  var beak=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.5,5),mat(0xff5a3a,0xff5a3a,0.3));beak.rotation.z=-Math.PI/2;beak.position.set(1.35,0.62,0);g.add(beak);
+  var w1=new THREE.Mesh(new THREE.PlaneGeometry(1.3,0.55),mat(0xf0f0f8));w1.position.set(-0.1,0.2,0.5);g.add(w1);
+  var w2=w1.clone();w2.position.z=-0.5;g.add(w2);
+  var bundle=new THREE.Mesh(new THREE.SphereGeometry(0.28,8,6),mat(0xffe8b0,0xffd8a0,0.2));bundle.position.set(0.3,-0.5,0);g.add(bundle);
+  g.position.set(pw.position.x-24,9,pw.position.z-6);scene.add(g);
+  storks.push({g:g,w1:w1,w2:w2,bundle:bundle,t:0,tx:pw.position.x,tz:pw.position.z,kids:kids,dropped:false});
+  beep(880,.15,"triangle",.05);setTimeout(function(){beep(988,.15,"triangle",.05);},200);
+  announce(kids===2?"👶👶 DER STORCH BRINGT ZWILLINGE!":"👶 DER STORCH KOMMT!","#6ab8ff");
+}
+function updStorks(dt){
+  for(var i=storks.length-1;i>=0;i--){var st=storks[i];st.t+=dt;
+    var k=st.t/5;
+    st.g.position.x=st.tx-24+k*48;st.g.position.z=st.tz-6+Math.sin(k*3)*2;
+    st.g.position.y=9-Math.sin(Math.min(1,k*2)*Math.PI)*3.5;
+    var flap=Math.sin(st.t*9)*0.6;st.w1.rotation.x=flap;st.w2.rotation.x=-flap;
+    st.g.rotation.y=Math.PI/2;
+    if(!st.dropped&&k>0.45){st.dropped=true;st.bundle.visible=false;
+      hearts(st.tx,st.tz);beep(1046,.3,"triangle",.07);}
+    if(k>=1){scene.remove(st.g);storks.splice(i,1);}}}
 function updFam(dt){
   for(var i=0;i<pawns.length;i++){var pw=pawns[i];if(!pw||!pw.followers)continue;
     for(var j=0;j<pw.followers.length;j++){var f=pw.followers[j];
@@ -723,8 +819,13 @@ var music={on:false,master:null,padOsc:[],stepT:0,step:0,chord:0};
 var LP_CHORDS=[[130.81,196,261.63],[146.83,220,293.66],[123.47,185,246.94],[164.81,246.94,329.63]]; // C G h e — freundlich
 var LP_PENTA=[523.25,587.33,659.25,783.99,880,1046.5];
 function musicStart(){if(music.on||!actx)return;music.on=true;
+  // Echo-Raum: DelayNode-Feedback gibt allem sanfte Tiefe
+  music.echo=actx.createDelay(1.0);music.echo.delayTime.value=0.34;
+  music.echoGain=actx.createGain();music.echoGain.gain.value=0.28;
+  music.echo.connect(music.echoGain);music.echoGain.connect(music.echo);
   music.master=actx.createGain();music.master.gain.value=0;music.master.connect(actx.destination);
   var lp=actx.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1500;lp.connect(music.master);music.bus=lp;
+  music.echo.connect(music.master);lp.connect(music.echo);
   var pg=actx.createGain();pg.gain.value=0.1;pg.connect(lp);
   for(var v=0;v<3;v++){var o=actx.createOscillator();o.type="sine";
     var og=actx.createGain();og.gain.value=0.33;o.connect(og);og.connect(pg);
@@ -742,6 +843,8 @@ function updMusic(dt){
   if(want!==music.chord&&music.step%8===0){music.chord=want;
     for(var v=0;v<3;v++){try{music.padOsc[v].frequency.setTargetAtTime(LP_CHORDS[want][v]*(ch>=6?0.75:1),actx.currentTime,1.6);}catch(e){}}}
   if(Math.random()<0.3)musicNote(LP_PENTA[(Math.random()*LP_PENTA.length)|0]*(ch>=6?0.5:1),1.2,0.022); // Spieluhr
+  if(music.step%4===0)musicNote(LP_CHORDS[music.chord][0]/2,0.5,0.028); // sanfter Bass-Puls
+  if(music.step%8===4&&Math.random()<0.6)musicNote(LP_CHORDS[music.chord][2]*2,0.35,0.014); // Glitzer-Offbeat
 }
 // ===================== Landmarken pro Kapitel (am Meilenstein-Feld) =====================
 (function(){
@@ -802,7 +905,11 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);
+    if(window._lmSwingPivot)window._lmSwingPivot.rotation.z=Math.sin(G.t*1.7)*0.55; // Schaukel schwingt
+    if(window._lmClockM){window._lmClockM.rotation.z=-G.t*0.5;window._lmClockH.rotation.z=-G.t*0.5/12;} // Uhr läuft
+    if(window._lmBeam)window._lmBeam.rotation.y=G.t*0.9; // Leuchtturm-Strahl rotiert
+    if(window._lmWins)for(var wv=0;wv<window._lmWins.length;wv++)window._lmWins[wv].material.emissiveIntensity=0.28+0.14*Math.sin(G.t*2+wv*1.7); // Büro flackert
     updSeason(dt,chapterOf(G.players[G.turn].tile));
     for(var fsI=0;fsI<fieldSprites.length;fsI++){var fs2=fieldSprites[fsI];fs2.sp.position.y=fs2.y0+Math.sin(G.t*1.6+fs2.b)*0.12;}
     if(window._lpTree)window._lpTree.rotation.z=Math.sin(G.t*0.6)*0.02;
@@ -920,24 +1027,24 @@ function handleField(p,f){
       return;}
     if(ch===4&&!p.fam.partner){
       showCard("Meilenstein · Die große Frage","💍 Willst du heiraten?","Ihr steht am See, die Sonne geht unter, und die Frage liegt in der Luft. Dein Herz klopft bis zum Hals.",
-        [{l:"💒 Ja — große Hochzeit!",sub:"−8 💰 · +6 ❤️ · +4 👥 · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-8,glueck:6,freunde:4});p.bio.push("heiratete die große Liebe mit einem rauschenden Fest");syncFam(G.turn);updPlayers();endTurnSoon();}},
-         {l:"💕 Ja — klein und heimlich",sub:"−2 💰 · +4 ❤️ · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-2,glueck:4});p.bio.push("heiratete still am Standesamt — und war überglücklich");syncFam(G.turn);updPlayers();endTurnSoon();}},
+        [{l:"💒 Ja — große Hochzeit!",sub:"−8 💰 · +6 ❤️ · +4 👥 · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-8,glueck:6,freunde:4});p.bio.push("heiratete die große Liebe mit einem rauschenden Fest");weddingScene(G.turn);syncFam(G.turn);updPlayers();endTurnSoon();}},
+         {l:"💕 Ja — klein und heimlich",sub:"−2 💰 · +4 ❤️ · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-2,glueck:4});p.bio.push("heiratete still am Standesamt — und war überglücklich");weddingScene(G.turn);syncFam(G.turn);updPlayers();endTurnSoon();}},
          {l:"🕊 Noch nicht — die Freiheit ruft",sub:"+2 🧠 · +1 ❤️",fn:function(){applyFx(p,{wissen:2,glueck:1});p.bio.push("wählte die Freiheit — vorerst");updPlayers();endTurnSoon();}}]);
       return;}
     if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;
       showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
-        [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(Math.random()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");syncFam(G.turn);updPlayers();endTurnSoon();}},
-         {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");syncFam(G.turn);updPlayers();endTurnSoon();}},
+        [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(Math.random()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");storkScene(G.turn,1);updPlayers();endTurnSoon();}},
+         {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");storkScene(G.turn,2);updPlayers();endTurnSoon();}},
          {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥",fn:function(){applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");updPlayers();endTurnSoon();}}]);
       return;}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
       [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
     camShake=0.3;return;}
-  if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");beep(1046,.1,"triangle",.06);endTurnSoon();return;}
+  if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
   if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
-  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");beep(880,.1,"triangle",.05);endTurnSoon();return;}
-  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");beep(760,.1,"triangle",.05);endTurnSoon();return;}
-  if(f.type==="f"){p.freunde+=2;announce("+2 👥","#8affc0");beep(660,.1,"triangle",.05);endTurnSoon();return;}
+  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
+  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
+  if(f.type==="f"){p.freunde+=2;announce("+2 👥","#8affc0");beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
   // Ereignis-Feld: ungenutztes Ereignis des Kapitels ziehen
   var pool=(EVENTS[ch]||[]).concat(G.adult?(EVENTS18[ch]||[]):[]);
   if(!p.used)p.used={};if(!p.used[ch])p.used[ch]=[];
