@@ -23,13 +23,14 @@ Danke für dein Verständnis — und nochmals Entschuldigung für die Umstände.
 Herzliche Grüsse
 Dein LuxeStyle-Team · luxestyle.ch
 
-## #1006 — Mobile Klimaanlage Olimpia Splendid (CHF 426.51)
+## #1006 — Mobile Klimaanlage Olimpia Splendid (CHF 426.51) — ✅ ERSTATTET 07.07.
 **Betreff: Deine Bestellung #1006 — Rückerstattung & Entschuldigung**
 
 Guten Tag Léa
 
-Es tut uns sehr leid: Durch die aktuelle Hitzewelle ist die von dir bestellte Klimaanlage
-bei unserem Lieferanten europaweit ausverkauft — ohne verbindlichen Nachliefertermin.
+Es tut uns sehr leid: Als du bestellt hast, war die Klimaanlage noch verfügbar — durch die
+enorme Nachfrage in der aktuellen Hitzewelle ist sie jedoch innert einem Tag bei unserem
+Lieferanten europaweit ausverkauft gegangen, ohne verbindlichen Nachliefertermin.
 Wir möchten dich nicht wochenlang warten lassen, gerade jetzt.
 
 Wir haben dir deshalb heute den vollen Betrag von CHF 426.51 zurückerstattet — je nach Bank
