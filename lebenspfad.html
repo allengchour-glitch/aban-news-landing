@@ -16,20 +16,20 @@
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:#0a0d1c;color:#eaf0ff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,#a8e0f8);color:#2a3040;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
 #wrap{position:fixed;inset:0}canvas{display:block}
 .hide{display:none!important}
 #hud{position:fixed;inset:0;pointer-events:none;z-index:10}
 /* Spieler-Panel */
 #players{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;max-width:min(300px,60vw)}
-.pcard{background:rgba(10,14,30,.82);border:1px solid rgba(120,140,255,.25);border-radius:12px;padding:7px 11px;font-size:.78rem;transition:border-color .3s,box-shadow .3s}
-.pcard.on{border-color:#ffd166;box-shadow:0 0 18px rgba(255,209,102,.35)}
+.pcard{background:rgba(255,253,246,.92);border:2px solid rgba(120,110,80,.25);border-radius:12px;padding:7px 11px;font-size:.78rem;transition:border-color .3s,box-shadow .3s;box-shadow:0 3px 10px rgba(60,40,10,.15)}
+.pcard.on{border-color:#ff8c2a;box-shadow:0 0 18px rgba(255,150,40,.45)}
 .pcard .nm{font-weight:900;font-size:.85rem}
-.pcard .st{display:flex;gap:9px;color:#c3ccf0;margin-top:2px;flex-wrap:wrap}
+.pcard .st{display:flex;gap:9px;color:#4a5262;margin-top:2px;flex-wrap:wrap;font-weight:600}
 .pcard .st span{white-space:nowrap}
 #chapterTag{position:absolute;top:12px;left:50%;transform:translateX(-50%);text-align:center}
-#chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 2px 12px #000}
-#chapterTag small{display:block;color:#aeb8e0;font-size:.72rem;margin-top:2px;text-shadow:0 1px 6px #000}
+#chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 2px 4px rgba(40,60,90,.6),0 0 14px rgba(40,60,90,.4)}
+#chapterTag small{display:block;color:#fff;font-size:.72rem;margin-top:2px;text-shadow:0 1px 4px rgba(40,60,90,.6)}
 #turnTag{position:absolute;top:64px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.85rem;color:#ffd166;text-shadow:0 2px 8px #000}
 /* Würfel-Knopf */
 #rollBtn{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:50px;color:#1a1020;background:linear-gradient(92deg,#ffd166,#ff7ad9);box-shadow:0 12px 44px rgba(255,180,110,.4);transition:transform .12s,opacity .3s}
@@ -39,35 +39,35 @@ html,body{height:100%;overflow:hidden;background:#0a0d1c;color:#eaf0ff;font-fami
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.05em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#ffd166;pointer-events:none}
 #hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.95rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
 .dnum{position:absolute;font-weight:900;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .75s ease-out,opacity .75s;opacity:1;will-change:transform,opacity}
-#keysHelp{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#8b93b8;text-shadow:0 1px 6px #000;white-space:nowrap}
+#keysHelp{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#fff;text-shadow:0 1px 4px rgba(40,60,90,.7);white-space:nowrap;background:rgba(60,90,130,.35);border-radius:14px;padding:3px 12px}
 /* Ereignis-Karte */
-#card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(160deg,rgba(24,28,56,.98),rgba(12,14,30,.98));border:1px solid rgba(255,209,102,.5);border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-height:86vh;overflow:auto}
+#card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
 #card.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
-#card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#ffd166;margin-bottom:8px}
-#card h3{font-size:1.2rem;color:#fff;margin-bottom:8px;line-height:1.35}
-#card .txt{color:#d5ddf5;font-size:.94rem;line-height:1.55;margin-bottom:14px}
+#card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#c98a1a;margin-bottom:8px;font-weight:800}
+#card h3{font-size:1.2rem;color:#2a3040;margin-bottom:8px;line-height:1.35}
+#card .txt{color:#4a5262;font-size:.94rem;line-height:1.55;margin-bottom:14px}
 #card .opts{display:flex;flex-direction:column;gap:8px}
-#card button{border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#e5ebff;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:.88rem;text-align:left;transition:border-color .15s,background .15s}
-#card button:hover{border-color:#ffd166;background:rgba(50,46,80,.9)}
-#card button small{display:block;color:#9aa6d8;font-weight:600;margin-top:3px;font-size:.76rem}
+#card button{border:2px solid #e8d8b0;background:#fff;color:#2a3040;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:.88rem;text-align:left;transition:border-color .15s,background .15s,transform .1s;box-shadow:0 3px 0 #e8d8b0}
+#card button:hover{border-color:#ffcf3a;background:#fffbe8;transform:translateY(-1px)}
+#card button small{display:block;color:#8a7a4a;font-weight:600;margin-top:3px;font-size:.76rem}
 /* Overlays */
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 36%,rgba(30,24,58,.85),rgba(8,8,18,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
-.overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#a9b8ff;text-transform:uppercase;margin-bottom:12px}
-.overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#ffd166,#ff7ad9 45%,#5ef2ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 26px rgba(255,180,120,.35))}
-.overlay p{color:#c7cbe6;max-width:540px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,rgba(110,200,245,.96),rgba(255,244,214,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
+.overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#4a6a8a;text-transform:uppercase;margin-bottom:12px;font-weight:800}
+.overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#ff8c2a,#ff5db8 45%,#2f8cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 0 rgba(255,255,255,.8)) drop-shadow(0 8px 22px rgba(80,60,20,.25))}
+.overlay p{color:#3a4252;max-width:540px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
 .btn{border:0;cursor:pointer;font-weight:900;font-size:1.02rem;padding:13px 30px;border-radius:44px;color:#1a1020;background:linear-gradient(92deg,#ffd166,#ff7ad9);box-shadow:0 10px 40px rgba(255,180,110,.35);margin:4px}
-.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.88rem;padding:10px 22px}
+.btn.ghost{background:#fffdf6;color:#8a6a2a;border:2px solid #d8c8a0;box-shadow:none;font-size:.88rem;padding:10px 22px}
 .pselect{display:flex;gap:10px;justify-content:center;margin:8px 0 4px;flex-wrap:wrap}
-.pselect button{width:64px;height:64px;border-radius:16px;border:2px solid #3a4170;background:rgba(24,28,56,.8);color:#e5ebff;font-size:1.5rem;font-weight:900;cursor:pointer}
-.pselect button.on{border-color:#ffd166;box-shadow:0 0 16px rgba(255,209,102,.4)}
-.foot{margin-top:14px;font-size:.78rem;color:#8890b8}.foot a{color:#9fb2ff}
+.pselect button{width:64px;height:64px;border-radius:16px;border:3px solid #d8c8a0;background:#fffdf6;color:#3a4252;font-size:1.5rem;font-weight:900;cursor:pointer;box-shadow:0 3px 0 #d8c8a0}
+.pselect button.on{border-color:#ff8c2a;box-shadow:0 0 16px rgba(255,150,40,.5)}
+.foot{margin-top:14px;font-size:.78rem;color:#6a7282}.foot a{color:#2f7dd0;font-weight:700}
 /* Biografie */
-#bio{max-width:600px;text-align:left;background:rgba(14,16,34,.85);border:1px solid rgba(255,209,102,.35);border-radius:16px;padding:18px 22px;margin:10px 0;font-size:.9rem;line-height:1.65;color:#dbe3ff;max-height:44vh;overflow:auto}
-#bio h4{color:#ffd166;margin:10px 0 4px;font-size:.95rem}
+#bio{max-width:600px;text-align:left;background:#fffdf6;border:3px solid #ffcf3a;border-radius:16px;padding:18px 22px;margin:10px 0;font-size:.9rem;line-height:1.65;color:#3a4252;max-height:44vh;overflow:auto;box-shadow:0 10px 30px rgba(60,40,10,.2)}
+#bio h4{color:#c9821a;margin:10px 0 4px;font-size:.95rem}
 #scores{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:8px 0}
-.score{background:rgba(24,28,56,.85);border:1px solid #3a4170;border-radius:14px;padding:10px 16px;font-size:.85rem}
+.score{background:#fffdf6;border:2px solid #e8d8b0;border-radius:14px;padding:10px 16px;font-size:.85rem;color:#3a4252}
 .score b{display:block;font-size:1.25rem}
-.score.win{border-color:#ffd166;box-shadow:0 0 18px rgba(255,209,102,.35)}
+.score.win{border-color:#ff8c2a;box-shadow:0 0 18px rgba(255,150,40,.4)}
 </style>
 </head>
 <body>
@@ -87,7 +87,7 @@ html,body{height:100%;overflow:hidden;background:#0a0d1c;color:#eaf0ff;font-fami
 <div id="dice">🎲</div>
 <button id="rollBtn" class="hide">🎲 Würfeln</button>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
-<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:10px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🔊</button>
+<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:10px;right:12px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.9);color:#5a6272;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;box-shadow:0 2px 8px rgba(60,40,10,.2)">🔊</button>
 
 <div class="overlay" id="start">
   <div class="kicker">aban news · das große Würfel-Brettspiel · 1–4 Spieler</div>
@@ -715,7 +715,7 @@ var selN=2;
 })();
 function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML="";
   for(var i=0;i<selN;i++){var inp=document.createElement("input");inp.type="text";inp.maxLength=12;inp.placeholder=PNAMES[i];inp.id="pn"+i;
-    inp.style.cssText="width:110px;padding:9px 10px;border-radius:10px;border:2px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:rgba(20,24,50,.85);color:#fff;font-weight:800;text-align:center;font-size:.85rem";
+    inp.style.cssText="width:110px;padding:9px 10px;border-radius:10px;border:3px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:.85rem";
     nr.appendChild(inp);}}
 function begin(saved){
   G=saved||freshState(selN);
