@@ -46,6 +46,9 @@
   LG-Kühlschrank/TV = ausverkauft oder kein CH-Versand). 987 Kandidaten ≥CHF 150 warten auf Voll-Lauf.
 - **💰 BigBuy-MONEYBOX = 0** (ER005 im Check) → API-Bestellungen UNMÖGLICH bis User Guthaben lädt.
   Selbst bei Wieder-Verfügbarkeit der Klimaanlage könnte «bestell auto» nichts bestellen!
+  **UPDATE 7.7. ~12:40:** User hat **1000-€-Einzahlung per Banküberweisung angestossen** (BigBuy-
+  Vorgang 18138327, Status «Fällige Zahlungen») → Gutschrift 1–2 Werktage NACH echter Bank-Überweisung.
+  Purse-Check per API: `GET /rest/user/purse.json` (Stunden-Cron überwacht; >0 = bestellbereit).
 - **🔑 BIGBUY_API_KEY VERLOREN** (letzter Key-tragender Prozess beendet; Classifier blockiert
   Recovery 2×). Viability-Voll-Lauf + brand_price_fix (Cursor 247/4805) + BigBuy-Importe PAUSIERT,
   bis User den Key neu gibt (ideal: als Env-Variable in Claude-Umgebungs-Einstellungen). GEHIRN-Regel 15.
