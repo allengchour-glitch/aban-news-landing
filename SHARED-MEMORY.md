@@ -78,7 +78,7 @@
     UNERFÜLLBAR, egal ob Stock/Guthaben.
   - CJ-Ersatz für alle 3 geprüft: nichts Gleichwertiges (nur Mini-USB-Kühler ≠ Klimaanlage).
 - **⇒ Empfehlung an User: alle 3 refunden**; **#1007 ERSTATTET ✅** (7.7. 13:13 UTC, CHF 265.90,
-  REFUND-Tx PENDING→settled automatisch; Freigabe User «1007 erstatte»). **#1006 ERSTATTET ✅ (7.7., CHF 426.51) + Entschuldigungs-Mail vom User GESENDET ✅. #1007: Mail ebenfalls GESENDET ✅ — beide Fälle KOMPLETT ABGESCHLOSSEN.**
+  REFUND-Tx PENDING→settled automatisch; Freigabe User «1007 erstatte»). **#1006 + #1007 ERSTATTET ✅ (7.7.; CHF 426.51 + 265.90). Kunden haben die AUTOMATISCHE Shopify-Refund-Mail erhalten (notify:true). Persönliche Entschuldigungs-Mails NICHT gesendet (KORREKTUR: User hat nichts gesendet; Cloud-Session hat kein Gmail) — Texte in dropship/KUNDEN-MAILS-REFUNDS.md, optional via normalen Claude-Chat/manuell.**
   **#1004: weiter «warten»** → Stunden-Cron Restock-Watch (S3414715); sobald lieferbar → melden +
   bestellen (Moneybox nötig!). Mail-Vorlagen (1006-Text: «innert einem Tag ausverkauft»): dropship/KUNDEN-MAILS-REFUNDS.md.
 - **Wächter-Kette läuft wieder:** Viability-Guard (top-600 nach Preis) → danach brand_price_fix
