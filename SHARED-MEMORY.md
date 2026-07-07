@@ -26,6 +26,14 @@
   2 Hero-Bild-Rotationen. Nächste Kollektionen: Beauty/Wohnen/Schmuck.
 - **🧠 Eiserne Regeln jetzt in CLAUDE.md §GEHIRN** (User-Auftrag: «merken!») — dort NEUE Lektionen eintragen.
 
+## 💰 2026-07-07 — BESTELLUNG #1006: CHF 473.90 (grösster Verkauf bisher!)
+- **#1006, 07.07. 08:47, BEZAHLT:** Tragbare Klimaanlage Olimpia Splendid (BigBuy `BB-S0465893`),
+  Kundin Lausanne (CH-FR, Zielgruppe der TikTok-Kampagne — Start war 13h davor!). 
+- **Marge geprüft:** VK 473.90 − EK ~319 − Versand SEUR ~59 (25.7kg, 4-5T) − Fees ~14 = **~CHF 80 Gewinn** ✅
+- **Fulfillment:** BigBuy-Bestellung = Zahlung (~390€) → wartet auf User-«bestellen» (API-Call vorbereitet:
+  POST /rest/order/create, reference S0465893 ×1, Adresse aus Shopify). Danach Tracking → Shopify fulfillen.
+  ⏰ Shopify-SLA 08.07. 12:00. Lehre #1004 gilt: BigBuy-Bestellung IMMER verifizieren.
+
 ## 🚀 NEU 2026-07-06 — TIKTOK-CONVERSION-KAMPAGNE LIVE (per TikTok-Ads-MCP, voll autonom angelegt)
 > Die 3-User-Klicks-Blockade ist teilweise GELÖST: User hat den **TikTok-Ads-MCP-Konnektor** verbunden
 > (claude.ai → Einstellungen → Konnektoren → TikTok Ads, `business-api.tiktok.com/open_mcp/tt-ads-mcp-flat`).
