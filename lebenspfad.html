@@ -316,6 +316,60 @@ function updBalloons(t){for(var i=0;i<balloons.length;i++){var bl=balloons[i];
     ring.rotation.x=-Math.PI/2;ring.rotation.z=Math.PI/4;
     ring.position.set(f2.x+4+(h%2)*1.5-(h>=4?0.75:0),terrainH(f2.x+4,f2.z+6)+0.05,f2.z+6+Math.floor(h/2)*1.5);
     scene.add(ring);}})();
+// Kapitel-Bauwerke: jedes Lebenskapitel bekommt sein Wahrzeichen am Pfadrand
+(function(){
+  function at(ci,dx,dz){var f=fields[ci*FIELDS_PER+9];var g=new THREE.Group();
+    g.position.set(f.x+dx,terrainH(f.x+dx,f.z+dz),f.z+dz);scene.add(g);return g;}
+  function box(g,w,h,d,c,x,y,z,e){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c,e!==undefined?e:c,e!==undefined?0.3:0.12));
+    m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
+  function cone(g,r,h,c,x,y,z,seg){var m=new THREE.Mesh(new THREE.ConeGeometry(r,h,seg||4),mat(c,c,0.15));
+    m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
+  function cyl(g,r1,r2,h,c,x,y,z){var m=new THREE.Mesh(new THREE.CylinderGeometry(r1,r2,h,10),mat(c,c,0.12));
+    m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
+  // K1: Spielplatz — Rutsche + Schaukel
+  var k1=at(0,7,-8);
+  box(k1,0.3,2.6,0.3,0xff5d7d,0,1.3,0);box(k1,0.3,2.6,0.3,0xff5d7d,1.6,1.3,0);
+  var slide=box(k1,1.1,0.16,2.8,0xffd91f,0.8,1.4,1.2);slide.rotation.x=0.7;
+  box(k1,0.24,2.2,0.24,0x2f8cff,3.4,1.1,0);box(k1,0.24,2.2,0.24,0x2f8cff,5.2,1.1,0);
+  box(k1,2.1,0.14,0.14,0x2f8cff,4.3,2.2,0);box(k1,0.7,0.12,0.4,0xff9a2a,4.3,0.9,0);
+  // K2: Schulhaus mit Turmuhr
+  var k2=at(1,8,7);
+  box(k2,4.4,2.8,3.2,0xf0d8b0,0,1.4,0);cone(k2,3.2,1.8,0xe06a5a,0,3.7,0).rotation.y=Math.PI/4;
+  var clock=cyl(k2,0.55,0.55,0.12,0xfffdf6,0,2.4,1.66);clock.rotation.x=Math.PI/2;
+  box(k2,0.06,0.34,0.05,0x2a3040,0,2.5,1.74);box(k2,0.26,0.06,0.05,0x2a3040,0.1,2.4,1.74);
+  box(k2,0.8,1.2,0.1,0x8a5a3a,0,0.6,1.62);
+  // K3: Bücherturm (Wissen!)
+  var k3=at(2,-7,-8);
+  [[0xff5d7d,0],[0x2f8cff,0.5],[0x35d95a,1.0],[0xffd91f,1.5],[0xa86aff,2.0]].forEach(function(bk,i2){
+    var bx2=box(k3,2.4-i2*0.16,0.5,1.7-i2*0.1,bk[0],Math.sin(i2*1.6)*0.25,0.25+bk[1],0);bx2.rotation.y=Math.sin(i2*2.2)*0.22;});
+  // K4: bunte Stadthäuschen-Reihe
+  var k4=at(3,7,8);
+  [[0xff9a6a,0],[0x6ab8ff,2.1],[0xffd166,4.2]].forEach(function(hh,i3){
+    box(k4,1.8,2.2+i3*0.3,1.8,hh[0],hh[1],1.1+i3*0.15,0);cone(k4,1.4,1.0,0xe06a5a,hh[1],2.7+i3*0.3,0);
+    box(k4,0.5,0.7,0.06,0xfff2c8,hh[1],1.1,0.93,0xfff2c8);});
+  // K5: Büroturm mit Leucht-Fenstern
+  var k5=at(4,-8,-7);
+  box(k5,2.6,7.5,2.6,0x8ab0c8,0,3.75,0);
+  for(var fl=0;fl<5;fl++)box(k5,2.7,0.34,2.7,0xfff2c8,0,1.1+fl*1.35,0,0xfff2c8);
+  // K6: Garten — Zaun + Beete
+  var k6=at(5,7,-8);
+  for(var z2=0;z2<7;z2++)box(k6,0.14,0.8,0.14,0xf0e8d8,z2*0.75,0.4,0);
+  box(k6,5.0,0.1,0.14,0xf0e8d8,2.2,0.72,0);
+  [[0xff5d7d],[0xffd91f],[0xa86aff]].forEach(function(be,i4){box(k6,1.2,0.3,1.2,0x6a4a2a,0.6+i4*1.7,0.15,1.6);
+    cone(k6,0.34,0.6,be[0],0.6+i4*1.7,0.7,1.6,8);});
+  // K7: Weinberg — Fässer + Rebenreihen
+  var k7=at(6,-7,8);
+  cyl(k7,0.7,0.8,1.2,0x8a5a3a,0,0.6,0);cyl(k7,0.7,0.8,1.2,0x8a5a3a,1.8,0.6,0.4);
+  for(var rw=0;rw<3;rw++)box(k7,4.2,0.5,0.2,0x4a8a3a,1,0.9,1.6+rw*0.9);
+  // K8: Leuchtturm (weiss-rot) mit Licht
+  var k8=at(7,8,-8);
+  [[0xf8f8ff,0],[0xe84a3a,1],[0xf8f8ff,2],[0xe84a3a,3]].forEach(function(st4,i5){
+    cyl(k8,1.0-i5*0.09,1.1-i5*0.09,1.1,st4[0],0,0.55+i5*1.1,0);});
+  cyl(k8,0.6,0.6,0.8,0x2a3040,0,4.9,0);
+  var lamp=new THREE.Mesh(new THREE.SphereGeometry(0.4,10,8),new THREE.MeshBasicMaterial({color:0xfff2a8}));
+  lamp.position.y=4.9;k8.add(lamp);
+  var beam=new THREE.PointLight(0xfff2a8,1.4,30);beam.position.y=5;k8.add(beam);
+})();
 // Schmetterlinge (flatternde Doppel-Quads, folgen lose der Kamera)
 var flies=[];
 (function(){for(var i=0;i<12;i++){var g=new THREE.Group();
