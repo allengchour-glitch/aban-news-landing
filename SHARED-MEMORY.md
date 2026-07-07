@@ -26,6 +26,18 @@
   2 Hero-Bild-Rotationen. Nächste Kollektionen: Beauty/Wohnen/Schmuck.
 - **🧠 Eiserne Regeln jetzt in CLAUDE.md §GEHIRN** (User-Auftrag: «merken!») — dort NEUE Lektionen eintragen.
 
+## 🚨 2026-07-07 — FULFILLMENT-KRISE: BigBuy-Ausverkauf trifft #1004 UND #1006
+- **#1004 (25.6., LED-Laterne bb-S3414715): wurde NIE bei BigBuy bestellt** (API: «No order found»)
+  — das Shopify-«Fulfilled» war falsch. Artikel bei BigBuy AUSVERKAUFT (order/check ER003).
+- **#1006 (7.7., Klimaanlage BB-S0465893, CHF 473.90): BigBuy ausverkauft**, ebenso ALLE
+  mobilen Klimaanlagen (S7919715/S7926692/S91120939) — Hitzewellen-Ausverkauf.
+- **Sofortmassnahme:** alle 4 Klimaanlagen auf DRAFT (Tag ausverkauft-lieferant) — keine weiteren
+  unerfüllbaren Verkäufe. Kunden-Entscheid (Refund/Ersatz) liegt beim User.
+- **⚠️ SYSTEMLÜCKE erkannt:** BigBuy-Produkte sind tracked:false → 0-Lager trotzdem kaufbar.
+  TODO PRIO 1: Stock-Guard (bulk BigBuy-Lager → 0-Stock-Produkte DRAFTen), in price_guard integrieren.
+- **Lehre:** VOR jedem BigBuy-Import/Verkauf zählt nur order/check als Stock-Wahrheit
+  (Katalog «active:1» heisst NICHT lieferbar).
+
 ## 💰 2026-07-07 — BESTELLUNG #1006: CHF 473.90 (grösster Verkauf bisher!)
 - **#1006, 07.07. 08:47, BEZAHLT:** Tragbare Klimaanlage Olimpia Splendid (BigBuy `BB-S0465893`),
   Kundin Lausanne (CH-FR, Zielgruppe der TikTok-Kampagne — Start war 13h davor!). 
