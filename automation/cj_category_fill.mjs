@@ -216,7 +216,8 @@ let total=0;
 for(const [cat,label] of grp.cats){
  if(total>=CAP)break; let got=0; const perCat=PERCAT||Math.ceil(CAP/3);
  for(let page=1;page<=MAXPAGE && total<CAP && got<perCat;page++){
-  const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}`); await sleep(700);
+  const WH=(process.env.WAREHOUSE||'').trim(); // EU-Lager-Filter (z.B. DE) — User 2026-07-07 «cj sachen aus eu lager»
+  const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}${WH?`&countryCode=${WH}`:''}`); await sleep(700);
   const list=(j.data&&j.data.list)||[]; if(!list.length)break;
   for(const p of list){
    if(total>=CAP)break;
@@ -235,7 +236,8 @@ for(const [cat,label] of grp.cats){
    const fash=grp.fashion?buildFashion(d):null;
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
-   const input={title,handle:slug,productType:grp.type,vendor:'LuxeStyle',status:'ACTIVE',tags:grp.tags,descriptionHtml:html,
+   const tagsFinal=(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags);
+   const input={title,handle:slug,productType:grp.type,vendor:'LuxeStyle',status:'ACTIVE',tags:tagsFinal,descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
