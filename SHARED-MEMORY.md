@@ -8,6 +8,20 @@
 
 ---
 
+## 🛠️ 2026-07-07 (Abend) — Lager-Badge live + Mail-Automatik (Stand)
+- **«Auf Lager»-Badge auf ALLEN Produktseiten live:** `templates/product.json` → Block `lux_delivery`
+  erweitert (grüner Punkt «Auf Lager · versandbereit» via closest.product.available, rot «Momentan
+  ausverkauft»). Live verifiziert. Ehrlich, weil der Viability-Guard aktive BigBuy-Produkte laufend
+  auf echte Lieferbarkeit prüft.
+- **Zoho-App-Passwort erhalten** (/tmp/zoho_app_pw, chmod 600, NIE Repo; besser: Env ZOHO_APP_PASSWORD).
+  ⚠️ Cloud-Sandbox blockt IMAP/SMTP (993/465: CONNECT 200, aber TLS-Reset durchs Gateway) →
+  **Mail-Automatik läuft NICHT aus der Cloud**. Tool `automation/zoho_mail.py` (proxy-fähig,
+  inbox/read/search/send) funktioniert auf dem PC (direktes Netz) → PC-Claude kann Mail-Dienst
+  übernehmen. Alternative später: Zoho REST-API via OAuth-Self-Client (HTTPS 443 = erlaubt).
+- **BigBuy-Paket-Frage:** Ecommerce Pack (74 €/Mt) ist AKTIV und reicht — Marketplace Pack (99 €)
+  nur für Amazon/eBay-Konnektoren, die wir nicht nutzen (eigene API-Skripte statt MIP). KEIN Upgrade.
+- BigBuy-Support-Ticket 46668705945 (MoneyBox-IBAN) «In Bearbeitung» — Antwort kommt in Zoho-Postfach.
+
 ## 📧 2026-07-07 — info@luxestyle.ch ist jetzt eine ECHTE Mailbox (Zoho Mail, EU)
 - **Zoho Mail Lite** (zoho.eu, bezahlt bis 07/2027): Domain luxestyle.ch verifiziert, Postfach
   **info@luxestyle.ch** (Superadmin) angelegt. Webmail: **mail.zoho.eu** · Admin: **mailadmin.zoho.eu**.
