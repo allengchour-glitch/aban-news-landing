@@ -109,6 +109,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="scores"></div>
   <div id="bio"></div>
   <button class="btn" id="newBtn">Neues Leben ▶</button>
+  <button class="btn ghost" id="shareBtn">📖 Biografie teilen</button>
   <div class="foot"><a href="/spiele.html">Mehr Spiele</a></div>
 </div>
 
@@ -1021,6 +1022,17 @@ function begin(saved){
 document.getElementById("startBtn").onclick=function(){lsDel(SAVE_KEY);begin(null);};
 document.getElementById("contBtn").onclick=function(){begin(loadGame());};
 document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");};
+document.getElementById("shareBtn").onclick=function(){
+  if(!G)return;
+  var txt="🎲 LEBENSPFAD — unsere Leben:\n\n";
+  G.players.forEach(function(p){
+    txt+="📖 "+p.name+(p.job?" ("+p.job.n+")":"")+(p.dead?" ⚰️":" 🏁")+" — "+lifeScore(p)+" Lebenspunkte\n";
+    if(p.bio.length)txt+="   "+p.bio.slice(0,3).join(". ")+"…\n";});
+  txt+="\nSpiel dein Leben: abannews.com/lebenspfad";
+  if(navigator.share){navigator.share({text:txt}).catch(function(){});}
+  else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){
+    document.getElementById("shareBtn").textContent="✓ Kopiert!";});}
+};
 // ===================== Ereignis-Engine =====================
 // EVENTS[kapitel] = [{t:Titel, x:Text, o:[{l:Label, fx:{geld,glueck,wissen,freunde}, bio:Schnipsel}]}]
 var EVENTS=window.LP_EVENTS||[[],[],[],[],[],[],[],[]];
