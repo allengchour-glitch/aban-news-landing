@@ -105,6 +105,16 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <div id="dice">🎲</div>
 <button id="rollBtn" class="hide">🎲 Würfeln</button>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
+<button id="chatBtn" title="Chat mit Oma Hilde" style="position:fixed;bottom:96px;right:14px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)" class="hide">💬</button>
+<div id="chatW" class="hide" style="position:fixed;bottom:96px;right:14px;width:min(320px,90vw);height:min(400px,60vh);background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;z-index:35;display:flex;flex-direction:column;box-shadow:0 16px 44px rgba(60,40,10,.35);overflow:hidden">
+  <div style="background:linear-gradient(92deg,#ffd166,#ffb46e);padding:10px 14px;font-weight:900;color:#4a3010;display:flex;justify-content:space-between;align-items:center">
+    <span>👵 Oma Hilde</span><button id="chatX" style="border:0;background:none;font-size:1.1rem;cursor:pointer;color:#4a3010">✕</button></div>
+  <div id="chatLog" style="flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;font-size:.85rem"></div>
+  <div style="display:flex;gap:6px;padding:8px;border-top:2px solid #f0e0b8">
+    <input id="chatIn" type="text" maxlength="80" placeholder="Frag Oma Hilde…" style="flex:1;border:2px solid #e8d8b0;border-radius:10px;padding:8px 10px;font-size:.85rem;background:#fff;color:#2a3040">
+    <button id="chatGo" style="border:0;background:linear-gradient(92deg,#ffd166,#ff7ad9);border-radius:10px;padding:8px 14px;font-weight:900;cursor:pointer;color:#4a3010">➤</button>
+  </div>
+</div>
 <button id="menuBtn" title="Menü" style="position:fixed;top:10px;right:58px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.9);color:#5a6272;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;box-shadow:0 2px 8px rgba(60,40,10,.2)">☰</button>
 <div id="menuO" class="overlay hide" style="z-index:45">
   <div class="kicker">Pause · Menü</div>
@@ -1036,6 +1046,50 @@ function updMusic(dt){
     scene.add(g);}
   for(var c2=0;c2<CHAPTERS.length;c2++)lm(c2);
 })();
+// ===================== Chat: Oma Hilde (kontextbewusst, offline) =====================
+function chatMsg(txt,who){
+  var log=document.getElementById("chatLog"),d=document.createElement("div");
+  d.style.cssText=who==="ich"?"align-self:flex-end;background:#e8f2ff;border-radius:12px 12px 2px 12px;padding:8px 11px;max-width:85%;color:#2a3040":
+    "align-self:flex-start;background:#fff2d0;border-radius:12px 12px 12px 2px;padding:8px 11px;max-width:85%;color:#3a3040";
+  d.textContent=txt;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+function hildeContext(){
+  var p=G.players[G.turn],ch=chapterOf(p.tile);
+  var lines=[];
+  if(p.geld<8)lines.push("Kind, dein Geldbeutel ist dünn wie Omas Geduld beim Skat. Halt Ausschau nach den 💰-Feldern!");
+  if(p.glueck>=25)lines.push("Du strahlst ja wie ein Honigkuchenpferd — so viel ❤️ hatte nicht mal Opa Willi.");
+  if(p.fam&&p.fam.kids>0)lines.push("Die Kleinen halten dich auf Trab, was? Genieß es. Die Ruhe kommt früh genug.");
+  if(p.fam&&p.fam.dog)lines.push("Der Hund wedelt ja fleißiger als du würfelst! Braves Tier.");
+  if(p.job)lines.push("Als "+p.job.n+" verdient man sich sein Brot ehrlich. Da bin ich stolz.");
+  if(ch<=1)lines.push("Ach, "+CHAPTERS[ch].n.toLowerCase()+"… die beste Zeit. Sammle Freunde, nicht Sorgen.");
+  if(ch>=6)lines.push("Die reifen Jahre sind wie guter Käse, Kind. Man muss sie nur richtig würdigen.");
+  if(G.adult)lines.push("Der 🔞-Modus? Kind, ich war jung in den 70ern. MICH schockierst du nicht.");
+  lines.push("Weißt du, was zählt? "+["Freunde am Tisch","ein warmes Herz","Neugier bis zum Schluss","dass man lachen kann"][(Math.random()*4)|0]+". Der Rest ist Würfelglück.");
+  return lines[(Math.random()*lines.length)|0];}
+function hildeAnswer(q){
+  q=q.toLowerCase();
+  if(/geld|reich|kohle|arm/.test(q))return "Geld ist wie Dünger, Kind — nützt nur, wenn man es verteilt. Aber die 💰-Felder mitnehmen schadet nie.";
+  if(/liebe|heirat|partner|herz/.test(q))return "Die große Frage kommt am Ende von Kapitel 5. Und zwischen uns: die kleine Hochzeit war bei uns auch die schönste.";
+  if(/kind|baby|familie|storch/.test(q))return "Wenn der Storch kommt, wird's laut und teuer und wunderbar. Zwillinge? Doppelt so laut. Doppelt so wunderbar.";
+  if(/tod|sterben|risiko|grab/.test(q))return "Der Tod spielt nur mit, wenn ihr das Häkchen setzt. Und selbst dann: lieber ein kurzes Leben mit Feuerwerk als ein langes im Wartezimmer. Aber sag das nicht deiner Mutter.";
+  if(/beruf|arbeit|job|karriere/.test(q))return "Nimm den Beruf, der zu deinem Bauch passt, nicht zu deinem Konto. Manager:in zahlt gut, aber die Gärtner:innen lächeln mehr.";
+  if(/glück|glueck/.test(q))return "Glück sind die ❤️-Felder — und die Begegnungen! Landet zusammen auf einem Feld, dann gibt's Bonus für beide. So ist das im Leben auch.";
+  if(/hund|haustier/.test(q))return "Der Hund! Nimm den Hund. Er wedelt, er bellt, er kostet fast nichts. Beste Entscheidung im Spiel, sag ich dir.";
+  if(/wie|regel|spiel|hilfe/.test(q))return "Würfeln, ziehen, entscheiden. ⭐-Felder sind die großen Momente. Und im ☰-Menü stehen die Regeln, falls Oma zu schnell erzählt.";
+  if(/hallo|hi|hey|servus|moin/.test(q))return "Na, du! Schön, dass du bei Oma vorbeischaust. Würfel gut heute?";
+  if(/danke/.test(q))return "Dafür nicht, Kind. Und jetzt würfel — das Leben wartet nicht!";
+  return hildeContext();}
+(function(){
+  var cb=document.getElementById("chatBtn"),cw=document.getElementById("chatW");
+  cb.onclick=function(){cw.classList.toggle("hide");
+    if(!cw.classList.contains("hide")&&!cw.dataset.greeted){cw.dataset.greeted=1;
+      chatMsg("Na, "+((G&&G.players[G.turn])?G.players[G.turn].name:"Kind")+"! Ich bin Oma Hilde. Frag mich was übers Leben — oder würfel einfach weiter, ich schau zu. 🧶","oma");}};
+  document.getElementById("chatX").onclick=function(){cw.classList.add("hide");};
+  function send(){var inp=document.getElementById("chatIn"),q=inp.value.trim();if(!q)return;
+    inp.value="";chatMsg(q,"ich");
+    setTimeout(function(){chatMsg(hildeAnswer(q),"oma");beep(520,.06,"triangle",.03);},450+Math.random()*500);}
+  document.getElementById("chatGo").onclick=send;
+  document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});
+})();
 // ===================== Kamera =====================
 var camShake=0;
 function updateCamera(dt){
@@ -1099,6 +1153,7 @@ function begin(saved){
   document.getElementById("start").classList.add("hide");
   document.getElementById("endO").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
+  document.getElementById("chatBtn").classList.remove("hide");
   rollBtn.classList.remove("hide");rollBtn.disabled=false;
   G.phase="idle";running=true;
   initProgMap();updPlayers();updChapter();
