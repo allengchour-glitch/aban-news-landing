@@ -157,6 +157,17 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <button class="btn ghost hide" id="wipeBtn">Neu beginnen (Speicherstand löschen)</button>
   <div class="foot">Kein Download · <a href="/spiele.html">aban Arcade</a></div>
 </div>
+<div class="overlay hide" id="menuO" style="z-index:45">
+  <div class="kicker">Pause · Menü</div>
+  <h1 style="font-size:1.7rem">NEON REALM</h1>
+  <div id="optRows" style="display:flex;flex-direction:column;gap:9px;margin:8px 0;min-width:min(320px,86vw)"></div>
+  <div style="margin-top:8px">
+    <button class="btn" id="resumeBtn2">Weiterspielen ▶</button>
+    <button class="btn ghost" id="rulesBtn2">📜 Hilfe</button>
+  </div>
+  <div class="foot">Fortschritt wird automatisch gespeichert</div>
+</div>
+<button id="menuBtn" title="Menü (ESC)" style="position:fixed;top:8px;right:56px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">☰</button>
 <div class="overlay hide" id="winO">
   <div class="kicker">Das Reich ist geeint</div>
   <h1>DU HAST GEWONNEN</h1>
@@ -192,8 +203,11 @@ addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:i!==undefined?i:0.8,flatShading:true});}
 
 // ===================== Audio =====================
-var actx=null,muted=lsGet("nr_muted")==="1";
-function beep(f,d,t,g){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
+var actx=null,muted=lsGet("nr_muted")==="1",paused=false;
+var OPT=(function(){try{return JSON.parse(lsGet("nr_opt")||"{}");}catch(e){return {};}})();
+if(OPT.music===undefined)OPT.music=true;if(OPT.sfx===undefined)OPT.sfx=true;
+function saveOpt(){lsSet("nr_opt",JSON.stringify(OPT));}
+function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
 (function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("nr_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 
 // ===================== Licht & Tag/Nacht =====================
@@ -417,7 +431,7 @@ addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k==="e")doInteract();
   if(k==="i")togglePanel("invPanel");
   if(k==="t")togglePanel("skillPanel");
-  if(k==="escape"){closePanels();closeDialog();}
+  if(k==="escape"){if(!document.getElementById("invPanel").classList.contains("hide")||!document.getElementById("skillPanel").classList.contains("hide")||dialogOpen){closePanels();closeDialog();}else toggleMenu();}
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var isTouch=("ontouchstart" in window);
@@ -1034,7 +1048,7 @@ function musicNote(f,dur,type,vol,dest){if(!actx)return;var o=actx.createOscilla
 function updMusic(dt,dayA){
   if(!music.on){if(actx&&running)musicStart();return;}
   // Ziel-Lautstärke: aus + Mute-Respekt, sanftes Fade
-  var tgt=muted?0:0.16;
+  var tgt=(muted||!OPT.music||paused)?0:0.16;
   music.master.gain.value+=(tgt-music.master.gain.value)*Math.min(1,dt*2);
   // Kampf-Intensität: Gegner in der Nähe (Crossfade-Idee aus der Recherche)
   var near2=0;for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
@@ -1096,7 +1110,7 @@ function loop(now){
   var dt=Math.min(0.05,(now-last)/1000);last=now;
   if(!G){renderer.render(scene,camera);return;}
   var dayA=updDayNight(G.t);
-  if(running){
+  if(running&&!paused){
     G.t+=dt;
     // Bewegung (Velocity-Glättung wie Colossus)
     var mv=moveVec(),spd=G.spd*(1+G.skills.tempo*0.08);
@@ -1167,6 +1181,19 @@ function begin(){
   updHUD();running=true;
   announce(saved?"Willkommen zurück!":"NEON REALM","#7de3ff");
 }
+function renderMenu(){var r=document.getElementById("optRows");r.innerHTML="";
+  [["🎵 Musik","music"],["🔔 Effekte","sfx"]].forEach(function(o){
+    var d=document.createElement("button");
+    d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between";
+    d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
+    d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();renderMenu();};r.appendChild(d);});}
+function toggleMenu(){if(!G)return;paused=!paused;
+  document.getElementById("menuO").classList.toggle("hide",!paused);
+  if(paused){renderMenu();saveGame();}}
+document.getElementById("menuBtn").onclick=toggleMenu;
+document.getElementById("resumeBtn2").onclick=toggleMenu;
+document.getElementById("rulesBtn2").onclick=function(){toggleMenu();
+  showHint("WASD laufen · LEER Angriff · Q Puls · SHIFT Rolle · E reden/nutzen · I Inventar · T Skills — folge den Aufgaben rechts oben!",6000);};
 document.getElementById("startBtn").onclick=begin;
 (function(){if(loadGame()){document.getElementById("startBtn").textContent="Weiterspielen ▶";var wb=document.getElementById("wipeBtn");wb.classList.remove("hide");
   wb.onclick=function(){if(wb.dataset.armed){lsDel(SAVE_KEY);location.reload();}else{wb.dataset.armed="1";wb.textContent="Sicher? Nochmal tippen zum Löschen";}};}})();

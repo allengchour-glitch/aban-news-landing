@@ -86,6 +86,17 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
   </div>
   <div class="foot">Trefft denselben Gegner gleichzeitig → <b style="color:#ffd166">KOMBO-NOVA</b> · Kein Download · <a href="/spiele.html">aban Arcade</a></div>
 </div>
+<div class="overlay hide" id="menuO" style="z-index:45">
+  <div class="kicker">Pause · Menü</div>
+  <h1 style="font-size:1.7rem">NEON DUO</h1>
+  <div id="optRows" style="display:flex;flex-direction:column;gap:9px;margin:8px 0;min-width:min(320px,86vw)"></div>
+  <div style="margin-top:8px">
+    <button class="btn" id="resumeBtn2">Weiterspielen ▶</button>
+    <button class="btn warm" id="restartBtn2">🔄 Neustart</button>
+  </div>
+  <div class="foot">⚔ Klinge bricht Panzer · ✦ Funke trifft Flieger · Band = zusammenbleiben · ⛑ Wiederbeleben = danebenstehen</div>
+</div>
+<button id="menuBtn" title="Menü (ESC)" style="position:fixed;top:10px;right:58px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">☰</button>
 <div class="overlay hide" id="over">
   <div class="kicker" id="overKick">Beide gefallen</div>
   <h1 id="overTitle">GAME OVER</h1>
@@ -113,8 +124,11 @@ var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:i!==undefined?i:0.8,flatShading:true});}
 // Audio
-var actx=null,muted=lsGet("nd_muted")==="1";
-function beep(f,d,t,g){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
+var actx=null,muted=lsGet("nd_muted")==="1",paused=false;
+var OPT=(function(){try{return JSON.parse(lsGet("nd_opt")||"{}");}catch(e){return {};}})();
+if(OPT.sfx===undefined)OPT.sfx=true;
+function saveOpt(){lsSet("nd_opt",JSON.stringify(OPT));}
+function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
 (function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("nd_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 // ===== Arena (Synthwave) =====
 var ARENA=34;
@@ -597,7 +611,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){
+  if(running&&G&&!paused){
     G.t+=dt;
     // P1-Bewegung (Velocity-Glättung)
     if(G.down1<=0){var m1=mv1(),l1=Math.hypot(m1.x,m1.z)||1,on1=(Math.abs(m1.x)+Math.abs(m1.z))>0.05?1:0;
@@ -675,6 +689,18 @@ function begin(isSolo){
   announce("NEON DUO","#b98bff");
   showHint(solo?"Deine KI-Partnerin folgt, feuert und belebt dich wieder!":"Bleibt zusammen — das Band verbrennt Gegner dazwischen!",3600);
 }
+function renderMenu(){var r=document.getElementById("optRows");r.innerHTML="";
+  var d=document.createElement("button");
+  d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between";
+  d.innerHTML="<span>🔔 Effekte</span><span>"+(OPT.sfx?"AN ✅":"AUS ⬜")+"</span>";
+  d.onclick=function(){OPT.sfx=!OPT.sfx;saveOpt();renderMenu();};r.appendChild(d);}
+function toggleMenu(){if(!G||!running&&!paused)return;paused=!paused;
+  document.getElementById("menuO").classList.toggle("hide",!paused);
+  if(paused)renderMenu();}
+document.getElementById("menuBtn").onclick=toggleMenu;
+document.getElementById("resumeBtn2").onclick=toggleMenu;
+document.getElementById("restartBtn2").onclick=function(){paused=false;document.getElementById("menuO").classList.add("hide");begin(solo);};
+addEventListener("keydown",function(e){if(e.key==="Escape")toggleMenu();});
 document.getElementById("startCoop").onclick=function(){begin(false);};
 document.getElementById("startSolo").onclick=function(){begin(true);};
 document.getElementById("againBtn").onclick=function(){begin(solo);};

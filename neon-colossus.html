@@ -94,6 +94,17 @@ h1{font-size:clamp(2.2rem,8vw,4rem);font-weight:900;letter-spacing:.02em;line-he
 <div id="dmg"></div>
 <div id="touch"><div id="dashBtn">DASH</div></div>
 
+<div class="overlay hide" id="menuO" style="z-index:45">
+  <div class="kicker">Pause · Menü</div>
+  <h1 style="font-size:1.7rem">NEON COLOSSUS</h1>
+  <div id="optRows" style="display:flex;flex-direction:column;gap:9px;margin:8px 0;min-width:min(320px,86vw)"></div>
+  <div style="margin-top:8px">
+    <button class="btn" id="resumeBtn2">Weiterkämpfen ▶</button>
+    <button class="btn ghost" id="restartBtn2">🔄 Neustart</button>
+  </div>
+  <div class="foot">Weiche telegrafierten Angriffen aus · Dash hat i-Frames · jeder Koloss hat 3 Phasen</div>
+</div>
+<button id="menuBtn" title="Menü (ESC)" style="position:fixed;top:8px;right:56px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">☰</button>
 <div class="overlay" id="start">
   <div class="kicker">aban news · Boss-Fight-Arena · 3D</div>
   <h1>NEON COLOSSUS</h1>
@@ -608,8 +619,11 @@ function renderBloom(){renderer.setRenderTarget(rtScene);renderer.render(scene,c
   renderer.setRenderTarget(null);}
 
 // ===================== Audio =====================
-var actx=null,muted=false;try{muted=localStorage.getItem("nc_muted")==="1";}catch(e){}
-function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
+var actx=null,muted=false,paused=false;try{muted=localStorage.getItem("nc_muted")==="1";}catch(e){}
+var OPT=(function(){try{return JSON.parse(localStorage.getItem("nc_opt")||"{}");}catch(e){return {};}})();
+if(OPT.sfx===undefined)OPT.sfx=true;
+function saveOpt(){try{localStorage.setItem("nc_opt",JSON.stringify(OPT));}catch(e){}}
+function beep(f,d,t,v){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
 var music={timer:null,next:0,step:0,master:null,tempo:100};
 var MSCALE=[0,3,5,7,10];
 function mtone(f,t,d,type,v){try{var o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(v,t+0.012);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.connect(g);g.connect(music.master||actx.destination);o.start(t);o.stop(t+d+0.03);}catch(e){}}
@@ -647,6 +661,18 @@ function win(){G.dead=true;G.running=false;bestSet(3);shake=1.2;
   var el=document.getElementById("over");document.getElementById("overKick").textContent="Triumph";document.getElementById("overTitle").textContent="🏆 KOLOSS BEZWUNGEN";document.getElementById("overTitle").style.color="";
   document.getElementById("overSub").innerHTML="Alle drei Kolosse gefallen in <b>"+G.t.toFixed(1)+"s</b>. Du bist der Arena-Meister.<br>Schaffst du es schneller?";
   el.classList.remove("hide");document.getElementById("hud").classList.add("hide");beep(1046,0.6,"triangle",0.1);beep(1318,0.7,"triangle",0.08);showBest();}
+function renderMenu(){var r=document.getElementById("optRows");r.innerHTML="";
+  var d=document.createElement("button");
+  d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between";
+  d.innerHTML="<span>🔔 Sound-Effekte</span><span>"+(OPT.sfx?"AN ✅":"AUS ⬜")+"</span>";
+  d.onclick=function(){OPT.sfx=!OPT.sfx;saveOpt();renderMenu();};r.appendChild(d);}
+function toggleMenu(){if(!G.running&&!paused)return;paused=!paused;
+  document.getElementById("menuO").classList.toggle("hide",!paused);
+  if(paused)renderMenu();}
+document.getElementById("menuBtn").onclick=toggleMenu;
+document.getElementById("resumeBtn2").onclick=toggleMenu;
+document.getElementById("restartBtn2").onclick=function(){paused=false;document.getElementById("menuO").classList.add("hide");begin();};
+addEventListener("keydown",function(e){if(e.key==="Escape")toggleMenu();});
 document.getElementById("startBtn").onclick=function(){coopMode=false;begin();};
 document.getElementById("startCoBtn").onclick=function(){coopMode=true;begin();};
 document.getElementById("againBtn").onclick=begin;
@@ -661,7 +687,7 @@ function idleAnim(dt){ // Landschaft + Player-Ringe leben auch im Menü/Over-Scr
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=9*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2.2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;}}
 }
 function frame(now){requestAnimationFrame(frame);var dt=Math.min(0.033,(now-last)/1000);last=now;
-  if(G.running){if(hitstop>0){hitstop-=dt;}else{var gdt=dt;if(G.slowT>0){G.slowT-=dt;gdt=dt*G.slowVal;}update(gdt);}}
+  if(G.running&&!paused){if(hitstop>0){hitstop-=dt;}else{var gdt=dt;if(G.slowT>0){G.slowT-=dt;gdt=dt*G.slowVal;}update(gdt);}}
   else idleAnim(dt);
   if(impactEl._o>0){impactEl._o=Math.max(0,impactEl._o-dt*3.2);impactEl.style.opacity=impactEl._o;}
   if(G.running||G.dead)updateCamera(dt);else{camera.position.set(0,20,52);camera.lookAt(0,5,-8);}
