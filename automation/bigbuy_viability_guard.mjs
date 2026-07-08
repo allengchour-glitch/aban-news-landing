@@ -125,7 +125,7 @@ while (true) {
 }
 const cands = items
   .map(n => ({ n, sku: n.variants.edges[0]?.node.sku || '', price: parseFloat(n.variants.edges[0]?.node.price || '0') }))
-  .filter(x => x.sku && x.price >= MINPRICE)
+  .filter(x => x.price >= MINPRICE)
   .filter(x => FORCE || REVIVE || !okSet.has(x.sku))
   .sort((a, b) => b.price - a.price); // teuerste zuerst
 console.log(`${items.length} ${REVIVE ? 'geparkte' : 'aktive'} BigBuy-Produkte · ${cands.length} Kandidaten (≥CHF ${MINPRICE}) · LIMIT ${LIMIT}${DRY ? ' [DRY]' : ''}${REVIVE ? ' [REVIVE]' : ''}`);
@@ -135,7 +135,15 @@ for (const { n, sku, price } of cands) {
   if (done >= LIMIT) break;
   done++;
   const ref = await toRef(sku);
-  if (!ref) { unresolved++; continue; }
+  if (!ref) { // #1008-Falle: ohne Lieferanten-Ref ist Lieferbarkeit UNPRÜFBAR → nicht verkaufen
+    unresolved++;
+    if (!DRY && !REVIVE) {
+      await gql(t, `mutation($i:ProductInput!){ productUpdate(input:$i){ userErrors{message} } }`,
+        { i: { id: n.id, status: 'DRAFT', tags: [...new Set([...n.tags, 'keine-lieferanten-ref'])] } });
+      rep.push(`DRAFT NOREF CHF ${price} | ${n.title.slice(0, 60)}`);
+    }
+    continue;
+  }
   const ship = await shippableCH(ref); await sleep(GAP);
   let verdict = null; // {tag, code}
   if (ship.unknown) { console.log(`? ${sku} shipping-code ${ship.code}`); continue; }
