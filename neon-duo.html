@@ -55,10 +55,12 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
 #joyKnob{position:absolute;left:50%;top:50%;width:50px;height:50px;border-radius:50%;background:rgba(125,227,255,.5);transform:translate(-50%,-50%)}
 .tbtn{position:absolute;width:66px;height:66px;border-radius:50%;border:2px solid;font-size:1.4rem;font-weight:800;pointer-events:auto;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none}
 #tAtk{right:24px;bottom:120px;border-color:#5ef2ff;background:rgba(16,50,64,.55);color:#7de3ff}
+#vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
 </head>
 <body>
 <div id="wrap"></div>
+<div id="vig"></div>
 <div id="hurt"></div>
 <div id="hud" class="hide">
   <div id="wave"><b id="waveTxt">WELLE 1</b><small id="waveSub"></small></div>
@@ -121,7 +123,7 @@ renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x090616);scene.fog=new THREE.Fog(0x090616,60,300);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
-addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);try{resizeBloomRT();}catch(e){}});
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:i!==undefined?i:0.8,flatShading:true});}
 // Audio
 var actx=null,muted=lsGet("nd_muted")==="1",paused=false;
@@ -129,7 +131,9 @@ var OPT=(function(){try{return JSON.parse(lsGet("nd_opt")||"{}");}catch(e){retur
 if(OPT.sfx===undefined)OPT.sfx=true;
 function saveOpt(){lsSet("nd_opt",JSON.stringify(OPT));}
 function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
-(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("nd_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
+var MUS=new Audio("/audio/electrodoodle.mp3");MUS.loop=true;MUS.volume=0.26;MUS.preload="none";
+function musSync(){try{if(muted||!running||paused)MUS.pause();else MUS.play().catch(function(){});}catch(e){}}
+(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("nd_muted",muted?"1":"0");musSync();}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 // ===== Arena (Synthwave) =====
 var ARENA=34;
 scene.add(new THREE.AmbientLight(0x8890c8,1.0));
@@ -138,7 +142,7 @@ dl.castShadow=true;dl.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);
 dl.shadow.camera.near=1;dl.shadow.camera.far=140;dl.shadow.camera.left=-50;dl.shadow.camera.right=50;dl.shadow.camera.top=50;dl.shadow.camera.bottom=-50;
 var floor=new THREE.Mesh(new THREE.CircleGeometry(ARENA,56),new THREE.MeshStandardMaterial({color:0x0c1030,emissive:0x131a44}));
 floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
-var grid=new THREE.GridHelper(ARENA*2,30,0x2a3585,0x1a2158);grid.position.y=0.02;scene.add(grid);
+var grid=new THREE.GridHelper(ARENA*2,30,0x4a63e8,0x2a3aa0);grid.position.y=0.02;grid.material.transparent=true;grid.material.opacity=0.55;scene.add(grid);
 var ring=new THREE.Mesh(new THREE.RingGeometry(ARENA-0.5,ARENA,72),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.4,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));
 ring.rotation.x=-Math.PI/2;ring.position.y=0.04;scene.add(ring);
 // Retro-Sonne + Berge + Sterne
@@ -581,7 +585,7 @@ function updAI(dt){
 }
 // ===== Game Over / Sieg =====
 function gameOver(win){
-  running=false;
+  running=false;musSync();
   var best=+(lsGet("nd_best")||0);
   if(win&&G.wave>best)lsSet("nd_best",8);
   else if(!win&&G.wave-1>best)lsSet("nd_best",G.wave-1);
@@ -670,8 +674,32 @@ function loop(now){
     if(hurtT>0){hurtT-=dt*2;hurtEl.style.opacity=Math.max(0,hurtT*0.8);}
   }
   updateCamera(dt);
-  renderer.render(scene,camera);
+  renderBloom();
 }
+
+// ---- Bloom-Post-Processing (Neon-Glow) ----
+var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
+var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
+var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
+var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
+var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.72}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.6}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
+function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
+function renderBloom(){
+  renderer.setRenderTarget(rtScene);renderer.render(scene,camera);
+  brightMat.uniforms.tDiffuse.value=rtScene.texture;blit(brightMat,rtA);
+  blurMat.uniforms.res.value.set(bw,bh);
+  blurMat.uniforms.dir.value.set(1,0);blurMat.uniforms.tDiffuse.value=rtA.texture;blit(blurMat,rtB);
+  blurMat.uniforms.dir.value.set(0,1);blurMat.uniforms.tDiffuse.value=rtB.texture;blit(blurMat,rtA);
+  compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blit(compMat,null);
+  renderer.setRenderTarget(null);
+}
+function resizeBloomRT(){rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
+
 requestAnimationFrame(loop);
 // ===== Start =====
 function begin(isSolo){
@@ -685,7 +713,7 @@ function begin(isSolo){
   document.getElementById("over").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
   document.getElementById("p2bar").querySelector(".nm").textContent=solo?"✦ FUNKE (KI)":"✦ FUNKE";
-  updHUD();running=true;
+  updHUD();running=true;musSync();
   announce("NEON DUO","#b98bff");
   showHint(solo?"Deine KI-Partnerin folgt, feuert und belebt dich wieder!":"Bleibt zusammen — das Band verbrennt Gegner dazwischen!",3600);
 }
@@ -694,7 +722,7 @@ function renderMenu(){var r=document.getElementById("optRows");r.innerHTML="";
   d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between";
   d.innerHTML="<span>🔔 Effekte</span><span>"+(OPT.sfx?"AN ✅":"AUS ⬜")+"</span>";
   d.onclick=function(){OPT.sfx=!OPT.sfx;saveOpt();renderMenu();};r.appendChild(d);}
-function toggleMenu(){if(!G||!running&&!paused)return;paused=!paused;
+function toggleMenu(){if(!G||!running&&!paused)return;paused=!paused;musSync();
   document.getElementById("menuO").classList.toggle("hide",!paused);
   if(paused)renderMenu();}
 document.getElementById("menuBtn").onclick=toggleMenu;

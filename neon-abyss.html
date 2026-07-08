@@ -40,10 +40,12 @@ canvas{display:block;cursor:crosshair}
 .small{font-size:.8rem;color:#9a8fc0;margin-top:16px}.small a{color:#c9a9ff}
 #muteBtn{position:fixed;top:8px;right:10px;z-index:11;border:1px solid #40305a;background:rgba(20,15,34,.7);color:#c9a9ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
 .hide{display:none!important}
+#vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
 </head>
 <body>
 <div id="wrap"></div>
+<div id="vig"></div>
 <div id="top" class="hide"><div>⚔️ Lv <span id="lvl">1</span></div><div id="wave">Welle 1</div><div>💀 <span id="kills">0</span></div></div>
 <div id="hud" class="hide"><div id="bars">
   <div id="barsRow"><span>❤️ <span id="hpTxt">100/100</span></span><span id="floatHint">Klick = laufen/angreifen</span></div>
@@ -63,6 +65,7 @@ canvas{display:block;cursor:crosshair}
   <p><b>Klick</b> auf den Boden zum Laufen, auf Gegner zum Angreifen (du feuerst automatisch). Zünde <b>Skills</b> (1 Nova · 2 Blink · 3 Heilen), sammle <b>Loot</b> mit Seltenheitsstufen, überlebe die Wellen und schlag den <b>Boss</b>.</p>
   <button class="btn" id="startBtn">Ins Verlies ▶</button>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
+  <div class="small" style="font-size:.68rem;opacity:.7">Musik: „Digital Lemonade" — Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
 </div>
 
 <div class="overlay hide" id="over">
@@ -81,6 +84,7 @@ canvas{display:block;cursor:crosshair}
 var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x05060f); scene.fog=new THREE.Fog(0x05060f,34,120);
 var camera=new THREE.PerspectiveCamera(50,W/H,0.1,600);
@@ -89,13 +93,25 @@ var dir=new THREE.DirectionalLight(0xffe6ff,0.7); dir.position.set(-6,14,6); sce
 function mat(c,e,ei){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:ei||1.0,flatShading:true});}
 
 var ARENA=42;
-var floor=new THREE.Mesh(new THREE.PlaneGeometry(ARENA*2,ARENA*2),mat(0x0e0a1e,0x080512,0.4));
+// Steinboden-Textur (prozedural, Canvas)
+var floorTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=512;var c=cv.getContext("2d");
+c.fillStyle="#0e0a1e";c.fillRect(0,0,512,512);
+for(var ty=0;ty<8;ty++)for(var tx=0;tx<8;tx++){c.fillStyle="rgb("+(14+Math.random()*10|0)+","+(10+Math.random()*7|0)+","+(30+Math.random()*16|0)+")";c.fillRect(tx*64+2,ty*64+2,60,60);}
+c.strokeStyle="rgba(80,55,130,.45)";c.lineWidth=2;for(var gg=0;gg<=8;gg++){c.beginPath();c.moveTo(gg*64,0);c.lineTo(gg*64,512);c.stroke();c.beginPath();c.moveTo(0,gg*64);c.lineTo(512,gg*64);c.stroke();}
+for(var nn=0;nn<900;nn++){c.fillStyle="rgba(255,255,255,"+(Math.random()*0.035)+")";c.fillRect(Math.random()*512,Math.random()*512,2,2);}
+var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(5,5);return t;})();
+var floor=new THREE.Mesh(new THREE.PlaneGeometry(ARENA*2,ARENA*2),new THREE.MeshStandardMaterial({map:floorTex,color:0xc8bfff,emissive:0x0a0716,emissiveIntensity:0.5}));
 floor.rotation.x=-Math.PI/2; scene.add(floor);
 var grid=new THREE.GridHelper(ARENA*2,44,0x3a2a60,0x1c1436); grid.position.y=0.02; scene.add(grid);
 // Verlies-Rand + Säulen (Deko)
 for(var wi=0;wi<4;wi++){var wall=new THREE.Mesh(new THREE.BoxGeometry(wi<2?ARENA*2+4:1.6,3,wi<2?1.6:ARENA*2+4),mat(0x201636,0xb15cff,0.7));wall.position.set(wi===0?0:(wi===1?0:(wi===2?ARENA+1:-ARENA-1)),0.5,wi===0?ARENA+1:(wi===1?-ARENA-1:0));scene.add(wall);}
 for(var pi=0;pi<10;pi++){var a=pi/10*6.283,r=ARENA*0.72;var col=new THREE.Mesh(new THREE.CylinderGeometry(1,1.2,7,6),mat(0x281a44,0x5ef2ff,0.6));col.position.set(Math.cos(a)*r,2,Math.sin(a)*r);scene.add(col);}
 // Marker (Klick-Ziel)
+// Glut-Partikel (Atmosphäre)
+var embN=90,embG=new THREE.BufferGeometry(),embP=new Float32Array(embN*3),embV=new Float32Array(embN);
+for(var _ei=0;_ei<embN;_ei++){embP[_ei*3]=(Math.random()-.5)*80;embP[_ei*3+1]=Math.random()*8;embP[_ei*3+2]=(Math.random()-.5)*80;embV[_ei]=0.4+Math.random()*1.1;}
+embG.setAttribute("position",new THREE.BufferAttribute(embP,3));
+var embers=new THREE.Points(embG,new THREE.PointsMaterial({color:0xb15cff,size:0.34,transparent:true,opacity:.7,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(embers);
 var marker=new THREE.Mesh(new THREE.RingGeometry(0.5,0.7,20),new THREE.MeshBasicMaterial({color:0x6aff9e,transparent:true,opacity:0.8,side:THREE.DoubleSide}));marker.rotation.x=-Math.PI/2;marker.position.y=0.05;marker.visible=false;scene.add(marker);var markerT=0;
 
 // Held (composite)
@@ -136,7 +152,9 @@ function announce(txt,color){var c=document.getElementById("center")||(function(
 // Audio
 var actx=null,muted=false;try{muted=localStorage.getItem("na_muted")==="1";}catch(e){}
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
-var muteBtn=document.getElementById("muteBtn");function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("na_muted",muted?"1":"0");}catch(e){}}applyMute();muteBtn.onclick=function(){muted=!muted;applyMute();};
+var MUS=new Audio("/audio/lemonade.mp3");MUS.loop=true;MUS.volume=0.28;MUS.preload="none";
+function musSync(){if(muted||!running)MUS.pause();else MUS.play().catch(function(){});}
+var muteBtn=document.getElementById("muteBtn");function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("na_muted",muted?"1":"0");}catch(e){}try{musSync();}catch(e){}}applyMute();muteBtn.onclick=function(){muted=!muted;applyMute();};
 
 // State
 var G={};
@@ -187,11 +205,11 @@ function startWave(){G.wave++;var n=Math.min(30,5+G.wave*2);
   beep(160,.3,"sawtooth",.08);}
 
 function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");
-  document.getElementById("hud").classList.remove("hide");document.getElementById("top").classList.remove("hide");G.wave=0;startWave();}
+  document.getElementById("hud").classList.remove("hide");document.getElementById("top").classList.remove("hide");G.wave=0;startWave();musSync();}
 function saveBest(){try{var b=parseInt(localStorage.getItem("na_best")||"0",10)||0;if(G.wave>b)localStorage.setItem("na_best",String(G.wave));}catch(e){}}
-function gameOver(){running=false;saveBest();document.getElementById("overTag").textContent="Gefallen";document.getElementById("finalT").textContent="Game Over";document.getElementById("verdict").innerHTML="Welle "+G.wave+" · Level "+G.lvl+" · "+G.kills+" Gegner besiegt";document.getElementById("over").classList.remove("hide");beep(90,.4,"sawtooth",.1);}
+function gameOver(){running=false;musSync();saveBest();document.getElementById("overTag").textContent="Gefallen";document.getElementById("finalT").textContent="Game Over";document.getElementById("verdict").innerHTML="Welle "+G.wave+" · Level "+G.lvl+" · "+G.kills+" Gegner besiegt";document.getElementById("over").classList.remove("hide");beep(90,.4,"sawtooth",.1);}
 function win(){running=false;document.getElementById("overTag").textContent="Sieg";document.getElementById("finalT").textContent="🏆 Boss besiegt!";document.getElementById("finalT").style.color="#ff9a2e";document.getElementById("verdict").innerHTML="Welle "+G.wave+" · Level "+G.lvl+" · "+G.kills+" Gegner. Weiter geht's — die Wellen enden nie!";document.getElementById("over").classList.remove("hide");beep(1046,.5,"triangle",.1);
-  setTimeout(function(){if(!running){document.getElementById("over").classList.add("hide");running=true;startWave();}},2200);}
+  setTimeout(function(){if(!running){document.getElementById("over").classList.add("hide");running=true;startWave();musSync();}},2200);}
 document.getElementById("startBtn").onclick=start;
 document.getElementById("againBtn").onclick=start;
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Abyss ⚔️ — Welle "+G.wave+", Lv "+G.lvl+", "+G.kills+" Kills\nGratis spielen: abannews.com/neon-abyss.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
@@ -229,14 +247,39 @@ function loop(now){
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=8*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;p.m.position.y=-99;}}
   if(markerT>0){markerT-=dt;marker.scale.setScalar(1+Math.sin(now*0.02)*0.15);if(markerT<=0)marker.visible=false;}
   if(G.shake>0)G.shake-=dt*1.5;
+  for(var _e2=0;_e2<embN;_e2++){embP[_e2*3+1]+=embV[_e2]*dt;if(embP[_e2*3+1]>9)embP[_e2*3+1]=0;}embG.attributes.position.needsUpdate=true;
   // Iso-Kamera folgt
   camera.position.set(hero.position.x+16+(Math.random()-.5)*G.shake*2,24,hero.position.z+16+(Math.random()-.5)*G.shake*2);
   camera.lookAt(hero.position.x,0,hero.position.z);
-  renderer.render(scene,camera);
+  renderBloom();
 }
 function updHUD(){document.getElementById("lvl").textContent=G.lvl;document.getElementById("kills").textContent=G.kills;document.getElementById("wave").textContent=(G.bossAlive?"☠ BOSS":"Welle "+G.wave);document.getElementById("hpTxt").textContent=Math.max(0,Math.ceil(G.hp))+"/"+G.maxhp;document.getElementById("hpFill").style.width=(100*G.hp/G.maxhp)+"%";document.getElementById("xpFill").style.width=(100*G.xp/G.xpNeed)+"%";}
+
+// ---- Bloom-Post-Processing (Neon-Glow) ----
+var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
+var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
+var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
+var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
+var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.72}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.62}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
+function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
+function renderBloom(){
+  renderer.setRenderTarget(rtScene);renderer.render(scene,camera);
+  brightMat.uniforms.tDiffuse.value=rtScene.texture;blit(brightMat,rtA);
+  blurMat.uniforms.res.value.set(bw,bh);
+  blurMat.uniforms.dir.value.set(1,0);blurMat.uniforms.tDiffuse.value=rtA.texture;blit(blurMat,rtB);
+  blurMat.uniforms.dir.value.set(0,1);blurMat.uniforms.tDiffuse.value=rtB.texture;blit(blurMat,rtA);
+  compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blit(compMat,null);
+  renderer.setRenderTarget(null);
+}
+function resizeBloomRT(){rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
+
 reset(); requestAnimationFrame(loop);
-addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloomRT();});
 })();
 </script>
 </body>

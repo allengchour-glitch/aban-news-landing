@@ -42,10 +42,12 @@ canvas{display:block}
 #muteBtn{position:fixed;top:8px;right:10px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
 .rec{color:#5ef2ff!important}
 .hide{display:none!important}
+#vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
 </head>
 <body>
 <div id="wrap"></div>
+<div id="vig"></div>
 <div id="hurt" style="position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 55%,transparent 45%,rgba(255,30,45,.65));opacity:0;transition:opacity .12s;z-index:2"></div>
 <div id="hud" class="hide">
   <div id="hudTop"><span id="lvl">Lv 1</span><span id="time">0s</span><span id="kills">☠ 0</span></div>
@@ -107,6 +109,7 @@ function rnd(){return dailyMode?_srng():Math.random();}
 var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,50,460);
 var camera=new THREE.PerspectiveCamera(60,W/H,0.1,2000);
@@ -330,10 +333,12 @@ function schedMusic(){if(!actx||muted||paused||!running){if(actx)music.next=actx
     var n=MSCALE[(music.step*2)%MSCALE.length]+((music.step%8)<4?0:12);
     mtone(220*Math.pow(2,n/12),t,beat*0.8,"triangle",0.04);
     music.next+=beat;music.step++;}}
-function startMusic(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return;}if(!music.master){music.master=actx.createGain();music.master.gain.value=0.9;music.master.connect(actx.destination);}music.next=actx.currentTime;music.step=0;if(music.timer)clearInterval(music.timer);music.timer=setInterval(schedMusic,40);}
-function stopMusic(){if(music.timer){clearInterval(music.timer);music.timer=null;}}
+var MUS=new Audio("/audio/hype.mp3");MUS.loop=true;MUS.volume=0.3;MUS.preload="none";
+function startMusic(){if(!muted)MUS.play().catch(function(){});}
+function stopMusic(){MUS.pause();}
+function musSync(){if(muted||paused||!running)MUS.pause();else MUS.play().catch(function(){});}
 var muteBtn=document.getElementById("muteBtn");
-function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("ns_muted",muted?"1":"0");}catch(e){}}
+function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("ns_muted",muted?"1":"0");}catch(e){}musSync();}
 applyMute();
 muteBtn.onclick=function(){muted=!muted;applyMute();};
 addEventListener("keydown",function(e){if(e.key.toLowerCase()==="m"){muted=!muted;applyMute();}});
@@ -404,7 +409,7 @@ function levelUp(){
 // ================= Bloom-Post-Processing (Neon-Glow → "teurer" Look) =================
 var bloomVert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
 var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt);
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
 var bw=Math.max(1,Math.floor(W/2)),bh=Math.max(1,Math.floor(H/2));
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
