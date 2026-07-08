@@ -82,8 +82,13 @@ const pubsQ = await gql(t, 'query{ publications(first:10){ edges{ node{ id name 
 const pubs = pubsQ.data.publications.edges.map(e => e.node).filter(p => !/google|inbox/i.test(p.name));
 
 // 1) Katalog paginiert einsammeln: NEW + aktiv + EK im Fenster
+// Cache: Container stirbt oft — Kandidatenliste in /tmp übersteht Neustarts (24h gültig).
+const CACHE='/tmp/premium_cands.json';
+let cands = [];
+try{ const c=JSON.parse(fs.readFileSync(CACHE,'utf8'));
+  if(Date.now()-c.ts < 86400000 && Array.isArray(c.cands) && c.cands.length){ cands=c.cands; console.log(`Kandidaten-Cache geladen: ${cands.length} (Scan übersprungen)`);} }catch{}
+if(!cands.length){
 console.log(`Sammle Katalog (bis ${PAGES} Seiten à 250) …`);
-const cands = [];
 for (let page = 1; page <= PAGES; page++) {
   const { status, j } = await bbCall(`https://api.bigbuy.eu/rest/catalog/products.json?pageSize=250&page=${page}`);
   if (status !== 200 || !Array.isArray(j)) { console.log(`  Seite ${page}: Ende/Fehler (${status})`); break; }
@@ -95,8 +100,10 @@ for (let page = 1; page <= PAGES; page++) {
     const imgs = Array.isArray(p.images) ? p.images.map(x => (typeof x === 'string' ? x : x?.url)).filter(Boolean) : [];
     cands.push({ id: p.id, sku: p.sku, ek, uvp: Number(p.retailPrice) || 0, images: imgs });
   }
-  if (page % 40 === 0) console.log(`  … Seite ${page}, bisher ${cands.length} Kandidaten`);
+  if (page % 40 === 0){ console.log(`  … Seite ${page}, bisher ${cands.length} Kandidaten`); fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands})); }
   await sleep(1500);
+}
+fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands}));
 }
 cands.sort((a, b) => b.ek - a.ek);
 console.log(`${cands.length} Premium-Kandidaten (EK ${MIN_EK}–${MAX_EK} €, NEW, aktiv) — teuerste zuerst. CAP ${CAP}${DRY ? ' [DRY]' : ''}`);
