@@ -70,7 +70,16 @@
   dann die 20 fertigen Start-Pins posten (Bild-URL, Link mit utm, Titel, Beschreibung stehen im
   Paket) — max. 5 Pins/Tag, Rest über die Folgetage. Danach hier rapportieren (Board-URLs).
 
-- [NEU 2026-07-08c — PINTEREST-KANAL FERTIG EINRICHTEN (Shopify-Admin, KEINE Zahlung!)]
+- [⚡ NEU 2026-07-08d — PINTEREST KOMPLETT PER SKRIPT (ersetzt 08b+08c — zuerst DAS versuchen!)]
+  Repo pullen, dann im Repo-Ordner: `npm install playwright-core` (falls fehlt) und
+  `node automation/local/pinterest-setup-browser.mjs` ausführen (Brave mit Port 9222 läuft ja).
+  Das Skript macht alles selbst: Shopify-Pinterest-Katalog-Wizard durchklicken (bricht bei
+  Zahlungsfeldern bewusst ab — die NIE ausfüllen!), 8 Boards anlegen, 5 Start-Pins posten.
+  Danach ./pinterest-screenshots/ prüfen und hier rapportieren (Katalog-Status, Boards, Pins).
+  An den Folgetagen `MAX_PINS=5 SKIP_SHOPIFY=1 SKIP_BOARDS=1 node automation/local/pinterest-setup-browser.mjs`
+  bis alle 20 Start-Pins draussen sind. Was das Skript nicht schafft → manuell gemäss 08b/08c unten.
+
+- [NEU 2026-07-08c — PINTEREST-KANAL FERTIG EINRICHTEN (Fallback zu 08d; Shopify-Admin, KEINE Zahlung!)]
   Im Shopify-Admin → Vertriebskanäle → Pinterest → Karte «Katalog» → «Los geht's» klicken und die
   Händlerkonto-Einrichtung durchklicken: Website luxestyle.ch beanspruchen/bestätigen, Pinterest-
   Händler-Richtlinien akzeptieren, ggf. Standard-Board «LuxeStyle Schweiz» wählen. Ziel: Katalog-Sync
