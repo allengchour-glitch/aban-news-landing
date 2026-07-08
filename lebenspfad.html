@@ -581,13 +581,25 @@ function mkPawn(color){
     var mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,w),m2||cm);mesh.position.y=-h/2;mesh.castShadow=true;
     pivot.add(mesh);g.add(pivot);return pivot;}
   var ll=limb(0.2,0.5,-0.15,0.5),rl=limb(0.2,0.5,0.15,0.5);
+  // Schuhe (an den Bein-Enden, dunkler)
+  [ll,rl].forEach(function(lp3){var shoe=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.1,0.3),mat(0x3a3040));
+    shoe.position.set(0,-0.52,0.04);shoe.castShadow=true;lp3.add(shoe);});
   var torso=new THREE.Mesh(new THREE.BoxGeometry(0.55,0.6,0.34),cm);torso.position.y=0.82;torso.castShadow=true;g.add(torso);
   var la=limb(0.16,0.5,-0.36,1.06),ra=limb(0.16,0.5,0.36,1.06);
+  // Hände (Haut-Kugeln an den Arm-Enden)
+  [la,ra].forEach(function(ap3){var hand=new THREE.Mesh(new THREE.SphereGeometry(0.09,6,5),skin);
+    hand.position.y=-0.52;ap3.add(hand);});
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.3,10,8),skin);head.position.y=1.4;head.castShadow=true;g.add(head);
   var cap=new THREE.Mesh(new THREE.SphereGeometry(0.31,10,6,0,6.283,0,1.2),cm);cap.position.y=1.44;g.add(cap);
+  var schirm=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.05,10,1,false,0,Math.PI),cm);
+  schirm.rotation.y=-Math.PI/2;schirm.position.set(0,1.5,0.18);g.add(schirm);
+  var mouth=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.03,0.02),mat(0x8a4a3a));mouth.position.set(0,1.3,0.29);g.add(mouth);
+  g.userData.head=head;g.userData.mouth=mouth;
   // Gesicht: zwei Augen (winzige dunkle Kugeln)
+  g.userData.eyes=[];
   [[-0.11],[0.11]].forEach(function(e){var eye=new THREE.Mesh(new THREE.SphereGeometry(0.045,6,5),mat(0x222430,0x000000,0));
-    eye.position.set(e[0],1.42,0.26);g.add(eye);});
+    eye.position.set(e[0],1.42,0.26);g.add(eye);g.userData.eyes.push(eye);});
+  g.userData.blinkT=1+Math.random()*3;
   g.userData.limbs={ll:ll,rl:rl,la:la,ra:ra};g.userData.walk=0;
   scene.add(g);return g;}
 function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
@@ -604,10 +616,30 @@ function updEmotes(dt){
       L.la.rotation.x=0.35;L.ra.rotation.x=0.35;
       pw.rotation.x=Math.min(0.28,e.t*0.6);
       if(e.t>1.4){pw.rotation.x=0;pw.userData.emote=null;}}
+    else if(e.k==="wurf"){ // Wurf-Geste: Arm holt aus und schleudert
+      var ph2=Math.min(1,e.t/0.7);
+      L.ra.rotation.x=ph2<0.5?(-0.5-ph2*3.4):(-2.2+(ph2-0.5)*5.2);
+      if(e.t>0.9){L.ra.rotation.x=0;pw.userData.emote=null;}}
     else if(e.k==="wink"){ // rechter Arm winkt
       L.ra.rotation.x=-2.8;L.ra.rotation.z=-0.2+Math.sin(e.t*11)*0.5;
       if(e.t>1.1){L.ra.rotation.z=0;pw.userData.emote=null;}}}}
+function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
+  if(pw.userData.eyes){pw.userData.blinkT-=dt;
+    if(pw.userData.blinkT<=0){pw.userData.blinkT=2.2+Math.random()*3.4;pw.userData.blinkD=0.13;}
+    var bl=(pw.userData.blinkD||0)>0;if(bl)pw.userData.blinkD-=dt;
+    pw.userData.eyes.forEach(function(ey){ey.scale.y=bl?0.12:1;});}
+  if(pw.userData.head){
+    if(moving)pw.userData.head.rotation.x=Math.sin(pw.userData.walk*2)*0.07; // Nicken im Schritt
+    else{pw.userData.lookT=(pw.userData.lookT||0)-dt;
+      if(pw.userData.lookT<=0){pw.userData.lookT=3+Math.random()*4;pw.userData.lookDir=(Math.random()-0.5)*1.1;}
+      pw.userData.head.rotation.y+=((Math.abs(pw.userData.lookT-1.2)<1?pw.userData.lookDir:0)-pw.userData.head.rotation.y)*Math.min(1,dt*4);
+      pw.userData.head.rotation.x*=Math.max(0,1-dt*6);}}
+  // Lande-Squash abklingen
+  if(pw.userData.squash>0){pw.userData.squash-=dt*5;
+    var q=Math.max(0,pw.userData.squash);pw.scale.set(1+q*0.25,1-q*0.3,1+q*0.25);}
+  else pw.scale.set(1,1,1);}
 function animWalk(pw,moving,dt){
+  animLife(pw,dt,moving);
   if(pw.userData.emote)return; // Emote hat Vorrang
   var L=pw.userData.limbs;if(!L)return;
   if(moving){pw.userData.walk+=dt*11;var sw=Math.sin(pw.userData.walk)*0.75;
@@ -769,7 +801,7 @@ var moveQ=0,hopT=0,hopFrom=null,camT={x:0,z:0};
 function roll(){
   if(!running||G.phase!=="idle")return;
   var p=G.players[G.turn];if(p.done){nextTurn();return;}
-  G.phase="rolling";rollBtn.disabled=true;
+  G.phase="rolling";rollBtn.disabled=true;emote(G.turn,"wurf");
   var n=1+((Math.random()*6)|0),ticks=0;
   diceEl.style.opacity=1;beep(500,.06,"triangle",.05);
   var iv=setInterval(function(){
@@ -797,7 +829,7 @@ function updMove(dt){
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
     beep(360+Math.random()*80,.04,"sine",.035); // weiches Tapsen
     if(p.tile>=NFIELDS-1){moveQ=0;}
-    if(moveQ<=0){G.phase="landed";onLand();return;}
+    if(moveQ<=0){G.phase="landed";pw.userData.squash=1;beep(240,.05,"sine",.04);onLand();return;}
   }
   var to=fields[Math.min(NFIELDS-1,p.tile+1)];
   var k=hopT,x=hopFrom.x+(to.x-hopFrom.x)*k,z=hopFrom.z+(to.z-hopFrom.z)*k;
