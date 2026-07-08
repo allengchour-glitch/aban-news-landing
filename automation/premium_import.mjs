@@ -43,14 +43,14 @@ async function gql(t, q, v) {
   return {};
 }
 async function bbCall(url, body) {
-  for (let a = 0; a < 6; a++) {
+  for (let a = 0; a < 10; a++) {
     try {
       const r = await fetch(url, body
         ? { method: 'POST', headers: { Authorization: `Bearer ${BB}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
         : { headers: { Authorization: `Bearer ${BB}` } });
-      if (r.status === 429) { await sleep(8000 * (a + 1)); continue; }
+      if (r.status === 429) { await sleep(Math.min(20000 * (a + 1), 120000)); continue; }
       const txt = await r.text();
-      if (/rate limit|too many/i.test(txt)) { await sleep(8000 * (a + 1)); continue; }
+      if (/rate limit|too many/i.test(txt)) { await sleep(Math.min(20000 * (a + 1), 120000)); continue; }
       let j = null; try { j = JSON.parse(txt); } catch {}
       return { status: r.status, j };
     } catch { await sleep(5000); }
@@ -96,7 +96,7 @@ for (let page = 1; page <= PAGES; page++) {
     cands.push({ id: p.id, sku: p.sku, ek, uvp: Number(p.retailPrice) || 0, images: imgs });
   }
   if (page % 40 === 0) console.log(`  … Seite ${page}, bisher ${cands.length} Kandidaten`);
-  await sleep(700);
+  await sleep(1500);
 }
 cands.sort((a, b) => b.ek - a.ek);
 console.log(`${cands.length} Premium-Kandidaten (EK ${MIN_EK}–${MAX_EK} €, NEW, aktiv) — teuerste zuerst. CAP ${CAP}${DRY ? ' [DRY]' : ''}`);
