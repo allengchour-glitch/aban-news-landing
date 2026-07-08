@@ -66,10 +66,12 @@ h1{font-size:clamp(2.2rem,8vw,4rem);font-weight:900;letter-spacing:.02em;line-he
 #dashBtn{position:absolute;right:22px;bottom:38px;width:88px;height:88px;border-radius:50%;background:rgba(120,90,255,.22);border:2px solid rgba(180,140,255,.6);color:#eaf0ff;font-weight:900;font-size:.9rem;display:flex;align-items:center;justify-content:center;pointer-events:auto}
 @media(max-width:820px){#playerbar{width:min(240px,52vw)}}
 @media(pointer:coarse){#startCoBtn{display:none}#keysHelp{display:none}} /* P2 braucht Tastatur+Enter → Koop nur an Desktop */
+#vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
 </head>
 <body>
 <div id="wrap"></div>
+<div id="vig"></div>
 <button id="muteBtn">🔊</button>
 <div id="flash"></div>
 <div id="impact"></div>
@@ -592,7 +594,7 @@ function updateCamera(dt){
 // ===================== Bloom-Post-Processing =====================
 var bloomVert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
 var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt);
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
 var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
@@ -634,9 +636,11 @@ function schedMusic(){if(!actx||muted||!G.running){if(actx)music.next=actx.curre
     mtone(220*Math.pow(2,n/12),t,beat*0.8,"triangle",0.038);
     if(G.phase>=3&&music.step%2===0)mtone(110*Math.pow(2,n/12),t,beat*0.6,"square",0.03);
     music.next+=beat;music.step++;}}
-function startMusic(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return;}if(!music.master){music.master=actx.createGain();music.master.gain.value=0.85;music.master.connect(actx.destination);}music.next=actx.currentTime;music.step=0;if(music.timer)clearInterval(music.timer);music.timer=setInterval(schedMusic,40);}
+var MUS=new Audio("/audio/hype.mp3");MUS.loop=true;MUS.volume=0.3;MUS.preload="none";
+function startMusic(){if(!muted)MUS.play().catch(function(){});}
+function musSync(){if(muted||!G.running)MUS.pause();else MUS.play().catch(function(){});}
 var muteBtn=document.getElementById("muteBtn");
-function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nc_muted",muted?"1":"0");}catch(e){}}
+function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nc_muted",muted?"1":"0");}catch(e){}try{musSync();}catch(e){}}
 applyMute();muteBtn.onclick=function(e){e.stopPropagation();muted=!muted;applyMute();};
 
 // ===================== Hint / Screens =====================
@@ -653,11 +657,11 @@ function begin(){resetState();
     '<b style="color:#7de3ff">WASD</b> bewegen · <b style="color:#7de3ff">Maus</b> zielen (auto-feuer) · <b style="color:#7de3ff">SPACE/SHIFT</b> Dash · <b>M</b> Ton';G.dead=false;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   startStage(0);G.running=true;G.alive=true;startMusic();}
-function die(){G.dead=true;G.running=false;bestSet(G.stage);shake=1.0;
+function die(){G.dead=true;G.running=false;musSync();bestSet(G.stage);shake=1.0;
   var el=document.getElementById("over");document.getElementById("overKick").textContent="gefallen";document.getElementById("overTitle").textContent="Game Over";
   document.getElementById("overSub").innerHTML="Du fielst bei <b>"+COLOSSI[G.stage].name+"</b> (Koloss "+(G.stage+1)+"/3) nach <b>"+G.t.toFixed(1)+"s</b>.<br>"+G.stage+" von 3 Kolossen bezwungen.";
   el.classList.remove("hide");document.getElementById("hud").classList.add("hide");beep(90,0.5,"sawtooth",0.09);}
-function win(){G.dead=true;G.running=false;bestSet(3);shake=1.2;
+function win(){G.dead=true;G.running=false;musSync();bestSet(3);shake=1.2;
   var el=document.getElementById("over");document.getElementById("overKick").textContent="Triumph";document.getElementById("overTitle").textContent="🏆 KOLOSS BEZWUNGEN";document.getElementById("overTitle").style.color="";
   document.getElementById("overSub").innerHTML="Alle drei Kolosse gefallen in <b>"+G.t.toFixed(1)+"s</b>. Du bist der Arena-Meister.<br>Schaffst du es schneller?";
   el.classList.remove("hide");document.getElementById("hud").classList.add("hide");beep(1046,0.6,"triangle",0.1);beep(1318,0.7,"triangle",0.08);showBest();}

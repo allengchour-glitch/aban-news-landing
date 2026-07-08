@@ -34,10 +34,12 @@ canvas{display:block}
 #touch .z:active::after{opacity:.6}
 #tzJ::after{font-size:1.05rem!important;letter-spacing:2px;white-space:nowrap}
 .hide{display:none!important}
+#vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
 </head>
 <body>
 <div id="wrap"></div>
+<div id="vig"></div>
 <div id="hud" class="hide"><div>🪙 <span id="coins">0</span></div><div>💀 <span id="deaths">0</span> · ⏱ <span id="time">0s</span></div></div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
 <div id="touch"><div class="z" id="tzL" style="left:0" data-g="◀"></div><div class="z" id="tzR" style="left:33%" data-g="▶"></div><div class="z" id="tzJ" style="right:0;width:34%" data-g="⤴ SPRUNG"></div></div>
@@ -50,6 +52,7 @@ canvas{display:block}
   <button class="btn" id="startBtn">Start ▶</button>
   <div id="best2" class="small"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
+  <div class="small" style="font-size:.68rem;opacity:.7">Musik: „Electrodoodle" — Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
 </div>
 
 <div class="overlay hide" id="over">
@@ -68,6 +71,7 @@ canvas{display:block}
 var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x07061a);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,2000);
@@ -124,7 +128,7 @@ var pGlow=new THREE.PointLight(0xff7ad9,1.4,14); scene.add(pGlow);
 // ---- Bloom ----
 var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
 var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt),bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.6}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
@@ -141,8 +145,10 @@ function renderBloom(){renderer.setRenderTarget(rtScene);renderer.render(scene,c
 // ---- Audio ----
 var actx=null,muted=false;try{muted=localStorage.getItem("nj_muted")==="1";}catch(e){}
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
+var MUS=new Audio("/audio/electrodoodle.mp3");MUS.loop=true;MUS.volume=0.28;MUS.preload="none";
+function musSync(){if(muted||!running)MUS.pause();else MUS.play().catch(function(){});}
 var muteBtn=document.getElementById("muteBtn");
-function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nj_muted",muted?"1":"0");}catch(e){}}
+function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nj_muted",muted?"1":"0");}catch(e){}musSync();}
 applyMute();muteBtn.onclick=function(){muted=!muted;applyMute();};
 addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;applyMute();}});
 function bestT(){try{return parseInt(localStorage.getItem("nj_best")||"0",10)||0;}catch(e){return 0;}}
@@ -171,9 +177,9 @@ document.getElementById("tzR").addEventListener("touchend",function(){keyR=false
 document.getElementById("tzR").addEventListener("touchcancel",function(){keyR=false;});
 document.getElementById("tzJ").addEventListener("touchstart",function(e){if(!running)start();else jumpQ=true;e.preventDefault();},{passive:false});
 
-function start(){resetRun();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");if("ontouchstart"in window)touchEl.style.display="block";}
+function start(){resetRun();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");if("ontouchstart"in window)touchEl.style.display="block";musSync();}
 function showBest(){var b=bestT();document.getElementById("best2").textContent=b>0?("🏆 Beste Zeit: "+b+"s"):"";}
-function finish(win){running=false;won=win;keyL=false;keyR=false;jumpQ=false;shake=win?0.4:0.6;if("ontouchstart"in window)touchEl.style.display="none";
+function finish(win){running=false;won=win;musSync();keyL=false;keyR=false;jumpQ=false;shake=win?0.4:0.6;if("ontouchstart"in window)touchEl.style.display="none";
   var secs=Math.floor(elapsed),b=bestT(),rec=win&&(b===0||secs<b);if(rec)setBestT(secs);
   document.getElementById("overTag").textContent=win?"Ziel erreicht!":"Game Over";
   document.getElementById("finalT").textContent=win?("🏁 "+secs+"s"):"Aufgegeben";

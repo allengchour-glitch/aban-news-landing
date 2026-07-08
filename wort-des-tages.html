@@ -185,5 +185,16 @@ footer a{color:var(--amber);text-decoration:none}
   }
 })();
 </script>
+<button id="musBtn" title="Musik an/aus" style="position:fixed;top:10px;right:10px;z-index:50;border:1px solid #8884;background:rgba(127,127,127,.14);border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🎵</button>
+<script>
+(function(){var MUS=null,on=false,btn=document.getElementById("musBtn");
+try{on=localStorage.getItem("aban_wort_musik")==="1";}catch(e){}
+function paint(){btn.style.opacity=on?"1":"0.55";btn.textContent=on?"🎵":"🔇";}
+function sync(){if(on){if(!MUS){MUS=new Audio("/audio/lemonade.mp3");MUS.loop=true;MUS.volume=0.18;}MUS.play().catch(function(){});}else if(MUS)MUS.pause();}
+btn.onclick=function(){on=!on;try{localStorage.setItem("aban_wort_musik",on?"1":"0");}catch(e){}paint();sync();};
+paint();if(on)document.addEventListener("pointerdown",function f(){document.removeEventListener("pointerdown",f);sync();});
+})();
+</script>
+<div style="text-align:center;font-size:.66rem;opacity:.55;padding:6px 0 10px">Musik: „Digital Lemonade" — Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
 </body>
 </html>

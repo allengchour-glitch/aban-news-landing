@@ -33,10 +33,12 @@ canvas{display:block}
 .small{font-size:.8rem;color:#8890b8;margin-top:18px}.small a{color:#9fb2ff}
 #muteBtn{position:fixed;top:8px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
 .hide{display:none!important}
+#vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
 </head>
 <body>
 <div id="wrap"></div>
+<div id="vig"></div>
 <div id="hud" class="hide">
   <div id="spd">0 <small>km/h</small></div>
   <div class="best"><span id="dist">0</span> m<br><span style="opacity:.7">Rekord <span id="best">0</span> m</span></div>
@@ -53,6 +55,7 @@ canvas{display:block}
   <button class="btn" id="startBtn">Start ▶</button>
   <div id="best2" class="small"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
+  <div class="small" style="font-size:.68rem;opacity:.7">Musik: „Voltaic" — Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
 </div>
 
 <div class="overlay hide" id="over">
@@ -71,6 +74,7 @@ canvas{display:block}
 var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x04050d); scene.fog=new THREE.Fog(0x04050d,60,220);
 var camera=new THREE.PerspectiveCamera(72,W/H,0.1,400);
@@ -111,7 +115,7 @@ for(i=0;i<14;i++)things.push(thingMesh());
 // ---- Bloom-Post-Processing (Neon-Glow) ----
 var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
 var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=new THREE.WebGLRenderTarget(W,H,rtOpt);
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
 var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
@@ -133,8 +137,10 @@ function renderBloom(){
 // ---- Audio ----
 var actx=null,muted=false; try{muted=localStorage.getItem("nr_muted")==="1";}catch(e){}
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
+var MUS=new Audio("/audio/voltaic.mp3");MUS.loop=true;MUS.volume=0.3;MUS.preload="none";
+function musSync(){try{if(!muted&&running)MUS.play().catch(function(){});else MUS.pause();}catch(e){}}
 var muteBtn=document.getElementById("muteBtn");
-function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nr_muted",muted?"1":"0");}catch(e){}}
+function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nr_muted",muted?"1":"0");}catch(e){}musSync();}
 applyMute(); muteBtn.onclick=function(){muted=!muted;applyMute();};
 addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;applyMute();}});
 
@@ -172,13 +178,13 @@ function spawnThing(){
 var shake=0,_cyan=new THREE.Color(0x5ef2ff);
 function burst(x,y,z,c){shake=Math.max(shake,0.35);}
 
-function start(){reset();running=true;paused=false;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");}
+function start(){reset();running=true;paused=false;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");musSync();}
 function showBest(){var b=bestM();document.getElementById("best").textContent=b;document.getElementById("best2").textContent=b>0?("🏆 Rekord: "+b+" m"):"";}
 function gameOver(){running=false;shake=1.4;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
   document.getElementById("finalT").textContent=m+" m";
   document.getElementById("verdict").innerHTML=(rec&&m>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+" m · ")+"Top-Speed "+Math.floor(speed*3.0)+" km/h";
   document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");
-  beep(90,.4,"sawtooth",.12);}
+  musSync();beep(90,.4,"sawtooth",.12);}
 
 document.getElementById("startBtn").onclick=start;
 document.getElementById("againBtn").onclick=start;
