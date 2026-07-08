@@ -60,3 +60,23 @@ Danke für dein Verständnis — und nochmals Entschuldigung für die Umstände.
 
 Herzliche Grüsse
 Dein LuxeStyle-Team · luxestyle.ch
+
+## #1008 — Intex Excursion 5 Schlauchboot (CHF 177.21) — ✅ ERSTATTET 08.07.
+**An: Kundin von Bestellung #1008 (Melanie — Adresse in Shopify) · Von: info@luxestyle.ch**
+**Betreff: Deine Bestellung #1008 — Rückerstattung & Entschuldigung**
+
+Guten Tag Melanie
+
+Es tut uns aufrichtig leid: Als du bestellt hast, war das Intex Excursion 5 noch gelistet — durch
+die grosse Badesaison-Nachfrage ist es bei unserem Lieferanten jedoch europaweit ausverkauft,
+ohne verbindlichen Nachliefertermin. Wir möchten dich mitten im Sommer nicht wochenlang warten lassen.
+
+Wir haben dir deshalb heute den vollen Betrag von CHF 177.21 zurückerstattet — je nach Bank
+dauert die Gutschrift 3–5 Werktage.
+
+Als Entschuldigung schenken wir dir 10 % auf deine nächste Bestellung mit dem Code **WELCOME10**.
+
+Danke für dein Verständnis — und nochmals Entschuldigung für die Umstände.
+
+Herzliche Grüsse
+Dein LuxeStyle-Team · luxestyle.ch

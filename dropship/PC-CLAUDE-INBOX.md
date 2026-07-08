@@ -57,5 +57,12 @@
   @luxestyle.ch als Zielkonto. Danach Client Key + Secret NUR rapportieren (erste 6 Zeichen)
   und vollständig dem User für den Chat geben — NIE in eine Datei committen.
 
+- [NEU 2026-07-08 — ENTSCHULDIGUNGS-MAIL #1008 SENDEN]
+  Setze das Zoho-App-Passwort («Claude Automation», hat der User erstellt) als Env ZOHO_APP_PASSWORD,
+  hole die Kunden-Mailadresse aus Shopify-Order #1008, und sende mit
+  `python3 automation/zoho_mail.py send <adresse> "Deine Bestellung #1008 — Rückerstattung & Entschuldigung" <textdatei>`
+  den #1008-Text aus dropship/KUNDEN-MAILS-REFUNDS.md (nur den Mail-Körper, ohne Markdown-Kopfzeilen).
+  Danach hier rapportieren. Passwort NIE in Dateien/Repo!
+
 ## 📤 RAPPORTE (PC-Claude trägt hier ein, neueste zuoberst)
 _(noch keine)_
