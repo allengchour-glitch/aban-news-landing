@@ -690,11 +690,19 @@ function idleAnim(dt){ // Landschaft + Player-Ringe leben auch im Menü/Over-Scr
   pRing.rotation.z+=dt*1.2;pRing2.rotation.z-=dt*1.6;pCore.rotation.y+=dt*2;
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=9*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2.2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;}}
 }
+// Bodennebel (weiche, driftende Quads)
+var fogTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+var g=c.createRadialGradient(128,128,10,128,128,128);g.addColorStop(0,"rgba(150,170,255,0.55)");g.addColorStop(1,"rgba(150,170,255,0)");
+c.fillStyle=g;c.fillRect(0,0,256,256);return new THREE.CanvasTexture(cv);})();
+var fogQ=[];
+for(var _fi=0;_fi<5;_fi++){var fq=new THREE.Mesh(new THREE.PlaneGeometry(46,46),new THREE.MeshBasicMaterial({map:fogTex,transparent:true,opacity:0.07,blending:THREE.AdditiveBlending,depthWrite:false}));
+  fq.rotation.x=-Math.PI/2;fq.position.set((Math.random()-.5)*60,0.6+_fi*0.5,(Math.random()-.5)*60);fq.userData.rs=(Math.random()-.5)*0.05;scene.add(fq);fogQ.push(fq);}
 function frame(now){requestAnimationFrame(frame);var dt=Math.min(0.033,(now-last)/1000);last=now;
   if(G.running&&!paused){if(hitstop>0){hitstop-=dt;}else{var gdt=dt;if(G.slowT>0){G.slowT-=dt;gdt=dt*G.slowVal;}update(gdt);}}
   else idleAnim(dt);
   if(impactEl._o>0){impactEl._o=Math.max(0,impactEl._o-dt*3.2);impactEl.style.opacity=impactEl._o;}
   if(G.running||G.dead)updateCamera(dt);else{camera.position.set(0,20,52);camera.lookAt(0,5,-8);}
+  for(var _f2=0;_f2<fogQ.length;_f2++){fogQ[_f2].rotation.z+=fogQ[_f2].userData.rs*dt;fogQ[_f2].position.x+=Math.sin(now*0.0001+_f2)*dt*0.6;}
   renderBloom();
 }
 requestAnimationFrame(frame);

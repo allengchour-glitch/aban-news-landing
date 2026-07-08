@@ -165,6 +165,10 @@ function gate(){
 for(i=0;i<14;i++)pillars.push(pillar());
 for(i=0;i<10;i++)orbs.push(orb());
 var gates=[];for(i=0;i<4;i++)gates.push(gate());
+// Deko: Neon-Bögen über der Strecke
+var arches=[];
+for(i=0;i<4;i++){var am=new THREE.Mesh(new THREE.TorusGeometry(8.6,0.22,8,28,Math.PI),new THREE.MeshStandardMaterial({color:i%2?0xb98bff:0x5ef2ff,emissive:i%2?0xb98bff:0x5ef2ff,emissiveIntensity:1.1,flatShading:true}));
+  am.position.set(0,-1.6,-260-i*90);scene.add(am);arches.push(am);}
 
 // Burst particle effect on collect/crash
 function burst(x,y,z,color){
@@ -438,6 +442,7 @@ function loop(t){
     });
     // Bonus-Ringe (Skill-Event)
     if(tick-lastGate>Math.max(280,520-speed*40)){var fg=gates.filter(function(g){return !g.active;});if(fg.length){var acc=BIOMES[biomeIndex%BIOMES.length].accent;var g0=fg[0];g0.m.position.set((rnd()*10-5),0.4,spawnZ-10);g0.m.material.color.setHex(acc);g0.m.material.emissive.setHex(acc);g0.active=true;g0.scored=false;}lastGate=tick;}
+    arches.forEach(function(a){a.position.z+=cs;if(a.position.z>16)a.position.z-=360;});
     gates.forEach(function(g){if(!g.active)return;g.m.position.z+=cs;g.m.rotation.z+=0.02;
       var gdx=Math.abs(g.m.position.x-shipX);
       if(!g.scored&&Math.abs(g.m.position.z)<1.4&&gdx<2.2){g.scored=true;var bo=5*mult();combo+=3;comboTimer=comboTime;score+=bo;dashCharge=Math.min(1,dashCharge+0.5);var ac=BIOMES[biomeIndex%BIOMES.length].accent;burst(shipX,0.4,0,ac);announce("PERFEKT! +"+bo,ac);flash();beep(990,.14,"square",.08);}
