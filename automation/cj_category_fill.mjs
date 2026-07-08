@@ -209,6 +209,8 @@ async function deepseek(prompt){
  return null;
 }
 
+const LABELTAG=[[/dress/i,'kategorie-kleid'],[/skirt/i,'kategorie-rock'],[/necklace|pendant/i,'kategorie-halskette'],
+ [/bracelet|bangle/i,'kategorie-armband'],[/watch/i,'kategorie-uhr'],[/bag|backpack|handbag|tote/i,'kategorie-tasche']];
 const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP');process.exit(1);}
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
@@ -236,7 +238,8 @@ for(const [cat,label] of grp.cats){
    const fash=grp.fashion?buildFashion(d):null;
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
-   const tagsFinal=(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags);
+   const katTag=(LABELTAG.find(([re])=>re.test(label||''))||[])[1];
+   const tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
    const input={title,handle:slug,productType:grp.type,vendor:'LuxeStyle',status:'ACTIVE',tags:tagsFinal,descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
