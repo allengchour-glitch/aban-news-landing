@@ -11,11 +11,13 @@
 <meta property="og:description" content="8 Lebenskapitel, 100+ Entscheidungen, deine Biografie am Ende. 1–4 Spieler, gratis im Browser.">
 <meta property="og:url" content="https://abannews.com/lebenspfad.html">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#6ec8f5">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"VideoGame","name":"Lebenspfad","url":"https://abannews.com/lebenspfad.html","genre":"Brettspiel","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+button,input,label{touch-action:manipulation}
 html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,#a8e0f8);color:#2a3040;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
 #wrap{position:fixed;inset:0}canvas{display:block}
 .hide{display:none!important}
@@ -68,6 +70,21 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .score{background:#fffdf6;border:2px solid #e8d8b0;border-radius:14px;padding:10px 16px;font-size:.85rem;color:#3a4252}
 .score b{display:block;font-size:1.25rem}
 .score.win{border-color:#ff8c2a;box-shadow:0 0 18px rgba(255,150,40,.4)}
+@media(pointer:coarse){
+  #menuBtn,#muteBtn{width:46px!important;height:46px!important;font-size:1.15rem!important}
+  #rollBtn{padding:18px 46px;font-size:1.2rem}
+}
+@media(max-width:480px){
+  #players{max-width:46vw;gap:4px}
+  .pcard{padding:5px 8px;font-size:.68rem}
+  .pcard .st{gap:6px}
+  #chapterTag b{font-size:.82rem;letter-spacing:.12em}
+  #chapterTag small{font-size:.62rem}
+  #turnTag{font-size:.74rem;top:56px}
+  #progMap{bottom:88px;width:92vw}
+  #card{padding:16px}
+  #card h3{font-size:1.05rem}
+}
 </style>
 </head>
 <body>
@@ -81,7 +98,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
     <div id="progSegs" style="display:flex;height:8px;border-radius:6px;overflow:hidden;opacity:.85"></div>
     <div id="progDots" style="position:relative;height:8px"></div>
   </div>
-  <div id="keysHelp"><b>LEER</b>/Knopf würfeln · <b>M</b> Ton — Ereignisse: anklicken &amp; entscheiden</div>
+  <div id="keysHelp"></div>
 </div>
 <div id="dmg" style="position:fixed;inset:0;pointer-events:none;z-index:12"></div>
 <div id="mourn" style="position:fixed;inset:0;pointer-events:none;z-index:13;background:radial-gradient(circle,rgba(20,20,30,0) 30%,rgba(10,10,18,.88));opacity:0;transition:opacity 1.2s"></div>
@@ -409,7 +426,7 @@ function updBalloons(t){for(var i=0;i<balloons.length;i++){var bl=balloons[i];
 })();
 // Schmetterlinge (flatternde Doppel-Quads, folgen lose der Kamera)
 var flies=[];
-(function(){for(var i=0;i<12;i++){var g=new THREE.Group();
+(function(){var FLN=IS_COARSE?7:12;for(var i=0;i<FLN;i++){var g=new THREE.Group();
   var c=new THREE.Color().setHSL(Math.random(),0.85,0.6);
   var w1=new THREE.Mesh(new THREE.PlaneGeometry(0.34,0.26),new THREE.MeshBasicMaterial({color:c,side:THREE.DoubleSide}));
   var w2=w1.clone();w1.position.x=-0.17;w2.position.x=0.17;g.add(w1);g.add(w2);
@@ -439,7 +456,7 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
 (function(){
   var _d=new THREE.Object3D();
   // Bäume: Stamm+Krone in Kapitel-Farbvarianten
-  var N=240;
+  var N=IS_COARSE?150:240;
   var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.22,0.3,1.6,5),mat(0x8a5a3a),N);
   var crown=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1.15,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),N);
   var cTmp=new THREE.Color();
@@ -471,7 +488,7 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
   trunk.instanceMatrix.needsUpdate=true;crown.instanceMatrix.needsUpdate=true;if(crown.instanceColor)crown.instanceColor.needsUpdate=true;
   trunk.castShadow=true;crown.castShadow=true;scene.add(trunk);scene.add(crown);
   // Blumen-Punkte (alle Farben)
-  var FN=700,fg=new THREE.BufferGeometry(),fp=new Float32Array(FN*3),fc=new Float32Array(FN*3);
+  var FN=IS_COARSE?420:700,fg=new THREE.BufferGeometry(),fp=new Float32Array(FN*3),fc=new Float32Array(FN*3);
   for(var f2=0;f2<FN;f2++){var fx=-175+Math.random()*400,fz=(Math.random()-0.5)*190;
     fp[f2*3]=fx;fp[f2*3+1]=terrainH(fx,fz)+0.15;fp[f2*3+2]=fz;
     cTmp.setHSL(Math.random(),0.85,0.62);fc[f2*3]=cTmp.r;fc[f2*3+1]=cTmp.g;fc[f2*3+2]=cTmp.b;}
@@ -512,7 +529,7 @@ function updConfs(dt){for(var i=confs.length-1;i>=0;i--){var c=confs[i];c.life-=
   if(!c.heart){c.m.rotation.x+=c.rx*dt;c.m.rotation.z+=c.rz*dt;}
   if(c.m.material.opacity!==undefined)c.m.material.opacity=Math.min(1,c.life);}}
 // Jahreszeiten-Partikel: Pollen (Frühling) / Blätter (Herbst) / Blüten (Winterpastell)
-var SEASON_N=130,seasonGeo=new THREE.BufferGeometry(),seasonPos=new Float32Array(SEASON_N*3),seasonV=[];
+var SEASON_N=IS_COARSE?80:130,seasonGeo=new THREE.BufferGeometry(),seasonPos=new Float32Array(SEASON_N*3),seasonV=[];
 for(var si=0;si<SEASON_N;si++){seasonPos[si*3]=0;seasonPos[si*3+1]=Math.random()*14;seasonPos[si*3+2]=0;seasonV.push([Math.random()*0.6-0.3,0.5+Math.random(),Math.random()*0.6-0.3]);}
 seasonGeo.setAttribute("position",new THREE.BufferAttribute(seasonPos,3));
 var seasonMat=new THREE.PointsMaterial({color:0xfff0a0,size:0.5,transparent:true,opacity:0.85});
@@ -696,6 +713,9 @@ function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){r
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.v===3&&s.players&&s.players.length)?s:null;}catch(e){return null;}}
 var pawns=[];
 // ===================== HUD =====================
+document.getElementById("keysHelp").innerHTML=IS_COARSE?
+  "🎲 antippen zum Würfeln · Karten antippen zum Entscheiden":
+  "<b>LEER</b>/Knopf würfeln · <b>M</b> Ton · <b>ESC</b> Menü — Ereignisse: anklicken &amp; entscheiden";
 function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2600);}
 function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2400);}
 function initProgMap(){var ps2=document.getElementById("progSegs");ps2.innerHTML="";
@@ -992,8 +1012,9 @@ function updateCamera(dt){
   camT.x+=(tx-camT.x)*Math.min(1,dt*3);camT.z+=(tz-camT.z)*Math.min(1,dt*3);
   var swayX=OPT.motion?Math.sin(performance.now()*0.00035)*1.2:0;
   camera.position.x+=(camT.x+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*4);
-  camera.position.y+=(19-camera.position.y)*Math.min(1,dt*3);
-  camera.position.z+=(camT.z+17-camera.position.z)*Math.min(1,dt*4);
+  var camH=19*(H>W?1.45:1);
+  camera.position.y+=(camH-camera.position.y)*Math.min(1,dt*3);
+  camera.position.z+=(camT.z+17*(H>W?1.3:1)-camera.position.z)*Math.min(1,dt*4);
   camera.lookAt(camT.x,0.5,camT.z-2);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
 }
