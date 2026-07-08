@@ -50,3 +50,19 @@ Use-Case «organic pin publishing for our own shop»). Die abgelehnte App 158051
 ### 8. 🔁 Dauerbetrieb
 Dieses Repo alle paar Stunden pullen; INBOX-Aufträge + Dauerauftrag (TikTok-Posting Di+Fr,
 Kommentare, Story) abarbeiten. Rapporte nicht vergessen — die Cloud liest sie im Morgenreport.
+
+### 3b. 🔍 GOOGLE KOMPLETT-SETUP (Detail zu Aufgabe 3, User 2026-07-08 «auch google sache»)
+**A) Merchant Center aufräumen** (merchants.google.com, Konto LuxeStyle CH 5797470070):
+1. Zahnrad (Einstellungen) → **«Versand und Rücksendungen»** → alle Versandprofile/Einträge
+   für **USA** und **Deutschland** LÖSCHEN (nur Schweiz behalten).
+2. Falls unter Einstellungen → «Zielländer/Märkte» USA/DE als Ziel gelistet: entfernen.
+   → Damit verschwinden «Checkout URL is not yet live» (223 Produkte/US) + die DE-Versand-Warnung.
+3. NICHTS bei «Show products in more countries» klicken (Growth-Karten ignorieren — CH-Fokus).
+4. Kontrolle: Produkte-Tab → nach Land filtern → nur noch CH-Einträge.
+**B) Google Search Console einrichten** (kostenlos, SEO-Radar):
+1. search.google.com/search-console → Property-Typ **«URL-Präfix»** → `https://luxestyle.ch`
+2. Verifizierungsmethode **«HTML-Tag»** wählen → den `<meta name="google-site-verification" content="…">`
+   -Inhalt (nur den content-Wert) in den Rapport-Block schreiben.
+3. Cloud-Session baut das Tag dann per API ins Theme ein → danach in der Search Console
+   auf «Bestätigen» klicken und Sitemap `https://luxestyle.ch/sitemap.xml` einreichen.
+**C) NICHT anfassen:** Google Ads / Budgets / Zahlungsdaten (erst nach UID + bewusstem Entscheid).
