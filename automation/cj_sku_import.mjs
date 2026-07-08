@@ -81,10 +81,13 @@ for (const item of ITEMS) {
     const j = await cj(`/product/query?productSku=${encodeURIComponent(val)}`); await sleep(1300);
     pid = j.data?.pid;
   } else {
-    const j = await cj(`/product/list?pageSize=5&pageNum=1&productNameEn=${encodeURIComponent(val)}&orderBy=listedNum`); await sleep(1300);
-    pid = (j.data?.list || [])[0]?.pid;
+    const j = await cj(`/product/list?pageSize=10&pageNum=1&productNameEn=${encodeURIComponent(val)}&orderBy=listedNum`); await sleep(1300);
+    // Top-10 durchgehen, ersten noch nicht importierten nehmen (Top-1 war oft schon im Shop)
+    for (const cand of (j.data?.list || [])) {
+      if (!done.has(String(cand.pid))) { pid = cand.pid; break; }
+    }
   }
-  if (!pid) { console.log('✗ nicht gefunden:', item); continue; }
+  if (!pid) { console.log('✗ nicht gefunden/alles schon da:', item); continue; }
   if (done.has(String(pid))) { console.log('= schon importiert:', item); continue; }
   const dj = await cj(`/product/query?pid=${pid}`); await sleep(1300);
   const d = dj.data || {};
