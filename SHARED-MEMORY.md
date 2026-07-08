@@ -96,7 +96,11 @@
   REVIVE=1 belebt wieder; OK-Ledger `dropship/_viability_ok.txt`). GEHIRN-Regel 14.
 - **DRY-Befund Top-15 (≥CHF 150): 13/15 NICHT lieferbar!** (BenQ/Asus/Lenovo-Monitore, Projektoren,
   LG-Kühlschrank/TV = ausverkauft oder kein CH-Versand). 987 Kandidaten ≥CHF 150 warten auf Voll-Lauf.
-- **💰 BigBuy-MONEYBOX = 0** (ER005 im Check) → API-Bestellungen UNMÖGLICH bis User Guthaben lädt.
+- **💰 MoneyBox-Aufladung LÄUFT (User überwies 08.07. abends 1000 € per SEPA):** IBAN vom Support
+  (Ticket 46668705945): All 4 Business S.L., ES21 3159 0040 7128 0031 0720, BIC BCOEESMM159,
+  Zweck 18138327+966388. Gutschrift 1–2 Werktage; Stunden-Wächter prüft user/purse.json und meldet.
+  Sobald Guthaben da: «bestell auto» voll aktiv (bb_auto_order CONFIRM=1 nach Margen-Blick).
+  ⚠️ User muss noch Bank-PDF im Panel bei 18138327 «Anhängen» (beschleunigt Zuordnung).
   Selbst bei Wieder-Verfügbarkeit der Klimaanlage könnte «bestell auto» nichts bestellen!
   **UPDATE 7.7. ~12:40:** User hat **1000-€-Einzahlung per Banküberweisung angestossen** (BigBuy-
   Vorgang 18138327, Status «Fällige Zahlungen») → Gutschrift 1–2 Werktage NACH echter Bank-Überweisung.
