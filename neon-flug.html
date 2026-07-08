@@ -105,8 +105,23 @@ var dir=new THREE.DirectionalLight(0xffffff,0.7);dir.position.set(5,12,8);scene.
 var glow=new THREE.PointLight(0x5ef2ff,1.4,60);scene.add(glow);
 
 // Floor grid (neon) — heller für mehr Präsenz
-var grid=new THREE.GridHelper(400,80,0x4a58b0,0x232a55);
-grid.position.y=-2;scene.add(grid);
+
+// Animierter Retrowave-Grid-Boden (Shader: scrollende Neon-Linien, Puls, Horizont-Fade)
+function neonGrid(size,cells,c1,c2){
+ var m=new THREE.ShaderMaterial({transparent:true,depthWrite:false,fog:false,
+  uniforms:{uT:{value:0},c1:{value:new THREE.Color(c1)},c2:{value:new THREE.Color(c2)}},
+  vertexShader:"varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"varying vec2 vUv;uniform float uT;uniform vec3 c1;uniform vec3 c2;void main(){vec2 g=vUv*"+cells.toFixed(1)+";g.y+=uT;vec2 gv=fract(g)-0.5;float d=min(abs(gv.x),abs(gv.y));float line=smoothstep(0.07,0.012,d);float pulse=0.8+0.2*sin(uT*1.7);float cd=distance(vUv,vec2(0.5));float fade=smoothstep(0.5,0.18,cd);vec3 col=mix(c2,c1,line)*pulse;gl_FragColor=vec4(col,line*0.75*fade);}",
+  blending:THREE.AdditiveBlending,side:THREE.DoubleSide});
+ var mesh=new THREE.Mesh(new THREE.PlaneGeometry(size,size),m);mesh.rotation.x=-Math.PI/2;return mesh;
+}
+var gridMesh=neonGrid(420,84,0x5ef2ff,0x1a2258);gridMesh.position.y=-2;scene.add(gridMesh);
+// Licht-Trail hinter dem Gleiter
+var trailN=14,trailG=new THREE.BufferGeometry(),trailP=new Float32Array(trailN*3),trailCl=new Float32Array(trailN*3);
+for(var _ti=0;_ti<trailN;_ti++){var fdd=1-_ti/trailN;trailCl[_ti*3]=0.37*fdd;trailCl[_ti*3+1]=0.95*fdd;trailCl[_ti*3+2]=1.0*fdd;}
+trailG.setAttribute("position",new THREE.BufferAttribute(trailP,3));trailG.setAttribute("color",new THREE.BufferAttribute(trailCl,3));
+var trailTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,64,64);return new THREE.CanvasTexture(cv);})();
+var trail=new THREE.Points(trailG,new THREE.PointsMaterial({size:0.9,map:trailTex,vertexColors:true,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(trail);
 
 // Neon-Canyon-Wände (füllen den leeren Raum, geben "Canyon"-Gefühl)
 var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:1.2,flatShading:true}));
@@ -443,6 +458,10 @@ function loop(t){
     // Bonus-Ringe (Skill-Event)
     if(tick-lastGate>Math.max(280,520-speed*40)){var fg=gates.filter(function(g){return !g.active;});if(fg.length){var acc=BIOMES[biomeIndex%BIOMES.length].accent;var g0=fg[0];g0.m.position.set((rnd()*10-5),0.4,spawnZ-10);g0.m.material.color.setHex(acc);g0.m.material.emissive.setHex(acc);g0.active=true;g0.scored=false;}lastGate=tick;}
     arches.forEach(function(a){a.position.z+=cs;if(a.position.z>16)a.position.z-=360;});
+    gridMesh.material.uniforms.uT.value+=cs*0.021;
+    for(var _tj=trailN-1;_tj>0;_tj--){trailP[_tj*3]=trailP[(_tj-1)*3];trailP[_tj*3+1]=trailP[(_tj-1)*3+1];trailP[_tj*3+2]=trailP[(_tj-1)*3+2]+cs*0.5;}
+    trailP[0]=ship.position.x;trailP[1]=ship.position.y-0.1;trailP[2]=ship.position.z+0.7;
+    trailG.attributes.position.needsUpdate=true;
     gates.forEach(function(g){if(!g.active)return;g.m.position.z+=cs;g.m.rotation.z+=0.02;
       var gdx=Math.abs(g.m.position.x-shipX);
       if(!g.scored&&Math.abs(g.m.position.z)<1.4&&gdx<2.2){g.scored=true;var bo=5*mult();combo+=3;comboTimer=comboTime;score+=bo;dashCharge=Math.min(1,dashCharge+0.5);var ac=BIOMES[biomeIndex%BIOMES.length].accent;burst(shipX,0.4,0,ac);announce("PERFEKT! +"+bo,ac);flash();beep(990,.14,"square",.08);}
@@ -463,7 +482,7 @@ function loop(t){
     b.pts.geometry.attributes.position.needsUpdate=true;b.life-=0.04;b.pts.material.opacity=Math.max(0,b.life);
     if(b.life<=0){scene.remove(b.pts);bursts.splice(i,1);}}
   // scenery scroll
-  grid.position.z=(grid.position.z+ (running?speed:0.15))%20;
+  gridMesh.material.uniforms.uT.value+=(running?speed:0.15)*0.011;
   glow.position.set(ship.position.x,2,ship.position.z+2);
   // camera shake + follow
   if(shake>0)shake-=0.04;

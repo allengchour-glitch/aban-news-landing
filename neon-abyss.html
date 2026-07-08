@@ -105,7 +105,9 @@ floor.rotation.x=-Math.PI/2; scene.add(floor);
 var grid=new THREE.GridHelper(ARENA*2,44,0x3a2a60,0x1c1436); grid.position.y=0.02; scene.add(grid);
 // Verlies-Rand + Säulen (Deko)
 for(var wi=0;wi<4;wi++){var wall=new THREE.Mesh(new THREE.BoxGeometry(wi<2?ARENA*2+4:1.6,3,wi<2?1.6:ARENA*2+4),mat(0x201636,0xb15cff,0.7));wall.position.set(wi===0?0:(wi===1?0:(wi===2?ARENA+1:-ARENA-1)),0.5,wi===0?ARENA+1:(wi===1?-ARENA-1:0));scene.add(wall);}
-for(var pi=0;pi<10;pi++){var a=pi/10*6.283,r=ARENA*0.72;var col=new THREE.Mesh(new THREE.CylinderGeometry(1,1.2,7,6),mat(0x281a44,0x5ef2ff,0.6));col.position.set(Math.cos(a)*r,2,Math.sin(a)*r);scene.add(col);}
+for(var pi=0;pi<10;pi++){var a=pi/10*6.283,r=ARENA*0.72;var col=new THREE.Mesh(new THREE.CylinderGeometry(1,1.2,7,6),mat(0x281a44,0x5ef2ff,0.6));col.position.set(Math.cos(a)*r,2,Math.sin(a)*r);scene.add(col);
+  var shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.6,2.4,10,8,1,true),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.05,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+  shaft.position.set(Math.cos(a)*r,5,Math.sin(a)*r);scene.add(shaft);}
 // Marker (Klick-Ziel)
 // Glut-Partikel (Atmosphäre)
 var embN=90,embG=new THREE.BufferGeometry(),embP=new Float32Array(embN*3),embV=new Float32Array(embN);
