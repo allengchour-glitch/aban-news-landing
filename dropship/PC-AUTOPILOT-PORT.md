@@ -66,3 +66,10 @@ Kommentare, Story) abarbeiten. Rapporte nicht vergessen — die Cloud liest sie 
 3. Cloud-Session baut das Tag dann per API ins Theme ein → danach in der Search Console
    auf «Bestätigen» klicken und Sitemap `https://luxestyle.ch/sitemap.xml` einreichen.
 **C) NICHT anfassen:** Google Ads / Budgets / Zahlungsdaten (erst nach UID + bewusstem Entscheid).
+
+### 4b. 🛒 WARENKORB-ABBRECHER-MAILS AKTIVIEREN (CHF 630 in 11 Checkouts entdeckt, 2026-07-08!)
+Shopify-Admin → **Marketing → Automatisierungen → «Automatisierung erstellen» →
+Vorlage «Warenkorbabbruch» (Abandoned checkout)** → Standard-Mail aktivieren (Shopify-nativ,
+gratis — Klaviyo ist ja kaputt). Betreffzeile darf Standard bleiben; wenn editierbar:
+«Dein Warenkorb wartet — 10 % mit Code WELCOME10 🇨🇭». Danach Status hier rapportieren.
+Das ist der direkteste 100-Kunden-Hebel: Käufer, die schon fast bezahlt hätten.

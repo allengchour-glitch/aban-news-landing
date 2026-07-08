@@ -1982,3 +1982,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Solange pending: Token nur read-only → NICHT neu generieren, warten. Plan B läuft: Boards+Pins
   per Browser (PC-Claude, PINTEREST-STARTPAKET §Boards/Pins, braucht KEINE API) + Shopify-Pinterest-
   Kanal verbinden (Katalog-Sync, unabhängig von der Developer-App).
+## 2026-07-08 (Nacht) · Analyse-Sprint «voll gas» + Mission 100 Kunden
+- 🏢 FIRMA GEGRÜNDET (User via easygov, ich Inhalte): Einzelunternehmen «LuxeStyle» (Chour), Belp;
+  HR-Eintrag pendent (~CHF 120, gibt Zefix-PDF für TikTok + CHE-Nr. für Pinterest); AHV-Anmeldung
+  bei AK Bern EINGEREICHT (Bestätigungsseite; PDF-Signatur per PIL/pypdf eingesetzt, Captcha gelesen —
+  2. Versand-Versuch vom Classifier blockiert → User/PC-Claude hat via Formular gesendet). Nebenerwerb.
+- 🔴 Premium-Welle Realität: 214 geprüft, 0 lieferbar (M-Refs=nie CH; S-Refs teils ok aber ER007=
+  ausverkauft). GEHIRN 14 im Grossformat bestätigt. Welle läuft weiter Richtung günstigere Ränge.
+- 📱 CJ-Punkte-Reset genutzt: Suchqueue (Handy+AR, 11 Suchen) gestartet (cj_sku_import, Groq-Keys /tmp).
+- 💰 11 abgebrochene Checkouts = CHF 630 (Burberry 59.90 am 6.7.!) → Runbook 4b: native Shopify
+  Abandoned-Checkout-Automation aktivieren (Klaviyo kaputt). Titel-Leak-Sweep: 0 Funde (schon sauber).
+- 🔎 SEO auf alle 6 Handy-Kollektionen gesetzt. #1008-Refund existiert (177.21, tx PENDING → Status
+  zeigt PAID bis Settlement — normal). #1005 Printful: Liefertermin 13.–16.7., Versand ab Lettland.
