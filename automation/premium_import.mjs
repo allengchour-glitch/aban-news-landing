@@ -115,12 +115,14 @@ for (const c of cands) {
   if (created >= CAP) break;
   if (done.has('pm:' + c.id)) continue;
   checked++;
-  // Detail (deutscher Name)
-  const { status, j: d } = await bbCall(`https://api.bigbuy.eu/rest/catalog/product/${c.id}.json?isoCode=de`);
+  // Detail (deutscher Name) — ⚠️ catalog/product hat KEIN name-Feld → productinformation nutzen!
+  const { status, j: d } = await bbCall(`https://api.bigbuy.eu/rest/catalog/productinformation/${c.id}.json?isoCode=de`);
   await sleep(GAP);
-  if (status !== 200 || !d) continue;
-  let name = (d.name || '').replace(/\s*[–—-]?\s*Ref\.?:?\s*(BB[-_])?[A-Z0-9][\w-]*\s*$/i, '').replace(/ß/g, 'ss').replace(/["<>]/g, '').trim();
-  if (!name || name.length < 8) continue;
+  const info = Array.isArray(d) ? d[0] : d;
+  if (status !== 200 || !info) { console.log(`  skip(kein-detail ${status}) id ${c.id}`); continue; }
+  let name = (info.name || '').replace(/\s*[–—-]?\s*Ref\.?:?\s*(BB[-_])?[A-Z0-9][\w-]*\s*$/i, '').replace(/ß/g, 'ss').replace(/["<>]/g, '').trim();
+  if (!name || name.length < 8) { console.log(`  skip(kein-name) id ${c.id}`); fs.appendFileSync(LEDGER, 'pm:' + c.id + '\n'); done.add('pm:' + c.id); continue; }
+  const bbDesc = (info.description || '').replace(/ß/g, 'ss').slice(0, 4000);
   // Lieferbarkeit ZUERST (der ganze Sinn dieser Welle)
   const v = await viable(c.sku); await sleep(GAP);
   if (!v.ok) { console.log(`  skip(${v.why}) €${c.ek} ${name.slice(0, 50)}`); fs.appendFileSync(LEDGER, 'pm:' + c.id + '\n'); done.add('pm:' + c.id); continue; }
@@ -138,7 +140,7 @@ for (const c of cands) {
   const price = round90(Math.max(ekChf * 1.25, uvpChf > 0 ? uvpChf * 1.05 : 0, ekChf * 1.25));
   if (DRY) { console.log(`[DRY] €${c.ek} → CHF ${price} | ${name.slice(0, 60)} (Versand ${v.shipCost} €)`); created++; continue; }
   const handle = (name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 50)) + '-' + c.id;
-  const desc = `<p><strong>${name}</strong></p><ul><li>✔ Original-Markenware, fabrikneu</li><li>📦 Lagergeprüft — versandbereit ab EU-Lager</li><li>🚚 Lieferung in die Schweiz per Spedition/Paket</li><li>↩️ 30 Tage Rückgaberecht</li></ul><p>✓ Geprüfte Qualität · Gratis-Versand ab CHF 50 · 🇨🇭 LuxeStyle</p>`;
+  const desc = `<p><strong>${name}</strong></p>${bbDesc ? `<div>${bbDesc}</div>` : ''}<ul><li>✔ Original-Markenware, fabrikneu</li><li>📦 Lagergeprüft — versandbereit ab EU-Lager</li><li>🚚 Lieferung in die Schweiz per Spedition/Paket</li><li>↩️ 30 Tage Rückgaberecht</li></ul><p>✓ Geprüfte Qualität · Gratis-Versand ab CHF 50 · 🇨🇭 LuxeStyle</p>`;
   const input = { title: name, handle, productType: 'Premium', vendor: 'LuxeStyle', status: 'ACTIVE',
     tags: ['bigbuy', 'dropship', 'marke', 'premium-lager', 'lager-geprueft'],
     descriptionHtml: desc, seo: { title: `${name} | LuxeStyle`, description: `${name} – Original-Markenware an Lager, schnelle Lieferung in die Schweiz.` },

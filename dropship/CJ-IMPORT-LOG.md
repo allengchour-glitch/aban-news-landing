@@ -1951,3 +1951,16 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Queue reels_seed.csv fortgeschrieben. 2 weitere ready.
 - **Voll-Auto-Weg:** User-Klick „Audit beantragen" (developers.tiktok.com, Anleitung TIKTOK-AUTOPOST-AKTIVIEREN.md)
   → danach TT_PRIVACY_LEVEL=PUBLIC_TO_EVERYONE ohne Fallback.
+## 2026-07-08 · Handy-Welt + Pinterest-Paket + Premium-Fix
+- 📱 Handy-Welt: 6 Smart-Collections (Titel-Regeln) live + publiziert + im Menü unter «📱 Technik & Auto»:
+  handy-huellen(33) · handy-schutzglas(5) · handy-laden(287) · handy-powerbanks(102) ·
+  handy-halterungen(35) · handy-selfie-video(10); Dach = handy-zubehoer(392).
+- CJ-Tagespunkte 08.07. AUFGEBRAUCHT (90'040) → Handy-/AR-Suchen in automation/cj_search_queue.txt geparkt.
+- 🐛 premium_import-Bug gefixt: catalog/product/{id}.json hat KEIN name-Feld → productinformation/{id}.json
+  nutzen (liefert name+description DE). Welle lief 3h leer; neu gestartet, verdicts laufen (iPad/Qnap/Baume
+  & Mercier = kein CH-Versand → korrekt geskippt).
+- 📌 Pinterest: Startpaket dropship/PINTEREST-STARTPAKET.md (2 User-Klicks, 8 Boards, 20 fertige Pins)
+  + PC-Claude-Auftrag. Shopify-Pinterest-Publication existiert bereits.
+- 🛒 GMC (User-Screenshots): «Checkout URL not yet live» betrifft 223 Produkte in UNITED STATES →
+  Ursache US-Zielland; Fix = USA (und DE) als Zielland entfernen (User-Klick, steht in TODO).
+- 💰 BigBuy-Moneybox weiterhin 0.00 (SEPA unterwegs); Stunden-Wächter pollt.

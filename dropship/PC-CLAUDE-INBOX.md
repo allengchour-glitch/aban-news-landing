@@ -64,5 +64,11 @@
   den #1008-Text aus dropship/KUNDEN-MAILS-REFUNDS.md (nur den Mail-Körper, ohne Markdown-Kopfzeilen).
   Danach hier rapportieren. Passwort NIE in Dateien/Repo!
 
+- [NEU 2026-07-08b — PINTEREST STARTEN (sobald der User Klick 1+2 aus
+  `dropship/PINTEREST-STARTPAKET.md` gemacht hat — vorher überspringen!)]
+  Im Browser auf pinterest.ch (eingeloggt als LuxeStyle): die 8 Boards aus dem Startpaket anlegen,
+  dann die 20 fertigen Start-Pins posten (Bild-URL, Link mit utm, Titel, Beschreibung stehen im
+  Paket) — max. 5 Pins/Tag, Rest über die Folgetage. Danach hier rapportieren (Board-URLs).
+
 ## 📤 RAPPORTE (PC-Claude trägt hier ein, neueste zuoberst)
 _(noch keine)_
