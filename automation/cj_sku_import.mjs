@@ -97,8 +97,15 @@ for (const item of ITEMS) {
   const g = await groq(d.productNameEn || val, feats);
   if (!g) { console.log('✗ keine Texte:', item); continue; }
   const title = g.title.slice(0, 70);
-  const dq = await sgql(t, `query($q:String!){products(first:1,query:$q){edges{node{id}}}}`, { q: `title:"${title.replace(/"/g, '')}" status:active` });
-  if (dq.data?.products?.edges?.length) { console.log('= Titel existiert:', title); continue; }
+  // Titel-Wache inkl. Umlaut-Normalisierung (Geraet==Gerät-Falle 2026-07-08) + Bild-Wache (GEHIRN 2)
+  const norm = x => x.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
+  const dq = await sgql(t, `query($q:String!){products(first:10,query:$q){edges{node{id title}}}}`, { q: `title:"${title.replace(/"/g, '').split(' ').slice(0,3).join(' ')}*" status:active` });
+  if ((dq.data?.products?.edges||[]).some(e => norm(e.node.title) === norm(title))) { console.log('= Titel existiert (norm):', title); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  const IMGLEDGER = 'dropship/cj_niche_img_seen.txt';
+  const imgSeen = new Set(fs.existsSync(IMGLEDGER) ? fs.readFileSync(IMGLEDGER, 'utf8').split('\n').filter(Boolean) : []);
+  const imgKey = (imgs[0]||'').split('?')[0].split('/').pop();
+  if (imgKey && imgSeen.has(imgKey)) { console.log('= Bild existiert:', title); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  if (imgKey) fs.appendFileSync(IMGLEDGER, imgKey + '\n');
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle', status: 'ACTIVE',
     tags: ['trend', 'viral', 'video-hit', 'cj-real', 'dropship', 'neu'],
