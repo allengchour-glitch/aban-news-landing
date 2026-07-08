@@ -100,6 +100,10 @@
   (Ticket 46668705945): All 4 Business S.L., ES21 3159 0040 7128 0031 0720, BIC BCOEESMM159,
   Zweck 18138327+966388. Gutschrift 1–2 Werktage; Stunden-Wächter prüft user/purse.json und meldet.
   Sobald Guthaben da: «bestell auto» voll aktiv (bb_auto_order CONFIRM=1 nach Margen-Blick).
+- **CJ-Wallet: $0 — Aufladen NUR via Payoneer/Wire (min $2000!) möglich. Entscheid 08.07.:
+  NICHT 2000 laden; User hat Payoneer-Konto beantragt (Approval 1–3 Tage) → danach moderat
+  aufladen ($200–500, Feld «Sonstige»). Bis dahin: CJ-Bestellungen PRO ORDER zahlen
+  (API legt Order an → CJ-Dashboard «Orders» → einzeln mit Karte/PayPal zahlen, kein Minimum).**
   ⚠️ User muss noch Bank-PDF im Panel bei 18138327 «Anhängen» (beschleunigt Zuordnung).
   Selbst bei Wieder-Verfügbarkeit der Klimaanlage könnte «bestell auto» nichts bestellen!
   **UPDATE 7.7. ~12:40:** User hat **1000-€-Einzahlung per Banküberweisung angestossen** (BigBuy-
