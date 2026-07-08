@@ -83,16 +83,17 @@ const pubs = pubsQ.data.publications.edges.map(e => e.node).filter(p => !/google
 
 // 1) Katalog paginiert einsammeln: NEW + aktiv + EK im Fenster
 // Cache: Container stirbt oft — Kandidatenliste in /tmp übersteht Neustarts (24h gültig).
-const CACHE='/tmp/premium_cands.json';
-let cands = [];
+const CACHE='dropship/_premium_cands.json';   // im Repo-Ordner: Auto-Committer sichert ihn → übersteht ALLES
+let cands = [], startPage = 1, scanDone = false;
 try{ const c=JSON.parse(fs.readFileSync(CACHE,'utf8'));
-  if(Date.now()-c.ts < 86400000 && Array.isArray(c.cands) && c.cands.length){ cands=c.cands; console.log(`Kandidaten-Cache geladen: ${cands.length} (Scan übersprungen)`);} }catch{}
-if(!cands.length){
-console.log(`Sammle Katalog (bis ${PAGES} Seiten à 250) …`);
-for (let page = 1; page <= PAGES; page++) {
+  if(Date.now()-c.ts < 172800000 && Array.isArray(c.cands)){ cands=c.cands; startPage=(c.page||0)+1; scanDone=!!c.done;
+    console.log(`Cache: ${cands.length} Kandidaten, ${scanDone?'Scan KOMPLETT':'weiter ab Seite '+startPage}`);} }catch{}
+if(!scanDone){
+console.log(`Sammle Katalog (Seite ${startPage}–${PAGES} à 250) …`);
+for (let page = startPage; page <= PAGES; page++) {
   const { status, j } = await bbCall(`https://api.bigbuy.eu/rest/catalog/products.json?pageSize=250&page=${page}`);
-  if (status !== 200 || !Array.isArray(j)) { console.log(`  Seite ${page}: Ende/Fehler (${status})`); break; }
-  if (!j.length) break;
+  if (status !== 200 || !Array.isArray(j)) { console.log(`  Seite ${page}: Ende/Fehler (${status})`); fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands,page:page-1,done:status===200})); break; }
+  if (!j.length) { fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands,page,done:true})); break; }
   for (const p of j) {
     if (p.active !== 1 || p.condition !== 'NEW') continue;
     const ek = Number(p.wholesalePrice) || 0;
@@ -100,10 +101,10 @@ for (let page = 1; page <= PAGES; page++) {
     const imgs = Array.isArray(p.images) ? p.images.map(x => (typeof x === 'string' ? x : x?.url)).filter(Boolean) : [];
     cands.push({ id: p.id, sku: p.sku, ek, uvp: Number(p.retailPrice) || 0, images: imgs });
   }
-  if (page % 40 === 0){ console.log(`  … Seite ${page}, bisher ${cands.length} Kandidaten`); fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands})); }
+  if (page % 10 === 0){ if(page % 50===0) console.log(`  … Seite ${page}, ${cands.length} Kandidaten`); fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands,page,done:false})); }
   await sleep(1500);
+  if (page === PAGES) fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands,page,done:true}));
 }
-fs.writeFileSync(CACHE, JSON.stringify({ts:Date.now(),cands}));
 }
 cands.sort((a, b) => b.ek - a.ek);
 console.log(`${cands.length} Premium-Kandidaten (EK ${MIN_EK}–${MAX_EK} €, NEW, aktiv) — teuerste zuerst. CAP ${CAP}${DRY ? ' [DRY]' : ''}`);
@@ -156,3 +157,4 @@ for (const c of cands) {
   console.log(`✅ ${created}/${CAP} CHF ${price} (EK €${c.ek}) | ${name.slice(0, 60)}`);
 }
 console.log(`FERTIG: ${created} Premium-Produkte angelegt (${checked} geprüft).`);
+if (created >= CAP) { try{ fs.unlinkSync('/tmp/premium_wave_active'); }catch{} console.log('Welle komplett — Vorfahrt-Flag entfernt.'); }

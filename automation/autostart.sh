@@ -31,6 +31,13 @@ if [ -s /tmp/cj_token.json ] && ! running 'cj_perpetual.mjs'; then
   log "CJ-Perpetual gestartet (PID $!)"
 fi
 
+# ── 1b. Premium-Welle: solange /tmp/premium_wave_active existiert, wiederbeleben
+#        (Scan ist seitenweise resumable via dropship/_premium_cands.json).
+if [ -f /tmp/premium_wave_active ] && [ -n "$BIGBUY_API_KEY" ] && ! running 'premium_import.mjs'; then
+  PAGES=1700 CAP=40 GAP=2500 nohup "$NODE" automation/premium_import.mjs >> /tmp/premium_live.log 2>&1 &
+  log "Premium-Welle wiederbelebt (PID $!)"
+fi
+
 # ── VORFAHRT: Läuft der Premium-Import, bekommen andere BigBuy-Konsumenten PAUSE
 #    (BigBuy-Rate-Limit ist SHARED, GEHIRN 14 — sonst 429-Sturm und alle verhungern).
 PREMIUM_LAEUFT=0; running 'premium_import.mjs' && PREMIUM_LAEUFT=1
