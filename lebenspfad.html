@@ -291,7 +291,12 @@ ponds.forEach(function(pd,pi){for(var d3=0;d3<3;d3++){
   var beak=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.24,5),mat(0xff9a2a,0xff9a2a,0.3));beak.rotation.z=-Math.PI/2;beak.position.set(0.66,0.33,0);g.add(beak);
   g.position.set(pd.m.position.x+(Math.random()-0.5)*8,0.35,pd.m.position.z+(Math.random()-0.5)*8);
   scene.add(g);ducks.push({g:g,c:pd.m.position,a:Math.random()*6.28,ph:Math.random()*6.28});}});
-function updDucks(dt,t){for(var i=0;i<ducks.length;i++){var d=ducks[i];
+var quackCD=0;
+function updDucks(dt,t){
+  if(quackCD>0)quackCD-=dt;
+  if(G&&running&&quackCD<=0&&G.phase==="moving"){var pw2=pawns[G.turn];
+    for(var q2=0;q2<ponds.length;q2++){var dd2=Math.hypot(pw2.position.x-ponds[q2].m.position.x,pw2.position.z-ponds[q2].m.position.z);
+      if(dd2<16){quackCD=4;beep(340,.09,"square",.045);setTimeout(function(){beep(300,.11,"square",.04);},140);break;}}}for(var i=0;i<ducks.length;i++){var d=ducks[i];
   d.a+=dt*0.25;
   d.g.position.x=d.c.x+Math.cos(d.a+d.ph)*(3.5+Math.sin(d.ph)*2);
   d.g.position.z=d.c.z+Math.sin(d.a+d.ph)*(3.5+Math.cos(d.ph)*2);
@@ -581,9 +586,19 @@ var KIDNAMES=["Mio","Lena","Ben","Ida","Noah","Mara"];
 function syncFam(i){
   var p=G.players[i],pw=pawns[i];if(!pw)return;
   if(!pw.followers)pw.followers=[];
-  var want=(p.fam&&p.fam.partner?1:0)+(p.fam?p.fam.kids:0);
+  var want=(p.fam&&p.fam.partner?1:0)+(p.fam?p.fam.kids:0)+(p.fam&&p.fam.dog?1:0);
   while(pw.followers.length<want){
     var idx=pw.followers.length,isPartner=(idx===0&&p.fam.partner);
+    var isDog=(idx===want-1&&p.fam.dog); // Hund kommt zuletzt
+    if(isDog){var dg=new THREE.Group();
+      var db2=new THREE.Mesh(new THREE.BoxGeometry(0.55,0.32,0.28),mat(0xb8834a,0x6a4a2a,0.08));db2.position.y=0.28;db2.castShadow=true;dg.add(db2);
+      var dh=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.26,0.24),mat(0xb8834a,0x6a4a2a,0.08));dh.position.set(0.38,0.42,0);dg.add(dh);
+      var dn=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.1,0.12),mat(0x3a2a1a));dn.position.set(0.56,0.38,0);dg.add(dn);
+      [[0.12],[-0.12]].forEach(function(ee){var ear=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.16,0.05),mat(0x8a5c32));ear.position.set(0.34,0.58,ee[0]);dg.add(ear);});
+      var tail=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.06,0.06),mat(0xb8834a));tail.geometry.translate(-0.15,0,0);tail.position.set(-0.28,0.36,0);dg.add(tail);
+      dg.userData.tail=tail;dg.userData.dog=true;
+      [[0.18,0.1],[0.18,-0.1],[-0.18,0.1],[-0.18,-0.1]].forEach(function(lg2){var leg=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.14,0.07),mat(0x9a6c3a));leg.position.set(lg2[0],0.07,lg2[1]);dg.add(leg);});
+      dg.position.copy(pw.position);scene.add(dg);pw.followers.push(dg);continue;}
     var g=new THREE.Group(),scale=isPartner?0.8:0.5;
     if(pawnTpl){var m=pawnTpl.clone(true);
       var col=new THREE.Color(isPartner?0xfff0f5:0xfff8e0);
@@ -635,8 +650,10 @@ function updFam(dt){
       f.position.x+=(tx-f.position.x)*Math.min(1,dt*4.5);
       f.position.z+=(tz-f.position.z)*Math.min(1,dt*4.5);
       var d=Math.hypot(tx-f.position.x,tz-f.position.z);
-      f.position.y=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*0.35:0; // Hüpfen beim Laufen
-      f.rotation.y+=dt;}}}
+      f.position.y=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*(f.userData.dog?0.22:0.35):0;
+      if(f.userData.tail){f.userData.tail.rotation.y=Math.sin(performance.now()*0.014)*0.7; // Schwanzwedeln (immer!)
+        if(d>0.3)f.rotation.y=Math.atan2(tx-f.position.x,tz-f.position.z);else f.rotation.y+=dt*0.4;}
+      else f.rotation.y+=dt;}}}
 // Aktiv-Marker: bobbing Pfeil über der Figur, die dran ist
 var turnArrow=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var cx=cv.getContext("2d");
   cx.fillStyle="#fff";cx.beginPath();cx.moveTo(32,58);cx.lineTo(8,18);cx.lineTo(56,18);cx.closePath();cx.fill();
@@ -1115,7 +1132,7 @@ function handleField(p,f){
       showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
         [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(Math.random()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");storkScene(G.turn,1);updPlayers();endTurnSoon();}},
          {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");storkScene(G.turn,2);updPlayers();endTurnSoon();}},
-         {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥",fn:function(){applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");updPlayers();endTurnSoon();}}]);
+         {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");syncFam(G.turn);beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();endTurnSoon();}}]);
       return;}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
       [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
