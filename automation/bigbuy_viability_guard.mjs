@@ -68,9 +68,10 @@ const id2ref = fs.existsSync(ID2REF) ? JSON.parse(fs.readFileSync(ID2REF, 'utf8'
 async function toRef(sku) {
   if (!sku) return null;
   const s = sku.trim();
-  let m = s.match(/^(?:bb|BB)-([SV]\d+)$/i); if (m) return m[1].toUpperCase();
-  m = s.match(/^CSV-(V\d+)$/i); if (m) return m[1].toUpperCase();
-  m = s.match(/^([SV]\d{6,})$/i); if (m) return m[1].toUpperCase();
+  // BigBuy-Referenzen = 1–2 Buchstaben + Ziffern (S/V/M/D/J/H/R/… — gelernt 2026-07-08)
+  let m = s.match(/^(?:bb|BB)-([A-Z]{0,2}\d{4,})(?:-[SML0-9X]+)?$/i); if (m) return m[1].toUpperCase();
+  m = s.match(/^CSV-([A-Z]{0,2}\d{4,})$/i); if (m) return m[1].toUpperCase();
+  m = s.match(/^([A-Z]{1,2}\d{6,})$/i); if (m) return m[1].toUpperCase();
   m = s.match(/^(?:bb|BB)-(\d+)$/); // Produkt-ID → Katalog-Lookup
   if (m) {
     const id = m[1];
