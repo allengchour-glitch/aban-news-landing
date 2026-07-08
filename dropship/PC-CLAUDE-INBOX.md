@@ -70,5 +70,13 @@
   dann die 20 fertigen Start-Pins posten (Bild-URL, Link mit utm, Titel, Beschreibung stehen im
   Paket) — max. 5 Pins/Tag, Rest über die Folgetage. Danach hier rapportieren (Board-URLs).
 
+- [NEU 2026-07-08c — PINTEREST-KANAL FERTIG EINRICHTEN (Shopify-Admin, KEINE Zahlung!)]
+  Im Shopify-Admin → Vertriebskanäle → Pinterest → Karte «Katalog» → «Los geht's» klicken und die
+  Händlerkonto-Einrichtung durchklicken: Website luxestyle.ch beanspruchen/bestätigen, Pinterest-
+  Händler-Richtlinien akzeptieren, ggf. Standard-Board «LuxeStyle Schweiz» wählen. Ziel: Katalog-Sync
+  AKTIV (Produkte erscheinen als Produkt-Pins). ⛔ Die Karte «Marketing / Setup Abrechnungsdaten»
+  NICHT ausfüllen (Zahlungsdaten = nur der User, und Ads machen wir später bewusst). Danach hier
+  rapportieren: Katalog-Status + wie viele Produkte synchronisiert.
+
 ## 📤 RAPPORTE (PC-Claude trägt hier ein, neueste zuoberst)
 _(noch keine)_
