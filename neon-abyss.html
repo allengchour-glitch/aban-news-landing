@@ -116,9 +116,23 @@ var marker=new THREE.Mesh(new THREE.RingGeometry(0.5,0.7,20),new THREE.MeshBasic
 
 // Held (composite)
 var hero=new THREE.Group();
-var hBody=new THREE.Mesh(new THREE.BoxGeometry(0.9,1.5,0.9),mat(0x5ef2ff,0x1a6f8c,0.9)); hBody.position.y=0.9; hero.add(hBody);
-var hHead=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(0xffffff,0xb98bff,1.3)); hHead.position.y=2.0; hero.add(hHead);
-var hRing=new THREE.Mesh(new THREE.TorusGeometry(0.9,0.1,8,20),mat(0xb98bff,0xb98bff,1.2)); hRing.rotation.x=Math.PI/2; hRing.position.y=0.2; hero.add(hRing);
+// Detaillierter Held: Beine, Rumpf, Schultern, Kopf mit Visier, Arme, Runenschwert
+var hL1=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.7,0.34),mat(0x1c1436,0x241a4a,0.35));hL1.position.set(-0.22,0.35,0);hero.add(hL1);
+var hL2=hL1.clone();hL2.position.x=0.22;hero.add(hL2);
+var hBody=new THREE.Mesh(new THREE.CylinderGeometry(0.34,0.5,1.05,8),mat(0x2a2050,0x3a2a6f,0.45)); hBody.position.y=1.2; hero.add(hBody);
+var hChest=new THREE.Mesh(new THREE.OctahedronGeometry(0.16,0),mat(0x5ef2ff,0x5ef2ff,1.4)); hChest.position.set(0,1.45,0.36); hero.add(hChest);
+var hSh1=new THREE.Mesh(new THREE.SphereGeometry(0.24,8,6),mat(0xb15cff,0x5a2a9f,0.7));hSh1.position.set(-0.55,1.7,0);hero.add(hSh1);
+var hSh2=hSh1.clone();hSh2.position.x=0.55;hero.add(hSh2);
+var hA1=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.09,0.8,6),mat(0x241a4a,0x2a1a55,0.4));hA1.position.set(-0.58,1.25,0);hero.add(hA1);
+var hA2=hA1.clone();hA2.position.x=0.58;hero.add(hA2);
+var hHead=new THREE.Mesh(new THREE.SphereGeometry(0.34,10,8),mat(0x3a2a6f,0x2a1a55,0.5)); hHead.position.y=2.15; hero.add(hHead);
+var hVisor=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.12,0.1),mat(0x5ef2ff,0x5ef2ff,1.6)); hVisor.position.set(0,2.18,0.3); hero.add(hVisor);
+var hSword=new THREE.Group();
+var hBlade=new THREE.Mesh(new THREE.BoxGeometry(0.1,1.5,0.04),mat(0x9bd0ff,0x5ef2ff,1.5));hBlade.position.y=0.95;hSword.add(hBlade);
+var hGuard=new THREE.Mesh(new THREE.BoxGeometry(0.38,0.09,0.09),mat(0xb98bff,0xb98bff,1.1));hGuard.position.y=0.22;hSword.add(hGuard);
+var hGrip=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.3,6),mat(0x1c1436,0x241a4a,0.4));hSword.add(hGrip);
+hSword.position.set(0.75,1.15,0.1);hSword.rotation.z=-0.18;hero.add(hSword);
+var hRing=new THREE.Mesh(new THREE.TorusGeometry(0.9,0.08,8,24),mat(0xb98bff,0xb98bff,1.1)); hRing.rotation.x=Math.PI/2; hRing.position.y=0.12; hero.add(hRing);
 hero.position.set(0,0,0); scene.add(hero);
 var hGlow=new THREE.PointLight(0x5ef2ff,1.6,20); scene.add(hGlow);
 
@@ -247,6 +261,7 @@ function loop(now){
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=8*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;p.m.position.y=-99;}}
   if(markerT>0){markerT-=dt;marker.scale.setScalar(1+Math.sin(now*0.02)*0.15);if(markerT<=0)marker.visible=false;}
   if(G.shake>0)G.shake-=dt*1.5;
+  hSword.position.y=1.15+Math.sin(now*0.0035)*0.07;hSword.rotation.z=-0.18+Math.sin(now*0.0022)*0.05;hRing.scale.setScalar(1+Math.sin(now*0.004)*0.06);
   for(var _e2=0;_e2<embN;_e2++){embP[_e2*3+1]+=embV[_e2]*dt;if(embP[_e2*3+1]>9)embP[_e2*3+1]=0;}embG.attributes.position.needsUpdate=true;
   // Iso-Kamera folgt
   camera.position.set(hero.position.x+16+(Math.random()-.5)*G.shake*2,24,hero.position.z+16+(Math.random()-.5)*G.shake*2);
