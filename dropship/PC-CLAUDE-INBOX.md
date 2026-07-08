@@ -14,6 +14,13 @@
 - 1×/Woche (Montag): Wochen-Routine gemäss Playbook §2 (Follower-Wachstum organisch, Profil-Check).
 
 ## 📋 EINZEL-AUFTRÄGE
+- [⭐⭐ MASTER 2026-07-08e — PORT-VOLLAUTOMATION (User: «mach alles per port ohne mich»)]
+  **Zuerst `dropship/PC-AUTOPILOT-PORT.md` lesen und Aufgabe 1–8 der Reihe nach abarbeiten.**
+  Das Runbook bündelt alles (Pinterest-Skript, TikTok-Sandbox+Login-Link, GMC-Zielländer,
+  Klaviyo-Reconnect, Popup-Delay, Printful-Tracking, Pinterest-Trial-Nachfassen, Dauerbetrieb)
+  inkl. aller ⛔-Grenzen. Ältere Einzel-Aufträge unten, die davon abgedeckt sind, gelten als
+  Teil des Masters — nicht doppelt machen.
+
 - [NEU 2026-07-06] TikTok-Profil professionalisieren gemäss `dropship/TIKTOK-PROFI-PAKET.md` §B:
   Name «LuxeStyle Schweiz 🇨🇭», Bio, Website-Link auf /collections/viral-hits, Logo als
   Profilbild, 3 beste Reels anpinnen. Ergebnis hier rapportieren.
