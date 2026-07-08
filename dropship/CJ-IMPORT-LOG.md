@@ -1964,3 +1964,16 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - 🛒 GMC (User-Screenshots): «Checkout URL not yet live» betrifft 223 Produkte in UNITED STATES →
   Ursache US-Zielland; Fix = USA (und DE) als Zielland entfernen (User-Klick, steht in TODO).
 - 💰 BigBuy-Moneybox weiterhin 0.00 (SEPA unterwegs); Stunden-Wächter pollt.
+## 2026-07-08 (Abend) · POD-Feinschliff + 5 neue Editor-Produkte + Pinterest-Token
+- 🎨 Editor-QA 2× gefahren: 31→36 Produkte, je 0 Befunde.
+- 💰 Margen-Audit ALLER Editor-Produkte gegen Printful-Katalogkosten (öffentl. API): 7 Fälle < CHF 8
+  Marge → 6 Preise angehoben (T-Shirts 27.90/23.90, Tasse 19.90, Baumwolltasche 24.90, Baby-Body 26.90,
+  iPhone-Hülle transparent 22.90; Aufkleber ok wegen Briefversand). Muster = Trikot-Falle, mild.
+- ➕ 5 neue «Selbst gestalten»-Produkte (nur EU-Druck-Varianten, SKU `LS<prod>_<varId>` — printful_sync
+  decodiert nur das _Suffix): Mauspad 22.90 · Strandtuch 54.90/59.90 · Spiral-Notizbuch 26.90 ·
+  Laptop-Sleeve 44.90/47.90 · Kuscheldecke 44.90/54.90. Blanks = Printful-Katalogfotos via CDN-Upload.
+  Gaming-Mauspad/Schürze/Socken verworfen (nur US-Fulfillment = Zoll-Falle CH).
+- 🆕 Smart-Collection `/collections/selbst-gestalten` (tag wunschdesign) angelegt+publiziert (200 OK) —
+  vorher existierte nur die Page; Beschreibungs-Links wären 404 gewesen.
+- 📌 Pinterest-Token vom User (pina_… in /tmp/pinterest_token, chmod 600): API sagt «consumer type not
+  supported» → App braucht TRIAL ACCESS im Developer-Portal (User-Klick), dann Token neu testen.
