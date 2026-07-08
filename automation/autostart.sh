@@ -25,7 +25,8 @@ running(){ pgrep -f "$1" >/dev/null 2>&1; }
 # ── 1. CJ-Perpetual (Dauer-Import, PRIORITY aus Env oder Default) ──
 if [ -s /tmp/cj_token.json ] && ! running 'cj_perpetual.mjs'; then
   CJT=$(python3 -c "import json;print(json.load(open('/tmp/cj_token.json'))['accessToken'])")
-  CJ_TOKEN="$CJT" PRIORITY="${PRIORITY:-cjschuhedamen,cjschuheherren,cjsneaker,cjschuhekids,cjelektronik,cjgadgets,gaming}" \
+  CJ_TOKEN="$CJT" WAREHOUSE="${WAREHOUSE:-DE}" \
+    PRIORITY="${PRIORITY:-cjelektronik,cjgadgets,gaming,cjdamen,cjherren,kueche,cjhome}" \
     nohup "$NODE" automation/cj_perpetual.mjs >> /tmp/cj_perp.log 2>&1 &
   log "CJ-Perpetual gestartet (PID $!)"
 fi
