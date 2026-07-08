@@ -1977,3 +1977,8 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   vorher existierte nur die Page; Beschreibungs-Links wären 404 gewesen.
 - 📌 Pinterest-Token vom User (pina_… in /tmp/pinterest_token, chmod 600): API sagt «consumer type not
   supported» → App braucht TRIAL ACCESS im Developer-Portal (User-Klick), dann Token neu testen.
+- 📌 Pinterest-Portal-Befund (PC-Claude): App «LuxeStyle.ch» (1585205) Trial-Zugriff AUSSTEHEND,
+  App «Luxstyle CH» (1580519) VERWEIGERT. Kein Knopf zum Aktivieren — Pinterest prüft selbst (Tage).
+  Solange pending: Token nur read-only → NICHT neu generieren, warten. Plan B läuft: Boards+Pins
+  per Browser (PC-Claude, PINTEREST-STARTPAKET §Boards/Pins, braucht KEINE API) + Shopify-Pinterest-
+  Kanal verbinden (Katalog-Sync, unabhängig von der Developer-App).
