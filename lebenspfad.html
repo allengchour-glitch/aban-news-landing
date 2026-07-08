@@ -88,6 +88,18 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <div id="dice">🎲</div>
 <button id="rollBtn" class="hide">🎲 Würfeln</button>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
+<button id="menuBtn" title="Menü" style="position:fixed;top:10px;right:58px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.9);color:#5a6272;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;box-shadow:0 2px 8px rgba(60,40,10,.2)">☰</button>
+<div id="menuO" class="overlay hide" style="z-index:45">
+  <div class="kicker">Pause · Menü</div>
+  <h1 style="font-size:1.8rem">LEBENSPFAD</h1>
+  <div id="optRows" style="display:flex;flex-direction:column;gap:9px;margin:8px 0;min-width:min(340px,86vw)"></div>
+  <div style="margin-top:8px">
+    <button class="btn" id="resumeBtn">Weiterspielen ▶</button>
+    <button class="btn ghost" id="rulesBtn">📜 Regeln</button>
+    <button class="btn ghost" id="restartBtn">🔄 Neustart</button>
+  </div>
+  <div class="foot">Gebaut von Claude · Ereignisse: Gemini · Figuren &amp; Baum: Meshy · Würfel: Blender</div>
+</div>
 <button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:10px;right:12px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.9);color:#5a6272;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;box-shadow:0 2px 8px rgba(60,40,10,.2)">🔊</button>
 
 <div class="overlay" id="start">
@@ -136,7 +148,11 @@ addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:0x000000,emissiveIntensity:i!==undefined?i:0.25,flatShading:true});}
 // Audio
 var actx=null,muted=lsGet("lp_muted")==="1";
-function beep(f,d,t,g){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
+var OPT=(function(){try{return JSON.parse(lsGet("lp_opt")||"{}");}catch(e){return {};}})();
+if(OPT.music===undefined)OPT.music=true;if(OPT.sfx===undefined)OPT.sfx=true;
+if(OPT.tempo===undefined)OPT.tempo=1;if(OPT.motion===undefined)OPT.motion=true;
+function saveOpt(){lsSet("lp_opt",JSON.stringify(OPT));}
+function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
 (function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 // ===================== 8 Lebens-Kapitel: Farben wie echt (Frühling→Winter des Lebens) =====================
 var CHAPTERS=[
@@ -399,7 +415,7 @@ var flies=[];
   var w2=w1.clone();w1.position.x=-0.17;w2.position.x=0.17;g.add(w1);g.add(w2);
   g.position.set((Math.random()-0.5)*60,1.5+Math.random()*2.5,(Math.random()-0.5)*40);
   scene.add(g);flies.push({g:g,w1:w1,w2:w2,a:Math.random()*6.28,sp:0.5+Math.random(),ph:Math.random()*6.28});}})();
-function updFlies(dt,t){for(var i=0;i<flies.length;i++){var f=flies[i];
+function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[fh].g.visible=false;return;}for(var fv=0;fv<flies.length;fv++)flies[fv].g.visible=true;for(var i=0;i<flies.length;i++){var f=flies[i];
   f.a+=dt*(0.3+Math.sin(t*0.7+f.ph)*0.3);
   f.g.position.x+=Math.cos(f.a)*f.sp*dt*3;f.g.position.z+=Math.sin(f.a)*f.sp*dt*3;
   f.g.position.y=1.4+Math.sin(t*1.3+f.ph)*0.8+0.8;
@@ -501,7 +517,7 @@ for(var si=0;si<SEASON_N;si++){seasonPos[si*3]=0;seasonPos[si*3+1]=Math.random()
 seasonGeo.setAttribute("position",new THREE.BufferAttribute(seasonPos,3));
 var seasonMat=new THREE.PointsMaterial({color:0xfff0a0,size:0.5,transparent:true,opacity:0.85});
 var seasonPts=new THREE.Points(seasonGeo,seasonMat);scene.add(seasonPts);
-function updSeason(dt,ch){
+function updSeason(dt,ch){seasonPts.visible=OPT.motion;if(!OPT.motion)return;
   var mode=ch>=7?"blueten":(ch>=5?"blaetter":"pollen");
   seasonMat.color.setHex(mode==="blueten"?0xffd8ec:(mode==="blaetter"?0xe08a3a:0xfff0a0));
   var pa=seasonGeo.attributes.position.array;
@@ -755,7 +771,7 @@ function startMove(n){
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
-  hopT+=dt*3.2;
+  hopT+=dt*3.2*OPT.tempo;
   if(hopT>=1){
     p.tile=Math.min(NFIELDS-1,p.tile+1);moveQ--;hopT=0;
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
@@ -793,7 +809,7 @@ function onLand(){
   if(typeof handleField==="function")handleField(p,f);
   else endTurnSoon();
 }
-function endTurnSoon(){updPlayers();saveGame();setTimeout(nextTurn,450);}
+function endTurnSoon(){updPlayers();saveGame();setTimeout(nextTurn,Math.round(450/OPT.tempo));}
 function nextTurn(){
   if(!G)return;
   var allDone=G.players.every(function(p){return p.done;});
@@ -917,7 +933,7 @@ function musicNote(f,dur,vol){if(!actx||muted)return;var o=actx.createOscillator
   o.connect(g);g.connect(music.bus);o.start();o.stop(actx.currentTime+dur);}
 function updMusic(dt){
   if(!music.on){if(actx&&running)musicStart();return;}
-  music.master.gain.value+=((muted?0:0.13)-music.master.gain.value)*Math.min(1,dt*2);
+  music.master.gain.value+=(((muted||!OPT.music)?0:0.13)-music.master.gain.value)*Math.min(1,dt*2);
   music.stepT+=dt;if(music.stepT<0.42)return;music.stepT=0;music.step++;
   var ch=G?chapterOf(G.players[G.turn].tile):0;
   var want=ch%LP_CHORDS.length;
@@ -974,7 +990,7 @@ function updateCamera(dt){
   var p=G?G.players[G.turn]:null;
   var tx=p?pawns[G.turn].position.x:fields[0].x,tz=p?pawns[G.turn].position.z:fields[0].z;
   camT.x+=(tx-camT.x)*Math.min(1,dt*3);camT.z+=(tz-camT.z)*Math.min(1,dt*3);
-  var swayX=Math.sin(performance.now()*0.00035)*1.2;
+  var swayX=OPT.motion?Math.sin(performance.now()*0.00035)*1.2:0;
   camera.position.x+=(camT.x+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*4);
   camera.position.y+=(19-camera.position.y)*Math.min(1,dt*3);
   camera.position.z+=(camT.z+17-camera.position.z)*Math.min(1,dt*4);
@@ -1036,6 +1052,32 @@ function begin(saved){
   announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
   if(!saved)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
 }
+var menuOpen=false;
+function renderMenu(){
+  var r=document.getElementById("optRows");r.innerHTML="";
+  [["🎵 Musik","music"],["🔔 Effekte","sfx"],["🦋 Bewegung (Schmetterlinge/Partikel)","motion"]].forEach(function(o){
+    var d=document.createElement("button");
+    d.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
+    d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
+    d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();renderMenu();};r.appendChild(d);});
+  var t=document.createElement("button");
+  t.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
+  t.innerHTML="<span>⏩ Zug-Tempo</span><span>"+(OPT.tempo>1?"SCHNELL":"NORMAL")+"</span>";
+  t.onclick=function(){OPT.tempo=OPT.tempo>1?1:1.7;saveOpt();renderMenu();};r.appendChild(t);
+}
+function toggleMenu(){menuOpen=!menuOpen;
+  document.getElementById("menuO").classList.toggle("hide",!menuOpen);
+  if(menuOpen)renderMenu();}
+document.getElementById("menuBtn").onclick=toggleMenu;
+document.getElementById("resumeBtn").onclick=toggleMenu;
+addEventListener("keydown",function(e){if(e.key==="Escape"&&G)toggleMenu();});
+document.getElementById("rulesBtn").onclick=function(){toggleMenu();
+  showCard("Regeln","📜 So spielt ihr Lebenspfad",
+    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Hochzeit &amp; Nachwuchs.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
+    [{l:"Alles klar ▶",fn:function(){}}]);};
+document.getElementById("restartBtn").onclick=function(){var b=document.getElementById("restartBtn");
+  if(b.dataset.armed){lsDel(SAVE_KEY);location.reload();}
+  else{b.dataset.armed="1";b.textContent="Sicher? Nochmal tippen";}};
 document.getElementById("startBtn").onclick=function(){lsDel(SAVE_KEY);begin(null);};
 document.getElementById("contBtn").onclick=function(){begin(loadGame());};
 document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");};
