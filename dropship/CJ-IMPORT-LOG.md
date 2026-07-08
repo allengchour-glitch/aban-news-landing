@@ -1994,3 +1994,8 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Abandoned-Checkout-Automation aktivieren (Klaviyo kaputt). Titel-Leak-Sweep: 0 Funde (schon sauber).
 - 🔎 SEO auf alle 6 Handy-Kollektionen gesetzt. #1008-Refund existiert (177.21, tx PENDING → Status
   zeigt PAID bis Settlement — normal). #1005 Printful: Liefertermin 13.–16.7., Versand ab Lettland.
+- 🔄 BigBuy-Strategiewechsel (User «bigbuy auch»): Premium-Welle GESTOPPT (0/214 lieferbar, M-Refs
+  nie CH + ER007-Ausverkauft-Seuche im Hochpreis-Segment; /tmp/premium_wave_active entfernt, autostart
+  belebt sie nicht mehr). BigBuy-Tagesbudget umgeleitet auf bigbuy_import.mjs NACHFRAGE-first
+  (akkuventi, kuehlung, kuehlmatte, wasserstrand, fussball, trikot, grill, picknick, solarlicht, pool,
+  camping … PER=4, EK≤60€, LIVE). Danach Viability-Guard drüber (Stunden-Wächter meldet).
