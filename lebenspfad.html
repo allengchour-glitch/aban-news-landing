@@ -1046,6 +1046,35 @@ function updMusic(dt){
     scene.add(g);}
   for(var c2=0;c2<CHAPTERS.length;c2++)lm(c2);
 })();
+// ===================== Blender-Landmarken: Riesenrad, Windmühle, Heißluftballon =====================
+var lmWheel=null,lmBlades=null,lmBalloon=null;
+if(THREE.GLTFLoader){
+  function loadLm(url,scale,cb){new THREE.GLTFLoader().load(url,function(g){
+    var o=g.scene;o.scale.setScalar(scale);
+    o.traverse(function(n){if(n.isMesh)n.castShadow=true;});
+    cb(o);},undefined,function(){});}
+  // Riesenrad neben der Schule (Kapitel 2)
+  loadLm("/models/lp_riesenrad.glb",2.2,function(o){
+    var f=fields[1*FIELDS_PER+4];o.position.set(f.x-9,terrainH(f.x-9,f.z-9),f.z-9);
+    scene.add(o);lmWheel=o.getObjectByName("Wheel");});
+  // Windmühle am Garten (Kapitel 6)
+  loadLm("/models/lp_windmuehle.glb",2.4,function(o){
+    var f=fields[5*FIELDS_PER+4];o.position.set(f.x-8,terrainH(f.x-8,f.z+9),f.z+9);
+    o.rotation.y=0.8;scene.add(o);lmBlades=o.getObjectByName("Blades");});
+  // Heißluftballon zieht über das ganze Brett
+  loadLm("/models/lp_ballon.glb",2.0,function(o){
+    o.position.set(-120,26,-30);scene.add(o);lmBalloon=o;});
+}
+function updLandmarks(dt,t){
+  if(lmWheel)lmWheel.rotation.x+=dt*0.35; // Riesenrad dreht gemächlich
+  if(lmBlades)lmBlades.rotation.x+=dt*1.6; // Windmühlen-Flügel
+  if(lmBalloon){ // Ballon driftet in großer Schleife über das Brett
+    var bt=t*0.02;
+    lmBalloon.position.x=-160+((bt%1)*440);
+    lmBalloon.position.z=-30+Math.sin(bt*6.283)*38;
+    lmBalloon.position.y=24+Math.sin(t*0.4)*2.5;
+    lmBalloon.rotation.y+=dt*0.1;}
+}
 // ===================== Chat: Oma Hilde (kontextbewusst, offline) =====================
 function chatMsg(txt,who){
   var log=document.getElementById("chatLog"),d=document.createElement("div");
@@ -1110,7 +1139,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);
     if(window._lmSwingPivot)window._lmSwingPivot.rotation.z=Math.sin(G.t*1.7)*0.55; // Schaukel schwingt
     if(window._lmClockM){window._lmClockM.rotation.z=-G.t*0.5;window._lmClockH.rotation.z=-G.t*0.5/12;} // Uhr läuft
     if(window._lmBeam)window._lmBeam.rotation.y=G.t*0.9; // Leuchtturm-Strahl rotiert
