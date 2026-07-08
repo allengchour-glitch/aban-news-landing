@@ -130,7 +130,8 @@
     UNERFÜLLBAR, egal ob Stock/Guthaben.
   - CJ-Ersatz für alle 3 geprüft: nichts Gleichwertiges (nur Mini-USB-Kühler ≠ Klimaanlage).
 - **⇒ Empfehlung an User: alle 3 refunden**; **#1007 ERSTATTET ✅** (7.7. 13:13 UTC, CHF 265.90,
-  REFUND-Tx PENDING→settled automatisch; Freigabe User «1007 erstatte»). **#1006 + #1007 ERSTATTET ✅ (7.7.; CHF 426.51 + 265.90). Kunden haben die AUTOMATISCHE Shopify-Refund-Mail erhalten (notify:true). Persönliche Entschuldigungs-Mails am 7.7. VOM USER GESENDET ✅ (von info@luxestyle.ch via Zoho; #1006 zweisprachig FR/DE an Léa). BEIDE FÄLLE KOMPLETT ABGESCHLOSSEN.**
+  REFUND-Tx PENDING→settled automatisch; Freigabe User «1007 erstatte»). **REFUND-STATUS (verifiziert 08.07. abends): #1007 SETTLED ✅ · #1006 + #1008 REFUND-Tx PENDING (Shopify-Payments-Guthaben — settelt von selbst/Bankeinzug, beobachten!) ·**
+  **#1006 + #1007 ERSTATTET ✅ (7.7.; CHF 426.51 + 265.90). Kunden haben die AUTOMATISCHE Shopify-Refund-Mail erhalten (notify:true). Persönliche Entschuldigungs-Mails am 7.7. VOM USER GESENDET ✅ (von info@luxestyle.ch via Zoho; #1006 zweisprachig FR/DE an Léa). BEIDE FÄLLE KOMPLETT ABGESCHLOSSEN.**
   **#1004: weiter «warten»** → Stunden-Cron Restock-Watch (S3414715); sobald lieferbar → melden +
   bestellen (Moneybox nötig!). Mail-Vorlagen (1006-Text: «innert einem Tag ausverkauft»): dropship/KUNDEN-MAILS-REFUNDS.md.
 - **Wächter-Kette läuft wieder:** Viability-Guard (top-600 nach Preis) → danach brand_price_fix
