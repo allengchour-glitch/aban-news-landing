@@ -94,6 +94,17 @@ var hillsA=new THREE.Group(), hillsB=new THREE.Group();
 for(var hi=0;hi<40;hi++){var hh=8+Math.random()*22,mnt=new THREE.Mesh(new THREE.ConeGeometry(14+Math.random()*10,hh,4),mat(0x120a2a,0x241844,0.4));mnt.position.set(-200+hi*11,hh/2-14,-150);hillsA.add(mnt);}
 for(hi=0;hi<50;hi++){var h2=5+Math.random()*12,m2=new THREE.Mesh(new THREE.ConeGeometry(9+Math.random()*7,h2,4),mat(0x1a0f38,0x3a2060,0.5));m2.position.set(-220+hi*9,h2/2-12,-95);hillsB.add(m2);}
 scene.add(hillsA); scene.add(hillsB);
+
+// Animierter Retrowave-Grid-Boden (Shader: scrollende Neon-Linien, Puls, Horizont-Fade)
+function neonGrid(size,cells,c1,c2){
+ var m=new THREE.ShaderMaterial({transparent:true,depthWrite:false,fog:false,
+  uniforms:{uT:{value:0},c1:{value:new THREE.Color(c1)},c2:{value:new THREE.Color(c2)}},
+  vertexShader:"varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"varying vec2 vUv;uniform float uT;uniform vec3 c1;uniform vec3 c2;void main(){vec2 g=vUv*"+cells.toFixed(1)+";g.y+=uT;vec2 gv=fract(g)-0.5;float d=min(abs(gv.x),abs(gv.y));float line=smoothstep(0.07,0.012,d);float pulse=0.8+0.2*sin(uT*1.7);float cd=distance(vUv,vec2(0.5));float fade=smoothstep(0.5,0.18,cd);vec3 col=mix(c2,c1,line)*pulse;gl_FragColor=vec4(col,line*0.75*fade);}",
+  blending:THREE.AdditiveBlending,side:THREE.DoubleSide});
+ var mesh=new THREE.Mesh(new THREE.PlaneGeometry(size,size),m);mesh.rotation.x=-Math.PI/2;return mesh;
+}
+var gridMesh=neonGrid(900,90,0xff2d6f,0x1c1040);gridMesh.position.y=-15;gridMesh.position.z=-40;scene.add(gridMesh);
 // Sterne
 var stG=new THREE.BufferGeometry(),sp=new Float32Array(160*3);for(var s=0;s<160;s++){sp[s*3]=(Math.random()-.5)*500;sp[s*3+1]=Math.random()*90+10;sp[s*3+2]=-200-Math.random()*100;}stG.setAttribute("position",new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(stG,new THREE.PointsMaterial({color:0xd6c6ff,size:0.8,transparent:true,opacity:.7})));
 
@@ -194,6 +205,7 @@ document.getElementById("shareBtn").onclick=function(){var txt="Neon Jump ðŸƒ â
 function overlaps(ax,ay,bx,by,bw2,bh2){return Math.abs(ax-bx)<HW+bw2 && Math.abs(ay-by)<HH+bh2;}
 
 function loop(now){
+  gridMesh.material.uniforms.uT.value=now*0.0005;
   requestAnimationFrame(loop);
   var dt=Math.min(0.033,(now-last)/1000); last=now;
   if(running&&!won){

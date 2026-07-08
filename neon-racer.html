@@ -103,6 +103,17 @@ var midLine=[];
 function midMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(0.35,0.14,SP*0.5),mat(0xffd166,0xffd166,0.8));scene.add(m);return m;}
 for(var i=0;i<N;i++){leftRail.push(railMesh(0x5ef2ff));rightRail.push(railMesh(0xb98bff));tiles.push(tileMesh());midLine.push(midMesh());}
 
+
+// Animierter Retrowave-Grid-Boden (Shader: scrollende Neon-Linien, Puls, Horizont-Fade)
+function neonGrid(size,cells,c1,c2){
+ var m=new THREE.ShaderMaterial({transparent:true,depthWrite:false,fog:false,
+  uniforms:{uT:{value:0},c1:{value:new THREE.Color(c1)},c2:{value:new THREE.Color(c2)}},
+  vertexShader:"varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"varying vec2 vUv;uniform float uT;uniform vec3 c1;uniform vec3 c2;void main(){vec2 g=vUv*"+cells.toFixed(1)+";g.y+=uT;vec2 gv=fract(g)-0.5;float d=min(abs(gv.x),abs(gv.y));float line=smoothstep(0.07,0.012,d);float pulse=0.8+0.2*sin(uT*1.7);float cd=distance(vUv,vec2(0.5));float fade=smoothstep(0.5,0.18,cd);vec3 col=mix(c2,c1,line)*pulse;gl_FragColor=vec4(col,line*0.75*fade);}",
+  blending:THREE.AdditiveBlending,side:THREE.DoubleSide});
+ var mesh=new THREE.Mesh(new THREE.PlaneGeometry(size,size),m);mesh.rotation.x=-Math.PI/2;return mesh;
+}
+var gridMesh=neonGrid(640,64,0xb98bff,0x141c48);gridMesh.position.y=-3.6;gridMesh.position.z=-120;scene.add(gridMesh);
 // Backdrop-Pylone + Sterne
 var winTex=(function(){var cv=document.createElement("canvas");cv.width=64;cv.height=256;var c=cv.getContext("2d");c.fillStyle="#10173a";c.fillRect(0,0,64,256);
 for(var wy=4;wy<252;wy+=10)for(var wx=4;wx<60;wx+=10){if(Math.random()<0.55){c.fillStyle=Math.random()<0.5?"rgba(94,242,255,.85)":"rgba(185,139,255,.8)";c.fillRect(wx,wy,6,6);}}
@@ -247,6 +258,7 @@ function loop(now){
   camera.position.set(camX - bank*4 + (Math.random()-0.5)*shake*2.4,5.2+(Math.random()-0.5)*shake*2.4,ship.position.z+12);
   camera.lookAt(shipX*0.5+centerX(dist+20)*0.5, 1.0, ship.position.z-22);
   if(shake>0.001)shake*=0.86; else shake=0;
+  gridMesh.material.uniforms.uT.value=dist*0.02;
   for(var _p=0;_p<pylons.length;_p++)pylons[_p].material.emissiveIntensity=0.3+0.22*(0.5+0.5*Math.sin(now*0.0012+_p*1.7));
   sGlow.color.lerp(_cyan,0.08); // Farbe nach Boost/Treffer zurück zu Cyan
   camera.rotation.z=bank*0.3;
