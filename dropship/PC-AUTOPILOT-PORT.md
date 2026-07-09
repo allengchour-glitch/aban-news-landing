@@ -73,3 +73,9 @@ Vorlage «Warenkorbabbruch» (Abandoned checkout)** → Standard-Mail aktivieren
 gratis — Klaviyo ist ja kaputt). Betreffzeile darf Standard bleiben; wenn editierbar:
 «Dein Warenkorb wartet — 10 % mit Code WELCOME10 🇨🇭». Danach Status hier rapportieren.
 Das ist der direkteste 100-Kunden-Hebel: Käufer, die schon fast bezahlt hätten.
+
+### 9. 🟦 Microsoft Merchant Center (Bonus-Kanal, NACH Aufgabe 1–8)
+ads.microsoft.com → Konto mit Microsoft-Login (KEINE Zahlungsdaten!) → Tools → Merchant Center →
+Store «LuxeStyle CH», Domain luxestyle.ch (Validierungs-Meta-Tag in den Rapport schreiben —
+Cloud baut ihn ins Theme) → dann **«Import from Google Merchant Center»** (Konto 5797470070)
+aktivieren → Import-Status rapportieren. Ads/Budget NICHT anfassen (erst nach UID + Entscheid).
