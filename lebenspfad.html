@@ -610,6 +610,14 @@ if(THREE.GLTFLoader){
     pawnTpl=fitModel(g.scene,1.7);
     for(var i=0;i<pawns.length;i++)upgradePawn(i); // schon existierende Figuren aufwerten
   },undefined,function(){});
+  new THREE.GLTFLoader().load("/models/lp_haus.glb",function(g){
+    var hs=fitModel(g.scene,7.5),fh=fields[5*FIELDS_PER+8];
+    var hx=fh.x+4,hz=fh.z-9;
+    hs.position.x+=hx;hs.position.z+=hz;hs.position.y+=Math.max(0,terrainH(hx,hz));
+    hs.rotation.y=0.4;scene.add(hs);
+    var hb=new THREE.Mesh(new THREE.CircleGeometry(4.2,20),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
+    hb.rotation.x=-Math.PI/2;hb.position.set(hx,0.035,hz);scene.add(hb);
+  },undefined,function(){});
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
     var tr=fitModel(g.scene,11);var f=fields[NFIELDS-1];
     tr.position.x+=f.x;tr.position.z+=f.z-6;scene.add(tr);treeDone=true;
