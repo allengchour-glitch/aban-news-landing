@@ -2033,3 +2033,6 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Make-up 10). QA-Bogen: sauber; 1 Skin-Tag-Entferner (Heilversprechen) → nicht-bewerben.
   Katalog-Tagesbilanz 09.07.: ~+270 neu (89 Nacht + 181 Tag) − 920 Dubletten = deutlich sauberer &
   breiter. Gewichts-Preisboden ab sofort in allen CJ-Importen aktiv.
+- ✨ Polish-Runde: 18 Kollektions-Bilder gesetzt (alle neuen Kategorien inkl. Handy-Welt, Selbst-
+  gestalten, VR/AI — Bild = Top-Produkt), Editor-QA 36/0 Befunde, Homepage 200 + Parfüm-Sektion
+  rendert. Menü-Link-Sweep: keine echten 404 (429er = Bot-Schutz bei Parallel-Checks).
