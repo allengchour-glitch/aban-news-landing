@@ -4,6 +4,22 @@
 > der Wurzel-`CLAUDE.md`, weil die von der Dropship-Session bespielt wird.
 > Stand: 2026-06-03.
 
+## 🔄 ÜBERNAHME + PIVOT-ENTSCHEID (Video-Chef, 2026-07-09)
+**User-Auftrag: „übernimm abanfiles, alles auto, entscheide selber."** Entscheidung nach Dauerauftrag-Regel
+(30-Tage-Frist ist um: Kanal-Start 03.06. → Tag 36; **7 Abos, +0 Trend, 538 Views** → Pivot-Bedingung erfüllt):
+
+1. **PIVOT beschlossen:** Reptiloid/Conspiracy-Format (EN) wird NICHT fortgesetzt — bestätigt durch
+   WINNER-ANALYSE (dunkle KI-Renders floppen, echte warme Menschen-Footage gewinnt 1'527 vs. 37 Views).
+2. **Neue Serie: „KI ohne Hype" (DEUTSCH, ep37+)** — Business-Synergie statt Insel-Kanal: jeder Short
+   führt zu abannews.com (funktionierender Kauf-Funnel). Format: 45–50s, echte warme Footage
+   (Pexels/Pixabay-Pipeline ab ep21 vorhanden), on-screen Text, Abo-CTA in der Story.
+   **ep37–ep39 sind fertig geskriptet** (`aban_scripts.json`, series: ki-ohne-hype).
+3. **ep24–ep36 (13 fertige Clips):** werden hochgeladen sobald YT-Creds da sind (sunk cost, 3×/Tag
+   Drossel) — aber KEINE neue Conspiracy-Produktion mehr.
+4. **Harte Sperre:** In Cloud-Sessions liegen KEINE YT-Creds (nur GitHub-Secrets, Actions gesperrt).
+   Upload/Stats gehen erst, wenn der User `YT_CLIENT_ID`+`YT_CLIENT_SECRET`+`YT_REFRESH_TOKEN`
+   (oder `YT_API_KEY` für read-only) in die Session gibt — dann läuft alles autonom weiter.
+
 ## 🎬 DAUERAUFTRAG — Video-Chef (User, 2026-06-07)
 **Claude ist Video-Chef.** Oberstes Ziel: **viele ABONNENTEN** gewinnen. Läuft der Kanal
 **nach 30 Tagen** nicht gut (zu wenig Abo-Wachstum) → **Thema wechseln** und neuen 30-Tage-Lauf
