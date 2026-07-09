@@ -2028,3 +2028,8 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (Retter = CHF 7.00 Versandpauschale, deckt CJ-Fracht 50–130g ≈ $5.5–6.8). Regeln: Kleinkram NIE
   bewerben (CPC frisst Marge, Ads nur ≥ CHF 25); Achtung schwere Billig-Artikel (>500g unter CHF 15
   VK = Fracht frisst Marge) → bei nächstem QA-Lauf Gewicht-Preis-Check einbauen.
+- 🌞 Tages-Füller-Ernte 09.07.: 181 Produkte über 13 Gruppen (Pet 20+15, Damen 20, Herren 20,
+  Sport 9, Storage 15, Beauty-Tools 15, Musik 10, Schmuck 15, Uhren 7, Taschen 15, Skincare 10,
+  Make-up 10). QA-Bogen: sauber; 1 Skin-Tag-Entferner (Heilversprechen) → nicht-bewerben.
+  Katalog-Tagesbilanz 09.07.: ~+270 neu (89 Nacht + 181 Tag) − 920 Dubletten = deutlich sauberer &
+  breiter. Gewichts-Preisboden ab sofort in allen CJ-Importen aktiv.
