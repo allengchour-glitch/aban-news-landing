@@ -2131,3 +2131,13 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - Klaviyo-Konnektor vom User NEU VERBUNDEN («Immer erlauben») → Tools docken beim nächsten
   Session-Neustart an; dann Orders-Sync prüfen + Abbrecher-Flow. Klaviyo Onsite-JS-Embed im
   Theme-Editor: User schaltet Toggle AN (Screenshot-Hinweis gegeben).
+
+## Session 2026-07-10d — BigBuy-Segmente aus User-Screenshot + CJ-Runde 2
+- User-Screenshot (BigBuy-Katalog: Home / Original Gifts / Perfumes) → alle 3 Segmente sind in der
+  Walker-Queue (~115 Gruppen, 12 durch); Durchsatz erhöht PER 4→8. Parfum-Preise via brand_price_fix
+  bereits auf Marktniveau.
+- CJ-Runde 1 fertig: 47 Importe (22 Queue-Begriffe + 25 Nagelstudio via Kategorie-Fill). Vision-QA:
+  «Nagelreiniger» war ein Nagelfräser/Poliergerät → Titel fixiert. Nagelstudio-Kollektion (46→70+).
+- CJ-Runde 2 gestartet: 24 frische Begriffe passend zum Screenshot (Home-Deko: Badewannen-Tablett,
+  Wandregal, Vasen, Letter-Board … / Geschenke: Mondlampe, Waffeleisen, Whiskey-Steine …).
+- Versand50-Engine: 280+/4'434 Beschreibungen umgestellt, läuft.
