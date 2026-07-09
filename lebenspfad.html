@@ -45,7 +45,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .dnum{position:absolute;font-weight:900;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .75s ease-out,opacity .75s;opacity:1;will-change:transform,opacity}
 #keysHelp{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#fff;text-shadow:0 1px 4px rgba(40,60,90,.7);white-space:nowrap;background:rgba(60,90,130,.35);border-radius:14px;padding:3px 12px}
 /* Ereignis-Karte */
-#card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
+#card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .45s,transform .45s cubic-bezier(.2,1.1,.4,1);max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
 #card.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
 #card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#c98a1a;margin-bottom:8px;font-weight:800}
 #card h3{font-size:1.2rem;color:#2a3040;margin-bottom:8px;line-height:1.35}
@@ -871,7 +871,7 @@ document.getElementById("keysHelp").innerHTML=IS_COARSE?
   "🎲 antippen zum Würfeln · Karten antippen zum Entscheiden":
   "<b>LEER</b>/Knopf würfeln · <b>M</b> Ton · <b>ESC</b> Menü — Ereignisse: anklicken &amp; entscheiden";
 function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2600);}
-function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2400);}
+function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},3400);}
 function initProgMap(){var ps2=document.getElementById("progSegs");ps2.innerHTML="";
   CHAPTERS.forEach(function(c){var d=document.createElement("div");
     d.style.cssText="flex:1;background:#"+("00000"+c.ground.toString(16)).slice(-6);ps2.appendChild(d);});}
@@ -971,7 +971,7 @@ function startMove(n){
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
-  hopT+=dt*2.35*OPT.tempo;
+  hopT+=dt*2.1*OPT.tempo;
   if(hopT>=1){
     p.tile=Math.min(NFIELDS-1,p.tile+1);moveQ--;hopT=0;
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
@@ -1334,12 +1334,12 @@ var camShake=0;
 function updateCamera(dt){
   var p=G?G.players[G.turn]:null;
   var tx=p?pawns[G.turn].position.x:fields[0].x,tz=p?pawns[G.turn].position.z:fields[0].z;
-  camT.x+=(tx-camT.x)*Math.min(1,dt*3);camT.z+=(tz-camT.z)*Math.min(1,dt*3);
+  camT.x+=(tx-camT.x)*Math.min(1,dt*2.2);camT.z+=(tz-camT.z)*Math.min(1,dt*2.2);
   var swayX=OPT.motion?Math.sin(performance.now()*0.00035)*1.2:0;
-  camera.position.x+=(camT.x+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*4);
+  camera.position.x+=(camT.x+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*2.6);
   var camH=16.5*(H>W?1.45:1);
   camera.position.y+=(camH-camera.position.y)*Math.min(1,dt*3);
-  camera.position.z+=(camT.z+15*(H>W?1.3:1)-camera.position.z)*Math.min(1,dt*4);
+  camera.position.z+=(camT.z+15*(H>W?1.3:1)-camera.position.z)*Math.min(1,dt*2.6);
   camera.lookAt(camT.x,0.5,camT.z-2);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
 }
@@ -1637,7 +1637,7 @@ function handleField(p,f){
       return;}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
       [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
-    camShake=0.3;return;}
+    camShake=0.15;return;}
   if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
   if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
   if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
