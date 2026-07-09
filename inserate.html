@@ -107,6 +107,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
 #demoBanner{background:#fff;border:1px dashed #d6cbb0;border-radius:12px;padding:11px 14px;margin-bottom:13px;font-size:.86rem;color:var(--ink2)}
 #demoBanner b{color:var(--amber-dk)}
 #selbar{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:80;background:#1f2937;color:#fff;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.3);display:flex;align-items:center;gap:10px;padding:9px 12px 9px 18px;font-size:.9rem;font-weight:700}
+#selbar[hidden]{display:none}
+#priceInsight{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.82rem;color:var(--ink2);font-weight:600}
+#priceInsight[hidden]{display:none}
 #selbar button{font-family:inherit;border:0;border-radius:20px;padding:8px 14px;font-weight:700;font-size:.85rem;cursor:pointer}
 #selbar .sbshow{background:var(--amber);color:#1f2937}
 #selbar .sbclear{background:transparent;color:#f4e7d3;border:1px solid rgba(255,255,255,.3)}
@@ -184,6 +187,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div class="rhead">
       <button class="filterbtn" id="filterOpen" type="button">⚙ Filter</button>
       <span class="cnt" id="cnt">Lade Inserate …</span>
+      <span id="priceInsight" hidden></span>
       <span style="margin-left:auto;font-size:.85rem;color:var(--muted)">Sortieren:
         <select id="sort" style="font-family:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)"><option value="rel">Relevanz</option><option value="pasc">Preis aufsteigend</option><option value="pdesc">Preis absteigend</option></select>
       </span>
@@ -304,6 +308,9 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
   function chfNum(p){var s=String(p||"").replace(/['’\s]/g,"");var m=s.match(/(\d{2,})(?:[.,]\-)?/);return m?parseInt(m[1],10):NaN}
   function applyFilters(items){
     items=(items||[]).slice();
+    // Live-Textfilter (Sofort-Suche beim Tippen — kein Neuladen nötig)
+    var qq=$("#q").value.trim().toLowerCase();
+    if(qq)items=items.filter(function(it){return ((it.titel||"")+" "+(it.beschreibung||"")+" "+(it.kat||"")).toLowerCase().indexOf(qq)>=0});
     var loc=$("#loc").value.trim().toLowerCase();
     if(loc)items=items.filter(function(it){return (String(it.plz||"")+" "+String(it.ort||"")).toLowerCase().indexOf(loc)>=0});
     var regs=regSet();
@@ -377,7 +384,13 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
         '<h3>'+esc(it.titel)+'</h3>'+chips+(it.preis?'<div class="p">'+esc(it.preis)+'</div>':'')+
         '<div class="o">'+esc([it.plz,it.ort].filter(Boolean).join(" "))+'</div><div class="d">'+esc(it.beschreibung)+'</div>'+cta+'</div>';
     }).join("");
-    cntEl.textContent=items.length+(merkOnly?" gemerkt":(isDemo?" Beispiele":" Inserate"));
+    cntEl.textContent=items.length+(merkOnly?" gemerkt":(isDemo?(items.length===1?" Beispiel":" Beispiele"):(items.length===1?" Inserat":" Inserate")));
+    // Preis-Insight zur aktuellen Auswahl (haben tutti & anibis nicht)
+    (function(){var pi=$("#priceInsight");if(!pi)return;
+      var ps=items.map(function(it){return chfNum(it.preis)}).filter(function(n){return !isNaN(n)&&n>0}).sort(function(a,b){return a-b});
+      if(ps.length<3){pi.hidden=true;return}
+      var med=ps[Math.floor(ps.length/2)];
+      pi.hidden=false;pi.textContent="💰 Median CHF "+med.toLocaleString("de-CH")+" · Spanne "+ps[0].toLocaleString("de-CH")+"–"+ps[ps.length-1].toLocaleString("de-CH");})();
     Array.prototype.forEach.call(document.querySelectorAll(".card.feat"),function(c){c.style.border="2px solid var(--amber)"});
     Array.prototype.forEach.call(document.querySelectorAll(".card button.c:not([disabled])"),function(b){b.addEventListener("click",function(){this.outerHTML='<div style="font-size:.85rem">'+contactHtml(this.dataset.k)+'</div>'})});
   }
@@ -428,13 +441,19 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(primaryKat())).then(function(r){return r.json()}).then(function(d){
       var items=d.items||[];
       if(d.demo||!items.length){var dm=demoFiltered();
-        if(dm.length){isDemo=true;showDemoBanner(true);raw=dm;render(raw);return}
+        if(dm.length){isDemo=true;showDemoBanner(true);raw=DEMO.slice();render(raw);return}
         isDemo=false;showDemoBanner(false);grid.innerHTML="";statusEl.hidden=false;statusEl.innerHTML="<div style=\"max-width:440px;margin:0 auto;text-align:center\"><div style=\"font-size:2rem\">📋</div><h3 style=\"margin:.3rem 0;color:#1f2937\">Nichts in dieser Auswahl — sei der/die Erste!</h3><p style=\"color:#6b7280;margin-bottom:14px\">Stell deine Kleinanzeige kostenlos ein.</p><a href=\"/inserat-aufgeben.html\" style=\"display:inline-block;background:#b45309;color:#fff;border-radius:22px;padding:11px 22px;font-weight:800;text-decoration:none\">+ Inserat aufgeben</a></div>";cntEl.textContent="";return}
       isDemo=false;showDemoBanner(false);raw=items;render(raw);
-    }).catch(function(){isDemo=false;showDemoBanner(false);grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""});
+    }).catch(function(){
+      // Resilienz: API nicht erreichbar -> Beispiel-Inserate zeigen statt leerer Seite
+      var dm=demoFiltered();
+      if(dm.length){isDemo=true;showDemoBanner(true);raw=DEMO.slice();render(raw);return}
+      isDemo=false;showDemoBanner(false);grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden.";cntEl.textContent=""});
   }
   $("#go").addEventListener("click",function(e){e.preventDefault();load()});
   $("#q").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();load()}});
+  // Sofort-Suche beim Tippen (250ms Debounce) — filtert die geladenen Inserate live, ohne Neuladen
+  (function(){var t;$("#q").addEventListener("input",function(){clearTimeout(t);t=setTimeout(function(){render(raw)},250)})})();
   $("#loc").addEventListener("input",function(){render(raw);renderPortals()});
   $("#cats").addEventListener("change",function(e){if(e.target.classList.contains("catbox")){curThing=-1;renderThings();load();renderPortals()}});
   document.addEventListener("change",function(e){if(e.target&&(e.target.name==="typ"||e.target.classList.contains("cond")||e.target.classList.contains("qf")||e.target.classList.contains("pkl")||e.target.classList.contains("reg"))){render(raw)}});
