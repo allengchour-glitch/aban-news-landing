@@ -2046,3 +2046,8 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   eingebaut, live verifiziert (curl 200 + Tag im HTML). Nächster Schritt PC-Claude: «Verify» klicken +
   Sitemap https://luxestyle.ch/sitemap.xml einreichen. MMC-Store danach mit verifizierter Domain neu
   probieren; falls Richtlinien-Flag bleibt → Support-Einspruch (Adult-Sweep als Beleg).
+- 🕵️ Agenten-QA-Runde (4 parallele Prüfer): Katalog-Stichprobe 17/200 auffällig → gefixt (2 EN-Titel,
+  Umtaggungen, bastel-diy-Regel +Diamond Painting); Neuimporte 373 geprüft → 8 Titel eingedeutscht
+  (Machine Crab→Krabben-Roboter usw.), Liegestuhl-Familie = echte Varianten (verschiedene Bilder, kein
+  Draft). Struktur-Prüfer fand grosse Konsolidierungs-Kandidaten (Doppel-Bäume Schuhe/Gadgets/Uhren/
+  Marken-Duplikate, Sale→12k-Liste) → eigene Aufräum-Runde geplant.
