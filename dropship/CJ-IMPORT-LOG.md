@@ -2072,3 +2072,21 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Bohren&Sägen, Messwerkzeug, Schleifen&Trennen, Tastaturen&Mäuse, Netzwerk&WLAN, Kabel&Adapter
   (Kabellos-Falle vermieden: Compound-Terme). Menü: NEUER Top-Level «🏃 Sport & Outdoor» (8 Kinder),
   «🔧 Werkzeug-Welt» Unterbaum, PC-Komponenten +Tastatur/Netzwerk, Kabel in Handy-Welt + Technik.
+
+## Session 2026-07-09/10 — 🎯 TikTok-Ads-Umbau auf Add-to-Cart-Lernphase (MCP-Konnektor nach Neustart angedockt)
+- **Diagnose Kampagne `1869987705486481` (06.–09.07.):** 63.88 CHF Spend, 26'609 Impressions, 48 Klicks,
+  **CTR 0.18%, CPC 1.33, 0 Käufe.** Adgroup optimierte auf SHOPPING (Complete Payment) mit 0 Events →
+  Algorithmus kann nicht lernen (Henne-Ei, bereits 2026-06-02 als Plan festgehalten: «erst ATC bis Events, dann Kauf»).
+- **Umbau ausgeführt (voll per API):**
+  - Neues Creative hochgeladen: `showcase-45s-20260706-clean.mp4` → video_id `v10033g50000d980gvvog65sjdt4s290`.
+  - **Neue Adgroup `1870271591940273` «CH Frauen 18-34 ATC-Lernphase»:** CONVERT → **ON_WEB_CART** (Add to Cart),
+    Pixel `7646354888245739527`, CH/Frauen/18–34/DE+FR, TikTok-Placement, 20 CHF/Tag, NO_BID, SMOOTH.
+  - **Neue Ad `1870271809400033`:** Video + Suggestcover, Identity BC_AUTH_TT `58a7b00c-…` (BC `7640770639476817938`),
+    Text «Der Schweizer Shop fuer Mode, Schmuck und Gadgets. Kauf auf Rechnung mit Klarna und TWINT. WELCOME10»,
+    SHOP_NOW → /collections/viral-hits. **Review: SOFORT GENEHMIGT (ALL_AVAILABLE) — läuft.**
+  - **Alte Purchase-Adgroup `1869987760755842` PAUSIERT** → Gesamtbudget bleibt 20 CHF/Tag.
+- **Merker für ad_create:** Identity-Typ BC_AUTH_TT braucht `identity_authorized_bc_id` (BC via `bc_get`:
+  LuxeStyle CH = `7640770639476817938`). Cover via `file_video_suggestcover_get` (id-Feld = image_id).
+- **Plan:** ATC-Events sammeln (Ziel ~30–50), dann Adgroup auf SHOPPING/Purchase hochstufen.
+  Wächter: Report + Review-Status im Morgenreport prüfen.
+- **Engines parallel:** Parfum-Repricing LIVE bei ~650 gesenkt/726 geprüft (von 1'036), BigBuy-Kategorie-Walker läuft.
