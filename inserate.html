@@ -193,6 +193,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     <div id="demoBanner" hidden>🎫 <b>Beispiel-Inserate</b> — so sieht's aus. Echte erscheinen hier, sobald Leute inserieren. Du kannst sie schon <b>♡ merken &amp; vergleichen</b>. <a href="/inserat-aufgeben.html">Eigenes Inserat aufgeben →</a></div>
     <div class="grid" id="grid"></div>
     <div class="status" id="status" hidden></div>
+    <div id="ebayRow" style="margin-top:26px"></div>
     <div id="shopRow" style="margin-top:26px"></div>
   </section>
 </div>
@@ -399,7 +400,31 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       if(!items.length&&q){fetch("/api/luxestyle?limit=8").then(function(r){return r.json()}).then(function(d2){renderShop(d2.items||[])}).catch(function(){});return}
       renderShop(items);
     }).catch(function(){});}
-  function load(){var q=$("#q").value.trim();curKat=primaryKat();cntEl.textContent="Lade …";skeleton();loadShopRow();
+  // ── Echte Angebote (eBay-Partner) — synchron mit Suche/Kategorie, gleiche Quelle wie /angebote-suche.html ──
+  var KAT2EBAY={"Elektronik":"Elektronik","Handy":"Smartphone","Computer":"Laptop","Foto & Video":"Kamera",
+    "Gaming":"Spielkonsole","TV & Audio":"Soundbar","Möbel":"Möbel","Wohnen & Deko":"Deko",
+    "Haushalt":"Haushaltsgeräte","Küche":"Küchenmaschine","Garten":"Gartenmöbel","Werkzeug":"Werkzeug",
+    "Baumaterial":"Baumaterial","Auto & Teile":"Auto Zubehör","Motorrad":"Motorrad Zubehör","Fahrrad":"Fahrrad",
+    "Mode":"Mode","Schmuck & Uhren":"Armbanduhr","Spielzeug":"Spielzeug","Baby & Kind":"Kinderwagen",
+    "Haustier":"Haustierbedarf","Sport":"Sportgeräte","Musik & Instrumente":"Musikinstrument",
+    "Bücher & Medien":"Bücher","Sammeln & Antik":"Sammler","Sonstiges":"Occasion"};
+  function renderEbay(items,term){var box=$("#ebayRow");if(!box)return;items=(items||[]).slice(0,8);
+    if(!items.length){box.innerHTML="";return}
+    box.innerHTML='<h3 style="font-size:1.05rem;margin:0 0 4px">🛒 Echte Angebote zu deiner Suche <span style="font-weight:500;color:var(--muted);font-size:.85rem">· eBay-Partner · Partnerlinks</span></h3>'+
+      '<p style="font-size:.8rem;color:var(--muted);margin:0 0 10px">Live aus derselben Quelle wie die <a href="/angebote-suche.html'+(term?"?q="+encodeURIComponent(term):"")+'">Angebote-Suche</a> — Klicks zu Partnern können Provision bringen, der Preis bleibt gleich.</p>'+
+      '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px">'+items.map(function(it){
+        var img=it.img?('<div style="aspect-ratio:1/1;background:#f3eee4 center/cover no-repeat;background-image:url(\''+esc(it.img)+'\')"></div>'):'<div style="aspect-ratio:1/1;background:#f3eee4;display:flex;align-items:center;justify-content:center;font-size:1.6rem">🛒</div>';
+        var cond=it.cond?('<div style="font-size:.7rem;color:var(--muted)">'+esc(it.cond)+'</div>'):'';
+        return '<a href="'+esc(it.url)+'" target="_blank" rel="sponsored nofollow noopener noreferrer" style="background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;text-decoration:none;color:var(--ink);display:flex;flex-direction:column">'+img+'<div style="padding:8px 9px"><div style="font-size:.78rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px">'+esc(it.title)+'</div><div style="color:var(--amber-dk);font-weight:800;font-size:.85rem">'+esc(it.price)+'</div>'+cond+'</div></a>';
+      }).join("")+'</div>';}
+  function loadEbayRow(){var box=$("#ebayRow");if(!box)return;
+    var q=$("#q").value.trim();
+    var term=q||KAT2EBAY[primaryKat()]||"Occasion Schweiz";
+    fetch("/api/ebay?limit=8&q="+encodeURIComponent(term)).then(function(r){return r.json()}).then(function(d){
+      if(d.demo){box.innerHTML="";return} // ohne echte Quelle nichts Erfundenes zeigen
+      renderEbay(d.items||[],term);
+    }).catch(function(){box.innerHTML=""});}
+  function load(){var q=$("#q").value.trim();curKat=primaryKat();cntEl.textContent="Lade …";skeleton();loadShopRow();loadEbayRow();
     fetch("/api/inserate-list?q="+encodeURIComponent(q)+"&kat="+encodeURIComponent(primaryKat())).then(function(r){return r.json()}).then(function(d){
       var items=d.items||[];
       if(d.demo||!items.length){var dm=demoFiltered();
