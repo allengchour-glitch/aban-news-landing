@@ -2036,3 +2036,9 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - ✨ Polish-Runde: 18 Kollektions-Bilder gesetzt (alle neuen Kategorien inkl. Handy-Welt, Selbst-
   gestalten, VR/AI — Bild = Top-Produkt), Editor-QA 36/0 Befunde, Homepage 200 + Parfüm-Sektion
   rendert. Menü-Link-Sweep: keine echten 404 (429er = Bot-Schutz bei Parallel-Checks).
+- 🟦 Microsoft Merchant Center (09.07. Abend): Konto «LuxeStyle» G1203U3V erstellt OHNE Zahlung
+  (PMaxLite-Falle umgangen via «Zahlung später»). GMC-Import-Dialog erkennt Konto 5797470070, ABER
+  Domain luxestyle.ch «nicht zulässig» (Richtlinien-Flag). URSACHE GEFUNDEN & BEHOBEN: 30 Adult-
+  Artikel (Tantus & Co., teils OHNE erotik-Tags im Google-Feed!) → alle erotik-mode+nicht-bewerben
+  + aus Shop/TikTok/FB/Google/Pinterest entfernt (nur Onlineshop+POS). Smoke (12) war schon sauber.
+  → Bing-Recrawl abwarten (~1 Woche), dann Import erneut; alternativ Support-Chat. GEPARKT.
