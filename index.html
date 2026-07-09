@@ -48,13 +48,16 @@
 
     /* header */
     header{position:sticky;top:0;z-index:30;background:rgba(255,250,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
-    header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-    .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em}
+    header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:1.2rem}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.2rem;text-decoration:none;letter-spacing:-.02em;white-space:nowrap;flex:0 0 auto}
     .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 5px var(--amber-lt)}
-    .hnav{display:flex;align-items:center;gap:1.3rem;font-size:.93rem}
-    .hnav a.lk{color:var(--muted);text-decoration:none}.hnav a.lk:hover{color:var(--ink)}
-    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:800}
+    .hnav{display:flex;align-items:center;gap:1.3rem;font-size:.93rem;flex-wrap:nowrap;min-width:0}
+    .hnav a.lk{color:var(--muted);text-decoration:none;white-space:nowrap}.hnav a.lk:hover{color:var(--ink)}
+    .hnav .btn{white-space:nowrap}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:800;flex:0 0 auto}
     .lang a{padding:.34rem .6rem;color:var(--muted);text-decoration:none}.lang a.on{background:var(--ink);color:#fff}
+    @media(max-width:1560px){.hnav .lk--lo{display:none}}
+    @media(max-width:1400px){.hnav{gap:.95rem;font-size:.89rem}}
     @media(max-width:820px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
     /* Schnell-Link-Leiste — alle wichtigen Ziele, auf dem Handy horizontal scrollbar */
     .quicklinks{background:#fff;border-bottom:1px solid var(--line)}
@@ -248,17 +251,17 @@
     <a href="/" class="brand"><span class="dot"></span> aban news</a>
     <nav class="hnav" aria-label="Hauptnavigation">
       <a href="/marktplatz.html" class="lk lk--keep">Marktplatz</a>
-      <a href="/preview.html" class="lk">Beispiel</a>
+      <a href="/preview.html" class="lk lk--lo">Beispiel</a>
       <a href="/dossiers.html" class="lk lk--keep">Dossiers</a>
       <a href="/maerkte.html" class="lk">Märkte</a>
       <a href="/ki-studio.html" class="lk">KI-Studio</a>
       <a href="/geld-und-ki.html" class="lk">Geld &amp; KI</a>
       <a href="/online-tools.html" class="lk">Tools</a>
-      <a href="/spiele.html" class="lk">Spiele</a>
+      <a href="/spiele.html" class="lk lk--lo">Spiele</a>
       <a href="/ki-ratgeber.html" class="lk">Ratgeber</a>
       <a href="/founding.html" class="lk">Premium</a>
-      <a href="https://abannews.beehiiv.com" class="lk" target="_blank" rel="noopener" title="Schon Premium? Anmelden per Magic-Link (beehiiv)">Pro-Login</a>
-      <a href="/shop.html" class="lk">Shop</a>
+      <a href="https://abannews.beehiiv.com" class="lk lk--lo" target="_blank" rel="noopener" title="Schon Premium? Anmelden per Magic-Link (beehiiv)">Pro-Login</a>
+      <a href="/shop.html" class="lk lk--lo">Shop</a>
       <span class="lang" role="group" aria-label="Sprache wählen"><a href="/" class="on" aria-current="page">DE</a><a href="/en/">EN</a><a href="/fr/">FR</a><a href="/it/">IT</a></span>
       <a href="#signup" class="btn btn--amber btn--sm">Gratis abonnieren</a>
     </nav>
