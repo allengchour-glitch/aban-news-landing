@@ -207,7 +207,13 @@ function getMesh(pool,make){for(var i=0;i<pool.length;i++)if(!pool[i].active)ret
 function ebulletMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.35,8,8),mat(0xff5566,0xff3344)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0};}
 function enemyShoot(fx0,fz0,spd){var b=getMesh(ebullets,ebulletMesh);b.active=true;b.m.visible=true;b.m.position.set(fx0,0.8,fz0);var dx=player.position.x-fx0,dz=player.position.z-fz0,d=Math.hypot(dx,dz)||1;b.vx=dx/d*spd;b.vz=dz/d*spd;b.life=4;beep(300,.05,"square",.03);}
 function bulletMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.28,8,8),mat(0xffffff,0x88ffff)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0};}
-function enemyMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.1,1.1),mat(0xff5577,0xaa1133)); m.active=false; scene.add(m); return {m:m,active:false,hp:1,spd:1};}
+function enemyMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(1.0,1.0,1.0),mat(0xff5577,0xaa1133));
+  // Stacheln teilen das Root-Material -> Typ-Umfärbung wirkt automatisch mit
+  for(var sp=0;sp<4;sp++){var hx=(sp%2?1:-1),hz=(sp<2?1:-1);var spike=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.5,4),m.material);spike.position.set(hx*0.38,0.68,hz*0.38);spike.rotation.z=hx*0.5;spike.rotation.x=-hz*0.5;m.add(spike);}
+  var eyeM=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffff,emissiveIntensity:2.2});
+  var e1=new THREE.Mesh(new THREE.SphereGeometry(0.09,6,5),eyeM);e1.position.set(-0.2,0.14,0.52);m.add(e1);
+  var e2=e1.clone();e2.position.x=0.2;m.add(e2);
+  m.active=false; scene.add(m); return {m:m,active:false,hp:1,spd:1};}
 function orbMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(0xffd166,0xffd166)); m.active=false; scene.add(m); return {m:m,active:false}; }
 
 // State + Upgrades
