@@ -14,7 +14,7 @@ const BB = (process.env.BIGBUY_API_KEY || '').trim();
 const LIMIT = parseInt(process.env.LIMIT || '400', 10);
 const DRY = process.env.DRY === '1';
 const GAP = parseInt(process.env.GAP || '1400', 10);
-const POS = 'dropship/_brandprice_pos.txt';
+const POS = process.env.MODE==='parfum' ? 'dropship/_parfumprice_pos.txt' : 'dropship/_brandprice_pos.txt';
 const EUR = 0.97;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -56,7 +56,7 @@ let pos = fs.existsSync(POS) ? parseInt(fs.readFileSync(POS, 'utf8'), 10) || 0 :
 const items = [];
 let cursor = null;
 while (true) {
-  const d = await gql(t, `query($c:String){ products(first:100, after:$c, query:"tag:marke tag:bigbuy status:active", sortKey:ID){
+  const d = await gql(t, `query($c:String){ products(first:100, after:$c, query:"${process.env.MODE==='parfum' ? '(title:*Damenparfüm* OR title:*Herrenparfüm* OR title:*Parfüm* OR title:*Parfum*) status:active' : 'tag:marke tag:bigbuy status:active'}", sortKey:ID){
     pageInfo{hasNextPage endCursor}
     edges{ node{ id title variants(first:1){edges{node{ id sku price }}} } } }}`, { c: cursor });
   const p = d?.products; if (!p) break;
@@ -75,7 +75,9 @@ for (let i = pos; i < items.length && done < LIMIT; i++) {
   if (!d || !d.wholesalePrice) continue;
   const ek = d.wholesalePrice * EUR;
   const uvp = (d.retailPrice || 0) * EUR;
-  const target = Math.max(ek * 1.25, uvp > 0 ? uvp * 1.05 : 0);
+  const target = process.env.MODE==='parfum'
+    ? Math.max(ek * 1.30, 9.90)                     // Parfüm: Strassenpreis-Anker, UVP ist Fantasie
+    : Math.max(ek * 1.25, uvp > 0 ? uvp * 1.05 : 0);
   if (!target) continue;
   const neu = parseFloat(round90(target));
   const alt = parseFloat(v.price);
