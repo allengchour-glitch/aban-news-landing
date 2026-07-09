@@ -2005,3 +2005,8 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Nacht-Füller Runde 2 läuft GLOBAL (ohne Warehouse-Filter).
 - Container starb über Nacht → revive.sh (/tmp) + beide Crons neu erstellt (Wächter :23, Report 08:43,
   neu mit Zefix-UID-Check). BigBuy-Welle fortgesetzt (Ledger), frisst sich weiter durch ER007-Sommerware.
+- 🗂️ Sortier-Runde 09.07.: 10 NEUE Unterkategorien (Smart-Collections, BEST_SELLING, Titel-Regeln,
+  publiziert + im Menü): parfuem-damen(625) · parfuem-herren(464) · hundewelt(615) · katzenwelt(297) ·
+  puzzles(157) · lautsprecher(131) · kaffee-ecke(122) · wein-bar(93) · haarstyling-geraete(68) ·
+  nagelstudio(46). Substring-Fallen vorab geprüft (hundert/einzelteil = 0 Treffer). Menü: Beauty&Tier +6,
+  Wohnen +2 (Kaffee, Wein&Bar), Kinder +Puzzles, Technik +Lautsprecher. Alle Seiten 200 OK.
