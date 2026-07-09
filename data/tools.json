@@ -4080,6 +4080,56 @@
       ]
     },
     {
+      "id": "hermes-agent",
+      "name": "Hermes Agent",
+      "vendor": "Nous Research",
+      "category": [
+        "Agent",
+        "Framework",
+        "Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source, Self-Host (LLM-API-Kosten separat)"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8.5,
+      "aban_note": "Open-Source-Agent mit Lern-Schleife: baut aus erledigten Aufgaben eigene Skills und ein dauerhaftes Gedächtnis auf — wird mit der Zeit besser auf DEINE Abläufe. Release Feb. 2026, über 140k GitHub-Stars in unter 90 Tagen. Terminal-UI oder Gateway zu Telegram/Discord/Slack/WhatsApp. Ehrlich: Self-Hosting nötig, Doku englisch, LLM-API-Kosten kommen dazu.",
+      "url": "https://hermes-agent.org",
+      "alternatives": [
+        "openclaw",
+        "langchain",
+        "browser-use"
+      ]
+    },
+    {
+      "id": "openclaw",
+      "name": "OpenClaw",
+      "vendor": "OpenClaw (Open-Source)",
+      "category": [
+        "Agent",
+        "Framework",
+        "Automation"
+      ],
+      "pricing": {
+        "free_tier": true,
+        "paid_from_eur": 0,
+        "currency": "EUR",
+        "model": "Open-Source, Self-Host (LLM-API-Kosten separat)"
+      },
+      "dach_relevance": 6,
+      "worth_it_score": 8,
+      "aban_note": "Open-Source-Agent-Gateway: verbindet einen Agenten mit den Kanälen, die du schon nutzt (WhatsApp, Telegram, Discord u. a.), erweiterbar über installierbare Skills. Der zweite grosse Name neben Hermes Agent 2026. Ehrlich: kein Lern-Loop (Skills bleiben statisch), Sicherheits-Defaults anfangs locker — Rechte bewusst eng setzen.",
+      "url": "https://openclaw.ai",
+      "alternatives": [
+        "hermes-agent",
+        "langchain",
+        "browser-use"
+      ]
+    },
+    {
       "id": "poe",
       "name": "Poe",
       "vendor": "Quora",
