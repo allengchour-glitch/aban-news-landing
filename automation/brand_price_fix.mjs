@@ -16,6 +16,7 @@ const DRY = process.env.DRY === '1';
 const GAP = parseInt(process.env.GAP || '1400', 10);
 const POS = process.env.MODE==='parfum' ? 'dropship/_parfumprice_pos.txt' : 'dropship/_brandprice_pos.txt';
 const EUR = 0.97;
+const REF2ID = fs.existsSync('/tmp/bb_ref2id.json') ? JSON.parse(fs.readFileSync('/tmp/bb_ref2id.json','utf8')) : {};
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function tok() {
@@ -69,8 +70,14 @@ let done = 0, lowered = 0; const report = [];
 for (let i = pos; i < items.length && done < LIMIT; i++) {
   const n = items[i]; done++; fs.writeFileSync(POS, String(i + 1));
   const v = n.variants.edges[0]?.node; if (!v) continue;
-  const m = (v.sku || '').match(/^(?:bb|BB)-(\d+)/) || (v.sku || '').match(/^(?:bb|BB)-S?(\d+)/i);
-  const pid = m ? m[1] : null; if (!pid) continue;
+  let pid = null;
+  const mNum = (v.sku || '').match(/^(?:bb|BB)-(\d+)$/);
+  if (mNum) pid = mNum[1];
+  else { // S-/V-/CSV-Referenzen über die Katalog-Karte auflösen (2026-07-09)
+    const mRef = (v.sku || '').match(/^(?:bb|BB|CSV)-([A-Z]{0,2}\d{4,})/i);
+    if (mRef && REF2ID[mRef[1]]) pid = String(REF2ID[mRef[1]]);
+  }
+  if (!pid) continue;
   const d = await bb(pid); await sleep(GAP);
   if (!d || !d.wholesalePrice) continue;
   const ek = d.wholesalePrice * EUR;
