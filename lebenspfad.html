@@ -610,6 +610,18 @@ if(THREE.GLTFLoader){
     pawnTpl=fitModel(g.scene,1.7);
     for(var i=0;i<pawns.length;i++)upgradePawn(i); // schon existierende Figuren aufwerten
   },undefined,function(){});
+  // Kapitel-Gebäude (Blender, game-ready): Schule, Uni, Büroturm, Parkbank+Laterne
+  [["lp_schule.glb",8,1,-5,-10,0.5],["lp_uni.glb",8.5,2,5,-11,-0.3],
+   ["lp_buero.glb",10,4,-4,-12,0.3],["lp_parkbank.glb",4.5,7,4,-7,-0.5]].forEach(function(spec){
+    new THREE.GLTFLoader().load("/models/"+spec[0],function(g){
+      var o=fitModel(g.scene,spec[1]),fd=fields[spec[2]*FIELDS_PER+8];
+      var ox=fd.x+spec[3],oz=fd.z+spec[4];
+      o.position.x+=ox;o.position.z+=oz;o.position.y+=Math.max(0,terrainH(ox,oz));
+      o.rotation.y=spec[5];scene.add(o);
+      var bl=new THREE.Mesh(new THREE.CircleGeometry(spec[1]*0.42,18),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.15,depthWrite:false}));
+      bl.rotation.x=-Math.PI/2;bl.position.set(ox,0.032,oz);scene.add(bl);
+    },undefined,function(){});
+  });
   new THREE.GLTFLoader().load("/models/lp_haus.glb",function(g){
     var hs=fitModel(g.scene,7.5),fh=fields[5*FIELDS_PER+8];
     var hx=fh.x+4,hz=fh.z-9;
