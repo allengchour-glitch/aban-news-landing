@@ -195,9 +195,9 @@ IBAN: CH00 0000 0000 0000 0000 0 · Bank: Beispielbank</textarea></div>
 
   function addRow(desc,qty,price){
     var tr=document.createElement("tr");
-    tr.innerHTML='<td><input class="d" value="'+esc(desc||"")+'"></td>'+
-      '<td class="num"><input class="q" inputmode="decimal" value="'+(qty||"1")+'"></td>'+
-      '<td class="num"><input class="p" inputmode="decimal" value="'+(price||"0")+'"></td>'+
+    tr.innerHTML='<td><input class="d" aria-label="Leistung / Beschreibung" value="'+esc(desc||"")+'"></td>'+
+      '<td class="num"><input class="q" inputmode="decimal" aria-label="Menge" value="'+(qty||"1")+'"></td>'+
+      '<td class="num"><input class="p" inputmode="decimal" aria-label="Einzelpreis" value="'+(price||"0")+'"></td>'+
       '<td class="r sum">—</td>'+
       '<td><button class="delrow" title="Zeile löschen">×</button></td>';
     rows.appendChild(tr);
@@ -263,7 +263,7 @@ IBAN: CH00 0000 0000 0000 0000 0 · Bank: Beispielbank</textarea></div>
       $("savemsg").textContent="✓ Absenderdaten lokal gemerkt";}catch(e){$("savemsg").textContent="Speichern nicht möglich";}
   });
   $("clear").addEventListener("click",function(){try{localStorage.removeItem(KEY);$("savemsg").textContent="Merken aufgehoben";}catch(e){}});
-  try{var saved=JSON.parse(localStorage.getItem(KEY)||"null");if(saved){["fName","fAddr","fTax","fContact","pay","cur","vat"].forEach(function(k){if(saved[k]!=null)$(k).value=saved[k];});$("savemsg").textContent="Absenderdaten aus „Merken" geladen";}}catch(e){}
+  try{var saved=JSON.parse(localStorage.getItem(KEY)||"null");if(saved){["fName","fAddr","fTax","fContact","pay","cur","vat"].forEach(function(k){if(saved[k]!=null)$(k).value=saved[k];});$("savemsg").textContent="Absenderdaten aus „Merken“ geladen";}}catch(e){}
 
   // Init
   $("rDate").value=new Date().toISOString().slice(0,10);
