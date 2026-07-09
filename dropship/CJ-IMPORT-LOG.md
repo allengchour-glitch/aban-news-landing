@@ -2160,3 +2160,17 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   reversibel, Ledger); (3) GEHIRN 15b. Kleinkram-Strategie gilt NUR noch für CJ.
 - GPSR-ZIP (EU-Produktsicherheit, Hersteller-Infos) gesichert für spätere Produktseiten-Pflicht.
 - PDFs waren Prestashop-Anleitung (irrelevant) + Produkthandbuch 360 Sweep.
+
+## Session 2026-07-10f — «Warum 0 Live-Besucher?» → TikTok-Ablehnung gefunden & gefixt
+- **Root Cause:** Neue ATC-Adgroup wurde nach Erst-Genehmigung in der Zweitprüfung ABGELEHNT
+  (AUDIT_DENY): Landingpage /collections/viral-hits enthielt Markenware (MK-Taschen, Marken-Parfums,
+  Fussball-Trikots) → Counterfeit-Verdacht. Alte Adgroup war pausiert → 0 Ads = 0 Besucher.
+- **Fix:** (1) Alte GENEHMIGTE Adgroup 1869987760755842 sofort wieder ENABLE (Traffic zurück);
+  (2) neue Anzeige auf /collections/sommer umgestellt (historisch genehmigte, markenfreie Landing)
+  → Re-Review läuft. Sobald genehmigt: alte wieder pausieren (Budget 20/Tag).
+- **Merker:** TikTok-Ads-Landingpages NIE auf Kollektionen mit Marken-/Trikot-Ware zeigen lassen.
+  Echtheits-Nachweis möglich: Ads Manager → Tools → Account Setup → Additional documents
+  (BigBuy-Rechnungen hochladen) — User-Klick, falls wir Markenware bewerben wollen.
+- **User-CSV-Prüfung (Kategorie-Exporte):** generalproducts 2403 «Küche Gourmet» = 21'095 Zeilen,
+  davon 99% STOCK=0; die 172 lieferbaren scheitern an 28-EUR-Versand → NICHT importieren.
+  Kategorie-Bäume + categorymap als Referenz abgelegt. Wertvoll war die VERSANDKOSTEN-CSV (15b).
