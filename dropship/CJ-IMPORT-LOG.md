@@ -2051,3 +2051,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (Machine Crab→Krabben-Roboter usw.), Liegestuhl-Familie = echte Varianten (verschiedene Bilder, kein
   Draft). Struktur-Prüfer fand grosse Konsolidierungs-Kandidaten (Doppel-Bäume Schuhe/Gadgets/Uhren/
   Marken-Duplikate, Sale→12k-Liste) → eigene Aufräum-Runde geplant.
+## 2026-07-09 (Nacht) · QA-Runde 2 (4 Agenten: SEO, Kaufprozess, Kanäle, Marktpreise) + Fixes
+- 📡 Kanäle: gesund (Stichprobe 150: ~100% überall; Erotik/Smoke 0 Leaks). Fix: ALLE 34
+  nicht-bewerben-Produkte aus TikTok/FB/Google/Pinterest entfernt (Reizwäsche-Altbestand
+  Obsessive/Demoniq, Nachtsichtgeräte, 3.54★-Kleid, Gleitgel — bleiben im Shop kaufbar).
+- 🔍 SEO: technisch solide (JSON-LD Product/Offer ✓, Sitemap ✓, canonicals ✓, kein hreflang-Chaos).
+  Fixes: og:image für Startseite (Logo via CDN + Liquid-Tag), Preis-Tool-Ausreisser. Offen (klein):
+  Home-Meta-Description 211→<160 Zeichen (nur Admin-UI → PC-Claude/User), Importer-SEO-Templates.
+- 🛒 Kaufprozess: Rechtsseiten komplett + nicht anonym ✓, Trust-Elemente ✓. Fixes: WM-Trikot hat
+  jetzt Grössentabelle (cm). Offen: Versandschwelle 50 vs. 65 klären (Admin-UI); nach HR-Publikation
+  Impressum um Firmierung+UID ergänzen.
+- 💰 Marktpreise: Mittelfeld fair. Gesenkt: Gewürzständer 57.90→39.90, Zughundeseil 39.90→27.90.
+  MK-Taschen unter Boutique-Preis = BigBuy-Originalware (Outlet-Niveau), kein Fake-Verdacht, beobachten.
