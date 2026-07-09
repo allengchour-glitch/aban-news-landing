@@ -1999,3 +1999,9 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   belebt sie nicht mehr). BigBuy-Tagesbudget umgeleitet auf bigbuy_import.mjs NACHFRAGE-first
   (akkuventi, kuehlung, kuehlmatte, wasserstrand, fussball, trikot, grill, picknick, solarlicht, pool,
   camping … PER=4, EK≤60€, LIVE). Danach Viability-Guard drüber (Stunden-Wächter meldet).
+## 2026-07-09 (früh) · Container-Neustart überstanden, Füller-Erkenntnisse
+- ⚠️ CJ-Kategorie-API + countryCode=DE = überall «total 0» (alle 6 Gruppen leer) → EU-Lager-Ware
+  findet man NUR über Keyword-Suche (product/list mit productNameEn), nicht über categoryId+DE.
+  Nacht-Füller Runde 2 läuft GLOBAL (ohne Warehouse-Filter).
+- Container starb über Nacht → revive.sh (/tmp) + beide Crons neu erstellt (Wächter :23, Report 08:43,
+  neu mit Zefix-UID-Check). BigBuy-Welle fortgesetzt (Ledger), frisst sich weiter durch ER007-Sommerware.
