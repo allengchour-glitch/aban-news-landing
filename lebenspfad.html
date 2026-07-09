@@ -88,10 +88,21 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   #card h3{font-size:1.05rem}
 }
 #lpvig{position:fixed;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at 50% 42%,transparent 60%,rgba(40,70,110,.16) 100%)}
+#chatBox{position:fixed;left:10px;bottom:96px;z-index:40;width:min(290px,72vw);background:rgba(255,253,246,.96);border:2px solid #ffcf3a;border-radius:14px;display:none;flex-direction:column;box-shadow:0 10px 30px rgba(60,40,10,.3)}
+#chatMsgs{max-height:180px;overflow-y:auto;padding:8px 10px;font-size:.82rem;line-height:1.45}
+#chatMsgs b{color:#c05a2a}
+#chatRow{display:flex;border-top:1px solid #eee}
+#chatIn{flex:1;border:0;padding:10px;border-radius:0 0 0 12px;font-size:16px;background:transparent}
+#chatSend{border:0;background:#ffd166;padding:0 14px;border-radius:0 0 12px 0;cursor:pointer;font-weight:800}
+#chatToggle{position:fixed;left:10px;bottom:48px;z-index:40;display:none;border:2px solid #ffcf3a;background:rgba(255,253,246,.94);border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer}
+#chatToggle.blink{animation:chatBlink 1s ease-in-out infinite}
+@keyframes chatBlink{50%{box-shadow:0 0 0 6px rgba(255,209,102,.45)}}
 </style>
 </head>
 <body>
 <div id="lpvig"></div>
+<button id="chatToggle" title="Spieler-Chat">💬</button>
+<div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
 <div id="wrap"></div>
 <div id="hud" class="hide">
   <div id="players"></div>
@@ -143,6 +154,21 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e8b0b0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700">
     <input type="checkbox" id="adultChk" style="width:18px;height:18px;accent-color:#e84a3a"> 🔞 Echtes-Leben-Modus (ab 18): frecher Humor, echte Risiken — <b>der Tod spielt mit</b></label>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
+  <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
+    <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
+    <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
+      <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:120px;font-size:16px">
+      <button class="btn ghost" id="netHostBtn" style="margin-top:0">Raum erstellen</button>
+      <input id="netCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:76px;text-transform:uppercase;font-size:16px">
+      <button class="btn ghost" id="netJoinBtn" style="margin-top:0">Beitreten</button>
+    </div>
+    <div id="netLobby" style="display:none;margin-top:8px">
+      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b></div>
+      <div id="netPlayers" style="margin:6px 0;font-weight:700"></div>
+      <button class="btn" id="netStartBtn" style="display:none">🌐 Online-Spiel starten ▶</button>
+      <div id="netHint" style="font-size:.8rem;color:#7a8a9a">Warte auf Mitspieler … Code weitergeben!</div>
+    </div>
+  </div>
   <button class="btn ghost hide" id="contBtn">Weiterspielen (Spielstand) ▶</button>
   <div class="foot">Ein Spiel dauert je nach Runde 20–60 Minuten · Spielstand wird gespeichert · <a href="/spiele.html">aban Arcade</a></div>
 </div>
@@ -161,6 +187,7 @@ window.LP_EVENTS=[[{"t":"Der neue Spielplatz","x":"Ein brandneuer Spielplatz wir
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
+<script src="/js/vendor/peerjs.min.js"></script>
 <script>
 (function(){
 "use strict";
@@ -831,7 +858,7 @@ function freshState(np,adult){
   var ps=[];
   for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},hist:[{g:20,h:10,w:5,f:5}]});
   return {v:3,adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
-function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
+function saveGame(){if(!G||NET.on)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.v===3&&s.players&&s.players.length)?s:null;}catch(e){return null;}}
 var pawns=[],pawnBlobs=[];
 function updPawnBlobs(){for(var i=0;i<pawns.length;i++){var b2=pawnBlobs[i];if(!b2)continue;
@@ -893,9 +920,14 @@ var DICE_FACES=["⚀","⚁","⚂","⚃","⚄","⚅"];
 var moveQ=0,hopT=0,hopFrom=null,camT={x:0,z:0};
 function roll(){
   if(!running||G.phase!=="idle")return;
+  if(NET.on){if(G.turn!==NET.my)return;netSend({t:"roll"});NET.q.push({t:"roll"});return;}
+  rollCore();
+}
+function rollCore(){
+  if(!running||G.phase!=="idle")return;
   var p=G.players[G.turn];if(p.done){nextTurn();return;}
   G.phase="rolling";rollBtn.disabled=true;emote(G.turn,"wurf");
-  var n=1+((Math.random()*6)|0),ticks=0;
+  var n=1+((srand()*6)|0),ticks=0;
   diceEl.style.opacity=1;beep(500,.06,"triangle",.05);
   var iv=setInterval(function(){
     diceEl.textContent=DICE_FACES[(Math.random()*6)|0];ticks++;beep(300+Math.random()*500,.03,"square",.02);
@@ -961,7 +993,7 @@ function nextTurn(){
   if(allDone){showEnd();return;}
   var tries=0;
   do{G.turn=(G.turn+1)%G.players.length;if(G.turn===0)G.round++;tries++;}while(G.players[G.turn].done&&tries<8);
-  G.phase="idle";rollBtn.disabled=false;
+  G.phase="idle";rollBtn.disabled=NET.on&&G.turn!==NET.my;
   updPlayers();updChapter();saveGame();
   if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
   if(!G.players[G.turn].done)emote(G.turn,"wink");
@@ -1289,7 +1321,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);updNet();
     if(window._lmSwingPivot)window._lmSwingPivot.rotation.z=Math.sin(G.t*1.7)*0.55; // Schaukel schwingt
     if(window._lmClockM){window._lmClockM.rotation.z=-G.t*0.5;window._lmClockH.rotation.z=-G.t*0.5/12;} // Uhr läuft
     if(window._lmBeam)window._lmBeam.rotation.y=G.t*0.9; // Leuchtturm-Strahl rotiert
@@ -1322,6 +1354,98 @@ function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML=""
   for(var i=0;i<selN;i++){var inp=document.createElement("input");inp.type="text";inp.maxLength=12;inp.placeholder=PNAMES[i];inp.id="pn"+i;
     inp.style.cssText="width:110px;padding:9px 10px;border-radius:10px;border:3px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:.85rem";
     nr.appendChild(inp);}}
+
+// ===================== 🌐 Online-Koop (PeerJS, deterministischer Lockstep) =====================
+var NET={on:false,host:false,peer:null,conns:[],my:0,code:"",names:[],seed:1,q:[]};
+function srand(){ // im Online-Modus deterministisch (gleiche Aktionsfolge -> gleicher Zufall überall)
+  if(!NET.on)return Math.random();
+  NET.seed=(NET.seed*1664525+1013904223)>>>0;return NET.seed/4294967296;}
+function myTurn(){return !NET.on||(G&&G.turn===NET.my);}
+function netSend(m){var st=JSON.stringify(m);NET.conns.forEach(function(c){try{c.send(st);}catch(e){}});}
+function netOnMsg(m,from){
+  if(NET.host&&from){var st=JSON.stringify(m);NET.conns.forEach(function(c){if(c!==from)try{c.send(st);}catch(e){}});}
+  netApply(m);}
+function netApply(m){
+  if(m.t==="chat"){chatAdd(m.n,m.x);return;}
+  if(m.t==="init"){beginNet(m);return;}
+  if(m.t==="drop"){if(G&&G.players[m.i]){G.players[m.i].done=true;announce("📴 "+G.players[m.i].name+" hat das Spiel verlassen","#ff8a8a");if(G.turn===m.i)nextTurn();}return;}
+  NET.q.push(m);}
+function updNet(){
+  if(!NET.q.length||!G||!running)return;
+  var m=NET.q[0];
+  if(m.t==="roll"&&G.phase==="idle"){NET.q.shift();rollCore();}
+  else if(m.t==="pick"&&window._cardOpts){NET.q.shift();cardPick(m.k);}
+}
+function chatAdd(n,x){var box=document.getElementById("chatMsgs");if(!box)return;
+  var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
+  box.appendChild(d);box.scrollTop=box.scrollHeight;
+  var cb=document.getElementById("chatBox");if(cb&&cb.style.display!=="flex")document.getElementById("chatToggle").classList.add("blink");}
+function netRoomId(code){return "aban-lp-"+code.toLowerCase();}
+function netLobbyShow(){document.getElementById("netSetup").style.display="none";
+  document.getElementById("netLobby").style.display="block";
+  document.getElementById("netCodeShow").textContent=NET.code;}
+function netPlayersUpd(){document.getElementById("netPlayers").textContent="Spieler: "+NET.names.join(" · ");
+  if(NET.host)document.getElementById("netStartBtn").style.display=NET.names.length>=2?"inline-block":"none";
+  document.getElementById("netHint").textContent=NET.names.length>=2?(NET.host?"Bereit — du kannst starten!":"Warte, bis der Gastgeber startet …"):"Warte auf Mitspieler … Code weitergeben!";}
+function netMyName(){var el=document.getElementById("netName");var n=(el&&el.value.trim())||"Spieler";return n.slice(0,12);}
+document.getElementById("netHostBtn").onclick=function(){
+  if(typeof Peer==="undefined"){alert("Online-Modul nicht geladen");return;}
+  NET.host=true;NET.code="";var A="ABCDEFGHJKLMNPQRSTUVWXYZ";for(var i=0;i<4;i++)NET.code+=A[(Math.random()*A.length)|0];
+  NET.names=[netMyName()];NET.my=0;
+  NET.peer=new Peer(netRoomId(NET.code));
+  NET.peer.on("open",function(){netLobbyShow();netPlayersUpd();});
+  NET.peer.on("error",function(e){alert("Online-Fehler: "+e.type);});
+  NET.peer.on("connection",function(c){
+    if(NET.names.length>=4||(G&&running)){c.close();return;}
+    NET.conns.push(c);
+    c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}
+      if(m.t==="hallo"){var nm=String(m.n||"Spieler").slice(0,12);NET.names.push(nm);c._idx=NET.names.length-1;netPlayersUpd();
+        chatAdd("System",nm+" ist beigetreten");}
+      else netOnMsg(m,c);});
+    c.on("close",function(){if(c._idx!=null){var msg={t:"drop",i:c._idx};netSend(msg);netApply(msg);}});
+  });};
+document.getElementById("netJoinBtn").onclick=function(){
+  if(typeof Peer==="undefined"){alert("Online-Modul nicht geladen");return;}
+  var code=(document.getElementById("netCode").value||"").trim().toUpperCase();
+  if(code.length!==4){alert("4-stelligen Raum-Code eingeben");return;}
+  NET.host=false;NET.code=code;
+  NET.peer=new Peer();
+  NET.peer.on("error",function(e){alert("Verbindung fehlgeschlagen: "+e.type);});
+  NET.peer.on("open",function(){
+    var c=NET.peer.connect(netRoomId(code),{reliable:true});
+    NET.conns=[c];
+    c.on("open",function(){netLobbyShow();c.send(JSON.stringify({t:"hallo",n:netMyName()}));
+      document.getElementById("netHint").textContent="Verbunden — warte auf Start durch Gastgeber …";});
+    c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}
+      if(m.t==="lobby"){NET.names=m.names;netPlayersUpd();return;}
+      netOnMsg(m,null);});
+    c.on("close",function(){announce("📴 Verbindung getrennt","#ff8a8a");});
+  });};
+document.getElementById("netStartBtn").onclick=function(){
+  var seed=(Math.random()*4294967296)>>>0;
+  var adult=document.getElementById("adultChk")&&document.getElementById("adultChk").checked;
+  NET.conns.forEach(function(c,ci){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx}));}catch(e){}});
+  beginNet({seed:seed,names:NET.names,adult:!!adult,you:0});};
+function beginNet(init){
+  NET.on=true;NET.seed=init.seed>>>0;NET.my=init.you|0;NET.names=init.names;NET.q=[];
+  var g0=freshState(init.names.length,init.adult);
+  for(var i=0;i<g0.players.length;i++)g0.players[i].name=init.names[i];
+  begin(g0);
+  document.getElementById("chatToggle").style.display="block";
+  chatAdd("System","Online-Spiel gestartet — viel Glück! Du bist "+init.names[NET.my]+".");
+  rollBtn.disabled=!myTurn();
+  announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");}
+// Lobby-Broadcast des Hosts, wenn sich die Spielerliste aendert
+(function(){var _upd=netPlayersUpd;netPlayersUpd=function(){_upd();
+  if(NET.host)netSend({t:"lobby",names:NET.names});};})();
+// Chat-Verkabelung
+(function(){var tg=document.getElementById("chatToggle"),bx=document.getElementById("chatBox");
+  tg.onclick=function(){var on=bx.style.display==="flex";bx.style.display=on?"none":"flex";tg.classList.remove("blink");};
+  function send(){var inp=document.getElementById("chatIn"),tx=inp.value.trim();if(!tx)return;inp.value="";
+    var nm=NET.names[NET.my]||"Ich";chatAdd(nm,tx);netSend({t:"chat",n:nm,x:tx});}
+  document.getElementById("chatSend").onclick=send;
+  document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});})();
+
 function begin(saved){
   G=saved||freshState(selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked);
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
@@ -1420,11 +1544,18 @@ function showCard(kick,title,txt,opts){
   document.getElementById("cTitle").textContent=title;
   document.getElementById("cTxt").innerHTML=txt;
   var op=document.getElementById("cOpts");op.innerHTML="";
-  opts.forEach(function(o){var b=document.createElement("button");
+  window._cardOpts=opts;
+  opts.forEach(function(o,k){var b=document.createElement("button");
     b.innerHTML=o.l+(o.sub?"<small>"+o.sub+"</small>":"");
-    b.onclick=function(){cardEl.classList.remove("on");o.fn();};op.appendChild(b);});
+    if(NET.on&&G&&G.turn!==NET.my)b.style.opacity="0.55";
+    b.onclick=function(){
+      if(NET.on){if(G.turn!==NET.my)return;netSend({t:"pick",k:k});NET.q.push({t:"pick",k:k});return;}
+      cardPick(k);};
+    op.appendChild(b);});
   cardEl.classList.add("on");beep(520,.08,"triangle",.05);
 }
+function cardPick(k){var opts=window._cardOpts;if(!opts||!opts[k])return;
+  window._cardOpts=null;cardEl.classList.remove("on");opts[k].fn();}
 function fxLabel(fx){var parts=[];
   if(fx.geld)parts.push((fx.geld>0?"+":"")+fx.geld+" 💰");
   if(fx.glueck)parts.push((fx.glueck>0?"+":"")+fx.glueck+" ❤️");
@@ -1459,7 +1590,7 @@ function handleField(p,f){
     confetti(fields[p.tile].x,fields[p.tile].z,CHAPTERS[ch].accent);jingle();
     if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
     if(ch===2&&!p.job){ // Berufswahl! (Herzstück des Originals)
-      var picks=[];while(picks.length<3){var j=JOBS[(Math.random()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
+      var picks=[];while(picks.length<3){var j=JOBS[(srand()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
       showCard("Meilenstein · Berufswahl","💼 Was willst du werden?","Drei Türen stehen offen. Hinter jeder ein anderes Leben — Gehalt ist nicht alles.",
         picks.map(function(j){return {l:j.i+" "+j.n,sub:j.d,fn:function(){p.job={i:j.i,n:j.n,mult:j.mult};applyFx(p,j.fx);
           p.bio.push("wurde "+j.n+" — und bereute es nie");updPlayers();endTurnSoon();}};}));
@@ -1472,7 +1603,7 @@ function handleField(p,f){
       return;}
     if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;
       showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
-        [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(Math.random()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");storkScene(G.turn,1);updPlayers();endTurnSoon();}},
+        [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(srand()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");storkScene(G.turn,1);updPlayers();endTurnSoon();}},
          {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");storkScene(G.turn,2);updPlayers();endTurnSoon();}},
          {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");syncFam(G.turn);beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();endTurnSoon();}}]);
       return;}
@@ -1489,7 +1620,7 @@ function handleField(p,f){
   if(!p.used)p.used={};if(!p.used[ch])p.used[ch]=[];
   var avail=[];for(var i=0;i<pool.length;i++)if(p.used[ch].indexOf(i)<0)avail.push(i);
   if(!avail.length){p.glueck+=1;announce("+1 ❤️ (ein stiller Tag)","#ff9ad9");endTurnSoon();return;}
-  var ei=avail[(Math.random()*avail.length)|0],ev=pool[ei];p.used[ch].push(ei);
+  var ei=avail[(srand()*avail.length)|0],ev=pool[ei];p.used[ch].push(ei);
   var domFx={geld:0,glueck:0,wissen:0,freunde:0};
   ev.o.forEach(function(o){for(var k in domFx)domFx[k]+=Math.abs(o.fx[k]||0);});
   var domK=Object.keys(domFx).sort(function(a,b){return domFx[b]-domFx[a];})[0];
@@ -1498,7 +1629,7 @@ function handleField(p,f){
   showCard("Ereignis · "+CHAPTERS[ch].n,domEmo+" "+ev.t,ev.x,ev.o.map(function(o){
     var risky=(o.r||0)>0;
     return {l:(risky?"⚠️ ":"")+o.l,sub:fxLabel(o.fx)+(risky?" · ⚰️ Risiko "+Math.round(o.r*100)+"%":""),fn:function(){
-      if(risky&&Math.random()<o.r){playerDeath(p,o.bio||ev.t);return;}
+      if(risky&&srand()<o.r){playerDeath(p,o.bio||ev.t);return;}
       applyFx(p,o.fx);if(o.bio)p.bio.push(o.bio);
       updPlayers();endTurnSoon();}};}));
 }
