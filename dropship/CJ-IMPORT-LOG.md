@@ -2090,3 +2090,21 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Plan:** ATC-Events sammeln (Ziel ~30–50), dann Adgroup auf SHOPPING/Purchase hochstufen.
   Wächter: Report + Review-Status im Morgenreport prüfen.
 - **Engines parallel:** Parfum-Repricing LIVE bei ~650 gesenkt/726 geprüft (von 1'036), BigBuy-Kategorie-Walker läuft.
+
+## Session 2026-07-10 — Autonome Analyse-Runde («analysiere alles und entscheide mache selber»)
+- **Titel-QA katalogweit (frischer Bulk-Export, 24'421 aktiv):**
+  - 16× «· Modell 2 · Modell 2»-Doppel-Suffix kollabiert (Stale-Export-Bug-Nachwehen, POD+Mode).
+  - 2 identische Aktiv-Titel-Duplikate → je 1 auf DRAFT mit Tag `duplikat-auto-draft`
+    (Herrenparfüm Burberry EDT 100 ml, Damenparfüm Prada EDP).
+  - 7 Lieferanten-/Herstellercodes aus Beauty-Titeln gestrippt (BUR16147B, PRA15482E, RVDR5305E …)
+    mit **Kollisions-Wache** (2 Skips, sonst wären neue Titel-Duplikate entstanden!).
+  - **Bewusst NICHT angefasst:** Modellnummern bei Uhren/Brillen/Gaming (CK23501S, GW0265G8 …) =
+    echte Hersteller-Referenzen mit Suchwert, kein Leak.
+- **Abbrecher-Analyse:** Burberry-Checkout 06.07. zeigte alten Leak-Titel «Ref. BB-24» (Snapshot,
+  Katalog längst sauber). Sirène-Abendkleid 2× abgebrochen am 04.07 (2×49.90).
+- **TikTok:** alte Adgroup stoppte bei 18.63 CHF am 09.07. (CTR 0.21, 0 Käufe); neue ATC-Adgroup
+  lief um 05:00 UTC an (0 Spend bei Check 05:26 = normal).
+- **Parfum-Repricing:** ~800 von 885 geprüften gesenkt (Ziel 1'036), läuft.
+- **⚠️ Meta-User-Token ABGELAUFEN (07.07. 13:00 PDT)** → IG/FB-Autopilot blockiert, 3 ready-Reels
+  warten. USER-KLICK: neuen Token geben (Graph Explorer / Business-Einstellungen).
+- Shopify-MCP-Konnektor braucht Re-Auth (User) — Admin-API via Client-Credentials läuft weiter.
