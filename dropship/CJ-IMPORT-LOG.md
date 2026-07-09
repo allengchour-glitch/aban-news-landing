@@ -2068,3 +2068,7 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Küchen-Splitter→sub-kueche u.a.); 7 korrekt übersprungen (in Menü/Homepage referenziert).
   9 Alt-Redirect-Leichen auf Ziel-Pfaden entfernt + Redirects nachgelegt. Menü: Marken-Welt→7.5k
   Markenartikel, Lifestyle→trends-gadgets, Auto-Dublette raus, 3 Emojis ergänzt.
+- 🗂️ Welten-Runde (User): 8 neue/verdrahtete Unterkategorien — Schwimmen&Badi, Fussball&Fanshop,
+  Bohren&Sägen, Messwerkzeug, Schleifen&Trennen, Tastaturen&Mäuse, Netzwerk&WLAN, Kabel&Adapter
+  (Kabellos-Falle vermieden: Compound-Terme). Menü: NEUER Top-Level «🏃 Sport & Outdoor» (8 Kinder),
+  «🔧 Werkzeug-Welt» Unterbaum, PC-Komponenten +Tastatur/Netzwerk, Kabel in Handy-Welt + Technik.
