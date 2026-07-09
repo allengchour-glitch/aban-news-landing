@@ -1,0 +1,302 @@
+
+## 2026-07-09 22:06 — Marken-Preise marktgerecht (907):
+- 54.9 → 32.9 | Jacomo Paris «For Her» Eau de Parfum · 100 ml
+- 84.9 → 58.9 | Le Couvent «Remarquable» Eau de Parfum · Unisex
+- 64.9 → 43.9 | Kenzo «Amour» Eau de Parfum · 50 ml
+- 64.9 → 34.9 | Elie Saab «Elixir» Eau de Parfum · 30 ml
+- 54.9 → 29.9 | Swiss Arabian «Rose» Eau de Parfum · 50 ml
+- 39.9 → 20.9 | Police «To Be True Me» Eau de Parfum · 125 ml
+- 120.9 → 68.9 | Lancôme Eau de Parfum
+- 119.9 → 68.9 | Elie Saab Eau de Parfum
+- 115.9 → 65.9 | Calvin Klein Eau de Parfum
+- 113.9 → 64.9 | Michael Kors Eau de Parfum
+- 120.9 → 69.9 | Dolce & Gabbana Eau de Parfum
+- 111.9 → 63.9 | Yves Saint Laurent Eau de Parfum
+- 117.9 → 67.9 | Kenzo Eau de Parfum
+- 115.9 → 65.9 | Lancôme Eau de Parfum «Idôle»
+- 19.9 → 9.9 | Pierre Cardin Eau de Parfum
+- 19.9 → 9.9 | Police Eau de Parfum «Wanted»
+- 26.9 → 15.9 | Hugo Boss Eau de Parfum «Bottled»
+- 40.9 → 22.9 | Kenzo Eau de Parfum «Flower»
+- 46.9 → 26.9 | Elie Saab Eau de Parfum «Girl of Now»
+- 67.9 → 38.9 | Dolce & Gabbana Eau de Parfum «Light Blue»
+- 50.9 → 28.9 | Kenzo Eau de Parfum «Jeu d'Amour»
+- 50.9 → 28.9 | Michael Kors Eau de Parfum «Wonderlust»
+- 72.9 → 41.9 | Dolce & Gabbana Eau de Parfum «The One»
+- 52.9 → 29.9 | Kenzo Eau de Parfum «L'Eau»
+- 28.9 → 14.9 | Roberto Torretta Eau de Parfum für Damen
+- 99.9 → 50.9 | Elie Saab Le Parfum Royal Eau de Parfum (Grösse 2)
+- 68.9 → 34.9 | Elie Saab Le Parfum Eau de Parfum
+- 89.9 → 44.9 | Elie Saab Le Parfum in White Eau de Parfum
+- 59.9 → 30.9 | Elie Saab Le Parfum Royal Eau de Parfum
+- 105.9 → 53.9 | Hugo Boss The Scent For Her Le Parfum 50 ml
+- 125.9 → 63.9 | Histoires de Parfums This Is Not A Blue Bottle Eau de Parfum
+- 106.9 → 54.9 | Elie Saab Le Parfum Royal Eau de Parfum 90 ml
+- 125.9 → 63.9 | Histoires de Parfums 1826 Eau de Parfum 60 ml
+- 123.9 → 62.9 | Histoires de Parfums 7753 Unexpected Eau de Parfum
+- 122.9 → 61.9 | Histoires de Parfums 1472 La Divina Commedia Eau de Parfum
+- 138.9 → 70.9 | Histoires de Parfums This Is Not A Blue Bottle Eau de Parfum
+- 57.9 → 29.9 | Lolita Lempicka Mon Premier Parfum EDP – 2er-Set
+- 58.9 → 29.9 | André Courrèges Colognes Imaginaires Eau de Parfum
+- 51.9 → 26.9 | André Courrèges Colognes Imaginaires Eau de Parfum (Variante
+- 134.9 → 67.9 | Lalique Sweet Amber Eau de Parfum
+- 62.9 → 31.9 | Lacoste Match Point Eau de Parfum 50 ml
+- 112.9 → 56.9 | Ralph Lauren Polo Cologne Intense Eau de Parfum 118 ml
+- 24.9 → 12.9 | Montana Parfum de Peau Eau de Toilette 30 ml
+- 122.9 → 61.9 | Histoires de Parfums 1804 Eau de Parfum 60 ml
+- 123.9 → 62.9 | Histoires de Parfums Noir Patchouli Eau de Parfum
+- 65.9 → 32.9 | Issey Miyake L'Eau d'Issey Eau de Parfum
+- 107.9 → 54.9 | Billie Eilish No 2 Eau de Parfum – 2er-Set
+- 62.9 → 31.9 | Elie Saab Le Parfum Royal Eau de Parfum 30 ml
+- 111.9 → 56.9 | Lalique Electric Purple Eau de Parfum
+- 122.9 → 61.9 | Guerlain L'Homme Idéal Eau de Parfum
+- 142.9 → 71.9 | Giorgio Armani My Way Eau de Parfum
+- 53.9 → 27.9 | Azha Fuji Eau de Parfum 100 ml
+- 127.9 → 64.9 | Tous LoveMe The Onyx Eau de Parfum – 2er-Set
+- 119.9 → 60.9 | Vilhelm Parfumerie 125th & Bloom Eau de Parfum 20 ml
+- 32.9 → 16.9 | Azha Attar Al Khayal Parfümöl 15 ml
+- 134.9 → 67.9 | Chloé Eau de Parfum Intense – 2er-Set
+- 102.9 → 51.9 | Lalique Pink Paradise Eau de Parfum
+- 95.9 → 48.9 | Juliette Has A Gun Not A Perfume Eau de Parfum
+- 74.9 → 37.9 | Fragrance World Alpha Eau de Parfum 100 ml
+- 128.9 → 64.9 | Azzaro Wanted Eau de Parfum – 2er-Set
+- 26.9 → 13.9 | Fragrance World Cocktail Intense Eau de Parfum 100 ml
+- 53.9 → 27.9 | Fragrance World King Eau de Parfum 80 ml
+- 132.9 → 66.9 | Histoires de Parfums Eau de Parfum
+- 120.9 → 60.9 | Elie Saab Le Parfum Bridal Eau de Parfum
+- 23.9 → 11.9 | Damenparfüm Montana Parfum De Femme EDT 30 ml
+- 103.9 → 52.9 | Damenparfüm Elie Saab LE PARFUM 50 ml
+- 85.9 → 43.9 | Unisex-Parfüm Elie Saab LE PARFUM EDP 50 ml
+- 29.9 → 14.9 | Unisex-Parfüm 4711 47111 REMIX COLOGNE 100 ml
+- 134.9 → 68.9 | Damenparfüm Elie Saab LE PARFUM LUMIERE EDP 90 ml
+- 89.9 → 45.9 | Damenparfüm Lolita Lempicka Le Parfum EDP 50 ml
+- 65.9 → 33.9 | Unisex-Parfüm Elie Saab LE PARFUM 30 ml
+- 99.9 → 50.9 | Unisex-Parfüm Elie Saab LE PARFUM 50 ml
+- 144.9 → 72.9 | Herrenparfüm Paco Rabanne PHANTOM IN RED PARFUM ELIXIR EDP 1
+- 57.9 → 27.9 | Damenparfüm Eternity Calvin Klein EDP
+- 46.9 → 22.9 | Herrenparfüm Davidoff EDT
+- 54.9 → 26.9 | Damenparfüm Moschino EDT
+- 37.9 → 17.9 | Damenparfüm Calvin Klein EDT
+- 89.9 → 43.9 | Damenparfüm Gucci Bamboo Gucci EDP
+- 37.9 → 18.9 | Herrenparfüm Tommy Hilfiger EDT
+- 46.9 → 22.9 | Herrenparfüm Montblanc EDT
+- 68.9 → 33.9 | Damenparfüm Deep Red Hugo Boss EDP
+- 99.9 → 48.9 | Damenparfüm Jean Paul Gaultier CLASSIQUE EDT 30 ml
+- 74.9 → 36.9 | Herrenparfüm Hugo Boss EDT
+- 49.9 → 23.9 | Herrenparfüm Burberry BUR16147B EDT 30 ml
+- 113.9 → 64.9 | Damenparfüm Givenchy EDT
+- 115.9 → 66.9 | Herrenparfüm Versace EDP 100 ml
+- 66.9 → 32.9 | Unisex-Parfüm Calvin Klein EDT
+- 149.9 → 85.9 | Damenparfüm My Burberry Black Burberry EDP My Burberry Black
+- 117.9 → 67.9 | Damenparfüm Paco Rabanne EDP
+- 102.9 → 49.9 | Herrenparfüm Versace EDT
+- 38.9 → 18.9 | Herrenparfüm Calvin Klein EDT
+- 76.9 → 36.9 | Damenparfüm Moschino 7272_9214 EDP EDT 50 ml
+- 49.9 → 23.9 | Herrenparfüm Calvin Klein EDT 100 ml
+- 58.9 → 28.9 | Damenparfüm Calvin Klein EDP 100 ml
+- 164.9 → 94.9 | Damenparfüm Jean Paul Gaultier EDP 80 ml
+- 52.9 → 25.9 | Damenparfüm Burberry EDP 30 ml
+- 81.9 → 39.9 | Damenparfüm Kenzo AQUA KENZO EDT 50 ml
+- 163.9 → 93.9 | Herrenparfüm Armani Code EDT (125 ml)
+- 138.9 → 79.9 | Damenparfüm Gucci Guilty Intense Pour Femme EDP 50 ml
+- 155.9 → 89.9 | Damenparfüm Carolina Herrera Very Good Girl Glam EDP 50 ml
+- 88.9 → 50.9 | Damenparfüm Paco Rabanne Fame EDP 30 ml
+- 93.9 → 45.9 | Herrenparfüm Kenzo Homme EDT 60 ml
+- 100.9 → 48.9 | Damenparfüm Paco Rabanne Olympéa Blossom EDP 50 ml
+- 46.9 → 22.9 | Damenparfüm Azzaro EDT Twin For Women (80 ml)
+- 42.9 → 20.9 | Herrenparfüm Guess EDT 100 ml Guess 1981 Indigo For Men
+- 93.9 → 53.9 | Herrenparfüm Paco Rabanne EDT Black Xs 100 ml
+- 54.9 → 26.9 | Damenparfüm Burberry Weekend for Women EDP 30 ml
+- 161.9 → 92.9 | Damenparfüm Paco Rabanne LADY MILLION EDP 80 ml Lady Million
+- 138.9 → 79.9 | Damenparfüm Gucci BLOOM EDT 100 ml
+- 67.9 → 32.9 | Damenparfüm Nina Ricci EDT Nina Rose Garden 50 ml
+- 148.9 → 84.9 | Damenparfüm Carolina Herrera GOOD GIRL EDP 50 ml
+- 146.9 → 84.9 | Damenparfüm Gucci Bamboo Eau de Toilette EDT 75 ml
+- 89.9 → 51.9 | Damenparfüm Nina Ricci EDT Nina Fleur 80 ml
+- 109.9 → 62.9 | Damenparfüm Bvlgari Aqva Divina EDT 40 ml
+- 151.9 → 86.9 | Damenparfüm Givenchy L'Interdit Eau de Parfum Intense EDP 80
+- 150.9 → 86.9 | Damenparfüm Givenchy L'INTERDIT EDP 80 ml L'interdit Rouge
+- 98.9 → 47.9 | Herrenparfüm Montblanc EXPLORER EDP 100 ml
+- 125.9 → 71.9 | Damenparfüm Givenchy ORGANZA EDP 100 ml
+- 103.9 → 59.9 | Damenparfüm Carolina Herrera Very Good Girl EDP 30 ml
+- 64.9 → 31.9 | Damenparfüm Lacoste L.12.12 Rose EDP 50 ml
+- 147.9 → 84.9 | Herrenparfüm Carolina Herrera EDP 212 VIP Black I Love NY 10
+- 124.9 → 71.9 | Damenparfüm Kenzo FLOWER BY KENZO EDP 100 ml
+- 46.9 → 22.9 | Damenparfüm Nina Ricci Nina Rose EDT 30 ml
+- 119.9 → 68.9 | Damenparfüm Kenzo JUNGLE EDP 100 ml
+- 170.9 → 97.9 | Damenparfüm Burberry GODDESS EDP 100 ml
+- 69.9 → 33.9 | Damenparfüm Calvin Klein Eternity for Women EDP 50 ml
+- 151.9 → 86.9 | Herrenparfüm Armani Stronger With You Intensely EDP
+- 159.9 → 91.9 | Herrenparfüm Paco Rabanne Invictus EDT 50 ml x 2
+- 56.9 → 27.9 | Damenparfüm Hugo Boss Deep Red EDP 50 ml
+- 100.9 → 57.9 | Herrenparfüm Armani Stronger With You EDT Stronger With You
+- 134.9 → 77.9 | Damenparfüm Lancôme EDP 50 ml
+- 145.9 → 83.9 | Damenparfüm Yves Saint Laurent Rive Gauche EDT 100 ml
+- 102.9 → 49.9 | Herrenparfüm Givenchy Pour Homme Blue Label EDT 100 ml
+- 173.9 → 99.9 | Herrenparfüm Carolina Herrera 212 Men Heroes EDT 150 ml
+- 117.9 → 67.9 | Herrenparfüm Azzaro Wanted Homme EDT 100 ml (1 Stück)
+- 85.9 → 41.9 | Herrenparfüm Lacoste Essential EDT 125 ml
+- 120.9 → 69.9 | Herrenparfüm Bvlgari Rain Essence EDP 60 ml
+- 42.9 → 20.9 | Herrenparfüm Azzaro Sport EDT 100 ml
+- 106.9 → 61.9 | Damenparfüm Nina Ricci Nina Collector Edition EDT 80 ml
+- 135.9 → 77.9 | Herrenparfüm Jean Paul Gaultier Scandal Absolu EDP 50 ml
+- 140.9 → 80.9 | Damenparfüm Paco Rabanne Fame EDP 50 ml
+- 142.9 → 81.9 | Damenparfüm Jean Paul Gaultier Scandal Gold EDP 80 ml
+- 50.9 → 24.9 | Damenparfüm Obsession Calvin Klein EDP
+- 168.9 → 117.9 | Herrenparfüm Egoiste Chanel EDT
+- 151.9 → 106.9 | Damenparfüm Nº 5 Chanel EDT
+- 57.9 → 27.9 | Damenparfüm Hugo Boss EDT
+- 80.9 → 39.9 | Damenparfüm Nina Ricci NINPFW050 EDT
+- 136.9 → 78.9 | Herrenparfüm Paco Rabanne EDT
+- 102.9 → 49.9 | Damenparfüm Versace EDT
+- 96.9 → 47.9 | Unisex-Parfüm Ck One Calvin Klein EDT CK One Ck One
+- 178.9 → 125.9 | Herrenparfüm Jean Paul Gaultier EDT 200 ml
+- 110.9 → 63.9 | Damenparfüm Givenchy Amarige 30 ml EDT
+- 76.9 → 37.9 | Herrenparfüm Hugo Boss EDP 50 ml
+- 69.9 → 33.9 | Damenparfüm London Burberry EDP (50 ml) 50 ml London
+- 119.9 → 68.9 | Damenparfüm Paco Rabanne CALANDRE EDT 100 ml
+- 90.9 → 51.9 | Herrenparfüm Paco Rabanne EDT 100 ml
+- 98.9 → 47.9 | Herrenparfüm Explorer Ultra Blue Montblanc EDP Explorer Ultr
+- 58.9 → 28.9 | Damenparfüm Cacharel EDT
+- 97.9 → 47.9 | Damenparfüm Carolina Herrera EDT
+- 101.9 → 49.9 | Herrenparfüm Armani EDT
+- 54.9 → 26.9 | Damenparfüm Obsession Calvin Klein CALEUPF01050022 EDP 50 ml
+- 101.9 → 49.9 | Herrenparfüm Cacharel EDT
+- 70.9 → 34.9 | Herrenparfüm Emblem Montblanc EDT
+- 137.9 → 78.9 | Damenparfüm Carolina Herrera EDT 100 ml
+- 85.9 → 41.9 | Herrenparfüm Lacoste EDT 100 ml
+- 62.9 → 30.9 | Herrenparfüm Hugo Boss EDT 40 ml
+- 83.9 → 40.9 | Herrenparfüm Kenzo AQUA KENZO EDT 50 ml
+- 56.9 → 27.9 | Damenparfüm Calvin Klein EDP 30 ml
+- 141.9 → 81.9 | Damenparfüm Carolina Herrera Very Good Girl EDP 50 ml
+- 139.9 → 79.9 | Herrenparfüm Versace EDT 200 ml
+- 150.9 → 85.9 | Damenparfüm Carolina Herrera 212 Heroes For Her EDP 80 ml
+- 146.9 → 83.9 | Herrenparfüm Gucci Guilty Pour Homme EDP 90 ml
+- 168.9 → 96.9 | Damenparfüm Paco Rabanne Olympéa Solar EDP 80 ml
+- 91.9 → 52.9 | Damenparfüm Paco Rabanne Olympéa Solar EDP 30 ml
+- 86.9 → 42.9 | Damenparfüm Kenzo Flower by Kenzo L'Absolue EDP 30 ml
+- 164.9 → 94.9 | Herrenparfüm Jean Paul Gaultier Scandal Le Parfum Pour Homme
+- 62.9 → 30.9 | Herrenparfüm Tommy Hilfiger Impact Spark EDT 50 ml
+- 130.9 → 74.9 | Damenparfüm Paco Rabanne Olympéa Blossom EDP 80 ml
+- 112.9 → 64.9 | Damenparfüm Versace Dylan Purple EDP 100 ml
+- 87.9 → 42.9 | Damenparfüm Carolina Herrera Chic for Women EDP 80 ml
+- 44.9 → 21.9 | Damenparfüm Guess Forever EDP 75 ml
+- 156.9 → 89.9 | Damenparfüm Chanel Gabrielle EDP 35 ml
+- 117.9 → 67.9 | Damenparfüm Gucci GUCCI FLORA EDP 50 ml
+- 137.9 → 78.9 | Herrenparfüm Bvlgari MAN EDP 60 ml
+- 139.9 → 79.9 | Herrenparfüm Carolina Herrera CH MEN EDT 100 ml
+- 79.9 → 38.9 | Herrenparfüm Tommy Hilfiger IMPACT EDT 100 ml
+- 158.9 → 90.9 | Damenparfüm Paco Rabanne -81LMF EDP 80 ml
+- 35.9 → 17.9 | Herrenparfüm Tommy Hilfiger TOMMY NOW EDT 30 ml
+- 126.9 → 72.9 | Damenparfüm Bvlgari EDP Splendida Patchouli Tentation 100 ml
+- 35.9 → 17.9 | Damenparfüm Tommy Hilfiger Tommy Girl Now EDT 30 ml
+- 75.9 → 36.9 | Herrenparfüm Paco Rabanne EDT Xs 100 ml
+- 98.9 → 47.9 | Unisex-Parfüm Paco Rabanne EDP Crazy Me 62 ml
+- 161.9 → 92.9 | Damenparfüm Yves Saint Laurent Black Opium Extreme EDP 50 ml
+- 106.9 → 61.9 | Damenparfüm Bvlgari EDP Splendida Magnolia Sensuel 50 ml
+- 79.9 → 38.9 | Damenparfüm Paco Rabanne Olympéa Blossom EDP 30 ml
+- 123.9 → 70.9 | Damenparfüm Givenchy L'INTERDIT EDP 50 ml L'interdit Rouge
+- 161.9 → 92.9 | Herrenparfüm Paco Rabanne EDP 100 ml
+- 63.9 → 30.9 | Herrenparfüm Tommy Hilfiger TOMMY EDT 100 ml
+- 37.9 → 18.9 | Herrenparfüm Calvin Klein EDT Obsession 75 ml
+- 66.9 → 32.9 | Damenparfüm Lancôme La Vie Est Belle EDP 15 ml
+- 88.9 → 42.9 | Damenparfüm Givenchy EDT L'interdit 35 ml
+- 166.9 → 95.9 | Damenparfüm Lancôme EDP La Vie Est Belle Soleil Cristal 100 
+- 46.9 → 22.9 | Damenparfüm Guess EDT Seductive Blue 75 ml
+- 117.9 → 67.9 | Damenparfüm Versace EDP 90 ml Yellow Diamond Intense
+- 64.9 → 31.9 | Damenparfüm Lacoste EDT L.12.12 Rose 50 ml
+- 19.9 → 9.9 | Herrenparfüm Montblanc Explorer EDP 4,5 ml
+- 100.9 → 57.9 | Damenparfüm Calvin Klein ETERNITY EDP 50 ml
+- 121.9 → 69.9 | Damenparfüm Calvin Klein ETERNITY EDP 100 ml
+- 40.9 → 19.9 | Damenparfüm Calvin Klein Eternity Moment EDP 50 ml
+- 161.9 → 92.9 | Damenparfüm Armani You She EDP
+- 91.9 → 52.9 | Damenparfüm Kenzo Flower Ikebana EDP 40 ml
+- 62.9 → 30.9 | Herrenparfüm Lacoste L.12.12 Blanc Eau Intense EDT 50 ml
+- 49.9 → 24.9 | Herrenparfüm Davidoff Zino EDT 125 ml (1 Stück)
+- 160.9 → 112.9 | Herrenparfüm Dior 3.3489E+12 EDP 60 ml
+- 175.9 → 100.9 | Damenparfüm Armani Sì Giorgio Armani EDP
+- 92.9 → 53.9 | Damenparfüm Armani Acqua Di Gioia EDP
+- 122.9 → 70.9 | Herrenparfüm Yves Saint Laurent EDT 60 ml La Nuit De L'homme
+- 113.9 → 65.9 | Damenparfüm Valentino Voce Viva EDP 30 ml Voce Viva
+- 86.9 → 41.9 | Damenparfüm Givenchy Amarige EDT
+- 150.9 → 105.9 | Herrenparfüm Dior Higher Energy EDT
+- 71.9 → 34.9 | Herrenparfüm Burberry EDT 100 ml
+- 69.9 → 33.9 | Herrenparfüm Azzaro AZZ-AZZ-M-00- EDT 100 ml
+- 107.9 → 61.9 | Herrenparfüm 212 Vip Black Carolina Herrera EDP
+- 168.9 → 118.9 | Damenparfüm Allure Chanel EDP
+- 144.9 → 101.9 | Herrenparfüm Bleu Chanel EDT Bleu 20 ml
+- 97.9 → 47.9 | Damenparfüm Gucci EDP
+- 84.9 → 40.9 | Damenparfüm Bright Crystal Absolu Versace EDP
+- 130.9 → 74.9 | Damenparfüm Chance Eau Fraiche Chanel EDT
+- 117.9 → 67.9 | Damenparfüm Paco Rabanne EDP 50 ml
+- 48.9 → 23.9 | Unisex-Parfüm Calvin Klein 0304 EDT 100 ml
+- 62.9 → 30.9 | Unisex-Parfüm Toy 2 Moschino EDP
+- 78.9 → 38.9 | Damenparfüm World Kenzo (EDP) EDP
+- 103.9 → 59.9 | Damenparfüm Mémoire d'une Odeur Gucci EDP
+- 111.9 → 63.9 | Damenparfüm Burberry EDP 100 ml
+- 147.9 → 84.9 | Damenparfüm Burberry MY BURBERRY EDP 90 ml
+- 158.9 → 111.9 | Damenparfüm Chanel Nº 5 EDP 60 ml
+- 101.9 → 58.9 | Damenparfüm Alive Hugo Boss EDP
+- 95.9 → 46.9 | Herrenparfüm Paco Rabanne EDT 50 ml
+- 120.9 → 69.9 | Herrenparfüm Invictus Victory Paco Rabanne EDP Invictus Vict
+- 122.9 → 70.9 | Damenparfüm Prada EDP
+- 155.9 → 109.9 | Damenparfüm Chanel EDT
+- 60.9 → 29.9 | Damenparfüm Toy 2 Moschino EDP
+- 89.9 → 43.9 | Damenparfüm Carolina Herrera EDP
+- 70.9 → 34.9 | Herrenparfüm Legend Montblanc EDP
+- 93.9 → 45.9 | Herrenparfüm Prada EDT
+- 131.9 → 75.9 | Damenparfüm Carolina Herrera GOO2 EDP 50 ml
+- 44.9 → 21.9 | Unisex-Parfüm Calvin Klein EDT 100 ml
+- 64.9 → 31.9 | Damenparfüm Montblanc EDT 75 ml
+- 57.9 → 28.9 | Herrenparfüm Montblanc EDT 75 ml
+- 139.9 → 80.9 | Herrenparfüm Paco Rabanne Phantom EDT 200 ml Nachladen
+- 92.9 → 53.9 | Herrenparfüm Burberry Mr. Burberry EDP Mr Burberry 50 ml
+- 41.9 → 20.9 | Damenparfüm Nina Ricci Nina Fleur EDT 30 ml
+- 77.9 → 37.9 | Damenparfüm Kenzo L'Eau Kenzo pour Femme EDT 50 ml
+- 143.9 → 82.9 | Damenparfüm Jean Paul Gaultier Scandal Le Parfum EDP Scandal
+- 149.9 → 104.9 | Herrenparfüm Jean Paul Gaultier Scandal Le Parfum Pour Homme
+- 93.9 → 45.9 | Herrenparfüm Kenzo Homme Intense EDT 60 ml
+- 88.9 → 50.9 | Damenparfüm Gucci Flora Gorgeous Gardenia EDP 30 ml
+- 82.9 → 39.9 | Damenparfüm Versace Dylan Purple EDP 30 ml
+- 45.9 → 21.9 | Herrenparfüm Guess EDT Man Forever 75 ml
+- 51.9 → 24.9 | Herrenparfüm Montblanc EDT Presence (75 ml)
+- 47.9 → 23.9 | Damenparfüm Nina Ricci L'Air du Temps EDT 30 ml
+- 88.9 → 50.9 | Herrenparfüm Givenchy NEW GENTLEMAN EDT 60 ml
+- 130.9 → 75.9 | Damenparfüm Paco Rabanne LADY MILLION EDP 50 ml Lady Million
+- 107.9 → 61.9 | Damenparfüm Givenchy EDP Ange Ou Démon Le Secret 50 ml
+- 86.9 → 42.9 | Damenparfüm Kenzo EDP Flower by Kenzo 50 ml
+- 82.9 → 39.9 | Herrenparfüm Kenzo L'EAU KENZO EDT 50 ml L'Eau Kenzo Boisée
+- 171.9 → 98.9 | Damenparfüm Bvlgari EDP Rose Goldea 90 ml
+- 155.9 → 108.9 | Damenparfüm Chanel EDT Chance Eau Tendre 50 ml
+- 42.9 → 20.9 | Herrenparfüm Guess EDT By Marciano 100 ml
+- 95.9 → 46.9 | Damenparfüm Montblanc EDP Signature 90 ml
+- 160.9 → 92.9 | Damenparfüm Paco Rabanne OLYMPÉA EDP 80 ml Olympéa Flora
+- 154.9 → 88.9 | Damenparfüm Carolina Herrera 212 VIP Women EDP 125 ml
+- 133.9 → 76.9 | Herrenparfüm Bvlgari Aqva Pour Homme EDT 50 ml
+- 97.9 → 47.9 | Damenparfüm Calvin Klein EUPHORIA EDP 30 ml
+- 85.9 → 41.9 | Damenparfüm Lacoste EDP 100 ml
+- 167.9 → 117.9 | Herrenparfüm Yves Saint Laurent EDP 100 ml
+- 105.9 → 60.9 | Damenparfüm Givenchy L'INTERDIT EDT 50 ml
+- 40.9 → 19.9 | Damenparfüm Tommy Hilfiger TOMMY NOW GIRL EDT 30 ml
+- 99.9 → 57.9 | Damenparfüm Gucci Rush EDT 75 ml
+- 96.9 → 55.9 | Herrenparfüm Calvin Klein EDP Defy 100 ml
+- 94.9 → 54.9 | Herrenparfüm Calvin Klein ETERNITY FOR MEN EDP 50 ml
+- 63.9 → 30.9 | Herrenparfüm Givenchy Insense Ultramarine for Men EDT 100 ml
+- 113.9 → 65.9 | Damenparfüm Valentino Born in Roma EDP
+- 59.9 → 29.9 | Herrenparfüm Davidoff Cool Water Intense EDP 75 ml
+- 116.9 → 66.9 | Herrenparfüm Prada Luna Rossa Carbon EDT 50 ml
+- 76.9 → 36.9 | Damenparfüm Cacharel EDT 50 ml 100 ml
+- 97.9 → 55.9 | Damenparfüm Armani Code EDP 30 ml
+- 151.9 → 86.9 | Herrenparfüm Prada Ocean Luna Rossa EDT 100 ml
+- 111.9 → 63.9 | Damenparfüm Kenzo Parfum d'Ete EDP 75 ml
+- 161.9 → 113.9 | Damenparfüm Dior J'adore Parfum d'Eau EDP
+- 105.9 → 60.9 | Damenparfüm Lancôme Tresor EDP 50 ml
+- 62.9 → 30.9 | Damenparfüm Lacoste Touch Of Pink 50ml EDT 50 ml (1 Stück)
+- 91.9 → 44.9 | Herrenparfüm Lacoste L'Homme EDT 100 ml
+- 88.9 → 42.9 | Herrenparfüm Lacoste L.12.12 Blanc EDT 100 ml
+- 71.9 → 34.9 | Damenparfüm Nina Ricci L'air Du Temps EDT 100 ml
+- 113.9 → 65.9 | Damenparfüm Gucci Bamboo EDP 75 ml
+- 73.9 → 35.9 | Damenparfüm Cacharel Noa EDT 100 ml
+- 59.9 → 28.9 | Damenparfüm Kenzo Flower By Kenzo Eau Legere EDT 30 ml
+- 121.9 → 69.9 | Herrenparfüm Burberry Mr. Burberry Eau de Parfum EDP 150 ml
+- 92.9 → 53.9 | Herrenparfüm Lacoste L.12.12 Blanc EDT 175 ml

@@ -2141,3 +2141,10 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - CJ-Runde 2 gestartet: 24 frische Begriffe passend zum Screenshot (Home-Deko: Badewannen-Tablett,
   Wandregal, Vasen, Letter-Board … / Geschenke: Mondlampe, Waffeleisen, Whiskey-Steine …).
 - Versand50-Engine: 280+/4'434 Beschreibungen umgestellt, läuft.
+
+## 2026-07-10 — ✅ Parfum-Repricing ABGESCHLOSSEN
+- **1'036 Marken-Parfums geprüft · 907 Preise auf Marktniveau gesenkt** (EK×1.30, min. 9.90;
+  UVP-Mondpreise ignoriert). Beispiele: Hugo Boss 49.90→24.90, Lancôme 120.90→68.90.
+- Report: dropship/brand_price_report.md · Pointer am Ende (1036) — Lauf komplett, Engine beendet.
+- Wirkung: Parfum-Kategorien (parfuem-damen 625 / parfuem-herren 464) jetzt konkurrenzfähig
+  gegen CH-Marktpreise → bereit für Google-Gratis-Listings & Ads-Traffic.
