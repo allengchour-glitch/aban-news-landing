@@ -1,14 +1,14 @@
 # CJ-Suchqueue — abarbeiten sobald Tagespunkte wieder da sind (Reset ~Mitternacht China-Zeit).
 # Format: search:<begriff> (cj_sku_import.mjs ITEMS=…) · Ziel: Handy-Welt-Unterkategorien füllen.
 # ⚠️ CJ-Textsuche streut («glass» → Glasbohrer!) — Treffer IMMER gegen Bild/Kategorie plausibilisieren.
-search:tempered glass screen protector iphone
-search:magsafe phone case
-search:magsafe car mount
-search:selfie stick tripod bluetooth
-search:phone ring light
-search:gimbal stabilizer smartphone
-search:fast charger 65W GaN
-search:magsafe powerbank
+#done search:tempered glass screen protector iphone
+#done search:magsafe phone case
+#done search:magsafe car mount
+#done search:selfie stick tripod bluetooth
+#done search:phone ring light
+#done search:gimbal stabilizer smartphone
+#done search:fast charger 65W GaN
+#done search:magsafe powerbank
 # VR/AI-Nachschub (User «AR brillen?»):
 search:AR smart glasses
 search:smart glasses camera

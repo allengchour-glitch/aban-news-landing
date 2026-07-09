@@ -2108,3 +2108,16 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **⚠️ Meta-User-Token ABGELAUFEN (07.07. 13:00 PDT)** → IG/FB-Autopilot blockiert, 3 ready-Reels
   warten. USER-KLICK: neuen Token geben (Graph Explorer / Business-Einstellungen).
 - Shopify-MCP-Konnektor braucht Re-Auth (User) — Admin-API via Client-Credentials läuft weiter.
+
+## Session 2026-07-10b — Voll-gas-Dauerauftrag (User: «bei reset cj und bigbuy wieder voll gas inkl alle lieferanten»)
+- CJ-Queue-Runner gebaut & LIVE (automation/cj_queue_runner.sh + Kopie /tmp): arbeitet
+  automation/cj_search_queue.txt in 4er-Batches ab (#done-Marker), danach Kategorie-Fill CAP=60.
+  In autostart.sh §2b verankert → jeder Neustart fährt CJ automatisch hoch. CLAUDE.md GEHIRN 13 ergänzt.
+- cj_sku_import.mjs 2 Patches: (1) 5 Seiten tief paginieren (CJPAGES, Ledger 10k+ frisst Top-10 weg);
+  (2) Relevanz-Wache — Kandidat muss mind. 1 Suchwort im productNameEn tragen (Streu-Falle: «selfie stick»
+  lieferte Küchenlöffel-Set, «magsafe car mount» einen Drift-Rennwagen!).
+- 6 Erst-Importe + Vision-QA (Kontaktbogen): 3 Titel korrigiert — «Haarentferner 4in1» war in
+  Wahrheit ein Tierhaar-/Fusselroller (Groq-Kategorien-Falle, GEHIRN 9), «Temperglast»→«Panzerglas
+  4er-Pack», «Kuechenloeffel»→«Küchenhelfer-Set» (Umlaute). Regel bleibt: nach jeder Import-Welle Vision-QA.
+- BigBuy läuft parallel (nonstop-Walker + Import-Engine, Rate-Limit-Vorfahrt beachtet).
+- Shopify-Konnektor-Reconnect beim User schlug fehl (token-exchange) — Workaround dokumentiert.

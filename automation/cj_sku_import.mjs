@@ -84,10 +84,20 @@ for (const item of ITEMS) {
     const j = await cj(`/product/query?productSku=${encodeURIComponent(val)}`); await sleep(1300);
     pid = j.data?.pid;
   } else {
-    const j = await cj(`/product/list?pageSize=10&pageNum=1&productNameEn=${encodeURIComponent(val)}&orderBy=listedNum`); await sleep(1300);
-    // Top-10 durchgehen, ersten noch nicht importierten nehmen (Top-1 war oft schon im Shop)
-    for (const cand of (j.data?.list || [])) {
-      if (!done.has(String(cand.pid))) { pid = cand.pid; break; }
+    // Tiefer paginieren (CJPAGES, Default 5): Top-Treffer sind bei 10k+-Ledger längst importiert
+    const PAGES = parseInt(process.env.CJPAGES || '5', 10);
+    for (let pg = 1; pg <= PAGES && !pid; pg++) {
+      const j = await cj(`/product/list?pageSize=10&pageNum=${pg}&productNameEn=${encodeURIComponent(val)}&orderBy=listedNum`); await sleep(1300);
+      const list = j.data?.list || [];
+      if (!list.length) break;
+      // Relevanz-Wache: CJ-Textsuche streut (Küchenlöffel bei «selfie stick»!) —
+      // Kandidat muss mind. 1 Suchwort (>3 Zeichen) im productNameEn tragen.
+      const kws = val.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+      for (const cand of list) {
+        const name = (cand.productNameEn || '').toLowerCase();
+        if (kws.length && !kws.some(w => name.includes(w))) continue;
+        if (!done.has(String(cand.pid))) { pid = cand.pid; break; }
+      }
     }
   }
   if (!pid) { console.log('✗ nicht gefunden/alles schon da:', item); continue; }

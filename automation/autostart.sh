@@ -49,6 +49,19 @@ if [ "$PREMIUM_LAEUFT" = "0" ] && [ -n "$BIGBUY_API_KEY" ] && [ -s /tmp/bb_cats.
   log "BigBuy-Import gestartet (PID $!)"
 fi
 
+# ── 2b. CJ voll gas (Dauerauftrag User 2026-07-10: «bei reset cj und bigbuy wieder voll gas») ──
+#        Queue-Runner arbeitet automation/cj_search_queue.txt ab (4er-Batches, #done-Marker),
+#        danach Kategorie-Fill CAP=60. Braucht /tmp/cj_token.json (sonst No-op).
+if [ -s /tmp/cj_token.json ] && ! running 'cj_queue_runner.sh' && ! running 'cj_sku_import.mjs' && ! running 'cj_category_fill.mjs'; then
+  if [ ! -x /tmp/cj_queue_runner.sh ] && [ -f automation/cj_queue_runner.sh ]; then
+    cp automation/cj_queue_runner.sh /tmp/cj_queue_runner.sh && chmod +x /tmp/cj_queue_runner.sh
+  fi
+  if [ -x /tmp/cj_queue_runner.sh ]; then
+    nohup bash /tmp/cj_queue_runner.sh >> /tmp/cj_runner.log 2>&1 &
+    log "CJ-Queue-Runner gestartet (PID $!)"
+  fi
+fi
+
 # ── 3. GMC-Beschreibungs-Anreicherung (resümiert am Cursor, beendet sich am Listen-Ende) ──
 if [ -f dropship/gmc_desc_ids.txt ] && ! running 'gmc_desc_enrich.mjs'; then
   POS=$(cat dropship/_gmc_enrich_pos.txt 2>/dev/null || echo 0)
