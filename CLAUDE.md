@@ -3,7 +3,10 @@
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 
-Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
+Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte.
+
+> 🎮 **Spiele-Sessions** (neon-*/lebenspfad/wort-*): ZUERST `spiele-dev/RUNBOOK-SPIELE.md` lesen —
+> fertige Skill-Bibliothek (Smoke/Screenshot/Vision-Loop, Meshy/HDRI/Musik-Rezepte, alle Fallen). Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 
 ## 🤖 Autonom-Auftrag (Dauerauftrag des Users)
