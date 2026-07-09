@@ -144,7 +144,11 @@ var bolts=[],enemies=[],fx=[],loot=[],orbs=[];
 function boltMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.3,8,8),mat(0x9be7ff,0x9be7ff)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0,dmg:0};}
 function enemyMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.85,0),mat(0xff5577,0xaa1133)); m.position.y=0.9;
   var core=new THREE.Mesh(new THREE.OctahedronGeometry(0.42,0),mat(0xffe0e6,0xff5577,1.6)); m.add(core);
-  var ring=new THREE.Mesh(new THREE.TorusGeometry(0.95,0.06,6,16),mat(0xff5577,0xff2244,1.4)); ring.rotation.x=Math.PI/2; m.add(ring);
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(0.95,0.06,6,16),m.material); ring.rotation.x=Math.PI/2; m.add(ring);
+  // Hörner (geteiltes Material -> färben bei Elite/Boss mit) + Zyklopen-Auge
+  var h1=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.6,5),m.material);h1.position.set(-0.42,0.72,0);h1.rotation.z=0.5;m.add(h1);
+  var h2=h1.clone();h2.position.x=0.42;h2.rotation.z=-0.5;m.add(h2);
+  var eye=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,6),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffcc,emissiveIntensity:2.4}));eye.position.set(0,0.18,0.68);m.add(eye);
   m.userData.core=core; m.userData.ring=ring; scene.add(m);
   return {m:m,active:false,hp:1,spd:2,dmg:6,flash:0,base:0xaa1133,boss:false,atk:0};}
 function lootMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.5,0),mat(0xffffff,0xffffff)); m.active=false; scene.add(m); return {m:m,active:false,rar:0};}
