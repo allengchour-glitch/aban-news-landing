@@ -2015,3 +2015,9 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   «43 Zoll»→4,3", FPV-Monitor dito, VR-Ständer-Titel generisch (Bild=PSVR), 2 generische
   Heimtextil-Titel geschärft, 2 Nachtsichtgeräte (Jagd-Optik) → Tag nicht-bewerben+jagd-optik
   (User-Regel Waffen-Optik = Werbe-Gift; bleiben kaufbar, fliegen aus Ads/Social).
+- 🧹 Grosse Dubletten-Heilung gestartet (frischer Bulk-Export 25'217 Aktiv-Produkte): 554 Gruppen /
+  1'078 echte Bild-Duplikate → DRAFT duplikat-auto-draft (läuft). dup_title_fix NIE auf altem
+  Bulk-Export laufen lassen (hätte «Modell 2 · Modell 2» produziert — DRY hat's gefangen).
+- 🗂️ Menü-Split (User-Feedback): «Beauty & Tier» → «💄 Beauty & Parfüm» + «🐾 Haustierwelt».
+- 🏠 Homepage: Beauty-Sektion zeigt jetzt 💐 Damenparfüm (1'000+ Markendüfte waren unsichtbar).
+- ✅ Topseller-Stock-Guard: 0 CJ-SKUs in Top-250 (BigBuy-lastig) — viral-hits bleibt der geprüfte Ad-Anker.
