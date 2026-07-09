@@ -13,7 +13,10 @@ if (!CJT && fs.existsSync('/tmp/cj_token.json')) CJT = JSON.parse(fs.readFileSyn
 const LEDGER = 'dropship/cj_niche_done.txt';
 const PUBS = ['301970915713', '301971014017', '302032716161', '302566834561', '302872297857', '302994456961'].map(id => ({ publicationId: `gid://shopify/Publication/${id}` }));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const chf = usd => { const u = parseFloat(('' + usd).split('--')[0]) || 0; let m = u < 8 ? 2.4 : u < 20 ? 2.2 : u < 50 ? 2.0 : 1.85; return (Math.floor(Math.max(u * m, 4.90)) + 0.90).toFixed(2); };
+const chf = (usd, grams) => { const u = parseFloat(('' + usd).split('--')[0]) || 0; let m = u < 8 ? 2.4 : u < 20 ? 2.2 : u < 50 ? 2.0 : 1.85; let p = Math.max(u * m, 4.90);
+  const kg = (parseFloat(grams) || 0) / 1000; // Gewichts-Boden (2026-07-09): Fracht CH ≈ 3.4+16.3*kg CHF, Pauschale deckt 6.3
+  if (kg > 0.4) p = Math.max(p, u * 0.92 + (3.4 + 16.3 * kg) - 6.3 + 4);
+  return (Math.floor(p) + 0.90).toFixed(2); };
 
 async function cj(path) {
   for (let a = 0; a < 6; a++) {
@@ -112,7 +115,7 @@ for (const item of ITEMS) {
     descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
-    variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }],
+    variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }],
     files: [{ originalSource: imgs[0], contentType: 'IMAGE' }] };
   const r = await sgql(t, SET, { i: input });
   const spid = r.data?.productSet?.product?.id;
@@ -122,6 +125,6 @@ for (const item of ITEMS) {
   await sgql(t, `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id,input:$p){userErrors{message}} }`, { id: spid, p: PUBS });
   if (d.productVideo && /^https/.test(d.productVideo)) await attachVideo(t, spid, d.productVideo, String(pid).slice(-6));
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');
-  console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice)})`);
+  console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice, d.variants?.[0]?.variantWeight)})`);
 }
 console.log('FERTIG.');
