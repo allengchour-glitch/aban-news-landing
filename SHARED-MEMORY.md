@@ -1,4 +1,23 @@
 # 🔗 SHARED-MEMORY
+# 🤝 ÜBERGABE CizQ6-Session → NEUE SESSION (2026-07-09 ~23:00 UTC, User: „neue session macht jetzt alles"):
+#   ⚽ #1005 (Trikot, Alain Schutz, PAID/UNFULFILLED): Printful 165452870 = Status „inprocess", Label 5.7. (LPS/Lettland),
+#     Tracking-URL https://myorders.co/tracking/81056358/ zeigt „Not found" = NOCH NICHT beim Carrier → bewusst NICHT fulfilled
+#     (falsche Versandmail = Ehrlichkeits-Bruch). AUFGABE NEUE SESSION: Printful-Order 165452870 prüfen; sobald tracking_number
+#     gesetzt + Tracking-Seite echte Events zeigt → Shopify fulfillmentCreate auf FulfillmentOrder gid://shopify/FulfillmentOrder/14368681230721
+#     (Order gid://shopify/Order/13929653404033) mit trackingInfo + notifyCustomer:true. Meine send_later-Wiedervorlage ist GELÖSCHT (keine Doppelarbeit).
+#   ⚠️ BLOG-LEHRE (teuer): ArticleCreate IGNORIERT das handle-Feld (Shopify generiert Handle aus Titel) UND articles(query:"handle:…")
+#     liefert IMMER leer (Filter nicht unterstützt) → create_blog_from_json.mjs ist NICHT idempotent — blog-r2 NIE erneut laufen lassen (erzeugt Duplikate).
+#     Die 9 Ratgeber (05.07.) sind LIVE im ratgeber-Blog unter TITEL-Handles (z.B. ringgrosse-bestimmen-den-perfekten-ring-finden). News-Blog = leer.
+#   ✅ ALLES LIVE (verifiziert 09.07.): CH-Recht komplett (Versand CH-only/CHF50/5-12WT + Rückgabe CH + Datenschutz revDSG/EDÖB) ·
+#     3 kuratierte Collections (frauen-favoriten 20 / unter-30 9 / see-und-sonne-wasserfest 6) · 6 SEO-Landingpages · 9 Ratgeber ·
+#     21 Winner-PDPs mit ehrlichem Material-/Trust-/FAQ-Block (Marker <!--luxe-trustblock-->) · 6 Winner-Reels auf Shopify-CDN + in
+#     social/video_queue.csv (Worker postet IG/FB) · 27 Non-Fashion-Fremdkörper DRAFT. Zahlen: 10'000 aktiv / 5'003 Draft / 170 archiviert.
+#   🔌 NEU: Shopify-/Klaviyo-/TikTok-Ads-/Gmail-MCP laufen jetzt DIREKT in Cloud-Sessions (kein PC-Umweg für Shopify-Writes mehr nötig).
+#     PC-Queue (cloud-commands.json) ist leer/abgearbeitet; verfügbare cmds: giga, keycheck, policies-rewrite, curate-winners, render-winners,
+#     seedance-test, seo-pages-r2, archive-drafts, image-audit-fix, soften-claims, queue-winner-reels, blog-r2(NICHT nutzen!), create-collections, enrich-winner-pdp.
+#   ⏭️ NÄCHSTE OFFENE HEBEL (priorisiert): (1) Klaviyo Post-Purchase-/Review-Flow via MCP bauen; (2) Theme-Hebel unten (Trust-Zeile/Sticky-ATC/Zahlungs-Chips);
+#     (3) ~62 Marken-Produkte = User-Entscheid „behalten+entschärfen" (Doc TRUST-AUDIT-2026-07-05); (4) 6 Bundle-Listings (STRATEGIE-2026-07-05);
+#     (5) Judge.me-Reviews (User-Klick). Docs: STATUS.md (top) + WERBEPAKET/STRATEGIE/TRUST-AUDIT/KATALOG-REKURATION-2026-07-0*.md + Gehirn-Regeln bis #77.
 # 🎯 STRATEGIE-RUNDE (CizQ6 2026-07-05, 18 Agenten/110 Empf.) — TOP-HEBEL an THEME-SESSION (Erstkauf = Trust+Risiko, nicht Traffic):
 #   [THEME] 1. TRUST-ZEILE DIREKT UNTER ATC jeder PDP: "✓ 30 Tage Rückgabe · ✓ Schweizer Support · ✓ Sichere Zahlung" — löst 3 Einwände genau im Kaufmoment.
 #   [THEME] 2. MOBILE STICKY-ATC-BAR + Mikro-Trustline ("TWINT · Rechnung · Gratis ab CHF 50") — behebt den #1-Leak (Mobil-ATC 0.13% vs Desktop 1.2% = 9x).

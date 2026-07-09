@@ -1,5 +1,16 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-09 (ÜBERGABE an neue Session — voller Live-Stand verifiziert)
+- **Zahlen (live via Admin-API):** 10'000 aktive Produkte / 5'003 Drafts / 170 archiviert. PC-Queue leer, alle 9 Agenten-Runden materialisiert.
+- **⚽ #1005 OFFEN (wichtigste Einzelaufgabe):** Printful „inprocess", Label 5.7., Tracking-Seite „Not found" = noch nicht im Transit →
+  bewusst NICHT fulfilled. Neue Session: Printful 165452870 beobachten, bei echtem Tracking → fulfillmentCreate (IDs in SHARED-MEMORY §Übergabe) + notifyCustomer.
+- **✅ Live verifiziert (09.07.):** CH-Recht komplett (revDSG/EDÖB im Datenschutz live gegrept) · frauen-favoriten/unter-30/see-und-sonne ·
+  6 SEO-Pages · 9 Ratgeber (im ratgeber-Blog, TITEL-Handles! s. Blog-Lehre SHARED-MEMORY) · 21 PDP-Trust-Blöcke · 6 Reels auf CDN + video_queue.
+- **⚠️ Lehren dieser Session (Gehirn bis Regel #78):** ArticleCreate ignoriert handle + articles-handle-Filter leer → blog-r2 nie re-runnen ·
+  Policies nur via GraphQL shopPolicyUpdate (REST=406) · Seedance: NUR 2.0/fast existiert auf dem fal-Account, Root-Cause war fehlendes @fal-ai/client ·
+  Stop-Hook „Unverified commits" = fremde GitHub-Web-UI-Commits, KEIN Rebase/Force-Push (geteilter Branch, feste Regel).
+- **🔌 Shopify-/Klaviyo-/TikTok-Ads-/Gmail-MCP jetzt direkt in Cloud-Sessions** → Shopify-Writes ohne PC-Umweg möglich.
+
 ## 2026-07-05 (GROSSE AUTONOM-SESSION — 6 Agenten-Runden, PC-Queue abgearbeitet)
 - **✅ LIVE (verifiziert):** CH-Rechts-Block KOMPLETT — Versand (CH-only/CHF 50/5–12 Werktage) + Rückgabe (CH, kein EU-14-Tage) + **Datenschutz revDSG/EDÖB** (via GraphQL shopPolicyUpdate; REST gab 406). Collection **`frauen-favoriten`** (20 Winner, publiziert). **6 SEO-Buy-Intent-Landingpages** (wasserfeste Goldkette/Geburtsstein/personalisierte Geschenke/hypoallergen/Stapelringe/Mini-Tasche).
 - **🎬 6 WINNER-VIDEO-REELS gerendert + veredelt + an User geschickt:** Seedance 2.0/fast (v1 = Not Found; Root-Cause des Fehlers war fehlendes @fal-ai/client-Paket, jetzt installiert) → finish_reel (Mundart-Hook + Musik) → `reels/winner-*-ig.mp4`. `queue-winner-reels` gequeued (CDN-Upload + video_queue.csv → Worker postet IG/FB).
