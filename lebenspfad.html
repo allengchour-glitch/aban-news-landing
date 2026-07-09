@@ -338,8 +338,13 @@ function updDekoCoins(t){for(var i=0;i<dekoCoins.length;i++){var c=dekoCoins[i];
   cx.fillStyle="#f5e8d0";cx.fillRect(0,0,256,64);cx.fillStyle="#8a5a3a";cx.font="bold 40px sans-serif";cx.textAlign="center";cx.fillText("START",128,45);
   var sgn=new THREE.Mesh(new THREE.PlaneGeometry(3.2,0.8),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),side:THREE.DoubleSide}));
   sgn.position.set(f0.x,2.1,f0.z+2.6);scene.add(sgn);
+  // Meshy-Triumphbogen (PBR) am Ziel; Torus als Fallback bis er lädt
   var arch=new THREE.Mesh(new THREE.TorusGeometry(3.0,0.3,8,24,Math.PI),mat(0xffd166,0xffd166,0.5));
   arch.position.set(fz.x,0.3,fz.z);scene.add(arch);
+  if(THREE.GLTFLoader)new THREE.GLTFLoader().load("/models/lp_zielbogen.glb",function(g){
+    var o=fitModel(g.scene,8.5);o.position.x+=fz.x;o.position.z+=fz.z;
+    o.rotation.y=Math.PI/2;scene.add(o);scene.remove(arch);
+  },undefined,function(){});
   var cv2=document.createElement("canvas");cv2.width=256;cv2.height=64;var cx2=cv2.getContext("2d");
   cx2.fillStyle="#ffd166";cx2.font="bold 44px sans-serif";cx2.textAlign="center";cx2.fillText("ZIEL",128,48);
   var zl=new THREE.Mesh(new THREE.PlaneGeometry(2.6,0.65),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv2),transparent:true,side:THREE.DoubleSide}));
