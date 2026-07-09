@@ -80,7 +80,7 @@ async function aiSeo(name){
 `Schreibe SEO-Meta für ein Produkt im Schweizer Online-Shop LuxeStyle.
 Produkt: "${clean(name)}"
 - title: verkaufsstark, Schweizer Hochdeutsch (ss statt ß), max 60 Zeichen, endet mit " | LuxeStyle", kein Emoji.
-- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 65, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.`}]
+- description: ein konkreter Nutzen + Vertrauen (Gratis-Versand ab CHF 50, 30 Tage Rückgabe), max 150 Zeichen, kein Emoji.`}]
       })});
     const j=await r.json();
     const t=(j.content||[]).find(b=>b.type==="text"); if(!t) return null;
@@ -150,7 +150,7 @@ async function runMutations(token,items,build){
       const ct=clean(c.title)||"Kollektion";
       let title=ct; if(title.length>54){let x=title.slice(0,54); if(x.includes(" "))x=x.slice(0,x.lastIndexOf(" ")); title=x.replace(/[ ,;:·–-]+$/,"");}
       title=(title+" | LuxeStyle").slice(0,70);
-      const desc=`${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 65, 30 Tage Rückgabe, −10% mit Code WELCOME10.`.slice(0,320);
+      const desc=`${ct} bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, −10% mit Code WELCOME10.`.slice(0,320);
       colSeoFixes.push({id:c.id, handle:c.handle, title, desc});
     }
   }

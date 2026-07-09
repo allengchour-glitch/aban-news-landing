@@ -41,7 +41,7 @@ const POINTER = path.join(HERE, '.enhance_pointer');
 const QUEUE_COLS = ['id','scheduled_date','image_url','caption','platforms','status','posted_at','post_url'];
 const CAPTIONS = [
   '{label} ✨ Premium-Look zum fairen Preis. Code WELCOME10 = -10% · 🔗 Link in Bio',
-  'Neu entdeckt: {label} 🤍 Schweizer Shop · Gratis-Versand ab CHF 65 · 🔗 Link in Bio',
+  'Neu entdeckt: {label} 🤍 Schweizer Shop · Gratis-Versand ab CHF 50 · 🔗 Link in Bio',
   'Dein Sommer-Liebling? {label} 🌿 -10% mit WELCOME10 · 30 Tage Rückgabe · 🔗 Link in Bio',
   '{label} — premium & bezahlbar. Jetzt mit Code WELCOME10 · 🔗 Link in Bio',
   'Editorial-Look: {label} 👀 Designer-Vibe, fairer Preis · 🔗 Link in Bio',

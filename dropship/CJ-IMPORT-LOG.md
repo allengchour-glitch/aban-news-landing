@@ -2121,3 +2121,13 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   4er-Pack», «Kuechenloeffel»→«Küchenhelfer-Set» (Umlaute). Regel bleibt: nach jeder Import-Welle Vision-QA.
 - BigBuy läuft parallel (nonstop-Walker + Import-Engine, Rate-Limit-Vorfahrt beachtet).
 - Shopify-Konnektor-Reconnect beim User schlug fehl (token-exchange) — Workaround dokumentiert.
+
+## Session 2026-07-10c — Versandschwelle vereinheitlicht auf CHF 50 (API-verifiziert)
+- **deliveryProfiles-Wahrheit:** Domestic hat «Kostenloser Versand ab CHF 50» UND redundante
+  Gratis-ab-65-Zeile (bewusst belassen — Delivery-Mutation riskant). Storefront (Banner+Trust) sagt 50.
+- **Fix:** 13 Importer/Copy-Skripte «ab CHF 65»→«ab CHF 50» gepatcht; Bestands-Engine
+  (/tmp/versand50_fix.py, Ledger dropship/_versand50_done.txt) stellt 4'434 aktive
+  Produktbeschreibungen um (~40 Min, resümierbar, in revive.sh).
+- Klaviyo-Konnektor vom User NEU VERBUNDEN («Immer erlauben») → Tools docken beim nächsten
+  Session-Neustart an; dann Orders-Sync prüfen + Abbrecher-Flow. Klaviyo Onsite-JS-Embed im
+  Theme-Editor: User schaltet Toggle AN (Screenshot-Hinweis gegeben).

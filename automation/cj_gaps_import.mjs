@@ -195,7 +195,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
     const ex = f?.data?.collections?.edges?.[0]?.node;
     if (ex) return ex.id;
     const r = await sgql(stok, COLL_CREATE, { input: { handle: cfg.coll.handle, title: cfg.coll.title,
-      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz. Gratis-Versand ab CHF 65.</p>`,
+      descriptionHtml: `<p>${cfg.coll.title} – kuratierte Auswahl für die Schweiz. Gratis-Versand ab CHF 50.</p>`,
       ruleSet: { appliedDisjunctively: false, rules: [{ column: 'TAG', relation: 'EQUALS', condition: cfg.coll.tag }] } } });
     const id = r?.data?.collectionCreate?.collection?.id;
     console.log(`  Collection ${cfg.coll.title}: ${id ? 'angelegt' : 'FEHLER ' + JSON.stringify(r?.data?.collectionCreate?.userErrors)}`);
@@ -255,9 +255,9 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       if (!colors.length) colors = ['Standard'];
       const tags = [cfg.coll.tag, ...cfg.extraTags, 'cj-real'];
       const desc = `<p><strong>${title}</strong></p><ul>${cfg.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
-        + `<p>📦 Lieferung CH/EU 6–12 Tage · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
+        + `<p>📦 Lieferung CH/EU 6–12 Tage · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
       const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: 'ACTIVE', tags,
-        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, Gratis-Versand ab CHF 65.` },
+        descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, Gratis-Versand ab CHF 50.` },
         productOptions: [{ name: 'Farbe', values: colors.map(c => ({ name: c })) }],
         variants: colors.map(c => ({ optionValues: [{ optionName: 'Farbe', name: c }], price, inventoryItem: { sku: `CJ-${p.sku}-${c}`.slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' })),
         files: p.imgs.map(u => ({ originalSource: u, contentType: 'IMAGE' })) };

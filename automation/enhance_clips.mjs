@@ -40,7 +40,7 @@ const FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf';
 
 const CAPTIONS=[
   '{label} ✨ Premium-Look zum fairen Preis. Code WELCOME10 = -10% · 🔗 Link in Bio',
-  'Neu entdeckt: {label} 🤍 Schweizer Shop · Gratis-Versand ab CHF 65 · 🔗 Link in Bio',
+  'Neu entdeckt: {label} 🤍 Schweizer Shop · Gratis-Versand ab CHF 50 · 🔗 Link in Bio',
   'Dein Sommer-Liebling? {label} 🌿 -10% mit WELCOME10 · 30 Tage Rückgabe · 🔗 Link in Bio',
   '{label} — premium & bezahlbar. Jetzt mit Code WELCOME10 · 🔗 Link in Bio',
 ];

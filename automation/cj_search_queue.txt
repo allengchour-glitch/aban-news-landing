@@ -19,10 +19,10 @@
 #done search:pet cooling mat gel self cooling
 #done search:electric water gun automatic
 #done search:windproof beach umbrella UPF50
-search:quick dry water shoes barefoot
-search:insulated cooler tote bag leakproof
-search:ice roller face skin cooling
-search:Switzerland flag banner garland
-search:soccer fan face paint
-search:plush doll keychain bag charm cute
-search:silicone pencil case sensory
+#done search:quick dry water shoes barefoot
+#done search:insulated cooler tote bag leakproof
+#done search:ice roller face skin cooling
+#done search:Switzerland flag banner garland
+#done search:soccer fan face paint
+#done search:plush doll keychain bag charm cute
+#done search:silicone pencil case sensory

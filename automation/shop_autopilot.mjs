@@ -55,7 +55,7 @@ function seoFor(p){
   const title = clip(t,57)+' | LuxeStyle';
   const what = [p.vendor && p.vendor!=='LuxeStyle' ? p.vendor : '', p.productType].filter(Boolean).join(' ');
   const ctx = what ? ` (${what})` : '';
-  const desc = clip(`${t} – jetzt bei LuxeStyle Schweiz${ctx}. Gratis-Versand ab CHF 65, 30 Tage Rückgabe, sichere Zahlung. Code WELCOME10 für –10 %.`,158);
+  const desc = clip(`${t} – jetzt bei LuxeStyle Schweiz${ctx}. Gratis-Versand ab CHF 50, 30 Tage Rückgabe, sichere Zahlung. Code WELCOME10 für –10 %.`,158);
   return { title, desc };
 }
 
