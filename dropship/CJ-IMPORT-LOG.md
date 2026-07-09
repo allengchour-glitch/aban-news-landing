@@ -2042,3 +2042,7 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Artikel (Tantus & Co., teils OHNE erotik-Tags im Google-Feed!) → alle erotik-mode+nicht-bewerben
   + aus Shop/TikTok/FB/Google/Pinterest entfernt (nur Onlineshop+POS). Smoke (12) war schon sauber.
   → Bing-Recrawl abwarten (~1 Woche), dann Import erneut; alternativ Support-Chat. GEPARKT.
+- 🟦 Bing-Webmaster-Verifizierung: msvalidate.01-Tag per themeFilesUpsert in theme.liquid (</head>)
+  eingebaut, live verifiziert (curl 200 + Tag im HTML). Nächster Schritt PC-Claude: «Verify» klicken +
+  Sitemap https://luxestyle.ch/sitemap.xml einreichen. MMC-Store danach mit verifizierter Domain neu
+  probieren; falls Richtlinien-Flag bleibt → Support-Einspruch (Adult-Sweep als Beleg).
