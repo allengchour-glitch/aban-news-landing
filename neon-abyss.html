@@ -78,6 +78,7 @@ canvas{display:block;cursor:crosshair}
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
 <script>
 (function(){
 "use strict";
@@ -109,6 +110,19 @@ for(var pi=0;pi<10;pi++){var a=pi/10*6.283,r=ARENA*0.72;var col=new THREE.Mesh(n
   var shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.6,2.4,10,8,1,true),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.05,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
   shaft.position.set(Math.cos(a)*r,5,Math.sin(a)*r);scene.add(shaft);}
 // Marker (Klick-Ziel)
+// Verlies-Wächter: echtes Meshy-3D-Modell mit PBR-Textur (dekorativ)
+var _imps=[];
+if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/lp_imp.glb",function(g){
+  var base=g.scene,box=new THREE.Box3().setFromObject(base),sz=new THREE.Vector3();box.getSize(sz);
+  var k=3.4/(sz.y||1);
+  [[-14,-20,0.6],[14,-20,-0.6]].forEach(function(p,ix){
+    var imp=ix?base.clone(true):base;imp.scale.setScalar(k);
+    var b2=new THREE.Box3().setFromObject(imp);
+    imp.position.set(p[0],-b2.min.y,p[1]);imp.rotation.y=p[2];
+    scene.add(imp);_imps.push({o:imp,k:k});
+    var pl=new THREE.PointLight(0xb15cff,1.1,15);pl.position.set(p[0],3.5,p[1]);scene.add(pl);
+  });
+},undefined,function(){});}
 // Glut-Partikel (Atmosphäre)
 var embN=90,embG=new THREE.BufferGeometry(),embP=new Float32Array(embN*3),embV=new Float32Array(embN);
 for(var _ei=0;_ei<embN;_ei++){embP[_ei*3]=(Math.random()-.5)*80;embP[_ei*3+1]=Math.random()*8;embP[_ei*3+2]=(Math.random()-.5)*80;embV[_ei]=0.4+Math.random()*1.1;}
@@ -267,6 +281,7 @@ function loop(now){
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=8*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;p.m.position.y=-99;}}
   if(markerT>0){markerT-=dt;marker.scale.setScalar(1+Math.sin(now*0.02)*0.15);if(markerT<=0)marker.visible=false;}
   if(G.shake>0)G.shake-=dt*1.5;
+  for(var _im=0;_im<_imps.length;_im++)_imps[_im].o.scale.y=_imps[_im].k*(1+0.035*Math.sin(now*0.0016+_im*2.1));
   hSword.position.y=1.15+Math.sin(now*0.0035)*0.07;hSword.rotation.z=-0.18+Math.sin(now*0.0022)*0.05;hRing.scale.setScalar(1+Math.sin(now*0.004)*0.06);
   for(var _e2=0;_e2<embN;_e2++){embP[_e2*3+1]+=embV[_e2]*dt;if(embP[_e2*3+1]>9)embP[_e2*3+1]=0;}embG.attributes.position.needsUpdate=true;
   // Iso-Kamera folgt
