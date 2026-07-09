@@ -2021,3 +2021,6 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - 🗂️ Menü-Split (User-Feedback): «Beauty & Tier» → «💄 Beauty & Parfüm» + «🐾 Haustierwelt».
 - 🏠 Homepage: Beauty-Sektion zeigt jetzt 💐 Damenparfüm (1'000+ Markendüfte waren unsichtbar).
 - ✅ Topseller-Stock-Guard: 0 CJ-SKUs in Top-250 (BigBuy-lastig) — viral-hits bleibt der geprüfte Ad-Anker.
+- ✅ Dubletten-Heilung FERTIG (09.07.): 920 Bild-Duplikate → DRAFT (duplikat-auto-draft, total jetzt
+  3'256 rückholbar) + 42 per Modell-Nr. differenziert, 0 Fehler. Stichprobe verifiziert (Herrenuhr-
+  Gruppe: 1 ACTIVE Keeper + 3 DRAFT ✓). Katalog bleibt >10'000 aktiv.
