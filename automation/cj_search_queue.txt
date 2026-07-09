@@ -10,15 +10,15 @@
 #done search:fast charger 65W GaN
 #done search:magsafe powerbank
 # VR/AI-Nachschub (User «AR brillen?»):
-search:AR smart glasses
-search:smart glasses camera
-search:AI translator earbuds
+#done search:AR smart glasses
+#done search:smart glasses camera
+#done search:AI translator earbuds
 # Trend-Scout 09.07. (Hitzewelle+WM+1.Aug+Schulstart):
-search:handheld turbo fan power bank rechargeable
-search:bladeless neck fan portable rechargeable
-search:pet cooling mat gel self cooling
-search:electric water gun automatic
-search:windproof beach umbrella UPF50
+#done search:handheld turbo fan power bank rechargeable
+#done search:bladeless neck fan portable rechargeable
+#done search:pet cooling mat gel self cooling
+#done search:electric water gun automatic
+#done search:windproof beach umbrella UPF50
 search:quick dry water shoes barefoot
 search:insulated cooler tote bag leakproof
 search:ice roller face skin cooling
