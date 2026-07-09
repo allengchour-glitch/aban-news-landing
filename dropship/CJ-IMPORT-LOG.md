@@ -2063,3 +2063,8 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Impressum um Firmierung+UID ergänzen.
 - 💰 Marktpreise: Mittelfeld fair. Gesenkt: Gewürzständer 57.90→39.90, Zughundeseil 39.90→27.90.
   MK-Taschen unter Boutique-Preis = BigBuy-Originalware (Outlet-Niveau), kein Fake-Verdacht, beobachten.
+- 🧹 Kollektions-Konsolidierung FERTIG: 25 Doubletten stillgelegt (unpublished, reversibel) mit
+  301-Redirects auf Kanonische (Gadgets 4→1, Schuh-Doppelbaum, sub-uhren→uhren, Marken-Paare,
+  Küchen-Splitter→sub-kueche u.a.); 7 korrekt übersprungen (in Menü/Homepage referenziert).
+  9 Alt-Redirect-Leichen auf Ziel-Pfaden entfernt + Redirects nachgelegt. Menü: Marken-Welt→7.5k
+  Markenartikel, Lifestyle→trends-gadgets, Auto-Dublette raus, 3 Emojis ergänzt.
