@@ -97,6 +97,8 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #chatToggle{position:fixed;left:10px;bottom:48px;z-index:40;display:none;border:2px solid #ffcf3a;background:rgba(255,253,246,.94);border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:chatBlink 1s ease-in-out infinite}
 @keyframes chatBlink{50%{box-shadow:0 0 0 6px rgba(255,209,102,.45)}}
+#rad{position:fixed;left:50%;top:44%;transform:translate(-50%,-50%) scale(.7);z-index:26;display:none;opacity:0;transition:opacity .3s,transform .35s cubic-bezier(.2,1.4,.4,1);pointer-events:none;filter:drop-shadow(0 14px 30px rgba(60,40,10,.4))}
+#radPtr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:2rem;color:#e8443a;text-shadow:0 2px 4px rgba(0,0,0,.3);z-index:2}
 </style>
 </head>
 <body>
@@ -118,7 +120,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <div id="dmg" style="position:fixed;inset:0;pointer-events:none;z-index:12"></div>
 <div id="mourn" style="position:fixed;inset:0;pointer-events:none;z-index:13;background:radial-gradient(circle,rgba(20,20,30,0) 30%,rgba(10,10,18,.88));opacity:0;transition:opacity 1.2s"></div>
 <div id="dice">🎲</div>
-<button id="rollBtn" class="hide">🎲 Würfeln</button>
+<button id="rollBtn" class="hide">🎡 Drehen!</button>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
 <button id="chatBtn" title="Chat mit Oma Hilde" style="position:fixed;bottom:96px;right:14px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)" class="hide">💬</button>
 <div id="chatW" class="hide" style="position:fixed;bottom:96px;right:14px;width:min(320px,90vw);height:min(400px,60vh);background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;z-index:35;display:flex;flex-direction:column;box-shadow:0 16px 44px rgba(60,40,10,.35);overflow:hidden">
@@ -835,16 +837,16 @@ function updFam(dt){
 var turnArrow=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var cx=cv.getContext("2d");
   cx.fillStyle="#fff";cx.beginPath();cx.moveTo(32,58);cx.lineTo(8,18);cx.lineTo(56,18);cx.closePath();cx.fill();
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true}));
-  sp.scale.setScalar(1.9);sp.visible=false;scene.add(sp);return sp;})();
+  sp.scale.setScalar(1.5);sp.visible=false;scene.add(sp);return sp;})();
 var turnRing=(function(){var r=new THREE.Mesh(new THREE.TorusGeometry(0.85,0.09,8,26),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0.85}));
   r.rotation.x=Math.PI/2;r.visible=false;scene.add(r);return r;})();
 function updTurnMarker(dt){
   if(!G||!running){turnArrow.visible=false;turnRing.visible=false;return;}
   var p=G.players[G.turn];if(p.done){turnArrow.visible=false;turnRing.visible=false;return;}
-  var pw=pawns[G.turn];turnArrow.visible=true;
+  var pw=pawns[G.turn];turnArrow.visible=(G.phase==="idle");
   turnArrow.material.color.setHex(p.col);
-  turnArrow.position.set(pw.position.x,pw.position.y+3.4+Math.sin(performance.now()*0.005)*0.25,pw.position.z);
-  turnRing.visible=true;turnRing.material.color.setHex(p.col);
+  turnArrow.position.set(pw.position.x,pw.position.y+4.3+Math.sin(performance.now()*0.005)*0.25,pw.position.z);
+  turnRing.visible=(G.phase==="idle");turnRing.material.color.setHex(p.col);
   turnRing.position.set(pw.position.x,pw.position.y+0.09,pw.position.z);
   var rs=1+0.12*Math.sin(performance.now()*0.005);turnRing.scale.set(rs,rs,1);
   // aktives Feld pulsiert
@@ -927,28 +929,49 @@ function rollCore(){
   if(!running||G.phase!=="idle")return;
   var p=G.players[G.turn];if(p.done){nextTurn();return;}
   G.phase="rolling";rollBtn.disabled=true;emote(G.turn,"wurf");
-  var n=1+((srand()*6)|0),ticks=0;
-  diceEl.style.opacity=1;beep(500,.06,"triangle",.05);
-  var iv=setInterval(function(){
-    diceEl.textContent=DICE_FACES[(Math.random()*6)|0];ticks++;beep(300+Math.random()*500,.03,"square",.02);
-    if(ticks>10){clearInterval(iv);diceEl.textContent=DICE_FACES[n-1];
-      beep(760,.12,"triangle",.06);
-      var pw=pawns[G.turn];dieShow(n,pw.position.x+2.2,pw.position.z+1.2);
-      if(die3d)diceEl.style.opacity=0;
-      setTimeout(function(){diceEl.style.opacity=0;startMove(n);},700);}
-  },70);
+  var n=1+((srand()*6)|0);
+  showWheel(n,function(){startMove(n);});
+}
+// 🎡 Drehrad (wie im Original-Brettspiel): dreht mit Auslauf und landet auf n
+var _radDiv=null;
+function showWheel(n,done){
+  if(!_radDiv){_radDiv=document.createElement("div");_radDiv.id="rad";
+    _radDiv.innerHTML='<div id="radPtr">▼</div><canvas id="radCv" width="300" height="300"></canvas>';
+    document.body.appendChild(_radDiv);}
+  _radDiv.style.display="block";requestAnimationFrame(function(){_radDiv.style.opacity=1;_radDiv.style.transform="translate(-50%,-50%) scale(1)";});
+  var cv=document.getElementById("radCv"),ctx=cv.getContext("2d");
+  var cols=["#ff9ab8","#9ac8ff","#ffd166","#8fd8a0","#c8a8ff","#ffb37a"];
+  function draw(rot){ctx.clearRect(0,0,300,300);ctx.save();ctx.translate(150,150);ctx.rotate(rot);
+    for(var i=0;i<6;i++){ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,138,i*Math.PI/3,(i+1)*Math.PI/3);ctx.closePath();
+      ctx.fillStyle=cols[i];ctx.fill();ctx.strokeStyle="rgba(255,255,255,.85)";ctx.lineWidth=4;ctx.stroke();
+      ctx.save();ctx.rotate((i+0.5)*Math.PI/3);ctx.translate(92,0);ctx.rotate(Math.PI/2);
+      ctx.fillStyle="#3a3040";ctx.font="900 44px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(String(i+1),0,0);ctx.restore();}
+    ctx.beginPath();ctx.arc(0,0,26,0,6.3);ctx.fillStyle="#fffdf6";ctx.fill();ctx.strokeStyle="#ffcf3a";ctx.lineWidth=5;ctx.stroke();
+    ctx.restore();}
+  // Zielwinkel: Segment n unter dem Zeiger (oben, -90°), + 4 volle Umdrehungen
+  var target=-Math.PI/2-(n-0.5)*Math.PI/3+Math.PI*8;
+  var t0=performance.now(),dur=2700,lastSeg=-1;
+  function anim(now){var k=Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-k,3);
+    var rot=target*e;draw(rot);
+    var seg=Math.floor(((-Math.PI/2-rot)%(Math.PI/3)+Math.PI/3)%(Math.PI/3)*0+rot/(Math.PI/3));
+    if(seg!==lastSeg){lastSeg=seg;if(k<0.96)beep(420+((seg%6)+6)%6*30,.03,"square",.025);}
+    if(k<1){requestAnimationFrame(anim);}
+    else{beep(880,.18,"triangle",.07);
+      setTimeout(function(){_radDiv.style.opacity=0;_radDiv.style.transform="translate(-50%,-50%) scale(.7)";
+        setTimeout(function(){_radDiv.style.display="none";},350);done();},650);}}
+  requestAnimationFrame(anim);
 }
 rollBtn.onclick=roll;
 addEventListener("keydown",function(e){if(e.key===" "&&running){e.preventDefault();if(G.phase==="idle")roll();}});
 function startMove(n){
   G.phase="moving";moveQ=n;hopT=0;
   var p=G.players[G.turn];hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
-  announce(G.players[G.turn].name+" würfelt "+n+"!","#fff");
+  announce(G.players[G.turn].name+" dreht eine "+n+"!","#fff");
 }
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
-  hopT+=dt*3.2*OPT.tempo;
+  hopT+=dt*2.35*OPT.tempo;
   if(hopT>=1){
     p.tile=Math.min(NFIELDS-1,p.tile+1);moveQ--;hopT=0;
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
@@ -986,7 +1009,7 @@ function onLand(){
   if(typeof handleField==="function")handleField(p,f);
   else endTurnSoon();
 }
-function endTurnSoon(){updPlayers();saveGame();setTimeout(nextTurn,Math.round(450/OPT.tempo));}
+function endTurnSoon(){updPlayers();saveGame();setTimeout(nextTurn,Math.round(850/OPT.tempo));}
 function nextTurn(){
   if(!G)return;
   var allDone=G.players.every(function(p){return p.done;});
@@ -994,6 +1017,7 @@ function nextTurn(){
   var tries=0;
   do{G.turn=(G.turn+1)%G.players.length;if(G.turn===0)G.round++;tries++;}while(G.players[G.turn].done&&tries<8);
   G.phase="idle";rollBtn.disabled=NET.on&&G.turn!==NET.my;
+  if(NET.on)rollBtn.innerHTML=(G.turn===NET.my)?"🎡 Drehen!":"⏳ "+G.players[G.turn].name+" ist dran …";
   updPlayers();updChapter();saveGame();
   if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
   if(!G.players[G.turn].done)emote(G.turn,"wink");
@@ -1160,11 +1184,15 @@ function updButterflies(dt,t){if(!OPT.motion){for(var h=0;h<butterflies.length;h
 
 // ===================== Zonen-Deko pro Kapitel (thematisch, abseits des Pfads) =====================
 (function(){
-  function at(ci,slot){ // Position: Feld im Kapitel + seitlicher Versatz
+  function at(ci,slot){ // Position: Feld im Kapitel + seitlicher Versatz, NIE auf dem Pfad
     var fd=fields[Math.min(NFIELDS-1,ci*FIELDS_PER+3+slot*5)];
-    var a=Math.random()*6.283,r=7+Math.random()*7;
-    var x=fd.x+Math.cos(a)*r,z=fd.z+Math.sin(a)*r;
-    return new THREE.Vector3(x,Math.max(0,terrainH(x,z))-0.05,z);}
+    for(var t=0;t<40;t++){
+      var a=Math.random()*6.283,r=6.5+Math.random()*8;
+      var x=fd.x+Math.cos(a)*r,z=fd.z+Math.sin(a)*r,ok=true;
+      for(var q=0;q<fields.length;q++){var dx=fields[q].x-x,dz=fields[q].z-z;
+        if(dx*dx+dz*dz<30){ok=false;break;}}
+      if(ok)return new THREE.Vector3(x,Math.max(0,terrainH(x,z))-0.05,z);}
+    var x2=fd.x+16,z2=fd.z-16;return new THREE.Vector3(x2,Math.max(0,terrainH(x2,z2))-0.05,z2);}
   function grp(ci,slot){var g=new THREE.Group();var p=at(ci,slot);g.position.copy(p);scene.add(g);return g;}
   function box(g,w,h,d,c,x,y,z){var m2=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m2.position.set(x,y,z);m2.castShadow=true;g.add(m2);return m2;}
   function ball(g,r,c,x,y,z){var m2=new THREE.Mesh(new THREE.SphereGeometry(r,10,8),mat(c));m2.position.set(x,y,z);m2.castShadow=true;g.add(m2);return m2;}
@@ -1461,7 +1489,7 @@ function begin(saved){
       c.strokeStyle=hex;c.lineWidth=5;c.beginPath();c.roundRect((256-tw)/2,6,tw,60,18);c.stroke();
       c.fillStyle=hex;c.fillText(p.name,128,50);
       var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
-      sp.scale.set(2.4,0.68,1);sp.position.y=2.55;pawns[i].add(sp);})();
+      sp.scale.set(1.7,0.48,1);sp.position.y=2.15;pawns[i].add(sp);})();
     placePawn(i);syncFam(i);
     var bl2=new THREE.Mesh(new THREE.CircleGeometry(0.55,12),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.22}));
     bl2.rotation.x=-Math.PI/2;bl2.position.y=0.05;scene.add(bl2);pawnBlobs.push(bl2);});
