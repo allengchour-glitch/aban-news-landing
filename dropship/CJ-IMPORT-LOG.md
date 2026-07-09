@@ -2174,3 +2174,24 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **User-CSV-Prüfung (Kategorie-Exporte):** generalproducts 2403 «Küche Gourmet» = 21'095 Zeilen,
   davon 99% STOCK=0; die 172 lieferbaren scheitern an 28-EUR-Versand → NICHT importieren.
   Kategorie-Bäume + categorymap als Referenz abgelegt. Wertvoll war die VERSANDKOSTEN-CSV (15b).
+
+## Session 2026-07-10g — 🔎 Info-Runde mit 4 Agenten + alle Befunde autonom gefixt
+**Agent-Befunde & Fixes (alles erledigt):**
+- 🛡️ SICHERHEIT: ~57 interne Doku-Seiten (internal-*, shopify-token-guide, dashboard, make-com-debug)
+  waren ÖFFENTLICH + in Sitemap/Google → alle entpubliziert (pageUpdate isPublished:false).
+- 🏷️ Vendor-Leak: 80 Produkte mit Vendor «BigBuy Fashion/Christmas» (kundensichtbar im Filter!)
+  → Vendor «LuxeStyle».
+- 💰 CHF-65-Reste: Homepage-Trust-Block (index.json via themeFilesUpsert), 38 Kollektions-
+  Beschreibungen/SEO, + NEUE Engine /tmp/seo50_fix.py für 15'622 Produkt-SEO-Metas
+  (Ledger dropship/_seo50_done.txt, läuft). descriptionHtml-Engine (versand50) lief korrekt.
+- 🔗 /pages/kontakt war 404 → Redirect auf /pages/kontakt-support.
+- 📝 Import-QA (60 neueste): 22 Titel gefixt (Umlaute/Denglisch/Groq-Unsinn: «Sauberkeitspinsel»=
+  Bürste, «Lichtsinn», «Ladecable»…), 1 Rosen-Lampen-Duplikat gedraftet, Folli-Tasche 26.90→49.90,
+  4 BigBuy-Verlustpreis-Anlagen gedraftet (inkl. Real-Madrid-Socken = zusätzlich Lizenzrisiko-Tag).
+- 🧰 Importer-Patches: CJ-Relevanz-Wache verschärft (≥2 Suchwörter — «shower caddy»→Duschkopf-Falle),
+  Groq-Prompt: Umlaute Pflicht. bigbuy_import-Kind seit Patch mit Versand-Wache.
+- ✅ Kollektions-Gesundheit: 456 geprüft, KEIN Menü-Link auf leere Kollektion; 23 Mini-Kollektionen
+  (≤3) alle unverlinkt. Achtung: productsCount zählt Drafts mit → nach Cleanup-Ende Marken-Welt real prüfen.
+- 🎯 TikTok: neue ATC-Ad mit /collections/sommer WIEDER GENEHMIGT; beide Adgroups vorerst ENABLE,
+  Stunden-Wächter (neu: ad798961) übergibt automatisch (ATC liefert → alte DISABLE; DENY → Rollback).
+- Engines-Audit: bb_cleanup 0 Falsch-Positive (11/11 PASS), versand50 5/5 PASS.

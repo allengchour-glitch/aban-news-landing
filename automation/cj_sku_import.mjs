@@ -38,7 +38,7 @@ const GROQ_KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 
 const GROQ_MODELS = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'openai/gpt-oss-120b'];
 async function groq(nameEn, feats) {
   const prompt = `Du textest für einen Schweizer Online-Shop. Aus dem englischen Produktnamen (und Features) mache:
-1) einen KURZEN deutschen Produkttitel (max 60 Zeichen, keine Marke erfinden)
+1) einen KURZEN deutschen Produkttitel (max 60 Zeichen, keine Marke erfinden, KORREKTE Umlaute ä/ö/ü PFLICHT — nie ae/oe/ue, keine englischen Wörter)
 2) eine deutsche Beschreibung (90-140 Wörter, Galaxus-Stil, NUR Fakten).
 Name (EN): ${nameEn}\nFeatures: ${(feats || '').slice(0, 600)}
 NUR JSON: {"title":"...","html":"<p>…</p><h3>Das zeichnet es aus</h3><ul><li>…</li></ul>"} (Schweizer ss statt ß).`;
@@ -95,7 +95,8 @@ for (const item of ITEMS) {
       const kws = val.toLowerCase().split(/\s+/).filter(w => w.length > 3);
       for (const cand of list) {
         const name = (cand.productNameEn || '').toLowerCase();
-        if (kws.length && !kws.some(w => name.includes(w))) continue;
+        const hits = kws.filter(w => name.includes(w)).length;
+        if (kws.length && hits < Math.min(2, kws.length)) continue; // ≥2 Wörter bei mehrwortiger Suche («shower caddy»≠Duschkopf)
         if (!done.has(String(cand.pid))) { pid = cand.pid; break; }
       }
     }
