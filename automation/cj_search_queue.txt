@@ -46,7 +46,7 @@
 #done search:bookends decorative metal
 #done search:desk organizer wood
 #done search:cable organizer box
-search:shower caddy bamboo
-search:spice rack rotating
-search:wine bottle holder
-search:led strip corner lamp
+#done search:shower caddy bamboo
+#done search:spice rack rotating
+#done search:wine bottle holder
+#done search:led strip corner lamp

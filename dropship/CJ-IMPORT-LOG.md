@@ -2148,3 +2148,15 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - Report: dropship/brand_price_report.md · Pointer am Ende (1036) — Lauf komplett, Engine beendet.
 - Wirkung: Parfum-Kategorien (parfuem-damen 625 / parfuem-herren 464) jetzt konkurrenzfähig
   gegen CH-Marktpreise → bereit für Google-Gratis-Listings & Ads-Traffic.
+
+## Session 2026-07-10e — 💸 BIGBUY-VERSAND-SCHOCK: CH-Versand min. 27.94 EUR → Grossbereinigung
+- **User lud BigBuy-Backoffice-Exporte hoch.** Versandkosten-CSV (247k Refs, nur SEUR):
+  CH-Versand kostet für JEDE Sendung mind. ~27.94 EUR. API-verifiziert (LED-Laterne #1004: 27.94 —
+  unser erster Verkauf war also ein Verlustgeschäft!).
+- **Analyse aller 12'053 aktiven BigBuy-Produkte:** 4'864 Refs ohne CH-Versandoption (Stichprobe
+  4/4 = API-404) + 2'133 Preis+7 < reine Versandkosten (sicherer Verlust) + 1'134 knapp.
+- **Massnahmen:** (1) bigbuy_import.mjs: Versand-Wache + Preis-Floor (needChf = EK+Versand−7+4);
+  (2) Bereinigungs-Engine draftet 6'997 Produkte (Tags nicht-lieferbar-ch / bb-versand-unrentabel,
+  reversibel, Ledger); (3) GEHIRN 15b. Kleinkram-Strategie gilt NUR noch für CJ.
+- GPSR-ZIP (EU-Produktsicherheit, Hersteller-Infos) gesichert für spätere Produktseiten-Pflicht.
+- PDFs waren Prestashop-Anleitung (irrelevant) + Produkthandbuch 360 Sweep.

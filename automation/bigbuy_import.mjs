@@ -38,6 +38,9 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const PER = Math.max(1, parseInt(process.env.PER || '4', 10) || 4);
 const MARGIN = parseFloat(process.env.MARGIN || '2.6') || 2.6;     // auf wholesalePrice (EU-Einkauf)
 const EUR_CHF = 0.96;
+// CH-Versandkosten-Tabelle (SEUR, EUR) — Quelle BigBuy-Backoffice-Export, /tmp/bb_ship_ch.json
+let SHIP_CH = {}; try { SHIP_CH = JSON.parse(fs.readFileSync('/tmp/bb_ship_ch.json', 'utf8')); } catch {}
+const SHIP_N = Object.keys(SHIP_CH).length;
 const MAX_COST_EUR = parseFloat(process.env.MAX_COST_EUR || '60') || 60; // Einkaufs-Deckel je Stück
 const MIN_COST_EUR = parseFloat(process.env.MIN_COST_EUR || '0') || 0;   // Einkaufs-Untergrenze (für High-End-Wellen)
 const GAP = parseInt(process.env.GAP || '1500', 10) || 1500;       // Pause zwischen BigBuy-Calls (Rate-Limit)
@@ -832,6 +835,15 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const cost = Number(d.wholesalePrice) || 0;
       if (!cost || cost > cfg.maxCost) continue;
       if (cost < MIN_COST_EUR) continue;   // High-End-Untergrenze: günstige Basics überspringen
+      // 🚚 CH-Versandkosten-Wache (2026-07-10, SEUR-Tabelle: Minimum ~27.94 EUR pro Sendung!):
+      // Ref nicht in Tabelle = kein CH-Versand; Preis muss EK+Versand−7 Kundenanteil +4 Marge decken,
+      // sonst unverkäuflich teuer → skip. Verhindert die #1004-Verlustfalle.
+      const shipEur = SHIP_CH[String(c.sku || '').toUpperCase()];
+      if (SHIP_N && shipEur === undefined) { console.log('  skip(kein-ch-versand)', (c.name || '').slice(0, 45)); continue; }
+      const needChf = (cost + (shipEur ?? 28)) * EUR_CHF - 7 + 4;
+      if (needChf > parseFloat(chf(cost)) && needChf > cost * EUR_CHF * 3.2) {
+        console.log(`  skip(versand-unrentabel, bräuchte CHF ${needChf.toFixed(0)})`, (c.name || '').slice(0, 45)); continue;
+      }
       // Lieferbarkeits-Wache VOR dem teuren Rest: unlieferbar/ausverkauft → gar nicht erst anlegen
       const viab = await bbViable(c.sku || String(c.id)); await sleep(GAP);
       if (!viab.ok) { console.log(`  skip(${viab.why})`, (c.name || '').slice(0, 45)); continue; }
@@ -840,7 +852,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       const good = [];
       for (const u of urls.slice(0, 8)) { if (await img200(u)) good.push(u); if (good.length >= 6) break; }
       if (good.length < 2) continue;
-      picks.push({ id: c.id, sku: c.sku || String(c.id), nameEn: c.name, cost, imgs: good });
+      picks.push({ id: c.id, sku: c.sku || String(c.id), nameEn: c.name, cost, imgs: good, floorChf: needChf });
       console.log(`  Kandidat: €${cost} ${good.length}img · ${(c.name || '').slice(0, 55)}`);
     }
     if (!picks.length) { console.log('  (keine geeigneten TOP-Kandidaten)'); continue; }
@@ -857,7 +869,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       // Bild-Dubletten-Wache: identische Foto-Datei = derselbe Artikel unter anderer BigBuy-Ref → überspringen
       const imgKey = ((p.imgs && p.imgs[0]) || '').split('?')[0].split('/').pop();
       if (imgKey && imgSeen.has(imgKey)) { console.log('  skip(dup-bild)', title.slice(0, 40)); continue; }
-      const price = chf(p.cost);
+      const price = Math.max(parseFloat(chf(p.cost)), Math.ceil(p.floorChf || 0) - 0.10).toFixed(2);
       const handle = ((title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')).slice(0, 50) || 'bigbuy') + '-' + p.id;
       const tags = [cfg.coll.tag, ...cfg.extraTags, 'bigbuy', 'dropship'];
       const desc = `<p><strong>${title}</strong></p><ul>${cfg.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
