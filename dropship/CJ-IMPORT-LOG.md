@@ -2010,3 +2010,8 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   puzzles(157) · lautsprecher(131) · kaffee-ecke(122) · wein-bar(93) · haarstyling-geraete(68) ·
   nagelstudio(46). Substring-Fallen vorab geprüft (hundert/einzelteil = 0 Treffer). Menü: Beauty&Tier +6,
   Wohnen +2 (Kaffee, Wein&Bar), Kinder +Puzzles, Technik +Lautsprecher. Alle Seiten 200 OK.
+- 🌅 Nacht-Füller-Ernte 09.07.: 89 neue Produkte (Elektronik 25, Gadgets 23, Küche 15, Home 15,
+  Auto 10, Gaming 1) — Vision-QA per 3 Kontaktbögen: Bilder/Titel stimmig. 7 Fixes: Baby-Monitor
+  «43 Zoll»→4,3", FPV-Monitor dito, VR-Ständer-Titel generisch (Bild=PSVR), 2 generische
+  Heimtextil-Titel geschärft, 2 Nachtsichtgeräte (Jagd-Optik) → Tag nicht-bewerben+jagd-optik
+  (User-Regel Waffen-Optik = Werbe-Gift; bleiben kaufbar, fliegen aus Ads/Social).
