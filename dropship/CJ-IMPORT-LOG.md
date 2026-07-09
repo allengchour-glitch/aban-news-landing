@@ -1903,3 +1903,14 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Video-Backfill v2:** pid-Herleitung jetzt über **productSku→pid-Map aus der Trending-Liste** (14 Seiten,
   Präfix-Match) statt fragiler Einzelsuchen; QPS-Backoff gegen Engine-Kollision. Läuft über tag:video-hit.
 - Alle Collections publiziert-verifiziert (0 unpublizierte mit Produkten). Engines grinden weiter.
+
+## 2026-07-09 — BigBuy-Import (2 Hero-Produkte, via abannews-Session auf User-Anweisung)
+User gab BigBuy-API-Key direkt in der Session (nur ENV, NICHT im Repo). API verifiziert (purse 200).
+Voll-Katalog geladen (313'221 Produkte), nach Importer-Regeln kuratiert (Anchors/Bans/Ledger-Dedup,
+≥2 Bilder, EK≤€60, Bilder HTTP-200-geprüft). Angelegt (ACTIVE, alle 6 Kanäle publiziert, Media READY):
+- **Polaroid Sonnenbrille «PLD 6023/S» Unisex** — bb:109929, SKU bb-S0333097, EK €12.82 → VK CHF 32.90, 3 Bilder
+  https://luxestyle.ch/products/polaroid-sonnenbrille-pld-6023-s-unisex
+- **Folli Follie Damen-Tasche «WA14P017» Beige** — bb:268080, SKU bb-S0359670, EK €10.67 → VK CHF 26.90, 2 Bilder
+  https://luxestyle.ch/products/folli-follie-damen-tasche-wa14p017-beige
+Publish via publishablePublish mit echten IDs (Falle §G beachtet), je 6/6 Publications, 0 Fehler.
+Hinweis: FTP-Feed (ftp.dropshippershop.com) aus Cloud-Sandbox nicht erreichbar (Port 21 zu) — REST-API reicht.
