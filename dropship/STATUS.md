@@ -1,5 +1,29 @@
 # 📊 LuxeStyle — STATUS (immer aktuell)
 
+## 2026-07-10 (UEBERNAHME durch laufende Session — Handoff ausgefuehrt)
+- **#1005:** Tracking-Seite liefert weiterhin canonical .../my-orders/not-found = Paket NICHT im Transit
+  → bewusst NICHT fulfilled (Anweisung befolgt). Taeglicher Wachter (08:43-Cron) prueft weiter; Fulfillment-IDs
+  stehen in SHARED-MEMORY §Uebergabe. Pruef-Trick ohne Printful-Key: curl Tracking-URL → canonical-Link greppen.
+- **Erledigt aus der Prioritaetenliste:**
+  (2) Theme-Trust: lux_trust-Block auf jeder PDP zeigt jetzt «Kauf auf Rechnung — Klarna · TWINT · Karten · PayPal»
+      (staerkster CH-Hebel, Klarna/TWINT sind verifiziert aktiv). sub-halsketten + sub-armbaender auf PRICE_ASC
+      (Strategie-Hebel 4: Erstbesucher sah nur teure Marken).
+  (3) 4 Set-Bundles LIVE (ehrliches compareAt = Einzelsumme, transparente Versand-Note, in frauen-favoriten):
+      set-aura-geburtstags-geschenkset 54.90/57.70 (15452618588545) · set-badi-ready-sommer-maritim 59.90/64.70
+      (15452618654081) · set-kleeblatt-gluecks-duo 52.90/54.80 (15452618686849) · set-eternita-ring-stack
+      51.90/53.80 (15452618719617).
+  (4) Marken-Claims entschaerft: soften_brand_claims.mjs GO=1 → 21 Produkte (100%-Original/Schweizer-Qualitaet raus),
+      28'928 gescannt, Report reports/soften-claims.txt.
+- **(1) Klaviyo-Flow BLOCKIERT:** Klaviyo-Konnektor ist verbunden (User 10.07.), aber Tools docken erst nach
+  Session-Neustart an. Naechste Session mit Klaviyo-Tools: Post-Purchase-/Review-Flow bauen.
+- **Blog-r2 NICHT ausgefuehrt** (Duplikat-Falle beachtet).
+- **Querverweis:** Die Parallel-Session (Branch claude/luxestyle-status-tztnn1) hat heute gefixt: TikTok-Ads
+  AUDIT_DENY (Counterfeit-Verdacht viral-hits → Landing /collections/sommer, wieder genehmigt) · BigBuy-CH-Versand
+  kostet MINDESTENS ~27.94 EUR (SEUR) → ~7'000 unrentable/nicht-lieferbare BigBuy-Produkte werden gedraftet ·
+  57 oeffentliche internal-Seiten versteckt · Vendor-Leak (BigBuy Fashion) gefixt · Versandschwelle ueberall CHF 50.
+  Details: CJ-IMPORT-LOG Sessions 2026-07-10a-g auf jenem Branch.
+
+
 ## 2026-07-09 (ÜBERGABE an neue Session — voller Live-Stand verifiziert)
 - **Zahlen (live via Admin-API):** 10'000 aktive Produkte / 5'003 Drafts / 170 archiviert. PC-Queue leer, alle 9 Agenten-Runden materialisiert.
 - **⚽ #1005 OFFEN (wichtigste Einzelaufgabe):** Printful „inprocess", Label 5.7., Tracking-Seite „Not found" = noch nicht im Transit →
