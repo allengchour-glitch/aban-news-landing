@@ -296,8 +296,8 @@ footer a{color:var(--muted)}
   function calcRowEl(item,i){
     var tr=document.createElement("tr");
     tr.innerHTML='<td><input class="c-desc" type="text" value="'+(item.desc||"").replace(/"/g,"&quot;")+'" placeholder="Leistung"></td>'+
-      '<td><input class="c-qty" type="number" inputmode="decimal" value="'+(item.qty!=null?item.qty:1)+'"></td>'+
-      '<td><input class="c-price" type="number" inputmode="decimal" value="'+(item.price!=null?item.price:0)+'"></td>'+
+      '<td><input class="c-qty" type="number" inputmode="decimal" aria-label="Menge" value="'+(item.qty!=null?item.qty:1)+'"></td>'+
+      '<td><input class="c-price" type="number" inputmode="decimal" aria-label="Preis in CHF" value="'+(item.price!=null?item.price:0)+'"></td>'+
       '<td class="c-sum">—</td><td><button type="button" class="del" title="Entfernen">✕</button></td>';
     tr.querySelector(".del").addEventListener("click",function(){state.calc.splice(i,1);renderCalc();});
     tr.querySelectorAll("input").forEach(function(inp){inp.addEventListener("input",function(){

@@ -775,7 +775,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     var tb=$("#"+p+"_items tbody");
     function addItem(desc,qty,price){
       var tr=document.createElement("tr");
-      tr.innerHTML='<td><input class="i_desc" placeholder="Leistung / Artikel"></td><td><input class="i_qty num" inputmode="decimal" value="1"></td><td><input class="i_price num" inputmode="decimal" value="0"></td><td class="num i_sum">0,00</td><td><button class="delrow">×</button></td>';
+      tr.innerHTML='<td><input class="i_desc" placeholder="Leistung / Artikel"></td><td><input class="i_qty num" inputmode="decimal" aria-label="Menge" value="1"></td><td><input class="i_price num" inputmode="decimal" aria-label="Einzelpreis" value="0"></td><td class="num i_sum">0,00</td><td><button class="delrow">×</button></td>';
       tb.appendChild(tr);
       if(desc!=null)$(".i_desc",tr).value=desc;if(qty!=null)$(".i_qty",tr).value=qty;if(price!=null)$(".i_price",tr).value=price;
       $(".delrow",tr).addEventListener("click",function(){tr.remove();calc()});
@@ -1343,7 +1343,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
 
   /* ===== Lieferschein ===== */
   function setupLieferschein(){var tb=$("#l_items tbody");
-    function addItem(desc,qty){var tr=document.createElement("tr");tr.innerHTML='<td><input class="i_desc" placeholder="Artikel / Leistung"></td><td><input class="i_qty num" inputmode="decimal" value="1"></td><td><button class="delrow">×</button></td>';tb.appendChild(tr);if(desc!=null)$(".i_desc",tr).value=desc;if(qty!=null)$(".i_qty",tr).value=qty;$(".delrow",tr).addEventListener("click",function(){tr.remove()})}
+    function addItem(desc,qty){var tr=document.createElement("tr");tr.innerHTML='<td><input class="i_desc" placeholder="Artikel / Leistung"></td><td><input class="i_qty num" inputmode="decimal" aria-label="Menge" value="1"></td><td><button class="delrow">×</button></td>';tb.appendChild(tr);if(desc!=null)$(".i_desc",tr).value=desc;if(qty!=null)$(".i_qty",tr).value=qty;$(".delrow",tr).addEventListener("click",function(){tr.remove()})}
     function items(){return $$("#l_items tbody tr").map(function(tr){return {desc:$(".i_desc",tr).value,qty:$(".i_qty",tr).value}})}
     function setItems(arr){tb.innerHTML="";(arr&&arr.length?arr:[{}]).forEach(function(it){addItem(it.desc,it.qty)})}
     if($("#l_add"))$("#l_add").addEventListener("click",function(){addItem()});

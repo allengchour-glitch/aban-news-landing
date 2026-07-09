@@ -133,8 +133,8 @@ footer a{color:var(--muted)}
   function row(name,min,wk,ned){
     var tr=document.createElement("tr");
     tr.innerHTML='<td><input type="text" class="c-name" value="'+name.replace(/"/g,"&quot;")+'" placeholder="z. B. Rechnungen erfassen"></td>'+
-      '<td class="num"><input type="number" class="c-min" min="0" step="1" value="'+min+'" inputmode="decimal"></td>'+
-      '<td class="num"><input type="number" class="c-wk" min="0" step="1" value="'+wk+'" inputmode="decimal"></td>'+
+      '<td class="num"><input type="number" class="c-min" min="0" step="1" aria-label="Minuten pro Mal" value="'+min+'" inputmode="decimal"></td>'+
+      '<td class="num"><input type="number" class="c-wk" min="0" step="1" aria-label="Mal pro Woche" value="'+wk+'" inputmode="decimal"></td>'+
       '<td class="ted"><select class="c-ned"><option value="1">geht so</option><option value="2">nervt</option><option value="3">hasse ich</option></select></td>'+
       '<td class="del"><button type="button" title="löschen">✕</button></td>';
     rows.appendChild(tr);
