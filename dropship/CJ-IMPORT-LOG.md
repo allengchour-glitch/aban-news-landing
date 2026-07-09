@@ -2195,3 +2195,17 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - 🎯 TikTok: neue ATC-Ad mit /collections/sommer WIEDER GENEHMIGT; beide Adgroups vorerst ENABLE,
   Stunden-Wächter (neu: ad798961) übergibt automatisch (ATC liefert → alte DISABLE; DENY → Rollback).
 - Engines-Audit: bb_cleanup 0 Falsch-Positive (11/11 PASS), versand50 5/5 PASS.
+
+## Session 2026-07-10h — Übernahme-Abgleich mit memory-2026-06-13-Session + 2 User-Wünsche erledigt
+- **Gelesen (origin/claude/memory-2026-06-13 bis 04f1e896), nichts doppelt gemacht:** CHF-50-Umstellung
+  dort = Pages/Blog; hier = descriptionHtml+SEO-Metas+Theme (komplementär). merge_variants (29 Gruppen)
+  + Nischen-Configs (modellautos/rc_kamera/aiglasses/d_ersatz) sind auch in unserem bigbuy_import.mjs.
+  Merker übernommen: Farb-Geschwister nicht neu als Einzel-Listings; Raucher NUR Online Store+POS;
+  beim Import strenger taggen (Pauschal-Tag-Falle).
+- **🔧 User-Wunsch 1 — Ersatzteile:** Collection `ersatzteile-zubehoer` existierte (60 Produkte, 12 Regeln,
+  publiziert) → NEU: Menü-Link unter «📱 Technik & Auto» + One-Shot-Nachschub `/tmp/ersatz_fill.sh`
+  (wartet auf freien BigBuy-Slot, dann CATS=d_ersatz PER=14 — Rate-Limit-schonend).
+- **👶 User-Wunsch 2 — Kinder schneller findbar:** «🧸 Kinder»-Top-Level hatte 6 Einträge → +👟 Kinderschuhe;
+  UND grosser Fund: **77 Menü-Links hatten /en/-Präfix** (zwangen Kunden in die englische Sprachversion,
+  u.a. Sport-, Schuhe-Top-Level, Actionfiguren, Puzzles) → alle auf /collections/… repariert.
+- Kein Merge des fremden Branches (Ledger-Snapshots); Wissen destilliert, Branches bleiben getrennt.
