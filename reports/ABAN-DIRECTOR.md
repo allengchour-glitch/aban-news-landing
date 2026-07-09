@@ -6,7 +6,11 @@ Kanal-Start: 2026-06-03 · Tag 9/30 · letzte Auswertung 2026-06-12 (UTC)
 
 ## Aktuelle Entscheidung
 
-> ⚠️ Woche 1, kaum Abos (7 Abos (+0)). Aktion: Hooks/Thumbnails/Titel variieren, Abo-Aufruf schaerfen — weiter taeglich posten, Pivot-Entscheid an Tag 30.
+> 🔄 **PIVOT AUSGEFÜHRT (2026-07-09, Tag 36, Video-Chef-Übernahme):** 30-Tage-Regel griff (7 Abos, +0).
+> Neue Serie „KI ohne Hype" (deutsch, ep37+, echte warme Footage, CTA → abannews.com). ep24–ep36
+> werden nach Creds-Freigabe hochgeladen; keine neue Conspiracy-Produktion. Details: STATUS.md.
+
+> (vorher) ⚠️ Woche 1, kaum Abos (7 Abos (+0)). Aktion: Hooks/Thumbnails/Titel variieren, Abo-Aufruf schaerfen — weiter taeglich posten, Pivot-Entscheid an Tag 30.
 
 - **Abonnenten: 7** (Trend seit letztem Lauf: +0)
 - Gesamt-Views: **538** (Trend: +0)
