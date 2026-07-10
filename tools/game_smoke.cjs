@@ -75,6 +75,8 @@ function serve() {
       await page.waitForTimeout(700);
       await page.screenshot({ path: path.join(OUT, `${tag}_menu.png`) });
       await page.keyboard.press("Space"); // Start (bei den meisten Spielen)
+      // Spiele mit explizitem Start-Knopf (z. B. neon-realm #startBtn): zusätzlich klicken
+      try { const sb = await page.$("#startBtn"); if (sb && await sb.isVisible()) await sb.click(); } catch {}
       await page.waitForTimeout(1400);
       await page.screenshot({ path: path.join(OUT, `${tag}_live.png`) });
     } catch (e) {
