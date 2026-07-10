@@ -43,6 +43,31 @@ def hat(vel, open_=False):
     y = hp(np.random.randn(n), 7000) * np.exp(-t/(0.06 if open_ else 0.008))
     return y/np.max(np.abs(y)+1e-9) * (vel/127) * 0.6
 
+
+def clap(vel):
+    n = int(0.16*SR); t = np.arange(n)/SR
+    y = np.zeros(n)
+    for off in (0, int(0.008*SR), int(0.016*SR), int(0.024*SR)):  # 4 gestaffelte Bursts
+        seg = bp(np.random.randn(n), 1200, 6000)
+        e = np.zeros(n); e[off:] = np.exp(-np.arange(n-off)/(0.03*SR))
+        y += seg*e
+    return y/np.max(np.abs(y)+1e-9)*(vel/127)*0.8
+def rim(vel):
+    n = int(0.05*SR); t = np.arange(n)/SR
+    tone = np.sin(2*np.pi*1700*t)*np.exp(-t/0.006)
+    noise = hp(np.random.randn(n),3000)*np.exp(-t/0.004)*0.5
+    return (tone+noise)/np.max(np.abs(tone+noise)+1e-9)*(vel/127)*0.7
+def perc(vel):
+    n = int(0.09*SR); t = np.arange(n)/SR
+    y = (np.sin(2*np.pi*440*t)+0.5*np.sin(2*np.pi*660*t))*np.exp(-t/0.05)
+    return y/np.max(np.abs(y)+1e-9)*(vel/127)*0.5
+def kick808(vel):
+    n = int(0.45*SR); t = np.arange(n)/SR
+    f = 45 + (90-45)*np.exp(-t/0.03)                 # sanfterer Pitch-Drop, langer Sub-Tail
+    y = np.sin(2*np.pi*np.cumsum(f)/SR)*np.exp(-t/0.28)
+    y += hp(np.random.randn(n),2000)*np.exp(-t/0.003)*0.25  # dezenter Click
+    return y/np.max(np.abs(y)+1e-9)*(vel/127)*0.95
+
 rows = []
 for line in open(spec):
     p = line.split()
@@ -52,7 +77,8 @@ if not rows:
 total = max(s for s,_,_ in rows) + 0.5
 buf = np.zeros(int(total*SR))
 MAKE = {'kick':lambda v:kick(v),'snare':lambda v:snare(v),'ghost':lambda v:snare(v,True),
-        'hat':lambda v:hat(v),'ohat':lambda v:hat(v,True)}
+        'hat':lambda v:hat(v),'ohat':lambda v:hat(v,True),
+        'clap':lambda v:clap(v),'rim':lambda v:rim(v),'perc':lambda v:perc(v),'k808':lambda v:kick808(v)}
 for st, typ, vel in rows:
     if typ not in MAKE: continue
     y = MAKE[typ](vel); i0 = int(st*SR)

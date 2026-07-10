@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# LuxeStyle Producer — LIQUID DnB v4 VOCAL (Ref: AFTERGLOW Vocal Mix). 174 BPM, a-Moll, WARM.
+# LuxeStyle Producer — LIQUID DnB v4 VOCAL (Ref: AFTERGLOW Vocal Mix). 174 BPM, a-Moll, WARM, ELEKTRONISCHE Perc (808/Clap/Rim, kein akust. Kit).
 # + Choir/Voice-Hook (aah-Vocals), lush Reverb, weicher Groove.
 # Struktur (48 Takte ~66s): Intro 1-8 (Rhodes+Pad, kein Drum, Sub-Andeutung) · Build 9-16 (gefilterter
 # Break rein, Riser) · Drop1 17-32 (voller Two-Step + Reese/Sub + Hook) · Breakdown 33-40 (Drums raus,
@@ -29,13 +29,13 @@ sec_per_tick = 60.0 / BPM / TPQ
 def D(tick, typ, vel):
     drum_rows.append((tick * sec_per_tick, typ, vel))
 def is_two_step(t0, vel_k):
-    for k in (0, 10): D(t0 + k*S, 'kick', vel_k)
-    for sn in (4, 12): D(t0 + sn*S, 'snare', 118)
-    for g in (7, 11, 15): D(t0 + g*S + 12, 'ghost', 60)
+    for k in (0, 10): D(t0 + k*S, 'k808', vel_k)       # 808-Sub-Kick statt akustisch
+    for sn in (4, 12): D(t0 + sn*S, 'clap', 112)       # Clap statt Snare
+    for g in (7, 11, 15): D(t0 + g*S + 12, 'rim', 54)  # Rim-Clicks statt Ghost-Snare
+    D(t0 + 6*S, 'perc', 40)                            # tonaler Perc-Akzent
     for h in range(16):
-        sw = 14 if h % 2 else 0
-        D(t0 + h*S + sw, 'hat', 30 if h % 2 == 0 else 46)
-    D(t0 + 14*S, 'ohat', 54)
+        if h % 2 == 1:                                 # nur Offbeat-Hats = luftiger, weniger "Kit"
+            D(t0 + h*S + 14, 'hat', 40)
 
 for b in range(NBARS):
     voic, bs, hook = PROG[b % 4]
@@ -78,12 +78,12 @@ for b in range(NBARS):
         is_two_step(t0, 60)
         if b == 15:
             for r in range(16):
-                D(t0 + r * S, 'snare', 45 + r * 4)  # Snare-Riser-Roll
+                D(t0 + r * S, 'rim', 45 + r * 3)  # Rim-Riser-Roll
     elif DROP1 or DROP2:
         is_two_step(t0, 104)
         if (b + 1) % 8 == 0:  # Down-Fill am 8-Bar-Ende
             for r in range(8):
-                D(t0 + TPQ * 3 + r * (TPQ // 8), 'snare', 55 + r * 5)
+                D(t0 + TPQ * 3 + r * (TPQ // 8), 'rim', 55 + r * 5)
 
     # --- Vocal-Hook (Choir-Aahs = der Liquid-Vocal-Charakter) + Sax-Antwort
     if DROP1 or DROP2:
