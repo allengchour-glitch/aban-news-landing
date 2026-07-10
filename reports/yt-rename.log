@@ -4,3 +4,6 @@ Call log:
 FEHLER: locator.click: Timeout 20000ms exceeded.
 Call log:
 [2m  - waiting for locator('#brand-name-input input, ytcp-social-suggestion-input input, tp-yt-paper-input#input input').first()
+FEHLER: locator.click: Timeout 20000ms exceeded.
+Call log:
+[2m  - waiting for locator('#brand-name-input input, ytcp-social-suggestion-input input, tp-yt-paper-input#input input').first()
