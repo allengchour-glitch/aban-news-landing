@@ -59,3 +59,13 @@
 - `neon-colossus.html`: eigenes Composite-Grading — **kein** renderer.toneMapping setzen.
 - `neon-realm.html`: Bloom nur `!IS_COARSE` (Mobile rendert direkt).
 - Wortspiele: Musik-Toggle standardmäßig AUS.
+
+## 📋 Offener Vision-Befund neon-realm (Gemini-Art-Director, 2026-07-10)
+In-Game-Shot (nach game_smoke-Startklick-Fix) reviewt — 3 konkrete Fixes, absteigend nach Wirkung:
+1. **Bloom/Emissive verstärken**: Häuserfenster, Laternenköpfe, Spielerfigur mit Emissive-Material
+   + UnrealBloomPass (three.js r128 examples/js/postprocessing) — Neon-Titel visuell einlösen.
+2. **Boden beleben**: Perlin/Simplex-Noise-Höhenkarte statt flacher Ebene + verstreute kleine
+   „Neon-Pflanzen" (instanzierte Cones/Spheres, emissive) — Welt wirkt aktuell leer/statisch.
+3. **Tag-Nacht-Zyklus sichtbar machen**: HUD zeigt „Tag 1 · 08:06" mit Mond, Szene ist aber
+   Dauernacht — Ambient/DirectionalLight-Farbe+Intensität an Spielzeit koppeln, Fog-Farbe mitziehen.
+Loop: implementieren → game_smoke PASS → game_shot → selbst ansehen (Gemini-Key des Users nur in Session).

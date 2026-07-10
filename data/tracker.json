@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T21:49:00Z",
+  "updated": "2026-07-10T21:53:00Z",
   "brainScore": "100.0/100 · 0 Befunde über 2654 Seiten",
   "orders": {
     "lastChecked": "2026-07-10T16:45:00Z",
@@ -34,6 +34,10 @@
     }
   ],
   "runs": [
+    {
+      "t": "2026-07-10T21:53Z",
+      "did": "🎮 neon-realm: Gemini-Vision-Review (3 konkrete Fixes) im Runbook dokumentiert — Umsetzung nächste Runde"
+    },
     {
       "t": "2026-07-10T21Z",
       "did": "🎮 Spiele: Smoke 12/12 PASS; game_smoke-Startklick-Fix (neon-realm startete im Test nie); Gemini-Vision-Keys verifiziert"
