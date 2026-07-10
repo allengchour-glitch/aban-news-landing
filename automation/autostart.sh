@@ -42,8 +42,10 @@ fi
 #    (BigBuy-Rate-Limit ist SHARED, GEHIRN 14 — sonst 429-Sturm und alle verhungern).
 PREMIUM_LAEUFT=0; running 'premium_import.mjs' && PREMIUM_LAEUFT=1
 
-# ── 2. BigBuy-Import ──
-if [ "$PREMIUM_LAEUFT" = "0" ] && [ -n "$BIGBUY_API_KEY" ] && [ -s /tmp/bb_cats.txt ] && ! running 'bigbuy_import.mjs'; then
+# ── 2. BigBuy-Import ── ⛔ DEAKTIVIERT (User 2026-07-10: «behalten, aber vorsichtig» — negative
+# Trustpilot-Bewertungen + instabiler Bestand. Die 143 lagernden bleiben aktiv, aber KEIN neuer
+# BigBuy-Import. Flag-Datei dropship/_bigbuy_import_disabled entfernen, um wieder zu aktivieren.
+if [ ! -f dropship/_bigbuy_import_disabled ] && [ "$PREMIUM_LAEUFT" = "0" ] && [ -n "$BIGBUY_API_KEY" ] && [ -s /tmp/bb_cats.txt ] && ! running 'bigbuy_import.mjs'; then
   CATS="$(cat /tmp/bb_cats.txt)" PER="${PER:-8}" LIVE=1 \
     nohup "$NODE" automation/bigbuy_import.mjs >> /tmp/bb_live.log 2>&1 &
   log "BigBuy-Import gestartet (PID $!)"
