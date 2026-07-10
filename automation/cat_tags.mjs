@@ -9,7 +9,7 @@ export function catTags(text) {
     // Schmuck
     [/ohrring|ohrhanger|creol|creyol|ohrstecker|earring/,        ['ohrringe', 'schmuck', 'damen']],
     [/armband(?!uhr)|armreif|bracelet|\banklet\b|fusskett/,      ['kategorie-armband', 'schmuck']],
-    [/armbanduhr|\buhr\b|\bwatch\b|smartwatch/,                  ['uhr', 'schmuck']],
+    [/armbanduhr|\buhr\b|\bwatch\b|smartwatch|wanduhr|tischuhr|wecker/, ['uhr', 'schmuck']],
     [/halskette|\bkette\b|necklace|anhanger|collier|choker|\btassel\b/, ['kategorie-halskette', 'schmuck']],
     [/\bring\b|siegelring/,                                      ['schmuck', 'damen']],
     [/perlen|pearl/,                                             ['schmuck', 'perlen']],
@@ -37,6 +37,9 @@ export function catTags(text) {
     // Fitness / Outdoor
     [/\byoga\b|widerstandsband|resistance.?band|\bhantel\b|fitness/, ['fitness']],
     [/camping|\bzelt\b|wandern/,                                ['outdoor', 'camping']],
+    [/sonnenschirm|gartenmoebel|liegestuhl|hangematte|\bgrill\b/, ['outdoor', 'garten']],
+    [/luftmatratze|schwimmreif|pool\b|planschbecken|strandtuch/, ['strand', 'sommer']],
+    [/haarmaske|shampoo|haaroel|haarspulung|conditioner|haarkur/, ['beauty']],
     // Sommer / Ventilator
     [/ventilator|\blufter\b|halsventilator|stehventilator/,     ['gadget', 'sommer']],
     // Auto / Handy / Gadget

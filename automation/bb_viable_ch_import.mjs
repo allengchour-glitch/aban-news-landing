@@ -56,7 +56,7 @@ for(const it of viable.slice(0,LIMIT)){
   const imgKey=(good[0]||'').split('?')[0].split('/').pop();
   if(imgKey&&imgSeen.has(imgKey)){console.log('= bild existiert',title.slice(0,34));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
   const price=it.sell.toFixed(2);
-  const tags=[...new Set(['bigbuy','dropship','neu','bb-lieferbar-ch',...catTags(`${title} ${rec.description||''}`)])];
+  const tags=[...new Set(['bigbuy','dropship','neu','bb-lieferbar-ch',...catTags(title)])];  // nur Titel (Beschreibung übertaggt)
   const slug=(title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46))+'-'+String(id).slice(-6);
   const desc=`${(rec.description||'').slice(0,1400)}<p>📦 Lieferung aus EU-Lager · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
   const qty=Math.min(Number(it.qty)||1,999);
