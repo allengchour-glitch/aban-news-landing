@@ -2331,3 +2331,11 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **ALLE BigBuy-Schutz-Engines FERTIG:** Cleanup 6'997 ✓ · Stock-Guard 1'658 ✓ · Unknown-Guard
   6'678 ✓ · Lager-Sync 362 tracked ✓ · Preis-Sanity 268 ✓. BigBuy-Segment ist jetzt EHRLICH:
   aktiv = nur lieferbar+lagernd+profitabel. Geisterverkäufe (#1004/1006/1008/1009) systemisch unmöglich.
+
+## 2026-07-10u — Beschreibungs-/SEO-Audit (User-Frage) + Lücken-Füller
+- **Beschreibungen: FLÄCHENDECKEND GUT** — 24'459 Aktive geprüft: 0 kurze (<150 Zeichen), 0 rohe
+  Lieferanten-Texte ohne Struktur/Trust-Block. (Import-Pipelines + gmc_desc_enrich haben gehalten.)
+- **SEO-Metas: 1'639 Aktive OHNE Meta-Description gefunden** → /tmp/seo_fill.py LIVE: setzt
+  Titel-basierte Description («… – jetzt bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, Klarna &
+  TWINT, 30 Tage Rückgabe») + seo.title falls leer. Ledger _seofill_done.txt, in revive.sh.
+- Offen bleibt nur: Home-Meta-Description 211→<160 Zeichen (nur Admin-UI, PC-Claude/User-Klick).
