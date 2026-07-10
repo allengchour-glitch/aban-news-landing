@@ -27,18 +27,31 @@ def gql(q,v=None):
         if any('Throttled' in str(e) for e in d.get('errors',[])): time.sleep(4); continue
         refresh(); time.sleep(2)
     return {}
-# BigBuy Einkaufspreise (SKU-ref → wholesale EUR) + Versand (ref → EUR)
+# BigBuy Einkaufspreise (ref → wholesale EUR) + Versand (ref → EUR) + id→ref-Mapping
 bb_cost={}
 for f in glob.glob('/tmp/bb_prod_p*.json'):
     try: d=json.load(open(f))
     except: continue
     if isinstance(d,list):
         for p in d:
-            ref=str(p.get('sku') or p.get('id') or '').upper()
+            ref=str(p.get('sku') or '').upper()
             wp=p.get('wholesalePrice') or p.get('inShopsPrice')
             if ref and wp: bb_cost[ref]=float(wp)
-try: bb_ship=json.load(open('/tmp/bb_ship_ch.json'))
+try: bb_ship={str(k).upper():v for k,v in json.load(open('/tmp/bb_ship_ch.json')).items()}
 except: bb_ship={}
+try: bb_id2ref={str(k):str(v).upper() for k,v in json.load(open('/tmp/bb_id2ref_full.json')).items()}
+except: bb_id2ref={}
+def bb_floor(sku):
+    """Kosten-Boden (CHF) für BigBuy-SKU. None wenn Kosten nicht sicher auflösbar → NICHT senken."""
+    s=sku.upper()
+    if not s.startswith('BB-'): return 'NOTBB'
+    key=s[3:]                                  # bb-S0800574 → S0800574 ; bb-1298946 → 1298946
+    ref=key if key in bb_cost else bb_id2ref.get(key.lstrip('S').lstrip('V')) or bb_id2ref.get(key)
+    if ref: ref=ref.upper()
+    wp=bb_cost.get(key) or (bb_cost.get(ref) if ref else None)
+    if wp is None: return None                 # Kosten unbekannt → skip (kein Verlust-Risiko)
+    sh=bb_ship.get(key) or (bb_ship.get(ref) if ref else None) or 27.94
+    return (float(wp)+float(sh))*FX*MARGIN
 def numid(s):
     for t in s.split('_'):
         if t.isdigit() and len(t)>=12: return t
@@ -50,7 +63,7 @@ with open(BENCH,encoding='utf-8') as f:
     txt=f.read()
 hi=0; lines=txt.splitlines()
 for i,l in enumerate(lines):
-    if 'Item ID' in l and ('enchmark' in l or 'Your price' in l): hi=i; break
+    if ('Item ID' in l or 'Product ID' in l) and ('enchmark' in l or 'Your price' in l): hi=i; break
 import io
 for row in csv.DictReader(io.StringIO('\n'.join(lines[hi:]))):
     rows.append(row)
@@ -58,17 +71,18 @@ def money(s):
     if not s: return None
     m=re.search(r'([\d.,]+)', s.replace('CHF','').replace(',',''))
     return float(m.group(1)) if m else None
-changed=skip=0
+changed=skip=skipbb=0
 for row in rows:
-    iid=row.get('Item ID') or row.get('Item ID ') or ''
+    iid=row.get('Item ID') or row.get('Product ID') or ''
     pid=numid(iid)
     if not pid or pid in done: continue
     # benchmark + your price columns (robust gegen Spaltennamen)
     bench=None; yours=None
     for k,v in row.items():
-        kl=(k or '').lower()
-        if 'benchmark' in kl: bench=money(v)
-        elif 'your price' in kl or kl=='price': yours=money(v)
+        kl=(k or '').lower().strip()
+        if 'currency' in kl: continue                       # Währungsspalten überspringen
+        if kl=='benchmark': bench=money(v)
+        elif kl in ('your price','price'): yours=money(v)
     if not bench: continue
     gid=f'gid://shopify/Product/{pid}'
     d=gql('{p:product(id:"%s"){variants(first:1){edges{node{id price inventoryItem{sku}}}}}}'%gid).get('data',{}).get('p')
@@ -77,17 +91,12 @@ for row in rows:
     cur=float(var['price']); sku=(var['inventoryItem'] or {}).get('sku','') or ''
     if bench>=cur: skip+=1; continue   # nicht überteuert
     # Kosten-Boden
-    floor=0
-    m=re.match(r'bb-?(\w+)', sku, re.I) or re.match(r'(\d{5,})', sku)
-    ref=sku.upper().replace('BB-','')
-    wp=bb_cost.get(ref) or bb_cost.get(sku.upper())
-    sh=bb_ship.get(ref) or bb_ship.get(sku.replace('bb-','')) if isinstance(bb_ship,dict) else None
-    if wp:
-        floor=(float(wp)+(float(sh) if sh else 27.94))*FX*MARGIN   # BigBuy: Einkauf+Versand+Marge
-    else:
-        floor=cur*0.70                                             # CJ/unbekannt: max -30%
+    fl=bb_floor(sku)
+    if fl is None:                     # BigBuy, Kosten nicht sicher → NICHT anfassen (kein Verlust)
+        skipbb+=1; continue
+    floor = (cur*0.60) if fl=='NOTBB' else fl   # CJ/Eigenware: bis -40% Richtung Benchmark
     target=price90(max(bench, floor))
-    if target>=cur: skip+=1; continue
+    if target>=cur-0.01: skip+=1; continue
     if DRY:
         print(f'[DRY] {pid} {cur:.2f}→{target:.2f} (bench {bench:.2f}, floor {floor:.2f}) sku={sku[:14]}'); changed+=1
         continue
@@ -97,4 +106,4 @@ for row in rows:
     if e: print('✗',pid,e)
     else: open(LEDGER,'a').write(pid+'\n'); changed+=1
     time.sleep(0.3)
-print(f"{'DRY ' if DRY else ''}gesenkt={changed}, unverändert(nicht-überteuert/Boden)={skip}")
+print(f"{'DRY ' if DRY else ''}gesenkt={changed}, unverändert(nicht-überteuert/Boden)={skip}, BigBuy-skip(Kosten-Boden schützt)={skipbb}")
