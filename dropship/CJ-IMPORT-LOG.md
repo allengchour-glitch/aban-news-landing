@@ -2246,3 +2246,11 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   NICHT im Feed = unbekannt → bewusst nicht angefasst. Nie wieder #1004/#1006/#1008-Verkäufe.
 - Merker: Groq via Python-urllib = Cloudflare-403 (error 1010) → immer curl/fetch nutzen.
 - Daten-Assets in /tmp: bb_instock.json (2.5k), bb_mass_cands.json, bb_cat_map.json, bb_zerostock.json.
+
+## 2026-07-10l — BigBuy-Massen-Import FERTIG (102/104) + Vision-QA
+- **102 profitable BigBuy-Neuimporte live** (saubere Kategorie-Tags via BigBuy-Baum, Marken-Tags,
+  Versand-Floor-Preise). Skips: 2 (Dup-Bild). Stock-Guard bei ~1'150/1'658, seo50 bei ~13'600/15'622.
+- Vision-QA: 3 Titel gefixt — Übersetzungs-Peinlichkeit «weißer Schwanz Giotto» = weisser
+  BASTELKLEBER (cola blanca!), «Schein Notizblock Montblanc», Tonkarton. Merker: BigBuy-DE-Namen
+  können Maschinen-Fehlübersetzungen enthalten → Vision-QA nach jeder Welle bleibt Pflicht.
+- User: Key verworfen («vergiss den key») — Spuren aus /tmp gelöscht, kein Dienst-Test mehr.
