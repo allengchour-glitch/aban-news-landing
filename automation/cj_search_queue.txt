@@ -70,26 +70,26 @@
 #done search:dog cooling mat summer
 #done search:cat water fountain stainless
 #done search:camera lens clip macro phone
-search:charm pendant necklace
-search:colorful beaded necklace
-search:shell pearl necklace
-search:chunky hoop earrings
-search:mismatched statement earrings
-search:leather cord necklace pendant
-search:beaded bracelet stack set
-search:flower ring jewelry
-search:beaded phone charm strap
-search:crossbody phone strap wallet
-search:3 in 1 magnetic wireless charger
-search:flexible silicone phone stand
-search:LED face mask therapy
-search:EMS face lifting device
-search:lymphatic drainage face brush
-search:heatless curling rod headband
-search:water spray hair brush
-search:candle warmer lamp
-search:crystal table lamp touch
-search:portable misting fan
-search:waterproof phone pouch
-search:sand free beach mat
-search:bluetooth sleep mask headphones
+#done search:charm pendant necklace
+#done search:colorful beaded necklace
+#done search:shell pearl necklace
+#done search:chunky hoop earrings
+#done search:mismatched statement earrings
+#done search:leather cord necklace pendant
+#done search:beaded bracelet stack set
+#done search:flower ring jewelry
+#done search:beaded phone charm strap
+#done search:crossbody phone strap wallet
+#done search:3 in 1 magnetic wireless charger
+#done search:flexible silicone phone stand
+#done search:LED face mask therapy
+#done search:EMS face lifting device
+#done search:lymphatic drainage face brush
+#done search:heatless curling rod headband
+#done search:water spray hair brush
+#done search:candle warmer lamp
+#done search:crystal table lamp touch
+#done search:portable misting fan
+#done search:waterproof phone pouch
+#done search:sand free beach mat
+#done search:bluetooth sleep mask headphones
