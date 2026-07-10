@@ -37,3 +37,11 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 
 - luxe-liquid-dnb.wav     (LIQUID DnB, TikTok/Reels-Trend 2026, 174 BPM a-Moll: Breakbeat + Sub/Reese-Bass
                            + lush Pads + Sax-Stabs. build_liquid_dnb_midi.py. Melodisch = markentauglich.)
+
+— PRODUCER-FRAMEWORK v2 (User 2026-07-10 «giltet für zukunft auch für andere richtung»):
+  render.sh <genre> = Universal-Renderer (FluidSynth + optionaler echter Reese-Bass via reese_synth.py
+  + genre-spezifischer Reverb/Bass/LUFS). reese_synth.py = verstimmte Saws + Filter-LFO + Sub (DSP).
+  METHODE für JEDE Richtung: (1) Agent recherchiert Top-Hits des Genres → Bauplan; (2) build_<genre>_midi.py
+  nach dieser Struktur; (3) render.sh. luxe-liquid-dnb v2 nach Top-Hit-Analyse neu: 174 BPM, 48-Takt-Form
+  (Intro/Build/Drop/Breakdown/Drop2), Two-Step m. Ghost-Snares, echter Reese getrennt vom Mono-Sub,
+  Am9-Rhodes, -9 LUFS Club-Master.

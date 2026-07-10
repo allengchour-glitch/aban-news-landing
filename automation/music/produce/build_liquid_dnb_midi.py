@@ -1,79 +1,109 @@
 #!/usr/bin/env python3
-# LuxeStyle Producer — LIQUID DnB (User 2026-07-10 «dnb sound trends?»). TikTok/Reels-Trend 2026.
-# 174 BPM, a-Moll. Melodisch/treibend: Amen-artiger Breakbeat + Reese/Sub-Bass + lush E-Piano-Pads +
-# Sax-Stabs. ~62s / 45 Takte (bei 174 BPM). Aufbau: Intro-Pad · Break-Drop · Bass+Sax · Breakdown→Outro.
-# 100% royalty-free (GM via FluidSynth).
+# LuxeStyle Producer — LIQUID DnB v2 (nach Analyse echter Top-Hits, 2026). 174 BPM, a-Moll.
+# Struktur (48 Takte ~66s): Intro 1-8 (Rhodes+Pad, kein Drum, Sub-Andeutung) · Build 9-16 (gefilterter
+# Break rein, Riser) · Drop1 17-32 (voller Two-Step + Reese/Sub + Hook) · Breakdown 33-40 (Drums raus,
+# Pads atmen) · Drop2 41-48 (Break+Bass zurück). Regeln: Musik nach vorn, Two-Step m. Ghost-Snares,
+# Sub mono + Reese getrennt (reese_synth.py), Extended-Moll-Chords (Am9-Cmaj7-Em7-Am9).
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 from smf import write_midi, notes_track
 
-TPQ = 480
-BAR = TPQ * 4
+TPQ = 480; BAR = TPQ * 4; S = TPQ // 4   # 16tel
+BPM = 174
+# Rhodes-Voicings (Extended-Moll) + Bass-Grundton (tief) + Sax/Hook-Ton
 PROG = [
-    ([57, 60, 64, 69], 33, 69),   # Am  (Pad-Voicing, Sub-Grundton TIEF, Sax)
-    ([53, 57, 60, 65], 29, 65),   # F
-    ([52, 55, 60, 64], 36, 67),   # C
-    ([50, 55, 59, 62], 31, 62),   # G
+    ([57, 60, 64, 67, 71], 33, 72),  # Am9
+    ([60, 64, 67, 71],     36, 71),  # Cmaj7
+    ([64, 67, 71, 74],     40, 74),  # Em7
+    ([57, 60, 64, 67, 71], 33, 72),  # Am9
 ]
-SAX = [
-    [(0, 1.5, 69), (2.0, 1.0, 72)],
-    [(0, 1.0, 69), (2.5, 1.0, 65)],
-    [(0, 2.0, 72)],
-    [(0, 1.0, 71), (2.0, 1.0, 67)],
-]
-NBARS = 45
-pads, sub, reese, sax, drums = [], [], [], [], []
+NBARS = 48
+rhodes, pad, sax, drums = [], [], [], []
+reese_rows = []  # (startSec, durSec, midiNote) für reese_synth.py
+sub = []          # Mono-Sub via GM (Sinus-nah: program 80 Lead würde zu hell; nutze program 38 tief)
 
-def amen(t0, vel_k=100):
-    # 1 Takt Liquid-DnB-Break (16tel-Raster = TPQ/4). Kick/Snare/Hats.
-    step = TPQ // 4
-    # Kick-Pattern (0,10) / Snare (4,12) klassisch two-step
-    for k in (0, 6, 10):
-        drums.append((t0 + k * step, 40, 36, vel_k))
-    for s in (4, 12):
-        drums.append((t0 + s * step, 40, 38, 104))       # Snare
+sec_per_tick = 60.0 / BPM / TPQ
+
+def is_two_step(t0, vel_k):
+    # Kick step 0 & 10, Snare 4 & 12, Ghost 7/11/15, Hats 16tel, Open-Hat 14
+    for k in (0, 10):
+        drums.append((t0 + k * S, 40, 36, vel_k))
+    for sn in (4, 12):
+        drums.append((t0 + sn * S, 45, 38, 108))
+        drums.append((t0 + sn * S, 45, 40, 70))       # Layer 2 (Snare-Body)
+    for g in (7, 11, 15):
+        drums.append((t0 + g * S + 12, 30, 38, 42))   # Ghost (leicht geswingt +12t)
     for h in range(16):
-        drums.append((t0 + h * step, 25, 42, 26 if h % 2 else 34))  # Hats 16tel
-    drums.append((t0 + 14 * step, 30, 46, 40))            # Open-Hat Pickup
+        sw = 14 if h % 2 else 0                        # Offbeat-Swing
+        drums.append((t0 + h * S + sw, 22, 42, 22 if h % 2 == 0 else 34))
+    drums.append((t0 + 14 * S, 30, 46, 44))            # Open-Hat Pickup
 
 for b in range(NBARS):
-    voic, subn, _ = PROG[b % 4]
+    voic, bs, hook = PROG[b % 4]
     t0 = b * BAR
-    INTRO = b < 4
-    DROP  = 4 <= b
-    FULL  = 12 <= b < 36
-    OUTRO = b >= 36
+    INTRO = b < 8
+    BUILD = 8 <= b < 16
+    DROP1 = 16 <= b < 32
+    BREAK = 32 <= b < 40
+    DROP2 = 40 <= b < 48
 
-    # Pads (lush, halten)
-    vel_p = 58 if INTRO else (44 if not FULL else 52)
-    for p in voic:
-        pads.append((t0, BAR - 20, p, vel_p))
+    # --- Rhodes: gehaltene Extended-Chords (Musik nach vorn!), im Drop rhythmischer
+    if INTRO or BREAK:
+        for p in voic: rhodes.append((t0, BAR - 20, p, 62))
+    else:
+        # Stabs auf Offbeats + langer Chord Zz1
+        for p in voic: rhodes.append((t0, int(TPQ * 0.9), p, 50))
+        for beat in range(4):
+            st = t0 + beat * TPQ + TPQ // 2
+            for p in voic: rhodes.append((st, int(TPQ * 0.35), p, 46))
 
-    if not DROP:
-        continue
+    # --- Pad-Teppich durchgehend (lush)
+    for p in voic[:3]:
+        pad.append((t0, BAR - 20, p + 12, 34))
 
-    # Breakbeat
-    amen(t0, 100 if not OUTRO else 74)
+    # --- Sub-Bass (mono, GM tief) ab Build; folgt Grundton, statisch
+    if not INTRO:
+        vel = 60 if BUILD else 96
+        if BREAK: vel = 0
+        if vel:
+            sub.append((t0, BAR - 30, bs, vel))
 
-    # Sub-Bass: langer Grundton pro Takt (der DnB-Wobble/Reese-Ersatz: tief + Oktave)
-    sub.append((t0, BAR - 30, subn, 96))
-    # Reese-ähnlich: gehaltener Ton eine Oktave höher, leicht (Sägezahn-Synth)
-    if FULL:
-        reese.append((t0, BAR - 30, subn + 12, 46))
-        reese.append((t0 + TPQ * 2, TPQ * 2 - 30, subn + 19, 40))
+    # --- Reese-Layer (echter Synth) im Drop: Grundton + Oktave, atmet via Filter-LFO
+    if DROP1 or DROP2:
+        reese_rows.append((t0 * sec_per_tick, (BAR - 30) * sec_per_tick, bs + 12))
+        reese_rows.append(((t0 + TPQ * 2) * sec_per_tick, (TPQ * 2 - 30) * sec_per_tick, bs + 19))
 
-    # Sax-Stabs ab Takt 9, voll ab 13
-    if b >= 8:
-        vel = 76 if FULL else (56 if not OUTRO else 64)
-        for (off, dur, pitch) in SAX[b % 4]:
-            sax.append((t0 + int(off * TPQ), int(dur * TPQ) - 20, pitch, vel))
+    # --- Drums
+    if BUILD:
+        # gefilterter Break-Andeutung: nur Snares + Hats, Roll am Ende
+        is_two_step(t0, 60)
+        if b == 15:
+            for r in range(16):
+                drums.append((t0 + r * S, 30, 38, 40 + r * 4))  # Snare-Riser-Roll
+    elif DROP1 or DROP2:
+        is_two_step(t0, 104)
+        if (b + 1) % 8 == 0:  # Down-Fill am 8-Bar-Ende
+            for r in range(8):
+                drums.append((t0 + TPQ * 3 + r * (TPQ // 8), 28, 38, 50 + r * 6))
+
+    # --- Sax-Hook (der emotionale Vocal-Chop-Ersatz): im Drop
+    if DROP1 or DROP2:
+        sax.append((t0, int(TPQ * 1.5), hook, 78))
+        sax.append((t0 + TPQ * 2, TPQ, hook + 3, 68))
+    elif BUILD and b >= 12:
+        sax.append((t0, TPQ, hook, 50))   # Teaser
+
+# Reese-Spec für reese_synth.py schreiben
+with open('/tmp/liquid_dnb_reese.txt', 'w') as f:
+    for st, du, note in reese_rows:
+        f.write(f'{st:.4f} {du:.4f} {note}\n')
 
 tracks = [
-    notes_track(pads,  program=89, channel=0),   # Pad 2 (warm)
-    notes_track(sub,   program=38, channel=1),    # Synth Bass 1 (Sub)
-    notes_track(reese, program=81, channel=2),    # Saw Lead (Reese-Layer)
-    notes_track(sax,   program=66, channel=4),    # Tenor Sax
-    notes_track(drums, channel=9),                # Break-Kit
+    notes_track(rhodes, program=4,  channel=0),   # Electric Piano (Rhodes)
+    notes_track(pad,    program=89, channel=1),    # Warm Pad
+    notes_track(sub,    program=38, channel=2),    # Synth Bass (Mono-Sub)
+    notes_track(sax,    program=66, channel=4),    # Tenor Sax (Hook)
+    notes_track(drums,  channel=9),                # Two-Step-Kit
 ]
-write_midi('/tmp/dnb.mid', tracks, tpq=TPQ, tempo_bpm=174)
-print('dnb.mid geschrieben:', NBARS, 'Takte, 174 BPM, Liquid DnB a-Moll')
+write_midi('/tmp/liquid_dnb.mid', tracks, tpq=TPQ, tempo_bpm=BPM)
+print('liquid_dnb.mid v2:', NBARS, 'Takte, 174 BPM, Two-Step + Reese-Spec geschrieben')
