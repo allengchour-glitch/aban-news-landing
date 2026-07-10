@@ -159,6 +159,18 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-10 (Runde 4 — „level ups viele gegner, cooler skills etc")
+- [ ] **Pass 4 Gameplay-Tiefe** (nach Pass 3, wieder nur neon-realm.html):
+      (a) **Level-Ups spürbar**: satisfying Level-Up-Moment (Blitz/Ring-Effekt, Fanfare, „Level 5!"-
+      Anzeige gross), pro Level klarer Zuwachs (HP/Schaden), alle 3–5 Level 1 neuer Skill-Unlock;
+      (b) **Viele Gegner**: Spawn-Dichte rauf + kleine Rudel/Wellen (3–5 Slimes, Panther-Paare),
+      Schwierigkeits-Kurve sanft (Design-Regel: erste 30s verzeihend!), Performance: Mixer-Update
+      nur Kameranähe, gerigte Instanzen begrenzen, statische clonen;
+      (c) **Coole Skills**: Skill-System (T) ausbauen — z.B. Nova-Puls (AoE-Ring), Ketten-Blitz,
+      Dash-Schlag, Schild-Sphäre, Ultimate mit Cooldown + fettem Effekt; jede Klasse 1 Signature-
+      Skill (Magier=Kettenblitz, Ranger=Pfeilregen, Titan=Bodenschlag, Held=Nova); Effekte
+      partikelbasiert, Bloom-bewusst; Skills mit Symbol+Taste im HUD, mobil als Buttons.
+
 ## ⭐ OBERSTE DESIGN-REGEL (User 2026-07-10): „Müssen alle einfach zum Spielen sein"
 Gilt für JEDE Spiele-Änderung, wird bei jedem Shot-Review mitgeprüft:
 1. **Sofort losspielen**: max. 1 Klick/Tap bis ins Spiel; Steuerung in EINER Zeile mit Symbolen auf dem Startschirm
