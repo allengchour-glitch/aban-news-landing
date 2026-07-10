@@ -70,14 +70,14 @@
 #done search:dog cooling mat summer
 #done search:cat water fountain stainless
 #done search:camera lens clip macro phone
-search:charm pendant necklace
-search:colorful beaded necklace
-search:shell pearl necklace
-search:chunky hoop earrings
-search:mismatched statement earrings
-search:leather cord necklace pendant
-search:beaded bracelet stack set
-search:flower ring jewelry
+#done search:charm pendant necklace
+#done search:colorful beaded necklace
+#done search:shell pearl necklace
+#done search:chunky hoop earrings
+#done search:mismatched statement earrings
+#done search:leather cord necklace pendant
+#done search:beaded bracelet stack set
+#done search:flower ring jewelry
 search:beaded phone charm strap
 search:crossbody phone strap wallet
 search:3 in 1 magnetic wireless charger
