@@ -138,6 +138,18 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
 - Recherche-Auftrag (User: „im YouTube und Netz sind viele Tipps"): vor jedem Baustein WebSearch nach
   Low-Poly-/Blender-Python-/three.js-Best-Practices, Erkenntnisse hier eintragen.
 
+### User-Feedback 2026-07-10 (Runde 3 — „das sieht nice aus, mach weiter und mehr, mit Liebe")
+- [ ] **Kampf-Animationen** (User: „kämpfen animation gut, attacke auch super animation"): Meshy-
+      Bewegungsbibliothek auf dem gerigten hero_meshy (Rigging-Task 019f4e41-19a0-7ec9-ba2e-aa412560c362):
+      attack/slash, skill/cast, dodge, hit-reaction (+ ggf. death) → models/hero_meshy_combat.glb,
+      im Spiel: Space-Angriff spielt attack-Clip, Q-Puls spielt cast, Shift-Ausweichen dodge.
+- [ ] **Klassen-Charaktere** (User: „mache verschiedene auch für andere Klassen"): 2–3 weitere
+      Meshy-Helden im selben Stil (Magier mit Stab, Waldläufer/Bogen, schwerer Titan/Schild) je mit
+      idle/walk/run/attack → models/class_*.glb; später Klassenwahl im Startmenü.
+- [ ] **Blender-Glättung** (User: „glätte alles mit blender?"): im Polish-Pass Shade-Smooth/Normals
+      prüfen, harte Kanten nur wo gewollt.
+- Meshy-Verbrauch bisher: 167/1690 Credits (Hero 117 + Häuser 50). Plan: Klassen ~150/Stk, Anims ~3/Stk.
+
 ## ⭐ OBERSTE DESIGN-REGEL (User 2026-07-10): „Müssen alle einfach zum Spielen sein"
 Gilt für JEDE Spiele-Änderung, wird bei jedem Shot-Review mitgeprüft:
 1. **Sofort losspielen**: max. 1 Klick/Tap bis ins Spiel; Steuerung in EINER Zeile mit Symbolen auf dem Startschirm
