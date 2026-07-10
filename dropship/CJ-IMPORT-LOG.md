@@ -2339,3 +2339,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Titel-basierte Description («… – jetzt bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, Klarna &
   TWINT, 30 Tage Rückgabe») + seo.title falls leer. Ledger _seofill_done.txt, in revive.sh.
 - Offen bleibt nur: Home-Meta-Description 211→<160 Zeichen (nur Admin-UI, PC-Claude/User-Klick).
+
+## 2026-07-10v — Detail-Blöcke (User: «beschreibungs texte und details»)
+- **Detail-Tabellen-Engine LIVE** (/tmp/detail_block.py): alle aktiven BigBuy-Produkte bekommen
+  eine strukturierte «Details»-Tabelle (Masse B×H×T, Gewicht, Marke, EAN) aus dem lokalen
+  Katalog-Feed — vor dem Trust-Block eingefügt, Marker <!--luxe-details--> (idempotent),
+  Platzhalter-Werte (1×1×1) gefiltert. Verifiziert live (Sensilis EdT: 7×13×7 cm, 423 g).
+- EAN in der Beschreibung = zusätzlich gut für Google Shopping-Matching.
+- CJ-Produkte: Detail-Anreicherung braucht CJ-API-Punkte → nach Punkte-Reset als Folge-Welle
+  (Gewicht/Masse aus productinfo, gleiche Tabelle). SEO-Fill läuft parallel (1'639 Metas).
