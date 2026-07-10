@@ -86,10 +86,10 @@
 #done search:EMS face lifting device
 #done search:lymphatic drainage face brush
 #done search:heatless curling rod headband
-search:water spray hair brush
-search:candle warmer lamp
-search:crystal table lamp touch
-search:portable misting fan
-search:waterproof phone pouch
-search:sand free beach mat
-search:bluetooth sleep mask headphones
+#done search:water spray hair brush
+#done search:candle warmer lamp
+#done search:crystal table lamp touch
+#done search:portable misting fan
+#done search:waterproof phone pouch
+#done search:sand free beach mat
+#done search:bluetooth sleep mask headphones
