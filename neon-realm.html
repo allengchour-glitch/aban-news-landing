@@ -337,7 +337,7 @@ var nature=new THREE.Group();scene.add(nature);
     if(dv<9)return false;                                            // Brunnen/Plaza + Spawn
     if(tree&&dv<25)return false;                                     // Dorfkern: nur Gras/Blumen (Kamera-Sichtachse!)
     if(dv<25&&Math.abs(dv-20)<1.7)return false;                      // Laternen-Ring-Pfad
-    for(var i=0;i<5;i++)if(Math.hypot(x-HOUSES[i][0],z-HOUSES[i][1])<5.4)return false;
+    for(var i=0;i<5;i++)if(Math.hypot(x-HOUSES[i][0],z-HOUSES[i][1])<5.8)return false; // GLB-Footprint bis 8.1x8.3 (Ecke ~5.8)
     for(i=0;i<3;i++)if(Math.hypot(x-OBS[i][0],z-OBS[i][1])<(tree?9:4.5))return false;
     if(Math.hypot(x-100,z-95)<(tree?40:8))return false;              // Zitadelle (Bosskampf braucht Platz)
     if(Math.hypot(x+118,z+98)<(tree?7:4.5))return false;             // Dungeon-Portal
@@ -409,13 +409,28 @@ function seededRnd(s){return function(){s=(s*9301+49297)%233280;return s/233280;
  for(var i=0;i<N;i++){var a=i/N*6.283,x=ZONES[4].x+Math.cos(a)*34,z=ZONES[4].z+Math.sin(a)*34;
   _dm.position.set(x,heightAt(x,z)+8,z);_dm.scale.set(1,1,1);_dm.rotation.set(0,a,0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
-// -- Dorf: Häuser + Laternen + Brunnen
+// -- Dorf: Detail-Häuser (Blender-GLBs) + Laternen + Brunnen
 var village=new THREE.Group();scene.add(village);
-(function(){var hs=[[-10,-8,0.5],[9,-11,2.2],[13,7,4],[-12,9,5.4],[2,-16,1.2]];
- for(var i=0;i<hs.length;i++){var hx=hs[i][0],hz=hs[i][1];
-  var body=new THREE.Mesh(new THREE.BoxGeometry(6,4,5),mat(0x141a3e,0x2a3585,0.5));body.position.set(hx,2,hz);body.rotation.y=hs[i][2];body.castShadow=true;village.add(body);
-  var roof=new THREE.Mesh(new THREE.ConeGeometry(4.6,3,4),mat(0x1d0f38,0xb98bff,0.5));roof.position.set(hx,5.5,hz);roof.rotation.y=hs[i][2]+Math.PI/4;village.add(roof);
-  var win=new THREE.Mesh(new THREE.PlaneGeometry(1,0.8),new THREE.MeshBasicMaterial({color:0xffd166}));win.position.set(hx+Math.sin(hs[i][2])*3.02,2.1,hz+Math.cos(hs[i][2])*2.52);win.rotation.y=hs[i][2];village.add(win);}
+(function(){
+ // building_*.glb: Ursprung = Unterkante/Bodenmitte, Fenster-Emissive eingebacken.
+ // Höhen final auf Spielgrösse (Fachwerk 7.0 / Werkstatt 6.5 / Turm 8.5, NPCs ~2.1).
+ var hs=[[-10,-8,0.5,"fachwerk"],[9,-11,2.2,"werkstatt"],[13,7,4,"turm"],[-12,9,5.4,"fachwerk"],[2,-16,1.2,"werkstatt"]];
+ var HSCALE=1.0; // uniforme Haus-Skala (per Screenshot verifiziert)
+ function boxHouse(hx,hz,ry){ // Fallback: alte Box-Häuser, falls GLB nicht lädt
+  var body=new THREE.Mesh(new THREE.BoxGeometry(6,4,5),mat(0x141a3e,0x2a3585,0.5));body.position.set(hx,2,hz);body.rotation.y=ry;body.castShadow=true;village.add(body);
+  var roof=new THREE.Mesh(new THREE.ConeGeometry(4.6,3,4),mat(0x1d0f38,0xb98bff,0.5));roof.position.set(hx,5.5,hz);roof.rotation.y=ry+Math.PI/4;village.add(roof);}
+ var byType={};hs.forEach(function(h){(byType[h[3]]=byType[h[3]]||[]).push(h);});
+ if(THREE.GLTFLoader){
+  Object.keys(byType).forEach(function(name){
+   new THREE.GLTFLoader().load("/models/building_"+name+".glb",function(g){
+    g.scene.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;
+     if(n.material)n.material.emissiveIntensity=1.0;}}); // Fenster glühen (Muster landscape-Loader)
+    byType[name].forEach(function(h,i){
+     var o=i?g.scene.clone(true):g.scene; // statische Meshes → clone() ok (kein SkinnedMesh)
+     o.position.set(h[0],0,h[1]);o.rotation.y=h[2];o.scale.setScalar(HSCALE);village.add(o);});
+   },undefined,function(){byType[name].forEach(function(h){boxHouse(h[0],h[1],h[2]);});});
+  });
+ }else hs.forEach(function(h){boxHouse(h[0],h[1],h[2]);});
  var well=new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.8,1.2,8),mat(0x1a2150,0x5ef2ff,0.5));well.position.set(0,0.6,0);well.castShadow=true;village.add(well);
  var wellGlow=new THREE.PointLight(0x5ef2ff,1.2,24);wellGlow.position.set(0,3,0);village.add(wellGlow);
  for(var li=0;li<6;li++){var la=li/6*6.283,lx=Math.cos(la)*20,lz=Math.sin(la)*20;
@@ -705,6 +720,7 @@ function killEnemy(e,i){
   // Quest-Zähler
   if(G.qstage===1&&e.type===0){G.quests.kills=(G.quests.kills||0)+1;renderQuests();}
   if(e.miniboss){announce("Wächter der Tiefe besiegt!","#b98bff");
+    if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))playOnce(heroRig,"victory",1.1,0.2);
     var mi2=rollItem(G.lvl+3);mi2.r=Math.max(2,mi2.r);mi2.v=Math.round(mi2.v*1.3);G.inv.push(mi2);
     G.shards+=15;showHint("🎁 "+RARS[mi2.r].n+": "+mi2.n+" (+"+mi2.v+" "+mi2.stat+") — [I]",3000);camShake=0.8;}
   if(e.boss){G.bossDead=true;onBossDead();}
@@ -743,6 +759,8 @@ function updEnemies(dt){
 function hitPlayer(dmg){if(iframe>0||!running)return;
   var real=Math.max(1,dmg-playerDef());
   G.hp-=real;iframe=0.5;hurtT=1;camShake=Math.max(camShake,0.4);
+  // Treffer-Reaktion nur aus idle/walk (blockiert weder Angriff/Cast/Dodge noch die Bewegung dauerhaft)
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))playOnce(heroRig,"hit",2.5); // 1.67s @2.5 ≈ 0.67s
   dmgNum(real,player.position.x,2.4,player.position.z,"#ff8098");
   beep(140,.15,"sawtooth",.06);updHUD();
   if(G.hp<=0){G.hp=0;running=false;saveGame();document.getElementById("deadO").classList.remove("hide");beep(80,.5,"sawtooth",.09);}}
@@ -768,6 +786,7 @@ function updSpawns(dt){
 // ===================== KAMPF (Spieler) =====================
 function doAttack(){
   if(atkCD>0||!running)return;atkCD=0.42;
+  playOnce(heroRig,"attack",2.5); // 2.83s-Clip @2.5 ≈ 1.13s; Spam vor Ablauf resettet den Schwung (CD 0.42s bleibt Gameplay-Wahrheit)
   beep(760,.05,"square",.035);
   // Auto-Face: nächsten Gegner in Reichweite anvisieren (ARPG-QoL — Hiebe whiffen nicht im Stand)
   var nb=null,nd=6.5;
@@ -806,6 +825,7 @@ function doBolt(){
   var cost=Math.max(4,9-G.skills.puls*1.5);
   if(G.en<cost){showHint("⚡ Zu wenig Energie");return;}
   G.en-=cost;boltCD=0.8;updHUD();beep(980,.09,"sawtooth",.05);
+  playOnce(heroRig,"cast",1.5); // 2.67s-Clip @1.5 ≈ 1.78s; erneuter Puls (CD 0.8s) resettet den Cast
   var R=7+G.skills.puls*1.2;
   var ring=new THREE.Mesh(new THREE.TorusGeometry(0.5,0.22,8,32),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
   ring.rotation.x=-Math.PI/2;ring.position.set(player.position.x,player.position.y+0.6,player.position.z);scene.add(ring);
@@ -825,6 +845,7 @@ function doDodge(){
   var mv=moveVec(),l=Math.hypot(mv.x,mv.z);
   dodgeDir=l>0.05?{x:mv.x/l,z:mv.z/l}:{x:Math.sin(player.rotation.y),z:Math.cos(player.rotation.y)};
   dodgeT=0.16;dodgeCD=1.0;iframe=0.36;
+  playOnce(heroRig,"dodge",2.2,0.08); // 1.83s-Clip @2.2 ≈ 0.83s — Rolle passt in den 1s-Cooldown
   beep(660,.1,"sawtooth",.04);burst(player.position.x,0.8,player.position.z,0x7de3ff,8,4);
 }
 // ===================== NPCs & QUESTS =====================
@@ -844,22 +865,35 @@ npcs.forEach(function(np){
 // SkinnedMesh-Falle: .clone() bricht Skinning in r128 (kein SkeletonUtils im Vendor)
 // → das GLB 4x aus demselben ArrayBuffer parsen — simpel und robust.
 var rigs=[],heroRig=null;
+// One-Shot-Clips: LoopOnce + clampWhenFinished, danach Crossfade zurück zu idle
+// (die Bewegungs-Logik im Loop wechselt im nächsten Frame ggf. sofort auf walk).
+var ONESHOT={wave:1,attack:1,cast:1,dodge:1,hit:1,victory:1};
 function makeRig(o,anims){var r={mixer:new THREE.AnimationMixer(o),actions:{},cur:null};
   for(var i=0;i<anims.length;i++){var a=r.mixer.clipAction(anims[i]);
-    if(anims[i].name==="wave")a.setLoop(THREE.LoopOnce,1);
+    if(ONESHOT[anims[i].name]){a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=true;}
     r.actions[anims[i].name]=a;}
-  r.mixer.addEventListener("finished",function(){r.cur=null;setAnim(r,"idle",0.25);}); // wave endet in Rest-Pose
+  r.mixer.addEventListener("finished",function(e){ // One-Shot vorbei → sauber zurück zu idle
+    var a=r.actions.idle;if(!a){r.cur=null;return;}
+    r.cur="idle";a.reset();a.timeScale=1;a.play();
+    if(e.action&&e.action!==a)e.action.crossFadeTo(a,0.2,false);});
   rigs.push(r);return r;}
 function setAnim(r,name,fade,ts){if(!r)return;var a=r.actions[name];if(!a)return;
   if(r.cur===name){if(ts!==undefined)a.timeScale=ts;return;}
   var prev=r.cur?r.actions[r.cur]:null;r.cur=name;
   a.reset();if(ts!==undefined)a.timeScale=ts;a.play();
   if(prev)prev.crossFadeTo(a,fade||0.25,false);}
+// One-Shot abspielen — startet auch neu, wenn derselbe Clip schon läuft (Angriffs-Spam)
+function playOnce(r,name,ts,fade){if(!r)return;var a=r.actions[name];if(!a)return;
+  var prev=(r.cur&&r.cur!==name)?r.actions[r.cur]:null;r.cur=name;
+  a.reset();a.timeScale=ts||1;a.play();
+  if(prev)prev.crossFadeTo(a,fade||0.12,false);else a.setEffectiveWeight(1);}
 (function(){
   if(!THREE.GLTFLoader)return;
-  // SPIELER: Meshy-Held hero_meshy.glb (Clips idle/walk/run/wave; Neonlinien sind in der Basecolor-Textur,
-  // die auch als emissiveTexture verdrahtet ist → Intensität DÄMPFEN, sonst Bloom-Blowout / flacher Look).
-  new THREE.GLTFLoader().load("/models/hero_meshy.glb",function(g){
+  // SPIELER: Meshy-Held hero_meshy_combat.glb — identisches Modell/Skelett wie hero_meshy.glb,
+  // aber 9 Clips (idle/walk/run/wave + attack/cast/dodge/hit/victory, Root-Motion entfernt).
+  // Neonlinien sind in der Basecolor-Textur, die auch als emissiveTexture verdrahtet ist
+  // → Intensität DÄMPFEN, sonst Bloom-Blowout / flacher Look.
+  new THREE.GLTFLoader().load("/models/hero_meshy_combat.glb",function(g){
     var o=g.scene;o.scale.setScalar(1.2); // 1.75 Einheiten → ~2.1 (Häuser ~7 hoch)
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
       if(n.material){n.material.emissiveIntensity=1.3;n.material.color.setScalar(2.1);}}}); // Neonlinien leuchten, Anzug bleibt dunkel-lesbar
@@ -940,7 +974,8 @@ function doInteract(){
       if(G.qstage<4){showHint("Der Obelisk schweigt noch — folge erst deinen Aufgaben.");return;}
       ob.on=true;G.obel[i]=true;beep(1200,.4,"triangle",.08);burst(ob.x,4,ob.z,0x6affab,22,7);camShake=0.5;
       announce("Obelisk aktiviert! ("+G.obel.filter(Boolean).length+"/3)","#6affab");
-      if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d");}
+      if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d");
+        playOnce(heroRig,"victory",1.1,0.2);} // steht am Obelisken → Sieger-Pose passt immer
       renderQuests();saveGame();return;}}
   if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5){enterDungeon();return;}
   if(inDungeon){
@@ -1128,6 +1163,7 @@ function killSeraph(){
   var it=rollItem(G.lvl+4);it.r=3;it.v=Math.round(it.v*1.4);G.inv.push(it);G.legFound=(G.legFound||0)+1;
   G.shards+=30;G.shardsEarned=(G.shardsEarned||0)+30;gainXp(90);
   announce("SERAPH BESIEGT — LEGENDÄR: "+it.n+"!","#ffcf6e");
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))playOnce(heroRig,"victory",1.1,0.2);
   scene.remove(seraph.g);seraph=null;seraphCD=DAYLEN*1.5;
   updHUD();saveGame();
 }
@@ -1297,9 +1333,8 @@ function loop(now){
     player.position.y=heightAt(player.position.x,player.position.z);
     // Held-Animation: GLB-Clips idle/walk via AnimationMixer, Walk-Tempo an Speed gekoppelt (+ Staub-Schritte)
     var _spd2=Math.hypot(vx,vz);if(dodgeT>0)_spd2=20;
-    if(heroRig&&heroRig.cur!=="wave"){
-      if(dodgeT>0&&heroRig.actions.run)setAnim(heroRig,"run",0.1,1); // Dash → Sprint-Clip
-      else if(_spd2>2)setAnim(heroRig,"walk",0.25,Math.max(0.8,Math.min(1.4,_spd2/9)));
+    if(heroRig&&!ONESHOT[heroRig.cur]){ // One-Shots (attack/cast/dodge/hit/victory) laufen aus, dann übernimmt Bewegung
+      if(_spd2>2)setAnim(heroRig,"walk",0.25,Math.max(0.8,Math.min(1.4,_spd2/9)));
       else setAnim(heroRig,"idle",0.3);}
     stepT-=dt;if(_spd2>6&&stepT<=0){stepT=0.26;burst(player.position.x,0.25,player.position.z,0x6f86c8,2,1.6);}
     // Zitadelle gesperrt bis alle Obelisken an
