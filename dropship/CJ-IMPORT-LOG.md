@@ -2392,3 +2392,11 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - MERKER: Für YouTube-Shorts IMMER die Musik-Version (nie -clean/stumm). Original-Audio-Bonus für
   Kanäle <50k → eigene lizenzfreie Musik (automation/music/) statt stumm. Künftige Uploads: Musik-Mux
   als Pflicht-Schritt vor yt_upload.
+
+## 2026-07-10-yt3 — RICHTIGE Musik: luxe-premium (selbst produziert) statt House
+- User: «nicht diese Musik» → luxe-house1 war der generische. Der RICHTIGE ist luxe-premium.wav
+  (selbst synthetisiert via FluidSynth/GM: Grand Piano + Streicher + Akustik-Bass + Glockenspiel,
+  F-Dur 96 BPM, elegant, für Marken-Reels; automation/music/produce/make_premium.sh).
+- Showcase neu: House-Version gelöscht (8GtRvhID50U), Premium-Version → youtube.com/shorts/nuqGBole9HY.
+- MERKER: LuxeStyle-Marken-Videos = luxe-premium (elegant) als Default für YouTube/Marken; luxe-hype-pro
+  nur für schnelle Produkt-Cuts. NIE die generischen luxe-house/hype1-3.

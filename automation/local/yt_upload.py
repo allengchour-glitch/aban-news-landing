@@ -12,7 +12,7 @@ def refresh_access():
     raise SystemExit('Refresh-Fehler: ' + r.stdout[:150])
 AT = open('/tmp/yt_access').read().strip()
 VIDEOS = [
- dict(file='reels/shorts/showcase-45s-music.mp4',
+ dict(file='reels/shorts/showcase-45s-premium.mp4',
       title='LuxeStyle in 43 Sekunden – Mode, Schmuck & Gadgets 🇨🇭',
       desc='Der Schweizer Online-Shop: 10\'000+ Produkte, Gratis-Versand ab CHF 50, Kauf auf Rechnung (Klarna) & TWINT.\nShop: luxestyle.ch\n#shorts #onlineshop #schweiz #gadgets'),
  dict(file='reels/shorts/kleider-sommer-yt.mp4',
