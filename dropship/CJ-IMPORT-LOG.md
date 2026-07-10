@@ -2383,3 +2383,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   nur auf User-Wort (channels.update brandingSettings möglich) ODER User erstellt Brand-Kanal.
 - Damit sind von der Klick-Liste erledigt: 4 (Klaviyo), 4b (Abbrecher-Mails), 10 (YouTube), 11 (Meta),
   12 (Konnektoren). Offen: 2 (TikTok-Sandbox-Klicks), 3 (GMC-Zielländer), 1 (Pinterest wartet auf UID).
+
+## 2026-07-10-yt2 — YouTube-Musik-Fix (User: «youtube mit musik?»)
+- **Root Cause gefunden:** Der 43s-Showcase war STUMM hochgeladen (war die -clean.mp4 = für Trend-Sound
+  gedacht). YouTube spielt Ton mit → stumm ist schlecht. Kleider+Sie&Ihn hatten schon Musik.
+- **Fix:** luxe-house1.wav unter den Showcase gelegt (geloopt, 2s-Outro-Fade, −15% Volume),
+  altes stummes Video gelöscht (fIdiplJ7oHw), Musik-Version neu hoch → youtube.com/shorts/8GtRvhID50U.
+- MERKER: Für YouTube-Shorts IMMER die Musik-Version (nie -clean/stumm). Original-Audio-Bonus für
+  Kanäle <50k → eigene lizenzfreie Musik (automation/music/) statt stumm. Künftige Uploads: Musik-Mux
+  als Pflicht-Schritt vor yt_upload.
