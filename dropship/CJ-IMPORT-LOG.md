@@ -2230,3 +2230,19 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Grössen-Hinweis (asiatisch) ist im Fill-Template enthalten ✓.
 - Engines: bb_cleanup ~5'000/6'997 · seo50 ~7'200/15'622 · CJ-Rotation läuft (pet→cjdamen) ·
   20 frische Suchbegriffe warten in der Queue auf den nächsten Runner-Zyklus.
+
+## Session 2026-07-10k — «100k BigBuy füllen» → DATEN-WAHRHEIT + Maximum umgesetzt
+- **User wollte 100'000 BigBuy-Produkte. Realität (API-verifiziert):** BigBuy-Feed = 90'000 Artikel,
+  davon **nur 2'507 mit Lagerbestand** (Rest Karteileichen/Sommer-Ausverkauf), 2'415 CH-lieferbar,
+  nach Versand-Floor + Dubletten-Abzug **104 profitable Neuimporte** = das ehrliche Maximum.
+- **bb_mass_import.py LIVE** (/tmp): importiert die 104 mit SAUBERER KATEGORIE-ZUORDNUNG (User:
+  «sauber sortieren, sehr gute unterteilung») — BigBuy-Kategoriebaum (catalog/categories.json, 1'174
+  Kategorien) → präzise kategorie-*-Tags; Geschlechts-Override per Titel (Baum-Fehler: Police-
+  Herrenuhr lag in «Kinderuhren»!); Marken-Tag via 10.2k-Marken-Liste; Groq-Fallback = deutscher
+  BigBuy-Name. Wachen: Bild-Ledger, Titel-Norm, Code-Strip. Ledger dropship/_bb_mass_done.txt.
+- **🛡️ STOCK-GUARD LIVE (PRIO-1-Lücke endlich zu):** 1'658 aktive BigBuy-Produkte haben laut
+  Lager-Feed (productsstockbyhandlingdays, 9 Seiten × 10k) **quantity=0** → Engine draftet sie mit
+  Tag ausverkauft-lieferant (/tmp/bb_stock_guard.py, Ledger _stockguard_done.txt). 3'152 Refs sind
+  NICHT im Feed = unbekannt → bewusst nicht angefasst. Nie wieder #1004/#1006/#1008-Verkäufe.
+- Merker: Groq via Python-urllib = Cloudflare-403 (error 1010) → immer curl/fetch nutzen.
+- Daten-Assets in /tmp: bb_instock.json (2.5k), bb_mass_cands.json, bb_cat_map.json, bb_zerostock.json.
