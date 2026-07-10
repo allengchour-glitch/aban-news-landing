@@ -862,7 +862,7 @@ function setAnim(r,name,fade,ts){if(!r)return;var a=r.actions[name];if(!a)return
   new THREE.GLTFLoader().load("/models/hero_meshy.glb",function(g){
     var o=g.scene;o.scale.setScalar(1.2); // 1.75 Einheiten → ~2.1 (Häuser ~7 hoch)
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
-      if(n.material)n.material.emissiveIntensity=0.5;}});
+      if(n.material){n.material.emissiveIntensity=1.3;n.material.color.setScalar(2.1);}}}); // Neonlinien leuchten, Anzug bleibt dunkel-lesbar
     pBody.visible=false;player.add(o);heroModel=o;
     heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);},undefined,function(){});
   // NPCs: Blender-Mensch hero.glb (Original-Materialien mit cyan/pink-Akzenten, KEIN Emissive-Override!)
@@ -1224,7 +1224,7 @@ function updPrompt(txt){
   var ta=document.getElementById("tAct");
   if(txt){
     if(txt!==_kpLast){_kpLast=txt;
-      _kpEl.innerHTML=isTouch?"<span class='kcap'>👆</span> Tippen: "+txt:"<span class='kcap'>E</span> "+txt;}
+      _kpEl.innerHTML=isTouch?"<span class='kcap'>👆</span> "+txt:"<span class='kcap'>E</span> "+txt;}
     _kpEl.style.display="flex";
     if(isTouch){ta.classList.remove("hide");ta.classList.add("pulse");}
   }else{
