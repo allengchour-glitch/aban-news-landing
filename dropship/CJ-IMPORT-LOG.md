@@ -2364,3 +2364,11 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (attachVideo-Pfad aktiv) — heutige Welle hatte lieferantenseitig keine. Kein Bug.
 - **Marketing-Videos:** 3 fertige Reels warten auf Meta-Token (User-Klick), YouTube-Paket bereit
   (PC-Runbook 10). Posting ist der Engpass, nicht die Produktion.
+
+## 2026-07-10y — Meta-Token erneuert (User) → IG/FB-Autopilot WIEDER LIVE
+- User lieferte frischen User-Token (Graph Explorer) → Seiten-Token getauscht (/tmp/meta_page_token,
+  chmod 600, NIE Repo), IG-ID gesetzt. Token-Check: Alleng Chour ✓.
+- **Sofort gepostet (erster Post seit 07.07.):** Showcase-45s-Reel →
+  Instagram instagram.com/reel/DanhubhjvrJ + Facebook-Video 1040158425372528. Ledger → posted-ig-fb.
+- 2 weitere ready-Reels in der Queue — Stunden-Wächter postet mit 48h-Kadenz weiter.
+- PC-Befehlskanal: abandoned-mail + youtube-shorts an den PC gequeued (Watcher wartet auf Reports).
