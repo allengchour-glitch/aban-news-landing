@@ -41,7 +41,9 @@ for(const it of viable.slice(0,LIMIT)){
   // ⛔ Adult/Erotik nie importieren (Google-GMC-Sperr-Risiko, Regel erotik-only-online)
   if(/sexfun|intimax|\bdildo\b|vibrator|vibrations|masturbat|penis|vagina|erotik|dessous|gleitgel|gleitmittel|analplug|butt.?plug|kondom|prostata|sex.?toy|lingerie|einlauf/.test(low)){console.log('⛔ adult-skip',rec.name.slice(0,40));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
   // ⛔ Elektronik-Schrott/Nicht-Fit (überteuerte Markenware, 0 Fit): PC/Toner/Akku/Netzwerk
-  if(/\bdesktop pc\b|\bpc \b|toner|patrone|\bram\b|\bssd\b|festplatte|\bakku\b|\bakkus\b|batterie|netzteil|router|switch |kabel |monitor |drucker|tastatur|prozessor|grafikkarte/.test(low)){console.log('⛔ elektronik-skip',rec.name.slice(0,40));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
+  if(/\bdesktop pc\b|\bpc \b|toner|patrone|\bram\b|\bssd\b|festplatte|\bakku\b|\bakkus\b|batterie|netzteil|router|switch |kabel |monitor |drucker|tastatur|prozessor|grafikkarte|tv halterung|tv-halterung|halterung .*"|festplattengehäuse|adapter/.test(low)){console.log('⛔ elektronik-skip',rec.name.slice(0,40));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
+  // ⛔ Grosshandels-Multipack/Bulk (kein Retail-Einzelartikel): «50 Stück», «(10 Stück)», Packungen, Karton, Rolle
+  if(/\(\s*\d{1,3}\s*(st[üu]ck|stk|units?|pcs|pack)\b|\b\d{2,4}\s*(st[üu]ck|stk|units?|pcs)\b|multipack|großpackung|grosspackung|\bpappe\b|\bkarton\b|\brollen?\b|\bbögen\b|blister|verkaufsdisplay|display\b/.test(low)){console.log('⛔ bulk-skip',rec.name.slice(0,45));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
   const title=cleanTitle(rec.name);
   if(!title){skip++;continue;}
   // Titel-Wache (norm)
