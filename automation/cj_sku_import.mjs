@@ -122,6 +122,11 @@ for (const item of ITEMS) {
   const imgKey = (imgs[0]||'').split('?')[0].split('/').pop();
   if (imgKey && imgSeen.has(imgKey)) { console.log('= Bild existiert:', title); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   if (imgKey) fs.appendFileSync(IMGLEDGER, imgKey + '\n');
+  // Preis-Deckel + Sperrgut-/Möbel-Filter (GEHIRN §5 + 2026-07-10: «L-förmiger Schminktisch CHF 653» war Trust-Killer)
+  const priceChf = parseFloat(chf(d.sellPrice, d.variants?.[0]?.variantWeight));
+  const MAXCHF = parseFloat(process.env.MAXCHF || '200');
+  if (priceChf > MAXCHF) { console.log(`✗ zu teuer (CHF ${priceChf}) — non-fit:`, title.slice(0,40)); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  if (/schminktisch|schrank|\bregal\b|kommode|\bbett\b|\bsofa\b|couch|\btisch\b|\bstuhl\b|matratze|kleiderständer|garderobe|sideboard|vitrine|werkbank|möbel/i.test(title)) { console.log('✗ sperriges möbel — skip:', title.slice(0,40)); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle', status: 'ACTIVE',
     tags: [...new Set(['trend', 'viral', 'video-hit', 'cj-real', 'dropship', 'neu',
