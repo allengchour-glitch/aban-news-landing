@@ -73,7 +73,7 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene(); scene.background=new THREE.Color(0x07061a);scene.fog=new THREE.Fog(0x0d0930,70,340);
+var scene=new THREE.Scene(); scene.background=new THREE.Color(0x120a33);scene.fog=new THREE.Fog(0x2a1454,70,340);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,2000);
 scene.add(new THREE.AmbientLight(0x8a7ab0,1.3));
 var dir=new THREE.DirectionalLight(0xffd9f0,0.8); dir.position.set(-4,8,10); scene.add(dir);
@@ -82,18 +82,27 @@ function mat(c,e,ei){return new THREE.MeshStandardMaterial({color:c,emissive:e!=
 // ---- Synthwave-Hintergrund ----
 var skyMat=new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,fog:false,uniforms:{},
   vertexShader:"varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
-  fragmentShader:"varying vec3 vP;void main(){float h=normalize(vP).y;vec3 top=vec3(0.03,0.02,0.09),hor=vec3(0.28,0.08,0.30),lo=vec3(0.02,0.01,0.06);vec3 c=h>0.0?mix(hor,top,pow(h,0.5)):mix(hor,lo,pow(-h,0.4));gl_FragColor=vec4(c,1.0);}"});
+  fragmentShader:"varying vec3 vP;void main(){float h=normalize(vP).y;vec3 top=vec3(0.07,0.04,0.24),hor=vec3(0.52,0.13,0.42),lo=vec3(0.04,0.02,0.12);vec3 c=h>0.0?mix(hor,top,pow(h,0.55)):mix(hor,lo,pow(-h,0.4));c+=vec3(0.95,0.45,0.22)*exp(-abs(h-0.02)*13.0)*0.30;gl_FragColor=vec4(c,1.0);}"});
 var sky=new THREE.Mesh(new THREE.SphereGeometry(900,24,12),skyMat); scene.add(sky);
 // Retro-Sonne
 var sunMat=new THREE.ShaderMaterial({fog:false,depthWrite:false,transparent:true,
   vertexShader:"varying vec2 vU;void main(){vU=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
   fragmentShader:"varying vec2 vU;void main(){float y=vU.y;vec3 c=mix(vec3(1.0,0.18,0.44),vec3(1.0,0.88,0.30),pow(y,0.8));if(y<0.55&&fract(y*13.0)<0.42)discard;gl_FragColor=vec4(c,1.0);}"});
 var sun=new THREE.Mesh(new THREE.CircleGeometry(60,48),sunMat); sun.position.set(0,26,-260); scene.add(sun);
-// Berge (Parallax-Layer)
-var hillsA=new THREE.Group(), hillsB=new THREE.Group();
-for(var hi=0;hi<40;hi++){var hh=8+Math.random()*22,mnt=new THREE.Mesh(new THREE.ConeGeometry(14+Math.random()*10,hh,4),mat(0x120a2a,0x241844,0.4));mnt.position.set(-200+hi*11,hh/2-14,-150);hillsA.add(mnt);}
-for(hi=0;hi<50;hi++){var h2=5+Math.random()*12,m2=new THREE.Mesh(new THREE.ConeGeometry(9+Math.random()*7,h2,4),mat(0x1a0f38,0x3a2060,0.5));m2.position.set(-220+hi*9,h2/2-12,-95);hillsB.add(m2);}
-scene.add(hillsA); scene.add(hillsB);
+// Berge (3 Parallax-Layer, hinten kühl-violett -> vorne satt)
+var hillsA=new THREE.Group(), hillsB=new THREE.Group(), hillsC=new THREE.Group();
+for(var hi=0;hi<40;hi++){var hh=8+Math.random()*22,mnt=new THREE.Mesh(new THREE.ConeGeometry(14+Math.random()*10,hh,4),mat(0x1c1050,0x3b2a8a,0.45));mnt.position.set(-200+hi*11,hh/2-14,-150);hillsA.add(mnt);}
+for(hi=0;hi<50;hi++){var h2=5+Math.random()*12,m2=new THREE.Mesh(new THREE.ConeGeometry(9+Math.random()*7,h2,4),mat(0x2a145e,0x5a2fae,0.5));m2.position.set(-220+hi*9,h2/2-12,-95);hillsB.add(m2);}
+for(hi=0;hi<34;hi++){var h3=3+Math.random()*7,m3=new THREE.Mesh(new THREE.ConeGeometry(6+Math.random()*5,h3,4),mat(0x0e2a3a,0x14607a,0.55));m3.position.set(-230+hi*14,h3/2-11,-55);hillsC.add(m3);}
+scene.add(hillsA); scene.add(hillsB); scene.add(hillsC);
+// Knuffige Low-Poly-Wolken (2 Parallax-Ebenen, driften langsam)
+function makeCloud(scale,col,ei){var g=new THREE.Group();var cmt=new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:ei,flatShading:true,fog:false});var n=3+Math.floor(Math.random()*3);
+ for(var ci=0;ci<n;ci++){var s=new THREE.Mesh(new THREE.SphereGeometry(1.5+Math.random()*1.7,7,5),cmt);s.position.set(ci*2.3-n*1.1,Math.random()*0.9,(Math.random()-.5)*1.2);s.scale.y=0.55;g.add(s);}
+ g.scale.setScalar(scale);return g;}
+var cloudsA=new THREE.Group(),cloudsB=new THREE.Group();
+for(hi=0;hi<6;hi++){var cA=makeCloud(1.5+Math.random(),0x7a5fd0,0.35);cA.position.set(-190+hi*70+Math.random()*24,36+Math.random()*20,-135);cloudsA.add(cA);}
+for(hi=0;hi<7;hi++){var cB=makeCloud(0.9+Math.random()*0.7,0xc79ff2,0.45);cB.position.set(-200+hi*60+Math.random()*20,22+Math.random()*14,-78);cloudsB.add(cB);}
+scene.add(cloudsA); scene.add(cloudsB);
 
 // Animierter Retrowave-Grid-Boden (Shader: scrollende Neon-Linien, Puls, Horizont-Fade)
 function neonGrid(size,cells,c1,c2){
@@ -116,26 +125,70 @@ var PLAT=[ // {x,y,w,h} Mittelpunkt + volle Grösse
  {x:107,y:0.5,w:6,h:2},{x:117,y:1.5,w:8,h:2}
 ];
 var platMeshes=[];
-for(var pI=0;pI<PLAT.length;pI++){var pl=PLAT[pI];var pm=new THREE.Mesh(new THREE.BoxGeometry(pl.w,pl.h,3),mat(0x24123f,0x2a1650,0.55));pm.position.set(pl.x,pl.y,0);scene.add(pm);platMeshes.push(pm);
-  var edge=new THREE.Mesh(new THREE.BoxGeometry(pl.w,0.1,3.06),mat(pI%2?0xff7ad9:0x5ef2ff,pI%2?0xff7ad9:0x5ef2ff,1.5));edge.position.set(pl.x,pl.y+pl.h/2+0.03,0);scene.add(edge);
-  // Glow-Kante oben
-  var edge=new THREE.Mesh(new THREE.BoxGeometry(pl.w,0.18,3.1),mat(0x5ef2ff,0x5ef2ff,1.4));edge.position.set(pl.x,pl.y+pl.h/2,0);scene.add(edge);}
+var EDGE_COLS=[0x5ef2ff,0xff7ad9,0xffe14d,0x6aff9e,0xb98bff];
+for(var pI=0;pI<PLAT.length;pI++){var pl=PLAT[pI];var ec=EDGE_COLS[pI%EDGE_COLS.length];
+  var pm=new THREE.Mesh(new THREE.BoxGeometry(pl.w,pl.h,3),new THREE.MeshStandardMaterial({color:0x2c1552,emissive:ec,emissiveIntensity:0.12,flatShading:true}));pm.position.set(pl.x,pl.y,0);scene.add(pm);platMeshes.push(pm);
+  // Glow-Kante oben (Neon-Farbe rotiert pro Plattform)
+  var edge=new THREE.Mesh(new THREE.BoxGeometry(pl.w,0.12,3.1),new THREE.MeshBasicMaterial({color:new THREE.Color(ec).multiplyScalar(0.85)}));edge.position.set(pl.x,pl.y+pl.h/2+0.02,0);scene.add(edge);
+  // dezente Unterkante
+  var edgeB=new THREE.Mesh(new THREE.BoxGeometry(pl.w,0.08,3.06),new THREE.MeshBasicMaterial({color:new THREE.Color(ec).multiplyScalar(0.5)}));edgeB.position.set(pl.x,pl.y-pl.h/2,0);scene.add(edgeB);}
 var COINS=[{x:16,y:2},{x:24,y:3.5},{x:41,y:4.5},{x:57,y:5},{x:72,y:2},{x:90,y:5.5},{x:98,y:4},{x:107,y:2.5},{x:112,y:4}];
 var coinMeshes=[];
-for(var cI=0;cI<COINS.length;cI++){var cm=new THREE.Mesh(new THREE.TorusGeometry(0.45,0.16,8,16),mat(0xffd166,0xffd166,1.3));cm.position.set(COINS[cI].x,COINS[cI].y,0);scene.add(cm);cm.userData={got:false};coinMeshes.push(cm);}
+for(var cI=0;cI<COINS.length;cI++){var cm=new THREE.Mesh(new THREE.TorusGeometry(0.45,0.16,8,16),new THREE.MeshBasicMaterial({color:0xffc94d}));cm.position.set(COINS[cI].x,COINS[cI].y,0.8);scene.add(cm);cm.userData={got:false};coinMeshes.push(cm);}
 // Ziel-Fahne
 var goalX=124, goalY=3;
 var goalPole=new THREE.Mesh(new THREE.BoxGeometry(0.25,6,0.25),mat(0xffffff,0xffffff,1.2));goalPole.position.set(goalX,goalY,0);scene.add(goalPole);
 var goalFlag=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.1,0.1),mat(0x6aff9e,0x6aff9e,1.4));goalFlag.position.set(goalX+0.9,goalY+2,0);scene.add(goalFlag);
 var goalBase=new THREE.Mesh(new THREE.BoxGeometry(9,2,3),mat(0x24123f,0x6aff9e,0.9));goalBase.position.set(goalX,-0.2,0);scene.add(goalBase);
 
-// ---- Spieler (Neon-Läufer, composite) ----
+// ---- Spieler: "Bibo", knuffiger Neon-Blob mit Kulleraugen ----
 var player=new THREE.Group();
-var pBody=new THREE.Mesh(new THREE.BoxGeometry(0.84,1.35,0.7),mat(0xff7ad9,0x6a1a4f,0.9)); player.add(pBody);
-var pHead=new THREE.Mesh(new THREE.BoxGeometry(0.6,0.5,0.6),mat(0xffd0ee,0x6a1a4f,0.8)); pHead.position.y=0.9; player.add(pHead);
-var pCore=new THREE.Mesh(new THREE.OctahedronGeometry(0.3,0),mat(0xffffff,0x5ef2ff,1.4)); pCore.position.y=0.1; player.add(pCore);
+var pBody=new THREE.Mesh(new THREE.SphereGeometry(0.62,20,16),new THREE.MeshStandardMaterial({color:0xff4d9e,emissive:0x99215f,emissiveIntensity:0.18,roughness:0.35}));
+pBody.scale.set(1,1.1,0.92); player.add(pBody);
+var pBelly=new THREE.Mesh(new THREE.SphereGeometry(0.4,16,12),new THREE.MeshStandardMaterial({color:0xffd9ef,emissive:0xc06a9c,emissiveIntensity:0.2,roughness:0.5}));
+pBelly.position.set(0,-0.14,0.3);pBelly.scale.set(1,1.0,0.5);player.add(pBelly);
+// grosse Augen: Weiss + Pupillen, die in Bewegungsrichtung schauen
+var eyeWhiteMat=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffff,emissiveIntensity:0.12,roughness:0.25});
+var pupilMat=new THREE.MeshStandardMaterial({color:0x140f26,emissive:0x140f26,emissiveIntensity:0.15});
+var eyeL=new THREE.Group(),eyeR=new THREE.Group();
+eyeL.add(new THREE.Mesh(new THREE.SphereGeometry(0.24,14,12),eyeWhiteMat));
+eyeR.add(new THREE.Mesh(new THREE.SphereGeometry(0.24,14,12),eyeWhiteMat));
+var puL=new THREE.Mesh(new THREE.SphereGeometry(0.115,10,8),pupilMat);puL.position.z=0.175;eyeL.add(puL);
+var puR=new THREE.Mesh(new THREE.SphereGeometry(0.115,10,8),pupilMat);puR.position.z=0.175;eyeR.add(puR);
+eyeL.position.set(-0.24,0.26,0.44);eyeR.position.set(0.24,0.26,0.44);
+player.add(eyeL);player.add(eyeR);
+// rosa Bäckchen
+var cheekMat=new THREE.MeshBasicMaterial({color:0xff9ccf});
+var chL=new THREE.Mesh(new THREE.CircleGeometry(0.085,10),cheekMat);chL.position.set(-0.4,0.02,0.5);chL.rotation.y=-0.5;player.add(chL);
+var chR=new THREE.Mesh(new THREE.CircleGeometry(0.085,10),cheekMat);chR.position.set(0.4,0.02,0.5);chR.rotation.y=0.5;player.add(chR);
+// Mund: Lächel-Bogen + O-Mund (beim Fallen)
+var mouthMat=new THREE.MeshBasicMaterial({color:0x2a0f22});
+var mouth=new THREE.Mesh(new THREE.TorusGeometry(0.12,0.035,8,12,Math.PI),mouthMat);
+mouth.position.set(0,0.06,0.56);mouth.rotation.z=Math.PI;player.add(mouth);
+var mouthO=new THREE.Mesh(new THREE.SphereGeometry(0.085,10,8),mouthMat);
+mouthO.position.set(0,0.02,0.56);mouthO.scale.set(1,1.3,0.4);mouthO.visible=false;player.add(mouthO);
+// Füsse
+var footMat=new THREE.MeshStandardMaterial({color:0xffe14d,emissive:0xcf9c12,emissiveIntensity:0.4});
+var footL=new THREE.Mesh(new THREE.SphereGeometry(0.17,10,8),footMat);footL.scale.set(1.2,0.6,1.3);footL.position.set(-0.26,-0.64,0.12);player.add(footL);
+var footR=new THREE.Mesh(new THREE.SphereGeometry(0.17,10,8),footMat);footR.scale.set(1.2,0.6,1.3);footR.position.set(0.26,-0.64,0.12);player.add(footR);
+// Antenne mit Glüh-Kugel
+var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.028,0.028,0.4,6),mat(0xffffff,0x5ef2ff,1.0));ant.position.set(0,0.82,0);player.add(ant);
+var antBall=new THREE.Mesh(new THREE.SphereGeometry(0.1,10,8),mat(0xffffff,0x5ef2ff,1.3));antBall.position.set(0,1.06,0);player.add(antBall);
 scene.add(player);
-var pGlow=new THREE.PointLight(0xff7ad9,1.4,14); scene.add(pGlow);
+var pGlow=new THREE.PointLight(0xff7ad9,0.9,12); scene.add(pGlow);
+var blinkT=1.6,blinkD=0;
+// ---- Staub-Puffs (Landen/Absprung) ----
+var dust=[],dustGeo=new THREE.SphereGeometry(0.14,6,5);
+for(var dI=0;dI<24;dI++){var dm=new THREE.Mesh(dustGeo,new THREE.MeshBasicMaterial({color:0xd9c8ff,transparent:true,opacity:0.85}));dm.visible=false;scene.add(dm);dust.push({m:dm,vx:0,vy:0,life:0});}
+function puff(x,y,n,spread){for(var k=0,used=0;k<dust.length&&used<n;k++){var D=dust[k];if(D.life>0)continue;used++;
+  D.life=0.4+Math.random()*0.25;D.m.visible=true;D.m.material.opacity=0.85;
+  D.m.position.set(x+(Math.random()-.5)*0.5,y+0.05,0.7);
+  var a=Math.random()*Math.PI;D.vx=Math.cos(a)*spread*(0.4+Math.random()*0.6);D.vy=Math.abs(Math.sin(a))*spread*0.45+0.6;
+  D.m.scale.setScalar(0.6+Math.random()*0.7);}}
+function updDust(dt){for(var k=0;k<dust.length;k++){var D=dust[k];if(D.life<=0)continue;D.life-=dt;
+  if(D.life<=0){D.m.visible=false;continue;}
+  D.m.position.x+=D.vx*dt;D.m.position.y+=D.vy*dt;D.vy-=2.6*dt;
+  D.m.scale.multiplyScalar(1+dt*1.7);D.m.material.opacity=Math.min(0.85,D.life*2.1);}}
 
 // ---- Bloom ----
 var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
@@ -143,9 +196,9 @@ var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
 var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.6}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.72}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.9}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec2 uv=vUv;vec2 d=uv-0.5;float ca=0.0015+dot(d,d)*0.006;vec3 base;base.r=texture2D(tBase,uv+d*ca).r;base.g=texture2D(tBase,uv).g;base.b=texture2D(tBase,uv-d*ca).b;vec3 g=texture2D(tBloom,uv).rgb;vec3 c=base+g*strength;float vig=smoothstep(1.1,0.3,dot(d,d)*2.2);c*=mix(0.6,1.0,vig);gl_FragColor=vec4(c,1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.8}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec2 uv=vUv;vec2 d=uv-0.5;float ca=0.0015+dot(d,d)*0.006;vec3 base;base.r=texture2D(tBase,uv+d*ca).r;base.g=texture2D(tBase,uv).g;base.b=texture2D(tBase,uv-d*ca).b;vec3 g=texture2D(tBloom,uv).rgb;vec3 c=base+g*strength;float vig=smoothstep(1.1,0.3,dot(d,d)*2.2);c*=mix(0.6,1.0,vig);gl_FragColor=vec4(c,1.0);}"});
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(m,t){qMesh.material=m;renderer.setRenderTarget(t||null);renderer.render(qScene,qCam);}
 function renderBloom(){renderer.setRenderTarget(rtScene);renderer.render(scene,camera);
@@ -174,7 +227,7 @@ var keyL=false,keyR=false,jumpQ=false,shake=0;
 function resetRun(){P.x=4;P.y=2.2;P.vx=0;P.vy=0;P.onGround=false;P.jumps=0;coins=0;deaths=0;won=false;elapsed=0;
   for(var i=0;i<coinMeshes.length;i++){coinMeshes[i].userData.got=false;coinMeshes[i].visible=true;}}
 function respawn(){P.x=4;P.y=2.2;P.vx=0;P.vy=0;deaths++;shake=0.55;keyL=false;keyR=false;beep(140,.2,"sawtooth",.08);}
-function doJump(){if(P.coyote>0||P.jumps<2){P.vy=JUMPV*(P.jumps===0?1:0.92);P.coyote=0;P.jumps++;P.sq=0.6;beep(560+P.jumps*90,.08,"square",.05);}}
+function doJump(){if(P.coyote>0||P.jumps<2){P.vy=JUMPV*(P.jumps===0?1:0.92);P.coyote=0;P.jumps++;P.sq=0.6;puff(P.x,P.y-HH,4,1.6);beep(560+P.jumps*90,.08,"square",.05);}}
 
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;
   if(k===" "||k==="arrowup"||k==="w"){if(!running){start();}else{jumpQ=true;}if(e.preventDefault)e.preventDefault();}});
@@ -222,36 +275,57 @@ function loop(now){
     P.x+=P.vx*dt;
     for(var i=0;i<PLAT.length;i++){var pl=PLAT[i];if(overlaps(P.x,P.y,pl.x,pl.y,pl.w/2,pl.h/2)){if(P.x<pl.x){P.x=pl.x-pl.w/2-HW;}else{P.x=pl.x+pl.w/2+HW;}P.vx=0;}}
     // Move Y + resolve
+    var wasAir=!P.onGround, vyImpact=P.vy;
     P.y+=P.vy*dt; P.onGround=false;
     for(i=0;i<PLAT.length;i++){var p2=PLAT[i];if(overlaps(P.x,P.y,p2.x,p2.y,p2.w/2,p2.h/2)){if(P.vy<=0){if(P.vy<-11){P.sq=0.55;shake=Math.max(shake,0.18);}P.y=p2.y+p2.h/2+HH;P.vy=0;P.onGround=true;P.jumps=0;}else{P.y=p2.y-p2.h/2-HH;P.vy=0;}}}
     // Ziel-Basis als Boden
     if(overlaps(P.x,P.y,goalX,-0.2,4.5,1)){if(P.vy<=0&&P.y>-0.2){P.y=-0.2+1+HH;P.vy=0;P.onGround=true;P.jumps=0;}}
+    // Landungs-Staub (hart = mehr Puff + platter)
+    if(wasAir&&P.onGround&&vyImpact<-4){var hard=vyImpact<-14;puff(P.x,P.y-HH,hard?10:6,hard?3.2:2.1);if(!hard)P.sq=Math.min(P.sq,0.72);}
     // Abgrund
     if(P.y<-14)respawn();
-    // Münzen
-    for(i=0;i<coinMeshes.length;i++){var cm=coinMeshes[i];if(cm.userData.got)continue;cm.rotation.y+=dt*4;var C=COINS[i];if(Math.abs(P.x-C.x)<0.9&&Math.abs(P.y-C.y)<1.1){cm.userData.got=true;cm.visible=false;coins++;beep(1046,.08,"triangle",.05);}}
+    // Münzen (drehen + fröhliches Bobben)
+    for(i=0;i<coinMeshes.length;i++){var cm=coinMeshes[i];if(cm.userData.got)continue;cm.rotation.y+=dt*4;var C=COINS[i];cm.position.y=C.y+Math.sin(now*0.004+i*1.3)*0.16;if(Math.abs(P.x-C.x)<0.9&&Math.abs(P.y-C.y)<1.1){cm.userData.got=true;cm.visible=false;coins++;puff(C.x,C.y,3,1.2);beep(1046,.08,"triangle",.05);}}
     // Ziel erreicht
     if(P.x>goalX-1.2&&P.y>-1&&P.y<goalY+3){finish(true);}
     P.sq=Math.min(1,P.sq+dt*4);
   }
-  // Spieler-Darstellung
-  player.position.set(P.x,P.y,0);
+  // Spieler-Darstellung (Squash&Stretch + Idle-Wackeln)
+  player.position.set(P.x,P.y,0.85);
   var stretch=P.onGround?1:(1+Math.min(0.35,Math.abs(P.vy)*0.012));
-  player.scale.set(P.sq*(2-stretch),(2-P.sq)*stretch*0.9,1);
+  var idle=(P.onGround&&Math.abs(P.vx)<0.5)?Math.sin(now*0.004)*0.035:0;
+  player.scale.set(P.sq*(2-stretch)*(1+idle),(2-P.sq)*stretch*0.9*(1-idle),1);
   player.rotation.z=-P.vx*0.03;
-  pCore.rotation.y+=dt*5;
+  // Gesicht: Pupillen schauen in Bewegungsrichtung, Augen weit beim Fallen, Blinzeln
+  var falling=!P.onGround&&P.vy<-7;
+  var lookX=Math.max(-1,Math.min(1,P.vx/MAXVX))*0.085, lookY=Math.max(-0.09,Math.min(0.09,P.vy*0.006));
+  puL.position.x=lookX;puL.position.y=lookY;puR.position.x=lookX;puR.position.y=lookY;
+  blinkT-=dt;if(blinkT<=0){blinkT=1.8+Math.random()*2.6;blinkD=0.12;}
+  if(blinkD>0)blinkD-=dt;
+  var eyeS=falling?1.3:1, eyeY=(blinkD>0&&!falling)?0.12:eyeS;
+  eyeL.scale.set(eyeS,eyeY,eyeS);eyeR.scale.set(eyeS,eyeY,eyeS);
+  mouth.visible=!falling; mouthO.visible=falling;
+  // Füsse trippeln beim Rennen
+  if(P.onGround&&Math.abs(P.vx)>0.6){var ph=now*0.022;footL.position.y=-0.64+Math.max(0,Math.sin(ph))*0.14;footR.position.y=-0.64+Math.max(0,Math.sin(ph+Math.PI))*0.14;}
+  else{footL.position.y=footR.position.y=-0.64;}
+  // Antenne pendelt gegen die Bewegung
+  var sway=Math.sin(now*0.006)*0.06-P.vx*0.025;
+  ant.rotation.z=sway;antBall.position.x=-sway*0.45;
+  updDust(dt);
   pGlow.position.set(P.x,P.y+0.5,2);
   goalFlag.rotation.z=Math.sin(now*0.004)*0.15;
   // Kamera folgt
   camera.position.x+=((P.x+3)-camera.position.x)*0.12;
   camera.position.y+=((Math.max(1,P.y)+3)-camera.position.y)*0.08;
-  camera.position.z=17;
+  camera.position.z=14;
   if(shake>0.001){camera.position.x+=(Math.random()-0.5)*shake*1.6;camera.position.y+=(Math.random()-0.5)*shake*1.6;shake*=0.85;}else shake=0;
   camera.lookAt(camera.position.x-1.5,camera.position.y-2.5,0);
   // Parallax
   sky.position.set(camera.position.x,camera.position.y,0);
   sun.position.x=camera.position.x*0.55;
-  hillsA.position.x=camera.position.x*0.6; hillsB.position.x=camera.position.x*0.4;
+  hillsA.position.x=camera.position.x*0.6; hillsB.position.x=camera.position.x*0.4; hillsC.position.x=camera.position.x*0.22;
+  cloudsA.position.x=camera.position.x*0.8+Math.sin(now*0.00006)*14;
+  cloudsB.position.x=camera.position.x*0.65+Math.sin(now*0.0001+2.0)*10;
   updHUD();
   renderBloom();
 }
