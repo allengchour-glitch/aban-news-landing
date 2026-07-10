@@ -1,95 +1,95 @@
 # CJ-Suchqueue — abarbeiten sobald Tagespunkte wieder da sind (Reset ~Mitternacht China-Zeit).
 # Format: search:<begriff> (cj_sku_import.mjs ITEMS=…) · Ziel: Handy-Welt-Unterkategorien füllen.
 # ⚠️ CJ-Textsuche streut («glass» → Glasbohrer!) — Treffer IMMER gegen Bild/Kategorie plausibilisieren.
-#done search:tempered glass screen protector iphone
-#done search:magsafe phone case
-#done search:magsafe car mount
-#done search:selfie stick tripod bluetooth
-#done search:phone ring light
-#done search:gimbal stabilizer smartphone
-#done search:fast charger 65W GaN
-#done search:magsafe powerbank
+search:tempered glass screen protector iphone
+search:magsafe phone case
+search:magsafe car mount
+search:selfie stick tripod bluetooth
+search:phone ring light
+search:gimbal stabilizer smartphone
+search:fast charger 65W GaN
+search:magsafe powerbank
 # VR/AI-Nachschub (User «AR brillen?»):
-#done search:AR smart glasses
-#done search:smart glasses camera
-#done search:AI translator earbuds
+search:AR smart glasses
+search:smart glasses camera
+search:AI translator earbuds
 # Trend-Scout 09.07. (Hitzewelle+WM+1.Aug+Schulstart):
-#done search:handheld turbo fan power bank rechargeable
-#done search:bladeless neck fan portable rechargeable
-#done search:pet cooling mat gel self cooling
-#done search:electric water gun automatic
-#done search:windproof beach umbrella UPF50
-#done search:quick dry water shoes barefoot
-#done search:insulated cooler tote bag leakproof
-#done search:ice roller face skin cooling
-#done search:Switzerland flag banner garland
-#done search:soccer fan face paint
-#done search:plush doll keychain bag charm cute
-#done search:silicone pencil case sensory
-#done search:bathtub tray bamboo
-#done search:floating wall shelf
-#done search:ceramic vase nordic
-#done search:candle holder set gold
-#done search:picture frame set gallery
-#done search:letter board wooden
-#done search:cinema light box message
-#done search:jewelry organizer box
-#done search:wall clock modern silent
-#done search:moon lamp 3d
-#done search:magnetic levitating plant
-#done search:mini waffle maker
-#done search:funny mug gift
-#done search:night light kids projector
-#done search:whiskey stones gift set
-#done search:knife block holder design
-#done search:door stopper decorative
-#done search:bookends decorative metal
-#done search:desk organizer wood
-#done search:cable organizer box
-#done search:shower caddy bamboo
-#done search:spice rack rotating
-#done search:wine bottle holder
-#done search:led strip corner lamp
-#done search:picnic blanket waterproof foldable
-#done search:cooling towel sport
-#done search:insulated water bottle stainless
-#done search:hammock outdoor portable
-#done search:beach tent sunshade pop up
-#done search:kids backpack school waterproof
-#done search:montessori wooden toy busy board
-#done search:kids night light projector star
-#done search:water toys outdoor sprinkler
-#done search:kids smart watch gps
-#done search:sunset lamp projection
-#done search:neck fan portable rechargeable
-#done search:car trunk organizer foldable
-#done search:laptop stand aluminum foldable
-#done search:desk lamp clip rechargeable
-#done search:scalp massager shampoo brush
-#done search:ice roller face skincare
-#done search:dog cooling mat summer
-#done search:cat water fountain stainless
-#done search:camera lens clip macro phone
-#done search:charm pendant necklace
-#done search:colorful beaded necklace
-#done search:shell pearl necklace
-#done search:chunky hoop earrings
-#done search:mismatched statement earrings
-#done search:leather cord necklace pendant
-#done search:beaded bracelet stack set
-#done search:flower ring jewelry
-#done search:beaded phone charm strap
-#done search:crossbody phone strap wallet
-#done search:3 in 1 magnetic wireless charger
-#done search:flexible silicone phone stand
-#done search:LED face mask therapy
-#done search:EMS face lifting device
-#done search:lymphatic drainage face brush
-#done search:heatless curling rod headband
-#done search:water spray hair brush
-#done search:candle warmer lamp
-#done search:crystal table lamp touch
-#done search:portable misting fan
-#done search:waterproof phone pouch
-#done search:sand free beach mat
-#done search:bluetooth sleep mask headphones
+search:handheld turbo fan power bank rechargeable
+search:bladeless neck fan portable rechargeable
+search:pet cooling mat gel self cooling
+search:electric water gun automatic
+search:windproof beach umbrella UPF50
+search:quick dry water shoes barefoot
+search:insulated cooler tote bag leakproof
+search:ice roller face skin cooling
+search:Switzerland flag banner garland
+search:soccer fan face paint
+search:plush doll keychain bag charm cute
+search:silicone pencil case sensory
+search:bathtub tray bamboo
+search:floating wall shelf
+search:ceramic vase nordic
+search:candle holder set gold
+search:picture frame set gallery
+search:letter board wooden
+search:cinema light box message
+search:jewelry organizer box
+search:wall clock modern silent
+search:moon lamp 3d
+search:magnetic levitating plant
+search:mini waffle maker
+search:funny mug gift
+search:night light kids projector
+search:whiskey stones gift set
+search:knife block holder design
+search:door stopper decorative
+search:bookends decorative metal
+search:desk organizer wood
+search:cable organizer box
+search:shower caddy bamboo
+search:spice rack rotating
+search:wine bottle holder
+search:led strip corner lamp
+search:picnic blanket waterproof foldable
+search:cooling towel sport
+search:insulated water bottle stainless
+search:hammock outdoor portable
+search:beach tent sunshade pop up
+search:kids backpack school waterproof
+search:montessori wooden toy busy board
+search:kids night light projector star
+search:water toys outdoor sprinkler
+search:kids smart watch gps
+search:sunset lamp projection
+search:neck fan portable rechargeable
+search:car trunk organizer foldable
+search:laptop stand aluminum foldable
+search:desk lamp clip rechargeable
+search:scalp massager shampoo brush
+search:ice roller face skincare
+search:dog cooling mat summer
+search:cat water fountain stainless
+search:camera lens clip macro phone
+search:charm pendant necklace
+search:colorful beaded necklace
+search:shell pearl necklace
+search:chunky hoop earrings
+search:mismatched statement earrings
+search:leather cord necklace pendant
+search:beaded bracelet stack set
+search:flower ring jewelry
+search:beaded phone charm strap
+search:crossbody phone strap wallet
+search:3 in 1 magnetic wireless charger
+search:flexible silicone phone stand
+search:LED face mask therapy
+search:EMS face lifting device
+search:lymphatic drainage face brush
+search:heatless curling rod headband
+search:water spray hair brush
+search:candle warmer lamp
+search:crystal table lamp touch
+search:portable misting fan
+search:waterproof phone pouch
+search:sand free beach mat
+search:bluetooth sleep mask headphones

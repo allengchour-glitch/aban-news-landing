@@ -23,6 +23,7 @@ async function cj(path) {
     const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1' + path, { headers: { 'CJ-Access-Token': CJT } });
     const j = await r.json().catch(() => ({}));
     if (j.code === 1600200) { await sleep(2500); continue; } // QPS
+    if (j.code === 16900500) { console.error('CJ-PUNKTE AUFGEBRAUCHT — Abbruch (Exit 3)'); process.exit(3); }
     return j;
   }
   return {};
@@ -87,12 +88,12 @@ for (const item of ITEMS) {
     // Tiefer paginieren (CJPAGES, Default 5): Top-Treffer sind bei 10k+-Ledger längst importiert
     const PAGES = parseInt(process.env.CJPAGES || '5', 10);
     for (let pg = 1; pg <= PAGES && !pid; pg++) {
-      const j = await cj(`/product/list?pageSize=10&pageNum=${pg}&productNameEn=${encodeURIComponent(val)}&orderBy=listedNum`); await sleep(1300);
+      const j = await cj(`/product/list?pageSize=10&pageNum=${pg}&productNameEn=${encodeURIComponent(val)}`); await sleep(1300);
       const list = j.data?.list || [];
       if (!list.length) break;
       // Relevanz-Wache: CJ-Textsuche streut (Küchenlöffel bei «selfie stick»!) —
       // Kandidat muss mind. 1 Suchwort (>3 Zeichen) im productNameEn tragen.
-      const kws = val.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+      const kws = val.toLowerCase().split(/\s+/).filter(w => w.length >= 3);
       for (const cand of list) {
         const name = (cand.productNameEn || '').toLowerCase();
         const hits = kws.filter(w => name.includes(w)).length;
