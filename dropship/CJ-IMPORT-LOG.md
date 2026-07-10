@@ -2372,3 +2372,14 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Instagram instagram.com/reel/DanhubhjvrJ + Facebook-Video 1040158425372528. Ledger → posted-ig-fb.
 - 2 weitere ready-Reels in der Queue — Stunden-Wächter postet mit 48h-Kadenz weiter.
 - PC-Befehlskanal: abandoned-mail + youtube-shorts an den PC gequeued (Watcher wartet auf Reports).
+
+## 2026-07-10z — 📺 YOUTUBE LIVE: 3 Shorts per Data-API hochgeladen (Aufgabe 10 komplett)
+- User gab OAuth-Zugang (Client-ID/Secret + Consent; Hürden gelöst: redirect_uri localhost +
+  Testnutzer-Freigabe). Refresh-Token in /tmp/yt_refresh (chmod 600, NIE Repo).
+- **3 Shorts LIVE auf Kanal «Aban» (UCSfCEYjAsdOyYxyfTClXRZA):**
+  Showcase → youtube.com/shorts/fIdiplJ7oHw · Sommerkleider → 6TMY10cLCBQ · Sie&Ihn → 82BMzo8zvnY.
+  Upload-Engine /tmp/yt_upload.py (resumable, Ledger dropship/_yt_uploads.txt, Token-Refresh).
+- ⚠️ Kanal heisst noch «Aban» (alter Kanal, 26 tote ABAN-Videos) — Umbenennung auf «LuxeStyle CH»
+  nur auf User-Wort (channels.update brandingSettings möglich) ODER User erstellt Brand-Kanal.
+- Damit sind von der Klick-Liste erledigt: 4 (Klaviyo), 4b (Abbrecher-Mails), 10 (YouTube), 11 (Meta),
+  12 (Konnektoren). Offen: 2 (TikTok-Sandbox-Klicks), 3 (GMC-Zielländer), 1 (Pinterest wartet auf UID).
