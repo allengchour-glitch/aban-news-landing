@@ -2254,3 +2254,17 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   BASTELKLEBER (cola blanca!), «Schein Notizblock Montblanc», Tonkarton. Merker: BigBuy-DE-Namen
   können Maschinen-Fehlübersetzungen enthalten → Vision-QA nach jeder Welle bleibt Pflicht.
 - User: Key verworfen («vergiss den key») — Spuren aus /tmp gelöscht, kein Dienst-Test mehr.
+
+## 2026-07-10m — 🚨 Order #1009 (User-Testkauf) deckt letzte Lücke auf → NULL-TOLERANZ-Stock-Policy
+- **#1009 (Xiaomi Buds 6 Active, BB-1048270, 40.90 PAID):** BigBuy order/check = ER007/totalOrder:0
+  → AUSVERKAUFT. Produkt sofort DRAFT. Empfehlung an User: selbst erstatten, NICHT fulfillen.
+- **Root Cause:** Produkt war im 90k-Lager-Feed gar nicht enthalten («Unbekannt»-Bucket, 3'152 Stück
+  bewusst aktiv gelassen). Falsche Abwägung — User-Frage «warum auf webseite wenn verkauft?» ist berechtigt.
+- **Konsequenz: ALLE Lager-unbekannten BigBuy-Produkte werden gedraftet** (Neuberechnung inkl.
+  bb-<id>-SKUs: 6'678 Kandidaten, Engine /tmp/bb_unknown_guard.py, Tag lager-unbekannt-draft,
+  Ledger _unknownguard_done). Revive nur einzeln nach bestandenem order/check. NEUE POLICY:
+  BigBuy-Produkt ohne positiven Lager-Beweis = nicht kaufbar. (Nach Abschluss: BigBuy-Bestand
+  im Shop ≈ nur die ~2.4k Feed-verifizierten + Neuimporte.)
+- Sortier-Runde parallel abgeschlossen: 3 kaputte Regeln repariert (pc-komponenten «RAM»→Keramik-
+  Falle, kabel-adapter «AUX»→Faux, kaffee-ecke Farben), 22 RC-Spielzeuge aus Elektronik, Camping-
+  Welle aus Fitness, ~60 Einzel-Fixes, 8 Lizenz-Trikots aus Werbe-Kanälen, Tantus-Adult-Köpfe DRAFT.
