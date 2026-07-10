@@ -76,6 +76,12 @@
     .tool textarea{min-height:90px;resize:vertical}
     .tool .frow{display:flex;gap:.6rem;flex-wrap:wrap}.tool .frow>*{flex:1;min-width:120px}
     .tool .run{margin-top:.8rem}
+    /* Gratis-Demo-Box (dunkel): eigene Formular-Styles — .tool-Regeln greifen hier nicht */
+    #demoBox label{display:block;font-size:.8rem;font-weight:800;color:#fde3b0;margin:.5rem 0 .25rem}
+    #demoBox input[type=text],#demoBox select{width:100%;border:1.5px solid rgba(255,255,255,.28);border-radius:12px;padding:.6rem .8rem;font:inherit;font-size:.95rem;background:rgba(255,255,255,.1);color:#fff}
+    #demoBox input[type=text]::placeholder{color:rgba(255,255,255,.45)}
+    #demoBox select option{color:#1f2937}
+    #demoBox .frow{display:flex;gap:.6rem;flex-wrap:wrap}#demoBox .frow>*{flex:1;min-width:150px}
     .tool .out{margin-top:.9rem;background:#fbf7ef;border:1px solid var(--line);border-radius:12px;padding:.85rem;font-size:.92rem;white-space:pre-wrap;display:none}
     .tool .out.show{display:block}
     .tool .hint{font-size:.78rem;color:var(--muted);margin-top:.5rem}
