@@ -11,13 +11,13 @@ export function catTags(text) {
     [/armband(?!uhr)|armreif|bracelet|\banklet\b|fusskett/,      ['kategorie-armband', 'schmuck']],
     [/armbanduhr|\buhr\b|\bwatch\b|smartwatch|wanduhr|tischuhr|wecker/, ['uhr', 'schmuck']],
     [/halskette|\bkette\b|necklace|anhanger|collier|choker|\btassel\b/, ['kategorie-halskette', 'schmuck']],
-    [/\bring\b|siegelring/,                                      ['schmuck', 'damen']],
+    [/\bring\b|siegelring|damenring|herrenring|verlobungsring|ehering/, ['schmuck', 'damen']],
     [/perlen|pearl/,                                             ['schmuck', 'perlen']],
     // Eyewear
     [/sonnenbrill|sunglass/,                                     ['sonnenbrille']],
     // Schuhe
     [/sandal|espadril|flip.?flop|zehentrenner/,                 ['sandalen', 'schuhe', 'damen']],
-    [/\bschuh|sneaker|stiefel|\bboots\b|loafer|halbschuh|freizeitschuh/, ['schuhe']],
+    [/(?<!hand)schuh|sneaker|stiefel|\bboots\b|loafer|laufschuh|wanderschuh|turnschuh/, ['schuhe']],
     // Taschen & Lederwaren
     [/\btote\b|handtasche|umhangetasche|crossbody|shopper|clutch|schultertasche|\btasche\b|rucksack|backpack/, ['damen-taschen']],
     [/geldborse|\bwallet\b|portemonnaie|kartenetui/,            ['Wallet']],
