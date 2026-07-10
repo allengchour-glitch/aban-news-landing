@@ -1964,3 +1964,24 @@ schlauchboot 6 Kandidaten. CH-Versand-Pflichtcheck: 6/6 Shortlist bestanden.
 Kosten €89.89 inkl. Versand) müsste ~CHF 130 kosten — unverkäuflich gegen Migros/Galaxus-Markenware
 ab 40-80 CHF. Budget-Ventilatoren sind wegen €37-40 Speditionsversand generell nicht dropship-tauglich.
 Lücke dokumentiert, ökonomisch begründet verworfen.
+
+## 2026-07-10 (nachm.) — ⚠️ BIGBUY-KONTO-DIAGNOSE: API-Bestellungen generell blockiert
+**Anlass:** User meldet #1009 (Xiaomi Buds, PAID CHF 40.90, User-Eigenbestellung) „ausverkauft wie
+#1006–#1008". Buds-Produkt war bereits korrekt DRAFT + ausverkauft-lieferant (07:35).
+
+**Befund-Kette:**
+1. Endpoint gefunden: `POST /rest/order/check.json` = Vorbestell-Validierung (prüft Bestand ohne zu bestellen).
+2. Alle 4 eigenen Importe (Klima ×2, Excursion 5, Planschbecken): ER003 „no stock" → sofort auf DRAFT (4/4).
+3. **Differentialtest: 5 ZUFÄLLIGE SKUs quer durch den Katalog (Tinte/TV-Halterung/Schmuck/Bettwäsche/Deko)
+   → ALLE ER003 „no stock".** Statistisch unmöglich → das ist KONTO-Ebene, nicht Produkt-Ebene.
+
+**Schlussfolgerung:** Das BigBuy-Konto kann per API aktuell NICHTS bestellen — vermutlich fehlt das
+kostenpflichtige Bestell-/Dropshipping-Paket oder eine Konto-Freischaltung (Stock-Endpoints geben
+passend dazu 400 = nicht im Paket). Die „Ausverkauft"-Refunds #1006–#1009 könnten teils dieselbe
+Ursache haben statt echter Sell-outs.
+
+**➡️ NUR DER USER KANN KLÄREN (BigBuy-Dashboard):** (1) Zeigt das Dashboard bei den Produkten
+echten Bestand? (2) Kontostatus/Paket prüfen (API-Bestellungen enthalten?) — ggf. Support/Upgrade.
+Bis dahin: KEINE neuen BigBuy-Importe (Regel), bestehende BB-Produkte können nur MANUELL via
+Dashboard erfüllt werden (falls dort Bestand sichtbar). #1009 braucht Refund durch User
+(Refunds via MCP gesperrt). Alle 4 Neu-Importe bleiben DRAFT.
