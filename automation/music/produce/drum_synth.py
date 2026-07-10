@@ -30,12 +30,13 @@ def kick(vel):
     return y/np.max(np.abs(y)+1e-9) * (vel/127) * 0.95
 
 def snare(vel, ghost=False):
-    n = int((0.11 if ghost else 0.20) * SR); t = np.arange(n)/SR
-    tone = (np.sin(2*np.pi*180*t)+0.6*np.sin(2*np.pi*330*t)) * np.exp(-t/0.03)
-    noise = bp(np.random.randn(n), 1500, 8000) * np.exp(-t/(0.05 if not ghost else 0.02))
-    body = bp(np.random.randn(n), 200, 450) * np.exp(-t/0.04)
-    y = 0.5*tone + 0.9*noise + 0.5*body
-    v = (vel/127) * (0.45 if ghost else 1.0)
+    n = int((0.10 if ghost else 0.22) * SR); t = np.arange(n)/SR
+    body  = (np.sin(2*np.pi*200*t)) * np.exp(-t/0.035) * 0.7          # Body 200Hz (Gewicht)
+    crack = bp(np.random.randn(n), 1500, 5000) * np.exp(-t/(0.045 if not ghost else 0.018))  # Crack 1.5-5kHz
+    tail  = bp(np.random.randn(n), 3000, 9000) * np.exp(-t/(0.06 if not ghost else 0.02)) * 0.5
+    top   = hp(np.random.randn(n), 6000) * np.exp(-t/0.004) * 0.4    # Transient-Top
+    y = body + 0.9*crack + tail + top
+    v = (vel/127) * (0.42 if ghost else 1.0)
     return y/np.max(np.abs(y)+1e-9) * v * 0.9
 
 def hat(vel, open_=False):

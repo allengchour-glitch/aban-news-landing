@@ -37,7 +37,15 @@ for line in open(spec):
 if not rows: open(out,'wb').close(); sys.exit(0)
 total=max(s+d for s,_,d in rows)+0.5
 buf=np.zeros(int(total*SR))
-MK={'riser':riser,'impact':impact,'downsweep':downsweep}
+def revreverb(dur):  # Reverse-Reverb-Swell (Noise+Ton, anschwellend, bricht am Ende ab)
+    n=int(dur*SR); t=np.arange(n)/SR
+    noise=lp(np.random.randn(n), 6000)
+    swell=np.linspace(0,1,n)**1.8
+    tone=0.3*np.sin(2*np.pi*440*t)*swell
+    y=(noise*swell*0.5+tone)
+    y[-int(0.02*SR):]*=np.linspace(1,0,int(0.02*SR))  # harter Cut am Drop
+    return y/np.max(np.abs(y)+1e-9)*0.7
+MK={'riser':riser,'impact':impact,'downsweep':downsweep,'revreverb':revreverb}
 for st,typ,dur in rows:
     if typ not in MK: continue
     y=MK[typ](dur); i0=int(st*SR); end=min(i0+len(y),len(buf)); buf[i0:end]+=y[:end-i0]

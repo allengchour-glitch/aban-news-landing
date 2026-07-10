@@ -66,7 +66,9 @@ for b in range(NBARS):
         vel = 60 if BUILD else 96
         if BREAK: vel = 0
         if vel:
-            sub.append((t0, BAR - 30, bs, vel))
+            phrase_end = (b % 4 == 3)  # letzter Takt der 4er-Phrase → Sub pausiert Beat 3+4 (atmet)
+            dur = (TPQ * 2 - 30) if phrase_end else (BAR - 30)
+            sub.append((t0, dur, bs, vel))
 
     # --- Reese-Layer (echter Synth) im Drop: Grundton + Oktave, atmet via Filter-LFO
     if DROP1 or DROP2:
@@ -99,8 +101,13 @@ for b in range(NBARS):
             voice.append((t0, BAR - 30, p, 30))
     elif BUILD and b >= 12:
         voice.append((t0, TPQ * 2, hook, 46))               # Vocal-Teaser
+        if b == 15:                                          # Stutter-Chop: 1/16 Wdh. mit Pitch-Ramp
+            for r in range(16):
+                voice.append((t0 + r * S, S - 8, hook + (r // 4), 40 + r * 3))
 
 # DJ-FX: Riser vor Drops, Impact bei Drops, Downsweep ins Breakdown
+fx_rows.append((15 * BAR * sec_per_tick, 'revreverb', BAR * sec_per_tick))       # Reverse-Reverb vor Drop1
+fx_rows.append((39 * BAR * sec_per_tick, 'revreverb', BAR * sec_per_tick))       # vor Drop2
 fx_rows.append((14 * BAR * sec_per_tick, 'riser', 2 * BAR * sec_per_tick))       # Build→Drop1
 fx_rows.append((16 * BAR * sec_per_tick, 'impact', BAR * sec_per_tick))          # Drop1-Impact
 fx_rows.append((32 * BAR * sec_per_tick, 'downsweep', BAR * sec_per_tick))       # in Breakdown

@@ -19,7 +19,7 @@ M,D,R,F=pad(M),pad(D),pad(R),pad(F)
 gain=np.ones(n)
 if kicks not in ('-',''):
     dur=int(0.18*SR)
-    shape=1-0.65*np.exp(-np.linspace(0,4,dur))   # 0.35 → 1.0
+    shape=1-0.5*np.exp(-np.linspace(0,4,dur))   # 0.35 → 1.0
     for line in open(kicks):
         try: kt=float(line.split()[0])
         except: continue

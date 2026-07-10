@@ -53,3 +53,8 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 - DJ-FX + SIDECHAIN (User «richtiges dj zeug»): fx_synth.py (Riser/Impact/Downsweep) + mixdown.py
   (Sidechain-Pump: Musik+Bass ducken im Kick-Takt). render.sh nutzt Pro-Mixdown-Pfad, wenn build
   _fx.txt + _kicks.txt schreibt. Gibt jeder Produktion den «atmenden» EDM-Pump + Drop-Übergänge.
+
+- LIQUID DnB FINAL (nach 10-Top-Hit-Analyse, 2026): 3-Layer-Snare (Body 200Hz/Crack 1.5-5kHz/Top),
+  Sub-Mute am Phrasenende (Low-End atmet), Vocal-Stutter-Chop im Build, Reverse-Reverb vor Drops,
+  sanfterer Liquid-Sidechain. Als Marken-Musikvideo (Logo+Waveform) auf YouTube:
+  youtube.com/shorts/QYioMMQ0VlM. Methode «10 Hits analysieren→bauen» gilt für JEDES Genre.
