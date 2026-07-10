@@ -45,3 +45,7 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
   nach dieser Struktur; (3) render.sh. luxe-liquid-dnb v2 nach Top-Hit-Analyse neu: 174 BPM, 48-Takt-Form
   (Intro/Build/Drop/Breakdown/Drop2), Two-Step m. Ghost-Snares, echter Reese getrennt vom Mono-Sub,
   Am9-Rhodes, -9 LUFS Club-Master.
+
+- DRUM-SYNTH (User «beat ton zu schlicht»): drum_synth.py = echte DSP-One-Shots statt dünner GM-Drums.
+  Kick=Pitch-Env-Sine(140→48Hz)+Click, Snare=Noise-Body+Snap+Ton gelayert, Hats=HP-Noise. render.sh
+  mischt Drum-Layer automatisch, wenn build /tmp/<genre>_drums.txt schreibt. Gilt für alle Genres.

@@ -18,25 +18,23 @@ PROG = [
     ([57, 60, 64, 67, 71], 33, 72),  # Am9
 ]
 NBARS = 48
-rhodes, pad, sax, drums = [], [], [], []
+rhodes, pad, sax = [], [], []
+drum_rows = []  # (startSec, typ, vel) für drum_synth.py
 reese_rows = []  # (startSec, durSec, midiNote) für reese_synth.py
 sub = []          # Mono-Sub via GM (Sinus-nah: program 80 Lead würde zu hell; nutze program 38 tief)
 
 sec_per_tick = 60.0 / BPM / TPQ
 
+def D(tick, typ, vel):
+    drum_rows.append((tick * sec_per_tick, typ, vel))
 def is_two_step(t0, vel_k):
-    # Kick step 0 & 10, Snare 4 & 12, Ghost 7/11/15, Hats 16tel, Open-Hat 14
-    for k in (0, 10):
-        drums.append((t0 + k * S, 40, 36, vel_k))
-    for sn in (4, 12):
-        drums.append((t0 + sn * S, 45, 38, 108))
-        drums.append((t0 + sn * S, 45, 40, 70))       # Layer 2 (Snare-Body)
-    for g in (7, 11, 15):
-        drums.append((t0 + g * S + 12, 30, 38, 42))   # Ghost (leicht geswingt +12t)
+    for k in (0, 10): D(t0 + k*S, 'kick', vel_k)
+    for sn in (4, 12): D(t0 + sn*S, 'snare', 118)
+    for g in (7, 11, 15): D(t0 + g*S + 12, 'ghost', 60)
     for h in range(16):
-        sw = 14 if h % 2 else 0                        # Offbeat-Swing
-        drums.append((t0 + h * S + sw, 22, 42, 22 if h % 2 == 0 else 34))
-    drums.append((t0 + 14 * S, 30, 46, 44))            # Open-Hat Pickup
+        sw = 14 if h % 2 else 0
+        D(t0 + h*S + sw, 'hat', 30 if h % 2 == 0 else 46)
+    D(t0 + 14*S, 'ohat', 54)
 
 for b in range(NBARS):
     voic, bs, hook = PROG[b % 4]
@@ -79,12 +77,12 @@ for b in range(NBARS):
         is_two_step(t0, 60)
         if b == 15:
             for r in range(16):
-                drums.append((t0 + r * S, 30, 38, 40 + r * 4))  # Snare-Riser-Roll
+                D(t0 + r * S, 'snare', 45 + r * 4)  # Snare-Riser-Roll
     elif DROP1 or DROP2:
         is_two_step(t0, 104)
         if (b + 1) % 8 == 0:  # Down-Fill am 8-Bar-Ende
             for r in range(8):
-                drums.append((t0 + TPQ * 3 + r * (TPQ // 8), 28, 38, 50 + r * 6))
+                D(t0 + TPQ * 3 + r * (TPQ // 8), 'snare', 55 + r * 5)
 
     # --- Sax-Hook (der emotionale Vocal-Chop-Ersatz): im Drop
     if DROP1 or DROP2:
@@ -103,7 +101,8 @@ tracks = [
     notes_track(pad,    program=89, channel=1),    # Warm Pad
     notes_track(sub,    program=38, channel=2),    # Synth Bass (Mono-Sub)
     notes_track(sax,    program=66, channel=4),    # Tenor Sax (Hook)
-    notes_track(drums,  channel=9),                # Two-Step-Kit
 ]
+with open('/tmp/liquid_dnb_drums.txt','w') as f:
+    for st,typ,vel in drum_rows: f.write(f'{st:.4f} {typ} {vel}\n')
 write_midi('/tmp/liquid_dnb.mid', tracks, tpq=TPQ, tempo_bpm=BPM)
 print('liquid_dnb.mid v2:', NBARS, 'Takte, 174 BPM, Two-Step + Reese-Spec geschrieben')

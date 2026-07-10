@@ -27,6 +27,15 @@ if [ -f "$REESE_SPEC" ]; then
   fi
 fi
 
+# Optionaler DSP-Drum-Layer (echte synthetisierte Drums statt GM)
+DRUM_SPEC="/tmp/${GENRE}_drums.txt"
+if [ -f "$DRUM_SPEC" ]; then
+  python3 "$HERE/drum_synth.py" "$DRUM_SPEC" "/tmp/${GENRE}_drums.wav" 2>/dev/null || true
+  if [ -f "/tmp/${GENRE}_drums.wav" ]; then
+    sox -m "$RAW" "/tmp/${GENRE}_drums.wav" "/tmp/${GENRE}_mix2.wav" 2>/dev/null && RAW="/tmp/${GENRE}_mix2.wav"
+  fi
+fi
+
 # Genre-Reverb (Default mittel; Ballade/Orchester mehr, DnB/House weniger)
 case "$GENRE" in
   orchestra|premium)      RVB="40 55 100" ;;
