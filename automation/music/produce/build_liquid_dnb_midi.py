@@ -5,7 +5,8 @@
 # Break rein, Riser) · Drop1 17-32 (voller Two-Step + Reese/Sub + Hook) · Breakdown 33-40 (Drums raus,
 # Pads atmen) · Drop2 41-48 (Break+Bass zurück). Regeln: Musik nach vorn, Two-Step m. Ghost-Snares,
 # Sub mono + Reese getrennt (reese_synth.py), Extended-Moll-Chords (Am9-Cmaj7-Em7-Am9).
-import sys, os
+import sys, os, random
+random.seed(174)  # deterministisch
 sys.path.insert(0, os.path.dirname(__file__))
 from smf import write_midi, notes_track
 
@@ -29,14 +30,22 @@ sec_per_tick = 60.0 / BPM / TPQ
 
 def D(tick, typ, vel):
     drum_rows.append((tick * sec_per_tick, typ, vel))
+def hum(t): return t + random.randint(-6, 6)          # Micro-Timing (menschlich)
 def is_two_step(t0, vel_k):
-    for k in (0, 10): D(t0 + k*S, 'k808', vel_k)       # 808-Sub-Kick statt akustisch
-    for sn in (4, 12): D(t0 + sn*S, 'clap', 112)       # Clap statt Snare
-    for g in (7, 11, 15): D(t0 + g*S + 12, 'rim', 54)  # Rim-Clicks statt Ghost-Snare
-    D(t0 + 6*S, 'perc', 40)                            # tonaler Perc-Akzent
+    # AKZENTE: Kick 1 = Downbeat-Betonung (voll), Kick "3-and" etwas leichter
+    D(t0 + 0*S, 'k808', min(127, vel_k + 8))           # Betonung Zz1
+    D(t0 + 10*S, 'k808', vel_k - 10)                    # leichter
+    # Snare/Clap: Zz2 & Zz4 STARK betont (der Backbeat), Layer für Punch
+    for sn in (4, 12):
+        D(t0 + sn*S, 'clap', 118)
+        D(t0 + sn*S, 'snare', 70)                       # akustischer Snare-Body drunter = Wärme+Betonung
+    # Ghost-Rims: DEUTLICH leiser (Kontrast = Groove), leicht geswingt+humanisiert
+    for g in (7, 11, 15): D(hum(t0 + g*S + 14), 'rim', 34)
+    D(t0 + 6*S, 'perc', 44)
+    # Hats: Offbeats betont, Onbeats sehr leise (Dynamik statt flach)
     for h in range(16):
-        if h % 2 == 1:                                 # nur Offbeat-Hats = luftiger, weniger "Kit"
-            D(t0 + h*S + 14, 'hat', 40)
+        if h % 2 == 1: D(hum(t0 + h*S + 12), 'hat', 46) # Offbeat = betont
+        elif h % 4 == 0: D(hum(t0 + h*S), 'hat', 22)    # dezenter Onbeat-Tick
 
 for b in range(NBARS):
     voic, bs, hook = PROG[b % 4]
