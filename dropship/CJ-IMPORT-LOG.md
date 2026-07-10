@@ -2348,3 +2348,10 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - EAN in der Beschreibung = zusätzlich gut für Google Shopping-Matching.
 - CJ-Produkte: Detail-Anreicherung braucht CJ-API-Punkte → nach Punkte-Reset als Folge-Welle
   (Gewicht/Masse aus productinfo, gleiche Tabelle). SEO-Fill läuft parallel (1'639 Metas).
+
+## 2026-07-10w — «weiter mit allem»: Revival + Trend-Importe fliessen
+- Stiller Container-Restart → Revival: Walker, CJ-Runner, Reviews, seo_fill (Fortsetzung ab 316).
+- **Detail-Engine FERTIG:** 235 BigBuy-Produkte mit echter Detail-Tabelle (Rest hatte keine
+  brauchbaren Spec-Daten/Platzhalter — korrekt gefiltert).
+- **CJ-Punkte wieder verfügbar** → YouTube-Trend-Welle importiert (Schmuck-Batch: Perlen-Halsketten,
+  Ohrringe...). Vision-QA folgt nach Abschluss der 23 Begriffe.
