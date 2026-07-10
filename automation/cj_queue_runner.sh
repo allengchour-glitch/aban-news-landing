@@ -2,8 +2,8 @@
 # CJ-Queue-Runner: arbeitet automation/cj_search_queue.txt in 4er-Batches ab,
 # danach Kategorie-Fill (Default-Gruppen). Idempotent: erledigte Zeilen -> "#done ".
 cd /home/user/aban-news-landing || exit 1
-: "${SHOPIFY_CLIENT_ID:?SHOPIFY_CLIENT_ID fehlt (Env/autostart)}"
-: "${SHOPIFY_CLIENT_SECRET:?SHOPIFY_CLIENT_SECRET fehlt (Env/autostart)}"
+: "${SHOPIFY_CLIENT_ID:?fehlt}"
+: "${SHOPIFY_CLIENT_SECRET:?fehlt}"
 export SHOPIFY_CLIENT_ID SHOPIFY_CLIENT_SECRET
 export CJ_TOKEN=$(python3 -c "import json;print(json.load(open('/tmp/cj_token.json'))['accessToken'])")
 export GROQ_API_KEY=$(cat /tmp/groq_key 2>/dev/null)
@@ -24,6 +24,15 @@ while true; do
   done
   sleep 60
 done
-echo "### QUEUE LEER → Kategorie-Fill (voll gas)"
-CAP=60 MAXPAGE=6 /opt/node22/bin/node automation/cj_category_fill.mjs
+echo "### QUEUE LEER → Kategorie-Fill-ROTATION (voll gas, divers statt Nagel-Default)"
+GRPDONE=/tmp/cj_grp_done.txt; touch $GRPDONE
+for G in kueche storage pet sport musik cjelektronik cjgadgets cjauto cjhome cjhaustier cjtaschen cjschmuck cjdamen cjherren makeup skincare gaming cjbasteln cjspielelektronik cjbeautytools cjuhren cjsneaker cjschuhekids; do
+  grep -qx "$G" $GRPDONE && continue
+  echo "### GRP $G $(date -u +%H:%M)"
+  GRP=$G CAP=25 MAXPAGE=5 /opt/node22/bin/node automation/cj_category_fill.mjs
+  RC=$?
+  [ $RC -ne 0 ] && { echo "GRP $G RC=$RC — Punkte weg? Stop."; break; }
+  echo "$G" >> $GRPDONE
+  sleep 45
+done
 echo "### CJ-Runner fertig $(date -u +%H:%M)"

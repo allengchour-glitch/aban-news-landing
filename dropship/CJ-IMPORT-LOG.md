@@ -2209,3 +2209,16 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   UND grosser Fund: **77 Menü-Links hatten /en/-Präfix** (zwangen Kunden in die englische Sprachversion,
   u.a. Sport-, Schuhe-Top-Level, Actionfiguren, Puzzles) → alle auf /collections/… repariert.
 - Kein Merge des fremden Branches (Ledger-Snapshots); Wissen destilliert, Branches bleiben getrennt.
+
+## Session 2026-07-10i — «weiter»: Neustart-Revival + Nagel-Fluts-Kuration
+- **Container-Neustart erkannt** → revive.sh: alle Engines wieder hoch (bb_cleanup 2'985+/6'997,
+  seo50 3'569+/15'622, Walker, Runner). versand50 FERTIG (4'434/4'434 Beschreibungen auf CHF 50).
+  Crons neu: Stunden-Wächter fa7bae6d + Morgenreport c0c4fe92 (inkl. #1005-Canonical-Check).
+- **⚠️ NAGEL-FLUT-ROOT-CAUSE:** cj_category_fill.mjs DEFAULTET auf GRP 'nagel' (Zeile 216) — der
+  Queue-Runner rief ihn ohne GRP auf → jede Fill-Runde produzierte weitere Quasi-Duplikat-Nagellampen.
+  **75 aktive Nagellampen/-trockner gefunden → 8 beste behalten (meiste Bilder, differenzierte Titel),
+  67 DRAFT mit Tag `nagel-flut-kuratiert`** (reversibel). Runner-Patch: rotiert jetzt durch 23 diverse
+  Gruppen (kueche/storage/pet/sport/…, Ledger /tmp/cj_grp_done.txt) statt Nagel-Endlosschleife.
+  MERKER: cj_category_fill NIE ohne GRP aufrufen.
+- MCP-Konnektoren (Shopify/TikTok) nach Neustart getrennt — Admin-API via Token läuft; TikTok-Budget-
+  Übergabe pausiert bis Konnektor-Reconnect (Wächter überspringt still).
