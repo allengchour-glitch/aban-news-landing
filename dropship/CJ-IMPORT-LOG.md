@@ -1914,3 +1914,74 @@ Voll-Katalog geladen (313'221 Produkte), nach Importer-Regeln kuratiert (Anchors
   https://luxestyle.ch/products/folli-follie-damen-tasche-wa14p017-beige
 Publish via publishablePublish mit echten IDs (Falle §G beachtet), je 6/6 Publications, 0 Fehler.
 Hinweis: FTP-Feed (ftp.dropshippershop.com) aus Cloud-Sandbox nicht erreichbar (Port 21 zu) — REST-API reicht.
+
+## 2026-07-10 — KORREKTUR BigBuy-Import 09.07. + ⚠️ NEUE PFLICHT-REGEL
+**Beide Produkte vom 09.07. auf DRAFT gezogen** (Polaroid bb-S0333097, Folli Follie bb-S0359670):
+Versand-Quote-API liefert für beide „No shipping options found" — für CH **und** DE (Gegenprobe:
+dieselbe API liefert für andere Produkte echte CH-Kosten → Befund ist echt, vermutlich kein Bestand).
+Nicht erfüllbar = nicht verkaufbar. Auch aus der eBay-Queue entfernt (ebay_listings.json geleert).
+
+**Kontext/Anlass:** Bestell-Check fand #1006–#1008 (07.–08.07., ~CHF 870, Klimageräte + Schlauchboot,
+echte CH-Kundschaft inkl. Institution) — alle REFUNDED, weil Lieferant ausverkauft/nicht-lieferbar-ch
+(andere Session hat korrekt refundiert + Produkte auf DRAFT getaggt). **Positiv: Es gibt KÄUFER.**
+Engpass ist Erfüllbarkeit, nicht Nachfrage.
+
+**⚠️ PFLICHT-REGEL für alle künftigen BigBuy-Importe (gilt ab sofort, vor ACTIVE):**
+`POST /rest/shipping/orders.json` mit `{"order":{"delivery":{"isoCountry":"CH","postcode":"8001"},
+"products":[{"reference":"<SKU>","quantity":1}]}}` MUSS eine Versandoption (HTTP 200) liefern —
+sonst NICHT anlegen. Bilder-200-Check reicht nicht. (bigbuy_import.mjs sollte den Check einbauen.)
+#1005 (WM-Trikot, PAID 03.07.) ist weiterhin UNFULFILLED — Printful-Tracking prüfen (User).
+
+## 2026-07-10 — BigBuy-Nachschub für bewiesene Nachfrage (2 mobile Klimageräte, LIVE)
+Antwort auf die 3 refundierten Klimagerät-Bestellungen (#1006–#1008, ~CHF 870): 2 lieferbare
+Ersatzprodukte derselben Vertrauensmarke angelegt (ACTIVE, 6/6 Kanäle, Media READY):
+- **Olimpia Splendid COMPACT 8** — bb:1222456, SKU bb-S0466265, EK €167.63 + Versand €61.21 → VK **CHF 289.90**
+  https://luxestyle.ch/products/olimpia-splendid-compact-8-mobile-klimaanlage-2100-w-klasse-a
+- **Olimpia Splendid DOLCECLIMA 10 HP WIFI** — bb:1222459, SKU bb-S0465892, EK €219.59 + €61.21 → VK **CHF 379.90**
+  https://luxestyle.ch/products/olimpia-splendid-dolceclima-10-hp-wifi-mobile-klimaanlage-mit-app
+**✅ Pflicht-Regel angewandt:** CH-Versand-Quote HTTP 200 für beide (SEUR, 4–5 Tage, €61.21, 25.7 kg) —
+5 von 8 mobilen Kandidaten bestanden, 3 durchgefallen (DeLonghi, 2× Ecoflow: keine Option).
+**⚠️ Dokumentierte Ausnahme 1-Bild-Regel (§5):** alle lieferbaren mobilen Klimageräte haben nur 1
+Herstellerbild; bei Marken-Haushaltsgeräten Standard + Nachfrage bewiesen/saisonal → Ausnahme bewusst,
+kompensiert durch spezifikationsreiche Beschreibung. Ehrliche Lieferzeit (4–5 Werktage) steht im Text.
+Versand voll im Preis (Shop: Gratis-Versand ab CHF 65).
+
+## 2026-07-10 — MARKTLÜCKEN-ANALYSE „Sommer-Hitze-Cluster" + 2 Produkte LIVE
+**Analyse (User: „marktlücke suchen"):** LuxeStyle hatte mitten in der Juli-Hitze **0 Ventilatoren,
+0 Planschbecken/Pools, 0 Schlauchboote** — obwohl #1008 (Intex Excursion 5, CHF 177) refundiert
+werden musste = bewiesene Nachfrage. Katalog-Abgleich BigBuy: ventilator 567 / planschbecken 80 /
+schlauchboot 6 Kandidaten. CH-Versand-Pflichtcheck: 6/6 Shortlist bestanden.
+
+**LIVE (ACTIVE, 6/6 Kanäle, Media READY):**
+- **Intex Excursion 5** (bb:619968, SKU bb-S8901593) — EXAKT das refundierte Produkt aus #1008,
+  jetzt lieferbar! EK €114.98 + Versand €61.21 → VK **CHF 229.90**. 6 Bilder (alle Regeln erfüllt).
+  https://luxestyle.ch/products/intex-excursion-5-schlauchboot-fur-5-personen-366-cm
+- **Intex Family-Planschbecken 990 l** (bb:332842, SKU bb-S2416441) — EK €33.83 + €33.82 →
+  VK **CHF 99.90**. 1 Bild (dokumentierte Marken-Haushaltsware-Ausnahme wie Klima 10.07.).
+  https://luxestyle.ch/products/intex-family-planschbecken-229-cm-990-liter-badespass
+
+**Bewusst NICHT gefüllt: Ventilator-Lücke.** Einziger lieferbarer Kandidat (No-Name Grupo FM,
+Kosten €89.89 inkl. Versand) müsste ~CHF 130 kosten — unverkäuflich gegen Migros/Galaxus-Markenware
+ab 40-80 CHF. Budget-Ventilatoren sind wegen €37-40 Speditionsversand generell nicht dropship-tauglich.
+Lücke dokumentiert, ökonomisch begründet verworfen.
+
+## 2026-07-10 (nachm.) — ⚠️ BIGBUY-KONTO-DIAGNOSE: API-Bestellungen generell blockiert
+**Anlass:** User meldet #1009 (Xiaomi Buds, PAID CHF 40.90, User-Eigenbestellung) „ausverkauft wie
+#1006–#1008". Buds-Produkt war bereits korrekt DRAFT + ausverkauft-lieferant (07:35).
+
+**Befund-Kette:**
+1. Endpoint gefunden: `POST /rest/order/check.json` = Vorbestell-Validierung (prüft Bestand ohne zu bestellen).
+2. Alle 4 eigenen Importe (Klima ×2, Excursion 5, Planschbecken): ER003 „no stock" → sofort auf DRAFT (4/4).
+3. **Differentialtest: 5 ZUFÄLLIGE SKUs quer durch den Katalog (Tinte/TV-Halterung/Schmuck/Bettwäsche/Deko)
+   → ALLE ER003 „no stock".** Statistisch unmöglich → das ist KONTO-Ebene, nicht Produkt-Ebene.
+
+**Schlussfolgerung:** Das BigBuy-Konto kann per API aktuell NICHTS bestellen — vermutlich fehlt das
+kostenpflichtige Bestell-/Dropshipping-Paket oder eine Konto-Freischaltung (Stock-Endpoints geben
+passend dazu 400 = nicht im Paket). Die „Ausverkauft"-Refunds #1006–#1009 könnten teils dieselbe
+Ursache haben statt echter Sell-outs.
+
+**➡️ NUR DER USER KANN KLÄREN (BigBuy-Dashboard):** (1) Zeigt das Dashboard bei den Produkten
+echten Bestand? (2) Kontostatus/Paket prüfen (API-Bestellungen enthalten?) — ggf. Support/Upgrade.
+Bis dahin: KEINE neuen BigBuy-Importe (Regel), bestehende BB-Produkte können nur MANUELL via
+Dashboard erfüllt werden (falls dort Bestand sichtbar). #1009 braucht Refund durch User
+(Refunds via MCP gesperrt). Alle 4 Neu-Importe bleiben DRAFT.
