@@ -117,15 +117,15 @@
 #done search:airpods case cover
 #done search:car phone holder magnetic
 #done search:mini keyboard wireless
-search:led strip lights room
-search:sunset lamp projector
-search:aroma diffuser wood
-search:scented candle gift
-search:dog harness adjustable
-search:cat toy interactive
-search:water bottle motivational
-search:coffee mug funny
-search:kitchen gadget set
-search:reusable produce bags
-search:resistance bands set
-search:yoga mat non slip
+#done search:led strip lights room
+#done search:sunset lamp projector
+#done search:aroma diffuser wood
+#done search:scented candle gift
+#done search:dog harness adjustable
+#done search:cat toy interactive
+#done search:water bottle motivational
+#done search:coffee mug funny
+#done search:kitchen gadget set
+#done search:reusable produce bags
+#done search:resistance bands set
+#done search:yoga mat non slip
