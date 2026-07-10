@@ -244,7 +244,7 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
   function render(){
     renderPortals();
     var items=applyFilters(raw);
-    if(!items.length){grid.innerHTML="";emptyEl.hidden=false;emptyEl.innerHTML=raw.length?"Nichts in dieser Auswahl — weniger Filter probieren.":"Tippe oben ein, was du suchst.";cntEl.textContent="0 Treffer";return}
+    if(!items.length){grid.innerHTML="";emptyEl.hidden=false;var qq=$("#q").value.trim();var msg=raw.length?"Nichts in dieser Auswahl — weniger Filter probieren.":(qq?("Keine Treffer für «"+esc(qq)+"» — anders formulieren oder unten direkt auf den Schweizer Portalen weitersuchen ↓"):"Tippe oben ein, was du suchst.");if(SRC_FAIL>0)msg+=" <span style=\"display:block;margin-top:6px;font-size:.85em;color:#92660a\">⚠️ "+SRC_FAIL+" Quelle(n) gerade nicht erreichbar — Ergebnis evtl. unvollständig.</span>";emptyEl.innerHTML=msg;cntEl.textContent="0 Treffer";return}
     emptyEl.hidden=true;
     grid.innerHTML=items.map(card).join("");
     var ni=items.filter(function(x){return x.src==="ins"}).length,np=items.filter(function(x){return x.src==="prod"}).length,nl=items.filter(function(x){return x.src==="lux"}).length,nj=items.filter(function(x){return x.src==="job"}).length;
@@ -252,17 +252,18 @@ footer{max-width:1100px;margin:10px auto;padding:22px 16px;font-size:.8rem;color
     if(typeof renderActive==="function")renderActive();
   }
 
-  function getJobs(q){return fetch("/api/jobs?q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"job",title:it.title||"",price:"",pn:NaN,region:String(it.location||"").toLowerCase(),meta:[it.company,it.location].filter(Boolean).join(" · ")+(it.remote?" · 🏠 Remote":""),desc:"",kat:"",cond:"",url:(it.url&&it.url!=="#")?it.url:"",img:"",emoji:"💼",act:"Zum Job →",ext:true}})}).catch(function(){return []})}
-  function getProd(q){return fetch("/api/ebay?limit=24&q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"prod",title:it.title||"",price:it.price||"",pn:priceNum(it.price),region:String(it.loc||"").toLowerCase(),meta:[it.cond,it.loc].filter(Boolean).join(" · "),desc:"",kat:"",cond:it.cond||"",url:(it.url&&it.url!=="#")?it.url:"",img:it.img||"",emoji:"🛍️",act:"Ansehen →",ext:true}})}).catch(function(){return []})}
-  function getLux(q){return fetch("/api/luxestyle?limit=24&q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"lux",title:it.title||"",price:it.price||"",pn:priceNum(it.price),region:"",meta:[it.type,"LuxeStyle · 🇨🇭 CH"].filter(Boolean).join(" · "),desc:"",kat:"",cond:"",url:it.url||"https://luxestyle.ch",img:it.img||"",emoji:"🛍️",act:"Im Shop ansehen →",ext:true}})}).catch(function(){return []})}
+  function getJobs(q){return fetch("/api/jobs?q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"job",title:it.title||"",price:"",pn:NaN,region:String(it.location||"").toLowerCase(),meta:[it.company,it.location].filter(Boolean).join(" · ")+(it.remote?" · 🏠 Remote":""),desc:"",kat:"",cond:"",url:(it.url&&it.url!=="#")?it.url:"",img:"",emoji:"💼",act:"Zum Job →",ext:true}})}).catch(function(){SRC_FAIL++;return []})}
+  function getProd(q){return fetch("/api/ebay?limit=24&q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"prod",title:it.title||"",price:it.price||"",pn:priceNum(it.price),region:String(it.loc||"").toLowerCase(),meta:[it.cond,it.loc].filter(Boolean).join(" · "),desc:"",kat:"",cond:it.cond||"",url:(it.url&&it.url!=="#")?it.url:"",img:it.img||"",emoji:"🛍️",act:"Ansehen →",ext:true}})}).catch(function(){SRC_FAIL++;return []})}
+  function getLux(q){return fetch("/api/luxestyle?limit=24&q="+qenc(q)).then(function(x){return x.json()}).then(function(d){return (d.items||[]).map(function(it){return {src:"lux",title:it.title||"",price:it.price||"",pn:priceNum(it.price),region:"",meta:[it.type,"LuxeStyle · 🇨🇭 CH"].filter(Boolean).join(" · "),desc:"",kat:"",cond:"",url:it.url||"https://luxestyle.ch",img:it.img||"",emoji:"🛍️",act:"Im Shop ansehen →",ext:true}})}).catch(function(){SRC_FAIL++;return []})}
   function getIns(q){return fetch("/api/inserate-list?q="+qenc(q)+"&kat=").then(function(x){return x.json()}).then(function(d){
     var items=d.items||[];
     if(d.demo||!items.length)return demoIns(q);
     return items.map(function(it){return {src:"ins",title:it.titel||"",price:it.preis||"",pn:priceNum(it.preis),region:(String(it.plz||"")+" "+String(it.ort||"")).toLowerCase(),meta:[it.kat,[it.plz,it.ort].filter(Boolean).join(" ")].filter(Boolean).join(" · "),desc:it.beschreibung||"",kat:it.kat||"Sonstiges",cond:String(it.zustand||""),url:"/inserat/"+encodeURIComponent(it.id),img:it.bild||"",emoji:"📋",act:"Details ansehen →",ext:false}})
   }).catch(function(){return demoIns(q)})}
 
+  var SRC_FAIL=0;
   function searchAll(){
-    var q=$("#q").value.trim();emptyEl.hidden=true;cntEl.textContent="Suche …";if(typeof syncUrl==="function")syncUrl();
+    SRC_FAIL=0;var q=$("#q").value.trim();emptyEl.hidden=true;cntEl.textContent="Suche …";if(typeof syncUrl==="function")syncUrl();
     grid.innerHTML=Array(9).join().split(",").map(function(){return '<div class="skl"></div>'}).join("");
     Promise.all([getIns(q),getProd(q),getLux(q),getJobs(q)]).then(function(res){raw=[].concat(res[0],res[2],res[1],res[3]);render()});
   }
