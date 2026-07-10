@@ -6,6 +6,7 @@
  * ⚠️ CJ-QPS: Engine (cj_perpetual) vorher stoppen — 1 req/s kontoweit!
  */
 import fs from 'node:fs';
+import { catTags } from './cat_tags.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 let CJT = (process.env.CJ_TOKEN || '').trim();
@@ -123,7 +124,8 @@ for (const item of ITEMS) {
   if (imgKey) fs.appendFileSync(IMGLEDGER, imgKey + '\n');
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle', status: 'ACTIVE',
-    tags: ['trend', 'viral', 'video-hit', 'cj-real', 'dropship', 'neu'],
+    tags: [...new Set(['trend', 'viral', 'video-hit', 'cj-real', 'dropship', 'neu',
+      ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])],
     descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
