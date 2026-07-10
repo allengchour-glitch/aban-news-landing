@@ -2355,3 +2355,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   brauchbaren Spec-Daten/Platzhalter — korrekt gefiltert).
 - **CJ-Punkte wieder verfügbar** → YouTube-Trend-Welle importiert (Schmuck-Batch: Perlen-Halsketten,
   Ohrringe...). Vision-QA folgt nach Abschluss der 23 Begriffe.
+
+## 2026-07-10x — Bilder/Videos-QA (User: «bilder videos nicht vergessen»)
+- **Bilder:** 620 heutige Importe geprüft — alle mit Bildern; 2 FAILED-Medien entfernt
+  (Sitzauflagen); 15 mit nur 1 Bild (meist Lieferant hat nur 1 Foto — akzeptiert), davon
+  1 B2B-Software gedraftet + 1 Datenmüll-Titel gefixt (Druckerpapier «NA»).
+- **Produkt-Videos:** Beide CJ-Importer hängen Videos automatisch an, wenn CJ eines liefert
+  (attachVideo-Pfad aktiv) — heutige Welle hatte lieferantenseitig keine. Kein Bug.
+- **Marketing-Videos:** 3 fertige Reels warten auf Meta-Token (User-Klick), YouTube-Paket bereit
+  (PC-Runbook 10). Posting ist der Engpass, nicht die Produktion.
