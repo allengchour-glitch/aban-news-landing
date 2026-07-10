@@ -109,3 +109,10 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
 - [ ] Loop je Iteration: blender -b -P blender_hero.py → GLB → game_shot → Screenshot ansehen
       (+ optional Gemini-Vision, Key im Sessionverlauf). „YouTube-Lernen" = Technik-Recherche via
       WebSearch (Low-Poly-Character-Workflows), Video-Ansehen geht nicht.
+
+### Phase 2c — Landschafts-Upgrade (User 2026-07-10: „Hintergrundlandschaft mega gut — Meshy Grundsachen, Blender Polish")
+- Pipeline: Meshy (Text-to-3D, braucht **MESHY_KEY vom User — fehlt in Session!**) für Basis-Meshes
+  → Blender-Polish (decimate, Emissive, Materialien) → models/*.glb (<500 KB) → GLTFLoader.
+- Ohne Meshy-Key: rein prozedural via Blender (läuft — spiele-dev/blender_landscape.py, Pilot neon-realm).
+- [ ] Pilot neon-realm (Agent läuft 10.07.), dann: neon-flug (Horizont), neon-racer (Streckenrand),
+      neon-survivor (Bergring ersetzen), je mit Shot-Verifikation.
