@@ -199,7 +199,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setS
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene();scene.background=new THREE.Color(0x070818);scene.fog=new THREE.Fog(0x070818,60,240);
+var scene=new THREE.Scene();scene.background=new THREE.Color(0x070818);scene.fog=new THREE.Fog(0x070818,60,380);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,900);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);try{rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);}catch(e){}});
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:i!==undefined?i:0.8,flatShading:true});}
@@ -367,6 +367,15 @@ var border=new THREE.Mesh(new THREE.RingGeometry(WORLD-2,WORLD,72),new THREE.Mes
 border.rotation.x=-Math.PI/2;border.position.y=0.05;scene.add(border);
 // Sterne
 (function(){var g=new THREE.BufferGeometry(),p=new Float32Array(300*3);for(var i=0;i<300;i++){p[i*3]=(Math.random()-.5)*700;p[i*3+1]=60+Math.random()*200;p[i*3+2]=(Math.random()-.5)*700;}g.setAttribute("position",new THREE.BufferAttribute(p,3));scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x9aa2d8,size:1.1,transparent:true,opacity:.8})));})();
+// Hintergrund-Landschaft: Neon-Bergring am Horizont (Blender-GLB, rein dekorativ — keine Kollision)
+var landscape=null;
+if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/landscape_realm.glb",function(g){
+  var o=g.scene;
+  o.traverse(function(n){if(n.isMesh){n.castShadow=false;n.receiveShadow=false;
+    if(n.material){var nm=(n.material.name||"").toLowerCase();
+      n.material.flatShading=true;n.material.needsUpdate=true;
+      n.material.emissiveIntensity=nm.indexOf("crystal")>=0?1.2:0.8;}}});
+  o.position.set(0,0,0);scene.add(o);landscape=o;},undefined,function(){});}
 
 // ===================== Boids: Lichtvogel-Schwarm (Reynolds/Lague: Separation+Alignment+Kohäsion) =====================
 var BOIDS_N=36,boids=[],boidMesh=(function(){
@@ -938,12 +947,14 @@ function genDungeon(){
 }
 function enterDungeon(){
   genDungeon();inDungeon=true;
+  if(landscape)landscape.visible=false; // Horizont-Ring nicht in die Tiefe scheinen lassen
   player.position.set(DX,0,DZ);vx=0;vz=0;
   announce("DIE TIEFE","#b98bff");showHint("Finde die Truhe 🎁 und das grüne Rückportal!",3200);
   beep(180,.4,"sawtooth",.07);camShake=0.5;saveGame();updHUD();
 }
 function exitDungeon(){
   inDungeon=false;
+  if(landscape)landscape.visible=true;
   // Dungeon-Gegner entfernen
   for(var i=0;i<dgn.foes.length;i++){var f=dgn.foes[i];if(f.active){f.active=false;scene.remove(f.g);}}
   dgn.foes=[];if(dgn.group){scene.remove(dgn.group);dgn.group=null;}
@@ -1074,11 +1085,12 @@ function updSystems(dt,dayA){
 var camShake=0;
 function updateCamera(dt){
   var px=player.position.x,pz=player.position.z,py=player.position.y;
-  var tx=px+(Math.random()-0.5)*camShake*2,ty=17+py*0.8+(Math.random()-0.5)*camShake*2,tz=pz+15;
+  // Etwas flacherer Kamera-Pitch (~21° statt ~41°), damit der Horizont-Bergring sichtbar ist
+  var tx=px+(Math.random()-0.5)*camShake*2,ty=11.5+py*0.8+(Math.random()-0.5)*camShake*2,tz=pz+15;
   camera.position.x+=(tx-camera.position.x)*Math.min(1,dt*5);
   camera.position.y+=(ty-camera.position.y)*Math.min(1,dt*5);
   camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*5);
-  camera.lookAt(px,py+1.5,pz-3);
+  camera.lookAt(px,py+2.2,pz-8);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
 }
 camera.position.set(0,17,30);camera.lookAt(0,1.5,10);

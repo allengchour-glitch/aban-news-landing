@@ -117,6 +117,13 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
 - [ ] Pilot neon-realm (Agent läuft 10.07.), dann: neon-flug (Horizont), neon-racer (Streckenrand),
       neon-survivor (Bergring ersetzen), je mit Shot-Verifikation.
 
+### User-Feedback 2026-07-10 (nach Landschafts-Review) — NÄCHSTE SCHRITTE neon-realm
+- [ ] **Schrift & Symbole grösser** (User: „besser lesen") — HUD/Quest-Panel/Steuerleiste skalieren,
+      min. 16px mobil, Symbole deutlicher; gilt als Muster danach für ALLE Spiele (Design-Regel!)
+- [ ] **Boden verbessern** (User) — Dorf-/Weltboden: Farb-/Helligkeitsvariation, Pfade, dezente
+      Glow-Flecken statt flacher dunkler Platte (an Vision-Befund „Terrain beleben" andocken)
+- [ ] „Profi für online": Phase 3 (WebRTC-Koop) beginnt nach Phase-1/2-Abschluss — Pilot neon-duo
+
 ## ⭐ OBERSTE DESIGN-REGEL (User 2026-07-10): „Müssen alle einfach zum Spielen sein"
 Gilt für JEDE Spiele-Änderung, wird bei jedem Shot-Review mitgeprüft:
 1. **Sofort losspielen**: max. 1 Klick/Tap bis ins Spiel; Steuerung in EINER Zeile mit Symbolen auf dem Startschirm
