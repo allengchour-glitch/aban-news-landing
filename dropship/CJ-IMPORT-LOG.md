@@ -2324,3 +2324,10 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (2) Reviews künftig **LIMIT=1500/Tag** (Pacing statt Vollgas — lässt ~50k Punkte für Importe);
   (3) 4 fälschlich abgehakte YouTube-Begriffe wieder in die Queue. Ledger sauber (12 echte Einträge).
 - MERKER: CJ-Punkte sind SHARED über Importe+Reviews+Suchen — grosse Läufe pacen, Importe haben Vorrang.
+
+## 2026-07-10t — Neustart-Revival #3 + BIGBUY-BEREINIGUNG KOMPLETT
+- Container-Restart → revive: Walker, CJ-Runner (Punkte-Gate aktiv bis 16:00 UTC), Reviews (paced).
+  Crons neu: Wächter ffca9769 + Morgenreport 1762f099.
+- **ALLE BigBuy-Schutz-Engines FERTIG:** Cleanup 6'997 ✓ · Stock-Guard 1'658 ✓ · Unknown-Guard
+  6'678 ✓ · Lager-Sync 362 tracked ✓ · Preis-Sanity 268 ✓. BigBuy-Segment ist jetzt EHRLICH:
+  aktiv = nur lieferbar+lagernd+profitabel. Geisterverkäufe (#1004/1006/1008/1009) systemisch unmöglich.
