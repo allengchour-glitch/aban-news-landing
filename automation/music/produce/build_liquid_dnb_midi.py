@@ -22,6 +22,7 @@ NBARS = 48
 rhodes, pad, sax, voice = [], [], [], []
 drum_rows = []  # (startSec, typ, vel) für drum_synth.py
 reese_rows = []  # (startSec, durSec, midiNote) für reese_synth.py
+fx_rows = []      # (startSec, typ, durSec) für fx_synth.py
 sub = []          # Mono-Sub via GM (Sinus-nah: program 80 Lead würde zu hell; nutze program 38 tief)
 
 sec_per_tick = 60.0 / BPM / TPQ
@@ -98,6 +99,19 @@ for b in range(NBARS):
             voice.append((t0, BAR - 30, p, 30))
     elif BUILD and b >= 12:
         voice.append((t0, TPQ * 2, hook, 46))               # Vocal-Teaser
+
+# DJ-FX: Riser vor Drops, Impact bei Drops, Downsweep ins Breakdown
+fx_rows.append((14 * BAR * sec_per_tick, 'riser', 2 * BAR * sec_per_tick))       # Build→Drop1
+fx_rows.append((16 * BAR * sec_per_tick, 'impact', BAR * sec_per_tick))          # Drop1-Impact
+fx_rows.append((32 * BAR * sec_per_tick, 'downsweep', BAR * sec_per_tick))       # in Breakdown
+fx_rows.append((39 * BAR * sec_per_tick, 'riser', BAR * sec_per_tick))           # Breakdown→Drop2
+fx_rows.append((40 * BAR * sec_per_tick, 'impact', BAR * sec_per_tick))          # Drop2-Impact
+with open('/tmp/liquid_dnb_fx.txt','w') as f:
+    for st,typ,du in fx_rows: f.write(f'{st:.4f} {typ} {du:.4f}\n')
+# Kick-Times für Sidechain (aus drum_rows, nur Kicks)
+with open('/tmp/liquid_dnb_kicks.txt','w') as f:
+    for st,typ,vel in drum_rows:
+        if typ in ('kick','k808'): f.write(f'{st:.4f}\n')
 
 # Reese-Spec für reese_synth.py schreiben
 with open('/tmp/liquid_dnb_reese.txt', 'w') as f:

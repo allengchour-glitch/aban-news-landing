@@ -19,22 +19,17 @@ python3 "$BUILD"
 fluidsynth -ni -g 0.9 -r 44100 "$SF" "$MID" -F "$RAW" 2>/dev/null
 
 # Optionaler Reese-Bass-Layer: build-Skript kann /tmp/<genre>_reese.txt schreiben (Zeilen: startSec durSec midiNote)
-REESE_SPEC="/tmp/${GENRE}_reese.txt"
-if [ -f "$REESE_SPEC" ]; then
-  python3 "$HERE/reese_synth.py" "$REESE_SPEC" "/tmp/${GENRE}_reese.wav" 174 2>/dev/null || true
-  if [ -f "/tmp/${GENRE}_reese.wav" ]; then
-    sox -m "$RAW" "/tmp/${GENRE}_reese.wav" "/tmp/${GENRE}_mix.wav" 2>/dev/null && RAW="/tmp/${GENRE}_mix.wav"
-  fi
+# Layers synthetisieren + PRO-MIXDOWN (Sidechain-Pump + FX)
+REESE_SPEC="/tmp/${GENRE}_reese.txt"; DRUM_SPEC="/tmp/${GENRE}_drums.txt"; FXS="/tmp/${GENRE}_fx.txt"; KICKS="/tmp/${GENRE}_kicks.txt"
+RW="-"; DW="-"; FW="-"; KK="-"
+[ -f "$REESE_SPEC" ] && python3 "$HERE/reese_synth.py" "$REESE_SPEC" "/tmp/${GENRE}_reese.wav" 174 2>/dev/null && RW="/tmp/${GENRE}_reese.wav"
+[ -f "$DRUM_SPEC" ] && python3 "$HERE/drum_synth.py" "$DRUM_SPEC" "/tmp/${GENRE}_drums.wav" 2>/dev/null && DW="/tmp/${GENRE}_drums.wav"
+[ -f "$FXS" ] && python3 "$HERE/fx_synth.py" "$FXS" "/tmp/${GENRE}_fx.wav" 2>/dev/null && FW="/tmp/${GENRE}_fx.wav"
+[ -f "$KICKS" ] && KK="$KICKS"
+if [ "$RW$DW$FW" != "---" ]; then
+  python3 "$HERE/mixdown.py" "$RAW" "$DW" "$RW" "$FW" "$KK" "/tmp/${GENRE}_full.wav" 2>/dev/null && RAW="/tmp/${GENRE}_full.wav"
 fi
 
-# Optionaler DSP-Drum-Layer (echte synthetisierte Drums statt GM)
-DRUM_SPEC="/tmp/${GENRE}_drums.txt"
-if [ -f "$DRUM_SPEC" ]; then
-  python3 "$HERE/drum_synth.py" "$DRUM_SPEC" "/tmp/${GENRE}_drums.wav" 2>/dev/null || true
-  if [ -f "/tmp/${GENRE}_drums.wav" ]; then
-    sox -m "$RAW" "/tmp/${GENRE}_drums.wav" "/tmp/${GENRE}_mix2.wav" 2>/dev/null && RAW="/tmp/${GENRE}_mix2.wav"
-  fi
-fi
 
 # Genre-Reverb (Default mittel; Ballade/Orchester mehr, DnB/House weniger)
 case "$GENRE" in

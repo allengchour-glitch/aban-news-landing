@@ -49,3 +49,7 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 - DRUM-SYNTH (User «beat ton zu schlicht»): drum_synth.py = echte DSP-One-Shots statt dünner GM-Drums.
   Kick=Pitch-Env-Sine(140→48Hz)+Click, Snare=Noise-Body+Snap+Ton gelayert, Hats=HP-Noise. render.sh
   mischt Drum-Layer automatisch, wenn build /tmp/<genre>_drums.txt schreibt. Gilt für alle Genres.
+
+- DJ-FX + SIDECHAIN (User «richtiges dj zeug»): fx_synth.py (Riser/Impact/Downsweep) + mixdown.py
+  (Sidechain-Pump: Musik+Bass ducken im Kick-Takt). render.sh nutzt Pro-Mixdown-Pfad, wenn build
+  _fx.txt + _kicks.txt schreibt. Gibt jeder Produktion den «atmenden» EDM-Pump + Drop-Übergänge.
