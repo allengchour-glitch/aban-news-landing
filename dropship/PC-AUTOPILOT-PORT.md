@@ -79,3 +79,26 @@ ads.microsoft.com → Konto mit Microsoft-Login (KEINE Zahlungsdaten!) → Tools
 Store «LuxeStyle CH», Domain luxestyle.ch (Validierungs-Meta-Tag in den Rapport schreiben —
 Cloud baut ihn ins Theme) → dann **«Import from Google Merchant Center»** (Konto 5797470070)
 aktivieren → Import-Status rapportieren. Ads/Budget NICHT anfassen (erst nach UID + Entscheid).
+
+### 10. 📺 YOUTUBE-SHORTS-KANAL (neu 2026-07-10 — Startpaket liegt bereit)
+**A) Einmalig (30 Sek.):** youtube.com → Konto-Menü → «Kanal erstellen» → Brand-Kanal **«LuxeStyle CH»**.
+   Kanalbeschreibung: «LuxeStyle 🇨🇭 Mode, Schmuck & Lifestyle · Gratis-Versand ab CHF 50 ·
+   Klarna & TWINT · luxestyle.ch» + **luxestyle.ch als Profil-Link** (der einzige klickbare Link!).
+   Avatar/Banner: gleiche Assets wie Instagram.
+**B) Upload (automatisiert):** Im Repo-Ordner `git pull`, dann
+   `node automation/local/youtube-shorts-upload.mjs` (Brave Port 9222, eingeloggt).
+   Lädt die 3 vorbereiteten Shorts aus reels/shorts/ mit fertigen Titeln/Beschreibungen hoch.
+   Details/Metadaten: dropship/YOUTUBE-RUNDE-2026-07-10.md. Danach pro Video eigenen Kommentar
+   mit Shop-URL anpinnen. NIE Monetarisierungs-/Zahlungs-Dialoge anfassen.
+**C) Kadenz danach:** 3–4 Shorts/Woche, Di–Do 18–20 Uhr (Cloud-Session liefert Nachschub in reels/shorts/).
+
+### 11. 🔑 META-TOKEN ERNEUERN (IG/FB-Autopilot steht seit 07.07.!)
+business.facebook.com → Business-Einstellungen → System-User/Apps ODER developers.facebook.com →
+Graph API Explorer → App «LuxeStyle Social» → User-Token mit pages_manage_posts +
+instagram_content_publish generieren → **Token NUR im Chat an die Cloud-Session senden**
+(nie in Dateien/Repo). Cloud tauscht ihn selbst in Seiten-Token und postet die 3 wartenden Reels.
+
+### 12. 🧩 KONNEKTOREN-REFRESH in claude.ai (nach jedem grossen Neustart)
+claude.ai → Einstellungen → Konnektoren: **Shopify** neu verbinden (vorher im selben Browser bei
+admin.shopify.com einloggen — Token-Exchange-Fehler ofid_… kam von fehlender Shopify-Session),
+**TikTok Ads** prüfen, **Klaviyo** ist verbunden (Tools docken nach Session-Neustart an).
