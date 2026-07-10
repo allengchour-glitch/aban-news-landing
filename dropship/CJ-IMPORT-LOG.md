@@ -2310,3 +2310,9 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   ⚠️ Button-Text englisch «Add To Cart» → in der App-Einstellung auf «In den Warenkorb» ändern
   (User-Klick/PC-Claude, App hat keine API).
 - Vision-Agent repariert die 22 kryptischen RC-Spielzeug-Titel (tag titel-pruefen) mit Bild-Abgleich.
+
+## 2026-07-10r — 22 RC-Titel per Vision repariert (Agent, 0 Fehler)
+- Alle «Einzelbatterie/Doppelbatterie»-Kauderwelsch-Titel → klare Kunden-Titel («GB815 Einzelbatterie
+  schwarz» → «Faltbare RC-Drohne mit Dual-Kamera, Schwarz/Blau»). Tag titel-pruefen abgebaut (0 übrig).
+- Folge-Fixes: 1 byte-identische Bild-Dublette (RC-Schwert) → DRAFT; RC-Chassis-Ersatzteil aus
+  Spielzeug → ersatzteile-zubehoer.
