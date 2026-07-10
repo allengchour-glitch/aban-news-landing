@@ -95,6 +95,15 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .btn{border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:14px 34px;border-radius:44px;color:#0a1020;background:linear-gradient(92deg,#5ef2ff,#b98bff);box-shadow:0 10px 40px rgba(94,242,255,.35);min-height:48px}
 .btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:1rem;padding:12px 24px}
 .foot{margin-top:16px;font-size:.9rem;color:#98a0c8}.foot a{color:#9fb2ff}
+/* Klassenwahl im Startmenü (optional — Held vorgewählt, Start geht immer sofort) */
+#classRow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:4px 0 14px;width:min(560px,92vw)}
+.ccard{pointer-events:auto;cursor:pointer;background:rgba(20,24,52,.75);border:2px solid #2a3160;border-radius:14px;padding:10px 6px;color:#cfd8ff;font-size:1rem;min-height:44px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.ccard .ce{font-size:1.6rem;line-height:1.2}
+.ccard b{font-size:1rem}
+.ccard small{color:#9aa6d8;font-size:.85rem;font-weight:600}
+.ccard.sel{border-color:#5ef2ff;background:rgba(24,50,86,.85);color:#eaf6ff;box-shadow:0 0 18px rgba(94,242,255,.28)}
+.ccard.sel small{color:#7de3ff}
+@media (max-width:560px){#classRow{grid-template-columns:1fr 1fr}}
 /* Touch */
 #touchUI{position:fixed;inset:0;z-index:15;pointer-events:none;display:none}
 #joyBase{position:absolute;left:26px;bottom:26px;width:118px;height:118px;border-radius:50%;border:2px solid rgba(125,227,255,.4);background:rgba(10,14,32,.35)}
@@ -167,6 +176,13 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <h1>NEON REALM</h1>
   <p>Das Reich ist zerbrochen. Erkunde <b>vier Zonen</b>, erfülle die Quests der Dorfbewohner, sammle <b>Loot mit Seltenheitsstufen</b>, lerne Skills — und wecke am Ende den <b>NEXUS</b>, um das Reich zu einen. Dein Fortschritt wird gespeichert.</p>
   <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Angriff</span><span><b>Q</b> Puls</span><span><b>SHIFT</b> Roll</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
+  <div style="letter-spacing:.3em;font-size:.8rem;color:#a9b8ff;text-transform:uppercase;margin:4px 0 8px">Wähle deinen Helden</div>
+  <div id="classRow">
+    <button class="ccard" data-cls="held"><span class="ce">⚡</span><b>Held</b><small>Allrounder</small></button>
+    <button class="ccard" data-cls="magier"><span class="ce">🔮</span><b>Magier</b><small>+20% Energie</small></button>
+    <button class="ccard" data-cls="waldlaeufer"><span class="ce">🏹</span><b>Waldläufer</b><small>+10% Tempo</small></button>
+    <button class="ccard" data-cls="titan"><span class="ce">🛡️</span><b>Titan</b><small>+20% Leben</small></button>
+  </div>
   <button class="btn" id="startBtn">Reich betreten ▶</button>
   <button class="btn ghost hide" id="wipeBtn">Neu beginnen (Speicherstand löschen)</button>
   <div class="foot">Kein Download · <a href="/spiele.html">aban Arcade</a></div>
@@ -369,6 +385,7 @@ var nature=new THREE.Group();scene.add(nature);
         else{x=(Math.random()-0.5)*2*(WORLD-6);z=(Math.random()-0.5)*2*(WORLD-6);}
         if(!vegOk(x,z,tree))continue;
         var s=tree?0.7+Math.random()*0.7:0.7+Math.random()*0.9;
+        if(pl[0].indexOf("bush")===0&&Math.hypot(x,z)<25)s=Math.min(s,1.0); // Dorfkern: keine Riesen-Büsche nahe der Kamera-Achse (r25-Regel galt nur für Bäume)
         d.position.set(x,heightAt(x,z)-0.06,z);d.scale.set(s,s,s);d.rotation.set(0,Math.random()*6.283,0);d.updateMatrix();
         mats.push(d.matrix.clone());
         var b=0.8+Math.random()*0.3; // leichter Helligkeits-/Farb-Tint (multipliziert Vertex-Farben)
