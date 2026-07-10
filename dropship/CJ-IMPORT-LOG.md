@@ -2222,3 +2222,11 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   MERKER: cj_category_fill NIE ohne GRP aufrufen.
 - MCP-Konnektoren (Shopify/TikTok) nach Neustart getrennt — Admin-API via Token läuft; TikTok-Budget-
   Übergabe pausiert bis Konnektor-Reconnect (Wächter überspringt still).
+
+## Session 2026-07-10j — Vision-QA-Runde über neueste Importe (Rotation cjdamen)
+- Kontaktbogen der 12 neuesten Aktiven: **6 Titel korrigiert** — Groq-Kategorien-Fallen erneut bestätigt:
+  «Sonnen-Schutz-Shirt» war transparente Blumen-Bluse, «Unsichtbares Unterhemd» war Peplum-Bluse,
+  «Damenrock» war Maxikleid, «Patchwork» ohne Patchwork. Bilder/Varianten/Preise sonst sauber,
+  Grössen-Hinweis (asiatisch) ist im Fill-Template enthalten ✓.
+- Engines: bb_cleanup ~5'000/6'997 · seo50 ~7'200/15'622 · CJ-Rotation läuft (pet→cjdamen) ·
+  20 frische Suchbegriffe warten in der Queue auf den nächsten Runner-Zyklus.
