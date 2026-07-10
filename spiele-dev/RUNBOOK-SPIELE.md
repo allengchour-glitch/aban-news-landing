@@ -124,6 +124,20 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
       Glow-Flecken statt flacher dunkler Platte (an Vision-Befund „Terrain beleben" andocken)
 - [ ] „Profi für online": Phase 3 (WebRTC-Koop) beginnt nach Phase-1/2-Abschluss — Pilot neon-duo
 
+### User-Feedback 2026-07-10 (Runde 2 — „geiler Skill, mach besser als andere Spiele")
+- [ ] **Charaktere wie Menschen + Bewegung**: menschenähnliche Low-Poly-Figuren (Kopf/Rumpf/Arme/Beine)
+      MIT Blender-Rig + Animationen (idle/walk) → GLB mit Animations-Tracks → three.js AnimationMixer,
+      Walk-Anim an Bewegungsgeschwindigkeit gekoppelt. Pipeline: spiele-dev/blender_hero.py → models/hero.glb.
+      Gilt für Spieler UND NPCs (NPCs mind. idle-Bewegung).
+- [ ] **Bäume detaillierter + verschieden**: 3+ Baum-Varianten (Stamm + mehrlagige Krone, Neon-Ton),
+      via Blender → models/nature_pack.glb (benannte Objekte für Instancing).
+- [ ] **Alles lebhafter — Rasen, Blumen, Gebüsche**: Gras-Büschel/Blumen/Büsche als instanzierte
+      Low-Poly-Meshes verstreut (InstancedMesh, Performance!), dezentes Wind-Wackeln (Shader/Vertex).
+- [ ] **Tasten-Anzeige**: kontextuelle Prompts im Spiel („E drücken" über NPC/Tür/Item, mobil: Tap-Symbol),
+      + Steuerungs-Legende sichtbar; wird Muster für alle Spiele.
+- Recherche-Auftrag (User: „im YouTube und Netz sind viele Tipps"): vor jedem Baustein WebSearch nach
+  Low-Poly-/Blender-Python-/three.js-Best-Practices, Erkenntnisse hier eintragen.
+
 ## ⭐ OBERSTE DESIGN-REGEL (User 2026-07-10): „Müssen alle einfach zum Spielen sein"
 Gilt für JEDE Spiele-Änderung, wird bei jedem Shot-Review mitgeprüft:
 1. **Sofort losspielen**: max. 1 Klick/Tap bis ins Spiel; Steuerung in EINER Zeile mit Symbolen auf dem Startschirm
