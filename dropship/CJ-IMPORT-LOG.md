@@ -2316,3 +2316,11 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   schwarz» → «Faltbare RC-Drohne mit Dual-Kamera, Schwarz/Blau»). Tag titel-pruefen abgebaut (0 übrig).
 - Folge-Fixes: 1 byte-identische Bild-Dublette (RC-Schwert) → DRAFT; RC-Chassis-Ersatzteil aus
   Spielzeug → ersatzteile-zubehoer.
+
+## 2026-07-10s — CJ-Punkte-Haushalt (teuer gelernt): Review-Lauf frass das Tagesbudget
+- **71'990/72k CJ-Punkte verbraucht** — der Reviews-Voll-Lauf (6k Produkte × ~12 Punkte) hat die
+  Import-Punkte aufgefressen. Reset ~16:00 UTC.
+- Fixes: (1) **Punkte-Gate im Queue-Runner** (bei 16900500 sofort exit, Watcher versucht stündlich);
+  (2) Reviews künftig **LIMIT=1500/Tag** (Pacing statt Vollgas — lässt ~50k Punkte für Importe);
+  (3) 4 fälschlich abgehakte YouTube-Begriffe wieder in die Queue. Ledger sauber (12 echte Einträge).
+- MERKER: CJ-Punkte sind SHARED über Importe+Reviews+Suchen — grosse Läufe pacen, Importe haben Vorrang.
