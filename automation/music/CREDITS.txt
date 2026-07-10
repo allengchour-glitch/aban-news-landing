@@ -23,3 +23,14 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
 - luxe-premium.wav  (ELEGANT/PREMIUM, F-Dur, 96 BPM, ~64s; Grand Piano + warme Streicher +
   Akustik-Bass + Glockenspiel + dezenter Soft-Groove, Progression F-C-Dm-Bb mit Aufbau;
   gemastert -14 LUFS. Für Marken-/Premium-Reels. Reproduzierbar: bash automation/music/produce/make_premium.sh)
+
+— ORIGINAL PRO v2 (selbst erlernt 2026-07-10, User «dj/klavier/saxofon/orchester, mach ein mix») —
+- luxe-lounge-sax.wav     (Deep-House/Lounge, a-Moll 122 BPM: E-Piano-Stabs + Synth-Bass + TENOR-SAX-Lead
+                           + 4-on-the-floor. build_lounge_sax_midi.py)
+- luxe-orchestra.wav      (EPISCH/Trailer, d-Moll 88 BPM: Streicher + Celli + Hörner + Pauken + Harfe +
+                           Glockenspiel, Aufbau zum Tutti. build_orchestra_midi.py)
+- luxe-cinematic-house.wav (⭐ DER MIX: Orchester-Intro (Streicher+Hörner+Pauken) DROPPT nach ~8s in
+                           House+Sax. a-Moll 122 BPM, Trailer→Club. build_cinematic_house_midi.py)
+  Rendern: fluidsynth FluidR3_GM.sf2 → sox reverb → ffmpeg loudnorm -14 LUFS.
+  MERKER: LuxeStyle-Musik = 100% selbst produziert (GM/FluidSynth), NIE generische Fremdtracks.
+  Default YouTube/Marken-Reel: luxe-cinematic-house (episch+clubby) ODER luxe-premium (ruhig-elegant).

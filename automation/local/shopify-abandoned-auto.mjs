@@ -51,4 +51,5 @@ try {
   log('FEHLER: ' + e.message.slice(0, 200) + ' — Screenshots zeigen, wo es hakte.');
   await shot(page, '99-fehler');
 }
+try { await page.close(); } catch {}
 await browser.close();

@@ -59,4 +59,5 @@ for (const v of VIDEOS) {
   console.log('  ✅ veröffentlicht (oder im Entwurf falls Verarbeitung läuft — in Studio prüfen)');
 }
 console.log('FERTIG. Danach pro Video: eigenen Kommentar mit Produkt-/Shop-URL anpinnen (manuell oder Folge-Skript).');
+try { await page.close(); } catch {}
 await browser.close();
