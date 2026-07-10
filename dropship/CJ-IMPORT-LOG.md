@@ -2288,3 +2288,14 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Ledger cj_reviews_done.txt; in revive.sh).
 - Lager-Sync parallel: arbeitet sich durch die Aktiven (BigBuy → tracked + echte Menge).
 - Merker: CJ_EMAIL/CJ_API_KEY-Guard per Dummy-Env passieren, Token kommt aus /tmp/cj_token.json.
+
+## 2026-07-10p — Voll-Auto-Runde: Preis-Sanity + Tablet-Rätsel gelöst
+- **Samsung Tab S11 für 3'113.90 (User-Fund) erklärt:** BigBuy listet EK 1'948€/UVP 4'235€ =
+  Lieferanten-Datenmüll (Marktpreis ~850). Zu diesem EK unverkäuflich → DRAFT ek-unrealistisch-draft.
+  LEHRE: UVP-Sanity-Check reicht nicht, wenn die UVP selbst Müll ist — bei Elektronik >200€ EK
+  gegen Marktrealität prüfen (Vision/Websearch) bevor Import.
+- **Preis-Sanity-Engine LIVE** (/tmp/bb_price_sanity.py): 1'514 Alt-Ausreisser (Preis > UVP×1.35)
+  werden auf max(UVP×1.08, Vollkosten-Floor) gesenkt (z.B. 333.90→150.80). Ledger _pricesanity_done.
+- Heutige Importe: 0 Beschreibungslücken, 3 Ausreisser sofort gesenkt (Grillplatte, 2× Olimpia-
+  Klimageräte 289.90→181.04 / 379.90→237.16).
+- Läuft parallel: Reviews-Voll-Lauf (6k), Lager-Sync, Unknown-Guard, CJ-Trend-Importe.
