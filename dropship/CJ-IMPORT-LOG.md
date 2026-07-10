@@ -2268,3 +2268,14 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - Sortier-Runde parallel abgeschlossen: 3 kaputte Regeln repariert (pc-komponenten «RAM»→Keramik-
   Falle, kabel-adapter «AUX»→Faux, kaffee-ecke Farben), 22 RC-Spielzeuge aus Elektronik, Camping-
   Welle aus Fitness, ~60 Einzel-Fixes, 8 Lizenz-Trikots aus Werbe-Kanälen, Tantus-Adult-Köpfe DRAFT.
+
+## 2026-07-10n — Lagerbestand + Bewertungen (User-Auftrag)
+- **📦 LAGER-SYNC LIVE** (/tmp/bb_stock_sync.py): aktive BigBuy-Produkte bekommen tracked:true +
+  ECHTE Menge aus dem BigBuy-Feed (Cap 25, Location 109350125953). Shopify stoppt Verkäufe bei 0
+  automatisch → dritte Schutzschicht nach Stock-Guard + Unknown-Guard. CJ bleibt bewusst
+  tracked:false (tiefes Lager). Tages-Refresh: Feed neu ziehen (bb_stock_pull.sh), Ledger
+  _stocksync_done.txt löschen, Engine neu starten.
+- **⭐ BEWERTUNGEN blockiert auf 1 User-Input:** cj_reviews_import.mjs (echte CJ-Reviews ≥4★ →
+  Judge.me) braucht JUDGEME_PRIVATE_TOKEN — existiert nur als GitHub-Secret, nicht lokal.
+  USER-KLICK: Judge.me-Admin → Settings → API Token → im Chat senden. Dann Import über alle
+  cj-real-Produkte + neue Importe.
