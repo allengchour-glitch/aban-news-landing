@@ -34,3 +34,6 @@ Quellenangabe automatisch an die Reel-Caption angehängt (auto_render.sh).
   Rendern: fluidsynth FluidR3_GM.sf2 → sox reverb → ffmpeg loudnorm -14 LUFS.
   MERKER: LuxeStyle-Musik = 100% selbst produziert (GM/FluidSynth), NIE generische Fremdtracks.
   Default YouTube/Marken-Reel: luxe-cinematic-house (episch+clubby) ODER luxe-premium (ruhig-elegant).
+
+- luxe-liquid-dnb.wav     (LIQUID DnB, TikTok/Reels-Trend 2026, 174 BPM a-Moll: Breakbeat + Sub/Reese-Bass
+                           + lush Pads + Sax-Stabs. build_liquid_dnb_midi.py. Melodisch = markentauglich.)
