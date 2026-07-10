@@ -2299,3 +2299,14 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - Heutige Importe: 0 Beschreibungslücken, 3 Ausreisser sofort gesenkt (Grillplatte, 2× Olimpia-
   Klimageräte 289.90→181.04 / 379.90→237.16).
 - Läuft parallel: Reviews-Voll-Lauf (6k), Lager-Sync, Unknown-Guard, CJ-Trend-Importe.
+
+## 2026-07-10q — «kann noch besser werden»: Conversion-Pack ins Theme
+- **layout/theme.liquid + <!-- luxe-conversion-pack -->** (verifiziert in Datei): (1) Judge.me-
+  0-Sterne-Zeilen per CSS versteckt (leere Sterne = «nie gekauft»-Signal, Audit-Hebel 3);
+  (2) 🚚 GRATISVERSAND-FORTSCHRITTSBALKEN in Cart/Drawer (JS via /cart.js, Schwelle CHF 50,
+  «Noch CHF X bis Gratis-Versand» + Balken, aktualisiert bei jedem Cart-Fetch) — stärkster
+  ehrlicher AOV-Hebel (Audit-Hebel 5, Dead-Zone 39–49 schliessen).
+- Sticky-ATC existiert bereits als App-Embed (seowill-sticky-cart, aktiv — User-Screenshot bestätigt).
+  ⚠️ Button-Text englisch «Add To Cart» → in der App-Einstellung auf «In den Warenkorb» ändern
+  (User-Klick/PC-Claude, App hat keine API).
+- Vision-Agent repariert die 22 kryptischen RC-Spielzeug-Titel (tag titel-pruefen) mit Bild-Abgleich.
