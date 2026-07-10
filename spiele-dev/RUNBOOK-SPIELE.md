@@ -69,3 +69,33 @@ In-Game-Shot (nach game_smoke-Startklick-Fix) reviewt — 3 konkrete Fixes, abst
 3. **Tag-Nacht-Zyklus sichtbar machen**: HUD zeigt „Tag 1 · 08:06" mit Mond, Szene ist aber
    Dauernacht — Ambient/DirectionalLight-Farbe+Intensität an Spielzeit koppeln, Fog-Farbe mitziehen.
 Loop: implementieren → game_smoke PASS → game_shot → selbst ansehen (Gemini-Key des Users nur in Session).
+
+## 🕹️ MASTERPLAN „aban Arcade" (User-Auftrag 2026-07-10: „alles in 1, handy-optimiert, alle online koop/multiplayer")
+Grossprojekt in Phasen — jede 2h-Runde arbeitet den nächsten offenen Schritt ab, IMMER mit
+Smoke+Shot-Verifikation pro Änderung. Fortschritt hier abhaken (✅), damit Sessions nahtlos übernehmen.
+
+### Phase 1 — Alles-in-1-Shell (Arcade-Launcher)
+- [ ] spiele.html → „aban Arcade": einheitliche Game-Cards, gemeinsames Profil (Spielername,
+      localStorage `abanArcade`), Gesamt-Highscore-Leiste, Zurück-zur-Arcade-Button in jedem Spiel
+- [ ] Shared CSS/JS extrahieren (js/arcade.js): Pause, Ton, Vollbild, Touch-Erkennung
+
+### Phase 2 — Handy-Optimierung (alle 12 Spiele)
+- [ ] Audit pro Spiel via game_shot mit Mobile-Viewport (390×844) — Liste: was hat Touch, was nicht
+- [ ] Touch-Controls nachrüsten wo fehlend (Muster: neon-realm tAtk/tDodge-Buttons + virtueller Stick)
+- [ ] Performance: pixelRatio-Cap, reduzierte Partikel auf Mobile (navigator.maxTouchPoints)
+- [ ] viewport-fit=cover + safe-area-insets, Buttons ≥44px
+
+### Phase 3 — Online Koop/Multiplayer
+- Architektur-Entscheid (dokumentiert): **WebRTC-P2P** (DataChannel) + Signaling über eine
+  Cloudflare Pages Function mit KV-Polling (`/api/mp-signal`, Raum-Codes 4-stellig) — kein
+  eigener Server, gratis, DSGVO-freundlich (P2P nach Handshake). Durable Objects erst prüfen
+  wenn KV-Polling-Latenz (~1-2s Handshake) stört; im Spiel selbst ist danach alles P2P.
+- [ ] /api/mp-signal (KV: offer/answer/ice je Raum, TTL 5 Min) + js/mp.js (Host/Join-API)
+- [ ] Pilot: **neon-duo** (bereits 2-Spieler-Design!) → Online-Koop mit Raum-Code
+- [ ] Danach ausrollen: neon-racer (Ghost-Race), neon-survivor (Koop-Wellen), wortbruecke (Duell)
+- [ ] ⚠️ KV-Namespace-Binding im Pages-Projekt = User-Klick im Cloudflare-Dashboard (wie D1)!
+      Ohne Binding: mp-signal liefert 503, Spiele bleiben Solo-spielbar (sauberer Fallback Pflicht).
+
+### Verifikation Multiplayer (ohne 2 Menschen)
+Playwright: 2 Browser-Kontexte, Kontext A hostet (Raum-Code auslesen), Kontext B joint,
+Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
