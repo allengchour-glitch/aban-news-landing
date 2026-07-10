@@ -153,7 +153,7 @@ var floor=new THREE.Mesh(new THREE.PlaneGeometry(ARENA*2,ARENA*2),new THREE.Mesh
 floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
 var grid=new THREE.GridHelper(ARENA*2,42,0x4a5ec0,0x223060);grid.position.y=0.02;scene.add(grid);
 // Arena-Ring (Grenze)
-var ringWall=new THREE.Mesh(new THREE.TorusGeometry(ARENA,0.5,10,80),mat(0x5ef2ff,0x5ef2ff,1.3));ringWall.rotation.x=Math.PI/2;ringWall.position.y=0.4;scene.add(ringWall);
+var ringWall=new THREE.Mesh(new THREE.TorusGeometry(ARENA,0.5,10,80),mat(0x5ef2ff,0x5ef2ff,0.8));ringWall.rotation.x=Math.PI/2;ringWall.position.y=0.4;scene.add(ringWall);
 var floorRune=new THREE.Mesh(new THREE.RingGeometry(ARENA-0.6,ARENA-0.2,80),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.3,side:THREE.DoubleSide}));floorRune.rotation.x=-Math.PI/2;floorRune.position.y=0.03;scene.add(floorRune);
 for(var ri=0;ri<4;ri++){var rr=new THREE.Mesh(new THREE.RingGeometry(9+ri*8,9.35+ri*8,64),new THREE.MeshBasicMaterial({color:0x2b3585,transparent:true,opacity:0.22,side:THREE.DoubleSide}));rr.rotation.x=-Math.PI/2;rr.position.y=0.03;scene.add(rr);}
 // Eck-Lichter
@@ -272,14 +272,14 @@ function buildBoss(kind,c1,c2){clearBoss();
   var inner=new THREE.Mesh(new THREE.OctahedronGeometry(1.5,0),mat(0xdfe9ff,c1,0.75));boss.add(inner);boss.userData.inner=inner;
   inner.material._baseEmis=0.75;boss.userData.flashMats=[inner.material];boss.userData.punchTarget=inner;boss.userData.punchBase=1;boss.userData.model=null;
   if(kind===0){ // WÄCHTER: 3 rotierende Ringe + orbitierende Knoten
-    for(var r=0;r<3;r++){var rg=new THREE.Mesh(new THREE.TorusGeometry(3.6+r*0.9,0.22,10,40),mat(c2,c2,1.1));rg.rotation.x=Math.random();rg.rotation.y=Math.random();boss.add(rg);bossParts.push({m:rg,rx:0.4+r*0.2,ry:0.3-r*0.15});}
+    for(var r=0;r<3;r++){var rg=new THREE.Mesh(new THREE.TorusGeometry(3.6+r*0.9,0.22,10,40),mat(c2,c2,0.22));rg.rotation.x=Math.random();rg.rotation.y=Math.random();boss.add(rg);bossParts.push({m:rg,rx:0.4+r*0.2,ry:0.3-r*0.15});}
     for(var n=0;n<6;n++){var nd=new THREE.Mesh(new THREE.OctahedronGeometry(0.55,0),mat(c1,c1,1.3));boss.add(nd);bossParts.push({m:nd,orbit:n/6*6.28,orad:4.6,ospd:0.8});}
   }else if(kind===1){ // SERAPH: Flügel + Halo
-    var halo=new THREE.Mesh(new THREE.TorusGeometry(3.8,0.18,8,44),mat(0xffe066,0xffe066,1.3));halo.rotation.x=Math.PI/2;halo.position.y=2.6;boss.add(halo);bossParts.push({m:halo,ry:0.5});
+    var halo=new THREE.Mesh(new THREE.TorusGeometry(3.8,0.18,8,44),mat(0xffe066,0xffe066,0.6));halo.rotation.x=Math.PI/2;halo.position.y=2.6;boss.add(halo);bossParts.push({m:halo,ry:0.5});
     for(var wg=0;wg<2;wg++){var wing=new THREE.Mesh(new THREE.ConeGeometry(2.0,6.5,4),mat(c2,c2,1.0));wing.position.set(wg?3.4:-3.4,0.4,-0.6);wing.rotation.z=wg?-0.9:0.9;wing.scale.set(0.5,1,1.6);boss.add(wing);bossParts.push({m:wing,flap:wg?1:-1,base:wing.rotation.z});}
     for(var s=0;s<4;s++){var sp=new THREE.Mesh(new THREE.TetrahedronGeometry(0.7,0),mat(c1,c1,1.3));boss.add(sp);bossParts.push({m:sp,orbit:s/4*6.28,orad:5.2,ospd:1.1});}
   }else{ // NEXUS: 2 gegenläufige Schalen + Pfeiler + Uhrzeiger
-    for(var sh=0;sh<2;sh++){var shell=new THREE.Mesh(new THREE.TorusGeometry(4.2+sh*1.1,0.3,3,6),mat(sh?c2:c1,sh?c2:c1,1.1));shell.rotation.x=sh?0.7:-0.5;boss.add(shell);bossParts.push({m:shell,rx:sh?-0.5:0.6,ry:sh?0.7:-0.4});}
+    for(var sh=0;sh<2;sh++){var shell=new THREE.Mesh(new THREE.TorusGeometry(4.2+sh*1.1,0.3,3,6),mat(sh?c2:c1,sh?c2:c1,0.3));shell.rotation.x=sh?0.7:-0.5;boss.add(shell);bossParts.push({m:shell,rx:sh?-0.5:0.6,ry:sh?0.7:-0.4});}
     for(var p=0;p<8;p++){var pil=new THREE.Mesh(new THREE.BoxGeometry(0.5,3.4,0.5),mat(c2,c2,1.1));var pa=p/8*6.28;pil.position.set(Math.cos(pa)*3.4,0,Math.sin(pa)*3.4);boss.add(pil);bossParts.push({m:pil,orbit:pa,orad:3.4,ospd:0.5,fixedY:0});}
     var hand=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.4,8),mat(0xffffff,0xffffff,1.4));hand.position.z=-3;boss.add(hand);bossParts.push({m:hand,clock:true});boss.userData.hand=hand;
   }
@@ -598,7 +598,7 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.66}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.8}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
 var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:1.05},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
 "uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;uniform float uTime;varying vec2 vUv;",
