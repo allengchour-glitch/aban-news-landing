@@ -56,15 +56,15 @@ for b in range(NBARS):
     BREAK = 32 <= b < 40
     DROP2 = 40 <= b < 48
 
-    # --- Rhodes: gehaltene Extended-Chords (Musik nach vorn!), im Drop rhythmischer
+    # --- Klavier (soulful Liquid): weiche gehaltene Akkorde + sanftes Arpeggio (kein Gehacke)
     if INTRO or BREAK:
-        for p in voic: rhodes.append((t0, BAR - 20, p, 62))
+        for p in voic: rhodes.append((t0, BAR - 20, p, 58))
+        for i, p in enumerate(voic):                       # zartes aufsteigendes Arpeggio
+            rhodes.append((t0 + i * (TPQ // 2), TPQ, p + 12, 40))
     else:
-        # Stabs auf Offbeats + langer Chord Zz1
-        for p in voic: rhodes.append((t0, int(TPQ * 0.9), p, 50))
-        for beat in range(4):
-            st = t0 + beat * TPQ + TPQ // 2
-            for p in voic: rhodes.append((st, int(TPQ * 0.35), p, 46))
+        for p in voic: rhodes.append((t0, int(TPQ * 2.2), p, 46))   # langer, weicher Akkord (kein Stakkato)
+        for i, p in enumerate(voic[:3]):                    # sparsames Arpeggio auf Zz3
+            rhodes.append((t0 + TPQ * 2 + i * (TPQ // 3), int(TPQ * 0.8), p + 12, 38))
 
     # --- Pad-Teppich durchgehend (lush)
     for p in voic[:3]:
@@ -135,7 +135,7 @@ with open('/tmp/liquid_dnb_reese.txt', 'w') as f:
         f.write(f'{st:.4f} {du:.4f} {note}\n')
 
 tracks = [
-    notes_track(rhodes, program=4,  channel=0),   # Electric Piano (Rhodes)
+    notes_track(rhodes, program=0,  channel=0),   # Acoustic Grand Piano (soulful Liquid)
     notes_track(pad,    program=89, channel=1),    # Warm Pad
     notes_track(sub,    program=38, channel=2),    # Synth Bass (Mono-Sub)
     notes_track(sax,    program=66, channel=4),    # Tenor Sax (Antwort)
