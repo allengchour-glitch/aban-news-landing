@@ -116,3 +116,12 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
 - Ohne Meshy-Key: rein prozedural via Blender (läuft — spiele-dev/blender_landscape.py, Pilot neon-realm).
 - [ ] Pilot neon-realm (Agent läuft 10.07.), dann: neon-flug (Horizont), neon-racer (Streckenrand),
       neon-survivor (Bergring ersetzen), je mit Shot-Verifikation.
+
+## ⭐ OBERSTE DESIGN-REGEL (User 2026-07-10): „Müssen alle einfach zum Spielen sein"
+Gilt für JEDE Spiele-Änderung, wird bei jedem Shot-Review mitgeprüft:
+1. **Sofort losspielen**: max. 1 Klick/Tap bis ins Spiel; Steuerung in EINER Zeile mit Symbolen auf dem Startschirm
+2. **Verzeihender Einstieg**: erste ~30 s kein Sofort-Tod, Schwierigkeit steigt sanft
+3. **Ein-Daumen-tauglich** auf dem Handy, wo das Genre es erlaubt; Buttons ≥44 px
+4. **Immer klar, was zu tun ist**: Ziel in einem Satz im HUD (Muster: neon-realm „Aufgaben"-Panel)
+5. **Pause & Weiterspielen**: Esc/Button pausiert; Fortschritt/Highscore überlebt Reload (localStorage)
+Shot-Review-Frage ab jetzt immer: „Würde ein 8-Jähriger ohne Erklärung loslegen können?"
