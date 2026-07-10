@@ -229,7 +229,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
     cntEl.textContent="Suche „"+(term||"Angebote")+"“ …";skeleton();
     fetch(ebayUrl(term)).then(function(r){return r.json()}).then(function(d){
       badge.hidden=!d.demo;if(d.currency){var cl=document.querySelector(".curlbl");if(cl)cl.textContent=d.currency}raw=d.items||[];render();
-    }).catch(function(){grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden. Bitte später nochmal.";cntEl.textContent=""});
+    }).catch(function(){badge.hidden=true;grid.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden. Bitte später nochmal.";cntEl.textContent=""});
   }
   var pTimer;function searchSoon(){clearTimeout(pTimer);pTimer=setTimeout(search,450)}
 
