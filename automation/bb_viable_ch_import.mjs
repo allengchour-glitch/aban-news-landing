@@ -20,6 +20,11 @@ const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\
 const imgSeen=new Set(fs.existsSync(IMGLEDGER)?fs.readFileSync(IMGLEDGER,'utf8').split('\n').filter(Boolean):[]);
 const viable=JSON.parse(fs.readFileSync('/tmp/bb_viable_ch.json','utf8'));
 const r2i=JSON.parse(fs.readFileSync('/tmp/bb_ref2id.json','utf8'));
+// Lokaler Titel-Abgleich (zuverlässiger als Shopify-Suche bei Modell-Codes): bestehende aktive Titel laden
+const normT=x=>x.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
+const existTitles=new Set();
+try{for(const l of fs.readFileSync('/tmp/products.jsonl','utf8').split('\n')){if(!l)continue;try{existTitles.add(normT(JSON.parse(l).title||''));}catch{}}}catch{}
+console.log('bestehende Titel geladen:',existTitles.size);
 async function scc(){const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});return (await r.json()).access_token;}
 let TOK=await scc();
 async function sgql(q,v){for(let a=0;a<4;a++){const r=await fetch(`https://${SHOP}/admin/api/2025-01/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':TOK},body:JSON.stringify({query:q,variables:v})});const j=await r.json();if(j.data)return j;if(j.errors&&JSON.stringify(j.errors).includes('Throttled')){await sleep(3000);continue;}TOK=await scc();await sleep(1000);}return{};}
@@ -46,7 +51,10 @@ for(const it of viable.slice(0,LIMIT)){
   if(/\(\s*\d{1,3}\s*(st[üu]ck|stk|units?|pcs|pack)\b|\b\d{2,4}\s*(st[üu]ck|stk|units?|pcs)\b|multipack|großpackung|grosspackung|\bpappe\b|\bkarton\b|\brollen?\b|\bbögen\b|blister|verkaufsdisplay|display\b/.test(low)){console.log('⛔ bulk-skip',rec.name.slice(0,45));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
   const title=cleanTitle(rec.name);
   if(!title){skip++;continue;}
-  // Titel-Wache (norm)
+  // Lokaler Titel-Abgleich zuerst (fängt Walker-Dubletten die Shopify-Suche verpasst)
+  if(existTitles.has(normT(title))){console.log('= titel existiert (lokal)',title.slice(0,34));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
+  existTitles.add(normT(title));
+  // Titel-Wache (norm) — Shopify-seitig als Backup
   const dq=await sgql(`query($q:String!){products(first:5,query:$q){edges{node{title}}}}`,{q:`title:"${title.split(' ').slice(0,3).join(' ')}*" status:active`});
   if((dq.data?.products?.edges||[]).some(e=>norm(e.node.title)===norm(title))){console.log('= titel existiert',title.slice(0,34));fs.appendFileSync(LEDGER,'bb:'+id+'\n');continue;}
   const imgD=await bb(`/rest/catalog/productimages/${id}.json`);await sleep(GAP);
