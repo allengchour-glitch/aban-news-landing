@@ -121,6 +121,37 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Dauerlösung: User trägt Secrets als Env-Variablen in den Claude-Umgebungs-Einstellungen ein
    (überlebt Container-Neustarts, autostart.sh liest sie automatisch).
 
+16. **🚚💀 BigBuy „active" ≠ lagernd — 78% TOTES LAGER (teuer verifiziert 2026-07-10):** Von 1759 aktiven
+   BigBuy-Produkten waren **nur 235 wirklich lagernd, 1382 (78%) ausverkauft** = tickende Ghost-Sale-Bomben
+   (wie Order #1009). Alte Walker-Importe (tracked:false) verkaufen ausverkaufte Ware. **Regel: JEDES BigBuy-
+   Produkt MUSS tracked:true + inventoryPolicy DENY + Feed-Menge haben** (`automation/google_feed/bb_track_all.py`:
+   lagernd→tracked+DENY+qty, ausverkauft→DRAFT+Tag ausverkauft-lieferant; Quelle /tmp/bb_instock.json).
+   **BigBuy-Import DEAKTIVIERT** (User 2026-07-10 «behalten aber vorsichtig», negative Trustpilot 3.7★ +
+   instabiler Bestand): Flag `dropship/_bigbuy_import_disabled` (autostart+revive prüfen es). Nur die
+   lagernden bleiben aktiv; KEIN neuer BigBuy-Import. Fokus = CJ (Fracht 3-6 CHF, echte Marge).
+16b. **🇨🇭 BigBuy-CH-Voll-Import Rezept (2026-07-10):** Verkäufbare CH-Menge = lagernd ∩ CH-lieferbar ∩
+   rentabel = nur ~552 von 90k Katalog (nach Adult/Bulk/Elektronik-Filter ~143 sauber). Tool
+   `automation/bb_viable_ch_import.mjs` (DE-Name direkt von BigBuy `productinformation/{id}.json`, kein Groq;
+   cat_tags NUR auf Titel — Beschreibung übertaggt!; tracked+DENY). **Filter PFLICHT:** Adult (SexFun/Intimax/
+   Adore/chemise/dessous), Bulk («50 Stück»/Karton/Pappe), Elektronik-Schrott (PC/Akku/Toner/Adapter),
+   Küchenkram (Löffel/Kuchen-Vorlage), Skate-Teile, Lehrbücher, Lizenz (Marvel/Hello Kitty→raus aus Ad-Feeds).
+   Refurb-Suffix («Restauriert A»/«Note A»/«Generalüberholt») aus Titeln strippen.
+16c. **🔁 Titel-Wache-Falle (2026-07-10):** Shopify `title:"…"`-Suche findet Modell-codierte Titel NICHT
+   zuverlässig (Bellevue-Uhren doppelt angelegt!) → **lokaler Abgleich gegen Voll-Export** (products.jsonl,
+   norm-Titel-Set) ist Pflicht. Nach jedem Massen-Import `dup_title_fix.mjs` auf FRISCHEM Bulk-Export (nie
+   mitten im Import — draftet sonst Neuware).
+16d. **🏷️ cat_tags-Mapper (`automation/cat_tags.mjs`, 2026-07-10):** löst «sauber sortieren» — mappt Titel→
+   Collection-Tags (ohrringe/kategorie-armband/kategorie-halskette/sonnenbrille/schuhe/damen-taschen/uhr/
+   beauty/beleuchtung/gadget/haustier/home…). Importer (cj + bb) rufen ihn auf. **Compound-Wort-Fallen (9b):**
+   armband**uhr**≠Armband (negative Lookahead), Hunde**geschirr**≠Geschirr, **Hand**schuh≠Schuh (Lookbehind),
+   damen**uhr**/lauf**schuh** brauchen explizite Muster (\b verpasst sie). Immer erst DRY testen.
+16e. **📢 Google-Merchant-Feed (2026-07-10):** Google liest **mm-google-shopping-Metafelder**, NICHT den
+   Beschreibungstext! Fehlend: material/age_group/gender/color → `automation/google_feed/*_metafield.py`
+   (Material aus Beschreibung extrahieren, age_group=adult, gender aus Tags). **#1 Gratis-Traffic-Hebel (nur
+   User): Merchant-Ziel-Land auf NUR Schweiz** → 1698 Produkte «Missing shipping info» freigeben (Feed zielt
+   auf DE, Shop liefert nur CH). **83% der Produkte über Google-Benchmark** (BigBuy-Marken) → reprice-Engine
+   `reprice_to_benchmark.py` senkt CJ/Eigenware auf Benchmark, BigBuy nur bis Kosten-Boden (nie unter EK+Versand).
+
 ## 🎹 Musik-Producer-Skill (User-Auftrag 2026-07-10 «werde immer besser»)
 Vollständige eigene Musikproduktion im Container — 100% royalty-frei, NIE Samples aus echten Songs
 klauen (Content-ID sperrt Uploads!). Setup+Pipeline: `automation/music/produce/SKILL.md`. Methode:
@@ -171,6 +202,20 @@ reese_synth/drum_synth/fx_synth + mixdown-Sidechain + Master). Freigegeben: luxe
   anderer; `luxe-premium.wav` nur noch max. 1 von 4 Posts. Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
 ## Stand
+**📌 2026-07-10 (BigBuy-Bereinigung + Google-Feed + Katalog-Gesundheit — Branch `claude/luxestyle-status-tztnn1`):**
+- **BigBuy „vorsichtig" (User-Entscheidung):** Import DEAKTIVIERT (Flag `_bigbuy_import_disabled`, negative
+  Trustpilot 3.7★). **1382 ausverkaufte (78%!) gedraftet, 235 lagernde auf tracked+DENY** → kein Ghost-Sale
+  mehr. Neue kuratierte CH-Auswahl: 143 (Uhren/Schmuck/Brillen, Marken Casio/Radiant/Police/Furla…).
+  Moneybox 0 (User-Überweisung unterwegs, NICHT vorfinanzieren) → Guthaben-Wächter-Cron aktiv.
+- **Katalog-Gesundheit (Sub-Agent):** 161 Nicht-Fit-Elektronik gedraftet (E-Bikes/Laptops/Firewalls =
+  Trust-Killer im Mode-Shop), 29 Titel-Dubletten, 5 Junk (Löffel/Skate/Chemise), 4 bildlose. SEO 0% Lücken.
+- **Google-Feed:** material-Metafeld (443) + age_group/gender (557) gesetzt; 17 Adult-Artikel aus Ad-Feeds
+  gezogen (Online-Store bleibt). Reprice: CJ/Eigenware auf Benchmark gesenkt, BigBuy Kosten-Boden-geschützt.
+- **Sortierung:** cat_tags-Mapper gebaut, Importer sortieren jetzt selbst. **Echte Verkäufe = nur 3/CHF 114 in
+  2 Wochen → Engpass ist TRAFFIC, nicht Katalog.** #1 User-Hebel: Merchant-Ziel-Land = nur Schweiz.
+- Tools neu: `automation/cat_tags.mjs`, `automation/google_feed/*` (material/agegender/reprice/retag/track/
+  adult_pull/bb_cleanup), `automation/bb_viable_ch_import.mjs`, `automation/qa_contact_sheet.py`.
+
 **📌 2026-07-06 (🚀 TIKTOK-ADS-KAMPAGNE LIVE — der grösste der «3 User-Klicks» ist erledigt!):** User hat den
 **TikTok-Ads-MCP-Konnektor** verbunden → Conversion-Kampagne voll autonom angelegt: Kampagne `1869987705486481`
 + Adgroup `1869987760755842` (CH/Frauen/18–34/DE+FR, 20 CHF/Tag, Pixel D8EKVR…, SHOPPING-Event) + Ad
