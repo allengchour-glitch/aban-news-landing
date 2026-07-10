@@ -1931,3 +1931,17 @@ Engpass ist Erfüllbarkeit, nicht Nachfrage.
 "products":[{"reference":"<SKU>","quantity":1}]}}` MUSS eine Versandoption (HTTP 200) liefern —
 sonst NICHT anlegen. Bilder-200-Check reicht nicht. (bigbuy_import.mjs sollte den Check einbauen.)
 #1005 (WM-Trikot, PAID 03.07.) ist weiterhin UNFULFILLED — Printful-Tracking prüfen (User).
+
+## 2026-07-10 — BigBuy-Nachschub für bewiesene Nachfrage (2 mobile Klimageräte, LIVE)
+Antwort auf die 3 refundierten Klimagerät-Bestellungen (#1006–#1008, ~CHF 870): 2 lieferbare
+Ersatzprodukte derselben Vertrauensmarke angelegt (ACTIVE, 6/6 Kanäle, Media READY):
+- **Olimpia Splendid COMPACT 8** — bb:1222456, SKU bb-S0466265, EK €167.63 + Versand €61.21 → VK **CHF 289.90**
+  https://luxestyle.ch/products/olimpia-splendid-compact-8-mobile-klimaanlage-2100-w-klasse-a
+- **Olimpia Splendid DOLCECLIMA 10 HP WIFI** — bb:1222459, SKU bb-S0465892, EK €219.59 + €61.21 → VK **CHF 379.90**
+  https://luxestyle.ch/products/olimpia-splendid-dolceclima-10-hp-wifi-mobile-klimaanlage-mit-app
+**✅ Pflicht-Regel angewandt:** CH-Versand-Quote HTTP 200 für beide (SEUR, 4–5 Tage, €61.21, 25.7 kg) —
+5 von 8 mobilen Kandidaten bestanden, 3 durchgefallen (DeLonghi, 2× Ecoflow: keine Option).
+**⚠️ Dokumentierte Ausnahme 1-Bild-Regel (§5):** alle lieferbaren mobilen Klimageräte haben nur 1
+Herstellerbild; bei Marken-Haushaltsgeräten Standard + Nachfrage bewiesen/saisonal → Ausnahme bewusst,
+kompensiert durch spezifikationsreiche Beschreibung. Ehrliche Lieferzeit (4–5 Werktage) steht im Text.
+Versand voll im Preis (Shop: Gratis-Versand ab CHF 65).
