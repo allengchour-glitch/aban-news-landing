@@ -326,6 +326,7 @@ var nature=new THREE.Group();scene.add(nature);
   if(!THREE.GLTFLoader)return;
   var MOBV=(navigator.maxTouchPoints>0)||IS_COARSE,VF=MOBV?0.5:1;
   var HOUSES=[[-10,-8],[9,-11],[13,7],[-12,9],[2,-16]]; // Haus-Footprints (s. village-Block)
+  var NPCP=[[-6,-3],[7,-6],[3,9]];                      // NPC-Standplätze (Mira/Von/Kael)
   var OBS=[[60,-60],[-66,-52],[-60,66]];                // Obelisken
   var VPATHS=[]; // Leuchtpfade Dorfrand → Obelisken + Zitadellen-Tor (gleiche Geometrie wie die Boden-Discs)
   [[60,-60],[-66,-52],[-60,66],[100,95]].forEach(function(o){var a=Math.atan2(o[1],o[0]);VPATHS.push([Math.cos(a)*21,Math.sin(a)*21,o[0],o[1]]);});
@@ -338,6 +339,7 @@ var nature=new THREE.Group();scene.add(nature);
     if(tree&&dv<25)return false;                                     // Dorfkern: nur Gras/Blumen (Kamera-Sichtachse!)
     if(dv<25&&Math.abs(dv-20)<1.7)return false;                      // Laternen-Ring-Pfad
     for(var i=0;i<5;i++)if(Math.hypot(x-HOUSES[i][0],z-HOUSES[i][1])<5.8)return false; // GLB-Footprint bis 8.1x8.3 (Ecke ~5.8)
+    for(i=0;i<3;i++)if(Math.hypot(x-NPCP[i][0],z-NPCP[i][1])<(tree?3:1.7))return false;// NPCs nicht in Büschen
     for(i=0;i<3;i++)if(Math.hypot(x-OBS[i][0],z-OBS[i][1])<(tree?9:4.5))return false;
     if(Math.hypot(x-100,z-95)<(tree?40:8))return false;              // Zitadelle (Bosskampf braucht Platz)
     if(Math.hypot(x+118,z+98)<(tree?7:4.5))return false;             // Dungeon-Portal
