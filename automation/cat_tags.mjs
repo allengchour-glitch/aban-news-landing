@@ -9,7 +9,7 @@ export function catTags(text) {
     // Schmuck
     [/ohrring|ohrhanger|creol|creyol|ohrstecker|earring/,        ['ohrringe', 'schmuck', 'damen']],
     [/armband(?!uhr)|armreif|bracelet|\banklet\b|fusskett/,      ['kategorie-armband', 'schmuck']],
-    [/armbanduhr|\buhr\b|\bwatch\b|smartwatch|wanduhr|tischuhr|wecker/, ['uhr', 'schmuck']],
+    [/armbanduhr|damenuhr|herrenuhr|kinderuhr|unisex.?uhr|\buhr\b|\bwatch\b|smartwatch|wanduhr|tischuhr|wecker/, ['uhr', 'schmuck']],
     [/halskette|\bkette\b|necklace|anhanger|collier|choker|\btassel\b/, ['kategorie-halskette', 'schmuck']],
     [/\bring\b|siegelring|damenring|herrenring|verlobungsring|ehering/, ['schmuck', 'damen']],
     [/perlen|pearl/,                                             ['schmuck', 'perlen']],
