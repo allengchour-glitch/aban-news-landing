@@ -157,3 +157,5 @@ create-collections-20260705
 blog-r2-20260705
 enrich-winner-pdp-20260705
 blog-r2-fix-20260705
+abandoned-mail-20260710
+youtube-shorts-20260710
