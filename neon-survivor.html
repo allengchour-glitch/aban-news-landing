@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Survivor — 3D-Roguelite-Survival | aban news</title>
 <meta name="description" content="Neon Survivor: 3D-Roguelite im Browser. Bewege dich, auto-feuere auf Gegner-Schwärme, sammle XP, wähle Upgrades, überlebe so lange wie möglich. Gratis, kein Download.">
 <link rel="canonical" href="https://abannews.com/neon-survivor.html">
@@ -107,6 +107,7 @@ function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a
 var _srng=mulberry32(123);
 function rnd(){return dailyMode?_srng():Math.random();}
 var THREE=window.THREE, W=innerWidth, H=innerHeight;
+var IS_TOUCH=navigator.maxTouchPoints>0; // Mobile: weniger Ambient-Partikel (0.6x)
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
@@ -181,7 +182,7 @@ var auroras=[];
 for(var aui=0;aui<3;aui++){var au=new THREE.Mesh(new THREE.PlaneGeometry(500,70),new THREE.MeshBasicMaterial({color:aui===0?0x5ef2ff:(aui===1?0xb98bff:0xff7ad9),transparent:true,opacity:0.09,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide,fog:false}));
   au.position.set(0,95+aui*26,-230); au.rotation.x=-0.55-aui*0.08; scene.add(au); auroras.push(au);}
 // Umgebungs-Partikel (Glühwürmchen)
-var ambGeo=new THREE.BufferGeometry(), ambN=150, ambPos=new Float32Array(ambN*3), ambV=[];
+var ambGeo=new THREE.BufferGeometry(), ambN=IS_TOUCH?90:150, ambPos=new Float32Array(ambN*3), ambV=[];
 for(var qi=0;qi<ambN;qi++){ambPos[qi*3]=(Math.random()-.5)*200;ambPos[qi*3+1]=Math.random()*45;ambPos[qi*3+2]=(Math.random()-.5)*200;ambV.push(2+Math.random()*4);}
 ambGeo.setAttribute("position",new THREE.BufferAttribute(ambPos,3));
 var ambParticles=new THREE.Points(ambGeo,new THREE.PointsMaterial({color:0x8fe8ff,size:0.55,transparent:true,opacity:0.75,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(ambParticles);
@@ -475,7 +476,7 @@ document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
 // Ambient-Partikel (Atmosphäre)
-var ambN=80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(ambN*3),ambVv=new Float32Array(ambN);
+var ambN=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(ambN*3),ambVv=new Float32Array(ambN);
 for(var _ai=0;_ai<ambN;_ai++){ambP[_ai*3]=(Math.random()-.5)*110;ambP[_ai*3+1]=Math.random()*7;ambP[_ai*3+2]=(Math.random()-.5)*110;ambVv[_ai]=0.3+Math.random()*0.9;}
 ambG.setAttribute("position",new THREE.BufferAttribute(ambP,3));
 var ambPts=new THREE.Points(ambG,new THREE.PointsMaterial({color:0x5ef2ff,size:0.3,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(ambPts);

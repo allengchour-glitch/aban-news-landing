@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon-Flug — 3D-Arcade-Spiel | aban news</title>
 <meta name="description" content="Neon-Flug: flüssiges 3D-Arcade-Spiel im Browser. Steuere den Gleiter durch den Neon-Canyon, weiche Säulen aus, sammle Orbs. Gratis, kein Download, 60 fps.">
 <link rel="canonical" href="https://abannews.com/neon-flug.html">
@@ -85,6 +85,7 @@ canvas{display:block}
 (function(){
 "use strict";
 var THREE=window.THREE;
+var IS_TOUCH=navigator.maxTouchPoints>0,PFX=IS_TOUCH?0.6:1;
 var wrap=document.getElementById("wrap");
 var W=window.innerWidth,H=window.innerHeight;
 
@@ -117,7 +118,7 @@ function neonGrid(size,cells,c1,c2){
 }
 var gridMesh=neonGrid(420,84,0x5ef2ff,0x1a2258);gridMesh.position.y=-2;scene.add(gridMesh);
 // Licht-Trail hinter dem Gleiter
-var trailN=14,trailG=new THREE.BufferGeometry(),trailP=new Float32Array(trailN*3),trailCl=new Float32Array(trailN*3);
+var trailN=Math.round(14*PFX),trailG=new THREE.BufferGeometry(),trailP=new Float32Array(trailN*3),trailCl=new Float32Array(trailN*3);
 for(var _ti=0;_ti<trailN;_ti++){var fdd=1-_ti/trailN;trailCl[_ti*3]=0.37*fdd;trailCl[_ti*3+1]=0.95*fdd;trailCl[_ti*3+2]=1.0*fdd;}
 trailG.setAttribute("position",new THREE.BufferAttribute(trailP,3));trailG.setAttribute("color",new THREE.BufferAttribute(trailCl,3));
 var trailTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,64,64);return new THREE.CanvasTexture(cv);})();
@@ -150,7 +151,7 @@ wing.position.z=0.3;ship.add(wing);
 ship.position.set(0,0,0);scene.add(ship);
 
 // Trail particles
-var TRN=60,trail=[],trailGeo=new THREE.BufferGeometry();
+var TRN=Math.round(60*PFX),trail=[],trailGeo=new THREE.BufferGeometry();
 var tpos=new Float32Array(TRN*3);
 for(var i=0;i<TRN;i++){trail.push({x:0,y:0,z:0});}
 trailGeo.setAttribute("position",new THREE.BufferAttribute(tpos,3));

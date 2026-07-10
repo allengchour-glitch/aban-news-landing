@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Abyss — Action-RPG (Diablo-Style) | aban news</title>
 <meta name="description" content="Neon Abyss: ein isometrisches Action-RPG im Browser im Diablo-Stil. Klick zum Laufen, auto-angreifen, Skills zünden, Loot mit Seltenheitsstufen sammeln, Gegner-Packs und Boss besiegen. Gratis, kein Download.">
 <link rel="canonical" href="https://abannews.com/neon-abyss.html">
@@ -124,7 +124,7 @@ if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/lp_imp.glb",function(g
   });
 },undefined,function(){});}
 // Glut-Partikel (Atmosphäre)
-var embN=90,embG=new THREE.BufferGeometry(),embP=new Float32Array(embN*3),embV=new Float32Array(embN);
+var embN=(navigator.maxTouchPoints>0?Math.round(90*0.6):90),embG=new THREE.BufferGeometry(),embP=new Float32Array(embN*3),embV=new Float32Array(embN);
 for(var _ei=0;_ei<embN;_ei++){embP[_ei*3]=(Math.random()-.5)*80;embP[_ei*3+1]=Math.random()*8;embP[_ei*3+2]=(Math.random()-.5)*80;embV[_ei]=0.4+Math.random()*1.1;}
 embG.setAttribute("position",new THREE.BufferAttribute(embP,3));
 var embers=new THREE.Points(embG,new THREE.PointsMaterial({color:0xb15cff,size:0.34,transparent:true,opacity:.7,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(embers);
