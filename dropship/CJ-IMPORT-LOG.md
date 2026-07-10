@@ -1945,3 +1945,22 @@ Ersatzprodukte derselben Vertrauensmarke angelegt (ACTIVE, 6/6 Kanäle, Media RE
 Herstellerbild; bei Marken-Haushaltsgeräten Standard + Nachfrage bewiesen/saisonal → Ausnahme bewusst,
 kompensiert durch spezifikationsreiche Beschreibung. Ehrliche Lieferzeit (4–5 Werktage) steht im Text.
 Versand voll im Preis (Shop: Gratis-Versand ab CHF 65).
+
+## 2026-07-10 — MARKTLÜCKEN-ANALYSE „Sommer-Hitze-Cluster" + 2 Produkte LIVE
+**Analyse (User: „marktlücke suchen"):** LuxeStyle hatte mitten in der Juli-Hitze **0 Ventilatoren,
+0 Planschbecken/Pools, 0 Schlauchboote** — obwohl #1008 (Intex Excursion 5, CHF 177) refundiert
+werden musste = bewiesene Nachfrage. Katalog-Abgleich BigBuy: ventilator 567 / planschbecken 80 /
+schlauchboot 6 Kandidaten. CH-Versand-Pflichtcheck: 6/6 Shortlist bestanden.
+
+**LIVE (ACTIVE, 6/6 Kanäle, Media READY):**
+- **Intex Excursion 5** (bb:619968, SKU bb-S8901593) — EXAKT das refundierte Produkt aus #1008,
+  jetzt lieferbar! EK €114.98 + Versand €61.21 → VK **CHF 229.90**. 6 Bilder (alle Regeln erfüllt).
+  https://luxestyle.ch/products/intex-excursion-5-schlauchboot-fur-5-personen-366-cm
+- **Intex Family-Planschbecken 990 l** (bb:332842, SKU bb-S2416441) — EK €33.83 + €33.82 →
+  VK **CHF 99.90**. 1 Bild (dokumentierte Marken-Haushaltsware-Ausnahme wie Klima 10.07.).
+  https://luxestyle.ch/products/intex-family-planschbecken-229-cm-990-liter-badespass
+
+**Bewusst NICHT gefüllt: Ventilator-Lücke.** Einziger lieferbarer Kandidat (No-Name Grupo FM,
+Kosten €89.89 inkl. Versand) müsste ~CHF 130 kosten — unverkäuflich gegen Migros/Galaxus-Markenware
+ab 40-80 CHF. Budget-Ventilatoren sind wegen €37-40 Speditionsversand generell nicht dropship-tauglich.
+Lücke dokumentiert, ökonomisch begründet verworfen.
