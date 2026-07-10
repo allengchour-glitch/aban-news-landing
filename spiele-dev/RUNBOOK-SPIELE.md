@@ -149,10 +149,15 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
 - [ ] **Blender-Glättung** (User: „glätte alles mit blender?"): im Polish-Pass Shade-Smooth/Normals
       prüfen, harte Kanten nur wo gewollt.
 - Meshy-Verbrauch bisher: 167/1690 Credits (Hero 117 + Häuser 50). Plan: Klassen ~150/Stk, Anims ~3/Stk.
-- [ ] **Monster** (User 2026-07-10: „viele verschiedene monster einzigartige"): 4–5 einzigartige
-      Meshy-Monster (verschiedene Silhouetten/Grössen: Schleim-Kreatur, Kristall-Golem, Schatten-
-      Panther, Flug-Wesen, Boss-artiger Wächter), gerigt + idle/walk/attack →
-      models/monster_*.glb; im Spiel die Kegel/Primitive-Gegner ersetzen, Zonen-Zuordnung.
+- [x] **Monster-Modelle FERTIG** (User: „viele verschiedene monster einzigartige"): 5 GLBs in models/ —
+      monster_slime (0.8, statisch→prozedural hüpfen), monster_wisp (0.9 schwebend, idle/walk/attack),
+      monster_panther (1.2, statisch→prozedural schleichen; Meshy-Rigging ist humanoid-only, 422 bei
+      Vierbeiner/Blob = normal), monster_golem (2.2, idle/walk/attack Ground-Slam), monster_guardian
+      (2.8 Mini-Boss, Triple-Combo; ⚠️ attack hat Root-Motion → Phase 0.4–0.9 nutzen). 209 Credits.
+- [ ] Monster-INTEGRATION in neon-realm (Pass 3): Kegel-Gegner ersetzen, Zonen: Slime=Start,
+      Wisp=Wald, Panther=Pfade, Golem=Berge, Guardian=Verlies-Boss; prozedurale Anims für
+      Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
+- [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
 ## ⭐ OBERSTE DESIGN-REGEL (User 2026-07-10): „Müssen alle einfach zum Spielen sein"
 Gilt für JEDE Spiele-Änderung, wird bei jedem Shot-Review mitgeprüft:
