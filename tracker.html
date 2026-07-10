@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Ops-Tracker (intern) · aban</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--amber:#d97706;--amber-dk:#b45309;--ink:#1f2937;--ink2:#374151;--muted:#6b7280;--line:#ece3d4;--bg:#fffbf5;--card:#fff;--ok:#15803d;--warn:#92660a;--bad:#a01616}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding:24px 16px}
+.wrap{max-width:880px;margin:0 auto}
+h1{font-size:1.5rem;margin-bottom:2px}
+.sub{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.card h2{font-size:.95rem;margin-bottom:6px;color:var(--amber-dk)}
+.card p{font-size:.9rem;color:var(--ink2)}
+.badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.78rem;font-weight:800}
+.b-ok{background:#dcfce7;color:var(--ok)}.b-warn{background:#fdeccd;color:var(--warn)}.b-bad{background:#fcd9d9;color:var(--bad)}
+ol.actions{list-style:none;counter-reset:a}
+ol.actions li{counter-increment:a;position:relative;padding:8px 8px 8px 38px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink2)}
+ol.actions li:last-child{border-bottom:0}
+ol.actions li::before{content:counter(a);position:absolute;left:6px;top:8px;width:22px;height:22px;border-radius:50%;background:var(--amber);color:#fff;font-weight:800;font-size:.78rem;display:flex;align-items:center;justify-content:center}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.t{white-space:nowrap;color:var(--muted);font-size:.8rem}
+.foot{margin-top:16px;font-size:.82rem;color:var(--muted)}
+.foot a{color:var(--amber-dk)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🛰️ Ops-Tracker</h1>
+  <p class="sub">Autonomer Betrieb — Stand: <span id="upd">…</span> · <span id="brain" class="badge b-ok">…</span></p>
+
+  <div class="grid">
+    <div class="card"><h2>🧾 Bestellungen (LuxeStyle)</h2><p id="orders">…</p><p id="ordersNote" style="margin-top:6px;font-size:.82rem;color:var(--muted)"></p></div>
+    <div class="card"><h2>📦 BigBuy</h2><p id="bbStatus">…</p><p id="bbProducts" style="margin-top:6px;font-size:.82rem;color:var(--muted)"></p></div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px"><h2>👤 Warteliste — nur du kannst das (nach Hebel sortiert)</h2><ol class="actions" id="actions"></ol></div>
+
+  <div class="card"><h2>📋 Letzte autonome Läufe</h2><table id="runs"></table></div>
+
+  <p class="foot">Intern (noindex). Daten: <code>data/tracker.json</code> — wird vom 2h-Loop gepflegt. Mehr: <a href="/brain.html">Brain</a> · <a href="/klick-statistik.html">Klick-Statistik</a> · <a href="/growth-dashboard.html">Growth</a></p>
+</div>
+<script>
+fetch("/data/tracker.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  document.getElementById("upd").textContent=new Date(d.updated).toLocaleString("de-CH");
+  document.getElementById("brain").textContent="🧠 "+d.brainScore;
+  document.getElementById("orders").textContent=d.orders.newest+" · zuletzt geprüft "+new Date(d.orders.lastChecked).toLocaleTimeString("de-CH",{hour:"2-digit",minute:"2-digit"});
+  document.getElementById("ordersNote").textContent=d.orders.note||"";
+  document.getElementById("bbStatus").textContent=d.bigbuy.status;
+  document.getElementById("bbProducts").textContent=d.bigbuy.products;
+  document.getElementById("actions").innerHTML=d.userActions.map(function(a){return "<li>"+esc(a.what)+"</li>"}).join("");
+  document.getElementById("runs").innerHTML=d.runs.map(function(r){return "<tr><td class='t'>"+esc(r.t)+"</td><td>"+esc(r.did)+"</td></tr>"}).join("");
+}).catch(function(){document.getElementById("upd").textContent="Daten nicht ladbar";});
+</script>
+</body>
+</html>
