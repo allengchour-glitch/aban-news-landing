@@ -39,7 +39,8 @@ fi
 # Genre-Reverb (Default mittel; Ballade/Orchester mehr, DnB/House weniger)
 case "$GENRE" in
   orchestra|premium)      RVB="40 55 100" ;;
-  liquid_dnb|*house*)     RVB="20 40 85" ;;
+  liquid_dnb)             RVB="45 60 100" ;;
+  *house*)                RVB="20 40 85" ;;
   *)                      RVB="28 48 92" ;;
 esac
 sox "$RAW" "$REV" reverb $RVB norm -2 2>/dev/null

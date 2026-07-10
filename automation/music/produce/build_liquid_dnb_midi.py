@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# LuxeStyle Producer — LIQUID DnB v2 (nach Analyse echter Top-Hits, 2026). 174 BPM, a-Moll.
+# LuxeStyle Producer — LIQUID DnB v4 VOCAL (Ref: AFTERGLOW Vocal Mix). 174 BPM, a-Moll, WARM.
+# + Choir/Voice-Hook (aah-Vocals), lush Reverb, weicher Groove.
 # Struktur (48 Takte ~66s): Intro 1-8 (Rhodes+Pad, kein Drum, Sub-Andeutung) · Build 9-16 (gefilterter
 # Break rein, Riser) · Drop1 17-32 (voller Two-Step + Reese/Sub + Hook) · Breakdown 33-40 (Drums raus,
 # Pads atmen) · Drop2 41-48 (Break+Bass zurück). Regeln: Musik nach vorn, Two-Step m. Ghost-Snares,
@@ -18,7 +19,7 @@ PROG = [
     ([57, 60, 64, 67, 71], 33, 72),  # Am9
 ]
 NBARS = 48
-rhodes, pad, sax = [], [], []
+rhodes, pad, sax, voice = [], [], [], []
 drum_rows = []  # (startSec, typ, vel) für drum_synth.py
 reese_rows = []  # (startSec, durSec, midiNote) für reese_synth.py
 sub = []          # Mono-Sub via GM (Sinus-nah: program 80 Lead würde zu hell; nutze program 38 tief)
@@ -84,12 +85,19 @@ for b in range(NBARS):
             for r in range(8):
                 D(t0 + TPQ * 3 + r * (TPQ // 8), 'snare', 55 + r * 5)
 
-    # --- Sax-Hook (der emotionale Vocal-Chop-Ersatz): im Drop
+    # --- Vocal-Hook (Choir-Aahs = der Liquid-Vocal-Charakter) + Sax-Antwort
     if DROP1 or DROP2:
-        sax.append((t0, int(TPQ * 1.5), hook, 78))
-        sax.append((t0 + TPQ * 2, TPQ, hook + 3, 68))
+        voice.append((t0, TPQ * 2, hook, 72))              # langes "aah" auf dem Hook-Ton
+        voice.append((t0 + TPQ * 2, int(TPQ * 1.5), hook - 2, 62))
+        for p in [hook - 12, hook - 8]:                     # Vocal-Harmonie-Layer (Terz)
+            voice.append((t0, BAR - 40, p, 34))
+        sax.append((t0 + TPQ * 3, TPQ, hook + 3, 60))       # Sax-Antwort am Taktende
+    elif BREAK:
+        voice.append((t0, BAR - 30, hook, 58))              # Vocal atmet im Breakdown
+        for p in [hook - 12, hook - 5]:
+            voice.append((t0, BAR - 30, p, 30))
     elif BUILD and b >= 12:
-        sax.append((t0, TPQ, hook, 50))   # Teaser
+        voice.append((t0, TPQ * 2, hook, 46))               # Vocal-Teaser
 
 # Reese-Spec für reese_synth.py schreiben
 with open('/tmp/liquid_dnb_reese.txt', 'w') as f:
@@ -100,7 +108,8 @@ tracks = [
     notes_track(rhodes, program=4,  channel=0),   # Electric Piano (Rhodes)
     notes_track(pad,    program=89, channel=1),    # Warm Pad
     notes_track(sub,    program=38, channel=2),    # Synth Bass (Mono-Sub)
-    notes_track(sax,    program=66, channel=4),    # Tenor Sax (Hook)
+    notes_track(sax,    program=66, channel=4),    # Tenor Sax (Antwort)
+    notes_track(voice,  program=52, channel=5),    # Choir Aahs (Vocal-Hook)
 ]
 with open('/tmp/liquid_dnb_drums.txt','w') as f:
     for st,typ,vel in drum_rows: f.write(f'{st:.4f} {typ} {vel}\n')
