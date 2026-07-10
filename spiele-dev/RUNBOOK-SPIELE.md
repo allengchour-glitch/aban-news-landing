@@ -99,3 +99,13 @@ Smoke+Shot-Verifikation pro Änderung. Fortschritt hier abhaken (✅), damit Ses
 ### Verifikation Multiplayer (ohne 2 Menschen)
 Playwright: 2 Browser-Kontexte, Kontext A hostet (Raum-Code auslesen), Kontext B joint,
 Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
+
+### Phase 2b — Blender-Charakter (User 2026-07-10: „mit Blender, Charakter muss einzigartig sein")
+**Blender 4.0.2 ist im Container installiert** (`/usr/bin/blender`, headless nutzbar!). Auftrag:
+- [ ] Einzigartigen aban-Arcade-Helden prozedural in Blender bauen (bpy-Python-Skript ins Repo:
+      spiele-dev/blender_hero.py — Low-Poly-Neon-Wesen, markante Silhouette, emissive Akzente)
+- [ ] Export als .glb (Draco aus — three.js r128 GLTFLoader lädt plain GLB), Ziel < 200 KB
+- [ ] In neon-realm als Spielfigur einbinden (GLTFLoader statt prozeduraler Mesh), dann weitere Spiele
+- [ ] Loop je Iteration: blender -b -P blender_hero.py → GLB → game_shot → Screenshot ansehen
+      (+ optional Gemini-Vision, Key im Sessionverlauf). „YouTube-Lernen" = Technik-Recherche via
+      WebSearch (Low-Poly-Character-Workflows), Video-Ansehen geht nicht.

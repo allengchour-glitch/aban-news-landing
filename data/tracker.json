@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T22:06:00Z",
+  "updated": "2026-07-10T22:17:00Z",
   "brainScore": "100.0/100 · 0 Befunde über 2654 Seiten",
   "orders": {
     "lastChecked": "2026-07-10T16:45:00Z",
@@ -34,6 +34,10 @@
     }
   ],
   "runs": [
+    {
+      "t": "2026-07-10T22:17Z",
+      "did": "🎮 Mobile-Pass: 6 Neon-Spiele optimiert (PixelRatio/Touch-Partikel/viewport-fit), 6/6 Smoke-PASS; Blender 4.0.2 installiert, Charakter-Auftrag verankert"
+    },
     {
       "t": "2026-07-10T22:06Z",
       "did": "🕹️ Masterplan 'aban Arcade' verankert: Alles-in-1 + Mobile + Online-Koop (3 Phasen, WebRTC-P2P-Architektur) — Runden arbeiten ihn ab"
@@ -89,10 +93,6 @@
     {
       "t": "2026-07-10T00:30Z",
       "did": "Inserate: Live-Suche + Preis-Insight + 2 Bugfixes (PR #1657)"
-    },
-    {
-      "t": "2026-07-09T23:00Z",
-      "did": "eBay-Verkaufs-Pipeline gebaut + DRY-getestet (PR #1659)"
     }
   ]
 }

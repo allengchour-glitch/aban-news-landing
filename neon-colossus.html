@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Colossus — Boss-Fight-Arena (3D) | aban news</title>
 <meta name="description" content="Neon Colossus: ein cinematisches 3D-Boss-Duell. Weiche telegrafierten Angriffen aus, dashe durch Kugelhagel, brich die Panzerung dreier mehrphasiger Kolosse. Kostenlos im Browser.">
 <link rel="canonical" href="https://abannews.com/neon-colossus.html">
@@ -183,7 +183,7 @@ function stormTick(dt,active,phase){
 }
 var auroras=[];for(var aui=0;aui<3;aui++){var au=new THREE.Mesh(new THREE.PlaneGeometry(560,80),new THREE.MeshBasicMaterial({color:aui===0?0x5ef2ff:(aui===1?0xb98bff:0xff7ad9),transparent:true,opacity:0.09,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide,fog:false}));
   au.position.set(0,105+aui*28,-250);au.rotation.x=-0.55-aui*0.08;scene.add(au);auroras.push(au);}
-var ambN=160,ambGeo=new THREE.BufferGeometry(),ambPos=new Float32Array(ambN*3),ambV=[];
+var ambN=(navigator.maxTouchPoints>0)?Math.round(160*0.6):160,ambGeo=new THREE.BufferGeometry(),ambPos=new Float32Array(ambN*3),ambV=[];
 for(var qi=0;qi<ambN;qi++){ambPos[qi*3]=(Math.random()-.5)*220;ambPos[qi*3+1]=Math.random()*50;ambPos[qi*3+2]=(Math.random()-.5)*220;ambV.push(2+Math.random()*4);}
 ambGeo.setAttribute("position",new THREE.BufferAttribute(ambPos,3));
 var ambParticles=new THREE.Points(ambGeo,new THREE.PointsMaterial({color:0x8fe8ff,size:0.55,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(ambParticles);
