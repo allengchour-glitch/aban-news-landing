@@ -1914,3 +1914,20 @@ Voll-Katalog geladen (313'221 Produkte), nach Importer-Regeln kuratiert (Anchors
   https://luxestyle.ch/products/folli-follie-damen-tasche-wa14p017-beige
 Publish via publishablePublish mit echten IDs (Falle §G beachtet), je 6/6 Publications, 0 Fehler.
 Hinweis: FTP-Feed (ftp.dropshippershop.com) aus Cloud-Sandbox nicht erreichbar (Port 21 zu) — REST-API reicht.
+
+## 2026-07-10 — KORREKTUR BigBuy-Import 09.07. + ⚠️ NEUE PFLICHT-REGEL
+**Beide Produkte vom 09.07. auf DRAFT gezogen** (Polaroid bb-S0333097, Folli Follie bb-S0359670):
+Versand-Quote-API liefert für beide „No shipping options found" — für CH **und** DE (Gegenprobe:
+dieselbe API liefert für andere Produkte echte CH-Kosten → Befund ist echt, vermutlich kein Bestand).
+Nicht erfüllbar = nicht verkaufbar. Auch aus der eBay-Queue entfernt (ebay_listings.json geleert).
+
+**Kontext/Anlass:** Bestell-Check fand #1006–#1008 (07.–08.07., ~CHF 870, Klimageräte + Schlauchboot,
+echte CH-Kundschaft inkl. Institution) — alle REFUNDED, weil Lieferant ausverkauft/nicht-lieferbar-ch
+(andere Session hat korrekt refundiert + Produkte auf DRAFT getaggt). **Positiv: Es gibt KÄUFER.**
+Engpass ist Erfüllbarkeit, nicht Nachfrage.
+
+**⚠️ PFLICHT-REGEL für alle künftigen BigBuy-Importe (gilt ab sofort, vor ACTIVE):**
+`POST /rest/shipping/orders.json` mit `{"order":{"delivery":{"isoCountry":"CH","postcode":"8001"},
+"products":[{"reference":"<SKU>","quantity":1}]}}` MUSS eine Versandoption (HTTP 200) liefern —
+sonst NICHT anlegen. Bilder-200-Check reicht nicht. (bigbuy_import.mjs sollte den Check einbauen.)
+#1005 (WM-Trikot, PAID 03.07.) ist weiterhin UNFULFILLED — Printful-Tracking prüfen (User).
