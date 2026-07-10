@@ -40,4 +40,5 @@ try {
   log('FEHLER: ' + e.message.slice(0, 180));
   await shot(page, 'a9-fehler');
 }
+try { await page.close(); } catch {}
 await browser.close();
