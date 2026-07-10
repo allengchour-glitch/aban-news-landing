@@ -97,18 +97,18 @@
 #done search:gold plated hoop earrings
 #done search:layered chain necklace
 #done search:cuban link bracelet
-search:evil eye bracelet
-search:butterfly ring adjustable
-search:mens signet ring
-search:pearl drop earrings
-search:anklet chain summer
-search:hair claw clip large
-search:silk scrunchie set
-search:sunglasses retro square
-search:blue light glasses
-search:crossbody bag mini women
-search:canvas tote bag aesthetic
-search:makeup bag travel
+#done search:evil eye bracelet
+#done search:butterfly ring adjustable
+#done search:mens signet ring
+#done search:pearl drop earrings
+#done search:anklet chain summer
+#done search:hair claw clip large
+#done search:silk scrunchie set
+#done search:sunglasses retro square
+#done search:blue light glasses
+#done search:crossbody bag mini women
+#done search:canvas tote bag aesthetic
+#done search:makeup bag travel
 search:jade roller gua sha set
 search:led vanity mirror
 search:makeup brush set
