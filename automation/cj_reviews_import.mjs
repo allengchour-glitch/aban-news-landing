@@ -113,8 +113,18 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
 
   // Produkte holen
   const q = ONLY.length ? ONLY.map(h => `handle:${h}`).join(' OR ') : QUERY;
-  const pr = await sgql(stok, `query($q:String!,$n:Int!){ products(first:$n, query:$q){ edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: LIMIT });
-  const prods = (pr?.data?.products?.edges || []).map(e => e.node).filter(p => !done.has(numId(p.id)));
+  // Pagination (Shopify first-Cap = 250; LIMIT>250 via Cursor)
+  let prods = [];
+  let after = null;
+  while (prods.length < LIMIT) {
+    const pr = await sgql(stok, `query($q:String!,$n:Int!,$a:String){ products(first:$n, query:$q, after:$a){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: Math.min(250, LIMIT), a: after });
+    const conn = pr?.data?.products;
+    if (!conn) break;
+    prods.push(...conn.edges.map(e => e.node).filter(p => !done.has(numId(p.id))));
+    if (!conn.pageInfo.hasNextPage) break;
+    after = conn.pageInfo.endCursor;
+  }
+  prods = prods.slice(0, LIMIT);
   console.log(`${prods.length} Produkt(e) zu prüfen (QUERY="${q}", LIMIT=${LIMIT})${DRY ? ' [DRY]' : ''}`);
   if (!prods.length) { console.log('Nichts zu tun.'); process.exit(0); }
 

@@ -2279,3 +2279,12 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   Judge.me) braucht JUDGEME_PRIVATE_TOKEN — existiert nur als GitHub-Secret, nicht lokal.
   USER-KLICK: Judge.me-Admin → Settings → API Token → im Chat senden. Dann Import über alle
   cj-real-Produkte + neue Importe.
+
+## 2026-07-10o — ⭐ Judge.me-Reviews LIVE (User gab Token) + Lager-Sync läuft
+- User lieferte JUDGEME_PRIVATE_TOKEN (+ Public-Token) → /tmp (chmod 600, NIE Repo).
+- **cj_reviews_import.mjs gepatcht: Cursor-Pagination** (products first-Cap 250 — LIMIT=6000 lief
+  vorher ins Leere/«0 Produkte»). Erst-Lauf 23 geprüft (0 Kommentare bei CJ, normal für Altbestand);
+  **VOLL-LAUF über 6'000 cj-real-Produkte läuft** (QPS 1/s, ~2h; Gemini-DE-Übersetzung aktiv;
+  Ledger cj_reviews_done.txt; in revive.sh).
+- Lager-Sync parallel: arbeitet sich durch die Aktiven (BigBuy → tracked + echte Menge).
+- Merker: CJ_EMAIL/CJ_API_KEY-Guard per Dummy-Env passieren, Token kommt aus /tmp/cj_token.json.
