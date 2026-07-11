@@ -30,7 +30,7 @@ def stock_for(sku):
     return 0   # nicht im Feed = ausverkauft → qty 0 (DENY macht es unkaufbar)
 cursor=None; upd=0; instk=0; zero=0; seen=0
 while True:
-    q='''query($c:String){products(first:60,after:$c,query:"tag:bigbuy status:active"){pageInfo{hasNextPage endCursor} edges{node{id variants(first:1){edges{node{id inventoryPolicy inventoryItem{id sku tracked}}}}}}}}'''
+    q='''query($c:String){products(first:60,after:$c,query:"sku:BB-* status:active"){pageInfo{hasNextPage endCursor} edges{node{id variants(first:1){edges{node{id inventoryPolicy inventoryItem{id sku tracked}}}}}}}}'''
     r=gql(q,{'c':cursor}); p=r.get('data',{}).get('products')
     if not p: break
     for e in p['edges']:
