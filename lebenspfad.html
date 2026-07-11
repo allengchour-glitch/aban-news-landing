@@ -164,6 +164,19 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   </div>
   <div id="keysHelp"></div>
 </div>
+<!-- 🌐 Online-Präsenz-Anzeige + Auto-Pause (nur im Online-Modus sichtbar) -->
+<div id="netHud" class="hide" style="position:fixed;top:56px;left:10px;z-index:17;display:flex;flex-direction:column;gap:4px;pointer-events:none;max-width:46vw"></div>
+<div id="netPause" class="hide" style="position:fixed;inset:0;z-index:44;display:flex;align-items:center;justify-content:center;background:rgba(18,22,34,.72)">
+  <div style="background:#fffdf6;border:3px solid #ffcf3a;border-radius:20px;padding:22px 26px;max-width:min(420px,90vw);text-align:center;box-shadow:0 18px 50px rgba(20,15,5,.5)">
+    <div id="netPauseIcon" style="font-size:2.4rem">⏸️</div>
+    <div id="netPauseTxt" style="font-weight:900;color:#2a3040;font-size:1.05rem;margin:8px 0 4px">Warte auf Mitspieler …</div>
+    <div id="netPauseSub" style="font-size:.82rem;color:#7a8a9a;margin-bottom:12px"></div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <button id="netPauseSkip" class="btn" style="display:none">⏭️ Spieler überspringen</button>
+      <button id="netPauseSolo" class="btn ghost" style="display:none">🎮 Alleine weiterspielen</button>
+    </div>
+  </div>
+</div>
 <div id="albumBadge" title="Gesammelte Erinnerungs-Fotos"></div>
 <div id="snapFlash"></div>
 <div id="dmg" style="position:fixed;inset:0;pointer-events:none;z-index:12"></div>
@@ -1419,7 +1432,7 @@ function freshState(np,adult,mode){
   var ps=[];
   for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},items:{},album:[],hist:[{g:20,h:10,w:5,f:5}]});
   return {v:4,mode:mode==="kurz"?"kurz":"voll",adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
-function saveGame(){if(!G||NET.on)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
+function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));if(NET.on)lsSet(SAVE_KEY+"_net","1");else lsDel(SAVE_KEY+"_net");} // auch Online-Spiele sichern -> nach Reload als Einzelspiel fortsetzbar
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);
   if(!(s&&(s.v===3||s.v===4)&&s.players&&s.players.length))return null; // v3 (ohne route/mode) bleibt ladbar
   if(s.mode!=="kurz")s.mode="voll";
@@ -1685,6 +1698,7 @@ function nextTurn(){
   if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
   if(!G.players[G.turn].done){beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}
   if(!G.players[G.turn].done){emote(G.turn,"wink");markerPop=1;} // Marker springt zur neuen Figur
+  if(NET.on){renderNetHud();netCheckPause();} // ist der neue Spieler abwesend? -> pausieren + Anzeige aktualisieren
 }
 function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
@@ -2297,7 +2311,16 @@ window.__lp={
     pw.updateWorldMatrix(true,false);var v=new THREE.Vector3().setFromMatrixPosition(pw.matrixWorld);
     v.y+=1.35*pw.scale.y*(pw.userData.headScale||1)*0.95;v.project(camera);
     return {x:(v.x*0.5+0.5)*innerWidth,y:(1-(v.y*0.5+0.5))*innerHeight};},
-  birds:function(){return birds.length;}};
+  birds:function(){return birds.length;},
+  nettest:function(present,turn,host,my){ // Test-Only: Online-Präsenz/Pause simulieren (kein echtes Netz)
+    if(!G)return null;NET.on=true;NET.host=(host!==false);NET.my=my|0;NET.conns=[];
+    NET.names=G.players.map(function(p){return p.name;});NET.present=present||G.players.map(function(){return true;});
+    if(turn!=null)G.turn=turn|0;renderNetHud();netCheckPause();
+    var ov=document.getElementById("netPause");
+    return {pause:!ov.classList.contains("hide"),txt:document.getElementById("netPauseTxt").textContent,
+      skip:document.getElementById("netPauseSkip").style.display!=="none",
+      solo:document.getElementById("netPauseSolo").style.display!=="none",
+      hud:document.getElementById("netHud").children.length};}};
 // ===================== Hauptschleife =====================
 var last=performance.now();
 function loop(now){
@@ -2410,6 +2433,52 @@ function netConnInfo(){var el=document.getElementById("netConn");if(!el)return;
   var link=(NET.conns.length||NET.host)?"🟢 verbunden":"🔴 getrennt";
   if(NET.ping>0)link+=" · Ping "+NET.ping+" ms";
   el.textContent=link;}
+// ===================== 🌐 Online-Präsenz + Auto-Pause (User-Wunsch: „falls man nicht drin ist … Anzeige/Pause/Speichern“) =====================
+function netPresent(i){ // ist Spieler i gerade verbunden?
+  if(!NET.on)return true;
+  if(i===0)return NET.host?true:(NET.conns.length>0); // Host ist immer da; für Gäste = Status des Host-Links
+  return !!(NET.present&&NET.present[i]);}
+function netBroadcastPres(){ // nur Host: aktuelle Präsenz-Liste an alle Gäste
+  if(!NET.host)return;var a=[];var n=Math.max(NET.names.length,G?G.players.length:0);
+  for(var i=0;i<n;i++)a[i]=(i===0); // Host=0 immer präsent, Rest erst mal false
+  NET.conns.forEach(function(c){if(c._idx!=null)a[c._idx]=true;});
+  NET.present=a;netSend({t:"pres",a:a});renderNetHud();netCheckPause();}
+function renderNetHud(){var el=document.getElementById("netHud");if(!el)return;
+  if(!NET.on||!running||!G){el.classList.add("hide");return;}
+  el.classList.remove("hide");el.innerHTML="";
+  var n=Math.max(NET.names.length,G.players.length);
+  for(var i=0;i<n;i++){
+    var nm=(NET.names&&NET.names[i])||(G.players[i]&&G.players[i].name)||("Spieler "+(i+1));
+    var col="#"+("00000"+((typeof PCOLORS!=="undefined"&&PCOLORS[i])||0x888888).toString(16)).slice(-6);
+    var here=netPresent(i),mine=(i===NET.my),done=!!(G.players[i]&&G.players[i].done);
+    var dot=done?"🏁":(here?"🟢":"🔴");var turnMark=(G.turn===i&&running&&!done)?" 🎲":"";
+    var chip=document.createElement("div");
+    chip.style.cssText="display:inline-flex;align-items:center;gap:5px;background:rgba(255,253,246,"+(here?".92":".72")+");border:2px solid "+col+";border-radius:16px;padding:2px 9px;font-size:.72rem;font-weight:800;color:"+(here?"#2a3040":"#9aa0aa")+";box-shadow:0 1px 5px rgba(60,40,10,.18)";
+    chip.textContent=dot+" "+String(nm).slice(0,12)+(mine?" (du)":"")+turnMark;
+    el.appendChild(chip);}}
+function netCheckPause(){var ov=document.getElementById("netPause");if(!ov)return;
+  if(!NET.on||!running||!G){ov.classList.add("hide");return;}
+  var skip=document.getElementById("netPauseSkip"),solo=document.getElementById("netPauseSolo");
+  var txt=document.getElementById("netPauseTxt"),sub=document.getElementById("netPauseSub"),ic=document.getElementById("netPauseIcon");
+  if(!NET.host&&NET.conns.length===0){ // Gast hat den Host verloren
+    ov.classList.remove("hide");ic.textContent="📴";txt.textContent="Verbindung zum Gastgeber verloren";
+    sub.textContent="Warte auf Reconnect – oder spiel dein Leben alleine zu Ende (Spielstand ist gesichert).";
+    skip.style.display="none";solo.style.display="inline-block";return;}
+  var cur=G.turn,curAbsent=(cur!==NET.my)&&!netPresent(cur)&&!(G.players[cur]&&G.players[cur].done);
+  if(curAbsent){ // aktueller Spieler ist abwesend -> pausieren statt hängen
+    ov.classList.remove("hide");ic.textContent="⏸️";
+    txt.textContent="Warte auf "+((G.players[cur]&&G.players[cur].name)||"Mitspieler")+" …";
+    sub.textContent=NET.host?"Ist die Person weg? Du kannst sie überspringen.":"Der Gastgeber kann sie bei Bedarf überspringen.";
+    skip.style.display=NET.host?"inline-block":"none";solo.style.display="none";return;}
+  ov.classList.add("hide");}
+(function(){var skip=document.getElementById("netPauseSkip"),solo=document.getElementById("netPauseSolo");
+  if(skip)skip.onclick=function(){if(!NET.host||!G)return;var cur=G.turn;if(cur===NET.my)return;
+    G.players[cur].done=true;var msg={t:"drop",i:cur};netSend(msg);
+    announce("⏭️ "+((G.players[cur]&&G.players[cur].name)||"Spieler")+" übersprungen","#ffb46e");
+    netCheckPause();renderNetHud();if(G.turn===cur)nextTurn();};
+  if(solo)solo.onclick=function(){NET.on=false;try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
+    document.getElementById("netPause").classList.add("hide");document.getElementById("netHud").classList.add("hide");
+    if(rollBtn)rollBtn.disabled=false;saveGame();announce("🎮 Du spielst jetzt alleine weiter","#7ad97a");};})();
 function srand(){ // im Online-Modus deterministisch (gleiche Aktionsfolge -> gleicher Zufall überall)
   if(!NET.on)return Math.random();
   NET.seed=(NET.seed*1664525+1013904223)>>>0;return NET.seed/4294967296;}
@@ -2429,7 +2498,8 @@ function netApply(m){
   if(m.t==="lobby"){NET.names=m.names;NET.ready=m.ready||[];netPlayersUpd();
     var mt2=document.getElementById("netModeTag");if(mt2&&m.mode)mt2.textContent=m.mode==="kurz"?"⚡ Schnelles Leben (4 Kapitel)":"🌱 Volles Leben (8 Kapitel)";
     if(m.cfgs)NET.cfgs=m.cfgs;return;}
-  if(m.t==="drop"){if(G&&G.players[m.i]){G.players[m.i].done=true;announce("📴 "+G.players[m.i].name+" hat das Spiel verlassen","#ff8a8a");if(G.turn===m.i)nextTurn();}return;}
+  if(m.t==="pres"){NET.present=m.a||[];renderNetHud();netCheckPause();return;} // Host-Broadcast: wer ist verbunden
+  if(m.t==="drop"){if(G&&G.players[m.i]){G.players[m.i].done=true;announce("📴 "+G.players[m.i].name+" hat das Spiel verlassen","#ff8a8a");renderNetHud();netCheckPause();if(G.turn===m.i)nextTurn();}return;}
   NET.q.push(m);}
 // gezieltes Senden (für Ping/Pong): an alle bekannten Verbindungen
 function netSend2(m){var st=JSON.stringify(m);NET.conns.forEach(function(c){try{c.send(st);}catch(e){}});}
@@ -2545,7 +2615,11 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
       if(m.t==="ping"){try{c.send(JSON.stringify({t:"pong",ts:m.ts}));}catch(e){}return;} // gezielte Ping-Antwort
       netOnMsg(m,c);});
     c.on("close",function(){var wasIdx=c._idx;var ci=NET.conns.indexOf(c);if(ci>=0)NET.conns.splice(ci,1);
-      if(wasIdx!=null){if(NET.names[wasIdx])chatAdd("System",NET.names[wasIdx]+" hat die Lobby verlassen");var msg={t:"drop",i:wasIdx};netSend(msg);netApply(msg);}
+      if(NET.on&&running){ // im laufenden Spiel: NICHT auto-rauswerfen -> Präsenz melden + ggf. pausieren
+        if(wasIdx!=null&&G&&G.players[wasIdx])announce("📴 "+G.players[wasIdx].name+" ist getrennt — warte …","#ffb46e");
+        netBroadcastPres();
+      }else if(wasIdx!=null){ // Lobby: wie bisher entfernen
+        if(NET.names[wasIdx])chatAdd("System",NET.names[wasIdx]+" hat die Lobby verlassen");var msg={t:"drop",i:wasIdx};netSend(msg);netApply(msg);}
       netConnInfo();netPlayersUpd();});
   });
 }
@@ -2585,7 +2659,7 @@ document.getElementById("netJoinBtn").onclick=function(){
       netStartHeartbeat();});
     c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}netApply(m);});
     c.on("close",function(){NET.conns=[];if(NET._hb)clearInterval(NET._hb);netConnInfo();
-      if(NET.on)announce("📴 Verbindung zum Gastgeber verloren","#ff8a8a");
+      if(NET.on){announce("📴 Verbindung zum Gastgeber verloren","#ff8a8a");renderNetHud();netCheckPause();}
       else joinReset("📴 Verbindung getrennt — nochmal versuchen.");});
   });
   NET.peer.on("error",function(e){var t=e&&e.type;if(opened)return;clearTimeout(NET._tmo);
@@ -2621,7 +2695,9 @@ function beginNet(init){
   document.getElementById("chatToggle").style.display="block";
   chatAdd("System","Online-Spiel gestartet — viel Glück! Du bist "+init.names[NET.my]+".");
   rollBtn.disabled=!myTurn();
-  announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");}
+  announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");
+  NET.present=[];for(var pi=0;pi<G.players.length;pi++)NET.present[pi]=true; // Start: alle da
+  if(NET.host)netBroadcastPres();else{renderNetHud();netCheckPause();}}
 // Lobby-Broadcast des Hosts, wenn sich die Spielerliste/der Modus aendert (inkl. Looks + Bereit-Status)
 (function(){var _upd=netPlayersUpd;netPlayersUpd=function(){_upd();
   var kc=document.getElementById("kurzChk"),mt=document.getElementById("netModeTag");
