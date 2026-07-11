@@ -215,7 +215,25 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
-### User-Feedback 2026-07-11 (Runde 7 — Lebenspfad wie Plato-App, „mach einfach alles besser")
+### User-Feedback 2026-07-11 (Runde 8 — Lebenspfad: Altern, Feld-Klarheit, Kamera, Spannung)
+- [ ] **Charaktere altern von Kind bis alt** (Kern-Wunsch!): Look wandelt sich pro Kapitel —
+      Kind (klein, grosser Kopf) → Teen → Erwachsen → Senior (grauer Haarton, Gehstock, leicht
+      gebeugt); Übergang als kleine „Geburtstags"-Animation am Kapitel-Meilenstein (Konfetti +
+      Figur wächst sichtbar). Picker-Wahl (Frau/Mann/Style/Hautton) bleibt in jeder Altersstufe
+      erkennbar. „Gute Animation" = weiche Morph-/Scale-Übergänge, kein hartes Umschalten.
+- [ ] **Farbige Felder: Bedeutung unklar** → GROSSE Icons auf jedem Feld (Emoji-Sprite deutlich
+      grösser/zentriert), Farbe nur noch als Unterstützung; + Mini-Legende (aufklappbar ODER
+      beim ersten Betreten je Feldtyp 1 Erklär-Toast). Felder ohne Bedeutung: entfernen/neutral.
+- [ ] **Map scrollen/bewegen**: Drag/Swipe schwenkt die Kamera frei übers Brett (Grenzen ans
+      Brett gebunden), loslassen/Zug-Start → sanft zurück zum aktiven Spieler; Pinch-Zoom mobil
+      wenn einfach machbar.
+- [ ] **Pixel-Fehler auf Feldern** (User sieht welche): gezielt untersuchen — Kandidaten:
+      Z-Fighting Feld-Ring vs. Scheibe, Moiré auf Ring-Geometrie, Schatten-Akne; auf echtem
+      Hochformat-Viewport reproduzieren und fixen.
+- [ ] **„Zu langweilig — spannender machen"**: Drama-Paket — seltene Grossereignisse mit
+      Fullscreen-Moment (💥 Jackpot, 🌪️ Wirbelsturm der 2 Spieler tauscht, 🎁 Mystery-Box),
+      Near-Miss-Effekte, Kapitel-Finale mit Zwischenstands-Show („Wer führt?"), Sound-Stinger,
+      Sieg-Zeremonie mit Podium + Biografie-Highlights.
 - [ ] **Detail-Animationen**: Figuren hüpfen/laufen sichtbar von Feld zu Feld (Bounce mit Squash),
       3D-Würfel rollt echt, Jubel-/Trauer-Animation je nach Feld, Geld-Regen bei Gewinn,
       Karten flippen beim Aufdecken.
