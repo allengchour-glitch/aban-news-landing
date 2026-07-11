@@ -181,10 +181,10 @@
 #done search:hair rollers
 #done search:hair straightener brush
 #done search:scalp massager
-search:wig cap
-search:hair extensions clip
-search:jade roller gua sha
-search:facial cleansing brush
+#done search:wig cap
+#done search:hair extensions clip
+#done search:jade roller gua sha
+#done search:facial cleansing brush
 search:makeup brush set
 search:beauty blender
 search:led facial mask
