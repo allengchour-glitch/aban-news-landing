@@ -1311,18 +1311,19 @@ function enableCar(i){
 function syncCarSeats(i){ // Partner/Kinder/Hund sitzen sichtbar mit im Auto (kleine Extra-Köpfe hinten)
   var pw=pawns[i];if(!pw||!pw.userData.car||!G||!G.players[i])return;
   var car=pw.userData.car,fam=G.players[i].fam||{};
+  var col=(G&&G.players[i])?G.players[i].col:PCOLORS[i%PCOLORS.length];
   if(car.userData.seats)car.remove(car.userData.seats);
-  var s=new THREE.Group(),sk=mat(0xffd9b0,0x3a2a1a,0.05);
+  var s=new THREE.Group(),sk=smat(0xffd9b0,0x3a2a1a,0.05); // Cel-Shading (smat) -> passt zu den Anime-Figuren
   if(fam.partner){var h=new THREE.Mesh(new THREE.SphereGeometry(0.19,8,7),sk);h.position.set(0.24,1.0,-0.58);s.add(h);
-    var hh=new THREE.Mesh(new THREE.SphereGeometry(0.2,8,6,0,6.283,0,1.25),mat(0x8a5a2a));hh.position.set(0.24,1.03,-0.58);s.add(hh);
-    var he=new THREE.Mesh(new THREE.SphereGeometry(0.028,5,4),mat(0x222430,0x000000,0));he.position.set(0.24,1.0,-0.4);s.add(he);}
+    var hh=new THREE.Mesh(new THREE.SphereGeometry(0.2,8,6,0,6.283,0,1.25),smat(0x8a5a2a));hh.position.set(0.24,1.03,-0.58);s.add(hh);
+    var he=new THREE.Mesh(new THREE.SphereGeometry(0.028,5,4),smat(0x222430,0x000000,0));he.position.set(0.24,1.0,-0.4);s.add(he);}
   for(var k=0;k<Math.min(2,fam.kids||0);k++){
     var kh=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,7),sk);kh.position.set(k?-0.02:-0.26,0.94,-0.6);s.add(kh);
-    var kc=new THREE.Mesh(new THREE.SphereGeometry(0.145,8,5,0,6.283,0,1.1),mat(k?0x6ab8ff:0xffd166));kc.position.set(k?-0.02:-0.26,0.97,-0.6);s.add(kc);}
-  if(fam.dog){var dh=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.18,0.2),mat(0xb8834a,0x6a4a2a,0.08));dh.position.set(-0.3,0.96,-0.35);s.add(dh);
-    [[-0.36],[-0.24]].forEach(function(de){var ear=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.11,0.04),mat(0x8a5c32));ear.position.set(de[0],1.08,-0.35);s.add(ear);});
-    var dn=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.07,0.08),mat(0x3a2a1a));dn.position.set(-0.3,0.93,-0.24);s.add(dn);}
-  car.add(s);car.userData.seats=s;
+    var kc=new THREE.Mesh(new THREE.SphereGeometry(0.145,8,5,0,6.283,0,1.1),smat(k?0x6ab8ff:0xffd166));kc.position.set(k?-0.02:-0.26,0.97,-0.6);s.add(kc);}
+  if(fam.dog){var dh=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.18,0.2),smat(0xb8834a,0x6a4a2a,0.08));dh.position.set(-0.3,0.96,-0.35);s.add(dh);
+    [[-0.36],[-0.24]].forEach(function(de){var ear=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.11,0.04),smat(0x8a5c32));ear.position.set(de[0],1.08,-0.35);s.add(ear);});
+    var dn=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.07,0.08),smat(0x3a2a1a));dn.position.set(-0.3,0.93,-0.24);s.add(dn);}
+  addOutline(s,col);car.add(s);car.userData.seats=s; // Anime-Kontur um die Mitfahrer
 }
 // Staub-Puffs beim Landen eines Hüpfers (nutzt das Konfetti-Update)
 function dustPuff(x,z){if(!OPT.motion)return;
@@ -2571,7 +2572,7 @@ function netApply(m){
   if(m.t==="welcome"){NET.my=m.idx|0;netUnlockAfterWelcome();return;} // Host teilt dem Gast seinen Spieler-Index mit
   if(m.t==="full"){netRoomFull();return;} // Raum ist voll (max. 4)
   if(m.t==="ready"){if(!NET.ready)NET.ready=[];NET.ready[m.i|0]=!!m.v;netPlayersUpd();return;} // Bereit-Status
-  if(m.t==="pong"){if(m.ts)NET.ping=Math.max(1,Math.round(performance.now()-m.ts));netConnInfo();return;} // Ping-Messung (Gast)
+  if(m.t==="pong"){NET._lastPong=performance.now();if(m.ts)NET.ping=Math.max(1,Math.round(performance.now()-m.ts));netConnInfo();return;} // Ping-Messung + Watchdog (Gast)
   if(m.t==="lobby"){NET.names=m.names;NET.ready=m.ready||[];netPlayersUpd();
     var mt2=document.getElementById("netModeTag");if(mt2&&m.mode)mt2.textContent=m.mode==="kurz"?"⚡ Schnelles Leben (4 Kapitel)":"🌱 Volles Leben (8 Kapitel)";
     if(m.cfgs)NET.cfgs=m.cfgs;return;}
@@ -2744,10 +2745,25 @@ function netPlayersUpd(){
   document.getElementById("netHint").textContent=NET.names.length>=2?(NET.host?(netAllReady()?"Alle bereit — du kannst starten!":"Warte, bis alle auf »bereit« tippen …"):"Warte, bis der Gastgeber startet …"):"Warte auf Mitspieler … Code weitergeben!";
 }
 function netMyName(){var el=document.getElementById("netName");var n=(el&&el.value.trim())||"Spieler";return n.slice(0,12);}
-function netStartHeartbeat(){ // Gast pingt den Host alle 3s -> Ping-Anzeige + „lebt noch"
-  if(NET._hb)clearInterval(NET._hb);
+function netStartHeartbeat(){ // Gast pingt den Host alle 3s -> Ping-Anzeige + Tot-Erkennung (Pong-Watchdog)
+  if(NET._hb)clearInterval(NET._hb);NET._lastPong=performance.now();
   NET._hb=setInterval(function(){if(NET.host||!NET.conns.length)return;
-    try{NET.conns[0].send(JSON.stringify({t:"ping",ts:performance.now()}));}catch(e){}},3000);}
+    try{NET.conns[0].send(JSON.stringify({t:"ping",ts:performance.now()}));}catch(e){}
+    if(NET.on&&performance.now()-(NET._lastPong||0)>9000){ // 3 Pings ohne Antwort -> Host gilt als weg -> zuegig neu verbinden (statt aufs traege 'close' zu warten)
+      try{if(NET.conns[0])NET.conns[0].close();}catch(e){}NET.conns=[];
+      renderNetHud();netCheckPause();netTryReconnect();}
+  },3000);}
+// 📵 Handy-Hintergrund/Netzwechsel killt WebRTC+Signaling -> beim Zurueckkehren AKTIV neu verbinden (haeufigste Koop-Abbruch-Ursache)
+function netOnVisible(){
+  if(!NET.on||!NET.peer)return;
+  try{
+    if(NET.peer.disconnected&&!NET.peer.destroyed)NET.peer.reconnect(); // Signaling mit gleicher ID/Raum-Code neu registrieren
+    if(NET.host){setTimeout(function(){if(NET.host&&NET.on)netBroadcastPres();},1200);} // Praesenz auffrischen
+    else{NET._reTries=0;if(!(NET.conns[0]&&NET.conns[0].open))netTryReconnect();} // Gast: Backoff zuruecksetzen + sofort neu verbinden
+  }catch(e){}
+}
+document.addEventListener("visibilitychange",function(){if(!document.hidden)netOnVisible();});
+addEventListener("focus",netOnVisible);addEventListener("online",netOnVisible);
 function netTryReconnect(){ // Gast: mit Backoff neu zum Host verbinden und Snapshot anfordern
   if(NET.host||!NET.on||!NET.peer||NET.peer.destroyed)return;
   if(NET.conns[0]&&NET.conns[0].open)return; // schon (wieder) verbunden
