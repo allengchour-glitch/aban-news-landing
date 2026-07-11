@@ -312,7 +312,7 @@ footer{max-width:1180px;margin:10px auto;padding:20px 16px;font-size:.8rem;color
       // „Mehr laden" nur sinnvoll, wenn ungefiltert (API paginiert die Gesamtliste)
       hasMore=(!d.demo && !curTag && !remote && !$("#q").value.trim() && !$("#loc").value.trim() && items.length>=60);
       render();
-    }).catch(function(){feed.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden — bitte später erneut versuchen.";cntEl.textContent=""});
+    }).catch(function(){var m=document.getElementById("more");if(m)m.hidden=true;feed.innerHTML="";statusEl.hidden=false;statusEl.textContent="Konnte gerade nicht laden — bitte später erneut versuchen.";cntEl.textContent=""});
   }
 
   // Suche auslösen

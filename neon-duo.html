@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Neon Duo — das Koop-Spiel mit dem Band | aban news</title>
-<meta name="description" content="Neon Duo: echtes Koop-Design im Browser. Klinge & Funke können nur zusammen gewinnen — verbunden durch das Band, mit Wiederbeleben, Kombo-Novas und einem Boss, der beide braucht. 2 Spieler an einer Tastatur oder solo mit KI-Partner.">
+<meta name="description" content="Neon Duo: echtes Koop-Design im Browser. Klinge & Funke können nur zusammen gewinnen — verbunden durch das Band, mit Wiederbeleben, Kombo-Novas und einem Boss, der beide braucht. 2 Spieler an einer Tastatur, online mit Raum-Code — oder solo mit KI-Partner.">
 <link rel="canonical" href="https://abannews.com/neon-duo.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Neon Duo — Koop mit dem Band">
@@ -38,7 +38,8 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
 #dmg{position:fixed;inset:0;pointer-events:none;z-index:11}
 .dnum{position:absolute;font-weight:900;font-size:15px;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .7s ease-out,opacity .7s;opacity:1;will-change:transform,opacity}
 #hurt{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 55%,rgba(255,30,60,.5));opacity:0;transition:opacity .25s;z-index:9}
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 38%,rgba(24,20,54,.8),rgba(5,6,15,.96));backdrop-filter:blur(4px);padding:20px;z-index:40}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 38%,rgba(24,20,54,.8),rgba(5,6,15,.96));backdrop-filter:blur(4px);padding:20px;z-index:40;overflow-y:auto}
+.overlay>*{flex-shrink:0}
 .overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#a9b8ff;text-transform:uppercase;margin-bottom:12px}
 .overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#5ef2ff,#ffcf6e 55%,#ff6ec7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 26px rgba(150,110,255,.4))}
 .overlay p{color:#c7cbe6;max-width:520px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
@@ -56,6 +57,35 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
 .tbtn{position:absolute;width:66px;height:66px;border-radius:50%;border:2px solid;font-size:1.4rem;font-weight:800;pointer-events:auto;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none}
 #tAtk{right:24px;bottom:120px;border-color:#5ef2ff;background:rgba(16,50,64,.55);color:#7de3ff}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
+/* ===== Online-Koop UI ===== */
+.btn.net{background:linear-gradient(92deg,#6affab,#5ef2ff);box-shadow:0 10px 40px rgba(106,255,171,.3)}
+.btn.mini{font-size:.85rem;padding:11px 18px;min-height:44px}
+.btn.ghost{background:rgba(30,36,80,.8);color:#cfe0ff;box-shadow:none;border:1px solid #3a4170}
+.codeBig{font-size:clamp(2.6rem,13vw,3.8rem);font-weight:900;letter-spacing:.3em;padding-left:.3em;color:#7de3ff;text-shadow:0 0 28px rgba(94,242,255,.6);margin:6px 0 10px}
+.codeIn{width:52px;height:60px;margin:0 4px;text-align:center;font-size:1.9rem;font-weight:900;font-family:inherit;color:#eaf0ff;background:rgba(14,18,42,.85);border:2px solid #3a4170;border-radius:12px;outline:none;text-transform:uppercase}
+.codeIn:focus{border-color:#5ef2ff;box-shadow:0 0 14px rgba(94,242,255,.35)}
+.mpwait{color:#9aa6d8;font-size:.85rem;min-height:1.3em;margin-top:10px}
+.dots::after{content:"";display:inline-block;width:1.2em;text-align:left;animation:mpdots 1.4s steps(4) infinite}
+@keyframes mpdots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+#ping{position:absolute;top:16px;right:112px;font-size:.72rem;font-weight:700;color:#8b93b8;text-shadow:0 1px 4px #000}
+/* ===== Quick-Chat / Emotes ===== */
+#emoteBar{position:absolute;right:12px;bottom:104px;display:flex;gap:4px;pointer-events:auto}
+#emoteBar button{min-width:34px;height:34px;padding:0 7px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.78);color:#eaf0ff;font-size:1rem;font-weight:800;cursor:pointer}
+#emoteBar button.txt{font-size:.64rem}
+#emoteBar button:hover{border-color:#5ef2ff}
+@media(pointer:coarse){#emoteBar{display:none}}
+#tChat{right:24px;bottom:200px;border-color:#b98bff;background:rgba(40,26,64,.55);color:#d9b8ff;font-size:1.5rem}
+#chatFan{position:absolute;right:24px;bottom:274px;display:none;grid-template-columns:repeat(2,minmax(72px,1fr));gap:8px;background:rgba(10,14,32,.9);border:1px solid #3a4170;border-radius:16px;padding:10px;pointer-events:auto;max-width:240px}
+#chatFan button{min-width:72px;min-height:48px;border-radius:12px;border:1px solid #3a4170;background:rgba(30,36,80,.9);color:#eaf0ff;font-size:1.3rem;font-weight:800;cursor:pointer}
+#chatFan button.txt{font-size:.74rem}
+/* Namens-Labels + Sprechblasen über den Figuren */
+.plname{position:fixed;transform:translate(-50%,-100%);font-size:14px;font-weight:800;color:#eaf0ff;background:rgba(8,10,24,.78);border:1px solid rgba(120,140,255,.4);border-radius:9px;padding:2px 9px;pointer-events:none;z-index:12;white-space:nowrap;display:none;text-shadow:0 1px 4px #000}
+#nm1{border-color:rgba(94,242,255,.55)}#nm2{border-color:rgba(255,180,110,.55)}
+.bub{position:fixed;transform:translate(-50%,-112%);pointer-events:none;z-index:13;display:none;background:#f4f7ff;color:#131a3a;font-weight:900;border-radius:14px;padding:6px 12px;font-size:1.25rem;white-space:nowrap;box-shadow:0 6px 22px rgba(0,0,0,.45)}
+.bub.txt{font-size:.85rem}
+.bub::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:8px solid transparent;border-top-color:#f4f7ff;border-bottom:0}
+.bub.pop{animation:bubPop 2.5s ease forwards}
+@keyframes bubPop{0%{opacity:0;transform:translate(-50%,-112%) scale(.3)}9%{opacity:1;transform:translate(-50%,-112%) scale(1.12)}14%{transform:translate(-50%,-112%) scale(1)}78%{opacity:1}100%{opacity:0;transform:translate(-50%,-112%) scale(.92)}}
 </style>
 </head>
 <body>
@@ -68,11 +98,15 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
   <div class="pbar" id="p1bar"><div class="nm">⚔ KLINGE</div><div class="bar"><i id="hp1" style="width:100%"></i></div></div>
   <div class="pbar" id="p2bar"><div class="nm">✦ FUNKE</div><div class="bar"><i id="hp2" style="width:100%"></i></div></div>
   <div id="hint"></div><div id="announce"></div><div id="combo">KOMBO!</div>
-  <div id="keysHelp"><span style="color:#7de3ff"><b>⚔ P1:</b> WASD bewegen · <b>LEER</b> Hieb</span><span style="color:#8b93b8"> · </span><span style="color:#ffb46e"><b>✦ P2:</b> Pfeiltasten (feuert automatisch)</span><span style="color:#8b93b8"> · <b>M</b> Ton</span></div>
+  <div id="keysHelp"><span style="color:#7de3ff"><b>⚔ P1:</b> WASD bewegen · <b>LEER</b> Hieb</span><span style="color:#8b93b8"> · </span><span style="color:#ffb46e"><b>✦ P2:</b> Pfeiltasten (feuert automatisch)</span><span style="color:#8b93b8"> · <b>M</b> Ton · <b>1–6</b> 💬</span></div>
+  <div id="ping" class="hide"></div>
+  <div id="emoteBar"></div>
 </div>
 <div id="dmg"></div>
+<div id="nm1" class="plname"></div><div id="nm2" class="plname"></div>
+<div id="bub1" class="bub"></div><div id="bub2" class="bub"></div>
 <button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:10px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🔊</button>
-<div id="touchUI"><div id="joyBase"><div id="joyKnob"></div></div><button class="tbtn" id="tAtk">⚔</button></div>
+<div id="touchUI"><div id="joyBase"><div id="joyKnob"></div></div><button class="tbtn" id="tAtk">⚔</button><button class="tbtn" id="tChat">💬</button><div id="chatFan"></div></div>
 
 <div class="overlay" id="start">
   <div class="kicker">aban news · Koop-Arena · nach den Regeln der großen Koop-Spiele</div>
@@ -83,10 +117,53 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
     <div class="role f"><b>✦ FUNKE (Spieler 2)</b><small><b>Pfeile</b> bewegen · zielt &amp; feuert automatisch<br>Trifft 🪽 Flieger · Wiederbeleben: daneben stehen</small></div>
   </div>
   <div>
-    <button class="btn" id="startCoop">2 Spieler · eine Tastatur ▶</button>
-    <button class="btn warm" id="startSolo">Solo + KI-Partner ▶</button>
+    <button class="btn" id="startCoop">👥 2 Spieler · eine Tastatur ▶</button>
+    <button class="btn warm" id="startSolo">🤖 Solo + KI-Partner ▶</button>
+    <button class="btn net" id="startOnline">🌐 Online spielen</button>
   </div>
   <div class="foot">Trefft denselben Gegner gleichzeitig → <b style="color:#ffd166">KOMBO-NOVA</b> · Kein Download · <a href="/spiele.html">aban Arcade</a></div>
+</div>
+<div class="overlay hide" id="onlineO" style="z-index:46">
+  <div class="kicker">Online-Koop · über das Internet</div>
+  <h1 style="font-size:1.9rem">🌐 ONLINE SPIELEN</h1>
+  <div id="mpHome">
+    <p>Einer erstellt den Raum, der andere tippt den <b>4-Buchstaben-Code</b> ein.<br>Host spielt <b style="color:#7de3ff">⚔ Klinge</b>, Gast spielt <b style="color:#ffb46e">✦ Funke</b>.</p>
+    <div style="display:flex;flex-direction:column;gap:4px;align-items:center">
+      <button class="btn" id="mpMakeBtn">➕ Raum erstellen</button>
+      <button class="btn warm" id="mpJoinBtn">🔑 Raum beitreten</button>
+    </div>
+  </div>
+  <div id="mpHost" class="hide">
+    <p style="margin-bottom:0">Sag deinem Mitspieler diesen Code:</p>
+    <div id="mpCode" class="codeBig">····</div>
+    <div>
+      <button class="btn mini" id="mpCopyBtn">📋 Code kopieren</button>
+      <button class="btn mini warm" id="mpShareBtn">📤 Einladung teilen</button>
+    </div>
+    <p class="mpwait" id="mpHostState">Warte auf Mitspieler<span class="dots"></span></p>
+  </div>
+  <div id="mpJoin" class="hide">
+    <p style="margin-bottom:8px">Code vom Host eintippen:</p>
+    <div>
+      <input class="codeIn" maxlength="4" inputmode="latin" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Buchstabe 1">
+      <input class="codeIn" maxlength="1" inputmode="latin" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Buchstabe 2">
+      <input class="codeIn" maxlength="1" inputmode="latin" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Buchstabe 3">
+      <input class="codeIn" maxlength="1" inputmode="latin" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Buchstabe 4">
+    </div>
+    <div style="margin-top:12px"><button class="btn" id="mpGoBtn">Beitreten ▶</button></div>
+    <p class="mpwait" id="mpJoinState"></p>
+  </div>
+  <div style="margin-top:8px"><button class="btn mini ghost" id="mpBackBtn">← Zurück</button></div>
+  <div class="foot">Nach dem Verbinden läuft alles direkt zwischen euren Geräten (P2P).</div>
+</div>
+<div class="overlay hide" id="netLost" style="z-index:47">
+  <div class="kicker">Online-Koop</div>
+  <h1 style="font-size:1.9rem">VERBINDUNG VERLOREN</h1>
+  <p id="netLostTxt">Versuche, die Verbindung wiederherzustellen…</p>
+  <div>
+    <button class="btn" id="netAiBtn">🤖 Weiter mit KI-Partner</button>
+    <button class="btn warm" id="netMenuBtn">Menü</button>
+  </div>
 </div>
 <div class="overlay hide" id="menuO" style="z-index:45">
   <div class="kicker">Pause · Menü</div>
@@ -104,11 +181,16 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
   <h1 id="overTitle">GAME OVER</h1>
   <p id="overTxt"></p>
   <button class="btn" id="againBtn">Nochmal ▶</button>
+  <button class="btn net hide" id="rematchBtn">🔄 Nochmal zusammen</button>
+  <p class="mpwait hide" id="rematchState"></p>
   <div class="foot"><a href="/spiele.html">Mehr Spiele</a></div>
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
+<script src="/js/vendor/peerjs.min.js"></script>
+<script src="/js/arcade.js"></script>
+<script src="/js/mp.js"></script>
 <script>
 (function(){
 "use strict";
@@ -252,6 +334,10 @@ band.visible=false;scene.add(band);
 var BAND_RANGE=15;
 // ===== Zustand =====
 var G=null,running=false,solo=false;
+// Online-Koop: net = null (lokal) | 'host' (simuliert alles) | 'client' (rendert + eigene Figur)
+var net=null,netSess=null,netP2={x:4,z:10,ry:0},np1={x:-4,z:10,ry:0};
+var snapAcc=0,inAcc=0,pingAcc=0,lastPing=0,hintNetT=0,hintNetTxt="";
+var mirrors={},bossM=null; // Client: Gegner-/Boss-Spiegel (eid → Mesh)
 function freshState(){return {wave:0,hp1:100,hp2:100,max1:100,max2:100,
   down1:0,down2:0,rev1:0,rev2:0, // down = Restzeit Ausbluten, rev = Wiederbelebe-Fortschritt
   atkCD1:0,fireCD2:0,if1:0,if2:0,vx1:0,vz1:0,vx2:0,vz2:0,
@@ -259,7 +345,8 @@ function freshState(){return {wave:0,hp1:100,hp2:100,max1:100,max2:100,
 // ===== Eingabe =====
 var keys={};
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
-  if(k===" "){e.preventDefault();if(running)p1Attack();}
+  if(k===" "){e.preventDefault();if(running&&net!=='client')p1Attack();}
+  if(k.length===1&&k>="1"&&k<="6")sendEmote(k.charCodeAt(0)-49); // Quick-Chat 1–6
   if(k.indexOf("arrow")===0)e.preventDefault();
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
@@ -277,14 +364,19 @@ if(isTouch){document.getElementById("touchUI").style.display="block";
   function jend(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===joy.id){joy.id=null;joy.x=0;joy.y=0;jk.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",jend);addEventListener("touchcancel",jend);
   var ta=document.getElementById("tAtk");
-  ta.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();if(running)p1Attack();},{passive:false});
+  ta.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();if(running&&net!=='client')p1Attack();},{passive:false});
 }
 function mv1(){var x=0,z=0;if(keys.w)z-=1;if(keys.s)z+=1;if(keys.a)x-=1;if(keys.d)x+=1;
   if(joy.id!==null){x=joy.x;z=joy.y;}return {x:x,z:z};}
 function mv2(){var x=0,z=0;if(keys.arrowup)z-=1;if(keys.arrowdown)z+=1;if(keys.arrowleft)x-=1;if(keys.arrowright)x+=1;return {x:x,z:z};}
+function mvAny(){var a=mv1(),b=mv2(),x=a.x+b.x,z=a.z+b.z;if(joy.id!==null){x=joy.x;z=joy.y;}var l=Math.hypot(x,z);if(l>1){x/=l;z/=l;}return {x:x,z:z};} // Online-Client: WASD ODER Pfeile ODER Stick
 // ===== HUD/FX =====
-function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2400);}
-function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#7de3ff";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2200);}
+function showHint(t,ms){
+  if(net==='host'&&(t!==hintNetTxt||(G&&G.t-hintNetT>0.25))){hintNetTxt=t;hintNetT=G?G.t:0;netEv({e:'hi',t:t,m:ms||2400});} // gedrosselt zum Client spiegeln
+  var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2400);}
+function announce(t,color){
+  if(net==='host')netEv({e:'an',t:t,c:color||"#7de3ff"});
+  var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#7de3ff";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2200);}
 var dmgLayer=document.getElementById("dmg");
 function dmgNum(v,x,y,z,col){var el=document.createElement("div");el.className="dnum";el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
   var p=new THREE.Vector3(x,y,z).project(camera);if(p.z>1)return;
@@ -308,10 +400,8 @@ function updHUD(){
 }
 // ===== Gegner =====
 // Typen: 0 normal (beide), 1 Panzer (nur Klinge), 2 Flieger (nur Funke)
-var enemies=[];
-function spawnEnemy(type,elite){
-  var a=Math.random()*6.283,r=ARENA-3;
-  var ex=Math.cos(a)*r,ez=Math.sin(a)*r;
+var enemies=[],EID=0;
+function buildEnemyG(type){ // Mesh-Bau geteilt: Host-Sim UND Client-Spiegel
   var g=new THREE.Group(),c=type===1?0xb98bff:(type===2?0xff7ad9:0xff5d7d);
   var body;
   if(type===1){body=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.8,1.6),mat(0x141a3e,c,0.8));body.position.y=1.0;
@@ -319,10 +409,17 @@ function spawnEnemy(type,elite){
     sh.rotation.x=Math.PI/2;sh.position.y=1.0;g.add(sh);g.userData.shield=sh;}
   else if(type===2){body=new THREE.Mesh(new THREE.ConeGeometry(0.8,1.6,5),mat(0x141a3e,c,0.9));body.position.y=3.2;body.rotation.x=Math.PI;}
   else{body=new THREE.Mesh(new THREE.OctahedronGeometry(0.85,0),mat(0x141a3e,c,0.8));body.position.y=1.0;}
-  body.castShadow=true;g.add(body);g.position.set(ex,0,ez);scene.add(g);
+  body.castShadow=true;g.add(body);
+  return {g:g,body:body,c:c};
+}
+function spawnEnemy(type,elite){
+  var a=Math.random()*6.283,r=ARENA-3;
+  var ex=Math.cos(a)*r,ez=Math.sin(a)*r;
+  var B=buildEnemyG(type),g=B.g;
+  g.position.set(ex,0,ez);scene.add(g);
   var wv=Math.max(1,G.wave),mult=(elite?2.2:1)*(1+wv*0.12);
-  enemies.push({g:g,body:body,type:type,hp:(type===1?26:(type===2?14:16))*mult,atk:(type===1?11:(type===2?7:8))*(1+wv*0.06),
-    spd:(type===1?4.2:(type===2?7:5.6))*(elite?1.15:1),c:c,r:type===1?1.4:0.95,elite:!!elite,
+  enemies.push({eid:++EID,g:g,body:B.body,type:type,hp:(type===1?26:(type===2?14:16))*mult,atk:(type===1?11:(type===2?7:8))*(1+wv*0.06),
+    spd:(type===1?4.2:(type===2?7:5.6))*(elite?1.15:1),c:B.c,r:type===1?1.4:0.95,elite:!!elite,
     atkT:0,flash:0,fly:type===2,active:true,slow:0});
 }
 function killEnemy(e){
@@ -343,8 +440,7 @@ function hitEnemy(e,dmg,who,col){
     e.comboT=now;comboNova(e);}
   if(e.hp<=0)killEnemy(e);
 }
-function comboNova(e){
-  var cx=e.g.position.x,cz=e.g.position.z;
+function novaFx(cx,cz){ // reine Optik/Sound — läuft auf Host UND (per Event) Client
   var c=document.getElementById("combo");c.style.opacity=1;clearTimeout(c._t);c._t=setTimeout(function(){c.style.opacity=0;},900);
   beep(1046,.2,"triangle",.08);beep(1318,.3,"triangle",.06);camShake=Math.max(camShake,0.45);
   burst(cx,1.5,cz,0xffd166,22,8);
@@ -353,15 +449,28 @@ function comboNova(e){
   var t0=performance.now();
   (function grow(){var k=(performance.now()-t0)/300;if(k>=1){scene.remove(rg2);rg2.material.dispose();rg2.geometry.dispose();return;}
     rg2.scale.setScalar(1+k*12);rg2.material.opacity=0.9*(1-k);requestAnimationFrame(grow);})();
+}
+function comboNova(e){
+  var cx=e.g.position.x,cz=e.g.position.z;
+  novaFx(cx,cz);
+  if(net==='host')netEv({e:'nv',x:cx,z:cz});
   for(var i=0;i<enemies.length;i++){var o=enemies[i];if(!o.active)continue;
     var d=Math.hypot(o.g.position.x-cx,o.g.position.z-cz);
     if(d<8){o.hp-=18;o.flash=0.1;dmgNum(18,o.g.position.x,o.fly?4:2.2,o.g.position.z,"#ffd166");if(o.hp<=0)killEnemy(o);}}
   if(G.boss&&G.boss.active){var bd=Math.hypot(G.boss.g.position.x-cx,G.boss.g.position.z-cz);if(bd<9)bossHit(24,0,"#ffd166");}
 }
 // ===== Spieler-Aktionen =====
+function slashFx(ry){ // Hieb-Optik (Host lokal + Client per Event)
+  P1.g.rotation.y=ry;G.atkCD1=Math.max(G.atkCD1,0.4); // atkCD1 treibt auch die Klingen-Schwung-Anim
+  beep(760,.05,"square",.035);
+  var fx2=Math.sin(ry),fz2=Math.cos(ry);
+  var arc=new THREE.Mesh(new THREE.TorusGeometry(2.0,0.13,6,16,2.2),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
+  arc.position.set(P1.g.position.x+fx2*1.2,1.2,P1.g.position.z+fz2*1.2);
+  arc.rotation.x=-Math.PI/2;arc.rotation.z=-ry+Math.PI/2-1.1;scene.add(arc);
+  setTimeout(function(){scene.remove(arc);arc.material.dispose();arc.geometry.dispose();},130);
+}
 function p1Attack(){
   if(G.atkCD1>0||G.down1>0)return;G.atkCD1=0.4;
-  beep(760,.05,"square",.035);
   // Auto-Face nächster Nicht-Flieger
   var best=null,bd=6.5;
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.fly)continue;
@@ -369,11 +478,9 @@ function p1Attack(){
   if(G.boss&&G.boss.active&&G.boss.phase==="boden"){var dbb=Math.hypot(G.boss.g.position.x-P1.g.position.x,G.boss.g.position.z-P1.g.position.z)-3;if(dbb<bd){bd=dbb;best="boss";}}
   if(best&&best!=="boss")P1.g.rotation.y=Math.atan2(best.g.position.x-P1.g.position.x,best.g.position.z-P1.g.position.z);
   if(best==="boss")P1.g.rotation.y=Math.atan2(G.boss.g.position.x-P1.g.position.x,G.boss.g.position.z-P1.g.position.z);
+  slashFx(P1.g.rotation.y);
+  if(net==='host')netEv({e:'a1',ry:+P1.g.rotation.y.toFixed(2)});
   var fx2=Math.sin(P1.g.rotation.y),fz2=Math.cos(P1.g.rotation.y);
-  var arc=new THREE.Mesh(new THREE.TorusGeometry(2.0,0.13,6,16,2.2),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
-  arc.position.set(P1.g.position.x+fx2*1.2,1.2,P1.g.position.z+fz2*1.2);
-  arc.rotation.x=-Math.PI/2;arc.rotation.z=-P1.g.rotation.y+Math.PI/2-1.1;scene.add(arc);
-  setTimeout(function(){scene.remove(arc);arc.material.dispose();arc.geometry.dispose();},130);
   for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active)continue;
     var dx=e2.g.position.x-P1.g.position.x,dz=e2.g.position.z-P1.g.position.z,d2=Math.hypot(dx,dz);
     if(d2<3.4+e2.r){var dot=(dx*fx2+dz*fz2)/(d2||1);
@@ -396,6 +503,12 @@ function p2AutoFire(dt){
   G.fireCD2=0.5;
   var tx=tgtBoss?G.boss.g.position.x:best.g.position.x,tz=tgtBoss?G.boss.g.position.z:best.g.position.z;
   var ty=tgtBoss?5:(best&&best.fly?3.2:1);
+  fireFx(tx,ty,tz);
+  if(net==='host')netEv({e:'a2',x:+tx.toFixed(1),y:+ty.toFixed(1),z:+tz.toFixed(1)});
+  if(tgtBoss)bossHit(11,2,"#ffcf6e");
+  else hitEnemy(best,9+Math.random()*4,2,"#ffcf6e");
+}
+function fireFx(tx,ty,tz){ // Funke-Schuss-Optik (Host lokal + Client per Event)
   P2.g.rotation.y=Math.atan2(tx-P2.g.position.x,tz-P2.g.position.z);
   beep(980,.05,"square",.03);
   // Projektil-Trace (sofort, mit Linie)
@@ -403,8 +516,6 @@ function p2AutoFire(dt){
   var ln=new THREE.Line(lg,new THREE.LineBasicMaterial({color:0xffcf6e,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending}));
   scene.add(ln);setTimeout(function(){scene.remove(ln);ln.material.dispose();lg.dispose();},110);
   burst(tx,ty,tz,0xffcf6e,4,3);
-  if(tgtBoss)bossHit(11,2,"#ffcf6e");
-  else hitEnemy(best,9+Math.random()*4,2,"#ffcf6e");
 }
 function hitPlayer(who,dmg){
   var ifr=who===1?G.if1:G.if2;if(ifr>0)return;
@@ -447,6 +558,7 @@ function updBand(dt){
   band.position.set((P1.g.position.x+P2.g.position.x)/2,1.1,(P1.g.position.z+P2.g.position.z)/2);
   band.scale.set(1,d,1);band.rotation.z=Math.PI/2;band.rotation.y=-Math.atan2(dz,dx);
   band.material.opacity=0.55+Math.sin(G.t*6)*0.2;
+  if(net==='client')return; // Client: nur Band-Optik — Schaden rechnet der Host
   // Punkt-zu-Segment-Abstand: Gegner am Band nehmen DoT + Slow
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.fly)continue;
     var px=e.g.position.x-P1.g.position.x,pz=e.g.position.z-P1.g.position.z;
@@ -466,8 +578,10 @@ function startWave(){
   if(G.wave>=8){spawnBoss();return;}
   var w=WAVES[G.wave-1];
   announce("WELLE "+G.wave,"#7de3ff");beep(520,.2,"triangle",.07);
-  document.getElementById("waveTxt").textContent="WELLE "+G.wave+" / 8";
-  document.getElementById("waveSub").textContent=(w[1]?w[1]+"×🛡 ":"")+(w[2]?w[2]+"×🪽 ":"")+(w[3]?w[3]+"×👑":"");
+  var wtA="WELLE "+G.wave+" / 8",wtB=(w[1]?w[1]+"×🛡 ":"")+(w[2]?w[2]+"×🪽 ":"")+(w[3]?w[3]+"×👑":"");
+  document.getElementById("waveTxt").textContent=wtA;
+  document.getElementById("waveSub").textContent=wtB;
+  if(net==='host')netEv({e:'wv',a:wtA,b:wtB});
   for(var i=0;i<w[0];i++)spawnEnemy(0,false);
   for(i=0;i<w[1];i++)spawnEnemy(1,false);
   for(i=0;i<w[2];i++)spawnEnemy(2,false);
@@ -491,14 +605,19 @@ if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/boss_seraph.glb",funct
   var k=6.5/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k);
   o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.emissive=new THREE.Color(0xffd166);n.material.emissiveIntensity=0.4;}}});
   seraphModel=o;},undefined,function(){});}
-function spawnBoss(){
-  announce("☠ DER ZWIESPALT","#ff5d7d");beep(70,.8,"sawtooth",.1);camShake=1.2;
-  document.getElementById("waveTxt").textContent="ENDBOSS";
-  document.getElementById("waveSub").textContent="Boden = KLINGE · Flug = FUNKE";
+function buildBossG(){ // Boss-Optik geteilt: Host-Sim UND Client-Spiegel
   var g=new THREE.Group();
   if(seraphModel)g.add(seraphModel.clone(true));
   else{var b=new THREE.Mesh(new THREE.IcosahedronGeometry(2.8,0),mat(0x2a2008,0xffd166,1.0));b.castShadow=true;g.add(b);}
   var bl=new THREE.PointLight(0xffd166,2,40);bl.position.y=4;g.add(bl);
+  return g;
+}
+function spawnBoss(){
+  announce("☠ DER ZWIESPALT","#ff5d7d");beep(70,.8,"sawtooth",.1);camShake=1.2;
+  document.getElementById("waveTxt").textContent="ENDBOSS";
+  document.getElementById("waveSub").textContent="Boden = KLINGE · Flug = FUNKE";
+  if(net==='host')netEv({e:'wv',a:"ENDBOSS",b:"Boden = KLINGE · Flug = FUNKE"});
+  var g=buildBossG();
   g.position.set(0,2.4,-14);scene.add(g);
   var mats=[];g.traverse(function(n){if(n.isMesh&&n.material)mats.push(n.material);});
   G.boss={g:g,mats:mats,hp:420,maxhp:420,active:true,dead:false,phase:"boden",phaseT:9,novaT:3,y:2.4};
@@ -533,14 +652,20 @@ function updBoss(dt){
   b.novaT-=dt;
   if(b.novaT<=0){b.novaT=3.4;
     var bx=b.g.position.x,bz=b.g.position.z,R=8;
-    var warn=new THREE.Mesh(new THREE.RingGeometry(R-0.4,R,40),new THREE.MeshBasicMaterial({color:0xff5d7d,transparent:true,opacity:0.5,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));
-    warn.rotation.x=-Math.PI/2;warn.position.set(bx,0.12,bz);scene.add(warn);beep(220,.3,"sawtooth",.06);
-    setTimeout(function(){scene.remove(warn);warn.material.dispose();warn.geometry.dispose();
-      if(!G.boss||!G.boss.active)return;
+    bossWarnFx(bx,bz);
+    if(net==='host')netEv({e:'bw',x:+bx.toFixed(1),z:+bz.toFixed(1)});
+    setTimeout(function(){ // Schaden nur in der Simulation (Host/lokal)
+      if(!G||!G.boss||!G.boss.active)return;
       var dd1=Math.hypot(P1.g.position.x-bx,P1.g.position.z-bz);
       var dd2=Math.hypot(P2.g.position.x-bx,P2.g.position.z-bz);
-      if(dd1<R+0.8)hitPlayer(1,16);if(dd2<R+0.8)hitPlayer(2,16);
-      burst(bx,1,bz,0xff5d7d,18,7);camShake=Math.max(camShake,0.5);},900);}
+      if(dd1<R+0.8)hitPlayer(1,16);if(dd2<R+0.8)hitPlayer(2,16);},900);}
+}
+function bossWarnFx(bx,bz){ // Warnring + Explosion (Host lokal + Client per Event)
+  var R=8;
+  var warn=new THREE.Mesh(new THREE.RingGeometry(R-0.4,R,40),new THREE.MeshBasicMaterial({color:0xff5d7d,transparent:true,opacity:0.5,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));
+  warn.rotation.x=-Math.PI/2;warn.position.set(bx,0.12,bz);scene.add(warn);beep(220,.3,"sawtooth",.06);
+  setTimeout(function(){scene.remove(warn);warn.material.dispose();warn.geometry.dispose();
+    burst(bx,1,bz,0xff5d7d,18,7);camShake=Math.max(camShake,0.5);},900);
 }
 // ===== Gegner-Update =====
 function updEnemies(dt){
@@ -584,18 +709,23 @@ function updAI(dt){
   else{G.vx2*=0.8;G.vz2*=0.8;}
 }
 // ===== Game Over / Sieg =====
+function gameOverUI(win,kills,secs,wave){ // DOM geteilt: Host lokal + Client per Event
+  document.getElementById("overKick").textContent=win?"DER ZWIESPALT IST GEEINT":"Beide gefallen";
+  document.getElementById("overTitle").textContent=win?"GEMEINSAM GEWONNEN!":"GAME OVER";
+  document.getElementById("overTxt").innerHTML=win?
+    ("Ihr habt alle 8 Wellen und den Boss <b>zusammen</b> bezwungen — "+kills+" Gegner, "+secs+"s. Genau dafür ist Koop da. 🏆"):
+    ("Welle "+wave+" · "+kills+" Gegner · "+secs+"s. Tipp: bleibt in Band-Reichweite und belebt euch gegenseitig wieder!");
+  document.getElementById("over").classList.remove("hide");
+  remReset();remSwap(!!(net&&netSess&&netSess.status==='connected')); // Online: „Nochmal zusammen" statt Solo-Restart
+  beep(win?1046:80,.6,win?"triangle":"sawtooth",.09);
+}
 function gameOver(win){
   running=false;musSync();
   var best=+(lsGet("nd_best")||0);
   if(win&&G.wave>best)lsSet("nd_best",8);
   else if(!win&&G.wave-1>best)lsSet("nd_best",G.wave-1);
-  document.getElementById("overKick").textContent=win?"DER ZWIESPALT IST GEEINT":"Beide gefallen";
-  document.getElementById("overTitle").textContent=win?"GEMEINSAM GEWONNEN!":"GAME OVER";
-  document.getElementById("overTxt").innerHTML=win?
-    ("Ihr habt alle 8 Wellen und den Boss <b>zusammen</b> bezwungen — "+G.kills+" Gegner, "+Math.round(G.t)+"s. Genau dafür ist Koop da. 🏆"):
-    ("Welle "+G.wave+" · "+G.kills+" Gegner · "+Math.round(G.t)+"s. Tipp: bleibt in Band-Reichweite und belebt euch gegenseitig wieder!");
-  document.getElementById("over").classList.remove("hide");
-  beep(win?1046:80,.6,win?"triangle":"sawtooth",.09);
+  gameOverUI(win,G.kills,Math.round(G.t),G.wave);
+  if(net==='host')netEv({e:'ov',w:win?1:0,n:G.kills,s:Math.round(G.t),v:G.wave});
 }
 // ===== Kamera: Mittelpunkt beider Spieler + Zoom nach Abstand =====
 function updateCamera(dt){
@@ -612,11 +742,8 @@ function updateCamera(dt){
 camera.position.set(0,20,28);camera.lookAt(0,1,6);
 // ===== Hauptschleife =====
 var last=performance.now();
-function loop(now){
-  requestAnimationFrame(loop);
-  var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G&&!paused){
-    G.t+=dt;
+function angDelta(a,b){var d=(b-a)%(Math.PI*2);if(d>Math.PI)d-=Math.PI*2;if(d<-Math.PI)d+=Math.PI*2;return d;}
+function simFrame(dt){ // volle Simulation: lokal / solo / Online-HOST (autoritativ)
     // P1-Bewegung (Velocity-Glättung)
     if(G.down1<=0){var m1=mv1(),l1=Math.hypot(m1.x,m1.z)||1,on1=(Math.abs(m1.x)+Math.abs(m1.z))>0.05?1:0;
       G.vx1+=((m1.x/l1)*13*on1-G.vx1)*Math.min(1,dt*(on1?11:8));
@@ -627,17 +754,22 @@ function loop(now){
           if(Math.hypot(e.g.position.x-P1.g.position.x,e.g.position.z-P1.g.position.z)<3.2){nearE=true;break;}}
         if(nearE&&G.atkCD1<=0)p1Attack();}
     }
-    // P2-Bewegung (Mensch) — Solo übernimmt updAI die Velocity
-    if(!solo&&G.down2<=0){var m2=mv2(),l2=Math.hypot(m2.x,m2.z)||1,on2=(Math.abs(m2.x)+Math.abs(m2.z))>0.05?1:0;
+    // P2-Bewegung: Mensch an derselben Tastatur — Online-Host bekommt sie vom Client, Solo von updAI
+    if(!solo&&net!=='host'&&G.down2<=0){var m2=mv2(),l2=Math.hypot(m2.x,m2.z)||1,on2=(Math.abs(m2.x)+Math.abs(m2.z))>0.05?1:0;
       G.vx2+=((m2.x/l2)*13*on2-G.vx2)*Math.min(1,dt*(on2?11:8));
       G.vz2+=((m2.z/l2)*13*on2-G.vz2)*Math.min(1,dt*(on2?11:8));}
     updAI(dt);
-    if(G.down2<=0){P2.g.position.x+=G.vx2*dt;P2.g.position.z+=G.vz2*dt;}
+    if(net==='host')updNetP2(dt);
+    else if(G.down2<=0){P2.g.position.x+=G.vx2*dt;P2.g.position.z+=G.vz2*dt;}
     // Arena-Grenze
     [P1,P2].forEach(function(P){var pr=Math.hypot(P.g.position.x,P.g.position.z);
       if(pr>ARENA-1.2){P.g.position.x*=(ARENA-1.2)/pr;P.g.position.z*=(ARENA-1.2)/pr;}});
     // Blick in Bewegungsrichtung (nur wenn Klinge kein Ziel hat — Auto-Face passiert im Angriff)
     if(Math.hypot(G.vx1,G.vz1)>1.5&&G.down1<=0)P1.g.rotation.y=Math.atan2(G.vx1,G.vz1);
+    p2AutoFire(dt);updEnemies(dt);updBand(dt);updRevive(dt);updWaves(dt);updBoss(dt);
+    if(net==='host')hostNetFrame(dt);
+}
+function visFrame(dt){ // geteilte Optik: läuft in JEDEM Modus (auch Online-Client)
     g1.position.set(P1.g.position.x,2,P1.g.position.z);g2.position.set(P2.g.position.x,2,P2.g.position.z);
     P1.ring.rotation.z+=dt*2;P2.ring.rotation.z-=dt*2;
     // Charakter-Animation: Lauf-Bob + Lean (prozedural), Props
@@ -670,11 +802,63 @@ function loop(now){
     // Blink bei i-Frames
     var v1=(G.if1>0)?(Math.floor(G.t*30)%2===0):true;(P1.model||P1.body).visible=v1;
     var v2=(G.if2>0)?(Math.floor(G.t*30)%2===0):true;(P2.model||P2.body).visible=v2;
-    p2AutoFire(dt);updEnemies(dt);updBand(dt);updRevive(dt);updWaves(dt);updBoss(dt);updFx(dt);
+    updFx(dt);
     if(hurtT>0){hurtT-=dt*2;hurtEl.style.opacity=Math.max(0,hurtT*0.8);}
+}
+function clientFrame(dt){ // Online-CLIENT: eigene Figur (Funke) + Interpolation der Host-Welt
+    // Eigene Figur — Client-autoritativ, WASD ODER Pfeile ODER Touch-Stick
+    if(G.down2<=0){
+      var m=mvAny(),l=Math.hypot(m.x,m.z)||1,on=(Math.abs(m.x)+Math.abs(m.z))>0.05?1:0;
+      G.vx2+=((m.x/l)*13*on-G.vx2)*Math.min(1,dt*(on?11:8));
+      G.vz2+=((m.z/l)*13*on-G.vz2)*Math.min(1,dt*(on?11:8));
+      P2.g.position.x+=G.vx2*dt;P2.g.position.z+=G.vz2*dt;
+      var pr=Math.hypot(P2.g.position.x,P2.g.position.z);
+      if(pr>ARENA-1.2){P2.g.position.x*=(ARENA-1.2)/pr;P2.g.position.z*=(ARENA-1.2)/pr;}
+      if(Math.hypot(G.vx2,G.vz2)>1.5)P2.g.rotation.y=Math.atan2(G.vx2,G.vz2);
+    }else{ // am Boden: Host-Position übernehmen
+      P2.g.position.x+=(netP2.x-P2.g.position.x)*Math.min(1,dt*8);
+      P2.g.position.z+=(netP2.z-P2.g.position.z)*Math.min(1,dt*8);
+      G.vx2=0;G.vz2=0;
+    }
+    // Remote-KLINGE weich interpolieren (lerp) — kein Ruckeln trotz 12 Snapshots/s
+    var ox=P1.g.position.x,oz=P1.g.position.z,k=Math.min(1,dt*10);
+    P1.g.position.x+=(np1.x-ox)*k;P1.g.position.z+=(np1.z-oz)*k;
+    P1.g.rotation.y+=angDelta(P1.g.rotation.y,np1.ry)*k;
+    if(dt>0){G.vx1=(P1.g.position.x-ox)/dt;G.vz1=(P1.g.position.z-oz)/dt;}
+    // Gegner-Spiegel lerpen
+    for(var id in mirrors){var mo=mirrors[id];
+      mo.g.position.x+=(mo.tx-mo.g.position.x)*k;mo.g.position.z+=(mo.tz-mo.g.position.z)*k;
+      mo.body.rotation.y+=dt*2;
+      if(mo.g.userData.shield)mo.g.userData.shield.rotation.z+=dt*1.5;}
+    // Boss-Spiegel
+    if(bossM){bossM.g.position.x+=(bossM.tx-bossM.g.position.x)*k;
+      bossM.g.position.y+=(bossM.ty-bossM.g.position.y)*Math.min(1,dt*3);
+      bossM.g.position.z+=(bossM.tz-bossM.g.position.z)*k;bossM.g.rotation.y+=dt*0.5;}
+    updBand(dt); // nur Optik (Client-Guard in updBand)
+    // Eigene Position senden (20/s, unreliable) + Ping (1/s)
+    inAcc+=dt;pingAcc+=dt;
+    if(inAcc>=0.05&&netSess){inAcc=0;netSess.sendFast({k:'i',x:+P2.g.position.x.toFixed(2),z:+P2.g.position.z.toFixed(2),ry:+P2.g.rotation.y.toFixed(2)});}
+    if(pingAcc>=1&&netSess){pingAcc=0;netSess.sendFast({k:'p',t:performance.now()});}
+}
+var kaLast=0;
+function loop(now){
+  requestAnimationFrame(loop);
+  var dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(running&&G&&!paused){
+    G.t+=dt;
+    if(net==='client')clientFrame(dt);else simFrame(dt);
+    visFrame(dt);
+  }else if(net&&netSess){
+    // Keepalive: am Game-Over-/Pause-Screen laufen keine Snapshots/Inputs mehr —
+    // ohne Ping würde der 6s-Watchdog in mp.js die Verbindung fälschlich kappen
+    // (wichtig für den Rematch-Flow, wo beide auf dem Game-Over-Screen warten).
+    // Wall-Clock statt dt-Summe: dt ist auf 0.05s geclampt und käme bei niedriger
+    // Framerate deutlich langsamer als 1/s.
+    if(now-kaLast>=1000){kaLast=now;netSess.sendFast({k:'p',t:performance.now()});}
   }
   updateCamera(dt);
   renderBloom();
+  updLabels(); // Namens-Labels + Sprechblasen an die 3D-Figuren heften
 }
 
 // ---- Bloom-Post-Processing (Neon-Glow) ----
@@ -702,20 +886,36 @@ function resizeBloomRT(){rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,
 
 requestAnimationFrame(loop);
 // ===== Start =====
-function begin(isSolo){
-  solo=isSolo;
+var KH0=document.getElementById("keysHelp").innerHTML;
+function begin(isSolo,role){
+  solo=isSolo;net=role||null;
   G=freshState();
   for(var i=0;i<enemies.length;i++)if(enemies[i].active)scene.remove(enemies[i].g);
   enemies.length=0;if(G.boss&&G.boss.g)scene.remove(G.boss.g);
+  clearMirrors();snapAcc=0;inAcc=0;pingAcc=0;
   P1.g.position.set(-4,0,10);P2.g.position.set(4,0,10);P1.g.rotation.z=0;P2.g.rotation.z=0;
+  netP2={x:4,z:10,ry:0};np1={x:-4,z:10,ry:0};
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");
   document.getElementById("over").classList.add("hide");
+  document.getElementById("onlineO").classList.add("hide");
+  document.getElementById("netLost").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
-  document.getElementById("p2bar").querySelector(".nm").textContent=solo?"✦ FUNKE (KI)":"✦ FUNKE";
+  document.getElementById("waveTxt").textContent="WELLE 1";document.getElementById("waveSub").textContent="";
+  document.getElementById("p1bar").querySelector(".nm").textContent=net==='client'?"⚔ KLINGE (Freund)":"⚔ KLINGE";
+  document.getElementById("p2bar").querySelector(".nm").textContent=solo?"✦ FUNKE (KI)":(net==='host'?"✦ FUNKE (Freund)":(net==='client'?"✦ FUNKE (DU)":"✦ FUNKE"));
+  var kh=document.getElementById("keysHelp");
+  if(net==='client')kh.innerHTML='<span style="color:#ffb46e"><b>✦ DU bist FUNKE:</b> WASD/Pfeile bewegen — gefeuert wird automatisch</span><span style="color:#8b93b8"> · <b>M</b> Ton · <b>1–6</b> 💬</span>';
+  else if(net==='host')kh.innerHTML='<span style="color:#7de3ff"><b>⚔ DU bist KLINGE:</b> WASD · <b>LEER</b> Hieb</span><span style="color:#8b93b8"> · ✦ Funke steuert dein Freund · <b>M</b> Ton · <b>1–6</b> 💬</span>';
+  else kh.innerHTML=KH0;
+  var pingEl=document.getElementById("ping");pingEl.classList.toggle("hide",!net);if(net)pingEl.textContent="– ms";
+  var tAtkEl=document.getElementById("tAtk");if(tAtkEl)tAtkEl.style.display=(net==='client')?"none":"";
+  remReset();bubUntil[1]=0;bubUntil[2]=0; // Rematch-Status + alte Sprechblasen weg
   updHUD();running=true;musSync();
   announce("NEON DUO","#b98bff");
-  showHint(solo?"Deine KI-Partnerin folgt, feuert und belebt dich wieder!":"Bleibt zusammen — das Band verbrennt Gegner dazwischen!",3600);
+  showHint(net==='client'?"Du bist ✦ FUNKE — beweg dich, gefeuert wird automatisch. Bleibt zusammen!":
+    (net==='host'?"Dein Freund steuert ✦ FUNKE — das Band verbrennt Gegner zwischen euch!":
+    (solo?"Deine KI-Partnerin folgt, feuert und belebt dich wieder!":"Bleibt zusammen — das Band verbrennt Gegner dazwischen!")),3600);
 }
 function renderMenu(){var r=document.getElementById("optRows");r.innerHTML="";
   var d=document.createElement("button");
@@ -727,11 +927,332 @@ function toggleMenu(){if(!G||!running&&!paused)return;paused=!paused;musSync();
   if(paused)renderMenu();}
 document.getElementById("menuBtn").onclick=toggleMenu;
 document.getElementById("resumeBtn2").onclick=toggleMenu;
-document.getElementById("restartBtn2").onclick=function(){paused=false;document.getElementById("menuO").classList.add("hide");begin(solo);};
+document.getElementById("restartBtn2").onclick=function(){paused=false;document.getElementById("menuO").classList.add("hide");
+  if(net==='host')netBegin();else if(net==='client')netEv({k:'again'});else begin(solo);};
 addEventListener("keydown",function(e){if(e.key==="Escape")toggleMenu();});
 document.getElementById("startCoop").onclick=function(){begin(false);};
 document.getElementById("startSolo").onclick=function(){begin(true);};
-document.getElementById("againBtn").onclick=function(){begin(solo);};
+document.getElementById("againBtn").onclick=function(){
+  if(net==='host')netBegin();
+  else if(net==='client'){netEv({k:'again'});document.getElementById("overTxt").innerHTML="⏳ Neustart beim Host angefragt…";}
+  else begin(solo);};
+
+// ============================================================================
+// ===== Online-Koop (Masterplan Phase 3) — PeerJS-P2P über js/mp.js ========
+// Host = autoritative Simulation (Gegner/Boss/HP/Revive), sendet ~12 Snapshots/s
+// (unreliable) + Events (reliable). Client = eigene Figur (Funke, client-
+// autoritativ, 20 Positions-Updates/s) + Interpolation der Host-Welt.
+// ============================================================================
+function netEv(o){if(netSess)netSess.send(o);} // Events immer reliable/geordnet
+function clearMirrors(){for(var id in mirrors)scene.remove(mirrors[id].g);mirrors={};if(bossM){scene.remove(bossM.g);bossM=null;}}
+function setPing(ms){lastPing=ms;var el=document.getElementById("ping");
+  el.textContent=Math.max(1,Math.round(ms))+" ms";
+  el.style.color=ms>150?"#ff5d7d":(ms>80?"#ffd166":"#8b93b8");}
+function updNetP2(dt){ // Host: Funke = vom Client gemeldete Position, weich gelerpt
+  if(G.down2>0)return;
+  var ox=P2.g.position.x,oz=P2.g.position.z,k=Math.min(1,dt*12);
+  P2.g.position.x+=(netP2.x-ox)*k;P2.g.position.z+=(netP2.z-oz)*k;
+  P2.g.rotation.y+=angDelta(P2.g.rotation.y,netP2.ry)*k;
+  if(dt>0){G.vx2=(P2.g.position.x-ox)/dt;G.vz2=(P2.g.position.z-oz)/dt;}
+}
+function buildSnap(){
+  var en=[];
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    en.push([e.eid,e.type,+e.g.position.x.toFixed(1),+e.g.position.z.toFixed(1)]);}
+  var b=G.boss&&G.boss.active?[+G.boss.g.position.x.toFixed(1),+G.boss.g.position.y.toFixed(1),+G.boss.g.position.z.toFixed(1)]:0;
+  return {k:'s',h1:Math.round(G.hp1),h2:Math.round(G.hp2),
+    d1:+G.down1.toFixed(1),d2:+G.down2.toFixed(1),r1:+G.rev1.toFixed(2),r2:+G.rev2.toFixed(2),
+    p1:[+P1.g.position.x.toFixed(2),+P1.g.position.z.toFixed(2),+P1.g.rotation.y.toFixed(2)],
+    p2:[+P2.g.position.x.toFixed(2),+P2.g.position.z.toFixed(2)],bs:b,en:en};
+}
+function hostNetFrame(dt){
+  snapAcc+=dt;pingAcc+=dt;
+  if(snapAcc>=0.083&&netSess){snapAcc=0;netSess.sendFast(buildSnap());}
+  if(pingAcc>=1&&netSess){pingAcc=0;netSess.sendFast({k:'p',t:performance.now()});}
+}
+function applySnap(m){
+  if(!G)return;
+  if(m.h2<G.hp2){hurtT=1;camShake=Math.max(camShake,0.3);beep(140,.14,"sawtooth",.05);} // eigener Treffer
+  var wasD1=G.down1>0,wasD2=G.down2>0;
+  G.hp1=m.h1;G.hp2=m.h2;G.down1=m.d1;G.down2=m.d2;G.rev1=m.r1;G.rev2=m.r2;
+  P1.g.rotation.z=m.d1>0?Math.PI/2:0;P2.g.rotation.z=m.d2>0?Math.PI/2:0;
+  if(wasD1&&m.d1<=0)burst(P1.g.position.x,1,P1.g.position.z,0x6affab,16,6);
+  if(wasD2&&m.d2<=0)burst(P2.g.position.x,1,P2.g.position.z,0x6affab,16,6);
+  np1.x=m.p1[0];np1.z=m.p1[1];np1.ry=m.p1[2];
+  netP2.x=m.p2[0];netP2.z=m.p2[1];
+  // Gegner-Spiegel abgleichen (neu anlegen / Ziele setzen / Tote entfernen mit Burst)
+  var seen={};
+  for(var i=0;i<m.en.length;i++){var a=m.en[i],id=a[0],mo=mirrors[id];seen[id]=1;
+    if(!mo){var B=buildEnemyG(a[1]);B.g.position.set(a[2],0,a[3]);scene.add(B.g);
+      mo=mirrors[id]={g:B.g,body:B.body,c:B.c,type:a[1],tx:a[2],tz:a[3]};}
+    mo.tx=a[2];mo.tz=a[3];}
+  for(var id2 in mirrors){if(!seen[id2]){var d=mirrors[id2];
+    burst(d.g.position.x,d.type===2?3:1,d.g.position.z,d.c,10,5);beep(240,.12,"sawtooth",.05);
+    scene.remove(d.g);delete mirrors[id2];}}
+  // Boss-Spiegel
+  if(m.bs){
+    if(!bossM){var bg=buildBossG();bg.position.set(m.bs[0],m.bs[1],m.bs[2]);scene.add(bg);
+      bossM={g:bg,tx:m.bs[0],ty:m.bs[1],tz:m.bs[2]};}
+    bossM.tx=m.bs[0];bossM.ty=m.bs[1];bossM.tz=m.bs[2];
+  }else if(bossM){burst(bossM.g.position.x,3,bossM.g.position.z,0xffd166,44,9);camShake=1.2;scene.remove(bossM.g);bossM=null;}
+  updHUD();
+}
+function netMsg(m){
+  if(m==null||typeof m!=="object")return;
+  if(m.k==='p'){if(netSess)netSess.sendFast({k:'q',t:m.t});return;}
+  if(m.k==='q'){setPing(performance.now()-m.t);return;}
+  if(net==='host'||netSess&&netSess.role==='host'){
+    if(m.k==='i'){netP2.x=m.x;netP2.z=m.z;netP2.ry=m.ry||0;}
+    else if(m.k==='again')netBegin();
+    else if(m.k==='hello')setPName(2,m.n);
+    else if(m.k==='em')recvEmote(2,m.i);
+    else if(m.k==='rm')peerRematch();
+    return;
+  }
+  // Client: Snapshots + Events vom Host
+  if(m.k==='s'){applySnap(m);return;}
+  switch(m.e){
+    case 'bg':if(m.n)setPName(1,m.n);begin(false,'client');sendHello();break;
+    case 'an':announce(m.t,m.c);break;
+    case 'hi':showHint(m.t,m.m);break;
+    case 'wv':document.getElementById("waveTxt").textContent=m.a;document.getElementById("waveSub").textContent=m.b;break;
+    case 'nv':novaFx(m.x,m.z);break;
+    case 'a1':if(G)slashFx(m.ry);break;
+    case 'a2':if(G)fireFx(m.x,m.y,m.z);break;
+    case 'bw':bossWarnFx(m.x,m.z);break;
+    case 'ov':running=false;musSync();gameOverUI(!!m.w,m.n,m.s,m.v);break;
+    case 'hello':setPName(1,m.n);break;
+    case 'em':recvEmote(1,m.i);break;
+    case 'rm':peerRematch();break;
+  }
+}
+function netBegin(){begin(false,'host');netEv({e:'bg',n:names[1]});}
+// ---- Lobby-UI ----
+var mpO=document.getElementById("onlineO"),mpHome=document.getElementById("mpHome"),
+    mpHost=document.getElementById("mpHost"),mpJoin=document.getElementById("mpJoin");
+function mpView(v){mpHome.classList.toggle("hide",v!=="home");mpHost.classList.toggle("hide",v!=="host");mpJoin.classList.toggle("hide",v!=="join");}
+function netCleanup(){if(netSess){try{netSess.close();}catch(e){}netSess=null;}net=null;clearMirrors();document.getElementById("ping").classList.add("hide");remSwap(false);}
+document.getElementById("startOnline").onclick=function(){
+  if(!window.MP||!window.Peer&&!MP.localMode){showHint("Online-Modus hier nicht verfügbar.",2600);return;}
+  document.getElementById("start").classList.add("hide");mpO.classList.remove("hide");mpView("home");};
+document.getElementById("mpBackBtn").onclick=function(){netCleanup();mpO.classList.add("hide");document.getElementById("start").classList.remove("hide");};
+function startNet(role){
+  net=role;
+  netSess.onStatus(netStatus);
+  // Namens-Handshake: jeder schickt seinen abanArcade-Namen (reliable, optionales Event —
+  // alte Gegenstellen ignorieren unbekannte Nachrichten einfach). Zusätzlich trägt das
+  // 'bg'-Start-Event den Host-Namen und der Client antwortet erneut — startreihenfolge-fest.
+  sendHello();
+  if(role==='host')netBegin();
+  else document.getElementById("mpJoinState").textContent="✅ Verbunden! Der Host startet das Spiel…";
+}
+document.getElementById("mpMakeBtn").onclick=function(){
+  netCleanup();mpView("host");
+  var s=MP.host("duo");netSess=s;
+  var codeEl=document.getElementById("mpCode"),st=document.getElementById("mpHostState");
+  codeEl.textContent=s.code;
+  st.innerHTML='Warte auf Mitspieler<span class="dots"></span>';
+  s.onStatus(function(){codeEl.textContent=s.code;}); // bei Code-Kollision neu gewürfelt
+  s.onMessage(netMsg);
+  s.ready.then(function(){startNet('host');}).catch(function(e){st.textContent="⚠ "+e.message;});
+};
+document.getElementById("mpJoinBtn").onclick=function(){mpView("join");codeIns[0].focus();};
+var codeIns=[].slice.call(document.querySelectorAll(".codeIn"));
+codeIns.forEach(function(inp,i){
+  inp.addEventListener("keydown",function(e){e.stopPropagation(); // M-Mute/WASD nicht auslösen
+    if(e.key==="Backspace"&&!inp.value&&i>0)codeIns[i-1].focus();
+    if(e.key==="Enter")mpGo();});
+  inp.addEventListener("input",function(){
+    var v=inp.value.toUpperCase().replace(/[^A-Z]/g,"");
+    if(v.length>1){ // Paste eines ganzen Codes verteilen
+      for(var j=0;j<4;j++)codeIns[j].value=v[j]||"";
+      (codeIns[Math.min(3,v.length-1)]||inp).focus();
+    }else{inp.value=v;if(v&&i<3)codeIns[i+1].focus();}
+    if(codeIns.every(function(x){return x.value;}))mpGo();});
+});
+function mpGo(){
+  var code=codeIns.map(function(x){return x.value;}).join("");
+  var st=document.getElementById("mpJoinState");
+  if(code.length<4){st.textContent="Bitte alle 4 Buchstaben eingeben.";return;}
+  if(netSess&&netSess.status!=="closed")return; // schon am Verbinden
+  netCleanup();
+  st.innerHTML='Verbinde<span class="dots"></span>';
+  var s=MP.join("duo",code);netSess=s;
+  s.onMessage(netMsg);
+  s.ready.then(function(){startNet('client');}).catch(function(e){st.textContent="⚠ "+e.message;netSess=null;});
+}
+document.getElementById("mpGoBtn").onclick=mpGo;
+// Code teilen = 1 Tap: Copy-Button + navigator.share (Mobil) + ?join=CODE-Link
+function inviteUrl(){return location.origin+location.pathname+"?join="+(netSess?netSess.code:"");}
+document.getElementById("mpCopyBtn").onclick=function(){
+  var b=this,c=netSess?netSess.code:"";
+  var done=function(){b.textContent="✅ Kopiert!";setTimeout(function(){b.textContent="📋 Code kopieren";},1600);};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(c).then(done,function(){});
+  else{var t=document.createElement("textarea");t.value=c;document.body.appendChild(t);t.select();try{document.execCommand("copy");done();}catch(e){}document.body.removeChild(t);}
+};
+document.getElementById("mpShareBtn").onclick=function(){
+  var c=netSess?netSess.code:"";
+  if(navigator.share)navigator.share({title:"Neon Duo — spiel mit mir!",text:"Komm in meinen Koop-Raum, Code: "+c,url:inviteUrl()}).catch(function(){});
+  else if(navigator.clipboard&&navigator.clipboard.writeText){var b=this;navigator.clipboard.writeText(inviteUrl()).then(function(){b.textContent="✅ Link kopiert!";setTimeout(function(){b.textContent="📤 Einladung teilen";},1600);},function(){});}
+};
+// ---- Verbindungs-Status / Disconnect-Fallback auf KI ----
+function netStatus(t){
+  if(net==null)return;
+  if(t==='lost'){remSwap(false);showNetLost(false);}
+  else if(t==='connected'){hideNetLost();announce("VERBINDUNG WIEDER DA!","#6affab");}
+  else if(t==='closed'){remSwap(false);showNetLost(true);}
+}
+function showNetLost(final){
+  if(net==='host')paused=true; // Host-Welt anhalten, solange das Overlay steht
+  document.getElementById("netLostTxt").textContent=final?
+    "Die Verbindung ist weg. Spiel mit der KI-Partnerin weiter — oder geh zurück ins Menü.":
+    "Verbindung verloren — ich versuche, sie wiederherzustellen…";
+  document.getElementById("netLost").classList.remove("hide");
+}
+function hideNetLost(){document.getElementById("netLost").classList.add("hide");if(net==='host')paused=false;}
+document.getElementById("netAiBtn").onclick=function(){
+  var wasHost=(net==='host'),wasRunning=running&&!!G;
+  document.getElementById("netLost").classList.add("hide");
+  netCleanup();paused=false;
+  if(wasHost&&wasRunning){ // nahtlos: KI übernimmt Funke im laufenden Spiel
+    solo=true;
+    document.getElementById("p2bar").querySelector(".nm").textContent="✦ FUNKE (KI)";
+    document.getElementById("keysHelp").innerHTML=KH0;
+    showHint("🤖 KI-Partnerin übernimmt FUNKE — weiter geht's!",2800);
+  }else begin(true); // Client: frischer Solo-Run mit KI
+};
+document.getElementById("netMenuBtn").onclick=function(){
+  document.getElementById("netLost").classList.add("hide");
+  netCleanup();paused=false;running=false;musSync();
+  document.getElementById("hud").classList.add("hide");
+  document.getElementById("over").classList.add("hide");
+  mpO.classList.add("hide");
+  document.getElementById("start").classList.remove("hide");
+};
+// ?join=CODE aus geteiltem Link → Join-UI vorausfüllen und direkt verbinden
+(function(){
+  var m=location.search.match(/[?&]join=([A-Za-z]{4})\b/);
+  if(!m||!window.MP)return;
+  document.getElementById("start").classList.add("hide");
+  mpO.classList.remove("hide");mpView("join");
+  var c=m[1].toUpperCase();
+  for(var i=0;i<4;i++)codeIns[i].value=c[i];
+  mpGo();
+})();
+// ============================================================================
+// ===== Multiplayer-Zusatz: Quick-Chat/Emotes · Namens-Labels · Rematch =====
+// Kinder-sicher: NUR 6 vorgefertigte Reaktionen, kein Freitext. Alles läuft
+// über den bestehenden reliable-Kanal (netEv) — mp.js unverändert.
+// ============================================================================
+var EMOTES=["👍","❤️","😂","😮","Gut gemacht!","Hilfe!"];
+var names={1:"Klinge",2:"Funke"};
+function cleanName(n){return String(n==null?"":n).replace(/[<>&"'`]/g,"").trim().slice(0,12);} // Injection-Schutz + Länge cappen (Anzeige läuft eh über textContent)
+function myName(){var n="";
+  try{n=(window.AbanArcade?AbanArcade.profile().name:(JSON.parse(lsGet("abanArcade")||"{}")||{}).name)||"";}catch(e){}
+  n=cleanName(n);return n||(amGuest()?"Funke":"Klinge");}
+function amGuest(){return net==='client'||!!(netSess&&netSess.role==='join');}
+function sendHello(){ // eigener Name → Gegenseite (reliable); idempotent, mehrfach ok
+  var me=amGuest()?2:1;
+  setPName(me,myName());
+  netEv(me===1?{e:'hello',n:names[1]}:{k:'hello',n:names[2]});
+}
+function setPName(who,n){names[who]=cleanName(n)||(who===1?"Klinge":"Funke");
+  document.getElementById("nm"+who).textContent=names[who];}
+setPName(1,"");setPName(2,"");
+// --- Labels + Sprechblasen an die Figuren projizieren (jeden Frame) ---
+var _pv=new THREE.Vector3(),bubUntil={1:0,2:0};
+function projEl(el,P,y){_pv.set(P.g.position.x,y,P.g.position.z).project(camera);
+  if(_pv.z>1){el.style.display="none";return;}
+  el.style.left=((_pv.x+1)/2*W)+"px";el.style.top=((-_pv.y+1)/2*H)+"px";el.style.display="block";}
+function updLabels(){
+  var showN=!!net&&!!G&&running&&!paused; // Namen NUR online
+  for(var w=1;w<=2;w++){var P=w===1?P1:P2;
+    var nm=document.getElementById("nm"+w);
+    if(showN)projEl(nm,P,3.0);else nm.style.display="none";
+    var b=document.getElementById("bub"+w);
+    if(G&&performance.now()<bubUntil[w])projEl(b,P,4.9);else b.style.display="none";} // Blase deutlich ÜBER dem Namens-Label
+}
+function showBubble(who,i){
+  i=Math.max(0,Math.min(EMOTES.length-1,(+i|0)));
+  var el=document.getElementById("bub"+who),t=EMOTES[i];
+  el.textContent=t;el.classList.toggle("txt",t.length>2);
+  el.classList.remove("pop");void el.offsetWidth;el.classList.add("pop"); // Pop-in neu starten
+  bubUntil[who]=performance.now()+2500;
+  beep(who===1?920:1080,.07,"triangle",.03);
+}
+var lastEmoteSend=0,lastEmoteRecv=0;
+function sendEmote(i){
+  if(!running||paused||!G)return;
+  var now=performance.now();
+  if(now-lastEmoteSend<1000)return; // Spam-Schutz: max 1/s, Überschuss verwerfen (keine Queue)
+  lastEmoteSend=now;
+  var me=(net==='client')?2:1;
+  showBubble(me,i);
+  if(net==='host')netEv({e:'em',i:i});
+  else if(net==='client')netEv({k:'em',i:i});
+  else if(solo&&Math.random()<0.5)setTimeout(function(){ // KI-Partnerin reagiert gelegentlich 👍/😂
+    if(running&&solo&&!net)showBubble(2,Math.random()<0.5?0:2);},900+Math.random()*900);
+}
+function recvEmote(who,i){
+  var now=performance.now();
+  if(now-lastEmoteRecv<1000)return; // auch eingehend drosseln
+  lastEmoteRecv=now;showBubble(who,i);
+}
+// --- Emote-Leiste (Desktop, Tasten 1–6) + 💬-Fächer (Touch, ≥48px) ---
+(function(){
+  var bar=document.getElementById("emoteBar"),fan=document.getElementById("chatFan");
+  function mkBtn(i,into,after){var b=document.createElement("button");b.type="button";
+    b.textContent=EMOTES[i];if(EMOTES[i].length>2)b.className="txt";
+    b.title="Reaktion senden (Taste "+(i+1)+")";
+    b.addEventListener("click",function(ev){ev.preventDefault();sendEmote(i);if(after)after();});
+    into.appendChild(b);}
+  function fanShow(on){fan.style.display=on?"grid":"none";}
+  for(var i=0;i<EMOTES.length;i++){mkBtn(i,bar);mkBtn(i,fan,function(){fanShow(false);});}
+  var tc=document.getElementById("tChat");
+  tc.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fanShow(fan.style.display!=="grid");},{passive:false});
+  tc.addEventListener("click",function(){fanShow(fan.style.display!=="grid");});
+})();
+// --- Rematch am Game-Over (nur online): BEIDE drücken → synchroner Neustart ---
+var rem={me:false,peer:false,tmo:null};
+function remReset(){rem.me=false;rem.peer=false;clearTimeout(rem.tmo);rem.tmo=null;
+  var st=document.getElementById("rematchState");st.classList.add("hide");st.textContent="";
+  document.getElementById("rematchBtn").disabled=false;}
+function remSwap(online){ // online verbunden → „Nochmal zusammen", sonst normaler Solo-Restart
+  document.getElementById("rematchBtn").classList.toggle("hide",!online);
+  document.getElementById("againBtn").classList.toggle("hide",!!online);}
+function remCheck(){
+  var st=document.getElementById("rematchState");st.classList.remove("hide");
+  var n=(rem.me?1:0)+(rem.peer?1:0);
+  if(rem.me&&rem.peer){st.textContent="✅ Beide bereit — los geht's!";
+    if(net==='host')netBegin();} // Host resettet und schickt das Start-Event ('bg')
+  else if(rem.me)st.textContent="⏳ Warte auf Mitspieler… "+n+"/2";
+  else st.textContent="👋 "+names[net==='client'?1:2]+" will nochmal spielen! ("+n+"/2)";
+}
+function peerRematch(){if(net==null)return;rem.peer=true;remCheck();}
+document.getElementById("rematchBtn").onclick=function(){
+  if(rem.me||net==null)return;
+  rem.me=true;this.disabled=true;
+  netEv(net==='host'?{e:'rm'}:{k:'rm'});
+  remCheck();
+  clearTimeout(rem.tmo);
+  rem.tmo=setTimeout(function(){ // 30s keine Antwort → Hinweis + Solo-Restart anbieten
+    if(rem.me&&!rem.peer){
+      document.getElementById("rematchState").textContent="😴 Keine Antwort — dein Mitspieler ist wohl weg.";
+      document.getElementById("againBtn").classList.remove("hide");}
+  },30000);
+};
+// Debug-Griff für automatisierte Tests (game_smoke / Playwright-2-Browser-Test)
+window.__nd={go:function(w){if(running&&net!=='client')gameOver(!!w);}, // Test: Game-Over erzwingen (Host/lokal)
+  s:function(){return {net:net,running:running,paused:paused,ping:lastPing,
+  p1:[+P1.g.position.x.toFixed(2),+P1.g.position.z.toFixed(2)],
+  p2:[+P2.g.position.x.toFixed(2),+P2.g.position.z.toFixed(2)],
+  hp1:G?G.hp1:0,hp2:G?G.hp2:0,enemies:enemies.filter(function(e){return e.active;}).length,
+  mirrors:Object.keys(mirrors).length,code:netSess?netSess.code:null,st:netSess?netSess.status:null,
+  nm:[names[1],names[2]],
+  nmv:[document.getElementById("nm1").style.display!=="none",document.getElementById("nm2").style.display!=="none"],
+  bub:[document.getElementById("bub1").style.display!=="none"?document.getElementById("bub1").textContent:null,
+       document.getElementById("bub2").style.display!=="none"?document.getElementById("bub2").textContent:null],
+  rem:[rem.me,rem.peer]};}};
 })();
 </script>
 </body>

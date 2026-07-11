@@ -1,0 +1,99 @@
+{
+ "updated": "2026-07-10T22:17:00Z",
+ "brainScore": "100.0/100 · 0 Befunde über 2654 Seiten",
+ "orders": {
+  "lastChecked": "2026-07-10T16:45:00Z",
+  "newest": "#1009 (10.07., PAID, unerfüllt — wartet auf User-Refund)",
+  "note": "#1006–#1008 refundiert (Lieferant/Konto-Thema). Bestell-Wächter läuft alle 2h."
+ },
+ "bigbuy": {
+  "status": "⛔ API-Bestellungen KONTO-WEIT blockiert (ER003 für alles — vermutlich fehlendes Bestell-Paket/Freischaltung)",
+  "products": "4 Neu-Importe auf DRAFT geparkt (2× Olimpia Klima, Intex Excursion 5, Intex Planschbecken) — reaktivierbar sobald Konto geklärt",
+  "since": "2026-07-10"
+ },
+ "userActions": [
+  {
+   "prio": 1,
+   "what": "BigBuy-Dashboard: zeigt es echten Bestand? Paket/Kontostatus prüfen (API-Bestellungen enthalten?) — dann Produkte-Reaktivierung + Fulfillment möglich"
+  },
+  {
+   "prio": 2,
+   "what": "Shopify-Admin: Bestellung #1009 (CHF 40.90, Eigenbestellung) refunden"
+  },
+  {
+   "prio": 3,
+   "what": "eBay-Verkäufer-OAuth (dropship/EBAY-VERKAUF-SETUP.md, ~20 Min) — Listing-Pipeline ist fertig und getestet"
+  },
+  {
+   "prio": 4,
+   "what": "3 Stripe-Payment-Links für produkte.html erstellen (Toolkit Pro 19 / Guide 39 / Bundle 49) — ich baue sie sofort ein"
+  },
+  {
+   "prio": 5,
+   "what": "Cloudflare D1 für echte Inserate (SETUP-INSERATE.md, ~5 Min)"
+  }
+ ],
+ "runs": [
+  {
+   "ts": "2026-07-11T13:00:00Z",
+   "was": "NEUE Bestellung #1010: Bluetooth-Kopfhörer Denver TWE-61W (BB-659558, 44.90 CHF, PAID) → BigBuy-API blockiert (ER003) → USER muss manuell im BigBuy-Dashboard bestellen ODER refunden. Versand Belp CH."
+  },
+  {
+   "ts": "2026-07-11T10:30:00Z",
+   "was": "Runde: Arcade-Hub (spiele.html→ABAN ARCADE, js/arcade.js, 12 Sitemap-URLs) + Eiswürfel-Kaufberater live (PR #1686) + Brain 100/100 + Orders: keine neuen (#1009 wartet auf User-Refund)"
+  },
+  {
+   "t": "2026-07-10T22:17Z",
+   "did": "🎮 Mobile-Pass: 6 Neon-Spiele optimiert (PixelRatio/Touch-Partikel/viewport-fit), 6/6 Smoke-PASS; Blender 4.0.2 installiert, Charakter-Auftrag verankert"
+  },
+  {
+   "t": "2026-07-10T22:06Z",
+   "did": "🕹️ Masterplan 'aban Arcade' verankert: Alles-in-1 + Mobile + Online-Koop (3 Phasen, WebRTC-P2P-Architektur) — Runden arbeiten ihn ab"
+  },
+  {
+   "t": "2026-07-10T21:53Z",
+   "did": "🎮 neon-realm: Gemini-Vision-Review (3 konkrete Fixes) im Runbook dokumentiert — Umsetzung nächste Runde"
+  },
+  {
+   "t": "2026-07-10T21Z",
+   "did": "🎮 Spiele: Smoke 12/12 PASS; game_smoke-Startklick-Fix (neon-realm startete im Test nie); Gemini-Vision-Keys verifiziert"
+  },
+  {
+   "t": "2026-07-10T21:03Z",
+   "did": "💰 Kaufberater verbessert: toten /go/galaxus-Kaufweg repariert (4 Seiten), Hub-A–Z 71 Labels scanbar, 2 Dubletten-Labels differenziert"
+  },
+  {
+   "t": "2026-07-10T20:56Z",
+   "did": "💰 Neue Geld-Seite: Gartenpool-Kaufberater (1007 Zeilen, 6 Affiliate-CTAs) + Sitemap + Hub-Link"
+  },
+  {
+   "t": "2026-07-10T17:00Z",
+   "did": "Tool-Zahl driftsicher: 'über 175 Tools' auf 205 Seiten (PR #1670)"
+  },
+  {
+   "t": "2026-07-10T16:20Z",
+   "did": "2h-Lauf: keine neue Bestellung, Brain 100/100, Zahlungslinks 4/4 live"
+  },
+  {
+   "t": "2026-07-10T16:00Z",
+   "did": "KI-Studio Gratis-Formular repariert — Geld-Seite (PR #1669)"
+  },
+  {
+   "t": "2026-07-10T15:50Z",
+   "did": "auto-suche: Demo-Badge-Fehlerzustand gefixt (PR #1668)"
+  },
+  {
+   "t": "2026-07-10T15:20Z",
+   "did": "Such-Polish: ehrliche Leer-/Fehlerzustände auf 3 Such-Seiten (PR #1667)"
+  },
+  {
+   "t": "2026-07-10T14:30Z",
+   "did": "BigBuy-Konto-Diagnose: order/check-Endpoint, 4 Importe DRAFT (PR #1664)"
+  },
+  {
+   "t": "2026-07-10T08:00Z",
+   "did": "Marktlücke Sommer-Hitze: Intex Boot + Pool importiert (PR #1663, später DRAFT wegen Konto)"
+  }
+ ],
+ "stand": "2026-07-11: #1010 offen (BigBuy blockiert). Spiele: Neon-Wildnis live, neon-realm Occlusion-Fix live, Lebenspfad B2 live. Runde 12 läuft (Survivor-Bau + Lebenspfad-Altern)."
+}
