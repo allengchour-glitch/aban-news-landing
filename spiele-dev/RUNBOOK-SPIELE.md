@@ -223,6 +223,14 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Mini-Bestenliste (Top 3 lokal). Save-kompatibel mit ns_best. Optional: freigeschaltete
       Startvorteile nach X Runden (klein, nicht pay2win).
 
+### Lebenspfad: viel freischalten + viele Features (User 2026-07-11) — nächster Lebenspfad-Pass (nach Online-Fix-Agent, gleiche Datei)
+- [ ] **Freischalt-System**: über mehrere Spiele hinweg Dinge freischalten (localStorage-Meta) —
+      neue Charakter-Looks/Accessoires/Outfits, neue Deko/Bretter-Themes, Bonus-Ereignisse,
+      Titel/Abzeichen, evtl. neue Start-Boni. Fortschritts-/Freischalt-Screen im Menü.
+- [ ] **Viele Features**: mehr Ereignis-Vielfalt, Mini-Spiele an Stationen, Achievements/Meilensteine,
+      Statistiken, tägliche Herausforderung, mehr Besitz-Objekte, Haustier-Arten, Berufe/Karrierewege.
+      (Iterativ ausbauen — jede Runde ein Paket.)
+
 ### neon-jump Platformer: Koop + Charaktere + Detail + Zoom (User 2026-07-11)
 - [ ] **Schritt 1 (zuerst):** Charakterauswahl Mann/Frau (+Varianten Haar/Farbe/Accessoire),
       einzigartige Charaktere mit Bewegungs-Animation (Bibo-Prinzip erweitern: Lauf/Sprung/Fall-Posen,
