@@ -188,7 +188,14 @@ FLOORS.forEach(function(fl){fl.texture=fl.tex?fl.tex():null;});
 var gridHelper=new THREE.GridHelper(GW*CS,GW,0xffffff,0xffffff);
 gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper.position.y=0.02;gridHelper.visible=false;scene.add(gridHelper);
 // Weg + Umgebung
-var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,16),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+8);weg.receiveShadow=true;scene.add(weg);
+var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+5);weg.receiveShadow=true;scene.add(weg);
+// Strasse (quer, mit Mittelstreifen + Bordstein)
+var strasse=new THREE.Mesh(new THREE.PlaneGeometry(140,7),stdMat(0x3a3a40,0.9));
+strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
+for(var ms=0;ms<14;ms++){var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
+  strich.rotation.x=-Math.PI/2;strich.position.set(-65+ms*10,0.005,GH*CS/2+12);scene.add(strich);}
+var bordstein=new THREE.Mesh(new THREE.BoxGeometry(140,0.18,0.5),stdMat(0xb8b8b0,0.8));
+bordstein.position.set(0,0.09,GH*CS/2+8.3);bordstein.receiveShadow=true;scene.add(bordstein);
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
     [[-24,-12],[24,-8],[-22,12],[26,10]].forEach(function(p,i){
@@ -241,6 +248,9 @@ var KATALOG={
  buero:[
   {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}}],
  garten:[
+  {id:"auto_kombi",n:"Kombi",e:"🚙",cost:2400,size:[1,2],car:1},
+  {id:"auto_flitzer",n:"Flitzer",e:"🏎️",cost:4800,size:[1,2],car:1},
+  {id:"auto_van",n:"Van",e:"🚐",cost:3200,size:[1,2],car:1},
   {id:"beet",n:"Gemüsebeet",e:"🥕",cost:120,size:[1,1],beet:1},
   {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
   {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}}]
@@ -309,6 +319,13 @@ function applyFloor(x,y,idx){var k=fkey(x,y);
 var haustier=null;
 function applyFurn(id,gx,gy,rot,fid){
   var def=defOf(id);if(!def)return;
+  if(def.car){ // Auto: parkt, faehrt morgens zur Arbeit
+    if(window.autoRec){scene.remove(window.autoRec.mesh);window.autoRec=null;}
+    loadTH(id,function(tpl){if(!tpl)return;
+      var m=tpl.clone(true);m.position.set(cx(gx),0.01,cz(gy));m.rotation.y=Math.PI/2;
+      scene.add(m);
+      window.autoRec={id:id,mesh:m,homeX:cx(gx),homeZ:cz(gy),state:"parkt",t:0};});
+    return;}
   if(def.beet){ // Gemüsebeet: prozedural (Erde + wachsende Pflanzen)
     var bg=new THREE.Group();
     var erde=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.22,1.7),stdMat(0x4a3220,0.95));erde.position.y=0.11;erde.receiveShadow=true;bg.add(erde);
@@ -672,15 +689,30 @@ function updBeete(dt){
           s5.needs.hunger=Math.min(100,s5.needs.hunger+12);
           simEmoji(s5,"🥕");hint("🥕 Ernte! +"+ertrag+" §");updHUD();break;}}}
   }}
+function updAuto(dt){
+  var a=window.autoRec;if(!a)return;
+  var strZ=GH*CS/2+11;
+  if(a.state==="los"){ // zur Strasse rollen, dann rechts raus
+    if(a.mesh.position.z<strZ-0.5){a.mesh.position.z+=dt*6;a.mesh.rotation.y=Math.PI;}
+    else{a.mesh.rotation.y=Math.PI/2;a.mesh.position.x+=dt*14;
+      if(a.mesh.position.x>75){a.state="weg";a.mesh.visible=false;}}}
+  else if(a.state==="heim"){
+    a.mesh.visible=true;
+    if(a.mesh.position.x>a.homeX+1){a.mesh.rotation.y=-Math.PI/2;a.mesh.position.x-=dt*14;a.mesh.position.z=strZ;}
+    else if(a.mesh.position.z>a.homeZ+0.3){a.mesh.rotation.y=0;a.mesh.position.z-=dt*6;}
+    else{a.state="parkt";a.mesh.position.set(a.homeX,0.01,a.homeZ);a.mesh.rotation.y=Math.PI/2;}}
+}
 function updWork(dt){
   if(MPs&&!mpHost)return;
   var hh=uhrzeit/60;
   if(!arbeiten&&hh>=9&&hh<17){arbeiten=true;
+    if(window.autoRec){window.autoRec.state="los";window.autoRec.mesh.position.set(window.autoRec.homeX,0.01,window.autoRec.homeZ);}
     sims.forEach(function(s2){s2.state="work";s2.pose="stand";s2.path=[];s2.target=null;
       if(s2.target&&s2.target.busy!==undefined)s2.target.busy=false;
       s2.mesh.visible=false;simEmojiSafe(s2);});
     hint("💼 Max & Mia arbeiten hart … (bis 17:00)");}
   else if(arbeiten&&(hh>=17||hh<9)){arbeiten=false;
+    if(window.autoRec){window.autoRec.state="heim";window.autoRec.mesh.position.set(70,0.01,GH*CS/2+11);window.autoRec.mesh.visible=true;}
     var lohn=2*(100+skills.arbeit.lv*40);
     geld+=lohn;skillXp("arbeit",1);
     sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;
@@ -1190,7 +1222,7 @@ function loop(now){
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
-    updBeete(dt);updWork(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
+    updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
