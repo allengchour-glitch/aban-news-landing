@@ -20,48 +20,53 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 #wrap{position:fixed;inset:0}canvas{display:block}
 .hide{display:none!important}
 #hud{position:fixed;inset:0;pointer-events:none;z-index:10}
-#stats{position:absolute;top:12px;left:12px;width:min(280px,46vw)}
-.bar{height:14px;border-radius:8px;background:rgba(8,10,24,.72);border:1px solid rgba(120,140,255,.3);overflow:hidden;margin-bottom:5px}
+#stats{position:absolute;top:12px;left:12px;width:min(300px,52vw)}
+.bar{height:18px;border-radius:9px;background:rgba(8,10,24,.72);border:1px solid rgba(120,140,255,.3);overflow:hidden;margin-bottom:5px}
 .bar i{display:block;height:100%;transition:width .15s}
 #hpB i{background:linear-gradient(90deg,#ff4d6d,#ff9a8b)}
 #enB i{background:linear-gradient(90deg,#5ef2ff,#b98bff)}
-#xpB{height:8px}#xpB i{background:linear-gradient(90deg,#ffcf6e,#ff9a4a)}
-#lvlTag{font-weight:900;font-size:.9rem;color:#ffd166;text-shadow:0 2px 8px #000;margin-bottom:4px;display:flex;justify-content:space-between}
+#xpB{height:11px}#xpB i{background:linear-gradient(90deg,#ffcf6e,#ff9a4a)}
+#lvlTag{font-weight:900;font-size:1.15rem;color:#ffd166;text-shadow:0 2px 8px #000;margin-bottom:4px;display:flex;justify-content:space-between}
 #lvlTag .shards{color:#7de3ff}
-#zoneTag{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-weight:900;letter-spacing:.25em;font-size:.85rem;color:#cfe0ff;text-shadow:0 2px 10px #000;text-transform:uppercase;opacity:.85}
-#clock{position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:.72rem;color:#8b93b8;text-shadow:0 2px 8px #000}
+#zoneTag{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-weight:900;letter-spacing:.22em;font-size:1.05rem;color:#e6efff;text-shadow:0 2px 10px #000,0 0 14px rgba(0,0,0,.9);text-transform:uppercase;opacity:.95;white-space:nowrap}
+#clock{position:absolute;top:40px;left:50%;transform:translateX(-50%);font-size:.95rem;color:#aab4d8;text-shadow:0 2px 8px #000;white-space:nowrap}
 #mapWrap{position:absolute;top:12px;right:12px;border:1px solid rgba(120,140,255,.35);border-radius:10px;overflow:hidden;background:rgba(8,10,24,.75)}
-#quests{position:absolute;top:180px;right:12px;width:min(250px,44vw);background:rgba(8,10,24,.66);border:1px solid rgba(120,140,255,.25);border-radius:12px;padding:10px 12px;font-size:.8rem}
-#quests h3{font-size:.72rem;letter-spacing:.2em;color:#ffcf6e;text-transform:uppercase;margin-bottom:6px}
+#quests{position:absolute;top:214px;right:12px;width:min(300px,50vw);background:rgba(8,10,24,.8);border:1px solid rgba(120,140,255,.25);border-radius:12px;padding:12px 14px;font-size:1rem}
+#quests h3{font-size:.9rem;letter-spacing:.2em;color:#ffcf6e;text-transform:uppercase;margin-bottom:6px}
 #quests .q{color:#cfd8ff;margin-bottom:4px;line-height:1.35}
 #quests .q b{color:#7de3ff}
 #quests .q.done{color:#6affab;text-decoration:line-through;opacity:.7}
-#hint{position:absolute;bottom:120px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1.0rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0}
+#hint{position:absolute;bottom:120px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1.2rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;background:rgba(8,10,24,.78);border:1px solid rgba(255,209,102,.25);border-radius:12px;padding:8px 16px;max-width:92vw}
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.06em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none}
 #dmg{position:fixed;inset:0;pointer-events:none;z-index:11}
-.dnum{position:absolute;font-weight:900;font-size:15px;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .7s ease-out,opacity .7s;opacity:1;will-change:transform,opacity}
+.dnum{position:absolute;font-weight:900;font-size:19px;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .7s ease-out,opacity .7s;opacity:1;will-change:transform,opacity}
 #achToast{position:fixed;top:64px;left:50%;transform:translate(-50%,-16px);background:rgba(20,16,44,.95);border:1px solid #ffcf6e;border-radius:14px;padding:10px 20px;font-weight:800;color:#ffd166;z-index:50;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none}
 #achToast.on{opacity:1;transform:translate(-50%,0)}
-#achToast small{display:block;color:#cfd8ff;font-weight:600;font-size:.78rem}
-.achGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:14px}
-.ach{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:8px;font-size:.72rem;color:#8b93b8}
+#achToast small{display:block;color:#cfd8ff;font-weight:600;font-size:.92rem}
+.achGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-top:14px}
+.ach{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:9px;font-size:.85rem;color:#9aa4c8}
 .ach.on{border-color:#ffcf6e;color:#ffd166}
-.ach b{display:block;font-size:.78rem}
+.ach b{display:block;font-size:.92rem}
 #hurt{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 55%,rgba(255,30,60,.5));opacity:0;transition:opacity .25s;z-index:9}
-#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.72rem;color:#8b93b8;text-shadow:0 1px 6px #000;line-height:1.6}
+#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.95rem;color:#b6c0e4;text-shadow:0 1px 6px #000;line-height:1.6;background:rgba(8,10,24,.6);border-radius:10px;padding:6px 10px}
+/* Kontextuelle Tasten-Anzeige („E Reden") — Key-Cap-Badge unten mittig */
+#kprompt{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:10px;background:rgba(8,10,24,.86);border:1px solid rgba(106,255,171,.5);border-radius:12px;padding:9px 16px;font-size:1.06rem;font-weight:800;color:#dff7ff;text-shadow:0 1px 6px #000;white-space:nowrap;max-width:94vw;overflow:hidden}
+#kprompt .kcap{display:inline-block;min-width:32px;text-align:center;background:linear-gradient(180deg,#2a3160,#141838);border:1px solid #7de3ff;border-bottom-width:3px;border-radius:8px;padding:4px 10px;color:#7de3ff;font-weight:900}
+@keyframes tpulse{0%{box-shadow:0 0 0 0 rgba(106,255,171,.75)}70%{box-shadow:0 0 0 16px rgba(106,255,171,0)}100%{box-shadow:0 0 0 0 rgba(106,255,171,0)}}
+#tAct.pulse{animation:tpulse 1.1s infinite}
 /* Dialog */
 #dialog{position:fixed;left:50%;bottom:12%;transform:translateX(-50%);width:min(560px,92vw);background:rgba(10,12,28,.94);border:1px solid rgba(125,227,255,.45);border-radius:16px;padding:16px 18px;z-index:20}
-#dialog .who{font-weight:900;color:#7de3ff;letter-spacing:.08em;margin-bottom:6px}
-#dialog .txt{color:#dbe4ff;font-size:.95rem;line-height:1.5;min-height:44px}
+#dialog .who{font-weight:900;color:#7de3ff;letter-spacing:.08em;margin-bottom:6px;font-size:1.1rem}
+#dialog .txt{color:#dbe4ff;font-size:1.08rem;line-height:1.5;min-height:44px}
 #dialog .opts{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-#dialog button{pointer-events:auto;border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:24px;padding:8px 16px;font-weight:700;cursor:pointer;font-size:.85rem}
+#dialog button{pointer-events:auto;border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:24px;padding:12px 20px;font-weight:700;cursor:pointer;font-size:1rem;min-height:44px}
 #dialog button.main{background:linear-gradient(92deg,#5ef2ff,#b98bff);color:#0a1020;border:0}
 /* Panels (Inventar/Skills) */
 .panel{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(600px,94vw);max-height:86vh;overflow:auto;background:rgba(9,11,26,.97);border:1px solid rgba(185,139,255,.4);border-radius:18px;padding:18px;z-index:30}
-.panel h2{font-size:1.1rem;letter-spacing:.12em;color:#b98bff;text-transform:uppercase;margin-bottom:10px}
-.panel .x{position:absolute;top:10px;right:14px;background:none;border:0;color:#8b93b8;font-size:1.3rem;cursor:pointer;pointer-events:auto}
-#invGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
-.slot{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:8px;font-size:.72rem;min-height:72px;cursor:pointer;pointer-events:auto;position:relative}
+.panel h2{font-size:1.25rem;letter-spacing:.12em;color:#b98bff;text-transform:uppercase;margin-bottom:10px}
+.panel .x{position:absolute;top:6px;right:8px;background:none;border:0;color:#aab4d8;font-size:1.5rem;cursor:pointer;pointer-events:auto;width:44px;height:44px}
+#invGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.slot{background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:9px;font-size:.88rem;min-height:84px;cursor:pointer;pointer-events:auto;position:relative}
 .slot:hover{border-color:#7de3ff}
 .slot .nm{font-weight:800;line-height:1.2;margin-bottom:3px}
 .slot .st{color:#9aa6d8}
@@ -69,38 +74,66 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .slot.eq{outline:2px solid #6affab}
 #equipRow{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 #equipRow .slot{flex:1;min-width:120px}
-#charStats{font-size:.8rem;color:#aeb8e0;margin-bottom:12px;line-height:1.7}
+#charStats{font-size:.95rem;color:#aeb8e0;margin-bottom:12px;line-height:1.7}
 #charStats b{color:#fff}
 /* Skilltree */
 .branch{margin-bottom:12px}
-.branch h4{font-size:.8rem;color:#7de3ff;margin-bottom:6px}
+.branch h4{font-size:.95rem;color:#7de3ff;margin-bottom:6px}
 .branch .nodes{display:flex;gap:8px;flex-wrap:wrap}
-.node{flex:1;min-width:140px;background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:9px;font-size:.74rem;cursor:pointer;pointer-events:auto}
+.node{flex:1;min-width:150px;background:rgba(20,24,52,.7);border:1px solid #2a3160;border-radius:10px;padding:10px;font-size:.9rem;cursor:pointer;pointer-events:auto}
 .node b{display:block;color:#dbe4ff;margin-bottom:2px}
 .node .lv{color:#ffcf6e;font-weight:800}
 .node.max{opacity:.65;cursor:default}
 .node:hover:not(.max){border-color:#ffcf6e}
 /* Overlays */
 .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 38%,rgba(24,20,54,.78),rgba(5,6,15,.96));backdrop-filter:blur(4px);padding:20px;z-index:40}
-.overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#a9b8ff;text-transform:uppercase;margin-bottom:12px}
+.overlay .kicker{letter-spacing:.5em;font-size:.82rem;color:#a9b8ff;text-transform:uppercase;margin-bottom:12px}
 .overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#5ef2ff,#b98bff 45%,#ff6ec7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 26px rgba(150,110,255,.4))}
-.overlay p{color:#c7cbe6;max-width:480px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
-.overlay .keys{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;font-size:.8rem;color:#9fb2ff;margin:.4rem 0 .8rem}
-.overlay .keys span{background:rgba(30,36,80,.6);border:1px solid #3a4170;border-radius:8px;padding:5px 10px}
-.btn{border:0;cursor:pointer;font-weight:900;font-size:1.05rem;padding:14px 34px;border-radius:44px;color:#0a1020;background:linear-gradient(92deg,#5ef2ff,#b98bff);box-shadow:0 10px 40px rgba(94,242,255,.35)}
-.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.9rem;padding:10px 22px}
-.foot{margin-top:16px;font-size:.78rem;color:#8890b8}.foot a{color:#9fb2ff}
+.overlay p{color:#c7cbe6;max-width:520px;margin:.8rem 0;font-size:1.05rem;line-height:1.55}
+.overlay .keys{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;font-size:.95rem;color:#9fb2ff;margin:.4rem 0 .8rem}
+.overlay .keys span{background:rgba(30,36,80,.6);border:1px solid #3a4170;border-radius:8px;padding:6px 12px}
+.btn{border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:14px 34px;border-radius:44px;color:#0a1020;background:linear-gradient(92deg,#5ef2ff,#b98bff);box-shadow:0 10px 40px rgba(94,242,255,.35);min-height:48px}
+.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:1rem;padding:12px 24px}
+.foot{margin-top:16px;font-size:.9rem;color:#98a0c8}.foot a{color:#9fb2ff}
+/* Klassenwahl im Startmenü (optional — Held vorgewählt, Start geht immer sofort) */
+#classRow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:4px 0 14px;width:min(560px,92vw)}
+.ccard{pointer-events:auto;cursor:pointer;background:rgba(20,24,52,.75);border:2px solid #2a3160;border-radius:14px;padding:10px 6px;color:#cfd8ff;font-size:1rem;min-height:44px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.ccard .ce{font-size:1.6rem;line-height:1.2}
+.ccard b{font-size:1rem}
+.ccard small{color:#9aa6d8;font-size:.85rem;font-weight:600}
+.ccard.sel{border-color:#5ef2ff;background:rgba(24,50,86,.85);color:#eaf6ff;box-shadow:0 0 18px rgba(94,242,255,.28)}
+.ccard.sel small{color:#7de3ff}
+@media (max-width:560px){#classRow{grid-template-columns:1fr 1fr}}
+/* Skill-Slots (Desktop, unten rechts) + grosse Level-Up-Anzeige */
+#skillbar{position:absolute;right:12px;bottom:12px;display:flex;gap:8px}
+.sk{position:relative;width:56px;height:56px;border-radius:12px;background:rgba(8,10,24,.82);border:1px solid rgba(120,140,255,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.sk .ico{font-size:1.3rem;line-height:1.15}
+.sk .kk{font-size:16px;font-weight:900;color:#7de3ff;line-height:1}
+.sk .cdov{position:absolute;inset:0;background:rgba(5,6,15,.74);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff}
+.sk.locked{opacity:.5}
+#lvlBig{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) scale(.8);font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:#ffd166;text-shadow:0 4px 24px #000;background:rgba(8,10,24,.88);border:1px solid rgba(255,207,110,.55);border-radius:18px;padding:12px 32px;opacity:0;transition:opacity .25s,transform .25s;z-index:35;pointer-events:none;white-space:nowrap}
+#lvlBig.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 /* Touch */
 #touchUI{position:fixed;inset:0;z-index:15;pointer-events:none;display:none}
 #joyBase{position:absolute;left:26px;bottom:26px;width:118px;height:118px;border-radius:50%;border:2px solid rgba(125,227,255,.4);background:rgba(10,14,32,.35)}
 #joyKnob{position:absolute;left:50%;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(125,227,255,.5);transform:translate(-50%,-50%)}
-.tbtn{position:absolute;width:64px;height:64px;border-radius:50%;border:2px solid;font-size:1.4rem;font-weight:800;pointer-events:auto;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none}
+.tbtn{position:absolute;width:68px;height:68px;border-radius:50%;border:2px solid;font-size:1.7rem;font-weight:800;pointer-events:auto;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none}
 #tAtk{right:24px;bottom:96px;border-color:#ff6ec7;background:rgba(70,20,50,.55);color:#ff9ad9}
-#tDodge{right:104px;bottom:30px;border-color:#5ef2ff;background:rgba(16,50,64,.55);color:#7de3ff}
-#tBolt{right:24px;bottom:184px;border-color:#ffcf6e;background:rgba(64,48,16,.55);color:#ffd166}
-#tAct{right:110px;bottom:130px;border-color:#6affab;background:rgba(18,58,36,.55);color:#8affc0;font-size:1rem}
-#tInv{position:absolute;top:150px;right:12px;width:44px;height:44px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.2rem;pointer-events:auto}
+#tDodge{right:106px;bottom:30px;border-color:#5ef2ff;background:rgba(16,50,64,.55);color:#7de3ff}
+#tBolt{right:24px;bottom:188px;border-color:#ffcf6e;background:rgba(64,48,16,.55);color:#ffd166}
+#tAct{right:112px;bottom:132px;border-color:#6affab;background:rgba(18,58,36,.55);color:#8affc0;font-size:1.2rem}
+#tInv{position:absolute;top:162px;right:116px;width:44px;height:44px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.35rem;pointer-events:auto}
+/* Mobile Skill-Buttons (Nova/Signature + Kettenblitz bzw. Ultimate) — ≥44px, kollisionsfrei zur bestehenden Button-Wolke */
+#tSkA{right:24px;bottom:280px;border-color:#ffd166;background:rgba(64,48,16,.55);color:#ffd166}
+#tSkB{right:106px;bottom:224px;border-color:#b98bff;background:rgba(40,20,70,.55);color:#d9b8ff}
+.tbtn .bcd{position:absolute;bottom:1px;right:7px;font-size:16px;font-weight:900;color:#fff;text-shadow:0 1px 4px #000}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
+/* Schmale Screens (Handy hochkant): Zonen-Name + Uhr unter die Statusleisten, damit nichts überlappt */
+@media (max-width:560px){
+  #zoneTag{top:106px;left:12px;transform:none;font-size:.95rem;letter-spacing:.14em}
+  #clock{top:130px;left:12px;transform:none;font-size:.9rem}
+  #quests{font-size:.95rem}
+}
 </style>
 </head>
 <body>
@@ -119,12 +152,15 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div id="mapWrap"><canvas id="minimap" width="140" height="140"></canvas></div>
   <div id="quests"><h3>Aufgaben</h3><div id="qlist"></div></div>
   <div id="hint"></div>
+  <div id="kprompt"></div>
   <div id="announce"></div>
-  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff · <b>Q</b> Puls · <b>SHIFT</b> Ausweichen · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skills</div>
+  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff · <b>Q</b> Puls · <b>R/F/C/V</b> Skills · <b>SHIFT</b> Ausweichen · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skill-Menü</div>
+  <div id="skillbar"></div>
+  <div id="lvlBig"></div>
 </div>
 <div id="dmg"></div>
 <div id="achToast"><span id="achTxt">🏆</span><small id="achSub"></small></div>
-<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:8px;right:160px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🔊</button>
+<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:162px;right:64px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:12px;width:44px;height:44px;font-size:1.25rem;cursor:pointer">🔊</button>
 
 <div id="dialog" class="hide"><div class="who" id="dWho">—</div><div class="txt" id="dTxt">—</div><div class="opts" id="dOpts"></div></div>
 
@@ -147,6 +183,8 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <button class="tbtn" id="tDodge">💨</button>
   <button class="tbtn" id="tBolt">⚡</button>
   <button class="tbtn hide" id="tAct">E</button>
+  <button class="tbtn hide" id="tSkA"><span class="bi">💥</span><span class="bcd"></span></button>
+  <button class="tbtn hide" id="tSkB"><span class="bi">🌩</span><span class="bcd"></span></button>
   <button id="tInv">🎒</button>
 </div>
 
@@ -154,7 +192,14 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div class="kicker">aban news · Open-World-Action-RPG</div>
   <h1>NEON REALM</h1>
   <p>Das Reich ist zerbrochen. Erkunde <b>vier Zonen</b>, erfülle die Quests der Dorfbewohner, sammle <b>Loot mit Seltenheitsstufen</b>, lerne Skills — und wecke am Ende den <b>NEXUS</b>, um das Reich zu einen. Dein Fortschritt wird gespeichert.</p>
-  <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Angriff</span><span><b>Q</b> Puls</span><span><b>SHIFT</b> Roll</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
+  <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Angriff</span><span><b>Q</b> Puls</span><span><b>R/F/C/V</b> Skills</span><span><b>SHIFT</b> Roll</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
+  <div style="letter-spacing:.3em;font-size:.8rem;color:#a9b8ff;text-transform:uppercase;margin:4px 0 8px">Wähle deinen Helden</div>
+  <div id="classRow">
+    <button class="ccard" data-cls="held"><span class="ce">⚡</span><b>Held</b><small>Allrounder</small></button>
+    <button class="ccard" data-cls="magier"><span class="ce">🔮</span><b>Magier</b><small>+20% Energie</small></button>
+    <button class="ccard" data-cls="waldlaeufer"><span class="ce">🏹</span><b>Waldläufer</b><small>+10% Tempo</small></button>
+    <button class="ccard" data-cls="titan"><span class="ce">🛡️</span><b>Titan</b><small>+20% Leben</small></button>
+  </div>
   <button class="btn" id="startBtn">Reich betreten ▶</button>
   <button class="btn ghost hide" id="wipeBtn">Neu beginnen (Speicherstand löschen)</button>
   <div class="foot">Kein Download · <a href="/spiele.html">aban Arcade</a></div>
@@ -169,7 +214,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   </div>
   <div class="foot">Fortschritt wird automatisch gespeichert</div>
 </div>
-<button id="menuBtn" title="Menü (ESC)" style="position:fixed;top:8px;right:56px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">☰</button>
+<button id="menuBtn" title="Menü (ESC)" style="position:fixed;top:162px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:12px;width:44px;height:44px;font-size:1.25rem;cursor:pointer">☰</button>
 <div class="overlay hide" id="winO">
   <div class="kicker">Das Reich ist geeint</div>
   <h1>DU HAST GEWONNEN</h1>
@@ -261,11 +306,17 @@ function heightAt(x,z){
 var ground=(function(){
   var geo=new THREE.PlaneGeometry(WORLD*2,WORLD*2,120,120);geo.rotateX(-Math.PI/2);
   var pos=geo.attributes.position,cols=new Float32Array(pos.count*3);
-  var cA=new THREE.Color(0x0a0d28),cB=new THREE.Color(0x1a2150),tmp=new THREE.Color(),zc=new THREE.Color();
+  var cA=new THREE.Color(0x0a0d28),cB=new THREE.Color(0x1e2760),tmp=new THREE.Color(),zc=new THREE.Color();
+  var cViolet=new THREE.Color(0x2c1a58),cTeal=new THREE.Color(0x0e3050); // Farbflecken-Töne (Noise-basiert)
   for(var i=0;i<pos.count;i++){var x=pos.getX(i),z=pos.getZ(i),h=heightAt(x,z);
     pos.setY(i,h);
     var k=Math.max(0,Math.min(1,(h+3.4)/6.8));
     tmp.copy(cA).lerp(cB,k); // dunkel unten, heller oben — Zonen-Tint folgt nach ZONES-Definition
+    // Farb-/Helligkeitsvariation: grosse Noise-Flecken in Violett/Teal + feines Speckle (belebt die Platte)
+    var n1=_vnoise(x*0.085+300,z*0.085+300),n2=_vnoise(x*0.4+700,z*0.4+700);
+    if(n1>0.58)tmp.lerp(cViolet,Math.min(1,(n1-0.58)*2.4)*0.6);
+    else if(n1<0.42)tmp.lerp(cTeal,Math.min(1,(0.42-n1)*2.4)*0.55);
+    var br=0.82+n2*0.5;tmp.r*=br;tmp.g*=br;tmp.b*=br;
     cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
   geo.setAttribute("color",new THREE.BufferAttribute(cols,3));
   geo.computeVertexNormals();
@@ -301,23 +352,77 @@ function updWater(t){_wFrame++;if(_wFrame%2)return; // jeden 2. Frame reicht (un
   p.needsUpdate=true;water.geometry.computeVertexNormals();}
 // ===== Gras/Kristallhalme mit Wind-Sway (Shader-Injektion via onBeforeCompile) =====
 var grassUniforms={uTime:{value:0}};
-var grass=(function(){
-  var N=IS_COARSE?240:420,geo=new THREE.ConeGeometry(0.09,1.1,3);geo.translate(0,0.55,0);
-  var gmat=new THREE.MeshStandardMaterial({color:0x1a3a5c,emissive:0x2a7aa0,emissiveIntensity:0.7,flatShading:true});
-  gmat.onBeforeCompile=function(sh){sh.uniforms.uTime=grassUniforms.uTime;
-    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nuniform float uTime;")
-      .replace("#include <begin_vertex>","#include <begin_vertex>\n#ifdef USE_INSTANCING\n float ph=instanceMatrix[3].x*0.35+instanceMatrix[3].z*0.5;\n transformed.x+=sin(uTime*1.8+ph)*0.28*transformed.y;\n transformed.z+=cos(uTime*1.4+ph)*0.18*transformed.y;\n#endif");};
-  var im=new THREE.InstancedMesh(geo,gmat,N),placed=0,guard=0,col=new THREE.Color(),_gd=new THREE.Object3D();
-  while(placed<N&&guard++<4000){
-    var x=(Math.random()-0.5)*2*(WORLD-8),z=(Math.random()-0.5)*2*(WORLD-8),h=heightAt(x,z);
-    if(h<-0.7)continue; // nicht im See
-    var dv=Math.hypot(x,z);if(dv<26)continue; // nicht im Dorfkern
-    _gd.position.set(x,h,z);var s=0.7+Math.random()*1.5;_gd.scale.set(s,s,s);_gd.rotation.set(0,Math.random()*3.14,0);_gd.updateMatrix();
-    im.setMatrixAt(placed,_gd.matrix);
-    var zn=zoneAt(x,z);col.setHex(zn?zn.c:0x2a7aa0);col.multiplyScalar(0.8);im.setColorAt(placed,col);
-    placed++;}
-  im.count=placed;im.instanceMatrix.needsUpdate=true;if(im.instanceColor)im.instanceColor.needsUpdate=true;
-  scene.add(im);return im;})();
+// ===== Vegetation: nature_pack.glb → InstancedMesh pro Kind-Mesh (ersetzt die alten Kegel-Grashalme).
+// Gruppe `nature` wird im Dungeon komplett ausgeblendet (wie `landscape`).
+var nature=new THREE.Group();scene.add(nature);
+(function(){
+  if(!THREE.GLTFLoader)return;
+  var MOBV=(navigator.maxTouchPoints>0)||IS_COARSE,VF=MOBV?0.5:1;
+  var HOUSES=[[-10,-8],[9,-11],[13,7],[-12,9],[2,-16]]; // Haus-Footprints (s. village-Block)
+  var NPCP=[[-6,-3],[7,-6],[3,9]];                      // NPC-Standplätze (Mira/Von/Kael)
+  var OBS=[[60,-60],[-66,-52],[-60,66]];                // Obelisken
+  var VPATHS=[]; // Leuchtpfade Dorfrand → Obelisken + Zitadellen-Tor (gleiche Geometrie wie die Boden-Discs)
+  [[60,-60],[-66,-52],[-60,66],[100,95]].forEach(function(o){var a=Math.atan2(o[1],o[0]);VPATHS.push([Math.cos(a)*21,Math.sin(a)*21,o[0],o[1]]);});
+  function segD(px,pz,p){var dx=p[2]-p[0],dz=p[3]-p[1],t=Math.max(0,Math.min(1,((px-p[0])*dx+(pz-p[1])*dz)/(dx*dx+dz*dz)));return Math.hypot(px-(p[0]+dx*t),pz-(p[1]+dz*t));}
+  function vegOk(x,z,tree){
+    if(heightAt(x,z)<-0.6)return false;                              // See-Senke
+    if(Math.hypot(x-LAKE.x,z-LAKE.z)<LAKE.r+(tree?5:2))return false; // See-Ufer
+    var dv=Math.hypot(x,z);
+    if(dv<9)return false;                                            // Brunnen/Plaza + Spawn
+    if(tree&&dv<25)return false;                                     // Dorfkern: nur Gras/Blumen (Kamera-Sichtachse!)
+    if(dv<25&&Math.abs(dv-20)<1.7)return false;                      // Laternen-Ring-Pfad
+    for(var i=0;i<5;i++)if(Math.hypot(x-HOUSES[i][0],z-HOUSES[i][1])<5.8)return false; // GLB-Footprint bis 8.1x8.3 (Ecke ~5.8)
+    for(i=0;i<3;i++)if(Math.hypot(x-NPCP[i][0],z-NPCP[i][1])<(tree?3:1.7))return false;// NPCs nicht in Büschen
+    for(i=0;i<3;i++)if(Math.hypot(x-OBS[i][0],z-OBS[i][1])<(tree?9:4.5))return false;
+    if(Math.hypot(x-100,z-95)<(tree?40:8))return false;              // Zitadelle (Bosskampf braucht Platz)
+    if(Math.hypot(x+118,z+98)<(tree?7:4.5))return false;             // Dungeon-Portal
+    for(i=0;i<4;i++)if(segD(x,z,VPATHS[i])<(tree?4:1.8))return false;// Leuchtpfade freihalten
+    return true;}
+  // [Objektname, Anzahl Desktop, 0=Bodendeko 1=Baum 2=Baum bevorzugt entlang der Leuchtpfade]
+  var VPLAN=[["grass_tuft",1200,0],["flower_cyan",50,0],["flower_pink",50,0],["flower_gold",50,0],
+             ["bush_a",30,0],["bush_b",30,0],
+             ["tree_leafy",35,1],["tree_birch",25,1],["tree_willow",12,1],["tree_glow",15,2]];
+  new THREE.GLTFLoader().load("/models/nature_pack.glb",function(g){
+    g.scene.updateMatrixWorld(true);
+    var lib={},boosted={};
+    g.scene.children.forEach(function(root){var parts=[];
+      root.traverse(function(n){if(n.isMesh)parts.push({geo:n.geometry,mt:n.material,loc:n.matrixWorld.clone()});});
+      if(parts.length)lib[root.name]=parts;});
+    var swayMat=null,d=new THREE.Object3D(),m4=new THREE.Matrix4();
+    VPLAN.forEach(function(pl){
+      var parts=lib[pl[0]];if(!parts)return;
+      var want=Math.max(1,Math.round(pl[1]*VF)),tree=pl[2]>=1;
+      var mats=[],cols=[],guard=0;
+      while(mats.length<want&&guard++<want*50){
+        var x,z;
+        if(pl[2]===2){ // tree_glow: natürliche Wegbeleuchtung — seitlich versetzt an den Pfaden
+          var P=VPATHS[(Math.random()*4)|0],t=0.12+Math.random()*0.82;
+          var bx=P[0]+(P[2]-P[0])*t,bz=P[1]+(P[3]-P[1])*t,pa=Math.atan2(P[3]-P[1],P[2]-P[0])+Math.PI/2,off=(4.5+Math.random()*3)*(Math.random()<0.5?-1:1);
+          x=bx+Math.cos(pa)*off;z=bz+Math.sin(pa)*off;}
+        else{x=(Math.random()-0.5)*2*(WORLD-6);z=(Math.random()-0.5)*2*(WORLD-6);}
+        if(!vegOk(x,z,tree))continue;
+        var s=tree?0.7+Math.random()*0.7:0.7+Math.random()*0.9;
+        if(pl[0].indexOf("bush")===0&&Math.hypot(x,z)<25)s=Math.min(s,1.0); // Dorfkern: keine Riesen-Büsche nahe der Kamera-Achse (r25-Regel galt nur für Bäume)
+        d.position.set(x,heightAt(x,z)-0.06,z);d.scale.set(s,s,s);d.rotation.set(0,Math.random()*6.283,0);d.updateMatrix();
+        mats.push(d.matrix.clone());
+        var b=0.8+Math.random()*0.3; // leichter Helligkeits-/Farb-Tint (multipliziert Vertex-Farben)
+        cols.push(new THREE.Color(b*(0.9+Math.random()*0.2),b,b*(0.9+Math.random()*0.2)));}
+      parts.forEach(function(p){
+        if(!boosted[p.mt.uuid]){boosted[p.mt.uuid]=1;p.mt.emissiveIntensity=(p.mt.name==="nature_lit")?1.3:1.45;}
+        var useMat=p.mt;
+        if(pl[0]==="grass_tuft"){ // Wind-Sway nur fürs Gras (gleiches Shader-Rezept wie vorher)
+          if(!swayMat){swayMat=p.mt.clone();swayMat.onBeforeCompile=function(sh){sh.uniforms.uTime=grassUniforms.uTime;
+            sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nuniform float uTime;")
+              .replace("#include <begin_vertex>","#include <begin_vertex>\n#ifdef USE_INSTANCING\n float ph=instanceMatrix[3].x*0.35+instanceMatrix[3].z*0.5;\n transformed.x+=sin(uTime*1.8+ph)*0.5*transformed.y;\n transformed.z+=cos(uTime*1.4+ph)*0.32*transformed.y;\n#endif");};}
+          useMat=swayMat;}
+        var im=new THREE.InstancedMesh(p.geo,useMat,mats.length);
+        for(var i=0;i<mats.length;i++){m4.multiplyMatrices(mats[i],p.loc);im.setMatrixAt(i,m4);im.setColorAt(i,cols[i]);}
+        im.instanceMatrix.needsUpdate=true;if(im.instanceColor)im.instanceColor.needsUpdate=true;
+        im.castShadow=tree;
+        nature.add(im);});
+    });
+  },undefined,function(){});
+})();
 var _dm=new THREE.Object3D();
 function seededRnd(s){return function(){s=(s*9301+49297)%233280;return s/233280;};}
 // -- Kristallwald: Kristall-Bäume (InstancedMesh)
@@ -340,13 +445,28 @@ function seededRnd(s){return function(){s=(s*9301+49297)%233280;return s/233280;
  for(var i=0;i<N;i++){var a=i/N*6.283,x=ZONES[4].x+Math.cos(a)*34,z=ZONES[4].z+Math.sin(a)*34;
   _dm.position.set(x,heightAt(x,z)+8,z);_dm.scale.set(1,1,1);_dm.rotation.set(0,a,0);_dm.updateMatrix();im.setMatrixAt(i,_dm.matrix);}
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
-// -- Dorf: Häuser + Laternen + Brunnen
+// -- Dorf: Detail-Häuser (Blender-GLBs) + Laternen + Brunnen
 var village=new THREE.Group();scene.add(village);
-(function(){var hs=[[-10,-8,0.5],[9,-11,2.2],[13,7,4],[-12,9,5.4],[2,-16,1.2]];
- for(var i=0;i<hs.length;i++){var hx=hs[i][0],hz=hs[i][1];
-  var body=new THREE.Mesh(new THREE.BoxGeometry(6,4,5),mat(0x141a3e,0x2a3585,0.5));body.position.set(hx,2,hz);body.rotation.y=hs[i][2];body.castShadow=true;village.add(body);
-  var roof=new THREE.Mesh(new THREE.ConeGeometry(4.6,3,4),mat(0x1d0f38,0xb98bff,0.5));roof.position.set(hx,5.5,hz);roof.rotation.y=hs[i][2]+Math.PI/4;village.add(roof);
-  var win=new THREE.Mesh(new THREE.PlaneGeometry(1,0.8),new THREE.MeshBasicMaterial({color:0xffd166}));win.position.set(hx+Math.sin(hs[i][2])*3.02,2.1,hz+Math.cos(hs[i][2])*2.52);win.rotation.y=hs[i][2];village.add(win);}
+(function(){
+ // building_*.glb: Ursprung = Unterkante/Bodenmitte, Fenster-Emissive eingebacken.
+ // Höhen final auf Spielgrösse (Fachwerk 7.0 / Werkstatt 6.5 / Turm 8.5, NPCs ~2.1).
+ var hs=[[-10,-8,0.5,"fachwerk"],[9,-11,2.2,"werkstatt"],[13,7,4,"turm"],[-12,9,5.4,"fachwerk"],[2,-16,1.2,"werkstatt"]];
+ var HSCALE=1.0; // uniforme Haus-Skala (per Screenshot verifiziert)
+ function boxHouse(hx,hz,ry){ // Fallback: alte Box-Häuser, falls GLB nicht lädt
+  var body=new THREE.Mesh(new THREE.BoxGeometry(6,4,5),mat(0x141a3e,0x2a3585,0.5));body.position.set(hx,2,hz);body.rotation.y=ry;body.castShadow=true;village.add(body);
+  var roof=new THREE.Mesh(new THREE.ConeGeometry(4.6,3,4),mat(0x1d0f38,0xb98bff,0.5));roof.position.set(hx,5.5,hz);roof.rotation.y=ry+Math.PI/4;village.add(roof);}
+ var byType={};hs.forEach(function(h){(byType[h[3]]=byType[h[3]]||[]).push(h);});
+ if(THREE.GLTFLoader){
+  Object.keys(byType).forEach(function(name){
+   new THREE.GLTFLoader().load("/models/building_"+name+".glb",function(g){
+    g.scene.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;
+     if(n.material)n.material.emissiveIntensity=1.0;}}); // Fenster glühen (Muster landscape-Loader)
+    byType[name].forEach(function(h,i){
+     var o=i?g.scene.clone(true):g.scene; // statische Meshes → clone() ok (kein SkinnedMesh)
+     o.position.set(h[0],0,h[1]);o.rotation.y=h[2];o.scale.setScalar(HSCALE);village.add(o);});
+   },undefined,function(){byType[name].forEach(function(h){boxHouse(h[0],h[1],h[2]);});});
+  });
+ }else hs.forEach(function(h){boxHouse(h[0],h[1],h[2]);});
  var well=new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.8,1.2,8),mat(0x1a2150,0x5ef2ff,0.5));well.position.set(0,0.6,0);well.castShadow=true;village.add(well);
  var wellGlow=new THREE.PointLight(0x5ef2ff,1.2,24);wellGlow.position.set(0,3,0);village.add(wellGlow);
  for(var li=0;li<6;li++){var la=li/6*6.283,lx=Math.cos(la)*20,lz=Math.sin(la)*20;
@@ -362,6 +482,34 @@ var obelisks=[];
   ring.rotation.x=-Math.PI/2;ring.position.set(o[1],0.1,o[2]);scene.add(ring);
   obelisks.push({m:ob,ring:ring,x:o[1],z:o[2],on:false,zone:o[0]});
 });
+// -- Leuchtpfade auf dem Boden: Brunnen → Häuser/Laternen-Ring + Dorfrand → Obelisken & Zitadelle
+// (Navigation + belebt die dunkle Platte; bewusst dezent, damit das Bloom [threshold .78] nicht überstrahlt)
+(function(){
+  var pts=[];
+  function addPath(x1,z1,x2,z2,step,jit){var d=Math.hypot(x2-x1,z2-z1),n=Math.max(2,Math.round(d/step));
+    for(var i=1;i<n;i++){var t=i/n,x=x1+(x2-x1)*t+(Math.random()-.5)*(jit||0.5),z=z1+(z2-z1)*t+(Math.random()-.5)*(jit||0.5);
+      if(heightAt(x,z)<-0.7)continue; // nicht in den See
+      pts.push([x,z]);}}
+  // Dorf: Brunnen → Häuser + NPC-Plätze
+  [[-10,-8],[9,-11],[13,7],[-12,9],[2,-16],[-6,-3],[7,-6],[3,9]].forEach(function(h){addPath(0,0,h[0],h[1],1.7);});
+  // Dorf-Plaza: Ring entlang der 6 Laternen (r=20)
+  for(var ri=0;ri<44;ri++){var ra=ri/44*6.283;pts.push([Math.cos(ra)*20+(Math.random()-.5)*0.5,Math.sin(ra)*20+(Math.random()-.5)*0.5]);}
+  // Welt: Dorfrand → 3 Obelisken + Zitadellen-Tor (sichtbare Wege zu den Zielen)
+  [[60,-60],[-66,-52],[-60,66],[100,95]].forEach(function(o){
+    var a=Math.atan2(o[1],o[0]);addPath(Math.cos(a)*21,Math.sin(a)*21,o[0],o[1],3.0,1.6);});
+  var g=new THREE.CircleGeometry(0.44,6);g.rotateX(-Math.PI/2);
+  var m=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0.42,blending:THREE.AdditiveBlending,depthWrite:false});
+  var im=new THREE.InstancedMesh(g,m,pts.length),d3=new THREE.Object3D(),col=new THREE.Color();
+  for(var i=0;i<pts.length;i++){var x=pts[i][0],z=pts[i][1];
+    d3.position.set(x,heightAt(x,z)+0.06,z);var s=0.7+Math.random()*0.8;d3.scale.set(s,1,s);d3.rotation.y=Math.random()*3.14;d3.updateMatrix();
+    im.setMatrixAt(i,d3.matrix);
+    var zn=zoneAt(x,z);col.setHex(zn&&!zn.safe?zn.c:0x5ef2ff);col.multiplyScalar(0.55);im.setColorAt(i,col);}
+  im.instanceMatrix.needsUpdate=true;if(im.instanceColor)im.instanceColor.needsUpdate=true;
+  scene.add(im);
+  // Leucht-Rune um den Brunnen (Dorfmitte als klarer Ankerpunkt)
+  var rune=new THREE.Mesh(new THREE.RingGeometry(2.6,3.1,28),new THREE.MeshBasicMaterial({color:0x2a7a90,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+  rune.rotation.x=-Math.PI/2;rune.position.y=0.07;scene.add(rune);
+})();
 // Welt-Grenze (sichtbarer Rand)
 var border=new THREE.Mesh(new THREE.RingGeometry(WORLD-2,WORLD,72),new THREE.MeshBasicMaterial({color:0xff4d6d,transparent:true,opacity:0.25,side:THREE.DoubleSide}));
 border.rotation.x=-Math.PI/2;border.position.y=0.05;scene.add(border);
@@ -410,12 +558,7 @@ function updBoids(dt){
 var player=new THREE.Group();player.position.set(0,0,14);scene.add(player);
 var pBody=new THREE.Mesh(new THREE.IcosahedronGeometry(0.7,0),mat(0xbfe9ff,0x2a6ab0));pBody.position.y=1.0;pBody.castShadow=true;player.add(pBody);
 var pGlow=new THREE.PointLight(0x5ef2ff,1.1,16);pGlow.position.y=2;scene.add(pGlow);
-var heroModel=null;
-if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/char.glb",function(g){
-  var o=g.scene;var box=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(sz);box.getCenter(ctr);
-  var k=2.5/(Math.max(sz.x,sz.y,sz.z)||1);o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k+1.25,-ctr.z*k);
-  o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.emissive=new THREE.Color(0x5ef2ff);n.material.emissiveIntensity=0.35;}}});
-  pBody.visible=false;player.add(o);heroModel=o;},undefined,function(){});}
+var heroModel=null; // geriggter hero.glb — wird nach der NPC-Definition geladen (1 Buffer, 4x parse)
 
 // ===================== Zustand (mit Save/Load) =====================
 var SAVE_KEY="nr_save1";
@@ -438,6 +581,10 @@ addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(!running)return;
   if(k===" ")doAttack();
   if(k==="q")doBolt();
+  if(k==="r")castSkill("nova");
+  if(k==="f")castSkill("chain");
+  if(k==="c")castSkill("shield");
+  if(k==="v")castSkill("ult");
   if(k==="shift")doDodge();
   if(k==="e")doInteract();
   if(k==="i")togglePanel("invPanel");
@@ -460,6 +607,8 @@ if(isTouch){document.getElementById("touchUI").style.display="block";document.ge
   addEventListener("touchend",jend);addEventListener("touchcancel",jend);
   function bindBtn(id,fn){var b=document.getElementById(id);b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});}
   bindBtn("tAtk",function(){doAttack();});bindBtn("tDodge",function(){doDodge();});bindBtn("tBolt",function(){doBolt();});bindBtn("tAct",function(){doInteract();});
+  bindBtn("tSkA",function(){castSkill("nova");}); // Nova/Klassen-Signature
+  bindBtn("tSkB",function(){if(G&&G.lvl>=9&&skillCD.ult<=0.05)castSkill("ult");else castSkill("chain");}); // Ultimate wenn bereit, sonst Kettenblitz
   document.getElementById("tInv").addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();togglePanel("invPanel");},{passive:false});
 }
 function moveVec(){var x=0,z=0;
@@ -481,7 +630,7 @@ function updHUD(){
   document.getElementById("lvlTxt").textContent="Lv "+G.lvl;
   document.getElementById("shards").textContent=G.shards;
   document.querySelector("#hpB i").style.width=(100*Math.max(0,G.hp)/((typeof playerMaxHp==="function")?playerMaxHp():G.maxhp))+"%";
-  document.querySelector("#enB i").style.width=(100*Math.max(0,G.en)/G.maxen)+"%";
+  document.querySelector("#enB i").style.width=(100*Math.max(0,G.en)/playerMaxEn())+"%";
   document.querySelector("#xpB i").style.width=(100*G.xp/G.xpNeed)+"%";
 }
 
@@ -521,10 +670,11 @@ function rollItem(lvlBonus){
 function statTotal(stat,base){var v=base;["waffe","ruestung","relikt"].forEach(function(sl){var it=G.equip[sl];if(it&&it.stat===stat)v+=it.v;});return v;}
 function playerAtk(){return statTotal("atk",G.atk)*(1+G.skills.macht*0.12);}
 function playerDef(){return statTotal("def",G.def)+G.skills.schutz*2;}
-function playerMaxHp(){return statTotal("maxhp",G.maxhp);}
+function playerMaxHp(){return Math.round(statTotal("maxhp",G.maxhp)*clsMul("hp"));} // Titan +20%
+function playerMaxEn(){return Math.round(G.maxen*clsMul("en"));} // Magier +20%
 function renderInv(){
   var cs=document.getElementById("charStats");
-  cs.innerHTML="⚔ Angriff <b>"+Math.round(playerAtk())+"</b> · 🛡 Verteidigung <b>"+Math.round(playerDef())+"</b> · ❤️ Max-HP <b>"+playerMaxHp()+"</b> · 👟 Tempo <b>"+Math.round(G.spd*(1+G.skills.tempo*0.08))+"</b> · ◆ Scherben <b>"+G.shards+"</b>";
+  cs.innerHTML="⚔ Angriff <b>"+Math.round(playerAtk())+"</b> · 🛡 Verteidigung <b>"+Math.round(playerDef())+"</b> · ❤️ Max-HP <b>"+playerMaxHp()+"</b> · 👟 Tempo <b>"+Math.round(G.spd*(1+G.skills.tempo*0.08)*clsMul("spd"))+"</b> · ◆ Scherben <b>"+G.shards+"</b>";
   var er=document.getElementById("equipRow");er.innerHTML="";
   [["waffe","⚔ Waffe"],["ruestung","🛡 Rüstung"],["relikt","💠 Relikt"]].forEach(function(s){
     var it=G.equip[s[0]],d=document.createElement("div");d.className="slot"+(it?" r"+it.r+" eq":"");
@@ -564,42 +714,126 @@ function renderSkills(){
         G.sp--;G.skills[sk[0]]++;beep(880,.1,"triangle",.06);renderSkills();updHUD();saveGame();};
       ns.appendChild(n);});
     d.appendChild(ns);st.appendChild(d);});
+  // Aktive Skills: Info-Sektion (schalten sich automatisch per Level frei, ab Lv 3 Klassen-Signature auf R)
+  var ab=document.createElement("div");ab.className="branch";
+  ab.innerHTML="<h4>⚡ Aktive Skills (automatisch per Level)</h4>";
+  var an=document.createElement("div");an.className="nodes";
+  SKDEF.forEach(function(def){
+    var un=G.lvl>=def.lv;
+    var n=document.createElement("div");n.className="node max";
+    n.innerHTML="<b>"+(un?"":"🔒 ")+skillName(def.id)+" <span class='lv'>["+def.key+"]</span></b>"+(un?"Bereit · Abklingzeit "+def.cd+"s":"Ab Level "+def.lv);
+    an.appendChild(n);});
+  ab.appendChild(an);st.appendChild(ab);
 }
-function gainXp(v){G.xp+=v;while(G.xp>=G.xpNeed){G.xp-=G.xpNeed;G.lvl++;G.sp++;G.xpNeed=Math.round(G.xpNeed*1.35);
-  G.maxhp+=8;G.hp=playerMaxHp();G.maxen+=3;G.en=G.maxen;G.atk+=1;
-  announce("LEVEL "+G.lvl+"! (+1 Skillpunkt — T)","#ffcf6e");beep(1046,.3,"triangle",.08);camShake=Math.max(camShake,0.4);}
+function gainXp(v){var lv0=G.lvl;G.xp+=v;
+  while(G.xp>=G.xpNeed){G.xp-=G.xpNeed;G.lvl++;G.sp++;G.xpNeed=Math.round(G.xpNeed*1.35);
+    G.maxhp+=8;G.hp=playerMaxHp();G.maxen+=3;G.en=playerMaxEn();G.atk+=1;} // Zuwachs + voller HP/EN-Refill als Belohnung (unverändert grosszügig)
+  if(G.lvl>lv0)levelUpFx(lv0,G.lvl);
   updHUD();}
+// Level-Up spürbar machen: grosse Anzeige + Licht-Ring + Partikel + Licht-Säule + aufsteigender Ton
+function levelUpFx(lv0,lv){
+  var el=document.getElementById("lvlBig");el.textContent="⬆ LEVEL "+lv+"!";
+  el.classList.add("on");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove("on");},2000);
+  novaRing(player.position.x,player.position.y,player.position.z,10,0xffcf6e);
+  burst(player.position.x,1.2,player.position.z,0xffcf6e,26,8);
+  var pil=new THREE.Mesh(new THREE.CylinderGeometry(0.9,1.3,7,10,1,true),
+    new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+  pil.position.set(player.position.x,player.position.y+3.2,player.position.z);scene.add(pil);
+  var t0=performance.now();(function fd(){var k=(performance.now()-t0)/650;
+    if(k>=1){scene.remove(pil);pil.material.dispose();pil.geometry.dispose();return;}
+    pil.material.opacity=0.5*(1-k);pil.scale.set(1+k*0.6,1,1+k*0.6);requestAnimationFrame(fd);})();
+  [523,659,784,1046].forEach(function(f,i){setTimeout(function(){beep(f,.14,"triangle",.06);},i*95);});
+  camShake=Math.max(camShake,0.5);
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("victory",0.2);
+  // Skill-Unlocks kommunizieren (aus G.lvl abgeleitet — keine neuen Save-Felder)
+  var un=null;for(var i=0;i<SKDEF.length;i++)if(SKDEF[i].lv>lv0&&SKDEF[i].lv<=lv)un=SKDEF[i];
+  if(un)announce("✨ Neuer Skill: "+skillName(un.id)+" ("+un.key+")","#ffd166");
+  else if(lv0<3&&lv>=3)announce("✨ Klassen-Skill: "+novaInfo().n+" (R)!","#ffd166");
+  else announce("+1 Skillpunkt — [T] Skills","#ffcf6e");
+}
 // ===================== FX =====================
-var fxs=[];
+// Partikel-Pool (Muster neon-jump Dust): 1 geteilte Geometrie, Meshes wiederverwenden — Skills
+// (Nova/Meteore/Wellen) spammen Bursts, ohne Pool würde GC/Alloc den Frame fressen.
+var fxs=[],FXGEO=new THREE.BoxGeometry(0.22,0.22,0.22),fxMeshPool=[];
 function burst(x,y,z,color,n,spd){y+=heightAt(x,z);for(var i=0;i<(n||8);i++){
-  var m=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
-  m.position.set(x,y,z);scene.add(m);
+  var m=fxMeshPool.pop();
+  if(!m)m=new THREE.Mesh(FXGEO,new THREE.MeshBasicMaterial({transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+  m.material.color.set(color);m.material.opacity=1;
+  m.position.set(x,y,z);m.rotation.set(0,0,0);scene.add(m);
   var a=Math.random()*6.283,up=Math.random()*4+2,sp2=(spd||5)*(0.5+Math.random());
   fxs.push({m:m,vx:Math.cos(a)*sp2,vy:up,vz:Math.sin(a)*sp2,life:0.6+Math.random()*0.3});}}
 function updFx(dt){for(var i=fxs.length-1;i>=0;i--){var f=fxs[i];f.life-=dt;
-  if(f.life<=0){scene.remove(f.m);f.m.material.dispose();f.m.geometry.dispose();fxs.splice(i,1);continue;}
+  if(f.life<=0){scene.remove(f.m);if(fxMeshPool.length<260)fxMeshPool.push(f.m);else f.m.material.dispose();fxs.splice(i,1);continue;}
   f.vy-=14*dt;f.m.position.x+=f.vx*dt;f.m.position.y=Math.max(0.1,f.m.position.y+f.vy*dt);f.m.position.z+=f.vz*dt;
   f.m.material.opacity=Math.min(1,f.life*2);f.m.rotation.x+=dt*6;f.m.rotation.y+=dt*5;}}
 // ===================== GEGNER =====================
+// Monster-GLBs: Optik-Ersetzung der Okta-Primitive — Gameplay-Werte (HP/Schaden/Spawns/Hitbox) unverändert.
+// Zonen-Mapping leicht→schwer: Slime=Kristallwald (Start-Questzone), Wisp=Ruinenstadt (schwebender Geist),
+// Golem=Ödland (Fels/Berg, Ground-Slam), Panther=Zitadelle (dunkle Pfade, Flanker), Guardian=Verlies-Miniboss.
+// Statische (slime/panther) → 1x laden + clone(true); gerigte (wisp/golem/guardian) → pro Instanz
+// GLTFLoader.parse aus demselben ArrayBuffer (SkinnedMesh-clone-Falle in r128, Muster NPC-Loader).
+var MON={0:{key:"slime",sc:2.3},1:{key:"wisp",sc:2.0},2:{key:"golem",sc:1.15},3:{key:"panther",sc:1.4}}; // Skala ≈ alte Okta-Grösse
+var MONEMIS={golem:0.8,guardian:0.9}; // Meshy-Emissive leicht dämpfen (Basecolor=Emissive-Textur → sonst Bloom-Blowout), Rest 1.0
+var monStatic={},monBuf={},RIG_MAX=8,riggedN=0;
+function freeRig(e){if(e.rigged){e.rigged=false;riggedN=Math.max(0,riggedN-1);}}
+(function(){
+  if(!THREE.GLTFLoader)return;
+  ["slime","panther"].forEach(function(k){
+    new THREE.GLTFLoader().load("/models/monster_"+k+".glb",function(g){monStatic[k]=g.scene;},undefined,function(){});});
+  if(!window.fetch)return;
+  ["wisp","golem","guardian"].forEach(function(k){
+    fetch("/models/monster_"+k+".glb").then(function(r){if(!r.ok)throw 0;return r.arrayBuffer();})
+      .then(function(b){monBuf[k]=b;}).catch(function(){});});
+})();
+function attachMonster(e,key,sc){ // hängt die GLB-Optik an einen Gegner; ohne Asset bleibt das Okta-Primitiv
+  e.msc=sc;e.ph=Math.random()*6.283;
+  if(monStatic[key]){
+    var o=monStatic[key].clone(true),mats=[];
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;
+      if(n.material){n.material=n.material.clone();mats.push(n.material);}}}); // eigene Materialien → Hit-Flash/Kern-Puls je Instanz
+    o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=MONEMIS[key]||1.0;e.mkey=key;
+    if(e.body)e.body.visible=false;
+  }else if(monBuf[key]){
+    // Rig-Pool: gerigte GLBs (wisp/golem/guardian) sind teuer (parse + Mixer) → max. 8 gleichzeitig.
+    // Überzahl behält das Okta-Primitiv (Rudel-/Wellen-Spawns dürfen die Optik nicht sprengen).
+    if(riggedN>=RIG_MAX)return;
+    riggedN++;e.rigged=true;
+    new THREE.GLTFLoader().parse(monBuf[key].slice(0),"",function(g){
+      if(!e.active)return; // Gegner starb, bevor das Modell fertig geparst war
+      var o=g.scene,mats=[];
+      o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
+        if(n.material)mats.push(n.material);}});
+      o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=MONEMIS[key]||1.0;e.mkey=key;
+      if(e.body)e.body.visible=false;
+      e.rig=makeRig(o,g.animations,true); // local: Mixer wird distanz-gecullt in updEnemies getickt
+      setAnim(e.rig,"idle",0);
+      if(e.rig.actions.idle)e.rig.actions.idle.time=Math.random()*2; // Idle-Phasen entkoppeln
+    },function(){});
+  }
+}
 var enemies=[],ETYPES=[
  {n:"Drohne",hp:14,atk:5,spd:6.5,xp:8,c:0xff6ec7,r:0.9,zone:1},
  {n:"Schatten",hp:22,atk:7,spd:7.5,xp:12,c:0xb98bff,r:1.0,zone:2},
  {n:"Brecher",hp:38,atk:11,spd:5,xp:18,c:0xff9a4a,r:1.35,zone:3},
  {n:"Wächterling",hp:30,atk:9,spd:8,xp:16,c:0xff4d6d,r:1.05,zone:4}
 ];
-function spawnEnemy(ti,ex,ez,elite){
+function spawnEnemy(ti,ex,ez,elite,mini){ // mini = Rudel-Mitglied (kleiner, schwächer, weniger XP)
   var t=ETYPES[ti],g=new THREE.Group();
   var body=new THREE.Mesh(new THREE.OctahedronGeometry(t.r,0),mat(0x141a3e,t.c,elite?1.3:0.8));
   body.position.y=1.0;body.castShadow=true;g.add(body);
   if(elite){var crown=new THREE.Mesh(new THREE.TorusGeometry(t.r*0.8,0.1,6,14),new THREE.MeshBasicMaterial({color:0xffd166}));crown.rotation.x=Math.PI/2;crown.position.y=2.0;g.add(crown);}
+  if(mini)body.scale.setScalar(0.7);
   g.position.set(ex,0,ez);scene.add(g);
-  var mult=elite?2.6:1,lvB=1+(G.lvl-1)*0.12;
-  enemies.push({g:g,body:body,type:ti,hp:t.hp*mult*lvB,maxhp:t.hp*mult*lvB,atk:t.atk*(elite?1.5:1)*lvB,spd:t.spd*(elite?1.15:1),
-    xp:Math.round(t.xp*mult),c:t.c,r:t.r*(elite?1.4:1),elite:!!elite,boss:false,active:true,
-    state:"patrol",pa:Math.random()*6.283,pt:0,atkT:0,flash:0,hx:ex,hz:ez});
+  var mult=elite?2.6:(mini?0.55:1),lvB=1+(G.lvl-1)*0.12;
+  var e={g:g,body:body,type:ti,hp:t.hp*mult*lvB,maxhp:t.hp*mult*lvB,atk:t.atk*(elite?1.5:(mini?0.8:1))*lvB,spd:t.spd*(elite?1.15:(mini?1.05:1)),
+    xp:Math.round(t.xp*(elite?2.6:(mini?0.6:1))),c:t.c,r:t.r*(elite?1.4:(mini?0.85:1)),elite:!!elite,boss:false,active:true,stunT:0,
+    state:"patrol",pa:Math.random()*6.283,pt:0,atkT:0,flash:0,hx:ex,hz:ez};
+  enemies.push(e);
+  attachMonster(e,MON[ti].key,MON[ti].sc*(elite?1.25:1)*(mini?0.7:1)); // GLB-Optik (Eliten grösser, Rudel-Minis 0.7)
+  return e;
 }
 function killEnemy(e,i){
-  e.active=false;scene.remove(e.g);
+  e.active=false;scene.remove(e.g);freeRig(e);
   burst(e.g.position.x,1,e.g.position.z,e.c,e.boss?36:(e.elite?18:10),e.boss?9:5);
   beep(e.boss?110:220,.15,"sawtooth",.06);camShake=Math.max(camShake,e.boss?1.2:(e.elite?0.5:0.2));
   gainXp(e.xp);G.kills=(G.kills||0)+1;
@@ -613,6 +847,7 @@ function killEnemy(e,i){
   // Quest-Zähler
   if(G.qstage===1&&e.type===0){G.quests.kills=(G.quests.kills||0)+1;renderQuests();}
   if(e.miniboss){announce("Wächter der Tiefe besiegt!","#b98bff");
+    if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("victory",0.2);
     var mi2=rollItem(G.lvl+3);mi2.r=Math.max(2,mi2.r);mi2.v=Math.round(mi2.v*1.3);G.inv.push(mi2);
     G.shards+=15;showHint("🎁 "+RARS[mi2.r].n+": "+mi2.n+" (+"+mi2.v+" "+mi2.stat+") — [I]",3000);camShake=0.8;}
   if(e.boss){G.bossDead=true;onBossDead();}
@@ -622,13 +857,26 @@ function updEnemies(dt){
   var px=player.position.x,pz=player.position.z;
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
     var ex=e.g.position.x,ez=e.g.position.z,d=Math.hypot(px-ex,pz-ez);
-    if(e.body&&e.body.rotation)e.body.rotation.y+=dt*(e.boss?0.5:2);
+    if(e.body&&e.body.visible&&e.body.rotation)e.body.rotation.y+=dt*(e.boss?0.5:2); // Spin nur fürs Okta-Primitiv/Boss
+    // Prozedurale Anims der statischen Monster: Slime hüpft (Squash&Stretch + Kern-Puls), Panther schleicht
+    if(e.mkey==="slime"&&e.visual){var st2=G.t*6+e.ph,ss=Math.sin(st2);
+      e.visual.position.y=Math.abs(ss)*0.25;
+      e.visual.scale.set(e.msc*(1+0.1*ss),e.msc*(1-0.2*ss),e.msc*(1+0.1*ss));
+      e.baseEmis=1.0+0.2*ss;} // Kern-Puls 0.8–1.2 (läuft über die Flash-Zeile unten)
+    else if(e.mkey==="panther"&&e.visual){
+      e.visual.rotation.z=Math.sin(G.t*7+e.ph)*0.04; // Schleich-Wippen
+      e.visual.position.y=(e.state==="chase")?Math.abs(Math.sin(G.t*9+e.ph))*0.05:0;
+      if(e.lungeT>0){e.lungeT-=dt;e.visual.position.z=Math.sin(Math.PI*Math.max(0,1-e.lungeT/0.35))*0.9;} // Sprung-Tween vor+zurück
+      else e.visual.position.z=0;}
     var _ms=e.mats||((e.body&&e.body.material)?[e.body.material]:[]);
     for(var _mi=0;_mi<_ms.length;_mi++)_ms[_mi].emissiveIntensity=(e.flash>0)?((e.baseEmis!==undefined?e.baseEmis:1)+1.1):(e.baseEmis!==undefined?e.baseEmis:(e.elite||e.boss?1.3:0.8));
     if(e.flash>0)e.flash-=dt;
+    if(e.stunT>0){e.stunT-=dt; // Bodenschlag-Stun: 1s eingefroren (kein Lauf, kein Angriff)
+      e.g.position.y=heightAt(e.g.position.x,e.g.position.z);continue;}
     if(e.state==="patrol"){
       e.pt-=dt;if(e.pt<=0){e.pa=Math.random()*6.283;e.pt=2+Math.random()*3;}
       e.g.position.x+=Math.cos(e.pa)*e.spd*0.3*dt;e.g.position.z+=Math.sin(e.pa)*e.spd*0.3*dt;
+      if(e.mkey)e.g.rotation.y=Math.PI/2-e.pa; // GLB blickt +Z → in Patrouillen-Richtung drehen
       if(d<19)e.state="chase";
     }else if(e.state==="chase"){
       if(d>26&&!e.boss){e.state="patrol";}
@@ -636,10 +884,28 @@ function updEnemies(dt){
         var nx2=e.g.position.x+Math.cos(ang)*e.spd*dt,nz2=e.g.position.z+Math.sin(ang)*e.spd*dt;
         if(!inDungeon||isFloor(nx2,nz2)){e.g.position.x=nx2;e.g.position.z=nz2;}
         e.g.rotation.y=-ang+Math.PI/2;}
-      else{e.atkT-=dt;if(e.atkT<=0){e.atkT=e.boss?0.8:1.1;hitPlayer(e.atk);
+      else{e.atkT-=dt;
+        if(e.mkey)e.g.rotation.y=Math.atan2(px-ex,pz-ez); // im Nahkampf zum Spieler drehen
+        if(e.atkT<=0){e.atkT=e.boss?0.8:1.1;hitPlayer(e.atk);
+        if(e.rig&&e.rig.actions.attack){var _aa=e.rig.actions.attack,_ad=_aa.getClip().duration||1;
+          if(e.mkey==="guardian"){playOnce(e.rig,"attack",_ad*0.5,0.1);_aa.time=_ad*0.4;} // Triple-Combo: nur Phase 0.4–0.9 (Root-Motion!)
+          else playOnce(e.rig,"attack",_ad,0.1);} // Clip passt in ~1s (Angriffs-Intervall 1.1s)
+        if(e.mkey==="panther")e.lungeT=0.35; // Sprung-Attacke als Tween
         burst(px,1,pz,0xff4d6d,6,4);}}
       // Heimatzonen-Leine (außer Boss)
       if(!e.boss){var hd=Math.hypot(e.g.position.x-e.hx,e.g.position.z-e.hz);if(hd>40){e.state="patrol";e.pa=Math.atan2(e.hz-e.g.position.z,e.hx-e.g.position.x);}}
+    }
+    // Gerigte Monster (Wisp/Golem/Guardian): Mixer nur in Kameranähe ticken (Performance), walk/idle nach Zustand
+    if(e.rig){
+      if(d<80)e.rig.mixer.update(dt);
+      if(ONESHOT[e.rig.cur]){
+        if(e.mkey==="guardian"&&e.rig.cur==="attack"){var _ga=e.rig.actions.attack;
+          if(_ga&&_ga.time>=_ga.getClip().duration*0.9)setAnim(e.rig,"idle",0.15);} // Combo-Fenster zu Ende → kein Root-Motion-Snap
+      }else{
+        if(e.state==="chase"&&d>e.r+1.1)setAnim(e.rig,"walk",0.2,Math.max(0.7,Math.min(1.6,e.spd/4.5)));
+        else if(e.state==="patrol")setAnim(e.rig,"walk",0.3,0.6);
+        else setAnim(e.rig,"idle",0.25);
+      }
     }
     e.g.position.y=heightAt(e.g.position.x,e.g.position.z);
     // Safe-Zone Dorf: Gegner bleiben draußen
@@ -649,33 +915,77 @@ function updEnemies(dt){
   }
 }
 function hitPlayer(dmg){if(iframe>0||!running)return;
+  // Mobil-Assist: Schild-Sphäre (ab Lv 6) zündet automatisch, wenn bereit (kein 3. Button nötig)
+  if(isTouch&&shieldHits<=0&&G.lvl>=6&&skillCD.shield<=0.05){skillCD.shield=15;doShieldCast();}
+  if(shieldHits>0){shieldHits--;iframe=0.35;
+    if(shieldMesh)shieldMesh.material.opacity=0.55; // Aufblitzen, klingt in updSkills ab
+    burst(player.position.x,1.2,player.position.z,0x7de3ff,6,4);beep(980,.08,"triangle",.05);
+    if(shieldHits<=0&&shieldMesh){shieldMesh.visible=false;showHint("Schild erschöpft");}
+    return;}
   var real=Math.max(1,dmg-playerDef());
   G.hp-=real;iframe=0.5;hurtT=1;camShake=Math.max(camShake,0.4);
+  // Treffer-Reaktion nur aus idle/walk (blockiert weder Angriff/Cast/Dodge noch die Bewegung dauerhaft)
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("hit"); // ~0.67s; Klassen ohne hit-Clip: still übersprungen
   dmgNum(real,player.position.x,2.4,player.position.z,"#ff8098");
   beep(140,.15,"sawtooth",.06);updHUD();
   if(G.hp<=0){G.hp=0;running=false;saveGame();document.getElementById("deadO").classList.remove("hide");beep(80,.5,"sawtooth",.09);}}
-// Spawner: hält pro Zone eine Ziel-Anzahl lebendig
-var spawnT=0;
+// Spawner: hält pro Zone eine Ziel-Anzahl lebendig — Rudel-Spawns + globaler Cap (Mobil-Schutz).
+// Spieler-Zone wird dichter gefüllt (dort spielt sich der Kampf ab), Dorf/Start bleiben verzeihend
+// (Zonen liegen weit vom Dorf, Spawn-Abstand >22 zum Spieler bleibt).
+var spawnT=0,IS_MOB=(navigator.maxTouchPoints>0)||IS_COARSE;
+var ENEMY_CAP=IS_MOB?15:22,DENS=IS_MOB?0.7:1; // Mobil: Dichte ×0.7
+var PACKS={0:[3,5],1:[2,3],2:[1,1],3:[2,2]}; // Slime-Rudel 3–5, Wisp 2–3, Golem einzeln, Panther paarweise
+function activeFoes(){var n=0;for(var i=0;i<enemies.length;i++)if(enemies[i].active&&!enemies[i].boss)n++;return n;}
+function spawnPack(ti,zn,total){ // Rudel um einen Punkt; respektiert den Cap, gibt Anzahl zurück
+  var a=Math.random()*6.283,r=14+Math.random()*(zn.r-22);
+  var ex=zn.x+Math.cos(a)*r,ez=zn.z+Math.sin(a)*r;
+  if(Math.hypot(ex-player.position.x,ez-player.position.z)<=22)return 0;
+  var pr=PACKS[ti]||[1,1],n=pr[0]+((Math.random()*(pr[1]-pr[0]+1))|0);
+  n=Math.min(n,ENEMY_CAP-total);if(n<=0)return 0;
+  spawnEnemy(ti,ex,ez,Math.random()<0.09); // Anführer (normal/Elite)
+  for(var k=1;k<n;k++){var oa=Math.random()*6.283,orr=1.5+Math.random()*3;
+    spawnEnemy(ti,ex+Math.cos(oa)*orr,ez+Math.sin(oa)*orr,false,true);} // Mini-Rudelmitglieder (0.7)
+  return n;
+}
 function updSpawns(dt){
   spawnT-=dt;if(spawnT>0)return;spawnT=1.6;
-  var counts=[0,0,0,0,0];
-  for(var i=0;i<enemies.length;i++){if(enemies[i].active&&!enemies[i].boss)counts[enemies[i].type+1]++;}
-  for(var zi=1;zi<=4;zi++){
+  var counts=[0,0,0,0,0],total=0;
+  for(var i=0;i<enemies.length;i++){if(enemies[i].active&&!enemies[i].boss){counts[enemies[i].type+1]++;total++;}}
+  var pzn=zoneAt(player.position.x,player.position.z),pzi=pzn?ZONES.indexOf(pzn):-1;
+  var order=[1,2,3,4];
+  if(pzi>=1){order=[pzi];for(var oz=1;oz<=4;oz++)if(oz!==pzi)order.push(oz);} // Spieler-Zone zuerst
+  for(var oi=0;oi<order.length;oi++){var zi=order[oi];
     if(zi===4&&ZONES[4].locked)continue;
-    var want=zi===4?5:7;
-    if(counts[zi]<want){
-      var zn=ZONES[zi],a=Math.random()*6.283,r=14+Math.random()*(zn.r-22);
-      var ex=zn.x+Math.cos(a)*r,ez=zn.z+Math.sin(a)*r;
-      if(Math.hypot(ex-player.position.x,ez-player.position.z)>22)
-        spawnEnemy(zi-1,ex,ez,Math.random()<0.09);
-    }
+    var want=Math.round(((zi===pzi)?12:(zi===4?5:6))*DENS); // vorher pauschal 7 (Zitadelle 5)
+    if(counts[zi]<want&&total<ENEMY_CAP)total+=spawnPack(zi-1,ZONES[zi],total);
   }
   // Aufräumen
   for(i=enemies.length-1;i>=0;i--)if(!enemies[i].active)enemies.splice(i,1);
 }
+// „Neon-Sturm": alle ~90–120s ein angekündigter Mini-Ansturm in der aktuellen Aussenzone (nie im Dorf)
+var waveT=95+Math.random()*25;
+function updWave(dt){
+  if(inDungeon)return;
+  waveT-=dt;if(waveT>0)return;
+  var zn=zoneAt(player.position.x,player.position.z);
+  if(!zn||zn.safe||zn.locked||G.t<40){waveT=25;return;} // Dorf/Niemandsland/Start: später erneut prüfen
+  waveT=90+Math.random()*30;
+  var ti=ZONES.indexOf(zn)-1;
+  var n=Math.round((4+((Math.random()*3)|0))*DENS),total=activeFoes(),spawned=0; // 4–6 (Mobil 3–4)
+  for(var k=0;k<n&&total+spawned<ENEMY_CAP+4;k++){ // Welle darf den Cap kurz leicht überschreiten
+    var a=Math.random()*6.283,d=20+Math.random()*8;
+    var ex=player.position.x+Math.cos(a)*d,ez=player.position.z+Math.sin(a)*d;
+    if(Math.hypot(ex,ez)<ZONES[0].r+6)continue; // nie Richtung Dorf
+    var e=spawnEnemy(ti,ex,ez,Math.random()<0.12,k>0&&Math.random()<0.4);
+    e.xp=Math.round(e.xp*1.6);e.state="chase";spawned++; // XP-Bonus + sofortiger Anmarsch
+  }
+  if(spawned){announce("⚠ NEON-STURM! Gegner nähern sich…","#ff9a4a");beep(160,.4,"sawtooth",.07);
+    showHint("Welle überstehen = Bonus-XP!",2600);camShake=Math.max(camShake,0.3);}
+}
 // ===================== KAMPF (Spieler) =====================
 function doAttack(){
   if(atkCD>0||!running)return;atkCD=0.42;
+  heroPlay("attack"); // ~1.13s Hieb (timeScale aus Clip-Dauer, klassen-sicher); Spam resettet den Schwung (CD 0.42s bleibt Gameplay-Wahrheit)
   beep(760,.05,"square",.035);
   // Auto-Face: nächsten Gegner in Reichweite anvisieren (ARPG-QoL — Hiebe whiffen nicht im Stand)
   var nb=null,nd=6.5;
@@ -714,6 +1024,7 @@ function doBolt(){
   var cost=Math.max(4,9-G.skills.puls*1.5);
   if(G.en<cost){showHint("⚡ Zu wenig Energie");return;}
   G.en-=cost;boltCD=0.8;updHUD();beep(980,.09,"sawtooth",.05);
+  heroPlay("cast"); // ~1.78s Cast; Klassen ohne cast-Clip → attack-Fallback; erneuter Puls (CD 0.8s) resettet
   var R=7+G.skills.puls*1.2;
   var ring=new THREE.Mesh(new THREE.TorusGeometry(0.5,0.22,8,32),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
   ring.rotation.x=-Math.PI/2;ring.position.set(player.position.x,player.position.y+0.6,player.position.z);scene.add(ring);
@@ -733,7 +1044,222 @@ function doDodge(){
   var mv=moveVec(),l=Math.hypot(mv.x,mv.z);
   dodgeDir=l>0.05?{x:mv.x/l,z:mv.z/l}:{x:Math.sin(player.rotation.y),z:Math.cos(player.rotation.y)};
   dodgeT=0.16;dodgeCD=1.0;iframe=0.36;
+  heroPlay("dodge",0.08); // ~0.83s Rolle (passt in den 1s-Cooldown); Klassen ohne dodge-Clip → kurzer run-Fallback
   beep(660,.1,"sawtooth",.04);burst(player.position.x,0.8,player.position.z,0x7de3ff,8,4);
+}
+// ===================== AKTIVE SKILLS (R/F/C/V) =====================
+// Freischaltung rein aus G.lvl abgeleitet → alte Saves bleiben kompatibel (keine neuen Felder).
+// Slot R trägt ab Lv 3 die Klassen-Signature (Magier=Kettenblitz+ · Waldläufer=Pfeilregen ·
+// Titan=Bodenschlag+Stun · Held=Nova+) — gleiche 4 Basis-Effekte, nur andere Parameter.
+var SKDEF=[
+ {id:"nova",key:"R",lv:2,cd:8},
+ {id:"chain",key:"F",lv:4,cd:6},
+ {id:"shield",key:"C",lv:6,cd:15},
+ {id:"ult",key:"V",lv:9,cd:45}
+];
+var skillCD={nova:0,chain:0,shield:0,ult:0};
+function novaInfo(){
+  if(G&&G.lvl>=3){
+    if(curClass==="magier")return{icon:"🌩",n:"Kettenblitz+ (5 Ziele)"};
+    if(curClass==="waldlaeufer")return{icon:"🏹",n:"Pfeilregen"};
+    if(curClass==="titan")return{icon:"🪨",n:"Bodenschlag"};
+    return{icon:"💥",n:"Nova+"};
+  }
+  return{icon:"💥",n:"Nova"};
+}
+function skillName(id){return id==="nova"?novaInfo().n:{chain:"Kettenblitz",shield:"Schild-Sphäre",ult:"Ultimate: Nexus-Sturm"}[id];}
+function castSkill(id){
+  if(!running||paused||!G)return;
+  var def=null;for(var i=0;i<SKDEF.length;i++)if(SKDEF[i].id===id)def=SKDEF[i];
+  if(!def)return;
+  if(G.lvl<def.lv){showHint("🔒 "+skillName(id)+" ab Level "+def.lv);return;}
+  if(skillCD[id]>0.05)return;
+  var ok=true;
+  if(id==="nova")ok=doNova();
+  else if(id==="chain")ok=doChainBolt(4,1,0x7de3ff);
+  else if(id==="shield")ok=doShieldCast();
+  else if(id==="ult")ok=doUlt();
+  if(ok!==false)skillCD[id]=def.cd; // kein Ziel/kein Cast → CD nicht verbrennen
+}
+// Expandierender Licht-Ring (Nova, Bodenschlag, Level-Up) — Muster doBolt-Ring
+function novaRing(x,y,z,R,col){
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(0.6,0.24,8,36),
+    new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.95,blending:THREE.AdditiveBlending,depthWrite:false}));
+  ring.rotation.x=-Math.PI/2;ring.position.set(x,y+0.7,z);scene.add(ring);
+  var t0=performance.now();
+  (function grow(){var k=(performance.now()-t0)/320;
+    if(k>=1){scene.remove(ring);ring.material.dispose();ring.geometry.dispose();return;}
+    ring.scale.setScalar(1+k*R*1.5);ring.material.opacity=0.95*(1-k);requestAnimationFrame(grow);})();
+}
+function doNova(){ // Slot R — ab Lv 3 Klassen-Signature
+  var sig=G.lvl>=3;
+  if(sig&&curClass==="magier")return doChainBolt(5,1.25,0xb98bff);
+  if(sig&&curClass==="waldlaeufer")return doArrowFan();
+  heroPlay("cast");
+  var slam=sig&&curClass==="titan";
+  var R=slam?10:(sig?11:9),mul=slam?2.2:(sig?2.6:2.0),col=slam?0xff9a4a:0x7de3ff;
+  novaRing(player.position.x,player.position.y,player.position.z,R,col);
+  burst(player.position.x,1,player.position.z,col,18,7);
+  var dmg=playerAtk()*mul,hitCol=slam?"#ffb07a":"#9fe8ff";
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var dx=e.g.position.x-player.position.x,dz=e.g.position.z-player.position.z,d=Math.hypot(dx,dz);
+    if(d<R+e.r){e.hp-=dmg;e.flash=0.12;
+      var kb=(e.boss?0.4:3.0)/(d||1);e.g.position.x+=dx*kb;e.g.position.z+=dz*kb; // Knockback
+      if(slam&&!e.boss)e.stunT=1.0; // Bodenschlag: 1s Stun
+      dmgNum(dmg,e.g.position.x,2.4,e.g.position.z,hitCol);
+      if(e.hp<=0)killEnemy(e,i);}}
+  if(seraph){var sd=Math.hypot(seraph.g.position.x-player.position.x,seraph.g.position.z-player.position.z);
+    if(sd<R+3){seraph.hp-=dmg;dmgNum(dmg,seraph.g.position.x,4,seraph.g.position.z,hitCol);if(seraph.hp<=0)killSeraph();}}
+  camShake=Math.max(camShake,slam?0.7:0.45);beep(slam?90:520,.25,"sawtooth",.07);
+  return true;
+}
+// Kettenblitz: springt auf die nächsten Gegner (Zick-Zack-Linien, kurz aufleuchtend)
+var boltFx=[];
+function lightningFx(x1,y1,z1,x2,y2,z2,col){
+  var pts=[],SEG=8,dx=x2-x1,dy=y2-y1,dz=z2-z1;
+  var len=Math.hypot(dx,dz)||1,pxn=-dz/len,pzn=dx/len;
+  for(var i=0;i<=SEG;i++){var t=i/SEG,mid=(i>0&&i<SEG)?1:0,j=(Math.random()-0.5)*1.6*mid;
+    pts.push(new THREE.Vector3(x1+dx*t+pxn*j,y1+dy*t+(Math.random()-0.5)*0.7*mid,z1+dz*t+pzn*j));}
+  var l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({color:col,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+  scene.add(l);boltFx.push({l:l,life:0.22});
+}
+function doChainBolt(maxN,mul,col){
+  var cur={x:player.position.x,y:player.position.y+1.6,z:player.position.z};
+  var hitList=[],range=15,dmg=playerAtk()*1.5*mul;
+  for(var n=0;n<maxN;n++){
+    var best=null,bd=range;
+    for(var i=0;i<enemies.length;i++){var e=enemies[i];
+      if(!e.active||hitList.indexOf(e)>=0)continue;
+      var d=Math.hypot(e.g.position.x-cur.x,e.g.position.z-cur.z);
+      if(d<bd){bd=d;best=e;}}
+    if(!best)break;
+    hitList.push(best);
+    var ty=best.g.position.y+1.2;
+    lightningFx(cur.x,cur.y,cur.z,best.g.position.x,ty,best.g.position.z,col);
+    burst(best.g.position.x,1,best.g.position.z,col,5,4);
+    best.hp-=dmg;best.flash=0.12;dmgNum(dmg,best.g.position.x,2.6,best.g.position.z,"#9fe8ff");
+    if(best.hp<=0)killEnemy(best,0);
+    cur={x:best.g.position.x,y:ty,z:best.g.position.z};range=11;dmg*=0.85;
+  }
+  if(!hitList.length){showHint("🌩 Kein Gegner in Reichweite");return false;}
+  heroPlay("cast");beep(1200,.12,"sawtooth",.06);camShake=Math.max(camShake,0.25);
+  return true;
+}
+// Pfeilregen (Waldläufer-Signature): Fächer aus 7 Projektilen, Auto-Aim auf den nächsten Gegner
+var ARRGEO=null,arrPool=[],arrows=[];
+function doArrowFan(){
+  heroPlay("attack");
+  var base=player.rotation.y,nb=null,nd=26;
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var d=Math.hypot(e.g.position.x-player.position.x,e.g.position.z-player.position.z);
+    if(d<nd){nd=d;nb=e;}}
+  if(nb)base=Math.atan2(nb.g.position.x-player.position.x,nb.g.position.z-player.position.z);
+  player.rotation.y=base;
+  if(!ARRGEO){ARRGEO=new THREE.ConeGeometry(0.16,1.0,4);ARRGEO.rotateX(Math.PI/2);}
+  for(var k=0;k<7;k++){var a=base+(k-3)*0.16;
+    var m=arrPool.pop()||new THREE.Mesh(ARRGEO,new THREE.MeshBasicMaterial({color:0x8affc0,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+    m.position.set(player.position.x,player.position.y+1.3,player.position.z);
+    m.rotation.set(0,a,0);scene.add(m);
+    arrows.push({m:m,vx:Math.sin(a)*26,vz:Math.cos(a)*26,life:0.85,dmg:playerAtk()*1.1});}
+  beep(880,.09,"square",.05);
+  return true;
+}
+// Schild-Sphäre: absorbiert 3 Treffer (Kugel um den Spieler, Abfang in hitPlayer)
+var shieldHits=0,shieldMesh=null;
+function doShieldCast(){
+  heroPlay("cast");
+  if(!shieldMesh){shieldMesh=new THREE.Mesh(new THREE.SphereGeometry(1.9,18,12),
+    new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.22,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+    shieldMesh.position.y=1.2;player.add(shieldMesh);}
+  shieldMesh.visible=true;shieldHits=3;
+  burst(player.position.x,1.2,player.position.z,0x7de3ff,12,5);
+  showHint("🛡 Schild-Sphäre: absorbiert 3 Treffer",2200);beep(700,.15,"triangle",.06);
+  return true;
+}
+// Ultimate „Nexus-Sturm" (Lv 9+): 3s Neon-Meteor-Regen im Umkreis
+var ultT=0,metT=0,meteors=[],metPool=[],METGEO=null;
+function doUlt(){
+  heroPlay("cast");ultT=3;metT=0;
+  announce("🌀 NEXUS-STURM!","#b98bff");beep(120,.5,"sawtooth",.08);camShake=Math.max(camShake,0.5);
+  return true;
+}
+function spawnMeteor(){
+  if(!METGEO){METGEO=new THREE.ConeGeometry(0.55,1.8,5);METGEO.rotateX(Math.PI);}
+  var a=Math.random()*6.283,r=2+Math.random()*10;
+  var x=player.position.x+Math.cos(a)*r,z=player.position.z+Math.sin(a)*r,gy=heightAt(x,z);
+  var m=metPool.pop()||new THREE.Mesh(METGEO,new THREE.MeshBasicMaterial({color:0xc79bff,transparent:true,opacity:0.95,blending:THREE.AdditiveBlending,depthWrite:false}));
+  m.position.set(x,gy+16,z);scene.add(m);
+  meteors.push({m:m,gy:gy,x:x,z:z});
+}
+// Pro-Frame-Update: CDs, Blitz-Fade, Pfeile, Meteore, Schild-Puls, HUD-Slots
+var sbT=0;
+function updSkills(dt){
+  for(var k in skillCD)if(skillCD[k]>0)skillCD[k]-=dt;
+  for(var i=boltFx.length-1;i>=0;i--){var b=boltFx[i];b.life-=dt;
+    if(b.life<=0){scene.remove(b.l);b.l.geometry.dispose();b.l.material.dispose();boltFx.splice(i,1);}
+    else b.l.material.opacity=b.life/0.22;}
+  for(i=arrows.length-1;i>=0;i--){var ar=arrows[i];ar.life-=dt;
+    ar.m.position.x+=ar.vx*dt;ar.m.position.z+=ar.vz*dt;
+    ar.m.position.y=heightAt(ar.m.position.x,ar.m.position.z)+1.3;
+    var hit=false;
+    if(ar.life>0)for(var j=0;j<enemies.length;j++){var e=enemies[j];if(!e.active)continue;
+      if(Math.hypot(e.g.position.x-ar.m.position.x,e.g.position.z-ar.m.position.z)<e.r+1.1){
+        e.hp-=ar.dmg;e.flash=0.1;dmgNum(ar.dmg,e.g.position.x,2.3,e.g.position.z,"#8affc0");
+        burst(ar.m.position.x,1,ar.m.position.z,0x8affc0,3,3);
+        if(e.hp<=0)killEnemy(e,j);hit=true;break;}}
+    if(hit||ar.life<=0){scene.remove(ar.m);if(arrPool.length<20)arrPool.push(ar.m);arrows.splice(i,1);}}
+  if(ultT>0){ultT-=dt;metT-=dt;if(metT<=0){metT=0.15;spawnMeteor();}}
+  for(i=meteors.length-1;i>=0;i--){var mt2=meteors[i];mt2.m.position.y-=44*dt;mt2.m.rotation.y+=dt*9;
+    if(mt2.m.position.y<=mt2.gy+0.4){
+      burst(mt2.x,0.6,mt2.z,0xb98bff,9,6);camShake=Math.max(camShake,0.18);beep(200,.06,"square",.03);
+      var mdmg=playerAtk()*1.8;
+      for(var j2=0;j2<enemies.length;j2++){var e2=enemies[j2];if(!e2.active)continue;
+        if(Math.hypot(e2.g.position.x-mt2.x,e2.g.position.z-mt2.z)<3.5+e2.r){
+          e2.hp-=mdmg;e2.flash=0.1;dmgNum(mdmg,e2.g.position.x,2.4,e2.g.position.z,"#d9b8ff");
+          if(e2.hp<=0)killEnemy(e2,j2);}}
+      if(seraph&&Math.hypot(seraph.g.position.x-mt2.x,seraph.g.position.z-mt2.z)<4.5){
+        seraph.hp-=mdmg;dmgNum(mdmg,seraph.g.position.x,4,seraph.g.position.z,"#d9b8ff");if(seraph.hp<=0)killSeraph();}
+      scene.remove(mt2.m);if(metPool.length<12)metPool.push(mt2.m);meteors.splice(i,1);}}
+  if(shieldMesh&&shieldMesh.visible){
+    var tgtO=0.2+Math.sin(G.t*5)*0.06;
+    shieldMesh.material.opacity+=(tgtO-shieldMesh.material.opacity)*Math.min(1,dt*6);
+    shieldMesh.rotation.y+=dt;}
+  sbT-=dt;if(sbT<=0){sbT=0.12;updSkillbar();}
+}
+// HUD: Skill-Slots (Desktop unten rechts) + mobile Zusatz-Buttons mit CD-Zahl
+var sbEls=null;
+function buildSkillbar(){
+  var bar=document.getElementById("skillbar");bar.innerHTML="";sbEls=[];
+  for(var i=0;i<SKDEF.length;i++){var d=document.createElement("div");d.className="sk";
+    d.innerHTML="<span class='ico'></span><span class='kk'>"+SKDEF[i].key+"</span><div class='cdov'></div>";
+    bar.appendChild(d);sbEls.push(d);}
+  if(isTouch)bar.style.display="none"; // mobil: eigene Touch-Buttons statt Leiste (Joystick-Zone!)
+  updSkillbar();
+}
+var SKICON={chain:"🌩",shield:"🛡",ult:"🌀"};
+function updSkillbar(){
+  if(!sbEls||!G)return;
+  for(var i=0;i<SKDEF.length;i++){var def=SKDEF[i],d=sbEls[i];
+    var locked=G.lvl<def.lv,cd=skillCD[def.id];
+    d.classList.toggle("locked",locked);
+    d.title=skillName(def.id);
+    d.querySelector(".ico").textContent=def.id==="nova"?novaInfo().icon:SKICON[def.id];
+    var ov=d.querySelector(".cdov");
+    if(locked){ov.style.display="flex";ov.textContent="Lv"+def.lv;}
+    else if(cd>0.05){ov.style.display="flex";ov.textContent=Math.ceil(cd);}
+    else ov.style.display="none";}
+  if(isTouch){
+    var ta=document.getElementById("tSkA"),tb=document.getElementById("tSkB");
+    ta.classList.toggle("hide",G.lvl<SKDEF[0].lv);
+    tb.classList.toggle("hide",G.lvl<SKDEF[1].lv);
+    var useUlt=G.lvl>=9&&skillCD.ult<=0.05;
+    ta.querySelector(".bi").textContent=novaInfo().icon;
+    tb.querySelector(".bi").textContent=useUlt?"🌀":"🌩";
+    var ca=skillCD.nova,cb=useUlt?0:skillCD.chain;
+    ta.querySelector(".bcd").textContent=ca>0.05?Math.ceil(ca):"";
+    tb.querySelector(".bcd").textContent=cb>0.05?Math.ceil(cb):"";
+    ta.style.opacity=ca>0.05?0.45:1;tb.style.opacity=cb>0.05?0.45:1;}
 }
 // ===================== NPCs & QUESTS =====================
 var npcs=[
@@ -746,8 +1272,95 @@ npcs.forEach(function(np){
   var b=new THREE.Mesh(new THREE.ConeGeometry(0.7,2.0,6),mat(0x141a3e,np.c,0.7));b.position.y=1.0;b.castShadow=true;g.add(b);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.42,8,6),mat(0xead9c0,0x3a2f20,0.15));head.position.y=2.35;g.add(head);
   var mark=new THREE.Mesh(new THREE.OctahedronGeometry(0.28,0),new THREE.MeshBasicMaterial({color:0xffd166}));mark.position.y=3.4;g.add(mark);
-  g.position.set(np.x,0,np.z);scene.add(g);np.g=g;np.mark=mark;
+  g.position.set(np.x,0,np.z);scene.add(g);np.g=g;np.mark=mark;np.ph=[b,head];
 });
+// ===== hero.glb: geriggter Held (Clips idle/walk/wave) für Spieler + die 3 Dorf-NPCs =====
+// SkinnedMesh-Falle: .clone() bricht Skinning in r128 (kein SkeletonUtils im Vendor)
+// → das GLB 4x aus demselben ArrayBuffer parsen — simpel und robust.
+var rigs=[],heroRig=null;
+// One-Shot-Clips: LoopOnce + clampWhenFinished, danach Crossfade zurück zu idle
+// (die Bewegungs-Logik im Loop wechselt im nächsten Frame ggf. sofort auf walk).
+var ONESHOT={wave:1,attack:1,cast:1,dodge:1,hit:1,victory:1};
+function makeRig(o,anims,local){var r={mixer:new THREE.AnimationMixer(o),actions:{},cur:null};
+  for(var i=0;i<anims.length;i++){var a=r.mixer.clipAction(anims[i]);
+    if(ONESHOT[anims[i].name]){a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=true;}
+    r.actions[anims[i].name]=a;}
+  r.mixer.addEventListener("finished",function(e){ // One-Shot vorbei → sauber zurück zu idle
+    var a=r.actions.idle;if(!a){r.cur=null;return;}
+    r.cur="idle";a.reset();a.timeScale=1;a.play();
+    if(e.action&&e.action!==a)e.action.crossFadeTo(a,0.2,false);});
+  if(!local)rigs.push(r);return r;} // local=Gegner-Rigs: Mixer läuft distanz-gecullt in updEnemies
+function setAnim(r,name,fade,ts){if(!r)return;var a=r.actions[name];if(!a)return;
+  if(r.cur===name){if(ts!==undefined)a.timeScale=ts;return;}
+  var prev=r.cur?r.actions[r.cur]:null;r.cur=name;
+  a.reset();if(ts!==undefined)a.timeScale=ts;a.play();
+  if(prev)prev.crossFadeTo(a,fade||0.25,false);}
+// One-Shot abspielen — startet auch neu, wenn derselbe Clip schon läuft (Angriffs-Spam)
+function playOnce(r,name,ts,fade){if(!r)return;var a=r.actions[name];if(!a)return;
+  var prev=(r.cur&&r.cur!==name)?r.actions[r.cur]:null;r.cur=name;
+  a.reset();a.timeScale=ts||1;a.play();
+  if(prev)prev.crossFadeTo(a,fade||0.12,false);else a.setEffectiveWeight(1);}
+// ===== Klassenwahl: Spieler-GLB nach gewählter Klasse (localStorage nr_class, Default Held) =====
+// held = hero_meshy_combat.glb (9 Clips inkl. cast/dodge/hit/victory); die 3 Klassen haben nur
+// idle/walk/run/attack → heroPlay() fällt defensiv zurück (cast→attack, dodge→run, Rest still).
+var CLASSDEFS={
+  held:{f:"hero_meshy_combat.glb",meshy:true},
+  magier:{f:"class_mage.glb"},
+  waldlaeufer:{f:"class_ranger.glb"},
+  titan:{f:"class_titan.glb"}
+};
+var curClass=lsGet("nr_class")||"held";if(!CLASSDEFS[curClass])curClass="held";
+// Leichte Klassen-Boni (nur Multiplikatoren, Save bleibt unverändert/kompatibel)
+function clsMul(k){var m={magier:{en:1.2},waldlaeufer:{spd:1.1},titan:{hp:1.2}}[curClass];return (m&&m[k])||1;}
+var _clsLoad=0;
+function loadPlayerModel(cls){
+  if(!THREE.GLTFLoader)return;
+  var def=CLASSDEFS[cls]||CLASSDEFS.held,my=++_clsLoad;
+  new THREE.GLTFLoader().load("/models/"+def.f,function(g){
+    if(my!==_clsLoad)return; // inzwischen wurde eine andere Klasse gewählt
+    if(heroModel){player.remove(heroModel);heroModel=null;}
+    if(heroRig){var ri=rigs.indexOf(heroRig);if(ri>=0)rigs.splice(ri,1);heroRig=null;}
+    var o=g.scene;o.scale.setScalar(1.2); // Klassen 1.72–1.9 Einheiten → Spielgrösse ~2.1–2.3
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
+      if(n.material){if(def.meshy){n.material.emissiveIntensity=1.3;n.material.color.setScalar(2.1);} // Meshy: Neonlinien in Basecolor+Emissive → dämpfen
+        else n.material.emissiveIntensity=Math.max(n.material.emissiveIntensity||0,1.0);}}});
+    pBody.visible=false;player.add(o);heroModel=o;
+    heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
+  },undefined,function(){});
+}
+// One-Shots klassen-sicher: fehlender Clip crasht NIE (playOnce guarded), Fallback attack/run,
+// timeScale dynamisch aus der Clip-Dauer (Ziel-Dauern = bisheriges Hero-Tuning).
+var HERO_FB={cast:"attack",dodge:"run"};
+var HERO_TDUR={attack:1.13,cast:1.78,dodge:0.83,hit:0.67};
+function heroPlay(name,fade){
+  if(!heroRig)return;
+  var nm=heroRig.actions[name]?name:HERO_FB[name];
+  if(!nm||!heroRig.actions[nm])return;
+  var ts=1;
+  if(HERO_TDUR[name]){var du=0;try{du=heroRig.actions[nm].getClip().duration;}catch(e){}
+    if(du>0.01)ts=Math.max(0.5,Math.min(4,du/HERO_TDUR[name]));}
+  else if(name==="victory")ts=1.1;
+  playOnce(heroRig,nm,ts,fade);
+}
+(function(){
+  if(!THREE.GLTFLoader)return;
+  loadPlayerModel(curClass); // SPIELER: GLB der gewählten Klasse
+  // NPCs: Blender-Mensch hero.glb (Original-Materialien mit cyan/pink-Akzenten, KEIN Emissive-Override!)
+  if(!window.fetch)return;
+  fetch("/models/hero.glb").then(function(rs){if(!rs.ok)throw 0;return rs.arrayBuffer();}).then(function(buf){
+    function make(cb){new THREE.GLTFLoader().parse(buf.slice(0),"",cb,function(){});}
+    npcs.forEach(function(np){make(function(g){
+      var o=g.scene;o.scale.setScalar(1.2);var tc=new THREE.Color(np.c);
+      o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;var mt=n.material;if(!mt)return;
+        if(mt.name==="hero_cyan"||mt.name==="hero_pink"){mt.emissive.copy(tc);mt.color.lerp(tc,0.5);}
+        else if(mt.name==="hero_suit"){mt.color.lerp(tc,0.3);mt.emissive.lerp(tc,0.3);}}});
+      np.ph.forEach(function(m){m.visible=false;}); // Kegel+Kopf-Platzhalter aus
+      np.g.add(o);
+      np.rig=makeRig(o,g.animations);setAnim(np.rig,"idle",0);
+      np.rig.actions.idle.time=Math.random()*2; // Idle-Phasen entkoppeln
+    });});
+  }).catch(function(){});
+})();
 // Quest-Kette (qstage): 0=zu Mira, 1=5 Drohnen, 2=zu Von, 3=15 Scherben, 4=3 Obelisken, 5=Boss, 6=fertig
 var QSTAGES=[
  {q:"Sprich mit <b>Ältester Mira</b> im Dorf",who:"mira"},
@@ -777,6 +1390,7 @@ function openDialog(who,txt,opts){
 function closeDialog(){dialogOpen=false;document.getElementById("dialog").classList.add("hide");}
 function talkTo(np){
   beep(520,.07,"triangle",.05);
+  if(np.rig)setAnim(np.rig,"wave",0.2); // winkt beim Ansprechen (LoopOnce → zurück zu idle)
   if(np.id==="mira"){
     if(G.qstage===0){openDialog(np.n,"Endlich… ein Held mit einem <b>Funken</b> im Herzen. Das Reich zerbrach, als der NEXUS fiel. Beweise dich: Der <b>Kristallwald im Osten</b> wimmelt von Drohnen. Besiege <b>fünf</b> davon.",[["Auf in den Wald ▶",function(){G.qstage=1;G.quests.kills=0;renderQuests();closeDialog();saveGame();},true]]);}
     else if(G.qstage===1){openDialog(np.n,"Die Drohnen warten im <b>Osten</b>. "+(G.quests.kills||0)+"/5 besiegt.");}
@@ -806,7 +1420,8 @@ function doInteract(){
       if(G.qstage<4){showHint("Der Obelisk schweigt noch — folge erst deinen Aufgaben.");return;}
       ob.on=true;G.obel[i]=true;beep(1200,.4,"triangle",.08);burst(ob.x,4,ob.z,0x6affab,22,7);camShake=0.5;
       announce("Obelisk aktiviert! ("+G.obel.filter(Boolean).length+"/3)","#6affab");
-      if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d");}
+      if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d");
+        heroPlay("victory",0.2);} // steht am Obelisken → Sieger-Pose passt immer (Klassen ohne Clip: still)
       renderQuests();saveGame();return;}}
   if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5){enterDungeon();return;}
   if(inDungeon){
@@ -928,9 +1543,9 @@ function genDungeon(){
     if(dd2>best2[2])best2=[+pp2[0],+pp2[1],dd2];}
   dgn.chest={x:DX+best2[0]*DCELL,z:DZ+best2[1]*DCELL};
   var ch=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.1,1.1),mat(0x2a1a08,0xffcf6e,0.9));ch.position.set(dgn.chest.x,0.55,dgn.chest.z);dgn.group.add(ch);dgn.chestMesh=ch;
-  // Wächter der Tiefe: Miniboss bewacht die Truhe (Warden-Modell)
+  // Wächter der Tiefe: Miniboss bewacht die Truhe (Guardian-GLB, gerigt; Fallback Warden/Primitiv)
   (function(){var g=new THREE.Group();
-    if(wardenModel)g.add(wardenModel.clone(true));
+    if(!monBuf.guardian&&wardenModel)g.add(wardenModel.clone(true));
     else{var b2=new THREE.Mesh(new THREE.IcosahedronGeometry(2.2,0),mat(0x1a0a2e,0xb98bff,1.0));b2.position.y=2.2;b2.castShadow=true;g.add(b2);}
     var wl=new THREE.PointLight(0xb98bff,1.6,26);wl.position.y=4;g.add(wl);
     g.position.set(dgn.chest.x+1.4,0,dgn.chest.z+1.4);scene.add(g);
@@ -938,7 +1553,8 @@ function genDungeon(){
     var lvB=1+(G.lvl-1)*0.12;
     var mb={g:g,body:g.children[0],mats:mats,hp:170*lvB,maxhp:170*lvB,atk:13*lvB,spd:5.2,xp:70,c:0xb98bff,r:2.4,elite:true,boss:false,miniboss:true,baseEmis:0.5,active:true,
       state:"chase",pa:0,pt:0,atkT:0,flash:0,hx:dgn.chest.x,hz:dgn.chest.z};
-    enemies.push(mb);dgn.foes.push(mb);})();
+    enemies.push(mb);dgn.foes.push(mb);
+    if(monBuf.guardian)attachMonster(mb,"guardian",1.5);})(); // 2.8 → ~4.2 Einheiten Mini-Boss-Präsenz
   // 7 Eliten auf entfernten Bodenzellen
   dgn.foes=[];
   for(var si3=0;si3<7;si3++){var sk2=fkeys[(Math.random()*fkeys.length)|0].split(","),sx3=DX+(+sk2[0])*DCELL,sz3=DZ+(+sk2[1])*DCELL;
@@ -948,6 +1564,7 @@ function genDungeon(){
 function enterDungeon(){
   genDungeon();inDungeon=true;
   if(landscape)landscape.visible=false; // Horizont-Ring nicht in die Tiefe scheinen lassen
+  nature.visible=false; // Vegetation ebenfalls aus
   player.position.set(DX,0,DZ);vx=0;vz=0;
   announce("DIE TIEFE","#b98bff");showHint("Finde die Truhe 🎁 und das grüne Rückportal!",3200);
   beep(180,.4,"sawtooth",.07);camShake=0.5;saveGame();updHUD();
@@ -955,8 +1572,9 @@ function enterDungeon(){
 function exitDungeon(){
   inDungeon=false;
   if(landscape)landscape.visible=true;
+  nature.visible=true;
   // Dungeon-Gegner entfernen
-  for(var i=0;i<dgn.foes.length;i++){var f=dgn.foes[i];if(f.active){f.active=false;scene.remove(f.g);}}
+  for(var i=0;i<dgn.foes.length;i++){var f=dgn.foes[i];if(f.active){f.active=false;scene.remove(f.g);freeRig(f);}}
   dgn.foes=[];if(dgn.group){scene.remove(dgn.group);dgn.group=null;}
   player.position.set(portal.x,0,portal.z+3);vx=0;vz=0;
   announce("Zurück im Reich","#7de3ff");saveGame();
@@ -992,6 +1610,7 @@ function killSeraph(){
   var it=rollItem(G.lvl+4);it.r=3;it.v=Math.round(it.v*1.4);G.inv.push(it);G.legFound=(G.legFound||0)+1;
   G.shards+=30;G.shardsEarned=(G.shardsEarned||0)+30;gainXp(90);
   announce("SERAPH BESIEGT — LEGENDÄR: "+it.n+"!","#ffcf6e");
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("victory",0.2);
   scene.remove(seraph.g);seraph=null;seraphCD=DAYLEN*1.5;
   updHUD();saveGame();
 }
@@ -1061,24 +1680,40 @@ function updMusic(dt,dayA){
 }
 // ===================== System-Hooks für die Hauptschleife =====================
 function initSystems(){
-  renderQuests();
+  renderQuests();buildSkillbar();
   // Touch: E-Button zeigen, wenn Interaktion in Reichweite
 }
 function updSystems(dt,dayA){
-  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);updMusic(dt,dayA);updAch(dt);
-  // NPC-Marker hüpfen + Interakt-Hinweis
+  updEnemies(dt);updSpawns(dt);updWave(dt);updSkills(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);updMusic(dt,dayA);updAch(dt);
+  // NPC-Marker hüpfen, NPCs drehen sich zum Spieler + kontextueller Tasten-Prompt
   var near=null,px=player.position.x,pz=player.position.z;
-  for(var i=0;i<npcs.length;i++){npcs[i].mark.position.y=3.4+Math.sin(G.t*3+i)*0.25;npcs[i].mark.rotation.y+=dt*2;
-    if(Math.hypot(npcs[i].x-px,npcs[i].z-pz)<3.6)near=npcs[i].n;}
-  for(i=0;i<obelisks.length;i++){if(!obelisks[i].on&&Math.hypot(obelisks[i].x-px,obelisks[i].z-pz)<4)near="Obelisk";}
-  if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5)near="Portal: Die Tiefe";
-  if(inDungeon&&dgn.chest&&!dgn.chestOpen&&Math.hypot(dgn.chest.x-px,dgn.chest.z-pz)<3.5)near="Truhe öffnen";
-  if(inDungeon&&dgn.exit&&Math.hypot(dgn.exit.x-px,dgn.exit.z-pz)<4)near="Rückportal";
+  for(var i=0;i<npcs.length;i++){var np2=npcs[i];np2.mark.position.y=3.4+Math.sin(G.t*3+i)*0.25;np2.mark.rotation.y+=dt*2;
+    var dnp=Math.hypot(np2.x-px,np2.z-pz);
+    if(dnp<3.6)near="Reden · "+np2.n;
+    if(dnp<9&&np2.rig){var ty2=Math.atan2(px-np2.x,pz-np2.z),cy2=np2.g.rotation.y,dfa=Math.atan2(Math.sin(ty2-cy2),Math.cos(ty2-cy2));
+      np2.g.rotation.y=cy2+dfa*Math.min(1,dt*5);}}
+  for(i=0;i<obelisks.length;i++){if(!obelisks[i].on&&Math.hypot(obelisks[i].x-px,obelisks[i].z-pz)<4)near="Aktivieren · Obelisk";}
+  if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5)near="Betreten · Portal: Die Tiefe";
+  if(inDungeon&&dgn.chest&&!dgn.chestOpen&&Math.hypot(dgn.chest.x-px,dgn.chest.z-pz)<3.5)near="Öffnen · Truhe";
+  if(inDungeon&&dgn.exit&&Math.hypot(dgn.exit.x-px,dgn.exit.z-pz)<4)near="Nutzen · Rückportal";
   if(portal.mesh)portal.mesh.rotation.y+=dt*1.2;
   if(inDungeon&&dgn.exitMesh)dgn.exitMesh.rotation.y+=dt*2;
+  updPrompt(near&&!dialogOpen?near:null);
+}
+// Tasten-Anzeige: Key-Cap-Badge (Desktop „E …", Touch „Tippen …" + pulsierender E-Button)
+var _kpEl=null,_kpLast=null;
+function updPrompt(txt){
+  if(!_kpEl)_kpEl=document.getElementById("kprompt");
   var ta=document.getElementById("tAct");
-  if(near&&!dialogOpen){showHint("[E] "+near,600);if(isTouch)ta.classList.remove("hide");}
-  else if(isTouch)ta.classList.add("hide");
+  if(txt){
+    if(txt!==_kpLast){_kpLast=txt;
+      _kpEl.innerHTML=isTouch?"<span class='kcap'>👆</span> "+txt:"<span class='kcap'>E</span> "+txt;}
+    _kpEl.style.display="flex";
+    if(isTouch){ta.classList.remove("hide");ta.classList.add("pulse");}
+  }else{
+    if(_kpLast!==null){_kpLast=null;_kpEl.style.display="none";}
+    if(isTouch){ta.classList.add("hide");ta.classList.remove("pulse");}
+  }
 }
 
 // ===================== Kamera =====================
@@ -1129,7 +1764,7 @@ function loop(now){
   if(running&&!paused){
     G.t+=dt;
     // Bewegung (Velocity-Glättung wie Colossus)
-    var mv=moveVec(),spd=G.spd*(1+G.skills.tempo*0.08);
+    var mv=moveVec(),spd=G.spd*(1+G.skills.tempo*0.08)*clsMul("spd"); // Waldläufer +10%
     if(dodgeT>0){dodgeT-=dt;player.position.x+=dodgeDir.x*34*dt;player.position.z+=dodgeDir.z*34*dt;burst(player.position.x,0.6,player.position.z,0x7de3ff,2,1.2);}
     else{var l=Math.hypot(mv.x,mv.z)||1,mvx=(Math.abs(mv.x)+Math.abs(mv.z)>0.05)?1:0;
       var tvx=(mv.x/l)*spd*mvx,tvz=(mv.z/l)*spd*mvx,k=Math.min(1,dt*(mvx?11:8));
@@ -1143,24 +1778,23 @@ function loop(now){
     else{var pr=Math.hypot(player.position.x,player.position.z);
     if(pr>WORLD-2){player.position.x*=(WORLD-2)/pr;player.position.z*=(WORLD-2)/pr;vx*=0.4;vz*=0.4;}}
     player.position.y=heightAt(player.position.x,player.position.z);
-    // Held-Animation: Lauf-Bob + Idle-Atmen + Staub-Schritte (prozedural, Modell ist unriggt)
-    var _spd2=Math.hypot(vx,vz);
-    if(heroModel){var _hb=player.userData.heroBaseY!==undefined?player.userData.heroBaseY:(player.userData.heroBaseY=heroModel.position.y);
-      heroModel.position.y=_hb+(_spd2>2?Math.abs(Math.sin(G.t*9.5))*0.2:Math.sin(G.t*1.8)*0.045);}
+    // Held-Animation: GLB-Clips idle/walk via AnimationMixer, Walk-Tempo an Speed gekoppelt (+ Staub-Schritte)
+    var _spd2=Math.hypot(vx,vz);if(dodgeT>0)_spd2=20;
+    if(heroRig&&!ONESHOT[heroRig.cur]){ // One-Shots (attack/cast/dodge/hit/victory) laufen aus, dann übernimmt Bewegung
+      if(_spd2>2)setAnim(heroRig,"walk",0.25,Math.max(0.8,Math.min(1.4,_spd2/9)));
+      else setAnim(heroRig,"idle",0.3);}
     stepT-=dt;if(_spd2>6&&stepT<=0){stepT=0.26;burst(player.position.x,0.25,player.position.z,0x6f86c8,2,1.6);}
     // Zitadelle gesperrt bis alle Obelisken an
     var zc=ZONES[4];if(zc.locked){var dC=Math.hypot(player.position.x-zc.x,player.position.z-zc.z);
       if(dC<zc.r){var push=(zc.r-dC)+0.5,ang=Math.atan2(player.position.z-zc.z,player.position.x-zc.x);
         player.position.x=zc.x+Math.cos(ang)*(zc.r+0.5);player.position.z=zc.z+Math.sin(ang)*(zc.r+0.5);
         showHint("⚡ Eine Barriere hält dich fern — aktiviere die 3 Obelisken!");}}
-    // Ausrichtung in Bewegungsrichtung
+    // Ausrichtung in Bewegungsrichtung (hero.glb blickt +Z → atan2(dx,dz); Walk-Clip übernimmt die Beinarbeit)
     if(Math.hypot(vx,vz)>1.2)player.rotation.y=Math.atan2(vx,vz);
-    if(heroModel){var lean=Math.max(-0.2,Math.min(0.2,-((Math.cos(player.rotation.y)*vx-Math.sin(player.rotation.y)*vz))*0.012));
-      heroModel.rotation.z+=(lean-heroModel.rotation.z)*Math.min(1,dt*10);}
     pGlow.position.set(player.position.x,player.position.y+2,player.position.z);
     pGlow.intensity=0.7+(1-dayA)*1.1;
     // Energie-Regeneration
-    G.en=Math.min(G.maxen,G.en+dt*(2.2+G.skills.fokus*0.9));
+    G.en=Math.min(playerMaxEn(),G.en+dt*(2.2+G.skills.fokus*0.9));
     if(iframe>0)iframe-=dt;
     if(atkCD>0)atkCD-=dt;if(boltCD>0)boltCD-=dt;if(dodgeCD>0)dodgeCD-=dt;
     // Zone anzeigen
@@ -1176,6 +1810,7 @@ function loop(now){
   }
   updWater(G?G.t:0);grassUniforms.uTime.value=(G?G.t:performance.now()*0.001);
   updBoids(dt);
+  if(!paused)for(var _ri=0;_ri<rigs.length;_ri++)rigs[_ri].mixer.update(dt); // Skelett-Animationen (Held+NPCs)
   // Obelisk-Ringe drehen
   for(var i=0;i<obelisks.length;i++){obelisks[i].ring.rotation.z+=dt*(obelisks[i].on?2.2:0.4);
     obelisks[i].m.material.emissiveIntensity=obelisks[i].on?1.2+Math.sin(now*0.004)*0.3:0.35;}
@@ -1189,6 +1824,7 @@ function begin(){
   var saved=loadGame();
   G=saved||freshState();
   G.ach=G.ach||{};G.kills=G.kills||0;G.shardsEarned=G.shardsEarned||0;G.legFound=G.legFound||0;G.dungeonRuns=G.dungeonRuns||0;
+  G.hp=Math.min(G.hp,playerMaxHp());G.en=Math.min(G.en,playerMaxEn()); // Klassen-Wechsel: alte Saves sauber clampen
   player.position.set(G.px||0,0,G.pz||14);
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");
@@ -1200,7 +1836,7 @@ function begin(){
 function renderMenu(){var r=document.getElementById("optRows");r.innerHTML="";
   [["🎵 Musik","music"],["🔔 Effekte","sfx"]].forEach(function(o){
     var d=document.createElement("button");
-    d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between";
+    d.style.cssText="border:1px solid #3a4170;background:rgba(30,36,80,.8);color:#cfe0ff;border-radius:12px;padding:13px 16px;font-weight:800;cursor:pointer;font-size:1.05rem;display:flex;justify-content:space-between;min-height:48px";
     d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
     d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();renderMenu();};r.appendChild(d);});}
 function toggleMenu(){if(!G)return;paused=!paused;try{if(paused)MUS.pause();else if(music.on&&!muted&&OPT.music)MUS.play().catch(function(){});}catch(e){}
@@ -1211,6 +1847,12 @@ document.getElementById("resumeBtn2").onclick=toggleMenu;
 document.getElementById("rulesBtn2").onclick=function(){toggleMenu();
   showHint("WASD laufen · LEER Angriff · Q Puls · SHIFT Rolle · E reden/nutzen · I Inventar · T Skills — folge den Aufgaben rechts oben!",6000);};
 document.getElementById("startBtn").onclick=begin;
+// Klassen-Karten: Wahl optional — Held/letzte Wahl ist vorgewählt, „Reich betreten" startet immer sofort
+(function(){var cards=document.querySelectorAll("#classRow .ccard");
+  function mark(){for(var i=0;i<cards.length;i++)cards[i].classList.toggle("sel",cards[i].getAttribute("data-cls")===curClass);}
+  for(var i=0;i<cards.length;i++)(function(c){c.onclick=function(){var cl=c.getAttribute("data-cls");if(cl===curClass)return;
+    curClass=cl;lsSet("nr_class",cl);mark();loadPlayerModel(cl);beep(620,.06,"triangle",.04);};})(cards[i]);
+  mark();})();
 (function(){if(loadGame()){document.getElementById("startBtn").textContent="Weiterspielen ▶";var wb=document.getElementById("wipeBtn");wb.classList.remove("hide");
   wb.onclick=function(){if(wb.dataset.armed){lsDel(SAVE_KEY);location.reload();}else{wb.dataset.armed="1";wb.textContent="Sicher? Nochmal tippen zum Löschen";}};}})();
 document.getElementById("reviveBtn").onclick=function(){

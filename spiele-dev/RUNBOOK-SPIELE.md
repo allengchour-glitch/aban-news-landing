@@ -124,6 +124,53 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
       Glow-Flecken statt flacher dunkler Platte (an Vision-Befund „Terrain beleben" andocken)
 - [ ] „Profi für online": Phase 3 (WebRTC-Koop) beginnt nach Phase-1/2-Abschluss — Pilot neon-duo
 
+### User-Feedback 2026-07-10 (Runde 2 — „geiler Skill, mach besser als andere Spiele")
+- [ ] **Charaktere wie Menschen + Bewegung**: menschenähnliche Low-Poly-Figuren (Kopf/Rumpf/Arme/Beine)
+      MIT Blender-Rig + Animationen (idle/walk) → GLB mit Animations-Tracks → three.js AnimationMixer,
+      Walk-Anim an Bewegungsgeschwindigkeit gekoppelt. Pipeline: spiele-dev/blender_hero.py → models/hero.glb.
+      Gilt für Spieler UND NPCs (NPCs mind. idle-Bewegung).
+- [ ] **Bäume detaillierter + verschieden**: 3+ Baum-Varianten (Stamm + mehrlagige Krone, Neon-Ton),
+      via Blender → models/nature_pack.glb (benannte Objekte für Instancing).
+- [ ] **Alles lebhafter — Rasen, Blumen, Gebüsche**: Gras-Büschel/Blumen/Büsche als instanzierte
+      Low-Poly-Meshes verstreut (InstancedMesh, Performance!), dezentes Wind-Wackeln (Shader/Vertex).
+- [ ] **Tasten-Anzeige**: kontextuelle Prompts im Spiel („E drücken" über NPC/Tür/Item, mobil: Tap-Symbol),
+      + Steuerungs-Legende sichtbar; wird Muster für alle Spiele.
+- Recherche-Auftrag (User: „im YouTube und Netz sind viele Tipps"): vor jedem Baustein WebSearch nach
+  Low-Poly-/Blender-Python-/three.js-Best-Practices, Erkenntnisse hier eintragen.
+
+### User-Feedback 2026-07-10 (Runde 3 — „das sieht nice aus, mach weiter und mehr, mit Liebe")
+- [ ] **Kampf-Animationen** (User: „kämpfen animation gut, attacke auch super animation"): Meshy-
+      Bewegungsbibliothek auf dem gerigten hero_meshy (Rigging-Task 019f4e41-19a0-7ec9-ba2e-aa412560c362):
+      attack/slash, skill/cast, dodge, hit-reaction (+ ggf. death) → models/hero_meshy_combat.glb,
+      im Spiel: Space-Angriff spielt attack-Clip, Q-Puls spielt cast, Shift-Ausweichen dodge.
+- [ ] **Klassen-Charaktere** (User: „mache verschiedene auch für andere Klassen"): 2–3 weitere
+      Meshy-Helden im selben Stil (Magier mit Stab, Waldläufer/Bogen, schwerer Titan/Schild) je mit
+      idle/walk/run/attack → models/class_*.glb; später Klassenwahl im Startmenü.
+- [ ] **Blender-Glättung** (User: „glätte alles mit blender?"): im Polish-Pass Shade-Smooth/Normals
+      prüfen, harte Kanten nur wo gewollt.
+- Meshy-Verbrauch bisher: 167/1690 Credits (Hero 117 + Häuser 50). Plan: Klassen ~150/Stk, Anims ~3/Stk.
+- [x] **Monster-Modelle FERTIG** (User: „viele verschiedene monster einzigartige"): 5 GLBs in models/ —
+      monster_slime (0.8, statisch→prozedural hüpfen), monster_wisp (0.9 schwebend, idle/walk/attack),
+      monster_panther (1.2, statisch→prozedural schleichen; Meshy-Rigging ist humanoid-only, 422 bei
+      Vierbeiner/Blob = normal), monster_golem (2.2, idle/walk/attack Ground-Slam), monster_guardian
+      (2.8 Mini-Boss, Triple-Combo; ⚠️ attack hat Root-Motion → Phase 0.4–0.9 nutzen). 209 Credits.
+- [ ] Monster-INTEGRATION in neon-realm (Pass 3): Kegel-Gegner ersetzen, Zonen: Slime=Start,
+      Wisp=Wald, Panther=Pfade, Golem=Berge, Guardian=Verlies-Boss; prozedurale Anims für
+      Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
+- [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
+
+### User-Feedback 2026-07-10 (Runde 4 — „level ups viele gegner, cooler skills etc")
+- [ ] **Pass 4 Gameplay-Tiefe** (nach Pass 3, wieder nur neon-realm.html):
+      (a) **Level-Ups spürbar**: satisfying Level-Up-Moment (Blitz/Ring-Effekt, Fanfare, „Level 5!"-
+      Anzeige gross), pro Level klarer Zuwachs (HP/Schaden), alle 3–5 Level 1 neuer Skill-Unlock;
+      (b) **Viele Gegner**: Spawn-Dichte rauf + kleine Rudel/Wellen (3–5 Slimes, Panther-Paare),
+      Schwierigkeits-Kurve sanft (Design-Regel: erste 30s verzeihend!), Performance: Mixer-Update
+      nur Kameranähe, gerigte Instanzen begrenzen, statische clonen;
+      (c) **Coole Skills**: Skill-System (T) ausbauen — z.B. Nova-Puls (AoE-Ring), Ketten-Blitz,
+      Dash-Schlag, Schild-Sphäre, Ultimate mit Cooldown + fettem Effekt; jede Klasse 1 Signature-
+      Skill (Magier=Kettenblitz, Ranger=Pfeilregen, Titan=Bodenschlag, Held=Nova); Effekte
+      partikelbasiert, Bloom-bewusst; Skills mit Symbol+Taste im HUD, mobil als Buttons.
+
 ## ⭐ OBERSTE DESIGN-REGEL (User 2026-07-10): „Müssen alle einfach zum Spielen sein"
 Gilt für JEDE Spiele-Änderung, wird bei jedem Shot-Review mitgeprüft:
 1. **Sofort losspielen**: max. 1 Klick/Tap bis ins Spiel; Steuerung in EINER Zeile mit Symbolen auf dem Startschirm
