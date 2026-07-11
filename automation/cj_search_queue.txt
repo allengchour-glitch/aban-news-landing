@@ -129,10 +129,10 @@
 #done search:reusable produce bags
 #done search:resistance bands set
 #done search:yoga mat non slip
-
-search:dainty gold necklace
-search:pearl choker
-search:statement earrings
+#done 
+#done search:dainty gold necklace
+#done search:pearl choker
+#done search:statement earrings
 search:huggie hoop earrings
 search:layered necklace set
 search:stainless steel ring women
