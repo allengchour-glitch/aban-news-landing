@@ -169,10 +169,10 @@
 #done search:canvas tote bag
 #done search:clutch purse evening
 #done search:fanny pack
-search:bucket bag
-search:cosmetic bag travel
-search:phone crossbody bag
-search:coin purse
+#done search:bucket bag
+#done search:cosmetic bag travel
+#done search:phone crossbody bag
+#done search:coin purse
 search:laptop sleeve
 search:hair clip claw
 search:silk scrunchie
