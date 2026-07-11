@@ -113,6 +113,10 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .sk.locked{opacity:.5}
 #lvlBig{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) scale(.8);font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:#ffd166;text-shadow:0 4px 24px #000;background:rgba(8,10,24,.88);border:1px solid rgba(255,207,110,.55);border-radius:18px;padding:12px 32px;opacity:0;transition:opacity .25s,transform .25s;z-index:35;pointer-events:none;white-space:nowrap}
 #lvlBig.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+/* Kombo-Zähler (dezent, unter dem Announce): Pop via JS-Transform */
+#comboTag{position:fixed;top:37%;left:50%;transform:translate(-50%,-50%) scale(1);font-size:1.55rem;font-weight:900;letter-spacing:.04em;color:#7de3ff;text-shadow:0 3px 14px #000;opacity:0;transition:opacity .18s,transform .16s ease-out;pointer-events:none;z-index:30}
+#comboTag.on{opacity:1}
+.dnum.big{font-size:27px}
 /* Touch */
 #touchUI{position:fixed;inset:0;z-index:15;pointer-events:none;display:none}
 #joyBase{position:absolute;left:26px;bottom:26px;width:118px;height:118px;border-radius:50%;border:2px solid rgba(125,227,255,.4);background:rgba(10,14,32,.35)}
@@ -154,9 +158,10 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div id="hint"></div>
   <div id="kprompt"></div>
   <div id="announce"></div>
-  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff · <b>Q</b> Puls · <b>R/F/C/V</b> Skills · <b>SHIFT</b> Ausweichen · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skill-Menü</div>
+  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff (halten = ⚡Ladung) · <b>Q</b> Puls · <b>R/F/C/V</b> Skills · <b>SHIFT</b> Ausweichen · <b>G</b> Spott · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skill-Menü</div>
   <div id="skillbar"></div>
   <div id="lvlBig"></div>
+  <div id="comboTag"></div>
 </div>
 <div id="dmg"></div>
 <div id="achToast"><span id="achTxt">🏆</span><small id="achSub"></small></div>
@@ -584,7 +589,8 @@ var keys={};
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k===" ")e.preventDefault();
   if(!running)return;
-  if(k===" ")doAttack();
+  if(k===" "&&!e.repeat)attackPress(); // Tap=Kombo, Halten ≥0.45s=Ladeschlag (Release in keyup)
+  if(k==="g")doTaunt();
   if(k==="q")doBolt();
   if(k==="r")castSkill("nova");
   if(k==="f")castSkill("chain");
@@ -596,7 +602,8 @@ addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k==="t")togglePanel("skillPanel");
   if(k==="escape"){if(!document.getElementById("invPanel").classList.contains("hide")||!document.getElementById("skillPanel").classList.contains("hide")||dialogOpen){closePanels();closeDialog();}else toggleMenu();}
 });
-addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;if(e.key===" ")attackRelease();});
+addEventListener("blur",function(){attackRelease();}); // Tab-Wechsel während Ladung: sauber abbrechen
 var isTouch=("ontouchstart" in window);
 var joy={active:false,id:null,cx:0,cy:0,x:0,y:0};
 if(isTouch){document.getElementById("touchUI").style.display="block";document.getElementById("keysHelp").style.display="none";
@@ -611,7 +618,12 @@ if(isTouch){document.getElementById("touchUI").style.display="block";document.ge
   function jend(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===joy.id){joy.id=null;joy.active=false;joy.x=0;joy.y=0;jk.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",jend);addEventListener("touchcancel",jend);
   function bindBtn(id,fn){var b=document.getElementById(id);b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});}
-  bindBtn("tAtk",function(){doAttack();});bindBtn("tDodge",function(){doDodge();});bindBtn("tBolt",function(){doBolt();});bindBtn("tAct",function(){doInteract();});
+  // Attack-Button: touchstart=Press (Tap=Kombo), Halten ≥0.45s=Ladeschlag, touchend=Release
+  var _ab=document.getElementById("tAtk");
+  _ab.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();attackPress();},{passive:false});
+  _ab.addEventListener("touchend",function(e){e.preventDefault();e.stopPropagation();attackRelease();},{passive:false});
+  _ab.addEventListener("touchcancel",function(){attackRelease();});
+  bindBtn("tDodge",function(){doDodge();});bindBtn("tBolt",function(){doBolt();});bindBtn("tAct",function(){doInteract();});
   bindBtn("tSkA",function(){castSkill("nova");}); // Nova/Klassen-Signature
   bindBtn("tSkB",function(){if(G&&G.lvl>=9&&skillCD.ult<=0.05)castSkill("ult");else castSkill("chain");}); // Ultimate wenn bereit, sonst Kettenblitz
   document.getElementById("tInv").addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();togglePanel("invPanel");},{passive:false});
@@ -625,10 +637,11 @@ function moveVec(){var x=0,z=0;
 function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2200);}
 function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#7de3ff";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2400);}
 var dmgLayer=document.getElementById("dmg"),dmgPool=[];
-function dmgNum(v,x,y,z,col){y+=heightAt(x,z);var el=dmgPool.pop()||document.createElement("div");el.className="dnum";el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
+function dmgNum(v,x,y,z,col,big){y+=heightAt(x,z);var el=dmgPool.pop()||document.createElement("div");el.className="dnum"+(big?" big":"");el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
   var p=new THREE.Vector3(x,y,z).project(camera);if(p.z>1){return;}
-  el.style.left=((p.x+1)/2*W)+"px";el.style.top=((-p.y+1)/2*H)+"px";el.style.transform="translate(-50%,-50%)";el.style.opacity=1;
-  dmgLayer.appendChild(el);requestAnimationFrame(function(){el.style.transform="translate(-50%,-160%) scale(1.15)";el.style.opacity=0;});
+  // Scale-Pop: startet gross (1.4) und schrumpft beim Aufsteigen auf 1.0 (ease-out = schneller Pop am Anfang)
+  el.style.left=((p.x+1)/2*W)+"px";el.style.top=((-p.y+1)/2*H)+"px";el.style.transform="translate(-50%,-50%) scale(1.4)";el.style.opacity=1;
+  dmgLayer.appendChild(el);requestAnimationFrame(function(){el.style.transform="translate(-50%,-160%) scale(1)";el.style.opacity=0;});
   setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);dmgPool.push(el);},720);}
 var hurtEl=document.getElementById("hurt"),hurtT=0;
 function updHUD(){
