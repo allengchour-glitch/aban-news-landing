@@ -626,7 +626,7 @@ function spawnLoot(x,z,bias){var g=getMesh(loot,lootMesh);var ri=rollRarity(bias
 function applyLoot(ri){var r=RARITY[ri],picks=[],pool=AFFIXES.slice();for(var k=0;k<r.cnt&&pool.length;k++){var af=pool.splice(Math.floor(rnd()*pool.length),1)[0];af.f(r.pow);picks.push(af.l);}
   announce("["+r.n+"] "+picks.join(" · "));beep(ri>=3?1046:660,.2,"triangle",.08);shake=Math.max(shake,0.2);burst(player.position.x,player.position.z,r.c);}
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";
-  var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent="⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
+  var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent=COARSE?"⚡ PULS-BLAST bereit — gelber Knopf":"⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
   var abb=document.getElementById("abBtn");if(abb){var rdy=(S.abilityCD||0)<=0;abb.style.opacity=rdy?"1":"0.45";abb.style.boxShadow=rdy?"0 0 16px #ffd166":"none";}}
 reset(); showBest(); renderShop(); renderChars(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
