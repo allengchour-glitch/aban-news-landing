@@ -19,7 +19,7 @@
 html,body{height:100%;overflow:hidden;background:#06070f;color:#fff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
 #wrap{position:fixed;inset:0}
 canvas{display:block}
-#hud{position:fixed;top:0;left:0;right:0;padding:10px 14px;pointer-events:none;font-weight:700;text-shadow:0 2px 6px #000}
+#hud{position:fixed;top:0;left:0;right:0;padding:calc(10px + env(safe-area-inset-top)) calc(14px + env(safe-area-inset-right)) 10px calc(14px + env(safe-area-inset-left));pointer-events:none;font-weight:700;text-shadow:0 2px 6px #000}
 /* HUD-Lesbarkeit: halbtransparentes Panel hinter allen Anzeigen, Text >=16px (1rem) auch mobil */
 #hudPanel{max-width:430px;background:rgba(9,12,28,.62);border:1px solid rgba(110,130,220,.35);border-radius:12px;padding:8px 12px 10px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 @media(max-width:520px){#hudPanel{max-width:calc(100% - 58px)}}
@@ -42,7 +42,7 @@ canvas{display:block}
 .small{font-size:.8rem;color:#8890b8;margin-top:16px}.small a{color:#9fb2ff}
 #upRow{margin-top:7px;font-size:1.05rem;letter-spacing:2px;text-shadow:0 2px 6px #000}
 #best{color:#ffd166;font-weight:800;margin-top:2px;font-size:.95rem}
-#muteBtn{position:fixed;top:8px;right:10px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.15rem;cursor:pointer}
+#muteBtn{position:fixed;top:calc(8px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.15rem;cursor:pointer}
 .rec{color:#5ef2ff!important}
 .hide{display:none!important}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
@@ -71,7 +71,7 @@ canvas{display:block}
 </div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
 <button id="abBtn" title="Puls-Blast" style="position:fixed;right:18px;bottom:22px;z-index:7;width:74px;height:74px;border-radius:50%;border:2px solid #ffd166;background:rgba(60,48,20,.55);color:#ffd166;font-size:1.7rem;font-weight:800;cursor:pointer;display:none">⚡</button>
-<button id="pauseBtn" title="Pause (Esc/P)" style="position:fixed;top:60px;right:10px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;display:none">⏸</button>
+<button id="pauseBtn" title="Pause (Esc/P)" style="position:fixed;top:calc(60px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;display:none">⏸</button>
 <button id="buildBtn" title="Bauen (B)" style="position:fixed;right:104px;bottom:22px;z-index:7;width:74px;height:74px;border-radius:50%;border:2px solid #ffb347;background:rgba(50,34,14,.6);color:#ffb347;font-size:1.7rem;font-weight:800;cursor:pointer;display:none;align-items:center;justify-content:center">🔨</button>
 <button id="okBtn" title="Platzieren" style="position:fixed;left:50%;transform:translateX(-118px);bottom:26px;z-index:9;width:94px;height:64px;border-radius:16px;border:2px solid #6aff9e;background:rgba(16,50,30,.85);color:#6aff9e;font-size:1.5rem;font-weight:800;cursor:pointer;display:none">✓</button>
 <button id="cancelBtn" title="Abbrechen (Esc)" style="position:fixed;left:50%;transform:translateX(24px);bottom:26px;z-index:9;width:94px;height:64px;border-radius:16px;border:2px solid #ff6b6b;background:rgba(50,16,20,.85);color:#ff9e9e;font-size:1.5rem;font-weight:800;cursor:pointer;display:none">✕</button>
@@ -151,13 +151,73 @@ floor.rotation.x=-Math.PI/2; scene.add(floor);
 var grid=new THREE.GridHelper(ARENA*2,40,0x4458b0,0x222a55); grid.position.y=0.02; scene.add(grid);
 
 function mat(c,e){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:1.1,flatShading:true}); return m;}
-var player=new THREE.Mesh(new THREE.IcosahedronGeometry(0.62,0),mat(0x5ef2ff,0x1a6f8c)); player.position.y=0.9; scene.add(player);
-// Composite-Spieler-Modell (Kern + rotierende Ringe + Finnen + Glow) statt einzelner Blob
-var pRing=new THREE.Mesh(new THREE.TorusGeometry(1.15,0.13,8,22),mat(0xb98bff,0xb98bff)); pRing.rotation.x=Math.PI/2; player.add(pRing);
-var pRing2=new THREE.Mesh(new THREE.TorusGeometry(0.9,0.07,8,18),mat(0x5ef2ff,0x5ef2ff)); pRing2.rotation.x=Math.PI/2; player.add(pRing2);
-var pCore=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),mat(0xffffff,0xffffff)); player.add(pCore);
-for(var _fi=0;_fi<4;_fi++){var fin=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.14,0.9),mat(0x5ef2ff,0x1a6f8c));var fa=_fi/4*Math.PI*2;fin.position.set(Math.cos(fa)*0.95,0,Math.sin(fa)*0.95);fin.rotation.y=-fa;player.add(fin);}
+// ---- Spieler: "Nova", knuffiger Neon-Buddy mit Kulleraugen (statt simpler Blob) ----
+// Blick-/Feuerrichtung = lokales +z; bei rotation.y=0 schaut die Figur zur Kamera.
+var player=new THREE.Group(); player.position.y=0.9; scene.add(player);
+// Körper klar gefärbt (kein Weiss) — sonst bläst Bloom das Gesicht aus.
+var pBodyBaseEmissive=0x4a1830;
+var pBodyMat=new THREE.MeshStandardMaterial({color:0xff2f6f,emissive:pBodyBaseEmissive,emissiveIntensity:0.28,roughness:0.5});
+var pBody=new THREE.Mesh(new THREE.SphereGeometry(0.62,20,16),pBodyMat); pBody.scale.set(1,1.08,0.94); player.add(pBody);
+var pBelly=new THREE.Mesh(new THREE.SphereGeometry(0.42,16,12),new THREE.MeshStandardMaterial({color:0xffd0e6,emissive:0x8a3a5c,emissiveIntensity:0.25,roughness:0.5})); pBelly.position.set(0,-0.08,0.34); pBelly.scale.set(1,0.98,0.5); player.add(pBelly);
+// grosse Kulleraugen (Weiss + grosse dunkle Pupille) — bewusst gross, damit sie klein am Schirm lesbar sind
+var pEyeWhiteMat=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0x223047,emissiveIntensity:0.12,roughness:0.25});
+var pPupilMat=new THREE.MeshBasicMaterial({color:0x120e1e});
+var pEyeL=new THREE.Group(),pEyeR=new THREE.Group();
+pEyeL.add(new THREE.Mesh(new THREE.SphereGeometry(0.27,16,12),pEyeWhiteMat));
+pEyeR.add(new THREE.Mesh(new THREE.SphereGeometry(0.27,16,12),pEyeWhiteMat));
+var pPuL=new THREE.Mesh(new THREE.SphereGeometry(0.155,12,10),pPupilMat); pPuL.position.z=0.17; pEyeL.add(pPuL);
+var pPuR=new THREE.Mesh(new THREE.SphereGeometry(0.155,12,10),pPupilMat); pPuR.position.z=0.17; pEyeR.add(pPuR);
+// Glanzpunkt im Auge (Leben!)
+var pShineMat=new THREE.MeshBasicMaterial({color:0xffffff});
+var pShL=new THREE.Mesh(new THREE.SphereGeometry(0.05,8,6),pShineMat); pShL.position.set(0.06,0.06,0.28); pEyeL.add(pShL);
+var pShR=new THREE.Mesh(new THREE.SphereGeometry(0.05,8,6),pShineMat); pShR.position.set(0.06,0.06,0.28); pEyeR.add(pShR);
+pEyeL.position.set(-0.26,0.3,0.44); pEyeR.position.set(0.26,0.3,0.44); player.add(pEyeL); player.add(pEyeR);
+// rosa Bäckchen
+var pCheekMat=new THREE.MeshBasicMaterial({color:0xff9ccf});
+var pChL=new THREE.Mesh(new THREE.CircleGeometry(0.1,10),pCheekMat); pChL.position.set(-0.4,0.04,0.42); pChL.rotation.y=-0.6; player.add(pChL);
+var pChR=new THREE.Mesh(new THREE.CircleGeometry(0.1,10),pCheekMat); pChR.position.set(0.4,0.04,0.42); pChR.rotation.y=0.6; player.add(pChR);
+// Mund: Lächeln (Standard) + O-Mund (bei Treffer)
+var pMouthMat=new THREE.MeshBasicMaterial({color:0x2a0f22});
+var pMouth=new THREE.Mesh(new THREE.TorusGeometry(0.13,0.035,8,12,Math.PI),pMouthMat); pMouth.position.set(0,0.08,0.55); pMouth.rotation.z=Math.PI; player.add(pMouth);
+var pMouthO=new THREE.Mesh(new THREE.SphereGeometry(0.09,10,8),pMouthMat); pMouthO.position.set(0,0.04,0.55); pMouthO.scale.set(1,1.3,0.4); pMouthO.visible=false; player.add(pMouthO);
+// Glow-Füsschen
+var pFootMat=new THREE.MeshStandardMaterial({color:0xffe14d,emissive:0xd8a017,emissiveIntensity:0.5});
+var pFootL=new THREE.Mesh(new THREE.SphereGeometry(0.17,10,8),pFootMat); pFootL.scale.set(1.2,0.6,1.4); pFootL.position.set(-0.26,-0.62,0.08); player.add(pFootL);
+var pFootR=new THREE.Mesh(new THREE.SphereGeometry(0.17,10,8),pFootMat); pFootR.scale.set(1.2,0.6,1.4); pFootR.position.set(0.26,-0.62,0.08); player.add(pFootR);
+// Antenne mit Glüh-Kugel (Map-Akzentfarbe)
+var pAntMat=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0x5ef2ff,emissiveIntensity:0.9});
+var pAntBallMat=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0x5ef2ff,emissiveIntensity:1.1});
+var pAnt=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.42,6),pAntMat); pAnt.position.set(0,0.78,0); player.add(pAnt);
+var pAntBall=new THREE.Mesh(new THREE.SphereGeometry(0.1,10,8),pAntBallMat); pAntBall.position.set(0,1.02,0); player.add(pAntBall);
+// Neon-Schwebering am Fuss (Arena-Akzent, hält den Tech-Look)
+var pRingMat=new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0xb98bff,emissiveIntensity:0.7,flatShading:true});
+var pRing=new THREE.Mesh(new THREE.TorusGeometry(0.62,0.06,8,20),pRingMat); pRing.rotation.x=Math.PI/2; pRing.position.y=-0.5; player.add(pRing);
+var pFaceAng=0, pBlinkT=1.6, pBlinkD=0, pFlinch=0, pHurtPrev=0;
 var glow=new THREE.PointLight(0x5ef2ff,1.5,18); scene.add(glow);
+// Belebt die Figur: Blickrichtung, Idle-Atmen, Lauf-Wippen, Blinzeln, Treffer-Zucken.
+function animatePlayer(dt,mvx,mvz){
+  var mvMag=Math.hypot(mvx,mvz);
+  var faceDx=mvx,faceDz=mvz;
+  if(mvMag<0.05){var tgt=nearestEnemy();if(tgt){faceDx=tgt.m.position.x-player.position.x;faceDz=tgt.m.position.z-player.position.z;}}
+  if(Math.abs(faceDx)+Math.abs(faceDz)>0.001){var ta=Math.atan2(faceDx,faceDz);var da=ta-pFaceAng;while(da>Math.PI)da-=6.283185;while(da<-Math.PI)da+=6.283185;pFaceAng+=da*Math.min(1,dt*10);}
+  player.rotation.y=pFaceAng;
+  if(hurt>pHurtPrev+0.05)pFlinch=Math.min(1,pFlinch+0.5); pHurtPrev=hurt; pFlinch=Math.max(0,pFlinch-dt*3);
+  var breathe=Math.sin(S.t*3.0)*0.035*(1-mvMag);
+  var walk=mvMag>0.1?Math.abs(Math.sin(S.t*13))*0.07:0;
+  player.position.y=0.9+breathe+walk;
+  var lean=Math.min(0.12,mvMag*0.12), fl=pFlinch;
+  var sq=1-lean+breathe*0.5, tallv=1+lean-breathe*0.5;
+  player.scale.set(sq*(1+fl*0.12),tallv*(1-fl*0.18),sq*(1+fl*0.12));
+  pBlinkT-=dt;if(pBlinkT<=0){pBlinkT=1.8+Math.random()*2.4;pBlinkD=0.12;}
+  if(pBlinkD>0)pBlinkD-=dt;
+  var eyeY=(pBlinkD>0)?0.14:(1+fl*0.35);
+  pEyeL.scale.set(1,eyeY,1);pEyeR.scale.set(1,eyeY,1);
+  var scared=fl>0.15; pMouth.visible=!scared; pMouthO.visible=scared;
+  if(mvMag>0.1){var ph=S.t*13;pFootL.position.y=-0.62+Math.max(0,Math.sin(ph))*0.12;pFootR.position.y=-0.62+Math.max(0,Math.sin(ph+Math.PI))*0.12;}
+  else{pFootL.position.y=pFootR.position.y=-0.62;}
+  pAnt.rotation.z=Math.sin(S.t*2.2)*0.12; pAntBall.position.x=-Math.sin(S.t*2.2)*0.05; pRing.rotation.z+=dt*1.6;
+  pBodyMat.emissive.setHex(scared?0xd23a4a:pBodyBaseEmissive);
+}
 
 // ================= "Geile Map": umrandete Neon-Arena mit Deko + Map-Themes =================
 var MAPS=[
@@ -272,7 +332,7 @@ function applyMap(idx){var m=MAPS[idx%MAPS.length];
   emblem.material.color.setHex(m.accent);emblem.material.emissive.setHex(m.accent);
   emblem2.material.color.setHex(m.accent2);emblem2.material.emissive.setHex(m.accent2);
   for(i=0;i<mapLights.length;i++)mapLights[i].color.setHex(i%2?m.accent2:m.accent);
-  glow.color.setHex(m.accent);player.material.emissive.setHex(m.accent);
+  glow.color.setHex(m.accent);pAntMat.emissive.setHex(m.accent);pAntBallMat.emissive.setHex(m.accent);pRingMat.color.setHex(m.accent2);pRingMat.emissive.setHex(m.accent2);
   return m;}
 
 var bullets=[],enemies=[],orbs=[],fx=[],ebullets=[];
@@ -623,7 +683,9 @@ window.__ns={scrap:function(n){S.scrap=Math.max(0,(S.scrap||0)+(n||0));updateScr
   swarm:function(n){for(var i=0;i<(n||10);i++)spawnEnemy(false);var c=0;for(i=0;i<enemies.length;i++)if(enemies[i].active)c++;return c;},
   spawnAt:function(x,z,hp){var en=getMesh(enemies,enemyMesh);en.active=true;en.m.visible=true;en.boss=false;en.shooter=false;en.splitter=false;en.shootT=0;en.finalBoss=false;en.m.position.set(x,0.7,z);en.hp=hp||30;en.spd=3;en.xp=1;en.m.scale.set(1,1,1);en.m.material.color.setHex(0xff5577);en.m.material.emissive.setHex(0xaa1133);en.baseEmissive=0xaa1133;en.flash=0;return true;},
   setHp:function(v){S.hp=Math.min(S.maxhp,v==null?S.maxhp:v);return S.hp;},
-  setMag:function(v){S.pickup=v;return S.pickup;}};
+  setMag:function(v){S.pickup=v;return S.pickup;},
+  face:function(){return pFaceAng;},
+  ppos:function(){return {x:player.position.x,y:player.position.y,z:player.position.z};}};
 
 // ================= Bloom-Post-Processing (Neon-Glow → "teurer" Look) =================
 var bloomVert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
@@ -707,7 +769,7 @@ function loop(now){
     var ml=Math.hypot(mx,mz); if(ml>1){mx/=ml;mz/=ml;}
     player.position.x=Math.max(-ARENA,Math.min(ARENA,player.position.x+mx*S.speed*dt));
     player.position.z=Math.max(-ARENA,Math.min(ARENA,player.position.z+mz*S.speed*dt));
-    player.rotation.y+=dt*1.5; pRing.rotation.z+=dt*2.2; pRing2.rotation.z-=dt*3.4; pCore.rotation.y+=dt*4; pCore.scale.setScalar(1+Math.sin(S.t*6)*0.12);
+    animatePlayer(dt,mx,mz);
     glow.position.set(player.position.x,2,player.position.z);
     // Waffen (mehrere, je eigener Takt) + Orbit-Klingen
     weaponTick(dt); updateBlades(dt); if(S.abilityCD>0)S.abilityCD-=dt;
