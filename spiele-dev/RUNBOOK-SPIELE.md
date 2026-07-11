@@ -117,6 +117,14 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
 - [ ] Pilot neon-realm (Agent läuft 10.07.), dann: neon-flug (Horizont), neon-racer (Streckenrand),
       neon-survivor (Bergring ersetzen), je mit Shot-Verifikation.
 
+### 🔑 DEPLOY-FAKTEN (2026-07-11, teuer gelernt — NIE wieder suchen)
+- Cloudflare Pages deployt **AUTOMATISCH bei jedem Push auf main** (Git-Anbindung, Build:
+  `bash build-pages.sh`, Output `_site/`) — **kein wrangler, kein GitHub Actions nötig.**
+- **Live-Check-Falle:** `.html`-URLs liefern **308-Redirect** (Extension-Strip) → immer
+  `curl -sL` (mit -L!) prüfen, sonst 0-Byte-Body und falscher „nicht live"-Alarm.
+- Rollout-Stand: neon-flug/racer/survivor haben Landschaft+HUD-Muster (PR #1684, live
+  verifiziert). Neue GLBs: landscape_flug.glb (Korridor+Parallax), landscape_survivor.glb.
+
 ### ✅ 2026-07-11: neon-realm-Komplettausbau GEMERGT (PR #1682) — Runden 2–4 alle umgesetzt
 Meshy-Held (9 Clips) + Klassenwahl (Held/Magier/Ranger/Titan + Boni) + 5 Monster in Zonen +
 Skills R/F/C/V + Klassen-Signaturen + Level-Up-FX + Rudel/Wellen (Cap 22) + 3 Detail-Häuser +
