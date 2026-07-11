@@ -70,7 +70,12 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
+<button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat">💬</button>
+<div id="zoomBtns" style="position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;flex-direction:column;gap:8px">
+  <button class="tbtn" id="zoomIn" title="Näher">➕</button>
+  <button class="tbtn" id="zoomOut" title="Weiter weg">➖</button>
+</div>
 <div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
 <div id="tools">
   <button class="tbtn" id="rotBtn" title="Drehen (R)">🔄</button>
@@ -87,7 +92,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
-  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen dreht, Rad/Kneifen zoomt</p>
+  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b></p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -222,7 +227,8 @@ function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length
 // ===================== Zustand =====================
 var geld=5000,tag=1,uhrzeit=8*60; // Minuten
 var liebe=30,verlobt=false,verheiratet=false,loveEvT=0;
-var skills={arbeit:{lv:1,xp:0},liebe:{lv:1,xp:0}};
+var skills={arbeit:{lv:1,xp:0},liebe:{lv:1,xp:0},krimi:{lv:0,xp:0}};
+var crime={on:false,t:0,job:null,accomplice:false,ask:false};
 var arbeiten=false; // beide gerade im Buero?
 function skillXp(k,n){
   if(MPs&&!mpHost)return;
@@ -338,6 +344,17 @@ function onNetMsg(m){
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
   else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
   else if(m.t==="loveEv"){loveEvent(m.k,true);}
+  else if(m.t==="crimeAsk"){
+    var jj=m.j;
+    if(confirm("🕶️ "+String(m.n).slice(0,12)+" plant: "+CRIMES[jj].e+" "+CRIMES[jj].n+"\nAls Komplize mitmachen? (Mehr Beute, bessere Chancen!)"))
+      netSend({t:"crimeJoin",j:jj});
+    else netSend({t:"crimeNo"});}
+  else if(m.t==="crimeJoin"){if(crime.ask){crime.ask=false;startCrime(m.j,true);}}
+  else if(m.t==="crimeNo"){if(crime.ask){crime.ask=false;startCrime(0,false);}}
+  else if(m.t==="crimeGo"){startCrime(m.j,m.a,true);}
+  else if(m.t==="crimeEnd"&&!mpHost){crime.on=false;
+    sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);});
+    crimeScene(m.ok,CRIMES[m.j],m.v);}
 }
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
@@ -376,7 +393,7 @@ function mkBewohner(opts){
   else{var hs=new THREE.Mesh(new THREE.SphereGeometry(0.218,12,8,0,6.283,0,1.35),hair);hs.position.y=1.21;g.add(hs);}
   var fr=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.05,0.08),hair);fr.position.set(0,1.33,0.17);g.add(fr);
   g.userData={ll:ll,rl:rl,la:la,ra:ra,head:head,torso:torso};
-  g.castShadow=true;scene.add(g);return g;}
+  g.scale.setScalar(1.18);g.castShadow=true;scene.add(g);return g;}
 var simDefs=[
  {name:"Max",skin:0xf0c090,hair:0x4a342a,top:0x4a7ab0,bottom:0x3a4a6a,dress:false,longHair:false},
  {name:"Mia",skin:0xffd9b8,hair:0x8a4a2a,top:0xe85aa0,bottom:0xe85aa0,dress:true,longHair:true}];
@@ -487,6 +504,60 @@ function loveEvent(kind,silent){
     [660,830,660,990,880,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.25,"triangle",.06);},i*260);});}
   if(!silent)netSend({t:"loveEv",k:kind});
   updHUD();}
+var CRIMES=[
+ {n:"Bonbon-Automat knacken",e:"\U0001F36C",base:250,risk:0.25},
+ {n:"Gemälde-Klau in der Galerie",e:"\U0001F5BC️",base:480,risk:0.35},
+ {n:"BANK-COUP",e:"\U0001F3E6",base:900,risk:0.45}];
+function crimeAvailable(){
+  var hh=uhrzeit/60;
+  return running&&!crime.on&&!arbeiten&&(hh>=21||hh<5)&&sims[0].state!=="work";}
+function crimeBtnUpd(){
+  var b=document.getElementById("crimeBtn");
+  b.style.display=crimeAvailable()?"block":"none";
+  if(crime.on)b.style.display="none";}
+function startCrime(jobIdx,withAccomplice,silent){
+  if(crime.on)return;
+  var job=CRIMES[Math.min(jobIdx,CRIMES.length-1)];
+  crime.on=true;crime.t=7;crime.job=job;crime.accomplice=!!withAccomplice;
+  sims.forEach(function(s2){s2.state="work";s2.pose="stand";s2.path=[];s2.mesh.visible=false;});
+  hint("\U0001F576️ "+job.n+" läuft … "+(crime.accomplice?"MIT Komplize!":""));
+  if(!silent)netSend({t:"crimeGo",j:jobIdx,a:!!withAccomplice});
+  updHUD();}
+function finishCrime(){
+  var job=crime.job;crime.on=false;
+  sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;
+    s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";});
+  if(MPs&&!mpHost)return; // Host entscheidet
+  var lv=skills.krimi.lv;
+  var chance=0.55+lv*0.07+(crime.accomplice?0.15:0)-job.risk*0.5;
+  var ok=Math.random()<chance;
+  var beute=Math.round(job.base*(1+lv*0.4)*(crime.accomplice?1.7:1));
+  if(ok){geld+=beute;
+    crimeScene(true,job,beute);
+    skillXp("krimi",2);}
+  else{var strafe=Math.min(geld,200+lv*50);geld-=strafe;
+    crimeScene(false,job,strafe);
+    skillXp("krimi",1);
+    sims.forEach(function(s2){s2.needs.spass=Math.max(5,s2.needs.spass-25);simEmoji(s2,"\U0001F62C");});}
+  netSend({t:"geld",v:geld});
+  netSend({t:"crimeEnd",ok:ok,j:CRIMES.indexOf(job),v:ok?beute:strafe});
+  updHUD();}
+function crimeScene(ok,job,betrag){
+  var el=document.getElementById("romKiss");
+  el.style.display="flex";
+  if(ok){el.style.background="radial-gradient(circle at 50% 60%,rgba(20,60,20,.6),rgba(5,20,5,.92))";
+    document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" § Beute \U0001F911";
+    [523,659,784,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.14,"triangle",.06);},i*140);});}
+  else{el.style.background="repeating-linear-gradient(90deg,rgba(30,30,150,.75) 0 40px,rgba(150,30,30,.75) 40px 80px)";
+    document.getElementById("romTxt").innerHTML="\U0001F693 ERWISCHT beim "+job.n+"!<br>−"+betrag+" § Strafe … das war knapp!";
+    [300,240,300,240].forEach(function(fq,i){setTimeout(function(){beep(fq,.22,"square",.06);},i*240);});}
+  setTimeout(function(){el.style.display="none";
+    el.style.background="radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92))";},3800);}
+function updCrime(dt){
+  crimeBtnUpd();
+  if(!crime.on)return;
+  crime.t-=dt;
+  if(crime.t<=0)finishCrime();}
 function updWork(dt){
   if(MPs&&!mpHost)return;
   var hh=uhrzeit/60;
@@ -606,7 +677,7 @@ function updSim(s,si,dt,now){
 }
 
 // ===================== Kamera (Orbit) =====================
-var camA=0.8,camB=0.72,camR=30,camTx=0,camTz=0;
+var camA=0.8,camB=0.72,camR=22,camTx=0,camTz=0,followSim=null;
 function updCam(){
   camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2,camTz+Math.cos(camA)*Math.cos(camB)*camR);
   camera.lookAt(camTx,0.6,camTz);}
@@ -622,7 +693,7 @@ addEventListener("mousemove",function(e){
 addEventListener("mouseup",function(e){dragging=false;
   if(performance.now()-downT<260&&Math.hypot(e.clientX-downX,e.clientY-downY)<8)tapAt(e.clientX,e.clientY);});
 renderer.domElement.addEventListener("contextmenu",function(e){e.preventDefault();});
-addEventListener("wheel",function(e){camR=Math.max(12,Math.min(60,camR+e.deltaY*0.02));updCam();},{passive:true});
+addEventListener("wheel",function(e){camR=Math.max(7,Math.min(60,camR+e.deltaY*0.02));updCam();},{passive:true});
 renderer.domElement.addEventListener("touchstart",function(e){
   if(e.touches.length===1){dragging=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;downT=performance.now();downX=lx;downY=ly;}
   else if(e.touches.length===2){pinchD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
@@ -631,7 +702,7 @@ renderer.domElement.addEventListener("touchmove",function(e){
   if(e.touches.length===1&&dragging){var dx=e.touches[0].clientX-lx,dy=e.touches[0].clientY-ly;lx=e.touches[0].clientX;ly=e.touches[0].clientY;
     camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}
   else if(e.touches.length===2){var nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-    camR=Math.max(12,Math.min(60,camR-(nd-pinchD)*0.05));pinchD=nd;updCam();}
+    camR=Math.max(7,Math.min(60,camR-(nd-pinchD)*0.05));pinchD=nd;updCam();}
   e.preventDefault();},{passive:false});
 renderer.domElement.addEventListener("touchend",function(e){dragging=false;
   if(e.changedTouches[0]&&performance.now()-downT<300){var t=e.changedTouches[0];
@@ -679,7 +750,15 @@ function nearestEdge(c){
   if(m===dW)return {x:c.gx-1,y:c.gy,d:1,wx:cx(c.gx)-CS/2,wz:cz(c.gy)};
   return {x:c.gx,y:c.gy,d:1,wx:cx(c.gx)+CS/2,wz:cz(c.gy)};}
 function tapAt(px,py){
-  if(!running||!buildMode)return;
+  if(!running)return;
+  if(!buildMode){ // Bewohner antippen -> Kamera folgt
+    var c0=pickCell(px,py);
+    if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
+      if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
+        if(followSim===s2){followSim=null;hint("Kamera frei");}
+        else{followSim=s2;camR=Math.min(camR,11);hint("🎥 Kamera folgt "+s2.name+" — nochmal tippen zum Lösen");}
+        return;}}}
+    return;}
   var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return;
   if(delMode){if(doDelete(c.gx,c.gy))hint("Abgerissen (50% zurück)");return;}
   if(!curItem)return;
@@ -692,6 +771,8 @@ function tapAt(px,py){
     doPlaceFurn(curItem,c.gx,c.gy,curRot);geld-=def.cost;}
   netSend({t:"geld",v:geld});
   updHUD();beep(660,.06,"triangle",.04);}
+document.getElementById("zoomIn").onclick=function(){camR=Math.max(7,camR-4);updCam();};
+document.getElementById("zoomOut").onclick=function(){camR=Math.min(60,camR+4);followSim=null;updCam();};
 var hintT=null;
 function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;
   clearTimeout(hintT);hintT=setTimeout(function(){h.style.opacity=0;},2200);}
@@ -709,6 +790,16 @@ function renderPalette(){
 var curCat="bau";
 document.getElementById("rotBtn").onclick=function(){curRot=(curRot+1)%4;hint("Gedreht ("+["Nord","Ost","Süd","West"][curRot]+")");};
 addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="r"&&buildMode){curRot=(curRot+1)%4;}});
+document.getElementById("crimeBtn").onclick=function(){
+  if(!crimeAvailable())return;
+  var lv=skills.krimi.lv,maxJob=Math.min(CRIMES.length-1,lv);
+  var wahl=CRIMES.map(function(c,i){return i<=maxJob?((i+1)+" = "+c.e+" "+c.n+" (~"+Math.round(c.base*(1+lv*0.4))+" §)"):null;}).filter(Boolean).join("\n");
+  var inp=prompt("🕶️ Welches krumme Ding? (Risiko steigt mit Beute)\n"+wahl+"\n\nNummer eingeben:","1");
+  var ji=Math.max(0,Math.min(maxJob,(parseInt(inp,10)||1)-1));
+  if(inp===null)return;
+  if(MPs){netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
+    crime.ask=true;setTimeout(function(){if(crime.ask){crime.ask=false;startCrime(ji,false);}},10000);}
+  else startCrime(ji,false);};
 document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=delMode?null:curItem;
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
 document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
@@ -722,7 +813,7 @@ function updHUD(){
   document.getElementById("uhr").textContent=(hh<6||hh>=21?"🌙":"🕗")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0");
   var nb=document.getElementById("needsBox");nb.innerHTML="";
   var skr=document.createElement("div");skr.style.cssText="font-size:.72rem;color:#5a4a30;font-weight:800";
-  skr.textContent="💼 Karriere Lv"+skills.arbeit.lv+" · 💘 Liebe Lv"+skills.liebe.lv+(arbeiten?" · bei der Arbeit …":"");
+  skr.textContent="💼 Lv"+skills.arbeit.lv+" · 💘 Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️ Lv"+skills.krimi.lv:"")+(arbeiten?" · Arbeit …":(crime.on?" · unterwegs 🌙":""));
   nb.appendChild(skr);
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
@@ -745,7 +836,7 @@ function startGame(){
   running=true;
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
-  document.getElementById("modeBtn").style.display="block";
+  document.getElementById("modeBtn").style.display="block";document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";}
   romantik=document.getElementById("romChk").checked||romantik;
   renderPalette();updHUD();MUS.play().catch(function(){});
@@ -796,8 +887,11 @@ function loop(now){
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x1a2340),1-Math.min(1,dayA*1.4));
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?1.1:0;});
+    if(followSim){
+      if(followSim.state==="work"){followSim=null;}
+      else{camTx+=(followSim.x-camTx)*Math.min(1,dt*4);camTz+=(followSim.z-camTz)*Math.min(1,dt*4);updCam();}}
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
-    updWork(dt);if(!arbeiten)updLove(dt);
+    updWork(dt);updCrime(dt);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};})});
