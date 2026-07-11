@@ -215,6 +215,22 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 7 — Lebenspfad wie Plato-App, „mach einfach alles besser")
+- [ ] **Detail-Animationen**: Figuren hüpfen/laufen sichtbar von Feld zu Feld (Bounce mit Squash),
+      3D-Würfel rollt echt, Jubel-/Trauer-Animation je nach Feld, Geld-Regen bei Gewinn,
+      Karten flippen beim Aufdecken.
+- [ ] **Mehr als Würfeln**: interaktive Stations-Events (Mini-Entscheidungen mit Timer,
+      Glücksrad existiert — mehr Abwechslung: Quiz-Karte, Tausch-Event, Wettrennen-Feld).
+- [ ] **Smiley-Fast-Chat** (wie neon-duo): 6 kindersichere Emotes als Sprechblasen — auch lokal.
+- [ ] **Wie Plato-App**: Lebenspfad ONLINE spielbar machen via js/mp.js (Raum-Codes, 2 Spieler,
+      Host-autoritativ Würfel/Karten; Lobby wie neon-duo) — Lebenspfad = 2. mp.js-Spiel.
+- [ ] **Frau/Mann-Auswahl**: Charakterwahl beim Start (Frau/Mann + Hautton/Frisur/Accessoire,
+      kombinierbar mit „jeder Charakter einzigartig" aus Runde 6).
+- [ ] **Romantik-Feature (familienfreundlich — NICHT explizit, Entscheid 2026-07-11):** Heiraten
+      an Kirchen-Station (Hochzeits-Animation: Herzen/Konfetti/💋), Partner-Figur, Kinder die
+      im Auto mitfahren — klassisches Spiel-des-Lebens-Feature. Explizite Sex-Animationen sind
+      abgelehnt (öffentliche, familienfreundliche Site — gilt dauerhaft).
+
 ### User-Feedback 2026-07-11 (Runde 6 — Multiplayer-Zusatz + Lebenspfad-Ausbau)
 - [ ] **Multiplayer-Zusatzfeature** (neon-duo online): Quick-Chat/Emotes (vorgefertigte kinder-
       sichere Nachrichten + Emoji-Reaktionen über den Figuren, KEIN Freitext), Spielernamen aus
