@@ -265,14 +265,14 @@
 #done search:mens wallet slim
 #done search:mens sunglasses polarized
 #done search:beard grooming kit
-search:mens necklace chain
-search:baby headband bow
-search:kids sunglasses
-search:baby bib silicone
-search:kids backpack cute
-search:hair clips girls
-search:kids jewelry set
-search:beach cover up
+#done search:mens necklace chain
+#done search:baby headband bow
+#done search:kids sunglasses
+#done search:baby bib silicone
+#done search:kids backpack cute
+#done search:hair clips girls
+#done search:kids jewelry set
+#done search:beach cover up
 search:straw hat wide brim
 search:beach bag straw
 search:flip flops women
