@@ -227,9 +227,18 @@ for(const [cat,label] of grp.cats){
    if(total>=CAP)break;
    const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||(grp.ban&&grp.ban.test(nm)))continue;
    const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<grp.minP||pr>grp.maxP)continue;
-   const dj=await cj(`/product/query?pid=${p.pid}`); await sleep(CJSLEEP);
-   const d=dj.data||{}; const imgs=((d.productImageSet)||[]).filter(u=>/^https/.test(u)).slice(0,20);
-   if(imgs.length<grp.minImg)continue;
+   // MOQ-Wache (auch FAST): nur ORDINARY/DIY = einzeln bestellbar (list liefert productType mit)
+   const pt=p.productType||''; if(pt&&pt!=='ORDINARY_PRODUCT'&&pt!=='DIY_PRODUCT')continue;
+   const FAST=process.env.FAST==='1';
+   let d, imgs;
+   if(FAST){ // GRENZE-ÜBERWINDEN: kein product/query → ~30× weniger CJ-Calls. Einzelbild aus Liste.
+     d={}; imgs=(p.productImage&&/^https/.test(p.productImage))?[p.productImage]:[];
+     if(!imgs.length)continue;
+   } else {
+     const dj=await cj(`/product/query?pid=${p.pid}`); await sleep(CJSLEEP);
+     d=dj.data||{}; imgs=((d.productImageSet)||[]).filter(u=>/^https/.test(u)).slice(0,20);
+     if(imgs.length<grp.minImg)continue;
+   }
    const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
    const g=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
    if(!g){console.log('  skip(gemini)',nm.slice(0,30));continue;}
@@ -237,7 +246,7 @@ for(const [cat,label] of grp.cats){
    if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`;
-   const fash=grp.fashion?buildFashion(d):null;
+   const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
    const katTag=(LABELTAG.find(([re])=>re.test(label||''))||[])[1];
