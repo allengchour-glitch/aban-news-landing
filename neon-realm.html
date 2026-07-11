@@ -607,7 +607,7 @@ function updHUD(){
   document.getElementById("lvlTxt").textContent="Lv "+G.lvl;
   document.getElementById("shards").textContent=G.shards;
   document.querySelector("#hpB i").style.width=(100*Math.max(0,G.hp)/((typeof playerMaxHp==="function")?playerMaxHp():G.maxhp))+"%";
-  document.querySelector("#enB i").style.width=(100*Math.max(0,G.en)/G.maxen)+"%";
+  document.querySelector("#enB i").style.width=(100*Math.max(0,G.en)/playerMaxEn())+"%";
   document.querySelector("#xpB i").style.width=(100*G.xp/G.xpNeed)+"%";
 }
 
@@ -647,10 +647,11 @@ function rollItem(lvlBonus){
 function statTotal(stat,base){var v=base;["waffe","ruestung","relikt"].forEach(function(sl){var it=G.equip[sl];if(it&&it.stat===stat)v+=it.v;});return v;}
 function playerAtk(){return statTotal("atk",G.atk)*(1+G.skills.macht*0.12);}
 function playerDef(){return statTotal("def",G.def)+G.skills.schutz*2;}
-function playerMaxHp(){return statTotal("maxhp",G.maxhp);}
+function playerMaxHp(){return Math.round(statTotal("maxhp",G.maxhp)*clsMul("hp"));} // Titan +20%
+function playerMaxEn(){return Math.round(G.maxen*clsMul("en"));} // Magier +20%
 function renderInv(){
   var cs=document.getElementById("charStats");
-  cs.innerHTML="⚔ Angriff <b>"+Math.round(playerAtk())+"</b> · 🛡 Verteidigung <b>"+Math.round(playerDef())+"</b> · ❤️ Max-HP <b>"+playerMaxHp()+"</b> · 👟 Tempo <b>"+Math.round(G.spd*(1+G.skills.tempo*0.08))+"</b> · ◆ Scherben <b>"+G.shards+"</b>";
+  cs.innerHTML="⚔ Angriff <b>"+Math.round(playerAtk())+"</b> · 🛡 Verteidigung <b>"+Math.round(playerDef())+"</b> · ❤️ Max-HP <b>"+playerMaxHp()+"</b> · 👟 Tempo <b>"+Math.round(G.spd*(1+G.skills.tempo*0.08)*clsMul("spd"))+"</b> · ◆ Scherben <b>"+G.shards+"</b>";
   var er=document.getElementById("equipRow");er.innerHTML="";
   [["waffe","⚔ Waffe"],["ruestung","🛡 Rüstung"],["relikt","💠 Relikt"]].forEach(function(s){
     var it=G.equip[s[0]],d=document.createElement("div");d.className="slot"+(it?" r"+it.r+" eq":"");
@@ -692,7 +693,7 @@ function renderSkills(){
     d.appendChild(ns);st.appendChild(d);});
 }
 function gainXp(v){G.xp+=v;while(G.xp>=G.xpNeed){G.xp-=G.xpNeed;G.lvl++;G.sp++;G.xpNeed=Math.round(G.xpNeed*1.35);
-  G.maxhp+=8;G.hp=playerMaxHp();G.maxen+=3;G.en=G.maxen;G.atk+=1;
+  G.maxhp+=8;G.hp=playerMaxHp();G.maxen+=3;G.en=playerMaxEn();G.atk+=1;
   announce("LEVEL "+G.lvl+"! (+1 Skillpunkt — T)","#ffcf6e");beep(1046,.3,"triangle",.08);camShake=Math.max(camShake,0.4);}
   updHUD();}
 // ===================== FX =====================
@@ -707,6 +708,44 @@ function updFx(dt){for(var i=fxs.length-1;i>=0;i--){var f=fxs[i];f.life-=dt;
   f.vy-=14*dt;f.m.position.x+=f.vx*dt;f.m.position.y=Math.max(0.1,f.m.position.y+f.vy*dt);f.m.position.z+=f.vz*dt;
   f.m.material.opacity=Math.min(1,f.life*2);f.m.rotation.x+=dt*6;f.m.rotation.y+=dt*5;}}
 // ===================== GEGNER =====================
+// Monster-GLBs: Optik-Ersetzung der Okta-Primitive — Gameplay-Werte (HP/Schaden/Spawns/Hitbox) unverändert.
+// Zonen-Mapping leicht→schwer: Slime=Kristallwald (Start-Questzone), Wisp=Ruinenstadt (schwebender Geist),
+// Golem=Ödland (Fels/Berg, Ground-Slam), Panther=Zitadelle (dunkle Pfade, Flanker), Guardian=Verlies-Miniboss.
+// Statische (slime/panther) → 1x laden + clone(true); gerigte (wisp/golem/guardian) → pro Instanz
+// GLTFLoader.parse aus demselben ArrayBuffer (SkinnedMesh-clone-Falle in r128, Muster NPC-Loader).
+var MON={0:{key:"slime",sc:1.8},1:{key:"wisp",sc:2.0},2:{key:"golem",sc:1.15},3:{key:"panther",sc:1.4}};
+var monStatic={},monBuf={};
+(function(){
+  if(!THREE.GLTFLoader)return;
+  ["slime","panther"].forEach(function(k){
+    new THREE.GLTFLoader().load("/models/monster_"+k+".glb",function(g){monStatic[k]=g.scene;},undefined,function(){});});
+  if(!window.fetch)return;
+  ["wisp","golem","guardian"].forEach(function(k){
+    fetch("/models/monster_"+k+".glb").then(function(r){if(!r.ok)throw 0;return r.arrayBuffer();})
+      .then(function(b){monBuf[k]=b;}).catch(function(){});});
+})();
+function attachMonster(e,key,sc){ // hängt die GLB-Optik an einen Gegner; ohne Asset bleibt das Okta-Primitiv
+  e.msc=sc;e.ph=Math.random()*6.283;
+  if(monStatic[key]){
+    var o=monStatic[key].clone(true),mats=[];
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;
+      if(n.material){n.material=n.material.clone();mats.push(n.material);}}}); // eigene Materialien → Hit-Flash/Kern-Puls je Instanz
+    o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=1.0;e.mkey=key;
+    if(e.body)e.body.visible=false;
+  }else if(monBuf[key]){
+    new THREE.GLTFLoader().parse(monBuf[key].slice(0),"",function(g){
+      if(!e.active)return; // Gegner starb, bevor das Modell fertig geparst war
+      var o=g.scene,mats=[];
+      o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
+        if(n.material)mats.push(n.material);}});
+      o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=1.0;e.mkey=key;
+      if(e.body)e.body.visible=false;
+      e.rig=makeRig(o,g.animations,true); // local: Mixer wird distanz-gecullt in updEnemies getickt
+      setAnim(e.rig,"idle",0);
+      if(e.rig.actions.idle)e.rig.actions.idle.time=Math.random()*2; // Idle-Phasen entkoppeln
+    },function(){});
+  }
+}
 var enemies=[],ETYPES=[
  {n:"Drohne",hp:14,atk:5,spd:6.5,xp:8,c:0xff6ec7,r:0.9,zone:1},
  {n:"Schatten",hp:22,atk:7,spd:7.5,xp:12,c:0xb98bff,r:1.0,zone:2},
@@ -723,6 +762,7 @@ function spawnEnemy(ti,ex,ez,elite){
   enemies.push({g:g,body:body,type:ti,hp:t.hp*mult*lvB,maxhp:t.hp*mult*lvB,atk:t.atk*(elite?1.5:1)*lvB,spd:t.spd*(elite?1.15:1),
     xp:Math.round(t.xp*mult),c:t.c,r:t.r*(elite?1.4:1),elite:!!elite,boss:false,active:true,
     state:"patrol",pa:Math.random()*6.283,pt:0,atkT:0,flash:0,hx:ex,hz:ez});
+  attachMonster(enemies[enemies.length-1],MON[ti].key,MON[ti].sc*(elite?1.25:1)); // GLB-Optik (Eliten etwas grösser)
 }
 function killEnemy(e,i){
   e.active=false;scene.remove(e.g);
@@ -739,7 +779,7 @@ function killEnemy(e,i){
   // Quest-Zähler
   if(G.qstage===1&&e.type===0){G.quests.kills=(G.quests.kills||0)+1;renderQuests();}
   if(e.miniboss){announce("Wächter der Tiefe besiegt!","#b98bff");
-    if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))playOnce(heroRig,"victory",1.1,0.2);
+    if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("victory",0.2);
     var mi2=rollItem(G.lvl+3);mi2.r=Math.max(2,mi2.r);mi2.v=Math.round(mi2.v*1.3);G.inv.push(mi2);
     G.shards+=15;showHint("🎁 "+RARS[mi2.r].n+": "+mi2.n+" (+"+mi2.v+" "+mi2.stat+") — [I]",3000);camShake=0.8;}
   if(e.boss){G.bossDead=true;onBossDead();}
@@ -749,13 +789,24 @@ function updEnemies(dt){
   var px=player.position.x,pz=player.position.z;
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
     var ex=e.g.position.x,ez=e.g.position.z,d=Math.hypot(px-ex,pz-ez);
-    if(e.body&&e.body.rotation)e.body.rotation.y+=dt*(e.boss?0.5:2);
+    if(e.body&&e.body.visible&&e.body.rotation)e.body.rotation.y+=dt*(e.boss?0.5:2); // Spin nur fürs Okta-Primitiv/Boss
+    // Prozedurale Anims der statischen Monster: Slime hüpft (Squash&Stretch + Kern-Puls), Panther schleicht
+    if(e.mkey==="slime"&&e.visual){var st2=G.t*6+e.ph,ss=Math.sin(st2);
+      e.visual.position.y=Math.abs(ss)*0.25;
+      e.visual.scale.set(e.msc*(1+0.1*ss),e.msc*(1-0.2*ss),e.msc*(1+0.1*ss));
+      e.baseEmis=1.0+0.2*ss;} // Kern-Puls 0.8–1.2 (läuft über die Flash-Zeile unten)
+    else if(e.mkey==="panther"&&e.visual){
+      e.visual.rotation.z=Math.sin(G.t*7+e.ph)*0.04; // Schleich-Wippen
+      e.visual.position.y=(e.state==="chase")?Math.abs(Math.sin(G.t*9+e.ph))*0.05:0;
+      if(e.lungeT>0){e.lungeT-=dt;e.visual.position.z=Math.sin(Math.PI*Math.max(0,1-e.lungeT/0.35))*0.9;} // Sprung-Tween vor+zurück
+      else e.visual.position.z=0;}
     var _ms=e.mats||((e.body&&e.body.material)?[e.body.material]:[]);
     for(var _mi=0;_mi<_ms.length;_mi++)_ms[_mi].emissiveIntensity=(e.flash>0)?((e.baseEmis!==undefined?e.baseEmis:1)+1.1):(e.baseEmis!==undefined?e.baseEmis:(e.elite||e.boss?1.3:0.8));
     if(e.flash>0)e.flash-=dt;
     if(e.state==="patrol"){
       e.pt-=dt;if(e.pt<=0){e.pa=Math.random()*6.283;e.pt=2+Math.random()*3;}
       e.g.position.x+=Math.cos(e.pa)*e.spd*0.3*dt;e.g.position.z+=Math.sin(e.pa)*e.spd*0.3*dt;
+      if(e.mkey)e.g.rotation.y=Math.PI/2-e.pa; // GLB blickt +Z → in Patrouillen-Richtung drehen
       if(d<19)e.state="chase";
     }else if(e.state==="chase"){
       if(d>26&&!e.boss){e.state="patrol";}
@@ -763,10 +814,28 @@ function updEnemies(dt){
         var nx2=e.g.position.x+Math.cos(ang)*e.spd*dt,nz2=e.g.position.z+Math.sin(ang)*e.spd*dt;
         if(!inDungeon||isFloor(nx2,nz2)){e.g.position.x=nx2;e.g.position.z=nz2;}
         e.g.rotation.y=-ang+Math.PI/2;}
-      else{e.atkT-=dt;if(e.atkT<=0){e.atkT=e.boss?0.8:1.1;hitPlayer(e.atk);
+      else{e.atkT-=dt;
+        if(e.mkey)e.g.rotation.y=Math.atan2(px-ex,pz-ez); // im Nahkampf zum Spieler drehen
+        if(e.atkT<=0){e.atkT=e.boss?0.8:1.1;hitPlayer(e.atk);
+        if(e.rig&&e.rig.actions.attack){var _aa=e.rig.actions.attack,_ad=_aa.getClip().duration||1;
+          if(e.mkey==="guardian"){playOnce(e.rig,"attack",_ad*0.5,0.1);_aa.time=_ad*0.4;} // Triple-Combo: nur Phase 0.4–0.9 (Root-Motion!)
+          else playOnce(e.rig,"attack",_ad,0.1);} // Clip passt in ~1s (Angriffs-Intervall 1.1s)
+        if(e.mkey==="panther")e.lungeT=0.35; // Sprung-Attacke als Tween
         burst(px,1,pz,0xff4d6d,6,4);}}
       // Heimatzonen-Leine (außer Boss)
       if(!e.boss){var hd=Math.hypot(e.g.position.x-e.hx,e.g.position.z-e.hz);if(hd>40){e.state="patrol";e.pa=Math.atan2(e.hz-e.g.position.z,e.hx-e.g.position.x);}}
+    }
+    // Gerigte Monster (Wisp/Golem/Guardian): Mixer nur in Kameranähe ticken (Performance), walk/idle nach Zustand
+    if(e.rig){
+      if(d<80)e.rig.mixer.update(dt);
+      if(ONESHOT[e.rig.cur]){
+        if(e.mkey==="guardian"&&e.rig.cur==="attack"){var _ga=e.rig.actions.attack;
+          if(_ga&&_ga.time>=_ga.getClip().duration*0.9)setAnim(e.rig,"idle",0.15);} // Combo-Fenster zu Ende → kein Root-Motion-Snap
+      }else{
+        if(e.state==="chase"&&d>e.r+1.1)setAnim(e.rig,"walk",0.2,Math.max(0.7,Math.min(1.6,e.spd/4.5)));
+        else if(e.state==="patrol")setAnim(e.rig,"walk",0.3,0.6);
+        else setAnim(e.rig,"idle",0.25);
+      }
     }
     e.g.position.y=heightAt(e.g.position.x,e.g.position.z);
     // Safe-Zone Dorf: Gegner bleiben draußen
@@ -779,7 +848,7 @@ function hitPlayer(dmg){if(iframe>0||!running)return;
   var real=Math.max(1,dmg-playerDef());
   G.hp-=real;iframe=0.5;hurtT=1;camShake=Math.max(camShake,0.4);
   // Treffer-Reaktion nur aus idle/walk (blockiert weder Angriff/Cast/Dodge noch die Bewegung dauerhaft)
-  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))playOnce(heroRig,"hit",2.5); // 1.67s @2.5 ≈ 0.67s
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("hit"); // ~0.67s; Klassen ohne hit-Clip: still übersprungen
   dmgNum(real,player.position.x,2.4,player.position.z,"#ff8098");
   beep(140,.15,"sawtooth",.06);updHUD();
   if(G.hp<=0){G.hp=0;running=false;saveGame();document.getElementById("deadO").classList.remove("hide");beep(80,.5,"sawtooth",.09);}}
@@ -805,7 +874,7 @@ function updSpawns(dt){
 // ===================== KAMPF (Spieler) =====================
 function doAttack(){
   if(atkCD>0||!running)return;atkCD=0.42;
-  playOnce(heroRig,"attack",2.5); // 2.83s-Clip @2.5 ≈ 1.13s; Spam vor Ablauf resettet den Schwung (CD 0.42s bleibt Gameplay-Wahrheit)
+  heroPlay("attack"); // ~1.13s Hieb (timeScale aus Clip-Dauer, klassen-sicher); Spam resettet den Schwung (CD 0.42s bleibt Gameplay-Wahrheit)
   beep(760,.05,"square",.035);
   // Auto-Face: nächsten Gegner in Reichweite anvisieren (ARPG-QoL — Hiebe whiffen nicht im Stand)
   var nb=null,nd=6.5;
@@ -844,7 +913,7 @@ function doBolt(){
   var cost=Math.max(4,9-G.skills.puls*1.5);
   if(G.en<cost){showHint("⚡ Zu wenig Energie");return;}
   G.en-=cost;boltCD=0.8;updHUD();beep(980,.09,"sawtooth",.05);
-  playOnce(heroRig,"cast",1.5); // 2.67s-Clip @1.5 ≈ 1.78s; erneuter Puls (CD 0.8s) resettet den Cast
+  heroPlay("cast"); // ~1.78s Cast; Klassen ohne cast-Clip → attack-Fallback; erneuter Puls (CD 0.8s) resettet
   var R=7+G.skills.puls*1.2;
   var ring=new THREE.Mesh(new THREE.TorusGeometry(0.5,0.22,8,32),new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
   ring.rotation.x=-Math.PI/2;ring.position.set(player.position.x,player.position.y+0.6,player.position.z);scene.add(ring);
@@ -864,7 +933,7 @@ function doDodge(){
   var mv=moveVec(),l=Math.hypot(mv.x,mv.z);
   dodgeDir=l>0.05?{x:mv.x/l,z:mv.z/l}:{x:Math.sin(player.rotation.y),z:Math.cos(player.rotation.y)};
   dodgeT=0.16;dodgeCD=1.0;iframe=0.36;
-  playOnce(heroRig,"dodge",2.2,0.08); // 1.83s-Clip @2.2 ≈ 0.83s — Rolle passt in den 1s-Cooldown
+  heroPlay("dodge",0.08); // ~0.83s Rolle (passt in den 1s-Cooldown); Klassen ohne dodge-Clip → kurzer run-Fallback
   beep(660,.1,"sawtooth",.04);burst(player.position.x,0.8,player.position.z,0x7de3ff,8,4);
 }
 // ===================== NPCs & QUESTS =====================
@@ -887,7 +956,7 @@ var rigs=[],heroRig=null;
 // One-Shot-Clips: LoopOnce + clampWhenFinished, danach Crossfade zurück zu idle
 // (die Bewegungs-Logik im Loop wechselt im nächsten Frame ggf. sofort auf walk).
 var ONESHOT={wave:1,attack:1,cast:1,dodge:1,hit:1,victory:1};
-function makeRig(o,anims){var r={mixer:new THREE.AnimationMixer(o),actions:{},cur:null};
+function makeRig(o,anims,local){var r={mixer:new THREE.AnimationMixer(o),actions:{},cur:null};
   for(var i=0;i<anims.length;i++){var a=r.mixer.clipAction(anims[i]);
     if(ONESHOT[anims[i].name]){a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=true;}
     r.actions[anims[i].name]=a;}
@@ -895,7 +964,7 @@ function makeRig(o,anims){var r={mixer:new THREE.AnimationMixer(o),actions:{},cu
     var a=r.actions.idle;if(!a){r.cur=null;return;}
     r.cur="idle";a.reset();a.timeScale=1;a.play();
     if(e.action&&e.action!==a)e.action.crossFadeTo(a,0.2,false);});
-  rigs.push(r);return r;}
+  if(!local)rigs.push(r);return r;} // local=Gegner-Rigs: Mixer läuft distanz-gecullt in updEnemies
 function setAnim(r,name,fade,ts){if(!r)return;var a=r.actions[name];if(!a)return;
   if(r.cur===name){if(ts!==undefined)a.timeScale=ts;return;}
   var prev=r.cur?r.actions[r.cur]:null;r.cur=name;
@@ -906,18 +975,51 @@ function playOnce(r,name,ts,fade){if(!r)return;var a=r.actions[name];if(!a)retur
   var prev=(r.cur&&r.cur!==name)?r.actions[r.cur]:null;r.cur=name;
   a.reset();a.timeScale=ts||1;a.play();
   if(prev)prev.crossFadeTo(a,fade||0.12,false);else a.setEffectiveWeight(1);}
+// ===== Klassenwahl: Spieler-GLB nach gewählter Klasse (localStorage nr_class, Default Held) =====
+// held = hero_meshy_combat.glb (9 Clips inkl. cast/dodge/hit/victory); die 3 Klassen haben nur
+// idle/walk/run/attack → heroPlay() fällt defensiv zurück (cast→attack, dodge→run, Rest still).
+var CLASSDEFS={
+  held:{f:"hero_meshy_combat.glb",meshy:true},
+  magier:{f:"class_mage.glb"},
+  waldlaeufer:{f:"class_ranger.glb"},
+  titan:{f:"class_titan.glb"}
+};
+var curClass=lsGet("nr_class")||"held";if(!CLASSDEFS[curClass])curClass="held";
+// Leichte Klassen-Boni (nur Multiplikatoren, Save bleibt unverändert/kompatibel)
+function clsMul(k){var m={magier:{en:1.2},waldlaeufer:{spd:1.1},titan:{hp:1.2}}[curClass];return (m&&m[k])||1;}
+var _clsLoad=0;
+function loadPlayerModel(cls){
+  if(!THREE.GLTFLoader)return;
+  var def=CLASSDEFS[cls]||CLASSDEFS.held,my=++_clsLoad;
+  new THREE.GLTFLoader().load("/models/"+def.f,function(g){
+    if(my!==_clsLoad)return; // inzwischen wurde eine andere Klasse gewählt
+    if(heroModel){player.remove(heroModel);heroModel=null;}
+    if(heroRig){var ri=rigs.indexOf(heroRig);if(ri>=0)rigs.splice(ri,1);heroRig=null;}
+    var o=g.scene;o.scale.setScalar(1.2); // Klassen 1.72–1.9 Einheiten → Spielgrösse ~2.1–2.3
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
+      if(n.material){if(def.meshy){n.material.emissiveIntensity=1.3;n.material.color.setScalar(2.1);} // Meshy: Neonlinien in Basecolor+Emissive → dämpfen
+        else n.material.emissiveIntensity=Math.max(n.material.emissiveIntensity||0,1.0);}}});
+    pBody.visible=false;player.add(o);heroModel=o;
+    heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
+  },undefined,function(){});
+}
+// One-Shots klassen-sicher: fehlender Clip crasht NIE (playOnce guarded), Fallback attack/run,
+// timeScale dynamisch aus der Clip-Dauer (Ziel-Dauern = bisheriges Hero-Tuning).
+var HERO_FB={cast:"attack",dodge:"run"};
+var HERO_TDUR={attack:1.13,cast:1.78,dodge:0.83,hit:0.67};
+function heroPlay(name,fade){
+  if(!heroRig)return;
+  var nm=heroRig.actions[name]?name:HERO_FB[name];
+  if(!nm||!heroRig.actions[nm])return;
+  var ts=1;
+  if(HERO_TDUR[name]){var du=0;try{du=heroRig.actions[nm].getClip().duration;}catch(e){}
+    if(du>0.01)ts=Math.max(0.5,Math.min(4,du/HERO_TDUR[name]));}
+  else if(name==="victory")ts=1.1;
+  playOnce(heroRig,nm,ts,fade);
+}
 (function(){
   if(!THREE.GLTFLoader)return;
-  // SPIELER: Meshy-Held hero_meshy_combat.glb — identisches Modell/Skelett wie hero_meshy.glb,
-  // aber 9 Clips (idle/walk/run/wave + attack/cast/dodge/hit/victory, Root-Motion entfernt).
-  // Neonlinien sind in der Basecolor-Textur, die auch als emissiveTexture verdrahtet ist
-  // → Intensität DÄMPFEN, sonst Bloom-Blowout / flacher Look.
-  new THREE.GLTFLoader().load("/models/hero_meshy_combat.glb",function(g){
-    var o=g.scene;o.scale.setScalar(1.2); // 1.75 Einheiten → ~2.1 (Häuser ~7 hoch)
-    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
-      if(n.material){n.material.emissiveIntensity=1.3;n.material.color.setScalar(2.1);}}}); // Neonlinien leuchten, Anzug bleibt dunkel-lesbar
-    pBody.visible=false;player.add(o);heroModel=o;
-    heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);},undefined,function(){});
+  loadPlayerModel(curClass); // SPIELER: GLB der gewählten Klasse
   // NPCs: Blender-Mensch hero.glb (Original-Materialien mit cyan/pink-Akzenten, KEIN Emissive-Override!)
   if(!window.fetch)return;
   fetch("/models/hero.glb").then(function(rs){if(!rs.ok)throw 0;return rs.arrayBuffer();}).then(function(buf){
@@ -994,7 +1096,7 @@ function doInteract(){
       ob.on=true;G.obel[i]=true;beep(1200,.4,"triangle",.08);burst(ob.x,4,ob.z,0x6affab,22,7);camShake=0.5;
       announce("Obelisk aktiviert! ("+G.obel.filter(Boolean).length+"/3)","#6affab");
       if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d");
-        playOnce(heroRig,"victory",1.1,0.2);} // steht am Obelisken → Sieger-Pose passt immer
+        heroPlay("victory",0.2);} // steht am Obelisken → Sieger-Pose passt immer (Klassen ohne Clip: still)
       renderQuests();saveGame();return;}}
   if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5){enterDungeon();return;}
   if(inDungeon){
@@ -1116,9 +1218,9 @@ function genDungeon(){
     if(dd2>best2[2])best2=[+pp2[0],+pp2[1],dd2];}
   dgn.chest={x:DX+best2[0]*DCELL,z:DZ+best2[1]*DCELL};
   var ch=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.1,1.1),mat(0x2a1a08,0xffcf6e,0.9));ch.position.set(dgn.chest.x,0.55,dgn.chest.z);dgn.group.add(ch);dgn.chestMesh=ch;
-  // Wächter der Tiefe: Miniboss bewacht die Truhe (Warden-Modell)
+  // Wächter der Tiefe: Miniboss bewacht die Truhe (Guardian-GLB, gerigt; Fallback Warden/Primitiv)
   (function(){var g=new THREE.Group();
-    if(wardenModel)g.add(wardenModel.clone(true));
+    if(!monBuf.guardian&&wardenModel)g.add(wardenModel.clone(true));
     else{var b2=new THREE.Mesh(new THREE.IcosahedronGeometry(2.2,0),mat(0x1a0a2e,0xb98bff,1.0));b2.position.y=2.2;b2.castShadow=true;g.add(b2);}
     var wl=new THREE.PointLight(0xb98bff,1.6,26);wl.position.y=4;g.add(wl);
     g.position.set(dgn.chest.x+1.4,0,dgn.chest.z+1.4);scene.add(g);
@@ -1126,7 +1228,8 @@ function genDungeon(){
     var lvB=1+(G.lvl-1)*0.12;
     var mb={g:g,body:g.children[0],mats:mats,hp:170*lvB,maxhp:170*lvB,atk:13*lvB,spd:5.2,xp:70,c:0xb98bff,r:2.4,elite:true,boss:false,miniboss:true,baseEmis:0.5,active:true,
       state:"chase",pa:0,pt:0,atkT:0,flash:0,hx:dgn.chest.x,hz:dgn.chest.z};
-    enemies.push(mb);dgn.foes.push(mb);})();
+    enemies.push(mb);dgn.foes.push(mb);
+    if(monBuf.guardian)attachMonster(mb,"guardian",1.5);})(); // 2.8 → ~4.2 Einheiten Mini-Boss-Präsenz
   // 7 Eliten auf entfernten Bodenzellen
   dgn.foes=[];
   for(var si3=0;si3<7;si3++){var sk2=fkeys[(Math.random()*fkeys.length)|0].split(","),sx3=DX+(+sk2[0])*DCELL,sz3=DZ+(+sk2[1])*DCELL;
@@ -1182,7 +1285,7 @@ function killSeraph(){
   var it=rollItem(G.lvl+4);it.r=3;it.v=Math.round(it.v*1.4);G.inv.push(it);G.legFound=(G.legFound||0)+1;
   G.shards+=30;G.shardsEarned=(G.shardsEarned||0)+30;gainXp(90);
   announce("SERAPH BESIEGT — LEGENDÄR: "+it.n+"!","#ffcf6e");
-  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))playOnce(heroRig,"victory",1.1,0.2);
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("victory",0.2);
   scene.remove(seraph.g);seraph=null;seraphCD=DAYLEN*1.5;
   updHUD();saveGame();
 }
@@ -1336,7 +1439,7 @@ function loop(now){
   if(running&&!paused){
     G.t+=dt;
     // Bewegung (Velocity-Glättung wie Colossus)
-    var mv=moveVec(),spd=G.spd*(1+G.skills.tempo*0.08);
+    var mv=moveVec(),spd=G.spd*(1+G.skills.tempo*0.08)*clsMul("spd"); // Waldläufer +10%
     if(dodgeT>0){dodgeT-=dt;player.position.x+=dodgeDir.x*34*dt;player.position.z+=dodgeDir.z*34*dt;burst(player.position.x,0.6,player.position.z,0x7de3ff,2,1.2);}
     else{var l=Math.hypot(mv.x,mv.z)||1,mvx=(Math.abs(mv.x)+Math.abs(mv.z)>0.05)?1:0;
       var tvx=(mv.x/l)*spd*mvx,tvz=(mv.z/l)*spd*mvx,k=Math.min(1,dt*(mvx?11:8));
@@ -1366,7 +1469,7 @@ function loop(now){
     pGlow.position.set(player.position.x,player.position.y+2,player.position.z);
     pGlow.intensity=0.7+(1-dayA)*1.1;
     // Energie-Regeneration
-    G.en=Math.min(G.maxen,G.en+dt*(2.2+G.skills.fokus*0.9));
+    G.en=Math.min(playerMaxEn(),G.en+dt*(2.2+G.skills.fokus*0.9));
     if(iframe>0)iframe-=dt;
     if(atkCD>0)atkCD-=dt;if(boltCD>0)boltCD-=dt;if(dodgeCD>0)dodgeCD-=dt;
     // Zone anzeigen
@@ -1396,6 +1499,7 @@ function begin(){
   var saved=loadGame();
   G=saved||freshState();
   G.ach=G.ach||{};G.kills=G.kills||0;G.shardsEarned=G.shardsEarned||0;G.legFound=G.legFound||0;G.dungeonRuns=G.dungeonRuns||0;
+  G.hp=Math.min(G.hp,playerMaxHp());G.en=Math.min(G.en,playerMaxEn()); // Klassen-Wechsel: alte Saves sauber clampen
   player.position.set(G.px||0,0,G.pz||14);
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");
@@ -1418,6 +1522,12 @@ document.getElementById("resumeBtn2").onclick=toggleMenu;
 document.getElementById("rulesBtn2").onclick=function(){toggleMenu();
   showHint("WASD laufen · LEER Angriff · Q Puls · SHIFT Rolle · E reden/nutzen · I Inventar · T Skills — folge den Aufgaben rechts oben!",6000);};
 document.getElementById("startBtn").onclick=begin;
+// Klassen-Karten: Wahl optional — Held/letzte Wahl ist vorgewählt, „Reich betreten" startet immer sofort
+(function(){var cards=document.querySelectorAll("#classRow .ccard");
+  function mark(){for(var i=0;i<cards.length;i++)cards[i].classList.toggle("sel",cards[i].getAttribute("data-cls")===curClass);}
+  for(var i=0;i<cards.length;i++)(function(c){c.onclick=function(){var cl=c.getAttribute("data-cls");if(cl===curClass)return;
+    curClass=cl;lsSet("nr_class",cl);mark();loadPlayerModel(cl);beep(620,.06,"triangle",.04);};})(cards[i]);
+  mark();})();
 (function(){if(loadGame()){document.getElementById("startBtn").textContent="Weiterspielen ▶";var wb=document.getElementById("wipeBtn");wb.classList.remove("hide");
   wb.onclick=function(){if(wb.dataset.armed){lsDel(SAVE_KEY);location.reload();}else{wb.dataset.armed="1";wb.textContent="Sicher? Nochmal tippen zum Löschen";}};}})();
 document.getElementById("reviveBtn").onclick=function(){
