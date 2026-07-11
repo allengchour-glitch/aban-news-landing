@@ -75,9 +75,16 @@ Grossprojekt in Phasen — jede 2h-Runde arbeitet den nächsten offenen Schritt 
 Smoke+Shot-Verifikation pro Änderung. Fortschritt hier abhaken (✅), damit Sessions nahtlos übernehmen.
 
 ### Phase 1 — Alles-in-1-Shell (Arcade-Launcher)
-- [ ] spiele.html → „aban Arcade": einheitliche Game-Cards, gemeinsames Profil (Spielername,
-      localStorage `abanArcade`), Gesamt-Highscore-Leiste, Zurück-zur-Arcade-Button in jedem Spiel
-- [ ] Shared CSS/JS extrahieren (js/arcade.js): Pause, Ton, Vollbild, Touch-Erkennung
+- [x] spiele.html → „aban Arcade" (2026-07-11): einheitliche Game-Cards (Play-Button ≥44px, frisch
+      aufgewertete zuerst), gemeinsames Profil (Spielername, localStorage `abanArcade`, Button oben),
+      Gesamt-Highscore-Leiste (Chips „Fortschritt in X von 11 Spielen" + je Spiel), Highscore-Badge
+      pro Karte (defensiv, auch JSON-Saves: nr_save1→lvl, lp_save1→round, aban_wdt_stats→streak),
+      Zurück-zur-Arcade-Link in ALLEN 11 Spielen (neu ergänzt: neon-flug Startscreen inkl. DE+EN-Dict,
+      wort-des-tages + wortbruecke Footer). Sitemap: spiele.html + alle 11 Spiele eingetragen.
+- [~] Shared js/arcade.js ERSTELLT (AbanArcade: profile/setName, readBest, isTouch, fullscreen,
+      getMuted/setMuted, onPause) — Hub nutzt es; Spiele-seitige Übernahme = Phase 2 (kein Risiko-Umbau).
+      Key-Inventar: nj_best·nr_best(Racer!)·ns_best·na_best·nc_best·nd_best·aban_neon_best(Flug)·
+      nr_save1(Realm-JSON)·lp_save1(JSON)·aban_wdt_stats(JSON). ⚠️ Realm nutzt nr_-Präfix wie Racer.
 
 ### Phase 2 — Handy-Optimierung (alle 12 Spiele)
 - [ ] Audit pro Spiel via game_shot mit Mobile-Viewport (390×844) — Liste: was hat Touch, was nicht
