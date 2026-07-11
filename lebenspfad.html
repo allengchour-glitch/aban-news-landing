@@ -288,11 +288,11 @@ var pathPts=[];
 })();
 // ===================== 🛤️ Weggabelungen (Pass B2): 2 Neben-Routen zweigen sichtbar ab & münden zurück =====================
 var FORKS=[
- {at:39,rejoin:46,bulge:9,types:["w","q","w","g-","w","h","f","w","w","g+"], // Kap.3: 10 Felder statt 6
+ {at:39,rejoin:46,bulge:11.5,types:["w","q","w","g-","w","h","f","w","w","g+"], // Kap.3: 10 Felder statt 6
   title:"Studium oder Abenteuer?",txt:"Der Pfad teilt sich! Nimmst du den sicheren Lernweg — oder die kurze, wilde Route?",
   aL:"🎒 Abenteuer",aSub:"kurz (6 Felder) · ✨ Überraschungs-Ereignisse · 🧾 1 Rechnung",
   bL:"🎓 Studium",bSub:"sicher, dauert 4 Felder länger · 5× +🧠 · ❓ Quiz · +💰 am Ende"},
- {at:93,rejoin:100,bulge:8,types:["g+","w","g+","g-","g+","g+"], // Kap.6: gleiche Länge, anderes Profil
+ {at:93,rejoin:100,bulge:9,types:["g+","w","g+","g-","g+","g+"], // Kap.6: gleiche Länge, anderes Profil
   title:"Karriere oder Familie?",txt:"Eine große Entscheidung: der steile Aufstieg — oder der vertraute Weg mit den Liebsten?",
   aL:"🏡 Familienweg",aSub:"✨ Familien-Ereignisse · ❤️ & 👥 · gemütlich",
   bL:"🏔️ Karriere-Aufstieg",bSub:"4× +💰 · +🧠 · aber 🧾 Rechnungen & kaum ❤️"}
@@ -400,13 +400,13 @@ var fields=[];
     var prev={x:pathPts[fk.at].x,z:pathPts[fk.at].z},first=-1,idxPrev=-1,mch=Math.floor(fk.at/FIELDS_PER);
     fk.types.forEach(function(ty,j){
       var p=fk.pts[j];
-      var blob=new THREE.Mesh(new THREE.CircleGeometry(2.7,24),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16}));
+      var blob=new THREE.Mesh(new THREE.CircleGeometry(2.0,22),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16}));
       blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.045,p.z);scene.add(blob);
-      var sock=new THREE.Mesh(new THREE.CylinderGeometry(2.22,2.35,0.34,24),mat(0xffffff,0xf0f0f0,0.06));
+      var sock=new THREE.Mesh(new THREE.CylinderGeometry(1.62,1.75,0.34,22),mat(0xffffff,0xf0f0f0,0.06));
       sock.position.set(p.x,0.17,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
-      var disc=new THREE.Mesh(new THREE.CylinderGeometry(2.0,2.08,0.26,24),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.32));
+      var disc=new THREE.Mesh(new THREE.CylinderGeometry(1.45,1.53,0.26,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.32));
       disc.position.set(p.x,0.47,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
-      var trg=new THREE.Mesh(new THREE.TorusGeometry(2.12,0.09,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
+      var trg=new THREE.Mesh(new THREE.TorusGeometry(1.57,0.08,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
       trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6,p.z);scene.add(trg);
       fields.push({x:p.x,z:p.z,type:ty,disc:disc,mchap:mch,prog:fk.at+(fk.rejoin-fk.at)*(j+1)/(fk.types.length+1)});
       var idx=fields.length-1;
@@ -1140,7 +1140,8 @@ function updChapter(){
   document.getElementById("chapTxt").textContent=c.n;
   var AC=activeChaps(),pos=AC.indexOf(ci);
   if(pos<0){pos=0;for(var ai=0;ai<AC.length;ai++)if(AC[ai]<ci)pos=ai;}
-  document.getElementById("chapSub").textContent="Kapitel "+(pos+1)+" von "+AC.length+" · "+c.sub;
+  var small=window.matchMedia&&window.matchMedia("(max-width:480px)").matches; // mobil: kurz halten
+  document.getElementById("chapSub").textContent="Kapitel "+(pos+1)+" von "+AC.length+(small?"":" · "+c.sub);
   document.getElementById("turnTag").textContent=p.done?"":("🎲 "+p.name+" ist dran (Runde "+G.round+")");
   // Himmel weich zur Kapitel-Farbe
   window._skyTarget=new THREE.Color(c.sky);
@@ -2209,18 +2210,18 @@ function tauschCard(p){ // 🔄 Kurs schwankt: 3–5 💰 gegen 2 ❤️ oder 2 
 }
 function raceCard(p){ // 🏁 alle würfeln gleichzeitig 1× — höchster Wurf +2 💰 (Online: Lockstep-srand)
   cardEl.style.borderColor="#ff7a2a";
-  var DF=DICE_FACES,alive=[];
+  var alive=[];
   G.players.forEach(function(pl,i){if(!pl.done)alive.push(i);});
   if(alive.length<2){ // Solo: kleiner Sprint gegen die Uhr
     var r0=1+((srand()*6)|0),win0=r0>=4;
     if(win0){applyFx(p,{geld:2});emote(G.turn,"jubel");}
-    showCard("Wettrennen","🏁 Solo-Sprint!","Du würfelst "+DF[r0-1]+" ("+r0+") — "+(win0?"schnell genug: <b>+2 💰</b>!":"heute nicht schnell genug. Beim nächsten Mal!"),
+    showCard("Wettrennen","🏁 Solo-Sprint!","Du würfelst 🎲 <b>"+r0+"</b> — "+(win0?"schnell genug: <b>+2 💰</b>!":"heute nicht schnell genug. Beim nächsten Mal!"),
       [{l:"Weiter ▶",fn:function(){updPlayers();endTurnSoon();}}]);return;}
   var res={},best=0;
   alive.forEach(function(i){var r=1+((srand()*6)|0);res[i]=r;if(r>best)best=r;});
   var lines="";
   alive.forEach(function(i){var pl=G.players[i],win=res[i]===best;
-    lines+="<div style='font-weight:800;color:#"+("00000"+pl.col.toString(16)).slice(-6)+"'>"+DF[res[i]-1]+" "+res[i]+" — "+pl.name+(win?" 🏆 +2 💰":"")+"</div>";
+    lines+="<div style='font-weight:800;color:#"+("00000"+pl.col.toString(16)).slice(-6)+"'>🎲 "+res[i]+" — "+pl.name+(win?" 🏆 +2 💰":"")+"</div>";
     if(win){pl.geld+=2;if(pawns[i])emote(i,"jubel");}});
   beep(523,.08,"square",.04);setTimeout(function(){beep(659,.08,"square",.04);},110);setTimeout(function(){beep(784,.14,"triangle",.05);},220);
   if(res[G.turn]===best)moneyRain(fields[p.tile].x,fields[p.tile].z,8);
