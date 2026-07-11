@@ -137,22 +137,22 @@
 #done search:layered necklace set
 #done search:stainless steel ring women
 #done search:adjustable ring
-search:charm bracelet
-search:tennis bracelet
-search:anklet chain
-search:zodiac necklace
-search:birthstone ring
-search:cuff bracelet
-search:ear cuff
-search:nose ring
-search:body chain
-search:toe ring
-search:brooch pin
-search:hair jewelry
-search:minimalist earrings
-search:minimalist watch women
-search:mesh strap watch
-search:leather watch men
+#done search:charm bracelet
+#done search:tennis bracelet
+#done search:anklet chain
+#done search:zodiac necklace
+#done search:birthstone ring
+#done search:cuff bracelet
+#done search:ear cuff
+#done search:nose ring
+#done search:body chain
+#done search:toe ring
+#done search:brooch pin
+#done search:hair jewelry
+#done search:minimalist earrings
+#done search:minimalist watch women
+#done search:mesh strap watch
+#done search:leather watch men
 search:couple watch set
 search:digital sport watch
 search:fashion bracelet watch
