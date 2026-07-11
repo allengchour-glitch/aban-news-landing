@@ -183,6 +183,15 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 5 — „attacken mehr polish, noch mehr attacken")
+- [ ] **Mehr Attacken** (Meshy-Bibliothek auf Rigging-Task 019f4e41-…, ~3 Cr/Clip):
+      3-Hit-Kombo (Space-Kette mit Timing-Fenster: attack→attack2→attack3), Charge-Attacke
+      (Space halten → Glow-Aufladung → Burst), Dash-Attacke (Angriff während Roll),
+      → models/hero_meshy_combat2.glb (alle Clips in einer Datei, Root-Motion ankern!).
+- [ ] **Attacken-Polish** (Game-Feel): Hit-Stop 60–90ms bei Treffern, Einschlag-Partikel
+      + Treffer-Blitz auf Gegnern, Schadenszahlen-Pop, kalibrierter Screen-Shake,
+      Knockback spürbar, Swing-Trail am Helden.
+
 ### User-Feedback 2026-07-10 (Runde 4 — „level ups viele gegner, cooler skills etc")
 - [ ] **Pass 4 Gameplay-Tiefe** (nach Pass 3, wieder nur neon-realm.html):
       (a) **Level-Ups spürbar**: satisfying Level-Up-Moment (Blitz/Ring-Effekt, Fanfare, „Level 5!"-
