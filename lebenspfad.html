@@ -613,7 +613,7 @@ var fieldSprites=[];
 var confs=[];
 function confetti(x,z,accent){
   var cols=[0xffa8b8,0x9ac8ff,0xa8e0a0,0xffe09a,0xffc0e0,accent||0xffffff];
-  for(var i=0;i<18;i++){var m=new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.18),
+  for(var i=0;i<26;i++){var m=new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.18),
     new THREE.MeshBasicMaterial({color:cols[(Math.random()*cols.length)|0],side:THREE.DoubleSide}));
     m.position.set(x+(Math.random()-0.5)*2,3.5+Math.random()*2,z+(Math.random()-0.5)*2);
     scene.add(m);
@@ -1304,6 +1304,136 @@ function updLandmarks(dt,t){
     lmBalloon.position.y=24+Math.sin(t*0.4)*2.5;
     lmBalloon.rotation.y+=dt*0.1;}
 }
+// ===================== Max-Polish: dichte Pastell-Spielbrett-Welt (alles instanziert & statisch) =====================
+var driftBalloons=[];
+(function(){
+  // Sperrzonen: Felder, Kapitel-Bauwerke, GLB-Gebäude, Landmarken, Hüpfkästchen — dort keine Streu-Deko
+  var anchors=[];
+  [[0,7,-8],[1,8,7],[2,-7,-8],[3,7,8],[4,-8,-7],[5,7,-8],[6,-7,8],[7,8,-8]].forEach(function(s){var f=fields[s[0]*FIELDS_PER+9];anchors.push([f.x+s[1],f.z+s[2],5]);});
+  [[1,-5,-10],[2,5,-11],[4,-4,-12],[7,4,-7]].forEach(function(s){var f=fields[s[0]*FIELDS_PER+8];anchors.push([f.x+s[1],f.z+s[2],6]);});
+  (function(){var f=fields[5*FIELDS_PER+8];anchors.push([f.x+4,f.z-9,5]);})(); // lp_haus
+  (function(){var f=fields[NFIELDS-1];anchors.push([f.x,f.z-6,5]);})(); // Lebensbaum
+  for(var lc=0;lc<CHAPTERS.length;lc++){var lf=fields[lc*FIELDS_PER];anchors.push([lf.x,lf.z-5,4.5]);} // Landmarken
+  anchors.push([fields[5].x+4.6,fields[5].z+6.4,3.5]); // Hüpfkästchen
+  function blocked(x,z){
+    for(var q=0;q<fields.length;q++){var dx=fields[q].x-x,dz=fields[q].z-z;if(dx*dx+dz*dz<23)return true;}
+    for(var a2=0;a2<anchors.length;a2++){var ax=anchors[a2][0]-x,az=anchors[a2][1]-z,ar=anchors[a2][2];if(ax*ax+az*az<ar*ar)return true;}
+    return false;}
+  function gy(x,z){return terrainH(x,z)-0.32;} // echte Bodenhöhe (Terrain-Verts liegen bei terrainH-0.35)
+  function nearSpot(minD,maxD){ // Kandidat NAHE am Pfad — der Blick folgt dem Pfad, dort muss es leben
+    for(var t=0;t<50;t++){
+      var pi=(Math.random()*pathPts.length)|0,a=Math.random()*6.283,r=minD+Math.random()*(maxD-minD);
+      var x=pathPts[pi].x+Math.cos(a)*r,z=pathPts[pi].z+Math.sin(a)*r;
+      if(x<-176||x>218||Math.abs(z)>100)continue;
+      if(blocked(x,z))continue;
+      var best=1e9;for(var i=0;i<pathPts.length;i+=2){var dx=x-pathPts[i].x,dz=z-pathPts[i].z,d=dx*dx+dz*dz;if(d<best)best=d;}
+      if(best<minD*minD*0.7)continue; // nicht doch auf einem anderen Pfad-Stück gelandet
+      return {x:x,z:z};}
+    return null;}
+  var _o=new THREE.Object3D(),_c=new THREE.Color();
+  var PASTELL=[0xffc4d8,0xbfe8cf,0xd8c8f5,0xfff0b8,0xc8e8f8];
+  function chapCol(x){return CHAPTERS[Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((x+160)/46)))];}
+  // --- Büsche: Kugel-Klumpen in Kapitel- + Pastellfarben (rosa/mint/flieder) ---
+  var NB=IS_COARSE?150:210,put=0,gd=0;
+  var bush=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.62,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NB);
+  while(put<NB&&gd++<NB*40){
+    var s=Math.random()<0.7?nearSpot(4.6,11):nearSpot(11,17); // 30% weiter draussen — füllt die Mittel-Distanz
+    if(!s)continue;
+    var sc=0.7+Math.random()*1.1;
+    _o.position.set(s.x,gy(s.x,s.z)+0.34*sc,s.z);_o.scale.set(sc,sc*0.72,sc);_o.rotation.set(0,Math.random()*3.14,0);_o.updateMatrix();
+    bush.setMatrixAt(put,_o.matrix);
+    if(put%4===0)_c.setHex(PASTELL[(Math.random()*PASTELL.length)|0]).offsetHSL(0,0.06,-0.04-Math.random()*0.04);
+    else _c.setHex(chapCol(s.x).ground).offsetHSL((Math.random()-0.5)*0.1,0.14,0.03+Math.random()*0.07);
+    bush.setColorAt(put,_c);put++;}
+  bush.count=put;bush.instanceMatrix.needsUpdate=true;if(bush.instanceColor)bush.instanceColor.needsUpdate=true;
+  bush.castShadow=true;scene.add(bush);
+  // --- Pilze: cremefarbener Stiel + bunter Hut ---
+  var NM=IS_COARSE?44:58;
+  var stemI=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.09,0.14,0.36,6),mat(0xf5ecd8,0xe8dcc0,0.08),NM);
+  var capI=new THREE.InstancedMesh(new THREE.ConeGeometry(0.3,0.3,9),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NM);
+  var CAPC=[0xff6a7a,0xff9ab8,0x7fd8b0,0xffb37a,0xc8a8ff];
+  put=0;gd=0;
+  while(put<NM&&gd++<NM*40){var s2=nearSpot(3.6,9);if(!s2)continue;
+    var sc2=0.8+Math.random()*0.9,y0=gy(s2.x,s2.z);
+    _o.position.set(s2.x,y0+0.18*sc2,s2.z);_o.scale.setScalar(sc2);_o.rotation.set(0,Math.random()*3.14,0);_o.updateMatrix();stemI.setMatrixAt(put,_o.matrix);
+    _o.position.y=y0+0.45*sc2;_o.updateMatrix();capI.setMatrixAt(put,_o.matrix);
+    _c.setHex(CAPC[(Math.random()*CAPC.length)|0]);capI.setColorAt(put,_c);put++;}
+  stemI.count=put;capI.count=put;stemI.instanceMatrix.needsUpdate=true;capI.instanceMatrix.needsUpdate=true;
+  if(capI.instanceColor)capI.instanceColor.needsUpdate=true;scene.add(stemI);scene.add(capI);
+  // --- Steinchen (warmgrau, halb versenkt) ---
+  var NS=IS_COARSE?70:100;
+  var stoneI=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.3,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NS);
+  put=0;gd=0;
+  while(put<NS&&gd++<NS*40){var s3=nearSpot(3.2,8.5);if(!s3)continue;
+    var sc3=0.4+Math.random()*0.6; // klein halten — grosse helle Brocken wirkten wie Müll
+    _o.position.set(s3.x,gy(s3.x,s3.z)+0.08*sc3,s3.z);_o.scale.set(sc3,sc3*0.55,sc3);_o.rotation.set(Math.random()*0.4,Math.random()*3.14,0);_o.updateMatrix();
+    stoneI.setMatrixAt(put,_o.matrix);
+    _c.setHSL(0.08+Math.random()*0.04,0.14,0.42+Math.random()*0.14);stoneI.setColorAt(put,_c);put++;}
+  stoneI.count=put;stoneI.instanceMatrix.needsUpdate=true;if(stoneI.instanceColor)stoneI.instanceColor.needsUpdate=true;scene.add(stoneI);
+  // --- Gras-Büschel (Kapitel-Grün, leicht geneigt) ---
+  var NG=IS_COARSE?180:240;
+  var tuftI=new THREE.InstancedMesh(new THREE.ConeGeometry(0.17,0.55,5),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NG);
+  put=0;gd=0;
+  while(put<NG&&gd++<NG*40){var s4=nearSpot(3.0,9.5);if(!s4)continue;
+    var sc4=0.7+Math.random()*0.9;
+    _o.position.set(s4.x,gy(s4.x,s4.z)+0.24*sc4,s4.z);_o.scale.setScalar(sc4);
+    _o.rotation.set((Math.random()-0.5)*0.3,Math.random()*3.14,(Math.random()-0.5)*0.3);_o.updateMatrix();
+    tuftI.setMatrixAt(put,_o.matrix);
+    _c.setHex(chapCol(s4.x).ground).offsetHSL(0.015,0.12,0.03+Math.random()*0.1);tuftI.setColorAt(put,_c);put++;}
+  tuftI.count=put;tuftI.instanceMatrix.needsUpdate=true;if(tuftI.instanceColor)tuftI.instanceColor.needsUpdate=true;scene.add(tuftI);
+  // --- Zäunchen: weisse Lattenzäune flankieren den Pfad vor jedem Kapitel-Meilenstein ---
+  var fence=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),mat(0xf7f0e0,0xd8c8a8,0.05),7*2*5);
+  var fi=0;
+  for(var fc2=1;fc2<CHAPTERS.length;fc2++){
+    var iA=fc2*FIELDS_PER-4,iB=fc2*FIELDS_PER-2;
+    var ax2=fields[iA].x,az2=fields[iA].z,bx2=fields[iB].x,bz2=fields[iB].z;
+    var mx2=(ax2+bx2)/2,mz2=(az2+bz2)/2,dl=Math.hypot(bx2-ax2,bz2-az2)||1;
+    var ux=(bx2-ax2)/dl,uz=(bz2-az2)/dl,px2=-uz,pz2=ux,ry=-Math.atan2(uz,ux);
+    for(var sd=-1;sd<=1;sd+=2){
+      var cx3=mx2+px2*sd*3.2,cz3=mz2+pz2*sd*3.2;
+      for(var pp2=0;pp2<4;pp2++){var t2=-2.4+pp2*1.6,x3=cx3+ux*t2,z3=cz3+uz*t2;
+        _o.position.set(x3,gy(x3,z3)+0.46,z3);_o.scale.set(0.13,0.82,0.13);_o.rotation.set(0,ry,0);_o.updateMatrix();fence.setMatrixAt(fi++,_o.matrix);}
+      _o.position.set(cx3,gy(cx3,cz3)+0.72,cz3);_o.scale.set(5.3,0.09,0.09);_o.rotation.set(0,ry,0);_o.updateMatrix();fence.setMatrixAt(fi++,_o.matrix);}}
+  fence.count=fi;fence.instanceMatrix.needsUpdate=true;fence.castShadow=true;scene.add(fence);
+  // --- Deko-Trampelpfade: Trittsteine vom Pfad zu den Kapitel-Bauwerken ---
+  var tramp=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.3,0.34,0.07,7),mat(0xf0e2c8,0x000000,0),8*7);
+  var ti2=0;
+  [[0,7,-8],[1,8,7],[2,-7,-8],[3,7,8],[4,-8,-7],[5,7,-8],[6,-7,8],[7,8,-8]].forEach(function(sp2){
+    var f3=fields[sp2[0]*FIELDS_PER+9];
+    for(var st5=1;st5<=7;st5++){var k2=st5/8;
+      var x4=f3.x+sp2[1]*k2+(Math.random()-0.5)*0.5+Math.sin(k2*3.14)*0.7;
+      var z4=f3.z+sp2[2]*k2+(Math.random()-0.5)*0.5;
+      _o.position.set(x4,gy(x4,z4)+0.06,z4);_o.scale.setScalar(0.8+Math.random()*0.4);_o.rotation.set(0,Math.random()*3.14,0);_o.updateMatrix();
+      tramp.setMatrixAt(ti2++,_o.matrix);}});
+  tramp.count=ti2;tramp.instanceMatrix.needsUpdate=true;scene.add(tramp);
+  // --- Blumen-Tupfer direkt am Wegesrand (weiche Sprite-Textur) ---
+  function pflowerTex(col){var cv=document.createElement("canvas");cv.width=cv.height=48;var c2=cv.getContext("2d");
+    c2.fillStyle=col;for(var p2=0;p2<5;p2++){var a3=p2/5*6.283;c2.beginPath();c2.arc(24+Math.cos(a3)*9,24+Math.sin(a3)*9,7,0,6.283);c2.fill();}
+    c2.fillStyle="#ffe08a";c2.beginPath();c2.arc(24,24,6,0,6.283);c2.fill();return new THREE.CanvasTexture(cv);}
+  [["#ff9ab8",90],["#ffffff",80],["#ffd166",70],["#b89aff",60]].forEach(function(fc3){
+    var pts2=[],tr2=0,n3=IS_COARSE?Math.round(fc3[1]*0.7):fc3[1];
+    while(pts2.length/3<n3&&tr2++<n3*40){var s5=nearSpot(2.8,8);if(!s5)continue;pts2.push(s5.x,gy(s5.x,s5.z)+0.32,s5.z);}
+    var gg2=new THREE.BufferGeometry();gg2.setAttribute("position",new THREE.BufferAttribute(new Float32Array(pts2),3));
+    scene.add(new THREE.Points(gg2,new THREE.PointsMaterial({map:pflowerTex(fc3[0]),size:0.9,transparent:true,alphaTest:0.35,depthWrite:false})));});
+  // --- 🎈 Party-Ballons schweben übers Brett ---
+  var BCOL=[0xff5d7d,0xffd166,0x5ea8ff,0xff9ad9];
+  for(var b5=0;b5<4;b5++){
+    var g5=new THREE.Group();
+    var bal=new THREE.Mesh(new THREE.SphereGeometry(0.6,10,8),mat(BCOL[b5],BCOL[b5],0.4));bal.scale.y=1.18;g5.add(bal);
+    var kn=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.2,6),mat(BCOL[b5],BCOL[b5],0.3));kn.position.y=-0.78;kn.rotation.x=Math.PI;g5.add(kn);
+    var lg5=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-0.85,0),new THREE.Vector3(0.14,-2.7,0)]);
+    g5.add(new THREE.Line(lg5,new THREE.LineBasicMaterial({color:0x9a9aa6})));
+    g5.position.set(-130+b5*88,8.5+b5,(b5%2?-1:1)*(13+b5*4));
+    scene.add(g5);
+    driftBalloons.push({g:g5,ph:b5*1.7,cx:g5.position.x,cz:g5.position.z,i:b5});}
+})();
+function updDriftBalloons(dt,t){
+  if(!OPT.motion)return; // reduzierte Bewegung: Ballons stehen still
+  for(var i=0;i<driftBalloons.length;i++){var b=driftBalloons[i];
+    b.g.position.x=b.cx+Math.sin(t*0.05+b.ph)*30;
+    b.g.position.z=b.cz+Math.cos(t*0.04+b.ph*2)*10;
+    b.g.position.y=8.5+b.i+Math.sin(t*0.5+b.ph)*0.8;
+    b.g.rotation.z=Math.sin(t*0.8+b.ph)*0.08;}}
 // ===================== Chat: Oma Hilde (kontextbewusst, offline) =====================
 function chatMsg(txt,who){
   var log=document.getElementById("chatLog"),d=document.createElement("div");
@@ -1368,7 +1498,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);updNet();
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updNet();
     if(window._lmSwingPivot)window._lmSwingPivot.rotation.z=Math.sin(G.t*1.7)*0.55; // Schaukel schwingt
     if(window._lmClockM){window._lmClockM.rotation.z=-G.t*0.5;window._lmClockH.rotation.z=-G.t*0.5/12;} // Uhr läuft
     if(window._lmBeam)window._lmBeam.rotation.y=G.t*0.9; // Leuchtturm-Strahl rotiert
