@@ -1171,6 +1171,14 @@ function cardRustle(){ // Seiten-Rascheln beim Karten-Flip (WebAudio-Rauschen, s
 }
 function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
   pw.userData.emote={k:kind,t:0};}
+function meetTogether(ai,bi,x,z){ // 🤝 zwei Figuren treffen sich -> wenden sich einander zu & jubeln gemeinsam
+  var a=pawns[ai],b=pawns[bi];
+  if(a&&b){var ang=Math.atan2(b.position.x-a.position.x,b.position.z-a.position.z);
+    a.rotation.y=ang;b.rotation.y=ang+Math.PI;} // einander zuwenden (Spin pausiert während Emote)
+  emote(ai,"jubel");emote(bi,"jubel"); // beide gleichzeitig: Arme hoch + Hüpfer
+  chatBubble(ai,"❤️");setTimeout(function(){chatBubble(bi,"🎉");},260);
+  confetti(x,z,0x8affc0,26);
+  beep(880,.12,"triangle",.06);setTimeout(function(){beep(1174,.2,"triangle",.06);},140);}
 function updEmotes(dt){
   for(var i=0;i<pawns.length;i++){var pw=pawns[i],e=pw.userData.emote;if(!e)continue;
     e.t+=dt;var L=pw.userData.limbs;
@@ -1674,13 +1682,16 @@ function onLand(){
     if((nb&&nb.type==="m")||(pb&&pb.type==="m")){showHint("😮 Ooh — nur ein Feld vom Meilenstein entfernt!",1600);beep(500,.06,"triangle",.04);setTimeout(function(){beep(400,.08,"sine",.03);},90);}}
   agePawn(G.turn,true); // 🎂 Alter dem neuen Kapitel anpassen (Geburtstags-Feier bei Stufenwechsel)
   explainField(f.type); // beim ERSTEN Betreten eines Feldtyps: kurze Erklärung
-  // Begegnung: anderes Pawn auf demselben Feld -> beide +Freunde+Glück (Koop!)
+  // Begegnung: andere Figur(en) auf demselben Feld -> zusammen agieren (Koop!)
+  var met=[];
   for(var i=0;i<G.players.length;i++){if(i===G.turn||G.players[i].done)continue;
-    if(G.players[i].tile===p.tile){
-      announce("💫 BEGEGNUNG! "+p.name+" & "+G.players[i].name,"#8affc0");hearts(fields[p.tile].x,fields[p.tile].z);
+    if(G.players[i].tile===p.tile){met.push(i);
       p.freunde+=2;p.glueck+=2;G.players[i].freunde+=2;G.players[i].glueck+=2;
-      p.bio.push("traf "+G.players[i].name+" am Wegesrand — ein Tag voller Lachen");
-      beep(1046,.25,"triangle",.07);break;}}
+      meetTogether(G.turn,i,fields[p.tile].x,fields[p.tile].z);}}
+  if(met.length){
+    var mnm=met.map(function(k){return G.players[k].name;}).join(" & ");
+    announce("💫 BEGEGNUNG! "+p.name+" & "+mnm+" jubeln zusammen!","#8affc0");hearts(fields[p.tile].x,fields[p.tile].z);
+    p.bio.push("traf "+mnm+" am Wegesrand — ein Tag voller Lachen");}
   if(p.tile===NFIELDS-1){finishPlayer(p);return;}
   if(typeof handleField==="function")handleField(p,f);
   else endTurnSoon();
@@ -2312,6 +2323,10 @@ window.__lp={
     v.y+=1.35*pw.scale.y*(pw.userData.headScale||1)*0.95;v.project(camera);
     return {x:(v.x*0.5+0.5)*innerWidth,y:(1-(v.y*0.5+0.5))*innerHeight};},
   birds:function(){return birds.length;},
+  meet:function(){ // Test-Only: Begegnungs-Feier zweier Figuren auslösen
+    if(!G||G.players.length<2)return null;var a=G.turn,b=(a+1)%G.players.length;
+    G.players[b].tile=G.players[a].tile;placePawn(b);
+    meetTogether(a,b,fields[G.players[a].tile].x,fields[G.players[a].tile].z);return true;},
   nettest:function(present,turn,host,my){ // Test-Only: Online-Präsenz/Pause simulieren (kein echtes Netz)
     if(!G)return null;NET.on=true;NET.host=(host!==false);NET.my=my|0;NET.conns=[];
     NET.names=G.players.map(function(p){return p.name;});NET.present=present||G.players.map(function(){return true;});
@@ -2342,7 +2357,7 @@ function loop(now){
     // Felder pulsieren leicht; aktives Feld stärker
     for(var i=0;i<pawns.length;i++){if(G.phase!=="moving"||i!==G.turn){
       animWalk(pawns[i],false,dt);
-      if(!G.players[i].dead)pawns[i].rotation.y+=dt*(i===G.turn?0.6:0.15);}}
+      if(!G.players[i].dead&&!pawns[i].userData.emote)pawns[i].rotation.y+=dt*(i===G.turn?0.6:0.15);}}
   }
   if(!running)updConfs(dt); // Finale-Konfetti auch nach Spielende animieren
   if(window._skyTarget){scene.background.lerp(window._skyTarget,Math.min(1,dt*1.2));scene.fog.color.copy(scene.background);}
