@@ -43,6 +43,13 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.05em;text-shadow:0 2px 0 rgba(90,50,0,.75),0 4px 14px rgba(70,40,0,.5),0 0 18px rgba(255,255,255,.3);opacity:0;transition:opacity .4s;color:#ffd166;pointer-events:none}
 #hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.95rem;color:#fff;text-shadow:0 2px 0 rgba(90,50,0,.7),0 3px 10px rgba(70,40,0,.55);background:rgba(120,80,20,.32);border-radius:14px;padding:4px 14px;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
 .dnum{position:absolute;font-weight:900;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .75s ease-out,opacity .75s;opacity:1;will-change:transform,opacity}
+/* 🎲 Gewürfelte Zahl gross aufpoppen (Scale 1.6→1.0, kurze Freeze) */
+#bignum{position:fixed;left:50%;top:38%;z-index:24;pointer-events:none;font-weight:900;font-size:clamp(90px,17vw,190px);color:#fffdf6;-webkit-text-stroke:5px #3a2a10;text-shadow:0 8px 0 rgba(120,70,10,.35),0 12px 30px rgba(90,50,0,.5);opacity:0;transform:translate(-50%,-50%) scale(.4);will-change:transform,opacity}
+#bignum.pop{animation:bignumPop .62s cubic-bezier(.15,1.3,.4,1) forwards}
+@keyframes bignumPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}22%{opacity:1;transform:translate(-50%,-50%) scale(1.6)}42%{transform:translate(-50%,-50%) scale(.98)}62%{transform:translate(-50%,-50%) scale(1.05)}78%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-52%) scale(1)}}
+/* Farb-Blitz für Gewinn/Verlust (kurz, vignettenartig, verdeckt HUD nicht) */
+#flash{position:fixed;inset:0;pointer-events:none;z-index:11;opacity:0;transition:opacity .5s;box-shadow:inset 0 0 200px 40px rgba(255,90,90,.55)}
+#flash.on{opacity:1;transition:opacity .06s}
 #keysHelp{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#fff;text-shadow:0 1px 4px rgba(40,60,90,.7);white-space:nowrap;background:rgba(60,90,130,.35);border-radius:14px;padding:3px 12px}
 /* Ereignis-Karte */
 #card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .45s,transform .45s cubic-bezier(.2,1.1,.4,1);max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
@@ -143,6 +150,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 </div>
 <div id="dmg" style="position:fixed;inset:0;pointer-events:none;z-index:12"></div>
 <div id="mourn" style="position:fixed;inset:0;pointer-events:none;z-index:13;background:radial-gradient(circle,rgba(20,20,30,0) 30%,rgba(10,10,18,.88));opacity:0;transition:opacity 1.2s"></div>
+<div id="flash"></div><div id="bignum"></div>
 <div id="dice">🎲</div>
 <button id="rollBtn" class="hide">🎡 Drehen!</button>
 <button id="emoBtn" class="hide" title="Emotes (Tasten 1–6)">😊</button>
@@ -708,7 +716,7 @@ var fieldSprites=[];
 (function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(!FIELD_EMO[f.type])continue;
   var big=f.type==="m",ev=f.type==="e";
   var sp=emojiSprite(FIELD_EMO[f.type],big?2.7:(ev?1.5:2.0));
-  sp.position.set(f.x,big?2.5:1.72,f.z);scene.add(sp);fieldSprites.push({sp:sp,b:Math.random()*6.28,y0:sp.position.y});}})();
+  sp.position.set(f.x,big?2.5:1.72,f.z);scene.add(sp);var fse={sp:sp,b:Math.random()*6.28,y0:sp.position.y,hop:0};fieldSprites.push(fse);f.spr=fse;}})();
 // Konfetti (physisch fallende Farb-Plättchen)
 var confs=[];
 function confetti(x,z,accent,n){
@@ -1003,6 +1011,11 @@ function dustPuff(x,z){if(!OPT.motion)return;
     m.position.set(x+(Math.random()-0.5)*0.8,0.18,z+(Math.random()-0.5)*0.8);
     m.rotation.set(-Math.PI/2,0,Math.random()*3.14);scene.add(m);
     confs.push({m:m,vx:(Math.random()-0.5)*1.6,vy:0.5,vz:(Math.random()-0.5)*1.6,rx:0,rz:0,life:0.45,heart:true});}}
+// 👣 Fussspur-Trail: kleiner Abdruck bleibt kurz liegen, während die Figur hüpft
+function footprint(x,z){if(!OPT.motion)return;
+  var m=new THREE.Mesh(new THREE.CircleGeometry(0.16,10),new THREE.MeshBasicMaterial({color:0x6a4a2a,transparent:true,opacity:0.4,depthWrite:false}));
+  m.rotation.x=-Math.PI/2;m.position.set(x+(Math.random()-0.5)*0.5,0.06,z+(Math.random()-0.5)*0.5);scene.add(m);
+  confs.push({m:m,vx:0,vy:0,vz:0,rx:0,rz:0,life:1.3,heart:true});}
 // 💰 Geld-Regen bei grossen Gewinnen (Münz-Sprites fallen ~1s)
 var _coinTex=null;
 function moneyRain(x,z,n){if(!OPT.motion)return;
@@ -1018,6 +1031,35 @@ function tears(x,z){if(!OPT.motion)return;
   for(var i=0;i<4;i++){var sp=emojiSprite("💧",0.45+Math.random()*0.2);
     sp.position.set(x+(Math.random()-0.5)*0.9,2.3,z+(Math.random()-0.5)*0.9);scene.add(sp);
     confs.push({m:sp,vx:(Math.random()-0.5)*0.4,vy:-0.4,vz:(Math.random()-0.5)*0.4,rx:0,rz:0,life:0.9,heart:false});}}
+// ===================== 🧃 Game-Feel / Juice: Ring-Wellen, Zahl-Pop, Zoom-Punch, Farb-Blitz =====================
+var landRings=[]; // flache Boden-Ringe, die vom Zielfeld aufwellen und ausblenden
+function landRing(x,z,hex,big){if(!OPT.motion)return;
+  var r0=big?0.7:0.5,r1=r0+0.35;
+  var m=new THREE.Mesh(new THREE.RingGeometry(r0,r1,30),new THREE.MeshBasicMaterial({color:hex||0xffffff,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));
+  m.rotation.x=-Math.PI/2;m.position.set(x,0.08,z);scene.add(m);
+  landRings.push({m:m,t:0,max:big?3.4:2.2,dur:big?0.62:0.5});}
+function updLandRings(dt){for(var i=landRings.length-1;i>=0;i--){var r=landRings[i];r.t+=dt;
+  var k=Math.min(1,r.t/r.dur),s=1+k*r.max;r.m.scale.set(s,s,1);r.m.material.opacity=0.85*(1-k);
+  if(k>=1){scene.remove(r.m);r.m.geometry.dispose();r.m.material.dispose();landRings.splice(i,1);}}}
+// 🎲 gewürfelte Zahl gross aufpoppen (Scale 1.6→1.0, kurze Freeze) — DOM, überdeckt Board nicht dauerhaft
+var _bnEl=null;
+function bigNum(n,col){
+  if(!_bnEl)_bnEl=document.getElementById("bignum");if(!_bnEl)return;
+  _bnEl.textContent=String(n);_bnEl.style.color=col||"#fffdf6";
+  _bnEl.classList.remove("pop");void _bnEl.offsetWidth; // Reflow -> Animation neu
+  if(OPT.motion){_bnEl.classList.add("pop");}
+  else{_bnEl.style.opacity="1";_bnEl.style.transform="translate(-50%,-50%) scale(1)";setTimeout(function(){_bnEl.style.opacity="0";},450);}
+  beep(523,.05,"square",.05);setTimeout(function(){beep(784,.09,"triangle",.06);},70);}
+// 🎥 kurzer Kamera-Zoom-Punch (zoomt kurz rein, federt zurück) — nur Motion an
+var camPunch=0,markerPop=0;
+function zoomPunch(amt){if(!OPT.motion)return;camPunch=Math.max(camPunch,amt||0.16);}
+// 🔴🟢 Farb-Blitz (Verlust rot / Gewinn grün), sehr kurz, vignettenartig
+var _flEl=null,_flTO=null;
+function colorFlash(rgb,strong){if(!OPT.motion)return;if(!_flEl)_flEl=document.getElementById("flash");if(!_flEl)return;
+  _flEl.style.boxShadow="inset 0 0 200px "+(strong?60:34)+"px rgba("+rgb+","+(strong?.6:.42)+")";
+  _flEl.classList.add("on");clearTimeout(_flTO);_flTO=setTimeout(function(){_flEl.classList.remove("on");},strong?110:80);}
+// Feld-Icon kurz hüpfen lassen (nutzt fieldSprites-Bob im Loop via .hop-Impuls)
+function hopFieldIcon(tile){var f=fields[tile];if(f&&f.spr)f.spr.hop=OPT.motion?1:0;}
 // ===================== Familie: Mini-Figuren laufen hinterher =====================
 var KIDNAMES=["Mio","Lena","Ben","Ida","Noah","Mara"];
 function syncFam(i){
@@ -1107,12 +1149,14 @@ var turnRing=(function(){var r=new THREE.Mesh(new THREE.TorusGeometry(0.85,0.09,
 function updTurnMarker(dt){
   if(!G||!running){turnArrow.visible=false;turnRing.visible=false;return;}
   var p=G.players[G.turn];if(p.done){turnArrow.visible=false;turnRing.visible=false;return;}
+  if(markerPop>0)markerPop-=dt*2.2;var mp=Math.max(0,markerPop); // 🔄 Zug-Übergabe: Marker ploppt kurz auf
+  var pop=OPT.motion?Math.sin(mp*Math.PI)*0.55:0;
   var pw=pawns[G.turn];turnArrow.visible=(G.phase==="idle");
-  turnArrow.material.color.setHex(p.col);
-  turnArrow.position.set(pw.position.x,pw.position.y+4.3+Math.sin(performance.now()*0.005)*0.25,pw.position.z);
+  turnArrow.material.color.setHex(p.col);turnArrow.scale.setScalar(1.5*(1+pop));
+  turnArrow.position.set(pw.position.x,pw.position.y+4.3+Math.sin(performance.now()*0.005)*0.25+pop*1.2,pw.position.z);
   turnRing.visible=(G.phase==="idle");turnRing.material.color.setHex(p.col);
   turnRing.position.set(pw.position.x,pw.position.y+0.09,pw.position.z);
-  var rs=1+0.12*Math.sin(performance.now()*0.005);turnRing.scale.set(rs,rs,1);
+  var rs=1+0.12*Math.sin(performance.now()*0.005)+pop;turnRing.scale.set(rs,rs,1);
   // aktives Feld pulsiert
   for(var i=0;i<fields.length;i++){var d2=fields[i].disc;
     d2.material.emissiveIntensity=(i===p.tile)?0.45+Math.sin(performance.now()*0.006)*0.25:(fields[i].type==="e"?0.1:0.32);}
@@ -1215,7 +1259,8 @@ function updDie(dt){if(!dieAnim||!die3d)return;
   if(t<0.9){ // taumeln + fallen
     die3d.rotation.x+=dt*11;die3d.rotation.y+=dt*8;die3d.rotation.z+=dt*6;
     die3d.position.y=3.4-t*2.4;}
-  else if(t<1.35){if(!dieAnim.thud){dieAnim.thud=1;beep(90,.14,"sine",.09);beep(180,.06,"triangle",.04);} // Aufprall
+  else if(t<1.35){if(!dieAnim.thud){dieAnim.thud=1;beep(90,.14,"sine",.09);beep(180,.06,"triangle",.04); // Aufprall
+      dustPuff(dieAnim.x,dieAnim.z);landRing(dieAnim.x,dieAnim.z,0xfffdf6,false);} // Landing-Impact: Staub + Ring
     var r=DIE_ROT[dieAnim.n],k=Math.min(1,(t-0.9)/0.35);
     die3d.rotation.x+=(r[0]-die3d.rotation.x)*k;die3d.rotation.y+=(r[1]-die3d.rotation.y)*k;die3d.rotation.z+=(r[2]-die3d.rotation.z)*k;
     die3d.position.y=1.0+Math.abs(Math.sin(k*Math.PI))*0.25;}
@@ -1245,11 +1290,15 @@ function rollCore(){
   if(!running||G.phase!=="idle")return;
   var p=G.players[G.turn];if(p.done){nextTurn();return;}
   G.phase="rolling";rollBtn.disabled=true;emote(G.turn,"wurf");
+  // 🎬 Anticipation: Knopf lädt kurz auf (Squash) + steigender Ton, bevor gedreht wird (verzögert NICHT)
+  rollBtn.style.transform="translateX(-50%) scale(1.13)";setTimeout(function(){rollBtn.style.transform="";},150);
+  [0,55,110].forEach(function(d,i){setTimeout(function(){beep(300+i*140,.06,"square",.035);},d);});
   var n=1+((srand()*6)|0);
   // 3D-Würfel rollt neben der Figur (Show — Ergebnis steht fest); reduziert: direkt Ergebnis
   if(OPT.motion&&die3d&&pawns[G.turn])dieShow(n,pawns[G.turn].position.x+2.4,pawns[G.turn].position.z+1.8);
   var bonus=(p.items&&p.items.auto&&n===6)?1:0; // 🚗 Turbo: bei einer 6 fährt das Auto 1 Feld weiter
-  showWheel(n,function(){startMove(n+bonus);
+  showWheel(n,function(){bigNum(n,"#fff2c0"); // 🎲 Ergebnis GROSS aufpoppen (1.6→1.0, kurze Freeze)
+    startMove(n+bonus);
     if(bonus){announce("🚗 TURBO! 6 + 1 Extra-Feld","#ffd166");beep(90,.3,"sawtooth",.06);}});
 }
 // 🎡 Drehrad (wie im Original-Brettspiel): dreht mit Auslauf und landet auf n
@@ -1305,7 +1354,7 @@ function updMove(dt){
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
     if(drv)beep(120+Math.random()*30,.06,"sawtooth",.03); // Motor-Brummen
     else{beep(360+Math.random()*80,.04,"sine",.035); // weiches Tapsen
-      if(OPT.motion){pw.userData.squash=0.55;dustPuff(pw.position.x,pw.position.z);}} // Lande-Squash + Staub-Puff pro Feld
+      if(OPT.motion){pw.userData.squash=0.55;dustPuff(pw.position.x,pw.position.z);footprint(pw.position.x,pw.position.z);}} // Lande-Squash + Staub-Puff + Fussspur pro Feld
     if(p.tile===NFIELDS-1){moveQ=0;}
     if(moveQ<=0){G.phase="landed";pw.userData.stretch=0;pw.userData.squash=1;beep(240,.05,"sine",.04);onLand();return;}
     moveTo=calcNext();if(moveTo<0||G.phase!=="moving")return; // Gabel: Wahl-Karte ist offen
@@ -1347,6 +1396,14 @@ function onLand(){
   var p=G.players[G.turn],f=fields[p.tile];
   discBounce.push({d:f.disc,y0:f.disc.position.y,t:0}); // Feld federt beim Landen
   placePawn(G.turn);
+  // 🎯 Landungs-Impact: Ring-Welle in Feld-Farbe + Feld-Icon hüpft + satter Squash + „plopp"
+  var fcol=(f.disc&&f.disc.material)?f.disc.material.color.getHex():0xffffff;
+  landRing(f.x,f.z,fcol,f.type==="m");hopFieldIcon(p.tile);
+  if(OPT.motion){var pw0=pawns[G.turn];if(pw0)pw0.userData.squash=0.75;}
+  beep(300,.09,"sine",.05);setTimeout(function(){beep(180,.07,"sine",.04);},40); // weicher „plopp"
+  // 😮 Near-Miss-Drama: 1 Feld neben einem Meilenstein gelandet? kurzes „Fast!"-Feedback
+  if(f.type!=="m"){var nb=fields[p.tile+1],pb=fields[p.tile-1];
+    if((nb&&nb.type==="m")||(pb&&pb.type==="m")){showHint("😮 Ooh — nur ein Feld vom Meilenstein entfernt!",1600);beep(500,.06,"triangle",.04);setTimeout(function(){beep(400,.08,"sine",.03);},90);}}
   agePawn(G.turn,true); // 🎂 Alter dem neuen Kapitel anpassen (Geburtstags-Feier bei Stufenwechsel)
   explainField(f.type); // beim ERSTEN Betreten eines Feldtyps: kurze Erklärung
   // Begegnung: anderes Pawn auf demselben Feld -> beide +Freunde+Glück (Koop!)
@@ -1372,7 +1429,7 @@ function nextTurn(){
   updPlayers();updChapter();saveGame();
   if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
   if(!G.players[G.turn].done){beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}
-  if(!G.players[G.turn].done)emote(G.turn,"wink");
+  if(!G.players[G.turn].done){emote(G.turn,"wink");markerPop=1;} // Marker springt zur neuen Figur
 }
 function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
@@ -1844,11 +1901,13 @@ function updateCamera(dt){
   var fx=camT.x+panOff.x,fz=camT.z+panOff.z;
   var swayX=(OPT.motion&&!panning)?Math.sin(performance.now()*0.00035)*1.2:0;
   camera.position.x+=(fx+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*2.6);
-  var camH=16.5*(H>W?1.45:1)*zoomK;
-  camera.position.y+=(camH-camera.position.y)*Math.min(1,dt*3);
-  camera.position.z+=(fz+(15*(H>W?1.3:1))*zoomK-camera.position.z)*Math.min(1,dt*2.6);
+  var pz=1-camPunch; // 🎥 Zoom-Punch: kurz näher heran, federt zurück
+  var camH=16.5*(H>W?1.45:1)*zoomK*pz;
+  camera.position.y+=(camH-camera.position.y)*Math.min(1,dt*(camPunch>0.01?7:3));
+  camera.position.z+=(fz+(15*(H>W?1.3:1))*zoomK*pz-camera.position.z)*Math.min(1,dt*(camPunch>0.01?7:2.6));
   camera.lookAt(fx,0.5,fz-2);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
+  if(camPunch>0.001)camPunch*=0.9;else camPunch=0;
 }
 camera.position.set(fields[0].x,22,fields[0].z+24);camera.lookAt(fields[0].x,0,fields[0].z);
 // ===================== Debug-Hook (nur für Tests; kein Gameplay-Einfluss) =====================
@@ -1869,13 +1928,15 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updNet();
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updNet();
     if(window._lmSwingPivot)window._lmSwingPivot.rotation.z=Math.sin(G.t*1.7)*0.55; // Schaukel schwingt
     if(window._lmClockM){window._lmClockM.rotation.z=-G.t*0.5;window._lmClockH.rotation.z=-G.t*0.5/12;} // Uhr läuft
     if(window._lmBeam)window._lmBeam.rotation.y=G.t*0.9; // Leuchtturm-Strahl rotiert
     if(window._lmWins)for(var wv=0;wv<window._lmWins.length;wv++)window._lmWins[wv].material.emissiveIntensity=0.28+0.14*Math.sin(G.t*2+wv*1.7); // Büro flackert
     updSeason(dt,chapterOf(G.players[G.turn].tile));
-    for(var fsI=0;fsI<fieldSprites.length;fsI++){var fs2=fieldSprites[fsI];fs2.sp.position.y=fs2.y0+Math.sin(G.t*1.6+fs2.b)*0.12;}
+    for(var fsI=0;fsI<fieldSprites.length;fsI++){var fs2=fieldSprites[fsI];
+      var hp=0;if(fs2.hop>0){fs2.hop-=dt*3.2;hp=Math.sin(Math.max(0,fs2.hop)*Math.PI)*0.6;} // Lande-Impuls: Icon springt kurz hoch
+      fs2.sp.position.y=fs2.y0+Math.sin(G.t*1.6+fs2.b)*0.12+hp;}
     if(window._lpTree)window._lpTree.rotation.z=Math.sin(G.t*0.6)*0.02;
     // Felder pulsieren leicht; aktives Feld stärker
     for(var i=0;i<pawns.length;i++){if(G.phase!=="moving"||i!==G.turn){
@@ -2228,8 +2289,9 @@ function showFx(p,fx){var pw=pawns[G.players.indexOf(p)];if(!pw)return;
 function applyFx(p,fx){showFx(p,fx);
   var net=(fx.geld||0)+(fx.glueck||0)+(fx.wissen||0)+(fx.freunde||0);
   var pi=G.players.indexOf(p);
-  if(pi>=0&&!G.players[pi].dead){if(net>2)emote(pi,"jubel");else if(net<-2)emote(pi,"trauer");
-    if((fx.geld||0)>=6&&pawns[pi])moneyRain(pawns[pi].position.x,pawns[pi].position.z,12); // 💰 Geld-Regen
+  if(pi>=0&&!G.players[pi].dead){if(net>2){emote(pi,"jubel");colorFlash("150,255,150");}else if(net<-2){emote(pi,"trauer");colorFlash("255,90,90",net<=-6);}
+    if(net>=6)zoomPunch(0.16); // grosser Gesamtgewinn: Zoom-Punch
+    if((fx.geld||0)>=6&&pawns[pi]){moneyRain(pawns[pi].position.x,pawns[pi].position.z,12);zoomPunch(0.16);} // 💰 Geld-Regen
     if((fx.geld||0)<=-5&&pawns[pi])tears(pawns[pi].position.x,pawns[pi].position.z);}
   p.geld=Math.max(0,p.geld+(fx.geld||0));
   p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
@@ -2349,7 +2411,7 @@ function handleField(p,f){
   var ch=chapterOf(p.tile),acc="#"+("00000"+CHAPTERS[ch].accent.toString(16)).slice(-6);
   if(f.type==="m"){
     if(p.tile===0){endTurnSoon();return;}
-    confetti(fields[p.tile].x,fields[p.tile].z,CHAPTERS[ch].accent);jingle();
+    confetti(fields[p.tile].x,fields[p.tile].z,CHAPTERS[ch].accent);jingle();zoomPunch(0.2); // ⭐ Meilenstein: Zoom-Punch
     if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
     if(p.items&&p.items.haus){p.glueck+=2;floatStat("+2 ❤️ 🏠","#ff9ad9",fields[p.tile].x,fields[p.tile].z,500);} // Eigenheim-Bonus
     var S=isShort(); // ⚡ 4 Kapitel: wichtigste Meilenstein-Karten vorziehen (Beruf→Kap.1, Auto→Kap.2, Hochzeit/Kinder/Haus→Kap.3)
@@ -2368,16 +2430,16 @@ function handleField(p,f){
       [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
     camShake=0.15;return;}
   if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");
-    emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,9);
-    if(g>=8)moneyRain(f.x,f.z,14); // 💰 Geld-Regen bei grossen Gewinnen
+    floatStat("+"+g+" 💰","#ffd166",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,9);colorFlash("150,255,150");
+    if(g>=8){moneyRain(f.x,f.z,14);zoomPunch(0.17);jingle();} // 💰 grosser Gewinn: Regen + Zoom-Punch + Fanfare
     beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
   if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");
-    emote(G.turn,"trauer");tears(f.x,f.z); // Figur sackt zusammen + 💧
+    floatStat("−"+c2+" 💰","#ff8a8a",f.x,f.z);emote(G.turn,"trauer");tears(f.x,f.z);colorFlash("255,90,90",c2>=5); // Figur sackt zusammen + 💧 + roter Blitz
     beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
-  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
-  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
+  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");floatStat("+2 ❤️","#ff9ad9",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
+  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");floatStat("+2 🧠","#7db8ff",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
   if(f.type==="f"){var fb=2+((p.fam&&p.fam.dog&&srand()<0.5)?1:0);p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
-    announce("+"+fb+" 👥"+(fb>2?" (🐕 wedelt!)":""),"#8affc0");emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,8);
+    announce("+"+fb+" 👥"+(fb>2?" (🐕 wedelt!)":""),"#8affc0");floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,8);
     beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
   if(f.type==="q"){quizCard(p);return;} // ❓ Quiz-Karte
   if(f.type==="x"){tauschCard(p);return;} // 🔄 Tausch-Event
