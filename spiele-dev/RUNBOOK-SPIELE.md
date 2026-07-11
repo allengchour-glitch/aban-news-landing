@@ -93,19 +93,51 @@ Smoke+Shot-Verifikation pro Änderung. Fortschritt hier abhaken (✅), damit Ses
 - [ ] viewport-fit=cover + safe-area-insets, Buttons ≥44px
 
 ### Phase 3 — Online Koop/Multiplayer
-- Architektur-Entscheid (dokumentiert): **WebRTC-P2P** (DataChannel) + Signaling über eine
-  Cloudflare Pages Function mit KV-Polling (`/api/mp-signal`, Raum-Codes 4-stellig) — kein
-  eigener Server, gratis, DSGVO-freundlich (P2P nach Handshake). Durable Objects erst prüfen
-  wenn KV-Polling-Latenz (~1-2s Handshake) stört; im Spiel selbst ist danach alles P2P.
-- [ ] /api/mp-signal (KV: offer/answer/ice je Raum, TTL 5 Min) + js/mp.js (Host/Join-API)
-- [ ] Pilot: **neon-duo** (bereits 2-Spieler-Design!) → Online-Koop mit Raum-Code
+- **ARCHITEKTUR-UPDATE (2026-07-11, umgesetzt):** Statt KV-Signaling (blockierte auf User-Klick
+  fürs KV-Binding) → **PeerJS-Cloud-Signaling als Default**: `js/vendor/peerjs.min.js` (vendored)
+  + gratis Cloud-Broker `0.peerjs.com` (kein eigener Server, kein API-Key, kein User-Klick).
+  Nach dem Handshake läuft ALLES P2P über WebRTC-DataChannels (DSGVO-freundlich).
+  `/api/mp-signal` (KV) bleibt als späterer Fallback/Upgrade notiert, falls 0.peerjs.com je
+  wegfällt — mp.js ist dafür Engine-austauschbar gebaut.
+- [x] **js/mp.js** (wiederverwendbar für alle Spiele): `MP.host(gameId)` → 4-Zeichen-Raum-Code
+      (A–Z ohne I/O, sofort verfügbar, PeerJS-ID `aban-<game>-<CODE>`, Kollision → neu würfeln),
+      `MP.join(gameId, code)` mit 15s-Timeout + klarer Fehlermeldung. Session-API: `send`
+      (reliable, Events), `sendFast` (2. unreliable DataChannel für Positions-Spam, Fallback auf
+      reliable), `onMessage`, `onStatus` ("waiting"/"connected"/"lost"/"closed"), `close()`.
+      Robustheit: 1× Reconnect bei Abriss (Host wartet 10s auf Wieder-Andocken, Gast verbindet
+      1× neu), **Heartbeat-Watchdog** (Stille >6s bei laufendem Traffic = Abriss — nötig, weil
+      DataChannel-close bei hartem Tab-Kill erst nach langem ICE-Timeout feuert).
+      Test-Engine: `?mp=local` in der URL = echtes RTCPeerConnection, Signaling über
+      BroadcastChannel (für Sandbox ohne wss-Ausgang; DataChannel-Logik identisch/echt).
+- [x] **Pilot neon-duo LIVE:** Startscreen-Modus „🌐 Online spielen" → Raum erstellen (Code
+      GROSS + Copy-Button + navigator.share + `?join=CODE`-Link mit Auto-Join) / Raum beitreten
+      (4 grosse Buchstaben-Felder ≥44px, Paste-Support, Auto-Submit). Netzcode host-autoritativ:
+      Host simuliert alles (Gegner/Boss/HP/Revive/Band-Schaden), sendet **12 Snapshots/s**
+      (unreliable, kompakt: Positionen+HP+down/rev+Gegnerliste per eid) + Events reliable
+      (announce/hint/wave/nova/attack-fx/boss-warn/gameover). Client steuert ✦ Funke
+      client-autoritativ (**20 Positions-Updates/s**), interpoliert Klinge/Gegner/Boss per lerp
+      (dt*10). Ping-Anzeige im HUD (1s-Takt, gelb >80ms, rot >150ms). Disconnect → Overlay
+      „Verbindung verloren" mit **„Weiter mit KI-Partner"** (Host: nahtlos im selben Run;
+      Client: frischer Solo-Run) + „Menü". Refactor-Muster im Spiel: `simFrame` (Host/lokal) /
+      `clientFrame` (Interpolation) / `visFrame` (geteilte Optik) + `buildEnemyG`/`buildBossG`
+      (Mesh-Bau geteilt Host-Sim ↔ Client-Spiegel) + Debug-Griff `window.__nd.s()` für Tests.
 - [ ] Danach ausrollen: neon-racer (Ghost-Race), neon-survivor (Koop-Wellen), wortbruecke (Duell)
-- [ ] ⚠️ KV-Namespace-Binding im Pages-Projekt = User-Klick im Cloudflare-Dashboard (wie D1)!
-      Ohne Binding: mp-signal liefert 503, Spiele bleiben Solo-spielbar (sauberer Fallback Pflicht).
+- ⚠️ **Sandbox-Fakten:** wss zu 0.peerjs.com geht im Sandbox-Chromium NICHT raus (Proxy) —
+  curl über HTTPS_PROXY erreicht die Cloud aber (Prod-Browser ok). Für Tests IMMER `?mp=local`.
+  SwiftShader-WebGL macht 2 gleichzeitige Game-Pages ~5-10fps → Spielzeit läuft in Zeitlupe
+  (dt-Clamp) und In-Game-Ping wirkt aufgebläht (Main-Thread render-busy). Reine
+  DataChannel-RTT gemessen: **0.5–1.3ms** (median 0.9ms, Loopback).
 
-### Verifikation Multiplayer (ohne 2 Menschen)
-Playwright: 2 Browser-Kontexte, Kontext A hostet (Raum-Code auslesen), Kontext B joint,
-Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
+### Verifikation Multiplayer (ohne 2 Menschen) — REZEPT (funktioniert, 2026-07-11)
+Playwright, EIN Browser, 2 Pages im SELBEN Context (BroadcastChannel!), URL mit `?mp=local`:
+Page A `#startOnline`→`#mpMakeBtn`→Code aus `#mpCode`; Page B `#mpJoinBtn`→4×`.codeIn` tippen
+(Auto-Join). Beide `window.__nd.s().running` abwarten, dann: Gegner-Spiegel (`enemies` Host ==
+`mirrors` Client), Bewegungs-Sync beide Richtungen (Taste halten → Positions-Diff im Debug-Griff),
+`#ping`-Text, Page B schliessen → `#netLost`-Overlay + `#netAiBtn` → KI übernimmt.
+Launch-Args gegen Hintergrund-Throttling: `--disable-background-timer-throttling
+--disable-backgrounding-occluded-windows --disable-renderer-backgrounding`. Viewport klein
+halten (640×440), Wartezeiten großzügig (SwiftShader-Zeitlupe). Fertiges Skript-Muster:
+Scratchpad `mp_test.cjs` der Koop-Session (Server-Port 8794).
 
 ### Phase 2b — Blender-Charakter (User 2026-07-10: „mit Blender, Charakter muss einzigartig sein")
 **Blender 4.0.2 ist im Container installiert** (`/usr/bin/blender`, headless nutzbar!). Auftrag:
@@ -146,7 +178,7 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       min. 16px mobil, Symbole deutlicher; gilt als Muster danach für ALLE Spiele (Design-Regel!)
 - [ ] **Boden verbessern** (User) — Dorf-/Weltboden: Farb-/Helligkeitsvariation, Pfade, dezente
       Glow-Flecken statt flacher dunkler Platte (an Vision-Befund „Terrain beleben" andocken)
-- [ ] „Profi für online": Phase 3 (WebRTC-Koop) beginnt nach Phase-1/2-Abschluss — Pilot neon-duo
+- [x] „Profi für online": Phase 3 (WebRTC-Koop) — Pilot neon-duo LIVE (2026-07-11, s. Phase-3-Block)
 
 ### User-Feedback 2026-07-10 (Runde 2 — „geiler Skill, mach besser als andere Spiele")
 - [ ] **Charaktere wie Menschen + Bewegung**: menschenähnliche Low-Poly-Figuren (Kopf/Rumpf/Arme/Beine)
@@ -182,6 +214,15 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Wisp=Wald, Panther=Pfade, Golem=Berge, Guardian=Verlies-Boss; prozedurale Anims für
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
+
+### User-Feedback 2026-07-11 (Runde 5 — „attacken mehr polish, noch mehr attacken")
+- [ ] **Mehr Attacken** (Meshy-Bibliothek auf Rigging-Task 019f4e41-…, ~3 Cr/Clip):
+      3-Hit-Kombo (Space-Kette mit Timing-Fenster: attack→attack2→attack3), Charge-Attacke
+      (Space halten → Glow-Aufladung → Burst), Dash-Attacke (Angriff während Roll),
+      → models/hero_meshy_combat2.glb (alle Clips in einer Datei, Root-Motion ankern!).
+- [ ] **Attacken-Polish** (Game-Feel): Hit-Stop 60–90ms bei Treffern, Einschlag-Partikel
+      + Treffer-Blitz auf Gegnern, Schadenszahlen-Pop, kalibrierter Screen-Shake,
+      Knockback spürbar, Swing-Trail am Helden.
 
 ### User-Feedback 2026-07-10 (Runde 4 — „level ups viele gegner, cooler skills etc")
 - [ ] **Pass 4 Gameplay-Tiefe** (nach Pass 3, wieder nur neon-realm.html):

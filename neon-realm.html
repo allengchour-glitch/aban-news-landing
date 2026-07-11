@@ -447,6 +447,7 @@ function seededRnd(s){return function(){s=(s*9301+49297)%233280;return s/233280;
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
 // -- Dorf: Detail-Häuser (Blender-GLBs) + Laternen + Brunnen
 var village=new THREE.Group();scene.add(village);
+var wellMesh=null; // Brunnen-Mesh (Puls in der Hauptschleife)
 (function(){
  // building_*.glb: Ursprung = Unterkante/Bodenmitte, Fenster-Emissive eingebacken.
  // Höhen final auf Spielgrösse (Fachwerk 7.0 / Werkstatt 6.5 / Turm 8.5, NPCs ~2.1).
@@ -467,7 +468,11 @@ var village=new THREE.Group();scene.add(village);
    },undefined,function(){byType[name].forEach(function(h){boxHouse(h[0],h[1],h[2]);});});
   });
  }else hs.forEach(function(h){boxHouse(h[0],h[1],h[2]);});
- var well=new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.8,1.2,8),mat(0x1a2150,0x5ef2ff,0.5));well.position.set(0,0.6,0);well.castShadow=true;village.add(well);
+ // Brunnen: vorher mat(0x1a2150,0x5ef2ff,0.5) — der helle Cyan-Emissive überstrahlte bei Tageslicht
+ // alles und las sich auf dem User-Handy als „unbeleuchteter weisser Felsen" mitten im Dorf.
+ // Jetzt: dunkler Stein + dezenter Zonen-Cyan-Glow mit Puls (Anker bleibt, wirkt aber wie ein Brunnen).
+ wellMesh=new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.8,1.2,8),mat(0x141a3e,0x2a7a90,0.32));
+ var well=wellMesh;well.position.set(0,0.6,0);well.castShadow=true;well.receiveShadow=true;village.add(well);
  var wellGlow=new THREE.PointLight(0x5ef2ff,1.2,24);wellGlow.position.set(0,3,0);village.add(wellGlow);
  for(var li=0;li<6;li++){var la=li/6*6.283,lx=Math.cos(la)*20,lz=Math.sin(la)*20;
   var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.12,3.6,5),mat(0x141a3e,0x2a3585,0.4));pole.position.set(lx,1.8,lz);village.add(pole);
@@ -1720,12 +1725,17 @@ function updPrompt(txt){
 var camShake=0;
 function updateCamera(dt){
   var px=player.position.x,pz=player.position.z,py=player.position.y;
+  // Hochformat-Korrektur (User-Handy 1440x2795, aspect ~0.5): fester Voraus-Offset (lookAt pz-8)
+  // drückt den Spieler auf ~72% Bildhöhe → klebt unterm Touch-Joystick. Bei aspect<0.7 den
+  // Voraus-Offset stetig reduzieren + Kamera leicht zurück, bis der Spieler bei ~52-58% steht.
+  // nf ist eine stetige Funktion des Aspekts (keine Sprünge); Desktop (aspect>=0.7) bleibt exakt gleich.
+  var nf=Math.max(0,Math.min(1,(0.7-camera.aspect)/0.17));
   // Etwas flacherer Kamera-Pitch (~21° statt ~41°), damit der Horizont-Bergring sichtbar ist
-  var tx=px+(Math.random()-0.5)*camShake*2,ty=11.5+py*0.8+(Math.random()-0.5)*camShake*2,tz=pz+15;
+  var tx=px+(Math.random()-0.5)*camShake*2,ty=11.5+py*0.8+(Math.random()-0.5)*camShake*2,tz=pz+15+nf*2;
   camera.position.x+=(tx-camera.position.x)*Math.min(1,dt*5);
   camera.position.y+=(ty-camera.position.y)*Math.min(1,dt*5);
   camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*5);
-  camera.lookAt(px,py+2.2,pz-8);
+  camera.lookAt(px,py+2.2-nf*1.0,pz-8+nf*7);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
 }
 camera.position.set(0,17,30);camera.lookAt(0,1.5,10);
@@ -1811,6 +1821,8 @@ function loop(now){
   updWater(G?G.t:0);grassUniforms.uTime.value=(G?G.t:performance.now()*0.001);
   updBoids(dt);
   if(!paused)for(var _ri=0;_ri<rigs.length;_ri++)rigs[_ri].mixer.update(dt); // Skelett-Animationen (Held+NPCs)
+  // Brunnen: sanfter Cyan-Puls (Dorfmitte-Anker, statt des alten flachen Weiss)
+  if(wellMesh)wellMesh.material.emissiveIntensity=0.32+Math.sin(now*0.002)*0.1;
   // Obelisk-Ringe drehen
   for(var i=0;i<obelisks.length;i++){obelisks[i].ring.rotation.z+=dt*(obelisks[i].on?2.2:0.4);
     obelisks[i].m.material.emissiveIntensity=obelisks[i].on?1.2+Math.sin(now*0.004)*0.3:0.35;}
