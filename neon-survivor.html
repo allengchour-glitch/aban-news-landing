@@ -293,12 +293,14 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key=
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var touch=null;
 addEventListener("touchstart",function(e){if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
+// Touch-Buttons (⚡/⏸) NUR im Spiel zeigen — im Menü verdecken sie sonst Text + Werkstatt-Buttons
+var COARSE=window.matchMedia&&window.matchMedia("(pointer:coarse)").matches;
+function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abBtn"),pb=document.getElementById("pauseBtn");
+  if(ab)ab.style.display=on?"block":"none";if(pb){pb.style.display=on?"block":"none";pb.textContent="⏸";}}
 (function(){var ab=document.getElementById("abBtn");if(!ab)return;
-  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)ab.style.display="block";
   ab.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();if(running&&!paused)castAbility();},{passive:false});
   ab.addEventListener("click",function(e){e.stopPropagation();if(running&&!paused)castAbility();});})();
 (function(){var pb=document.getElementById("pauseBtn");if(!pb)return;
-  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)pb.style.display="block";
   function tgl(e){e.preventDefault&&e.preventDefault();e.stopPropagation();
     if(running&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}}
   pb.addEventListener("touchstart",tgl,{passive:false});pb.addEventListener("click",tgl);})();
@@ -503,17 +505,17 @@ function resizeBloom(){rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Ma
 
 var shake=0,hitstop=0,running=false,last=performance.now(),hurt=0,hurtEl=document.getElementById("hurt");
 function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
-  hurt=0;hurtEl.style.opacity=0;
+  hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);
   var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");startMusic();}
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";}
-function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
+function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);renderShop();
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("over").classList.remove("hide");}
-function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
+function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);}
