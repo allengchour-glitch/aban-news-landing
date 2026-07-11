@@ -714,7 +714,7 @@ function updFx(dt){for(var i=fxs.length-1;i>=0;i--){var f=fxs[i];f.life-=dt;
 // Statische (slime/panther) → 1x laden + clone(true); gerigte (wisp/golem/guardian) → pro Instanz
 // GLTFLoader.parse aus demselben ArrayBuffer (SkinnedMesh-clone-Falle in r128, Muster NPC-Loader).
 var MON={0:{key:"slime",sc:2.3},1:{key:"wisp",sc:2.0},2:{key:"golem",sc:1.15},3:{key:"panther",sc:1.4}}; // Skala ≈ alte Okta-Grösse
-var MONEMIS={golem:0.55,guardian:0.7}; // Meshy-Emissive dämpfen (Basecolor=Emissive-Textur → sonst Bloom-Blowout), Rest 1.0
+var MONEMIS={golem:0.8,guardian:0.9}; // Meshy-Emissive leicht dämpfen (Basecolor=Emissive-Textur → sonst Bloom-Blowout), Rest 1.0
 var monStatic={},monBuf={};
 (function(){
   if(!THREE.GLTFLoader)return;
