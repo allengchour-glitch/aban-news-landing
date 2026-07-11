@@ -223,6 +223,18 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Mini-Bestenliste (Top 3 lokal). Save-kompatibel mit ns_best. Optional: freigeschaltete
       Startvorteile nach X Runden (klein, nicht pay2win).
 
+### 🌸 ANIME-CHARAKTERE für ALLE Spiele (User 2026-07-11 „anime charakter", Wahl: alle Spiele-Charaktere)
+Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgerollt.
+- **Stil-Rezept (three.js r128):** MeshToonMaterial + Gradient-Map (2-3 Bänder) für Cel-Shading;
+  Outline via Inverted-Hull (BackSide-Klon, leicht skaliert, dunkel) pro Figur; GROSSE Anime-Augen
+  (grosse Iris + Glanzlichter, Augenbrauen/Ausdruck); stilisiertes Anime-Haar (spitze/fließende Strähnen).
+  Bloom-bewusst. Reusable Helfer (gradientTex/toonMat/addOutline) — einmal bauen, überall nutzen.
+- [ ] **Phase 1:** neon-jump + lebenspfad (prozedurale Figuren, Charakter-Picker) — Anime-Umbau,
+      Auswahl/Varianten/Altern erhalten.
+- [ ] **Phase 2:** neon-wildnis + neon-realm (GLB-Helden → Materialien auf Toon tauschen + Outline;
+      ggf. Anime-Köpfe ergänzen), neon-survivor (Nova), neon-duo (Klinge/Funke).
+- [ ] **Phase 3:** Rest (abyss/colossus/racer-Fahrer) wo Charaktere sichtbar.
+
 ### Lebenspfad: viel freischalten + viele Features (User 2026-07-11) — nächster Lebenspfad-Pass (nach Online-Fix-Agent, gleiche Datei)
 - [ ] **Freischalt-System**: über mehrere Spiele hinweg Dinge freischalten (localStorage-Meta) —
       neue Charakter-Looks/Accessoires/Outfits, neue Deko/Bretter-Themes, Bonus-Ereignisse,
