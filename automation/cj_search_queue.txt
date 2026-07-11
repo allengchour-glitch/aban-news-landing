@@ -241,18 +241,18 @@
 #done search:yoga mat
 #done search:jump rope speed
 #done search:gym gloves
-search:water bottle sport
-search:booty bands
-search:ab roller wheel
-search:massage gun mini
-search:posture corrector
-search:oversized sweater women
-search:knit cardigan
-search:satin slip dress
-search:wide leg pants
-search:bodysuit women
-search:crop top ribbed
-search:pleated skirt
+#done search:water bottle sport
+#done search:booty bands
+#done search:ab roller wheel
+#done search:massage gun mini
+#done search:posture corrector
+#done search:oversized sweater women
+#done search:knit cardigan
+#done search:satin slip dress
+#done search:wide leg pants
+#done search:bodysuit women
+#done search:crop top ribbed
+#done search:pleated skirt
 search:denim jacket oversized
 search:trench coat women
 search:blazer women
