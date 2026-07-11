@@ -201,7 +201,7 @@ function buildGround(){
   var tmpA=new THREE.Color(),tmpB=new THREE.Color();
   for(var i=0;i<pos.count;i++){
     var x=pos.getX(i),z=pos.getZ(i);
-    var h=Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55;
+    var h=Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55+Math.sin(x*0.019-z*0.017)*1.6;
     pos.setY(i,h);
     // Biom-Rauschen kleinteiliger -> mehr Abwechslung im Blickfeld (0..1)
     var bn=(Math.sin(x*0.009)*Math.cos(z*0.008)+Math.sin(x*0.016+z*0.013)*0.5+1.5)/3;
@@ -223,7 +223,7 @@ function buildGround(){
   var m=new THREE.MeshLambertMaterial({vertexColors:true});
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
-function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55;}
+function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55+Math.sin(x*0.019-z*0.017)*1.6;}
 
 // ---------- Assets laden (nature_pack) ----------
 var treeProtos=[],bushProto=null,natureReady=false;
@@ -291,14 +291,45 @@ function placeResources(){
   (function(){
     var o=new THREE.Object3D(),cc=new THREE.Color();
     function spot(){var a=rnd()*6.28,rd=6+rnd()*half;return [Math.cos(a)*rd,Math.sin(a)*rd];}
-    var FL=Math.round(260*VF),FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c,0xff5c7a];
+    var FL=Math.round(360*VF),FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c,0xff5c7a];
     var flowers=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.15,0),new THREE.MeshBasicMaterial(),FL); // unlit -> leuchtet auch nachts
     for(var i=0;i<FL;i++){var p=spot();o.position.set(p[0],groundH(p[0],p[1])+0.2,p[1]);o.scale.setScalar(0.6+rnd()*0.9);o.rotation.set(rnd()*6.28,rnd()*6.28,0);o.updateMatrix();flowers.setMatrixAt(i,o.matrix);cc.setHex(FLC[(rnd()*FLC.length)|0]);flowers.setColorAt(i,cc);}
     flowers.instanceColor.needsUpdate=true;scene.add(flowers);
-    var GR=Math.round(340*VF),GC=[0x3fa060,0x4fbf6e,0x2e8a50,0x6ac07a,0x9ad46a];
+    var GR=Math.round(470*VF),GC=[0x3fa060,0x4fbf6e,0x2e8a50,0x6ac07a,0x9ad46a];
     var grass=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.6,4),new THREE.MeshLambertMaterial(),GR);grass.castShadow=false;grass.receiveShadow=true;
     for(var j=0;j<GR;j++){var q=spot();o.position.set(q[0],groundH(q[0],q[1])+0.28,q[1]);o.scale.set(1,0.7+rnd()*0.9,1);o.rotation.set((rnd()-.5)*0.3,rnd()*6.28,(rnd()-.5)*0.3);o.updateMatrix();grass.setMatrixAt(j,o.matrix);cc.setHex(GC[(rnd()*GC.length)|0]);grass.setColorAt(j,cc);}
     grass.instanceColor.needsUpdate=true;scene.add(grass);
+  })();
+  // 💧 Leuchtende Teiche in Senken + heller Uferring + Schilf -> lebendige Landschaft
+  window._wildPonds=[];
+  (function(){
+    var N=Math.round(11*VF);
+    for(var i=0;i<N;i++){
+      var a=rnd()*6.28,rd=22+rnd()*(half-22),x=Math.cos(a)*rd,z=Math.sin(a)*rd;
+      if(Math.abs(x)<12&&Math.abs(z)<12){i--;continue;}
+      var r=4.5+rnd()*6.5;
+      var wg=new THREE.CircleGeometry(r,26);wg.rotateX(-Math.PI/2);
+      var wm=new THREE.MeshStandardMaterial({color:0x1e6f92,emissive:0x0b3f60,emissiveIntensity:0.5,transparent:true,opacity:0.82,roughness:0.12,metalness:0.6});
+      var gy=Math.min(groundH(x,z),groundH(x+r,z),groundH(x-r,z),groundH(x,z+r),groundH(x,z-r))-0.15;
+      var pond=new THREE.Mesh(wg,wm);pond.position.set(x,gy+0.06,z);scene.add(pond);
+      var ring=new THREE.Mesh(new THREE.RingGeometry(r,r+0.8,26),new THREE.MeshBasicMaterial({color:0x4fe0e8,transparent:true,opacity:0.45,side:THREE.DoubleSide}));
+      ring.rotation.x=-Math.PI/2;ring.position.set(x,gy+0.09,z);scene.add(ring);
+      for(var re=0;re<4;re++){var ra=rnd()*6.28,rx=x+Math.cos(ra)*(r+0.3),rz=z+Math.sin(ra)*(r+0.3);
+        var reed=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.9,4),new THREE.MeshLambertMaterial({color:0x2e8a50}));
+        reed.position.set(rx,groundH(rx,rz)+0.42,rz);reed.rotation.z=(rnd()-.5)*0.3;scene.add(reed);}
+      window._wildPonds.push({m:pond,ph:rnd()*6.28});
+    }
+  })();
+  // 🍄 Leucht-Pilz-Cluster fuer Details/Farbe
+  (function(){
+    var N=Math.round(34*VF),caps=[0xff5c8a,0x7de3ff,0xffd166,0xc98bff,0x6affc0];
+    for(var i=0;i<N;i++){var a=rnd()*6.28,rd=12+rnd()*half,cx=Math.cos(a)*rd,cz=Math.sin(a)*rd,cl=1+((rnd()*3)|0);
+      for(var j=0;j<cl;j++){var ox=cx+(rnd()-.5)*2.2,oz=cz+(rnd()-.5)*2.2;
+        var stem=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.08,0.4,5),new THREE.MeshLambertMaterial({color:0xe8e0d0}));
+        var cap=new THREE.Mesh(new THREE.SphereGeometry(0.22,9,6,0,6.28,0,1.8),new THREE.MeshBasicMaterial({color:caps[(rnd()*caps.length)|0]}));
+        cap.position.y=0.24;cap.scale.y=0.7;stem.add(cap);
+        stem.position.set(ox,groundH(ox,oz)+0.2,oz);stem.scale.setScalar(0.7+rnd()*0.8);scene.add(stem);}
+    }
   })();
 }
 
@@ -490,6 +521,9 @@ function updAmbient(dt){
   for(var w=0;w<fogWisps.length;w++){var fw=fogWisps[w];fw.m.position.x+=fw.vx*dt;fw.m.position.z+=fw.vz*dt;fw.m.rotation.z+=dt*0.02;
     if(Math.hypot(fw.m.position.x-player.position.x,fw.m.position.z-player.position.z)>150){fw.m.position.set(player.position.x+(rnd()-0.5)*120,fw.m.position.y,player.position.z+(rnd()-0.5)*120);}
     fw.m.material.opacity+=(fogOp-fw.m.material.opacity)*Math.min(1,dt);}
+  // 💧 Teich-Schimmer
+  if(window._wildPonds)for(var p=0;p<window._wildPonds.length;p++){var pd=window._wildPonds[p];pd.ph+=dt*1.5;
+    pd.m.material.emissiveIntensity=0.42+Math.sin(pd.ph)*0.16;pd.m.material.opacity=0.76+Math.sin(pd.ph*0.7)*0.09;}
 }
 
 // ---------- Fund-Objekte: Truhen & Ruinen ----------
