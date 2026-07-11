@@ -95,7 +95,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   #card{padding:16px}
   #card h3{font-size:1.05rem}
 }
-#lpvig{position:fixed;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at 50% 42%,transparent 60%,rgba(40,70,110,.16) 100%)}
+#lpvig{position:fixed;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at 50% 44%,transparent 40%,rgba(26,44,74,.22) 74%,rgba(12,24,46,.44) 100%)}
 #chatBox{position:fixed;left:10px;bottom:96px;z-index:40;width:min(290px,72vw);background:rgba(255,253,246,.96);border:2px solid #ffcf3a;border-radius:14px;display:none;flex-direction:column;box-shadow:0 10px 30px rgba(60,40,10,.3)}
 #chatMsgs{max-height:180px;overflow-y:auto;padding:8px 10px;font-size:.82rem;line-height:1.45}
 #chatMsgs b{color:#c05a2a}
@@ -324,8 +324,8 @@ function chapterOf(tile){var bf=fields&&fields[tile]; // Neben-Routen-Felder ken
   if(bf&&bf.mchap!==undefined)return bf.mchap;
   return Math.min(CHAPTERS.length-1,Math.floor(tile/FIELDS_PER));}
 // ===================== Licht =====================
-var hemi=new THREE.HemisphereLight(0xffffff,0x5a7a4a,0.72);scene.add(hemi);
-var sunL=new THREE.DirectionalLight(0xfff2d8,0.95);sunL.position.set(30,60,20);scene.add(sunL);
+var hemi=new THREE.HemisphereLight(0xd6e6ff,0x3a5238,0.60);scene.add(hemi);
+var sunL=new THREE.DirectionalLight(0xfff2d8,1.08);sunL.position.set(30,60,20);scene.add(sunL);
 sunL.castShadow=true;sunL.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);sunL.shadow.bias=-0.0008;
 sunL.shadow.camera.near=1;sunL.shadow.camera.far=260;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
 // ===================== Bunte Landschaft: Terrain mit Kapitel-Farbverlauf =====================
