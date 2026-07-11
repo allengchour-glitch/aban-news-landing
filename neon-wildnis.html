@@ -38,7 +38,7 @@ canvas{display:block}
 #nexusProg .npt{font-size:.78rem;color:#d9c6ff;margin-top:3px;font-weight:700}
 #kprompt{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.85);border:1px solid rgba(120,255,200,.4);border-radius:12px;padding:9px 16px;font-size:1.05rem;font-weight:800;opacity:0;transition:opacity .2s;white-space:nowrap}
 #kprompt .key{display:inline-block;background:#1a2140;border:1px solid #6affc0;border-radius:6px;padding:1px 8px;margin-right:6px;color:#6affc0}
-#announce{position:absolute;top:30%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.04em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none;padding:0 12px}
+#announce{position:absolute;top:30%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.04em;text-shadow:0 2px 3px #000,0 0 6px #000,0 4px 22px #000,0 0 30px rgba(125,227,255,.5);opacity:0;transition:opacity .4s;color:#eafcff;pointer-events:none;padding:0 12px}
 #toast{position:absolute;bottom:200px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.9);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:8px 16px;font-weight:700;opacity:0;transition:opacity .3s;max-width:88vw;text-align:center}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
@@ -170,9 +170,9 @@ renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 if(renderer.outputEncoding!==undefined)renderer.outputEncoding=THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 var scene=new THREE.Scene();
-var SKY_DAY=new THREE.Color(0x2a4a7a),SKY_NIGHT=new THREE.Color(0x0a1030);
+var SKY_DAY=new THREE.Color(0x3f68a4),SKY_NIGHT=new THREE.Color(0x0a1030);
 scene.background=SKY_DAY.clone();
-scene.fog=new THREE.Fog(SKY_DAY.getHex(),60,200);
+scene.fog=new THREE.Fog(SKY_DAY.getHex(),100,340);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xbfd4ff,0x24304f,0.7);scene.add(hemi);
@@ -931,12 +931,12 @@ function updDayNight(dt){
   var vig=document.getElementById("nightVig");
   if(isNight){t=0.08;var lbl="🌙 Tag "+day+" · Nacht ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
     if(vig)vig.style.opacity=(0.55+Math.sin(perfNow*0.004)*0.12).toFixed(2);}
-  else{t=0.35+Math.sin(f*Math.PI)*0.65;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph;
+  else{t=0.62+Math.sin(f*Math.PI)*0.38;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph;
     // Dämmerungs-Warnung kurz vor der Nacht
     if(vig)vig.style.opacity=(f>0.85?(f-0.85)/0.15*0.3:0).toFixed(2);
     if(f>0.9&&!duskWarned){duskWarned=true;announce("🌇 Die Dunkelheit naht — sichere deine Basis!");}
     if(f<0.5)duskWarned=false;}
-  sun.intensity=0.15+t*1.0;hemi.intensity=0.25+t*0.6;
+  sun.intensity=0.2+t*1.4;hemi.intensity=0.22+t*0.5;
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   scene.fog.color.copy(scene.background);
   var ang=f*Math.PI;sun.position.set(Math.cos(ang)*60,Math.max(8,Math.sin(isNight?0.2:f*Math.PI)*80),Math.sin(ang)*40);
