@@ -277,4 +277,4 @@
 #done search:beach bag straw
 #done search:flip flops women
 #done search:sarong wrap
-search:sun hat foldable
+#done search:sun hat foldable
