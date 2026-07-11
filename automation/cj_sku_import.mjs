@@ -89,7 +89,8 @@ for (const item of ITEMS) {
     // Tiefer paginieren (CJPAGES, Default 5): Top-Treffer sind bei 10k+-Ledger längst importiert
     const PAGES = parseInt(process.env.CJPAGES || '5', 10);
     for (let pg = 1; pg <= PAGES && !pid; pg++) {
-      const j = await cj(`/product/list?pageSize=10&pageNum=${pg}&productNameEn=${encodeURIComponent(val)}`); await sleep(1300);
+      const WH = (process.env.WH || '').trim(); // z.B. WH=DE → nur EU-Lager (Schnellversand in die CH)
+      const j = await cj(`/product/list?pageSize=10&pageNum=${pg}&productNameEn=${encodeURIComponent(val)}${WH ? `&countryCode=${WH}` : ''}`); await sleep(1300);
       const list = j.data?.list || [];
       if (!list.length) break;
       // Relevanz-Wache: CJ-Textsuche streut (Küchenlöffel bei «selfie stick»!) —
@@ -134,6 +135,7 @@ for (const item of ITEMS) {
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle', status: 'ACTIVE',
     tags: [...new Set(['trend', 'viral', 'video-hit', 'cj-real', 'dropship', 'neu',
+      ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])],
     descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
