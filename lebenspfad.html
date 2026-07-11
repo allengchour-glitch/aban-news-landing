@@ -2854,13 +2854,17 @@ document.getElementById("netJoinBtn").onclick=function(){
   var opened=false;
   try{NET.peer=new Peer(undefined,{debug:0});}catch(e){joinReset("Online-Modul-Fehler — Seite neu laden.");return;}
   clearTimeout(NET._tmo);
-  NET._tmo=setTimeout(function(){if(opened)return; // 15s-Timeout: nie stilles Nichts
-    joinReset("⏱️ Raum "+code+" antwortet nicht — Code prüfen, dann nochmal versuchen.");},15000);
+  NET._tmo=setTimeout(function(){if(opened)return; // Gesamt-Timeout (deckt alle Wiederhol-Versuche ab)
+    joinReset("⏱️ Raum "+code+" antwortet nicht — Code prüfen, dann nochmal versuchen.");},28000);
   NET.peer.on("disconnected",function(){try{if(NET.peer&&!NET.peer.destroyed)NET.peer.reconnect();}catch(e){}}); // Signaling-Abriss -> Signaling reconnecten
-  NET.peer.on("open",function(){
-    var c=NET.peer.connect(netRoomId(code),{reliable:true});
-    NET.conns=[c];
-    c.on("open",function(){opened=true;clearTimeout(NET._tmo);
+  // 🔁 Beitritt mit Wiederholung: der Gratis-Broker ist manchmal träge, oder der Host lädt noch —
+  // ein einzelnes "peer-unavailable" heisst NICHT, dass der Raum weg ist. Bis zu 5 Versuche.
+  var attempt=0,MAXTRY=5;
+  function tryConnect(){
+    if(opened||!NET.peer||NET.peer.destroyed)return;
+    attempt++;netStatus("⏳ Suche Raum "+code+" … (Versuch "+attempt+"/"+MAXTRY+")","#2a6ab0");
+    var c=NET.peer.connect(netRoomId(code),{reliable:true});NET.conns=[c];var thisOpen=false;
+    c.on("open",function(){thisOpen=true;opened=true;clearTimeout(NET._tmo);clearTimeout(NET._retryT);
       netLobbyShow();netPlayersUpd();netConnInfo();netStatus("");
       try{c.send(JSON.stringify({t:"hallo",n:netMyName(),cfg:loadChar(0)}));}catch(e){}
       document.getElementById("netHint").textContent="Verbunden — mach dich bereit und warte auf den Start …";
@@ -2868,12 +2872,22 @@ document.getElementById("netJoinBtn").onclick=function(){
     c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}netApply(m);});
     c.on("close",function(){NET.conns=[];if(NET._hb)clearInterval(NET._hb);netConnInfo();
       if(NET.on){announce("📴 Verbindung zum Gastgeber verloren — versuche neu zu verbinden …","#ffb46e");renderNetHud();netCheckPause();netTryReconnect();}
-      else joinReset("📴 Verbindung getrennt — nochmal versuchen.");});
-  });
-  NET.peer.on("error",function(e){var t=e&&e.type;if(opened)return;clearTimeout(NET._tmo);
-    if(t==="peer-unavailable")joinReset("❌ Raum "+code+" nicht gefunden — Code genau prüfen!");
-    else if(t==="browser-incompatible")joinReset("Dein Browser kann kein WebRTC — Online geht hier leider nicht.");
-    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed")joinReset("⏱️ Kein Kontakt zum Vermittlungs-Server — Internet prüfen.");
+      else if(opened)joinReset("📴 Verbindung getrennt — nochmal versuchen.");});
+    clearTimeout(NET._retryT); // geht diese Verbindung nicht in 4,5s auf -> nächster Versuch
+    NET._retryT=setTimeout(function(){if(thisOpen||opened)return;try{c.close();}catch(e){}
+      if(attempt<MAXTRY)tryConnect();
+      else{clearTimeout(NET._tmo);joinReset("❌ Raum "+code+" nicht gefunden. Läuft das Spiel beim Gastgeber gerade? Er darf die Seite nicht schliessen/wegwischen. Code prüfen und nochmal.");}
+    },4500);
+  }
+  NET.peer.on("open",function(){tryConnect();});
+  NET.peer.on("error",function(e){var t=e&&e.type;if(opened)return;
+    if(t==="peer-unavailable"){ // Host (noch) nicht auffindbar -> nächster Versuch statt sofort aufgeben
+      if(attempt<MAXTRY){setTimeout(tryConnect,1400);}
+      else{clearTimeout(NET._tmo);joinReset("❌ Raum "+code+" nicht gefunden. Läuft das Spiel beim Gastgeber gerade? Er darf die Seite nicht schliessen/wegwischen. Code prüfen und nochmal.");}
+      return;}
+    clearTimeout(NET._tmo);
+    if(t==="browser-incompatible")joinReset("Dein Browser kann kein WebRTC — Online geht hier leider nicht.");
+    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed")joinReset("⏱️ Kein Kontakt zum Vermittlungs-Server — Internet prüfen, dann nochmal.");
     else joinReset("Verbindung fehlgeschlagen ("+t+") — nochmal versuchen.");});
 };
 // Bereit-Knopf (Gast), Code-Kopieren, Online-Start + Rematch teilen sich netLaunch
