@@ -215,6 +215,19 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 10 — Survivor-Bau-Modus + neon-realm Kamera-Bug)
+- [ ] **neon-survivor: Aufbauen/Bauen** (User-Wunsch „survival aufbauen bauen und so"):
+      Bau-Phase zwischen Wellen — Kills geben 🔩 Schrott, damit baut man: Mauer-Segmente
+      (blocken Gegner, HP), Neon-Turm (schiesst automatisch), Falle (verlangsamt), Heil-Feld;
+      Platzieren per Geister-Vorschau (Desktop Maus, mobil Tap+Bestätigen), Abriss = 50% zurück,
+      Cap (z.B. 12 Strukturen) für Performance/Balance; Strukturen überleben Wellen, Gegner
+      greifen Mauern an. Save: Baubestand persistieren (defensiv).
+- [ ] **neon-realm BUG (User-Screenshot vom Handy)**: Kamera steckt HINTER Hausdach — Spieler
+      unsichtbar. Fix: Gebäude/grosse Deko zwischen Kamera und Spieler ausblenden/faden
+      (Raycast Kamera→Spieler, material.opacity ~0.25 mit sanftem Übergang) ODER Kamera-
+      Kollision (heranziehen). Zusätzlich prüfen: Screenshot zeigt ALTE Box-Häuser →
+      GLB-Fallback auf dem Handy? (Netz/Fehler-Logging prüfen) oder Edge-Cache.
+
 ### User-Feedback 2026-07-11 (Runde 9 — „mehr Features und mehr mit Liebe machen")
 Liebe-Paket Lebenspfad (mit B3/Runde-8 kombinierbar, jeweils klein aber fühlbar):
 - [ ] **Jahreszeiten-Metapher**: Kapitel-Stimmung wandert Frühling (Kindheit) → Sommer → Herbst →
