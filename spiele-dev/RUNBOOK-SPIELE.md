@@ -62,6 +62,18 @@
   „ist dran" brauchen ein dunkles Pill-Backdrop (`rgba(38,52,72,.42)` + Text-Schatten),
   sonst weiß-auf-hell unlesbar (Gemini-Vision-Befund 2026-07-11).
 
+## ⚠️⚠️ TEURE LEHRE: Workflow-Output im geteilten Working-Tree NICHT verwerfen (2026-07-11)
+- Der grosse Lebenspfad-Workflow (w80x0609d, 25 Agenten, 7 Batches) lief ~2,5 h im Hintergrund und
+  schrieb seine Fixes UNCOMMITTET in lebenspfad.html. Ich hielt das fuer eine fremde Parallel-Session
+  und habe die Datei mehrfach 'git checkout -- lebenspfad.html' -> Batches 1-6 groesstenteils zerstoert,
+  nur Batch 7 ueberlebte.
+- REGEL: Bevor du eine uncommittete Aenderung als Contamination verwirfst, pruefe ob ein eigener
+  Workflow/Agent diese Datei gerade schreibt (Task-/Workflow-Liste, w..-IDs). Ein Workflow der
+  'Kein Commit' macht, lebt NUR im Working-Tree -> committen statt verwerfen.
+- Bearbeitet ein Workflow eine Datei: in Ruhe lassen bis er fertig meldet, DANN verifizieren+committen.
+  Recovery: journal.jsonl + tasks/<id>.output haben die Batch-Beschreibungen; resumeFromRunId wendet
+  Datei-Edits NICHT neu an (Cache = nur Agent-Text). Voller Wieder-Lauf = frischer Workflow (teuer, 3M Tokens).
+
 ## 🏆 Lebenspfad: Meshy-Meilenstein-Props (2026-07-11, PR #1714)
 - 6 CC-eigene Meshy-Toon-Props in `models/lp_prop_*.glb` (haus/cabrio/hochzeitsbogen/
   kinderwagen/abschlusshut/herz), Blender-poliert (zentriert, y=0, ~1.3 Einheiten,
