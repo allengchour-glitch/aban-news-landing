@@ -372,7 +372,15 @@ var CHARACTERS=[
   {id:"magier",   emo:"🔮", name:"Magier",     desc:"Robe & Stab",  file:"class_mage.glb",         scale:1.15, glow:"soft"},
   {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"Kapuze & Bogen",file:"class_ranger.glb",       scale:1.15, glow:"soft"},
   {id:"titan",    emo:"🛡️", name:"Titan",      desc:"Schwer & stark",file:"class_titan.glb",        scale:1.2,  glow:"soft"},
-  {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft"}
+  {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft"},
+  // 🎌 Anime-Charaktere (Meshy, gerigged idle/walk/run) — echte Anime-Figuren zur Auswahl
+  {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style",       file:"anime_hero.glb",      scale:1.05, glow:"soft"},
+  {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr", file:"anime_warrior.glb",   scale:1.05, glow:"soft"},
+  {id:"anime_magier",       emo:"🪄", name:"Anime-Magier",   desc:"Hexenhut & Stab",    file:"anime_mage.glb",      scale:1.05, glow:"soft"},
+  {id:"anime_ninja",        emo:"🥷", name:"Anime-Ninja",    desc:"Maske & Kapuze",     file:"anime_ninja.glb",     scale:1.05, glow:"soft"},
+  {id:"anime_schuelerin",   emo:"🎀", name:"Anime-Schülerin",desc:"Sailor-Uniform",     file:"anime_schoolgirl.glb",scale:1.05, glow:"soft"},
+  {id:"anime_maedchen",     emo:"👧", name:"Anime-Mädchen",  desc:"Süß & flink",        file:"anime_girl.glb",      scale:1.05, glow:"soft"},
+  {id:"anime_junge",        emo:"👦", name:"Anime-Junge",    desc:"Cool & blau",        file:"anime_boy.glb",       scale:1.05, glow:"soft"}
 ];
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
 function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
