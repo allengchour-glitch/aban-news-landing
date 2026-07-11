@@ -102,6 +102,9 @@ function mat(c,e,ei){return new THREE.MeshStandardMaterial({color:c,emissive:e!=
 // Weiche Glow-Sprite-Textur (gegen Points-Klötzchen, für Halos/Marker/Glut)
 function glowTexture(inner,outer){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,inner||"rgba(255,255,255,1)");g.addColorStop(0.4,"rgba(255,255,255,.55)");g.addColorStop(1,outer||"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,64,64);var t=new THREE.CanvasTexture(cv);return t;}
 var GLOW=glowTexture();
+// Weiche Kontakt-Schatten-Textur (fake AO -> erdet Figuren, Tiefe statt schwebend/flach)
+var SHADOW=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,0,32,32,32);g.addColorStop(0,"rgba(0,0,0,0.78)");g.addColorStop(0.5,"rgba(0,0,0,0.42)");g.addColorStop(1,"rgba(0,0,0,0)");c.fillStyle=g;c.fillRect(0,0,64,64);return new THREE.CanvasTexture(cv);})();
+function shadowMesh(sz){var m=new THREE.Mesh(new THREE.PlaneGeometry(sz,sz),new THREE.MeshBasicMaterial({map:SHADOW,transparent:true,depthWrite:false,opacity:0.95}));m.rotation.x=-Math.PI/2;m.position.y=0.09;m.renderOrder=2;return m;}
 // Atmosphärischer Hintergrund-Verlauf (Tiefe statt Leere)
 var bgTex=(function(){var cv=document.createElement("canvas");cv.width=16;cv.height=256;var c=cv.getContext("2d");var g=c.createLinearGradient(0,0,0,256);g.addColorStop(0,"#0a0716");g.addColorStop(0.42,"#140a28");g.addColorStop(0.62,"#1a0f34");g.addColorStop(1,"#04040c");c.fillStyle=g;c.fillRect(0,0,16,256);return new THREE.CanvasTexture(cv);})();
 scene.background=bgTex;
@@ -119,14 +122,19 @@ floor.rotation.x=-Math.PI/2; scene.add(floor);
 var grid=new THREE.GridHelper(ARENA*2,44,0x3a2a60,0x1c1436); grid.position.y=0.02; scene.add(grid);
 // Verlies-Rand + Säulen (Deko)
 for(var wi=0;wi<4;wi++){var wall=new THREE.Mesh(new THREE.BoxGeometry(wi<2?ARENA*2+4:1.6,3,wi<2?1.6:ARENA*2+4),mat(0x201636,0xb15cff,0.7));wall.position.set(wi===0?0:(wi===1?0:(wi===2?ARENA+1:-ARENA-1)),0.5,wi===0?ARENA+1:(wi===1?-ARENA-1:0));scene.add(wall);}
-for(var pi=0;pi<10;pi++){var a=pi/10*6.283,r=ARENA*0.72;var col=new THREE.Mesh(new THREE.CylinderGeometry(1,1.2,7,6),mat(0x281a44,0x5ef2ff,0.6));col.position.set(Math.cos(a)*r,2,Math.sin(a)*r);scene.add(col);
+for(var pi=0;pi<10;pi++){var a=pi/10*6.283,r=ARENA*0.72;var col=new THREE.Mesh(new THREE.CylinderGeometry(1,1.2,7,12),mat(0x281a44,0x5ef2ff,0.6));col.position.set(Math.cos(a)*r,2,Math.sin(a)*r);scene.add(col);
   var shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.6,2.4,10,8,1,true),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.05,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
   shaft.position.set(Math.cos(a)*r,5,Math.sin(a)*r);scene.add(shaft);
   // Boden-Glow-Akzent am Säulenfuss (weiche Sprite-Textur → kein flacher Boden)
   var gd=new THREE.Mesh(new THREE.PlaneGeometry(6,6),new THREE.MeshBasicMaterial({map:GLOW,color:0x5ef2ff,transparent:true,opacity:0.32,blending:THREE.AdditiveBlending,depthWrite:false}));gd.rotation.x=-Math.PI/2;gd.position.set(Math.cos(a)*r,0.06,Math.sin(a)*r);scene.add(gd);
   var cap=new THREE.Mesh(new THREE.SphereGeometry(0.55,10,8),new THREE.MeshBasicMaterial({color:0x9be7ff}));cap.position.set(Math.cos(a)*r,5.6,Math.sin(a)*r);scene.add(cap);}
 // Zentraler Arena-Glow (Boden-Herzstück)
-var centerGlow=new THREE.Mesh(new THREE.PlaneGeometry(30,30),new THREE.MeshBasicMaterial({map:GLOW,color:0x3a2a70,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false}));centerGlow.rotation.x=-Math.PI/2;centerGlow.position.y=0.04;scene.add(centerGlow);
+var centerGlow=new THREE.Mesh(new THREE.PlaneGeometry(30,30),new THREE.MeshBasicMaterial({map:GLOW,color:0x3a2a70,transparent:true,opacity:0.4,blending:THREE.AdditiveBlending,depthWrite:false}));centerGlow.rotation.x=-Math.PI/2;centerGlow.position.y=0.04;scene.add(centerGlow);
+// Verstreute Neon-Boden-Flecken (Farbvariation gegen den monotonen Boden)
+var FLOORCOLS=[0x5ef2ff,0xb15cff,0xff5f8f,0xff9a2e,0x6aff9e];
+for(var fp=0;fp<16;fp++){var fa=Math.random()*6.283,fr=6+Math.random()*(ARENA*0.62);var fs=5+Math.random()*6;
+  var fd=new THREE.Mesh(new THREE.PlaneGeometry(fs,fs),new THREE.MeshBasicMaterial({map:GLOW,color:FLOORCOLS[fp%FLOORCOLS.length],transparent:true,opacity:0.16+Math.random()*0.16,blending:THREE.AdditiveBlending,depthWrite:false}));
+  fd.rotation.x=-Math.PI/2;fd.position.set(Math.cos(fa)*fr,0.05,Math.sin(fa)*fr);scene.add(fd);}
 // Marker (Klick-Ziel)
 // Verlies-Wächter: echtes Meshy-3D-Modell mit PBR-Textur (dekorativ)
 var _imps=[];
@@ -154,13 +162,13 @@ var hero=new THREE.Group();
 // Detaillierter Held: Beine, Rumpf, Schultern, Kopf mit Visier, Arme, Runenschwert
 var hL1=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.7,0.34),mat(0x1c1436,0x241a4a,0.35));hL1.position.set(-0.22,0.35,0);hero.add(hL1);
 var hL2=hL1.clone();hL2.position.x=0.22;hero.add(hL2);
-var hBody=new THREE.Mesh(new THREE.CylinderGeometry(0.34,0.5,1.05,8),mat(0x2a2050,0x3a2a6f,0.45)); hBody.position.y=1.2; hero.add(hBody);
+var hBody=new THREE.Mesh(new THREE.CylinderGeometry(0.34,0.5,1.05,14),mat(0x2a2050,0x3a2a6f,0.45)); hBody.position.y=1.2; hero.add(hBody);
 var hChest=new THREE.Mesh(new THREE.OctahedronGeometry(0.16,0),mat(0x5ef2ff,0x5ef2ff,1.4)); hChest.position.set(0,1.45,0.36); hero.add(hChest);
-var hSh1=new THREE.Mesh(new THREE.SphereGeometry(0.24,8,6),mat(0xb15cff,0x5a2a9f,0.7));hSh1.position.set(-0.55,1.7,0);hero.add(hSh1);
+var hSh1=new THREE.Mesh(new THREE.SphereGeometry(0.24,14,10),mat(0xb15cff,0x5a2a9f,0.7));hSh1.position.set(-0.55,1.7,0);hero.add(hSh1);
 var hSh2=hSh1.clone();hSh2.position.x=0.55;hero.add(hSh2);
-var hA1=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.09,0.8,6),mat(0x241a4a,0x2a1a55,0.4));hA1.position.set(-0.58,1.25,0);hero.add(hA1);
+var hA1=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.09,0.8,10),mat(0x241a4a,0x2a1a55,0.4));hA1.position.set(-0.58,1.25,0);hero.add(hA1);
 var hA2=hA1.clone();hA2.position.x=0.58;hero.add(hA2);
-var hHead=new THREE.Mesh(new THREE.SphereGeometry(0.34,10,8),mat(0x3a2a6f,0x2a1a55,0.5)); hHead.position.y=2.15; hero.add(hHead);
+var hHead=new THREE.Mesh(new THREE.SphereGeometry(0.34,18,14),mat(0x3a2a6f,0x2a1a55,0.5)); hHead.position.y=2.15; hero.add(hHead);
 var hVisor=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.12,0.1),mat(0x5ef2ff,0x5ef2ff,1.6)); hVisor.position.set(0,2.18,0.3); hero.add(hVisor);
 var hSword=new THREE.Group();
 var hBlade=new THREE.Mesh(new THREE.BoxGeometry(0.1,1.5,0.04),mat(0x9bd0ff,0x5ef2ff,1.5));hBlade.position.y=0.95;hSword.add(hBlade);
@@ -168,6 +176,7 @@ var hGuard=new THREE.Mesh(new THREE.BoxGeometry(0.38,0.09,0.09),mat(0xb98bff,0xb
 var hGrip=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.3,6),mat(0x1c1436,0x241a4a,0.4));hSword.add(hGrip);
 hSword.position.set(0.75,1.15,0.1);hSword.rotation.z=-0.18;hero.add(hSword);
 var hRing=new THREE.Mesh(new THREE.TorusGeometry(0.9,0.08,8,24),mat(0xb98bff,0xb98bff,1.1)); hRing.rotation.x=Math.PI/2; hRing.position.y=0.12; hero.add(hRing);
+var heroShadow=shadowMesh(2.6);heroShadow.material.rotation=0;hero.add(heroShadow);
 hero.position.set(0,0,0); scene.add(hero);
 var hGlow=new THREE.PointLight(0x5ef2ff,1.6,20); scene.add(hGlow);
 
@@ -177,15 +186,16 @@ var bolts=[],enemies=[],fx=[],loot=[],orbs=[];
 function boltMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.26,8,8),mat(0xdff6ff,0x9be7ff,1.6)); m.active=false;
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:GLOW,color:0x9be7ff,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));sp.scale.set(1.5,1.5,1);m.add(sp);
   scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0,dmg:0};}
-function enemyMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.85,0),mat(0xff5577,0xaa1133)); m.position.y=0.9;
-  var core=new THREE.Mesh(new THREE.OctahedronGeometry(0.42,0),mat(0xffe0e6,0xff5577,1.6)); m.add(core);
+function enemyMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.85,2),mat(0xff5577,0xaa1133)); m.position.y=0.9;
+  var core=new THREE.Mesh(new THREE.OctahedronGeometry(0.42,1),mat(0xffe0e6,0xff5577,1.6)); m.add(core);
   var ring=new THREE.Mesh(new THREE.TorusGeometry(0.95,0.06,6,16),m.material); ring.rotation.x=Math.PI/2; m.add(ring);
   // Hörner (geteiltes Material -> färben bei Elite/Boss mit) + Zyklopen-Auge
   var h1=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.6,5),m.material);h1.position.set(-0.42,0.72,0);h1.rotation.z=0.5;m.add(h1);
   var h2=h1.clone();h2.position.x=0.42;h2.rotation.z=-0.5;m.add(h2);
   var eye=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,6),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffcc,emissiveIntensity:2.4}));eye.position.set(0,0.18,0.68);m.add(eye);
   m.userData.core=core; m.userData.ring=ring; scene.add(m);
-  return {m:m,active:false,hp:1,spd:2,dmg:6,flash:0,base:0xaa1133,boss:false,atk:0};}
+  var sh=shadowMesh(2.0);sh.visible=false;scene.add(sh);
+  return {m:m,active:false,hp:1,spd:2,dmg:6,flash:0,base:0xaa1133,boss:false,atk:0,sh:sh};}
 function lootMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.5,0),mat(0xffffff,0xffffff)); m.active=false;
   var beam=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.32,7,10,1,true),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0.28,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));beam.position.y=3.0;m.add(beam);
   var halo=new THREE.Mesh(new THREE.PlaneGeometry(2.4,2.4),new THREE.MeshBasicMaterial({map:GLOW,color:0xffffff,transparent:true,opacity:0.6,blending:THREE.AdditiveBlending,depthWrite:false}));halo.rotation.x=-Math.PI/2;halo.position.y=-0.62;m.add(halo);
@@ -222,7 +232,7 @@ var G={};
 function reset(){G={hp:120,maxhp:120,lvl:1,xp:0,xpNeed:6,kills:0,dmg:8,spd:8,fireCD:0.42,fireT:0,range:16,multishot:1,
   wave:1,waveLeft:0,spawnT:0,bossAlive:false,alive:true,tx:0,tz:0,moving:false,
   cd:{1:0,2:0,3:0},cdMax:{1:6,2:3.5,3:12},shake:0};
-  [bolts,enemies,fx,loot,orbs].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
+  [bolts,enemies,fx,loot,orbs].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;if(o.sh)o.sh.visible=false;});});
   hero.position.set(0,0,0); G.tx=0; G.tz=0;}
 
 var running=false, last=performance.now();
@@ -244,7 +254,7 @@ function castSkill(n){if(G.cd[n]>0)return;
   G.cd[n]=G.cdMax[n];}
 
 function hitEnemy(en,dmg){if(!en.active)return;en.hp-=dmg;en.flash=0.09;if(en.hp<=0)killEnemy(en);}
-function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff9a2e:0xff5577,en.boss?26:10);G.kills++;
+function killEnemy(en){en.active=false;en.m.visible=false;if(en.sh)en.sh.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff9a2e:0xff5577,en.boss?26:10);G.kills++;
   // Loot + evtl. Heil-Orb
   var dc=en.boss?1:(en.elite?0.5:0.14);if(Math.random()<dc)dropLoot(en.m.position.x,en.m.position.z,en.boss?3:(en.elite?1:0));
   if(!en.boss&&Math.random()<0.12){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(en.m.position.x,0.5,en.m.position.z);}
@@ -294,7 +304,8 @@ function loop(now){
     for(var i=0;i<bolts.length;i++){var b=bolts[i];if(!b.active)continue;b.m.position.x+=b.vx*dt;b.m.position.z+=b.vz*dt;b.life-=dt;if(b.life<=0){b.active=false;b.m.visible=false;b.m.position.y=-99;continue;}
       for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var ex=en.m.position.x-b.m.position.x,ez=en.m.position.z-b.m.position.z;if(ex*ex+ez*ez<1.4){hitEnemy(en,b.dmg);b.active=false;b.m.visible=false;b.m.position.y=-99;break;}}}
     // Gegner
-    for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active)continue;var mx=hero.position.x-e2.m.position.x,mz=hero.position.z-e2.m.position.z,md=Math.hypot(mx,mz)||1;e2.m.position.x+=mx/md*e2.spd*dt;e2.m.position.z+=mz/md*e2.spd*dt;e2.m.rotation.y+=dt;
+    for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active){if(e2.sh)e2.sh.visible=false;continue;}var mx=hero.position.x-e2.m.position.x,mz=hero.position.z-e2.m.position.z,md=Math.hypot(mx,mz)||1;e2.m.position.x+=mx/md*e2.spd*dt;e2.m.position.z+=mz/md*e2.spd*dt;e2.m.rotation.y+=dt;
+      if(e2.sh){e2.sh.visible=true;e2.sh.position.set(e2.m.position.x,0.045,e2.m.position.z);e2.sh.scale.setScalar(e2.m.scale.x);}
       if(e2.flash>0){e2.flash-=dt;e2.m.material.emissive.setHex(e2.flash>0?0xffffff:e2.base);}
       e2.atk-=dt;if(md<1.6&&e2.atk<=0){G.hp-=e2.dmg;e2.atk=0.7;G.shake=Math.max(G.shake,0.15);}}
     // Loot einsammeln
