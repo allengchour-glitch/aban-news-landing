@@ -355,83 +355,91 @@ function buildCharacter(def){
   var bodyCol=pal.body,glowCol=pal.glow,hairCol=pal.hair,pantsCol=pal.pants;
   var g=new THREE.Group(),rig=new THREE.Group();g.add(rig);var P={};
   var OL=[]; // Silhouette-Meshes für die Anime-Outline (Inverted-Hull)
-  // Körper (Cel-Shading via toonMat; Emissive dezent → satt statt weiss überstrahlt)
-  var body=new THREE.Mesh(new THREE.BoxGeometry(female?0.8:0.86,0.86,0.6),toonMat(bodyCol,bodyCol,0.13));body.position.y=0.16;rig.add(body);P.body=body;OL.push(body);
-  var belt=new THREE.Mesh(new THREE.BoxGeometry(female?0.82:0.88,0.15,0.62),matS(glowCol,glowCol,0.55));belt.position.y=-0.04;rig.add(belt);
-  if(female){var skirt=new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.62,0.34,7),toonMat(bodyCol,bodyCol,0.13));skirt.position.y=-0.28;rig.add(skirt);OL.push(skirt);}
-  // Kopf
-  var head=new THREE.Group();head.position.y=0.9;rig.add(head);P.head=head;
-  var face=new THREE.Mesh(new THREE.BoxGeometry(0.72,0.66,0.6),toonMat(SKIN,SKIN,0.05));head.add(face);OL.push(face);
+  // ---- Runder Ei-/Kapsel-Torso (Chibi): weiche Kugel statt flacher Klotz ----
+  var body=new THREE.Mesh(new THREE.SphereGeometry(0.46,13,10),toonMat(bodyCol,bodyCol,0.13));
+  body.scale.set(0.95,1.12,0.82);body.position.y=0.2;rig.add(body);P.body=body;OL.push(body);
+  // Kragen-Glow als niedliches Detail (kein weisses Ausbrennen)
+  var collar=new THREE.Mesh(new THREE.TorusGeometry(0.25,0.05,6,12),matS(glowCol,glowCol,0.55));
+  collar.rotation.x=Math.PI/2;collar.scale.set(1,0.75,1);collar.position.y=0.5;rig.add(collar);
+  if(female){var skirt=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.66,0.34,16),toonMat(bodyCol,bodyCol,0.13));skirt.position.y=-0.16;rig.add(skirt);OL.push(skirt);}
+  // ---- Grosser runder Chibi-Kopf (Kugel, ~halbe Figurhöhe) ----
+  var head=new THREE.Group();head.position.y=1.04;rig.add(head);P.head=head;
+  var face=new THREE.Mesh(new THREE.SphereGeometry(0.5,16,12),toonMat(SKIN,SKIN,0.05));
+  face.scale.set(1,1.0,0.97);head.add(face);OL.push(face);
   // ---- Grosse Anime-Augen: weisser Bulb + farbige Iris + Pupille + 2 Glanzlichter + Lidlinie ----
   var eyeCol=female?0x9a49e0:0x2f86e6;   // ausdrucksstarke Iris (Frau lila, Mann blau)
+  // Grosse, aber freundliche Anime-Augen: weisser Bulb + Iris + Pupille + 1 klares Glanzlicht + dezente Lidlinie.
   function eye(sx){var e=new THREE.Group();
-    var w=new THREE.Mesh(new THREE.SphereGeometry(0.18,16,16),mat(0xffffff,0xffffff,0.05));w.scale.set(0.9,1.28,0.6);e.add(w);
-    var iris=new THREE.Mesh(new THREE.SphereGeometry(0.12,16,16),toonMat(eyeCol,eyeCol,0.3));iris.scale.set(1,1.16,0.5);iris.position.set(0,-0.02,0.11);e.add(iris);
-    var pup=new THREE.Mesh(new THREE.SphereGeometry(0.06,12,12),mat(0x120820,0x120820,0));pup.scale.set(1,1.25,0.55);pup.position.set(0,-0.02,0.16);e.add(pup);
-    var hl=new THREE.Mesh(new THREE.SphereGeometry(0.052,10,10),mat(0xffffff,0xffffff,0.5));hl.position.set(0.055,0.08,0.2);e.add(hl);
-    var hl2=new THREE.Mesh(new THREE.SphereGeometry(0.026,8,8),mat(0xffffff,0xffffff,0.4));hl2.position.set(-0.05,-0.06,0.2);e.add(hl2);
-    var lid=new THREE.Mesh(new THREE.BoxGeometry(0.32,0.055,0.07),mat(0x1c0f22,0x1c0f22,0));lid.position.set(0,0.17,0.15);lid.rotation.z=sx<0?0.14:-0.14;e.add(lid);
-    e.position.set(sx,0.03,0.30);return e;}
-  var eL=eye(-0.19),eR=eye(0.19);head.add(eL);head.add(eR);P.eyeL=eL;P.eyeR=eR;
-  // Augenbrauen (Ausdruck) — Frau fein/hoch, Mann kräftiger/schräg
+    var w=new THREE.Mesh(new THREE.SphereGeometry(0.16,12,9),mat(0xffffff,0xffffff,0.04));w.scale.set(0.84,1.12,0.55);e.add(w);
+    var iris=new THREE.Mesh(new THREE.SphereGeometry(0.11,12,9),toonMat(eyeCol,eyeCol,0.3));iris.scale.set(1,1.1,0.5);iris.position.set(0,-0.01,0.09);e.add(iris);
+    var pup=new THREE.Mesh(new THREE.SphereGeometry(0.055,10,8),mat(0x140a22,0x140a22,0));pup.scale.set(1,1.16,0.55);pup.position.set(0,-0.01,0.13);e.add(pup);
+    var hl=new THREE.Mesh(new THREE.SphereGeometry(0.05,8,8),mat(0xffffff,0xffffff,0.5));hl.position.set(0.05,0.075,0.17);e.add(hl);
+    var lid=new THREE.Mesh(new THREE.BoxGeometry(0.28,0.05,0.06),mat(0x241322,0x241322,0));lid.position.set(0,0.14,0.13);lid.rotation.z=sx<0?0.12:-0.12;e.add(lid);
+    e.position.set(sx,0.02,0.40);return e;}
+  var eL=eye(-0.18),eR=eye(0.18);head.add(eL);head.add(eR);P.eyeL=eL;P.eyeR=eR;
+  // Augenbrauen (Ausdruck) — Frau fein, Mann kräftiger/schräg (sitzen knapp über den Augen)
   if(female){var browM=mat(hairCol,hairCol,0.1);
-    [[-0.19,0.06],[0.19,-0.06]].forEach(function(a){var b=new THREE.Mesh(new THREE.BoxGeometry(0.17,0.032,0.05),browM);b.position.set(a[0],0.31,0.31);b.rotation.z=a[1];head.add(b);});}
+    [[-0.18,0.05],[0.18,-0.05]].forEach(function(a){var b=new THREE.Mesh(new THREE.BoxGeometry(0.15,0.03,0.05),browM);b.position.set(a[0],0.24,0.45);b.rotation.z=a[1];head.add(b);});}
   else{var browM=mat(hairCol,hairCol,0.12);
-    [[-0.19,0.24],[0.19,-0.24]].forEach(function(a){var b=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.055,0.05),browM);b.position.set(a[0],0.3,0.31);b.rotation.z=a[1];head.add(b);});}
+    [[-0.18,0.16],[0.18,-0.16]].forEach(function(a){var b=new THREE.Mesh(new THREE.BoxGeometry(0.19,0.05,0.05),browM);b.position.set(a[0],0.24,0.45);b.rotation.z=a[1];head.add(b);});}
+  // Runde Wangen, kleine Nase, fröhlicher U-Mund
   var chkM=mat(0xff9ec4,0xff9ec4,0.5);
-  var cL=new THREE.Mesh(new THREE.BoxGeometry(0.14,0.09,0.05),chkM);cL.position.set(-0.27,-0.15,0.3);head.add(cL);
+  var cL=new THREE.Mesh(new THREE.SphereGeometry(0.075,8,8),chkM);cL.scale.set(1,0.68,0.45);cL.position.set(-0.27,-0.14,0.41);head.add(cL);
   var cR=cL.clone();cR.position.x=0.27;head.add(cR);
-  var smile=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.055,0.05),mat(0x6b2b45,0x6b2b45,0));smile.position.set(0,-0.26,0.3);head.add(smile);
+  var nose=new THREE.Mesh(new THREE.SphereGeometry(0.026,8,8),mat(0xe6ad8c,0xe6ad8c,0));nose.position.set(0,-0.06,0.5);head.add(nose);
+  var smile=new THREE.Mesh(new THREE.TorusGeometry(0.09,0.021,8,16,Math.PI),mat(0x8a3a58,0x8a3a58,0));
+  smile.rotation.z=Math.PI;smile.position.set(0,-0.19,0.45);head.add(smile);
   // ---- Anime-Haar (in Gruppe für Sekundär-Bewegung), toonMat für flächigen Cel-Look ----
   var hair=new THREE.Group();head.add(hair);P.hair=hair;var hairM=toonMat(hairCol,hairCol,0.08);
   if(female){
-    // Kappe über dem Kopf
-    var cap0=new THREE.Mesh(new THREE.SphereGeometry(0.45,16,12,0,6.283,0,1.75),hairM);cap0.scale.set(1.02,0.98,1.05);cap0.position.y=0.1;hair.add(cap0);OL.push(cap0);
-    // Pony/Fransen: mehrere spitze Keile über der Stirn
-    for(var bf=0;bf<5;bf++){var frg=new THREE.Mesh(new THREE.ConeGeometry(0.11,0.36,4),hairM);
-      frg.position.set(-0.28+bf*0.14,0.33,0.30);frg.rotation.x=Math.PI;frg.rotation.z=(bf-2)*0.07;hair.add(frg);OL.push(frg);}
-    // lange Seitensträhnen (rahmen das Gesicht) + Haargummi-Glow
-    [-1,1].forEach(function(s){var st=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.95,5),hairM);st.position.set(s*0.39,-0.22,0.02);st.rotation.x=Math.PI;st.rotation.z=s*0.07;hair.add(st);OL.push(st);
-      var tie=new THREE.Mesh(new THREE.BoxGeometry(0.11,0.09,0.12),matS(glowCol,glowCol,0.85));tie.position.set(s*0.4,0.02,0.14);hair.add(tie);});
-    // langes fliessendes Rückenhaar
-    var back=new THREE.Mesh(new THREE.ConeGeometry(0.36,1.15,7),hairM);back.position.set(0,-0.18,-0.17);back.rotation.x=Math.PI;hair.add(back);OL.push(back);
-    if(def.a===0){var bow=new THREE.Group();bow.position.set(0,0.46,0.14);
-      var bl=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.16,0.1),matS(glowCol,glowCol,0.85));bl.position.x=-0.12;bl.rotation.z=0.3;bow.add(bl);
-      var br=bl.clone();br.position.x=0.12;br.rotation.z=-0.3;bow.add(br);
-      var bc=new THREE.Mesh(new THREE.BoxGeometry(0.09,0.09,0.11),mat(0xffffff,0xffffff,0.4));bow.add(bc);hair.add(bow);}
+    // Weicher, glatter Haar-Helm (Top+Hinterkopf) — Hairline knapp über den Augen
+    var cap0=new THREE.Mesh(new THREE.SphereGeometry(0.54,16,11,0,6.283,0,1.05),hairM);cap0.scale.set(1.05,1.04,1.06);cap0.position.y=0.02;hair.add(cap0);OL.push(cap0);
+    // Weicher Pony: gerundete Strähnen (keine spitzen Keile), leicht gefächert über der Stirn
+    for(var bf=0;bf<4;bf++){var frg=new THREE.Mesh(roundedBoxGeo(0.17,0.2,0.12,0.08),hairM);
+      frg.position.set(-0.24+bf*0.16,0.33,0.42);frg.rotation.z=(bf-1.5)*0.14;frg.rotation.x=0.28;hair.add(frg);}
+    // Lange, weiche Seitensträhnen rahmen das Gesicht + Haargummi-Glow
+    [-1,1].forEach(function(s){var st=new THREE.Mesh(roundedBoxGeo(0.17,0.82,0.15,0.08),hairM);st.position.set(s*0.45,-0.16,0.15);st.rotation.z=s*0.05;hair.add(st);OL.push(st);
+      var tie=new THREE.Mesh(new THREE.SphereGeometry(0.07,8,8),matS(glowCol,glowCol,0.85));tie.position.set(s*0.46,0.08,0.22);hair.add(tie);});
+    // Langes fliessendes Rückenhaar (weiche runde Masse)
+    var back=new THREE.Mesh(roundedBoxGeo(0.62,0.98,0.3,0.18),hairM);back.position.set(0,-0.26,-0.2);hair.add(back);OL.push(back);
+    if(def.a===0){var bow=new THREE.Group();bow.position.set(0,0.5,0.2);
+      var bl=new THREE.Mesh(roundedBoxGeo(0.18,0.16,0.1,0.05),matS(glowCol,glowCol,0.85));bl.position.x=-0.12;bl.rotation.z=0.35;bow.add(bl);
+      var br=bl.clone();br.position.x=0.12;br.rotation.z=-0.35;bow.add(br);
+      var bc=new THREE.Mesh(new THREE.SphereGeometry(0.06,8,8),mat(0xffffff,0xffffff,0.4));bow.add(bc);hair.add(bow);}
   } else {
-    // Kappe + dramatische, unterschiedlich hohe Stacheln (Shonen-Look)
-    var cap1=new THREE.Mesh(new THREE.SphereGeometry(0.45,16,12,0,6.283,0,1.45),hairM);cap1.scale.set(1.03,0.92,1.06);cap1.position.y=0.15;hair.add(cap1);OL.push(cap1);
-    var spikes=[[-0.30,0.40,0.06,0.34,0.55],[-0.14,0.50,0.12,0.44,0.18],[0.03,0.53,0.14,0.48,-0.03],[0.20,0.47,0.10,0.4,-0.35],[0.34,0.37,0.03,0.32,-0.62]];
-    spikes.forEach(function(sp){var sk=new THREE.Mesh(new THREE.ConeGeometry(0.12,sp[3],4),hairM);sk.position.set(sp[0],sp[1],sp[2]);sk.rotation.z=sp[4];sk.rotation.x=-0.28;hair.add(sk);OL.push(sk);});
-    // Seiten-Stacheln
-    [-1,1].forEach(function(s){var sk=new THREE.Mesh(new THREE.ConeGeometry(0.11,0.46,4),hairM);sk.position.set(s*0.41,0.14,0.05);sk.rotation.z=s*1.05;hair.add(sk);OL.push(sk);});
+    // Ordentliche kurze Frisur: glatter Helm + seitlich gekämmter Pony (KEINE hohen Stacheln)
+    var cap1=new THREE.Mesh(new THREE.SphereGeometry(0.54,16,11,0,6.283,0,1.08),hairM);cap1.scale.set(1.06,1.02,1.07);cap1.position.y=0.04;hair.add(cap1);OL.push(cap1);
+    // Kurzer Seiten-Pony: flache, gerundete Strähnen leicht schräg gekämmt
+    for(var mf=0;mf<5;mf++){var ml=new THREE.Mesh(roundedBoxGeo(0.19,0.17,0.13,0.07),hairM);
+      ml.position.set(-0.28+mf*0.14,0.34,0.4);ml.rotation.z=-0.28;ml.rotation.x=0.18;hair.add(ml);}
+    // Kurze Koteletten/Seitenhaar (weich, kurz)
+    [-1,1].forEach(function(s){var sd=new THREE.Mesh(roundedBoxGeo(0.13,0.28,0.14,0.07),hairM);sd.position.set(s*0.46,0.12,0.14);sd.rotation.z=s*0.12;hair.add(sd);});
   }
-  // Accessoire (sitzt am neuen Kopf)
-  if(def.a===1){var cap=new THREE.Group();cap.position.y=0.4;
-    var dome=new THREE.Mesh(new THREE.SphereGeometry(0.44,14,10,0,6.283,0,1.35),toonMat(glowCol,glowCol,0.2));dome.scale.y=0.72;cap.add(dome);OL.push(dome);
-    var brim=new THREE.Mesh(new THREE.BoxGeometry(0.52,0.06,0.36),toonMat(glowCol,glowCol,0.2));brim.position.set(0,-0.02,0.36);cap.add(brim);hair.add(cap);}
-  else if(def.a===2){var gl=new THREE.Group();gl.position.set(0,0.03,0.36);
+  // Accessoire (sitzt am neuen, grösseren Kopf)
+  if(def.a===1){var cap=new THREE.Group();cap.position.y=0.44;
+    var dome=new THREE.Mesh(new THREE.SphereGeometry(0.5,18,12,0,6.283,0,1.35),toonMat(glowCol,glowCol,0.2));dome.scale.y=0.7;cap.add(dome);OL.push(dome);
+    var brim=new THREE.Mesh(roundedBoxGeo(0.56,0.07,0.4,0.05),toonMat(glowCol,glowCol,0.2));brim.position.set(0,-0.03,0.42);cap.add(brim);hair.add(cap);}
+  else if(def.a===2){var gl=new THREE.Group();gl.position.set(0,0.02,0.46);
     var frM=mat(0x1c1030,0x5ef2ff,0.7);
-    [-0.19,0.19].forEach(function(x){var ln=new THREE.Mesh(new THREE.TorusGeometry(0.15,0.028,8,16),frM);ln.position.x=x;gl.add(ln);});
-    var brg=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.028,0.028),frM);gl.add(brg);head.add(gl);}
-  else if(def.a===3){var crown=new THREE.Group();crown.position.y=0.48;
-    for(var cr3=0;cr3<5;cr3++){var sp3=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.18,4),mat(0xffd166,0xffd166,1.1));sp3.position.set(-0.24+cr3*0.12,0.05,0.05);crown.add(sp3);}
-    var band3=new THREE.Mesh(new THREE.BoxGeometry(0.62,0.08,0.1),mat(0xffd166,0xffd166,1.1));crown.add(band3);hair.add(crown);}
+    [-0.18,0.18].forEach(function(x){var ln=new THREE.Mesh(new THREE.TorusGeometry(0.15,0.028,8,14),frM);ln.position.x=x;gl.add(ln);});
+    var brg=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.028,0.028),frM);gl.add(brg);head.add(gl);}
+  else if(def.a===3){var crown=new THREE.Group();crown.position.y=0.54;
+    for(var cr3=0;cr3<5;cr3++){var sp3=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.18,10),mat(0xffd166,0xffd166,1.1));sp3.position.set(-0.24+cr3*0.12,0.05,0.05);crown.add(sp3);}
+    var band3=new THREE.Mesh(new THREE.TorusGeometry(0.3,0.045,8,16),mat(0xffd166,0xffd166,1.1));band3.rotation.x=Math.PI/2;band3.scale.set(1,0.8,1);crown.add(band3);hair.add(crown);}
   // Antenne (Bibo-Signatur bleibt)
-  var ant=new THREE.Group();ant.position.set(0,0.44,-0.05);head.add(ant);P.antenna=ant;
-  var stalk=new THREE.Mesh(new THREE.CylinderGeometry(0.028,0.028,0.32,6),mat(0x2a1650,0x2a1650,0.2));stalk.position.y=0.16;ant.add(stalk);
-  var tip=new THREE.Mesh(new THREE.SphereGeometry(0.11,14,14),matS(glowCol,glowCol,1.2));tip.position.y=0.36;ant.add(tip);
-  // Arme (Pivot an der Schulter) — Cel-Ärmel + Haut-Hand
-  function arm(sx){var a=new THREE.Group();a.position.set(sx,0.44,0);
-    var m=new THREE.Mesh(new THREE.BoxGeometry(0.16,0.44,0.16),toonMat(bodyCol,bodyCol,0.13));m.position.y=-0.2;a.add(m);OL.push(m);
-    var hand=new THREE.Mesh(new THREE.SphereGeometry(0.11,14,14),toonMat(SKIN,SKIN,0.05));hand.position.y=-0.42;a.add(hand);OL.push(hand);return a;}
-  var aL=arm(-0.5),aR=arm(0.5);rig.add(aL);rig.add(aR);P.armL=aL;P.armR=aR;
-  // Beine (Pivot an der Hüfte) + Glow-Füsse
-  function leg(sx){var l=new THREE.Group();l.position.set(sx,-0.3,0);
-    var m=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.38,0.22),toonMat(pantsCol,pantsCol,0.1));m.position.y=-0.19;l.add(m);OL.push(m);
-    var foot=new THREE.Mesh(new THREE.BoxGeometry(0.24,0.12,0.3),matS(glowCol,glowCol,0.72));foot.position.set(0,-0.42,0.05);l.add(foot);return l;}
-  var lL=leg(-0.2),lR=leg(0.2);rig.add(lL);rig.add(lR);P.legL=lL;P.legR=lR;
+  var ant=new THREE.Group();ant.position.set(0,0.5,-0.06);head.add(ant);P.antenna=ant;
+  var stalk=new THREE.Mesh(new THREE.CylinderGeometry(0.026,0.026,0.3,8),mat(0x2a1650,0x2a1650,0.2));stalk.position.y=0.15;ant.add(stalk);
+  var tip=new THREE.Mesh(new THREE.SphereGeometry(0.1,12,10),matS(glowCol,glowCol,1.2));tip.position.y=0.34;ant.add(tip);
+  // Arme (Pivot an der Schulter) — weich gerundete Ärmel mit runder Hand
+  function arm(sx){var a=new THREE.Group();a.position.set(sx,0.42,0);
+    var m=new THREE.Mesh(roundedBoxGeo(0.18,0.44,0.18,0.09),toonMat(bodyCol,bodyCol,0.13));m.position.y=-0.2;a.add(m);OL.push(m);
+    var hand=new THREE.Mesh(new THREE.SphereGeometry(0.12,12,10),toonMat(SKIN,SKIN,0.05));hand.position.y=-0.44;a.add(hand);return a;}
+  var aL=arm(-0.46),aR=arm(0.46);rig.add(aL);rig.add(aR);P.armL=aL;P.armR=aR;
+  // Beine (Pivot an der Hüfte) — kurze, runde Chibi-Beine + runde Glow-Schuhe
+  function leg(sx){var l=new THREE.Group();l.position.set(sx,-0.28,0);
+    var m=new THREE.Mesh(roundedBoxGeo(0.22,0.36,0.22,0.1),toonMat(pantsCol,pantsCol,0.1));m.position.y=-0.18;l.add(m);OL.push(m);
+    var foot=new THREE.Mesh(roundedBoxGeo(0.26,0.15,0.34,0.07),matS(glowCol,glowCol,0.72));foot.position.set(0,-0.4,0.07);l.add(foot);return l;}
+  var lL=leg(-0.18),lR=leg(0.18);rig.add(lL);rig.add(lR);P.legL=lL;P.legR=lR;
   if(location.search.indexOf("noOutline")<0)addOutline(OL); // dunkle Anime-Kontur um die Silhouette-Teile
   g.userData={parts:P,rig:rig,phase:Math.random()*6.28,blinkT:1.5+Math.random()*2,hairAngle:0};
   return g;}
@@ -459,14 +467,15 @@ var previewR=null,previewScene=null,previewCam=null,prevChar=null;
 (function initPreview(){try{
   var host=document.getElementById("charPrev");if(!host)return;
   previewR=new THREE.WebGLRenderer({antialias:true,alpha:true});
-  previewR.setPixelRatio(Math.min(devicePixelRatio,2));previewR.setSize(120,140);
+  // Immer ≥2× supersamplen (auch bei devicePixelRatio=1) → Vorschau-Figur bleibt scharf, nicht pixelig.
+  previewR.setPixelRatio(Math.max(2,Math.min(devicePixelRatio,2.5)));previewR.setSize(120,140);
   if(THREE.sRGBEncoding)previewR.outputEncoding=THREE.sRGBEncoding;
   host.appendChild(previewR.domElement);
   previewScene=new THREE.Scene();
   previewScene.add(new THREE.AmbientLight(0xffffff,1.4));
   var pl0=new THREE.DirectionalLight(0xffffff,0.9);pl0.position.set(2,4,5);previewScene.add(pl0);
   var pp0=new THREE.PointLight(0xff7ad9,1.1,20);pp0.position.set(-3,1,4);previewScene.add(pp0);
-  previewCam=new THREE.PerspectiveCamera(38,120/140,0.1,50);previewCam.position.set(0,0.25,4.4);previewCam.lookAt(0,0.15,0);
+  previewCam=new THREE.PerspectiveCamera(38,120/140,0.1,50);previewCam.position.set(0,0.5,4.9);previewCam.lookAt(0,0.4,0);
 }catch(e){previewR=null;}})();
 function applyChar(){
   saveChar();
