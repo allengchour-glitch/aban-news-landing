@@ -173,14 +173,14 @@
 #done search:cosmetic bag travel
 #done search:phone crossbody bag
 #done search:coin purse
-search:laptop sleeve
-search:hair clip claw
-search:silk scrunchie
-search:hair scarf
-search:headband wide
-search:hair rollers
-search:hair straightener brush
-search:scalp massager
+#done search:laptop sleeve
+#done search:hair clip claw
+#done search:silk scrunchie
+#done search:hair scarf
+#done search:headband wide
+#done search:hair rollers
+#done search:hair straightener brush
+#done search:scalp massager
 search:wig cap
 search:hair extensions clip
 search:jade roller gua sha
