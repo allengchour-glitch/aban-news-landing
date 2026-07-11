@@ -14,6 +14,12 @@
 <meta property="og:url" content="https://abannews.com/spiele.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06070f">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="aban Arcade">
+<link rel="apple-touch-icon" href="/icons/apple-touch-180.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"aban Arcade","url":"https://abannews.com/spiele.html","inLanguage":"de","about":"Kostenlose Browser-Spiele","publisher":{"@type":"Organization","name":"aban news"}}
 </script>
@@ -114,6 +120,7 @@ footer a{color:var(--purple);text-decoration:none}
 
   <div class="pbar">
     <button class="pname" id="pName" type="button">👤 Namen wählen</button>
+    <button class="pname" id="installBtn" type="button" style="display:none;border-color:#6affc0;color:#eafff5">📲 Als App installieren</button>
     <div class="chips" id="chips" aria-label="Deine Rekorde"></div>
   </div>
 
@@ -294,6 +301,28 @@ footer a{color:var(--purple);text-decoration:none}
       });
     }else if(btn){btn.style.display="none";}
   }catch(e){}
+})();
+// ===== PWA: Service-Worker + Installieren =====
+(function(){
+  if("serviceWorker" in navigator){
+    window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js",{scope:"/"}).catch(function(){});});
+  }
+  var deferred=null,btn=document.getElementById("installBtn");
+  function isStandalone(){return window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;}
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferred=e;if(btn&&!isStandalone())btn.style.display="";});
+  window.addEventListener("appinstalled",function(){if(btn)btn.style.display="none";deferred=null;});
+  if(btn){
+    btn.addEventListener("click",function(){
+      if(deferred){deferred.prompt();deferred.userChoice.finally(function(){deferred=null;btn.style.display="none";});return;}
+      // iOS/Safari kennt beforeinstallprompt nicht → Anleitung zeigen
+      var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+      alert(ios
+        ? "So installierst du aban Arcade:\n\n1) Tippe unten auf das Teilen-Symbol ⬆️\n2) „Zum Home-Bildschirm“ wählen\n3) Fertig — dann startet die Arcade als App!"
+        : "Tippe im Browser-Menü (⋮) auf „App installieren“ bzw. „Zum Startbildschirm hinzufügen“ — dann hast du aban Arcade als App-Icon.");
+    });
+    // Auf iOS/Standalone-fähigen Browsern den Button auch ohne beforeinstallprompt anbieten (ausser bereits installiert)
+    if(!isStandalone()&&/iphone|ipad|ipod/i.test(navigator.userAgent))btn.style.display="";
+  }
 })();
 </script>
 </body>
