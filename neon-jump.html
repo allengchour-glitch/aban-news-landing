@@ -89,8 +89,13 @@ canvas{display:block}
 (function(){
 "use strict";
 var THREE=window.THREE, W=innerWidth, H=innerHeight;
+var IS_MOBILE=("ontouchstart"in window)||(window.matchMedia&&matchMedia("(pointer:coarse)").matches);
+// Pixelratio: Desktop scharf (2×), Mobil auf 1.6× gedeckelt = weit schärfer als der alte Upscale-Matsch,
+// aber ~1/3 weniger Füllrate als volle 2× → balanciert für schwächere Handy-GPUs.
+var PR=Math.min(devicePixelRatio,IS_MOBILE?1.6:2);
+var DW=Math.max(1,Math.round(W*PR)),DH=Math.max(1,Math.round(H*PR)); // echte Render-Auflösung
 var renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
+renderer.setPixelRatio(PR); renderer.setSize(W,H);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x07061a);scene.fog=new THREE.Fog(0x0d0930,70,340);
@@ -98,6 +103,22 @@ var camera=new THREE.PerspectiveCamera(55,W/H,0.1,2000);
 scene.add(new THREE.AmbientLight(0x8a7ab0,1.3));
 var dir=new THREE.DirectionalLight(0xffd9f0,0.8); dir.position.set(-4,8,10); scene.add(dir);
 function mat(c,e,ei){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:ei||1.0,flatShading:true});}
+// Weiche (glatte) Variante für runde Rayman-Formen — kein Facettenlook.
+function matS(c,e,ei){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:ei||1.0,flatShading:false,roughness:0.55,metalness:0.0});}
+// Gerundete, gefaste "Box" (Rayman-Look) via Shape+Extrude mit Bevel — runde Ecken + weiche Kanten.
+var _rbCache={};
+function roundedBoxGeo(w,h,d,r){
+  var key=w.toFixed(2)+"_"+h.toFixed(2)+"_"+d.toFixed(2)+"_"+r.toFixed(2);
+  if(_rbCache[key])return _rbCache[key];
+  var rr=Math.max(0.05,Math.min(r,Math.min(w,h)/2-0.02)),x=-w/2,y=-h/2,sh=new THREE.Shape();
+  sh.moveTo(x+rr,y);sh.lineTo(x+w-rr,y);sh.quadraticCurveTo(x+w,y,x+w,y+rr);
+  sh.lineTo(x+w,y+h-rr);sh.quadraticCurveTo(x+w,y+h,x+w-rr,y+h);
+  sh.lineTo(x+rr,y+h);sh.quadraticCurveTo(x,y+h,x,y+h-rr);
+  sh.lineTo(x,y+rr);sh.quadraticCurveTo(x,y,x+rr,y);
+  var bs=Math.min(0.13,d*0.22,rr*0.8);
+  var g=new THREE.ExtrudeGeometry(sh,{depth:Math.max(0.01,d-bs*2),bevelEnabled:true,bevelThickness:bs,bevelSize:bs,bevelSegments:2,steps:1,curveSegments:5});
+  g.translate(0,0,-d/2);g.computeVertexNormals();_rbCache[key]=g;return g;
+}
 
 // ---- Synthwave-Hintergrund ----
 var skyMat=new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,fog:false,uniforms:{},
@@ -125,8 +146,13 @@ function neonGrid(size,cells,c1,c2){
  var mesh=new THREE.Mesh(new THREE.PlaneGeometry(size,size),m);mesh.rotation.x=-Math.PI/2;return mesh;
 }
 var gridMesh=neonGrid(900,90,0xff2d6f,0x1c1040);gridMesh.position.y=-15;gridMesh.position.z=-40;scene.add(gridMesh);
+// Weiche Radial-Textur für Points (sonst eckige Klötzchen)
+function softDot(){var cv=document.createElement("canvas");cv.width=cv.height=64;var g=cv.getContext("2d");
+  var gr=g.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,"rgba(255,255,255,1)");gr.addColorStop(0.35,"rgba(255,255,255,0.75)");gr.addColorStop(1,"rgba(255,255,255,0)");
+  g.fillStyle=gr;g.beginPath();g.arc(32,32,32,0,6.2832);g.fill();var t=new THREE.Texture(cv);t.needsUpdate=true;return t;}
+var SOFT=softDot();
 // Sterne
-var stG=new THREE.BufferGeometry(),sp=new Float32Array(220*3);for(var s=0;s<220;s++){sp[s*3]=(Math.random()-.5)*520;sp[s*3+1]=Math.random()*100+8;sp[s*3+2]=-190-Math.random()*120;}stG.setAttribute("position",new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(stG,new THREE.PointsMaterial({color:0xd6c6ff,size:0.85,transparent:true,opacity:.75})));
+var stG=new THREE.BufferGeometry(),sp=new Float32Array(220*3);for(var s=0;s<220;s++){sp[s*3]=(Math.random()-.5)*520;sp[s*3+1]=Math.random()*100+8;sp[s*3+2]=-190-Math.random()*120;}stG.setAttribute("position",new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(stG,new THREE.PointsMaterial({color:0xd6c6ff,size:1.2,map:SOFT,transparent:true,opacity:.8,depthWrite:false})));
 
 // ---- Zusätzliche Deko: ferne Skyline, Palmen, schwebende Neon-Kristalle, Funken, Sternschnuppe ----
 var decor=new THREE.Group();scene.add(decor); // Parallax-Ebene (mittlere Tiefe)
@@ -144,7 +170,7 @@ for(var pi2=0;pi2<7;pi2++){var pg=new THREE.Group();
 // Schwebende Neon-Kristalle
 var crystals=[],cCols=[0xff2d6f,0x5ef2ff,0xb98bff,0xffd166];
 for(var ci=0;ci<16;ci++){var cc=cCols[ci%4];
-  var cr=new THREE.Mesh(new THREE.OctahedronGeometry(0.5+Math.random()*0.7,0),mat(cc,cc,1.15));
+  var cr=new THREE.Mesh(new THREE.OctahedronGeometry(0.5+Math.random()*0.7,1),mat(cc,cc,1.15));
   var cyy=5+Math.random()*17,cxp=-18+ci*11+Math.random()*4,czz=-26-Math.random()*30;
   cr.position.set(cxp,cyy,czz);decor.add(cr);
   crystals.push({m:cr,base:cyy,ph:Math.random()*6.28,sp:0.4+Math.random()*0.7});}
@@ -152,14 +178,19 @@ for(var ci=0;ci<16;ci++){var cc=cCols[ci%4];
 var sparkN=48,sparkPos=new Float32Array(sparkN*3),sparkV=[];
 for(var si=0;si<sparkN;si++){sparkPos[si*3]=(Math.random()-.5)*120;sparkPos[si*3+1]=-12+Math.random()*44;sparkPos[si*3+2]=-16-Math.random()*40;sparkV.push(2+Math.random()*3.2);}
 var sparkG=new THREE.BufferGeometry();sparkG.setAttribute("position",new THREE.BufferAttribute(sparkPos,3));
-var sparks=new THREE.Points(sparkG,new THREE.PointsMaterial({color:0xffd6a0,size:0.34,transparent:true,opacity:.85,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(sparks);
+var sparks=new THREE.Points(sparkG,new THREE.PointsMaterial({color:0xffd6a0,size:0.5,map:SOFT,transparent:true,opacity:.85,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(sparks);
 // Sternschnuppe
 var shoot=new THREE.Mesh(new THREE.BoxGeometry(6,0.07,0.07),mat(0xffffff,0xffffff,1.5));shoot.visible=false;scene.add(shoot);var shootT=3+Math.random()*5;
 
 // ---- Bloom ----
 var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
 var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
+// Szene-RenderTarget in ECHTER Geräte-Auflösung (DW×DH) statt CSS-Pixeln → kein Hochskalier-Matsch/Pixel.
+// WebGL2-Multisample (4×) für Kanten-AA im RT, sonst normaler RT-Fallback.
+var rtScene;
+if(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget){rtScene=new THREE.WebGLMultisampleRenderTarget(DW,DH,rtOpt);if(rtScene.samples!==undefined)rtScene.samples=IS_MOBILE?2:4;}
+else rtScene=new THREE.WebGLRenderTarget(DW,DH,rtOpt);
+var bw=Math.max(1,DW>>2),bh=Math.max(1,DH>>2); // Bloom-Blur in Viertel-Auflösung (weich + günstig)
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.78}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
@@ -230,22 +261,24 @@ function buildLevel(idx){
   var L=LEVELS[idx];PLAT=[];COINS=[];coinMeshes=[];SPIKES=[];SWITCHES=[];GATES=[];CHECKS=[];
   L.plats.forEach(function(pl,pi){
     var P2={x:pl.x,y:pl.y,w:pl.w,h:pl.h,x0:pl.x,y0:pl.y,mv:pl.mv||null,spring:!!pl.spring,crumble:!!pl.crumble,cT:0,gone:false};
-    var col=pl.spring?0xffd166:(pl.crumble?0xff8a5c:0x24123f);
-    var pm=new THREE.Mesh(new THREE.BoxGeometry(pl.w,pl.h,3),mat(col,pl.spring?0x6a4a10:(pl.crumble?0x6a2a10:0x2a1650),0.5));
+    var col=pl.spring?0xffb84d:(pl.crumble?0xff7a4c:0x2a1550);
+    // Rayman-Look: gerundete, gefaste Plattform (weiche Kanten) statt harter Box; sanftes Emissive (nicht weiss überstrahlt).
+    var pm=new THREE.Mesh(roundedBoxGeo(pl.w,pl.h,3,Math.min(0.55,pl.h*0.45)),matS(col,pl.spring?0x5a3608:(pl.crumble?0x5a2208:0x241246),0.42));
     pm.position.set(pl.x,pl.y,0);lvlGroup.add(pm);P2.m=pm;
-    var eCol=pl.spring?0xffe08a:(pi%2?0xff7ad9:0x5ef2ff);
-    var edge=new THREE.Mesh(new THREE.BoxGeometry(pl.w,0.16,3.08),mat(eCol,eCol,0.85));
-    edge.position.set(0,pl.h/2+0.02,0);pm.add(edge);
-    var edge2=new THREE.Mesh(new THREE.BoxGeometry(pl.w*0.94,0.09,3.02),mat(eCol,eCol,0.6));
-    edge2.position.set(0,-pl.h/2-0.01,0);pm.add(edge2);
+    var eCol=pl.spring?0xffb02e:(pi%2?0xff3f9f:0x1fc6ff);
+    // Neon-Kantenlicht als schmaler runder Streifen — gesättigt + moderat, damit es FARBIG glüht statt weiss auszubrennen.
+    var edge=new THREE.Mesh(roundedBoxGeo(pl.w*0.94,0.16,3.14,0.08),matS(eCol,eCol,0.5));
+    edge.position.set(0,pl.h/2-0.02,0);pm.add(edge);
+    var edge2=new THREE.Mesh(roundedBoxGeo(pl.w*0.86,0.1,3.04,0.05),matS(eCol,eCol,0.38));
+    edge2.position.set(0,-pl.h/2+0.02,0);pm.add(edge2);
     var studN=Math.max(2,Math.round(pl.w/2.4));
-    for(var st=0;st<studN;st++){var stud=new THREE.Mesh(new THREE.BoxGeometry(0.14,0.14,0.14),mat(eCol,eCol,1.1));
-      stud.position.set(-pl.w/2+0.5+st*((pl.w-1)/Math.max(1,studN-1)),pl.h/2+0.02,1.52);pm.add(stud);}
+    for(var st=0;st<studN;st++){var stud=new THREE.Mesh(new THREE.SphereGeometry(0.1,10,10),matS(eCol,eCol,0.7));
+      stud.position.set(-pl.w/2+0.5+st*((pl.w-1)/Math.max(1,studN-1)),pl.h/2+0.04,1.5);pm.add(stud);}
     PLAT.push(P2);});
   L.coins.forEach(function(c){COINS.push({x:c[0],y:c[1]});
     var cg=new THREE.Group();
-    var cm=new THREE.Mesh(new THREE.TorusGeometry(0.42,0.14,10,20),mat(0xffd166,0xffd166,1.45));cg.add(cm);
-    var ccore=new THREE.Mesh(new THREE.SphereGeometry(0.16,10,10),mat(0xfff3c4,0xfff3c4,1.7));cg.add(ccore);
+    var cm=new THREE.Mesh(new THREE.TorusGeometry(0.42,0.15,14,28),matS(0xffcf33,0xffcf33,1.5));cg.add(cm);
+    var ccore=new THREE.Mesh(new THREE.SphereGeometry(0.17,14,14),matS(0xffdd55,0xffc21a,1.35));cg.add(ccore);
     cg.position.set(c[0],c[1],0);lvlGroup.add(cg);cg.userData={got:false};coinMeshes.push(cg);});
   (L.spikes||[]).forEach(function(sp){SPIKES.push({x:sp[0],y:sp[1],w:sp[2]});
     var n=Math.max(2,Math.round(sp[2]/0.6));
@@ -265,9 +298,9 @@ function buildLevel(idx){
     gm.position.set(gt.x,gt.y+gt.h/2-1,0);lvlGroup.add(gm);
     GATES.push({x:gt.x,y:gt.y+gt.h/2-1,w:gt.w,h:gt.h,id:gt.id,m:gm,open:false});});
   goalX=L.goal.x;goalY=L.goal.y;
-  var goalPole=new THREE.Mesh(new THREE.BoxGeometry(0.25,6,0.25),mat(0xffffff,0xffffff,1.2));goalPole.position.set(goalX,goalY,0);lvlGroup.add(goalPole);
-  goalFlag=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.1,0.1),mat(0x6aff9e,0x6aff9e,1.4));goalFlag.position.set(goalX+0.9,goalY+2,0);lvlGroup.add(goalFlag);
-  var goalBase=new THREE.Mesh(new THREE.BoxGeometry(9,2,3),mat(0x24123f,0x6aff9e,0.9));goalBase.position.set(goalX,goalY-3.2,0);lvlGroup.add(goalBase);
+  var goalPole=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.13,6,10),matS(0xd8b3ff,0xb98bff,0.85));goalPole.position.set(goalX,goalY,0);lvlGroup.add(goalPole);
+  goalFlag=new THREE.Mesh(roundedBoxGeo(1.6,1.1,0.12,0.16),matS(0x39ff9e,0x39ff9e,1.25));goalFlag.position.set(goalX+0.9,goalY+2,0);lvlGroup.add(goalFlag);
+  var goalBase=new THREE.Mesh(roundedBoxGeo(9,2,3,0.5),matS(0x24123f,0x39ff9e,0.75));goalBase.position.set(goalX,goalY-3.2,0);lvlGroup.add(goalBase);
   PLAT.push({x:goalX,y:goalY-3.2,w:9,h:2,x0:goalX,y0:goalY-3.2,mv:null,spring:false,crumble:false,cT:0,gone:false,m:goalBase});
   document.getElementById("lvlTag").textContent="Level "+(idx+1)+" · "+L.name;
 }
@@ -315,8 +348,8 @@ function buildCharacter(def){
   if(female){
     var top=new THREE.Mesh(new THREE.BoxGeometry(0.78,0.3,0.64),mat(hairCol,hairCol,0.25));top.position.y=0.28;hair.add(top);
     [[-0.42],[0.42]].forEach(function(a){var pt=new THREE.Group();pt.position.set(a[0],0.12,0);
-      var b1=new THREE.Mesh(new THREE.SphereGeometry(0.16,8,8),mat(hairCol,hairCol,0.25));b1.position.y=-0.02;pt.add(b1);
-      var b2=new THREE.Mesh(new THREE.SphereGeometry(0.13,8,8),mat(hairCol,hairCol,0.25));b2.position.y=-0.32;pt.add(b2);
+      var b1=new THREE.Mesh(new THREE.SphereGeometry(0.16,14,14),matS(hairCol,hairCol,0.25));b1.position.y=-0.02;pt.add(b1);
+      var b2=new THREE.Mesh(new THREE.SphereGeometry(0.13,14,14),matS(hairCol,hairCol,0.25));b2.position.y=-0.32;pt.add(b2);
       var tie=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.08,0.12),mat(glowCol,glowCol,0.9));tie.position.y=0.12;pt.add(tie);hair.add(pt);});
     if(def.a===0){var bow=new THREE.Group();bow.position.set(0,0.44,0.05);
       var bl=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.16,0.1),mat(glowCol,glowCol,0.9));bl.position.x=-0.12;bl.rotation.z=0.3;bow.add(bl);
@@ -341,11 +374,11 @@ function buildCharacter(def){
   // Antenne
   var ant=new THREE.Group();ant.position.set(0,0.42,-0.05);head.add(ant);P.antenna=ant;
   var stalk=new THREE.Mesh(new THREE.CylinderGeometry(0.028,0.028,0.32,6),mat(0x2a1650,0x2a1650,0.2));stalk.position.y=0.16;ant.add(stalk);
-  var tip=new THREE.Mesh(new THREE.SphereGeometry(0.1,10,10),mat(glowCol,glowCol,1.3));tip.position.y=0.36;ant.add(tip);
+  var tip=new THREE.Mesh(new THREE.SphereGeometry(0.11,14,14),matS(glowCol,glowCol,1.3));tip.position.y=0.36;ant.add(tip);
   // Arme (Pivot an der Schulter)
   function arm(sx){var a=new THREE.Group();a.position.set(sx,0.44,0);
     var m=new THREE.Mesh(new THREE.BoxGeometry(0.16,0.44,0.16),mat(bodyCol,bodyCol,0.4));m.position.y=-0.2;a.add(m);
-    var hand=new THREE.Mesh(new THREE.SphereGeometry(0.1,8,8),mat(SKIN,SKIN,0.1));hand.position.y=-0.42;a.add(hand);return a;}
+    var hand=new THREE.Mesh(new THREE.SphereGeometry(0.11,14,14),matS(SKIN,SKIN,0.1));hand.position.y=-0.42;a.add(hand);return a;}
   var aL=arm(-0.5),aR=arm(0.5);rig.add(aL);rig.add(aR);P.armL=aL;P.armR=aR;
   // Beine (Pivot an der Hüfte) + Glow-Füsse
   function leg(sx){var l=new THREE.Group();l.position.set(sx,-0.3,0);
@@ -360,6 +393,19 @@ var pGlow2=new THREE.PointLight(0x5ef2ff,1.3,14);scene.add(pGlow2);
 // Band zwischen den Läufern (Koop-Signatur wie Neon Duo)
 var bandMat=new THREE.MeshBasicMaterial({color:0xc79aff,transparent:true,opacity:0.55,blending:THREE.AdditiveBlending,depthWrite:false});
 var band=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,1,6),bandMat);band.visible=false;scene.add(band);
+// ---- Bunte Skill-Effekte (jede Aktion eine EIGENE, klare Farbe — bleibt nach Bloom farbig, brennt nicht weiss aus) ----
+var FX=[],FX_RING=new THREE.RingGeometry(0.26,0.42,28);
+function spawnRing(x,y,color,dur,s1){
+  var m=new THREE.Mesh(FX_RING,new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:0.92,blending:THREE.AdditiveBlending,depthWrite:false,depthTest:false,side:THREE.DoubleSide}));
+  m.position.set(x,y,0.9);scene.add(m);FX.push({m:m,t:0,dur:dur||0.42,s1:s1||3.4});
+}
+// Mehrfarbiger Puls (z.B. Doppelsprung cyan+magenta); Ringe leicht versetzt.
+function burst(x,y,cols,s1,dur){for(var i=0;i<cols.length;i++)spawnRing(x,y,cols[i],dur||0.44,(s1||3.4)+i*0.7);}
+function updFX(dt){for(var i=FX.length-1;i>=0;i--){var f=FX[i];f.t+=dt;var k=f.t/f.dur;
+  if(k>=1){scene.remove(f.m);f.m.material.dispose();FX.splice(i,1);continue;}
+  var sc=1+(f.s1-1)*(1-(1-k)*(1-k));f.m.scale.set(sc,sc,sc);f.m.material.opacity=0.92*(1-k)*(1-k);}}
+// Skill-Farbpalette (gesättigt, nicht weiss)
+var FXC={boost:0xffb52e,dj1:0xb98bff,dj2a:0x33e6ff,dj2b:0xff2d92,spring:0x2bff8a,springHi:0xa8ffd0,coin:0xffcf1a,check:0x2bff8a,checkHi:0x9affe0,goal:[0xb98bff,0xffcf1a,0x33e6ff,0xff2d92]};
 // ---- Charakter-Vorschau (kleiner eigener Renderer im Startscreen) ----
 var previewR=null,previewScene=null,previewCam=null,prevChar=null;
 (function initPreview(){try{
@@ -403,7 +449,9 @@ function resetRun(){
   coins=0;deaths=0;won=false;elapsed=0;
   inp=[{L:false,R:false,J:false},{L:false,R:false,J:false}];}
 function respawn(pi){var p=PL[pi];p.x=p.ckX;p.y=p.ckY;p.vx=0;p.vy=0;p.atGoal=false;deaths++;shake=0.55;beep(140,.2,"sawtooth",.08);}
-function doJump(p){if(p.coyote>0||p.jumps<2){p.vy=JUMPV*(p.jumps===0?1:0.92);p.coyote=0;p.jumps++;p.sq=0.6;beep(560+p.jumps*90,.08,"square",.05);}}
+function doJump(p){if(p.coyote>0||p.jumps<2){p.vy=JUMPV*(p.jumps===0?1:0.92);p.coyote=0;p.jumps++;p.sq=0.6;beep(560+p.jumps*90,.08,"square",.05);
+  if(p.jumps>=2)burst(p.x,p.y-0.1,[FXC.dj2a,FXC.dj2b],3.4);   // Doppelsprung: Cyan + Magenta
+  else spawnRing(p.x,p.y-0.6,FXC.dj1,0.34,2.0);}}             // 1. Sprung: dezenter Violett-Puls
 // ---- Eingaben: P1 = WAD, P2 = Pfeile; Handy = Zonen für P1(solo) ----
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();
   if(k==="a")inp[0].L=true;if(k==="d")inp[0].R=true;
@@ -434,6 +482,7 @@ function startGame(coop){coopMode=("ontouchstart"in window&&!coop)?false:coop;
   if("ontouchstart"in window&&!coopMode)touchEl.style.display="block";musSync();}
 function showBest(){var b=bestT();document.getElementById("best2").textContent=b>0?("🏆 Beste Zeit L1: "+b+"s"):"";}
 function finish(win){running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.style.display="none";
+  if(win){for(var gi=0;gi<FXC.goal.length;gi++)spawnRing(goalX,goalY+1,FXC.goal[gi],0.7,4+gi*1.1);} // Ziel: bunter Feier-Puls
   var secs=Math.floor(elapsed);
   if(win){var stars=(coins>=coinMeshes.length?"⭐⭐⭐":(deaths===0?"⭐⭐":"⭐"));
     try{var old=localStorage.getItem("nj_star"+curLvl)||"";if(stars.length>old.length)localStorage.setItem("nj_star"+curLvl,stars);}catch(e){}
@@ -486,7 +535,8 @@ function loop(now){
           if(P.vy<=0){if(P.vy<-11){P.sq=0.55;shake=Math.max(shake,0.18);}
             P.y=p3.y+p3.h/2+HH;P.vy=0;P.onGround=true;P.jumps=0;
             if(p3.mv){P.x+=p3.dx||0;P.y+=p3.dy||0;}
-            if(p3.spring){P.vy=JUMPV*1.55;P.onGround=false;P.sq=0.45;beep(740,.12,"square",.06);}
+            if(p3.spring){P.vy=JUMPV*1.55;P.onGround=false;P.sq=0.45;beep(740,.12,"square",.06);
+              burst(P.x,p3.y+p3.h/2+0.1,[FXC.spring,FXC.springHi],4.2);} // Feder: kräftiges Grün
             if(p3.crumble&&p3.cT===0&&!p3.gone)p3.cT=0.7;
           }else{P.y=p3.y-p3.h/2-HH;P.vy=0;}}}
       // Stacheln
@@ -496,10 +546,10 @@ function loop(now){
       // Checkpoints (gelten für beide)
       for(i=0;i<CHECKS.length;i++){var ck=CHECKS[i];if(!ck.hit&&Math.abs(P.x-ck.x)<1.6&&Math.abs(P.y-ck.y)<2.4){ck.hit=true;
         ck.m.material.color.setHex(0x6aff9e);ck.m.material.emissive.setHex(0x6aff9e);ck.m.material.emissiveIntensity=1.2;
-        PL.forEach(function(q){q.ckX=ck.x;q.ckY=ck.y+1;});beep(880,.1,"triangle",.05);beep(1108,.14,"triangle",.05);}}
+        PL.forEach(function(q){q.ckX=ck.x;q.ckY=ck.y+1;});burst(ck.x,ck.y,[FXC.check,FXC.checkHi],3.6);beep(880,.1,"triangle",.05);beep(1108,.14,"triangle",.05);}}
       // Münzen
       for(i=0;i<coinMeshes.length;i++){var cm2=coinMeshes[i];if(cm2.userData.got)continue;var C=COINS[i];
-        if(Math.abs(P.x-C.x)<0.9&&Math.abs(P.y-C.y)<1.1){cm2.userData.got=true;cm2.visible=false;coins++;beep(1046,.08,"triangle",.05);}}
+        if(Math.abs(P.x-C.x)<0.9&&Math.abs(P.y-C.y)<1.1){cm2.userData.got=true;cm2.visible=false;coins++;spawnRing(C.x,C.y,FXC.coin,0.4,2.6);beep(1046,.08,"triangle",.05);}}
       // Ziel
       P.atGoal=(Math.abs(P.x-goalX)<2.2&&P.y>goalY-3&&P.y<goalY+4);
       P.sq=Math.min(1,P.sq+dt*4);
@@ -609,12 +659,14 @@ function loop(now){
     if(pu.parts.eyeL){pu.parts.eyeL.scale.y=pes;pu.parts.eyeR.scale.y=pes;}
     try{previewR.render(previewScene,previewCam);}catch(e){}
   }
+  updFX(dt);
   updHUD();
   renderBloom();
 }
 function updHUD(){document.getElementById("coins").textContent=coins;document.getElementById("deaths").textContent=deaths;document.getElementById("time").textContent=Math.floor(elapsed)+"s";}
 buildLevel(curLvl);renderLvlSel();showBest();buildPicker();applyChar();requestAnimationFrame(loop);
-addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);
+  DW=Math.max(1,Math.round(W*PR));DH=Math.max(1,Math.round(H*PR));rtScene.setSize(DW,DH);bw=Math.max(1,DW>>2);bh=Math.max(1,DH>>2);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
 })();
 </script>
 </body>
