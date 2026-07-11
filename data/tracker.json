@@ -35,6 +35,10 @@
  ],
  "runs": [
   {
+   "ts": "2026-07-11T13:00:00Z",
+   "was": "NEUE Bestellung #1010: Bluetooth-Kopfhörer Denver TWE-61W (BB-659558, 44.90 CHF, PAID) → BigBuy-API blockiert (ER003) → USER muss manuell im BigBuy-Dashboard bestellen ODER refunden. Versand Belp CH."
+  },
+  {
    "ts": "2026-07-11T10:30:00Z",
    "was": "Runde: Arcade-Hub (spiele.html→ABAN ARCADE, js/arcade.js, 12 Sitemap-URLs) + Eiswürfel-Kaufberater live (PR #1686) + Brain 100/100 + Orders: keine neuen (#1009 wartet auf User-Refund)"
   },
@@ -89,11 +93,7 @@
   {
    "t": "2026-07-10T08:00Z",
    "did": "Marktlücke Sommer-Hitze: Intex Boot + Pool importiert (PR #1663, später DRAFT wegen Konto)"
-  },
-  {
-   "t": "2026-07-10T04:30Z",
-   "did": "2 lieferbar-geprüfte Klimageräte importiert (PR #1662, später DRAFT wegen Konto)"
   }
  ],
- "stand": "2026-07-11: Spiele-Grossausbau live (neon-realm Komplett-Umbau PR #1682, Rollout flug/racer/survivor PR #1684, Arcade-Hub Phase 1). Sommer-Geld-Trio komplett (Gartenpool+Planschbecken+Eiswürfel). Meshy 482/1690 Credits."
+ "stand": "2026-07-11: #1010 offen (BigBuy blockiert). Spiele: Neon-Wildnis live, neon-realm Occlusion-Fix live, Lebenspfad B2 live. Runde 12 läuft (Survivor-Bau + Lebenspfad-Altern)."
 }
