@@ -215,6 +215,15 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 13 — Lebenspfad „jeder Zug muss super sein")
+- [ ] **Juicy Turns**: JEDER Zug soll sich toll anfühlen — Anticipation vor dem Wurf (Würfel-Wackeln,
+      Spannungs-Sound), befriedigender 3D-Würfel mit Bounce+Landing-Impact, Zahl gross aufpoppen,
+      Feld-für-Feld-Hüpfen mit Kamera-Follow + Trail, satter Landungs-Impact (Squash+Ring+Partikel),
+      Belohnungs-Feedback proportional (kleine Gewinne = Pop, grosse = Konfetti+Zoom+Fanfare),
+      Zug-Übergabe klar („Blau ist dran" mit Kamera-Schwenk zur Figur), Near-Miss-Drama
+      (knapp an ❤️ vorbei = „Ooh!"). Ziel: nie langweilig, jeder Klick hat Wumms. Bloom/Bloom-frei
+      egal — es ist Pastell, aber Game-Feel-Prinzipien (Juice) voll ausreizen. OPT.motion respektieren.
+
 ### ✅ STAND 2026-07-11 (Opus-Session, nach Fable-5-Limit) — GELIEFERT & LIVE
 - ✅ **Neon-Wildnis MVP** (neon-wildnis.html, PR #1691): riesige Map 800×800, Bäume fällen (+Holz),
   Steine/Kristalle/Beeren, 5 Bau-Rezepte (Mauer/Fackel/Lagerfeuer/Werkbank/Turm), Tag/Nacht + Slime-
