@@ -63,6 +63,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </head>
 <body>
 <div id="wrap"></div>
+<div id="vign" style="position:fixed;inset:0;z-index:5;pointer-events:none;background:radial-gradient(120% 100% at 50% 42%,transparent 55%,rgba(30,45,60,.10) 82%,rgba(20,32,45,.24) 100%)"></div>
 <div id="hud" class="hide">
   <div class="panel" id="geld">💰 5000</div>
   <div class="panel" id="uhr">🕗 Tag 1 · 08:00</div>
@@ -141,7 +142,7 @@ var IS_TOUCH=navigator.maxTouchPoints>0;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.82;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.78;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd0ea);scene.fog=new THREE.Fog(0x9fd0ea,70,220);
@@ -151,8 +152,8 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
   var pm=new THREE.PMREMGenerator(renderer);pm.compileEquirectangularShader();
   scene.environment=pm.fromEquirectangular(tex).texture;tex.dispose();pm.dispose();
 },undefined,function(){});}catch(e){}}
-var hemi=new THREE.HemisphereLight(0xffffff,0x7a9a6a,0.55);scene.add(hemi);
-var sun=new THREE.DirectionalLight(0xfff2dc,0.85);sun.position.set(26,38,18);scene.add(sun);
+var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
+var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
 sun.shadow.camera.near=5;sun.shadow.camera.far=140;
 sun.shadow.camera.left=-34;sun.shadow.camera.right=34;sun.shadow.camera.top=34;sun.shadow.camera.bottom=-34;
@@ -164,10 +165,15 @@ function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
 var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
-  c.fillStyle="#6db054";c.fillRect(0,0,256,256);
-  for(var i=0;i<2600;i++){c.fillStyle="rgba("+(70+Math.random()*60|0)+","+(140+Math.random()*60|0)+","+(50+Math.random()*40|0)+",0.5)";
+  c.fillStyle="#5a9c44";c.fillRect(0,0,256,256);
+  // weiche große Tonflächen gegen den flachen Look
+  for(var b=0;b<26;b++){var g=c.createRadialGradient(Math.random()*256,Math.random()*256,2,Math.random()*256,Math.random()*256,40+Math.random()*50);
+    g.addColorStop(0,"rgba("+(60+Math.random()*40|0)+","+(120+Math.random()*50|0)+","+(40+Math.random()*30|0)+",0.35)");g.addColorStop(1,"rgba(0,0,0,0)");
+    c.fillStyle=g;c.fillRect(0,0,256,256);}
+  for(var i=0;i<3400;i++){var dk=Math.random()<0.4;c.fillStyle="rgba("+((dk?42:78)+Math.random()*55|0)+","+((dk?96:142)+Math.random()*55|0)+","+((dk?36:52)+Math.random()*36|0)+",0.55)";
     c.fillRect(Math.random()*256,Math.random()*256,2,3);}
-  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(10,8);return t;})();
+  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(14,11);
+  try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
 // Parkett/Fliesen-Texturen

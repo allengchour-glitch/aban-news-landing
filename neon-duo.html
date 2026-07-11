@@ -31,7 +31,7 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
 #wave small{display:block;color:#8b93b8;font-size:.72rem;margin-top:2px}
 #keysHelp{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);font-size:.74rem;text-shadow:0 1px 6px #000;background:rgba(8,10,24,.45);border-radius:20px;padding:5px 14px;white-space:nowrap}
 @media(pointer:coarse){#keysHelp{display:none}}
-#bandTag{position:absolute;top:58px;left:50%;transform:translateX(-50%);font-size:.72rem;font-weight:800;color:#b98bff;text-shadow:0 0 12px #b98bff;opacity:0;transition:opacity .3s}
+#bandTag{position:absolute;top:56px;left:50%;transform:translateX(-50%);font-size:.74rem;font-weight:800;color:#e3d2ff;text-shadow:0 1px 4px #000;opacity:0;transition:opacity .3s;padding:4px 14px;border-radius:20px;background:rgba(28,20,54,.62);border:1px solid rgba(185,139,255,.5);box-shadow:0 0 16px rgba(185,139,255,.35)}
 #hint{position:absolute;bottom:110px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1rem;color:#ffd166;text-shadow:0 2px 10px #000;text-align:center;transition:opacity .3s;opacity:0;max-width:90vw}
 #announce{position:absolute;top:24%;left:0;right:0;text-align:center;font-weight:900;font-size:2rem;letter-spacing:.06em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none}
 #combo{position:absolute;top:34%;left:0;right:0;text-align:center;font-weight:900;font-size:1.3rem;color:#ffd166;text-shadow:0 0 18px #ffd166;opacity:0;transition:opacity .25s;pointer-events:none}
@@ -298,12 +298,12 @@ scene.add(new THREE.Points(ambGeo,new THREE.PointsMaterial({color:0x8fe8ff,map:D
 // ===== Spieler =====
 function mkPlayer(cBody,cRing){
   var g=new THREE.Group();
-  var body=new THREE.Mesh(new THREE.IcosahedronGeometry(0.65,0),mat(0xbfe9ff,cBody));body.position.y=1.0;body.castShadow=true;g.add(body);
+  var body=new THREE.Mesh(new THREE.IcosahedronGeometry(0.65,1),mat(0xdff2ff,cBody,1.2));body.position.y=1.0;body.castShadow=true;g.add(body);
   var rg=new THREE.Mesh(new THREE.TorusGeometry(1.1,0.12,8,22),new THREE.MeshBasicMaterial({color:cRing,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));
   rg.rotation.x=Math.PI/2;rg.position.y=0.15;g.add(rg);
   scene.add(g);return {g:g,body:body,ring:rg};
 }
-var P1=mkPlayer(0x2a6ab0,0x5ef2ff),P2=mkPlayer(0xb06a2a,0xffcf6e);
+var P1=mkPlayer(0x3e9be6,0x5ef2ff),P2=mkPlayer(0xff9a3c,0xffcf6e);
 // Rollen-Props: Details, die die Rollen sofort lesbar machen
 (function(){
   var blade=new THREE.Group();
@@ -332,10 +332,10 @@ if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/char.glb",function(gl)
   P2.body.visible=false;P2.model=fit(gl.scene.clone(true),0xff9a4a);P2.g.add(P2.model);
 },undefined,function(){});}
 // ===== Das Band ===== (mehrschichtiger Energie-Look: heller Kern + weiche Aura + Funken)
-var bandGeo=new THREE.CylinderGeometry(0.06,0.06,1,8,1,true);
-var band=new THREE.Mesh(bandGeo,new THREE.MeshBasicMaterial({color:0xe6d2ff,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
+var bandGeo=new THREE.CylinderGeometry(0.15,0.15,1,20,1,true);
+var band=new THREE.Mesh(bandGeo,new THREE.MeshBasicMaterial({color:0xf3e9ff,transparent:true,opacity:0.95,blending:THREE.AdditiveBlending,depthWrite:false}));
 band.visible=false;scene.add(band);
-var bandHalo=new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,1,10,1,true),new THREE.MeshBasicMaterial({color:0xb98bff,transparent:true,opacity:0.32,blending:THREE.AdditiveBlending,depthWrite:false}));
+var bandHalo=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,1,20,1,true),new THREE.MeshBasicMaterial({color:0xb98bff,transparent:true,opacity:0.42,blending:THREE.AdditiveBlending,depthWrite:false}));
 band.add(bandHalo);
 var bandSparks=(function(){var g=new THREE.BufferGeometry(),n=24,p=new Float32Array(n*3);for(var i=0;i<n;i++){p[i*3]=0;p[i*3+1]=(i/n-0.5);p[i*3+2]=0;}g.setAttribute("position",new THREE.BufferAttribute(p,3));
   var pts=new THREE.Points(g,new THREE.PointsMaterial({color:0xffffff,map:DOT_TEX,size:0.5,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));band.add(pts);return pts;})();
@@ -565,8 +565,8 @@ function updBand(dt){
   if(!on)return;
   band.position.set((P1.g.position.x+P2.g.position.x)/2,1.1,(P1.g.position.z+P2.g.position.z)/2);
   band.scale.set(1,d,1);band.rotation.z=Math.PI/2;band.rotation.y=-Math.atan2(dz,dx);
-  band.material.opacity=0.7+Math.sin(G.t*6)*0.18;
-  bandHalo.material.opacity=0.24+Math.sin(G.t*4+1)*0.1;
+  band.material.opacity=0.82+Math.sin(G.t*6)*0.14;
+  bandHalo.material.opacity=0.38+Math.sin(G.t*4+1)*0.12;
   if(bandSparks){bandSparks.rotation.y=G.t*3;bandSparks.material.opacity=0.6+Math.sin(G.t*11)*0.35;}
   if(net==='client')return; // Client: nur Band-Optik — Schaden rechnet der Host
   // Punkt-zu-Segment-Abstand: Gegner am Band nehmen DoT + Slow

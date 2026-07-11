@@ -15,18 +15,18 @@
 {"@context":"https://schema.org","@type":"Game","name":"Wort des Tages","url":"https://abannews.com/wort-des-tages.html","genre":"Wortspiel","inLanguage":"de","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"aban news"}}
 </script>
 <style>
-:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#6aaa64;--mid:#c9b458;--no:#787c7e;--key:#d3d6da}
+:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#4f9c46;--mid:#d08a1f;--no:#6a6e73;--key:#d3d6da}
 *{box-sizing:border-box}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;min-height:100vh}
 header{border-bottom:1px solid var(--line);text-align:center;padding:10px}
 header b{color:var(--amber);font-size:1.05rem;letter-spacing:.3px}
 header .sub{display:block;font-size:.78rem;color:#6b7280;margin-top:2px}
 main{flex:1;max-width:500px;width:100%;margin:0 auto;padding:10px;display:flex;flex-direction:column;align-items:center}
-h1{font-size:1.25rem;margin:.6rem 0 .2rem;text-align:center}
+h1{font-size:1.6rem;font-weight:900;letter-spacing:.2px;margin:.5rem 0 .25rem;text-align:center}
 .lead{font-size:.85rem;color:#6b7280;margin:0 0 .8rem;text-align:center}
 #board{display:grid;grid-template-rows:repeat(6,1fr);gap:6px;margin:6px 0 10px}
 .row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.tile{width:56px;height:56px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;text-transform:uppercase;color:var(--ink);background:#fff;transition:transform .15s}
+.tile{position:relative;width:56px;height:56px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;text-transform:uppercase;color:var(--ink);background:#fff;transition:transform .15s}
 .tile.filled{border-color:#b9b9b9}
 .tile.pop{transform:scale(1.08)}
 @keyframes wdance{0%,100%{transform:translateY(0)}35%{transform:translateY(-15px)}70%{transform:translateY(0)}}
@@ -34,6 +34,14 @@ h1{font-size:1.25rem;margin:.6rem 0 .2rem;text-align:center}
 .tile.ok{background:var(--ok);border-color:var(--ok);color:#fff}
 .tile.mid{background:var(--mid);border-color:var(--mid);color:#fff}
 .tile.no{background:var(--no);border-color:var(--no);color:#fff}
+/* Redundante Form-Marker: richtig/vorhanden auch ohne Farbunterscheidung erkennbar (Farbenblinde) */
+.tile.ok::after,.tile.mid::after{position:absolute;top:2px;left:4px;font-size:.6rem;font-weight:900;line-height:1;color:rgba(255,255,255,.92)}
+.tile.ok::after{content:"✓"}
+.tile.mid::after{content:"●"}
+.key.ok::after,.key.mid::after{position:absolute;top:2px;right:4px;font-size:.5rem;font-weight:900;line-height:1;color:rgba(255,255,255,.92)}
+.key.ok::after{content:"✓"}
+.key.mid::after{content:"●"}
+.key{position:relative}
 #msg{min-height:22px;font-weight:700;color:var(--amber);font-size:.9rem;text-align:center}
 #kb{width:100%;max-width:500px;margin-top:auto}
 .krow{display:flex;justify-content:center;gap:5px;margin-bottom:6px}
