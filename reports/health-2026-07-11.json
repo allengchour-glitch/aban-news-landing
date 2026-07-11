@@ -1,7 +1,7 @@
 {
-  "ts": "2026-07-11T11:28:23.426Z",
+  "ts": "2026-07-11T17:28:24.124Z",
   "ai": {
-    "groq": "live",
+    "groq": "down",
     "gemini": "live",
     "together": "kein Key",
     "deepseek": "down",
@@ -29,10 +29,9 @@
   },
   "summary": {
     "ai_live": [
-      "groq",
       "gemini"
     ],
-    "ai_live_count": 2,
+    "ai_live_count": 1,
     "automation_ok": true
   }
 }
