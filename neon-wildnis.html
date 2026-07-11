@@ -80,6 +80,15 @@ canvas{display:block}
 .ghost{margin-top:12px;background:none;border:1px solid rgba(180,210,255,.4);color:#cfe;border-radius:30px;padding:10px 22px;font-size:1rem;cursor:pointer}
 #ov a.arc{margin-top:16px;color:#9fb3d8;text-decoration:none;font-size:.95rem}
 #ov a.arc:hover{color:#7de3ff}
+/* Charakter-Picker */
+#charPick{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:560px;margin:4px 0 20px}
+.ccard{min-width:96px;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 12px;border-radius:16px;background:rgba(20,30,60,.7);border:2px solid rgba(120,200,255,.28);color:#e8f4ff;cursor:pointer;font-family:inherit;transition:transform .1s,border-color .1s,box-shadow .1s}
+.ccard:hover{transform:translateY(-2px)}
+.ccard .cemo{font-size:2rem;line-height:1}
+.ccard .cnm{font-weight:800;font-size:.92rem}
+.ccard .cdesc{font-size:.72rem;color:#9fb3d8}
+.ccard.sel{border-color:#6affc0;box-shadow:0 6px 22px rgba(100,240,200,.35);background:rgba(30,52,70,.85)}
+#charLbl{color:#9fb3d8;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;margin-bottom:8px}
 @media(max-width:560px){
   #invBar{gap:5px;padding:6px 9px}
   .inv{font-size:.92rem}
@@ -136,6 +145,8 @@ canvas{display:block}
     <span class="chip"><b>🪓</b> Sammeln/Kämpfen</span>
     <span class="chip"><b>🔨</b> Bauen</span>
   </div>
+  <div id="charLbl">Wähle deinen Helden</div>
+  <div id="charPick"></div>
   <button class="big" id="startBtn">▶ Los geht's</button>
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
   <a class="arc" href="/spiele.html">🕹️ aban Arcade — mehr Spiele</a>
@@ -309,13 +320,39 @@ function makeRig(o,anims){var r={mixer:new THREE.AnimationMixer(o),actions:{},cu
   rigs.push(r);return r;}
 function setAnim(r,name,fade,ts){if(!r||!r.actions[name])return;if(r.cur===name){if(ts!==undefined)r.actions[name].timeScale=ts;return;}var prev=r.cur?r.actions[r.cur]:null;r.cur=name;var a=r.actions[name];a.reset();if(ts!==undefined)a.timeScale=ts;a.play();if(prev)prev.crossFadeTo(a,fade||0.25,false);}
 function playOnce(r,name,ts){if(!r||!r.actions[name])return;var prev=(r.cur&&r.cur!==name)?r.actions[r.cur]:null;r.cur=name;var a=r.actions[name];a.reset();a.timeScale=ts||1;a.play();if(prev)prev.crossFadeTo(a,0.1,false);}
+// ---------- Charaktere (einzigartige, wählbare Helden) ----------
+// glow:"neon" = starkes Meshy-Emissive-Tuning; "soft" = moderat für class_*/hero.glb
+var CHARACTERS=[
+  {id:"held",     emo:"⚡", name:"Held",       desc:"Neon-Anzug",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon"},
+  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Robe & Stab",  file:"class_mage.glb",         scale:1.15, glow:"soft"},
+  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"Kapuze & Bogen",file:"class_ranger.glb",       scale:1.15, glow:"soft"},
+  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"Schwer & stark",file:"class_titan.glb",        scale:1.2,  glow:"soft"},
+  {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft"}
+];
+function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
+function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
 function loadHero(){
   if(!THREE.GLTFLoader)return;
-  new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
-    var o=g.scene;o.scale.setScalar(1.15);
-    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){n.material.emissiveIntensity=1.2;if(n.material.color)n.material.color.multiplyScalar(2.0);}}});
-    pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
-  },undefined,function(){});
+  var C=getChar();
+  new THREE.GLTFLoader().load("/models/"+C.file,function(g){
+    var o=g.scene;o.scale.setScalar(C.scale||1.15);
+    var neon=C.glow==="neon";
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
+      n.material.emissiveIntensity=neon?1.2:0.55;
+      if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
+    }}});
+    pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);
+    // idle tolerant: manche Modelle (hero.glb) haben andere Clip-Namen → Fallback auf ersten Clip
+    if(heroRig.actions.idle)setAnim(heroRig,"idle",0);
+    else if(g.animations&&g.animations[0])setAnim(heroRig,g.animations[0].name,0);
+  },undefined,function(){
+    // Fallback: Standard-Held, falls gewähltes Modell nicht lädt
+    if(C.file!=="hero_meshy_combat2.glb"){new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
+      var o=g.scene;o.scale.setScalar(1.15);
+      o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){n.material.emissiveIntensity=1.2;if(n.material.color)n.material.color.multiplyScalar(2.0);}}});
+      pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
+    },undefined,function(){});}
+  });
 }
 
 // ---------- Monster (Slime, nachts) ----------
@@ -995,13 +1032,13 @@ function frame(now){
   var ml=Math.hypot(mx,my);
   var moving=ml>0.15&&!dead;
   if(moving){
-    var spd=8;var nx=player.position.x+mx/ml*spd*dt*Math.min(1,ml),nz=player.position.z+my/ml*spd*dt*Math.min(1,ml);
+    var spd=8;var nx=player.position.x-mx/ml*spd*dt*Math.min(1,ml),nz=player.position.z-my/ml*spd*dt*Math.min(1,ml);
     // Grenze
     nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
     // Struktur-Kollision (grob)
     var blocked=false;for(var i=0;i<structures.length;i++){var s=structures[i];if(s.type==="wand"&&Math.hypot(s.x-nx,s.z-nz)<1.6){blocked=true;break;}}
     if(!blocked){player.position.x=nx;player.position.z=nz;}
-    if(!buildMode)player.rotation.y=Math.atan2(mx,my);
+    if(!buildMode)player.rotation.y=Math.atan2(-mx,-my);
     if(heroRig&&!ONESHOT[heroRig.cur])setAnim(heroRig,"walk",0.2,ml>0.9?1.3:1.0);
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
@@ -1033,7 +1070,7 @@ function updPrompt(){
 
 // ---------- Start / Pause ----------
 function togglePause(){if(!running)return;paused=!paused;var ov=document.getElementById("ov");
-  if(paused){ov.classList.remove("hide");ov.querySelector("h1").textContent="PAUSE";document.getElementById("startBtn").textContent="▶ Weiter";document.getElementById("newBtn").classList.remove("hide");saveGame();}
+  if(paused){ov.classList.remove("hide");ov.querySelector("h1").textContent="PAUSE";document.getElementById("startBtn").textContent="▶ Weiter";document.getElementById("newBtn").classList.remove("hide");document.getElementById("charLbl").classList.add("hide");document.getElementById("charPick").classList.add("hide");saveGame();}
   else{ov.classList.add("hide");}}
 function startGame(fresh){
   var sv=fresh?null:loadSave();
@@ -1060,6 +1097,23 @@ function startGame(fresh){
   running=true;paused=false;
   announce("🌅 Willkommen in der Wildnis!");
 }
+// ---------- Charakter-Picker (Startscreen) ----------
+(function(){
+  var wrap=document.getElementById("charPick");if(!wrap)return;
+  var curId=getChar().id;
+  function render(){
+    wrap.innerHTML="";
+    CHARACTERS.forEach(function(C){
+      var b=document.createElement("button");
+      b.className="ccard"+(C.id===curId?" sel":"");b.type="button";
+      b.setAttribute("aria-pressed",C.id===curId?"true":"false");
+      b.innerHTML='<span class="cemo">'+C.emo+'</span><span class="cnm">'+C.name+'</span><span class="cdesc">'+C.desc+'</span>';
+      b.onclick=function(){curId=C.id;try{localStorage.setItem("nw_char",C.id);}catch(e){}render();};
+      wrap.appendChild(b);
+    });
+  }
+  render();
+})();
 document.getElementById("startBtn").onclick=function(){if(paused){togglePause();return;}startGame(false);};
 document.getElementById("newBtn").onclick=function(){try{localStorage.removeItem("nw_save1");}catch(e){}location.reload();};
 // Save-Existenz → „Neue Welt" anbieten
