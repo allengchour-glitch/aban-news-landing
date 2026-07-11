@@ -82,7 +82,7 @@ canvas{display:block}
 var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 var renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2)); renderer.setSize(W,H);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x04050d); scene.fog=new THREE.Fog(0x04050d,65,265);
@@ -292,9 +292,10 @@ var natSets=[],natReady=false,NAT_SPAN=N*SP+30;
   var glow=[];for(var d=8,k=0;d<NAT_SPAN;d+=26,k++)glow.push(anchor(d,(k%2?1:-1)*(HALF+6),1.7+Math.random()*0.3));
   build("tree_glow",glow);
   // Baum-/Busch-Mix nahe der Strecke (Offsets 13..32 → nie auf der Fahrbahn)
-  build("tree_leafy",band(14,13,32,1.2,2.0));
-  build("tree_birch",band(10,13,32,1.2,2.0));
-  build("tree_willow",band(6,14,28,1.3,2.0));
+  build("tree_leafy",band(16,13,32,1.2,2.0));
+  build("tree_birch",band(14,13,32,1.2,2.0));
+  // tree_willow entfernt: die pinken Hänge-Strähnen passten nicht in die grüne Landschaft
+  // (User: „der Baum passt nicht") → durch normale grüne Bäume ersetzt (mehr leafy/birch oben).
   build("bush_a",band(10,11,26,1.2,2.2));
   build("bush_b",band(10,11,26,1.2,2.2));
   // Ferner Wald-Gürtel: grosse Silhouetten füllen die Mitte bis zum Bergring
