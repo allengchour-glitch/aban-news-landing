@@ -126,10 +126,10 @@ var trailN=Math.round(14*PFX),trailG=new THREE.BufferGeometry(),trailP=new Float
 for(var _ti=0;_ti<trailN;_ti++){var fdd=1-_ti/trailN;trailCl[_ti*3]=0.37*fdd;trailCl[_ti*3+1]=0.95*fdd;trailCl[_ti*3+2]=1.0*fdd;}
 trailG.setAttribute("position",new THREE.BufferAttribute(trailP,3));trailG.setAttribute("color",new THREE.BufferAttribute(trailCl,3));
 var trailTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,64,64);return new THREE.CanvasTexture(cv);})();
-var trail=new THREE.Points(trailG,new THREE.PointsMaterial({size:0.9,map:trailTex,vertexColors:true,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(trail);
+var trail=new THREE.Points(trailG,new THREE.PointsMaterial({size:0.55,map:trailTex,vertexColors:true,transparent:true,opacity:0.6,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(trail);
 
 // Neon-Canyon-Wände (füllen den leeren Raum, geben "Canyon"-Gefühl)
-var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:0.7,flatShading:true}));
+var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x0b1636,emissive:0x5ef2ff,emissiveIntensity:0.32,flatShading:true}));
 wallL.position.set(-9.6,-0.4,-300);scene.add(wallL);
 var wallR=wallL.clone();wallR.material=wallL.material.clone();wallR.position.x=9.6;scene.add(wallR);
 // Untere Leuchtleisten an den Wänden
@@ -186,7 +186,7 @@ var TRN=Math.round(60*PFX),trail=[],trailGeo=new THREE.BufferGeometry();
 var tpos=new Float32Array(TRN*3);
 for(var i=0;i<TRN;i++){trail.push({x:0,y:0,z:0});}
 trailGeo.setAttribute("position",new THREE.BufferAttribute(tpos,3));
-var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.45,transparent:true,opacity:.75,blending:THREE.AdditiveBlending,depthWrite:false});
+var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.5,map:trailTex,transparent:true,opacity:.6,blending:THREE.AdditiveBlending,depthWrite:false});
 var trailPts=new THREE.Points(trailGeo,trailMat);scene.add(trailPts);
 
 // Object pools
@@ -247,7 +247,10 @@ var BIOMES=[
 ];
 function mult(){return Math.min(9,1+((combo/6)|0));}
 function hex2css(h){return "#"+("000000"+(h>>>0).toString(16)).slice(-6);}
-function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);horizon.material.color.setHex(b.accent);wallL.material.color.setHex(b.accent);wallL.material.emissive.setHex(b.accent);wallR.material.color.setHex(b.accent);wallR.material.emissive.setHex(b.accent);return b;}
+function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);horizon.material.color.setHex(b.accent);
+ wallL.material.color.setHex(b.accent);wallL.material.color.multiplyScalar(0.16);wallL.material.emissive.setHex(b.accent);
+ wallR.material.color.setHex(b.accent);wallR.material.color.multiplyScalar(0.16);wallR.material.emissive.setHex(b.accent);
+ stripL.material.color.setHex(b.accent);stripL.material.emissive.setHex(b.accent);stripR.material.color.setHex(b.accent);stripR.material.emissive.setHex(b.accent);return b;}
 function announce(txt,colorHex){var a=document.getElementById("announce");a.style.color=hex2css(colorHex);a.textContent=txt;a.style.opacity="1";clearTimeout(window._annT);window._annT=setTimeout(function(){a.style.opacity="0";},1300);}
 function nearMiss(){combo++;comboTimer=comboTime;score+=mult();if(shake<0.25)shake=0.25;beep(720+combo*6,.05,"square",.04);}
 function doDash(){if(!running||choosing||paused||dashActive||dashCharge<1)return;dashActive=true;dashTimer=26;dashCharge=0;if(shake<0.6)shake=0.6;burst(shipX,0,1,BIOMES[biomeIndex%BIOMES.length].accent);beep(880,.12,"square",.08);}
@@ -431,9 +434,9 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.62}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.74}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.85}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);vec3 col=b.rgb+g.rgb*strength;gl_FragColor=vec4(vec3(1.0)-exp(-col*1.2),1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.6}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);vec3 col=b.rgb+g.rgb*strength;gl_FragColor=vec4(vec3(1.0)-exp(-col*1.2),1.0);}"});
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
 function renderBloom(){
