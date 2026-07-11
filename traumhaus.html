@@ -212,13 +212,29 @@ var KATALOG={
   {id:"badewanne",n:"Badewanne",e:"🛁",cost:680,size:[2,1],use:{need:"hygiene",pose:"lie",off:[0,0],dur:8}}],
  deko:[
   {id:"lampe",n:"Stehlampe",e:"💡",cost:140,size:[1,1],light:1},
-  {id:"pflanze",n:"Monstera",e:"🪴",cost:110,size:[1,1]}]
+  {id:"pflanze",n:"Monstera",e:"🪴",cost:110,size:[1,1]},
+  {id:"kerzentisch",n:"Kerzen-Dinner",e:"🕯️",cost:380,size:[1,1],love:1},
+  {id:"rosenbogen",n:"Rosenbogen",e:"💒",cost:350,size:[2,1],wed:1}]
 };
 var CATS=[["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
 
 // ===================== Zustand =====================
 var geld=5000,tag=1,uhrzeit=8*60; // Minuten
+var liebe=30,verlobt=false,verheiratet=false,loveEvT=0;
+var skills={arbeit:{lv:1,xp:0},liebe:{lv:1,xp:0}};
+var arbeiten=false; // beide gerade im Buero?
+function skillXp(k,n){
+  if(MPs&&!mpHost)return;
+  var sk=skills[k];sk.xp+=n;
+  var need=sk.lv*5;
+  if(sk.xp>=need){sk.xp-=need;sk.lv++;
+    if(k==="arbeit"){loveScene("💼 BEFÖRDERUNG! Karriere-Level "+sk.lv+" — mehr Gehalt!",3000);
+      beep(659,.15,"triangle",.06);setTimeout(function(){beep(880,.2,"triangle",.07);},180);}
+    else{loveScene("💘 Liebes-Skill Level "+sk.lv+" — euer Herz schlägt schneller!",3000);
+      hearts(sims[0].x,sims[0].z);}
+  }
+  updHUD();}
 var floors={},walls={},furn=[]; // floors["x,y"]=idx · walls["x,y,0|1"]={type} (0=Nordkante,1=Ostkante)
 var floorMeshes={},wallMeshes={};
 var buildMode=false,curItem=null,curRot=0,delMode=false,running=false;
@@ -298,7 +314,7 @@ function doDelete(gx,gy,silent){
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
 function snapshot(){return {floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills};}
 function loadSnapshot(sn){
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
   Object.keys(floorMeshes).forEach(function(k){scene.remove(floorMeshes[k]);});floors={};floorMeshes={};
@@ -307,7 +323,7 @@ function loadSnapshot(sn){
   Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(",");applyWall(+p[0],+p[1],+p[2],sn.walls[k]);});
   (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x,f.y,f.r,f.fid);});
   if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;updHUD();}
+  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;updHUD();}
 function onNetMsg(m){
   if(m.t==="wall")doPlaceWall(m.x,m.y,m.d,m.ty,true);
   else if(m.t==="floor")doPlaceFloor(m.x,m.y,m.i,true);
@@ -320,6 +336,8 @@ function onNetMsg(m){
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});}
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;tag=m.d;}
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
+  else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
+  else if(m.t==="loveEv"){loveEvent(m.k,true);}
 }
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
@@ -445,6 +463,75 @@ function simUse(s,dt){
   if(s.useT<=0){s.state="idle";s.pose="stand";f.busy=false;s.target=null;
     if(u.pose==="lie")s.x+=0.9;
     simEmoji(s,"😊");}}
+// ---- Liebes-System: Nähe, Tanzen, Verlobung, Hochzeit ----
+function loveHud(){return verheiratet?"💍 Verheiratet":(verlobt?"💎 Verlobt":(liebe>=60?"😍 Verliebt":"💑"));}
+function loveScene(txt,dauer){
+  var el=document.getElementById("romKiss");el.style.display="flex";
+  document.getElementById("romTxt").textContent=txt;
+  setTimeout(function(){el.style.display="none";},dauer||3200);}
+function loveEvent(kind,silent){
+  if(kind==="dance"){
+    sims.forEach(function(s2){s2.state="dance";s2.useT=4;s2.pose="stand";simEmoji(s2,"💃");});
+    hearts((sims[0].x+sims[1].x)/2,(sims[0].z+sims[1].z)/2);
+    beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},160);setTimeout(function(){beep(784,.14,"triangle",.05);},320);}
+  else if(kind==="verlobung"){verlobt=true;
+    sims[0].state="propose";sims[0].useT=4.5;sims[1].state="dance";sims[1].useT=4.5;sims[1].pose="stand";
+    simEmoji(sims[0],"💍");simEmoji(sims[1],"😱");
+    loveScene("💍 Max macht Mia einen Antrag … SIE SAGT JA!",4200);
+    for(var hi=0;hi<3;hi++)setTimeout(function(){hearts(sims[1].x,sims[1].z);},hi*600);
+    beep(659,.2,"triangle",.07);setTimeout(function(){beep(880,.3,"triangle",.08);},250);}
+  else if(kind==="hochzeit"){verheiratet=true;
+    loveScene("💒 Max & Mia heiraten unterm Rosenbogen! 🎉",5200);
+    sims.forEach(function(s2){simEmoji(s2,"🥰");s2.needs.spass=100;});
+    for(var hj=0;hj<6;hj++)setTimeout(function(){hearts(sims[0].x+(Math.random()-0.5)*3,sims[0].z+(Math.random()-0.5)*3);},hj*450);
+    [660,830,660,990,880,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.25,"triangle",.06);},i*260);});}
+  if(!silent)netSend({t:"loveEv",k:kind});
+  updHUD();}
+function updWork(dt){
+  if(MPs&&!mpHost)return;
+  var hh=uhrzeit/60;
+  if(!arbeiten&&hh>=9&&hh<17){arbeiten=true;
+    sims.forEach(function(s2){s2.state="work";s2.pose="stand";s2.path=[];s2.target=null;
+      if(s2.target&&s2.target.busy!==undefined)s2.target.busy=false;
+      s2.mesh.visible=false;simEmojiSafe(s2);});
+    hint("💼 Max & Mia arbeiten hart … (bis 17:00)");}
+  else if(arbeiten&&(hh>=17||hh<9)){arbeiten=false;
+    var lohn=2*(100+skills.arbeit.lv*40);
+    geld+=lohn;skillXp("arbeit",1);
+    sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;
+      s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";
+      s2.needs.hunger=Math.max(10,s2.needs.hunger-18);s2.needs.energie=Math.max(10,s2.needs.energie-20);
+      simEmoji(s2,"💰");});
+    hint("💰 Feierabend! +"+lohn+" § Gehalt (Karriere-Lv "+skills.arbeit.lv+")");
+    netSend({t:"geld",v:geld});
+    updHUD();}
+}
+function simEmojiSafe(s2){if(s2.emoji){s2.mesh.remove(s2.emoji);s2.emoji=null;}}
+function updLove(dt){
+  if(MPs&&!mpHost)return;
+  var a=sims[0],b=sims[1];if(!a||!b)return;
+  var d=Math.hypot(a.x-b.x,a.z-b.z);
+  var gain=0;
+  if(d<3)gain+=0.25;
+  for(var i=0;i<furn.length;i++){var f2=furn[i];
+    if(f2.def.love&&Math.hypot(a.x-cx(f2.gx),a.z-cz(f2.gy))<3.5&&Math.hypot(b.x-cx(f2.gx),b.z-cz(f2.gy))<3.5){gain+=0.9;
+      if(Math.random()<0.008){simEmoji(a,"🥂");simEmoji(b,"😍");hearts(cx(f2.gx),cz(f2.gy));}break;}}
+  liebe=Math.min(100,liebe+gain*dt*(1+0.15*(skills.liebe.lv-1)));
+  loveEvT-=dt;
+  if(loveEvT<=0){
+    var frei=(a.state!=="use"&&b.state!=="use"&&a.state!=="work"&&b.state!=="work");
+    if(!verlobt&&liebe>=60&&frei){loveEvT=8;
+      if(d>5){b.x=a.x+1.2;b.z=a.z;b.state="idle";b.path=[];}
+      loveEvent("verlobung");skillXp("liebe",3);return;}
+    if(verlobt&&!verheiratet&&liebe>=95&&frei){
+      var bogen=null;for(var j=0;j<furn.length;j++)if(furn[j].def.wed)bogen=furn[j];
+      if(bogen){loveEvT=10;
+        [a,b].forEach(function(s2,k){s2.state="idle";s2.path=[];s2.target=null;
+          s2.x=cx(bogen.gx)+(k?0.6:-0.6);s2.z=cz(bogen.gy)+0.7;s2.rot=Math.PI;s2.pose="stand";});
+        loveEvent("hochzeit");skillXp("liebe",5);return;}
+      else if(Math.random()<0.3){loveEvT=6;simEmoji(a,"💒");simEmoji(b,"🌹");}}
+    if(a.state==="idle"&&b.state==="idle"&&d<4&&liebe>=40&&Math.random()<0.4){loveEvT=8;loveEvent("dance");skillXp("liebe",1);}
+  }}
 var romT=0,romPair=null;
 function startRomance(bett){
   var a=sims[0],b=sims[1];
@@ -455,14 +542,14 @@ function startRomance(bett){
   netSend({t:"rom",a:0,b:1});}
 function romKuss(){
   simEmoji(sims[0],"😘");simEmoji(sims[1],"💋");hearts((sims[0].x+sims[1].x)/2,(sims[0].z+sims[1].z)/2);
-  sims[0].needs.spass=Math.min(100,sims[0].needs.spass+8);sims[1].needs.spass=Math.min(100,sims[1].needs.spass+8);}
+  sims[0].needs.spass=Math.min(100,sims[0].needs.spass+8);sims[1].needs.spass=Math.min(100,sims[1].needs.spass+8);skillXp("liebe",1);}
 function romScene(a,b,silent){
   // Diskrete Ausblende (wie im Original): Overlay + Herzchen, KEINE explizite Darstellung
   var el=document.getElementById("romKiss");el.style.display="flex";
   document.getElementById("romTxt").textContent=romantik?"Max & Mia turteln … 💞":"Max & Mia kuscheln … 💕";
   hearts(sims[0].x,sims[0].z);
   setTimeout(function(){el.style.display="none";
-    sims.forEach(function(s){s.needs.spass=100;s.needs.energie=Math.max(20,s.needs.energie-15);simEmoji(s,"🥰");});
+    sims.forEach(function(s){s.needs.spass=100;s.needs.energie=Math.max(20,s.needs.energie-15);simEmoji(s,"🥰");});skillXp("liebe",2);
   },3600);
   if(!silent)netSend({t:"rom",a:a,b:b});}
 var heartSprites=[];
@@ -481,7 +568,10 @@ function updSim(s,si,dt,now){
     if(s.net){s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
       s.rot=s.net.r;s.pose=s.net.p;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
   else{
-    NEEDS.forEach(function(nd){s.needs[nd[0]]=Math.max(0,s.needs[nd[0]]-dt*({hunger:0.55,energie:0.4,spass:0.65,hygiene:0.45}[nd[0]]));});
+    if(s.state==="work")return;
+    var ehe=verheiratet?0.82:1;
+    NEEDS.forEach(function(nd){s.needs[nd[0]]=Math.max(0,s.needs[nd[0]]-dt*ehe*({hunger:0.55,energie:0.4,spass:0.65,hygiene:0.45}[nd[0]]));});
+    if(s.state==="dance"||s.state==="propose"){s.useT-=dt;if(s.useT<=0){s.state="idle";}}
     if(s.state==="idle")simThink(s,si);
     else if(s.state==="walk")simWalk(s,dt);
     else if(s.state==="use")simUse(s,dt);
@@ -492,7 +582,15 @@ function updSim(s,si,dt,now){
   // Pose & Animation
   var m=s.mesh,ud=m.userData;
   m.position.set(s.x,0,s.z);m.rotation.set(0,s.rot,0);
-  if(s.pose==="stand"){
+  if(s.state==="dance"){
+    var dtm=now*0.006;
+    m.rotation.y=s.rot+Math.sin(dtm)*0.7;m.position.y=Math.abs(Math.sin(dtm*1.5))*0.18;
+    ud.la.rotation.x=-2.4+Math.sin(dtm*2)*0.4;ud.ra.rotation.x=-2.4-Math.sin(dtm*2)*0.4;
+    ud.ll.rotation.x=Math.sin(dtm*1.5)*0.3;ud.rl.rotation.x=-Math.sin(dtm*1.5)*0.3;}
+  else if(s.state==="propose"){
+    m.position.y=0;ud.ll.rotation.x=-1.5;ud.rl.rotation.x=0.35;m.position.y=-0.18;
+    ud.la.rotation.x=-1.2;ud.ra.rotation.x=-0.2;}
+  else if(s.pose==="stand"){
     if(s.state==="walk"){var sw=Math.sin(s.walkT);
       ud.ll.rotation.x=sw*0.65;ud.rl.rotation.x=-sw*0.65;ud.la.rotation.x=-sw*0.5;ud.ra.rotation.x=sw*0.5;}
     else{ud.ll.rotation.x*=0.85;ud.rl.rotation.x*=0.85;ud.la.rotation.x=Math.sin(now*0.0012+si)*0.06;ud.ra.rotation.x=-Math.sin(now*0.0012+si)*0.06;}
@@ -623,6 +721,12 @@ function updHUD(){
   var hh=Math.floor(uhrzeit/60)%24,mm=Math.floor(uhrzeit%60);
   document.getElementById("uhr").textContent=(hh<6||hh>=21?"🌙":"🕗")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0");
   var nb=document.getElementById("needsBox");nb.innerHTML="";
+  var skr=document.createElement("div");skr.style.cssText="font-size:.72rem;color:#5a4a30;font-weight:800";
+  skr.textContent="💼 Karriere Lv"+skills.arbeit.lv+" · 💘 Liebe Lv"+skills.liebe.lv+(arbeiten?" · bei der Arbeit …":"");
+  nb.appendChild(skr);
+  var lr=document.createElement("div");lr.className="nrow";
+  lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
+  nb.appendChild(lr);
   sims.forEach(function(s){var head=document.createElement("div");head.style.cssText="font-size:.72rem;color:#5a4a30";head.textContent=s.name;nb.appendChild(head);
     NEEDS.forEach(function(nd){var row=document.createElement("div");row.className="nrow";
       var v=Math.round(s.needs[nd[0]]);
@@ -684,7 +788,7 @@ function loop(now){
   var dt=Math.min(0.05,(now-last)/1000);last=now;
   if(running){
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
-    if(!MPs||mpHost){uhrzeit+=dt*120;if(uhrzeit>=1440){uhrzeit-=1440;tag++;}}
+    if(!MPs||mpHost){uhrzeit+=dt*40;if(uhrzeit>=1440){uhrzeit-=1440;tag++;}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-6)/12*Math.PI));
     sun.intensity=0.12+dayA*0.75;hemi.intensity=0.2+dayA*0.28;
@@ -693,10 +797,11 @@ function loop(now){
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?1.1:0;});
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
+    updWork(dt);if(!arbeiten)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};})});
-      if(MPs&&mpHost){netTick++;if(netTick%8===0)netSend({t:"uhr",u:uhrzeit,d:tag});}}
+      if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten});}}}
     saveTick+=dt;if(saveTick>6){saveTick=0;saveGame();}
   }
   renderer.render(scene,camera);
