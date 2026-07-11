@@ -69,7 +69,7 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
 @keyframes mpdots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
 #ping{position:absolute;top:16px;right:112px;font-size:.72rem;font-weight:700;color:#8b93b8;text-shadow:0 1px 4px #000}
 /* ===== Quick-Chat / Emotes ===== */
-#emoteBar{position:absolute;right:12px;bottom:64px;display:flex;gap:4px;pointer-events:auto}
+#emoteBar{position:absolute;right:12px;bottom:104px;display:flex;gap:4px;pointer-events:auto}
 #emoteBar button{min-width:34px;height:34px;padding:0 7px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.78);color:#eaf0ff;font-size:1rem;font-weight:800;cursor:pointer}
 #emoteBar button.txt{font-size:.64rem}
 #emoteBar button:hover{border-color:#5ef2ff}
@@ -1012,7 +1012,7 @@ function netMsg(m){
   // Client: Snapshots + Events vom Host
   if(m.k==='s'){applySnap(m);return;}
   switch(m.e){
-    case 'bg':begin(false,'client');break;
+    case 'bg':if(m.n)setPName(1,m.n);begin(false,'client');sendHello();break;
     case 'an':announce(m.t,m.c);break;
     case 'hi':showHint(m.t,m.m);break;
     case 'wv':document.getElementById("waveTxt").textContent=m.a;document.getElementById("waveSub").textContent=m.b;break;
@@ -1026,7 +1026,7 @@ function netMsg(m){
     case 'rm':peerRematch();break;
   }
 }
-function netBegin(){begin(false,'host');netEv({e:'bg'});}
+function netBegin(){begin(false,'host');netEv({e:'bg',n:names[1]});}
 // ---- Lobby-UI ----
 var mpO=document.getElementById("onlineO"),mpHome=document.getElementById("mpHome"),
     mpHost=document.getElementById("mpHost"),mpJoin=document.getElementById("mpJoin");
@@ -1040,10 +1040,9 @@ function startNet(role){
   net=role;
   netSess.onStatus(netStatus);
   // Namens-Handshake: jeder schickt seinen abanArcade-Namen (reliable, optionales Event —
-  // alte Gegenstellen ignorieren unbekannte Nachrichten einfach)
-  var me=role==='client'?2:1;
-  setPName(me,myName());
-  netEv(role==='host'?{e:'hello',n:names[1]}:{k:'hello',n:names[2]});
+  // alte Gegenstellen ignorieren unbekannte Nachrichten einfach). Zusätzlich trägt das
+  // 'bg'-Start-Event den Host-Namen und der Client antwortet erneut — startreihenfolge-fest.
+  sendHello();
   if(role==='host')netBegin();
   else document.getElementById("mpJoinState").textContent="✅ Verbunden! Der Host startet das Spiel…";
 }
@@ -1150,7 +1149,13 @@ var names={1:"Klinge",2:"Funke"};
 function cleanName(n){return String(n==null?"":n).replace(/[<>&"'`]/g,"").trim().slice(0,12);} // Injection-Schutz + Länge cappen (Anzeige läuft eh über textContent)
 function myName(){var n="";
   try{n=(window.AbanArcade?AbanArcade.profile().name:(JSON.parse(lsGet("abanArcade")||"{}")||{}).name)||"";}catch(e){}
-  n=cleanName(n);return n||(net==='client'?"Funke":"Klinge");}
+  n=cleanName(n);return n||(amGuest()?"Funke":"Klinge");}
+function amGuest(){return net==='client'||!!(netSess&&netSess.role==='join');}
+function sendHello(){ // eigener Name → Gegenseite (reliable); idempotent, mehrfach ok
+  var me=amGuest()?2:1;
+  setPName(me,myName());
+  netEv(me===1?{e:'hello',n:names[1]}:{k:'hello',n:names[2]});
+}
 function setPName(who,n){names[who]=cleanName(n)||(who===1?"Klinge":"Funke");
   document.getElementById("nm"+who).textContent=names[who];}
 setPName(1,"");setPName(2,"");
@@ -1165,7 +1170,7 @@ function updLabels(){
     var nm=document.getElementById("nm"+w);
     if(showN)projEl(nm,P,3.0);else nm.style.display="none";
     var b=document.getElementById("bub"+w);
-    if(G&&performance.now()<bubUntil[w])projEl(b,P,3.9);else b.style.display="none";}
+    if(G&&performance.now()<bubUntil[w])projEl(b,P,4.9);else b.style.display="none";} // Blase deutlich ÜBER dem Namens-Label
 }
 function showBubble(who,i){
   i=Math.max(0,Math.min(EMOTES.length-1,(+i|0)));

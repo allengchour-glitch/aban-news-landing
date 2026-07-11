@@ -101,6 +101,20 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #radPtr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:2rem;color:#e8443a;text-shadow:0 2px 4px rgba(0,0,0,.3);z-index:2}
 @keyframes cardPulse{0%,100%{box-shadow:0 3px 10px rgba(60,40,10,.18)}50%{box-shadow:0 3px 18px rgba(255,170,60,.5)}}
 .pcard.on{animation:cardPulse 2.6s ease-in-out infinite}
+/* Karten-Flip beim Aufdecken (Pass B1) */
+@keyframes cardFlip{0%{transform:translate(-50%,-50%) perspective(900px) rotateY(86deg) scale(.94)}100%{transform:translate(-50%,-50%) perspective(900px) rotateY(0deg) scale(1)}}
+#card.on{animation:cardFlip .4s cubic-bezier(.2,.9,.3,1)}
+/* Besitz-Reihe unter der Spieler-Scorekarte */
+.pcard .items{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
+.pcard .items span{pointer-events:auto;cursor:pointer;font-size:18px;line-height:28px;min-width:28px;height:28px;text-align:center;background:rgba(255,255,255,.6);border:1px solid rgba(120,110,80,.28);border-radius:8px;box-shadow:0 1px 0 rgba(120,110,80,.15)}
+/* Charakter-Picker (Startscreen) */
+.charCard{background:#fffdf6;border-radius:14px;padding:8px 8px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:0 4px 14px rgba(60,40,10,.15)}
+.charCard canvas{border-radius:10px;background:linear-gradient(180deg,#dff2ff,#f8f0dc)}
+.charCard .crow{display:flex;gap:5px;align-items:center;justify-content:center}
+.charCard button{border:2px solid #d8c8a0;background:#fffdf6;border-radius:10px;min-width:44px;min-height:44px;font-size:1.15rem;cursor:pointer;font-weight:900;color:#3a4252;padding:0 6px}
+.charCard button.on{border-color:#ff8c2a;box-shadow:0 0 10px rgba(255,150,40,.45);background:#fff6e2}
+.charCard .lbl{font-size:.72rem;font-weight:800;color:#6a7282;min-width:96px;text-align:center}
+.charCard .skin{min-width:34px!important;min-height:34px!important;border-radius:50%!important;padding:0!important}
 </style>
 </head>
 <body>
@@ -155,6 +169,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
   <div class="pselect" id="pselect"></div>
   <div id="nameRow" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0"></div>
+  <div id="charRow" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:4px 0 8px"></div>
   <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e8b0b0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700">
     <input type="checkbox" id="adultChk" style="width:18px;height:18px;accent-color:#e84a3a"> 🔞 Echtes-Leben-Modus (ab 18): frecher Humor, echte Risiken — <b>der Tod spielt mit</b></label>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
@@ -611,9 +626,9 @@ var fieldSprites=[];
   sp.position.set(f.x,f.type==="m"?2.6:1.8,f.z);scene.add(sp);fieldSprites.push({sp:sp,b:Math.random()*6.28,y0:sp.position.y});}})();
 // Konfetti (physisch fallende Farb-Plättchen)
 var confs=[];
-function confetti(x,z,accent){
+function confetti(x,z,accent,n){
   var cols=[0xffa8b8,0x9ac8ff,0xa8e0a0,0xffe09a,0xffc0e0,accent||0xffffff];
-  for(var i=0;i<26;i++){var m=new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.18),
+  for(var i=0;i<(n||26);i++){var m=new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.18),
     new THREE.MeshBasicMaterial({color:cols[(Math.random()*cols.length)|0],side:THREE.DoubleSide}));
     m.position.set(x+(Math.random()-0.5)*2,3.5+Math.random()*2,z+(Math.random()-0.5)*2);
     scene.add(m);
@@ -693,13 +708,25 @@ function upgradePawn(i){
   for(var c=pawns[i].children.length-2;c>=0;c--)if(pawns[i].children[c]!==m)pawns[i].children[c].visible=false;
   pawns[i].userData.upgraded=true;}
 var PNAMES=["Rot","Blau","Grün","Gold"];
-var SKINS=[0xffd9b0,0xf0c090,0xd9a06a,0xa8764a];var HAIRS=[0x3a2a1a,0x8a5a2a,0xd9b45e,0x2a2a34,0xb84a2a];
-var _pawnN=0;
-function mkPawn(color){
-  // Laufende Minifigur: Kopf, Torso, Hose, schwingende Arme + Beine — jede ein eigener kleiner Mensch
-  var pi5=_pawnN++;
-  var g=new THREE.Group(),cm=mat(color,color,0.12),skin=mat(SKINS[pi5%SKINS.length],0x3a2a1a,0.05);
-  var pants=mat(0x3a4a6a);var hair=mat(HAIRS[(pi5*2+1)%HAIRS.length]);
+var HAIRS=[0x3a2a1a,0x8a5a2a,0xd9b45e,0x2a2a34,0xb84a2a];
+// ===== Charakter-System (Pass B1): Frau/Mann + 4 Styles + 3 Hauttöne, pro Spieler wählbar =====
+var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
+var CHAR_STYLES=[{i:"🧢",n:"Basecap"},{i:"🌸",n:"Blumenkranz"},{i:"👓",n:"Brille"},{i:"🎩",n:"Hut"}];
+var SKINTONES=[0xffd9b0,0xdba46e,0x9a6a42];
+function loadChar(i){ // defensiv lesen: kaputte/fehlende Daten -> hübscher Default (jeder Spieler anders)
+  try{var c=JSON.parse(lsGet(CHARKEYS[i]||"")||"");
+    if(c&&(c.g==="f"||c.g==="m"))return {g:c.g,style:Math.max(0,Math.min(3,c.style|0)),skin:Math.max(0,Math.min(2,c.skin|0))};}catch(e){}
+  return {g:i%2?"m":"f",style:i%4,skin:i%3};}
+function saveChar(i,c){if(CHARKEYS[i])lsSet(CHARKEYS[i],JSON.stringify(c));}
+function seededChar(seed,i){ // Online: deterministischer Look aus dem Spiel-Seed (alle Clients gleich)
+  var n=(((seed>>>0)+i*2654435761)>>>0);n^=n>>>15;n=(n*2246822519)>>>0;
+  return {g:(n&1)?"m":"f",style:(n>>>1)%4,skin:(n>>>3)%3};}
+function mkPawn(color,cfg){var g=mkPawnMesh(color,cfg);scene.add(g);return g;}
+function mkPawnMesh(color,cfg){
+  // Laufende Minifigur: Kopf, Torso, schwingende Arme + Beine — Look aus cfg (g/style/skin)
+  cfg=cfg||{g:"m",style:0,skin:0};
+  var g=new THREE.Group(),cm=mat(color,color,0.12),skin=mat(SKINTONES[cfg.skin%SKINTONES.length],0x3a2a1a,0.05);
+  var pants=mat(0x3a4a6a);var hair=mat(HAIRS[(cfg.style*2+cfg.skin+(cfg.g==="m"?1:0))%HAIRS.length]);
   function limb(w,h,px,py,m2){var pivot=new THREE.Group();pivot.position.set(px,py,0);
     var mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,w),m2||cm);mesh.position.y=-h/2;mesh.castShadow=true;
     pivot.add(mesh);g.add(pivot);return pivot;}
@@ -709,27 +736,54 @@ function mkPawn(color){
     shoe.position.set(0,-0.52,0.04);shoe.castShadow=true;lp3.add(shoe);});
   var torso=new THREE.Mesh(new THREE.BoxGeometry(0.55,0.6,0.34),cm);torso.position.y=0.82;torso.castShadow=true;g.add(torso);
   var belt=new THREE.Mesh(new THREE.BoxGeometry(0.56,0.08,0.35),mat(0x4a3a28));belt.position.y=0.54;g.add(belt);
+  if(cfg.g==="f"){ // Rock (Team-Farbe, leicht dunkler) über den Hüften
+    var skirt=new THREE.Mesh(new THREE.ConeGeometry(0.44,0.5,10),mat(new THREE.Color(color).multiplyScalar(0.82).getHex(),color,0.08));
+    skirt.position.y=0.42;skirt.castShadow=true;g.add(skirt);}
   var la=limb(0.16,0.5,-0.36,1.06,skin),ra=limb(0.16,0.5,0.36,1.06,skin);
   [la,ra].forEach(function(ap4){var sleeve=new THREE.Mesh(new THREE.BoxGeometry(0.19,0.18,0.19),cm);sleeve.position.y=-0.08;ap4.add(sleeve);});
   // Hände (Haut-Kugeln an den Arm-Enden)
   [la,ra].forEach(function(ap3){var hand=new THREE.Mesh(new THREE.SphereGeometry(0.09,6,5),skin);
     hand.position.y=-0.52;ap3.add(hand);});
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.3,10,8),skin);head.position.y=1.4;head.castShadow=true;g.add(head);
-  var cap=new THREE.Mesh(new THREE.SphereGeometry(0.31,10,6,0,6.283,0,1.2),cm);cap.position.y=1.44;g.add(cap);
-  var schirm=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.05,10,1,false,0,Math.PI),cm);
-  schirm.rotation.y=-Math.PI/2;schirm.position.set(0,1.5,0.18);g.add(schirm);
+  if(cfg.style===0){ // 🧢 Basecap (Team-Farbe)
+    var cap=new THREE.Mesh(new THREE.SphereGeometry(0.31,10,6,0,6.283,0,1.2),cm);cap.position.y=1.44;g.add(cap);
+    var schirm=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.05,10,1,false,0,Math.PI),cm);
+    schirm.rotation.y=-Math.PI/2;schirm.position.set(0,1.5,0.18);g.add(schirm);}
+  else{ // Haar-Deckel, wenn keine Kappe
+    var hairTop=new THREE.Mesh(new THREE.SphereGeometry(0.315,10,6,0,6.283,0,1.25),hair);hairTop.position.y=1.43;g.add(hairTop);}
+  if(cfg.style===1){ // 🌸 Blumenkranz
+    var kranz=new THREE.Mesh(new THREE.TorusGeometry(0.27,0.045,6,14),mat(0x4a8a3a,0x2a5a20,0.15));
+    kranz.rotation.x=Math.PI/2;kranz.position.y=1.6;g.add(kranz);
+    [0xff9ab8,0xffd166,0xffffff,0xff9ab8,0xffd166].forEach(function(fc,fi){var a=fi/5*6.283;
+      var fl=new THREE.Mesh(new THREE.SphereGeometry(0.055,6,5),mat(fc,fc,0.35));
+      fl.position.set(Math.cos(a)*0.27,1.61,Math.sin(a)*0.27);g.add(fl);});}
+  if(cfg.style===2){ // 👓 Brille
+    var gm=mat(0x2a3040,0x000000,0);
+    [[-0.11],[0.11]].forEach(function(gp2){var ring=new THREE.Mesh(new THREE.TorusGeometry(0.085,0.02,6,12),gm);
+      ring.position.set(gp2[0],1.42,0.285);g.add(ring);});
+    var bridge=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.02,0.02),gm);bridge.position.set(0,1.43,0.29);g.add(bridge);}
+  if(cfg.style===3){ // 🎩 Hut (braun mit Team-Band)
+    var hm=mat(0x6a4a2a,0x2a1a0a,0.08);
+    var brim=new THREE.Mesh(new THREE.CylinderGeometry(0.43,0.43,0.045,12),hm);brim.position.y=1.56;g.add(brim);
+    var top=new THREE.Mesh(new THREE.CylinderGeometry(0.24,0.27,0.32,12),hm);top.position.y=1.74;g.add(top);
+    var band=new THREE.Mesh(new THREE.CylinderGeometry(0.275,0.28,0.09,12),cm);band.position.y=1.63;g.add(band);}
+  if(cfg.g==="f"){ // Zöpfe seitlich + längeres Haar hinten
+    [[-0.3],[0.3]].forEach(function(zp){var z1=new THREE.Mesh(new THREE.SphereGeometry(0.11,8,6),hair);
+      z1.position.set(zp[0],1.36,-0.06);z1.scale.y=1.5;g.add(z1);
+      var tie=new THREE.Mesh(new THREE.SphereGeometry(0.05,6,5),cm);tie.position.set(zp[0],1.46,-0.05);g.add(tie);});
+    var lang=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.34,0.12),hair);lang.position.set(0,1.3,-0.22);g.add(lang);}
+  else{var backhair=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.18,0.12),hair);backhair.position.set(0,1.4,-0.22);g.add(backhair);}
   var mouth=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.03,0.02),mat(0x8a4a3a));mouth.position.set(0,1.3,0.29);g.add(mouth);
   var nose=new THREE.Mesh(new THREE.SphereGeometry(0.045,6,5),skin);nose.position.set(0,1.37,0.3);g.add(nose);
-  var fringe=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.07,0.1),hair);fringe.position.set(0,1.52,0.24);g.add(fringe);
-  var backhair=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.18,0.12),hair);backhair.position.set(0,1.4,-0.22);g.add(backhair);
-  g.userData.head=head;g.userData.mouth=mouth;
-  // Gesicht: zwei Augen (winzige dunkle Kugeln)
+  var fringe=new THREE.Mesh(new THREE.BoxGeometry(cfg.g==="f"?0.44:0.4,0.07,0.1),hair);fringe.position.set(0,1.52,0.24);g.add(fringe);
+  g.userData.head=head;g.userData.mouth=mouth;g.userData.cfg=cfg;
+  // Gesicht: zwei Augen (winzige dunkle Kugeln) + Wimpern-Andeutung bei Frau
   g.userData.eyes=[];
   [[-0.11],[0.11]].forEach(function(e){var eye=new THREE.Mesh(new THREE.SphereGeometry(0.045,6,5),mat(0x222430,0x000000,0));
     eye.position.set(e[0],1.42,0.26);g.add(eye);g.userData.eyes.push(eye);});
   g.userData.blinkT=1+Math.random()*3;
   g.userData.limbs={ll:ll,rl:rl,la:la,ra:ra};g.userData.walk=0;
-  scene.add(g);return g;}
+  return g;}
 function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
   pw.userData.emote={k:kind,t:0};}
 function updEmotes(dt){
@@ -762,18 +816,85 @@ function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
       if(pw.userData.lookT<=0){pw.userData.lookT=3+Math.random()*4;pw.userData.lookDir=(Math.random()-0.5)*1.1;}
       pw.userData.head.rotation.y+=((Math.abs(pw.userData.lookT-1.2)<1?pw.userData.lookDir:0)-pw.userData.head.rotation.y)*Math.min(1,dt*4);
       pw.userData.head.rotation.x*=Math.max(0,1-dt*6);}}
-  // Lande-Squash abklingen
+  // Lande-Squash abklingen; im Flug leichter Stretch (Squash&Stretch beim Hüpfen)
   if(pw.userData.squash>0){pw.userData.squash-=dt*5;
     var q=Math.max(0,pw.userData.squash);pw.scale.set(1.35*(1+q*0.25),1.35*(1-q*0.3),1.35*(1+q*0.25));}
-  else pw.scale.set(1.35,1.35,1.35);}
+  else{var st2=pw.userData.stretch||0;pw.scale.set(1.35*(1-st2*0.08),1.35*(1+st2*0.14),1.35*(1-st2*0.08));}}
 function animWalk(pw,moving,dt){
   animLife(pw,dt,moving);
   if(pw.userData.emote)return; // Emote hat Vorrang
   var L=pw.userData.limbs;if(!L)return;
+  if(pw.userData.driving){ // 🚗 Fahr-Pose: Hände ans Lenkrad, Beine bleiben ruhig (versteckt)
+    L.la.rotation.x=-1.05;L.ra.rotation.x=-1.05;L.la.rotation.z=0.14;L.ra.rotation.z=-0.14;return;}
   if(moving){pw.userData.walk+=dt*11;var sw=Math.sin(pw.userData.walk)*0.75;
     L.ll.rotation.x=sw;L.rl.rotation.x=-sw;L.la.rotation.x=-sw*0.8;L.ra.rotation.x=sw*0.8;}
   else{["ll","rl","la","ra"].forEach(function(k){L[k].rotation.x*=Math.max(0,1-dt*8);});
     L.la.rotation.z=0.08+Math.sin(performance.now()*0.002)*0.04;L.ra.rotation.z=-0.08-Math.sin(performance.now()*0.002)*0.04;}}
+// ===================== 🚗 Besitz: Auto (Low-Poly-Cabrio in Team-Farbe, Figur fährt) =====================
+function enableCar(i){
+  var pw=pawns[i];if(!pw)return;
+  if(pw.userData.car){syncCarSeats(i);return;}
+  var col=(G&&G.players[i])?G.players[i].col:PCOLORS[i%PCOLORS.length];
+  var car=new THREE.Group(),bodyM=mat(col,col,0.18),dark=mat(0x2a2a34,0x000000,0);
+  var body=new THREE.Mesh(new THREE.BoxGeometry(1.0,0.42,1.9),bodyM);body.position.y=0.6;body.castShadow=true;car.add(body);
+  var hood=new THREE.Mesh(new THREE.BoxGeometry(0.92,0.16,0.5),bodyM);hood.position.set(0,0.86,0.68);car.add(hood); // Motorhaube
+  var heck=new THREE.Mesh(new THREE.BoxGeometry(0.92,0.16,0.3),bodyM);heck.position.set(0,0.86,-0.82);car.add(heck);
+  var cockpit=new THREE.Mesh(new THREE.BoxGeometry(0.84,0.05,1.0),dark);cockpit.position.set(0,0.82,-0.1);car.add(cockpit); // offenes Cabrio innen
+  var shield=new THREE.Mesh(new THREE.PlaneGeometry(0.8,0.34),new THREE.MeshStandardMaterial({color:0xbfe4ff,transparent:true,opacity:0.5,side:THREE.DoubleSide,flatShading:true}));
+  shield.position.set(0,1.05,0.42);shield.rotation.x=-0.32;car.add(shield); // Windschutzscheibe
+  var lenk=new THREE.Mesh(new THREE.TorusGeometry(0.13,0.03,6,12),dark);lenk.position.set(0,0.98,0.3);lenk.rotation.x=-0.9;car.add(lenk); // Lenkrad
+  [[-0.44,0.55],[0.44,0.55],[-0.44,-0.62],[0.44,-0.62]].forEach(function(sp){ // Scheinwerfer/Rücklichter
+    var li=new THREE.Mesh(new THREE.SphereGeometry(0.06,6,5),mat(sp[1]>0?0xfff2b0:0xff5a4a,sp[1]>0?0xfff2b0:0xff5a4a,0.7));
+    li.position.set(sp[0]*0.86,0.68,sp[1]>0?0.96:-0.96);car.add(li);});
+  var wheels=[];
+  [[-0.52,0.6],[0.52,0.6],[-0.52,-0.6],[0.52,-0.6]].forEach(function(wp){
+    var wg=new THREE.CylinderGeometry(0.24,0.24,0.14,10);wg.rotateZ(Math.PI/2);
+    var w=new THREE.Mesh(wg,dark);w.position.set(wp[0],0.24,wp[1]);w.castShadow=true;car.add(w);
+    var hub=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.09,0.15,8).rotateZ(Math.PI/2),mat(0xd8d8e0,0x8a8a96,0.2));
+    hub.position.copy(w.position);car.add(hub);wheels.push(w);});
+  pw.add(car);
+  pw.userData.car=car;pw.userData.wheels=wheels;pw.userData.driving=true;
+  var L=pw.userData.limbs;if(L){L.ll.visible=false;L.rl.visible=false;} // Beine sitzen im Auto
+  syncCarSeats(i);syncFam(i);
+}
+function syncCarSeats(i){ // Partner/Kinder/Hund sitzen sichtbar mit im Auto (kleine Extra-Köpfe hinten)
+  var pw=pawns[i];if(!pw||!pw.userData.car||!G||!G.players[i])return;
+  var car=pw.userData.car,fam=G.players[i].fam||{};
+  if(car.userData.seats)car.remove(car.userData.seats);
+  var s=new THREE.Group(),sk=mat(0xffd9b0,0x3a2a1a,0.05);
+  if(fam.partner){var h=new THREE.Mesh(new THREE.SphereGeometry(0.19,8,7),sk);h.position.set(0.24,1.0,-0.58);s.add(h);
+    var hh=new THREE.Mesh(new THREE.SphereGeometry(0.2,8,6,0,6.283,0,1.25),mat(0x8a5a2a));hh.position.set(0.24,1.03,-0.58);s.add(hh);
+    var he=new THREE.Mesh(new THREE.SphereGeometry(0.028,5,4),mat(0x222430,0x000000,0));he.position.set(0.24,1.0,-0.4);s.add(he);}
+  for(var k=0;k<Math.min(2,fam.kids||0);k++){
+    var kh=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,7),sk);kh.position.set(k?-0.02:-0.26,0.94,-0.6);s.add(kh);
+    var kc=new THREE.Mesh(new THREE.SphereGeometry(0.145,8,5,0,6.283,0,1.1),mat(k?0x6ab8ff:0xffd166));kc.position.set(k?-0.02:-0.26,0.97,-0.6);s.add(kc);}
+  if(fam.dog){var dh=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.18,0.2),mat(0xb8834a,0x6a4a2a,0.08));dh.position.set(-0.3,0.96,-0.35);s.add(dh);
+    [[-0.36],[-0.24]].forEach(function(de){var ear=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.11,0.04),mat(0x8a5c32));ear.position.set(de[0],1.08,-0.35);s.add(ear);});
+    var dn=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.07,0.08),mat(0x3a2a1a));dn.position.set(-0.3,0.93,-0.24);s.add(dn);}
+  car.add(s);car.userData.seats=s;
+}
+// Staub-Puffs beim Landen eines Hüpfers (nutzt das Konfetti-Update)
+function dustPuff(x,z){if(!OPT.motion)return;
+  for(var i=0;i<5;i++){var m=new THREE.Mesh(new THREE.PlaneGeometry(0.3+Math.random()*0.2,0.3),
+    new THREE.MeshBasicMaterial({color:0xf0e4cc,transparent:true,opacity:0.7,side:THREE.DoubleSide,depthWrite:false}));
+    m.position.set(x+(Math.random()-0.5)*0.8,0.18,z+(Math.random()-0.5)*0.8);
+    m.rotation.set(-Math.PI/2,0,Math.random()*3.14);scene.add(m);
+    confs.push({m:m,vx:(Math.random()-0.5)*1.6,vy:0.5,vz:(Math.random()-0.5)*1.6,rx:0,rz:0,life:0.45,heart:true});}}
+// 💰 Geld-Regen bei grossen Gewinnen (Münz-Sprites fallen ~1s)
+var _coinTex=null;
+function moneyRain(x,z,n){if(!OPT.motion)return;
+  if(!_coinTex){var cv=document.createElement("canvas");cv.width=cv.height=256;var cx=cv.getContext("2d");
+    cx.font="192px serif";cx.textAlign="center";cx.textBaseline="middle";cx.fillText("🪙",128,142);_coinTex=crispTex(cv);}
+  for(var i=0;i<(n||12);i++){var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:_coinTex,transparent:true}));
+    sp.scale.setScalar(0.5+Math.random()*0.3);
+    sp.position.set(x+(Math.random()-0.5)*3.2,4+Math.random()*2.5,z+(Math.random()-0.5)*3.2);scene.add(sp);
+    confs.push({m:sp,vx:(Math.random()-0.5)*0.6,vy:-1-Math.random()*1.5,vz:(Math.random()-0.5)*0.6,rx:0,rz:0,life:1+Math.random()*0.4,heart:false});}
+  beep(1046,.08,"triangle",.05);setTimeout(function(){beep(1318,.08,"triangle",.05);},110);setTimeout(function(){beep(1568,.14,"triangle",.05);},220);}
+// 💧 Tröpfchen bei schlechten Feldern
+function tears(x,z){if(!OPT.motion)return;
+  for(var i=0;i<4;i++){var sp=emojiSprite("💧",0.45+Math.random()*0.2);
+    sp.position.set(x+(Math.random()-0.5)*0.9,2.3,z+(Math.random()-0.5)*0.9);scene.add(sp);
+    confs.push({m:sp,vx:(Math.random()-0.5)*0.4,vy:-0.4,vz:(Math.random()-0.5)*0.4,rx:0,rz:0,life:0.9,heart:false});}}
 // ===================== Familie: Mini-Figuren laufen hinterher =====================
 var KIDNAMES=["Mio","Lena","Ben","Ida","Noah","Mara"];
 function syncFam(i){
@@ -801,13 +922,19 @@ function syncFam(i){
       var h=new THREE.Mesh(new THREE.SphereGeometry(0.26*scale,8,6),mat(isPartner?0xffd8e8:0xffe8b0));h.position.y=0.95*scale;g.add(h);}
     g.position.copy(pw.position);scene.add(g);pw.followers.push(g);}
   while(pw.followers.length>want){var f=pw.followers.pop();scene.remove(f);}
+  // Auto-Besitz: Familie sitzt im Auto (kleine Köpfe) statt hinterherzulaufen
+  var inCar=!!(pw.userData&&pw.userData.driving);
+  for(var fv2=0;fv2<pw.followers.length;fv2++)pw.followers[fv2].visible=!inCar;
+  if(inCar)syncCarSeats(i);
 }
 function weddingScene(i){
   var pw=pawns[i];
-  // Hochzeitsglocken (Terz-Geläut) + Herzregen + Konfetti
+  // Hochzeitsglocken (Terz-Geläut) + Herzregen + Konfetti + 💋 (familienfreundlich)
   [659.25,523.25,659.25,783.99,659.25].forEach(function(f,k){setTimeout(function(){beep(f,.5,"triangle",.07);beep(f/2,.7,"sine",.04);},k*320);});
   for(var w2=0;w2<3;w2++)setTimeout(function(){hearts(pw.position.x,pw.position.z);},w2*400);
   confetti(pw.position.x,pw.position.z,0xff9ad9);
+  var kiss=emojiSprite("💋",1.3);kiss.position.set(pw.position.x,2.6,pw.position.z);scene.add(kiss);
+  confs.push({m:kiss,vx:0,vy:1.0,vz:0,rx:0,rz:0,life:2.0,heart:true});
   announce("💒 HOCHZEIT!","#ff5db8");camShake=0.4;
 }
 var storks=[];
@@ -872,7 +999,7 @@ var SAVE_KEY="lp_save1";
 var G=null,running=false;
 function freshState(np,adult){
   var ps=[];
-  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},hist:[{g:20,h:10,w:5,f:5}]});
+  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},items:{},hist:[{g:20,h:10,w:5,f:5}]});
   return {v:3,adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
 function saveGame(){if(!G||NET.on)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.v===3&&s.players&&s.players.length)?s:null;}catch(e){return null;}}
@@ -897,8 +1024,19 @@ function updPlayers(){updProgMap();
   var el=document.getElementById("players");el.innerHTML="";
   G.players.forEach(function(p,i){
     var d=document.createElement("div");d.className="pcard"+(i===G.turn&&!p.done?" on":"");
-    d.innerHTML="<div class='nm' style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#9aa6d8'>"+p.job.i+" "+p.job.n+"</span>":"")+(p.fam&&p.fam.partner?" 💑":"")+(p.fam&&p.fam.kids?("👶".repeat(p.fam.kids)):"")+(p.fam&&p.fam.dog?" 🐕":"")+"</div>"+
+    d.innerHTML="<div class='nm' style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#9aa6d8'>"+p.job.i+" "+p.job.n+"</span>":"")+"</div>"+
       "<div class='st'><span>💰 "+p.geld+"</span><span>❤️ "+p.glueck+"</span><span>🧠 "+p.wissen+"</span><span>👥 "+p.freunde+"</span></div>";
+    // Besitz-Reihe: antippbare Icons (🚗🏠💍👶🐕) mit Erklär-Tooltip
+    var fam=p.fam||{},it=p.items||{},own=[];
+    if(it.auto)own.push(["🚗","🚗 Flitzer — "+p.name+" fährt im Cabrio! Turbo: eine 6 = +1 Extra-Feld."]);
+    if(it.haus)own.push(["🏠","🏠 Eigenheim — +2 ❤️ an jedem Meilenstein."]);
+    if(fam.partner)own.push(["💍","💍 Verheiratet — der Schatz reist immer mit."]);
+    if(fam.kids)own.push(["👶","👶 "+fam.kids+" Kind"+(fam.kids>1?"er":"")+(it.auto?" — sitzen im Auto mit!":" — laufen fröhlich hinterher.")]);
+    if(fam.dog)own.push(["🐕","🐕 Treuer Hund — ab und zu +1 👥 auf Freunde-Feldern."]);
+    if(own.length){var ir=document.createElement("div");ir.className="items";
+      own.slice(0,6).forEach(function(o2){var s2=document.createElement("span");s2.textContent=o2[0];s2.title=o2[1];
+        s2.onclick=function(ev){ev.stopPropagation();showHint(o2[1],3200);beep(660,.05,"triangle",.03);};ir.appendChild(s2);});
+      d.appendChild(ir);}
     el.appendChild(d);});
 }
 function updChapter(){
@@ -913,10 +1051,21 @@ function updChapter(){
 var diceEl=document.getElementById("dice"),rollBtn=document.getElementById("rollBtn");
 // Echter 3D-Würfel (in Blender gebaut: models/die.glb) — taumelt und landet mit der Zahl oben
 var die3d=null,dieAnim=null;
+function mkDieFallback(){ // prozeduraler Würfel (Box + Augen-Texturen), falls die.glb fehlt
+  var PIPS={1:[[64,64]],2:[[32,32],[96,96]],3:[[28,28],[64,64],[100,100]],4:[[32,32],[96,32],[32,96],[96,96]],
+    5:[[30,30],[98,30],[64,64],[30,98],[98,98]],6:[[34,26],[94,26],[34,64],[94,64],[34,102],[94,102]]};
+  function face(n){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+    c.fillStyle="#fffdf6";c.fillRect(0,0,128,128);c.fillStyle="#2a3040";
+    PIPS[n].forEach(function(pp){c.beginPath();c.arc(pp[0],pp[1],13,0,6.283);c.fill();});
+    return new THREE.MeshStandardMaterial({map:crispTex(cv),flatShading:true});}
+  // Material-Reihenfolge [+x,-x,+y,-y,+z,-z] passend zu DIE_ROT (2 oben bei Identität)
+  var m=new THREE.Mesh(new THREE.BoxGeometry(0.85,0.85,0.85),[face(3),face(4),face(2),face(5),face(1),face(6)]);
+  m.castShadow=true;m.visible=false;die3d=m;scene.add(m);}
 if(THREE.GLTFLoader)new THREE.GLTFLoader().load("/models/die.glb",function(g){
   die3d=g.scene;die3d.scale.setScalar(0.55);die3d.visible=false;
   die3d.traverse(function(n){if(n.isMesh)n.castShadow=true;});
-  scene.add(die3d);},undefined,function(){});
+  scene.add(die3d);},undefined,function(){mkDieFallback();});
+else mkDieFallback();
 var DIE_ROT={1:[-Math.PI/2,0,0],6:[Math.PI/2,0,0],3:[0,0,Math.PI/2],4:[0,0,-Math.PI/2],2:[0,0,0],5:[Math.PI,0,0]};
 function dieShow(n,x,z){if(!die3d)return;
   die3d.visible=true;die3d.position.set(x,3.4,z);
@@ -944,7 +1093,11 @@ function rollCore(){
   var p=G.players[G.turn];if(p.done){nextTurn();return;}
   G.phase="rolling";rollBtn.disabled=true;emote(G.turn,"wurf");
   var n=1+((srand()*6)|0);
-  showWheel(n,function(){startMove(n);});
+  // 3D-Würfel rollt neben der Figur (Show — Ergebnis steht fest); reduziert: direkt Ergebnis
+  if(OPT.motion&&die3d&&pawns[G.turn])dieShow(n,pawns[G.turn].position.x+2.4,pawns[G.turn].position.z+1.8);
+  var bonus=(p.items&&p.items.auto&&n===6)?1:0; // 🚗 Turbo: bei einer 6 fährt das Auto 1 Feld weiter
+  showWheel(n,function(){startMove(n+bonus);
+    if(bonus){announce("🚗 TURBO! 6 + 1 Extra-Feld","#ffd166");beep(90,.3,"sawtooth",.06);}});
 }
 // 🎡 Drehrad (wie im Original-Brettspiel): dreht mit Auslauf und landet auf n
 var _radDiv=null;
@@ -989,19 +1142,30 @@ function startMove(n){
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
-  hopT+=dt*2.1*OPT.tempo;
+  var drv=!!(pw.userData&&pw.userData.driving); // 🚗 Auto rollt geschmeidig statt zu hüpfen
+  hopT+=dt*(drv?2.5:2.1)*OPT.tempo;
   if(hopT>=1){
     p.tile=Math.min(NFIELDS-1,p.tile+1);moveQ--;hopT=0;
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
-    beep(360+Math.random()*80,.04,"sine",.035); // weiches Tapsen
+    if(drv)beep(120+Math.random()*30,.06,"sawtooth",.03); // Motor-Brummen
+    else{beep(360+Math.random()*80,.04,"sine",.035); // weiches Tapsen
+      if(OPT.motion){pw.userData.squash=0.55;dustPuff(pw.position.x,pw.position.z);}} // Lande-Squash + Staub-Puff pro Feld
     if(p.tile>=NFIELDS-1){moveQ=0;}
-    if(moveQ<=0){G.phase="landed";pw.userData.squash=1;beep(240,.05,"sine",.04);onLand();return;}
+    if(moveQ<=0){G.phase="landed";pw.userData.stretch=0;pw.userData.squash=1;beep(240,.05,"sine",.04);onLand();return;}
   }
   var to=fields[Math.min(NFIELDS-1,p.tile+1)];
   var k=hopT,x=hopFrom.x+(to.x-hopFrom.x)*k,z=hopFrom.z+(to.z-hopFrom.z)*k;
-  pw.position.set(x,Math.sin(k*Math.PI)*0.45+pawnOffset(G.turn).y,z);
+  var px=pw.position.x,pz=pw.position.z;
+  var y=drv?0.02+Math.sin(performance.now()*0.02)*0.02 // leichtes Wippen beim Fahren
+        :Math.sin(k*Math.PI)*(OPT.motion?0.55:0.2); // Hüpf-Parabel (reduziert: flach)
+  pw.position.set(x,y+pawnOffset(G.turn).y,z);
+  pw.userData.stretch=(!drv&&OPT.motion)?Math.sin(k*Math.PI)*0.9:0; // Stretch im Flug
   var o=pawnOffset(G.turn);pw.position.x+=o.x;pw.position.z+=o.z;
   pw.rotation.y=Math.atan2(to.x-hopFrom.x,to.z-hopFrom.z); // in Laufrichtung schauen
+  if(drv&&pw.userData.wheels){ // Räder drehen ∝ zurückgelegter Distanz
+    var dd=Math.hypot(pw.position.x-px,pw.position.z-pz);
+    for(var wi=0;wi<pw.userData.wheels.length;wi++)pw.userData.wheels[wi].rotation.x+=dd/0.33;
+    if(pw.userData.car)pw.userData.car.rotation.z=Math.sin(performance.now()*0.012)*0.02;}
   animWalk(pw,true,1/60);
 }
 function pawnOffset(i){var a=i/4*Math.PI*2;return {x:Math.cos(a)*0.55,y:0,z:Math.sin(a)*0.55};}
@@ -1530,7 +1694,52 @@ var selN=2;
 function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML="";
   for(var i=0;i<selN;i++){var inp=document.createElement("input");inp.type="text";inp.maxLength=12;inp.placeholder=PNAMES[i];inp.id="pn"+i;
     inp.style.cssText="width:110px;padding:9px 10px;border-radius:10px;border:3px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:.85rem";
-    nr.appendChild(inp);}}
+    nr.appendChild(inp);}
+  renderCharUI();}
+// ===================== Charakter-Picker (Startscreen): 👩/👨 + 4 Styles + 3 Hauttöne =====================
+var _pv=null;
+function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: geteilter Renderer → 2D-Canvas kopieren
+  try{
+    if(!_pv){_pv={};_pv.r=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});
+      _pv.r.setSize(220,248);_pv.r.outputEncoding=THREE.sRGBEncoding;
+      _pv.s=new THREE.Scene();
+      _pv.s.add(new THREE.HemisphereLight(0xffffff,0x8a7a5a,1.05));
+      var dl=new THREE.DirectionalLight(0xfff2d8,0.9);dl.position.set(2,4,3);_pv.s.add(dl);
+      _pv.c=new THREE.PerspectiveCamera(36,220/248,0.1,20);_pv.c.position.set(0,1.18,2.9);_pv.c.lookAt(0,0.95,0);}
+    if(_pv.p)_pv.s.remove(_pv.p);
+    _pv.p=mkPawnMesh(col,cfg);_pv.p.rotation.y=0.45;_pv.s.add(_pv.p);
+    _pv.r.render(_pv.s,_pv.c);
+    var ctx=cv.getContext("2d");ctx.clearRect(0,0,cv.width,cv.height);
+    ctx.drawImage(_pv.r.domElement,0,0,cv.width,cv.height);
+  }catch(e){}}
+function renderCharUI(){
+  var cr=document.getElementById("charRow");if(!cr)return;cr.innerHTML="";
+  for(var i=0;i<selN;i++)(function(i){
+    var cfg=loadChar(i),hex="#"+("00000"+PCOLORS[i].toString(16)).slice(-6);
+    var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;
+    var cv=document.createElement("canvas");cv.width=220;cv.height=248;cv.style.cssText="width:110px;height:124px";
+    card.appendChild(cv);
+    var gf,gm,sl,dots=[];
+    function upd(){saveChar(i,cfg);charPreview(cv,cfg,PCOLORS[i]);
+      gf.className=cfg.g==="f"?"on":"";gm.className=cfg.g==="m"?"on":"";
+      sl.textContent=CHAR_STYLES[cfg.style].i+" "+CHAR_STYLES[cfg.style].n;
+      for(var d2=0;d2<3;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");}
+    var r1=document.createElement("div");r1.className="crow"; // 👩 / 👨
+    gf=document.createElement("button");gf.textContent="👩";gf.title="Frau";gf.onclick=function(){cfg.g="f";upd();beep(620,.05,"triangle",.03);};
+    gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
+    r1.appendChild(gf);r1.appendChild(gm);card.appendChild(r1);
+    var r2=document.createElement("div");r2.className="crow"; // ◀ Style ▶
+    var bl=document.createElement("button");bl.textContent="◀";bl.onclick=function(){cfg.style=(cfg.style+3)%4;upd();beep(500,.04,"triangle",.03);};
+    sl=document.createElement("div");sl.className="lbl";
+    var br=document.createElement("button");br.textContent="▶";br.onclick=function(){cfg.style=(cfg.style+1)%4;upd();beep(520,.04,"triangle",.03);};
+    r2.appendChild(bl);r2.appendChild(sl);r2.appendChild(br);card.appendChild(r2);
+    var r3=document.createElement("div");r3.className="crow"; // Hautton-Punkte
+    for(var d=0;d<3;d++)(function(d){var b=document.createElement("button");b.className="skin";
+      b.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);b.title="Hautton "+(d+1);
+      b.onclick=function(){cfg.skin=d;upd();beep(540,.04,"triangle",.03);};dots.push(b);r3.appendChild(b);})(d);
+    card.appendChild(r3);
+    cr.appendChild(card);upd();
+  })(i);}
 
 // ===================== 🌐 Online-Koop (PeerJS, deterministischer Lockstep) =====================
 var NET={on:false,host:false,peer:null,conns:[],my:0,code:"",names:[],seed:1,q:[]};
@@ -1642,7 +1851,10 @@ function begin(saved){
     if(el&&el.value.trim())G.players[ni].name=el.value.trim().slice(0,12);}}
   pawns.forEach(function(pw){scene.remove(pw);});pawns.length=0;
   pawnBlobs.forEach(function(b2){scene.remove(b2);});pawnBlobs.length=0;
-  G.players.forEach(function(p,i){if(!p.fam)p.fam={partner:false,kids:0,askedK:false};pawns.push(mkPawn(p.col));
+  G.players.forEach(function(p,i){if(!p.fam)p.fam={partner:false,kids:0,askedK:false};
+    if(!p.items)p.items={}; // alte Spielstände (ohne Besitz-Feld) defensiv nachrüsten
+    var cfg=NET.on?seededChar(NET.seed,i):loadChar(i); // Look: lokal aus dem Picker, online aus dem Seed
+    pawns.push(mkPawn(p.col,cfg));
     (function(){var cv=document.createElement("canvas");cv.width=256;cv.height=72;var c=cv.getContext("2d");
       c.font="bold 44px sans-serif";c.textAlign="center";
       var hex="#"+("00000"+p.col.toString(16)).slice(-6);
@@ -1653,6 +1865,7 @@ function begin(saved){
       var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
       sp.scale.set(1.7,0.48,1);sp.position.y=2.15;pawns[i].add(sp);})();
     placePawn(i);syncFam(i);
+    if(p.items&&p.items.auto)enableCar(i); // gespeichertes Auto wieder aufbauen
     var bl2=new THREE.Mesh(new THREE.CircleGeometry(0.55,12),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.22}));
     bl2.rotation.x=-Math.PI/2;bl2.position.y=0.05;scene.add(bl2);pawnBlobs.push(bl2);});
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
@@ -1687,7 +1900,7 @@ document.getElementById("resumeBtn").onclick=toggleMenu;
 addEventListener("keydown",function(e){if(e.key==="Escape"&&G)toggleMenu();});
 document.getElementById("rulesBtn").onclick=function(){toggleMenu();
   showCard("Regeln","📜 So spielt ihr Lebenspfad",
-    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Hochzeit &amp; Nachwuchs.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
+    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
     [{l:"Alles klar ▶",fn:function(){}}]);};
 document.getElementById("restartBtn").onclick=function(){var b=document.getElementById("restartBtn");
   if(b.dataset.armed){lsDel(SAVE_KEY);location.reload();}
@@ -1767,7 +1980,9 @@ function showFx(p,fx){var pw=pawns[G.players.indexOf(p)];if(!pw)return;
 function applyFx(p,fx){showFx(p,fx);
   var net=(fx.geld||0)+(fx.glueck||0)+(fx.wissen||0)+(fx.freunde||0);
   var pi=G.players.indexOf(p);
-  if(pi>=0&&!G.players[pi].dead){if(net>2)emote(pi,"jubel");else if(net<-2)emote(pi,"trauer");}
+  if(pi>=0&&!G.players[pi].dead){if(net>2)emote(pi,"jubel");else if(net<-2)emote(pi,"trauer");
+    if((fx.geld||0)>=6&&pawns[pi])moneyRain(pawns[pi].position.x,pawns[pi].position.z,12); // 💰 Geld-Regen
+    if((fx.geld||0)<=-5&&pawns[pi])tears(pawns[pi].position.x,pawns[pi].position.z);}
   p.geld=Math.max(0,p.geld+(fx.geld||0));
   p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
   p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
@@ -1779,11 +1994,17 @@ function handleField(p,f){
     if(p.tile===0){endTurnSoon();return;}
     confetti(fields[p.tile].x,fields[p.tile].z,CHAPTERS[ch].accent);jingle();
     if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
+    if(p.items&&p.items.haus){p.glueck+=2;floatStat("+2 ❤️ 🏠","#ff9ad9",fields[p.tile].x,fields[p.tile].z,500);} // Eigenheim-Bonus
     if(ch===2&&!p.job){ // Berufswahl! (Herzstück des Originals)
       var picks=[];while(picks.length<3){var j=JOBS[(srand()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
       showCard("Meilenstein · Berufswahl","💼 Was willst du werden?","Drei Türen stehen offen. Hinter jeder ein anderes Leben — Gehalt ist nicht alles.",
         picks.map(function(j){return {l:j.i+" "+j.n,sub:j.d,fn:function(){p.job={i:j.i,n:j.n,mult:j.mult};applyFx(p,j.fx);
           p.bio.push("wurde "+j.n+" — und bereute es nie");updPlayers();endTurnSoon();}};}));
+      return;}
+    if(ch===3&&!(p.items&&p.items.auto)){ // 🚗 Das erste Auto (ERSTE SCHRITTE)
+      showCard("Meilenstein · Das erste Auto","🚗 Ein eigenes Auto?","Beim Händler glänzt ein kleines Cabrio in deiner Lieblingsfarbe. Der Schlüssel liegt schon fast in deiner Hand.",
+        [{l:"🚗 Kaufen — ab jetzt wird gefahren!",sub:"−6 💰 · +2 ❤️ · deine Figur fährt Auto · Turbo: 6 = +1 Feld",fn:function(){if(!p.items)p.items={};p.items.auto=true;applyFx(p,{geld:-6,glueck:2});p.bio.push("kaufte das erste eigene Auto — Freiheit auf vier Rädern");enableCar(G.turn);announce("🚗 BRUMM BRUMM!","#ffd166");beep(90,.35,"sawtooth",.06);setTimeout(function(){beep(140,.25,"sawtooth",.05);},200);updPlayers();endTurnSoon();}},
+         {l:"🚲 Erstmal das Fahrrad",sub:"+1 ❤️ · +1 🧠 · spart Geld",fn:function(){applyFx(p,{glueck:1,wissen:1});p.bio.push("blieb beim Fahrrad — sportlich und schlau");updPlayers();endTurnSoon();}}]);
       return;}
     if(ch===4&&!p.fam.partner){
       showCard("Meilenstein · Die große Frage","💍 Willst du heiraten?","Ihr steht am See, die Sonne geht unter, und die Frage liegt in der Luft. Dein Herz klopft bis zum Hals.",
@@ -1797,14 +2018,26 @@ function handleField(p,f){
          {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");storkScene(G.turn,2);updPlayers();endTurnSoon();}},
          {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");syncFam(G.turn);beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();endTurnSoon();}}]);
       return;}
+    if((ch===5||ch===6)&&!(p.items&&p.items.haus)){ // 🏠 Eigenheim (FAMILIE & HAUS / REIFE JAHRE)
+      showCard("Meilenstein · Eigenheim","🏠 Ein eigenes Haus?","Das Schild am Gartenzaun sagt „Zu verkaufen“. Der Rasen ist verwildert — aber du siehst schon Lichterketten auf der Veranda.",
+        [{l:"🏠 Kaufen — Wurzeln schlagen",sub:"−10 💰 · +3 ❤️ · dauerhaft: +2 ❤️ an jedem Meilenstein",fn:function(){if(!p.items)p.items={};p.items.haus=true;applyFx(p,{geld:-10,glueck:3});p.bio.push("kaufte ein Haus mit Veranda — und nannte es für immer Zuhause");confetti(fields[p.tile].x,fields[p.tile].z,0xffd166,14);updPlayers();endTurnSoon();}},
+         {l:"🏕 Weiter zur Miete — flexibel bleiben",sub:"+2 🧠 · +1 💰",fn:function(){applyFx(p,{wissen:2,geld:1});p.bio.push("blieb zur Miete — die Welt war das Zuhause");updPlayers();endTurnSoon();}}]);
+      return;}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
       [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
     camShake=0.15;return;}
-  if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
-  if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
-  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
-  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
-  if(f.type==="f"){p.freunde+=2;announce("+2 👥","#8affc0");beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
+  if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");
+    emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,9);
+    if(g>=8)moneyRain(f.x,f.z,14); // 💰 Geld-Regen bei grossen Gewinnen
+    beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
+  if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");
+    emote(G.turn,"trauer");tears(f.x,f.z); // Figur sackt zusammen + 💧
+    beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
+  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
+  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
+  if(f.type==="f"){var fb=2+((p.fam&&p.fam.dog&&srand()<0.5)?1:0);p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
+    announce("+"+fb+" 👥"+(fb>2?" (🐕 wedelt!)":""),"#8affc0");emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,8);
+    beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
   // Ereignis-Feld: ungenutztes Ereignis des Kapitels ziehen
   var pool=(EVENTS[ch]||[]).concat(G.adult?(EVENTS18[ch]||[]):[]);
   if(!p.used)p.used={};if(!p.used[ch])p.used[ch]=[];
