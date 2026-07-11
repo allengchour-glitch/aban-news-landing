@@ -70,6 +70,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
+<button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat">💬</button>
 <div id="zoomBtns" style="position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;flex-direction:column;gap:8px">
@@ -86,6 +87,15 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palItems"></div>
 </div>
 <div id="hint"></div>
+<div id="mg" style="position:fixed;inset:0;z-index:28;display:none;align-items:center;justify-content:center;flex-direction:column;background:rgba(20,15,30,.82)">
+  <div style="background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;padding:18px 22px;text-align:center;max-width:340px">
+    <div id="mgTitle" style="font-weight:900;font-size:1.1rem;color:#5a4a30">🎯 Timing!</div>
+    <div id="mgSub" style="font-size:.85rem;color:#8a7a5a;margin:4px 0 10px">Stoppe den Zeiger im grünen Bereich</div>
+    <canvas id="mgCv" width="280" height="46" style="border-radius:10px"></canvas>
+    <div id="mgScore" style="font-weight:800;margin-top:8px;color:#c05a2a">Runde 1/3</div>
+    <button id="mgBtn" class="btn" style="margin-top:10px;padding:12px 40px">STOPP!</button>
+  </div>
+</div>
 <div id="romKiss"><div style="font-size:3rem">💞</div><div id="romTxt">Max &amp; Mia turteln …</div><div style="font-size:.85rem;opacity:.7;margin-top:8px">(diskrete Ausblende — wie im Original)</div></div>
 
 <div class="overlay" id="start">
@@ -560,7 +570,7 @@ function finishCrime(){
     s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";});
   if(MPs&&!mpHost)return; // Host entscheidet
   var lv=skills.krimi.lv;
-  var chance=0.55+lv*0.07+(crime.accomplice?0.15:0)-job.risk*0.5;
+  var chance=0.55+lv*0.07+(crime.accomplice?0.15:0)-job.risk*0.5+(crime.mgBonus||0);crime.mgBonus=0;
   var ok=Math.random()<chance;
   var beute=Math.round(job.base*(1+lv*0.4)*(crime.accomplice?1.7:1));
   if(ok){geld+=beute;
@@ -585,7 +595,7 @@ function crimeScene(ok,job,betrag){
   setTimeout(function(){el.style.display="none";
     el.style.background="radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92))";},3800);}
 function updCrime(dt){
-  crimeBtnUpd();
+  crimeBtnUpd();buskBtnUpd();
   if(!crime.on)return;
   crime.t-=dt;
   if(crime.t<=0)finishCrime();}
@@ -844,6 +854,41 @@ function tapAt(px,py){
   updHUD();beep(660,.06,"triangle",.04);}
 document.getElementById("zoomIn").onclick=function(){camR=Math.max(7,camR-4);updCam();};
 document.getElementById("zoomOut").onclick=function(){camR=Math.min(60,camR+4);followSim=null;updCam();};
+// ---- Mini-Game: Timing-Bar (3 Runden, Ergebnis 0..1) ----
+var MG={on:false,pos:0,dir:1,speed:1.6,round:0,scores:[],cb:null,raf:0};
+function mgDraw(){
+  var cv=document.getElementById("mgCv"),c=cv.getContext("2d");
+  c.clearRect(0,0,280,46);
+  c.fillStyle="#e8e0d0";c.fillRect(0,8,280,30);
+  c.fillStyle="#ffd166";c.fillRect(95,8,90,30);
+  c.fillStyle="#6aff9e";c.fillRect(120,8,40,30);
+  c.fillStyle="#e8443a";c.fillRect(Math.round(MG.pos*272),4,8,38);}
+function mgTick(){
+  if(!MG.on)return;
+  MG.pos+=MG.dir*MG.speed/60;
+  if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
+  mgDraw();MG.raf=requestAnimationFrame(mgTick);}
+function mgStart(title,sub,cb){
+  MG.on=true;MG.round=0;MG.scores=[];MG.cb=cb;MG.speed=1.5;
+  document.getElementById("mgTitle").textContent=title;
+  document.getElementById("mgSub").textContent=sub||"Stoppe den Zeiger im grünen Bereich";
+  document.getElementById("mgScore").textContent="Runde 1/3";
+  document.getElementById("mg").style.display="flex";
+  MG.pos=0;MG.dir=1;mgTick();}
+function mgStop(){
+  if(!MG.on)return;
+  var center=(MG.pos*272+4)/280;
+  var sc=center>0.428&&center<0.572?1:(center>0.34&&center<0.66?0.5:0);
+  MG.scores.push(sc);MG.round++;
+  beep(sc===1?880:(sc>0?600:220),.12,sc>0?"triangle":"sawtooth",.06);
+  if(MG.round>=3){MG.on=false;cancelAnimationFrame(MG.raf);
+    document.getElementById("mg").style.display="none";
+    var avg=(MG.scores[0]+MG.scores[1]+MG.scores[2])/3;
+    if(MG.cb)MG.cb(avg);}
+  else{MG.speed+=0.55;MG.pos=0;MG.dir=1;
+    document.getElementById("mgScore").textContent="Runde "+(MG.round+1)+"/3 · "+(sc===1?"PERFEKT!":(sc>0?"ok":"daneben"));}}
+document.getElementById("mgBtn").onclick=mgStop;
+addEventListener("keydown",function(e){if(e.key===" "&&MG.on){e.preventDefault();mgStop();}});
 var hintT=null;
 function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;
   clearTimeout(hintT);hintT=setTimeout(function(){h.style.opacity=0;},2200);}
@@ -861,6 +906,17 @@ function renderPalette(){
 var curCat="bau";
 document.getElementById("rotBtn").onclick=function(){curRot=(curRot+1)%4;hint("Gedreht ("+["Nord","Ost","Süd","West"][curRot]+")");};
 addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="r"&&buildMode){curRot=(curRot+1)%4;}});
+function buskAvailable(){var hh=uhrzeit/60;return running&&!arbeiten&&!crime.on&&hh>=17&&hh<21&&!MG.on;}
+function buskBtnUpd(){document.getElementById("buskBtn").style.display=buskAvailable()?"block":"none";}
+document.getElementById("buskBtn").onclick=function(){
+  if(!buskAvailable())return;
+  mgStart("🎸 Straßenmusik","Triff den Takt — je genauer, desto mehr Trinkgeld!",function(avg){
+    var verdienst=Math.round(30+avg*170*(1+skills.liebe.lv*0.1));
+    geld+=verdienst;netSend({t:"geld",v:geld});
+    sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10);});
+    hint(avg>=0.8?("🎉 Die Menge tobt! +"+verdienst+" § Trinkgeld"):(avg>0.3?("🎵 Solide Show: +"+verdienst+" §"):("😅 Schräge Töne … trotzdem +"+verdienst+" §")));
+    simEmoji(sims[0],"🎸");simEmoji(sims[1],"🎤");hearts(sims[0].x,sims[0].z);
+    updHUD();});};
 document.getElementById("crimeBtn").onclick=function(){
   if(!crimeAvailable())return;
   var lv=skills.krimi.lv,maxJob=Math.min(CRIMES.length-1,lv);
@@ -868,9 +924,12 @@ document.getElementById("crimeBtn").onclick=function(){
   var inp=prompt("🕶️ Welches krumme Ding? (Risiko steigt mit Beute)\n"+wahl+"\n\nNummer eingeben:","1");
   var ji=Math.max(0,Math.min(maxJob,(parseInt(inp,10)||1)-1));
   if(inp===null)return;
-  if(MPs){netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
-    crime.ask=true;setTimeout(function(){if(crime.ask){crime.ask=false;startCrime(ji,false);}},10000);}
-  else startCrime(ji,false);};
+  mgStart("🔓 Tresor knacken","Timing entscheidet über deine Coup-Chance!",function(avg){
+    crime.mgBonus=avg*0.25-0.08; // -8% bis +17%
+    hint(avg>=0.8?"🔓 Sauber geknackt — beste Chancen!":(avg>0.3?"🔧 Ganz ok …":"💥 Das war laut! Riskant …"));
+    if(MPs){netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
+      crime.ask=true;setTimeout(function(){if(crime.ask){crime.ask=false;startCrime(ji,false);}},10000);}
+    else startCrime(ji,false);});};
 document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=delMode?null:curItem;
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
 document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
