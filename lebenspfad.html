@@ -364,13 +364,15 @@ var fields=[];
     if(i===0)ty="m";
     if(TSPECIAL[i])ty=TSPECIAL[i];
     var p=pathPts[i];
-    var rr0=ty==="m"?2.7:2.0,sg0=ty==="m"?28:24; // runde Scheiben (8 Segmente = kantiges Achteck)
-    var blob=new THREE.Mesh(new THREE.CircleGeometry(rr0+0.7,sg0),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16}));
-    blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.045,p.z);scene.add(blob);
+    var rr0=ty==="m"?2.7:2.0,sg0=ty==="m"?36:32; // runde Scheiben (mehr Segmente = saubere Ränder auch bei Zoom)
+    var blob=new THREE.Mesh(new THREE.CircleGeometry(rr0+0.7,sg0),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
+    blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.03,p.z);scene.add(blob);
     var sock=new THREE.Mesh(new THREE.CylinderGeometry(rr0+0.22,rr0+0.35,0.34,sg0),mat(0xffffff,0xf0f0f0,0.06)); // weißer Plastik-Sockel
     sock.position.set(p.x,0.17,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
+    // Deckel bewusst mit Luft über dem Sockel (0.34) -> KEINE koplanaren Flächen mehr = kein Z-Fighting-Flimmern am Feldrand
     var disc=new THREE.Mesh(new THREE.CylinderGeometry(rr0,rr0+0.08,0.26,sg0),mat(FTYPE_COL[ty],FTYPE_COL[ty],ty==="e"?0.1:0.32)); // satter Farbdeckel
-    disc.position.set(p.x,0.47,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+    disc.material.polygonOffset=true;disc.material.polygonOffsetFactor=-1;disc.material.polygonOffsetUnits=-2;
+    disc.position.set(p.x,0.5,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
     if(ty!=="m"&&ty!=="e"){var trg=new THREE.Mesh(new THREE.TorusGeometry(rr0+0.12,0.09,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
       trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6,p.z);scene.add(trg);}
     if(ty==="m"){ // Gold-Ring + Fähnchen
@@ -400,12 +402,13 @@ var fields=[];
     var prev={x:pathPts[fk.at].x,z:pathPts[fk.at].z},first=-1,idxPrev=-1,mch=Math.floor(fk.at/FIELDS_PER);
     fk.types.forEach(function(ty,j){
       var p=fk.pts[j];
-      var blob=new THREE.Mesh(new THREE.CircleGeometry(2.0,22),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16}));
-      blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.045,p.z);scene.add(blob);
-      var sock=new THREE.Mesh(new THREE.CylinderGeometry(1.62,1.75,0.34,22),mat(0xffffff,0xf0f0f0,0.06));
+      var blob=new THREE.Mesh(new THREE.CircleGeometry(2.0,30),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
+      blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.03,p.z);scene.add(blob);
+      var sock=new THREE.Mesh(new THREE.CylinderGeometry(1.62,1.75,0.34,30),mat(0xffffff,0xf0f0f0,0.06));
       sock.position.set(p.x,0.17,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
-      var disc=new THREE.Mesh(new THREE.CylinderGeometry(1.45,1.53,0.26,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.32));
-      disc.position.set(p.x,0.47,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+      var disc=new THREE.Mesh(new THREE.CylinderGeometry(1.45,1.53,0.26,30),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.32));
+      disc.material.polygonOffset=true;disc.material.polygonOffsetFactor=-1;disc.material.polygonOffsetUnits=-2;
+      disc.position.set(p.x,0.5,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
       var trg=new THREE.Mesh(new THREE.TorusGeometry(1.57,0.08,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
       trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6,p.z);scene.add(trg);
       fields.push({x:p.x,z:p.z,type:ty,disc:disc,mchap:mch,prog:fk.at+(fk.rejoin-fk.at)*(j+1)/(fk.types.length+1)});
@@ -699,11 +702,13 @@ function emojiSprite(em,size){var cv=document.createElement("canvas");cv.width=c
   var cx=cv.getContext("2d");cx.font="192px serif";cx.textAlign="center";cx.textBaseline="middle";cx.fillText(em,128,142);
   var tx=crispTex(cv);var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true}));
   sp.scale.setScalar(size||1.4);return sp;}
-var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁"};
+var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁",e:"✨"};
+// Grosses, von oben gut lesbares Icon auf JEDEM Feld (Bedeutung sofort klar); Farbe bleibt unterstützend.
 var fieldSprites=[];
-(function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(f.type==="e")continue;
-  var sp=emojiSprite(FIELD_EMO[f.type],f.type==="m"?2.0:1.25);
-  sp.position.set(f.x,f.type==="m"?2.6:1.8,f.z);scene.add(sp);fieldSprites.push({sp:sp,b:Math.random()*6.28,y0:sp.position.y});}})();
+(function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(!FIELD_EMO[f.type])continue;
+  var big=f.type==="m",ev=f.type==="e";
+  var sp=emojiSprite(FIELD_EMO[f.type],big?2.7:(ev?1.5:2.0));
+  sp.position.set(f.x,big?2.5:1.72,f.z);scene.add(sp);fieldSprites.push({sp:sp,b:Math.random()*6.28,y0:sp.position.y});}})();
 // Konfetti (physisch fallende Farb-Plättchen)
 var confs=[];
 function confetti(x,z,accent,n){
@@ -808,7 +813,7 @@ function mkPawnMesh(color,cfg){
   // Laufende Minifigur: Kopf, Torso, schwingende Arme + Beine — Look aus cfg (g/style/skin)
   cfg=cfg||{g:"m",style:0,skin:0};
   var g=new THREE.Group(),cm=mat(color,color,0.12),skin=mat(SKINTONES[cfg.skin%SKINTONES.length],0x3a2a1a,0.05);
-  var pants=mat(0x3a4a6a);var hair=mat(HAIRS[(cfg.style*2+cfg.skin+(cfg.g==="m"?1:0))%HAIRS.length]);
+  var pants=mat(0x3a4a6a);var hairHex=HAIRS[(cfg.style*2+cfg.skin+(cfg.g==="m"?1:0))%HAIRS.length];var hair=mat(hairHex);
   function limb(w,h,px,py,m2){var pivot=new THREE.Group();pivot.position.set(px,py,0);
     var mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,w),m2||cm);mesh.position.y=-h/2;mesh.castShadow=true;
     pivot.add(mesh);g.add(pivot);return pivot;}
@@ -865,7 +870,36 @@ function mkPawnMesh(color,cfg){
     eye.position.set(e[0],1.42,0.26);g.add(eye);g.userData.eyes.push(eye);});
   g.userData.blinkT=1+Math.random()*3;
   g.userData.limbs={ll:ll,rl:rl,la:la,ra:ra};g.userData.walk=0;
+  // ===== Altern (Pass B3): Kopf-Cluster in ein Pivot bündeln, damit „grosser Kopf" (Kind) sauber mitskaliert =====
+  var HEADY=1.3,hg=new THREE.Group();hg.position.set(0,HEADY,0);
+  var kids=g.children.slice();
+  for(var hi=0;hi<kids.length;hi++){var ch2=kids[hi];if(ch2.isMesh&&ch2.position.y>=1.15){ch2.position.y-=HEADY;hg.add(ch2);}}
+  g.add(hg);
+  g.userData.headGroup=hg;g.userData.hairMat=hair;g.userData.hairBaseHex=hairHex;
+  g.userData.ageScale=1;g.userData.ageScaleT=1;g.userData.headScale=1;g.userData.headScaleT=1;g.userData.headStoop=0;g.userData.headStoopT=0;
   return g;}
+// Lebensalter aus Kapitel: 0 Kind (Kap.1) · 1 Teen (Kap.2–3) · 2 Erwachsen (Kap.4–6) · 3 Senior (Kap.7–8)
+function ageStage(ch){return ch<=0?0:(ch<=2?1:(ch<=5?2:3));}
+var AGE_BODY=[0.74,0.9,1.0,0.96],AGE_HEAD=[1.34,1.14,1.0,1.02],AGE_STOOP=[0,0,0,0.22],AGE_NAME=["Kind","Teenager","Erwachsen","Senior"];
+function agePawn(i,animated){
+  var pw=pawns[i];if(!pw||!G||!G.players[i])return;
+  var st=ageStage(chapterOf(G.players[i].tile)),prev=pw.userData.ageStage;
+  pw.userData.ageStage=st;
+  pw.userData.ageScaleT=AGE_BODY[st];pw.userData.headScaleT=AGE_HEAD[st];pw.userData.headStoopT=AGE_STOOP[st];
+  if(pw.userData.hairMat){pw.userData.hairMat.color.setHex(pw.userData.hairBaseHex); // Senior: Haare ergrauen/weiss
+    if(st===3)pw.userData.hairMat.color.lerp(new THREE.Color(0xeceff2),0.72);}
+  if(!animated||prev===undefined){ // Sofort setzen (Spielstart / Debug), keine Feier
+    pw.userData.ageScale=AGE_BODY[st];pw.userData.headScale=AGE_HEAD[st];pw.userData.headStoop=AGE_STOOP[st];
+    if(pw.userData.headGroup){pw.userData.headGroup.scale.setScalar(AGE_HEAD[st]);pw.userData.headGroup.rotation.x=AGE_STOOP[st];}
+    return;}
+  if(prev!==st){ // 🎂 Geburtstags-Feier: Figur wächst weich (Tween via ageScaleT), Konfetti + Torte + Announce
+    var ch=chapterOf(G.players[i].tile);
+    if(OPT.motion){confetti(pw.position.x,pw.position.z,CHAPTERS[ch].accent,30);
+      var cake=emojiSprite("🎂",1.7);cake.position.set(pw.position.x,3.1,pw.position.z);scene.add(cake);
+      confs.push({m:cake,vx:0,vy:1.3,vz:0,rx:0,rz:0,life:2.0,heart:true});}
+    emote(i,"jubel");jingle();
+    announce("🎂 "+G.players[i].name+" wird "+AGE_NAME[st].toLowerCase()+" — Alles Gute!","#ffd166");}
+}
 function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
   pw.userData.emote={k:kind,t:0};}
 function updEmotes(dt){
@@ -888,6 +922,12 @@ function updEmotes(dt){
       L.ra.rotation.x=-2.8;L.ra.rotation.z=-0.2+Math.sin(e.t*11)*0.5;
       if(e.t>1.1){L.ra.rotation.z=0;pw.userData.emote=null;}}}}
 function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
+  // Alters-Tween (weiches Wachsen am Geburtstag; bei OPT.motion aus -> fast sofort)
+  var u=pw.userData,ak=Math.min(1,dt*(OPT.motion?4:24));
+  if(u.ageScaleT===undefined){u.ageScale=u.ageScaleT=1;u.headScale=u.headScaleT=1;u.headStoop=u.headStoopT=0;}
+  u.ageScale+=(u.ageScaleT-u.ageScale)*ak;
+  if(u.headGroup){u.headScale+=(u.headScaleT-u.headScale)*ak;u.headStoop+=(u.headStoopT-u.headStoop)*ak;
+    u.headGroup.scale.setScalar(u.headScale);u.headGroup.rotation.x=u.headStoop;}
   if(pw.userData.eyes){pw.userData.blinkT-=dt;
     if(pw.userData.blinkT<=0){pw.userData.blinkT=2.2+Math.random()*3.4;pw.userData.blinkD=0.13;}
     var bl=(pw.userData.blinkD||0)>0;if(bl)pw.userData.blinkD-=dt;
@@ -899,9 +939,10 @@ function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
       pw.userData.head.rotation.y+=((Math.abs(pw.userData.lookT-1.2)<1?pw.userData.lookDir:0)-pw.userData.head.rotation.y)*Math.min(1,dt*4);
       pw.userData.head.rotation.x*=Math.max(0,1-dt*6);}}
   // Lande-Squash abklingen; im Flug leichter Stretch (Squash&Stretch beim Hüpfen)
+  var bs=1.35*(u.ageScale||1); // Basis-Grösse * Lebensalter
   if(pw.userData.squash>0){pw.userData.squash-=dt*5;
-    var q=Math.max(0,pw.userData.squash);pw.scale.set(1.35*(1+q*0.25),1.35*(1-q*0.3),1.35*(1+q*0.25));}
-  else{var st2=pw.userData.stretch||0;pw.scale.set(1.35*(1-st2*0.08),1.35*(1+st2*0.14),1.35*(1-st2*0.08));}}
+    var q=Math.max(0,pw.userData.squash);pw.scale.set(bs*(1+q*0.25),bs*(1-q*0.3),bs*(1+q*0.25));}
+  else{var st2=pw.userData.stretch||0;pw.scale.set(bs*(1-st2*0.08),bs*(1+st2*0.14),bs*(1-st2*0.08));}}
 function animWalk(pw,moving,dt){
   animLife(pw,dt,moving);
   if(pw.userData.emote)return; // Emote hat Vorrang
@@ -1292,10 +1333,22 @@ function updDiscBounce(dt){for(var i=discBounce.length-1;i>=0;i--){var db=discBo
   var y=db.y0-Math.sin(Math.min(Math.PI,db.t))*0.14;
   db.d.position.y=y;
   if(db.t>=Math.PI){db.d.position.y=db.y0;discBounce.splice(i,1);}}}
+// Erklär-Toast pro Feldtyp — nur beim ERSTEN Mal (kein Spam); merkt sich erklärte Typen (auch über Sessions)
+var FIELD_EXPLAIN={"g+":"💰 Geldfeld — hier gewinnst du Geld.","g-":"🧾 Rechnung — hier kostet das Leben etwas Geld.",
+  h:"❤️ Glücksfeld — hier wächst dein Glück.",w:"🧠 Wissensfeld — hier lernst du dazu.",
+  f:"👥 Freunde-Feld — hier triffst du nette Menschen.",q:"❓ Quiz — beantworte eine Frage und gewinne.",
+  x:"🔄 Tausch-Feld — hier wird getauscht!",r:"🏁 Wettrennen — sei schnell, dann lohnt es sich!",
+  m:"⭐ Meilenstein — ein neues Lebenskapitel beginnt!",e:"✨ Ereignisfeld — das Leben hält eine Überraschung bereit."};
+var _explained=(function(){try{return JSON.parse(lsGet("lp_explained")||"{}")||{};}catch(e){return {};}})();
+function explainField(ty){if(!FIELD_EXPLAIN[ty]||_explained[ty])return;_explained[ty]=1;
+  try{lsSet("lp_explained",JSON.stringify(_explained));}catch(e){}
+  setTimeout(function(){showHint(FIELD_EXPLAIN[ty],3600);beep(720,.05,"triangle",.03);},420);}
 function onLand(){
   var p=G.players[G.turn],f=fields[p.tile];
   discBounce.push({d:f.disc,y0:f.disc.position.y,t:0}); // Feld federt beim Landen
   placePawn(G.turn);
+  agePawn(G.turn,true); // 🎂 Alter dem neuen Kapitel anpassen (Geburtstags-Feier bei Stufenwechsel)
+  explainField(f.type); // beim ERSTEN Betreten eines Feldtyps: kurze Erklärung
   // Begegnung: anderes Pawn auf demselben Feld -> beide +Freunde+Glück (Koop!)
   for(var i=0;i<G.players.length;i++){if(i===G.turn||G.players[i].done)continue;
     if(G.players[i].tile===p.tile){
@@ -1762,19 +1815,55 @@ function hildeAnswer(q){
 })();
 // ===================== Kamera =====================
 var camShake=0;
+// 🖐️ Karte frei schwenken (Drag/Swipe) + Pinch/Wheel-Zoom; beim Loslassen sanft zurück zum aktiven Spieler
+var panOff={x:0,z:0},panning=false,zoomK=1;
+(function(){var el=renderer.domElement,pts={},sx=0,sy=0,downX=0,downY=0,moved=false,startDist=0,startZoom=1;
+  el.style.touchAction="none";
+  function list(){var a=[];for(var k in pts)a.push(pts[k]);return a;}
+  el.addEventListener("pointerdown",function(e){pts[e.pointerId]={x:e.clientX,y:e.clientY};var a=list();
+    if(a.length===1){downX=sx=e.clientX;downY=sy=e.clientY;moved=false;}
+    else if(a.length===2){startDist=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);startZoom=zoomK;}
+    try{el.setPointerCapture(e.pointerId);}catch(_){}});
+  el.addEventListener("pointermove",function(e){if(!pts[e.pointerId])return;pts[e.pointerId]={x:e.clientX,y:e.clientY};
+    var a=list();
+    if(a.length>=2){var d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);if(startDist>0)zoomK=Math.max(0.6,Math.min(1.9,startZoom*startDist/d));return;}
+    var dx=e.clientX-sx,dy=e.clientY-sy;sx=e.clientX;sy=e.clientY;
+    if(!moved&&Math.hypot(e.clientX-downX,e.clientY-downY)>10)moved=true; // Schwelle: erst ab >10px = Schwenk (sonst Tap)
+    if(moved){panning=true;var f=(camera.position.y*1.7)/H; // Pixel -> Weltmeter (an Kamerahöhe gekoppelt)
+      panOff.x=Math.max(-150,Math.min(150,panOff.x-dx*f));
+      panOff.z=Math.max(-85,Math.min(85,panOff.z-dy*f));}});
+  function up(e){if(pts[e.pointerId])delete pts[e.pointerId];var a=list();if(a.length<2)startDist=0;if(a.length===0)panning=false;}
+  el.addEventListener("pointerup",up);el.addEventListener("pointercancel",up);el.addEventListener("lostpointercapture",up);
+  el.addEventListener("wheel",function(e){e.preventDefault();zoomK=Math.max(0.6,Math.min(1.9,zoomK*(e.deltaY>0?1.08:0.93)));},{passive:false});
+})();
 function updateCamera(dt){
   var p=G?G.players[G.turn]:null;
   var tx=p?pawns[G.turn].position.x:fields[0].x,tz=p?pawns[G.turn].position.z:fields[0].z;
   camT.x+=(tx-camT.x)*Math.min(1,dt*2.2);camT.z+=(tz-camT.z)*Math.min(1,dt*2.2);
-  var swayX=OPT.motion?Math.sin(performance.now()*0.00035)*1.2:0;
-  camera.position.x+=(camT.x+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*2.6);
-  var camH=16.5*(H>W?1.45:1);
+  if(!panning){var rk=Math.min(1,dt*(OPT.motion?2.4:6));panOff.x+=(0-panOff.x)*rk;panOff.z+=(0-panOff.z)*rk;} // zurück zum Spieler
+  var fx=camT.x+panOff.x,fz=camT.z+panOff.z;
+  var swayX=(OPT.motion&&!panning)?Math.sin(performance.now()*0.00035)*1.2:0;
+  camera.position.x+=(fx+swayX+(Math.random()-0.5)*camShake-camera.position.x)*Math.min(1,dt*2.6);
+  var camH=16.5*(H>W?1.45:1)*zoomK;
   camera.position.y+=(camH-camera.position.y)*Math.min(1,dt*3);
-  camera.position.z+=(camT.z+15*(H>W?1.3:1)-camera.position.z)*Math.min(1,dt*2.6);
-  camera.lookAt(camT.x,0.5,camT.z-2);
+  camera.position.z+=(fz+(15*(H>W?1.3:1))*zoomK-camera.position.z)*Math.min(1,dt*2.6);
+  camera.lookAt(fx,0.5,fz-2);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
 }
 camera.position.set(fields[0].x,22,fields[0].z+24);camera.lookAt(fields[0].x,0,fields[0].z);
+// ===================== Debug-Hook (nur für Tests; kein Gameplay-Einfluss) =====================
+window.__lp={
+  chapter:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
+    G.players[G.turn].tile=n*FIELDS_PER;placePawn(G.turn);agePawn(G.turn,false);updChapter();updPlayers();return chapterOf(G.players[G.turn].tile);},
+  birthday:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
+    G.players[G.turn].tile=n*FIELDS_PER;placePawn(G.turn);pawns[G.turn].userData.ageStage=undefined;agePawn(G.turn,true);updChapter();return chapterOf(G.players[G.turn].tile);},
+  pos:function(n){if(!G||!G.players[G.turn])return null;G.players[G.turn].tile=Math.max(0,Math.min(NFIELDS-1,n|0));placePawn(G.turn);agePawn(G.turn,false);return G.players[G.turn].tile;},
+  age:function(){return (G&&pawns[G.turn])?pawns[G.turn].userData.ageStage:null;},
+  look:function(){if(!G||!pawns[G.turn])return null;var pw=pawns[G.turn],u=pw.userData;
+    return {stage:u.ageStage,scaleY:+pw.scale.y.toFixed(3),headScale:+(u.headScale||1).toFixed(3),stoop:+(u.headStoop||0).toFixed(3),hair:"#"+(u.hairMat?u.hairMat.color.getHexString():"?")};},
+  pan:function(x,z){panOff.x=x||0;panOff.z=z||0;panning=false;return panOff;},
+  zoom:function(z){if(z!==undefined)zoomK=Math.max(0.6,Math.min(1.9,z));return zoomK;},
+  state:function(){return G;},fieldIcons:function(){return fieldSprites.length;}};
 // ===================== Hauptschleife =====================
 var last=performance.now();
 function loop(now){
@@ -2017,7 +2106,7 @@ function begin(saved){
       c.fillStyle=hex;c.fillText(p.name,128,50);
       var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
       sp.scale.set(1.7,0.48,1);sp.position.y=2.15;pawns[i].add(sp);})();
-    placePawn(i);syncFam(i);
+    placePawn(i);syncFam(i);agePawn(i,false); // Look passend zum Kapitel-Alter (Start = Kind)
     if(p.items&&p.items.auto)enableCar(i); // gespeichertes Auto wieder aufbauen
     var bl2=new THREE.Mesh(new THREE.CircleGeometry(0.55,12),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.22}));
     bl2.rotation.x=-Math.PI/2;bl2.position.y=0.05;scene.add(bl2);pawnBlobs.push(bl2);});
