@@ -229,6 +229,8 @@ var geld=5000,tag=1,uhrzeit=8*60; // Minuten
 var liebe=30,verlobt=false,verheiratet=false,loveEvT=0;
 var skills={arbeit:{lv:1,xp:0},liebe:{lv:1,xp:0},krimi:{lv:0,xp:0}};
 var crime={on:false,t:0,job:null,accomplice:false,ask:false};
+var kinder=[]; // {mesh,name,x,z,rot,alter(Tage),parent,walkT,path,emoji,emoT,net}
+var KIDNAMES=["Emma","Ben","Lina","Noah","Mia jr.","Leo","Ella","Finn","Ida","Paul"];
 var arbeiten=false; // beide gerade im Buero?
 function skillXp(k,n){
   if(MPs&&!mpHost)return;
@@ -320,7 +322,7 @@ function doDelete(gx,gy,silent){
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
 function snapshot(){return {floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
   Object.keys(floorMeshes).forEach(function(k){scene.remove(floorMeshes[k]);});floors={};floorMeshes={};
@@ -329,7 +331,10 @@ function loadSnapshot(sn){
   Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(",");applyWall(+p[0],+p[1],+p[2],sn.walls[k]);});
   (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x,f.y,f.r,f.fid);});
   if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;updHUD();}
+  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;
+  kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
+  (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
+  updHUD();}
 function onNetMsg(m){
   if(m.t==="wall")doPlaceWall(m.x,m.y,m.d,m.ty,true);
   else if(m.t==="floor")doPlaceFloor(m.x,m.y,m.i,true);
@@ -339,7 +344,9 @@ function onNetMsg(m){
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
   else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
-  else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});}
+  else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
+    if(m.k){while(kinder.length<m.k.length){var nk=spawnKind(m.k[kinder.length].b);if(nk)nk.name=m.k[kinder.length].n;}
+      m.k.forEach(function(kd,i){if(kinder[i]){kinder[i].net=kd;if(kinder[i].baby!==kd.b){kinder[i].baby=kd.b;scene.remove(kinder[i].mesh);var nm2=mkKind(kd.b);nm2.position.set(kinder[i].x,0,kinder[i].z);scene.add(nm2);kinder[i].mesh=nm2;}}});}}
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;tag=m.d;}
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
   else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
@@ -397,6 +404,16 @@ function mkBewohner(opts){
 var simDefs=[
  {name:"Max",skin:0xf0c090,hair:0x4a342a,top:0x4a7ab0,bottom:0x3a4a6a,dress:false,longHair:false},
  {name:"Mia",skin:0xffd9b8,hair:0x8a4a2a,top:0xe85aa0,bottom:0xe85aa0,dress:true,longHair:true}];
+function mkKind(baby){
+  var g=mkBewohner({skin:0xffd9b8,hair:0x6a4a2a,top:baby?0xffe08a:0x8fd8a0,bottom:0x8a6a4a,dress:false,longHair:Math.random()<0.5});
+  g.scale.setScalar(baby?0.42:0.68);
+  return g;}
+function spawnKind(baby){
+  if(kinder.length>=3)return null;
+  var nm=KIDNAMES[(Math.random()*KIDNAMES.length)|0];
+  var m=mkKind(baby);
+  var k={mesh:m,name:nm,x:cx(3),z:cz(GH-2),rot:0,alter:baby?0:2,walkT:0,path:[],emoji:null,emoT:0,net:null,baby:!!baby};
+  kinder.push(k);return k;}
 var sims=simDefs.map(function(sd,i){
   return {name:sd.name,mesh:mkBewohner(sd),x:cx(2+i*2),z:cz(GH-2),rot:0,
     needs:{hunger:70+Math.random()*20,energie:75+Math.random()*20,spass:60+Math.random()*20,hygiene:70+Math.random()*20},
@@ -601,6 +618,11 @@ function updLove(dt){
           s2.x=cx(bogen.gx)+(k?0.6:-0.6);s2.z=cz(bogen.gy)+0.7;s2.rot=Math.PI;s2.pose="stand";});
         loveEvent("hochzeit");skillXp("liebe",5);return;}
       else if(Math.random()<0.3){loveEvT=6;simEmoji(a,"💒");simEmoji(b,"🌹");}}
+    if(verheiratet&&kinder.length<3&&liebe>=90&&frei&&Math.random()<0.5){loveEvT=15;
+      spawnKind(true);
+      loveScene("👶 Nachwuchs! Familie "+(verheiratet?"Traumhaus":"")+" bekommt ein Baby 💕",4000);
+      for(var hk=0;hk<4;hk++)setTimeout(function(){hearts(sims[0].x,sims[0].z);},hk*500);
+      skillXp("liebe",4);liebe=60;return;}
     if(a.state==="idle"&&b.state==="idle"&&d<4&&liebe>=40&&Math.random()<0.4){loveEvT=8;loveEvent("dance");skillXp("liebe",1);}
   }}
 var romT=0,romPair=null;
@@ -634,6 +656,33 @@ function hearts(x,z){
 function updHearts(dt){for(var i=heartSprites.length-1;i>=0;i--){var h=heartSprites[i];
   h.s.position.y+=h.v*dt;h.life-=dt;h.s.material.opacity=Math.min(1,h.life);
   if(h.life<=0){scene.remove(h.s);heartSprites.splice(i,1);}}}
+function updKind(k,dt,now){
+  if(MPs&&!mpHost){if(k.net){k.x+=(k.net.x-k.x)*Math.min(1,dt*8);k.z+=(k.net.z-k.z)*Math.min(1,dt*8);k.rot=k.net.r;}}
+  else{
+    // Altern: 1 Spieltag ~ +1; Baby (0-3) -> Kind (>=3)
+    k.alter+=dt*0.006;
+    if(k.baby&&k.alter>=3){k.baby=false;
+      var gp=k.mesh;scene.remove(gp);
+      var nm=mkKind(false);nm.position.set(k.x,0,k.z);scene.add(nm);k.mesh=nm;
+      hint("👶 "+k.name+" ist zum Kind herangewachsen!");simEmojiK(k,"🌟");}
+    // Elternteil in der Nähe suchen und hinterherlaufen (Baby: nur krabbeln nahe Mama)
+    var p=sims[k.alter<3?1:(kinder.indexOf(k)%2)];
+    if(p&&p.mesh.visible){var dx=p.x-k.x,dz=p.z-k.z,d=Math.hypot(dx,dz);
+      if(d>2.2){var spd=k.baby?1.0:2.0;k.x+=dx/d*spd*dt;k.z+=dz/d*spd*dt;k.rot=Math.atan2(dx,dz);k.walkT+=dt*9;}
+      else if(Math.random()<0.004)simEmojiK(k,["😊","🧸","❤️","🎨"][(Math.random()*4)|0]);}
+  }
+  var m=k.mesh;m.position.set(k.x,0,k.z);m.rotation.set(0,k.rot,0);
+  var ud=m.userData;
+  if(k.walkT&&ud){var sw=Math.sin(k.walkT);ud.ll.rotation.x=sw*0.6;ud.rl.rotation.x=-sw*0.6;ud.la.rotation.x=-sw*0.4;ud.ra.rotation.x=sw*0.4;k.walkT*=1;}
+  if(k.baby)m.position.y=0; // krabbelt am Boden (klein)
+  if(k.emoji){k.emoT-=dt;if(k.emoT<=0){m.remove(k.emoji);k.emoji=null;}}
+}
+function simEmojiK(k,txt){
+  if(k.emoji){k.mesh.remove(k.emoji);k.emoji=null;}
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  c.font="40px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(txt,32,36);
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+  sp.scale.set(0.4,0.4,1);sp.position.y=1.3;k.mesh.add(sp);k.emoji=sp;k.emoT=2.4;}
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast: Host-Positionen weich übernehmen
     if(s.net){s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
@@ -812,6 +861,8 @@ function updHUD(){
   var hh=Math.floor(uhrzeit/60)%24,mm=Math.floor(uhrzeit%60);
   document.getElementById("uhr").textContent=(hh<6||hh>=21?"🌙":"🕗")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0");
   var nb=document.getElementById("needsBox");nb.innerHTML="";
+  if(kinder.length){var kr=document.createElement("div");kr.style.cssText="font-size:.72rem;color:#c05a8a;font-weight:800";
+    kr.textContent="👨‍👩‍👧 Familie: "+kinder.map(function(k){return (k.baby?"👶":"🧒")+k.name;}).join(" · ");nb.appendChild(kr);}
   var skr=document.createElement("div");skr.style.cssText="font-size:.72rem;color:#5a4a30;font-weight:800";
   skr.textContent="💼 Lv"+skills.arbeit.lv+" · 💘 Lv"+skills.liebe.lv+(skills.krimi.lv>0?" · 🕶️ Lv"+skills.krimi.lv:"")+(arbeiten?" · Arbeit …":(crime.on?" · unterwegs 🌙":""));
   nb.appendChild(skr);
@@ -891,10 +942,11 @@ function loop(now){
       if(followSim.state==="work"){followSim=null;}
       else{camTx+=(followSim.x-camTx)*Math.min(1,dt*4);camTz+=(followSim.z-camTz)*Math.min(1,dt*4);updCam();}}
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
+    for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updWork(dt);updCrime(dt);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
-      if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};})});
+      if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten});}}}
     saveTick+=dt;if(saveTick>6){saveTick=0;saveGame();}
   }
