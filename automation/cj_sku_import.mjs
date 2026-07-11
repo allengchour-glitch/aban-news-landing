@@ -99,6 +99,10 @@ for (const item of ITEMS) {
         const name = (cand.productNameEn || '').toLowerCase();
         const hits = kws.filter(w => name.includes(w)).length;
         if (kws.length && hits < Math.min(2, kws.length)) continue; // ≥2 Wörter bei mehrwortiger Suche («shower caddy»≠Duschkopf)
+        // MOQ-Wache (2026-07-11, User-Fund VerveBuds MOQ 10): NUR ORDINARY_PRODUCT (CJ-Lager, Einzel-Dropship
+        // MOQ 1). SUPPLIER_SHIPPED_PRODUCT/SUPPLIER_PRODUCT = Lieferant-Direkt, oft MOQ>1 → nicht einzeln fulfillbar.
+        const pt = cand.productType || '';
+        if (pt && pt !== 'ORDINARY_PRODUCT' && pt !== 'DIY_PRODUCT') { continue; }
         if (!done.has(String(cand.pid))) { pid = cand.pid; break; }
       }
     }
