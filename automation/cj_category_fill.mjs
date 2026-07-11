@@ -255,10 +255,15 @@ for(const [cat,label] of grp.cats){
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
-   // Google-Merchant-Pflichtattribute bei Mode: Gender + Altersgruppe (Farbe/Grösse kommen aus Varianten)
-   if(grp.fashion){const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
-    const age=grp.tags.includes('kinder')||grp.tags.includes('baby-kids')?'kids':'adult';
-    input.metafields=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},{namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'}];}
+   // Google-Merchant-Attribute für ALLE Produkte (2026-07-11 «google merchant sachen auch»): gender + age_group
+   // + material (aus CJ-Beschreibung extrahiert). Farbe/Grösse kommen aus Varianten. Google liest mm-google-shopping.
+   { const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
+     const age=(grp.tags.includes('kinder')||grp.tags.includes('baby-kids'))?'kids':'adult';
+     const mf=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},
+               {namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'}];
+     const mm=(feats||'').match(/\b(?:material|made of|fabric|composition)\b[:\s]+([a-zA-ZäöüÄÖÜ0-9%,\s\/-]{3,40})/i);
+     if(mm){const mat=mm[1].replace(/\s+/g,' ').trim().replace(/[.,;]$/,''); if(mat.length>=3)mf.push({namespace:'mm-google-shopping',key:'material',value:mat.slice(0,50),type:'single_line_text_field'});}
+     input.metafields=mf; }
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
    if(dq.data?.products?.edges?.length){console.log('  skip(dup-titel)',title.slice(0,40));continue;}
