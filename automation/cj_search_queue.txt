@@ -273,8 +273,8 @@
 #done search:hair clips girls
 #done search:kids jewelry set
 #done search:beach cover up
-search:straw hat wide brim
-search:beach bag straw
-search:flip flops women
-search:sarong wrap
+#done search:straw hat wide brim
+#done search:beach bag straw
+#done search:flip flops women
+#done search:sarong wrap
 search:sun hat foldable
