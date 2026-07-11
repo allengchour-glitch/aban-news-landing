@@ -68,6 +68,24 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
 .dots::after{content:"";display:inline-block;width:1.2em;text-align:left;animation:mpdots 1.4s steps(4) infinite}
 @keyframes mpdots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
 #ping{position:absolute;top:16px;right:112px;font-size:.72rem;font-weight:700;color:#8b93b8;text-shadow:0 1px 4px #000}
+/* ===== Quick-Chat / Emotes ===== */
+#emoteBar{position:absolute;right:12px;bottom:64px;display:flex;gap:4px;pointer-events:auto}
+#emoteBar button{min-width:34px;height:34px;padding:0 7px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.78);color:#eaf0ff;font-size:1rem;font-weight:800;cursor:pointer}
+#emoteBar button.txt{font-size:.64rem}
+#emoteBar button:hover{border-color:#5ef2ff}
+@media(pointer:coarse){#emoteBar{display:none}}
+#tChat{right:24px;bottom:200px;border-color:#b98bff;background:rgba(40,26,64,.55);color:#d9b8ff;font-size:1.5rem}
+#chatFan{position:absolute;right:24px;bottom:274px;display:none;grid-template-columns:repeat(2,minmax(72px,1fr));gap:8px;background:rgba(10,14,32,.9);border:1px solid #3a4170;border-radius:16px;padding:10px;pointer-events:auto;max-width:240px}
+#chatFan button{min-width:72px;min-height:48px;border-radius:12px;border:1px solid #3a4170;background:rgba(30,36,80,.9);color:#eaf0ff;font-size:1.3rem;font-weight:800;cursor:pointer}
+#chatFan button.txt{font-size:.74rem}
+/* Namens-Labels + Sprechblasen über den Figuren */
+.plname{position:fixed;transform:translate(-50%,-100%);font-size:14px;font-weight:800;color:#eaf0ff;background:rgba(8,10,24,.78);border:1px solid rgba(120,140,255,.4);border-radius:9px;padding:2px 9px;pointer-events:none;z-index:12;white-space:nowrap;display:none;text-shadow:0 1px 4px #000}
+#nm1{border-color:rgba(94,242,255,.55)}#nm2{border-color:rgba(255,180,110,.55)}
+.bub{position:fixed;transform:translate(-50%,-112%);pointer-events:none;z-index:13;display:none;background:#f4f7ff;color:#131a3a;font-weight:900;border-radius:14px;padding:6px 12px;font-size:1.25rem;white-space:nowrap;box-shadow:0 6px 22px rgba(0,0,0,.45)}
+.bub.txt{font-size:.85rem}
+.bub::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:8px solid transparent;border-top-color:#f4f7ff;border-bottom:0}
+.bub.pop{animation:bubPop 2.5s ease forwards}
+@keyframes bubPop{0%{opacity:0;transform:translate(-50%,-112%) scale(.3)}9%{opacity:1;transform:translate(-50%,-112%) scale(1.12)}14%{transform:translate(-50%,-112%) scale(1)}78%{opacity:1}100%{opacity:0;transform:translate(-50%,-112%) scale(.92)}}
 </style>
 </head>
 <body>
@@ -80,12 +98,15 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
   <div class="pbar" id="p1bar"><div class="nm">⚔ KLINGE</div><div class="bar"><i id="hp1" style="width:100%"></i></div></div>
   <div class="pbar" id="p2bar"><div class="nm">✦ FUNKE</div><div class="bar"><i id="hp2" style="width:100%"></i></div></div>
   <div id="hint"></div><div id="announce"></div><div id="combo">KOMBO!</div>
-  <div id="keysHelp"><span style="color:#7de3ff"><b>⚔ P1:</b> WASD bewegen · <b>LEER</b> Hieb</span><span style="color:#8b93b8"> · </span><span style="color:#ffb46e"><b>✦ P2:</b> Pfeiltasten (feuert automatisch)</span><span style="color:#8b93b8"> · <b>M</b> Ton</span></div>
+  <div id="keysHelp"><span style="color:#7de3ff"><b>⚔ P1:</b> WASD bewegen · <b>LEER</b> Hieb</span><span style="color:#8b93b8"> · </span><span style="color:#ffb46e"><b>✦ P2:</b> Pfeiltasten (feuert automatisch)</span><span style="color:#8b93b8"> · <b>M</b> Ton · <b>1–6</b> 💬</span></div>
   <div id="ping" class="hide"></div>
+  <div id="emoteBar"></div>
 </div>
 <div id="dmg"></div>
+<div id="nm1" class="plname"></div><div id="nm2" class="plname"></div>
+<div id="bub1" class="bub"></div><div id="bub2" class="bub"></div>
 <button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:10px;right:12px;z-index:16;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🔊</button>
-<div id="touchUI"><div id="joyBase"><div id="joyKnob"></div></div><button class="tbtn" id="tAtk">⚔</button></div>
+<div id="touchUI"><div id="joyBase"><div id="joyKnob"></div></div><button class="tbtn" id="tAtk">⚔</button><button class="tbtn" id="tChat">💬</button><div id="chatFan"></div></div>
 
 <div class="overlay" id="start">
   <div class="kicker">aban news · Koop-Arena · nach den Regeln der großen Koop-Spiele</div>
@@ -160,12 +181,15 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#eaf0ff;font-fami
   <h1 id="overTitle">GAME OVER</h1>
   <p id="overTxt"></p>
   <button class="btn" id="againBtn">Nochmal ▶</button>
+  <button class="btn net hide" id="rematchBtn">🔄 Nochmal zusammen</button>
+  <p class="mpwait hide" id="rematchState"></p>
   <div class="foot"><a href="/spiele.html">Mehr Spiele</a></div>
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
+<script src="/js/arcade.js"></script>
 <script src="/js/mp.js"></script>
 <script>
 (function(){
@@ -322,6 +346,7 @@ function freshState(){return {wave:0,hp1:100,hp2:100,max1:100,max2:100,
 var keys={};
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k===" "){e.preventDefault();if(running&&net!=='client')p1Attack();}
+  if(k.length===1&&k>="1"&&k<="6")sendEmote(k.charCodeAt(0)-49); // Quick-Chat 1–6
   if(k.indexOf("arrow")===0)e.preventDefault();
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
@@ -691,6 +716,7 @@ function gameOverUI(win,kills,secs,wave){ // DOM geteilt: Host lokal + Client pe
     ("Ihr habt alle 8 Wellen und den Boss <b>zusammen</b> bezwungen — "+kills+" Gegner, "+secs+"s. Genau dafür ist Koop da. 🏆"):
     ("Welle "+wave+" · "+kills+" Gegner · "+secs+"s. Tipp: bleibt in Band-Reichweite und belebt euch gegenseitig wieder!");
   document.getElementById("over").classList.remove("hide");
+  remReset();remSwap(!!(net&&netSess&&netSess.status==='connected')); // Online: „Nochmal zusammen" statt Solo-Restart
   beep(win?1046:80,.6,win?"triangle":"sawtooth",.09);
 }
 function gameOver(win){
@@ -814,6 +840,7 @@ function clientFrame(dt){ // Online-CLIENT: eigene Figur (Funke) + Interpolation
     if(inAcc>=0.05&&netSess){inAcc=0;netSess.sendFast({k:'i',x:+P2.g.position.x.toFixed(2),z:+P2.g.position.z.toFixed(2),ry:+P2.g.rotation.y.toFixed(2)});}
     if(pingAcc>=1&&netSess){pingAcc=0;netSess.sendFast({k:'p',t:performance.now()});}
 }
+var kaLast=0;
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
@@ -821,9 +848,17 @@ function loop(now){
     G.t+=dt;
     if(net==='client')clientFrame(dt);else simFrame(dt);
     visFrame(dt);
+  }else if(net&&netSess){
+    // Keepalive: am Game-Over-/Pause-Screen laufen keine Snapshots/Inputs mehr —
+    // ohne Ping würde der 6s-Watchdog in mp.js die Verbindung fälschlich kappen
+    // (wichtig für den Rematch-Flow, wo beide auf dem Game-Over-Screen warten).
+    // Wall-Clock statt dt-Summe: dt ist auf 0.05s geclampt und käme bei niedriger
+    // Framerate deutlich langsamer als 1/s.
+    if(now-kaLast>=1000){kaLast=now;netSess.sendFast({k:'p',t:performance.now()});}
   }
   updateCamera(dt);
   renderBloom();
+  updLabels(); // Namens-Labels + Sprechblasen an die 3D-Figuren heften
 }
 
 // ---- Bloom-Post-Processing (Neon-Glow) ----
@@ -870,11 +905,12 @@ function begin(isSolo,role){
   document.getElementById("p1bar").querySelector(".nm").textContent=net==='client'?"⚔ KLINGE (Freund)":"⚔ KLINGE";
   document.getElementById("p2bar").querySelector(".nm").textContent=solo?"✦ FUNKE (KI)":(net==='host'?"✦ FUNKE (Freund)":(net==='client'?"✦ FUNKE (DU)":"✦ FUNKE"));
   var kh=document.getElementById("keysHelp");
-  if(net==='client')kh.innerHTML='<span style="color:#ffb46e"><b>✦ DU bist FUNKE:</b> WASD/Pfeile bewegen — gefeuert wird automatisch</span><span style="color:#8b93b8"> · <b>M</b> Ton</span>';
-  else if(net==='host')kh.innerHTML='<span style="color:#7de3ff"><b>⚔ DU bist KLINGE:</b> WASD · <b>LEER</b> Hieb</span><span style="color:#8b93b8"> · ✦ Funke steuert dein Freund · <b>M</b> Ton</span>';
+  if(net==='client')kh.innerHTML='<span style="color:#ffb46e"><b>✦ DU bist FUNKE:</b> WASD/Pfeile bewegen — gefeuert wird automatisch</span><span style="color:#8b93b8"> · <b>M</b> Ton · <b>1–6</b> 💬</span>';
+  else if(net==='host')kh.innerHTML='<span style="color:#7de3ff"><b>⚔ DU bist KLINGE:</b> WASD · <b>LEER</b> Hieb</span><span style="color:#8b93b8"> · ✦ Funke steuert dein Freund · <b>M</b> Ton · <b>1–6</b> 💬</span>';
   else kh.innerHTML=KH0;
   var pingEl=document.getElementById("ping");pingEl.classList.toggle("hide",!net);if(net)pingEl.textContent="– ms";
   var tAtkEl=document.getElementById("tAtk");if(tAtkEl)tAtkEl.style.display=(net==='client')?"none":"";
+  remReset();bubUntil[1]=0;bubUntil[2]=0; // Rematch-Status + alte Sprechblasen weg
   updHUD();running=true;musSync();
   announce("NEON DUO","#b98bff");
   showHint(net==='client'?"Du bist ✦ FUNKE — beweg dich, gefeuert wird automatisch. Bleibt zusammen!":
@@ -968,6 +1004,9 @@ function netMsg(m){
   if(net==='host'||netSess&&netSess.role==='host'){
     if(m.k==='i'){netP2.x=m.x;netP2.z=m.z;netP2.ry=m.ry||0;}
     else if(m.k==='again')netBegin();
+    else if(m.k==='hello')setPName(2,m.n);
+    else if(m.k==='em')recvEmote(2,m.i);
+    else if(m.k==='rm')peerRematch();
     return;
   }
   // Client: Snapshots + Events vom Host
@@ -982,6 +1021,9 @@ function netMsg(m){
     case 'a2':if(G)fireFx(m.x,m.y,m.z);break;
     case 'bw':bossWarnFx(m.x,m.z);break;
     case 'ov':running=false;musSync();gameOverUI(!!m.w,m.n,m.s,m.v);break;
+    case 'hello':setPName(1,m.n);break;
+    case 'em':recvEmote(1,m.i);break;
+    case 'rm':peerRematch();break;
   }
 }
 function netBegin(){begin(false,'host');netEv({e:'bg'});}
@@ -989,7 +1031,7 @@ function netBegin(){begin(false,'host');netEv({e:'bg'});}
 var mpO=document.getElementById("onlineO"),mpHome=document.getElementById("mpHome"),
     mpHost=document.getElementById("mpHost"),mpJoin=document.getElementById("mpJoin");
 function mpView(v){mpHome.classList.toggle("hide",v!=="home");mpHost.classList.toggle("hide",v!=="host");mpJoin.classList.toggle("hide",v!=="join");}
-function netCleanup(){if(netSess){try{netSess.close();}catch(e){}netSess=null;}net=null;clearMirrors();document.getElementById("ping").classList.add("hide");}
+function netCleanup(){if(netSess){try{netSess.close();}catch(e){}netSess=null;}net=null;clearMirrors();document.getElementById("ping").classList.add("hide");remSwap(false);}
 document.getElementById("startOnline").onclick=function(){
   if(!window.MP||!window.Peer&&!MP.localMode){showHint("Online-Modus hier nicht verfügbar.",2600);return;}
   document.getElementById("start").classList.add("hide");mpO.classList.remove("hide");mpView("home");};
@@ -997,6 +1039,11 @@ document.getElementById("mpBackBtn").onclick=function(){netCleanup();mpO.classLi
 function startNet(role){
   net=role;
   netSess.onStatus(netStatus);
+  // Namens-Handshake: jeder schickt seinen abanArcade-Namen (reliable, optionales Event —
+  // alte Gegenstellen ignorieren unbekannte Nachrichten einfach)
+  var me=role==='client'?2:1;
+  setPName(me,myName());
+  netEv(role==='host'?{e:'hello',n:names[1]}:{k:'hello',n:names[2]});
   if(role==='host')netBegin();
   else document.getElementById("mpJoinState").textContent="✅ Verbunden! Der Host startet das Spiel…";
 }
@@ -1052,9 +1099,9 @@ document.getElementById("mpShareBtn").onclick=function(){
 // ---- Verbindungs-Status / Disconnect-Fallback auf KI ----
 function netStatus(t){
   if(net==null)return;
-  if(t==='lost')showNetLost(false);
+  if(t==='lost'){remSwap(false);showNetLost(false);}
   else if(t==='connected'){hideNetLost();announce("VERBINDUNG WIEDER DA!","#6affab");}
-  else if(t==='closed')showNetLost(true);
+  else if(t==='closed'){remSwap(false);showNetLost(true);}
 }
 function showNetLost(final){
   if(net==='host')paused=true; // Host-Welt anhalten, solange das Overlay steht
@@ -1093,12 +1140,114 @@ document.getElementById("netMenuBtn").onclick=function(){
   for(var i=0;i<4;i++)codeIns[i].value=c[i];
   mpGo();
 })();
+// ============================================================================
+// ===== Multiplayer-Zusatz: Quick-Chat/Emotes · Namens-Labels · Rematch =====
+// Kinder-sicher: NUR 6 vorgefertigte Reaktionen, kein Freitext. Alles läuft
+// über den bestehenden reliable-Kanal (netEv) — mp.js unverändert.
+// ============================================================================
+var EMOTES=["👍","❤️","😂","😮","Gut gemacht!","Hilfe!"];
+var names={1:"Klinge",2:"Funke"};
+function cleanName(n){return String(n==null?"":n).replace(/[<>&"'`]/g,"").trim().slice(0,12);} // Injection-Schutz + Länge cappen (Anzeige läuft eh über textContent)
+function myName(){var n="";
+  try{n=(window.AbanArcade?AbanArcade.profile().name:(JSON.parse(lsGet("abanArcade")||"{}")||{}).name)||"";}catch(e){}
+  n=cleanName(n);return n||(net==='client'?"Funke":"Klinge");}
+function setPName(who,n){names[who]=cleanName(n)||(who===1?"Klinge":"Funke");
+  document.getElementById("nm"+who).textContent=names[who];}
+setPName(1,"");setPName(2,"");
+// --- Labels + Sprechblasen an die Figuren projizieren (jeden Frame) ---
+var _pv=new THREE.Vector3(),bubUntil={1:0,2:0};
+function projEl(el,P,y){_pv.set(P.g.position.x,y,P.g.position.z).project(camera);
+  if(_pv.z>1){el.style.display="none";return;}
+  el.style.left=((_pv.x+1)/2*W)+"px";el.style.top=((-_pv.y+1)/2*H)+"px";el.style.display="block";}
+function updLabels(){
+  var showN=!!net&&!!G&&running&&!paused; // Namen NUR online
+  for(var w=1;w<=2;w++){var P=w===1?P1:P2;
+    var nm=document.getElementById("nm"+w);
+    if(showN)projEl(nm,P,3.0);else nm.style.display="none";
+    var b=document.getElementById("bub"+w);
+    if(G&&performance.now()<bubUntil[w])projEl(b,P,3.9);else b.style.display="none";}
+}
+function showBubble(who,i){
+  i=Math.max(0,Math.min(EMOTES.length-1,(+i|0)));
+  var el=document.getElementById("bub"+who),t=EMOTES[i];
+  el.textContent=t;el.classList.toggle("txt",t.length>2);
+  el.classList.remove("pop");void el.offsetWidth;el.classList.add("pop"); // Pop-in neu starten
+  bubUntil[who]=performance.now()+2500;
+  beep(who===1?920:1080,.07,"triangle",.03);
+}
+var lastEmoteSend=0,lastEmoteRecv=0;
+function sendEmote(i){
+  if(!running||paused||!G)return;
+  var now=performance.now();
+  if(now-lastEmoteSend<1000)return; // Spam-Schutz: max 1/s, Überschuss verwerfen (keine Queue)
+  lastEmoteSend=now;
+  var me=(net==='client')?2:1;
+  showBubble(me,i);
+  if(net==='host')netEv({e:'em',i:i});
+  else if(net==='client')netEv({k:'em',i:i});
+  else if(solo&&Math.random()<0.5)setTimeout(function(){ // KI-Partnerin reagiert gelegentlich 👍/😂
+    if(running&&solo&&!net)showBubble(2,Math.random()<0.5?0:2);},900+Math.random()*900);
+}
+function recvEmote(who,i){
+  var now=performance.now();
+  if(now-lastEmoteRecv<1000)return; // auch eingehend drosseln
+  lastEmoteRecv=now;showBubble(who,i);
+}
+// --- Emote-Leiste (Desktop, Tasten 1–6) + 💬-Fächer (Touch, ≥48px) ---
+(function(){
+  var bar=document.getElementById("emoteBar"),fan=document.getElementById("chatFan");
+  function mkBtn(i,into,after){var b=document.createElement("button");b.type="button";
+    b.textContent=EMOTES[i];if(EMOTES[i].length>2)b.className="txt";
+    b.title="Reaktion senden (Taste "+(i+1)+")";
+    b.addEventListener("click",function(ev){ev.preventDefault();sendEmote(i);if(after)after();});
+    into.appendChild(b);}
+  function fanShow(on){fan.style.display=on?"grid":"none";}
+  for(var i=0;i<EMOTES.length;i++){mkBtn(i,bar);mkBtn(i,fan,function(){fanShow(false);});}
+  var tc=document.getElementById("tChat");
+  tc.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fanShow(fan.style.display!=="grid");},{passive:false});
+  tc.addEventListener("click",function(){fanShow(fan.style.display!=="grid");});
+})();
+// --- Rematch am Game-Over (nur online): BEIDE drücken → synchroner Neustart ---
+var rem={me:false,peer:false,tmo:null};
+function remReset(){rem.me=false;rem.peer=false;clearTimeout(rem.tmo);rem.tmo=null;
+  var st=document.getElementById("rematchState");st.classList.add("hide");st.textContent="";
+  document.getElementById("rematchBtn").disabled=false;}
+function remSwap(online){ // online verbunden → „Nochmal zusammen", sonst normaler Solo-Restart
+  document.getElementById("rematchBtn").classList.toggle("hide",!online);
+  document.getElementById("againBtn").classList.toggle("hide",!!online);}
+function remCheck(){
+  var st=document.getElementById("rematchState");st.classList.remove("hide");
+  var n=(rem.me?1:0)+(rem.peer?1:0);
+  if(rem.me&&rem.peer){st.textContent="✅ Beide bereit — los geht's!";
+    if(net==='host')netBegin();} // Host resettet und schickt das Start-Event ('bg')
+  else if(rem.me)st.textContent="⏳ Warte auf Mitspieler… "+n+"/2";
+  else st.textContent="👋 "+names[net==='client'?1:2]+" will nochmal spielen! ("+n+"/2)";
+}
+function peerRematch(){if(net==null)return;rem.peer=true;remCheck();}
+document.getElementById("rematchBtn").onclick=function(){
+  if(rem.me||net==null)return;
+  rem.me=true;this.disabled=true;
+  netEv(net==='host'?{e:'rm'}:{k:'rm'});
+  remCheck();
+  clearTimeout(rem.tmo);
+  rem.tmo=setTimeout(function(){ // 30s keine Antwort → Hinweis + Solo-Restart anbieten
+    if(rem.me&&!rem.peer){
+      document.getElementById("rematchState").textContent="😴 Keine Antwort — dein Mitspieler ist wohl weg.";
+      document.getElementById("againBtn").classList.remove("hide");}
+  },30000);
+};
 // Debug-Griff für automatisierte Tests (game_smoke / Playwright-2-Browser-Test)
-window.__nd={s:function(){return {net:net,running:running,paused:paused,ping:lastPing,
+window.__nd={go:function(w){if(running&&net!=='client')gameOver(!!w);}, // Test: Game-Over erzwingen (Host/lokal)
+  s:function(){return {net:net,running:running,paused:paused,ping:lastPing,
   p1:[+P1.g.position.x.toFixed(2),+P1.g.position.z.toFixed(2)],
   p2:[+P2.g.position.x.toFixed(2),+P2.g.position.z.toFixed(2)],
   hp1:G?G.hp1:0,hp2:G?G.hp2:0,enemies:enemies.filter(function(e){return e.active;}).length,
-  mirrors:Object.keys(mirrors).length,code:netSess?netSess.code:null,st:netSess?netSess.status:null};}};
+  mirrors:Object.keys(mirrors).length,code:netSess?netSess.code:null,st:netSess?netSess.status:null,
+  nm:[names[1],names[2]],
+  nmv:[document.getElementById("nm1").style.display!=="none",document.getElementById("nm2").style.display!=="none"],
+  bub:[document.getElementById("bub1").style.display!=="none"?document.getElementById("bub1").textContent:null,
+       document.getElementById("bub2").style.display!=="none"?document.getElementById("bub2").textContent:null],
+  rem:[rem.me,rem.peer]};}};
 })();
 </script>
 </body>
