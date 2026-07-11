@@ -104,6 +104,15 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .ccard.sel{border-color:#5ef2ff;background:rgba(24,50,86,.85);color:#eaf6ff;box-shadow:0 0 18px rgba(94,242,255,.28)}
 .ccard.sel small{color:#7de3ff}
 @media (max-width:560px){#classRow{grid-template-columns:1fr 1fr}}
+/* Skill-Slots (Desktop, unten rechts) + grosse Level-Up-Anzeige */
+#skillbar{position:absolute;right:12px;bottom:12px;display:flex;gap:8px}
+.sk{position:relative;width:56px;height:56px;border-radius:12px;background:rgba(8,10,24,.82);border:1px solid rgba(120,140,255,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.sk .ico{font-size:1.3rem;line-height:1.15}
+.sk .kk{font-size:16px;font-weight:900;color:#7de3ff;line-height:1}
+.sk .cdov{position:absolute;inset:0;background:rgba(5,6,15,.74);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff}
+.sk.locked{opacity:.5}
+#lvlBig{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) scale(.8);font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:#ffd166;text-shadow:0 4px 24px #000;background:rgba(8,10,24,.88);border:1px solid rgba(255,207,110,.55);border-radius:18px;padding:12px 32px;opacity:0;transition:opacity .25s,transform .25s;z-index:35;pointer-events:none;white-space:nowrap}
+#lvlBig.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 /* Touch */
 #touchUI{position:fixed;inset:0;z-index:15;pointer-events:none;display:none}
 #joyBase{position:absolute;left:26px;bottom:26px;width:118px;height:118px;border-radius:50%;border:2px solid rgba(125,227,255,.4);background:rgba(10,14,32,.35)}
@@ -114,6 +123,10 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 #tBolt{right:24px;bottom:188px;border-color:#ffcf6e;background:rgba(64,48,16,.55);color:#ffd166}
 #tAct{right:112px;bottom:132px;border-color:#6affab;background:rgba(18,58,36,.55);color:#8affc0;font-size:1.2rem}
 #tInv{position:absolute;top:162px;right:116px;width:44px;height:44px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.35rem;pointer-events:auto}
+/* Mobile Skill-Buttons (Nova/Signature + Kettenblitz bzw. Ultimate) — ≥44px, kollisionsfrei zur bestehenden Button-Wolke */
+#tSkA{right:24px;bottom:280px;border-color:#ffd166;background:rgba(64,48,16,.55);color:#ffd166}
+#tSkB{right:106px;bottom:224px;border-color:#b98bff;background:rgba(40,20,70,.55);color:#d9b8ff}
+.tbtn .bcd{position:absolute;bottom:1px;right:7px;font-size:16px;font-weight:900;color:#fff;text-shadow:0 1px 4px #000}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 /* Schmale Screens (Handy hochkant): Zonen-Name + Uhr unter die Statusleisten, damit nichts überlappt */
 @media (max-width:560px){
@@ -141,7 +154,9 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div id="hint"></div>
   <div id="kprompt"></div>
   <div id="announce"></div>
-  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff · <b>Q</b> Puls · <b>SHIFT</b> Ausweichen · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skills</div>
+  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff · <b>Q</b> Puls · <b>R/F/C/V</b> Skills · <b>SHIFT</b> Ausweichen · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skill-Menü</div>
+  <div id="skillbar"></div>
+  <div id="lvlBig"></div>
 </div>
 <div id="dmg"></div>
 <div id="achToast"><span id="achTxt">🏆</span><small id="achSub"></small></div>
@@ -168,6 +183,8 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <button class="tbtn" id="tDodge">💨</button>
   <button class="tbtn" id="tBolt">⚡</button>
   <button class="tbtn hide" id="tAct">E</button>
+  <button class="tbtn hide" id="tSkA"><span class="bi">💥</span><span class="bcd"></span></button>
+  <button class="tbtn hide" id="tSkB"><span class="bi">🌩</span><span class="bcd"></span></button>
   <button id="tInv">🎒</button>
 </div>
 
@@ -175,7 +192,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div class="kicker">aban news · Open-World-Action-RPG</div>
   <h1>NEON REALM</h1>
   <p>Das Reich ist zerbrochen. Erkunde <b>vier Zonen</b>, erfülle die Quests der Dorfbewohner, sammle <b>Loot mit Seltenheitsstufen</b>, lerne Skills — und wecke am Ende den <b>NEXUS</b>, um das Reich zu einen. Dein Fortschritt wird gespeichert.</p>
-  <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Angriff</span><span><b>Q</b> Puls</span><span><b>SHIFT</b> Roll</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
+  <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Angriff</span><span><b>Q</b> Puls</span><span><b>R/F/C/V</b> Skills</span><span><b>SHIFT</b> Roll</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
   <div style="letter-spacing:.3em;font-size:.8rem;color:#a9b8ff;text-transform:uppercase;margin:4px 0 8px">Wähle deinen Helden</div>
   <div id="classRow">
     <button class="ccard" data-cls="held"><span class="ce">⚡</span><b>Held</b><small>Allrounder</small></button>
@@ -564,6 +581,10 @@ addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(!running)return;
   if(k===" ")doAttack();
   if(k==="q")doBolt();
+  if(k==="r")castSkill("nova");
+  if(k==="f")castSkill("chain");
+  if(k==="c")castSkill("shield");
+  if(k==="v")castSkill("ult");
   if(k==="shift")doDodge();
   if(k==="e")doInteract();
   if(k==="i")togglePanel("invPanel");
@@ -586,6 +607,8 @@ if(isTouch){document.getElementById("touchUI").style.display="block";document.ge
   addEventListener("touchend",jend);addEventListener("touchcancel",jend);
   function bindBtn(id,fn){var b=document.getElementById(id);b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});}
   bindBtn("tAtk",function(){doAttack();});bindBtn("tDodge",function(){doDodge();});bindBtn("tBolt",function(){doBolt();});bindBtn("tAct",function(){doInteract();});
+  bindBtn("tSkA",function(){castSkill("nova");}); // Nova/Klassen-Signature
+  bindBtn("tSkB",function(){if(G&&G.lvl>=9&&skillCD.ult<=0.05)castSkill("ult");else castSkill("chain");}); // Ultimate wenn bereit, sonst Kettenblitz
   document.getElementById("tInv").addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();togglePanel("invPanel");},{passive:false});
 }
 function moveVec(){var x=0,z=0;
@@ -691,20 +714,56 @@ function renderSkills(){
         G.sp--;G.skills[sk[0]]++;beep(880,.1,"triangle",.06);renderSkills();updHUD();saveGame();};
       ns.appendChild(n);});
     d.appendChild(ns);st.appendChild(d);});
+  // Aktive Skills: Info-Sektion (schalten sich automatisch per Level frei, ab Lv 3 Klassen-Signature auf R)
+  var ab=document.createElement("div");ab.className="branch";
+  ab.innerHTML="<h4>⚡ Aktive Skills (automatisch per Level)</h4>";
+  var an=document.createElement("div");an.className="nodes";
+  SKDEF.forEach(function(def){
+    var un=G.lvl>=def.lv;
+    var n=document.createElement("div");n.className="node max";
+    n.innerHTML="<b>"+(un?"":"🔒 ")+skillName(def.id)+" <span class='lv'>["+def.key+"]</span></b>"+(un?"Bereit · Abklingzeit "+def.cd+"s":"Ab Level "+def.lv);
+    an.appendChild(n);});
+  ab.appendChild(an);st.appendChild(ab);
 }
-function gainXp(v){G.xp+=v;while(G.xp>=G.xpNeed){G.xp-=G.xpNeed;G.lvl++;G.sp++;G.xpNeed=Math.round(G.xpNeed*1.35);
-  G.maxhp+=8;G.hp=playerMaxHp();G.maxen+=3;G.en=playerMaxEn();G.atk+=1;
-  announce("LEVEL "+G.lvl+"! (+1 Skillpunkt — T)","#ffcf6e");beep(1046,.3,"triangle",.08);camShake=Math.max(camShake,0.4);}
+function gainXp(v){var lv0=G.lvl;G.xp+=v;
+  while(G.xp>=G.xpNeed){G.xp-=G.xpNeed;G.lvl++;G.sp++;G.xpNeed=Math.round(G.xpNeed*1.35);
+    G.maxhp+=8;G.hp=playerMaxHp();G.maxen+=3;G.en=playerMaxEn();G.atk+=1;} // Zuwachs + voller HP/EN-Refill als Belohnung (unverändert grosszügig)
+  if(G.lvl>lv0)levelUpFx(lv0,G.lvl);
   updHUD();}
+// Level-Up spürbar machen: grosse Anzeige + Licht-Ring + Partikel + Licht-Säule + aufsteigender Ton
+function levelUpFx(lv0,lv){
+  var el=document.getElementById("lvlBig");el.textContent="⬆ LEVEL "+lv+"!";
+  el.classList.add("on");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove("on");},2000);
+  novaRing(player.position.x,player.position.y,player.position.z,10,0xffcf6e);
+  burst(player.position.x,1.2,player.position.z,0xffcf6e,26,8);
+  var pil=new THREE.Mesh(new THREE.CylinderGeometry(0.9,1.3,7,10,1,true),
+    new THREE.MeshBasicMaterial({color:0xffd166,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+  pil.position.set(player.position.x,player.position.y+3.2,player.position.z);scene.add(pil);
+  var t0=performance.now();(function fd(){var k=(performance.now()-t0)/650;
+    if(k>=1){scene.remove(pil);pil.material.dispose();pil.geometry.dispose();return;}
+    pil.material.opacity=0.5*(1-k);pil.scale.set(1+k*0.6,1,1+k*0.6);requestAnimationFrame(fd);})();
+  [523,659,784,1046].forEach(function(f,i){setTimeout(function(){beep(f,.14,"triangle",.06);},i*95);});
+  camShake=Math.max(camShake,0.5);
+  if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("victory",0.2);
+  // Skill-Unlocks kommunizieren (aus G.lvl abgeleitet — keine neuen Save-Felder)
+  var un=null;for(var i=0;i<SKDEF.length;i++)if(SKDEF[i].lv>lv0&&SKDEF[i].lv<=lv)un=SKDEF[i];
+  if(un)announce("✨ Neuer Skill: "+skillName(un.id)+" ("+un.key+")","#ffd166");
+  else if(lv0<3&&lv>=3)announce("✨ Klassen-Skill: "+novaInfo().n+" (R)!","#ffd166");
+  else announce("+1 Skillpunkt — [T] Skills","#ffcf6e");
+}
 // ===================== FX =====================
-var fxs=[];
+// Partikel-Pool (Muster neon-jump Dust): 1 geteilte Geometrie, Meshes wiederverwenden — Skills
+// (Nova/Meteore/Wellen) spammen Bursts, ohne Pool würde GC/Alloc den Frame fressen.
+var fxs=[],FXGEO=new THREE.BoxGeometry(0.22,0.22,0.22),fxMeshPool=[];
 function burst(x,y,z,color,n,spd){y+=heightAt(x,z);for(var i=0;i<(n||8);i++){
-  var m=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
-  m.position.set(x,y,z);scene.add(m);
+  var m=fxMeshPool.pop();
+  if(!m)m=new THREE.Mesh(FXGEO,new THREE.MeshBasicMaterial({transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+  m.material.color.set(color);m.material.opacity=1;
+  m.position.set(x,y,z);m.rotation.set(0,0,0);scene.add(m);
   var a=Math.random()*6.283,up=Math.random()*4+2,sp2=(spd||5)*(0.5+Math.random());
   fxs.push({m:m,vx:Math.cos(a)*sp2,vy:up,vz:Math.sin(a)*sp2,life:0.6+Math.random()*0.3});}}
 function updFx(dt){for(var i=fxs.length-1;i>=0;i--){var f=fxs[i];f.life-=dt;
-  if(f.life<=0){scene.remove(f.m);f.m.material.dispose();f.m.geometry.dispose();fxs.splice(i,1);continue;}
+  if(f.life<=0){scene.remove(f.m);if(fxMeshPool.length<260)fxMeshPool.push(f.m);else f.m.material.dispose();fxs.splice(i,1);continue;}
   f.vy-=14*dt;f.m.position.x+=f.vx*dt;f.m.position.y=Math.max(0.1,f.m.position.y+f.vy*dt);f.m.position.z+=f.vz*dt;
   f.m.material.opacity=Math.min(1,f.life*2);f.m.rotation.x+=dt*6;f.m.rotation.y+=dt*5;}}
 // ===================== GEGNER =====================
@@ -715,7 +774,8 @@ function updFx(dt){for(var i=fxs.length-1;i>=0;i--){var f=fxs[i];f.life-=dt;
 // GLTFLoader.parse aus demselben ArrayBuffer (SkinnedMesh-clone-Falle in r128, Muster NPC-Loader).
 var MON={0:{key:"slime",sc:2.3},1:{key:"wisp",sc:2.0},2:{key:"golem",sc:1.15},3:{key:"panther",sc:1.4}}; // Skala ≈ alte Okta-Grösse
 var MONEMIS={golem:0.8,guardian:0.9}; // Meshy-Emissive leicht dämpfen (Basecolor=Emissive-Textur → sonst Bloom-Blowout), Rest 1.0
-var monStatic={},monBuf={};
+var monStatic={},monBuf={},RIG_MAX=8,riggedN=0;
+function freeRig(e){if(e.rigged){e.rigged=false;riggedN=Math.max(0,riggedN-1);}}
 (function(){
   if(!THREE.GLTFLoader)return;
   ["slime","panther"].forEach(function(k){
@@ -734,6 +794,10 @@ function attachMonster(e,key,sc){ // hängt die GLB-Optik an einen Gegner; ohne 
     o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=MONEMIS[key]||1.0;e.mkey=key;
     if(e.body)e.body.visible=false;
   }else if(monBuf[key]){
+    // Rig-Pool: gerigte GLBs (wisp/golem/guardian) sind teuer (parse + Mixer) → max. 8 gleichzeitig.
+    // Überzahl behält das Okta-Primitiv (Rudel-/Wellen-Spawns dürfen die Optik nicht sprengen).
+    if(riggedN>=RIG_MAX)return;
+    riggedN++;e.rigged=true;
     new THREE.GLTFLoader().parse(monBuf[key].slice(0),"",function(g){
       if(!e.active)return; // Gegner starb, bevor das Modell fertig geparst war
       var o=g.scene,mats=[];
@@ -753,20 +817,23 @@ var enemies=[],ETYPES=[
  {n:"Brecher",hp:38,atk:11,spd:5,xp:18,c:0xff9a4a,r:1.35,zone:3},
  {n:"Wächterling",hp:30,atk:9,spd:8,xp:16,c:0xff4d6d,r:1.05,zone:4}
 ];
-function spawnEnemy(ti,ex,ez,elite){
+function spawnEnemy(ti,ex,ez,elite,mini){ // mini = Rudel-Mitglied (kleiner, schwächer, weniger XP)
   var t=ETYPES[ti],g=new THREE.Group();
   var body=new THREE.Mesh(new THREE.OctahedronGeometry(t.r,0),mat(0x141a3e,t.c,elite?1.3:0.8));
   body.position.y=1.0;body.castShadow=true;g.add(body);
   if(elite){var crown=new THREE.Mesh(new THREE.TorusGeometry(t.r*0.8,0.1,6,14),new THREE.MeshBasicMaterial({color:0xffd166}));crown.rotation.x=Math.PI/2;crown.position.y=2.0;g.add(crown);}
+  if(mini)body.scale.setScalar(0.7);
   g.position.set(ex,0,ez);scene.add(g);
-  var mult=elite?2.6:1,lvB=1+(G.lvl-1)*0.12;
-  enemies.push({g:g,body:body,type:ti,hp:t.hp*mult*lvB,maxhp:t.hp*mult*lvB,atk:t.atk*(elite?1.5:1)*lvB,spd:t.spd*(elite?1.15:1),
-    xp:Math.round(t.xp*mult),c:t.c,r:t.r*(elite?1.4:1),elite:!!elite,boss:false,active:true,
-    state:"patrol",pa:Math.random()*6.283,pt:0,atkT:0,flash:0,hx:ex,hz:ez});
-  attachMonster(enemies[enemies.length-1],MON[ti].key,MON[ti].sc*(elite?1.25:1)); // GLB-Optik (Eliten etwas grösser)
+  var mult=elite?2.6:(mini?0.55:1),lvB=1+(G.lvl-1)*0.12;
+  var e={g:g,body:body,type:ti,hp:t.hp*mult*lvB,maxhp:t.hp*mult*lvB,atk:t.atk*(elite?1.5:(mini?0.8:1))*lvB,spd:t.spd*(elite?1.15:(mini?1.05:1)),
+    xp:Math.round(t.xp*(elite?2.6:(mini?0.6:1))),c:t.c,r:t.r*(elite?1.4:(mini?0.85:1)),elite:!!elite,boss:false,active:true,stunT:0,
+    state:"patrol",pa:Math.random()*6.283,pt:0,atkT:0,flash:0,hx:ex,hz:ez};
+  enemies.push(e);
+  attachMonster(e,MON[ti].key,MON[ti].sc*(elite?1.25:1)*(mini?0.7:1)); // GLB-Optik (Eliten grösser, Rudel-Minis 0.7)
+  return e;
 }
 function killEnemy(e,i){
-  e.active=false;scene.remove(e.g);
+  e.active=false;scene.remove(e.g);freeRig(e);
   burst(e.g.position.x,1,e.g.position.z,e.c,e.boss?36:(e.elite?18:10),e.boss?9:5);
   beep(e.boss?110:220,.15,"sawtooth",.06);camShake=Math.max(camShake,e.boss?1.2:(e.elite?0.5:0.2));
   gainXp(e.xp);G.kills=(G.kills||0)+1;
@@ -804,6 +871,8 @@ function updEnemies(dt){
     var _ms=e.mats||((e.body&&e.body.material)?[e.body.material]:[]);
     for(var _mi=0;_mi<_ms.length;_mi++)_ms[_mi].emissiveIntensity=(e.flash>0)?((e.baseEmis!==undefined?e.baseEmis:1)+1.1):(e.baseEmis!==undefined?e.baseEmis:(e.elite||e.boss?1.3:0.8));
     if(e.flash>0)e.flash-=dt;
+    if(e.stunT>0){e.stunT-=dt; // Bodenschlag-Stun: 1s eingefroren (kein Lauf, kein Angriff)
+      e.g.position.y=heightAt(e.g.position.x,e.g.position.z);continue;}
     if(e.state==="patrol"){
       e.pt-=dt;if(e.pt<=0){e.pa=Math.random()*6.283;e.pt=2+Math.random()*3;}
       e.g.position.x+=Math.cos(e.pa)*e.spd*0.3*dt;e.g.position.z+=Math.sin(e.pa)*e.spd*0.3*dt;
@@ -846,6 +915,13 @@ function updEnemies(dt){
   }
 }
 function hitPlayer(dmg){if(iframe>0||!running)return;
+  // Mobil-Assist: Schild-Sphäre (ab Lv 6) zündet automatisch, wenn bereit (kein 3. Button nötig)
+  if(isTouch&&shieldHits<=0&&G.lvl>=6&&skillCD.shield<=0.05){skillCD.shield=15;doShieldCast();}
+  if(shieldHits>0){shieldHits--;iframe=0.35;
+    if(shieldMesh)shieldMesh.material.opacity=0.55; // Aufblitzen, klingt in updSkills ab
+    burst(player.position.x,1.2,player.position.z,0x7de3ff,6,4);beep(980,.08,"triangle",.05);
+    if(shieldHits<=0&&shieldMesh){shieldMesh.visible=false;showHint("Schild erschöpft");}
+    return;}
   var real=Math.max(1,dmg-playerDef());
   G.hp-=real;iframe=0.5;hurtT=1;camShake=Math.max(camShake,0.4);
   // Treffer-Reaktion nur aus idle/walk (blockiert weder Angriff/Cast/Dodge noch die Bewegung dauerhaft)
@@ -853,24 +929,58 @@ function hitPlayer(dmg){if(iframe>0||!running)return;
   dmgNum(real,player.position.x,2.4,player.position.z,"#ff8098");
   beep(140,.15,"sawtooth",.06);updHUD();
   if(G.hp<=0){G.hp=0;running=false;saveGame();document.getElementById("deadO").classList.remove("hide");beep(80,.5,"sawtooth",.09);}}
-// Spawner: hält pro Zone eine Ziel-Anzahl lebendig
-var spawnT=0;
+// Spawner: hält pro Zone eine Ziel-Anzahl lebendig — Rudel-Spawns + globaler Cap (Mobil-Schutz).
+// Spieler-Zone wird dichter gefüllt (dort spielt sich der Kampf ab), Dorf/Start bleiben verzeihend
+// (Zonen liegen weit vom Dorf, Spawn-Abstand >22 zum Spieler bleibt).
+var spawnT=0,IS_MOB=(navigator.maxTouchPoints>0)||IS_COARSE;
+var ENEMY_CAP=IS_MOB?15:22,DENS=IS_MOB?0.7:1; // Mobil: Dichte ×0.7
+var PACKS={0:[3,5],1:[2,3],2:[1,1],3:[2,2]}; // Slime-Rudel 3–5, Wisp 2–3, Golem einzeln, Panther paarweise
+function activeFoes(){var n=0;for(var i=0;i<enemies.length;i++)if(enemies[i].active&&!enemies[i].boss)n++;return n;}
+function spawnPack(ti,zn,total){ // Rudel um einen Punkt; respektiert den Cap, gibt Anzahl zurück
+  var a=Math.random()*6.283,r=14+Math.random()*(zn.r-22);
+  var ex=zn.x+Math.cos(a)*r,ez=zn.z+Math.sin(a)*r;
+  if(Math.hypot(ex-player.position.x,ez-player.position.z)<=22)return 0;
+  var pr=PACKS[ti]||[1,1],n=pr[0]+((Math.random()*(pr[1]-pr[0]+1))|0);
+  n=Math.min(n,ENEMY_CAP-total);if(n<=0)return 0;
+  spawnEnemy(ti,ex,ez,Math.random()<0.09); // Anführer (normal/Elite)
+  for(var k=1;k<n;k++){var oa=Math.random()*6.283,orr=1.5+Math.random()*3;
+    spawnEnemy(ti,ex+Math.cos(oa)*orr,ez+Math.sin(oa)*orr,false,true);} // Mini-Rudelmitglieder (0.7)
+  return n;
+}
 function updSpawns(dt){
   spawnT-=dt;if(spawnT>0)return;spawnT=1.6;
-  var counts=[0,0,0,0,0];
-  for(var i=0;i<enemies.length;i++){if(enemies[i].active&&!enemies[i].boss)counts[enemies[i].type+1]++;}
-  for(var zi=1;zi<=4;zi++){
+  var counts=[0,0,0,0,0],total=0;
+  for(var i=0;i<enemies.length;i++){if(enemies[i].active&&!enemies[i].boss){counts[enemies[i].type+1]++;total++;}}
+  var pzn=zoneAt(player.position.x,player.position.z),pzi=pzn?ZONES.indexOf(pzn):-1;
+  var order=[1,2,3,4];
+  if(pzi>=1){order=[pzi];for(var oz=1;oz<=4;oz++)if(oz!==pzi)order.push(oz);} // Spieler-Zone zuerst
+  for(var oi=0;oi<order.length;oi++){var zi=order[oi];
     if(zi===4&&ZONES[4].locked)continue;
-    var want=zi===4?5:7;
-    if(counts[zi]<want){
-      var zn=ZONES[zi],a=Math.random()*6.283,r=14+Math.random()*(zn.r-22);
-      var ex=zn.x+Math.cos(a)*r,ez=zn.z+Math.sin(a)*r;
-      if(Math.hypot(ex-player.position.x,ez-player.position.z)>22)
-        spawnEnemy(zi-1,ex,ez,Math.random()<0.09);
-    }
+    var want=Math.round(((zi===pzi)?12:(zi===4?5:6))*DENS); // vorher pauschal 7 (Zitadelle 5)
+    if(counts[zi]<want&&total<ENEMY_CAP)total+=spawnPack(zi-1,ZONES[zi],total);
   }
   // Aufräumen
   for(i=enemies.length-1;i>=0;i--)if(!enemies[i].active)enemies.splice(i,1);
+}
+// „Neon-Sturm": alle ~90–120s ein angekündigter Mini-Ansturm in der aktuellen Aussenzone (nie im Dorf)
+var waveT=95+Math.random()*25;
+function updWave(dt){
+  if(inDungeon)return;
+  waveT-=dt;if(waveT>0)return;
+  var zn=zoneAt(player.position.x,player.position.z);
+  if(!zn||zn.safe||zn.locked||G.t<40){waveT=25;return;} // Dorf/Niemandsland/Start: später erneut prüfen
+  waveT=90+Math.random()*30;
+  var ti=ZONES.indexOf(zn)-1;
+  var n=Math.round((4+((Math.random()*3)|0))*DENS),total=activeFoes(),spawned=0; // 4–6 (Mobil 3–4)
+  for(var k=0;k<n&&total+spawned<ENEMY_CAP+4;k++){ // Welle darf den Cap kurz leicht überschreiten
+    var a=Math.random()*6.283,d=20+Math.random()*8;
+    var ex=player.position.x+Math.cos(a)*d,ez=player.position.z+Math.sin(a)*d;
+    if(Math.hypot(ex,ez)<ZONES[0].r+6)continue; // nie Richtung Dorf
+    var e=spawnEnemy(ti,ex,ez,Math.random()<0.12,k>0&&Math.random()<0.4);
+    e.xp=Math.round(e.xp*1.6);e.state="chase";spawned++; // XP-Bonus + sofortiger Anmarsch
+  }
+  if(spawned){announce("⚠ NEON-STURM! Gegner nähern sich…","#ff9a4a");beep(160,.4,"sawtooth",.07);
+    showHint("Welle überstehen = Bonus-XP!",2600);camShake=Math.max(camShake,0.3);}
 }
 // ===================== KAMPF (Spieler) =====================
 function doAttack(){
@@ -936,6 +1046,220 @@ function doDodge(){
   dodgeT=0.16;dodgeCD=1.0;iframe=0.36;
   heroPlay("dodge",0.08); // ~0.83s Rolle (passt in den 1s-Cooldown); Klassen ohne dodge-Clip → kurzer run-Fallback
   beep(660,.1,"sawtooth",.04);burst(player.position.x,0.8,player.position.z,0x7de3ff,8,4);
+}
+// ===================== AKTIVE SKILLS (R/F/C/V) =====================
+// Freischaltung rein aus G.lvl abgeleitet → alte Saves bleiben kompatibel (keine neuen Felder).
+// Slot R trägt ab Lv 3 die Klassen-Signature (Magier=Kettenblitz+ · Waldläufer=Pfeilregen ·
+// Titan=Bodenschlag+Stun · Held=Nova+) — gleiche 4 Basis-Effekte, nur andere Parameter.
+var SKDEF=[
+ {id:"nova",key:"R",lv:2,cd:8},
+ {id:"chain",key:"F",lv:4,cd:6},
+ {id:"shield",key:"C",lv:6,cd:15},
+ {id:"ult",key:"V",lv:9,cd:45}
+];
+var skillCD={nova:0,chain:0,shield:0,ult:0};
+function novaInfo(){
+  if(G&&G.lvl>=3){
+    if(curClass==="magier")return{icon:"🌩",n:"Kettenblitz+ (5 Ziele)"};
+    if(curClass==="waldlaeufer")return{icon:"🏹",n:"Pfeilregen"};
+    if(curClass==="titan")return{icon:"🪨",n:"Bodenschlag"};
+    return{icon:"💥",n:"Nova+"};
+  }
+  return{icon:"💥",n:"Nova"};
+}
+function skillName(id){return id==="nova"?novaInfo().n:{chain:"Kettenblitz",shield:"Schild-Sphäre",ult:"Ultimate: Nexus-Sturm"}[id];}
+function castSkill(id){
+  if(!running||paused||!G)return;
+  var def=null;for(var i=0;i<SKDEF.length;i++)if(SKDEF[i].id===id)def=SKDEF[i];
+  if(!def)return;
+  if(G.lvl<def.lv){showHint("🔒 "+skillName(id)+" ab Level "+def.lv);return;}
+  if(skillCD[id]>0.05)return;
+  var ok=true;
+  if(id==="nova")ok=doNova();
+  else if(id==="chain")ok=doChainBolt(4,1,0x7de3ff);
+  else if(id==="shield")ok=doShieldCast();
+  else if(id==="ult")ok=doUlt();
+  if(ok!==false)skillCD[id]=def.cd; // kein Ziel/kein Cast → CD nicht verbrennen
+}
+// Expandierender Licht-Ring (Nova, Bodenschlag, Level-Up) — Muster doBolt-Ring
+function novaRing(x,y,z,R,col){
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(0.6,0.24,8,36),
+    new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.95,blending:THREE.AdditiveBlending,depthWrite:false}));
+  ring.rotation.x=-Math.PI/2;ring.position.set(x,y+0.7,z);scene.add(ring);
+  var t0=performance.now();
+  (function grow(){var k=(performance.now()-t0)/320;
+    if(k>=1){scene.remove(ring);ring.material.dispose();ring.geometry.dispose();return;}
+    ring.scale.setScalar(1+k*R*1.5);ring.material.opacity=0.95*(1-k);requestAnimationFrame(grow);})();
+}
+function doNova(){ // Slot R — ab Lv 3 Klassen-Signature
+  var sig=G.lvl>=3;
+  if(sig&&curClass==="magier")return doChainBolt(5,1.25,0xb98bff);
+  if(sig&&curClass==="waldlaeufer")return doArrowFan();
+  heroPlay("cast");
+  var slam=sig&&curClass==="titan";
+  var R=slam?10:(sig?11:9),mul=slam?2.2:(sig?2.6:2.0),col=slam?0xff9a4a:0x7de3ff;
+  novaRing(player.position.x,player.position.y,player.position.z,R,col);
+  burst(player.position.x,1,player.position.z,col,18,7);
+  var dmg=playerAtk()*mul,hitCol=slam?"#ffb07a":"#9fe8ff";
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var dx=e.g.position.x-player.position.x,dz=e.g.position.z-player.position.z,d=Math.hypot(dx,dz);
+    if(d<R+e.r){e.hp-=dmg;e.flash=0.12;
+      var kb=(e.boss?0.4:3.0)/(d||1);e.g.position.x+=dx*kb;e.g.position.z+=dz*kb; // Knockback
+      if(slam&&!e.boss)e.stunT=1.0; // Bodenschlag: 1s Stun
+      dmgNum(dmg,e.g.position.x,2.4,e.g.position.z,hitCol);
+      if(e.hp<=0)killEnemy(e,i);}}
+  if(seraph){var sd=Math.hypot(seraph.g.position.x-player.position.x,seraph.g.position.z-player.position.z);
+    if(sd<R+3){seraph.hp-=dmg;dmgNum(dmg,seraph.g.position.x,4,seraph.g.position.z,hitCol);if(seraph.hp<=0)killSeraph();}}
+  camShake=Math.max(camShake,slam?0.7:0.45);beep(slam?90:520,.25,"sawtooth",.07);
+  return true;
+}
+// Kettenblitz: springt auf die nächsten Gegner (Zick-Zack-Linien, kurz aufleuchtend)
+var boltFx=[];
+function lightningFx(x1,y1,z1,x2,y2,z2,col){
+  var pts=[],SEG=8,dx=x2-x1,dy=y2-y1,dz=z2-z1;
+  var len=Math.hypot(dx,dz)||1,pxn=-dz/len,pzn=dx/len;
+  for(var i=0;i<=SEG;i++){var t=i/SEG,mid=(i>0&&i<SEG)?1:0,j=(Math.random()-0.5)*1.6*mid;
+    pts.push(new THREE.Vector3(x1+dx*t+pxn*j,y1+dy*t+(Math.random()-0.5)*0.7*mid,z1+dz*t+pzn*j));}
+  var l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({color:col,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+  scene.add(l);boltFx.push({l:l,life:0.22});
+}
+function doChainBolt(maxN,mul,col){
+  var cur={x:player.position.x,y:player.position.y+1.6,z:player.position.z};
+  var hitList=[],range=15,dmg=playerAtk()*1.5*mul;
+  for(var n=0;n<maxN;n++){
+    var best=null,bd=range;
+    for(var i=0;i<enemies.length;i++){var e=enemies[i];
+      if(!e.active||hitList.indexOf(e)>=0)continue;
+      var d=Math.hypot(e.g.position.x-cur.x,e.g.position.z-cur.z);
+      if(d<bd){bd=d;best=e;}}
+    if(!best)break;
+    hitList.push(best);
+    var ty=best.g.position.y+1.2;
+    lightningFx(cur.x,cur.y,cur.z,best.g.position.x,ty,best.g.position.z,col);
+    burst(best.g.position.x,1,best.g.position.z,col,5,4);
+    best.hp-=dmg;best.flash=0.12;dmgNum(dmg,best.g.position.x,2.6,best.g.position.z,"#9fe8ff");
+    if(best.hp<=0)killEnemy(best,0);
+    cur={x:best.g.position.x,y:ty,z:best.g.position.z};range=11;dmg*=0.85;
+  }
+  if(!hitList.length){showHint("🌩 Kein Gegner in Reichweite");return false;}
+  heroPlay("cast");beep(1200,.12,"sawtooth",.06);camShake=Math.max(camShake,0.25);
+  return true;
+}
+// Pfeilregen (Waldläufer-Signature): Fächer aus 7 Projektilen, Auto-Aim auf den nächsten Gegner
+var ARRGEO=null,arrPool=[],arrows=[];
+function doArrowFan(){
+  heroPlay("attack");
+  var base=player.rotation.y,nb=null,nd=26;
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var d=Math.hypot(e.g.position.x-player.position.x,e.g.position.z-player.position.z);
+    if(d<nd){nd=d;nb=e;}}
+  if(nb)base=Math.atan2(nb.g.position.x-player.position.x,nb.g.position.z-player.position.z);
+  player.rotation.y=base;
+  if(!ARRGEO){ARRGEO=new THREE.ConeGeometry(0.16,1.0,4);ARRGEO.rotateX(Math.PI/2);}
+  for(var k=0;k<7;k++){var a=base+(k-3)*0.16;
+    var m=arrPool.pop()||new THREE.Mesh(ARRGEO,new THREE.MeshBasicMaterial({color:0x8affc0,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+    m.position.set(player.position.x,player.position.y+1.3,player.position.z);
+    m.rotation.set(0,a,0);scene.add(m);
+    arrows.push({m:m,vx:Math.sin(a)*26,vz:Math.cos(a)*26,life:0.85,dmg:playerAtk()*1.1});}
+  beep(880,.09,"square",.05);
+  return true;
+}
+// Schild-Sphäre: absorbiert 3 Treffer (Kugel um den Spieler, Abfang in hitPlayer)
+var shieldHits=0,shieldMesh=null;
+function doShieldCast(){
+  heroPlay("cast");
+  if(!shieldMesh){shieldMesh=new THREE.Mesh(new THREE.SphereGeometry(1.9,18,12),
+    new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.22,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+    shieldMesh.position.y=1.2;player.add(shieldMesh);}
+  shieldMesh.visible=true;shieldHits=3;
+  burst(player.position.x,1.2,player.position.z,0x7de3ff,12,5);
+  showHint("🛡 Schild-Sphäre: absorbiert 3 Treffer",2200);beep(700,.15,"triangle",.06);
+  return true;
+}
+// Ultimate „Nexus-Sturm" (Lv 9+): 3s Neon-Meteor-Regen im Umkreis
+var ultT=0,metT=0,meteors=[],metPool=[],METGEO=null;
+function doUlt(){
+  heroPlay("cast");ultT=3;metT=0;
+  announce("🌀 NEXUS-STURM!","#b98bff");beep(120,.5,"sawtooth",.08);camShake=Math.max(camShake,0.5);
+  return true;
+}
+function spawnMeteor(){
+  if(!METGEO){METGEO=new THREE.ConeGeometry(0.55,1.8,5);METGEO.rotateX(Math.PI);}
+  var a=Math.random()*6.283,r=2+Math.random()*10;
+  var x=player.position.x+Math.cos(a)*r,z=player.position.z+Math.sin(a)*r,gy=heightAt(x,z);
+  var m=metPool.pop()||new THREE.Mesh(METGEO,new THREE.MeshBasicMaterial({color:0xc79bff,transparent:true,opacity:0.95,blending:THREE.AdditiveBlending,depthWrite:false}));
+  m.position.set(x,gy+16,z);scene.add(m);
+  meteors.push({m:m,gy:gy,x:x,z:z});
+}
+// Pro-Frame-Update: CDs, Blitz-Fade, Pfeile, Meteore, Schild-Puls, HUD-Slots
+var sbT=0;
+function updSkills(dt){
+  for(var k in skillCD)if(skillCD[k]>0)skillCD[k]-=dt;
+  for(var i=boltFx.length-1;i>=0;i--){var b=boltFx[i];b.life-=dt;
+    if(b.life<=0){scene.remove(b.l);b.l.geometry.dispose();b.l.material.dispose();boltFx.splice(i,1);}
+    else b.l.material.opacity=b.life/0.22;}
+  for(i=arrows.length-1;i>=0;i--){var ar=arrows[i];ar.life-=dt;
+    ar.m.position.x+=ar.vx*dt;ar.m.position.z+=ar.vz*dt;
+    ar.m.position.y=heightAt(ar.m.position.x,ar.m.position.z)+1.3;
+    var hit=false;
+    if(ar.life>0)for(var j=0;j<enemies.length;j++){var e=enemies[j];if(!e.active)continue;
+      if(Math.hypot(e.g.position.x-ar.m.position.x,e.g.position.z-ar.m.position.z)<e.r+1.1){
+        e.hp-=ar.dmg;e.flash=0.1;dmgNum(ar.dmg,e.g.position.x,2.3,e.g.position.z,"#8affc0");
+        burst(ar.m.position.x,1,ar.m.position.z,0x8affc0,3,3);
+        if(e.hp<=0)killEnemy(e,j);hit=true;break;}}
+    if(hit||ar.life<=0){scene.remove(ar.m);if(arrPool.length<20)arrPool.push(ar.m);arrows.splice(i,1);}}
+  if(ultT>0){ultT-=dt;metT-=dt;if(metT<=0){metT=0.15;spawnMeteor();}}
+  for(i=meteors.length-1;i>=0;i--){var mt2=meteors[i];mt2.m.position.y-=44*dt;mt2.m.rotation.y+=dt*9;
+    if(mt2.m.position.y<=mt2.gy+0.4){
+      burst(mt2.x,0.6,mt2.z,0xb98bff,9,6);camShake=Math.max(camShake,0.18);beep(200,.06,"square",.03);
+      var mdmg=playerAtk()*1.8;
+      for(var j2=0;j2<enemies.length;j2++){var e2=enemies[j2];if(!e2.active)continue;
+        if(Math.hypot(e2.g.position.x-mt2.x,e2.g.position.z-mt2.z)<3.5+e2.r){
+          e2.hp-=mdmg;e2.flash=0.1;dmgNum(mdmg,e2.g.position.x,2.4,e2.g.position.z,"#d9b8ff");
+          if(e2.hp<=0)killEnemy(e2,j2);}}
+      if(seraph&&Math.hypot(seraph.g.position.x-mt2.x,seraph.g.position.z-mt2.z)<4.5){
+        seraph.hp-=mdmg;dmgNum(mdmg,seraph.g.position.x,4,seraph.g.position.z,"#d9b8ff");if(seraph.hp<=0)killSeraph();}
+      scene.remove(mt2.m);if(metPool.length<12)metPool.push(mt2.m);meteors.splice(i,1);}}
+  if(shieldMesh&&shieldMesh.visible){
+    var tgtO=0.2+Math.sin(G.t*5)*0.06;
+    shieldMesh.material.opacity+=(tgtO-shieldMesh.material.opacity)*Math.min(1,dt*6);
+    shieldMesh.rotation.y+=dt;}
+  sbT-=dt;if(sbT<=0){sbT=0.12;updSkillbar();}
+}
+// HUD: Skill-Slots (Desktop unten rechts) + mobile Zusatz-Buttons mit CD-Zahl
+var sbEls=null;
+function buildSkillbar(){
+  var bar=document.getElementById("skillbar");bar.innerHTML="";sbEls=[];
+  for(var i=0;i<SKDEF.length;i++){var d=document.createElement("div");d.className="sk";
+    d.innerHTML="<span class='ico'></span><span class='kk'>"+SKDEF[i].key+"</span><div class='cdov'></div>";
+    bar.appendChild(d);sbEls.push(d);}
+  if(isTouch)bar.style.display="none"; // mobil: eigene Touch-Buttons statt Leiste (Joystick-Zone!)
+  updSkillbar();
+}
+var SKICON={chain:"🌩",shield:"🛡",ult:"🌀"};
+function updSkillbar(){
+  if(!sbEls||!G)return;
+  for(var i=0;i<SKDEF.length;i++){var def=SKDEF[i],d=sbEls[i];
+    var locked=G.lvl<def.lv,cd=skillCD[def.id];
+    d.classList.toggle("locked",locked);
+    d.title=skillName(def.id);
+    d.querySelector(".ico").textContent=def.id==="nova"?novaInfo().icon:SKICON[def.id];
+    var ov=d.querySelector(".cdov");
+    if(locked){ov.style.display="flex";ov.textContent="Lv"+def.lv;}
+    else if(cd>0.05){ov.style.display="flex";ov.textContent=Math.ceil(cd);}
+    else ov.style.display="none";}
+  if(isTouch){
+    var ta=document.getElementById("tSkA"),tb=document.getElementById("tSkB");
+    ta.classList.toggle("hide",G.lvl<SKDEF[0].lv);
+    tb.classList.toggle("hide",G.lvl<SKDEF[1].lv);
+    var useUlt=G.lvl>=9&&skillCD.ult<=0.05;
+    ta.querySelector(".bi").textContent=novaInfo().icon;
+    tb.querySelector(".bi").textContent=useUlt?"🌀":"🌩";
+    var ca=skillCD.nova,cb=useUlt?0:skillCD.chain;
+    ta.querySelector(".bcd").textContent=ca>0.05?Math.ceil(ca):"";
+    tb.querySelector(".bcd").textContent=cb>0.05?Math.ceil(cb):"";
+    ta.style.opacity=ca>0.05?0.45:1;tb.style.opacity=cb>0.05?0.45:1;}
 }
 // ===================== NPCs & QUESTS =====================
 var npcs=[
@@ -1250,7 +1574,7 @@ function exitDungeon(){
   if(landscape)landscape.visible=true;
   nature.visible=true;
   // Dungeon-Gegner entfernen
-  for(var i=0;i<dgn.foes.length;i++){var f=dgn.foes[i];if(f.active){f.active=false;scene.remove(f.g);}}
+  for(var i=0;i<dgn.foes.length;i++){var f=dgn.foes[i];if(f.active){f.active=false;scene.remove(f.g);freeRig(f);}}
   dgn.foes=[];if(dgn.group){scene.remove(dgn.group);dgn.group=null;}
   player.position.set(portal.x,0,portal.z+3);vx=0;vz=0;
   announce("Zurück im Reich","#7de3ff");saveGame();
@@ -1356,11 +1680,11 @@ function updMusic(dt,dayA){
 }
 // ===================== System-Hooks für die Hauptschleife =====================
 function initSystems(){
-  renderQuests();
+  renderQuests();buildSkillbar();
   // Touch: E-Button zeigen, wenn Interaktion in Reichweite
 }
 function updSystems(dt,dayA){
-  updEnemies(dt);updSpawns(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);updMusic(dt,dayA);updAch(dt);
+  updEnemies(dt);updSpawns(dt);updWave(dt);updSkills(dt);updFx(dt);updQuests();updBoss(dt);updBossTrigger();updSeraph(dt,dayA);updMusic(dt,dayA);updAch(dt);
   // NPC-Marker hüpfen, NPCs drehen sich zum Spieler + kontextueller Tasten-Prompt
   var near=null,px=player.position.x,pz=player.position.z;
   for(var i=0;i<npcs.length;i++){var np2=npcs[i];np2.mark.position.y=3.4+Math.sin(G.t*3+i)*0.25;np2.mark.rotation.y+=dt*2;
