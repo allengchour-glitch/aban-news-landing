@@ -73,6 +73,11 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat">💬</button>
+<div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
+  <button class="tbtn" id="piWink" title="Winken">👋</button>
+  <button class="tbtn" id="piGift" title="Überraschung schenken">🎁</button>
+  <button class="tbtn" id="piDance" title="Tanz vorschlagen">💃</button>
+</div>
 <div id="zoomBtns" style="position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;flex-direction:column;gap:8px">
   <button class="tbtn" id="zoomIn" title="Näher">➕</button>
   <button class="tbtn" id="zoomOut" title="Weiter weg">➖</button>
@@ -236,6 +241,7 @@ var KATALOG={
  buero:[
   {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}}],
  garten:[
+  {id:"beet",n:"Gemüsebeet",e:"🥕",cost:120,size:[1,1],beet:1},
   {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
   {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}}]
 };
@@ -303,6 +309,17 @@ function applyFloor(x,y,idx){var k=fkey(x,y);
 var haustier=null;
 function applyFurn(id,gx,gy,rot,fid){
   var def=defOf(id);if(!def)return;
+  if(def.beet){ // Gemüsebeet: prozedural (Erde + wachsende Pflanzen)
+    var bg=new THREE.Group();
+    var erde=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.22,1.7),stdMat(0x4a3220,0.95));erde.position.y=0.11;erde.receiveShadow=true;bg.add(erde);
+    var rand=new THREE.Mesh(new THREE.BoxGeometry(1.9,0.14,1.9),stdMat(0x7a5a38,0.8));rand.position.y=0.07;bg.add(rand);
+    var sprossen=[];
+    for(var bx=0;bx<3;bx++)for(var by=0;by<3;by++){
+      var sp3=new THREE.Mesh(new THREE.SphereGeometry(0.11,8,6),stdMat(0x3a8a3a,0.6));
+      sp3.position.set(-0.5+bx*0.5,0.24,-0.5+by*0.5);sp3.scale.setScalar(0.05);bg.add(sp3);sprossen.push(sp3);}
+    bg.position.set(cx(gx),0.01,cz(gy));scene.add(bg);
+    var brec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:bg,busy:false,beet:1,wachs:0,sprossen:sprossen};
+    furn.push(brec);return;}
   if(def.pet){ // Hund läuft frei mit, nicht als Möbel im Raster
     if(haustier){scene.remove(haustier.mesh);}
     loadTH("hund",function(tpl){if(!tpl)return;var m=tpl.clone(true);m.position.set(cx(gx),0,cz(gy));scene.add(m);
@@ -382,11 +399,22 @@ function onNetMsg(m){
     else netSend({t:"crimeNo"});}
   else if(m.t==="crimeJoin"){if(crime.ask){crime.ask=false;startCrime(m.j,true);}}
   else if(m.t==="crimeNo"){if(crime.ask){crime.ask=false;startCrime(0,false);}}
+  else if(m.t==="pi"){partnerAct(m.k,true,m.n);}
   else if(m.t==="crimeGo"){startCrime(m.j,m.a,true);}
   else if(m.t==="crimeEnd"&&!mpHost){crime.on=false;
     sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);});
     crimeScene(m.ok,CRIMES[m.j],m.v);}
 }
+function partnerAct(k,silent,fromName){
+  var who=fromName||myName;
+  if(k==="wink"){sims.forEach(function(s2){simEmoji(s2,"👋");});hint("👋 "+who+" winkt!");beep(660,.1,"triangle",.05);}
+  else if(k==="gift"){sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+12);simEmoji(s2,"🎁");});
+    hearts(sims[0].x,sims[0].z);hint("🎁 "+who+" macht eine Überraschung — alle freuen sich!");}
+  else if(k==="dance"){loveEvent("dance",true);hint("💃 "+who+" schlägt einen Tanz vor!");}
+  if(!silent)netSend({t:"pi",k:k,n:myName});}
+document.getElementById("piWink").onclick=function(){partnerAct("wink");};
+document.getElementById("piGift").onclick=function(){partnerAct("gift");};
+document.getElementById("piDance").onclick=function(){partnerAct("dance");};
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
@@ -438,10 +466,36 @@ function spawnKind(baby){
   var m=mkKind(baby);
   var k={mesh:m,name:nm,x:cx(3),z:cz(GH-2),rot:0,alter:baby?0:2,walkT:0,path:[],emoji:null,emoT:0,net:null,baby:!!baby};
   kinder.push(k);return k;}
+// Realistische geriggte Charaktere (Meshy-Rigging, echte Walk-Animation)
+function attachRealChar(sim,file,height){
+  if(!GL)return;
+  GL.load("/models/"+file,function(g){
+    var root=g.scene;
+    // Skinned Mesh: Hoehe ueber die BONES messen (Box3 ignoriert Skinning!)
+    root.updateMatrixWorld(true);
+    var minY=1e9,maxY=-1e9,v0=new THREE.Vector3(),bones=0;
+    root.traverse(function(n){if(n.isBone){bones++;n.getWorldPosition(v0);if(v0.y<minY)minY=v0.y;if(v0.y>maxY)maxY=v0.y;}});
+    var h0=(bones>2&&maxY>minY)?(maxY-minY):1.7;
+    var k=height/h0;root.scale.setScalar(k);
+    root.updateMatrixWorld(true);
+    var minY2=1e9;root.traverse(function(n){if(n.isBone){n.getWorldPosition(v0);if(v0.y<minY2)minY2=v0.y;}});
+    if(minY2<1e8)root.position.y=-minY2+0.02;
+    root.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material.envMapIntensity=0.35;}}});
+    // prozedurale Teile ausblenden (Sprite-Emojis bleiben moeglich)
+    sim.mesh.children.slice().forEach(function(c){if(!c.isSprite)c.visible=false;});
+    sim.mesh.add(root);
+    sim.glb=root;
+    if(g.animations&&g.animations.length){
+      sim.mixer=new THREE.AnimationMixer(root);
+      sim.walkAction=sim.mixer.clipAction(g.animations[0]);
+      sim.walkAction.play();sim.walkAction.paused=true;}
+  },undefined,function(){});}
 var sims=simDefs.map(function(sd,i){
   return {name:sd.name,mesh:mkBewohner(sd),x:cx(2+i*2),z:cz(GH-2),rot:0,
     needs:{hunger:70+Math.random()*20,energie:75+Math.random()*20,spass:60+Math.random()*20,hygiene:70+Math.random()*20},
-    state:"idle",pose:"stand",path:[],target:null,useT:0,walkT:0,net:null,emoji:null,emoT:0};});
+    state:"idle",pose:"stand",path:[],target:null,useT:0,walkT:0,net:null,emoji:null,emoT:0,glb:null,mixer:null,walkAction:null};});
+attachRealChar(sims[0],"th_mann.glb",1.48);
+attachRealChar(sims[1],"th_frau.glb",1.40);
 function simEmoji(s,txt){
   if(s.emoji){s.mesh.remove(s.emoji);s.emoji=null;}
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
@@ -599,6 +653,21 @@ function updCrime(dt){
   if(!crime.on)return;
   crime.t-=dt;
   if(crime.t<=0)finishCrime();}
+function updBeete(dt){
+  if(MPs&&!mpHost)return;
+  for(var i=0;i<furn.length;i++){var f3=furn[i];if(!f3.beet)continue;
+    if(f3.wachs<1){f3.wachs=Math.min(1,f3.wachs+dt*0.028);
+      var sc=0.05+f3.wachs*0.95;
+      f3.sprossen.forEach(function(sp4,k){sp4.scale.setScalar(sc*(0.8+((k*7)%5)*0.08));
+        if(f3.wachs>0.85)sp4.material.color.setHex(0xe8722a);});}
+    else{ // reif: Bewohner in der Naehe erntet
+      for(var si2=0;si2<sims.length;si2++){var s5=sims[si2];
+        if(s5.mesh.visible&&Math.hypot(s5.x-cx(f3.gx),s5.z-cz(f3.gy))<2.4){
+          f3.wachs=0;f3.sprossen.forEach(function(sp6){sp6.scale.setScalar(0.05);sp6.material.color.setHex(0x3a8a3a);});
+          var ertrag=35+skills.arbeit.lv*8;geld+=ertrag;netSend({t:"geld",v:geld});
+          s5.needs.hunger=Math.min(100,s5.needs.hunger+12);
+          simEmoji(s5,"🥕");hint("🥕 Ernte! +"+ertrag+" §");updHUD();break;}}}
+  }}
 function updWork(dt){
   if(MPs&&!mpHost)return;
   var hh=uhrzeit/60;
@@ -717,7 +786,7 @@ function updHund(dt,now){
   h.mesh.position.y=Math.abs(Math.sin(now*0.004))*0.04;}
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast: Host-Positionen weich übernehmen
-    if(s.net){s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
+    if(s.net){s._netMoved=Math.hypot(s.net.x-s.x,s.net.z-s.z)>0.05;s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
       s.rot=s.net.r;s.pose=s.net.p;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
   else{
     if(s.state==="work")return;
@@ -733,6 +802,10 @@ function updSim(s,si,dt,now){
   }
   // Pose & Animation
   var m=s.mesh,ud=m.userData;
+  if(s.mixer){s.mixer.update(dt);
+    var moving=(s.state==="walk"||s.state==="dance"||(MPs&&!mpHost&&s.net&&s._netMoved));
+    if(s.walkAction)s.walkAction.paused=!moving;
+    if(s.state==="dance"&&s.walkAction)s.walkAction.timeScale=1.5;else if(s.walkAction)s.walkAction.timeScale=1.1;}
   m.position.set(s.x,0,s.z);m.rotation.set(0,s.rot,0);
   if(s.state==="dance"){
     var dtm=now*0.006;
@@ -747,7 +820,8 @@ function updSim(s,si,dt,now){
       ud.ll.rotation.x=sw*0.65;ud.rl.rotation.x=-sw*0.65;ud.la.rotation.x=-sw*0.5;ud.ra.rotation.x=sw*0.5;}
     else{ud.ll.rotation.x*=0.85;ud.rl.rotation.x*=0.85;ud.la.rotation.x=Math.sin(now*0.0012+si)*0.06;ud.ra.rotation.x=-Math.sin(now*0.0012+si)*0.06;}
   }else if(s.pose==="sit"){
-    m.position.y=0.26;ud.ll.rotation.x=-1.5;ud.rl.rotation.x=-1.5;ud.la.rotation.x=-0.25;ud.ra.rotation.x=-0.25;
+    if(s.glb){m.position.y=0.14;}
+    else{m.position.y=0.26;ud.ll.rotation.x=-1.5;ud.rl.rotation.x=-1.5;ud.la.rotation.x=-0.25;ud.ra.rotation.x=-0.25;}
   }else if(s.pose==="lie"){
     m.rotation.set(-Math.PI/2,0,s.rot);m.position.y=0.62;
     ud.ll.rotation.x=0.06;ud.rl.rotation.x=0.06;ud.la.rotation.x=0.12;ud.ra.rotation.x=0.12;
@@ -969,7 +1043,7 @@ function startGame(){
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
   document.getElementById("modeBtn").style.display="block";document.getElementById("zoomBtns").style.display="flex";
-  if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";}
+  if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
   romantik=document.getElementById("romChk").checked||romantik;
   renderPalette();updHUD();MUS.play().catch(function(){});
   hint("🔨 Bauen antippen — dann Boden legen, Wände ziehen, Möbel stellen!");}
@@ -1025,7 +1099,7 @@ function loop(now){
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
-    updWork(dt);updCrime(dt);if(!arbeiten&&!crime.on)updLove(dt);
+    updBeete(dt);updWork(dt);updCrime(dt);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};})});
