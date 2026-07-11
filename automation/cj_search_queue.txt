@@ -213,22 +213,22 @@
 #done search:door mat funny
 #done search:reusable produce bags
 #done search:silicone kitchen tools
-search:coffee mug ceramic
-search:water bottle insulated
-search:lunch box bento
-search:spice jar set
-search:fruit infuser bottle
-search:tea infuser
-search:phone case aesthetic
-search:airpods case cover
-search:phone grip ring
-search:car phone holder
-search:led strip lights
-search:mini bluetooth speaker
-search:wireless earbuds
-search:selfie ring light
-search:cable organizer
-search:portable fan neck
+#done search:coffee mug ceramic
+#done search:water bottle insulated
+#done search:lunch box bento
+#done search:spice jar set
+#done search:fruit infuser bottle
+#done search:tea infuser
+#done search:phone case aesthetic
+#done search:airpods case cover
+#done search:phone grip ring
+#done search:car phone holder
+#done search:led strip lights
+#done search:mini bluetooth speaker
+#done search:wireless earbuds
+#done search:selfie ring light
+#done search:cable organizer
+#done search:portable fan neck
 search:dog harness vest
 search:cat toy interactive
 search:pet grooming glove
