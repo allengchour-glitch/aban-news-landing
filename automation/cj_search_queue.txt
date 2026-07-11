@@ -237,10 +237,10 @@
 #done search:pet water fountain
 #done search:dog bandana
 #done search:slow feeder bowl
-search:resistance bands set
-search:yoga mat
-search:jump rope speed
-search:gym gloves
+#done search:resistance bands set
+#done search:yoga mat
+#done search:jump rope speed
+#done search:gym gloves
 search:water bottle sport
 search:booty bands
 search:ab roller wheel
