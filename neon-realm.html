@@ -48,7 +48,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .ach.on{border-color:#ffcf6e;color:#ffd166}
 .ach b{display:block;font-size:.92rem}
 #hurt{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 55%,rgba(255,30,60,.5));opacity:0;transition:opacity .25s;z-index:9}
-#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.95rem;color:#b6c0e4;text-shadow:0 1px 6px #000;line-height:1.6;background:rgba(8,10,24,.6);border-radius:10px;padding:6px 10px}
+#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.95rem;color:#b6c0e4;text-shadow:0 1px 6px #000;line-height:1.6;background:rgba(8,10,24,.6);border-radius:10px;padding:6px 10px;max-width:calc(100vw - 320px)} /* Platz für die Skillbar rechts (Kombo/Ladung-Hinweis wurde länger) */
 /* Kontextuelle Tasten-Anzeige („E Reden") — Key-Cap-Badge unten mittig */
 #kprompt{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:10px;background:rgba(8,10,24,.86);border:1px solid rgba(106,255,171,.5);border-radius:12px;padding:9px 16px;font-size:1.06rem;font-weight:800;color:#dff7ff;text-shadow:0 1px 6px #000;white-space:nowrap;max-width:94vw;overflow:hidden}
 #kprompt .kcap{display:inline-block;min-width:32px;text-align:center;background:linear-gradient(180deg,#2a3160,#141838);border:1px solid #7de3ff;border-bottom-width:3px;border-radius:8px;padding:4px 10px;color:#7de3ff;font-weight:900}
@@ -137,6 +137,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   #zoneTag{top:106px;left:12px;transform:none;font-size:.95rem;letter-spacing:.14em}
   #clock{top:130px;left:12px;transform:none;font-size:.9rem}
   #quests{font-size:.95rem}
+  #comboTag{top:44%} /* Hochformat: über den Helden statt in die Quest-Box */
 }
 </style>
 </head>
