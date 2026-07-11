@@ -198,8 +198,8 @@ var THREE=window.THREE,W=innerWidth,H=innerHeight;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
-var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
-renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setSize(W,H);
+var renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
@@ -285,12 +285,16 @@ var crystals=[];
     var ln=new THREE.Mesh(new THREE.PlaneGeometry(0.18,ARENA-9),new THREE.MeshBasicMaterial({color:0x2b3585,transparent:true,opacity:0.22,blending:THREE.AdditiveBlending,depthWrite:false}));
     ln.rotation.x=-Math.PI/2;ln.rotation.z=a;ln.position.set(Math.cos(a+Math.PI/2)*0,0.03,Math.sin(a+Math.PI/2)*0);
     ln.position.x=Math.cos(a)*((ARENA-9)/2+8);ln.position.z=Math.sin(a)*((ARENA-9)/2+8);ln.rotation.z=-a+Math.PI/2;scene.add(ln);}})();
+// Weiche Radial-Sprite-Textur: macht Points zu runden Glüh-Punkten statt eckiger Klötzchen
+var DOT_TEX=(function(){var c=document.createElement("canvas");c.width=c.height=64;var x=c.getContext("2d");
+  var gr=x.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,"rgba(255,255,255,1)");gr.addColorStop(0.35,"rgba(255,255,255,0.7)");gr.addColorStop(1,"rgba(255,255,255,0)");
+  x.fillStyle=gr;x.fillRect(0,0,64,64);var t=new THREE.CanvasTexture(c);t.needsUpdate=true;return t;})();
 // Aufsteigende Ambient-Partikel
 var ambN=110,ambGeo=new THREE.BufferGeometry(),ambPos=new Float32Array(ambN*3),ambV=[];
 for(var qi=0;qi<ambN;qi++){ambPos[qi*3]=(Math.random()-.5)*160;ambPos[qi*3+1]=Math.random()*36;ambPos[qi*3+2]=(Math.random()-.5)*160;ambV.push(1.6+Math.random()*3);}
 ambGeo.setAttribute("position",new THREE.BufferAttribute(ambPos,3));
-scene.add(new THREE.Points(ambGeo,new THREE.PointsMaterial({color:0x8fe8ff,size:0.5,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false})));
-(function(){var g=new THREE.BufferGeometry(),p=new Float32Array(220*3);for(var i=0;i<220;i++){p[i*3]=(Math.random()-.5)*500;p[i*3+1]=40+Math.random()*160;p[i*3+2]=(Math.random()-.5)*500;}g.setAttribute("position",new THREE.BufferAttribute(p,3));scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x9aa2d8,size:1.0,transparent:true,opacity:.8})));})();
+scene.add(new THREE.Points(ambGeo,new THREE.PointsMaterial({color:0x8fe8ff,map:DOT_TEX,size:0.9,transparent:true,opacity:0.75,blending:THREE.AdditiveBlending,depthWrite:false})));
+(function(){var g=new THREE.BufferGeometry(),p=new Float32Array(220*3);for(var i=0;i<220;i++){p[i*3]=(Math.random()-.5)*500;p[i*3+1]=40+Math.random()*160;p[i*3+2]=(Math.random()-.5)*500;}g.setAttribute("position",new THREE.BufferAttribute(p,3));scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x9aa2d8,map:DOT_TEX,size:1.8,transparent:true,opacity:.85,blending:THREE.AdditiveBlending,depthWrite:false})));})();
 // ===== Spieler =====
 function mkPlayer(cBody,cRing){
   var g=new THREE.Group();
@@ -327,10 +331,14 @@ if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/char.glb",function(gl)
   P1.body.visible=false;P1.model=fit(gl.scene.clone(true),0x5ef2ff);P1.g.add(P1.model);
   P2.body.visible=false;P2.model=fit(gl.scene.clone(true),0xff9a4a);P2.g.add(P2.model);
 },undefined,function(){});}
-// ===== Das Band =====
-var bandGeo=new THREE.CylinderGeometry(0.09,0.09,1,6,1,true);
-var band=new THREE.Mesh(bandGeo,new THREE.MeshBasicMaterial({color:0xb98bff,transparent:true,opacity:0.75,blending:THREE.AdditiveBlending,depthWrite:false}));
+// ===== Das Band ===== (mehrschichtiger Energie-Look: heller Kern + weiche Aura + Funken)
+var bandGeo=new THREE.CylinderGeometry(0.06,0.06,1,8,1,true);
+var band=new THREE.Mesh(bandGeo,new THREE.MeshBasicMaterial({color:0xe6d2ff,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
 band.visible=false;scene.add(band);
+var bandHalo=new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,1,10,1,true),new THREE.MeshBasicMaterial({color:0xb98bff,transparent:true,opacity:0.32,blending:THREE.AdditiveBlending,depthWrite:false}));
+band.add(bandHalo);
+var bandSparks=(function(){var g=new THREE.BufferGeometry(),n=24,p=new Float32Array(n*3);for(var i=0;i<n;i++){p[i*3]=0;p[i*3+1]=(i/n-0.5);p[i*3+2]=0;}g.setAttribute("position",new THREE.BufferAttribute(p,3));
+  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:0xffffff,map:DOT_TEX,size:0.5,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));band.add(pts);return pts;})();
 var BAND_RANGE=15;
 // ===== Zustand =====
 var G=null,running=false,solo=false;
@@ -557,7 +565,9 @@ function updBand(dt){
   if(!on)return;
   band.position.set((P1.g.position.x+P2.g.position.x)/2,1.1,(P1.g.position.z+P2.g.position.z)/2);
   band.scale.set(1,d,1);band.rotation.z=Math.PI/2;band.rotation.y=-Math.atan2(dz,dx);
-  band.material.opacity=0.55+Math.sin(G.t*6)*0.2;
+  band.material.opacity=0.7+Math.sin(G.t*6)*0.18;
+  bandHalo.material.opacity=0.24+Math.sin(G.t*4+1)*0.1;
+  if(bandSparks){bandSparks.rotation.y=G.t*3;bandSparks.material.opacity=0.6+Math.sin(G.t*11)*0.35;}
   if(net==='client')return; // Client: nur Band-Optik — Schaden rechnet der Host
   // Punkt-zu-Segment-Abstand: Gegner am Band nehmen DoT + Slow
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.fly)continue;
@@ -610,6 +620,16 @@ function buildBossG(){ // Boss-Optik geteilt: Host-Sim UND Client-Spiegel
   if(seraphModel)g.add(seraphModel.clone(true));
   else{var b=new THREE.Mesh(new THREE.IcosahedronGeometry(2.8,0),mat(0x2a2008,0xffd166,1.0));b.castShadow=true;g.add(b);}
   var bl=new THREE.PointLight(0xffd166,2,40);bl.position.y=4;g.add(bl);
+  // Aura: weicher Glüh-Halo + pulsierender Bodenring + umkreisende Energie-Funken
+  var halo=new THREE.Sprite(new THREE.SpriteMaterial({map:DOT_TEX,color:0xffcf6e,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false}));
+  halo.scale.set(12,12,1);halo.position.y=2.4;g.add(halo);g.userData.halo=halo;
+  var aura=new THREE.Mesh(new THREE.RingGeometry(4.2,5.2,48),new THREE.MeshBasicMaterial({color:0xff8a5e,transparent:true,opacity:0.5,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));
+  aura.rotation.x=-Math.PI/2;aura.position.y=-2.2;g.add(aura);g.userData.aura=aura;
+  var og=new THREE.BufferGeometry(),on=40,op=new Float32Array(on*3);
+  for(var oi=0;oi<on;oi++){var oa=oi/on*6.283,orr=3.4+Math.random()*1.2;op[oi*3]=Math.cos(oa)*orr;op[oi*3+1]=(Math.random()-0.5)*5;op[oi*3+2]=Math.sin(oa)*orr;}
+  og.setAttribute("position",new THREE.BufferAttribute(op,3));
+  var orb=new THREE.Points(og,new THREE.PointsMaterial({color:0xffe0a0,map:DOT_TEX,size:0.7,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));
+  g.add(orb);g.userData.orb=orb;
   return g;
 }
 function spawnBoss(){
@@ -639,6 +659,9 @@ function updBoss(dt){
     beep(660,.25,"triangle",.07);}
   var ty=b.phase==="flug"?7:2.4;b.y+=(ty-b.y)*Math.min(1,dt*2);
   b.g.position.y=b.y+Math.sin(G.t*1.5)*0.5;b.g.rotation.y+=dt*0.5;
+  var ud=b.g.userData;if(ud){if(ud.orb)ud.orb.rotation.y-=dt*1.4;
+    if(ud.aura){ud.aura.material.opacity=0.35+Math.sin(G.t*3)*0.2;ud.aura.rotation.z+=dt*0.6;}
+    if(ud.halo){ud.halo.material.opacity=0.4+Math.sin(G.t*2.4)*0.15;var hs=11+Math.sin(G.t*2.4)*1.5;ud.halo.scale.set(hs,hs,1);}}
   // Verfolgung des nächsten lebenden Spielers
   var t1=G.down1<=0,t2=G.down2<=0;
   var tx=0,tz=0;
@@ -864,8 +887,16 @@ function loop(now){
 // ---- Bloom-Post-Processing (Neon-Glow) ----
 var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
 var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
-var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
+// WICHTIG (Anti-Pixel): Render-Targets in GERÄTE-Auflösung (W*pixelRatio), sonst
+// rendert die ganze Szene in CSS-Pixeln (1×) und der Bloom-Blit skaliert unscharf hoch.
+var _PR=renderer.getPixelRatio();
+function _rw(){return Math.max(1,Math.round(W*_PR));}
+function _rh(){return Math.max(1,Math.round(H*_PR));}
+// WebGL2-Multisample-RT liefert echtes MSAA (Canvas-antialias greift bei Offscreen-RT nicht).
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(_rw(),_rh(),rtOpt):new THREE.WebGLRenderTarget(_rw(),_rh(),rtOpt);
+if(rtScene.samples!==undefined)rtScene.samples=4;
+// Bloom-Blur bewusst in Viertel-Auflösung (Glow braucht keine Schärfe) -> günstig, mobil-freundlich
+var bw=Math.max(1,_rw()>>2),bh=Math.max(1,_rh()>>2);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.72}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
@@ -882,7 +913,7 @@ function renderBloom(){
   compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blit(compMat,null);
   renderer.setRenderTarget(null);
 }
-function resizeBloomRT(){rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
+function resizeBloomRT(){_PR=renderer.getPixelRatio();rtScene.setSize(_rw(),_rh());bw=Math.max(1,_rw()>>2);bh=Math.max(1,_rh()>>2);rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
 
 requestAnimationFrame(loop);
 // ===== Start =====
