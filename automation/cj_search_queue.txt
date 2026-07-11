@@ -157,18 +157,18 @@
 #done search:digital sport watch
 #done search:fashion bracelet watch
 #done search:cat eye sunglasses
-search:oversized sunglasses
-search:retro round sunglasses
-search:sport polarized sunglasses
-search:rimless sunglasses
-search:clip on sunglasses
-search:blue light glasses
-search:reading glasses fashion
-search:crossbody bag women
-search:mini shoulder bag
-search:canvas tote bag
-search:clutch purse evening
-search:fanny pack
+#done search:oversized sunglasses
+#done search:retro round sunglasses
+#done search:sport polarized sunglasses
+#done search:rimless sunglasses
+#done search:clip on sunglasses
+#done search:blue light glasses
+#done search:reading glasses fashion
+#done search:crossbody bag women
+#done search:mini shoulder bag
+#done search:canvas tote bag
+#done search:clutch purse evening
+#done search:fanny pack
 search:bucket bag
 search:cosmetic bag travel
 search:phone crossbody bag
