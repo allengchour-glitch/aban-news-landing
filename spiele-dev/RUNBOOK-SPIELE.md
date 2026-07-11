@@ -215,6 +215,15 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### Survivor-Ausbau (nach Bau-Modus-Merge — User „juhu weiter survivor" 2026-07-11)
+- [ ] **Charakter „mit Liebe"**: liebenswerter Spieler-Look statt Simpel-Shape (Bibo-Muster aus
+      neon-jump ODER hero_meshy-Mini), Gesicht/Ausdruck, kleine Idle-Animation.
+- [ ] **HUD-Top safe-area** (User „oben fehlt ein bisschen was"): env(safe-area-inset-top),
+      HUD nicht unter Notch/Browserleiste.
+- [ ] **Mehr Bau/Tiefe**: weitere Strukturen (Geschütz-Upgrade, Stachel-Barrikade, Schild-
+      Generator), Bau-Synergien, Boss-Welle die die Basis testet.
+- [ ] **Online-Koop** via js/mp.js (2 Spieler verteidigen zusammen) — später.
+
 ### User-Feedback 2026-07-11 (Runde 13 — Lebenspfad „jeder Zug muss super sein")
 - [ ] **Juicy Turns**: JEDER Zug soll sich toll anfühlen — Anticipation vor dem Wurf (Würfel-Wackeln,
       Spannungs-Sound), befriedigender 3D-Würfel mit Bounce+Landing-Impact, Zahl gross aufpoppen,
