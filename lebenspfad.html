@@ -157,6 +157,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="players"></div>
   <div id="chapterTag"><b id="chapTxt">KINDHEIT</b><small id="chapSub">Kapitel 1 von 8</small></div>
   <div id="turnTag"></div>
+  <div id="goalTag" style="position:absolute;top:86px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.72rem;color:#2a3040;background:rgba(255,247,220,.82);padding:3px 12px;border-radius:11px;box-shadow:0 2px 8px rgba(60,40,10,.2);white-space:nowrap;max-width:80vw;overflow:hidden;text-overflow:ellipsis"></div>
   <div id="announce"></div><div id="hint"></div>
   <div id="progMap" style="position:absolute;bottom:96px;left:50%;transform:translateX(-50%);width:min(520px,88vw);height:16px;pointer-events:none">
     <div id="progSegs" style="display:flex;height:8px;border-radius:6px;overflow:hidden;opacity:.85"></div>
@@ -220,6 +221,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div class="kicker">aban news · das große Würfel-Brettspiel · 1–4 Spieler</div>
   <h1>LEBENSPFAD</h1>
   <p>Würfle dich durch <b>acht Kapitel eines ganzen Lebens</b> — von der Kindheit bis zum Lebensabend. Über <b>100 Ereignisse</b> mit echten Entscheidungen formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Trefft ihr euch auf einem Feld, gibt es eine <b>Begegnung</b> — gemeinsam ist das Leben besser. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
+  <div id="startStats" style="margin:2px 0 10px"></div>
   <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
   <div class="pselect" id="pselect"></div>
   <div id="nameRow" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0"></div>
@@ -255,6 +257,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div class="kicker">Der Pfad ist zu Ende</div>
   <h1>EIN GANZES LEBEN</h1>
   <div id="scores"></div>
+  <div id="endAch" style="margin:10px 0"></div>
   <div id="bio"></div>
   <button class="btn" id="newBtn">Neues Leben ▶</button>
   <button class="btn" id="rematchBtn" style="display:none">🔁 Neue Online-Runde ▶</button>
@@ -304,8 +307,51 @@ var OPT=(function(){try{return JSON.parse(lsGet("lp_opt")||"{}");}catch(e){retur
 if(OPT.music===undefined)OPT.music=true;if(OPT.sfx===undefined)OPT.sfx=true;
 if(OPT.tempo===undefined)OPT.tempo=1;if(OPT.motion===undefined)OPT.motion=true;
 function saveOpt(){lsSet("lp_opt",JSON.stringify(OPT));}
-function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
-(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
+// 🔊 Batch 7/7: gemeinsamer SFX-Master-Bus (leichter Limiter) buendelt beep/cardRustle
+var sfxBus=null;
+function sfxDest(){try{if(!actx)return null;if(!sfxBus){sfxBus=actx.createGain();sfxBus.gain.value=0.9;
+    if(actx.createDynamicsCompressor){var comp=actx.createDynamicsCompressor();try{comp.threshold.value=-14;comp.knee.value=18;comp.ratio.value=4;comp.attack.value=0.003;comp.release.value=0.2;}catch(e){}sfxBus.connect(comp);comp.connect(actx.destination);}
+    else sfxBus.connect(actx.destination);}return sfxBus;}catch(e){return actx?actx.destination:null;}}
+function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(sfxDest()||actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
+// ===================== 🏆 Batch 7/7: Statistiken, Erfolge & Rundenziele =====================
+var LPSTATS=(function(){try{return JSON.parse(lsGet("lp_stats")||"{}");}catch(e){return {};}})();
+var LPACH=(function(){try{return JSON.parse(lsGet("lp_ach")||"{}");}catch(e){return {};}})();
+function saveStats(){lsSet("lp_stats",JSON.stringify(LPSTATS));}
+var ACHIEVEMENTS=[
+  {id:"selfmade",emoji:"💼",titel:"Berufung gefunden"},
+  {id:"eigenheim",emoji:"🏠",titel:"Eigenheim-Besitzer:in"},
+  {id:"zwillinge",emoji:"👶",titel:"Zwillingsglueck"},
+  {id:"tierfreund",emoji:"🐕",titel:"Tierfreund:in"},
+  {id:"quiz-genie",emoji:"🧠",titel:"Quiz-Genie"},
+  {id:"ueberlebt",emoji:"🍀",titel:"Ueberlebt (Echtes-Leben-Modus)",cond:function(p){return G&&G.adult&&!p.dead;}},
+  {id:"reich-und-gluecklich",emoji:"🤑",titel:"Reich & gluecklich",cond:function(p){return p.geld>=25&&p.glueck>=25;}},
+  {id:"allrounder",emoji:"🌈",titel:"Allrounder",cond:function(p){return p.geld>=15&&p.glueck>=15&&p.wissen>=15&&p.freunde>=15;}}
+];
+function achDef(id){for(var i=0;i<ACHIEVEMENTS.length;i++)if(ACHIEVEMENTS[i].id===id)return ACHIEVEMENTS[i];return null;}
+function unlockAch(id){if(LPACH[id])return false;var a=achDef(id);if(!a)return false;
+  LPACH[id]=Date.now();lsSet("lp_ach",JSON.stringify(LPACH));
+  try{announce("🏆 ERFOLG: "+a.emoji+" "+a.titel,"#ffe08a");showHint("Neuer Erfolg freigeschaltet: "+a.emoji+" "+a.titel+" 🎉",3600);
+    beep(880,.1,"triangle",.06);setTimeout(function(){beep(1174,.16,"triangle",.06);},130);}catch(e){}
+  return true;}
+function achGalleryHTML(){var got=0;ACHIEVEMENTS.forEach(function(a){if(LPACH[a.id])got++;});
+  var h="<div style='font-size:.74rem;color:#8a6a2a;font-weight:800;letter-spacing:.06em;margin:2px 0 5px'>🏆 ERFOLGE ("+got+"/"+ACHIEVEMENTS.length+")</div><div style='display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:340px;margin:0 auto'>";
+  ACHIEVEMENTS.forEach(function(a){var g=!!LPACH[a.id];
+    h+="<div title=\""+a.titel+"\" style='width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;"+(g?"background:linear-gradient(180deg,#fff6d8,#ffe0a0);border:2px solid #ffb347;box-shadow:0 2px 6px rgba(200,140,20,.3)":"background:#e6e6ec;border:2px solid #cfcfd6;filter:grayscale(1);opacity:.5")+"'>"+(g?a.emoji:"❓")+"</div>";});
+  return h+"</div>";}
+var GOALS=[
+  {k:"glueck",n:25,ic:"❤️",label:"Sammle 25 Glueck"},
+  {k:"geld",n:30,ic:"💰",label:"Sammle 30 Geld"},
+  {k:"wissen",n:22,ic:"🧠",label:"Sammle 22 Wissen"},
+  {k:"freunde",n:22,ic:"👥",label:"Sammle 22 Freunde"}
+];
+function goalMet(p){return !!(G&&G.goal&&p[G.goal.k]>=G.goal.n);}
+function renderStartStats(){var el=document.getElementById("startStats");if(!el)return;
+  var best=LPSTATS.bestScore?("🏆 Bestleistung: "+LPSTATS.bestScore+" Punkte"+(LPSTATS.bestName?" ("+LPSTATS.bestName+")":"")):"🏆 Noch keine Bestleistung spiel dein erstes Leben!";
+  var lives=(LPSTATS.games||0)+" Spiel"+((LPSTATS.games||0)===1?"":"e")+" · "+(LPSTATS.lives||0)+" Leben gelebt";
+  el.innerHTML="<div style='font-weight:800;color:#c9821a;font-size:.9rem'>"+best+"</div><div style='font-size:.78rem;color:#7a8a9a;margin:2px 0 8px'>"+lives+"</div>"+achGalleryHTML();}
+(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");
+  try{if(muted){if(!MUS.paused)MUS.pause();}else if(running&&OPT.music&&music.on){MUS.play().catch(function(){});}}catch(e){}}
+  ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 // ===================== 8 Lebens-Kapitel: Farben wie echt (Frühling→Winter des Lebens) =====================
 var CHAPTERS=[
  {n:"KINDHEIT",sub:"Alles beginnt mit Staunen",ground:0x54c445,sky:0x6ec8f5,accent:0xffcf3a,deko:"spielzeug"},
@@ -1187,7 +1233,7 @@ function cardRustle(){ // Seiten-Rascheln beim Karten-Flip (WebAudio-Rauschen, s
     var src=actx.createBufferSource();src.buffer=buf;
     var bp=actx.createBiquadFilter();bp.type="bandpass";bp.frequency.value=2700;bp.Q.value=0.6;
     var ga=actx.createGain();ga.gain.value=0.05;
-    src.connect(bp);bp.connect(ga);ga.connect(actx.destination);src.start();
+    src.connect(bp);bp.connect(ga);ga.connect(sfxDest()||actx.destination);src.start();
   }catch(e){}
 }
 function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
@@ -1491,7 +1537,7 @@ var G=null,running=false;
 function freshState(np,adult,mode){
   var ps=[];np=Math.max(1,Math.min(4,np|0)); // Overflow nie zulassen: max 4 Spieler
   for(var i=0;i<np;i++)ps.push({name:PNAMES[i]||("Spieler "+(i+1)),col:PCOLORS[i%PCOLORS.length],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},items:{},album:[],hist:[{g:20,h:10,w:5,f:5}]});
-  return {v:4,mode:mode==="kurz"?"kurz":"voll",adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
+  return {v:4,mode:mode==="kurz"?"kurz":"voll",adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0,goal:GOALS[(Math.random()*GOALS.length)|0]};}
 function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));if(NET.on)lsSet(SAVE_KEY+"_net","1");else lsDel(SAVE_KEY+"_net");} // auch Online-Spiele sichern -> nach Reload als Einzelspiel fortsetzbar
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);
   if(!(s&&(s.v===3||s.v===4)&&s.players&&s.players.length))return null; // v3 (ohne route/mode) bleibt ladbar
@@ -1552,6 +1598,9 @@ function updChapter(){
   var small=window.matchMedia&&window.matchMedia("(max-width:480px)").matches; // mobil: kurz halten
   document.getElementById("chapSub").textContent="Kapitel "+(pos+1)+" von "+AC.length+(small?"":" · "+c.sub);
   document.getElementById("turnTag").textContent=p.done?"":("🎲 "+p.name+" ist dran (Runde "+G.round+")");
+  var gt=document.getElementById("goalTag");
+  if(gt){if(G.goal){var mine=G.players[G.turn],cur=mine[G.goal.k]||0,ok=cur>=G.goal.n;
+    gt.style.display="block";gt.innerHTML=(ok?"✅ ":"🎯 ")+"Rundenziel: "+G.goal.ic+" "+cur+"/"+G.goal.n;}else gt.style.display="none";}
   // Himmel weich zur Kapitel-Farbe
   window._skyTarget=new THREE.Color(c.sky);
   // 🎵 + 📷 Kapitelwechsel: Lebensphasen-Stinger + Erinnerungs-Foto (nicht beim allerersten Setzen)
@@ -1776,6 +1825,7 @@ function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w
 function tollBell(n){for(var i=0;i<n;i++)setTimeout(function(){beep(196,1.2,"sine",.09);beep(392,0.8,"sine",.04);},i*900);}
 function playerDeath(p,how){
   p.dead=true;p.done=true;
+  LPSTATS.totalDeaths=(LPSTATS.totalDeaths||0)+1;saveStats();
   var i=G.players.indexOf(p),pw=pawns[i];
   // Trauer-Moment: Welt verdunkelt sich, Glocke schlägt dreimal
   var mo=document.getElementById("mourn");mo.style.opacity=1;
@@ -1811,6 +1861,9 @@ function playerDeath(p,how){
 function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2;}
 function showEnd(){
   running=false;lsDel(SAVE_KEY);
+  // 🔊 Batch 7/7: Loop ausblenden, damit die Siegesfanfare frei steht
+  music.on=false;clearInterval(window._musFade);
+  window._musFade=setInterval(function(){try{if(MUS.volume>0.03)MUS.volume=Math.max(0,MUS.volume-0.05);else{MUS.volume=0;if(!MUS.paused)MUS.pause();clearInterval(window._musFade);}}catch(e){clearInterval(window._musFade);}},60);
   NET.started=false; // Lobby wieder für Rematch offen
   var rmb=document.getElementById("rematchBtn");
   if(rmb)rmb.style.display=(NET.on&&NET.host)?"inline-block":"none"; // nur der Gastgeber startet die neue Runde
@@ -1823,11 +1876,22 @@ function showEnd(){
   var ranked=G.players.map(function(p,i){return {p:p,i:i,s:lifeScore(p)};})
     .sort(function(a,b){return b.s-a.s;});
   var MEDAL=["🥇","🥈","🥉"];
+  // 🏆 Batch 7/7: Statistik aktualisieren + Rekord erkennen
+  var topR=ranked[0],newRec=false;
+  LPSTATS.games=(LPSTATS.games||0)+1;
+  LPSTATS.lives=(LPSTATS.lives||0)+G.players.length;
+  if(topR){if(!LPSTATS.bestScore||topR.s>LPSTATS.bestScore){LPSTATS.bestScore=topR.s;LPSTATS.bestName=topR.p.name;newRec=true;}}
+  G.players.forEach(function(p){if(p.job){LPSTATS.jobCounts=LPSTATS.jobCounts||{};LPSTATS.jobCounts[p.job.n]=(LPSTATS.jobCounts[p.job.n]||0)+1;}
+    if(goalMet(p))LPSTATS.goalsReached=(LPSTATS.goalsReached||0)+1;});
+  saveStats();
+  G.players.forEach(function(p){ACHIEVEMENTS.forEach(function(a){if(a.cond&&a.cond(p))unlockAch(a.id);});});
+  if(newRec)setTimeout(function(){announce("🎉 NEUER REKORD! "+topR.s+" Punkte","#ffd166");},900);
   ranked.forEach(function(r,rank){var p=r.p;
     var d=document.createElement("div");d.className="score"+(rank===0?" win":"");
     var badge=rank<3?MEDAL[rank]:(rank+1)+".";
+    var goalTxt=G.goal?("<br><span style='font-size:.72rem;font-weight:800;color:"+(goalMet(p)?"#1fa85a":"#b06a2a")+"'>Ziel "+G.goal.ic+" "+G.goal.n+": "+(goalMet(p)?"erreicht ✓":"verpasst ✗")+"</span>"):"";
     d.innerHTML="<div style='font-size:.72rem;color:#9aa0aa;font-weight:800;margin-bottom:2px'>"+badge+" Platz</div>"+
-      "<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(rank===0?"👑 ":""))+p.name+"</b>"+r.s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>";
+      "<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(rank===0?"👑 ":""))+p.name+"</b>"+r.s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>"+goalTxt;
     sc.appendChild(d);});
   var rankedP=ranked.map(function(r){return r.p;}); // gleiche Reihenfolge für die Chronik unten
   // Lebens-Chronik: Kurvenverlauf aller Werte pro Spieler
@@ -1878,6 +1942,7 @@ function showEnd(){
       bio.appendChild(alb);
       if(OPT.motion)requestAnimationFrame(function(){alb.classList.add("play");}); // Polaroids fliegen/flippen herein
     }});
+  var ea=document.getElementById("endAch");if(ea)ea.innerHTML=achGalleryHTML();
   document.getElementById("hud").classList.add("hide");
   rollBtn.classList.add("hide");
   document.getElementById("emoBtn").classList.add("hide");
@@ -1889,7 +1954,7 @@ var music={on:false};
 var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0;MUS.preload="none";
 function musicStart(){if(music.on)return;music.on=true;MUS.play().catch(function(){});}
 function updMusic(dt){
-  if(!music.on){if(running)musicStart();return;}
+  if(!music.on){if(running&&!muted&&OPT.music)musicStart();return;}
   // Lebensabend (Kapitel 7-8): Musik dezenter
   var ch=G?chapterOf(G.players[G.turn].tile):0;
   var tgt=(muted||!OPT.music)?0:(ch>=6?0.24:0.34);
@@ -2435,6 +2500,7 @@ var selN=2;
     b.onclick=function(){selN=n;ps.querySelectorAll("button").forEach(function(x){x.className="";});b.className="on";renderNames();};
     ps.appendChild(b);})(i);
   renderNames();
+  renderStartStats();
   if(loadGame())document.getElementById("contBtn").classList.remove("hide");
 })();
 function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML="";
@@ -2960,6 +3026,7 @@ function begin(saved){
   G=saved||freshState(selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked,
     (document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked)?"kurz":"voll");
   if(G.mode!=="kurz")G.mode="voll"; // alte v3-Saves defensiv
+  if(!G.goal)G.goal=GOALS[(Math.random()*GOALS.length)|0];
   forkSel=null;moveTo=-1;moveQ=0;hopT=0;
   G.players.forEach(function(pp){if(!fields[pp.tile])pp.tile=0;}); // unbekannter Feld-Index -> Start (nie crashen)
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
@@ -3003,11 +3070,31 @@ function renderMenu(){
     var d=document.createElement("button");
     d.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
     d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
-    d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();renderMenu();};r.appendChild(d);});
+    d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();
+      if(o[1]==="music"){try{if(!OPT.music){if(!MUS.paused)MUS.pause();}else if(running&&!muted){music.on=true;MUS.play().catch(function(){});}}catch(e){}}
+      renderMenu();};r.appendChild(d);});
   var t=document.createElement("button");
   t.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
   t.innerHTML="<span>⏩ Zug-Tempo</span><span>"+(OPT.tempo>1?"SCHNELL":"NORMAL")+"</span>";
   t.onclick=function(){OPT.tempo=OPT.tempo>1?1:1.7;saveOpt();renderMenu();};r.appendChild(t);
+  // 🔓 Batch 7/7: Freischaltungen-Uebersicht der aktiven Spielfigur
+  if(G&&G.players&&G.players[G.turn]){var pu=G.players[G.turn],fam=pu.fam||{},it=pu.items||{};
+    var UNL=[
+      ["💼","Beruf",!!pu.job,pu.job?("Beruf: "+pu.job.n+" Gehalt x"+pu.job.mult):"Waehle im Kapitel Beruf deinen Job."],
+      ["🚗","Auto",!!it.auto,it.auto?"Cabrio: eine 6 = +1 Extra-Feld.":"Kaufe ein Auto am Meilenstein."],
+      ["🏠","Haus",!!it.haus,it.haus?"Eigenheim: +2 Glueck an jedem Meilenstein.":"Kaufe ein Eigenheim am Meilenstein."],
+      ["💍","Partner:in",!!fam.partner,fam.partner?"Verheiratet der Schatz reist mit.":"Sag am See Ja zur grossen Liebe."],
+      ["👶","Kinder",!!fam.kids,fam.kids?(fam.kids+" Kind"+(fam.kids>1?"er":"")+" laufen mit."):"Gruende eine Familie."],
+      ["🐕","Hund",!!fam.dog,fam.dog?"Ab und zu +1 Freunde auf Freunde-Feldern.":"Hol dir einen treuen Begleiter."]
+    ];
+    var hd=document.createElement("div");hd.style.cssText="font-size:.76rem;font-weight:800;color:#8a6a2a;margin:6px 0 2px;text-align:left";
+    hd.textContent="🔓 Freischaltungen "+pu.name;r.appendChild(hd);
+    var grid=document.createElement("div");grid.style.cssText="display:flex;flex-direction:column;gap:5px";
+    UNL.forEach(function(u){var row=document.createElement("div");
+      row.style.cssText="display:flex;align-items:center;gap:8px;border-radius:10px;padding:7px 10px;font-size:.8rem;text-align:left;"+(u[2]?"background:linear-gradient(180deg,#fff6d8,#ffe8b8);border:2px solid #ffb347;color:#3a3020":"background:#ececf0;border:2px solid #d4d4da;color:#9a9aa4;filter:grayscale(1)");
+      row.innerHTML="<span style=\'font-size:1.2rem\'>"+(u[2]?u[0]:"🔒")+"</span><span><b>"+u[1]+(u[2]?" ✓":"")+"</b><br><span style=\'font-size:.72rem;font-weight:600\'>"+u[3]+"</span></span>";
+      grid.appendChild(row);});
+    r.appendChild(grid);}
 }
 function toggleMenu(){menuOpen=!menuOpen;
   document.getElementById("menuO").classList.toggle("hide",!menuOpen);
@@ -3024,7 +3111,7 @@ document.getElementById("restartBtn").onclick=function(){var b=document.getEleme
   else{b.dataset.armed="1";b.textContent="Sicher? Nochmal tippen";}};
 document.getElementById("startBtn").onclick=function(){lsDel(SAVE_KEY);begin(null);};
 document.getElementById("contBtn").onclick=function(){begin(loadGame());};
-document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");
+document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");renderStartStats();
   if(NET.on){ // Online beenden: sauber trennen, Lobby zurücksetzen
     try{if(NET.peer)NET.peer.destroy();}catch(e){}if(NET._hb)clearInterval(NET._hb);
     if(NET._chk)clearInterval(NET._chk);clearTimeout(NET._reTO); // Reconnect/Checksum stoppen
@@ -3119,6 +3206,7 @@ function applyFx(p,fx){showFx(p,fx);
   p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
   p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
   p.freunde=Math.max(0,p.freunde+(fx.freunde||0));
+  if(p.geld===0&&!p._pleite){p._pleite=true;showHint("⚠️ Pleite! Kein Geld mehr bei Rechnungen kostet es jetzt Glück statt Geld.",3200);}
 }
 // ===================== ❓🔄🏁 Stations-Events (Pass B2): mehr als Würfeln =====================
 var QUIZ=[ // 24 kinderfreundliche Fragen (DE) — richtig = +2 🧠 +2 💰, falsch = keine Strafe
@@ -3155,9 +3243,15 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
   var Q=QUIZ[qi],right=Q.a[Q.c],timed=OPT.motion;
   cardEl.style.borderColor="#8a5aff";
   function fin(ok,toolate){
-    if(ok){applyFx(p,{wissen:2,geld:2});announce("✅ RICHTIG!","#8affc0");confetti(fields[p.tile].x,fields[p.tile].z,0x8a5aff,10);
-      p.bio.push("glänzte beim großen Quiz");beep(880,.1,"triangle",.06);setTimeout(function(){beep(1108,.16,"triangle",.06);},120);}
-    else{announce(toolate?"⏳ ZEIT UM!":"❌ KNAPP DANEBEN","#ffb37a");showHint("Die richtige Antwort: "+right,3200);beep(300,.18,"sine",.05);}
+    if(ok){p.quizStreak=(p.quizStreak||0)+1;
+      var streakBonus=p.quizStreak>=3?(p.quizStreak-2):0;
+      applyFx(p,{wissen:2+streakBonus,geld:2+streakBonus});
+      announce(streakBonus?("🔥 QUIZ-SERIE x"+p.quizStreak+"!"):"✅ RICHTIG!","#8affc0");
+      if(streakBonus)showHint("Quiz-Serie x"+p.quizStreak+" Bonus +"+streakBonus+" 🧠 +"+streakBonus+" 💰!",3000);
+      confetti(fields[p.tile].x,fields[p.tile].z,0x8a5aff,10);
+      p.bio.push("glänzte beim großen Quiz");beep(880,.1,"triangle",.06);setTimeout(function(){beep(1108,.16,"triangle",.06);},120);
+      if(p.quizStreak>=3)unlockAch("quiz-genie");}
+    else{p.quizStreak=0;announce(toolate?"⏳ ZEIT UM!":"❌ KNAPP DANEBEN","#ffb37a");showHint("Die richtige Antwort: "+right,3200);beep(300,.18,"sine",.05);}
     updPlayers();endTurnSoon();}
   var opts=Q.a.map(function(al,k){return {l:["🅰","🅱","🅲"][k]+" "+al,fn:function(){fin(k===Q.c,false);}};});
   opts.push({l:"",hidden:1,fn:function(){fin(false,true);}}); // Timeout-Wahl (unsichtbar, lockstep-gesynct)
@@ -3186,10 +3280,16 @@ function raceCard(p){ // 🏁 alle würfeln gleichzeitig 1× — höchster Wurf 
   cardEl.style.borderColor="#ff7a2a";
   var alive=[];
   G.players.forEach(function(pl,i){if(!pl.done)alive.push(i);});
-  if(alive.length<2){ // Solo: kleiner Sprint gegen die Uhr
-    var r0=1+((srand()*6)|0),win0=r0>=4;
-    if(win0){applyFx(p,{geld:2});emote(G.turn,"jubel");}
-    showCard("Wettrennen","🏁 Solo-Sprint!","Du würfelst 🎲 <b>"+r0+"</b> — "+(win0?"schnell genug: <b>+2 💰</b>!":"heute nicht schnell genug. Beim nächsten Mal!"),
+  if(alive.length<2){ // 🏁 Batch 7/7: Solo = sichtbares Best-of-3
+    var mine=0,riv=0,rounds=[];
+    for(var rr=0;rr<3;rr++){var a=1+((srand()*6)|0),b=1+((srand()*6)|0);if(a>=b)mine++;else riv++;rounds.push([a,b]);}
+    var win0=mine>riv;
+    if(win0){applyFx(p,{geld:2});emote(G.turn,"jubel");moneyRain(fields[p.tile].x,fields[p.tile].z,6);}
+    beep(523,.08,"square",.04);setTimeout(function(){beep(659,.08,"square",.04);},110);setTimeout(function(){beep(win0?784:392,.14,"triangle",.05);},220);
+    var body="<div style=\'font-weight:800;margin-bottom:6px\'>Best-of-3 gegen den Schatten-Läufer 🏃</div>";
+    rounds.forEach(function(rd,k){var w=rd[0]>=rd[1];body+="<div>Lauf "+(k+1)+": 🎲 <b>"+rd[0]+"</b> vs "+rd[1]+" — "+(w?"✅ du":"➖ Schatten")+"</div>";});
+    body+="<div style=\'margin-top:6px;font-weight:900\'>"+mine+" : "+riv+" — "+(win0?"Sieg! <b>+2 💰</b>":"knapp verloren — beim nächsten Mal!")+"</div>";
+    showCard("Wettrennen · Solo","🏁 Best-of-3-Sprint!",body,
       [{l:"Weiter ▶",fn:function(){updPlayers();endTurnSoon();}}]);return;}
   var res={},best=0;
   alive.forEach(function(i){var r=1+((srand()*6)|0);res[i]=r;if(r>best)best=r;});
@@ -3207,7 +3307,7 @@ function jobCard(p,done){
   var picks=[];while(picks.length<3){var j=JOBS[(srand()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
   showCard("Meilenstein · Berufswahl","💼 Was willst du werden?","Drei Türen stehen offen. Hinter jeder ein anderes Leben — Gehalt ist nicht alles.",
     picks.map(function(j){return {l:j.i+" "+j.n,sub:j.d,fn:function(){p.job={i:j.i,n:j.n,mult:j.mult};applyFx(p,j.fx);
-      p.bio.push("wurde "+j.n+" — und bereute es nie");updPlayers();done();}};}));}
+      p.bio.push("wurde "+j.n+" — und bereute es nie");unlockAch("selfmade");updPlayers();done();}};}));}
 function autoCard(p,done){
   showCard("Meilenstein · Das erste Auto","🚗 Ein eigenes Auto?","Beim Händler glänzt ein kleines Cabrio in deiner Lieblingsfarbe. Der Schlüssel liegt schon fast in deiner Hand.",
     [{l:"🚗 Kaufen — ab jetzt wird gefahren!",sub:"−6 💰 · +2 ❤️ · deine Figur fährt Auto · Turbo: 6 = +1 Feld",fn:function(){if(!p.items)p.items={};p.items.auto=true;applyFx(p,{geld:-6,glueck:2});p.bio.push("kaufte das erste eigene Auto — Freiheit auf vier Rädern");enableCar(G.turn);snap(G.turn,"🚗","Das erste Auto");announce("🚗 BRUMM BRUMM!","#ffd166");beep(90,.35,"sawtooth",.06);setTimeout(function(){beep(140,.25,"sawtooth",.05);},200);updPlayers();done();}},
@@ -3220,11 +3320,11 @@ function wedCard(p,done){
 function kidsCard(p,done){
   showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
     [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(srand()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");snap(G.turn,"👶","Ein Kind kommt");storkScene(G.turn,1);updPlayers();done();}},
-     {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");snap(G.turn,"👶","Zwillinge!");storkScene(G.turn,2);updPlayers();done();}},
-     {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");snap(G.turn,"🐕","Ein Hund zieht ein");syncFam(G.turn);beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();done();}}]);}
+     {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");snap(G.turn,"👶","Zwillinge!");storkScene(G.turn,2);unlockAch("zwillinge");updPlayers();done();}},
+     {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");snap(G.turn,"🐕","Ein Hund zieht ein");syncFam(G.turn);unlockAch("tierfreund");beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();done();}}]);}
 function hausCard(p,done){
   showCard("Meilenstein · Eigenheim","🏠 Ein eigenes Haus?","Das Schild am Gartenzaun sagt „Zu verkaufen“. Der Rasen ist verwildert — aber du siehst schon Lichterketten auf der Veranda.",
-    [{l:"🏠 Kaufen — Wurzeln schlagen",sub:"−10 💰 · +3 ❤️ · dauerhaft: +2 ❤️ an jedem Meilenstein",fn:function(){if(!p.items)p.items={};p.items.haus=true;applyFx(p,{geld:-10,glueck:3});p.bio.push("kaufte ein Haus mit Veranda — und nannte es für immer Zuhause");snap(G.turn,"🏠","Das eigene Haus");confetti(fields[p.tile].x,fields[p.tile].z,0xffd166,14);updPlayers();done();}},
+    [{l:"🏠 Kaufen — Wurzeln schlagen",sub:"−10 💰 · +3 ❤️ · dauerhaft: +2 ❤️ an jedem Meilenstein",fn:function(){if(!p.items)p.items={};p.items.haus=true;applyFx(p,{geld:-10,glueck:3});p.bio.push("kaufte ein Haus mit Veranda — und nannte es für immer Zuhause");snap(G.turn,"🏠","Das eigene Haus");confetti(fields[p.tile].x,fields[p.tile].z,0xffd166,14);unlockAch("eigenheim");updPlayers();done();}},
      {l:"🏕 Weiter zur Miete — flexibel bleiben",sub:"+2 🧠 · +1 💰",fn:function(){applyFx(p,{wissen:2,geld:1});p.bio.push("blieb zur Miete — die Welt war das Zuhause");updPlayers();done();}}]);}
 function shortMileChain(p){ // ⚡ Kurz-Modus: das große Lebens-Kapitel — Hochzeit → Kinder → Haus hintereinander
   if(p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,function(){shortMileChain(p);});return;}
