@@ -453,15 +453,21 @@ function seededRnd(s){return function(){s=(s*9301+49297)%233280;return s/233280;
  im.instanceMatrix.needsUpdate=true;im.castShadow=true;scene.add(im);})();
 // -- Dorf: Detail-Häuser (Blender-GLBs) + Laternen + Brunnen
 var village=new THREE.Group();scene.add(village);
+var occluders=[]; // Häuser, die bei Sicht-Blockade transparent faden (Fix: Kamera hinter Hausdach, User-Handy)
 var wellMesh=null; // Brunnen-Mesh (Puls in der Hauptschleife)
 (function(){
  // building_*.glb: Ursprung = Unterkante/Bodenmitte, Fenster-Emissive eingebacken.
  // Höhen final auf Spielgrösse (Fachwerk 7.0 / Werkstatt 6.5 / Turm 8.5, NPCs ~2.1).
  var hs=[[-10,-8,0.5,"fachwerk"],[9,-11,2.2,"werkstatt"],[13,7,4,"turm"],[-12,9,5.4,"fachwerk"],[2,-16,1.2,"werkstatt"]];
  var HSCALE=1.0; // uniforme Haus-Skala (per Screenshot verifiziert)
+ function regOccluder(o,hx,hz){ // Haus als Sicht-Blocker registrieren (Materialien pro Haus klonen → unabhängiges Faden)
+  var mats=[];o.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();mats.push(n.material);}});
+  occluders.push({o:o,x:hx,z:hz,cur:1,tgt:1,mats:mats});}
  function boxHouse(hx,hz,ry){ // Fallback: alte Box-Häuser, falls GLB nicht lädt
-  var body=new THREE.Mesh(new THREE.BoxGeometry(6,4,5),mat(0x141a3e,0x2a3585,0.5));body.position.set(hx,2,hz);body.rotation.y=ry;body.castShadow=true;village.add(body);
-  var roof=new THREE.Mesh(new THREE.ConeGeometry(4.6,3,4),mat(0x1d0f38,0xb98bff,0.5));roof.position.set(hx,5.5,hz);roof.rotation.y=ry+Math.PI/4;village.add(roof);}
+  var grp=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.BoxGeometry(6,4,5),mat(0x141a3e,0x2a3585,0.5));body.position.set(hx,2,hz);body.rotation.y=ry;body.castShadow=true;grp.add(body);
+  var roof=new THREE.Mesh(new THREE.ConeGeometry(4.6,3,4),mat(0x1d0f38,0xb98bff,0.5));roof.position.set(hx,5.5,hz);roof.rotation.y=ry+Math.PI/4;grp.add(roof);
+  village.add(grp);regOccluder(grp,hx,hz);}
  var byType={};hs.forEach(function(h){(byType[h[3]]=byType[h[3]]||[]).push(h);});
  if(THREE.GLTFLoader){
   Object.keys(byType).forEach(function(name){
@@ -470,7 +476,7 @@ var wellMesh=null; // Brunnen-Mesh (Puls in der Hauptschleife)
      if(n.material)n.material.emissiveIntensity=1.0;}}); // Fenster glühen (Muster landscape-Loader)
     byType[name].forEach(function(h,i){
      var o=i?g.scene.clone(true):g.scene; // statische Meshes → clone() ok (kein SkinnedMesh)
-     o.position.set(h[0],0,h[1]);o.rotation.y=h[2];o.scale.setScalar(HSCALE);village.add(o);});
+     o.position.set(h[0],0,h[1]);o.rotation.y=h[2];o.scale.setScalar(HSCALE);village.add(o);regOccluder(o,h[0],h[1]);});
    },undefined,function(){byType[name].forEach(function(h){boxHouse(h[0],h[1],h[2]);});});
   });
  }else hs.forEach(function(h){boxHouse(h[0],h[1],h[2]);});
@@ -1903,6 +1909,23 @@ function updateCamera(dt){
   camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*5);
   camera.lookAt(px,py+2.2-nf*1.0,pz-8+nf*7);
   if(camShake>0.001)camShake*=0.86;else camShake=0;
+  updateOcclusion(dt,px,pz);
+}
+// Häuser zwischen Kamera und Spieler sanft transparent faden (Segment-Distanz in XZ; Hysterese gegen Flackern)
+function updateOcclusion(dt,px,pz){
+  if(!occluders.length)return;
+  var ax=camera.position.x,az=camera.position.z,bx=px,bz=pz;
+  var abx=bx-ax,abz=bz-az,abl=abx*abx+abz*abz||1;
+  for(var i=0;i<occluders.length;i++){var o=occluders[i];
+    var t=((o.x-ax)*abx+(o.z-az)*abz)/abl;
+    var occ=false;
+    if(t>0.06&&t<0.94){var qx=ax+abx*t,qz=az+abz*t;var d=Math.hypot(o.x-qx,o.z-qz);if(d<5.0)occ=true;}
+    o.tgt=occ?0.22:1;
+    if(Math.abs(o.cur-o.tgt)>0.005){
+      o.cur+=(o.tgt-o.cur)*Math.min(1,dt*8);
+      for(var m=0;m<o.mats.length;m++){var mm=o.mats[m];mm.transparent=(o.cur<0.985);mm.opacity=o.cur;mm.depthWrite=(o.cur>=0.985);}
+    }
+  }
 }
 camera.position.set(0,17,30);camera.lookAt(0,1.5,10);
 
@@ -2039,6 +2062,7 @@ document.getElementById("startBtn").onclick=begin;
 document.getElementById("reviveBtn").onclick=function(){
   G.hp=G.maxhp;player.position.set(0,0,14);vx=0;vz=0;document.getElementById("deadO").classList.add("hide");running=true;};
 document.getElementById("winBtn").onclick=function(){document.getElementById("winO").classList.add("hide");running=true;};
+window.__realm={pos:function(x,z){player.position.x=x;player.position.z=z;},occl:function(){return occluders.map(function(o){return{x:o.x,z:o.z,cur:Math.round(o.cur*100)/100};});}};
 requestAnimationFrame(loop);
 })();
 </script>
