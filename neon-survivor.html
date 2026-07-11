@@ -61,6 +61,7 @@ canvas{display:block}
 <div id="hurt" style="position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 55%,transparent 45%,rgba(255,30,45,.65));opacity:0;transition:opacity .12s;z-index:2"></div>
 <div id="hud" class="hide">
   <div id="hudPanel">
+    <div id="hudName" style="font-size:.78rem;font-weight:700;color:#9fb2ff;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></div>
     <div id="hudTop"><span id="lvl">Lv 1</span><span id="time">0s</span><span id="kills">☠ 0</span></div>
     <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
     <div id="xpwrap"><div class="bar"><i id="xpFill" style="width:0%"></i></div></div>
@@ -81,9 +82,16 @@ canvas{display:block}
   <h1>NEON SURVIVOR</h1>
   <p>Überlebe die Schwärme. Du bewegst dich — geschossen wird <b>automatisch</b>. Sammle XP und baue aus <b>4 Waffen</b> (Bolt · Nova · Ketten-Blitz · Orbit) + Boni deinen eigenen <b>Build</b>.</p>
   <p style="font-size:.85rem;color:#8890b8">Bewegen: WASD / Pfeile / Finger ziehen</p>
+  <div id="nameWrap" style="margin:6px 0 2px">
+    <label for="nameInput" style="font-size:.8rem;color:#8890b8;display:block;margin-bottom:4px">👤 Dein Name</label>
+    <input id="nameInput" maxlength="12" placeholder="Spieler" autocomplete="off" spellcheck="false"
+      style="width:220px;max-width:80vw;text-align:center;padding:11px 14px;border-radius:12px;border:1px solid #3a4170;background:#10142b;color:#e6e9ff;font-size:1.05rem;font-weight:700;outline:none">
+  </div>
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
   <div id="best"></div>
+  <div id="welcome" style="margin-top:6px;font-size:.9rem;color:#c7cbe6"></div>
+  <div id="startLb" style="margin-top:8px;font-size:.85rem;color:#c7cbe6;line-height:1.5"></div>
   <div id="chars" style="margin-top:12px;max-width:360px;width:100%;font-size:.9rem"></div>
   <div id="shop" style="margin-top:14px;max-width:360px;width:100%;font-size:.9rem"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
@@ -109,7 +117,12 @@ canvas{display:block}
 <div class="overlay hide" id="over">
   <div class="tag">Game Over</div>
   <h1 id="finalT">Überlebt: 0s</h1>
+  <div id="nsRound" style="font-weight:800;color:#5ef2ff;font-size:1.15rem;margin:.15rem 0"></div>
+  <div id="nsRec" class="rec" style="display:none;font-weight:800;font-size:1.05rem;margin:.15rem 0"></div>
   <p id="verdict"></p>
+  <div id="nsRunStats" style="color:#c7cbe6;font-size:.95rem"></div>
+  <div id="nsBestStats" style="color:#ffd166;font-weight:700;font-size:.95rem;margin-top:4px"></div>
+  <div id="nsLboard" style="margin-top:8px;font-size:.85rem;color:#c7cbe6;line-height:1.5;width:100%;max-width:300px"></div>
   <button class="btn" id="againBtn">Nochmal ▶</button>
   <button class="btn ghost" id="shareBtn">Teilen 📋</button>
   <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter →</a></p>
@@ -124,6 +137,7 @@ canvas{display:block}
   <p class="small">Geschafft! Mehr Spiele: <a href="/spiele.html">spiele</a></p>
 </div>
 
+<script src="/js/arcade.js"></script>
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script>
@@ -400,6 +414,8 @@ function reset(){
   var ch=CHARS[loadChar()]||CHARS[0];
   S.weapons={}; S.weapons[ch.weap]=1;
   S.maxhp*=ch.hp; S.hp=S.maxhp; S.dmg*=ch.dmg; S.speed*=ch.spd; S.haste*=ch.haste; S.area*=ch.area;
+  // Dezenter Treue-Bonus (kein Pay2Win): ab 5 gespielten Runden +5% Start-HP
+  var _prof=getProfile(curName||nsGetName()); if(_prof.runs>=5){S.maxhp*=1.05;S.hp=S.maxhp;S.veteran=true;}
   renderUpRow();
   [bullets,enemies,orbs,fx,blades,ebullets,loot,scrapPickups].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
   player.position.set(0,0.9,0);
@@ -524,6 +540,70 @@ muteBtn.onclick=function(){muted=!muted;applyMute();};
 addEventListener("keydown",function(e){if(e.key.toLowerCase()==="m"){muted=!muted;applyMute();}});
 function bestTime(){try{return parseInt(localStorage.getItem("ns_best")||"0",10)||0;}catch(e){return 0;}}
 function setBest(v){try{localStorage.setItem("ns_best",String(v));}catch(e){}}
+// ---------- Spieler-Name + Mehr-Runden-Speicherstand (ns_profile / ns_leaderboard) ----------
+// Name lebt im gemeinsamen Arcade-Profil (window.AbanArcade, LS "abanArcade") — konsistent mit
+// Hub + neon-duo; Fallback auf lokalen Key "ns_name", falls js/arcade.js fehlt. Nie crashen.
+function nsEsc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];});}
+function nsClean(n){return String(n==null?"":n).replace(/[<>&"'`]/g,"").trim().slice(0,12);} // Injection-Schutz + max 12
+function nsGetName(){var n="";try{n=(window.AbanArcade?AbanArcade.profile().name:null)||localStorage.getItem("ns_name")||"";}catch(e){}return nsClean(n);}
+function nsSetName(n){n=nsClean(n);try{if(window.AbanArcade)AbanArcade.setName(n);}catch(e){}try{localStorage.setItem("ns_name",n);}catch(e){}return n;}
+function nsKey(n){n=nsClean(n);return n||"Spieler";}
+function loadProfiles(){try{var o=JSON.parse(localStorage.getItem("ns_profile")||"{}");return(o&&typeof o==="object")?o:{};}catch(e){return{};}}
+function saveProfiles(o){try{localStorage.setItem("ns_profile",JSON.stringify(o));}catch(e){}}
+function getProfile(n){var all=loadProfiles(),p=all[nsKey(n)]||{};return{bestTime:p.bestTime||0,bestWave:p.bestWave||0,mostKills:p.mostKills||0,runs:p.runs||0,totalKills:p.totalKills||0};}
+function loadLeaderboard(){try{var a=JSON.parse(localStorage.getItem("ns_leaderboard")||"[]");return Array.isArray(a)?a:[];}catch(e){return[];}}
+function saveLeaderboard(a){try{localStorage.setItem("ns_leaderboard",JSON.stringify(a.slice(0,10)));}catch(e){}}
+// Beendeten Run eintragen → Profil-Bestwerte + Bestenliste (Top-Zeiten). Gibt Auswertung fürs Game-Over zurück.
+function recordRun(name,time,wave,kills){
+  var k=nsKey(name),all=loadProfiles(),p=all[k]||{bestTime:0,bestWave:0,mostKills:0,runs:0,totalKills:0};
+  var s=Math.max(0,Math.floor(time||0)),w=Math.max(1,wave|0),ki=Math.max(0,kills|0);
+  var recTime=s>(p.bestTime||0),recWave=w>(p.bestWave||0),recKills=ki>(p.mostKills||0);
+  p.runs=(p.runs||0)+1; p.totalKills=(p.totalKills||0)+ki;
+  if(recTime)p.bestTime=s; if(recWave)p.bestWave=w; if(recKills)p.mostKills=ki;
+  all[k]=p; saveProfiles(all);
+  var lb=loadLeaderboard(),entry={name:k,time:s,wave:w,kills:ki,t:Date.now()}; lb.push(entry);
+  lb.sort(function(a,b){return (b.time-a.time)||(b.kills-a.kills);}); saveLeaderboard(lb);
+  var top=lb.slice(0,3).map(function(e){return{name:e.name,time:e.time,wave:e.wave,kills:e.kills,me:(e===entry)};});
+  return{round:p.runs,time:s,wave:w,kills:ki,best:{bestTime:p.bestTime,bestWave:p.bestWave,mostKills:p.mostKills,runs:p.runs,totalKills:p.totalKills},
+    recTime:recTime,recWave:recWave,recKills:recKills,rec:(recTime||recWave||recKills),lb:top};
+}
+// Konfetti-Feier (Web Animations API, mit Timeout-Fallback) — rein kosmetisch, kein Gameplay.
+function nsConfetti(){var cols=["#5ef2ff","#b98bff","#ff7ad9","#ffd166","#6aff9e"];
+  for(var i=0;i<30;i++){var d=document.createElement("div");var sz=6+Math.random()*7;
+    d.style.cssText="position:fixed;z-index:20;top:-16px;left:"+(Math.random()*100)+"vw;width:"+sz+"px;height:"+sz+"px;background:"+cols[i%cols.length]+";border-radius:2px;pointer-events:none";
+    document.body.appendChild(d);var dx=(Math.random()-.5)*180;
+    (function(d,dx){if(d.animate){var a=d.animate([{transform:"translate(0,0) rotate(0deg)",opacity:1},{transform:"translate("+dx+"px,"+(window.innerHeight+50)+"px) rotate("+(360+Math.random()*720)+"deg)",opacity:.85}],{duration:1500+Math.random()*1400,easing:"cubic-bezier(.3,.6,.5,1)"});a.onfinish=function(){d.remove();};}else setTimeout(function(){d.remove();},1700);})(d,dx);}}
+// Game-Over-Extras füllen: Runde #N, Diese-Runde, Bestwerte, Rekord-Feier, Top-3-Bestenliste.
+function nsShowGameOver(r){
+  var el=function(id){return document.getElementById(id);};
+  if(el("nsRound"))el("nsRound").textContent="🎮 Runde #"+r.round;
+  if(el("nsRunStats"))el("nsRunStats").innerHTML="Diese Runde: ⏱ "+r.time+"s · 🌊 Welle "+r.wave+" · ☠ "+r.kills+" Gegner";
+  if(el("nsBestStats"))el("nsBestStats").innerHTML="🏆 Beste: ⏱ "+r.best.bestTime+"s · 🌊 Welle "+r.best.bestWave+" · ☠ "+r.best.mostKills;
+  var rec=el("nsRec");
+  if(rec){if(r.rec){var parts=[];if(r.recTime)parts.push("Zeit");if(r.recWave)parts.push("Welle");if(r.recKills)parts.push("Kills");
+      rec.textContent="🎉 NEUER REKORD: "+parts.join(" + ")+"!";rec.style.display="block";nsConfetti();}
+    else rec.style.display="none";}
+  var lbEl=el("nsLboard");if(lbEl){var lb=r.lb||[];var h="<div style='font-weight:800;color:#9fb2ff;margin-bottom:3px'>🏅 Bestenliste</div>";
+    if(!lb.length)h+="<div style='color:#8890b8'>—</div>";
+    lb.forEach(function(e,i){var medal=["🥇","🥈","🥉"][i]||((i+1)+".");
+      h+="<div style='"+(e.me?"color:#5ef2ff;font-weight:800":"")+"'>"+medal+" "+nsEsc(e.name)+" — "+e.time+"s (W"+e.wave+")"+(e.me?" ← du":"")+"</div>";});
+    lbEl.innerHTML=h;}
+}
+// Startscreen: Namensfeld füllen, Willkommensgruß + kompakte Bestenliste.
+function nsRefreshWelcome(){
+  var input=document.getElementById("nameInput"),name=(input&&input.value.trim())?nsClean(input.value):nsGetName();
+  if(input&&!input.value&&name)input.value=name;
+  var w=document.getElementById("welcome");
+  if(w){var p=getProfile(name||"Spieler");
+    if(name&&p.runs>0){var vet=p.runs>=5?" · 💪 Veteran +5% HP":"";w.innerHTML="👋 Willkommen zurück, <b>"+nsEsc(name)+"</b>! · 🏆 Beste "+p.bestTime+"s · Runde "+(p.runs+1)+vet;}
+    else if(name){w.innerHTML="👋 Hi <b>"+nsEsc(name)+"</b>! Erste Runde — viel Glück!";}
+    else{w.innerHTML="";}}
+  var el=document.getElementById("startLb");
+  if(el){var lb=loadLeaderboard().slice(0,3);
+    if(lb.length){var h="<div style='font-weight:800;color:#9fb2ff;margin-bottom:3px'>🏅 Bestenliste</div>";
+      lb.forEach(function(e,i){h+="<div>"+(["🥇","🥈","🥉"][i]||((i+1)+"."))+" "+nsEsc(e.name)+" — "+e.time+"s</div>";});el.innerHTML=h;}
+    else el.innerHTML="";}
+}
 // ---------- Meta-Progression: Kerne (Währung) → permanente Werkstatt-Upgrades ----------
 function loadCores(){try{return parseInt(localStorage.getItem("ns_cores")||"0",10)||0;}catch(e){return 0;}}
 function saveCores(v){try{localStorage.setItem("ns_cores",String(Math.max(0,Math.floor(v))));}catch(e){}}
@@ -720,7 +800,12 @@ window.__ns={scrap:function(n){S.scrap=Math.max(0,(S.scrap||0)+(n||0));updateScr
   setHp:function(v){S.hp=Math.min(S.maxhp,v==null?S.maxhp:v);return S.hp;},
   setMag:function(v){S.pickup=v;return S.pickup;},
   face:function(){return pFaceAng;},
-  ppos:function(){return {x:player.position.x,y:player.position.y,z:player.position.z};}};
+  ppos:function(){return {x:player.position.x,y:player.position.y,z:player.position.z};},
+  // Testhilfe: Game-Over-Speicherstand ohne echtes Sterben auslösen (setzt Werte, ruft gameOver)
+  endRun:function(time,wave,kills){if(time!=null)S.t=time;if(wave!=null)S.wave=wave;if(kills!=null)S.kills=kills;running=true;gameOver();return getProfile(curName||nsGetName());},
+  name:function(n){if(n!=null){curName=nsSetName(n);nsRefreshWelcome();}return curName||nsGetName();},
+  profile:function(){return getProfile(curName||nsGetName());},
+  leaderboard:function(){return loadLeaderboard();}};
 
 // ================= Bloom-Post-Processing (Neon-Glow → "teurer" Look) =================
 var bloomVert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
@@ -761,21 +846,30 @@ function renderBloom(){
 function resizeBloom(){rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
 
 var shake=0,hitstop=0,running=false,last=performance.now(),hurt=0,hurtEl=document.getElementById("hurt");
-function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
+var curName="";
+function start(){
+  // Name aus dem Feld übernehmen (oder gespeichertes Profil) → ins gemeinsame Arcade-Profil schreiben
+  var input=document.getElementById("nameInput");
+  curName=nsSetName((input&&input.value)?input.value:nsGetName());
+  var hn=document.getElementById("hudName");if(hn)hn.textContent=curName?("👤 "+curName):"";
+  if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);updateBuildBtn();
   var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");startMusic();}
-function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";}
+function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";nsRefreshWelcome();}
 function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);cancelPlacing();closeBuildMenu();demolishMode=false;showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);renderShop();
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
+  // Mehr-Runden-Speicherstand: Run eintragen (Profil + Bestenliste) und Game-Over-Extras füllen
+  nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills));
   document.getElementById("over").classList.remove("hide");}
 function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);cancelPlacing();closeBuildMenu();demolishMode=false;showPlaceButtons(false);updateBuildBtn();
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
-  document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
-  document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);}
+  var _r=recordRun(curName,S.t,S.wave,S.kills); // Sieg zählt auch als gespielte Runde
+  document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
+  document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();}
 
 document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
 document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
@@ -897,7 +991,12 @@ function applyLoot(ri){var r=RARITY[ri],picks=[],pool=AFFIXES.slice();for(var k=
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";
   var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent=COARSE?"⚡ PULS-BLAST bereit — gelber Knopf":"⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
   var abb=document.getElementById("abBtn");if(abb){var rdy=(S.abilityCD||0)<=0;abb.style.opacity=rdy?"1":"0.45";abb.style.boxShadow=rdy?"0 0 16px #ffd166":"none";}}
-reset(); showBest(); renderShop(); renderChars(); requestAnimationFrame(loop);
+reset(); showBest(); renderShop(); renderChars();
+// Namensfeld: live-Gruß beim Tippen, Enter startet direkt
+(function(){var ni=document.getElementById("nameInput");if(!ni)return;
+  ni.addEventListener("input",nsRefreshWelcome);
+  ni.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();dailyMode=false;start();}});})();
+requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
 })();
 </script>
