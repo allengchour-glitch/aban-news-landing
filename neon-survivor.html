@@ -21,7 +21,7 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#fff;font-family:
 canvas{display:block}
 #hud{position:fixed;top:0;left:0;right:0;padding:calc(10px + env(safe-area-inset-top)) calc(14px + env(safe-area-inset-right)) 10px calc(14px + env(safe-area-inset-left));pointer-events:none;font-weight:700;text-shadow:0 2px 6px #000}
 /* HUD-Lesbarkeit: halbtransparentes Panel hinter allen Anzeigen, Text >=16px (1rem) auch mobil */
-#hudPanel{max-width:430px;background:rgba(9,12,28,.62);border:1px solid rgba(110,130,220,.35);border-radius:12px;padding:8px 12px 10px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+#hudPanel{max-width:430px;background:rgba(9,12,28,.82);border:1px solid rgba(130,150,240,.5);border-radius:12px;padding:8px 12px 10px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:0 4px 18px rgba(0,0,0,.45)}
 @media(max-width:520px){#hudPanel{max-width:calc(100% - 58px)}}
 .bar{height:12px;border-radius:6px;background:#1b2040;overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;width:100%}
@@ -1040,20 +1040,20 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,Math.floor(W/2)),bh=Math.max(1,Math.floor(H/2));
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.5}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.72}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:1.0},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.7},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
 "uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;uniform float uTime;varying vec2 vUv;",
 "void main(){",
 "  vec2 uv=vUv; vec2 d=uv-0.5; float r2=dot(d,d);",
-"  float ca=0.0018+r2*0.010;",                                   // Chromatic Aberration (stärker zum Rand)
+"  float ca=0.0009+r2*0.005;",                                   // Chromatic Aberration (dezenter, weniger Kanten-Fransen)
 "  vec3 base; base.r=texture2D(tBase,uv+d*ca).r; base.g=texture2D(tBase,uv).g; base.b=texture2D(tBase,uv-d*ca).b;",
 "  vec3 bloom=texture2D(tBloom,uv).rgb;",
 "  vec3 col=base+bloom*strength;",
 "  col=(col*(2.51*col+0.03))/(col*(2.43*col+0.59)+0.14);",       // ACES-Tonemapping (Kino-Look)
 "  float vig=smoothstep(1.15,0.25,r2*2.2); col*=mix(0.5,1.0,vig);", // Vignette
-"  float gr=fract(sin(dot(uv*vec2(uTime*0.7+1.0,uTime*0.9+2.0),vec2(12.9898,78.233)))*43758.5453);",
-"  col+=(gr-0.5)*0.035;",                                        // Film-Grain
+"  float gr=fract(sin(dot(gl_FragCoord.xy+uTime*11.0,vec2(12.9898,78.233)))*43758.5453);",
+"  col+=(gr-0.5)*0.02;",                                         // Film-Grain (echtes Pro-Pixel-Korn statt Streifen-Banding)
 "  col=pow(clamp(col,0.0,1.0),vec3(0.94));",                     // leichtes Color-Grading
 "  gl_FragColor=vec4(col,1.0);",
 "}"].join("\n")});
