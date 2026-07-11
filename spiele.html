@@ -2,13 +2,15 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>aban Arcade — kostenlose 3D-Browser-Games &amp; tägliche Rätsel</title>
-<meta name="description" content="Die aban Arcade: kostenlose Browser-Games im Neon-Look — 3D-Boss-Fight, Roguelites, Racer, Platformer und tägliche Worträtsel. Kein Download, sofort spielen.">
+<meta name="description" content="Die aban Arcade: kostenlose Browser-Games im Neon-Look — Open-World-RPG, Boss-Fight, Roguelites, Racer, Platformer und tägliche Worträtsel. Kein Download, 1 Tap und du spielst.">
 <link rel="canonical" href="https://abannews.com/spiele.html">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="aban Arcade — kostenlose Neon-Browser-Games">
-<meta property="og:description" content="3D-Boss-Fight, Roguelites, Racer & tägliche Rätsel. Gratis im Browser, kein Download.">
+<meta property="og:description" content="Open-World-RPG, Boss-Fight, Roguelites, Racer & tägliche Rätsel. Gratis im Browser, kein Download.">
 <meta property="og:url" content="https://abannews.com/spiele.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06070f">
@@ -51,6 +53,16 @@ body{background:#06070f;color:#eaf0ff;font-family:system-ui,-apple-system,Segoe 
   background:linear-gradient(92deg,#5ef2ff,#b98bff 45%,#ff6ec7);-webkit-background-clip:text;background-clip:text;color:transparent;
   filter:drop-shadow(0 0 20px rgba(10,7,20,.9)) drop-shadow(0 0 34px rgba(150,110,255,.4))}
 .hero p{color:#dbe3ff;max-width:560px;margin:16px auto 0;font-size:1.02rem;text-shadow:0 2px 12px #05060e,0 0 20px #05060e}
+/* ---- Spieler-Leiste (Profil + Gesamt-Highscores) ---- */
+.pbar{margin:24px auto 0;max-width:920px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.pname{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:9px 20px;border-radius:40px;cursor:pointer;
+  font:inherit;font-weight:800;font-size:.92rem;color:#eaf0ff;background:linear-gradient(160deg,rgba(30,34,64,.85),rgba(14,16,30,.85));
+  border:1px solid rgba(120,140,255,.3);backdrop-filter:blur(6px)}
+.pname:hover{border-color:var(--cyan);box-shadow:0 0 18px rgba(94,242,255,.25)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chip{font-size:.78rem;font-weight:700;color:#cfd8ff;background:rgba(20,24,46,.8);border:1px solid rgba(120,140,255,.22);
+  border-radius:20px;padding:5px 12px;backdrop-filter:blur(4px)}
+.chip.total{color:#0a1020;background:linear-gradient(92deg,#5ef2ff,#b98bff);border:none;box-shadow:0 0 18px rgba(120,140,255,.35)}
 .grid-games{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:18px;margin-top:30px}
 .card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:18px;padding:22px;
   background:linear-gradient(160deg,rgba(24,28,52,.72),rgba(12,14,28,.72));border:1px solid rgba(120,140,255,.16);
@@ -67,12 +79,15 @@ body{background:#06070f;color:#eaf0ff;font-family:system-ui,-apple-system,Segoe 
   border:1px solid color-mix(in srgb,var(--c,#5ef2ff) 45%,transparent);border-radius:20px;padding:3px 10px;margin:12px 0 8px;background:color-mix(in srgb,var(--c,#5ef2ff) 12%,transparent)}
 .card h2{font-size:1.28rem;margin:.1rem 0 .35rem;color:#fff;letter-spacing:.01em}
 .card.feat h2{font-size:1.7rem}
-.card p{color:#aeb8e0;font-size:.9rem;margin:0 0 12px;flex:1}
+.card p{color:#aeb8e0;font-size:.9rem;margin:0 0 14px;flex:1}
 .rec{display:none;font-size:.76rem;font-weight:800;color:#0a1020;background:var(--c,#5ef2ff);border-radius:20px;padding:3px 11px;margin-bottom:10px;width:max-content;box-shadow:0 0 16px color-mix(in srgb,var(--c,#5ef2ff) 60%,transparent)}
 .rec.on{display:inline-block}
-.play{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--c,#5ef2ff);margin-top:auto}
-.play::after{content:"▶";font-size:.7em;transition:transform .16s}
-.card:hover .play::after{transform:translateX(4px)}
+/* „Spielen"-Button: echter Tap-Button ≥44px (Design-Regel: 1 Tap ins Spiel) */
+.play{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 24px;margin-top:auto;width:max-content;
+  font-weight:900;font-size:.92rem;color:#0a1020;background:var(--c,#5ef2ff);border-radius:40px;
+  box-shadow:0 6px 24px color-mix(in srgb,var(--c,#5ef2ff) 40%,transparent);transition:transform .16s ease}
+.play::before{content:"▶";font-size:.72em}
+.card:hover .play{transform:scale(1.04)}
 .cta{margin:44px auto 0;max-width:640px;text-align:center;background:linear-gradient(120deg,rgba(40,20,60,.7),rgba(14,16,30,.7));
   border:1px solid rgba(255,110,199,.28);border-radius:20px;padding:26px;backdrop-filter:blur(6px)}
 .cta strong{font-size:1.15rem;color:#fff}
@@ -93,8 +108,13 @@ footer a{color:var(--purple);text-decoration:none}
 <div class="wrap">
   <div class="hero">
     <div class="kick">aban arcade</div>
-    <h1>🎮 SPIELE</h1>
-    <p>Kostenlose Browser-Games im Neon-Look — 3D-Action, Roguelites, Racer &amp; tägliche Rätsel. Kein Download, sofort spielen, direkt im Browser.</p>
+    <h1>🕹️ ABAN ARCADE</h1>
+    <p>Kostenlose Browser-Games im Neon-Look — 3D-Action, Roguelites, Racer &amp; tägliche Rätsel. Kein Download, 1 Tap und du spielst.</p>
+  </div>
+
+  <div class="pbar">
+    <button class="pname" id="pName" type="button">👤 Namen wählen</button>
+    <div class="chips" id="chips" aria-label="Deine Rekorde"></div>
   </div>
 
   <div class="grid-games">
@@ -103,42 +123,73 @@ footer a{color:var(--purple);text-decoration:none}
       <div class="body">
         <span class="tag">3D · Open-World-RPG · neu</span>
         <h2>Neon Realm</h2>
-        <p>Ein <b>komplettes Open-World-RPG</b> im Browser: prozedurale Landschaft mit See und Vogelschwärmen, Tag/Nacht, <b>Quest-Kette</b>, Loot in vier Seltenheitsstufen, Skills — dazu der <b>Dungeon Die Tiefe</b> (bei jedem Besuch neu generiert, mit Wächter-Miniboss), der nächtliche <b>SERAPH-Weltboss</b> mit Legendär-Garantie und am Ende der <b>NEXUS</b>. Echte 3D-Modelle, Minimap, Speicherstand.</p>
+        <p>Ein <b>komplettes Open-World-RPG</b> im Browser: prozedurale Landschaft mit See und Vogelschwärmen, Tag/Nacht, <b>Quest-Kette</b>, Loot in vier Seltenheitsstufen, Skills, <b>4 Klassen</b> und 5 einzigartige Monster — dazu der <b>Dungeon Die Tiefe</b>, der nächtliche <b>SERAPH-Weltboss</b> und am Ende der <b>NEXUS</b>. Echte 3D-Modelle, Minimap, Speicherstand.</p>
+        <span class="rec" data-best="nr_save1" data-json="lvl" data-icon="⭐" data-prefix="Dein Held: Level " data-suffix="" data-chip="🗺️ Realm · Level #"></span>
         <span class="play">Reich betreten</span>
       </div>
     </a>
+
+    <a class="card" href="/neon-jump.html" style="--c:#ff6ec7">
+      <div class="emo">🏃</div>
+      <span class="tag">3D · Platformer · frisch poliert</span>
+      <h2>Neon Jump</h2>
+      <p>Synthwave-Jump-and-Run: renne, spring mit Doppelsprung über Neon-Plattformen und Abgründe, sammle Münzen, erreiche das Ziel. Mit Retro-Sonne + Bloom.</p>
+      <span class="rec" data-best="nj_best" data-suffix="s Bestzeit" data-chip="🏃 Jump · #s"></span>
+      <span class="play">Spielen</span>
+    </a>
+
+    <a class="card" href="/neon-flug.html" style="--c:#5ef2ff">
+      <div class="emo">🚀</div>
+      <span class="tag">3D · Arcade · frisch poliert</span>
+      <h2>Neon-Flug</h2>
+      <p>Flüssiges 3D-Arcade: durch den Neon-Canyon fliegen, ausweichen, Orbs sammeln, Upgrades wählen. Tages-Challenge inklusive.</p>
+      <span class="rec" data-best="aban_neon_best" data-suffix=" Punkte" data-chip="🚀 Flug · # P"></span>
+      <span class="play">Spielen</span>
+    </a>
+
+    <a class="card" href="/neon-racer.html" style="--c:#6affab">
+      <div class="emo">🏎️</div>
+      <span class="tag">3D · Racer · frisch poliert</span>
+      <h2>Neon Racer</h2>
+      <p>Anti-Grav-Rennen im PSP/Wipeout-Stil: folge der kurvigen Neon-Strecke, nimm Boost-Pads mit, weiche Barrieren aus, werde immer schneller. Mit Neon-Glow.</p>
+      <span class="rec" data-best="nr_best" data-suffix=" m" data-chip="🏎️ Racer · # m"></span>
+      <span class="play">Spielen</span>
+    </a>
+
+    <a class="card" href="/neon-survivor.html" style="--c:#5ef2ff">
+      <div class="emo">🛡️</div>
+      <span class="tag">3D · Roguelite · frisch poliert</span>
+      <h2>Neon Survivor</h2>
+      <p>Überlebe die Gegner-Schwärme: bewegen, auto-feuern, XP sammeln, Upgrades &amp; Waffen-Evolutionen wählen, Bosse legen. Vampire-Survivors-Stil mit Meta-Progression.</p>
+      <span class="rec" data-best="ns_best" data-suffix="s überlebt" data-chip="🛡️ Survivor · #s"></span>
+      <span class="play">Spielen</span>
+    </a>
+
     <a class="card" href="/lebenspfad.html" style="--c:#ffcf6e">
       <div class="emo">🎲</div>
       <span class="tag">Brettspiel · 1–4 Spieler · 🌐 ONLINE-KOOP · 🎡 Drehrad</span>
       <h2>Lebenspfad</h2>
       <p>Das riesige Würfel-Brettspiel: <b>272 Ereignisse</b> über 8 Lebenskapitel, Berufswahl, Heirat &amp; Kinder, die dir übers Brett folgen, laufende Charaktere, der Storch, 8 animierte Wahrzeichen — und optional der <b>🔞-Modus, in dem der Tod mitspielt</b>. Am Ende: <b>deine Biografie + Lebenskurven</b>. NEU: <b>🌐 Online-Koop mit Chat</b> — Raum-Code erstellen, Freunde treten vom eigenen Handy bei!</p>
+      <span class="rec" data-best="lp_save1" data-json="round" data-icon="💾" data-prefix="Spielstand: Runde " data-chip="🎲 Lebenspfad · Runde #"></span>
       <span class="play">Leben beginnen</span>
     </a>
+
     <a class="card" href="/neon-duo.html" style="--c:#b98bff">
       <div class="emo">⛓️</div>
       <span class="tag">Koop · 2 Spieler · neu</span>
       <h2>Neon Duo</h2>
       <p>Echtes Koop-Design: <b>Klinge</b> bricht Panzer, <b>Funke</b> trifft Flieger — verbunden durch das <b>Band</b>, das Gegner dazwischen verbrennt. Mit Wiederbeleben, Kombo-Novas und einem Boss, der beide Rollen erzwingt. Zu zweit an einer Tastatur oder solo mit KI-Partnerin.</p>
+      <span class="rec" data-best="nd_best" data-suffix=" Punkte" data-chip="⛓️ Duo · # P"></span>
       <span class="play">Zusammen spielen</span>
     </a>
+
     <a class="card" href="/neon-colossus.html" style="--c:#ff6ec7">
       <div class="emo">🗡️</div>
-      <div class="body">
-        <span class="tag">3D · Boss-Fight · Koop</span>
-        <h2>Neon Colossus</h2>
-        <p>Cinematisches Boss-Duell mit <b>echten 3D-Modellen</b>: spiele einen Sci-Fi-Krieger, weiche telegrafierten Angriffen aus, dashe durch den Kugelhagel und bezwinge drei mehrphasige Kolosse. Mit <b>lokalem 2-Spieler-Koop</b>, Retro-Sonne, Bloom, Zeitlupe-Momenten &amp; eskalierender Musik.</p>
-        <span class="rec" data-best="nc_best" data-suffix=" / 3 Kolosse"></span>
-        <span class="play">Arena betreten</span>
-      </div>
-    </a>
-
-    <a class="card" href="/neon-survivor.html" style="--c:#5ef2ff">
-      <div class="emo">🛡️</div>
-      <span class="tag">3D · Roguelite</span>
-      <h2>Neon Survivor</h2>
-      <p>Überlebe die Gegner-Schwärme: bewegen, auto-feuern, XP sammeln, Upgrades &amp; Waffen-Evolutionen wählen, Bosse legen. Vampire-Survivors-Stil mit Meta-Progression.</p>
-      <span class="rec" data-best="ns_best" data-suffix="s überlebt"></span>
-      <span class="play">Spielen</span>
+      <span class="tag">3D · Boss-Fight · Koop</span>
+      <h2>Neon Colossus</h2>
+      <p>Cinematisches Boss-Duell mit <b>echten 3D-Modellen</b>: spiele einen Sci-Fi-Krieger, weiche telegrafierten Angriffen aus, dashe durch den Kugelhagel und bezwinge drei mehrphasige Kolosse. Mit <b>lokalem 2-Spieler-Koop</b>, Retro-Sonne, Bloom, Zeitlupe-Momenten &amp; eskalierender Musik.</p>
+      <span class="rec" data-best="nc_best" data-suffix=" / 3 Kolosse" data-chip="🗡️ Colossus · #/3"></span>
+      <span class="play">Arena betreten</span>
     </a>
 
     <a class="card" href="/neon-abyss.html" style="--c:#b98bff">
@@ -146,34 +197,7 @@ footer a{color:var(--purple);text-decoration:none}
       <span class="tag">3D · Action-RPG</span>
       <h2>Neon Abyss</h2>
       <p>Diablo-Style-ARPG: Klick zum Laufen, Auto-Angriff, drei Skills (Nova · Blink · Heilen), Loot mit Seltenheitsstufen, Gegner-Wellen &amp; Boss alle fünf Wellen.</p>
-      <span class="rec" data-best="na_best" data-suffix=". Welle"></span>
-      <span class="play">Spielen</span>
-    </a>
-
-    <a class="card" href="/neon-jump.html" style="--c:#ff6ec7">
-      <div class="emo">🏃</div>
-      <span class="tag">3D · Platformer</span>
-      <h2>Neon Jump</h2>
-      <p>Synthwave-Jump-and-Run: renne, spring mit Doppelsprung über Neon-Plattformen und Abgründe, sammle Münzen, erreiche das Ziel. Mit Retro-Sonne + Bloom.</p>
-      <span class="rec" data-best="nj_best" data-suffix="s Bestzeit"></span>
-      <span class="play">Spielen</span>
-    </a>
-
-    <a class="card" href="/neon-racer.html" style="--c:#6affab">
-      <div class="emo">🏎️</div>
-      <span class="tag">3D · Racer</span>
-      <h2>Neon Racer</h2>
-      <p>Anti-Grav-Rennen im PSP/Wipeout-Stil: folge der kurvigen Neon-Strecke, nimm Boost-Pads mit, weiche Barrieren aus, werde immer schneller. Mit Neon-Glow.</p>
-      <span class="rec" data-best="nr_best" data-suffix=" m Rekord"></span>
-      <span class="play">Spielen</span>
-    </a>
-
-    <a class="card" href="/neon-flug.html" style="--c:#5ef2ff">
-      <div class="emo">🚀</div>
-      <span class="tag">3D · Arcade</span>
-      <h2>Neon-Flug</h2>
-      <p>Flüssiges 3D-Arcade: durch den Neon-Canyon fliegen, ausweichen, Orbs sammeln, Upgrades wählen. Tages-Challenge inklusive.</p>
-      <span class="rec" data-best="aban_neon_best" data-suffix=" Punkte"></span>
+      <span class="rec" data-best="na_best" data-suffix=". Welle" data-chip="⚔️ Abyss · Welle #"></span>
       <span class="play">Spielen</span>
     </a>
 
@@ -182,6 +206,7 @@ footer a{color:var(--purple);text-decoration:none}
       <span class="tag">täglich · Rätsel</span>
       <h2>Wort des Tages</h2>
       <p>Errate das geheime 5-Buchstaben-Wort in 6 Versuchen. Neues Rätsel jeden Tag, Ergebnis teilbar.</p>
+      <span class="rec" data-best="aban_wdt_stats" data-json="streak" data-icon="🔥" data-prefix="Serie: " data-suffix=" Tage" data-chip="🔤 Wort · 🔥 #"></span>
       <span class="play">Spielen</span>
     </a>
 
@@ -203,8 +228,58 @@ footer a{color:var(--purple);text-decoration:none}
 
 <footer>© 2026 aban news · <a href="/online-tools.html">Alle Tools</a> · <a href="/ki-themen.html">KI-Ratgeber</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
 
+<script src="/js/arcade.js"></script>
 <script>
-(function(){try{var els=document.querySelectorAll(".rec");for(var i=0;i<els.length;i++){var el=els[i],v=parseInt(localStorage.getItem(el.getAttribute("data-best"))||"0",10)||0;if(v>0){el.textContent="🏆 Rekord: "+v+el.getAttribute("data-suffix");el.className="rec on";}}}catch(e){}})();
+(function(){
+  var GAMES_TOTAL=11;
+  function readBest(key,field){ // defensiv: nutzt AbanArcade, sonst Inline-Fallback
+    if(window.AbanArcade)return AbanArcade.readBest(key,field);
+    try{var raw=localStorage.getItem(key);if(raw==null||raw==="")return 0;
+      var v=field?(JSON.parse(raw)||{})[field]:parseFloat(raw);
+      v=Math.round(Number(v)*10)/10;return (isFinite(v)&&v>0)?v:0;}catch(e){return 0;}
+  }
+  // Karten-Rekorde + Chips für die Gesamt-Leiste
+  var chips=[],withProgress=0,els=document.querySelectorAll(".rec");
+  for(var i=0;i<els.length;i++){var el=els[i];
+    try{
+      var v=readBest(el.getAttribute("data-best"),el.getAttribute("data-json"));
+      if(v>0){
+        withProgress++;
+        el.textContent=(el.getAttribute("data-icon")||"🏆")+" "+(el.getAttribute("data-prefix")||"Rekord: ")+v+(el.getAttribute("data-suffix")||"");
+        el.className="rec on";
+        var c=el.getAttribute("data-chip");if(c)chips.push(c.replace("#",v));
+      }
+    }catch(e){}
+  }
+  // Gesamt-Highscore-Leiste
+  try{
+    var bar=document.getElementById("chips");
+    if(bar){
+      if(chips.length){
+        var t=document.createElement("span");t.className="chip total";
+        t.textContent="🏆 Fortschritt in "+withProgress+" von "+GAMES_TOTAL+" Spielen";bar.appendChild(t);
+        for(var j=0;j<chips.length;j++){var s=document.createElement("span");s.className="chip";s.textContent=chips[j];bar.appendChild(s);}
+      }else{
+        var e0=document.createElement("span");e0.className="chip";
+        e0.textContent="✨ Noch keine Rekorde — such dir unten ein Spiel aus!";bar.appendChild(e0);
+      }
+    }
+  }catch(e){}
+  // Spieler-Profil (gemeinsam für alle Spiele, localStorage "abanArcade")
+  try{
+    var btn=document.getElementById("pName");
+    function paint(){var n=window.AbanArcade?(AbanArcade.profile().name||""):"";
+      btn.textContent=n?("👤 "+n+" · ✎"):"👤 Namen wählen";}
+    if(btn&&window.AbanArcade){
+      paint();
+      btn.addEventListener("click",function(){
+        var cur=AbanArcade.profile().name||"";
+        var n=prompt("Wie sollen wir dich in der Arcade nennen?",cur);
+        if(n!==null){AbanArcade.setName(n);paint();}
+      });
+    }else if(btn){btn.style.display="none";}
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
