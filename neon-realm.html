@@ -713,7 +713,8 @@ function updFx(dt){for(var i=fxs.length-1;i>=0;i--){var f=fxs[i];f.life-=dt;
 // Golem=Ödland (Fels/Berg, Ground-Slam), Panther=Zitadelle (dunkle Pfade, Flanker), Guardian=Verlies-Miniboss.
 // Statische (slime/panther) → 1x laden + clone(true); gerigte (wisp/golem/guardian) → pro Instanz
 // GLTFLoader.parse aus demselben ArrayBuffer (SkinnedMesh-clone-Falle in r128, Muster NPC-Loader).
-var MON={0:{key:"slime",sc:1.8},1:{key:"wisp",sc:2.0},2:{key:"golem",sc:1.15},3:{key:"panther",sc:1.4}};
+var MON={0:{key:"slime",sc:2.3},1:{key:"wisp",sc:2.0},2:{key:"golem",sc:1.15},3:{key:"panther",sc:1.4}}; // Skala ≈ alte Okta-Grösse
+var MONEMIS={golem:0.55,guardian:0.7}; // Meshy-Emissive dämpfen (Basecolor=Emissive-Textur → sonst Bloom-Blowout), Rest 1.0
 var monStatic={},monBuf={};
 (function(){
   if(!THREE.GLTFLoader)return;
@@ -730,7 +731,7 @@ function attachMonster(e,key,sc){ // hängt die GLB-Optik an einen Gegner; ohne 
     var o=monStatic[key].clone(true),mats=[];
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;
       if(n.material){n.material=n.material.clone();mats.push(n.material);}}}); // eigene Materialien → Hit-Flash/Kern-Puls je Instanz
-    o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=1.0;e.mkey=key;
+    o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=MONEMIS[key]||1.0;e.mkey=key;
     if(e.body)e.body.visible=false;
   }else if(monBuf[key]){
     new THREE.GLTFLoader().parse(monBuf[key].slice(0),"",function(g){
@@ -738,7 +739,7 @@ function attachMonster(e,key,sc){ // hängt die GLB-Optik an einen Gegner; ohne 
       var o=g.scene,mats=[];
       o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
         if(n.material)mats.push(n.material);}});
-      o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=1.0;e.mkey=key;
+      o.scale.setScalar(sc);e.g.add(o);e.visual=o;e.mats=mats;e.baseEmis=MONEMIS[key]||1.0;e.mkey=key;
       if(e.body)e.body.visible=false;
       e.rig=makeRig(o,g.animations,true); // local: Mixer wird distanz-gecullt in updEnemies getickt
       setAnim(e.rig,"idle",0);
