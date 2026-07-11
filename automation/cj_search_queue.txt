@@ -229,14 +229,14 @@
 #done search:selfie ring light
 #done search:cable organizer
 #done search:portable fan neck
-search:dog harness vest
-search:cat toy interactive
-search:pet grooming glove
-search:dog collar leather
-search:cat collar bell
-search:pet water fountain
-search:dog bandana
-search:slow feeder bowl
+#done search:dog harness vest
+#done search:cat toy interactive
+#done search:pet grooming glove
+#done search:dog collar leather
+#done search:cat collar bell
+#done search:pet water fountain
+#done search:dog bandana
+#done search:slow feeder bowl
 search:resistance bands set
 search:yoga mat
 search:jump rope speed
