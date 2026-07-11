@@ -215,6 +215,14 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### Survivor: Name + Speicherstand (User 2026-07-11 „name eingabe, mit speicherstand falls mehrere runde") — NÄCHSTER Survivor-Schritt nach Map-Ausbau-Merge (gleiche Datei!)
+- [ ] **Name-Eingabe**: Spielername beim Start (Startscreen-Feld ODER aus abanArcade-Profil
+      js/arcade.js übernehmen — konsistent mit Arcade-Hub + neon-duo), Default vorbelegt.
+- [ ] **Speicherstand für mehrere Runden**: pro Name persistieren (localStorage) — Bestzeit/Best-
+      Welle/Kills, Anzahl gespielter Runden, Gesamt-Stats; am Game-Over „Runde X · Beste: …" +
+      Mini-Bestenliste (Top 3 lokal). Save-kompatibel mit ns_best. Optional: freigeschaltete
+      Startvorteile nach X Runden (klein, nicht pay2win).
+
 ### Survivor-Ausbau (nach Bau-Modus-Merge — User „juhu weiter survivor" 2026-07-11)
 - [ ] **Charakter „mit Liebe"**: liebenswerter Spieler-Look statt Simpel-Shape (Bibo-Muster aus
       neon-jump ODER hero_meshy-Mini), Gesicht/Ausdruck, kleine Idle-Animation.
