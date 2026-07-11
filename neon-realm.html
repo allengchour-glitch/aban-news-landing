@@ -48,7 +48,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .ach.on{border-color:#ffcf6e;color:#ffd166}
 .ach b{display:block;font-size:.92rem}
 #hurt{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 55%,rgba(255,30,60,.5));opacity:0;transition:opacity .25s;z-index:9}
-#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.95rem;color:#b6c0e4;text-shadow:0 1px 6px #000;line-height:1.6;background:rgba(8,10,24,.6);border-radius:10px;padding:6px 10px}
+#keysHelp{position:absolute;bottom:12px;left:12px;font-size:.95rem;color:#b6c0e4;text-shadow:0 1px 6px #000;line-height:1.6;background:rgba(8,10,24,.6);border-radius:10px;padding:6px 10px;max-width:calc(100vw - 320px)} /* Platz für die Skillbar rechts (Kombo/Ladung-Hinweis wurde länger) */
 /* Kontextuelle Tasten-Anzeige („E Reden") — Key-Cap-Badge unten mittig */
 #kprompt{position:absolute;bottom:66px;left:50%;transform:translateX(-50%);display:none;align-items:center;gap:10px;background:rgba(8,10,24,.86);border:1px solid rgba(106,255,171,.5);border-radius:12px;padding:9px 16px;font-size:1.06rem;font-weight:800;color:#dff7ff;text-shadow:0 1px 6px #000;white-space:nowrap;max-width:94vw;overflow:hidden}
 #kprompt .kcap{display:inline-block;min-width:32px;text-align:center;background:linear-gradient(180deg,#2a3160,#141838);border:1px solid #7de3ff;border-bottom-width:3px;border-radius:8px;padding:4px 10px;color:#7de3ff;font-weight:900}
@@ -113,6 +113,10 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 .sk.locked{opacity:.5}
 #lvlBig{position:fixed;top:45%;left:50%;transform:translate(-50%,-50%) scale(.8);font-size:clamp(2rem,6vw,3.2rem);font-weight:900;color:#ffd166;text-shadow:0 4px 24px #000;background:rgba(8,10,24,.88);border:1px solid rgba(255,207,110,.55);border-radius:18px;padding:12px 32px;opacity:0;transition:opacity .25s,transform .25s;z-index:35;pointer-events:none;white-space:nowrap}
 #lvlBig.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+/* Kombo-Zähler (dezent, unter dem Announce): Pop via JS-Transform */
+#comboTag{position:fixed;top:37%;left:50%;transform:translate(-50%,-50%) scale(1);font-size:1.55rem;font-weight:900;letter-spacing:.04em;color:#7de3ff;text-shadow:0 3px 14px #000;opacity:0;transition:opacity .18s,transform .16s ease-out;pointer-events:none;z-index:30}
+#comboTag.on{opacity:1}
+.dnum.big{font-size:27px}
 /* Touch */
 #touchUI{position:fixed;inset:0;z-index:15;pointer-events:none;display:none}
 #joyBase{position:absolute;left:26px;bottom:26px;width:118px;height:118px;border-radius:50%;border:2px solid rgba(125,227,255,.4);background:rgba(10,14,32,.35)}
@@ -133,6 +137,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   #zoneTag{top:106px;left:12px;transform:none;font-size:.95rem;letter-spacing:.14em}
   #clock{top:130px;left:12px;transform:none;font-size:.9rem}
   #quests{font-size:.95rem}
+  #comboTag{top:44%} /* Hochformat: über den Helden statt in die Quest-Box */
 }
 </style>
 </head>
@@ -154,9 +159,10 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div id="hint"></div>
   <div id="kprompt"></div>
   <div id="announce"></div>
-  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff · <b>Q</b> Puls · <b>R/F/C/V</b> Skills · <b>SHIFT</b> Ausweichen · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skill-Menü</div>
+  <div id="keysHelp">WASD bewegen · <b>LEER</b> Angriff (halten = ⚡Ladung) · <b>Q</b> Puls · <b>R/F/C/V</b> Skills · <b>SHIFT</b> Ausweichen · <b>G</b> Spott · <b>E</b> Reden/Nutzen · <b>I</b> Inventar · <b>T</b> Skill-Menü</div>
   <div id="skillbar"></div>
   <div id="lvlBig"></div>
+  <div id="comboTag"></div>
 </div>
 <div id="dmg"></div>
 <div id="achToast"><span id="achTxt">🏆</span><small id="achSub"></small></div>
@@ -192,7 +198,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <div class="kicker">aban news · Open-World-Action-RPG</div>
   <h1>NEON REALM</h1>
   <p>Das Reich ist zerbrochen. Erkunde <b>vier Zonen</b>, erfülle die Quests der Dorfbewohner, sammle <b>Loot mit Seltenheitsstufen</b>, lerne Skills — und wecke am Ende den <b>NEXUS</b>, um das Reich zu einen. Dein Fortschritt wird gespeichert.</p>
-  <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Angriff</span><span><b>Q</b> Puls</span><span><b>R/F/C/V</b> Skills</span><span><b>SHIFT</b> Roll</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
+  <div class="keys"><span><b>WASD</b> laufen</span><span><b>LEER</b> Kombo · halten ⚡</span><span><b>Q</b> Puls</span><span><b>R/F/C/V</b> Skills</span><span><b>SHIFT</b> Roll</span><span><b>G</b> Spott</span><span><b>E</b> Reden</span><span><b>I</b>/<b>T</b> Menüs</span></div>
   <div style="letter-spacing:.3em;font-size:.8rem;color:#a9b8ff;text-transform:uppercase;margin:4px 0 8px">Wähle deinen Helden</div>
   <div id="classRow">
     <button class="ccard" data-cls="held"><span class="ce">⚡</span><b>Held</b><small>Allrounder</small></button>
@@ -584,7 +590,8 @@ var keys={};
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k===" ")e.preventDefault();
   if(!running)return;
-  if(k===" ")doAttack();
+  if(k===" "&&!e.repeat)attackPress(); // Tap=Kombo, Halten ≥0.45s=Ladeschlag (Release in keyup)
+  if(k==="g")doTaunt();
   if(k==="q")doBolt();
   if(k==="r")castSkill("nova");
   if(k==="f")castSkill("chain");
@@ -596,7 +603,8 @@ addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k==="t")togglePanel("skillPanel");
   if(k==="escape"){if(!document.getElementById("invPanel").classList.contains("hide")||!document.getElementById("skillPanel").classList.contains("hide")||dialogOpen){closePanels();closeDialog();}else toggleMenu();}
 });
-addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;if(e.key===" ")attackRelease();});
+addEventListener("blur",function(){attackRelease();}); // Tab-Wechsel während Ladung: sauber abbrechen
 var isTouch=("ontouchstart" in window);
 var joy={active:false,id:null,cx:0,cy:0,x:0,y:0};
 if(isTouch){document.getElementById("touchUI").style.display="block";document.getElementById("keysHelp").style.display="none";
@@ -611,7 +619,12 @@ if(isTouch){document.getElementById("touchUI").style.display="block";document.ge
   function jend(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===joy.id){joy.id=null;joy.active=false;joy.x=0;joy.y=0;jk.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",jend);addEventListener("touchcancel",jend);
   function bindBtn(id,fn){var b=document.getElementById(id);b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});}
-  bindBtn("tAtk",function(){doAttack();});bindBtn("tDodge",function(){doDodge();});bindBtn("tBolt",function(){doBolt();});bindBtn("tAct",function(){doInteract();});
+  // Attack-Button: touchstart=Press (Tap=Kombo), Halten ≥0.45s=Ladeschlag, touchend=Release
+  var _ab=document.getElementById("tAtk");
+  _ab.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();attackPress();},{passive:false});
+  _ab.addEventListener("touchend",function(e){e.preventDefault();e.stopPropagation();attackRelease();},{passive:false});
+  _ab.addEventListener("touchcancel",function(){attackRelease();});
+  bindBtn("tDodge",function(){doDodge();});bindBtn("tBolt",function(){doBolt();});bindBtn("tAct",function(){doInteract();});
   bindBtn("tSkA",function(){castSkill("nova");}); // Nova/Klassen-Signature
   bindBtn("tSkB",function(){if(G&&G.lvl>=9&&skillCD.ult<=0.05)castSkill("ult");else castSkill("chain");}); // Ultimate wenn bereit, sonst Kettenblitz
   document.getElementById("tInv").addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();togglePanel("invPanel");},{passive:false});
@@ -625,10 +638,11 @@ function moveVec(){var x=0,z=0;
 function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2200);}
 function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#7de3ff";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},2400);}
 var dmgLayer=document.getElementById("dmg"),dmgPool=[];
-function dmgNum(v,x,y,z,col){y+=heightAt(x,z);var el=dmgPool.pop()||document.createElement("div");el.className="dnum";el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
+function dmgNum(v,x,y,z,col,big){y+=heightAt(x,z);var el=dmgPool.pop()||document.createElement("div");el.className="dnum"+(big?" big":"");el.textContent=Math.round(v);el.style.color=col||"#bfe9ff";
   var p=new THREE.Vector3(x,y,z).project(camera);if(p.z>1){return;}
-  el.style.left=((p.x+1)/2*W)+"px";el.style.top=((-p.y+1)/2*H)+"px";el.style.transform="translate(-50%,-50%)";el.style.opacity=1;
-  dmgLayer.appendChild(el);requestAnimationFrame(function(){el.style.transform="translate(-50%,-160%) scale(1.15)";el.style.opacity=0;});
+  // Scale-Pop: startet gross (1.4) und schrumpft beim Aufsteigen auf 1.0 (ease-out = schneller Pop am Anfang)
+  el.style.left=((p.x+1)/2*W)+"px";el.style.top=((-p.y+1)/2*H)+"px";el.style.transform="translate(-50%,-50%) scale(1.4)";el.style.opacity=1;
+  dmgLayer.appendChild(el);requestAnimationFrame(function(){el.style.transform="translate(-50%,-160%) scale(1)";el.style.opacity=0;});
   setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);dmgPool.push(el);},720);}
 var hurtEl=document.getElementById("hurt"),hurtT=0;
 function updHUD(){
@@ -874,8 +888,13 @@ function updEnemies(dt){
       if(e.lungeT>0){e.lungeT-=dt;e.visual.position.z=Math.sin(Math.PI*Math.max(0,1-e.lungeT/0.35))*0.9;} // Sprung-Tween vor+zurück
       else e.visual.position.z=0;}
     var _ms=e.mats||((e.body&&e.body.material)?[e.body.material]:[]);
-    for(var _mi=0;_mi<_ms.length;_mi++)_ms[_mi].emissiveIntensity=(e.flash>0)?((e.baseEmis!==undefined?e.baseEmis:1)+1.1):(e.baseEmis!==undefined?e.baseEmis:(e.elite||e.boss?1.3:0.8));
+    for(var _mi=0;_mi<_ms.length;_mi++)_ms[_mi].emissiveIntensity=(e.flash>0)?((e.baseEmis!==undefined?e.baseEmis:1)+1.8):(e.baseEmis!==undefined?e.baseEmis:(e.elite||e.boss?1.3:0.8)); // Treffer = heller Emissive-Spike (~80–120ms, Materialien pro Instanz geklont)
     if(e.flash>0)e.flash-=dt;
+    if(e.kvx||e.kvz){ // Knockback-Impuls (attack3-Slam/Ladeschlag): gedämpft auslaufen, nie durch Dungeon-Wände
+      var _kx=e.g.position.x+e.kvx*dt,_kz=e.g.position.z+e.kvz*dt;
+      if(!inDungeon||isFloor(_kx,_kz)){e.g.position.x=_kx;e.g.position.z=_kz;}
+      var _kd=Math.min(1,dt*6);e.kvx-=e.kvx*_kd;e.kvz-=e.kvz*_kd;
+      if(e.kvx*e.kvx+e.kvz*e.kvz<0.16){e.kvx=0;e.kvz=0;}}
     if(e.stunT>0){e.stunT-=dt; // Bodenschlag-Stun: 1s eingefroren (kein Lauf, kein Angriff)
       e.g.position.y=heightAt(e.g.position.x,e.g.position.z);continue;}
     if(e.state==="patrol"){
@@ -988,10 +1007,47 @@ function updWave(dt){
     showHint("Welle überstehen = Bonus-XP!",2600);camShake=Math.max(camShake,0.3);}
 }
 // ===================== KAMPF (Spieler) =====================
+// --- Game-Feel-Kern: Hit-Stop (dt kurz auf 10%), Zonen-Funken, Knockback-Impuls, Swing-Trails ---
+var hitStop=0; // Sekunden „Freeze" — der Loop zieht Roh-dt ab und lässt die Sim mit 10% weiterlaufen (rAF nie blockiert)
+function knock(e,dx,dz,pow){var d=Math.hypot(dx,dz)||1,s=(e.boss?0.15:1)*pow;e.kvx=(dx/d)*s;e.kvz=(dz/d)*s;} // Impuls, Dämpfung in updEnemies
+function hitSparks(x,z,fb){var zn=zoneAt(x,z);burst(x,1.1,z,zn?zn.c:(fb||0x7de3ff),7,6);} // 6–10 gepoolte Funken in Zonen-Farbe
+// Swing-Trail: kurzlebiger additiver Bogen an der Schlaghand (120ms Fade, gepoolt, Bloom-bewusst opacity ≤0.85)
+var trailGeo=null,trailPool=[],trails=[];
+function swingTrail(col,sc,mirror){
+  if(!trailGeo)trailGeo=new THREE.TorusGeometry(2.1,0.13,6,16,2.2);
+  var m=trailPool.pop()||new THREE.Mesh(trailGeo,new THREE.MeshBasicMaterial({transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false}));
+  m.material.color.setHex(col);m.material.opacity=0.85;
+  var fx2=Math.sin(player.rotation.y),fz2=Math.cos(player.rotation.y);
+  m.position.set(player.position.x+fx2*1.2,player.position.y+1.25,player.position.z+fz2*1.2);
+  m.rotation.set(-Math.PI/2,0,-player.rotation.y+Math.PI/2-1.1+(mirror?Math.PI:0)); // Stufe 2 (Uppercut) spiegelt den Bogen
+  m.scale.setScalar(sc||1);scene.add(m);
+  trails.push({m:m,life:0.12,sc:sc||1});
+}
+// --- Kombo-Kette (nur Held-GLB hero_meshy_combat2 mit attack2/attack3; Klassen-GLBs behalten den Einzel-attack) ---
+// Space im ~0.9s-Fenster nach dem letzten Schlag = nächste Stufe: attack → attack2 (+15%) → attack3-Slam (+35% + AoE) → reset.
+// Alle Stufen teilen den Grund-CD 0.42s — Balance bleibt, nur Multiplikatoren oben drauf.
+var comboStage=0,comboWinT=0,COMBO_WIN=0.9,COMBO_MUL=[1,1.15,1.35],COMBO_COL=[0x7de3ff,0xff6ec7,0xffd166];
+function hasCombo(){return !!(heroRig&&heroRig.actions.attack2&&heroRig.actions.attack3);}
+var comboEl=document.getElementById("comboTag");
+function comboShow(st){comboEl.textContent=st===2?"3x!":"2x";comboEl.style.color=st===2?"#ffd166":"#7de3ff";
+  comboEl.classList.add("on");comboEl.style.transform="translate(-50%,-50%) scale("+(st===2?1.7:1.45)+")";
+  requestAnimationFrame(function(){comboEl.style.transform="translate(-50%,-50%) scale(1)";});}
+function resetCombo(){comboStage=0;comboWinT=0;comboEl.classList.remove("on");}
+// --- Ladeschlag-/Dash-Zustand (Deklaration vor doAttack, damit die Guards greifen) ---
+var holdT=-1,charging=false,chargeT=0,chargeRing=null,chargeSpark=0,relT=0,relFade=0,relFrac=0;
+var CH_C1=new THREE.Color(0x7de3ff),CH_C2=new THREE.Color(0xff6ec7);
+var dashA=null,dashSeq=0,slamT=0;
 function doAttack(){
-  if(atkCD>0||!running)return;atkCD=0.42;
-  heroPlay("attack"); // ~1.13s Hieb (timeScale aus Clip-Dauer, klassen-sicher); Spam resettet den Schwung (CD 0.42s bleibt Gameplay-Wahrheit)
-  beep(760,.05,"square",.035);
+  if(atkCD>0||!running||charging)return;atkCD=0.42;
+  var st=0;
+  if(hasCombo()){
+    st=(comboWinT>0)?comboStage:0;
+    comboStage=(st+1)%3;comboWinT=COMBO_WIN; // Treffer-Fenster ~0.9s für die nächste Stufe
+  }
+  if(st===1){playOnce(heroRig,"attack2",1.6,0.08);comboShow(1);} // Uppercut: 1.04s-Clip, Impact ~0.26s real
+  else if(st===2){playOnce(heroRig,"attack3",1.5,0.08,0.9);slamT=0.93;comboShow(2);} // Ground-Slam: Start 0.9s, Impact äquiv. ~2.3s → 0.93s real
+  else{heroPlay("attack");comboEl.classList.remove("on");} // ~1.13s Hieb (timeScale 2.5 aus Clip-Dauer, klassen-sicher)
+  beep(st===2?520:(st===1?880:760),.05,"square",.035);
   // Auto-Face: nächsten Gegner in Reichweite anvisieren (ARPG-QoL — Hiebe whiffen nicht im Stand)
   var nb=null,nd=6.5;
   for(var ni=0;ni<enemies.length;ni++){var en2=enemies[ni];if(!en2.active)continue;
@@ -1001,28 +1057,134 @@ function doAttack(){
     if(sdd<nd){nd=sdd;nb=seraph;}}
   if(nb)player.rotation.y=Math.atan2(nb.g.position.x-player.position.x,nb.g.position.z-player.position.z);
   var fx2=Math.sin(player.rotation.y),fz2=Math.cos(player.rotation.y);
-  // Schwungbogen-FX
-  var arc=new THREE.Mesh(new THREE.TorusGeometry(2.1,0.13,6,16,2.2),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthWrite:false}));
-  arc.position.set(player.position.x+fx2*1.2,player.position.y+1.2,player.position.z+fz2*1.2);
-  arc.rotation.x=-Math.PI/2;arc.rotation.z=-player.rotation.y+Math.PI/2-1.1;scene.add(arc);
-  setTimeout(function(){scene.remove(arc);arc.material.dispose();arc.geometry.dispose();},130);
+  swingTrail(COMBO_COL[st],1+st*0.14,st===1); // Schwungbogen in Stufen-Farbe (cyan/magenta/gold)
   var hit=false;
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
     var dx=e.g.position.x-player.position.x,dz=e.g.position.z-player.position.z,d=Math.hypot(dx,dz);
     if(d<3.4+e.r){var dot=(dx*fx2+dz*fz2)/(d||1);
-      if(dot>0.15||d<1.6){var dmg=playerAtk()*(0.9+Math.random()*0.25),crit=Math.random()<0.1;if(crit)dmg*=1.8;
-        e.hp-=dmg;e.flash=0.08;hit=true;
-        dmgNum(dmg,e.g.position.x,2.2,e.g.position.z,crit?"#ffd166":"#bfe9ff");
+      if(dot>0.15||d<1.6){var dmg=playerAtk()*(0.9+Math.random()*0.25)*COMBO_MUL[st],crit=Math.random()<0.1;if(crit)dmg*=1.8;
+        e.hp-=dmg;e.flash=0.1;hit=true;
+        dmgNum(dmg,e.g.position.x,2.2,e.g.position.z,(crit||st===2)?"#ffd166":"#bfe9ff",crit||st===2);
+        hitSparks(e.g.position.x,e.g.position.z,COMBO_COL[st]);
         var kb=e.boss?0.2:1.4;e.g.position.x+=fx2*kb*0.4;e.g.position.z+=fz2*kb*0.4;
         if(e.hp<=0)killEnemy(e,i);}}}
   if(seraph){var sdx=seraph.g.position.x-player.position.x,sdz=seraph.g.position.z-player.position.z,sd=Math.hypot(sdx,sdz);
     if(sd<3.4+3){var sdot=(sdx*fx2+sdz*fz2)/(sd||1);
-      if(sdot>0.1||sd<2){var sdmg=playerAtk()*(0.9+Math.random()*0.25);seraph.hp-=sdmg;hit=true;
+      if(sdot>0.1||sd<2){var sdmg=playerAtk()*(0.9+Math.random()*0.25)*COMBO_MUL[st];seraph.hp-=sdmg;hit=true;
         for(var _si=0;_si<seraph.mats.length;_si++)seraph.mats[_si].emissiveIntensity=1.6;
         setTimeout(function(){if(seraph)for(var _sj=0;_sj<seraph.mats.length;_sj++)seraph.mats[_sj].emissiveIntensity=0.4;},90);
-        dmgNum(sdmg,seraph.g.position.x,4,seraph.g.position.z,"#ffd166");
+        dmgNum(sdmg,seraph.g.position.x,4,seraph.g.position.z,"#ffd166",st===2);
         if(seraph.hp<=0)killSeraph();}}}
-  if(hit){camShake=Math.max(camShake,0.12);beep(300,.05,"square",.045);}
+  if(hit){camShake=Math.max(camShake,0.12);hitStop=Math.max(hitStop,0.06);beep(300,.05,"square",.045);}
+}
+// attack3-Bodenschlag: kleine AoE beim Impact (slamT zählt in updCombat runter)
+function doSlamImpact(){
+  if(!running)return;
+  var px=player.position.x,pz=player.position.z;
+  novaRing(px,player.position.y,pz,6,0xffd166);burst(px,0.7,pz,0xffd166,14,7);
+  camShake=Math.max(camShake,0.55);hitStop=Math.max(hitStop,0.09);beep(110,.2,"sawtooth",.07);
+  var dmg=playerAtk()*1.1;
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var dx=e.g.position.x-px,dz=e.g.position.z-pz,d=Math.hypot(dx,dz);
+    if(d<4.5+e.r){e.hp-=dmg;e.flash=0.12;knock(e,dx,dz,15); // sichtbarer Wegstoss, Gameplay-Radius klein (4.5)
+      dmgNum(dmg,e.g.position.x,2.4,e.g.position.z,"#ffd166",true);
+      hitSparks(e.g.position.x,e.g.position.z,0xffd166);
+      if(e.hp<=0)killEnemy(e,i);}}
+}
+// --- Ladeschlag: Space/⚔ gedrückt halten ≥0.45s → charge-Loop + wachsender Glow-Ring; loslassen → Kegel-Stoss.
+// Tap bleibt knackig: der erste Hieb feuert SOFORT beim Drücken, die Ladung beginnt erst ab 0.45s Haltezeit.
+function attackPress(){
+  if(!running)return;
+  if(dodgeCD>0.62&&heroRig&&heroRig.actions.dash_attack&&!dashA){startDash();return;} // Space in der Rolle = Dash-Attacke
+  doAttack();
+  if(hasCombo()&&heroRig.actions.charge&&heroRig.actions.charge_release)holdT=0; // ab jetzt Haltezeit messen
+}
+function attackRelease(){
+  holdT=-1;
+  if(!charging)return;
+  charging=false;if(chargeRing)chargeRing.visible=false;
+  if(running)doChargeRelease();
+  else if(heroRig&&heroRig.cur==="charge")setAnim(heroRig,"idle",0.2);
+}
+function startCharge(){
+  charging=true;chargeT=0;chargeSpark=0;resetCombo();
+  setAnim(heroRig,"charge",0.18); // loopbarer Clip, Posen nahtlos
+  if(!chargeRing){chargeRing=new THREE.Mesh(new THREE.TorusGeometry(1.5,0.14,8,28),
+    new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.4,blending:THREE.AdditiveBlending,depthWrite:false}));
+    chargeRing.rotation.x=-Math.PI/2;chargeRing.position.y=0.35;player.add(chargeRing);}
+  chargeRing.visible=true;chargeRing.scale.setScalar(0.6);
+  beep(330,.14,"triangle",.045);
+}
+function doChargeRelease(){
+  relFrac=Math.min(1,chargeT/2.5); // Schaden ∝ Ladezeit, max bei 2.5s
+  playOnce(heroRig,"charge_release",1.4,0.08,1.2); // Start 1.2s, Blast 1.6–2.1s → ~0.29s real, ts 1.4
+  relT=0.28;relFade=1.0; // Blast-Timing; Clip ab äquiv. ~2.6s ausblenden (1.0s real)
+  var nb=null,nd=11; // Auto-Face auf den nächsten Gegner
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var d=Math.hypot(e.g.position.x-player.position.x,e.g.position.z-player.position.z);if(d<nd){nd=d;nb=e;}}
+  if(nb)player.rotation.y=Math.atan2(nb.g.position.x-player.position.x,nb.g.position.z-player.position.z);
+  beep(200,.18,"sawtooth",.06);
+}
+function doChargeBlast(){ // Energie-Stoss nach vorn (Kegel), Schaden 1×–3× Grundschaden
+  if(!running)return;
+  var px=player.position.x,pz=player.position.z,fx2=Math.sin(player.rotation.y),fz2=Math.cos(player.rotation.y);
+  novaRing(px,player.position.y,pz,9,0xff6ec7);
+  for(var s=1;s<=3;s++)burst(px+fx2*s*2.8,1.0,pz+fz2*s*2.8,relFrac>0.6?0xff6ec7:0x7de3ff,7,6);
+  camShake=Math.max(camShake,0.6);hitStop=Math.max(hitStop,0.09);beep(90,.3,"sawtooth",.08);
+  var dmg=playerAtk()*(1+2*relFrac);
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active)continue;
+    var dx=e.g.position.x-px,dz=e.g.position.z-pz,d=Math.hypot(dx,dz);
+    if(d<10+e.r){var dot=(dx*fx2+dz*fz2)/(d||1);
+      if(dot>0.45||d<2.2){e.hp-=dmg;e.flash=0.12;knock(e,dx,dz,8+16*relFrac);
+        dmgNum(dmg,e.g.position.x,2.4,e.g.position.z,"#ffd166",true);
+        hitSparks(e.g.position.x,e.g.position.z,0xff6ec7);
+        if(e.hp<=0)killEnemy(e,i);}}}
+  if(seraph){var sdx=seraph.g.position.x-px,sdz=seraph.g.position.z-pz,sd=Math.hypot(sdx,sdz);
+    if(sd<13&&((sdx*fx2+sdz*fz2)/(sd||1)>0.45||sd<2.2)){seraph.hp-=dmg;
+      dmgNum(dmg,seraph.g.position.x,4,seraph.g.position.z,"#ffd166",true);if(seraph.hp<=0)killSeraph();}}
+}
+// --- Dash-Attacke: Space während der Ausweichrolle → dash_attack + Vorwärts-Schub (Fenster in updCombat) ---
+function startDash(){
+  dodgeT=0;atkCD=Math.max(atkCD,0.5);resetCombo();
+  dashA={t:0,id:++dashSeq,dx:dodgeDir.x,dz:dodgeDir.z};
+  player.rotation.y=Math.atan2(dashA.dx,dashA.dz);
+  playOnce(heroRig,"dash_attack",1.2,0.08); // 1.67s-Clip bei ts 1.2: Schub 0.25–1.0s, Treffer 0.45–1.0s real
+  iframe=Math.max(iframe,0.25);swingTrail(0x7de3ff,1.1);beep(540,.08,"square",.05);
+}
+// Taunt (Taste G): gibt nix, macht Spass — nur der Held hat den Clip, Klassen still übersprungen
+function doTaunt(){
+  if(!running||!heroRig||charging||dashA)return;
+  if(!heroRig.actions.taunt)return;
+  playOnce(heroRig,"taunt",1.5,0.2);beep(660,.12,"triangle",.05);
+}
+// Pro-Frame: Kombo-Fenster, Ladung (Ring cyan→magenta), Slam/Blast-Timer, Dash-Schub+Treffer, Trail-Fade
+function updCombat(dt){
+  if(comboWinT>0){comboWinT-=dt;if(comboWinT<=0)resetCombo();}
+  if(holdT>=0){holdT+=dt;if(!charging&&holdT>=0.45)startCharge();}
+  if(charging){chargeT=Math.min(2.6,chargeT+dt);var f=Math.min(1,chargeT/2.5);
+    chargeRing.scale.setScalar(0.6+f*1.15+Math.sin(G.t*10)*0.05);
+    chargeRing.material.color.copy(CH_C1).lerp(CH_C2,f);
+    chargeRing.material.opacity=0.32+f*0.42;
+    chargeSpark-=dt;if(chargeSpark<=0){chargeSpark=0.16;burst(player.position.x,0.7,player.position.z,f>0.7?0xff6ec7:0x7de3ff,2,2.5);}}
+  if(slamT>0){slamT-=dt;if(slamT<=0)doSlamImpact();}
+  if(relT>0){relT-=dt;if(relT<=0)doChargeBlast();}
+  if(relFade>0){relFade-=dt;if(relFade<=0&&heroRig&&heroRig.cur==="charge_release")setAnim(heroRig,"idle",0.25);}
+  if(dashA){dashA.t+=dt;
+    if(dashA.t>0.25&&dashA.t<1.0){var nx=player.position.x+dashA.dx*13*dt,nz=player.position.z+dashA.dz*13*dt;
+      if(!inDungeon||isFloor(nx,nz)){player.position.x=nx;player.position.z=nz;}}
+    if(dashA.t>0.45&&dashA.t<1.0){
+      for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e._dashId===dashA.id)continue;
+        var dx=e.g.position.x-player.position.x,dz=e.g.position.z-player.position.z;
+        if(Math.hypot(dx,dz)<2.6+e.r){e._dashId=dashA.id;
+          var ddm=playerAtk()*1.2;e.hp-=ddm;e.flash=0.1;knock(e,dx,dz,6);
+          dmgNum(ddm,e.g.position.x,2.2,e.g.position.z,"#bfe9ff");
+          hitSparks(e.g.position.x,e.g.position.z,0x7de3ff);
+          camShake=Math.max(camShake,0.12);hitStop=Math.max(hitStop,0.06);
+          if(e.hp<=0)killEnemy(e,i);}}}
+    if(dashA.t>=1.05)dashA=null;}
+  for(var ti=trails.length-1;ti>=0;ti--){var tr=trails[ti];tr.life-=dt;
+    if(tr.life<=0){scene.remove(tr.m);if(trailPool.length<8)trailPool.push(tr.m);else tr.m.material.dispose();trails.splice(ti,1);continue;}
+    var k2=tr.life/0.12;tr.m.material.opacity=0.85*k2;tr.m.scale.setScalar(tr.sc*(1+(1-k2)*0.25));}
 }
 function doBolt(){
   if(boltCD>0||!running)return;
@@ -1285,12 +1447,14 @@ npcs.forEach(function(np){
 var rigs=[],heroRig=null;
 // One-Shot-Clips: LoopOnce + clampWhenFinished, danach Crossfade zurück zu idle
 // (die Bewegungs-Logik im Loop wechselt im nächsten Frame ggf. sofort auf walk).
-var ONESHOT={wave:1,attack:1,cast:1,dodge:1,hit:1,victory:1};
+var ONESHOT={wave:1,attack:1,attack2:1,attack3:1,charge_release:1,dash_attack:1,taunt:1,cast:1,dodge:1,hit:1,victory:1}; // charge fehlt bewusst: loopt (LoopRepeat)
 function makeRig(o,anims,local){var r={mixer:new THREE.AnimationMixer(o),actions:{},cur:null};
   for(var i=0;i<anims.length;i++){var a=r.mixer.clipAction(anims[i]);
     if(ONESHOT[anims[i].name]){a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=true;}
     r.actions[anims[i].name]=a;}
   r.mixer.addEventListener("finished",function(e){ // One-Shot vorbei → sauber zurück zu idle
+    var curA=r.cur?r.actions[r.cur]:null;
+    if(e.action!==curA)return; // älterer One-Shot lief unter einem Crossfade aus (z. B. attack unter charge) → Zustand nicht stören
     var a=r.actions.idle;if(!a){r.cur=null;return;}
     r.cur="idle";a.reset();a.timeScale=1;a.play();
     if(e.action&&e.action!==a)e.action.crossFadeTo(a,0.2,false);});
@@ -1301,15 +1465,17 @@ function setAnim(r,name,fade,ts){if(!r)return;var a=r.actions[name];if(!a)return
   a.reset();if(ts!==undefined)a.timeScale=ts;a.play();
   if(prev)prev.crossFadeTo(a,fade||0.25,false);}
 // One-Shot abspielen — startet auch neu, wenn derselbe Clip schon läuft (Angriffs-Spam)
-function playOnce(r,name,ts,fade){if(!r)return;var a=r.actions[name];if(!a)return;
+// startAt: optionaler Einstiegs-Zeitpunkt im Clip (attack3 ab 0.9s, charge_release ab 1.2s)
+function playOnce(r,name,ts,fade,startAt){if(!r)return;var a=r.actions[name];if(!a)return;
   var prev=(r.cur&&r.cur!==name)?r.actions[r.cur]:null;r.cur=name;
-  a.reset();a.timeScale=ts||1;a.play();
+  a.reset();a.timeScale=ts||1;if(startAt)a.time=startAt;a.play();
   if(prev)prev.crossFadeTo(a,fade||0.12,false);else a.setEffectiveWeight(1);}
 // ===== Klassenwahl: Spieler-GLB nach gewählter Klasse (localStorage nr_class, Default Held) =====
-// held = hero_meshy_combat.glb (9 Clips inkl. cast/dodge/hit/victory); die 3 Klassen haben nur
-// idle/walk/run/attack → heroPlay() fällt defensiv zurück (cast→attack, dodge→run, Rest still).
+// held = hero_meshy_combat2.glb (15 Clips inkl. attack2/attack3/charge/charge_release/dash_attack/taunt
+// — Kombo-System nur hier); die 3 Klassen haben nur idle/walk/run/attack → heroPlay() fällt defensiv
+// zurück (cast→attack, dodge→run, Rest still) und hasCombo()=false hält sie beim Einzelhieb.
 var CLASSDEFS={
-  held:{f:"hero_meshy_combat.glb",meshy:true},
+  held:{f:"hero_meshy_combat2.glb",meshy:true},
   magier:{f:"class_mage.glb"},
   waldlaeufer:{f:"class_ranger.glb"},
   titan:{f:"class_titan.glb"}
@@ -1769,12 +1935,14 @@ var running=false,last=performance.now(),saveT=0,vx=0,vz=0;
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(hitStop>0){hitStop-=dt;dt*=0.1;} // Hit-Stop: 60–90ms „Freeze" — Sim-Zeit auf 10%, rAF läuft normal weiter
   if(!G){renderFinal();return;}
   var dayA=updDayNight(G.t);
   if(running&&!paused){
     G.t+=dt;
     // Bewegung (Velocity-Glättung wie Colossus)
     var mv=moveVec(),spd=G.spd*(1+G.skills.tempo*0.08)*clsMul("spd"); // Waldläufer +10%
+    if(charging)spd*=0.55; // Ladeschlag: fokussiert, langsameres Gehen
     if(dodgeT>0){dodgeT-=dt;player.position.x+=dodgeDir.x*34*dt;player.position.z+=dodgeDir.z*34*dt;burst(player.position.x,0.6,player.position.z,0x7de3ff,2,1.2);}
     else{var l=Math.hypot(mv.x,mv.z)||1,mvx=(Math.abs(mv.x)+Math.abs(mv.z)>0.05)?1:0;
       var tvx=(mv.x/l)*spd*mvx,tvz=(mv.z/l)*spd*mvx,k=Math.min(1,dt*(mvx?11:8));
@@ -1790,7 +1958,7 @@ function loop(now){
     player.position.y=heightAt(player.position.x,player.position.z);
     // Held-Animation: GLB-Clips idle/walk via AnimationMixer, Walk-Tempo an Speed gekoppelt (+ Staub-Schritte)
     var _spd2=Math.hypot(vx,vz);if(dodgeT>0)_spd2=20;
-    if(heroRig&&!ONESHOT[heroRig.cur]){ // One-Shots (attack/cast/dodge/hit/victory) laufen aus, dann übernimmt Bewegung
+    if(heroRig&&!ONESHOT[heroRig.cur]&&!charging){ // One-Shots + charge-Loop laufen aus/weiter, dann übernimmt Bewegung
       if(_spd2>2)setAnim(heroRig,"walk",0.25,Math.max(0.8,Math.min(1.4,_spd2/9)));
       else setAnim(heroRig,"idle",0.3);}
     stepT-=dt;if(_spd2>6&&stepT<=0){stepT=0.26;burst(player.position.x,0.25,player.position.z,0x6f86c8,2,1.6);}
@@ -1807,6 +1975,7 @@ function loop(now){
     G.en=Math.min(playerMaxEn(),G.en+dt*(2.2+G.skills.fokus*0.9));
     if(iframe>0)iframe-=dt;
     if(atkCD>0)atkCD-=dt;if(boltCD>0)boltCD-=dt;if(dodgeCD>0)dodgeCD-=dt;
+    updCombat(dt); // Kombo-Fenster/Ladung/Slam/Blast/Dash/Trails
     // Zone anzeigen
     var zn=zoneAt(player.position.x,player.position.z);
     var zt=document.getElementById("zoneTag");
@@ -1857,7 +2026,7 @@ function toggleMenu(){if(!G)return;paused=!paused;try{if(paused)MUS.pause();else
 document.getElementById("menuBtn").onclick=toggleMenu;
 document.getElementById("resumeBtn2").onclick=toggleMenu;
 document.getElementById("rulesBtn2").onclick=function(){toggleMenu();
-  showHint("WASD laufen · LEER Angriff · Q Puls · SHIFT Rolle · E reden/nutzen · I Inventar · T Skills — folge den Aufgaben rechts oben!",6000);};
+  showHint("WASD laufen · LEER Angriff (3x-Kombo, halten = Ladeschlag, in der Rolle = Dash!) · Q Puls · SHIFT Rolle · G Spott · E reden/nutzen · I Inventar · T Skills",6000);};
 document.getElementById("startBtn").onclick=begin;
 // Klassen-Karten: Wahl optional — Held/letzte Wahl ist vorgewählt, „Reich betreten" startet immer sofort
 (function(){var cards=document.querySelectorAll("#classRow .ccard");

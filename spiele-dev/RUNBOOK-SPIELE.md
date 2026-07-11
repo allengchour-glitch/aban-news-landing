@@ -215,6 +215,36 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 7 — Lebenspfad wie Plato-App, „mach einfach alles besser")
+- [ ] **Detail-Animationen**: Figuren hüpfen/laufen sichtbar von Feld zu Feld (Bounce mit Squash),
+      3D-Würfel rollt echt, Jubel-/Trauer-Animation je nach Feld, Geld-Regen bei Gewinn,
+      Karten flippen beim Aufdecken.
+- [ ] **Mehr als Würfeln**: interaktive Stations-Events (Mini-Entscheidungen mit Timer,
+      Glücksrad existiert — mehr Abwechslung: Quiz-Karte, Tausch-Event, Wettrennen-Feld).
+- [ ] **Smiley-Fast-Chat** (wie neon-duo): 6 kindersichere Emotes als Sprechblasen — auch lokal.
+- [ ] **Wie Plato-App**: Lebenspfad ONLINE spielbar machen via js/mp.js (Raum-Codes, 2 Spieler,
+      Host-autoritativ Würfel/Karten; Lobby wie neon-duo) — Lebenspfad = 2. mp.js-Spiel.
+- [ ] **Frau/Mann-Auswahl**: Charakterwahl beim Start (Frau/Mann + Hautton/Frisur/Accessoire,
+      kombinierbar mit „jeder Charakter einzigartig" aus Runde 6).
+- [ ] **Romantik-Feature (familienfreundlich — NICHT explizit, Entscheid 2026-07-11):** Heiraten
+      an Kirchen-Station (Hochzeits-Animation: Herzen/Konfetti/💋), Partner-Figur, Kinder die
+      im Auto mitfahren — klassisches Spiel-des-Lebens-Feature. Explizite Sex-Animationen sind
+      abgelehnt (öffentliche, familienfreundliche Site — gilt dauerhaft).
+
+### User-Feedback 2026-07-11 (Runde 6 — Multiplayer-Zusatz + Lebenspfad-Ausbau)
+- [ ] **Multiplayer-Zusatzfeature** (neon-duo online): Quick-Chat/Emotes (vorgefertigte kinder-
+      sichere Nachrichten + Emoji-Reaktionen über den Figuren, KEIN Freitext), Spielernamen aus
+      abanArcade-Profil über den Figuren, Rematch-Button am Game-Over (beide bestätigen → neuer Run).
+- [ ] **Lebenspfad: mehrere Wege** — Weggabelungen à la Spiel des Lebens (z.B. Studium-Route vs.
+      Abenteuer-Route: länger/sicher vs. kurz/riskant), Wahl-UI am Gabelungs-Feld (2 grosse Buttons).
+- [ ] **Lebenspfad: mehr Entscheidungen** — mehr Wahl-Karten an Stationen (Job/Haus/Hobby …),
+      Konsequenzen sichtbar (Geld/Herzen/Wissen-Deltas).
+- [ ] **Lebenspfad: Besitz-Anzeige** — Panel/Icons „was habe ich": Auto, Haus, Haustier, Job …
+      (antippbar für Details); **wenn Auto gekauft → Spielfigur FÄHRT im Fahrzeug** (Figur sitzt
+      in Low-Poly-Auto, Räder drehen beim Ziehen).
+- [ ] **Lebenspfad: jeder Charakter einzigartig** — Rot/Blau (+KI) bekommen individuelle Figuren
+      (Frisur/Hut/Accessoire/Farbe, nicht nur Umfärbung), Wahl beim Start.
+
 ### User-Feedback 2026-07-11 (Runde 5 — „attacken mehr polish, noch mehr attacken")
 - [ ] **Mehr Attacken** (Meshy-Bibliothek auf Rigging-Task 019f4e41-…, ~3 Cr/Clip):
       3-Hit-Kombo (Space-Kette mit Timing-Fenster: attack→attack2→attack3), Charge-Attacke
