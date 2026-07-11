@@ -253,14 +253,14 @@
 #done search:bodysuit women
 #done search:crop top ribbed
 #done search:pleated skirt
-search:denim jacket oversized
-search:trench coat women
-search:blazer women
-search:lounge set women
-search:silk scarf
-search:mens leather bracelet
-search:mens signet ring
-search:mens beanie
+#done search:denim jacket oversized
+#done search:trench coat women
+#done search:blazer women
+#done search:lounge set women
+#done search:silk scarf
+#done search:mens leather bracelet
+#done search:mens signet ring
+#done search:mens beanie
 search:mens crossbody bag
 search:mens wallet slim
 search:mens sunglasses polarized
