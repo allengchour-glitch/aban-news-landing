@@ -735,24 +735,76 @@ function updConfs(dt){for(var i=confs.length-1;i>=0;i--){var c=confs[i];c.life-=
   c.vy-=(c.heart?1.2:5.5)*dt;c.m.position.x+=c.vx*dt;c.m.position.y=Math.max(0.1,c.m.position.y+c.vy*dt);c.m.position.z+=c.vz*dt;
   if(!c.heart){c.m.rotation.x+=c.rx*dt;c.m.rotation.z+=c.rz*dt;}
   if(c.m.material.opacity!==undefined)c.m.material.opacity=Math.min(1,c.life);}}
-// Jahreszeiten-Partikel: Pollen (Frühling) / Blätter (Herbst) / Blüten (Winterpastell)
+// ===== Jahreszeiten-Metapher: die Welt altert mit dem Lebensweg =====
+// Frühling (Kindheit/Schule) → Sommer (Ausbildung/Karriere) → Herbst (Familie/Reife) → Winter (Lebensabend)
+function seasonOf(ch){return ch<=1?"spring":(ch<=4?"summer":(ch<=6?"autumn":"winter"));}
+var _seasonNow="spring";
+// weiche, längliche „Blütenblatt/Blatt"-Textur (Radial-Gradient -> keine Klötzchen, Runbook-Falle)
+var _ovalTex=null;
+function ovalTex(){if(_ovalTex)return _ovalTex;var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  c.translate(32,32);c.rotate(0.7);c.scale(1,0.5);var g=c.createRadialGradient(0,0,1,0,0,30);
+  g.addColorStop(0,"rgba(255,255,255,0.98)");g.addColorStop(0.55,"rgba(255,255,255,0.72)");g.addColorStop(1,"rgba(255,255,255,0)");
+  c.fillStyle=g;c.beginPath();c.arc(0,0,30,0,6.283);c.fill();_ovalTex=new THREE.CanvasTexture(cv);return _ovalTex;}
+var _dotTex=softDotTex();
+// Pro Jahreszeit: [FarbeHex, Textur(0=Punkt/1=Oval), Fallrichtung(+ab/-auf), Fallspeed, Seitwärts-Wehen, Grösse]
+var SEASON_CFG={
+  spring:[0xffd7ea,1, 1,0.7,1.4,0.55], // Blütenblätter rieseln sanft, wehen viel
+  summer:[0xfff2a8,0,-1,0.45,0.4,0.42], // warme Pollen-/Lichtflocken schweben auf
+  autumn:[0xe0842e,1, 1,1.5,1.6,0.62], // Laub fällt zügiger, taumelt
+  winter:[0xffffff,0, 1,0.55,0.7,0.5]}; // Schnee rieselt langsam, driftet
 var SEASON_N=IS_COARSE?80:130,seasonGeo=new THREE.BufferGeometry(),seasonPos=new Float32Array(SEASON_N*3),seasonV=[];
 for(var si=0;si<SEASON_N;si++){seasonPos[si*3]=0;seasonPos[si*3+1]=Math.random()*14;seasonPos[si*3+2]=0;seasonV.push([Math.random()*0.6-0.3,0.5+Math.random(),Math.random()*0.6-0.3]);}
 seasonGeo.setAttribute("position",new THREE.BufferAttribute(seasonPos,3));
-var seasonMat=new THREE.PointsMaterial({color:0xfff0a0,size:0.5,map:softDotTex(),transparent:true,opacity:0.85,depthWrite:false});
+var seasonMat=new THREE.PointsMaterial({color:0xfff2a8,size:0.5,map:_dotTex,transparent:true,opacity:0.85,depthWrite:false});
 var seasonPts=new THREE.Points(seasonGeo,seasonMat);scene.add(seasonPts);
-function updSeason(dt,ch){seasonPts.visible=OPT.motion;if(!OPT.motion)return;
-  var mode=ch>=7?"blueten":(ch>=5?"blaetter":"pollen");
-  seasonMat.color.setHex(mode==="blueten"?0xffd8ec:(mode==="blaetter"?0xe08a3a:0xfff0a0));
-  var pa=seasonGeo.attributes.position.array;
+var _seasCol=new THREE.Color(0xfff2a8),_seasSunTgt=new THREE.Color();
+// dezente jahreszeitliche Licht-Tönung (Lesbarkeit bleibt — sehr sanfter Lerp)
+var SEASON_SUN={spring:0xfff0dc,summer:0xfff2d0,autumn:0xffe0b0,winter:0xeaf0ff};
+function updSeason(dt,ch){seasonPts.visible=OPT.motion;
+  var s=seasonOf(ch);_seasonNow=s;
+  if(sunL){_seasSunTgt.setHex(SEASON_SUN[s]);sunL.color.lerp(_seasSunTgt,Math.min(1,dt*0.6));}
+  if(!OPT.motion)return;
+  var cfg=SEASON_CFG[s];
+  seasonMat.color.lerp(_seasCol.setHex(cfg[0]),Math.min(1,dt*1.6)); // weicher Farb-Übergang beim Kapitelwechsel
+  seasonMat.size+=(cfg[5]-seasonMat.size)*Math.min(1,dt*1.6);
+  var wantMap=cfg[1]?ovalTex():_dotTex;
+  if(seasonMat.map!==wantMap){seasonMat.map=wantMap;seasonMat.needsUpdate=true;}
+  var pa=seasonGeo.attributes.position.array,tnow=performance.now()*0.001;
   for(var i=0;i<SEASON_N;i++){var v=seasonV[i];
-    if(mode==="pollen"){pa[i*3+1]+=v[1]*0.4*dt;}else{pa[i*3+1]-=v[1]*(mode==="blaetter"?1.6:0.8)*dt;}
-    pa[i*3]+=Math.sin(performance.now()*0.001+i)*dt*(mode==="pollen"?0.4:1.2);
+    pa[i*3+1]-=cfg[2]*cfg[3]*v[1]*dt; // + fällt, - steigt
+    pa[i*3]+=Math.sin(tnow+i)*dt*cfg[4]+v[0]*dt*0.3;
     pa[i*3+2]+=v[2]*dt;
-    if(pa[i*3+1]>14||pa[i*3+1]<0){pa[i*3]=camT.x+(Math.random()-0.5)*44;pa[i*3+2]=camT.z+(Math.random()-0.5)*36;
-      pa[i*3+1]=mode==="pollen"?0.2:12+Math.random()*2;}}
+    if(pa[i*3+1]>14||pa[i*3+1]<0.1){pa[i*3]=camT.x+(Math.random()-0.5)*46;pa[i*3+2]=camT.z+(Math.random()-0.5)*38;
+      pa[i*3+1]=cfg[2]>0?12+Math.random()*2:0.2+Math.random()*0.5;}}
   seasonGeo.attributes.position.needsUpdate=true;}
 function jingle(){[523.25,659.25,783.99].forEach(function(f,i){setTimeout(function(){beep(f,.25,"triangle",.06);},i*130);});}
+// ===================== 🎂 Geburtstags-Törtchen mit Kerzen (Kapitelwechsel) =====================
+var bdayCakes=[];
+function birthdayCake(x,z){ // liebevolles Törtchen schwebt auf, Kerzen flackern, werden „ausgepustet"
+  var g=new THREE.Group();
+  var base=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.56,0.4,16),mat(0xf6c98a));base.position.y=0.2;g.add(base);
+  var cream=new THREE.Mesh(new THREE.CylinderGeometry(0.54,0.5,0.16,16),mat(0xfff2f6));cream.position.y=0.46;g.add(cream);
+  var cherry=new THREE.Mesh(new THREE.SphereGeometry(0.08,8,6),mat(0xff5d7d,0xff5d7d,0.25));cherry.position.y=0.58;g.add(cherry);
+  var flames=[],CANDCOL=[0xff9ab8,0x9ac8ff,0xffe09a];
+  for(var k=0;k<3;k++){var a=k/3*6.283,cx=Math.cos(a)*0.3,cz=Math.sin(a)*0.3;
+    var cand=new THREE.Mesh(new THREE.CylinderGeometry(0.038,0.038,0.28,7),mat(CANDCOL[k]));cand.position.set(cx,0.66,cz);g.add(cand);
+    var fl=new THREE.Mesh(new THREE.ConeGeometry(0.055,0.15,7),new THREE.MeshBasicMaterial({color:0xffcf4a,transparent:true}));
+    fl.position.set(cx,0.86,cz);g.add(fl);flames.push(fl);}
+  g.scale.setScalar(1.7);g.position.set(x,2.7,z);scene.add(g);
+  bdayCakes.push({g:g,flames:flames,t:0,blown:false});
+}
+function updBdayCakes(dt){for(var i=bdayCakes.length-1;i>=0;i--){var c=bdayCakes[i];c.t+=dt;
+  c.g.position.y+=dt*0.45;c.g.rotation.y+=dt*0.9;
+  if(!c.blown){for(var f=0;f<c.flames.length;f++){var fl=c.flames[f];
+      fl.scale.set(1+Math.sin(c.t*22+f)*0.22,1+Math.sin(c.t*18+f)*0.3,1);} // Flackern
+    if(c.t>0.95){c.blown=true; // 💨 Kerzen auspusten + Extra-Konfetti
+      confetti(c.g.position.x,c.g.position.z,0xffd166,22);
+      beep(240,.22,"sine",.05);setTimeout(function(){beep(180,.18,"sine",.04);},60);}}
+  else{for(var f2=0;f2<c.flames.length;f2++){var fm=c.flames[f2];fm.scale.multiplyScalar(Math.max(0,1-dt*13));
+      fm.material.opacity=Math.max(0,fm.material.opacity-dt*4);}}
+  if(c.t>1.9){var kk=Math.max(0,1-(c.t-1.9)/0.55); // sanft ausblenden
+    c.g.traverse(function(n){if(n.isMesh){n.material.transparent=true;n.material.opacity=kk;}});
+    if(c.t>2.45){c.g.traverse(function(n){if(n.isMesh){if(n.geometry)n.geometry.dispose();if(n.material)n.material.dispose();}});scene.remove(c.g);bdayCakes.splice(i,1);}}}}
 // ===================== Spielfiguren =====================
 var PCOLORS=[0xff5d7d,0x5ea8ff,0x6acc5a,0xffd166];
 // Meshy-Modelle: niedliche Spielfigur + Lebensbaum (KI-generiert, komprimiert)
@@ -903,8 +955,7 @@ function agePawn(i,animated){
   if(prev!==st){ // 🎂 Geburtstags-Feier: Figur wächst weich (Tween via ageScaleT), Konfetti + Torte + Announce
     var ch=chapterOf(G.players[i].tile);
     if(OPT.motion){confetti(pw.position.x,pw.position.z,CHAPTERS[ch].accent,30);
-      var cake=emojiSprite("🎂",1.7);cake.position.set(pw.position.x,3.1,pw.position.z);scene.add(cake);
-      confs.push({m:cake,vx:0,vy:1.3,vz:0,rx:0,rz:0,life:2.0,heart:true});}
+      birthdayCake(pw.position.x,pw.position.z);} // 🎂 Törtchen mit Kerzen -> auspusten
     emote(i,"jubel");jingle();
     announce("🎂 "+G.players[i].name+" wird "+AGE_NAME[st].toLowerCase()+" — Alles Gute!","#ffd166");}
 }
@@ -1075,6 +1126,8 @@ function syncFam(i){
       var dn=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.1,0.12),mat(0x3a2a1a));dn.position.set(0.56,0.38,0);dg.add(dn);
       [[0.12],[-0.12]].forEach(function(ee){var ear=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.16,0.05),mat(0x8a5c32));ear.position.set(0.34,0.58,ee[0]);dg.add(ear);});
       var tail=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.06,0.06),mat(0xb8834a));tail.geometry.translate(-0.15,0,0);tail.position.set(-0.28,0.36,0);dg.add(tail);
+      var dogCol=(G&&G.players[i])?G.players[i].col:PCOLORS[i%PCOLORS.length]; // 🎽 Team-Farb-Halsband
+      var collar=new THREE.Mesh(new THREE.TorusGeometry(0.16,0.035,6,12),mat(dogCol,dogCol,0.35));collar.rotation.y=Math.PI/2;collar.position.set(0.22,0.4,0);dg.add(collar);
       dg.userData.tail=tail;dg.userData.dog=true;
       [[0.18,0.1],[0.18,-0.1],[-0.18,0.1],[-0.18,-0.1]].forEach(function(lg2){var leg=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.14,0.07),mat(0x9a6c3a));leg.position.set(lg2[0],0.07,lg2[1]);dg.add(leg);});
       dg.position.copy(pw.position);scene.add(dg);pw.followers.push(dg);continue;}
@@ -1135,7 +1188,8 @@ function updFam(dt){
       f.position.x+=(tx-f.position.x)*Math.min(1,dt*4.5);
       f.position.z+=(tz-f.position.z)*Math.min(1,dt*4.5);
       var d=Math.hypot(tx-f.position.x,tz-f.position.z);
-      f.position.y=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*(f.userData.dog?0.22:0.35):0;
+      f.position.y=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*(f.userData.dog?0.22:0.35)
+        :(f.userData.dog?Math.max(0,Math.sin(performance.now()*0.006+j))*0.11:0); // 🐕 wartet -> fröhliches Wippen
       if(f.userData.tail){f.userData.tail.rotation.y=Math.sin(performance.now()*0.014)*0.7; // Schwanzwedeln (immer!)
         if(d>0.3)f.rotation.y=Math.atan2(tx-f.position.x,tz-f.position.z);else f.rotation.y+=dt*0.4;}
       else f.rotation.y+=dt;}}}
@@ -1582,11 +1636,15 @@ var butterflies=[];
     var w2=w1.clone();w2.position.x=0.28;
     var p1=new THREE.Group(),p2=new THREE.Group();p1.add(w1);p2.add(w2);g.add(p1);g.add(p2);
     g.position.set(-140+bi*60,2.5,-40+(bi%3)*20);
-    g.userData={p1:p1,p2:p2,cx:g.position.x,cz:g.position.z,ph:Math.random()*6.283};
+    g.userData={p1:p1,p2:p2,wm:wm,cx:g.position.x,cz:g.position.z,ph:Math.random()*6.283};
     scene.add(g);butterflies.push(g);}
 })();
-function updButterflies(dt,t){if(!OPT.motion){for(var h=0;h<butterflies.length;h++)butterflies[h].visible=false;return;}
-  for(var i=0;i<butterflies.length;i++){var b=butterflies[i],u=b.userData;b.visible=true;
+// Schmetterlinge gehören zu den warmen Monaten -> Frühling+Sommer sichtbar, faden im Herbst/Winter weg
+function updButterflies(dt,t){
+  var show=OPT.motion&&_seasonNow!=="autumn"&&_seasonNow!=="winter";
+  for(var i=0;i<butterflies.length;i++){var b=butterflies[i],u=b.userData;
+    u.wm.opacity+=((show?0.95:0)-u.wm.opacity)*Math.min(1,dt*2.2); // weicher Übergang
+    b.visible=u.wm.opacity>0.03;if(!b.visible)continue;
     var flap=Math.sin(t*14+u.ph)*0.9;u.p1.rotation.z=flap;u.p2.rotation.z=-flap;
     b.position.x=u.cx+Math.sin(t*0.5+u.ph)*9;b.position.z=u.cz+Math.cos(t*0.37+u.ph*2)*7;
     b.position.y=2.2+Math.sin(t*0.9+u.ph)*1.1+terrainH(b.position.x,b.position.z)*0.5;
@@ -1915,7 +1973,9 @@ window.__lp={
   chapter:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
     G.players[G.turn].tile=n*FIELDS_PER;placePawn(G.turn);agePawn(G.turn,false);updChapter();updPlayers();return chapterOf(G.players[G.turn].tile);},
   birthday:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
-    G.players[G.turn].tile=n*FIELDS_PER;placePawn(G.turn);pawns[G.turn].userData.ageStage=undefined;agePawn(G.turn,true);updChapter();return chapterOf(G.players[G.turn].tile);},
+    var t=G.turn;G.players[t].tile=n*FIELDS_PER;placePawn(t);
+    var st=ageStage(chapterOf(G.players[t].tile));pawns[t].userData.ageStage=(st+2)%4; // Stufenwechsel erzwingen -> 🎂 Feier
+    agePawn(t,true);updChapter();return chapterOf(G.players[t].tile);},
   pos:function(n){if(!G||!G.players[G.turn])return null;G.players[G.turn].tile=Math.max(0,Math.min(NFIELDS-1,n|0));placePawn(G.turn);agePawn(G.turn,false);return G.players[G.turn].tile;},
   age:function(){return (G&&pawns[G.turn])?pawns[G.turn].userData.ageStage:null;},
   look:function(){if(!G||!pawns[G.turn])return null;var pw=pawns[G.turn],u=pw.userData;
@@ -1928,7 +1988,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updNet();
+  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
     if(window._lmSwingPivot)window._lmSwingPivot.rotation.z=Math.sin(G.t*1.7)*0.55; // Schaukel schwingt
     if(window._lmClockM){window._lmClockM.rotation.z=-G.t*0.5;window._lmClockH.rotation.z=-G.t*0.5/12;} // Uhr läuft
     if(window._lmBeam)window._lmBeam.rotation.y=G.t*0.9; // Leuchtturm-Strahl rotiert
