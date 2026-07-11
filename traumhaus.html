@@ -218,10 +218,18 @@ var KATALOG={
  deko:[
   {id:"lampe",n:"Stehlampe",e:"💡",cost:140,size:[1,1],light:1},
   {id:"pflanze",n:"Monstera",e:"🪴",cost:110,size:[1,1]},
+  {id:"buecherregal",n:"Bücherregal",e:"📚",cost:340,size:[1,1],use:{need:"spass",pose:"stand",off:[0,1],dur:8}},
+  {id:"gemaelde",n:"Gemälde",e:"🖼️",cost:180,size:[1,1]},
+  {id:"hund",n:"Hund (Haustier)",e:"🐕",cost:450,size:[1,1],pet:1},
   {id:"kerzentisch",n:"Kerzen-Dinner",e:"🕯️",cost:380,size:[1,1],love:1},
-  {id:"rosenbogen",n:"Rosenbogen",e:"💒",cost:350,size:[2,1],wed:1}]
+  {id:"rosenbogen",n:"Rosenbogen",e:"💒",cost:350,size:[2,1],wed:1}],
+ buero:[
+  {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}}],
+ garten:[
+  {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
+  {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}}]
 };
-var CATS=[["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["deko","🪴 Deko"]];
+var CATS=[["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
 
 // ===================== Zustand =====================
@@ -282,8 +290,14 @@ function applyFloor(x,y,idx){var k=fkey(x,y);
   var m=new THREE.Mesh(new THREE.PlaneGeometry(CS,CS),fl.texture?new THREE.MeshStandardMaterial({map:fl.texture,roughness:0.75,envMapIntensity:0.3}):stdMat(fl.col,0.9));
   m.rotation.x=-Math.PI/2;m.position.set(cx(x),0.01,cz(y));m.receiveShadow=true;scene.add(m);
   floors[k]=idx;floorMeshes[k]=m;}
+var haustier=null;
 function applyFurn(id,gx,gy,rot,fid){
   var def=defOf(id);if(!def)return;
+  if(def.pet){ // Hund läuft frei mit, nicht als Möbel im Raster
+    if(haustier){scene.remove(haustier.mesh);}
+    loadTH("hund",function(tpl){if(!tpl)return;var m=tpl.clone(true);m.position.set(cx(gx),0,cz(gy));scene.add(m);
+      haustier={mesh:m,x:cx(gx),z:cz(gy),rot:0,walkT:0};});
+    return;}
   var rec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:null,busy:false};
   furn.push(rec);
   loadTH(id,function(tpl){if(!tpl)return;
@@ -683,6 +697,14 @@ function simEmojiK(k,txt){
   c.font="40px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(txt,32,36);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
   sp.scale.set(0.4,0.4,1);sp.position.y=1.3;k.mesh.add(sp);k.emoji=sp;k.emoT=2.4;}
+function updHund(dt,now){
+  if(!haustier)return;var h=haustier;
+  var tgt=sims[0].mesh.visible?sims[0]:(sims[1].mesh.visible?sims[1]:null);
+  if(kinder.length&&Math.random()<0.5&&kinder[0])tgt=kinder[0];
+  if(tgt){var dx=tgt.x-h.x,dz=tgt.z-h.z,d=Math.hypot(dx,dz);
+    if(d>2){h.x+=dx/d*2.4*dt;h.z+=dz/d*2.4*dt;h.rot=Math.atan2(dx,dz);h.walkT+=dt*10;}}
+  h.mesh.position.set(h.x,0,h.z);h.mesh.rotation.set(0,h.rot,0);
+  h.mesh.position.y=Math.abs(Math.sin(now*0.004))*0.04;}
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast: Host-Positionen weich übernehmen
     if(s.net){s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
@@ -943,6 +965,7 @@ function loop(now){
       else{camTx+=(followSim.x-camTx)*Math.min(1,dt*4);camTz+=(followSim.z-camTz)*Math.min(1,dt*4);updCam();}}
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
+    updHund(dt,now);
     updWork(dt);updCrime(dt);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
