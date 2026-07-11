@@ -261,8 +261,12 @@ for(const [cat,label] of grp.cats){
      const age=(grp.tags.includes('kinder')||grp.tags.includes('baby-kids'))?'kids':'adult';
      const mf=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},
                {namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'}];
+     // Material NUR wenn ein echtes Material-Wort drinsteht (sonst greift der Regex Feldlabels wie «Material Name»)
+     const MATWORDS=/baumwolle|cotton|polyester|leder|leather|metall|metal|silber|silver|gold|edelstahl|stainless|kunststoff|plastic|acryl|nylon|wolle|wool|seide|silk|leinen|linen|keramik|ceramic|holz|wood|glas|glass|zink|legierung|alloy|gummi|silikon|silicone|strick|fleece|denim|jeans|samt|velvet|spitze|lace/i;
      const mm=(feats||'').match(/\b(?:material|made of|fabric|composition)\b[:\s]+([a-zA-ZäöüÄÖÜ0-9%,\s\/-]{3,40})/i);
-     if(mm){const mat=mm[1].replace(/\s+/g,' ').trim().replace(/[.,;]$/,''); if(mat.length>=3)mf.push({namespace:'mm-google-shopping',key:'material',value:mat.slice(0,50),type:'single_line_text_field'});}
+     if(mm){const mat=mm[1].replace(/\s+/g,' ').trim().replace(/[.,;]$/,'');
+       if(mat.length>=3 && MATWORDS.test(mat) && !/^(name|type|typ|color|colour|farbe|size|art)\b/i.test(mat))
+         mf.push({namespace:'mm-google-shopping',key:'material',value:mat.slice(0,50),type:'single_line_text_field'});}
      input.metafields=mf; }
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
