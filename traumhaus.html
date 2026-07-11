@@ -386,6 +386,10 @@ function onNetMsg(m){
   else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
   else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
+    if(m.np){
+      while(npcs.length<m.np.length)spawnNpc(m.np[npcs.length].t);
+      while(npcs.length>m.np.length){var rem=npcs.pop();scene.remove(rem.mesh);}
+      m.np.forEach(function(nd,i){if(npcs[i])npcs[i].net=nd;});}
     if(m.k){while(kinder.length<m.k.length){var nk=spawnKind(m.k[kinder.length].b);if(nk)nk.name=m.k[kinder.length].n;}
       m.k.forEach(function(kd,i){if(kinder[i]){kinder[i].net=kd;if(kinder[i].baby!==kd.b){kinder[i].baby=kd.b;scene.remove(kinder[i].mesh);var nm2=mkKind(kd.b);nm2.position.set(kinder[i].x,0,kinder[i].z);scene.add(nm2);kinder[i].mesh=nm2;}}});}}
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;tag=m.d;}
@@ -630,7 +634,7 @@ function finishCrime(){
   if(ok){geld+=beute;
     crimeScene(true,job,beute);
     skillXp("krimi",2);}
-  else{var strafe=Math.min(geld,200+lv*50);geld-=strafe;
+  else{polizeiPending=true;var strafe=Math.min(geld,200+lv*50);geld-=strafe;
     crimeScene(false,job,strafe);
     skillXp("krimi",1);
     sims.forEach(function(s2){s2.needs.spass=Math.max(5,s2.needs.spass-25);simEmoji(s2,"\U0001F62C");});}
@@ -784,6 +788,93 @@ function updHund(dt,now){
     if(d>2){h.x+=dx/d*2.4*dt;h.z+=dz/d*2.4*dt;h.rot=Math.atan2(dx,dz);h.walkT+=dt*10;}}
   h.mesh.position.set(h.x,0,h.z);h.mesh.rotation.set(0,h.rot,0);
   h.mesh.position.y=Math.abs(Math.sin(now*0.004))*0.04;}
+// ===================== NPCs: Besucher mit eigenem Kopf =====================
+var npcs=[],npcTimer=20,polizeiPending=false;
+var NPC_DEFS={
+ postbote:{farbe:{skin:0xf0c090,hair:0x3a2a1a,top:0xf0c33a,bottom:0x3a4a6a,dress:false,longHair:false},speed:2.6},
+ nachbarin:{farbe:{skin:0xffd9b8,hair:0xd8d8e0,top:0x8a5aa0,bottom:0x8a5aa0,dress:true,longHair:false},speed:1.6},
+ haendler:{farbe:{skin:0xd9a06a,hair:0x2a2a34,top:0x3a8a5a,bottom:0x4a3a28,dress:false,longHair:false},speed:2.0},
+ polizist:{farbe:{skin:0xf0c090,hair:0x1a1a24,top:0x2a3a6e,bottom:0x1a2340,dress:false,longHair:false},speed:3.0},
+ katze:{speed:2.2}
+};
+function spawnNpc(typ){
+  if(npcs.length>=3)return;
+  var def=NPC_DEFS[typ],m;
+  if(typ==="katze"){
+    if(!MODELS.hund)return; // Katze = kleiner grau getönter Vierbeiner
+    m=MODELS.hund.clone(true);m.scale.setScalar(0.62);
+    m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.color.multiplyScalar(0.55);}});
+    scene.add(m);}
+  else{m=mkBewohner(def.farbe);m.scale.setScalar(1.05);}
+  var startX=cx(2+((Math.random()*12)|0));
+  var n={typ:typ,mesh:m,x:startX,z:cz(GH-1)+10,rot:Math.PI,state:"enter",t:0,walkT:0,
+    tx:startX,tz:cz(GH-3),speed:def.speed};
+  m.position.set(n.x,0,n.z);npcs.push(n);
+  return n;}
+function npcAct(n){
+  n.state="act";n.t=4.5;
+  var s0=sims[0],nah=null;
+  for(var i2=0;i2<sims.length;i2++)if(sims[i2].mesh.visible&&Math.hypot(sims[i2].x-n.x,sims[i2].z-n.z)<6)nah=sims[i2];
+  if(n.typ==="postbote"){
+    var r=Math.random();
+    if(r<0.34){var betrag=20+((Math.random()*30)|0);geld=Math.max(0,geld-betrag);hint("📬 Post: eine RECHNUNG … −"+betrag+" §");npcEmoji(n,"🧾");}
+    else if(r<0.67){var g2=30+((Math.random()*50)|0);geld+=g2;hint("📬 Post: ein Geschenk von Oma! +"+g2+" §");npcEmoji(n,"🎁");}
+    else{sims.forEach(function(s3){s3.needs.spass=Math.min(100,s3.needs.spass+8);});liebe=Math.min(100,liebe+4);
+      hint("📬 Post: ein Liebesbrief 💌");npcEmoji(n,"💌");hearts(n.x,n.z);}
+    netSend({t:"geld",v:geld});}
+  else if(n.typ==="nachbarin"){
+    hint("🧓 Frau Krause tratscht über die Nachbarschaft …");npcEmoji(n,"🗣️");
+    if(nah){nah.needs.spass=Math.min(100,nah.needs.spass+10);simEmoji(nah,"😄");}}
+  else if(n.typ==="haendler"){
+    if(geld>=100&&Math.random()<0.8){geld-=100;var wert=40+((Math.random()*210)|0);geld+=wert;
+      hint("🛒 Überraschungskiste gekauft (100 §) … enthielt "+wert+" §"+(wert>100?" — Gewinn! 🎉":" 😅"));
+      npcEmoji(n,wert>100?"🤑":"📦");netSend({t:"geld",v:geld});}
+    else{hint("🛒 Der fliegende Händler zieht weiter …");npcEmoji(n,"👋");}}
+  else if(n.typ==="polizist"){
+    hint("👮 Die Polizei schaut nochmal vorbei … alle unschuldig pfeifen!");npcEmoji(n,"🚨");
+    sims.forEach(function(s4){if(s4.mesh.visible)simEmoji(s4,"😇");});}
+  else if(n.typ==="katze"){
+    hint("🐈 Eine Streunerkatze schaut vorbei");npcEmoji(n,"🐟");
+    kinder.forEach(function(k){simEmojiK(k,"😻");});}
+  updHUD();}
+function npcEmoji(n,txt){
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  c.font="42px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(txt,32,36);
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+  sp.scale.set(0.55,0.55,1);sp.position.y=n.typ==="katze"?0.8:1.75;n.mesh.add(sp);
+  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},3500);}
+function updNpcs(dt,now){
+  if(MPs&&!mpHost){ // Gast rendert nur
+    npcs.forEach(function(n){if(n.net){n.x+=(n.net.x-n.x)*Math.min(1,dt*8);n.z+=(n.net.z-n.z)*Math.min(1,dt*8);n.rot=n.net.r;
+      n.mesh.position.set(n.x,0,n.z);n.mesh.rotation.y=n.rot;}});
+    return;}
+  npcTimer-=dt;
+  var hh=uhrzeit/60;
+  if(npcTimer<=0){npcTimer=25+Math.random()*30;
+    var pool=[];
+    if(hh>=8&&hh<12)pool.push("postbote","postbote");
+    if(hh>=13&&hh<18)pool.push("nachbarin","haendler");
+    pool.push("katze");
+    if(polizeiPending){pool=["polizist"];polizeiPending=false;}
+    if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}
+  for(var i=npcs.length-1;i>=0;i--){var n=npcs[i];
+    n.walkT+=dt*8;
+    if(n.state==="enter"){
+      var dx=n.tx-n.x,dz=n.tz-n.z,d=Math.hypot(dx,dz);
+      if(d<0.4){npcAct(n);}
+      else{n.x+=dx/d*n.speed*dt;n.z+=dz/d*n.speed*dt;n.rot=Math.atan2(dx,dz);}}
+    else if(n.state==="act"){n.t-=dt;
+      if(n.typ==="katze"){n.x+=Math.sin(now*0.001+i)*dt*1.2;n.z+=Math.cos(now*0.0013+i)*dt*1.2;}
+      if(n.t<=0){n.state="leave";n.tx=n.x;n.tz=cz(GH-1)+12;}}
+    else{ // leave
+      var dx2=n.tx-n.x,dz2=n.tz-n.z,d2=Math.hypot(dx2,dz2);
+      if(d2<0.6){scene.remove(n.mesh);npcs.splice(i,1);continue;}
+      n.x+=dx2/d2*n.speed*dt;n.z+=dz2/d2*n.speed*dt;n.rot=Math.atan2(dx2,dz2);}
+    n.mesh.position.set(n.x,0,n.z);n.mesh.rotation.y=n.rot;
+    var ud2=n.mesh.userData;
+    if(ud2&&ud2.ll&&n.state!=="act"){var sw2=Math.sin(n.walkT);
+      ud2.ll.rotation.x=sw2*0.6;ud2.rl.rotation.x=-sw2*0.6;ud2.la.rotation.x=-sw2*0.4;ud2.ra.rotation.x=sw2*0.4;}
+  }}
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast: Host-Positionen weich übernehmen
     if(s.net){s._netMoved=Math.hypot(s.net.x-s.x,s.net.z-s.z)>0.05;s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
@@ -1099,10 +1190,10 @@ function loop(now){
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
-    updBeete(dt);updWork(dt);updCrime(dt);if(!arbeiten&&!crime.on)updLove(dt);
+    updBeete(dt);updWork(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
-      if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};})});
+      if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten});}}}
     saveTick+=dt;if(saveTick>6){saveTick=0;saveGame();}
   }
