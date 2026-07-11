@@ -1,0 +1,19 @@
+{
+  "name": "aban Arcade",
+  "short_name": "aban Arcade",
+  "description": "Kostenlose 3D-Browser-Games & tägliche Rätsel — alle Spiele in einer App.",
+  "lang": "de",
+  "start_url": "/spiele.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#06070f",
+  "theme_color": "#06070f",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "/icons/arcade-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/arcade-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/arcade-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/arcade-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
