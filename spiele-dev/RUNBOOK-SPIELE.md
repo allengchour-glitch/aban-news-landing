@@ -215,6 +215,20 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 6 — Multiplayer-Zusatz + Lebenspfad-Ausbau)
+- [ ] **Multiplayer-Zusatzfeature** (neon-duo online): Quick-Chat/Emotes (vorgefertigte kinder-
+      sichere Nachrichten + Emoji-Reaktionen über den Figuren, KEIN Freitext), Spielernamen aus
+      abanArcade-Profil über den Figuren, Rematch-Button am Game-Over (beide bestätigen → neuer Run).
+- [ ] **Lebenspfad: mehrere Wege** — Weggabelungen à la Spiel des Lebens (z.B. Studium-Route vs.
+      Abenteuer-Route: länger/sicher vs. kurz/riskant), Wahl-UI am Gabelungs-Feld (2 grosse Buttons).
+- [ ] **Lebenspfad: mehr Entscheidungen** — mehr Wahl-Karten an Stationen (Job/Haus/Hobby …),
+      Konsequenzen sichtbar (Geld/Herzen/Wissen-Deltas).
+- [ ] **Lebenspfad: Besitz-Anzeige** — Panel/Icons „was habe ich": Auto, Haus, Haustier, Job …
+      (antippbar für Details); **wenn Auto gekauft → Spielfigur FÄHRT im Fahrzeug** (Figur sitzt
+      in Low-Poly-Auto, Räder drehen beim Ziehen).
+- [ ] **Lebenspfad: jeder Charakter einzigartig** — Rot/Blau (+KI) bekommen individuelle Figuren
+      (Frisur/Hut/Accessoire/Farbe, nicht nur Umfärbung), Wahl beim Start.
+
 ### User-Feedback 2026-07-11 (Runde 5 — „attacken mehr polish, noch mehr attacken")
 - [ ] **Mehr Attacken** (Meshy-Bibliothek auf Rigging-Task 019f4e41-…, ~3 Cr/Clip):
       3-Hit-Kombo (Space-Kette mit Timing-Fenster: attack→attack2→attack3), Charge-Attacke
