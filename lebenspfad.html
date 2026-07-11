@@ -443,7 +443,7 @@ function terrainH(x,z){
     tmp.multiplyScalar(shade*jit);
     cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
   geo.setAttribute("color",new THREE.BufferAttribute(cols,3));geo.computeVertexNormals();
-  var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:true}));
+  var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:false}));
   m.receiveShadow=true;scene.add(m);})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
@@ -749,7 +749,7 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
   // Bäume: Stamm+Krone in Kapitel-Farbvarianten
   var N=IS_COARSE?150:240;
   var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.22,0.3,1.6,5),mat(0x8a5a3a),N);
-  var crown=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1.15,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),N);
+  var crown=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1.15,1),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:false}),N);
   var cTmp=new THREE.Color();
   var placed=0,guard=0;
   while(placed<N&&guard++<3000){
@@ -765,7 +765,7 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
     cTmp.setHex(CHAPTERS[ci].ground).offsetHSL((Math.random()-0.5)*0.12,0.28,Math.random()*0.06);
     if(ci>=6)cTmp.setHex(ci===7?0xf0d8e8:0xe08a3a).offsetHSL((Math.random()-0.5)*0.06,0,Math.random()*0.1);
     crown.setColorAt(placed,cTmp);placed++;}
-  var cap2=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.7,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),N);
+  var cap2=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.7,1),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:false}),N);
   var _cd=new THREE.Object3D(),_cc=new THREE.Color();
   for(var ci4=0;ci4<placed;ci4++){var mtx=new THREE.Matrix4();crown.getMatrixAt(ci4,mtx);
     var pos4=new THREE.Vector3(),qq=new THREE.Quaternion(),sc4=new THREE.Vector3();mtx.decompose(pos4,qq,sc4);
