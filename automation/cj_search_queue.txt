@@ -133,10 +133,10 @@
 #done search:dainty gold necklace
 #done search:pearl choker
 #done search:statement earrings
-search:huggie hoop earrings
-search:layered necklace set
-search:stainless steel ring women
-search:adjustable ring
+#done search:huggie hoop earrings
+#done search:layered necklace set
+#done search:stainless steel ring women
+#done search:adjustable ring
 search:charm bracelet
 search:tennis bracelet
 search:anklet chain
