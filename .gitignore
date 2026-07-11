@@ -51,3 +51,6 @@ dist/
 # Meshy-Rohmodelle (unoptimiert) — die komprimierten Web-Modelle liegen in models/
 # Meshy-Rohmodelle (unoptimiert) — komprimierte Web-Modelle liegen in models/
 game/assets/*.glb
+_lpdbg.html
+_lporig.html
+_lporig2.html
