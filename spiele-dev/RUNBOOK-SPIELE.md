@@ -215,6 +215,21 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 9 — „mehr Features und mehr mit Liebe machen")
+Liebe-Paket Lebenspfad (mit B3/Runde-8 kombinierbar, jeweils klein aber fühlbar):
+- [ ] **Jahreszeiten-Metapher**: Kapitel-Stimmung wandert Frühling (Kindheit) → Sommer → Herbst →
+      Winter (Lebensabend): Bodentöne, Deko (Blüten→Laub→Schnee), Licht — die Welt altert mit.
+- [ ] **Haustier läuft mit**: Hund trabt sichtbar hinter der Figur her (wedelt beim Warten),
+      hüpft mit ins Auto.
+- [ ] **Foto-Album**: grosse Momente (Hochzeit, Auto, Haus, Kind, Gabel-Wahl) als Polaroid-
+      Schnappschüsse gesammelt → am Ende Teil der Biografie-Show (mit Spielernamen).
+- [ ] **Meilenstein-Geburtstag**: Kerzen-Törtchen + „Alles Gute!"-Moment am Kapitelwechsel
+      (verbindet sich mit dem Altern aus Runde 8).
+- [ ] **Idle-Leben**: wartende Figuren schauen sich um, winken sich zu wenn nah, Vögel/
+      Schmetterlinge landen gelegentlich auf Feldern.
+- [ ] **Klang-Liebe**: sanfte Kapitel-Themen (Kindheit verspielt → Alter ruhig), Würfel-Klacker,
+      Seiten-Rascheln beim Karten-Flip (alles dezent, OPT.music/sfx respektieren).
+
 ### User-Feedback 2026-07-11 (Runde 8 — Lebenspfad: Altern, Feld-Klarheit, Kamera, Spannung)
 - [ ] **Charaktere altern von Kind bis alt** (Kern-Wunsch!): Look wandelt sich pro Kapitel —
       Kind (klein, grosser Kopf) → Teen → Erwachsen → Senior (grauer Haarton, Gehstock, leicht
