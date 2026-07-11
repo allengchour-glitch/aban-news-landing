@@ -401,8 +401,10 @@ function updSparks(dt){for(var s=0;s<sparks.length;s++){var sp2=sparks[s];if(sp2
 // ---- Bloom-Post-Processing (Neon-Glow) ----
 var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
 var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
-var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
+// Geräte-Auflösung fürs Szenen-RT (sonst wird 1x -> 2x-Canvas hochskaliert = pixelige Fahrbahnränder)
+var PR=renderer.getPixelRatio();function _dw(){return Math.max(1,Math.round(W*PR));}function _dh(){return Math.max(1,Math.round(H*PR));}
+var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(_dw(),_dh(),rtOpt):new THREE.WebGLRenderTarget(_dw(),_dh(),rtOpt);
+var bw=Math.max(1,_dw()>>1),bh=Math.max(1,_dh()>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.76}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
@@ -574,7 +576,7 @@ function loop(now){
   renderBloom();
 }
 reset(); showBest(); requestAnimationFrame(loop);
-addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(_dw(),_dh());bw=Math.max(1,_dw()>>1);bh=Math.max(1,_dh()>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
 })();
 </script>
 </body>
