@@ -223,6 +223,16 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Mini-Bestenliste (Top 3 lokal). Save-kompatibel mit ns_best. Optional: freigeschaltete
       Startvorteile nach X Runden (klein, nicht pay2win).
 
+### Survivor: viele Animationen (User 2026-07-11 „viele animationen") — Survivor-Polish-Runde (gleiche Datei, nach Map+Name)
+- [ ] **Gegner-Animationen**: jeder Gegner-Typ lebendig — Wackeln/Atmen im Idle, Angriffs-Lunge,
+      Todes-Pop (Squash+Partikel+Aufblitzen), Schützen zielen sichtbar, Boss mit Extra-Bewegung.
+- [ ] **Waffen/Effekte**: Mündungsblitz, Projektil-Trails, Treffer-Funken, Hit-Stop-Mikro-Freeze,
+      Level-Up-Flourish (Ring+Strahlen+Zahl), Pickup-Einzug mit Schweif, Ability-Effekte satter.
+- [ ] **Strukturen animiert**: Turm-Rückstoss/Mündung beim Schuss, Falle pulsiert, Heil-Feld atmet,
+      Mauer-Riss bei Schaden, Bau-Aufpopp-Animation.
+- [ ] **Übergänge**: Wellenstart „Welle X!"-Einflug, Wellenpause-Wechsel, Game-Over-Zeremonie.
+      Alles gepoolt/performant (mobil reduziert), Bloom-bewusst, OPT-safe.
+
 ### Survivor-Ausbau (nach Bau-Modus-Merge — User „juhu weiter survivor" 2026-07-11)
 - [ ] **Charakter „mit Liebe"**: liebenswerter Spieler-Look statt Simpel-Shape (Bibo-Muster aus
       neon-jump ODER hero_meshy-Mini), Gesicht/Ausdruck, kleine Idle-Animation.
