@@ -2310,6 +2310,14 @@ function handleField(p,f){
       applyFx(p,o.fx);if(o.bio)p.bio.push(o.bio);
       updPlayers();endTurnSoon();}};}));
 }
+// ==== DEBUG-HOOK (nur _lpdbg.html, NIE committen) ====
+window.__LP={get G(){return G;},get running(){return running;},fields:fields,pawns:pawns,NET:NET,OPT:OPT,
+  begin:begin,startMove:startMove,rollCore:rollCore,cardPick:cardPick,sendPick:sendPick,calcNext:calcNext,
+  placePawn:placePawn,updPlayers:updPlayers,updChapter:updChapter,handleField:function(i){var p=G.players[i];handleField(p,fields[p.tile]);},
+  quizCard:function(i){quizCard(G.players[i]);},tauschCard:function(i){tauschCard(G.players[i]);},raceCard:function(i){raceCard(G.players[i]);},
+  sendEmote:sendEmote,chatBubble:chatBubble,FORKS:FORKS,NFIELDS:NFIELDS,
+  forceTile:function(i,t){G.players[i].tile=t;placePawn(i);updChapter();updPlayers();},
+  camSnap:function(){var p=G.players[G.turn];camT.x=fields[p.tile].x;camT.z=fields[p.tile].z;camera.position.set(camT.x,16.5,camT.z+15);}};
 })();
 </script>
 </body>

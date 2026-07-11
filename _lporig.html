@@ -82,8 +82,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   .pcard .st{gap:6px}
   #chapterTag b{font-size:.82rem;letter-spacing:.12em}
   #chapterTag small{font-size:.62rem}
-  #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:44vw;text-align:right}
-  .pcard .items span{font-size:15px;min-width:24px;height:24px;line-height:24px}
+  #turnTag{font-size:.74rem;top:56px}
   #progMap{bottom:88px;width:92vw}
   #card{padding:16px}
   #card h3{font-size:1.05rem}
@@ -116,13 +115,6 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .charCard button.on{border-color:#ff8c2a;box-shadow:0 0 10px rgba(255,150,40,.45);background:#fff6e2}
 .charCard .lbl{font-size:.72rem;font-weight:800;color:#6a7282;min-width:96px;text-align:center}
 .charCard .skin{min-width:34px!important;min-height:34px!important;border-radius:50%!important;padding:0!important}
-/* Pass B2: Gabelungs-Wahl, Quiz-Timer, Smiley-Fast-Chat */
-#card button.forkBtn{font-size:1.02rem;padding:16px 18px;min-height:60px;border-width:3px}
-#qTimer{height:10px;background:#f0e4c4;border-radius:6px;margin-top:12px;overflow:hidden}
-#qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 15s linear}
-#emoBtn{position:fixed;right:14px;bottom:160px;z-index:16;width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);font-size:1.3rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)}
-#emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;gap:8px}
-#emoFan button{width:48px;height:48px;border-radius:50%;border:2px solid #ffcf3a;background:#fffdf6;font-size:1.05rem;cursor:pointer;box-shadow:0 3px 10px rgba(60,40,10,.25)}
 </style>
 </head>
 <body>
@@ -145,8 +137,6 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <div id="mourn" style="position:fixed;inset:0;pointer-events:none;z-index:13;background:radial-gradient(circle,rgba(20,20,30,0) 30%,rgba(10,10,18,.88));opacity:0;transition:opacity 1.2s"></div>
 <div id="dice">🎲</div>
 <button id="rollBtn" class="hide">🎡 Drehen!</button>
-<button id="emoBtn" class="hide" title="Emotes (Tasten 1–6)">😊</button>
-<div id="emoFan" class="hide"></div>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
 <button id="chatBtn" title="Chat mit Oma Hilde" style="position:fixed;bottom:96px;right:14px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)" class="hide">💬</button>
 <div id="chatW" class="hide" style="position:fixed;bottom:96px;right:14px;width:min(320px,90vw);height:min(400px,60vh);background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;z-index:35;display:flex;flex-direction:column;box-shadow:0 16px 44px rgba(60,40,10,.35);overflow:hidden">
@@ -182,8 +172,6 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="charRow" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:4px 0 8px"></div>
   <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e8b0b0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700">
     <input type="checkbox" id="adultChk" style="width:18px;height:18px;accent-color:#e84a3a"> 🔞 Echtes-Leben-Modus (ab 18): frecher Humor, echte Risiken — <b>der Tod spielt mit</b></label>
-  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
-    <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
@@ -195,7 +183,6 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
       <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b></div>
-      <div id="netModeTag" style="font-size:.8rem;font-weight:800;color:#2a6ab0"></div>
       <div id="netPlayers" style="margin:6px 0;font-weight:700"></div>
       <button class="btn" id="netStartBtn" style="display:none">🌐 Online-Spiel starten ▶</button>
       <div id="netHint" style="font-size:.8rem;color:#7a8a9a">Warte auf Mitspieler … Code weitergeben!</div>
@@ -286,35 +273,7 @@ var pathPts=[];
   var curve=new THREE.CatmullRomCurve3(pts);
   for(var i=0;i<NFIELDS;i++){var p=curve.getPoint(i/(NFIELDS-1));pathPts.push(p);}
 })();
-// ===================== 🛤️ Weggabelungen (Pass B2): 2 Neben-Routen zweigen sichtbar ab & münden zurück =====================
-var FORKS=[
- {at:39,rejoin:46,bulge:9,types:["w","q","w","g-","w","h","f","w","w","g+"], // Kap.3: 10 Felder statt 6
-  title:"Studium oder Abenteuer?",txt:"Der Pfad teilt sich! Nimmst du den sicheren Lernweg — oder die kurze, wilde Route?",
-  aL:"🎒 Abenteuer",aSub:"kurz (6 Felder) · ✨ Überraschungs-Ereignisse · 🧾 1 Rechnung",
-  bL:"🎓 Studium",bSub:"sicher, dauert 4 Felder länger · 5× +🧠 · ❓ Quiz · +💰 am Ende"},
- {at:93,rejoin:100,bulge:8,types:["g+","w","g+","g-","g+","g+"], // Kap.6: gleiche Länge, anderes Profil
-  title:"Karriere oder Familie?",txt:"Eine große Entscheidung: der steile Aufstieg — oder der vertraute Weg mit den Liebsten?",
-  aL:"🏡 Familienweg",aSub:"✨ Familien-Ereignisse · ❤️ & 👥 · gemütlich",
-  bL:"🏔️ Karriere-Aufstieg",bSub:"4× +💰 · +🧠 · aber 🧾 Rechnungen & kaum ❤️"}
-];
-FORKS.forEach(function(fk){ // Kurven-Punkte der Neben-Route; landen in pathPts -> Terrain wird dort flach, Deko meidet sie
-  var pa=pathPts[fk.at],pr=pathPts[fk.rejoin];
-  var dx=pr.x-pa.x,dz=pr.z-pa.z,L=Math.hypot(dx,dz)||1,px=-dz/L,pz=dx/L;
-  function clr(sx,sz){var best=1e9;for(var i=0;i<NFIELDS;i++){if(i>=fk.at-1&&i<=fk.rejoin+1)continue;
-    var d=(sx-pathPts[i].x)*(sx-pathPts[i].x)+(sz-pathPts[i].z)*(sz-pathPts[i].z);if(d<best)best=d;}return best;}
-  var mx=(pa.x+pr.x)/2,mz=(pa.z+pr.z)/2,D=fk.bulge;
-  var side=clr(mx+px*D,mz+pz*D)>=clr(mx-px*D,mz-pz*D)?1:-1;px*=side;pz*=side; // zur freien Seite ausbuchten
-  var curve2=new THREE.CatmullRomCurve3([pa.clone(),
-    new THREE.Vector3(pa.x+dx*0.25+px*D*0.85,0,pa.z+dz*0.25+pz*D*0.85),
-    new THREE.Vector3(mx+px*D,0,mz+pz*D),
-    new THREE.Vector3(pa.x+dx*0.75+px*D*0.85,0,pa.z+dz*0.75+pz*D*0.85),
-    pr.clone()]);
-  fk.pts=[];
-  for(var j=1;j<=fk.types.length;j++){var pt=curve2.getPoint(j/(fk.types.length+1));fk.pts.push(pt);pathPts.push(pt);}
-});
-function chapterOf(tile){var bf=fields&&fields[tile]; // Neben-Routen-Felder kennen ihr Kapitel selbst
-  if(bf&&bf.mchap!==undefined)return bf.mchap;
-  return Math.min(CHAPTERS.length-1,Math.floor(tile/FIELDS_PER));}
+function chapterOf(tile){return Math.min(CHAPTERS.length-1,Math.floor(tile/FIELDS_PER));}
 // ===================== Licht =====================
 var hemi=new THREE.HemisphereLight(0xffffff,0x5a7a4a,0.72);scene.add(hemi);
 var sunL=new THREE.DirectionalLight(0xfff2d8,0.95);sunL.position.set(30,60,20);scene.add(sunL);
@@ -353,16 +312,14 @@ function terrainH(x,z){
   m.receiveShadow=true;scene.add(m);})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
-var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f,q:0x8a5aff,x:0x1fc4c8,r:0xff7a2a};
+var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f};
 var fields=[];
 (function(){
   var seq=["e","g+","e","h","e","w","g-","e","f","e","g+","e","h","e","w","g-","f"]; // 17 + Meilenstein
-  var TSPECIAL={4:"q",22:"q",47:"q",76:"q",115:"q",9:"x",58:"x",79:"x",133:"x",13:"r",65:"r",83:"r",121:"r"}; // ❓ Quiz · 🔄 Tausch · 🏁 Wettrennen (Pass B2)
   for(var i=0;i<NFIELDS;i++){
     var inChap=i%FIELDS_PER;
     var ty=(inChap===FIELDS_PER-1)?"m":seq[inChap%seq.length];
     if(i===0)ty="m";
-    if(TSPECIAL[i])ty=TSPECIAL[i];
     var p=pathPts[i];
     var rr0=ty==="m"?2.7:2.0,sg0=ty==="m"?28:24; // runde Scheiben (8 Segmente = kantiges Achteck)
     var blob=new THREE.Mesh(new THREE.CircleGeometry(rr0+0.7,sg0),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16}));
@@ -388,43 +345,6 @@ var fields=[];
         stn.position.set(q.x+(p.x-q.x)*tt2+(Math.random()-0.5)*0.3,0.08,q.z+(p.z-q.z)*tt2+(Math.random()-0.5)*0.3);
         stn.rotation.y=Math.random()*3.14;stn.receiveShadow=true;scene.add(stn);}}
   }
-})();
-// 🛤️ Neben-Routen-Felder (gleiche Optik wie der Hauptpfad) + Graph: fields[i].nxt / fields[at].fork
-(function(){
-  function stones(a,b){var len=Math.hypot(b.x-a.x,b.z-a.z),steps=Math.max(2,Math.floor(len/2.2));
-    for(var st=1;st<steps;st++){var t=st/steps;
-      var stn=new THREE.Mesh(new THREE.CylinderGeometry(0.42+Math.random()*0.14,0.5,0.16,7),mat(0xf5e8d0,0x000000,0));
-      stn.position.set(a.x+(b.x-a.x)*t+(Math.random()-0.5)*0.3,0.08,a.z+(b.z-a.z)*t+(Math.random()-0.5)*0.3);
-      stn.rotation.y=Math.random()*3.14;stn.receiveShadow=true;scene.add(stn);}}
-  FORKS.forEach(function(fk){
-    var prev={x:pathPts[fk.at].x,z:pathPts[fk.at].z},first=-1,idxPrev=-1,mch=Math.floor(fk.at/FIELDS_PER);
-    fk.types.forEach(function(ty,j){
-      var p=fk.pts[j];
-      var blob=new THREE.Mesh(new THREE.CircleGeometry(2.7,24),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16}));
-      blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.045,p.z);scene.add(blob);
-      var sock=new THREE.Mesh(new THREE.CylinderGeometry(2.22,2.35,0.34,24),mat(0xffffff,0xf0f0f0,0.06));
-      sock.position.set(p.x,0.17,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
-      var disc=new THREE.Mesh(new THREE.CylinderGeometry(2.0,2.08,0.26,24),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.32));
-      disc.position.set(p.x,0.47,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
-      var trg=new THREE.Mesh(new THREE.TorusGeometry(2.12,0.09,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
-      trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6,p.z);scene.add(trg);
-      fields.push({x:p.x,z:p.z,type:ty,disc:disc,mchap:mch,prog:fk.at+(fk.rejoin-fk.at)*(j+1)/(fk.types.length+1)});
-      var idx=fields.length-1;
-      if(j===0)first=idx;else fields[idxPrev].nxt=idx;
-      idxPrev=idx;stones(prev,p);prev=p;});
-    fields[idxPrev].nxt=fk.rejoin; // Route mündet zurück in den Hauptpfad
-    stones(prev,pathPts[fk.rejoin]);
-    fields[fk.at].fork={a:fk.at+1,b:first,title:fk.title,txt:fk.txt,aL:fk.aL,aSub:fk.aSub,bL:fk.bL,bSub:fk.bSub};
-    // Wegweiser mit beiden Richtungen am Gabel-Feld
-    var post=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.11,2.6,6),mat(0x8a5a3a));
-    post.position.set(pathPts[fk.at].x+1.8,1.3,pathPts[fk.at].z-1.8);scene.add(post);
-    [[fk.aL,2.15],[fk.bL,1.55]].forEach(function(sg,si){
-      var cv=document.createElement("canvas");cv.width=512;cv.height=96;var cx=cv.getContext("2d");
-      cx.fillStyle="#f5e8d0";cx.fillRect(0,0,512,96);cx.strokeStyle="#c9a86a";cx.lineWidth=8;cx.strokeRect(4,4,504,88);
-      cx.fillStyle="#6a4a2a";cx.font="bold 46px sans-serif";cx.textAlign="center";cx.fillText((si?"↰ ":"↱ ")+sg[0].slice(0,13),256,64);
-      var pl=new THREE.Mesh(new THREE.PlaneGeometry(2.4,0.45),new THREE.MeshBasicMaterial({map:crispTex(cv),side:THREE.DoubleSide}));
-      pl.position.set(pathPts[fk.at].x+1.8,sg[1],pathPts[fk.at].z-1.8);pl.rotation.y=0.4+si*0.5;scene.add(pl);});
-  });
 })();
 // Regenbogen über der Brettmitte + Sonne (Spielzeug-Himmel)
 (function(){
@@ -699,7 +619,7 @@ function emojiSprite(em,size){var cv=document.createElement("canvas");cv.width=c
   var cx=cv.getContext("2d");cx.font="192px serif";cx.textAlign="center";cx.textBaseline="middle";cx.fillText(em,128,142);
   var tx=crispTex(cv);var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true}));
   sp.scale.setScalar(size||1.4);return sp;}
-var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁"};
+var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐"};
 var fieldSprites=[];
 (function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(f.type==="e")continue;
   var sp=emojiSprite(FIELD_EMO[f.type],f.type==="m"?2.0:1.25);
@@ -793,11 +713,9 @@ var HAIRS=[0x3a2a1a,0x8a5a2a,0xd9b45e,0x2a2a34,0xb84a2a];
 var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
 var CHAR_STYLES=[{i:"🧢",n:"Basecap"},{i:"🌸",n:"Blumenkranz"},{i:"👓",n:"Brille"},{i:"🎩",n:"Hut"}];
 var SKINTONES=[0xffd9b0,0xdba46e,0x9a6a42];
-function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Looks
-  if(c&&(c.g==="f"||c.g==="m"))return {g:c.g,style:Math.max(0,Math.min(3,c.style|0)),skin:Math.max(0,Math.min(2,c.skin|0))};
-  return null;}
 function loadChar(i){ // defensiv lesen: kaputte/fehlende Daten -> hübscher Default (jeder Spieler anders)
-  try{var c=sanCfg(JSON.parse(lsGet(CHARKEYS[i]||"")||""));if(c)return c;}catch(e){}
+  try{var c=JSON.parse(lsGet(CHARKEYS[i]||"")||"");
+    if(c&&(c.g==="f"||c.g==="m"))return {g:c.g,style:Math.max(0,Math.min(3,c.style|0)),skin:Math.max(0,Math.min(2,c.skin|0))};}catch(e){}
   return {g:i%2?"m":"f",style:i%4,skin:i%3};}
 function saveChar(i,c){if(CHARKEYS[i])lsSet(CHARKEYS[i],JSON.stringify(c));}
 function seededChar(seed,i){ // Online: deterministischer Look aus dem Spiel-Seed (alle Clients gleich)
@@ -1079,42 +997,28 @@ function updTurnMarker(dt){
 // ===================== Zustand =====================
 var SAVE_KEY="lp_save1";
 var G=null,running=false;
-function freshState(np,adult,mode){
+function freshState(np,adult){
   var ps=[];
   for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},items:{},hist:[{g:20,h:10,w:5,f:5}]});
-  return {v:4,mode:mode==="kurz"?"kurz":"voll",adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
+  return {v:3,adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
 function saveGame(){if(!G||NET.on)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
-function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);
-  if(!(s&&(s.v===3||s.v===4)&&s.players&&s.players.length))return null; // v3 (ohne route/mode) bleibt ladbar
-  if(s.mode!=="kurz")s.mode="voll";
-  s.players.forEach(function(p){if(typeof p.tile!=="number"||p.tile<0)p.tile=0;});
-  return s;}catch(e){return null;}}
-// ===================== ⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel (Kindheit·Schulzeit·Karriere&Liebe·Lebensabend) =====================
-var SHORT_CHAPS=[0,1,4,7],SHORT_JUMP={35:72,89:126}; // Kapitel-Enden springen per Zeitsprung weiter
-function isShort(){return !!(G&&G.mode==="kurz");}
-function activeChaps(){return isShort()?SHORT_CHAPS:[0,1,2,3,4,5,6,7];}
-function progOf(t){var f=fields[t];return (f&&f.prog!==undefined)?f.prog:t;} // Neben-Route -> Haupt-Äquivalent
-function routeFrac(t){var mt=progOf(t);
-  if(!isShort())return Math.min(1,mt/(NFIELDS-1));
-  var ci=Math.min(7,Math.floor(mt/FIELDS_PER)),off=mt-ci*FIELDS_PER,si=SHORT_CHAPS.indexOf(ci);
-  if(si<0){si=0;for(var i=0;i<SHORT_CHAPS.length;i++)if(SHORT_CHAPS[i]<ci)si=i;off=FIELDS_PER-1;}
-  return Math.min(1,(si*FIELDS_PER+off)/(SHORT_CHAPS.length*FIELDS_PER-1));}
+function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.v===3&&s.players&&s.players.length)?s:null;}catch(e){return null;}}
 var pawns=[],pawnBlobs=[];
 function updPawnBlobs(){for(var i=0;i<pawns.length;i++){var b2=pawnBlobs[i];if(!b2)continue;
   b2.position.x=pawns[i].position.x;b2.position.z=pawns[i].position.z;
   b2.material.opacity=0.22-Math.min(0.14,pawns[i].position.y*0.12);}}
 // ===================== HUD =====================
 document.getElementById("keysHelp").innerHTML=IS_COARSE?
-  "🎲 antippen zum Würfeln · Karten antippen · 😊 = Emotes":
-  "<b>LEER</b>/Knopf würfeln · <b>1–6</b> Emote · <b>M</b> Ton · <b>ESC</b> Menü — Ereignisse: anklicken &amp; entscheiden";
+  "🎲 antippen zum Würfeln · Karten antippen zum Entscheiden":
+  "<b>LEER</b>/Knopf würfeln · <b>M</b> Ton · <b>ESC</b> Menü — Ereignisse: anklicken &amp; entscheiden";
 function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2600);}
 function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},3400);}
 function initProgMap(){var ps2=document.getElementById("progSegs");ps2.innerHTML="";
-  activeChaps().forEach(function(cidx){var c=CHAPTERS[cidx];var d=document.createElement("div");
+  CHAPTERS.forEach(function(c){var d=document.createElement("div");
     d.style.cssText="flex:1;background:#"+("00000"+c.ground.toString(16)).slice(-6);ps2.appendChild(d);});}
 function updProgMap(){var pd2=document.getElementById("progDots");pd2.innerHTML="";
   G.players.forEach(function(p){var d=document.createElement("div");
-    d.style.cssText="position:absolute;top:-11px;width:10px;height:10px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0008;background:#"+("00000"+p.col.toString(16)).slice(-6)+";left:calc("+Math.round(100*routeFrac(p.tile))+"% - 5px)";
+    d.style.cssText="position:absolute;top:-11px;width:10px;height:10px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0008;background:#"+("00000"+p.col.toString(16)).slice(-6)+";left:calc("+Math.round(100*p.tile/(NFIELDS-1))+"% - 5px)";
     pd2.appendChild(d);});}
 function updPlayers(){updProgMap();
   var el=document.getElementById("players");el.innerHTML="";
@@ -1136,11 +1040,9 @@ function updPlayers(){updProgMap();
     el.appendChild(d);});
 }
 function updChapter(){
-  var p=G.players[G.turn],ci=chapterOf(p.tile),c=CHAPTERS[ci];
+  var p=G.players[G.turn],c=CHAPTERS[chapterOf(p.tile)];
   document.getElementById("chapTxt").textContent=c.n;
-  var AC=activeChaps(),pos=AC.indexOf(ci);
-  if(pos<0){pos=0;for(var ai=0;ai<AC.length;ai++)if(AC[ai]<ci)pos=ai;}
-  document.getElementById("chapSub").textContent="Kapitel "+(pos+1)+" von "+AC.length+" · "+c.sub;
+  document.getElementById("chapSub").textContent="Kapitel "+(chapterOf(p.tile)+1)+" von 8 · "+c.sub;
   document.getElementById("turnTag").textContent=p.done?"":("🎲 "+p.name+" ist dran (Runde "+G.round+")");
   // Himmel weich zur Kapitel-Farbe
   window._skyTarget=new THREE.Color(c.sky);
@@ -1180,20 +1082,7 @@ function updDie(dt){if(!dieAnim||!die3d)return;
   else if(t<2.1){die3d.position.y=0.65;}
   else{die3d.visible=false;dieAnim=null;}}
 var DICE_FACES=["⚀","⚁","⚂","⚃","⚄","⚅"];
-var moveQ=0,hopT=0,hopFrom=null,camT={x:0,z:0},moveTo=-1,forkSel=null;
-function calcNext(){ // nächstes Feld im Pfad-Graphen; -1 = Gabel-Wahl offen
-  var p=G.players[G.turn],f=fields[p.tile];
-  if(f.fork){
-    if(forkSel!==null){var nx=forkSel;forkSel=null;return nx;}
-    G.phase="fork";showForkUI(f);return -1;}
-  if(f.nxt!==undefined)return f.nxt; // Neben-Route entlang / zurück zum Hauptpfad
-  if(isShort()&&SHORT_JUMP[p.tile]!==undefined){announce("⏩ ZEITSPRUNG!","#ffd166");beep(660,.12,"triangle",.05);return SHORT_JUMP[p.tile];}
-  return Math.min(NFIELDS-1,p.tile+1);}
-function showForkUI(f){var fk=f.fork,p=G.players[G.turn];
-  cardEl.style.borderColor="#a86aff";beep(660,.1,"triangle",.05);
-  showCard("Weggabelung · "+p.name+" wählt","🛤️ "+fk.title,fk.txt,[
-    {l:fk.aL,sub:fk.aSub,big:1,fn:function(){forkSel=fk.a;G.phase="moving";announce(fk.aL,"#fff");beep(740,.1,"triangle",.05);}},
-    {l:fk.bL,sub:fk.bSub,big:1,fn:function(){forkSel=fk.b;G.phase="moving";announce(fk.bL,"#fff");beep(740,.1,"triangle",.05);}}]);}
+var moveQ=0,hopT=0,hopFrom=null,camT={x:0,z:0};
 function roll(){
   if(!running||G.phase!=="idle")return;
   if(NET.on){if(G.turn!==NET.my)return;netSend({t:"roll"});NET.q.push({t:"roll"});return;}
@@ -1246,33 +1135,29 @@ function showWheel(n,done){
 rollBtn.onclick=roll;
 addEventListener("keydown",function(e){if(e.key===" "&&running){e.preventDefault();if(G.phase==="idle")roll();}});
 function startMove(n){
-  G.phase="moving";moveQ=n;hopT=0;moveTo=-1;
+  G.phase="moving";moveQ=n;hopT=0;
   var p=G.players[G.turn];hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
   announce(G.players[G.turn].name+" dreht eine "+n+"!","#fff");
 }
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
-  if(moveTo<0){moveTo=calcNext();if(moveTo<0||G.phase!=="moving")return;} // Gabel-Wahl offen -> pausieren
-  var to=fields[moveTo];
-  var dist=Math.hypot(to.x-hopFrom.x,to.z-hopFrom.z),jump=dist>12; // ⏩ Zeitsprung: weit + hoch fliegen
   var drv=!!(pw.userData&&pw.userData.driving); // 🚗 Auto rollt geschmeidig statt zu hüpfen
-  hopT+=dt*(drv?2.5:2.1)*OPT.tempo*(jump?0.38:1);
+  hopT+=dt*(drv?2.5:2.1)*OPT.tempo;
   if(hopT>=1){
-    p.tile=moveTo;moveQ--;hopT=0;moveTo=-1;
+    p.tile=Math.min(NFIELDS-1,p.tile+1);moveQ--;hopT=0;
     hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
     if(drv)beep(120+Math.random()*30,.06,"sawtooth",.03); // Motor-Brummen
     else{beep(360+Math.random()*80,.04,"sine",.035); // weiches Tapsen
       if(OPT.motion){pw.userData.squash=0.55;dustPuff(pw.position.x,pw.position.z);}} // Lande-Squash + Staub-Puff pro Feld
-    if(p.tile===NFIELDS-1){moveQ=0;}
+    if(p.tile>=NFIELDS-1){moveQ=0;}
     if(moveQ<=0){G.phase="landed";pw.userData.stretch=0;pw.userData.squash=1;beep(240,.05,"sine",.04);onLand();return;}
-    moveTo=calcNext();if(moveTo<0||G.phase!=="moving")return; // Gabel: Wahl-Karte ist offen
-    to=fields[moveTo];dist=Math.hypot(to.x-hopFrom.x,to.z-hopFrom.z);jump=dist>12;
   }
+  var to=fields[Math.min(NFIELDS-1,p.tile+1)];
   var k=hopT,x=hopFrom.x+(to.x-hopFrom.x)*k,z=hopFrom.z+(to.z-hopFrom.z)*k;
   var px=pw.position.x,pz=pw.position.z;
-  var y=(drv&&!jump)?0.02+Math.sin(performance.now()*0.02)*0.02 // leichtes Wippen beim Fahren
-        :Math.sin(k*Math.PI)*(OPT.motion?(jump?4.2:0.55):0.2); // Hüpf-Parabel (Zeitsprung: hoher Bogen)
+  var y=drv?0.02+Math.sin(performance.now()*0.02)*0.02 // leichtes Wippen beim Fahren
+        :Math.sin(k*Math.PI)*(OPT.motion?0.55:0.2); // Hüpf-Parabel (reduziert: flach)
   pw.position.set(x,y+pawnOffset(G.turn).y,z);
   pw.userData.stretch=(!drv&&OPT.motion)?Math.sin(k*Math.PI)*0.9:0; // Stretch im Flug
   var o=pawnOffset(G.turn);pw.position.x+=o.x;pw.position.z+=o.z;
@@ -1302,7 +1187,7 @@ function onLand(){
       p.freunde+=2;p.glueck+=2;G.players[i].freunde+=2;G.players[i].glueck+=2;
       p.bio.push("traf "+G.players[i].name+" am Wegesrand — ein Tag voller Lachen");
       beep(1046,.25,"triangle",.07);break;}}
-  if(p.tile===NFIELDS-1){finishPlayer(p);return;}
+  if(p.tile>=NFIELDS-1){finishPlayer(p);return;}
   if(typeof handleField==="function")handleField(p,f);
   else endTurnSoon();
 }
@@ -1408,8 +1293,6 @@ function showEnd(){
     bio.appendChild(t);});
   document.getElementById("hud").classList.add("hide");
   rollBtn.classList.add("hide");
-  document.getElementById("emoBtn").classList.add("hide");
-  document.getElementById("emoFan").classList.add("hide");
   document.getElementById("endO").classList.remove("hide");
 }
 // ===================== Musik: echte Produktion (Piano + Streicher, automation/music/produce) =====================
@@ -1859,7 +1742,7 @@ function renderCharUI(){
   })(i);}
 
 // ===================== 🌐 Online-Koop (PeerJS, deterministischer Lockstep) =====================
-var NET={on:false,host:false,peer:null,conns:[],my:0,code:"",names:[],seed:1,q:[],cfgs:[]};
+var NET={on:false,host:false,peer:null,conns:[],my:0,code:"",names:[],seed:1,q:[]};
 function srand(){ // im Online-Modus deterministisch (gleiche Aktionsfolge -> gleicher Zufall überall)
   if(!NET.on)return Math.random();
   NET.seed=(NET.seed*1664525+1013904223)>>>0;return NET.seed/4294967296;}
@@ -1870,7 +1753,6 @@ function netOnMsg(m,from){
   netApply(m);}
 function netApply(m){
   if(m.t==="chat"){chatAdd(m.n,m.x);return;}
-  if(m.t==="emo"){showEmoteB(m.i|0,m.k|0);return;} // 😊 Smiley-Fast-Chat
   if(m.t==="init"){beginNet(m);return;}
   if(m.t==="drop"){if(G&&G.players[m.i]){G.players[m.i].done=true;announce("📴 "+G.players[m.i].name+" hat das Spiel verlassen","#ff8a8a");if(G.turn===m.i)nextTurn();}return;}
   NET.q.push(m);}
@@ -1897,27 +1779,6 @@ function chatAdd(n,x){var box=document.getElementById("chatMsgs");if(!box)return
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
   var cb=document.getElementById("chatBox");if(cb&&cb.style.display!=="flex")document.getElementById("chatToggle").classList.add("blink");}
-// ===================== 😊 Smiley-Fast-Chat (Pass B2, Muster neon-duo): Sprechblasen über der eigenen Figur =====================
-var EMOTES=[["👍","👍"],["❤️","❤️"],["😂","😂"],["😮","😮"],["💪","Gut gemacht!"],["🆘","Hilfe!"]];
-var _emoLast=0;
-function showEmoteB(idx,k){var e=EMOTES[k];if(!e)return;chatBubble(idx,e[1]);}
-function sendEmote(k){
-  if(!running||!EMOTES[k])return;
-  var now=performance.now();if(now-_emoLast<1000)return;_emoLast=now; // Spam-Schutz: 1 Emote/s
-  var idx=NET.on?NET.my:(G?G.turn:0); // lokal: Blase über der Figur, die dran ist
-  showEmoteB(idx,k);beep(720+k*40,.06,"triangle",.04);
-  if(NET.on)netSend({t:"emo",i:NET.my,k:k}); // reliable-Event (PeerJS-Kanal ist reliable)
-  var fan=document.getElementById("emoFan");if(fan)fan.classList.add("hide");}
-(function(){
-  var eb=document.getElementById("emoBtn"),fan=document.getElementById("emoFan");
-  EMOTES.forEach(function(e,k){var b=document.createElement("button");b.textContent=e[0];b.title=e[1]+" (Taste "+(k+1)+")";
-    b.onclick=function(){sendEmote(k);};fan.appendChild(b);});
-  eb.onclick=function(){fan.classList.toggle("hide");beep(600,.04,"triangle",.03);};
-  addEventListener("keydown",function(ev){ // Tasten 1–6 (kollidiert mit nichts: LEER/M/ESC sind belegt)
-    if(!running||menuOpen)return;
-    var ae=document.activeElement;if(ae&&(ae.tagName==="INPUT"||ae.tagName==="TEXTAREA"))return;
-    if(ev.key>="1"&&ev.key<="6")sendEmote(ev.key.charCodeAt(0)-49);});
-})();
 function netRoomId(code){return "aban-lp-"+code.toLowerCase();}
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
   document.getElementById("netLobby").style.display="block";
@@ -1929,7 +1790,7 @@ function netMyName(){var el=document.getElementById("netName");var n=(el&&el.val
 document.getElementById("netHostBtn").onclick=function(){
   if(typeof Peer==="undefined"){alert("Online-Modul nicht geladen");return;}
   NET.host=true;NET.code="";var A="ABCDEFGHJKLMNPQRSTUVWXYZ";for(var i=0;i<4;i++)NET.code+=A[(Math.random()*A.length)|0];
-  NET.names=[netMyName()];NET.my=0;NET.cfgs=[loadChar(0)]; // eigener Look = 1. Charakterkarte
+  NET.names=[netMyName()];NET.my=0;
   NET.peer=new Peer(netRoomId(NET.code));
   NET.peer.on("open",function(){netLobbyShow();netPlayersUpd();});
   NET.peer.on("error",function(e){alert("Online-Fehler: "+e.type);});
@@ -1937,7 +1798,7 @@ document.getElementById("netHostBtn").onclick=function(){
     if(NET.names.length>=4||(G&&running)){c.close();return;}
     NET.conns.push(c);
     c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}
-      if(m.t==="hallo"){var nm=String(m.n||"Spieler").slice(0,12);NET.names.push(nm);NET.cfgs.push(sanCfg(m.cfg));c._idx=NET.names.length-1;netPlayersUpd();
+      if(m.t==="hallo"){var nm=String(m.n||"Spieler").slice(0,12);NET.names.push(nm);c._idx=NET.names.length-1;netPlayersUpd();
         chatAdd("System",nm+" ist beigetreten");}
       else netOnMsg(m,c);});
     c.on("close",function(){if(c._idx!=null){var msg={t:"drop",i:c._idx};netSend(msg);netApply(msg);}});
@@ -1952,25 +1813,21 @@ document.getElementById("netJoinBtn").onclick=function(){
   NET.peer.on("open",function(){
     var c=NET.peer.connect(netRoomId(code),{reliable:true});
     NET.conns=[c];
-    c.on("open",function(){netLobbyShow();c.send(JSON.stringify({t:"hallo",n:netMyName(),cfg:loadChar(0)}));
+    c.on("open",function(){netLobbyShow();c.send(JSON.stringify({t:"hallo",n:netMyName()}));
       document.getElementById("netHint").textContent="Verbunden — warte auf Start durch Gastgeber …";});
     c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}
-      if(m.t==="lobby"){NET.names=m.names;netPlayersUpd();
-        var mt2=document.getElementById("netModeTag");
-        if(mt2&&m.mode)mt2.textContent=m.mode==="kurz"?"⚡ Schnelles Leben (4 Kapitel)":"🌱 Volles Leben (8 Kapitel)";return;}
+      if(m.t==="lobby"){NET.names=m.names;netPlayersUpd();return;}
       netOnMsg(m,null);});
     c.on("close",function(){announce("📴 Verbindung getrennt","#ff8a8a");});
   });};
 document.getElementById("netStartBtn").onclick=function(){
   var seed=(Math.random()*4294967296)>>>0;
   var adult=document.getElementById("adultChk")&&document.getElementById("adultChk").checked;
-  var kurz=document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked; // Host bestimmt den Modus
-  NET.conns.forEach(function(c,ci){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx,mode:kurz?"kurz":"voll",cfgs:NET.cfgs}));}catch(e){}});
-  beginNet({seed:seed,names:NET.names,adult:!!adult,you:0,mode:kurz?"kurz":"voll",cfgs:NET.cfgs});};
+  NET.conns.forEach(function(c,ci){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx}));}catch(e){}});
+  beginNet({seed:seed,names:NET.names,adult:!!adult,you:0});};
 function beginNet(init){
   NET.on=true;NET.seed=init.seed>>>0;NET.my=init.you|0;NET.names=init.names;NET.q=[];
-  NET.cfgs=(init.cfgs&&init.cfgs.length)?init.cfgs:[]; // gesyncte Picker-Looks aller Spieler
-  var g0=freshState(init.names.length,init.adult,init.mode);
+  var g0=freshState(init.names.length,init.adult);
   for(var i=0;i<g0.players.length;i++)g0.players[i].name=init.names[i];
   begin(g0);
   document.getElementById("chatToggle").style.display="block";
@@ -1979,12 +1836,7 @@ function beginNet(init){
   announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");}
 // Lobby-Broadcast des Hosts, wenn sich die Spielerliste aendert
 (function(){var _upd=netPlayersUpd;netPlayersUpd=function(){_upd();
-  var kc=document.getElementById("kurzChk"),mt=document.getElementById("netModeTag");
-  if(NET.host){var md=(kc&&kc.checked)?"kurz":"voll";
-    if(mt)mt.textContent=md==="kurz"?"⚡ Schnelles Leben (4 Kapitel)":"🌱 Volles Leben (8 Kapitel)";
-    netSend({t:"lobby",names:NET.names,mode:md});}};
-  var kc2=document.getElementById("kurzChk");
-  if(kc2)kc2.addEventListener("change",function(){if(NET.host&&NET.code)netPlayersUpd();});})();
+  if(NET.host)netSend({t:"lobby",names:NET.names});};})();
 // Chat-Verkabelung
 (function(){var tg=document.getElementById("chatToggle"),bx=document.getElementById("chatBox");
   tg.onclick=function(){var on=bx.style.display==="flex";bx.style.display=on?"none":"flex";tg.classList.remove("blink");};
@@ -1994,18 +1846,14 @@ function beginNet(init){
   document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});})();
 
 function begin(saved){
-  G=saved||freshState(selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked,
-    (document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked)?"kurz":"voll");
-  if(G.mode!=="kurz")G.mode="voll"; // alte v3-Saves defensiv
-  forkSel=null;moveTo=-1;moveQ=0;hopT=0;
-  G.players.forEach(function(pp){if(!fields[pp.tile])pp.tile=0;}); // unbekannter Feld-Index -> Start (nie crashen)
+  G=saved||freshState(selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked);
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
     if(el&&el.value.trim())G.players[ni].name=el.value.trim().slice(0,12);}}
   pawns.forEach(function(pw){scene.remove(pw);});pawns.length=0;
   pawnBlobs.forEach(function(b2){scene.remove(b2);});pawnBlobs.length=0;
   G.players.forEach(function(p,i){if(!p.fam)p.fam={partner:false,kids:0,askedK:false};
     if(!p.items)p.items={}; // alte Spielstände (ohne Besitz-Feld) defensiv nachrüsten
-    var cfg=NET.on?(sanCfg(NET.cfgs&&NET.cfgs[i])||seededChar(NET.seed,i)):loadChar(i); // Look: lokal Picker, online gesyncter Picker-Look (Fallback: Seed)
+    var cfg=NET.on?seededChar(NET.seed,i):loadChar(i); // Look: lokal aus dem Picker, online aus dem Seed
     pawns.push(mkPawn(p.col,cfg));
     (function(){var cv=document.createElement("canvas");cv.width=256;cv.height=72;var c=cv.getContext("2d");
       c.font="bold 44px sans-serif";c.textAlign="center";
@@ -2026,7 +1874,6 @@ function begin(saved){
   document.getElementById("hud").classList.remove("hide");
   document.getElementById("chatBtn").classList.remove("hide");
   rollBtn.classList.remove("hide");rollBtn.disabled=false;
-  document.getElementById("emoBtn").classList.remove("hide");
   G.phase="idle";running=true;
   initProgMap();updPlayers();updChapter();
   announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
@@ -2053,7 +1900,7 @@ document.getElementById("resumeBtn").onclick=toggleMenu;
 addEventListener("keydown",function(e){if(e.key==="Escape"&&G)toggleMenu();});
 document.getElementById("rulesBtn").onclick=function(){toggleMenu();
   showCard("Regeln","📜 So spielt ihr Lebenspfad",
-    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (15 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
+    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
     [{l:"Alles klar ▶",fn:function(){}}]);};
 document.getElementById("restartBtn").onclick=function(){var b=document.getElementById("restartBtn");
   if(b.dataset.armed){lsDel(SAVE_KEY);location.reload();}
@@ -2100,22 +1947,17 @@ function showCard(kick,title,txt,opts){
   document.getElementById("cTitle").textContent=title;
   document.getElementById("cTxt").innerHTML=txt;
   var op=document.getElementById("cOpts");op.innerHTML="";
-  window._cardOpts=opts;window._cardSeq=(window._cardSeq||0)+1;
-  opts.forEach(function(o,k){if(o.hidden)return;var b=document.createElement("button");
-    if(o.big)b.className="forkBtn";
+  window._cardOpts=opts;
+  opts.forEach(function(o,k){var b=document.createElement("button");
     b.innerHTML=o.l+(o.sub?"<small>"+o.sub+"</small>":"");
     if(NET.on&&G&&G.turn!==NET.my)b.style.opacity="0.55";
     b.onclick=function(){
-      if(NET.on&&G&&G.turn!==NET.my)return;
-      sendPick(k);};
+      if(NET.on){if(G.turn!==NET.my)return;netSend({t:"pick",k:k});NET.q.push({t:"pick",k:k});return;}
+      cardPick(k);};
     op.appendChild(b);});
   cardEl.classList.add("on");beep(520,.08,"triangle",.05);
 }
-function sendPick(k){ // genau EINE Wahl pro Karte (verhindert Quiz-Timeout+Klick-Doppel im Lockstep)
-  if(window._pickDone===window._cardSeq)return;window._pickDone=window._cardSeq;
-  if(NET.on){netSend({t:"pick",k:k});NET.q.push({t:"pick",k:k});}
-  else cardPick(k);}
-function cardPick(k){var opts=window._cardOpts;if(!opts||!opts[k])return;clearTimeout(window._qTO);
+function cardPick(k){var opts=window._cardOpts;if(!opts||!opts[k])return;
   window._cardOpts=null;cardEl.classList.remove("on");opts[k].fn();}
 function fxLabel(fx){var parts=[];
   if(fx.geld)parts.push((fx.geld>0?"+":"")+fx.geld+" 💰");
@@ -2146,115 +1988,6 @@ function applyFx(p,fx){showFx(p,fx);
   p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
   p.freunde=Math.max(0,p.freunde+(fx.freunde||0));
 }
-// ===================== ❓🔄🏁 Stations-Events (Pass B2): mehr als Würfeln =====================
-var QUIZ=[ // 24 kinderfreundliche Fragen (DE) — richtig = +2 🧠 +2 💰, falsch = keine Strafe
- {q:"Wie viele Beine hat eine Spinne?",a:["6","8","10"],c:1},
- {q:"Welche Farbe entsteht aus Blau und Gelb?",a:["Grün","Lila","Orange"],c:0},
- {q:"Wie viele Kontinente gibt es auf der Erde?",a:["5","7","9"],c:1},
- {q:"Was ist das größte Tier der Welt?",a:["Elefant","Blauwal","Giraffe"],c:1},
- {q:"Wie viele Minuten hat eine Stunde?",a:["60","100","30"],c:0},
- {q:"Welcher Planet ist der Sonne am nächsten?",a:["Mars","Venus","Merkur"],c:2},
- {q:"Wie nennt man einen Baby-Hund?",a:["Fohlen","Welpe","Kalb"],c:1},
- {q:"Wie viele Farben hat der Regenbogen?",a:["5","7","9"],c:1},
- {q:"Was brauchen Pflanzen zum Wachsen?",a:["Licht & Wasser","Zucker","Musik"],c:0},
- {q:"Wie viele Spieler stehen beim Fußball pro Team auf dem Platz?",a:["9","10","11"],c:2},
- {q:"Welches Tier hält Winterschlaf?",a:["Igel","Kuh","Taube"],c:0},
- {q:"Wie heißt die Hauptstadt der Schweiz?",a:["Zürich","Bern","Genf"],c:1},
- {q:"Woraus wird Papier gemacht?",a:["Holz","Sand","Wolle"],c:0},
- {q:"Welcher Vogel kann nicht fliegen?",a:["Amsel","Pinguin","Möwe"],c:1},
- {q:"Wie viele Zähne hat ein erwachsener Mensch (mit Weisheitszähnen)?",a:["24","32","40"],c:1},
- {q:"Was ist schneller?",a:["Schall","Licht","Wind"],c:1},
- {q:"Wie viele Herzen hat ein Oktopus?",a:["1","3","8"],c:1},
- {q:"Welches Land sieht aus wie ein Stiefel?",a:["Spanien","Italien","Ägypten"],c:1},
- {q:"Wie nennt man gefrorenes Wasser?",a:["Dampf","Eis","Nebel"],c:1},
- {q:"Wie viele Sekunden hat eine Minute?",a:["60","90","120"],c:0},
- {q:"Was sammeln Bienen von Blüten?",a:["Nektar","Tau","Samen"],c:0},
- {q:"Wie heißt der höchste Berg der Welt?",a:["Matterhorn","Mount Everest","Zugspitze"],c:1},
- {q:"Schätz mal: Wie viele Beine haben drei Hühner zusammen?",a:["4","6","8"],c:1},
- {q:"Welches Tier ist KEIN Fisch?",a:["Hai","Delfin","Forelle"],c:1}
-];
-function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zeitdruck
-  if(!G.quizU)G.quizU=[];
-  var avail=[],i;for(i=0;i<QUIZ.length;i++)if(G.quizU.indexOf(i)<0)avail.push(i);
-  if(!avail.length){G.quizU=[];for(i=0;i<QUIZ.length;i++)avail.push(i);}
-  var qi=avail[(srand()*avail.length)|0];G.quizU.push(qi);
-  var Q=QUIZ[qi],right=Q.a[Q.c],timed=OPT.motion;
-  cardEl.style.borderColor="#8a5aff";
-  function fin(ok,toolate){
-    if(ok){applyFx(p,{wissen:2,geld:2});announce("✅ RICHTIG!","#8affc0");confetti(fields[p.tile].x,fields[p.tile].z,0x8a5aff,10);
-      p.bio.push("glänzte beim großen Quiz");beep(880,.1,"triangle",.06);setTimeout(function(){beep(1108,.16,"triangle",.06);},120);}
-    else{announce(toolate?"⏳ ZEIT UM!":"❌ KNAPP DANEBEN","#ffb37a");showHint("Die richtige Antwort: "+right,3200);beep(300,.18,"sine",.05);}
-    updPlayers();endTurnSoon();}
-  var opts=Q.a.map(function(al,k){return {l:["🅰","🅱","🅲"][k]+" "+al,fn:function(){fin(k===Q.c,false);}};});
-  opts.push({l:"",hidden:1,fn:function(){fin(false,true);}}); // Timeout-Wahl (unsichtbar, lockstep-gesynct)
-  showCard("Quiz-Karte · richtig = +2 🧠 +2 💰","❓ "+Q.q,
-    timed?'⏳ 15 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
-  clearTimeout(window._qTO);
-  if(timed){requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
-    window._qTO=setTimeout(function(){ // nur der aktive Spieler löst den Timeout aus (Online: ein Absender)
-      if(!window._cardOpts)return;
-      if(NET.on&&G.turn!==NET.my)return;
-      sendPick(3);
-    },15300);}
-}
-function tauschCard(p){ // 🔄 Kurs schwankt: 3–5 💰 gegen 2 ❤️ oder 2 🧠
-  var cost=3+((srand()*3)|0),toH=srand()<0.5,gl=toH?"❤️":"🧠",fx=toH?{geld:-cost,glueck:2}:{geld:-cost,wissen:2};
-  cardEl.style.borderColor="#1fc4c8";
-  if(p.geld<cost){
-    showCard("Tausch-Event","🔄 Der fliegende Händler","Er bietet 2 "+gl+" für "+cost+" 💰 — aber dein Geldbeutel ist zu leicht. Vielleicht beim nächsten Mal!",
-      [{l:"Weiterziehen ▶",fn:function(){endTurnSoon();}}]);return;}
-  showCard("Tausch-Event · der Kurs schwankt!","🔄 Tausche "+cost+" 💰 gegen 2 "+gl+"?","Ein fliegender Händler steht am Wegesrand und klimpert mit seiner Ware. Guter Deal — oder lieber sparen?",
-   [{l:"🤝 Ja, tauschen!",sub:"−"+cost+" 💰 · +2 "+gl,fn:function(){applyFx(p,fx);p.bio.push("machte einen Deal mit dem fliegenden Händler");beep(700,.08,"triangle",.05);updPlayers();endTurnSoon();}},
-    {l:"🙅 Nein danke",sub:"alles bleibt, wie es ist",fn:function(){endTurnSoon();}}]);
-}
-function raceCard(p){ // 🏁 alle würfeln gleichzeitig 1× — höchster Wurf +2 💰 (Online: Lockstep-srand)
-  cardEl.style.borderColor="#ff7a2a";
-  var DF=DICE_FACES,alive=[];
-  G.players.forEach(function(pl,i){if(!pl.done)alive.push(i);});
-  if(alive.length<2){ // Solo: kleiner Sprint gegen die Uhr
-    var r0=1+((srand()*6)|0),win0=r0>=4;
-    if(win0){applyFx(p,{geld:2});emote(G.turn,"jubel");}
-    showCard("Wettrennen","🏁 Solo-Sprint!","Du würfelst "+DF[r0-1]+" ("+r0+") — "+(win0?"schnell genug: <b>+2 💰</b>!":"heute nicht schnell genug. Beim nächsten Mal!"),
-      [{l:"Weiter ▶",fn:function(){updPlayers();endTurnSoon();}}]);return;}
-  var res={},best=0;
-  alive.forEach(function(i){var r=1+((srand()*6)|0);res[i]=r;if(r>best)best=r;});
-  var lines="";
-  alive.forEach(function(i){var pl=G.players[i],win=res[i]===best;
-    lines+="<div style='font-weight:800;color:#"+("00000"+pl.col.toString(16)).slice(-6)+"'>"+DF[res[i]-1]+" "+res[i]+" — "+pl.name+(win?" 🏆 +2 💰":"")+"</div>";
-    if(win){pl.geld+=2;if(pawns[i])emote(i,"jubel");}});
-  beep(523,.08,"square",.04);setTimeout(function(){beep(659,.08,"square",.04);},110);setTimeout(function(){beep(784,.14,"triangle",.05);},220);
-  if(res[G.turn]===best)moneyRain(fields[p.tile].x,fields[p.tile].z,8);
-  showCard("Wettrennen-Feld · alle würfeln gleichzeitig","🏁 Auf die Plätze — fertig — los!",lines,
-    [{l:"Weiter ▶",fn:function(){updPlayers();endTurnSoon();}}]);
-}
-// ===================== Meilenstein-Karten als Bausteine (auch für die Kurz-Modus-Kette) =====================
-function jobCard(p,done){
-  var picks=[];while(picks.length<3){var j=JOBS[(srand()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
-  showCard("Meilenstein · Berufswahl","💼 Was willst du werden?","Drei Türen stehen offen. Hinter jeder ein anderes Leben — Gehalt ist nicht alles.",
-    picks.map(function(j){return {l:j.i+" "+j.n,sub:j.d,fn:function(){p.job={i:j.i,n:j.n,mult:j.mult};applyFx(p,j.fx);
-      p.bio.push("wurde "+j.n+" — und bereute es nie");updPlayers();done();}};}));}
-function autoCard(p,done){
-  showCard("Meilenstein · Das erste Auto","🚗 Ein eigenes Auto?","Beim Händler glänzt ein kleines Cabrio in deiner Lieblingsfarbe. Der Schlüssel liegt schon fast in deiner Hand.",
-    [{l:"🚗 Kaufen — ab jetzt wird gefahren!",sub:"−6 💰 · +2 ❤️ · deine Figur fährt Auto · Turbo: 6 = +1 Feld",fn:function(){if(!p.items)p.items={};p.items.auto=true;applyFx(p,{geld:-6,glueck:2});p.bio.push("kaufte das erste eigene Auto — Freiheit auf vier Rädern");enableCar(G.turn);announce("🚗 BRUMM BRUMM!","#ffd166");beep(90,.35,"sawtooth",.06);setTimeout(function(){beep(140,.25,"sawtooth",.05);},200);updPlayers();done();}},
-     {l:"🚲 Erstmal das Fahrrad",sub:"+1 ❤️ · +1 🧠 · spart Geld",fn:function(){applyFx(p,{glueck:1,wissen:1});p.bio.push("blieb beim Fahrrad — sportlich und schlau");updPlayers();done();}}]);}
-function wedCard(p,done){
-  showCard("Meilenstein · Die große Frage","💍 Willst du heiraten?","Ihr steht am See, die Sonne geht unter, und die Frage liegt in der Luft. Dein Herz klopft bis zum Hals.",
-    [{l:"💒 Ja — große Hochzeit!",sub:"−8 💰 · +6 ❤️ · +4 👥 · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-8,glueck:6,freunde:4});p.bio.push("heiratete die große Liebe mit einem rauschenden Fest");weddingScene(G.turn);syncFam(G.turn);updPlayers();done();}},
-     {l:"💕 Ja — klein und heimlich",sub:"−2 💰 · +4 ❤️ · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-2,glueck:4});p.bio.push("heiratete still am Standesamt — und war überglücklich");weddingScene(G.turn);syncFam(G.turn);updPlayers();done();}},
-     {l:"🕊 Noch nicht — die Freiheit ruft",sub:"+2 🧠 · +1 ❤️",fn:function(){applyFx(p,{wissen:2,glueck:1});p.bio.push("wählte die Freiheit — vorerst");updPlayers();done();}}]);}
-function kidsCard(p,done){
-  showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
-    [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(srand()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");storkScene(G.turn,1);updPlayers();done();}},
-     {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");storkScene(G.turn,2);updPlayers();done();}},
-     {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");syncFam(G.turn);beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();done();}}]);}
-function hausCard(p,done){
-  showCard("Meilenstein · Eigenheim","🏠 Ein eigenes Haus?","Das Schild am Gartenzaun sagt „Zu verkaufen“. Der Rasen ist verwildert — aber du siehst schon Lichterketten auf der Veranda.",
-    [{l:"🏠 Kaufen — Wurzeln schlagen",sub:"−10 💰 · +3 ❤️ · dauerhaft: +2 ❤️ an jedem Meilenstein",fn:function(){if(!p.items)p.items={};p.items.haus=true;applyFx(p,{geld:-10,glueck:3});p.bio.push("kaufte ein Haus mit Veranda — und nannte es für immer Zuhause");confetti(fields[p.tile].x,fields[p.tile].z,0xffd166,14);updPlayers();done();}},
-     {l:"🏕 Weiter zur Miete — flexibel bleiben",sub:"+2 🧠 · +1 💰",fn:function(){applyFx(p,{wissen:2,geld:1});p.bio.push("blieb zur Miete — die Welt war das Zuhause");updPlayers();done();}}]);}
-function shortMileChain(p){ // ⚡ Kurz-Modus: das große Lebens-Kapitel — Hochzeit → Kinder → Haus hintereinander
-  if(p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,function(){shortMileChain(p);});return;}
-  if(!(p.items&&p.items.haus)&&!p.fam.askedH){p.fam.askedH=true;hausCard(p,endTurnSoon);return;}
-  endTurnSoon();}
 function handleField(p,f){
   var ch=chapterOf(p.tile),acc="#"+("00000"+CHAPTERS[ch].accent.toString(16)).slice(-6);
   if(f.type==="m"){
@@ -2262,18 +1995,34 @@ function handleField(p,f){
     confetti(fields[p.tile].x,fields[p.tile].z,CHAPTERS[ch].accent);jingle();
     if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
     if(p.items&&p.items.haus){p.glueck+=2;floatStat("+2 ❤️ 🏠","#ff9ad9",fields[p.tile].x,fields[p.tile].z,500);} // Eigenheim-Bonus
-    var S=isShort(); // ⚡ 4 Kapitel: wichtigste Meilenstein-Karten vorziehen (Beruf→Kap.1, Auto→Kap.2, Hochzeit/Kinder/Haus→Kap.3)
-    if(S){
-      if(ch===0&&!p.job){jobCard(p,endTurnSoon);return;}
-      if(ch===1&&!(p.items&&p.items.auto)){autoCard(p,endTurnSoon);return;}
-      if(ch===4&&!p.fam.askedW){p.fam.askedW=true;wedCard(p,function(){shortMileChain(p);});return;}
-    }else{
-      if(ch===2&&!p.job){jobCard(p,endTurnSoon);return;} // Berufswahl! (Herzstück des Originals)
-      if(ch===3&&!(p.items&&p.items.auto)){autoCard(p,endTurnSoon);return;} // 🚗 Das erste Auto
-      if(ch===4&&!p.fam.partner){wedCard(p,endTurnSoon);return;} // 💍 Die große Frage
-      if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,endTurnSoon);return;} // 👶
-      if((ch===5||ch===6)&&!(p.items&&p.items.haus)){hausCard(p,endTurnSoon);return;} // 🏠 Eigenheim
-    }
+    if(ch===2&&!p.job){ // Berufswahl! (Herzstück des Originals)
+      var picks=[];while(picks.length<3){var j=JOBS[(srand()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
+      showCard("Meilenstein · Berufswahl","💼 Was willst du werden?","Drei Türen stehen offen. Hinter jeder ein anderes Leben — Gehalt ist nicht alles.",
+        picks.map(function(j){return {l:j.i+" "+j.n,sub:j.d,fn:function(){p.job={i:j.i,n:j.n,mult:j.mult};applyFx(p,j.fx);
+          p.bio.push("wurde "+j.n+" — und bereute es nie");updPlayers();endTurnSoon();}};}));
+      return;}
+    if(ch===3&&!(p.items&&p.items.auto)){ // 🚗 Das erste Auto (ERSTE SCHRITTE)
+      showCard("Meilenstein · Das erste Auto","🚗 Ein eigenes Auto?","Beim Händler glänzt ein kleines Cabrio in deiner Lieblingsfarbe. Der Schlüssel liegt schon fast in deiner Hand.",
+        [{l:"🚗 Kaufen — ab jetzt wird gefahren!",sub:"−6 💰 · +2 ❤️ · deine Figur fährt Auto · Turbo: 6 = +1 Feld",fn:function(){if(!p.items)p.items={};p.items.auto=true;applyFx(p,{geld:-6,glueck:2});p.bio.push("kaufte das erste eigene Auto — Freiheit auf vier Rädern");enableCar(G.turn);announce("🚗 BRUMM BRUMM!","#ffd166");beep(90,.35,"sawtooth",.06);setTimeout(function(){beep(140,.25,"sawtooth",.05);},200);updPlayers();endTurnSoon();}},
+         {l:"🚲 Erstmal das Fahrrad",sub:"+1 ❤️ · +1 🧠 · spart Geld",fn:function(){applyFx(p,{glueck:1,wissen:1});p.bio.push("blieb beim Fahrrad — sportlich und schlau");updPlayers();endTurnSoon();}}]);
+      return;}
+    if(ch===4&&!p.fam.partner){
+      showCard("Meilenstein · Die große Frage","💍 Willst du heiraten?","Ihr steht am See, die Sonne geht unter, und die Frage liegt in der Luft. Dein Herz klopft bis zum Hals.",
+        [{l:"💒 Ja — große Hochzeit!",sub:"−8 💰 · +6 ❤️ · +4 👥 · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-8,glueck:6,freunde:4});p.bio.push("heiratete die große Liebe mit einem rauschenden Fest");weddingScene(G.turn);syncFam(G.turn);updPlayers();endTurnSoon();}},
+         {l:"💕 Ja — klein und heimlich",sub:"−2 💰 · +4 ❤️ · Partner:in zieht mit",fn:function(){p.fam.partner=true;applyFx(p,{geld:-2,glueck:4});p.bio.push("heiratete still am Standesamt — und war überglücklich");weddingScene(G.turn);syncFam(G.turn);updPlayers();endTurnSoon();}},
+         {l:"🕊 Noch nicht — die Freiheit ruft",sub:"+2 🧠 · +1 ❤️",fn:function(){applyFx(p,{wissen:2,glueck:1});p.bio.push("wählte die Freiheit — vorerst");updPlayers();endTurnSoon();}}]);
+      return;}
+    if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;
+      showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
+        [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(srand()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");storkScene(G.turn,1);updPlayers();endTurnSoon();}},
+         {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");storkScene(G.turn,2);updPlayers();endTurnSoon();}},
+         {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");syncFam(G.turn);beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();endTurnSoon();}}]);
+      return;}
+    if((ch===5||ch===6)&&!(p.items&&p.items.haus)){ // 🏠 Eigenheim (FAMILIE & HAUS / REIFE JAHRE)
+      showCard("Meilenstein · Eigenheim","🏠 Ein eigenes Haus?","Das Schild am Gartenzaun sagt „Zu verkaufen“. Der Rasen ist verwildert — aber du siehst schon Lichterketten auf der Veranda.",
+        [{l:"🏠 Kaufen — Wurzeln schlagen",sub:"−10 💰 · +3 ❤️ · dauerhaft: +2 ❤️ an jedem Meilenstein",fn:function(){if(!p.items)p.items={};p.items.haus=true;applyFx(p,{geld:-10,glueck:3});p.bio.push("kaufte ein Haus mit Veranda — und nannte es für immer Zuhause");confetti(fields[p.tile].x,fields[p.tile].z,0xffd166,14);updPlayers();endTurnSoon();}},
+         {l:"🏕 Weiter zur Miete — flexibel bleiben",sub:"+2 🧠 · +1 💰",fn:function(){applyFx(p,{wissen:2,geld:1});p.bio.push("blieb zur Miete — die Welt war das Zuhause");updPlayers();endTurnSoon();}}]);
+      return;}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
       [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
     camShake=0.15;return;}
@@ -2289,9 +2038,6 @@ function handleField(p,f){
   if(f.type==="f"){var fb=2+((p.fam&&p.fam.dog&&srand()<0.5)?1:0);p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
     announce("+"+fb+" 👥"+(fb>2?" (🐕 wedelt!)":""),"#8affc0");emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,8);
     beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
-  if(f.type==="q"){quizCard(p);return;} // ❓ Quiz-Karte
-  if(f.type==="x"){tauschCard(p);return;} // 🔄 Tausch-Event
-  if(f.type==="r"){raceCard(p);return;} // 🏁 Wettrennen
   // Ereignis-Feld: ungenutztes Ereignis des Kapitels ziehen
   var pool=(EVENTS[ch]||[]).concat(G.adult?(EVENTS18[ch]||[]):[]);
   if(!p.used)p.used={};if(!p.used[ch])p.used[ch]=[];
