@@ -215,6 +215,26 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### User-Feedback 2026-07-11 (Runde 11 — NEUES SPIEL „Neon-Wildnis": riesige Map + Farmen/Sammeln)
+User: „riesen 1 map machen", „coole sachen farmen wie im survival, material sammeln bäume fällen
+steine holz sammeln", „charakter mit mehr liebe", „chat fenster? oben fehlt einbisschen was".
+- [ ] **neon-wildnis.html (NEU, MVP)**: EINE riesige zusammenhängende Map (prozedural ~800×800,
+      Chunks/Sichtweite fürs Handy), Tag/Nacht. **Sammeln**: Bäume fällen (3 Hiebe → Holz+Baum
+      fällt mit Animation, wächst nach ~2 Min), Steine/Kristalle abbauen (→ Stein/Kristall),
+      Büsche → Beeren (Essen). **Bauen** (Muster Survivor-Bau-Modus): Wände, Lagerfeuer (Licht+
+      Heilung), Werkbank (schaltet Rezepte frei), Turm. **Crafting-Rezepte** simpel: Holz+Stein
+      → Werkzeug (schneller sammeln), Zaun, Fackel. **Nachts kommen Monster** (bestehende
+      monster_*.glb, wenige), Basis verteidigen. **Held = hero_meshy_combat2** (walk/run/attack
+      = Hieb beim Fällen!), Assets: landscape/nature_pack/buildings wiederverwenden.
+      Save (localStorage): Inventar+Basis+Map-Seed. Mobil: Joystick + Kontext-Button
+      (Fällen/Bauen/Essen), „einfach zu spielen": Auto-Sammeln-Prompt „🪓 E drücken".
+      Später: Online-Koop via js/mp.js (Architektur von Anfang an host-autoritativ denkbar halten).
+- [ ] **Survivor-Nachschliff** (nach Bau-Modus-Merge): Spieler-Charakter „mit Liebe" (liebens-
+      werter Look statt Simpel-Shape — Bibo-Muster oder Mini-Held), HUD-Top safe-area-inset
+      (oben wirkt abgeschnitten auf Handys mit Notch/Browser-Leiste), Quick-Chat-Fenster
+      (Emote-Muster) wenn Online-Koop kommt.
+- [ ] Arcade-Hub: neon-wildnis als Karte ergänzen sobald live.
+
 ### User-Feedback 2026-07-11 (Runde 10 — Survivor-Bau-Modus + neon-realm Kamera-Bug)
 - [ ] **neon-survivor: Aufbauen/Bauen** (User-Wunsch „survival aufbauen bauen und so"):
       Bau-Phase zwischen Wellen — Kills geben 🔩 Schrott, damit baut man: Mauer-Segmente
