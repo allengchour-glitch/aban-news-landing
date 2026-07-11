@@ -1802,15 +1802,20 @@ function showEnd(){
   var fz=fields[NFIELDS-1];
   for(var cr=0;cr<5;cr++)setTimeout(function(){confetti(fz.x+(Math.random()-0.5)*8,fz.z+(Math.random()-0.5)*8,0xffd166);},cr*280);
   var sc=document.getElementById("scores");sc.innerHTML="";
-  var best=-1e9,bi=0;
-  G.players.forEach(function(p,i){var s=lifeScore(p);if(s>best){best=s;bi=i;}});
-  G.players.forEach(function(p,i){var s=lifeScore(p);
-    var d=document.createElement("div");d.className="score"+(i===bi?" win":"");
-    d.innerHTML="<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(i===bi?"👑 ":""))+p.name+"</b>"+s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>";
+  // 🏆 Endstand nach Lebenspunkten sortiert (Gewinner zuerst) + Medaillen
+  var ranked=G.players.map(function(p,i){return {p:p,i:i,s:lifeScore(p)};})
+    .sort(function(a,b){return b.s-a.s;});
+  var MEDAL=["🥇","🥈","🥉"];
+  ranked.forEach(function(r,rank){var p=r.p;
+    var d=document.createElement("div");d.className="score"+(rank===0?" win":"");
+    var badge=rank<3?MEDAL[rank]:(rank+1)+".";
+    d.innerHTML="<div style='font-size:.72rem;color:#9aa0aa;font-weight:800;margin-bottom:2px'>"+badge+" Platz</div>"+
+      "<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(rank===0?"👑 ":""))+p.name+"</b>"+r.s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>";
     sc.appendChild(d);});
+  var rankedP=ranked.map(function(r){return r.p;}); // gleiche Reihenfolge für die Chronik unten
   // Lebens-Chronik: Kurvenverlauf aller Werte pro Spieler
   var bio=document.getElementById("bio");bio.innerHTML="";
-  G.players.forEach(function(p){
+  rankedP.forEach(function(p){
     if(!p.hist||p.hist.length<2)return;
     var h4=document.createElement("h4");h4.textContent="📈 Der Lebensweg von "+p.name;bio.appendChild(h4);
     var cv=document.createElement("canvas");cv.width=540;cv.height=110;cv.style.cssText="width:100%;max-width:540px;background:#fff8ea;border-radius:10px;border:1px solid #e8d8b0";
@@ -1830,7 +1835,7 @@ function showEnd(){
       var lp2=p.hist[p.hist.length-1],ly=96-(lp2[sr[0]]/mx)*84;
       cx.font="12px serif";cx.fillText(sr[2],524,ly+4);});
     bio.appendChild(cv);});
-  G.players.forEach(function(p){
+  rankedP.forEach(function(p){
     var h=document.createElement("h4");h.textContent="📖 Das Leben von "+p.name;bio.appendChild(h);
     var t=document.createElement("div");
     var motto=p.glueck>=p.geld&&p.glueck>=p.wissen&&p.glueck>=p.freunde?"Lebensmotto: Das Glück wohnt in kleinen Momenten.":
