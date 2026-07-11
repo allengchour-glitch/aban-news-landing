@@ -19,17 +19,20 @@
 html,body{height:100%;overflow:hidden;background:#06070f;font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#fff;-webkit-tap-highlight-color:transparent}
 #wrap{position:fixed;inset:0}
 canvas{display:block}
-#hud{position:fixed;top:12px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;font-weight:800;font-size:1.1rem;text-shadow:0 2px 8px #000;pointer-events:none}
-#hud .best{opacity:.8;font-size:.95rem}
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.7),rgba(6,7,15,.92));backdrop-filter:blur(3px);padding:20px}
-.overlay h1{font-size:2.1rem;letter-spacing:1px;margin-bottom:.2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.overlay p{color:#c7cbe6;max-width:340px;margin:.5rem 0;font-size:.95rem;line-height:1.5}
-.btn{margin-top:14px;border:0;cursor:pointer;font-weight:800;font-size:1.05rem;padding:13px 30px;border-radius:40px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
-.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.92rem;padding:10px 22px}
-.small{font-size:.8rem;color:#8890b8;margin-top:18px}
+/* HUD-Lesbarkeits-Muster (neon-realm): Fliesstext ≥16px, Panels vor Neon-Szene, Touch ≥44px */
+#hud{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 112px 0 12px;font-weight:800;font-size:1.35rem;pointer-events:none;z-index:5}
+#hud>span{background:rgba(8,11,28,.72);border:1px solid rgba(94,242,255,.28);border-radius:12px;padding:7px 14px;text-shadow:0 2px 8px #000}
+#hud .best{font-size:1.05rem;color:#c7cbe6;padding-top:10px}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.7),rgba(6,7,15,.92));backdrop-filter:blur(3px);padding:20px;z-index:7;overflow-y:auto}
+.overlay h1{font-size:2.2rem;letter-spacing:1px;margin-bottom:.2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:1rem;line-height:1.55}
+.btn{margin-top:14px;border:0;cursor:pointer;font-weight:800;font-size:1.1rem;padding:13px 32px;min-height:48px;border-radius:40px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
+.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:1rem;padding:12px 24px;min-height:44px}
+.small{font-size:1rem;color:#98a0c6;margin-top:18px}
 .small a{color:#9fb2ff}
 .hide{display:none!important}
-.tag{font-size:.75rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
+.tag{font-size:.9rem;letter-spacing:3px;color:#8f99d0;text-transform:uppercase;margin-bottom:6px}
+#combo:empty{display:none}
 #flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;transition:opacity .08s}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
@@ -38,22 +41,22 @@ canvas{display:block}
 <div id="wrap"></div>
 <div id="vig"></div>
 <div id="hud"><span id="score">0</span><span class="best"><span id="bestLbl">Rekord</span> <span id="best">0</span></span></div>
-<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:8px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer">🔊</button>
-<button id="setBtn" title="Einstellungen" style="position:fixed;top:8px;right:58px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer">⚙️</button>
+<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:8px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer">🔊</button>
+<button id="setBtn" title="Einstellungen" style="position:fixed;top:8px;right:62px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer">⚙️</button>
 <div id="flash"></div>
-<div id="combo" style="position:fixed;top:44px;left:16px;font-weight:800;font-size:1.4rem;text-shadow:0 2px 8px #000;pointer-events:none"></div>
-<div id="dashbar" style="position:fixed;top:78px;left:16px;width:180px;height:10px;background:rgba(16,20,43,.6);border-radius:6px;overflow:hidden;pointer-events:none"><i id="dashfill" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd166,#ff7ad9)"></i></div>
-<div id="announce" style="position:fixed;top:24%;left:0;right:0;text-align:center;font-weight:800;font-size:1.7rem;text-shadow:0 2px 10px #000;pointer-events:none;opacity:0;transition:opacity .3s;color:#5ef2ff"></div>
+<div id="combo" style="position:fixed;top:60px;left:12px;font-weight:800;font-size:1.5rem;background:rgba(8,11,28,.72);border:1px solid rgba(94,242,255,.28);border-radius:10px;padding:4px 12px;text-shadow:0 2px 8px #000;pointer-events:none;z-index:5"></div>
+<div id="dashbar" style="position:fixed;top:106px;left:12px;width:180px;height:14px;background:rgba(8,11,28,.72);border:1px solid rgba(94,242,255,.28);border-radius:8px;overflow:hidden;pointer-events:none;z-index:5"><i id="dashfill" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd166,#ff7ad9)"></i></div>
+<div id="announce" style="position:fixed;top:24%;left:0;right:0;text-align:center;font-weight:800;font-size:1.9rem;text-shadow:0 2px 12px #000,0 0 24px rgba(0,0,0,.8);pointer-events:none;opacity:0;transition:opacity .3s;color:#5ef2ff;z-index:5"></div>
 <div id="upg" class="overlay hide" style="background:rgba(6,7,15,.82);backdrop-filter:blur(4px)"></div>
 
 <div class="overlay" id="start">
   <div class="tag" id="tStartTag">aban news · 3D-Arcade</div>
   <h1>NEON-FLUG</h1>
   <p id="tIntro">Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.</p>
-  <p id="tControls" style="font-size:.85rem;color:#8890b8">Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen</p>
+  <p id="tControls" style="font-size:1rem;color:#aab4dd">Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen</p>
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
-  <div id="skins" style="margin-top:16px;font-size:.9rem;color:#c7cbe6"></div>
+  <div id="skins" style="margin-top:16px;font-size:1rem;color:#c7cbe6"></div>
   <div class="small" id="tStartFoot">Läuft im Browser, kein Download · <a href="/online-tools.html">mehr Tools</a></div>
 </div>
 
@@ -69,7 +72,7 @@ canvas{display:block}
 <div class="overlay hide" id="settings">
   <div class="tag">Einstellungen · Settings</div>
   <h1 style="font-size:1.5rem" id="tSetTitle">Einstellungen</h1>
-  <div id="setBody" style="margin-top:10px;font-size:.95rem;color:#c7cbe6"></div>
+  <div id="setBody" style="margin-top:10px;font-size:1rem;color:#c7cbe6"></div>
   <button class="btn" id="setCloseBtn">OK</button>
 </div>
 
@@ -81,6 +84,7 @@ canvas{display:block}
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
 <script>
 (function(){
 "use strict";
@@ -96,9 +100,9 @@ renderer.setSize(W,H);wrap.appendChild(renderer.domElement);
 
 var scene=new THREE.Scene();
 scene.background=new THREE.Color(0x06070f);
-scene.fog=new THREE.Fog(0x06070f,50,240);
+scene.fog=new THREE.Fog(0x06070f,55,330); // weiter Nebel, damit die GLB-Bergketten am Horizont sichtbar sind
 
-var camera=new THREE.PerspectiveCamera(70,W/H,0.1,300);
+var camera=new THREE.PerspectiveCamera(70,W/H,0.1,460);
 camera.position.set(0,3.2,9);
 
 scene.add(new THREE.AmbientLight(0x404a8c,1.1));
@@ -125,11 +129,11 @@ var trailTex=(function(){var cv=document.createElement("canvas");cv.width=cv.hei
 var trail=new THREE.Points(trailG,new THREE.PointsMaterial({size:0.9,map:trailTex,vertexColors:true,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(trail);
 
 // Neon-Canyon-Wände (füllen den leeren Raum, geben "Canyon"-Gefühl)
-var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:1.2,flatShading:true}));
+var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:0.7,flatShading:true}));
 wallL.position.set(-9.6,-0.4,-300);scene.add(wallL);
 var wallR=wallL.clone();wallR.material=wallL.material.clone();wallR.position.x=9.6;scene.add(wallR);
 // Untere Leuchtleisten an den Wänden
-var stripL=new THREE.Mesh(new THREE.BoxGeometry(0.25,0.25,800),new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0xb98bff,emissiveIntensity:1.4}));
+var stripL=new THREE.Mesh(new THREE.BoxGeometry(0.25,0.25,800),new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0xb98bff,emissiveIntensity:1.1}));
 stripL.position.set(-9.0,-1.8,-300);scene.add(stripL);
 var stripR=stripL.clone();stripR.material=stripL.material.clone();stripR.position.x=9.0;scene.add(stripR);
 
@@ -137,8 +141,35 @@ var stripR=stripL.clone();stripR.material=stripL.material.clone();stripR.positio
 var starGeo=new THREE.BufferGeometry();var sp=new Float32Array(220*3);
 for(var si=0;si<220;si++){sp[si*3]=(Math.random()-.5)*140;sp[si*3+1]=Math.random()*45+6;sp[si*3+2]=-Math.random()*320;}
 starGeo.setAttribute("position",new THREE.BufferAttribute(sp,3));
-var stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0x9aa2d8,size:0.55,transparent:true,opacity:.8}));
+var stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0x9aa2d8,size:0.7,map:trailTex,transparent:true,opacity:.8,depthWrite:false}));
 scene.add(stars);
+
+// Horizont-Glut hinter den Bergen (Retrowave-Band, Farbe folgt dem Biom)
+var horizonTex=(function(){var cv=document.createElement("canvas");cv.width=256;cv.height=128;var c=cv.getContext("2d");var g=c.createRadialGradient(128,128,8,128,128,122);g.addColorStop(0,"rgba(255,255,255,.85)");g.addColorStop(.45,"rgba(255,255,255,.3)");g.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,256,128);return new THREE.CanvasTexture(cv);})();
+var horizon=new THREE.Mesh(new THREE.PlaneGeometry(430,150),new THREE.MeshBasicMaterial({map:horizonTex,color:0x5ef2ff,transparent:true,opacity:.4,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+horizon.position.set(0,14,-320);horizon.material.opacity=0.55;scene.add(horizon);
+
+// Horizont-Landschaft (Blender-GLB, spiele-dev/blender_landscape_flug.py):
+// "corr_*" = kachelbares Bergketten-Segment (Länge 360) → 2 Instanzen mit Parallax-Scroll+Wrap,
+// "back_*" = statische Peak-Wand am Horizont. Kristall-Materialien glühen via emissiveIntensity.
+var landCorr=[],LSEG=360;
+if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/landscape_flug.glb",function(g){
+  var corr=new THREE.Group(),back=new THREE.Group();
+  g.scene.children.slice().forEach(function(n){(n.name.indexOf("back")===0?back:corr).add(n);});
+  var done={},rocks=[];
+  [corr,back].forEach(function(gr){gr.traverse(function(n){if(n.isMesh&&n.material){
+    if(((n.material.name||"").indexOf("crystal")<0))rocks.push(n);
+    if(done[n.material.uuid])return;done[n.material.uuid]=1;
+    if(((n.material.name||"").indexOf("crystal")>=0)){n.material.emissiveIntensity=0.9;}
+    else{n.material.emissiveIntensity=0.35;n.material.color.multiplyScalar(0.18);}}});});
+  // Retrowave-Kanten: glühende Cyan-Linien auf den Berg-Facetten (dunkle Silhouette + Neon-Draht);
+  // Winkel-Schwelle 30° = nur markante Kanten (Kegel-Facetten), kein Gekritzel auf den sanften Hängen
+  var edgeMat=new THREE.LineBasicMaterial({color:0x36d8ff,transparent:true,opacity:0.35,blending:THREE.AdditiveBlending});
+  rocks.forEach(function(n){n.add(new THREE.LineSegments(new THREE.EdgesGeometry(n.geometry,30),edgeMat));});
+  back.position.set(0,-2,-262);scene.add(back);
+  corr.position.set(0,-2,-60);scene.add(corr);landCorr.push(corr);
+  var c2=corr.clone();c2.position.set(0,-2,-60-LSEG);scene.add(c2);landCorr.push(c2);
+},undefined,function(){});}
 
 // Player glider (low-poly)
 var ship=new THREE.Group();
@@ -216,7 +247,7 @@ var BIOMES=[
 ];
 function mult(){return Math.min(9,1+((combo/6)|0));}
 function hex2css(h){return "#"+("000000"+(h>>>0).toString(16)).slice(-6);}
-function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);wallL.material.color.setHex(b.accent);wallL.material.emissive.setHex(b.accent);wallR.material.color.setHex(b.accent);wallR.material.emissive.setHex(b.accent);return b;}
+function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);horizon.material.color.setHex(b.accent);wallL.material.color.setHex(b.accent);wallL.material.emissive.setHex(b.accent);wallR.material.color.setHex(b.accent);wallR.material.emissive.setHex(b.accent);return b;}
 function announce(txt,colorHex){var a=document.getElementById("announce");a.style.color=hex2css(colorHex);a.textContent=txt;a.style.opacity="1";clearTimeout(window._annT);window._annT=setTimeout(function(){a.style.opacity="0";},1300);}
 function nearMiss(){combo++;comboTimer=comboTime;score+=mult();if(shake<0.25)shake=0.25;beep(720+combo*6,.05,"square",.04);}
 function doDash(){if(!running||choosing||paused||dashActive||dashCharge<1)return;dashActive=true;dashTimer=26;dashCharge=0;if(shake<0.6)shake=0.6;burst(shipX,0,1,BIOMES[biomeIndex%BIOMES.length].accent);beep(880,.12,"square",.08);}
@@ -240,8 +271,8 @@ var selSkin=+(lsGet("aban_neon_skin")||0);
 function unlocked(i){return xp>=SKINS[i].need;}
 function applySkin(i){if(!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
 function renderSkins(){var el=document.getElementById("skins");if(!el)return;var next=null;for(var n=0;n<SKINS.length;n++){if(xp<SKINS[n].need){next=SKINS[n];break;}}
-  var html="🛸 "+tr("skin")+": "+SKINS.map(function(s,i){var u=unlocked(i);return "<button data-i='"+i+"' style='margin:2px;padding:5px 10px;border-radius:8px;cursor:"+(u?"pointer":"default")+";border:1px solid "+(i===selSkin?"#5ef2ff":"#3a4170")+";background:"+(u?"#10142b":"#0a0c18")+";color:"+(u?"#e6e9ff":"#555c80")+"'>"+(u?s.name:tr("locked"))+"</button>";}).join("");
-  html+="<div style='margin-top:6px;font-size:.8rem;color:#8890b8'>"+tr("xpTotal")+": "+xp+(next?(" · "+tr("nextSkin")+" "+next.need):" · "+tr("allFree"))+"</div>";
+  var html="🛸 "+tr("skin")+": "+SKINS.map(function(s,i){var u=unlocked(i);return "<button data-i='"+i+"' style='margin:3px;padding:11px 14px;font-size:1rem;border-radius:10px;cursor:"+(u?"pointer":"default")+";border:1px solid "+(i===selSkin?"#5ef2ff":"#3a4170")+";background:"+(u?"#10142b":"#0a0c18")+";color:"+(u?"#e6e9ff":"#555c80")+"'>"+(u?s.name:tr("locked"))+"</button>";}).join("");
+  html+="<div style='margin-top:8px;font-size:1rem;color:#98a0c6'>"+tr("xpTotal")+": "+xp+(next?(" · "+tr("nextSkin")+" "+next.need):" · "+tr("allFree"))+"</div>";
   el.innerHTML=html;
   el.querySelectorAll("button").forEach(function(b){b.onclick=function(){var i=+b.getAttribute("data-i");if(unlocked(i)){applySkin(i);renderSkins();beep(520,.1,"triangle",.06);}};});}
 
@@ -262,9 +293,9 @@ function applyLang(){try{localStorage.setItem("aban_neon_lang",lang);}catch(e){}
 var setWasRunning=false;
 function renderSettings(){var el=document.getElementById("setBody");if(!el)return;
   el.innerHTML="<div style='margin:8px 0'>"+tr("lang")+": "+
-    "<button data-l='de' style='margin:2px;padding:6px 14px;border-radius:8px;cursor:pointer;border:1px solid "+(lang==="de"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>DE</button>"+
-    "<button data-l='en' style='margin:2px;padding:6px 14px;border-radius:8px;cursor:pointer;border:1px solid "+(lang==="en"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>EN</button></div>"+
-    "<div style='margin:8px 0'>"+tr("sound")+": <button id='setSound' style='margin:2px;padding:6px 14px;border-radius:8px;cursor:pointer;border:1px solid #3a4170;background:#10142b;color:#e6e9ff'>"+(muted?tr("off"):tr("on"))+"</button></div>";
+    "<button data-l='de' style='margin:3px;padding:11px 20px;font-size:1rem;border-radius:10px;cursor:pointer;border:1px solid "+(lang==="de"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>DE</button>"+
+    "<button data-l='en' style='margin:3px;padding:11px 20px;font-size:1rem;border-radius:10px;cursor:pointer;border:1px solid "+(lang==="en"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>EN</button></div>"+
+    "<div style='margin:8px 0'>"+tr("sound")+": <button id='setSound' style='margin:3px;padding:11px 20px;font-size:1rem;border-radius:10px;cursor:pointer;border:1px solid #3a4170;background:#10142b;color:#e6e9ff'>"+(muted?tr("off"):tr("on"))+"</button></div>";
   el.querySelectorAll("button[data-l]").forEach(function(b){b.onclick=function(){lang=b.getAttribute("data-l");applyLang();renderSettings();beep(520,.1,"triangle",.06);};});
   var sb=document.getElementById("setSound");if(sb)sb.onclick=function(){muted=!muted;try{localStorage.setItem("aban_neon_muted",muted?"1":"0");}catch(e){}var mb=document.getElementById("muteBtn");if(mb)mb.textContent=muted?"🔇":"🔊";try{musSync();}catch(e){}renderSettings();};}
 function openSettings(){setWasRunning=running&&!paused;if(setWasRunning)paused=true;renderSettings();document.getElementById("settings").classList.remove("hide");}
@@ -484,6 +515,9 @@ function loop(t){
     if(b.life<=0){scene.remove(b.pts);bursts.splice(i,1);}}
   // scenery scroll
   gridMesh.material.uniforms.uT.value+=(running?speed:0.15)*0.011;
+  // Bergketten-Parallax: langsamer als die Welt (fern), nahtloser Wrap über 2 Segmente
+  var lsp=((running&&!choosing&&!paused)?(speed+(dashActive?0.9:0)):0.12)*0.3;
+  for(var _li=0;_li<landCorr.length;_li++){var lc=landCorr[_li];lc.position.z+=lsp;if(lc.position.z>240)lc.position.z-=2*LSEG;}
   glow.position.set(ship.position.x,2,ship.position.z+2);
   // camera shake + follow
   if(shake>0)shake-=0.04;

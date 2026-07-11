@@ -19,19 +19,22 @@
 html,body{height:100%;overflow:hidden;background:#04050d;color:#fff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
 #wrap{position:fixed;inset:0}
 canvas{display:block}
-#hud{position:fixed;top:12px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;font-weight:800;text-shadow:0 2px 8px #000;pointer-events:none}
-#spd{font-size:1.5rem}#spd small{font-size:.8rem;color:#9fb2ff;font-weight:600}
-.best{opacity:.85;font-size:.95rem;text-align:right}
-#shieldwrap{position:fixed;top:52px;left:16px;width:200px;height:10px;background:rgba(16,20,43,.6);border-radius:6px;overflow:hidden;pointer-events:none}
+#hud{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 10px;gap:8px;font-weight:800;text-shadow:0 2px 8px #000;pointer-events:none;z-index:5}
+.panel{background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:12px;padding:7px 13px;box-shadow:0 4px 18px rgba(0,0,0,.4);backdrop-filter:blur(3px)}
+#spd{font-size:1.5rem;line-height:1.15}#spd small{font-size:1rem;color:#9fb2ff;font-weight:600}
+.best{font-size:1rem;text-align:right;line-height:1.4;margin-right:56px}
+#shieldwrap{position:fixed;top:66px;left:10px;display:flex;align-items:center;gap:7px;pointer-events:none;background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:10px;padding:6px 10px;z-index:5}
+#shieldwrap .sic{font-size:1rem;line-height:1}
+#shieldtrack{display:block;width:150px;height:10px;background:rgba(16,20,43,.9);border-radius:6px;overflow:hidden}
 #shieldFill{display:block;height:100%;width:100%;background:linear-gradient(90deg,#5ef2ff,#b98bff)}
 .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(4,5,13,.93));padding:20px;backdrop-filter:blur(3px)}
 .overlay h1{font-size:2.1rem;letter-spacing:1px;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem}
-.overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:.95rem;line-height:1.5}
-.tag{font-size:.72rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
+.overlay p{color:#c7cbe6;max-width:380px;margin:.5rem 0;font-size:1rem;line-height:1.55}
+.tag{font-size:.8rem;letter-spacing:3px;color:#8e98d0;text-transform:uppercase;margin-bottom:6px}
 .btn{margin-top:12px;border:0;cursor:pointer;font-weight:800;font-size:1.05rem;padding:13px 30px;border-radius:40px;color:#04050d;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
-.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.92rem;padding:10px 22px}
-.small{font-size:.8rem;color:#8890b8;margin-top:18px}.small a{color:#9fb2ff}
-#muteBtn{position:fixed;top:8px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
+.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:1rem;padding:12px 24px}
+.small{font-size:1rem;color:#9aa2c8;margin-top:16px}.small a{color:#9fb2ff}
+#muteBtn{position:fixed;top:10px;right:10px;z-index:6;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:46px;height:46px;font-size:1.15rem;cursor:pointer}
 .hide{display:none!important}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
 </style>
@@ -40,22 +43,22 @@ canvas{display:block}
 <div id="wrap"></div>
 <div id="vig"></div>
 <div id="hud" class="hide">
-  <div id="spd">0 <small>km/h</small></div>
-  <div class="best"><span id="dist">0</span> m<br><span style="opacity:.7">Rekord <span id="best">0</span> m</span></div>
+  <div id="spd" class="panel">0 <small>km/h</small></div>
+  <div class="best panel"><span id="dist">0</span> m<br><span style="opacity:.75">Rekord <span id="best">0</span> m</span></div>
 </div>
-<div id="shieldwrap" class="hide"><i id="shieldFill"></i></div>
+<div id="shieldwrap" class="hide"><span class="sic">🛡️</span><span id="shieldtrack"><i id="shieldFill"></i></span></div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
-<button id="brakeBtn" style="position:fixed;left:18px;bottom:22px;z-index:7;width:78px;height:78px;border-radius:50%;border:2px solid #ff6ec7;background:rgba(60,20,45,.5);color:#ff9ad9;font-size:.95rem;font-weight:800;display:none;-webkit-user-select:none;user-select:none">BREMSE</button>
+<button id="brakeBtn" style="position:fixed;left:18px;bottom:22px;z-index:7;width:84px;height:84px;border-radius:50%;border:2px solid #ff6ec7;background:rgba(60,20,45,.55);color:#ff9ad9;font-size:1rem;font-weight:800;display:none;-webkit-user-select:none;user-select:none">BREMSE</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · Anti-Grav · PSP-Style</div>
   <h1>NEON RACER</h1>
   <p>Folge der kurvigen Neon-Strecke. Lenke in die Kurven, halte den <b>Boost</b>, weiche roten Barrieren aus. Je weiter, desto schneller.</p>
-  <p style="font-size:.85rem;color:#8890b8">Lenken: ← → / A D / Maus / Finger · Bremse: ↓ / LEER</p>
+  <p style="font-size:1rem;color:#9aa4cf">Lenken: ← → / A D / Maus / Finger · Bremse: ↓ / LEER</p>
   <button class="btn" id="startBtn">Start ▶</button>
   <div id="best2" class="small"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
-  <div class="small" style="font-size:.68rem;opacity:.7">Musik: „Voltaic" — Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
+  <div class="small" style="font-size:.78rem;opacity:.75;margin-top:8px">Musik: „Voltaic" — Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
 </div>
 
 <div class="overlay hide" id="over">
@@ -68,6 +71,7 @@ canvas{display:block}
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
 <script>
 (function(){
 "use strict";
@@ -76,7 +80,7 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene(); scene.background=new THREE.Color(0x04050d); scene.fog=new THREE.Fog(0x04050d,60,220);
+var scene=new THREE.Scene(); scene.background=new THREE.Color(0x04050d); scene.fog=new THREE.Fog(0x04050d,65,265);
 var camera=new THREE.PerspectiveCamera(72,W/H,0.1,400);
 scene.add(new THREE.AmbientLight(0x4a5590,1.1));
 var sun=new THREE.DirectionalLight(0xffffff,0.7); sun.position.set(5,12,8); scene.add(sun);
@@ -95,7 +99,7 @@ ship.position.set(0,0.6,0); scene.add(ship);
 var sGlow=new THREE.PointLight(0x5ef2ff,1.6,22); scene.add(sGlow);
 
 // Strecken-Boden (Ribbon-Segmente) + Rail-Posten (werden je Frame neu positioniert)
-var N=46, SP=5.0;
+var N=50, SP=5.0;
 var leftRail=[],rightRail=[],tiles=[];
 function railMesh(c){var m=new THREE.Mesh(new THREE.BoxGeometry(0.45,1.3,SP*0.72),mat(c,c,0.85));scene.add(m);return m;}
 function tileMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(HALF*2,0.12,SP*0.94),mat(0x111a3e,0x0c1838,0.55));scene.add(m);return m;}
@@ -114,12 +118,68 @@ function neonGrid(size,cells,c1,c2){
  var mesh=new THREE.Mesh(new THREE.PlaneGeometry(size,size),m);mesh.rotation.x=-Math.PI/2;return mesh;
 }
 var gridMesh=neonGrid(640,64,0xb98bff,0x141c48);gridMesh.position.y=-3.6;gridMesh.position.z=-120;scene.add(gridMesh);
-// Backdrop-Pylone + Sterne
-var winTex=(function(){var cv=document.createElement("canvas");cv.width=64;cv.height=256;var c=cv.getContext("2d");c.fillStyle="#10173a";c.fillRect(0,0,64,256);
-for(var wy=4;wy<252;wy+=10)for(var wx=4;wx<60;wx+=10){if(Math.random()<0.55){c.fillStyle=Math.random()<0.5?"rgba(94,242,255,.85)":"rgba(185,139,255,.8)";c.fillRect(wx,wy,6,6);}}
-var t=new THREE.CanvasTexture(cv);return t;})();
-var pylons=[];
-for(i=0;i<30;i++){var hh=10+Math.random()*30;var py=new THREE.Mesh(new THREE.BoxGeometry(3,hh,3),new THREE.MeshStandardMaterial({map:winTex,color:0x9aa8ff,emissive:(i%2)?0x5ef2ff:0xb98bff,emissiveIntensity:0.35,flatShading:true}));py.position.set((Math.random()<0.5?-1:1)*(20+Math.random()*60),hh/2-2,-Math.random()*300);scene.add(py);pylons.push(py);}
+// ---- Landschaft (ersetzt die alten Pylonen-Klötze) ----
+// 1) Ferner Neon-Bergring am Horizont: landscape_realm.glb (Blender-GLB aus neon-realm,
+//    Rezept spiele-dev/blender_landscape.py). Kamera bleibt bei z~0 (Treadmill) → der Ring
+//    passt perfekt als Panorama; langsame Drehung mit der Distanz = Fahrt durchs Tal.
+var landscape=null;
+if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/landscape_realm.glb",function(g){
+  var o=g.scene;
+  o.traverse(function(n){if(n.isMesh){n.castShadow=false;n.receiveShadow=false;
+    if(n.material){var nm=(n.material.name||"").toLowerCase();
+      n.material.flatShading=true;n.material.needsUpdate=true;
+      n.material.emissiveIntensity=nm.indexOf("crystal")>=0?1.5:0.9;}}});
+  o.scale.set(0.62,0.62,0.62);o.position.y=-3.4;scene.add(o);landscape=o;},undefined,function(){});}
+// 2) Streckenrand-Vegetation: nature_pack.glb → InstancedMesh pro Kind-Mesh (Muster neon-realm).
+//    Jede Instanz ist an einer Strecken-Distanz d verankert (wie die Hindernisse), scrollt
+//    also mit und wird hinter dem Schiff um NAT_SPAN nach vorn recycelt (jenseits des Nebels).
+//    tree_glow = "Neon-Lichtmasten" im festen Raster dicht am Rail, Offsets so gewählt,
+//    dass nichts auf die Fahrbahn (|x-center|<HALF+Flügel) ragt und Kurven frei bleiben.
+var natSets=[],natReady=false,NAT_SPAN=N*SP+30;
+(function(){
+ if(!THREE.GLTFLoader)return;
+ new THREE.GLTFLoader().load("/models/nature_pack.glb",function(g){
+  g.scene.updateMatrixWorld(true);
+  var lib={},boosted={};
+  g.scene.children.forEach(function(root){var parts=[];
+    root.traverse(function(n){if(n.isMesh)parts.push({geo:n.geometry,mt:n.material,loc:n.matrixWorld.clone()});});
+    if(parts.length)lib[root.name]=parts;});
+  var _tc=new THREE.Color();
+  function build(name,anchors){var parts=lib[name];if(!parts||!anchors.length)return;
+    parts.forEach(function(p){
+      if(!boosted[p.mt.uuid]){boosted[p.mt.uuid]=1;p.mt.emissiveIntensity=(p.mt.name==="nature_lit")?1.0:1.05;} // sanft — Bloom macht den Rest (Blowout-Falle)
+      var im=new THREE.InstancedMesh(p.geo,p.mt,anchors.length);
+      for(var i=0;i<anchors.length;i++)im.setColorAt(i,_tc.setRGB(anchors[i].tint,anchors[i].tint,anchors[i].tint));
+      if(im.instanceColor)im.instanceColor.needsUpdate=true;
+      im.frustumCulled=false;scene.add(im);
+      natSets.push({im:im,loc:p.loc,anchors:anchors});});}
+  function anchor(d,off,s){return {d:d,off:off,s:s,rot:Math.random()*6.283,tint:0.7+Math.random()*0.3};}
+  function band(n,o0,o1,s0,s1){var a=[];for(var i=0;i<n;i++)
+    a.push(anchor(Math.random()*NAT_SPAN,(i%2?1:-1)*(o0+Math.random()*(o1-o0)),s0+Math.random()*(s1-s0)));return a;}
+  // Lichtmasten: alle 26 m, abwechselnd links/rechts, fester Abstand zum Rail
+  var glow=[];for(var d=8,k=0;d<NAT_SPAN;d+=26,k++)glow.push(anchor(d,(k%2?1:-1)*(HALF+6),1.7+Math.random()*0.3));
+  build("tree_glow",glow);
+  // Baum-/Busch-Mix nahe der Strecke (Offsets 13..32 → nie auf der Fahrbahn)
+  build("tree_leafy",band(14,13,32,1.2,2.0));
+  build("tree_birch",band(10,13,32,1.2,2.0));
+  build("tree_willow",band(6,14,28,1.3,2.0));
+  build("bush_a",band(10,11,26,1.2,2.2));
+  build("bush_b",band(10,11,26,1.2,2.2));
+  // Ferner Wald-Gürtel: grosse Silhouetten füllen die Mitte bis zum Bergring
+  build("tree_leafy",band(10,42,95,2.6,4.2));
+  build("tree_birch",band(8,42,95,2.6,4.2));
+  natReady=true;},undefined,function(){});
+})();
+var _nd=new THREE.Object3D(),_nm4=new THREE.Matrix4();
+function updNature(){ if(!natReady)return;
+ for(var s=0;s<natSets.length;s++){var set=natSets[s],A=set.anchors;
+  for(var i=0;i<A.length;i++){var a=A[i];
+   while(a.d<dist-14)a.d+=NAT_SPAN; // recycelt jenseits des Nebels (kein Pop-in)
+   while(a.d>dist+NAT_SPAN-14)a.d-=NAT_SPAN; // Neustart: dist springt auf 0 zurück
+   _nd.position.set(centerX(a.d)+a.off,-3.55,-(a.d-dist));
+   _nd.scale.set(a.s,a.s,a.s);_nd.rotation.set(0,a.rot,0);_nd.updateMatrix();
+   _nm4.multiplyMatrices(_nd.matrix,set.loc);set.im.setMatrixAt(i,_nm4);}
+  set.im.instanceMatrix.needsUpdate=true;}}
 var stG=new THREE.BufferGeometry();var sp=new Float32Array(200*3);for(i=0;i<200;i++){sp[i*3]=(Math.random()-.5)*400;sp[i*3+1]=Math.random()*80+15;sp[i*3+2]=-Math.random()*360;}stG.setAttribute("position",new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(stG,new THREE.PointsMaterial({color:0x9aa2d8,size:0.8,transparent:true,opacity:.7})));
 
 // Hindernisse / Boost-Pads (am Distanz-Wert verankert)
@@ -176,11 +236,12 @@ addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].cl
 addEventListener("touchmove",function(e){if(e.touches[0])touchX=e.touches[0].clientX;e.preventDefault();},{passive:false});
 addEventListener("touchend",function(){touchX=null;});
 addEventListener("mousemove",function(e){if(running)touchX=e.clientX;}); // "Maus" war im Hinweis versprochen, aber nie verdrahtet
+var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 (function(){var bb=document.getElementById("brakeBtn");if(!bb)return;
-  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)bb.style.display="block";
   bb.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();brake=true;},{passive:false});
   bb.addEventListener("touchend",function(e){e.stopPropagation();brake=false;});
   bb.addEventListener("touchcancel",function(){brake=false;});})();
+function brakeBtnVis(on){var bb=document.getElementById("brakeBtn");if(bb)bb.style.display=(on&&IS_COARSE)?"block":"none";} // nur im Spiel zeigen (nicht auf Start/Game-Over)
 
 function spawnThing(){
   var t=null;for(var i=0;i<things.length;i++)if(!things[i].active){t=things[i];break;}if(!t)return;
@@ -193,12 +254,13 @@ function spawnThing(){
 var shake=0,_cyan=new THREE.Color(0x5ef2ff);
 function burst(x,y,z,c){shake=Math.max(shake,0.35);}
 
-function start(){reset();running=true;paused=false;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");musSync();}
+function start(){reset();running=true;paused=false;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");brakeBtnVis(true);musSync();}
 function showBest(){var b=bestM();document.getElementById("best").textContent=b;document.getElementById("best2").textContent=b>0?("🏆 Rekord: "+b+" m"):"";}
 function gameOver(){running=false;shake=1.4;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
   document.getElementById("finalT").textContent=m+" m";
   document.getElementById("verdict").innerHTML=(rec&&m>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+" m · ")+"Top-Speed "+Math.floor(speed*3.0)+" km/h";
-  document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");
+  document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");brakeBtnVis(false);
+  showBest(); // HUD-"Rekord" sofort aktualisieren (stand sonst bis zum Reload auf dem alten Wert)
   musSync();beep(90,.4,"sawtooth",.12);}
 
 document.getElementById("startBtn").onclick=start;
@@ -251,7 +313,8 @@ function loop(now){
     // HUD
     document.getElementById("spd").innerHTML=Math.floor(speed*3.0)+" <small>km/h</small>";
     document.getElementById("dist").textContent=Math.floor(dist);
-    document.getElementById("shieldFill").style.width=shield+"%";
+    var sf=document.getElementById("shieldFill");sf.style.width=shield+"%";
+    sf.style.background=shield<30?"linear-gradient(90deg,#ff4d6d,#ff9a4a)":"";
   }
   // Kamera (Chase, folgt + bankt)
   camX+=((shipX)-camX)*0.10;
@@ -259,7 +322,8 @@ function loop(now){
   camera.lookAt(shipX*0.5+centerX(dist+20)*0.5, 1.0, ship.position.z-22);
   if(shake>0.001)shake*=0.86; else shake=0;
   gridMesh.material.uniforms.uT.value=dist*0.02;
-  for(var _p=0;_p<pylons.length;_p++)pylons[_p].material.emissiveIntensity=0.3+0.22*(0.5+0.5*Math.sin(now*0.0012+_p*1.7));
+  if(landscape)landscape.rotation.y=dist*0.0006; // Bergring dreht langsam mit = Fahrt durchs Tal
+  updNature();
   sGlow.color.lerp(_cyan,0.08); // Farbe nach Boost/Treffer zurück zu Cyan
   camera.rotation.z=bank*0.3;
   renderBloom();

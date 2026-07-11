@@ -20,15 +20,18 @@ html,body{height:100%;overflow:hidden;background:#06070f;color:#fff;font-family:
 #wrap{position:fixed;inset:0}
 canvas{display:block}
 #hud{position:fixed;top:0;left:0;right:0;padding:10px 14px;pointer-events:none;font-weight:700;text-shadow:0 2px 6px #000}
-.bar{height:10px;border-radius:6px;background:#1b2040;overflow:hidden;margin-top:4px}
+/* HUD-Lesbarkeit: halbtransparentes Panel hinter allen Anzeigen, Text >=16px (1rem) auch mobil */
+#hudPanel{max-width:430px;background:rgba(9,12,28,.62);border:1px solid rgba(110,130,220,.35);border-radius:12px;padding:8px 12px 10px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+@media(max-width:520px){#hudPanel{max-width:calc(100% - 58px)}}
+.bar{height:12px;border-radius:6px;background:#1b2040;overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;width:100%}
 #hpFill{background:linear-gradient(90deg,#ff6b6b,#ff9e7a)}
 #xpFill{background:linear-gradient(90deg,#5ef2ff,#b98bff)}
-#hudTop{display:flex;justify-content:space-between;font-size:.95rem}
+#hudTop{display:flex;justify-content:space-between;gap:8px;font-size:1rem;white-space:nowrap}
 #hpwrap{max-width:240px} #xpwrap{margin-top:6px;max-width:100%}
 .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(6,7,15,.93));padding:20px;backdrop-filter:blur(3px)}
 .overlay h1{font-size:2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem}
-.overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:.95rem;line-height:1.5}
+.overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:1rem;line-height:1.5}
 .tag{font-size:.72rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
 .btn{margin-top:8px;border:0;cursor:pointer;font-weight:800;font-size:1.02rem;padding:13px 28px;border-radius:40px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
 .btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:.9rem;padding:10px 20px}
@@ -39,7 +42,7 @@ canvas{display:block}
 .small{font-size:.8rem;color:#8890b8;margin-top:16px}.small a{color:#9fb2ff}
 #upRow{margin-top:7px;font-size:1.05rem;letter-spacing:2px;text-shadow:0 2px 6px #000}
 #best{color:#ffd166;font-weight:800;margin-top:2px;font-size:.95rem}
-#muteBtn{position:fixed;top:8px;right:10px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
+#muteBtn{position:fixed;top:8px;right:10px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.15rem;cursor:pointer}
 .rec{color:#5ef2ff!important}
 .hide{display:none!important}
 #vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
@@ -50,15 +53,17 @@ canvas{display:block}
 <div id="vig"></div>
 <div id="hurt" style="position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 55%,transparent 45%,rgba(255,30,45,.65));opacity:0;transition:opacity .12s;z-index:2"></div>
 <div id="hud" class="hide">
-  <div id="hudTop"><span id="lvl">Lv 1</span><span id="time">0s</span><span id="kills">☠ 0</span></div>
-  <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
-  <div id="xpwrap"><div class="bar"><i id="xpFill" style="width:0%"></i></div></div>
-  <div id="upRow"></div>
-  <div id="ability" style="margin-top:5px;font-size:.95rem;font-weight:800"></div>
+  <div id="hudPanel">
+    <div id="hudTop"><span id="lvl">Lv 1</span><span id="time">0s</span><span id="kills">☠ 0</span></div>
+    <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
+    <div id="xpwrap"><div class="bar"><i id="xpFill" style="width:0%"></i></div></div>
+    <div id="upRow"></div>
+    <div id="ability" style="margin-top:5px;font-size:1rem;font-weight:800"></div>
+  </div>
 </div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
 <button id="abBtn" title="Puls-Blast" style="position:fixed;right:18px;bottom:22px;z-index:7;width:74px;height:74px;border-radius:50%;border:2px solid #ffd166;background:rgba(60,48,20,.55);color:#ffd166;font-size:1.7rem;font-weight:800;cursor:pointer;display:none">⚡</button>
-<button id="pauseBtn" title="Pause (Esc/P)" style="position:fixed;top:8px;right:58px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.7);color:#9fb2ff;border-radius:50%;width:40px;height:40px;font-size:1.05rem;cursor:pointer;display:none">⏸</button>
+<button id="pauseBtn" title="Pause (Esc/P)" style="position:fixed;top:60px;right:10px;z-index:5;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;display:none">⏸</button>
 
 <div class="overlay" id="start">
   <div class="tag">aban news · 3D-Roguelite</div>
@@ -98,6 +103,7 @@ canvas{display:block}
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
 <script>
 (function(){
 "use strict";
@@ -171,12 +177,56 @@ var sunMat=new THREE.ShaderMaterial({fog:false,depthWrite:false,transparent:true
   fragmentShader:"uniform vec3 cHi;uniform vec3 cLo;varying vec2 vU;void main(){float y=vU.y;vec3 c=mix(cLo,cHi,pow(y,0.8));float band=y<0.55?step(0.42,fract(y*13.0)):1.0;if(y<0.55&&band<0.5)discard;gl_FragColor=vec4(c,1.0);}"});
 var sun=new THREE.Mesh(new THREE.CircleGeometry(80,48),sunMat); sun.position.set(0,50,-430); scene.add(sun);
 var sunGlow=new THREE.Mesh(new THREE.CircleGeometry(120,48),new THREE.MeshBasicMaterial({color:0xff5c8a,transparent:true,opacity:0.14,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})); sunGlow.position.set(0,50,-436); scene.add(sunGlow);
-// Ferne Berg-Silhouetten
+// Boden-Schürze: dunkler unbeleuchteter Ring unter dem Bergring (sonst "schwebt" er im Void).
+// RingGeometry statt Riesen-Plane + MeshBasicMaterial: kein Overdraw unter der Arena, kein Licht → SwiftShader-billig.
+var apron=new THREE.Mesh(new THREE.RingGeometry(47,340,48,1),new THREE.MeshBasicMaterial({color:0x0b0e26}));
+apron.rotation.x=-Math.PI/2; apron.position.y=-0.12; scene.add(apron);
+// Ferne Berg-Silhouetten: eigener Blender-Bergring mit Neon-Kristallen für die Survivor-Masse
+// (models/landscape_survivor.glb: Ring r96–260, Berge r120–190 h40–95, Tal Richtung Sonne;
+//  Rezept: spiele-dev/blender_landscape_survivor.py). Liegt hinter den Pylonen (r ≤ ~86),
+// Kampffeld (±46) bleibt frei. Fallback: alte Kegel-Berge. Materialien werden auf billige
+// Lambert/Basic getauscht (Bloom holt das Neon zurück) — Standard-PBR frisst SwiftShader-FPS.
 var mountains=[];
-for(var mni=0;mni<70;mni++){var mna=mni/70*Math.PI*2, mnr=210+Math.random()*110, mnh=40+Math.random()*90;
-  if(Math.sin(mna)<-0.78)mnh*=0.28;  // Tal Richtung Sonne (im Norden) → Gipfel rahmen die Sonne
-  var mnt=new THREE.Mesh(new THREE.ConeGeometry(35+Math.random()*45,mnh,4),new THREE.MeshStandardMaterial({color:0x090b1c,emissive:0x141838,emissiveIntensity:0.5,flatShading:true}));
-  mnt.position.set(Math.cos(mna)*mnr,mnh/2-8,Math.sin(mna)*mnr); mnt.rotation.y=Math.random()*3.14; scene.add(mnt); mountains.push(mnt);}
+function buildConeMountains(){
+  for(var mni=0;mni<70;mni++){var mna=mni/70*Math.PI*2, mnr=210+Math.random()*110, mnh=40+Math.random()*90;
+    if(Math.sin(mna)<-0.78)mnh*=0.28;  // Tal Richtung Sonne (im Norden) → Gipfel rahmen die Sonne
+    var mnt=new THREE.Mesh(new THREE.ConeGeometry(35+Math.random()*45,mnh,4),new THREE.MeshStandardMaterial({color:0x090b1c,emissive:0x141838,emissiveIntensity:0.5,flatShading:true}));
+    mnt.position.set(Math.cos(mna)*mnr,mnh/2-8,Math.sin(mna)*mnr); mnt.rotation.y=Math.random()*3.14; scene.add(mnt); mountains.push(mnt);}}
+var landscape=null;
+if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/landscape_survivor.glb",function(g){
+  var o=g.scene;
+  o.traverse(function(n){if(n.isMesh){n.castShadow=false;n.receiveShadow=false;
+    if(n.material){var nm=(n.material.name||"").toLowerCase();
+      if(nm.indexOf("crystal")>=0){var ec=n.material.emissive.clone().multiplyScalar(1.15);
+        n.material=new THREE.MeshBasicMaterial({color:ec});}          // Kristalle: selbstleuchtend, Bloom übernimmt
+      else n.material=new THREE.MeshLambertMaterial({color:n.material.color.clone(),
+        emissive:n.material.emissive.clone(),emissiveIntensity:0.7}); // Fels: billiges Gouraud statt PBR
+    }}});
+  scene.add(o); landscape=o;},undefined,buildConeMountains);}
+else buildConeMountains();
+// Vegetation (nature_pack.glb, InstancedMesh): dosiert & NUR ausserhalb der Arena-Wände
+// (r 54–88, zwischen Wand und Bergring) — freie Sicht + Kampffeld bleiben unangetastet.
+if(THREE.GLTFLoader)(function(){
+  var PLAN=[["tree_leafy",7],["tree_birch",5],["tree_glow",7],["bush_a",7],["bush_b",5]];
+  new THREE.GLTFLoader().load("/models/nature_pack.glb",function(g){
+    g.scene.updateMatrixWorld(true);
+    var lib={}; g.scene.children.forEach(function(root){var parts=[];
+      root.traverse(function(n){if(n.isMesh)parts.push({geo:n.geometry,mt:n.material,loc:n.matrixWorld.clone()});});
+      if(parts.length)lib[root.name]=parts;});
+    var d=new THREE.Object3D(),m4=new THREE.Matrix4(),boosted={};
+    PLAN.forEach(function(pl){var parts=lib[pl[0]];if(!parts)return;
+      var want=IS_TOUCH?Math.max(3,Math.round(pl[1]*0.6)):pl[1],mats=[];
+      for(var k=0;k<want;k++){var a=Math.random()*Math.PI*2,r=ARENA+8+Math.random()*34;
+        var s=(pl[0].indexOf("tree")===0?1.0:0.9)+Math.random()*0.9;
+        d.position.set(Math.cos(a)*r,-0.1,Math.sin(a)*r);d.scale.set(s,s,s);
+        d.rotation.set(0,Math.random()*6.283,0);d.updateMatrix();mats.push(d.matrix.clone());}
+      parts.forEach(function(p){
+        if(!boosted[p.mt.uuid]){boosted[p.mt.uuid]=1;p.mt.emissiveIntensity=1.2;}
+        var im=new THREE.InstancedMesh(p.geo,p.mt,mats.length);
+        for(var i=0;i<mats.length;i++){m4.multiplyMatrices(mats[i],p.loc);im.setMatrixAt(i,m4);}
+        im.instanceMatrix.needsUpdate=true;scene.add(im);});});
+  },undefined,function(){});
+})();
 // Aurora-Bänder (additiv)
 var auroras=[];
 for(var aui=0;aui<3;aui++){var au=new THREE.Mesh(new THREE.PlaneGeometry(500,70),new THREE.MeshBasicMaterial({color:aui===0?0x5ef2ff:(aui===1?0xb98bff:0xff7ad9),transparent:true,opacity:0.09,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide,fog:false}));
@@ -243,12 +293,14 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key=
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var touch=null;
 addEventListener("touchstart",function(e){if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
+// Touch-Buttons (⚡/⏸) NUR im Spiel zeigen — im Menü verdecken sie sonst Text + Werkstatt-Buttons
+var COARSE=window.matchMedia&&window.matchMedia("(pointer:coarse)").matches;
+function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abBtn"),pb=document.getElementById("pauseBtn");
+  if(ab)ab.style.display=on?"block":"none";if(pb){pb.style.display=on?"block":"none";pb.textContent="⏸";}}
 (function(){var ab=document.getElementById("abBtn");if(!ab)return;
-  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)ab.style.display="block";
   ab.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();if(running&&!paused)castAbility();},{passive:false});
   ab.addEventListener("click",function(e){e.stopPropagation();if(running&&!paused)castAbility();});})();
 (function(){var pb=document.getElementById("pauseBtn");if(!pb)return;
-  if(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches)pb.style.display="block";
   function tgl(e){e.preventDefault&&e.preventDefault();e.stopPropagation();
     if(running&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}}
   pb.addEventListener("touchstart",tgl,{passive:false});pb.addEventListener("click",tgl);})();
@@ -280,7 +332,7 @@ function spawnEnemy(boss){
   }
   en.baseEmissive=en.m.material.emissive.getHex(); en.flash=0; en.finalBoss=false;
 }
-function announce(txt){var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:18%;left:0;right:0;text-align:center;font-weight:800;font-size:1.6rem;color:#ff7ad9;text-shadow:0 2px 10px #000;pointer-events:none;transition:opacity .4s";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";setTimeout(function(){c.style.opacity="0";},1600);}
+function announce(txt){var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:26%;left:0;right:0;text-align:center;font-weight:800;font-size:1.6rem;color:#ff7ad9;text-shadow:0 2px 10px #000;pointer-events:none;transition:opacity .4s";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";setTimeout(function(){c.style.opacity="0";},1600);}
 function mmss(t){var s=Math.max(0,Math.floor(t));return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2);}
 var RUN_T=600, PHASE_T=120; // 10-Min-Run, 5 Phasen
 function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"sawtooth",.12);shake=1.0;
@@ -453,17 +505,17 @@ function resizeBloom(){rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Ma
 
 var shake=0,hitstop=0,running=false,last=performance.now(),hurt=0,hurtEl=document.getElementById("hurt");
 function start(){if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
-  hurt=0;hurtEl.style.opacity=0;
+  hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);
   var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");startMusic();}
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";}
-function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
+function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);renderShop();
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("over").classList.remove("hide");}
-function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
+function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);}
@@ -574,7 +626,7 @@ function spawnLoot(x,z,bias){var g=getMesh(loot,lootMesh);var ri=rollRarity(bias
 function applyLoot(ri){var r=RARITY[ri],picks=[],pool=AFFIXES.slice();for(var k=0;k<r.cnt&&pool.length;k++){var af=pool.splice(Math.floor(rnd()*pool.length),1)[0];af.f(r.pow);picks.push(af.l);}
   announce("["+r.n+"] "+picks.join(" · "));beep(ri>=3?1046:660,.2,"triangle",.08);shake=Math.max(shake,0.2);burst(player.position.x,player.position.z,r.c);}
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";
-  var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent="⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
+  var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent=COARSE?"⚡ PULS-BLAST bereit — gelber Knopf":"⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
   var abb=document.getElementById("abBtn");if(abb){var rdy=(S.abilityCD||0)<=0;abb.style.opacity=rdy?"1":"0.45";abb.style.boxShadow=rdy?"0 0 16px #ffd166":"none";}}
 reset(); showBest(); renderShop(); renderChars(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
