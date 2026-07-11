@@ -153,10 +153,10 @@
 #done search:minimalist watch women
 #done search:mesh strap watch
 #done search:leather watch men
-search:couple watch set
-search:digital sport watch
-search:fashion bracelet watch
-search:cat eye sunglasses
+#done search:couple watch set
+#done search:digital sport watch
+#done search:fashion bracelet watch
+#done search:cat eye sunglasses
 search:oversized sunglasses
 search:retro round sunglasses
 search:sport polarized sunglasses
