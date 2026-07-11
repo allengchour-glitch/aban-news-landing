@@ -140,15 +140,17 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,50,460);
+var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,72,560);
 var camera=new THREE.PerspectiveCamera(60,W/H,0.1,2000);
 scene.add(new THREE.AmbientLight(0x556099,1.2));
 var dir=new THREE.DirectionalLight(0xffffff,0.7); dir.position.set(6,14,6); scene.add(dir);
 
-var ARENA=46;
+var ARENA=70;                       // grössere Arena (~2x Fläche ggü. 46) — alles Folgende skaliert relativ mit
+// Kamera-Parameter fürs grössere Feld: mehr Höhe/Abstand → Überblick; auf schmalen (Hochformat-)Schirmen weiter raus.
+var CAM_H=26, CAM_Z=27, CAM_LOOKZ=-15;
 var floor=new THREE.Mesh(new THREE.PlaneGeometry(ARENA*2,ARENA*2),new THREE.MeshStandardMaterial({color:0x0c1030,emissive:0x05060f}));
 floor.rotation.x=-Math.PI/2; scene.add(floor);
-var grid=new THREE.GridHelper(ARENA*2,40,0x4458b0,0x222a55); grid.position.y=0.02; scene.add(grid);
+var grid=new THREE.GridHelper(ARENA*2,Math.round(ARENA*0.87),0x4458b0,0x222a55); grid.position.y=0.02; scene.add(grid);
 
 function mat(c,e){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:1.1,flatShading:true}); return m;}
 // ---- Spieler: "Nova", knuffiger Neon-Buddy mit Kulleraugen (statt simpler Blob) ----
@@ -230,17 +232,44 @@ var mapWalls=[],mapDeco=[],mapLights=[];
 // Umrandungs-Wände
 function buildWall(x,z,w,d){var m=new THREE.Mesh(new THREE.BoxGeometry(w,2.4,d),mat(0x5ef2ff,0x5ef2ff));m.position.set(x,0.2,z);scene.add(m);mapWalls.push(m);}
 buildWall(0,ARENA+1,ARENA*2+4,1.4);buildWall(0,-ARENA-1,ARENA*2+4,1.4);buildWall(ARENA+1,0,1.4,ARENA*2+4);buildWall(-ARENA-1,0,1.4,ARENA*2+4);
-// Zentrales Emblem (Ring auf dem Boden)
-var emblem=new THREE.Mesh(new THREE.TorusGeometry(6,0.25,8,40),mat(0x5ef2ff,0x5ef2ff));emblem.rotation.x=-Math.PI/2;emblem.position.y=0.05;scene.add(emblem);mapDeco.push(emblem);
-var emblem2=new THREE.Mesh(new THREE.TorusGeometry(3,0.18,8,32),mat(0xb98bff,0xb98bff));emblem2.rotation.x=-Math.PI/2;emblem2.position.y=0.05;scene.add(emblem2);mapDeco.push(emblem2);
-// Skyline-Pylone hinter den Wänden (Backdrop, keine Kollision)
-for(var pi=0;pi<26;pi++){var ang=pi/26*Math.PI*2,rr=ARENA+8+Math.random()*30,hh=6+Math.random()*22;
+// Zentrales Emblem (Ring auf dem Boden) — grösser fürs weite Feld
+var emblem=new THREE.Mesh(new THREE.TorusGeometry(9,0.3,8,44),mat(0x5ef2ff,0x5ef2ff));emblem.rotation.x=-Math.PI/2;emblem.position.y=0.05;scene.add(emblem);mapDeco.push(emblem);
+var emblem2=new THREE.Mesh(new THREE.TorusGeometry(4.6,0.2,8,36),mat(0xb98bff,0xb98bff));emblem2.rotation.x=-Math.PI/2;emblem2.position.y=0.05;scene.add(emblem2);mapDeco.push(emblem2);
+// Skyline-Pylone hinter den Wänden (Backdrop, keine Kollision) — mehr Stück für den grösseren Umfang
+for(var pi=0;pi<38;pi++){var ang=pi/38*Math.PI*2,rr=ARENA+8+Math.random()*34,hh=6+Math.random()*24;
   var py=new THREE.Mesh(new THREE.BoxGeometry(2+Math.random()*2,hh,2+Math.random()*2),mat(0x223066,(pi%2)?0x5ef2ff:0xb98bff));
   py.position.set(Math.cos(ang)*rr,hh/2-1.5,Math.sin(ang)*rr);py.material.emissiveIntensity=0.5;scene.add(py);mapDeco.push(py);}
-// Boden-Runen (flache Leucht-Quads für Textur)
-for(var ri=0;ri<5;ri++){var rune=new THREE.Mesh(new THREE.RingGeometry(8+ri*7,8.4+ri*7,48),new THREE.MeshBasicMaterial({color:0x2a3170,transparent:true,opacity:0.25,side:THREE.DoubleSide}));rune.rotation.x=-Math.PI/2;rune.position.y=0.03;scene.add(rune);mapDeco.push(rune);}
-// Farbige Eck-Lichter
-for(var li=0;li<4;li++){var L=new THREE.PointLight(0x5ef2ff,2.2,90);L.position.set((li<2?-1:1)*ARENA,10,(li%2?-1:1)*ARENA);scene.add(L);mapLights.push(L);}
+// Boden-Runen (flache Leucht-Quads für Textur) — über das ganze grössere Feld verteilt
+for(var ri=0;ri<6;ri++){var rune=new THREE.Mesh(new THREE.RingGeometry(9+ri*10.5,9.6+ri*10.5,64),new THREE.MeshBasicMaterial({color:0x2a3170,transparent:true,opacity:0.22,side:THREE.DoubleSide}));rune.rotation.x=-Math.PI/2;rune.position.y=0.03;scene.add(rune);mapDeco.push(rune);}
+// ===== Boden-Zonen: konzentrische getönte Flächen → Orientierung im grossen Feld =====
+var zoneMats=[];
+function addZone(rIn,rOut,col,op){var z=new THREE.Mesh(new THREE.RingGeometry(rIn,rOut,72,1),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,side:THREE.DoubleSide,depthWrite:false}));z.rotation.x=-Math.PI/2;z.position.y=0.024;scene.add(z);mapDeco.push(z);zoneMats.push(z.material);return z;}
+addZone(0,ARENA*0.24,0x1b2f7a,0.20);              // Kern-Plattform (kühl) = "Zuhause"
+addZone(ARENA*0.55,ARENA*0.74,0x123a55,0.12);      // Mittel-Gürtel
+addZone(ARENA*0.86,ARENA*0.99,0x4a1f52,0.20);      // Randzone (warm = Gefahr)
+// Pulsierender Warn-Ring direkt an der Wand
+var edgeRing=new THREE.Mesh(new THREE.RingGeometry(ARENA-1.8,ARENA-0.7,88,1),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.45,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,depthWrite:false}));edgeRing.rotation.x=-Math.PI/2;edgeRing.position.y=0.045;scene.add(edgeRing);
+// ===== Verstreute Glüh-Boden-Kacheln (InstancedMesh) für Textur — nicht blockierend =====
+var floorTilesMat=null;
+(function(){var N=IS_TOUCH?14:30;var geo=new THREE.PlaneGeometry(2.4,2.4);floorTilesMat=new THREE.MeshBasicMaterial({color:0x2b3a7a,transparent:true,opacity:0.5,depthWrite:false,side:THREE.DoubleSide});
+  var im=new THREE.InstancedMesh(geo,floorTilesMat,N),d=new THREE.Object3D();
+  for(var i=0;i<N;i++){var a=Math.random()*6.283,r=ARENA*(0.18+Math.random()*0.78);d.position.set(Math.cos(a)*r,0.03,Math.sin(a)*r);d.rotation.set(-Math.PI/2,0,Math.random()*6.283);var s=0.55+Math.random()*1.2;d.scale.set(s,s,s);d.updateMatrix();im.setMatrixAt(i,d.matrix);}
+  im.instanceMatrix.needsUpdate=true;scene.add(im);})();
+// ===== Landmarken/Neon-Kristall-Türme im Feld (optische Anker, KEINE Kollision) =====
+var landmarks=[],landmarkMats=[];
+function makeLandmark(c){var g=new THREE.Group();
+  var baseM=new THREE.Mesh(new THREE.TorusGeometry(1.7,0.14,6,20),mat(c,c));baseM.rotation.x=-Math.PI/2;baseM.position.y=0.07;g.add(baseM);
+  var spireM=new THREE.MeshStandardMaterial({color:c,emissive:c,emissiveIntensity:0.62,flatShading:true});
+  var s1=new THREE.Mesh(new THREE.ConeGeometry(0.85,4.6,5),spireM);s1.position.y=2.3;g.add(s1);
+  var s2=new THREE.Mesh(new THREE.OctahedronGeometry(0.72,0),spireM);s2.position.set(1.15,0.85,0.3);g.add(s2);
+  var s3=new THREE.Mesh(new THREE.ConeGeometry(0.55,2.6,5),spireM);s3.position.set(-1.05,1.25,-0.25);g.add(s3);
+  baseM.material.emissiveIntensity=0.6;
+  return {g:g,mats:[baseM.material,spireM]};}
+(function(){var N=IS_TOUCH?7:11;for(var i=0;i<N;i++){var ang=i/N*6.283+Math.random()*0.5,rr=ARENA*(0.4+Math.random()*0.44),alt=i%2;
+    var lm=makeLandmark(alt?0xb98bff:0x5ef2ff);lm.g.position.set(Math.cos(ang)*rr,0,Math.sin(ang)*rr);lm.g.rotation.y=Math.random()*6.28;lm.g.scale.setScalar(0.8+Math.random()*0.65);
+    scene.add(lm.g);landmarks.push(lm);lm.mats.forEach(function(m){landmarkMats.push({m:m,alt:alt});});}})();
+// Farbige Eck-Lichter — grösserer Radius fürs weite Feld
+for(var li=0;li<4;li++){var L=new THREE.PointLight(0x5ef2ff,2.4,130);L.position.set((li<2?-1:1)*ARENA,12,(li%2?-1:1)*ARENA);scene.add(L);mapLights.push(L);}
 var starsGeo=new THREE.BufferGeometry();var sps=new Float32Array(160*3);
 for(var sx=0;sx<160;sx++){sps[sx*3]=(Math.random()-.5)*260;sps[sx*3+1]=Math.random()*60+12;sps[sx*3+2]=(Math.random()-.5)*260;}
 starsGeo.setAttribute("position",new THREE.BufferAttribute(sps,3));
@@ -261,7 +290,7 @@ var sun=new THREE.Mesh(new THREE.CircleGeometry(80,48),sunMat); sun.position.set
 var sunGlow=new THREE.Mesh(new THREE.CircleGeometry(120,48),new THREE.MeshBasicMaterial({color:0xff5c8a,transparent:true,opacity:0.14,blending:THREE.AdditiveBlending,depthWrite:false,fog:false})); sunGlow.position.set(0,50,-436); scene.add(sunGlow);
 // Boden-Schürze: dunkler unbeleuchteter Ring unter dem Bergring (sonst "schwebt" er im Void).
 // RingGeometry statt Riesen-Plane + MeshBasicMaterial: kein Overdraw unter der Arena, kein Licht → SwiftShader-billig.
-var apron=new THREE.Mesh(new THREE.RingGeometry(47,340,48,1),new THREE.MeshBasicMaterial({color:0x0b0e26}));
+var apron=new THREE.Mesh(new THREE.RingGeometry(ARENA+2,360,48,1),new THREE.MeshBasicMaterial({color:0x0b0e26}));
 apron.rotation.x=-Math.PI/2; apron.position.y=-0.12; scene.add(apron);
 // Ferne Berg-Silhouetten: eigener Blender-Bergring mit Neon-Kristallen für die Survivor-Masse
 // (models/landscape_survivor.glb: Ring r96–260, Berge r120–190 h40–95, Tal Richtung Sonne;
@@ -320,6 +349,7 @@ ambGeo.setAttribute("position",new THREE.BufferAttribute(ambPos,3));
 var ambParticles=new THREE.Points(ambGeo,new THREE.PointsMaterial({color:0x8fe8ff,size:0.55,transparent:true,opacity:0.75,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(ambParticles);
 function updateLandscape(dt,t){
   for(var i=0;i<auroras.length;i++){auroras[i].material.opacity=0.06+0.05*Math.sin(t*0.5+i);auroras[i].position.x=Math.sin(t*0.12+i)*35;}
+  if(edgeRing)edgeRing.material.opacity=0.30+0.22*Math.sin(t*1.6);
   var pa=ambGeo.attributes.position.array;
   for(i=0;i<ambN;i++){pa[i*3+1]+=ambV[i]*dt;if(pa[i*3+1]>48){pa[i*3+1]=0;pa[i*3]=(Math.random()-.5)*200;pa[i*3+2]=(Math.random()-.5)*200;}}
   ambGeo.attributes.position.needsUpdate=true;
@@ -333,6 +363,9 @@ function applyMap(idx){var m=MAPS[idx%MAPS.length];
   emblem2.material.color.setHex(m.accent2);emblem2.material.emissive.setHex(m.accent2);
   for(i=0;i<mapLights.length;i++)mapLights[i].color.setHex(i%2?m.accent2:m.accent);
   glow.color.setHex(m.accent);pAntMat.emissive.setHex(m.accent);pAntBallMat.emissive.setHex(m.accent);pRingMat.color.setHex(m.accent2);pRingMat.emissive.setHex(m.accent2);
+  if(edgeRing)edgeRing.material.color.setHex(m.accent);
+  if(floorTilesMat)floorTilesMat.color.setHex(m.accent2);
+  for(i=0;i<landmarkMats.length;i++){var lc=landmarkMats[i].alt?m.accent2:m.accent;landmarkMats[i].m.color.setHex(lc);if(landmarkMats[i].m.emissive)landmarkMats[i].m.emissive.setHex(lc);}
   return m;}
 
 var bullets=[],enemies=[],orbs=[],fx=[],ebullets=[];
@@ -353,14 +386,14 @@ function orbMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(
 var S={};
 function reset(){
   S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:4,
-     dmg:1,speed:9,multishot:1,pickup:3.2,area:1,haste:1,
-     spawnT:0,spawnEvery:1.6,bossT:40,phase:1,finalBoss:false,won:false,weapons:{bolt:1},wt:{},bladeA:0,ups:{},
+     dmg:1,speed:10,multishot:1,pickup:3.6,area:1,haste:1,
+     spawnT:0,spawnEvery:1.5,bossT:40,phase:1,finalBoss:false,won:false,weapons:{bolt:1},wt:{},bladeA:0,ups:{},
      scrap:0,wave:1,buildPhase:"combat",waveT:0,buildT:0};
   var meta=loadMeta();
   S.maxhp=120+(meta.hp||0)*20; S.hp=S.maxhp;
   S.dmg=1+(meta.dmg||0)*0.1;
-  S.speed=9*(1+(meta.spd||0)*0.05);
-  S.pickup=3.2+(meta.mag||0)*0.6;
+  S.speed=10*(1+(meta.spd||0)*0.05);   // etwas schneller — grösseres Feld angenehm überqueren
+  S.pickup=3.6+(meta.mag||0)*0.6;       // grösserer Sammel-Radius fürs weite Feld
   S.xpMul=1+(meta.xp||0)*0.08;
   S.revives=(meta.rev||0);
   S.evolved={}; S.abilityCD=4; S.abilityMax=9;
@@ -396,8 +429,10 @@ function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){v
 function spawnEnemy(boss){
   var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true; en.boss=!!boss;
   en.shooter=false; en.splitter=false; en.shootT=0;
-  var a=rnd()*Math.PI*2, r=ARENA*0.9;
-  en.m.position.set(player.position.x+Math.cos(a)*r,0.7,player.position.z+Math.sin(a)*r);
+  var a=rnd()*Math.PI*2, r=ARENA*0.82;
+  var esx=Math.max(-ARENA+2,Math.min(ARENA-2,player.position.x+Math.cos(a)*r));
+  var esz=Math.max(-ARENA+2,Math.min(ARENA-2,player.position.z+Math.sin(a)*r));
+  en.m.position.set(esx,0.7,esz);
   if(boss){
     en.hp=40+Math.floor(S.t/3); en.spd=1.8; en.xp=8; en.m.scale.set(2.6,2.6,2.6); en.shootT=2.5;
     en.m.material.color.setHex(0xff2266); en.m.material.emissive.setHex(0xff2266);
@@ -421,7 +456,7 @@ function mmss(t){var s=Math.max(0,Math.floor(t));return Math.floor(s/60)+":"+("0
 var RUN_T=600, PHASE_T=120; // 10-Min-Run, 5 Phasen
 function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"sawtooth",.12);shake=1.0;
   var en=getMesh(enemies,enemyMesh);en.active=true;en.m.visible=true;en.boss=true;en.finalBoss=true;
-  var a=rnd()*6.283;en.m.position.set(player.position.x+Math.cos(a)*ARENA*0.8,0.9,player.position.z+Math.sin(a)*ARENA*0.8);
+  var a=rnd()*6.283;en.m.position.set(Math.max(-ARENA+3,Math.min(ARENA-3,player.position.x+Math.cos(a)*ARENA*0.75)),0.9,Math.max(-ARENA+3,Math.min(ARENA-3,player.position.z+Math.sin(a)*ARENA*0.75)));
   en.hp=800+S.kills*1.2;en.spd=2.4;en.xp=50;en.m.scale.set(4,4,4);
   en.shooter=false;en.splitter=false;en.shootT=3.0; // Pool-Altlasten zurücksetzen (sonst spawnt der Endboss beim Tod Splitter-Minions)
   en.m.material.color.setHex(0xffd166);en.m.material.emissive.setHex(0xffaa00);en.baseEmissive=0xffaa00;en.flash=0;}
@@ -779,8 +814,9 @@ function loop(now){
     if(S.buildPhase==="combat"){
       S.waveT+=dt;
       if(!S.finalBoss){
-        S.spawnT-=dt; var rate=Math.max(0.28,(S.spawnEvery-S.t*0.009)-(S.phase-1)*0.07);
-        if(S.spawnT<=0){spawnEnemy();if(S.t>40)spawnEnemy();if(S.phase>=5)spawnEnemy();S.spawnT=rate;}
+        S.spawnT-=dt; var rate=Math.max(0.24,(S.spawnEvery-S.t*0.009)-(S.phase-1)*0.07);
+        // grösseres Feld → moderat dichter füllen; erste Welle (t<40) bleibt verzeihend (nur 1 Spawn)
+        if(S.spawnT<=0){spawnEnemy();if(S.t>40)spawnEnemy();if(S.t>75)spawnEnemy();if(S.phase>=5)spawnEnemy();S.spawnT=rate;}
         if(S.t>=S.bossT){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);}
         if(S.t>=RUN_T){S.finalBoss=true;spawnFinalBoss();}
         else if(S.waveT>=COMBAT_DUR)enterBuildPhase();
@@ -827,8 +863,10 @@ function loop(now){
   if(shake>0)shake-=dt*1.5;
   updateLandscape(dt,performance.now()*0.001);
   sky.position.set(player.position.x,0,player.position.z);
-  camera.position.set(player.position.x+(Math.random()-.5)*shake*3,19,player.position.z+20+(Math.random()-.5)*shake*3);
-  camera.lookAt(player.position.x,6,player.position.z-12);
+  // Hochformat/schmale Schirme sehen in X weniger → Kamera etwas weiter raus, damit das breite Feld reinpasst
+  var camK=(H>W)?1.18:1.0;
+  camera.position.set(player.position.x+(Math.random()-.5)*shake*3,CAM_H*camK,player.position.z+CAM_Z*camK+(Math.random()-.5)*shake*3);
+  camera.lookAt(player.position.x,CAM_LOOKZ*-0.4,player.position.z+CAM_LOOKZ);
   for(var _a2=0;_a2<ambN;_a2++){ambP[_a2*3+1]+=ambVv[_a2]*dt;if(ambP[_a2*3+1]>8)ambP[_a2*3+1]=0;}ambG.attributes.position.needsUpdate=true;
   renderBloom();
 }
