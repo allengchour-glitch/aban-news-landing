@@ -901,8 +901,41 @@ function saveChar(i,c){if(CHARKEYS[i])lsSet(CHARKEYS[i],JSON.stringify(c));}
 function seededChar(seed,i){ // Online-Fallback: deterministischer Look aus dem Spiel-Seed (alle Clients gleich)
   var n=(((seed>>>0)+i*2654435761)>>>0);n^=n>>>15;n=(n*2246822519)>>>0;
   return {g:(n&1)?"m":"f",style:(n>>>1)%CHAR_STYLES.length,skin:(n>>>4)%SKINTONES.length,hair:(n>>>7)%HAIRS.length,pants:(n>>>11)%PANTS.length};}
-// Weiche, glatt schattierte Standard-Materialien (für runde Figuren -> keine facettierten Kanten)
-function smat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:0x000000,emissiveIntensity:i!==undefined?i:0.22,envMapIntensity:0.35,roughness:0.66,metalness:0.0,flatShading:false});}
+// ===== Anime-Rezept (Cel-Shading + Outline), wiederverwendbar =====================================
+// gradientTex(): 1D-Textur mit 2-3 harten Helligkeits-Bändern (NearestFilter) -> flächige Toon-Schattierung.
+// Hell gehalten (Schatten nicht schwarz) damit die Pastell-Farbwelt pastellig bleibt.
+var _gradTex=null;
+function gradientTex(){
+  if(_gradTex)return _gradTex;
+  var lut=IS_COARSE?[128,236]:[108,178,240]; // mobil 2 Bänder (billiger), Desktop 3 Bänder
+  var data=new Uint8Array(lut.length*4);
+  for(var gi=0;gi<lut.length;gi++){var v=lut[gi];data[gi*4]=v;data[gi*4+1]=v;data[gi*4+2]=v;data[gi*4+3]=255;}
+  var t=new THREE.DataTexture(data,lut.length,1,THREE.RGBAFormat);
+  t.minFilter=THREE.NearestFilter;t.magFilter=THREE.NearestFilter;t.generateMipmaps=false;t.needsUpdate=true;
+  _gradTex=t;return t;
+}
+// toonMat/smat: Anime-Flächenmaterial (Cel-Shading in Pastell). Ersetzt das alte Standard-Material 1:1
+// (gleiche Signatur c,e,i) -> alle Figuren-Teile (Körper/Haut/Haar/Kleidung) werden automatisch Toon.
+function toonMat(c,e,i){return new THREE.MeshToonMaterial({color:c,emissive:e!==undefined?e:0x000000,emissiveIntensity:i!==undefined?i:0.22,gradientMap:gradientTex()});}
+function smat(c,e,i){return toonMat(c,e,i);}
+// addOutline(group,hex): weiche Anime-Kontur per Inverted-Hull. Je grösserem Körperteil ein dunkler
+// BackSide-Klon (leicht skaliert) als KIND -> folgt Lauf-/Alters-Animation automatisch mit. Kleine Details
+// (Augen/Nase/Edelsteine) via userData.noOutline / Radius-Schwelle ausgenommen. Nur an Figuren (2-4).
+function addOutline(group,hex){
+  var col=new THREE.Color(hex!==undefined?hex:0x2a2333).multiplyScalar(0.5);
+  var omat=new THREE.MeshBasicMaterial({color:col,side:THREE.BackSide});
+  var minR=IS_COARSE?0.19:0.128,targets=[];
+  group.traverse(function(o){
+    if(o.isMesh&&o.geometry&&!o.userData.noOutline&&!o.userData.__outline){
+      if(!o.geometry.boundingSphere)o.geometry.computeBoundingSphere();
+      var r=o.geometry.boundingSphere?o.geometry.boundingSphere.radius:0;
+      if(r>=minR)targets.push(o);}});
+  targets.forEach(function(o){var ol=new THREE.Mesh(o.geometry,omat);
+    ol.userData.__outline=true;ol.scale.setScalar(1.055);ol.renderOrder=-1;o.add(ol);});
+  return group;
+}
+// Anime-Augenfarben (grosse Iris)
+var EYECOLORS=[0x4a2f1a,0x2f6ac8,0x2f8a5f,0x6a45c8,0x9a5a2a,0x3a3a46];
 // Kapsel-Geometrie (Zylinder + zwei Halbkugel-Kappen) via LatheGeometry — dieser THREE-Build hat kein CapsuleGeometry.
 // r=Radius, len=gerader Mittelteil, rad=radiale Segmente, cap=Segmente je Kappe. Zentriert am Ursprung, Gesamthöhe len+2r.
 function capsuleGeo(r,len,rad,cap){
@@ -992,17 +1025,53 @@ function mkPawnMesh(color,cfg){
   var mouth=new THREE.Mesh(new THREE.SphereGeometry(0.05,LSEG,LSEG),smat(0x8a4a3a));mouth.scale.set(1.5,0.5,0.5);mouth.position.set(0,1.3,0.3);g.add(mouth);
   var nose=new THREE.Mesh(new THREE.SphereGeometry(0.05,LSEG,LSEG),skin);nose.position.set(0,1.37,0.31);g.add(nose);
   var fringe=new THREE.Mesh(new THREE.SphereGeometry(cfg.g==="f"?0.3:0.285,HSEG,12),hair);fringe.scale.set(1,0.42,0.5);fringe.position.set(0,1.53,0.15);g.add(fringe);
+  // ===== Anime-Haar: stilisierte Strähnen (Frau: lange Seiten-Locken + spitzer Pony · Mann: kürzere Spikes) =====
+  if(cfg.g==="f"){
+    [[-0.28],[0.28]].forEach(function(lp6){var lock=new THREE.Mesh(new THREE.ConeGeometry(0.1,0.44,LSEG),hair);
+      lock.position.set(lp6[0],1.24,-0.02);lock.scale.set(1,1,0.62);g.add(lock);});
+    [-0.15,-0.05,0.05,0.15].forEach(function(bx){var bang=new THREE.Mesh(new THREE.ConeGeometry(0.062,0.19,LSEG),hair);
+      bang.rotation.x=Math.PI;bang.position.set(bx,1.57,0.19);bang.scale.set(1,1,0.5);g.add(bang);});
+  }else{
+    [[-0.15,0.0,1.55],[-0.05,0.06,1.62],[0.05,0.06,1.62],[0.15,0.0,1.55],[0.0,-0.05,1.5]].forEach(function(sp5){
+      var sk=new THREE.Mesh(new THREE.ConeGeometry(0.08,0.22,LSEG),hair);
+      sk.position.set(sp5[0],sp5[2],sp5[1]);sk.rotation.x=-0.35+sp5[1]*0.9;sk.rotation.z=sp5[0]*0.6;g.add(sk);});
+  }
   g.userData.head=head;g.userData.mouth=mouth;g.userData.cfg=cfg;
-  // Gesicht: zwei runde Augen (dunkle Kugeln)
+  // ===== Grosse Anime-Augen: Weisses + grosse Iris + Iris-Schatten + Pupille + Glanzlichter + Lidlinie =====
+  // (Frau grösser/runder mit Wimpern-Betonung, Mann etwas kleiner/schmaler). Als Group -> Blinzeln = scale.y.
+  function eb(c){return new THREE.MeshBasicMaterial({color:c});}
+  var irisHex=EYECOLORS[(cfg.style+cfg.skin+(cfg.g==="m"?1:0))%EYECOLORS.length];
+  var big=cfg.g==="f";
+  function mkEye(sx){
+    var eg=new THREE.Group();eg.position.set(sx*0.112,1.45,0.235);eg.rotation.y=sx*0.1;eg.userData.noOutline=true;
+    var ww=big?0.086:0.076,hh=big?0.116:0.096;
+    function el(mat,sw,sh,px,py,pz){var m=new THREE.Mesh(new THREE.SphereGeometry(1,LSEG,LSEG),mat);
+      m.scale.set(ww*sw,hh*sh,0.05);m.position.set(px,py,pz);m.userData.noOutline=true;eg.add(m);return m;}
+    el(eb(0x2a2230),1.14,1.16,0,0.004,0.02);                    // Lidlinie/Wimpern-Rahmen (dunkel)
+    el(eb(0xfbfbff),1.0,1.0,0,0,0.028);                          // Weisses
+    el(eb(irisHex),0.74,0.84,0,-hh*0.06,0.034);                  // grosse Iris (Augenfarbe)
+    el(eb(new THREE.Color(irisHex).multiplyScalar(0.55).getHex()),0.74,0.34,0,hh*0.3,0.037); // Iris-Schatten oben
+    el(eb(0x161018),0.38,0.52,0,-hh*0.04,0.04);                  // Pupille
+    el(eb(0xffffff),0.24,0.24,-ww*0.22,hh*0.24,0.045);           // grosses Glanzlicht
+    el(eb(0xffffff),0.12,0.12,ww*0.2,-hh*0.2,0.045);             // kleines Glanzlicht
+    return eg;
+  }
   g.userData.eyes=[];
-  [[-0.11],[0.11]].forEach(function(e){var eye=new THREE.Mesh(new THREE.SphereGeometry(0.05,LSEG,LSEG),smat(0x222430,0x000000,0));
-    eye.position.set(e[0],1.42,0.28);g.add(eye);g.userData.eyes.push(eye);});
+  [-1,1].forEach(function(sx){var ey=mkEye(sx);g.add(ey);g.userData.eyes.push(ey);});
+  g.userData.eyeOpen=1;
+  // Augenbrauen (Frau: dünn/geschwungen · Mann: kräftiger/gerader)
+  [[-0.112,-1],[0.112,1]].forEach(function(bp2){var brow=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),eb(0x40342c));
+    brow.scale.set(big?0.072:0.092,big?0.016:0.024,0.03);brow.position.set(bp2[0],big?1.568:1.552,0.276);
+    brow.rotation.z=bp2[1]*(big?0.2:0.05);brow.userData.noOutline=true;g.add(brow);});
   g.userData.blinkT=1+Math.random()*3;
   g.userData.limbs={ll:ll,rl:rl,la:la,ra:ra};g.userData.walk=0;
+  // Anime-Kontur: dunkler Inverted-Hull-Umriss in Team-Farbe (VOR dem Bündeln -> Outline-Kinder wandern mit)
+  addOutline(g,color);
   // ===== Altern (Pass B3): Kopf-Cluster in ein Pivot bündeln, damit „grosser Kopf" (Kind) sauber mitskaliert =====
+  // Auch Groups (die neuen Augen-Gruppen) bündeln, damit Augen mit Kopf skalieren/nicken/beugen.
   var HEADY=1.3,hg=new THREE.Group();hg.position.set(0,HEADY,0);
   var kids=g.children.slice();
-  for(var hi=0;hi<kids.length;hi++){var ch2=kids[hi];if(ch2.isMesh&&ch2.position.y>=1.15){ch2.position.y-=HEADY;hg.add(ch2);}}
+  for(var hi=0;hi<kids.length;hi++){var ch2=kids[hi];if((ch2.isMesh||ch2.isGroup)&&ch2!==hg&&ch2.position.y>=1.15){ch2.position.y-=HEADY;hg.add(ch2);}}
   g.add(hg);
   g.userData.headGroup=hg;g.userData.hairMat=hair;g.userData.hairBaseHex=hairHex;
   g.userData.ageScale=1;g.userData.ageScaleT=1;g.userData.headScale=1;g.userData.headScaleT=1;g.userData.headStoop=0;g.userData.headStoopT=0;
@@ -1017,6 +1086,7 @@ function agePawn(i,animated){
   pw.userData.ageScaleT=AGE_BODY[st];pw.userData.headScaleT=AGE_HEAD[st];pw.userData.headStoopT=AGE_STOOP[st];
   if(pw.userData.hairMat){pw.userData.hairMat.color.setHex(pw.userData.hairBaseHex); // Senior: Haare ergrauen/weiss
     if(st===3)pw.userData.hairMat.color.lerp(new THREE.Color(0xeceff2),0.72);}
+  pw.userData.eyeOpen=(st===3)?0.84:1; // Senior: Augen sanfter/schmaler
   if(!animated||prev===undefined){ // Sofort setzen (Spielstart / Debug), keine Feier
     pw.userData.ageScale=AGE_BODY[st];pw.userData.headScale=AGE_HEAD[st];pw.userData.headStoop=AGE_STOOP[st];
     if(pw.userData.headGroup){pw.userData.headGroup.scale.setScalar(AGE_HEAD[st]);pw.userData.headGroup.rotation.x=AGE_STOOP[st];}
@@ -1102,7 +1172,7 @@ function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
   if(pw.userData.eyes){pw.userData.blinkT-=dt;
     if(pw.userData.blinkT<=0){pw.userData.blinkT=2.2+Math.random()*3.4;pw.userData.blinkD=0.13;}
     var bl=(pw.userData.blinkD||0)>0;if(bl)pw.userData.blinkD-=dt;
-    pw.userData.eyes.forEach(function(ey){ey.scale.y=bl?0.12:1;});}
+    var open=pw.userData.eyeOpen||1;pw.userData.eyes.forEach(function(ey){ey.scale.y=(bl?0.12:1)*open;});}
   if(pw.userData.head){
     if(moving)pw.userData.head.rotation.x=Math.sin(pw.userData.walk*2)*0.07; // Nicken im Schritt
     else{pw.userData.lookT=(pw.userData.lookT||0)-dt;
@@ -2207,6 +2277,11 @@ window.__lp={
   album:function(){return (G&&G.players[G.turn]&&G.players[G.turn].album)||[];},
   endShow:function(){showEnd();return document.querySelectorAll("#bio .album .polaroid").length;},
   stinger:function(n){phaseStinger(n|0);return n|0;},
+  focus:function(k){if(!G||!pawns[G.turn])return null;var pw=pawns[G.turn]; // Test-Only: Figur vergrössern + Screen-Box zurück (Anime-Nahaufnahmen)
+    if(k){var f=k/1.35;pw.userData.ageScale=pw.userData.ageScaleT=f;}
+    pw.updateWorldMatrix(true,false);var v=new THREE.Vector3().setFromMatrixPosition(pw.matrixWorld);
+    v.y+=1.35*pw.scale.y*(pw.userData.headScale||1)*0.95;v.project(camera);
+    return {x:(v.x*0.5+0.5)*innerWidth,y:(1-(v.y*0.5+0.5))*innerHeight};},
   birds:function(){return birds.length;}};
 // ===================== Hauptschleife =====================
 var last=performance.now();
