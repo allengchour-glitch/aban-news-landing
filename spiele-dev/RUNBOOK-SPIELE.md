@@ -117,6 +117,15 @@ Position-Sync über DataChannel prüfen (beide Screenshots vergleichen).
 - [ ] Pilot neon-realm (Agent läuft 10.07.), dann: neon-flug (Horizont), neon-racer (Streckenrand),
       neon-survivor (Bergring ersetzen), je mit Shot-Verifikation.
 
+### ✅ 2026-07-11: neon-realm-Komplettausbau GEMERGT (PR #1682) — Runden 2–4 alle umgesetzt
+Meshy-Held (9 Clips) + Klassenwahl (Held/Magier/Ranger/Titan + Boni) + 5 Monster in Zonen +
+Skills R/F/C/V + Klassen-Signaturen + Level-Up-FX + Rudel/Wellen (Cap 22) + 3 Detail-Häuser +
+Mensch-NPCs + 1447 Vegetation + Tasten-Prompts + HUD ≥16px. Meshy: 482/1690 Credits verbraucht.
+Assets in models/: hero.glb, hero_meshy(.glb/_combat.glb), class_{mage,ranger,titan}.glb,
+monster_{slime,wisp,panther,golem,guardian}.glb, building_{fachwerk,turm,werkstatt}.glb,
+nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/racer/survivor
+(Landschaft + HUD-Lesbarkeits-Muster), dann Arcade-Shell Phase 1, dann Phase 3 Koop.
+
 ### User-Feedback 2026-07-10 (nach Landschafts-Review) — NÄCHSTE SCHRITTE neon-realm
 - [ ] **Schrift & Symbole grösser** (User: „besser lesen") — HUD/Quest-Panel/Steuerleiste skalieren,
       min. 16px mobil, Symbole deutlicher; gilt als Muster danach für ALLE Spiele (Design-Regel!)
