@@ -250,7 +250,7 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setS
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene();scene.background=new THREE.Color(0x070818);scene.fog=new THREE.Fog(0x070818,60,380);
+var scene=new THREE.Scene();scene.background=new THREE.Color(0x070818);scene.fog=new THREE.Fog(0x070818,52,318);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,900);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);try{rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);}catch(e){}});
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:i!==undefined?i:0.8,flatShading:true});}
@@ -1939,7 +1939,7 @@ var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.78}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.55}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.62}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec3 b=texture2D(tBase,vUv).rgb;vec3 g=texture2D(tBloom,vUv).rgb;vec3 c=b+g*strength;c=(c-0.5)*1.06+0.5;float lum=dot(c,vec3(0.299,0.587,0.114));c=mix(vec3(lum),c,1.12);vec2 d=vUv-0.5;float vig=1.0-smoothstep(0.16,0.62,dot(d,d))*0.26;c*=vig;gl_FragColor=vec4(clamp(c,0.0,1.0),1.0);}"});
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
 function renderFinal(){
@@ -1949,6 +1949,9 @@ function renderFinal(){
   blurMat.uniforms.res.value.set(bw,bh);
   blurMat.uniforms.dir.value.set(1,0);blurMat.uniforms.tDiffuse.value=rtA.texture;blit(blurMat,rtB);
   blurMat.uniforms.dir.value.set(0,1);blurMat.uniforms.tDiffuse.value=rtB.texture;blit(blurMat,rtA);
+  // zweite, weitere Runde → weicherer, grösserer Neon-Halo (weniger harte Kanten)
+  blurMat.uniforms.dir.value.set(2.2,0);blurMat.uniforms.tDiffuse.value=rtA.texture;blit(blurMat,rtB);
+  blurMat.uniforms.dir.value.set(0,2.2);blurMat.uniforms.tDiffuse.value=rtB.texture;blit(blurMat,rtA);
   compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blit(compMat,null);
   renderer.setRenderTarget(null);
 }

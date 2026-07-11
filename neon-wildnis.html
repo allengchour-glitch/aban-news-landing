@@ -38,7 +38,7 @@ canvas{display:block}
 #nexusProg .npt{font-size:.78rem;color:#d9c6ff;margin-top:3px;font-weight:700}
 #kprompt{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.85);border:1px solid rgba(120,255,200,.4);border-radius:12px;padding:9px 16px;font-size:1.05rem;font-weight:800;opacity:0;transition:opacity .2s;white-space:nowrap}
 #kprompt .key{display:inline-block;background:#1a2140;border:1px solid #6affc0;border-radius:6px;padding:1px 8px;margin-right:6px;color:#6affc0}
-#announce{position:absolute;top:30%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.04em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none;padding:0 12px}
+#announce{position:absolute;top:30%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.04em;text-shadow:0 2px 3px #000,0 0 6px #000,0 4px 22px #000,0 0 30px rgba(125,227,255,.5);opacity:0;transition:opacity .4s;color:#eafcff;pointer-events:none;padding:0 12px}
 #toast{position:absolute;bottom:200px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.9);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:8px 16px;font-weight:700;opacity:0;transition:opacity .3s;max-width:88vw;text-align:center}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
@@ -170,9 +170,9 @@ renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 if(renderer.outputEncoding!==undefined)renderer.outputEncoding=THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 var scene=new THREE.Scene();
-var SKY_DAY=new THREE.Color(0x2a4a7a),SKY_NIGHT=new THREE.Color(0x0a1030);
+var SKY_DAY=new THREE.Color(0x3f68a4),SKY_NIGHT=new THREE.Color(0x0a1030);
 scene.background=SKY_DAY.clone();
-scene.fog=new THREE.Fog(SKY_DAY.getHex(),60,200);
+scene.fog=new THREE.Fog(SKY_DAY.getHex(),100,340);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xbfd4ff,0x24304f,0.7);scene.add(hemi);
@@ -195,26 +195,27 @@ function buildGround(){
   g.rotateX(-Math.PI/2);
   var pos=g.attributes.position,cols=[];
   // Biome-Paletten: Wiese, Wald, Feuchtgebiet, Sand/Lichtung, Kristall-Tundra
-  var meadow=new THREE.Color(0x2e7a52),forest=new THREE.Color(0x184a38),marsh=new THREE.Color(0x1c4a5a),
-      sand=new THREE.Color(0x6a6a44),tundra=new THREE.Color(0x35506e);
+  // Kräftigere, abwechslungsreichere Biom-Paletten (vorher zu fad/dunkel)
+  var meadow=new THREE.Color(0x46ad63),forest=new THREE.Color(0x237049),marsh=new THREE.Color(0x1f7d84),
+      sand=new THREE.Color(0xb39a52),tundra=new THREE.Color(0x4f88b6),heath=new THREE.Color(0x8a63ac);
   var tmpA=new THREE.Color(),tmpB=new THREE.Color();
   for(var i=0;i<pos.count;i++){
     var x=pos.getX(i),z=pos.getZ(i);
-    var h=Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9;
+    var h=Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55;
     pos.setY(i,h);
-    // grossräumiges Biom-Rauschen (0..1) + zweite Achse für Übergänge
-    var bn=(Math.sin(x*0.006)*Math.cos(z*0.0055)+Math.sin(x*0.011+z*0.009)*0.5+1.5)/3;
-    var bn2=(Math.cos(x*0.004-z*0.0047)+1)/2;
+    // Biom-Rauschen kleinteiliger -> mehr Abwechslung im Blickfeld (0..1)
+    var bn=(Math.sin(x*0.009)*Math.cos(z*0.008)+Math.sin(x*0.016+z*0.013)*0.5+1.5)/3;
+    var bn2=(Math.cos(x*0.006-z*0.007)+1)/2;
     var col;
-    if(bn<0.28){col=tmpA.copy(marsh).lerp(forest,bn/0.28);}
-    else if(bn<0.5){col=tmpA.copy(forest).lerp(meadow,(bn-0.28)/0.22);}
-    else if(bn<0.72){col=tmpA.copy(meadow).lerp(bn2>0.5?sand:meadow,(bn-0.5)/0.22*0.7);}
-    else{col=tmpA.copy(meadow).lerp(tundra,(bn-0.72)/0.28);}
-    // Höhen-Tönung: Senken feuchter/dunkler, Kuppen heller
-    tmpB.copy(col).lerp(marsh,Math.max(0,-h)*0.12);
-    col.lerp(tmpB,0.5);
-    // feines Fleck-Rauschen
-    var b=0.82+((Math.sin(x*0.5)*Math.cos(z*0.5))*0.1)+Math.sin(x*0.13+z*0.17)*0.05;
+    if(bn<0.26){col=tmpA.copy(marsh).lerp(forest,bn/0.26);}
+    else if(bn<0.48){col=tmpA.copy(forest).lerp(meadow,(bn-0.26)/0.22);}
+    else if(bn<0.70){col=tmpA.copy(meadow).lerp(bn2>0.5?sand:heath,(bn-0.48)/0.22*0.75);}
+    else{col=tmpA.copy(meadow).lerp(tundra,(bn-0.70)/0.30);}
+    // Höhen-Tönung: Senken dunkler/feuchter, Kuppen minimal heller
+    tmpB.copy(col).lerp(marsh,Math.max(0,-h)*0.10);col.lerp(tmpB,0.4);
+    col.offsetHSL(0,0.03,Math.max(0,h)*0.02); // etwas mehr Sättigung + hellere Kuppen
+    // gröberes Patch-Rauschen + feine Fleckung -> lebendiger Boden
+    var b=0.80+Math.sin(x*0.09+z*0.07)*0.10+Math.sin(x*0.5)*Math.cos(z*0.5)*0.08+Math.sin(x*0.13+z*0.17)*0.05;
     cols.push(col.r*b,col.g*b,col.b*b);
   }
   g.setAttribute("color",new THREE.Float32BufferAttribute(cols,3));
@@ -222,7 +223,7 @@ function buildGround(){
   var m=new THREE.MeshLambertMaterial({vertexColors:true});
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
-function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9;}
+function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55;}
 
 // ---------- Assets laden (nature_pack) ----------
 var treeProtos=[],bushProto=null,natureReady=false;
@@ -286,6 +287,19 @@ function placeResources(){
     berry.position.y=0.7;m.add(berry);
     resources.push({type:"bush",mesh:m,x:x,z:z,hp:1,maxhp:1,dead:false,regrow:0,baseY:m.position.y,berry:berry});
   });
+  // 🌸🌿 Bunter Bodenteppich gegen „fade" Landschaft: Blumen (leuchtend) + Gras-Büschel — instanziert = billig
+  (function(){
+    var o=new THREE.Object3D(),cc=new THREE.Color();
+    function spot(){var a=rnd()*6.28,rd=6+rnd()*half;return [Math.cos(a)*rd,Math.sin(a)*rd];}
+    var FL=Math.round(260*VF),FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c,0xff5c7a];
+    var flowers=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.15,0),new THREE.MeshBasicMaterial(),FL); // unlit -> leuchtet auch nachts
+    for(var i=0;i<FL;i++){var p=spot();o.position.set(p[0],groundH(p[0],p[1])+0.2,p[1]);o.scale.setScalar(0.6+rnd()*0.9);o.rotation.set(rnd()*6.28,rnd()*6.28,0);o.updateMatrix();flowers.setMatrixAt(i,o.matrix);cc.setHex(FLC[(rnd()*FLC.length)|0]);flowers.setColorAt(i,cc);}
+    flowers.instanceColor.needsUpdate=true;scene.add(flowers);
+    var GR=Math.round(340*VF),GC=[0x3fa060,0x4fbf6e,0x2e8a50,0x6ac07a,0x9ad46a];
+    var grass=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.6,4),new THREE.MeshLambertMaterial(),GR);grass.castShadow=false;grass.receiveShadow=true;
+    for(var j=0;j<GR;j++){var q=spot();o.position.set(q[0],groundH(q[0],q[1])+0.28,q[1]);o.scale.set(1,0.7+rnd()*0.9,1);o.rotation.set((rnd()-.5)*0.3,rnd()*6.28,(rnd()-.5)*0.3);o.updateMatrix();grass.setMatrixAt(j,o.matrix);cc.setHex(GC[(rnd()*GC.length)|0]);grass.setColorAt(j,cc);}
+    grass.instanceColor.needsUpdate=true;scene.add(grass);
+  })();
 }
 
 // ---------- Partikel-Pool ----------
@@ -931,12 +945,12 @@ function updDayNight(dt){
   var vig=document.getElementById("nightVig");
   if(isNight){t=0.08;var lbl="🌙 Tag "+day+" · Nacht ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
     if(vig)vig.style.opacity=(0.55+Math.sin(perfNow*0.004)*0.12).toFixed(2);}
-  else{t=0.35+Math.sin(f*Math.PI)*0.65;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph;
+  else{t=0.62+Math.sin(f*Math.PI)*0.38;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph;
     // Dämmerungs-Warnung kurz vor der Nacht
     if(vig)vig.style.opacity=(f>0.85?(f-0.85)/0.15*0.3:0).toFixed(2);
     if(f>0.9&&!duskWarned){duskWarned=true;announce("🌇 Die Dunkelheit naht — sichere deine Basis!");}
     if(f<0.5)duskWarned=false;}
-  sun.intensity=0.15+t*1.0;hemi.intensity=0.25+t*0.6;
+  sun.intensity=0.2+t*1.4;hemi.intensity=0.22+t*0.5;
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   scene.fog.color.copy(scene.background);
   var ang=f*Math.PI;sun.position.set(Math.cos(ang)*60,Math.max(8,Math.sin(isNight?0.2:f*Math.PI)*80),Math.sin(ang)*40);

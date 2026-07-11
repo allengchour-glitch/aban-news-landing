@@ -51,6 +51,33 @@
   `material.color.setHex` alles mit; unabhängige Teile (Augen) eigenes Material.
 - **Wolken/Sonne nicht in Kameranähe** (wäscht Bild aus) — weit hinter das Brett.
 - **Musik-Dateien**: `preload="none"` (Seitenladezeit), Lautstärke 0.26–0.34.
+- **Screenshot-Harness-Falle**: der generische `game_shot`-Button-Finder (Regex
+  `/Start|Los|▶|Spiel/`) trifft in Lebenspfad den FALSCHEN Knopf → Spiel startet nie,
+  G bleibt null, man screenshottet nur das Setup-Menü. Fix: gezielt
+  `document.getElementById('startBtn').click()`.
+- **Lebenspfad-Skript ist in einer IIFE gekapselt** → `G`/`NET`/Funktionen sind NICHT
+  auf `window`. Zum Testen den `window.__lp`-Hook nutzen (u.a. neu
+  `__lp.nettest(present,turn,host,my)` für Online-Präsenz/Pause).
+- **Helle Toon-Bretter (Lebenspfad/Traumhaus): HUD-Text wäscht aus.** Kapitel-Titel/
+  „ist dran" brauchen ein dunkles Pill-Backdrop (`rgba(38,52,72,.42)` + Text-Schatten),
+  sonst weiß-auf-hell unlesbar (Gemini-Vision-Befund 2026-07-11).
+
+## 🏆 Lebenspfad: Meshy-Meilenstein-Props (2026-07-11, PR #1714)
+- 6 CC-eigene Meshy-Toon-Props in `models/lp_prop_*.glb` (haus/cabrio/hochzeitsbogen/
+  kinderwagen/abschlusshut/herz), Blender-poliert (zentriert, y=0, ~1.3 Einheiten,
+  JPEG 1024², r128-Sampler-Fix), je <500 KB / ~7k Tris. Eingebaut als 3D-Landmarken
+  je Lebensphase via bestehendem `GLTFLoader+fitModel`-Spec-Block (bei `lp_haus`-Loader).
+- **Meshy-Prop-Falle:** „Hut/Zylinder"-Prompts bekommen oft ein aufgemaltes Anime-Gesicht
+  → Prompt „no face, no eyes, only inanimate objects" + Textur-Prompt gegen Gesichter.
+- **Viewer-Falle:** Pastell-Props im three.js-Viewer schnell überbelichtet (→ weiß). ACES-
+  Tonemapping + gedämpftes Licht, dann stimmen die Farben — Modell war ok. Sortierung/
+  Endstand: `showEnd` nach `lifeScore` sortiert (🥇🥈🥉), Chronik folgt `rankedP`.
+
+## 🌐 Lebenspfad Online-Präsenz/Pause/Save (2026-07-11, live PR #1714)
+- In-Game-`#netHud` (🟢/🔴/🏁 pro Spieler, 🎲=dran); Host broadcastet `{t:"pres",a[]}`.
+- Auto-Pause `#netPause`: abwesender aktiver Spieler → „Warte auf …" (+Host-Skip);
+  Gast verliert Host → „Alleine weiterspielen". Disconnect im Spiel wirft nicht mehr
+  sofort raus, sondern meldet Abwesenheit. `saveGame` sichert jetzt auch Online-Spiele.
 
 ## Spiel-Besonderheiten
 - `lebenspfad.html`: OPT (music/sfx/tempo/motion) aus localStorage; updater-Kette in der
