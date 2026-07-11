@@ -215,6 +215,17 @@ nature_pack.glb, landscape_realm.glb. NÄCHSTER SCHRITT: Rollout auf neon-flug/r
       Slime (Squash&Stretch-Hüpfen) + Panther (Duck-Wippen, Sprung-Tween).
 - [ ] Klassenwahl im Startmenü (Pass 3): Held/Magier/Ranger/Titan, Wahl in localStorage.
 
+### ✅ STAND 2026-07-11 (Opus-Session, nach Fable-5-Limit) — GELIEFERT & LIVE
+- ✅ **Neon-Wildnis MVP** (neon-wildnis.html, PR #1691): riesige Map 800×800, Bäume fällen (+Holz),
+  Steine/Kristalle/Beeren, 5 Bau-Rezepte (Mauer/Fackel/Lagerfeuer/Werkbank/Turm), Tag/Nacht + Slime-
+  Nachtangriff, Quest-Kette, Save. Assets: hero_meshy_combat2/nature_pack/monster_slime. In Arcade+Sitemap.
+  Selbst von der Hauptsession gebaut (Agents am Fable-5-Limit gestoppt). Debug: window.__nw.
+- ✅ **neon-realm Occlusion-Fix** (PR #1692): Häuser faden transparent wenn zwischen Kamera+Spieler
+  (User-Handy-Bug „Spieler hinter Hausdach"). Materialien pro Haus geklont. Debug: window.__realm.
+- ✅ **Lebenspfad B2** (PR #1690): Weggabelungen, Quiz/Tausch/Wettrennen, Fast-Chat, Kurz-Modus.
+- OFFEN (nächste Runden, s. Cron): Survivor-Bau-Modus (Runde 10), Lebenspfad B3 (Runde 8: Altern/
+  Feld-Icons/Kamera-Scroll/Pixel/Drama), Liebe-Paket (Runde 9), Wildnis-Ausbau (Online-Koop js/mp.js).
+
 ### User-Feedback 2026-07-11 (Runde 11 — NEUES SPIEL „Neon-Wildnis": riesige Map + Farmen/Sammeln)
 User: „riesen 1 map machen", „coole sachen farmen wie im survival, material sammeln bäume fällen
 steine holz sammeln", „charakter mit mehr liebe", „chat fenster? oben fehlt einbisschen was".
