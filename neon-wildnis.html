@@ -589,15 +589,15 @@ function buildAmbient(){
   for(;gi<grassBudget;gi++)setInst(grassIM,gi,0,-999,0,0.001,0);grassIM.count=grassBudget;grassIM.instanceMatrix.needsUpdate=true;
 
   // --- Blumen (Stiel + leuchtende Blüte) → 2 InstancedMeshes ---
-  var flBudget=Math.round(260*VF);
+  var flBudget=Math.round(420*VF);
   var stemG=new THREE.CylinderGeometry(0.03,0.03,0.5,4);stemG.translate(0,0.25,0);
   var stemIM=instMesh(stemG,new THREE.MeshLambertMaterial({color:0x2f7a45}),flBudget);
-  var petalG=new THREE.IcosahedronGeometry(0.16,0);
-  var petalIM=new THREE.InstancedMesh(petalG,new THREE.MeshLambertMaterial({emissive:0x141414}),flBudget);scene.add(petalIM);ambientGroups.push(petalIM);
+  var petalG=new THREE.IcosahedronGeometry(0.2,0);petalG.scale(1.5,0.4,1.5); // flache, breite Blüte
+  var petalIM=new THREE.InstancedMesh(petalG,new THREE.MeshBasicMaterial(),flBudget);scene.add(petalIM);ambientGroups.push(petalIM); // unlit -> immer bunt/hell
   petalIM.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(flBudget*3),3);
-  var flColors=[[1,0.4,0.6],[1,0.85,0.3],[0.6,0.5,1],[0.4,0.9,1],[1,0.6,0.3]];
+  var flColors=[[1,0.35,0.62],[1,0.86,0.28],[0.7,0.45,1],[0.35,0.85,1],[1,0.55,0.28],[1,0.45,0.8],[0.95,0.95,0.98],[1,0.72,0.2]];
   var fi=0;
-  clusterScatter(Math.round(70*VF),[2,6],2.6,300,function(x,z){if(fi>=flBudget)return;var y=groundH(x,z),s=0.8+rnd()*0.6;
+  clusterScatter(Math.round(110*VF),[3,8],2.8,300,function(x,z){if(fi>=flBudget)return;var y=groundH(x,z),s=0.9+rnd()*0.7;
     setInst(stemIM,fi,x,y,z,s,rnd()*6.28);setInst(petalIM,fi,x,y+0.5*s,z,s,rnd()*6.28);
     var col=flColors[(rnd()*flColors.length)|0];petalIM.instanceColor.setXYZ(fi,col[0],col[1],col[2]);fi++;});
   for(var fk=fi;fk<flBudget;fk++){setInst(stemIM,fk,0,-999,0,0.001,0);setInst(petalIM,fk,0,-999,0,0.001,0);}
@@ -995,7 +995,13 @@ function decorateWorld(){
     m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);
   });
   // --- Büsche / Blumen / Pilzgruppen ---
-  farScatter(Math.round(120*VF),8,function(x,z){var m=cc0inst("cc0_bush",1.4*(0.7+rnd()*0.7));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  // 🌿 üppige Büsche (mehrere Grün-Blobs + Blüten-Tupfer) — schöner als flacher cc0-Busch
+  var BUSH_G=[0x2e7d4a,0x3a9a5a,0x276b40,0x4faf62],BLOOM=[0xff6ab0,0xffd166,0xffffff,0xff8a4d,0x9a6cff];
+  function mkBush(){var g=new THREE.Group();var gm=new THREE.MeshLambertMaterial({color:BUSH_G[(rnd()*BUSH_G.length)|0],flatShading:true});
+    var nb=3+((rnd()*3)|0);for(var b=0;b<nb;b++){var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.55+rnd()*0.35,0),gm);bl.position.set((rnd()-0.5)*0.9,0.4+rnd()*0.35,(rnd()-0.5)*0.9);bl.scale.y=0.85;bl.castShadow=true;g.add(bl);}
+    if(rnd()<0.7){var bm=new THREE.MeshBasicMaterial({color:BLOOM[(rnd()*BLOOM.length)|0]});for(var f2=0;f2<4;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.1,0),bm);fl.position.set((rnd()-0.5)*1.0,0.5+rnd()*0.5,(rnd()-0.5)*1.0);g.add(fl);}}
+    return g;}
+  farScatter(Math.round(130*VF),8,function(x,z){var m=(rnd()<0.7)?mkBush():cc0inst("cc0_bush",1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   farScatter(Math.round(100*VF),8,function(x,z){var m=cc0inst("cc0_flower_purple",0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   farScatter(Math.round(75*VF),10,function(x,z){var m=cc0inst("cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Felsen-Sorten / Holzstapel als Streu-Props ---
@@ -1041,6 +1047,12 @@ function decorateWorld(){
     hill.scale.y=0.22+rnd()*0.12;hill.position.set(p.x,groundH(p.x,p.z)-hr*0.05,p.z);hill.receiveShadow=true;hill.castShadow=true;scene.add(hill);
     var hy=groundH(p.x,p.z)+hill.scale.y*hr*0.55;
     for(var fl=0;fl<10;fl++){var fa=rnd()*6.28,fr=rnd()*hr*0.6;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),new THREE.MeshBasicMaterial({color:[0xff6ab0,0xffd166,0x7de3ff,0xffffff][(rnd()*4)|0]}));bl.position.set(p.x+Math.cos(fa)*fr,hy,p.z+Math.sin(fa)*fr);scene.add(bl);}})();}
+  // ⛰️ Berge am Kartenrand (Kulisse ringsum)
+  var rockM=new THREE.MeshLambertMaterial({color:0x6a6a74,flatShading:true}),snowM=new THREE.MeshLambertMaterial({color:0xeef2ff,flatShading:true});
+  for(var mt=0;mt<Math.round(16);mt++){var ma=mt/16*6.28+rnd()*0.15,mrd=MAP/2-18;var mx=Math.cos(ma)*mrd,mz=Math.sin(ma)*mrd;
+    var mh=34+rnd()*46,mr=20+rnd()*18;
+    var mtn=new THREE.Mesh(new THREE.ConeGeometry(mr,mh,6+((rnd()*3)|0),1),rockM);mtn.position.set(mx,groundH(mx,mz)+mh/2-6,mz);mtn.rotation.y=rnd()*6.28;mtn.castShadow=true;scene.add(mtn);
+    var snow=new THREE.Mesh(new THREE.ConeGeometry(mr*0.42,mh*0.32,6,1),snowM);snow.position.set(mx,groundH(mx,mz)+mh-mh*0.16-6,mz);snow.rotation.y=mtn.rotation.y;scene.add(snow);}
   // --- Dörfer: 2–3 Cluster aus Häusern + Zäunen + Lagerfeuer + Fässern/Kisten/Zelt ---
   var HOUSES=["building_fachwerk","building_werkstatt","building_turm"];
   var nV=3+((rnd()*2)|0);
