@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Reaktions-Duell ⚡</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
+    background: linear-gradient(160deg, #bce6ff, #eaf7ff);
+    color: #234;
+    user-select: none; -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; }
+
+  .back {
+    position: fixed; top: 10px; left: 10px; z-index: 50;
+    background: rgba(255,255,255,.85); border: none; border-radius: 14px;
+    padding: 10px 16px; font-size: 16px; font-weight: 700; color: #2a6;
+    min-height: 46px; box-shadow: 0 3px 8px rgba(0,0,0,.12); cursor: pointer;
+  }
+
+  /* Spielfeld: zwei Hälften */
+  #arena { flex: 1; display: flex; flex-direction: column; position: relative; }
+  .pane {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; transition: background .12s;
+  }
+  .pane.top { border-radius: 0 0 26px 26px; }
+  .pane.bottom { border-radius: 26px 26px 0 0; }
+  #p1 { background: #ff8fab; }         /* wartend rosa */
+  #p2 { background: #7fd4ff; }         /* wartend blau */
+  .pane.armed { background: #b8f7c0 !important; } /* bereit, aber noch nicht grün */
+  .pane.go { background: #2fd35a !important; }    /* GRÜN – jetzt! */
+  .pane.win { background: #ffe27a !important; }
+  .pane.lose { background: #d76b7f !important; }
+
+  .pane .lbl {
+    font-size: clamp(22px, 7vw, 40px); font-weight: 900; color: #fff;
+    text-shadow: 0 2px 6px rgba(0,0,0,.25); text-align: center; padding: 8px 14px;
+    transform: rotate(0deg);
+  }
+  #p1 .lbl { transform: rotate(180deg); } /* obere Hälfte auf Kopf für Spieler oben */
+  .pane .sub { font-size: clamp(13px,3.6vw,18px); font-weight:700; color: #fff; opacity:.92; margin-top:6px; }
+  #p1 .sub { transform: rotate(180deg); }
+
+  /* Mittelbalken mit Punkten */
+  #mid {
+    position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 16px; pointer-events: none; z-index: 20;
+  }
+  .score {
+    background: rgba(255,255,255,.92); border-radius: 16px; padding: 6px 14px;
+    font-weight: 900; font-size: 18px; box-shadow: 0 3px 8px rgba(0,0,0,.15);
+    min-width: 62px; text-align: center;
+  }
+  .score.p1 { color: #e5487a; transform: rotate(180deg); }
+  .score.p2 { color: #1f9bd6; }
+  #round {
+    background: #234; color:#fff; border-radius: 20px; padding: 8px 16px;
+    font-weight: 900; font-size: 15px; box-shadow: 0 3px 8px rgba(0,0,0,.2);
+  }
+
+  /* Overlay Start / Ende */
+  .overlay {
+    position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    background: linear-gradient(160deg, #bce6ff, #eaf7ff); padding: 24px;
+  }
+  .card {
+    background: #fff; border-radius: 26px; padding: 26px 22px; max-width: 420px; width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  }
+  .card h1 { font-size: 30px; margin-bottom: 8px; color: #2a6; }
+  .card p { font-size: 16px; line-height: 1.5; margin-bottom: 14px; color: #456; }
+  .big { font-size: 46px; margin-bottom: 6px; }
+  .btn {
+    background: linear-gradient(#ffd34d, #ffb703); border: none; border-radius: 18px;
+    padding: 15px 26px; font-size: 20px; font-weight: 900; color: #6a3d00;
+    min-height: 46px; cursor: pointer; box-shadow: 0 5px 0 #d68e00; margin-top: 8px;
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #d68e00; }
+  .hidden { display: none !important; }
+  .flag { display:flex; gap:8px; justify-content:center; margin-bottom:12px; font-size:26px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+  <!-- Spielfeld -->
+  <div id="arena" class="hidden">
+    <div class="pane top" id="p1"><div class="lbl" id="lbl1">Spieler 1</div><div class="sub" id="sub1">warte…</div></div>
+    <div class="pane bottom" id="p2"><div class="lbl" id="lbl2">Spieler 2</div><div class="sub" id="sub2">warte…</div></div>
+    <div id="mid">
+      <div class="score p1" id="s1">0</div>
+      <div id="round">Runde 1/5</div>
+      <div class="score p2" id="s2">0</div>
+    </div>
+  </div>
+
+  <!-- Start-Overlay -->
+  <div class="overlay" id="startScreen">
+    <div class="card">
+      <div class="big">⚡</div>
+      <h1>Reaktions-Duell</h1>
+      <div class="flag">🌸 vs 💙</div>
+      <p>Zwei Spieler, ein Handy. Sobald das Feld <b style="color:#2fd35a">GRÜN</b> wird:
+      schnell auf deine Hälfte tippen! Wer zuerst tippt, gewinnt die Runde.<br>
+      <b style="color:#c33">Zu früh getippt = Runde verloren!</b></p>
+      <p>Best of 5 – wer 3 Runden hat, gewinnt.</p>
+      <button class="btn" id="startBtn">Los geht's!</button>
+    </div>
+  </div>
+
+  <!-- End-Overlay -->
+  <div class="overlay hidden" id="endScreen">
+    <div class="card">
+      <div class="big" id="endEmoji">🏆</div>
+      <h1 id="endTitle">Spieler 1 gewinnt!</h1>
+      <p id="endScore">3 : 1</p>
+      <button class="btn" id="againBtn">🔁 Nochmal</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var TOTAL = 5, NEED = 3;
+  var arena = document.getElementById('arena');
+  var startScreen = document.getElementById('startScreen');
+  var endScreen = document.getElementById('endScreen');
+  var p1 = document.getElementById('p1'), p2 = document.getElementById('p2');
+  var lbl1 = document.getElementById('lbl1'), lbl2 = document.getElementById('lbl2');
+  var sub1 = document.getElementById('sub1'), sub2 = document.getElementById('sub2');
+  var s1 = document.getElementById('s1'), s2 = document.getElementById('s2');
+  var roundEl = document.getElementById('round');
+
+  var score1 = 0, score2 = 0, round = 0;
+  var state = 'idle';   // idle | waiting | go | done
+  var goTime = 0;
+  var timer = null;
+
+  function clearTimer(){ if(timer){ clearTimeout(timer); timer = null; } }
+
+  function setPane(el, cls){ el.className = 'pane ' + (el===p1?'top ':'bottom ') + (cls||''); }
+
+  function updateScore(){
+    s1.textContent = score1; s2.textContent = score2;
+    roundEl.textContent = 'Runde ' + Math.min(round+1,TOTAL) + '/' + TOTAL;
+  }
+
+  function startGame(){
+    score1 = 0; score2 = 0; round = 0;
+    startScreen.classList.add('hidden');
+    endScreen.classList.add('hidden');
+    arena.classList.remove('hidden');
+    updateScore();
+    nextRound();
+  }
+
+  function nextRound(){
+    if(score1 >= NEED || score2 >= NEED || round >= TOTAL){ return endGame(); }
+    state = 'waiting';
+    goTime = 0;
+    clearTimer();
+    setPane(p1,'armed'); setPane(p2,'armed');
+    lbl1.textContent = 'Spieler 1'; lbl2.textContent = 'Spieler 2';
+    sub1.textContent = 'Bereit… nicht zu früh!';
+    sub2.textContent = 'Bereit… nicht zu früh!';
+    updateScore();
+    var delay = 1200 + Math.random()*3000; // 1.2 - 4.2s
+    timer = setTimeout(function(){
+      state = 'go';
+      goTime = performance.now();
+      setPane(p1,'go'); setPane(p2,'go');
+      sub1.textContent = 'JETZT TIPPEN!';
+      sub2.textContent = 'JETZT TIPPEN!';
+      lbl1.textContent = '⚡ TIPP!'; lbl2.textContent = '⚡ TIPP!';
+    }, delay);
+  }
+
+  function tap(player){
+    if(state === 'waiting'){
+      // zu früh -> anderer Spieler gewinnt die Runde
+      clearTimer();
+      state = 'done';
+      var winner = (player===1)?2:1;
+      resolve(winner, true, player);
+    } else if(state === 'go'){
+      state = 'done';
+      resolve(player, false, 0);
+    }
+    // in 'done' oder 'idle': ignorieren
+  }
+
+  function resolve(winner, tooEarly, earlyPlayer){
+    var rt = tooEarly ? 0 : Math.round(performance.now() - goTime);
+    if(winner===1) score1++; else score2++;
+    round++;
+    var wPane = (winner===1)?p1:p2, lPane = (winner===1)?p2:p1;
+    setPane(wPane,'win'); setPane(lPane,'lose');
+    var wl = (winner===1)?lbl1:lbl2, ll = (winner===1)?lbl2:lbl1;
+    var ws = (winner===1)?sub1:sub2, ls = (winner===1)?sub2:sub1;
+    wl.textContent = '🎉 Punkt!'; ll.textContent = '😖';
+    if(tooEarly){
+      ws.textContent = 'Gewonnen (Gegner zu früh!)';
+      ls.textContent = 'Zu früh getippt!';
+    } else {
+      ws.textContent = rt + ' ms – schnell!';
+      ls.textContent = 'zu langsam';
+    }
+    updateScore();
+    clearTimer();
+    timer = setTimeout(nextRound, 1500);
+  }
+
+  function endGame(){
+    state = 'done';
+    clearTimer();
+    arena.classList.add('hidden');
+    var t = document.getElementById('endTitle');
+    var e = document.getElementById('endEmoji');
+    var sc = document.getElementById('endScore');
+    sc.textContent = score1 + ' : ' + score2;
+    if(score1 === score2){
+      e.textContent = '🤝'; t.textContent = 'Unentschieden!';
+    } else if(score1 > score2){
+      e.textContent = '🌸'; t.textContent = 'Spieler 1 gewinnt!';
+    } else {
+      e.textContent = '💙'; t.textContent = 'Spieler 2 gewinnt!';
+    }
+    endScreen.classList.remove('hidden');
+  }
+
+  // Eingaben: Touch + Maus, doppelte Auslösung verhindern
+  function bind(el, player){
+    var lock = false;
+    function handler(ev){
+      ev.preventDefault();
+      if(lock) return;
+      lock = true;
+      setTimeout(function(){ lock = false; }, 60);
+      tap(player);
+    }
+    el.addEventListener('touchstart', handler, {passive:false});
+    el.addEventListener('mousedown', handler);
+  }
+  bind(p1,1); bind(p2,2);
+
+  document.getElementById('startBtn').addEventListener('click', startGame);
+  document.getElementById('againBtn').addEventListener('click', startGame);
+
+  // Kein Kontextmenü / Doppeltipp-Zoom-Störung
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+})();
+</script>
+</body>
+</html>
