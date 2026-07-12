@@ -314,10 +314,10 @@
 #done search:makeup organizer acrylic
 #done search:jade roller gua sha set
 #done search:heatless curling rod
-search:pet hair remover roller
-search:dog harness adjustable
-search:cat window perch
-search:resistance bands set
+#done search:pet hair remover roller
+#done search:dog harness adjustable
+#done search:cat window perch
+#done search:resistance bands set
 search:yoga mat cork
 search:water bottle motivational
 search:travel makeup bag
