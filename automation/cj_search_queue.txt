@@ -286,18 +286,18 @@
 #done search:satin slip dress
 #done search:corduroy jacket
 #done search:turtleneck sweater
-search:tennis skirt
-search:bodysuit ribbed
-search:hair claw clip large
-search:silk scrunchie set
-search:layered necklace gold
-search:hoop earrings chunky
-search:signet ring gold
-search:anklet beaded
-search:crossbody phone bag
-search:bucket bag women
-search:quilted shoulder bag
-search:canvas tote aesthetic
+#done search:tennis skirt
+#done search:bodysuit ribbed
+#done search:hair claw clip large
+#done search:silk scrunchie set
+#done search:layered necklace gold
+#done search:hoop earrings chunky
+#done search:signet ring gold
+#done search:anklet beaded
+#done search:crossbody phone bag
+#done search:bucket bag women
+#done search:quilted shoulder bag
+#done search:canvas tote aesthetic
 search:chunky loafers women
 search:ballet flats mary jane
 search:platform sandals
