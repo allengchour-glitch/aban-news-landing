@@ -861,6 +861,31 @@ function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;
     var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
     sp.scale.set(0.6,0.6,0.6);sp.position.y=2.4;n.mesh.add(sp);n.emo=sp;n.emoLife=3;}
   if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo=null;}}}}
+// 💨 Schornstein-Rauch über Häusern (Dorf lebendiger)
+var smokeStacks=[],smokePuffs=[],_smokeTex=null;
+function smokeTex(){if(_smokeTex)return _smokeTex;var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(216,216,222,.85)");g.addColorStop(1,"rgba(216,216,222,0)");c.fillStyle=g;c.fillRect(0,0,64,64);_smokeTex=new THREE.CanvasTexture(cv);return _smokeTex;}
+function addChimney(x,z,y){smokeStacks.push({x:x,z:z,y:y});}
+function updSmoke(dt){
+  if(smokePuffs.length<70)for(var i=0;i<smokeStacks.length;i++){var st=smokeStacks[i];if(Math.random()<dt*0.6){
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:smokeTex(),transparent:true,depthWrite:false,opacity:0.55}));
+    sp.position.set(st.x,st.y,st.z);sp.scale.setScalar(0.9);scene.add(sp);
+    smokePuffs.push({sp:sp,t:0,life:4+Math.random()*2,drift:(Math.random()-0.5)*0.35});}}
+  for(var j=smokePuffs.length-1;j>=0;j--){var pf=smokePuffs[j];pf.t+=dt;var fr=pf.t/pf.life;
+    pf.sp.position.y+=dt*0.95;pf.sp.position.x+=pf.drift*dt;pf.sp.scale.setScalar(0.9+fr*2.4);pf.sp.material.opacity=0.5*(1-fr);
+    if(pf.t>=pf.life){scene.remove(pf.sp);smokePuffs.splice(j,1);}}
+}
+// 🌱 Garten-Beet (umzäunt, mit Pflanzen) — Dorf-Detail
+function mkGarden(x,z){var gy=groundH(x,z);
+  var soil=gtex?gtex("tex_dirt.png",0,true):null;if(soil)soil.repeat.set(1.4,1.4);
+  var plot=new THREE.Mesh(new THREE.PlaneGeometry(4,3),soil?new THREE.MeshStandardMaterial({map:soil,roughness:1}):new THREE.MeshStandardMaterial({color:0x5a3a22,roughness:1}));
+  plot.rotateX(-Math.PI/2);plot.position.set(x,gy+0.05,z);plot.receiveShadow=true;scene.add(plot);
+  var cropM=[new THREE.MeshStandardMaterial({color:0x4faf3a,flatShading:true}),new THREE.MeshStandardMaterial({color:0xd88a2a,flatShading:true}),new THREE.MeshStandardMaterial({color:0x8fbf3a,flatShading:true})];
+  for(var r=-1;r<=1;r++)for(var c=-1;c<=1;c++){var cx2=x+c*1.1+(Math.random()-0.5)*0.3,cz2=z+r*0.9+(Math.random()-0.5)*0.3;
+    var cr=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.5,6),cropM[(Math.random()*cropM.length)|0]);cr.position.set(cx2,gy+0.28,cz2);cr.castShadow=true;scene.add(cr);}
+  // Mini-Zaun-Ecken
+  var fw=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+  [[-2,-1.5],[2,-1.5],[-2,1.5],[2,1.5]].forEach(function(p){var post=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.7,0.12),fw);post.position.set(x+p[0],gy+0.35,z+p[1]);scene.add(post);});
+}
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 function decorateWorld(){
   var half=MAP/2-40;
@@ -878,6 +903,22 @@ function decorateWorld(){
   // --- Felsen-Sorten / Holzstapel als Streu-Props ---
   farScatter(Math.round(45*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"cc0_rock_large":"cc0_rock_small",1.6*(0.7+rnd()*0.9));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   farScatter(Math.round(14*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
+  var half2=MAP/2-60;
+  function spotFar(minR){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
+  // 🌸 Blumenwiese: dichter Farbteppich
+  (function(){var p=spotFar(80);var FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c];
+    for(var i=0;i<90*VF;i++){var ox=p.x+(rnd()-0.5)*34,oz=p.z+(rnd()-0.5)*34;
+      var st=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.5,4),new THREE.MeshLambertMaterial({color:0x2f7a45}));st.position.set(ox,groundH(ox,oz)+0.25,oz);scene.add(st);
+      var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),new THREE.MeshBasicMaterial({color:FLC[(rnd()*FLC.length)|0]}));bl.position.set(ox,groundH(ox,oz)+0.55,oz);scene.add(bl);}})();
+  // 🍄 Pilzhain: dichte leuchtende Pilze
+  (function(){var p=spotFar(90);for(var i=0;i<50*VF;i++){var ox=p.x+(rnd()-0.5)*26,oz=p.z+(rnd()-0.5)*26;
+    var m=cc0inst("cc0_mushroom_red",1.1*(0.7+rnd()*0.9));if(m){m.position.set(ox,groundH(ox,oz),oz);m.rotation.y=rnd()*6.28;scene.add(m);}
+    var gl=new THREE.Mesh(new THREE.SphereGeometry(0.5,8,6),new THREE.MeshBasicMaterial({color:0xff4d8d,transparent:true,opacity:0.12}));gl.position.set(ox,groundH(ox,oz)+0.5,oz);scene.add(gl);}
+    var pl=new THREE.PointLight(0xff4d8d,0.7,26);pl.position.set(p.x,groundH(p.x,p.z)+3,p.z);scene.add(pl);})();
+  // 🪨 Felsformation: gestapelte grosse Felsen (Landmarke)
+  (function(){var p=spotFar(70);for(var i=0;i<7;i++){var ox=p.x+(rnd()-0.5)*10,oz=p.z+(rnd()-0.5)*10;
+    var m=cc0inst("cc0_rock_large",2.2+rnd()*2.2);if(m){m.position.set(ox,groundH(ox,oz)+rnd()*1.5,oz);m.rotation.set(rnd()*0.4,rnd()*6.28,rnd()*0.4);scene.add(m);}}})();
   // --- Dörfer: 2–3 Cluster aus Häusern + Zäunen + Lagerfeuer + Fässern/Kisten/Zelt ---
   var HOUSES=["building_fachwerk","building_werkstatt","building_turm"];
   var nV=3+((rnd()*2)|0);
@@ -890,7 +931,7 @@ function decorateWorld(){
     var nH=isSpawn?10:(2+((rnd()*3)|0));
     for(var h=0;h<nH;h++){
       var ha=(h/nH)*6.28+rnd()*0.4,hrd=(isSpawn?13:6)+rnd()*(isSpawn?8:7);var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
-      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);}
+      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);addChimney(hx+(rnd()-0.5)*1.5,hz+(rnd()-0.5)*1.5,groundH(hx,hz)+7.5);}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
@@ -920,6 +961,7 @@ function decorateWorld(){
     for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+3+ai*0.9,waz=vz-4;
       wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
     // 🧑‍🌾 Dorfbewohner (mehr im grossen Anfangsdorf)
+    var nGar=isSpawn?3:1;for(var ga=0;ga<nGar;ga++){var gaa=rnd()*6.28,gar=ringR-5;mkGarden(vx+Math.cos(gaa)*gar,vz+Math.sin(gaa)*gar);}
     var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr);}
     if(isSpawn){ // 💰 Händler beim Marktstand
       merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z);
@@ -1702,7 +1744,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updSmoke(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
