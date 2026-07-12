@@ -318,6 +318,22 @@ Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgero
       (knapp an ❤️ vorbei = „Ooh!"). Ziel: nie langweilig, jeder Klick hat Wumms. Bloom/Bloom-frei
       egal — es ist Pastell, aber Game-Feel-Prinzipien (Juice) voll ausreizen. OPT.motion respektieren.
 
+### ✅ STAND 2026-07-12 (Opus-Session, Teil 2) — neon-wildnis grosser Welt-Ausbau
+- ✅ **Welt-Reichtum aus CC0 (PR #1749):** nutzt die vorhandene `models/cc0_*.glb`-Bibliothek (Kenney
+  Nature/Survival/Graveyard, alle CC0) + **Auto-Skalierung per Bounding-Box** (`loadCC0`/`cc0inst`,
+  robust gegen native Einheiten). NEU: 4 Baum-Sorten + Büsche/Blumen/Pilze/Fels-Sorten (~350 Deko),
+  **Dörfer** (`decorateWorld`: 2-3 Cluster aus building_fachwerk/werkstatt/turm + cc0_fence-Ring +
+  flackerndes Lagerfeuer + Fässer/Kisten/Zelt), **versteckter Friedhof** (crypt+Gräber+Sarg+grünes
+  Licht + legendäre Gruft-Truhe = Top-Loot +40 XP +3 Legendary-Orbs), CC0-Fässer/Kisten als öffenbare
+  Loot-Behälter, prozeduraler **Fluss** (`buildRiver`). Neue Bauteile: Steinboden/Steinpfeiler/Holzzaun.
+  Debug: `__nw.villages/toVillage/toGrave/cc0`. ⚠️ CC0-Container nach Öffnen `visible=false` (kein Lid).
+- ✅ **Waffen & Rüstung (PR #1750):** Ausrüstung an der Werkbank, `equip={weapon,armor}` +
+  `gearStore()`-Helfer vereint tools+equip im Craft-System. 3 Waffen (Bronze+2/Kriegsaxt+4/Neon-Klinge+7
+  → Nahkampf & Skill) + 3 Rüstungen (Leder−2/Eisen−4/Kristall−7 → damagePlayer). Tier-Ketten, HUD-Badges,
+  Save/Load. Debug: `__nw.gear`.
+- **CC0-Quelle:** `models/ASSET-CREDITS.md` listet alle Kenney-Kits. Meshy-Balance 182 (für Highlights
+  reserviert). ⚠️ Meshy-Key ins File schreiben ist vom Classifier blockiert → Meshy nur inline/agent.
+
 ### ✅ STAND 2026-07-12 (Opus-Session) — neon-wildnis lebendiger (Meshy)
 - ✅ **Fusion-Ausbau (Survival+RPG in EINEM Spiel):** 4 Stufen live — XP/Level, Skill (Q/💥 Schockwelle),
   Loot-Orbs (4 Raritäten), SERAPH-Nacht-Boss (HUD-Bar, 2× Legendary-Reward). Alles in neon-wildnis.html.

@@ -35,6 +35,10 @@
  ],
  "runs": [
   {
+   "ts": "2026-07-12T12:35:00Z",
+   "was": "SPIELE neon-wildnis GROSSER Welt-Ausbau (User: 'mehr gegenstand, waffen rüstung bauteile, bäume/pflanzen/wasser, versteckter loot, häuser, dörfer, alles'). PR #1749 Welt-Reichtum: CC0-Bibliothek (Kenney-Kits, auto-skaliert) → 4 Baum-Sorten+Büsche+Blumen+Pilze+Fels (~350 Deko), 2-3 DÖRFER (Häuser+Zäune+Lagerfeuer+Fässer+Zelt), versteckter FRIEDHOF (Gruft+Gräber+legendäre Truhe), öffenbare Fässer/Kisten, Steinboden/-pfeiler/Zaun, prozeduraler Fluss. PR #1750 Waffen&Rüstung: 3 Waffen (+2/+4/+7 Angriff) + 3 Rüstungen (-2/-4/-7 Schaden) an Werkbank, HUD-Badges, Save/Load. Beide game_smoke PASS + Screenshots verifiziert."
+  },
+  {
    "ts": "2026-07-12T12:10:00Z",
    "was": "SPIELE neon-wildnis lebendiger (PR #1747): 3 Meshy-Gegner (Goblin/Wolf/Golem, tag-gestaffelt, gewichtete Auswahl) statt nur Slimes + 3 Item-GLBs (leuchtende Schrein/Pilz-Welt-Props mit Aura, Meshy-Beute-Truhen). game_smoke PASS + In-Game-Screenshots verifiziert. Fusion Survival+RPG jetzt 4 Stufen (XP/Skill/Loot/Boss) + lebendigere Welt."
   },
