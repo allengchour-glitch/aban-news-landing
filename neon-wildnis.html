@@ -1062,17 +1062,6 @@ function updSmoke(dt){
     if(pf.t>=pf.life){scene.remove(pf.sp);smokePuffs.splice(j,1);}}
 }
 // 🌱 Garten-Beet (umzäunt, mit Pflanzen) — Dorf-Detail
-function mkGarden(x,z){var gy=groundH(x,z);
-  var soil=gtex?gtex("tex_dirt.png",0,true):null;if(soil)soil.repeat.set(1.4,1.4);
-  var plot=new THREE.Mesh(new THREE.PlaneGeometry(4,3),soil?new THREE.MeshLambertMaterial({map:soil}):new THREE.MeshLambertMaterial({color:0x5a3a22}));
-  plot.rotateX(-Math.PI/2);plot.position.set(x,gy+0.05,z);plot.receiveShadow=true;scene.add(plot);
-  var cropM=[new THREE.MeshStandardMaterial({color:0x4faf3a,flatShading:true}),new THREE.MeshStandardMaterial({color:0xd88a2a,flatShading:true}),new THREE.MeshStandardMaterial({color:0x8fbf3a,flatShading:true})];
-  for(var r=-1;r<=1;r++)for(var c=-1;c<=1;c++){var cx2=x+c*1.1+(Math.random()-0.5)*0.3,cz2=z+r*0.9+(Math.random()-0.5)*0.3;
-    var cr=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.5,6),cropM[(Math.random()*cropM.length)|0]);cr.position.set(cx2,gy+0.28,cz2);cr.castShadow=true;scene.add(cr);}
-  // Mini-Zaun-Ecken
-  var fw=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
-  [[-2,-1.5],[2,-1.5],[-2,1.5],[2,1.5]].forEach(function(p){var post=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.7,0.12),fw);post.position.set(x+p[0],gy+0.35,z+p[1]);scene.add(post);});
-}
 // 🪧 Wegweiser-Schild (zeigt Richtung + Text)
 function mkSignpost(x,z,items){var g=new THREE.Group(),gy=groundH(x,z);
   var wood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
@@ -1090,15 +1079,54 @@ function mkSignpost(x,z,items){var g=new THREE.Group(),gy=groundH(x,z);
   g.position.set(x,gy,z);scene.add(g);return g;}
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 // 🥕 Gemüsegarten neben einem Haus (Erdbeet + Pflanzreihen + Zaun + Blumen)
+// 🌷 Hübscher Bauerngarten (Hochbeet mit Holzrahmen, gemischtes Gemüse, Sonnenblumen, Blumenbordüre, Giesskanne)
+var _gMats=null;
+function gardenMats(){if(_gMats)return _gMats;var L=THREE.MeshLambertMaterial,B=THREE.MeshBasicMaterial;
+  _gMats={wood:new L({color:0x8a5a30,flatShading:true}),soil:new L({color:0x4a3220,flatShading:true}),
+    leafA:new L({color:0x4faf55,flatShading:true}),leafB:new L({color:0x3f9a48,flatShading:true}),leafC:new L({color:0x6fbf46,flatShading:true}),
+    carrot:new L({color:0xe8802a,flatShading:true}),tomato:new B({color:0xe23b2e}),stem:new L({color:0x3a7a3f,flatShading:true}),
+    petal:new B({color:0xffd23f}),core:new L({color:0x6a4020,flatShading:true}),metal:new L({color:0x9fb4c0,flatShading:true})};
+  return _gMats;}
 function mkGarden(gx,gz,ang){
-  var gy=groundH(gx,gz);
-  var soil=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.22,2.4),new THREE.MeshLambertMaterial({color:0x5a3b24,flatShading:true}));
-  soil.position.set(gx,gy+0.11,gz);soil.rotation.y=ang;soil.receiveShadow=true;scene.add(soil);
-  var cropMat=new THREE.MeshLambertMaterial({color:0x4faf55,flatShading:true}),cropMat2=new THREE.MeshLambertMaterial({color:0x6fbf3f,flatShading:true});
-  for(var r=0;r<3;r++)for(var c=0;c<6;c++){var lx=-1.3+c*0.52,lz=-0.75+r*0.75;var wx=gx+Math.cos(ang)*lx-Math.sin(ang)*lz,wz=gz+Math.sin(ang)*lx+Math.cos(ang)*lz;
-    var cr=new THREE.Mesh(new THREE.ConeGeometry(0.15,0.46,5),(r%2?cropMat2:cropMat));cr.position.set(wx,gy+0.34,wz);cr.castShadow=true;scene.add(cr);}
-  // niedriger Zaun an 2 Längsseiten
-  for(var s=0;s<4;s++){var fx=gx+Math.cos(ang)*(-1.6+s*1.07)-Math.sin(ang)*1.35,fz=gz+Math.sin(ang)*(-1.6+s*1.07)+Math.cos(ang)*1.35;var fm=cc0inst("cc0_fence",0.8);if(fm){fm.position.set(fx,gy,fz);fm.rotation.y=ang;scene.add(fm);}}
+  ang=ang||0;var gy=groundH(gx,gz),M=gardenMats();
+  var G=new THREE.Group();G.position.set(gx,gy,gz);G.rotation.y=ang;scene.add(G);
+  var soilTex=(typeof gtex==="function")?gtex("tex_dirt.png",0,true):null;if(soilTex)soilTex.repeat.set(2,1.5);
+  var soil=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.2,2.4),soilTex?new THREE.MeshLambertMaterial({map:soilTex}):M.soil);
+  soil.position.y=0.12;soil.receiveShadow=true;G.add(soil);
+  // Holz-Hochbeet-Rahmen
+  [[0,1.28,3.5,0.18],[0,-1.28,3.5,0.18],[1.79,0,0.18,2.74],[-1.79,0,0.18,2.74]].forEach(function(p){var pl=new THREE.Mesh(new THREE.BoxGeometry(p[2],0.3,p[3]),M.wood);pl.position.set(p[0],0.2,p[1]);pl.castShadow=true;G.add(pl);});
+  // Gemüse-Bauer (lokale Koordinaten, Boden-Oberkante y≈0.22)
+  function veg(t,lx,lz){var y=0.22;
+    if(t===0){ // 🥕 Karotte: grünes Kraut + orange Spitze
+      var top=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),M.leafC);top.position.set(lx,y+0.14,lz);top.scale.set(1,1.2,1);G.add(top);
+      var tip=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.16,5),M.carrot);tip.position.set(lx,y+0.02,lz);G.add(tip);
+    }else if(t===1){ // 🥬 Kohl: geschichtete grüne Kugel
+      var o=new THREE.Mesh(new THREE.IcosahedronGeometry(0.22,0),M.leafA);o.position.set(lx,y+0.14,lz);o.scale.set(1,0.8,1);G.add(o);
+      var i=new THREE.Mesh(new THREE.IcosahedronGeometry(0.13,0),M.leafB);i.position.set(lx,y+0.17,lz);G.add(i);
+    }else if(t===2){ // 🍅 Tomatenstrauch: grüner Busch + rote Früchte
+      var b=new THREE.Mesh(new THREE.IcosahedronGeometry(0.2,0),M.leafB);b.position.set(lx,y+0.2,lz);b.scale.set(1,1.15,1);G.add(b);
+      for(var d=0;d<3;d++){var to=new THREE.Mesh(new THREE.SphereGeometry(0.055,7,6),M.tomato);to.position.set(lx+(d-1)*0.11,y+0.14+((d%2)*0.08),lz+0.08);G.add(to);}
+    }else{ // 🥗 Salat: flache gekräuselte Rosette
+      var s=new THREE.Mesh(new THREE.IcosahedronGeometry(0.2,0),M.leafC);s.position.set(lx,y+0.1,lz);s.scale.set(1,0.5,1);G.add(s);
+    }
+  }
+  var seq=[0,1,2,3,0,2];
+  for(var r=0;r<2;r++)for(var c=0;c<5;c++){veg(seq[(r*5+c)%seq.length],-1.3+c*0.62,-0.45+r*0.62);}
+  // 🌻 Sonnenblumen-Reihe hinten
+  for(var sf=0;sf<3;sf++){var sx=-0.95+sf*0.95,sz=-1.02;
+    var st=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.0,5),M.stem);st.position.set(sx,0.72,sz);st.castShadow=true;G.add(st);
+    var lf=new THREE.Mesh(new THREE.IcosahedronGeometry(0.12,0),M.leafB);lf.position.set(sx+0.12,0.6,sz);lf.scale.set(1.4,0.5,1);G.add(lf);
+    var core=new THREE.Mesh(new THREE.SphereGeometry(0.12,8,6),M.core);core.position.set(sx,1.22,sz+0.03);core.scale.set(1,1,0.5);G.add(core);
+    for(var pt=0;pt<8;pt++){var pa=pt/8*6.28,pe=new THREE.Mesh(new THREE.ConeGeometry(0.05,0.16,4),M.petal);pe.position.set(sx+Math.cos(pa)*0.18,1.22+Math.sin(pa)*0.18,sz+0.02);pe.rotation.z=pa-Math.PI/2;G.add(pe);}}
+  // 🌸 Blumenbordüre vorne (bunt) + wiegt im Wind
+  var BC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff8a4d];
+  for(var f=0;f<7;f++){var fx=-1.45+f*0.5;
+    var fst=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.34,4),M.stem);fst.position.set(fx,0.34,1.05);G.add(fst);
+    var bloom=new THREE.Mesh(new THREE.IcosahedronGeometry(0.09,0),new THREE.MeshBasicMaterial({color:BC[f%BC.length]}));bloom.position.set(fx,0.54,1.05);G.add(bloom);}
+  // 🪣 Giesskanne in der Ecke
+  var can=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.18,0.26,10),M.metal);can.position.set(1.4,0.32,1.0);G.add(can);
+  var spout=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.05,0.34,6),M.metal);spout.position.set(1.62,0.4,1.0);spout.rotation.z=-0.8;G.add(spout);
+  if(typeof regSway==="function")regSway(G,0.012,0.9); // ganz sanftes Wiegen des Gartens
 }
 // 🎉 Wimpelkette (bunte Fähnchen) über dem Dorfplatz — festlich
 function mkBunting(cx,cz,ax,az,bx,bz){
@@ -1154,9 +1182,15 @@ function decorateWorld(){
   // --- Büsche / Blumen / Pilzgruppen ---
   // 🌿 üppige Büsche (mehrere Grün-Blobs + Blüten-Tupfer) — schöner als flacher cc0-Busch
   var BUSH_G=[0x2e7d4a,0x3a9a5a,0x276b40,0x4faf62],BLOOM=[0xff6ab0,0xffd166,0xffffff,0xff8a4d,0x9a6cff];
-  function mkBush(){var g=new THREE.Group();var gm=new THREE.MeshLambertMaterial({color:BUSH_G[(rnd()*BUSH_G.length)|0],flatShading:true});
-    var nb=3+((rnd()*3)|0);for(var b=0;b<nb;b++){var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.55+rnd()*0.35,0),gm);bl.position.set((rnd()-0.5)*0.9,0.4+rnd()*0.35,(rnd()-0.5)*0.9);bl.scale.y=0.85;bl.castShadow=true;g.add(bl);}
-    if(rnd()<0.7){var bm=new THREE.MeshBasicMaterial({color:BLOOM[(rnd()*BLOOM.length)|0]});for(var f2=0;f2<4;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.1,0),bm);fl.position.set((rnd()-0.5)*1.0,0.5+rnd()*0.5,(rnd()-0.5)*1.0);g.add(fl);}}
+  function mkBush(){var g=new THREE.Group();var baseHex=BUSH_G[(rnd()*BUSH_G.length)|0];
+    var gm=new THREE.MeshLambertMaterial({color:baseHex,flatShading:true});
+    var gm2=new THREE.MeshLambertMaterial({color:new THREE.Color(baseHex).multiplyScalar(1.2).getHex(),flatShading:true}); // hellere Oberseite (Licht)
+    var nb=4+((rnd()*4)|0);
+    for(var b=0;b<nb;b++){var rr=0.42+rnd()*0.4;var up=b<2;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(rr,0),up?gm2:gm);
+      bl.position.set((rnd()-0.5)*1.0,(up?0.55:0.35)+rnd()*0.4,(rnd()-0.5)*1.0);bl.scale.y=0.9;bl.rotation.set(rnd()*3,rnd()*3,rnd()*3);bl.castShadow=true;g.add(bl);}
+    // dichter Blüten-Cluster oben (mehr + heller)
+    if(rnd()<0.85){var bhex=BLOOM[(rnd()*BLOOM.length)|0];var bm=new THREE.MeshBasicMaterial({color:bhex});
+      var nf=6+((rnd()*5)|0);for(var f2=0;f2<nf;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.08+rnd()*0.06,0),bm);fl.position.set((rnd()-0.5)*1.05,0.6+rnd()*0.5,(rnd()-0.5)*1.05);g.add(fl);}}
     return g;}
   var BUSHES=["nt_bush","cc0_bush","fg_bush","fg_bush_large","fg_bush_small"];
   farScatter(Math.round(150*VF),8,function(x,z){var m=(rnd()<0.45)?mkBush():cc0inst(BUSHES[(rnd()*BUSHES.length)|0],1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);if(rnd()<0.5)regSway(m,0.05+rnd()*0.04,1.1+rnd()*0.6);});
