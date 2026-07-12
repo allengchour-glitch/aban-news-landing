@@ -56,6 +56,7 @@ canvas{display:block}
 #bBuild{right:calc(118px + env(safe-area-inset-right));bottom:calc(56px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#ffd166;color:#fff}
 #bConfirm{right:calc(24px + env(safe-area-inset-right));bottom:calc(130px + env(safe-area-inset-bottom));width:64px;height:64px;border-color:#7de3ff;color:#dff}
 #bSkill{right:calc(118px + env(safe-area-inset-right));bottom:calc(130px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#c98bff;color:#f0e0ff;font-size:1.5rem}
+#bThrow{position:absolute;right:calc(118px + env(safe-area-inset-right));bottom:calc(204px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#7de3ff;color:#dff;font-size:1.5rem}
 /* Menü/Sound-Knöpfe oben rechts unter Inventar */
 #sysRow{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;gap:8px;pointer-events:auto}
 .sysbtn{width:44px;height:44px;border-radius:12px;background:rgba(20,30,60,.6);border:1px solid rgba(120,200,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;pointer-events:auto;cursor:pointer}
@@ -164,6 +165,7 @@ canvas{display:block}
   <div class="btn" id="bAct">🪓</div>
   <div class="btn hide" id="bBuild">🔨</div>
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
+  <div class="btn hide" id="bThrow" title="Wurf-Angriff (F)">🏹</div>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
 <div id="tradeMenu" class="hide"></div>
@@ -224,7 +226,7 @@ scene.fog=new THREE.Fog(SKY_DAY.getHex(),100,340);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xbfd4ff,0x2a3850,0.7);scene.add(hemi);
-var amb=new THREE.AmbientLight(0x3a4658,0.16);scene.add(amb); // dezentes Grund-Fülllicht
+var amb=new THREE.AmbientLight(0x3a4658,0.24);scene.add(amb); // Grund-Fülllicht (Schatten nicht pur schwarz, Boden nicht washed)
 var sun=new THREE.DirectionalLight(0xfff0d8,1.0);
 sun.position.set(40,80,30);sun.castShadow=true;
 sun.shadow.mapSize.set(IS_MOB?1024:2048,IS_MOB?1024:2048);
@@ -1419,6 +1421,32 @@ function useSkill(){
     if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
+var throwCd=0,THROW_CD=1.1,projectiles=[];
+function doThrow(){
+  if(dead||!running||buildMode)return;
+  if(throwCd>0){toast("🏹 Cooldown "+Math.ceil(throwCd)+"s");return;}
+  var best=null,bd=26*26;
+  for(var i=0;i<monsters.length;i++){var e=monsters[i];var dx=e.x-player.position.x,dz=e.z-player.position.z,d=dx*dx+dz*dz;if(d<bd){bd=d;best=e;}}
+  if(!best){toast("🏹 Kein Ziel in Reichweite");return;}
+  throwCd=THROW_CD;if(typeof faceTo==="function")faceTo(best.x,best.z);if(heroRig&&typeof playOnce==="function")playOnce(heroRig,"attack",2.2);
+  var pm=new THREE.Mesh(new THREE.IcosahedronGeometry(0.24,0),new THREE.MeshBasicMaterial({color:0x7de3ff}));
+  pm.position.set(player.position.x,groundH(player.position.x,player.position.z)+1.3,player.position.z);scene.add(pm);
+  projectiles.push({m:pm,tgt:best,t:0,dmg:2+Math.floor(level/2)+weaponAtk()});
+}
+function updThrow(dt){
+  if(throwCd>0)throwCd-=dt;
+  var b=document.getElementById("bThrow");if(b){var show=running&&!buildMode;b.classList.toggle("hide",!show);b.style.opacity=throwCd>0?0.4:1;b.textContent=throwCd>0?Math.ceil(throwCd):"🏹";}
+  for(var i=projectiles.length-1;i>=0;i--){var p=projectiles[i];p.t+=dt;
+    var e=p.tgt,alive=e&&monsters.indexOf(e)>=0;
+    var tx=alive?e.x:p.m.position.x,tz=alive?e.z:p.m.position.z,ty=groundH(tx,tz)+1;
+    p.m.position.x+=(tx-p.m.position.x)*Math.min(1,dt*11);p.m.position.z+=(tz-p.m.position.z)*Math.min(1,dt*11);p.m.position.y+=(ty-p.m.position.y)*Math.min(1,dt*11);
+    p.m.rotation.y+=dt*12;
+    if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
+      if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);shake=Math.min(shake+0.1,0.4);
+        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}
+      scene.remove(p.m);projectiles.splice(i,1);}
+  }
+}
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
@@ -1717,6 +1745,7 @@ var keys={};
 addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key.toLowerCase()==="e"){harvest();}
   if(e.key.toLowerCase()==="q"){useSkill();}
+  if(e.key.toLowerCase()==="f"){doThrow();}
   if(e.key===" "){e.preventDefault();harvest();}
   if(e.key.toLowerCase()==="b"){if(buildMode)closeBuild();else openBuild();}
   if(e.key.toLowerCase()==="f"){eat();}
@@ -1739,7 +1768,7 @@ addEventListener("touchend",function(e){if(e.changedTouches)for(var i=0;i<e.chan
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
 function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});b.addEventListener("click",function(e){if(!IS_MOB)fn();});}
 bindTap("bAct",function(){harvest();});
-bindTap("bSkill",useSkill);
+bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
 document.getElementById("bSound").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊";};
@@ -1834,7 +1863,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updSmoke(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updSmoke(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
