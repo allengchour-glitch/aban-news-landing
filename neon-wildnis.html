@@ -473,7 +473,7 @@ function updMonsters(dt){
 }
 
 // ---------- Umgebungs-Deko (instanziert, 1 Draw-Call pro Typ) ----------
-var ambientGroups=[],fireflies=[],fogWisps=[];
+var ambientGroups=[],fireflies=[],fogWisps=[],pollen=[];
 var _m4=new THREE.Matrix4(),_q4=new THREE.Quaternion(),_pos3=new THREE.Vector3(),_scl3=new THREE.Vector3(),_up=new THREE.Vector3(0,1,0);
 function instMesh(geo,mat,count){var im=new THREE.InstancedMesh(geo,mat,count);im.castShadow=false;im.receiveShadow=false;scene.add(im);ambientGroups.push(im);return im;}
 function setInst(im,idx,x,y,z,s,ry){_pos3.set(x,y,z);_q4.setFromAxisAngle(_up,ry||0);_scl3.set(s,s,s);_m4.compose(_pos3,_q4,_scl3);im.setMatrixAt(idx,_m4);}
@@ -539,6 +539,9 @@ function buildAmbient(){
   // --- Glühwürmchen (nachts, gepoolt) ---
   for(var g=0;g<Math.round(22*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0}));fm.visible=false;scene.add(fm);
     fireflies.push({m:fm,bx:0,bz:0,a:rnd()*6.28,r:1+rnd()*3,sp:0.5+rnd(),ph:rnd()*6.28});}
+  // --- ✨ Tag-Pollen/Sporen (schwebende Glut-Partikel bei Tag -> lebendige Luft) ---
+  for(var pg2=0;pg2<Math.round(34*VF);pg2++){var pm=new THREE.Mesh(new THREE.SphereGeometry(0.06,4,4),new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
+    pollen.push({m:pm,x:0,y:0,z:0,vy:0.3+rnd()*0.45,ph:rnd()*6.28,sp:0.6+rnd()});}
 
   // --- Nebelschwaden (wenige, weiche Ebenen; sparsam gegen Overdraw) ---
   var fogGeo=new THREE.PlaneGeometry(14,14);fogGeo.rotateX(-Math.PI/2);
@@ -560,6 +563,14 @@ function updAmbient(dt){
     // wandert der Spieler weg → Basis mitziehen
     if(Math.hypot(f.bx-player.position.x,f.bz-player.position.z)>34){f.bx=player.position.x+(rnd()-0.5)*24;f.bz=player.position.z+(rnd()-0.5)*24;}
   }
+  // ✨ Tag-Pollen: schweben auf, driften, wrappen um den Spieler
+  var showPo=!isNight;
+  for(var pi2=0;pi2<pollen.length;pi2++){var po=pollen[pi2];
+    if(!showPo){if(po.m.visible)po.m.visible=false;continue;}
+    if(!po.m.visible){po.m.visible=true;po.x=player.position.x+(rnd()-0.5)*40;po.z=player.position.z+(rnd()-0.5)*40;po.y=groundH(po.x,po.z)+0.4+rnd()*4;}
+    po.ph+=dt*po.sp;po.y+=po.vy*dt;po.x+=Math.sin(po.ph)*0.15*dt;
+    if(po.y>groundH(po.x,po.z)+7||Math.hypot(po.x-player.position.x,po.z-player.position.z)>44){po.x=player.position.x+(rnd()-0.5)*40;po.z=player.position.z+(rnd()-0.5)*40;po.y=groundH(po.x,po.z)+0.4;}
+    po.m.position.set(po.x,po.y,po.z);po.m.material.opacity=0.35+Math.abs(Math.sin(po.ph))*0.35;}
   // Nebel: driften + zu Nacht/Dämmerung dichter
   var fogOp=isNight?0.16:0.05;
   for(var w=0;w<fogWisps.length;w++){var fw=fogWisps[w];fw.m.position.x+=fw.vx*dt;fw.m.position.z+=fw.vz*dt;fw.m.rotation.z+=dt*0.02;
