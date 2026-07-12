@@ -805,6 +805,15 @@ function decorateWorld(){
     for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);}}
     for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
       var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
+    // 🏰 Befestigung: 4 Wachtürme + Tor + Flaggen + Katapult + Waffen-Armory (Vielfalt, nie gleich)
+    for(var tw=0;tw<4;tw++){var ta=Math.PI/4+tw*Math.PI/2,tx2=vx+Math.cos(ta)*15,tz2=vz+Math.sin(ta)*15;
+      var twr=cc0inst("ck_tower",7*(0.85+rnd()*0.3));if(twr){twr.position.set(tx2,groundH(tx2,tz2),tz2);twr.rotation.y=rnd()*6.28;scene.add(twr);}
+      if(tw<2){var flg=cc0inst("ck_flag",3.2);if(flg){flg.position.set(tx2,groundH(tx2,tz2)+4.6,tz2);flg.rotation.y=rnd()*6.28;scene.add(flg);}}}
+    var gate=cc0inst("ck_gate",5);if(gate){var ga2=Math.atan2(-vz,-vx),gx2=vx+Math.cos(ga2)*15,gz2=vz+Math.sin(ga2)*15;gate.position.set(gx2,groundH(gx2,gz2),gz2);gate.rotation.y=ga2+Math.PI/2;scene.add(gate);}
+    var cat=cc0inst("ck_catapult",2.4);if(cat){var cax=vx-8,caz=vz+7;cat.position.set(cax,groundH(cax,caz),caz);cat.rotation.y=rnd()*6.28;scene.add(cat);}
+    var arms=["dk_sword","dk_spear","dk_shield_round","dk_shield_rect"];
+    for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+2+ai*0.9,waz=vz-3.5;
+      wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
   }
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
@@ -1530,7 +1539,7 @@ function startGame(fresh){
   SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree"],decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger"],decorateWorld);
   });
   loadHero();loadSlime();
   if(sv){
