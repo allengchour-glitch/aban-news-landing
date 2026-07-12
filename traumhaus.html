@@ -298,6 +298,70 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
       t.traverse(function(n){if(n.isMesh)n.castShadow=true;});scene.add(t);});
   },undefined,function(){});});}
 
+// ---- Dorf rundherum: Strassen, Nachbarhaeuser, Baeume, Laternen ----
+var dorfFenster=[];
+(function baueDorf(){
+  var SZ=GH*CS/2; // 14
+  // Nordstrasse + zwei Querstrassen (Block-Layout)
+  function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),stdMat(0x3a3a40,0.9));
+    st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
+  strasseMesh(140,7,0,-SZ-12);
+  strasseMesh(7,2*SZ+31,-46,0);strasseMesh(7,2*SZ+31,46,0);
+  for(var ms2=0;ms2<14;ms2++){var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
+    st2.rotation.x=-Math.PI/2;st2.position.set(-65+ms2*10,0.005,-SZ-12);scene.add(st2);}
+  for(var ms3=0;ms3<9;ms3++){[-46,46].forEach(function(sx){
+    var st3=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),stdMat(0xe8e8d8,0.7));
+    st3.rotation.x=-Math.PI/2;st3.position.set(sx,0.005,-SZ-6+ms3*7);scene.add(st3);});}
+  // Nachbarhaus prozedural: Sockel, Waende, Satteldach, Tuer, Fenster, Kamin
+  var WANDF=[0xf2e4c8,0xe8d0b0,0xd8e0e8,0xf0d8d8,0xe0e8d0,0xf4ead4,0xd8c8e0,0xe8e2d0];
+  var DACHF=[0x8a4a3a,0x5a5a64,0x7a5a40,0x4a5a6a,0x9a5a4a,0x6a6a58];
+  function haus(x,z,rotY,seed){
+    var g=new THREE.Group();
+    var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
+    var wandC=WANDF[seed%WANDF.length],dachC=DACHF[seed%DACHF.length];
+    var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),stdMat(wandC,0.85));
+    body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
+    // Satteldach aus zwei geneigten Platten + Giebel
+    var dl=Math.sqrt((w/2)*(w/2)+1.44)+0.25;
+    [[-1,1],[1,-1]].forEach(function(sgn){
+      var pl=new THREE.Mesh(new THREE.BoxGeometry(dl,0.14,d+0.5),stdMat(dachC,0.75));
+      pl.position.set(sgn[0]*w/4,h+0.6,0);pl.rotation.z=sgn[1]*Math.atan2(1.2,w/2);pl.castShadow=true;g.add(pl);});
+    var giebel=new THREE.Mesh(new THREE.CylinderGeometry(0.01,w/2*0.98,1.15,3,1),stdMat(wandC,0.85));
+    // Giebel vorn+hinten als flache Dreiecke
+    [d/2-0.06,-d/2+0.06].forEach(function(gz){
+      var tri=new THREE.Mesh(new THREE.CylinderGeometry(0.01,w*0.5,1.2,3,1),stdMat(wandC,0.85));
+      tri.scale.z=0.02;tri.position.set(0,h+0.58,gz);tri.rotation.y=Math.PI/2;g.add(tri);});
+    var tuer=new THREE.Mesh(new THREE.BoxGeometry(0.8,1.6,0.08),stdMat(0x6a4a30,0.6));
+    tuer.position.set(w/2-1,0.8,d/2+0.04);g.add(tuer);
+    for(var fx=0;fx<2;fx++){
+      var fe=new THREE.Mesh(new THREE.BoxGeometry(0.8,0.8,0.06),
+        new THREE.MeshStandardMaterial({color:0xbfd8e8,emissive:0xffd890,emissiveIntensity:0,roughness:0.2}));
+      fe.position.set(-w/2+1+fx*1.5,1.35,d/2+0.04);g.add(fe);dorfFenster.push(fe.material);}
+    var kamin=new THREE.Mesh(new THREE.BoxGeometry(0.45,1.1,0.45),stdMat(0x8a7a6a,0.8));
+    kamin.position.set(-w/2+0.9,h+0.9,-d/4);kamin.castShadow=true;g.add(kamin);
+    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
+  // Haeuserzeilen: hinter Nord-/Suedstrasse + entlang der Querstrassen
+  var seed=1;
+  [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-19,0,seed++);});
+  [-38,-20,20,34].forEach(function(hx){haus(hx,SZ+19,Math.PI,seed++);});
+  [-SZ-4,2,SZ+6].forEach(function(hz){haus(-53,hz,Math.PI/2,seed++);});
+  [-SZ-2,4].forEach(function(hz){haus(53,hz,-Math.PI/2,seed++);});
+  // Baeume + Hecken + Laternen
+  function baum(x,z,k){var b=new THREE.Group();
+    var st4=new THREE.Mesh(new THREE.CylinderGeometry(0.14,0.2,1.4,7),stdMat(0x6a4a30,0.8));st4.position.y=0.7;b.add(st4);
+    for(var c4=0;c4<3;c4++){var kr=new THREE.Mesh(new THREE.SphereGeometry(0.85-c4*0.16,9,7),stdMat(c4%2?0x3a7a3a:0x4a8a44,0.7));
+      kr.position.set((c4-1)*0.35,1.7+c4*0.5,(c4%2-0.5)*0.3);kr.castShadow=true;b.add(kr);}
+    b.scale.setScalar(k||1);b.position.set(x,0,z);scene.add(b);}
+  [[-33,-SZ-8,1.1],[-8,-SZ-8.5,0.9],[16,-SZ-8,1.2],[40,-SZ-9,1],[-40,SZ+9,1.1],[8,SZ+16,1.3],[42,SZ+10,0.9],[-52,-SZ+8,1.2],[52,SZ-4,1.1]].forEach(function(p){baum(p[0],p[1],p[2]);});
+  // Laternen an der Hauptstrasse (emissive Kugeln, Bloom uebernimmt das Leuchten)
+  [[-30,SZ+8.6],[0,SZ+8.6],[30,SZ+8.6],[-30,-SZ-8.6],[30,-SZ-8.6]].forEach(function(p){
+    var lg=new THREE.Group();
+    var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.1,7),stdMat(0x3a3a42,0.5));mast.position.y=1.55;lg.add(mast);
+    var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
+      new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+    kopf.position.y=3.2;lg.add(kopf);dorfFenster.push(kopf.material);
+    lg.position.set(p[0],0,p[1]);scene.add(lg);});
+})();
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -1758,6 +1822,9 @@ function loop(now){
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x1a2340),1-Math.min(1,dayA*1.4));
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?1.1:0;});
+    var nacht9=dayA<0.3?1:0;
+    if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
+      dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?0.9:0;});}
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
     if(followSim){
