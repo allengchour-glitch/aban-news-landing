@@ -181,11 +181,22 @@ canvas{display:block}
   <div id="charPick"></div>
   <button class="big" id="startBtn">▶ Los geht's</button>
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
+  <div id="coopBox" style="margin-top:12px;padding:12px;border:2px solid #2a6a8a;border-radius:14px;background:rgba(10,30,45,.5)">
+    <div style="font-weight:900;color:#7de3ff;margin-bottom:8px">🌐 Koop (2 Spieler)</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+      <button class="ghost" id="coopHost" style="min-width:120px">🏠 Raum öffnen</button>
+      <input id="coopCode" maxlength="4" placeholder="CODE" style="width:90px;text-transform:uppercase;text-align:center;font-weight:900;letter-spacing:.2em;border-radius:10px;border:2px solid #2a6a8a;background:#0a1e2d;color:#eaf6ff;padding:8px">
+      <button class="ghost" id="coopJoin" style="min-width:110px">🚪 Beitreten</button>
+    </div>
+    <div id="coopStatus" style="margin-top:8px;font-size:.85rem;color:#9fd6e8;min-height:1.1em"></div>
+  </div>
   <a class="arc" href="/spiele.html">🕹️ aban Arcade — mehr Spiele</a>
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
+<script src="/js/vendor/peerjs.min.js"></script>
+<script src="/js/mp.js"></script>
 <script>
 "use strict";
 (function(){
@@ -1638,7 +1649,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -1667,9 +1678,56 @@ function updPrompt(){
 function togglePause(){if(!running)return;paused=!paused;var ov=document.getElementById("ov");
   if(paused){ov.classList.remove("hide");ov.querySelector("h1").textContent="PAUSE";document.getElementById("startBtn").textContent="▶ Weiter";document.getElementById("newBtn").classList.remove("hide");document.getElementById("charLbl").classList.add("hide");document.getElementById("charPick").classList.add("hide");saveGame();}
   else{ov.classList.add("hide");}}
+// ===================== 🌐 KOOP (js/mp.js, WebRTC-P2P) =====================
+var NET={s:null,on:false,role:null,remote:null,rt:{x:0,z:0,ry:0},sendT:0};
+var NET_FORCE_SEED=null;
+function coopStatusMsg(m){var b=document.getElementById("coopStatus");if(b)b.textContent=m;}
+function netStart(role,code){
+  if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
+  NET.role=role;coopStatusMsg("Verbinde…");
+  try{NET.s=(role==="host")?MP.host("wildnis"):MP.join("wildnis",code);}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
+  if(role==="host")coopStatusMsg("Raum-Code: "+NET.s.code+" — teile ihn mit dem Partner!");
+  NET.s.onStatus(function(st){
+    if(st==="waiting")coopStatusMsg("Warte auf Partner… Code: "+NET.s.code);
+    else if(st==="connected")coopStatusMsg("✅ Verbunden!");
+    else if(st==="lost")coopStatusMsg("⚠️ Verbindung wackelt…");
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;}});
+  NET.s.onMessage(onNetMsg);
+  NET.s.ready.then(function(){
+    NET.on=true;
+    if(role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}
+  }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));});
+}
+function onNetMsg(d){
+  if(!d)return;
+  if(d.t==="start"&&NET.role==="join"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;}
+  if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;}
+  if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
+}
+function spawnRemote(){
+  if(NET.remote)return;
+  var g=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.42,1.2,10),new THREE.MeshStandardMaterial({color:0x35d0ff,emissive:0x1466aa,emissiveIntensity:0.6,flatShading:true}));body.position.y=0.85;body.castShadow=true;g.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.3,12,9),new THREE.MeshStandardMaterial({color:0xffd166,emissive:0x886600,emissiveIntensity:0.3}));head.position.y=1.62;g.add(head);
+  // Namensschild
+  var cv=document.createElement("canvas");cv.width=256;cv.height=64;var cx=cv.getContext("2d");
+  cx.font="bold 40px sans-serif";cx.textAlign="center";cx.fillStyle="rgba(20,40,60,.85)";cx.beginPath();cx.roundRect(28,6,200,52,16);cx.fill();cx.fillStyle="#7de3ff";cx.fillText("Partner",128,44);
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));sp.scale.set(2,0.5,1);sp.position.y=2.4;g.add(sp);
+  g.visible=false;scene.add(g);NET.remote=g;
+}
+function netTick(dt){
+  if(!NET.on||!NET.s)return;
+  NET.sendT-=dt;
+  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2)});}
+  if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
+}
+(function(){var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
+  if(h)h.onclick=function(){netStart("host");};
+  if(j)j.onclick=function(){var c=(document.getElementById("coopCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");if(c.length!==4){coopStatusMsg("Code = 4 Buchstaben");return;}netStart("join",c);};
+})();
 function startGame(fresh){
-  var sv=fresh?null:loadSave();
-  SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
+  var sv=(NET.on||fresh)?null:loadSave(); // Koop: immer frische, geteilte Welt
+  SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
     loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger"],decorateWorld);
@@ -1684,7 +1742,7 @@ function startGame(fresh){
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(0,0,0);}
+  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);}
   invUpd();hpUpd();
   document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";
   camera.position.set(0,12,16);
