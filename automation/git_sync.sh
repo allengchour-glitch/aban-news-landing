@@ -6,12 +6,22 @@
 # Aufruf: bash automation/git_sync.sh "commit message"
 cd "$(dirname "$0")/.." || exit 1
 BRANCH=claude/luxestyle-status-tztnn1
+LEDGER=dropship/cj_niche_done.txt
 MSG="${1:-Ledger-Drift (auto)}"
 exec 9>/tmp/git_sync.lock
 flock -w 60 9 || { echo "[git_sync] Lock-Timeout — anderer Pusher aktiv, skip"; exit 0; }
 # Aufräumen falls ein früherer Lauf mitten im Rebase starb
 rm -rf .git/rebase-merge .git/rebase-apply 2>/dev/null
-git rev-parse --abbrev-ref HEAD | grep -q "$BRANCH" || git checkout -q "$BRANCH" 2>/dev/null
+# Selbstheilung Detached-HEAD (append-only Ledger bewahren via Union) — sonst committen wir ins Nirwana
+if ! git symbolic-ref -q HEAD >/dev/null 2>&1; then
+  cp "$LEDGER" /tmp/_ledger_save.txt 2>/dev/null
+  git checkout -f "$BRANCH" -q 2>/dev/null; git reset --hard "origin/$BRANCH" -q 2>/dev/null
+  if [ -s /tmp/_ledger_save.txt ]; then
+    cat "$LEDGER" /tmp/_ledger_save.txt 2>/dev/null | grep -v '^$' | sort -u > /tmp/_ledger_u.txt
+    [ -s /tmp/_ledger_u.txt ] && cp /tmp/_ledger_u.txt "$LEDGER"
+  fi
+fi
+git rev-parse --abbrev-ref HEAD | grep -q "$BRANCH" || git checkout -f "$BRANCH" -q 2>/dev/null
 git add -A 2>/dev/null
 if git diff --cached --quiet; then exit 0; fi
 git commit -q -m "$MSG" 2>/dev/null
