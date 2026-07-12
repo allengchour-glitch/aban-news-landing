@@ -463,9 +463,9 @@ Nächste Blöcke (je 1 PR, immer smoke+Screenshot+Playtest):
 1. ✅ AUTOS (PR ~#1690): 3 Meshy-Autos (Kombi/Flitzer/Van), Straße, sichtbare Pendelfahrt
 2. ✅ LANGZEIT (PR #1734): 18 Erfolge + Toast/Panel + Haus-Wert-Prestige (⛺→🏰) + Stats;
    dazu Tab/Q/E-Kamera-Drehung (User-Wunsch). Offen aus Block 2: Sammlung, Tages-Streak
-3. 🧱 BAU-TIEFE (JETZT): Tapeten/Wandfarben, 2. Stockwerk (Treppe), Dach
-4. 🌦️ WETTER: Regen/Schnee-Partikel, Jahreszeiten färben Rasen
-5. 🎮 MEHR MINIGAMES: Kochen (Zutaten-Reihenfolge), Angeln am Teich, Tanz-Rhythmus
+3. 🧱 BAU-TIEFE (Teil 1 ✅ PR #1735: Wandfarben+Tapeten; offen: 2. Stock, Dach): Tapeten/Wandfarben, 2. Stockwerk (Treppe), Dach
+4. ✅ WETTER (PR #1737): Regen/Schnee-Partikel + 4 Jahreszeiten (Rasen-Tint, 5 Tage/Saison)
+5. 🎮 MEHR MINIGAMES: ✅ Kochen (PR #1738, Zutaten-Memory am Herd, Erfolg Sternekoch); offen: Angeln, Tanz
 6. 👥 MEHR NPCs: Nachbarskind (spielt mit Kindern), Bürgermeister (Quests: „baue einen Pool")
 Fallen: Anker-Kollisionen bei python-Patches (Funktionskopf-DUBLETTEN prüfen: grep 'function X.*function X'),
 skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x langsamer (Tests mit __CLK-Hook).
