@@ -477,7 +477,7 @@ setTimeout(function baueFussg(){
    {skin:0xf6d2ac,hair:0x18181e,top:0xe86aa0,bottom:0xe86aa0,dress:true,longHair:true},
    {skin:0xd8a878,hair:0x4a3a20,top:0x4ac8c0,bottom:0x2f3f52,dress:false,longHair:false}];
   for(var i=0;i<8;i++){
-    var m=mkBewohner(PAL[i]);m.scale.setScalar(0.98);scene.add(m);
+    var m=mkBewohner(PAL[i]);m.scale.setScalar(1.15);scene.add(m);
     var nord=i%2===0;
     fussg.push({mesh:m,x:-60+i*16,z:(nord?-SZ-8.6:SZ+8.6)+((i%3)-1)*0.5,
       dir:i%2?1:-1,speed:1.1+(i%4)*0.35,walkT:i*2});}
@@ -517,7 +517,7 @@ var KATALOG={
   {id:"farbe8",n:"Backstein-Wand",e:"🧱",cost:40,paint:8}],
  moebel:[
   {id:"bett",n:"Doppelbett",e:"🛏️",cost:900,size:[2,2],use:{need:"energie",pose:"lie",off:[0,0],dur:14}},
-  {id:"sofa",n:"Sofa",e:"🛋️",cost:650,size:[2,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}},
+  {id:"sofa",n:"Sofa",e:"🛋️",cost:650,size:[2,1],korr:0.88,use:{need:"spass",pose:"sit",off:[0,0],dur:7}},
   {id:"sessel",n:"Sessel",e:"💺",cost:280,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
   {id:"tisch",n:"Esstisch",e:"🪵",cost:320,size:[2,1]},
   {id:"stuhl",n:"Stuhl",e:"🪑",cost:90,size:[1,1],use:{need:"hunger",pose:"sit",off:[0,0],dur:6}},
@@ -531,7 +531,7 @@ var KATALOG={
   {id:"konsole",n:"⭐ Spielkonsole",e:"🎮",cost:950,size:[1,1],norm:1,zielH:0.5,use:{need:"spass",pose:"sit",off:[0,1],dur:9}},
   {id:"pouf",n:"⭐ Pouf",e:"🪑",cost:180,size:[1,1],norm:1,zielH:0.48,use:{need:"spass",pose:"sit",off:[0,0],dur:5}}],
  kueche:[
-  {id:"kueche",n:"Küchenzeile",e:"🍳",cost:850,size:[2,1]},
+  {id:"kueche",n:"Küchenzeile",e:"🍳",cost:850,size:[2,1],korr:0.85},
   {id:"herd",n:"Herd",e:"🔥",cost:420,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
   {id:"kuehlschrank",n:"Kühlschrank",e:"🧊",cost:520,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:4}}],
  bad:[
@@ -781,6 +781,8 @@ function applyFurn(id,gx,gy,rot,fid){
       m.scale.setScalar(k9);
       var bb10=new THREE.Box3().setFromObject(m);
       m.position.y=-bb10.min.y+0.012;}
+    if(def.korr){m.scale.multiplyScalar(def.korr);
+      var bbk=new THREE.Box3().setFromObject(m);m.position.y=-bbk.min.y+0.012;}
     // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Größe passt (1 Einheit = 1m, Zelle 2m)
     scene.add(m);rec.mesh=m;
     if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,7);pl.position.set(cx(gx),1.7,cz(gy));scene.add(pl);rec.plight=pl;}
@@ -1308,7 +1310,7 @@ function spawnNpc(typ){
     m=MODELS.hund.clone(true);m.scale.setScalar(0.62);
     m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.color.multiplyScalar(0.55);}});
     scene.add(m);}
-  else{m=mkBewohner(def.farbe);m.scale.setScalar(typ==="nachbarskind"?0.62:1.05);}
+  else{m=mkBewohner(def.farbe);m.scale.setScalar(typ==="nachbarskind"?0.72:1.16);}
   var startX=cx(2+((Math.random()*12)|0));
   var n={typ:typ,mesh:m,x:startX,z:cz(GH-1)+10,rot:Math.PI,state:"enter",t:0,walkT:0,
     tx:startX,tz:cz(GH-3),speed:def.speed};
