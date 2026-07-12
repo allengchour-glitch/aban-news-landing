@@ -526,7 +526,16 @@ Shot-Review-Frage ab jetzt immer: „Würde ein 8-Jähriger ohne Erklärung losl
 Stand: Bauen(7 Kategorien, 22 Möbel) · Bedürfnis-KI · Arbeit/Gehalt/Karriere · Liebe→Hochzeit→Kinder ·
 krumme Dinger + Minigames (Timing) · NPCs (Postbote/Nachbarin/Händler/Katze/Polizist) · realistische
 geriggte Charaktere (th_mann/th_frau, Bone-Height-Messung!) · Hund · Gemüsebeet · Koop komplett (mp.js).
-Nächste Blöcke (je 1 PR, immer smoke+Screenshot+Playtest). Stand 2026-07-12: Blöcke 1/2/3.1/4/5/6 ✅
+Stand 2026-07-12 ABEND (Session ~58 PRs): Traumhaus hat jetzt AUSSERDEM: CC0-Foto-Texturen
+(PolyHaven/ambientCG, textures/th/), 18+11 echte PolyHaven-Möbel (⭐-Items, zielH+korr-Normalisierung,
+Pipeline: simplify --ratio → resize 256 → prune — NIE „optimize --texture-size", wirkt nicht!),
+Joystick+WASD-Direktsteuerung (kamerarelativ, Koop-Gast steuert Mia), Dorf+Stadt (Blocks/Kirche/Läden),
+fahrender Verkehr (6 Autos + Bus mit Haltestelle, Crossing-Detection), 8 Fußgänger, Riesen-Map 28×20
+(Save-Migration via gw/gh im Snapshot!), Proportions-Audit 16/16 (def.korr), echte Nächte+Sterne+
+Schlafenszeit, Edit-Werkzeuge (verschieben/drehen/verkaufen/AUFWERTEN Lv1-3 mit lv in furn-msg+Save),
+Taschendieb-Minigame, 23 Erfolge, Alles-Tab. OFFEN: Chat-immer-an+Voice (WebRTC/PeerJS call),
+>2 Spieler, 2. Stock/Dach, Kochen-Zutaten via echte Modelle.
+Nächste Blöcke (je 1 PR, immer smoke+Screenshot+Playtest). Stand alt: Blöcke 1/2/3.1/4/5/6 ✅
 (22 Erfolge, 7 Quests, 4 Minigames, Wetter, Wandfarben, Tab-Kamera). Es fehlen: 2. Stockwerk+Dach (gross),
 Nachbarskind-NPC, Sammlung/Streak, mehr Tapeten. NIE vergessen: ASCII-Anführungszeichen in JS-Strings
 („Text!" mit geradem " bricht den String — „…“ nutzen, Falle PR #1744).
