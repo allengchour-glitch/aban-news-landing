@@ -384,6 +384,16 @@ var CHARACTERS=[
 ];
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
 function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
+// 🌸 Cel-Shading (Anime-Toon) — MeshToonMaterial + 3-Band-Gradient; Outline auf skinned Meshes in r128 zu heikel -> weggelassen
+var _nwGrad=null;
+function nwGradTex(){if(_nwGrad)return _nwGrad;var c=document.createElement('canvas');c.width=4;c.height=1;var x=c.getContext('2d');
+  var d=x.createImageData(4,1),v=[105,165,215,255];for(var i=0;i<4;i++){d.data[i*4]=d.data[i*4+1]=d.data[i*4+2]=v[i];d.data[i*4+3]=255;}
+  x.putImageData(d,0,0);var t=new THREE.CanvasTexture(c);t.minFilter=t.magFilter=THREE.NearestFilter;t.generateMipmaps=false;_nwGrad=t;return t;}
+function toonify(mesh,neon){var m=mesh.material;if(!m||m._toon||!m.isMeshStandardMaterial&&!m.isMeshPhysicalMaterial)return;
+  var tm=new THREE.MeshToonMaterial({map:m.map||null,color:m.color?m.color.clone():new THREE.Color(0xffffff),
+    gradientMap:nwGradTex(),emissive:m.emissive?m.emissive.clone():new THREE.Color(0x000000),emissiveMap:m.emissiveMap||null,
+    transparent:!!m.transparent,opacity:m.opacity!==undefined?m.opacity:1,side:m.side,alphaTest:m.alphaTest||0});
+  tm.emissiveIntensity=neon?0.9:0.35;tm.skinning=!!mesh.isSkinnedMesh;tm._toon=true;mesh.material=tm;}
 function loadHero(){
   if(!THREE.GLTFLoader)return;
   var C=getChar();
@@ -391,8 +401,8 @@ function loadHero(){
     var o=g.scene;o.scale.setScalar(C.scale||1.15);
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
-      n.material.emissiveIntensity=neon?1.2:0.55;
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
+      toonify(n,neon); // Anime-Cel-Look
     }}});
     pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);
     // idle tolerant: manche Modelle (hero.glb) haben andere Clip-Namen → Fallback auf ersten Clip
