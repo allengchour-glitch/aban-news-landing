@@ -298,10 +298,10 @@
 #done search:bucket bag women
 #done search:quilted shoulder bag
 #done search:canvas tote aesthetic
-search:chunky loafers women
-search:ballet flats mary jane
-search:platform sandals
-search:cat eye sunglasses retro
+#done search:chunky loafers women
+#done search:ballet flats mary jane
+#done search:platform sandals
+#done search:cat eye sunglasses retro
 search:acetate glasses frame
 search:silk scarf square
 search:beret wool
