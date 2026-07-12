@@ -242,7 +242,7 @@ var SEED=0,rnd=Math.random;
 var MAP=800, GROUNDSEG=120;
 // 🎨 Prozedurale Texturen (numpy/Pillow generiert) — Boden/Straßen mit echten Details
 var TEXLOADER=new THREE.TextureLoader();
-function gtex(file,rep,srgb){var t=TEXLOADER.load("/textures/"+file);t.wrapS=t.wrapT=THREE.RepeatWrapping;if(rep)t.repeat.set(rep,rep);if(srgb&&THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;t.anisotropy=4;return t;}
+function gtex(file,rep,srgb){var t=TEXLOADER.load("/textures/"+file);t.wrapS=t.wrapT=THREE.RepeatWrapping;if(rep)t.repeat.set(rep,rep);if(srgb&&THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;t.anisotropy=(renderer.capabilities&&renderer.capabilities.getMaxAnisotropy)?Math.min(8,renderer.capabilities.getMaxAnisotropy()):4;t.generateMipmaps=true;return t;}
 var ground;
 function buildGround(){
   var g=new THREE.PlaneGeometry(MAP,MAP,GROUNDSEG,GROUNDSEG);
@@ -275,7 +275,7 @@ function buildGround(){
   g.setAttribute("color",new THREE.Float32BufferAttribute(cols,3));
   g.computeVertexNormals();
   // Gras-Textur über die Biom-Vertexfarben legen (Textur × Farbe = Detail + Abwechslung)
-  var grassTex=gtex("tex_grass.png", MAP/12, true);
+  var grassTex=gtex("tex_grass.png", MAP/16, true);
   var m=new THREE.MeshLambertMaterial({vertexColors:true, map:grassTex}); // zurück zum flacheren Look (User: vorher besser)
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
