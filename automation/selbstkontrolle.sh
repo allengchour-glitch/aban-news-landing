@@ -37,6 +37,20 @@ fi
 # ── 1. CJ-Runner: tote (oder eben hart-gekillte) neu starten, MIT Shopify-Creds ──
 for e in "${R[@]}"; do S="${e%%:*}"; L="${e##*:}"; [ "$(alive "$S")" -eq 0 ] && start_runner "$S" "$L"; done
 
+# ── 1b. SEO-Filler (Polish-Welle): läuft bis 6470; neu starten wenn tot ODER hängt (Ledger stale >10min) ──
+if [ -s /tmp/seo_fill_done.txt ] || [ -f automation/seo_fill.py ]; then
+  SDONE=$(wc -l < /tmp/seo_fill_done.txt 2>/dev/null || echo 0)
+  if [ "$SDONE" -lt 6470 ]; then
+    SMT=$(stat -c %Y /tmp/seo_fill_done.txt 2>/dev/null || echo 0); SAGE=$(( $(date +%s) - SMT ))
+    if [ "$(alive 'seo_fill.py')" -eq 0 ] || [ "$SAGE" -gt 600 ]; then
+      pkill -f seo_fill.py 2>/dev/null; sleep 1
+      [ -s "$SHENV" ] && source "$SHENV"
+      nohup python3 automation/seo_fill.py > /tmp/seo_fill.log 2>&1 &
+      echo "[selbstkontrolle] SEO-Filler (neu/entklemmt) bei ${SDONE}/6470"
+    fi
+  fi
+fi
+
 # ── 2. Auto-Committer (5-Min-Loop) — nutzt jetzt den flock-serialisierten git_sync.sh ──
 if [ "$(alive 'git_sync.sh auto-loop|sleep 300; cd')" -eq 0 ]; then
   nohup bash -c "while true; do sleep 300; bash /home/user/aban-news-landing/automation/git_sync.sh 'Ledger-Drift (auto) #autocommit-loop'; done # git_sync.sh auto-loop" > /tmp/autocommit.log 2>&1 &
