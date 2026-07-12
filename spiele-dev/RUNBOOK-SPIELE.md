@@ -459,13 +459,16 @@ Shot-Review-Frage ab jetzt immer: „Würde ein 8-Jähriger ohne Erklärung losl
 Stand: Bauen(7 Kategorien, 22 Möbel) · Bedürfnis-KI · Arbeit/Gehalt/Karriere · Liebe→Hochzeit→Kinder ·
 krumme Dinger + Minigames (Timing) · NPCs (Postbote/Nachbarin/Händler/Katze/Polizist) · realistische
 geriggte Charaktere (th_mann/th_frau, Bone-Height-Messung!) · Hund · Gemüsebeet · Koop komplett (mp.js).
-Nächste Blöcke (je 1 PR, immer smoke+Screenshot+Playtest):
+Nächste Blöcke (je 1 PR, immer smoke+Screenshot+Playtest). Stand 2026-07-12: Blöcke 1/2/3.1/4/5/6 ✅
+(22 Erfolge, 7 Quests, 4 Minigames, Wetter, Wandfarben, Tab-Kamera). Es fehlen: 2. Stockwerk+Dach (gross),
+Nachbarskind-NPC, Sammlung/Streak, mehr Tapeten. NIE vergessen: ASCII-Anführungszeichen in JS-Strings
+(„Text!" mit geradem " bricht den String — „…“ nutzen, Falle PR #1744).
 1. ✅ AUTOS (PR ~#1690): 3 Meshy-Autos (Kombi/Flitzer/Van), Straße, sichtbare Pendelfahrt
 2. ✅ LANGZEIT (PR #1734): 18 Erfolge + Toast/Panel + Haus-Wert-Prestige (⛺→🏰) + Stats;
    dazu Tab/Q/E-Kamera-Drehung (User-Wunsch). Offen aus Block 2: Sammlung, Tages-Streak
 3. 🧱 BAU-TIEFE (Teil 1 ✅ PR #1735: Wandfarben+Tapeten; offen: 2. Stock, Dach): Tapeten/Wandfarben, 2. Stockwerk (Treppe), Dach
 4. ✅ WETTER (PR #1737): Regen/Schnee-Partikel + 4 Jahreszeiten (Rasen-Tint, 5 Tage/Saison)
-5. 🎮 MEHR MINIGAMES: ✅ Kochen (PR #1738, Zutaten-Memory am Herd, Erfolg Sternekoch); offen: Angeln, Tanz
-6. 👥 MEHR NPCs: Nachbarskind (spielt mit Kindern), Bürgermeister (Quests: „baue einen Pool")
+5. ✅ MINIGAMES KOMPLETT: Kochen #1738 (Memory) · Angeln #1741 (Reaktion, Teich-Item) · Tanzen #1743 (Rhythmus, Stereo-Item)
+6. ✅ QUESTS (PR #1744): Bürgermeister-NPC + 7 Stadt-Aufträge (Pool→Beete→Fische→Auto→Hochzeit→Karriere→8000-§-Haus), Auftragskarte im 🏆-Panel. Offen: Nachbarskind-NPC
 Fallen: Anker-Kollisionen bei python-Patches (Funktionskopf-DUBLETTEN prüfen: grep 'function X.*function X'),
 skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x langsamer (Tests mit __CLK-Hook).
