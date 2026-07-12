@@ -48,4 +48,4 @@ bash "$(dirname "$0")/git_sync.sh" "Ledger-Drift (selbstkontrolle)"
 
 # ── 4. Statusmeldung ──
 CNT=$(wc -l < "$LEDGER" 2>/dev/null || echo '?')
-echo "[selbstkontrolle] 📊 $CNT CJ · Runner $(alive 'cj_runner[2-5]\.sh|cj_queue_runner\.sh')/5 · Worker $(alive 'cj_category_fill|cj_sku_import') · Committer $(alive 'sleep 300; cd')/1"
+echo "[selbstkontrolle] 📊 $CNT CJ · Runner $(alive 'cj_runner[2-5]\.sh|cj_queue_runner\.sh')/5 · Worker $(alive 'cj_category_fill|cj_sku_import') · Committer $(alive 'git_sync.sh auto-loop|sleep 300; cd')/1"
