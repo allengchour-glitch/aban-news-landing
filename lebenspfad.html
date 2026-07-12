@@ -244,6 +244,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button></div>
       <div id="netModeTag" style="font-size:.8rem;font-weight:800;color:#2a6ab0"></div>
       <div id="netPlayers" style="margin:6px 0;font-weight:700;display:flex;flex-wrap:wrap;gap:6px;justify-content:center"></div>
+      <div id="netCharWrap" style="margin:8px auto"></div>
       <button class="btn" id="netReadyBtn" style="display:none;font-size:.85rem;padding:8px 16px">✅ Ich bin bereit</button>
       <button class="btn" id="netStartBtn" style="display:none">🌐 Online-Spiel starten ▶</button>
       <div id="netHint" style="font-size:.8rem;color:#7a8a9a">Warte auf Mitspieler … Code weitergeben!</div>
@@ -2468,6 +2469,11 @@ window.__lp={
     v.y+=1.35*pw.scale.y*(pw.userData.headScale||1)*0.95;v.project(camera);
     return {x:(v.x*0.5+0.5)*innerWidth,y:(1-(v.y*0.5+0.5))*innerHeight};},
   birds:function(){return birds.length;},
+  netlobby:function(host){ // Test-Only: Online-Lobby + Charakterauswahl zeigen
+    NET.host=(host!==false);NET.my=(host!==false)?0:1;NET.code="TEST";NET.names=["Rot"];NET.cfgs=[loadChar(0)];NET.ready=[true];
+    var ns=document.getElementById("netSetup");if(ns)ns.style.display="none";
+    netLobbyShow();try{netPlayersUpd();}catch(e){}
+    return document.getElementById("netCharWrap").children.length;},
   meet:function(kind){ // Test-Only: Begegnungs-Feier zweier Figuren auslösen (optional Geste)
     if(!G||G.players.length<2)return null;var a=G.turn,b=(a+1)%G.players.length;
     G.players[b].tile=G.players[a].tile;placePawn(b);
@@ -2807,11 +2813,48 @@ function sendEmote(k){
     if(ev.key>="1"&&ev.key<="6")sendEmote(ev.key.charCodeAt(0)-49);});
 })();
 function netRoomId(code){return "aban-lp-"+code.toLowerCase();}
+function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-Vorschau), Look wird live gesynct
+  var wrap=document.getElementById("netCharWrap");if(!wrap)return;wrap.innerHTML="";
+  var idx=NET.my>=0?NET.my:0,cfg=loadChar(0);
+  if(cfg.hair==null)cfg.hair=-1;if(cfg.pants==null)cfg.pants=idx%PANTS.length;
+  var hex="#"+("00000"+PCOLORS[idx].toString(16)).slice(-6);
+  var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;card.style.maxWidth="210px";card.style.margin="0 auto";
+  var lbl=document.createElement("div");lbl.style.cssText="font-size:.76rem;font-weight:800;color:#2a6ab0;margin-bottom:3px";lbl.textContent="🎨 Dein Charakter";card.appendChild(lbl);
+  var cv=document.createElement("canvas");cv.width=PV_W;cv.height=PV_H;cv.style.cssText="width:104px;height:118px";card.appendChild(cv);
+  var gf,gm,sl,hl,dots=[];
+  function sync(){saveChar(0,cfg);
+    if(NET.host){NET.cfgs[0]=cfg;netPlayersUpd();}
+    else if(NET.conns[0]&&NET.conns[0].open){try{NET.conns[0].send(JSON.stringify({t:"look",cfg:cfg}));}catch(e){}}}
+  function upd(){sync();charPreview(cv,cfg,PCOLORS[idx]);
+    gf.className=cfg.g==="f"?"on":"";gm.className=cfg.g==="m"?"on":"";
+    sl.textContent=CHAR_STYLES[cfg.style].i+" "+CHAR_STYLES[cfg.style].n;
+    if(hl){hl.textContent=(cfg.hair<0)?"💇 Auto":"💇 Haar "+(cfg.hair+1);hl.style.background=(cfg.hair<0)?"":"#"+("00000"+HAIRS[cfg.hair].toString(16)).slice(-6);hl.style.color=(cfg.hair<0)?"":"#fff";}
+    for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");}
+  var r1=document.createElement("div");r1.className="crow";
+  gf=document.createElement("button");gf.textContent="👩";gf.title="Frau";gf.onclick=function(){cfg.g="f";upd();beep(620,.05,"triangle",.03);};
+  gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
+  r1.appendChild(gf);r1.appendChild(gm);card.appendChild(r1);
+  var r2=document.createElement("div");r2.className="crow";
+  var bl=document.createElement("button");bl.textContent="◀";bl.onclick=function(){cfg.style=nextStyle(cfg.style,-1);upd();};
+  sl=document.createElement("div");sl.className="lbl";
+  var br=document.createElement("button");br.textContent="▶";br.onclick=function(){cfg.style=nextStyle(cfg.style,1);upd();};
+  r2.appendChild(bl);r2.appendChild(sl);r2.appendChild(br);card.appendChild(r2);
+  var r2b=document.createElement("div");r2b.className="crow";
+  var hbl=document.createElement("button");hbl.textContent="◀";hbl.onclick=function(){cfg.hair=nextHair(cfg.hair,-1);upd();};
+  hl=document.createElement("div");hl.className="lbl";hl.style.borderRadius="8px";hl.style.padding="0 4px";
+  var hbr=document.createElement("button");hbr.textContent="▶";hbr.onclick=function(){cfg.hair=nextHair(cfg.hair,1);upd();};
+  r2b.appendChild(hbl);r2b.appendChild(hl);r2b.appendChild(hbr);card.appendChild(r2b);
+  var r3=document.createElement("div");r3.className="crow";
+  for(var d=0;d<SKINTONES.length;d++)(function(d){var bd=document.createElement("button");bd.className="skin";bd.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);bd.title="Hautton "+(d+1);bd.onclick=function(){cfg.skin=d;upd();};dots.push(bd);r3.appendChild(bd);})(d);
+  card.appendChild(r3);
+  wrap.appendChild(card);upd();
+}
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
   document.getElementById("netLobby").style.display="block";
   document.getElementById("netCodeShow").textContent=NET.code;
   var rb=document.getElementById("netReadyBtn");if(rb){rb.style.display=NET.host?"none":"inline-block";if(!NET.host)rb.disabled=(NET.my<0);} // nur Gast hat Bereit-Knopf; erst nach 'welcome' aktiv
   document.getElementById("chatToggle").style.display="block"; // 💬 Chat schon in der Lobby nutzbar
+  renderNetChar(); // 🎨 Online-Charakterauswahl mit Vorschau
 }
 function lookEmoji(cfg){cfg=sanCfg(cfg)||{g:"m",style:9};var st=CHAR_STYLES[cfg.style];return (cfg.g==="f"?"👩":"👨")+(st?st.i:"");}
 function netAllReady(){ // Host darf starten, wenn ≥2 Spieler und alle Gäste „bereit"
@@ -2918,6 +2961,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         if(G&&G.players[ri])chatAdd("System",G.players[ri].name+" ist wieder da");return;}
       if(m.t==="resync"){netSyncTo(c);return;} // Gast hat Desync erkannt -> Snapshot nachliefern
       if(m.t==="ping"){try{c.send(JSON.stringify({t:"pong",ts:m.ts}));}catch(e){}return;} // gezielte Ping-Antwort
+      if(m.t==="look"){if(c._idx!=null){NET.cfgs[c._idx]=sanCfg(m.cfg)||NET.cfgs[c._idx];netPlayersUpd();}return;} // Gast aendert Look -> uebernehmen + broadcasten
       netOnMsg(m,c);});
     c.on("close",function(){var wasIdx=c._idx;var ci=NET.conns.indexOf(c);if(ci>=0)NET.conns.splice(ci,1);
       if(NET.on&&running){ // im laufenden Spiel: NICHT auto-rauswerfen -> Präsenz melden + ggf. pausieren (Reconnect möglich)
