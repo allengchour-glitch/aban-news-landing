@@ -107,3 +107,11 @@ Quelle: https://kenney.nl/assets/fantasy-town-kit · CC0 1.0. GLB-Format verweis
 | ftk_tree | tree-high-round | Baum |
 
 > Ersetzt die früheren selbst-modellierten gen_*-Props (auf User-Wunsch entfernt).
+
+## Kenney — Castle Kit + Mini-Dungeon + Food Kit (CC0) — Blender-poliert
+Alle CC0, GLB→Blender (Textur eingebettet, flat-shading) via automation/polish_kenney_glb.py.
+| Präfix | Kit | Inhalt |
+|---|---|---|
+| ck_* | Castle Kit | Turm, Mauer, Ecke, Tor, Flagge, Katapult, Baum |
+| dk_* | Mini-Dungeon | Schwert, Speer, Rund-/Rechteckschild, Truhe, Fass |
+| fd_* | Food Kit | Wurst, Kuchen, Burger, Ei (Loot) |
