@@ -936,6 +936,36 @@ function layRoads(cx,cz){
   var gp=new THREE.CircleGeometry(7.5,32);gp.rotateX(-Math.PI/2);
   var mp=new THREE.Mesh(gp,new THREE.MeshLambertMaterial({map:st}));
   mp.position.set(cx,groundH(cx,cz)+0.15,cz);mp.receiveShadow=true;scene.add(mp);
+  // 🌸 Blumen-Kranz + Bänke rund um den Platz (mega schön)
+  var PF=["nt_flower_red","nt_flower_yellow","cc0_flower_purple"];
+  for(var b=0;b<12;b++){var ba=b/12*6.28,bx=cx+Math.cos(ba)*8.6,bz=cz+Math.sin(ba)*8.6;var fm=cc0inst(PF[(rnd()*3)|0],0.8*(0.7+rnd()*0.5));if(fm){fm.position.set(bx,groundH(bx,bz),bz);fm.rotation.y=rnd()*6.28;scene.add(fm);if(typeof regSway==="function")regSway(fm,0.09,1.4);}}
+  for(var bn=0;bn<3;bn++){var bna=bn/3*6.28+0.5,bnx=cx+Math.cos(bna)*6.6,bnz=cz+Math.sin(bna)*6.6;var bench=cc0inst("fu_bench",0.55);if(bench){bench.position.set(bnx,groundH(bnx,bnz),bnz);bench.rotation.y=bna+Math.PI/2;scene.add(bench);}}
+}
+// 🌷 Schöne Wege von jeder Haustür zum Dorfplatz — gesäumt mit Blumen, Laternen, Topfpflanzen + Türschwelle
+function layVillagePaths(vx,vz,houses){
+  if(!houses||!houses.length)return;
+  var cobble=gtex("tex_cobble.png",0,true);cobble.repeat.set(1,1);
+  var FL=["nt_flower_red","nt_flower_yellow","cc0_flower_purple"];
+  var stepMat=new THREE.MeshLambertMaterial({color:0xc3bcae,flatShading:true});
+  for(var i=0;i<houses.length;i++){
+    var hx=houses[i].x,hz=houses[i].z;
+    var outAng=Math.atan2(hz-vz,hx-vx);          // Zentrum -> Haus
+    var dc=Math.cos(outAng),ds=Math.sin(outAng);
+    var px=-ds,pz=dc;                            // Quer-Richtung
+    var doorX=hx-dc*3.6,doorZ=hz-ds*3.6;         // direkt vor der Tür (Richtung Zentrum)
+    var plX=vx+dc*8.0,plZ=vz+ds*8.0;             // Platzrand auf Haus-Seite
+    var STEPS=6,bend=(i%2?1:-1);
+    var pts=[];for(var t=0;t<=STEPS;t++){var f=t/STEPS,bx=doorX+(plX-doorX)*f,bz=doorZ+(plZ-doorZ)*f,wob=Math.sin(f*Math.PI)*1.1*bend;pts.push({x:bx+px*wob,z:bz+pz*wob});}
+    roadRibbon(pts,2.3,cobble);
+    // Blumen beidseitig säumen
+    for(var t2=1;t2<STEPS;t2++){var f2=t2/STEPS,bx2=doorX+(plX-doorX)*f2,bz2=doorZ+(plZ-doorZ)*f2,wob2=Math.sin(f2*Math.PI)*1.1*bend,cxp=bx2+px*wob2,czp=bz2+pz*wob2;
+      for(var side=-1;side<=1;side+=2){if(rnd()<0.72){var ox=cxp+px*1.7*side,oz=czp+pz*1.7*side;var fm=cc0inst(FL[(rnd()*FL.length)|0],0.7*(0.7+rnd()*0.6));if(fm){fm.position.set(ox,groundH(ox,oz),oz);fm.rotation.y=rnd()*6.28;scene.add(fm);regSway(fm,0.09,1.4+rnd()*0.6);}}}}
+    // Laterne auf halbem Weg (nur Mesh — Lichter sparsam wegen WebGL-Limit)
+    var lm=cc0inst("ftk_lantern",1.7);if(lm){var mx=doorX+(plX-doorX)*0.5+px*1.9*bend,mz=doorZ+(plZ-doorZ)*0.5+pz*1.9*bend;lm.position.set(mx,groundH(mx,mz),mz);scene.add(lm);}
+    // Türschwelle (Steinplatte) + 2 Topfpflanzen flankierend
+    var step=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.16,1.1),stepMat);step.position.set(doorX,groundH(doorX,doorZ)+0.08,doorZ);step.rotation.y=outAng;step.receiveShadow=true;scene.add(step);
+    for(var s2=-1;s2<=1;s2+=2){var potx=doorX+px*1.5*s2,potz=doorZ+pz*1.5*s2;var pot=cc0inst("fu_plant",0.8);if(pot){pot.position.set(potx,groundH(potx,potz),potz);scene.add(pot);}}
+  }
 }
 // 🪣 Holz-Ziehbrunnen (passt zum Fachwerk-Stil, ersetzt den "modernen" Steinbrunnen)
 function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
@@ -1199,9 +1229,10 @@ function decorateWorld(){
     villages.push({x:vx,z:vz,big:isSpawn});
     var ringR=isSpawn?24:13;
     var nH=isSpawn?10:(2+((rnd()*3)|0));
+    var _houses=[];
     for(var h=0;h<nH;h++){
       var ha=(h/nH)*6.28+rnd()*0.4,hrd=(isSpawn?13:6)+rnd()*(isSpawn?8:7);var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
-      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);addChimney(hx+(rnd()-0.5)*1.5,hz+(rnd()-0.5)*1.5,groundH(hx,hz)+7.5);}
+      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);addChimney(hx+(rnd()-0.5)*1.5,hz+(rnd()-0.5)*1.5,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
@@ -1214,6 +1245,8 @@ function decorateWorld(){
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
     layRoads(vx,vz);
+    // 🌷 Schöne Wege von jeder Haustür zum Platz (Blumen/Laternen/Türschwelle)
+    layVillagePaths(vx,vz,_houses);
     // 🎪⛲🛒 Kenney-Dorf-Props (poliert): Marktstand, Brunnen, Karren, Banner, Laternen
     var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
     mkTimberWell(vx-4,vz+3); // 🪣 Holz-Brunnen statt modernem Steinbrunnen
