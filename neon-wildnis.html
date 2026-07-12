@@ -60,7 +60,7 @@ canvas{display:block}
 #sysRow{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;gap:8px;pointer-events:auto}
 .sysbtn{width:44px;height:44px;border-radius:12px;background:rgba(20,30,60,.6);border:1px solid rgba(120,200,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;pointer-events:auto;cursor:pointer}
 /* Bau-Menü + Crafting */
-#buildMenu,#craftMenu{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:96vw;pointer-events:auto}
+#buildMenu,#craftMenu,#tradeMenu{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:96vw;pointer-events:auto}
 #craftMenu{align-items:stretch}
 .bcard.done{border-color:#6affc0;opacity:1;background:rgba(16,40,30,.94)}
 .bcard .bd{font-size:.72rem;color:#8fb;margin-top:2px;font-weight:700}
@@ -110,6 +110,23 @@ canvas{display:block}
   #quest{top:calc(58px + env(safe-area-inset-top));max-width:56vw;font-size:.88rem;padding:7px 10px}
   #quest .qt{font-size:.94rem}
 }
+
+#perkPick{position:fixed;inset:0;z-index:60;background:rgba(6,10,22,.72);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+#perkPick.hide{display:none}
+.perkInner{text-align:center;max-width:96vw}
+#perkLvl{color:#ffe08a;font-weight:900;font-size:1.15rem;letter-spacing:.03em;margin-bottom:14px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+#perkCards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.perkCard{width:150px;background:linear-gradient(160deg,#1a2748,#0f1830);border:2px solid #3a5aa0;border-radius:16px;padding:18px 12px;cursor:pointer;transition:transform .12s,border-color .12s,box-shadow .12s;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.perkCard:hover{transform:translateY(-6px) scale(1.04);border-color:#7de3ff;box-shadow:0 12px 32px rgba(80,200,255,.35)}
+.perkCard .pIc{font-size:2.6rem;line-height:1}
+.perkCard .pN{color:#eaf2ff;font-weight:900;margin-top:8px;font-size:1.02rem}
+.perkCard .pD{color:#9fb6e0;font-size:.82rem;margin-top:5px}
+
+#waveHud{position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:22;background:linear-gradient(160deg,rgba(40,20,60,.9),rgba(20,10,34,.9));border:2px solid #a14bff;border-radius:14px;padding:5px 16px;color:#f2e0ff;font-weight:900;font-size:.95rem;letter-spacing:.02em;box-shadow:0 6px 20px rgba(120,40,200,.4)}
+#waveHud.hide{display:none}
+
+#minimap{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(96px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
+@media(max-width:600px){#minimap{width:92px;height:92px}}
 </style>
 </head>
 <body>
@@ -130,6 +147,8 @@ canvas{display:block}
     <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
     <div id="xpwrap"><span id="lvlBadge">Lv 1</span><div class="xbar"><i id="xpFill"></i></div></div>
     <div id="bossBar" class="hide"><span id="bossLbl">⚠️ SERAPH</span><div class="bbar"><i id="bossFill"></i></div></div>
+    <div id="waveHud" class="hide"></div>
+    <canvas id="minimap" width="140" height="140"></canvas>
   </div>
   <div id="sysRow">
     <div class="sysbtn" id="bSound">🔊</div>
@@ -147,6 +166,8 @@ canvas{display:block}
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
+<div id="tradeMenu" class="hide"></div>
+<div id="perkPick" class="hide"><div class="perkInner"><div id="perkLvl">⭐ Level Up</div><div id="perkCards"></div></div></div>
   <div id="craftMenu" class="hide"></div>
 </div>
 <div id="nightVig"></div>
@@ -165,11 +186,22 @@ canvas{display:block}
   <div id="charPick"></div>
   <button class="big" id="startBtn">▶ Los geht's</button>
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
+  <div id="coopBox" style="margin-top:12px;padding:12px;border:2px solid #2a6a8a;border-radius:14px;background:rgba(10,30,45,.5)">
+    <div style="font-weight:900;color:#7de3ff;margin-bottom:8px">🌐 Koop (2 Spieler)</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+      <button class="ghost" id="coopHost" style="min-width:120px">🏠 Raum öffnen</button>
+      <input id="coopCode" maxlength="4" placeholder="CODE" style="width:90px;text-transform:uppercase;text-align:center;font-weight:900;letter-spacing:.2em;border-radius:10px;border:2px solid #2a6a8a;background:#0a1e2d;color:#eaf6ff;padding:8px">
+      <button class="ghost" id="coopJoin" style="min-width:110px">🚪 Beitreten</button>
+    </div>
+    <div id="coopStatus" style="margin-top:8px;font-size:.85rem;color:#9fd6e8;min-height:1.1em"></div>
+  </div>
   <a class="arc" href="/spiele.html">🕹️ aban Arcade — mehr Spiele</a>
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
+<script src="/js/vendor/peerjs.min.js"></script>
+<script src="/js/mp.js"></script>
 <script>
 "use strict";
 (function(){
@@ -495,6 +527,12 @@ function spawnBoss(){ // 🐉 Nacht-Boss — Drache (Meshy) falls geladen, sonst
   var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="⚠️ SERAPH";
   announce("⚠️ SERAPH erwacht! Besiege den Boss!");shake=0.6;
 }
+function updWaveHud(){var el=document.getElementById("waveHud");if(!el)return;
+  if(isNight&&(waveActive||monsters.length>0)){el.classList.remove("hide");
+    var alive=0;for(var i=0;i<monsters.length;i++)if(!monsters[i].boss)alive++;
+    var remain=(waveToSpawn-waveSpawned)+alive;
+    el.innerHTML="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain);}
+  else el.classList.add("hide");}
 function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monsters[i].boss){boss=monsters[i];break;}
   var el=document.getElementById("bossBar");if(!el)return;
   if(boss){el.classList.remove("hide");document.getElementById("bossFill").style.width=Math.max(0,boss.hp/boss.maxhp*100)+"%";}
@@ -770,6 +808,59 @@ function layRoads(cx,cz){
   var mp=new THREE.Mesh(gp,new THREE.MeshStandardMaterial({map:st,normalMap:stn,roughness:0.9}));
   mp.position.set(cx,groundH(cx,cz)+0.15,cz);mp.receiveShadow=true;scene.add(mp);
 }
+// 🪣 Holz-Ziehbrunnen (passt zum Fachwerk-Stil, ersetzt den "modernen" Steinbrunnen)
+function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
+  var stone=new THREE.MeshStandardMaterial({color:0x8f857a,roughness:1,flatShading:true});
+  var wood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+  var roofM=new THREE.MeshStandardMaterial({color:0x7a3a26,roughness:1,flatShading:true});
+  var ring=new THREE.Mesh(new THREE.CylinderGeometry(1.15,1.28,1.0,12),stone);ring.position.y=0.5;ring.castShadow=true;g.add(ring);
+  var water=new THREE.Mesh(new THREE.CylinderGeometry(0.98,0.98,0.1,12),new THREE.MeshStandardMaterial({color:0x2a6a8a,roughness:0.25,metalness:0.4}));water.position.y=0.78;g.add(water);
+  for(var sgn=-1;sgn<=1;sgn+=2){var post=new THREE.Mesh(new THREE.BoxGeometry(0.2,2.6,0.2),wood);post.position.set(sgn*1.0,1.85,0);post.castShadow=true;g.add(post);}
+  var beam=new THREE.Mesh(new THREE.BoxGeometry(2.4,0.22,0.22),wood);beam.position.y=3.1;g.add(beam);
+  var roof=new THREE.Mesh(new THREE.ConeGeometry(1.85,1.0,4),roofM);roof.position.y=3.7;roof.rotation.y=Math.PI/4;roof.castShadow=true;g.add(roof);
+  var bkt=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.26,0.4,8),wood);bkt.position.set(0,2.2,0);g.add(bkt);
+  g.position.set(x,gy,z);scene.add(g);return g;}
+// 🧑‍🌾 Dorfbewohner-NPCs (einfache, stilisierte Figuren, wandern im Dorf umher)
+var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a];
+var NPC_EMO=["👋","💬","🙂","🎶","❤️","🍺","🧺","⚒️"];
+function mkVillager(x,z){var g=new THREE.Group(),gy=groundH(x,z);
+  var robeHex=NPC_ROBES[(rnd()*NPC_ROBES.length)|0];
+  var robe=new THREE.MeshStandardMaterial({color:robeHex,roughness:1,flatShading:true});
+  var skin=new THREE.MeshStandardMaterial({color:0xe6b088,roughness:1});
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.42,1.05,9),robe);body.position.y=0.85;body.castShadow=true;g.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.27,10,8),skin);head.position.y=1.6;head.castShadow=true;g.add(head);
+  // Nase + Augen für Charakter
+  var nose=new THREE.Mesh(new THREE.SphereGeometry(0.06,6,6),skin);nose.position.set(0,1.58,0.26);g.add(nose);
+  var eyeM=new THREE.MeshStandardMaterial({color:0x2a2a2a});
+  [[-0.1],[0.1]].forEach(function(e){var ey=new THREE.Mesh(new THREE.SphereGeometry(0.035,6,6),eyeM);ey.position.set(e[0],1.64,0.24);g.add(ey);});
+  var hat=new THREE.Mesh(new THREE.ConeGeometry(0.33,0.46,9),robe);hat.position.y=1.92;hat.castShadow=true;g.add(hat);
+  // Arme (Pivot an der Schulter, schwingen)
+  function arm(sx){var pv=new THREE.Group();pv.position.set(sx,1.3,0);
+    var m=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.08,0.7,6),robe);m.position.y=-0.35;m.castShadow=true;pv.add(m);
+    var hand=new THREE.Mesh(new THREE.SphereGeometry(0.1,6,6),skin);hand.position.y=-0.72;pv.add(hand);g.add(pv);return pv;}
+  var la=arm(-0.36),ra=arm(0.36);
+  var s2=0.92+rnd()*0.28;g.scale.setScalar(s2);
+  g.position.set(x,gy,z);g.rotation.y=rnd()*6.28;scene.add(g);
+  npcs.push({mesh:g,cx:x,cz:z,t:rnd()*6,dir:rnd()*6.28,spd:0.5+rnd()*0.5,rr:9,la:la,ra:ra,walk:0,emoT:2+rnd()*8,emo:null});return g;}
+function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;
+  var pausing=(Math.sin(n.t*0.5+i)>0.55); // gelegentlich stehenbleiben (plaudern)
+  if(n.t%3.5<dt)n.dir+=(rnd()-0.5)*2.2;
+  var spd=pausing?0:n.spd;
+  var nx=n.mesh.position.x+Math.sin(n.dir)*spd*dt,nz=n.mesh.position.z+Math.cos(n.dir)*spd*dt;
+  if(Math.hypot(nx-n.cx,nz-n.cz)>n.rr){n.dir=Math.atan2(n.cx-nx,n.cz-nz);}else{n.mesh.position.x=nx;n.mesh.position.z=nz;}
+  n.walk+=spd*dt*6;
+  n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+(pausing?0:Math.abs(Math.sin(n.walk))*0.06);
+  if(n.la){var sw=pausing?Math.sin(n.t*2)*0.15:Math.sin(n.walk)*0.6;n.la.rotation.x=sw;n.ra.rotation.x=-sw;}
+  n.mesh.rotation.y+=(n.dir-n.mesh.rotation.y)*Math.min(1,dt*4);
+  // 💬 Emote-Blase über dem Kopf
+  n.emoT-=dt;
+  if(n.emoT<=0){n.emoT=5+rnd()*10;
+    if(n.emo){n.mesh.remove(n.emo);n.emo=null;}
+    var cv=document.createElement("canvas");cv.width=cv.height=64;var cx3=cv.getContext("2d");
+    cx3.font="44px sans-serif";cx3.textAlign="center";cx3.textBaseline="middle";cx3.fillText(NPC_EMO[(rnd()*NPC_EMO.length)|0],32,36);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+    sp.scale.set(0.6,0.6,0.6);sp.position.y=2.4;n.mesh.add(sp);n.emo=sp;n.emoLife=3;}
+  if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo=null;}}}}
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 function decorateWorld(){
   var half=MAP/2-40;
@@ -789,13 +880,16 @@ function decorateWorld(){
   farScatter(Math.round(14*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Dörfer: 2–3 Cluster aus Häusern + Zäunen + Lagerfeuer + Fässern/Kisten/Zelt ---
   var HOUSES=["building_fachwerk","building_werkstatt","building_turm"];
-  var nV=2+((rnd()*2)|0);
+  var nV=3+((rnd()*2)|0);
   for(var v=0;v<nV;v++){
-    var va=rnd()*6.28,vrd=60+rnd()*(half-80);var vx=Math.cos(va)*vrd,vz=Math.sin(va)*vrd;
-    villages.push({x:vx,z:vz});
-    var nH=2+((rnd()*3)|0);
+    var isSpawn=(v===0); // 🏡 Dorf 0 = RIESIGES Anfangsdorf am Spawn (0,0)
+    var vx,vz;
+    if(isSpawn){vx=0;vz=0;}else{var va=rnd()*6.28,vrd=70+rnd()*(half-90);vx=Math.cos(va)*vrd;vz=Math.sin(va)*vrd;}
+    villages.push({x:vx,z:vz,big:isSpawn});
+    var ringR=isSpawn?24:13;
+    var nH=isSpawn?10:(2+((rnd()*3)|0));
     for(var h=0;h<nH;h++){
-      var ha=(h/nH)*6.28+rnd()*0.5,hrd=6+rnd()*7;var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
+      var ha=(h/nH)*6.28+rnd()*0.4,hrd=(isSpawn?13:6)+rnd()*(isSpawn?8:7);var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
@@ -804,27 +898,35 @@ function decorateWorld(){
     var fL=new THREE.PointLight(0xffa040,1.4,18);fL.position.set(vx,groundH(vx,vz)+1.2,vz);scene.add(fL);
     worldProps.push({mesh:fire,halo:null,ph:rnd()*6.28,base:fire.position.y,float:false,scl:1,flick:true,light:fL});
     // Zaun-Ring + Fässer/Kisten/Zelt
-    for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*(hrd*0+13),fz=vz+Math.sin(fa)*13;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
+    for(var f=0;f<(isSpawn?16:8);f++){var nF=isSpawn?16:8;var fa=f/nF*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
     layRoads(vx,vz);
     // 🎪⛲🛒 Kenney-Dorf-Props (poliert): Marktstand, Brunnen, Karren, Banner, Laternen
     var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
-    var ftfn=cc0inst("ftk_fountain",2.4);if(ftfn){var qx=vx-4,qz=vz+3;ftfn.position.set(qx,groundH(qx,qz),qz);scene.add(ftfn);}
+    mkTimberWell(vx-4,vz+3); // 🪣 Holz-Brunnen statt modernem Steinbrunnen
     var ftct=cc0inst("ftk_cart",1.7);if(ftct){var cx2=vx+2,cz2=vz+5;ftct.position.set(cx2,groundH(cx2,cz2),cz2);ftct.rotation.y=rnd()*6.28;scene.add(ftct);}
     for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);}}
     for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
       var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
-    // 🏰 Befestigung: 4 Wachtürme + Tor + Flaggen + Katapult + Waffen-Armory (Vielfalt, nie gleich)
-    for(var tw=0;tw<4;tw++){var ta=Math.PI/4+tw*Math.PI/2,tx2=vx+Math.cos(ta)*15,tz2=vz+Math.sin(ta)*15;
-      var twr=cc0inst("ck_tower",7*(0.85+rnd()*0.3));if(twr){twr.position.set(tx2,groundH(tx2,tz2),tz2);twr.rotation.y=rnd()*6.28;scene.add(twr);}
-      if(tw<2){var flg=cc0inst("ck_flag",3.2);if(flg){flg.position.set(tx2,groundH(tx2,tz2)+4.6,tz2);flg.rotation.y=rnd()*6.28;scene.add(flg);}}}
-    var gate=cc0inst("ck_gate",5);if(gate){var ga2=Math.atan2(-vz,-vx),gx2=vx+Math.cos(ga2)*15,gz2=vz+Math.sin(ga2)*15;gate.position.set(gx2,groundH(gx2,gz2),gz2);gate.rotation.y=ga2+Math.PI/2;scene.add(gate);}
-    var cat=cc0inst("ck_catapult",2.4);if(cat){var cax=vx-8,caz=vz+7;cat.position.set(cax,groundH(cax,caz),caz);cat.rotation.y=rnd()*6.28;scene.add(cat);}
+    // 🚩 Flaggen auf Holzmasten (statt flacher Stein-Türme) — passt zum Fachwerk-Stil
+    var woodPole=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+    for(var tw=0;tw<(isSpawn?4:2);tw++){var ta=Math.PI/4+tw*(isSpawn?Math.PI/2:Math.PI),tx2=vx+Math.cos(ta)*(ringR-2),tz2=vz+Math.sin(ta)*(ringR-2);
+      var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.14,5.2,6),woodPole);pole.position.set(tx2,groundH(tx2,tz2)+2.6,tz2);pole.castShadow=true;scene.add(pole);
+      var flg=cc0inst("ck_flag",2.6);if(flg){flg.position.set(tx2,groundH(tx2,tz2)+4.4,tz2);flg.rotation.y=rnd()*6.28;scene.add(flg);}}
+    // ⚔️ Waffen-Armory (Holz-Ständer-Look): Schwert/Speer/Schilde
     var arms=["dk_sword","dk_spear","dk_shield_round","dk_shield_rect"];
-    for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+2+ai*0.9,waz=vz-3.5;
+    for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+3+ai*0.9,waz=vz-4;
       wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
+    // 🧑‍🌾 Dorfbewohner (mehr im grossen Anfangsdorf)
+    var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr);}
+    if(isSpawn){ // 💰 Händler beim Marktstand
+      merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z);
+      var cvM=document.createElement("canvas");cvM.width=cvM.height=64;var cm=cvM.getContext("2d");cm.font="46px sans-serif";cm.textAlign="center";cm.textBaseline="middle";cm.fillText("💰",32,36);
+      var spM=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cvM),transparent:true,depthWrite:false}));spM.scale.set(1.2,1.2,1.2);spM.position.set(merchant.x,groundH(merchant.x,merchant.z)+3,merchant.z);scene.add(spM);
+      worldProps.push({mesh:spM,halo:null,ph:0,base:spM.position.y,float:true,scl:1});
+    }
   }
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
@@ -1083,7 +1185,7 @@ var equip={weapon:0,armor:0};
 var WEAP_ATK=[0,2,4,7], ARMOR_DEF=[0,2,4,7];
 var WEAP_NAME=["Faust","🗡️ Bronze","⚔️ Kriegsaxt","🌟 Neon-Klinge"], ARMOR_NAME=["—","🥋 Leder","🛡️ Eisen","💠 Kristall"];
 function gearStore(k){return (k==="weapon"||k==="armor")?equip:tools;}
-function weaponAtk(){return WEAP_ATK[equip.weapon]||0;}
+function weaponAtk(){return (WEAP_ATK[equip.weapon]||0)+PERK.atk;}
 function normInv(){ // defensiv: alte Saves ohne neue Felder auffüllen
   inv.wood=inv.wood||0;inv.stone=inv.stone||0;inv.crystal=inv.crystal||0;inv.berry=inv.berry||0;inv.meat=inv.meat||0;
   tools.axe=tools.axe||0;tools.pick=tools.pick||0;
@@ -1138,23 +1240,53 @@ function gearUpd(){
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";}
 function xpNeed(){return 20+level*16;}
 function xpUpd(){var b=document.getElementById("xpFill");if(b)b.style.width=Math.min(100,xp/xpNeed()*100)+"%";var l=document.getElementById("lvlBadge");if(l)l.textContent="Lv "+level;}
-function gainXP(n){if(dead)return;xp+=n;var up=false;while(xp>=xpNeed()){xp-=xpNeed();level++;up=true;}
-  if(up){maxHp+=18;hp=maxHp;announce("⭐ Level "+level+"! +18 max HP · stärkerer Angriff");
+function gainXP(n){if(dead)return;xp+=n;var ups=0;while(xp>=xpNeed()){xp-=xpNeed();level++;ups++;}
+  if(ups>0){maxHp+=8;hp=Math.min(maxHp,hp+8);
     if(typeof burst==="function")burst(player.position.x,player.position.y+2,player.position.z,0xffd166,24);
-    hpUpd();}
+    hpUpd();perkQueue+=ups;if(!perkChoosing)showPerkPick();}
   xpUpd();}
-function damagePlayer(d){if(dead)return;d=Math.max(1,d-(ARMOR_DEF[equip.armor]||0));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
+// 🎲 Roguelite-Perks (aus Neon-Survivor) — bei Level-Up 1 von 3 wählen
+var PERK={atk:0,def:0,spd:0,magnet:0,regen:0,skillcd:0,harvest:0};
+var perkQueue=0,perkChoosing=false;
+var PERKS=[
+  {ic:"⚔️",n:"Schärfe",d:"+2 Angriff",fn:function(){PERK.atk+=2;}},
+  {ic:"🛡️",n:"Panzerung",d:"−1 Schaden",fn:function(){PERK.def+=1;}},
+  {ic:"❤️",n:"Vitalität",d:"+25 Max HP",fn:function(){maxHp+=25;hp=maxHp;hpUpd();}},
+  {ic:"🏃",n:"Flink",d:"+18% Tempo",fn:function(){PERK.spd+=1.5;}},
+  {ic:"🩹",n:"Regeneration",d:"+0,7 HP/s",fn:function(){PERK.regen+=0.7;}},
+  {ic:"🧲",n:"Magnet",d:"+Loot-Reichweite",fn:function(){PERK.magnet+=1.6;}},
+  {ic:"💥",n:"Fokus",d:"Skill −1,5s Cooldown",fn:function(){PERK.skillcd+=1.5;}},
+  {ic:"🪓",n:"Erntemeister",d:"+30% Sammeln",fn:function(){PERK.harvest+=0.3;}}
+];
+function showPerkPick(){
+  perkChoosing=true;
+  var box=document.getElementById("perkPick");if(!box){perkChoosing=false;return;}
+  var pool=PERKS.slice();var pick=[];for(var k=0;k<3&&pool.length;k++){var idx=(rnd()*pool.length)|0;pick.push(pool.splice(idx,1)[0]);}
+  var cards=document.getElementById("perkCards");cards.innerHTML="";
+  document.getElementById("perkLvl").textContent="⭐ Level "+level+" — wähle ein Upgrade";
+  pick.forEach(function(P){var c=document.createElement("div");c.className="perkCard";
+    c.innerHTML='<div class="pIc">'+P.ic+'</div><div class="pN">'+P.n+'</div><div class="pD">'+P.d+'</div>';
+    c.onclick=function(){P.fn();invUpd&&invUpd();choosePerk();};cards.appendChild(c);});
+  box.classList.remove("hide");
+}
+function choosePerk(){
+  perkQueue=Math.max(0,perkQueue-1);
+  var box=document.getElementById("perkPick");
+  if(perkQueue>0){showPerkPick();}
+  else{perkChoosing=false;if(box)box.classList.add("hide");announce("⭐ Level "+level+"!","#ffd166");}
+}
+function damagePlayer(d){if(dead)return;d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
   if(dead||!running||buildMode)return;
   if(level<2){toast("💥 Schockwelle ab Level 2");return;}
   if(skillCd>0){toast("💥 Cooldown "+Math.ceil(skillCd)+"s");return;}
-  skillCd=SKILL_CD;var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
+  skillCd=Math.max(2,SKILL_CD-PERK.skillcd);var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
@@ -1173,7 +1305,7 @@ function bossReward(x,z){announce("🏆 Boss besiegt! Legendäre Beute!");gainXP
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
   o.m.rotation.y+=dt*2.6;o.m.position.y=groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16;
   var dx=o.x-player.position.x,dz=o.z-player.position.z;
-  if(dx*dx+dz*dz<1.7*1.7&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
+  var LR=1.7+PERK.magnet;if(dx*dx+dz*dz<LR*LR&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
     toast((o.ri>=3?"🌟 ":"💎 ")+R.n+"e Beute! +"+R.xp+" XP"+(R.cr?" · +"+R.cr+"💎":"")+(R.hp?" · +"+R.hp+" maxHP":""));
     floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,11);
     scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);continue;}
@@ -1207,7 +1339,8 @@ function floatText(x,y,z,txt,color){
 }
 
 // ---------- Sammeln ----------
-var nearRes=null,nearMon=null,nearAni=null,nearWork=null;
+var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false;
+var merchant={x:null,z:null};
 function findNear(){
   nearRes=null;nearMon=null;nearAni=null;nearWork=null;var best=3.6*3.6;
   for(var i=0;i<resources.length;i++){var r=resources[i];if(r.dead)continue;var dx=r.x-player.position.x,dz=r.z-player.position.z,d=dx*dx+dz*dz;if(d<best){best=d;nearRes=r;}}
@@ -1217,19 +1350,21 @@ function findNear(){
   for(var k=0;k<animals.length;k++){var an=animals[k];if(!an.alive)continue;var ax=an.x-player.position.x,az=an.z-player.position.z,da=ax*ax+az*az;if(da<ba){ba=da;nearAni=an;}}
   var bw=3.4*3.4;
   for(var w=0;w<structures.length;w++){var s=structures[w];if(s.type!=="werk")continue;var wx=s.x-player.position.x,wz=s.z-player.position.z,dw=wx*wx+wz*wz;if(dw<bw){bw=dw;nearWork=s;}}
+  nearMerchant=false;if(merchant.x!=null){var mdx=merchant.x-player.position.x,mdz=merchant.z-player.position.z;if(mdx*mdx+mdz*mdz<4.5*4.5)nearMerchant=true;}
   nearLoot=null;var bl=3.4*3.4;
   for(var L=0;L<loots.length;L++){var lt=loots[L];if(lt.opened)continue;var lx=lt.x-player.position.x,lz=lt.z-player.position.z,dl=lx*lx+lz*lz;if(dl<bl){bl=dl;nearLoot=lt;}}
 }
 function harvest(){
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
   // Werkbank in der Nähe (und nichts Wichtigeres) → Crafting öffnen
+  if(nearMerchant&&!nearMon&&!nearAni&&!buildMode){openTrade();return;}
   if(nearWork&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!buildMode){openCraft();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
   if(nearMon){ // Kampf
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
     nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);
+    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -1245,7 +1380,7 @@ function harvest(){
   if(!nearRes)return;var r=nearRes;
   if(heroRig)playOnce(heroRig,"attack",2.4);
   faceTo(r.x,r.z);
-  var dmg=1;if(r.type==="tree")dmg=1+tools.axe;else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick;
+  var dmg=(1+PERK.harvest)|0;dmg=Math.max(1,dmg);if(r.type==="tree")dmg=1+tools.axe+(PERK.harvest>=0.3?1:0);else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick+(PERK.harvest>=0.3?1:0);
   r.hp-=dmg;r.hitAnim=0.2;
   var col=r.type==="tree"?0x8a5a2a:(r.type==="crystal"?0x7de3ff:(r.type==="bush"?0xff5c8a:0xaab));
   burst(r.x,r.baseY+1.2,r.z,col,8); // satter: mehr Splitter
@@ -1315,6 +1450,25 @@ function doCraft(id){
 }
 
 // ---------- Bau-Modus ----------
+// 💰 Händler-Handel (RPG-Tiefe): Ressourcen gegen Waren tauschen
+var TRADES=[
+  {ic:"🍖",name:"Fleisch",give:{wood:5},get:function(){inv.meat=(inv.meat||0)+3;},desc:"5 🪵 → 3 🍖"},
+  {ic:"🪨",name:"Stein-Deal",give:{wood:6},get:function(){inv.stone=(inv.stone||0)+5;},desc:"6 🪵 → 5 🪨"},
+  {ic:"❤️",name:"Voll-Heilung",give:{crystal:3},get:function(){hp=maxHp;hpUpd();},desc:"3 💎 → volle HP"},
+  {ic:"⚡",name:"Erfahrung",give:{crystal:6},get:function(){gainXP(40);},desc:"6 💎 → +40 XP"},
+  {ic:"🍓",name:"Beeren-Korb",give:{stone:4},get:function(){inv.berry=(inv.berry||0)+5;},desc:"4 🪨 → 5 🍓"}
+];
+var tradeOpen=false;
+function canTrade(t){for(var k in t.give)if((inv[k]||0)<t.give[k])return false;return true;}
+function openTrade(){if(isNight){toast("🌙 Der Händler schläft nachts");return;}if(buildMode)closeBuild();if(craftMode)closeCraft();tradeOpen=true;renderTrade();document.getElementById("tradeMenu").classList.remove("hide");}
+function closeTrade(){tradeOpen=false;document.getElementById("tradeMenu").classList.add("hide");}
+function renderTrade(){var el=document.getElementById("tradeMenu");el.innerHTML="";
+  var head=document.createElement("div");head.style.cssText="width:100%;text-align:center;font-weight:900;color:#ffd166;letter-spacing:.08em;margin-bottom:2px";head.textContent="💰 HÄNDLER — Tausche Waren";el.appendChild(head);
+  TRADES.forEach(function(t){var aff=canTrade(t);var d=document.createElement("div");d.className="bcard"+(aff?" aff":"");
+    d.innerHTML='<div class="bi">'+t.ic+'</div><div class="bn">'+t.name+'</div><div class="bc">'+t.desc+'</div>';
+    d.onclick=function(){if(!canTrade(t)){toast("Nicht genug Material");return;}for(var k in t.give)inv[k]-=t.give[k];t.get();invUpd();burst(player.position.x,player.position.y+1.5,player.position.z,0xffd166,10);toast(t.ic+" "+t.name+" erhalten!");renderTrade();saveGame&&saveGame();};
+    el.appendChild(d);});
+  var close=document.createElement("div");close.className="bcard";close.style.width="80px";close.innerHTML='<div class="bi">✖️</div><div class="bn">Schliessen</div>';close.onclick=closeTrade;el.appendChild(close);}
 function openBuild(){
   if(isNight){toast("🌙 Nachts kannst du nicht in Ruhe bauen — kämpfe!");return;}
   if(craftMode)closeCraft();
@@ -1394,9 +1548,19 @@ function updStructures(dt){
 
 // ---------- Tag/Nacht ----------
 var monSpawnT=0;
+// 🌙 Nacht-WELLEN (Survivor-Merge Schritt 2): jede Nacht = eskalierende Gegner-Welle
+var waveNum=0,waveToSpawn=0,waveSpawned=0,waveActive=false;
 function updDayNight(dt){
   dayT+=dt;var cyc=isNight?NIGHTLEN:DAYLEN;
-  if(dayT>=cyc){dayT=0;isNight=!isNight;if(isNight){announce("🌙 Die Nacht bricht herein… Sie kommen!");nights++;if(nights>=2&&nights%2===0)setTimeout(spawnBoss,2500);}else{day++;announce("☀️ Tag "+day+" — du hast überlebt!");monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}}
+  if(dayT>=cyc){dayT=0;isNight=!isNight;
+    if(isNight){nights++;waveNum++;waveToSpawn=6+waveNum*4;waveSpawned=0;waveActive=true;
+      announce("🌙 WELLE "+waveNum+" — "+waveToSpawn+" Gegner! Überlebe!");
+      if(nights>=2&&nights%2===0)setTimeout(spawnBoss,2500);}
+    else{day++;waveActive=false;
+      if(typeof gainXP==="function")gainXP(10+waveNum*4); // Welle überlebt -> XP-Bonus
+      announce("☀️ Tag "+day+" — Welle "+waveNum+" überlebt! +"+(10+waveNum*4)+" XP");
+      monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}
+    updWaveHud();}
   var f=dayT/cyc;
   var t; // 0=tiefste Nacht,1=heller Tag
   var vig=document.getElementById("nightVig");
@@ -1413,7 +1577,9 @@ function updDayNight(dt){
   var ang=f*Math.PI;sun.position.set(Math.cos(ang)*60,Math.max(8,Math.sin(isNight?0.2:f*Math.PI)*80),Math.sin(ang)*40);
   sun.target.position.copy(player.position);
   // Monster nachts spawnen
-  if(isNight){monSpawnT-=dt;var cap=Math.min(3+day,10);if(monSpawnT<=0&&monsters.length<cap){spawnMonster();monSpawnT=3.2-Math.min(day*0.2,1.6);}}
+  if(isNight&&waveActive){monSpawnT-=dt;var cap=Math.min(4+waveNum,14);
+    if(monSpawnT<=0&&waveSpawned<waveToSpawn&&monsters.length<cap){spawnMonster();waveSpawned++;monSpawnT=Math.max(0.5,2.2-waveNum*0.15);updWaveHud();}
+    if(waveSpawned>=waveToSpawn&&monsters.length<=0){waveActive=false;announce("✨ Welle "+waveNum+" geschafft! Halte bis zum Morgen durch.");updWaveHud();}}
 }
 
 // ---------- Steuerung ----------
@@ -1495,17 +1661,37 @@ function updQuest(dt){
 
 // ---------- Loop ----------
 var perfNow=0,lastT=0;
+function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running)return;var ctx=cv.getContext("2d");var W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=W/2;
+  ctx.clearRect(0,0,W,H);ctx.save();ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.clip();
+  ctx.fillStyle="rgba(30,60,40,.5)";ctx.fillRect(0,0,W,H);
+  var SC=R/95; // 95 Welt-Einheiten Radius sichtbar
+  var px=player.position.x,pz=player.position.z;
+  function pt(x,z){return [cx+(x-px)*SC,cy+(z-pz)*SC];}
+  // Dörfer (Haus-Icons)
+  if(typeof villages!=="undefined")for(var i=0;i<villages.length;i++){var v=villages[i],p=pt(v.x,v.z);ctx.fillStyle=v.big?"#ffd166":"#c9a15a";ctx.fillRect(p[0]-2,p[1]-2,4,4);}
+  // Ressourcen (grün Baum / grau Fels / cyan Kristall) — nur nahe
+  for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1,p2[1]-1,2,2);}
+  // Gegner (rot)
+  if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];var p3=pt(e.x,e.z);ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.beginPath();ctx.arc(p3[0],p3[1],e.boss?3:2,0,6.283);ctx.fill();}
+  // Partner (Koop, cyan)
+  if(typeof NET!=="undefined"&&NET.remote&&NET.remote.visible){var pr=pt(NET.remote.position.x,NET.remote.position.z);ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(pr[0],pr[1],3,0,6.283);ctx.fill();}
+  // Spieler (Mitte, Pfeil in Blickrichtung)
+  ctx.fillStyle="#fff";ctx.save();ctx.translate(cx,cy);ctx.rotate(-player.rotation.y);ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(3.5,4);ctx.lineTo(-3.5,4);ctx.closePath();ctx.fill();ctx.restore();
+  ctx.restore();
+  // Rand
+  ctx.strokeStyle="rgba(130,200,255,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.stroke();
+}
 function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
-  if(!running||paused){renderer.render(scene,camera);return;}
+  if(!running||paused||perkChoosing){renderer.render(scene,camera);return;}
   // Bewegung
   var mx=stickV.x,my=stickV.y;
   if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
   var ml=Math.hypot(mx,my);
   var moving=ml>0.15&&!dead;
   if(moving){
-    var spd=8;var nx=player.position.x-mx/ml*spd*dt*Math.min(1,ml),nz=player.position.z-my/ml*spd*dt*Math.min(1,ml);
+    var spd=8+PERK.spd;var nx=player.position.x-mx/ml*spd*dt*Math.min(1,ml),nz=player.position.z-my/ml*spd*dt*Math.min(1,ml);
     // Grenze
     nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
     // Struktur-Kollision (grob)
@@ -1516,7 +1702,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);updPotions(dt);
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -1545,9 +1731,56 @@ function updPrompt(){
 function togglePause(){if(!running)return;paused=!paused;var ov=document.getElementById("ov");
   if(paused){ov.classList.remove("hide");ov.querySelector("h1").textContent="PAUSE";document.getElementById("startBtn").textContent="▶ Weiter";document.getElementById("newBtn").classList.remove("hide");document.getElementById("charLbl").classList.add("hide");document.getElementById("charPick").classList.add("hide");saveGame();}
   else{ov.classList.add("hide");}}
+// ===================== 🌐 KOOP (js/mp.js, WebRTC-P2P) =====================
+var NET={s:null,on:false,role:null,remote:null,rt:{x:0,z:0,ry:0},sendT:0};
+var NET_FORCE_SEED=null;
+function coopStatusMsg(m){var b=document.getElementById("coopStatus");if(b)b.textContent=m;}
+function netStart(role,code){
+  if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
+  NET.role=role;coopStatusMsg("Verbinde…");
+  try{NET.s=(role==="host")?MP.host("wildnis"):MP.join("wildnis",code);}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
+  if(role==="host")coopStatusMsg("Raum-Code: "+NET.s.code+" — teile ihn mit dem Partner!");
+  NET.s.onStatus(function(st){
+    if(st==="waiting")coopStatusMsg("Warte auf Partner… Code: "+NET.s.code);
+    else if(st==="connected")coopStatusMsg("✅ Verbunden!");
+    else if(st==="lost")coopStatusMsg("⚠️ Verbindung wackelt…");
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;}});
+  NET.s.onMessage(onNetMsg);
+  NET.s.ready.then(function(){
+    NET.on=true;
+    if(role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}
+  }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));});
+}
+function onNetMsg(d){
+  if(!d)return;
+  if(d.t==="start"&&NET.role==="join"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;}
+  if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;}
+  if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
+}
+function spawnRemote(){
+  if(NET.remote)return;
+  var g=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.42,1.2,10),new THREE.MeshStandardMaterial({color:0x35d0ff,emissive:0x1466aa,emissiveIntensity:0.6,flatShading:true}));body.position.y=0.85;body.castShadow=true;g.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.3,12,9),new THREE.MeshStandardMaterial({color:0xffd166,emissive:0x886600,emissiveIntensity:0.3}));head.position.y=1.62;g.add(head);
+  // Namensschild
+  var cv=document.createElement("canvas");cv.width=256;cv.height=64;var cx=cv.getContext("2d");
+  cx.font="bold 40px sans-serif";cx.textAlign="center";cx.fillStyle="rgba(20,40,60,.85)";cx.beginPath();cx.roundRect(28,6,200,52,16);cx.fill();cx.fillStyle="#7de3ff";cx.fillText("Partner",128,44);
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));sp.scale.set(2,0.5,1);sp.position.y=2.4;g.add(sp);
+  g.visible=false;scene.add(g);NET.remote=g;
+}
+function netTick(dt){
+  if(!NET.on||!NET.s)return;
+  NET.sendT-=dt;
+  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2)});}
+  if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
+}
+(function(){var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
+  if(h)h.onclick=function(){netStart("host");};
+  if(j)j.onclick=function(){var c=(document.getElementById("coopCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");if(c.length!==4){coopStatusMsg("Code = 4 Buchstaben");return;}netStart("join",c);};
+})();
 function startGame(fresh){
-  var sv=fresh?null:loadSave();
-  SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
+  var sv=(NET.on||fresh)?null:loadSave(); // Koop: immer frische, geteilte Welt
+  SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
     loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger"],decorateWorld);
@@ -1562,7 +1795,7 @@ function startGame(fresh){
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(0,0,0);}
+  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);}
   invUpd();hpUpd();
   document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";
   camera.position.set(0,12,16);
@@ -1639,6 +1872,9 @@ addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
 window.__nw={
   boss:function(){spawnBoss();return monsters.length;}, // Test-Only
+  xp:function(n){gainXP(n||100);return {level:level,perk:PERK};}, // Test-Only
+  perkState:function(){return PERK;},
+  trade:function(){if(merchant.x!=null){player.position.x=merchant.x;player.position.z=merchant.z+1.5;}inv.wood=20;inv.crystal=20;inv.stone=20;invUpd();openTrade();return {mx:merchant.x,mz:merchant.z};}, // Test-Only
   spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;var proto=M.file?mobProtos[M.id]:slimeProto;var m=proto?proto.clone(true):fallbackSlime();m.traverse(function(n){if(n.isMesh)n.castShadow=true;});var sc=proto?M.scale:1;m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id});return proto?1:0;}, // Test-Only
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},

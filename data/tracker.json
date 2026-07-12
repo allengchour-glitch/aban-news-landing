@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-12T13:25:00Z",
+ "updated": "2026-07-12T15:00:00Z",
  "brainScore": "100.0/100 · 0 Befunde über 7978 Seiten",
  "orders": {
   "lastChecked": "2026-07-12T00:05:00Z",
@@ -34,6 +34,10 @@
   }
  ],
  "runs": [
+  {
+   "ts": "2026-07-12T15:00:00Z",
+   "was": "SPIELE-Marathon neon-wildnis (User-Feedback live): Kenney-Bibliotheken geholt+Blender-poliert (Fantasy Town/Castle/Mini-Dungeon/Food = Waffen/Schilde/Türme/Katapult/Loot), prozedurale Texturen (numpy+Pillow: Kopfstein/Steinplatten/Gras/Erde+Normalmaps), geschwungene Ribbon-Wege+runder Platz, RIESIGES Fachwerk-Anfangsdorf am Spawn (einheitlicher Holzhaus-Stil, Holz-Ziehbrunnen, größere Häuser), Dorfbewohner-NPCs (Arme/Gesicht/Emotes/Plaudern), XP-Balance gesenkt. Lebenspfad: Charakter sofort sichtbar (Kamera-Snap-Fix), Rundenziel runter, Online-Chat dauerhaft. PRs #1749-1768. OFFEN (User 'alle 4'): survivor+wildnis mergen, Koop immer öffentlich, NPC-Dialog, Map noch größer."
+  },
   {
    "ts": "2026-07-12T13:25:00Z",
    "was": "SPIELE neon-wildnis: neue Meshy-Assets integriert (User gab Credits). PR #1752: Drachen-Nacht-Boss (ersetzt SERAPH-Slime, laeuft, eigene HP-Bar) + Burg-Landmarke + leuchtende Relikte + einsammelbare Heiltraenke (+40 HP). PR #1753: Brunnen in Dorf-Zentren. Alle r128-aufbereitet (prune+JPEG-1024), game_smoke PASS, r128-Grid + In-Game verifiziert. Meshy-Onboarding: 5/6 Aufgaben liefen per API automatisch mit; 300-Credit-Animations-Bonus braucht Web-UI (nur User)."
