@@ -94,6 +94,9 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palItems"></div>
 </div>
 <div id="hint"></div>
+<div id="joy" style="position:fixed;left:16px;bottom:100px;width:112px;height:112px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.4);z-index:13;display:none;touch-action:none;backdrop-filter:blur(2px)">
+  <div id="joyKnob" style="position:absolute;left:34px;top:34px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);box-shadow:0 3px 10px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;pointer-events:none">🏃</div>
+</div>
 <div id="tanz" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(40,20,45,.6)">
  <div id="tanzBox" style="background:#fdf4ff;border:3px solid #b060c8;border-radius:18px;padding:18px;text-align:center;max-width:340px;width:90vw;cursor:pointer;user-select:none">
   <b style="font-size:1.1rem;color:#7a3a90">💃 Tanzen</b>
@@ -154,7 +157,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
-  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b> · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
+  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -630,6 +633,7 @@ function onNetMsg(m){
   else if(m.t==="kochBoost"&&mpHost)kochApply(m.s);
   else if(m.t==="tanzBoost"&&mpHost)tanzApply(m.s);
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
+  else if(m.t==="steer"&&mpHost){if(sims[1])sims[1].netSteer={x:m.x,z:m.z,t:performance.now()};}
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
   else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
   else if(m.t==="loveEv"){loveEvent(m.k,true);}
@@ -1175,6 +1179,12 @@ function updSim(s,si,dt,now){
       s.rot=s.net.r;s.pose=s.net.p;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
   else{
     if(s.state==="work")return;
+    var sv9=steerVec(si);
+    if(sv9){
+      if(s.state==="use"&&s.useObj){s.useObj.busy=false;s.useObj=null;}
+      s.state="steer";s.pose="stand";steerMove(s,sv9,dt);
+      if(si===0&&!followSim&&!buildMode)followSim=s;}
+    else if(s.state==="steer")s.state="idle";
     var ehe=verheiratet?0.82:1;
     NEEDS.forEach(function(nd){s.needs[nd[0]]=Math.max(0,s.needs[nd[0]]-dt*ehe*({hunger:0.55,energie:0.4,spass:0.65,hygiene:0.45}[nd[0]]));});
     if(s.state==="dance"||s.state==="propose"){s.useT-=dt;if(s.useT<=0){s.state="idle";}}
@@ -1188,7 +1198,7 @@ function updSim(s,si,dt,now){
   // Pose & Animation
   var m=s.mesh,ud=m.userData;
   if(s.mixer){s.mixer.update(dt);
-    var moving=(s.state==="walk"||s.state==="dance"||(MPs&&!mpHost&&s.net&&s._netMoved));
+    var moving=(s.state==="walk"||s.state==="steer"||s.state==="dance"||(MPs&&!mpHost&&s.net&&s._netMoved));
     if(s.walkAction)s.walkAction.paused=!moving;
     if(s.state==="dance"&&s.walkAction)s.walkAction.timeScale=1.5;else if(s.walkAction)s.walkAction.timeScale=1.1;}
   m.position.set(s.x,0,s.z);m.rotation.set(0,s.rot,0);
@@ -1201,7 +1211,7 @@ function updSim(s,si,dt,now){
     m.position.y=0;ud.ll.rotation.x=-1.5;ud.rl.rotation.x=0.35;m.position.y=-0.18;
     ud.la.rotation.x=-1.2;ud.ra.rotation.x=-0.2;}
   else if(s.pose==="stand"){
-    if(s.state==="walk"){var sw=Math.sin(s.walkT);
+    if(s.state==="walk"||s.state==="steer"){var sw=Math.sin(s.walkT);
       ud.ll.rotation.x=sw*0.65;ud.rl.rotation.x=-sw*0.65;ud.la.rotation.x=-sw*0.5;ud.ra.rotation.x=sw*0.5;}
     else{ud.ll.rotation.x*=0.85;ud.rl.rotation.x*=0.85;ud.la.rotation.x=Math.sin(now*0.0012+si)*0.06;ud.ra.rotation.x=-Math.sin(now*0.0012+si)*0.06;}
   }else if(s.pose==="sit"){
@@ -1222,6 +1232,54 @@ function updCam(){
   camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2,camTz+Math.cos(camA)*Math.cos(camB)*camR);
   camera.lookAt(camTx,0.6,camTz);}
 updCam();
+// ---- Direkte Steuerung: Joystick + WASD ----
+var steer={x:0,z:0},steerKeys={},steerNetT=0,steerWasActive=false;
+function steerActive(){return Math.abs(steer.x)>0.12||Math.abs(steer.z)>0.12;}
+function updSteerKeys(){
+  var x=0,z=0;
+  if(steerKeys.a||steerKeys.arrowleft)x-=1;if(steerKeys.d||steerKeys.arrowright)x+=1;
+  if(steerKeys.w||steerKeys.arrowup)z-=1;if(steerKeys.s||steerKeys.arrowdown)z+=1;
+  steer.x=x;steer.z=z;}
+addEventListener("keydown",function(e){
+  if(!running||buildMode||MG.on||KOCH.on||ANGEL.on||TANZ.on)return;
+  var k=(e.key||"").toLowerCase();
+  if(k in {w:1,a:1,s:1,d:1,arrowup:1,arrowdown:1,arrowleft:1,arrowright:1}){steerKeys[k]=1;updSteerKeys();e.preventDefault();}});
+addEventListener("keyup",function(e){
+  var k=(e.key||"").toLowerCase();
+  if(steerKeys[k]){delete steerKeys[k];updSteerKeys();}});
+(function(){
+  var joy=document.getElementById("joy"),knob=document.getElementById("joyKnob"),jid=null;
+  function setKnob(dx,dz){knob.style.left=(34+dx*38)+"px";knob.style.top=(34+dz*38)+"px";}
+  joy.addEventListener("pointerdown",function(e){jid=e.pointerId;joy.setPointerCapture(jid);joyMove(e);});
+  function joyMove(e){
+    var r=joy.getBoundingClientRect();
+    var dx=(e.clientX-r.left-56)/40,dz=(e.clientY-r.top-56)/40;
+    var l=Math.hypot(dx,dz);if(l>1){dx/=l;dz/=l;}
+    steer.x=dx;steer.z=dz;setKnob(dx,dz);}
+  joy.addEventListener("pointermove",function(e){if(jid===e.pointerId)joyMove(e);});
+  function joyEnd(e){if(jid!==e.pointerId)return;jid=null;steer.x=0;steer.z=0;setKnob(0,0);}
+  joy.addEventListener("pointerup",joyEnd);joy.addEventListener("pointercancel",joyEnd);
+})();
+function steerVec(si){
+  if(MPs&&!mpHost)return null; // Gast: Host rechnet
+  if(si===(MPs?0:0)&&steerActive())return {x:steer.x,z:steer.z};
+  if(MPs&&mpHost&&si===1){var ns=sims[1]&&sims[1].netSteer;
+    if(ns&&performance.now()-ns.t<700&&(Math.abs(ns.x)>0.12||Math.abs(ns.z)>0.12))return {x:ns.x,z:ns.z};}
+  return null;}
+function steerMove(s9,sv,dt){
+  var lx=-Math.sin(camA),lz=-Math.cos(camA),rx=-lz,rz=lx;
+  var mx=(-sv.z)*lx+sv.x*rx,mz=(-sv.z)*lz+sv.x*rz;
+  var l9=Math.hypot(mx,mz);if(l9>1){mx/=l9;mz/=l9;}
+  if(l9<0.05)return;
+  var sp9=3.4,nx=s9.x+mx*sp9*dt,nz=s9.z+mz*sp9*dt;
+  var lim=GW*CS/2+9,limZ=GH*CS/2+14;
+  nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(GH*CS/2+13,nz));
+  function cellX(w){return Math.round(w/CS+GW/2-0.5);}
+  function cellY(w){return Math.round(w/CS+GH/2-0.5);}
+  var cx1=cellX(s9.x),cy1=cellY(s9.z),cx2=cellX(nx),cy2=cellY(nz);
+  if(cx2!==cx1&&inLot(cx1,cy1)&&inLot(cx2,cy1)&&edgeBlocked(cx1,cy1,cx2,cy1))nx=s9.x;
+  if(cy2!==cy1&&inLot(cx1,cy1)&&inLot(cx1,cy2)&&edgeBlocked(cx1,cy1,cx1,cy2))nz=s9.z;
+  s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9;}
 var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
 renderer.domElement.addEventListener("mousedown",function(e){dragging=true;dragBtn=e.button;lx=e.clientX;ly=e.clientY;downT=performance.now();downX=e.clientX;downY=e.clientY;});
 addEventListener("mousemove",function(e){
@@ -1695,6 +1753,10 @@ function loop(now){
     updHund(dt,now);
     updGrow(dt);updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);updWetter(dt);
+    document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
+    if(MPs&&!mpHost){steerNetT-=dt;
+      if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
+        if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();}
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten});}}}
