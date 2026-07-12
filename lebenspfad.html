@@ -2513,6 +2513,12 @@ function loop(now){
   renderer.render(scene,camera);
 }
 requestAnimationFrame(loop);
+// Charakter-Vorschau-Dimensionen ZUERST (vor renderNames/renderCharUI, sonst cv.width=undefined -> leere Vorschau)
+var _pv=null;
+// Vorschau-Auflösung: CSS ist 110×124. Wir rendern DPR-bewusst + 2× übersampelt (scharf statt pixelig,
+// auch auf Retina/DPR-3-Handys). Buffer = CSS × min(dpr,2) × 2. Nur bei Klick gerendert -> günstig.
+var PV_CSS_W=110,PV_CSS_H=124,PV_SS=Math.min(window.devicePixelRatio||1,2)*2;
+var PV_W=Math.round(PV_CSS_W*PV_SS),PV_H=Math.round(PV_CSS_H*PV_SS);
 // ===================== Start =====================
 var selN=2;
 (function(){var ps=document.getElementById("pselect");
@@ -2529,11 +2535,6 @@ function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML=""
     nr.appendChild(inp);}
   renderCharUI();}
 // ===================== Charakter-Picker (Startscreen): 👩/👨 + 4 Styles + 3 Hauttöne =====================
-var _pv=null;
-// Vorschau-Auflösung: CSS ist 110×124. Wir rendern DPR-bewusst + 2× übersampelt (scharf statt pixelig,
-// auch auf Retina/DPR-3-Handys). Buffer = CSS × min(dpr,2) × 2. Nur bei Klick gerendert -> günstig.
-var PV_CSS_W=110,PV_CSS_H=124,PV_SS=Math.min(window.devicePixelRatio||1,2)*2;
-var PV_W=Math.round(PV_CSS_W*PV_SS),PV_H=Math.round(PV_CSS_H*PV_SS);
 function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: geteilter Renderer → 2D-Canvas kopieren
   try{
     if(!_pv){_pv={};_pv.r=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});
