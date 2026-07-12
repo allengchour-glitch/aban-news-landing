@@ -245,7 +245,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
-      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button></div>
+      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📲 Link teilen</button></div>
       <div id="netModeTag" style="font-size:.8rem;font-weight:800;color:#2a6ab0"></div>
       <div id="netPlayers" style="margin:6px 0;font-weight:700;display:flex;flex-wrap:wrap;gap:6px;justify-content:center"></div>
       <div id="netCharWrap" style="margin:8px auto"></div>
@@ -3255,6 +3255,23 @@ document.getElementById("netReadyBtn").onclick=function(){
 (function(){var cb=document.getElementById("netCopyBtn");if(cb)cb.onclick=function(){
   var t=NET.code;try{if(navigator.clipboard)navigator.clipboard.writeText(t);}catch(e){}
   cb.textContent="✓ Kopiert";setTimeout(function(){cb.textContent="📋 Kopieren";},1400);};})();
+// 📲 Einladungs-Link: Freund tippt auf den Link und landet direkt im Raum (kein Code-Tippen)
+(function(){var sb=document.getElementById("netShareBtn");if(!sb)return;sb.onclick=function(){
+  var url=location.origin+location.pathname+"?raum="+NET.code;
+  var txt="🎲 Spiel mit mir Lebenspfad! Tippe auf den Link und du bist direkt im Raum: "+url;
+  if(navigator.share){navigator.share({title:"Lebenspfad — Online-Koop",text:txt,url:url}).catch(function(){});}
+  else{try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
+    sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
+};})();
+// 🔗 Auto-Beitritt: /lebenspfad.html?raum=CODE -> Code eintragen + automatisch beitreten
+(function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);if(!m)return;
+  var code=m[1].toUpperCase();
+  var tries=0,iv=setInterval(function(){tries++;
+    if(typeof Peer!=="undefined"&&document.getElementById("netJoinBtn")){clearInterval(iv);
+      document.getElementById("netCode").value=code;
+      var nb=document.getElementById("netBox");if(nb)nb.scrollIntoView({block:"center"});
+      document.getElementById("netJoinBtn").click();}
+    else if(tries>40)clearInterval(iv);},250);})();
 function netLaunch(){ // Host: Runde starten / neue Runde — Init an alle + selbst starten
   if(!NET.host)return;
   var seed=(Math.random()*4294967296)>>>0;

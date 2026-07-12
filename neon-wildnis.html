@@ -197,6 +197,7 @@ canvas{display:block}
       <button class="ghost" id="coopHost" style="min-width:120px">🏠 Raum öffnen</button>
       <input id="coopCode" maxlength="4" placeholder="CODE" style="width:90px;text-transform:uppercase;text-align:center;font-weight:900;letter-spacing:.2em;border-radius:10px;border:2px solid #2a6a8a;background:#0a1e2d;color:#eaf6ff;padding:8px">
       <button class="ghost" id="coopJoin" style="min-width:110px">🚪 Beitreten</button>
+      <button class="ghost hide" id="coopShare" style="min-width:120px">📲 Link teilen</button>
     </div>
     <div id="coopStatus" style="margin-top:8px;font-size:.85rem;color:#9fd6e8;min-height:1.1em"></div>
   </div>
@@ -1365,7 +1366,8 @@ function decorateWorld(){
     for(var pp=0;pp<(isSpawn?4:2);pp++){var ppa=rnd()*6.28,ppr=ringR-6,ppx=vx+Math.cos(ppa)*ppr,ppz=vz+Math.sin(ppa)*ppr;var pl3=cc0inst(rnd()<0.5?"fn_plant":"fn_plant2",1.1);if(pl3){pl3.position.set(ppx,groundH(ppx,ppz),ppz);scene.add(pl3);}}
     for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);worldProps.push({mesh:bnr,halo:null,ph:rnd()*6.28,base:bnr.position.y,sway:true,brz:bnr.rotation.z});}}
     for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
-      var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
+      // 💡 Perf (42-Agenten-Audit): PointLights sind im Forward-Renderer global teuer -> Laternen-Licht nur im Anfangsdorf
+      if(isSpawn){var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}}
     // 🚩 Flaggen auf Holzmasten (statt flacher Stein-Türme) — passt zum Fachwerk-Stil
     var woodPole=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
     for(var tw=0;tw<(isSpawn?4:2);tw++){var ta=Math.PI/4+tw*(isSpawn?Math.PI/2:Math.PI),tx2=vx+Math.cos(ta)*(ringR-2),tz2=vz+Math.sin(ta)*(ringR-2);
@@ -2319,7 +2321,22 @@ function netTick(dt){
   if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
 }
 (function(){var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
-  if(h)h.onclick=function(){netStart("host");};
+  if(h)h.onclick=function(){netStart("host");
+    setTimeout(function(){var sb=document.getElementById("coopShare");if(sb&&NET.s&&NET.s.code)sb.classList.remove("hide");},600);};
+  var sb=document.getElementById("coopShare");
+  if(sb)sb.onclick=function(){ // 📲 Einladungs-Link: Partner tippt drauf und ist direkt drin
+    if(!(NET.s&&NET.s.code))return;
+    var url=location.origin+location.pathname+"?coop="+NET.s.code;
+    var txt="⚔️ Spiel mit mir Neon-Wildnis Koop! Tippe auf den Link: "+url;
+    if(navigator.share){navigator.share({title:"Neon-Wildnis — Koop",text:txt,url:url}).catch(function(){});}
+    else{try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
+      sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
+  };
+  // 🔗 Auto-Beitritt: ?coop=CODE -> direkt verbinden
+  var m=location.search.match(/[?&]coop=([A-Za-z]{4})/);
+  if(m){var code=m[1].toUpperCase();var tries=0,iv=setInterval(function(){tries++;
+    if(window.MP){clearInterval(iv);var ci=document.getElementById("coopCode");if(ci)ci.value=code;netStart("join",code);}
+    else if(tries>40)clearInterval(iv);},250);}
   if(j)j.onclick=function(){var c=(document.getElementById("coopCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");if(c.length!==4){coopStatusMsg("Code = 4 Buchstaben");return;}netStart("join",c);};
 })();
 function startGame(fresh){
