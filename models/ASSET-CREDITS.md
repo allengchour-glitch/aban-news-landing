@@ -118,3 +118,6 @@ Alle CC0, GLB→Blender (Textur eingebettet, flat-shading) via automation/polish
 
 ## Kenney — Mini Characters (CC0) — Blender-poliert
 npc_ma..npc_fd = 8 menschliche Dorfbewohner-Modelle (character-male/female-a..d). Ersetzen die prozeduralen NPCs.
+
+## Kenney — Furniture Kit (CC0) — Blender-poliert
+fn_table/chair/chair2/stool/bed/plant/plant2/bookcase = Möbel (Tavernen-Ecke im Dorf, Bett als Bau-Objekt).

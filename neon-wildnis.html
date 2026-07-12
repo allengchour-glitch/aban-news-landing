@@ -1026,6 +1026,11 @@ function decorateWorld(){
     var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
     mkTimberWell(vx-4,vz+3); // 🪣 Holz-Brunnen statt modernem Steinbrunnen
     var ftct=cc0inst("ftk_cart",1.7);if(ftct){var cx2=vx+2,cz2=vz+5;ftct.position.set(cx2,groundH(cx2,cz2),cz2);ftct.rotation.y=rnd()*6.28;scene.add(ftct);}
+    // 🍺 Tavernen-Ecke: Tisch + Stühle/Hocker (Dorf lebendiger)
+    (function(){var tx3=vx-6,tz3=vz-5;var tb=cc0inst("fn_table",1.1);if(tb){tb.position.set(tx3,groundH(tx3,tz3),tz3);tb.rotation.y=rnd()*6.28;scene.add(tb);}
+      for(var ci=0;ci<4;ci++){var ca=ci/4*6.28,chx=tx3+Math.cos(ca)*1.3,chz=tz3+Math.sin(ca)*1.3;var ch=cc0inst(rnd()<0.5?"fn_chair":"fn_stool",1.0);if(ch){ch.position.set(chx,groundH(chx,chz),chz);ch.rotation.y=ca+Math.PI;scene.add(ch);}}})();
+    // 🪴 Topfpflanzen als Grün
+    for(var pp=0;pp<(isSpawn?4:2);pp++){var ppa=rnd()*6.28,ppr=ringR-6,ppx=vx+Math.cos(ppa)*ppr,ppz=vz+Math.sin(ppa)*ppr;var pl3=cc0inst(rnd()<0.5?"fn_plant":"fn_plant2",1.1);if(pl3){pl3.position.set(ppx,groundH(ppx,ppz),ppz);scene.add(pl3);}}
     for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);}}
     for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
       var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
@@ -1246,6 +1251,8 @@ var RECIPES={
   steinboden:{ic:"⬛",name:"Steinboden",cost:{stone:4},hp:120,need:"werk"},
   steinpfeiler:{ic:"🏛️",name:"Steinpfeiler",cost:{stone:5},hp:150,need:"werk"},
   zaun:{ic:"🚧",name:"Holzzaun",cost:{wood:3},hp:40,need:null},
+  bett:{ic:"🛏️",name:"Bett",cost:{wood:8},hp:40,need:null},
+  falle:{ic:"🪤",name:"Stachelfalle",cost:{wood:3,stone:5},hp:30,need:"werk"},
   kiste:{ic:"📦",name:"Vorratskiste",cost:{wood:8,stone:2},hp:50,need:"werk"},
   nexus:{ic:"🌌",name:"Nexus-Turm",cost:{wood:30,stone:24,crystal:10},hp:300,need:"werk"}
 };
@@ -1294,6 +1301,11 @@ function buildMesh(type,x,z){
     var pA=new THREE.Mesh(new THREE.BoxGeometry(0.22,1.1,0.22),rail);pA.position.set(-1.4,0.55,0);pA.castShadow=true;g.add(pA);
     var pB=pA.clone();pB.position.x=1.4;g.add(pB);
     var r1=new THREE.Mesh(new THREE.BoxGeometry(3.0,0.16,0.14),rail);r1.position.set(0,0.8,0);g.add(r1);var r2=r1.clone();r2.position.y=0.4;g.add(r2);}
+  else if(type==="bett"){var bm=(typeof cc0inst==="function")?cc0inst("fn_bed",1.5):null;
+    if(bm){bm.position.y=0;g.add(bm);}else{var fr=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.4,2.4),new THREE.MeshStandardMaterial({color:0x8a6238}));fr.position.y=0.2;g.add(fr);var mt=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.25,2.2),new THREE.MeshStandardMaterial({color:0xd88a8a}));mt.position.y=0.45;g.add(mt);}}
+  else if(type==="falle"){var pl=new THREE.Mesh(new THREE.CylinderGeometry(1.0,1.1,0.15,10),new THREE.MeshStandardMaterial({color:0x5a4a3a,roughness:1,flatShading:true}));pl.position.y=0.08;g.add(pl);
+    for(var sp=0;sp<7;sp++){var sa=sp/7*6.28,sk=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.6,5),new THREE.MeshStandardMaterial({color:0xb0b6c0,metalness:0.4,roughness:0.5,flatShading:true}));sk.position.set(Math.cos(sa)*0.5,0.4,Math.sin(sa)*0.5);g.add(sk);}
+    var sc=new THREE.Mesh(new THREE.ConeGeometry(0.14,0.7,5),new THREE.MeshStandardMaterial({color:0xb0b6c0,metalness:0.4}));sc.position.y=0.45;g.add(sc);}
   else if(type==="kiste"){var box=new THREE.Mesh(new THREE.BoxGeometry(1.3,0.9,1.0),new THREE.MeshStandardMaterial({color:0x6a4a2c,emissive:0x2a1c0e,emissiveIntensity:.3}));box.position.y=0.45;box.castShadow=true;g.add(box);
     var lid=new THREE.Mesh(new THREE.BoxGeometry(1.36,0.22,1.06),new THREE.MeshStandardMaterial({color:0x8a6238}));lid.position.y=0.95;g.add(lid);
     var lock=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.24,0.06),new THREE.MeshBasicMaterial({color:0xffd166}));lock.position.set(0,0.72,0.53);g.add(lock);}
@@ -1695,6 +1707,8 @@ function updStructures(dt){
       s.spk=(s.spk||0)-dt;if(s.spk<=0){s.spk=0.25+rnd()*0.25;burst(s.x+(rnd()-.5)*0.5,groundH(s.x,s.z)+1.3,s.z+(rnd()-.5)*0.5,rnd()<0.5?0xffb04d:0xff7a2a,1);}
       // Heil-Aura
       if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<5&&hp<maxHp){hp=Math.min(maxHp,hp+4*dt);hpUpd();}}
+    if(s.type==="bett"){if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<3.5&&hp<maxHp){hp=Math.min(maxHp,hp+6*dt);hpUpd();}}
+    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);gainXP(8);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
     if(s.type==="nexus"){if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*1.2;if(s.mesh.userData.ring)s.mesh.userData.ring.rotation.z+=dt*0.8;
       s.spk=(s.spk||0)-dt;if(s.spk<=0){s.spk=0.4+rnd()*0.3;burst(s.x+(rnd()-.5)*2,groundH(s.x,s.z)+5.6+(rnd()-.5)*2,s.z+(rnd()-.5)*2,0xc98bff,1);}}
     if(s.type==="turm"){s.cd-=dt;if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*2;
@@ -1732,7 +1746,7 @@ function updDayNight(dt){
   sun.intensity=0.25+t*1.25;hemi.intensity=0.42+t*0.45;
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   scene.fog.color.copy(scene.background);
-  var ang=f*Math.PI;sun.position.set(player.position.x+Math.cos(ang)*55,Math.max(48,Math.sin(isNight?0.35:f*Math.PI)*90),player.position.z+Math.sin(ang)*45);
+  var ang=f*Math.PI;sun.position.set(player.position.x+Math.cos(ang)*32,Math.max(85,Math.sin(isNight?0.4:f*Math.PI)*100),player.position.z+Math.sin(ang)*28);
   sun.target.position.copy(player.position); // Schatten-Frustum bleibt zentriert -> kein dunkler Fleck
   // Monster nachts spawnen
   if(isNight&&waveActive){monSpawnT-=dt;var cap=Math.min(4+waveNum,14);
@@ -1944,7 +1958,7 @@ function startGame(fresh){
   SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd"],decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase"],decorateWorld);
   });
   loadHero();loadSlime();
   if(sv){
