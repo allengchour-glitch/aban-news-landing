@@ -122,6 +122,8 @@ canvas{display:block}
     <div class="inv" id="wMeat"><span class="ic">🍖</span><span id="iMeat">0</span></div>
     <div class="inv tool hide" id="wAxe"><span class="ic">🪓</span><span id="iAxe">—</span></div>
     <div class="inv tool hide" id="wPick"><span class="ic">⛏️</span><span id="iPick">—</span></div>
+    <div class="inv tool hide" id="wWeap"><span class="ic">⚔️</span><span id="iWeap">—</span></div>
+    <div class="inv tool hide" id="wArmor"><span class="ic">🛡️</span><span id="iArmor">—</span></div>
   </div>
   <div id="topLeft">
     <span id="clock">🌅 Tag 1 · Morgen</span>
@@ -908,7 +910,15 @@ var CRAFT={
   axe_wood:{ic:"🪓",name:"Holz-Axt",cost:{wood:5},grant:{axe:1},req:null,desc:"Bäume schneller"},
   pick_wood:{ic:"⛏️",name:"Holz-Spitzhacke",cost:{wood:5},grant:{pick:1},req:null,desc:"Steine schneller"},
   axe_stone:{ic:"🪓",name:"Stein-Axt",cost:{wood:3,stone:6},grant:{axe:2},req:{axe:1},desc:"Baum in 1 Hieb"},
-  pick_stone:{ic:"⛏️",name:"Stein-Spitzhacke",cost:{wood:3,stone:6},grant:{pick:2},req:{pick:1},desc:"Fels & Kristall schnell"}
+  pick_stone:{ic:"⛏️",name:"Stein-Spitzhacke",cost:{wood:3,stone:6},grant:{pick:2},req:{pick:1},desc:"Fels & Kristall schnell"},
+  // ⚔️ Waffen — mehr Angriff gegen Gegner
+  sword1:{ic:"🗡️",name:"Bronze-Schwert",cost:{wood:4,stone:4},grant:{weapon:1},req:null,desc:"+2 Angriff"},
+  sword2:{ic:"⚔️",name:"Kriegsaxt",cost:{stone:8,crystal:2},grant:{weapon:2},req:{weapon:1},desc:"+4 Angriff"},
+  sword3:{ic:"🌟",name:"Neon-Klinge",cost:{crystal:8,stone:6},grant:{weapon:3},req:{weapon:2},desc:"+7 Angriff"},
+  // 🛡️ Rüstung — weniger Schaden von Gegnern
+  armor1:{ic:"🥋",name:"Lederrüstung",cost:{wood:6,berry:2},grant:{armor:1},req:null,desc:"−2 Schaden"},
+  armor2:{ic:"🛡️",name:"Eisenrüstung",cost:{stone:10,crystal:2},grant:{armor:2},req:{armor:1},desc:"−4 Schaden"},
+  armor3:{ic:"💠",name:"Kristallrüstung",cost:{crystal:10,stone:8},grant:{armor:3},req:{armor:2},desc:"−7 Schaden"}
 };
 function hasWorkbench(){return structures.some(function(s){return s.type==="werk";});}
 function hasKiste(){return structures.some(function(s){return s.type==="kiste";});}
@@ -957,9 +967,16 @@ function placeStructure(type,x,z){
 var inv={wood:0,stone:0,crystal:0,berry:0,meat:0};
 var tools={axe:0,pick:0}; // 0=Faust,1=Holz,2=Stein
 var TOOLLBL=["Faust","Holz","Stein"];
+// ⚔️🛡️ Ausrüstung (Waffe/Rüstung) — Tier 0=nichts, 1-3
+var equip={weapon:0,armor:0};
+var WEAP_ATK=[0,2,4,7], ARMOR_DEF=[0,2,4,7];
+var WEAP_NAME=["Faust","🗡️ Bronze","⚔️ Kriegsaxt","🌟 Neon-Klinge"], ARMOR_NAME=["—","🥋 Leder","🛡️ Eisen","💠 Kristall"];
+function gearStore(k){return (k==="weapon"||k==="armor")?equip:tools;}
+function weaponAtk(){return WEAP_ATK[equip.weapon]||0;}
 function normInv(){ // defensiv: alte Saves ohne neue Felder auffüllen
   inv.wood=inv.wood||0;inv.stone=inv.stone||0;inv.crystal=inv.crystal||0;inv.berry=inv.berry||0;inv.meat=inv.meat||0;
   tools.axe=tools.axe||0;tools.pick=tools.pick||0;
+  equip.weapon=equip.weapon||0;equip.armor=equip.armor||0;
 }
 var hp=100,maxHp=100,dead=false;
 var xp=0,level=1; // ⭐ RPG-Progression (Fusion Survival+RPG)
@@ -999,6 +1016,13 @@ function invUpd(){
   var wa=document.getElementById("wAxe"),wp=document.getElementById("wPick");
   if(tools.axe>0){wa.classList.remove("hide");document.getElementById("iAxe").textContent=TOOLLBL[tools.axe];}
   if(tools.pick>0){wp.classList.remove("hide");document.getElementById("iPick").textContent=TOOLLBL[tools.pick];}
+  gearUpd();
+}
+function gearUpd(){
+  var ww=document.getElementById("wWeap"),war=document.getElementById("wArmor");
+  if(!ww||!war)return;
+  if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
+  if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
 }
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";}
 function xpNeed(){return 12+level*8;}
@@ -1008,14 +1032,14 @@ function gainXP(n){if(dead)return;xp+=n;var up=false;while(xp>=xpNeed()){xp-=xpN
     if(typeof burst==="function")burst(player.position.x,player.position.y+2,player.position.z,0xffd166,24);
     hpUpd();}
   xpUpd();}
-function damagePlayer(d){if(dead)return;hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
+function damagePlayer(d){if(dead)return;d=Math.max(1,d-(ARMOR_DEF[equip.armor]||0));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
   if(dead||!running||buildMode)return;
   if(level<2){toast("💥 Schockwelle ab Level 2");return;}
   if(skillCd>0){toast("💥 Cooldown "+Math.ceil(skillCd)+"s");return;}
-  skillCd=SKILL_CD;var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2),hit=0;
+  skillCd=SKILL_CD;var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
@@ -1093,7 +1117,7 @@ function harvest(){
   if(nearMon){ // Kampf
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
-    nearMon.hp-=(1+Math.floor(level/3));burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+    nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
@@ -1144,8 +1168,8 @@ function eat(){
 
 // ---------- Crafting (Werkbank) ----------
 var craftMode=false;
-function craftOwned(id){var gk=Object.keys(CRAFT[id].grant)[0];return tools[gk]>=CRAFT[id].grant[gk];}
-function craftLocked(id){var req=CRAFT[id].req;if(!req)return false;for(var k in req){if((tools[k]||0)<req[k])return true;}return false;}
+function craftOwned(id){var gk=Object.keys(CRAFT[id].grant)[0];return gearStore(gk)[gk]>=CRAFT[id].grant[gk];}
+function craftLocked(id){var req=CRAFT[id].req;if(!req)return false;for(var k in req){if((gearStore(k)[k]||0)<req[k])return true;}return false;}
 function openCraft(){
   if(!hasWorkbench()){toast("Baue zuerst eine Werkbank 🔧");return;}
   if(buildMode)closeBuild();
@@ -1154,10 +1178,10 @@ function openCraft(){
 function closeCraft(){craftMode=false;document.getElementById("craftMenu").classList.add("hide");}
 function renderCraftMenu(){
   var el=document.getElementById("craftMenu");el.innerHTML="";
-  var head=document.createElement("div");head.style.cssText="width:100%;text-align:center;font-weight:900;color:#6affc0;letter-spacing:.1em;margin-bottom:2px";head.textContent="🔧 WERKBANK — Werkzeuge";el.appendChild(head);
+  var head=document.createElement("div");head.style.cssText="width:100%;text-align:center;font-weight:900;color:#6affc0;letter-spacing:.1em;margin-bottom:2px";head.textContent="🔧 WERKBANK — Werkzeuge · Waffen · Rüstung";el.appendChild(head);
   Object.keys(CRAFT).forEach(function(id){
     var c=CRAFT[id],owned=craftOwned(id),locked=craftLocked(id),aff=affordCost(c.cost)&&!locked&&!owned;
-    var costTxt=Object.keys(c.cost).map(function(k){var ic={wood:"🪵",stone:"🪨",crystal:"💎"}[k];return ic+c.cost[k];}).join(" ");
+    var costTxt=Object.keys(c.cost).map(function(k){var ic={wood:"🪵",stone:"🪨",crystal:"💎",berry:"🍓",meat:"🍖"}[k]||"";return ic+c.cost[k];}).join(" ");
     var d=document.createElement("div");d.className="bcard"+(owned?" done":(locked?" locked":""))+(aff?" aff":"");
     d.innerHTML='<div class="bi">'+c.ic+'</div><div class="bn">'+c.name+'</div><div class="bc">'+(owned?"✓ Gebaut":(locked?"🔒 Vorstufe nötig":costTxt))+'</div><div class="bd">'+c.desc+'</div>';
     d.onclick=function(){doCraft(id);};
@@ -1171,7 +1195,8 @@ function doCraft(id){
   if(craftLocked(id)){toast("Baue zuerst die Vorstufe");return;}
   if(!affordCost(c.cost)){toast("Nicht genug Material");return;}
   for(var k in c.cost)inv[k]-=c.cost[k];
-  for(var g in c.grant)tools[g]=c.grant[g];
+  for(var g in c.grant)gearStore(g)[g]=c.grant[g];
+  if(typeof gearUpd==="function")gearUpd();
   invUpd();burst(player.position.x,player.position.y+1.5,player.position.z,0xffd166,10);
   toast(c.ic+" "+c.name+" gefertigt!");
   floatText(player.position.x,player.position.y+2.4,player.position.z,c.ic+" bereit!","#ffd166");
@@ -1332,7 +1357,7 @@ function updCamera(dt){
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function saveGame(){
-  var s={seed:SEED,inv:inv,tools:tools,hp:hp,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,
+  var s={seed:SEED,inv:inv,tools:tools,equip:equip,hp:hp,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,
     px:player.position.x,pz:player.position.z,
     st:structures.map(function(o){return{t:o.type,x:o.x,z:o.z,hp:o.hp};}),
     loot:lootOpened,
@@ -1418,7 +1443,7 @@ function startGame(fresh){
   });
   loadHero();loadSlime();
   if(sv){
-    if(sv.inv)inv=sv.inv;if(sv.tools)tools=sv.tools;normInv();
+    if(sv.inv)inv=sv.inv;if(sv.tools)tools=sv.tools;if(sv.equip)equip=sv.equip;normInv();
     hp=sv.hp||100;day=sv.day||1;dayT=sv.dayT||0;isNight=!!sv.isNight;nights=sv.nights||0;won=!!sv.won;
     if(sv.loot&&sv.loot.length)lootOpened=sv.loot.slice();
     player.position.set(sv.px||0,0,sv.pz||0);
@@ -1520,6 +1545,7 @@ window.__nw={
   craft:function(id){doCraft(id);},
   openCraft:openCraft,closeCraft:closeCraft,
   tools:function(){return tools;},
+  gear:function(){return {weapon:equip.weapon,armor:equip.armor,atk:weaponAtk(),def:ARMOR_DEF[equip.armor]||0};},
   spawnAnimal:function(sp){return spawnAnimal(player.position.x,player.position.z,sp);},
   toAnimal:function(){for(var i=0;i<animals.length;i++){if(animals[i].alive){player.position.x=animals[i].x-1.5;player.position.z=animals[i].z;return animals[i];}}return spawnAnimal(player.position.x,player.position.z);},
   animals:function(){var n=0;for(var i=0;i<animals.length;i++)if(animals[i].alive)n++;return n;},
