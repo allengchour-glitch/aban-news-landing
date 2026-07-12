@@ -115,3 +115,6 @@ Alle CC0, GLB→Blender (Textur eingebettet, flat-shading) via automation/polish
 | ck_* | Castle Kit | Turm, Mauer, Ecke, Tor, Flagge, Katapult, Baum |
 | dk_* | Mini-Dungeon | Schwert, Speer, Rund-/Rechteckschild, Truhe, Fass |
 | fd_* | Food Kit | Wurst, Kuchen, Burger, Ei (Loot) |
+
+## Kenney — Mini Characters (CC0) — Blender-poliert
+npc_ma..npc_fd = 8 menschliche Dorfbewohner-Modelle (character-male/female-a..d). Ersetzen die prozeduralen NPCs.
