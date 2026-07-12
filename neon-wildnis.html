@@ -137,8 +137,8 @@ canvas{display:block}
     <div class="inv" id="wWood"><span class="ic">🪵</span><span id="iWood">0</span></div>
     <div class="inv" id="wStone"><span class="ic">🪨</span><span id="iStone">0</span></div>
     <div class="inv" id="wCry"><span class="ic">💎</span><span id="iCry">0</span></div>
-    <div class="inv" id="wBerry"><span class="ic">🍓</span><span id="iBerry">0</span></div>
-    <div class="inv" id="wMeat"><span class="ic">🍖</span><span id="iMeat">0</span></div>
+    <div class="inv" id="wBerry" title="Beeren essen (R)"><span class="ic">🍓</span><span id="iBerry">0</span></div>
+    <div class="inv" id="wMeat" title="Fleisch essen (R)"><span class="ic">🍖</span><span id="iMeat">0</span></div>
     <div class="inv tool hide" id="wAxe"><span class="ic">🪓</span><span id="iAxe">—</span></div>
     <div class="inv tool hide" id="wPick"><span class="ic">⛏️</span><span id="iPick">—</span></div>
     <div class="inv tool hide" id="wWeap"><span class="ic">⚔️</span><span id="iWeap">—</span></div>
@@ -879,7 +879,7 @@ function loadCC0(files,onAll){
   var left=files.length;if(!left){onAll&&onAll();return;}
   files.forEach(function(name){
     new THREE.GLTFLoader().load("/models/"+name+".glb",function(g){
-      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.isSkinnedMesh)n.frustumCulled=false;}});
       var bb=new THREE.Box3().setFromObject(o);var h=Math.max(0.001,bb.max.y-bb.min.y);
       cc0proto[name]=o;cc0h[name]=h;cc0box[name]={x:Math.max(0.001,bb.max.x-bb.min.x),y:h,z:Math.max(0.001,bb.max.z-bb.min.z)};
       if(--left<=0)onAll&&onAll();
@@ -2098,7 +2098,7 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key.toLowerCase()==="f"){doThrow();}
   if(e.key===" "){e.preventDefault();harvest();}
   if(e.key.toLowerCase()==="b"){if(buildMode)closeBuild();else openBuild();}
-  if(e.key.toLowerCase()==="f"){eat();}
+  if(e.key.toLowerCase()==="r"){eat();}
   if(e.key==="Enter"&&buildMode&&ghost){confirmBuild();}
   if(e.key==="Escape"){if(buildMode)closeBuild();else togglePause();}
 });
@@ -2118,7 +2118,7 @@ addEventListener("touchend",function(e){if(e.changedTouches)for(var i=0;i<e.chan
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
 function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});b.addEventListener("click",function(e){if(!IS_MOB)fn();});}
 bindTap("bAct",function(){harvest();});
-bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);
+bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
 document.getElementById("bSound").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊";};
