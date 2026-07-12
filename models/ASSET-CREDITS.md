@@ -121,3 +121,17 @@ npc_ma..npc_fd = 8 menschliche Dorfbewohner-Modelle (character-male/female-a..d)
 
 ## Kenney — Furniture Kit (CC0) — Blender-poliert
 fn_table/chair/chair2/stool/bed/plant/plant2/bookcase = Möbel (Tavernen-Ecke im Dorf, Bett als Bau-Objekt).
+
+## Kenney — 8 weitere CC0-Kits (Blender-poliert, 82 Modelle) — 2026-07-12
+Alle CC0, GLB→Blender (Textur eingebettet, flat-shading). Multi-Agent-Import.
+| Präfix | Kit | Inhalt |
+|---|---|---|
+| nt_* | Nature Kit | Kiefer/Eiche/Palme/Laubbaum, Busch, Fels, Blumen, Pilz, Gras, Stumpf, Stamm (14) |
+| sv_* | Survival Kit | Zelte, Lagerfeuer, Schlafsack, Holzstapel, Truhe, Fass, Eimer, Axt, Hammer, Fisch (14) |
+| gy_* | Graveyard Kit | Grabsteine, Krypta, Sarg, Kreuz, Obelisk, Eisenzaun, toter Baum, Laterne, Kürbis, Urne (12) |
+| pr_* | Pirate Kit | Truhe, Fässer, Kisten, Kanone, Palme, Ruderboot, Flagge, Wachturm, Flasche, Schaufel (12) |
+| fu_* | Furniture Kit | Bett, Tisch, Stuhl, Bank, Regal, Sofa, Schrank, Pflanze, Lampe, Teppich (12) |
+| dk2_* | Mini-Dungeon (Rest) | Münze, Falle, Banner, Säule, Tor, Treppe, Felsen, Holzgerüst (10) |
+| an_* | Cube Pets | Kuh, Schwein, Huhn, Hund, Katze, Reh, Hase, Fuchs, Wildschwein, Biber (10) |
+
+Neue Welt-Orte: 🪦 Friedhof, 🏕️ Survival-Camp, 🏴‍☠️ Schatz-Küste. Tiere über die Welt verteilt (Vieh nahe Dörfer, Wild im Wald).
