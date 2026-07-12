@@ -278,3 +278,48 @@
 #done search:flip flops women
 #done search:sarong wrap
 #done search:sun hat foldable
+search:linen blouse women
+search:knit cardigan oversized
+search:pleated midi skirt
+search:wide leg trousers women
+search:cropped blazer women
+search:satin slip dress
+search:corduroy jacket
+search:turtleneck sweater
+search:tennis skirt
+search:bodysuit ribbed
+search:hair claw clip large
+search:silk scrunchie set
+search:layered necklace gold
+search:hoop earrings chunky
+search:signet ring gold
+search:anklet beaded
+search:crossbody phone bag
+search:bucket bag women
+search:quilted shoulder bag
+search:canvas tote aesthetic
+search:chunky loafers women
+search:ballet flats mary jane
+search:platform sandals
+search:cat eye sunglasses retro
+search:acetate glasses frame
+search:silk scarf square
+search:beret wool
+search:leather belt thin women
+search:ceramic vase minimalist
+search:scented candle soy
+search:wall art canvas boho
+search:led strip lights room
+search:sunset projector lamp
+search:makeup organizer acrylic
+search:jade roller gua sha set
+search:heatless curling rod
+search:pet hair remover roller
+search:dog harness adjustable
+search:cat window perch
+search:resistance bands set
+search:yoga mat cork
+search:water bottle motivational
+search:travel makeup bag
+search:packing cubes set
+search:car phone holder magnetic
