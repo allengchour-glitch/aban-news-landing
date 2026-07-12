@@ -240,7 +240,13 @@ var KATALOG={
   {id:"tuer",n:"Tür",e:"🚪",cost:60},
   {id:"boden0",n:"Parkett",e:"🟫",cost:12},
   {id:"boden1",n:"Fliesen",e:"⬜",cost:10},
-  {id:"boden2",n:"Teppich",e:"🟥",cost:8}],
+  {id:"boden2",n:"Teppich",e:"🟥",cost:8},
+  {id:"farbe1",n:"Salbei-Wand",e:"🟢",cost:15,paint:1},
+  {id:"farbe2",n:"Himmelblau-Wand",e:"🔵",cost:15,paint:2},
+  {id:"farbe3",n:"Rosé-Wand",e:"🌸",cost:15,paint:3},
+  {id:"farbe4",n:"Sonnengelb-Wand",e:"🟡",cost:15,paint:4},
+  {id:"farbe5",n:"Streifen-Tapete",e:"🎀",cost:35,paint:5},
+  {id:"farbe6",n:"Punkte-Tapete",e:"⚪",cost:35,paint:6}],
  moebel:[
   {id:"bett",n:"Doppelbett",e:"🛏️",cost:900,size:[2,2],use:{need:"energie",pose:"lie",off:[0,0],dur:14}},
   {id:"sofa",n:"Sofa",e:"🛋️",cost:650,size:[2,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}},
@@ -344,29 +350,45 @@ function inLot(x,y){return x>=0&&x<GW&&y>=0&&y<GH;}
 
 // ===================== Bau-Ausführung (lokal + Netz identisch) =====================
 var wandMat=stdMat(0xf2ead8,0.85),wandMatIn=stdMat(0xe8d8c0,0.85);
-function buildWallMesh(type){
-  var g=new THREE.Group();
-  if(type==="wand"){var w=new THREE.Mesh(new THREE.BoxGeometry(CS,2.6,0.16),wandMat);w.position.y=1.3;w.castShadow=true;w.receiveShadow=true;g.add(w);
+var WPAINT=[null,0xb8ccae,0xacc8e0,0xe8c4cc,0xf0dc9a,"streifen","punkte"],wpCache={};
+function wpMat(idx){
+  if(!idx)return wandMat;
+  if(wpCache[idx])return wpCache[idx];
+  var v=WPAINT[idx],m;
+  if(typeof v==="number")m=stdMat(v,0.85);
+  else{var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+    if(v==="streifen"){c.fillStyle="#f4ecdc";c.fillRect(0,0,128,128);c.fillStyle="#cdb9d8";
+      for(var i=0;i<4;i++)c.fillRect(i*32+10,0,12,128);}
+    else{c.fillStyle="#eef2f6";c.fillRect(0,0,128,128);c.fillStyle="#a8c4dc";
+      for(var y=0;y<4;y++)for(var x=0;x<4;x++){c.beginPath();c.arc(x*32+16+(y%2)*16,y*32+16,7,0,6.284);c.fill();}}
+    var tx=new THREE.CanvasTexture(cv);tx.wrapS=tx.wrapT=THREE.RepeatWrapping;tx.repeat.set(1.6,2.1);
+    m=new THREE.MeshStandardMaterial({map:tx,roughness:0.85,envMapIntensity:0.3});}
+  wpCache[idx]=m;return m;}
+function buildWallMesh(type,co){
+  var g=new THREE.Group();var wm=wpMat(co);
+  if(type==="wand"){var w=new THREE.Mesh(new THREE.BoxGeometry(CS,2.6,0.16),wm);w.position.y=1.3;w.castShadow=true;w.receiveShadow=true;g.add(w);
     var so=new THREE.Mesh(new THREE.BoxGeometry(CS,0.16,0.2),stdMat(0xd8c8a8,0.7));so.position.y=0.08;g.add(so);}
   if(type==="fenster"){[[-CS/2+0.3,0],[CS/2-0.3,0]].forEach(function(){});
-    var lo=new THREE.Mesh(new THREE.BoxGeometry(CS,0.8,0.16),wandMat);lo.position.y=0.4;lo.castShadow=true;g.add(lo);
-    var up=new THREE.Mesh(new THREE.BoxGeometry(CS,0.6,0.16),wandMat);up.position.y=2.3;up.castShadow=true;g.add(up);
+    var lo=new THREE.Mesh(new THREE.BoxGeometry(CS,0.8,0.16),wm);lo.position.y=0.4;lo.castShadow=true;g.add(lo);
+    var up=new THREE.Mesh(new THREE.BoxGeometry(CS,0.6,0.16),wm);up.position.y=2.3;up.castShadow=true;g.add(up);
     var glas=new THREE.Mesh(new THREE.BoxGeometry(CS-0.5,1.2,0.05),new THREE.MeshStandardMaterial({color:0xbfe0f0,roughness:0.05,transparent:true,opacity:0.4}));glas.position.y=1.4;g.add(glas);
     var ra=new THREE.Mesh(new THREE.BoxGeometry(CS-0.4,0.08,0.18),stdMat(0xffffff,0.4));ra.position.y=0.84;g.add(ra);
     var rb=ra.clone();rb.position.y=1.98;g.add(rb);
     var rm=new THREE.Mesh(new THREE.BoxGeometry(0.08,1.2,0.18),stdMat(0xffffff,0.4));rm.position.y=1.4;g.add(rm);}
-  if(type==="tuer"){var l=new THREE.Mesh(new THREE.BoxGeometry(0.35,2.6,0.16),wandMat);l.position.set(-CS/2+0.175,1.3,0);l.castShadow=true;g.add(l);
+  if(type==="tuer"){var l=new THREE.Mesh(new THREE.BoxGeometry(0.35,2.6,0.16),wm);l.position.set(-CS/2+0.175,1.3,0);l.castShadow=true;g.add(l);
     var r=l.clone();r.position.x=CS/2-0.175;g.add(r);
-    var ob=new THREE.Mesh(new THREE.BoxGeometry(CS,0.5,0.16),wandMat);ob.position.y=2.35;ob.castShadow=true;g.add(ob);
+    var ob=new THREE.Mesh(new THREE.BoxGeometry(CS,0.5,0.16),wm);ob.position.y=2.35;ob.castShadow=true;g.add(ob);
     var tb=new THREE.Mesh(new THREE.BoxGeometry(CS-0.78,2.05,0.07),stdMat(0x9a6a42,0.55));tb.position.set(0,1.03,0.03);tb.rotation.y=0.5;tb.castShadow=true;g.add(tb);
     var kn=new THREE.Mesh(new THREE.SphereGeometry(0.05,8,6),stdMat(0xd8c060,0.3));kn.position.set(0.35,1.05,0.14);g.add(kn);}
   return g;}
-function applyWall(x,y,d,type){var k=x+","+y+","+d;
+function applyWall(x,y,d,type,co){var k=x+","+y+","+d;
   if(walls[k]){scene.remove(wallMeshes[k]);delete walls[k];delete wallMeshes[k];}
   if(!type)return;
-  var g=buildWallMesh(type);
+  var g=buildWallMesh(type,co);
   if(d===0){g.position.set(cx(x),0,cz(y)-CS/2);}else{g.position.set(cx(x)+CS/2,0,cz(y));g.rotation.y=Math.PI/2;}
-  scene.add(g);walls[k]={type:type};wallMeshes[k]=g;}
+  scene.add(g);walls[k]={type:type,co:co||0};wallMeshes[k]=g;}
+function doPaint(x,y,d,co,silent){var k=x+","+y+","+d;var w=walls[k];if(!w)return false;
+  applyWall(x,y,d,w.type,co);if(!silent)netSend({t:"paint",x:x,y:y,d:d,c:co});return true;}
 function applyFloor(x,y,idx){var k=fkey(x,y);
   if(floorMeshes[k]){scene.remove(floorMeshes[k]);delete floorMeshes[k];delete floors[k];}
   if(idx===null||idx===undefined)return;
@@ -459,14 +481,14 @@ function doDelete(gx,gy,silent){
   if(!done&&floors[fkey(gx,gy)]!==undefined){applyFloor(gx,gy,null);done=true;}
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
-function snapshot(){return {floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].type;return a;},{}),
+function snapshot(){return {floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
   furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
   Object.keys(floorMeshes).forEach(function(k){scene.remove(floorMeshes[k]);});floors={};floorMeshes={};
   furn.slice().forEach(function(f){if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);});furn=[];
   Object.keys(sn.floors||{}).forEach(function(k){var p=k.split(",");applyFloor(+p[0],+p[1],sn.floors[k]);});
-  Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(",");applyWall(+p[0],+p[1],+p[2],sn.walls[k]);});
+  Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(","),v=sn.walls[k];if(typeof v==="string")applyWall(+p[0],+p[1],+p[2],v);else applyWall(+p[0],+p[1],+p[2],v.t,v.c);});
   (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x,f.y,f.r,f.fid);});
   if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr)uhrzeit=sn.uhr;
   if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;
@@ -475,6 +497,7 @@ function loadSnapshot(sn){
   updHUD();}
 function onNetMsg(m){
   if(m.t==="wall")doPlaceWall(m.x,m.y,m.d,m.ty,true);
+  else if(m.t==="paint")doPaint(m.x,m.y,m.d,m.c,true);
   else if(m.t==="floor")doPlaceFloor(m.x,m.y,m.i,true);
   else if(m.t==="furn")doPlaceFurn(m.id,m.x,m.y,m.r,true,m.fid);
   else if(m.t==="del")doDelete(m.x,m.y,true);
@@ -1094,7 +1117,7 @@ function refreshGhost(){
   if(curItem.indexOf("boden")===0){
     ghost=new THREE.Mesh(new THREE.PlaneGeometry(CS,CS),new THREE.MeshBasicMaterial({color:0x6aff9e,transparent:true,opacity:0.4}));
     ghost.rotation.x=-Math.PI/2;}
-  else if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"){
+  else if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"||def.paint){
     ghost=new THREE.Mesh(new THREE.BoxGeometry(CS,2.6,0.16),new THREE.MeshBasicMaterial({color:0x6aff9e,transparent:true,opacity:0.4}));
     ghost.position.y=1.3;var gg=new THREE.Group();gg.add(ghost);ghost=gg;}
   else{var s=def.size||[1,1];
@@ -1104,9 +1127,10 @@ function refreshGhost(){
 function ghostFollow(px,py){
   if(!ghost)return;var c=pickCell(px,py);if(!c)return;
   var inL=inLot(c.gx,c.gy);
-  if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"){
+  var gdef=defOf(curItem);
+  if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"||(gdef&&gdef.paint)){
     var e=nearestEdge(c);ghost.position.set(e.wx,0,e.wz);ghost.rotation.y=e.d===1?Math.PI/2:0;
-    ghostOk=inL;}
+    ghostOk=gdef&&gdef.paint?!!walls[e.x+","+e.y+","+e.d]:inL;}
   else{ghost.position.set(cx(c.gx),ghost.position.y*0+(curItem.indexOf("boden")===0?0.03:0),cz(c.gy));
     if(curRot%2===1)ghost.rotation.y=Math.PI/2;else ghost.rotation.y=0;
     ghostOk=inL&&(curItem.indexOf("boden")===0||cellFree(c.gx,c.gy));}
@@ -1137,6 +1161,12 @@ function tapAt(px,py){
   if(curItem.indexOf("boden")===0){doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;}
   else if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"){
     var e=nearestEdge(c);doPlaceWall(e.x,e.y,e.d,curItem);geld-=def.cost;}
+  else if(def.paint){
+    var e2=nearestEdge(c),ok9=doPaint(e2.x,e2.y,e2.d,def.paint);
+    if(!ok9){var kand=[[c.gx,c.gy,0],[c.gx,c.gy+1,0],[c.gx-1,c.gy,1],[c.gx,c.gy,1]];
+      for(var q9=0;q9<kand.length&&!ok9;q9++)ok9=doPaint(kand[q9][0],kand[q9][1],kand[q9][2],def.paint);}
+    if(!ok9){hint("Erst eine Wand bauen, dann streichen 🎨");return;}
+    geld-=def.cost;hint("🎨 "+def.n+"!");}
   else{if(!cellFree(c.gx,c.gy)){hint("Hier steht schon etwas");return;}
     doPlaceFurn(curItem,c.gx,c.gy,curRot);geld-=def.cost;stats.moebelGekauft++;}
   netSend({t:"geld",v:geld});
