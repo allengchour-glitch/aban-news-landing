@@ -362,6 +362,133 @@ var dorfFenster=[];
     kopf.position.y=3.2;lg.add(kopf);dorfFenster.push(kopf.material);
     lg.position.set(p[0],0,p[1]);scene.add(lg);});
 })();
+// ---- Grosse Stadt: 2. Ring (Wohnbloecke, Kirche, Laeden) ----
+(function baueStadt(){
+  var SZ=GH*CS/2;
+  function block(x,z,rotY,etagen,w,d,farbe){
+    var g=new THREE.Group();
+    var h=etagen*1.9+0.4;
+    var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),stdMat(farbe,0.88));
+    body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
+    var att=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.25,d+0.3),stdMat(0x8a8a88,0.8));
+    att.position.y=h+0.1;g.add(att);
+    for(var e9=0;e9<etagen;e9++)for(var wx9=0;wx9<Math.floor(w/1.6);wx9++){
+      var fe9=new THREE.Mesh(new THREE.BoxGeometry(0.9,1.0,0.06),
+        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+      fe9.position.set(-w/2+1.1+wx9*1.6,1.3+e9*1.9,d/2+0.04);g.add(fe9);
+      if((e9+wx9)%2===0)dorfFenster.push(fe9.material);}
+    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
+  // Wohnbloecke hinter der Nordstrasse (2. Reihe) + Osten/Westen
+  block(-30,-SZ-32,0,3,10,7,0xcfc4b0);block(-14,-SZ-33,0,4,9,7,0xb8c0c8);
+  block(4,-SZ-32,0,3,11,7,0xd8cabc);block(22,-SZ-33,0,4,8,7,0xc4b8a8);
+  block(-62,-6,Math.PI/2,3,12,7,0xccc2b4);block(62,2,-Math.PI/2,4,10,7,0xbec6cc);
+  block(-60,SZ+26,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+28,-Math.PI/2,3,9,7,0xc8bcae);
+  // Kirche mit Turm + Spitze
+  (function(){var g=new THREE.Group();
+    var schiff=new THREE.Mesh(new THREE.BoxGeometry(7,5,11),stdMat(0xe8e2d4,0.85));
+    schiff.position.y=2.5;schiff.castShadow=true;g.add(schiff);
+    [[-1,1],[1,-1]].forEach(function(sg){var pl=new THREE.Mesh(new THREE.BoxGeometry(4.3,0.16,11.5),stdMat(0x6a5648,0.75));
+      pl.position.set(sg[0]*1.75,5.9,0);pl.rotation.z=sg[1]*0.52;pl.castShadow=true;g.add(pl);});
+    var turm=new THREE.Mesh(new THREE.BoxGeometry(2.6,9,2.6),stdMat(0xe0dacb,0.85));
+    turm.position.set(0,4.5,6.5);turm.castShadow=true;g.add(turm);
+    var spitze=new THREE.Mesh(new THREE.ConeGeometry(2,3.4,4),stdMat(0x4a5a68,0.7));
+    spitze.position.set(0,10.7,6.5);spitze.rotation.y=Math.PI/4;spitze.castShadow=true;g.add(spitze);
+    var zb=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,0.08),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
+    zb.position.set(0,7.6,7.82);g.add(zb);dorfFenster.push(zb.material);
+    g.position.set(46,0,-SZ-33);g.rotation.y=Math.PI;scene.add(g);})();
+  // Laeden-Zeile mit bunten Markisen (Suedstrasse, gegenueber vom Haus)
+  [[-8,0xe8443a,"🍞"],[-1,0x3a7ae8,"💉"],[6,0x3aa04a,"🍎"]].forEach(function(sh,i){
+    var g=new THREE.Group();
+    var body=new THREE.Mesh(new THREE.BoxGeometry(6.4,3.4,5),stdMat(0xf0e8d8,0.85));
+    body.position.y=1.7;body.castShadow=true;body.receiveShadow=true;g.add(body);
+    var front=new THREE.Mesh(new THREE.BoxGeometry(4.8,1.6,0.06),
+      new THREE.MeshStandardMaterial({color:0x9ec4d8,emissive:0xfff0c0,emissiveIntensity:0,roughness:0.15}));
+    front.position.set(0,1.1,2.53);g.add(front);dorfFenster.push(front.material);
+    var mark=new THREE.Mesh(new THREE.BoxGeometry(5.4,0.08,1.5),stdMat(sh[1],0.6));
+    mark.position.set(0,2.6,3.2);mark.rotation.x=0.28;mark.castShadow=true;g.add(mark);
+    g.position.set(sh[0],0,SZ+21);g.rotation.y=Math.PI;scene.add(g);});
+})();
+// ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
+var verkehr=[],busRec=null;
+setTimeout(function baueVerkehr(){
+  var SZ=GH*CS/2;
+  var ROUTEN=[
+    {axis:"x",z:SZ+13.6,dir:1,speed:7},{axis:"x",z:SZ+10.4,dir:-1,speed:6},
+    {axis:"x",z:-SZ-13.6,dir:1,speed:8},{axis:"x",z:-SZ-10.4,dir:-1,speed:6.5},
+    {axis:"z",x:-47.6,dir:1,speed:6},{axis:"z",x:47.6,dir:-1,speed:7}];
+  var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
+  ["auto_kombi","auto_flitzer","auto_van","auto_kombi","auto_van","auto_flitzer"].forEach(function(id,i){
+    loadTH(id,function(tpl){if(!tpl)return;
+      var m=tpl.clone(true);
+      m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
+        if(i>0)n.material.color.lerp(new THREE.Color(TINT[i]),0.35);}});
+      var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
+      m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
+      var b2=new THREE.Box3().setFromObject(m);
+      var r=ROUTEN[i%ROUTEN.length];
+      var rec={mesh:m,route:r,pos:-60+i*22,homeY:-b2.min.y+0.01};
+      scene.add(m);verkehr.push(rec);});});
+  // Bus prozedural (OeV): gelb, Fensterband, faehrt Suedstrasse, haelt an der Haltestelle
+  var bg=new THREE.Group();
+  var korpus=new THREE.Mesh(new THREE.BoxGeometry(7,2.3,2.3),stdMat(0xf0b83a,0.55));
+  korpus.position.y=1.55;korpus.castShadow=true;bg.add(korpus);
+  var band=new THREE.Mesh(new THREE.BoxGeometry(6.4,0.75,2.36),stdMat(0x9ecce0,0.2));
+  band.position.y=1.95;bg.add(band);
+  for(var wr=0;wr<4;wr++){[-1,1].forEach(function(seite){
+    var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.42,0.3,12),stdMat(0x1a1a20,0.6));
+    rad.rotation.z=Math.PI/2;rad.position.set(-2.4+wr*1.6,0.42,seite*1.05);bg.add(rad);});}
+  var schild=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.4,0.06),new THREE.MeshStandardMaterial({color:0x222228,emissive:0xffa040,emissiveIntensity:0.8}));
+  schild.position.set(2.6,2.35,1.16);bg.add(schild);
+  scene.add(bg);
+  busRec={mesh:bg,pos:-70,speed:5.5,wartet:0,z:SZ+10.4};
+  // Haltestelle vor dem Grundstueck
+  var hs=new THREE.Group();
+  var mast2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,7),stdMat(0x3a3a42,0.5));mast2.position.y=1.3;hs.add(mast2);
+  var sch2=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.7,0.05),stdMat(0x2a7ae0,0.4));sch2.position.y=2.5;hs.add(sch2);
+  var bank2=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.1,0.5),stdMat(0x8a6a48,0.7));bank2.position.set(1.4,0.5,0);hs.add(bank2);
+  [[0.7,0],[2.1,0]].forEach(function(bp){var fu=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.5,0.4),stdMat(0x4a4a52,0.6));fu.position.set(bp[0],0.25,0);hs.add(fu);});
+  hs.position.set(-8,0,SZ+8.4);scene.add(hs);
+},0);
+function updVerkehr(dt){
+  verkehr.forEach(function(v){
+    v.pos+=v.route.dir*v.route.speed*dt;
+    var lim=v.route.axis==="x"?72:GH*CS/2+26;
+    if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
+    if(v.route.axis==="x"){v.mesh.position.set(v.pos,v.homeY,v.route.z);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
+    else{v.mesh.position.set(v.route.x,v.homeY,v.pos);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}});
+  if(busRec){
+    if(busRec.wartet>0){busRec.wartet-=dt;}
+    else{var prev9=busRec.pos;busRec.pos+=busRec.speed*dt;
+      if(busRec.pos>72)busRec.pos=-72;
+      if(prev9<-8&&busRec.pos>=-8)busRec.wartet=3;}
+    busRec.mesh.position.set(busRec.pos,0,busRec.z);
+    busRec.mesh.rotation.y=Math.PI/2;}}
+// ---- Fussgaenger auf den Gehwegen (Ambiente) ----
+var fussg=[];
+setTimeout(function baueFussg(){
+  var SZ=GH*CS/2;
+  var PAL=[
+   {skin:0xf0c090,hair:0x3a2a1a,top:0xd84a5a,bottom:0x3a4a6a,dress:false,longHair:false},
+   {skin:0xd9a06a,hair:0x1a1a24,top:0x3a8ad8,bottom:0x2a2a34,dress:false,longHair:false},
+   {skin:0xffd9b8,hair:0xd8b84a,top:0x8a5aa0,bottom:0x8a5aa0,dress:true,longHair:true},
+   {skin:0xc98850,hair:0x2a2a34,top:0x3aa05a,bottom:0x4a3a28,dress:false,longHair:false},
+   {skin:0xffe0c0,hair:0xb84a2a,top:0xe8a83a,bottom:0x38506a,dress:false,longHair:true},
+   {skin:0xe8b890,hair:0x6a6a72,top:0x5a6a7a,bottom:0x3a3a44,dress:false,longHair:false},
+   {skin:0xf6d2ac,hair:0x18181e,top:0xe86aa0,bottom:0xe86aa0,dress:true,longHair:true},
+   {skin:0xd8a878,hair:0x4a3a20,top:0x4ac8c0,bottom:0x2f3f52,dress:false,longHair:false}];
+  for(var i=0;i<8;i++){
+    var m=mkBewohner(PAL[i]);m.scale.setScalar(0.98);scene.add(m);
+    var nord=i%2===0;
+    fussg.push({mesh:m,x:-60+i*16,z:(nord?-SZ-8.6:SZ+8.6)+((i%3)-1)*0.5,
+      dir:i%2?1:-1,speed:1.1+(i%4)*0.35,walkT:i*2});}
+},0);
+function updFussg(dt,now){
+  fussg.forEach(function(p){
+    p.x+=p.dir*p.speed*dt;p.walkT+=dt*7*p.speed;
+    if(p.x>66){p.dir=-1;}if(p.x<-66){p.dir=1;}
+    p.mesh.position.set(p.x,0,p.z);p.mesh.rotation.y=p.dir>0?Math.PI/2:-Math.PI/2;
+    var ud=p.mesh.userData;if(ud&&ud.ll){var sw=Math.sin(p.walkT);
+      ud.ll.rotation.x=sw*0.55;ud.rl.rotation.x=-sw*0.55;ud.la.rotation.x=-sw*0.4;ud.ra.rotation.x=sw*0.4;}});}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -1845,7 +1972,7 @@ function loop(now){
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
     updGrow(dt);updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
