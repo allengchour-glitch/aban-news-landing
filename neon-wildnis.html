@@ -60,7 +60,7 @@ canvas{display:block}
 #sysRow{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;gap:8px;pointer-events:auto}
 .sysbtn{width:44px;height:44px;border-radius:12px;background:rgba(20,30,60,.6);border:1px solid rgba(120,200,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;pointer-events:auto;cursor:pointer}
 /* Bau-Menü + Crafting */
-#buildMenu,#craftMenu{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:96vw;pointer-events:auto}
+#buildMenu,#craftMenu,#tradeMenu{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:96vw;pointer-events:auto}
 #craftMenu{align-items:stretch}
 .bcard.done{border-color:#6affc0;opacity:1;background:rgba(16,40,30,.94)}
 .bcard .bd{font-size:.72rem;color:#8fb;margin-top:2px;font-weight:700}
@@ -166,6 +166,7 @@ canvas{display:block}
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
+<div id="tradeMenu" class="hide"></div>
 <div id="perkPick" class="hide"><div class="perkInner"><div id="perkLvl">⭐ Level Up</div><div id="perkCards"></div></div></div>
   <div id="craftMenu" class="hide"></div>
 </div>
@@ -920,6 +921,12 @@ function decorateWorld(){
       wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
     // 🧑‍🌾 Dorfbewohner (mehr im grossen Anfangsdorf)
     var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr);}
+    if(isSpawn){ // 💰 Händler beim Marktstand
+      merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z);
+      var cvM=document.createElement("canvas");cvM.width=cvM.height=64;var cm=cvM.getContext("2d");cm.font="46px sans-serif";cm.textAlign="center";cm.textBaseline="middle";cm.fillText("💰",32,36);
+      var spM=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cvM),transparent:true,depthWrite:false}));spM.scale.set(1.2,1.2,1.2);spM.position.set(merchant.x,groundH(merchant.x,merchant.z)+3,merchant.z);scene.add(spM);
+      worldProps.push({mesh:spM,halo:null,ph:0,base:spM.position.y,float:true,scl:1});
+    }
   }
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
@@ -1332,7 +1339,8 @@ function floatText(x,y,z,txt,color){
 }
 
 // ---------- Sammeln ----------
-var nearRes=null,nearMon=null,nearAni=null,nearWork=null;
+var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false;
+var merchant={x:null,z:null};
 function findNear(){
   nearRes=null;nearMon=null;nearAni=null;nearWork=null;var best=3.6*3.6;
   for(var i=0;i<resources.length;i++){var r=resources[i];if(r.dead)continue;var dx=r.x-player.position.x,dz=r.z-player.position.z,d=dx*dx+dz*dz;if(d<best){best=d;nearRes=r;}}
@@ -1342,12 +1350,14 @@ function findNear(){
   for(var k=0;k<animals.length;k++){var an=animals[k];if(!an.alive)continue;var ax=an.x-player.position.x,az=an.z-player.position.z,da=ax*ax+az*az;if(da<ba){ba=da;nearAni=an;}}
   var bw=3.4*3.4;
   for(var w=0;w<structures.length;w++){var s=structures[w];if(s.type!=="werk")continue;var wx=s.x-player.position.x,wz=s.z-player.position.z,dw=wx*wx+wz*wz;if(dw<bw){bw=dw;nearWork=s;}}
+  nearMerchant=false;if(merchant.x!=null){var mdx=merchant.x-player.position.x,mdz=merchant.z-player.position.z;if(mdx*mdx+mdz*mdz<4.5*4.5)nearMerchant=true;}
   nearLoot=null;var bl=3.4*3.4;
   for(var L=0;L<loots.length;L++){var lt=loots[L];if(lt.opened)continue;var lx=lt.x-player.position.x,lz=lt.z-player.position.z,dl=lx*lx+lz*lz;if(dl<bl){bl=dl;nearLoot=lt;}}
 }
 function harvest(){
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
   // Werkbank in der Nähe (und nichts Wichtigeres) → Crafting öffnen
+  if(nearMerchant&&!nearMon&&!nearAni&&!buildMode){openTrade();return;}
   if(nearWork&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!buildMode){openCraft();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
   if(nearMon){ // Kampf
@@ -1440,6 +1450,25 @@ function doCraft(id){
 }
 
 // ---------- Bau-Modus ----------
+// 💰 Händler-Handel (RPG-Tiefe): Ressourcen gegen Waren tauschen
+var TRADES=[
+  {ic:"🍖",name:"Fleisch",give:{wood:5},get:function(){inv.meat=(inv.meat||0)+3;},desc:"5 🪵 → 3 🍖"},
+  {ic:"🪨",name:"Stein-Deal",give:{wood:6},get:function(){inv.stone=(inv.stone||0)+5;},desc:"6 🪵 → 5 🪨"},
+  {ic:"❤️",name:"Voll-Heilung",give:{crystal:3},get:function(){hp=maxHp;hpUpd();},desc:"3 💎 → volle HP"},
+  {ic:"⚡",name:"Erfahrung",give:{crystal:6},get:function(){gainXP(40);},desc:"6 💎 → +40 XP"},
+  {ic:"🍓",name:"Beeren-Korb",give:{stone:4},get:function(){inv.berry=(inv.berry||0)+5;},desc:"4 🪨 → 5 🍓"}
+];
+var tradeOpen=false;
+function canTrade(t){for(var k in t.give)if((inv[k]||0)<t.give[k])return false;return true;}
+function openTrade(){if(isNight){toast("🌙 Der Händler schläft nachts");return;}if(buildMode)closeBuild();if(craftMode)closeCraft();tradeOpen=true;renderTrade();document.getElementById("tradeMenu").classList.remove("hide");}
+function closeTrade(){tradeOpen=false;document.getElementById("tradeMenu").classList.add("hide");}
+function renderTrade(){var el=document.getElementById("tradeMenu");el.innerHTML="";
+  var head=document.createElement("div");head.style.cssText="width:100%;text-align:center;font-weight:900;color:#ffd166;letter-spacing:.08em;margin-bottom:2px";head.textContent="💰 HÄNDLER — Tausche Waren";el.appendChild(head);
+  TRADES.forEach(function(t){var aff=canTrade(t);var d=document.createElement("div");d.className="bcard"+(aff?" aff":"");
+    d.innerHTML='<div class="bi">'+t.ic+'</div><div class="bn">'+t.name+'</div><div class="bc">'+t.desc+'</div>';
+    d.onclick=function(){if(!canTrade(t)){toast("Nicht genug Material");return;}for(var k in t.give)inv[k]-=t.give[k];t.get();invUpd();burst(player.position.x,player.position.y+1.5,player.position.z,0xffd166,10);toast(t.ic+" "+t.name+" erhalten!");renderTrade();saveGame&&saveGame();};
+    el.appendChild(d);});
+  var close=document.createElement("div");close.className="bcard";close.style.width="80px";close.innerHTML='<div class="bi">✖️</div><div class="bn">Schliessen</div>';close.onclick=closeTrade;el.appendChild(close);}
 function openBuild(){
   if(isNight){toast("🌙 Nachts kannst du nicht in Ruhe bauen — kämpfe!");return;}
   if(craftMode)closeCraft();
@@ -1845,6 +1874,7 @@ window.__nw={
   boss:function(){spawnBoss();return monsters.length;}, // Test-Only
   xp:function(n){gainXP(n||100);return {level:level,perk:PERK};}, // Test-Only
   perkState:function(){return PERK;},
+  trade:function(){if(merchant.x!=null){player.position.x=merchant.x;player.position.z=merchant.z+1.5;}inv.wood=20;inv.crystal=20;inv.stone=20;invUpd();openTrade();return {mx:merchant.x,mz:merchant.z};}, // Test-Only
   spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;var proto=M.file?mobProtos[M.id]:slimeProto;var m=proto?proto.clone(true):fallbackSlime();m.traverse(function(n){if(n.isMesh)n.castShadow=true;});var sc=proto?M.scale:1;m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id});return proto?1:0;}, // Test-Only
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
