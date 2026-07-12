@@ -318,6 +318,17 @@ Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgero
       (knapp an ❤️ vorbei = „Ooh!"). Ziel: nie langweilig, jeder Klick hat Wumms. Bloom/Bloom-frei
       egal — es ist Pastell, aber Game-Feel-Prinzipien (Juice) voll ausreizen. OPT.motion respektieren.
 
+### ✅ STAND 2026-07-12 (Opus-Session) — neon-wildnis lebendiger (Meshy)
+- ✅ **Fusion-Ausbau (Survival+RPG in EINEM Spiel):** 4 Stufen live — XP/Level, Skill (Q/💥 Schockwelle),
+  Loot-Orbs (4 Raritäten), SERAPH-Nacht-Boss (HUD-Bar, 2× Legendary-Reward). Alles in neon-wildnis.html.
+- ✅ **Meshy-Gegner + Welt-Props (PR #1747):** 3 neue Gegner-GLBs (👹 Goblin, 🐺 Wolf ab Tag 2, 🗿 Golem
+  ab Tag 3) — `MOBS[]` + gewichtete `pickMob()` in `spawnMonster()`; feste Kreaturen laufen zum Spieler
+  gedreht mit eigenem Tempo, Slime/Boss behalten Squash. 3 Item-GLBs: `item_shrine`+`item_mushroom` als
+  leuchtende Welt-Props (`loadProps()`/`updProps()`, schwebend+Aura, ~25 Stück), `item_chest` wertet
+  Beute-Truhen optisch auf (`mkChest` mit chestProto-Fallback). Debug-Hooks: `__nw.spawnMob(id)`,
+  `__nw.props()`, `__nw.toProp()`, `__nw.day(n)`. Alle 6 GLBs: r128-clean, toonify, feet y=0.
+  Verifiziert: game_smoke PASS + In-Game-Screenshots (Golem/Schrein/Pilze rendern sauber).
+
 ### ✅ STAND 2026-07-11 (Opus-Session, nach Fable-5-Limit) — GELIEFERT & LIVE
 - ✅ **Neon-Wildnis MVP** (neon-wildnis.html, PR #1691): riesige Map 800×800, Bäume fällen (+Holz),
   Steine/Kristalle/Beeren, 5 Bau-Rezepte (Mauer/Fackel/Lagerfeuer/Werkbank/Turm), Tag/Nacht + Slime-

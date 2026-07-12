@@ -35,6 +35,10 @@
  ],
  "runs": [
   {
+   "ts": "2026-07-12T12:10:00Z",
+   "was": "SPIELE neon-wildnis lebendiger (PR #1747): 3 Meshy-Gegner (Goblin/Wolf/Golem, tag-gestaffelt, gewichtete Auswahl) statt nur Slimes + 3 Item-GLBs (leuchtende Schrein/Pilz-Welt-Props mit Aura, Meshy-Beute-Truhen). game_smoke PASS + In-Game-Screenshots verifiziert. Fusion Survival+RPG jetzt 4 Stufen (XP/Skill/Loot/Boss) + lebendigere Welt."
+  },
+  {
    "ts": "2026-07-12T00:20:00Z",
    "was": "Autonom-Lauf: (1) Order-Check — keine neuen Orders seit #1010. (2) Brain 100/100 (7978 Seiten). (3) SPIELE: neon-wildnis Helden auf Anime-Toon Cel-Shading (Phase 2; realm/survivor bewusst NICHT — Neon-Mismatch). (4) GELD: neue Kaufberater-Seite wassersprudler-kaufen-schweiz.html (100/100, Hub+Sitemap). Zusätzlich: grosser Lebenspfad-Workflow (25 Agenten) — Batch 7 (Erfolge/Statistik/Audio) + Batch-3-Geometrie gerettet & live; Batches 1-6 durch Working-Tree-Fehler verloren (Lehre im Runbook)."
   },
