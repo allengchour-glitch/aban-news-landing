@@ -94,6 +94,16 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palItems"></div>
 </div>
 <div id="hint"></div>
+<div id="koch" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.55)">
+ <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:18px;text-align:center;max-width:360px;width:90vw">
+  <b style="font-size:1.1rem;color:#5a4a30">🍳 Kochen</b>
+  <div id="kochSub" style="font-size:.85rem;color:#8a7a5a;margin:6px 0">Merke dir die Reihenfolge!</div>
+  <div id="kochSeq" style="font-size:1.9rem;min-height:52px;letter-spacing:5px;margin:8px 0"></div>
+  <div id="kochBtns" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:6px"></div>
+  <div id="kochInfo" style="font-size:.8rem;color:#b8862a;margin-top:8px">Runde 1/3</div>
+  <button id="kochQuit" style="margin-top:10px;border:0;background:#e8e0d0;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
+ </div>
+</div>
 <div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
 <button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)">🏆</button>
 <div id="achPanel" style="position:fixed;inset:0;z-index:27;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.6)">
@@ -121,7 +131,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
-  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b></p>
+  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b> · Herd/Grill antippen = 🍳 Koch-Spiel</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -333,6 +343,7 @@ var ACH=[
  ["bankraeuber","🏦","Profi-Ganove","Ganoven-Level 2 erreicht",function(){return skills.krimi.lv>=2;}],
  ["dealer","🌿","Diskreter Händler","Eine Ernte diskret verkauft",function(){return stats.growSold>=1;}],
  ["musiker","🎸","Straßenstar","Perfekte Straßenmusik-Show",function(){return stats.buskPerfekt>=1;}],
+ ["koch","🍳","Sternekoch","Ein perfektes Menü gekocht",function(){return (stats.kochPerfekt||0)>=1;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
@@ -539,6 +550,7 @@ function onNetMsg(m){
       m.k.forEach(function(kd,i){if(kinder[i]){kinder[i].net=kd;if(kinder[i].baby!==kd.b){kinder[i].baby=kd.b;scene.remove(kinder[i].mesh);var nm2=mkKind(kd.b);nm2.position.set(kinder[i].x,0,kinder[i].z);scene.add(nm2);kinder[i].mesh=nm2;}}});}}
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
+  else if(m.t==="kochBoost"&&mpHost)kochApply(m.s);
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
   else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
   else if(m.t==="loveEv"){loveEvent(m.k,true);}
@@ -1173,6 +1185,8 @@ function tapAt(px,py){
   if(!running)return;
   if(!buildMode){ // Bewohner antippen -> Kamera folgt
     var c0=pickCell(px,py);
+    if(c0){for(var fi2=0;fi2<furn.length;fi2++){var f2=furn[fi2];
+      if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}}}
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
@@ -1213,6 +1227,57 @@ function mgTick(){
   MG.pos+=MG.dir*MG.speed/60;
   if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
   mgDraw();MG.raf=requestAnimationFrame(mgTick);}
+var KOCH={on:false,seq:[],pos:0,round:0,hits:0,total:0,tmr:null};
+var ZUTATEN=["🥕","🍅","🧀","🥩","🧅","🌶️"];
+function kochStart(){
+  if(KOCH.on||MG.on)return;
+  KOCH.on=true;KOCH.round=0;KOCH.hits=0;KOCH.total=0;
+  document.getElementById("koch").style.display="flex";
+  kochRound();}
+function kochRound(){
+  KOCH.pos=0;var len=3+KOCH.round;
+  KOCH.seq=[];for(var i=0;i<len;i++)KOCH.seq.push(ZUTATEN[(Math.random()*ZUTATEN.length)|0]);
+  KOCH.total+=len;
+  document.getElementById("kochInfo").textContent="Runde "+(KOCH.round+1)+"/3";
+  document.getElementById("kochSub").textContent="Merke dir die Reihenfolge!";
+  document.getElementById("kochSeq").textContent=KOCH.seq.join(" ");
+  document.getElementById("kochBtns").innerHTML="";
+  KOCH.tmr=setTimeout(function(){if(!KOCH.on)return;
+    document.getElementById("kochSeq").textContent=KOCH.seq.map(function(){return "❔";}).join(" ");
+    document.getElementById("kochSub").textContent="Tippe die Zutaten in der richtigen Reihenfolge!";
+    var bx=document.getElementById("kochBtns");
+    ZUTATEN.forEach(function(z){var b=document.createElement("button");
+      b.textContent=z;b.style.cssText="border:2px solid #e0d4b8;background:#fff;border-radius:12px;width:52px;height:52px;font-size:1.5rem;cursor:pointer";
+      b.onclick=function(){kochTap(z);};bx.appendChild(b);});
+  },1700+len*400);}
+function kochTap(z){
+  if(!KOCH.on||KOCH.pos>=KOCH.seq.length)return;
+  var ok=z===KOCH.seq[KOCH.pos];
+  if(ok)KOCH.hits++;
+  beep(ok?760:220,.08,ok?"triangle":"sawtooth",.05);
+  var shown=document.getElementById("kochSeq").textContent.split(" ");
+  shown[KOCH.pos]=ok?KOCH.seq[KOCH.pos]:"❌";
+  document.getElementById("kochSeq").textContent=shown.join(" ");
+  KOCH.pos++;
+  if(KOCH.pos>=KOCH.seq.length){KOCH.round++;
+    if(KOCH.round>=3)setTimeout(kochEnd,600);
+    else setTimeout(function(){if(KOCH.on)kochRound();},700);}}
+function kochEnd(){
+  KOCH.on=false;clearTimeout(KOCH.tmr);
+  document.getElementById("koch").style.display="none";
+  var score=KOCH.total?KOCH.hits/KOCH.total:0;
+  if(score>=0.999){stats.kochPerfekt=(stats.kochPerfekt||0)+1;}
+  if(MPs&&!mpHost)netSend({t:"kochBoost",s:score});else kochApply(score);
+  hint(score>=0.999?"🌟 PERFEKT gekocht! Alle sind satt & glücklich":
+       score>=0.6?"🍳 Lecker! Das Essen kommt gut an":"🥢 Naja … ein paar Zutaten waren falsch");
+  beep(score>=0.6?880:330,.15,"triangle",.06);}
+function kochApply(score){
+  sims.forEach(function(s2){
+    s2.needs.hunger=Math.min(100,s2.needs.hunger+20+40*score);
+    s2.needs.spass=Math.min(100,s2.needs.spass+12*score);
+    simEmoji(s2,score>=0.6?"🍽️":"🥢");});}
+document.getElementById("kochQuit").onclick=function(){
+  KOCH.on=false;clearTimeout(KOCH.tmr);document.getElementById("koch").style.display="none";};
 function mgStart(title,sub,cb){
   MG.on=true;MG.round=0;MG.scores=[];MG.cb=cb;MG.speed=1.5;
   document.getElementById("mgTitle").textContent=title;
