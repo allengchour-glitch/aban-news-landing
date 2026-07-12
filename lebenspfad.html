@@ -966,6 +966,19 @@ var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
 var CHAR_STYLES=[{i:"🧢",n:"Basecap"},{i:"🌸",n:"Blumenkranz"},{i:"👓",n:"Brille"},{i:"🎩",n:"Hut"},
   {i:"👑",n:"Krone"},{i:"🎧",n:"Kopfhörer"},{i:"🕶️",n:"Sonnenbrille"},{i:"🧶",n:"Wollmütze"},{i:"🎀",n:"Schleife"},{i:"✨",n:"Ohne (nur Haar)"}];
 var SKINTONES=[0xffd9b0,0xdba46e,0x9a6a42,0xf7e0c8,0x6a4632]; // erste 3 wie früher
+// 🎌 Meshy-Anime-Charaktere (echte 3D-GLBs) als waehlbare Spezial-Figuren
+var MESHY_CHARS=[{id:"hero",file:"anime_hero.glb",n:"🌟 Anime-Held"},{id:"warrior",file:"anime_warrior.glb",n:"⚔️ Kriegerin"},{id:"mage",file:"anime_mage.glb",n:"🪄 Magier"},{id:"ninja",file:"anime_ninja.glb",n:"🥷 Ninja"},{id:"schoolgirl",file:"anime_schoolgirl.glb",n:"🎀 Schülerin"},{id:"girl",file:"anime_girl.glb",n:"👧 Mädchen"},{id:"boy",file:"anime_boy.glb",n:"👦 Junge"}];
+function meshyIdx(id){for(var i=0;i<MESHY_CHARS.length;i++)if(MESHY_CHARS[i].id===id)return i;return -1;}
+function nextMeshy(cur,dir){var n=MESHY_CHARS.length,i=(cur==null)?-1:meshyIdx(cur);i=i+dir;if(i<-1)i=n-1;if(i>=n)i=-1;return i<0?null:MESHY_CHARS[i].id;}
+function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
+  g.userData.ageScale=1;g.userData.ageScaleT=1;g.userData.headScale=1;g.userData.headScaleT=1;g.userData.headStoop=0;g.userData.headStoopT=0;g.userData.cfg=cfg;g.userData.blinkT=1e9;g.userData.meshy=true;
+  var mi=meshyIdx(cfg.meshy),spec=mi>=0?MESHY_CHARS[mi]:MESHY_CHARS[0];
+  if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+spec.file,function(gl){
+    var o=gl.scene;o.scale.setScalar(0.62);o.traverse(function(n){if(n.isMesh)n.frustumCulled=false;});g.add(o);g.userData.gscene=o;
+    if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);var idle=gl.animations[0];for(var a=0;a<gl.animations.length;a++)if(/idle/i.test(gl.animations[a].name)){idle=gl.animations[a];break;}mx.clipAction(idle).play();mx.update(0.1);g.userData.gmix=mx;}
+    if(onReady)onReady();
+  },undefined,function(){});}
+  return g;}
 // ===== 🔓 Freischalt-System: Fun-Looks schalten sich mit gespielten Leben frei (klein, nicht pay2win) =====
 var STYLE_UNLOCK={4:1,5:2,6:3,7:4,8:5}; // Accessoire-Index -> benoetigte Spiele; 0-3 + 9(Ohne) immer frei
 var HAIR_UNLOCK={6:1,7:2,8:3,9:4};      // Haar-Index -> benoetigte Spiele; 0-5 + Auto(-1) frei
@@ -989,6 +1002,7 @@ function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Lo
       skin:Math.max(0,Math.min(SKINTONES.length-1,c.skin|0)),
       hair:(c.hair==null)?-1:Math.max(-1,Math.min(HAIRS.length-1,c.hair|0)), // -1 = Auto/abgeleitet
       pants:(c.pants==null)?0:Math.max(0,Math.min(PANTS.length-1,c.pants|0))};
+    if(c.meshy&&meshyIdx(c.meshy)>=0)o.meshy=c.meshy;
     return o;}
   return null;}
 function loadChar(i){ // defensiv lesen: kaputte/fehlende Daten -> hübscher Default (jeder Spieler anders)
@@ -1042,7 +1056,8 @@ function capsuleGeo(r,len,rad,cap){
   return new THREE.LatheGeometry(pts,rad);
 }
 function mkPawn(color,cfg){var g=mkPawnMesh(color,cfg);scene.add(g);return g;}
-function mkPawnMesh(color,cfg){
+function mkPawnMesh(color,cfg,onReady){
+  if(cfg&&cfg.meshy&&meshyIdx(cfg.meshy)>=0)return mkMeshyPawn(color,cfg,onReady);
   // Runde, knuffige Minifigur (Rayman/Pastell-Look): Kugel-Kopf, Kapsel-Rumpf & -Glieder, weiche Silhouette ohne harte Kanten
   cfg=cfg||{g:"m",style:0,skin:0};
   var g=new THREE.Group(),cm=smat(color,color,0.10),skin=smat(SKINTONES[cfg.skin%SKINTONES.length],0x3a2a1a,0.04);
@@ -1196,6 +1211,7 @@ function agePawn(i,animated){
   var st=ageStage(chapterOf(G.players[i].tile)),prev=pw.userData.ageStage;
   pw.userData.ageStage=st;
   pw.userData.ageScaleT=AGE_BODY[st];pw.userData.headScaleT=AGE_HEAD[st];pw.userData.headStoopT=AGE_STOOP[st];
+  if(pw.userData.meshy){pw.userData.ageScaleT=1.05;pw.userData.headScaleT=1;pw.userData.headStoopT=0;} // Meshy-Figuren bleiben ihre Groesse (nicht zu Kind schrumpfen)
   if(pw.userData.hairMat){pw.userData.hairMat.color.setHex(pw.userData.hairBaseHex); // Senior: Haare ergrauen/weiss
     if(st===3)pw.userData.hairMat.color.lerp(new THREE.Color(0xeceff2),0.72);}
   pw.userData.eyeOpen=(st===3)?0.84:1; // Senior: Augen sanfter/schmaler
@@ -1335,6 +1351,7 @@ function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
     var q=Math.max(0,pw.userData.squash);pw.scale.set(bs*(1+q*0.25),bs*(1-q*0.3),bs*(1+q*0.25));}
   else{var st2=pw.userData.stretch||0;pw.scale.set(bs*(1-st2*0.08),bs*(1+st2*0.14),bs*(1-st2*0.08));}}
 function animWalk(pw,moving,dt){
+  if(pw.userData.gmix)pw.userData.gmix.update(dt); // 🎌 Meshy-GLB Idle-Animation
   animLife(pw,dt,moving);
   if(pw.userData.emote)return; // Emote hat Vorrang
   var L=pw.userData.limbs;if(!L)return;
@@ -2550,10 +2567,9 @@ function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: geteilter Renderer → 2D
       var dl=new THREE.DirectionalLight(0xfff2d8,0.9);dl.position.set(2,4,3);_pv.s.add(dl);
       _pv.c=new THREE.PerspectiveCamera(36,220/248,0.1,20);_pv.c.position.set(0,1.18,2.9);_pv.c.lookAt(0,0.95,0);}
     if(_pv.p)_pv.s.remove(_pv.p);
-    _pv.p=mkPawnMesh(col,cfg);_pv.p.rotation.y=0.45;_pv.s.add(_pv.p);
-    _pv.r.render(_pv.s,_pv.c);
-    var ctx=cv.getContext("2d");ctx.clearRect(0,0,cv.width,cv.height);
-    ctx.drawImage(_pv.r.domElement,0,0,cv.width,cv.height);
+    var _rr=function(){try{_pv.r.render(_pv.s,_pv.c);var ctx=cv.getContext("2d");ctx.clearRect(0,0,cv.width,cv.height);ctx.drawImage(_pv.r.domElement,0,0,cv.width,cv.height);}catch(e){}};
+    _pv.p=mkPawnMesh(col,cfg,(cfg&&cfg.meshy)?_rr:null);_pv.p.rotation.y=0.45;_pv.s.add(_pv.p);
+    _rr();
   }catch(e){}}
 function renderCharUI(){
   var cr=document.getElementById("charRow");if(!cr)return;cr.innerHTML="";
@@ -2563,7 +2579,7 @@ function renderCharUI(){
     var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;
     var cv=document.createElement("canvas");cv.width=PV_W;cv.height=PV_H;cv.style.cssText="width:110px;height:124px";
     card.appendChild(cv);
-    var gf,gm,sl,hl,pl,dots=[];
+    var gf,gm,sl,hl,pl,ml,dots=[];
     function upd(){saveChar(i,cfg);charPreview(cv,cfg,PCOLORS[i]);
       gf.className=cfg.g==="f"?"on":"";gm.className=cfg.g==="m"?"on":"";
       sl.textContent=CHAR_STYLES[cfg.style].i+" "+CHAR_STYLES[cfg.style].n;
@@ -2571,7 +2587,8 @@ function renderCharUI(){
       if(hl)hl.style.background=(cfg.hair<0)?"":"#"+("00000"+HAIRS[cfg.hair].toString(16)).slice(-6);
       if(hl)hl.style.color=(cfg.hair<0)?"":"#fff";
       if(pl){pl.textContent="👖";pl.style.background="#"+("00000"+PANTS[cfg.pants].toString(16)).slice(-6);}
-      for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");}
+      for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");
+      if(ml)ml.textContent=cfg.meshy?(MESHY_CHARS[meshyIdx(cfg.meshy)].n):"🧍 Toon (anpassbar)";}
     var r1=document.createElement("div");r1.className="crow"; // 👩 / 👨
     gf=document.createElement("button");gf.textContent="👩";gf.title="Frau";gf.onclick=function(){cfg.g="f";upd();beep(620,.05,"triangle",.03);};
     gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
@@ -2586,6 +2603,11 @@ function renderCharUI(){
     hl=document.createElement("div");hl.className="lbl";hl.style.borderRadius="8px";hl.style.padding="0 4px";
     var hbr=document.createElement("button");hbr.textContent="▶";hbr.title="Haarfarbe";hbr.onclick=function(){cfg.hair=nextHair(cfg.hair,1);upd();beep(520,.04,"triangle",.03);};
     r2b.appendChild(hbl);r2b.appendChild(hl);r2b.appendChild(hbr);card.appendChild(r2b);
+    var rMe=document.createElement("div");rMe.className="crow"; // 🎌 Meshy-Anime-Figur
+    var mel=document.createElement("button");mel.textContent="◀";mel.title="3D-Figur";mel.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,-1);upd();};
+    ml=document.createElement("div");ml.className="lbl";
+    var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
+    rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
     var r3=document.createElement("div");r3.className="crow"; // Hautton-Punkte + Hosenfarbe
     for(var d=0;d<SKINTONES.length;d++)(function(d){var b=document.createElement("button");b.className="skin";
       b.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);b.title="Hautton "+(d+1);
@@ -2821,7 +2843,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;card.style.maxWidth="210px";card.style.margin="0 auto";
   var lbl=document.createElement("div");lbl.style.cssText="font-size:.76rem;font-weight:800;color:#2a6ab0;margin-bottom:3px";lbl.textContent="🎨 Dein Charakter";card.appendChild(lbl);
   var cv=document.createElement("canvas");cv.width=PV_W;cv.height=PV_H;cv.style.cssText="width:104px;height:118px";card.appendChild(cv);
-  var gf,gm,sl,hl,dots=[];
+  var gf,gm,sl,hl,ml,dots=[];
   function sync(){saveChar(0,cfg);
     if(NET.host){NET.cfgs[0]=cfg;netPlayersUpd();}
     else if(NET.conns[0]&&NET.conns[0].open){try{NET.conns[0].send(JSON.stringify({t:"look",cfg:cfg}));}catch(e){}}}
@@ -2829,7 +2851,8 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
     gf.className=cfg.g==="f"?"on":"";gm.className=cfg.g==="m"?"on":"";
     sl.textContent=CHAR_STYLES[cfg.style].i+" "+CHAR_STYLES[cfg.style].n;
     if(hl){hl.textContent=(cfg.hair<0)?"💇 Auto":"💇 Haar "+(cfg.hair+1);hl.style.background=(cfg.hair<0)?"":"#"+("00000"+HAIRS[cfg.hair].toString(16)).slice(-6);hl.style.color=(cfg.hair<0)?"":"#fff";}
-    for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");}
+    for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");
+      if(ml)ml.textContent=cfg.meshy?(MESHY_CHARS[meshyIdx(cfg.meshy)].n):"🧍 Toon (anpassbar)";}
   var r1=document.createElement("div");r1.className="crow";
   gf=document.createElement("button");gf.textContent="👩";gf.title="Frau";gf.onclick=function(){cfg.g="f";upd();beep(620,.05,"triangle",.03);};
   gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
@@ -2844,6 +2867,11 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   hl=document.createElement("div");hl.className="lbl";hl.style.borderRadius="8px";hl.style.padding="0 4px";
   var hbr=document.createElement("button");hbr.textContent="▶";hbr.onclick=function(){cfg.hair=nextHair(cfg.hair,1);upd();};
   r2b.appendChild(hbl);r2b.appendChild(hl);r2b.appendChild(hbr);card.appendChild(r2b);
+    var rMe=document.createElement("div");rMe.className="crow"; // 🎌 Meshy-Anime-Figur
+    var mel=document.createElement("button");mel.textContent="◀";mel.title="3D-Figur";mel.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,-1);upd();};
+    ml=document.createElement("div");ml.className="lbl";
+    var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
+    rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
   var r3=document.createElement("div");r3.className="crow";
   for(var d=0;d<SKINTONES.length;d++)(function(d){var bd=document.createElement("button");bd.className="skin";bd.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);bd.title="Hautton "+(d+1);bd.onclick=function(){cfg.skin=d;upd();};dots.push(bd);r3.appendChild(bd);})(d);
   card.appendChild(r3);
