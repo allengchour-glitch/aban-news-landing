@@ -2558,16 +2558,26 @@ function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML=""
     nr.appendChild(inp);}
   renderCharUI();}
 // ===================== Charakter-Picker (Startscreen): 👩/👨 + 4 Styles + 3 Hauttöne =====================
-function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: geteilter Renderer → 2D-Canvas kopieren
+function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: über den HAUPT-Renderer in ein RenderTarget (mobil-robust, kein 2. WebGL-Kontext, kein drawImage)
   try{
-    if(!_pv){_pv={};_pv.r=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});
-      _pv.r.setPixelRatio(1);_pv.r.setSize(PV_W,PV_H,false);_pv.r.outputEncoding=THREE.sRGBEncoding;
+    if(!_pv){_pv={};
+      _pv.rt=new THREE.WebGLRenderTarget(PV_W,PV_H,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter});
+      _pv.buf=new Uint8Array(PV_W*PV_H*4);
       _pv.s=new THREE.Scene();
       _pv.s.add(new THREE.HemisphereLight(0xffffff,0x8a7a5a,1.05));
       var dl=new THREE.DirectionalLight(0xfff2d8,0.9);dl.position.set(2,4,3);_pv.s.add(dl);
-      _pv.c=new THREE.PerspectiveCamera(36,220/248,0.1,20);_pv.c.position.set(0,1.18,2.9);_pv.c.lookAt(0,0.95,0);}
+      _pv.c=new THREE.PerspectiveCamera(36,PV_W/PV_H,0.1,20);_pv.c.position.set(0,1.18,2.9);_pv.c.lookAt(0,0.95,0);}
     if(_pv.p)_pv.s.remove(_pv.p);
-    var _rr=function(){try{_pv.r.render(_pv.s,_pv.c);var ctx=cv.getContext("2d");ctx.clearRect(0,0,cv.width,cv.height);ctx.drawImage(_pv.r.domElement,0,0,cv.width,cv.height);}catch(e){}};
+    var _rr=function(){try{
+      var oc=renderer.getClearColor(new THREE.Color()),oa=renderer.getClearAlpha();
+      renderer.setClearColor(0xf6efe0,1);
+      renderer.setRenderTarget(_pv.rt);renderer.clear();renderer.render(_pv.s,_pv.c);
+      renderer.readRenderTargetPixels(_pv.rt,0,0,PV_W,PV_H,_pv.buf);
+      renderer.setRenderTarget(null);renderer.setClearColor(oc,oa);
+      var ctx=cv.getContext("2d"),img=ctx.createImageData(PV_W,PV_H),d=img.data,b=_pv.buf,W4=PV_W*4;
+      for(var y=0;y<PV_H;y++){var sy=(PV_H-1-y)*W4,dy=y*W4;for(var xx=0;xx<W4;xx++)d[dy+xx]=b[sy+xx];}
+      ctx.putImageData(img,0,0);
+    }catch(e){}};
     _pv.p=mkPawnMesh(col,cfg,(cfg&&cfg.meshy)?_rr:null);_pv.p.rotation.y=0.45;_pv.s.add(_pv.p);
     _rr();
   }catch(e){}}
