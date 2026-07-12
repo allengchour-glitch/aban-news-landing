@@ -400,7 +400,9 @@ var KATALOG={
   {id:"himmelbett",n:"⭐ Himmelbett",e:"🛏️",cost:2400,size:[2,2],norm:1,use:{need:"energie",pose:"lie",off:[0,0],dur:16}},
   {id:"couchtisch",n:"⭐ Couchtisch",e:"🪵",cost:520,size:[1,1],norm:1},
   {id:"landtisch",n:"⭐ Landhaus-Tisch",e:"🍽️",cost:680,size:[2,1],norm:1},
-  {id:"polsterstuhl",n:"⭐ Polsterstuhl",e:"💺",cost:260,size:[1,1],norm:1,use:{need:"hunger",pose:"sit",off:[0,0],dur:6}}],
+  {id:"polsterstuhl",n:"⭐ Polsterstuhl",e:"💺",cost:260,size:[1,1],norm:1,use:{need:"hunger",pose:"sit",off:[0,0],dur:6}},
+  {id:"konsole",n:"⭐ Spielkonsole",e:"🎮",cost:950,size:[1,1],norm:1,zielH:0.5,use:{need:"spass",pose:"sit",off:[0,1],dur:9}},
+  {id:"pouf",n:"⭐ Pouf",e:"🪑",cost:180,size:[1,1],norm:1,zielH:0.48,use:{need:"spass",pose:"sit",off:[0,0],dur:5}}],
  kueche:[
   {id:"kueche",n:"Küchenzeile",e:"🍳",cost:850,size:[2,1]},
   {id:"herd",n:"Herd",e:"🔥",cost:420,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
@@ -418,7 +420,14 @@ var KATALOG={
   {id:"kerzentisch",n:"Kerzen-Dinner",e:"🕯️",cost:380,size:[1,1],love:1},
   {id:"rosenbogen",n:"Rosenbogen",e:"💒",cost:350,size:[2,1],wed:1},
   {id:"stereo",n:"Stereoanlage",e:"🔊",cost:320,size:[1,1],stereo:1},
-  {id:"wandregal",n:"⭐ Wandregal",e:"🗄️",cost:420,size:[1,1],norm:1,use:{need:"spass",pose:"stand",off:[0,1],dur:7}}],
+  {id:"wandregal",n:"⭐ Wandregal",e:"🗄️",cost:420,size:[1,1],norm:1,use:{need:"spass",pose:"stand",off:[0,1],dur:7}},
+  {id:"schach",n:"⭐ Schach-Set",e:"♟️",cost:340,size:[1,1],norm:1,zielH:0.4,use:{need:"spass",pose:"stand",off:[0,1],dur:8}},
+  {id:"standuhr",n:"⭐ Standuhr",e:"🕰️",cost:680,size:[1,1],norm:1,zielH:2.2},
+  {id:"vase",n:"⭐ Antike Vase",e:"🏺",cost:320,size:[1,1],norm:1,zielH:1.05},
+  {id:"topfpflanze",n:"⭐ Zimmerpflanze",e:"🪴",cost:240,size:[1,1],norm:1,zielH:1.25},
+  {id:"katzenstatue",n:"⭐ Katzen-Statue",e:"🐱",cost:450,size:[1,1],norm:1,zielH:0.95},
+  {id:"pferdestatue",n:"⭐ Pferde-Statue",e:"🐎",cost:2200,size:[1,1],norm:1,zielH:1.9},
+  {id:"haistatue",n:"⭐ Hai-Statue",e:"🦈",cost:1800,size:[1,1],norm:1,zielH:1.15}],
  buero:[
   {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}}],
  garten:[
@@ -429,7 +438,9 @@ var KATALOG={
   {id:"growbox",n:"Growbox (zwielichtig)",e:"🌿",cost:600,size:[1,1],grow:1},
   {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
   {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}},
-  {id:"teich",n:"Gartenteich",e:"🎣",cost:380,size:[2,2],teich:1}]
+  {id:"teich",n:"Gartenteich",e:"🎣",cost:380,size:[2,2],teich:1},
+  {id:"zwerg",n:"⭐ Gartenzwerg",e:"🍄",cost:90,size:[1,1],norm:1,zielH:0.65},
+  {id:"gartenlaterne",n:"⭐ Garten-Laterne",e:"🏮",cost:260,size:[1,1],norm:1,zielH:1.5,light:1}]
 };
 var CATS=[["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
@@ -638,7 +649,7 @@ function applyFurn(id,gx,gy,rot,fid){
     if(def.norm){ // PolyHaven-Modelle: auf Zellgroesse skalieren + auf den Boden setzen
       var bb9=new THREE.Box3().setFromObject(m),sz9=new THREE.Vector3();bb9.getSize(sz9);
       var tw9=(def.size?def.size[0]:1)*CS*0.92,td9=(def.size?def.size[1]:1)*CS*0.92;
-      var k9=Math.min(tw9/(sz9.x||1),td9/(sz9.z||1),2.6/(sz9.y||1));
+      var k9=Math.min(tw9/(sz9.x||1),td9/(sz9.z||1),(def.zielH||2.6)/(sz9.y||1));
       if(!isFinite(k9)||k9<=0)k9=1;
       m.scale.setScalar(k9);
       var bb10=new THREE.Box3().setFromObject(m);
