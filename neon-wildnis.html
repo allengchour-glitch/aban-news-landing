@@ -880,13 +880,22 @@ function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
 // 🧑‍🌾 Dorfbewohner-NPCs (einfache, stilisierte Figuren, wandern im Dorf umher)
 var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a];
 var NPC_EMO=["👋","💬","🙂","🎶","❤️","🍺","🧺","⚒️"];
-var ANIME_NPC=["anime_boy","anime_boy2","anime_girl","anime_girl2","anime_mage","anime_ninja","anime_schoolgirl","anime_warrior"];
+var ANIME_NPC=["anime_boy","anime_boy2","anime_girl","anime_girl2","anime_mage","anime_ninja","anime_schoolgirl","anime_warrior","anime_hero"];
 function mkVillager(x,z){var gy=groundH(x,z);
   var rec={mesh:null,cx:x,cz:z,t:Math.random()*6,dir:Math.random()*6.28,spd:0.45+Math.random()*0.5,rr:9,walk:0,emoT:2+Math.random()*8,emo:null,mix:null};
   npcs.push(rec);
   if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
     var o=gl.scene;o.scale.setScalar(1.35); // feste Skala (Skinned-BBox unzuverlässig -> keine Riesen)
-    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+    // 🎨 individuelle Kleidungsfarbe (Haut/sehr Helles ausgenommen) -> nicht alle gleich/pink
+    var tint=new THREE.Color().setHSL(Math.random(),0.45+Math.random()*0.35,0.5+Math.random()*0.15);
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
+      var mats=Array.isArray(n.material)?n.material:[n.material];
+      n.material=mats.map(function(mm){var c=mm.clone();if(c.color){var hsl={};c.color.getHSL(hsl);
+        // Hauttöne (oranges/beige, mittlere Helligkeit) + fast-Weiss NICHT umfärben
+        var isSkin=(hsl.h<0.13&&hsl.s>0.2&&hsl.l>0.35&&hsl.l<0.8);var isWhite=(hsl.l>0.85&&hsl.s<0.2);var isDark=(hsl.l<0.15);
+        if(!isSkin&&!isWhite&&!isDark)c.color.lerp(tint,0.5);}
+        return c;});
+      if(!Array.isArray(mats))n.material=n.material[0];}});
     o.position.set(x,gy,z);o.rotation.y=Math.random()*6.28;scene.add(o);rec.mesh=o;
     if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);mx.clipAction(gl.animations[0]).play();rec.mix=mx;}
   },undefined,function(){});}
