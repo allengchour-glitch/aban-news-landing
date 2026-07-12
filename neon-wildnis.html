@@ -631,6 +631,17 @@ function buildAmbient(){
   var pebIM=instMesh(pebG,new THREE.MeshLambertMaterial({color:0x8890a0,flatShading:true}),pbBudget);
   var pbi=0;clusterScatter(Math.round(60*VF),[1,4],3.5,320,function(x,z){if(pbi>=pbBudget)return;var s=0.5+rnd()*1.2;setInst(pebIM,pbi++,x,groundH(x,z)+0.1,z,s,rnd()*6.28);});
   for(;pbi<pbBudget;pbi++)setInst(pebIM,pbi,0,-999,0,0.001,0);pebIM.count=pbBudget;pebIM.instanceMatrix.needsUpdate=true;
+  // --- 🪵 Zweige/Äste am Boden (Detail) ---
+  var twBudget=Math.round(200*VF);var twG=new THREE.BoxGeometry(0.55,0.05,0.06);twG.translate(0,0.03,0);
+  var twIM=instMesh(twG,new THREE.MeshLambertMaterial({color:0x5a4030,flatShading:true}),twBudget);
+  var twi=0;clusterScatter(Math.round(80*VF),[1,4],3.0,320,function(x,z){if(twi>=twBudget)return;setInst(twIM,twi++,x,groundH(x,z)+0.02,z,0.7+rnd()*0.9,rnd()*6.28);});
+  for(;twi<twBudget;twi++)setInst(twIM,twi,0,-999,0,0.001,0);twIM.count=twBudget;twIM.instanceMatrix.needsUpdate=true;
+  // --- 🍂 kleine Laub-/Stein-Tupfer (bunte Flecken am Boden) ---
+  var dtBudget=Math.round(260*VF);var dtG=new THREE.IcosahedronGeometry(0.13,0);dtG.scale(1,0.3,1);
+  var dtIM=new THREE.InstancedMesh(dtG,new THREE.MeshLambertMaterial(),dtBudget);scene.add(dtIM);ambientGroups.push(dtIM);
+  dtIM.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(dtBudget*3),3);var dtCol=[[0.55,0.35,0.2],[0.5,0.55,0.3],[0.6,0.5,0.4],[0.4,0.5,0.55]];
+  var dti=0;clusterScatter(Math.round(90*VF),[1,5],3.2,320,function(x,z){if(dti>=dtBudget)return;setInst(dtIM,dti,x,groundH(x,z)+0.03,z,0.7+rnd()*1.1,rnd()*6.28);var c=dtCol[(rnd()*dtCol.length)|0];dtIM.instanceColor.setXYZ(dti,c[0],c[1],c[2]);dti++;});
+  for(;dti<dtBudget;dti++)setInst(dtIM,dti,0,-999,0,0.001,0);dtIM.count=dtBudget;dtIM.instanceMatrix.needsUpdate=true;dtIM.instanceColor.needsUpdate=true;
 
   // --- Glühwürmchen (nachts, gepoolt) ---
   for(var g=0;g<Math.round(22*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0}));fm.visible=false;scene.add(fm);
@@ -849,7 +860,7 @@ function roadRibbon(pts,width,cobble,normal){
   g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
   g.setAttribute("uv",new THREE.Float32BufferAttribute(uv,2));
   g.setIndex(idx);g.computeVertexNormals();
-  var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({map:cobble,normalMap:normal,roughness:0.95,metalness:0}));
+  var m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({map:cobble}));
   m.receiveShadow=true;scene.add(m);return m;
 }
 function layRoads(cx,cz){
@@ -868,7 +879,7 @@ function layRoads(cx,cz){
   // RUNDER Steinplatten-Platz im Zentrum (nicht eckig)
   var st=gtex("tex_stone.png",0,true);st.repeat.set(3,3);var stn=gtex("tex_stone_n.png",0,false);stn.repeat.set(3,3);
   var gp=new THREE.CircleGeometry(7.5,32);gp.rotateX(-Math.PI/2);
-  var mp=new THREE.Mesh(gp,new THREE.MeshStandardMaterial({map:st,normalMap:stn,roughness:0.9}));
+  var mp=new THREE.Mesh(gp,new THREE.MeshLambertMaterial({map:st}));
   mp.position.set(cx,groundH(cx,cz)+0.15,cz);mp.receiveShadow=true;scene.add(mp);
 }
 // 🪣 Holz-Ziehbrunnen (passt zum Fachwerk-Stil, ersetzt den "modernen" Steinbrunnen)
@@ -960,7 +971,7 @@ function updSmoke(dt){
 // 🌱 Garten-Beet (umzäunt, mit Pflanzen) — Dorf-Detail
 function mkGarden(x,z){var gy=groundH(x,z);
   var soil=gtex?gtex("tex_dirt.png",0,true):null;if(soil)soil.repeat.set(1.4,1.4);
-  var plot=new THREE.Mesh(new THREE.PlaneGeometry(4,3),soil?new THREE.MeshStandardMaterial({map:soil,roughness:1}):new THREE.MeshStandardMaterial({color:0x5a3a22,roughness:1}));
+  var plot=new THREE.Mesh(new THREE.PlaneGeometry(4,3),soil?new THREE.MeshLambertMaterial({map:soil}):new THREE.MeshLambertMaterial({color:0x5a3a22}));
   plot.rotateX(-Math.PI/2);plot.position.set(x,gy+0.05,z);plot.receiveShadow=true;scene.add(plot);
   var cropM=[new THREE.MeshStandardMaterial({color:0x4faf3a,flatShading:true}),new THREE.MeshStandardMaterial({color:0xd88a2a,flatShading:true}),new THREE.MeshStandardMaterial({color:0x8fbf3a,flatShading:true})];
   for(var r=-1;r<=1;r++)for(var c=-1;c<=1;c++){var cx2=x+c*1.1+(Math.random()-0.5)*0.3,cz2=z+r*0.9+(Math.random()-0.5)*0.3;
@@ -1008,8 +1019,8 @@ function decorateWorld(){
   farScatter(Math.round(80*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"cc0_rock_large":"cc0_rock_small",1.6*(0.7+rnd()*0.9));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   farScatter(Math.round(26*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
-  var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["cc0_tent",1.8],["ck_catapult",2.2]];
-  farScatter(Math.round(55*VF),16,function(x,z){var it=STUFF[(rnd()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["fd_burger",0.6],["cc0_tent",1.8],["ck_catapult",2.2],["ftk_lantern",1.5],["fn_stool",0.9],["fn_chair",0.9],["fn_plant",1.0],["dk_chest",0.9],["cc0_log_stack",1.0],["fn_bookcase",1.3],["cc0_campfire",0.7]];
+  farScatter(Math.round(95*VF),16,function(x,z){var it=STUFF[(rnd()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
   function spotFar(minR){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
