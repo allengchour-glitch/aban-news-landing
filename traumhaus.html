@@ -94,6 +94,18 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palItems"></div>
 </div>
 <div id="hint"></div>
+<div id="tanz" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(40,20,45,.6)">
+ <div id="tanzBox" style="background:#fdf4ff;border:3px solid #b060c8;border-radius:18px;padding:18px;text-align:center;max-width:340px;width:90vw;cursor:pointer;user-select:none">
+  <b style="font-size:1.1rem;color:#7a3a90">💃 Tanzen</b>
+  <div id="tanzInfo" style="font-size:.8rem;color:#9a6aab;margin-top:4px">Tippe, wenn der Ring den Kreis trifft!</div>
+  <div style="position:relative;width:190px;height:190px;margin:14px auto">
+    <div style="position:absolute;inset:55px;border-radius:50%;background:linear-gradient(135deg,#c878dc,#9048b0);display:flex;align-items:center;justify-content:center;font-size:2rem">💃</div>
+    <div id="tanzRing" style="position:absolute;inset:55px;border-radius:50%;border:4px solid #e8a8f8;transform:scale(2.1);opacity:0"></div>
+  </div>
+  <div id="tanzScore" style="font-size:.9rem;font-weight:800;color:#7a3a90;min-height:24px">Beat 0/8</div>
+  <button id="tanzQuit" style="margin-top:8px;border:0;background:#ecdcf2;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
+ </div>
+</div>
 <div id="angel" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(20,30,40,.55)">
  <div style="background:#f4faff;border:3px solid #4a90c8;border-radius:18px;padding:18px;text-align:center;max-width:340px;width:90vw">
   <b style="font-size:1.1rem;color:#2a5a80">🎣 Angeln</b>
@@ -141,7 +153,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
-  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b> · Herd/Grill = 🍳 Kochen · Teich = 🎣 Angeln</p>
+  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b> · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -314,7 +326,8 @@ var KATALOG={
   {id:"gemaelde",n:"Gemälde",e:"🖼️",cost:180,size:[1,1]},
   {id:"hund",n:"Hund (Haustier)",e:"🐕",cost:450,size:[1,1],pet:1},
   {id:"kerzentisch",n:"Kerzen-Dinner",e:"🕯️",cost:380,size:[1,1],love:1},
-  {id:"rosenbogen",n:"Rosenbogen",e:"💒",cost:350,size:[2,1],wed:1}],
+  {id:"rosenbogen",n:"Rosenbogen",e:"💒",cost:350,size:[2,1],wed:1},
+  {id:"stereo",n:"Stereoanlage",e:"🔊",cost:320,size:[1,1],stereo:1}],
  buero:[
   {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}}],
  garten:[
@@ -356,6 +369,7 @@ var ACH=[
  ["musiker","🎸","Straßenstar","Perfekte Straßenmusik-Show",function(){return stats.buskPerfekt>=1;}],
  ["koch","🍳","Sternekoch","Ein perfektes Menü gekocht",function(){return (stats.kochPerfekt||0)>=1;}],
  ["angler","🎣","Petri Heil","5 Fische geangelt",function(){return (stats.fische||0)>=5;}],
+ ["taenzer","💃","Tanzfieber","Eine perfekte Tanz-Session",function(){return (stats.tanzPerfekt||0)>=1;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
@@ -491,6 +505,20 @@ function applyFurn(id,gx,gy,rot,fid){
     tg.position.set(cx(gx),0.01,cz(gy));scene.add(tg);
     furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:tg,busy:false,teich:1});
     return;}
+  if(def.stereo){ // Stereoanlage: Boombox auf Ständer, leuchtendes Display
+    var sg=new THREE.Group();
+    var fuss=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.4,0.5,10),stdMat(0x4a4a52,0.7));fuss.position.y=0.25;sg.add(fuss);
+    var body=new THREE.Mesh(new THREE.BoxGeometry(1.15,0.55,0.4),stdMat(0x22222a,0.5));body.position.y=0.8;body.castShadow=true;sg.add(body);
+    [-0.36,0.36].forEach(function(sx){
+      var spk=new THREE.Mesh(new THREE.CylinderGeometry(0.19,0.19,0.06,14),stdMat(0x0a0a10,0.4));
+      spk.rotation.x=Math.PI/2;spk.position.set(sx,0.8,0.21);sg.add(spk);
+      var memb=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,0.07,12),stdMat(0x3a3a44,0.6));
+      memb.rotation.x=Math.PI/2;memb.position.set(sx,0.8,0.22);sg.add(memb);});
+    var disp=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.12,0.02),new THREE.MeshStandardMaterial({color:0x30e0c0,emissive:0x20c0a0,emissiveIntensity:1.1}));
+    disp.position.set(0,0.95,0.21);sg.add(disp);
+    sg.position.set(cx(gx),0.01,cz(gy));sg.rotation.y=rot*Math.PI/2;scene.add(sg);
+    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:sg,busy:false,stereo:1});
+    return;}
   if(def.beet){ // Gemüsebeet: prozedural (Erde + wachsende Pflanzen)
     var bg=new THREE.Group();
     var erde=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.22,1.7),stdMat(0x4a3220,0.95));erde.position.y=0.11;erde.receiveShadow=true;bg.add(erde);
@@ -578,6 +606,7 @@ function onNetMsg(m){
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost)kochApply(m.s);
+  else if(m.t==="tanzBoost"&&mpHost)tanzApply(m.s);
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
   else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
   else if(m.t==="loveEv"){loveEvent(m.k,true);}
@@ -1214,7 +1243,8 @@ function tapAt(px,py){
     var c0=pickCell(px,py);
     if(c0){for(var fi2=0;fi2<furn.length;fi2++){var f2=furn[fi2];
       if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}
-      if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}}}
+      if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}
+      if(f2.id==="stereo"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){tanzStart();return;}}}
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
@@ -1255,6 +1285,54 @@ function mgTick(){
   MG.pos+=MG.dir*MG.speed/60;
   if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
   mgDraw();MG.raf=requestAnimationFrame(mgTick);}
+var TANZ={on:false,beat:0,t0:0,scores:[],raf:0,hitDone:false,TEMPO:850};
+function tanzStart(){
+  if(TANZ.on||ANGEL.on||KOCH.on||MG.on)return;
+  TANZ.on=true;TANZ.beat=0;TANZ.scores=[];
+  document.getElementById("tanz").style.display="flex";
+  document.getElementById("tanzScore").textContent="Beat 0/8";
+  tanzBeat();}
+function tanzBeat(){
+  TANZ.beat++;TANZ.hitDone=false;TANZ.t0=performance.now();
+  beep(160,.09,"square",.06);
+  TANZ.raf=requestAnimationFrame(tanzFrame);}
+function tanzFrame(){
+  if(!TANZ.on)return;
+  var t=(performance.now()-TANZ.t0)/TANZ.TEMPO,r=document.getElementById("tanzRing");
+  if(t>=1.25){
+    if(!TANZ.hitDone){TANZ.scores.push(0);tanzFb("💨 verpasst");}
+    if(TANZ.beat>=8)return tanzEnd();
+    return tanzBeat();}
+  r.style.opacity=t<1?String(0.35+t*0.65):"1";
+  r.style.transform="scale("+Math.max(1,2.1-1.1*Math.min(t,1))+")";
+  TANZ.raf=requestAnimationFrame(tanzFrame);}
+function tanzTap(){
+  if(!TANZ.on||TANZ.hitDone)return;
+  TANZ.hitDone=true;
+  var err=Math.abs((performance.now()-TANZ.t0)-TANZ.TEMPO);
+  var sc=err<130?1:(err<280?0.5:0);
+  TANZ.scores.push(sc);
+  beep(sc===1?920:(sc>0?680:240),.09,sc>0?"triangle":"sawtooth",.05);
+  tanzFb(sc===1?"🌟 PERFEKT!":(sc>0?"👍 gut":"😕 daneben ("+Math.round(err)+" ms)"));}
+function tanzFb(txt){
+  document.getElementById("tanzScore").textContent="Beat "+TANZ.beat+"/8 · "+txt;}
+function tanzEnd(){
+  TANZ.on=false;cancelAnimationFrame(TANZ.raf);
+  document.getElementById("tanz").style.display="none";
+  var sum=0;TANZ.scores.forEach(function(x){sum+=x;});
+  var avg=TANZ.scores.length?sum/TANZ.scores.length:0;
+  if(avg>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;
+  if(MPs&&!mpHost)netSend({t:"tanzBoost",s:avg});else tanzApply(avg);
+  hint(avg>=0.999?"💃🕺 PERFEKTE Tanz-Session! Die Liebe glüht":
+       avg>=0.55?"🎶 Was für ein Abend! Alle sind happy":"🎵 Übung macht den Meister …");}
+function tanzApply(avg){
+  sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10+25*avg);simEmoji(s2,avg>=0.55?"💃":"🎵");});
+  if(!MPs||mpHost){liebe=Math.min(100,liebe+Math.round(3+8*avg));if(avg>=0.5)skillXp("liebe",1);updHUD();}}
+document.getElementById("tanzBox").addEventListener("pointerdown",function(e){
+  if(e.target.id==="tanzQuit")return;tanzTap();});
+document.getElementById("tanzQuit").onclick=function(e){
+  e.stopPropagation();TANZ.on=false;cancelAnimationFrame(TANZ.raf);
+  document.getElementById("tanz").style.display="none";};
 var ANGEL={on:false,phase:"idle",round:0,fang:0,geldSum:0,t0:0,tmr:null};
 var FISCHE=[["🐠 Prachtfisch",70,300],["🐟 Barsch",28,600],["🐟 Rotauge",12,999999]];
 function angelStart(){
