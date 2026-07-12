@@ -943,6 +943,21 @@ function mkGarden(x,z){var gy=groundH(x,z);
   var fw=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
   [[-2,-1.5],[2,-1.5],[-2,1.5],[2,1.5]].forEach(function(p){var post=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.7,0.12),fw);post.position.set(x+p[0],gy+0.35,z+p[1]);scene.add(post);});
 }
+// 🪧 Wegweiser-Schild (zeigt Richtung + Text)
+function mkSignpost(x,z,items){var g=new THREE.Group(),gy=groundH(x,z);
+  var wood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+  var post=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.13,2.8,6),wood);post.position.y=1.4;post.castShadow=true;g.add(post);
+  items.forEach(function(it,i){
+    var cv=document.createElement("canvas");cv.width=256;cv.height=64;var c=cv.getContext("2d");
+    c.fillStyle="#7a5230";c.fillRect(0,0,256,64);c.strokeStyle="#4a3018";c.lineWidth=6;c.strokeRect(3,3,250,58);
+    c.fillStyle="#f4e6c8";c.font="bold 34px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(it.t,128,34);
+    var mat=new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:1});
+    var b=new THREE.Group();
+    var board=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.44,0.08),mat);board.position.x=0.75;b.add(board);
+    var tip=new THREE.Mesh(new THREE.ConeGeometry(0.24,0.4,3),mat);tip.rotation.z=-Math.PI/2;tip.position.x=1.62;b.add(tip);
+    b.position.y=2.35-i*0.56;b.rotation.y=it.a||0;g.add(b);
+  });
+  g.position.set(x,gy,z);scene.add(g);return g;}
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 function decorateWorld(){
   var half=MAP/2-40;
@@ -1021,6 +1036,18 @@ function decorateWorld(){
     for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+3+ai*0.9,waz=vz-4;
       wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
     // 🧑‍🌾 Dorfbewohner (mehr im grossen Anfangsdorf)
+    // 🪧 Wegweiser am Dorfrand (Richtung Dorfmitte) + weitere Orte im Anfangsdorf
+    var spAng=Math.atan2(vz,vx); // Richtung von Dorf weg (nach aussen)
+    (function(){var sx=vx+Math.cos(spAng)*(ringR+3),sz=vz+Math.sin(spAng)*(ringR+3);
+      var toMid=Math.atan2(vz-sz,vx-sx);
+      var items=[{t:isSpawn?"🏡 Heimdorf":"🏡 Dorf",a:toMid}];
+      if(isSpawn)items.push({t:"⚔️ Wildnis",a:toMid+Math.PI});
+      mkSignpost(sx,sz,items);})();
+    if(isSpawn){ // 🔦 Leucht-Beacon (von weitem sichtbar = Heimweg)
+      var bc=new THREE.Mesh(new THREE.CylinderGeometry(0.35,0.35,44,8),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.22,depthWrite:false}));
+      bc.position.set(vx,groundH(vx,vz)+22,vz);scene.add(bc);
+      var bl=new THREE.PointLight(0x7de3ff,0.6,40);bl.position.set(vx,groundH(vx,vz)+6,vz);scene.add(bl);
+    }
     var nGar=isSpawn?3:1;for(var ga=0;ga<nGar;ga++){var gaa=rnd()*6.28,gar=ringR-5;mkGarden(vx+Math.cos(gaa)*gar,vz+Math.sin(gaa)*gar);}
     var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr);}
     if(isSpawn){ // 💰 Händler beim Marktstand
@@ -1782,6 +1809,8 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
   ctx.restore();
   // Rand
   ctx.strokeStyle="rgba(130,200,255,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.stroke();
+  // Nord-Anzeige
+  ctx.fillStyle="#ff8a8a";ctx.font="bold 11px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("N",cx,6);
 }
 function frame(now){
   requestAnimationFrame(frame);
