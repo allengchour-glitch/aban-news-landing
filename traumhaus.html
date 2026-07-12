@@ -237,6 +237,12 @@ var wetter="sonne";
 var SAISON=[["🌸 Frühling",0xc8f0b8],["☀️ Sommer",0xffffff],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]];
 function calcSaison(){return Math.floor((tag-1)/5)%4;}
 function applySaison(){rasen.material.color.setHex(SAISON[calcSaison()][1]);}
+var sterneGeo=new THREE.BufferGeometry(),sternePos=new Float32Array(420*3);
+for(var st5=0;st5<420;st5++){var sa5=Math.random()*6.283,sr5=40+Math.random()*90;
+  sternePos[st5*3]=Math.cos(sa5)*sr5;sternePos[st5*3+1]=28+Math.random()*55;sternePos[st5*3+2]=Math.sin(sa5)*sr5;}
+sterneGeo.setAttribute("position",new THREE.BufferAttribute(sternePos,3));
+var sterne=new THREE.Points(sterneGeo,new THREE.PointsMaterial({color:0xfff8e0,size:0.32,transparent:true,opacity:0,sizeAttenuation:true}));
+sterne.frustumCulled=false;scene.add(sterne);window.sterne=sterne;
 var partN=700,partGeo=new THREE.BufferGeometry(),partPos=new Float32Array(partN*3),partDrift=new Float32Array(partN);
 for(var pi=0;pi<partN;pi++){partPos[pi*3]=(Math.random()-0.5)*56;partPos[pi*3+1]=Math.random()*17;partPos[pi*3+2]=(Math.random()-0.5)*56;partDrift[pi]=Math.random()*6.283;}
 partGeo.setAttribute("position",new THREE.BufferAttribute(partPos,3));
@@ -998,6 +1004,9 @@ function simThink(s,si){
   if(s.state!=="idle")return;
   var worst=null,wv=101;
   NEEDS.forEach(function(nd){if(s.needs[nd[0]]<wv){wv=s.needs[nd[0]];worst=nd[0];}});
+  // Schlafenszeit: nachts zieht es alle ins Bett
+  var spaet=uhrzeit>21.5*60||uhrzeit<5.5*60;
+  if(spaet&&s.needs.energie<96&&!crime.on){worst="energie";wv=40;}
   if(wv<55){var f=findFurnFor(worst);
     if(f){var g0=simGrid(s),tcell=useCell(f);
       var path=findPath(g0[0],g0[1],tcell[0],tcell[1]);
@@ -1958,7 +1967,8 @@ function loop(now){
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-6)/12*Math.PI));
     var wDim=wetter==="sonne"?1:0.62;
-    sun.intensity=(0.12+dayA*0.75)*wDim;hemi.intensity=0.2+dayA*0.28;
+    sun.intensity=(0.05+dayA*0.82)*wDim;hemi.intensity=0.1+dayA*0.38;
+    if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
     sun.position.set(Math.cos((hh-6)/12*Math.PI)*30,10+dayA*30,18);
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x1a2340),1-Math.min(1,dayA*1.4));
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
