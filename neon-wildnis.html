@@ -755,6 +755,8 @@ function decorateWorld(){
     for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*(hrd*0+13),fz=vz+Math.sin(fa)*13;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
+    // ⛲ Brunnen (Meshy) etwas neben dem Lagerfeuer als Dorf-Mittelpunkt
+    var fnt=cc0inst("item_fountain",2.4);if(fnt){var fx2=vx-4,fz2=vz+2;fnt.position.set(fx2,groundH(fx2,fz2),fz2);fnt.rotation.y=rnd()*6.28;scene.add(fnt);}
   }
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
@@ -1480,7 +1482,7 @@ function startGame(fresh){
   SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon"],decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain"],decorateWorld);
   });
   loadHero();loadSlime();
   if(sv){
