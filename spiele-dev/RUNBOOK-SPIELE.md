@@ -460,11 +460,10 @@ Stand: Bauen(7 Kategorien, 22 Möbel) · Bedürfnis-KI · Arbeit/Gehalt/Karriere
 krumme Dinger + Minigames (Timing) · NPCs (Postbote/Nachbarin/Händler/Katze/Polizist) · realistische
 geriggte Charaktere (th_mann/th_frau, Bone-Height-Messung!) · Hund · Gemüsebeet · Koop komplett (mp.js).
 Nächste Blöcke (je 1 PR, immer smoke+Screenshot+Playtest):
-1. 🚗 AUTOS: Blender-Fahrzeugpark (3-4 Autos, Kombi/Flitzer/Van), Straße vor dem Grundstück,
-   Auto kaufen → Bewohner fahren morgens zur Arbeit (sichtbar wegfahren statt teleport)
-2. 🏆 LANGZEIT („süchtig"): Erfolge-Panel (30 Achievements), Prestige (Haus-Wert-Score),
-   Sammlung (jedes Möbel 1x besessen), Tages-Streak-Bonus
-3. 🧱 BAU-TIEFE: Tapeten/Wandfarben, 2. Stockwerk (Treppe), Dach
+1. ✅ AUTOS (PR ~#1690): 3 Meshy-Autos (Kombi/Flitzer/Van), Straße, sichtbare Pendelfahrt
+2. ✅ LANGZEIT (PR #1734): 18 Erfolge + Toast/Panel + Haus-Wert-Prestige (⛺→🏰) + Stats;
+   dazu Tab/Q/E-Kamera-Drehung (User-Wunsch). Offen aus Block 2: Sammlung, Tages-Streak
+3. 🧱 BAU-TIEFE (JETZT): Tapeten/Wandfarben, 2. Stockwerk (Treppe), Dach
 4. 🌦️ WETTER: Regen/Schnee-Partikel, Jahreszeiten färben Rasen
 5. 🎮 MEHR MINIGAMES: Kochen (Zutaten-Reihenfolge), Angeln am Teich, Tanz-Rhythmus
 6. 👥 MEHR NPCs: Nachbarskind (spielt mit Kindern), Bürgermeister (Quests: „baue einen Pool")
