@@ -79,3 +79,31 @@ Sonniges Feld/klarer Himmel — für Tageslicht-`scene.environment` (mit `RGBELo
 - `@gltf-transform/cli` 4.4.1 (global via `/opt/node22/bin/npm i -g`) — GLB prune/dedup/inspect.
 - numpy in `/tmp/pymods` (für Blender-glTF-Export: `PYTHONPATH=/tmp/pymods blender -b -P …`).
 - Blender 4.0.2 (Ground-Truth-Render nur mit **CYCLES/CPU** headless; EEVEE braucht libEGL = fehlt).
+
+## Meshy.ai — generierte Assets (2026-07-12, Text→3D, private Lizenz)
+Vom User bereitgestellte Credits. Prompt-getrieben, preview→refine, r128-Fix (prune/dedup + JPEG-Resize 1024).
+
+| Datei | Prompt-Kern | Nutzung |
+|---|---|---|
+| mob_dragon.glb | fantasy dragon, glowing cyan wings | Drachen-Nacht-Boss |
+| building_castle.glb | stone castle fortress with towers | Burg-Landmarke |
+| item_relic.glb | glowing gem on ornate gold base | leuchtendes Relikt (Deko/Fund) |
+| item_potion.glb | red health potion bottle | einsammelbarer Heiltrank (+40 HP) |
+
+## Kenney — Fantasy Town Kit + City Roads (CC0) — Blender-poliert
+Quelle: https://kenney.nl/assets/fantasy-town-kit · CC0 1.0. GLB-Format verweist auf externe
+`Textures/colormap.png` → in Blender importiert + als GLB mit **eingebetteter** Textur re-exportiert
+(flat-shading), sonst lädt r128 sie nicht. Tool: automation/polish_kenney_glb.py.
+
+| Datei | Original | Nutzung |
+|---|---|---|
+| ftk_road/ftk_road_bend/ftk_road_corner | road* | Straßen/Wege (Dorf-Kreuz + Weg-Stummel) |
+| ftk_stall | stall-red | Marktstand |
+| ftk_fountain | fountain-round-detail | Dorf-Brunnen |
+| ftk_cart | cart | Marktkarren |
+| ftk_banner | banner-red | Banner (Deko) |
+| ftk_lantern | lantern | Laterne (+Licht) |
+| ftk_watermill | watermill | Mühlrad (Deko) |
+| ftk_tree | tree-high-round | Baum |
+
+> Ersetzt die früheren selbst-modellierten gen_*-Props (auf User-Wunsch entfernt).

@@ -318,6 +318,52 @@ Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgero
       (knapp an ❤️ vorbei = „Ooh!"). Ziel: nie langweilig, jeder Klick hat Wumms. Bloom/Bloom-frei
       egal — es ist Pastell, aber Game-Feel-Prinzipien (Juice) voll ausreizen. OPT.motion respektieren.
 
+### ✅ STAND 2026-07-12 (Opus-Session, Teil 3) — neon-wildnis Meshy-Highlights
+- ✅ **Neue Meshy-Assets (PR #1752/#1753, User gab Credits):** 🐉 `mob_dragon` = Drachen-Nacht-Boss
+  (in `spawnBoss` statt SERAPH-Slime wenn `cc0proto["mob_dragon"]` da; `walk:true`, kind:"dragon",
+  eigene HP-Bar-Label), 🏰 `building_castle` = Burg-Landmarke, ✨ `item_relic` = leuchtende Fund-Props,
+  🧪 `item_potion` = einsammelbare Heiltränke (`potions[]`/`updPotions`, +40 HP), ⛲ `item_fountain` in
+  Dorf-Zentren. Alle über `loadCC0`/`cc0inst` auto-skaliert. `walk`-Flag ersetzt die kind!=="slime"-Prüfung.
+- **🔑 MESHY-API-LEHREN (teuer/wertvoll):**
+  - `action_id` beim Animieren ist ein **INT** (nummerierte Bibliothek), nicht String. Rigging braucht
+    `input_task_id`+`model_url`; Animation braucht `rig_task_id`+`action_id`. Animation kostet nur ~3 Credits.
+  - **Onboarding-Aufgaben** (300 Gratis-Credits): 5/6 werden durch normale API-Generierung automatisch erfüllt
+    (Remesh/3-in-Queue/Gratis-Retry/private Lizenz/Bild→3D). Die „3 Animationen"-Aufgabe löst der **300-Credit-
+    Bonus per API NICHT aus** (Balance blieb gleich) → braucht die Web-UI (nur User).
+  - **r128-Aufbereitung:** `gltf-transform prune`+`dedup`+`resize --width 1024` (JPEG behalten). NIEMALS
+    `optimize --texture-compress webp` (EXT_texture_webp bricht in r128 → Texturen weg). Meshy-Roh-GLBs sind
+    2-4 MB → nach Resize ~1 MB.
+  - Fertige Modelle notfalls **direkt per API** laden (`/openapi/v2/text-to-3d?sort_by=-created_at` → `model_urls.glb`),
+    falls ein Generier-Agent bei niedriger Balance stoppt bevor er herunterlädt.
+- **Meshy-Balance-Rest:** 26 Credits. Troll kam nicht mehr durch. Für mehr: User legt Credits/Onboarding nach.
+
+### ✅ STAND 2026-07-12 (Opus-Session, Teil 2) — neon-wildnis grosser Welt-Ausbau
+- ✅ **Welt-Reichtum aus CC0 (PR #1749):** nutzt die vorhandene `models/cc0_*.glb`-Bibliothek (Kenney
+  Nature/Survival/Graveyard, alle CC0) + **Auto-Skalierung per Bounding-Box** (`loadCC0`/`cc0inst`,
+  robust gegen native Einheiten). NEU: 4 Baum-Sorten + Büsche/Blumen/Pilze/Fels-Sorten (~350 Deko),
+  **Dörfer** (`decorateWorld`: 2-3 Cluster aus building_fachwerk/werkstatt/turm + cc0_fence-Ring +
+  flackerndes Lagerfeuer + Fässer/Kisten/Zelt), **versteckter Friedhof** (crypt+Gräber+Sarg+grünes
+  Licht + legendäre Gruft-Truhe = Top-Loot +40 XP +3 Legendary-Orbs), CC0-Fässer/Kisten als öffenbare
+  Loot-Behälter, prozeduraler **Fluss** (`buildRiver`). Neue Bauteile: Steinboden/Steinpfeiler/Holzzaun.
+  Debug: `__nw.villages/toVillage/toGrave/cc0`. ⚠️ CC0-Container nach Öffnen `visible=false` (kein Lid).
+- ✅ **Waffen & Rüstung (PR #1750):** Ausrüstung an der Werkbank, `equip={weapon,armor}` +
+  `gearStore()`-Helfer vereint tools+equip im Craft-System. 3 Waffen (Bronze+2/Kriegsaxt+4/Neon-Klinge+7
+  → Nahkampf & Skill) + 3 Rüstungen (Leder−2/Eisen−4/Kristall−7 → damagePlayer). Tier-Ketten, HUD-Badges,
+  Save/Load. Debug: `__nw.gear`.
+- **CC0-Quelle:** `models/ASSET-CREDITS.md` listet alle Kenney-Kits. Meshy-Balance 182 (für Highlights
+  reserviert). ⚠️ Meshy-Key ins File schreiben ist vom Classifier blockiert → Meshy nur inline/agent.
+
+### ✅ STAND 2026-07-12 (Opus-Session) — neon-wildnis lebendiger (Meshy)
+- ✅ **Fusion-Ausbau (Survival+RPG in EINEM Spiel):** 4 Stufen live — XP/Level, Skill (Q/💥 Schockwelle),
+  Loot-Orbs (4 Raritäten), SERAPH-Nacht-Boss (HUD-Bar, 2× Legendary-Reward). Alles in neon-wildnis.html.
+- ✅ **Meshy-Gegner + Welt-Props (PR #1747):** 3 neue Gegner-GLBs (👹 Goblin, 🐺 Wolf ab Tag 2, 🗿 Golem
+  ab Tag 3) — `MOBS[]` + gewichtete `pickMob()` in `spawnMonster()`; feste Kreaturen laufen zum Spieler
+  gedreht mit eigenem Tempo, Slime/Boss behalten Squash. 3 Item-GLBs: `item_shrine`+`item_mushroom` als
+  leuchtende Welt-Props (`loadProps()`/`updProps()`, schwebend+Aura, ~25 Stück), `item_chest` wertet
+  Beute-Truhen optisch auf (`mkChest` mit chestProto-Fallback). Debug-Hooks: `__nw.spawnMob(id)`,
+  `__nw.props()`, `__nw.toProp()`, `__nw.day(n)`. Alle 6 GLBs: r128-clean, toonify, feet y=0.
+  Verifiziert: game_smoke PASS + In-Game-Screenshots (Golem/Schrein/Pilze rendern sauber).
+
 ### ✅ STAND 2026-07-11 (Opus-Session, nach Fable-5-Limit) — GELIEFERT & LIVE
 - ✅ **Neon-Wildnis MVP** (neon-wildnis.html, PR #1691): riesige Map 800×800, Bäume fällen (+Holz),
   Steine/Kristalle/Beeren, 5 Bau-Rezepte (Mauer/Fackel/Lagerfeuer/Werkbank/Turm), Tag/Nacht + Slime-
