@@ -1116,7 +1116,7 @@ function gearUpd(){
   if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
 }
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";}
-function xpNeed(){return 12+level*8;}
+function xpNeed(){return 20+level*16;}
 function xpUpd(){var b=document.getElementById("xpFill");if(b)b.style.width=Math.min(100,xp/xpNeed()*100)+"%";var l=document.getElementById("lvlBadge");if(l)l.textContent="Lv "+level;}
 function gainXP(n){if(dead)return;xp+=n;var up=false;while(xp>=xpNeed()){xp-=xpNeed();level++;up=true;}
   if(up){maxHp+=18;hp=maxHp;announce("⭐ Level "+level+"! +18 max HP · stärkerer Angriff");
@@ -1230,10 +1230,10 @@ function harvest(){
   var col=r.type==="tree"?0x8a5a2a:(r.type==="crystal"?0x7de3ff:(r.type==="bush"?0xff5c8a:0xaab));
   burst(r.x,r.baseY+1.2,r.z,col,8); // satter: mehr Splitter
   if(r.hp<=0){
-    if(r.type==="tree"){inv.wood+=3;totalWood+=3;gainXP(3);toast("🪵 +3 Holz");floatText(r.x,r.baseY+2.4,r.z,"+3 🪵","#e6b98a");r.falling=0.01;shake=Math.min(shake+0.22,0.5);}
-    else if(r.type==="rock"){inv.stone+=2;gainXP(4);toast("🪨 +2 Stein");floatText(r.x,r.baseY+1.4,r.z,"+2 🪨","#cdd6ea");r.dead=true;r.mesh.visible=false;r.regrow=90;burst(r.x,r.baseY+0.6,r.z,0xaab,6);}
-    else if(r.type==="crystal"){inv.crystal+=1;inv.stone+=1;gainXP(6);toast("💎 +1 Kristall");floatText(r.x,r.baseY+1.6,r.z,"+1 💎","#7de3ff");r.dead=true;r.mesh.visible=false;r.regrow=140;burst(r.x,r.baseY+0.7,r.z,0x7de3ff,8);}
-    else if(r.type==="bush"){inv.berry+=1;gainXP(2);toast("🍓 +1 Beere");floatText(r.x,r.baseY+1.0,r.z,"+1 🍓","#ff8ab0");r.dead=true;if(r.berry)r.berry.visible=false;r.regrow=45;}
+    if(r.type==="tree"){inv.wood+=3;totalWood+=3;gainXP(1);toast("🪵 +3 Holz");floatText(r.x,r.baseY+2.4,r.z,"+3 🪵","#e6b98a");r.falling=0.01;shake=Math.min(shake+0.22,0.5);}
+    else if(r.type==="rock"){inv.stone+=2;gainXP(1);toast("🪨 +2 Stein");floatText(r.x,r.baseY+1.4,r.z,"+2 🪨","#cdd6ea");r.dead=true;r.mesh.visible=false;r.regrow=90;burst(r.x,r.baseY+0.6,r.z,0xaab,6);}
+    else if(r.type==="crystal"){inv.crystal+=1;inv.stone+=1;gainXP(3);toast("💎 +1 Kristall");floatText(r.x,r.baseY+1.6,r.z,"+1 💎","#7de3ff");r.dead=true;r.mesh.visible=false;r.regrow=140;burst(r.x,r.baseY+0.7,r.z,0x7de3ff,8);}
+    else if(r.type==="bush"){inv.berry+=1;gainXP(1);toast("🍓 +1 Beere");floatText(r.x,r.baseY+1.0,r.z,"+1 🍓","#ff8ab0");r.dead=true;if(r.berry)r.berry.visible=false;r.regrow=45;}
     invUpd();
   }
 }
