@@ -318,6 +318,27 @@ Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgero
       (knapp an ❤️ vorbei = „Ooh!"). Ziel: nie langweilig, jeder Klick hat Wumms. Bloom/Bloom-frei
       egal — es ist Pastell, aber Game-Feel-Prinzipien (Juice) voll ausreizen. OPT.motion respektieren.
 
+### ✅ STAND 2026-07-12 (Opus-Session, Teil 4 — GROSSER neon-wildnis-Ausbau, live)
+User-Feedback-Marathon → alles live. Kernpunkte für Folge-Sessions:
+- **Asset-Pipeline (wiederholbar):** Kenney-Kits per Direkt-URL laden (`kenney.nl/assets/<slug>` →
+  grep `/media/pages/assets/...zip`), entpacken, dann **Blender-Polish** `automation/polish_kenney_glb.py`
+  (GLB importieren → als GLB mit EINGEBETTETER Textur re-exportieren; Kenney-GLB verweist sonst auf externe
+  `Textures/colormap.png` → r128 lädt nicht). Präfixe: ftk_(Fantasy Town) ck_(Castle) dk_(Mini-Dungeon = Waffen!) fd_(Food).
+- **Prozedurale Texturen:** `automation/gen_textures.py` (numpy+Pillow, eigenes Perlin/Worley) → Kopfstein/Steinplatten/
+  Gras/Erde + Normal-Maps in `textures/`. numpy-Env in `/tmp/texenv` (pip --target). Boden nutzt map×Vertexfarbe.
+- **Straßen:** `roadRibbon(pts,width,cobble,normal)` = geschwungene Kopfstein-Wege (BufferGeometry-Ribbon, folgt Boden),
+  runder Steinplatz. NIE gerade (User).
+- **Stil-Regel (User):** ALLES im Fachwerk-Holzhaus-Stil (building_fachwerk/turm/werkstatt). Flache Kenney-Stein-Türme
+  + moderner Brunnen RAUS → `mkTimberWell()`. Häuser gross (Scale ~9.5, proportional zu Figur).
+- **Riesiges Anfangsdorf:** decorateWorld Dorf v===0 = Spawn (0,0), 10 Häuser, Radius 24.
+- **NPCs:** `mkVillager`/`updNPCs` (Arme schwingen, Gesicht, Emote-Blasen, wandern).
+- **Survivor-Merge:** Perks (`PERK`/`PERKS`/`showPerkPick`, Level-Up = 1-von-3-Karten, `perkChoosing` friert Loop)
+  + Nacht-Wellen (`waveNum/waveToSpawn/waveActive`, `updWaveHud`, eskalierend, Welle überlebt = XP-Bonus).
+- **KOOP:** `js/mp.js` (MP.host/MP.join, PeerJS-P2P, 1v1) + `js/vendor/peerjs.min.js`. NET-Modul in neon-wildnis:
+  Host sendet Seed → geteilte Welt, `sendFast` Positions-Sync, Remote-Avatar. Test: `?mp=local` (2 Seiten, BroadcastChannel).
+  ⚠️ Kein öffentliches Matchmaking (bräuchte Server) → Code-basiert.
+- XP-Balance gesenkt (Harvest 3→1 etc., xpNeed steiler). Debug-Hooks: `__nw.xp/boss/night/spawnMob/...`.
+
 ### ✅ STAND 2026-07-12 (Opus-Session, Teil 3) — neon-wildnis Meshy-Highlights
 - ✅ **Neue Meshy-Assets (PR #1752/#1753, User gab Credits):** 🐉 `mob_dragon` = Drachen-Nacht-Boss
   (in `spawnBoss` statt SERAPH-Slime wenn `cc0proto["mob_dragon"]` da; `walk:true`, kind:"dragon",
