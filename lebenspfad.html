@@ -2651,8 +2651,14 @@ function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: über den HAUPT-Renderer 
       for(var y=0;y<PV_H;y++){var sy=(PV_H-1-y)*W4,dy=y*W4;for(var xx=0;xx<W4;xx++)d[dy+xx]=b[sy+xx];}
       ctx.putImageData(img,0,0);
     }catch(e){}};
-    var p=mkPawnMesh(col,cfg,function(){draw();});p.rotation.y=0.45; // Anime-GLB: nachrendern wenn geladen
-    draw();
+    var p;
+    if(cfg&&cfg.meshy){ // Anime-Figur: SOFORT Toon als Platzhalter zeigen (nie leere Box), GLB ersetzt ihn beim Fertigladen
+      var tc={};for(var tk in cfg)tc[tk]=cfg[tk];delete tc.meshy;
+      p=mkPawnMesh(col,tc,null);p.rotation.y=0.45;draw();
+      var mp=mkPawnMesh(col,cfg,function(){p=mp;mp.rotation.y=0.45;draw();});
+    }else{
+      p=mkPawnMesh(col,cfg,null);p.rotation.y=0.45;draw();
+    }
   }catch(e){}}
 function renderCharUI(){
   var cr=document.getElementById("charRow");if(!cr)return;cr.innerHTML="";
@@ -2681,14 +2687,14 @@ function renderCharUI(){
     gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
     r1.appendChild(gf);r1.appendChild(gm);card.appendChild(r1);
     var r2=document.createElement("div");r2.className="crow"; // ◀ Style ▶ (Accessoire)
-    var bl=document.createElement("button");bl.textContent="◀";bl.title="Accessoire";bl.onclick=function(){cfg.style=nextStyle(cfg.style,-1);upd();beep(500,.04,"triangle",.03);};
+    var bl=document.createElement("button");bl.textContent="◀";bl.title="Accessoire";bl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.style=nextStyle(cfg.style,-1);upd();beep(500,.04,"triangle",.03);};
     sl=document.createElement("div");sl.className="lbl";
-    var br=document.createElement("button");br.textContent="▶";br.title="Accessoire";br.onclick=function(){cfg.style=nextStyle(cfg.style,1);upd();beep(520,.04,"triangle",.03);};
+    var br=document.createElement("button");br.textContent="▶";br.title="Accessoire";br.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.style=nextStyle(cfg.style,1);upd();beep(520,.04,"triangle",.03);};
     r2.appendChild(bl);r2.appendChild(sl);r2.appendChild(br);card.appendChild(r2);
     var r2b=document.createElement("div");r2b.className="crow"; // ◀ Haarfarbe ▶ (Auto + HAIRS)
-    var hbl=document.createElement("button");hbl.textContent="◀";hbl.title="Haarfarbe";hbl.onclick=function(){cfg.hair=nextHair(cfg.hair,-1);upd();beep(500,.04,"triangle",.03);};
+    var hbl=document.createElement("button");hbl.textContent="◀";hbl.title="Haarfarbe";hbl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hair=nextHair(cfg.hair,-1);upd();beep(500,.04,"triangle",.03);};
     hl=document.createElement("div");hl.className="lbl";hl.style.borderRadius="8px";hl.style.padding="0 4px";
-    var hbr=document.createElement("button");hbr.textContent="▶";hbr.title="Haarfarbe";hbr.onclick=function(){cfg.hair=nextHair(cfg.hair,1);upd();beep(520,.04,"triangle",.03);};
+    var hbr=document.createElement("button");hbr.textContent="▶";hbr.title="Haarfarbe";hbr.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hair=nextHair(cfg.hair,1);upd();beep(520,.04,"triangle",.03);};
     r2b.appendChild(hbl);r2b.appendChild(hl);r2b.appendChild(hbr);card.appendChild(r2b);
     var rMe=document.createElement("div");rMe.className="crow"; // 🎌 Meshy-Anime-Figur
     var mel=document.createElement("button");mel.textContent="◀";mel.title="3D-Figur";mel.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,-1);upd();};
@@ -2698,17 +2704,17 @@ function renderCharUI(){
     var r3=document.createElement("div");r3.className="crow"; // Hautton-Punkte + Hosenfarbe
     for(var d=0;d<SKINTONES.length;d++)(function(d){var b=document.createElement("button");b.className="skin";
       b.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);b.title="Hautton "+(d+1);
-      b.onclick=function(){cfg.skin=d;upd();beep(540,.04,"triangle",.03);};dots.push(b);r3.appendChild(b);})(d);
+      b.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.skin=d;upd();beep(540,.04,"triangle",.03);};dots.push(b);r3.appendChild(b);})(d);
     pl=document.createElement("button");pl.className="skin";pl.title="Hosen-/Rockfarbe wechseln";pl.style.width="auto";pl.style.padding="0 6px";
-    pl.onclick=function(){cfg.pants=(cfg.pants+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
+    pl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.pants=(cfg.pants+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
     cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wechseln";cl.style.width="auto";cl.style.padding="0 6px";
-    cl.onclick=function(){cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
+    cl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
     hsB=document.createElement("button");hsB.className="skin";hsB.title="💇 Frisur wechseln";hsB.style.width="auto";hsB.style.padding="0 6px";hsB.textContent="💇";
-    hsB.onclick=function(){cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
+    hsB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
     ofB=document.createElement("button");ofB.className="skin";ofB.title="👗 Rock / Kleid / Hose";ofB.style.width="auto";ofB.style.padding="0 6px";
-    ofB.onclick=function(){cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
+    ofB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
     tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
-    tpB.onclick=function(){cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
+    tpB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
     card.appendChild(r3);
     cr.appendChild(card);upd();
   })(i);}
@@ -2958,14 +2964,14 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
   r1.appendChild(gf);r1.appendChild(gm);card.appendChild(r1);
   var r2=document.createElement("div");r2.className="crow";
-  var bl=document.createElement("button");bl.textContent="◀";bl.onclick=function(){cfg.style=nextStyle(cfg.style,-1);upd();};
+  var bl=document.createElement("button");bl.textContent="◀";bl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.style=nextStyle(cfg.style,-1);upd();};
   sl=document.createElement("div");sl.className="lbl";
-  var br=document.createElement("button");br.textContent="▶";br.onclick=function(){cfg.style=nextStyle(cfg.style,1);upd();};
+  var br=document.createElement("button");br.textContent="▶";br.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.style=nextStyle(cfg.style,1);upd();};
   r2.appendChild(bl);r2.appendChild(sl);r2.appendChild(br);card.appendChild(r2);
   var r2b=document.createElement("div");r2b.className="crow";
-  var hbl=document.createElement("button");hbl.textContent="◀";hbl.onclick=function(){cfg.hair=nextHair(cfg.hair,-1);upd();};
+  var hbl=document.createElement("button");hbl.textContent="◀";hbl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hair=nextHair(cfg.hair,-1);upd();};
   hl=document.createElement("div");hl.className="lbl";hl.style.borderRadius="8px";hl.style.padding="0 4px";
-  var hbr=document.createElement("button");hbr.textContent="▶";hbr.onclick=function(){cfg.hair=nextHair(cfg.hair,1);upd();};
+  var hbr=document.createElement("button");hbr.textContent="▶";hbr.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hair=nextHair(cfg.hair,1);upd();};
   r2b.appendChild(hbl);r2b.appendChild(hl);r2b.appendChild(hbr);card.appendChild(r2b);
     var rMe=document.createElement("div");rMe.className="crow"; // 🎌 Meshy-Anime-Figur
     var mel=document.createElement("button");mel.textContent="◀";mel.title="3D-Figur";mel.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,-1);upd();};
@@ -2973,17 +2979,17 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
     var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
     rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
   var r3=document.createElement("div");r3.className="crow";
-  for(var d=0;d<SKINTONES.length;d++)(function(d){var bd=document.createElement("button");bd.className="skin";bd.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);bd.title="Hautton "+(d+1);bd.onclick=function(){cfg.skin=d;upd();};dots.push(bd);r3.appendChild(bd);})(d);
+  for(var d=0;d<SKINTONES.length;d++)(function(d){var bd=document.createElement("button");bd.className="skin";bd.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);bd.title="Hautton "+(d+1);bd.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.skin=d;upd();};dots.push(bd);r3.appendChild(bd);})(d);
   pl=document.createElement("button");pl.className="skin";pl.title="Hosen-/Rockfarbe wechseln";pl.style.width="auto";pl.style.padding="0 6px";
-  pl.onclick=function(){cfg.pants=((cfg.pants|0)+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
+  pl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.pants=((cfg.pants|0)+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
   cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wechseln";cl.style.width="auto";cl.style.padding="0 6px";
-  cl.onclick=function(){cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
+  cl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
   hsB=document.createElement("button");hsB.className="skin";hsB.title="💇 Frisur wechseln";hsB.style.width="auto";hsB.style.padding="0 6px";hsB.textContent="💇";
-  hsB.onclick=function(){cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
+  hsB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
   ofB=document.createElement("button");ofB.className="skin";ofB.title="👗 Rock / Kleid / Hose";ofB.style.width="auto";ofB.style.padding="0 6px";
-  ofB.onclick=function(){cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
+  ofB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
   tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
-  tpB.onclick=function(){cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
+  tpB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
   card.appendChild(r3);
   wrap.appendChild(card);upd();
 }
