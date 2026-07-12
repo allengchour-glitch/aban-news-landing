@@ -110,6 +110,17 @@ canvas{display:block}
   #quest{top:calc(58px + env(safe-area-inset-top));max-width:56vw;font-size:.88rem;padding:7px 10px}
   #quest .qt{font-size:.94rem}
 }
+
+#perkPick{position:fixed;inset:0;z-index:60;background:rgba(6,10,22,.72);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+#perkPick.hide{display:none}
+.perkInner{text-align:center;max-width:96vw}
+#perkLvl{color:#ffe08a;font-weight:900;font-size:1.15rem;letter-spacing:.03em;margin-bottom:14px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+#perkCards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.perkCard{width:150px;background:linear-gradient(160deg,#1a2748,#0f1830);border:2px solid #3a5aa0;border-radius:16px;padding:18px 12px;cursor:pointer;transition:transform .12s,border-color .12s,box-shadow .12s;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.perkCard:hover{transform:translateY(-6px) scale(1.04);border-color:#7de3ff;box-shadow:0 12px 32px rgba(80,200,255,.35)}
+.perkCard .pIc{font-size:2.6rem;line-height:1}
+.perkCard .pN{color:#eaf2ff;font-weight:900;margin-top:8px;font-size:1.02rem}
+.perkCard .pD{color:#9fb6e0;font-size:.82rem;margin-top:5px}
 </style>
 </head>
 <body>
@@ -147,6 +158,7 @@ canvas{display:block}
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
+<div id="perkPick" class="hide"><div class="perkInner"><div id="perkLvl">⭐ Level Up</div><div id="perkCards"></div></div></div>
   <div id="craftMenu" class="hide"></div>
 </div>
 <div id="nightVig"></div>
@@ -1141,7 +1153,7 @@ var equip={weapon:0,armor:0};
 var WEAP_ATK=[0,2,4,7], ARMOR_DEF=[0,2,4,7];
 var WEAP_NAME=["Faust","🗡️ Bronze","⚔️ Kriegsaxt","🌟 Neon-Klinge"], ARMOR_NAME=["—","🥋 Leder","🛡️ Eisen","💠 Kristall"];
 function gearStore(k){return (k==="weapon"||k==="armor")?equip:tools;}
-function weaponAtk(){return WEAP_ATK[equip.weapon]||0;}
+function weaponAtk(){return (WEAP_ATK[equip.weapon]||0)+PERK.atk;}
 function normInv(){ // defensiv: alte Saves ohne neue Felder auffüllen
   inv.wood=inv.wood||0;inv.stone=inv.stone||0;inv.crystal=inv.crystal||0;inv.berry=inv.berry||0;inv.meat=inv.meat||0;
   tools.axe=tools.axe||0;tools.pick=tools.pick||0;
@@ -1196,19 +1208,49 @@ function gearUpd(){
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";}
 function xpNeed(){return 20+level*16;}
 function xpUpd(){var b=document.getElementById("xpFill");if(b)b.style.width=Math.min(100,xp/xpNeed()*100)+"%";var l=document.getElementById("lvlBadge");if(l)l.textContent="Lv "+level;}
-function gainXP(n){if(dead)return;xp+=n;var up=false;while(xp>=xpNeed()){xp-=xpNeed();level++;up=true;}
-  if(up){maxHp+=18;hp=maxHp;announce("⭐ Level "+level+"! +18 max HP · stärkerer Angriff");
+function gainXP(n){if(dead)return;xp+=n;var ups=0;while(xp>=xpNeed()){xp-=xpNeed();level++;ups++;}
+  if(ups>0){maxHp+=8;hp=Math.min(maxHp,hp+8);
     if(typeof burst==="function")burst(player.position.x,player.position.y+2,player.position.z,0xffd166,24);
-    hpUpd();}
+    hpUpd();perkQueue+=ups;if(!perkChoosing)showPerkPick();}
   xpUpd();}
-function damagePlayer(d){if(dead)return;d=Math.max(1,d-(ARMOR_DEF[equip.armor]||0));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
+// 🎲 Roguelite-Perks (aus Neon-Survivor) — bei Level-Up 1 von 3 wählen
+var PERK={atk:0,def:0,spd:0,magnet:0,regen:0,skillcd:0,harvest:0};
+var perkQueue=0,perkChoosing=false;
+var PERKS=[
+  {ic:"⚔️",n:"Schärfe",d:"+2 Angriff",fn:function(){PERK.atk+=2;}},
+  {ic:"🛡️",n:"Panzerung",d:"−1 Schaden",fn:function(){PERK.def+=1;}},
+  {ic:"❤️",n:"Vitalität",d:"+25 Max HP",fn:function(){maxHp+=25;hp=maxHp;hpUpd();}},
+  {ic:"🏃",n:"Flink",d:"+18% Tempo",fn:function(){PERK.spd+=1.5;}},
+  {ic:"🩹",n:"Regeneration",d:"+0,7 HP/s",fn:function(){PERK.regen+=0.7;}},
+  {ic:"🧲",n:"Magnet",d:"+Loot-Reichweite",fn:function(){PERK.magnet+=1.6;}},
+  {ic:"💥",n:"Fokus",d:"Skill −1,5s Cooldown",fn:function(){PERK.skillcd+=1.5;}},
+  {ic:"🪓",n:"Erntemeister",d:"+30% Sammeln",fn:function(){PERK.harvest+=0.3;}}
+];
+function showPerkPick(){
+  perkChoosing=true;
+  var box=document.getElementById("perkPick");if(!box){perkChoosing=false;return;}
+  var pool=PERKS.slice();var pick=[];for(var k=0;k<3&&pool.length;k++){var idx=(rnd()*pool.length)|0;pick.push(pool.splice(idx,1)[0]);}
+  var cards=document.getElementById("perkCards");cards.innerHTML="";
+  document.getElementById("perkLvl").textContent="⭐ Level "+level+" — wähle ein Upgrade";
+  pick.forEach(function(P){var c=document.createElement("div");c.className="perkCard";
+    c.innerHTML='<div class="pIc">'+P.ic+'</div><div class="pN">'+P.n+'</div><div class="pD">'+P.d+'</div>';
+    c.onclick=function(){P.fn();invUpd&&invUpd();choosePerk();};cards.appendChild(c);});
+  box.classList.remove("hide");
+}
+function choosePerk(){
+  perkQueue=Math.max(0,perkQueue-1);
+  var box=document.getElementById("perkPick");
+  if(perkQueue>0){showPerkPick();}
+  else{perkChoosing=false;if(box)box.classList.add("hide");announce("⭐ Level "+level+"!","#ffd166");}
+}
+function damagePlayer(d){if(dead)return;d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
   if(dead||!running||buildMode)return;
   if(level<2){toast("💥 Schockwelle ab Level 2");return;}
   if(skillCd>0){toast("💥 Cooldown "+Math.ceil(skillCd)+"s");return;}
-  skillCd=SKILL_CD;var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
+  skillCd=Math.max(2,SKILL_CD-PERK.skillcd);var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
@@ -1231,7 +1273,7 @@ function bossReward(x,z){announce("🏆 Boss besiegt! Legendäre Beute!");gainXP
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
   o.m.rotation.y+=dt*2.6;o.m.position.y=groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16;
   var dx=o.x-player.position.x,dz=o.z-player.position.z;
-  if(dx*dx+dz*dz<1.7*1.7&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
+  var LR=1.7+PERK.magnet;if(dx*dx+dz*dz<LR*LR&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
     toast((o.ri>=3?"🌟 ":"💎 ")+R.n+"e Beute! +"+R.xp+" XP"+(R.cr?" · +"+R.cr+"💎":"")+(R.hp?" · +"+R.hp+" maxHP":""));
     floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,11);
     scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);continue;}
@@ -1303,7 +1345,7 @@ function harvest(){
   if(!nearRes)return;var r=nearRes;
   if(heroRig)playOnce(heroRig,"attack",2.4);
   faceTo(r.x,r.z);
-  var dmg=1;if(r.type==="tree")dmg=1+tools.axe;else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick;
+  var dmg=(1+PERK.harvest)|0;dmg=Math.max(1,dmg);if(r.type==="tree")dmg=1+tools.axe+(PERK.harvest>=0.3?1:0);else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick+(PERK.harvest>=0.3?1:0);
   r.hp-=dmg;r.hitAnim=0.2;
   var col=r.type==="tree"?0x8a5a2a:(r.type==="crystal"?0x7de3ff:(r.type==="bush"?0xff5c8a:0xaab));
   burst(r.x,r.baseY+1.2,r.z,col,8); // satter: mehr Splitter
@@ -1556,14 +1598,14 @@ var perfNow=0,lastT=0;
 function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
-  if(!running||paused){renderer.render(scene,camera);return;}
+  if(!running||paused||perkChoosing){renderer.render(scene,camera);return;}
   // Bewegung
   var mx=stickV.x,my=stickV.y;
   if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
   var ml=Math.hypot(mx,my);
   var moving=ml>0.15&&!dead;
   if(moving){
-    var spd=8;var nx=player.position.x-mx/ml*spd*dt*Math.min(1,ml),nz=player.position.z-my/ml*spd*dt*Math.min(1,ml);
+    var spd=8+PERK.spd;var nx=player.position.x-mx/ml*spd*dt*Math.min(1,ml),nz=player.position.z-my/ml*spd*dt*Math.min(1,ml);
     // Grenze
     nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
     // Struktur-Kollision (grob)
@@ -1574,7 +1616,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);updPotions(dt);updNPCs(dt);
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -1697,6 +1739,8 @@ addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
 window.__nw={
   boss:function(){spawnBoss();return monsters.length;}, // Test-Only
+  xp:function(n){gainXP(n||100);return {level:level,perk:PERK};}, // Test-Only
+  perkState:function(){return PERK;},
   spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;var proto=M.file?mobProtos[M.id]:slimeProto;var m=proto?proto.clone(true):fallbackSlime();m.traverse(function(n){if(n.isMesh)n.castShadow=true;});var sc=proto?M.scale:1;m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id});return proto?1:0;}, // Test-Only
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
