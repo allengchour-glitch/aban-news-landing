@@ -97,29 +97,20 @@ base=np.stack([v*182,v*182,v*190],-1)     # helleres Steingrau
 save(base,"tex_stone.png")
 save(normal_from_height(grout*(0.5+0.5*tileid),2.4),"tex_stone_n.png")
 
-# ================= 3) GRAS (Boden) — natürlich, matt, feine Halme =================
-patch=fbm(N,4,seed=41)                     # grosse Farbflächen (hell/dunkel)
-fine =fbm(N,8,seed=43)                      # feines Halm-Korn (hochfrequent)
-# feine gerichtete Halm-Streifen (vertikal), damit es wie Gras wirkt
-streak=value_noise(3,N,seed=45)
-streak=np.repeat(np.random.default_rng(46).random((1,N)).astype(np.float32),N,0)
-streak=streak*0.5+fine*0.5
-base=np.zeros((N,N,3),np.float32)
-lum=(0.45+0.30*patch)*(0.75+0.25*fine)*(0.9+0.1*streak)  # matte Helligkeit
-base[...,0]=lum*(70+40*patch)              # gedämpftes R (olivstich)
-base[...,1]=lum*(120+35*patch)             # G moderat (nicht neon)
-base[...,2]=lum*(48+22*patch)              # niedriges B
-# trockene, erdige Flecken (bräunlich, nicht knallig)
-dry=np.clip(fbm(N,5,seed=44)-0.60,0,1)*2.4
-base[...,0]+=dry*55; base[...,1]+=dry*30; base[...,2]-=dry*10
-# vereinzelte dunkle Erdlöcher
-soil=np.clip(0.40-fbm(N,6,seed=47),0,1)*1.5
-base[...,0]=base[...,0]*(1-soil)+soil*90
-base[...,1]=base[...,1]*(1-soil)+soil*70
-base[...,2]=base[...,2]*(1-soil)+soil*48
-base=np.clip(base*1.30,0,255)
+# ================= 3) GRAS (Boden) — GLATT & sauber (kein Pixel-Rauschen) =================
+patch = fbm(N,5,seed=41)          # weiche mittlere Variation
+big   = fbm(N,3,seed=42)          # grosse sanfte Flaechen
+lum = (0.66+0.22*patch)*(0.92+0.08*big)
+base = np.zeros((N,N,3),np.float32)
+base[...,0] = lum*(58+26*patch)   # gedaempftes R
+base[...,1] = lum*(138+28*patch)  # sattes, sauberes Gruen
+base[...,2] = lum*(52+16*patch)   # niedriges B
+# sehr sanfte, seltene trockene Flecken (weich, kein Korn)
+dry = np.clip(fbm(N,4,seed=44)-0.66,0,1)*1.6
+base[...,0]+=dry*42; base[...,1]+=dry*26
+base = np.clip(base,0,255)
 save(base,"tex_grass.png")
-save(normal_from_height(fine*0.7+patch*0.3,1.1),"tex_grass_n.png")
+save(normal_from_height(patch*0.6+big*0.4,0.8),"tex_grass_n.png")
 
 # ================= 4) ERDE / WEG — mehr Struktur + Kiesel + Risse =================
 d=fbm(N,6,seed=51); d2=fbm(N,8,seed=53); peb,peb2,pid=worley(N,cells=30,seed=52)
