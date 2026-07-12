@@ -224,7 +224,7 @@ scene.fog=new THREE.Fog(SKY_DAY.getHex(),100,340);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xbfd4ff,0x2a3850,0.7);scene.add(hemi);
-var amb=new THREE.AmbientLight(0x4a5670,0.32);scene.add(amb); // Grund-Fülllicht -> Schatten nicht pur schwarz
+var amb=new THREE.AmbientLight(0x3a4658,0.16);scene.add(amb); // dezentes Grund-Fülllicht
 var sun=new THREE.DirectionalLight(0xfff0d8,1.0);
 sun.position.set(40,80,30);sun.castShadow=true;
 sun.shadow.mapSize.set(IS_MOB?1024:2048,IS_MOB?1024:2048);
@@ -274,8 +274,7 @@ function buildGround(){
   g.computeVertexNormals();
   // Gras-Textur über die Biom-Vertexfarben legen (Textur × Farbe = Detail + Abwechslung)
   var grassTex=gtex("tex_grass.png", MAP/12, true);
-  var grassNrm=gtex("tex_grass_n.png", MAP/12, false);
-  var m=new THREE.MeshPhongMaterial({vertexColors:true, map:grassTex, normalMap:grassNrm, shininess:1, specular:0x101008});
+  var m=new THREE.MeshLambertMaterial({vertexColors:true, map:grassTex}); // zurück zum flacheren Look (User: vorher besser)
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
 function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55+Math.sin(x*0.019-z*0.017)*1.6;}
@@ -881,14 +880,18 @@ function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
 // 🧑‍🌾 Dorfbewohner-NPCs (einfache, stilisierte Figuren, wandern im Dorf umher)
 var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a];
 var NPC_EMO=["👋","💬","🙂","🎶","❤️","🍺","🧺","⚒️"];
-var NPC_MODELS=["npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd"];
+var ANIME_NPC=["anime_boy","anime_boy2","anime_girl","anime_girl2","anime_mage","anime_ninja","anime_schoolgirl","anime_warrior"];
 function mkVillager(x,z){var gy=groundH(x,z);
-  var m=(typeof cc0inst==="function")?cc0inst(NPC_MODELS[(Math.random()*NPC_MODELS.length)|0],1.7*(0.9+Math.random()*0.2)):null;
-  if(!m)return null; // Modelle noch nicht geladen -> überspringen
-  m.traverse(function(n){if(n.isMesh)n.castShadow=true;});
-  m.position.set(x,gy,z);m.rotation.y=Math.random()*6.28;scene.add(m);
-  npcs.push({mesh:m,cx:x,cz:z,t:Math.random()*6,dir:Math.random()*6.28,spd:0.5+Math.random()*0.5,rr:9,walk:0,emoT:2+Math.random()*8,emo:null,y0:gy});return m;}
-function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;
+  var rec={mesh:null,cx:x,cz:z,t:Math.random()*6,dir:Math.random()*6.28,spd:0.45+Math.random()*0.5,rr:9,walk:0,emoT:2+Math.random()*8,emo:null,mix:null};
+  npcs.push(rec);
+  if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
+    var o=gl.scene;o.scale.setScalar(1.35); // feste Skala (Skinned-BBox unzuverlässig -> keine Riesen)
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+    o.position.set(x,gy,z);o.rotation.y=Math.random()*6.28;scene.add(o);rec.mesh=o;
+    if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);mx.clipAction(gl.animations[0]).play();rec.mix=mx;}
+  },undefined,function(){});}
+  return null;}
+function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.mesh){continue;}if(n.mix)n.mix.update(dt);
   var pausing=(Math.sin(n.t*0.5+i)>0.55); // gelegentlich stehenbleiben (plaudern)
   if(n.t%3.5<dt)n.dir+=(rnd()-0.5)*2.2;
   var spd=pausing?0:n.spd;
