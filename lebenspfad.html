@@ -1122,12 +1122,20 @@ function mkPawnMesh(color,cfg,onReady){
     var skirt=new THREE.Mesh(new THREE.ConeGeometry(isDress?0.5:0.46,isDress?0.82:0.52,HSEG),smat(skHex,bodyHex,0.06));
     skirt.position.y=isDress?0.58:0.44;skirt.castShadow=true;g.add(skirt);}
   var la=limb(0.092,0.5,-0.33,1.04,skin),ra=limb(0.092,0.5,0.33,1.04,skin);
-  // Schulter-Kügelchen (Team-Farbe) verrunden die Arm-Ansätze
-  [la,ra].forEach(function(ap4){var sh=new THREE.Mesh(new THREE.SphereGeometry(0.12,LSEG,LSEG),cm);sh.position.y=-0.02;ap4.add(sh);});
+  // 👕 Menschliche Schultern: flache Schulterkappe + kurzer Ärmel statt dicker Kugel
+  [la,ra].forEach(function(ap4){
+    var cap=new THREE.Mesh(new THREE.SphereGeometry(0.105,LSEG,LSEG),cm);cap.scale.set(0.92,0.6,0.92);cap.position.y=0.0;ap4.add(cap);
+    var sleeve=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.107,0.15,LSEG),cm);sleeve.position.y=-0.1;ap4.add(sleeve);
+  });
   // Hände (weiche Haut-Kugeln an den Arm-Enden)
   [la,ra].forEach(function(ap3){var hand=new THREE.Mesh(new THREE.SphereGeometry(0.105,LSEG,LSEG),skin);
     hand.position.y=-0.5;ap3.add(hand);});
-  var head=new THREE.Mesh(new THREE.SphereGeometry(0.31,HSEG,HSEG),skin);head.position.y=1.4;head.castShadow=true;g.add(head);
+  // 🧑 Menschlicher Kopf statt Kugel: ovaler Schädel + Wangen/Kiefer-Partie mit Kinn + Ohren
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.31,HSEG,HSEG),skin);head.position.y=1.4;head.scale.set(0.94,1.06,0.92);head.castShadow=true;g.add(head);
+  var jaw=new THREE.Mesh(new THREE.SphereGeometry(0.27,HSEG,HSEG),skin);jaw.scale.set(0.86,0.8,0.88);jaw.position.set(0,1.26,0.015);jaw.castShadow=true;g.add(jaw); // Unterkiefer/Wangen (verjüngt nach unten)
+  var chin=new THREE.Mesh(new THREE.SphereGeometry(0.085,LSEG,LSEG),skin);chin.scale.set(1.25,0.75,0.9);chin.position.set(0,1.155,0.12);g.add(chin); // Kinn
+  [-1,1].forEach(function(es){var ear=new THREE.Mesh(new THREE.SphereGeometry(0.075,LSEG,LSEG),skin);ear.scale.set(0.45,0.95,0.65);ear.position.set(es*0.283,1.395,-0.01);g.add(ear);
+    var earIn=new THREE.Mesh(new THREE.SphereGeometry(0.04,8,8),smat(new THREE.Color(SKINTONES[cfg.skin%SKINTONES.length]).multiplyScalar(0.88).getHex()));earIn.scale.set(0.4,0.8,0.6);earIn.position.set(es*0.297,1.39,0.0);g.add(earIn);}); // Ohren + Ohrmuschel
   if(cfg.style===0){ // 🧢 Basecap (Team-Farbe)
     var cap=new THREE.Mesh(new THREE.SphereGeometry(0.325,HSEG,12,0,6.283,0,1.25),cm);cap.position.y=1.45;g.add(cap);
     var schirm=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.05,HSEG,1,false,0,Math.PI),cm);
