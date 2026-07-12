@@ -312,7 +312,7 @@ function placeResources(){
   var half=MAP/2-40;
   function scatter(n,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=8+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<6&&Math.abs(z)<6){i--;continue;}fn(x,z);}}
   // Bäume
-  scatter(Math.round(120*VF),function(x,z){
+  scatter(Math.round(190*VF),function(x,z){
     var proto=natureReady?treeProtos[(rnd()*treeProtos.length)|0]:null;
     var mesh=proto?proto.clone(true):fallbackTree();
     mesh.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();}}});
@@ -321,17 +321,17 @@ function placeResources(){
     scene.add(mesh);resources.push({type:"tree",mesh:mesh,x:x,z:z,hp:3,maxhp:3,dead:false,regrow:0,baseY:mesh.position.y});
   });
   // Steine
-  scatter(Math.round(60*VF),function(x,z){
+  scatter(Math.round(95*VF),function(x,z){
     var m=mkRock(false);m.position.set(x,groundH(x,z)+0.4,z);scene.add(m);
     resources.push({type:"rock",mesh:m,x:x,z:z,hp:4,maxhp:4,dead:false,regrow:0,baseY:m.position.y});
   });
   // Kristalle
-  scatter(Math.round(22*VF),function(x,z){
+  scatter(Math.round(36*VF),function(x,z){
     var m=mkRock(true);m.position.set(x,groundH(x,z)+0.5,z);m.scale.setScalar(1.1);scene.add(m);
     resources.push({type:"crystal",mesh:m,x:x,z:z,hp:5,maxhp:5,dead:false,regrow:0,baseY:m.position.y});
   });
   // Beeren-Büsche
-  scatter(Math.round(34*VF),function(x,z){
+  scatter(Math.round(52*VF),function(x,z){
     var m=bushProto?bushProto.clone(true):new THREE.Mesh(new THREE.IcosahedronGeometry(0.8,0),new THREE.MeshLambertMaterial({color:0x3a6a4a}));
     m.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material=n.material.clone();}});
     m.position.set(x,groundH(x,z),z);scene.add(m);
@@ -920,18 +920,21 @@ function decorateWorld(){
   var half=MAP/2-40;
   function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
   // --- Deko-Bäume in Sorten (nicht abbaubar, nur Dichte/Look) ---
-  var TREES=[["cc0_tree_pine",5.2],["cc0_tree_oak",4.6],["cc0_tree_default",4.4],["cc0_tree_palm",5.8]];
-  farScatter(Math.round(150*VF),12,function(x,z){
+  var TREES=[["cc0_tree_pine",5.2],["cc0_tree_oak",4.6],["cc0_tree_default",4.4],["cc0_tree_palm",5.8],["ftk_tree",5.0],["ck_tree",5.4]];
+  farScatter(Math.round(280*VF),12,function(x,z){
     var T=TREES[(rnd()*TREES.length)|0];var m=cc0inst(T[0],T[1]*(0.8+rnd()*0.5));if(!m)return;
     m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);
   });
   // --- Büsche / Blumen / Pilzgruppen ---
-  farScatter(Math.round(70*VF),8,function(x,z){var m=cc0inst("cc0_bush",1.4*(0.7+rnd()*0.7));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
-  farScatter(Math.round(50*VF),8,function(x,z){var m=cc0inst("cc0_flower_purple",0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
-  farScatter(Math.round(40*VF),10,function(x,z){var m=cc0inst("cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(120*VF),8,function(x,z){var m=cc0inst("cc0_bush",1.4*(0.7+rnd()*0.7));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(100*VF),8,function(x,z){var m=cc0inst("cc0_flower_purple",0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(75*VF),10,function(x,z){var m=cc0inst("cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Felsen-Sorten / Holzstapel als Streu-Props ---
-  farScatter(Math.round(45*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"cc0_rock_large":"cc0_rock_small",1.6*(0.7+rnd()*0.9));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
-  farScatter(Math.round(14*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(80*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"cc0_rock_large":"cc0_rock_small",1.6*(0.7+rnd()*0.9));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(26*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
+  var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["cc0_tent",1.8],["ck_catapult",2.2]];
+  farScatter(Math.round(55*VF),16,function(x,z){var it=STUFF[(rnd()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
   function spotFar(minR){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
