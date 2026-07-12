@@ -32,6 +32,10 @@ canvas{display:block}
 #xpwrap #lvlBadge{font-size:.72rem;font-weight:900;color:#ffe08a;background:rgba(0,0,0,.42);border-radius:8px;padding:1px 7px;white-space:nowrap}
 #xpwrap .xbar{flex:1;height:9px;background:rgba(0,0,0,.45);border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
 #xpwrap #xpFill{display:block;height:100%;width:0%;background:linear-gradient(90deg,#7de3ff,#c98bff);transition:width .25s}
+#bossBar{margin-top:6px;width:170px;max-width:46vw}
+#bossBar #bossLbl{font-size:.72rem;font-weight:900;color:#ff8ad8;text-shadow:0 1px 3px #000}
+#bossBar .bbar{height:12px;background:rgba(0,0,0,.5);border-radius:7px;overflow:hidden;border:1px solid rgba(255,120,200,.5);margin-top:1px}
+#bossBar #bossFill{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff2d6f,#c98bff);transition:width .15s}
 #hpFill{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff5c7a,#ff9a5c);transition:width .2s}
 #quest{position:absolute;top:calc(64px + env(safe-area-inset-top));right:12px;max-width:min(300px,74vw);background:rgba(10,14,32,.78);border:1px solid rgba(255,209,102,.3);border-radius:14px;padding:10px 14px}
 #quest .qh{font-size:.8rem;letter-spacing:.18em;color:#ffd166;font-weight:800;text-transform:uppercase}
@@ -123,6 +127,7 @@ canvas{display:block}
     <span id="clock">🌅 Tag 1 · Morgen</span>
     <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
     <div id="xpwrap"><span id="lvlBadge">Lv 1</span><div class="xbar"><i id="xpFill"></i></div></div>
+    <div id="bossBar" class="hide"><span id="bossLbl">⚠️ SERAPH</span><div class="bbar"><i id="bossFill"></i></div></div>
   </div>
   <div id="sysRow">
     <div class="sysbtn" id="bSound">🔊</div>
@@ -443,15 +448,27 @@ function spawnMonster(){
   m.position.set(x,groundH(x,z),z);scene.add(m);
   monsters.push({mesh:m,x:x,z:z,hp:3,t:rnd()*6});
 }
+function spawnBoss(){ // 👹 SERAPH-Nacht-Boss (RPG-Fusion aus realm)
+  var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
+  var m=slimeProto?slimeProto.clone(true):fallbackSlime();
+  m.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();if(n.material.color)n.material.color.setHex(0x8a2ad8);if(n.material.emissive)n.material.emissive.setHex(0xff2d6f);n.material.emissiveIntensity=1.1;}}});
+  m.position.set(x,groundH(x,z),z);scene.add(m);
+  var hp=28+nights*10;monsters.push({mesh:m,x:x,z:z,hp:hp,maxhp:hp,t:rnd()*6,boss:true,baseScale:slimeProto?4.6:2.4});
+  announce("⚠️ SERAPH erwacht! Besiege den Boss!");shake=0.6;
+}
+function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monsters[i].boss){boss=monsters[i];break;}
+  var el=document.getElementById("bossBar");if(!el)return;
+  if(boss){el.classList.remove("hide");document.getElementById("bossFill").style.width=Math.max(0,boss.hp/boss.maxhp*100)+"%";}
+  else el.classList.add("hide");}
 function updMonsters(dt){
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];e.t+=dt;
     var dx=player.position.x-e.x,dz=player.position.z-e.z,d=Math.hypot(dx,dz)||1;
     if(d>1.6){e.x+=dx/d*3*dt;e.z+=dz/d*3*dt;}
     else{ // Angriff
-      if(!e.atkCd||e.atkCd<=0){damagePlayer(6);e.atkCd=1;} }
+      if(!e.atkCd||e.atkCd<=0){damagePlayer(e.boss?14:6);e.atkCd=1;} }
     if(e.atkCd)e.atkCd-=dt;
-    e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*(slimeProto?2:1),e.z);
-    var sc=(slimeProto?2:1)*(1+Math.sin(e.t*6)*0.08);e.mesh.scale.set(sc,sc*(1-Math.sin(e.t*6)*0.12),sc);
+    var _bsc=e.baseScale||(slimeProto?2:1);e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc,e.z);
+    var sc=_bsc*(1+Math.sin(e.t*6)*0.08);e.mesh.scale.set(sc,sc*(1-Math.sin(e.t*6)*0.12),sc);
   }
 }
 
@@ -801,7 +818,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
-    if(e.hp<=0){scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
@@ -812,10 +829,11 @@ function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bS
 var lootOrbs=[];
 var LOOT_RARITY=[{c:0xbfeaff,n:"Gewöhnlich",p:0.58,xp:5,cr:0,heal:0,hp:0},{c:0x5ea8ff,n:"Selten",p:0.27,xp:12,cr:1,heal:0,hp:0},{c:0xc98bff,n:"Episch",p:0.12,xp:26,cr:2,heal:20,hp:0},{c:0xffd166,n:"Legendär",p:0.03,xp:55,cr:3,heal:30,hp:6}];
 function rollRarity(){var r=rnd(),a=0;for(var i=0;i<LOOT_RARITY.length;i++){a+=LOOT_RARITY[i].p;if(r<a)return i;}return 0;}
-function dropLoot(x,z){var ri=rollRarity(),R=LOOT_RARITY[ri];
+function dropLoot(x,z,force){var ri=(force!=null)?force:rollRarity(),R=LOOT_RARITY[ri];
   var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),new THREE.MeshStandardMaterial({color:R.c,emissive:R.c,emissiveIntensity:0.95,flatShading:true}));
   m.position.set(x,groundH(x,z)+0.9,z);scene.add(m);lootOrbs.push({m:m,x:x,z:z,ri:ri,t:0,life:32});
   if(ri>=2)burst(x,groundH(x,z)+0.9,z,R.c,8);}
+function bossReward(x,z){announce("🏆 SERAPH besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
   o.m.rotation.y+=dt*2.6;o.m.position.y=groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16;
   var dx=o.x-player.position.x,dz=o.z-player.position.z;
@@ -875,7 +893,7 @@ function harvest(){
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
     nearMon.hp-=(1+Math.floor(level/3));burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}
+    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -1041,7 +1059,7 @@ function updStructures(dt){
 var monSpawnT=0;
 function updDayNight(dt){
   dayT+=dt;var cyc=isNight?NIGHTLEN:DAYLEN;
-  if(dayT>=cyc){dayT=0;isNight=!isNight;if(isNight){announce("🌙 Die Nacht bricht herein… Sie kommen!");nights++;}else{day++;announce("☀️ Tag "+day+" — du hast überlebt!");monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}}
+  if(dayT>=cyc){dayT=0;isNight=!isNight;if(isNight){announce("🌙 Die Nacht bricht herein… Sie kommen!");nights++;if(nights>=2&&nights%2===0)setTimeout(spawnBoss,2500);}else{day++;announce("☀️ Tag "+day+" — du hast überlebt!");monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}}
   var f=dayT/cyc;
   var t; // 0=tiefste Nacht,1=heller Tag
   var vig=document.getElementById("nightVig");
@@ -1161,7 +1179,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -1280,6 +1298,7 @@ if(loadSave()){document.getElementById("startBtn").textContent="▶ Weiterspiele
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
 window.__nw={
+  boss:function(){spawnBoss();return monsters.length;}, // Test-Only
   toTree:function(){for(var i=0;i<resources.length;i++){if(resources[i].type==="tree"&&!resources[i].dead){player.position.x=resources[i].x-1;player.position.z=resources[i].z;return resources[i];}}},
   harvest:harvest,
   inv:function(){return inv;},
