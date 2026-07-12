@@ -960,6 +960,7 @@ var PNAMES=["Rot","Blau","Grün","Gold"];
 var HAIRS=[0x3a2a1a,0x8a5a2a,0xd9b45e,0x2a2a34,0xb84a2a,0xece4d6,0xff8ab8,0x6a8adf,0x9a9aa6,0x8a5acf];
 // Hosen-/Rock-Farben (neu, wählbar): 0 = altes Blau (Default -> alte Saves unverändert)
 var PANTS=[0x3a4a6a,0x7a4a30,0x2a6a4a,0x6a3a6a,0x2a2a34,0xb0603a,0xc03a6a,0x3a7a8a];
+var CLOTHES=[0xff5d7d,0x5ea8ff,0x6acc5a,0xffd166,0xc98bff,0xff9a5c,0x2ec4b6,0xef476f,0x118ab2,0xe0e2ea,0x8a5acf,0x3a3a44]; // 👕 Kleider-/Oberteil-Farben (wechselbar)
 // ===== Charakter-System (Pass B1+B4): Frau/Mann + Accessoires + Haut/Haar/Hose, pro Spieler wählbar =====
 var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
 // style 0-3 wie früher (alte Saves gültig), 4+ neu. „Auto"-Haar = hair<0 (abgeleitet aus style/skin).
@@ -1001,7 +1002,8 @@ function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Lo
       style:Math.max(0,Math.min(CHAR_STYLES.length-1,c.style|0)),
       skin:Math.max(0,Math.min(SKINTONES.length-1,c.skin|0)),
       hair:(c.hair==null)?-1:Math.max(-1,Math.min(HAIRS.length-1,c.hair|0)), // -1 = Auto/abgeleitet
-      pants:(c.pants==null)?0:Math.max(0,Math.min(PANTS.length-1,c.pants|0))};
+      pants:(c.pants==null)?0:Math.max(0,Math.min(PANTS.length-1,c.pants|0)),
+      cloth:(c.cloth==null)?-1:Math.max(-1,Math.min(CLOTHES.length-1,c.cloth|0))}; // -1 = Spielerfarbe
     if(c.meshy&&meshyIdx(c.meshy)>=0)o.meshy=c.meshy;
     return o;}
   return null;}
@@ -1060,7 +1062,8 @@ function mkPawnMesh(color,cfg,onReady){
   if(cfg&&cfg.meshy&&meshyIdx(cfg.meshy)>=0)return mkMeshyPawn(color,cfg,onReady);
   // Runde, knuffige Minifigur (Rayman/Pastell-Look): Kugel-Kopf, Kapsel-Rumpf & -Glieder, weiche Silhouette ohne harte Kanten
   cfg=cfg||{g:"m",style:0,skin:0};
-  var g=new THREE.Group(),cm=smat(color,color,0.10),skin=smat(SKINTONES[cfg.skin%SKINTONES.length],0x3a2a1a,0.04);
+  var bodyHex=(cfg.cloth!=null&&cfg.cloth>=0)?CLOTHES[cfg.cloth%CLOTHES.length]:color; // 👕 wählbare Kleiderfarbe
+  var g=new THREE.Group(),cm=smat(bodyHex,bodyHex,0.10),skin=smat(SKINTONES[cfg.skin%SKINTONES.length],0x3a2a1a,0.04);
   var pantsHex=PANTS[((cfg.pants|0)>=0?cfg.pants:0)%PANTS.length];var pants=smat(pantsHex);
   var hairHex=(cfg.hair!=null&&cfg.hair>=0)?HAIRS[cfg.hair%HAIRS.length]:HAIRS[(cfg.style*2+cfg.skin+(cfg.g==="m"?1:0))%HAIRS.length];var hair=smat(hairHex);
   var HSEG=IS_COARSE?10:14,LSEG=IS_COARSE?8:10; // Kugel-/Kapsel-Segmente (rund genug, aber sparsam: 2-4 Figuren)
@@ -2567,19 +2570,22 @@ function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: über den HAUPT-Renderer 
       _pv.s.add(new THREE.HemisphereLight(0xffffff,0x8a7a5a,1.05));
       var dl=new THREE.DirectionalLight(0xfff2d8,0.9);dl.position.set(2,4,3);_pv.s.add(dl);
       _pv.c=new THREE.PerspectiveCamera(36,PV_W/PV_H,0.1,20);_pv.c.position.set(0,1.18,2.9);_pv.c.lookAt(0,0.95,0);}
-    if(_pv.p)_pv.s.remove(_pv.p);
-    var _rr=function(){try{
+    // Wichtig: pro Karte EIGENER Pawn (Closure) — beim Rendern kurz in die Szene, danach wieder raus.
+    // So laufen mehrere Vorschauen (auch async ladende Anime-Figuren) unabhängig -> keine „unsichtbaren" Figuren mehr.
+    var draw=function(){try{
+      _pv.s.add(p);
       var oc=renderer.getClearColor(new THREE.Color()),oa=renderer.getClearAlpha();
       renderer.setClearColor(0xf6efe0,1);
       renderer.setRenderTarget(_pv.rt);renderer.clear();renderer.render(_pv.s,_pv.c);
       renderer.readRenderTargetPixels(_pv.rt,0,0,PV_W,PV_H,_pv.buf);
       renderer.setRenderTarget(null);renderer.setClearColor(oc,oa);
+      _pv.s.remove(p);
       var ctx=cv.getContext("2d"),img=ctx.createImageData(PV_W,PV_H),d=img.data,b=_pv.buf,W4=PV_W*4;
       for(var y=0;y<PV_H;y++){var sy=(PV_H-1-y)*W4,dy=y*W4;for(var xx=0;xx<W4;xx++)d[dy+xx]=b[sy+xx];}
       ctx.putImageData(img,0,0);
     }catch(e){}};
-    _pv.p=mkPawnMesh(col,cfg,(cfg&&cfg.meshy)?_rr:null);_pv.p.rotation.y=0.45;_pv.s.add(_pv.p);
-    _rr();
+    var p=mkPawnMesh(col,cfg,function(){draw();});p.rotation.y=0.45; // Anime-GLB: nachrendern wenn geladen
+    draw();
   }catch(e){}}
 function renderCharUI(){
   var cr=document.getElementById("charRow");if(!cr)return;cr.innerHTML="";
@@ -2589,7 +2595,7 @@ function renderCharUI(){
     var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;
     var cv=document.createElement("canvas");cv.width=PV_W;cv.height=PV_H;cv.style.cssText="width:110px;height:124px";
     card.appendChild(cv);
-    var gf,gm,sl,hl,pl,ml,dots=[];
+    var gf,gm,sl,hl,pl,cl,ml,dots=[];
     function upd(){saveChar(i,cfg);charPreview(cv,cfg,PCOLORS[i]);
       gf.className=cfg.g==="f"?"on":"";gm.className=cfg.g==="m"?"on":"";
       sl.textContent=CHAR_STYLES[cfg.style].i+" "+CHAR_STYLES[cfg.style].n;
@@ -2597,6 +2603,7 @@ function renderCharUI(){
       if(hl)hl.style.background=(cfg.hair<0)?"":"#"+("00000"+HAIRS[cfg.hair].toString(16)).slice(-6);
       if(hl)hl.style.color=(cfg.hair<0)?"":"#fff";
       if(pl){pl.textContent="👖";pl.style.background="#"+("00000"+PANTS[cfg.pants].toString(16)).slice(-6);}
+      if(cl){cl.textContent="👕";cl.style.background=(cfg.cloth==null||cfg.cloth<0)?"":"#"+("00000"+CLOTHES[cfg.cloth].toString(16)).slice(-6);cl.style.color=(cfg.cloth>=0)?"#fff":"";}
       for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");
       if(ml)ml.textContent=cfg.meshy?(MESHY_CHARS[meshyIdx(cfg.meshy)].n):"🧍 Toon (anpassbar)";}
     var r1=document.createElement("div");r1.className="crow"; // 👩 / 👨
@@ -2624,6 +2631,8 @@ function renderCharUI(){
       b.onclick=function(){cfg.skin=d;upd();beep(540,.04,"triangle",.03);};dots.push(b);r3.appendChild(b);})(d);
     pl=document.createElement("button");pl.className="skin";pl.title="Hosen-/Rockfarbe wechseln";pl.style.width="auto";pl.style.padding="0 6px";
     pl.onclick=function(){cfg.pants=(cfg.pants+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
+    cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wechseln";cl.style.width="auto";cl.style.padding="0 6px";
+    cl.onclick=function(){cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
     card.appendChild(r3);
     cr.appendChild(card);upd();
   })(i);}
@@ -2853,7 +2862,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;card.style.maxWidth="210px";card.style.margin="0 auto";
   var lbl=document.createElement("div");lbl.style.cssText="font-size:.76rem;font-weight:800;color:#2a6ab0;margin-bottom:3px";lbl.textContent="🎨 Dein Charakter";card.appendChild(lbl);
   var cv=document.createElement("canvas");cv.width=PV_W;cv.height=PV_H;cv.style.cssText="width:104px;height:118px";card.appendChild(cv);
-  var gf,gm,sl,hl,ml,dots=[];
+  var gf,gm,sl,hl,ml,pl,cl,dots=[];
   function sync(){saveChar(0,cfg);
     if(NET.host){NET.cfgs[0]=cfg;netPlayersUpd();}
     else if(NET.conns[0]&&NET.conns[0].open){try{NET.conns[0].send(JSON.stringify({t:"look",cfg:cfg}));}catch(e){}}}
@@ -2862,6 +2871,8 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
     sl.textContent=CHAR_STYLES[cfg.style].i+" "+CHAR_STYLES[cfg.style].n;
     if(hl){hl.textContent=(cfg.hair<0)?"💇 Auto":"💇 Haar "+(cfg.hair+1);hl.style.background=(cfg.hair<0)?"":"#"+("00000"+HAIRS[cfg.hair].toString(16)).slice(-6);hl.style.color=(cfg.hair<0)?"":"#fff";}
     for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");
+      if(pl){pl.textContent="👖";pl.style.background="#"+("00000"+PANTS[cfg.pants].toString(16)).slice(-6);}
+      if(cl){cl.textContent="👕";cl.style.background=(cfg.cloth==null||cfg.cloth<0)?"":"#"+("00000"+CLOTHES[cfg.cloth].toString(16)).slice(-6);cl.style.color=(cfg.cloth>=0)?"#fff":"";}
       if(ml)ml.textContent=cfg.meshy?(MESHY_CHARS[meshyIdx(cfg.meshy)].n):"🧍 Toon (anpassbar)";}
   var r1=document.createElement("div");r1.className="crow";
   gf=document.createElement("button");gf.textContent="👩";gf.title="Frau";gf.onclick=function(){cfg.g="f";upd();beep(620,.05,"triangle",.03);};
@@ -2884,6 +2895,10 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
     rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
   var r3=document.createElement("div");r3.className="crow";
   for(var d=0;d<SKINTONES.length;d++)(function(d){var bd=document.createElement("button");bd.className="skin";bd.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);bd.title="Hautton "+(d+1);bd.onclick=function(){cfg.skin=d;upd();};dots.push(bd);r3.appendChild(bd);})(d);
+  pl=document.createElement("button");pl.className="skin";pl.title="Hosen-/Rockfarbe wechseln";pl.style.width="auto";pl.style.padding="0 6px";
+  pl.onclick=function(){cfg.pants=((cfg.pants|0)+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
+  cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wechseln";cl.style.width="auto";cl.style.padding="0 6px";
+  cl.onclick=function(){cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
   card.appendChild(r3);
   wrap.appendChild(card);upd();
 }
