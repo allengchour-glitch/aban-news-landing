@@ -76,7 +76,7 @@ edge = np.clip((F2-F1)*3.2,0,1)          # Fugen dunkel
 stone = 0.55+0.4*ID                       # Stein-Grundhelligkeit variiert
 detail = fbm(N,5,seed=11)                 # Steinkorn
 val = (stone*(0.6+0.4*detail))*edge + (1-edge)*0.12
-base = np.stack([val*118, val*112, val*104],-1)  # graubraun
+base = np.stack([val*168, val*160, val*150],-1)  # helleres Pflaster (im Schatten grau statt schwarz)
 # leichte moosgrüne Flecken in Fugen
 moss = (1-edge)*np.clip(fbm(N,4,seed=22)-0.5,0,1)*2
 base[...,1]+=moss*60; base[...,0]+=moss*10
@@ -93,7 +93,7 @@ tileid=((xx/N*tiles).astype(int)*7+(yy/N*tiles).astype(int)*13)%9/9.0
 d2=fbm(N,5,seed=31)
 v=(0.62+0.33*tileid)*(0.7+0.3*d2)
 v=v*grout+(1-grout)*0.15
-base=np.stack([v*150,v*150,v*156],-1)     # kühles Steingrau
+base=np.stack([v*182,v*182,v*190],-1)     # helleres Steingrau
 save(base,"tex_stone.png")
 save(normal_from_height(grout*(0.5+0.5*tileid),2.4),"tex_stone_n.png")
 
