@@ -98,6 +98,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <span id="editName" style="align-self:center;font-weight:800;font-size:.85rem;color:#5a4a30;margin-right:4px"></span>
   <button class="ebtn" id="edMove" style="border:0;background:#e0ecf8;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">↔️ Verschieben</button>
   <button class="ebtn" id="edRot" style="border:0;background:#e8f0dc;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">🔄 Drehen</button>
+  <button class="ebtn" id="edUp" style="border:0;background:#fdf0d0;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">⬆️ Aufwerten</button>
   <button class="ebtn" id="edSell" style="border:0;background:#f8e0dc;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">💰 Verkaufen</button>
   <button class="ebtn" id="edX" style="border:0;background:#e8e0d0;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">✕</button>
 </div>
@@ -613,10 +614,11 @@ var ACH=[
  ["angler","🎣","Petri Heil","5 Fische geangelt",function(){return (stats.fische||0)>=5;}],
  ["taenzer","💃","Tanzfieber","Eine perfekte Tanz-Session",function(){return (stats.tanzPerfekt||0)>=1;}],
  ["ehrenbuerger","🎖️","Ehrenbürger","3 Stadt-Aufträge erfüllt",function(){return (stats.quests||0)>=3;}],
+ ["langfinger","🤏","Langfinger","3 erfolgreiche Taschendiebstähle",function(){return (stats.diebstahl||0)>=3;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
-  furn.forEach(function(f9){w+=f9.def.cost;});
+  furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
   w+=Object.keys(walls).length*30+Object.keys(floors).length*10;
   if(window.autoRec)w+=defOf(window.autoRec.id).cost;
   return w;}
@@ -782,7 +784,7 @@ function applyFurn(id,gx,gy,rot,fid){
     loadTH("hund",function(tpl){if(!tpl)return;var m=tpl.clone(true);m.position.set(cx(gx),0,cz(gy));scene.add(m);
       haustier={mesh:m,x:cx(gx),z:cz(gy),rot:0,walkT:0};});
     return;}
-  var rec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:null,busy:false};
+  var rec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:null,busy:false,lv:arguments[5]||1};
   furn.push(rec);
   loadTH(id,function(tpl){if(!tpl)return;
     var m=tpl.clone(true);m.position.set(cx(gx),0.012,cz(gy));m.rotation.y=rot*Math.PI/2;
@@ -798,6 +800,10 @@ function applyFurn(id,gx,gy,rot,fid){
       var bbk=new THREE.Box3().setFromObject(m);m.position.y=-bbk.min.y+0.012;}
     // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Größe passt (1 Einheit = 1m, Zelle 2m)
     scene.add(m);rec.mesh=m;
+    if(rec.lv>1){var cv7=document.createElement("canvas");cv7.width=128;cv7.height=64;var c7=cv7.getContext("2d");
+      c7.font="44px sans-serif";c7.textAlign="center";c7.fillText(rec.lv>2?"⭐⭐":"⭐",64,48);
+      var sp7=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv7),transparent:true,depthWrite:false}));
+      sp7.scale.set(1.1,0.55,1);sp7.position.y=1.6;m.add(sp7);}
     if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,7);pl.position.set(cx(gx),1.7,cz(gy));scene.add(pl);rec.plight=pl;}
   });}
 function removeFurnAt(gx,gy){
@@ -822,7 +828,7 @@ function netFast(o){if(MPs)try{MPs.sendFast(o);}catch(e){}}
 var fidC=0;
 function doPlaceWall(x,y,d,type,silent){applyWall(x,y,d,type);if(!silent){netSend({t:"wall",x:x,y:y,d:d,ty:type});}}
 function doPlaceFloor(x,y,idx,silent){applyFloor(x,y,idx);if(!silent)netSend({t:"floor",x:x,y:y,i:idx});}
-function doPlaceFurn(id,gx,gy,rot,silent,fid){var f=fid||("f"+(fidC++)+(mpHost?"h":"g"));applyFurn(id,gx,gy,rot,f);if(!silent)netSend({t:"furn",id:id,x:gx,y:gy,r:rot,fid:f});}
+function doPlaceFurn(id,gx,gy,rot,silent,fid,lv){var f=fid||("f"+(fidC++)+(mpHost?"h":"g"));applyFurn(id,gx,gy,rot,f,lv);if(!silent)netSend({t:"furn",id:id,x:gx,y:gy,r:rot,fid:f,lv:lv||1});}
 function doDelete(gx,gy,silent){
   var done=removeFurnAt(gx,gy);
   if(!done){var k;["0","1"].forEach(function(d){k=gx+","+gy+","+d;if(walls[k]){applyWall(gx,gy,+d,null);done=true;}});}
@@ -863,13 +869,27 @@ document.getElementById("edRot").onclick=function(){
   furn.splice(furn.indexOf(f9),1);netSend({t:"del",x:gx,y:gy});
   doPlaceFurn(id,gx,gy,nr);
   editSel=furn[furn.length-1];editShow(editSel);beep(560,.06,"triangle",.04);};
+document.getElementById("edUp").onclick=function(){
+  var f9=editSel;if(!f9)return;
+  var lv0=f9.lv||1;
+  if(lv0>=3){hint("⭐⭐ Ist schon Maximal-Stufe!");return;}
+  var kost=Math.round(f9.def.cost*0.6);
+  if(geld<kost){hint("💰 Aufwerten kostet "+kost+" §");return;}
+  geld-=kost;netSend({t:"geld",v:geld});
+  var gx=f9.gx,gy=f9.gy,rot=f9.rot,id=f9.id;
+  if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
+  furn.splice(furn.indexOf(f9),1);netSend({t:"del",x:gx,y:gy});
+  doPlaceFurn(id,gx,gy,rot,false,undefined,lv0+1);
+  editSel=furn[furn.length-1];editShow(editSel);
+  hint("⬆️ Aufgewertet auf Stufe "+(lv0+1)+" — wirkt besser & steigert den Haus-Wert!");
+  beep(700,.08,"triangle",.05);setTimeout(function(){beep(940,.1,"triangle",.06);},110);updHUD();};
 document.getElementById("edSell").onclick=function(){
   var f9=editSel;if(!f9)return;
   var gx=f9.gx,gy=f9.gy;editHide();
   if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
@@ -877,7 +897,7 @@ function loadSnapshot(sn){
   furn.slice().forEach(function(f){if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);});furn=[];
   Object.keys(sn.floors||{}).forEach(function(k){var p=k.split(",");applyFloor(+p[0]+mx9,+p[1]+my9,sn.floors[k]);});
   Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(","),v=sn.walls[k];if(typeof v==="string")applyWall(+p[0]+mx9,+p[1]+my9,+p[2],v);else applyWall(+p[0]+mx9,+p[1]+my9,+p[2],v.t,v.c);});
-  (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid);});
+  (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid,f.lv);});
   if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr)uhrzeit=sn.uhr;
   if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
@@ -887,7 +907,7 @@ function onNetMsg(m){
   if(m.t==="wall")doPlaceWall(m.x,m.y,m.d,m.ty,true);
   else if(m.t==="paint")doPaint(m.x,m.y,m.d,m.c,true);
   else if(m.t==="floor")doPlaceFloor(m.x,m.y,m.i,true);
-  else if(m.t==="furn")doPlaceFurn(m.id,m.x,m.y,m.r,true,m.fid);
+  else if(m.t==="furn")doPlaceFurn(m.id,m.x,m.y,m.r,true,m.fid,m.lv);
   else if(m.t==="del")doDelete(m.x,m.y,true);
   else if(m.t==="geld"){geld=m.v;updHUD();}
   else if(m.t==="chat")chatAdd(m.n,m.x);
@@ -1090,7 +1110,7 @@ function simUse(s,dt){
   var f=s.target;if(!f){s.state="idle";return;}
   var u=f.def.use;
   s.useT-=dt;
-  s.needs[u.need]=Math.min(100,s.needs[u.need]+dt*(100/u.dur)*1.1);
+  s.needs[u.need]=Math.min(100,s.needs[u.need]+dt*(100/u.dur)*1.1*(1+0.3*((f.lv||1)-1)));
   if(u.need==="hunger"&&Math.random()<0.02)simEmoji(s,"😋");
   if(s.useT<=0){s.state="idle";s.pose="stand";f.busy=false;s.target=null;
     if(u.pose==="lie")s.x+=0.9;
@@ -1625,8 +1645,11 @@ function nearestEdge(c){
   return {x:c.gx,y:c.gy,d:1,wx:cx(c.gx)+CS/2,wz:cz(c.gy)};}
 function tapAt(px,py){
   if(!running)return;
-  if(!buildMode){ // Bewohner antippen -> Kamera folgt
+  if(!buildMode){ // Bewohner antippen -> Kamera folgt · NPC antippen -> Taschendieb
     var c0=pickCell(px,py);
+    if(c0){for(var ni9=0;ni9<npcs.length;ni9++){var n9=npcs[ni9];
+      if(n9.typ!=="katze"&&Math.hypot(n9.x-c0.pt.x,n9.z-c0.pt.z)<1.5&&!MG.on&&!KOCH.on&&!ANGEL.on&&!TANZ.on){
+        taschendieb(n9);return;}}}
     if(c0){for(var fi2=0;fi2<furn.length;fi2++){var f2=furn[fi2];
       if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}
       if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}
@@ -1824,6 +1847,23 @@ function kochApply(score){
     simEmoji(s2,score>=0.6?"🍽️":"🥢");});}
 document.getElementById("kochQuit").onclick=function(){
   KOCH.on=false;clearTimeout(KOCH.tmr);document.getElementById("koch").style.display="none";};
+function taschendieb(n9){
+  if(n9.typ==="polizist"){
+    var str9=Math.min(geld,80);geld-=str9;netSend({t:"geld",v:geld});updHUD();
+    hint("👮 Beim POLIZISTEN?! Busse: −"+str9+" §");
+    npcEmoji(n9,"🚨");beep(240,.2,"sawtooth",.06);return;}
+  mgStart("🤏 Taschendiebstahl","Ruhige Hand — dreimal sauber treffen, sonst fliegst du auf!",function(avg){
+    if(avg>=0.65){
+      var beute9=Math.round((25+Math.random()*55)*(1+skills.krimi.lv*0.25));
+      geld+=beute9;stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
+      netSend({t:"geld",v:geld});updHUD();
+      hint("🤏 Zack — Portemonnaie! +"+beute9+" § (unbemerkt)");
+      npcEmoji(n9,"❓");sims.forEach(function(s9){simEmoji(s9,"🤫");});}
+    else{
+      polizeiPending=true;npcTimer=Math.min(npcTimer,4);
+      var str8=Math.min(geld,60+skills.krimi.lv*20);geld-=str8;netSend({t:"geld",v:geld});updHUD();
+      hint("💢 Erwischt! "+(n9.typ==="nachbarin"?"Frau Krause":"Das Opfer")+" ruft die Polizei … −"+str8+" §");
+      npcEmoji(n9,"😠");beep(220,.25,"sawtooth",.06);}});}
 function mgStart(title,sub,cb){
   MG.on=true;MG.round=0;MG.scores=[];MG.cb=cb;MG.speed=1.5;
   document.getElementById("mgTitle").textContent=title;
