@@ -318,6 +318,25 @@ Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgero
       (knapp an ❤️ vorbei = „Ooh!"). Ziel: nie langweilig, jeder Klick hat Wumms. Bloom/Bloom-frei
       egal — es ist Pastell, aber Game-Feel-Prinzipien (Juice) voll ausreizen. OPT.motion respektieren.
 
+### ✅ STAND 2026-07-12 (Opus-Session, Teil 3) — neon-wildnis Meshy-Highlights
+- ✅ **Neue Meshy-Assets (PR #1752/#1753, User gab Credits):** 🐉 `mob_dragon` = Drachen-Nacht-Boss
+  (in `spawnBoss` statt SERAPH-Slime wenn `cc0proto["mob_dragon"]` da; `walk:true`, kind:"dragon",
+  eigene HP-Bar-Label), 🏰 `building_castle` = Burg-Landmarke, ✨ `item_relic` = leuchtende Fund-Props,
+  🧪 `item_potion` = einsammelbare Heiltränke (`potions[]`/`updPotions`, +40 HP), ⛲ `item_fountain` in
+  Dorf-Zentren. Alle über `loadCC0`/`cc0inst` auto-skaliert. `walk`-Flag ersetzt die kind!=="slime"-Prüfung.
+- **🔑 MESHY-API-LEHREN (teuer/wertvoll):**
+  - `action_id` beim Animieren ist ein **INT** (nummerierte Bibliothek), nicht String. Rigging braucht
+    `input_task_id`+`model_url`; Animation braucht `rig_task_id`+`action_id`. Animation kostet nur ~3 Credits.
+  - **Onboarding-Aufgaben** (300 Gratis-Credits): 5/6 werden durch normale API-Generierung automatisch erfüllt
+    (Remesh/3-in-Queue/Gratis-Retry/private Lizenz/Bild→3D). Die „3 Animationen"-Aufgabe löst der **300-Credit-
+    Bonus per API NICHT aus** (Balance blieb gleich) → braucht die Web-UI (nur User).
+  - **r128-Aufbereitung:** `gltf-transform prune`+`dedup`+`resize --width 1024` (JPEG behalten). NIEMALS
+    `optimize --texture-compress webp` (EXT_texture_webp bricht in r128 → Texturen weg). Meshy-Roh-GLBs sind
+    2-4 MB → nach Resize ~1 MB.
+  - Fertige Modelle notfalls **direkt per API** laden (`/openapi/v2/text-to-3d?sort_by=-created_at` → `model_urls.glb`),
+    falls ein Generier-Agent bei niedriger Balance stoppt bevor er herunterlädt.
+- **Meshy-Balance-Rest:** 26 Credits. Troll kam nicht mehr durch. Für mehr: User legt Credits/Onboarding nach.
+
 ### ✅ STAND 2026-07-12 (Opus-Session, Teil 2) — neon-wildnis grosser Welt-Ausbau
 - ✅ **Welt-Reichtum aus CC0 (PR #1749):** nutzt die vorhandene `models/cc0_*.glb`-Bibliothek (Kenney
   Nature/Survival/Graveyard, alle CC0) + **Auto-Skalierung per Bounding-Box** (`loadCC0`/`cc0inst`,
