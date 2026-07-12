@@ -273,7 +273,8 @@ function buildGround(){
   g.computeVertexNormals();
   // Gras-Textur über die Biom-Vertexfarben legen (Textur × Farbe = Detail + Abwechslung)
   var grassTex=gtex("tex_grass.png", MAP/12, true);
-  var m=new THREE.MeshLambertMaterial({vertexColors:true, map:grassTex});
+  var grassNrm=gtex("tex_grass_n.png", MAP/12, false);
+  var m=new THREE.MeshPhongMaterial({vertexColors:true, map:grassTex, normalMap:grassNrm, shininess:1, specular:0x101008});
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
 function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55+Math.sin(x*0.019-z*0.017)*1.6;}
@@ -1648,8 +1649,8 @@ function updDayNight(dt){
   sun.intensity=0.2+t*1.4;hemi.intensity=0.22+t*0.5;
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   scene.fog.color.copy(scene.background);
-  var ang=f*Math.PI;sun.position.set(Math.cos(ang)*60,Math.max(8,Math.sin(isNight?0.2:f*Math.PI)*80),Math.sin(ang)*40);
-  sun.target.position.copy(player.position);
+  var ang=f*Math.PI;sun.position.set(player.position.x+Math.cos(ang)*60,Math.max(8,Math.sin(isNight?0.2:f*Math.PI)*80),player.position.z+Math.sin(ang)*40);
+  sun.target.position.copy(player.position); // Schatten-Frustum bleibt zentriert -> kein dunkler Fleck
   // Monster nachts spawnen
   if(isNight&&waveActive){monSpawnT-=dt;var cap=Math.min(4+waveNum,14);
     if(monSpawnT<=0&&waveSpawned<waveToSpawn&&monsters.length<cap){spawnMonster();waveSpawned++;monSpawnT=Math.max(0.5,2.2-waveNum*0.15);updWaveHud();}
