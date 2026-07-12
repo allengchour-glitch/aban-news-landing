@@ -210,6 +210,12 @@ var GW=18,GH=14,CS=2; // Zellen x,y · Zellgröße
 function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
+var TEXLOADER=new THREE.TextureLoader();
+function ladeTex(url,rx,ry,cb){TEXLOADER.load(url,function(t){
+  t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);
+  if(THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
+  try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}
+  cb(t);},undefined,function(){});}
 var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
   c.fillStyle="#5a9c44";c.fillRect(0,0,256,256);
   // weiche große Tonflächen gegen den flachen Look
@@ -222,6 +228,7 @@ var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.heig
   try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
+ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.material.needsUpdate=true;});
 // ---- Wetter & Jahreszeiten ----
 var wetter="sonne";
 var SAISON=[["🌸 Frühling",0xc8f0b8],["☀️ Sommer",0xffffff],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]];
@@ -261,6 +268,12 @@ function fliesenTex(){var cv=document.createElement("canvas");cv.width=cv.height
   return new THREE.CanvasTexture(cv);}
 var FLOORS=[{n:"Parkett",e:"🟫",tex:parkettTex,cost:12},{n:"Fliesen",e:"⬜",tex:fliesenTex,cost:10},{n:"Teppichboden",e:"🟥",tex:null,col:0xb85a6a,cost:8}];
 FLOORS.forEach(function(fl){fl.texture=fl.tex?fl.tex():null;});
+[["textures/th/parkett.jpg",0],["textures/th/marmor.jpg",1],["textures/th/teppich.jpg",2],["textures/th/laminat.jpg",3]].forEach(function(p){
+  ladeTex(p[0],1,1,function(t){
+    if(!FLOORS[p[1]])return;
+    FLOORS[p[1]].texture=t;FLOORS[p[1]].col=undefined;
+    Object.keys(floors).forEach(function(k){if(floors[k]===p[1]){var q=k.split(",");applyFloor(+q[0],+q[1],p[1]);}});});});
+FLOORS.push({n:"Laminat",e:"🟨",tex:null,col:0xd8b878,cost:10,texture:null});
 // Gitter (nur im Baumodus)
 var gridHelper=new THREE.GridHelper(GW*CS,GW,0xffffff,0xffffff);
 gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper.position.y=0.02;gridHelper.visible=false;scene.add(gridHelper);
@@ -299,12 +312,15 @@ var KATALOG={
   {id:"boden0",n:"Parkett",e:"🟫",cost:12},
   {id:"boden1",n:"Fliesen",e:"⬜",cost:10},
   {id:"boden2",n:"Teppich",e:"🟥",cost:8},
+  {id:"boden3",n:"Laminat",e:"🟨",cost:10},
   {id:"farbe1",n:"Salbei-Wand",e:"🟢",cost:15,paint:1},
   {id:"farbe2",n:"Himmelblau-Wand",e:"🔵",cost:15,paint:2},
   {id:"farbe3",n:"Rosé-Wand",e:"🌸",cost:15,paint:3},
   {id:"farbe4",n:"Sonnengelb-Wand",e:"🟡",cost:15,paint:4},
   {id:"farbe5",n:"Streifen-Tapete",e:"🎀",cost:35,paint:5},
-  {id:"farbe6",n:"Punkte-Tapete",e:"⚪",cost:35,paint:6}],
+  {id:"farbe6",n:"Punkte-Tapete",e:"⚪",cost:35,paint:6},
+  {id:"farbe7",n:"Feiner Putz",e:"🏛️",cost:30,paint:7},
+  {id:"farbe8",n:"Backstein-Wand",e:"🧱",cost:40,paint:8}],
  moebel:[
   {id:"bett",n:"Doppelbett",e:"🛏️",cost:900,size:[2,2],use:{need:"energie",pose:"lie",off:[0,0],dur:14}},
   {id:"sofa",n:"Sofa",e:"🛋️",cost:650,size:[2,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}},
@@ -414,11 +430,15 @@ function inLot(x,y){return x>=0&&x<GW&&y>=0&&y<GH;}
 
 // ===================== Bau-Ausführung (lokal + Netz identisch) =====================
 var wandMat=stdMat(0xf2ead8,0.85),wandMatIn=stdMat(0xe8d8c0,0.85);
-var WPAINT=[null,0xb8ccae,0xacc8e0,0xe8c4cc,0xf0dc9a,"streifen","punkte"],wpCache={};
+var WPAINT=[null,0xb8ccae,0xacc8e0,0xe8c4cc,0xf0dc9a,"streifen","punkte","textures/th/putz.jpg","textures/th/backstein.jpg"],wpCache={};
 function wpMat(idx){
   if(!idx)return wandMat;
   if(wpCache[idx])return wpCache[idx];
   var v=WPAINT[idx],m;
+  if(typeof v==="string"&&v.indexOf("textures/")===0){
+    m=new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.9,envMapIntensity:0.3});
+    ladeTex(v,1.2,1.2,function(t){m.map=t;m.needsUpdate=true;});
+    wpCache[idx]=m;return m;}
   if(typeof v==="number")m=stdMat(v,0.85);
   else{var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
     if(v==="streifen"){c.fillStyle="#f4ecdc";c.fillRect(0,0,128,128);c.fillStyle="#cdb9d8";
