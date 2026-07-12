@@ -1,10 +1,10 @@
 {
- "updated": "2026-07-10T22:17:00Z",
- "brainScore": "100.0/100 · 0 Befunde über 2654 Seiten",
+ "updated": "2026-07-12T00:20:00Z",
+ "brainScore": "100.0/100 · 0 Befunde über 7978 Seiten",
  "orders": {
-  "lastChecked": "2026-07-10T16:45:00Z",
-  "newest": "#1009 (10.07., PAID, unerfüllt — wartet auf User-Refund)",
-  "note": "#1006–#1008 refundiert (Lieferant/Konto-Thema). Bestell-Wächter läuft alle 2h."
+  "lastChecked": "2026-07-12T00:05:00Z",
+  "newest": "#1010 (11.07., PAID, unerfüllt) — KEINE neuen Orders seit #1010",
+  "note": "#1009+#1010 warten weiter auf User (BigBuy ER003 konto-blockiert: manuell erfüllen/refunden). #1006–#1008 refundiert."
  },
  "bigbuy": {
   "status": "⛔ API-Bestellungen KONTO-WEIT blockiert (ER003 für alles — vermutlich fehlendes Bestell-Paket/Freischaltung)",
@@ -34,6 +34,10 @@
   }
  ],
  "runs": [
+  {
+   "ts": "2026-07-12T00:20:00Z",
+   "was": "Autonom-Lauf: (1) Order-Check — keine neuen Orders seit #1010. (2) Brain 100/100 (7978 Seiten). (3) SPIELE: neon-wildnis Helden auf Anime-Toon Cel-Shading (Phase 2; realm/survivor bewusst NICHT — Neon-Mismatch). (4) GELD: neue Kaufberater-Seite wassersprudler-kaufen-schweiz.html (100/100, Hub+Sitemap). Zusätzlich: grosser Lebenspfad-Workflow (25 Agenten) — Batch 7 (Erfolge/Statistik/Audio) + Batch-3-Geometrie gerettet & live; Batches 1-6 durch Working-Tree-Fehler verloren (Lehre im Runbook)."
+  },
   {
    "ts": "2026-07-11T13:00:00Z",
    "was": "NEUE Bestellung #1010: Bluetooth-Kopfhörer Denver TWE-61W (BB-659558, 44.90 CHF, PAID) → BigBuy-API blockiert (ER003) → USER muss manuell im BigBuy-Dashboard bestellen ODER refunden. Versand Belp CH."
@@ -89,10 +93,6 @@
   {
    "t": "2026-07-10T14:30Z",
    "did": "BigBuy-Konto-Diagnose: order/check-Endpoint, 4 Importe DRAFT (PR #1664)"
-  },
-  {
-   "t": "2026-07-10T08:00Z",
-   "did": "Marktlücke Sommer-Hitze: Intex Boot + Pool importiert (PR #1663, später DRAFT wegen Konto)"
   }
  ],
  "stand": "2026-07-11: #1010 offen (BigBuy blockiert). Spiele: Neon-Wildnis live, neon-realm Occlusion-Fix live, Lebenspfad B2 live. Runde 12 läuft (Survivor-Bau + Lebenspfad-Altern)."
