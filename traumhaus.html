@@ -209,7 +209,7 @@ sun.shadow.camera.left=-34;sun.shadow.camera.right=34;sun.shadow.camera.top=34;s
 function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
 
 // ===================== Grundstück =====================
-var GW=18,GH=14,CS=2; // Zellen x,y · Zellgröße
+var GW=28,GH=20,CS=2; // Zellen x,y · Zellgröße (Riesen-Map 2026-07-12; alt 18x14 → Migration in loadSnapshot)
 function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
@@ -291,7 +291,7 @@ var bordstein=new THREE.Mesh(new THREE.BoxGeometry(140,0.18,0.5),stdMat(0xb8b8b0
 bordstein.position.set(0,0.09,GH*CS/2+8.3);bordstein.receiveShadow=true;scene.add(bordstein);
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
-    [[-24,-12],[24,-8],[-22,12],[26,10]].forEach(function(p,i){
+    [[-34,-24],[36,-20],[-33,24],[37,22]].forEach(function(p,i){
       var t=g.scene.clone(true);var box=new THREE.Box3().setFromObject(t),sz=new THREE.Vector3();box.getSize(sz);
       var k=(7+i%2*2)/(sz.y||1);t.scale.setScalar(k);
       var b2=new THREE.Box3().setFromObject(t);t.position.set(p[0],-b2.min.y-0.02,p[1]);
@@ -814,15 +814,16 @@ function doDelete(gx,gy,silent){
   if(!done&&floors[fkey(gx,gy)]!==undefined){applyFloor(gx,gy,null);done=true;}
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
-function snapshot(){return {floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
+function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
   furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
+  var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
   Object.keys(floorMeshes).forEach(function(k){scene.remove(floorMeshes[k]);});floors={};floorMeshes={};
   furn.slice().forEach(function(f){if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);});furn=[];
-  Object.keys(sn.floors||{}).forEach(function(k){var p=k.split(",");applyFloor(+p[0],+p[1],sn.floors[k]);});
-  Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(","),v=sn.walls[k];if(typeof v==="string")applyWall(+p[0],+p[1],+p[2],v);else applyWall(+p[0],+p[1],+p[2],v.t,v.c);});
-  (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x,f.y,f.r,f.fid);});
+  Object.keys(sn.floors||{}).forEach(function(k){var p=k.split(",");applyFloor(+p[0]+mx9,+p[1]+my9,sn.floors[k]);});
+  Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(","),v=sn.walls[k];if(typeof v==="string")applyWall(+p[0]+mx9,+p[1]+my9,+p[2],v);else applyWall(+p[0]+mx9,+p[1]+my9,+p[2],v.t,v.c);});
+  (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid);});
   if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr)uhrzeit=sn.uhr;
   if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
