@@ -330,7 +330,13 @@ var KATALOG={
   {id:"sessel",n:"Sessel",e:"💺",cost:280,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
   {id:"tisch",n:"Esstisch",e:"🪵",cost:320,size:[2,1]},
   {id:"stuhl",n:"Stuhl",e:"🪑",cost:90,size:[1,1],use:{need:"hunger",pose:"sit",off:[0,0],dur:6}},
-  {id:"tv",n:"Fernseher",e:"📺",cost:750,size:[2,1],use:{need:"spass",pose:"stand",off:[0,1],dur:6}}],
+  {id:"tv",n:"Fernseher",e:"📺",cost:750,size:[2,1],use:{need:"spass",pose:"stand",off:[0,1],dur:6}},
+  {id:"sofa_design",n:"⭐ Designer-Sofa",e:"🛋️",cost:1400,size:[2,1],norm:1,use:{need:"spass",pose:"sit",off:[0,0],dur:8}},
+  {id:"sessel_ohren",n:"⭐ Ohrensessel",e:"🪑",cost:750,size:[1,1],norm:1,use:{need:"spass",pose:"sit",off:[0,0],dur:7}},
+  {id:"himmelbett",n:"⭐ Himmelbett",e:"🛏️",cost:2400,size:[2,2],norm:1,use:{need:"energie",pose:"lie",off:[0,0],dur:16}},
+  {id:"couchtisch",n:"⭐ Couchtisch",e:"🪵",cost:520,size:[1,1],norm:1},
+  {id:"landtisch",n:"⭐ Landhaus-Tisch",e:"🍽️",cost:680,size:[2,1],norm:1},
+  {id:"polsterstuhl",n:"⭐ Polsterstuhl",e:"💺",cost:260,size:[1,1],norm:1,use:{need:"hunger",pose:"sit",off:[0,0],dur:6}}],
  kueche:[
   {id:"kueche",n:"Küchenzeile",e:"🍳",cost:850,size:[2,1]},
   {id:"herd",n:"Herd",e:"🔥",cost:420,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
@@ -347,7 +353,8 @@ var KATALOG={
   {id:"hund",n:"Hund (Haustier)",e:"🐕",cost:450,size:[1,1],pet:1},
   {id:"kerzentisch",n:"Kerzen-Dinner",e:"🕯️",cost:380,size:[1,1],love:1},
   {id:"rosenbogen",n:"Rosenbogen",e:"💒",cost:350,size:[2,1],wed:1},
-  {id:"stereo",n:"Stereoanlage",e:"🔊",cost:320,size:[1,1],stereo:1}],
+  {id:"stereo",n:"Stereoanlage",e:"🔊",cost:320,size:[1,1],stereo:1},
+  {id:"wandregal",n:"⭐ Wandregal",e:"🗄️",cost:420,size:[1,1],norm:1,use:{need:"spass",pose:"stand",off:[0,1],dur:7}}],
  buero:[
   {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}}],
  garten:[
@@ -564,6 +571,14 @@ function applyFurn(id,gx,gy,rot,fid){
   furn.push(rec);
   loadTH(id,function(tpl){if(!tpl)return;
     var m=tpl.clone(true);m.position.set(cx(gx),0.012,cz(gy));m.rotation.y=rot*Math.PI/2;
+    if(def.norm){ // PolyHaven-Modelle: auf Zellgroesse skalieren + auf den Boden setzen
+      var bb9=new THREE.Box3().setFromObject(m),sz9=new THREE.Vector3();bb9.getSize(sz9);
+      var tw9=(def.size?def.size[0]:1)*CS*0.92,td9=(def.size?def.size[1]:1)*CS*0.92;
+      var k9=Math.min(tw9/(sz9.x||1),td9/(sz9.z||1),2.6/(sz9.y||1));
+      if(!isFinite(k9)||k9<=0)k9=1;
+      m.scale.setScalar(k9);
+      var bb10=new THREE.Box3().setFromObject(m);
+      m.position.y=-bb10.min.y+0.012;}
     // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Größe passt (1 Einheit = 1m, Zelle 2m)
     scene.add(m);rec.mesh=m;
     if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,7);pl.position.set(cx(gx),1.7,cz(gy));scene.add(pl);rec.plight=pl;}
