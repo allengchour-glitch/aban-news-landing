@@ -90,12 +90,20 @@ Vom User bereitgestellte Credits. Prompt-getrieben, preview→refine, r128-Fix (
 | item_relic.glb | glowing gem on ornate gold base | leuchtendes Relikt (Deko/Fund) |
 | item_potion.glb | red health potion bottle | einsammelbarer Heiltrank (+40 HP) |
 
-## Selbst-modelliert (Blender-Skript, 2026-07-12) — eigene Assets, keine Lizenzfrage
-Prozedural per bpy aus Primitiven gebaut + Material, GLB-Export. Winzig (~15 KB), Low-Poly-Stil.
-Skript: automation/gen_blender_props.py (reproduzierbar/erweiterbar).
+## Kenney — Fantasy Town Kit + City Roads (CC0) — Blender-poliert
+Quelle: https://kenney.nl/assets/fantasy-town-kit · CC0 1.0. GLB-Format verweist auf externe
+`Textures/colormap.png` → in Blender importiert + als GLB mit **eingebetteter** Textur re-exportiert
+(flat-shading), sonst lädt r128 sie nicht. Tool: automation/polish_kenney_glb.py.
 
-| Datei | Modell | Nutzung |
+| Datei | Original | Nutzung |
 |---|---|---|
-| gen_windmill.glb | Windmühle (Turm+Dach+4 Flügel) | Dorf-Landmarke |
-| gen_well.glb | Ziehbrunnen (Ring+Wasser+Dach+Eimer) | Dorf-Prop |
-| gen_market.glb | Marktstand (Theke+gestreiftes Dach) | Dorf-Prop |
+| ftk_road/ftk_road_bend/ftk_road_corner | road* | Straßen/Wege (Dorf-Kreuz + Weg-Stummel) |
+| ftk_stall | stall-red | Marktstand |
+| ftk_fountain | fountain-round-detail | Dorf-Brunnen |
+| ftk_cart | cart | Marktkarren |
+| ftk_banner | banner-red | Banner (Deko) |
+| ftk_lantern | lantern | Laterne (+Licht) |
+| ftk_watermill | watermill | Mühlrad (Deko) |
+| ftk_tree | tree-high-round | Baum |
+
+> Ersetzt die früheren selbst-modellierten gen_*-Props (auf User-Wunsch entfernt).

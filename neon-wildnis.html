@@ -699,7 +699,7 @@ function updProps(dt){
 // Kostenlose CC0-Assets (Kenney Nature/Survival/Graveyard) für viel mehr Abwechslung.
 // Auto-Normalisierung: jedes Modell wird per Bounding-Box auf eine Ziel-Welthöhe skaliert
 // (robust gegen native Einheiten), Materialien bleiben original (rendern in r128 sauber).
-var cc0proto={}, cc0h={}, cc0pending=0, cc0onready=[];
+var cc0proto={}, cc0h={}, cc0box={}, cc0pending=0, cc0onready=[];
 function loadCC0(files,onAll){
   if(!THREE.GLTFLoader){onAll&&onAll();return;}
   var left=files.length;if(!left){onAll&&onAll();return;}
@@ -707,7 +707,7 @@ function loadCC0(files,onAll){
     new THREE.GLTFLoader().load("/models/"+name+".glb",function(g){
       var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
       var bb=new THREE.Box3().setFromObject(o);var h=Math.max(0.001,bb.max.y-bb.min.y);
-      cc0proto[name]=o;cc0h[name]=h;
+      cc0proto[name]=o;cc0h[name]=h;cc0box[name]={x:Math.max(0.001,bb.max.x-bb.min.x),y:h,z:Math.max(0.001,bb.max.z-bb.min.z)};
       if(--left<=0)onAll&&onAll();
     },undefined,function(){if(--left<=0)onAll&&onAll();});
   });
@@ -717,6 +717,23 @@ function cc0inst(name,targetH){
   var p=cc0proto[name];if(!p)return null;
   var m=p.clone(true);var s=targetH/(cc0h[name]||1);m.scale.setScalar(s);
   return m;
+}
+// Skaliert nach FUSSABDRUCK-Breite (für flache Kacheln wie Straßen, deren Höhe ~0 ist)
+function cc0instW(name,targetW){
+  var p=cc0proto[name];if(!p)return null;
+  var b=cc0box[name];if(!b)return null;
+  var m=p.clone(true);m.scale.setScalar(targetW/b.x);
+  return m;
+}
+// Legt ein Straßen-Kreuz (Kenney-Kacheln) durch einen Punkt — echte Wege im Dorf 🛣️
+function layRoads(cx,cz){
+  var T=4.0; // Weltgröße pro Kachel
+  function tile(x,z,ry){var t=cc0instW("ftk_road",T);if(!t)return;t.position.set(x,groundH(x,z)+0.09,z);t.rotation.y=ry||0;scene.add(t);}
+  for(var i=-3;i<=3;i++)tile(cx+i*T,cz,0);        // horizontale Straße
+  for(var j=-3;j<=3;j++){if(j===0)continue;tile(cx,cz+j*T,Math.PI/2);} // Kreuz
+  // kurzer Weg-Stummel nach aussen (Richtung Kartenmitte)
+  var a=Math.atan2(-cz,-cx);
+  for(var k=4;k<=8;k++)tile(cx+Math.cos(a)*k*T,cz+Math.sin(a)*k*T,a);
 }
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 function decorateWorld(){
@@ -755,12 +772,15 @@ function decorateWorld(){
     for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*(hrd*0+13),fz=vz+Math.sin(fa)*13;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
-    // ⛲ Brunnen (Meshy) etwas neben dem Lagerfeuer als Dorf-Mittelpunkt
-    var fnt=cc0inst("item_fountain",2.4);if(fnt){var fx2=vx-4,fz2=vz+2;fnt.position.set(fx2,groundH(fx2,fz2),fz2);fnt.rotation.y=rnd()*6.28;scene.add(fnt);}
-    // 🌬️🪣🎪 Selbst-modellierte Dorf-Props (Blender, gratis): Windmühle am Rand, Ziehbrunnen + Marktstand
-    var wm2=cc0inst("gen_windmill",7);if(wm2){var wx3=vx+9,wz3=vz-9;wm2.position.set(wx3,groundH(wx3,wz3),wz3);wm2.rotation.y=rnd()*6.28;scene.add(wm2);}
-    var wl=cc0inst("gen_well",2.2);if(wl){var wx4=vx+5,wz4=vz+5;wl.position.set(wx4,groundH(wx4,wz4),wz4);wl.rotation.y=rnd()*6.28;scene.add(wl);}
-    var mk=cc0inst("gen_market",2.0);if(mk){var mx3=vx-6,mz3=vz-3;mk.position.set(mx3,groundH(mx3,mz3),mz3);mk.rotation.y=rnd()*6.28;scene.add(mk);}
+    // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
+    layRoads(vx,vz);
+    // 🎪⛲🛒 Kenney-Dorf-Props (poliert): Marktstand, Brunnen, Karren, Banner, Laternen
+    var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
+    var ftfn=cc0inst("ftk_fountain",2.4);if(ftfn){var qx=vx-4,qz=vz+3;ftfn.position.set(qx,groundH(qx,qz),qz);scene.add(ftfn);}
+    var ftct=cc0inst("ftk_cart",1.7);if(ftct){var cx2=vx+2,cz2=vz+5;ftct.position.set(cx2,groundH(cx2,cz2),cz2);ftct.rotation.y=rnd()*6.28;scene.add(ftct);}
+    for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);}}
+    for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
+      var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
   }
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
@@ -1486,7 +1506,7 @@ function startGame(fresh){
   SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","gen_windmill","gen_well","gen_market"],decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree"],decorateWorld);
   });
   loadHero();loadSlime();
   if(sv){
