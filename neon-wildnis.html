@@ -520,13 +520,23 @@ var MOBS=[
   {id:"golem", file:"mob_golem.glb",    scale:2.3, hp:9, spd:1.9, minDay:3, w:2, emo:"🗿"},
   {id:"bat",   build:mkBat,             scale:1.4, hp:2, spd:4.4, minDay:1, w:3, emo:"🦇", fly:true},
   {id:"spider",build:mkSpider,          scale:1.4, hp:5, spd:3.4, minDay:2, w:3, emo:"🕷️"},
-  {id:"ghost", build:mkGhost,           scale:1.6, hp:6, spd:2.7, minDay:3, w:2, emo:"👻", fly:true}
+  {id:"ghost", build:mkGhost,           scale:1.6, hp:6, spd:2.7, minDay:3, w:2, emo:"👻", fly:true},
+  // 🆕 CC0-Monster (Kenney Undead + Quaternius, Blender-poliert) — feste Skalen (Skinned-BBox unzuverlässig)
+  {id:"skelett", file:"mn_skeleton.glb",   scale:1.0,  hp:5,  spd:3.2, minDay:2, w:3, emo:"💀"},
+  {id:"ork",     file:"mn_orc.glb", skinned:true,        th:2.1, scale:0.65, hp:6,  spd:3.0, minDay:2, w:3, emo:"👺"},
+  {id:"zombie",  file:"mn_zombie.glb",     scale:1.0,  hp:7,  spd:2.2, minDay:3, w:3, emo:"🧟"},
+  {id:"imp",     file:"mn_demon_blue.glb", skinned:true, th:1.9, scale:0.6,  hp:5,  spd:4.0, minDay:3, w:3, emo:"👿"},
+  {id:"stachel", file:"mn_slime_spiky.glb", skinned:true,th:2.0, scale:0.45, hp:8,  spd:2.4, minDay:3, w:2, emo:"🦔"},
+  {id:"vampir",  file:"mn_vampire.glb",    scale:1.0,  hp:8,  spd:3.8, minDay:4, w:2, emo:"🧛"},
+  {id:"mimic",   file:"mn_mimic.glb",      scale:0.5,  hp:9,  spd:1.6, minDay:4, w:1, emo:"📕"},
+  {id:"daemon",  file:"mn_demon.glb", skinned:true,      th:2.7, scale:0.7,  hp:12, spd:2.6, minDay:5, w:2, emo:"😈"},
+  {id:"yeti",    file:"mn_yeti.glb", skinned:true,       th:2.7, scale:0.65, hp:14, spd:2.2, minDay:6, w:2, emo:"🦍"}
 ];
 var mobProtos={}; // id -> THREE.Object3D
 function loadSlime(){
   if(!THREE.GLTFLoader)return;
   new THREE.GLTFLoader().load("/models/monster_slime.glb",function(g){slimeProto=g.scene;},undefined,function(){});
-  MOBS.forEach(function(M){if(!M.file)return;
+  MOBS.forEach(function(M){if(!M.file||M.skinned)return; // geskinnte werden pro Spawn frisch geladen (r128: Skinned-Klon kaputt)
     new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});mobProtos[M.id]=o;},undefined,function(){});
   });
   new THREE.GLTFLoader().load("/models/item_chest.glb",function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});chestProto=o;},undefined,function(){});
@@ -534,7 +544,7 @@ function loadSlime(){
 var chestProto=null;
 function fallbackSlime(){var m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.7,1),new THREE.MeshStandardMaterial({color:0x3ad0ff,emissive:0x1466aa,emissiveIntensity:.6,flatShading:true}));return m;}
 function pickMob(){ // gewichtete Auswahl, härtere Gegner erst an späteren Tagen
-  var pool=MOBS.filter(function(M){return day>=M.minDay&&(M.id==="slime"||M.build||mobProtos[M.id]);});
+  var pool=MOBS.filter(function(M){return day>=M.minDay&&(M.id==="slime"||M.build||M.skinned||mobProtos[M.id]);});
   if(!pool.length)return MOBS[0];
   var tot=0;pool.forEach(function(M){tot+=M.w;});var r=rnd()*tot;
   for(var i=0;i<pool.length;i++){r-=pool[i].w;if(r<=0)return pool[i];}
@@ -544,6 +554,19 @@ function spawnMonster(){
   var a=rnd()*6.28,rd=32+rnd()*14;
   var x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
   var M=pickMob();
+  if(M.skinned&&THREE.GLTFLoader){ // geskinnte GLBs: pro Spawn frisch laden (Klonen bricht Skinning in r128)
+    (function(MM,xx,zz){new THREE.GLTFLoader().load("/models/"+MM.file,function(g){
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      // Bind-Pose-BBox live messen und auf Zielhöhe normieren (Meta-Höhen der Kits sind unzuverlässig)
+      var bb=new THREE.Box3().setFromObject(o),hh=Math.max(0.001,bb.max.y-bb.min.y);
+      var k=(MM.th||2.2)/hh;if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(12,k));
+      o.scale.setScalar(k);
+      o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
+      monsters.push({mesh:o,x:xx,z:zz,hp:MM.hp,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null});
+      if(typeof updWaveHud==="function")updWaveHud();
+    },undefined,function(){});})(M,x,z);
+    return;
+  }
   var m,sc;
   if(M.build){m=M.build();sc=M.scale;}
   else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}
@@ -2441,7 +2464,7 @@ window.__nw={
   xp:function(n){gainXP(n||100);return {level:level,perk:PERK};}, // Test-Only
   perkState:function(){return PERK;},
   trade:function(){if(merchant.x!=null){player.position.x=merchant.x;player.position.z=merchant.z+1.5;}inv.wood=20;inv.crystal=20;inv.stone=20;invUpd();openTrade();return {mx:merchant.x,mz:merchant.z};}, // Test-Only
-  spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;var m,sc;if(M.build){m=M.build();sc=M.scale;}else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}m.traverse(function(n){if(n.isMesh)n.castShadow=true;});m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});return 1;}, // Test-Only
+  spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;if(M.skinned&&THREE.GLTFLoader){var xx=player.position.x+3,zz=player.position.z+3;new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});var bb=new THREE.Box3().setFromObject(o),hh=Math.max(0.001,bb.max.y-bb.min.y);var k=(M.th||2.2)/hh;if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(12,k));o.scale.setScalar(k);o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);monsters.push({mesh:o,x:xx,z:zz,hp:M.hp,t:0,spd:0,baseScale:k,kind:M.id,walk:true,fly:false,wings:null});});return 1;}var m,sc;if(M.build){m=M.build();sc=M.scale;}else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}m.traverse(function(n){if(n.isMesh)n.castShadow=true;});m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});return 1;}, // Test-Only
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
   villages:function(){return villages.slice();},
