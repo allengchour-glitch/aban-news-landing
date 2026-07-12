@@ -880,25 +880,41 @@ function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
 // 🧑‍🌾 Dorfbewohner-NPCs (einfache, stilisierte Figuren, wandern im Dorf umher)
 var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a];
 var NPC_EMO=["👋","💬","🙂","🎶","❤️","🍺","🧺","⚒️"];
+var NPC_HAIR=[0x3a2418,0x6a4a2c,0x2a2a2a,0x8a6a3a,0xc9a15a,0x9a9a9a];
 function mkVillager(x,z){var g=new THREE.Group(),gy=groundH(x,z);
-  var robeHex=NPC_ROBES[(rnd()*NPC_ROBES.length)|0];
-  var robe=new THREE.MeshStandardMaterial({color:robeHex,roughness:1,flatShading:true});
-  var skin=new THREE.MeshStandardMaterial({color:0xe6b088,roughness:1});
-  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.42,1.05,9),robe);body.position.y=0.85;body.castShadow=true;g.add(body);
-  var head=new THREE.Mesh(new THREE.SphereGeometry(0.27,10,8),skin);head.position.y=1.6;head.castShadow=true;g.add(head);
-  // Nase + Augen für Charakter
-  var nose=new THREE.Mesh(new THREE.SphereGeometry(0.06,6,6),skin);nose.position.set(0,1.58,0.26);g.add(nose);
+  var shirtHex=NPC_ROBES[(rnd()*NPC_ROBES.length)|0];
+  var shirt=new THREE.MeshStandardMaterial({color:shirtHex,roughness:1,flatShading:true});
+  var pants=new THREE.MeshStandardMaterial({color:0x3a4256,roughness:1,flatShading:true});
+  var shoe=new THREE.MeshStandardMaterial({color:0x2a2018,roughness:1,flatShading:true});
+  var skin=new THREE.MeshStandardMaterial({color:[0xe6b088,0xd49a70,0xf0c49a,0xc98a5c][(rnd()*4)|0],roughness:1});
+  // 🦵 Beine (Pivot an der Hüfte, für Lauf-Anim) + Füsse
+  function leg(sx){var pv=new THREE.Group();pv.position.set(sx,0.74,0);
+    var l=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.09,0.72,6),pants);l.position.y=-0.36;l.castShadow=true;pv.add(l);
+    var ft=new THREE.Mesh(new THREE.BoxGeometry(0.16,0.1,0.26),shoe);ft.position.set(0,-0.74,0.06);pv.add(ft);g.add(pv);return pv;}
+  var ll=leg(-0.13),rl=leg(0.13);
+  // 👕 Torso
+  var torso=new THREE.Mesh(new THREE.CylinderGeometry(0.24,0.28,0.66,8),shirt);torso.position.y=1.08;torso.castShadow=true;g.add(torso);
+  var belt=new THREE.Mesh(new THREE.CylinderGeometry(0.285,0.285,0.1,8),new THREE.MeshStandardMaterial({color:0x4a3020}));belt.position.y=0.77;g.add(belt);
+  // 💪 Arme (Schulter-Pivot, schwingen) + Hände
+  function arm(sx){var pv=new THREE.Group();pv.position.set(sx,1.34,0);
+    var a=new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.07,0.62,6),shirt);a.position.y=-0.31;a.castShadow=true;pv.add(a);
+    var hn=new THREE.Mesh(new THREE.SphereGeometry(0.09,6,6),skin);hn.position.y=-0.64;pv.add(hn);g.add(pv);return pv;}
+  var la=arm(-0.3),ra=arm(0.3);
+  // 🧑 Kopf + Hals
+  var neck=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.11,0.14,6),skin);neck.position.y=1.46;g.add(neck);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.24,12,10),skin);head.position.y=1.68;head.scale.set(1,1.08,0.95);head.castShadow=true;g.add(head);
+  // Gesicht: Augen, Nase, Mund
   var eyeM=new THREE.MeshStandardMaterial({color:0x2a2a2a});
-  [[-0.1],[0.1]].forEach(function(e){var ey=new THREE.Mesh(new THREE.SphereGeometry(0.035,6,6),eyeM);ey.position.set(e[0],1.64,0.24);g.add(ey);});
-  var hat=new THREE.Mesh(new THREE.ConeGeometry(0.33,0.46,9),robe);hat.position.y=1.92;hat.castShadow=true;g.add(hat);
-  // Arme (Pivot an der Schulter, schwingen)
-  function arm(sx){var pv=new THREE.Group();pv.position.set(sx,1.3,0);
-    var m=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.08,0.7,6),robe);m.position.y=-0.35;m.castShadow=true;pv.add(m);
-    var hand=new THREE.Mesh(new THREE.SphereGeometry(0.1,6,6),skin);hand.position.y=-0.72;pv.add(hand);g.add(pv);return pv;}
-  var la=arm(-0.36),ra=arm(0.36);
-  var s2=0.92+rnd()*0.28;g.scale.setScalar(s2);
+  [[-0.09],[0.09]].forEach(function(e){var ey=new THREE.Mesh(new THREE.SphereGeometry(0.032,6,6),eyeM);ey.position.set(e[0],1.72,0.2);g.add(ey);});
+  var nose=new THREE.Mesh(new THREE.SphereGeometry(0.045,6,6),skin);nose.position.set(0,1.67,0.24);g.add(nose);
+  var mouth=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.02,0.02),eyeM);mouth.position.set(0,1.6,0.22);g.add(mouth);
+  // 💇 Haar oder Hut
+  var hairHex=NPC_HAIR[(rnd()*NPC_HAIR.length)|0];
+  if(rnd()<0.55){var hair=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,8,0,6.283,0,1.7),new THREE.MeshStandardMaterial({color:hairHex,roughness:1,flatShading:true}));hair.position.y=1.7;hair.scale.set(1,1.05,1);g.add(hair);}
+  else{var hat=new THREE.Mesh(new THREE.ConeGeometry(0.3,0.4,8),shirt);hat.position.y=1.98;hat.castShadow=true;g.add(hat);var brim=new THREE.Mesh(new THREE.CylinderGeometry(0.34,0.34,0.04,10),shirt);brim.position.y=1.8;g.add(brim);}
+  var s2=0.94+rnd()*0.22;g.scale.setScalar(s2);
   g.position.set(x,gy,z);g.rotation.y=rnd()*6.28;scene.add(g);
-  npcs.push({mesh:g,cx:x,cz:z,t:rnd()*6,dir:rnd()*6.28,spd:0.5+rnd()*0.5,rr:9,la:la,ra:ra,walk:0,emoT:2+rnd()*8,emo:null});return g;}
+  npcs.push({mesh:g,cx:x,cz:z,t:rnd()*6,dir:rnd()*6.28,spd:0.5+rnd()*0.5,rr:9,la:la,ra:ra,ll:ll,rl:rl,walk:0,emoT:2+rnd()*8,emo:null});return g;}
 function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;
   var pausing=(Math.sin(n.t*0.5+i)>0.55); // gelegentlich stehenbleiben (plaudern)
   if(n.t%3.5<dt)n.dir+=(rnd()-0.5)*2.2;
@@ -907,7 +923,7 @@ function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;
   if(Math.hypot(nx-n.cx,nz-n.cz)>n.rr){n.dir=Math.atan2(n.cx-nx,n.cz-nz);}else{n.mesh.position.x=nx;n.mesh.position.z=nz;}
   n.walk+=spd*dt*6;
   n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+(pausing?0:Math.abs(Math.sin(n.walk))*0.06);
-  if(n.la){var sw=pausing?Math.sin(n.t*2)*0.15:Math.sin(n.walk)*0.6;n.la.rotation.x=sw;n.ra.rotation.x=-sw;}
+  if(n.la){var sw=pausing?Math.sin(n.t*2)*0.12:Math.sin(n.walk)*0.6;n.la.rotation.x=sw;n.ra.rotation.x=-sw;if(n.ll){n.ll.rotation.x=-sw*0.9;n.rl.rotation.x=sw*0.9;}}
   n.mesh.rotation.y+=(n.dir-n.mesh.rotation.y)*Math.min(1,dt*4);
   // 💬 Emote-Blase über dem Kopf
   n.emoT-=dt;
