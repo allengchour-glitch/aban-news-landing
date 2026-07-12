@@ -1055,6 +1055,7 @@ var NPC_DEFS={
  haendler:{farbe:{skin:0xd9a06a,hair:0x2a2a34,top:0x3a8a5a,bottom:0x4a3a28,dress:false,longHair:false},speed:2.0},
  polizist:{farbe:{skin:0xf0c090,hair:0x1a1a24,top:0x2a3a6e,bottom:0x1a2340,dress:false,longHair:false},speed:3.0},
  buergermeister:{farbe:{skin:0xf0c090,hair:0x9a9aa2,top:0x5a2a34,bottom:0x2a2a38,dress:false,longHair:false},speed:1.7},
+ nachbarskind:{farbe:{skin:0xffd9b8,hair:0xc8842a,top:0xe86a4a,bottom:0x4a6a9a,dress:false,longHair:false},speed:2.8},
  katze:{speed:2.2}
 };
 function spawnNpc(typ){
@@ -1065,7 +1066,7 @@ function spawnNpc(typ){
     m=MODELS.hund.clone(true);m.scale.setScalar(0.62);
     m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.color.multiplyScalar(0.55);}});
     scene.add(m);}
-  else{m=mkBewohner(def.farbe);m.scale.setScalar(1.05);}
+  else{m=mkBewohner(def.farbe);m.scale.setScalar(typ==="nachbarskind"?0.62:1.05);}
   var startX=cx(2+((Math.random()*12)|0));
   var n={typ:typ,mesh:m,x:startX,z:cz(GH-1)+10,rot:Math.PI,state:"enter",t:0,walkT:0,
     tx:startX,tz:cz(GH-3),speed:def.speed};
@@ -1100,6 +1101,11 @@ function npcAct(n){
       npcEmoji(n,"💰");beep(700,.1,"triangle",.06);setTimeout(function(){beep(940,.16,"triangle",.07);},140);
       netSend({t:"geld",v:geld});netSend({t:"quest",i:questIdx});}
     else{hint("🏛️ Der Bürgermeister schaut nur kurz vorbei.");npcEmoji(n,"👋");}}
+  else if(n.typ==="nachbarskind"){
+    if(kinder.length){hint("🧒 Das Nachbarskind kommt zum Spielen!");npcEmoji(n,"🎈");
+      kinder.forEach(function(k8){simEmojiK(k8,"🎉");});
+      sims.forEach(function(s8){s8.needs.spass=Math.min(100,s8.needs.spass+6);});n.t=7;}
+    else{hint("🧒 Das Nachbarskind klingelt … aber hier wohnen noch keine Kinder.");npcEmoji(n,"🏀");}}
   else if(n.typ==="katze"){
     hint("🐈 Eine Streunerkatze schaut vorbei");npcEmoji(n,"🐟");
     kinder.forEach(function(k){simEmojiK(k,"😻");});}
@@ -1120,7 +1126,7 @@ function updNpcs(dt,now){
   if(npcTimer<=0){npcTimer=25+Math.random()*30;
     var pool=[];
     if(hh>=8&&hh<12)pool.push("postbote","postbote");
-    if(hh>=13&&hh<18)pool.push("nachbarin","haendler");
+    if(hh>=13&&hh<18){pool.push("nachbarin","haendler");if(kinder.length)pool.push("nachbarskind","nachbarskind");}
     pool.push("katze");
     if(polizeiPending){pool=["polizist"];polizeiPending=false;}
     else if(buergermeisterPending){pool=["buergermeister"];buergermeisterPending=false;}
@@ -1596,7 +1602,17 @@ function startGame(){
   running=true;
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
-  document.getElementById("modeBtn").style.display="block";document.getElementById("achBtn").style.display="block";setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("📜 Stadt-Auftrag vom Bürgermeister: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
+  document.getElementById("modeBtn").style.display="block";document.getElementById("achBtn").style.display="block";
+  if(!MPs||mpHost){try{
+    var heute=new Date().toDateString(),st8=JSON.parse(localStorage.getItem("th_streak")||"null"),n8=1;
+    if(st8&&st8.d===heute)n8=0;
+    else if(st8){var gest=new Date();gest.setDate(gest.getDate()-1);
+      n8=st8.d===gest.toDateString()?st8.n+1:1;}
+    if(n8>0){localStorage.setItem("th_streak",JSON.stringify({d:heute,n:n8}));
+      var bon8=Math.min(40*n8,280);geld+=bon8;updHUD();
+      var txt8=n8>1?"🔥 Tag-"+n8+"-Serie! Treue-Bonus +"+bon8+" §":"👋 Willkommen! Tages-Bonus +"+bon8+" §";
+      setTimeout(function(){if(running)hint(txt8);},4500);}
+  }catch(e){}}setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("📜 Stadt-Auftrag vom Bürgermeister: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
   romantik=document.getElementById("romChk").checked||romantik;
   renderPalette();updHUD();MUS.play().catch(function(){});
