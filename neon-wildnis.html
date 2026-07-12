@@ -846,6 +846,26 @@ function updProps(dt){
     if(p.halo)p.halo.material.opacity=0.20+Math.abs(Math.sin(p.ph*1.8))*0.18;
   }
 }
+// 🌬️ Wind-Schwanken für Vegetation (Bäume/Gras/Blumen/Büsche) — kosmetisch, gedeckelt
+var swayers=[],_swayCap=340,_swayT=0;
+function regSway(m,amp,freq){if(swayers.length>=_swayCap)return;swayers.push({m:m,base:m.rotation.z,amp:amp,freq:freq,ph:Math.random()*6.28});}
+function updSway(dt){_swayT+=dt;var t=_swayT;for(var i=0;i<swayers.length;i++){var s=swayers[i];s.m.rotation.z=s.base+Math.sin(t*s.freq+s.ph)*s.amp;}}
+// 🐄 Umherwandernde Tiere — einfache prozedurale KI (kosmetisch, Math.random statt seed → kein Koop-Desync)
+var critters=[];
+function regCritter(m,x,z,opts){opts=opts||{};critters.push({m:m,hx:x,hz:z,range:opts.range||7,spd:opts.spd||(0.5+Math.random()*0.7),hop:!!opts.hop,ph:Math.random()*6.28,t:Math.random()*3,tx:x,tz:z,rest:0});}
+function updCritters(dt){
+  for(var i=0;i<critters.length;i++){var c=critters[i],m=c.m;
+    if(c.rest>0){c.rest-=dt;c.ph+=dt*2;m.rotation.x=Math.sin(c.ph)*0.07;m.position.y=groundH(m.position.x,m.position.z);continue;} // grasen (Kopf-Nicken)
+    c.t-=dt;
+    if(c.t<=0){var a=Math.random()*6.28,rd=Math.random()*c.range;c.tx=c.hx+Math.cos(a)*rd;c.tz=c.hz+Math.sin(a)*rd;c.t=2+Math.random()*4;if(Math.random()<0.4){c.rest=1.5+Math.random()*3;}}
+    var dx=c.tx-m.position.x,dz=c.tz-m.position.z,d=Math.hypot(dx,dz);
+    if(d>0.4){var nx=m.position.x+dx/d*c.spd*dt,nz=m.position.z+dz/d*c.spd*dt;m.position.x=nx;m.position.z=nz;c.ph+=dt*(c.hop?9:5.5);
+      m.position.y=groundH(nx,nz)+(c.hop?Math.abs(Math.sin(c.ph))*0.28:0);
+      var ty=Math.atan2(dx,dz);var dyaw=ty-m.rotation.y;while(dyaw>Math.PI)dyaw-=6.283;while(dyaw<-Math.PI)dyaw+=6.283;m.rotation.y+=dyaw*Math.min(1,dt*6);
+      m.rotation.x=0;m.rotation.z=Math.sin(c.ph)*0.05;}
+    else{c.rest=1+Math.random()*2;}
+  }
+}
 
 // ================= CC0-Welt-Reichtum: Natur-Vielfalt · Dörfer · Friedhof · Fluss =================
 // Kostenlose CC0-Assets (Kenney Nature/Survival/Graveyard) für viel mehr Abwechslung.
@@ -1055,6 +1075,7 @@ function decorateWorld(){
   farScatter(Math.round(280*VF),12,function(x,z){
     var T=TREES[(rnd()*TREES.length)|0];var m=cc0inst(T[0],T[1]*(0.8+rnd()*0.5));if(!m)return;
     m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);
+    if(rnd()<0.55)regSway(m,0.022+rnd()*0.022,0.7+rnd()*0.5); // 🌬️ Bäume wiegen im Wind
   });
   // --- Büsche / Blumen / Pilzgruppen ---
   // 🌿 üppige Büsche (mehrere Grün-Blobs + Blüten-Tupfer) — schöner als flacher cc0-Busch
@@ -1063,12 +1084,12 @@ function decorateWorld(){
     var nb=3+((rnd()*3)|0);for(var b=0;b<nb;b++){var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.55+rnd()*0.35,0),gm);bl.position.set((rnd()-0.5)*0.9,0.4+rnd()*0.35,(rnd()-0.5)*0.9);bl.scale.y=0.85;bl.castShadow=true;g.add(bl);}
     if(rnd()<0.7){var bm=new THREE.MeshBasicMaterial({color:BLOOM[(rnd()*BLOOM.length)|0]});for(var f2=0;f2<4;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.1,0),bm);fl.position.set((rnd()-0.5)*1.0,0.5+rnd()*0.5,(rnd()-0.5)*1.0);g.add(fl);}}
     return g;}
-  farScatter(Math.round(130*VF),8,function(x,z){var m=(rnd()<0.55)?mkBush():cc0inst(rnd()<0.5?"nt_bush":"cc0_bush",1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(130*VF),8,function(x,z){var m=(rnd()<0.55)?mkBush():cc0inst(rnd()<0.5?"nt_bush":"cc0_bush",1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);if(rnd()<0.5)regSway(m,0.05+rnd()*0.04,1.1+rnd()*0.6);});
   var FLOW=["cc0_flower_purple","nt_flower_red","nt_flower_yellow"];
-  farScatter(Math.round(130*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(130*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.09+rnd()*0.06,1.4+rnd()*0.8);});
   farScatter(Math.round(90*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"nt_mushroom":"cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // 🌾 Grasbüschel + Baumstümpfe/liegende Stämme (Boden lebendiger)
-  farScatter(Math.round(120*VF),6,function(x,z){var m=cc0inst("nt_grass",0.5*(0.7+rnd()*0.8));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(120*VF),6,function(x,z){var m=cc0inst("nt_grass",0.5*(0.7+rnd()*0.8));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.11+rnd()*0.07,1.6+rnd()*0.9);});
   farScatter(Math.round(40*VF),12,function(x,z){var m=cc0inst(rnd()<0.5?"nt_stump":"nt_log",0.6*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Felsen-Sorten / Holzstapel als Streu-Props ---
   var ROCKS=["cc0_rock_large","cc0_rock_small","nt_rock","nt_rock_tall"];
@@ -1086,7 +1107,10 @@ function decorateWorld(){
   var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
   var WILD=[["an_deer",1.4],["an_boar",0.9],["an_fox",0.6],["an_rabbit",0.5],["an_beaver",0.6]];
   farScatter(Math.round(70*VF),14,function(x,z){var near=villages.length&&(function(){for(var i=0;i<villages.length;i++){if(Math.hypot(villages[i].x-x,villages[i].z-z)<40)return true;}return false;})();
-    var it=(near?TAME:WILD)[(rnd()*(near?TAME:WILD).length)|0];var m=cc0inst(it[0],it[1]*(0.85+rnd()*0.3));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+    var it=(near?TAME:WILD)[(rnd()*(near?TAME:WILD).length)|0];var m=cc0inst(it[0],it[1]*(0.85+rnd()*0.3));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);
+    var hops=(it[0]==="an_rabbit"||it[0]==="an_fox"||it[0]==="an_cat"||it[0]==="an_chicken");
+    regCritter(m,x,z,{range:near?6:12,spd:hops?(0.8+rnd()*0.8):(0.4+rnd()*0.5),hop:hops}); // 🐾 wandern/hoppeln
+  });
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
   function spotFar(minR){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
@@ -2069,7 +2093,7 @@ function frame(now){
   player.position.y=groundH(player.position.x,player.position.z);
 
   updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
-  updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
+  updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
