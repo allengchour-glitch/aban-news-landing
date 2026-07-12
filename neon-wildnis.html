@@ -82,6 +82,7 @@ canvas{display:block}
 #ov a.arc:hover{color:#7de3ff}
 /* Charakter-Picker */
 #charPick{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:560px;margin:4px 0 20px}
+#charPrev{width:150px;height:184px;border-radius:16px;background:linear-gradient(180deg,rgba(30,44,74,.7),rgba(16,24,46,.7));border:1px solid rgba(120,200,255,.25);margin:2px auto 8px;display:block;box-shadow:0 6px 22px rgba(0,0,0,.3)}
 .ccard{min-width:96px;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 12px;border-radius:16px;background:rgba(20,30,60,.7);border:2px solid rgba(120,200,255,.28);color:#e8f4ff;cursor:pointer;font-family:inherit;transition:transform .1s,border-color .1s,box-shadow .1s}
 .ccard:hover{transform:translateY(-2px)}
 .ccard .cemo{font-size:2rem;line-height:1}
@@ -146,6 +147,7 @@ canvas{display:block}
     <span class="chip"><b>🔨</b> Bauen</span>
   </div>
   <div id="charLbl">Wähle deinen Helden</div>
+  <canvas id="charPrev" width="300" height="368"></canvas>
   <div id="charPick"></div>
   <button class="big" id="startBtn">▶ Los geht's</button>
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
@@ -1163,6 +1165,45 @@ function startGame(fresh){
   running=true;paused=false;
   announce("🌅 Willkommen in der Wildnis!");
 }
+// ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
+(function(){
+  var cv=document.getElementById("charPrev");if(!cv||!window.THREE||!THREE.GLTFLoader)return;
+  var pr,psc,pcam,pmix,pmodel,pt=0,_lastId=null;
+  function init(){
+    try{pr=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});}catch(e){return false;}
+    pr.setPixelRatio(Math.min(devicePixelRatio,2));pr.setSize(cv.width,cv.height,false);pr.outputEncoding=THREE.sRGBEncoding;
+    psc=new THREE.Scene();
+    psc.add(new THREE.HemisphereLight(0xffffff,0x3a4a66,1.15));
+    var dl=new THREE.DirectionalLight(0xfff2e0,1.05);dl.position.set(2,4,3);psc.add(dl);
+    pcam=new THREE.PerspectiveCamera(30,cv.width/cv.height,0.1,50);pcam.position.set(0,1.02,3.5);pcam.lookAt(0,0.98,0);
+    return true;
+  }
+  function clearModel(){if(pmodel){psc.remove(pmodel);pmodel.traverse(function(n){if(n.isMesh&&n.geometry)n.geometry.dispose();});}pmodel=null;pmix=null;}
+  window.setCharPreview=function(id){
+    if(id===_lastId)return;_lastId=id;
+    if(!pr&&!init())return;
+    var C=CHARACTERS[0];for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)C=CHARACTERS[i];
+    new THREE.GLTFLoader().load("/models/"+C.file,function(g){
+      if(_lastId!==id)return; // schon weitergeklickt
+      clearModel();var o=g.scene;o.scale.setScalar((C.scale||1.15)*0.55);
+      o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
+      var box=new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();box.getCenter(ctr);
+      o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=box.min.y;
+      pmodel=o;psc.add(o);
+      if(g.animations&&g.animations.length){pmix=new THREE.AnimationMixer(o);
+        var idle=null;for(var a=0;a<g.animations.length;a++)if(/idle/i.test(g.animations[a].name)){idle=g.animations[a];break;}
+        pmix.clipAction(idle||g.animations[0]).play();}
+    },undefined,function(){});
+  };
+  var _pl=performance.now();
+  (function loop(now){requestAnimationFrame(loop);
+    var ov=document.getElementById("ov");if(!pr||!ov||ov.classList.contains("hide")){_pl=now;return;}
+    var dt=Math.min(0.05,(now-_pl)/1000);_pl=now;
+    if(pmix)pmix.update(dt);
+    if(pmodel)pmodel.rotation.y+=dt*0.7;
+    pr.render(psc,pcam);
+  })(performance.now());
+})();
 // ---------- Charakter-Picker (Startscreen) ----------
 (function(){
   var wrap=document.getElementById("charPick");if(!wrap)return;
@@ -1177,6 +1218,7 @@ function startGame(fresh){
       b.onclick=function(){curId=C.id;try{localStorage.setItem("nw_char",C.id);}catch(e){}render();};
       wrap.appendChild(b);
     });
+    if(window.setCharPreview)window.setCharPreview(curId);
   }
   render();
 })();
