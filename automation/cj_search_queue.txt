@@ -302,14 +302,14 @@
 #done search:ballet flats mary jane
 #done search:platform sandals
 #done search:cat eye sunglasses retro
-search:acetate glasses frame
-search:silk scarf square
-search:beret wool
-search:leather belt thin women
-search:ceramic vase minimalist
-search:scented candle soy
-search:wall art canvas boho
-search:led strip lights room
+#done search:acetate glasses frame
+#done search:silk scarf square
+#done search:beret wool
+#done search:leather belt thin women
+#done search:ceramic vase minimalist
+#done search:scented candle soy
+#done search:wall art canvas boho
+#done search:led strip lights room
 search:sunset projector lamp
 search:makeup organizer acrylic
 search:jade roller gua sha set
