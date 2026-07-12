@@ -135,6 +135,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
       <span id="hausWertTxt" style="font-size:.85rem;color:#b8862a;font-weight:800"></span>
       <button id="achClose" style="border:0;background:#e8e0d0;border-radius:10px;width:36px;height:36px;font-size:1rem;cursor:pointer">✕</button>
     </div>
+    <div id="questTxt" style="margin-top:10px;padding:9px 12px;border-radius:10px;background:#fff4dc;border:1px dashed #d8a84a;font-size:.85rem;color:#7a5a20"></div>
     <div id="achList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px"></div>
   </div>
 </div>
@@ -370,6 +371,7 @@ var ACH=[
  ["koch","🍳","Sternekoch","Ein perfektes Menü gekocht",function(){return (stats.kochPerfekt||0)>=1;}],
  ["angler","🎣","Petri Heil","5 Fische geangelt",function(){return (stats.fische||0)>=5;}],
  ["taenzer","💃","Tanzfieber","Eine perfekte Tanz-Session",function(){return (stats.tanzPerfekt||0)>=1;}],
+ ["ehrenbuerger","🎖️","Ehrenbürger","3 Stadt-Aufträge erfüllt",function(){return (stats.quests||0)>=3;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
@@ -573,7 +575,7 @@ function doDelete(gx,gy,silent){
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
 function snapshot(){return {floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
   Object.keys(floorMeshes).forEach(function(k){scene.remove(floorMeshes[k]);});floors={};floorMeshes={};
@@ -582,7 +584,7 @@ function loadSnapshot(sn){
   Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(","),v=sn.walls[k];if(typeof v==="string")applyWall(+p[0],+p[1],+p[2],v);else applyWall(+p[0],+p[1],+p[2],v.t,v.c);});
   (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x,f.y,f.r,f.fid);});
   if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;
+  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
@@ -607,6 +609,7 @@ function onNetMsg(m){
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost)kochApply(m.s);
   else if(m.t==="tanzBoost"&&mpHost)tanzApply(m.s);
+  else if(m.t==="quest"&&!mpHost)questIdx=m.i;
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
   else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
   else if(m.t==="loveEv"){loveEvent(m.k,true);}
@@ -1031,11 +1034,27 @@ function updHund(dt,now){
   h.mesh.position.y=Math.abs(Math.sin(now*0.004))*0.04;}
 // ===================== NPCs: Besucher mit eigenem Kopf =====================
 var npcs=[],npcTimer=20,polizeiPending=false;
+var buergermeisterPending=false,questIdx=0,questBusy=false;
+var QUESTS=[
+ ["pool","🏊","Bau einen Pool für die Gemeinde-Gartenschau",300,function(){return furn.some(function(f9){return f9.id==="pool";});}],
+ ["beete","🥕","Pflanze 2 Gemüsebeete für den Erntemarkt",250,function(){return furn.filter(function(f9){return f9.beet;}).length>=2;}],
+ ["fische","🎣","Fang 3 Fische im Gartenteich",350,function(){return (stats.fische||0)>=3;}],
+ ["auto","🚗","Kauf ein Auto für die Familie",400,function(){return !!window.autoRec;}],
+ ["hochzeit","💍","Feiere eine Hochzeit im Ort",500,function(){return verheiratet;}],
+ ["karriere","💼","Erreiche Karriere-Level 3",600,function(){return skills.arbeit.lv>=3;}],
+ ["villa","🏰","Steigere den Haus-Wert auf 8000 §",800,function(){return hausWert()>=8000;}]
+];
+function questTxt(){return questIdx<QUESTS.length?QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" §":"🎖️ Alle Stadt-Aufträge erledigt!";}
+function checkQuest(){
+  if(questBusy||questIdx>=QUESTS.length)return;
+  if(QUESTS[questIdx][4]()){questBusy=true;buergermeisterPending=true;npcTimer=Math.min(npcTimer,3);
+    hint("📜 Auftrag erfüllt! Der Bürgermeister ist unterwegs …");}}
 var NPC_DEFS={
  postbote:{farbe:{skin:0xf0c090,hair:0x3a2a1a,top:0xf0c33a,bottom:0x3a4a6a,dress:false,longHair:false},speed:2.6},
  nachbarin:{farbe:{skin:0xffd9b8,hair:0xd8d8e0,top:0x8a5aa0,bottom:0x8a5aa0,dress:true,longHair:false},speed:1.6},
  haendler:{farbe:{skin:0xd9a06a,hair:0x2a2a34,top:0x3a8a5a,bottom:0x4a3a28,dress:false,longHair:false},speed:2.0},
  polizist:{farbe:{skin:0xf0c090,hair:0x1a1a24,top:0x2a3a6e,bottom:0x1a2340,dress:false,longHair:false},speed:3.0},
+ buergermeister:{farbe:{skin:0xf0c090,hair:0x9a9aa2,top:0x5a2a34,bottom:0x2a2a38,dress:false,longHair:false},speed:1.7},
  katze:{speed:2.2}
 };
 function spawnNpc(typ){
@@ -1074,6 +1093,13 @@ function npcAct(n){
   else if(n.typ==="polizist"){
     hint("👮 Die Polizei schaut nochmal vorbei … alle unschuldig pfeifen!");npcEmoji(n,"🚨");
     sims.forEach(function(s4){if(s4.mesh.visible)simEmoji(s4,"😇");});}
+  else if(n.typ==="buergermeister"){
+    if(questBusy&&questIdx<QUESTS.length){var q=QUESTS[questIdx];
+      geld+=q[3];stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;
+      hint("🎖️ Bürgermeister: „Großartig!“ +"+q[3]+" § — "+(questIdx<QUESTS.length?"Neuer Auftrag: "+questTxt():"Das war der letzte Auftrag!"));
+      npcEmoji(n,"💰");beep(700,.1,"triangle",.06);setTimeout(function(){beep(940,.16,"triangle",.07);},140);
+      netSend({t:"geld",v:geld});netSend({t:"quest",i:questIdx});}
+    else{hint("🏛️ Der Bürgermeister schaut nur kurz vorbei.");npcEmoji(n,"👋");}}
   else if(n.typ==="katze"){
     hint("🐈 Eine Streunerkatze schaut vorbei");npcEmoji(n,"🐟");
     kinder.forEach(function(k){simEmojiK(k,"😻");});}
@@ -1097,6 +1123,7 @@ function updNpcs(dt,now){
     if(hh>=13&&hh<18)pool.push("nachbarin","haendler");
     pool.push("katze");
     if(polizeiPending){pool=["polizist"];polizeiPending=false;}
+    else if(buergermeisterPending){pool=["buergermeister"];buergermeisterPending=false;}
     if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}
   for(var i=npcs.length-1;i>=0;i--){var n=npcs[i];
     n.walkT+=dt*8;
@@ -1464,6 +1491,7 @@ document.getElementById("achBtn").onclick=function(){
     d3.style.cssText="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:"+(ok3?"#f0f8e8":"#f5f2ea")+";opacity:"+(ok3?"1":"0.55");
     d3.innerHTML="<span style='font-size:1.4rem'>"+(ok3?a3[1]:"🔒")+"</span><span><b>"+a3[2]+"</b><br><small style='color:#8a7a5a'>"+a3[3]+"</small></span>"+(ok3?"<span style='margin-left:auto;color:#5ab86a;font-weight:800'>✓</span>":"");
     lst.appendChild(d3);});
+  document.getElementById("questTxt").innerHTML="📜 <b>Stadt-Auftrag:</b> "+questTxt();
   var w2=hausWert();
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" § · "+done+"/"+ACH.length;
   document.getElementById("achPanel").style.display="flex";};
@@ -1568,7 +1596,7 @@ function startGame(){
   running=true;
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
-  document.getElementById("modeBtn").style.display="block";document.getElementById("achBtn").style.display="block";document.getElementById("zoomBtns").style.display="flex";
+  document.getElementById("modeBtn").style.display="block";document.getElementById("achBtn").style.display="block";setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("📜 Stadt-Auftrag vom Bürgermeister: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
   romantik=document.getElementById("romChk").checked||romantik;
   renderPalette();updHUD();MUS.play().catch(function(){});
@@ -1631,7 +1659,7 @@ function loop(now){
     updHund(dt,now);
     updGrow(dt);updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);updWetter(dt);
-    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost)checkAch();
+    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();}
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten});}}}
     saveTick+=dt;if(saveTick>6){saveTick=0;saveGame();}
