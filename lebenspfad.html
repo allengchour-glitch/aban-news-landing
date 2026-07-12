@@ -960,7 +960,9 @@ var PNAMES=["Rot","Blau","Grün","Gold"];
 var HAIRS=[0x3a2a1a,0x8a5a2a,0xd9b45e,0x2a2a34,0xb84a2a,0xece4d6,0xff8ab8,0x6a8adf,0x9a9aa6,0x8a5acf];
 // Hosen-/Rock-Farben (neu, wählbar): 0 = altes Blau (Default -> alte Saves unverändert)
 var PANTS=[0x3a4a6a,0x7a4a30,0x2a6a4a,0x6a3a6a,0x2a2a34,0xb0603a,0xc03a6a,0x3a7a8a];
-var CLOTHES=[0xff5d7d,0x5ea8ff,0x6acc5a,0xffd166,0xc98bff,0xff9a5c,0x2ec4b6,0xef476f,0x118ab2,0xe0e2ea,0x8a5acf,0x3a3a44]; // 👕 Kleider-/Oberteil-Farben (wechselbar)
+var CLOTHES=[0xff5d7d,0x5ea8ff,0x6acc5a,0xffd166,0xc98bff,0xff9a5c,0x2ec4b6,0xef476f,0x118ab2,0xe0e2ea,0x8a5acf,0x3a3a44,
+  0xf25c54,0xffb703,0x06d6a0,0x4361ee,0xb5179e,0x7f5539,0x2b2d42,0xffc8dd]; // 👕 Kleider-/Oberteil-Farben (wechselbar, 20)
+var TOPS=["👕 Normal","🦺 Weste","🧥 Jacke","🎽 Streifen","👖 Latzhose","🧣 Schal","🧥 Hoodie","⚪ Punkte"]; // 👗 Kleidungs-Stile
 // ===== Charakter-System (Pass B1+B4): Frau/Mann + Accessoires + Haut/Haar/Hose, pro Spieler wählbar =====
 var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
 // style 0-3 wie früher (alte Saves gültig), 4+ neu. „Auto"-Haar = hair<0 (abgeleitet aus style/skin).
@@ -1005,7 +1007,8 @@ function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Lo
       pants:(c.pants==null)?0:Math.max(0,Math.min(PANTS.length-1,c.pants|0)),
       cloth:(c.cloth==null)?-1:Math.max(-1,Math.min(CLOTHES.length-1,c.cloth|0)), // -1 = Spielerfarbe
       hstyle:(c.hstyle==null)?0:Math.max(0,Math.min(4,c.hstyle|0)),   // 💇 Frisur (nur weiblich sichtbar)
-      outfit:(c.outfit==null)?0:Math.max(0,Math.min(2,c.outfit|0))};  // 👗 Rock/Kleid/Hose (nur weiblich)
+      outfit:(c.outfit==null)?0:Math.max(0,Math.min(2,c.outfit|0)),   // 👗 Rock/Kleid/Hose (nur weiblich)
+      top:(c.top==null)?0:Math.max(0,Math.min(TOPS.length-1,c.top|0))}; // 👕 Kleidungs-Stil (beide)
     if(c.meshy&&meshyIdx(c.meshy)>=0)o.meshy=c.meshy;
     return o;}
   return null;}
@@ -1079,6 +1082,17 @@ function mkPawnMesh(color,cfg,onReady){
     shoe.scale.set(1,0.6,1.32);shoe.position.set(0,-0.53,0.05);shoe.castShadow=true;lp3.add(shoe);});
   // Rumpf: runder Kapsel-/Ei-Körper (vorne/hinten leicht abgeflacht)
   var torso=new THREE.Mesh(capsuleGeo(0.29,0.2,HSEG),cm);torso.scale.set(1,1,0.72);torso.position.y=0.82;torso.castShadow=true;g.add(torso);
+  // 👗 Kleidungs-Stil (cfg.top): Overlay-Meshes auf dem Rumpf
+  (function(){var top=(cfg.top==null?0:cfg.top);if(!top)return;
+    var accHex=CLOTHES[(((cfg.cloth>=0?cfg.cloth:0)+5)%CLOTHES.length)],dark=new THREE.Color(bodyHex).multiplyScalar(0.68).getHex(),white=0xf4f4f8,TY=0.82;
+    if(top===1){var v=new THREE.Mesh(new THREE.SphereGeometry(0.3,HSEG,10,0,6.283,0,1.5),smat(dark));v.scale.set(0.72,0.92,0.8);v.position.set(0,TY-0.02,0.05);g.add(v);}
+    else if(top===2){[-1,1].forEach(function(s){var pnl=new THREE.Mesh(new THREE.BoxGeometry(0.15,0.44,0.03),smat(accHex));pnl.position.set(s*0.12,TY,0.205);pnl.rotation.y=s*0.18;g.add(pnl);});var col=new THREE.Mesh(new THREE.TorusGeometry(0.15,0.04,6,16,Math.PI),smat(accHex));col.rotation.x=1.15;col.position.set(0,TY+0.17,0.14);g.add(col);}
+    else if(top===3){for(var b=0;b<3;b++){var st=new THREE.Mesh(capsuleGeo(0.293,0.02,HSEG),smat(b%2?white:accHex));st.scale.set(1,1,0.72);st.position.y=TY-0.12+b*0.12;g.add(st);}}
+    else if(top===4){var bib=new THREE.Mesh(new THREE.BoxGeometry(0.26,0.28,0.03),pants);bib.position.set(0,TY-0.1,0.2);g.add(bib);[-1,1].forEach(function(s){var str=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.36,0.03),pants);str.position.set(s*0.11,TY+0.13,0.19);g.add(str);});}
+    else if(top===5){var sc=new THREE.Mesh(new THREE.TorusGeometry(0.17,0.05,8,18),smat(accHex));sc.rotation.x=Math.PI/2;sc.position.set(0,TY+0.2,0.02);g.add(sc);var end=new THREE.Mesh(new THREE.BoxGeometry(0.09,0.24,0.05),smat(accHex));end.position.set(0.09,TY+0.02,0.19);g.add(end);}
+    else if(top===6){var hood=new THREE.Mesh(new THREE.SphereGeometry(0.23,HSEG,10,0,6.283,0,1.7),smat(dark));hood.scale.set(1,0.9,0.82);hood.position.set(0,TY+0.28,-0.11);g.add(hood);var pk=new THREE.Mesh(new THREE.BoxGeometry(0.27,0.12,0.04),smat(dark));pk.position.set(0,TY-0.15,0.19);g.add(pk);}
+    else if(top===7){for(var d=0;d<8;d++){var da=d/8*6.28;var dot=new THREE.Mesh(new THREE.SphereGeometry(0.028,8,8),smat(white));dot.position.set(Math.cos(da)*0.15,TY-0.04+Math.sin(da)*0.13,0.2);g.add(dot);}}
+  })();
   var belt=new THREE.Mesh(new THREE.CylinderGeometry(0.285,0.285,0.1,HSEG),smat(0x4a3a28));belt.scale.set(1,1,0.72);belt.position.y=0.56;g.add(belt);
   if(cfg.g==="f"&&(cfg.outfit==null||cfg.outfit!==2)){ // 👗 Outfit: 0/none=Rock · 1=langes Kleid · 2=Hose (kein Rock)
     var isDress=(cfg.outfit===1);
@@ -2614,10 +2628,11 @@ function renderCharUI(){
     var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;
     var cv=document.createElement("canvas");cv.width=PV_W;cv.height=PV_H;cv.style.cssText="width:110px;height:124px";
     card.appendChild(cv);
-    var gf,gm,sl,hl,pl,cl,ml,hsB,ofB,dots=[];
+    var gf,gm,sl,hl,pl,cl,ml,hsB,ofB,tpB,dots=[];
     function upd(){saveChar(i,cfg);charPreview(cv,cfg,PCOLORS[i]);
       if(hsB)hsB.style.display=(cfg.g==="f")?"":"none";
       if(ofB){ofB.style.display=(cfg.g==="f")?"":"none";ofB.textContent=["👗","👰","👖"][cfg.outfit||0];}
+      if(tpB)tpB.textContent=TOPS[cfg.top||0].split(" ")[0];
       gf.className=cfg.g==="f"?"on":"";gm.className=cfg.g==="m"?"on":"";
       sl.textContent=CHAR_STYLES[cfg.style].i+" "+CHAR_STYLES[cfg.style].n;
       if(hl)hl.textContent=(cfg.hair<0)?"💇 Auto":"💇 Haar "+(cfg.hair+1);
@@ -2658,6 +2673,8 @@ function renderCharUI(){
     hsB.onclick=function(){cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
     ofB=document.createElement("button");ofB.className="skin";ofB.title="👗 Rock / Kleid / Hose";ofB.style.width="auto";ofB.style.padding="0 6px";
     ofB.onclick=function(){cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
+    tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
+    tpB.onclick=function(){cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
     card.appendChild(r3);
     cr.appendChild(card);upd();
   })(i);}
@@ -2887,7 +2904,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   var card=document.createElement("div");card.className="charCard";card.style.border="3px solid "+hex;card.style.maxWidth="210px";card.style.margin="0 auto";
   var lbl=document.createElement("div");lbl.style.cssText="font-size:.76rem;font-weight:800;color:#2a6ab0;margin-bottom:3px";lbl.textContent="🎨 Dein Charakter";card.appendChild(lbl);
   var cv=document.createElement("canvas");cv.width=PV_W;cv.height=PV_H;cv.style.cssText="width:104px;height:118px";card.appendChild(cv);
-  var gf,gm,sl,hl,ml,pl,cl,hsB,ofB,dots=[];
+  var gf,gm,sl,hl,ml,pl,cl,hsB,ofB,tpB,dots=[];
   function sync(){saveChar(0,cfg);
     if(NET.host){NET.cfgs[0]=cfg;netPlayersUpd();}
     else if(NET.conns[0]&&NET.conns[0].open){try{NET.conns[0].send(JSON.stringify({t:"look",cfg:cfg}));}catch(e){}}}
@@ -2900,6 +2917,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
       if(cl){cl.textContent="👕";cl.style.background=(cfg.cloth==null||cfg.cloth<0)?"":"#"+("00000"+CLOTHES[cfg.cloth].toString(16)).slice(-6);cl.style.color=(cfg.cloth>=0)?"#fff":"";}
       if(hsB)hsB.style.display=(cfg.g==="f")?"":"none";
       if(ofB){ofB.style.display=(cfg.g==="f")?"":"none";ofB.textContent=["👗","👰","👖"][cfg.outfit||0];}
+      if(tpB)tpB.textContent=TOPS[cfg.top||0].split(" ")[0];
       if(ml)ml.textContent=cfg.meshy?(MESHY_CHARS[meshyIdx(cfg.meshy)].n):"🧍 Toon (anpassbar)";}
   var r1=document.createElement("div");r1.className="crow";
   gf=document.createElement("button");gf.textContent="👩";gf.title="Frau";gf.onclick=function(){cfg.g="f";upd();beep(620,.05,"triangle",.03);};
@@ -2930,6 +2948,8 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   hsB.onclick=function(){cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
   ofB=document.createElement("button");ofB.className="skin";ofB.title="👗 Rock / Kleid / Hose";ofB.style.width="auto";ofB.style.padding="0 6px";
   ofB.onclick=function(){cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
+  tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
+  tpB.onclick=function(){cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
   card.appendChild(r3);
   wrap.appendChild(card);upd();
 }
