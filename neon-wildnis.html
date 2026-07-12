@@ -731,33 +731,44 @@ function cc0instW(name,targetW){
   return m;
 }
 // 🛣️ Detaillierte Kopfstein-Straßen (Textur + Normal-Map = Tiefe) + Steinplatten-Platz
-function roadMat(rx,ry){
-  var c=gtex("tex_cobble.png",0,true);c.repeat.set(rx,ry);
-  var n=gtex("tex_cobble_n.png",0,false);n.repeat.set(rx,ry);
-  return new THREE.MeshStandardMaterial({map:c,normalMap:n,roughness:0.95,metalness:0});
+// 🛣️ Geschwungene Kopfstein-Wege als Ribbon entlang einer Kurve (nie gerade, folgt dem Boden)
+function roadRibbon(pts,width,cobble,normal){
+  var pos=[],uv=[],idx=[],cum=0,hw=width/2;
+  for(var i=0;i<pts.length;i++){
+    var p=pts[i],pa=pts[Math.max(0,i-1)],pb=pts[Math.min(pts.length-1,i+1)];
+    var dx=pb.x-pa.x,dz=pb.z-pa.z,dl=Math.hypot(dx,dz)||1;dx/=dl;dz/=dl;
+    var perpx=-dz,perpz=dx;
+    if(i>0)cum+=Math.hypot(p.x-pts[i-1].x,p.z-pts[i-1].z);
+    var lx=p.x+perpx*hw,lz=p.z+perpz*hw,rx=p.x-perpx*hw,rz=p.z-perpz*hw;
+    pos.push(lx,groundH(lx,lz)+0.13,lz, rx,groundH(rx,rz)+0.13,rz);
+    var v=cum/4;uv.push(0,v, width/4,v);
+  }
+  for(var j=0;j<pts.length-1;j++){var a=j*2;idx.push(a,a+1,a+2, a+1,a+3,a+2);}
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+  g.setAttribute("uv",new THREE.Float32BufferAttribute(uv,2));
+  g.setIndex(idx);g.computeVertexNormals();
+  var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({map:cobble,normalMap:normal,roughness:0.95,metalness:0}));
+  m.receiveShadow=true;scene.add(m);return m;
 }
 function layRoads(cx,cz){
-  var gy=groundH(cx,cz)+0.12, L=30, W=6;
-  // horizontaler Arm (entlang X): Textur ~4 Welt-Einheiten pro Kachel
-  var gh=new THREE.PlaneGeometry(L,W);gh.rotateX(-Math.PI/2);
-  var mh=new THREE.Mesh(gh,roadMat(L/4,W/4));mh.position.set(cx,gy,cz);mh.receiveShadow=true;scene.add(mh);
-  // vertikaler Arm (entlang Z)
-  var gv=new THREE.PlaneGeometry(W,L);gv.rotateX(-Math.PI/2);
-  var mv=new THREE.Mesh(gv,roadMat(W/4,L/4));mv.position.set(cx,gy+0.01,cz);mv.receiveShadow=true;scene.add(mv);
-  // Steinplatten-Platz im Zentrum (überdeckt die Kreuzung)
-  var st=gtex("tex_stone.png",0,true);st.repeat.set(3,3);
-  var stn=gtex("tex_stone_n.png",0,false);stn.repeat.set(3,3);
-  var gp=new THREE.PlaneGeometry(11,11);gp.rotateX(-Math.PI/2);
+  var cobble=gtex("tex_cobble.png",0,true);cobble.repeat.set(1,1);
+  var normal=gtex("tex_cobble_n.png",0,false);normal.repeat.set(1,1);
+  // geschwungener S-Pfad durch das Dorf (seitliches Schwingen -> nie gerade)
+  var ang=rnd()*6.28,px=Math.cos(ang),pz=Math.sin(ang),qx=Math.cos(ang+1.57),qz=Math.sin(ang+1.57);
+  var pts=[];for(var t=-1;t<=1.0001;t+=0.08){var sMain=t*30,wob=Math.sin(t*3.4+ang*2)*8+Math.sin(t*7.1)*2.5;
+    pts.push({x:cx+px*sMain+qx*wob, z:cz+pz*sMain+qz*wob});}
+  roadRibbon(pts,6,cobble,normal);
+  // zweiter, kürzerer Quer-Pfad (auch geschwungen) für ein organisches Netz
+  var cobble2=gtex("tex_cobble.png",0,true);cobble2.repeat.set(1,1);var n2=gtex("tex_cobble_n.png",0,false);n2.repeat.set(1,1);
+  var pts2=[];for(var u=-1;u<=1.0001;u+=0.1){var sM=u*20,wb=Math.sin(u*4+ang)*6;
+    pts2.push({x:cx+qx*sM+px*wb, z:cz+qz*sM+pz*wb});}
+  roadRibbon(pts2,5,cobble2,n2);
+  // RUNDER Steinplatten-Platz im Zentrum (nicht eckig)
+  var st=gtex("tex_stone.png",0,true);st.repeat.set(3,3);var stn=gtex("tex_stone_n.png",0,false);stn.repeat.set(3,3);
+  var gp=new THREE.CircleGeometry(7.5,32);gp.rotateX(-Math.PI/2);
   var mp=new THREE.Mesh(gp,new THREE.MeshStandardMaterial({map:st,normalMap:stn,roughness:0.9}));
-  mp.position.set(cx,gy+0.02,cz);mp.receiveShadow=true;scene.add(mp);
-  // Weg-Stummel (Erde) nach aussen Richtung Kartenmitte
-  var a=Math.atan2(-cz,-cx),dl=26;var dx=Math.cos(a),dz=Math.sin(a);
-  var mx=cx+dx*(L/2+dl/2),mz=cz+dz*(L/2+dl/2);
-  var dt=gtex("tex_dirt.png",0,true);dt.repeat.set(1.5,dl/4);
-  var dtn=gtex("tex_dirt_n.png",0,false);dtn.repeat.set(1.5,dl/4);
-  var gd=new THREE.PlaneGeometry(5,dl);gd.rotateX(-Math.PI/2);
-  var md=new THREE.Mesh(gd,new THREE.MeshStandardMaterial({map:dt,normalMap:dtn,roughness:1}));
-  md.position.set(mx,groundH(mx,mz)+0.11,mz);md.rotation.y=-a;md.receiveShadow=true;scene.add(md);
+  mp.position.set(cx,groundH(cx,cz)+0.15,cz);mp.receiveShadow=true;scene.add(mp);
 }
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 function decorateWorld(){
@@ -785,7 +796,7 @@ function decorateWorld(){
     var nH=2+((rnd()*3)|0);
     for(var h=0;h<nH;h++){
       var ha=(h/nH)*6.28+rnd()*0.5,hrd=6+rnd()*7;var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
-      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],6.5*(0.85+rnd()*0.3));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);}
+      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
