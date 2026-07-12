@@ -178,6 +178,7 @@ canvas{display:block}
   <div class="sub">aban Arcade · Survival</div>
   <h1>NEON WILDNIS</h1>
   <p>Eine riesige leuchtende Wildnis gehört dir. <b>Fälle Bäume</b>, sammle Holz, Stein und Kristalle, <b>baue deine Basis</b> — und überlebe, wenn nachts die Kreaturen kommen.</p>
+  <div id="recBar" class="hide" style="margin:6px auto 10px;max-width:420px;padding:8px 12px;border:1px solid rgba(255,209,102,.4);border-radius:12px;background:rgba(40,32,10,.45);color:#ffd166;font-weight:800;font-size:14px"></div>
   <div class="ctl">
     <span class="chip"><b>Ziehen</b> laufen</span>
     <span class="chip"><b>🪓</b> Sammeln/Kämpfen</span>
@@ -1444,6 +1445,7 @@ function normInv(){ // defensiv: alte Saves ohne neue Felder auffüllen
 }
 var hp=100,maxHp=100,dead=false;
 var xp=0,level=1; // ⭐ RPG-Progression (Fusion Survival+RPG)
+var kills=0; // 🗡️ Gesamt-Abschüsse (für Rekord/Sucht-Faktor)
 var day=1,dayT=0,DAYLEN=240,NIGHTLEN=90,isNight=false,nights=0,duskWarned=false;
 var running=false,paused=false,muted=false;
 var buildMode=false,ghost=null,ghostType=null,ghostValid=false;
@@ -1642,7 +1644,7 @@ function harvest(){
     faceTo(nearMon.x,nearMon.z);
     nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);updWaveHud();
-      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);dropLoot(nearMon.x,nearMon.z);
+      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
   }
@@ -1838,6 +1840,9 @@ function updDayNight(dt){
     else{day++;waveActive=false;
       if(typeof gainXP==="function")gainXP(10+waveNum*4); // Welle überlebt -> XP-Bonus
       announce("☀️ Tag "+day+" — Welle "+waveNum+" überlebt! +"+(10+waveNum*4)+" XP");
+      // 🏆 Neuer Tages-Rekord? -> extra Belohnung (Sucht-Faktor)
+      try{var _bd=(loadBest()||{}).day||0;if(day>_bd&&_bd>0){setTimeout(function(){announce("🏆 NEUER REKORD — Tag "+day+"! 🌟","#ffd166");inv.crystal+=2;invUpd();},1600);}}catch(e){}
+      saveGame();
       monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}
     updWaveHud();}
   var f=dayT/cyc;
@@ -1914,15 +1919,34 @@ function updCamera(dt){
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function saveGame(){
-  var s={seed:SEED,inv:inv,tools:tools,equip:equip,hp:hp,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,
+  if(!running)return;
+  var s={seed:SEED,inv:inv,tools:tools,equip:equip,hp:hp,maxHp:maxHp,xp:xp,level:level,kills:kills,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,
     px:player.position.x,pz:player.position.z,
     st:structures.map(function(o){return{t:o.type,x:o.x,z:o.z,hp:o.hp};}),
     loot:lootOpened,
     fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};})};
   lsSet("nw_save1",JSON.stringify(s));
+  // 🏆 Rekord mitschreiben (Sucht-Faktor: eigenen Bestwert schlagen)
+  try{var b=JSON.parse(lsGet("nw_best")||"{}");
+    lsSet("nw_best",JSON.stringify({day:Math.max(b.day||0,day),kills:Math.max(b.kills||0,kills),level:Math.max(b.level||0,level),nights:Math.max(b.nights||0,nights)}));}catch(e){}
 }
 function loadSave(){var raw=lsGet("nw_save1");if(!raw)return null;try{return JSON.parse(raw);}catch(e){return null;}}
+function loadBest(){try{return JSON.parse(lsGet("nw_best")||"null");}catch(e){return null;}}
 var autoSaveT=0;
+// 💾 Sichtbare Speicher-Bestätigung (User: „meldung/timer wenn man vergisst")
+var _saveInd=null;
+function flashSaved(txt){
+  if(!_saveInd){_saveInd=document.createElement("div");_saveInd.id="saveInd";
+    _saveInd.style.cssText="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(18,28,22,.85);color:#8effc0;font:700 13px sans-serif;padding:6px 14px;border-radius:16px;border:1px solid rgba(130,255,180,.4);pointer-events:none;opacity:0;transition:opacity .35s;z-index:70";
+    document.body.appendChild(_saveInd);}
+  _saveInd.textContent=txt||"💾 Automatisch gespeichert";_saveInd.style.opacity="1";
+  clearTimeout(_saveInd._t);_saveInd._t=setTimeout(function(){_saveInd.style.opacity="0";},1200);
+}
+// Beim Verlassen/Tab-Wechsel immer sichern (nichts geht verloren)
+function saveOnLeave(){try{saveGame();}catch(e){}}
+addEventListener("pagehide",saveOnLeave);
+addEventListener("beforeunload",saveOnLeave);
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")saveOnLeave();});
 
 // ---------- Quest ----------
 var _nxT=0;
@@ -1993,7 +2017,7 @@ function frame(now){
   // Toast/announce fade
   if(toastT>0){toastT-=dt;if(toastT<=0)document.getElementById("toast").style.opacity=0;}
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
-  autoSaveT+=dt;if(autoSaveT>10){autoSaveT=0;saveGame();}
+  autoSaveT+=dt;if(autoSaveT>10){autoSaveT=0;saveGame();flashSaved();}
   renderer.render(scene,camera);
 }
 function updPrompt(){
@@ -2071,13 +2095,14 @@ function startGame(fresh){
   if(sv){
     if(sv.inv)inv=sv.inv;if(sv.tools)tools=sv.tools;if(sv.equip)equip=sv.equip;normInv();
     hp=sv.hp||100;day=sv.day||1;dayT=sv.dayT||0;isNight=!!sv.isNight;nights=sv.nights||0;won=!!sv.won;
+    if(sv.maxHp)maxHp=sv.maxHp;if(sv.xp!=null)xp=sv.xp;if(sv.level)level=sv.level;if(sv.kills)kills=sv.kills;
     if(sv.loot&&sv.loot.length)lootOpened=sv.loot.slice();
     player.position.set(sv.px||0,0,sv.pz||0);
     (sv.st||[]).forEach(function(o){if(!RECIPES[o.t])return;placeStructure(o.t,o.x,o.z);var st=structures[structures.length-1];if(st)st.hp=o.hp;});
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);}
+  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);}
   invUpd();hpUpd();
   document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";
   camera.position.set(0,12,16);
@@ -2149,6 +2174,10 @@ document.getElementById("startBtn").onclick=function(){if(paused){togglePause();
 document.getElementById("newBtn").onclick=function(){try{localStorage.removeItem("nw_save1");}catch(e){}location.reload();};
 // Save-Existenz → „Neue Welt" anbieten
 if(loadSave()){document.getElementById("startBtn").textContent="▶ Weiterspielen";document.getElementById("newBtn").classList.remove("hide");}
+// 🏆 Rekord-Banner (Sucht-Faktor: eigenen Bestwert sehen & schlagen)
+(function(){var rb=document.getElementById("recBar"),b=loadBest();if(!rb||!b||!(b.day>1||b.kills>0||b.level>1))return;
+  rb.innerHTML="🏆 Dein Rekord: Tag <b>"+(b.day||1)+"</b> · <b>"+(b.kills||0)+"</b> Gegner · Level <b>"+(b.level||1)+"</b>";
+  rb.classList.remove("hide");})();
 
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
