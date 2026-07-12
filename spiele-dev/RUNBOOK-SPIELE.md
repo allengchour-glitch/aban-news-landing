@@ -270,12 +270,12 @@ Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgero
   Bloom-bewusst. Reusable Helfer (gradientTex/toonMat/addOutline) — einmal bauen, überall nutzen.
 - [ ] **Phase 1:** neon-jump + lebenspfad (prozedurale Figuren, Charakter-Picker) — Anime-Umbau,
       Auswahl/Varianten/Altern erhalten.
-- [ ] **Phase 2:** neon-wildnis + neon-realm (GLB-Helden → Materialien auf Toon tauschen + Outline;
+- [~] **Phase 2:** neon-wildnis GLB-Helden auf Cel-Shading (MeshToonMaterial, 2026-07-12 live PR #1724). realm/survivor bewusst NICHT (Neon-Glow-Mismatch, Toon würde Look verschlechtern). Outline auf skinned Meshes r128 zu heikel → weggelassen. (ehem.: GLB-Helden → Materialien auf Toon tauschen + Outline;
       ggf. Anime-Köpfe ergänzen), neon-survivor (Nova), neon-duo (Klinge/Funke).
 - [ ] **Phase 3:** Rest (abyss/colossus/racer-Fahrer) wo Charaktere sichtbar.
 
 ### Lebenspfad: viel freischalten + viele Features (User 2026-07-11) — nächster Lebenspfad-Pass (nach Online-Fix-Agent, gleiche Datei)
-- [ ] **Freischalt-System**: über mehrere Spiele hinweg Dinge freischalten (localStorage-Meta) —
+- [x] **Freischalt-System** (2026-07-12 live, PR #1726): Charakter-Looks/Accessoires (👑🎧🕶️🧶🎀 + bunte Haare) schalten sich über gespielte Leben frei (lp_stats.games); Cycler überspringt Gesperrtes; Startscreen-Fortschritt + Freischalt-Toast. OFFEN: Deko/Bretter-Themes, Bonus-Ereignisse, Start-Boni. —
       neue Charakter-Looks/Accessoires/Outfits, neue Deko/Bretter-Themes, Bonus-Ereignisse,
       Titel/Abzeichen, evtl. neue Start-Boni. Fortschritts-/Freischalt-Screen im Menü.
 - [ ] **Viele Features**: mehr Ereignis-Vielfalt, Mini-Spiele an Stationen, Achievements/Meilensteine,
