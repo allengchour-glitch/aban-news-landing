@@ -434,19 +434,41 @@ function loadHero(){
 
 // ---------- Monster (Slime, nachts) ----------
 var slimeProto=null,monsters=[];
+// Meshy-Gegner-Bestiarium: mehr Abwechslung als nur Slimes 👹🐺🗿
+var MOBS=[
+  {id:"slime", file:null,               scale:2.0, hp:3, spd:3.0, minDay:1, w:5, emo:"🟢"},
+  {id:"goblin",file:"mob_goblin.glb",   scale:1.5, hp:4, spd:3.6, minDay:1, w:4, emo:"👹"},
+  {id:"wolf",  file:"mob_wolf.glb",     scale:1.3, hp:3, spd:4.6, minDay:2, w:3, emo:"🐺"},
+  {id:"golem", file:"mob_golem.glb",    scale:2.3, hp:9, spd:1.9, minDay:3, w:2, emo:"🗿"}
+];
+var mobProtos={}; // id -> THREE.Object3D
 function loadSlime(){
   if(!THREE.GLTFLoader)return;
   new THREE.GLTFLoader().load("/models/monster_slime.glb",function(g){slimeProto=g.scene;},undefined,function(){});
+  MOBS.forEach(function(M){if(!M.file)return;
+    new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});mobProtos[M.id]=o;},undefined,function(){});
+  });
+  new THREE.GLTFLoader().load("/models/item_chest.glb",function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});chestProto=o;},undefined,function(){});
 }
+var chestProto=null;
 function fallbackSlime(){var m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.7,1),new THREE.MeshStandardMaterial({color:0x3ad0ff,emissive:0x1466aa,emissiveIntensity:.6,flatShading:true}));return m;}
+function pickMob(){ // gewichtete Auswahl, härtere Gegner erst an späteren Tagen
+  var pool=MOBS.filter(function(M){return day>=M.minDay&&(M.id==="slime"||mobProtos[M.id]);});
+  if(!pool.length)return MOBS[0];
+  var tot=0;pool.forEach(function(M){tot+=M.w;});var r=rnd()*tot;
+  for(var i=0;i<pool.length;i++){r-=pool[i].w;if(r<=0)return pool[i];}
+  return pool[pool.length-1];
+}
 function spawnMonster(){
   var a=rnd()*6.28,rd=32+rnd()*14;
   var x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
-  var m=slimeProto?slimeProto.clone(true):fallbackSlime();
+  var M=pickMob();
+  var proto=M.file?mobProtos[M.id]:slimeProto;
+  var m=proto?proto.clone(true):fallbackSlime();
   m.traverse(function(n){if(n.isMesh){n.castShadow=true;}});
-  m.scale.setScalar(slimeProto?2.0:1);
+  var sc=proto?M.scale:1;m.scale.setScalar(sc);
   m.position.set(x,groundH(x,z),z);scene.add(m);
-  monsters.push({mesh:m,x:x,z:z,hp:3,t:rnd()*6});
+  monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id});
 }
 function spawnBoss(){ // 👹 SERAPH-Nacht-Boss (RPG-Fusion aus realm)
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
@@ -463,12 +485,20 @@ function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monster
 function updMonsters(dt){
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];e.t+=dt;
     var dx=player.position.x-e.x,dz=player.position.z-e.z,d=Math.hypot(dx,dz)||1;
-    if(d>1.6){e.x+=dx/d*3*dt;e.z+=dz/d*3*dt;}
+    var spd=e.spd||3;
+    if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;}
     else{ // Angriff
       if(!e.atkCd||e.atkCd<=0){damagePlayer(e.boss?14:6);e.atkCd=1;} }
     if(e.atkCd)e.atkCd-=dt;
-    var _bsc=e.baseScale||(slimeProto?2:1);e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc,e.z);
-    var sc=_bsc*(1+Math.sin(e.t*6)*0.08);e.mesh.scale.set(sc,sc*(1-Math.sin(e.t*6)*0.12),sc);
+    var _bsc=e.baseScale||(slimeProto?2:1);
+    if(e.kind&&e.kind!=="slime"&&!e.boss){ // feste Kreaturen: laufen, zum Spieler gedreht, leichtes Wippen — kein Squash
+      e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*8))*0.12,e.z);
+      e.mesh.rotation.y=Math.atan2(dx,dz);
+      e.mesh.scale.setScalar(_bsc);
+    }else{ // Slime/Boss: hüpfen + squash
+      e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc,e.z);
+      var sc=_bsc*(1+Math.sin(e.t*6)*0.08);e.mesh.scale.set(sc,sc*(1-Math.sin(e.t*6)*0.12),sc);
+    }
   }
 }
 
@@ -584,6 +614,10 @@ function updAmbient(dt){
 // ---------- Fund-Objekte: Truhen & Ruinen ----------
 var loots=[],nearLoot=null,lootOpened=[];
 function mkChest(){var g=new THREE.Group();
+  if(chestProto){ // Meshy-Truhe (schön) + leuchtender Marker darüber
+    var mc=chestProto.clone(true);mc.scale.setScalar(1.2);g.add(mc);
+    var glow=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),new THREE.MeshBasicMaterial({color:0xffd166}));glow.position.y=1.3;g.add(glow);g.userData.marker=glow;
+    return g;}
   var b=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.7,0.8),new THREE.MeshStandardMaterial({color:0x7a5230,emissive:0x3a2410,emissiveIntensity:.35}));b.position.y=0.35;b.castShadow=true;g.add(b);
   var l=new THREE.Mesh(new THREE.BoxGeometry(1.16,0.28,0.86),new THREE.MeshStandardMaterial({color:0x9a6a3a}));l.position.y=0.78;g.add(l);g.userData.lid=l;
   var lk=new THREE.Mesh(new THREE.BoxGeometry(0.16,0.2,0.06),new THREE.MeshBasicMaterial({color:0xffd166}));lk.position.set(0,0.6,0.44);g.add(lk);
@@ -598,12 +632,46 @@ function placeLoot(){
     var isChest=rnd()<0.6;var id="L"+i;var opened=lootOpened.indexOf(id)>=0;
     var m=isChest?mkChest():mkRuin();m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;
     if(opened&&isChest&&m.userData.lid)m.userData.lid.rotation.x=-0.9;
+    if(opened&&isChest&&m.userData.marker)m.userData.marker.visible=false;
     scene.add(m);loots.push({id:id,type:isChest?"chest":"ruin",mesh:m,x:x,z:z,opened:opened});}
+}
+// ---------- Meshy-Welt-Props (leuchtende Landmarken für mehr Leben) 🍄🔮 ----------
+var worldProps=[]; // {mesh, ph, base} für sanftes Pulsieren/Schweben
+function loadProps(){
+  if(!THREE.GLTFLoader)return;
+  var half=MAP/2-60;
+  var SPECS=[
+    {file:"item_shrine.glb",  n:Math.round(9*VF),  scale:1.6, yOff:0.0, glow:0xa14bff, float:true},
+    {file:"item_mushroom.glb",n:Math.round(16*VF), scale:1.3, yOff:0.0, glow:0xff4d8d, float:false}
+  ];
+  SPECS.forEach(function(S){
+    new THREE.GLTFLoader().load("/models/"+S.file,function(g){
+      var proto=g.scene;proto.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      for(var i=0;i<S.n;i++){
+        var a=rnd()*6.28,rd=22+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;
+        if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}
+        var m=proto.clone(true);var sc=S.scale*(0.8+rnd()*0.5);m.scale.setScalar(sc);
+        m.position.set(x,groundH(x,z)+S.yOff,z);m.rotation.y=rnd()*6.28;scene.add(m);
+        // leuchtende Aura darunter
+        var halo=new THREE.Mesh(new THREE.CircleGeometry(sc*0.9,16),new THREE.MeshBasicMaterial({color:S.glow,transparent:true,opacity:0.28,side:THREE.DoubleSide}));
+        halo.rotation.x=-Math.PI/2;halo.position.set(x,groundH(x,z)+0.06,z);scene.add(halo);
+        worldProps.push({mesh:m,halo:halo,ph:rnd()*6.28,base:m.position.y,float:S.float,scl:sc});
+      }
+    },undefined,function(){});
+  });
+}
+function updProps(dt){
+  for(var i=0;i<worldProps.length;i++){var p=worldProps[i];p.ph+=dt;
+    if(p.float)p.mesh.position.y=p.base+Math.sin(p.ph*1.4)*0.35;
+    p.mesh.rotation.y+=dt*0.3;
+    if(p.halo)p.halo.material.opacity=0.20+Math.abs(Math.sin(p.ph*1.8))*0.18;
+  }
 }
 function openLoot(lt){
   if(lt.opened){toast(lt.type==="chest"?"Truhe ist leer":"Ruine schon geplündert");return;}
   lt.opened=true;lootOpened.push(lt.id);
   if(lt.mesh.userData.lid)lt.mesh.userData.lid.rotation.x=-0.9;
+  if(lt.mesh.userData.marker)lt.mesh.userData.marker.visible=false;
   var gain;
   if(lt.type==="chest"){gain={wood:2+((rnd()*4)|0),crystal:1+((rnd()*2)|0),berry:(rnd()*3)|0};}
   else{gain={stone:3+((rnd()*4)|0),crystal:(rnd()<0.5?1:0)};}
@@ -1190,7 +1258,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -1222,7 +1290,7 @@ function togglePause(){if(!running)return;paused=!paused;var ov=document.getElem
 function startGame(fresh){
   var sv=fresh?null:loadSave();
   SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
-  buildGround();loadNature(function(){placeResources();buildAmbient();placeLoot();});
+  buildGround();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();});
   loadHero();loadSlime();
   if(sv){
     if(sv.inv)inv=sv.inv;if(sv.tools)tools=sv.tools;normInv();
@@ -1310,6 +1378,10 @@ addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
 window.__nw={
   boss:function(){spawnBoss();return monsters.length;}, // Test-Only
+  spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;var proto=M.file?mobProtos[M.id]:slimeProto;var m=proto?proto.clone(true):fallbackSlime();m.traverse(function(n){if(n.isMesh)n.castShadow=true;});var sc=proto?M.scale:1;m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id});return proto?1:0;}, // Test-Only
+  props:function(){return worldProps.length;},
+  toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
+  day:function(n){day=n;},
   toTree:function(){for(var i=0;i<resources.length;i++){if(resources[i].type==="tree"&&!resources[i].dead){player.position.x=resources[i].x-1;player.position.z=resources[i].z;return resources[i];}}},
   harvest:harvest,
   inv:function(){return inv;},
