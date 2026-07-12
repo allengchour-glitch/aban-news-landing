@@ -382,6 +382,13 @@ function placeResources(){
         var reed=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.9,4),new THREE.MeshLambertMaterial({color:0x2e8a50}));
         reed.position.set(rx,groundH(rx,rz)+0.42,rz);reed.rotation.z=(rnd()-.5)*0.3;scene.add(reed);}
       window._wildPonds.push({m:pond,ph:rnd()*6.28});
+      // 🦆 Ente auf manchen Teichen
+      if(rnd()<0.6){var dk=new THREE.Group();
+        var db=new THREE.Mesh(new THREE.SphereGeometry(0.26,8,6),new THREE.MeshLambertMaterial({color:rnd()<0.5?0xf4f0e6:0x8a6a4a,flatShading:true}));db.scale.set(1.3,0.85,1);db.castShadow=true;dk.add(db);
+        var dh=new THREE.Mesh(new THREE.SphereGeometry(0.15,7,6),db.material);dh.position.set(0,0.22,0.24);dk.add(dh);
+        var bk=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.16,5),new THREE.MeshLambertMaterial({color:0xffb02a}));bk.rotation.x=Math.PI/2;bk.position.set(0,0.2,0.42);dk.add(bk);
+        dk.position.set(x,gy+0.32,z);scene.add(dk);
+        window._ducks=window._ducks||[];window._ducks.push({m:dk,cx:x,cz:z,r:r*0.55,a:rnd()*6.28,sp:0.3+rnd()*0.4,y0:gy+0.32});}
     }
   })();
   // 🍄 Leucht-Pilz-Cluster fuer Details/Farbe
@@ -651,7 +658,7 @@ function buildAmbient(){
     pollen.push({m:pm,x:0,y:0,z:0,vy:0.3+rnd()*0.45,ph:rnd()*6.28,sp:0.6+rnd()});}
   // 🦋 Schmetterlinge (tagsüber, bunt, flattern um den Spieler)
   var BFC=[0xff8ad8,0xffd166,0x7de3ff,0xff6a4d,0xc98bff];
-  for(var bf=0;bf<Math.round(14*VF);bf++){var bg=new THREE.Group();var wm=new THREE.MeshBasicMaterial({color:BFC[(rnd()*BFC.length)|0],side:THREE.DoubleSide,transparent:true,opacity:0.95});
+  for(var bf=0;bf<Math.round(24*VF);bf++){var bg=new THREE.Group();var wm=new THREE.MeshBasicMaterial({color:BFC[(rnd()*BFC.length)|0],side:THREE.DoubleSide,transparent:true,opacity:0.95});
     var wL=new THREE.Mesh(new THREE.CircleGeometry(0.15,5),wm);wL.position.x=-0.09;var wR=new THREE.Mesh(new THREE.CircleGeometry(0.15,5),wm);wR.position.x=0.09;
     bg.add(wL);bg.add(wR);bg.visible=false;scene.add(bg);
     butterflies.push({m:bg,wL:wL,wR:wR,bx:0,bz:0,a:rnd()*6.28,r:2+rnd()*4,sp:0.5+rnd()*0.7,ph:rnd()*6.28,h:1+rnd()*1.6});}
@@ -684,6 +691,8 @@ function buildAmbient(){
     var fmesh=new THREE.Mesh(fogGeo,fmat);var a2=rnd()*6.28,rd2=30+rnd()*120;fmesh.position.set(Math.cos(a2)*rd2,groundH(0,0)+1.5,Math.sin(a2)*rd2);scene.add(fmesh);
     fogWisps.push({m:fmesh,vx:(rnd()-0.5)*0.6,vz:(rnd()-0.5)*0.6});}
 }
+function updDucks(dt){if(!window._ducks)return;for(var i=0;i<window._ducks.length;i++){var d=window._ducks[i];d.a+=dt*d.sp;
+  var dx=d.cx+Math.cos(d.a)*d.r,dz=d.cz+Math.sin(d.a)*d.r;d.m.position.set(dx,d.y0+Math.sin(d.a*3)*0.03,dz);d.m.rotation.y=-d.a+1.57;}}
 function updAmbient(dt){
   // Glühwürmchen nur nachts, um den Spieler herum
   var showFF=isNight;
@@ -803,6 +812,7 @@ function loadProps(){
 }
 function updProps(dt){
   for(var i=0;i<worldProps.length;i++){var p=worldProps[i];p.ph+=dt;
+    if(p.sway){p.mesh.rotation.z=(p.brz||0)+Math.sin(p.ph*1.8)*0.14+Math.sin(p.ph*4.1)*0.05;p.mesh.rotation.y+=Math.sin(p.ph*2.3)*0.006;continue;}
     if(p.flick){ // Dorf-Lagerfeuer: flackern statt rotieren
       var fk=0.85+Math.sin(p.ph*11)*0.12+Math.sin(p.ph*23)*0.06;p.mesh.scale.set(fk,1+Math.sin(p.ph*9)*0.15,fk);
       if(p.light)p.light.intensity=1.2+Math.abs(Math.sin(p.ph*13))*0.6;continue;}
@@ -1098,7 +1108,7 @@ function decorateWorld(){
       for(var ci=0;ci<4;ci++){var ca=ci/4*6.28,chx=tx3+Math.cos(ca)*1.3,chz=tz3+Math.sin(ca)*1.3;var ch=cc0inst(rnd()<0.5?"fn_chair":"fn_stool",1.0);if(ch){ch.position.set(chx,groundH(chx,chz),chz);ch.rotation.y=ca+Math.PI;scene.add(ch);}}})();
     // 🪴 Topfpflanzen als Grün
     for(var pp=0;pp<(isSpawn?4:2);pp++){var ppa=rnd()*6.28,ppr=ringR-6,ppx=vx+Math.cos(ppa)*ppr,ppz=vz+Math.sin(ppa)*ppr;var pl3=cc0inst(rnd()<0.5?"fn_plant":"fn_plant2",1.1);if(pl3){pl3.position.set(ppx,groundH(ppx,ppz),ppz);scene.add(pl3);}}
-    for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);}}
+    for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);worldProps.push({mesh:bnr,halo:null,ph:rnd()*6.28,base:bnr.position.y,sway:true,brz:bnr.rotation.z});}}
     for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
       var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
     // 🚩 Flaggen auf Holzmasten (statt flacher Stein-Türme) — passt zum Fachwerk-Stil
@@ -1944,7 +1954,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updSmoke(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
