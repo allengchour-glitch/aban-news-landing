@@ -79,3 +79,13 @@ Sonniges Feld/klarer Himmel — für Tageslicht-`scene.environment` (mit `RGBELo
 - `@gltf-transform/cli` 4.4.1 (global via `/opt/node22/bin/npm i -g`) — GLB prune/dedup/inspect.
 - numpy in `/tmp/pymods` (für Blender-glTF-Export: `PYTHONPATH=/tmp/pymods blender -b -P …`).
 - Blender 4.0.2 (Ground-Truth-Render nur mit **CYCLES/CPU** headless; EEVEE braucht libEGL = fehlt).
+
+## Meshy.ai — generierte Assets (2026-07-12, Text→3D, private Lizenz)
+Vom User bereitgestellte Credits. Prompt-getrieben, preview→refine, r128-Fix (prune/dedup + JPEG-Resize 1024).
+
+| Datei | Prompt-Kern | Nutzung |
+|---|---|---|
+| mob_dragon.glb | fantasy dragon, glowing cyan wings | Drachen-Nacht-Boss |
+| building_castle.glb | stone castle fortress with towers | Burg-Landmarke |
+| item_relic.glb | glowing gem on ornate gold base | leuchtendes Relikt (Deko/Fund) |
+| item_potion.glb | red health potion bottle | einsammelbarer Heiltrank (+40 HP) |
