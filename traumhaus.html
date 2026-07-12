@@ -94,6 +94,16 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palItems"></div>
 </div>
 <div id="hint"></div>
+<div id="angel" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(20,30,40,.55)">
+ <div style="background:#f4faff;border:3px solid #4a90c8;border-radius:18px;padding:18px;text-align:center;max-width:340px;width:90vw">
+  <b style="font-size:1.1rem;color:#2a5a80">🎣 Angeln</b>
+  <div id="angelInfo" style="font-size:.8rem;color:#4a7aa0;margin-top:4px">Wurf 1/3</div>
+  <div id="angelIcon" style="font-size:3.2rem;margin:12px 0">🪱</div>
+  <div id="angelSub" style="font-size:.9rem;color:#5a7a95;min-height:38px">Wirf die Angel aus …</div>
+  <button id="angelZieh" style="margin-top:8px;border:0;background:linear-gradient(135deg,#4a90c8,#2a6aa8);color:#fff;border-radius:14px;padding:14px 34px;font-size:1.05rem;font-weight:800;cursor:pointer">ZIEHEN!</button>
+  <br><button id="angelQuit" style="margin-top:10px;border:0;background:#dde8f0;border-radius:10px;padding:7px 14px;font-size:.8rem;cursor:pointer">Aufhören</button>
+ </div>
+</div>
 <div id="koch" style="position:fixed;inset:0;z-index:25;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.55)">
  <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:18px;text-align:center;max-width:360px;width:90vw">
   <b style="font-size:1.1rem;color:#5a4a30">🍳 Kochen</b>
@@ -131,7 +141,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
-  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b> · Herd/Grill antippen = 🍳 Koch-Spiel</p>
+  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>Tipp auf Max/Mia = Kamera folgt nah!</b> · Herd/Grill = 🍳 Kochen · Teich = 🎣 Angeln</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -314,7 +324,8 @@ var KATALOG={
   {id:"beet",n:"Gemüsebeet",e:"🥕",cost:120,size:[1,1],beet:1},
   {id:"growbox",n:"Growbox (zwielichtig)",e:"🌿",cost:600,size:[1,1],grow:1},
   {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
-  {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}}]
+  {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}},
+  {id:"teich",n:"Gartenteich",e:"🎣",cost:380,size:[2,2],teich:1}]
 };
 var CATS=[["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
@@ -344,6 +355,7 @@ var ACH=[
  ["dealer","🌿","Diskreter Händler","Eine Ernte diskret verkauft",function(){return stats.growSold>=1;}],
  ["musiker","🎸","Straßenstar","Perfekte Straßenmusik-Show",function(){return stats.buskPerfekt>=1;}],
  ["koch","🍳","Sternekoch","Ein perfektes Menü gekocht",function(){return (stats.kochPerfekt||0)>=1;}],
+ ["angler","🎣","Petri Heil","5 Fische geangelt",function(){return (stats.fische||0)>=5;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
@@ -463,6 +475,21 @@ function applyFurn(id,gx,gy,rot,fid){
       kr.position.set(-0.35+gx2*0.7,0.05,-0.35+gy2*0.7);kr.scale.setScalar(0.06);gg.add(kr);krauts.push(kr);}
     gg.position.set(cx(gx),0.01,cz(gy));scene.add(gg);
     furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:gg,busy:false,grow:1,wachs:0,krauts:krauts,glow:pl2});
+    return;}
+  if(def.teich){ // Gartenteich: Wasser + Steinrand + Seerose
+    var tg=new THREE.Group();
+    var wasser=new THREE.Mesh(new THREE.CylinderGeometry(1.55,1.4,0.12,26),new THREE.MeshStandardMaterial({color:0x3a8ac8,roughness:0.12,metalness:0.1,transparent:true,opacity:0.88,envMapIntensity:0.5}));
+    wasser.position.y=0.06;tg.add(wasser);
+    for(var st9=0;st9<11;st9++){var sw=0.22+Math.sin(st9*7.3)*0.07;
+      var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(sw,0),stdMat(st9%2?0x9a9a92:0x7a7a72,0.9));
+      var sa=st9/11*6.283;stein.position.set(Math.cos(sa)*1.62,0.12,Math.sin(sa)*1.62);
+      stein.rotation.set(st9,st9*2,0);stein.castShadow=true;tg.add(stein);}
+    var blatt9=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.28,0.03,10),stdMat(0x3a8a4a,0.6));
+    blatt9.position.set(0.5,0.13,-0.4);tg.add(blatt9);
+    var blume9=new THREE.Mesh(new THREE.SphereGeometry(0.09,8,6),stdMat(0xf0a8c8,0.5));
+    blume9.position.set(0.5,0.2,-0.4);tg.add(blume9);
+    tg.position.set(cx(gx),0.01,cz(gy));scene.add(tg);
+    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:tg,busy:false,teich:1});
     return;}
   if(def.beet){ // Gemüsebeet: prozedural (Erde + wachsende Pflanzen)
     var bg=new THREE.Group();
@@ -1186,7 +1213,8 @@ function tapAt(px,py){
   if(!buildMode){ // Bewohner antippen -> Kamera folgt
     var c0=pickCell(px,py);
     if(c0){for(var fi2=0;fi2<furn.length;fi2++){var f2=furn[fi2];
-      if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}}}
+      if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}
+      if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}}}
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
@@ -1227,6 +1255,57 @@ function mgTick(){
   MG.pos+=MG.dir*MG.speed/60;
   if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
   mgDraw();MG.raf=requestAnimationFrame(mgTick);}
+var ANGEL={on:false,phase:"idle",round:0,fang:0,geldSum:0,t0:0,tmr:null};
+var FISCHE=[["🐠 Prachtfisch",70,300],["🐟 Barsch",28,600],["🐟 Rotauge",12,999999]];
+function angelStart(){
+  if(ANGEL.on||KOCH.on||MG.on)return;
+  ANGEL.on=true;ANGEL.round=0;ANGEL.fang=0;ANGEL.geldSum=0;
+  document.getElementById("angel").style.display="flex";
+  angelWurf();}
+function angelWurf(){
+  ANGEL.phase="wait";
+  document.getElementById("angelInfo").textContent="Wurf "+(ANGEL.round+1)+"/3";
+  document.getElementById("angelIcon").textContent="🪱";
+  document.getElementById("angelSub").textContent="Still … warte auf den Biss 💤";
+  clearTimeout(ANGEL.tmr);
+  ANGEL.tmr=setTimeout(function(){if(!ANGEL.on)return;
+    ANGEL.phase="biss";ANGEL.t0=performance.now();
+    document.getElementById("angelIcon").textContent="💦";
+    document.getElementById("angelSub").textContent="‼️ JETZT ZIEHEN!";
+    beep(980,.1,"square",.05);
+    ANGEL.tmr=setTimeout(function(){if(ANGEL.on&&ANGEL.phase==="biss")angelResult(-1);},900);
+  },1300+Math.random()*2600);}
+function angelResult(ms){
+  var txt;
+  if(ms<0){txt="💨 Weg ist er … zu langsam!";beep(220,.2,"sawtooth",.05);}
+  else{var fi=ms<FISCHE[0][2]?FISCHE[0]:(ms<FISCHE[1][2]?FISCHE[1]:FISCHE[2]);
+    ANGEL.fang++;ANGEL.geldSum+=fi[1];
+    stats.fische=(stats.fische||0)+1;
+    txt=fi[0]+"! +"+fi[1]+" § ("+ms+" ms)";beep(880,.14,"triangle",.06);}
+  document.getElementById("angelSub").textContent=txt;
+  document.getElementById("angelIcon").textContent=ms<0?"🌊":"🎣";
+  ANGEL.phase="pause";ANGEL.round++;
+  clearTimeout(ANGEL.tmr);
+  ANGEL.tmr=setTimeout(function(){if(!ANGEL.on)return;
+    if(ANGEL.round>=3)angelEnd();else angelWurf();},1400);}
+function angelEnd(){
+  ANGEL.on=false;clearTimeout(ANGEL.tmr);
+  document.getElementById("angel").style.display="none";
+  if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;netSend({t:"geld",v:geld});updHUD();}
+  sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+8+ANGEL.fang*4);});
+  hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" §":"🌊 Heute beißt nichts …");}
+document.getElementById("angelZieh").onclick=function(){
+  if(!ANGEL.on)return;
+  if(ANGEL.phase==="biss"){var ms=Math.round(performance.now()-ANGEL.t0);ANGEL.phase="done";angelResult(ms);}
+  else if(ANGEL.phase==="wait"){clearTimeout(ANGEL.tmr);
+    document.getElementById("angelSub").textContent="🐟 Zu früh! Fisch verscheucht …";
+    document.getElementById("angelIcon").textContent="💨";beep(260,.15,"sawtooth",.05);
+    ANGEL.phase="pause";ANGEL.round++;
+    ANGEL.tmr=setTimeout(function(){if(!ANGEL.on)return;
+      if(ANGEL.round>=3)angelEnd();else angelWurf();},1200);}};
+document.getElementById("angelQuit").onclick=function(){
+  ANGEL.on=false;clearTimeout(ANGEL.tmr);document.getElementById("angel").style.display="none";
+  if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;netSend({t:"geld",v:geld});updHUD();}};
 var KOCH={on:false,seq:[],pos:0,round:0,hits:0,total:0,tmr:null};
 var ZUTATEN=["🥕","🍅","🧀","🥩","🧅","🌶️"];
 function kochStart(){
