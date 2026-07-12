@@ -205,6 +205,9 @@ var SEED=0,rnd=Math.random;
 
 // ---------- Welt-Boden (grosse Plane mit Noise-Hügeln + Vertexfarben) ----------
 var MAP=800, GROUNDSEG=120;
+// 🎨 Prozedurale Texturen (numpy/Pillow generiert) — Boden/Straßen mit echten Details
+var TEXLOADER=new THREE.TextureLoader();
+function gtex(file,rep,srgb){var t=TEXLOADER.load("/textures/"+file);t.wrapS=t.wrapT=THREE.RepeatWrapping;if(rep)t.repeat.set(rep,rep);if(srgb&&THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;t.anisotropy=4;return t;}
 var ground;
 function buildGround(){
   var g=new THREE.PlaneGeometry(MAP,MAP,GROUNDSEG,GROUNDSEG);
@@ -236,7 +239,9 @@ function buildGround(){
   }
   g.setAttribute("color",new THREE.Float32BufferAttribute(cols,3));
   g.computeVertexNormals();
-  var m=new THREE.MeshLambertMaterial({vertexColors:true});
+  // Gras-Textur über die Biom-Vertexfarben legen (Textur × Farbe = Detail + Abwechslung)
+  var grassTex=gtex("tex_grass.png", MAP/12, true);
+  var m=new THREE.MeshLambertMaterial({vertexColors:true, map:grassTex});
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
 function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55+Math.sin(x*0.019-z*0.017)*1.6;}
@@ -725,15 +730,34 @@ function cc0instW(name,targetW){
   var m=p.clone(true);m.scale.setScalar(targetW/b.x);
   return m;
 }
-// Legt ein Straßen-Kreuz (Kenney-Kacheln) durch einen Punkt — echte Wege im Dorf 🛣️
+// 🛣️ Detaillierte Kopfstein-Straßen (Textur + Normal-Map = Tiefe) + Steinplatten-Platz
+function roadMat(rx,ry){
+  var c=gtex("tex_cobble.png",0,true);c.repeat.set(rx,ry);
+  var n=gtex("tex_cobble_n.png",0,false);n.repeat.set(rx,ry);
+  return new THREE.MeshStandardMaterial({map:c,normalMap:n,roughness:0.95,metalness:0});
+}
 function layRoads(cx,cz){
-  var T=4.0; // Weltgröße pro Kachel
-  function tile(x,z,ry){var t=cc0instW("ftk_road",T);if(!t)return;t.position.set(x,groundH(x,z)+0.09,z);t.rotation.y=ry||0;scene.add(t);}
-  for(var i=-3;i<=3;i++)tile(cx+i*T,cz,0);        // horizontale Straße
-  for(var j=-3;j<=3;j++){if(j===0)continue;tile(cx,cz+j*T,Math.PI/2);} // Kreuz
-  // kurzer Weg-Stummel nach aussen (Richtung Kartenmitte)
-  var a=Math.atan2(-cz,-cx);
-  for(var k=4;k<=8;k++)tile(cx+Math.cos(a)*k*T,cz+Math.sin(a)*k*T,a);
+  var gy=groundH(cx,cz)+0.12, L=30, W=6;
+  // horizontaler Arm (entlang X): Textur ~4 Welt-Einheiten pro Kachel
+  var gh=new THREE.PlaneGeometry(L,W);gh.rotateX(-Math.PI/2);
+  var mh=new THREE.Mesh(gh,roadMat(L/4,W/4));mh.position.set(cx,gy,cz);mh.receiveShadow=true;scene.add(mh);
+  // vertikaler Arm (entlang Z)
+  var gv=new THREE.PlaneGeometry(W,L);gv.rotateX(-Math.PI/2);
+  var mv=new THREE.Mesh(gv,roadMat(W/4,L/4));mv.position.set(cx,gy+0.01,cz);mv.receiveShadow=true;scene.add(mv);
+  // Steinplatten-Platz im Zentrum (überdeckt die Kreuzung)
+  var st=gtex("tex_stone.png",0,true);st.repeat.set(3,3);
+  var stn=gtex("tex_stone_n.png",0,false);stn.repeat.set(3,3);
+  var gp=new THREE.PlaneGeometry(11,11);gp.rotateX(-Math.PI/2);
+  var mp=new THREE.Mesh(gp,new THREE.MeshStandardMaterial({map:st,normalMap:stn,roughness:0.9}));
+  mp.position.set(cx,gy+0.02,cz);mp.receiveShadow=true;scene.add(mp);
+  // Weg-Stummel (Erde) nach aussen Richtung Kartenmitte
+  var a=Math.atan2(-cz,-cx),dl=26;var dx=Math.cos(a),dz=Math.sin(a);
+  var mx=cx+dx*(L/2+dl/2),mz=cz+dz*(L/2+dl/2);
+  var dt=gtex("tex_dirt.png",0,true);dt.repeat.set(1.5,dl/4);
+  var dtn=gtex("tex_dirt_n.png",0,false);dtn.repeat.set(1.5,dl/4);
+  var gd=new THREE.PlaneGeometry(5,dl);gd.rotateX(-Math.PI/2);
+  var md=new THREE.Mesh(gd,new THREE.MeshStandardMaterial({map:dt,normalMap:dtn,roughness:1}));
+  md.position.set(mx,groundH(mx,mz)+0.11,mz);md.rotation.y=-a;md.receiveShadow=true;scene.add(md);
 }
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 function decorateWorld(){
