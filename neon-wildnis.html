@@ -927,8 +927,10 @@ function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
 var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a];
 var NPC_EMO=["👋","💬","🙂","🎶","❤️","🍺","🧺","⚒️"];
 var ANIME_NPC=["anime_boy","anime_boy2","anime_girl","anime_girl2","anime_mage","anime_ninja","anime_schoolgirl","anime_warrior","anime_hero"];
-function mkVillager(x,z){var gy=groundH(x,z);
-  var rec={mesh:null,cx:x,cz:z,t:Math.random()*6,dir:Math.random()*6.28,spd:0.45+Math.random()*0.5,rr:9,walk:0,emoT:2+Math.random()*8,emo:null,mix:null};
+var POI_OFF=[[0,0],[-4,3],[5,-2],[-6,-5],[2,5],[-7,0],[7,0],[3,-4]]; // Brunnen/Markt/Taverne/Karren/Banner...
+function mkVillager(x,z,vcx,vcz){var gy=groundH(x,z);vcx=(vcx==null)?x:vcx;vcz=(vcz==null)?z:vcz;
+  var pois=POI_OFF.map(function(o){return {x:vcx+o[0],z:vcz+o[1]};});
+  var rec={mesh:null,cx:x,cz:z,vcx:vcx,vcz:vcz,pois:pois,tgt:null,idle:0,reached:true,sleeping:false,t:Math.random()*6,dir:Math.random()*6.28,spd:0.5+Math.random()*0.5,rr:9,walk:0,emoT:2+Math.random()*8,emo:null,mix:null};
   npcs.push(rec);
   if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
     var o=gl.scene;o.scale.setScalar(1.35); // feste Skala (Skinned-BBox unzuverlässig -> keine Riesen)
@@ -947,14 +949,19 @@ function mkVillager(x,z){var gy=groundH(x,z);
   },undefined,function(){});}
   return null;}
 function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.mesh){continue;}if(n.mix)n.mix.update(dt);
-  var pausing=(Math.sin(n.t*0.5+i)>0.55); // gelegentlich stehenbleiben (plaudern)
-  if(n.t%3.5<dt)n.dir+=(rnd()-0.5)*2.2;
-  var spd=pausing?0:n.spd;
-  var nx=n.mesh.position.x+Math.sin(n.dir)*spd*dt,nz=n.mesh.position.z+Math.cos(n.dir)*spd*dt;
-  if(Math.hypot(nx-n.cx,nz-n.cz)>n.rr){n.dir=Math.atan2(n.cx-nx,n.cz-nz);}else{n.mesh.position.x=nx;n.mesh.position.z=nz;}
-  n.walk+=spd*dt*6;
-  n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+(pausing?0:Math.abs(Math.sin(n.walk))*0.06);
-  if(n.la){var sw=pausing?Math.sin(n.t*2)*0.12:Math.sin(n.walk)*0.6;n.la.rotation.x=sw;n.ra.rotation.x=-sw;if(n.ll){n.ll.rotation.x=-sw*0.9;n.rl.rotation.x=sw*0.9;}}
+  var moving=false;
+  if(isNight){ // 🌙 nachts heim + schlafen
+    if(!n.sleeping){var hx=n.vcx-n.mesh.position.x,hz=n.vcz-n.mesh.position.z,hd=Math.hypot(hx,hz)||1;
+      if(hd>1.6){n.dir=Math.atan2(hx,hz);var st=n.spd*1.3*dt;n.mesh.position.x+=hx/hd*st;n.mesh.position.z+=hz/hd*st;n.walk+=st*6;moving=true;}
+      else{n.sleeping=true;n.mesh.visible=false;}}
+  } else { // ☀️ tagsüber Ziele ansteuern, dort verweilen (plaudern/arbeiten)
+    if(n.sleeping){n.sleeping=false;n.mesh.visible=true;}
+    if(!n.tgt||n.reached){var poi=n.pois[(Math.random()*n.pois.length)|0];n.tgt={x:poi.x,z:poi.z};n.reached=false;n.idle=0;}
+    var dx=n.tgt.x-n.mesh.position.x,dz=n.tgt.z-n.mesh.position.z,dd=Math.hypot(dx,dz)||1;
+    if(dd>0.9&&n.idle<=0){n.dir=Math.atan2(dx,dz);var st2=n.spd*dt;n.mesh.position.x+=dx/dd*st2;n.mesh.position.z+=dz/dd*st2;n.walk+=st2*6;moving=true;}
+    else{if(n.idle<=0)n.idle=3+Math.random()*5;n.idle-=dt;if(n.idle<=0)n.reached=true;}
+  }
+  n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+(moving?Math.abs(Math.sin(n.walk))*0.06:0);
   n.mesh.rotation.y+=(n.dir-n.mesh.rotation.y)*Math.min(1,dt*4);
   // 💬 Emote-Blase über dem Kopf
   n.emoT-=dt;
@@ -1134,9 +1141,9 @@ function decorateWorld(){
       var bl=new THREE.PointLight(0x7de3ff,0.6,40);bl.position.set(vx,groundH(vx,vz)+6,vz);scene.add(bl);
     }
     var nGar=isSpawn?3:1;for(var ga=0;ga<nGar;ga++){var gaa=rnd()*6.28,gar=ringR-5;mkGarden(vx+Math.cos(gaa)*gar,vz+Math.sin(gaa)*gar);}
-    var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr);}
+    var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr,vx,vz);}
     if(isSpawn){ // 💰 Händler beim Marktstand
-      merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z);
+      merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z,vx,vz);
       var cvM=document.createElement("canvas");cvM.width=cvM.height=64;var cm=cvM.getContext("2d");cm.font="46px sans-serif";cm.textAlign="center";cm.textBaseline="middle";cm.fillText("💰",32,36);
       var spM=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cvM),transparent:true,depthWrite:false}));spM.scale.set(1.2,1.2,1.2);spM.position.set(merchant.x,groundH(merchant.x,merchant.z)+3,merchant.z);scene.add(spM);
       worldProps.push({mesh:spM,halo:null,ph:0,base:spM.position.y,float:true,scl:1});
