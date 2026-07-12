@@ -770,6 +770,35 @@ function layRoads(cx,cz){
   var mp=new THREE.Mesh(gp,new THREE.MeshStandardMaterial({map:st,normalMap:stn,roughness:0.9}));
   mp.position.set(cx,groundH(cx,cz)+0.15,cz);mp.receiveShadow=true;scene.add(mp);
 }
+// 🪣 Holz-Ziehbrunnen (passt zum Fachwerk-Stil, ersetzt den "modernen" Steinbrunnen)
+function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
+  var stone=new THREE.MeshStandardMaterial({color:0x8f857a,roughness:1,flatShading:true});
+  var wood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+  var roofM=new THREE.MeshStandardMaterial({color:0x7a3a26,roughness:1,flatShading:true});
+  var ring=new THREE.Mesh(new THREE.CylinderGeometry(1.15,1.28,1.0,12),stone);ring.position.y=0.5;ring.castShadow=true;g.add(ring);
+  var water=new THREE.Mesh(new THREE.CylinderGeometry(0.98,0.98,0.1,12),new THREE.MeshStandardMaterial({color:0x2a6a8a,roughness:0.25,metalness:0.4}));water.position.y=0.78;g.add(water);
+  for(var sgn=-1;sgn<=1;sgn+=2){var post=new THREE.Mesh(new THREE.BoxGeometry(0.2,2.6,0.2),wood);post.position.set(sgn*1.0,1.85,0);post.castShadow=true;g.add(post);}
+  var beam=new THREE.Mesh(new THREE.BoxGeometry(2.4,0.22,0.22),wood);beam.position.y=3.1;g.add(beam);
+  var roof=new THREE.Mesh(new THREE.ConeGeometry(1.85,1.0,4),roofM);roof.position.y=3.7;roof.rotation.y=Math.PI/4;roof.castShadow=true;g.add(roof);
+  var bkt=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.26,0.4,8),wood);bkt.position.set(0,2.2,0);g.add(bkt);
+  g.position.set(x,gy,z);scene.add(g);return g;}
+// 🧑‍🌾 Dorfbewohner-NPCs (einfache, stilisierte Figuren, wandern im Dorf umher)
+var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a];
+function mkVillager(x,z){var g=new THREE.Group(),gy=groundH(x,z);
+  var robe=new THREE.MeshStandardMaterial({color:NPC_ROBES[(rnd()*NPC_ROBES.length)|0],roughness:1,flatShading:true});
+  var skin=new THREE.MeshStandardMaterial({color:0xe6b088,roughness:1});
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.42,1.15,9),robe);body.position.y=0.82;body.castShadow=true;g.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.27,10,8),skin);head.position.y=1.62;head.castShadow=true;g.add(head);
+  var hat=new THREE.Mesh(new THREE.ConeGeometry(0.33,0.42,9),robe);hat.position.y=1.92;g.add(hat);
+  var s2=0.9+rnd()*0.3;g.scale.setScalar(s2);
+  g.position.set(x,gy,z);g.rotation.y=rnd()*6.28;scene.add(g);
+  npcs.push({mesh:g,cx:x,cz:z,t:rnd()*6,dir:rnd()*6.28,spd:0.5+rnd()*0.5,rr:9});return g;}
+function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;
+  if(n.t%3.5<dt)n.dir+=(rnd()-0.5)*2.2;
+  var nx=n.mesh.position.x+Math.sin(n.dir)*n.spd*dt,nz=n.mesh.position.z+Math.cos(n.dir)*n.spd*dt;
+  if(Math.hypot(nx-n.cx,nz-n.cz)>n.rr){n.dir=Math.atan2(n.cx-nx,n.cz-nz);}else{n.mesh.position.x=nx;n.mesh.position.z=nz;}
+  n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+Math.abs(Math.sin(n.t*5))*0.06;
+  n.mesh.rotation.y+=(n.dir-n.mesh.rotation.y)*Math.min(1,dt*4);}}
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 function decorateWorld(){
   var half=MAP/2-40;
@@ -789,13 +818,16 @@ function decorateWorld(){
   farScatter(Math.round(14*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Dörfer: 2–3 Cluster aus Häusern + Zäunen + Lagerfeuer + Fässern/Kisten/Zelt ---
   var HOUSES=["building_fachwerk","building_werkstatt","building_turm"];
-  var nV=2+((rnd()*2)|0);
+  var nV=3+((rnd()*2)|0);
   for(var v=0;v<nV;v++){
-    var va=rnd()*6.28,vrd=60+rnd()*(half-80);var vx=Math.cos(va)*vrd,vz=Math.sin(va)*vrd;
-    villages.push({x:vx,z:vz});
-    var nH=2+((rnd()*3)|0);
+    var isSpawn=(v===0); // 🏡 Dorf 0 = RIESIGES Anfangsdorf am Spawn (0,0)
+    var vx,vz;
+    if(isSpawn){vx=0;vz=0;}else{var va=rnd()*6.28,vrd=70+rnd()*(half-90);vx=Math.cos(va)*vrd;vz=Math.sin(va)*vrd;}
+    villages.push({x:vx,z:vz,big:isSpawn});
+    var ringR=isSpawn?24:13;
+    var nH=isSpawn?10:(2+((rnd()*3)|0));
     for(var h=0;h<nH;h++){
-      var ha=(h/nH)*6.28+rnd()*0.5,hrd=6+rnd()*7;var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
+      var ha=(h/nH)*6.28+rnd()*0.4,hrd=(isSpawn?13:6)+rnd()*(isSpawn?8:7);var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
@@ -804,27 +836,29 @@ function decorateWorld(){
     var fL=new THREE.PointLight(0xffa040,1.4,18);fL.position.set(vx,groundH(vx,vz)+1.2,vz);scene.add(fL);
     worldProps.push({mesh:fire,halo:null,ph:rnd()*6.28,base:fire.position.y,float:false,scl:1,flick:true,light:fL});
     // Zaun-Ring + Fässer/Kisten/Zelt
-    for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*(hrd*0+13),fz=vz+Math.sin(fa)*13;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
+    for(var f=0;f<(isSpawn?16:8);f++){var nF=isSpawn?16:8;var fa=f/nF*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
     layRoads(vx,vz);
     // 🎪⛲🛒 Kenney-Dorf-Props (poliert): Marktstand, Brunnen, Karren, Banner, Laternen
     var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
-    var ftfn=cc0inst("ftk_fountain",2.4);if(ftfn){var qx=vx-4,qz=vz+3;ftfn.position.set(qx,groundH(qx,qz),qz);scene.add(ftfn);}
+    mkTimberWell(vx-4,vz+3); // 🪣 Holz-Brunnen statt modernem Steinbrunnen
     var ftct=cc0inst("ftk_cart",1.7);if(ftct){var cx2=vx+2,cz2=vz+5;ftct.position.set(cx2,groundH(cx2,cz2),cz2);ftct.rotation.y=rnd()*6.28;scene.add(ftct);}
     for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);}}
     for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
       var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
-    // 🏰 Befestigung: 4 Wachtürme + Tor + Flaggen + Katapult + Waffen-Armory (Vielfalt, nie gleich)
-    for(var tw=0;tw<4;tw++){var ta=Math.PI/4+tw*Math.PI/2,tx2=vx+Math.cos(ta)*15,tz2=vz+Math.sin(ta)*15;
-      var twr=cc0inst("ck_tower",7*(0.85+rnd()*0.3));if(twr){twr.position.set(tx2,groundH(tx2,tz2),tz2);twr.rotation.y=rnd()*6.28;scene.add(twr);}
-      if(tw<2){var flg=cc0inst("ck_flag",3.2);if(flg){flg.position.set(tx2,groundH(tx2,tz2)+4.6,tz2);flg.rotation.y=rnd()*6.28;scene.add(flg);}}}
-    var gate=cc0inst("ck_gate",5);if(gate){var ga2=Math.atan2(-vz,-vx),gx2=vx+Math.cos(ga2)*15,gz2=vz+Math.sin(ga2)*15;gate.position.set(gx2,groundH(gx2,gz2),gz2);gate.rotation.y=ga2+Math.PI/2;scene.add(gate);}
-    var cat=cc0inst("ck_catapult",2.4);if(cat){var cax=vx-8,caz=vz+7;cat.position.set(cax,groundH(cax,caz),caz);cat.rotation.y=rnd()*6.28;scene.add(cat);}
+    // 🚩 Flaggen auf Holzmasten (statt flacher Stein-Türme) — passt zum Fachwerk-Stil
+    var woodPole=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+    for(var tw=0;tw<(isSpawn?4:2);tw++){var ta=Math.PI/4+tw*(isSpawn?Math.PI/2:Math.PI),tx2=vx+Math.cos(ta)*(ringR-2),tz2=vz+Math.sin(ta)*(ringR-2);
+      var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.14,5.2,6),woodPole);pole.position.set(tx2,groundH(tx2,tz2)+2.6,tz2);pole.castShadow=true;scene.add(pole);
+      var flg=cc0inst("ck_flag",2.6);if(flg){flg.position.set(tx2,groundH(tx2,tz2)+4.4,tz2);flg.rotation.y=rnd()*6.28;scene.add(flg);}}
+    // ⚔️ Waffen-Armory (Holz-Ständer-Look): Schwert/Speer/Schilde
     var arms=["dk_sword","dk_spear","dk_shield_round","dk_shield_rect"];
-    for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+2+ai*0.9,waz=vz-3.5;
+    for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+3+ai*0.9,waz=vz-4;
       wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
+    // 🧑‍🌾 Dorfbewohner (mehr im grossen Anfangsdorf)
+    var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr);}
   }
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
@@ -1516,7 +1550,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);updPotions(dt);
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);updPotions(dt);updNPCs(dt);
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
