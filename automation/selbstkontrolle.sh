@@ -37,19 +37,14 @@ fi
 # ── 1. CJ-Runner: tote (oder eben hart-gekillte) neu starten, MIT Shopify-Creds ──
 for e in "${R[@]}"; do S="${e%%:*}"; L="${e##*:}"; [ "$(alive "$S")" -eq 0 ] && start_runner "$S" "$L"; done
 
-# ── 2. Auto-Committer (5-Min-Loop) ──
-if [ "$(alive 'sleep 300; cd')" -eq 0 ]; then
-  nohup bash -c "while true; do sleep 300; cd /home/user/aban-news-landing; git add -A 2>/dev/null; git diff --cached --quiet || (git commit -q -m 'Ledger-Drift (auto) #autocommit-loop' && git pull --rebase --autostash -q origin $BRANCH 2>/dev/null; git push -q origin $BRANCH 2>/dev/null); done" > /tmp/autocommit.log 2>&1 &
+# ── 2. Auto-Committer (5-Min-Loop) — nutzt jetzt den flock-serialisierten git_sync.sh ──
+if [ "$(alive 'git_sync.sh auto-loop|sleep 300; cd')" -eq 0 ]; then
+  nohup bash -c "while true; do sleep 300; bash /home/user/aban-news-landing/automation/git_sync.sh 'Ledger-Drift (auto) #autocommit-loop'; done # git_sync.sh auto-loop" > /tmp/autocommit.log 2>&1 &
   echo "[selbstkontrolle] Auto-Committer neu gestartet (PID $!)"
 fi
 
-# ── 3. Sofort committen+pushen ──
-git add -A 2>/dev/null
-if ! git diff --cached --quiet; then
-  git commit -q -m "Ledger-Drift (selbstkontrolle)" 2>/dev/null
-  git pull --rebase --autostash -q origin "$BRANCH" 2>/dev/null
-  git push -q origin "$BRANCH" 2>/dev/null && echo "[selbstkontrolle] committet+gepusht"
-fi
+# ── 3. Sofort committen+pushen (serialisiert via flock) ──
+bash "$(dirname "$0")/git_sync.sh" "Ledger-Drift (selbstkontrolle)"
 
 # ── 4. Statusmeldung ──
 CNT=$(wc -l < "$LEDGER" 2>/dev/null || echo '?')
