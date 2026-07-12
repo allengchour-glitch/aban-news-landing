@@ -1083,16 +1083,37 @@ function mkPawnMesh(color,cfg,onReady){
     shoe.scale.set(1,0.6,1.32);shoe.position.set(0,-0.53,0.05);shoe.castShadow=true;lp3.add(shoe);});
   // Rumpf: runder Kapsel-/Ei-Körper (vorne/hinten leicht abgeflacht)
   var torso=new THREE.Mesh(capsuleGeo(0.29,0.2,HSEG),cm);torso.scale.set(1,1,0.72);torso.position.y=0.82;torso.castShadow=true;g.add(torso);
-  // 👗 Kleidungs-Stil (cfg.top): Overlay-Meshes auf dem Rumpf
+  // 👗 Kleidungs-Stil (cfg.top): saubere, den Rumpf umhüllende Overlays (kein Clipping/Überlappen)
   (function(){var top=(cfg.top==null?0:cfg.top);if(!top)return;
-    var accHex=CLOTHES[(((cfg.cloth>=0?cfg.cloth:0)+5)%CLOTHES.length)],dark=new THREE.Color(bodyHex).multiplyScalar(0.68).getHex(),white=0xf4f4f8,TY=0.82;
-    if(top===1){var v=new THREE.Mesh(new THREE.SphereGeometry(0.3,HSEG,10,0,6.283,0,1.5),smat(dark));v.scale.set(0.72,0.92,0.8);v.position.set(0,TY-0.02,0.05);g.add(v);}
-    else if(top===2){[-1,1].forEach(function(s){var pnl=new THREE.Mesh(new THREE.BoxGeometry(0.15,0.44,0.03),smat(accHex));pnl.position.set(s*0.12,TY,0.205);pnl.rotation.y=s*0.18;g.add(pnl);});var col=new THREE.Mesh(new THREE.TorusGeometry(0.15,0.04,6,16,Math.PI),smat(accHex));col.rotation.x=1.15;col.position.set(0,TY+0.17,0.14);g.add(col);}
-    else if(top===3){for(var b=0;b<3;b++){var st=new THREE.Mesh(capsuleGeo(0.293,0.02,HSEG),smat(b%2?white:accHex));st.scale.set(1,1,0.72);st.position.y=TY-0.12+b*0.12;g.add(st);}}
-    else if(top===4){var bib=new THREE.Mesh(new THREE.BoxGeometry(0.26,0.28,0.03),pants);bib.position.set(0,TY-0.1,0.2);g.add(bib);[-1,1].forEach(function(s){var str=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.36,0.03),pants);str.position.set(s*0.11,TY+0.13,0.19);g.add(str);});}
-    else if(top===5){var sc=new THREE.Mesh(new THREE.TorusGeometry(0.17,0.05,8,18),smat(accHex));sc.rotation.x=Math.PI/2;sc.position.set(0,TY+0.2,0.02);g.add(sc);var end=new THREE.Mesh(new THREE.BoxGeometry(0.09,0.24,0.05),smat(accHex));end.position.set(0.09,TY+0.02,0.19);g.add(end);}
-    else if(top===6){var hood=new THREE.Mesh(new THREE.SphereGeometry(0.23,HSEG,10,0,6.283,0,1.7),smat(dark));hood.scale.set(1,0.9,0.82);hood.position.set(0,TY+0.28,-0.11);g.add(hood);var pk=new THREE.Mesh(new THREE.BoxGeometry(0.27,0.12,0.04),smat(dark));pk.position.set(0,TY-0.15,0.19);g.add(pk);}
-    else if(top===7){for(var d=0;d<8;d++){var da=d/8*6.28;var dot=new THREE.Mesh(new THREE.SphereGeometry(0.028,8,8),smat(white));dot.position.set(Math.cos(da)*0.15,TY-0.04+Math.sin(da)*0.13,0.2);g.add(dot);}}
+    var acc=CLOTHES[(((cfg.cloth>=0?cfg.cloth:0)+5)%CLOTHES.length)],dark=new THREE.Color(bodyHex).multiplyScalar(0.66).getHex(),white=0xf4f4f8;
+    // Hülle, die knapp AUSSEN um den Rumpf sitzt (Rumpf: r=0.29, z-scale 0.72) -> nie im Körper, nie schwebend
+    function shell(cylH,y,mat){var m=new THREE.Mesh(capsuleGeo(0.302,cylH,HSEG),mat);m.scale.set(1.02,1,0.75);m.position.y=y;m.castShadow=true;g.add(m);return m;}
+    function band(y,mat){var st=new THREE.Mesh(capsuleGeo(0.305,0.016,HSEG),mat);st.scale.set(1.03,1,0.76);st.position.y=y;g.add(st);}
+    function button(y){var b=new THREE.Mesh(new THREE.SphereGeometry(0.021,8,8),smat(0x2b2b32));b.scale.set(1,1,0.5);b.position.set(0,y,0.222);g.add(b);}
+    function vneck(y,col){var v=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.24,3),col);v.rotation.x=Math.PI;v.scale.set(1,1,0.28);v.position.set(0,y,0.208);g.add(v);} // Shirt-Dreieck im Ausschnitt
+    if(top===1){        // 🦺 Weste über dem Shirt
+      shell(0.10,0.86,smat(dark));vneck(0.98,cm);button(0.86);button(0.77);
+    }else if(top===2){  // 🧥 Jacke mit Kragen
+      shell(0.13,0.86,smat(acc));vneck(1.0,cm);
+      [-1,1].forEach(function(s){var lap=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.17,0.03),smat(new THREE.Color(acc).multiplyScalar(0.78).getHex()));lap.position.set(s*0.075,1.0,0.216);lap.rotation.z=s*0.5;g.add(lap);});
+      button(0.9);button(0.8);button(0.7);
+    }else if(top===3){  // 🎽 Streifen (4 Bänder)
+      for(var b=0;b<4;b++){band(0.66+b*0.13,smat(b%2?acc:white));}
+    }else if(top===4){  // 👖 Latzhose: Bib + Träger über die Schultern + Clips
+      var bib=new THREE.Mesh(new THREE.BoxGeometry(0.23,0.3,0.05),pants);bib.scale.set(1,1,1);bib.position.set(0,0.78,0.208);g.add(bib);
+      [-1,1].forEach(function(s){var str=new THREE.Mesh(new THREE.BoxGeometry(0.055,0.44,0.05),pants);str.position.set(s*0.095,0.98,0.19);str.rotation.x=-0.22;g.add(str);
+        var clip=new THREE.Mesh(new THREE.SphereGeometry(0.028,8,8),smat(0xd7d7de));clip.scale.set(1,1,0.6);clip.position.set(s*0.095,0.9,0.23);g.add(clip);});
+    }else if(top===5){  // 🧣 Schal um den Hals + zwei hängende Enden
+      var neck=new THREE.Mesh(new THREE.TorusGeometry(0.155,0.052,8,20),smat(acc));neck.rotation.x=Math.PI/2;neck.scale.set(1,0.82,1);neck.position.set(0,1.06,0.015);g.add(neck);
+      [[-0.05,0.185,0.9],[0.055,0.2,1.0]].forEach(function(e){var en=new THREE.Mesh(new THREE.BoxGeometry(0.085,0.24,0.05),smat(acc));en.position.set(e[0],e[2]-0.15,e[1]);en.rotation.z=e[0]*1.3;g.add(en);});
+    }else if(top===6){  // 🧥 Hoodie: farbiger Pulli + Kapuze hinten + Bauchtasche + Kordeln
+      shell(0.12,0.86,smat(dark));
+      var hood=new THREE.Mesh(new THREE.SphereGeometry(0.2,HSEG,10,0,6.283,1.35,1.25),smat(dark));hood.scale.set(1.12,1,0.92);hood.position.set(0,1.12,-0.12);g.add(hood);
+      var pk=new THREE.Mesh(new THREE.BoxGeometry(0.24,0.12,0.05),smat(new THREE.Color(dark).multiplyScalar(0.86).getHex()));pk.position.set(0,0.7,0.216);g.add(pk);
+      [-1,1].forEach(function(s){var cd=new THREE.Mesh(new THREE.CylinderGeometry(0.012,0.012,0.16,5),smat(white));cd.position.set(s*0.05,0.98,0.212);g.add(cd);});
+    }else if(top===7){  // ⚪ Punkte-Muster (folgt der Rundung)
+      var dm=smat(white);for(var ry=0;ry<3;ry++)for(var cc2=0;cc2<3;cc2++){var a2=(cc2-1)*0.55,dx=Math.sin(a2)*0.235,dz=Math.cos(a2)*0.215;var dt=new THREE.Mesh(new THREE.SphereGeometry(0.027,8,8),dm);dt.scale.set(1,1,0.5);dt.position.set(dx,0.72+ry*0.13,dz);g.add(dt);}
+    }
   })();
   var belt=new THREE.Mesh(new THREE.CylinderGeometry(0.285,0.285,0.1,HSEG),smat(0x4a3a28));belt.scale.set(1,1,0.72);belt.position.y=0.56;g.add(belt);
   if(cfg.g==="f"&&(cfg.outfit==null||cfg.outfit!==2)){ // 👗 Outfit: 0/none=Rock · 1=langes Kleid · 2=Hose (kein Rock)
@@ -1171,9 +1192,12 @@ function mkPawnMesh(color,cfg,onReady){
       var lang=new THREE.Mesh(new THREE.SphereGeometry(0.25,HSEG,14),hair);lang.scale.set(0.92,0.82,0.6);lang.position.set(0,1.33,-0.15);g.add(lang);}
   }
   else{var backhair=new THREE.Mesh(new THREE.SphereGeometry(0.27,HSEG,12),hair);backhair.scale.set(1,0.66,0.6);backhair.position.set(0,1.44,-0.1);g.add(backhair);}
-  // 🙂 kleiner freundlicher Lächel-Mund (weicher Torus-Bogen, nach oben geöffnet)
-  var mouth=new THREE.Mesh(new THREE.TorusGeometry(0.05,0.014,6,12,Math.PI),smat(0x9a4a44));
-  mouth.rotation.z=Math.PI;mouth.scale.set(1.1,0.85,0.6);mouth.position.set(0,1.352,0.30);g.add(mouth);
+  // 🙂 freundlicher Lächel-Mund: weicher, glatter Bogen + zarte Unterlippe + Mundwinkel-Grübchen (crisp)
+  var mouth=new THREE.Mesh(new THREE.TorusGeometry(0.053,0.016,10,26,Math.PI),new THREE.MeshBasicMaterial({color:0xc85a52}));
+  mouth.rotation.z=Math.PI;mouth.scale.set(1.18,0.92,0.6);mouth.position.set(0,1.352,0.30);mouth.userData.noOutline=true;g.add(mouth);
+  var lip=new THREE.Mesh(new THREE.SphereGeometry(0.042,10,8),new THREE.MeshBasicMaterial({color:0xe38079}));
+  lip.scale.set(1.15,0.4,0.4);lip.position.set(0,1.338,0.305);lip.userData.noOutline=true;g.add(lip);
+  [-1,1].forEach(function(s){var dp=new THREE.Mesh(new THREE.SphereGeometry(0.013,6,6),new THREE.MeshBasicMaterial({color:0xff9fa0,transparent:true,opacity:0.5}));dp.position.set(s*0.064,1.352,0.30);dp.userData.noOutline=true;g.add(dp);});
   // winziges, dezentes Näschen (Chibi: klein, kein Blob)
   var nose=new THREE.Mesh(new THREE.SphereGeometry(0.022,LSEG,LSEG),smat(new THREE.Color(SKINTONES[cfg.skin%SKINTONES.length]).multiplyScalar(0.94).getHex()));
   nose.scale.set(1,0.82,0.7);nose.position.set(0,1.402,0.305);nose.userData.noOutline=true;g.add(nose);
