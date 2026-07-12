@@ -801,13 +801,29 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
-    if(e.hp<=0){scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);if(rnd()<0.5){inv.stone+=1;invUpd();}}}}
+    if(e.hp<=0){scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
   b.style.opacity=(skillCd>0)?0.4:1;b.textContent=(skillCd>0)?Math.ceil(skillCd):"💥";}
+// 💎 Loot-Raritaeten (RPG-Fusion aus realm): Monster droppen farbige Beute-Orbs (auto-collect)
+var lootOrbs=[];
+var LOOT_RARITY=[{c:0xbfeaff,n:"Gewöhnlich",p:0.58,xp:5,cr:0,heal:0,hp:0},{c:0x5ea8ff,n:"Selten",p:0.27,xp:12,cr:1,heal:0,hp:0},{c:0xc98bff,n:"Episch",p:0.12,xp:26,cr:2,heal:20,hp:0},{c:0xffd166,n:"Legendär",p:0.03,xp:55,cr:3,heal:30,hp:6}];
+function rollRarity(){var r=rnd(),a=0;for(var i=0;i<LOOT_RARITY.length;i++){a+=LOOT_RARITY[i].p;if(r<a)return i;}return 0;}
+function dropLoot(x,z){var ri=rollRarity(),R=LOOT_RARITY[ri];
+  var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),new THREE.MeshStandardMaterial({color:R.c,emissive:R.c,emissiveIntensity:0.95,flatShading:true}));
+  m.position.set(x,groundH(x,z)+0.9,z);scene.add(m);lootOrbs.push({m:m,x:x,z:z,ri:ri,t:0,life:32});
+  if(ri>=2)burst(x,groundH(x,z)+0.9,z,R.c,8);}
+function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
+  o.m.rotation.y+=dt*2.6;o.m.position.y=groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16;
+  var dx=o.x-player.position.x,dz=o.z-player.position.z;
+  if(dx*dx+dz*dz<1.7*1.7&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
+    toast((o.ri>=3?"🌟 ":"💎 ")+R.n+"e Beute! +"+R.xp+" XP"+(R.cr?" · +"+R.cr+"💎":"")+(R.hp?" · +"+R.hp+" maxHP":""));
+    floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,11);
+    scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);continue;}
+  if(o.life<=0){scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);}}}
 function hurtFlash(){shake=Math.min(shake+0.15,0.4);}
 function playerDie(){
   dead=true;announce("💀 Du bist gefallen…");
@@ -860,7 +876,7 @@ function harvest(){
     faceTo(nearMon.x,nearMon.z);
     nearMon.hp-=(1+Math.floor(level/3));burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}
-      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);
+      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
   }
@@ -1145,7 +1161,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
