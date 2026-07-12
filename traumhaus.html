@@ -189,6 +189,31 @@ var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.heig
   try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
+// ---- Wetter & Jahreszeiten ----
+var wetter="sonne";
+var SAISON=[["🌸 Frühling",0xc8f0b8],["☀️ Sommer",0xffffff],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]];
+function calcSaison(){return Math.floor((tag-1)/5)%4;}
+function applySaison(){rasen.material.color.setHex(SAISON[calcSaison()][1]);}
+var partN=700,partGeo=new THREE.BufferGeometry(),partPos=new Float32Array(partN*3),partDrift=new Float32Array(partN);
+for(var pi=0;pi<partN;pi++){partPos[pi*3]=(Math.random()-0.5)*56;partPos[pi*3+1]=Math.random()*17;partPos[pi*3+2]=(Math.random()-0.5)*56;partDrift[pi]=Math.random()*6.283;}
+partGeo.setAttribute("position",new THREE.BufferAttribute(partPos,3));
+var partMat=new THREE.PointsMaterial({color:0x9ec8e8,size:0.13,transparent:true,opacity:0.65,sizeAttenuation:true});
+var partSys=new THREE.Points(partGeo,partMat);partSys.visible=false;partSys.frustumCulled=false;scene.add(partSys);
+function setWetter(w){wetter=w;
+  if(w==="regen"){partMat.color.setHex(0x9ec8e8);partMat.size=0.13;partMat.opacity=0.65;}
+  if(w==="schnee"){partMat.color.setHex(0xffffff);partMat.size=0.24;partMat.opacity=0.9;}
+  partSys.visible=w!=="sonne";}
+function rollWetter(){var sa=calcSaison(),r=Math.random();
+  setWetter(sa===3?(r<0.55?"schnee":"sonne"):(r<0.25?"regen":"sonne"));
+  if(MPs&&mpHost)netSend({t:"wetter",w:wetter});}
+function updWetter(dt){
+  if(!partSys.visible)return;
+  var sp=wetter==="regen"?15:3.2,pp=partGeo.attributes.position.array;
+  for(var i=0;i<partN;i++){pp[i*3+1]-=sp*dt*(0.75+((i%5)*0.1));
+    if(wetter==="schnee")pp[i*3]+=Math.sin(partDrift[i]+pp[i*3+1]*0.5)*dt*0.7;
+    if(pp[i*3+1]<0)pp[i*3+1]=17;}
+  partSys.position.set(camTx,0,camTz);
+  partGeo.attributes.position.needsUpdate=true;}
 // Parkett/Fliesen-Texturen
 function parkettTex(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
   for(var r=0;r<4;r++)for(var q=0;q<2;q++){var off=(r%2)*64;
@@ -512,7 +537,8 @@ function onNetMsg(m){
       m.np.forEach(function(nd,i){if(npcs[i])npcs[i].net=nd;});}
     if(m.k){while(kinder.length<m.k.length){var nk=spawnKind(m.k[kinder.length].b);if(nk)nk.name=m.k[kinder.length].n;}
       m.k.forEach(function(kd,i){if(kinder[i]){kinder[i].net=kd;if(kinder[i].baby!==kd.b){kinder[i].baby=kd.b;scene.remove(kinder[i].mesh);var nm2=mkKind(kd.b);nm2.position.set(kinder[i].x,0,kinder[i].z);scene.add(nm2);kinder[i].mesh=nm2;}}});}}
-  else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;tag=m.d;}
+  else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
+  else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="rom"){romScene(m.a,m.b,true);}
   else if(m.t==="love"&&!mpHost){liebe=m.v;verlobt=m.ve;verheiratet=m.he;if(m.sk)skills=m.sk;if(m.ar!==undefined){arbeiten=m.ar;sims.forEach(function(s2){s2.mesh.visible=!m.ar;});}updHUD();}
   else if(m.t==="loveEv"){loveEvent(m.k,true);}
@@ -1292,7 +1318,7 @@ document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
 function updHUD(){
   document.getElementById("geld").textContent="💰 "+geld;
   var hh=Math.floor(uhrzeit/60)%24,mm=Math.floor(uhrzeit%60);
-  document.getElementById("uhr").textContent=(hh<6||hh>=21?"🌙":"🕗")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0");
+  document.getElementById("uhr").textContent=(hh<6||hh>=21?"🌙":"🕗")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0")+" "+SAISON[calcSaison()][0].split(" ")[0]+(wetter==="regen"?"🌧️":wetter==="schnee"?"🌨️":"");
   var nb=document.getElementById("needsBox");nb.innerHTML="";
   if(kinder.length){var kr=document.createElement("div");kr.style.cssText="font-size:.72rem;color:#c05a8a;font-weight:800";
     kr.textContent="👨‍👩‍👧 Familie: "+kinder.map(function(k){return (k.baby?"👶":"🧒")+k.name;}).join(" · ");nb.appendChild(kr);}
@@ -1327,6 +1353,7 @@ function startGame(){
   hint("🔨 Bauen antippen — dann Boden legen, Wände ziehen, Möbel stellen!");}
 document.getElementById("soloBtn").onclick=function(){
   try{var sv=localStorage.getItem(SAVE);if(sv)loadSnapshot(JSON.parse(sv));}catch(e){}
+  applySaison();rollWetter();
   startGame();};
 document.getElementById("hostBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
@@ -1363,10 +1390,11 @@ function loop(now){
   var dt=Math.min(0.05,(now-last)/1000);last=now;
   if(running){
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
-    if(!MPs||mpHost){uhrzeit+=dt*40;if(uhrzeit>=1440){uhrzeit-=1440;tag++;}}
+    if(!MPs||mpHost){uhrzeit+=dt*40;if(uhrzeit>=1440){uhrzeit-=1440;tag++;rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-6)/12*Math.PI));
-    sun.intensity=0.12+dayA*0.75;hemi.intensity=0.2+dayA*0.28;
+    var wDim=wetter==="sonne"?1:0.62;
+    sun.intensity=(0.12+dayA*0.75)*wDim;hemi.intensity=0.2+dayA*0.28;
     sun.position.set(Math.cos((hh-6)/12*Math.PI)*30,10+dayA*30,18);
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x1a2340),1-Math.min(1,dayA*1.4));
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
@@ -1380,7 +1408,7 @@ function loop(now){
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
     updGrow(dt);updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);
+    updHearts(dt);updWetter(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost)checkAch();
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten});}}}
