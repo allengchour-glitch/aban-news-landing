@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Quiz-Buzzer</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
+  body {
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    background: linear-gradient(180deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #23405e;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  .back {
+    position: fixed; top: 10px; left: 10px; z-index: 20;
+    background: #fff; border: none; border-radius: 14px;
+    padding: 10px 16px; font-size: 16px; font-weight: bold; color: #2b6cb0;
+    box-shadow: 0 3px 0 #b7d8ef; cursor: pointer; min-height: 46px;
+  }
+  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #b7d8ef; }
+  .wrap { width: 100%; max-width: 480px; padding: 64px 14px 24px; }
+  h1 { text-align: center; font-size: 30px; margin: 4px 0 2px; color: #1e5a8a; }
+  h1 .e { font-size: 34px; }
+  .sub { text-align: center; margin: 0 0 14px; color: #4a708f; font-size: 15px; }
+
+  .scores { display: flex; gap: 10px; margin-bottom: 12px; }
+  .score {
+    flex: 1; background: #fff; border-radius: 18px; padding: 10px 8px; text-align: center;
+    box-shadow: 0 4px 0 #d3e9f7; border: 3px solid transparent;
+  }
+  .score.p1 { border-color: #ffb3c1; }
+  .score.p2 { border-color: #ffe08a; }
+  .score .name { font-weight: bold; font-size: 15px; }
+  .score .pts { font-size: 26px; font-weight: bold; }
+  .p1 .pts { color: #e5527a; }
+  .p2 .pts { color: #e0a400; }
+  .score.active { transform: scale(1.05); box-shadow: 0 6px 0 #b7d8ef; }
+
+  .card {
+    background: #fff; border-radius: 22px; padding: 18px 16px 20px;
+    box-shadow: 0 8px 0 #cfe7f6; margin-bottom: 14px;
+  }
+  .qnum { text-align: center; color: #7aa0bd; font-weight: bold; font-size: 14px; margin-bottom: 6px; }
+  .question { text-align: center; font-size: 21px; font-weight: bold; line-height: 1.3; min-height: 62px;
+    display: flex; align-items: center; justify-content: center; }
+
+  .buzzers { display: flex; gap: 12px; margin-bottom: 8px; }
+  .buzzer {
+    flex: 1; border: none; border-radius: 20px; color: #fff; font-weight: bold;
+    font-size: 19px; padding: 26px 8px; cursor: pointer; min-height: 90px;
+    box-shadow: 0 7px 0 rgba(0,0,0,.18); line-height: 1.25;
+  }
+  .buzzer:active { transform: translateY(3px); box-shadow: 0 4px 0 rgba(0,0,0,.18); }
+  .buzzer.b1 { background: linear-gradient(180deg,#ff8fab,#f2557e); }
+  .buzzer.b2 { background: linear-gradient(180deg,#ffd469,#efb32e); }
+  .buzzer:disabled { opacity: .45; filter: grayscale(.3); }
+  .buzzer .big { font-size: 30px; display: block; }
+
+  .answers { display: none; flex-direction: column; gap: 10px; }
+  .answers.show { display: flex; }
+  .ans {
+    border: none; border-radius: 16px; background: #eef6fc; color: #23405e;
+    font-size: 18px; font-weight: bold; padding: 16px 14px; cursor: pointer;
+    min-height: 46px; box-shadow: 0 4px 0 #d3e9f7; text-align: center;
+  }
+  .ans:active { transform: translateY(2px); box-shadow: 0 2px 0 #d3e9f7; }
+  .ans.correct { background: #9be6a8; box-shadow: 0 4px 0 #6cc57c; }
+  .ans.wrong { background: #ffb0a8; box-shadow: 0 4px 0 #e07a70; }
+
+  .status { text-align: center; font-size: 17px; font-weight: bold; min-height: 26px; margin: 4px 0 10px; color: #2f628f; }
+  .who { font-size: 20px; }
+
+  .end { text-align: center; }
+  .end .trophy { font-size: 74px; }
+  .end h2 { font-size: 30px; margin: 6px 0; }
+  .end .final { font-size: 19px; margin-bottom: 16px; }
+
+  .btn {
+    border: none; border-radius: 18px; padding: 16px 26px; font-size: 20px; font-weight: bold;
+    color: #fff; background: linear-gradient(180deg,#63b8ff,#2f8fe0); cursor: pointer;
+    box-shadow: 0 6px 0 #1f6fb5; min-height: 46px;
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 3px 0 #1f6fb5; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<div class="wrap">
+  <h1><span class="e">❓</span> Quiz-Buzzer</h1>
+  <p class="sub">Wer zuerst buzzert, darf antworten!</p>
+
+  <div class="scores">
+    <div class="score p1" id="sc1"><div class="name">🌸 Spieler 1</div><div class="pts" id="pt1">0</div></div>
+    <div class="score p2" id="sc2"><div class="name">⭐ Spieler 2</div><div class="pts" id="pt2">0</div></div>
+  </div>
+
+  <!-- GAME -->
+  <div id="game">
+    <div class="card">
+      <div class="qnum" id="qnum">Frage 1 von 10</div>
+      <div class="question" id="question">…</div>
+    </div>
+
+    <div class="status" id="status">Bereit? Drückt euren Buzzer!</div>
+
+    <div class="buzzers" id="buzzers">
+      <button class="buzzer b1" id="buz1"><span class="big">🔴</span>🌸 Spieler 1</button>
+      <button class="buzzer b2" id="buz2"><span class="big">🔴</span>⭐ Spieler 2</button>
+    </div>
+
+    <div class="answers" id="answers"></div>
+  </div>
+
+  <!-- END -->
+  <div id="end" class="card end hidden">
+    <div class="trophy" id="trophy">🏆</div>
+    <h2 id="endTitle">…</h2>
+    <div class="final" id="endFinal">…</div>
+    <button class="btn" onclick="restart()">🔁 Nochmal</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var QUESTIONS = [
+    { q: "Welche Farbe hat der Himmel bei schönem Wetter?", a: ["Blau","Grün","Lila"], c: 0 },
+    { q: "Wie viele Beine hat eine Spinne?", a: ["6","8","10"], c: 1 },
+    { q: "Welches Tier sagt „Muh“?", a: ["Kuh","Schaf","Hund"], c: 0 },
+    { q: "Was ist 5 + 3?", a: ["7","8","9"], c: 1 },
+    { q: "Welche Frucht ist gelb und krumm?", a: ["Apfel","Banane","Kirsche"], c: 1 },
+    { q: "Wie viele Tage hat eine Woche?", a: ["5","7","10"], c: 1 },
+    { q: "Wo wohnt ein Fisch?", a: ["Im Wasser","Im Baum","In der Höhle"], c: 0 },
+    { q: "Welche Farbe entsteht aus Blau und Gelb?", a: ["Grün","Rot","Braun"], c: 0 },
+    { q: "Welcher Planet ist unsere Heimat?", a: ["Mars","Erde","Mond"], c: 1 },
+    { q: "Wie viele Finger hat eine Hand?", a: ["4","5","6"], c: 1 }
+  ];
+
+  var qi = 0, p1 = 0, p2 = 0, buzzed = 0, locked = false;
+
+  var el = function(id){ return document.getElementById(id); };
+  var questionEl = el("question"), qnumEl = el("qnum"), statusEl = el("status");
+  var answersEl = el("answers"), buzzersEl = el("buzzers");
+  var buz1 = el("buz1"), buz2 = el("buz2");
+  var sc1 = el("sc1"), sc2 = el("sc2");
+
+  function render(){
+    var item = QUESTIONS[qi];
+    qnumEl.textContent = "Frage " + (qi+1) + " von " + QUESTIONS.length;
+    questionEl.textContent = item.q;
+    el("pt1").textContent = p1;
+    el("pt2").textContent = p2;
+    buzzed = 0; locked = false;
+    statusEl.textContent = "Bereit? Drückt euren Buzzer!";
+    statusEl.className = "status";
+    buz1.disabled = false; buz2.disabled = false;
+    buzzersEl.classList.remove("hidden");
+    answersEl.className = "answers";
+    answersEl.innerHTML = "";
+    sc1.classList.remove("active"); sc2.classList.remove("active");
+  }
+
+  function buzz(player){
+    if (locked || buzzed) return;
+    buzzed = player; locked = true;
+    buz1.disabled = true; buz2.disabled = true;
+    if (player === 1) sc1.classList.add("active"); else sc2.classList.add("active");
+    var name = player === 1 ? "🌸 Spieler 1" : "⭐ Spieler 2";
+    statusEl.innerHTML = '<span class="who">' + name + " ist dran — antworte!</span>";
+    statusEl.className = "status";
+    showAnswers();
+  }
+
+  function showAnswers(){
+    var item = QUESTIONS[qi];
+    answersEl.innerHTML = "";
+    item.a.forEach(function(text, idx){
+      var b = document.createElement("button");
+      b.className = "ans";
+      b.textContent = text;
+      b.addEventListener("click", function(){ pick(idx, b); });
+      answersEl.appendChild(b);
+    });
+    answersEl.className = "answers show";
+  }
+
+  function pick(idx, btn){
+    if (!buzzed) return;
+    // prevent double answering
+    var all = answersEl.querySelectorAll(".ans");
+    all.forEach(function(a){ a.disabled = true; });
+    var item = QUESTIONS[qi];
+    var correct = idx === item.c;
+    if (correct){
+      btn.classList.add("correct");
+      if (buzzed === 1) p1++; else p2++;
+      statusEl.textContent = "✅ Richtig! +1 Punkt";
+    } else {
+      btn.classList.add("wrong");
+      all[item.c].classList.add("correct");
+      statusEl.textContent = "❌ Leider falsch! Richtig wäre: " + item.a[item.c];
+    }
+    el("pt1").textContent = p1;
+    el("pt2").textContent = p2;
+    setTimeout(next, 1700);
+  }
+
+  function next(){
+    qi++;
+    if (qi >= QUESTIONS.length){ finish(); return; }
+    render();
+  }
+
+  function finish(){
+    el("game").classList.add("hidden");
+    el("pt1").textContent = p1;
+    el("pt2").textContent = p2;
+    var end = el("end");
+    end.classList.remove("hidden");
+    var title = el("endTitle"), trophy = el("trophy"), final = el("endFinal");
+    final.textContent = "🌸 Spieler 1: " + p1 + " Punkte   ·   ⭐ Spieler 2: " + p2 + " Punkte";
+    if (p1 > p2){ trophy.textContent = "🏆🌸"; title.textContent = "Spieler 1 gewinnt!"; }
+    else if (p2 > p1){ trophy.textContent = "🏆⭐"; title.textContent = "Spieler 2 gewinnt!"; }
+    else { trophy.textContent = "🤝"; title.textContent = "Unentschieden!"; }
+  }
+
+  window.restart = function(){
+    qi = 0; p1 = 0; p2 = 0;
+    el("end").classList.add("hidden");
+    el("game").classList.remove("hidden");
+    render();
+  };
+
+  function bindBuzzer(btn, player){
+    var handler = function(e){ e.preventDefault(); buzz(player); };
+    btn.addEventListener("touchstart", handler, { passive: false });
+    btn.addEventListener("click", function(e){ e.preventDefault(); buzz(player); });
+  }
+  bindBuzzer(buz1, 1);
+  bindBuzzer(buz2, 2);
+
+  render();
+})();
+</script>
+</body>
+</html>

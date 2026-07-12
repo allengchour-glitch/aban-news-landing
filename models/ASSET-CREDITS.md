@@ -135,3 +135,13 @@ Alle CC0, GLB→Blender (Textur eingebettet, flat-shading). Multi-Agent-Import.
 | an_* | Cube Pets | Kuh, Schwein, Huhn, Hund, Katze, Reh, Hase, Fuchs, Wildschwein, Biber (10) |
 
 Neue Welt-Orte: 🪦 Friedhof, 🏕️ Survival-Camp, 🏴‍☠️ Schatz-Küste. Tiere über die Welt verteilt (Vieh nahe Dörfer, Wild im Wald).
+
+## Kenney — 4 weitere CC0-Kits (50 Modelle) — 2026-07-12
+| Präfix | Kit | Inhalt |
+|---|---|---|
+| wc_ | Pirate Kit (Boote) | Ruderboote, Segelboot, Steg/Pier, Leuchtturm, Wrack, Boje (12) |
+| hd_ | Holiday Kit | Baum, Geschenke, Schneemann, Rentier, Laterne, Kranz, Zuckerstange, Lichter (12) |
+| bk_ | Building Kit | Tür, Fenster, Treppe, Torbogen, Tor, Säule, Mauer, Plattform (12) |
+| fg_ | Nature/Foliage | Gras-Sorten, Büsche, Blumen, Seerosen, Moos, Pilz, kleiner Baum (14) |
+
+Integriert: Foliage in Pflanzen-Scatter · Seerosen+Boote+Steg an Seen · 🏛️ Ruinen-POI (bk_) · 🗼 Leuchtturm · 🎄 festliche Ecke im Anfangsdorf.

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Tipp-Rennen 🏎️</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: "Comic Sans MS", "Segoe UI", "Trebuchet MS", sans-serif;
+    background: linear-gradient(180deg, #bce6ff 0%, #eaf7ff 100%);
+    overflow: hidden; user-select: none;
+    color: #17415f;
+  }
+  #app { display: flex; flex-direction: column; height: 100%; padding: 8px; gap: 8px; }
+  .topbar { display: flex; align-items: center; gap: 8px; }
+  .backbtn {
+    background: #fff; border: 3px solid #7fc9ff; color: #17415f;
+    border-radius: 16px; padding: 10px 16px; font-size: 16px; font-weight: bold;
+    min-height: 46px; cursor: pointer; box-shadow: 0 3px 0 #7fc9ff;
+  }
+  .backbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 #7fc9ff; }
+  .title { font-size: 22px; font-weight: bold; flex: 1; text-align: center; }
+  .title small { display:block; font-size: 12px; font-weight: normal; opacity: .8; }
+  #track { flex: 1; width: 100%; border-radius: 20px; display: block; box-shadow: 0 6px 18px rgba(60,120,180,.25); }
+  .pads { display: flex; gap: 8px; }
+  .pad {
+    flex: 1; border: none; border-radius: 22px; padding: 22px 8px;
+    font-size: 20px; font-weight: bold; color: #fff; cursor: pointer;
+    min-height: 92px; box-shadow: 0 5px 0 rgba(0,0,0,.18); touch-action: manipulation;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  }
+  .pad:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,.18); }
+  .pad .emoji { font-size: 34px; }
+  .pad .score { font-size: 15px; opacity: .95; }
+  #padRed { background: linear-gradient(180deg,#ff8a8a,#ec4d54); }
+  #padBlue { background: linear-gradient(180deg,#7fb8ff,#3f7fe0); }
+  .pad.win { animation: pulse .5s ease-in-out infinite alternate; }
+  @keyframes pulse { to { filter: brightness(1.18); transform: scale(1.02); } }
+  .center-msg {
+    text-align: center; font-size: 15px; font-weight: bold; min-height: 20px; color:#2b6a95;
+  }
+  /* Overlay */
+  #overlay {
+    position: absolute; inset: 0; background: rgba(190,230,255,.94);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 18px; text-align: center; padding: 24px; z-index: 10;
+  }
+  #overlay.hide { display: none; }
+  #overlay h1 { font-size: 30px; margin: 0; }
+  #overlay p { font-size: 17px; margin: 0; max-width: 320px; line-height: 1.4; }
+  .bigbtn {
+    background: #ffd23f; border: none; border-radius: 22px; padding: 16px 34px;
+    font-size: 22px; font-weight: bold; color: #7a4f00; cursor: pointer;
+    box-shadow: 0 5px 0 #e0a800; min-height: 46px;
+  }
+  .bigbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #e0a800; }
+  .trophy { font-size: 64px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <button class="backbtn" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+    <div class="title">🏎️ Tipp-Rennen<small>Erster im Ziel gewinnt!</small></div>
+  </div>
+  <canvas id="track"></canvas>
+  <div class="center-msg" id="msg">Los! Tippt so schnell ihr könnt!</div>
+  <div class="pads">
+    <button class="pad" id="padRed" aria-label="Rotes Auto">
+      <span class="emoji">🏎️</span>
+      <span>Rot</span>
+      <span class="score" id="scoreRed">0%</span>
+    </button>
+    <button class="pad" id="padBlue" aria-label="Blaues Auto">
+      <span class="emoji">🚙</span>
+      <span>Blau</span>
+      <span class="score" id="scoreBlue">0%</span>
+    </button>
+  </div>
+</div>
+
+<div id="overlay">
+  <div class="trophy">🏁</div>
+  <h1 id="ovTitle">Tipp-Rennen</h1>
+  <p id="ovText">Zwei Spieler! Jeder tippt auf seine Taste, um sein Auto vorwärts zu fahren. Wer zuerst die Ziellinie erreicht, gewinnt.</p>
+  <button class="bigbtn" id="startBtn">🚦 Start</button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var canvas = document.getElementById('track');
+  var ctx = canvas.getContext('2d');
+  var msg = document.getElementById('msg');
+  var overlay = document.getElementById('overlay');
+  var ovTitle = document.getElementById('ovTitle');
+  var ovText = document.getElementById('ovText');
+  var startBtn = document.getElementById('startBtn');
+  var padRed = document.getElementById('padRed');
+  var padBlue = document.getElementById('padBlue');
+  var scoreRed = document.getElementById('scoreRed');
+  var scoreBlue = document.getElementById('scoreBlue');
+
+  var W = 0, H = 0, dpr = 1;
+  var TRACK_LEN = 1.0; // progress 0..1
+  var GAIN = 0.018;     // Fortschritt pro Tipp
+  var DECAY = 0.006;    // sanftes Zurückrollen pro Sekunde
+  var running = false;
+  var winner = null;
+  var countdown = 0;     // >0 = countdown läuft
+  var countLabel = "";
+  var lastT = 0;
+  var wobble = 0;
+
+  var cars = {
+    red:  { p: 0, emoji: "🏎️", color: "#ec4d54", y: 0.36, bounce: 0 },
+    blue: { p: 0, emoji: "🚙", color: "#3f7fe0", y: 0.66, bounce: 0 }
+  };
+
+  function resize(){
+    var rect = canvas.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = rect.width; H = rect.height;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  function reset(){
+    cars.red.p = 0; cars.blue.p = 0;
+    cars.red.bounce = 0; cars.blue.bounce = 0;
+    winner = null; running = false;
+    scoreRed.textContent = "0%"; scoreBlue.textContent = "0%";
+    padRed.classList.remove('win'); padBlue.classList.remove('win');
+  }
+
+  function startGame(){
+    reset();
+    overlay.classList.add('hide');
+    countdown = 3;
+    countLabel = "3";
+    running = false;
+    msg.textContent = "Achtung...";
+    var seq = ["3","2","1","LOS!"];
+    var i = 0;
+    countLabel = seq[0];
+    var iv = setInterval(function(){
+      i++;
+      if(i < seq.length){
+        countLabel = seq[i];
+        if(seq[i] === "LOS!"){
+          running = true;
+          msg.textContent = "🏁 Fahrt!";
+        } else {
+          msg.textContent = "Achtung...";
+        }
+      } else {
+        clearInterval(iv);
+        countLabel = "";
+      }
+    }, 700);
+    lastT = performance.now();
+  }
+
+  function tap(which){
+    if(!running || winner) return;
+    var c = cars[which];
+    c.p += GAIN;
+    c.bounce = 1;
+    if(c.p >= TRACK_LEN){
+      c.p = TRACK_LEN;
+      finish(which);
+    }
+    updateScores();
+  }
+
+  function updateScores(){
+    scoreRed.textContent = Math.round(cars.red.p * 100) + "%";
+    scoreBlue.textContent = Math.round(cars.blue.p * 100) + "%";
+  }
+
+  function finish(which){
+    if(winner) return;
+    winner = which;
+    running = false;
+    var name = which === "red" ? "Rot 🏎️" : "Blau 🚙";
+    (which === "red" ? padRed : padBlue).classList.add('win');
+    msg.textContent = name + " gewinnt! 🎉";
+    setTimeout(function(){
+      ovTitle.textContent = name + " gewinnt!";
+      ovText.textContent = "Glückwunsch! Wollt ihr eine Revanche?";
+      document.querySelector('.trophy').textContent = "🏆";
+      startBtn.textContent = "🔁 Nochmal";
+      overlay.classList.remove('hide');
+    }, 900);
+  }
+
+  // Input
+  function bind(el, which){
+    var handler = function(e){ e.preventDefault(); tap(which); };
+    el.addEventListener('touchstart', handler, {passive:false});
+    el.addEventListener('mousedown', handler);
+  }
+  bind(padRed, "red");
+  bind(padBlue, "blue");
+  // Tastatur für Spass am Rechner (A = rot, L = blau)
+  window.addEventListener('keydown', function(e){
+    if(e.repeat) return;
+    var k = e.key.toLowerCase();
+    if(k === 'a') tap('red');
+    else if(k === 'l') tap('blue');
+  });
+
+  startBtn.addEventListener('click', startGame);
+
+  // Drawing
+  function roundRect(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+
+  function draw(){
+    if(!W || !H) return;
+    ctx.clearRect(0,0,W,H);
+
+    // Rasen-Hintergrund
+    var g = ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,"#8fd98a");
+    g.addColorStop(1,"#6cc97e");
+    ctx.fillStyle = g;
+    roundRect(0,0,W,H,20); ctx.fill();
+
+    var pad = 14;
+    var startX = pad + 30;
+    var finishX = W - pad - 26;
+    var laneTop = H*0.18, laneBot = H*0.9;
+
+    // Asphaltbahn
+    ctx.fillStyle = "#4a4f57";
+    roundRect(pad, laneTop, W-2*pad, laneBot-laneTop, 16); ctx.fill();
+
+    // Mittelstreifen (Trennung der beiden Bahnen)
+    ctx.strokeStyle = "rgba(255,255,255,.55)";
+    ctx.lineWidth = 3;
+    ctx.setLineDash([16,14]);
+    ctx.beginPath();
+    ctx.moveTo(pad+6, H*0.5); ctx.lineTo(W-pad-6, H*0.5);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Startlinie
+    ctx.fillStyle = "rgba(255,255,255,.85)";
+    ctx.fillRect(startX-3, laneTop+8, 4, (laneBot-laneTop)-16);
+
+    // Ziel-Schachbrett
+    var chkX = finishX, chkTop = laneTop+6, chkH = (laneBot-laneTop)-12;
+    var cell = 9, cols = 2, rows = Math.floor(chkH/cell);
+    for(var r=0;r<rows;r++){
+      for(var c=0;c<cols;c++){
+        ctx.fillStyle = ((r+c)%2===0) ? "#ffffff" : "#2b2f36";
+        ctx.fillRect(chkX + c*cell, chkTop + r*cell, cell, cell);
+      }
+    }
+
+    // Autos
+    var span = finishX - startX - 8;
+    drawCar(cars.red, startX, cars.red.y*H - 0, span, laneTop, laneBot);
+    drawCar(cars.blue, startX, cars.blue.y*H, span, laneTop, laneBot);
+
+    // Countdown-Overlay
+    if(countLabel){
+      ctx.fillStyle = "rgba(23,65,95,.15)";
+      roundRect(0,0,W,H,20); ctx.fill();
+      ctx.fillStyle = "#fff";
+      ctx.strokeStyle = "#17415f";
+      ctx.lineWidth = 4;
+      ctx.font = "bold " + Math.round(H*0.32) + "px 'Comic Sans MS', sans-serif";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.strokeText(countLabel, W/2, H/2);
+      ctx.fillText(countLabel, W/2, H/2);
+    }
+  }
+
+  function drawCar(car, startX, yFrac, span, laneTop, laneBot){
+    var x = startX + car.p * span;
+    var y = yFrac;
+    var b = car.bounce;
+    var size = Math.min(46, H*0.16);
+    ctx.save();
+    ctx.translate(x, y - b*4);
+    ctx.font = size + "px serif";
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    // kleiner Schatten
+    ctx.fillStyle = "rgba(0,0,0,.18)";
+    ctx.beginPath();
+    ctx.ellipse(0, size*0.42, size*0.42, size*0.14, 0, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillText(car.emoji, 0, 0);
+    ctx.restore();
+  }
+
+  function loop(t){
+    var dt = Math.min(0.05, (t - lastT)/1000 || 0);
+    lastT = t;
+    // sanfter Bounce-Decay
+    cars.red.bounce = Math.max(0, cars.red.bounce - dt*6);
+    cars.blue.bounce = Math.max(0, cars.blue.bounce - dt*6);
+    // leichtes Zurückrollen wenn nicht getippt (macht es spannender)
+    if(running && !winner){
+      cars.red.p = Math.max(0, cars.red.p - DECAY*dt);
+      cars.blue.p = Math.max(0, cars.blue.p - DECAY*dt);
+      updateScores();
+    }
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', resize);
+  // initial
+  setTimeout(resize, 30);
+  resize();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

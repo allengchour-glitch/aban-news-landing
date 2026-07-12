@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Elfmeterschiessen ⚽</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    font-family: 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #1c3d5a;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  .back {
+    position: fixed; top: 10px; left: 10px; z-index: 20;
+    background: #fff; border: none; border-radius: 16px;
+    padding: 10px 16px; font-size: 16px; font-weight: bold; color: #1c3d5a;
+    box-shadow: 0 3px 0 #a9cfe6; cursor: pointer;
+  }
+  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #a9cfe6; }
+  .wrap { width: 100%; max-width: 460px; padding: 58px 12px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  h1 { margin: 0; font-size: 26px; text-align: center; letter-spacing: .5px; }
+  h1 small { display:block; font-size: 14px; font-weight: normal; opacity:.75; margin-top:2px;}
+
+  .scoreboard {
+    display: flex; gap: 10px; width: 100%; justify-content: center;
+  }
+  .pcard {
+    flex: 1; background: #fff; border-radius: 18px; padding: 10px 8px; text-align: center;
+    box-shadow: 0 4px 0 #cbe6f5; border: 3px solid transparent; transition: border-color .2s, transform .2s;
+  }
+  .pcard.p1 { color: #e0453a; }
+  .pcard.p2 { color: #2e73d8; }
+  .pcard.active { border-color: currentColor; transform: translateY(-3px); }
+  .pcard .name { font-size: 15px; font-weight: bold; }
+  .pcard .score { font-size: 30px; font-weight: 900; line-height: 1.1; }
+  .pcard .shots { font-size: 16px; letter-spacing: 2px; min-height: 20px; }
+
+  .turnbar {
+    background: #fff; border-radius: 16px; padding: 10px 14px; text-align: center;
+    font-size: 17px; font-weight: bold; box-shadow: 0 4px 0 #cbe6f5; width: 100%;
+  }
+  .turnbar b.r1 { color:#e0453a } .turnbar b.r2 { color:#2e73d8 }
+
+  canvas {
+    width: 100%; max-width: 436px; height: auto; border-radius: 18px;
+    background: linear-gradient(#8fd0ff 0%, #bff0d0 45%, #7ec86b 100%);
+    box-shadow: 0 6px 0 #7fb8d6; display: block;
+  }
+
+  .controls { display: flex; gap: 10px; width: 100%; }
+  .zbtn {
+    flex: 1; border: none; border-radius: 16px; padding: 16px 4px; font-size: 22px;
+    font-weight: bold; background: #fff; color: #1c3d5a; box-shadow: 0 4px 0 #cbe6f5;
+    cursor: pointer; min-height: 56px;
+  }
+  .zbtn .lbl { display:block; font-size:12px; margin-top:2px; opacity:.7 }
+  .zbtn:active { transform: translateY(3px); box-shadow: 0 1px 0 #cbe6f5; }
+  .zbtn.chosen { background: #ffe08a; box-shadow: 0 4px 0 #e0b84a; }
+  .zbtn:disabled { opacity: .5; }
+
+  .hint { font-size: 14px; text-align:center; opacity:.8; min-height: 20px; }
+
+  .overlay {
+    position: fixed; inset: 0; background: rgba(20,50,80,.78); z-index: 30;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .overlay.show { display: flex; }
+  .endcard {
+    background: #fff; border-radius: 24px; padding: 28px 24px; text-align: center;
+    max-width: 360px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  }
+  .endcard .trophy { font-size: 64px; }
+  .endcard h2 { margin: 8px 0 4px; font-size: 26px; }
+  .endcard .fin { font-size: 20px; font-weight: bold; margin: 8px 0 16px; }
+  .again {
+    border: none; border-radius: 18px; padding: 16px 22px; font-size: 20px; font-weight: bold;
+    background: #34c26b; color: #fff; box-shadow: 0 5px 0 #229a51; cursor: pointer; min-height: 56px; width:100%;
+  }
+  .again:active { transform: translateY(3px); box-shadow: 0 2px 0 #229a51; }
+</style>
+</head>
+<body>
+<button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<div class="wrap">
+  <h1>⚽ Elfmeterschiessen<small>Je 5 Schüsse · mehr Tore gewinnt</small></h1>
+
+  <div class="scoreboard">
+    <div class="pcard p1" id="card1">
+      <div class="name">🔴 Spieler 1</div>
+      <div class="score" id="score1">0</div>
+      <div class="shots" id="shots1"></div>
+    </div>
+    <div class="pcard p2" id="card2">
+      <div class="name">🔵 Spieler 2</div>
+      <div class="score" id="score2">0</div>
+      <div class="shots" id="shots2"></div>
+    </div>
+  </div>
+
+  <div class="turnbar" id="turnbar">Runde 1 · <b class="r1">Spieler 1</b> schiesst</div>
+
+  <canvas id="cv" width="436" height="300"></canvas>
+
+  <div class="hint" id="hint">Wähle deine Ecke: links, Mitte oder rechts.</div>
+
+  <div class="controls">
+    <button class="zbtn" data-z="0" id="z0">⬅️<span class="lbl">Links</span></button>
+    <button class="zbtn" data-z="1" id="z1">⬆️<span class="lbl">Mitte</span></button>
+    <button class="zbtn" data-z="2" id="z2">➡️<span class="lbl">Rechts</span></button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="endcard">
+    <div class="trophy" id="trophy">🏆</div>
+    <h2 id="endtitle">Ergebnis</h2>
+    <div class="fin" id="endscore"></div>
+    <button class="again" onclick="restart()">🔁 Nochmal</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const cv = document.getElementById('cv');
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+
+  // Zonen-Positionen im Tor (Ballziel-X, Keeper-X)
+  const ZONES = [
+    { x: W*0.30 }, // links
+    { x: W*0.50 }, // mitte
+    { x: W*0.70 }  // rechts
+  ];
+  const GOAL_Y = 92; // Höhe der Ballruhelage im Tor
+
+  // Spielzustand
+  let scores, shotLog, round, shooter, phase, chosenZone, keeperZone, anim, message;
+  // phase: 'aim' (Schütze wählt), 'keeper' (Torwart wählt), 'shot' (Animation), 'over'
+  const TOTAL = 5;
+
+  function reset(){
+    scores = [0,0];
+    shotLog = [[],[]]; // Arrays aus '⚽'(Tor) oder '🧤'(gehalten)
+    round = 1;
+    shooter = 0;
+    phase = 'aim';
+    chosenZone = -1;
+    keeperZone = -1;
+    message = '';
+    stopAnim();
+    updateUI();
+    render();
+  }
+
+  function stopAnim(){ if(anim){ cancelAnimationFrame(anim); anim=null; } }
+
+  function updateUI(){
+    document.getElementById('score1').textContent = scores[0];
+    document.getElementById('score2').textContent = scores[1];
+    document.getElementById('shots1').textContent = renderShots(0);
+    document.getElementById('shots2').textContent = renderShots(1);
+    document.getElementById('card1').classList.toggle('active', shooter===0 && phase!=='over');
+    document.getElementById('card2').classList.toggle('active', shooter===1 && phase!=='over');
+
+    const tb = document.getElementById('turnbar');
+    const hint = document.getElementById('hint');
+    const keeper = 1 - shooter;
+    const sName = shooter===0 ? '<b class="r1">🔴 Spieler 1</b>' : '<b class="r2">🔵 Spieler 2</b>';
+    const kName = keeper===0 ? '<b class="r1">🔴 Spieler 1</b>' : '<b class="r2">🔵 Spieler 2</b>';
+
+    if(phase==='aim'){
+      tb.innerHTML = 'Runde '+round+' · '+sName+' schiesst';
+      hint.textContent = 'Schütze: Wähle deine Ecke! (Torwart nicht spicken 🙈)';
+    } else if(phase==='keeper'){
+      tb.innerHTML = 'Runde '+round+' · '+kName+' hält';
+      hint.textContent = 'Torwart: In welche Ecke springst du?';
+    } else if(phase==='shot'){
+      tb.innerHTML = message || 'Schuss!';
+      hint.textContent = '';
+    } else if(phase==='over'){
+      tb.innerHTML = 'Spiel beendet';
+      hint.textContent = '';
+    }
+    // Buttons
+    const active = (phase==='aim' || phase==='keeper');
+    for(let i=0;i<3;i++){
+      const b = document.getElementById('z'+i);
+      b.disabled = !active;
+      b.classList.toggle('chosen', phase==='keeper' && chosenZone>=0 && false);
+    }
+  }
+
+  function renderShots(p){
+    let out = '';
+    for(let i=0;i<TOTAL;i++){
+      if(i < shotLog[p].length) out += shotLog[p][i];
+      else out += '◦';
+    }
+    return out;
+  }
+
+  // ---- Zeichnen ----
+  let ball = { x: W*0.5, y: H-40, r: 13 };
+  let keeper = { x: W*0.5, y: GOAL_Y+34 };
+
+  function render(){
+    ctx.clearRect(0,0,W,H);
+    drawField();
+    drawGoal();
+    drawKeeper(keeper.x, keeper.y);
+    drawBall(ball.x, ball.y, ball.r);
+  }
+
+  function drawField(){
+    // Rasenlinien
+    ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+    ctx.lineWidth = 3;
+    // Strafraum
+    ctx.strokeRect(W*0.12, GOAL_Y+52, W*0.76, H-GOAL_Y-90);
+    // Elfmeterpunkt
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(W*0.5, H-46, 3, 0, 7); ctx.fill();
+  }
+
+  function drawGoal(){
+    const gx = W*0.16, gw = W*0.68, gy = 30, gh = 70;
+    // Netz
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.fillRect(gx, gy, gw, gh);
+    ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+    ctx.lineWidth = 1;
+    for(let x=gx; x<=gx+gw+1; x+=14){ ctx.beginPath(); ctx.moveTo(x,gy); ctx.lineTo(x,gy+gh); ctx.stroke(); }
+    for(let y=gy; y<=gy+gh+1; y+=14){ ctx.beginPath(); ctx.moveTo(gx,y); ctx.lineTo(gx+gw,y); ctx.stroke(); }
+    // Pfosten
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 7; ctx.lineJoin='round';
+    ctx.beginPath();
+    ctx.moveTo(gx, gy+gh); ctx.lineTo(gx, gy); ctx.lineTo(gx+gw, gy); ctx.lineTo(gx+gw, gy+gh);
+    ctx.stroke();
+  }
+
+  function drawKeeper(x,y){
+    ctx.font = '38px serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('🧤', x, y);
+  }
+
+  function drawBall(x,y,r){
+    ctx.font = (r*2)+'px serif';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('⚽', x, y);
+  }
+
+  // ---- Ablauf ----
+  function onZone(z){
+    if(phase==='aim'){
+      chosenZone = z;
+      phase = 'keeper';
+      updateUI();
+    } else if(phase==='keeper'){
+      keeperZone = z;
+      phase = 'shot';
+      updateUI();
+      shoot();
+    }
+  }
+
+  function shoot(){
+    const targetX = ZONES[chosenZone].x;
+    const keeperTargetX = ZONES[keeperZone].x;
+    const saved = (chosenZone === keeperZone);
+
+    // Startwerte
+    ball.x = W*0.5; ball.y = H-40; ball.r = 13;
+    keeper.x = W*0.5; keeper.y = GOAL_Y+34;
+
+    const startBallX = ball.x, startBallY = ball.y;
+    const endBallY = GOAL_Y + 6;
+    // Wenn gehalten, prallt Ball leicht ab (Endpunkt beim Keeper)
+    const endBallX = targetX;
+
+    let t = 0;
+    const dur = 46; // frames
+
+    function step(){
+      t++;
+      const p = Math.min(t/dur, 1);
+      const ease = p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;
+
+      // Keeper springt (leicht früher & schneller)
+      const kp = Math.min(t/ (dur*0.72), 1);
+      const ke = 1-Math.pow(1-kp,3);
+      keeper.x = W*0.5 + (keeperTargetX - W*0.5)*ke;
+
+      // Ball fliegt
+      ball.x = startBallX + (endBallX - startBallX)*ease;
+      ball.y = startBallY + (endBallY - startBallY)*ease;
+      ball.r = 13 - 5*ease; // wird kleiner (weiter weg)
+
+      render();
+      // kleiner Bogen-Schatten könnte hier, reicht so
+
+      if(p < 1){
+        anim = requestAnimationFrame(step);
+      } else {
+        anim = null;
+        finishShot(saved);
+      }
+    }
+    stopAnim();
+    anim = requestAnimationFrame(step);
+  }
+
+  function finishShot(saved){
+    // Ergebnis buchen
+    if(saved){
+      shotLog[shooter].push('🧤');
+      message = '🧤 Gehalten! Kein Tor.';
+    } else {
+      scores[shooter]++;
+      shotLog[shooter].push('⚽');
+      message = '⚽ TOOOR!';
+    }
+    phase = 'shot';
+    updateUI();
+    document.getElementById('turnbar').innerHTML = message + (saved?'':' 🎉');
+
+    // kurze Pause, dann nächster
+    setTimeout(nextTurn, 1100);
+  }
+
+  function nextTurn(){
+    chosenZone = -1; keeperZone = -1;
+    // Ball & Keeper zurück
+    ball.x = W*0.5; ball.y = H-40; ball.r = 13;
+    keeper.x = W*0.5; keeper.y = GOAL_Y+34;
+    render();
+
+    // Reihenfolge: S1 R1, S2 R1, S1 R2, ...
+    if(shooter===0){
+      shooter = 1;
+    } else {
+      shooter = 0;
+      round++;
+    }
+
+    // Ende prüfen (beide haben ihre TOTAL Schüsse)
+    if(shotLog[0].length >= TOTAL && shotLog[1].length >= TOTAL){
+      endGame();
+      return;
+    }
+    // Early-Ende (uneinholbar) — optional fair: erst nach abgeschlossenen Runden
+    const remaining0 = TOTAL - shotLog[0].length;
+    const remaining1 = TOTAL - shotLog[1].length;
+    if(scores[0] > scores[1] + remaining1){ endGame(); return; }
+    if(scores[1] > scores[0] + remaining0){ endGame(); return; }
+
+    phase = 'aim';
+    updateUI();
+  }
+
+  function endGame(){
+    phase = 'over';
+    stopAnim();
+    updateUI();
+    const ov = document.getElementById('overlay');
+    const trophy = document.getElementById('trophy');
+    const title = document.getElementById('endtitle');
+    const es = document.getElementById('endscore');
+    es.textContent = '🔴 '+scores[0]+' : '+scores[1]+' 🔵';
+    if(scores[0] > scores[1]){
+      trophy.textContent = '🏆'; title.innerHTML = '🔴 Spieler 1 gewinnt!';
+    } else if(scores[1] > scores[0]){
+      trophy.textContent = '🏆'; title.innerHTML = '🔵 Spieler 2 gewinnt!';
+    } else {
+      trophy.textContent = '🤝'; title.textContent = 'Unentschieden!';
+      es.textContent = 'Gleichstand ' + scores[0]+' : '+scores[1];
+    }
+    ov.classList.add('show');
+  }
+
+  window.restart = function(){
+    document.getElementById('overlay').classList.remove('show');
+    reset();
+  };
+
+  // Events (Touch + Klick)
+  for(let i=0;i<3;i++){
+    const b = document.getElementById('z'+i);
+    const handler = function(e){ e.preventDefault(); if(!b.disabled) onZone(i); };
+    b.addEventListener('click', handler);
+    b.addEventListener('touchstart', handler, {passive:false});
+  }
+
+  reset();
+})();
+</script>
+</body>
+</html>

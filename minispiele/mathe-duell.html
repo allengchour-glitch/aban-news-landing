@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Mathe-Duell</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+  html,body{height:100%;overflow:hidden}
+  body{
+    font-family:'Trebuchet MS','Segoe UI',Verdana,sans-serif;
+    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+    color:#0d3b66;user-select:none;
+  }
+  #app{display:flex;flex-direction:column;height:100%;width:100%;}
+  .back{
+    position:fixed;top:10px;left:10px;z-index:30;
+    background:#fff;border:none;border-radius:14px;
+    padding:10px 16px;font-size:16px;font-weight:bold;color:#0d3b66;
+    box-shadow:0 3px 8px rgba(13,59,102,.2);cursor:pointer;min-height:46px;
+  }
+  .back:active{transform:scale(.95)}
+
+  /* Ein Spieler-Halbfeld */
+  .half{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    position:relative;padding:8px;overflow:hidden;
+  }
+  .top{transform:rotate(180deg);background:rgba(255,214,102,.35);}
+  .bottom{background:rgba(120,220,180,.25);}
+  .divider{
+    height:6px;background:linear-gradient(90deg,#ff9a76,#ffd166,#7ad9b0);
+    flex:0 0 auto;box-shadow:0 0 10px rgba(0,0,0,.15);
+  }
+
+  .label{font-size:15px;font-weight:bold;opacity:.85;margin-bottom:2px}
+  .score{font-size:22px;font-weight:bold;margin-bottom:6px}
+  .pips{font-size:16px;letter-spacing:2px;margin-bottom:8px;min-height:20px}
+  .question{
+    font-size:min(11vw,46px);font-weight:bold;margin-bottom:12px;
+    background:#fff;border-radius:16px;padding:8px 20px;
+    box-shadow:0 3px 10px rgba(13,59,102,.15);
+  }
+  .answers{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:340px;
+  }
+  .ans{
+    border:none;border-radius:16px;padding:16px 6px;min-height:56px;
+    font-size:min(7vw,26px);font-weight:bold;color:#fff;cursor:pointer;
+    box-shadow:0 4px 0 rgba(0,0,0,.15);transition:transform .06s;
+  }
+  .ans:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.15)}
+  .a0{background:#ff6b6b}.a1{background:#4d96ff}.a2{background:#ffb84d}.a3{background:#38b000}
+  .ans.wrong{background:#9aa5b1 !important;animation:shake .3s}
+  .ans.right{background:#2d9b47 !important;outline:4px solid #fff}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+  .msg{font-size:20px;font-weight:bold;min-height:26px;margin-top:6px;color:#0d3b66}
+
+  /* Countdown Overlay */
+  #count{
+    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:26vw;font-weight:bold;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3);
+    background:rgba(13,59,102,.25);z-index:20;
+  }
+  #count.hidden{display:none}
+
+  /* Endbildschirm */
+  #end{
+    position:fixed;inset:0;z-index:40;display:none;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:24px;
+    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+  }
+  #end.show{display:flex}
+  #end .emoji{font-size:80px;margin-bottom:10px}
+  #end h1{font-size:34px;margin-bottom:8px}
+  #end p{font-size:20px;margin-bottom:22px;color:#0d3b66}
+  #end button, #startBtn{
+    border:none;border-radius:18px;padding:16px 30px;font-size:22px;font-weight:bold;
+    color:#fff;background:#38b000;box-shadow:0 5px 0 #2a8600;cursor:pointer;min-height:56px;
+  }
+  #end button:active,#startBtn:active{transform:translateY(3px);box-shadow:0 2px 0 #2a8600}
+
+  /* Start */
+  #start{
+    position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:24px;
+    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+  }
+  #start.hidden{display:none}
+  #start .emoji{font-size:76px;margin-bottom:6px}
+  #start h1{font-size:36px;margin-bottom:10px}
+  #start p{font-size:17px;max-width:320px;margin-bottom:22px;line-height:1.4}
+</style>
+</head>
+<body>
+<button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<div id="app">
+  <div class="half top" id="halfTop">
+    <div class="label">🔵 Spieler 2</div>
+    <div class="score" id="score2">0</div>
+    <div class="pips" id="pips2"></div>
+    <div class="question" id="q2">?</div>
+    <div class="answers" id="ans2"></div>
+    <div class="msg" id="msg2"></div>
+  </div>
+  <div class="divider"></div>
+  <div class="half bottom" id="halfBot">
+    <div class="label">🔴 Spieler 1</div>
+    <div class="score" id="score1">0</div>
+    <div class="pips" id="pips1"></div>
+    <div class="question" id="q1">?</div>
+    <div class="answers" id="ans1"></div>
+    <div class="msg" id="msg1"></div>
+  </div>
+</div>
+
+<div id="count" class="hidden"></div>
+
+<div id="start">
+  <div class="emoji">➗</div>
+  <h1>Mathe-Duell</h1>
+  <p>Beide sehen die gleiche Aufgabe. Wer zuerst die richtige Antwort tippt, gewinnt den Punkt!<br><br>
+  Best of 7 – wer zuerst 4 Punkte hat, gewinnt. 🏆<br>Haltet das Handy zwischen euch.</p>
+  <button id="startBtn">Los geht's!</button>
+</div>
+
+<div id="end">
+  <div class="emoji" id="endEmoji">🏆</div>
+  <h1 id="endTitle">Gewonnen!</h1>
+  <p id="endText"></p>
+  <button id="againBtn">🔁 Nochmal</button>
+</div>
+
+<script>
+(function(){
+  var WIN=4; // best of 7
+  var scores={1:0,2:0};
+  var current=null; // {answer, options}
+  var roundActive=false;
+  var locked={1:false,2:false}; // wrong-answer lock this round
+  var countTimer=null, raf=null;
+
+  var el={
+    q1:document.getElementById('q1'),q2:document.getElementById('q2'),
+    ans1:document.getElementById('ans1'),ans2:document.getElementById('ans2'),
+    s1:document.getElementById('score1'),s2:document.getElementById('score2'),
+    p1:document.getElementById('pips1'),p2:document.getElementById('pips2'),
+    m1:document.getElementById('msg1'),m2:document.getElementById('msg2'),
+    count:document.getElementById('count'),
+    start:document.getElementById('start'),startBtn:document.getElementById('startBtn'),
+    end:document.getElementById('end'),endEmoji:document.getElementById('endEmoji'),
+    endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),
+    again:document.getElementById('againBtn')
+  };
+
+  function rnd(n){return Math.floor(Math.random()*n);}
+
+  function makeQuestion(){
+    var ops=['+','−','×'];
+    var op=ops[rnd(ops.length)];
+    var a,b,ans,text;
+    if(op==='+'){a=2+rnd(30);b=2+rnd(30);ans=a+b;}
+    else if(op==='−'){a=5+rnd(35);b=1+rnd(a-1);ans=a-b;}
+    else{a=2+rnd(9);b=2+rnd(9);ans=a*b;}
+    text=a+' '+op+' '+b;
+    // vier eindeutige Optionen
+    var set={};set[ans]=true;var opts=[ans];
+    var guard=0;
+    while(opts.length<4 && guard<200){
+      guard++;
+      var delta=1+rnd(6);var sign=Math.random()<.5?-1:1;
+      var cand=ans+sign*delta;
+      if(cand<0)cand=ans+delta;
+      if(!set[cand]){set[cand]=true;opts.push(cand);}
+    }
+    // shuffle
+    for(var i=opts.length-1;i>0;i--){var j=rnd(i+1);var t=opts[i];opts[i]=opts[j];opts[j]=t;}
+    return {text:text,answer:ans,options:opts};
+  }
+
+  function pips(n){var s='';for(var i=0;i<WIN;i++)s+= i<n?'●':'○';return s;}
+  function refreshScore(){
+    el.s1.textContent=scores[1];el.s2.textContent=scores[2];
+    el.p1.textContent=pips(scores[1]);el.p2.textContent=pips(scores[2]);
+  }
+
+  function buildAnswers(container,opts,player){
+    container.innerHTML='';
+    opts.forEach(function(val,idx){
+      var b=document.createElement('button');
+      b.className='ans a'+idx;
+      b.textContent=val;
+      b.dataset.val=val;
+      var handler=function(ev){ev.preventDefault();onAnswer(player,b,val);};
+      b.addEventListener('touchstart',handler,{passive:false});
+      b.addEventListener('click',handler);
+      container.appendChild(b);
+    });
+  }
+
+  function newRound(){
+    current=makeQuestion();
+    locked[1]=false;locked[2]=false;
+    el.m1.textContent='';el.m2.textContent='';
+    el.q1.textContent=current.text+' = ?';
+    el.q2.textContent=current.text+' = ?';
+    buildAnswers(el.ans1,current.options,1);
+    buildAnswers(el.ans2,current.options,2);
+    startCountdown();
+  }
+
+  function setEnabled(on){
+    var btns=document.querySelectorAll('.ans');
+    for(var i=0;i<btns.length;i++)btns[i].style.pointerEvents=on?'auto':'none';
+  }
+
+  function startCountdown(){
+    roundActive=false;setEnabled(false);
+    var n=3;
+    el.count.classList.remove('hidden');
+    el.count.textContent=n;
+    if(countTimer)clearInterval(countTimer);
+    countTimer=setInterval(function(){
+      n--;
+      if(n>0){el.count.textContent=n;}
+      else if(n===0){el.count.textContent='GO!';}
+      else{
+        clearInterval(countTimer);countTimer=null;
+        el.count.classList.add('hidden');
+        roundActive=true;setEnabled(true);
+      }
+    },700);
+  }
+
+  function onAnswer(player,btn,val){
+    if(!roundActive)return;
+    if(locked[player])return;
+    if(parseInt(val,10)===current.answer){
+      // Punkt!
+      roundActive=false;setEnabled(false);
+      btn.classList.add('right');
+      scores[player]++;refreshScore();
+      var otherMsg=player===1?el.m2:el.m1;
+      var myMsg=player===1?el.m1:el.m2;
+      myMsg.textContent='✅ Punkt!';
+      otherMsg.textContent='Zu langsam!';
+      if(scores[player]>=WIN){
+        setTimeout(function(){finish(player);},900);
+      }else{
+        setTimeout(newRound,1000);
+      }
+    }else{
+      // falsch – dieser Spieler ist diese Runde gesperrt
+      locked[player]=true;
+      btn.classList.add('wrong');
+      var m=player===1?el.m1:el.m2;
+      m.textContent='❌ Falsch – warte!';
+      if(locked[1]&&locked[2]){
+        // beide daneben → neue Runde
+        roundActive=false;setEnabled(false);
+        setTimeout(newRound,900);
+      }
+    }
+  }
+
+  function finish(winner){
+    el.endEmoji.textContent=winner===1?'🔴':'🔵';
+    el.endTitle.textContent='Spieler '+winner+' gewinnt!';
+    el.endText.textContent='Endstand  🔴 '+scores[1]+' : '+scores[2]+' 🔵';
+    el.end.classList.add('show');
+  }
+
+  function resetGame(){
+    scores={1:0,2:0};refreshScore();
+    el.end.classList.remove('show');
+    newRound();
+  }
+
+  el.startBtn.addEventListener('click',function(){
+    el.start.classList.add('hidden');
+    resetGame();
+  });
+  el.again.addEventListener('click',resetGame);
+
+  refreshScore();
+})();
+</script>
+</body>
+</html>
