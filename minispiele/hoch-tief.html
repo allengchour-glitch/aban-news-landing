@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Höher oder Tiefer</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #234;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  #back {
+    position: fixed; top: 12px; left: 12px; z-index: 20;
+    background: #fff; color: #2a6ea6; border: none;
+    border-radius: 16px; padding: 10px 16px; font-size: 16px; font-weight: bold;
+    min-height: 46px; box-shadow: 0 3px 0 #a9d4ef; cursor: pointer;
+  }
+  #back:active { transform: translateY(2px); box-shadow: 0 1px 0 #a9d4ef; }
+  .wrap { width: 100%; max-width: 480px; padding: 68px 16px 24px; display: flex; flex-direction: column; align-items: center; }
+  h1 { font-size: 30px; margin: 0 0 4px; color: #1b5e8a; text-shadow: 0 2px 0 #fff; }
+  .sub { font-size: 15px; color: #4a7ba0; margin: 0 0 14px; text-align: center; }
+
+  .scores { display: flex; gap: 12px; width: 100%; margin-bottom: 14px; }
+  .pcard {
+    flex: 1; background: #fff; border-radius: 18px; padding: 10px 8px; text-align: center;
+    box-shadow: 0 4px 0 rgba(120,160,200,.25); border: 3px solid transparent; transition: border-color .2s, transform .2s;
+  }
+  .pcard .name { font-size: 15px; font-weight: bold; }
+  .pcard .pts { font-size: 26px; font-weight: bold; }
+  .p1 .name { color: #e8622c; } .p1 .pts { color: #e8622c; }
+  .p2 .name { color: #7a3fd0; } .p2 .pts { color: #7a3fd0; }
+  .pcard.active { transform: translateY(-3px); }
+  .p1.active { border-color: #f4a06f; }
+  .p2.active { border-color: #b78ff0; }
+
+  .turn { font-size: 19px; font-weight: bold; margin-bottom: 10px; min-height: 26px; text-align:center; }
+  .round { font-size: 14px; color: #5a86a8; margin-bottom: 12px; }
+
+  .cardrow { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
+  .card {
+    width: 118px; height: 168px; border-radius: 16px; background: #fff;
+    box-shadow: 0 6px 0 rgba(120,160,200,.35);
+    display: flex; flex-direction: column; justify-content: space-between; padding: 8px 10px;
+    position: relative;
+  }
+  .card.back {
+    background: repeating-linear-gradient(45deg, #7fb8e6, #7fb8e6 10px, #6aa9db 10px, #6aa9db 20px);
+    color: #fff;
+  }
+  .card .corner { font-size: 20px; font-weight: bold; line-height: 1; }
+  .card .corner.br { align-self: flex-end; transform: rotate(180deg); }
+  .card .mid { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 52px; }
+  .card .qmark { position:absolute; top:50%; left:50%; transform: translate(-50%,-50%); font-size:60px; color:#fff; }
+  .red { color: #d1345b; } .blk { color: #2a3b4c; }
+
+  .arrow { font-size: 30px; color: #4a7ba0; }
+  .anim-up { animation: floatUp .4s ease; }
+  .anim-down { animation: floatDown .4s ease; }
+  @keyframes floatUp { from { transform: translateY(10px); opacity:.3;} to { transform: translateY(0); opacity:1;} }
+  @keyframes floatDown { from { transform: translateY(-10px); opacity:.3;} to { transform: translateY(0); opacity:1;} }
+
+  .buttons { display: flex; gap: 12px; width: 100%; margin-top: 14px; }
+  .btn {
+    flex: 1; border: none; border-radius: 18px; padding: 16px 8px; font-size: 19px; font-weight: bold;
+    color: #fff; min-height: 60px; cursor: pointer; box-shadow: 0 5px 0 rgba(0,0,0,.15);
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,.15); }
+  .btn.higher { background: linear-gradient(#5bc47a, #3faa60); }
+  .btn.lower  { background: linear-gradient(#f28e5b, #e26a35); }
+  .btn:disabled { opacity: .45; }
+
+  .feedback { font-size: 20px; font-weight: bold; min-height: 28px; margin-top: 14px; text-align: center; }
+  .ok { color: #2fa85a; } .bad { color: #d1345b; }
+
+  /* Endscreen */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(30,60,90,.55); z-index: 30;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .overlay.show { display: flex; }
+  .modal {
+    background: #fff; border-radius: 24px; padding: 26px 22px; text-align: center; max-width: 360px; width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  }
+  .modal .big { font-size: 40px; margin-bottom: 6px; }
+  .modal h2 { margin: 6px 0; font-size: 26px; color: #1b5e8a; }
+  .modal .res { font-size: 18px; margin: 8px 0 18px; color: #456; }
+  .btn.again { background: linear-gradient(#5aa9e6, #3b86c9); }
+</style>
+</head>
+<body>
+<button id="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<div class="wrap">
+  <h1>🎴 Höher oder Tiefer</h1>
+  <p class="sub">Wird die nächste Karte höher oder tiefer? Ihr ratet abwechselnd — 10 Runden.</p>
+
+  <div class="scores">
+    <div class="pcard p1" id="pc1">
+      <div class="name">🟠 Spieler 1</div>
+      <div class="pts" id="pts1">0</div>
+    </div>
+    <div class="pcard p2" id="pc2">
+      <div class="name">🟣 Spieler 2</div>
+      <div class="pts" id="pts2">0</div>
+    </div>
+  </div>
+
+  <div class="round" id="round">Runde 1 von 10</div>
+  <div class="turn" id="turn">🟠 Spieler 1 ist dran</div>
+
+  <div class="cardrow">
+    <div class="card" id="curCard">
+      <div class="corner tl" id="tl">?</div>
+      <div class="mid" id="mid">?</div>
+      <div class="corner br" id="br">?</div>
+    </div>
+    <div class="arrow">➡️</div>
+    <div class="card back" id="nextCard">
+      <div class="qmark">?</div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn higher" id="btnHigher">⬆️ Höher</button>
+    <button class="btn lower" id="btnLower">⬇️ Tiefer</button>
+  </div>
+
+  <div class="feedback" id="feedback">&nbsp;</div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="big" id="endEmoji">🏆</div>
+    <h2 id="endTitle">Ergebnis</h2>
+    <div class="res" id="endRes"></div>
+    <button class="btn again" id="btnAgain">🔁 Nochmal</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var SUITS = [
+    {s:"♥", red:true}, {s:"♦", red:true}, {s:"♣", red:false}, {s:"♠", red:false}
+  ];
+  var NAMES = {1:"A",11:"B",12:"D",13:"K"}; // Ass, Bube, Dame, König
+  var TOTAL_ROUNDS = 10;
+
+  var state;
+
+  var el = function(id){ return document.getElementById(id); };
+  var tl=el("tl"), mid=el("mid"), br=el("br"), curCard=el("curCard"), nextCard=el("nextCard");
+  var pts1=el("pts1"), pts2=el("pts2"), pc1=el("pc1"), pc2=el("pc2");
+  var roundEl=el("round"), turnEl=el("turn"), feedback=el("feedback");
+  var btnH=el("btnHigher"), btnL=el("btnLower");
+  var overlay=el("overlay");
+
+  function randCard(){
+    var v = Math.floor(Math.random()*13)+1; // 1..13
+    var su = SUITS[Math.floor(Math.random()*SUITS.length)];
+    return { v:v, s:su.s, red:su.red };
+  }
+  function label(c){ return (NAMES[c.v] || c.v) + c.s; }
+
+  function renderCur(c){
+    var lab = label(c);
+    tl.textContent = lab; br.textContent = lab;
+    mid.textContent = c.s;
+    var cls = c.red ? "red" : "blk";
+    tl.className = "corner tl " + cls;
+    br.className = "corner br " + cls;
+    mid.className = "mid " + cls;
+  }
+
+  function newGame(){
+    state = {
+      cur: randCard(),
+      turn: 1,          // 1 or 2
+      round: 1,
+      scores: {1:0, 2:0},
+      busy: false,
+      done: false
+    };
+    // ensure next draw isn't trivially forced; nothing needed
+    renderCur(state.cur);
+    resetNextCardBack();
+    pts1.textContent = "0"; pts2.textContent = "0";
+    feedback.innerHTML = "&nbsp;";
+    overlay.classList.remove("show");
+    updateHud();
+    setButtons(true);
+  }
+
+  function resetNextCardBack(){
+    nextCard.className = "card back";
+    nextCard.innerHTML = '<div class="qmark">?</div>';
+  }
+
+  function updateHud(){
+    roundEl.textContent = "Runde " + state.round + " von " + TOTAL_ROUNDS;
+    var who = state.turn === 1 ? "🟠 Spieler 1" : "🟣 Spieler 2";
+    turnEl.textContent = who + " ist dran";
+    turnEl.style.color = state.turn === 1 ? "#e8622c" : "#7a3fd0";
+    pc1.classList.toggle("active", state.turn===1);
+    pc2.classList.toggle("active", state.turn===2);
+  }
+
+  function setButtons(on){
+    btnH.disabled = !on; btnL.disabled = !on;
+  }
+
+  function guess(higher){
+    if(state.busy || state.done) return;
+    state.busy = true;
+    setButtons(false);
+
+    var next = randCard();
+    // Reveal next card
+    var cls = next.red ? "red" : "blk";
+    var lab = label(next);
+    nextCard.className = "card " + (higher ? "anim-up" : "anim-down");
+    nextCard.innerHTML =
+      '<div class="corner tl '+cls+'">'+lab+'</div>' +
+      '<div class="mid '+cls+'">'+next.s+'</div>' +
+      '<div class="corner br '+cls+'">'+lab+'</div>';
+
+    var correct;
+    if(next.v > state.cur.v) correct = higher;
+    else if(next.v < state.cur.v) correct = !higher;
+    else correct = true; // gleich = Glückstreffer, beide zählen als richtig
+
+    var player = state.turn;
+    if(correct){
+      state.scores[player]++;
+      feedback.className = "feedback ok";
+      feedback.textContent = (next.v===state.cur.v ? "🎉 Gleich! Punkt geschenkt!" : "✅ Richtig! +1 Punkt");
+    } else {
+      feedback.className = "feedback bad";
+      feedback.textContent = "❌ Daneben — kein Punkt";
+    }
+    pts1.textContent = state.scores[1];
+    pts2.textContent = state.scores[2];
+
+    // advance
+    setTimeout(function(){
+      // count a completed round only after player 2 played
+      if(state.turn === 2){
+        if(state.round >= TOTAL_ROUNDS){
+          endGame();
+          return;
+        }
+        state.round++;
+      }
+      state.turn = state.turn === 1 ? 2 : 1;
+      state.cur = next;
+      renderCur(state.cur);
+      resetNextCardBack();
+      updateHud();
+      feedback.innerHTML = "&nbsp;";
+      feedback.className = "feedback";
+      state.busy = false;
+      setButtons(true);
+    }, 1250);
+  }
+
+  function endGame(){
+    state.done = true;
+    var s1 = state.scores[1], s2 = state.scores[2];
+    var emoji, title, res;
+    if(s1 === s2){
+      emoji = "🤝";
+      title = "Unentschieden!";
+      res = "Beide " + s1 + " Punkte. Gut gespielt!";
+    } else {
+      var winner = s1 > s2 ? 1 : 2;
+      emoji = "🏆";
+      title = (winner===1 ? "🟠 Spieler 1" : "🟣 Spieler 2") + " gewinnt!";
+      res = "🟠 " + s1 + " : " + s2 + " 🟣";
+    }
+    el("endEmoji").textContent = emoji;
+    el("endTitle").textContent = title;
+    el("endRes").textContent = res;
+    overlay.classList.add("show");
+  }
+
+  // Input: pointer + touch, robust against double-fire
+  function bind(node, fn){
+    var handled=false;
+    node.addEventListener("touchstart", function(e){ e.preventDefault(); handled=true; fn(); }, {passive:false});
+    node.addEventListener("click", function(){ if(handled){ handled=false; return;} fn(); });
+  }
+  bind(btnH, function(){ guess(true); });
+  bind(btnL, function(){ guess(false); });
+  bind(el("btnAgain"), function(){ newGame(); });
+
+  newGame();
+})();
+</script>
+</body>
+</html>

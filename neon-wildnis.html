@@ -841,6 +841,7 @@ function updProps(dt){
     if(p.flick){ // Dorf-Lagerfeuer: flackern statt rotieren
       var fk=0.85+Math.sin(p.ph*11)*0.12+Math.sin(p.ph*23)*0.06;p.mesh.scale.set(fk,1+Math.sin(p.ph*9)*0.15,fk);
       if(p.light)p.light.intensity=1.2+Math.abs(Math.sin(p.ph*13))*0.6;continue;}
+    if(p.bob){p.mesh.position.y=p.base+Math.sin(p.ph*1.1)*0.06;p.mesh.rotation.z=Math.sin(p.ph*0.9)*0.04;continue;} // 🚣 sanftes Schaukeln auf Wasser
     if(p.float)p.mesh.position.y=p.base+Math.sin(p.ph*1.4)*0.35;
     p.mesh.rotation.y+=dt*0.3;
     if(p.halo)p.halo.material.opacity=0.20+Math.abs(Math.sin(p.ph*1.8))*0.18;
@@ -1134,6 +1135,11 @@ var NEW_ASSETS=["nt_pine","nt_oak","nt_tree","nt_tree_leafy","nt_palm","nt_bush"
   "fu_table","fu_chair","fu_bench","fu_shelf","fu_plant","fu_cabinet","fu_bed","fu_rug",
   "dk2_coin","dk2_banner","dk2_column","dk2_gate","dk2_rocks","dk2_stones","dk2_trap",
   "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver"];
+// 🆕 4 weitere CC0-Kits (Foliage/Watercraft/Building/Holiday) — Blender-poliert
+var NEW_ASSETS2=["fg_grass","fg_grass_tall","fg_grass_leafy","fg_bush","fg_bush_large","fg_bush_small","fg_flower_red","fg_flower_yellow","fg_flower_purple","fg_lilypad","fg_lilypad_small","fg_hanging_moss","fg_mushroom","fg_tree_small",
+  "wc_rowboat","wc_rowboat_large","wc_sailboat","wc_dock","wc_pier","wc_barrel_float","wc_crate","wc_lighthouse","wc_shipwreck",
+  "bk_archway","bk_gate","bk_column","bk_wall","bk_wall_low","bk_stairs","bk_platform","bk_window_round","bk_door",
+  "hd_tree","hd_gift","hd_gift_round","hd_snowman","hd_reindeer","hd_lantern","hd_wreath","hd_candy_cane","hd_lights"];
 function decorateWorld(){
   var half=MAP/2-40;
   function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
@@ -1152,12 +1158,14 @@ function decorateWorld(){
     var nb=3+((rnd()*3)|0);for(var b=0;b<nb;b++){var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.55+rnd()*0.35,0),gm);bl.position.set((rnd()-0.5)*0.9,0.4+rnd()*0.35,(rnd()-0.5)*0.9);bl.scale.y=0.85;bl.castShadow=true;g.add(bl);}
     if(rnd()<0.7){var bm=new THREE.MeshBasicMaterial({color:BLOOM[(rnd()*BLOOM.length)|0]});for(var f2=0;f2<4;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.1,0),bm);fl.position.set((rnd()-0.5)*1.0,0.5+rnd()*0.5,(rnd()-0.5)*1.0);g.add(fl);}}
     return g;}
-  farScatter(Math.round(130*VF),8,function(x,z){var m=(rnd()<0.55)?mkBush():cc0inst(rnd()<0.5?"nt_bush":"cc0_bush",1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);if(rnd()<0.5)regSway(m,0.05+rnd()*0.04,1.1+rnd()*0.6);});
-  var FLOW=["cc0_flower_purple","nt_flower_red","nt_flower_yellow"];
-  farScatter(Math.round(130*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.09+rnd()*0.06,1.4+rnd()*0.8);});
+  var BUSHES=["nt_bush","cc0_bush","fg_bush","fg_bush_large","fg_bush_small"];
+  farScatter(Math.round(150*VF),8,function(x,z){var m=(rnd()<0.45)?mkBush():cc0inst(BUSHES[(rnd()*BUSHES.length)|0],1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);if(rnd()<0.5)regSway(m,0.05+rnd()*0.04,1.1+rnd()*0.6);});
+  var FLOW=["cc0_flower_purple","nt_flower_red","nt_flower_yellow","fg_flower_red","fg_flower_yellow","fg_flower_purple"];
+  farScatter(Math.round(150*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.09+rnd()*0.06,1.4+rnd()*0.8);});
   farScatter(Math.round(90*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"nt_mushroom":"cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // 🌾 Grasbüschel + Baumstümpfe/liegende Stämme (Boden lebendiger)
-  farScatter(Math.round(120*VF),6,function(x,z){var m=cc0inst("nt_grass",0.5*(0.7+rnd()*0.8));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.11+rnd()*0.07,1.6+rnd()*0.9);});
+  var GRASSES=["nt_grass","fg_grass","fg_grass_tall","fg_grass_leafy"];
+  farScatter(Math.round(170*VF),6,function(x,z){var m=cc0inst(GRASSES[(rnd()*GRASSES.length)|0],0.5*(0.7+rnd()*0.8));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.11+rnd()*0.07,1.6+rnd()*0.9);});
   farScatter(Math.round(40*VF),12,function(x,z){var m=cc0inst(rnd()<0.5?"nt_stump":"nt_log",0.6*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Felsen-Sorten / Holzstapel als Streu-Props ---
   var ROCKS=["cc0_rock_large","cc0_rock_small","nt_rock","nt_rock_tall"];
@@ -1217,6 +1225,19 @@ function decorateWorld(){
     for(var pa=0;pa<3;pa++){var paa=rnd()*6.28,pard=5+rnd()*7,pax=p.x+Math.cos(paa)*pard,paz=p.z+Math.sin(paa)*pard;var pm=cc0inst("pr_palm",5.0*(0.85+rnd()*0.4));if(pm){pm.position.set(pax,groundH(pax,paz),paz);pm.rotation.y=rnd()*6.28;scene.add(pm);}}
     var fl=cc0inst("pr_flag",3.2);if(fl){fl.position.set(p.x-2,groundH(p.x-2,p.z-2),p.z-2);scene.add(fl);}
     var cm=cc0inst("pr_cannon_mobile",1.0);if(cm){cm.position.set(p.x+2,groundH(p.x+2,p.z+4),p.z+4);cm.rotation.y=rnd()*6.28;scene.add(cm);}})();
+  // 🏛️ ANTIKE RUINEN: Torbogen + Säulen + Mauern + Treppe (verfallene Landmarke)
+  (function(){var p=spotFar(75);
+    var arch=cc0inst("bk_archway",4.5);if(arch){arch.position.set(p.x,groundH(p.x,p.z),p.z);arch.rotation.y=rnd()*6.28;scene.add(arch);}
+    for(var c=0;c<6;c++){var ca=c/6*6.28,crd=6+rnd()*3,cx=p.x+Math.cos(ca)*crd,cz=p.z+Math.sin(ca)*crd;
+      var col=cc0inst("bk_column",3.5*(0.7+rnd()*0.5));if(col){col.position.set(cx,groundH(cx,cz),cz);col.rotation.set(rnd()<0.3?(rnd()-0.5)*0.5:0,rnd()*6.28,0);scene.add(col);}}
+    for(var w=0;w<4;w++){var wa=rnd()*6.28,wrd=4+rnd()*6,wx=p.x+Math.cos(wa)*wrd,wz=p.z+Math.sin(wa)*wrd;var wl=cc0inst(rnd()<0.5?"bk_wall":"bk_wall_low",2.4*(0.7+rnd()*0.5));if(wl){wl.position.set(wx,groundH(wx,wz),wz);wl.rotation.y=rnd()*6.28;scene.add(wl);}}
+    var stg=cc0inst("bk_stairs",1.4);if(stg){stg.position.set(p.x+3,groundH(p.x+3,p.z-3),p.z-3);stg.rotation.y=rnd()*6.28;scene.add(stg);}
+    var gt=cc0inst("bk_gate",4.2);if(gt){gt.position.set(p.x-5,groundH(p.x-5,p.z+2),p.z+2);gt.rotation.y=rnd()*6.28;scene.add(gt);}
+    // Moos + Efeu über den Ruinen
+    for(var mo=0;mo<5;mo++){var moa=rnd()*6.28,mrd=rnd()*8,mx=p.x+Math.cos(moa)*mrd,mz=p.z+Math.sin(moa)*mrd;var ms=cc0inst("fg_hanging_moss",0.6);if(ms){ms.position.set(mx,groundH(mx,mz)+1.2,mz);scene.add(ms);}}})();
+  // 🗼 Leuchtturm-Landmarke (weithin sichtbar)
+  (function(){var p=spotFar(90);var lh=cc0inst("wc_lighthouse",9);if(lh){lh.position.set(p.x,groundH(p.x,p.z),p.z);scene.add(lh);var ll=new THREE.PointLight(0xfff2c0,1.0,40);ll.position.set(p.x,groundH(p.x,p.z)+9,p.z);scene.add(ll);}
+    var wr=cc0inst("wc_shipwreck",3);if(wr){wr.position.set(p.x+9,groundH(p.x+9,p.z+4),p.z+4);wr.rotation.set(0.2,rnd()*6.28,0.15);scene.add(wr);}})();
   // 🌸 Blumenwiese: dichter Farbteppich
   (function(){var p=spotFar(80);var FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c];
     for(var i=0;i<90*VF;i++){var ox=p.x+(rnd()-0.5)*34,oz=p.z+(rnd()-0.5)*34;
@@ -1238,7 +1259,13 @@ function decorateWorld(){
     w.rotation.x=-Math.PI/2;w.position.set(p.x,gy+0.06,p.z);scene.add(w);
     var ring=new THREE.Mesh(new THREE.RingGeometry(r,r+1.4,32),new THREE.MeshBasicMaterial({color:0x4fe0e8,transparent:true,opacity:0.4,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.set(p.x,gy+0.09,p.z);scene.add(ring);
     for(var re=0;re<16;re++){var ra=re/16*6.28,rx=p.x+Math.cos(ra)*(r+0.4),rz=p.z+Math.sin(ra)*(r+0.4);var reed=new THREE.Mesh(new THREE.ConeGeometry(0.07,1.1,4),new THREE.MeshLambertMaterial({color:0x2e8a50}));reed.position.set(rx,groundH(rx,rz)+0.5,rz);reed.rotation.z=(rnd()-.5)*0.3;scene.add(reed);}
-    for(var lp=0;lp<6;lp++){var la=rnd()*6.28,lr=rnd()*r*0.8,lx=p.x+Math.cos(la)*lr,lz=p.z+Math.sin(la)*lr;var pad=new THREE.Mesh(new THREE.CircleGeometry(0.7,7),new THREE.MeshLambertMaterial({color:0x3a8a4a,side:THREE.DoubleSide}));pad.rotation.x=-Math.PI/2;pad.position.set(lx,gy+0.1,lz);scene.add(pad);}})();}
+    for(var lp=0;lp<6;lp++){var la=rnd()*6.28,lr=rnd()*r*0.8,lx=p.x+Math.cos(la)*lr,lz=p.z+Math.sin(la)*lr;var pad=new THREE.Mesh(new THREE.CircleGeometry(0.7,7),new THREE.MeshLambertMaterial({color:0x3a8a4a,side:THREE.DoubleSide}));pad.rotation.x=-Math.PI/2;pad.position.set(lx,gy+0.1,lz);scene.add(pad);}
+    // 🪷 echte Seerosen-Modelle auf dem Wasser
+    for(var lp2=0;lp2<7;lp2++){var la2=rnd()*6.28,lr2=rnd()*r*0.82,lx2=p.x+Math.cos(la2)*lr2,lz2=p.z+Math.sin(la2)*lr2;var lily=cc0inst(rnd()<0.5?"fg_lilypad":"fg_lilypad_small",0.12);if(lily){lily.position.set(lx2,gy+0.08,lz2);lily.rotation.y=rnd()*6.28;scene.add(lily);}}
+    // 🚣 Ruderboot am Ufer + Steg (CC0 Watercraft)
+    var dk=cc0inst("wc_dock",1.4);if(dk){var dx=p.x+Math.cos(0.7)*(r-1),dz=p.z+Math.sin(0.7)*(r-1);dk.position.set(dx,gy+0.2,dz);dk.rotation.y=Math.atan2(p.z-dz,p.x-dx);scene.add(dk);}
+    var boat=cc0inst(rnd()<0.5?"wc_rowboat":"wc_rowboat_large",0.85);if(boat){var ba=rnd()*6.28,bx=p.x+Math.cos(ba)*r*0.5,bz=p.z+Math.sin(ba)*r*0.5;boat.position.set(bx,gy+0.12,bz);boat.rotation.y=rnd()*6.28;scene.add(boat);worldProps.push({mesh:boat,halo:null,ph:rnd()*6.28,base:gy+0.12,bob:true});}
+  })();}
   // 🌲 Dichte Wald-Haine (viele Bäume eng zusammen)
   for(var fo=0;fo<Math.round(4*VF);fo++){(function(){var p=spotFar(60);for(var t=0;t<22;t++){var ox=p.x+(rnd()-0.5)*30,oz=p.z+(rnd()-0.5)*30;var tm=(rnd()<0.5?mkStylizedTree():cc0inst(["cc0_tree_pine","cc0_tree_oak"][(rnd()*2)|0],5+rnd()*1.5));if(tm){tm.scale.multiplyScalar?tm.scale.multiplyScalar(1):tm.scale.setScalar(0.9+rnd()*0.5);tm.position.set(ox,groundH(ox,oz),oz);tm.rotation.y=rnd()*6.28;scene.add(tm);}}})();}
   // ⛰️ Felsvorsprünge / Klippen (grosse dramatische Felsen)
@@ -1286,6 +1313,12 @@ function decorateWorld(){
     // 🌷 Schöne Wege von jeder Haustür zum Platz (Blumen/Laternen/Türschwelle)
     layVillagePaths(vx,vz,_houses);
     decoVillageExtras(vx,vz,isSpawn,_houses); // 🥕🎉 Gärten, Wimpelketten, Marktstände
+    if(isSpawn){ // 🎄 festliche Ecke im Anfangsdorf (CC0 Holiday-Kit)
+      var ft=cc0inst("hd_tree",3.2);if(ft){var fx=vx+10,fz=vz+9;ft.position.set(fx,groundH(fx,fz),fz);scene.add(ft);
+        var fpl=new THREE.PointLight(0xffd0e0,0.7,12);fpl.position.set(fx,groundH(fx,fz)+2,fz);scene.add(fpl);
+        for(var gi=0;gi<4;gi++){var gpm=cc0inst(rnd()<0.5?"hd_gift":"hd_gift_round",0.5);if(gpm){var gpa=rnd()*6.28;gpm.position.set(fx+Math.cos(gpa)*1.6,groundH(fx,fz),fz+Math.sin(gpa)*1.6);gpm.rotation.y=rnd()*6.28;scene.add(gpm);}}}
+      var sn=cc0inst("hd_snowman",1.4);if(sn){var sx=vx-9,sz=vz+10;sn.position.set(sx,groundH(sx,sz),sz);sn.rotation.y=Math.PI;scene.add(sn);}
+      var rd=cc0inst("hd_reindeer",1.5);if(rd){var rx=vx-11,rz=vz+8;rd.position.set(rx,groundH(rx,rz),rz);rd.rotation.y=rnd()*6.28;scene.add(rd);regCritter&&regCritter(rd,rx,rz,{range:5,spd:0.4});}}
     // 🎪⛲🛒 Kenney-Dorf-Props (poliert): Marktstand, Brunnen, Karren, Banner, Laternen
     var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
     mkTimberWell(vx-4,vz+3); // 🪣 Holz-Brunnen statt modernem Steinbrunnen
@@ -2259,7 +2292,7 @@ function startGame(fresh){
   SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase"].concat(NEW_ASSETS),decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase"].concat(NEW_ASSETS).concat(NEW_ASSETS2),decorateWorld);
   });
   loadHero();loadSlime();
   if(sv){

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Schere Stein Papier</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+  body {
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    background: linear-gradient(#bce6ff, #eaf7ff);
+    color: #234;
+    display: flex; flex-direction: column;
+    height: 100vh; height: 100dvh;
+    user-select: none; -webkit-user-select: none;
+  }
+  .back {
+    position: fixed; top: 8px; left: 8px; z-index: 50;
+    background: #fff; color: #2b6cb0; border: none;
+    border-radius: 14px; padding: 10px 14px; font-size: 15px; font-weight: bold;
+    min-height: 46px; box-shadow: 0 3px 0 #b9d9f0; cursor: pointer;
+  }
+  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #b9d9f0; }
+
+  /* Spieler-Hälften */
+  .player {
+    flex: 1 1 0; position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; padding: 12px; overflow: hidden;
+    transition: background .25s;
+  }
+  #top {
+    background: linear-gradient(#ffe1ec, #ffd0e2);
+    transform: rotate(180deg); /* Spieler oben sitzt gegenüber */
+  }
+  #bottom { background: linear-gradient(#d9f0ff, #c9e9ff); }
+  .player.active { box-shadow: inset 0 0 0 5px #ffd54a; }
+  .player.dim { filter: brightness(.82) saturate(.7); }
+
+  .divider { height: 6px; background: #ffd54a; flex: 0 0 auto; }
+
+  .pname { font-size: 19px; font-weight: 800; letter-spacing: .5px; }
+  .pscore { font-size: 15px; font-weight: 700; opacity: .8; }
+  .dots { font-size: 20px; letter-spacing: 3px; height: 22px; }
+
+  .choices { display: flex; gap: 12px; }
+  .choice {
+    width: 74px; height: 74px; border-radius: 20px; border: none;
+    background: #ffffff; box-shadow: 0 4px 0 rgba(0,0,0,.12);
+    font-size: 40px; line-height: 74px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .choice:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(0,0,0,.12); }
+  .choice.picked { background: #fff6d6; box-shadow: 0 0 0 4px #ffd54a, 0 4px 0 rgba(0,0,0,.12); }
+
+  .status { font-size: 15px; font-weight: 700; min-height: 20px; text-align: center; }
+  .bighand { font-size: 68px; height: 76px; }
+  .lock { font-size: 15px; font-weight: 800; color: #2f855a; }
+  .waiting { opacity: .6; font-weight: 700; }
+
+  /* Reveal / Overlay */
+  .overlay {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgba(255,255,255,.92);
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    gap: 14px; padding: 20px; text-align: center;
+  }
+  .overlay.show { display: flex; }
+  .revealRow { display: flex; align-items: center; gap: 14px; font-size: 66px; }
+  .vs { font-size: 24px; font-weight: 900; color: #999; }
+  .rtitle { font-size: 26px; font-weight: 900; }
+  .rsub { font-size: 16px; font-weight: 700; opacity: .8; }
+  .btn {
+    background: #2b8a3e; color: #fff; border: none; border-radius: 16px;
+    padding: 14px 26px; font-size: 18px; font-weight: 800; min-height: 52px;
+    box-shadow: 0 4px 0 #1c5c29; cursor: pointer; margin-top: 6px;
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1c5c29; }
+  .final-emoji { font-size: 84px; }
+</style>
+</head>
+<body>
+<button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<!-- Spieler 2 (oben, gedreht) -->
+<div class="player" id="top">
+  <div class="pname">🌸 Spieler 2</div>
+  <div class="pscore">Punkte: <span id="s2">0</span> / 3</div>
+  <div class="dots" id="d2"></div>
+  <div class="bighand" id="hand2" style="display:none"></div>
+  <div class="choices" id="ch2">
+    <button class="choice" data-p="2" data-c="schere">✌️</button>
+    <button class="choice" data-p="2" data-c="stein">✊</button>
+    <button class="choice" data-p="2" data-c="papier">✋</button>
+  </div>
+  <div class="status" id="st2">Wähle verdeckt!</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Spieler 1 (unten) -->
+<div class="player" id="bottom">
+  <div class="pname">💧 Spieler 1</div>
+  <div class="pscore">Punkte: <span id="s1">0</span> / 3</div>
+  <div class="dots" id="d1"></div>
+  <div class="bighand" id="hand1" style="display:none"></div>
+  <div class="choices" id="ch1">
+    <button class="choice" data-p="1" data-c="schere">✌️</button>
+    <button class="choice" data-p="1" data-c="stein">✊</button>
+    <button class="choice" data-p="1" data-c="papier">✋</button>
+  </div>
+  <div class="status" id="st1">Wähle verdeckt!</div>
+</div>
+
+<!-- Auflösung / Endbildschirm -->
+<div class="overlay" id="overlay">
+  <div class="rtitle" id="rtitle"></div>
+  <div class="revealRow"><span id="rev2"></span><span class="vs">gegen</span><span id="rev1"></span></div>
+  <div class="rsub" id="rsub"></div>
+  <div class="final-emoji" id="femoji" style="display:none"></div>
+  <button class="btn" id="obtn"></button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var EMO = { schere:"✌️", stein:"✊", papier:"✋" };
+  var NAME = { schere:"Schere", stein:"Stein", papier:"Papier" };
+  var TARGET = 3;          // best of 5 -> erster mit 3
+  var pick = {1:null, 2:null};
+  var score = {1:0, 2:0};
+  var round = 1;
+  var gameOver = false;
+  var revealTimer = null;
+
+  var els = {
+    s1: document.getElementById("s1"), s2: document.getElementById("s2"),
+    d1: document.getElementById("d1"), d2: document.getElementById("d2"),
+    st1: document.getElementById("st1"), st2: document.getElementById("st2"),
+    hand1: document.getElementById("hand1"), hand2: document.getElementById("hand2"),
+    ch1: document.getElementById("ch1"), ch2: document.getElementById("ch2"),
+    top: document.getElementById("top"), bottom: document.getElementById("bottom"),
+    overlay: document.getElementById("overlay"),
+    rtitle: document.getElementById("rtitle"), rsub: document.getElementById("rsub"),
+    rev1: document.getElementById("rev1"), rev2: document.getElementById("rev2"),
+    femoji: document.getElementById("femoji"), obtn: document.getElementById("obtn"),
+    dividerNone: null
+  };
+
+  function dots(n){ var s=""; for(var i=0;i<TARGET;i++){ s += i<n ? "🔵" : "⚪"; } return s; }
+
+  function refreshScores(){
+    els.s1.textContent = score[1];
+    els.s2.textContent = score[2];
+    els.d1.innerHTML = dots(score[1]);
+    els.d2.innerHTML = dots(score[2]);
+  }
+
+  function setStatus(){
+    // Spieler-Hälfte visuell markieren: aktiv = noch nicht gewählt
+    var p1done = !!pick[1], p2done = !!pick[2];
+    els.st1.textContent = p1done ? "✅ Bereit!" : "Wähle verdeckt!";
+    els.st2.textContent = p2done ? "✅ Bereit!" : "Wähle verdeckt!";
+    els.bottom.classList.toggle("dim", p1done);
+    els.top.classList.toggle("dim", p2done);
+  }
+
+  function markPicked(player){
+    var box = player===1 ? els.ch1 : els.ch2;
+    var btns = box.querySelectorAll(".choice");
+    for(var i=0;i<btns.length;i++){
+      btns[i].classList.toggle("picked", btns[i].getAttribute("data-c")===pick[player]);
+    }
+  }
+
+  function onPick(player, choice){
+    if(gameOver) return;
+    if(pick[player]) return; // schon gewählt, gesperrt bis Auflösung
+    pick[player] = choice;
+    markPicked(player);
+    setStatus();
+    if(pick[1] && pick[2]){
+      // kleine Verzögerung, dann auflösen
+      if(revealTimer) clearTimeout(revealTimer);
+      revealTimer = setTimeout(resolve, 450);
+    }
+  }
+
+  // schere schlägt papier, stein schlägt schere, papier schlägt stein
+  var BEATS = { schere:"papier", stein:"schere", papier:"stein" };
+
+  function resolve(){
+    var p1 = pick[1], p2 = pick[2];
+    var winner = 0;
+    if(p1 === p2){ winner = 0; }
+    else if(BEATS[p1] === p2){ winner = 1; }
+    else { winner = 2; }
+
+    if(winner) score[winner]++;
+    refreshScores();
+
+    // Auflösungs-Overlay
+    els.rev1.textContent = EMO[p1];   // Spieler 1 rechts
+    els.rev2.textContent = EMO[p2];   // Spieler 2 links
+    els.femoji.style.display = "none";
+    els.overlay.classList.add("show");
+
+    var reached = (score[1] >= TARGET || score[2] >= TARGET);
+
+    if(winner === 0){
+      els.rtitle.textContent = "🤝 Unentschieden!";
+      els.rsub.textContent = NAME[p1] + " gegen " + NAME[p2] + " — Runde " + round + " zählt nicht neu.";
+    } else if(winner === 1){
+      els.rtitle.textContent = "💧 Spieler 1 gewinnt die Runde!";
+      els.rsub.textContent = NAME[p1] + " schlägt " + NAME[p2];
+    } else {
+      els.rtitle.textContent = "🌸 Spieler 2 gewinnt die Runde!";
+      els.rsub.textContent = NAME[p2] + " schlägt " + NAME[p1];
+    }
+
+    if(reached){
+      showFinal();
+    } else {
+      els.obtn.textContent = "Weiter ▶";
+      els.obtn.onclick = nextRound;
+    }
+  }
+
+  function showFinal(){
+    gameOver = true;
+    var winP = score[1] > score[2] ? 1 : 2;
+    els.femoji.style.display = "block";
+    els.femoji.textContent = winP===1 ? "💧🏆" : "🌸🏆";
+    els.rtitle.textContent = (winP===1 ? "💧 Spieler 1" : "🌸 Spieler 2") + " gewinnt das Spiel!";
+    els.rsub.textContent = "Endstand " + score[1] + " : " + score[2] + " — Best of 5";
+    els.obtn.textContent = "🔁 Nochmal";
+    els.obtn.onclick = restart;
+  }
+
+  function nextRound(){
+    round++;
+    pick[1] = null; pick[2] = null;
+    markPicked(1); markPicked(2);
+    setStatus();
+    els.overlay.classList.remove("show");
+  }
+
+  function restart(){
+    if(revealTimer) clearTimeout(revealTimer);
+    score = {1:0, 2:0};
+    pick = {1:null, 2:null};
+    round = 1;
+    gameOver = false;
+    refreshScores();
+    markPicked(1); markPicked(2);
+    setStatus();
+    els.overlay.classList.remove("show");
+  }
+
+  // Event-Delegation (Touch + Maus)
+  function handleTap(e){
+    var t = e.target.closest ? e.target.closest(".choice") : null;
+    if(!t) return;
+    e.preventDefault();
+    var player = parseInt(t.getAttribute("data-p"), 10);
+    var choice = t.getAttribute("data-c");
+    onPick(player, choice);
+  }
+  document.getElementById("top").addEventListener("click", handleTap);
+  document.getElementById("bottom").addEventListener("click", handleTap);
+  // Touch: schnelleres Feedback, verhindert Doppel-Feuer via preventDefault
+  document.getElementById("top").addEventListener("touchstart", function(e){ handleTap(e); }, {passive:false});
+  document.getElementById("bottom").addEventListener("touchstart", function(e){ handleTap(e); }, {passive:false});
+
+  // Init
+  refreshScores();
+  setStatus();
+})();
+</script>
+</body>
+</html>
