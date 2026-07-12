@@ -281,12 +281,20 @@ function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*
 
 // ---------- Assets laden (nature_pack) ----------
 var treeProtos=[],bushProto=null,natureReady=false;
+// 🌳 Schöner stilisierter Low-Poly-Baum (Stamm + gestaffelte Blätter-Blobs, Grüntöne) — ersetzt Neon-Baum
+var TREE_GREENS=[0x2e7d4f,0x3a9a5a,0x256b45,0x4faf62,0x2f8a52,0x6ab56a];
+function mkStylizedTree(){var g=new THREE.Group();
+  var trunkH=2.2+Math.random()*1.4;
+  var trunk=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.36,trunkH,7),new THREE.MeshLambertMaterial({color:0x6a4a2c,flatShading:true}));trunk.position.y=trunkH/2;trunk.castShadow=true;g.add(trunk);
+  var fm=new THREE.MeshLambertMaterial({color:TREE_GREENS[(Math.random()*TREE_GREENS.length)|0],flatShading:true});
+  for(var k=0;k<3;k++){var r=1.7-k*0.45;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),fm);bl.position.set((Math.random()-0.5)*0.5,trunkH+0.2+k*0.95,(Math.random()-0.5)*0.5);bl.rotation.set(Math.random()*3,Math.random()*3,Math.random()*3);bl.castShadow=true;g.add(bl);}
+  return g;}
 function loadNature(cb){
   if(!THREE.GLTFLoader){cb();return;}
   new THREE.GLTFLoader().load("/models/nature_pack.glb",function(gl){
     var byName={};
     gl.scene.traverse(function(n){if(n.name&&/^(tree_|bush_)/.test(n.name)&&(n.isMesh||n.children.length))byName[n.name]=n;});
-    ["tree_leafy","tree_birch","tree_willow","tree_glow"].forEach(function(nm){if(byName[nm])treeProtos.push(byName[nm]);});
+    ["tree_leafy","tree_birch","tree_willow"].forEach(function(nm){if(byName[nm])treeProtos.push(byName[nm]);});
     if(byName.bush_a)bushProto=byName.bush_a;
     natureReady=treeProtos.length>0;cb();
   },undefined,function(){cb();});
@@ -314,10 +322,10 @@ function placeResources(){
   function scatter(n,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=8+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<6&&Math.abs(z)<6){i--;continue;}fn(x,z);}}
   // Bäume
   scatter(Math.round(190*VF),function(x,z){
-    var proto=natureReady?treeProtos[(rnd()*treeProtos.length)|0]:null;
-    var mesh=proto?proto.clone(true):fallbackTree();
+    var useNat=natureReady&&rnd()<0.4;var proto=useNat?treeProtos[(rnd()*treeProtos.length)|0]:null;
+    var mesh=proto?proto.clone(true):mkStylizedTree();
     mesh.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();}}});
-    var s=0.9+rnd()*0.5;mesh.scale.setScalar(natureReady?s:s*0.9);
+    var s=0.9+rnd()*0.5;mesh.scale.setScalar(useNat?s:s*1.0);
     mesh.position.set(x,groundH(x,z),z);mesh.rotation.y=rnd()*6.28;
     scene.add(mesh);resources.push({type:"tree",mesh:mesh,x:x,z:z,hp:3,maxhp:3,dead:false,regrow:0,baseY:mesh.position.y});
   });
