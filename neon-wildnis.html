@@ -757,6 +757,10 @@ function decorateWorld(){
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     // ⛲ Brunnen (Meshy) etwas neben dem Lagerfeuer als Dorf-Mittelpunkt
     var fnt=cc0inst("item_fountain",2.4);if(fnt){var fx2=vx-4,fz2=vz+2;fnt.position.set(fx2,groundH(fx2,fz2),fz2);fnt.rotation.y=rnd()*6.28;scene.add(fnt);}
+    // 🌬️🪣🎪 Selbst-modellierte Dorf-Props (Blender, gratis): Windmühle am Rand, Ziehbrunnen + Marktstand
+    var wm2=cc0inst("gen_windmill",7);if(wm2){var wx3=vx+9,wz3=vz-9;wm2.position.set(wx3,groundH(wx3,wz3),wz3);wm2.rotation.y=rnd()*6.28;scene.add(wm2);}
+    var wl=cc0inst("gen_well",2.2);if(wl){var wx4=vx+5,wz4=vz+5;wl.position.set(wx4,groundH(wx4,wz4),wz4);wl.rotation.y=rnd()*6.28;scene.add(wl);}
+    var mk=cc0inst("gen_market",2.0);if(mk){var mx3=vx-6,mz3=vz-3;mk.position.set(mx3,groundH(mx3,mz3),mz3);mk.rotation.y=rnd()*6.28;scene.add(mk);}
   }
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
@@ -1482,7 +1486,7 @@ function startGame(fresh){
   SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain"],decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","gen_windmill","gen_well","gen_market"],decorateWorld);
   });
   loadHero();loadSlime();
   if(sv){

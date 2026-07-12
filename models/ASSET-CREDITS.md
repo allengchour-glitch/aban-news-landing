@@ -89,3 +89,13 @@ Vom User bereitgestellte Credits. Prompt-getrieben, preview→refine, r128-Fix (
 | building_castle.glb | stone castle fortress with towers | Burg-Landmarke |
 | item_relic.glb | glowing gem on ornate gold base | leuchtendes Relikt (Deko/Fund) |
 | item_potion.glb | red health potion bottle | einsammelbarer Heiltrank (+40 HP) |
+
+## Selbst-modelliert (Blender-Skript, 2026-07-12) — eigene Assets, keine Lizenzfrage
+Prozedural per bpy aus Primitiven gebaut + Material, GLB-Export. Winzig (~15 KB), Low-Poly-Stil.
+Skript: automation/gen_blender_props.py (reproduzierbar/erweiterbar).
+
+| Datei | Modell | Nutzung |
+|---|---|---|
+| gen_windmill.glb | Windmühle (Turm+Dach+4 Flügel) | Dorf-Landmarke |
+| gen_well.glb | Ziehbrunnen (Ring+Wasser+Dach+Eimer) | Dorf-Prop |
+| gen_market.glb | Marktstand (Theke+gestreiftes Dach) | Dorf-Prop |
