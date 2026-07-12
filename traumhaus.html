@@ -94,6 +94,13 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palItems"></div>
 </div>
 <div id="hint"></div>
+<div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:16px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
+  <span id="editName" style="align-self:center;font-weight:800;font-size:.85rem;color:#5a4a30;margin-right:4px"></span>
+  <button class="ebtn" id="edMove" style="border:0;background:#e0ecf8;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">↔️ Verschieben</button>
+  <button class="ebtn" id="edRot" style="border:0;background:#e8f0dc;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">🔄 Drehen</button>
+  <button class="ebtn" id="edSell" style="border:0;background:#f8e0dc;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">💰 Verkaufen</button>
+  <button class="ebtn" id="edX" style="border:0;background:#e8e0d0;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">✕</button>
+</div>
 <div id="joy" style="position:fixed;left:16px;bottom:100px;width:112px;height:112px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.4);z-index:13;display:none;touch-action:none;backdrop-filter:blur(2px)">
   <div id="joyKnob" style="position:absolute;left:34px;top:34px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.8);box-shadow:0 3px 10px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;pointer-events:none">🏃</div>
 </div>
@@ -575,7 +582,7 @@ var KATALOG={
   {id:"zwerg",n:"⭐ Gartenzwerg",e:"🍄",cost:90,size:[1,1],norm:1,zielH:0.65},
   {id:"gartenlaterne",n:"⭐ Garten-Laterne",e:"🏮",cost:260,size:[1,1],norm:1,zielH:1.5,light:1}]
 };
-var CATS=[["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
+var CATS=[["alle","🧰 Alles"],["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
 
 // ===================== Zustand =====================
@@ -822,6 +829,45 @@ function doDelete(gx,gy,silent){
   if(!done&&floors[fkey(gx,gy)]!==undefined){applyFloor(gx,gy,null);done=true;}
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
+var editSel=null,editMove=false,editRing=null;
+function editShow(f9){
+  editSel=f9;editMove=false;
+  document.getElementById("editName").textContent=f9.def.e+" "+f9.def.n;
+  var eb=document.getElementById("editBar");eb.style.display="flex";
+  if(editRing){scene.remove(editRing);}
+  editRing=new THREE.Mesh(new THREE.RingGeometry(0.9,1.15,24),new THREE.MeshBasicMaterial({color:0x4a90e8,transparent:true,opacity:0.75,side:THREE.DoubleSide}));
+  editRing.rotation.x=-Math.PI/2;editRing.position.set(cx(f9.gx),0.03,cz(f9.gy));scene.add(editRing);}
+function editHide(){
+  editSel=null;editMove=false;
+  document.getElementById("editBar").style.display="none";
+  if(editRing){scene.remove(editRing);editRing=null;}}
+function furnAt(gx,gy){
+  for(var i=0;i<furn.length;i++){var cells=furnCells(furn[i]);
+    for(var c=0;c<cells.length;c++)if(cells[c][0]===gx&&cells[c][1]===gy)return furn[i];}
+  return null;}
+function editVerschiebe(nx,ny){
+  var f9=editSel;if(!f9)return false;
+  if(!cellFree(nx,ny)||!inLot(nx,ny)){hint("Da ist kein Platz");return false;}
+  var ox=f9.gx,oy=f9.gy,rot=f9.rot,id=f9.id;
+  if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
+  furn.splice(furn.indexOf(f9),1);
+  netSend({t:"del",x:ox,y:oy});
+  doPlaceFurn(id,nx,ny,rot);
+  editHide();hint("↔️ Umgestellt!");beep(620,.07,"triangle",.05);
+  return true;}
+document.getElementById("edMove").onclick=function(){editMove=true;hint("Tippe auf den neuen Platz");};
+document.getElementById("edRot").onclick=function(){
+  var f9=editSel;if(!f9)return;
+  var gx=f9.gx,gy=f9.gy,nr=(f9.rot+1)%4,id=f9.id;
+  if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
+  furn.splice(furn.indexOf(f9),1);netSend({t:"del",x:gx,y:gy});
+  doPlaceFurn(id,gx,gy,nr);
+  editSel=furn[furn.length-1];editShow(editSel);beep(560,.06,"triangle",.04);};
+document.getElementById("edSell").onclick=function(){
+  var f9=editSel;if(!f9)return;
+  var gx=f9.gx,gy=f9.gy;editHide();
+  if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
+document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
   furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
@@ -1592,8 +1638,11 @@ function tapAt(px,py){
         return;}}}
     return;}
   var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return;
-  if(delMode){if(doDelete(c.gx,c.gy))hint("Abgerissen (50% zurück)");return;}
-  if(!curItem)return;
+  if(delMode){editHide();if(doDelete(c.gx,c.gy))hint("Abgerissen (50% zurück)");return;}
+  if(editSel&&editMove){editVerschiebe(c.gx,c.gy);return;}
+  if(!curItem){var fEd=furnAt(c.gx,c.gy);
+    if(fEd)editShow(fEd);else editHide();
+    return;}
   var def=defOf(curItem);
   if(geld<def.cost){hint("💰 Zu wenig Geld!");return;}
   if(curItem.indexOf("boden")===0){doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;}
@@ -1819,9 +1868,10 @@ function renderPalette(){
   CATS.forEach(function(ct){var b=document.createElement("button");b.className="pcat"+(ct[0]===curCat?" on":"");
     b.textContent=ct[1];b.onclick=function(){curCat=ct[0];renderPalette();};cats.appendChild(b);});
   var it=document.getElementById("palItems");it.innerHTML="";
-  KATALOG[curCat].forEach(function(d){var b=document.createElement("button");b.className="pitem"+(d.id===curItem?" on":"");
+  var liste=curCat==="alle"?Object.keys(KATALOG).reduce(function(a,k){return a.concat(KATALOG[k]);},[]):KATALOG[curCat];
+  liste.forEach(function(d){var b=document.createElement("button");b.className="pitem"+(d.id===curItem?" on":"");
     b.innerHTML="<div class='pe'>"+d.e+"</div><div class='pn'>"+d.n+"</div><div class='pp'>"+d.cost+" §</div>";
-    b.onclick=function(){curItem=d.id;delMode=false;document.getElementById("delBtn").classList.remove("on");renderPalette();refreshGhost();};
+    b.onclick=function(){curItem=d.id;delMode=false;editHide();document.getElementById("delBtn").classList.remove("on");renderPalette();refreshGhost();};
     it.appendChild(b);});}
 var curCat="bau";
 document.getElementById("rotBtn").onclick=function(){curRot=(curRot+1)%4;hint("Gedreht ("+["Nord","Ost","Süd","West"][curRot]+")");};
