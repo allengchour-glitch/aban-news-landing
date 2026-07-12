@@ -29,10 +29,10 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .pcard .nm{font-weight:900;font-size:.85rem}
 .pcard .st{display:flex;gap:9px;color:#4a5262;margin-top:2px;flex-wrap:wrap;font-weight:600}
 .pcard .st span{white-space:nowrap}
-#chapterTag{position:absolute;top:12px;left:50%;transform:translateX(-50%);text-align:center}
-#chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 2px 4px rgba(40,60,90,.6),0 0 14px rgba(40,60,90,.4)}
-#chapterTag small{display:block;color:#fff;font-size:.72rem;margin-top:2px;text-shadow:0 1px 4px rgba(40,60,90,.6)}
-#turnTag{position:absolute;top:64px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.85rem;color:#ffd166;text-shadow:0 2px 8px #000}
+#chapterTag{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:rgba(38,52,72,.42);padding:5px 16px;border-radius:14px;box-shadow:0 3px 12px rgba(30,40,60,.28)}
+#chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 1px 2px rgba(10,20,35,.9),0 2px 8px rgba(10,20,35,.6)}
+#chapterTag small{display:block;color:#fdf3d0;font-size:.72rem;margin-top:1px;text-shadow:0 1px 3px rgba(10,20,35,.85)}
+#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffdf8a;background:rgba(38,52,72,.42);padding:3px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95)}
 /* Würfel-Knopf */
 @keyframes rollPulse{0%,100%{outline:4px solid rgba(255,209,102,0)}50%{outline:4px solid rgba(255,209,102,.55)}}
 #rollBtn:not(:disabled):not(.hide){animation:rollPulse 2.4s ease-in-out infinite}
@@ -157,12 +157,26 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="players"></div>
   <div id="chapterTag"><b id="chapTxt">KINDHEIT</b><small id="chapSub">Kapitel 1 von 8</small></div>
   <div id="turnTag"></div>
+  <div id="goalTag" style="position:absolute;top:86px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.72rem;color:#2a3040;background:rgba(255,247,220,.82);padding:3px 12px;border-radius:11px;box-shadow:0 2px 8px rgba(60,40,10,.2);white-space:nowrap;max-width:80vw;overflow:hidden;text-overflow:ellipsis"></div>
   <div id="announce"></div><div id="hint"></div>
   <div id="progMap" style="position:absolute;bottom:96px;left:50%;transform:translateX(-50%);width:min(520px,88vw);height:16px;pointer-events:none">
     <div id="progSegs" style="display:flex;height:8px;border-radius:6px;overflow:hidden;opacity:.85"></div>
     <div id="progDots" style="position:relative;height:8px"></div>
   </div>
   <div id="keysHelp"></div>
+</div>
+<!-- 🌐 Online-Präsenz-Anzeige + Auto-Pause (nur im Online-Modus sichtbar) -->
+<div id="netHud" class="hide" style="position:fixed;top:56px;left:10px;z-index:17;display:flex;flex-direction:column;gap:4px;pointer-events:none;max-width:46vw"></div>
+<div id="netPause" class="hide" style="position:fixed;inset:0;z-index:44;display:flex;align-items:center;justify-content:center;background:rgba(18,22,34,.72)">
+  <div style="background:#fffdf6;border:3px solid #ffcf3a;border-radius:20px;padding:22px 26px;max-width:min(420px,90vw);text-align:center;box-shadow:0 18px 50px rgba(20,15,5,.5)">
+    <div id="netPauseIcon" style="font-size:2.4rem">⏸️</div>
+    <div id="netPauseTxt" style="font-weight:900;color:#2a3040;font-size:1.05rem;margin:8px 0 4px">Warte auf Mitspieler …</div>
+    <div id="netPauseSub" style="font-size:.82rem;color:#7a8a9a;margin-bottom:12px"></div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+      <button id="netPauseSkip" class="btn" style="display:none">⏭️ Spieler überspringen</button>
+      <button id="netPauseSolo" class="btn ghost" style="display:none">🎮 Alleine weiterspielen</button>
+    </div>
+  </div>
 </div>
 <div id="albumBadge" title="Gesammelte Erinnerungs-Fotos"></div>
 <div id="snapFlash"></div>
@@ -173,6 +187,11 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <button id="rollBtn" class="hide">🎡 Drehen!</button>
 <button id="emoBtn" class="hide" title="Emotes (Tasten 1–6)">😊</button>
 <div id="emoFan" class="hide"></div>
+<!-- 💞 Begegnungs-Aktion wählen (zwei Figuren treffen sich) -->
+<div id="meetPick" class="hide" style="position:fixed;left:50%;bottom:158px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,253,246,.95);border:2px solid #ff9ecf;border-radius:16px;padding:9px 13px;box-shadow:0 12px 32px rgba(120,40,80,.28);max-width:92vw">
+  <div style="font-weight:900;color:#c23a7a;font-size:.82rem">💞 Was macht ihr zusammen?</div>
+  <div id="meetPickRow" style="display:flex;gap:7px;flex-wrap:wrap;justify-content:center"></div>
+</div>
 <div id="card"><div class="kick" id="cKick">Ereignis</div><h3 id="cTitle">—</h3><div class="txt" id="cTxt">—</div><div class="opts" id="cOpts"></div></div>
 <button id="chatBtn" title="Chat mit Oma Hilde" style="position:fixed;bottom:96px;right:14px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)" class="hide">💬</button>
 <div id="chatW" class="hide" style="position:fixed;bottom:96px;right:14px;width:min(320px,90vw);height:min(400px,60vh);background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;z-index:35;display:flex;flex-direction:column;box-shadow:0 16px 44px rgba(60,40,10,.35);overflow:hidden">
@@ -202,6 +221,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div class="kicker">aban news · das große Würfel-Brettspiel · 1–4 Spieler</div>
   <h1>LEBENSPFAD</h1>
   <p>Würfle dich durch <b>acht Kapitel eines ganzen Lebens</b> — von der Kindheit bis zum Lebensabend. Über <b>100 Ereignisse</b> mit echten Entscheidungen formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Trefft ihr euch auf einem Feld, gibt es eine <b>Begegnung</b> — gemeinsam ist das Leben besser. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
+  <div id="startStats" style="margin:2px 0 10px"></div>
   <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
   <div class="pselect" id="pselect"></div>
   <div id="nameRow" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0"></div>
@@ -237,6 +257,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div class="kicker">Der Pfad ist zu Ende</div>
   <h1>EIN GANZES LEBEN</h1>
   <div id="scores"></div>
+  <div id="endAch" style="margin:10px 0"></div>
   <div id="bio"></div>
   <button class="btn" id="newBtn">Neues Leben ▶</button>
   <button class="btn" id="rematchBtn" style="display:none">🔁 Neue Online-Runde ▶</button>
@@ -286,8 +307,51 @@ var OPT=(function(){try{return JSON.parse(lsGet("lp_opt")||"{}");}catch(e){retur
 if(OPT.music===undefined)OPT.music=true;if(OPT.sfx===undefined)OPT.sfx=true;
 if(OPT.tempo===undefined)OPT.tempo=1;if(OPT.motion===undefined)OPT.motion=true;
 function saveOpt(){lsSet("lp_opt",JSON.stringify(OPT));}
-function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
-(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
+// 🔊 Batch 7/7: gemeinsamer SFX-Master-Bus (leichter Limiter) buendelt beep/cardRustle
+var sfxBus=null;
+function sfxDest(){try{if(!actx)return null;if(!sfxBus){sfxBus=actx.createGain();sfxBus.gain.value=0.9;
+    if(actx.createDynamicsCompressor){var comp=actx.createDynamicsCompressor();try{comp.threshold.value=-14;comp.knee.value=18;comp.ratio.value=4;comp.attack.value=0.003;comp.release.value=0.2;}catch(e){}sfxBus.connect(comp);comp.connect(actx.destination);}
+    else sfxBus.connect(actx.destination);}return sfxBus;}catch(e){return actx?actx.destination:null;}}
+function beep(f,d,t,g){if(muted||!OPT.sfx)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),ga=actx.createGain();o.type=t||"sine";o.frequency.value=f;ga.gain.setValueAtTime(g||0.04,actx.currentTime);ga.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(d||0.1));o.connect(ga);ga.connect(sfxDest()||actx.destination);o.start();o.stop(actx.currentTime+(d||0.1));}catch(e){}}
+// ===================== 🏆 Batch 7/7: Statistiken, Erfolge & Rundenziele =====================
+var LPSTATS=(function(){try{return JSON.parse(lsGet("lp_stats")||"{}");}catch(e){return {};}})();
+var LPACH=(function(){try{return JSON.parse(lsGet("lp_ach")||"{}");}catch(e){return {};}})();
+function saveStats(){lsSet("lp_stats",JSON.stringify(LPSTATS));}
+var ACHIEVEMENTS=[
+  {id:"selfmade",emoji:"💼",titel:"Berufung gefunden"},
+  {id:"eigenheim",emoji:"🏠",titel:"Eigenheim-Besitzer:in"},
+  {id:"zwillinge",emoji:"👶",titel:"Zwillingsglueck"},
+  {id:"tierfreund",emoji:"🐕",titel:"Tierfreund:in"},
+  {id:"quiz-genie",emoji:"🧠",titel:"Quiz-Genie"},
+  {id:"ueberlebt",emoji:"🍀",titel:"Ueberlebt (Echtes-Leben-Modus)",cond:function(p){return G&&G.adult&&!p.dead;}},
+  {id:"reich-und-gluecklich",emoji:"🤑",titel:"Reich & gluecklich",cond:function(p){return p.geld>=25&&p.glueck>=25;}},
+  {id:"allrounder",emoji:"🌈",titel:"Allrounder",cond:function(p){return p.geld>=15&&p.glueck>=15&&p.wissen>=15&&p.freunde>=15;}}
+];
+function achDef(id){for(var i=0;i<ACHIEVEMENTS.length;i++)if(ACHIEVEMENTS[i].id===id)return ACHIEVEMENTS[i];return null;}
+function unlockAch(id){if(LPACH[id])return false;var a=achDef(id);if(!a)return false;
+  LPACH[id]=Date.now();lsSet("lp_ach",JSON.stringify(LPACH));
+  try{announce("🏆 ERFOLG: "+a.emoji+" "+a.titel,"#ffe08a");showHint("Neuer Erfolg freigeschaltet: "+a.emoji+" "+a.titel+" 🎉",3600);
+    beep(880,.1,"triangle",.06);setTimeout(function(){beep(1174,.16,"triangle",.06);},130);}catch(e){}
+  return true;}
+function achGalleryHTML(){var got=0;ACHIEVEMENTS.forEach(function(a){if(LPACH[a.id])got++;});
+  var h="<div style='font-size:.74rem;color:#8a6a2a;font-weight:800;letter-spacing:.06em;margin:2px 0 5px'>🏆 ERFOLGE ("+got+"/"+ACHIEVEMENTS.length+")</div><div style='display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:340px;margin:0 auto'>";
+  ACHIEVEMENTS.forEach(function(a){var g=!!LPACH[a.id];
+    h+="<div title=\""+a.titel+"\" style='width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;"+(g?"background:linear-gradient(180deg,#fff6d8,#ffe0a0);border:2px solid #ffb347;box-shadow:0 2px 6px rgba(200,140,20,.3)":"background:#e6e6ec;border:2px solid #cfcfd6;filter:grayscale(1);opacity:.5")+"'>"+(g?a.emoji:"❓")+"</div>";});
+  return h+"</div>";}
+var GOALS=[
+  {k:"glueck",n:25,ic:"❤️",label:"Sammle 25 Glueck"},
+  {k:"geld",n:30,ic:"💰",label:"Sammle 30 Geld"},
+  {k:"wissen",n:22,ic:"🧠",label:"Sammle 22 Wissen"},
+  {k:"freunde",n:22,ic:"👥",label:"Sammle 22 Freunde"}
+];
+function goalMet(p){return !!(G&&G.goal&&p[G.goal.k]>=G.goal.n);}
+function renderStartStats(){var el=document.getElementById("startStats");if(!el)return;
+  var best=LPSTATS.bestScore?("🏆 Bestleistung: "+LPSTATS.bestScore+" Punkte"+(LPSTATS.bestName?" ("+LPSTATS.bestName+")":"")):"🏆 Noch keine Bestleistung spiel dein erstes Leben!";
+  var lives=(LPSTATS.games||0)+" Spiel"+((LPSTATS.games||0)===1?"":"e")+" · "+(LPSTATS.lives||0)+" Leben gelebt";
+  el.innerHTML="<div style='font-weight:800;color:#c9821a;font-size:.9rem'>"+best+"</div><div style='font-size:.78rem;color:#7a8a9a;margin:2px 0 8px'>"+lives+"</div>"+achGalleryHTML()+freischaltHTML();}
+(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");
+  try{if(muted){if(!MUS.paused)MUS.pause();}else if(running&&OPT.music&&music.on){MUS.play().catch(function(){});}}catch(e){}}
+  ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
 // ===================== 8 Lebens-Kapitel: Farben wie echt (Frühling→Winter des Lebens) =====================
 var CHAPTERS=[
  {n:"KINDHEIT",sub:"Alles beginnt mit Staunen",ground:0x54c445,sky:0x6ec8f5,accent:0xffcf3a,deko:"spielzeug"},
@@ -379,7 +443,7 @@ function terrainH(x,z){
     tmp.multiplyScalar(shade*jit);
     cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
   geo.setAttribute("color",new THREE.BufferAttribute(cols,3));geo.computeVertexNormals();
-  var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:true}));
+  var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:false}));
   m.receiveShadow=true;scene.add(m);})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
@@ -685,7 +749,7 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
   // Bäume: Stamm+Krone in Kapitel-Farbvarianten
   var N=IS_COARSE?150:240;
   var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.22,0.3,1.6,5),mat(0x8a5a3a),N);
-  var crown=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1.15,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),N);
+  var crown=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1.15,1),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:false}),N);
   var cTmp=new THREE.Color();
   var placed=0,guard=0;
   while(placed<N&&guard++<3000){
@@ -701,7 +765,7 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
     cTmp.setHex(CHAPTERS[ci].ground).offsetHSL((Math.random()-0.5)*0.12,0.28,Math.random()*0.06);
     if(ci>=6)cTmp.setHex(ci===7?0xf0d8e8:0xe08a3a).offsetHSL((Math.random()-0.5)*0.06,0,Math.random()*0.1);
     crown.setColorAt(placed,cTmp);placed++;}
-  var cap2=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.7,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),N);
+  var cap2=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.7,1),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:false}),N);
   var _cd=new THREE.Object3D(),_cc=new THREE.Color();
   for(var ci4=0;ci4<placed;ci4++){var mtx=new THREE.Matrix4();crown.getMatrixAt(ci4,mtx);
     var pos4=new THREE.Vector3(),qq=new THREE.Quaternion(),sc4=new THREE.Vector3();mtx.decompose(pos4,qq,sc4);
@@ -850,6 +914,22 @@ if(THREE.GLTFLoader){
       bl.rotation.x=-Math.PI/2;bl.position.set(ox,0.032,oz);scene.add(bl);
     },undefined,function(){});
   });
+  // 🏆 Meshy-Meilenstein-Deko (KI-generiert, Blender-poliert) — je Lebensphase ein Prop, seitlich vom Pfad
+  [["lp_prop_kinderwagen.glb",2.6,0, 6,-6, 0.3],
+   ["lp_prop_abschlusshut.glb",2.9,3, 6,-9,-0.4],
+   ["lp_prop_cabrio.glb",4.0,4, 7,-6, 0.5],
+   ["lp_prop_hochzeitsbogen.glb",5.2,5,-6,-8, 0.0],
+   ["lp_prop_haus.glb",5.2,6, 5,-9, 0.4],
+   ["lp_prop_herz.glb",3.4,7,-6,-7, 0.2]].forEach(function(spec){
+    new THREE.GLTFLoader().load("/models/"+spec[0],function(g){
+      var o=fitModel(g.scene,spec[1]),fd=fields[spec[2]*FIELDS_PER+8];
+      var ox=fd.x+spec[3],oz=fd.z+spec[4];
+      o.position.x+=ox;o.position.z+=oz;o.position.y+=Math.max(0,terrainH(ox,oz));
+      o.rotation.y=spec[5];scene.add(o);
+      var bl=new THREE.Mesh(new THREE.CircleGeometry(spec[1]*0.4,18),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.15,depthWrite:false}));
+      bl.rotation.x=-Math.PI/2;bl.position.set(ox,0.033,oz);scene.add(bl);
+    },undefined,function(){});
+  });
   new THREE.GLTFLoader().load("/models/lp_haus.glb",function(g){
     var hs=fitModel(g.scene,7.5),fh=fields[5*FIELDS_PER+8];
     var hx=fh.x+4,hz=fh.z-9;
@@ -885,6 +965,22 @@ var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
 var CHAR_STYLES=[{i:"🧢",n:"Basecap"},{i:"🌸",n:"Blumenkranz"},{i:"👓",n:"Brille"},{i:"🎩",n:"Hut"},
   {i:"👑",n:"Krone"},{i:"🎧",n:"Kopfhörer"},{i:"🕶️",n:"Sonnenbrille"},{i:"🧶",n:"Wollmütze"},{i:"🎀",n:"Schleife"},{i:"✨",n:"Ohne (nur Haar)"}];
 var SKINTONES=[0xffd9b0,0xdba46e,0x9a6a42,0xf7e0c8,0x6a4632]; // erste 3 wie früher
+// ===== 🔓 Freischalt-System: Fun-Looks schalten sich mit gespielten Leben frei (klein, nicht pay2win) =====
+var STYLE_UNLOCK={4:1,5:2,6:3,7:4,8:5}; // Accessoire-Index -> benoetigte Spiele; 0-3 + 9(Ohne) immer frei
+var HAIR_UNLOCK={6:1,7:2,8:3,9:4};      // Haar-Index -> benoetigte Spiele; 0-5 + Auto(-1) frei
+function lpGames(){return (typeof LPSTATS!=="undefined"&&LPSTATS.games)||0;}
+function styleLocked(i){var n=STYLE_UNLOCK[i];return (n&&lpGames()<n)?n:0;}
+function hairLocked(i){var n=HAIR_UNLOCK[i];return (n&&lpGames()<n)?n:0;}
+function nextStyle(i,dir){for(var k=0;k<CHAR_STYLES.length;k++){i=(i+dir+CHAR_STYLES.length)%CHAR_STYLES.length;if(!styleLocked(i))return i;}return i;}
+function nextHair(i,dir){var ring=[-1];for(var h=0;h<HAIRS.length;h++)ring.push(h);var pos=ring.indexOf(i);if(pos<0)pos=0;
+  for(var k=0;k<ring.length;k++){pos=(pos+dir+ring.length)%ring.length;var v=ring[pos];if(v<0||!hairLocked(v))return v;}return -1;}
+function freischaltCount(){var us=0,ts=0,i;for(i in STYLE_UNLOCK){ts++;if(lpGames()>=STYLE_UNLOCK[i])us++;}for(i in HAIR_UNLOCK){ts++;if(lpGames()>=HAIR_UNLOCK[i])us++;}return {got:us,total:ts};}
+function freischaltHTML(){var c=freischaltCount(),cand=[],i;
+  for(i in STYLE_UNLOCK)if(lpGames()<STYLE_UNLOCK[i])cand.push([STYLE_UNLOCK[i],CHAR_STYLES[i].i+" "+CHAR_STYLES[i].n]);
+  for(i in HAIR_UNLOCK)if(lpGames()<HAIR_UNLOCK[i])cand.push([HAIR_UNLOCK[i],"💇 bunte Haare"]);
+  cand.sort(function(a,b){return a[0]-b[0];});
+  var hint=cand.length?("Noch "+(cand[0][0]-lpGames())+" Leben bis "+cand[0][1]):"Alle Looks frei — Style-Meister! 🎉";
+  return "<div style='font-size:.74rem;color:#2a7d46;font-weight:800;letter-spacing:.05em;margin:8px 0 3px'>🔓 LOOKS ("+c.got+"/"+c.total+")</div><div style='font-size:.75rem;color:#7a8a9a'>"+hint+"</div>";}
 function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Looks — verträgt alte + neue Clients
   if(c&&(c.g==="f"||c.g==="m")){
     var o={g:c.g,
@@ -1153,11 +1249,33 @@ function cardRustle(){ // Seiten-Rascheln beim Karten-Flip (WebAudio-Rauschen, s
     var src=actx.createBufferSource();src.buffer=buf;
     var bp=actx.createBiquadFilter();bp.type="bandpass";bp.frequency.value=2700;bp.Q.value=0.6;
     var ga=actx.createGain();ga.gain.value=0.05;
-    src.connect(bp);bp.connect(ga);ga.connect(actx.destination);src.start();
+    src.connect(bp);bp.connect(ga);ga.connect(sfxDest()||actx.destination);src.start();
   }catch(e){}
 }
 function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
   pw.userData.emote={k:kind,t:0};}
+var MEET_BUBBLE={jubel:["❤️","🎉"],highfive:["🙌","✋"],umarmung:["🫂","💕"],kuss:["😘","❤️"],tanz:["💃","🎶"],wink:["👋","😊"]};
+function meetTogether(ai,bi,x,z,kind){ // 🤝 zwei Figuren treffen sich -> wenden sich einander zu & agieren gemeinsam
+  kind=kind||"jubel";var a=pawns[ai],b=pawns[bi];
+  if(a&&b){var ang=Math.atan2(b.position.x-a.position.x,b.position.z-a.position.z);
+    a.rotation.y=ang;b.rotation.y=ang+Math.PI;} // einander zuwenden (Spin pausiert während Emote)
+  emote(ai,kind);emote(bi,kind); // beide gleichzeitig dieselbe Geste
+  var bu=MEET_BUBBLE[kind]||MEET_BUBBLE.jubel;
+  chatBubble(ai,bu[0]);setTimeout(function(){chatBubble(bi,bu[1]);},260);
+  if(kind==="kuss"||kind==="umarmung"){hearts(x,z);hearts(x,z);} // extra Herzen bei Zärtlichkeit
+  confetti(x,z,kind==="kuss"?0xff6ab0:0x8affc0,kind==="tanz"?34:24);
+  beep(kind==="kuss"?988:880,.12,"triangle",.06);setTimeout(function(){beep(1174,.2,"triangle",.06);},140);}
+var MEET_ACTS=[["🤝","High-Five","highfive"],["🫂","Kuscheln","umarmung"],["😘","Küsschen","kuss"],["💃","Tanzen","tanz"],["🎉","Jubeln","jubel"],["👋","Winken","wink"]];
+function meetPickShow(){var el=document.getElementById("meetPick"),row=document.getElementById("meetPickRow");
+  if(!el||!row||!myTurn())return; // nur wer dran ist, wählt die gemeinsame Aktion (Standard-Jubel läuft schon)
+  row.innerHTML="";MEET_ACTS.forEach(function(a){var bt=document.createElement("button");
+    bt.textContent=a[0];bt.title=a[1];
+    bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:12px;width:46px;height:46px;font-size:1.35rem;cursor:pointer;line-height:1";
+    bt.onclick=function(){meetDoChosen(a[2]);};row.appendChild(bt);});
+  el.classList.remove("hide");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.add("hide");},7000);}
+function meetDoChosen(kind){var m=window._lpMeet,el=document.getElementById("meetPick");if(el)el.classList.add("hide");
+  if(!m)return;m.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,m.x,m.z,kind);});
+  if(NET.on&&myTurn())netSend({t:"meetact",k:kind});beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste
 function updEmotes(dt){
   for(var i=0;i<pawns.length;i++){var pw=pawns[i],e=pw.userData.emote;if(!e)continue;
     e.t+=dt;var L=pw.userData.limbs;
@@ -1176,7 +1294,23 @@ function updEmotes(dt){
       if(e.t>0.9){L.ra.rotation.x=0;pw.userData.emote=null;}}
     else if(e.k==="wink"){ // rechter Arm winkt
       L.ra.rotation.x=-2.8;L.ra.rotation.z=-0.2+Math.sin(e.t*11)*0.5;
-      if(e.t>1.1){L.ra.rotation.z=0;pw.userData.emote=null;}}}}
+      if(e.t>1.1){L.ra.rotation.z=0;pw.userData.emote=null;}}
+    else if(e.k==="highfive"){ // 🤝 rechter Arm hoch nach vorn + kleiner Sprung
+      L.ra.rotation.x=-2.9;L.ra.rotation.z=-0.35;
+      pw.position.y=e.t<0.9?Math.abs(Math.sin(e.t*7))*0.42:0;
+      if(e.t>1.2){pw.position.y=0;L.ra.rotation.x=0;L.ra.rotation.z=0;pw.userData.emote=null;}}
+    else if(e.k==="umarmung"){ // 🫂 Arme nach vorn/innen + zueinander lehnen (Kuscheln)
+      L.la.rotation.x=-1.25;L.ra.rotation.x=-1.25;L.la.rotation.z=0.55;L.ra.rotation.z=-0.55;
+      pw.rotation.x=Math.sin(Math.min(Math.PI,e.t*1.7))*0.3;pw.position.y=Math.abs(Math.sin(e.t*3.5))*0.1;
+      if(e.t>2.0){pw.rotation.x=0;pw.position.y=0;L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;pw.userData.emote=null;}}
+    else if(e.k==="kuss"){ // 😘 kurz vorlehnen (Küsschen)
+      pw.rotation.x=Math.sin(Math.min(Math.PI,e.t*2.4))*0.32;
+      L.la.rotation.x=-0.55;L.ra.rotation.x=-0.55;
+      if(e.t>1.5){pw.rotation.x=0;L.la.rotation.x=0;L.ra.rotation.x=0;pw.userData.emote=null;}}
+    else if(e.k==="tanz"){ // 💃 wiegen + Arme raus
+      L.la.rotation.x=-1.7;L.ra.rotation.x=-1.7;L.la.rotation.z=0.45;L.ra.rotation.z=-0.45;
+      pw.rotation.z=Math.sin(e.t*8)*0.24;pw.position.y=Math.abs(Math.sin(e.t*6))*0.2;
+      if(e.t>2.3){pw.rotation.z=0;pw.position.y=0;L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;pw.userData.emote=null;}}}}
 function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
   // Alters-Tween (weiches Wachsen am Geburtstag; bei OPT.motion aus -> fast sofort)
   var u=pw.userData,ak=Math.min(1,dt*(OPT.motion?4:24));
@@ -1239,18 +1373,19 @@ function enableCar(i){
 function syncCarSeats(i){ // Partner/Kinder/Hund sitzen sichtbar mit im Auto (kleine Extra-Köpfe hinten)
   var pw=pawns[i];if(!pw||!pw.userData.car||!G||!G.players[i])return;
   var car=pw.userData.car,fam=G.players[i].fam||{};
+  var col=(G&&G.players[i])?G.players[i].col:PCOLORS[i%PCOLORS.length];
   if(car.userData.seats)car.remove(car.userData.seats);
-  var s=new THREE.Group(),sk=mat(0xffd9b0,0x3a2a1a,0.05);
+  var s=new THREE.Group(),sk=smat(0xffd9b0,0x3a2a1a,0.05); // Cel-Shading (smat) -> passt zu den Anime-Figuren
   if(fam.partner){var h=new THREE.Mesh(new THREE.SphereGeometry(0.19,8,7),sk);h.position.set(0.24,1.0,-0.58);s.add(h);
-    var hh=new THREE.Mesh(new THREE.SphereGeometry(0.2,8,6,0,6.283,0,1.25),mat(0x8a5a2a));hh.position.set(0.24,1.03,-0.58);s.add(hh);
-    var he=new THREE.Mesh(new THREE.SphereGeometry(0.028,5,4),mat(0x222430,0x000000,0));he.position.set(0.24,1.0,-0.4);s.add(he);}
+    var hh=new THREE.Mesh(new THREE.SphereGeometry(0.2,8,6,0,6.283,0,1.25),smat(0x8a5a2a));hh.position.set(0.24,1.03,-0.58);s.add(hh);
+    var he=new THREE.Mesh(new THREE.SphereGeometry(0.028,5,4),smat(0x222430,0x000000,0));he.position.set(0.24,1.0,-0.4);s.add(he);}
   for(var k=0;k<Math.min(2,fam.kids||0);k++){
     var kh=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,7),sk);kh.position.set(k?-0.02:-0.26,0.94,-0.6);s.add(kh);
-    var kc=new THREE.Mesh(new THREE.SphereGeometry(0.145,8,5,0,6.283,0,1.1),mat(k?0x6ab8ff:0xffd166));kc.position.set(k?-0.02:-0.26,0.97,-0.6);s.add(kc);}
-  if(fam.dog){var dh=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.18,0.2),mat(0xb8834a,0x6a4a2a,0.08));dh.position.set(-0.3,0.96,-0.35);s.add(dh);
-    [[-0.36],[-0.24]].forEach(function(de){var ear=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.11,0.04),mat(0x8a5c32));ear.position.set(de[0],1.08,-0.35);s.add(ear);});
-    var dn=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.07,0.08),mat(0x3a2a1a));dn.position.set(-0.3,0.93,-0.24);s.add(dn);}
-  car.add(s);car.userData.seats=s;
+    var kc=new THREE.Mesh(new THREE.SphereGeometry(0.145,8,5,0,6.283,0,1.1),smat(k?0x6ab8ff:0xffd166));kc.position.set(k?-0.02:-0.26,0.97,-0.6);s.add(kc);}
+  if(fam.dog){var dh=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.18,0.2),smat(0xb8834a,0x6a4a2a,0.08));dh.position.set(-0.3,0.96,-0.35);s.add(dh);
+    [[-0.36],[-0.24]].forEach(function(de){var ear=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.11,0.04),smat(0x8a5c32));ear.position.set(de[0],1.08,-0.35);s.add(ear);});
+    var dn=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.07,0.08),smat(0x3a2a1a));dn.position.set(-0.3,0.93,-0.24);s.add(dn);}
+  addOutline(s,col);car.add(s);car.userData.seats=s; // Anime-Kontur um die Mitfahrer
 }
 // Staub-Puffs beim Landen eines Hüpfers (nutzt das Konfetti-Update)
 function dustPuff(x,z){if(!OPT.motion)return;
@@ -1416,10 +1551,10 @@ function updTurnMarker(dt){
 var SAVE_KEY="lp_save1";
 var G=null,running=false;
 function freshState(np,adult,mode){
-  var ps=[];
-  for(var i=0;i<np;i++)ps.push({name:PNAMES[i],col:PCOLORS[i],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},items:{},album:[],hist:[{g:20,h:10,w:5,f:5}]});
-  return {v:4,mode:mode==="kurz"?"kurz":"voll",adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0};}
-function saveGame(){if(!G||NET.on)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}
+  var ps=[];np=Math.max(1,Math.min(4,np|0)); // Overflow nie zulassen: max 4 Spieler
+  for(var i=0;i<np;i++)ps.push({name:PNAMES[i]||("Spieler "+(i+1)),col:PCOLORS[i%PCOLORS.length],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},items:{},album:[],hist:[{g:20,h:10,w:5,f:5}]});
+  return {v:4,mode:mode==="kurz"?"kurz":"voll",adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0,goal:GOALS[(Math.random()*GOALS.length)|0]};}
+function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));if(NET.on)lsSet(SAVE_KEY+"_net","1");else lsDel(SAVE_KEY+"_net");} // auch Online-Spiele sichern -> nach Reload als Einzelspiel fortsetzbar
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);
   if(!(s&&(s.v===3||s.v===4)&&s.players&&s.players.length))return null; // v3 (ohne route/mode) bleibt ladbar
   if(s.mode!=="kurz")s.mode="voll";
@@ -1479,6 +1614,9 @@ function updChapter(){
   var small=window.matchMedia&&window.matchMedia("(max-width:480px)").matches; // mobil: kurz halten
   document.getElementById("chapSub").textContent="Kapitel "+(pos+1)+" von "+AC.length+(small?"":" · "+c.sub);
   document.getElementById("turnTag").textContent=p.done?"":("🎲 "+p.name+" ist dran (Runde "+G.round+")");
+  var gt=document.getElementById("goalTag");
+  if(gt){if(G.goal){var mine=G.players[G.turn],cur=mine[G.goal.k]||0,ok=cur>=G.goal.n;
+    gt.style.display="block";gt.innerHTML=(ok?"✅ ":"🎯 ")+"Rundenziel: "+G.goal.ic+" "+cur+"/"+G.goal.n;}else gt.style.display="none";}
   // Himmel weich zur Kapitel-Farbe
   window._skyTarget=new THREE.Color(c.sky);
   // 🎵 + 📷 Kapitelwechsel: Lebensphasen-Stinger + Erinnerungs-Foto (nicht beim allerersten Setzen)
@@ -1661,13 +1799,18 @@ function onLand(){
     if((nb&&nb.type==="m")||(pb&&pb.type==="m")){showHint("😮 Ooh — nur ein Feld vom Meilenstein entfernt!",1600);beep(500,.06,"triangle",.04);setTimeout(function(){beep(400,.08,"sine",.03);},90);}}
   agePawn(G.turn,true); // 🎂 Alter dem neuen Kapitel anpassen (Geburtstags-Feier bei Stufenwechsel)
   explainField(f.type); // beim ERSTEN Betreten eines Feldtyps: kurze Erklärung
-  // Begegnung: anderes Pawn auf demselben Feld -> beide +Freunde+Glück (Koop!)
+  // Begegnung: andere Figur(en) auf demselben Feld -> zusammen agieren (Koop!)
+  var met=[];
   for(var i=0;i<G.players.length;i++){if(i===G.turn||G.players[i].done)continue;
-    if(G.players[i].tile===p.tile){
-      announce("💫 BEGEGNUNG! "+p.name+" & "+G.players[i].name,"#8affc0");hearts(fields[p.tile].x,fields[p.tile].z);
+    if(G.players[i].tile===p.tile){met.push(i);
       p.freunde+=2;p.glueck+=2;G.players[i].freunde+=2;G.players[i].glueck+=2;
-      p.bio.push("traf "+G.players[i].name+" am Wegesrand — ein Tag voller Lachen");
-      beep(1046,.25,"triangle",.07);break;}}
+      meetTogether(G.turn,i,fields[p.tile].x,fields[p.tile].z);}}
+  if(met.length){
+    var mnm=met.map(function(k){return G.players[k].name;}).join(" & ");
+    announce("💫 BEGEGNUNG! "+p.name+" & "+mnm,"#8affc0");hearts(fields[p.tile].x,fields[p.tile].z);
+    p.bio.push("traf "+mnm+" am Wegesrand — ein Tag voller Lachen");
+    window._lpMeet={pairs:met.map(function(k){return {a:G.turn,b:k};}),x:fields[p.tile].x,z:fields[p.tile].z};
+    meetPickShow();} // du darfst wählen, was ihr zusammen macht (Standard läuft schon: Jubel)
   if(p.tile===NFIELDS-1){finishPlayer(p);return;}
   if(typeof handleField==="function")handleField(p,f);
   else endTurnSoon();
@@ -1685,6 +1828,8 @@ function nextTurn(){
   if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
   if(!G.players[G.turn].done){beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}
   if(!G.players[G.turn].done){emote(G.turn,"wink");markerPop=1;} // Marker springt zur neuen Figur
+  var _mpk=document.getElementById("meetPick");if(_mpk)_mpk.classList.add("hide"); // Begegnungs-Menü schließen beim Zugwechsel
+  if(NET.on){renderNetHud();netCheckPause();} // ist der neue Spieler abwesend? -> pausieren + Anzeige aktualisieren
 }
 function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
@@ -1696,6 +1841,7 @@ function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w
 function tollBell(n){for(var i=0;i<n;i++)setTimeout(function(){beep(196,1.2,"sine",.09);beep(392,0.8,"sine",.04);},i*900);}
 function playerDeath(p,how){
   p.dead=true;p.done=true;
+  LPSTATS.totalDeaths=(LPSTATS.totalDeaths||0)+1;saveStats();
   var i=G.players.indexOf(p),pw=pawns[i];
   // Trauer-Moment: Welt verdunkelt sich, Glocke schlägt dreimal
   var mo=document.getElementById("mourn");mo.style.opacity=1;
@@ -1731,6 +1877,9 @@ function playerDeath(p,how){
 function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2;}
 function showEnd(){
   running=false;lsDel(SAVE_KEY);
+  // 🔊 Batch 7/7: Loop ausblenden, damit die Siegesfanfare frei steht
+  music.on=false;clearInterval(window._musFade);
+  window._musFade=setInterval(function(){try{if(MUS.volume>0.03)MUS.volume=Math.max(0,MUS.volume-0.05);else{MUS.volume=0;if(!MUS.paused)MUS.pause();clearInterval(window._musFade);}}catch(e){clearInterval(window._musFade);}},60);
   NET.started=false; // Lobby wieder für Rematch offen
   var rmb=document.getElementById("rematchBtn");
   if(rmb)rmb.style.display=(NET.on&&NET.host)?"inline-block":"none"; // nur der Gastgeber startet die neue Runde
@@ -1739,15 +1888,35 @@ function showEnd(){
   var fz=fields[NFIELDS-1];
   for(var cr=0;cr<5;cr++)setTimeout(function(){confetti(fz.x+(Math.random()-0.5)*8,fz.z+(Math.random()-0.5)*8,0xffd166);},cr*280);
   var sc=document.getElementById("scores");sc.innerHTML="";
-  var best=-1e9,bi=0;
-  G.players.forEach(function(p,i){var s=lifeScore(p);if(s>best){best=s;bi=i;}});
-  G.players.forEach(function(p,i){var s=lifeScore(p);
-    var d=document.createElement("div");d.className="score"+(i===bi?" win":"");
-    d.innerHTML="<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(i===bi?"👑 ":""))+p.name+"</b>"+s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>";
+  // 🏆 Endstand nach Lebenspunkten sortiert (Gewinner zuerst) + Medaillen
+  var ranked=G.players.map(function(p,i){return {p:p,i:i,s:lifeScore(p)};})
+    .sort(function(a,b){return b.s-a.s;});
+  var MEDAL=["🥇","🥈","🥉"];
+  // 🏆 Batch 7/7: Statistik aktualisieren + Rekord erkennen
+  var topR=ranked[0],newRec=false;
+  var _gPrev=(LPSTATS.games||0);
+  LPSTATS.games=(LPSTATS.games||0)+1;
+  (function(){var nu=[],i;for(i in STYLE_UNLOCK)if(_gPrev<STYLE_UNLOCK[i]&&LPSTATS.games>=STYLE_UNLOCK[i])nu.push(CHAR_STYLES[i].i+" "+CHAR_STYLES[i].n);
+    for(i in HAIR_UNLOCK)if(_gPrev<HAIR_UNLOCK[i]&&LPSTATS.games>=HAIR_UNLOCK[i]){nu.push("💇 bunte Haare");break;}
+    if(nu.length)setTimeout(function(){announce("🔓 Neuer Look frei: "+nu[0]+"!","#7ad97a");beep(880,.12,"triangle",.06);},1500);})();
+  LPSTATS.lives=(LPSTATS.lives||0)+G.players.length;
+  if(topR){if(!LPSTATS.bestScore||topR.s>LPSTATS.bestScore){LPSTATS.bestScore=topR.s;LPSTATS.bestName=topR.p.name;newRec=true;}}
+  G.players.forEach(function(p){if(p.job){LPSTATS.jobCounts=LPSTATS.jobCounts||{};LPSTATS.jobCounts[p.job.n]=(LPSTATS.jobCounts[p.job.n]||0)+1;}
+    if(goalMet(p))LPSTATS.goalsReached=(LPSTATS.goalsReached||0)+1;});
+  saveStats();
+  G.players.forEach(function(p){ACHIEVEMENTS.forEach(function(a){if(a.cond&&a.cond(p))unlockAch(a.id);});});
+  if(newRec)setTimeout(function(){announce("🎉 NEUER REKORD! "+topR.s+" Punkte","#ffd166");},900);
+  ranked.forEach(function(r,rank){var p=r.p;
+    var d=document.createElement("div");d.className="score"+(rank===0?" win":"");
+    var badge=rank<3?MEDAL[rank]:(rank+1)+".";
+    var goalTxt=G.goal?("<br><span style='font-size:.72rem;font-weight:800;color:"+(goalMet(p)?"#1fa85a":"#b06a2a")+"'>Ziel "+G.goal.ic+" "+G.goal.n+": "+(goalMet(p)?"erreicht ✓":"verpasst ✗")+"</span>"):"";
+    d.innerHTML="<div style='font-size:.72rem;color:#9aa0aa;font-weight:800;margin-bottom:2px'>"+badge+" Platz</div>"+
+      "<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(rank===0?"👑 ":""))+p.name+"</b>"+r.s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>"+goalTxt;
     sc.appendChild(d);});
+  var rankedP=ranked.map(function(r){return r.p;}); // gleiche Reihenfolge für die Chronik unten
   // Lebens-Chronik: Kurvenverlauf aller Werte pro Spieler
   var bio=document.getElementById("bio");bio.innerHTML="";
-  G.players.forEach(function(p){
+  rankedP.forEach(function(p){
     if(!p.hist||p.hist.length<2)return;
     var h4=document.createElement("h4");h4.textContent="📈 Der Lebensweg von "+p.name;bio.appendChild(h4);
     var cv=document.createElement("canvas");cv.width=540;cv.height=110;cv.style.cssText="width:100%;max-width:540px;background:#fff8ea;border-radius:10px;border:1px solid #e8d8b0";
@@ -1767,7 +1936,7 @@ function showEnd(){
       var lp2=p.hist[p.hist.length-1],ly=96-(lp2[sr[0]]/mx)*84;
       cx.font="12px serif";cx.fillText(sr[2],524,ly+4);});
     bio.appendChild(cv);});
-  G.players.forEach(function(p){
+  rankedP.forEach(function(p){
     var h=document.createElement("h4");h.textContent="📖 Das Leben von "+p.name;bio.appendChild(h);
     var t=document.createElement("div");
     var motto=p.glueck>=p.geld&&p.glueck>=p.wissen&&p.glueck>=p.freunde?"Lebensmotto: Das Glück wohnt in kleinen Momenten.":
@@ -1793,6 +1962,7 @@ function showEnd(){
       bio.appendChild(alb);
       if(OPT.motion)requestAnimationFrame(function(){alb.classList.add("play");}); // Polaroids fliegen/flippen herein
     }});
+  var ea=document.getElementById("endAch");if(ea)ea.innerHTML=achGalleryHTML();
   document.getElementById("hud").classList.add("hide");
   rollBtn.classList.add("hide");
   document.getElementById("emoBtn").classList.add("hide");
@@ -1804,7 +1974,7 @@ var music={on:false};
 var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0;MUS.preload="none";
 function musicStart(){if(music.on)return;music.on=true;MUS.play().catch(function(){});}
 function updMusic(dt){
-  if(!music.on){if(running)musicStart();return;}
+  if(!music.on){if(running&&!muted&&OPT.music)musicStart();return;}
   // Lebensabend (Kapitel 7-8): Musik dezenter
   var ch=G?chapterOf(G.players[G.turn].tile):0;
   var tgt=(muted||!OPT.music)?0:(ch>=6?0.24:0.34);
@@ -2297,7 +2467,22 @@ window.__lp={
     pw.updateWorldMatrix(true,false);var v=new THREE.Vector3().setFromMatrixPosition(pw.matrixWorld);
     v.y+=1.35*pw.scale.y*(pw.userData.headScale||1)*0.95;v.project(camera);
     return {x:(v.x*0.5+0.5)*innerWidth,y:(1-(v.y*0.5+0.5))*innerHeight};},
-  birds:function(){return birds.length;}};
+  birds:function(){return birds.length;},
+  meet:function(kind){ // Test-Only: Begegnungs-Feier zweier Figuren auslösen (optional Geste)
+    if(!G||G.players.length<2)return null;var a=G.turn,b=(a+1)%G.players.length;
+    G.players[b].tile=G.players[a].tile;placePawn(b);
+    var x=fields[G.players[a].tile].x,z=fields[G.players[a].tile].z;
+    window._lpMeet={pairs:[{a:a,b:b}],x:x,z:z};
+    meetTogether(a,b,x,z,kind||"jubel");if(!kind)meetPickShow();return true;},
+  nettest:function(present,turn,host,my){ // Test-Only: Online-Präsenz/Pause simulieren (kein echtes Netz)
+    if(!G)return null;NET.on=true;NET.host=(host!==false);NET.my=my|0;NET.conns=[];
+    NET.names=G.players.map(function(p){return p.name;});NET.present=present||G.players.map(function(){return true;});
+    if(turn!=null)G.turn=turn|0;renderNetHud();netCheckPause();
+    var ov=document.getElementById("netPause");
+    return {pause:!ov.classList.contains("hide"),txt:document.getElementById("netPauseTxt").textContent,
+      skip:document.getElementById("netPauseSkip").style.display!=="none",
+      solo:document.getElementById("netPauseSolo").style.display!=="none",
+      hud:document.getElementById("netHud").children.length};}};
 // ===================== Hauptschleife =====================
 var last=performance.now();
 function loop(now){
@@ -2319,7 +2504,7 @@ function loop(now){
     // Felder pulsieren leicht; aktives Feld stärker
     for(var i=0;i<pawns.length;i++){if(G.phase!=="moving"||i!==G.turn){
       animWalk(pawns[i],false,dt);
-      if(!G.players[i].dead)pawns[i].rotation.y+=dt*(i===G.turn?0.6:0.15);}}
+      if(!G.players[i].dead&&!pawns[i].userData.emote)pawns[i].rotation.y+=dt*(i===G.turn?0.6:0.15);}}
   }
   if(!running)updConfs(dt); // Finale-Konfetti auch nach Spielende animieren
   if(window._skyTarget){scene.background.lerp(window._skyTarget,Math.min(1,dt*1.2));scene.fog.color.copy(scene.background);}
@@ -2335,6 +2520,7 @@ var selN=2;
     b.onclick=function(){selN=n;ps.querySelectorAll("button").forEach(function(x){x.className="";});b.className="on";renderNames();};
     ps.appendChild(b);})(i);
   renderNames();
+  renderStartStats();
   if(loadGame())document.getElementById("contBtn").classList.remove("hide");
 })();
 function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML="";
@@ -2384,14 +2570,14 @@ function renderCharUI(){
     gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
     r1.appendChild(gf);r1.appendChild(gm);card.appendChild(r1);
     var r2=document.createElement("div");r2.className="crow"; // ◀ Style ▶ (Accessoire)
-    var bl=document.createElement("button");bl.textContent="◀";bl.title="Accessoire";bl.onclick=function(){cfg.style=(cfg.style+CHAR_STYLES.length-1)%CHAR_STYLES.length;upd();beep(500,.04,"triangle",.03);};
+    var bl=document.createElement("button");bl.textContent="◀";bl.title="Accessoire";bl.onclick=function(){cfg.style=nextStyle(cfg.style,-1);upd();beep(500,.04,"triangle",.03);};
     sl=document.createElement("div");sl.className="lbl";
-    var br=document.createElement("button");br.textContent="▶";br.title="Accessoire";br.onclick=function(){cfg.style=(cfg.style+1)%CHAR_STYLES.length;upd();beep(520,.04,"triangle",.03);};
+    var br=document.createElement("button");br.textContent="▶";br.title="Accessoire";br.onclick=function(){cfg.style=nextStyle(cfg.style,1);upd();beep(520,.04,"triangle",.03);};
     r2.appendChild(bl);r2.appendChild(sl);r2.appendChild(br);card.appendChild(r2);
     var r2b=document.createElement("div");r2b.className="crow"; // ◀ Haarfarbe ▶ (Auto + HAIRS)
-    var hbl=document.createElement("button");hbl.textContent="◀";hbl.title="Haarfarbe";hbl.onclick=function(){cfg.hair=(cfg.hair<=-1)?HAIRS.length-1:cfg.hair-1;upd();beep(500,.04,"triangle",.03);};
+    var hbl=document.createElement("button");hbl.textContent="◀";hbl.title="Haarfarbe";hbl.onclick=function(){cfg.hair=nextHair(cfg.hair,-1);upd();beep(500,.04,"triangle",.03);};
     hl=document.createElement("div");hl.className="lbl";hl.style.borderRadius="8px";hl.style.padding="0 4px";
-    var hbr=document.createElement("button");hbr.textContent="▶";hbr.title="Haarfarbe";hbr.onclick=function(){cfg.hair=(cfg.hair>=HAIRS.length-1)?-1:cfg.hair+1;upd();beep(520,.04,"triangle",.03);};
+    var hbr=document.createElement("button");hbr.textContent="▶";hbr.title="Haarfarbe";hbr.onclick=function(){cfg.hair=nextHair(cfg.hair,1);upd();beep(520,.04,"triangle",.03);};
     r2b.appendChild(hbl);r2b.appendChild(hl);r2b.appendChild(hbr);card.appendChild(r2b);
     var r3=document.createElement("div");r3.className="crow"; // Hautton-Punkte + Hosenfarbe
     for(var d=0;d<SKINTONES.length;d++)(function(d){var b=document.createElement("button");b.className="skin";
@@ -2410,6 +2596,52 @@ function netConnInfo(){var el=document.getElementById("netConn");if(!el)return;
   var link=(NET.conns.length||NET.host)?"🟢 verbunden":"🔴 getrennt";
   if(NET.ping>0)link+=" · Ping "+NET.ping+" ms";
   el.textContent=link;}
+// ===================== 🌐 Online-Präsenz + Auto-Pause (User-Wunsch: „falls man nicht drin ist … Anzeige/Pause/Speichern“) =====================
+function netPresent(i){ // ist Spieler i gerade verbunden?
+  if(!NET.on)return true;
+  if(i===0)return NET.host?true:(NET.conns.length>0); // Host ist immer da; für Gäste = Status des Host-Links
+  return !!(NET.present&&NET.present[i]);}
+function netBroadcastPres(){ // nur Host: aktuelle Präsenz-Liste an alle Gäste
+  if(!NET.host)return;var a=[];var n=Math.max(NET.names.length,G?G.players.length:0);
+  for(var i=0;i<n;i++)a[i]=(i===0); // Host=0 immer präsent, Rest erst mal false
+  NET.conns.forEach(function(c){if(c._idx!=null)a[c._idx]=true;});
+  NET.present=a;netSend({t:"pres",a:a});renderNetHud();netCheckPause();}
+function renderNetHud(){var el=document.getElementById("netHud");if(!el)return;
+  if(!NET.on||!running||!G){el.classList.add("hide");return;}
+  el.classList.remove("hide");el.innerHTML="";
+  var n=Math.max(NET.names.length,G.players.length);
+  for(var i=0;i<n;i++){
+    var nm=(NET.names&&NET.names[i])||(G.players[i]&&G.players[i].name)||("Spieler "+(i+1));
+    var col="#"+("00000"+((typeof PCOLORS!=="undefined"&&PCOLORS[i])||0x888888).toString(16)).slice(-6);
+    var here=netPresent(i),mine=(i===NET.my),done=!!(G.players[i]&&G.players[i].done);
+    var dot=done?"🏁":(here?"🟢":"🔴");var turnMark=(G.turn===i&&running&&!done)?" 🎲":"";
+    var chip=document.createElement("div");
+    chip.style.cssText="display:inline-flex;align-items:center;gap:5px;background:rgba(255,253,246,"+(here?".92":".72")+");border:2px solid "+col+";border-radius:16px;padding:2px 9px;font-size:.72rem;font-weight:800;color:"+(here?"#2a3040":"#9aa0aa")+";box-shadow:0 1px 5px rgba(60,40,10,.18)";
+    chip.textContent=dot+" "+String(nm).slice(0,12)+(mine?" (du)":"")+turnMark;
+    el.appendChild(chip);}}
+function netCheckPause(){var ov=document.getElementById("netPause");if(!ov)return;
+  if(!NET.on||!running||!G){ov.classList.add("hide");return;}
+  var skip=document.getElementById("netPauseSkip"),solo=document.getElementById("netPauseSolo");
+  var txt=document.getElementById("netPauseTxt"),sub=document.getElementById("netPauseSub"),ic=document.getElementById("netPauseIcon");
+  if(!NET.host&&NET.conns.length===0){ // Gast hat den Host verloren
+    ov.classList.remove("hide");ic.textContent="📴";txt.textContent="Verbindung zum Gastgeber verloren";
+    sub.textContent="Warte auf Reconnect – oder spiel dein Leben alleine zu Ende (Spielstand ist gesichert).";
+    skip.style.display="none";solo.style.display="inline-block";return;}
+  var cur=G.turn,curAbsent=(cur!==NET.my)&&!netPresent(cur)&&!(G.players[cur]&&G.players[cur].done);
+  if(curAbsent){ // aktueller Spieler ist abwesend -> pausieren statt hängen
+    ov.classList.remove("hide");ic.textContent="⏸️";
+    txt.textContent="Warte auf "+((G.players[cur]&&G.players[cur].name)||"Mitspieler")+" …";
+    sub.textContent=NET.host?"Ist die Person weg? Du kannst sie überspringen.":"Der Gastgeber kann sie bei Bedarf überspringen.";
+    skip.style.display=NET.host?"inline-block":"none";solo.style.display="none";return;}
+  ov.classList.add("hide");}
+(function(){var skip=document.getElementById("netPauseSkip"),solo=document.getElementById("netPauseSolo");
+  if(skip)skip.onclick=function(){if(!NET.host||!G)return;var cur=G.turn;if(cur===NET.my)return;
+    var msg={t:"drop",i:cur};netSend(msg);NET.q.push(msg); // lockstep: Turn-Wechsel bei allen Clients am selben Simulationspunkt
+    announce("⏭️ "+((G.players[cur]&&G.players[cur].name)||"Spieler")+" übersprungen","#ffb46e");};
+  if(solo)solo.onclick=function(){NET.on=false;try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
+    if(NET._chk)clearInterval(NET._chk);clearTimeout(NET._reTO);if(NET._hb)clearInterval(NET._hb); // Reconnect/Checksum stoppen
+    document.getElementById("netPause").classList.add("hide");document.getElementById("netHud").classList.add("hide");
+    if(rollBtn)rollBtn.disabled=false;saveGame();announce("🎮 Du spielst jetzt alleine weiter","#7ad97a");};})();
 function srand(){ // im Online-Modus deterministisch (gleiche Aktionsfolge -> gleicher Zufall überall)
   if(!NET.on)return Math.random();
   NET.seed=(NET.seed*1664525+1013904223)>>>0;return NET.seed/4294967296;}
@@ -2419,26 +2651,122 @@ function netOnMsg(m,from){
   if(NET.host&&from){var st=JSON.stringify(m);NET.conns.forEach(function(c){if(c!==from)try{c.send(st);}catch(e){}});}
   netApply(m);}
 function netApply(m){
-  if(m.t==="chat"){chatAdd(m.n,m.x);return;}
+  if(m.t==="chat"){chatAdd(m.n,m.x,m.i);return;} // Blase über Absender-Index (nicht Name)
   if(m.t==="emo"){showEmoteB(m.i|0,m.k|0);return;} // 😊 Smiley-Fast-Chat
   if(m.t==="init"){beginNet(m);return;}
   if(m.t==="rematch"){beginNet(m);return;} // 🔁 neue Runde, gleiche Spieler
-  if(m.t==="welcome"){NET.my=m.idx|0;return;} // Host teilt dem Gast seinen Spieler-Index mit
+  if(m.t==="welcome"){NET.my=m.idx|0;netUnlockAfterWelcome();return;} // Host teilt dem Gast seinen Spieler-Index mit
+  if(m.t==="full"){netRoomFull();return;} // Raum ist voll (max. 4)
   if(m.t==="ready"){if(!NET.ready)NET.ready=[];NET.ready[m.i|0]=!!m.v;netPlayersUpd();return;} // Bereit-Status
-  if(m.t==="pong"){if(m.ts)NET.ping=Math.max(1,Math.round(performance.now()-m.ts));netConnInfo();return;} // Ping-Messung (Gast)
+  if(m.t==="pong"){NET._lastPong=performance.now();if(m.ts)NET.ping=Math.max(1,Math.round(performance.now()-m.ts));netConnInfo();return;} // Ping-Messung + Watchdog (Gast)
   if(m.t==="lobby"){NET.names=m.names;NET.ready=m.ready||[];netPlayersUpd();
     var mt2=document.getElementById("netModeTag");if(mt2&&m.mode)mt2.textContent=m.mode==="kurz"?"⚡ Schnelles Leben (4 Kapitel)":"🌱 Volles Leben (8 Kapitel)";
     if(m.cfgs)NET.cfgs=m.cfgs;return;}
-  if(m.t==="drop"){if(G&&G.players[m.i]){G.players[m.i].done=true;announce("📴 "+G.players[m.i].name+" hat das Spiel verlassen","#ff8a8a");if(G.turn===m.i)nextTurn();}return;}
+  if(m.t==="sync"){netApplySync(m);return;} // 🔄 vollständiger State-Snapshot (Reconnect/Resync)
+  if(m.t==="chk"){netCheckChk(m);return;} // Desync-Erkennung per Host-Checksum
+  if(m.t==="meetact"){var mm=window._lpMeet;if(mm)mm.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,mm.x,mm.z,m.k);});return;} // gewählte Begegnungs-Geste beim Partner spielen
+  if(m.t==="pres"){NET.present=m.a||[];renderNetHud();netCheckPause();return;} // Host-Broadcast: wer ist verbunden
+  if(m.t==="drop"){
+    var di=m.i|0;
+    // Reine Anzeige sofort; die eigentliche Turn-Mutation läuft lockstep-sequenziert über die Queue
+    if(G&&G.players[di]&&!G.players[di].done)announce("📴 "+G.players[di].name+" hat das Spiel verlassen","#ff8a8a");
+    if(G&&running){NET.q.push(m);} // im Spiel: sequenzieren (alle Clients wechseln am selben Punkt)
+    else{ // Lobby / kein laufendes G: Liste defensiv pflegen (nie crashen)
+      if(NET.names&&di>=0&&di<NET.names.length){NET.names.splice(di,1);if(NET.cfgs)NET.cfgs.splice(di,1);if(NET.ready)NET.ready.splice(di,1);}
+      netPlayersUpd();}
+    renderNetHud();netCheckPause();return;}
   NET.q.push(m);}
+function netUnlockAfterWelcome(){ // Ready/Chat erst freigeben, wenn der Host uns einen Index gab
+  var rb=document.getElementById("netReadyBtn");if(rb&&!NET.host)rb.disabled=false;}
+function netRoomFull(){ // Beitritt abgelehnt — Raum ist voll
+  try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.on=false;NET.started=false;
+  if(NET._hb)clearInterval(NET._hb);clearTimeout(NET._tmo);
+  netStatus("🚪 Raum ist voll (max. 4 Spieler) — frag nach einem neuen Code.","#e05a5a");
+  var jb=document.getElementById("netJoinBtn"),hb=document.getElementById("netHostBtn");
+  if(jb){jb.disabled=false;jb.textContent="Beitreten";}if(hb){hb.disabled=false;hb.textContent="Raum erstellen";}
+  var ns=document.getElementById("netSetup"),nl=document.getElementById("netLobby");
+  if(ns)ns.style.display="flex";if(nl)nl.style.display="none";
+  var ct=document.getElementById("chatToggle");if(ct)ct.style.display="none";}
+function netUniqueName(nm){ // doppelte Namen in der Lobby automatisch entschärfen (Suffix)
+  var base=String(nm||"Spieler").slice(0,10),out=String(nm||"Spieler").slice(0,12),n=2;
+  while(NET.names.indexOf(out)>=0){out=(base+" "+n).slice(0,12);n++;}
+  return out;}
 // gezieltes Senden (für Ping/Pong): an alle bekannten Verbindungen
 function netSend2(m){var st=JSON.stringify(m);NET.conns.forEach(function(c){try{c.send(st);}catch(e){}});}
 function updNet(){
-  if(!NET.q.length||!G||!running)return;
-  var m=NET.q[0];
-  if(m.t==="roll"&&G.phase==="idle"){NET.q.shift();rollCore();}
-  else if(m.t==="pick"&&window._cardOpts){NET.q.shift();cardPick(m.k);}
+  if(!NET.q.length||!G||!running){NET._qHeadRef=null;return;}
+  var m=NET.q[0],nowT=performance.now();
+  if(NET._qHeadRef!==m){NET._qHeadRef=m;NET._qHeadT=nowT;} // neuer Kopf -> Watchdog-Uhr zurücksetzen
+  if(m.t==="roll"){
+    if(G.phase==="idle"){NET.q.shift();NET._qHeadRef=null;rollCore();return;}
+    // sonst: eine Aktion läuft noch -> warten
+  }else if(m.t==="drop"){
+    NET.q.shift();NET._qHeadRef=null;var di=m.i|0;
+    if(G&&G.players[di]){G.players[di].done=true;
+      if(G.turn===di){ // aktiver Spieler weg: offene Karte hart schließen, dann Zug weitergeben
+        window._cardOpts=null;cardEl.classList.remove("on");clearTimeout(window._qTO);nextTurn();}
+      renderNetHud();netCheckPause();}
+    return;
+  }else if(m.t==="pick"){
+    if(m.seq!=null&&m.seq<(window._cardSeq||0)){NET.q.shift();NET._qHeadRef=null;return;} // Karte längst vorbei -> verwerfen
+    if(window._cardOpts&&(m.seq==null||m.seq===window._cardSeq)){NET.q.shift();NET._qHeadRef=null;cardPick(m.k);return;}
+    if(!window._cardOpts&&G.phase==="idle"){NET.q.shift();NET._qHeadRef=null;return;} // keine Karte offen & nichts läuft -> verwerfen statt blockieren
+    // sonst: Karte öffnet gleich (Figur bewegt sich) -> warten
+  }else{NET.q.shift();NET._qHeadRef=null;return;} // unbekannter Typ -> nie blockieren
+  // 🐕 Watchdog: gleicher Kopf zu lange unbedient -> überspringen + Resync anstoßen (statt still hängen)
+  if(NET.q.length&&NET._qHeadRef===NET.q[0]&&(nowT-(NET._qHeadT||nowT))>12000){
+    NET.q.shift();NET._qHeadRef=null;
+    if(NET.host)netSyncAll(); // Host: alle neu synchronisieren
+    else if(NET.conns[0]){try{NET.conns[0].send(JSON.stringify({t:"resync"}));}catch(e){}} // Gast: Snapshot anfordern
+  }
 }
+// ===================== 🔄 State-Snapshot / Resync / Desync-Erkennung =====================
+function netStateSnapshot(){ // G ohne three.js-pawn-Refs serialisierbar machen
+  try{return JSON.parse(JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}catch(e){return null;}}
+function netSyncTo(c){ // vollständigen Zustand an EINE Verbindung schicken (Reconnect)
+  if(!NET.host||!G||!c)return;var st=netStateSnapshot();if(!st)return;
+  try{c.send(JSON.stringify({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs}));}catch(e){}}
+function netSyncAll(){ // vollständigen Zustand an alle Gäste (Resync nach Desync)
+  if(!NET.host||!G)return;var st=netStateSnapshot();if(!st)return;
+  netSend({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs});}
+function netApplySync(m){ // Gast: G aus Snapshot rekonstruieren + Lockstep deterministisch fortsetzen
+  if(NET.host)return;
+  try{
+    var st=m.state;if(!st)return;
+    NET.seed=(m.seed>>>0);
+    if(m.names)NET.names=m.names;
+    if(m.cfgs)NET.cfgs=m.cfgs;
+    if(m.turn!=null)st.turn=m.turn|0;
+    NET.q=[];NET._qHeadRef=null;NET._desync=0;
+    NET.on=true;NET.started=true;
+    window._cardOpts=null;if(cardEl)cardEl.classList.remove("on");clearTimeout(window._qTO); // evtl. offene Karte schließen
+    begin(st); // baut G + Figuren deterministisch neu auf
+    NET.present=[];for(var pi=0;pi<G.players.length;pi++)NET.present[pi]=true;
+    if(rollBtn)rollBtn.disabled=!myTurn();
+    renderNetHud();netCheckPause();announce("🔄 Wieder synchron","#7ad97a");
+  }catch(e){}}
+function netStartChkTimer(){ // Host: periodischer State-Checksum an alle Gäste
+  if(NET._chk)clearInterval(NET._chk);
+  NET._chk=setInterval(function(){if(!NET.host||!NET.on||!G||!running)return;
+    netSend({t:"chk",turn:G.turn,round:G.round,tiles:G.players.map(function(p){return p.tile;}),seed:NET.seed>>>0});
+  },5000);}
+function netCheckChk(m){ // Gast: eigenen Stand mit Host-Checksum vergleichen
+  if(NET.host||!G||!running)return;
+  if(NET.q.length||G.phase!=="idle")return; // nur im Ruhezustand vergleichen -> kein Fehlalarm während einer Aktion
+  var mine=G.players.map(function(p){return p.tile;}),ht=m.tiles||[];
+  var ok=(m.turn===G.turn)&&((m.seed>>>0)===(NET.seed>>>0))&&(mine.length===ht.length)&&mine.every(function(t,i){return t===ht[i];});
+  if(ok){NET._desync=0;return;}
+  NET._desync=(NET._desync||0)+1;
+  if(NET._desync>=2){ // zweimal in Folge daneben -> Overlay + Resync anfordern
+    NET._desync=0;
+    var ov=document.getElementById("netPause");
+    if(ov){ov.classList.remove("hide");
+      var ic=document.getElementById("netPauseIcon"),tx=document.getElementById("netPauseTxt"),sb=document.getElementById("netPauseSub"),sk=document.getElementById("netPauseSkip"),so=document.getElementById("netPauseSolo");
+      if(ic)ic.textContent="🔄";if(tx)tx.textContent="Nicht mehr synchron";
+      if(sb)sb.textContent="Stelle den gemeinsamen Spielstand wieder her …";
+      if(sk)sk.style.display="none";if(so)so.style.display="none";}
+    if(NET.conns[0]){try{NET.conns[0].send(JSON.stringify({t:"resync"}));}catch(e){}}
+  }}
 function chatBubble(idx,txt){try{
   if(!pawns[idx])return;
   var cv=document.createElement("canvas");cv.width=256;cv.height=84;var c=cv.getContext("2d");
@@ -2451,8 +2779,8 @@ function chatBubble(idx,txt){try{
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
   sp.scale.set(3.2,1.05,1);sp.position.y=3.1;pawns[idx].add(sp);
   setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},4200);}catch(e){}}
-function chatAdd(n,x){var box=document.getElementById("chatMsgs");if(!box)return;
-  if(NET.on&&G&&running){var bi=NET.names.indexOf(n);if(bi>=0)chatBubble(bi,x);}
+function chatAdd(n,x,idx){var box=document.getElementById("chatMsgs");if(!box)return;
+  if(NET.on&&G&&running){var bi=(idx!=null&&idx>=0)?idx:NET.names.indexOf(n);if(bi>=0&&pawns[bi])chatBubble(bi,x);}
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
   var cb=document.getElementById("chatBox");if(cb&&cb.style.display!=="flex")document.getElementById("chatToggle").classList.add("blink");}
@@ -2481,7 +2809,7 @@ function netRoomId(code){return "aban-lp-"+code.toLowerCase();}
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
   document.getElementById("netLobby").style.display="block";
   document.getElementById("netCodeShow").textContent=NET.code;
-  var rb=document.getElementById("netReadyBtn");if(rb)rb.style.display=NET.host?"none":"inline-block"; // nur Gast hat Bereit-Knopf
+  var rb=document.getElementById("netReadyBtn");if(rb){rb.style.display=NET.host?"none":"inline-block";if(!NET.host)rb.disabled=(NET.my<0);} // nur Gast hat Bereit-Knopf; erst nach 'welcome' aktiv
   document.getElementById("chatToggle").style.display="block"; // 💬 Chat schon in der Lobby nutzbar
 }
 function lookEmoji(cfg){cfg=sanCfg(cfg)||{g:"m",style:9};var st=CHAR_STYLES[cfg.style];return (cfg.g==="f"?"👩":"👨")+(st?st.i:"");}
@@ -2503,10 +2831,47 @@ function netPlayersUpd(){
   document.getElementById("netHint").textContent=NET.names.length>=2?(NET.host?(netAllReady()?"Alle bereit — du kannst starten!":"Warte, bis alle auf »bereit« tippen …"):"Warte, bis der Gastgeber startet …"):"Warte auf Mitspieler … Code weitergeben!";
 }
 function netMyName(){var el=document.getElementById("netName");var n=(el&&el.value.trim())||"Spieler";return n.slice(0,12);}
-function netStartHeartbeat(){ // Gast pingt den Host alle 3s -> Ping-Anzeige + „lebt noch"
-  if(NET._hb)clearInterval(NET._hb);
+function netStartHeartbeat(){ // Gast pingt den Host alle 3s -> Ping-Anzeige + Tot-Erkennung (Pong-Watchdog)
+  if(NET._hb)clearInterval(NET._hb);NET._lastPong=performance.now();
   NET._hb=setInterval(function(){if(NET.host||!NET.conns.length)return;
-    try{NET.conns[0].send(JSON.stringify({t:"ping",ts:performance.now()}));}catch(e){}},3000);}
+    try{NET.conns[0].send(JSON.stringify({t:"ping",ts:performance.now()}));}catch(e){}
+    if(NET.on&&performance.now()-(NET._lastPong||0)>9000){ // 3 Pings ohne Antwort -> Host gilt als weg -> zuegig neu verbinden (statt aufs traege 'close' zu warten)
+      try{if(NET.conns[0])NET.conns[0].close();}catch(e){}NET.conns=[];
+      renderNetHud();netCheckPause();netTryReconnect();}
+  },3000);}
+// 📵 Handy-Hintergrund/Netzwechsel killt WebRTC+Signaling -> beim Zurueckkehren AKTIV neu verbinden (haeufigste Koop-Abbruch-Ursache)
+function netOnVisible(){
+  if(!NET.on||!NET.peer)return;
+  try{
+    if(NET.peer.disconnected&&!NET.peer.destroyed)NET.peer.reconnect(); // Signaling mit gleicher ID/Raum-Code neu registrieren
+    if(NET.host){setTimeout(function(){if(NET.host&&NET.on)netBroadcastPres();},1200);} // Praesenz auffrischen
+    else{NET._reTries=0;if(!(NET.conns[0]&&NET.conns[0].open))netTryReconnect();} // Gast: Backoff zuruecksetzen + sofort neu verbinden
+  }catch(e){}
+}
+document.addEventListener("visibilitychange",function(){if(!document.hidden)netOnVisible();});
+addEventListener("focus",netOnVisible);addEventListener("online",netOnVisible);
+function netTryReconnect(){ // Gast: mit Backoff neu zum Host verbinden und Snapshot anfordern
+  if(NET.host||!NET.on||!NET.peer||NET.peer.destroyed)return;
+  if(NET.conns[0]&&NET.conns[0].open)return; // schon (wieder) verbunden
+  NET._reTries=(NET._reTries||0)+1;
+  if(NET._reTries>8){netCheckPause();return;} // aufgeben -> Solo-Overlay übernimmt
+  var delay=Math.min(8000,Math.round(600*Math.pow(1.7,NET._reTries-1)));
+  clearTimeout(NET._reTO);
+  NET._reTO=setTimeout(function(){
+    if(NET.host||!NET.on||!NET.peer||NET.peer.destroyed)return;
+    if(NET.conns[0]&&NET.conns[0].open)return;
+    try{
+      var c=NET.peer.connect(netRoomId(NET.code),{reliable:true});NET.conns=[c];
+      var settled=false;
+      c.on("open",function(){settled=true;NET._reTries=0;netConnInfo();netStartHeartbeat();
+        try{c.send(JSON.stringify({t:"rejoin",n:netMyName(),idx:NET.my,cfg:loadChar(0)}));}catch(e){}
+        announce("🔌 Wieder verbunden — synchronisiere …","#7ad97a");});
+      c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}netApply(m);});
+      c.on("close",function(){NET.conns=[];if(NET._hb)clearInterval(NET._hb);netConnInfo();
+        if(NET.on){renderNetHud();netCheckPause();netTryReconnect();}});
+      setTimeout(function(){if(!settled&&NET.on&&!(c&&c.open))netTryReconnect();},Math.min(6000,delay+3000)); // Versuch lief ins Leere -> nächster Backoff
+    }catch(e){netTryReconnect();}
+  },delay);}
 function netHostReset(){NET.host=false;try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
   clearTimeout(NET._tmo);
   var b=document.getElementById("netHostBtn");if(b){b.disabled=false;b.textContent="Raum erstellen";}
@@ -2535,17 +2900,35 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
     netHostReset();
   });
   NET.peer.on("connection",function(c){
-    if(NET.started||NET.names.length>=4||(G&&running)){try{c.close();}catch(e){}return;} // Raum voll / läuft schon
-    NET.conns.push(c);
+    NET.conns.push(c); // erst annehmen — 'hallo' (Neuzugang) vs. 'rejoin' (Wiedereintritt) entscheidet der Datenkanal
     c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}
-      if(m.t==="hallo"){var nm=String(m.n||"Spieler").slice(0,12);NET.names.push(nm);NET.cfgs.push(sanCfg(m.cfg)||seededChar(1,NET.names.length-1));
+      if(m.t==="hallo"){
+        if(NET.started||(G&&running)||NET.names.length>=4){ // Raum voll oder Spiel läuft -> Neuzugang ablehnen
+          try{c.send(JSON.stringify({t:"full"}));}catch(e){}
+          var cf=NET.conns.indexOf(c);if(cf>=0)NET.conns.splice(cf,1);try{c.close();}catch(e){}return;}
+        var nm=netUniqueName(String(m.n||"Spieler").slice(0,12));NET.names.push(nm);NET.cfgs.push(sanCfg(m.cfg)||seededChar(1,NET.names.length-1));
         c._idx=NET.names.length-1;NET.ready[c._idx]=false;
         try{c.send(JSON.stringify({t:"welcome",idx:c._idx}));}catch(e){}
         netPlayersUpd();netConnInfo();chatAdd("System",nm+" ist beigetreten");beep(720,.08,"triangle",.05);return;}
+      if(m.t==="rejoin"){ // Wiedereintritt im laufenden Spiel -> vollständigen Snapshot schicken
+        var ri=m.idx|0;c._idx=ri;
+        if(NET.present)NET.present[ri]=true;
+        netSyncTo(c);netBroadcastPres();netConnInfo();
+        if(G&&G.players[ri])chatAdd("System",G.players[ri].name+" ist wieder da");return;}
+      if(m.t==="resync"){netSyncTo(c);return;} // Gast hat Desync erkannt -> Snapshot nachliefern
       if(m.t==="ping"){try{c.send(JSON.stringify({t:"pong",ts:m.ts}));}catch(e){}return;} // gezielte Ping-Antwort
       netOnMsg(m,c);});
     c.on("close",function(){var wasIdx=c._idx;var ci=NET.conns.indexOf(c);if(ci>=0)NET.conns.splice(ci,1);
-      if(wasIdx!=null){if(NET.names[wasIdx])chatAdd("System",NET.names[wasIdx]+" hat die Lobby verlassen");var msg={t:"drop",i:wasIdx};netSend(msg);netApply(msg);}
+      if(NET.on&&running){ // im laufenden Spiel: NICHT auto-rauswerfen -> Präsenz melden + ggf. pausieren (Reconnect möglich)
+        if(wasIdx!=null&&G&&G.players[wasIdx])announce("📴 "+G.players[wasIdx].name+" ist getrennt — warte …","#ffb46e");
+        netBroadcastPres();
+      }else if(wasIdx!=null){ // Lobby: Platz KOMPAKTIEREN statt Geisterplatz stehen zu lassen
+        if(NET.names[wasIdx])chatAdd("System",NET.names[wasIdx]+" hat die Lobby verlassen");
+        NET.names.splice(wasIdx,1);if(NET.cfgs)NET.cfgs.splice(wasIdx,1);if(NET.ready)NET.ready.splice(wasIdx,1);
+        NET.conns.forEach(function(cc){if(cc._idx!=null&&cc._idx>wasIdx)cc._idx--; // verbleibende Gäste neu indizieren
+          if(cc._idx!=null){try{cc.send(JSON.stringify({t:"welcome",idx:cc._idx}));}catch(e){}}}); // jeder erfährt seinen neuen Index
+        netPlayersUpd(); // (Wrapper) broadcastet {t:'lobby',…} -> Liste + Start-Knopf erscheinen wieder korrekt
+      }
       netConnInfo();netPlayersUpd();});
   });
 }
@@ -2564,7 +2947,7 @@ document.getElementById("netJoinBtn").onclick=function(){
   var code=(document.getElementById("netCode").value||"").trim().toUpperCase().replace(/[^A-Z]/g,"");
   if(code.length!==4){netStatus("Bitte den 4-Buchstaben-Raum-Code eingeben.","#e05a5a");return;}
   var jb=this,hb=document.getElementById("netHostBtn");jb.disabled=true;hb.disabled=true;jb.textContent="⏳ …";
-  NET.host=false;NET.code=code;NET.my=0;NET.started=false;NET.ping=0;
+  NET.host=false;NET.code=code;NET.my=-1;NET.started=false;NET.ping=0;NET._reTries=0; // Index bis 'welcome' unbekannt (nicht 0!)
   netStatus("⏳ Verbinde mit Raum "+code+" …","#2a6ab0");
   function joinReset(msg){netStatus(msg,"#e05a5a");clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
     jb.disabled=false;hb.disabled=false;jb.textContent="Beitreten";
@@ -2573,30 +2956,46 @@ document.getElementById("netJoinBtn").onclick=function(){
   var opened=false;
   try{NET.peer=new Peer(undefined,{debug:0});}catch(e){joinReset("Online-Modul-Fehler — Seite neu laden.");return;}
   clearTimeout(NET._tmo);
-  NET._tmo=setTimeout(function(){if(opened)return; // 15s-Timeout: nie stilles Nichts
-    joinReset("⏱️ Raum "+code+" antwortet nicht — Code prüfen, dann nochmal versuchen.");},15000);
-  NET.peer.on("open",function(){
-    var c=NET.peer.connect(netRoomId(code),{reliable:true});
-    NET.conns=[c];
-    c.on("open",function(){opened=true;clearTimeout(NET._tmo);
+  NET._tmo=setTimeout(function(){if(opened)return; // Gesamt-Timeout (deckt alle Wiederhol-Versuche ab)
+    joinReset("⏱️ Raum "+code+" antwortet nicht — Code prüfen, dann nochmal versuchen.");},28000);
+  NET.peer.on("disconnected",function(){try{if(NET.peer&&!NET.peer.destroyed)NET.peer.reconnect();}catch(e){}}); // Signaling-Abriss -> Signaling reconnecten
+  // 🔁 Beitritt mit Wiederholung: der Gratis-Broker ist manchmal träge, oder der Host lädt noch —
+  // ein einzelnes "peer-unavailable" heisst NICHT, dass der Raum weg ist. Bis zu 5 Versuche.
+  var attempt=0,MAXTRY=5;
+  function tryConnect(){
+    if(opened||!NET.peer||NET.peer.destroyed)return;
+    attempt++;netStatus("⏳ Suche Raum "+code+" … (Versuch "+attempt+"/"+MAXTRY+")","#2a6ab0");
+    var c=NET.peer.connect(netRoomId(code),{reliable:true});NET.conns=[c];var thisOpen=false;
+    c.on("open",function(){thisOpen=true;opened=true;clearTimeout(NET._tmo);clearTimeout(NET._retryT);
       netLobbyShow();netPlayersUpd();netConnInfo();netStatus("");
       try{c.send(JSON.stringify({t:"hallo",n:netMyName(),cfg:loadChar(0)}));}catch(e){}
       document.getElementById("netHint").textContent="Verbunden — mach dich bereit und warte auf den Start …";
       netStartHeartbeat();});
     c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}netApply(m);});
     c.on("close",function(){NET.conns=[];if(NET._hb)clearInterval(NET._hb);netConnInfo();
-      if(NET.on)announce("📴 Verbindung zum Gastgeber verloren","#ff8a8a");
-      else joinReset("📴 Verbindung getrennt — nochmal versuchen.");});
-  });
-  NET.peer.on("error",function(e){var t=e&&e.type;if(opened)return;clearTimeout(NET._tmo);
-    if(t==="peer-unavailable")joinReset("❌ Raum "+code+" nicht gefunden — Code genau prüfen!");
-    else if(t==="browser-incompatible")joinReset("Dein Browser kann kein WebRTC — Online geht hier leider nicht.");
-    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed")joinReset("⏱️ Kein Kontakt zum Vermittlungs-Server — Internet prüfen.");
+      if(NET.on){announce("📴 Verbindung zum Gastgeber verloren — versuche neu zu verbinden …","#ffb46e");renderNetHud();netCheckPause();netTryReconnect();}
+      else if(opened)joinReset("📴 Verbindung getrennt — nochmal versuchen.");});
+    clearTimeout(NET._retryT); // geht diese Verbindung nicht in 4,5s auf -> nächster Versuch
+    NET._retryT=setTimeout(function(){if(thisOpen||opened)return;try{c.close();}catch(e){}
+      if(attempt<MAXTRY)tryConnect();
+      else{clearTimeout(NET._tmo);joinReset("❌ Raum "+code+" nicht gefunden. Läuft das Spiel beim Gastgeber gerade? Er darf die Seite nicht schliessen/wegwischen. Code prüfen und nochmal.");}
+    },4500);
+  }
+  NET.peer.on("open",function(){tryConnect();});
+  NET.peer.on("error",function(e){var t=e&&e.type;if(opened)return;
+    if(t==="peer-unavailable"){ // Host (noch) nicht auffindbar -> nächster Versuch statt sofort aufgeben
+      if(attempt<MAXTRY){setTimeout(tryConnect,1400);}
+      else{clearTimeout(NET._tmo);joinReset("❌ Raum "+code+" nicht gefunden. Läuft das Spiel beim Gastgeber gerade? Er darf die Seite nicht schliessen/wegwischen. Code prüfen und nochmal.");}
+      return;}
+    clearTimeout(NET._tmo);
+    if(t==="browser-incompatible")joinReset("Dein Browser kann kein WebRTC — Online geht hier leider nicht.");
+    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed")joinReset("⏱️ Kein Kontakt zum Vermittlungs-Server — Internet prüfen, dann nochmal.");
     else joinReset("Verbindung fehlgeschlagen ("+t+") — nochmal versuchen.");});
 };
 // Bereit-Knopf (Gast), Code-Kopieren, Online-Start + Rematch teilen sich netLaunch
 document.getElementById("netReadyBtn").onclick=function(){
-  if(NET.host)return;if(!NET.ready)NET.ready=[];
+  if(NET.host)return;if(NET.my<0)return; // erst nach 'welcome' — sonst falscher Slot
+  if(!NET.ready)NET.ready=[];
   var v=!NET.ready[NET.my];NET.ready[NET.my]=v;this.textContent=v?"⏳ Doch nicht bereit":"✅ Ich bin bereit";
   netPlayersUpd();netSend({t:"ready",i:NET.my,v:v});beep(v?720:480,.05,"triangle",.04);};
 (function(){var cb=document.getElementById("netCopyBtn");if(cb)cb.onclick=function(){
@@ -2621,7 +3020,10 @@ function beginNet(init){
   document.getElementById("chatToggle").style.display="block";
   chatAdd("System","Online-Spiel gestartet — viel Glück! Du bist "+init.names[NET.my]+".");
   rollBtn.disabled=!myTurn();
-  announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");}
+  announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");
+  NET.present=[];for(var pi=0;pi<G.players.length;pi++)NET.present[pi]=true; // Start: alle da
+  NET.q=[];NET._qHeadRef=null;NET._desync=0; // saubere Lockstep-Queue pro Runde
+  if(NET.host){netBroadcastPres();netStartChkTimer();}else{renderNetHud();netCheckPause();}}
 // Lobby-Broadcast des Hosts, wenn sich die Spielerliste/der Modus aendert (inkl. Looks + Bereit-Status)
 (function(){var _upd=netPlayersUpd;netPlayersUpd=function(){_upd();
   var kc=document.getElementById("kurzChk"),mt=document.getElementById("netModeTag");
@@ -2633,8 +3035,10 @@ function beginNet(init){
 // Chat-Verkabelung
 (function(){var tg=document.getElementById("chatToggle"),bx=document.getElementById("chatBox");
   tg.onclick=function(){var on=bx.style.display==="flex";bx.style.display=on?"none":"flex";tg.classList.remove("blink");};
-  function send(){var inp=document.getElementById("chatIn"),tx=inp.value.trim();if(!tx)return;inp.value="";
-    var nm=NET.names[NET.my]||"Ich";chatAdd(nm,tx);netSend({t:"chat",n:nm,x:tx});}
+  function send(){var inp=document.getElementById("chatIn"),tx=inp.value.trim();if(!tx)return;
+    if(NET.on&&NET.my<0)return; // erst nach 'welcome' senden — sonst landet die Aktion auf Host-Slot 0
+    inp.value="";
+    var nm=NET.names[NET.my]||"Ich";chatAdd(nm,tx,NET.my);netSend({t:"chat",n:nm,x:tx,i:NET.my});}
   document.getElementById("chatSend").onclick=send;
   document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});})();
 
@@ -2642,6 +3046,7 @@ function begin(saved){
   G=saved||freshState(selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked,
     (document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked)?"kurz":"voll");
   if(G.mode!=="kurz")G.mode="voll"; // alte v3-Saves defensiv
+  if(!G.goal)G.goal=GOALS[(Math.random()*GOALS.length)|0];
   forkSel=null;moveTo=-1;moveQ=0;hopT=0;
   G.players.forEach(function(pp){if(!fields[pp.tile])pp.tile=0;}); // unbekannter Feld-Index -> Start (nie crashen)
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
@@ -2685,11 +3090,31 @@ function renderMenu(){
     var d=document.createElement("button");
     d.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
     d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
-    d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();renderMenu();};r.appendChild(d);});
+    d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();
+      if(o[1]==="music"){try{if(!OPT.music){if(!MUS.paused)MUS.pause();}else if(running&&!muted){music.on=true;MUS.play().catch(function(){});}}catch(e){}}
+      renderMenu();};r.appendChild(d);});
   var t=document.createElement("button");
   t.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
   t.innerHTML="<span>⏩ Zug-Tempo</span><span>"+(OPT.tempo>1?"SCHNELL":"NORMAL")+"</span>";
   t.onclick=function(){OPT.tempo=OPT.tempo>1?1:1.7;saveOpt();renderMenu();};r.appendChild(t);
+  // 🔓 Batch 7/7: Freischaltungen-Uebersicht der aktiven Spielfigur
+  if(G&&G.players&&G.players[G.turn]){var pu=G.players[G.turn],fam=pu.fam||{},it=pu.items||{};
+    var UNL=[
+      ["💼","Beruf",!!pu.job,pu.job?("Beruf: "+pu.job.n+" Gehalt x"+pu.job.mult):"Waehle im Kapitel Beruf deinen Job."],
+      ["🚗","Auto",!!it.auto,it.auto?"Cabrio: eine 6 = +1 Extra-Feld.":"Kaufe ein Auto am Meilenstein."],
+      ["🏠","Haus",!!it.haus,it.haus?"Eigenheim: +2 Glueck an jedem Meilenstein.":"Kaufe ein Eigenheim am Meilenstein."],
+      ["💍","Partner:in",!!fam.partner,fam.partner?"Verheiratet der Schatz reist mit.":"Sag am See Ja zur grossen Liebe."],
+      ["👶","Kinder",!!fam.kids,fam.kids?(fam.kids+" Kind"+(fam.kids>1?"er":"")+" laufen mit."):"Gruende eine Familie."],
+      ["🐕","Hund",!!fam.dog,fam.dog?"Ab und zu +1 Freunde auf Freunde-Feldern.":"Hol dir einen treuen Begleiter."]
+    ];
+    var hd=document.createElement("div");hd.style.cssText="font-size:.76rem;font-weight:800;color:#8a6a2a;margin:6px 0 2px;text-align:left";
+    hd.textContent="🔓 Freischaltungen "+pu.name;r.appendChild(hd);
+    var grid=document.createElement("div");grid.style.cssText="display:flex;flex-direction:column;gap:5px";
+    UNL.forEach(function(u){var row=document.createElement("div");
+      row.style.cssText="display:flex;align-items:center;gap:8px;border-radius:10px;padding:7px 10px;font-size:.8rem;text-align:left;"+(u[2]?"background:linear-gradient(180deg,#fff6d8,#ffe8b8);border:2px solid #ffb347;color:#3a3020":"background:#ececf0;border:2px solid #d4d4da;color:#9a9aa4;filter:grayscale(1)");
+      row.innerHTML="<span style=\'font-size:1.2rem\'>"+(u[2]?u[0]:"🔒")+"</span><span><b>"+u[1]+(u[2]?" ✓":"")+"</b><br><span style=\'font-size:.72rem;font-weight:600\'>"+u[3]+"</span></span>";
+      grid.appendChild(row);});
+    r.appendChild(grid);}
 }
 function toggleMenu(){menuOpen=!menuOpen;
   document.getElementById("menuO").classList.toggle("hide",!menuOpen);
@@ -2706,9 +3131,10 @@ document.getElementById("restartBtn").onclick=function(){var b=document.getEleme
   else{b.dataset.armed="1";b.textContent="Sicher? Nochmal tippen";}};
 document.getElementById("startBtn").onclick=function(){lsDel(SAVE_KEY);begin(null);};
 document.getElementById("contBtn").onclick=function(){begin(loadGame());};
-document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");
+document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");renderStartStats();
   if(NET.on){ // Online beenden: sauber trennen, Lobby zurücksetzen
     try{if(NET.peer)NET.peer.destroy();}catch(e){}if(NET._hb)clearInterval(NET._hb);
+    if(NET._chk)clearInterval(NET._chk);clearTimeout(NET._reTO); // Reconnect/Checksum stoppen
     NET.on=false;NET.host=false;NET.peer=null;NET.conns=[];NET.started=false;
     document.getElementById("netSetup").style.display="flex";document.getElementById("netLobby").style.display="none";
     var hb=document.getElementById("netHostBtn"),jb=document.getElementById("netJoinBtn");if(hb){hb.disabled=false;hb.textContent="Raum erstellen";}if(jb)jb.disabled=false;
@@ -2767,7 +3193,7 @@ function showCard(kick,title,txt,opts){
 }
 function sendPick(k){ // genau EINE Wahl pro Karte (verhindert Quiz-Timeout+Klick-Doppel im Lockstep)
   if(window._pickDone===window._cardSeq)return;window._pickDone=window._cardSeq;
-  if(NET.on){netSend({t:"pick",k:k});NET.q.push({t:"pick",k:k});}
+  if(NET.on){var pm={t:"pick",k:k,seq:window._cardSeq};netSend(pm);NET.q.push(pm);} // seq -> Empfänger erkennt veraltete/fremde Karten
   else cardPick(k);}
 function cardPick(k){var opts=window._cardOpts;if(!opts||!opts[k])return;clearTimeout(window._qTO);
   window._cardOpts=null;cardEl.classList.remove("on");opts[k].fn();}
@@ -2800,6 +3226,7 @@ function applyFx(p,fx){showFx(p,fx);
   p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
   p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
   p.freunde=Math.max(0,p.freunde+(fx.freunde||0));
+  if(p.geld===0&&!p._pleite){p._pleite=true;showHint("⚠️ Pleite! Kein Geld mehr bei Rechnungen kostet es jetzt Glück statt Geld.",3200);}
 }
 // ===================== ❓🔄🏁 Stations-Events (Pass B2): mehr als Würfeln =====================
 var QUIZ=[ // 24 kinderfreundliche Fragen (DE) — richtig = +2 🧠 +2 💰, falsch = keine Strafe
@@ -2836,16 +3263,23 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
   var Q=QUIZ[qi],right=Q.a[Q.c],timed=OPT.motion;
   cardEl.style.borderColor="#8a5aff";
   function fin(ok,toolate){
-    if(ok){applyFx(p,{wissen:2,geld:2});announce("✅ RICHTIG!","#8affc0");confetti(fields[p.tile].x,fields[p.tile].z,0x8a5aff,10);
-      p.bio.push("glänzte beim großen Quiz");beep(880,.1,"triangle",.06);setTimeout(function(){beep(1108,.16,"triangle",.06);},120);}
-    else{announce(toolate?"⏳ ZEIT UM!":"❌ KNAPP DANEBEN","#ffb37a");showHint("Die richtige Antwort: "+right,3200);beep(300,.18,"sine",.05);}
+    if(ok){p.quizStreak=(p.quizStreak||0)+1;
+      var streakBonus=p.quizStreak>=3?(p.quizStreak-2):0;
+      applyFx(p,{wissen:2+streakBonus,geld:2+streakBonus});
+      announce(streakBonus?("🔥 QUIZ-SERIE x"+p.quizStreak+"!"):"✅ RICHTIG!","#8affc0");
+      if(streakBonus)showHint("Quiz-Serie x"+p.quizStreak+" Bonus +"+streakBonus+" 🧠 +"+streakBonus+" 💰!",3000);
+      confetti(fields[p.tile].x,fields[p.tile].z,0x8a5aff,10);
+      p.bio.push("glänzte beim großen Quiz");beep(880,.1,"triangle",.06);setTimeout(function(){beep(1108,.16,"triangle",.06);},120);
+      if(p.quizStreak>=3)unlockAch("quiz-genie");}
+    else{p.quizStreak=0;announce(toolate?"⏳ ZEIT UM!":"❌ KNAPP DANEBEN","#ffb37a");showHint("Die richtige Antwort: "+right,3200);beep(300,.18,"sine",.05);}
     updPlayers();endTurnSoon();}
   var opts=Q.a.map(function(al,k){return {l:["🅰","🅱","🅲"][k]+" "+al,fn:function(){fin(k===Q.c,false);}};});
   opts.push({l:"",hidden:1,fn:function(){fin(false,true);}}); // Timeout-Wahl (unsichtbar, lockstep-gesynct)
   showCard("Quiz-Karte · richtig = +2 🧠 +2 💰","❓ "+Q.q,
     timed?'⏳ 15 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
   clearTimeout(window._qTO);
-  if(timed){requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
+  if(timed)requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
+  if(timed||NET.on){ // Online IMMER scharf schalten (auch bei OPT.motion=aus) -> AFK erzeugt keinen Soft-Lock
     window._qTO=setTimeout(function(){ // nur der aktive Spieler löst den Timeout aus (Online: ein Absender)
       if(!window._cardOpts)return;
       if(NET.on&&G.turn!==NET.my)return;
@@ -2866,10 +3300,16 @@ function raceCard(p){ // 🏁 alle würfeln gleichzeitig 1× — höchster Wurf 
   cardEl.style.borderColor="#ff7a2a";
   var alive=[];
   G.players.forEach(function(pl,i){if(!pl.done)alive.push(i);});
-  if(alive.length<2){ // Solo: kleiner Sprint gegen die Uhr
-    var r0=1+((srand()*6)|0),win0=r0>=4;
-    if(win0){applyFx(p,{geld:2});emote(G.turn,"jubel");}
-    showCard("Wettrennen","🏁 Solo-Sprint!","Du würfelst 🎲 <b>"+r0+"</b> — "+(win0?"schnell genug: <b>+2 💰</b>!":"heute nicht schnell genug. Beim nächsten Mal!"),
+  if(alive.length<2){ // 🏁 Batch 7/7: Solo = sichtbares Best-of-3
+    var mine=0,riv=0,rounds=[];
+    for(var rr=0;rr<3;rr++){var a=1+((srand()*6)|0),b=1+((srand()*6)|0);if(a>=b)mine++;else riv++;rounds.push([a,b]);}
+    var win0=mine>riv;
+    if(win0){applyFx(p,{geld:2});emote(G.turn,"jubel");moneyRain(fields[p.tile].x,fields[p.tile].z,6);}
+    beep(523,.08,"square",.04);setTimeout(function(){beep(659,.08,"square",.04);},110);setTimeout(function(){beep(win0?784:392,.14,"triangle",.05);},220);
+    var body="<div style=\'font-weight:800;margin-bottom:6px\'>Best-of-3 gegen den Schatten-Läufer 🏃</div>";
+    rounds.forEach(function(rd,k){var w=rd[0]>=rd[1];body+="<div>Lauf "+(k+1)+": 🎲 <b>"+rd[0]+"</b> vs "+rd[1]+" — "+(w?"✅ du":"➖ Schatten")+"</div>";});
+    body+="<div style=\'margin-top:6px;font-weight:900\'>"+mine+" : "+riv+" — "+(win0?"Sieg! <b>+2 💰</b>":"knapp verloren — beim nächsten Mal!")+"</div>";
+    showCard("Wettrennen · Solo","🏁 Best-of-3-Sprint!",body,
       [{l:"Weiter ▶",fn:function(){updPlayers();endTurnSoon();}}]);return;}
   var res={},best=0;
   alive.forEach(function(i){var r=1+((srand()*6)|0);res[i]=r;if(r>best)best=r;});
@@ -2887,7 +3327,7 @@ function jobCard(p,done){
   var picks=[];while(picks.length<3){var j=JOBS[(srand()*JOBS.length)|0];if(picks.indexOf(j)<0)picks.push(j);}
   showCard("Meilenstein · Berufswahl","💼 Was willst du werden?","Drei Türen stehen offen. Hinter jeder ein anderes Leben — Gehalt ist nicht alles.",
     picks.map(function(j){return {l:j.i+" "+j.n,sub:j.d,fn:function(){p.job={i:j.i,n:j.n,mult:j.mult};applyFx(p,j.fx);
-      p.bio.push("wurde "+j.n+" — und bereute es nie");updPlayers();done();}};}));}
+      p.bio.push("wurde "+j.n+" — und bereute es nie");unlockAch("selfmade");updPlayers();done();}};}));}
 function autoCard(p,done){
   showCard("Meilenstein · Das erste Auto","🚗 Ein eigenes Auto?","Beim Händler glänzt ein kleines Cabrio in deiner Lieblingsfarbe. Der Schlüssel liegt schon fast in deiner Hand.",
     [{l:"🚗 Kaufen — ab jetzt wird gefahren!",sub:"−6 💰 · +2 ❤️ · deine Figur fährt Auto · Turbo: 6 = +1 Feld",fn:function(){if(!p.items)p.items={};p.items.auto=true;applyFx(p,{geld:-6,glueck:2});p.bio.push("kaufte das erste eigene Auto — Freiheit auf vier Rädern");enableCar(G.turn);snap(G.turn,"🚗","Das erste Auto");announce("🚗 BRUMM BRUMM!","#ffd166");beep(90,.35,"sawtooth",.06);setTimeout(function(){beep(140,.25,"sawtooth",.05);},200);updPlayers();done();}},
@@ -2900,11 +3340,11 @@ function wedCard(p,done){
 function kidsCard(p,done){
   showCard("Meilenstein · Nachwuchs?","👶 Ein Kinderzimmer voller Träume","Ihr streicht die Wände bunt, nur für den Fall. Nachts flüstert ihr über Namen.",
     [{l:"👶 Ein Kind",sub:"+5 ❤️ · +1 👥 · laufende Kosten steigen",fn:function(){p.fam.kids=1;applyFx(p,{glueck:5,freunde:1});p.bio.push("bekam "+KIDNAMES[(srand()*KIDNAMES.length)|0]+" — das Haus wurde nie wieder still");snap(G.turn,"👶","Ein Kind kommt");storkScene(G.turn,1);updPlayers();done();}},
-     {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");snap(G.turn,"👶","Zwillinge!");storkScene(G.turn,2);updPlayers();done();}},
-     {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");snap(G.turn,"🐕","Ein Hund zieht ein");syncFam(G.turn);beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();done();}}]);}
+     {l:"👶👶 Zwillinge!",sub:"+8 ❤️ · −4 💰 · doppelte Kosten",fn:function(){p.fam.kids=2;applyFx(p,{glueck:8,geld:-4});p.bio.push("bekam Zwillinge — Chaos und Glück im Doppelpack");snap(G.turn,"👶","Zwillinge!");storkScene(G.turn,2);unlockAch("zwillinge");updPlayers();done();}},
+     {l:"🐕 Erstmal ein Hund",sub:"+3 ❤️ · +2 👥 · Hund läuft mit!",fn:function(){p.fam.dog=true;applyFx(p,{glueck:3,freunde:2});p.bio.push("holte einen Hund — der beste Kompromiss aller Zeiten");snap(G.turn,"🐕","Ein Hund zieht ein");syncFam(G.turn);unlockAch("tierfreund");beep(520,.1,"square",.05);setTimeout(function(){beep(660,.1,"square",.05);},130);updPlayers();done();}}]);}
 function hausCard(p,done){
   showCard("Meilenstein · Eigenheim","🏠 Ein eigenes Haus?","Das Schild am Gartenzaun sagt „Zu verkaufen“. Der Rasen ist verwildert — aber du siehst schon Lichterketten auf der Veranda.",
-    [{l:"🏠 Kaufen — Wurzeln schlagen",sub:"−10 💰 · +3 ❤️ · dauerhaft: +2 ❤️ an jedem Meilenstein",fn:function(){if(!p.items)p.items={};p.items.haus=true;applyFx(p,{geld:-10,glueck:3});p.bio.push("kaufte ein Haus mit Veranda — und nannte es für immer Zuhause");snap(G.turn,"🏠","Das eigene Haus");confetti(fields[p.tile].x,fields[p.tile].z,0xffd166,14);updPlayers();done();}},
+    [{l:"🏠 Kaufen — Wurzeln schlagen",sub:"−10 💰 · +3 ❤️ · dauerhaft: +2 ❤️ an jedem Meilenstein",fn:function(){if(!p.items)p.items={};p.items.haus=true;applyFx(p,{geld:-10,glueck:3});p.bio.push("kaufte ein Haus mit Veranda — und nannte es für immer Zuhause");snap(G.turn,"🏠","Das eigene Haus");confetti(fields[p.tile].x,fields[p.tile].z,0xffd166,14);unlockAch("eigenheim");updPlayers();done();}},
      {l:"🏕 Weiter zur Miete — flexibel bleiben",sub:"+2 🧠 · +1 💰",fn:function(){applyFx(p,{wissen:2,geld:1});p.bio.push("blieb zur Miete — die Welt war das Zuhause");updPlayers();done();}}]);}
 function shortMileChain(p){ // ⚡ Kurz-Modus: das große Lebens-Kapitel — Hochzeit → Kinder → Haus hintereinander
   if(p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,function(){shortMileChain(p);});return;}

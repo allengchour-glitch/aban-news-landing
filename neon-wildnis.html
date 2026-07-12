@@ -38,7 +38,7 @@ canvas{display:block}
 #nexusProg .npt{font-size:.78rem;color:#d9c6ff;margin-top:3px;font-weight:700}
 #kprompt{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.85);border:1px solid rgba(120,255,200,.4);border-radius:12px;padding:9px 16px;font-size:1.05rem;font-weight:800;opacity:0;transition:opacity .2s;white-space:nowrap}
 #kprompt .key{display:inline-block;background:#1a2140;border:1px solid #6affc0;border-radius:6px;padding:1px 8px;margin-right:6px;color:#6affc0}
-#announce{position:absolute;top:30%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.04em;text-shadow:0 4px 18px #000;opacity:0;transition:opacity .4s;color:#7de3ff;pointer-events:none;padding:0 12px}
+#announce{position:absolute;top:30%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.04em;text-shadow:0 2px 3px #000,0 0 6px #000,0 4px 22px #000,0 0 30px rgba(125,227,255,.5);opacity:0;transition:opacity .4s;color:#eafcff;pointer-events:none;padding:0 12px}
 #toast{position:absolute;bottom:200px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.9);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:8px 16px;font-weight:700;opacity:0;transition:opacity .3s;max-width:88vw;text-align:center}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
@@ -82,6 +82,7 @@ canvas{display:block}
 #ov a.arc:hover{color:#7de3ff}
 /* Charakter-Picker */
 #charPick{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:560px;margin:4px 0 20px}
+#charPrev{width:150px;height:184px;border-radius:16px;background:linear-gradient(180deg,rgba(30,44,74,.7),rgba(16,24,46,.7));border:1px solid rgba(120,200,255,.25);margin:2px auto 8px;display:block;box-shadow:0 6px 22px rgba(0,0,0,.3)}
 .ccard{min-width:96px;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 12px;border-radius:16px;background:rgba(20,30,60,.7);border:2px solid rgba(120,200,255,.28);color:#e8f4ff;cursor:pointer;font-family:inherit;transition:transform .1s,border-color .1s,box-shadow .1s}
 .ccard:hover{transform:translateY(-2px)}
 .ccard .cemo{font-size:2rem;line-height:1}
@@ -146,6 +147,7 @@ canvas{display:block}
     <span class="chip"><b>🔨</b> Bauen</span>
   </div>
   <div id="charLbl">Wähle deinen Helden</div>
+  <canvas id="charPrev" width="300" height="368"></canvas>
   <div id="charPick"></div>
   <button class="big" id="startBtn">▶ Los geht's</button>
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
@@ -170,9 +172,9 @@ renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 if(renderer.outputEncoding!==undefined)renderer.outputEncoding=THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 var scene=new THREE.Scene();
-var SKY_DAY=new THREE.Color(0x2a4a7a),SKY_NIGHT=new THREE.Color(0x0a1030);
+var SKY_DAY=new THREE.Color(0x3f68a4),SKY_NIGHT=new THREE.Color(0x0a1030);
 scene.background=SKY_DAY.clone();
-scene.fog=new THREE.Fog(SKY_DAY.getHex(),60,200);
+scene.fog=new THREE.Fog(SKY_DAY.getHex(),100,340);
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xbfd4ff,0x24304f,0.7);scene.add(hemi);
@@ -195,26 +197,27 @@ function buildGround(){
   g.rotateX(-Math.PI/2);
   var pos=g.attributes.position,cols=[];
   // Biome-Paletten: Wiese, Wald, Feuchtgebiet, Sand/Lichtung, Kristall-Tundra
-  var meadow=new THREE.Color(0x2e7a52),forest=new THREE.Color(0x184a38),marsh=new THREE.Color(0x1c4a5a),
-      sand=new THREE.Color(0x6a6a44),tundra=new THREE.Color(0x35506e);
+  // Kräftigere, abwechslungsreichere Biom-Paletten (vorher zu fad/dunkel)
+  var meadow=new THREE.Color(0x46ad63),forest=new THREE.Color(0x237049),marsh=new THREE.Color(0x1f7d84),
+      sand=new THREE.Color(0xb39a52),tundra=new THREE.Color(0x4f88b6),heath=new THREE.Color(0x8a63ac);
   var tmpA=new THREE.Color(),tmpB=new THREE.Color();
   for(var i=0;i<pos.count;i++){
     var x=pos.getX(i),z=pos.getZ(i);
-    var h=Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9;
+    var h=Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55+Math.sin(x*0.019-z*0.017)*1.6;
     pos.setY(i,h);
-    // grossräumiges Biom-Rauschen (0..1) + zweite Achse für Übergänge
-    var bn=(Math.sin(x*0.006)*Math.cos(z*0.0055)+Math.sin(x*0.011+z*0.009)*0.5+1.5)/3;
-    var bn2=(Math.cos(x*0.004-z*0.0047)+1)/2;
+    // Biom-Rauschen kleinteiliger -> mehr Abwechslung im Blickfeld (0..1)
+    var bn=(Math.sin(x*0.009)*Math.cos(z*0.008)+Math.sin(x*0.016+z*0.013)*0.5+1.5)/3;
+    var bn2=(Math.cos(x*0.006-z*0.007)+1)/2;
     var col;
-    if(bn<0.28){col=tmpA.copy(marsh).lerp(forest,bn/0.28);}
-    else if(bn<0.5){col=tmpA.copy(forest).lerp(meadow,(bn-0.28)/0.22);}
-    else if(bn<0.72){col=tmpA.copy(meadow).lerp(bn2>0.5?sand:meadow,(bn-0.5)/0.22*0.7);}
-    else{col=tmpA.copy(meadow).lerp(tundra,(bn-0.72)/0.28);}
-    // Höhen-Tönung: Senken feuchter/dunkler, Kuppen heller
-    tmpB.copy(col).lerp(marsh,Math.max(0,-h)*0.12);
-    col.lerp(tmpB,0.5);
-    // feines Fleck-Rauschen
-    var b=0.82+((Math.sin(x*0.5)*Math.cos(z*0.5))*0.1)+Math.sin(x*0.13+z*0.17)*0.05;
+    if(bn<0.26){col=tmpA.copy(marsh).lerp(forest,bn/0.26);}
+    else if(bn<0.48){col=tmpA.copy(forest).lerp(meadow,(bn-0.26)/0.22);}
+    else if(bn<0.70){col=tmpA.copy(meadow).lerp(bn2>0.5?sand:heath,(bn-0.48)/0.22*0.75);}
+    else{col=tmpA.copy(meadow).lerp(tundra,(bn-0.70)/0.30);}
+    // Höhen-Tönung: Senken dunkler/feuchter, Kuppen minimal heller
+    tmpB.copy(col).lerp(marsh,Math.max(0,-h)*0.10);col.lerp(tmpB,0.4);
+    col.offsetHSL(0,0.03,Math.max(0,h)*0.02); // etwas mehr Sättigung + hellere Kuppen
+    // gröberes Patch-Rauschen + feine Fleckung -> lebendiger Boden
+    var b=0.80+Math.sin(x*0.09+z*0.07)*0.10+Math.sin(x*0.5)*Math.cos(z*0.5)*0.08+Math.sin(x*0.13+z*0.17)*0.05;
     cols.push(col.r*b,col.g*b,col.b*b);
   }
   g.setAttribute("color",new THREE.Float32BufferAttribute(cols,3));
@@ -222,7 +225,7 @@ function buildGround(){
   var m=new THREE.MeshLambertMaterial({vertexColors:true});
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
-function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9;}
+function groundH(x,z){return Math.sin(x*0.012)*Math.cos(z*0.011)*2.2+Math.sin(x*0.03+z*0.02)*0.9+Math.sin(x*0.07+z*0.05)*0.55+Math.sin(x*0.019-z*0.017)*1.6;}
 
 // ---------- Assets laden (nature_pack) ----------
 var treeProtos=[],bushProto=null,natureReady=false;
@@ -286,6 +289,50 @@ function placeResources(){
     berry.position.y=0.7;m.add(berry);
     resources.push({type:"bush",mesh:m,x:x,z:z,hp:1,maxhp:1,dead:false,regrow:0,baseY:m.position.y,berry:berry});
   });
+  // 🌸🌿 Bunter Bodenteppich gegen „fade" Landschaft: Blumen (leuchtend) + Gras-Büschel — instanziert = billig
+  (function(){
+    var o=new THREE.Object3D(),cc=new THREE.Color();
+    function spot(){var a=rnd()*6.28,rd=6+rnd()*half;return [Math.cos(a)*rd,Math.sin(a)*rd];}
+    var FL=Math.round(360*VF),FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c,0xff5c7a];
+    var flowers=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.15,0),new THREE.MeshBasicMaterial(),FL); // unlit -> leuchtet auch nachts
+    for(var i=0;i<FL;i++){var p=spot();o.position.set(p[0],groundH(p[0],p[1])+0.2,p[1]);o.scale.setScalar(0.6+rnd()*0.9);o.rotation.set(rnd()*6.28,rnd()*6.28,0);o.updateMatrix();flowers.setMatrixAt(i,o.matrix);cc.setHex(FLC[(rnd()*FLC.length)|0]);flowers.setColorAt(i,cc);}
+    flowers.instanceColor.needsUpdate=true;scene.add(flowers);
+    var GR=Math.round(470*VF),GC=[0x3fa060,0x4fbf6e,0x2e8a50,0x6ac07a,0x9ad46a];
+    var grass=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.6,4),new THREE.MeshLambertMaterial(),GR);grass.castShadow=false;grass.receiveShadow=true;
+    for(var j=0;j<GR;j++){var q=spot();o.position.set(q[0],groundH(q[0],q[1])+0.28,q[1]);o.scale.set(1,0.7+rnd()*0.9,1);o.rotation.set((rnd()-.5)*0.3,rnd()*6.28,(rnd()-.5)*0.3);o.updateMatrix();grass.setMatrixAt(j,o.matrix);cc.setHex(GC[(rnd()*GC.length)|0]);grass.setColorAt(j,cc);}
+    grass.instanceColor.needsUpdate=true;scene.add(grass);
+  })();
+  // 💧 Leuchtende Teiche in Senken + heller Uferring + Schilf -> lebendige Landschaft
+  window._wildPonds=[];
+  (function(){
+    var N=Math.round(11*VF);
+    for(var i=0;i<N;i++){
+      var a=rnd()*6.28,rd=22+rnd()*(half-22),x=Math.cos(a)*rd,z=Math.sin(a)*rd;
+      if(Math.abs(x)<12&&Math.abs(z)<12){i--;continue;}
+      var r=4.5+rnd()*6.5;
+      var wg=new THREE.CircleGeometry(r,26);wg.rotateX(-Math.PI/2);
+      var wm=new THREE.MeshStandardMaterial({color:0x1e6f92,emissive:0x0b3f60,emissiveIntensity:0.5,transparent:true,opacity:0.82,roughness:0.12,metalness:0.6});
+      var gy=Math.min(groundH(x,z),groundH(x+r,z),groundH(x-r,z),groundH(x,z+r),groundH(x,z-r))-0.15;
+      var pond=new THREE.Mesh(wg,wm);pond.position.set(x,gy+0.06,z);scene.add(pond);
+      var ring=new THREE.Mesh(new THREE.RingGeometry(r,r+0.8,26),new THREE.MeshBasicMaterial({color:0x4fe0e8,transparent:true,opacity:0.45,side:THREE.DoubleSide}));
+      ring.rotation.x=-Math.PI/2;ring.position.set(x,gy+0.09,z);scene.add(ring);
+      for(var re=0;re<4;re++){var ra=rnd()*6.28,rx=x+Math.cos(ra)*(r+0.3),rz=z+Math.sin(ra)*(r+0.3);
+        var reed=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.9,4),new THREE.MeshLambertMaterial({color:0x2e8a50}));
+        reed.position.set(rx,groundH(rx,rz)+0.42,rz);reed.rotation.z=(rnd()-.5)*0.3;scene.add(reed);}
+      window._wildPonds.push({m:pond,ph:rnd()*6.28});
+    }
+  })();
+  // 🍄 Leucht-Pilz-Cluster fuer Details/Farbe
+  (function(){
+    var N=Math.round(34*VF),caps=[0xff5c8a,0x7de3ff,0xffd166,0xc98bff,0x6affc0];
+    for(var i=0;i<N;i++){var a=rnd()*6.28,rd=12+rnd()*half,cx=Math.cos(a)*rd,cz=Math.sin(a)*rd,cl=1+((rnd()*3)|0);
+      for(var j=0;j<cl;j++){var ox=cx+(rnd()-.5)*2.2,oz=cz+(rnd()-.5)*2.2;
+        var stem=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.08,0.4,5),new THREE.MeshLambertMaterial({color:0xe8e0d0}));
+        var cap=new THREE.Mesh(new THREE.SphereGeometry(0.22,9,6,0,6.28,0,1.8),new THREE.MeshBasicMaterial({color:caps[(rnd()*caps.length)|0]}));
+        cap.position.y=0.24;cap.scale.y=0.7;stem.add(cap);
+        stem.position.set(ox,groundH(ox,oz)+0.2,oz);stem.scale.setScalar(0.7+rnd()*0.8);scene.add(stem);}
+    }
+  })();
 }
 
 // ---------- Partikel-Pool ----------
@@ -327,10 +374,28 @@ var CHARACTERS=[
   {id:"magier",   emo:"🔮", name:"Magier",     desc:"Robe & Stab",  file:"class_mage.glb",         scale:1.15, glow:"soft"},
   {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"Kapuze & Bogen",file:"class_ranger.glb",       scale:1.15, glow:"soft"},
   {id:"titan",    emo:"🛡️", name:"Titan",      desc:"Schwer & stark",file:"class_titan.glb",        scale:1.2,  glow:"soft"},
-  {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft"}
+  {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft"},
+  // 🎌 Anime-Charaktere (Meshy, gerigged idle/walk/run) — echte Anime-Figuren zur Auswahl
+  {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style",       file:"anime_hero.glb",      scale:1.05, glow:"soft"},
+  {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr", file:"anime_warrior.glb",   scale:1.05, glow:"soft"},
+  {id:"anime_magier",       emo:"🪄", name:"Anime-Magier",   desc:"Hexenhut & Stab",    file:"anime_mage.glb",      scale:1.05, glow:"soft"},
+  {id:"anime_ninja",        emo:"🥷", name:"Anime-Ninja",    desc:"Maske & Kapuze",     file:"anime_ninja.glb",     scale:1.05, glow:"soft"},
+  {id:"anime_schuelerin",   emo:"🎀", name:"Anime-Schülerin",desc:"Sailor-Uniform",     file:"anime_schoolgirl.glb",scale:1.05, glow:"soft"},
+  {id:"anime_maedchen",     emo:"👧", name:"Anime-Mädchen",  desc:"Süß & flink",        file:"anime_girl.glb",      scale:1.05, glow:"soft"},
+  {id:"anime_junge",        emo:"👦", name:"Anime-Junge",    desc:"Cool & blau",        file:"anime_boy.glb",       scale:1.05, glow:"soft"}
 ];
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
 function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
+// 🌸 Cel-Shading (Anime-Toon) — MeshToonMaterial + 3-Band-Gradient; Outline auf skinned Meshes in r128 zu heikel -> weggelassen
+var _nwGrad=null;
+function nwGradTex(){if(_nwGrad)return _nwGrad;var c=document.createElement('canvas');c.width=4;c.height=1;var x=c.getContext('2d');
+  var d=x.createImageData(4,1),v=[105,165,215,255];for(var i=0;i<4;i++){d.data[i*4]=d.data[i*4+1]=d.data[i*4+2]=v[i];d.data[i*4+3]=255;}
+  x.putImageData(d,0,0);var t=new THREE.CanvasTexture(c);t.minFilter=t.magFilter=THREE.NearestFilter;t.generateMipmaps=false;_nwGrad=t;return t;}
+function toonify(mesh,neon){var m=mesh.material;if(!m||m._toon||!m.isMeshStandardMaterial&&!m.isMeshPhysicalMaterial)return;
+  var tm=new THREE.MeshToonMaterial({map:m.map||null,color:m.color?m.color.clone():new THREE.Color(0xffffff),
+    gradientMap:nwGradTex(),emissive:m.emissive?m.emissive.clone():new THREE.Color(0x000000),emissiveMap:m.emissiveMap||null,
+    transparent:!!m.transparent,opacity:m.opacity!==undefined?m.opacity:1,side:m.side,alphaTest:m.alphaTest||0});
+  tm.emissiveIntensity=neon?0.9:0.35;tm.skinning=!!mesh.isSkinnedMesh;tm._toon=true;mesh.material=tm;}
 function loadHero(){
   if(!THREE.GLTFLoader)return;
   var C=getChar();
@@ -338,8 +403,8 @@ function loadHero(){
     var o=g.scene;o.scale.setScalar(C.scale||1.15);
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
-      n.material.emissiveIntensity=neon?1.2:0.55;
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
+      toonify(n,neon); // Anime-Cel-Look
     }}});
     pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);
     // idle tolerant: manche Modelle (hero.glb) haben andere Clip-Namen → Fallback auf ersten Clip
@@ -476,6 +541,9 @@ function updAmbient(dt){
   for(var w=0;w<fogWisps.length;w++){var fw=fogWisps[w];fw.m.position.x+=fw.vx*dt;fw.m.position.z+=fw.vz*dt;fw.m.rotation.z+=dt*0.02;
     if(Math.hypot(fw.m.position.x-player.position.x,fw.m.position.z-player.position.z)>150){fw.m.position.set(player.position.x+(rnd()-0.5)*120,fw.m.position.y,player.position.z+(rnd()-0.5)*120);}
     fw.m.material.opacity+=(fogOp-fw.m.material.opacity)*Math.min(1,dt);}
+  // 💧 Teich-Schimmer
+  if(window._wildPonds)for(var p=0;p<window._wildPonds.length;p++){var pd=window._wildPonds[p];pd.ph+=dt*1.5;
+    pd.m.material.emissiveIntensity=0.42+Math.sin(pd.ph)*0.16;pd.m.material.opacity=0.76+Math.sin(pd.ph*0.7)*0.09;}
 }
 
 // ---------- Fund-Objekte: Truhen & Ruinen ----------
@@ -931,12 +999,12 @@ function updDayNight(dt){
   var vig=document.getElementById("nightVig");
   if(isNight){t=0.08;var lbl="🌙 Tag "+day+" · Nacht ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
     if(vig)vig.style.opacity=(0.55+Math.sin(perfNow*0.004)*0.12).toFixed(2);}
-  else{t=0.35+Math.sin(f*Math.PI)*0.65;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph;
+  else{t=0.62+Math.sin(f*Math.PI)*0.38;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph;
     // Dämmerungs-Warnung kurz vor der Nacht
     if(vig)vig.style.opacity=(f>0.85?(f-0.85)/0.15*0.3:0).toFixed(2);
     if(f>0.9&&!duskWarned){duskWarned=true;announce("🌇 Die Dunkelheit naht — sichere deine Basis!");}
     if(f<0.5)duskWarned=false;}
-  sun.intensity=0.15+t*1.0;hemi.intensity=0.25+t*0.6;
+  sun.intensity=0.2+t*1.4;hemi.intensity=0.22+t*0.5;
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   scene.fog.color.copy(scene.background);
   var ang=f*Math.PI;sun.position.set(Math.cos(ang)*60,Math.max(8,Math.sin(isNight?0.2:f*Math.PI)*80),Math.sin(ang)*40);
@@ -1097,6 +1165,45 @@ function startGame(fresh){
   running=true;paused=false;
   announce("🌅 Willkommen in der Wildnis!");
 }
+// ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
+(function(){
+  var cv=document.getElementById("charPrev");if(!cv||!window.THREE||!THREE.GLTFLoader)return;
+  var pr,psc,pcam,pmix,pmodel,pt=0,_lastId=null;
+  function init(){
+    try{pr=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});}catch(e){return false;}
+    pr.setPixelRatio(Math.min(devicePixelRatio,2));pr.setSize(cv.width,cv.height,false);pr.outputEncoding=THREE.sRGBEncoding;
+    psc=new THREE.Scene();
+    psc.add(new THREE.HemisphereLight(0xffffff,0x3a4a66,1.15));
+    var dl=new THREE.DirectionalLight(0xfff2e0,1.05);dl.position.set(2,4,3);psc.add(dl);
+    pcam=new THREE.PerspectiveCamera(30,cv.width/cv.height,0.1,50);pcam.position.set(0,1.02,3.5);pcam.lookAt(0,0.98,0);
+    return true;
+  }
+  function clearModel(){if(pmodel){psc.remove(pmodel);pmodel.traverse(function(n){if(n.isMesh&&n.geometry)n.geometry.dispose();});}pmodel=null;pmix=null;}
+  window.setCharPreview=function(id){
+    if(id===_lastId)return;_lastId=id;
+    if(!pr&&!init())return;
+    var C=CHARACTERS[0];for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)C=CHARACTERS[i];
+    new THREE.GLTFLoader().load("/models/"+C.file,function(g){
+      if(_lastId!==id)return; // schon weitergeklickt
+      clearModel();var o=g.scene;o.scale.setScalar((C.scale||1.15)*0.55);
+      o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
+      var box=new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();box.getCenter(ctr);
+      o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=box.min.y;
+      pmodel=o;psc.add(o);
+      if(g.animations&&g.animations.length){pmix=new THREE.AnimationMixer(o);
+        var idle=null;for(var a=0;a<g.animations.length;a++)if(/idle/i.test(g.animations[a].name)){idle=g.animations[a];break;}
+        pmix.clipAction(idle||g.animations[0]).play();}
+    },undefined,function(){});
+  };
+  var _pl=performance.now();
+  (function loop(now){requestAnimationFrame(loop);
+    var ov=document.getElementById("ov");if(!pr||!ov||ov.classList.contains("hide")){_pl=now;return;}
+    var dt=Math.min(0.05,(now-_pl)/1000);_pl=now;
+    if(pmix)pmix.update(dt);
+    if(pmodel)pmodel.rotation.y+=dt*0.7;
+    pr.render(psc,pcam);
+  })(performance.now());
+})();
 // ---------- Charakter-Picker (Startscreen) ----------
 (function(){
   var wrap=document.getElementById("charPick");if(!wrap)return;
@@ -1111,6 +1218,7 @@ function startGame(fresh){
       b.onclick=function(){curId=C.id;try{localStorage.setItem("nw_char",C.id);}catch(e){}render();};
       wrap.appendChild(b);
     });
+    if(window.setCharPreview)window.setCharPreview(curId);
   }
   render();
 })();

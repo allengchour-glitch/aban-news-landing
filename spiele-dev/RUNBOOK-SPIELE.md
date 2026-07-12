@@ -51,6 +51,45 @@
   `material.color.setHex` alles mit; unabhängige Teile (Augen) eigenes Material.
 - **Wolken/Sonne nicht in Kameranähe** (wäscht Bild aus) — weit hinter das Brett.
 - **Musik-Dateien**: `preload="none"` (Seitenladezeit), Lautstärke 0.26–0.34.
+- **Screenshot-Harness-Falle**: der generische `game_shot`-Button-Finder (Regex
+  `/Start|Los|▶|Spiel/`) trifft in Lebenspfad den FALSCHEN Knopf → Spiel startet nie,
+  G bleibt null, man screenshottet nur das Setup-Menü. Fix: gezielt
+  `document.getElementById('startBtn').click()`.
+- **Lebenspfad-Skript ist in einer IIFE gekapselt** → `G`/`NET`/Funktionen sind NICHT
+  auf `window`. Zum Testen den `window.__lp`-Hook nutzen (u.a. neu
+  `__lp.nettest(present,turn,host,my)` für Online-Präsenz/Pause).
+- **Helle Toon-Bretter (Lebenspfad/Traumhaus): HUD-Text wäscht aus.** Kapitel-Titel/
+  „ist dran" brauchen ein dunkles Pill-Backdrop (`rgba(38,52,72,.42)` + Text-Schatten),
+  sonst weiß-auf-hell unlesbar (Gemini-Vision-Befund 2026-07-11).
+
+## ⚠️⚠️ TEURE LEHRE: Workflow-Output im geteilten Working-Tree NICHT verwerfen (2026-07-11)
+- Der grosse Lebenspfad-Workflow (w80x0609d, 25 Agenten, 7 Batches) lief ~2,5 h im Hintergrund und
+  schrieb seine Fixes UNCOMMITTET in lebenspfad.html. Ich hielt das fuer eine fremde Parallel-Session
+  und habe die Datei mehrfach 'git checkout -- lebenspfad.html' -> Batches 1-6 groesstenteils zerstoert,
+  nur Batch 7 ueberlebte.
+- REGEL: Bevor du eine uncommittete Aenderung als Contamination verwirfst, pruefe ob ein eigener
+  Workflow/Agent diese Datei gerade schreibt (Task-/Workflow-Liste, w..-IDs). Ein Workflow der
+  'Kein Commit' macht, lebt NUR im Working-Tree -> committen statt verwerfen.
+- Bearbeitet ein Workflow eine Datei: in Ruhe lassen bis er fertig meldet, DANN verifizieren+committen.
+  Recovery: journal.jsonl + tasks/<id>.output haben die Batch-Beschreibungen; resumeFromRunId wendet
+  Datei-Edits NICHT neu an (Cache = nur Agent-Text). Voller Wieder-Lauf = frischer Workflow (teuer, 3M Tokens).
+
+## 🏆 Lebenspfad: Meshy-Meilenstein-Props (2026-07-11, PR #1714)
+- 6 CC-eigene Meshy-Toon-Props in `models/lp_prop_*.glb` (haus/cabrio/hochzeitsbogen/
+  kinderwagen/abschlusshut/herz), Blender-poliert (zentriert, y=0, ~1.3 Einheiten,
+  JPEG 1024², r128-Sampler-Fix), je <500 KB / ~7k Tris. Eingebaut als 3D-Landmarken
+  je Lebensphase via bestehendem `GLTFLoader+fitModel`-Spec-Block (bei `lp_haus`-Loader).
+- **Meshy-Prop-Falle:** „Hut/Zylinder"-Prompts bekommen oft ein aufgemaltes Anime-Gesicht
+  → Prompt „no face, no eyes, only inanimate objects" + Textur-Prompt gegen Gesichter.
+- **Viewer-Falle:** Pastell-Props im three.js-Viewer schnell überbelichtet (→ weiß). ACES-
+  Tonemapping + gedämpftes Licht, dann stimmen die Farben — Modell war ok. Sortierung/
+  Endstand: `showEnd` nach `lifeScore` sortiert (🥇🥈🥉), Chronik folgt `rankedP`.
+
+## 🌐 Lebenspfad Online-Präsenz/Pause/Save (2026-07-11, live PR #1714)
+- In-Game-`#netHud` (🟢/🔴/🏁 pro Spieler, 🎲=dran); Host broadcastet `{t:"pres",a[]}`.
+- Auto-Pause `#netPause`: abwesender aktiver Spieler → „Warte auf …" (+Host-Skip);
+  Gast verliert Host → „Alleine weiterspielen". Disconnect im Spiel wirft nicht mehr
+  sofort raus, sondern meldet Abwesenheit. `saveGame` sichert jetzt auch Online-Spiele.
 
 ## Spiel-Besonderheiten
 - `lebenspfad.html`: OPT (music/sfx/tempo/motion) aus localStorage; updater-Kette in der
@@ -231,12 +270,12 @@ Durchgehender Anime/Toon-Look für die Spieler-Charaktere, nach und nach ausgero
   Bloom-bewusst. Reusable Helfer (gradientTex/toonMat/addOutline) — einmal bauen, überall nutzen.
 - [ ] **Phase 1:** neon-jump + lebenspfad (prozedurale Figuren, Charakter-Picker) — Anime-Umbau,
       Auswahl/Varianten/Altern erhalten.
-- [ ] **Phase 2:** neon-wildnis + neon-realm (GLB-Helden → Materialien auf Toon tauschen + Outline;
+- [~] **Phase 2:** neon-wildnis GLB-Helden auf Cel-Shading (MeshToonMaterial, 2026-07-12 live PR #1724). realm/survivor bewusst NICHT (Neon-Glow-Mismatch, Toon würde Look verschlechtern). Outline auf skinned Meshes r128 zu heikel → weggelassen. (ehem.: GLB-Helden → Materialien auf Toon tauschen + Outline;
       ggf. Anime-Köpfe ergänzen), neon-survivor (Nova), neon-duo (Klinge/Funke).
 - [ ] **Phase 3:** Rest (abyss/colossus/racer-Fahrer) wo Charaktere sichtbar.
 
 ### Lebenspfad: viel freischalten + viele Features (User 2026-07-11) — nächster Lebenspfad-Pass (nach Online-Fix-Agent, gleiche Datei)
-- [ ] **Freischalt-System**: über mehrere Spiele hinweg Dinge freischalten (localStorage-Meta) —
+- [x] **Freischalt-System** (2026-07-12 live, PR #1726): Charakter-Looks/Accessoires (👑🎧🕶️🧶🎀 + bunte Haare) schalten sich über gespielte Leben frei (lp_stats.games); Cycler überspringt Gesperrtes; Startscreen-Fortschritt + Freischalt-Toast. OFFEN: Deko/Bretter-Themes, Bonus-Ereignisse, Start-Boni. —
       neue Charakter-Looks/Accessoires/Outfits, neue Deko/Bretter-Themes, Bonus-Ereignisse,
       Titel/Abzeichen, evtl. neue Start-Boni. Fortschritts-/Freischalt-Screen im Menü.
 - [ ] **Viele Features**: mehr Ereignis-Vielfalt, Mini-Spiele an Stationen, Achievements/Meilensteine,
