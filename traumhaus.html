@@ -72,6 +72,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
+<button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:linear-gradient(90deg,#1a4a2a,#3a6a3a);box-shadow:0 8px 24px rgba(30,80,40,.5)">🌿 Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat">💬</button>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
@@ -258,6 +259,7 @@ var KATALOG={
   {id:"auto_flitzer",n:"Flitzer",e:"🏎️",cost:4800,size:[1,2],car:1},
   {id:"auto_van",n:"Van",e:"🚐",cost:3200,size:[1,2],car:1},
   {id:"beet",n:"Gemüsebeet",e:"🥕",cost:120,size:[1,1],beet:1},
+  {id:"growbox",n:"Growbox (zwielichtig)",e:"🌿",cost:600,size:[1,1],grow:1},
   {id:"grill",n:"Grill",e:"🍖",cost:290,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
   {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}}]
 };
@@ -328,9 +330,31 @@ function applyFurn(id,gx,gy,rot,fid){
   if(def.car){ // Auto: parkt, faehrt morgens zur Arbeit
     if(window.autoRec){scene.remove(window.autoRec.mesh);window.autoRec=null;}
     loadTH(id,function(tpl){if(!tpl)return;
-      var m=tpl.clone(true);m.position.set(cx(gx),0.01,cz(gy));m.rotation.y=Math.PI/2;
+      var m=tpl.clone(true);
+      var bb=new THREE.Box3().setFromObject(m),szv=new THREE.Vector3();bb.getSize(szv);
+      var laenge=Math.max(szv.x,szv.z)||1;m.scale.setScalar(4.2/laenge);
+      var bb2=new THREE.Box3().setFromObject(m);
+      m.position.set(cx(gx),-bb2.min.y+0.01,cz(gy));m.rotation.y=Math.PI/2;
       scene.add(m);
-      window.autoRec={id:id,mesh:m,homeX:cx(gx),homeZ:cz(gy),state:"parkt",t:0};});
+      window.autoRec={id:id,mesh:m,homeX:cx(gx),homeZ:cz(gy),homeY:-bb2.min.y+0.01,state:"parkt",t:0};});
+    return;}
+  if(def.grow){ // Growbox: Zelt, Lila-Licht, Spezial-Kräuter
+    var gg=new THREE.Group();
+    var zelt=new THREE.Mesh(new THREE.BoxGeometry(1.7,1.9,1.7),stdMat(0x2a2a32,0.7));zelt.position.y=0.95;zelt.castShadow=true;gg.add(zelt);
+    var front=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.6,0.06),stdMat(0x1a1a22,0.6));front.position.set(0,0.85,0.86);gg.add(front);
+    var zipp=new THREE.Mesh(new THREE.BoxGeometry(0.05,1.4,0.08),stdMat(0x8a8a92,0.4));zipp.position.set(0,0.85,0.9);gg.add(zipp);
+    var lampL=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.1,0.5),new THREE.MeshStandardMaterial({color:0xb08aff,emissive:0x9a5aff,emissiveIntensity:1.6}));
+    lampL.position.y=1.75;gg.add(lampL);
+    var pl2=new THREE.PointLight(0xb07aff,0.9,4);pl2.position.y=1.4;gg.add(pl2);
+    var krauts=[];
+    for(var gx2=0;gx2<2;gx2++)for(var gy2=0;gy2<2;gy2++){
+      var kr=new THREE.Group();
+      var stiel=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.04,0.5,6),stdMat(0x2a6a2a,0.6));stiel.position.y=0.25;kr.add(stiel);
+      for(var bl=0;bl<5;bl++){var blatt=new THREE.Mesh(new THREE.SphereGeometry(0.09,7,5),stdMat(0x3aa03a,0.55));
+        var ba=bl/5*6.283;blatt.position.set(Math.cos(ba)*0.12,0.3+bl*0.06,Math.sin(ba)*0.12);blatt.scale.set(1.4,0.5,0.6);blatt.rotation.y=ba;kr.add(blatt);}
+      kr.position.set(-0.35+gx2*0.7,0.05,-0.35+gy2*0.7);kr.scale.setScalar(0.06);gg.add(kr);krauts.push(kr);}
+    gg.position.set(cx(gx),0.01,cz(gy));scene.add(gg);
+    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:gg,busy:false,grow:1,wachs:0,krauts:krauts,glow:pl2});
     return;}
   if(def.beet){ // Gemüsebeet: prozedural (Erde + wachsende Pflanzen)
     var bg=new THREE.Group();
@@ -630,6 +654,8 @@ var CRIMES=[
  {n:"Bonbon-Automat knacken",e:"\U0001F36C",base:250,risk:0.25},
  {n:"Gemälde-Klau in der Galerie",e:"\U0001F5BC️",base:480,risk:0.35},
  {n:"BANK-COUP",e:"\U0001F3E6",base:900,risk:0.45}];
+function growSellAvailable(){var hh=uhrzeit/60;
+  return running&&!crime.on&&!arbeiten&&(hh>=21||hh<5)&&!!growReif()&&!MG.on;}
 function crimeAvailable(){
   var hh=uhrzeit/60;
   return running&&!crime.on&&!arbeiten&&(hh>=21||hh<5)&&sims[0].state!=="work";}
@@ -677,9 +703,19 @@ function crimeScene(ok,job,betrag){
     el.style.background="radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92))";},3800);}
 function updCrime(dt){
   crimeBtnUpd();buskBtnUpd();
+  document.getElementById("growBtn").style.display=growSellAvailable()?"block":"none";
   if(!crime.on)return;
   crime.t-=dt;
   if(crime.t<=0)finishCrime();}
+function growReif(){for(var i=0;i<furn.length;i++)if(furn[i].grow&&furn[i].wachs>=1)return furn[i];return null;}
+function updGrow(dt){
+  if(MPs&&!mpHost)return;
+  for(var i=0;i<furn.length;i++){var f4=furn[i];if(!f4.grow)continue;
+    if(f4.wachs<1){f4.wachs=Math.min(1,f4.wachs+dt*0.012);
+      var sc2=0.06+f4.wachs*0.94;
+      f4.krauts.forEach(function(kr2,k2){kr2.scale.setScalar(sc2*(0.85+(k2%3)*0.1));});
+      if(f4.glow)f4.glow.intensity=0.5+Math.sin(performance.now()*0.003)*0.3;}
+  }}
 function updBeete(dt){
   if(MPs&&!mpHost)return;
   for(var i=0;i<furn.length;i++){var f3=furn[i];if(!f3.beet)continue;
@@ -706,7 +742,7 @@ function updAuto(dt){
     a.mesh.visible=true;
     if(a.mesh.position.x>a.homeX+1){a.mesh.rotation.y=-Math.PI/2;a.mesh.position.x-=dt*14;a.mesh.position.z=strZ;}
     else if(a.mesh.position.z>a.homeZ+0.3){a.mesh.rotation.y=0;a.mesh.position.z-=dt*6;}
-    else{a.state="parkt";a.mesh.position.set(a.homeX,0.01,a.homeZ);a.mesh.rotation.y=Math.PI/2;}}
+    else{a.state="parkt";a.mesh.position.set(a.homeX,a.homeY||0.01,a.homeZ);a.mesh.rotation.y=Math.PI/2;}}
 }
 function updWork(dt){
   if(MPs&&!mpHost)return;
@@ -1109,6 +1145,20 @@ function renderPalette(){
 var curCat="bau";
 document.getElementById("rotBtn").onclick=function(){curRot=(curRot+1)%4;hint("Gedreht ("+["Nord","Ost","Süd","West"][curRot]+")");};
 addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="r"&&buildMode){curRot=(curRot+1)%4;}});
+document.getElementById("growBtn").onclick=function(){
+  var f5=growReif();if(!f5)return;
+  mgStart("🌿 Diskreter Deal","Ruhig bleiben — Timing entscheidet, ob es jemand merkt!",function(avg){
+    var lv2=skills.krimi.lv;
+    var ok2=Math.random()<0.5+avg*0.35+lv2*0.05;
+    f5.wachs=0;f5.krauts.forEach(function(kr3){kr3.scale.setScalar(0.06);});
+    if(ok2){var erloes=Math.round((180+Math.random()*160)*(1+lv2*0.3));geld+=erloes;
+      hint("🌿 Diskret verkauft: +"+erloes+" § … pssst!");skillXp("krimi",2);
+      sims.forEach(function(s6){simEmoji(s6,"🤫");});}
+    else{polizeiPending=true;var str2=Math.min(geld,150+lv2*40);geld-=str2;
+      hint("🚔 Aufgeflogen! Ernte beschlagnahmt, −"+str2+" § Strafe");
+      skillXp("krimi",1);
+      sims.forEach(function(s7){s7.needs.spass=Math.max(5,s7.needs.spass-20);simEmoji(s7,"😰");});}
+    netSend({t:"geld",v:geld});updHUD();});};
 function buskAvailable(){var hh=uhrzeit/60;return running&&!arbeiten&&!crime.on&&hh>=17&&hh<21&&!MG.on;}
 function buskBtnUpd(){document.getElementById("buskBtn").style.display=buskAvailable()?"block":"none";}
 document.getElementById("buskBtn").onclick=function(){
@@ -1228,7 +1278,7 @@ function loop(now){
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
-    updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
+    updGrow(dt);updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
