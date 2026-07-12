@@ -348,7 +348,7 @@ function goalMet(p){return !!(G&&G.goal&&p[G.goal.k]>=G.goal.n);}
 function renderStartStats(){var el=document.getElementById("startStats");if(!el)return;
   var best=LPSTATS.bestScore?("🏆 Bestleistung: "+LPSTATS.bestScore+" Punkte"+(LPSTATS.bestName?" ("+LPSTATS.bestName+")":"")):"🏆 Noch keine Bestleistung spiel dein erstes Leben!";
   var lives=(LPSTATS.games||0)+" Spiel"+((LPSTATS.games||0)===1?"":"e")+" · "+(LPSTATS.lives||0)+" Leben gelebt";
-  el.innerHTML="<div style='font-weight:800;color:#c9821a;font-size:.9rem'>"+best+"</div><div style='font-size:.78rem;color:#7a8a9a;margin:2px 0 8px'>"+lives+"</div>"+achGalleryHTML();}
+  el.innerHTML="<div style='font-weight:800;color:#c9821a;font-size:.9rem'>"+best+"</div><div style='font-size:.78rem;color:#7a8a9a;margin:2px 0 8px'>"+lives+"</div>"+achGalleryHTML()+freischaltHTML();}
 (function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");
   try{if(muted){if(!MUS.paused)MUS.pause();}else if(running&&OPT.music&&music.on){MUS.play().catch(function(){});}}catch(e){}}
   ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
@@ -965,6 +965,22 @@ var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
 var CHAR_STYLES=[{i:"🧢",n:"Basecap"},{i:"🌸",n:"Blumenkranz"},{i:"👓",n:"Brille"},{i:"🎩",n:"Hut"},
   {i:"👑",n:"Krone"},{i:"🎧",n:"Kopfhörer"},{i:"🕶️",n:"Sonnenbrille"},{i:"🧶",n:"Wollmütze"},{i:"🎀",n:"Schleife"},{i:"✨",n:"Ohne (nur Haar)"}];
 var SKINTONES=[0xffd9b0,0xdba46e,0x9a6a42,0xf7e0c8,0x6a4632]; // erste 3 wie früher
+// ===== 🔓 Freischalt-System: Fun-Looks schalten sich mit gespielten Leben frei (klein, nicht pay2win) =====
+var STYLE_UNLOCK={4:1,5:2,6:3,7:4,8:5}; // Accessoire-Index -> benoetigte Spiele; 0-3 + 9(Ohne) immer frei
+var HAIR_UNLOCK={6:1,7:2,8:3,9:4};      // Haar-Index -> benoetigte Spiele; 0-5 + Auto(-1) frei
+function lpGames(){return (typeof LPSTATS!=="undefined"&&LPSTATS.games)||0;}
+function styleLocked(i){var n=STYLE_UNLOCK[i];return (n&&lpGames()<n)?n:0;}
+function hairLocked(i){var n=HAIR_UNLOCK[i];return (n&&lpGames()<n)?n:0;}
+function nextStyle(i,dir){for(var k=0;k<CHAR_STYLES.length;k++){i=(i+dir+CHAR_STYLES.length)%CHAR_STYLES.length;if(!styleLocked(i))return i;}return i;}
+function nextHair(i,dir){var ring=[-1];for(var h=0;h<HAIRS.length;h++)ring.push(h);var pos=ring.indexOf(i);if(pos<0)pos=0;
+  for(var k=0;k<ring.length;k++){pos=(pos+dir+ring.length)%ring.length;var v=ring[pos];if(v<0||!hairLocked(v))return v;}return -1;}
+function freischaltCount(){var us=0,ts=0,i;for(i in STYLE_UNLOCK){ts++;if(lpGames()>=STYLE_UNLOCK[i])us++;}for(i in HAIR_UNLOCK){ts++;if(lpGames()>=HAIR_UNLOCK[i])us++;}return {got:us,total:ts};}
+function freischaltHTML(){var c=freischaltCount(),cand=[],i;
+  for(i in STYLE_UNLOCK)if(lpGames()<STYLE_UNLOCK[i])cand.push([STYLE_UNLOCK[i],CHAR_STYLES[i].i+" "+CHAR_STYLES[i].n]);
+  for(i in HAIR_UNLOCK)if(lpGames()<HAIR_UNLOCK[i])cand.push([HAIR_UNLOCK[i],"💇 bunte Haare"]);
+  cand.sort(function(a,b){return a[0]-b[0];});
+  var hint=cand.length?("Noch "+(cand[0][0]-lpGames())+" Leben bis "+cand[0][1]):"Alle Looks frei — Style-Meister! 🎉";
+  return "<div style='font-size:.74rem;color:#2a7d46;font-weight:800;letter-spacing:.05em;margin:8px 0 3px'>🔓 LOOKS ("+c.got+"/"+c.total+")</div><div style='font-size:.75rem;color:#7a8a9a'>"+hint+"</div>";}
 function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Looks — verträgt alte + neue Clients
   if(c&&(c.g==="f"||c.g==="m")){
     var o={g:c.g,
@@ -1878,7 +1894,11 @@ function showEnd(){
   var MEDAL=["🥇","🥈","🥉"];
   // 🏆 Batch 7/7: Statistik aktualisieren + Rekord erkennen
   var topR=ranked[0],newRec=false;
+  var _gPrev=(LPSTATS.games||0);
   LPSTATS.games=(LPSTATS.games||0)+1;
+  (function(){var nu=[],i;for(i in STYLE_UNLOCK)if(_gPrev<STYLE_UNLOCK[i]&&LPSTATS.games>=STYLE_UNLOCK[i])nu.push(CHAR_STYLES[i].i+" "+CHAR_STYLES[i].n);
+    for(i in HAIR_UNLOCK)if(_gPrev<HAIR_UNLOCK[i]&&LPSTATS.games>=HAIR_UNLOCK[i]){nu.push("💇 bunte Haare");break;}
+    if(nu.length)setTimeout(function(){announce("🔓 Neuer Look frei: "+nu[0]+"!","#7ad97a");beep(880,.12,"triangle",.06);},1500);})();
   LPSTATS.lives=(LPSTATS.lives||0)+G.players.length;
   if(topR){if(!LPSTATS.bestScore||topR.s>LPSTATS.bestScore){LPSTATS.bestScore=topR.s;LPSTATS.bestName=topR.p.name;newRec=true;}}
   G.players.forEach(function(p){if(p.job){LPSTATS.jobCounts=LPSTATS.jobCounts||{};LPSTATS.jobCounts[p.job.n]=(LPSTATS.jobCounts[p.job.n]||0)+1;}
@@ -2550,14 +2570,14 @@ function renderCharUI(){
     gm=document.createElement("button");gm.textContent="👨";gm.title="Mann";gm.onclick=function(){cfg.g="m";upd();beep(560,.05,"triangle",.03);};
     r1.appendChild(gf);r1.appendChild(gm);card.appendChild(r1);
     var r2=document.createElement("div");r2.className="crow"; // ◀ Style ▶ (Accessoire)
-    var bl=document.createElement("button");bl.textContent="◀";bl.title="Accessoire";bl.onclick=function(){cfg.style=(cfg.style+CHAR_STYLES.length-1)%CHAR_STYLES.length;upd();beep(500,.04,"triangle",.03);};
+    var bl=document.createElement("button");bl.textContent="◀";bl.title="Accessoire";bl.onclick=function(){cfg.style=nextStyle(cfg.style,-1);upd();beep(500,.04,"triangle",.03);};
     sl=document.createElement("div");sl.className="lbl";
-    var br=document.createElement("button");br.textContent="▶";br.title="Accessoire";br.onclick=function(){cfg.style=(cfg.style+1)%CHAR_STYLES.length;upd();beep(520,.04,"triangle",.03);};
+    var br=document.createElement("button");br.textContent="▶";br.title="Accessoire";br.onclick=function(){cfg.style=nextStyle(cfg.style,1);upd();beep(520,.04,"triangle",.03);};
     r2.appendChild(bl);r2.appendChild(sl);r2.appendChild(br);card.appendChild(r2);
     var r2b=document.createElement("div");r2b.className="crow"; // ◀ Haarfarbe ▶ (Auto + HAIRS)
-    var hbl=document.createElement("button");hbl.textContent="◀";hbl.title="Haarfarbe";hbl.onclick=function(){cfg.hair=(cfg.hair<=-1)?HAIRS.length-1:cfg.hair-1;upd();beep(500,.04,"triangle",.03);};
+    var hbl=document.createElement("button");hbl.textContent="◀";hbl.title="Haarfarbe";hbl.onclick=function(){cfg.hair=nextHair(cfg.hair,-1);upd();beep(500,.04,"triangle",.03);};
     hl=document.createElement("div");hl.className="lbl";hl.style.borderRadius="8px";hl.style.padding="0 4px";
-    var hbr=document.createElement("button");hbr.textContent="▶";hbr.title="Haarfarbe";hbr.onclick=function(){cfg.hair=(cfg.hair>=HAIRS.length-1)?-1:cfg.hair+1;upd();beep(520,.04,"triangle",.03);};
+    var hbr=document.createElement("button");hbr.textContent="▶";hbr.title="Haarfarbe";hbr.onclick=function(){cfg.hair=nextHair(cfg.hair,1);upd();beep(520,.04,"triangle",.03);};
     r2b.appendChild(hbl);r2b.appendChild(hl);r2b.appendChild(hbr);card.appendChild(r2b);
     var r3=document.createElement("div");r3.className="crow"; // Hautton-Punkte + Hosenfarbe
     for(var d=0;d<SKINTONES.length;d++)(function(d){var b=document.createElement("button");b.className="skin";
