@@ -121,6 +121,9 @@ canvas{display:block}
 .perkCard .pIc{font-size:2.6rem;line-height:1}
 .perkCard .pN{color:#eaf2ff;font-weight:900;margin-top:8px;font-size:1.02rem}
 .perkCard .pD{color:#9fb6e0;font-size:.82rem;margin-top:5px}
+
+#waveHud{position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:22;background:linear-gradient(160deg,rgba(40,20,60,.9),rgba(20,10,34,.9));border:2px solid #a14bff;border-radius:14px;padding:5px 16px;color:#f2e0ff;font-weight:900;font-size:.95rem;letter-spacing:.02em;box-shadow:0 6px 20px rgba(120,40,200,.4)}
+#waveHud.hide{display:none}
 </style>
 </head>
 <body>
@@ -141,6 +144,7 @@ canvas{display:block}
     <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
     <div id="xpwrap"><span id="lvlBadge">Lv 1</span><div class="xbar"><i id="xpFill"></i></div></div>
     <div id="bossBar" class="hide"><span id="bossLbl">⚠️ SERAPH</span><div class="bbar"><i id="bossFill"></i></div></div>
+    <div id="waveHud" class="hide"></div>
   </div>
   <div id="sysRow">
     <div class="sysbtn" id="bSound">🔊</div>
@@ -507,6 +511,12 @@ function spawnBoss(){ // 🐉 Nacht-Boss — Drache (Meshy) falls geladen, sonst
   var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="⚠️ SERAPH";
   announce("⚠️ SERAPH erwacht! Besiege den Boss!");shake=0.6;
 }
+function updWaveHud(){var el=document.getElementById("waveHud");if(!el)return;
+  if(isNight&&(waveActive||monsters.length>0)){el.classList.remove("hide");
+    var alive=0;for(var i=0;i<monsters.length;i++)if(!monsters[i].boss)alive++;
+    var remain=(waveToSpawn-waveSpawned)+alive;
+    el.innerHTML="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain);}
+  else el.classList.add("hide");}
 function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monsters[i].boss){boss=monsters[i];break;}
   var el=document.getElementById("bossBar");if(!el)return;
   if(boss){el.classList.remove("hide");document.getElementById("bossFill").style.width=Math.max(0,boss.hp/boss.maxhp*100)+"%";}
@@ -1254,7 +1264,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
@@ -1329,7 +1339,7 @@ function harvest(){
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
     nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);
+    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -1494,9 +1504,19 @@ function updStructures(dt){
 
 // ---------- Tag/Nacht ----------
 var monSpawnT=0;
+// 🌙 Nacht-WELLEN (Survivor-Merge Schritt 2): jede Nacht = eskalierende Gegner-Welle
+var waveNum=0,waveToSpawn=0,waveSpawned=0,waveActive=false;
 function updDayNight(dt){
   dayT+=dt;var cyc=isNight?NIGHTLEN:DAYLEN;
-  if(dayT>=cyc){dayT=0;isNight=!isNight;if(isNight){announce("🌙 Die Nacht bricht herein… Sie kommen!");nights++;if(nights>=2&&nights%2===0)setTimeout(spawnBoss,2500);}else{day++;announce("☀️ Tag "+day+" — du hast überlebt!");monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}}
+  if(dayT>=cyc){dayT=0;isNight=!isNight;
+    if(isNight){nights++;waveNum++;waveToSpawn=6+waveNum*4;waveSpawned=0;waveActive=true;
+      announce("🌙 WELLE "+waveNum+" — "+waveToSpawn+" Gegner! Überlebe!");
+      if(nights>=2&&nights%2===0)setTimeout(spawnBoss,2500);}
+    else{day++;waveActive=false;
+      if(typeof gainXP==="function")gainXP(10+waveNum*4); // Welle überlebt -> XP-Bonus
+      announce("☀️ Tag "+day+" — Welle "+waveNum+" überlebt! +"+(10+waveNum*4)+" XP");
+      monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}
+    updWaveHud();}
   var f=dayT/cyc;
   var t; // 0=tiefste Nacht,1=heller Tag
   var vig=document.getElementById("nightVig");
@@ -1513,7 +1533,9 @@ function updDayNight(dt){
   var ang=f*Math.PI;sun.position.set(Math.cos(ang)*60,Math.max(8,Math.sin(isNight?0.2:f*Math.PI)*80),Math.sin(ang)*40);
   sun.target.position.copy(player.position);
   // Monster nachts spawnen
-  if(isNight){monSpawnT-=dt;var cap=Math.min(3+day,10);if(monSpawnT<=0&&monsters.length<cap){spawnMonster();monSpawnT=3.2-Math.min(day*0.2,1.6);}}
+  if(isNight&&waveActive){monSpawnT-=dt;var cap=Math.min(4+waveNum,14);
+    if(monSpawnT<=0&&waveSpawned<waveToSpawn&&monsters.length<cap){spawnMonster();waveSpawned++;monSpawnT=Math.max(0.5,2.2-waveNum*0.15);updWaveHud();}
+    if(waveSpawned>=waveToSpawn&&monsters.length<=0){waveActive=false;announce("✨ Welle "+waveNum+" geschafft! Halte bis zum Morgen durch.");updWaveHud();}}
 }
 
 // ---------- Steuerung ----------
@@ -1616,7 +1638,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
