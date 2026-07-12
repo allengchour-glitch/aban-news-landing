@@ -124,6 +124,9 @@ canvas{display:block}
 
 #waveHud{position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:22;background:linear-gradient(160deg,rgba(40,20,60,.9),rgba(20,10,34,.9));border:2px solid #a14bff;border-radius:14px;padding:5px 16px;color:#f2e0ff;font-weight:900;font-size:.95rem;letter-spacing:.02em;box-shadow:0 6px 20px rgba(120,40,200,.4)}
 #waveHud.hide{display:none}
+
+#minimap{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(96px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
+@media(max-width:600px){#minimap{width:92px;height:92px}}
 </style>
 </head>
 <body>
@@ -145,6 +148,7 @@ canvas{display:block}
     <div id="xpwrap"><span id="lvlBadge">Lv 1</span><div class="xbar"><i id="xpFill"></i></div></div>
     <div id="bossBar" class="hide"><span id="bossLbl">⚠️ SERAPH</span><div class="bbar"><i id="bossFill"></i></div></div>
     <div id="waveHud" class="hide"></div>
+    <canvas id="minimap" width="140" height="140"></canvas>
   </div>
   <div id="sysRow">
     <div class="sysbtn" id="bSound">🔊</div>
@@ -1628,6 +1632,26 @@ function updQuest(dt){
 
 // ---------- Loop ----------
 var perfNow=0,lastT=0;
+function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running)return;var ctx=cv.getContext("2d");var W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=W/2;
+  ctx.clearRect(0,0,W,H);ctx.save();ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.clip();
+  ctx.fillStyle="rgba(30,60,40,.5)";ctx.fillRect(0,0,W,H);
+  var SC=R/95; // 95 Welt-Einheiten Radius sichtbar
+  var px=player.position.x,pz=player.position.z;
+  function pt(x,z){return [cx+(x-px)*SC,cy+(z-pz)*SC];}
+  // Dörfer (Haus-Icons)
+  if(typeof villages!=="undefined")for(var i=0;i<villages.length;i++){var v=villages[i],p=pt(v.x,v.z);ctx.fillStyle=v.big?"#ffd166":"#c9a15a";ctx.fillRect(p[0]-2,p[1]-2,4,4);}
+  // Ressourcen (grün Baum / grau Fels / cyan Kristall) — nur nahe
+  for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1,p2[1]-1,2,2);}
+  // Gegner (rot)
+  if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];var p3=pt(e.x,e.z);ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.beginPath();ctx.arc(p3[0],p3[1],e.boss?3:2,0,6.283);ctx.fill();}
+  // Partner (Koop, cyan)
+  if(typeof NET!=="undefined"&&NET.remote&&NET.remote.visible){var pr=pt(NET.remote.position.x,NET.remote.position.z);ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(pr[0],pr[1],3,0,6.283);ctx.fill();}
+  // Spieler (Mitte, Pfeil in Blickrichtung)
+  ctx.fillStyle="#fff";ctx.save();ctx.translate(cx,cy);ctx.rotate(-player.rotation.y);ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(3.5,4);ctx.lineTo(-3.5,4);ctx.closePath();ctx.fill();ctx.restore();
+  ctx.restore();
+  // Rand
+  ctx.strokeStyle="rgba(130,200,255,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.stroke();
+}
 function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
@@ -1649,7 +1673,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
