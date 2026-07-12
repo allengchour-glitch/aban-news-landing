@@ -415,7 +415,8 @@ function chapterOf(tile){var bf=fields&&fields[tile]; // Neben-Routen-Felder ken
 // ===================== Licht =====================
 var hemi=new THREE.HemisphereLight(0xd6e6ff,0x3a5238,0.60);scene.add(hemi);
 var sunL=new THREE.DirectionalLight(0xfff2d8,1.08);sunL.position.set(30,60,20);scene.add(sunL);
-sunL.castShadow=true;sunL.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);sunL.shadow.bias=-0.0008;
+sunL.castShadow=true;sunL.shadow.mapSize.set(1024,1024);sunL.shadow.bias=-0.0005;
+sunL.shadow.normalBias=0.7; // 📱 killt Schatten-Akne (weisse Kratzer auf Feld-Deckeln) auf Mobil-GPUs mit grober Shadow-Map
 sunL.shadow.camera.near=1;sunL.shadow.camera.far=260;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
 // ===================== Bunte Landschaft: Terrain mit Kapitel-Farbverlauf =====================
 function hsh(ix,iz){var n=ix*374761393+iz*668265263;n=(n^(n>>13))*1274126177;return ((n^(n>>16))>>>0)/4294967295;}
@@ -965,6 +966,20 @@ var PANTS=[0x3a4a6a,0x7a4a30,0x2a6a4a,0x6a3a6a,0x2a2a34,0xb0603a,0xc03a6a,0x3a7a
 var CLOTHES=[0xff5d7d,0x5ea8ff,0x6acc5a,0xffd166,0xc98bff,0xff9a5c,0x2ec4b6,0xef476f,0x118ab2,0xe0e2ea,0x8a5acf,0x3a3a44,
   0xf25c54,0xffb703,0x06d6a0,0x4361ee,0xb5179e,0x7f5539,0x2b2d42,0xffc8dd]; // 👕 Kleider-/Oberteil-Farben (wechselbar, 20)
 var TOPS=["👕 Normal","🦺 Weste","🧥 Jacke","🎽 Streifen","👖 Latzhose","🧣 Schal","🧥 Hoodie","⚪ Punkte"]; // 👗 Kleidungs-Stile
+// 🎨 Kleiderfarben-WAHL: aufklappbares Farbfeld-Raster (statt blindem Durchklicken)
+function mkClothPicker(cfg,updFn,playerHex){
+  var row=document.createElement("div");row.style.cssText="display:none;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:6px;max-width:236px";
+  var dots=[];
+  function refresh(){for(var i=0;i<dots.length;i++){var on=(i===0)?(cfg.cloth==null||cfg.cloth<0):(cfg.cloth===i-1);
+    dots[i].style.outline=on?"3px solid #2a6ab0":"2px solid rgba(0,0,0,.15)";dots[i].style.transform=on?"scale(1.15)":"";}}
+  function dot(bg,title,val){var b=document.createElement("button");b.type="button";b.title=title;
+    b.style.cssText="width:26px;height:26px;min-width:26px;min-height:26px;border-radius:50%;border:none;cursor:pointer;padding:0;background:"+bg;
+    b.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.cloth=val;updFn();refresh();if(typeof beep==="function")beep(580,.04,"triangle",.03);};
+    dots.push(b);row.appendChild(b);}
+  dot(playerHex,"Spielerfarbe (Auto)",-1);
+  for(var i=0;i<CLOTHES.length;i++)dot("#"+("00000"+CLOTHES[i].toString(16)).slice(-6),"Kleiderfarbe "+(i+1),i);
+  row.refresh=refresh;refresh();return row;
+}
 // ===== Charakter-System (Pass B1+B4): Frau/Mann + Accessoires + Haut/Haar/Hose, pro Spieler wählbar =====
 var CHARKEYS=["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"];
 // style 0-3 wie früher (alte Saves gültig), 4+ neu. „Auto"-Haar = hair<0 (abgeleitet aus style/skin).
@@ -1272,6 +1287,12 @@ function mkPawnMesh(color,cfg,onReady){
   g.add(hg);
   g.userData.headGroup=hg;g.userData.hairMat=hair;g.userData.hairBaseHex=hairHex;
   g.userData.ageScale=1;g.userData.ageScaleT=1;g.userData.headScale=1;g.userData.headScaleT=1;g.userData.headStoop=0;g.userData.headStoopT=0;
+  // 🧍 Menschlichere Proportionen: kleinerer Kopf + schlankerer, längerer Körper.
+  // Basis-Faktoren wandern in userData, damit animLife/agePawn sie NICHT überschreiben, sondern mitführen.
+  var HEADB=0.82,TALLY=1.1,SLIMX=0.96;
+  hg.scale.setScalar(HEADB);
+  g.userData.headBase=HEADB;g.userData.tallY=TALLY;g.userData.slimX=SLIMX;
+  g.scale.set(SLIMX,TALLY,SLIMX);
   return g;}
 // Lebensalter aus Kapitel: 0 Kind (Kap.1) · 1 Teen (Kap.2–3) · 2 Erwachsen (Kap.4–6) · 3 Senior (Kap.7–8)
 function ageStage(ch){return ch<=0?0:(ch<=2?1:(ch<=5?2:3));}
@@ -1287,7 +1308,7 @@ function agePawn(i,animated){
   pw.userData.eyeOpen=(st===3)?0.84:1; // Senior: Augen sanfter/schmaler
   if(!animated||prev===undefined){ // Sofort setzen (Spielstart / Debug), keine Feier
     pw.userData.ageScale=AGE_BODY[st];pw.userData.headScale=AGE_HEAD[st];pw.userData.headStoop=AGE_STOOP[st];
-    if(pw.userData.headGroup){pw.userData.headGroup.scale.setScalar(AGE_HEAD[st]);pw.userData.headGroup.rotation.x=AGE_STOOP[st];}
+    if(pw.userData.headGroup){pw.userData.headGroup.scale.setScalar(AGE_HEAD[st]*(pw.userData.headBase||1));pw.userData.headGroup.rotation.x=AGE_STOOP[st];}
     return;}
   if(prev!==st){ // 🎂 Geburtstags-Feier: Figur wächst weich (Tween via ageScaleT), Konfetti + Torte + Announce
     var ch=chapterOf(G.players[i].tile);
@@ -1404,7 +1425,7 @@ function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
   if(u.ageScaleT===undefined){u.ageScale=u.ageScaleT=1;u.headScale=u.headScaleT=1;u.headStoop=u.headStoopT=0;}
   u.ageScale+=(u.ageScaleT-u.ageScale)*ak;
   if(u.headGroup){u.headScale+=(u.headScaleT-u.headScale)*ak;u.headStoop+=(u.headStoopT-u.headStoop)*ak;
-    u.headGroup.scale.setScalar(u.headScale);u.headGroup.rotation.x=u.headStoop;}
+    u.headGroup.scale.setScalar(u.headScale*(u.headBase||1));u.headGroup.rotation.x=u.headStoop;}
   if(pw.userData.eyes){pw.userData.blinkT-=dt;
     if(pw.userData.blinkT<=0){pw.userData.blinkT=2.2+Math.random()*3.4;pw.userData.blinkD=0.13;}
     var bl=(pw.userData.blinkD||0)>0;if(bl)pw.userData.blinkD-=dt;
@@ -1417,9 +1438,10 @@ function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
       pw.userData.head.rotation.x*=Math.max(0,1-dt*6);}}
   // Lande-Squash abklingen; im Flug leichter Stretch (Squash&Stretch beim Hüpfen)
   var bs=1.35*(u.ageScale||1); // Basis-Grösse * Lebensalter
+  var sx=u.slimX||1,ty=u.tallY||1; // 🧍 Proportions-Basis (schlanker/länger) fliesst in jede Skalierung ein
   if(pw.userData.squash>0){pw.userData.squash-=dt*5;
-    var q=Math.max(0,pw.userData.squash);pw.scale.set(bs*(1+q*0.25),bs*(1-q*0.3),bs*(1+q*0.25));}
-  else{var st2=pw.userData.stretch||0;pw.scale.set(bs*(1-st2*0.08),bs*(1+st2*0.14),bs*(1-st2*0.08));}}
+    var q=Math.max(0,pw.userData.squash);pw.scale.set(bs*sx*(1+q*0.25),bs*ty*(1-q*0.3),bs*sx*(1+q*0.25));}
+  else{var st2=pw.userData.stretch||0;pw.scale.set(bs*sx*(1-st2*0.08),bs*ty*(1+st2*0.14),bs*sx*(1-st2*0.08));}}
 function animWalk(pw,moving,dt){
   if(pw.userData.gmix)pw.userData.gmix.update(dt); // 🎌 Meshy-GLB Idle-Animation
   animLife(pw,dt,moving);
@@ -2680,6 +2702,7 @@ function renderCharUI(){
       if(hl)hl.style.color=(cfg.hair<0)?"":"#fff";
       if(pl){pl.textContent="👖";pl.style.background="#"+("00000"+PANTS[cfg.pants].toString(16)).slice(-6);}
       if(cl){cl.textContent="👕";cl.style.background=(cfg.cloth==null||cfg.cloth<0)?"":"#"+("00000"+CLOTHES[cfg.cloth].toString(16)).slice(-6);cl.style.color=(cfg.cloth>=0)?"#fff":"";}
+      if(cp&&cp.refresh)cp.refresh();
       for(var d2=0;d2<dots.length;d2++)dots[d2].className="skin"+(cfg.skin===d2?" on":"");
       if(ml)ml.textContent=cfg.meshy?(MESHY_CHARS[meshyIdx(cfg.meshy)].n):"🧍 Toon (anpassbar)";}
     var r1=document.createElement("div");r1.className="crow"; // 👩 / 👨
@@ -2707,8 +2730,8 @@ function renderCharUI(){
       b.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.skin=d;upd();beep(540,.04,"triangle",.03);};dots.push(b);r3.appendChild(b);})(d);
     pl=document.createElement("button");pl.className="skin";pl.title="Hosen-/Rockfarbe wechseln";pl.style.width="auto";pl.style.padding="0 6px";
     pl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.pants=(cfg.pants+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
-    cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wechseln";cl.style.width="auto";cl.style.padding="0 6px";
-    cl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
+    cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wählen";cl.style.width="auto";cl.style.padding="0 6px";
+    cl.onclick=function(){cp.style.display=(cp.style.display==="none")?"flex":"none";beep(560,.04,"triangle",.03);};r3.appendChild(cl);
     hsB=document.createElement("button");hsB.className="skin";hsB.title="💇 Frisur wechseln";hsB.style.width="auto";hsB.style.padding="0 6px";hsB.textContent="💇";
     hsB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
     ofB=document.createElement("button");ofB.className="skin";ofB.title="👗 Rock / Kleid / Hose";ofB.style.width="auto";ofB.style.padding="0 6px";
@@ -2716,6 +2739,7 @@ function renderCharUI(){
     tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
     tpB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
     card.appendChild(r3);
+    var cp=mkClothPicker(cfg,upd,hex);card.appendChild(cp); // 🎨 Kleiderfarben-Raster (auf/zu per 👕)
     cr.appendChild(card);upd();
   })(i);}
 
@@ -2982,8 +3006,8 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   for(var d=0;d<SKINTONES.length;d++)(function(d){var bd=document.createElement("button");bd.className="skin";bd.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);bd.title="Hautton "+(d+1);bd.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.skin=d;upd();};dots.push(bd);r3.appendChild(bd);})(d);
   pl=document.createElement("button");pl.className="skin";pl.title="Hosen-/Rockfarbe wechseln";pl.style.width="auto";pl.style.padding="0 6px";
   pl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.pants=((cfg.pants|0)+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
-  cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wechseln";cl.style.width="auto";cl.style.padding="0 6px";
-  cl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.cloth=((cfg.cloth==null?-1:cfg.cloth)+1)%CLOTHES.length;upd();beep(580,.04,"triangle",.03);};r3.appendChild(cl);
+  cl=document.createElement("button");cl.className="skin";cl.title="👕 Kleiderfarbe wählen";cl.style.width="auto";cl.style.padding="0 6px";
+  cl.onclick=function(){cp.style.display=(cp.style.display==="none")?"flex":"none";beep(560,.04,"triangle",.03);};r3.appendChild(cl);
   hsB=document.createElement("button");hsB.className="skin";hsB.title="💇 Frisur wechseln";hsB.style.width="auto";hsB.style.padding="0 6px";hsB.textContent="💇";
   hsB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.hstyle=((cfg.hstyle|0)+1)%5;upd();beep(600,.04,"triangle",.03);};r3.appendChild(hsB);
   ofB=document.createElement("button");ofB.className="skin";ofB.title="👗 Rock / Kleid / Hose";ofB.style.width="auto";ofB.style.padding="0 6px";
@@ -2991,6 +3015,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
   tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
   tpB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
   card.appendChild(r3);
+  var cp=mkClothPicker(cfg,upd,hex);card.appendChild(cp); // 🎨 Kleiderfarben-Raster (auf/zu per 👕)
   wrap.appendChild(card);upd();
 }
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
