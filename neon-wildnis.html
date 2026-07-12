@@ -470,14 +470,24 @@ function spawnMonster(){
   m.traverse(function(n){if(n.isMesh){n.castShadow=true;}});
   var sc=proto?M.scale:1;m.scale.setScalar(sc);
   m.position.set(x,groundH(x,z),z);scene.add(m);
-  monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id});
+  monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime")});
 }
-function spawnBoss(){ // 👹 SERAPH-Nacht-Boss (RPG-Fusion aus realm)
+function spawnBoss(){ // 🐉 Nacht-Boss — Drache (Meshy) falls geladen, sonst SERAPH-Slime
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
+  var hp=28+nights*10;
+  if(typeof cc0inst==="function"&&cc0proto&&cc0proto["mob_dragon"]){ // 🐉 Drachen-Boss
+    var dm=cc0inst("mob_dragon",7);var fit=dm.scale.x;
+    dm.traverse(function(n){if(n.isMesh)n.castShadow=true;});
+    dm.position.set(x,groundH(x,z),z);scene.add(dm);
+    monsters.push({mesh:dm,x:x,z:z,hp:hp,maxhp:hp,t:rnd()*6,boss:true,baseScale:fit,walk:true,kind:"dragon",spd:2.4});
+    var bl=document.getElementById("bossLbl");if(bl)bl.textContent="🐉 DRACHE";
+    announce("🐉 Ein DRACHE erwacht! Besiege den Boss!");shake=0.7;return;
+  }
   var m=slimeProto?slimeProto.clone(true):fallbackSlime();
   m.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();if(n.material.color)n.material.color.setHex(0x8a2ad8);if(n.material.emissive)n.material.emissive.setHex(0xff2d6f);n.material.emissiveIntensity=1.1;}}});
   m.position.set(x,groundH(x,z),z);scene.add(m);
-  var hp=28+nights*10;monsters.push({mesh:m,x:x,z:z,hp:hp,maxhp:hp,t:rnd()*6,boss:true,baseScale:slimeProto?4.6:2.4});
+  monsters.push({mesh:m,x:x,z:z,hp:hp,maxhp:hp,t:rnd()*6,boss:true,baseScale:slimeProto?4.6:2.4});
+  var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="⚠️ SERAPH";
   announce("⚠️ SERAPH erwacht! Besiege den Boss!");shake=0.6;
 }
 function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monsters[i].boss){boss=monsters[i];break;}
@@ -493,7 +503,7 @@ function updMonsters(dt){
       if(!e.atkCd||e.atkCd<=0){damagePlayer(e.boss?14:6);e.atkCd=1;} }
     if(e.atkCd)e.atkCd-=dt;
     var _bsc=e.baseScale||(slimeProto?2:1);
-    if(e.kind&&e.kind!=="slime"&&!e.boss){ // feste Kreaturen: laufen, zum Spieler gedreht, leichtes Wippen — kein Squash
+    if(e.walk){ // feste Kreaturen (inkl. Drachen-Boss): laufen, zum Spieler gedreht, leichtes Wippen — kein Squash
       e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*8))*0.12,e.z);
       e.mesh.rotation.y=Math.atan2(dx,dz);
       e.mesh.scale.setScalar(_bsc);
@@ -639,6 +649,18 @@ function placeLoot(){
 }
 // ---------- Meshy-Welt-Props (leuchtende Landmarken für mehr Leben) 🍄🔮 ----------
 var worldProps=[]; // {mesh, ph, base} für sanftes Pulsieren/Schweben
+var potions=[]; // 🧪 einsammelbare Heiltränke (Meshy)
+function updPotions(dt){
+  for(var i=0;i<potions.length;i++){var p=potions[i];if(p.taken)continue;p.ph+=dt;
+    p.mesh.position.y=groundH(p.x,p.z)+0.5+Math.sin(p.ph*2)*0.15;p.mesh.rotation.y+=dt*1.2;
+    var dx=player.position.x-p.x,dz=player.position.z-p.z;
+    if(dx*dx+dz*dz<2.6*2.6&&!dead){ // einsammeln → heilen
+      p.taken=true;p.mesh.visible=false;var heal=40;hp=Math.min(maxHp,hp+heal);hpUpd();
+      burst(p.x,groundH(p.x,p.z)+1,p.z,0xff4d4d,14);toast("🧪 +"+heal+" HP");
+      floatText(p.x,groundH(p.x,p.z)+1.6,p.z,"+"+heal+" ❤️","#ff6a6a");
+    }
+  }
+}
 function loadProps(){
   if(!THREE.GLTFLoader)return;
   var half=MAP/2-60;
@@ -748,6 +770,25 @@ function decorateWorld(){
     if(opened&&cm.userData.marker)cm.userData.marker.visible=false;if(opened&&cm.userData.lid)cm.userData.lid.rotation.x=-0.9;
     scene.add(cm);loots.push({id:id,type:"grave",mesh:cm,x:gx,z:gz,opened:opened});
   })();
+  // --- 🏰 Burg-Landmarke (Meshy) — ein grosses Bauwerk als Blickfang ---
+  (function(){
+    var ba=rnd()*6.28,brd=half*0.5;var bx=Math.cos(ba)*brd,bz=Math.sin(ba)*brd;
+    var cas=cc0inst("building_castle",13);if(cas){cas.position.set(bx,groundH(bx,bz),bz);cas.rotation.y=rnd()*6.28;scene.add(cas);
+      // sanfte Fahnen-Beleuchtung
+      var cl=new THREE.PointLight(0x9ec5ff,0.8,30);cl.position.set(bx,groundH(bx,bz)+10,bz);scene.add(cl);}
+  })();
+  // --- ✨ Relikte (Meshy) als leuchtende, schwebende Fund-Landmarken ---
+  farScatter(Math.round(5*VF),24,function(x,z){
+    var m=cc0inst("item_relic",1.8);if(!m)return;m.position.set(x,groundH(x,z)+0.4,z);scene.add(m);
+    var halo=new THREE.Mesh(new THREE.CircleGeometry(1.6,18),new THREE.MeshBasicMaterial({color:0x4fc3ff,transparent:true,opacity:0.3,side:THREE.DoubleSide}));
+    halo.rotation.x=-Math.PI/2;halo.position.set(x,groundH(x,z)+0.06,z);scene.add(halo);
+    worldProps.push({mesh:m,halo:halo,ph:rnd()*6.28,base:m.position.y,float:true,scl:1});
+  });
+  // --- 🧪 Heiltränke (Meshy) als einsammelbare HP-Pickups ---
+  farScatter(Math.round(7*VF),16,function(x,z){
+    var m=cc0inst("item_potion",1.1);if(!m)return;m.position.set(x,groundH(x,z)+0.5,z);scene.add(m);
+    potions.push({mesh:m,x:x,z:z,ph:rnd()*6.28,taken:false});
+  });
   // --- CC0-Container als extra Beute über die Karte (Fässer/Kisten öffenbar) ---
   farScatter(Math.round(9*VF),20,function(x,z){
     var isBar=rnd()<0.5;var id="C"+loots.length;var opened=lootOpened.indexOf(id)>=0;
@@ -1058,7 +1099,7 @@ function dropLoot(x,z,force){var ri=(force!=null)?force:rollRarity(),R=LOOT_RARI
   var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),new THREE.MeshStandardMaterial({color:R.c,emissive:R.c,emissiveIntensity:0.95,flatShading:true}));
   m.position.set(x,groundH(x,z)+0.9,z);scene.add(m);lootOrbs.push({m:m,x:x,z:z,ri:ri,t:0,life:32});
   if(ri>=2)burst(x,groundH(x,z)+0.9,z,R.c,8);}
-function bossReward(x,z){announce("🏆 SERAPH besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
+function bossReward(x,z){announce("🏆 Boss besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
   o.m.rotation.y+=dt*2.6;o.m.position.y=groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16;
   var dx=o.x-player.position.x,dz=o.z-player.position.z;
@@ -1405,7 +1446,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updLoot(dt);updBossBar();updProps(dt);updPotions(dt);
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -1439,7 +1480,7 @@ function startGame(fresh){
   SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm"],decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon"],decorateWorld);
   });
   loadHero();loadSlime();
   if(sv){
@@ -1535,6 +1576,10 @@ window.__nw={
   toVillage:function(i){var v=villages[i||0];if(!v)return null;player.position.x=v.x;player.position.z=v.z-18;return v;},
   toGrave:function(){for(var i=0;i<loots.length;i++)if(loots[i].type==="grave"){var g=loots[i];player.position.x=g.x-2;player.position.z=g.z-10;return g;}return null;},
   cc0:function(){return Object.keys(cc0proto).length;},
+  potions:function(){return potions.length;},
+  hasDragon:function(){return !!(cc0proto&&cc0proto["mob_dragon"]);},
+  toPotion:function(){for(var i=0;i<potions.length;i++)if(!potions[i].taken){player.position.x=potions[i].x-6;player.position.z=potions[i].z;return potions[i];}return null;},
+  toCastle:function(){return null;},
   day:function(n){day=n;},
   toTree:function(){for(var i=0;i<resources.length;i++){if(resources[i].type==="tree"&&!resources[i].dead){player.position.x=resources[i].x-1;player.position.z=resources[i].z;return resources[i];}}},
   harvest:harvest,
