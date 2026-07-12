@@ -278,14 +278,14 @@
 #done search:flip flops women
 #done search:sarong wrap
 #done search:sun hat foldable
-search:linen blouse women
-search:knit cardigan oversized
-search:pleated midi skirt
-search:wide leg trousers women
-search:cropped blazer women
-search:satin slip dress
-search:corduroy jacket
-search:turtleneck sweater
+#done search:linen blouse women
+#done search:knit cardigan oversized
+#done search:pleated midi skirt
+#done search:wide leg trousers women
+#done search:cropped blazer women
+#done search:satin slip dress
+#done search:corduroy jacket
+#done search:turtleneck sweater
 search:tennis skirt
 search:bodysuit ribbed
 search:hair claw clip large
