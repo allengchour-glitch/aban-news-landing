@@ -719,7 +719,7 @@ function applyFurn(id,gx,gy,rot,fid){
       var bb2=new THREE.Box3().setFromObject(m);
       m.position.set(cx(gx),-bb2.min.y+0.01,cz(gy));m.rotation.y=Math.PI/2;
       scene.add(m);
-      window.autoRec={id:id,mesh:m,homeX:cx(gx),homeZ:cz(gy),homeY:-bb2.min.y+0.01,state:"parkt",t:0};});
+      window.autoRec={id:id,mesh:m,gx:gx,gy:gy,homeX:cx(gx),homeZ:cz(gy),homeY:-bb2.min.y+0.01,state:"parkt",t:0};});
     return;}
   if(def.grow){ // Growbox: Zelt, Lila-Licht, Spezial-Kräuter
     var gg=new THREE.Group();
@@ -782,7 +782,7 @@ function applyFurn(id,gx,gy,rot,fid){
   if(def.pet){ // Hund läuft frei mit, nicht als Möbel im Raster
     if(haustier){scene.remove(haustier.mesh);}
     loadTH("hund",function(tpl){if(!tpl)return;var m=tpl.clone(true);m.position.set(cx(gx),0,cz(gy));scene.add(m);
-      haustier={mesh:m,x:cx(gx),z:cz(gy),rot:0,walkT:0};});
+      haustier={mesh:m,gx:gx,gy:gy,x:cx(gx),z:cz(gy),rot:0,walkT:0};});
     return;}
   var rec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:null,busy:false,lv:arguments[5]||1};
   furn.push(rec);
@@ -806,12 +806,13 @@ function applyFurn(id,gx,gy,rot,fid){
       sp7.scale.set(1.1,0.55,1);sp7.position.y=1.6;m.add(sp7);}
     if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,7);pl.position.set(cx(gx),1.7,cz(gy));scene.add(pl);rec.plight=pl;}
   });}
-function removeFurnAt(gx,gy){
+function removeFurnAt(gx,gy,ohneGeld){
   for(var i=furn.length-1;i>=0;i--){var f=furn[i];
     var cells=furnCells(f);
     for(var c=0;c<cells.length;c++)if(cells[c][0]===gx&&cells[c][1]===gy){
       if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);
-      geld+=Math.round(f.def.cost*0.5);furn.splice(i,1);updHUD();return true;}}
+      if(!ohneGeld)geld+=Math.round(f.def.cost*0.5);
+      furn.splice(i,1);updHUD();return true;}}
   return false;}
 function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
   if(f.rot%2===1){var t=w;w=d;d=t;}
@@ -830,7 +831,7 @@ function doPlaceWall(x,y,d,type,silent){applyWall(x,y,d,type);if(!silent){netSen
 function doPlaceFloor(x,y,idx,silent){applyFloor(x,y,idx);if(!silent)netSend({t:"floor",x:x,y:y,i:idx});}
 function doPlaceFurn(id,gx,gy,rot,silent,fid,lv){var f=fid||("f"+(fidC++)+(mpHost?"h":"g"));applyFurn(id,gx,gy,rot,f,lv);if(!silent)netSend({t:"furn",id:id,x:gx,y:gy,r:rot,fid:f,lv:lv||1});}
 function doDelete(gx,gy,silent){
-  var done=removeFurnAt(gx,gy);
+  var done=removeFurnAt(gx,gy,silent); // Remote-del (silent): KEINE Rueckerstattung — der Sender regelt sein Geld selbst
   if(!done){var k;["0","1"].forEach(function(d){k=gx+","+gy+","+d;if(walls[k]){applyWall(gx,gy,+d,null);done=true;}});}
   if(!done&&floors[fkey(gx,gy)]!==undefined){applyFloor(gx,gy,null);done=true;}
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
@@ -889,7 +890,7 @@ document.getElementById("edSell").onclick=function(){
   if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1};}),geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
@@ -897,8 +898,14 @@ function loadSnapshot(sn){
   furn.slice().forEach(function(f){if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);});furn=[];
   Object.keys(sn.floors||{}).forEach(function(k){var p=k.split(",");applyFloor(+p[0]+mx9,+p[1]+my9,sn.floors[k]);});
   Object.keys(sn.walls||{}).forEach(function(k){var p=k.split(","),v=sn.walls[k];if(typeof v==="string")applyWall(+p[0]+mx9,+p[1]+my9,+p[2],v);else applyWall(+p[0]+mx9,+p[1]+my9,+p[2],v.t,v.c);});
-  (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid,f.lv);});
-  if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr)uhrzeit=sn.uhr;
+  (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid,f.lv);
+    var rec9=furn[furn.length-1];
+    if(rec9&&(rec9.grow||rec9.beet)&&f.w)rec9.wachs=f.w;});
+  if(sn.au){if(window.autoRec){scene.remove(window.autoRec.mesh);window.autoRec=null;}
+    applyFurn(sn.au.id,sn.au.x+mx9,sn.au.y+my9,0);}
+  if(sn.hu&&!haustier)applyFurn("hund",sn.hu.x+mx9,sn.hu.y+my9,0);
+  if(sn.qb!==undefined){questBusy=!!sn.qb;if(questBusy)buergermeisterPending=true;}
+  if(sn.geld!==undefined)geld=sn.geld;if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
   if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
@@ -1476,7 +1483,8 @@ function updSim(s,si,dt,now){
     if(s.state==="work")return;
     var sv9=steerVec(si);
     if(sv9){
-      if(s.state==="use"&&s.useObj){s.useObj.busy=false;s.useObj=null;}
+      if(s.state==="use"&&s.target){s.target.busy=false;s.target=null;}
+      else if(s.state==="walk"&&s.target){s.target.busy=false;s.target=null;s.path=null;}
       s.state="steer";s.pose="stand";steerMove(s,sv9,dt);
       if(si===0&&!followSim&&!buildMode)followSim=s;}
     else if(s.state==="steer")s.state="idle";
@@ -1749,6 +1757,8 @@ var ANGEL={on:false,phase:"idle",round:0,fang:0,geldSum:0,t0:0,tmr:null};
 var FISCHE=[["🐠 Prachtfisch",70,300],["🐟 Barsch",28,600],["🐟 Rotauge",12,999999]];
 function angelStart(){
   if(ANGEL.on||KOCH.on||MG.on)return;
+  if(window._angelCd!==undefined&&(uhrzeit-window._angelCd+1440)%1440<180){
+    hint("🐟 Die Fische brauchen eine Pause — komm später wieder!");return;}
   ANGEL.on=true;ANGEL.round=0;ANGEL.fang=0;ANGEL.geldSum=0;
   document.getElementById("angel").style.display="flex";
   angelWurf();}
@@ -1783,6 +1793,7 @@ function angelEnd(){
   document.getElementById("angel").style.display="none";
   if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;netSend({t:"geld",v:geld});updHUD();}
   sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+8+ANGEL.fang*4);});
+  window._angelCd=uhrzeit;
   hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" §":"🌊 Heute beißt nichts …");}
 document.getElementById("angelZieh").onclick=function(){
   if(!ANGEL.on)return;
@@ -1940,10 +1951,12 @@ function buskAvailable(){var hh=uhrzeit/60;return running&&!arbeiten&&!crime.on&
 function buskBtnUpd(){document.getElementById("buskBtn").style.display=buskAvailable()?"block":"none";}
 document.getElementById("buskBtn").onclick=function(){
   if(!buskAvailable())return;
+  if(window._buskTag===tag&&(window._buskHeute||0)>=3){hint("🎸 Für heute ist das Publikum durch — morgen wieder!");return;}
   mgStart("🎸 Straßenmusik","Triff den Takt — je genauer, desto mehr Trinkgeld!",function(avg){
     var verdienst=Math.round(30+avg*170*(1+skills.liebe.lv*0.1));
     geld+=verdienst;netSend({t:"geld",v:geld});
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10);});
+    window._buskHeute=(window._buskTag===tag?(window._buskHeute||0):0)+1;window._buskTag=tag;
     if(avg>=0.99)stats.buskPerfekt++;
     hint(avg>=0.8?("🎉 Die Menge tobt! +"+verdienst+" § Trinkgeld"):(avg>0.3?("🎵 Solide Show: +"+verdienst+" §"):("😅 Schräge Töne … trotzdem +"+verdienst+" §")));
     simEmoji(sims[0],"🎸");simEmoji(sims[1],"🎤");hearts(sims[0].x,sims[0].z);
