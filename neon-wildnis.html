@@ -662,22 +662,132 @@ function loadProps(){
 }
 function updProps(dt){
   for(var i=0;i<worldProps.length;i++){var p=worldProps[i];p.ph+=dt;
+    if(p.flick){ // Dorf-Lagerfeuer: flackern statt rotieren
+      var fk=0.85+Math.sin(p.ph*11)*0.12+Math.sin(p.ph*23)*0.06;p.mesh.scale.set(fk,1+Math.sin(p.ph*9)*0.15,fk);
+      if(p.light)p.light.intensity=1.2+Math.abs(Math.sin(p.ph*13))*0.6;continue;}
     if(p.float)p.mesh.position.y=p.base+Math.sin(p.ph*1.4)*0.35;
     p.mesh.rotation.y+=dt*0.3;
     if(p.halo)p.halo.material.opacity=0.20+Math.abs(Math.sin(p.ph*1.8))*0.18;
   }
 }
+
+// ================= CC0-Welt-Reichtum: Natur-Vielfalt · Dörfer · Friedhof · Fluss =================
+// Kostenlose CC0-Assets (Kenney Nature/Survival/Graveyard) für viel mehr Abwechslung.
+// Auto-Normalisierung: jedes Modell wird per Bounding-Box auf eine Ziel-Welthöhe skaliert
+// (robust gegen native Einheiten), Materialien bleiben original (rendern in r128 sauber).
+var cc0proto={}, cc0h={}, cc0pending=0, cc0onready=[];
+function loadCC0(files,onAll){
+  if(!THREE.GLTFLoader){onAll&&onAll();return;}
+  var left=files.length;if(!left){onAll&&onAll();return;}
+  files.forEach(function(name){
+    new THREE.GLTFLoader().load("/models/"+name+".glb",function(g){
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+      var bb=new THREE.Box3().setFromObject(o);var h=Math.max(0.001,bb.max.y-bb.min.y);
+      cc0proto[name]=o;cc0h[name]=h;
+      if(--left<=0)onAll&&onAll();
+    },undefined,function(){if(--left<=0)onAll&&onAll();});
+  });
+}
+// Klon eines CC0-Protos, skaliert auf Ziel-Welthöhe targetH
+function cc0inst(name,targetH){
+  var p=cc0proto[name];if(!p)return null;
+  var m=p.clone(true);var s=targetH/(cc0h[name]||1);m.scale.setScalar(s);
+  return m;
+}
+var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
+function decorateWorld(){
+  var half=MAP/2-40;
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
+  // --- Deko-Bäume in Sorten (nicht abbaubar, nur Dichte/Look) ---
+  var TREES=[["cc0_tree_pine",5.2],["cc0_tree_oak",4.6],["cc0_tree_default",4.4],["cc0_tree_palm",5.8]];
+  farScatter(Math.round(150*VF),12,function(x,z){
+    var T=TREES[(rnd()*TREES.length)|0];var m=cc0inst(T[0],T[1]*(0.8+rnd()*0.5));if(!m)return;
+    m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);
+  });
+  // --- Büsche / Blumen / Pilzgruppen ---
+  farScatter(Math.round(70*VF),8,function(x,z){var m=cc0inst("cc0_bush",1.4*(0.7+rnd()*0.7));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(50*VF),8,function(x,z){var m=cc0inst("cc0_flower_purple",0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(40*VF),10,function(x,z){var m=cc0inst("cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  // --- Felsen-Sorten / Holzstapel als Streu-Props ---
+  farScatter(Math.round(45*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"cc0_rock_large":"cc0_rock_small",1.6*(0.7+rnd()*0.9));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  farScatter(Math.round(14*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
+  // --- Dörfer: 2–3 Cluster aus Häusern + Zäunen + Lagerfeuer + Fässern/Kisten/Zelt ---
+  var HOUSES=["building_fachwerk","building_werkstatt","building_turm"];
+  var nV=2+((rnd()*2)|0);
+  for(var v=0;v<nV;v++){
+    var va=rnd()*6.28,vrd=60+rnd()*(half-80);var vx=Math.cos(va)*vrd,vz=Math.sin(va)*vrd;
+    villages.push({x:vx,z:vz});
+    var nH=2+((rnd()*3)|0);
+    for(var h=0;h<nH;h++){
+      var ha=(h/nH)*6.28+rnd()*0.5,hrd=6+rnd()*7;var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
+      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],6.5*(0.85+rnd()*0.3));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);}
+    }
+    // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
+    var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
+    var fire=new THREE.Mesh(new THREE.ConeGeometry(0.5,1.1,7),new THREE.MeshBasicMaterial({color:0xff9a3d}));fire.position.set(vx,groundH(vx,vz)+0.7,vz);scene.add(fire);
+    var fL=new THREE.PointLight(0xffa040,1.4,18);fL.position.set(vx,groundH(vx,vz)+1.2,vz);scene.add(fL);
+    worldProps.push({mesh:fire,halo:null,ph:rnd()*6.28,base:fire.position.y,float:false,scl:1,flick:true,light:fL});
+    // Zaun-Ring + Fässer/Kisten/Zelt
+    for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*(hrd*0+13),fz=vz+Math.sin(fa)*13;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
+    for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
+    var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
+  }
+  // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
+  (function(){
+    var ga=rnd()*6.28,grd=half*0.72;var gx=Math.cos(ga)*grd,gz=Math.sin(ga)*grd;
+    var crypt=cc0inst("cc0_crypt",4.0);if(crypt){crypt.position.set(gx,groundH(gx,gz),gz);crypt.rotation.y=rnd()*6.28;scene.add(crypt);}
+    for(var s=0;s<9;s++){var sa=rnd()*6.28,srd=4+rnd()*10,sx=gx+Math.cos(sa)*srd,sz=gz+Math.sin(sa)*srd;
+      var gm=cc0inst(rnd()<0.5?"cc0_gravestone_cross":"cc0_gravestone_round",1.3);if(gm){gm.position.set(sx,groundH(sx,sz),sz);gm.rotation.y=rnd()*6.28;scene.add(gm);}}
+    var coffin=cc0inst("cc0_coffin",0.8);if(coffin){coffin.position.set(gx+2,groundH(gx+2,gz+2)+0.2,gz+2);coffin.rotation.y=rnd()*6.28;scene.add(coffin);}
+    // grün-fahles Licht für Gruft-Stimmung
+    var gl=new THREE.PointLight(0x66ff99,0.9,20);gl.position.set(gx,groundH(gx,gz)+2,gz);scene.add(gl);
+    // SUPER-Loot-Truhe (legendär) in der Gruft
+    var id="GRAVE";var opened=lootOpened.indexOf(id)>=0;var cm=mkChest();cm.position.set(gx,groundH(gx,gz),gz);
+    if(opened&&cm.userData.marker)cm.userData.marker.visible=false;if(opened&&cm.userData.lid)cm.userData.lid.rotation.x=-0.9;
+    scene.add(cm);loots.push({id:id,type:"grave",mesh:cm,x:gx,z:gz,opened:opened});
+  })();
+  // --- CC0-Container als extra Beute über die Karte (Fässer/Kisten öffenbar) ---
+  farScatter(Math.round(9*VF),20,function(x,z){
+    var isBar=rnd()<0.5;var id="C"+loots.length;var opened=lootOpened.indexOf(id)>=0;
+    var m=cc0inst(isBar?"cc0_barrel":"cc0_crate",1.1);if(!m)return;
+    m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;
+    if(opened)m.visible=false;
+    scene.add(m);loots.push({id:id,type:isBar?"barrel":"crate",mesh:m,x:x,z:z,opened:opened});
+  });
+}
+// --- Prozeduraler Fluss (verkettete Wasser-Quads entlang Sinus-Pfad) ---
+function buildRiver(){
+  var wm=new THREE.MeshStandardMaterial({color:0x1e6f92,emissive:0x0b3f60,emissiveIntensity:0.5,transparent:true,opacity:0.82,roughness:0.12,metalness:0.6});
+  var dir=rnd()*6.28,cx=Math.cos(dir),cz=Math.sin(dir),px2=-Math.sin(dir),pz2=Math.cos(dir);
+  var len=MAP*0.9, steps=Math.round(48), start=-len/2;
+  for(var i=0;i<steps;i++){
+    var t=start+len*(i/steps);var wob=Math.sin(t*0.02)*22+Math.sin(t*0.061)*8;
+    var wx=cx*t+px2*wob, wz=cz*t+pz2*wob;var w=6+Math.sin(t*0.03)*2;
+    var seg=new THREE.Mesh(new THREE.CircleGeometry(w,14),wm);seg.rotation.x=-Math.PI/2;
+    var gy=groundH(wx,wz)-0.35;seg.position.set(wx,gy+0.06,wz);scene.add(seg);
+  }
+}
+
+var LOOT_EMPTY={chest:"Truhe ist leer",ruin:"Ruine schon geplündert",grave:"Gruft ist geplündert",barrel:"Fass ist leer",crate:"Kiste ist leer"};
 function openLoot(lt){
-  if(lt.opened){toast(lt.type==="chest"?"Truhe ist leer":"Ruine schon geplündert");return;}
+  if(lt.opened){toast(LOOT_EMPTY[lt.type]||"Leer");return;}
   lt.opened=true;lootOpened.push(lt.id);
   if(lt.mesh.userData.lid)lt.mesh.userData.lid.rotation.x=-0.9;
   if(lt.mesh.userData.marker)lt.mesh.userData.marker.visible=false;
-  var gain;
+  var gain,head="📦 Gefunden:";
   if(lt.type==="chest"){gain={wood:2+((rnd()*4)|0),crystal:1+((rnd()*2)|0),berry:(rnd()*3)|0};}
-  else{gain={stone:3+((rnd()*4)|0),crystal:(rnd()<0.5?1:0)};}
-  var txt=[];for(var k in gain){if(gain[k]>0){inv[k]=(inv[k]||0)+gain[k];txt.push({wood:"🪵",stone:"🪨",crystal:"💎",berry:"🍓"}[k]+gain[k]);}}
-  invUpd();burst(lt.x,groundH(lt.x,lt.z)+1,lt.z,0xffd166,12);
-  toast("📦 Gefunden: "+txt.join(" "));floatText(lt.x,groundH(lt.x,lt.z)+1.6,lt.z,txt.join(" "),"#ffd166");saveGame();
+  else if(lt.type==="ruin"){gain={stone:3+((rnd()*4)|0),crystal:(rnd()<0.5?1:0)};}
+  else if(lt.type==="barrel"){gain={berry:2+((rnd()*3)|0),meat:(rnd()<0.5?1:0),wood:(rnd()*2)|0};}
+  else if(lt.type==="crate"){gain={wood:3+((rnd()*3)|0),stone:1+((rnd()*3)|0)};}
+  else if(lt.type==="grave"){ // 💀 legendäre Gruft-Beute + fettes XP
+    gain={crystal:4+((rnd()*4)|0),stone:5+((rnd()*5)|0),wood:4+((rnd()*4)|0),meat:1+((rnd()*2)|0)};head="💀 LEGENDÄRE GRUFT:";
+    if(typeof gainXP==="function")gainXP(40);if(typeof dropLoot==="function")dropLoot(lt.x,lt.z,3);
+    // Container-Mesh (CC0) verstecken passiert unten NICHT (Truhen-Mesh bleibt offen sichtbar)
+  }else{gain={wood:2};}
+  if((lt.type==="barrel"||lt.type==="crate")&&lt.mesh)lt.mesh.visible=false; // CC0-Container: nach Öffnen weg (kein Lid-Anim)
+  var txt=[];for(var k in gain){if(gain[k]>0){inv[k]=(inv[k]||0)+gain[k];txt.push({wood:"🪵",stone:"🪨",crystal:"💎",berry:"🍓",meat:"🍖"}[k]+gain[k]);}}
+  invUpd();burst(lt.x,groundH(lt.x,lt.z)+1,lt.z,lt.type==="grave"?0x66ff99:0xffd166,lt.type==="grave"?20:12);
+  toast(head+" "+txt.join(" "));floatText(lt.x,groundH(lt.x,lt.z)+1.6,lt.z,txt.join(" "),lt.type==="grave"?"#66ff99":"#ffd166");saveGame();
 }
 
 // ---------- Wildlife (friedliche Tiere, tagsüber) — 3 Arten ----------
@@ -786,6 +896,9 @@ var RECIPES={
   werk:{ic:"🔧",name:"Werkbank",cost:{wood:8,stone:4},hp:40,need:null},
   turm:{ic:"🗼",name:"Wächter-Turm",cost:{stone:6,crystal:2},hp:50,need:"werk"},
   steinwand:{ic:"🧱",name:"Steinmauer",cost:{stone:8},hp:180,need:"werk"},
+  steinboden:{ic:"⬛",name:"Steinboden",cost:{stone:4},hp:120,need:"werk"},
+  steinpfeiler:{ic:"🏛️",name:"Steinpfeiler",cost:{stone:5},hp:150,need:"werk"},
+  zaun:{ic:"🚧",name:"Holzzaun",cost:{wood:3},hp:40,need:null},
   kiste:{ic:"📦",name:"Vorratskiste",cost:{wood:8,stone:2},hp:50,need:"werk"},
   nexus:{ic:"🌌",name:"Nexus-Turm",cost:{wood:30,stone:24,crystal:10},hp:300,need:"werk"}
 };
@@ -817,6 +930,15 @@ function buildMesh(type,x,z){
     var L=new THREE.PointLight(0xff6ec7,0.8,16);L.position.y=3.4;g.add(L);}
   else if(type==="steinwand"){var w2=new THREE.Mesh(new THREE.BoxGeometry(4,2.8,0.7),new THREE.MeshStandardMaterial({color:0x4a5068,roughness:.95,flatShading:true}));w2.position.y=1.4;w2.castShadow=true;g.add(w2);
     var cap=new THREE.Mesh(new THREE.BoxGeometry(4.1,0.35,0.85),new THREE.MeshStandardMaterial({color:0x6a7290,roughness:.9}));cap.position.y=2.9;g.add(cap);}
+  else if(type==="steinboden"){var pl=new THREE.Mesh(new THREE.BoxGeometry(4,0.35,4),new THREE.MeshStandardMaterial({color:0x555c72,roughness:.95,flatShading:true}));pl.position.y=0.17;pl.receiveShadow=true;g.add(pl);
+    var seam=new THREE.Mesh(new THREE.BoxGeometry(4.02,0.05,0.08),new THREE.MeshStandardMaterial({color:0x3a4056}));seam.position.y=0.36;g.add(seam);var seam2=seam.clone();seam2.rotation.y=Math.PI/2;g.add(seam2);}
+  else if(type==="steinpfeiler"){var col2=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.62,3.0,8),new THREE.MeshStandardMaterial({color:0x5a6078,roughness:.9,flatShading:true}));col2.position.y=1.5;col2.castShadow=true;g.add(col2);
+    var capT=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.35,1.5),new THREE.MeshStandardMaterial({color:0x6a7290,roughness:.9}));capT.position.y=3.1;g.add(capT);
+    var baseP=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.35,1.5),new THREE.MeshStandardMaterial({color:0x6a7290,roughness:.9}));baseP.position.y=0.18;g.add(baseP);}
+  else if(type==="zaun"){var rail=new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:1,flatShading:true});
+    var pA=new THREE.Mesh(new THREE.BoxGeometry(0.22,1.1,0.22),rail);pA.position.set(-1.4,0.55,0);pA.castShadow=true;g.add(pA);
+    var pB=pA.clone();pB.position.x=1.4;g.add(pB);
+    var r1=new THREE.Mesh(new THREE.BoxGeometry(3.0,0.16,0.14),rail);r1.position.set(0,0.8,0);g.add(r1);var r2=r1.clone();r2.position.y=0.4;g.add(r2);}
   else if(type==="kiste"){var box=new THREE.Mesh(new THREE.BoxGeometry(1.3,0.9,1.0),new THREE.MeshStandardMaterial({color:0x6a4a2c,emissive:0x2a1c0e,emissiveIntensity:.3}));box.position.y=0.45;box.castShadow=true;g.add(box);
     var lid=new THREE.Mesh(new THREE.BoxGeometry(1.36,0.22,1.06),new THREE.MeshStandardMaterial({color:0x8a6238}));lid.position.y=0.95;g.add(lid);
     var lock=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.24,0.06),new THREE.MeshBasicMaterial({color:0xffd166}));lock.position.set(0,0.72,0.53);g.add(lock);}
@@ -1290,7 +1412,10 @@ function togglePause(){if(!running)return;paused=!paused;var ov=document.getElem
 function startGame(fresh){
   var sv=fresh?null:loadSave();
   SEED=sv?sv.seed:((Math.random()*1e9)|0);rnd=mulberry32(SEED);
-  buildGround();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();});
+  buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
+    // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm"],decorateWorld);
+  });
   loadHero();loadSlime();
   if(sv){
     if(sv.inv)inv=sv.inv;if(sv.tools)tools=sv.tools;normInv();
@@ -1381,6 +1506,10 @@ window.__nw={
   spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;var proto=M.file?mobProtos[M.id]:slimeProto;var m=proto?proto.clone(true):fallbackSlime();m.traverse(function(n){if(n.isMesh)n.castShadow=true;});var sc=proto?M.scale:1;m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id});return proto?1:0;}, // Test-Only
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
+  villages:function(){return villages.slice();},
+  toVillage:function(i){var v=villages[i||0];if(!v)return null;player.position.x=v.x;player.position.z=v.z-18;return v;},
+  toGrave:function(){for(var i=0;i<loots.length;i++)if(loots[i].type==="grave"){var g=loots[i];player.position.x=g.x-2;player.position.z=g.z-10;return g;}return null;},
+  cc0:function(){return Object.keys(cc0proto).length;},
   day:function(n){day=n;},
   toTree:function(){for(var i=0;i<resources.length;i++){if(resources[i].type==="tree"&&!resources[i].dead){player.position.x=resources[i].x-1;player.position.z=resources[i].z;return resources[i];}}},
   harvest:harvest,
