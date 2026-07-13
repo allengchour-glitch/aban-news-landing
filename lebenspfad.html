@@ -1004,6 +1004,13 @@ function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
     var tint=(cfg&&cfg.cloth!=null&&cfg.cloth>=0)?new THREE.Color(CLOTHES[cfg.cloth%CLOTHES.length]):null;
     if(tint)o.traverse(function(n){if(!(n.isMesh&&n.material&&n.material.map&&n.material.map.image))return;
       try{
+        // 🗄️ Tint-Cache: gleiche Figur+Farbe wird nur EINMAL umgefärbt (der Pixel-Loop kostet sonst ~1s pro Klick)
+        window._tintCache=window._tintCache||{};
+        var tKey=spec.file+"|"+cfg.cloth;
+        if(window._tintCache[tKey]){var cvC=window._tintCache[tKey];
+          n.material.map.image=cvC;n.material.map.needsUpdate=true;
+          if(n.material.emissiveMap){n.material.emissiveMap.image=cvC;n.material.emissiveMap.needsUpdate=true;}
+          return;}
         var img=n.material.map.image,cv2=document.createElement("canvas");cv2.width=img.width;cv2.height=img.height;
         var c2=cv2.getContext("2d");c2.drawImage(img,0,0);
         var idt=c2.getImageData(0,0,cv2.width,cv2.height),d=idt.data;
@@ -1026,6 +1033,7 @@ function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
         // beide Slots brauchen die getintete Textur, sonst übermalt die emissiveMap den Tint (teuer gelernt).
         n.material.map.image=cv2;n.material.map.needsUpdate=true;
         if(n.material.emissiveMap){n.material.emissiveMap.image=cv2;n.material.emissiveMap.needsUpdate=true;}
+        window._tintCache[tKey]=cv2;
       }catch(e){}
     });
     o.traverse(function(n){if(n.isMesh)n.frustumCulled=false;});
