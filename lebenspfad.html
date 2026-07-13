@@ -1895,7 +1895,8 @@ function startMove(n){
 // 🤖 Robo-Gegner: würfelt nach kurzer Denkpause, wählt Karten-Optionen (leicht Glück-gewichtet)
 var _botT=0;
 function updBot(dt){
-  if(NET.on||!G||!running)return;
+  if(!G||!running)return;
+  if(NET.on&&!NET.host)return; // online steuert NUR der Host den Robo
   var p=G.players[G.turn];if(!p||!p.bot||p.dead||p.done)return;
   _botT+=dt;
   if(window._cardOpts){ // Karte offen -> nach 1.6s eine Option wählen
@@ -1908,7 +1909,9 @@ function updBot(dt){
   if(G.phase==="idle"&&_botT>1.3){_botT=0;
     if(Math.random()<0.3){var RQ=["Jetzt zeig ich's euch! 🤖","Berechne optimalen Wurf …","Piep-piep — mein Glückstag!","Widerstand ist zwecklos 😄","Meine Schaltkreise kribbeln!"];
       chatAdd&&chatAdd("Robo 🤖",RQ[(Math.random()*RQ.length)|0]);}
-    rollCore();if(Math.random()<0.35)emote(G.turn,Math.random()<0.5?"jubel":"wink");}
+    if(NET.on){netSend({t:"roll"});NET.q.push({t:"roll"});} // online: durch den Lockstep (alle Clients würfeln synchron)
+    else rollCore();
+    if(Math.random()<0.35)emote(G.turn,Math.random()<0.5?"jubel":"wink");}
 }
 function updMove(dt){
   if(G.phase!=="moving")return;
@@ -3110,6 +3113,20 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
   document.getElementById("netLobby").style.display="block";
   document.getElementById("netCodeShow").textContent=NET.code;
+  (function(){var bb=document.getElementById("netBotBtn");
+    if(!bb){bb=document.createElement("button");bb.id="netBotBtn";
+      bb.style.cssText="margin-top:8px;border:1px solid #b89ad8;background:#f4ecff;border-radius:10px;padding:6px 12px;font-size:.8rem;font-weight:800;color:#5a3a8a;cursor:pointer";
+      var anchor=document.getElementById("netPlayers");if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(bb,anchor.nextSibling);
+      bb.onclick=function(){if(!NET.host)return;
+        var bi=NET.names.indexOf("Robo 🤖");
+        if(bi>=0){NET.names.splice(bi,1);NET.cfgs.splice(bi,1);NET.ready.splice(bi,1);if(NET.bots)NET.bots=[];}
+        else{if(NET.names.length>=4){netStatus("Raum ist voll (4).","#e05a5a");return;}
+          NET.names.push("Robo 🤖");NET.cfgs.push({g:"m",style:2,skin:2,hair:3,pants:4,cloth:10,meshy:"ninja"});
+          NET.ready[NET.names.length-1]=true;NET.bots=NET.bots||[];NET.bots[NET.names.length-1]=true;}
+        bb.textContent=(NET.names.indexOf("Robo 🤖")>=0)?"🤖 Robo entfernen":"+ 🤖 Robo hinzufügen";
+        netSend({t:"lobby",names:NET.names,ready:NET.ready});netPlayersUpd();};}
+    bb.style.display=NET.host?"inline-block":"none";
+    bb.textContent=(NET.names.indexOf("Robo 🤖")>=0)?"🤖 Robo entfernen":"+ 🤖 Robo hinzufügen";})();
   var rb=document.getElementById("netReadyBtn");if(rb){rb.style.display=NET.host?"none":"inline-block";if(!NET.host)rb.disabled=(NET.my<0);} // nur Gast hat Bereit-Knopf; erst nach 'welcome' aktiv
   document.getElementById("chatToggle").style.display="block"; // 💬 Chat schon in der Lobby nutzbar
   renderNetChar(); // 🎨 Online-Charakterauswahl mit Vorschau
@@ -3340,15 +3357,16 @@ function netLaunch(){ // Host: Runde starten / neue Runde — Init an alle + sel
   var adult=document.getElementById("adultChk")&&document.getElementById("adultChk").checked;
   var kurz=document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked; // Host bestimmt den Modus
   NET.started=true;
-  NET.conns.forEach(function(c){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx,mode:kurz?"kurz":"voll",cfgs:NET.cfgs}));}catch(e){}});
-  beginNet({seed:seed,names:NET.names,adult:!!adult,you:0,mode:kurz?"kurz":"voll",cfgs:NET.cfgs});}
+  NET.conns.forEach(function(c){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[]}));}catch(e){}});
+  beginNet({seed:seed,names:NET.names,adult:!!adult,you:0,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[]});}
 document.getElementById("netStartBtn").onclick=netLaunch;
 function beginNet(init){
   NET.on=true;NET.started=true;NET.seed=init.seed>>>0;NET.my=init.you|0;NET.names=init.names;NET.q=[];
   NET.cfgs=(init.cfgs&&init.cfgs.length)?init.cfgs:[]; // gesyncte Picker-Looks aller Spieler
   document.getElementById("endO").classList.add("hide"); // falls Rematch aus dem Endscreen
   var g0=freshState(init.names.length,init.adult,init.mode);
-  for(var i=0;i<g0.players.length;i++)g0.players[i].name=init.names[i];
+  for(var i=0;i<g0.players.length;i++){g0.players[i].name=init.names[i];
+    if(init.bots&&init.bots[i])g0.players[i].bot=true;} // 🤖 Robo-Sitze auf ALLEN Clients markieren
   begin(g0);
   document.getElementById("chatToggle").style.display="block";
   chatAdd("System","Online-Spiel gestartet — viel Glück! Du bist "+init.names[NET.my]+".");
