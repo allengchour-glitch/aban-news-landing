@@ -267,6 +267,18 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
     </div>
   </div>
   <button class="btn ghost hide" id="contBtn">Weiterspielen (Spielstand) ▶</button>
+  <div style="margin-top:10px">
+    <button class="btn ghost" id="syncBtn" style="font-size:.85rem">📱↔💻 Spielstand auf anderes Gerät</button>
+    <div id="syncPanel" style="display:none;margin:8px auto 0;padding:10px;border:2px dashed rgba(190,140,60,.5);border-radius:14px;max-width:480px">
+      <div style="font-weight:800;color:#b07a2a;font-size:.88rem">Öffne Lebenspfad auf BEIDEN Geräten — eins sendet, eins empfängt. Spielstand, Charaktere &amp; Erfolge wandern mit.</div>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap;align-items:center">
+        <button class="btn ghost" id="syncSendBtn" style="margin-top:0">📤 Von HIER senden</button>
+        <input id="syncCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #d8c8a8;width:76px;text-transform:uppercase;font-size:16px">
+        <button class="btn ghost" id="syncRecvBtn" style="margin-top:0">📥 HIER empfangen</button>
+      </div>
+      <div id="syncStatus" style="min-height:1.2em;font-size:.84rem;font-weight:700;color:#7a8a9a;margin-top:6px"></div>
+    </div>
+  </div>
   <div class="foot">Ein Spiel dauert je nach Runde 20–60 Minuten · Spielstand wird gespeichert · <a href="/spiele.html">aban Arcade</a></div>
 </div>
 <div class="overlay hide" id="endO">
@@ -3497,6 +3509,60 @@ function beginNet(init){
     var nm=NET.names[NET.my]||"Ich";chatAdd(nm,tx,NET.my);netSend({t:"chat",n:nm,x:tx,i:NET.my});}
   document.getElementById("chatSend").onclick=send;
   document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});})();
+// ===================== 📱↔💻 Geraete-Sync: Spielstand per 4-Buchstaben-Code aufs andere Geraet =====================
+var SYNC={peer:null,tmo:null};
+function syncKill(){try{if(SYNC.peer)SYNC.peer.destroy();}catch(e){}SYNC.peer=null;clearTimeout(SYNC.tmo);}
+function syncStatus(t,c){["syncStatus","syncStatus2"].forEach(function(id){var el=document.getElementById(id);
+  if(el){el.textContent=t||"";el.style.color=c||"#7a8a9a";}});}
+function syncBundle(){var chars={};CHARKEYS.forEach(function(k){var v=lsGet(k);if(v)chars[k]=v;});
+  return JSON.stringify({t:"lpsync",save:lsGet(SAVE_KEY)||null,stats:lsGet("lp_stats")||null,ach:lsGet("lp_ach")||null,chars:chars});}
+function syncApply(m){ /* empfangener Stand: speichern + sofort nutzbar machen */
+  if(m.save)lsSet(SAVE_KEY,m.save);
+  if(m.stats)lsSet("lp_stats",m.stats);
+  if(m.ach)lsSet("lp_ach",m.ach);
+  if(m.chars)for(var k in m.chars)if(CHARKEYS.indexOf(k)>=0)lsSet(k,m.chars[k]);
+  try{LPSTATS=JSON.parse(lsGet("lp_stats")||"{}")||{};}catch(e){}
+  try{LPACH=JSON.parse(lsGet("lp_ach")||"{}")||{};}catch(e){}
+  var cb=document.getElementById("contBtn");if(cb&&loadGame())cb.classList.remove("hide");}
+function syncSendStart(){ /* Sende-Seite: Raum mit Zufalls-Code oeffnen, Bundle bei Verbindung schicken */
+  if(typeof Peer==="undefined"){syncStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
+  syncKill();if(G&&running)saveGame(); /* laufendes Spiel: aktuellen Stand sichern, dann senden */
+  var code="",A="ABCDEFGHJKLMNPQRSTUVWXYZ";for(var i=0;i<4;i++)code+=A[(Math.random()*A.length)|0];
+  syncStatus("⏳ Erstelle Übertragungs-Code …");
+  try{SYNC.peer=new Peer("aban-lpsv-"+code.toLowerCase(),{debug:0});}catch(e){syncStatus("Fehler — Seite neu laden.","#e05a5a");return;}
+  SYNC.tmo=setTimeout(function(){syncStatus("⏱️ Zeit abgelaufen — nochmal auf »senden« tippen.","#e05a5a");syncKill();},120000);
+  SYNC.peer.on("open",function(){syncStatus("📤 Am ANDEREN Gerät diesen Code eingeben:  "+code+"  (2 Min gültig)","#2a7d46");});
+  SYNC.peer.on("connection",function(c){
+    c.on("open",function(){try{c.send(syncBundle());}catch(e){}
+      syncStatus("✅ Übertragen! Am anderen Gerät »Weiterspielen« tippen.","#2a7d46");
+      beep(880,.1,"triangle",.06);setTimeout(syncKill,3000);});});
+  SYNC.peer.on("error",function(e){var t=e&&e.type;
+    if(t==="unavailable-id"){syncKill();syncSendStart();return;} /* Code-Kollision: neu wuerfeln */
+    syncStatus("Verbindungsfehler ("+t+") — nochmal versuchen.","#e05a5a");syncKill();});}
+function syncRecvStart(code){
+  if(typeof Peer==="undefined"){syncStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
+  code=String(code||"").trim().toUpperCase().replace(/[^A-Z]/g,"");
+  if(code.length!==4){syncStatus("Bitte den 4-Buchstaben-Code vom anderen Gerät eingeben.","#e05a5a");return;}
+  syncKill();syncStatus("⏳ Hole Spielstand "+code+" …");
+  try{SYNC.peer=new Peer(undefined,{debug:0});}catch(e){syncStatus("Fehler — Seite neu laden.","#e05a5a");return;}
+  SYNC.tmo=setTimeout(function(){syncStatus("⏱️ Nicht gefunden — sendet das andere Gerät gerade? Code prüfen.","#e05a5a");syncKill();},25000);
+  SYNC.peer.on("open",function(){
+    var c=SYNC.peer.connect("aban-lpsv-"+code.toLowerCase(),{reliable:true});
+    c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}
+      if(m.t!=="lpsync")return;
+      syncApply(m);
+      syncStatus("✅ Spielstand ist da! Auf »Weiterspielen« tippen.","#2a7d46");
+      beep(880,.1,"triangle",.06);setTimeout(syncKill,800);});});
+  SYNC.peer.on("error",function(e){var t=e&&e.type;
+    if(t==="peer-unavailable")syncStatus("❌ Code "+code+" nicht gefunden — zuerst am anderen Gerät »📤 senden« drücken.","#e05a5a");
+    else syncStatus("Verbindungsfehler ("+t+") — nochmal versuchen.","#e05a5a");
+    syncKill();});}
+(function(){
+  var sb=document.getElementById("syncBtn");if(sb)sb.onclick=function(){var p=document.getElementById("syncPanel");
+    p.style.display=p.style.display==="none"?"block":"none";beep(560,.04,"triangle",.03);};
+  var se=document.getElementById("syncSendBtn");if(se)se.onclick=function(){syncSendStart();};
+  var rc=document.getElementById("syncRecvBtn");if(rc)rc.onclick=function(){syncRecvStart(document.getElementById("syncCode").value);};
+})();
 // ===================== 🎙️ Live-Voice-Chat (echtes WebRTC-Audio ueber PeerJS-Calls, alle mit allen) =====================
 var VOICE={on:false,stream:null,calls:{},auds:{}};
 function netVidList(){ /* Host: Peer-IDs aller Spieler (Index-treu) — Gaeste brauchen sie fuer Gast-zu-Gast-Audio */
@@ -3615,6 +3681,13 @@ function renderMenu(){
   t.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
   t.innerHTML="<span>⏩ Zug-Tempo</span><span>"+(OPT.tempo>1?"SCHNELL":"NORMAL")+"</span>";
   t.onclick=function(){OPT.tempo=OPT.tempo>1?1:1.7;saveOpt();renderMenu();};r.appendChild(t);
+  if(!NET.on){ /* 📱↔💻 mitten im Spiel aufs andere Geraet wechseln (nur lokal — Online-Staende haengen am Raum) */
+    var sy=document.createElement("button");
+    sy.style.cssText="border:2px solid #d8c8a8;background:#fff8ea;color:#8a5a2a;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
+    sy.innerHTML="<span>📱↔💻 Auf anderes Gerät</span><span>Code ▶</span>";
+    sy.onclick=function(){syncSendStart();};r.appendChild(sy);
+    var st2=document.createElement("div");st2.id="syncStatus2";
+    st2.style.cssText="min-height:1.2em;font-size:.84rem;font-weight:700;color:#7a8a9a";r.appendChild(st2);}
   // 🔓 Batch 7/7: Freischaltungen-Uebersicht der aktiven Spielfigur
   if(G&&G.players&&G.players[G.turn]){var pu=G.players[G.turn],fam=pu.fam||{},it=pu.items||{};
     var UNL=[
