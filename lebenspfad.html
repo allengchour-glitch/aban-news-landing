@@ -2591,6 +2591,7 @@ function updateCamera(dt){
 camera.position.set(fields[0].x,22,fields[0].z+24);camera.lookAt(fields[0].x,0,fields[0].z);
 // ===================== Debug-Hook (nur für Tests; kein Gameplay-Einfluss) =====================
 window.__lp={
+  openMini:function(cb){openMiniGame(cb);},closeMini:function(){closeMiniGame();},
   chapter:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
     G.players[G.turn].tile=n*FIELDS_PER;placePawn(G.turn);agePawn(G.turn,false);updChapter();updPlayers();return chapterOf(G.players[G.turn].tile);},
   birthday:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
@@ -2999,6 +3000,25 @@ function sendEmote(k){
     var ae=document.activeElement;if(ae&&(ae.tagName==="INPUT"||ae.tagName==="TEXTAREA"))return;
     if(ev.key>="1"&&ev.key<="6")sendEmote(ev.key.charCodeAt(0)-49);});
 })();
+// 🎮 Minispiele IM Spiel: Overlay-iframe; die Spiele melden sich per postMessage('mini-back') zurück
+var MINI_INGAME=["reaktions-duell","tap-duell","farb-klick","mathe-duell","schere-stein-papier","maulwurf","punkte-jagd","simon"];
+var _miniDone=null;
+window.addEventListener("message",function(e){if(e&&e.data==="mini-back")closeMiniGame();});
+function openMiniGame(onDone){
+  _miniDone=onDone||null;
+  var ov=document.getElementById("miniOv");
+  if(!ov){ov=document.createElement("div");ov.id="miniOv";
+    ov.style.cssText="position:fixed;inset:0;z-index:80;background:#bce6ff;display:none";
+    ov.innerHTML='<iframe id="miniFrame" style="width:100%;height:100%;border:0" allow="fullscreen"></iframe>';
+    document.body.appendChild(ov);}
+  var slug=MINI_INGAME[(Math.random()*MINI_INGAME.length)|0];
+  document.getElementById("miniFrame").src="/minispiele/"+slug+".html";
+  ov.style.display="block";
+}
+function closeMiniGame(){
+  var ov=document.getElementById("miniOv");if(ov){ov.style.display="none";var fr=document.getElementById("miniFrame");if(fr)fr.src="about:blank";}
+  var cb=_miniDone;_miniDone=null;if(cb)cb();
+}
 function netRoomId(code){return "aban-lp-"+code.toLowerCase();}
 function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-Vorschau), Look wird live gesynct
   var wrap=document.getElementById("netCharWrap");if(!wrap)return;wrap.innerHTML="";
@@ -3673,8 +3693,12 @@ function handleField(p,f){
       if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,endTurnSoon);return;} // 👶
       if((ch===5||ch===6)&&!(p.items&&p.items.haus)){hausCard(p,endTurnSoon);return;} // 🏠 Eigenheim
     }
-    showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",
-      [{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}]);
+    var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
+    if(!NET.on&&selN>=2&&Math.random()<0.55){ // 🎮 Bonus-Minispiel (nur lokal am selben Gerät)
+      mOpts.push({l:"🎮 Bonus-Minispiel!",sub:"zu zweit spielen · danach +2 ❤️ für ALLE",fn:function(){
+        openMiniGame(function(){G.players.forEach(function(pp){if(!pp.dead)pp.glueck+=2;});
+          announce("🎮 Bonus-Runde! +2 ❤️ für alle","#ff9ad9");p.bio.push("forderte alle zu einem Minispiel heraus");endTurnSoon();});}});}
+    showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",mOpts);
     camShake=0.15;return;}
   if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");
     floatStat("+"+g+" 💰","#ffd166",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,9);colorFlash("150,255,150");
