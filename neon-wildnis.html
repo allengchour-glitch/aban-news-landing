@@ -325,7 +325,7 @@ function mkRock(cry){
 function placeResources(){
   resources.length=0;
   var half=MAP/2-40;
-  function scatter(n,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=8+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<6&&Math.abs(z)<6){i--;continue;}fn(x,z);}}
+  function scatter(n,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=8+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(x*x+z*z<27*27){i--;continue;}fn(x,z);}} // Spawn-Dorf (r24) bleibt frei von Ressourcen
   // Bäume
   scatter(Math.round(190*VF),function(x,z){
     var useNat=natureReady&&rnd()<0.4;var proto=useNat?treeProtos[(rnd()*treeProtos.length)|0]:null;
@@ -1027,7 +1027,15 @@ function roadRibbon(pts,width,cobble,normal){
   var m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({map:cobble}));
   m.receiveShadow=true;scene.add(m);return m;
 }
-function layRoads(cx,cz){
+function layRoads(cx,cz,rr){
+  // 🧱 GANZES Dorf gepflastert: grosse Kopfstein-Scheibe unter allem (Wege/Platz liegen als Detail obendrauf)
+  if(rr){var cbAll=gtex("tex_cobble.png",0,true);cbAll.repeat.set(Math.max(2,rr/3.5),Math.max(2,rr/3.5));
+    var pg=new THREE.CircleGeometry(rr,48,0,6.283);pg.rotateX(-Math.PI/2);
+    var pp5=pg.attributes.position; // dem welligen Gelände anschmiegen (sonst stossen Hügel durch)
+    for(var pv=0;pv<pp5.count;pv++){var vx5=pp5.getX(pv),vz5=pp5.getZ(pv);pp5.setY(pv,groundH(cx+vx5,cz+vz5)+0.10);}
+    pg.computeVertexNormals();
+    var pav=new THREE.Mesh(pg,new THREE.MeshLambertMaterial({map:cbAll}));
+    pav.position.set(cx,0,cz);pav.receiveShadow=true;scene.add(pav);}
   var cobble=gtex("tex_cobble.png",0,true);cobble.repeat.set(1,1);
   var normal=gtex("tex_cobble_n.png",0,false);normal.repeat.set(1,1);
   // geschwungener S-Pfad durch das Dorf (seitliches Schwingen -> nie gerade)
@@ -1505,7 +1513,7 @@ function decorateWorld(){
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
-    layRoads(vx,vz);
+    layRoads(vx,vz,ringR+3);
     // 🌷 Schöne Wege von jeder Haustür zum Platz (Blumen/Laternen/Türschwelle)
     layVillagePaths(vx,vz,_houses);
     decoVillageExtras(vx,vz,isSpawn,_houses); // 🥕🎉 Gärten, Wimpelketten, Marktstände
@@ -2284,6 +2292,21 @@ stickEl.addEventListener("touchstart",function(e){e.preventDefault();stickStart(
 addEventListener("touchmove",function(e){if(stickId!==null)stickMove(e);},{passive:false});
 addEventListener("touchend",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
 addEventListener("touchcancel",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
+// 🔄 Kamera drehen: mit dem Finger auf der rechten Bildschirmhälfte ziehen (Joystick bleibt links) / Maus ziehen
+var rotId=null,rotLX=0;
+addEventListener("touchstart",function(e){if(!running)return;
+  for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+    if(t.identifier===stickId)continue;
+    if(t.clientX>innerWidth*0.4&&rotId===null&&!(t.target&&t.target.closest&&t.target.closest(".btn,#buildMenu,#tradeMenu,#perkPick,#coopBox"))){rotId=t.identifier;rotLX=t.clientX;}}},{passive:true});
+addEventListener("touchmove",function(e){if(rotId===null)return;
+  for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+    if(t.identifier===rotId){camYaw-=(t.clientX-rotLX)*0.008;rotLX=t.clientX;}}},{passive:true});
+addEventListener("touchend",function(e){for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
+addEventListener("touchcancel",function(e){for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
+var mDrag=false,mLX=0;
+addEventListener("mousedown",function(e){if(!running||IS_MOB)return;if(e.target&&e.target.tagName==="CANVAS"){mDrag=true;mLX=e.clientX;}});
+addEventListener("mousemove",function(e){if(mDrag){camYaw-=(e.clientX-mLX)*0.008;mLX=e.clientX;}});
+addEventListener("mouseup",function(){mDrag=false;});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
 function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 bindTap("bAct",function(){harvest();});
@@ -2568,6 +2591,12 @@ function startGame(fresh){
   document.getElementById("ov").classList.add("hide");
   if(IS_MOB){document.getElementById("bBuild").classList.remove("hide");}
   else{document.getElementById("bBuild").classList.remove("hide");}
+  if(!window.__pMark){window.__pMark=1; // 🎯 Spieler-Marker: durch Häuser hindurch sichtbar
+    var rg=new THREE.Mesh(new THREE.RingGeometry(0.5,0.64,28),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.5,depthTest:false}));
+    rg.rotation.x=-Math.PI/2;rg.position.y=0.06;rg.renderOrder=998;player.add(rg);
+    var tri=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.3,4),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.85,depthTest:false}));
+    tri.rotation.x=Math.PI;tri.position.y=2.9;tri.renderOrder=998;player.add(tri);
+    worldProps.push({mesh:tri,float:true,base:2.9,ph:0,halo:null});}
   running=true;paused=false;xpUpd();updOnline();dailyReward();
   announce("🌅 Willkommen in der Wildnis!");
 }
