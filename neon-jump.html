@@ -560,6 +560,7 @@ function finish(win){running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.s
   if(win&&curLvl<LEVELS.length-1){again.textContent="Level "+(curLvl+2)+" ▶";again.onclick=function(){curLvl++;try{localStorage.setItem("nj_lvl",String(curLvl));}catch(e){}startGame(coopMode);};}
   else{again.textContent="Nochmal ▶";again.onclick=function(){startGame(coopMode);};}
   renderLvlSel();
+  if(STATION)stationPost({t:"stationDone",score:coins*5+(win?25:0)}); /* 🌲 Wildnis-Station: Ergebnis melden */
   document.getElementById("over").classList.remove("hide");beep(win?880:90,.4,win?"triangle":"sawtooth",.1);}
 document.getElementById("startBtn").onclick=function(){startGame(true);};
 document.getElementById("soloBtn").onclick=function(){startGame(false);};
@@ -736,6 +737,26 @@ function updHUD(){document.getElementById("coins").textContent=coins;document.ge
 buildLevel(curLvl);renderLvlSel();showBest();buildPicker();applyChar();requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);
   DW=Math.max(1,Math.round(W*PR));DH=Math.max(1,Math.round(H*PR));rtScene.setSize(DW,DH);bw=Math.max(1,DW>>2);bh=Math.max(1,DH>>2);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
+
+/* ===================== 🌲 Stations-Modus (Wildnis-Fusion): läuft als Iframe-Station in neon-wildnis =====================
+   Ausserhalb des Iframes (window.parent===window) ändert sich NICHTS am Verhalten. */
+var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
+if(STATION){
+  /* Arcade-Links ausblenden (würden im Iframe navigieren) */
+  document.querySelectorAll('a[href="/spiele.html"]').forEach(function(a){a.style.display="none";});
+  /* '← Wildnis'-Knopf (immer sichtbar) */
+  var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
+  _wb.style.cssText="position:fixed;top:8px;left:10px;z-index:9;border:1px solid #5a3170;background:rgba(30,16,43,.85);color:#ffd6ee;border-radius:22px;padding:10px 16px;font-weight:800;font-size:1rem;cursor:pointer";
+  _wb.onclick=function(){stationPost("mini-back");};
+  document.body.appendChild(_wb);
+  /* '← Zurück zur Wildnis' im Game-Over-Screen */
+  var _ob=document.createElement("button");_ob.className="btn ghost";_ob.textContent="← Zurück zur Wildnis";
+  _ob.onclick=function(){stationPost("mini-back");};
+  var _ag=document.getElementById("againBtn");_ag.parentNode.insertBefore(_ob,_ag.nextSibling);
+  /* Startscreen überspringen — Solo-Auto-Start (Station = Einzelspieler-Lauf) */
+  startGame(false);
+}
 })();
 </script>
 </body>

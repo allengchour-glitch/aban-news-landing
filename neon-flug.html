@@ -356,6 +356,7 @@ function gameOver(){
   document.getElementById("best").textContent=best;
   document.getElementById("finalScore").textContent=score;
   document.getElementById("verdict").textContent=(score>best-1&&score>0)?tr("newRec"):tr("verdicts")[Math.min(3,(score/15)|0)];
+  if(STATION)stationPost({t:"stationDone",score:score}); /* 🌲 Wildnis-Station: Score melden (Kristall-Belohnung) */
   setTimeout(function(){if(!running)document.getElementById("over").classList.remove("hide");},340); // Crash-Shake/Flash erst sichtbar lassen (Guard: Space-Restart in der Lücke)
 }
 function flash(){var f=document.getElementById("flash");f.style.opacity=".6";setTimeout(function(){f.style.opacity="0";},80);}
@@ -538,6 +539,26 @@ function loop(t){
 requestAnimationFrame(loop);
 
 window.addEventListener("resize",function(){W=window.innerWidth;H=window.innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
+
+/* ===================== 🌲 Stations-Modus (Wildnis-Fusion): läuft als Iframe-Station in neon-wildnis =====================
+   Ausserhalb des Iframes (window.parent===window) ändert sich NICHTS am Verhalten. */
+var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
+if(STATION){
+  /* Arcade-Links ausblenden (würden im Iframe navigieren) */
+  document.querySelectorAll('a[href="/spiele.html"]').forEach(function(a){a.style.display="none";});
+  /* '← Wildnis'-Knopf (immer sichtbar) */
+  var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
+  _wb.style.cssText="position:fixed;top:8px;left:10px;z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:22px;padding:10px 16px;font-weight:800;font-size:1rem;cursor:pointer";
+  _wb.onclick=function(){stationPost("mini-back");};
+  document.body.appendChild(_wb);
+  /* '← Zurück zur Wildnis' im Game-Over-Screen */
+  var _ob=document.createElement("button");_ob.className="btn ghost";_ob.textContent="← Zurück zur Wildnis";
+  _ob.onclick=function(){stationPost("mini-back");};
+  var _ag=document.getElementById("againBtn");_ag.parentNode.insertBefore(_ob,_ag.nextSibling);
+  /* Startscreen überspringen — Auto-Start */
+  dailyMode=false;start();
+}
 })();
 </script>
 </body>

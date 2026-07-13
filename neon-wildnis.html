@@ -1315,6 +1315,105 @@ var DEFER_ASSETS=["sv_tent","sv_tent_canvas","sv_campfire","sv_campfire_fish","s
   "bk_archway","bk_gate","bk_column","bk_wall","bk_wall_low","bk_stairs","bk_platform","bk_window_round","bk_door",
   "dk2_coin","dk2_banner","dk2_column","dk2_gate","dk2_rocks","dk2_stairs","dk2_stones","dk2_trap","dk2_woodframe","dk2_woodsupport",
   "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver"];
+/* ===================== 🎯 AKTIVITÄTS-STATIONEN (Wildnis-Fusion Phase 1) =====================
+   ✈️ Flugfeld / 🏃 Parcours / 🏎️ Rennstrecke — Portale zu neon-flug/jump/racer als Iframe-Overlay
+   (Lebenspfad-Muster). Welt-Rendering pausiert solange offen (2 WebGL-Kontexte!), netTick läuft weiter. */
+var stations=[],nearStation=null,stationOpen=false,_stCur=-1,_stRewarded=false;
+var _chkTex=null;
+function checkerTex(){if(_chkTex)return _chkTex;
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  for(var y=0;y<8;y++)for(var x=0;x<8;x++){c.fillStyle=((x+y)%2)?"#101018":"#f2f2f2";c.fillRect(x*8,y*8,8,8);}
+  _chkTex=new THREE.CanvasTexture(cv);return _chkTex;}
+function stationNameSprite(txt){ /* Muster: Partner-Namensschild */
+  var cv=document.createElement("canvas");cv.width=512;cv.height=96;var c=cv.getContext("2d");
+  c.font="bold 52px sans-serif";c.textAlign="center";
+  c.fillStyle="rgba(12,26,44,.88)";c.beginPath();c.roundRect(10,6,492,84,24);c.fill();
+  c.strokeStyle="rgba(125,227,255,.65)";c.lineWidth=5;c.stroke();
+  c.fillStyle="#ffd166";c.fillText(txt,256,64);
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+  sp.scale.set(7.2,1.35,1);return sp;}
+function mkCheckerArch(g,w,colHex){ /* Karo-Start-Bogen: Boxen + Schachbrett-Canvas-Textur */
+  var pm=new THREE.MeshLambertMaterial({color:colHex,flatShading:true});
+  var pl=new THREE.Mesh(new THREE.BoxGeometry(0.42,4.6,0.42),pm);pl.position.set(-w/2,2.3,0);pl.castShadow=true;g.add(pl);
+  var pr=pl.clone();pr.position.x=w/2;g.add(pr);
+  var bar=new THREE.Mesh(new THREE.BoxGeometry(w+0.42,0.72,0.5),new THREE.MeshBasicMaterial({map:checkerTex()}));
+  bar.position.y=4.8;g.add(bar);}
+function mkWindsock(g,lx,lz){ /* Windsack aus Zylinder+Kegel-Primitiven */
+  var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.1,4.6,6),new THREE.MeshStandardMaterial({color:0x9fb4c0,roughness:0.8,flatShading:true}));
+  pole.position.set(lx,2.3,lz);pole.castShadow=true;g.add(pole);
+  var sock=new THREE.Group();
+  var ring=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.25,10),new THREE.MeshBasicMaterial({color:0xffffff}));
+  ring.rotation.z=Math.PI/2;sock.add(ring);
+  var cone=new THREE.Mesh(new THREE.ConeGeometry(0.3,1.5,10),new THREE.MeshBasicMaterial({color:0xff7a2a}));
+  cone.rotation.z=Math.PI/2;cone.position.x=-0.85;sock.add(cone);
+  sock.position.set(lx,4.4,lz);g.add(sock);
+  if(typeof regSway==="function")regSway(sock,0.06,1.6);}
+function addStation(p,def){
+  var x=p.x,z=p.z,gy=groundH(x,z),g=new THREE.Group();
+  g.position.set(x,gy,z);g.rotation.y=Math.atan2(-x,-z); /* Tor blickt Richtung Spawn-Stadt */
+  var pad=new THREE.Mesh(new THREE.CircleGeometry(3.4,26),new THREE.MeshLambertMaterial({color:0x16283a,flatShading:true}));
+  pad.rotation.x=-Math.PI/2;pad.position.y=0.06;pad.receiveShadow=true;g.add(pad);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(3.0,3.42,28),new THREE.MeshBasicMaterial({color:def.color,transparent:true,opacity:0.8,side:THREE.DoubleSide}));
+  ring.rotation.x=-Math.PI/2;ring.position.y=0.09;g.add(ring);
+  var b1=cc0inst("dk2_banner",1.7);if(b1){b1.position.set(-4.2,0,0);g.add(b1);}
+  var b2=cc0inst("dk2_banner",1.7);if(b2){b2.position.set(4.2,0,0);g.add(b2);}
+  if(def.kind==="flug"){mkWindsock(g,2.6,-1.2);mkWindsock(g,-2.6,-1.2);}
+  else mkCheckerArch(g,def.kind==="racer"?6.4:5.2,def.color);
+  var sp=stationNameSprite(def.icon+" "+def.name);sp.position.y=6.1;g.add(sp);
+  var lt=new THREE.PointLight(def.color,0.7,18);lt.position.set(0,4,0);g.add(lt);
+  scene.add(g);
+  stations.push({i:stations.length,x:x,z:z,name:def.name,icon:def.icon,url:def.url,badge:def.badge,mesh:g});}
+function stationsDone(){try{return JSON.parse(lsGet("nw_stations")||"{}");}catch(e){return {};}}
+function openStation(i){
+  var st=stations[i];if(!st||stationOpen)return;
+  _stCur=i;_stRewarded=false;stationOpen=true;
+  if(typeof buildMode!=="undefined"&&buildMode)closeBuild();
+  if(typeof craftMode!=="undefined"&&craftMode)closeCraft();
+  if(typeof tradeOpen!=="undefined"&&tradeOpen)closeTrade();
+  saveGame();
+  var ov=document.getElementById("stOv");
+  if(!ov){ov=document.createElement("div");ov.id="stOv";
+    ov.style.cssText="position:fixed;inset:0;z-index:82;background:#06070f;display:none";
+    ov.innerHTML='<iframe id="stFrame" style="width:100%;height:100%;border:0" allow="fullscreen"></iframe>';
+    document.body.appendChild(ov);}
+  document.getElementById("stFrame").src=st.url+(st.url.indexOf("?")<0?"?":"&")+"station=1";
+  ov.style.display="block";
+  sfxSeq([[523],[659],[784]]);}
+function closeStation(){
+  if(!stationOpen)return;stationOpen=false;
+  var ov=document.getElementById("stOv");if(ov){ov.style.display="none";var fr=document.getElementById("stFrame");if(fr)fr.src="about:blank";}
+  var st=stations[_stCur];_stCur=-1;
+  lastT=performance.now(); /* kein dt-Sprung nach der Pause */
+  if(st)announce("🌲 Zurück in der Wildnis!");}
+function onStationDone(score){
+  if(_stRewarded||_stCur<0)return;_stRewarded=true;
+  var st=stations[_stCur];if(!st)return;
+  var cr=Math.max(1,Math.min(8,1+Math.floor((score|0)/25))); /* score-skaliert, Cap 8 */
+  inv.crystal=(inv.crystal|0)+cr;invUpd();
+  toast(st.icon+" "+st.name+": +"+cr+" 💎");
+  var done=stationsDone();
+  if(!done[st.badge]){done[st.badge]=1;lsSet("nw_stations",JSON.stringify(done));}
+  saveGame();}
+window.addEventListener("message",function(e){
+  var d=e&&e.data;
+  if(d==="mini-back"){closeStation();return;}
+  if(typeof d==="string"&&d.charAt(0)==="{"){try{d=JSON.parse(d);}catch(err){d=null;}}
+  if(d&&d.t==="stationDone")onStationDone(d.score|0);});
+/* 🗨️ Koop: Partner-Status "ist im Flugfeld" — Flag st fließt im sendFast-pos mit */
+var _remSt=-1,_remStSp=null;
+function remoteStation(i){
+  if(i==null)i=-1;
+  if(i===_remSt)return;_remSt=i;
+  if(_remStSp&&_remStSp.parent)_remStSp.parent.remove(_remStSp);_remStSp=null;
+  if(i>=0&&NET.remote){
+    var st=stations[i],label=st?(st.icon+" ist im "+st.name):"🎮 spielt eine Station";
+    var cv=document.createElement("canvas");cv.width=320;cv.height=64;var c=cv.getContext("2d");
+    c.font="bold 28px sans-serif";c.textAlign="center";
+    c.fillStyle="rgba(20,40,60,.9)";c.beginPath();c.roundRect(8,6,304,52,16);c.fill();
+    c.fillStyle="#ffd166";c.fillText(label,160,42);
+    _remStSp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+    _remStSp.scale.set(3.4,0.68,1);_remStSp.position.y=3.0;NET.remote.add(_remStSp);
+    if(typeof toast==="function")toast(label);}}
 function decorateWorldLate(){
   var half=MAP/2-40, half2=MAP/2-60;
   var rnd2=mulberry32(((SEED^0x9e3779)>>>0)||1);
@@ -1392,6 +1491,11 @@ function decorateWorldLate(){
     var dk=cc0inst("wc_dock",1.4);if(dk){var dx=L.x+Math.cos(0.7)*(L.r-1),dz=L.z+Math.sin(0.7)*(L.r-1);dk.position.set(dx,L.gy+0.2,dz);dk.rotation.y=Math.atan2(L.z-dz,L.x-dx);scene.add(dk);}
     var boat=cc0inst(rnd2()<0.5?"wc_rowboat":"wc_rowboat_large",0.85);if(boat){var ba=rnd2()*6.28,bx=L.x+Math.cos(ba)*L.r*0.5,bz=L.z+Math.sin(ba)*L.r*0.5;boat.position.set(bx,L.gy+0.12,bz);boat.rotation.y=rnd2()*6.28;scene.add(boat);worldProps.push({mesh:boat,halo:null,ph:rnd2()*6.28,base:L.gy+0.12,bob:true});}
   });
+
+  /* ✈️🏃🏎️ Aktivitäts-Stationen (Wildnis-Fusion Phase 1): Portale zu den Arcade-Spielen */
+  addStation(spotFar(55),{kind:"flug", name:"Flugfeld",   icon:"✈️", url:"/neon-flug.html",  badge:"flieger", color:0x7de3ff});
+  addStation(spotFar(60),{kind:"jump", name:"Parcours",   icon:"🏃", url:"/neon-jump.html",  badge:"springer",color:0xff7ad9});
+  addStation(spotFar(75),{kind:"racer",name:"Rennstrecke",icon:"🏎️", url:"/neon-racer.html", badge:"raser",   color:0xffd166});
 }
 
 // 🌍 Lade-Anzeige beim Weltaufbau (super spielbar: man sieht, dass es vorangeht)
@@ -2108,6 +2212,8 @@ function findNear(){
   nearMerchant=false;if(merchant.x!=null){var mdx=merchant.x-player.position.x,mdz=merchant.z-player.position.z;if(mdx*mdx+mdz*mdz<4.5*4.5)nearMerchant=true;}
   nearLoot=null;var bl=3.4*3.4;
   for(var L=0;L<loots.length;L++){var lt=loots[L];if(lt.opened)continue;var lx=lt.x-player.position.x,lz=lt.z-player.position.z,dl=lx*lx+lz*lz;if(dl<bl){bl=dl;nearLoot=lt;}}
+  nearStation=null;var bst=4*4; /* 🎯 Aktivitäts-Station (Radius 4) */
+  for(var S=0;S<stations.length;S++){var sx3=stations[S].x-player.position.x,sz3=stations[S].z-player.position.z,dst=sx3*sx3+sz3*sz3;if(dst<bst){bst=dst;nearStation=stations[S];}}
 }
 // 🗨️ NPC-Dialoge (Realm-Merge Teil 3): kurze Sprüche mit Tipps & Leben
 var NPC_LINES=[
@@ -2138,6 +2244,7 @@ function harvest(){
   if(nearWork&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!buildMode){openCraft();return;}
   if(nearNpc&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!nearMerchant&&!buildMode){talkToNpc();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
+  if(nearStation&&!nearMon&&!nearAni&&!buildMode){openStation(nearStation.i);return;} /* 🎯 Station betreten (vor dem Kampf-Zweig) */
   if(nearMon){ // Kampf
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
@@ -2476,7 +2583,11 @@ var BADGES=[
   {id:"lvl10",   n:"Held der Wildnis", ic:"🌟", t:function(){return level>=10;}},
   {id:"wood100", n:"Holzfäller",       ic:"🪵", t:function(){return (inv.wood|0)>=100;}},
   {id:"build5",  n:"Baumeister",       ic:"🔨", t:function(){return structures.length>=5;}},
-  {id:"boss1",   n:"Drachentöter",     ic:"🐉", t:function(){return (window.__bossKills|0)>=1;}}
+  {id:"boss1",   n:"Drachentöter",     ic:"🐉", t:function(){return (window.__bossKills|0)>=1;}},
+  /* 🎯 Stations-Abzeichen (Wildnis-Fusion): erster abgeschlossener Lauf je Station */
+  {id:"flieger", n:"Flieger",          ic:"✈️", t:function(){return !!stationsDone().flieger;}},
+  {id:"springer",n:"Springer",         ic:"🏃", t:function(){return !!stationsDone().springer;}},
+  {id:"raser",   n:"Raser",            ic:"🏎️", t:function(){return !!stationsDone().raser;}}
 ];
 function badgesGot(){try{return JSON.parse(lsGet("nw_badges")||"{}");}catch(e){return {};}}
 var _bgT=0;
@@ -2559,6 +2670,9 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
   function pt(x,z){return [cx+(x-px)*SC,cy+(z-pz)*SC];}
   // Dörfer (Haus-Icons)
   if(typeof villages!=="undefined")for(var i=0;i<villages.length;i++){var v=villages[i],p=pt(v.x,v.z);ctx.fillStyle=v.big?"#ffd166":"#c9a15a";ctx.fillRect(p[0]-2,p[1]-2,4,4);}
+  /* 🎯 Stationen (Emoji-Icons) */
+  if(typeof stations!=="undefined"&&stations.length){ctx.font="10px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
+    for(var si=0;si<stations.length;si++){var stn=stations[si],ps=pt(stn.x,stn.z);ctx.fillText(stn.icon,ps[0],ps[1]);}}
   // Ressourcen (grün Baum / grau Fels / cyan Kristall) — nur nahe
   for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1,p2[1]-1,2,2);}
   // Gegner (rot)
@@ -2576,6 +2690,7 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
 function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
+  if(stationOpen){if(running&&!paused)netTick(dt);return;} /* 🎯 Station offen: Welt pausiert (kein 2. WebGL-Render!), Netz-Ticks laufen weiter (sonst Koop-Disconnect) */
   if(!running||paused||perkChoosing){renderer.render(scene,camera);return;}
   // Bewegung
   var mx=stickV.x,my=stickV.y;
@@ -2610,6 +2725,7 @@ function updPrompt(){
   var kp=document.getElementById("kprompt"),act=document.getElementById("bAct");
   if(buildMode||craftMode){kp.style.opacity=0;return;}
   if(nearMon){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"⚔️":"E";document.getElementById("kpTxt").textContent="Angreifen";act.textContent="⚔️";}
+  else if(nearStation){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🎮":"E";document.getElementById("kpTxt").textContent=nearStation.icon+" "+nearStation.name+" starten";act.textContent=nearStation.icon;}
   else if(nearRes){kp.style.opacity=1;var tx={tree:"Baum fällen",rock:"Stein abbauen",crystal:"Kristall abbauen",bush:"Beeren pflücken"}[nearRes.type];
     document.getElementById("kpKey").textContent=IS_MOB?"🪓":"E";document.getElementById("kpTxt").textContent=tx;
     act.textContent=nearRes.type==="tree"?"🪓":(nearRes.type==="bush"?"🤚":"⛏️");}
@@ -2661,7 +2777,7 @@ function netStart(role,code){
 function onNetMsg(d){
   if(!d)return;
   if(d.t==="start"&&NET.role==="join"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;}
-  if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;}
+  if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
 function spawnRemote(){
@@ -2678,7 +2794,7 @@ function spawnRemote(){
 function netTick(dt){
   if(!NET.on||!NET.s)return;
   NET.sendT-=dt;
-  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2)});}
+  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur});} /* st = Stations-Flag für Partner-Blase */
   if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
 }
 (function(){var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
@@ -2851,7 +2967,13 @@ window.__nw={
   toLoot:function(){for(var i=0;i<loots.length;i++){if(!loots[i].opened){player.position.x=loots[i].x-1;player.position.z=loots[i].z;return loots[i];}}},
   place:function(t){placeStructure(t,player.position.x+3,player.position.z);return structures[structures.length-1];},
   quest:function(){return quest;},
-  state:function(){return{day:day,night:isNight,nights:nights,mon:monsters.length,st:structures.length,hp:hp,meat:inv.meat,axe:tools.axe,pick:tools.pick,animals:this.animals(),loot:loots.length,quest:quest,won:won};}
+  stations:function(){return stations.map(function(s){return {i:s.i,x:s.x,z:s.z,name:s.name,url:s.url,badge:s.badge};});},
+  toStation:function(i){var s=stations[i||0];if(!s)return null;player.position.x=s.x-2;player.position.z=s.z;return {x:s.x,z:s.z,name:s.name};},
+  openStation:function(i){openStation(i||0);return stationOpen;},
+  closeStation:closeStation,
+  stationOpen:function(){return stationOpen;},
+  stationsDone:function(){return stationsDone();},
+  state:function(){return{day:day,dayT:dayT,night:isNight,nights:nights,mon:monsters.length,st:structures.length,hp:hp,meat:inv.meat,axe:tools.axe,pick:tools.pick,animals:this.animals(),loot:loots.length,quest:quest,won:won,crystal:inv.crystal,stationOpen:stationOpen,stations:stations.length};}
 };
 requestAnimationFrame(frame);
 })();
