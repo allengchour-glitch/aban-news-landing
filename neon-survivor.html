@@ -117,21 +117,18 @@ canvas{display:block}
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
   <div id="coopBox" style="margin-top:12px;max-width:360px;width:100%;font-size:.9rem;border:1px solid #2a3170;border-radius:12px;padding:10px;background:rgba(10,13,30,.5)">
-    <div style="font-weight:800;color:#9fb2ff;margin-bottom:6px">👥 Koop</div>
-    <label style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;color:#c7cbe6;font-weight:700"><input type="checkbox" id="aiChk" style="width:18px;height:18px;accent-color:#5ef2ff"> 🤖 KI-Partner</label>
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px">
-      <button class="btn ghost" id="localBtn" style="margin-top:0">👥 Zu zweit (eine Tastatur)</button>
-      <button class="btn ghost" id="onlineBtn" style="margin-top:0">🌐 Online-Koop</button>
-    </div>
-    <div id="onlinePane" class="hide" style="margin-top:10px">
+    <div style="font-weight:800;color:#9fb2ff;margin-bottom:6px">🌐 Online-Koop — zu zweit gegen die Schwärme</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
       <button class="btn ghost" id="mpMakeBtn" style="margin-top:0">🎲 Raum erstellen</button>
-      <div style="margin-top:8px;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap">
-        <input id="mpCodeIn" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false"
-          style="width:118px;text-align:center;padding:10px;border-radius:10px;border:1px solid #3a4170;background:#10142b;color:#eaf0ff;font-size:16px;font-weight:900;letter-spacing:4px;text-transform:uppercase;outline:none">
-        <button class="btn ghost" id="mpGoBtn" style="margin-top:0">Beitreten ▶</button>
-      </div>
-      <div id="mpState" style="margin-top:8px;color:#c7cbe6;font-size:.88rem;line-height:1.45"></div>
+      <button class="btn ghost" id="mpOpenBtn" style="margin-top:0" title="Ohne Code — findet automatisch einen Mitspieler">🌍 Offener Raum</button>
     </div>
+    <div style="margin-top:8px;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap">
+      <input id="mpCodeIn" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Raum-Code"
+        style="width:118px;text-align:center;padding:10px;border-radius:10px;border:1px solid #3a4170;background:#10142b;color:#eaf0ff;font-size:16px;font-weight:900;letter-spacing:4px;text-transform:uppercase;outline:none">
+      <button class="btn ghost" id="mpGoBtn" style="margin-top:0">Beitreten ▶</button>
+    </div>
+    <div id="mpState" style="margin-top:8px;color:#c7cbe6;font-size:.88rem;line-height:1.45"></div>
+    <label style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;color:#c7cbe6;font-weight:700;margin-top:10px"><input type="checkbox" id="aiChk" style="width:18px;height:18px;accent-color:#5ef2ff"> 🤖 KI-Partner (Solo mit Bot)</label>
   </div>
   <div id="best"></div>
   <div id="welcome" style="margin-top:6px;font-size:.9rem;color:#c7cbe6"></div>
@@ -441,7 +438,7 @@ function applyMap(idx){var m=MAPS[idx%MAPS.length];
 var bullets=[],enemies=[],orbs=[],fx=[],ebullets=[];
 function getMesh(pool,make){for(var i=0;i<pool.length;i++)if(!pool[i].active)return pool[i];var o=make();pool.push(o);return o;}
 function ebulletMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.35,8,8),mat(0xff5566,0xff3344)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0};}
-function enemyShoot(fx0,fz0,spd){var b=getMesh(ebullets,ebulletMesh);b.active=true;b.m.visible=true;b.m.position.set(fx0,0.8,fz0);var dx=player.position.x-fx0,dz=player.position.z-fz0,d=Math.hypot(dx,dz)||1;b.vx=dx/d*spd;b.vz=dz/d*spd;b.life=4;beep(300,.05,"square",.03);}
+function enemyShoot(fx0,fz0,spd,tx,tz){var b=getMesh(ebullets,ebulletMesh);b.active=true;b.m.visible=true;b.m.position.set(fx0,0.8,fz0);var dx=(tx==null?player.position.x:tx)-fx0,dz=(tz==null?player.position.z:tz)-fz0,d=Math.hypot(dx,dz)||1;b.vx=dx/d*spd;b.vz=dz/d*spd;b.life=4;beep(300,.05,"square",.03);}
 function bulletMesh(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.28,8,8),mat(0xffffff,0x88ffff)); m.active=false; scene.add(m); return {m:m,active:false,vx:0,vz:0,life:0};}
 function enemyMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(1.0,1.0,1.0),mat(0xff5577,0xaa1133));
   // Stacheln teilen das Root-Material -> Typ-Umfärbung wirkt automatisch mit
@@ -533,7 +530,8 @@ function spawnEnemy(boss){
   en.baseEmissive=en.m.material.emissive.getHex(); en.flash=0; en.finalBoss=false;
   initEnemyAnim(en);
 }
-function announce(txt){var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:26%;left:0;right:0;text-align:center;font-weight:800;font-size:1.6rem;color:#ff7ad9;text-shadow:0 2px 10px #000;pointer-events:none;transition:opacity .4s";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";
+function announce(txt){if(coopMode==='host'&&netSess&&txt){try{netSess.send({e:'an',t:txt});}catch(e){}}
+  var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:26%;left:0;right:0;text-align:center;font-weight:800;font-size:1.6rem;color:#ff7ad9;text-shadow:0 2px 10px #000;pointer-events:none;transition:opacity .4s";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";
   if(txt&&c.animate){try{c.animate([{transform:"translateY(-16px) scale(.6)",opacity:0},{transform:"translateY(0) scale(1.08)",opacity:1,offset:.35},{transform:"translateY(0) scale(1)",opacity:1}],{duration:520,easing:"cubic-bezier(.2,.9,.3,1.2)"});}catch(e){}}
   setTimeout(function(){c.style.opacity="0";},1600);}
 function mmss(t){var s=Math.max(0,Math.floor(t));return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2);}
@@ -584,7 +582,7 @@ function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,
 function hitEnemy(en,dmg){if(!en.active)return;if(en.cbProxy){cb_damage(dmg);return;}en.hp-=dmg;if(en.hp<=0)killEnemy(en);else en.flash=0.09;}
 function novaFx(R){var n=20;for(var i=0;i<n;i++){var a=i/n*6.283;var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.18,6,6),mat(0x9bd0ff,0x9bd0ff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(0x9bd0ff);p.m.material.emissive.setHex(0x9bd0ff);p.m.position.set(player.position.x,0.9,player.position.z);p.vx=Math.cos(a)*R*2.4;p.vz=Math.sin(a)*R*2.4;p.vy=0;p.life=0.4;}}
 // Aktive Fähigkeit: PULS-BLAST (Taste LEER) — grosser AoE + Rückstoss, Cooldown
-function castAbility(){if(S.abilityCD>0)return;S.abilityCD=S.abilityMax;var R=15*S.area;novaFx(R);novaFx(R*0.6);
+function castAbility(){if(S.abilityCD>0||p1Down>0)return;S.abilityCD=S.abilityMax;var R=15*S.area;novaFx(R);novaFx(R*0.6);
   spawnRing(player.position.x,player.position.z,0xffd166,1,R,0.4);spawnRing(player.position.x,player.position.z,0xffffff,0.6,R*0.7,0.28);spawnFlash(player.position.x,1.0,player.position.z,0xffd166,2.6,0.22);screenFlash("rgba(255,215,120,.22)",0.45,240);
   shake=Math.max(shake,0.8);hurt=Math.max(hurt,0);announce("⚡ PULS-BLAST!");beep(90,.35,"sawtooth",.12);
   for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z,d=dx*dx+dz*dz;if(d<R*R){if(!en.cbProxy){en.m.position.x+=dx/(Math.sqrt(d)||1)*7;en.m.position.z+=dz/(Math.sqrt(d)||1)*7;}hitEnemy(en,S.dmg*(9+S.lvl*0.6));}}}
@@ -597,6 +595,7 @@ var SKILLS={
 };
 var lastMvX=0,lastMvZ=-1; /* letzte Bewegungsrichtung (für Blink); Start: nach oben */
 function castSkill(n,force){n=n|0;var sk=SKILLS[n];if(!sk||!running)return "no";
+  if(p1Down>0)return "down"; /* am Boden: keine Skills */
   if(S.lvl<sk.unlock){announce("🔒 "+sk.i+" "+sk.n+" ab Level "+sk.unlock);beep(180,.08,"square",.04);return "locked";}
   if(!force&&S.skCD[n]>0)return "cd";
   if(n===1){ /* NOVA: Umkreis-Schaden + Knockback */
@@ -839,7 +838,8 @@ function buildChoices(){
 var paused=false;
 function levelUp(){
   paused=true; levelUpFx(); var box=document.getElementById("ups"); box.innerHTML="";
-  buildChoices().forEach(function(u){var b=document.createElement("button");b.className="up";b.innerHTML=u.n+"<small>"+u.d+"</small>";b.onclick=function(){u.f();renderUpRow();paused=false;document.getElementById("levelup").classList.add("hide");beep(520,.12,"triangle",.07);};box.appendChild(b);});
+  if(coopMode==='host')netEv({e:'lu'}); /* Client sieht: Partner wählt (geteilter Build) */
+  buildChoices().forEach(function(u){var b=document.createElement("button");b.className="up";b.innerHTML=u.n+"<small>"+u.d+"</small>";b.onclick=function(){u.f();renderUpRow();paused=false;document.getElementById("levelup").classList.add("hide");beep(520,.12,"triangle",.07);if(coopMode==='host')netEv({e:'an',t:"⬆ "+u.n});};box.appendChild(b);});
   document.getElementById("luTitle").textContent="Level "+S.lvl+" — wähle (Waffe oder Bonus)";
   document.getElementById("levelup").classList.remove("hide");
 }
@@ -872,7 +872,8 @@ function structCount(type){var c=0;for(var i=0;i<structures.length;i++)if(struct
 function scrapMesh(){var m=new THREE.Mesh(new THREE.TorusGeometry(0.26,0.12,6,10),mat(0xffb347,0xff8c1a));m.active=false;m.rotation.x=Math.PI/2;scene.add(m);return {m:m,active:false};}
 function dropScrap(x,z){var s=getMesh(scrapPickups,scrapMesh);s.active=true;s.m.visible=true;s.m.position.set(x,0.6,z);}
 function collectScrap(dt){for(var i=0;i<scrapPickups.length;i++){var s=scrapPickups[i];if(!s.active)continue;
-  var sx=player.position.x-s.m.position.x,sz=player.position.z-s.m.position.z,sd=Math.hypot(sx,sz)||1;
+  var _np=nearPl(s.m.position.x,s.m.position.z);
+  var sx=_np.x-s.m.position.x,sz=_np.z-s.m.position.z,sd=Math.hypot(sx,sz)||1;
   if(sd<S.pickup+1){s.m.position.x+=sx/sd*13*dt;s.m.position.z+=sz/sd*13*dt;} s.m.rotation.z+=dt*4;
   if(sd<1.1){spawnFlash(s.m.position.x,0.7,s.m.position.z,0xffb347,0.55,0.12);s.active=false;s.m.visible=false;s.m.position.y=-99;S.scrap++;updateScrapHUD();beep(880,.04,"square",.03);
     if(!scrapTipShown){scrapTipShown=true;try{localStorage.setItem("ns_scrapTip","1");}catch(e){}announce("🔩 Schrott! Baue in der Wellenpause (🔨)");}}}}
@@ -1397,9 +1398,11 @@ function start(){
   var hn=document.getElementById("hudName");if(hn)hn.textContent=curName?("👤 "+curName):"";
   if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);updateBuildBtn();
-  var mi=dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length);var m=applyMap(mi);announce("» "+m.name+" «");startMusic();}
+  var mi=(coopMode==='client'&&pendingMap!=null)?pendingMap:(dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length));
+  curMapIdx=mi;var m=applyMap(mi);coopSetup();announce("» "+m.name+" «");startMusic();}
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";nsRefreshWelcome();}
-function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
+function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();
+  if(coopMode==='host')netEv({e:'ov',s:Math.floor(S.t),lv:S.lvl,kk:S.kills,wv:S.wave});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
@@ -1408,16 +1411,23 @@ function gameOver(){running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMu
   // Mehr-Runden-Speicherstand: Run eintragen (Profil + Bestenliste) und Game-Over-Extras füllen
   nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills));
   document.getElementById("over").classList.remove("hide");}
-function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
+function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
+  if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
   var _r=recordRun(curName,S.t,S.wave,S.kills); // Sieg zählt auch als gespielte Runde
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();}
 
-document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
-document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
-document.getElementById("againBtn").onclick=start;
-document.getElementById("winAgainBtn").onclick=start;
+function aiWanted(){var c=document.getElementById("aiChk");return !!(c&&c.checked);}
+document.getElementById("startBtn").onclick=function(){dailyMode=false;coopMode=aiWanted()?'ai':null;start();};
+document.getElementById("dailyBtn").onclick=function(){dailyMode=true;coopMode=aiWanted()?'ai':null;start();};
+function coopAgain(){ /* Nochmal: Online-Client fragt den Host, Host startet + kündigt an */
+  if(coopMode==='client'&&netSess){netEv({k:'again'});announce("⏳ Neustart beim Host angefragt…");return;}
+  start();
+  if(coopMode==='host'&&netSess)netEv({e:'bg',mi:curMapIdx});
+}
+document.getElementById("againBtn").onclick=coopAgain;
+document.getElementById("winAgainBtn").onclick=coopAgain;
 document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor 🏆 DURCHGESPIELT in "+mmss(S.t)+" — Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("winShareBtn").textContent="Kopiert 📋";});};
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
@@ -1430,7 +1440,8 @@ function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000); last=now;
   if(hitstop>0){hitstop-=dt;dt*=0.12;} // Hitstop-Juice: kurzer Zeit-Stopp bei großen Treffern
-  if(running&&!paused){
+  if(running&&!paused&&coopMode==='client'){clientFrame(dt);} /* Online-Client: nur rendern + Input senden — Host simuliert */
+  else if(running&&!paused){
     S.t+=dt;
     // Bewegung
     var mx=0,mz=0;
@@ -1439,13 +1450,15 @@ function loop(now){
     if(touch){var dxT=touch.x-touch.sx,dyT=touch.y-touch.sy,mT=Math.hypot(dxT,dyT); // relatives Joystick: Delta zum Aufsetzpunkt, 12px Totzone
       if(mT>12){mx=dxT/46;mz=dyT/46;}}
     var ml=Math.hypot(mx,mz); if(ml>1){mx/=ml;mz/=ml;}
+    if(p1Down>0){mx=0;mz=0;ml=0;} /* am Boden: keine Bewegung */
     player.position.x=Math.max(-ARENA,Math.min(ARENA,player.position.x+mx*S.speed*dt));
     player.position.z=Math.max(-ARENA,Math.min(ARENA,player.position.z+mz*S.speed*dt));
     animatePlayer(dt,mx,mz);
     glow.position.set(player.position.x,2,player.position.z);
+    coopSimP2(dt); /* Koop: Partner (KI/Online) bewegen, feuern, Down/Revive */
     // Waffen (mehrere, je eigener Takt) + Orbit-Klingen
     if(ml>0.05){lastMvX=mx;lastMvZ=mz;} /* Blink-Richtung merken */
-    weaponTick(dt); updateBlades(dt); if(S.abilityCD>0)S.abilityCD-=dt;
+    if(p1Down<=0){weaponTick(dt); updateBlades(dt);} if(S.abilityCD>0)S.abilityCD-=dt;
     for(var _sc2=1;_sc2<=3;_sc2++)if(S.skCD[_sc2]>0)S.skCD[_sc2]-=dt;
     if(S.skIfr>0)S.skIfr-=dt;
     // Phasen-Struktur (5×120s) → härter; danach Endboss
@@ -1480,10 +1493,16 @@ function loop(now){
       if((frame&1)===0)emitTrail(b.m.position.x,b.m.position.z,b.m.material.color.getHex());
       for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-b.m.position.x,dz=en.m.position.z-b.m.position.z;if(dx*dx+dz*dz<(en.cbHitR||1.2)){smallSpark(b.m.position.x,b.m.position.z,b.m.material.color.getHex());spawnFlash(en.m.position.x,0.9,en.m.position.z,0xffffff,0.75,0.07);hitEnemy(en,b.dmg);if(b.pierce>0){b.pierce--;}else{b.active=false;b.m.visible=false;b.m.position.y=-99;}break;}}
     }
-    // Enemies → Ziel (Spieler; Raider im Boss-Ansturm greifen die Basis an)
+    // Enemies → Ziel (nächster lebender Spieler; Raider im Boss-Ansturm greifen die Basis an)
+    var _p2on=coopOn()&&P2.down<=0,_p1on=p1Down<=0;
     for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active||e2.cbProxy)continue; // Koloss steuert cb_update, nicht die Gegner-KI
-      var pex=player.position.x-e2.m.position.x,pez=player.position.z-e2.m.position.z;var ped=Math.hypot(pex,pez)||1;
-      var tgx=player.position.x,tgz=player.position.z,tstruct=null;
+      var _tp=player.position;
+      if(_p2on){if(!_p1on)_tp=P2.g.position;
+        else{var _dA=(player.position.x-e2.m.position.x)*(player.position.x-e2.m.position.x)+(player.position.z-e2.m.position.z)*(player.position.z-e2.m.position.z),
+             _dB=(P2.g.position.x-e2.m.position.x)*(P2.g.position.x-e2.m.position.x)+(P2.g.position.z-e2.m.position.z)*(P2.g.position.z-e2.m.position.z);
+          if(_dB<_dA)_tp=P2.g.position;}}
+      var pex=_tp.x-e2.m.position.x,pez=_tp.z-e2.m.position.z;var ped=Math.hypot(pex,pez)||1;
+      var tgx=_tp.x,tgz=_tp.z,tstruct=null;
       if(e2.raider&&structures.length){tstruct=nearestStruct(e2.m.position.x,e2.m.position.z);if(tstruct){tgx=tstruct.x;tgz=tstruct.z;}}
       e2._tstruct=tstruct;
       var ex=tgx-e2.m.position.x,ez=tgz-e2.m.position.z;var ed=Math.hypot(ex,ez)||1;
@@ -1493,10 +1512,12 @@ function loop(now){
       animEnemy(e2,dt,ex,ez,ed,mv*slf>0.01?1:0);
       if(structures.length)resolveBlockers(e2,dt);
       if(e2.raider&&tstruct&&tstruct.hp>0){var sdx=tstruct.x-e2.m.position.x,sdz=tstruct.z-e2.m.position.z;if(sdx*sdx+sdz*sdz<(e2.boss?10:4.5)){damageStruct(tstruct,(e2.boss?16:6)*dt);if(e2.boss&&(frame&3)===0){smallSpark(tstruct.x,tstruct.z,0xff8a3a);}e2.m.position.y=(e2.by||0.7)+Math.abs(Math.sin(S.t*13))*0.12;}}
-      if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ped<42){enemyShoot(e2.m.position.x,e2.m.position.z,13);e2.shootT=2.8;}}
+      if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ped<42){enemyShoot(e2.m.position.x,e2.m.position.z,13,_tp.x,_tp.z);e2.shootT=2.8;}}
       if(e2.boss){e2.shootT-=dt;if(e2.shootT<=0){var nb=e2.finalBoss?14:(e2.baseWaveBoss?12:10);for(var rr=0;rr<nb;rr++){var ang2=rr/nb*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*9;eb2.vz=Math.sin(ang2)*9;eb2.life=4;}spawnRing(e2.m.position.x,e2.m.position.z,e2.baseWaveBoss?0xff6a00:0xff2266,1,7,0.4);e2.shootT=e2.finalBoss?3.0:(e2.baseWaveBoss?3.6:4.2);beep(120,.3,"sawtooth",.07);}}
       if(e2.flash>0){e2.flash-=dt;e2.m.material.emissive.setHex(e2.flash>0?0xffffff:e2.baseEmissive);}
-      if(ped<1.4&&!(S.skIfr>0)){S.hp-=13*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}
+      if(_p1on){var _c1=Math.hypot(player.position.x-e2.m.position.x,player.position.z-e2.m.position.z);
+        if(_c1<1.4&&!(S.skIfr>0)){S.hp-=13*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}}
+      if(_p2on&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4)p2Damage(13*dt);
     }
     // Gegner-Projektile
     for(i=0;i<ebullets.length;i++){var eb=ebullets[i];if(!eb.active)continue;eb.m.position.x+=eb.vx*dt;eb.m.position.z+=eb.vz*dt;eb.life-=dt;
@@ -1504,17 +1525,21 @@ function loop(now){
       var blk=false;for(var sh=0;sh<structures.length;sh++){var shs=structures[sh];if(shs.type!=="shield"||shs.hp<=0)continue;var shx=shs.x-eb.m.position.x,shz=shs.z-eb.m.position.z;if(shx*shx+shz*shz<shs.R*shs.R){blk=true;shs.shieldFlash=0.22;spawnFlash(eb.m.position.x,0.9,eb.m.position.z,0x8fc4ff,0.8,0.14);spawnRing(eb.m.position.x,eb.m.position.z,0x8fc4ff,0.3,1.6,0.25,0.6);beep(520,.04,"sine",.03);break;}}
       if(blk){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;continue;}
       var pdx=player.position.x-eb.m.position.x,pdz=player.position.z-eb.m.position.z;
-      if(pdx*pdx+pdz*pdz<1.4&&!(S.skIfr>0)){S.hp-=7;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
+      if(p1Down<=0&&pdx*pdx+pdz*pdz<1.4&&!(S.skIfr>0)){S.hp-=7;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
+      else if(coopOn()&&P2.down<=0&&(P2.g.position.x-eb.m.position.x)*(P2.g.position.x-eb.m.position.x)+(P2.g.position.z-eb.m.position.z)*(P2.g.position.z-eb.m.position.z)<1.4){p2Damage(7);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
       else if(eb.life<=0){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}}
     if(hurt>0)hurt=Math.max(0,hurt-dt*2.2); hurtEl.style.opacity=hurt;
     // Orbs einsammeln (Magnet)
-    for(i=0;i<orbs.length;i++){var o=orbs[i];if(!o.active)continue;var ox=player.position.x-o.m.position.x,oz=player.position.z-o.m.position.z;var od=Math.hypot(ox,oz)||1;if(od<S.pickup){o.m.position.x+=ox/od*12*dt;o.m.position.z+=oz/od*12*dt;}o.m.rotation.y+=dt*3;
+    for(i=0;i<orbs.length;i++){var o=orbs[i];if(!o.active)continue;var _op=nearPl(o.m.position.x,o.m.position.z);var ox=_op.x-o.m.position.x,oz=_op.z-o.m.position.z;var od=Math.hypot(ox,oz)||1;if(od<S.pickup){o.m.position.x+=ox/od*12*dt;o.m.position.z+=oz/od*12*dt;}o.m.rotation.y+=dt*3;
       if(od<1.0){spawnFlash(o.m.position.x,0.8,o.m.position.z,0xffe08a,0.55,0.12);o.active=false;o.m.visible=false;o.m.position.y=-99;S.xp+=(S.xpMul||1);if(S.xp>=S.xpNeed){S.xp=0;S.lvl++;S.xpNeed=Math.floor(S.xpNeed*1.4)+2;levelUp();}}
     }
     // Loot einsammeln (grösserer Radius als Orbs — Beute-Jagd)
-    for(i=0;i<loot.length;i++){var g=loot[i];if(!g.active)continue;var gx=player.position.x-g.m.position.x,gz=player.position.z-g.m.position.z,gd=Math.hypot(gx,gz)||1;if(gd<S.pickup+3){g.m.position.x+=gx/gd*16*dt;g.m.position.z+=gz/gd*16*dt;}g.m.rotation.y+=dt*2.2;g.m.position.y=0.7+Math.sin(S.t*4+i)*0.15;
+    for(i=0;i<loot.length;i++){var g=loot[i];if(!g.active)continue;var _lp=nearPl(g.m.position.x,g.m.position.z);var gx=_lp.x-g.m.position.x,gz=_lp.z-g.m.position.z,gd=Math.hypot(gx,gz)||1;if(gd<S.pickup+3){g.m.position.x+=gx/gd*16*dt;g.m.position.z+=gz/gd*16*dt;}g.m.rotation.y+=dt*2.2;g.m.position.y=0.7+Math.sin(S.t*4+i)*0.15;
       if(gd<1.2){spawnRing(g.m.position.x,g.m.position.z,RARITY[g.rar].c,0.5,4,0.4);spawnFlash(g.m.position.x,0.8,g.m.position.z,RARITY[g.rar].c,1.3,0.16);g.active=false;g.m.visible=false;g.m.position.y=-99;applyLoot(g.rar);}}
-    if(S.hp<=0){if(S.revives>0){S.revives--;S.hp=S.maxhp*0.6;announce("✨ Wiederbelebt!");beep(880,.3,"triangle",.09);shake=1.0;}else{S.hp=0;gameOver();}}
+    if(S.hp<=0&&p1Down<=0){if(S.revives>0){S.revives--;S.hp=S.maxhp*0.6;announce("✨ Wiederbelebt!");beep(880,.3,"triangle",.09);shake=1.0;}
+      else if(coopOn()&&P2.down<=0){S.hp=0;p1DownFn();} /* Koop: erst am Boden — Partner kann retten */
+      else{S.hp=0;gameOver();}}
+    if(coopMode==='host')hostNetFrame(dt); /* ~15 Snapshots/s an den Client */
     updHUD();
   }
   // FX (laufen auch pausiert → Level-Up-/Bau-Flourishes animieren im Overlay)
@@ -1530,8 +1555,16 @@ function loop(now){
   sky.position.set(player.position.x,0,player.position.z);
   // Hochformat/schmale Schirme sehen in X weniger → Kamera etwas weiter raus, damit das breite Feld reinpasst
   var camK=(H>W)?1.18:1.0;
-  camera.position.set(player.position.x+(Math.random()-.5)*shake*3,CAM_H*camK,player.position.z+CAM_Z*camK+(Math.random()-.5)*shake*3);
-  camera.lookAt(player.position.x,CAM_LOOKZ*-0.4,player.position.z+CAM_LOOKZ);
+  var cpx=player.position.x,cpz=player.position.z;
+  if(coopOn()){ /* Koop: Kamera auf den Mittelpunkt beider Spieler, bei Abstand rauszoomen */
+    cpx=(cpx+P2.g.position.x)/2;cpz=(cpz+P2.g.position.z)/2;
+    var _cd=Math.hypot(player.position.x-P2.g.position.x,player.position.z-P2.g.position.z);
+    camK*=Math.min(1.5,1+Math.max(0,_cd-16)*0.02);}
+  camera.position.set(cpx+(Math.random()-.5)*shake*3,CAM_H*camK,cpz+CAM_Z*camK+(Math.random()-.5)*shake*3);
+  camera.lookAt(cpx,CAM_LOOKZ*-0.4,cpz+CAM_LOOKZ);
+  /* Online-Keepalive: am Pause-/Level-Up-/Game-Over-Screen laufen keine Snapshots/Inputs —
+     ohne 1/s-Ping würde der 6s-Watchdog in mp.js die Verbindung fälschlich kappen */
+  if(netSess&&netSess.status==='connected'&&(!running||paused)&&now-kaLast>=1000){kaLast=now;try{netSess.sendFast({k:'p'});}catch(e){}}
   for(var _a2=0;_a2<ambN;_a2++){ambP[_a2*3+1]+=ambVv[_a2]*dt;if(ambP[_a2*3+1]>8)ambP[_a2*3+1]=0;}ambG.attributes.position.needsUpdate=true;
   renderBloom();
 }
@@ -1580,7 +1613,7 @@ function applyLoot(ri){var r=RARITY[ri],picks=[],pool=AFFIXES.slice();for(var k=
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";
   var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent=COARSE?"⚡ PULS-BLAST bereit — gelber Knopf":"⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
   var abb=document.getElementById("abBtn");if(abb){var rdy=(S.abilityCD||0)<=0;abb.style.opacity=rdy?"1":"0.45";abb.style.boxShadow=rdy?"0 0 16px #ffd166":"none";}
-  updSkillUI();}
+  coopHUD();updSkillUI();}
 /* Skill-Slots-UI: HUD-Zeile (Desktop) + radiale CD-Anzeige auf den Touch-Buttons */
 var _skRowPrev="";
 function updSkillUI(){var cds=S.skCD||{};
