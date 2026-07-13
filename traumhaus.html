@@ -33,6 +33,15 @@ canvas{display:block}
 .needs .nrow{display:flex;align-items:center;gap:5px}
 .needs .nbar{flex:1;height:7px;border-radius:4px;background:#e8e0d0;overflow:hidden}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
+@media (max-width:560px){
+  #hud{top:8px;left:8px;right:8px;gap:6px}
+  #geld,#uhr{font-size:1.05rem;padding:9px 13px;font-weight:900}
+  .needs{font-size:.64rem;min-width:104px;gap:2px;padding:7px 9px}
+  .needs .nbar{height:6px}
+  #achBtn{width:46px;height:46px;font-size:1.2rem}
+  #modeBtn,#lebenBtn{font-size:1.05rem;padding:14px 24px}
+  #tipRow{font-size:.74rem}
+}
 #palette{position:fixed;left:0;right:0;bottom:0;z-index:12;background:rgba(255,253,248,.95);border-top:2px solid rgba(120,110,80,.2);padding:6px 8px calc(6px + env(safe-area-inset-bottom));display:none}
 #palCats{display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap}
 .pcat{border:0;border-radius:20px;padding:7px 14px;font-weight:800;cursor:pointer;background:#e8e0d0;color:#5a4a30;font-size:.85rem;min-height:36px}
@@ -165,7 +174,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
-  <p style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
+  <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -463,9 +472,9 @@ var verkehr=[],busRec=null;
 setTimeout(function baueVerkehr(){
   var SZ=GH*CS/2;
   var ROUTEN=[
-    {axis:"x",z:SZ+13.6,dir:1,speed:7},{axis:"x",z:SZ+10.4,dir:-1,speed:6},
-    {axis:"x",z:-SZ-13.6,dir:1,speed:8},{axis:"x",z:-SZ-10.4,dir:-1,speed:6.5},
-    {axis:"z",x:-47.6,dir:1,speed:6},{axis:"z",x:47.6,dir:-1,speed:7}];
+    {axis:"x",z:SZ+13.6,dir:1,speed:5},{axis:"x",z:SZ+10.4,dir:-1,speed:4.5},
+    {axis:"x",z:-SZ-13.6,dir:1,speed:5.5},{axis:"x",z:-SZ-10.4,dir:-1,speed:4.8},
+    {axis:"z",x:-47.6,dir:1,speed:4.5},{axis:"z",x:47.6,dir:-1,speed:5}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
   ["auto_kombi","auto_flitzer","auto_van","auto_kombi","auto_van","auto_flitzer"].forEach(function(id,i){
     loadTH(id,function(tpl){if(!tpl)return;
@@ -502,7 +511,7 @@ setTimeout(function baueVerkehr(){
 function updVerkehr(dt){
   verkehr.forEach(function(v){
     v.pos+=v.route.dir*v.route.speed*dt;
-    var lim=v.route.axis==="x"?72:GH*CS/2+26;
+    var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+34; // weit außerhalb der Sicht umkehren
     if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
     if(v.route.axis==="x"){v.mesh.position.set(v.pos,v.homeY,v.route.z);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
     else{v.mesh.position.set(v.route.x,v.homeY,v.pos);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}});
