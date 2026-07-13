@@ -30,7 +30,14 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .pcard .nm{font-weight:900;font-size:.85rem}
 .pcard .st{display:flex;gap:9px;color:#4a5262;margin-top:2px;flex-wrap:wrap;font-weight:600}
 .pcard .st span{white-space:nowrap}
-#chapterTag{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:rgba(38,52,72,.42);padding:5px 16px;border-radius:14px;box-shadow:0 3px 12px rgba(30,40,60,.28)}
+#chapterTag{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:rgba(38,52,72,.42);padding:5px 16px;border-radius:14px;box-shadow:0 3px 12px rgba(30,40,60,.28);max-width:46vw}
+@media(max-width:640px){ /* schmale Screens: rechte Spalte — Banner UNTER den Buttons, TurnTag darunter (nichts überlappt) */
+  #chapterTag{left:auto;right:10px;top:52px;transform:none;max-width:44vw;padding:4px 10px}
+  #chapterTag b{font-size:.8rem;letter-spacing:.06em}
+  #chapterTag small{font-size:.6rem}
+  #turnTag{top:104px !important}
+  #players{max-width:50vw}
+  .pcard{font-size:.7rem;padding:5px 8px}}
 #chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 1px 2px rgba(10,20,35,.9),0 2px 8px rgba(10,20,35,.6)}
 #chapterTag small{display:block;color:#fdf3d0;font-size:.72rem;margin-top:1px;text-shadow:0 1px 3px rgba(10,20,35,.85)}
 #turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffdf8a;background:rgba(38,52,72,.42);padding:3px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95)}
@@ -686,6 +693,11 @@ function updBalloons(t){for(var i=0;i<balloons.length;i++){var bl=balloons[i];
   var k2=at(1,8,7);
   box(k2,4.4,2.8,3.2,0xf0d8b0,0,1.4,0);cone(k2,3.2,1.8,0xe06a5a,0,3.7,0).rotation.y=Math.PI/4;
   var clock=cyl(k2,0.55,0.55,0.12,0xfffdf6,0,2.4,1.66);clock.rotation.x=Math.PI/2;
+  // 🪟 Fenster-Raster + Tür-Stufen + Dachkante (Detail gegen "Klötzchen-Look")
+  [-1.5,-0.75,0.75,1.5].forEach(function(wx3){box(k2,0.5,0.62,0.06,0xbfe4ff,wx3,1.7,1.62,0xdff2ff);box(k2,0.5,0.62,0.06,0xbfe4ff,wx3,0.8,1.62,0xdff2ff);});
+  box(k2,4.6,0.18,3.4,0xc9553f,0,2.86,0); // Dach-Traufkante
+  box(k2,1.2,0.14,0.7,0xd8c8a8,0,0.07,1.9);box(k2,1.0,0.14,0.5,0xcdbb98,0,0.2,1.78); // Eingangs-Stufen
+  [-2.24,2.24].forEach(function(sx3){box(k2,0.14,2.8,0.14,0xd9c39a,sx3,1.4,1.58);}); // Eck-Lisenen
   window._lmClockH=box(k2,0.06,0.34,0.05,0x2a3040,0,2.5,1.74);window._lmClockH.geometry.translate(0,0.17,0);window._lmClockH.position.y=2.4;
   window._lmClockM=box(k2,0.05,0.44,0.05,0x2a3040,0,2.4,1.75);window._lmClockM.geometry.translate(0,0.22,0);
   box(k2,0.8,1.2,0.1,0x8a5a3a,0,0.6,1.62);
@@ -693,11 +705,15 @@ function updBalloons(t){for(var i=0;i<balloons.length;i++){var bl=balloons[i];
   var k3=at(2,-7,-8);
   [[0xff5d7d,0],[0x2f8cff,0.5],[0x35d95a,1.0],[0xffd91f,1.5],[0xa86aff,2.0]].forEach(function(bk,i2){
     var bx2=box(k3,2.4-i2*0.16,0.5,1.7-i2*0.1,bk[0],Math.sin(i2*1.6)*0.25,0.25+bk[1],0);bx2.rotation.y=Math.sin(i2*2.2)*0.22;});
-  // K4: bunte Stadthäuschen-Reihe
+  // K4: echte Stadthäuschen (Quaternius-Modelle statt Klötzchen — "sah billig aus")
   var k4=at(3,7,8);
-  [[0xff9a6a,0],[0x6ab8ff,2.1],[0xffd166,4.2]].forEach(function(hh,i3){
-    box(k4,1.8,2.2+i3*0.3,1.8,hh[0],hh[1],1.1+i3*0.15,0);cone(k4,1.4,1.0,0xe06a5a,hh[1],2.7+i3*0.3,0);
-    box(k4,0.5,0.7,0.06,0xfff2c8,hh[1],1.1,0.93,0xfff2c8);});
+  if(THREE.GLTFLoader)["bd_house_a","bd_house_b","bd_inn"].forEach(function(hf,i3){
+    new THREE.GLTFLoader().load("/models/"+hf+".glb",function(g){
+      var o=fitModel(g.scene,3.4);o.position.x+=i3*3.1;o.position.z+=(i3%2)*0.6;
+      o.rotation.y=-0.35+i3*0.18;k4.add(o);},undefined,function(){
+      // Fallback: bisheriges Klötzchen-Haus
+      box(k4,1.8,2.2,1.8,[0xff9a6a,0x6ab8ff,0xffd166][i3],i3*2.1,1.1,0);cone(k4,1.4,1.0,0xe06a5a,i3*2.1,2.7,0);});
+  });
   // K5: Büroturm mit Leucht-Fenstern
   var k5=at(4,-8,-7);
   box(k5,2.6,7.5,2.6,0x8ab0c8,0,3.75,0);
@@ -810,8 +826,8 @@ var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"�
 var fieldSprites=[];
 (function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(!FIELD_EMO[f.type])continue;
   var big=f.type==="m",ev=f.type==="e";
-  var sp=emojiSprite(FIELD_EMO[f.type],big?2.7:(ev?1.5:2.0));
-  sp.position.set(f.x,big?2.5:1.72,f.z);scene.add(sp);var fse={sp:sp,b:Math.random()*6.28,y0:sp.position.y,hop:0};fieldSprites.push(fse);f.spr=fse;}})();
+  var sp=emojiSprite(FIELD_EMO[f.type],big?2.4:(ev?1.3:1.7)); // kleiner -> weniger Icon-Überschneidung an Kurven
+  sp.position.set(f.x,big?2.6:(1.72+((i%2)*0.35)),f.z);/* abwechselnd höher gestaffelt */scene.add(sp);var fse={sp:sp,b:Math.random()*6.28,y0:sp.position.y,hop:0};fieldSprites.push(fse);f.spr=fse;}})();
 // Konfetti (physisch fallende Farb-Plättchen)
 var confs=[];
 function confetti(x,z,accent,n){
@@ -2782,6 +2798,8 @@ function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: über den HAUPT-Renderer 
     if(cfg&&cfg.meshy){ // Anime-Figur: SOFORT Toon als Platzhalter zeigen (nie leere Box), GLB ersetzt ihn beim Fertigladen
       var tc={};for(var tk in cfg)tc[tk]=cfg[tk];delete tc.meshy;
       p=mkPawnMesh(col,tc,null);p.rotation.y=0.45;draw();
+      (function(){try{var c2d=cv.getContext("2d");c2d.font="bold "+(14*(PV_W/110))+"px sans-serif";c2d.textAlign="center";
+        c2d.fillStyle="rgba(40,60,90,.75)";c2d.fillText("⏳ lädt …",PV_W/2,PV_H*0.13);}catch(e){}})();
       var mp=mkPawnMesh(col,cfg,function(){p=mp;mp.rotation.y=0.45;draw();});
     }else{
       p=mkPawnMesh(col,cfg,null);p.rotation.y=0.45;draw();
