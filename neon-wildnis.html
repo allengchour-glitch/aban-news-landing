@@ -279,7 +279,7 @@ function buildGround(){
   g.setAttribute("color",new THREE.Float32BufferAttribute(cols,3));
   g.computeVertexNormals();
   // Gras-Textur über die Biom-Vertexfarben legen (Textur × Farbe = Detail + Abwechslung)
-  var grassTex=gtex("tex_grass.png", MAP/16, true);
+  var grassTex=gtex("tex_grass.png", MAP/14, true); // etwas feiner gekachelt (Wiese mit Bluemchen-Tupfern)
   var m=new THREE.MeshLambertMaterial({vertexColors:true, map:grassTex}); // zurück zum flacheren Look (User: vorher besser)
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
@@ -819,7 +819,34 @@ var sparks=[],fishes=[],shoots=[];
   var stg=new THREE.CylinderGeometry(0.02,0.06,2.6,4);
   for(var s2=0;s2<3;s2++){var sm=new THREE.Mesh(stg,new THREE.MeshBasicMaterial({color:0xfff8d8,transparent:true}));sm.visible=false;scene.add(sm);shoots.push({m:sm,t:3+s2*5,life:0});}
 })();
+// 🧳 Reisender Händler: Anime-Figur + Karren, zieht endlos von Dorf zu Dorf
+var traveler=null;
+function spawnTraveler(){
+  if(traveler||villages.length<2||!THREE.GLTFLoader)return;
+  new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
+    var g=new THREE.Group();
+    var o=gl.scene;o.scale.setScalar(1.35);o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});g.add(o);
+    var cart=cc0inst("ftk_cart",1.6);if(cart){cart.position.set(0,0,-1.6);g.add(cart);}
+    var v0=villages[0];g.position.set(v0.x+8,groundH(v0.x+8,v0.z),v0.z);scene.add(g);
+    var mix=null;if(gl.animations&&gl.animations.length){mix=new THREE.AnimationMixer(o);mix.clipAction(gl.animations[0]).play();}
+    traveler={g:g,mix:mix,from:0,to:1,f:0,pauseT:0};
+  },undefined,function(){});
+}
+function updTraveler(dt){
+  var t=traveler;if(!t)return;
+  if(t.mix)t.mix.update(dt);
+  if(t.pauseT>0){t.pauseT-=dt;return;} // Rast am Dorfplatz
+  var A=villages[t.from],B=villages[t.to];if(!A||!B)return;
+  var dist=Math.hypot(B.x-A.x,B.z-A.z);
+  t.f+=dt*1.6/Math.max(1,dist); // ~1.6 Einheiten/s
+  if(t.f>=1){t.f=0;t.from=t.to;var nx2=t.to;while(nx2===t.to)nx2=(Math.random()*villages.length)|0;t.to=nx2;t.pauseT=6+Math.random()*8;return;}
+  var x=A.x+(B.x-A.x)*t.f,z=A.z+(B.z-A.z)*t.f;
+  t.g.position.set(x,groundH(x,z),z);
+  t.g.rotation.y=Math.atan2(B.x-x,B.z-z);
+}
 function updLively(dt){
+  if(!traveler&&villages.length>=2&&Math.random()<0.005)spawnTraveler();
+  updTraveler(dt);
   // ✨ Funken am nächsten Dorf-/Lagerfeuer
   var fire=null,best=1e9;
   for(var i=0;i<worldProps.length;i++){var p2=worldProps[i];if(!p2.flick)continue;
