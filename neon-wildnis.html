@@ -1187,7 +1187,8 @@ var NEW_ASSETS=["nt_pine","nt_oak","nt_tree","nt_tree_leafy","nt_palm","nt_bush"
   "gy_gravestone_cross","gy_gravestone_round","gy_gravestone_broken","gy_cross","gy_crypt","gy_coffin","gy_obelisk","gy_iron_fence","gy_dead_tree","gy_lantern","gy_pumpkin","gy_urn",
   "fu_table","fu_chair","fu_bench","fu_shelf","fu_plant","fu_cabinet","fu_bed","fu_rug",
   "dk2_coin","dk2_banner","dk2_column","dk2_gate","dk2_rocks","dk2_stones","dk2_trap",
-  "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver"];
+  "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver",
+  "wp_sword","wp_sword_diamond","wp_axe","wp_bow","wp_staff","wp_hammer","wp_dagger","wp_potion","wp_potion2","wp_key","wp_gem","wp_shield","wp_shield_golden"];
 // 🆕 4 weitere CC0-Kits (Foliage/Watercraft/Building/Holiday) — Blender-poliert
 var NEW_ASSETS2=["fg_grass","fg_grass_tall","fg_grass_leafy","fg_bush","fg_bush_large","fg_bush_small","fg_flower_red","fg_flower_yellow","fg_flower_purple","fg_lilypad","fg_lilypad_small","fg_hanging_moss","fg_mushroom","fg_tree_small",
   "wc_rowboat","wc_rowboat_large","wc_sailboat","wc_dock","wc_pier","wc_barrel_float","wc_crate","wc_lighthouse","wc_shipwreck",
@@ -1236,7 +1237,8 @@ function decorateWorld(){
     ["sv_barrel",1.0],["sv_woodpile",0.5],["sv_log",0.6],["sv_planks",0.4],["sv_chest",0.6],["sv_bucket",0.35],["sv_axe",0.7],["sv_hammer",0.4],["sv_bedroll",0.25],["sv_fish",0.3],
     ["pr_barrel",1.0],["pr_crate",0.9],["pr_crate_bottles",0.9],["pr_chest",0.6],["pr_bottle",0.4],["pr_shovel",1.2],["pr_cannon",0.7],
     ["fu_table",0.8],["fu_chair",0.9],["fu_bench",0.5],["fu_shelf",1.8],["fu_plant",0.7],["fu_cabinet",0.9],
-    ["dk2_coin",0.4],["dk2_banner",1.6],["dk2_column",2.0],["dk2_rocks",0.5],["dk2_stones",0.35],["dk2_trap",0.25],["gy_urn",0.35],["gy_pumpkin",0.4]];
+    ["dk2_coin",0.4],["dk2_banner",1.6],["dk2_column",2.0],["dk2_rocks",0.5],["dk2_stones",0.35],["dk2_trap",0.25],["gy_urn",0.35],["gy_pumpkin",0.4],
+    ["wp_potion",0.45],["wp_potion2",0.5],["wp_gem",0.4],["wp_sword",0.9],["wp_dagger",0.6],["wp_shield",0.9]];
   farScatter(Math.round(150*VF),16,function(x,z){var it=STUFF[(rnd()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // 🐄🦌 Tiere über die Welt verteilt (Vieh nahe Dörfer / Wild in Wäldern) — statische Belebung
   var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
@@ -1397,7 +1399,7 @@ function decorateWorld(){
       var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.14,5.2,6),woodPole);pole.position.set(tx2,groundH(tx2,tz2)+2.6,tz2);pole.castShadow=true;scene.add(pole);
       var flg=cc0inst("ck_flag",2.6);if(flg){flg.position.set(tx2,groundH(tx2,tz2)+4.4,tz2);flg.rotation.y=rnd()*6.28;scene.add(flg);}}
     // ⚔️ Waffen-Armory (Holz-Ständer-Look): Schwert/Speer/Schilde
-    var arms=["dk_sword","dk_spear","dk_shield_round","dk_shield_rect"];
+    var arms=["dk_sword","dk_spear","dk_shield_round","dk_shield_rect","wp_axe","wp_hammer","wp_bow","wp_staff"];
     for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+3+ai*0.9,waz=vz-4;
       wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
     // 🧑‍🌾 Dorfbewohner (mehr im grossen Anfangsdorf)
