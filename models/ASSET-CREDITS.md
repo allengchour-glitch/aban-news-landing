@@ -145,3 +145,60 @@ Neue Welt-Orte: 🪦 Friedhof, 🏕️ Survival-Camp, 🏴‍☠️ Schatz-Küst
 | fg_ | Nature/Foliage | Gras-Sorten, Büsche, Blumen, Seerosen, Moos, Pilz, kleiner Baum (14) |
 
 Integriert: Foliage in Pflanzen-Scatter · Seerosen+Boote+Steg an Seen · 🏛️ Ruinen-POI (bk_) · 🗼 Leuchtturm · 🎄 festliche Ecke im Anfangsdorf.
+
+## Neon-/Sci-Fi-Fusion-Spiel (`nf_*` + `textures/tex_neon_*`) — 2026-07-13
+Beschafft für das Neon-Fusion-Spiel (neon-survivor/colossus/abyss/duo). Alle CC0.
+Aufbereitung GLBs: `gltf-transform` prune+dedup; Space-Station-Kit-GLBs referenzierten externe
+`Textures/colormap.png` → eingebettet + identity `KHR_texture_transform` entfernt + Sampler
+NEAREST (bekannter Palette-Atlas-Fix für r128). Quaternius-`.gltf` (Base64-Buffer) → GLB
+konvertiert, Animationen erhalten. Verifiziert: glTF-Magic + Version 2 + JSON-Chunk parsebar +
+keine externen URIs; Texturen per `file` = echte JPEG 1024×1024.
+
+### Poly Haven — Texturen (CC0 1.0), 1k Diffuse JPG
+Download via https://api.polyhaven.com/files/<slug> → `Diffuse/1k/jpg`.
+
+| Datei (textures/) | Poly-Haven-Slug | Nutzung |
+|---|---|---|
+| tex_neon_metal_plate.jpg | metal_plate | Metall-Bodenplatten/Riffelblech (Boden) |
+| tex_neon_grate.jpg | metal_grate_rusty | Gitter/Grate (Boden/Steg) |
+| tex_neon_panel_blue.jpg | blue_metal_plate | Sci-Fi-Panel, blau lackiert (Wände) |
+| tex_neon_metal_grid.jpg | rusty_metal_grid | Metall-Grid-Panel (Wände/Deko) |
+| tex_neon_asphalt.jpg | asphalt_02 | dunkler Asphalt (Straßen/Arena-Boden) |
+| tex_neon_concrete.jpg | concrete_floor_worn_001 | abgenutzter Beton (Boden) |
+| tex_neon_corrugated.jpg | corrugated_iron_02 | Wellblech, galvanisiert (Wände/Dächer) |
+| tex_neon_container.jpg | container_side | Container-Seite (Kisten/Barrieren-Skin) |
+
+### Kenney — Space Kit 2.0 (CC0)
+Quelle: https://kenney.nl/assets/space-kit (`Models/GLTF format`, Material-Farben, keine Texturen).
+
+| Datei | Original | Nutzung |
+|---|---|---|
+| nf_turret_single.glb | turret_single | Geschützturm (Gegner/Verteidigung) |
+| nf_turret_double.glb | turret_double | Doppel-Geschützturm |
+| nf_crystal.glb | rock_crystals | Energie-Kristalle (Pickup/Deko) |
+| nf_crystal_large.glb | rock_crystalsLargeA | große Kristallformation |
+| nf_barrels.glb | barrels | Fass-Gruppe (Props/Deckung) |
+| nf_generator.glb | machine_generator | Generator (Ziel-Objekt/Deko) |
+| nf_satellite.glb | satelliteDish | Satellitenschüssel (Landmarke) |
+| nf_gate.glb | gate_simple | Sci-Fi-Tor/Spawn-Portal |
+
+### Kenney — Space Station Kit 1.0 (CC0)
+Quelle: https://kenney.nl/assets/space-station-kit (`Models/GLB format`, colormap-Atlas eingebettet, NEAREST).
+
+| Datei | Original | Nutzung |
+|---|---|---|
+| nf_barrier.glb | structure-barrier | Barriere (Deckung/Arena-Rand) |
+| nf_barrier_high.glb | structure-barrier-high | hohe Barriere |
+| nf_container.glb | container | Sci-Fi-Kiste (Loot/Deckung) |
+| nf_container_tall.glb | container-tall | hoher Container |
+
+### Quaternius — Ultimate Space Kit (CC0 1.0)
+Quelle: https://quaternius.com/packs/ultimatespacekit.html (Download = öffentlicher Google-Drive-Ordner
+`17F8HlI2zPTlo32aieW5YPPwOk78xo-2m` → Characters/GLTF; License.txt im Ordner = CC0). Der frühere
+itch.io-Blocker gilt also nicht für die Drive-Links — via `drive.google.com/uc?export=download&id=…` skriptbar.
+
+| Datei | Original | Nutzung |
+|---|---|---|
+| nf_drone.glb | Enemy_Flying.gltf | Flugdrohnen-Gegner (**8 Animationen**, geriggt) |
+| nf_robot_small.glb | Enemy_Small.gltf | kleiner Roboter-Gegner (**8 Animationen**) |
+| nf_robot_large.glb | Enemy_Large.gltf | großer Roboter-Boss (**14 Animationen**) |
