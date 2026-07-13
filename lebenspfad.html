@@ -110,6 +110,9 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #chatRow{display:flex;border-top:1px solid #eee}
 #chatIn{flex:1;border:0;padding:10px;border-radius:0 0 0 12px;font-size:16px;background:transparent}
 #chatSend{border:0;background:#ffd166;padding:0 14px;border-radius:0 0 12px 0;cursor:pointer;font-weight:800}
+#chatBox.mini #chatMsgs{max-height:58px;opacity:.92}
+#voiceBtn{border:0;border-right:1px solid #eee;background:#f6efdc;padding:0 12px;cursor:pointer;font-size:1.05rem}
+#voiceBtn.on{background:#8fd8a0;animation:chatBlink 1.6s ease-in-out infinite}
 #chatToggle{position:fixed;left:10px;bottom:48px;z-index:40;display:none;border:2px solid #ffcf3a;background:rgba(255,253,246,.94);border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:chatBlink 1s ease-in-out infinite}
 @keyframes chatBlink{50%{box-shadow:0 0 0 6px rgba(255,209,102,.45)}}
@@ -159,7 +162,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <body>
 <div id="lpvig"></div>
 <button id="chatToggle" title="Spieler-Chat">💬</button>
-<div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><input id="chatIn" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
+<div id="chatBox"><div id="chatMsgs"></div><div id="chatRow"><button id="voiceBtn" title="Live-Voice-Chat an/aus">🎙️</button><input id="chatIn" placeholder="Nachricht …" maxlength="140"><button id="chatSend">▶</button></div></div>
 <div id="wrap"></div>
 <div id="hud" class="hide">
   <div id="players"></div>
@@ -475,19 +478,20 @@ var fields=[];
     if(TSPECIAL[i])ty=TSPECIAL[i];
     var p=pathPts[i];
     var rr0=ty==="m"?2.7:2.0,sg0=ty==="m"?36:32; // runde Scheiben (mehr Segmente = saubere Ränder auch bei Zoom)
+    var yoff=(i%3)*0.04; /* Hoehen-Staffelung: eng benachbarte Felder ueberlappen in Kurven -> ohne Versatz Z-Fighting (Pixel-Flimmern an der Schnittkante) */
     var blob=new THREE.Mesh(new THREE.CircleGeometry(rr0+0.7,sg0),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
     blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.03,p.z);scene.add(blob);
     var sock=new THREE.Mesh(new THREE.CylinderGeometry(rr0+0.22,rr0+0.35,0.34,sg0),mat(0xffffff,0xf0f0f0,0.06)); // weißer Plastik-Sockel
-    sock.position.set(p.x,0.17,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
+    sock.position.set(p.x,0.17+yoff,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
     // Deckel bewusst mit Luft über dem Sockel (0.34) -> KEINE koplanaren Flächen mehr = kein Z-Fighting-Flimmern am Feldrand
     var disc=new THREE.Mesh(new THREE.CylinderGeometry(rr0,rr0+0.08,0.26,sg0),mat(FTYPE_COL[ty],FTYPE_COL[ty],ty==="e"?0.1:0.32)); // satter Farbdeckel
     disc.material.polygonOffset=true;disc.material.polygonOffsetFactor=-1;disc.material.polygonOffsetUnits=-2;
-    disc.position.set(p.x,0.5,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+    disc.position.set(p.x,0.5+yoff,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
     if(ty!=="m"&&ty!=="e"){var trg=new THREE.Mesh(new THREE.TorusGeometry(rr0+0.12,0.09,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
-      trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6,p.z);scene.add(trg);}
+      trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6+yoff,p.z);scene.add(trg);}
     if(ty==="m"){ // Gold-Ring + Fähnchen
       var gr=new THREE.Mesh(new THREE.TorusGeometry(2.9,0.14,8,24),mat(0xffb84a,0xffb84a,0.7));
-      gr.rotation.x=Math.PI/2;gr.position.set(p.x,0.62,p.z);scene.add(gr);
+      gr.rotation.x=Math.PI/2;gr.position.set(p.x,0.62+yoff,p.z);scene.add(gr);
       var fp2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,5),mat(0xf0e8d8));fp2.position.set(p.x+1.9,1.55,p.z-1.4);scene.add(fp2);
       var fl2=new THREE.Mesh(new THREE.PlaneGeometry(1.1,0.7),new THREE.MeshBasicMaterial({color:CHAPTERS[Math.min(7,Math.ceil(i/FIELDS_PER))].accent,side:THREE.DoubleSide}));
       fl2.position.set(p.x+2.45,2.5,p.z-1.4);scene.add(fl2);}
@@ -514,13 +518,14 @@ var fields=[];
       var p=fk.pts[j];
       var blob=new THREE.Mesh(new THREE.CircleGeometry(2.0,30),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
       blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.03,p.z);scene.add(blob);
+      var yoff2=0.02+(j%3)*0.04; /* wie Hauptpfad: Staffelung gegen Z-Fighting, +0.02 damit Neben-Route nie exakt auf Hauptpfad-Hoehe liegt */
       var sock=new THREE.Mesh(new THREE.CylinderGeometry(1.62,1.75,0.34,30),mat(0xffffff,0xf0f0f0,0.06));
-      sock.position.set(p.x,0.17,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
+      sock.position.set(p.x,0.17+yoff2,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
       var disc=new THREE.Mesh(new THREE.CylinderGeometry(1.45,1.53,0.26,30),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.32));
       disc.material.polygonOffset=true;disc.material.polygonOffsetFactor=-1;disc.material.polygonOffsetUnits=-2;
-      disc.position.set(p.x,0.5,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+      disc.position.set(p.x,0.5+yoff2,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
       var trg=new THREE.Mesh(new THREE.TorusGeometry(1.57,0.08,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
-      trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6,p.z);scene.add(trg);
+      trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6+yoff2,p.z);scene.add(trg);
       fields.push({x:p.x,z:p.z,type:ty,disc:disc,mchap:mch,prog:fk.at+(fk.rejoin-fk.at)*(j+1)/(fk.types.length+1)});
       var idx=fields.length-1;
       if(j===0)first=idx;else fields[idxPrev].nxt=idx;
@@ -1014,7 +1019,11 @@ function nextMeshy(cur,dir){var n=MESHY_CHARS.length,i=(cur==null)?-1:meshyIdx(c
 function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
   g.userData.ageScale=1;g.userData.ageScaleT=1;g.userData.headScale=1;g.userData.headScaleT=1;g.userData.headStoop=0;g.userData.headStoopT=0;g.userData.cfg=cfg;g.userData.blinkT=1e9;g.userData.meshy=true;
   var mi=meshyIdx(cfg.meshy),spec=mi>=0?MESHY_CHARS[mi]:MESHY_CHARS[0];
-  if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+spec.file,function(gl){
+  /* 👤 Sofort-Platzhalter: bis das GLB geladen ist steht die Toon-Figur auf dem Brett (sonst "unsichtbare
+     Charaktere" bei langsamem Netz) — und sie BLEIBT stehen, falls der Download endgueltig scheitert. */
+  var ph=null;try{var pcfg={};for(var pk in cfg)if(pk!=="meshy")pcfg[pk]=cfg[pk];ph=mkPawnMesh(color,pcfg);g.add(ph);}catch(e){}
+  var glTries=0;
+  function glLoad(){if(!THREE.GLTFLoader)return;new THREE.GLTFLoader().load("/models/"+spec.file,function(gl){
     var o=gl.scene;o.scale.setScalar(0.95); // 0.62 war winzig neben der Toon-Figur
     // 🎨 Kleiderfarbe wirkt auch auf Anime-Figuren: Meshy-GLBs haben EINE Atlas-Textur (weisse Grundfarbe),
     // darum werden die TEXTUR-Pixel selektiv umgefärbt — Haut-Töne, fast-Weiss und sehr Dunkles bleiben erhalten.
@@ -1055,9 +1064,11 @@ function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
     });
     o.traverse(function(n){if(n.isMesh)n.frustumCulled=false;});
     g.add(o);g.userData.gscene=o;
+    if(ph){g.remove(ph);ph=null;} /* echtes Modell ist da -> Platzhalter raus */
     if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);var idle=gl.animations[0];for(var a=0;a<gl.animations.length;a++)if(/idle/i.test(gl.animations[a].name)){idle=gl.animations[a];break;}mx.clipAction(idle).play();mx.update(0.1);g.userData.gmix=mx;}
     if(onReady)onReady();
-  },undefined,function(){});}
+  },undefined,function(){if(++glTries<3)setTimeout(glLoad,1500*glTries);/* Netz-Huster: bis 2x neu versuchen, sonst bleibt der Toon-Platzhalter */});}
+  glLoad();
   return g;}
 // ===== 🔓 Freischalt-System: Fun-Looks schalten sich mit gespielten Leben frei (klein, nicht pay2win) =====
 var STYLE_UNLOCK={4:1,5:2,6:3,7:4,8:5}; // Accessoire-Index -> benoetigte Spiele; 0-3 + 9(Ohne) immer frei
@@ -2936,7 +2947,7 @@ function netApply(m){
   if(m.t==="full"){netRoomFull();return;} // Raum ist voll (max. 4)
   if(m.t==="ready"){if(!NET.ready)NET.ready=[];NET.ready[m.i|0]=!!m.v;netPlayersUpd();return;} // Bereit-Status
   if(m.t==="pong"){NET._lastPong=performance.now();if(m.ts)NET.ping=Math.max(1,Math.round(performance.now()-m.ts));netConnInfo();return;} // Ping-Messung + Watchdog (Gast)
-  if(m.t==="lobby"){NET.names=m.names;NET.ready=m.ready||[];netPlayersUpd();
+  if(m.t==="lobby"){NET.names=m.names;NET.ready=m.ready||[];if(m.vids)NET.vids=m.vids;netPlayersUpd();
     var mt2=document.getElementById("netModeTag");if(mt2&&m.mode)mt2.textContent=m.mode==="kurz"?"⚡ Schnelles Leben (4 Kapitel)":"🌱 Volles Leben (8 Kapitel)";
     if(m.cfgs)NET.cfgs=m.cfgs;return;}
   if(m.t==="sync"){netApplySync(m);return;} // 🔄 vollständiger State-Snapshot (Reconnect/Resync)
@@ -2956,7 +2967,7 @@ function netApply(m){
 function netUnlockAfterWelcome(){ // Ready/Chat erst freigeben, wenn der Host uns einen Index gab
   var rb=document.getElementById("netReadyBtn");if(rb&&!NET.host)rb.disabled=false;}
 function netRoomFull(){ // Beitritt abgelehnt — Raum ist voll
-  try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.on=false;NET.started=false;
+  try{voiceStop();}catch(e){}try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.on=false;NET.started=false;
   if(NET._hb)clearInterval(NET._hb);clearTimeout(NET._tmo);
   netStatus("🚪 Raum ist voll (max. 4 Spieler) — frag nach einem neuen Code.","#e05a5a");
   var jb=document.getElementById("netJoinBtn"),hb=document.getElementById("netHostBtn");
@@ -3056,12 +3067,14 @@ function chatBubble(idx,txt){try{
   c.fillStyle="#3a3040";c.textAlign="center";c.fillText(t,128,40);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
   sp.scale.set(3.2,1.05,1);sp.position.y=3.1;pawns[idx].add(sp);
-  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},4200);}catch(e){}}
+  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},7000);}catch(e){}} /* laenger lesbar (User: "leute koennen nicht so schnell lesen") */
 function chatAdd(n,x,idx){var box=document.getElementById("chatMsgs");if(!box)return;
   if(NET.on&&G&&running){var bi=(idx!=null&&idx>=0)?idx:NET.names.indexOf(n);if(bi>=0&&pawns[bi])chatBubble(bi,x);}
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
-  var cb=document.getElementById("chatBox");if(cb&&cb.style.display!=="flex")document.getElementById("chatToggle").classList.add("blink");}
+  var cb=document.getElementById("chatBox");
+  if(NET.on&&running&&cb&&cb.style.display!=="flex")cb.style.display="flex"; /* Online: keine Nachricht verpassen */
+  if(cb&&cb.style.display!=="flex")document.getElementById("chatToggle").classList.add("blink");}
 // ===================== 😊 Smiley-Fast-Chat (Pass B2, Muster neon-duo): Sprechblasen über der eigenen Figur =====================
 var EMOTES=[["👍","👍"],["❤️","❤️"],["😂","😂"],["😮","😮"],["💪","Gut gemacht!"],["🆘","Hilfe!"]];
 var _emoLast=0;
@@ -3242,7 +3255,7 @@ function netTryReconnect(){ // Gast: mit Backoff neu zum Host verbinden und Snap
       setTimeout(function(){if(!settled&&NET.on&&!(c&&c.open))netTryReconnect();},Math.min(6000,delay+3000)); // Versuch lief ins Leere -> nächster Backoff
     }catch(e){netTryReconnect();}
   },delay);}
-function netHostReset(){NET.host=false;NET.pubWanted=false;try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
+function netHostReset(){try{voiceStop();}catch(e){}NET.host=false;NET.pubWanted=false;try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
   clearTimeout(NET._tmo);
   var b=document.getElementById("netHostBtn");if(b){b.disabled=false;b.textContent="Raum erstellen";}
   var j=document.getElementById("netJoinBtn");if(j)j.disabled=false;
@@ -3260,6 +3273,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
   },15000);
   NET.peer.on("open",function(){clearTimeout(NET._tmo);NET.peer._opened=true;
     NET.ready=[true];netLobbyShow();netPlayersUpd();netConnInfo();netStatus("");});
+  NET.peer.on("call",voiceAnswer); /* 🎙️ eingehende Voice-Anrufe annehmen */
   NET.peer.on("disconnected",function(){try{NET.peer.reconnect();}catch(e){}}); // Signaling-Abriss -> reconnect
   NET.peer.on("error",function(e){var t=e&&e.type;
     if(t==="unavailable-id"&&NET.pubWanted){NET.pubWanted=false;netStatus("🌍 Es gibt schon einen offenen Raum — einfach »🌍 Offen beitreten« drücken!","#2a7d46");netHostReset();return;}
@@ -3333,7 +3347,7 @@ document.getElementById("netJoinBtn").onclick=function(){
   var jb=this,hb=document.getElementById("netHostBtn");jb.disabled=true;hb.disabled=true;jb.textContent="⏳ …";
   NET.host=false;NET.code=code;NET.my=-1;NET.started=false;NET.ping=0;NET._reTries=0; // Index bis 'welcome' unbekannt (nicht 0!)
   netStatus("⏳ Verbinde mit Raum "+code+" …","#2a6ab0");
-  function joinReset(msg){netStatus(msg,"#e05a5a");clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
+  function joinReset(msg){try{voiceStop();}catch(e){}netStatus(msg,"#e05a5a");clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
     jb.disabled=false;hb.disabled=false;jb.textContent="Beitreten";
     document.getElementById("chatToggle").style.display="none";
     document.getElementById("netSetup").style.display="flex";document.getElementById("netLobby").style.display="none";}
@@ -3343,6 +3357,7 @@ document.getElementById("netJoinBtn").onclick=function(){
   NET._tmo=setTimeout(function(){if(opened)return; // Gesamt-Timeout (deckt alle Wiederhol-Versuche ab)
     joinReset("⏱️ Raum "+code+" antwortet nicht — Code prüfen, dann nochmal versuchen.");},28000);
   NET.peer.on("disconnected",function(){try{if(NET.peer&&!NET.peer.destroyed)NET.peer.reconnect();}catch(e){}}); // Signaling-Abriss -> Signaling reconnecten
+  NET.peer.on("call",voiceAnswer); /* 🎙️ eingehende Voice-Anrufe annehmen */
   // 🔁 Beitritt mit Wiederholung: der Gratis-Broker ist manchmal träge, oder der Host lädt noch —
   // ein einzelnes "peer-unavailable" heisst NICHT, dass der Raum weg ist. Bis zu 5 Versuche.
   var attempt=0,MAXTRY=5;
@@ -3408,11 +3423,12 @@ function netLaunch(){ // Host: Runde starten / neue Runde — Init an alle + sel
   var adult=document.getElementById("adultChk")&&document.getElementById("adultChk").checked;
   var kurz=document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked; // Host bestimmt den Modus
   NET.started=true;
-  NET.conns.forEach(function(c){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[]}));}catch(e){}});
+  NET.conns.forEach(function(c){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[],vids:netVidList()}));}catch(e){}});
   beginNet({seed:seed,names:NET.names,adult:!!adult,you:0,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[]});}
 document.getElementById("netStartBtn").onclick=netLaunch;
 function beginNet(init){
   NET.on=true;NET.started=true;NET.seed=init.seed>>>0;NET.my=init.you|0;NET.names=init.names;NET.q=[];
+  if(init.vids)NET.vids=init.vids; /* 🎙️ Peer-IDs fuer Voice-Vollvernetzung */
   NET.cfgs=(init.cfgs&&init.cfgs.length)?init.cfgs:[]; // gesyncte Picker-Looks aller Spieler
   document.getElementById("endO").classList.add("hide"); // falls Rematch aus dem Endscreen
   var g0=freshState(init.names.length,init.adult,init.mode);
@@ -3431,18 +3447,76 @@ function beginNet(init){
   var kc=document.getElementById("kurzChk"),mt=document.getElementById("netModeTag");
   if(NET.host){var md=(kc&&kc.checked)?"kurz":"voll";
     if(mt)mt.textContent=md==="kurz"?"⚡ Schnelles Leben (4 Kapitel)":"🌱 Volles Leben (8 Kapitel)";
-    netSend({t:"lobby",names:NET.names,mode:md,cfgs:NET.cfgs,ready:NET.ready});}};
+    netSend({t:"lobby",names:NET.names,mode:md,cfgs:NET.cfgs,ready:NET.ready,vids:netVidList()});}};
   var kc2=document.getElementById("kurzChk");
   if(kc2)kc2.addEventListener("change",function(){if(NET.host&&NET.code)netPlayersUpd();});})();
 // Chat-Verkabelung
 (function(){var tg=document.getElementById("chatToggle"),bx=document.getElementById("chatBox");
-  tg.onclick=function(){var on=bx.style.display==="flex";bx.style.display=on?"none":"flex";tg.classList.remove("blink");};
+  tg.onclick=function(){
+    if(NET.on&&running){ /* Im Online-Spiel bleibt der Chat IMMER sichtbar — der Knopf klappt nur gross/klein */
+      bx.style.display="flex";bx.classList.toggle("mini");}
+    else{var on=bx.style.display==="flex";bx.style.display=on?"none":"flex";}
+    tg.classList.remove("blink");};
   function send(){var inp=document.getElementById("chatIn"),tx=inp.value.trim();if(!tx)return;
     if(NET.on&&NET.my<0)return; // erst nach 'welcome' senden — sonst landet die Aktion auf Host-Slot 0
     inp.value="";
     var nm=NET.names[NET.my]||"Ich";chatAdd(nm,tx,NET.my);netSend({t:"chat",n:nm,x:tx,i:NET.my});}
   document.getElementById("chatSend").onclick=send;
   document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});})();
+// ===================== 🎙️ Live-Voice-Chat (echtes WebRTC-Audio ueber PeerJS-Calls, alle mit allen) =====================
+var VOICE={on:false,stream:null,calls:{},auds:{}};
+function netVidList(){ /* Host: Peer-IDs aller Spieler (Index-treu) — Gaeste brauchen sie fuer Gast-zu-Gast-Audio */
+  var v=[NET.peer?NET.peer.id:null];
+  NET.conns.forEach(function(c){if(c._idx!=null&&c.peer)v[c._idx]=c.peer;});
+  return v;}
+function voiceIds(){ /* alle bekannten fremden Peer-IDs */
+  var my=NET.peer&&NET.peer.id,out=[];
+  if(NET.host){NET.conns.forEach(function(c){if(c.peer&&out.indexOf(c.peer)<0)out.push(c.peer);});}
+  else{(NET.vids||[]).forEach(function(id){if(id&&id!==my&&out.indexOf(id)<0)out.push(id);});
+    if(NET.code){var h=netRoomId(NET.code);if(h!==my&&out.indexOf(h)<0)out.push(h);}}
+  return out;}
+function voiceAttach(call){
+  var pid=call.peer;
+  var old=VOICE.calls[pid];if(old&&old!==call){try{old.close();}catch(e){}}
+  VOICE.calls[pid]=call;
+  call.on("stream",function(st){try{
+    var a=VOICE.auds[pid];
+    if(!a){a=document.createElement("audio");a.autoplay=true;a.setAttribute("playsinline","");a.style.display="none";document.body.appendChild(a);VOICE.auds[pid]=a;}
+    a.srcObject=st;var pr=a.play&&a.play();if(pr&&pr.catch)pr.catch(function(){});
+  }catch(e){}});
+  call.on("close",function(){
+    if(VOICE.calls[pid]===call)delete VOICE.calls[pid];
+    if(!VOICE.calls[pid]){var a=VOICE.auds[pid];if(a){try{a.remove();}catch(e){}delete VOICE.auds[pid];}}
+    /* Abriss oder Doppel-Anruf-Rennen: mit Zufalls-Verzoegerung neu vernetzen (Jitter loest symmetrische Races) */
+    if(VOICE.on)setTimeout(voiceCallAll,600+Math.random()*1200);});
+  call.on("error",function(){});}
+function voiceCallAll(){ /* jeden bekannten Peer anrufen, mit dem noch kein Call besteht */
+  if(!VOICE.on||!VOICE.stream||!NET.peer||NET.peer.destroyed)return;
+  voiceIds().forEach(function(pid){if(VOICE.calls[pid])return;
+    try{var c=NET.peer.call(pid,VOICE.stream);if(c)voiceAttach(c);}catch(e){}});}
+function voiceAnswer(call){ /* eingehender Anruf: immer annehmen — mit eigenem Mikro falls an, sonst nur zuhoeren */
+  try{call.answer(VOICE.on&&VOICE.stream?VOICE.stream:undefined);}catch(e){}
+  voiceAttach(call);}
+function voiceStop(){
+  VOICE.on=false;var k;
+  for(k in VOICE.calls){try{VOICE.calls[k].close();}catch(e){}}VOICE.calls={};
+  for(k in VOICE.auds){try{VOICE.auds[k].remove();}catch(e){}}VOICE.auds={};
+  if(VOICE.stream){try{VOICE.stream.getTracks().forEach(function(t){t.stop();});}catch(e){}VOICE.stream=null;}
+  var b=document.getElementById("voiceBtn");if(b){b.classList.remove("on");b.textContent="\uD83C\uDF99\uFE0F";}}
+function voiceStart(){
+  if(!NET.peer||NET.peer.destroyed){chatAdd("System","\uD83C\uDF99\uFE0F Voice geht nur im Online-Raum.");return;}
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){chatAdd("System","\uD83C\uDF99\uFE0F Dein Browser gibt hier kein Mikrofon frei (HTTPS noetig).");return;}
+  var b=document.getElementById("voiceBtn");if(b)b.textContent="\u23F3";
+  navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true},video:false}).then(function(st){
+    VOICE.stream=st;VOICE.on=true;
+    if(b){b.classList.add("on");b.textContent="\uD83C\uDF99\uFE0F";}
+    chatAdd("System","\uD83C\uDF99\uFE0F Voice-Chat AN — man hoert dich jetzt. Nochmal tippen = aus.");
+    /* bestehende Nur-Zuhoer-Calls neu aufbauen, damit die Gegenseite auch MEIN Audio bekommt (PeerJS kann kein Nachverhandeln) */
+    for(var k in VOICE.calls){try{VOICE.calls[k].close();}catch(e){}}VOICE.calls={};
+    voiceCallAll();
+  }).catch(function(){if(b)b.textContent="\uD83C\uDF99\uFE0F";chatAdd("System","\uD83C\uDF99\uFE0F Mikrofon nicht erlaubt — in den Browser-Einstellungen freigeben und nochmal tippen.");});}
+(function(){var vb=document.getElementById("voiceBtn");if(!vb)return;
+  vb.onclick=function(){if(VOICE.on)voiceStop();else voiceStart();};})();
 
 function begin(saved){
   var useBot=(!NET.on&&selN===1&&document.getElementById("botChk")&&document.getElementById("botChk").checked&&!saved);
@@ -3488,7 +3562,7 @@ function begin(saved){
   (function(){var t=G.players[G.turn].tile,f=fields[t]||fields[0];if(f){camT.x=f.x;camT.z=f.z;
     var camH=16.5*(H>W?1.45:1)*zoomK;camera.position.set(f.x,camH,f.z+15*(H>W?1.3:1)*zoomK);camera.lookAt(f.x,0.5,f.z-2);}})();
   // 💬 Online: Chat dauerhaft sichtbar (User: „man wird viel schreiben")
-  if(NET.on){var _cb=document.getElementById("chatBox");if(_cb)_cb.style.display="flex";}
+  if(NET.on){var _cb=document.getElementById("chatBox");if(_cb){_cb.style.display="flex";_cb.classList.remove("mini");}}
   initProgMap();updPlayers();updChapter();albumBadge();
   announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
   if(!saved)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
