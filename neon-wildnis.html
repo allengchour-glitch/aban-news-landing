@@ -330,7 +330,7 @@ function placeResources(){
   scatter(Math.round(190*VF),function(x,z){
     var useNat=natureReady&&rnd()<0.4;var proto=useNat?treeProtos[(rnd()*treeProtos.length)|0]:null;
     var mesh=proto?proto.clone(true):mkStylizedTree();
-    mesh.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();}}});
+    mesh.traverse(function(n){if(n.isMesh){n.castShadow=true;}}); // Materialien teilen (werden nie einzeln mutiert)
     var s=0.9+rnd()*0.5;mesh.scale.setScalar(useNat?s:s*1.0);
     mesh.position.set(x,groundH(x,z),z);mesh.rotation.y=rnd()*6.28;
     scene.add(mesh);resources.push({type:"tree",mesh:mesh,x:x,z:z,hp:3,maxhp:3,dead:false,regrow:0,baseY:mesh.position.y});
@@ -348,7 +348,7 @@ function placeResources(){
   // Beeren-Büsche
   scatter(Math.round(52*VF),function(x,z){
     var m=bushProto?bushProto.clone(true):new THREE.Mesh(new THREE.IcosahedronGeometry(0.8,0),new THREE.MeshLambertMaterial({color:0x3a6a4a}));
-    m.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material=n.material.clone();}});
+    m.traverse(function(n){if(n.isMesh){n.castShadow=true;}}); // Materialien teilen
     m.position.set(x,groundH(x,z),z);scene.add(m);
     // Beeren-Punkte
     var berry=new THREE.Mesh(new THREE.SphereGeometry(0.16,6,6),new THREE.MeshStandardMaterial({color:0xff5c8a,emissive:0x882244,emissiveIntensity:.6}));
@@ -1305,9 +1305,11 @@ function decorateWorld(){
     var wr=cc0inst("wc_shipwreck",3);if(wr){wr.position.set(p.x+9,groundH(p.x+9,p.z+4),p.z+4);wr.rotation.set(0.2,rnd()*6.28,0.15);scene.add(wr);}})();
   // 🌸 Blumenwiese: dichter Farbteppich
   (function(){var p=spotFar(80);var FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c];
+    var stemM=new THREE.MeshLambertMaterial({color:0x2f7a45}),stemG=new THREE.CylinderGeometry(0.03,0.03,0.5,4),blG=new THREE.IcosahedronGeometry(0.16,0);
+    var blM=FLC.map(function(c){return new THREE.MeshBasicMaterial({color:c});}); // geteilte Materialien/Geometrien statt 90x2 Unikate
     for(var i=0;i<90*VF;i++){var ox=p.x+(rnd()-0.5)*34,oz=p.z+(rnd()-0.5)*34;
-      var st=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.5,4),new THREE.MeshLambertMaterial({color:0x2f7a45}));st.position.set(ox,groundH(ox,oz)+0.25,oz);scene.add(st);
-      var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),new THREE.MeshBasicMaterial({color:FLC[(rnd()*FLC.length)|0]}));bl.position.set(ox,groundH(ox,oz)+0.55,oz);scene.add(bl);}})();
+      var st=new THREE.Mesh(stemG,stemM);st.position.set(ox,groundH(ox,oz)+0.25,oz);scene.add(st);
+      var bl=new THREE.Mesh(blG,blM[(rnd()*blM.length)|0]);bl.position.set(ox,groundH(ox,oz)+0.55,oz);scene.add(bl);}})();
   // 🍄 Pilzhain: dichte leuchtende Pilze
   (function(){var p=spotFar(90);for(var i=0;i<50*VF;i++){var ox=p.x+(rnd()-0.5)*26,oz=p.z+(rnd()-0.5)*26;
     var m=cc0inst("cc0_mushroom_red",1.1*(0.7+rnd()*0.9));if(m){m.position.set(ox,groundH(ox,oz),oz);m.rotation.y=rnd()*6.28;scene.add(m);}
