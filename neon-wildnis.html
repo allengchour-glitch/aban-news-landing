@@ -443,10 +443,11 @@ function playOnce(r,name,ts){if(!r||!r.actions[name])return;var prev=(r.cur&&r.c
 // ---------- Charaktere (einzigartige, wählbare Helden) ----------
 // glow:"neon" = starkes Meshy-Emissive-Tuning; "soft" = moderat für class_*/hero.glb
 var CHARACTERS=[
-  {id:"held",     emo:"⚡", name:"Held",       desc:"Neon-Anzug",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon"},
-  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Robe & Stab",  file:"class_mage.glb",         scale:1.15, glow:"soft"},
-  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"Kapuze & Bogen",file:"class_ranger.glb",       scale:1.15, glow:"soft"},
-  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"Schwer & stark",file:"class_titan.glb",        scale:1.2,  glow:"soft"},
+  // 🔀 Realm-Merge: Klassen-Boni aus neon-realm (cls wirkt beim Start auf PERK/HP)
+  {id:"held",     emo:"⚡", name:"Held",       desc:"Allrounder · +1 Angriff",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon", cls:{atk:1}},
+  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", cls:{skillcd:1.5}},
+  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", cls:{spd:1.2}},
+  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", cls:{hp:25}},
   {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft"},
   // 🎌 Anime-Charaktere (Meshy, gerigged idle/walk/run) — echte Anime-Figuren zur Auswahl
   {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style",       file:"anime_hero.glb",      scale:1.05, glow:"soft"},
@@ -1496,11 +1497,16 @@ function decorateWorld(){
     var vx,vz;
     if(isSpawn){vx=0;vz=0;}else{var va=rnd()*6.28,vrd=70+rnd()*(half-90);vx=Math.cos(va)*vrd;vz=Math.sin(va)*vrd;}
     villages.push({x:vx,z:vz,big:isSpawn});
-    var ringR=isSpawn?24:13;
-    var nH=isSpawn?10:(2+((rnd()*3)|0));
+    var ringR=isSpawn?42:13; // 🏙️ RIESIGE Hauptstadt (User-Wunsch)
+    var nH=isSpawn?22:(2+((rnd()*3)|0));
     var _houses=[];
     for(var h=0;h<nH;h++){
-      var ha=(h/nH)*6.28+rnd()*0.4,hrd=(isSpawn?13:6)+rnd()*(isSpawn?8:7);var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
+      var ha,hrd;
+      if(isSpawn){ // zwei Häuser-Ringe: innen 10, aussen 12
+        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=13+rnd()*6;}
+        else{ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=27+rnd()*10;}
+      }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
+      var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);addChimney(hx+(rnd()-0.5)*1.5,hz+(rnd()-0.5)*1.5,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
@@ -1515,7 +1521,7 @@ function decorateWorld(){
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
     layRoads(vx,vz,ringR+3);
     // 🌷 Schöne Wege von jeder Haustür zum Platz (Blumen/Laternen/Türschwelle)
-    layVillagePaths(vx,vz,_houses);
+    layVillagePaths(vx,vz,isSpawn?_houses.slice(0,10):_houses);
     decoVillageExtras(vx,vz,isSpawn,_houses); // 🥕🎉 Gärten, Wimpelketten, Marktstände
     if(isSpawn){ // ⛪🌾 Dorf-Wahrzeichen: Kirche, Windmühle am Rand, Scheune + Stall
       var ch2=cc0inst("bd_church",10);if(ch2){var chx=vx-14,chz=vz-12;ch2.position.set(chx,groundH(chx,chz),chz);ch2.rotation.y=Math.atan2(vx-chx,vz-chz);scene.add(ch2);}
@@ -1532,14 +1538,15 @@ function decorateWorld(){
     // 🎪⛲🛒 Kenney-Dorf-Props (poliert): Marktstand, Brunnen, Karren, Banner, Laternen
     var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
     mkTimberWell(vx-4,vz+3); // 🪣 Holz-Brunnen statt modernem Steinbrunnen
+    if(isSpawn)mkTimberWell(vx+24,vz-18); // zweiter Brunnen im Aussenviertel
     var ftct=cc0inst("ftk_cart",1.7);if(ftct){var cx2=vx+2,cz2=vz+5;ftct.position.set(cx2,groundH(cx2,cz2),cz2);ftct.rotation.y=rnd()*6.28;scene.add(ftct);}
     // 🍺 Tavernen-Ecke: Tisch + Stühle/Hocker (Dorf lebendiger)
     (function(){var tx3=vx-6,tz3=vz-5;var tb=cc0inst("fn_table",1.1);if(tb){tb.position.set(tx3,groundH(tx3,tz3),tz3);tb.rotation.y=rnd()*6.28;scene.add(tb);}
       for(var ci=0;ci<4;ci++){var ca=ci/4*6.28,chx=tx3+Math.cos(ca)*1.3,chz=tz3+Math.sin(ca)*1.3;var ch=cc0inst(rnd()<0.5?"fn_chair":"fn_stool",1.0);if(ch){ch.position.set(chx,groundH(chx,chz),chz);ch.rotation.y=ca+Math.PI;scene.add(ch);}}})();
     // 🪴 Topfpflanzen als Grün
     for(var pp=0;pp<(isSpawn?4:2);pp++){var ppa=rnd()*6.28,ppr=ringR-6,ppx=vx+Math.cos(ppa)*ppr,ppz=vz+Math.sin(ppa)*ppr;var pl3=cc0inst(rnd()<0.5?"fn_plant":"fn_plant2",1.1);if(pl3){pl3.position.set(ppx,groundH(ppx,ppz),ppz);scene.add(pl3);}}
-    for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);worldProps.push({mesh:bnr,halo:null,ph:rnd()*6.28,base:bnr.position.y,sway:true,brz:bnr.rotation.z});}}
-    for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
+    for(var bi=0;bi<(isSpawn?4:2);bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var ba9=bi*1.57+0.8,bx2=vx+Math.cos(ba9)*8,bz2=vz+Math.sin(ba9)*8;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);worldProps.push({mesh:bnr,halo:null,ph:rnd()*6.28,base:bnr.position.y,sway:true,brz:bnr.rotation.z});}}
+    for(var li=0;li<(isSpawn?5:2);li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var la9=li*2.1+0.6,lr9=isSpawn?11:5,lx=vx+Math.cos(la9)*lr9,lz=vz+Math.sin(la9)*lr9;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
       // 💡 Perf (42-Agenten-Audit): PointLights sind im Forward-Renderer global teuer -> Laternen-Licht nur im Anfangsdorf
       if(isSpawn){var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}}
     // 🚩 Flaggen auf Holzmasten (statt flacher Stein-Türme) — passt zum Fachwerk-Stil
@@ -1565,7 +1572,7 @@ function decorateWorld(){
       var bl=new THREE.PointLight(0x7de3ff,0.6,40);bl.position.set(vx,groundH(vx,vz)+6,vz);scene.add(bl);
     }
     var nGar=isSpawn?3:1;for(var ga=0;ga<nGar;ga++){var gaa=rnd()*6.28,gar=ringR-5;mkGarden(vx+Math.cos(gaa)*gar,vz+Math.sin(gaa)*gar);}
-    var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr,vx,vz);}
+    var nNpc=isSpawn?14:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr,vx,vz);}
     if(isSpawn){ // 💰 Händler beim Marktstand
       merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z,vx,vz);
       var cvM=document.createElement("canvas");cvM.width=cvM.height=64;var cm=cvM.getContext("2d");cm.font="46px sans-serif";cm.textAlign="center";cm.textBaseline="middle";cm.fillText("💰",32,36);
@@ -2583,7 +2590,12 @@ function startGame(fresh){
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);}
+  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+    var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
+      if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
+      if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;
+      if(_c.cls.hp){maxHp+=_c.cls.hp;hp=maxHp;}
+      setTimeout(function(){announce(_c.emo+" "+_c.name+"-Bonus aktiv: "+_c.desc,"#bfe9ff");},1200);}}
   invUpd();hpUpd();
   document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";
   camera.position.set(0,12,16);
