@@ -3160,13 +3160,20 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         try{c.send(JSON.stringify({t:"welcome",idx:c._idx}));}catch(e){}
         netPlayersUpd();netConnInfo();chatAdd("System",nm+" ist beigetreten");beep(720,.08,"triangle",.05);return;}
       if(m.t==="rejoin"){ // Wiedereintritt im laufenden Spiel -> vollständigen Snapshot schicken
-        var ri=m.idx|0;c._idx=ri;
+        var ri=m.idx|0;
+        if(!NET.started||ri<0||ri>=NET.names.length||(typeof netPresent==="function"&&netPresent(ri)&&ri!==0)){ // ungültig/besetzt -> ablehnen
+          try{c.send(JSON.stringify({t:"full"}));}catch(e){}
+          var cr=NET.conns.indexOf(c);if(cr>=0)NET.conns.splice(cr,1);try{c.close();}catch(e){}return;}
+        c._idx=ri;
         if(NET.present)NET.present[ri]=true;
         netSyncTo(c);netBroadcastPres();netConnInfo();
         if(G&&G.players[ri])chatAdd("System",G.players[ri].name+" ist wieder da");return;}
       if(m.t==="resync"){netSyncTo(c);return;} // Gast hat Desync erkannt -> Snapshot nachliefern
       if(m.t==="ping"){try{c.send(JSON.stringify({t:"pong",ts:m.ts}));}catch(e){}return;} // gezielte Ping-Antwort
       if(m.t==="look"){if(c._idx!=null){NET.cfgs[c._idx]=sanCfg(m.cfg)||NET.cfgs[c._idx];netPlayersUpd();}return;} // Gast aendert Look -> uebernehmen + broadcasten
+      // 🛡️ Whitelist: Gäste dürfen nur Spiel-Nachrichten senden — Host-Kontrolltypen (full/welcome/init/sync/…) werden verworfen
+      if(["roll","pick","chat","emo","ready","meetact","drop"].indexOf(m.t)<0)return;
+      if(c._idx!=null)m.i=c._idx; // Identität serverseitig stempeln (Gast kann sich nicht als anderer ausgeben)
       netOnMsg(m,c);});
     c.on("close",function(){var wasIdx=c._idx;var ci=NET.conns.indexOf(c);if(ci>=0)NET.conns.splice(ci,1);
       if(NET.on&&running){ // im laufenden Spiel: NICHT auto-rauswerfen -> Präsenz melden + ggf. pausieren (Reconnect möglich)
@@ -3399,9 +3406,24 @@ document.getElementById("menuBtn").onclick=toggleMenu;
 document.getElementById("resumeBtn").onclick=toggleMenu;
 addEventListener("keydown",function(e){if(e.key==="Escape"&&G)toggleMenu();});
 document.getElementById("rulesBtn").onclick=function(){toggleMenu();
-  showCard("Regeln","📜 So spielt ihr Lebenspfad",
+  showLocalInfo("📜 So spielt ihr Lebenspfad",
     "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (15 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
-    [{l:"Alles klar ▶",fn:function(){}}]);};
+    );};
+// 📜 Rein LOKALES Info-Overlay — fasst die Lockstep-Karten-Maschinerie (_cardSeq/_cardOpts) NICHT an (Online-Desync-Fix)
+function showLocalInfo(title,html){
+  var ov=document.getElementById("localInfoOv");
+  if(!ov){ov=document.createElement("div");ov.id="localInfoOv";
+    ov.style.cssText="position:fixed;inset:0;background:rgba(20,30,45,.55);z-index:60;display:flex;align-items:center;justify-content:center;padding:18px";
+    ov.innerHTML='<div style="max-width:520px;max-height:80vh;overflow:auto;background:#fffdf6;border-radius:18px;padding:18px 20px;box-shadow:0 10px 40px rgba(0,0,0,.3)">'+
+      '<div id="liTitle" style="font-weight:900;font-size:1.05rem;color:#2a3040;margin-bottom:8px"></div>'+
+      '<div id="liBody" style="font-size:.88rem;color:#3a4252;line-height:1.55"></div>'+
+      '<button id="liClose" style="margin-top:14px;width:100%;padding:11px;border:none;border-radius:12px;background:#2f8cff;color:#fff;font-weight:900;font-size:.95rem;cursor:pointer">Alles klar ▶</button></div>';
+    document.body.appendChild(ov);
+    document.getElementById("liClose").onclick=function(){ov.style.display="none";};
+    ov.onclick=function(e){if(e.target===ov)ov.style.display="none";};}
+  document.getElementById("liTitle").textContent=title;
+  document.getElementById("liBody").innerHTML=html;
+  ov.style.display="flex";}
 document.getElementById("restartBtn").onclick=function(){var b=document.getElementById("restartBtn");
   if(b.dataset.armed){lsDel(SAVE_KEY);location.reload();}
   else{b.dataset.armed="1";b.textContent="Sicher? Nochmal tippen";}};
@@ -3652,7 +3674,10 @@ function handleField(p,f){
     floatStat("+"+g+" 💰","#ffd166",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,9);colorFlash("150,255,150");
     if(g>=8){moneyRain(f.x,f.z,14);zoomPunch(0.17);jingle();} // 💰 grosser Gewinn: Regen + Zoom-Punch + Fanfare
     beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
-  if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);p.geld=Math.max(0,p.geld-c2);announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");
+  if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);
+    var short=Math.max(0,c2-p.geld);p.geld=Math.max(0,p.geld-c2);
+    if(short>0){p.glueck=Math.max(0,p.glueck-short);announce("−"+(c2-short)+" 💰 · −"+short+" ❤️ (Pleite!)","#ff8a8a");}
+    else announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");
     floatStat("−"+c2+" 💰","#ff8a8a",f.x,f.z);emote(G.turn,"trauer");tears(f.x,f.z);colorFlash("255,90,90",c2>=5); // Figur sackt zusammen + 💧 + roter Blitz
     beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
   if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");floatStat("+2 ❤️","#ff9ad9",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}

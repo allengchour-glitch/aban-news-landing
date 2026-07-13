@@ -414,7 +414,7 @@ var pPool=[];
 for(var pi=0;pi<40;pi++){var pm=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.18,0.18),new THREE.MeshBasicMaterial({color:0xffffff}));pm.visible=false;scene.add(pm);pPool.push(pm);}
 function burst(x,y,z,color,n){
   for(var i=0;i<n;i++){var m=pPool.find(function(p){return !p.visible;});if(!m)break;
-    m.material.color.setHex(color);m.visible=true;m.position.set(x,y,z);m.scale.setScalar(1);
+    m.material.color.setHex(Array.isArray(color)?color[(rnd()*color.length)|0]:color);m.visible=true;m.position.set(x,y,z);m.scale.setScalar(1);
     particles.push({m:m,vx:(rnd()-.5)*4,vy:2+rnd()*3,vz:(rnd()-.5)*4,life:0.6+rnd()*0.3,t:0});}
 }
 function updParticles(dt){
@@ -597,7 +597,7 @@ function updWaveHud(){var el=document.getElementById("waveHud");if(!el)return;
   if(isNight&&(waveActive||monsters.length>0)){el.classList.remove("hide");
     var alive=0;for(var i=0;i<monsters.length;i++)if(!monsters[i].boss)alive++;
     var remain=(waveToSpawn-waveSpawned)+alive;
-    el.innerHTML="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain);}
+    var ws="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain);if(el.__last!==ws){el.__last=ws;el.textContent=ws;}}
   else el.classList.add("hide");}
 function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monsters[i].boss){boss=monsters[i];break;}
   var el=document.getElementById("bossBar");if(!el)return;
@@ -1067,12 +1067,16 @@ function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.
   // 💬 Emote-Blase über dem Kopf
   n.emoT-=dt;
   if(n.emoT<=0){n.emoT=5+rnd()*10;
-    if(n.emo){n.mesh.remove(n.emo);n.emo=null;}
-    var cv=document.createElement("canvas");cv.width=cv.height=64;var cx3=cv.getContext("2d");
-    cx3.font="44px sans-serif";cx3.textAlign="center";cx3.textBaseline="middle";cx3.fillText(NPC_EMO[(rnd()*NPC_EMO.length)|0],32,36);
-    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+    if(n.emo){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(NPC_EMO[(rnd()*NPC_EMO.length)|0]),transparent:true,depthWrite:false}));
     sp.scale.set(0.6,0.6,0.6);sp.position.y=2.4;n.mesh.add(sp);n.emo=sp;n.emoLife=3;}
-  if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo=null;}}}}
+  if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}}}}
+// Emote-Texturen einmalig vorbaken (geteilt; nur das SpriteMaterial ist pro Blase)
+var _emoTexCache={};
+function emoTexFor(em){if(_emoTexCache[em])return _emoTexCache[em];
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  c.font="44px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(em,32,36);
+  _emoTexCache[em]=new THREE.CanvasTexture(cv);return _emoTexCache[em];}
 // 💨 Schornstein-Rauch über Häusern (Dorf lebendiger)
 var smokeStacks=[],smokePuffs=[],_smokeTex=null;
 function smokeTex(){if(_smokeTex)return _smokeTex;var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(216,216,222,.85)");g.addColorStop(1,"rgba(216,216,222,0)");c.fillStyle=g;c.fillRect(0,0,64,64);_smokeTex=new THREE.CanvasTexture(cv);return _smokeTex;}
