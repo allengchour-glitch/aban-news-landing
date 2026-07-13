@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Vier gewinnt</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    font-family: 'Baloo 2', 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #234;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .back {
+    position: fixed; top: 12px; left: 12px;
+    background: #fff; color: #2a6ebb; border: none;
+    border-radius: 16px; padding: 10px 16px; font-size: 16px; font-weight: 800;
+    box-shadow: 0 3px 8px rgba(40,90,150,.2); cursor: pointer; z-index: 20;
+    min-height: 46px;
+  }
+  .back:active { transform: scale(.95); }
+  h1 {
+    margin: 60px 0 4px; font-size: 30px; font-weight: 900;
+    color: #2a6ebb; text-shadow: 0 2px 0 #fff;
+  }
+  .status {
+    background: #fff; border-radius: 20px; padding: 10px 18px;
+    box-shadow: 0 4px 12px rgba(40,90,150,.15);
+    font-size: 18px; font-weight: 800; margin: 6px 0 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .dot { width: 26px; height: 26px; border-radius: 50%; box-shadow: inset 0 -3px 6px rgba(0,0,0,.25); }
+  .dot.rot { background: radial-gradient(circle at 35% 30%, #ff7b7b, #e23b3b); }
+  .dot.gelb { background: radial-gradient(circle at 35% 30%, #ffe27a, #f5c518); }
+  .scores {
+    display: flex; gap: 14px; margin-bottom: 8px;
+  }
+  .score {
+    background: #fff; border-radius: 16px; padding: 8px 16px;
+    font-weight: 800; font-size: 16px; box-shadow: 0 3px 8px rgba(40,90,150,.12);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .score .dot { width: 20px; height: 20px; }
+  #board {
+    background: linear-gradient(#2f8de0, #1f6fc0);
+    border-radius: 22px; padding: 10px;
+    box-shadow: 0 8px 22px rgba(30,80,150,.35);
+    touch-action: manipulation;
+    display: block;
+  }
+  .hint { font-size: 14px; color: #3a6a95; margin: 10px 0 30px; text-align: center; padding: 0 12px; }
+  .overlay {
+    position: fixed; inset: 0; background: rgba(30,70,120,.55);
+    display: none; align-items: center; justify-content: center; z-index: 30;
+  }
+  .overlay.show { display: flex; }
+  .card {
+    background: #fff; border-radius: 26px; padding: 30px 28px;
+    text-align: center; box-shadow: 0 12px 30px rgba(0,0,0,.3);
+    max-width: 300px; animation: pop .3s ease;
+  }
+  @keyframes pop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .card .big { font-size: 54px; margin-bottom: 6px; }
+  .card h2 { margin: 6px 0 16px; font-size: 26px; color: #2a6ebb; }
+  .btn {
+    background: linear-gradient(#ffd24d, #f5b800); color: #4a3200;
+    border: none; border-radius: 18px; padding: 14px 26px;
+    font-size: 20px; font-weight: 900; cursor: pointer; min-height: 46px;
+    box-shadow: 0 4px 0 #d89e00;
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #d89e00; }
+</style>
+</head>
+<body>
+  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+  <h1>🔴 Vier gewinnt</h1>
+  <div class="status">
+    <span id="turnLabel">Rot ist dran</span>
+    <span class="dot rot" id="turnDot"></span>
+  </div>
+  <div class="scores">
+    <div class="score"><span class="dot rot"></span><span id="scoreR">0</span></div>
+    <div class="score"><span class="dot gelb"></span><span id="scoreY">0</span></div>
+  </div>
+  <canvas id="board"></canvas>
+  <div class="hint">Tippt oben auf eine Spalte, um euren Stein fallen zu lassen. Wer zuerst 4 in einer Reihe hat, gewinnt!</div>
+
+  <div class="overlay" id="overlay">
+    <div class="card">
+      <div class="big" id="endEmoji">🎉</div>
+      <h2 id="endText">Rot gewinnt!</h2>
+      <button class="btn" onclick="restart()">🔁 Nochmal</button>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const COLS = 7, ROWS = 6;
+  const canvas = document.getElementById('board');
+  const ctx = canvas.getContext('2d');
+  let cell, pad, W, H;
+
+  // Board sizing responsive to viewport width, portrait-friendly
+  function sizeBoard(){
+    const maxW = Math.min(window.innerWidth - 24, 380);
+    cell = Math.floor(maxW / COLS);
+    pad = Math.floor(cell * 0.12);
+    W = cell * COLS;
+    H = cell * ROWS;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  let grid, current, gameOver, winCells, anim;
+
+  function reset(){
+    grid = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+    current = 1; // 1 = rot, 2 = gelb
+    gameOver = false;
+    winCells = [];
+    anim = null;
+    updateStatus();
+    hideOverlay();
+    draw();
+  }
+
+  let scoreR = 0, scoreY = 0;
+
+  function updateStatus(){
+    const lbl = document.getElementById('turnLabel');
+    const dot = document.getElementById('turnDot');
+    if(current === 1){ lbl.textContent = 'Rot ist dran'; dot.className = 'dot rot'; }
+    else { lbl.textContent = 'Gelb ist dran'; dot.className = 'dot gelb'; }
+  }
+
+  function colColor(p){
+    return p === 1
+      ? {a:'#ff7b7b', b:'#e23b3b'}
+      : {a:'#ffe27a', b:'#f5c518'};
+  }
+
+  function draw(){
+    if(!grid) return;
+    ctx.clearRect(0,0,W,H);
+    // holes + pieces
+    for(let r=0;r<ROWS;r++){
+      for(let c=0;c<COLS;c++){
+        const cx = c*cell + cell/2;
+        const cy = r*cell + cell/2;
+        const rad = cell/2 - pad;
+        const v = grid[r][c];
+        if(v === 0){
+          ctx.fillStyle = '#eaf7ff';
+          ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI*2); ctx.fill();
+        } else {
+          drawPiece(cx, cy, rad, v, isWinCell(r,c));
+        }
+      }
+    }
+    // falling animation piece
+    if(anim){
+      const rad = cell/2 - pad;
+      drawPiece(anim.x, anim.y, rad, anim.player, false);
+    }
+  }
+
+  function isWinCell(r,c){
+    for(const w of winCells){ if(w[0]===r && w[1]===c) return true; }
+    return false;
+  }
+
+  function drawPiece(cx, cy, rad, player, highlight){
+    const col = colColor(player);
+    const g = ctx.createRadialGradient(cx-rad*0.3, cy-rad*0.35, rad*0.15, cx, cy, rad);
+    g.addColorStop(0, col.a);
+    g.addColorStop(1, col.b);
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI*2); ctx.fill();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(0,0,0,.12)';
+    ctx.stroke();
+    if(highlight){
+      ctx.lineWidth = Math.max(3, rad*0.18);
+      ctx.strokeStyle = '#ffffff';
+      ctx.beginPath(); ctx.arc(cx, cy, rad*0.62, 0, Math.PI*2); ctx.stroke();
+    }
+  }
+
+  function lowestRow(c){
+    for(let r=ROWS-1;r>=0;r--){ if(grid[r][c] === 0) return r; }
+    return -1;
+  }
+
+  function dropInColumn(c){
+    if(gameOver || anim) return;
+    const r = lowestRow(c);
+    if(r < 0) return; // full
+    const player = current;
+    // animate
+    const targetY = r*cell + cell/2;
+    anim = { x: c*cell + cell/2, y: cell/2, player, targetY, vy: 4 };
+    animate(c, r, player);
+  }
+
+  function animate(c, r, player){
+    if(!anim) return;
+    anim.vy += 1.4; // gravity
+    anim.y += anim.vy;
+    if(anim.y >= anim.targetY){
+      anim = null;
+      grid[r][c] = player;
+      draw();
+      finishMove(r, c, player);
+      return;
+    }
+    draw();
+    requestAnimationFrame(() => animate(c, r, player));
+  }
+
+  function finishMove(r, c, player){
+    const win = checkWin(r, c, player);
+    if(win){
+      gameOver = true;
+      winCells = win;
+      draw();
+      if(player === 1){ scoreR++; document.getElementById('scoreR').textContent = scoreR; }
+      else { scoreY++; document.getElementById('scoreY').textContent = scoreY; }
+      setTimeout(() => showEnd(player), 500);
+      return;
+    }
+    if(isBoardFull()){
+      gameOver = true;
+      setTimeout(() => showEnd(0), 300);
+      return;
+    }
+    current = current === 1 ? 2 : 1;
+    updateStatus();
+  }
+
+  function isBoardFull(){
+    for(let c=0;c<COLS;c++){ if(grid[0][c] === 0) return false; }
+    return true;
+  }
+
+  function checkWin(r, c, p){
+    const dirs = [[0,1],[1,0],[1,1],[1,-1]];
+    for(const [dr,dc] of dirs){
+      const line = [[r,c]];
+      // forward
+      let rr=r+dr, cc=c+dc;
+      while(rr>=0&&rr<ROWS&&cc>=0&&cc<COLS&&grid[rr][cc]===p){ line.push([rr,cc]); rr+=dr; cc+=dc; }
+      // backward
+      rr=r-dr; cc=c-dc;
+      while(rr>=0&&rr<ROWS&&cc>=0&&cc<COLS&&grid[rr][cc]===p){ line.push([rr,cc]); rr-=dr; cc-=dc; }
+      if(line.length >= 4) return line;
+    }
+    return null;
+  }
+
+  function showEnd(winner){
+    const ov = document.getElementById('overlay');
+    const emoji = document.getElementById('endEmoji');
+    const text = document.getElementById('endText');
+    if(winner === 0){
+      emoji.textContent = '🤝';
+      text.textContent = 'Unentschieden!';
+    } else if(winner === 1){
+      emoji.textContent = '🎉';
+      text.textContent = 'Rot gewinnt!';
+    } else {
+      emoji.textContent = '🎉';
+      text.textContent = 'Gelb gewinnt!';
+    }
+    ov.classList.add('show');
+  }
+
+  function hideOverlay(){
+    document.getElementById('overlay').classList.remove('show');
+  }
+
+  // Input: map x-position to column
+  function handlePoint(clientX){
+    if(gameOver || anim) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = clientX - rect.left;
+    let c = Math.floor(x / cell);
+    if(c < 0) c = 0; if(c >= COLS) c = COLS-1;
+    dropInColumn(c);
+  }
+
+  canvas.addEventListener('click', (e) => handlePoint(e.clientX));
+  canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if(e.touches.length) handlePoint(e.touches[0].clientX);
+  }, {passive:false});
+
+  window.restart = function(){ reset(); };
+  window.addEventListener('resize', sizeBoard);
+
+  reset();
+  sizeBoard();
+})();
+</script>
+</body>
+</html>

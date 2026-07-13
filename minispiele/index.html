@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>🎮 Minispiele — Lebenspfad</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{font-family:-apple-system,"Segoe UI",Roboto,system-ui,sans-serif;color:#22405a;
+    background:linear-gradient(160deg,#bce6ff 0%,#dff2ff 45%,#eaf7ff 100%);min-height:100vh;
+    background-attachment:fixed;padding:0 14px 40px}
+  header{max-width:760px;margin:0 auto;padding:16px 4px 8px;display:flex;align-items:center;gap:12px;position:sticky;top:0;
+    background:linear-gradient(160deg,#bce6ff,#cfeeff);z-index:5}
+  .back{border:none;background:#ffffff;color:#2a6ab0;font-weight:800;font-size:15px;border-radius:14px;
+    padding:10px 14px;box-shadow:0 3px 10px rgba(40,90,150,.18);cursor:pointer}
+  .back:active{transform:translateY(1px)}
+  h1{font-size:22px;margin:0;font-weight:900;letter-spacing:.3px}
+  .sub{max-width:760px;margin:0 auto 12px;padding:0 4px;color:#3a6a8a;font-weight:600;font-size:14px}
+  .grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  a.card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-decoration:none;
+    background:#fff;border-radius:20px;padding:16px 10px 14px;box-shadow:0 4px 14px rgba(40,90,150,.15);
+    border:3px solid #fff;transition:transform .12s,box-shadow .12s,border-color .12s;color:#22405a;min-height:132px}
+  a.card:active{transform:scale(.96)}
+  a.card:hover{border-color:#7cc7ff;box-shadow:0 6px 18px rgba(40,90,150,.25)}
+  .emo{font-size:44px;line-height:1.1;margin-bottom:6px}
+  .nm{font-weight:900;font-size:15px;text-align:center;margin-bottom:3px}
+  .ds{font-size:11.5px;color:#6a8398;text-align:center;line-height:1.3}
+  .pill{display:inline-block;margin-top:7px;background:#eaf6ff;color:#2a7db0;font-weight:800;font-size:10.5px;
+    padding:2px 8px;border-radius:10px}
+  footer{max-width:760px;margin:20px auto 0;text-align:center;color:#5a7a94;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{location.href='/lebenspfad.html'}">← Lebenspfad</button>
+  <h1>🎮 Minispiele</h1>
+</header>
+<div class="sub">Kleine Spiele für zwischendurch — zu zweit auf einem Gerät. Wählt ein Spiel!</div>
+<div class="grid" id="grid"></div>
+<footer>20 Koop-Minispiele · für 2 Spieler am selben Gerät 🎉</footer>
+<script>
+  var GAMES=[
+    {s:"drei-gewinnt",e:"⭕",n:"Drei gewinnt",d:"Tic-Tac-Toe: drei in einer Reihe"},
+    {s:"vier-gewinnt",e:"🔴",n:"Vier gewinnt",d:"Steine fallen lassen, vier in Reihe"},
+    {s:"memory",e:"🃏",n:"Memory",d:"Paare finden, wer mehr hat gewinnt"},
+    {s:"schere-stein-papier",e:"✊",n:"Schere Stein Papier",d:"Best of 5, verdeckt wählen"},
+    {s:"reaktions-duell",e:"⚡",n:"Reaktions-Duell",d:"Bei Grün zuerst tippen"},
+    {s:"tap-duell",e:"👆",n:"Tipp-Duell",d:"10s — wer öfter tippt gewinnt"},
+    {s:"pong",e:"🏓",n:"Pong",d:"Der Klassiker, erster mit 5"},
+    {s:"tauziehen",e:"🪢",n:"Tauziehen",d:"Knopf hämmern, Seil rüberziehen"},
+    {s:"mathe-duell",e:"➗",n:"Mathe-Duell",d:"Wer schneller rechnet punktet"},
+    {s:"farb-klick",e:"🎨",n:"Farb-Klick",d:"Stroop: richtige Farbe zuerst"},
+    {s:"elfmeter",e:"⚽",n:"Elfmeterschiessen",d:"Schütze vs. Torwart, 5 Schüsse"},
+    {s:"hoch-tief",e:"🎴",n:"Höher oder Tiefer",d:"Nächste Karte höher/tiefer?"},
+    {s:"simon",e:"🟩",n:"Farben merken",d:"Leuchtfolge nachtippen"},
+    {s:"schlange-duell",e:"🐍",n:"Schlangen-Duell",d:"Sammle Äpfel, crashe nicht"},
+    {s:"ballon-pump",e:"🎈",n:"Ballon-Wettpumpen",d:"Aufpumpen ohne zu platzen"},
+    {s:"auto-rennen",e:"🏎️",n:"Tipp-Rennen",d:"Tippen bis ins Ziel"},
+    {s:"maulwurf",e:"🔨",n:"Maulwurf klopfen",d:"20s — wer mehr trifft"},
+    {s:"quiz-buzzer",e:"❓",n:"Quiz-Buzzer",d:"Zuerst buzzern & antworten"},
+    {s:"stapel-turm",e:"🧱",n:"Stapel-Turm",d:"Timing: höher stapeln"},
+    {s:"punkte-jagd",e:"🌟",n:"Punkte-Jagd",d:"Sterne fangen in 30s"}
+  ];
+  var g=document.getElementById("grid");
+  var last=(function(){try{return localStorage.getItem("mini_last")||"";}catch(e){return "";}})();
+  GAMES.forEach(function(x){
+    var a=document.createElement("a");a.className="card";a.href=x.s+".html";
+    var mark=(x.s===last)?'<span class="pill" style="background:#fff0d6;color:#b07a2a">🕑 Zuletzt gespielt</span> ':"";
+    a.innerHTML='<span class="emo">'+x.e+'</span><span class="nm">'+x.n+'</span><span class="ds">'+x.d+'</span>'+mark+'<span class="pill">👥 2 Spieler</span>';
+    a.addEventListener("click",function(){try{localStorage.setItem("mini_last",x.s);}catch(e){}});
+    if(x.s===last)g.insertBefore(a,g.firstChild);else g.appendChild(a);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Ballon-Wettpumpen</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0;
+    font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif;user-select:none;-webkit-user-select:none;touch-action:manipulation;}
+  html,body{height:100%;overflow:hidden;}
+  body{background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);}
+  #app{position:fixed;inset:0;display:flex;flex-direction:column;}
+
+  .backbtn{position:absolute;top:10px;left:10px;z-index:80;
+    min-height:46px;padding:8px 16px;border:none;border-radius:18px;
+    background:rgba(255,255,255,.9);color:#2b6cb0;font-size:16px;font-weight:bold;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);cursor:pointer;}
+  .backbtn:active{transform:scale(.95);}
+
+  .arena{flex:1;display:flex;flex-direction:column;}
+  .half{flex:1;position:relative;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;overflow:hidden;}
+  .half.top{background:linear-gradient(160deg,#ffe0b3,#ffc477);border-bottom:5px dashed #fff;}
+  .half.bottom{background:linear-gradient(160deg,#c9e6ff,#8fc9ff);}
+  .half.top .flip{transform:rotate(180deg);}
+
+  .who{font-size:20px;font-weight:900;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.28);margin-bottom:2px;}
+  .score{font-size:15px;font-weight:bold;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.25);margin-bottom:6px;}
+  .balloon{font-size:64px;line-height:1;transition:transform .12s ease-out;transform:scale(.5);
+    filter:drop-shadow(0 4px 6px rgba(0,0,0,.2));}
+  .fillbar{width:70%;max-width:240px;height:14px;background:rgba(255,255,255,.55);
+    border-radius:10px;margin-top:12px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.15);}
+  .fillbar>i{display:block;height:100%;width:0%;border-radius:10px;transition:width .1s;
+    background:linear-gradient(90deg,#59d17d,#f2c14e,#ff5e5e);background-size:240px 100%;}
+  .filltxt{font-size:13px;font-weight:bold;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25);margin-top:5px;height:16px;}
+
+  .controls{display:flex;gap:12px;margin-top:14px;}
+  .pumpbtn,.stopbtn{min-height:54px;min-width:120px;padding:10px 20px;border:none;border-radius:20px;
+    font-size:19px;font-weight:900;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.18);}
+  .pumpbtn{background:#fff;color:#e8663b;}
+  .half.bottom .pumpbtn{color:#2b7fd6;}
+  .pumpbtn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18);}
+  .stopbtn{background:#ffd34d;color:#7a4b00;}
+  .stopbtn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18);}
+  .locked .controls{opacity:.35;pointer-events:none;}
+  .statusmsg{font-size:22px;font-weight:900;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.3);
+    height:26px;margin-top:8px;}
+
+  .pop{animation:pop .35s ease-out;}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.9);opacity:.6}100%{transform:scale(0);opacity:0}}
+
+  /* Overlays */
+  .overlay{position:absolute;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+    background:rgba(30,60,90,.45);backdrop-filter:blur(2px);}
+  .card{background:#fff;border-radius:26px;padding:26px 24px;max-width:88%;text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.3);animation:rise .3s ease-out;}
+  @keyframes rise{from{transform:translateY(20px) scale(.95);opacity:0}to{transform:none;opacity:1}}
+  .card h1{font-size:26px;color:#2b6cb0;margin-bottom:8px;}
+  .card p{font-size:16px;color:#555;line-height:1.5;margin-bottom:16px;}
+  .card .big{font-size:52px;margin:6px 0;}
+  .bigbtn{min-height:54px;padding:12px 28px;border:none;border-radius:22px;
+    background:#ff7aa8;color:#fff;font-size:20px;font-weight:900;cursor:pointer;
+    box-shadow:0 5px 0 #e05585;margin-top:4px;}
+  .bigbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #e05585;}
+  .hidden{display:none!important;}
+  .roundinfo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:40;
+    background:#fff;color:#2b6cb0;font-weight:900;font-size:15px;padding:6px 16px;border-radius:16px;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);pointer-events:none;white-space:nowrap;}
+</style>
+</head>
+<body>
+<div id="app">
+  <button class="backbtn" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+  <div class="arena">
+    <!-- Spieler 1 (oben, gedreht) -->
+    <div class="half top" id="half0">
+      <div class="flip" style="display:flex;flex-direction:column;align-items:center;">
+        <div class="who">🔴 Spieler 1</div>
+        <div class="score" id="score0">Punkte: 0</div>
+        <div class="balloon" id="bal0">🎈</div>
+        <div class="fillbar"><i id="fill0"></i></div>
+        <div class="filltxt" id="ftxt0">0%</div>
+        <div class="statusmsg" id="msg0"></div>
+        <div class="controls" id="ctrl0">
+          <button class="pumpbtn" data-p="0" data-act="pump">💨 Pumpen</button>
+          <button class="stopbtn" data-p="0" data-act="stop">✋ Stopp</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spieler 2 (unten) -->
+    <div class="half bottom" id="half1">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="who">🔵 Spieler 2</div>
+        <div class="score" id="score1">Punkte: 0</div>
+        <div class="balloon" id="bal1">🎈</div>
+        <div class="fillbar"><i id="fill1"></i></div>
+        <div class="filltxt" id="ftxt1">0%</div>
+        <div class="statusmsg" id="msg1"></div>
+        <div class="controls" id="ctrl1">
+          <button class="pumpbtn" data-p="1" data-act="pump">💨 Pumpen</button>
+          <button class="stopbtn" data-p="1" data-act="stop">✋ Stopp</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="roundinfo" id="roundinfo">Runde 1 · Wer traut sich mehr?</div>
+  </div>
+
+  <!-- Runden-Ergebnis -->
+  <div class="overlay hidden" id="roundOverlay">
+    <div class="card">
+      <h1 id="roundTitle">Runde vorbei</h1>
+      <div class="big" id="roundEmoji">🎈</div>
+      <p id="roundText"></p>
+      <button class="bigbtn" id="nextBtn">Weiter →</button>
+    </div>
+  </div>
+
+  <!-- Sieg -->
+  <div class="overlay hidden" id="winOverlay">
+    <div class="card">
+      <h1 id="winTitle">Sieg!</h1>
+      <div class="big" id="winEmoji">🏆</div>
+      <p id="winText"></p>
+      <button class="bigbtn" id="againBtn">🔁 Nochmal</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var TARGET=3;              // Punkte zum Matchsieg
+  var scores=[0,0];
+  var round=1;
+  var P=[newPlayer(),newPlayer()];
+
+  function newPlayer(){
+    // versteckte Platzgrenze zwischen 62% und 100%
+    return {fill:0, limit:0.62+Math.random()*0.38, status:"pump"};
+  }
+
+  var el={
+    bal:[gid("bal0"),gid("bal1")],
+    fill:[gid("fill0"),gid("fill1")],
+    ftxt:[gid("ftxt0"),gid("ftxt1")],
+    msg:[gid("msg0"),gid("msg1")],
+    ctrl:[gid("ctrl0"),gid("ctrl1")],
+    half:[gid("half0"),gid("half1")],
+    score:[gid("score0"),gid("score1")],
+    roundinfo:gid("roundinfo")
+  };
+  function gid(i){return document.getElementById(i);}
+
+  function render(p){
+    var s=P[p];
+    var pct=Math.min(100,Math.round(s.fill*100));
+    el.fill[p].style.width=pct+"%";
+    el.ftxt[p].textContent=(s.status==="burst")?"💥 GEPLATZT":pct+"%";
+    // Ballon-Grösse 0.5 .. 1.9
+    var sc=0.5+s.fill*1.4;
+    el.bal[p].style.transform="scale("+sc.toFixed(3)+")";
+    // Farbe wechseln je voller
+    el.bal[p].textContent = s.fill>0.85 ? "🎈" : "🎈";
+  }
+
+  function pump(p){
+    var s=P[p];
+    if(s.status!=="pump") return;
+    s.fill += 0.05+Math.random()*0.045;   // pro Pump
+    if(s.fill>=s.limit){
+      s.fill=s.limit;
+      s.status="burst";
+      burstAnim(p);
+      el.msg[p].textContent="Peng! 💥";
+      lock(p);
+      checkRound();
+    }else{
+      render(p);
+    }
+  }
+
+  function stop(p){
+    var s=P[p];
+    if(s.status!=="pump") return;
+    s.status="stop";
+    el.msg[p].textContent="Gestoppt ✋";
+    render(p);
+    lock(p);
+    checkRound();
+  }
+
+  function lock(p){ el.half[p].classList.add("locked"); }
+  function unlock(p){ el.half[p].classList.remove("locked"); }
+
+  function burstAnim(p){
+    var b=el.bal[p];
+    b.textContent="💥";
+    b.style.transform="scale(1.9)";
+    b.classList.remove("pop"); void b.offsetWidth; b.classList.add("pop");
+    setTimeout(function(){ b.textContent="🎈"; b.classList.remove("pop"); },380);
+  }
+
+  function checkRound(){
+    if(P[0].status==="pump"||P[1].status==="pump") return;
+    setTimeout(resolveRound,450);
+  }
+
+  function resolveRound(){
+    var a=P[0], b=P[1];
+    var winner=-1, title="", text="", emoji="🎈";
+    if(a.status==="burst" && b.status==="burst"){
+      title="Beide geplatzt!"; emoji="💥💥";
+      text="Zu mutig! Diese Runde geht an niemanden.";
+    }else if(a.status==="burst"){
+      winner=1; title="Spieler 2 gewinnt die Runde!"; emoji="🔵";
+      text="Spieler 1 hat überpumpt. Spieler 2 bekommt den Punkt.";
+    }else if(b.status==="burst"){
+      winner=0; title="Spieler 1 gewinnt die Runde!"; emoji="🔴";
+      text="Spieler 2 hat überpumpt. Spieler 1 bekommt den Punkt.";
+    }else{
+      // beide gestoppt -> näher an voll (ohne platzen) gewinnt
+      var fa=Math.round(a.fill*100), fb=Math.round(b.fill*100);
+      if(fa===fb){
+        title="Unentschieden!"; emoji="🤝";
+        text="Beide bei "+fa+"%. Kein Punkt in dieser Runde.";
+      }else if(fa>fb){
+        winner=0; title="Spieler 1 gewinnt die Runde!"; emoji="🔴";
+        text="Mutiger gepumpt: "+fa+"% gegen "+fb+"%.";
+      }else{
+        winner=1; title="Spieler 2 gewinnt die Runde!"; emoji="🔵";
+        text="Mutiger gepumpt: "+fb+"% gegen "+fa+"%.";
+      }
+    }
+    if(winner>=0){
+      scores[winner]++;
+      el.score[winner].textContent="Punkte: "+scores[winner];
+    }
+    if(scores[0]>=TARGET||scores[1]>=TARGET){
+      showWin();
+      return;
+    }
+    gid("roundTitle").textContent=title;
+    gid("roundEmoji").textContent=emoji;
+    gid("roundText").innerHTML=text+"<br><b>Stand: "+scores[0]+" : "+scores[1]+"</b>";
+    gid("roundOverlay").classList.remove("hidden");
+  }
+
+  function nextRound(){
+    round++;
+    P=[newPlayer(),newPlayer()];
+    for(var p=0;p<2;p++){
+      P[p].status="pump";
+      el.msg[p].textContent="";
+      unlock(p);
+      render(p);
+    }
+    el.roundinfo.textContent="Runde "+round+" · Wer traut sich mehr?";
+    gid("roundOverlay").classList.add("hidden");
+  }
+
+  function showWin(){
+    var w = scores[0]>=TARGET ? 0 : 1;
+    gid("winTitle").textContent = (w===0?"🔴 Spieler 1":"🔵 Spieler 2")+" gewinnt! 🎉";
+    gid("winEmoji").textContent = "🏆";
+    gid("winText").innerHTML = "Endstand <b>"+scores[0]+" : "+scores[1]+"</b><br>Nerven aus Stahl!";
+    gid("roundOverlay").classList.add("hidden");
+    gid("winOverlay").classList.remove("hidden");
+  }
+
+  function resetMatch(){
+    scores=[0,0]; round=1;
+    P=[newPlayer(),newPlayer()];
+    for(var p=0;p<2;p++){
+      P[p].status="pump";
+      el.msg[p].textContent="";
+      el.score[p].textContent="Punkte: 0";
+      unlock(p);
+      render(p);
+    }
+    el.roundinfo.textContent="Runde 1 · Wer traut sich mehr?";
+    gid("winOverlay").classList.add("hidden");
+    gid("roundOverlay").classList.add("hidden");
+  }
+
+  // Eingaben: pointerdown fängt Touch + Maus zuverlässig
+  function bind(btn){
+    btn.addEventListener("pointerdown", function(ev){
+      ev.preventDefault();
+      var p=parseInt(btn.getAttribute("data-p"),10);
+      var act=btn.getAttribute("data-act");
+      if(act==="pump") pump(p); else stop(p);
+    });
+  }
+  var btns=document.querySelectorAll(".pumpbtn,.stopbtn");
+  for(var i=0;i<btns.length;i++) bind(btns[i]);
+
+  gid("nextBtn").addEventListener("pointerdown", function(e){e.preventDefault();nextRound();});
+  gid("againBtn").addEventListener("pointerdown", function(e){e.preventDefault();resetMatch();});
+
+  // Start
+  render(0); render(1);
+})();
+</script>
+</body>
+</html>

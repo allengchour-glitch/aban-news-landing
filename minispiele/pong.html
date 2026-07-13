@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>🏓 Pong</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+  html, body {
+    height: 100%; overflow: hidden;
+    font-family: "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
+    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #2b3a55; user-select: none; -webkit-user-select: none; touch-action: none;
+  }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; }
+  .topbar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; flex: 0 0 auto;
+  }
+  .back {
+    border: none; background: #fff; color: #2b3a55;
+    font-size: 16px; font-weight: 700; padding: 12px 16px;
+    border-radius: 16px; min-height: 46px; cursor: pointer;
+    box-shadow: 0 4px 0 #a9cbe6; }
+  .back:active { transform: translateY(2px); box-shadow: 0 2px 0 #a9cbe6; }
+  .title { font-size: 22px; font-weight: 800; margin-left: 4px; }
+  .title small { font-size: 13px; font-weight: 600; opacity: .7; display: block; }
+  .scorebar {
+    display: flex; justify-content: space-around; align-items: center;
+    padding: 4px 12px 10px; flex: 0 0 auto; gap: 10px;
+  }
+  .sc { flex: 1; text-align: center; background: #fff; border-radius: 16px; padding: 8px 4px;
+        box-shadow: 0 4px 0 rgba(150,180,210,.4); }
+  .sc .name { font-size: 14px; font-weight: 700; }
+  .sc .pts { font-size: 30px; font-weight: 900; line-height: 1.1; }
+  .sc.p1 { color: #e0518a; }
+  .sc.p2 { color: #2f8fd8; }
+  .sc.turn { outline: 3px solid currentColor; }
+  .stagewrap { flex: 1 1 auto; position: relative; padding: 0 10px 14px; }
+  canvas { width: 100%; height: 100%; display: block; border-radius: 22px;
+           background: #0e2033; box-shadow: 0 8px 24px rgba(40,70,110,.35); touch-action: none; }
+  .overlay {
+    position: absolute; inset: 0 10px 14px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; gap: 16px;
+    background: rgba(14,32,51,.86); border-radius: 22px; color: #fff; padding: 24px;
+  }
+  .overlay.hidden { display: none; }
+  .overlay h2 { font-size: 30px; font-weight: 900; }
+  .overlay p { font-size: 16px; opacity: .92; max-width: 320px; line-height: 1.45; }
+  .btn {
+    border: none; font-size: 19px; font-weight: 800; padding: 16px 30px;
+    border-radius: 20px; min-height: 46px; cursor: pointer; color: #fff;
+    background: linear-gradient(180deg, #ffb43e, #ff8f2e); box-shadow: 0 5px 0 #d9701c;
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #d9701c; }
+  .winP1 { color: #ff9ec4; } .winP2 { color: #8fd0ff; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+    <div class="title">🏓 Pong <small>Erster mit 5 Punkten gewinnt</small></div>
+  </div>
+  <div class="scorebar">
+    <div class="sc p2" id="scP2"><div class="name">🔵 Blau (oben)</div><div class="pts" id="ptsP2">0</div></div>
+    <div class="sc p1" id="scP1"><div class="name">🔴 Rot (unten)</div><div class="pts" id="ptsP1">0</div></div>
+  </div>
+  <div class="stagewrap">
+    <canvas id="cv"></canvas>
+    <div class="overlay" id="ov">
+      <h2>🏓 Pong für 2</h2>
+      <p><b>Blau</b> spielt oben, <b>Rot</b> spielt unten. Zieh mit dem Finger (oder der Maus) auf deiner Hälfte, um den Schläger zu bewegen. Wer den Ball durchlässt, schenkt dem anderen einen Punkt.</p>
+      <button class="btn" id="startBtn">Los geht's!</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var cv = document.getElementById("cv"), ctx = cv.getContext("2d");
+  var ov = document.getElementById("ov"), startBtn = document.getElementById("startBtn");
+  var ptsEl = { 1: document.getElementById("ptsP1"), 2: document.getElementById("ptsP2") };
+  var scEl = { 1: document.getElementById("scP1"), 2: document.getElementById("scP2") };
+
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var WIN = 5;
+  // Colors
+  var COL = { 1: "#ff5f9e", 2: "#39a7f0" }; // 1 = unten (rot/pink), 2 = oben (blau)
+
+  var state = "menu"; // menu | serve | play | over
+  var score = { 1: 0, 2: 0 };
+  var paddleW, paddleH = 16, ballR = 9;
+  var pad = { 1: 0, 2: 0 }; // x-center of paddle
+  var ball = { x: 0, y: 0, vx: 0, vy: 0 };
+  var serveTo = 1, serveTimer = 0, winner = 0;
+  var raf = null;
+
+  function resize(){
+    var wrap = cv.parentElement;
+    W = wrap.clientWidth; H = wrap.clientHeight;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    paddleW = Math.max(70, W * 0.28);
+    if (pad[1] === 0) { pad[1] = W/2; pad[2] = W/2; }
+    pad[1] = clamp(pad[1], paddleW/2, W - paddleW/2);
+    pad[2] = clamp(pad[2], paddleW/2, W - paddleW/2);
+  }
+  function clamp(v,a,b){ return v < a ? a : (v > b ? b : v); }
+
+  function padY(p){ return p === 1 ? H - 34 : 34; } // 1 unten, 2 oben
+
+  function resetGame(){
+    score[1] = 0; score[2] = 0; updateScore();
+    pad[1] = W/2; pad[2] = W/2;
+    serveTo = Math.random() < 0.5 ? 1 : 2;
+    startServe();
+  }
+  function startServe(){
+    state = "serve"; serveTimer = 60;
+    ball.x = W/2; ball.y = H/2; ball.vx = 0; ball.vy = 0;
+    highlightTurn();
+  }
+  function launch(){
+    state = "play";
+    var speed = Math.max(4.2, H * 0.010);
+    var ang = (Math.random() * 0.6 - 0.3); // horizontal spread
+    ball.vx = Math.sin(ang) * speed;
+    var dir = serveTo === 1 ? 1 : -1; // serve toward the receiver's side? send toward server
+    ball.vy = (serveTo === 1 ? 1 : -1) * Math.cos(ang) * speed;
+  }
+  function highlightTurn(){
+    scEl[1].classList.remove("turn"); scEl[2].classList.remove("turn");
+    scEl[serveTo].classList.add("turn");
+  }
+  function updateScore(){
+    ptsEl[1].textContent = score[1]; ptsEl[2].textContent = score[2];
+  }
+
+  function point(to){
+    score[to]++; updateScore();
+    if (score[to] >= WIN){ winner = to; endGame(); return; }
+    serveTo = to === 1 ? 2 : 1; // Verlierer serviert? -> der andere serviert
+    startServe();
+  }
+
+  function endGame(){
+    state = "over";
+    scEl[1].classList.remove("turn"); scEl[2].classList.remove("turn");
+    var nm = winner === 1 ? "🔴 Rot" : "🔵 Blau";
+    var cls = winner === 1 ? "winP1" : "winP2";
+    ov.innerHTML = '<h2 class="'+cls+'">🎉 '+nm+' gewinnt!</h2>' +
+      '<p>Endstand '+score[1]+' : '+score[2]+' — gut gespielt!</p>' +
+      '<button class="btn" id="againBtn">🔁 Nochmal</button>';
+    ov.classList.remove("hidden");
+    document.getElementById("againBtn").addEventListener("click", function(){
+      ov.classList.add("hidden"); resetGame();
+    });
+  }
+
+  function step(){
+    if (state === "serve"){
+      serveTimer--;
+      ball.x = W/2; ball.y = H/2;
+      if (serveTimer <= 0) launch();
+    } else if (state === "play"){
+      ball.x += ball.vx; ball.y += ball.vy;
+      // side walls
+      if (ball.x < ballR){ ball.x = ballR; ball.vx = Math.abs(ball.vx); }
+      if (ball.x > W - ballR){ ball.x = W - ballR; ball.vx = -Math.abs(ball.vx); }
+      // paddle collisions
+      // bottom paddle (player 1)
+      var y1 = padY(1);
+      if (ball.vy > 0 && ball.y + ballR >= y1 - paddleH/2 && ball.y - ballR <= y1 + paddleH/2){
+        if (Math.abs(ball.x - pad[1]) <= paddleW/2 + ballR){
+          bounce(1, y1 - paddleH/2 - ballR);
+        }
+      }
+      var y2 = padY(2);
+      if (ball.vy < 0 && ball.y - ballR <= y2 + paddleH/2 && ball.y + ballR >= y2 - paddleH/2){
+        if (Math.abs(ball.x - pad[2]) <= paddleW/2 + ballR){
+          bounce(2, y2 + paddleH/2 + ballR);
+        }
+      }
+      // scoring
+      if (ball.y < -ballR*2){ point(1); }          // passed top -> P1 scores
+      else if (ball.y > H + ballR*2){ point(2); }  // passed bottom -> P2 scores
+    }
+  }
+
+  function bounce(p, snapY){
+    ball.y = snapY;
+    ball.vy = -ball.vy;
+    // add angle based on where it hit the paddle
+    var off = (ball.x - pad[p]) / (paddleW/2); // -1..1
+    var speed = Math.hypot(ball.vx, ball.vy) * 1.035;
+    speed = Math.min(speed, H * 0.028);
+    var maxAng = 1.05;
+    var ang = off * maxAng;
+    var dir = p === 1 ? -1 : 1; // 1 (bottom) sends up
+    ball.vx = Math.sin(ang) * speed;
+    ball.vy = dir * Math.abs(Math.cos(ang)) * speed;
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // center line
+    ctx.strokeStyle = "rgba(255,255,255,.25)"; ctx.lineWidth = 3;
+    ctx.setLineDash([10,12]); ctx.beginPath();
+    ctx.moveTo(0, H/2); ctx.lineTo(W, H/2); ctx.stroke(); ctx.setLineDash([]);
+
+    // paddles
+    drawPaddle(1); drawPaddle(2);
+
+    // ball
+    ctx.beginPath();
+    ctx.fillStyle = "#fff5cc";
+    ctx.arc(ball.x, ball.y, ballR, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = "rgba(0,0,0,.15)"; ctx.lineWidth = 2; ctx.stroke();
+
+    if (state === "serve"){
+      ctx.fillStyle = COL[serveTo];
+      ctx.font = "800 20px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      var txt = (serveTo === 1 ? "🔴 Rot" : "🔵 Blau") + " serviert…";
+      ctx.fillText(txt, W/2, H/2 - 24);
+      ctx.fillStyle = "#fff";
+      ctx.font = "900 34px system-ui, sans-serif";
+      ctx.fillText(Math.ceil(serveTimer/20), W/2, H/2 + 46);
+    }
+  }
+  function drawPaddle(p){
+    var y = padY(p), x = pad[p];
+    var r = paddleH/2;
+    ctx.fillStyle = COL[p];
+    roundRect(x - paddleW/2, y - paddleH/2, paddleW, paddleH, r);
+    ctx.fill();
+    ctx.fillStyle = "rgba(255,255,255,.35)";
+    roundRect(x - paddleW/2 + 6, y - paddleH/2 + 3, paddleW - 12, 4, 2); ctx.fill();
+  }
+  function roundRect(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+
+  function loop(){
+    step(); draw();
+    raf = requestAnimationFrame(loop);
+  }
+
+  // ---- Input: pointer/touch. Top half controls P2, bottom half controls P1 ----
+  var active = {}; // pointerId -> player
+  function whichPlayer(clientY){
+    var rect = cv.getBoundingClientRect();
+    return (clientY - rect.top) < rect.height/2 ? 2 : 1;
+  }
+  function moveFrom(clientX, player){
+    var rect = cv.getBoundingClientRect();
+    var x = (clientX - rect.left) / rect.width * W;
+    pad[player] = clamp(x, paddleW/2, W - paddleW/2);
+  }
+  function onDown(e){
+    if (state === "menu" || state === "over") return;
+    var pts = e.changedTouches ? e.changedTouches : [e];
+    for (var i=0;i<pts.length;i++){
+      var t = pts[i];
+      var pl = whichPlayer(t.clientY);
+      var id = t.identifier != null ? t.identifier : "m";
+      active[id] = pl;
+      moveFrom(t.clientX, pl);
+    }
+    e.preventDefault();
+  }
+  function onMove(e){
+    var pts = e.changedTouches ? e.changedTouches : [e];
+    for (var i=0;i<pts.length;i++){
+      var t = pts[i];
+      var id = t.identifier != null ? t.identifier : "m";
+      var pl = active[id];
+      if (pl){ moveFrom(t.clientX, pl); }
+    }
+    if (Object.keys(active).length) e.preventDefault();
+  }
+  function onUp(e){
+    var pts = e.changedTouches ? e.changedTouches : [e];
+    for (var i=0;i<pts.length;i++){
+      var t = pts[i];
+      var id = t.identifier != null ? t.identifier : "m";
+      delete active[id];
+    }
+  }
+  cv.addEventListener("touchstart", onDown, {passive:false});
+  cv.addEventListener("touchmove", onMove, {passive:false});
+  cv.addEventListener("touchend", onUp);
+  cv.addEventListener("touchcancel", onUp);
+  var mouseDown = false;
+  cv.addEventListener("mousedown", function(e){ mouseDown = true; onDown(e); });
+  window.addEventListener("mousemove", function(e){ if (mouseDown) onMove(e); });
+  window.addEventListener("mouseup", function(e){ mouseDown = false; onUp(e); });
+
+  startBtn.addEventListener("click", function(){
+    ov.classList.add("hidden");
+    resetGame();
+  });
+
+  window.addEventListener("resize", resize);
+  resize();
+  loop();
+})();
+</script>
+</body>
+</html>

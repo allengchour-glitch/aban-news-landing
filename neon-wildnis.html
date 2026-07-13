@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Wildnis — Sammeln & Bauen im Browser | aban Arcade</title>
 <meta name="description" content="Neon Wildnis: riesige Survival-Welt im Browser. Fälle Bäume, sammle Holz, Stein & Kristalle, baue deine Basis und überlebe die Nacht. Gratis, kein Download.">
@@ -136,8 +137,8 @@ canvas{display:block}
     <div class="inv" id="wWood"><span class="ic">🪵</span><span id="iWood">0</span></div>
     <div class="inv" id="wStone"><span class="ic">🪨</span><span id="iStone">0</span></div>
     <div class="inv" id="wCry"><span class="ic">💎</span><span id="iCry">0</span></div>
-    <div class="inv" id="wBerry"><span class="ic">🍓</span><span id="iBerry">0</span></div>
-    <div class="inv" id="wMeat"><span class="ic">🍖</span><span id="iMeat">0</span></div>
+    <div class="inv" id="wBerry" title="Beeren essen (R)"><span class="ic">🍓</span><span id="iBerry">0</span></div>
+    <div class="inv" id="wMeat" title="Fleisch essen (R)"><span class="ic">🍖</span><span id="iMeat">0</span></div>
     <div class="inv tool hide" id="wAxe"><span class="ic">🪓</span><span id="iAxe">—</span></div>
     <div class="inv tool hide" id="wPick"><span class="ic">⛏️</span><span id="iPick">—</span></div>
     <div class="inv tool hide" id="wWeap"><span class="ic">⚔️</span><span id="iWeap">—</span></div>
@@ -167,6 +168,9 @@ canvas{display:block}
   <div class="btn hide" id="bBuild">🔨</div>
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
   <div class="btn hide" id="bThrow" title="Wurf-Angriff (F)">🏹</div>
+  <div class="btn hide" id="bDodge" title="Ausweichrolle (SHIFT)">💨</div>
+  <div class="btn hide" id="bBolt" title="Kettenblitz (C)">⚡</div>
+  <button id="muteBtn2" title="Ton an/aus" style="position:fixed;top:54px;right:12px;z-index:30;width:38px;height:38px;border-radius:50%;border:1px solid rgba(140,190,220,.4);background:rgba(16,28,40,.75);color:#cfe;font-size:1rem;cursor:pointer">🔊</button>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
 <div id="tradeMenu" class="hide"></div>
@@ -196,6 +200,7 @@ canvas{display:block}
       <button class="ghost" id="coopHost" style="min-width:120px">🏠 Raum öffnen</button>
       <input id="coopCode" maxlength="4" placeholder="CODE" style="width:90px;text-transform:uppercase;text-align:center;font-weight:900;letter-spacing:.2em;border-radius:10px;border:2px solid #2a6a8a;background:#0a1e2d;color:#eaf6ff;padding:8px">
       <button class="ghost" id="coopJoin" style="min-width:110px">🚪 Beitreten</button>
+      <button class="ghost hide" id="coopShare" style="min-width:120px">📲 Link teilen</button>
     </div>
     <div id="coopStatus" style="margin-top:8px;font-size:.85rem;color:#9fd6e8;min-height:1.1em"></div>
   </div>
@@ -277,7 +282,7 @@ function buildGround(){
   g.setAttribute("color",new THREE.Float32BufferAttribute(cols,3));
   g.computeVertexNormals();
   // Gras-Textur über die Biom-Vertexfarben legen (Textur × Farbe = Detail + Abwechslung)
-  var grassTex=gtex("tex_grass.png", MAP/16, true);
+  var grassTex=gtex("tex_grass.png", MAP/14, true); // etwas feiner gekachelt (Wiese mit Bluemchen-Tupfern)
   var m=new THREE.MeshLambertMaterial({vertexColors:true, map:grassTex}); // zurück zum flacheren Look (User: vorher besser)
   ground=new THREE.Mesh(g,m);ground.receiveShadow=true;scene.add(ground);
 }
@@ -323,12 +328,12 @@ function mkRock(cry){
 function placeResources(){
   resources.length=0;
   var half=MAP/2-40;
-  function scatter(n,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=8+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<6&&Math.abs(z)<6){i--;continue;}fn(x,z);}}
+  function scatter(n,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=8+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(x*x+z*z<27*27){i--;continue;}fn(x,z);}} // Spawn-Dorf (r24) bleibt frei von Ressourcen
   // Bäume
   scatter(Math.round(190*VF),function(x,z){
     var useNat=natureReady&&rnd()<0.4;var proto=useNat?treeProtos[(rnd()*treeProtos.length)|0]:null;
     var mesh=proto?proto.clone(true):mkStylizedTree();
-    mesh.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();}}});
+    mesh.traverse(function(n){if(n.isMesh){n.castShadow=true;}}); // Materialien teilen (werden nie einzeln mutiert)
     var s=0.9+rnd()*0.5;mesh.scale.setScalar(useNat?s:s*1.0);
     mesh.position.set(x,groundH(x,z),z);mesh.rotation.y=rnd()*6.28;
     scene.add(mesh);resources.push({type:"tree",mesh:mesh,x:x,z:z,hp:3,maxhp:3,dead:false,regrow:0,baseY:mesh.position.y});
@@ -346,7 +351,7 @@ function placeResources(){
   // Beeren-Büsche
   scatter(Math.round(52*VF),function(x,z){
     var m=bushProto?bushProto.clone(true):new THREE.Mesh(new THREE.IcosahedronGeometry(0.8,0),new THREE.MeshLambertMaterial({color:0x3a6a4a}));
-    m.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material=n.material.clone();}});
+    m.traverse(function(n){if(n.isMesh){n.castShadow=true;}}); // Materialien teilen
     m.position.set(x,groundH(x,z),z);scene.add(m);
     // Beeren-Punkte
     var berry=new THREE.Mesh(new THREE.SphereGeometry(0.16,6,6),new THREE.MeshStandardMaterial({color:0xff5c8a,emissive:0x882244,emissiveIntensity:.6}));
@@ -412,7 +417,7 @@ var pPool=[];
 for(var pi=0;pi<40;pi++){var pm=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.18,0.18),new THREE.MeshBasicMaterial({color:0xffffff}));pm.visible=false;scene.add(pm);pPool.push(pm);}
 function burst(x,y,z,color,n){
   for(var i=0;i<n;i++){var m=pPool.find(function(p){return !p.visible;});if(!m)break;
-    m.material.color.setHex(color);m.visible=true;m.position.set(x,y,z);m.scale.setScalar(1);
+    m.material.color.setHex(Array.isArray(color)?color[(rnd()*color.length)|0]:color);m.visible=true;m.position.set(x,y,z);m.scale.setScalar(1);
     particles.push({m:m,vx:(rnd()-.5)*4,vy:2+rnd()*3,vz:(rnd()-.5)*4,life:0.6+rnd()*0.3,t:0});}
 }
 function updParticles(dt){
@@ -441,10 +446,11 @@ function playOnce(r,name,ts){if(!r||!r.actions[name])return;var prev=(r.cur&&r.c
 // ---------- Charaktere (einzigartige, wählbare Helden) ----------
 // glow:"neon" = starkes Meshy-Emissive-Tuning; "soft" = moderat für class_*/hero.glb
 var CHARACTERS=[
-  {id:"held",     emo:"⚡", name:"Held",       desc:"Neon-Anzug",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon"},
-  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Robe & Stab",  file:"class_mage.glb",         scale:1.15, glow:"soft"},
-  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"Kapuze & Bogen",file:"class_ranger.glb",       scale:1.15, glow:"soft"},
-  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"Schwer & stark",file:"class_titan.glb",        scale:1.2,  glow:"soft"},
+  // 🔀 Realm-Merge: Klassen-Boni aus neon-realm (cls wirkt beim Start auf PERK/HP)
+  {id:"held",     emo:"⚡", name:"Held",       desc:"Allrounder · +1 Angriff",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon", cls:{atk:1}},
+  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", cls:{skillcd:1.5}},
+  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", cls:{spd:1.2}},
+  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", cls:{hp:25}},
   {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft"},
   // 🎌 Anime-Charaktere (Meshy, gerigged idle/walk/run) — echte Anime-Figuren zur Auswahl
   {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style",       file:"anime_hero.glb",      scale:1.05, glow:"soft"},
@@ -518,13 +524,23 @@ var MOBS=[
   {id:"golem", file:"mob_golem.glb",    scale:2.3, hp:9, spd:1.9, minDay:3, w:2, emo:"🗿"},
   {id:"bat",   build:mkBat,             scale:1.4, hp:2, spd:4.4, minDay:1, w:3, emo:"🦇", fly:true},
   {id:"spider",build:mkSpider,          scale:1.4, hp:5, spd:3.4, minDay:2, w:3, emo:"🕷️"},
-  {id:"ghost", build:mkGhost,           scale:1.6, hp:6, spd:2.7, minDay:3, w:2, emo:"👻", fly:true}
+  {id:"ghost", build:mkGhost,           scale:1.6, hp:6, spd:2.7, minDay:3, w:2, emo:"👻", fly:true},
+  // 🆕 CC0-Monster (Kenney Undead + Quaternius, Blender-poliert) — feste Skalen (Skinned-BBox unzuverlässig)
+  {id:"skelett", file:"mn_skeleton.glb",   scale:1.0,  hp:5,  spd:3.2, minDay:2, w:3, emo:"💀"},
+  {id:"ork",     file:"mn_orc.glb", skinned:true,        th:2.1, scale:0.65, hp:6,  spd:3.0, minDay:2, w:3, emo:"👺"},
+  {id:"zombie",  file:"mn_zombie.glb",     scale:1.0,  hp:7,  spd:2.2, minDay:3, w:3, emo:"🧟"},
+  {id:"imp",     file:"mn_demon_blue.glb", skinned:true, th:1.9, scale:0.6,  hp:5,  spd:4.0, minDay:3, w:3, emo:"👿"},
+  {id:"stachel", file:"mn_slime_spiky.glb", skinned:true,th:2.0, scale:0.45, hp:8,  spd:2.4, minDay:3, w:2, emo:"🦔"},
+  {id:"vampir",  file:"mn_vampire.glb",    scale:1.0,  hp:8,  spd:3.8, minDay:4, w:2, emo:"🧛"},
+  {id:"mimic",   file:"mn_mimic.glb",      scale:0.5,  hp:9,  spd:1.6, minDay:4, w:1, emo:"📕"},
+  {id:"daemon",  file:"mn_demon.glb", skinned:true,      th:2.7, scale:0.7,  hp:12, spd:2.6, minDay:5, w:2, emo:"😈"},
+  {id:"yeti",    file:"mn_yeti.glb", skinned:true,       th:2.7, scale:0.65, hp:14, spd:2.2, minDay:6, w:2, emo:"🦍"}
 ];
 var mobProtos={}; // id -> THREE.Object3D
 function loadSlime(){
   if(!THREE.GLTFLoader)return;
   new THREE.GLTFLoader().load("/models/monster_slime.glb",function(g){slimeProto=g.scene;},undefined,function(){});
-  MOBS.forEach(function(M){if(!M.file)return;
+  MOBS.forEach(function(M){if(!M.file||M.skinned)return; // geskinnte werden pro Spawn frisch geladen (r128: Skinned-Klon kaputt)
     new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});mobProtos[M.id]=o;},undefined,function(){});
   });
   new THREE.GLTFLoader().load("/models/item_chest.glb",function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});chestProto=o;},undefined,function(){});
@@ -532,7 +548,7 @@ function loadSlime(){
 var chestProto=null;
 function fallbackSlime(){var m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.7,1),new THREE.MeshStandardMaterial({color:0x3ad0ff,emissive:0x1466aa,emissiveIntensity:.6,flatShading:true}));return m;}
 function pickMob(){ // gewichtete Auswahl, härtere Gegner erst an späteren Tagen
-  var pool=MOBS.filter(function(M){return day>=M.minDay&&(M.id==="slime"||M.build||mobProtos[M.id]);});
+  var pool=MOBS.filter(function(M){return day>=M.minDay&&(M.id==="slime"||M.build||M.skinned||mobProtos[M.id]);});
   if(!pool.length)return MOBS[0];
   var tot=0;pool.forEach(function(M){tot+=M.w;});var r=rnd()*tot;
   for(var i=0;i<pool.length;i++){r-=pool[i].w;if(r<=0)return pool[i];}
@@ -542,6 +558,19 @@ function spawnMonster(){
   var a=rnd()*6.28,rd=32+rnd()*14;
   var x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
   var M=pickMob();
+  if(M.skinned&&THREE.GLTFLoader){ // geskinnte GLBs: pro Spawn frisch laden (Klonen bricht Skinning in r128)
+    (function(MM,xx,zz){new THREE.GLTFLoader().load("/models/"+MM.file,function(g){
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      // Bind-Pose-BBox live messen und auf Zielhöhe normieren (Meta-Höhen der Kits sind unzuverlässig)
+      var bb=new THREE.Box3().setFromObject(o),hh=Math.max(0.001,bb.max.y-bb.min.y);
+      var k=(MM.th||2.2)/hh;if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(12,k));
+      o.scale.setScalar(k);
+      o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
+      monsters.push({mesh:o,x:xx,z:zz,hp:MM.hp,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null});
+      if(typeof updWaveHud==="function")updWaveHud();
+    },undefined,function(){});})(M,x,z);
+    return;
+  }
   var m,sc;
   if(M.build){m=M.build();sc=M.scale;}
   else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}
@@ -550,9 +579,20 @@ function spawnMonster(){
   m.position.set(x,groundH(x,z),z);scene.add(m);
   monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});
 }
-function spawnBoss(){ // 🐉 Nacht-Boss — Drache (Meshy) falls geladen, sonst SERAPH-Slime
+function spawnBoss(){ // 🐉 Nacht-Boss — abwechselnd Meshy-Drache / Quaternius-Drache / SERAPH-Slime
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
   var hp=28+nights*10;
+  if(rnd()<0.5&&THREE.GLTFLoader){ // 🐲 Quaternius-Drache (geskinnt): frisch laden + auf Zielhöhe normieren
+    (function(xx,zz,hh2){new THREE.GLTFLoader().load("/models/mn_dragon.glb",function(g){
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      var bb=new THREE.Box3().setFromObject(o),bh=Math.max(0.001,bb.max.y-bb.min.y);
+      var k=Math.max(0.02,Math.min(12,6.5/bh));o.scale.setScalar(k);
+      o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
+      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:rnd()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6});
+      var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="🐲 URDRACHE";
+    },undefined,function(){});})(x,z,hp);
+    return;
+  }
   if(typeof cc0inst==="function"&&cc0proto&&cc0proto["mob_dragon"]){ // 🐉 Drachen-Boss
     var dm=cc0inst("mob_dragon",7);var fit=dm.scale.x;
     dm.traverse(function(n){if(n.isMesh)n.castShadow=true;});
@@ -572,7 +612,7 @@ function updWaveHud(){var el=document.getElementById("waveHud");if(!el)return;
   if(isNight&&(waveActive||monsters.length>0)){el.classList.remove("hide");
     var alive=0;for(var i=0;i<monsters.length;i++)if(!monsters[i].boss)alive++;
     var remain=(waveToSpawn-waveSpawned)+alive;
-    el.innerHTML="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain);}
+    var ws="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain);if(el.__last!==ws){el.__last=ws;el.textContent=ws;}}
   else el.classList.add("hide");}
 function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monsters[i].boss){boss=monsters[i];break;}
   var el=document.getElementById("bossBar");if(!el)return;
@@ -773,6 +813,76 @@ function updAmbient(dt){
   if(window._wildPonds)for(var p=0;p<window._wildPonds.length;p++){var pd=window._wildPonds[p];pd.ph+=dt*1.5;
     pd.m.material.emissiveIntensity=0.42+Math.sin(pd.ph)*0.16;pd.m.material.opacity=0.76+Math.sin(pd.ph*0.7)*0.09;}
 }
+// ✨🐟🌠 Noch mehr Leben: Lagerfeuer-Funken, Fischsprünge, Sternschnuppen (geteilte Geometrien, kleine Pools)
+var sparks=[],fishes=[],shoots=[];
+(function(){
+  var sg=new THREE.SphereGeometry(0.05,5,4);
+  for(var i=0;i<14;i++){var m=new THREE.Mesh(sg,new THREE.MeshBasicMaterial({color:0xffb347,transparent:true}));m.visible=false;scene.add(m);sparks.push({m:m,t:0,vx:0,vy:0,vz:0});}
+  var fg=new THREE.SphereGeometry(0.16,7,6);
+  for(var f=0;f<4;f++){var fm=new THREE.Mesh(fg,new THREE.MeshBasicMaterial({color:0x9fd8ef}));fm.scale.set(1,0.6,1.6);fm.visible=false;scene.add(fm);fishes.push({m:fm,t:4+f*3,ph:9});}
+  var stg=new THREE.CylinderGeometry(0.02,0.06,2.6,4);
+  for(var s2=0;s2<3;s2++){var sm=new THREE.Mesh(stg,new THREE.MeshBasicMaterial({color:0xfff8d8,transparent:true}));sm.visible=false;scene.add(sm);shoots.push({m:sm,t:3+s2*5,life:0});}
+})();
+// 🧳 Reisender Händler: Anime-Figur + Karren, zieht endlos von Dorf zu Dorf
+var traveler=null;
+function spawnTraveler(){
+  if(traveler||villages.length<2||!THREE.GLTFLoader)return;
+  new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
+    var g=new THREE.Group();
+    var o=gl.scene;o.scale.setScalar(1.35);o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});g.add(o);
+    var cart=cc0inst("ftk_cart",1.6);if(cart){cart.position.set(0,0,-1.6);g.add(cart);}
+    var v0=villages[0];g.position.set(v0.x+8,groundH(v0.x+8,v0.z),v0.z);scene.add(g);
+    var mix=null;if(gl.animations&&gl.animations.length){mix=new THREE.AnimationMixer(o);mix.clipAction(gl.animations[0]).play();}
+    traveler={g:g,mix:mix,from:0,to:1,f:0,pauseT:0};
+  },undefined,function(){});
+}
+function updTraveler(dt){
+  var t=traveler;if(!t)return;
+  if(t.mix)t.mix.update(dt);
+  if(t.pauseT>0){t.pauseT-=dt;return;} // Rast am Dorfplatz
+  var A=villages[t.from],B=villages[t.to];if(!A||!B)return;
+  var dist=Math.hypot(B.x-A.x,B.z-A.z);
+  t.f+=dt*1.6/Math.max(1,dist); // ~1.6 Einheiten/s
+  if(t.f>=1){t.f=0;t.from=t.to;var nx2=t.to;while(nx2===t.to)nx2=(Math.random()*villages.length)|0;t.to=nx2;t.pauseT=6+Math.random()*8;return;}
+  var x=A.x+(B.x-A.x)*t.f,z=A.z+(B.z-A.z)*t.f;
+  t.g.position.set(x,groundH(x,z),z);
+  t.g.rotation.y=Math.atan2(B.x-x,B.z-z);
+}
+function updLively(dt){
+  if(!traveler&&villages.length>=2&&Math.random()<0.005)spawnTraveler();
+  updTraveler(dt);
+  // ✨ Funken am nächsten Dorf-/Lagerfeuer
+  var fire=null,best=1e9;
+  for(var i=0;i<worldProps.length;i++){var p2=worldProps[i];if(!p2.flick)continue;
+    var d=Math.hypot(p2.mesh.position.x-player.position.x,p2.mesh.position.z-player.position.z);if(d<best){best=d;fire=p2.mesh;}}
+  for(var si=0;si<sparks.length;si++){var sp=sparks[si];
+    if(sp.t<=0){if(fire&&best<40&&rnd()<0.25){sp.t=0.9+rnd()*0.6;sp.m.visible=true;
+        sp.m.position.set(fire.position.x+(rnd()-0.5)*0.5,fire.position.y+0.4,fire.position.z+(rnd()-0.5)*0.5);
+        sp.vx=(rnd()-0.5)*0.6;sp.vz=(rnd()-0.5)*0.6;sp.vy=1.6+rnd();}
+      else sp.m.visible=false;continue;}
+    sp.t-=dt;sp.m.position.x+=sp.vx*dt;sp.m.position.y+=sp.vy*dt;sp.m.position.z+=sp.vz*dt;sp.vy-=dt*0.8;
+    sp.m.material.opacity=Math.max(0,sp.t);if(sp.t<=0)sp.m.visible=false;}
+  // 🐟 Fischsprünge in Teichen nahe dem Spieler
+  if(window._ducks&&window._ducks.length)for(var fi2=0;fi2<fishes.length;fi2++){var F=fishes[fi2];
+    if(F.ph<Math.PI){F.ph+=dt*2.4;
+      if(F.ph>=Math.PI){F.m.visible=false;}
+      else{F.m.position.set(F.cx,F.y0+Math.sin(F.ph)*F.jump,F.cz);F.m.rotation.z=(F.ph-1.57)*1.2;}
+      continue;}
+    F.t-=dt;
+    if(F.t<=0){F.t=6+rnd()*10;
+      var near=window._ducks.filter(function(pd){return Math.hypot(pd.cx-player.position.x,pd.cz-player.position.z)<70;});
+      if(near.length){var pd2=near[(rnd()*near.length)|0];
+        F.cx=pd2.cx+(rnd()-0.5)*pd2.r;F.cz=pd2.cz+(rnd()-0.5)*pd2.r;F.y0=pd2.y0-0.15;F.ph=0;F.jump=1.2+rnd()*0.6;F.m.visible=true;}}}
+  // 🌠 Sternschnuppen (nur nachts)
+  for(var sh=0;sh<shoots.length;sh++){var S=shoots[sh];
+    if(!isNight){S.m.visible=false;continue;}
+    if(S.life>0){S.life-=dt;S.m.position.x+=S.vx*dt;S.m.position.y+=S.vy*dt;
+      S.m.material.opacity=Math.max(0,S.life);if(S.life<=0)S.m.visible=false;continue;}
+    S.t-=dt;
+    if(S.t<=0){S.t=7+rnd()*14;S.life=1.1;S.m.visible=true;S.m.material.opacity=1;
+      S.m.position.set(player.position.x+(rnd()-0.5)*80,46+rnd()*14,player.position.z-30-rnd()*30);
+      S.vx=-8-rnd()*6;S.vy=-7-rnd()*4;S.m.rotation.z=Math.atan2(S.vy,S.vx)+1.57;}}
+}
 
 // ---------- Fund-Objekte: Truhen & Ruinen ----------
 var loots=[],nearLoot=null,lootOpened=[];
@@ -841,6 +951,8 @@ function updProps(dt){
     if(p.flick){ // Dorf-Lagerfeuer: flackern statt rotieren
       var fk=0.85+Math.sin(p.ph*11)*0.12+Math.sin(p.ph*23)*0.06;p.mesh.scale.set(fk,1+Math.sin(p.ph*9)*0.15,fk);
       if(p.light)p.light.intensity=1.2+Math.abs(Math.sin(p.ph*13))*0.6;continue;}
+    if(p.rotor){p.mesh.rotation.z+=dt*0.55;continue;} // 🌾 Windmühlen-Flügel drehen gemächlich
+    if(p.bob){p.mesh.position.y=p.base+Math.sin(p.ph*1.1)*0.06;p.mesh.rotation.z=Math.sin(p.ph*0.9)*0.04;continue;} // 🚣 sanftes Schaukeln auf Wasser
     if(p.float)p.mesh.position.y=p.base+Math.sin(p.ph*1.4)*0.35;
     p.mesh.rotation.y+=dt*0.3;
     if(p.halo)p.halo.material.opacity=0.20+Math.abs(Math.sin(p.ph*1.8))*0.18;
@@ -874,14 +986,15 @@ function updCritters(dt){
 var cc0proto={}, cc0h={}, cc0box={}, cc0pending=0, cc0onready=[];
 function loadCC0(files,onAll){
   if(!THREE.GLTFLoader){onAll&&onAll();return;}
-  var left=files.length;if(!left){onAll&&onAll();return;}
+  var left=files.length,total=files.length;if(!left){onAll&&onAll();return;}
+  function prog(){if(window.__loadProg)window.__loadProg(total-left,total);}
   files.forEach(function(name){
     new THREE.GLTFLoader().load("/models/"+name+".glb",function(g){
-      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.isSkinnedMesh)n.frustumCulled=false;}});
       var bb=new THREE.Box3().setFromObject(o);var h=Math.max(0.001,bb.max.y-bb.min.y);
       cc0proto[name]=o;cc0h[name]=h;cc0box[name]={x:Math.max(0.001,bb.max.x-bb.min.x),y:h,z:Math.max(0.001,bb.max.z-bb.min.z)};
-      if(--left<=0)onAll&&onAll();
-    },undefined,function(){if(--left<=0)onAll&&onAll();});
+      --left;prog();if(left<=0)onAll&&onAll();
+    },undefined,function(){--left;prog();if(left<=0)onAll&&onAll();});
   });
 }
 // Klon eines CC0-Protos, skaliert auf Ziel-Welthöhe targetH
@@ -918,7 +1031,15 @@ function roadRibbon(pts,width,cobble,normal){
   var m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({map:cobble}));
   m.receiveShadow=true;scene.add(m);return m;
 }
-function layRoads(cx,cz){
+function layRoads(cx,cz,rr){
+  // 🧱 GANZES Dorf gepflastert: grosse Kopfstein-Scheibe unter allem (Wege/Platz liegen als Detail obendrauf)
+  if(rr){var cbAll=gtex("tex_cobble.png",0,true);cbAll.repeat.set(Math.max(2,rr/3.5),Math.max(2,rr/3.5));
+    var pg=new THREE.CircleGeometry(rr,48,0,6.283);pg.rotateX(-Math.PI/2);
+    var pp5=pg.attributes.position; // dem welligen Gelände anschmiegen (sonst stossen Hügel durch)
+    for(var pv=0;pv<pp5.count;pv++){var vx5=pp5.getX(pv),vz5=pp5.getZ(pv);pp5.setY(pv,groundH(cx+vx5,cz+vz5)+0.10);}
+    pg.computeVertexNormals();
+    var pav=new THREE.Mesh(pg,new THREE.MeshLambertMaterial({map:cbAll}));
+    pav.position.set(cx,0,cz);pav.receiveShadow=true;scene.add(pav);}
   var cobble=gtex("tex_cobble.png",0,true);cobble.repeat.set(1,1);
   var normal=gtex("tex_cobble_n.png",0,false);normal.repeat.set(1,1);
   // geschwungener S-Pfad durch das Dorf (seitliches Schwingen -> nie gerade)
@@ -968,6 +1089,17 @@ function layVillagePaths(vx,vz,houses){
   }
 }
 // 🪣 Holz-Ziehbrunnen (passt zum Fachwerk-Stil, ersetzt den "modernen" Steinbrunnen)
+// 🌾 Windmühle mit DREHENDEM Rotor (Blender-Split: Turm + Flügel, Rotor-Pivot auf der Nabe)
+function mkWindmillLive(x,z,targetH){
+  var tw=cc0proto["bd_windmill_tower"],blp=cc0proto["bd_windmill_blades"];
+  if(!tw||!blp){var st=cc0inst("bd_windmill",targetH||13);if(st){st.position.set(x,groundH(x,z),z);scene.add(st);}return;}
+  var k=(targetH||13)/(cc0h["bd_windmill_tower"]||8.87),gy=groundH(x,z);
+  var t=tw.clone(true);t.scale.setScalar(k);t.position.set(x,gy,z);scene.add(t);
+  var r=blp.clone(true);r.scale.setScalar(k);
+  r.position.set(x,gy+7.4*k,z+1.51*k); // Nabe (drei.js: y=blender-z, z=-blender-y)
+  scene.add(r);
+  worldProps.push({mesh:r,rotor:true,ph:rnd()*6.28});
+}
 function mkTimberWell(x,z){var g=new THREE.Group(),gy=groundH(x,z);
   var stone=new THREE.MeshStandardMaterial({color:0x9a8f82,roughness:1,flatShading:true});
   var stoneDark=new THREE.MeshStandardMaterial({color:0x4a423a,roughness:1,flatShading:true});
@@ -1041,12 +1173,16 @@ function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.
   // 💬 Emote-Blase über dem Kopf
   n.emoT-=dt;
   if(n.emoT<=0){n.emoT=5+rnd()*10;
-    if(n.emo){n.mesh.remove(n.emo);n.emo=null;}
-    var cv=document.createElement("canvas");cv.width=cv.height=64;var cx3=cv.getContext("2d");
-    cx3.font="44px sans-serif";cx3.textAlign="center";cx3.textBaseline="middle";cx3.fillText(NPC_EMO[(rnd()*NPC_EMO.length)|0],32,36);
-    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+    if(n.emo){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(NPC_EMO[(rnd()*NPC_EMO.length)|0]),transparent:true,depthWrite:false}));
     sp.scale.set(0.6,0.6,0.6);sp.position.y=2.4;n.mesh.add(sp);n.emo=sp;n.emoLife=3;}
-  if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo=null;}}}}
+  if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}}}}
+// Emote-Texturen einmalig vorbaken (geteilt; nur das SpriteMaterial ist pro Blase)
+var _emoTexCache={};
+function emoTexFor(em){if(_emoTexCache[em])return _emoTexCache[em];
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  c.font="44px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(em,32,36);
+  _emoTexCache[em]=new THREE.CanvasTexture(cv);return _emoTexCache[em];}
 // 💨 Schornstein-Rauch über Häusern (Dorf lebendiger)
 var smokeStacks=[],smokePuffs=[],_smokeTex=null;
 function smokeTex(){if(_smokeTex)return _smokeTex;var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(216,216,222,.85)");g.addColorStop(1,"rgba(216,216,222,0)");c.fillStyle=g;c.fillRect(0,0,64,64);_smokeTex=new THREE.CanvasTexture(cv);return _smokeTex;}
@@ -1061,17 +1197,6 @@ function updSmoke(dt){
     if(pf.t>=pf.life){scene.remove(pf.sp);smokePuffs.splice(j,1);}}
 }
 // 🌱 Garten-Beet (umzäunt, mit Pflanzen) — Dorf-Detail
-function mkGarden(x,z){var gy=groundH(x,z);
-  var soil=gtex?gtex("tex_dirt.png",0,true):null;if(soil)soil.repeat.set(1.4,1.4);
-  var plot=new THREE.Mesh(new THREE.PlaneGeometry(4,3),soil?new THREE.MeshLambertMaterial({map:soil}):new THREE.MeshLambertMaterial({color:0x5a3a22}));
-  plot.rotateX(-Math.PI/2);plot.position.set(x,gy+0.05,z);plot.receiveShadow=true;scene.add(plot);
-  var cropM=[new THREE.MeshStandardMaterial({color:0x4faf3a,flatShading:true}),new THREE.MeshStandardMaterial({color:0xd88a2a,flatShading:true}),new THREE.MeshStandardMaterial({color:0x8fbf3a,flatShading:true})];
-  for(var r=-1;r<=1;r++)for(var c=-1;c<=1;c++){var cx2=x+c*1.1+(Math.random()-0.5)*0.3,cz2=z+r*0.9+(Math.random()-0.5)*0.3;
-    var cr=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.5,6),cropM[(Math.random()*cropM.length)|0]);cr.position.set(cx2,gy+0.28,cz2);cr.castShadow=true;scene.add(cr);}
-  // Mini-Zaun-Ecken
-  var fw=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
-  [[-2,-1.5],[2,-1.5],[-2,1.5],[2,1.5]].forEach(function(p){var post=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.7,0.12),fw);post.position.set(x+p[0],gy+0.35,z+p[1]);scene.add(post);});
-}
 // 🪧 Wegweiser-Schild (zeigt Richtung + Text)
 function mkSignpost(x,z,items){var g=new THREE.Group(),gy=groundH(x,z);
   var wood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
@@ -1089,15 +1214,54 @@ function mkSignpost(x,z,items){var g=new THREE.Group(),gy=groundH(x,z);
   g.position.set(x,gy,z);scene.add(g);return g;}
 var villages=[]; // Zentren für Minimap/Logik (aktuell nur Deko)
 // 🥕 Gemüsegarten neben einem Haus (Erdbeet + Pflanzreihen + Zaun + Blumen)
+// 🌷 Hübscher Bauerngarten (Hochbeet mit Holzrahmen, gemischtes Gemüse, Sonnenblumen, Blumenbordüre, Giesskanne)
+var _gMats=null;
+function gardenMats(){if(_gMats)return _gMats;var L=THREE.MeshLambertMaterial,B=THREE.MeshBasicMaterial;
+  _gMats={wood:new L({color:0x8a5a30,flatShading:true}),soil:new L({color:0x4a3220,flatShading:true}),
+    leafA:new L({color:0x4faf55,flatShading:true}),leafB:new L({color:0x3f9a48,flatShading:true}),leafC:new L({color:0x6fbf46,flatShading:true}),
+    carrot:new L({color:0xe8802a,flatShading:true}),tomato:new B({color:0xe23b2e}),stem:new L({color:0x3a7a3f,flatShading:true}),
+    petal:new B({color:0xffd23f}),core:new L({color:0x6a4020,flatShading:true}),metal:new L({color:0x9fb4c0,flatShading:true})};
+  return _gMats;}
 function mkGarden(gx,gz,ang){
-  var gy=groundH(gx,gz);
-  var soil=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.22,2.4),new THREE.MeshLambertMaterial({color:0x5a3b24,flatShading:true}));
-  soil.position.set(gx,gy+0.11,gz);soil.rotation.y=ang;soil.receiveShadow=true;scene.add(soil);
-  var cropMat=new THREE.MeshLambertMaterial({color:0x4faf55,flatShading:true}),cropMat2=new THREE.MeshLambertMaterial({color:0x6fbf3f,flatShading:true});
-  for(var r=0;r<3;r++)for(var c=0;c<6;c++){var lx=-1.3+c*0.52,lz=-0.75+r*0.75;var wx=gx+Math.cos(ang)*lx-Math.sin(ang)*lz,wz=gz+Math.sin(ang)*lx+Math.cos(ang)*lz;
-    var cr=new THREE.Mesh(new THREE.ConeGeometry(0.15,0.46,5),(r%2?cropMat2:cropMat));cr.position.set(wx,gy+0.34,wz);cr.castShadow=true;scene.add(cr);}
-  // niedriger Zaun an 2 Längsseiten
-  for(var s=0;s<4;s++){var fx=gx+Math.cos(ang)*(-1.6+s*1.07)-Math.sin(ang)*1.35,fz=gz+Math.sin(ang)*(-1.6+s*1.07)+Math.cos(ang)*1.35;var fm=cc0inst("cc0_fence",0.8);if(fm){fm.position.set(fx,gy,fz);fm.rotation.y=ang;scene.add(fm);}}
+  ang=ang||0;var gy=groundH(gx,gz),M=gardenMats();
+  var G=new THREE.Group();G.position.set(gx,gy,gz);G.rotation.y=ang;scene.add(G);
+  var soilTex=(typeof gtex==="function")?gtex("tex_dirt.png",0,true):null;if(soilTex)soilTex.repeat.set(2,1.5);
+  var soil=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.2,2.4),soilTex?new THREE.MeshLambertMaterial({map:soilTex}):M.soil);
+  soil.position.y=0.12;soil.receiveShadow=true;G.add(soil);
+  // Holz-Hochbeet-Rahmen
+  [[0,1.28,3.5,0.18],[0,-1.28,3.5,0.18],[1.79,0,0.18,2.74],[-1.79,0,0.18,2.74]].forEach(function(p){var pl=new THREE.Mesh(new THREE.BoxGeometry(p[2],0.3,p[3]),M.wood);pl.position.set(p[0],0.2,p[1]);pl.castShadow=true;G.add(pl);});
+  // Gemüse-Bauer (lokale Koordinaten, Boden-Oberkante y≈0.22)
+  function veg(t,lx,lz){var y=0.22;
+    if(t===0){ // 🥕 Karotte: grünes Kraut + orange Spitze
+      var top=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),M.leafC);top.position.set(lx,y+0.14,lz);top.scale.set(1,1.2,1);G.add(top);
+      var tip=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.16,5),M.carrot);tip.position.set(lx,y+0.02,lz);G.add(tip);
+    }else if(t===1){ // 🥬 Kohl: geschichtete grüne Kugel
+      var o=new THREE.Mesh(new THREE.IcosahedronGeometry(0.22,0),M.leafA);o.position.set(lx,y+0.14,lz);o.scale.set(1,0.8,1);G.add(o);
+      var i=new THREE.Mesh(new THREE.IcosahedronGeometry(0.13,0),M.leafB);i.position.set(lx,y+0.17,lz);G.add(i);
+    }else if(t===2){ // 🍅 Tomatenstrauch: grüner Busch + rote Früchte
+      var b=new THREE.Mesh(new THREE.IcosahedronGeometry(0.2,0),M.leafB);b.position.set(lx,y+0.2,lz);b.scale.set(1,1.15,1);G.add(b);
+      for(var d=0;d<3;d++){var to=new THREE.Mesh(new THREE.SphereGeometry(0.055,7,6),M.tomato);to.position.set(lx+(d-1)*0.11,y+0.14+((d%2)*0.08),lz+0.08);G.add(to);}
+    }else{ // 🥗 Salat: flache gekräuselte Rosette
+      var s=new THREE.Mesh(new THREE.IcosahedronGeometry(0.2,0),M.leafC);s.position.set(lx,y+0.1,lz);s.scale.set(1,0.5,1);G.add(s);
+    }
+  }
+  var seq=[0,1,2,3,0,2];
+  for(var r=0;r<2;r++)for(var c=0;c<5;c++){veg(seq[(r*5+c)%seq.length],-1.3+c*0.62,-0.45+r*0.62);}
+  // 🌻 Sonnenblumen-Reihe hinten
+  for(var sf=0;sf<3;sf++){var sx=-0.95+sf*0.95,sz=-1.02;
+    var st=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.0,5),M.stem);st.position.set(sx,0.72,sz);st.castShadow=true;G.add(st);
+    var lf=new THREE.Mesh(new THREE.IcosahedronGeometry(0.12,0),M.leafB);lf.position.set(sx+0.12,0.6,sz);lf.scale.set(1.4,0.5,1);G.add(lf);
+    var core=new THREE.Mesh(new THREE.SphereGeometry(0.12,8,6),M.core);core.position.set(sx,1.22,sz+0.03);core.scale.set(1,1,0.5);G.add(core);
+    for(var pt=0;pt<8;pt++){var pa=pt/8*6.28,pe=new THREE.Mesh(new THREE.ConeGeometry(0.05,0.16,4),M.petal);pe.position.set(sx+Math.cos(pa)*0.18,1.22+Math.sin(pa)*0.18,sz+0.02);pe.rotation.z=pa-Math.PI/2;G.add(pe);}}
+  // 🌸 Blumenbordüre vorne (bunt) + wiegt im Wind
+  var BC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff8a4d];
+  for(var f=0;f<7;f++){var fx=-1.45+f*0.5;
+    var fst=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.34,4),M.stem);fst.position.set(fx,0.34,1.05);G.add(fst);
+    var bloom=new THREE.Mesh(new THREE.IcosahedronGeometry(0.09,0),new THREE.MeshBasicMaterial({color:BC[f%BC.length]}));bloom.position.set(fx,0.54,1.05);G.add(bloom);}
+  // 🪣 Giesskanne in der Ecke
+  var can=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.18,0.26,10),M.metal);can.position.set(1.4,0.32,1.0);G.add(can);
+  var spout=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.05,0.34,6),M.metal);spout.position.set(1.62,0.4,1.0);spout.rotation.z=-0.8;G.add(spout);
+  if(typeof regSway==="function")regSway(G,0.012,0.9); // ganz sanftes Wiegen des Gartens
 }
 // 🎉 Wimpelkette (bunte Fähnchen) über dem Dorfplatz — festlich
 function mkBunting(cx,cz,ax,az,bx,bz){
@@ -1133,8 +1297,116 @@ var NEW_ASSETS=["nt_pine","nt_oak","nt_tree","nt_tree_leafy","nt_palm","nt_bush"
   "gy_gravestone_cross","gy_gravestone_round","gy_gravestone_broken","gy_cross","gy_crypt","gy_coffin","gy_obelisk","gy_iron_fence","gy_dead_tree","gy_lantern","gy_pumpkin","gy_urn",
   "fu_table","fu_chair","fu_bench","fu_shelf","fu_plant","fu_cabinet","fu_bed","fu_rug",
   "dk2_coin","dk2_banner","dk2_column","dk2_gate","dk2_rocks","dk2_stones","dk2_trap",
+  "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver",
+  "wp_sword","wp_sword_diamond","wp_axe","wp_bow","wp_staff","wp_hammer","wp_dagger","wp_potion","wp_potion2","wp_key","wp_gem","wp_shield","wp_shield_golden",
+  "bd_house_a","bd_house_b","bd_house_c","bd_town_house","bd_inn","bd_smithy","bd_sawmill","bd_windmill_tower","bd_windmill_blades","bd_church","bd_barn","bd_stable"];
+// 🆕 4 weitere CC0-Kits (Foliage/Watercraft/Building/Holiday) — Blender-poliert
+var NEW_ASSETS2=["fg_grass","fg_grass_tall","fg_grass_leafy","fg_bush","fg_bush_large","fg_bush_small","fg_flower_red","fg_flower_yellow","fg_flower_purple","fg_lilypad","fg_lilypad_small","fg_hanging_moss","fg_mushroom","fg_tree_small",
+  "wc_rowboat","wc_rowboat_large","wc_sailboat","wc_dock","wc_pier","wc_barrel_float","wc_crate","wc_lighthouse","wc_shipwreck",
+  "bk_archway","bk_gate","bk_column","bk_wall","bk_wall_low","bk_stairs","bk_platform","bk_window_round","bk_door",
+  "hd_tree","hd_gift","hd_gift_round","hd_snowman","hd_reindeer","hd_lantern","hd_wreath","hd_candy_cane","hd_lights"];
+
+// 🕑 PHASE 2 der Welt-Dekoration: lädt NACH dem Spielstart nach (Lade-Diät für schnellen Start).
+// Eigener deterministischer Zufallsstrom rnd2 -> Layout unabhängig vom Lade-Timing (koop-sicher).
+// 🕑 Diese Modelle braucht erst die Phase-2-Dekoration (Friedhof/Camp/Küste/Ruinen/Leuchtturm/Streu/Tiere)
+var DEFER_ASSETS=["sv_tent","sv_tent_canvas","sv_campfire","sv_campfire_fish","sv_bedroll","sv_woodpile","sv_log","sv_planks","sv_chest","sv_barrel","sv_bucket","sv_axe","sv_hammer","sv_fish",
+  "gy_gravestone_cross","gy_gravestone_round","gy_gravestone_broken","gy_cross","gy_crypt","gy_coffin","gy_obelisk","gy_iron_fence","gy_dead_tree","gy_lantern","gy_pumpkin","gy_urn",
+  "wc_rowboat","wc_rowboat_large","wc_sailboat","wc_dock","wc_pier","wc_barrel_float","wc_crate","wc_lighthouse","wc_shipwreck",
+  "bk_archway","bk_gate","bk_column","bk_wall","bk_wall_low","bk_stairs","bk_platform","bk_window_round","bk_door",
+  "dk2_coin","dk2_banner","dk2_column","dk2_gate","dk2_rocks","dk2_stairs","dk2_stones","dk2_trap","dk2_woodframe","dk2_woodsupport",
   "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver"];
+function decorateWorldLate(){
+  var half=MAP/2-40, half2=MAP/2-60;
+  var rnd2=mulberry32(((SEED^0x9e3779)>>>0)||1);
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
+  function spotFar(minR){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
+  // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
+  var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["fd_burger",0.6],["cc0_tent",1.8],["ck_catapult",2.2],["ftk_lantern",1.5],["fn_stool",0.9],["fn_chair",0.9],["fn_plant",1.0],["dk_chest",0.9],["cc0_log_stack",1.0],["fn_bookcase",1.3],["cc0_campfire",0.7],
+    // 🆕 Survival/Piraten/Möbel/Dungeon-Streuprops
+    ["sv_barrel",1.0],["sv_woodpile",0.5],["sv_log",0.6],["sv_planks",0.4],["sv_chest",0.6],["sv_bucket",0.35],["sv_axe",0.7],["sv_hammer",0.4],["sv_bedroll",0.25],["sv_fish",0.3],
+    ["pr_barrel",1.0],["pr_crate",0.9],["pr_crate_bottles",0.9],["pr_chest",0.6],["pr_bottle",0.4],["pr_shovel",1.2],["pr_cannon",0.7],
+    ["fu_table",0.8],["fu_chair",0.9],["fu_bench",0.5],["fu_shelf",1.8],["fu_plant",0.7],["fu_cabinet",0.9],
+    ["dk2_coin",0.4],["dk2_banner",1.6],["dk2_column",2.0],["dk2_rocks",0.5],["dk2_stones",0.35],["dk2_trap",0.25],["gy_urn",0.35],["gy_pumpkin",0.4],
+    ["wp_potion",0.45],["wp_potion2",0.5],["wp_gem",0.4],["wp_sword",0.9],["wp_dagger",0.6],["wp_shield",0.9]];
+  farScatter(Math.round(150*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd2()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);});
+  // 🐄🦌 Tiere über die Welt verteilt (Vieh nahe Dörfer / Wild in Wäldern) — statische Belebung
+  var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
+  var WILD=[["an_deer",1.4],["an_boar",0.9],["an_fox",0.6],["an_rabbit",0.5],["an_beaver",0.6]];
+  farScatter(Math.round(70*VF),14,function(x,z){var near=villages.length&&(function(){for(var i=0;i<villages.length;i++){if(Math.hypot(villages[i].x-x,villages[i].z-z)<40)return true;}return false;})();
+    var it=(near?TAME:WILD)[(rnd2()*(near?TAME:WILD).length)|0];var m=cc0inst(it[0],it[1]*(0.85+rnd2()*0.3));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);
+    var hops=(it[0]==="an_rabbit"||it[0]==="an_fox"||it[0]==="an_cat"||it[0]==="an_chicken");
+    regCritter(m,x,z,{range:near?6:12,spd:hops?(0.8+rnd2()*0.8):(0.4+rnd2()*0.5),hop:hops}); // 🐾 wandern/hoppeln
+  });
+  // 🪦 FRIEDHOF: Grabsteine + Krypta + Eisenzaun-Ring + toter Baum + Laternen (gruselige Landmarke)
+  (function(){var p=spotFar(95),gv=[];
+    var GRAVE=["gy_gravestone_cross","gy_gravestone_round","gy_gravestone_broken","gy_cross"];
+    var cr=cc0inst("gy_crypt",3.2);if(cr){cr.position.set(p.x,groundH(p.x,p.z),p.z);cr.rotation.y=rnd2()*6.28;scene.add(cr);}
+    var ob=cc0inst("gy_obelisk",3.6);if(ob){ob.position.set(p.x+6,groundH(p.x+6,p.z-6),p.z-6);scene.add(ob);}
+    for(var i=0;i<16;i++){var ga=rnd2()*6.28,gr=5+rnd2()*11,gx=p.x+Math.cos(ga)*gr,gz=p.z+Math.sin(ga)*gr;
+      var gm=cc0inst(GRAVE[(rnd2()*GRAVE.length)|0],1.0*(0.85+rnd2()*0.4));if(gm){gm.position.set(gx,groundH(gx,gz),gz);gm.rotation.y=(rnd2()-0.5)*0.5;scene.add(gm);}}
+    for(var d=0;d<4;d++){var da=rnd2()*6.28,drd=4+rnd2()*12,dx=p.x+Math.cos(da)*drd,dz=p.z+Math.sin(da)*drd;var dt2=cc0inst("gy_dead_tree",4.5*(0.8+rnd2()*0.5));if(dt2){dt2.position.set(dx,groundH(dx,dz),dz);dt2.rotation.y=rnd2()*6.28;scene.add(dt2);}}
+    for(var f=0;f<18;f++){var fa=f/18*6.28,fx=p.x+Math.cos(fa)*17,fz=p.z+Math.sin(fa)*17;var fm=cc0inst("gy_iron_fence",1.1);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
+    for(var l=0;l<3;l++){var la=rnd2()*6.28,lx=p.x+Math.cos(la)*9,lz=p.z+Math.sin(la)*9;var lm=cc0inst("gy_lantern",0.7);if(lm){lm.position.set(lx,groundH(lx,lz),lz);scene.add(lm);}
+      var pk=cc0inst("gy_pumpkin",0.5);if(pk){pk.position.set(lx+1,groundH(lx+1,lz),lz);scene.add(pk);}}
+    var gL=new THREE.PointLight(0x66ff99,0.6,30);gL.position.set(p.x,groundH(p.x,p.z)+4,p.z);scene.add(gL);
+    if(typeof villages!=="undefined")villages.push({x:p.x,z:p.z,big:false,grave:true});})();
+  // 🏕️ SURVIVAL-CAMP: Zelte + Lagerfeuer + Schlafsack + Holzstapel + Truhe (Rast-Ort)
+  (function(){var p=spotFar(70);
+    var t1=cc0inst("sv_tent",2.2);if(t1){t1.position.set(p.x-2,groundH(p.x-2,p.z),p.z);t1.rotation.y=0.5;scene.add(t1);}
+    var t2=cc0inst("sv_tent_canvas",2.4);if(t2){t2.position.set(p.x+3,groundH(p.x+3,p.z+1),p.z+1);t2.rotation.y=-0.8;scene.add(t2);}
+    var cf=cc0inst("sv_campfire",0.5);if(cf){cf.position.set(p.x,groundH(p.x,p.z),p.z);scene.add(cf);}
+    var fire=new THREE.Mesh(new THREE.ConeGeometry(0.4,0.9,7),new THREE.MeshBasicMaterial({color:0xff9a3d}));fire.position.set(p.x,groundH(p.x,p.z)+0.55,p.z);scene.add(fire);
+    var fL=new THREE.PointLight(0xffa040,1.2,16);fL.position.set(p.x,groundH(p.x,p.z)+1,p.z);scene.add(fL);
+    worldProps.push({mesh:fire,halo:null,ph:rnd2()*6.28,base:fire.position.y,float:false,scl:1,flick:true,light:fL});
+    var cfsh=cc0inst("sv_campfire_fish",1.0);if(cfsh){cfsh.position.set(p.x+1.2,groundH(p.x+1.2,p.z),p.z);scene.add(cfsh);}
+    var br=cc0inst("sv_bedroll",0.25);if(br){br.position.set(p.x-2,groundH(p.x-2,p.z),p.z-0.5);br.rotation.y=0.5;scene.add(br);}
+    var wp=cc0inst("sv_woodpile",0.6);if(wp){wp.position.set(p.x-3,groundH(p.x-3,p.z+2),p.z+2);scene.add(wp);}
+    var ch=cc0inst("sv_chest",0.7);if(ch){ch.position.set(p.x+2,groundH(p.x+2,p.z-2),p.z-2);ch.rotation.y=2;scene.add(ch);}
+    for(var s=0;s<3;s++){var sm=cc0inst("sv_log",0.6);if(sm){var sa=s/3*6.28,slx=p.x+Math.cos(sa)*2.2,slz=p.z+Math.sin(sa)*2.2;sm.position.set(slx,groundH(slx,slz),slz);sm.rotation.y=rnd2()*6.28;scene.add(sm);}}})();
+  // 🏴‍☠️ SCHATZ-KÜSTE: Ruderboot + Truhe + Fässer + Palmen + Flagge + Wachturm (am See)
+  (function(){var p=spotFar(85);
+    var tw=cc0inst("pr_tower",6.5);if(tw){tw.position.set(p.x,groundH(p.x,p.z),p.z);tw.rotation.y=rnd2()*6.28;scene.add(tw);}
+    var bo=cc0inst("pr_rowboat",0.8);if(bo){bo.position.set(p.x+7,groundH(p.x+7,p.z+3),p.z+3);bo.rotation.y=1.2;scene.add(bo);}
+    var pc=cc0inst("pr_chest",0.8);if(pc){pc.position.set(p.x+6,groundH(p.x+6,p.z+3),p.z+3);scene.add(pc);}
+    for(var b=0;b<4;b++){var ba=rnd2()*6.28,brd=3+rnd2()*5,bx=p.x+Math.cos(ba)*brd,bz=p.z+Math.sin(ba)*brd;var bm=cc0inst(rnd2()<0.5?"pr_barrel":"pr_crate",1.0);if(bm){bm.position.set(bx,groundH(bx,bz),bz);bm.rotation.y=rnd2()*6.28;scene.add(bm);}}
+    for(var pa=0;pa<3;pa++){var paa=rnd2()*6.28,pard=5+rnd2()*7,pax=p.x+Math.cos(paa)*pard,paz=p.z+Math.sin(paa)*pard;var pm=cc0inst("pr_palm",5.0*(0.85+rnd2()*0.4));if(pm){pm.position.set(pax,groundH(pax,paz),paz);pm.rotation.y=rnd2()*6.28;scene.add(pm);}}
+    var fl=cc0inst("pr_flag",3.2);if(fl){fl.position.set(p.x-2,groundH(p.x-2,p.z-2),p.z-2);scene.add(fl);}
+    var cm=cc0inst("pr_cannon_mobile",1.0);if(cm){cm.position.set(p.x+2,groundH(p.x+2,p.z+4),p.z+4);cm.rotation.y=rnd2()*6.28;scene.add(cm);}})();
+  // 🏛️ ANTIKE RUINEN: Torbogen + Säulen + Mauern + Treppe (verfallene Landmarke)
+  (function(){var p=spotFar(75);
+    var arch=cc0inst("bk_archway",4.5);if(arch){arch.position.set(p.x,groundH(p.x,p.z),p.z);arch.rotation.y=rnd2()*6.28;scene.add(arch);}
+    for(var c=0;c<6;c++){var ca=c/6*6.28,crd=6+rnd2()*3,cx=p.x+Math.cos(ca)*crd,cz=p.z+Math.sin(ca)*crd;
+      var col=cc0inst("bk_column",3.5*(0.7+rnd2()*0.5));if(col){col.position.set(cx,groundH(cx,cz),cz);col.rotation.set(rnd2()<0.3?(rnd2()-0.5)*0.5:0,rnd2()*6.28,0);scene.add(col);}}
+    for(var w=0;w<4;w++){var wa=rnd2()*6.28,wrd=4+rnd2()*6,wx=p.x+Math.cos(wa)*wrd,wz=p.z+Math.sin(wa)*wrd;var wl=cc0inst(rnd2()<0.5?"bk_wall":"bk_wall_low",2.4*(0.7+rnd2()*0.5));if(wl){wl.position.set(wx,groundH(wx,wz),wz);wl.rotation.y=rnd2()*6.28;scene.add(wl);}}
+    var stg=cc0inst("bk_stairs",1.4);if(stg){stg.position.set(p.x+3,groundH(p.x+3,p.z-3),p.z-3);stg.rotation.y=rnd2()*6.28;scene.add(stg);}
+    var gt=cc0inst("bk_gate",4.2);if(gt){gt.position.set(p.x-5,groundH(p.x-5,p.z+2),p.z+2);gt.rotation.y=rnd2()*6.28;scene.add(gt);}
+    // Moos + Efeu über den Ruinen
+    for(var mo=0;mo<5;mo++){var moa=rnd2()*6.28,mrd=rnd2()*8,mx=p.x+Math.cos(moa)*mrd,mz=p.z+Math.sin(moa)*mrd;var ms=cc0inst("fg_hanging_moss",0.6);if(ms){ms.position.set(mx,groundH(mx,mz)+1.2,mz);scene.add(ms);}}})();
+  // 🗼 Leuchtturm-Landmarke (weithin sichtbar)
+  (function(){var p=spotFar(90);var lh=cc0inst("wc_lighthouse",9);if(lh){lh.position.set(p.x,groundH(p.x,p.z),p.z);scene.add(lh);var ll=new THREE.PointLight(0xfff2c0,1.0,40);ll.position.set(p.x,groundH(p.x,p.z)+9,p.z);scene.add(ll);}
+    var wr=cc0inst("wc_shipwreck",3);if(wr){wr.position.set(p.x+9,groundH(p.x+9,p.z+4),p.z+4);wr.rotation.set(0.2,rnd2()*6.28,0.15);scene.add(wr);}})();
+
+  // 🚣 Boote/Stege an den in Phase 1 gemerkten Seen
+  if(window._lakes)window._lakes.forEach(function(L){
+    // 🚣 Ruderboot am Ufer + Steg (CC0 Watercraft)
+    var dk=cc0inst("wc_dock",1.4);if(dk){var dx=L.x+Math.cos(0.7)*(L.r-1),dz=L.z+Math.sin(0.7)*(L.r-1);dk.position.set(dx,L.gy+0.2,dz);dk.rotation.y=Math.atan2(L.z-dz,L.x-dx);scene.add(dk);}
+    var boat=cc0inst(rnd2()<0.5?"wc_rowboat":"wc_rowboat_large",0.85);if(boat){var ba=rnd2()*6.28,bx=L.x+Math.cos(ba)*L.r*0.5,bz=L.z+Math.sin(ba)*L.r*0.5;boat.position.set(bx,L.gy+0.12,bz);boat.rotation.y=rnd2()*6.28;scene.add(boat);worldProps.push({mesh:boat,halo:null,ph:rnd2()*6.28,base:L.gy+0.12,bob:true});}
+  });
+}
+
+// 🌍 Lade-Anzeige beim Weltaufbau (super spielbar: man sieht, dass es vorangeht)
+(function(){var el=document.createElement("div");el.id="worldLoad";
+  el.style.cssText="position:fixed;left:50%;top:42%;transform:translateX(-50%);z-index:55;background:rgba(10,22,34,.85);color:#bfe9ff;font:800 15px sans-serif;padding:12px 22px;border-radius:16px;border:1px solid rgba(125,227,255,.35);display:none;text-align:center";
+  el.innerHTML='🌍 Welt wird gebaut …<div style="margin-top:8px;width:220px;height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden"><i id="worldLoadFill" style="display:block;height:100%;width:0%;background:linear-gradient(90deg,#3ad0ff,#7de88a);border-radius:4px"></i></div>';
+  document.body.appendChild(el);
+  window.__loadProg=function(done,total){
+    if(!running||typeof villages==="undefined"||villages.length>0)return;
+    el.style.display="block";
+    var f=document.getElementById("worldLoadFill");if(f)f.style.width=Math.round(done/total*100)+"%";
+  };
+})();
 function decorateWorld(){
+  var wl=document.getElementById("worldLoad");if(wl)wl.style.display="none";
   var half=MAP/2-40;
   function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
   // --- Deko-Bäume in Sorten (nicht abbaubar, nur Dichte/Look) ---
@@ -1148,80 +1420,39 @@ function decorateWorld(){
   // --- Büsche / Blumen / Pilzgruppen ---
   // 🌿 üppige Büsche (mehrere Grün-Blobs + Blüten-Tupfer) — schöner als flacher cc0-Busch
   var BUSH_G=[0x2e7d4a,0x3a9a5a,0x276b40,0x4faf62],BLOOM=[0xff6ab0,0xffd166,0xffffff,0xff8a4d,0x9a6cff];
-  function mkBush(){var g=new THREE.Group();var gm=new THREE.MeshLambertMaterial({color:BUSH_G[(rnd()*BUSH_G.length)|0],flatShading:true});
-    var nb=3+((rnd()*3)|0);for(var b=0;b<nb;b++){var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.55+rnd()*0.35,0),gm);bl.position.set((rnd()-0.5)*0.9,0.4+rnd()*0.35,(rnd()-0.5)*0.9);bl.scale.y=0.85;bl.castShadow=true;g.add(bl);}
-    if(rnd()<0.7){var bm=new THREE.MeshBasicMaterial({color:BLOOM[(rnd()*BLOOM.length)|0]});for(var f2=0;f2<4;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.1,0),bm);fl.position.set((rnd()-0.5)*1.0,0.5+rnd()*0.5,(rnd()-0.5)*1.0);g.add(fl);}}
+  function mkBush(){var g=new THREE.Group();var baseHex=BUSH_G[(rnd()*BUSH_G.length)|0];
+    var gm=new THREE.MeshLambertMaterial({color:baseHex,flatShading:true});
+    var gm2=new THREE.MeshLambertMaterial({color:new THREE.Color(baseHex).multiplyScalar(1.2).getHex(),flatShading:true}); // hellere Oberseite (Licht)
+    var nb=4+((rnd()*4)|0);
+    for(var b=0;b<nb;b++){var rr=0.42+rnd()*0.4;var up=b<2;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(rr,0),up?gm2:gm);
+      bl.position.set((rnd()-0.5)*1.0,(up?0.55:0.35)+rnd()*0.4,(rnd()-0.5)*1.0);bl.scale.y=0.9;bl.rotation.set(rnd()*3,rnd()*3,rnd()*3);bl.castShadow=true;g.add(bl);}
+    // dichter Blüten-Cluster oben (mehr + heller)
+    if(rnd()<0.85){var bhex=BLOOM[(rnd()*BLOOM.length)|0];var bm=new THREE.MeshBasicMaterial({color:bhex});
+      var nf=6+((rnd()*5)|0);for(var f2=0;f2<nf;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.08+rnd()*0.06,0),bm);fl.position.set((rnd()-0.5)*1.05,0.6+rnd()*0.5,(rnd()-0.5)*1.05);g.add(fl);}}
     return g;}
-  farScatter(Math.round(130*VF),8,function(x,z){var m=(rnd()<0.55)?mkBush():cc0inst(rnd()<0.5?"nt_bush":"cc0_bush",1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);if(rnd()<0.5)regSway(m,0.05+rnd()*0.04,1.1+rnd()*0.6);});
-  var FLOW=["cc0_flower_purple","nt_flower_red","nt_flower_yellow"];
-  farScatter(Math.round(130*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.09+rnd()*0.06,1.4+rnd()*0.8);});
+  var BUSHES=["nt_bush","cc0_bush","fg_bush","fg_bush_large","fg_bush_small"];
+  farScatter(Math.round(150*VF),8,function(x,z){var m=(rnd()<0.45)?mkBush():cc0inst(BUSHES[(rnd()*BUSHES.length)|0],1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);if(rnd()<0.5)regSway(m,0.05+rnd()*0.04,1.1+rnd()*0.6);});
+  var FLOW=["cc0_flower_purple","nt_flower_red","nt_flower_yellow","fg_flower_red","fg_flower_yellow","fg_flower_purple"];
+  farScatter(Math.round(150*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.09+rnd()*0.06,1.4+rnd()*0.8);});
   farScatter(Math.round(90*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"nt_mushroom":"cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // 🌾 Grasbüschel + Baumstümpfe/liegende Stämme (Boden lebendiger)
-  farScatter(Math.round(120*VF),6,function(x,z){var m=cc0inst("nt_grass",0.5*(0.7+rnd()*0.8));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.11+rnd()*0.07,1.6+rnd()*0.9);});
+  var GRASSES=["nt_grass","fg_grass","fg_grass_tall","fg_grass_leafy"];
+  farScatter(Math.round(170*VF),6,function(x,z){var m=cc0inst(GRASSES[(rnd()*GRASSES.length)|0],0.5*(0.7+rnd()*0.8));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.11+rnd()*0.07,1.6+rnd()*0.9);});
   farScatter(Math.round(40*VF),12,function(x,z){var m=cc0inst(rnd()<0.5?"nt_stump":"nt_log",0.6*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Felsen-Sorten / Holzstapel als Streu-Props ---
   var ROCKS=["cc0_rock_large","cc0_rock_small","nt_rock","nt_rock_tall"];
   farScatter(Math.round(90*VF),10,function(x,z){var m=cc0inst(ROCKS[(rnd()*ROCKS.length)|0],1.6*(0.7+rnd()*0.9));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   farScatter(Math.round(26*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
-  // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
-  var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["fd_burger",0.6],["cc0_tent",1.8],["ck_catapult",2.2],["ftk_lantern",1.5],["fn_stool",0.9],["fn_chair",0.9],["fn_plant",1.0],["dk_chest",0.9],["cc0_log_stack",1.0],["fn_bookcase",1.3],["cc0_campfire",0.7],
-    // 🆕 Survival/Piraten/Möbel/Dungeon-Streuprops
-    ["sv_barrel",1.0],["sv_woodpile",0.5],["sv_log",0.6],["sv_planks",0.4],["sv_chest",0.6],["sv_bucket",0.35],["sv_axe",0.7],["sv_hammer",0.4],["sv_bedroll",0.25],["sv_fish",0.3],
-    ["pr_barrel",1.0],["pr_crate",0.9],["pr_crate_bottles",0.9],["pr_chest",0.6],["pr_bottle",0.4],["pr_shovel",1.2],["pr_cannon",0.7],
-    ["fu_table",0.8],["fu_chair",0.9],["fu_bench",0.5],["fu_shelf",1.8],["fu_plant",0.7],["fu_cabinet",0.9],
-    ["dk2_coin",0.4],["dk2_banner",1.6],["dk2_column",2.0],["dk2_rocks",0.5],["dk2_stones",0.35],["dk2_trap",0.25],["gy_urn",0.35],["gy_pumpkin",0.4]];
-  farScatter(Math.round(150*VF),16,function(x,z){var it=STUFF[(rnd()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
-  // 🐄🦌 Tiere über die Welt verteilt (Vieh nahe Dörfer / Wild in Wäldern) — statische Belebung
-  var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
-  var WILD=[["an_deer",1.4],["an_boar",0.9],["an_fox",0.6],["an_rabbit",0.5],["an_beaver",0.6]];
-  farScatter(Math.round(70*VF),14,function(x,z){var near=villages.length&&(function(){for(var i=0;i<villages.length;i++){if(Math.hypot(villages[i].x-x,villages[i].z-z)<40)return true;}return false;})();
-    var it=(near?TAME:WILD)[(rnd()*(near?TAME:WILD).length)|0];var m=cc0inst(it[0],it[1]*(0.85+rnd()*0.3));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);
-    var hops=(it[0]==="an_rabbit"||it[0]==="an_fox"||it[0]==="an_cat"||it[0]==="an_chicken");
-    regCritter(m,x,z,{range:near?6:12,spd:hops?(0.8+rnd()*0.8):(0.4+rnd()*0.5),hop:hops}); // 🐾 wandern/hoppeln
-  });
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
   function spotFar(minR){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
-  // 🪦 FRIEDHOF: Grabsteine + Krypta + Eisenzaun-Ring + toter Baum + Laternen (gruselige Landmarke)
-  (function(){var p=spotFar(95),gv=[];
-    var GRAVE=["gy_gravestone_cross","gy_gravestone_round","gy_gravestone_broken","gy_cross"];
-    var cr=cc0inst("gy_crypt",3.2);if(cr){cr.position.set(p.x,groundH(p.x,p.z),p.z);cr.rotation.y=rnd()*6.28;scene.add(cr);}
-    var ob=cc0inst("gy_obelisk",3.6);if(ob){ob.position.set(p.x+6,groundH(p.x+6,p.z-6),p.z-6);scene.add(ob);}
-    for(var i=0;i<16;i++){var ga=rnd()*6.28,gr=5+rnd()*11,gx=p.x+Math.cos(ga)*gr,gz=p.z+Math.sin(ga)*gr;
-      var gm=cc0inst(GRAVE[(rnd()*GRAVE.length)|0],1.0*(0.85+rnd()*0.4));if(gm){gm.position.set(gx,groundH(gx,gz),gz);gm.rotation.y=(rnd()-0.5)*0.5;scene.add(gm);}}
-    for(var d=0;d<4;d++){var da=rnd()*6.28,drd=4+rnd()*12,dx=p.x+Math.cos(da)*drd,dz=p.z+Math.sin(da)*drd;var dt2=cc0inst("gy_dead_tree",4.5*(0.8+rnd()*0.5));if(dt2){dt2.position.set(dx,groundH(dx,dz),dz);dt2.rotation.y=rnd()*6.28;scene.add(dt2);}}
-    for(var f=0;f<18;f++){var fa=f/18*6.28,fx=p.x+Math.cos(fa)*17,fz=p.z+Math.sin(fa)*17;var fm=cc0inst("gy_iron_fence",1.1);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
-    for(var l=0;l<3;l++){var la=rnd()*6.28,lx=p.x+Math.cos(la)*9,lz=p.z+Math.sin(la)*9;var lm=cc0inst("gy_lantern",0.7);if(lm){lm.position.set(lx,groundH(lx,lz),lz);scene.add(lm);}
-      var pk=cc0inst("gy_pumpkin",0.5);if(pk){pk.position.set(lx+1,groundH(lx+1,lz),lz);scene.add(pk);}}
-    var gL=new THREE.PointLight(0x66ff99,0.6,30);gL.position.set(p.x,groundH(p.x,p.z)+4,p.z);scene.add(gL);
-    if(typeof villages!=="undefined")villages.push({x:p.x,z:p.z,big:false,grave:true});})();
-  // 🏕️ SURVIVAL-CAMP: Zelte + Lagerfeuer + Schlafsack + Holzstapel + Truhe (Rast-Ort)
-  (function(){var p=spotFar(70);
-    var t1=cc0inst("sv_tent",2.2);if(t1){t1.position.set(p.x-2,groundH(p.x-2,p.z),p.z);t1.rotation.y=0.5;scene.add(t1);}
-    var t2=cc0inst("sv_tent_canvas",2.4);if(t2){t2.position.set(p.x+3,groundH(p.x+3,p.z+1),p.z+1);t2.rotation.y=-0.8;scene.add(t2);}
-    var cf=cc0inst("sv_campfire",0.5);if(cf){cf.position.set(p.x,groundH(p.x,p.z),p.z);scene.add(cf);}
-    var fire=new THREE.Mesh(new THREE.ConeGeometry(0.4,0.9,7),new THREE.MeshBasicMaterial({color:0xff9a3d}));fire.position.set(p.x,groundH(p.x,p.z)+0.55,p.z);scene.add(fire);
-    var fL=new THREE.PointLight(0xffa040,1.2,16);fL.position.set(p.x,groundH(p.x,p.z)+1,p.z);scene.add(fL);
-    worldProps.push({mesh:fire,halo:null,ph:rnd()*6.28,base:fire.position.y,float:false,scl:1,flick:true,light:fL});
-    var cfsh=cc0inst("sv_campfire_fish",1.0);if(cfsh){cfsh.position.set(p.x+1.2,groundH(p.x+1.2,p.z),p.z);scene.add(cfsh);}
-    var br=cc0inst("sv_bedroll",0.25);if(br){br.position.set(p.x-2,groundH(p.x-2,p.z),p.z-0.5);br.rotation.y=0.5;scene.add(br);}
-    var wp=cc0inst("sv_woodpile",0.6);if(wp){wp.position.set(p.x-3,groundH(p.x-3,p.z+2),p.z+2);scene.add(wp);}
-    var ch=cc0inst("sv_chest",0.7);if(ch){ch.position.set(p.x+2,groundH(p.x+2,p.z-2),p.z-2);ch.rotation.y=2;scene.add(ch);}
-    for(var s=0;s<3;s++){var sm=cc0inst("sv_log",0.6);if(sm){var sa=s/3*6.28,slx=p.x+Math.cos(sa)*2.2,slz=p.z+Math.sin(sa)*2.2;sm.position.set(slx,groundH(slx,slz),slz);sm.rotation.y=rnd()*6.28;scene.add(sm);}}})();
-  // 🏴‍☠️ SCHATZ-KÜSTE: Ruderboot + Truhe + Fässer + Palmen + Flagge + Wachturm (am See)
-  (function(){var p=spotFar(85);
-    var tw=cc0inst("pr_tower",6.5);if(tw){tw.position.set(p.x,groundH(p.x,p.z),p.z);tw.rotation.y=rnd()*6.28;scene.add(tw);}
-    var bo=cc0inst("pr_rowboat",0.8);if(bo){bo.position.set(p.x+7,groundH(p.x+7,p.z+3),p.z+3);bo.rotation.y=1.2;scene.add(bo);}
-    var pc=cc0inst("pr_chest",0.8);if(pc){pc.position.set(p.x+6,groundH(p.x+6,p.z+3),p.z+3);scene.add(pc);}
-    for(var b=0;b<4;b++){var ba=rnd()*6.28,brd=3+rnd()*5,bx=p.x+Math.cos(ba)*brd,bz=p.z+Math.sin(ba)*brd;var bm=cc0inst(rnd()<0.5?"pr_barrel":"pr_crate",1.0);if(bm){bm.position.set(bx,groundH(bx,bz),bz);bm.rotation.y=rnd()*6.28;scene.add(bm);}}
-    for(var pa=0;pa<3;pa++){var paa=rnd()*6.28,pard=5+rnd()*7,pax=p.x+Math.cos(paa)*pard,paz=p.z+Math.sin(paa)*pard;var pm=cc0inst("pr_palm",5.0*(0.85+rnd()*0.4));if(pm){pm.position.set(pax,groundH(pax,paz),paz);pm.rotation.y=rnd()*6.28;scene.add(pm);}}
-    var fl=cc0inst("pr_flag",3.2);if(fl){fl.position.set(p.x-2,groundH(p.x-2,p.z-2),p.z-2);scene.add(fl);}
-    var cm=cc0inst("pr_cannon_mobile",1.0);if(cm){cm.position.set(p.x+2,groundH(p.x+2,p.z+4),p.z+4);cm.rotation.y=rnd()*6.28;scene.add(cm);}})();
   // 🌸 Blumenwiese: dichter Farbteppich
   (function(){var p=spotFar(80);var FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c];
+    var stemM=new THREE.MeshLambertMaterial({color:0x2f7a45}),stemG=new THREE.CylinderGeometry(0.03,0.03,0.5,4),blG=new THREE.IcosahedronGeometry(0.16,0);
+    var blM=FLC.map(function(c){return new THREE.MeshBasicMaterial({color:c});}); // geteilte Materialien/Geometrien statt 90x2 Unikate
     for(var i=0;i<90*VF;i++){var ox=p.x+(rnd()-0.5)*34,oz=p.z+(rnd()-0.5)*34;
-      var st=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.5,4),new THREE.MeshLambertMaterial({color:0x2f7a45}));st.position.set(ox,groundH(ox,oz)+0.25,oz);scene.add(st);
-      var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),new THREE.MeshBasicMaterial({color:FLC[(rnd()*FLC.length)|0]}));bl.position.set(ox,groundH(ox,oz)+0.55,oz);scene.add(bl);}})();
+      var st=new THREE.Mesh(stemG,stemM);st.position.set(ox,groundH(ox,oz)+0.25,oz);scene.add(st);
+      var bl=new THREE.Mesh(blG,blM[(rnd()*blM.length)|0]);bl.position.set(ox,groundH(ox,oz)+0.55,oz);scene.add(bl);}})();
   // 🍄 Pilzhain: dichte leuchtende Pilze
   (function(){var p=spotFar(90);for(var i=0;i<50*VF;i++){var ox=p.x+(rnd()-0.5)*26,oz=p.z+(rnd()-0.5)*26;
     var m=cc0inst("cc0_mushroom_red",1.1*(0.7+rnd()*0.9));if(m){m.position.set(ox,groundH(ox,oz),oz);m.rotation.y=rnd()*6.28;scene.add(m);}
@@ -1236,9 +1467,13 @@ function decorateWorld(){
     var gy=Math.min(groundH(p.x,p.z),groundH(p.x+r,p.z),groundH(p.x-r,p.z))-0.4;
     var w=new THREE.Mesh(new THREE.CircleGeometry(r,32),new THREE.MeshStandardMaterial({color:0x1e6f92,emissive:0x0b3f60,emissiveIntensity:0.5,transparent:true,opacity:0.85,roughness:0.12,metalness:0.6}));
     w.rotation.x=-Math.PI/2;w.position.set(p.x,gy+0.06,p.z);scene.add(w);
+    window._lakes=(window._lakes||[]);window._lakes.push({x:p.x,z:p.z,r:r,gy:gy}); // für Phase-2-Boote
     var ring=new THREE.Mesh(new THREE.RingGeometry(r,r+1.4,32),new THREE.MeshBasicMaterial({color:0x4fe0e8,transparent:true,opacity:0.4,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.set(p.x,gy+0.09,p.z);scene.add(ring);
     for(var re=0;re<16;re++){var ra=re/16*6.28,rx=p.x+Math.cos(ra)*(r+0.4),rz=p.z+Math.sin(ra)*(r+0.4);var reed=new THREE.Mesh(new THREE.ConeGeometry(0.07,1.1,4),new THREE.MeshLambertMaterial({color:0x2e8a50}));reed.position.set(rx,groundH(rx,rz)+0.5,rz);reed.rotation.z=(rnd()-.5)*0.3;scene.add(reed);}
-    for(var lp=0;lp<6;lp++){var la=rnd()*6.28,lr=rnd()*r*0.8,lx=p.x+Math.cos(la)*lr,lz=p.z+Math.sin(la)*lr;var pad=new THREE.Mesh(new THREE.CircleGeometry(0.7,7),new THREE.MeshLambertMaterial({color:0x3a8a4a,side:THREE.DoubleSide}));pad.rotation.x=-Math.PI/2;pad.position.set(lx,gy+0.1,lz);scene.add(pad);}})();}
+    for(var lp=0;lp<6;lp++){var la=rnd()*6.28,lr=rnd()*r*0.8,lx=p.x+Math.cos(la)*lr,lz=p.z+Math.sin(la)*lr;var pad=new THREE.Mesh(new THREE.CircleGeometry(0.7,7),new THREE.MeshLambertMaterial({color:0x3a8a4a,side:THREE.DoubleSide}));pad.rotation.x=-Math.PI/2;pad.position.set(lx,gy+0.1,lz);scene.add(pad);}
+    // 🪷 echte Seerosen-Modelle auf dem Wasser
+    for(var lp2=0;lp2<7;lp2++){var la2=rnd()*6.28,lr2=rnd()*r*0.82,lx2=p.x+Math.cos(la2)*lr2,lz2=p.z+Math.sin(la2)*lr2;var lily=cc0inst(rnd()<0.5?"fg_lilypad":"fg_lilypad_small",0.12);if(lily){lily.position.set(lx2,gy+0.08,lz2);lily.rotation.y=rnd()*6.28;scene.add(lily);}}
+  })();}
   // 🌲 Dichte Wald-Haine (viele Bäume eng zusammen)
   for(var fo=0;fo<Math.round(4*VF);fo++){(function(){var p=spotFar(60);for(var t=0;t<22;t++){var ox=p.x+(rnd()-0.5)*30,oz=p.z+(rnd()-0.5)*30;var tm=(rnd()<0.5?mkStylizedTree():cc0inst(["cc0_tree_pine","cc0_tree_oak"][(rnd()*2)|0],5+rnd()*1.5));if(tm){tm.scale.multiplyScalar?tm.scale.multiplyScalar(1):tm.scale.setScalar(0.9+rnd()*0.5);tm.position.set(ox,groundH(ox,oz),oz);tm.rotation.y=rnd()*6.28;scene.add(tm);}}})();}
   // ⛰️ Felsvorsprünge / Klippen (grosse dramatische Felsen)
@@ -1258,18 +1493,23 @@ function decorateWorld(){
     var mtn=new THREE.Mesh(new THREE.ConeGeometry(mr,mh,6+((rnd()*3)|0),1),rockM);mtn.position.set(mx,groundH(mx,mz)+mh/2-6,mz);mtn.rotation.y=rnd()*6.28;mtn.castShadow=true;scene.add(mtn);
     var snow=new THREE.Mesh(new THREE.ConeGeometry(mr*0.42,mh*0.32,6,1),snowM);snow.position.set(mx,groundH(mx,mz)+mh-mh*0.16-6,mz);snow.rotation.y=mtn.rotation.y;scene.add(snow);}
   // --- Dörfer: 2–3 Cluster aus Häusern + Zäunen + Lagerfeuer + Fässern/Kisten/Zelt ---
-  var HOUSES=["building_fachwerk","building_werkstatt","building_turm"];
+  var HOUSES=["building_fachwerk","building_werkstatt","building_turm","bd_house_a","bd_house_b","bd_inn","bd_smithy","bd_town_house"]; // 🆕 Quaternius-Dorfbauten
   var nV=3+((rnd()*2)|0);
   for(var v=0;v<nV;v++){
     var isSpawn=(v===0); // 🏡 Dorf 0 = RIESIGES Anfangsdorf am Spawn (0,0)
     var vx,vz;
     if(isSpawn){vx=0;vz=0;}else{var va=rnd()*6.28,vrd=70+rnd()*(half-90);vx=Math.cos(va)*vrd;vz=Math.sin(va)*vrd;}
     villages.push({x:vx,z:vz,big:isSpawn});
-    var ringR=isSpawn?24:13;
-    var nH=isSpawn?10:(2+((rnd()*3)|0));
+    var ringR=isSpawn?42:13; // 🏙️ RIESIGE Hauptstadt (User-Wunsch)
+    var nH=isSpawn?22:(2+((rnd()*3)|0));
     var _houses=[];
     for(var h=0;h<nH;h++){
-      var ha=(h/nH)*6.28+rnd()*0.4,hrd=(isSpawn?13:6)+rnd()*(isSpawn?8:7);var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
+      var ha,hrd;
+      if(isSpawn){ // zwei Häuser-Ringe: innen 10, aussen 12
+        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=13+rnd()*6;}
+        else{ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=27+rnd()*10;}
+      }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
+      var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);addChimney(hx+(rnd()-0.5)*1.5,hz+(rnd()-0.5)*1.5,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
@@ -1282,29 +1522,43 @@ function decorateWorld(){
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
-    layRoads(vx,vz);
+    layRoads(vx,vz,ringR+3);
     // 🌷 Schöne Wege von jeder Haustür zum Platz (Blumen/Laternen/Türschwelle)
-    layVillagePaths(vx,vz,_houses);
+    layVillagePaths(vx,vz,isSpawn?_houses.slice(0,10):_houses);
     decoVillageExtras(vx,vz,isSpawn,_houses); // 🥕🎉 Gärten, Wimpelketten, Marktstände
+    if(isSpawn){ // ⛪🌾 Dorf-Wahrzeichen: Kirche, Windmühle am Rand, Scheune + Stall
+      var ch2=cc0inst("bd_church",10);if(ch2){var chx=vx-14,chz=vz-12;ch2.position.set(chx,groundH(chx,chz),chz);ch2.rotation.y=Math.atan2(vx-chx,vz-chz);scene.add(ch2);}
+      mkWindmillLive(vx+Math.cos(-2.4)*(ringR+13),vz+Math.sin(-2.4)*(ringR+13),13); // kameraabgewandt, Rotor dreht
+      var bn=cc0inst("bd_barn",6.5);if(bn){var bx3=vx-Math.cos(0.4)*(ringR+6),bz3=vz-Math.sin(0.4)*(ringR+6);bn.position.set(bx3,groundH(bx3,bz3),bz3);bn.rotation.y=rnd()*6.28;scene.add(bn);}
+      var st4=cc0inst("bd_stable",4.5);if(st4){var sx4=vx-Math.cos(0.4)*(ringR+6)+6,sz4=vz-Math.sin(0.4)*(ringR+6)+3;st4.position.set(sx4,groundH(sx4,sz4),sz4);st4.rotation.y=rnd()*6.28;scene.add(st4);}}
+    if(!isSpawn&&rnd()<0.4){var wa2=rnd()*6.28;mkWindmillLive(vx+Math.cos(wa2)*(ringR+7),vz+Math.sin(wa2)*(ringR+7),12);}
+    if(isSpawn){ // 🎄 festliche Ecke im Anfangsdorf (CC0 Holiday-Kit)
+      var ft=cc0inst("hd_tree",3.2);if(ft){var fx=vx+10,fz=vz+9;ft.position.set(fx,groundH(fx,fz),fz);scene.add(ft);
+        var fpl=new THREE.PointLight(0xffd0e0,0.7,12);fpl.position.set(fx,groundH(fx,fz)+2,fz);scene.add(fpl);
+        for(var gi=0;gi<4;gi++){var gpm=cc0inst(rnd()<0.5?"hd_gift":"hd_gift_round",0.5);if(gpm){var gpa=rnd()*6.28;gpm.position.set(fx+Math.cos(gpa)*1.6,groundH(fx,fz),fz+Math.sin(gpa)*1.6);gpm.rotation.y=rnd()*6.28;scene.add(gpm);}}}
+      var sn=cc0inst("hd_snowman",1.4);if(sn){var sx=vx-9,sz=vz+10;sn.position.set(sx,groundH(sx,sz),sz);sn.rotation.y=Math.PI;scene.add(sn);}
+      var rd=cc0inst("hd_reindeer",1.5);if(rd){var rx=vx-11,rz=vz+8;rd.position.set(rx,groundH(rx,rz),rz);rd.rotation.y=rnd()*6.28;scene.add(rd);regCritter&&regCritter(rd,rx,rz,{range:5,spd:0.4});}}
     // 🎪⛲🛒 Kenney-Dorf-Props (poliert): Marktstand, Brunnen, Karren, Banner, Laternen
     var ftst=cc0inst("ftk_stall",2.8);if(ftst){var sx=vx+5,sz=vz-2;ftst.position.set(sx,groundH(sx,sz),sz);ftst.rotation.y=Math.PI;scene.add(ftst);}
     mkTimberWell(vx-4,vz+3); // 🪣 Holz-Brunnen statt modernem Steinbrunnen
+    if(isSpawn)mkTimberWell(vx+24,vz-18); // zweiter Brunnen im Aussenviertel
     var ftct=cc0inst("ftk_cart",1.7);if(ftct){var cx2=vx+2,cz2=vz+5;ftct.position.set(cx2,groundH(cx2,cz2),cz2);ftct.rotation.y=rnd()*6.28;scene.add(ftct);}
     // 🍺 Tavernen-Ecke: Tisch + Stühle/Hocker (Dorf lebendiger)
     (function(){var tx3=vx-6,tz3=vz-5;var tb=cc0inst("fn_table",1.1);if(tb){tb.position.set(tx3,groundH(tx3,tz3),tz3);tb.rotation.y=rnd()*6.28;scene.add(tb);}
       for(var ci=0;ci<4;ci++){var ca=ci/4*6.28,chx=tx3+Math.cos(ca)*1.3,chz=tz3+Math.sin(ca)*1.3;var ch=cc0inst(rnd()<0.5?"fn_chair":"fn_stool",1.0);if(ch){ch.position.set(chx,groundH(chx,chz),chz);ch.rotation.y=ca+Math.PI;scene.add(ch);}}})();
     // 🪴 Topfpflanzen als Grün
     for(var pp=0;pp<(isSpawn?4:2);pp++){var ppa=rnd()*6.28,ppr=ringR-6,ppx=vx+Math.cos(ppa)*ppr,ppz=vz+Math.sin(ppa)*ppr;var pl3=cc0inst(rnd()<0.5?"fn_plant":"fn_plant2",1.1);if(pl3){pl3.position.set(ppx,groundH(ppx,ppz),ppz);scene.add(pl3);}}
-    for(var bi=0;bi<2;bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var bx2=vx+(bi?7:-7),bz2=vz;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);worldProps.push({mesh:bnr,halo:null,ph:rnd()*6.28,base:bnr.position.y,sway:true,brz:bnr.rotation.z});}}
-    for(var li=0;li<2;li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var lx=vx+(li?3:-3),lz=vz-6;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
-      var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}
+    for(var bi=0;bi<(isSpawn?4:2);bi++){var bnr=cc0inst("ftk_banner",2.6);if(bnr){var ba9=bi*1.57+0.8,bx2=vx+Math.cos(ba9)*8,bz2=vz+Math.sin(ba9)*8;bnr.position.set(bx2,groundH(bx2,bz2),bz2);scene.add(bnr);worldProps.push({mesh:bnr,halo:null,ph:rnd()*6.28,base:bnr.position.y,sway:true,brz:bnr.rotation.z});}}
+    for(var li=0;li<(isSpawn?5:2);li++){var lan=cc0inst("ftk_lantern",1.8);if(lan){var la9=li*2.1+0.6,lr9=isSpawn?11:5,lx=vx+Math.cos(la9)*lr9,lz=vz+Math.sin(la9)*lr9;lan.position.set(lx,groundH(lx,lz),lz);scene.add(lan);
+      // 💡 Perf (42-Agenten-Audit): PointLights sind im Forward-Renderer global teuer -> Laternen-Licht nur im Anfangsdorf
+      if(isSpawn){var lL=new THREE.PointLight(0xffcf7a,0.7,10);lL.position.set(lx,groundH(lx,lz)+1.8,lz);scene.add(lL);}}}
     // 🚩 Flaggen auf Holzmasten (statt flacher Stein-Türme) — passt zum Fachwerk-Stil
     var woodPole=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
     for(var tw=0;tw<(isSpawn?4:2);tw++){var ta=Math.PI/4+tw*(isSpawn?Math.PI/2:Math.PI),tx2=vx+Math.cos(ta)*(ringR-2),tz2=vz+Math.sin(ta)*(ringR-2);
       var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.14,5.2,6),woodPole);pole.position.set(tx2,groundH(tx2,tz2)+2.6,tz2);pole.castShadow=true;scene.add(pole);
       var flg=cc0inst("ck_flag",2.6);if(flg){flg.position.set(tx2,groundH(tx2,tz2)+4.4,tz2);flg.rotation.y=rnd()*6.28;scene.add(flg);}}
     // ⚔️ Waffen-Armory (Holz-Ständer-Look): Schwert/Speer/Schilde
-    var arms=["dk_sword","dk_spear","dk_shield_round","dk_shield_rect"];
+    var arms=["dk_sword","dk_spear","dk_shield_round","dk_shield_rect","wp_axe","wp_hammer","wp_bow","wp_staff"];
     for(var ai=0;ai<arms.length;ai++){var wp=cc0inst(arms[ai],ai<2?1.8:1.4);if(wp){var wax=vx+3+ai*0.9,waz=vz-4;
       wp.position.set(wax,groundH(wax,waz)+(ai<2?0.5:0.6),waz);wp.rotation.set(ai<2?0.3:0,rnd()*6.28,ai<2?0.12:0);scene.add(wp);}}
     // 🧑‍🌾 Dorfbewohner (mehr im grossen Anfangsdorf)
@@ -1321,7 +1575,7 @@ function decorateWorld(){
       var bl=new THREE.PointLight(0x7de3ff,0.6,40);bl.position.set(vx,groundH(vx,vz)+6,vz);scene.add(bl);
     }
     var nGar=isSpawn?3:1;for(var ga=0;ga<nGar;ga++){var gaa=rnd()*6.28,gar=ringR-5;mkGarden(vx+Math.cos(gaa)*gar,vz+Math.sin(gaa)*gar);}
-    var nNpc=isSpawn?7:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr,vx,vz);}
+    var nNpc=isSpawn?14:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr,vx,vz);}
     if(isSpawn){ // 💰 Händler beim Marktstand
       merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z,vx,vz);
       var cvM=document.createElement("canvas");cvM.width=cvM.height=64;var cm=cvM.getContext("2d");cm.font="46px sans-serif";cm.textAlign="center";cm.textBaseline="middle";cm.fillText("💰",32,36);
@@ -1650,7 +1904,7 @@ function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/max
 function xpNeed(){return 20+level*16;}
 function xpUpd(){var b=document.getElementById("xpFill");if(b)b.style.width=Math.min(100,xp/xpNeed()*100)+"%";var l=document.getElementById("lvlBadge");if(l)l.textContent="Lv "+level;}
 function gainXP(n){if(dead)return;xp+=n;var ups=0;while(xp>=xpNeed()){xp-=xpNeed();level++;ups++;}
-  if(ups>0){maxHp+=8;hp=Math.min(maxHp,hp+8);
+  if(ups>0){sfxSeq([[523],[659],[784],[1046]]);maxHp+=8;hp=Math.min(maxHp,hp+8);
     if(typeof burst==="function")burst(player.position.x,player.position.y+2,player.position.z,0xffd166,24);
     hpUpd();perkQueue+=ups;if(!perkChoosing)showPerkPick();}
   xpUpd();}
@@ -1684,7 +1938,30 @@ function choosePerk(){
   if(perkQueue>0){showPerkPick();}
   else{perkChoosing=false;if(box)box.classList.add("hide");announce("⭐ Level "+level+"!","#ffd166");}
 }
-function damagePlayer(d){if(dead)return;d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
+// 💨 Ausweichrolle (aus neon-realm): kurzer Dash mit Unverwundbarkeit
+var dodgeT=0,dodgeCd=0,dodgeVX=0,dodgeVZ=0;
+function doDodge(){
+  if(dodgeCd>0||dead||!running||buildMode)return;
+  var mx=stickV.x,my=stickV.y;
+  if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
+  var l=Math.hypot(mx,my);
+  if(l>0.15){dodgeVX=-mx/l;dodgeVZ=-my/l;}
+  else{dodgeVX=-Math.sin(player.rotation.y);dodgeVZ=-Math.cos(player.rotation.y);}
+  dodgeT=0.26;dodgeCd=1.4;sfx(760,0.09,"triangle",0.04,260);
+  if(heroRig)playOnce(heroRig,"run",2.6);
+  burst(player.position.x,player.position.y+0.7,player.position.z,0x7de3ff,8);
+}
+function updDodge(dt){
+  if(dodgeCd>0)dodgeCd-=dt;
+  var b=document.getElementById("bDodge");if(b&&running)b.style.opacity=dodgeCd>0?0.45:1;
+  if(dodgeT<=0)return;
+  dodgeT-=dt;
+  var sp2=17,nx=player.position.x+dodgeVX*sp2*dt,nz=player.position.z+dodgeVZ*sp2*dt;
+  nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
+  player.position.x=nx;player.position.z=nz;
+  if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
+}
+function damagePlayer(d){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -1695,7 +1972,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 var throwCd=0,THROW_CD=1.1,projectiles=[];
@@ -1720,7 +1997,7 @@ function updThrow(dt){
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
       if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);shake=Math.min(shake+0.1,0.4);
-        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}
+        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
@@ -1728,6 +2005,46 @@ function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bS
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
   b.style.opacity=(skillCd>0)?0.4:1;b.textContent=(skillCd>0)?Math.ceil(skillCd):"💥";}
+// ⚡ KETTENBLITZ (Realm-Skill): trifft bis zu 3 Gegner in 14 Einheiten, gezackte Blitz-Linien
+var boltCd=0,BOLT_CD=10,_boltShown=false,boltFx=[];
+function useBolt(){
+  if(!running||dead||buildMode)return;
+  if(level<4){toast("⚡ Kettenblitz ab Level 4");return;}
+  if(boltCd>0)return;
+  var px=player.position.x,pz=player.position.z,R=14,hits=[];
+  for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];
+    if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R)hits.push(e);
+    if(hits.length>=3)break;}
+  if(!hits.length){toast("⚡ Kein Ziel in Reichweite");return;}
+  boltCd=Math.max(3,BOLT_CD-PERK.skillcd);
+  sfx(1200,0.12,"sawtooth",0.05,180);
+  var dmg=3+Math.floor(level/2)+weaponAtk();
+  hits.forEach(function(e){
+    // gezackte Blitz-Linie
+    var pts=[],from=new THREE.Vector3(px,player.position.y+1.6,pz),to=new THREE.Vector3(e.x,groundH(e.x,e.z)+1,e.z);
+    for(var k2=0;k2<=6;k2++){var f2=k2/6,vx3=from.x+(to.x-from.x)*f2+(k2>0&&k2<6?(rnd()-0.5)*1.2:0),
+      vy3=from.y+(to.y-from.y)*f2+(k2>0&&k2<6?(rnd()-0.5)*1.2:0),vz3=from.z+(to.z-from.z)*f2+(k2>0&&k2<6?(rnd()-0.5)*1.2:0);
+      pts.push(new THREE.Vector3(vx3,vy3,vz3));}
+    var lg=new THREE.BufferGeometry().setFromPoints(pts);
+    var ln=new THREE.Line(lg,new THREE.LineBasicMaterial({color:0x9fe8ff,transparent:true,opacity:1}));
+    scene.add(ln);boltFx.push({m:ln,life:0.3});
+    burst(e.x,groundH(e.x,e.z)+1,e.z,0x9fe8ff,8);
+    e.hp-=dmg;
+    if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
+      gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);
+      if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}
+  });
+  toast("⚡ Kettenblitz! "+hits.length+" getroffen");
+}
+function updBolt2(dt){
+  if(boltCd>0)boltCd-=dt;
+  for(var i=boltFx.length-1;i>=0;i--){var fx2=boltFx[i];fx2.life-=dt;
+    fx2.m.material.opacity=Math.max(0,fx2.life/0.3);
+    if(fx2.life<=0){scene.remove(fx2.m);fx2.m.geometry.dispose();fx2.m.material.dispose();boltFx.splice(i,1);}}
+  var b=document.getElementById("bBolt");if(!b)return;
+  var show=running&&level>=4&&!buildMode;b.classList.toggle("hide",!show);
+  if(show&&!_boltShown){_boltShown=true;announce("⚡ Skill frei: C / ⚡-Knopf = Kettenblitz!");}
+  b.style.opacity=(boltCd>0)?0.4:1;b.textContent=(boltCd>0)?Math.ceil(boltCd):"⚡";}
 // 💎 Loot-Raritaeten (RPG-Fusion aus realm): Monster droppen farbige Beute-Orbs (auto-collect)
 var lootOrbs=[];
 var LOOT_RARITY=[{c:0xbfeaff,n:"Gewöhnlich",p:0.58,xp:5,cr:0,heal:0,hp:0},{c:0x5ea8ff,n:"Selten",p:0.27,xp:12,cr:1,heal:0,hp:0},{c:0xc98bff,n:"Episch",p:0.12,xp:26,cr:2,heal:20,hp:0},{c:0xffd166,n:"Legendär",p:0.03,xp:55,cr:3,heal:30,hp:6}];
@@ -1774,7 +2091,7 @@ function floatText(x,y,z,txt,color){
 }
 
 // ---------- Sammeln ----------
-var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false;
+var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null;
 var merchant={x:null,z:null};
 function findNear(){
   nearRes=null;nearMon=null;nearAni=null;nearWork=null;var best=3.6*3.6;
@@ -1785,21 +2102,47 @@ function findNear(){
   for(var k=0;k<animals.length;k++){var an=animals[k];if(!an.alive)continue;var ax=an.x-player.position.x,az=an.z-player.position.z,da=ax*ax+az*az;if(da<ba){ba=da;nearAni=an;}}
   var bw=3.4*3.4;
   for(var w=0;w<structures.length;w++){var s=structures[w];if(s.type!=="werk")continue;var wx=s.x-player.position.x,wz=s.z-player.position.z,dw=wx*wx+wz*wz;if(dw<bw){bw=dw;nearWork=s;}}
+  nearNpc=null;var bn2=3.0*3.0;
+  if(typeof npcs!=="undefined")for(var q2=0;q2<npcs.length;q2++){var n2=npcs[q2];if(!n2.mesh||n2.sleeping)continue;
+    var nx2=n2.mesh.position.x-player.position.x,nz2=n2.mesh.position.z-player.position.z,dn2=nx2*nx2+nz2*nz2;if(dn2<bn2){bn2=dn2;nearNpc=n2;}}
   nearMerchant=false;if(merchant.x!=null){var mdx=merchant.x-player.position.x,mdz=merchant.z-player.position.z;if(mdx*mdx+mdz*mdz<4.5*4.5)nearMerchant=true;}
   nearLoot=null;var bl=3.4*3.4;
   for(var L=0;L<loots.length;L++){var lt=loots[L];if(lt.opened)continue;var lx=lt.x-player.position.x,lz=lt.z-player.position.z,dl=lx*lx+lz*lz;if(dl<bl){bl=dl;nearLoot=lt;}}
+}
+// 🗨️ NPC-Dialoge (Realm-Merge Teil 3): kurze Sprüche mit Tipps & Leben
+var NPC_LINES=[
+ "Willkommen in unserer Stadt, Fremde·r! 🏘️",
+ "Nachts kommen die Monster in Wellen — bau dir Mauern! 🌙",
+ "Mit R (oder Tipp auf 🍖/🍓) isst du Vorräte.",
+ "SHIFT bzw. 💨 macht eine Ausweichrolle — unverwundbar!",
+ "Im Süden soll ein alter Friedhof liegen … gruselig! 🪦",
+ "Der Leuchtturm an der Küste weist Reisenden den Weg. 🗼",
+ "Der Händler am Markt tauscht Kristalle gegen gute Ware. 💎",
+ "Ziehe am Bildschirm, um die Kamera zu drehen! 🔄",
+ "Man sagt, nachts fallen Sternschnuppen — wünsch dir was! 🌠",
+ "Die Windmühle mahlt seit hundert Jahren unser Korn. 🌾",
+ "Ein Drache soll in den Bergen hausen … pass auf dich auf! 🐉",
+ "Sammle Holz und Stein — eine Werkbank wirkt Wunder. 🔨"];
+function talkToNpc(){
+  if(!nearNpc||!nearNpc.mesh)return;
+  sfx(500,0.07);sfx(640,0.07);
+  var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
+  faceTo(nearNpc.mesh.position.x,nearNpc.mesh.position.z);
+  announce("🗨️ „"+line+"“","#cfe8ff");
+  nearNpc.idle=3;nearNpc.emoT=0.1; // NPC bleibt kurz stehen + Emote
 }
 function harvest(){
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
   // Werkbank in der Nähe (und nichts Wichtigeres) → Crafting öffnen
   if(nearMerchant&&!nearMon&&!nearAni&&!buildMode){openTrade();return;}
   if(nearWork&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!buildMode){openCraft();return;}
+  if(nearNpc&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!nearMerchant&&!buildMode){talkToNpc();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
   if(nearMon){ // Kampf
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
-    nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);updWaveHud();
+    nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -1813,7 +2156,7 @@ function harvest(){
     return;
   }
   if(!nearRes)return;var r=nearRes;
-  if(heroRig)playOnce(heroRig,"attack",2.4);
+  if(heroRig)playOnce(heroRig,"attack",2.4);sfx(220,0.06,"square",0.04);
   faceTo(r.x,r.z);
   var dmg=(1+PERK.harvest)|0;dmg=Math.max(1,dmg);if(r.type==="tree")dmg=1+tools.axe+(PERK.harvest>=0.3?1:0);else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick+(PERK.harvest>=0.3?1:0);
   r.hp-=dmg;r.hitAnim=0.2;
@@ -1821,9 +2164,9 @@ function harvest(){
   burst(r.x,r.baseY+1.2,r.z,col,8); // satter: mehr Splitter
   if(r.hp<=0){
     if(r.type==="tree"){inv.wood+=3;totalWood+=3;gainXP(1);toast("🪵 +3 Holz");floatText(r.x,r.baseY+2.4,r.z,"+3 🪵","#e6b98a");r.falling=0.01;shake=Math.min(shake+0.22,0.5);}
-    else if(r.type==="rock"){inv.stone+=2;gainXP(1);toast("🪨 +2 Stein");floatText(r.x,r.baseY+1.4,r.z,"+2 🪨","#cdd6ea");r.dead=true;r.mesh.visible=false;r.regrow=90;burst(r.x,r.baseY+0.6,r.z,0xaab,6);}
-    else if(r.type==="crystal"){inv.crystal+=1;inv.stone+=1;gainXP(3);toast("💎 +1 Kristall");floatText(r.x,r.baseY+1.6,r.z,"+1 💎","#7de3ff");r.dead=true;r.mesh.visible=false;r.regrow=140;burst(r.x,r.baseY+0.7,r.z,0x7de3ff,8);}
-    else if(r.type==="bush"){inv.berry+=1;gainXP(1);toast("🍓 +1 Beere");floatText(r.x,r.baseY+1.0,r.z,"+1 🍓","#ff8ab0");r.dead=true;if(r.berry)r.berry.visible=false;r.regrow=45;}
+    else if(r.type==="rock"){sfx(300,0.07,"square",0.04);inv.stone+=2;gainXP(1);toast("🪨 +2 Stein");floatText(r.x,r.baseY+1.4,r.z,"+2 🪨","#cdd6ea");r.dead=true;r.mesh.visible=false;r.regrow=90;burst(r.x,r.baseY+0.6,r.z,0xaab,6);}
+    else if(r.type==="crystal"){sfx(1050,0.1,"triangle",0.045);inv.crystal+=1;inv.stone+=1;gainXP(3);toast("💎 +1 Kristall");floatText(r.x,r.baseY+1.6,r.z,"+1 💎","#7de3ff");r.dead=true;r.mesh.visible=false;r.regrow=140;burst(r.x,r.baseY+0.7,r.z,0x7de3ff,8);}
+    else if(r.type==="bush"){sfx(640,0.06);inv.berry+=1;gainXP(1);toast("🍓 +1 Beere");floatText(r.x,r.baseY+1.0,r.z,"+1 🍓","#ff8ab0");r.dead=true;if(r.berry)r.berry.visible=false;r.regrow=45;}
     invUpd();
   }
 }
@@ -1842,7 +2185,7 @@ function updResources(dt){
 // ---------- Essen (Fleisch bevorzugt, dann Beeren) ----------
 function eat(){
   if(hp>=maxHp){toast("❤️ Volle Gesundheit");return;}
-  if(inv.meat>0){inv.meat--;hp=Math.min(maxHp,hp+35);invUpd();hpUpd();toast("🍖 +35 HP");floatText(player.position.x,player.position.y+2.2,player.position.z,"+35 ❤️","#ff9a6c");}
+  if(inv.meat>0){sfx(420,0.08,"square",0.04);inv.meat--;hp=Math.min(maxHp,hp+35);invUpd();hpUpd();toast("🍖 +35 HP");floatText(player.position.x,player.position.y+2.2,player.position.z,"+35 ❤️","#ff9a6c");}
   else if(inv.berry>0){inv.berry--;hp=Math.min(maxHp,hp+18);invUpd();hpUpd();toast("🍓 +18 HP");floatText(player.position.x,player.position.y+2.2,player.position.z,"+18 ❤️","#ff8ab0");}
   else toast("Nichts zu essen — jage 🍖 oder pflücke 🍓");
 }
@@ -1973,13 +2316,13 @@ function updStructures(dt){
       // Heil-Aura
       if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<5&&hp<maxHp){hp=Math.min(maxHp,hp+4*dt);hpUpd();}}
     if(s.type==="bett"){if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<3.5&&hp<maxHp){hp=Math.min(maxHp,hp+6*dt);hpUpd();}}
-    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);gainXP(8);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
+    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);gainXP(8);kills++;updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
     if(s.type==="nexus"){if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*1.2;if(s.mesh.userData.ring)s.mesh.userData.ring.rotation.z+=dt*0.8;
       s.spk=(s.spk||0)-dt;if(s.spk<=0){s.spk=0.4+rnd()*0.3;burst(s.x+(rnd()-.5)*2,groundH(s.x,s.z)+5.6+(rnd()-.5)*2,s.z+(rnd()-.5)*2,0xc98bff,1);}}
     if(s.type==="turm"){s.cd-=dt;if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*2;
       if(isNight&&s.cd<=0){var tgt=null,bd=16*16;for(var m=0;m<monsters.length;m++){var e=monsters[m];var d=(e.x-s.x)*(e.x-s.x)+(e.z-s.z)*(e.z-s.z);if(d<bd){bd=d;tgt=e;}}
         if(tgt){tgt.hp-=1;burst(tgt.x,groundH(tgt.x,tgt.z)+1,tgt.z,0xff8ad8,4);s.cd=0.8;
-          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);}}}}}
+          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);kills++;gainXP(4);}}}}}
   }
 }
 
@@ -1991,7 +2334,7 @@ function updDayNight(dt){
   dayT+=dt;var cyc=isNight?NIGHTLEN:DAYLEN;
   if(dayT>=cyc){dayT=0;isNight=!isNight;
     if(isNight){nights++;waveNum++;waveToSpawn=6+waveNum*4;waveSpawned=0;waveActive=true;
-      announce("🌙 WELLE "+waveNum+" — "+waveToSpawn+" Gegner! Überlebe!");
+      announce("🌙 WELLE "+waveNum+" — "+waveToSpawn+" Gegner! Überlebe!");sfx(90,0.5,"sawtooth",0.05,60);
       if(nights>=2&&nights%2===0)setTimeout(spawnBoss,2500);}
     else{day++;waveActive=false;
       if(typeof gainXP==="function")gainXP(10+waveNum*4); // Welle überlebt -> XP-Bonus
@@ -2030,7 +2373,9 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key.toLowerCase()==="f"){doThrow();}
   if(e.key===" "){e.preventDefault();harvest();}
   if(e.key.toLowerCase()==="b"){if(buildMode)closeBuild();else openBuild();}
-  if(e.key.toLowerCase()==="f"){eat();}
+  if(e.key.toLowerCase()==="r"){eat();}
+  if(e.key==="Shift"){doDodge();}
+  if(e.key.toLowerCase()==="c"){useBolt();}
   if(e.key==="Enter"&&buildMode&&ghost){confirmBuild();}
   if(e.key==="Escape"){if(buildMode)closeBuild();else togglePause();}
 });
@@ -2047,10 +2392,27 @@ function stickEnd(){stickId=null;stickV.x=0;stickV.y=0;nub.style.left="35px";nub
 stickEl.addEventListener("touchstart",function(e){e.preventDefault();stickStart(e);},{passive:false});
 addEventListener("touchmove",function(e){if(stickId!==null)stickMove(e);},{passive:false});
 addEventListener("touchend",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
+addEventListener("touchcancel",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
+// 🔄 Kamera drehen: mit dem Finger auf der rechten Bildschirmhälfte ziehen (Joystick bleibt links) / Maus ziehen
+var rotId=null,rotLX=0;
+addEventListener("touchstart",function(e){if(!running)return;
+  for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+    if(t.identifier===stickId)continue;
+    if(t.clientX>innerWidth*0.4&&rotId===null&&!(t.target&&t.target.closest&&t.target.closest(".btn,#buildMenu,#tradeMenu,#perkPick,#coopBox"))){rotId=t.identifier;rotLX=t.clientX;}}},{passive:true});
+addEventListener("touchmove",function(e){if(rotId===null)return;
+  for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+    if(t.identifier===rotId){camYaw-=(t.clientX-rotLX)*0.008;rotLX=t.clientX;}}},{passive:true});
+addEventListener("touchend",function(e){for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
+addEventListener("touchcancel",function(e){for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
+var mDrag=false,mLX=0;
+addEventListener("mousedown",function(e){if(!running||IS_MOB)return;if(e.target&&e.target.tagName==="CANVAS"){mDrag=true;mLX=e.clientX;}});
+addEventListener("mousemove",function(e){if(mDrag){camYaw-=(e.clientX-mLX)*0.008;mLX=e.clientX;}});
+addEventListener("mouseup",function(){mDrag=false;});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
-function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});b.addEventListener("click",function(e){if(!IS_MOB)fn();});}
+function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 bindTap("bAct",function(){harvest();});
-bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);
+bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);bindTap("bBolt",useBolt);
+(function(){var mb=document.getElementById("muteBtn2");if(mb){mb.textContent=muted?"🔇":"🔊";mb.onclick=function(){toggleMute();};}})();bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
 document.getElementById("bSound").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊";};
@@ -2080,7 +2442,8 @@ function saveGame(){
     px:player.position.x,pz:player.position.z,
     st:structures.map(function(o){return{t:o.type,x:o.x,z:o.z,hp:o.hp};}),
     loot:lootOpened,
-    fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};})};
+    fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};}),
+    perk:PERK};
   lsSet("nw_save1",JSON.stringify(s));
   // 🏆 Rekord mitschreiben (Sucht-Faktor: eigenen Bestwert schlagen)
   try{var b=JSON.parse(lsGet("nw_best")||"{}");
@@ -2089,6 +2452,48 @@ function saveGame(){
 function loadSave(){var raw=lsGet("nw_save1");if(!raw)return null;try{return JSON.parse(raw);}catch(e){return null;}}
 function loadBest(){try{return JSON.parse(lsGet("nw_best")||"null");}catch(e){return null;}}
 var autoSaveT=0;
+// 🔊 SOUND (WebAudio-Synth, kein Asset nötig) + Mute (persistent)
+var _AC=null,muted=(lsGet("nw_mute")==="1");
+function sfx(f,d,type,g,slide){if(muted||!running)return;try{
+  _AC=_AC||new (window.AudioContext||window.webkitAudioContext)();
+  var o=_AC.createOscillator(),ga=_AC.createGain();o.type=type||"triangle";
+  o.frequency.value=f;d=d||0.1;
+  if(slide)o.frequency.exponentialRampToValueAtTime(slide,_AC.currentTime+d);
+  ga.gain.value=g||0.045;ga.gain.exponentialRampToValueAtTime(0.0001,_AC.currentTime+d);
+  o.connect(ga);ga.connect(_AC.destination);o.start();o.stop(_AC.currentTime+d+0.02);
+}catch(e){}}
+function sfxSeq(seq){seq.forEach(function(sq,i){setTimeout(function(){sfx(sq[0],sq[1]||0.12,sq[2]||"triangle",sq[3]||0.05);},i*95);});}
+function toggleMute(){muted=!muted;lsSet("nw_mute",muted?"1":"0");
+  var mb=document.getElementById("muteBtn2");if(mb)mb.textContent=muted?"🔇":"🔊";}
+// 🏅 ERFOLGE (Abzeichen) — einmalig, persistent, mit Announce (Sucht-Faktor)
+var BADGES=[
+  {id:"kill1",   n:"Erster Sieg",      ic:"⚔️", t:function(){return kills>=1;}},
+  {id:"kill25",  n:"Monsterjäger",     ic:"🗡️", t:function(){return kills>=25;}},
+  {id:"kill100", n:"Wildnis-Legende",  ic:"🏆", t:function(){return kills>=100;}},
+  {id:"day3",    n:"Überlebenskünstler",ic:"🌅", t:function(){return day>=3;}},
+  {id:"day7",    n:"Eine Woche wild",  ic:"📅", t:function(){return day>=7;}},
+  {id:"lvl5",    n:"Aufsteiger",       ic:"⭐", t:function(){return level>=5;}},
+  {id:"lvl10",   n:"Held der Wildnis", ic:"🌟", t:function(){return level>=10;}},
+  {id:"wood100", n:"Holzfäller",       ic:"🪵", t:function(){return (inv.wood|0)>=100;}},
+  {id:"build5",  n:"Baumeister",       ic:"🔨", t:function(){return structures.length>=5;}},
+  {id:"boss1",   n:"Drachentöter",     ic:"🐉", t:function(){return (window.__bossKills|0)>=1;}}
+];
+function badgesGot(){try{return JSON.parse(lsGet("nw_badges")||"{}");}catch(e){return {};}}
+var _bgT=0;
+function updBadges(dt){_bgT+=dt;if(_bgT<2)return;_bgT=0;
+  var got=badgesGot(),won2=false;
+  for(var i=0;i<BADGES.length;i++){var B=BADGES[i];
+    if(!got[B.id]&&B.t()){got[B.id]=1;won2=true;
+      announce("🏅 ERFOLG: "+B.ic+" "+B.n+"!","#ffd166");sfxSeq([[659],[880],[1174]]);
+      burst(player.position.x,player.position.y+2,player.position.z,0xffd166,14);}}
+  if(won2)lsSet("nw_badges",JSON.stringify(got));}
+// 🎁 Tägliche Belohnung: einmal pro Kalendertag +3 Kristalle
+function dailyReward(){
+  var today=new Date().toISOString().slice(0,10);
+  if(lsGet("nw_daily")===today)return;
+  lsSet("nw_daily",today);
+  setTimeout(function(){inv.crystal=(inv.crystal|0)+3;invUpd();
+    announce("🎁 Tägliche Belohnung: +3 💎!","#7de3ff");},2500);}
 // 💾 Sichtbare Speicher-Bestätigung (User: „meldung/timer wenn man vergisst")
 var _saveInd=null;
 function flashSaved(txt){
@@ -2114,13 +2519,38 @@ function updQuest(dt){
     var wasNexus=QUESTS[quest].nexus;
     quest++;
     if(quest<QUESTS.length){announce("✅ Ziel erreicht! Nächstes Ziel…");document.getElementById("questText").textContent=QUESTS[quest].t;}
-    else{document.getElementById("questText").textContent=wasNexus?"🏆 Nexus stabilisiert — du hast gewonnen! Überlebe weiter.":"🏆 Alle Ziele geschafft — überlebe weiter!";announce(wasNexus?"🏆 WILDNIS-MEISTER! 🌌":"🏆 Wildnis-Meister!");}
+    else{document.getElementById("questText").textContent=wasNexus?"🏆 Nexus stabilisiert — du hast gewonnen! Überlebe weiter.":"🏆 Alle Ziele geschafft — überlebe weiter!";
+      if(wasNexus)showWinScreen();else announce("🏆 Wildnis-Meister!");}
     updNexusProgress();saveGame();
   }
 }
 
+// 🏆 Sieg-Bildschirm: grosse Feier mit Statistik (macht das Spiel RUND)
+function showWinScreen(){
+  sfxSeq([[523],[659],[784],[1046,0.3],[784],[1046,0.5]]);
+  var got=badgesGot(),nb=0;for(var i=0;i<BADGES.length;i++)if(got[BADGES[i].id])nb++;
+  var ov=document.getElementById("winOv");
+  if(!ov){ov=document.createElement("div");ov.id="winOv";
+    ov.style.cssText="position:fixed;inset:0;z-index:75;background:rgba(8,16,28,.88);display:flex;align-items:center;justify-content:center;padding:20px";
+    document.body.appendChild(ov);}
+  ov.innerHTML='<div style="max-width:420px;text-align:center;background:linear-gradient(160deg,#122438,#0c1a2c);border:2px solid rgba(255,209,102,.5);border-radius:22px;padding:26px 22px;color:#eaf6ff">'+
+    '<div style="font-size:3rem">🏆</div>'+
+    '<div style="font-size:1.5rem;font-weight:900;color:#ffd166;letter-spacing:.04em">WILDNIS-MEISTER!</div>'+
+    '<div style="margin:6px 0 14px;color:#9fc6de">Du hast den Nexus stabilisiert — die Wildnis ist gerettet.</div>'+
+    '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;font-weight:800">'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">📅 Tag '+day+'</span>'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">⚔️ '+kills+' Gegner</span>'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">⭐ Level '+level+'</span>'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">🏅 '+nb+"/"+BADGES.length+'</span></div>'+
+    '<button id="winGo" style="margin-top:18px;width:100%;padding:13px;border:none;border-radius:14px;background:linear-gradient(135deg,#3ad0ff,#7de88a);color:#04121f;font-weight:900;font-size:1rem;cursor:pointer">🌄 Weiterspielen (Endlos-Modus)</button>'+
+    '<button id="winNew" style="margin-top:8px;width:100%;padding:11px;border:1px solid rgba(140,190,220,.4);border-radius:14px;background:transparent;color:#9fc6de;font-weight:800;cursor:pointer">Neue Welt starten</button></div>';
+  ov.style.display="flex";
+  for(var c=0;c<40;c++)setTimeout(function(){burst(player.position.x+(rnd()-0.5)*8,player.position.y+2+rnd()*3,player.position.z+(rnd()-0.5)*8,[0xffd166,0x7de3ff,0xff6ab0][(rnd()*3)|0],6);},c*80);
+  document.getElementById("winGo").onclick=function(){ov.style.display="none";};
+  document.getElementById("winNew").onclick=function(){try{localStorage.removeItem("nw_save1");}catch(e){}location.reload();};
+}
 // ---------- Loop ----------
-var perfNow=0,lastT=0;
+var perfNow=0,lastT=0,_mmT=0;
 function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running)return;var ctx=cv.getContext("2d");var W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=W/2;
   ctx.clearRect(0,0,W,H);ctx.save();ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.clip();
   ctx.fillStyle="rgba(30,60,40,.5)";ctx.fillRect(0,0,W,H);
@@ -2164,12 +2594,12 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);updMinimap();updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
-  updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
-  updCamera(dt);updQuest(dt);
+  updCamera(dt);updQuest(dt);updBadges(dt);
   // Toast/announce fade
   if(toastT>0){toastT-=dt;if(toastT<=0)document.getElementById("toast").style.opacity=0;}
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
@@ -2186,6 +2616,7 @@ function updPrompt(){
   else if(nearAni){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🏹":"E";document.getElementById("kpTxt").textContent="Jagen 🍖";act.textContent="🏹";}
   else if(nearLoot){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🖐️":"E";document.getElementById("kpTxt").textContent="Öffnen";act.textContent="🖐️";}
   else if(nearWork){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔧":"E";document.getElementById("kpTxt").textContent="Werkbank öffnen";act.textContent="🔧";}
+  else if(nearNpc){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🗨️":"E";document.getElementById("kpTxt").textContent="Reden";act.textContent="🗨️";}
   else{kp.style.opacity=0;act.textContent="⚔️";}
 }
 
@@ -2251,36 +2682,68 @@ function netTick(dt){
   if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
 }
 (function(){var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
-  if(h)h.onclick=function(){netStart("host");};
-  if(j)j.onclick=function(){var c=(document.getElementById("coopCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");if(c.length!==4){coopStatusMsg("Code = 4 Buchstaben");return;}netStart("join",c);};
+  if(h)h.onclick=function(){if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}netStart("host");
+    setTimeout(function(){var sb=document.getElementById("coopShare");if(sb&&NET.s&&NET.s.code)sb.classList.remove("hide");},600);};
+  var sb=document.getElementById("coopShare");
+  if(sb)sb.onclick=function(){ // 📲 Einladungs-Link: Partner tippt drauf und ist direkt drin
+    if(!(NET.s&&NET.s.code))return;
+    var url=location.origin+location.pathname+"?coop="+NET.s.code;
+    var txt="⚔️ Spiel mit mir Neon-Wildnis Koop! Tippe auf den Link: "+url;
+    if(navigator.share){navigator.share({title:"Neon-Wildnis — Koop",text:txt,url:url}).catch(function(){});}
+    else{try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
+      sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
+  };
+  // 🔗 Auto-Beitritt: ?coop=CODE -> direkt verbinden
+  var m=location.search.match(/[?&]coop=([A-Za-z]{4})/);
+  if(m){var code=m[1].toUpperCase();var tries=0,iv=setInterval(function(){tries++;
+    if(window.MP){clearInterval(iv);var ci=document.getElementById("coopCode");if(ci)ci.value=code;netStart("join",code);}
+    else if(tries>40)clearInterval(iv);},250);}
+  if(j)j.onclick=function(){if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}var c=(document.getElementById("coopCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");if(c.length!==4){coopStatusMsg("Code = 4 Buchstaben");return;}netStart("join",c);};
 })();
 function startGame(fresh){
   var sv=(NET.on||fresh)?null:loadSave(); // Koop: immer frische, geteilte Welt
   SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
   buildGround();buildRiver();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase"].concat(NEW_ASSETS),decorateWorld);
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase","fn_bed"].concat(NEW_ASSETS).concat(NEW_ASSETS2).filter(function(n){return DEFER_ASSETS.indexOf(n)<0;}),
+      function(){decorateWorld();loadCC0(DEFER_ASSETS,decorateWorldLate);}); // 🕑 Phase 2 lädt nach Spielstart
   });
   loadHero();loadSlime();
   if(sv){
     if(sv.inv)inv=sv.inv;if(sv.tools)tools=sv.tools;if(sv.equip)equip=sv.equip;normInv();
     hp=sv.hp||100;day=sv.day||1;dayT=sv.dayT||0;isNight=!!sv.isNight;nights=sv.nights||0;won=!!sv.won;
     if(sv.maxHp)maxHp=sv.maxHp;if(sv.xp!=null)xp=sv.xp;if(sv.level)level=sv.level;if(sv.kills)kills=sv.kills;
+    if(sv.perk)for(var pk in PERK)if(typeof sv.perk[pk]==="number")PERK[pk]=sv.perk[pk]; // gewählte Level-Perks zurück
+    if(sv.fell&&sv.fell.length){ // gefällte Bäume/Felsen wieder als gefällt markieren (waren nach Reload wieder da)
+      sv.fell.forEach(function(fr){for(var ri=0;ri<resources.length;ri++){var r=resources[ri];
+        if(!r.dead&&Math.round(r.x)===fr.x&&Math.round(r.z)===fr.z){r.dead=true;r.regrow=fr.rg||60;
+          if(r.mesh)r.mesh.visible=false;if(r.berry)r.berry.visible=false;break;}}});}
     if(sv.loot&&sv.loot.length)lootOpened=sv.loot.slice();
     player.position.set(sv.px||0,0,sv.pz||0);
     (sv.st||[]).forEach(function(o){if(!RECIPES[o.t])return;placeStructure(o.t,o.x,o.z);var st=structures[structures.length-1];if(st)st.hp=o.hp;});
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);}
+  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+    var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
+      if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
+      if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;
+      if(_c.cls.hp){maxHp+=_c.cls.hp;hp=maxHp;}
+      setTimeout(function(){announce(_c.emo+" "+_c.name+"-Bonus aktiv: "+_c.desc,"#bfe9ff");},1200);}}
   invUpd();hpUpd();
   document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";
   camera.position.set(0,12,16);
   document.getElementById("hud").classList.remove("hide");
   document.getElementById("ov").classList.add("hide");
-  if(IS_MOB){document.getElementById("bBuild").classList.remove("hide");}
-  else{document.getElementById("bBuild").classList.remove("hide");}
-  running=true;paused=false;xpUpd();updOnline();
+  document.getElementById("bBuild").classList.remove("hide");
+  document.getElementById("bDodge").classList.remove("hide"); // 💨 Rolle immer verfügbar
+  if(!window.__pMark){window.__pMark=1; // 🎯 Spieler-Marker: durch Häuser hindurch sichtbar
+    var rg=new THREE.Mesh(new THREE.RingGeometry(0.5,0.64,28),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.5,depthTest:false}));
+    rg.rotation.x=-Math.PI/2;rg.position.y=0.06;rg.renderOrder=998;player.add(rg);
+    var tri=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.3,4),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.85,depthTest:false}));
+    tri.rotation.x=Math.PI;tri.position.y=2.9;tri.renderOrder=998;player.add(tri);
+    worldProps.push({mesh:tri,float:true,base:2.9,ph:0,halo:null});}
+  running=true;paused=false;xpUpd();updOnline();dailyReward();
   announce("🌅 Willkommen in der Wildnis!");
 }
 // ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
@@ -2347,16 +2810,19 @@ if(loadSave()){document.getElementById("startBtn").textContent="▶ Weiterspiele
 // 🏆 Rekord-Banner (Sucht-Faktor: eigenen Bestwert sehen & schlagen)
 (function(){var rb=document.getElementById("recBar"),b=loadBest();if(!rb||!b||!(b.day>1||b.kills>0||b.level>1))return;
   rb.innerHTML="🏆 Dein Rekord: Tag <b>"+(b.day||1)+"</b> · <b>"+(b.kills||0)+"</b> Gegner · Level <b>"+(b.level||1)+"</b>";
+  var got=badgesGot(),ic=[];for(var i=0;i<BADGES.length;i++)if(got[BADGES[i].id])ic.push(BADGES[i].ic);
+  if(ic.length)rb.innerHTML+="<br>🏅 "+ic.join(" ")+" <span style=\"opacity:.75\">("+ic.length+"/"+BADGES.length+")</span>";
   rb.classList.remove("hide");})();
 
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
 window.__nw={
+  win:function(){showWinScreen();return 1;}, // Test-Only
   boss:function(){spawnBoss();return monsters.length;}, // Test-Only
   xp:function(n){gainXP(n||100);return {level:level,perk:PERK};}, // Test-Only
   perkState:function(){return PERK;},
   trade:function(){if(merchant.x!=null){player.position.x=merchant.x;player.position.z=merchant.z+1.5;}inv.wood=20;inv.crystal=20;inv.stone=20;invUpd();openTrade();return {mx:merchant.x,mz:merchant.z};}, // Test-Only
-  spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;var m,sc;if(M.build){m=M.build();sc=M.scale;}else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}m.traverse(function(n){if(n.isMesh)n.castShadow=true;});m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});return 1;}, // Test-Only
+  spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;if(M.skinned&&THREE.GLTFLoader){var xx=player.position.x+3,zz=player.position.z+3;new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});var bb=new THREE.Box3().setFromObject(o),hh=Math.max(0.001,bb.max.y-bb.min.y);var k=(M.th||2.2)/hh;if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(12,k));o.scale.setScalar(k);o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);monsters.push({mesh:o,x:xx,z:zz,hp:M.hp,t:0,spd:0,baseScale:k,kind:M.id,walk:true,fly:false,wings:null});});return 1;}var m,sc;if(M.build){m=M.build();sc=M.scale;}else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}m.traverse(function(n){if(n.isMesh)n.castShadow=true;});m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});return 1;}, // Test-Only
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
   villages:function(){return villages.slice();},

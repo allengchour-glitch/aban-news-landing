@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Punkte-Jagd 🌟</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: "Baloo 2", "Comic Sans MS", "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #2a3d55;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; }
+
+  .backbtn {
+    position: fixed; top: 10px; left: 10px; z-index: 50;
+    min-height: 46px; padding: 8px 16px;
+    background: #fff; color: #2a3d55; border: none; border-radius: 20px;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 3px 10px rgba(80,120,170,.25);
+  }
+  .backbtn:active { transform: scale(.95); }
+
+  /* Playfield: two half-screens stacked (top rotated for face-to-face play) */
+  .field { position: relative; flex: 1; overflow: hidden; }
+  .top    { background: linear-gradient(180deg, #ffe0ec, #ffd0e0); }
+  .bottom { background: linear-gradient(180deg, #d8f5e0, #c4efd4); }
+
+  .half-info {
+    position: absolute; left: 0; right: 0; z-index: 5;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    font-weight: 800; font-size: 20px; pointer-events: none;
+    padding: 6px 10px;
+  }
+  .top .half-info { top: 6px; transform: rotate(180deg); }
+  .bottom .half-info { bottom: 6px; }
+
+  .p1c { color: #d6336c; }
+  .p2c { color: #1a9b5a; }
+
+  .star {
+    position: absolute; width: 64px; height: 64px; margin: -32px 0 0 -32px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px; cursor: pointer; z-index: 3;
+    transition: transform .06s ease-out;
+    filter: drop-shadow(0 3px 4px rgba(0,0,0,.15));
+  }
+  .star.pop { animation: pop .28s ease-out; }
+  @keyframes pop { 0%{transform:scale(.2) rotate(-40deg);opacity:0} 60%{transform:scale(1.15) rotate(8deg);opacity:1} 100%{transform:scale(1) rotate(0)} }
+
+  .float {
+    position: absolute; font-weight: 900; font-size: 28px; z-index: 8;
+    pointer-events: none; color: #fff; text-shadow: 0 2px 3px rgba(0,0,0,.25);
+    animation: floatUp .7s ease-out forwards;
+  }
+  @keyframes floatUp { from{transform:translateY(0);opacity:1} to{transform:translateY(-50px);opacity:0} }
+
+  /* Timer bar in the middle */
+  .timerbar {
+    height: 54px; background: #fff; display: flex; align-items: center;
+    justify-content: center; gap: 14px; z-index: 20;
+    box-shadow: 0 0 14px rgba(80,120,170,.3);
+  }
+  .clock { font-size: 26px; font-weight: 900; color: #2a3d55; min-width: 92px; text-align: center; }
+  .mini { font-size: 17px; font-weight: 800; }
+
+  /* Overlays */
+  .overlay {
+    position: absolute; inset: 0; z-index: 40;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; gap: 18px; padding: 24px;
+    background: rgba(255,255,255,.72); backdrop-filter: blur(3px);
+  }
+  .card {
+    background: #fff; border-radius: 26px; padding: 28px 24px;
+    box-shadow: 0 12px 34px rgba(80,120,170,.28);
+    max-width: 340px; width: 100%;
+  }
+  h1 { font-size: 34px; color: #2a3d55; margin-bottom: 6px; }
+  .sub { font-size: 17px; color: #5a6b82; line-height: 1.45; margin-bottom: 8px; }
+  .bigbtn {
+    min-height: 56px; width: 100%; margin-top: 14px;
+    background: linear-gradient(180deg,#ffd54a,#ffb703); color: #6a3d00;
+    border: none; border-radius: 20px; font-size: 22px; font-weight: 900;
+    cursor: pointer; box-shadow: 0 5px 0 #e08e00;
+  }
+  .bigbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #e08e00; }
+  .result-big { font-size: 40px; font-weight: 900; margin: 4px 0; }
+  .scorerow { display: flex; justify-content: center; gap: 22px; font-size: 22px; font-weight: 800; margin: 8px 0; }
+  .hidden { display: none !important; }
+  .go-label { font-size: 15px; color:#8090a5; font-weight:700; }
+</style>
+</head>
+<body>
+<button class="backbtn" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<div id="app">
+  <div class="field top" id="fieldTop">
+    <div class="half-info"><span class="p1c">🔴 Spieler 1</span> · <span id="s1" class="p1c">0</span></div>
+  </div>
+
+  <div class="timerbar">
+    <span class="mini p1c" id="ts1">0</span>
+    <span class="clock" id="clock">30</span>
+    <span class="mini p2c" id="ts2">0</span>
+  </div>
+
+  <div class="field bottom" id="fieldBottom">
+    <div class="half-info"><span class="p2c">🟢 Spieler 2</span> · <span id="s2" class="p2c">0</span></div>
+  </div>
+
+  <!-- Start overlay -->
+  <div class="overlay" id="startOv">
+    <div class="card">
+      <h1>🌟 Punkte-Jagd</h1>
+      <p class="sub">Zwei Spieler, ein Gerät!<br>Auf jeder Hälfte springt ein Stern umher.<br><b>Tippe ihn schnell an</b> – schon kommt der nächste.</p>
+      <p class="sub">Wer in <b>30 Sekunden</b> mehr Sterne fängt, gewinnt!</p>
+      <p class="go-label">🔴 oben &nbsp;•&nbsp; 🟢 unten</p>
+      <button class="bigbtn" id="startBtn">Los geht's!</button>
+    </div>
+  </div>
+
+  <!-- End overlay -->
+  <div class="overlay hidden" id="endOv">
+    <div class="card">
+      <div class="result-big" id="resultEmoji">🏆</div>
+      <h1 id="resultTitle">Ergebnis</h1>
+      <div class="scorerow"><span class="p1c">🔴 <span id="es1">0</span></span><span class="p2c">🟢 <span id="es2">0</span></span></div>
+      <p class="sub" id="resultSub"></p>
+      <button class="bigbtn" id="againBtn">🔁 Nochmal</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var STARS = ["⭐","🌟","✨","💫"];
+  var GAME_SECONDS = 30;
+
+  var fieldTop = document.getElementById("fieldTop");
+  var fieldBottom = document.getElementById("fieldBottom");
+  var s1El = document.getElementById("s1"), s2El = document.getElementById("s2");
+  var ts1El = document.getElementById("ts1"), ts2El = document.getElementById("ts2");
+  var clockEl = document.getElementById("clock");
+  var startOv = document.getElementById("startOv");
+  var endOv = document.getElementById("endOv");
+
+  var state = {
+    running: false,
+    score: [0,0],
+    timeLeft: GAME_SECONDS,
+    stars: [null,null],   // current star element per half
+    rafId: 0,
+    endAt: 0,
+    lastTick: -1
+  };
+
+  var fields = [fieldTop, fieldBottom];
+
+  function rand(min,max){ return Math.random()*(max-min)+min; }
+
+  function placeStar(player){
+    var field = fields[player];
+    // remove old
+    if(state.stars[player] && state.stars[player].parentNode){
+      state.stars[player].parentNode.removeChild(state.stars[player]);
+    }
+    var el = document.createElement("div");
+    el.className = "star pop";
+    el.textContent = STARS[Math.floor(Math.random()*STARS.length)];
+    var w = field.clientWidth, h = field.clientHeight;
+    var m = 42; // margin so star stays fully inside
+    var x = rand(m, Math.max(m+1, w-m));
+    var y = rand(m+30, Math.max(m+31, h-m)); // avoid the info label zone a bit
+    el.style.left = x + "px";
+    el.style.top = y + "px";
+
+    function grab(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      if(!state.running) return;
+      hit(player, x, y);
+    }
+    el.addEventListener("touchstart", grab, {passive:false});
+    el.addEventListener("mousedown", grab);
+
+    field.appendChild(el);
+    state.stars[player] = el;
+  }
+
+  function hit(player, x, y){
+    state.score[player]++;
+    updateScores();
+    showFloat(player, x, y);
+    placeStar(player);
+  }
+
+  function showFloat(player, x, y){
+    var field = fields[player];
+    var f = document.createElement("div");
+    f.className = "float";
+    f.textContent = "+1";
+    f.style.left = (x-12) + "px";
+    f.style.top = (y-20) + "px";
+    field.appendChild(f);
+    setTimeout(function(){ if(f.parentNode) f.parentNode.removeChild(f); }, 720);
+  }
+
+  function updateScores(){
+    s1El.textContent = state.score[0];
+    s2El.textContent = state.score[1];
+    ts1El.textContent = state.score[0];
+    ts2El.textContent = state.score[1];
+  }
+
+  function loop(now){
+    if(!state.running) return;
+    var remainMs = state.endAt - now;
+    if(remainMs <= 0){
+      state.timeLeft = 0;
+      clockEl.textContent = "0";
+      endGame();
+      return;
+    }
+    var secs = Math.ceil(remainMs/1000);
+    if(secs !== state.lastTick){
+      state.lastTick = secs;
+      clockEl.textContent = secs;
+      if(secs <= 5){ clockEl.style.color = "#e03131"; }
+    }
+    state.rafId = requestAnimationFrame(loop);
+  }
+
+  function startGame(){
+    state.running = true;
+    state.score = [0,0];
+    state.lastTick = -1;
+    clockEl.style.color = "#2a3d55";
+    updateScores();
+    startOv.classList.add("hidden");
+    endOv.classList.add("hidden");
+    // clear stray stars/floats
+    document.querySelectorAll(".star,.float").forEach(function(n){ n.remove(); });
+    state.stars = [null,null];
+    placeStar(0);
+    placeStar(1);
+    state.endAt = performance.now() + GAME_SECONDS*1000;
+    cancelAnimationFrame(state.rafId);
+    state.rafId = requestAnimationFrame(loop);
+  }
+
+  function endGame(){
+    state.running = false;
+    cancelAnimationFrame(state.rafId);
+    // remove active stars
+    state.stars.forEach(function(el){ if(el && el.parentNode) el.parentNode.removeChild(el); });
+    state.stars = [null,null];
+
+    var a = state.score[0], b = state.score[1];
+    document.getElementById("es1").textContent = a;
+    document.getElementById("es2").textContent = b;
+    var emoji = document.getElementById("resultEmoji");
+    var title = document.getElementById("resultTitle");
+    var sub = document.getElementById("resultSub");
+
+    if(a === b){
+      emoji.textContent = "🤝";
+      title.textContent = "Unentschieden!";
+      sub.textContent = "Gleichstand mit je " + a + " Sternen. Super gespielt, beide!";
+    } else if(a > b){
+      emoji.textContent = "🏆";
+      title.innerHTML = '<span class="p1c">🔴 Spieler 1 gewinnt!</span>';
+      sub.textContent = "Mit " + a + " gegen " + b + " Sternen. Toll gefangen!";
+    } else {
+      emoji.textContent = "🏆";
+      title.innerHTML = '<span class="p2c">🟢 Spieler 2 gewinnt!</span>';
+      sub.textContent = "Mit " + b + " gegen " + a + " Sternen. Toll gefangen!";
+    }
+    endOv.classList.remove("hidden");
+  }
+
+  document.getElementById("startBtn").addEventListener("click", startGame);
+  document.getElementById("againBtn").addEventListener("click", startGame);
+
+  // Safety: pause loop if tab hidden, resume by recomputing endAt offset
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden && state.running){
+      state._pausedRemain = state.endAt - performance.now();
+      cancelAnimationFrame(state.rafId);
+    } else if(!document.hidden && state.running && state._pausedRemain != null){
+      state.endAt = performance.now() + state._pausedRemain;
+      state._pausedRemain = null;
+      state.rafId = requestAnimationFrame(loop);
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Stapel-Turm 🧱</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;overflow:hidden}
+  body{
+    font-family:"Comic Sans MS","Trebuchet MS",-apple-system,system-ui,sans-serif;
+    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+    color:#204060;display:flex;flex-direction:column;align-items:center;
+    height:100dvh;user-select:none;-webkit-user-select:none;touch-action:manipulation;
+  }
+  .top{width:100%;max-width:520px;display:flex;align-items:center;justify-content:space-between;padding:8px 10px;gap:8px}
+  .back{
+    background:#fff;border:none;border-radius:16px;padding:10px 14px;font-size:16px;font-weight:bold;
+    color:#3a7bd5;box-shadow:0 3px 0 #b8d8f0;cursor:pointer;min-height:46px;font-family:inherit;
+  }
+  .back:active{transform:translateY(2px);box-shadow:0 1px 0 #b8d8f0}
+  h1{font-size:22px;color:#2a6bbf;text-shadow:0 2px 0 #fff}
+  .scores{width:100%;max-width:520px;display:flex;gap:8px;padding:0 10px 6px}
+  .sc{flex:1;background:#fff;border-radius:14px;padding:8px 10px;text-align:center;box-shadow:0 3px 0 rgba(0,0,0,.06);transition:transform .15s}
+  .sc .n{font-size:13px;font-weight:bold}
+  .sc .v{font-size:20px;font-weight:bold}
+  .sc.p1{color:#e8622c} .sc.p2{color:#2e9e6b}
+  .sc.active{transform:scale(1.06);box-shadow:0 4px 0 rgba(0,0,0,.12);outline:3px solid currentColor}
+  .stage{width:100%;max-width:520px;flex:1;position:relative;padding:0 10px 10px}
+  canvas{display:block;width:100%;height:100%;background:linear-gradient(180deg,#dff2ff 0%,#c3e7ff 100%);border-radius:18px;box-shadow:inset 0 0 0 4px #fff}
+  .hint{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:15px;font-weight:bold;color:#2a6bbf;pointer-events:none;text-shadow:0 1px 0 #fff}
+  .overlay{
+    position:absolute;inset:0;background:rgba(255,255,255,.82);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;border-radius:18px;text-align:center;padding:20px;
+  }
+  .overlay.hidden{display:none}
+  .overlay h2{font-size:28px;color:#2a6bbf}
+  .overlay p{font-size:17px;line-height:1.4}
+  .btn{
+    background:linear-gradient(180deg,#ffcf3f,#ffb020);border:none;border-radius:20px;padding:16px 26px;
+    font-size:20px;font-weight:bold;color:#7a3d00;box-shadow:0 5px 0 #d98a00;cursor:pointer;font-family:inherit;min-height:46px;
+  }
+  .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #d98a00}
+  .big{font-size:44px}
+</style>
+</head>
+<body>
+  <div class="top">
+    <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+    <h1>🧱 Stapel-Turm</h1>
+    <div style="width:70px"></div>
+  </div>
+  <div class="scores">
+    <div class="sc p1" id="sc1"><div class="n">🔴 Spieler 1</div><div class="v" id="v1">0</div></div>
+    <div class="sc p2" id="sc2"><div class="n">🔵 Spieler 2</div><div class="v" id="v2">0</div></div>
+  </div>
+  <div class="stage">
+    <canvas id="cv"></canvas>
+    <div class="hint" id="hint">Tippe zum Platzieren!</div>
+    <div class="overlay hidden" id="ov">
+      <div class="big" id="ovEmoji">🏆</div>
+      <h2 id="ovTitle">Runde</h2>
+      <p id="ovText"></p>
+      <button class="btn" id="ovBtn">Weiter</button>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+  var cv=document.getElementById("cv"), ctx=cv.getContext("2d");
+  var hint=document.getElementById("hint");
+  var ov=document.getElementById("ov"), ovEmoji=document.getElementById("ovEmoji"),
+      ovTitle=document.getElementById("ovTitle"), ovText=document.getElementById("ovText"), ovBtn=document.getElementById("ovBtn");
+  var v1=document.getElementById("v1"), v2=document.getElementById("v2");
+  var sc1=document.getElementById("sc1"), sc2=document.getElementById("sc2");
+
+  var W=0,H=0,DPR=1;
+  function resize(){
+    var r=cv.getBoundingClientRect();
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=Math.max(200,r.width); H=Math.max(300,r.height);
+    cv.width=W*DPR; cv.height=H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  window.addEventListener("resize",resize);
+
+  // Farben je Spieler
+  var COLORS=[["#ff8a5b","#e8622c"],["#5bc7ff","#2e9e6b"]];
+  var GAMEROUNDS=6; // 3 Blöcke pro Spieler
+
+  var state; // 'p1build','p2build','roundover','gameover'
+  var current=1;      // aktiver Spieler
+  var placedRounds=0; // gesamte platzierte Blöcke (beide)
+  var towers, blockH, baseW;
+  var moving, speed, dir, curX, curW, curY;
+  var falling=[]; // fallende überstehende teile
+  var flash=0;
+  var raf=null, lastT=0;
+
+  function newGame(){
+    towers={1:[],2:[]};
+    blockH=Math.max(22,Math.min(34,H*0.06));
+    baseW=Math.min(W*0.42,150);
+    placedRounds=0;
+    current=1;
+    v1.textContent="0"; v2.textContent="0";
+    startTurn();
+    ov.classList.add("hidden");
+    loop();
+  }
+
+  function towerWidthOfNext(pl){
+    var t=towers[pl];
+    if(t.length===0) return baseW;
+    return t[t.length-1].w;
+  }
+  function towerTopY(pl){
+    return H - 30 - towers[pl].length*blockH;
+  }
+
+  function startTurn(){
+    var pl=current;
+    curW=towerWidthOfNext(pl);
+    curY=towerTopY(pl)-blockH;
+    moving=true;
+    speed=2.6 + placedRounds*0.28; // wird schneller -> schwieriger
+    dir=1;
+    curX=10;
+    updateActive();
+    hint.textContent = (pl===1?"🔴 Spieler 1":"🔵 Spieler 2")+": Tippe zum Platzieren!";
+  }
+
+  function updateActive(){
+    sc1.classList.toggle("active",current===1);
+    sc2.classList.toggle("active",current===2);
+  }
+
+  function place(){
+    if(!moving||state==="over") return;
+    var pl=current, t=towers[pl];
+    var prevX, prevW;
+    if(t.length===0){ prevX=(W-baseW)/2; prevW=baseW; }
+    else { var top=t[t.length-1]; prevX=top.x; prevW=top.w; }
+
+    // Überlappung berechnen
+    var left=Math.max(curX, prevX);
+    var right=Math.min(curX+curW, prevX+prevW);
+    var overlap=right-left;
+
+    if(t.length===0){
+      // erster Block: immer voll (Basis), an Position wo getippt
+      t.push({x:curX,w:curW,c:pl});
+    } else if(overlap<=4){
+      // komplett daneben -> ganzer Block fällt, Zug zählt aber (kein Zuwachs)
+      falling.push({x:curX,w:curW,y:curY,vy:0,vx:(curX<prevX?-2:2),c:pl,rot:0});
+      moving=false;
+      afterPlace(pl,true);
+      return;
+    } else {
+      // überstehende Teile abschneiden
+      if(curX<left){ falling.push({x:curX,w:left-curX,y:curY,vy:0,vx:-2,c:pl,rot:0}); }
+      if(curX+curW>right){ falling.push({x:right,w:(curX+curW)-right,y:curY,vy:0,vx:2,c:pl,rot:0}); }
+      t.push({x:left,w:overlap,c:pl});
+    }
+    flash=1;
+    moving=false;
+    afterPlace(pl,false);
+  }
+
+  function afterPlace(pl,missed){
+    v1.textContent=towers[1].length;
+    v2.textContent=towers[2].length;
+    placedRounds++;
+    // kurze Pause dann nächster
+    setTimeout(function(){
+      if(placedRounds>=GAMEROUNDS){
+        endGame();
+      } else {
+        current = current===1?2:1;
+        startTurn();
+      }
+    }, 520);
+  }
+
+  function endGame(){
+    state="over"; moving=false;
+    var a=towers[1].length, b=towers[2].length;
+    var win;
+    if(a>b) win=1; else if(b>a) win=2; else win=0;
+    setTimeout(function(){
+      if(win===0){
+        ovEmoji.textContent="🤝";
+        ovTitle.textContent="Unentschieden!";
+        ovText.textContent="Beide Türme "+a+" Blöcke hoch. Stark gebaut!";
+      } else {
+        ovEmoji.textContent="🏆";
+        ovTitle.textContent=(win===1?"🔴 Spieler 1":"🔵 Spieler 2")+" gewinnt!";
+        ovText.textContent="🔴 "+a+" Blöcke  vs.  🔵 "+b+" Blöcke";
+      }
+      ovBtn.textContent="🔁 Nochmal";
+      ov.classList.remove("hidden");
+    }, 700);
+  }
+
+  // ------ Render ------
+  function drawBlock(x,y,w,h,pl,i){
+    var c=COLORS[pl-1];
+    var g=ctx.createLinearGradient(x,y,x,y+h);
+    g.addColorStop(0,c[0]); g.addColorStop(1,c[1]);
+    ctx.fillStyle=g;
+    roundRect(x,y,w,h-3,6); ctx.fill();
+    // fugen-punkte
+    ctx.fillStyle="rgba(255,255,255,.35)";
+    roundRect(x+4,y+3,Math.max(6,w-8),4,2); ctx.fill();
+  }
+  function roundRect(x,y,w,h,r){
+    r=Math.min(r,w/2,h/2);
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+
+  function render(){
+    ctx.clearRect(0,0,W,H);
+    // Boden
+    ctx.fillStyle="#8fd18f";
+    roundRect(0,H-24,W,24,0); ctx.fill();
+    ctx.fillStyle="rgba(255,255,255,.25)";
+    ctx.fillRect(0,H-24,W,4);
+
+    // Mittellinie (Trennung der beiden Türme)
+    ctx.strokeStyle="rgba(90,140,190,.25)";
+    ctx.setLineDash([6,6]); ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(W/2,20); ctx.lineTo(W/2,H-24); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Labels
+    ctx.textAlign="center"; ctx.font="bold 13px sans-serif";
+    ctx.fillStyle="rgba(232,98,44,.55)"; ctx.fillText("🔴",W*0.25,H-8);
+    ctx.fillStyle="rgba(46,158,107,.55)"; ctx.fillText("🔵",W*0.75,H-8);
+
+    // Türme
+    drawTower(1); drawTower(2);
+
+    // Bewegender Block
+    if(moving && state!=="over"){
+      ctx.globalAlpha=1;
+      drawBlock(curX,curY,curW,blockH,current,0);
+      // pfeil richtung
+    }
+
+    // fallende Teile
+    for(var i=0;i<falling.length;i++){
+      var f=falling[i];
+      ctx.save();
+      ctx.translate(f.x+f.w/2,f.y+blockH/2);
+      ctx.rotate(f.rot);
+      drawBlock(-f.w/2,-blockH/2,f.w,blockH,f.c,0);
+      ctx.restore();
+    }
+
+    if(flash>0){
+      ctx.fillStyle="rgba(255,255,255,"+(flash*0.4)+")";
+      ctx.fillRect(0,0,W,H);
+    }
+  }
+  function drawTower(pl){
+    var t=towers[pl];
+    for(var i=0;i<t.length;i++){
+      var b=t[i];
+      var y=H-30-(i+1)*blockH;
+      drawBlock(b.x,y,b.w,blockH,pl,i);
+    }
+  }
+
+  function update(dt){
+    if(moving && state!=="over"){
+      curX+=speed*dir*(dt/16);
+      if(curX<8){ curX=8; dir=1; }
+      if(curX+curW>W-8){ curX=W-8-curW; dir=-1; }
+    }
+    for(var i=falling.length-1;i>=0;i--){
+      var f=falling[i];
+      f.vy+=0.6*(dt/16);
+      f.y+=f.vy*(dt/16);
+      f.x+=f.vx*(dt/16);
+      f.rot+=0.05*f.vx*(dt/16);
+      if(f.y>H+80) falling.splice(i,1);
+    }
+    if(flash>0){ flash-=0.06*(dt/16); if(flash<0)flash=0; }
+  }
+
+  function loop(t){
+    if(!lastT) lastT=t||0;
+    var now=t||0;
+    var dt=Math.min(48, now-lastT||16);
+    lastT=now;
+    update(dt);
+    render();
+    raf=requestAnimationFrame(loop);
+  }
+
+  // ------ Eingabe ------
+  function tap(e){
+    if(e && e.cancelable) e.preventDefault();
+    if(state==="over") return;
+    place();
+  }
+  cv.addEventListener("touchstart",tap,{passive:false});
+  cv.addEventListener("mousedown",function(e){ if(!('ontouchstart'in window)) tap(e); });
+
+  ovBtn.addEventListener("click",function(){
+    lastT=0;
+    state=null;
+    newGame();
+  });
+
+  // Start
+  resize();
+  state=null;
+  newGame();
+})();
+</script>
+</body>
+</html>

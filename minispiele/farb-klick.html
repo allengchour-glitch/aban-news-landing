@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Farb-Klick</title>
+<style>
+  :root{
+    --rot:#ff5a6e; --blau:#3e8bff; --gruen:#3fcf7a; --gelb:#ffcc33;
+    --lila:#b46bff; --orange:#ff9a3d;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+    background:linear-gradient(180deg,#bce6ff 0%,#eaf7ff 100%);
+    color:#243b55; overflow:hidden; user-select:none; touch-action:manipulation;
+  }
+  #wrap{height:100%;display:flex;flex-direction:column}
+  .zurueck{
+    position:absolute;top:10px;left:10px;z-index:20;
+    background:#fff;border:none;border-radius:14px;padding:10px 16px;
+    font-size:16px;font-weight:bold;color:#3e8bff;cursor:pointer;
+    box-shadow:0 3px 0 #cfe3f5;min-height:46px;
+  }
+  .zurueck:active{transform:translateY(2px);box-shadow:0 1px 0 #cfe3f5}
+
+  /* Spieler-Hälften */
+  .haelfte{
+    flex:1;position:relative;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;overflow:hidden;
+  }
+  .haelfte.oben{transform:rotate(180deg);background:rgba(255,255,255,.28)}
+  .haelfte.unten{background:rgba(255,255,255,.5)}
+  .rand{position:absolute;inset:8px;border-radius:22px;border:3px dashed transparent;pointer-events:none;transition:border-color .15s}
+  .haelfte.aktiv .rand{border-color:#3e8bff}
+
+  .kopf{display:flex;align-items:center;gap:10px;margin-bottom:10px;z-index:2}
+  .name{font-size:19px;font-weight:bold}
+  .punkte{
+    background:#fff;border-radius:12px;padding:4px 12px;font-size:20px;font-weight:bold;
+    box-shadow:0 2px 0 #d5e6f5;min-width:44px;text-align:center;
+  }
+
+  .anweisung{
+    font-size:14px;font-weight:bold;opacity:.75;margin-bottom:4px;letter-spacing:1px;z-index:2;
+  }
+  .zielwort{
+    font-size:clamp(34px,11vw,64px);font-weight:900;margin-bottom:12px;z-index:2;
+    text-shadow:0 2px 6px rgba(0,0,0,.12);
+  }
+
+  .knoepfe{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+    width:92%;max-width:460px;z-index:2;
+  }
+  .fbtn{
+    aspect-ratio:1.5/1;border:none;border-radius:16px;cursor:pointer;
+    box-shadow:0 4px 0 rgba(0,0,0,.18);min-height:46px;
+    transition:transform .06s;
+  }
+  .fbtn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+
+  .info{font-size:13px;opacity:.7;margin-top:10px;height:16px;z-index:2}
+
+  /* Mittelstreifen / Runde */
+  .mitte{
+    height:38px;display:flex;align-items:center;justify-content:center;gap:14px;
+    background:#fff;box-shadow:0 0 12px rgba(0,0,0,.12);z-index:10;
+  }
+  .mitte b{font-size:15px;color:#3e8bff}
+  .dots{display:flex;gap:5px}
+  .dot{width:11px;height:11px;border-radius:50%;background:#d5e6f5}
+  .dot.o{background:var(--orange)}
+  .dot.u{background:var(--gruen)}
+
+  /* Overlays */
+  .overlay{
+    position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:24px;
+    background:linear-gradient(180deg,rgba(188,230,255,.96),rgba(234,247,255,.98));
+  }
+  .overlay.hide{display:none}
+  .card{
+    background:#fff;border-radius:26px;padding:26px 22px;max-width:360px;width:100%;
+    box-shadow:0 10px 30px rgba(62,139,255,.25);
+  }
+  .card h1{font-size:30px;margin-bottom:6px;color:#3e8bff}
+  .card p{font-size:16px;line-height:1.5;margin-bottom:16px;color:#41597a}
+  .big{
+    background:#3e8bff;color:#fff;border:none;border-radius:16px;
+    padding:14px 26px;font-size:20px;font-weight:bold;cursor:pointer;
+    box-shadow:0 4px 0 #2f6fd0;min-height:46px;
+  }
+  .big:active{transform:translateY(3px);box-shadow:0 1px 0 #2f6fd0}
+  .sieger{font-size:56px;margin-bottom:6px}
+  .flash{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0}
+</style>
+</head>
+<body>
+<button class="zurueck" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<div id="wrap">
+  <!-- Spieler 2 (oben, gedreht) -->
+  <div class="haelfte oben" id="hOben">
+    <div class="rand"></div>
+    <div class="flash" id="flOben"></div>
+    <div class="kopf"><span class="name">🟠 Spieler 2</span><span class="punkte" id="pOben">0</span></div>
+    <div class="anweisung">TIPPE DIE FARBE</div>
+    <div class="zielwort" id="zwOben">?</div>
+    <div class="knoepfe" id="knOben"></div>
+    <div class="info" id="infoOben"></div>
+  </div>
+
+  <div class="mitte">
+    <div class="dots" id="dotsOben"></div>
+    <b id="rundeTxt">Runde 1</b>
+    <div class="dots" id="dotsUnten"></div>
+  </div>
+
+  <!-- Spieler 1 (unten) -->
+  <div class="haelfte unten" id="hUnten">
+    <div class="rand"></div>
+    <div class="flash" id="flUnten"></div>
+    <div class="kopf"><span class="name">🟢 Spieler 1</span><span class="punkte" id="pUnten">0</span></div>
+    <div class="anweisung">TIPPE DIE FARBE</div>
+    <div class="zielwort" id="zwUnten">?</div>
+    <div class="knoepfe" id="knUnten"></div>
+    <div class="info" id="infoUnten"></div>
+  </div>
+</div>
+
+<!-- Start -->
+<div class="overlay" id="ovStart">
+  <div class="card">
+    <div class="sieger">🎨</div>
+    <h1>Farb-Klick</h1>
+    <p>Lest das <b>Wort</b> oben – nicht die Farbe des Wortes!<br>
+    Wer als Erste·r den <b>richtigen Farb-Knopf</b> tippt, gewinnt die Runde.<br>
+    Achtung: Falsch tippen sperrt kurz. <b>Best of 7</b>!</p>
+    <button class="big" id="btnStart">Los geht's!</button>
+  </div>
+</div>
+
+<!-- Ende -->
+<div class="overlay hide" id="ovEnde">
+  <div class="card">
+    <div class="sieger" id="endeEmoji">🏆</div>
+    <h1 id="endeTitel">Sieg!</h1>
+    <p id="endeText"></p>
+    <button class="big" id="btnNochmal">🔁 Nochmal</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var FARBEN=[
+    {key:"rot",   name:"ROT",   css:"#ff5a6e"},
+    {key:"blau",  name:"BLAU",  css:"#3e8bff"},
+    {key:"gruen", name:"GRÜN",  css:"#3fcf7a"},
+    {key:"gelb",  name:"GELB",  css:"#ffcc33"},
+    {key:"lila",  name:"LILA",  css:"#b46bff"},
+    {key:"orange",name:"ORANGE",css:"#ff9a3d"}
+  ];
+  var ZIEL=4; // best of 7 -> erste·r mit 4
+  var state={p1:0,p2:0,runde:0,ziel:null,offen:false,lockU:false,lockO:false,rafId:0};
+
+  var $=function(id){return document.getElementById(id);};
+  var pUnten=$("pUnten"),pOben=$("pOben");
+  var zwUnten=$("zwUnten"),zwOben=$("zwOben");
+  var infoUnten=$("infoUnten"),infoOben=$("infoOben");
+  var flUnten=$("flUnten"),flOben=$("flOben");
+
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function pick(n){return Math.floor(Math.random()*n);}
+
+  // 6 Buttons in beide Panels bauen
+  function baueKnoepfe(){
+    ["knUnten","knOben"].forEach(function(cid){
+      var c=$(cid); c.innerHTML="";
+      FARBEN.forEach(function(f){
+        var b=document.createElement("button");
+        b.className="fbtn"; b.style.background=f.css;
+        b.dataset.key=f.key;
+        b.setAttribute("aria-label",f.name);
+        var spieler=(cid==="knUnten")?1:2;
+        var handler=function(ev){ev.preventDefault();tippe(spieler,f.key);};
+        b.addEventListener("click",handler);
+        b.addEventListener("touchstart",handler,{passive:false});
+        c.appendChild(b);
+      });
+    });
+  }
+
+  function neueRunde(){
+    state.runde++;
+    state.lockU=false; state.lockO=false;
+    $("rundeTxt").textContent="Runde "+state.runde;
+    // Zielfarbe wählen; Wortfarbe evtl. anders (Stroop)
+    var zielIdx=pick(FARBEN.length);
+    var ziel=FARBEN[zielIdx];
+    var tinteIdx=zielIdx;
+    if(Math.random()<0.7){ // 70% Stroop-Konflikt
+      do{ tinteIdx=pick(FARBEN.length); }while(tinteIdx===zielIdx);
+    }
+    var tinte=FARBEN[tinteIdx];
+    state.ziel=ziel.key;
+    [zwUnten,zwOben].forEach(function(el){
+      el.textContent=ziel.name;
+      el.style.color=tinte.css;
+    });
+    infoUnten.textContent=""; infoOben.textContent="";
+    // kurze "Bereit?"-Verzögerung
+    state.offen=false;
+    zwUnten.style.opacity="0"; zwOben.style.opacity="0";
+    setTimeout(function(){
+      zwUnten.style.opacity="1"; zwOben.style.opacity="1";
+      state.offen=true;
+    }, 400+Math.random()*500);
+  }
+
+  function flash(el,col){
+    el.style.background=col;
+    el.style.transition="none"; el.style.opacity="0.55";
+    requestAnimationFrame(function(){
+      el.style.transition="opacity .4s"; el.style.opacity="0";
+    });
+  }
+
+  function tippe(spieler,key){
+    if(spieler===1 && state.lockU) return;
+    if(spieler===2 && state.lockO) return;
+    if(!state.offen){
+      // zu früh
+      var infoF=(spieler===1)?infoUnten:infoOben;
+      infoF.textContent="⏳ Warte auf das Wort!";
+      return;
+    }
+    if(key===state.ziel){
+      // Punkt
+      if(spieler===1){ state.p1++; flash(flUnten,"#3fcf7a"); }
+      else { state.p2++; flash(flOben,"#ff9a3d"); }
+      state.offen=false;
+      renderPunkte();
+      var infoT=(spieler===1)?infoUnten:infoOben;
+      infoT.textContent="✅ Punkt!";
+      if(state.p1>=ZIEL || state.p2>=ZIEL){
+        setTimeout(ende,700);
+      } else {
+        setTimeout(neueRunde,850);
+      }
+    } else {
+      // falsch -> kurze Sperre
+      var infoW=(spieler===1)?infoUnten:infoOben;
+      infoW.textContent="❌ Daneben! (kurz gesperrt)";
+      var el=(spieler===1)?flUnten:flOben;
+      flash(el,"#ff5a6e");
+      if(spieler===1){ state.lockU=true; setTimeout(function(){state.lockU=false;infoUnten.textContent="";},900); }
+      else { state.lockO=true; setTimeout(function(){state.lockO=false;infoOben.textContent="";},900); }
+    }
+  }
+
+  function renderPunkte(){
+    pUnten.textContent=state.p1; pOben.textContent=state.p2;
+    var du=$("dotsUnten"),doo=$("dotsOben");
+    du.innerHTML=""; doo.innerHTML="";
+    for(var i=0;i<ZIEL;i++){
+      var d1=document.createElement("div"); d1.className="dot"+(i<state.p1?" u":""); du.appendChild(d1);
+      var d2=document.createElement("div"); d2.className="dot"+(i<state.p2?" o":""); doo.appendChild(d2);
+    }
+  }
+
+  function ende(){
+    var ov=$("ovEnde");
+    var g,t,txt;
+    if(state.p1>state.p2){ g="🟢 Spieler 1 gewinnt!"; $("endeEmoji").textContent="🏆"; }
+    else if(state.p2>state.p1){ g="🟠 Spieler 2 gewinnt!"; $("endeEmoji").textContent="🏆"; }
+    else { g="Unentschieden!"; $("endeEmoji").textContent="🤝"; }
+    $("endeTitel").textContent=g;
+    $("endeText").textContent="Endstand: Spieler 1  "+state.p1+" : "+state.p2+"  Spieler 2";
+    ov.classList.remove("hide");
+  }
+
+  function start(){
+    state.p1=0; state.p2=0; state.runde=0; state.offen=false;
+    renderPunkte();
+    $("ovStart").classList.add("hide");
+    $("ovEnde").classList.add("hide");
+    neueRunde();
+  }
+
+  baueKnoepfe();
+  renderPunkte();
+  $("btnStart").addEventListener("click",start);
+  $("btnNochmal").addEventListener("click",start);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Schlangen-Duell</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    background: linear-gradient(180deg, #bce6ff 0%, #eaf7ff 100%);
+    overflow: hidden; user-select: none; -webkit-user-select: none;
+    touch-action: none;
+  }
+  #app { position: fixed; inset: 0; display: flex; flex-direction: column; }
+  .back {
+    position: absolute; top: 10px; left: 10px; z-index: 30;
+    background: #fff; border: none; border-radius: 14px;
+    padding: 10px 16px; font-size: 16px; font-weight: bold; color: #2b7fc4;
+    box-shadow: 0 3px 0 #9cc9e8; cursor: pointer; min-height: 46px;
+  }
+  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #9cc9e8; }
+
+  /* Scoreboard */
+  #hud { display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 12px 4px; gap: 8px; }
+  .score { flex: 1; text-align: center; border-radius: 16px; padding: 6px 4px;
+    font-weight: bold; color: #fff; box-shadow: 0 3px 0 rgba(0,0,0,.12); }
+  .score .name { font-size: 14px; opacity: .95; }
+  .score .val { font-size: 24px; line-height: 1; }
+  .s-blue { background: linear-gradient(180deg,#4aa3ff,#2b7fc4); }
+  .s-pink { background: linear-gradient(180deg,#ff87c2,#e0559a); }
+  #timer { font-size: 22px; font-weight: bold; color: #3a6b8c;
+    background: #fff; border-radius: 16px; padding: 6px 12px; box-shadow: 0 3px 0 rgba(0,0,0,.1); }
+
+  #board { flex: 1; position: relative; margin: 4px 8px 8px; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%;
+    background: #f4fbff; border-radius: 18px; box-shadow: inset 0 0 0 4px #d3ecff; display: block; }
+
+  /* Overlays */
+  .overlay { position: absolute; inset: 0; z-index: 20;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 20px; gap: 14px; }
+  .card { background: rgba(255,255,255,.94); border-radius: 24px; padding: 22px 20px;
+    box-shadow: 0 8px 24px rgba(40,90,140,.25); max-width: 340px; width: 92%; }
+  .card h1 { margin: 0 0 6px; font-size: 30px; color: #2b7fc4; }
+  .card h2 { margin: 0 0 10px; font-size: 24px; color: #e0559a; }
+  .card p { margin: 6px 0; font-size: 16px; color: #45657c; line-height: 1.35; }
+  .big { font-size: 46px; margin: 4px 0; }
+  .btn { background: linear-gradient(180deg,#ffd447,#f7b500);
+    border: none; border-radius: 18px; padding: 14px 26px; font-size: 20px;
+    font-weight: bold; color: #6b4a00; box-shadow: 0 4px 0 #d69b00; cursor: pointer;
+    min-height: 46px; margin-top: 8px; }
+  .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #d69b00; }
+  .hint { font-size: 14px; color: #6d8ba1; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div id="app">
+  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+  <div id="hud">
+    <div class="score s-blue"><div class="name">🔵 Blau</div><div class="val" id="scoreBlue">0</div></div>
+    <div id="timer">60</div>
+    <div class="score s-pink"><div class="name">🩷 Pink</div><div class="val" id="scorePink">0</div></div>
+  </div>
+
+  <div id="board">
+    <canvas id="cv"></canvas>
+
+    <div class="overlay" id="startScreen">
+      <div class="card">
+        <h1>🐍 Schlangen-Duell</h1>
+        <p><b>2 Spieler</b> auf einem Gerät!</p>
+        <p>🔵 Blau wischt auf der <b>oberen</b> Hälfte,<br>🩷 Pink auf der <b>unteren</b> Hälfte.</p>
+        <p>Sammelt 🍎 Äpfel und weicht Wänden & der anderen Schlange aus.</p>
+        <p class="hint">Wer zuerst crasht, verliert sofort.<br>Sonst gewinnt nach 60 s, wer mehr Äpfel hat.</p>
+        <button class="btn" id="startBtn">Los geht's!</button>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="endScreen">
+      <div class="card">
+        <div class="big" id="endEmoji">🏆</div>
+        <h1 id="endTitle">Ergebnis</h1>
+        <p id="endText"></p>
+        <button class="btn" id="againBtn">🔁 Nochmal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var cv = document.getElementById('cv');
+  var ctx = cv.getContext('2d');
+  var board = document.getElementById('board');
+
+  // Logical grid
+  var COLS = 15, ROWS = 21; // portrait grid
+  var cell = 20;            // computed at resize
+  var offX = 0, offY = 0;
+
+  function resize(){
+    var w = board.clientWidth, h = board.clientHeight;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(w * dpr);
+    cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cell = Math.floor(Math.min(w / COLS, h / ROWS));
+    offX = Math.floor((w - cell*COLS)/2);
+    offY = Math.floor((h - cell*ROWS)/2);
+    draw();
+  }
+  window.addEventListener('resize', resize);
+
+  // Game state
+  var DIRS = {up:{x:0,y:-1}, down:{x:0,y:1}, left:{x:-1,y:0}, right:{x:1,y:0}};
+  var snakes, apples, running, gameStartT, moveAcc, MOVE_MS, timeLeft, timerId, lastT, rafId;
+
+  function makeSnake(color, startX, startY, dir){
+    return {
+      color: color,
+      body: [{x:startX,y:startY},{x:startX,y:startY},{x:startX,y:startY}],
+      dir: DIRS[dir], nextDir: DIRS[dir],
+      score: 0, alive: true, grow: 0
+    };
+  }
+
+  function reset(){
+    snakes = {
+      blue: makeSnake('blue', 7, 4, 'down'),
+      pink: makeSnake('pink', 7, ROWS-5, 'up')
+    };
+    apples = [];
+    spawnApple(); spawnApple(); spawnApple();
+    running = true;
+    MOVE_MS = 200; moveAcc = 0;
+    timeLeft = 60;
+    updateHud();
+    document.getElementById('timer').textContent = timeLeft;
+    if(timerId) clearInterval(timerId);
+    timerId = setInterval(tick, 1000);
+    lastT = performance.now();
+    if(rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function occupied(x,y){
+    var s, i;
+    for(var k in snakes){ s = snakes[k];
+      for(i=0;i<s.body.length;i++) if(s.body[i].x===x && s.body[i].y===y) return true;
+    }
+    for(i=0;i<apples.length;i++) if(apples[i].x===x && apples[i].y===y) return true;
+    return false;
+  }
+  function spawnApple(){
+    var tries=0, x, y;
+    do { x=Math.floor(Math.random()*COLS); y=Math.floor(Math.random()*ROWS); tries++; }
+    while(occupied(x,y) && tries<200);
+    apples.push({x:x,y:y});
+  }
+
+  function tick(){
+    if(!running) return;
+    timeLeft--;
+    if(timeLeft<=0){ timeLeft=0; document.getElementById('timer').textContent=0; endGame(null,'time'); return; }
+    document.getElementById('timer').textContent = timeLeft;
+  }
+
+  function loop(now){
+    if(!running){ return; }
+    var dt = now - lastT; lastT = now;
+    if(dt>200) dt=200;
+    moveAcc += dt;
+    while(moveAcc >= MOVE_MS){
+      moveAcc -= MOVE_MS;
+      step();
+      if(!running) break;
+    }
+    draw();
+    if(running) rafId = requestAnimationFrame(loop);
+  }
+
+  function opposite(a,b){ return a.x === -b.x && a.y === -b.y; }
+
+  function step(){
+    // apply queued directions
+    for(var k in snakes){
+      var s = snakes[k];
+      if(!opposite(s.nextDir, s.dir)) s.dir = s.nextDir;
+    }
+    // compute new heads
+    var newHeads = {};
+    for(var k2 in snakes){
+      var sn = snakes[k2];
+      var h = sn.body[0];
+      newHeads[k2] = {x:h.x+sn.dir.x, y:h.y+sn.dir.y};
+    }
+    // determine crashes
+    var crashed = {};
+    for(var kk in snakes){
+      var s2 = snakes[kk];
+      var nh = newHeads[kk];
+      // wall
+      if(nh.x<0||nh.x>=COLS||nh.y<0||nh.y>=ROWS){ crashed[kk]=true; continue; }
+      // self / other bodies (bodies not including their own moving tail complexity -> simple: check all current bodies)
+      for(var other in snakes){
+        var ob = snakes[other].body;
+        var limit = ob.length;
+        for(var i=0;i<limit;i++){
+          // ignore the very tail cell that will move away (unless growing)
+          if(i===ob.length-1 && snakes[other].grow<=0){ continue; }
+          if(ob[i].x===nh.x && ob[i].y===nh.y){ crashed[kk]=true; break; }
+        }
+        if(crashed[kk]) break;
+      }
+    }
+    // head-on collision (same target cell)
+    var bh = newHeads.blue, ph = newHeads.pink;
+    if(bh.x===ph.x && bh.y===ph.y){ crashed.blue=true; crashed.pink=true; }
+
+    if(crashed.blue || crashed.pink){
+      var loser = crashed.blue && crashed.pink ? 'both' : (crashed.blue ? 'blue' : 'pink');
+      endGame(loser,'crash');
+      return;
+    }
+
+    // move each snake
+    for(var m in snakes){
+      var s3 = snakes[m];
+      var head = newHeads[m];
+      s3.body.unshift(head);
+      // apple?
+      var ate=-1;
+      for(var a=0;a<apples.length;a++){ if(apples[a].x===head.x && apples[a].y===head.y){ ate=a; break; } }
+      if(ate>=0){
+        apples.splice(ate,1);
+        s3.score++;
+        s3.grow += 2;
+        spawnApple();
+      }
+      if(s3.grow>0){ s3.grow--; } else { s3.body.pop(); }
+    }
+    updateHud();
+  }
+
+  function updateHud(){
+    document.getElementById('scoreBlue').textContent = snakes.blue.score;
+    document.getElementById('scorePink').textContent = snakes.pink.score;
+  }
+
+  // ---- Drawing ----
+  function rr(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+  }
+  function px(gx){ return offX + gx*cell; }
+  function py(gy){ return offY + gy*cell; }
+
+  var COLMAP = {
+    blue: {head:'#2b7fc4', body:'#4aa3ff'},
+    pink: {head:'#e0559a', body:'#ff87c2'}
+  };
+
+  function draw(){
+    var w = board.clientWidth, h = board.clientHeight;
+    ctx.clearRect(0,0,w,h);
+    // playfield background grid subtle
+    ctx.fillStyle = '#f4fbff';
+    rr(offX, offY, cell*COLS, cell*ROWS, 14); ctx.fill();
+    // center divider line
+    ctx.strokeStyle = 'rgba(120,180,220,.35)';
+    ctx.setLineDash([8,8]); ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(offX+6, offY + cell*ROWS/2);
+    ctx.lineTo(offX+cell*COLS-6, offY + cell*ROWS/2);
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // apples
+    if(apples) for(var i=0;i<apples.length;i++){
+      var a=apples[i];
+      ctx.font = Math.floor(cell*0.95)+'px serif';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText('🍎', px(a.x)+cell/2, py(a.y)+cell/2+1);
+    }
+
+    // snakes
+    if(snakes) for(var k in snakes){ drawSnake(snakes[k]); }
+  }
+
+  function drawSnake(s){
+    var c = COLMAP[s.color];
+    var pad = Math.max(1, Math.floor(cell*0.08));
+    for(var i=s.body.length-1;i>=0;i--){
+      var seg = s.body[i];
+      ctx.fillStyle = (i===0)? c.head : c.body;
+      rr(px(seg.x)+pad, py(seg.y)+pad, cell-2*pad, cell-2*pad, Math.floor(cell*0.32));
+      ctx.fill();
+    }
+    // eyes on head
+    var head = s.body[0];
+    var hx = px(head.x)+cell/2, hy = py(head.y)+cell/2;
+    var r = Math.max(2, cell*0.10);
+    var dx = s.dir.x, dy = s.dir.y;
+    var ox = dy!==0 ? cell*0.18 : 0;
+    var oy = dx!==0 ? cell*0.18 : 0;
+    var fx = dx*cell*0.14, fy = dy*cell*0.14;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(hx+fx-ox, hy+fy-oy, r, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(hx+fx+ox, hy+fy+oy, r, 0, 7); ctx.fill();
+    ctx.fillStyle = '#223';
+    ctx.beginPath(); ctx.arc(hx+fx-ox+dx*1.5, hy+fy-oy+dy*1.5, r*0.5, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(hx+fx+ox+dx*1.5, hy+fy+oy+dy*1.5, r*0.5, 0, 7); ctx.fill();
+  }
+
+  // ---- Input: swipe per half ----
+  function setDir(who, dir){
+    var s = snakes && snakes[who];
+    if(!s || !running) return;
+    if(!opposite(dir, s.dir)) s.nextDir = dir;
+  }
+  function dirFromDelta(dx,dy){
+    if(Math.abs(dx) > Math.abs(dy)) return dx>0?DIRS.right:DIRS.left;
+    return dy>0?DIRS.down:DIRS.up;
+  }
+
+  var touches = {}; // id -> {x0,y0,who}
+  function whoFor(clientY){
+    var rect = cv.getBoundingClientRect();
+    return (clientY - rect.top) < rect.height/2 ? 'blue' : 'pink';
+  }
+  var THRESH = 18;
+
+  function onStart(id, x, y){
+    touches[id] = {x0:x, y0:y, lx:x, ly:y, who: whoFor(y)};
+  }
+  function onMove(id, x, y){
+    var t = touches[id]; if(!t) return;
+    var dx = x - t.lx, dy = y - t.ly;
+    if(Math.abs(dx)>=THRESH || Math.abs(dy)>=THRESH){
+      setDir(t.who, dirFromDelta(dx,dy));
+      t.lx = x; t.ly = y;
+    }
+  }
+  function onEnd(id){ delete touches[id]; }
+
+  cv.addEventListener('touchstart', function(e){
+    for(var i=0;i<e.changedTouches.length;i++){ var t=e.changedTouches[i]; onStart(t.identifier, t.clientX, t.clientY); }
+    e.preventDefault();
+  }, {passive:false});
+  cv.addEventListener('touchmove', function(e){
+    for(var i=0;i<e.changedTouches.length;i++){ var t=e.changedTouches[i]; onMove(t.identifier, t.clientX, t.clientY); }
+    e.preventDefault();
+  }, {passive:false});
+  cv.addEventListener('touchend', function(e){
+    for(var i=0;i<e.changedTouches.length;i++){ onEnd(e.changedTouches[i].identifier); }
+    e.preventDefault();
+  }, {passive:false});
+  cv.addEventListener('touchcancel', function(e){
+    for(var i=0;i<e.changedTouches.length;i++){ onEnd(e.changedTouches[i].identifier); }
+  }, {passive:false});
+
+  // Mouse (single pointer) for desktop testing
+  var mouseDown=false;
+  cv.addEventListener('mousedown', function(e){ mouseDown=true; onStart('m', e.clientX, e.clientY); });
+  cv.addEventListener('mousemove', function(e){ if(mouseDown) onMove('m', e.clientX, e.clientY); });
+  window.addEventListener('mouseup', function(){ if(mouseDown){ mouseDown=false; onEnd('m'); } });
+
+  // Keyboard: WASD = blue, Arrows = pink (nice for desktop)
+  window.addEventListener('keydown', function(e){
+    var m = {
+      'w':['blue',DIRS.up],'a':['blue',DIRS.left],'s':['blue',DIRS.down],'d':['blue',DIRS.right],
+      'ArrowUp':['pink',DIRS.up],'ArrowLeft':['pink',DIRS.left],'ArrowDown':['pink',DIRS.down],'ArrowRight':['pink',DIRS.right]
+    };
+    var k = e.key.length===1 ? e.key.toLowerCase() : e.key;
+    if(m[k]){ setDir(m[k][0], m[k][1]); e.preventDefault(); }
+  });
+
+  // ---- End / restart ----
+  function endGame(loser, reason){
+    if(!running) return;
+    running = false;
+    if(timerId){ clearInterval(timerId); timerId=null; }
+    if(rafId){ cancelAnimationFrame(rafId); rafId=null; }
+    draw();
+
+    var emoji='🏆', title='', text='';
+    var bs = snakes.blue.score, ps = snakes.pink.score;
+
+    if(reason==='crash'){
+      if(loser==='both'){
+        emoji='💥'; title='Doppel-Crash!';
+        text = 'Beide Schlangen sind zusammengestossen. '+scoreLine(bs,ps);
+        // decide by score if both crash
+        if(bs>ps){ title='🔵 Blau gewinnt!'; emoji='🔵'; }
+        else if(ps>bs){ title='🩷 Pink gewinnt!'; emoji='🩷'; }
+        else { title='Unentschieden!'; emoji='🤝'; }
+      } else if(loser==='blue'){
+        emoji='🩷'; title='🩷 Pink gewinnt!';
+        text = '🔵 Blau ist gecrasht. '+scoreLine(bs,ps);
+      } else {
+        emoji='🔵'; title='🔵 Blau gewinnt!';
+        text = '🩷 Pink ist gecrasht. '+scoreLine(bs,ps);
+      }
+    } else { // time
+      if(bs>ps){ emoji='🔵'; title='🔵 Blau gewinnt!'; }
+      else if(ps>bs){ emoji='🩷'; title='🩷 Pink gewinnt!'; }
+      else { emoji='🤝'; title='Unentschieden!'; }
+      text = 'Zeit abgelaufen! '+scoreLine(bs,ps);
+    }
+
+    document.getElementById('endEmoji').textContent = emoji;
+    document.getElementById('endTitle').textContent = title;
+    document.getElementById('endText').innerHTML = text;
+    document.getElementById('endScreen').classList.remove('hidden');
+  }
+  function scoreLine(b,p){
+    return '<br>🔵 '+b+' 🍎 &nbsp;·&nbsp; 🩷 '+p+' 🍎';
+  }
+
+  // ---- Buttons ----
+  function startGame(){
+    document.getElementById('startScreen').classList.add('hidden');
+    document.getElementById('endScreen').classList.add('hidden');
+    resize();
+    reset();
+  }
+  document.getElementById('startBtn').addEventListener('click', startGame);
+  document.getElementById('againBtn').addEventListener('click', startGame);
+
+  // initial sizing (so start screen canvas has bg)
+  resize();
+})();
+</script>
+</body>
+</html>

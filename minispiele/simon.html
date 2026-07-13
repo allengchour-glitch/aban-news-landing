@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Farben merken 🟩</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Comic Sans MS','Trebuchet MS',system-ui,sans-serif;
+    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+    color:#25405c;min-height:100%;display:flex;flex-direction:column;
+    align-items:center;padding:10px;overflow-x:hidden;user-select:none;
+  }
+  .back{
+    position:fixed;top:10px;left:10px;z-index:20;
+    background:#fff;border:none;border-radius:16px;padding:10px 16px;
+    font-size:16px;font-weight:bold;color:#25405c;cursor:pointer;
+    box-shadow:0 3px 0 #bcd4e6;font-family:inherit;
+  }
+  .back:active{transform:translateY(2px);box-shadow:0 1px 0 #bcd4e6}
+  h1{margin:54px 0 4px;font-size:28px;text-align:center;color:#2f6bd4}
+  .sub{font-size:15px;text-align:center;margin-bottom:10px;color:#4a6b8a}
+  .scores{display:flex;gap:10px;margin-bottom:10px;width:100%;max-width:380px}
+  .pcard{
+    flex:1;background:#fff;border-radius:18px;padding:10px 6px;text-align:center;
+    box-shadow:0 4px 0 #cfe4f2;transition:transform .15s,box-shadow .15s;border:3px solid transparent;
+  }
+  .pcard.active{border-color:#ffd23f;transform:translateY(-3px);box-shadow:0 7px 0 #ffcf33,0 0 0 4px #fff4c9}
+  .pcard .name{font-size:15px;font-weight:bold}
+  .pcard .best{font-size:13px;color:#6d8aa5;margin-top:2px}
+  .pcard .best b{font-size:20px;color:#2f6bd4}
+  .status{font-size:19px;font-weight:bold;text-align:center;min-height:26px;margin-bottom:10px;color:#2f6bd4}
+  .board{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    width:min(88vw,340px);aspect-ratio:1;margin-bottom:14px;
+  }
+  .pad{
+    border-radius:22px;cursor:pointer;opacity:.55;
+    transition:opacity .12s,transform .08s;box-shadow:inset 0 -8px 0 rgba(0,0,0,.15);
+    display:flex;align-items:center;justify-content:center;font-size:40px;
+  }
+  .pad.lit{opacity:1;transform:scale(1.04)}
+  .pad:active{transform:scale(.97)}
+  #g{background:#4caf50}
+  #r{background:#ef4b5b}
+  #y{background:#ffcf33}
+  #b{background:#3d8bff}
+  .bigbtn{
+    background:#2f6bd4;color:#fff;border:none;border-radius:20px;
+    padding:15px 30px;font-size:20px;font-weight:bold;cursor:pointer;
+    box-shadow:0 5px 0 #2455ab;font-family:inherit;
+  }
+  .bigbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #2455ab}
+  .overlay{
+    position:fixed;inset:0;background:rgba(30,60,95,.55);z-index:30;
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  .modal{
+    background:#fff;border-radius:26px;padding:26px 22px;text-align:center;
+    max-width:340px;width:100%;box-shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  .modal h2{font-size:26px;color:#2f6bd4;margin-bottom:6px}
+  .modal p{font-size:17px;margin-bottom:16px;color:#4a6b8a;line-height:1.4}
+  .hidden{display:none!important}
+  .trophy{font-size:56px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<h1>🟩 Farben merken</h1>
+<div class="sub">Merkt euch die Folge und tippt sie nach!</div>
+
+<div class="scores">
+  <div class="pcard" id="card1">
+    <div class="name">🔵 Spieler 1</div>
+    <div class="best">Beste Folge: <b id="best1">0</b></div>
+  </div>
+  <div class="pcard" id="card2">
+    <div class="name">🔴 Spieler 2</div>
+    <div class="best">Beste Folge: <b id="best2">0</b></div>
+  </div>
+</div>
+
+<div class="status" id="status">Bereit?</div>
+
+<div class="board" id="board">
+  <div class="pad" id="g" data-k="0">🟢</div>
+  <div class="pad" id="r" data-k="1">🔴</div>
+  <div class="pad" id="y" data-k="2">🟡</div>
+  <div class="pad" id="b" data-k="3">🔵</div>
+</div>
+
+<button class="bigbtn" id="startBtn">▶ Los geht's</button>
+
+<div class="overlay hidden" id="over">
+  <div class="modal">
+    <div class="trophy" id="trophy">🏆</div>
+    <h2 id="resTitle">Ergebnis</h2>
+    <p id="resText"></p>
+    <button class="bigbtn" id="againBtn">🔁 Nochmal</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var pads=[document.getElementById('g'),document.getElementById('r'),document.getElementById('y'),document.getElementById('b')];
+  var freq=[392,523,659,784]; // g r y b tones
+  var statusEl=document.getElementById('status');
+  var startBtn=document.getElementById('startBtn');
+  var card=[document.getElementById('card1'),document.getElementById('card2')];
+  var bestEl=[document.getElementById('best1'),document.getElementById('best2')];
+  var over=document.getElementById('over');
+
+  var best=[0,0];          // längste geschaffte Folge je Spieler
+  var current=0;           // aktueller Spieler 0/1
+  var seq=[];              // aktuelle Folge
+  var inputIdx=0;          // wo im Nachtippen
+  var accepting=false;     // Eingabe erlaubt?
+  var playing=false;       // Runde läuft
+  var done=[false,false];  // Spieler ausgeschieden?
+  var round=1;
+  var timers=[];
+  var actx=null;
+
+  function beep(i,dur){
+    try{
+      if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)();
+      var o=actx.createOscillator(),gn=actx.createGain();
+      o.type='sine';o.frequency.value=freq[i];
+      o.connect(gn);gn.connect(actx.destination);
+      var t=actx.currentTime;
+      gn.gain.setValueAtTime(.0001,t);
+      gn.gain.exponentialRampToValueAtTime(.25,t+.02);
+      gn.gain.exponentialRampToValueAtTime(.0001,t+dur/1000);
+      o.start(t);o.stop(t+dur/1000+.02);
+    }catch(e){}
+  }
+  function clearTimers(){timers.forEach(clearTimeout);timers=[];}
+  function light(i,dur){
+    pads[i].classList.add('lit');
+    beep(i,dur);
+    timers.push(setTimeout(function(){pads[i].classList.remove('lit');},dur));
+  }
+
+  function setActiveCard(){
+    card[0].classList.toggle('active',current===0);
+    card[1].classList.toggle('active',current===1);
+  }
+
+  function nextPlayerLabel(){return current===0?'🔵 Spieler 1':'🔴 Spieler 2';}
+
+  function startRoundFor(p){
+    current=p;setActiveCard();
+    seq=[];round=1;
+    nextStep();
+  }
+
+  function nextStep(){
+    // Folge um 1 verlängern und abspielen
+    seq.push(Math.floor(Math.random()*4));
+    accepting=false;
+    statusEl.textContent=nextPlayerLabel()+': gut zuschauen… ('+seq.length+')';
+    playSequence();
+  }
+
+  function playSequence(){
+    clearTimers();
+    var speed=Math.max(350,650-seq.length*15);
+    seq.forEach(function(v,idx){
+      timers.push(setTimeout(function(){light(v,speed*0.6);},idx*speed+400));
+    });
+    timers.push(setTimeout(function(){
+      accepting=true;inputIdx=0;
+      statusEl.textContent=nextPlayerLabel()+': jetzt du! ('+seq.length+')';
+    },seq.length*speed+500));
+  }
+
+  function padPressed(i){
+    if(!accepting||!playing) return;
+    light(i,220);
+    if(i===seq[inputIdx]){
+      inputIdx++;
+      if(inputIdx===seq.length){
+        // Folge geschafft
+        accepting=false;
+        if(seq.length>best[current]){best[current]=seq.length;bestEl[current].textContent=seq.length;}
+        statusEl.textContent='Super! 🎉';
+        timers.push(setTimeout(nextStep,700));
+      }
+    }else{
+      // Fehler
+      accepting=false;
+      done[current]=true;
+      var reached=seq.length-1;
+      if(reached>best[current]){/* schon gesetzt bei Erfolg */}
+      statusEl.textContent='Ups! '+nextPlayerLabel()+' geschafft: '+reached;
+      wrongFlash();
+      timers.push(setTimeout(afterTurn,1200));
+    }
+  }
+
+  function wrongFlash(){
+    document.body.style.background='linear-gradient(160deg,#ffd6d6,#ffeaea)';
+    timers.push(setTimeout(function(){
+      document.body.style.background='';
+    },400));
+  }
+
+  function afterTurn(){
+    // Wechsel zum nächsten Spieler, oder Ende
+    if(done[0]&&done[1]){ endGame(); return; }
+    var next=current===0?1:0;
+    if(done[next]){ // nächster ist schon raus -> Ende
+      endGame(); return;
+    }
+    startRoundFor(next);
+  }
+
+  function endGame(){
+    playing=false;accepting=false;clearTimers();
+    card[0].classList.remove('active');card[1].classList.remove('active');
+    var t=document.getElementById('resTitle');
+    var txt=document.getElementById('resText');
+    var tro=document.getElementById('trophy');
+    if(best[0]>best[1]){
+      tro.textContent='🔵';t.textContent='Spieler 1 gewinnt!';
+    }else if(best[1]>best[0]){
+      tro.textContent='🔴';t.textContent='Spieler 2 gewinnt!';
+    }else{
+      tro.textContent='🤝';t.textContent='Unentschieden!';
+    }
+    txt.innerHTML='🔵 Spieler 1: <b>'+best[0]+'</b> Farben<br>🔴 Spieler 2: <b>'+best[1]+'</b> Farben';
+    over.classList.remove('hidden');
+  }
+
+  function startGame(){
+    best=[0,0];done=[false,false];
+    bestEl[0].textContent='0';bestEl[1].textContent='0';
+    over.classList.add('hidden');
+    startBtn.classList.add('hidden');
+    playing=true;
+    startRoundFor(0);
+  }
+
+  // Events
+  pads.forEach(function(p){
+    var idx=parseInt(p.getAttribute('data-k'),10);
+    p.addEventListener('pointerdown',function(e){e.preventDefault();padPressed(idx);});
+  });
+  startBtn.addEventListener('click',startGame);
+  document.getElementById('againBtn').addEventListener('click',function(){
+    over.classList.add('hidden');startGame();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Memory 🃏</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
+    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #234;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 24px;
+    overflow-x: hidden;
+    user-select: none;
+  }
+  .back {
+    align-self: flex-start;
+    background: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2a7ab0;
+    box-shadow: 0 3px 0 #a9d4ee;
+    cursor: pointer;
+    min-height: 46px;
+  }
+  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #a9d4ee; }
+  h1 {
+    font-size: 30px;
+    margin: 8px 0 4px;
+    color: #1c6ea4;
+    text-shadow: 0 2px 0 #fff;
+  }
+  .scores {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 440px;
+    margin: 8px 0;
+  }
+  .pcard {
+    flex: 1;
+    background: #fff;
+    border-radius: 18px;
+    padding: 10px 8px;
+    text-align: center;
+    box-shadow: 0 4px 0 rgba(0,0,0,.08);
+    border: 3px solid transparent;
+    transition: transform .15s, border-color .15s;
+  }
+  .pcard.active { transform: scale(1.05); }
+  .pcard.p1.active { border-color: #ff7aa8; }
+  .pcard.p2.active { border-color: #59c1e6; }
+  .pname { font-size: 15px; font-weight: 800; }
+  .p1 .pname { color: #e0417c; }
+  .p2 .pname { color: #1c9bcb; }
+  .pscore { font-size: 30px; font-weight: 900; line-height: 1; margin-top: 2px; }
+  .turn {
+    font-size: 17px;
+    font-weight: 800;
+    margin: 4px 0 10px;
+    min-height: 24px;
+  }
+  #board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 1 / 1;
+  }
+  .card {
+    position: relative;
+    border-radius: 16px;
+    cursor: pointer;
+    perspective: 600px;
+    min-height: 46px;
+  }
+  .inner {
+    position: absolute;
+    inset: 0;
+    transition: transform .4s;
+    transform-style: preserve-3d;
+  }
+  .card.flipped .inner, .card.matched .inner { transform: rotateY(180deg); }
+  .face {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    box-shadow: 0 4px 0 rgba(0,0,0,.12);
+  }
+  .front {
+    background: linear-gradient(150deg, #ffd36e, #ff9f6b);
+    font-size: clamp(24px, 9vw, 40px);
+  }
+  .front::after { content: "❓"; }
+  .back-face {
+    background: #fff;
+    transform: rotateY(180deg);
+    font-size: clamp(28px, 11vw, 48px);
+  }
+  .card.matched .back-face { background: #d8ffe0; }
+  .card.matched { animation: pop .4s; }
+  @keyframes pop { 50% { transform: scale(1.12); } }
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30,60,90,.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+  }
+  .overlay.show { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 26px;
+    padding: 26px 22px;
+    text-align: center;
+    max-width: 340px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  }
+  .modal .big { font-size: 54px; }
+  .modal h2 { font-size: 26px; color: #1c6ea4; margin: 8px 0; }
+  .modal p { font-size: 18px; margin-bottom: 16px; color: #456; }
+  .btn {
+    background: linear-gradient(150deg, #6fd66f, #37b56a);
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    padding: 14px 22px;
+    font-size: 19px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #2a8a52;
+    min-height: 46px;
+    width: 100%;
+  }
+  .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #2a8a52; }
+</style>
+</head>
+<body>
+  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+  <h1>🃏 Memory</h1>
+  <div class="scores">
+    <div class="pcard p1" id="pc1">
+      <div class="pname">🔴 Spieler 1</div>
+      <div class="pscore" id="s1">0</div>
+    </div>
+    <div class="pcard p2" id="pc2">
+      <div class="pname">🔵 Spieler 2</div>
+      <div class="pscore" id="s2">0</div>
+    </div>
+  </div>
+  <div class="turn" id="turn">🔴 Spieler 1 ist dran</div>
+  <div id="board"></div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <div class="big" id="wemoji">🏆</div>
+      <h2 id="wtitle">Gewinner!</h2>
+      <p id="wtext"></p>
+      <button class="btn" id="again">🔁 Nochmal</button>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+  var EMOJIS = ["🐶","🐱","🦊","🐼","🦁","🐸","🐙","🦄"];
+  var board = document.getElementById("board");
+  var turnEl = document.getElementById("turn");
+  var s1El = document.getElementById("s1"), s2El = document.getElementById("s2");
+  var pc1 = document.getElementById("pc1"), pc2 = document.getElementById("pc2");
+  var overlay = document.getElementById("overlay");
+
+  var cards = [];        // {el, emoji, matched}
+  var first = null, second = null;
+  var lock = false;
+  var current = 1;       // 1 or 2
+  var scores = {1:0, 2:0};
+  var matchedCount = 0;
+
+  function shuffle(a){
+    for (var i = a.length-1; i>0; i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var t = a[i]; a[i]=a[j]; a[j]=t;
+    }
+    return a;
+  }
+
+  function buildCard(emoji){
+    var el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = '<div class="inner">'
+      + '<div class="face front"></div>'
+      + '<div class="face back-face">'+emoji+'</div>'
+      + '</div>';
+    var card = {el:el, emoji:emoji, matched:false};
+    function activate(e){
+      e.preventDefault();
+      onPick(card);
+    }
+    el.addEventListener("click", activate);
+    el.addEventListener("touchstart", activate, {passive:false});
+    return card;
+  }
+
+  function newGame(){
+    board.innerHTML = "";
+    cards = [];
+    first = second = null;
+    lock = false;
+    current = 1;
+    scores = {1:0, 2:0};
+    matchedCount = 0;
+    updateScores();
+    updateTurn();
+    overlay.classList.remove("show");
+    var deck = shuffle(EMOJIS.concat(EMOJIS));
+    for (var i=0;i<deck.length;i++){
+      var c = buildCard(deck[i]);
+      cards.push(c);
+      board.appendChild(c.el);
+    }
+  }
+
+  function onPick(card){
+    if (lock) return;
+    if (card.matched) return;
+    if (card === first) return;
+    card.el.classList.add("flipped");
+    if (!first){ first = card; return; }
+    second = card;
+    lock = true;
+    if (first.emoji === second.emoji){
+      setTimeout(matchFound, 450);
+    } else {
+      setTimeout(noMatch, 900);
+    }
+  }
+
+  function matchFound(){
+    first.matched = second.matched = true;
+    first.el.classList.add("matched");
+    second.el.classList.add("matched");
+    scores[current]++;
+    matchedCount++;
+    updateScores();
+    first = second = null;
+    lock = false;
+    if (matchedCount === EMOJIS.length){
+      setTimeout(endGame, 500);
+    } else {
+      // gleicher Spieler darf nochmal (Extra-Zug bei Treffer)
+      updateTurn(true);
+    }
+  }
+
+  function noMatch(){
+    first.el.classList.remove("flipped");
+    second.el.classList.remove("flipped");
+    first = second = null;
+    lock = false;
+    current = current === 1 ? 2 : 1;
+    updateTurn();
+  }
+
+  function updateScores(){
+    s1El.textContent = scores[1];
+    s2El.textContent = scores[2];
+  }
+
+  function updateTurn(bonus){
+    pc1.classList.toggle("active", current===1);
+    pc2.classList.toggle("active", current===2);
+    var who = current===1 ? "🔴 Spieler 1" : "🔵 Spieler 2";
+    turnEl.textContent = bonus ? (who + " — Paar! Nochmal 🎉") : (who + " ist dran");
+  }
+
+  function endGame(){
+    var em = document.getElementById("wemoji");
+    var ti = document.getElementById("wtitle");
+    var tx = document.getElementById("wtext");
+    if (scores[1] === scores[2]){
+      em.textContent = "🤝";
+      ti.textContent = "Unentschieden!";
+      tx.textContent = "Beide " + scores[1] + " Paare. Super gespielt!";
+    } else {
+      var winner = scores[1] > scores[2] ? 1 : 2;
+      em.textContent = "🏆";
+      ti.textContent = (winner===1 ? "🔴 Spieler 1" : "🔵 Spieler 2") + " gewinnt!";
+      tx.textContent = scores[1] + " : " + scores[2] + " Paare";
+    }
+    overlay.classList.add("show");
+  }
+
+  document.getElementById("again").addEventListener("click", newGame);
+  newGame();
+})();
+</script>
+</body>
+</html>

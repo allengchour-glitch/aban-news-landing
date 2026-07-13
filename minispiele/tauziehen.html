@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Tauziehen</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    color: #204a63;
+    display: flex; flex-direction: column;
+    height: 100%; user-select: none; -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  .back {
+    position: absolute; top: 12px; left: 12px; z-index: 20;
+    background: #fff; border: none; border-radius: 16px;
+    padding: 10px 16px; font-size: 16px; font-weight: bold; color: #2b7bb0;
+    box-shadow: 0 3px 0 #a9d4ec; cursor: pointer; min-height: 46px;
+  }
+  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #a9d4ec; }
+
+  h1 { text-align: center; font-size: 26px; margin-top: 58px; color: #1c6ea4; text-shadow: 0 2px 0 #fff; }
+  .sub { text-align: center; font-size: 14px; color: #5a8bab; margin: 2px 0 6px; }
+
+  .arena { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 8px 10px; }
+
+  /* Player 2 area (top, rotated) */
+  .pad {
+    flex: 1; border-radius: 24px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 6px 0 rgba(0,0,0,.12); position: relative; overflow: hidden;
+    min-height: 120px; touch-action: manipulation;
+  }
+  .pad .lbl { font-size: 20px; font-weight: bold; margin-bottom: 4px; }
+  .pad .emo { font-size: 54px; line-height: 1; }
+  .pad .hint { font-size: 13px; margin-top: 6px; opacity: .85; }
+  .pad .score { position: absolute; top: 8px; right: 14px; font-size: 22px; font-weight: bold; }
+  .pad.p2 { background: linear-gradient(180deg,#ffd9e6,#ffb3cd); color: #a11d54; transform: rotate(180deg); }
+  .pad.p1 { background: linear-gradient(180deg,#c9f0d0,#96e2a8); color: #1c7a3d; }
+  .pad.tap { animation: pop .12s ease; }
+  @keyframes pop { 50% { transform: scale(.97) rotate(var(--r,0deg)); } }
+  .pad.p2.tap { --r: 180deg; }
+
+  /* rope */
+  .ropewrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .track {
+    width: 100%; max-width: 520px; height: 46px; background: #fff;
+    border-radius: 24px; position: relative; box-shadow: inset 0 3px 6px rgba(0,0,0,.12);
+    overflow: hidden;
+  }
+  .center-line { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 4px; margin-left: -2px; background: #ffd76a; border-radius: 2px; }
+  .flag { position: absolute; top: 50%; font-size: 30px; transition: left .06s linear; transform: translate(-50%,-50%); }
+  .zoneL, .zoneR { position: absolute; top: 0; bottom: 0; width: 12%; }
+  .zoneL { left: 0; background: rgba(150,226,168,.5); border-radius: 24px 0 0 24px;}
+  .zoneR { right: 0; background: rgba(255,179,205,.5); border-radius: 0 24px 24px 0;}
+
+  .countdown {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 90px; font-weight: bold; color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,.25);
+    background: rgba(28,110,164,.35); z-index: 15; pointer-events: none;
+  }
+
+  /* overlay */
+  .overlay {
+    position: absolute; inset: 0; background: rgba(255,255,255,.92);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 18px; z-index: 25; text-align: center; padding: 20px;
+  }
+  .overlay h2 { font-size: 40px; color: #1c6ea4; }
+  .overlay .big { font-size: 80px; }
+  .overlay p { font-size: 18px; color: #5a8bab; }
+  .btn {
+    background: #ffb03a; border: none; border-radius: 20px; padding: 16px 30px;
+    font-size: 22px; font-weight: bold; color: #fff; box-shadow: 0 5px 0 #d98a1f;
+    cursor: pointer; min-height: 46px;
+  }
+  .btn:active { transform: translateY(2px); box-shadow: 0 3px 0 #d98a1f; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+  <h1>🪢 Tauziehen</h1>
+  <div class="sub">Hämmert euren Knopf! Wer die Mitte rüberzieht, gewinnt den Zug.</div>
+
+  <div class="arena">
+    <div class="pad p2" id="pad2">
+      <div class="score" id="s2">0</div>
+      <div class="emo">💪</div>
+      <div class="lbl">Spieler 2 (Rosa)</div>
+      <div class="hint">Tippen zum Ziehen →</div>
+    </div>
+
+    <div class="ropewrap">
+      <div class="track" id="track">
+        <div class="zoneL"></div>
+        <div class="zoneR"></div>
+        <div class="center-line"></div>
+        <div class="flag" id="flag" style="left:50%">🚩</div>
+        <div class="countdown hidden" id="cd">3</div>
+      </div>
+      <div class="sub" id="status">Bereit? Tippt zum Start!</div>
+    </div>
+
+    <div class="pad p1" id="pad1">
+      <div class="score" id="s1">0</div>
+      <div class="emo">💪</div>
+      <div class="lbl">Spieler 1 (Grün)</div>
+      <div class="hint">Tippen zum Ziehen →</div>
+    </div>
+  </div>
+
+  <div class="overlay" id="startO">
+    <div class="big">🪢</div>
+    <h2>Tauziehen</h2>
+    <p>2 Spieler · Ein Gerät<br>Spieler 1 unten (grün), Spieler 2 oben (rosa).<br>Hämmert so schnell ihr könnt!<br>Best of 3 Runden gewinnt.</p>
+    <button class="btn" id="startBtn">▶ Los geht's</button>
+  </div>
+
+  <div class="overlay hidden" id="endO">
+    <div class="big" id="endEmo">🏆</div>
+    <h2 id="endTitle">Sieg!</h2>
+    <p id="endText"></p>
+    <button class="btn" id="againBtn">🔁 Nochmal</button>
+  </div>
+
+<script>
+(function(){
+  var pos = 50;            // 0 = Spieler1(links/grün) gewinnt, 100 = Spieler2(rechts/rosa) gewinnt
+  var WIN_ZONE = 12;       // Prozent Rand
+  var STEP = 2.2;          // Bewegung pro Tap
+  var DECAY = 0.06;        // sanfte Rückzug-Reibung Richtung Mitte pro frame
+  var wins = {p1:0, p2:0};
+  var roundActive = false;
+  var counting = false;
+  var rafId = null;
+  var lastTs = 0;
+
+  var flag = document.getElementById('flag');
+  var status = document.getElementById('status');
+  var cd = document.getElementById('cd');
+  var pad1 = document.getElementById('pad1');
+  var pad2 = document.getElementById('pad2');
+  var s1 = document.getElementById('s1');
+  var s2 = document.getElementById('s2');
+  var startO = document.getElementById('startO');
+  var endO = document.getElementById('endO');
+
+  function render(){ flag.style.left = pos + '%'; }
+
+  function loop(ts){
+    if(!roundActive){ rafId = null; return; }
+    if(!lastTs) lastTs = ts;
+    var dt = Math.min(64, ts - lastTs); lastTs = ts;
+    // sanfte Reibung Richtung Mitte, damit Nichtstun bestraft/ausgeglichen wirkt
+    var frames = dt/16.7;
+    if(pos > 50) pos = Math.max(50, pos - DECAY*frames);
+    else if(pos < 50) pos = Math.min(50, pos + DECAY*frames);
+    render();
+    checkWin();
+    if(roundActive) rafId = requestAnimationFrame(loop);
+  }
+
+  function ensureLoop(){
+    if(roundActive && rafId===null){ lastTs=0; rafId = requestAnimationFrame(loop); }
+  }
+
+  function pull(player, padEl){
+    if(!roundActive) return;
+    if(player===1) pos -= STEP; else pos += STEP;
+    pos = Math.max(0, Math.min(100, pos));
+    padEl.classList.remove('tap'); void padEl.offsetWidth; padEl.classList.add('tap');
+    render();
+    checkWin();
+  }
+
+  function checkWin(){
+    if(!roundActive) return;
+    if(pos <= WIN_ZONE){ roundWon(1); }
+    else if(pos >= 100 - WIN_ZONE){ roundWon(2); }
+  }
+
+  function roundWon(player){
+    roundActive = false;
+    if(rafId){ cancelAnimationFrame(rafId); rafId=null; }
+    if(player===1){ wins.p1++; s1.textContent = wins.p1; }
+    else { wins.p2++; s2.textContent = wins.p2; }
+
+    if(wins.p1>=2 || wins.p2>=2){
+      showEnd();
+    } else {
+      status.textContent = (player===1?'Grün':'Rosa') + ' gewinnt die Runde! Nächste Runde …';
+      setTimeout(function(){ startRound(); }, 1200);
+    }
+  }
+
+  function startRound(){
+    pos = 50; render();
+    counting = true; roundActive = false;
+    cd.classList.remove('hidden');
+    var n = 3; cd.textContent = n;
+    status.textContent = 'Macht euch bereit!';
+    var iv = setInterval(function(){
+      n--;
+      if(n<=0){
+        clearInterval(iv);
+        cd.textContent = 'LOS!';
+        setTimeout(function(){
+          cd.classList.add('hidden');
+          counting = false; roundActive = true;
+          status.textContent = 'ZIEHT!!! 💥';
+          ensureLoop();
+        }, 500);
+      } else {
+        cd.textContent = n;
+      }
+    }, 700);
+  }
+
+  function showEnd(){
+    var p1win = wins.p1>wins.p2;
+    document.getElementById('endEmo').textContent = '🏆';
+    document.getElementById('endTitle').textContent = (p1win?'Spieler 1 (Grün)':'Spieler 2 (Rosa)') + ' gewinnt!';
+    document.getElementById('endText').textContent = 'Endstand: Grün ' + wins.p1 + ' : ' + wins.p2 + ' Rosa 🎉';
+    endO.classList.remove('hidden');
+  }
+
+  function resetGame(){
+    wins.p1=0; wins.p2=0; s1.textContent='0'; s2.textContent='0';
+    endO.classList.add('hidden');
+    startRound();
+  }
+
+  // Input: sowohl Touch als auch Maus/Pointer. touchstart verhindert doppelten click.
+  function bind(el, player){
+    el.addEventListener('touchstart', function(e){ e.preventDefault(); pull(player, el); }, {passive:false});
+    el.addEventListener('mousedown', function(e){ e.preventDefault(); pull(player, el); });
+  }
+  bind(pad1, 1);
+  bind(pad2, 2);
+
+  document.getElementById('startBtn').addEventListener('click', function(){
+    startO.classList.add('hidden');
+    resetGame();
+  });
+  document.getElementById('againBtn').addEventListener('click', function(){
+    resetGame();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

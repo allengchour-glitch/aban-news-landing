@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="aban-nav" content="off">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Maulwurf klopfen</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Segoe UI',Verdana,sans-serif;
+    background:linear-gradient(#bce6ff,#eaf7ff);
+    min-height:100%;
+    display:flex;flex-direction:column;
+    color:#2b4a5e;overflow:hidden;
+    user-select:none;-webkit-user-select:none;touch-action:manipulation;
+  }
+  .back{
+    position:fixed;top:10px;left:10px;z-index:20;
+    background:#fff;border:none;border-radius:14px;
+    padding:10px 16px;font-size:16px;font-weight:700;color:#2b4a5e;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);cursor:pointer;min-height:46px;
+  }
+  .wrap{flex:1;display:flex;flex-direction:column;padding:6px;gap:6px}
+  /* Player 2 half is rotated so hotseat players face each other */
+  .half{
+    flex:1;border-radius:22px;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+    box-shadow:0 4px 14px rgba(0,0,0,.12);
+  }
+  .half.p1{background:linear-gradient(#ffe1ec,#fff2f6)}
+  .half.p2{background:linear-gradient(#dff3ff,#f1fbff);transform:rotate(180deg)}
+  .hdr{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:8px 14px;font-weight:800;font-size:18px;flex:0 0 auto;
+  }
+  .p1 .hdr{color:#d6417f}
+  .p2 .hdr{color:#1f8fd6}
+  .score{font-size:26px;font-weight:900;min-width:44px;text-align:center}
+  .grid{
+    flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);
+    gap:8px;padding:0 12px 12px;
+  }
+  .hole{
+    position:relative;border-radius:50%/40%;
+    background:radial-gradient(ellipse at 50% 35%,#a9764f,#6e4a2c 70%);
+    box-shadow:inset 0 8px 16px rgba(0,0,0,.35);
+    display:flex;align-items:flex-end;justify-content:center;
+    overflow:hidden;cursor:pointer;
+  }
+  .mole{
+    font-size:min(11vw,60px);line-height:1;
+    transform:translateY(120%);transition:transform .12s ease-out;
+    pointer-events:none;padding-bottom:6px;
+  }
+  .hole.up .mole{transform:translateY(10%)}
+  .hole.bonk .mole{transform:translateY(120%);transition:transform .08s}
+  .pop{
+    position:absolute;font-size:24px;font-weight:900;pointer-events:none;
+    animation:pop .5s ease-out forwards;
+  }
+  @keyframes pop{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-30px)}}
+  /* Center timer bar */
+  .timer{
+    flex:0 0 auto;text-align:center;font-weight:900;font-size:20px;
+    color:#2b4a5e;background:#fff;border-radius:16px;padding:6px 0;
+    box-shadow:0 3px 8px rgba(0,0,0,.12);
+  }
+  .overlay{
+    position:fixed;inset:0;z-index:30;background:rgba(20,50,70,.55);
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  .card{
+    background:#fff;border-radius:26px;padding:26px 22px;max-width:340px;width:100%;
+    text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  .card h1{font-size:30px;margin-bottom:6px;color:#2b4a5e}
+  .card p{font-size:17px;margin-bottom:16px;line-height:1.4;color:#4a6a7e}
+  .btn{
+    background:linear-gradient(#ffb43e,#ff8a3d);color:#fff;border:none;
+    border-radius:16px;padding:14px 26px;font-size:19px;font-weight:900;
+    cursor:pointer;box-shadow:0 5px 0 #e0722a;min-height:52px;width:100%;
+  }
+  .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #e0722a}
+  .big{font-size:44px;margin:8px 0}
+  .res{font-size:20px;font-weight:800;margin:4px 0}
+  .res.p1c{color:#d6417f}
+  .res.p2c{color:#1f8fd6}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+
+<div class="wrap">
+  <div class="half p2" id="half2">
+    <div class="hdr"><span>🔵 Spieler 2</span><span class="score" id="s2">0</span></div>
+    <div class="grid" id="grid2"></div>
+  </div>
+  <div class="timer" id="timer">Bereit?</div>
+  <div class="half p1" id="half1">
+    <div class="hdr"><span>🔴 Spieler 1</span><span class="score" id="s1">0</span></div>
+    <div class="grid" id="grid1"></div>
+  </div>
+</div>
+
+<!-- Start overlay -->
+<div class="overlay" id="startScreen">
+  <div class="card">
+    <div class="big">🔨</div>
+    <h1>Maulwurf klopfen</h1>
+    <p>Zwei Spieler, ein Handy!<br>Jeder hat seine eigene Hälfte.<br>Klopfe in <b>20 Sekunden</b> so viele Maulwürfe wie möglich. Wer mehr trifft, gewinnt!</p>
+    <button class="btn" id="startBtn">Los geht's!</button>
+  </div>
+</div>
+
+<!-- End overlay -->
+<div class="overlay hidden" id="endScreen">
+  <div class="card">
+    <div class="big" id="endEmoji">🏆</div>
+    <h1 id="endTitle">Ergebnis</h1>
+    <div class="res p1c" id="endP1">🔴 Spieler 1: 0</div>
+    <div class="res p2c" id="endP2">🔵 Spieler 2: 0</div>
+    <p></p>
+    <button class="btn" id="againBtn">🔁 Nochmal</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var HOLES=6, GAME_TIME=20;
+  var scores={1:0,2:0};
+  var running=false, endAt=0, rafId=null;
+  var moles={1:[],2:[]}; // per-hole state: {up:bool, timer:id, el, moleEl}
+  var spawnTimers={1:null,2:null};
+
+  var s1El=document.getElementById('s1'), s2El=document.getElementById('s2');
+  var timerEl=document.getElementById('timer');
+  var startScreen=document.getElementById('startScreen');
+  var endScreen=document.getElementById('endScreen');
+
+  var EMO=['🐹','🦫','🐭'];
+
+  function buildGrid(player){
+    var grid=document.getElementById('grid'+player);
+    grid.innerHTML='';
+    moles[player]=[];
+    for(var i=0;i<HOLES;i++){
+      var hole=document.createElement('div');
+      hole.className='hole';
+      var mole=document.createElement('span');
+      mole.className='mole';
+      mole.textContent='🐹';
+      hole.appendChild(mole);
+      grid.appendChild(hole);
+      var state={up:false,downTimer:null,el:hole,moleEl:mole};
+      moles[player].push(state);
+      (function(pl,idx){
+        var handler=function(ev){
+          ev.preventDefault();
+          whack(pl,idx);
+        };
+        hole.addEventListener('pointerdown',handler);
+      })(player,i);
+    }
+  }
+
+  function whack(player,idx){
+    if(!running) return;
+    var st=moles[player][idx];
+    if(!st.up) return;
+    st.up=false;
+    clearTimeout(st.downTimer);
+    st.el.classList.remove('up');
+    st.el.classList.add('bonk');
+    setTimeout(function(){st.el.classList.remove('bonk');},120);
+    scores[player]++;
+    (player===1?s1El:s2El).textContent=scores[player];
+    showPop(st.el,'+1');
+  }
+
+  function showPop(holeEl,txt){
+    var p=document.createElement('span');
+    p.className='pop';
+    p.textContent=txt;
+    p.style.color='#2e7d32';
+    p.style.left='50%';
+    p.style.top='30%';
+    p.style.transform='translateX(-50%)';
+    holeEl.appendChild(p);
+    setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},520);
+  }
+
+  function popUp(player){
+    if(!running) return;
+    var arr=moles[player];
+    // find holes that are down
+    var down=[];
+    for(var i=0;i<arr.length;i++){ if(!arr[i].up) down.push(i); }
+    if(down.length){
+      var idx=down[Math.floor(Math.random()*down.length)];
+      var st=arr[idx];
+      st.up=true;
+      st.moleEl.textContent=EMO[Math.floor(Math.random()*EMO.length)];
+      st.el.classList.remove('bonk');
+      st.el.classList.add('up');
+      var stay=650+Math.random()*700;
+      st.downTimer=setTimeout(function(){
+        st.up=false;
+        st.el.classList.remove('up');
+      },stay);
+    }
+    schedule(player);
+  }
+
+  function schedule(player){
+    var delay=350+Math.random()*650;
+    spawnTimers[player]=setTimeout(function(){popUp(player);},delay);
+  }
+
+  function tick(){
+    if(!running) return;
+    var left=Math.max(0,(endAt-Date.now())/1000);
+    timerEl.textContent='⏱ '+left.toFixed(1)+' s';
+    if(left<=0){ endGame(); return; }
+    rafId=requestAnimationFrame(tick);
+  }
+
+  function clearAll(){
+    clearTimeout(spawnTimers[1]); clearTimeout(spawnTimers[2]);
+    [1,2].forEach(function(p){
+      moles[p].forEach(function(st){
+        clearTimeout(st.downTimer);
+        st.up=false;
+        st.el.classList.remove('up','bonk');
+      });
+    });
+  }
+
+  function startGame(){
+    scores={1:0,2:0};
+    s1El.textContent='0'; s2El.textContent='0';
+    buildGrid(1); buildGrid(2);
+    startScreen.classList.add('hidden');
+    endScreen.classList.add('hidden');
+    running=true;
+    endAt=Date.now()+GAME_TIME*1000;
+    // stagger initial spawns
+    schedule(1);
+    setTimeout(function(){schedule(2);},200);
+    if(rafId) cancelAnimationFrame(rafId);
+    rafId=requestAnimationFrame(tick);
+  }
+
+  function endGame(){
+    running=false;
+    if(rafId) cancelAnimationFrame(rafId);
+    clearAll();
+    timerEl.textContent='⏱ 0.0 s';
+    document.getElementById('endP1').textContent='🔴 Spieler 1: '+scores[1];
+    document.getElementById('endP2').textContent='🔵 Spieler 2: '+scores[2];
+    var title, emoji;
+    if(scores[1]>scores[2]){ title='🔴 Spieler 1 gewinnt!'; emoji='🏆'; }
+    else if(scores[2]>scores[1]){ title='🔵 Spieler 2 gewinnt!'; emoji='🏆'; }
+    else { title='Unentschieden!'; emoji='🤝'; }
+    document.getElementById('endTitle').textContent=title;
+    document.getElementById('endEmoji').textContent=emoji;
+    endScreen.classList.remove('hidden');
+  }
+
+  document.getElementById('startBtn').addEventListener('click',startGame);
+  document.getElementById('againBtn').addEventListener('click',startGame);
+
+  // build empty grids initially so layout looks right behind overlay
+  buildGrid(1); buildGrid(2);
+})();
+</script>
+</body>
+</html>
