@@ -244,6 +244,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
     <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
+  <button class="btn ghost" id="tutBtn" style="font-size:.88rem">❓ So geht's — Regeln für Anfänger</button>
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
@@ -3701,6 +3702,7 @@ function begin(saved){
   if(NET.on){var _cb=document.getElementById("chatBox");if(_cb){_cb.style.display="flex";_cb.classList.remove("mini");}}
   initProgMap();updPlayers();updChapter();albumBadge();
   announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
+  if(!saved&&!NET.on&&!lsGet("lp_tut_seen"))setTimeout(function(){showTutorial(0);},900); /* ❓ erstes Spiel: kurzes Anfaenger-Tutorial */
   if(!saved)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
 }
 var menuOpen=false;
@@ -3753,6 +3755,36 @@ document.getElementById("rulesBtn").onclick=function(){toggleMenu();
   showLocalInfo("📜 So spielt ihr Lebenspfad",
     "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (15 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
     );};
+// ❓ Anfaenger-Tutorial: 4 einfache Schritte, grosse Emojis, kurze Saetze — zeigt sich automatisch beim ersten Spiel
+var TUT_STEPS=[
+ ["🎲","Würfeln & Laufen","Tippe auf <b>Drehen!</b> — deine Figur läuft die bunten Felder entlang.<br><br>Das Ziel: <b>einmal durchs ganze Leben</b> — vom Kind bis zum Lebensabend, in 8 Kapiteln."],
+ ["🟡","Die Felder","Jede Farbe ist eine kleine Überraschung:<br><br>💰 <b>Geld</b> · ❤️ <b>Glück</b> · 🧠 <b>Wissen</b> · 👥 <b>Freunde</b><br><br>✨ <b>Weisse Felder</b> = Ereignis-Karte mit Entscheidung. Lies sie und wähle, was DU tun würdest — <b>falsch gibt es nicht!</b>"],
+ ["⭐","Meilensteine","Am <b>orangen Stern-Feld</b> beginnt ein neues Lebenskapitel:<br><br>💼 Beruf wählen · 🚗 Auto kaufen · 💍 Heiraten · 👶 Kinder · 🏠 Haus<br><br>Alles, was du bekommst, läuft sichtbar neben deiner Figur mit!"],
+ ["🏁","Gewinnen","Am Ende zählen <b>alle Punkte zusammen</b> (💰+❤️+🧠+👥) — wer am meisten hat, gewinnt.<br><br>💫 Extra-Tipp: Landet ihr auf <b>demselben Feld</b>, gibt es eine Begegnung — mit Umarmung, Tanz oder Küsschen 😘 und Bonus für beide!"]];
+function showTutorial(st){
+  st=st|0;lsSet("lp_tut_seen","1");
+  var ov=document.getElementById("tutOv");
+  if(!ov){ov=document.createElement("div");ov.id="tutOv";
+    ov.style.cssText="position:fixed;inset:0;background:rgba(20,30,45,.6);z-index:62;display:flex;align-items:center;justify-content:center;padding:18px";
+    ov.innerHTML='<div style="max-width:420px;width:100%;background:#fffdf6;border-radius:20px;padding:22px 20px;box-shadow:0 10px 40px rgba(0,0,0,.35);text-align:center">'+
+      '<div id="tutEmo" style="font-size:3.2rem;line-height:1.1"></div>'+
+      '<div id="tutTitle" style="font-weight:900;font-size:1.15rem;color:#2a3040;margin:8px 0 6px"></div>'+
+      '<div id="tutBody" style="font-size:.92rem;color:#3a4252;line-height:1.55;text-align:left"></div>'+
+      '<div id="tutDots" style="margin:14px 0 10px;letter-spacing:6px;font-size:.8rem;color:#c8b88a"></div>'+
+      '<button id="tutNext" style="width:100%;padding:13px;border:none;border-radius:14px;background:linear-gradient(135deg,#ff9ac0,#ffca7a);color:#5a3040;font-weight:900;font-size:1rem;cursor:pointer"></button>'+
+      '<button id="tutSkip" style="margin-top:8px;border:none;background:none;color:#9aa4b4;font-weight:700;font-size:.8rem;cursor:pointer">Überspringen</button></div>';
+    document.body.appendChild(ov);
+    document.getElementById("tutSkip").onclick=function(){ov.style.display="none";};}
+  var sp=TUT_STEPS[st];if(!sp){ov.style.display="none";return;}
+  document.getElementById("tutEmo").textContent=sp[0];
+  document.getElementById("tutTitle").textContent=sp[1]+"  ("+(st+1)+"/"+TUT_STEPS.length+")";
+  document.getElementById("tutBody").innerHTML=sp[2];
+  document.getElementById("tutDots").textContent=TUT_STEPS.map(function(_,k){return k===st?"●":"○";}).join("");
+  var nx=document.getElementById("tutNext");
+  nx.textContent=(st<TUT_STEPS.length-1)?"Weiter ▶":"Los geht's! 🎉";
+  nx.onclick=function(){beep(660+st*60,.05,"triangle",.04);showTutorial(st+1);};
+  ov.style.display="flex";beep(560,.04,"triangle",.03);}
+(function(){var tb=document.getElementById("tutBtn");if(tb)tb.onclick=function(){showTutorial(0);};})();
 // 📜 Rein LOKALES Info-Overlay — fasst die Lockstep-Karten-Maschinerie (_cardSeq/_cardOpts) NICHT an (Online-Desync-Fix)
 function showLocalInfo(title,html){
   var ov=document.getElementById("localInfoOv");
