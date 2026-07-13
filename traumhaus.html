@@ -62,6 +62,10 @@ canvas{display:block}
 #chatRow{display:flex;border-top:1px solid #eee}
 #chatIn{flex:1;border:0;padding:10px;font-size:16px;background:transparent}
 #emoteToggle{position:fixed;right:10px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.5rem;cursor:pointer;display:none}
+#micBtn{position:fixed;right:72px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.4rem;cursor:pointer;display:none}
+#micBtn.on{background:#e05a4a;color:#fff;animation:micp 1.2s infinite}
+#micBtn.muted{background:#8a8a92;color:#fff}
+@keyframes micp{0%,100%{box-shadow:0 6px 18px rgba(224,90,74,.4)}50%{box-shadow:0 6px 26px rgba(224,90,74,.85)}}
 #emoteBar{position:fixed;right:10px;bottom:calc(122px + env(safe-area-inset-bottom));z-index:22;display:none;flex-direction:column;gap:6px}
 #emoteBar button{width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
 #emoteBar button:active{transform:scale(.9)}
@@ -89,6 +93,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat">💬</button>
 <button id="emoteToggle" title="Emotes">😊</button>
+<button id="micBtn" title="Voice-Chat">🎙️</button>
 <div id="emoteBar"></div>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
   <button class="tbtn" id="piWink" title="Winken">👋</button>
@@ -1998,7 +2003,8 @@ document.getElementById("achBtn").onclick=function(){
 document.getElementById("achClose").onclick=function(){document.getElementById("achPanel").style.display="none";};
 var hintT=null;
 function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;
-  clearTimeout(hintT);hintT=setTimeout(function(){h.style.opacity=0;},2200);}
+  var dauer=Math.min(9000,Math.max(3500,3000+String(t).length*55)); // langsam lesbar: lange Texte bleiben länger
+  clearTimeout(hintT);hintT=setTimeout(function(){h.style.opacity=0;},dauer);}
 
 // ===================== UI =====================
 function renderPalette(){
@@ -2121,7 +2127,7 @@ document.getElementById("soloBtn").onclick=function(){
 document.getElementById("hostBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
   myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
-  MPs=MP.host("traumhaus");mpHost=true;
+  MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
   document.getElementById("netSetup").style.display="none";
   document.getElementById("mpLobby").style.display="block";
   document.getElementById("mpCodeShow").textContent=MPs.code;
@@ -2135,7 +2141,7 @@ document.getElementById("joinBtn").onclick=function(){
   myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
   var code=(document.getElementById("mpCode").value||"").trim().toUpperCase();
   if(code.length!==4){alert("4-stelligen Raum-Code eingeben");return;}
-  MPs=MP.join("traumhaus",code);mpHost=false;
+  MPs=MP.join("traumhaus",code);mpHost=false;window._roomCode=code;
   document.getElementById("netSetup").style.display="none";
   document.getElementById("mpLobby").style.display="block";
   document.getElementById("mpCodeShow").textContent=code;
@@ -2145,6 +2151,38 @@ document.getElementById("joinBtn").onclick=function(){
     if(st==="connected"){document.getElementById("mpStatus").textContent="Verbunden — lade Haus …";netSend({t:"hallo",n:myName});}
     if(st==="closed"||st==="lost")document.getElementById("mpStatus").textContent="Verbindung verloren";
     document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});};
+
+// ===================== Live-Voice-Chat (WebRTC über PeerJS) =====================
+var voice={stream:null,call:null,on:false,muted:false,remoteEl:null};
+function voiceRemote(rs){
+  if(!voice.remoteEl){voice.remoteEl=document.createElement("audio");voice.remoteEl.autoplay=true;document.body.appendChild(voice.remoteEl);}
+  voice.remoteEl.srcObject=rs;voice.remoteEl.play().catch(function(){});}
+function voiceStart(){
+  if(!MPs){hint("🎙️ Voice geht nur im Koop-Spiel");return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){hint("🎙️ Mikrofon vom Browser nicht unterstützt");return;}
+  navigator.mediaDevices.getUserMedia({audio:true,video:false}).then(function(st){
+    voice.stream=st;voice.on=true;voice.muted=false;
+    var b=document.getElementById("micBtn");b.classList.add("on");b.textContent="🔴";
+    var peer=MPs._peer;
+    if(!peer){hint("🎙️ Verbindung noch nicht bereit — kurz warten");return;}
+    if(mpHost){
+      peer.on("call",function(c){c.answer(voice.stream);voice.call=c;c.on("stream",voiceRemote);});
+    }else{
+      var hostId="aban-traumhaus-"+(window._roomCode||"");
+      var c=peer.call(hostId,voice.stream);voice.call=c;
+      if(c)c.on("stream",voiceRemote);}
+    hint("🎙️ Voice AN — sprich mit deinem Mitspieler!");
+  }).catch(function(){hint("🎙️ Mikrofon-Zugriff verweigert");});}
+function voiceToggleMute(){
+  if(!voice.stream)return;
+  voice.muted=!voice.muted;
+  voice.stream.getAudioTracks().forEach(function(t){t.enabled=!voice.muted;});
+  var b=document.getElementById("micBtn");
+  b.classList.toggle("muted",voice.muted);b.classList.toggle("on",!voice.muted);
+  b.textContent=voice.muted?"🔇":"🔴";
+  hint(voice.muted?"🔇 Mikro stumm":"🔴 Mikro an");}
+document.getElementById("micBtn").onclick=function(){
+  if(!voice.on)voiceStart();else voiceToggleMute();};
 
 // ===================== Hauptschleife =====================
 var last=performance.now(),simTick=0,saveTick=0,netTick=0;
@@ -2178,6 +2216,7 @@ function loop(now){
     updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
+    document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
