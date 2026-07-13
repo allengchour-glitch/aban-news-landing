@@ -169,6 +169,7 @@ canvas{display:block}
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
   <div class="btn hide" id="bThrow" title="Wurf-Angriff (F)">🏹</div>
   <div class="btn hide" id="bDodge" title="Ausweichrolle (SHIFT)">💨</div>
+  <div class="btn hide" id="bBolt" title="Kettenblitz (C)">⚡</div>
   <button id="muteBtn2" title="Ton an/aus" style="position:fixed;top:54px;right:12px;z-index:30;width:38px;height:38px;border-radius:50%;border:1px solid rgba(140,190,220,.4);background:rgba(16,28,40,.75);color:#cfe;font-size:1rem;cursor:pointer">🔊</button>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
@@ -2004,6 +2005,46 @@ function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bS
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
   b.style.opacity=(skillCd>0)?0.4:1;b.textContent=(skillCd>0)?Math.ceil(skillCd):"💥";}
+// ⚡ KETTENBLITZ (Realm-Skill): trifft bis zu 3 Gegner in 14 Einheiten, gezackte Blitz-Linien
+var boltCd=0,BOLT_CD=10,_boltShown=false,boltFx=[];
+function useBolt(){
+  if(!running||dead||buildMode)return;
+  if(level<4){toast("⚡ Kettenblitz ab Level 4");return;}
+  if(boltCd>0)return;
+  var px=player.position.x,pz=player.position.z,R=14,hits=[];
+  for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];
+    if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R)hits.push(e);
+    if(hits.length>=3)break;}
+  if(!hits.length){toast("⚡ Kein Ziel in Reichweite");return;}
+  boltCd=Math.max(3,BOLT_CD-PERK.skillcd);
+  sfx(1200,0.12,"sawtooth",0.05,180);
+  var dmg=3+Math.floor(level/2)+weaponAtk();
+  hits.forEach(function(e){
+    // gezackte Blitz-Linie
+    var pts=[],from=new THREE.Vector3(px,player.position.y+1.6,pz),to=new THREE.Vector3(e.x,groundH(e.x,e.z)+1,e.z);
+    for(var k2=0;k2<=6;k2++){var f2=k2/6,vx3=from.x+(to.x-from.x)*f2+(k2>0&&k2<6?(rnd()-0.5)*1.2:0),
+      vy3=from.y+(to.y-from.y)*f2+(k2>0&&k2<6?(rnd()-0.5)*1.2:0),vz3=from.z+(to.z-from.z)*f2+(k2>0&&k2<6?(rnd()-0.5)*1.2:0);
+      pts.push(new THREE.Vector3(vx3,vy3,vz3));}
+    var lg=new THREE.BufferGeometry().setFromPoints(pts);
+    var ln=new THREE.Line(lg,new THREE.LineBasicMaterial({color:0x9fe8ff,transparent:true,opacity:1}));
+    scene.add(ln);boltFx.push({m:ln,life:0.3});
+    burst(e.x,groundH(e.x,e.z)+1,e.z,0x9fe8ff,8);
+    e.hp-=dmg;
+    if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
+      gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);
+      if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}
+  });
+  toast("⚡ Kettenblitz! "+hits.length+" getroffen");
+}
+function updBolt2(dt){
+  if(boltCd>0)boltCd-=dt;
+  for(var i=boltFx.length-1;i>=0;i--){var fx2=boltFx[i];fx2.life-=dt;
+    fx2.m.material.opacity=Math.max(0,fx2.life/0.3);
+    if(fx2.life<=0){scene.remove(fx2.m);fx2.m.geometry.dispose();fx2.m.material.dispose();boltFx.splice(i,1);}}
+  var b=document.getElementById("bBolt");if(!b)return;
+  var show=running&&level>=4&&!buildMode;b.classList.toggle("hide",!show);
+  if(show&&!_boltShown){_boltShown=true;announce("⚡ Skill frei: C / ⚡-Knopf = Kettenblitz!");}
+  b.style.opacity=(boltCd>0)?0.4:1;b.textContent=(boltCd>0)?Math.ceil(boltCd):"⚡";}
 // 💎 Loot-Raritaeten (RPG-Fusion aus realm): Monster droppen farbige Beute-Orbs (auto-collect)
 var lootOrbs=[];
 var LOOT_RARITY=[{c:0xbfeaff,n:"Gewöhnlich",p:0.58,xp:5,cr:0,heal:0,hp:0},{c:0x5ea8ff,n:"Selten",p:0.27,xp:12,cr:1,heal:0,hp:0},{c:0xc98bff,n:"Episch",p:0.12,xp:26,cr:2,heal:20,hp:0},{c:0xffd166,n:"Legendär",p:0.03,xp:55,cr:3,heal:30,hp:6}];
@@ -2334,6 +2375,7 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key.toLowerCase()==="b"){if(buildMode)closeBuild();else openBuild();}
   if(e.key.toLowerCase()==="r"){eat();}
   if(e.key==="Shift"){doDodge();}
+  if(e.key.toLowerCase()==="c"){useBolt();}
   if(e.key==="Enter"&&buildMode&&ghost){confirmBuild();}
   if(e.key==="Escape"){if(buildMode)closeBuild();else togglePause();}
 });
@@ -2369,7 +2411,7 @@ addEventListener("mouseup",function(){mDrag=false;});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
 function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 bindTap("bAct",function(){harvest();});
-bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);
+bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);bindTap("bBolt",useBolt);
 (function(){var mb=document.getElementById("muteBtn2");if(mb){mb.textContent=muted?"🔇":"🔊";mb.onclick=function(){toggleMute();};}})();bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
@@ -2552,7 +2594,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
