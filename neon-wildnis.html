@@ -168,6 +168,7 @@ canvas{display:block}
   <div class="btn hide" id="bBuild">🔨</div>
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
   <div class="btn hide" id="bThrow" title="Wurf-Angriff (F)">🏹</div>
+  <div class="btn hide" id="bDodge" title="Ausweichrolle (SHIFT)">💨</div>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
 <div id="tradeMenu" class="hide"></div>
@@ -1935,7 +1936,30 @@ function choosePerk(){
   if(perkQueue>0){showPerkPick();}
   else{perkChoosing=false;if(box)box.classList.add("hide");announce("⭐ Level "+level+"!","#ffd166");}
 }
-function damagePlayer(d){if(dead)return;d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
+// 💨 Ausweichrolle (aus neon-realm): kurzer Dash mit Unverwundbarkeit
+var dodgeT=0,dodgeCd=0,dodgeVX=0,dodgeVZ=0;
+function doDodge(){
+  if(dodgeCd>0||dead||!running||buildMode)return;
+  var mx=stickV.x,my=stickV.y;
+  if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
+  var l=Math.hypot(mx,my);
+  if(l>0.15){dodgeVX=-mx/l;dodgeVZ=-my/l;}
+  else{dodgeVX=-Math.sin(player.rotation.y);dodgeVZ=-Math.cos(player.rotation.y);}
+  dodgeT=0.26;dodgeCd=1.4;
+  if(heroRig)playOnce(heroRig,"run",2.6);
+  burst(player.position.x,player.position.y+0.7,player.position.z,0x7de3ff,8);
+}
+function updDodge(dt){
+  if(dodgeCd>0)dodgeCd-=dt;
+  var b=document.getElementById("bDodge");if(b&&running)b.style.opacity=dodgeCd>0?0.45:1;
+  if(dodgeT<=0)return;
+  dodgeT-=dt;
+  var sp2=17,nx=player.position.x+dodgeVX*sp2*dt,nz=player.position.z+dodgeVZ*sp2*dt;
+  nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
+  player.position.x=nx;player.position.z=nz;
+  if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
+}
+function damagePlayer(d){if(dead)return;if(dodgeT>0)return;/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -2282,6 +2306,7 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key===" "){e.preventDefault();harvest();}
   if(e.key.toLowerCase()==="b"){if(buildMode)closeBuild();else openBuild();}
   if(e.key.toLowerCase()==="r"){eat();}
+  if(e.key==="Shift"){doDodge();}
   if(e.key==="Enter"&&buildMode&&ghost){confirmBuild();}
   if(e.key==="Escape"){if(buildMode)closeBuild();else togglePause();}
 });
@@ -2317,7 +2342,7 @@ addEventListener("mouseup",function(){mDrag=false;});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
 function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 bindTap("bAct",function(){harvest();});
-bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
+bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
 document.getElementById("bSound").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊";};
@@ -2461,7 +2486,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -2601,8 +2626,8 @@ function startGame(fresh){
   camera.position.set(0,12,16);
   document.getElementById("hud").classList.remove("hide");
   document.getElementById("ov").classList.add("hide");
-  if(IS_MOB){document.getElementById("bBuild").classList.remove("hide");}
-  else{document.getElementById("bBuild").classList.remove("hide");}
+  document.getElementById("bBuild").classList.remove("hide");
+  document.getElementById("bDodge").classList.remove("hide"); // 💨 Rolle immer verfügbar
   if(!window.__pMark){window.__pMark=1; // 🎯 Spieler-Marker: durch Häuser hindurch sichtbar
     var rg=new THREE.Mesh(new THREE.RingGeometry(0.5,0.64,28),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.5,depthTest:false}));
     rg.rotation.x=-Math.PI/2;rg.position.y=0.06;rg.renderOrder=998;player.add(rg);
