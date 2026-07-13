@@ -1819,7 +1819,9 @@ function showForkUI(f){var fk=f.fork,p=G.players[G.turn];
     {l:fk.bL,sub:fk.bSub,big:1,fn:function(){forkSel=fk.b;G.phase="moving";snap(G.turn,"🧭",fk.bL);announce(fk.bL,"#fff");beep(740,.1,"triangle",.05);}}]);}
 function roll(){
   if(!running||G.phase!=="idle")return;
-  if(NET.on){if(G.turn!==NET.my)return;netSend({t:"roll"});NET.q.push({t:"roll"});return;}
+  if(NET.on){if(G.turn!==NET.my)return;
+    if(!NET.host&&!(NET.conns[0]&&NET.conns[0].open)){announce("📴 Getrennt — warte auf Verbindung …","#ffb46e");return;} // Drift-Guard
+    netSend({t:"roll"});NET.q.push({t:"roll"});return;}
   rollCore();
 }
 function rollCore(){
@@ -2913,10 +2915,10 @@ function netStateSnapshot(){ // G ohne three.js-pawn-Refs serialisierbar machen
   try{return JSON.parse(JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}catch(e){return null;}}
 function netSyncTo(c){ // vollständigen Zustand an EINE Verbindung schicken (Reconnect)
   if(!NET.host||!G||!c)return;var st=netStateSnapshot();if(!st)return;
-  try{c.send(JSON.stringify({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs}));}catch(e){}}
+  try{c.send(JSON.stringify({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs,cardSeq:window._cardSeq||0}));}catch(e){}}
 function netSyncAll(){ // vollständigen Zustand an alle Gäste (Resync nach Desync)
   if(!NET.host||!G)return;var st=netStateSnapshot();if(!st)return;
-  netSend({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs});}
+  netSend({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs,cardSeq:window._cardSeq||0});}
 function netApplySync(m){ // Gast: G aus Snapshot rekonstruieren + Lockstep deterministisch fortsetzen
   if(NET.host)return;
   try{
@@ -2928,6 +2930,7 @@ function netApplySync(m){ // Gast: G aus Snapshot rekonstruieren + Lockstep dete
     NET.q=[];NET._qHeadRef=null;NET._desync=0;
     NET.on=true;NET.started=true;
     window._cardOpts=null;if(cardEl)cardEl.classList.remove("on");clearTimeout(window._qTO); // evtl. offene Karte schließen
+    if(m.cardSeq!=null){window._cardSeq=m.cardSeq|0;window._pickDone=window._cardSeq;} // Karten-Zähler an Host angleichen (sonst werden künftige Picks verworfen)
     begin(st); // baut G + Figuren deterministisch neu auf
     NET.present=[];for(var pi=0;pi<G.players.length;pi++)NET.present[pi]=true;
     if(rollBtn)rollBtn.disabled=!myTurn();
