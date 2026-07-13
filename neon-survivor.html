@@ -81,6 +81,7 @@ canvas{display:block}
     <div id="hudName" style="font-size:.78rem;font-weight:700;color:#9fb2ff;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></div>
     <div id="hudTop"><span id="lvl">Lv 1</span><span id="time">0s</span><span id="kills">☠ 0</span></div>
     <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
+    <div id="hp2wrap" class="hide" style="max-width:240px;margin-top:4px"><div class="bar" style="height:9px"><i id="hp2Fill" style="background:linear-gradient(90deg,#ff9a3c,#ffd166)"></i></div><div id="p2tag" style="font-size:.72rem;color:#ffcf6e;font-weight:700;margin-top:2px"></div></div>
     <div id="xpwrap"><div class="bar"><i id="xpFill" style="width:0%"></i></div></div>
     <div id="scrapRow" style="margin-top:5px;font-size:1rem;font-weight:800;color:#ffb347">🔩 <span id="scrapN">0</span> Schrott<span id="waveN" style="color:#9fb2ff;margin-left:10px;font-weight:700"></span></div>
     <div id="upRow"></div>
@@ -115,6 +116,23 @@ canvas{display:block}
   </div>
   <button class="btn" id="startBtn">Start ▶</button>
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
+  <div id="coopBox" style="margin-top:12px;max-width:360px;width:100%;font-size:.9rem;border:1px solid #2a3170;border-radius:12px;padding:10px;background:rgba(10,13,30,.5)">
+    <div style="font-weight:800;color:#9fb2ff;margin-bottom:6px">👥 Koop</div>
+    <label style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;color:#c7cbe6;font-weight:700"><input type="checkbox" id="aiChk" style="width:18px;height:18px;accent-color:#5ef2ff"> 🤖 KI-Partner</label>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+      <button class="btn ghost" id="localBtn" style="margin-top:0">👥 Zu zweit (eine Tastatur)</button>
+      <button class="btn ghost" id="onlineBtn" style="margin-top:0">🌐 Online-Koop</button>
+    </div>
+    <div id="onlinePane" class="hide" style="margin-top:10px">
+      <button class="btn ghost" id="mpMakeBtn" style="margin-top:0">🎲 Raum erstellen</button>
+      <div style="margin-top:8px;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap">
+        <input id="mpCodeIn" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false"
+          style="width:118px;text-align:center;padding:10px;border-radius:10px;border:1px solid #3a4170;background:#10142b;color:#eaf0ff;font-size:16px;font-weight:900;letter-spacing:4px;text-transform:uppercase;outline:none">
+        <button class="btn ghost" id="mpGoBtn" style="margin-top:0">Beitreten ▶</button>
+      </div>
+      <div id="mpState" style="margin-top:8px;color:#c7cbe6;font-size:.88rem;line-height:1.45"></div>
+    </div>
+  </div>
   <div id="best"></div>
   <div id="welcome" style="margin-top:6px;font-size:.9rem;color:#c7cbe6"></div>
   <div id="startLb" style="margin-top:8px;font-size:.85rem;color:#c7cbe6;line-height:1.5"></div>
@@ -172,6 +190,8 @@ canvas{display:block}
 </div>
 
 <script src="/js/arcade.js"></script>
+<script src="/js/vendor/peerjs.min.js"></script>
+<script src="/js/mp.js"></script>
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script>
