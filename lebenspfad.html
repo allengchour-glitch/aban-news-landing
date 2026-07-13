@@ -224,6 +224,8 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <p>Würfle dich durch <b>acht Kapitel eines ganzen Lebens</b> — von der Kindheit bis zum Lebensabend. Über <b>100 Ereignisse</b> mit echten Entscheidungen formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Trefft ihr euch auf einem Feld, gibt es eine <b>Begegnung</b> — gemeinsam ist das Leben besser. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
   <div id="startStats" style="margin:2px 0 10px"></div>
   <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
+  <label id="botRow" style="display:none;align-items:center;gap:8px;background:#fffdf6;border:2px solid #cbb8e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin:6px auto 0;width:max-content">
+    <input type="checkbox" id="botChk" checked style="width:18px;height:18px;accent-color:#8a5acf"> 🤖 Gegen Robo spielen (empfohlen)</label>
   <div class="pselect" id="pselect"></div>
   <div id="nameRow" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0"></div>
   <div id="charRow" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:4px 0 8px"></div>
@@ -1882,6 +1884,21 @@ function startMove(n){
   var p=G.players[G.turn];hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};
   announce(G.players[G.turn].name+" dreht eine "+n+"!","#fff");
 }
+// 🤖 Robo-Gegner: würfelt nach kurzer Denkpause, wählt Karten-Optionen (leicht Glück-gewichtet)
+var _botT=0;
+function updBot(dt){
+  if(NET.on||!G||!running)return;
+  var p=G.players[G.turn];if(!p||!p.bot||p.dead||p.done)return;
+  _botT+=dt;
+  if(window._cardOpts){ // Karte offen -> nach 1.6s eine Option wählen
+    if(_botT>1.6){_botT=0;
+      var opts=window._cardOpts,best=0,idx=[];
+      for(var i=0;i<opts.length;i++)idx.push(i);
+      var k=idx[(Math.random()*idx.length)|0]; // simpel & fair: zufällig
+      cardPick(k);}
+    return;}
+  if(G.phase==="idle"&&_botT>1.3){_botT=0;rollCore();if(Math.random()<0.35)emote(G.turn,Math.random()<0.5?"jubel":"wink");}
+}
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
@@ -2642,7 +2659,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updBirds(dt,G.t);updIdleLife(dt);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
+  if(running&&G){G.t+=dt;updBot(dt);updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updBirds(dt,G.t);updIdleLife(dt);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
     if(window._lpWindmill)window._lpWindmill.rotation.z+=dt*(OPT.motion?1.15:0); // Windrad dreht
     if(window._lpFlag)for(var fq=0;fq<window._lpFlag.length;fq++){var _q=window._lpFlag[fq];
       _q.rotation.y=OPT.motion?Math.sin(G.t*3-fq*0.7)*0.45:0;_q.position.z=OPT.motion?Math.sin(G.t*3-fq*0.7)*0.05*fq:0;} // Fahne weht
@@ -2677,9 +2694,10 @@ var PV_W=Math.round(PV_CSS_W*PV_SS),PV_H=Math.round(PV_CSS_H*PV_SS);
 var selN=2;
 (function(){var ps=document.getElementById("pselect");
   for(var i=1;i<=4;i++)(function(n){var b=document.createElement("button");b.textContent=n;if(n===selN)b.className="on";
-    b.onclick=function(){selN=n;ps.querySelectorAll("button").forEach(function(x){x.className="";});b.className="on";renderNames();};
+    b.onclick=function(){selN=n;ps.querySelectorAll("button").forEach(function(x){x.className="";});b.className="on";renderNames();var br=document.getElementById("botRow");if(br)br.style.display=(n===1)?"flex":"none";};
     ps.appendChild(b);})(i);
   renderNames();
+  var br0=document.getElementById("botRow");if(br0)br0.style.display=(selN===1)?"flex":"none";
   renderStartStats();
   if(loadGame())document.getElementById("contBtn").classList.remove("hide");
 })();
@@ -3347,8 +3365,10 @@ function beginNet(init){
   document.getElementById("chatIn").addEventListener("keydown",function(e){if(e.key==="Enter")send();e.stopPropagation();});})();
 
 function begin(saved){
-  G=saved||freshState(selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked,
+  var useBot=(!NET.on&&selN===1&&document.getElementById("botChk")&&document.getElementById("botChk").checked&&!saved);
+  G=saved||freshState(useBot?2:selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked,
     (document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked)?"kurz":"voll");
+  if(useBot&&G.players[1]){G.players[1].name="Robo";G.players[1].bot=true;} // 🤖 Solo-Gegner
   if(G.mode!=="kurz")G.mode="voll"; // alte v3-Saves defensiv
   if(!G.goal)G.goal=GOALS[(NET.on?(NET.seed>>>3)%GOALS.length:(Math.random()*GOALS.length))|0]; // online: seed-deterministisch (sonst Ziel-Desync)
   forkSel=null;moveTo=-1;moveQ=0;hopT=0;
@@ -3694,7 +3714,8 @@ function handleField(p,f){
       if((ch===5||ch===6)&&!(p.items&&p.items.haus)){hausCard(p,endTurnSoon);return;} // 🏠 Eigenheim
     }
     var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
-    if(!NET.on&&selN>=2&&Math.random()<0.55){ // 🎮 Bonus-Minispiel (nur lokal am selben Gerät)
+    var humans=G.players.filter(function(pp){return !pp.bot;}).length;
+    if(!NET.on&&humans>=2&&Math.random()<0.55){ // 🎮 Bonus-Minispiel (nur lokal, nur echte Menschen)
       mOpts.push({l:"🎮 Bonus-Minispiel!",sub:"zu zweit spielen · danach +2 ❤️ für ALLE",fn:function(){
         openMiniGame(function(){G.players.forEach(function(pp){if(!pp.dead)pp.glueck+=2;});
           announce("🎮 Bonus-Runde! +2 ❤️ für alle","#ff9ad9");p.bio.push("forderte alle zu einem Minispiel heraus");endTurnSoon();});}});}
