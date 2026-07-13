@@ -982,14 +982,15 @@ function updCritters(dt){
 var cc0proto={}, cc0h={}, cc0box={}, cc0pending=0, cc0onready=[];
 function loadCC0(files,onAll){
   if(!THREE.GLTFLoader){onAll&&onAll();return;}
-  var left=files.length;if(!left){onAll&&onAll();return;}
+  var left=files.length,total=files.length;if(!left){onAll&&onAll();return;}
+  function prog(){if(window.__loadProg)window.__loadProg(total-left,total);}
   files.forEach(function(name){
     new THREE.GLTFLoader().load("/models/"+name+".glb",function(g){
       var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.isSkinnedMesh)n.frustumCulled=false;}});
       var bb=new THREE.Box3().setFromObject(o);var h=Math.max(0.001,bb.max.y-bb.min.y);
       cc0proto[name]=o;cc0h[name]=h;cc0box[name]={x:Math.max(0.001,bb.max.x-bb.min.x),y:h,z:Math.max(0.001,bb.max.z-bb.min.z)};
-      if(--left<=0)onAll&&onAll();
-    },undefined,function(){if(--left<=0)onAll&&onAll();});
+      --left;prog();if(left<=0)onAll&&onAll();
+    },undefined,function(){--left;prog();if(left<=0)onAll&&onAll();});
   });
 }
 // Klon eines CC0-Protos, skaliert auf Ziel-Welthöhe targetH
@@ -1381,7 +1382,19 @@ function decorateWorldLate(){
   });
 }
 
+// 🌍 Lade-Anzeige beim Weltaufbau (super spielbar: man sieht, dass es vorangeht)
+(function(){var el=document.createElement("div");el.id="worldLoad";
+  el.style.cssText="position:fixed;left:50%;top:42%;transform:translateX(-50%);z-index:55;background:rgba(10,22,34,.85);color:#bfe9ff;font:800 15px sans-serif;padding:12px 22px;border-radius:16px;border:1px solid rgba(125,227,255,.35);display:none;text-align:center";
+  el.innerHTML='🌍 Welt wird gebaut …<div style="margin-top:8px;width:220px;height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden"><i id="worldLoadFill" style="display:block;height:100%;width:0%;background:linear-gradient(90deg,#3ad0ff,#7de88a);border-radius:4px"></i></div>';
+  document.body.appendChild(el);
+  window.__loadProg=function(done,total){
+    if(!running||typeof villages==="undefined"||villages.length>0)return;
+    el.style.display="block";
+    var f=document.getElementById("worldLoadFill");if(f)f.style.width=Math.round(done/total*100)+"%";
+  };
+})();
 function decorateWorld(){
+  var wl=document.getElementById("worldLoad");if(wl)wl.style.display="none";
   var half=MAP/2-40;
   function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
   // --- Deko-Bäume in Sorten (nicht abbaubar, nur Dichte/Look) ---
@@ -1918,7 +1931,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 var throwCd=0,THROW_CD=1.1,projectiles=[];
@@ -1943,7 +1956,7 @@ function updThrow(dt){
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
       if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);shake=Math.min(shake+0.1,0.4);
-        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb)bossReward(e.x,e.z);updWaveHud();}}
+        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
@@ -2022,7 +2035,7 @@ function harvest(){
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
     nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb)bossReward(nearMon.x,nearMon.z);updWaveHud();
+    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -2314,6 +2327,35 @@ function saveGame(){
 function loadSave(){var raw=lsGet("nw_save1");if(!raw)return null;try{return JSON.parse(raw);}catch(e){return null;}}
 function loadBest(){try{return JSON.parse(lsGet("nw_best")||"null");}catch(e){return null;}}
 var autoSaveT=0;
+// 🏅 ERFOLGE (Abzeichen) — einmalig, persistent, mit Announce (Sucht-Faktor)
+var BADGES=[
+  {id:"kill1",   n:"Erster Sieg",      ic:"⚔️", t:function(){return kills>=1;}},
+  {id:"kill25",  n:"Monsterjäger",     ic:"🗡️", t:function(){return kills>=25;}},
+  {id:"kill100", n:"Wildnis-Legende",  ic:"🏆", t:function(){return kills>=100;}},
+  {id:"day3",    n:"Überlebenskünstler",ic:"🌅", t:function(){return day>=3;}},
+  {id:"day7",    n:"Eine Woche wild",  ic:"📅", t:function(){return day>=7;}},
+  {id:"lvl5",    n:"Aufsteiger",       ic:"⭐", t:function(){return level>=5;}},
+  {id:"lvl10",   n:"Held der Wildnis", ic:"🌟", t:function(){return level>=10;}},
+  {id:"wood100", n:"Holzfäller",       ic:"🪵", t:function(){return (inv.wood|0)>=100;}},
+  {id:"build5",  n:"Baumeister",       ic:"🔨", t:function(){return structures.length>=5;}},
+  {id:"boss1",   n:"Drachentöter",     ic:"🐉", t:function(){return (window.__bossKills|0)>=1;}}
+];
+function badgesGot(){try{return JSON.parse(lsGet("nw_badges")||"{}");}catch(e){return {};}}
+var _bgT=0;
+function updBadges(dt){_bgT+=dt;if(_bgT<2)return;_bgT=0;
+  var got=badgesGot(),won2=false;
+  for(var i=0;i<BADGES.length;i++){var B=BADGES[i];
+    if(!got[B.id]&&B.t()){got[B.id]=1;won2=true;
+      announce("🏅 ERFOLG: "+B.ic+" "+B.n+"!","#ffd166");
+      burst(player.position.x,player.position.y+2,player.position.z,0xffd166,14);}}
+  if(won2)lsSet("nw_badges",JSON.stringify(got));}
+// 🎁 Tägliche Belohnung: einmal pro Kalendertag +3 Kristalle
+function dailyReward(){
+  var today=new Date().toISOString().slice(0,10);
+  if(lsGet("nw_daily")===today)return;
+  lsSet("nw_daily",today);
+  setTimeout(function(){inv.crystal=(inv.crystal|0)+3;invUpd();
+    announce("🎁 Tägliche Belohnung: +3 💎!","#7de3ff");},2500);}
 // 💾 Sichtbare Speicher-Bestätigung (User: „meldung/timer wenn man vergisst")
 var _saveInd=null;
 function flashSaved(txt){
@@ -2394,7 +2436,7 @@ function frame(now){
   findNear();updPrompt();
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
-  updCamera(dt);updQuest(dt);
+  updCamera(dt);updQuest(dt);updBadges(dt);
   // Toast/announce fade
   if(toastT>0){toastT-=dt;if(toastT<=0)document.getElementById("toast").style.opacity=0;}
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
@@ -2526,7 +2568,7 @@ function startGame(fresh){
   document.getElementById("ov").classList.add("hide");
   if(IS_MOB){document.getElementById("bBuild").classList.remove("hide");}
   else{document.getElementById("bBuild").classList.remove("hide");}
-  running=true;paused=false;xpUpd();updOnline();
+  running=true;paused=false;xpUpd();updOnline();dailyReward();
   announce("🌅 Willkommen in der Wildnis!");
 }
 // ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
@@ -2593,6 +2635,8 @@ if(loadSave()){document.getElementById("startBtn").textContent="▶ Weiterspiele
 // 🏆 Rekord-Banner (Sucht-Faktor: eigenen Bestwert sehen & schlagen)
 (function(){var rb=document.getElementById("recBar"),b=loadBest();if(!rb||!b||!(b.day>1||b.kills>0||b.level>1))return;
   rb.innerHTML="🏆 Dein Rekord: Tag <b>"+(b.day||1)+"</b> · <b>"+(b.kills||0)+"</b> Gegner · Level <b>"+(b.level||1)+"</b>";
+  var got=badgesGot(),ic=[];for(var i=0;i<BADGES.length;i++)if(got[BADGES[i].id])ic.push(BADGES[i].ic);
+  if(ic.length)rb.innerHTML+="<br>🏅 "+ic.join(" ")+" <span style=\"opacity:.75\">("+ic.length+"/"+BADGES.length+")</span>";
   rb.classList.remove("hide");})();
 
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});

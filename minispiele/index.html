@@ -64,10 +64,13 @@
     {s:"punkte-jagd",e:"🌟",n:"Punkte-Jagd",d:"Sterne fangen in 30s"}
   ];
   var g=document.getElementById("grid");
+  var last=(function(){try{return localStorage.getItem("mini_last")||"";}catch(e){return "";}})();
   GAMES.forEach(function(x){
     var a=document.createElement("a");a.className="card";a.href=x.s+".html";
-    a.innerHTML='<span class="emo">'+x.e+'</span><span class="nm">'+x.n+'</span><span class="ds">'+x.d+'</span><span class="pill">👥 2 Spieler</span>';
-    g.appendChild(a);
+    var mark=(x.s===last)?'<span class="pill" style="background:#fff0d6;color:#b07a2a">🕑 Zuletzt gespielt</span> ':"";
+    a.innerHTML='<span class="emo">'+x.e+'</span><span class="nm">'+x.n+'</span><span class="ds">'+x.d+'</span>'+mark+'<span class="pill">👥 2 Spieler</span>';
+    a.addEventListener("click",function(){try{localStorage.setItem("mini_last",x.s);}catch(e){}});
+    if(x.s===last)g.insertBefore(a,g.firstChild);else g.appendChild(a);
   });
 </script>
 </body>
