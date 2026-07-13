@@ -601,11 +601,15 @@ var KATALOG={
   {id:"landtisch",n:"⭐ Landhaus-Tisch",e:"🍽️",cost:680,size:[2,1],norm:1},
   {id:"polsterstuhl",n:"⭐ Polsterstuhl",e:"💺",cost:260,size:[1,1],norm:1,use:{need:"hunger",pose:"sit",off:[0,0],dur:6}},
   {id:"konsole",n:"⭐ Spielkonsole",e:"🎮",cost:950,size:[1,1],norm:1,zielH:0.5,use:{need:"spass",pose:"sit",off:[0,1],dur:9}},
-  {id:"pouf",n:"⭐ Pouf",e:"🪑",cost:180,size:[1,1],norm:1,zielH:0.48,use:{need:"spass",pose:"sit",off:[0,0],dur:5}}],
+  {id:"pouf",n:"⭐ Pouf",e:"🪑",cost:180,size:[1,1],norm:1,zielH:0.48,use:{need:"spass",pose:"sit",off:[0,0],dur:5}},
+  {id:"schaukelstuhl",n:"⭐ Schaukelstuhl",e:"🪑",cost:340,size:[1,1],norm:1,zielH:1.0,use:{need:"spass",pose:"sit",off:[0,0],dur:8}},
+  {id:"retro_tv",n:"⭐ Röhren-TV",e:"📺",cost:420,size:[1,1],norm:1,zielH:0.45,use:{need:"spass",pose:"stand",off:[0,1],dur:6}},
+  {id:"hocker",n:"⭐ Holzhocker",e:"🪑",cost:90,size:[1,1],norm:1,zielH:0.45,use:{need:"hunger",pose:"sit",off:[0,0],dur:5}}],
  kueche:[
   {id:"kueche",n:"Küchenzeile",e:"🍳",cost:850,size:[2,1],korr:0.85},
   {id:"herd",n:"Herd",e:"🔥",cost:420,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
-  {id:"kuehlschrank",n:"Kühlschrank",e:"🧊",cost:520,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:4}}],
+  {id:"kuehlschrank",n:"Kühlschrank",e:"🧊",cost:520,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:4}},
+  {id:"mikrowelle",n:"⭐ Mikrowelle",e:"🍛",cost:280,size:[1,1],norm:1,zielH:0.35,use:{need:"hunger",pose:"stand",off:[0,1],dur:4}}],
  bad:[
   {id:"toilette",n:"Toilette",e:"🚽",cost:260,size:[1,1],use:{need:"hygiene",pose:"sit",off:[0,0],dur:4}},
   {id:"dusche",n:"Dusche",e:"🚿",cost:480,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:6}},
@@ -626,9 +630,17 @@ var KATALOG={
   {id:"topfpflanze",n:"⭐ Zimmerpflanze",e:"🪴",cost:240,size:[1,1],norm:1,zielH:1.25},
   {id:"katzenstatue",n:"⭐ Katzen-Statue",e:"🐱",cost:450,size:[1,1],norm:1,zielH:0.95},
   {id:"pferdestatue",n:"⭐ Pferde-Statue",e:"🐎",cost:2200,size:[1,1],norm:1,zielH:1.9},
-  {id:"haistatue",n:"⭐ Hai-Statue",e:"🦈",cost:1800,size:[1,1],norm:1,zielH:1.15}],
+  {id:"haistatue",n:"⭐ Hai-Statue",e:"🦈",cost:1800,size:[1,1],norm:1,zielH:1.15},
+  {id:"wanduhr",n:"⭐ Wanduhr",e:"🕑",cost:220,size:[1,1],norm:1,zielH:0.35},
+  {id:"bueste",n:"⭐ Marmorbüste",e:"🗿",cost:520,size:[1,1],norm:1,zielH:0.55},
+  {id:"spiegel",n:"⭐ Zierspiegel",e:"🪞",cost:340,size:[1,1],norm:1,zielH:1.1},
+  {id:"oellampe",n:"⭐ Öllampe",e:"🕯️",cost:180,size:[1,1],norm:1,zielH:0.35,light:1},
+  {id:"anthurie",n:"⭐ Anthurie",e:"🌷",cost:220,size:[1,1],norm:1,zielH:0.55},
+  {id:"farn",n:"⭐ Zimmerfarn",e:"🌿",cost:180,size:[1,1],norm:1,zielH:0.5}],
  buero:[
-  {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}}],
+  {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}},
+  {id:"laptop",n:"⭐ Laptop",e:"💻",cost:520,size:[1,1],norm:1,zielH:0.25},
+  {id:"schreiblampe",n:"⭐ Schreibtischlampe",e:"💡",cost:160,size:[1,1],norm:1,zielH:0.45,light:1}],
  garten:[
   {id:"auto_kombi",n:"Kombi",e:"🚙",cost:2400,size:[1,2],car:1},
   {id:"auto_flitzer",n:"Flitzer",e:"🏎️",cost:4800,size:[1,2],car:1},
@@ -639,7 +651,10 @@ var KATALOG={
   {id:"pool",n:"Pool",e:"🏊",cost:520,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:7}},
   {id:"teich",n:"Gartenteich",e:"🎣",cost:380,size:[2,2],teich:1},
   {id:"zwerg",n:"⭐ Gartenzwerg",e:"🍄",cost:90,size:[1,1],norm:1,zielH:0.65},
-  {id:"gartenlaterne",n:"⭐ Garten-Laterne",e:"🏮",cost:260,size:[1,1],norm:1,zielH:1.5,light:1}]
+  {id:"gartenlaterne",n:"⭐ Garten-Laterne",e:"🏮",cost:260,size:[1,1],norm:1,zielH:1.5,light:1},
+  {id:"holzbank",n:"⭐ Holzbank",e:"🪑",cost:220,size:[2,1],norm:1,zielH:0.85,use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
+  {id:"gazanie",n:"⭐ Gazanie",e:"🌼",cost:120,size:[1,1],norm:1,zielH:0.25},
+  {id:"strassenlaterne",n:"⭐ Straßenlaterne",e:"🚦",cost:380,size:[1,1],norm:1,zielH:3.5,light:1}]
 };
 var CATS=[["alle","🧰 Alles"],["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
