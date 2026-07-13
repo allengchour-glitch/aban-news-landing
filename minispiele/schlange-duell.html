@@ -25,7 +25,7 @@
 
   /* Scoreboard */
   #hud { display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 12px 4px; gap: 8px; }
+    padding: 62px 12px 4px; gap: 8px; } /* Platz fuer den Zurueck-Knopf */
   .score { flex: 1; text-align: center; border-radius: 16px; padding: 6px 4px;
     font-weight: bold; color: #fff; box-shadow: 0 4px 14px rgba(40,90,150,.2);
     text-shadow: 0 1px 2px rgba(0,0,0,.2); }
@@ -295,6 +295,7 @@
     // apples
     if(apples) for(var i=0;i<apples.length;i++){
       var a=apples[i];
+      ctx.fillStyle = '#000'; /* volle Deckkraft fuer Farb-Emoji */
       ctx.font = Math.floor(cell*0.95)+'px "Segoe UI Emoji","Noto Color Emoji",serif';
       ctx.textAlign='center'; ctx.textBaseline='middle';
       ctx.fillText('🍎', px(a.x)+cell/2, py(a.y)+cell/2+1);

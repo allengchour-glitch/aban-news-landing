@@ -311,6 +311,7 @@
     ctx.beginPath();
     ctx.ellipse(x, y + W*0.062, W*0.055, W*0.016, 0, 0, 7);
     ctx.fill();
+    ctx.fillStyle = '#000'; /* volle Deckkraft fuer Farb-Emoji */
     ctx.font = Math.round(W*0.115) + 'px "Segoe UI Emoji","Noto Color Emoji",serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText('🧤', x, y);
@@ -326,6 +327,7 @@
     ctx.save();
     ctx.translate(x, y);
     ctx.scale(-1, 1); /* Blick Richtung Ball */
+    ctx.fillStyle = '#000'; /* volle Deckkraft fuer Farb-Emoji */
     ctx.font = Math.round(W*0.105) + 'px "Segoe UI Emoji","Noto Color Emoji",serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText('🏃', 0, 0);
