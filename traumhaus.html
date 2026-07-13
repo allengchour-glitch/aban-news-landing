@@ -94,6 +94,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="chatToggle" title="Chat">💬</button>
 <button id="emoteToggle" title="Emotes">😊</button>
 <button id="micBtn" title="Voice-Chat">🎙️</button>
+<button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:30px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:linear-gradient(90deg,#e0703a,#c8502a);box-shadow:0 8px 22px rgba(200,80,40,.4);cursor:pointer">🚪 Aussteigen</button>
 <div id="emoteBar"></div>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
   <button class="tbtn" id="piWink" title="Winken">👋</button>
@@ -1329,6 +1330,45 @@ function updAuto(dt){
     else if(a.mesh.position.z>a.homeZ+0.3){a.mesh.rotation.y=0;a.mesh.position.z-=dt*6;}
     else{a.state="parkt";a.mesh.position.set(a.homeX,a.homeY||0.01,a.homeZ);a.mesh.rotation.y=Math.PI/2;}}
 }
+// ---- Auto fahren (GTA-Style: einsteigen, selbst lenken, aussteigen) ----
+var fahren=false,carRot=Math.PI/2,carLean=0;
+function einsteigen(){
+  var a=window.autoRec;if(!a||fahren)return;
+  fahren=true;a.state="fahren";
+  sims[0].mesh.visible=false;followSim=null;
+  carRot=a.mesh.rotation.y;camR=Math.max(camR,16);
+  document.getElementById("exitCar").style.display="block";
+  hint("🚗 Eingestiegen! Lenke mit Joystick/WASD — 🚪 zum Aussteigen");}
+function aussteigen(){
+  if(!fahren)return;fahren=false;
+  var a=window.autoRec;a.state="parkt";
+  sims[0].mesh.visible=true;
+  sims[0].x=a.mesh.position.x+Math.cos(carRot)*1.6;sims[0].z=a.mesh.position.z-Math.sin(carRot)*1.6;
+  sims[0].state="idle";sims[0].pose="stand";
+  a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);
+  document.getElementById("exitCar").style.display="none";
+  hint("🚶 Ausgestiegen");}
+function autoFahr(dt){
+  var a=window.autoRec;if(!a){fahren=false;return;}
+  var m=a.mesh;m.visible=true;
+  var lx=-Math.sin(camA),lz=-Math.cos(camA),rx=-lz,rz=lx;
+  var mx=(-steer.z)*lx+steer.x*rx,mz=(-steer.z)*lz+steer.x*rz;
+  var l=Math.hypot(mx,mz);
+  if(l>0.1){
+    var ziel=Math.atan2(mx,mz);
+    var d=((ziel-carRot+Math.PI*3)%(Math.PI*2))-Math.PI;
+    carRot+=d*Math.min(1,dt*4);           // sanftes Lenken
+    carLean=carLean*0.85 - d*0.25;         // Karosserie neigt sich in die Kurve
+    var sp=13*Math.min(1,l);
+    m.position.x+=Math.sin(carRot)*sp*dt;
+    m.position.z+=Math.cos(carRot)*sp*dt;
+    m.position.x=Math.max(-110,Math.min(110,m.position.x));
+    m.position.z=Math.max(-110,Math.min(110,m.position.z));
+    m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03; // leichtes Wanken
+  }else{carLean*=0.85;m.position.y=a.homeY||0.01;}
+  m.rotation.set(0,carRot,0);m.rotation.z=carLean;
+  camTx=m.position.x;camTz=m.position.z;updCam();}
+document.getElementById("exitCar").onclick=aussteigen;
 function updWork(dt){
   if(MPs&&!mpHost)return;
   var hh=uhrzeit/60;
@@ -1774,7 +1814,8 @@ function tapAt(px,py){
     if(c0){for(var fi2=0;fi2<furn.length;fi2++){var f2=furn[fi2];
       if((f2.id==="herd"||f2.id==="kueche"||f2.id==="grill")&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){kochStart();return;}
       if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}
-      if(f2.id==="stereo"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){tanzStart();return;}}}
+      if(f2.id==="stereo"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){tanzStart();return;}}
+      if(window.autoRec&&window.autoRec.state==="parkt"&&Math.hypot(window.autoRec.mesh.position.x-c0.pt.x,window.autoRec.mesh.position.z-c0.pt.z)<3){einsteigen();return;}}
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
@@ -2237,7 +2278,8 @@ function loop(now){
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
-    updGrow(dt);updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
+    if(fahren){autoFahr(dt);}
+    updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
