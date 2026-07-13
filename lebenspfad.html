@@ -1106,11 +1106,14 @@ function addOutline(group,hex){
 var EYECOLORS=[0x4a2f1a,0x2f6ac8,0x2f8a5f,0x6a45c8,0x9a5a2a,0x3a3a46];
 // Kapsel-Geometrie (Zylinder + zwei Halbkugel-Kappen) via LatheGeometry — dieser THREE-Build hat kein CapsuleGeometry.
 // r=Radius, len=gerader Mittelteil, rad=radiale Segmente, cap=Segmente je Kappe. Zentriert am Ursprung, Gesamthöhe len+2r.
+var _capGeoCache={};
 function capsuleGeo(r,len,rad,cap){
-  rad=rad||(IS_COARSE?8:12);cap=cap||(IS_COARSE?4:5);var pts=[],i,a,h=Math.max(0,len)/2;
+  rad=rad||(IS_COARSE?8:12);cap=cap||(IS_COARSE?4:5);
+  var key=r+"|"+len+"|"+rad+"|"+cap;if(_capGeoCache[key])return _capGeoCache[key]; // Pawns bauen immer dieselben Kapseln
+  var pts=[],i,a,h=Math.max(0,len)/2;
   for(i=0;i<=cap;i++){a=-Math.PI/2+(Math.PI/2)*(i/cap);pts.push(new THREE.Vector2(Math.max(1e-4,Math.cos(a)*r),-h+Math.sin(a)*r));}
   for(i=0;i<=cap;i++){a=(Math.PI/2)*(i/cap);pts.push(new THREE.Vector2(Math.max(1e-4,Math.cos(a)*r),h+Math.sin(a)*r));}
-  return new THREE.LatheGeometry(pts,rad);
+  return (_capGeoCache[key]=new THREE.LatheGeometry(pts,rad));
 }
 function mkPawn(color,cfg){var g=mkPawnMesh(color,cfg);scene.add(g);return g;}
 function mkPawnMesh(color,cfg,onReady){

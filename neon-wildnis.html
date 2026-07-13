@@ -2260,7 +2260,7 @@ addEventListener("touchmove",function(e){if(stickId!==null)stickMove(e);},{passi
 addEventListener("touchend",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
 addEventListener("touchcancel",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
-function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();fn();},{passive:false});b.addEventListener("click",function(e){if(!IS_MOB)fn();});}
+function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 bindTap("bAct",function(){harvest();});
 bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
