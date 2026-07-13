@@ -217,7 +217,7 @@ sun.shadow.camera.left=-34;sun.shadow.camera.right=34;sun.shadow.camera.top=34;s
 function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
 
 // ===================== Grundstück =====================
-var GW=28,GH=20,CS=2; // Zellen x,y · Zellgröße (Riesen-Map 2026-07-12; alt 18x14 → Migration in loadSnapshot)
+var GW=34,GH=24,CS=2; // Open-World 2026-07-13; alt 28x20 / 18x14 → Migration in loadSnapshot
 function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
@@ -240,6 +240,42 @@ var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.heig
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
 ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.material.needsUpdate=true;});
+// ---- Open-World-Landschaft rundherum ----
+(function landschaft(){
+  // Ferne Grasebene (Horizont) unter allem
+  var fern=new THREE.Mesh(new THREE.PlaneGeometry(600,600),new THREE.MeshStandardMaterial({color:0x7ab04a,roughness:1,envMapIntensity:0.18}));
+  fern.rotation.x=-Math.PI/2;fern.position.y=-0.08;fern.receiveShadow=true;scene.add(fern);
+  // Sanfte Huegelkette am Rand (grosse flache Halbkugeln)
+  var hMat=new THREE.MeshStandardMaterial({color:0x6aa044,roughness:1,envMapIntensity:0.16});
+  for(var h=0;h<14;h++){var a=h/14*6.283,r=95+((h*37)%40);
+    var hue=new THREE.Mesh(new THREE.SphereGeometry(14+((h*7)%12),14,8,0,6.283,0,Math.PI/2),hMat);
+    hue.position.set(Math.cos(a)*r,-3-((h*3)%4),Math.sin(a)*r);
+    hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
+  // Blumenfelder (Cluster kleiner farbiger Punkte) auf der fernen Wiese
+  var BF=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43,0xffffff];
+  for(var bf=0;bf<70;bf++){
+    var ba=Math.random()*6.283,br=40+Math.random()*55;
+    var cx0=Math.cos(ba)*br,cz0=Math.sin(ba)*br;
+    if(Math.abs(cx0)<38&&Math.abs(cz0)<30)continue; // nicht im Baubereich
+    var farbe=BF[(Math.random()*BF.length)|0];
+    var grp=new THREE.Group();
+    for(var b2=0;b2<6;b2++){var st=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.4,4),new THREE.MeshStandardMaterial({color:0x3a8a3a,roughness:0.9}));st.position.set((Math.random()-0.5)*1.4,0.2,(Math.random()-0.5)*1.4);grp.add(st);
+      var bl=new THREE.Mesh(new THREE.SphereGeometry(0.12,6,5),new THREE.MeshStandardMaterial({color:farbe,roughness:0.7,emissive:farbe,emissiveIntensity:0.12}));bl.position.set(st.position.x,0.42,st.position.z);grp.add(bl);}
+    grp.position.set(cx0,0,cz0);scene.add(grp);}
+  // Kleiner See in der Ferne
+  var see=new THREE.Mesh(new THREE.CircleGeometry(13,28),new THREE.MeshStandardMaterial({color:0x3a8ac8,roughness:0.1,metalness:0.2,transparent:true,opacity:0.9,envMapIntensity:0.5}));
+  see.rotation.x=-Math.PI/2;see.position.set(-70,-0.03,52);scene.add(see);
+  for(var sr=0;sr<16;sr++){var sa=sr/16*6.283;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.5+Math.sin(sr*3)*0.2,0),new THREE.MeshStandardMaterial({color:sr%2?0x9a9a92:0x7a7a72,roughness:0.9}));stein.position.set(-70+Math.cos(sa)*13.4,0.1,52+Math.sin(sa)*13.4);scene.add(stein);}
+  // Viele Baeume rings um die Stadt (prozedural, gestreut)
+  function baum2(x,z,k){var b=new THREE.Group();
+    var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
+    for(var c=0;c<3;c++){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.1-c*0.22,9,7),new THREE.MeshStandardMaterial({color:c%2?0x3a7a3a:0x4a8a44,roughness:0.85,envMapIntensity:0.2}));kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
+    b.scale.setScalar(k||1);b.position.set(x,0,z);scene.add(b);}
+  for(var t2=0;t2<40;t2++){var ta=Math.random()*6.283,tr=48+Math.random()*70;
+    var tx=Math.cos(ta)*tr,tz=Math.sin(ta)*tr;
+    if(Math.abs(tx)<44&&Math.abs(tz)<34)continue;
+    baum2(tx,tz,0.8+Math.random()*0.8);}
+})();
 // ---- Wetter & Jahreszeiten ----
 var wetter="sonne";
 var SAISON=[["🌸 Frühling",0xc8f0b8],["☀️ Sommer",0xffffff],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]];
@@ -305,7 +341,7 @@ var bordstein=new THREE.Mesh(new THREE.BoxGeometry(140,0.18,0.5),stdMat(0xb8b8b0
 bordstein.position.set(0,0.09,GH*CS/2+8.3);bordstein.receiveShadow=true;scene.add(bordstein);
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
-    [[-34,-24],[36,-20],[-33,24],[37,22]].forEach(function(p,i){
+    [[-42,-30],[44,-26],[-41,30],[45,28]].forEach(function(p,i){
       var t=g.scene.clone(true);var box=new THREE.Box3().setFromObject(t),sz=new THREE.Vector3();box.getSize(sz);
       var k=(7+i%2*2)/(sz.y||1);t.scale.setScalar(k);
       var b2=new THREE.Box3().setFromObject(t);t.position.set(p[0],-b2.min.y-0.02,p[1]);
@@ -454,7 +490,7 @@ setTimeout(function baueVerkehr(){
   var schild=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.4,0.06),new THREE.MeshStandardMaterial({color:0x222228,emissive:0xffa040,emissiveIntensity:0.8}));
   schild.position.set(2.6,2.35,1.16);bg.add(schild);
   scene.add(bg);
-  busRec={mesh:bg,pos:-70,speed:5.5,wartet:0,z:SZ+10.4};
+  busRec={mesh:bg,pos:-70,speed:4,wartet:0,z:SZ+10.4};
   // Haltestelle vor dem Grundstueck
   var hs=new THREE.Group();
   var mast2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,7),stdMat(0x3a3a42,0.5));mast2.position.y=1.3;hs.add(mast2);
@@ -473,8 +509,9 @@ function updVerkehr(dt){
   if(busRec){
     if(busRec.wartet>0){busRec.wartet-=dt;}
     else{var prev9=busRec.pos;busRec.pos+=busRec.speed*dt;
-      if(busRec.pos>72)busRec.pos=-72;
-      if(prev9<-8&&busRec.pos>=-8)busRec.wartet=3;}
+      var rand9=GW*CS/2+30;
+      if(busRec.pos>rand9)busRec.pos=-rand9; // Rueckkehr weit ausserhalb der Sicht
+      if(prev9<-8&&busRec.pos>=-8)busRec.wartet=4;}
     busRec.mesh.position.set(busRec.pos,0,busRec.z);
     busRec.mesh.rotation.y=Math.PI/2;}}
 // ---- Fussgaenger auf den Gehwegen (Ambiente) ----
