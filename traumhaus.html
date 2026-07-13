@@ -61,6 +61,10 @@ canvas{display:block}
 #chatMsgs b{color:#c05a2a}
 #chatRow{display:flex;border-top:1px solid #eee}
 #chatIn{flex:1;border:0;padding:10px;font-size:16px;background:transparent}
+#emoteToggle{position:fixed;right:10px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.5rem;cursor:pointer;display:none}
+#emoteBar{position:fixed;right:10px;bottom:calc(122px + env(safe-area-inset-bottom));z-index:22;display:none;flex-direction:column;gap:6px}
+#emoteBar button{width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
+#emoteBar button:active{transform:scale(.9)}
 #chatSend{border:0;background:#ffd166;padding:0 14px;cursor:pointer;font-weight:800;border-radius:0 0 12px 0}
 #chatToggle{position:fixed;left:66px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:2px solid #e8b04a;background:rgba(255,253,246,.94);border-radius:50%;width:48px;height:48px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:cblink 1s infinite}
@@ -84,6 +88,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:linear-gradient(90deg,#1a4a2a,#3a6a3a);box-shadow:0 8px 24px rgba(30,80,40,.5)">🌿 Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat">💬</button>
+<button id="emoteToggle" title="Emotes">😊</button>
+<div id="emoteBar"></div>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
   <button class="tbtn" id="piWink" title="Winken">👋</button>
   <button class="tbtn" id="piGift" title="Überraschung schenken">🎁</button>
@@ -967,6 +973,7 @@ function onNetMsg(m){
   else if(m.t==="del")doDelete(m.x,m.y,true);
   else if(m.t==="geld"){if(m.d!==undefined){geld+=m.d;geldLast+=m.d;}else{geld=m.v;geldLast=geld;}updHUD();}
   else if(m.t==="chat")chatAdd(m.n,m.x);
+  else if(m.t==="emote")onEmote(m.si,m.k);
   else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
   else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
@@ -1018,6 +1025,19 @@ function partnerAct(k,silent,fromName){
 document.getElementById("piWink").onclick=function(){partnerAct("wink");};
 document.getElementById("piGift").onclick=function(){partnerAct("gift");};
 document.getElementById("piDance").onclick=function(){partnerAct("dance");};
+function meinSi(){return (MPs&&!mpHost)?1:0;}
+var EMOTES=[["😍","liebe"],["❤️","herz"],["👋","winken"],["😂","lachen"],["🎉","party"],["👍","daumen"],["😮","wow"],["🧡","danke"]];
+function doEmote(k){
+  var si=meinSi(),s9=sims[si];if(!s9)return;
+  simEmoji(s9,k);
+  if(k==="❤️"||k==="😍")hearts(s9.x,s9.z);
+  beep(660,.06,"sine",.04);
+  netSend({t:"emote",si:si,k:k});}
+function onEmote(si,k){var s9=sims[si];if(!s9)return;simEmoji(s9,k);if(k==="❤️"||k==="😍")hearts(s9.x,s9.z);}
+(function(){var et=document.getElementById("emoteToggle"),eb=document.getElementById("emoteBar");
+  EMOTES.forEach(function(e9){var b=document.createElement("button");b.textContent=e9[0];
+    b.onclick=function(){doEmote(e9[0]);};eb.appendChild(b);});
+  et.onclick=function(){eb.style.display=eb.style.display==="flex"?"none":"flex";};})();
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
@@ -2157,6 +2177,7 @@ function loop(now){
     updGrow(dt);updBeete(dt);updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
+    document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
