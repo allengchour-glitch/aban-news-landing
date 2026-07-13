@@ -575,9 +575,20 @@ function spawnMonster(){
   m.position.set(x,groundH(x,z),z);scene.add(m);
   monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});
 }
-function spawnBoss(){ // 🐉 Nacht-Boss — Drache (Meshy) falls geladen, sonst SERAPH-Slime
+function spawnBoss(){ // 🐉 Nacht-Boss — abwechselnd Meshy-Drache / Quaternius-Drache / SERAPH-Slime
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
   var hp=28+nights*10;
+  if(rnd()<0.5&&THREE.GLTFLoader){ // 🐲 Quaternius-Drache (geskinnt): frisch laden + auf Zielhöhe normieren
+    (function(xx,zz,hh2){new THREE.GLTFLoader().load("/models/mn_dragon.glb",function(g){
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      var bb=new THREE.Box3().setFromObject(o),bh=Math.max(0.001,bb.max.y-bb.min.y);
+      var k=Math.max(0.02,Math.min(12,6.5/bh));o.scale.setScalar(k);
+      o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
+      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:rnd()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6});
+      var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="🐲 URDRACHE";
+    },undefined,function(){});})(x,z,hp);
+    return;
+  }
   if(typeof cc0inst==="function"&&cc0proto&&cc0proto["mob_dragon"]){ // 🐉 Drachen-Boss
     var dm=cc0inst("mob_dragon",7);var fit=dm.scale.x;
     dm.traverse(function(n){if(n.isMesh)n.castShadow=true;});
@@ -797,6 +808,49 @@ function updAmbient(dt){
   // 💧 Teich-Schimmer
   if(window._wildPonds)for(var p=0;p<window._wildPonds.length;p++){var pd=window._wildPonds[p];pd.ph+=dt*1.5;
     pd.m.material.emissiveIntensity=0.42+Math.sin(pd.ph)*0.16;pd.m.material.opacity=0.76+Math.sin(pd.ph*0.7)*0.09;}
+}
+// ✨🐟🌠 Noch mehr Leben: Lagerfeuer-Funken, Fischsprünge, Sternschnuppen (geteilte Geometrien, kleine Pools)
+var sparks=[],fishes=[],shoots=[];
+(function(){
+  var sg=new THREE.SphereGeometry(0.05,5,4);
+  for(var i=0;i<14;i++){var m=new THREE.Mesh(sg,new THREE.MeshBasicMaterial({color:0xffb347,transparent:true}));m.visible=false;scene.add(m);sparks.push({m:m,t:0,vx:0,vy:0,vz:0});}
+  var fg=new THREE.SphereGeometry(0.16,7,6);
+  for(var f=0;f<4;f++){var fm=new THREE.Mesh(fg,new THREE.MeshBasicMaterial({color:0x9fd8ef}));fm.scale.set(1,0.6,1.6);fm.visible=false;scene.add(fm);fishes.push({m:fm,t:4+f*3,ph:9});}
+  var stg=new THREE.CylinderGeometry(0.02,0.06,2.6,4);
+  for(var s2=0;s2<3;s2++){var sm=new THREE.Mesh(stg,new THREE.MeshBasicMaterial({color:0xfff8d8,transparent:true}));sm.visible=false;scene.add(sm);shoots.push({m:sm,t:3+s2*5,life:0});}
+})();
+function updLively(dt){
+  // ✨ Funken am nächsten Dorf-/Lagerfeuer
+  var fire=null,best=1e9;
+  for(var i=0;i<worldProps.length;i++){var p2=worldProps[i];if(!p2.flick)continue;
+    var d=Math.hypot(p2.mesh.position.x-player.position.x,p2.mesh.position.z-player.position.z);if(d<best){best=d;fire=p2.mesh;}}
+  for(var si=0;si<sparks.length;si++){var sp=sparks[si];
+    if(sp.t<=0){if(fire&&best<40&&rnd()<0.25){sp.t=0.9+rnd()*0.6;sp.m.visible=true;
+        sp.m.position.set(fire.position.x+(rnd()-0.5)*0.5,fire.position.y+0.4,fire.position.z+(rnd()-0.5)*0.5);
+        sp.vx=(rnd()-0.5)*0.6;sp.vz=(rnd()-0.5)*0.6;sp.vy=1.6+rnd();}
+      else sp.m.visible=false;continue;}
+    sp.t-=dt;sp.m.position.x+=sp.vx*dt;sp.m.position.y+=sp.vy*dt;sp.m.position.z+=sp.vz*dt;sp.vy-=dt*0.8;
+    sp.m.material.opacity=Math.max(0,sp.t);if(sp.t<=0)sp.m.visible=false;}
+  // 🐟 Fischsprünge in Teichen nahe dem Spieler
+  if(window._ducks&&window._ducks.length)for(var fi2=0;fi2<fishes.length;fi2++){var F=fishes[fi2];
+    if(F.ph<Math.PI){F.ph+=dt*2.4;
+      if(F.ph>=Math.PI){F.m.visible=false;}
+      else{F.m.position.set(F.cx,F.y0+Math.sin(F.ph)*F.jump,F.cz);F.m.rotation.z=(F.ph-1.57)*1.2;}
+      continue;}
+    F.t-=dt;
+    if(F.t<=0){F.t=6+rnd()*10;
+      var near=window._ducks.filter(function(pd){return Math.hypot(pd.cx-player.position.x,pd.cz-player.position.z)<70;});
+      if(near.length){var pd2=near[(rnd()*near.length)|0];
+        F.cx=pd2.cx+(rnd()-0.5)*pd2.r;F.cz=pd2.cz+(rnd()-0.5)*pd2.r;F.y0=pd2.y0-0.15;F.ph=0;F.jump=1.2+rnd()*0.6;F.m.visible=true;}}}
+  // 🌠 Sternschnuppen (nur nachts)
+  for(var sh=0;sh<shoots.length;sh++){var S=shoots[sh];
+    if(!isNight){S.m.visible=false;continue;}
+    if(S.life>0){S.life-=dt;S.m.position.x+=S.vx*dt;S.m.position.y+=S.vy*dt;
+      S.m.material.opacity=Math.max(0,S.life);if(S.life<=0)S.m.visible=false;continue;}
+    S.t-=dt;
+    if(S.t<=0){S.t=7+rnd()*14;S.life=1.1;S.m.visible=true;S.m.material.opacity=1;
+      S.m.position.set(player.position.x+(rnd()-0.5)*80,46+rnd()*14,player.position.z-30-rnd()*30);
+      S.vx=-8-rnd()*6;S.vy=-7-rnd()*4;S.m.rotation.z=Math.atan2(S.vy,S.vx)+1.57;}}
 }
 
 // ---------- Fund-Objekte: Truhen & Ruinen ----------
@@ -2275,7 +2329,7 @@ function frame(now){
   player.position.y=groundH(player.position.x,player.position.z);
 
   updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
-  updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);
+  updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
