@@ -1261,7 +1261,7 @@ function cb_damage(d){if(!CB.active)return;CB.hp-=d;
     burst(cbBoss.position.x,cbBoss.position.z,CB_COLOSSI[CB.kind].c1);spawnRing(cbBoss.position.x,cbBoss.position.z,CB_COLOSSI[CB.kind].c2,1,16,0.6);}
   if(CB.hp<=0)cb_down();}
 // Telegraf-/Projektil-Schaden gegen survivors HP-System (kurze Schutzzeit gegen Doppel-Treffer)
-function cb_hitPlayer(dmg){if(!running||!(dmg>0))return;if(S.cbIfr>0||S.skIfr>0)return;S.cbIfr=0.55;
+function cb_hitPlayer(dmg){if(!running||!(dmg>0)||p1Down>0)return;if(S.cbIfr>0||S.skIfr>0)return;S.cbIfr=0.55;
   S.hp-=dmg;hurt=Math.max(hurt,0.75);shake=Math.max(shake,0.4);beep(140,.18,"sawtooth",.07);burst(player.position.x,player.position.z,0xff4d6d);}
 // Boss-KI: Attack-Timeline pro Koloss/Phase (portiert aus colossus bossThink)
 function cb_think(dt){
@@ -1321,10 +1321,10 @@ function cb_update(dt){
     if(CB.kind===2&&cbBoss.userData.hand&&CB.phase>=2&&CB.intro<=0){var ha=cbBoss.userData.hand.rotation.y,
       dpx=player.position.x-cbBoss.position.x,dpz=player.position.z-cbBoss.position.z,pdist=Math.hypot(dpx,dpz),pang=Math.atan2(dpz,dpx),
       da2=Math.abs(((pang-(-ha))+Math.PI*3)%(Math.PI*2)-Math.PI);
-      if(pdist<8&&da2<0.14&&!(S.skIfr>0)){S.hp-=13*dt;hurt=Math.max(hurt,0.5);}}
+      if(pdist<8&&da2<0.14&&!(S.skIfr>0)&&p1Down<=0){S.hp-=13*dt;hurt=Math.max(hurt,0.5);}}
     // Koerperkontakt mit dem Koloss
     var cdx=player.position.x-cbBoss.position.x,cdz=player.position.z-cbBoss.position.z;
-    if(cdx*cdx+cdz*cdz<16&&!(S.skIfr>0)){S.hp-=10*dt;hurt=Math.max(hurt,0.4);}
+    if(cdx*cdx+cdz*cdz<16&&!(S.skIfr>0)&&p1Down<=0){S.hp-=10*dt;hurt=Math.max(hurt,0.4);}
     document.getElementById("cbHp").style.width=(100*Math.max(0,CB.hp)/CB.max)+"%";
   }
   // Boss-Projektile (Homing → Spieler)
@@ -1632,6 +1632,426 @@ function updSkillUI(){var cds=S.skCD||{};
     var lockEl=bEl.querySelector(".sklock");if(lockEl)lockEl.textContent=locked?("Lv"+sk2.unlock):"";
     var cdEl=bEl.querySelector(".skcd");
     if(cdEl)cdEl.style.background=(!locked&&cdv>0)?("conic-gradient(rgba(5,7,16,.78) "+Math.round(360*Math.min(1,cdv/sk2.max))+"deg, rgba(0,0,0,0) 0deg)"):"none";}}
+/* ================= KOOP (Neon-Fusion Phase 3, Muster neon-duo): =================
+   coopMode: null (solo) | 'ai' (KI-Partner) | 'host' (Online, simuliert alles) | 'client' (Online, rendert + Input)
+   Host-autoritativ: Host simuliert, sendet ~15 kompakte Snapshots/s (sendFast) + Events (send, reliable);
+   Client sendet nur seinen Move-Vektor. P2 teilt den Build (S.weapons) — eigenes Auto-Feuer via Positions-Swap. */
+var coopMode=null,P2=null,p1Down=0,p1Rev=0,coopTagBase="";
+var netSess=null,netIn=null,netInT=0,snapAcc=0,inAcc=0,kaLast=0,pendingMap=null,curMapIdx=0;
+var np1={x:0,z:0,ry:0},netP2={x:3,z:3},cliMv={x:0,z:0};
+var cliSt=[],cliStSig="",cliCb={on:false,kind:0,tx:0,tz:0};
+function coopOn(){return !!(coopMode&&P2&&P2.active);}
+function mkP2(){ /* zweite Spielerfigur: warm getönter Neon-Buddy (orange) */
+  var g=new THREE.Group();g.position.set(3,0.9,3);scene.add(g);
+  var bm=new THREE.MeshStandardMaterial({color:0xffa03c,emissive:0x5a2c10,emissiveIntensity:0.3,roughness:0.5});
+  var body=new THREE.Mesh(new THREE.SphereGeometry(0.62,20,16),bm);body.scale.set(1,1.08,0.94);g.add(body);
+  var belly=new THREE.Mesh(new THREE.SphereGeometry(0.42,16,12),new THREE.MeshStandardMaterial({color:0xffe6c8,emissive:0x8a5a2c,emissiveIntensity:0.25,roughness:0.5}));
+  belly.position.set(0,-0.08,0.34);belly.scale.set(1,0.98,0.5);g.add(belly);
+  var ew=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0x223047,emissiveIntensity:0.12,roughness:0.25});
+  var pu=new THREE.MeshBasicMaterial({color:0x120e1e});
+  var eL=new THREE.Group(),eR=new THREE.Group();
+  eL.add(new THREE.Mesh(new THREE.SphereGeometry(0.24,14,10),ew));eR.add(new THREE.Mesh(new THREE.SphereGeometry(0.24,14,10),ew));
+  var pL=new THREE.Mesh(new THREE.SphereGeometry(0.13,10,8),pu);pL.position.z=0.15;eL.add(pL);
+  var pR=pL.clone();eR.add(pR);
+  eL.position.set(-0.24,0.3,0.44);eR.position.set(0.24,0.3,0.44);g.add(eL);g.add(eR);
+  var ring=new THREE.Mesh(new THREE.TorusGeometry(0.62,0.06,8,20),new THREE.MeshStandardMaterial({color:0xffcf6e,emissive:0xffcf6e,emissiveIntensity:0.7,flatShading:true}));
+  ring.rotation.x=Math.PI/2;ring.position.y=-0.5;g.add(ring);
+  var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.42,6),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffcf6e,emissiveIntensity:0.9}));ant.position.set(0,0.78,0);g.add(ant);
+  var ab=new THREE.Mesh(new THREE.SphereGeometry(0.1,10,8),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffcf6e,emissiveIntensity:1.1}));ab.position.set(0,1.02,0);g.add(ab);
+  return {g:g,bm:bm,ring:ring,hp:100,maxhp:100,down:0,rev:0,vx:0,vz:0,active:false};
+}
+function setCoopTag(){
+  coopTagBase=coopMode==='ai'?"🤖 KI-Partner":(coopMode==='host'?"🌐 Partner (online)":(coopMode==='client'?"🌐 DU (P2) — Partner hostet":""));
+  var tg=document.getElementById("p2tag");if(tg)tg.textContent=coopTagBase;
+}
+function coopSetup(){ /* nach reset()/applyMap() in start(): P2 aktivieren + HUD umschalten */
+  var on=!!coopMode;
+  if(on&&!P2)P2=mkP2();
+  p1Down=0;p1Rev=0;player.rotation.z=0;
+  if(P2){
+    P2.active=on;P2.g.visible=on;
+    P2.maxhp=Math.round(S.maxhp);P2.hp=P2.maxhp;P2.down=0;P2.rev=0;P2.vx=0;P2.vz=0;
+    P2.g.position.set(Math.min(ARENA-1,player.position.x+3),0.9,Math.min(ARENA-1,player.position.z+2));
+    P2.g.rotation.set(0,0,0);
+    netP2.x=P2.g.position.x;netP2.z=P2.g.position.z;
+  }
+  S.wt2={};np1={x:player.position.x,z:player.position.z,ry:0};
+  cliClear();snapAcc=0;inAcc=0;
+  var w=document.getElementById("hp2wrap");if(w)w.classList.toggle("hide",!on);
+  setCoopTag();
+  if(coopMode==='client')showTouchBtns(false); /* Skills/Ability liegen beim Host (P1) */
+}
+function coopHUD(){ /* P2-HP-Balken + Down-/Revive-Status (von updHUD aufgerufen) */
+  if(!coopOn())return;
+  var f2=document.getElementById("hp2Fill");if(f2)f2.style.width=(100*Math.max(0,P2.hp)/(P2.maxhp||1))+"%";
+  var tg=document.getElementById("p2tag");if(!tg)return;
+  var txt=coopTagBase,cli=(coopMode==='client'); /* Client IST P2 — Beschriftung spiegeln */
+  if(P2.down>0)txt=cli?("⛑ DU bist am Boden — Partner kommt! "+Math.ceil(P2.down)+"s"):("⛑ Partner am Boden — hin! "+Math.ceil(P2.down)+"s ("+Math.round(Math.min(1,P2.rev/3)*100)+"%)");
+  else if(p1Down>0)txt=cli?("⛑ Partner am Boden — hin! "+Math.ceil(p1Down)+"s ("+Math.round(Math.min(1,p1Rev/3)*100)+"%)"):("⛑ DU bist am Boden! "+Math.ceil(p1Down)+"s");
+  if(tg.textContent!==txt)tg.textContent=txt;
+}
+function nearPl(x,z){ /* nächster lebender Spieler — Loot/XP/Schrott sind EIN geteilter Pool */
+  if(!coopOn()||P2.down>0)return player.position;
+  if(p1Down>0)return P2.g.position;
+  var d1=(player.position.x-x)*(player.position.x-x)+(player.position.z-z)*(player.position.z-z);
+  var d2=(P2.g.position.x-x)*(P2.g.position.x-x)+(P2.g.position.z-z)*(P2.g.position.z-z);
+  return d2<d1?P2.g.position:player.position;
+}
+function p2Damage(d){if(!coopOn()||P2.down>0)return;P2.hp-=d;if(P2.hp<=0){P2.hp=0;p2DownFn();}}
+function p2DownFn(){P2.down=20;P2.rev=0;P2.vx=0;P2.vz=0;
+  burst(P2.g.position.x,P2.g.position.z,0xff9a3c);beep(90,.5,"sawtooth",.08);shake=Math.max(shake,0.8);
+  if(p1Down>0){gameOver();return;} /* beide am Boden = Game Over */
+  announce("⛑ PARTNER AM BODEN — hin und wiederbeleben!");}
+function p1DownFn(){p1Down=20;p1Rev=0;hurt=1;
+  burst(player.position.x,player.position.z,0xff2f6f);beep(90,.5,"sawtooth",.08);shake=1.0;
+  if(coopOn()&&P2.down>0){gameOver();return;}
+  announce("⛑ DU BIST AM BODEN — Partner muss dich retten!");}
+function p2Revive(){P2.down=0;P2.rev=0;P2.hp=Math.round(P2.maxhp*0.5);
+  announce("💚 PARTNER IST ZURÜCK!");beep(880,.3,"triangle",.08);
+  burst(P2.g.position.x,P2.g.position.z,0x6aff9e);spawnRing(P2.g.position.x,P2.g.position.z,0x6aff9e,0.6,6,0.5);}
+function p1ReviveFn(){p1Down=0;p1Rev=0;S.hp=Math.round(S.maxhp*0.5);
+  announce("💚 ZURÜCK IM KAMPF!");beep(880,.3,"triangle",.08);
+  burst(player.position.x,player.position.z,0x6aff9e);spawnRing(player.position.x,player.position.z,0x6aff9e,0.6,6,0.5);}
+function updAI(dt){ /* KI-Partner (Port von duos updAI): folgt mit Abstand ~6, weicht aus, eilt zum Gefallenen */
+  if(!P2||P2.down>0)return;
+  var tx,tz;
+  if(p1Down>0){tx=player.position.x;tz=player.position.z;}
+  else{
+    var a=Math.atan2(P2.g.position.z-player.position.z,P2.g.position.x-player.position.x);
+    tx=player.position.x+Math.cos(a)*6;tz=player.position.z+Math.sin(a)*6;
+    for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.cbProxy)continue;
+      var d=Math.hypot(e.m.position.x-P2.g.position.x,e.m.position.z-P2.g.position.z);
+      if(d<4){var fa=Math.atan2(P2.g.position.z-e.m.position.z,P2.g.position.x-e.m.position.x);
+        tx=P2.g.position.x+Math.cos(fa)*5;tz=P2.g.position.z+Math.sin(fa)*5;break;}}
+  }
+  tx=Math.max(-ARENA+1,Math.min(ARENA-1,tx));tz=Math.max(-ARENA+1,Math.min(ARENA-1,tz));
+  var dd=Math.hypot(tx-P2.g.position.x,tz-P2.g.position.z);
+  if(dd>1.2){var ang=Math.atan2(tz-P2.g.position.z,tx-P2.g.position.x),sp=(p1Down>0?13:10);
+    P2.vx+=(Math.cos(ang)*sp-P2.vx)*Math.min(1,dt*8);P2.vz+=(Math.sin(ang)*sp-P2.vz)*Math.min(1,dt*8);}
+  else{var dmp=Math.pow(0.8,dt*60);P2.vx*=dmp;P2.vz*=dmp;}
+}
+function hostApplyInput(dt){ /* Host: Move-Vektor des Clients auf P2 anwenden (host-autoritativ) */
+  if(!P2||P2.down>0)return;
+  var nx=0,nz=0;
+  if(netIn&&performance.now()-netInT<600){nx=+netIn.x||0;nz=+netIn.z||0;}
+  var nl=Math.hypot(nx,nz);if(nl>1){nx/=nl;nz/=nl;}
+  var sp=S.speed||10;
+  P2.vx+=(nx*sp-P2.vx)*Math.min(1,dt*10);P2.vz+=(nz*sp-P2.vz)*Math.min(1,dt*10);
+}
+function p2WeaponTick(dt){ /* geteilter Build: P2 feuert dieselben Waffen aus eigener Position (eigene Takte S.wt2) */
+  if(!S.wt2)S.wt2={};
+  var px=player.position.x,pz=player.position.z;
+  player.position.x=P2.g.position.x;player.position.z=P2.g.position.z;
+  var wt=S.wt;S.wt=S.wt2;
+  try{weaponTick(dt);}catch(e){}
+  S.wt2=S.wt;S.wt=wt;
+  player.position.x=px;player.position.z=pz;
+}
+function p2Vis(dt){ /* Optik: Lauf-Wippen, Blickrichtung, Down-Kippen */
+  if(!P2||!P2.active)return;
+  var sp=Math.hypot(P2.vx,P2.vz);
+  P2.g.rotation.z+=((P2.down>0?1.2:0)-P2.g.rotation.z)*Math.min(1,dt*8);
+  if(P2.down<=0&&sp>1.2)P2.g.rotation.y=Math.atan2(P2.vx,P2.vz);
+  P2.g.position.y=0.9+(P2.down>0?-0.25:Math.abs(Math.sin(S.t*12))*Math.min(0.12,sp*0.012)+Math.sin(S.t*2.6)*0.03);
+  if(P2.ring)P2.ring.rotation.z+=dt*1.7;
+  P2.bm.emissive.setHex(P2.down>0?0x661111:0x5a2c10);
+}
+function coopSimP2(dt){ /* Simulation (lokal/Host): P2 bewegen + feuern, Down-/Revive-Logik beider Spieler */
+  if(coopOn()){
+    if(P2.down>0){ /* Partner blutet aus — P1 kann per Nähe (3s) wiederbeleben */
+      P2.down-=dt;
+      if(P2.down<=0){gameOver();return;}
+      var dR=Math.hypot(player.position.x-P2.g.position.x,player.position.z-P2.g.position.z);
+      if(p1Down<=0&&dR<3){P2.rev+=dt;if((frame&15)===0)spawnRing(P2.g.position.x,P2.g.position.z,0x6aff9e,0.4,2.6,0.4);if(P2.rev>=3)p2Revive();}
+      else P2.rev=Math.max(0,P2.rev-dt*0.5);
+    }else{
+      if(coopMode==='ai')updAI(dt);
+      else if(coopMode==='host')hostApplyInput(dt);
+      P2.g.position.x=Math.max(-ARENA,Math.min(ARENA,P2.g.position.x+P2.vx*dt));
+      P2.g.position.z=Math.max(-ARENA,Math.min(ARENA,P2.g.position.z+P2.vz*dt));
+      p2WeaponTick(dt);
+    }
+    if(p1Down>0){ /* P1 blutet aus — P2 (KI läuft selbst hin) belebt per Nähe wieder */
+      p1Down-=dt;
+      if(p1Down<=0){gameOver();return;}
+      var d1=Math.hypot(player.position.x-P2.g.position.x,player.position.z-P2.g.position.z);
+      if(P2.down<=0&&d1<3){p1Rev+=dt;if((frame&15)===0)spawnRing(player.position.x,player.position.z,0x6aff9e,0.4,2.6,0.4);if(p1Rev>=3)p1ReviveFn();}
+      else p1Rev=Math.max(0,p1Rev-dt*0.5);
+    }
+    p2Vis(dt);
+  }
+  player.rotation.z+=((p1Down>0?1.2:0)-player.rotation.z)*Math.min(1,dt*8);
+}
+/* ---------------- Online-Koop: Protokoll (Snapshots + Events) ---------------- */
+function netEv(o){if(netSess){try{netSess.send(o);}catch(e){}}}
+function buildSnap(){ /* kompakter Host-Frame: Spieler, HP/Down, XP/Welle, Gegner (Pool-Index), Schüsse, Bauten, Koloss */
+  var en=[],i;
+  for(i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.cbProxy)continue;
+    en.push([i,+e.m.position.x.toFixed(1),+e.m.position.z.toFixed(1),+(e.bs||1).toFixed(2),e.m.material.color.getHex()]);}
+  var eb=[];
+  for(i=0;i<ebullets.length;i++){var b=ebullets[i];if(b.active)eb.push([+b.m.position.x.toFixed(1),+b.m.position.z.toFixed(1)]);}
+  var st=[];
+  for(i=0;i<structures.length;i++)st.push([structures[i].type,Math.round(structures[i].x),Math.round(structures[i].z)]);
+  return {k:'s',t:+S.t.toFixed(1),h1:Math.round(S.hp),m1:Math.round(S.maxhp),h2:P2?Math.round(P2.hp):0,m2:P2?Math.round(P2.maxhp):100,
+    d1:+p1Down.toFixed(1),d2:P2?+P2.down.toFixed(1):0,r1:+p1Rev.toFixed(2),r2:P2?+P2.rev.toFixed(2):0,
+    lv:S.lvl,xp:+S.xp.toFixed(1),xn:S.xpNeed,k2:S.kills,wv:S.wave,sc:S.scrap,
+    p1:[+player.position.x.toFixed(2),+player.position.z.toFixed(2),+player.rotation.y.toFixed(2)],
+    p2:P2?[+P2.g.position.x.toFixed(2),+P2.g.position.z.toFixed(2)]:[0,0],
+    cb:CB.active?[CB.kind,+cbBoss.position.x.toFixed(1),+cbBoss.position.z.toFixed(1),Math.round(Math.max(0,CB.hp)),CB.max]:0,
+    en:en,eb:eb,st:st};
+}
+function hostNetFrame(dt){snapAcc+=dt;if(snapAcc>=0.066&&netSess){snapAcc=0;try{netSess.sendFast(buildSnap());}catch(e){}}}
+function cliClear(){ /* Client-Spiegel aufräumen (Strukturen + Koloss) */
+  for(var i=0;i<cliSt.length;i++)scene.remove(cliSt[i]);
+  cliSt.length=0;cliStSig="";
+  if(cliCb.on){cliCb.on=false;cbBoss.visible=false;var bar=document.getElementById("cbBar");if(bar)bar.classList.add("hide");}
+}
+function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD-Zustand übernehmen) */
+  np1.x=m.p1[0];np1.z=m.p1[1];np1.ry=m.p1[2];
+  netP2.x=m.p2[0];netP2.z=m.p2[1];
+  var i;
+  if(coopMode==='client'){
+    if(P2){if(m.h2<P2.hp){hurt=Math.max(hurt,0.6);shake=Math.max(shake,0.25);beep(140,.14,"sawtooth",.05);}
+      P2.hp=m.h2;P2.maxhp=m.m2||100;P2.down=m.d2;P2.rev=m.r2||0;}
+    S.hp=m.h1;S.maxhp=m.m1;p1Down=m.d1;p1Rev=m.r1||0;
+    S.lvl=m.lv;S.xp=m.xp;S.xpNeed=m.xn;S.kills=m.k2;S.wave=m.wv;S.t=m.t;
+    if(S.scrap!==m.sc){S.scrap=m.sc;updateScrapHUD();}
+  }
+  /* Gegner nach Pool-Index spiegeln (Pools starten auf beiden Seiten leer und identisch indiziert) */
+  var seen={};
+  for(i=0;i<m.en.length;i++){var a=m.en[i],idx=a[0];
+    while(enemies.length<=idx){var fe=enemyMesh();fe.m.visible=false;fe.m.position.y=-99;enemies.push(fe);}
+    var e=enemies[idx];if(!e||e.cbProxy)continue;seen[idx]=1;
+    if(!e.active){e.active=true;e.m.visible=true;e.m.position.set(a[1],0.7,a[2]);e.hp=1;}
+    e._tx=a[1];e._tz=a[2];
+    if(e._sc!==a[3]){e._sc=a[3];e.m.scale.set(a[3],a[3],a[3]);}
+    if(e._col!==a[4]){e._col=a[4];e.m.material.color.setHex(a[4]);e.m.material.emissive.setHex(a[4]);e.baseEmissive=a[4];}
+  }
+  if(coopMode!=='client')return; /* netSim auf dem Host: nur Spiegel-Ziele prüfen, nichts zerstören */
+  for(i=0;i<enemies.length;i++){var e2=enemies[i];
+    if(e2.active&&!e2.cbProxy&&!seen[i]){burst(e2.m.position.x,e2.m.position.z,e2._col||0xff5577);e2.active=false;e2.m.visible=false;e2.m.position.y=-99;}}
+  var nb=(m.eb||[]).length;
+  for(i=0;i<Math.max(nb,ebullets.length);i++){
+    if(i<nb){var bb=(i<ebullets.length)?ebullets[i]:(ebullets.push(ebulletMesh()),ebullets[i]);
+      bb.active=true;bb.m.visible=true;bb.m.position.set(m.eb[i][0],0.8,m.eb[i][1]);}
+    else if(i<ebullets.length&&ebullets[i].active){ebullets[i].active=false;ebullets[i].m.visible=false;ebullets[i].m.position.y=-99;}
+  }
+  var sig=(m.st||[]).join("|");
+  if(sig!==cliStSig){cliStSig=sig;
+    for(i=0;i<cliSt.length;i++)scene.remove(cliSt[i]);cliSt.length=0;
+    for(i=0;i<(m.st||[]).length;i++){var g2=makeStruct(m.st[i][0]);g2.position.set(m.st[i][1],0,m.st[i][2]);scene.add(g2);cliSt.push(g2);}}
+  if(m.cb){
+    if(!cliCb.on||cliCb.kind!==m.cb[0]){cliCb.on=true;cliCb.kind=m.cb[0];
+      var c=CB_COLOSSI[m.cb[0]];cb_buildBoss(m.cb[0],c.c1,c.c2);cbBoss.position.set(m.cb[1],3.6,m.cb[2]);
+      document.getElementById("cbName").textContent=c.name;document.getElementById("cbBar").classList.remove("hide");}
+    cliCb.tx=m.cb[1];cliCb.tz=m.cb[2];
+    document.getElementById("cbHp").style.width=(100*Math.max(0,m.cb[3])/(m.cb[4]||1))+"%";
+  }else if(cliCb.on){cliCb.on=false;cbBoss.visible=false;document.getElementById("cbBar").classList.add("hide");
+    burst(cbBoss.position.x,cbBoss.position.z,0xffd166);shake=Math.max(shake,0.8);}
+  updHUD();
+}
+function clientFrame(dt){ /* Online-Client: eigene Figur (Vorhersage + sanfte Host-Korrektur), Welt interpolieren, Input senden */
+  S.t+=dt;
+  if(P2&&P2.active){
+    if(P2.down<=0){
+      var mx=0,mz=0;
+      if(keys["a"]||keys["arrowleft"])mx-=1;if(keys["d"]||keys["arrowright"])mx+=1;
+      if(keys["w"]||keys["arrowup"])mz-=1;if(keys["s"]||keys["arrowdown"])mz+=1;
+      if(touch){var dxT=touch.x-touch.sx,dyT=touch.y-touch.sy;if(Math.hypot(dxT,dyT)>12){mx=dxT/46;mz=dyT/46;}}
+      var ml=Math.hypot(mx,mz);if(ml>1){mx/=ml;mz/=ml;}
+      cliMv.x=mx;cliMv.z=mz;
+      var sp=S.speed||10;
+      P2.vx+=(mx*sp-P2.vx)*Math.min(1,dt*10);P2.vz+=(mz*sp-P2.vz)*Math.min(1,dt*10);
+      P2.g.position.x=Math.max(-ARENA,Math.min(ARENA,P2.g.position.x+P2.vx*dt));
+      P2.g.position.z=Math.max(-ARENA,Math.min(ARENA,P2.g.position.z+P2.vz*dt));
+      P2.g.position.x+=(netP2.x-P2.g.position.x)*Math.min(1,dt*2.5);
+      P2.g.position.z+=(netP2.z-P2.g.position.z)*Math.min(1,dt*2.5);
+    }else{
+      P2.g.position.x+=(netP2.x-P2.g.position.x)*Math.min(1,dt*8);
+      P2.g.position.z+=(netP2.z-P2.g.position.z)*Math.min(1,dt*8);
+      P2.vx=0;P2.vz=0;cliMv.x=0;cliMv.z=0;
+    }
+    p2Vis(dt);
+  }
+  var k=Math.min(1,dt*10);
+  player.position.x+=(np1.x-player.position.x)*k;
+  player.position.z+=(np1.z-player.position.z)*k;
+  var da=(np1.ry-player.rotation.y)%(Math.PI*2);if(da>Math.PI)da-=Math.PI*2;if(da<-Math.PI)da+=Math.PI*2;
+  player.rotation.y+=da*k;
+  player.rotation.z+=((p1Down>0?1.2:0)-player.rotation.z)*Math.min(1,dt*8);
+  glow.position.set(player.position.x,2,player.position.z);
+  for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.cbProxy||e._tx===undefined)continue;
+    e.m.position.x+=(e._tx-e.m.position.x)*k;e.m.position.z+=(e._tz-e.m.position.z)*k;e.m.rotation.y+=dt*1.5;}
+  if(cliCb.on){cbBoss.position.x+=(cliCb.tx-cbBoss.position.x)*k;cbBoss.position.z+=(cliCb.tz-cbBoss.position.z)*k;
+    cbBoss.position.y=3.6+Math.sin(S.t*1.8)*0.35;cbBoss.rotation.y+=dt*0.4;}
+  if(hurt>0)hurt=Math.max(0,hurt-dt*2.2);hurtEl.style.opacity=hurt;
+  inAcc+=dt;
+  if(inAcc>=0.05&&netSess){inAcc=0;try{netSess.sendFast({k:'i',x:+cliMv.x.toFixed(2),z:+cliMv.z.toFixed(2)});}catch(e){}}
+  updHUD();
+}
+function clientOver(m){ /* Game-Over-Anzeige aus dem Host-Event */
+  running=false;stopMusic();showTouchBtns(false);
+  document.getElementById("finalT").textContent="Überlebt: "+(m.s||0)+"s";
+  document.getElementById("finalT").className="";
+  document.getElementById("verdict").innerHTML="🌐 Online-Koop · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner · Welle "+(m.wv||1);
+  document.getElementById("nsRound").textContent="";var rc=document.getElementById("nsRec");if(rc)rc.style.display="none";
+  document.getElementById("nsRunStats").innerHTML="";document.getElementById("nsBestStats").innerHTML="";document.getElementById("nsLboard").innerHTML="";
+  document.getElementById("over").classList.remove("hide");beep(80,.6,"sawtooth",.09);
+}
+function clientWin(m){
+  running=false;stopMusic();showTouchBtns(false);
+  document.getElementById("winV").innerHTML="🌐 Online-Koop · in "+mmss(m.s||0)+" geschafft · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner";
+  document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();
+}
+function netMsg(m,roleOverride){ /* eingehende Nachrichten (beide Rollen) — defensiv, unbekannte Typen ignorieren */
+  if(m==null||typeof m!=="object")return;
+  if(m.k==='p')return; /* Keepalive — zählt nur als Traffic für den Watchdog */
+  var r=roleOverride||coopMode;
+  if(r==='host'){
+    if(m.k==='i'){netIn={x:+m.x||0,z:+m.z||0};netInT=performance.now();}
+    else if(m.k==='again'){if(!running){coopMode='host';start();netEv({e:'bg',mi:curMapIdx});}}
+    return;
+  }
+  if(m.k==='s'){if(coopMode==='client'&&running)applySnap(m);return;}
+  switch(m.e){
+    case 'bg':pendingMap=(m.mi==null?null:m.mi);dailyMode=false;coopMode='client';start();announce("🌐 KOOP GESTARTET — du bist der ORANGE Buddy!");break;
+    case 'an':if(coopMode==='client')announce(m.t);break;
+    case 'lu':if(coopMode==='client')announce("⬆ Partner wählt ein Upgrade… (geteilter Build)");break;
+    case 'ov':if(coopMode==='client')clientOver(m);break;
+    case 'wn':if(coopMode==='client')clientWin(m);break;
+  }
+}
+/* ---------------- Lobby-UI + Verbindungs-Status ---------------- */
+function mpState(h){var el=document.getElementById("mpState");if(el)el.innerHTML=h;}
+function ensureMP(){
+  if(window.MP&&(window.Peer||MP.localMode))return true;
+  mpState("⚠ Online-Modus hier nicht verfügbar (mp.js/PeerJS nicht geladen).");return false;
+}
+function netClose(){if(netSess){try{netSess.close();}catch(e){}netSess=null;}}
+function coopNetStatus(st){ /* Disconnect: sauberer Fallback statt Crash */
+  if(st==='lost'){if(running&&(coopMode==='host'||coopMode==='client'))announce("⚠ Verbindung wackelt — versuche Reconnect…");return;}
+  if(st!=='closed')return;
+  if(coopMode!=='host'&&coopMode!=='client')return; /* Lobby-Fehler regeln die .catch-Handler */
+  netSess=null;
+  if(running){
+    if(coopMode==='host'){coopMode='ai';setCoopTag();announce("🔌 Verbindung weg — 🤖 KI übernimmt deinen Partner!");}
+    else{coopMode='ai';announce("🔌 Verbindung weg — Solo-Neustart mit 🤖 KI-Partner");start();}
+  }else{coopMode=null;mpState("🔌 Verbindung beendet.");}
+}
+function hostFixed(code){ /* Offener Raum: mp.js kann keine festen Codes hosten → Mini-Host im mp.js-Sessionformat */
+  var S2={role:"host",code:code,status:"connecting",_msg:[],_st:[],
+    onMessage:function(f){S2._msg.push(f);},onStatus:function(f){S2._st.push(f);},
+    send:function(){},sendFast:function(){},close:function(){}};
+  S2._emit=function(d){for(var i=0;i<S2._msg.length;i++){try{S2._msg[i](d);}catch(e){}}};
+  S2._set=function(st){if(S2.status===st||S2.status==="closed")return;S2.status=st;for(var i=0;i<S2._st.length;i++){try{S2._st[i](st);}catch(e){}}};
+  S2.ready=new Promise(function(res,rej){S2._res=res;S2._rej=rej;});
+  if(!window.Peer){S2._set("closed");S2._rej(new Error("PeerJS nicht geladen (js/vendor/peerjs.min.js)."));return S2;}
+  var peer=null,main=null,fast=null,byUs=false,tmo=null;
+  try{peer=new window.Peer("aban-nsurv-"+code,{debug:0});}catch(e){S2._set("closed");S2._rej(e);return S2;}
+  tmo=setTimeout(function(){if(S2.status==="connecting"){S2._set("closed");try{peer.destroy();}catch(e){}S2._rej(new Error("Vermittlungs-Server (0.peerjs.com) nicht erreichbar — Internet prüfen."));}},15000);
+  peer.on("open",function(){clearTimeout(tmo);S2._set("waiting");});
+  peer.on("connection",function(c){
+    if(c.label==="fast"){fast=c;c.on("data",function(d){S2._emit(d);});return;}
+    if(main&&main.open){try{c.close();}catch(e){}return;} /* Raum voll (2 Spieler) */
+    main=c;
+    c.on("open",function(){S2._set("connected");S2._res(S2);});
+    c.on("data",function(d){S2._emit(d);});
+    c.on("close",function(){if(!byUs)S2._set("closed");});
+  });
+  peer.on("disconnected",function(){if(!byUs){try{peer.reconnect();}catch(e){}}});
+  peer.on("error",function(err){var t=err&&err.type;
+    if(t==="unavailable-id"&&S2.status==="connecting"){clearTimeout(tmo);S2._set("closed");try{peer.destroy();}catch(e){}
+      S2._rej(new Error("Offener Raum ist gerade belegt — gleich nochmal «🌍 Offener Raum» drücken (dann trittst du bei)."));}
+  });
+  S2.send=function(o){try{if(main&&main.open)main.send(o);}catch(e){}};
+  S2.sendFast=function(o){try{if(fast&&fast.open)fast.send(o);else if(main&&main.open)main.send(o);}catch(e){}};
+  S2.close=function(){byUs=true;clearTimeout(tmo);S2._set("closed");try{peer.destroy();}catch(e){}};
+  return S2;
+}
+function hostStart(){coopMode='host';dailyMode=false;start();netEv({e:'bg',mi:curMapIdx});}
+(function(){ /* Buttons verdrahten — alles try/catch-frei haltbar, IDs existieren im Start-Overlay */
+  var mk=document.getElementById("mpMakeBtn"),go=document.getElementById("mpGoBtn"),
+      op=document.getElementById("mpOpenBtn"),ci=document.getElementById("mpCodeIn");
+  if(!mk)return;
+  mk.onclick=function(){ /* Raum mit 4-Zeichen-Code erstellen */
+    if(!ensureMP())return;netClose();
+    var s;try{s=MP.host("nsurv");}catch(e){mpState("⚠ "+e.message);return;}
+    netSess=s;
+    var show=function(){mpState("Dein Raum-Code: <b style='font-size:1.5rem;letter-spacing:6px;color:#5ef2ff'>"+s.code+"</b><br>Warte auf Mitspieler… (Code weitergeben)");};
+    show();
+    s.onStatus(function(st){if(st==='waiting')show();coopNetStatus(st);});
+    s.onMessage(netMsg);
+    s.ready.then(hostStart).catch(function(e){mpState("⚠ "+e.message);if(netSess===s)netSess=null;});
+  };
+  go.onclick=function(){ /* per Code beitreten */
+    if(!ensureMP())return;
+    var code=(ci.value||"").toUpperCase().replace(/[^A-Z]/g,"");
+    if(code.length!==4){mpState("Bitte den 4-Buchstaben-Code eingeben.");return;}
+    netClose();mpState("Verbinde mit Raum "+code+"…");
+    var s=MP.join("nsurv",code);netSess=s;
+    s.onStatus(coopNetStatus);s.onMessage(netMsg);
+    s.ready.then(function(){mpState("✅ Verbunden! Der Host startet das Spiel…");})
+      .catch(function(e){mpState("⚠ "+e.message);if(netSess===s)netSess=null;});
+  };
+  op.onclick=function(){ /* 🌍 Offener Raum (Muster lebenspfad): fester Code OFEN — erst joinen, sonst hosten */
+    if(!ensureMP())return;netClose();
+    mpState("🌍 Suche offenen Raum…");
+    var s=MP.join("nsurv","OFEN");netSess=s;
+    s.onStatus(coopNetStatus);s.onMessage(netMsg);
+    s.ready.then(function(){mpState("✅ Offenen Raum gefunden — der Host startet gleich…");})
+      .catch(function(){ /* keiner da → selbst offenen Raum aufmachen */
+        if(netSess===s)netSess=null;
+        var h=hostFixed("OFEN");netSess=h;
+        mpState("🌍 Offener Raum steht — warte auf Mitspieler…<br><span style='color:#8890b8'>Die andere Person drückt einfach auch «🌍 Offener Raum».</span>");
+        h.onStatus(coopNetStatus);h.onMessage(netMsg);
+        h.ready.then(hostStart).catch(function(e){mpState("⚠ "+e.message);if(netSess===h)netSess=null;});
+      });
+  };
+  ci.addEventListener("keydown",function(e){e.stopPropagation();if(e.key==="Enter"){e.preventDefault();go.onclick();}});
+  ci.addEventListener("input",function(){ci.value=ci.value.toUpperCase().replace(/[^A-Z]/g,"").slice(0,4);});
+})();
+/* ---------------- Debug-Hooks (Phase 3) ---------------- */
+window.__ns.coop=function(mode){ /* 'ai' sofort aktivieren; 'local' entfällt (nur-online) → mappt auf 'ai' */
+  if(mode==='local')mode='ai';
+  if(mode==='ai'){coopMode='ai';dailyMode=false;start();return coopMode;}
+  if(mode===null||mode==='off'){coopMode=null;if(P2){P2.active=false;P2.g.visible=false;}var w=document.getElementById("hp2wrap");if(w)w.classList.add("hide");return null;}
+  return coopMode;
+};
+window.__ns.p2=function(){return coopOn()?{hp:Math.round(P2.hp),pos:{x:+P2.g.position.x.toFixed(2),z:+P2.g.position.z.toFixed(2)},down:P2.down>0}:null;};
+window.__ns.netDbg=function(){return {mode:coopMode,running:running,paused:paused,sess:netSess?netSess.status:null,
+  netIn:netIn?{x:netIn.x,z:netIn.z,age:Math.round(performance.now()-netInT)}:null,
+  cliMv:{x:cliMv.x,z:cliMv.z},p2v:P2?{vx:+P2.vx.toFixed(2),vz:+P2.vz.toFixed(2)}:null,
+  np1:{x:+np1.x.toFixed(1),z:+np1.z.toFixed(1)},netP2:{x:+netP2.x.toFixed(1),z:+netP2.z.toFixed(1)}};};
+window.__ns.netSim=function(){ /* Loopback-Test OHNE Netz: Host-Frame encode→decode→apply + Client-Input-Pfad */
+  try{
+    if(!running||!coopMode){coopMode='ai';dailyMode=false;start();}
+    if(!P2||!P2.active)coopSetup();
+    var i,na=0;
+    for(i=0;i<enemies.length;i++)if(enemies[i].active&&!enemies[i].cbProxy)na++;
+    if(na<3)for(i=0;i<3;i++)spawnEnemy(false);
+    /* 1) HOST: Snapshot bauen und über die Leitung schicken (JSON-Roundtrip = DataChannel-Serialisierung) */
+    var snap=buildSnap(),wire=JSON.stringify(snap),m=JSON.parse(wire);
+    if(m.k!=='s'||!m.p1||!m.p2||!m.en||!m.en.length)return 'err:snapshot-felder';
+    /* 2) CLIENT: anwenden → Spiegel-Ziele müssen der Host-Wahrheit entsprechen */
+    applySnap(m);
+    if(Math.abs(np1.x-player.position.x)>0.05||Math.abs(np1.z-player.position.z)>0.05)return 'err:p1-spiegel';
+    if(Math.abs(netP2.x-P2.g.position.x)>0.05||Math.abs(netP2.z-P2.g.position.z)>0.05)return 'err:p2-spiegel';
+    var ok=0;
+    for(i=0;i<m.en.length;i++){var e=enemies[m.en[i][0]];if(e&&e.active&&Math.abs(e._tx-m.en[i][1])<0.06&&Math.abs(e._tz-m.en[i][2])<0.06)ok++;}
+    if(ok!==m.en.length)return 'err:gegner-spiegel('+ok+'/'+m.en.length+')';
+    /* 3) CLIENT→HOST: Input encodieren → decodieren → auf den zweiten (virtuellen) Spieler anwenden */
+    var im=JSON.parse(JSON.stringify({k:'i',x:1,z:0}));
+    netMsg(im,'host');
+    if(!netIn||netIn.x!==1)return 'err:input-route';
+    var wasDown=P2.down;P2.down=0;
+    var ox=P2.g.position.x;P2.vx=0;P2.vz=0;
+    for(i=0;i<12;i++)hostApplyInput(0.05);
+    for(i=0;i<12;i++)P2.g.position.x=Math.max(-ARENA,Math.min(ARENA,P2.g.position.x+P2.vx*0.05));
+    if(!(P2.g.position.x>ox+0.1)&&ox<ARENA-1)return 'err:input-bewegt-nicht';
+    P2.down=wasDown;netIn=null;P2.vx=0;
+    return 'ok';
+  }catch(e){return 'err:'+((e&&e.message)||e);}
+};
 reset(); showBest(); renderShop(); renderChars();
 // Namensfeld: live-Gruß beim Tippen, Enter startet direkt
 (function(){var ni=document.getElementById("nameInput");if(!ni)return;
