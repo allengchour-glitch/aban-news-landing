@@ -1913,6 +1913,24 @@ function updBot(dt){
     else rollCore();
     if(Math.random()<0.35)emote(G.turn,Math.random()<0.5?"jubel":"wink");}
 }
+// ⏰ AFK-Watchdog (nur Host, nur online): anwesender aber untätiger Spieler -> Warnung nach 40s, Auto-Zug nach 60s
+var _afkT=0,_afkSig="",_afkWarned=false;
+function updAfk(dt){
+  if(!NET.on||!NET.host||!G||!running)return;
+  var p=G.players[G.turn];if(!p||p.bot||p.dead||p.done)return;
+  if(typeof netPresent==="function"&&!netPresent(G.turn)){_afkT=0;return;} // abwesend -> Pause-System übernimmt
+  var canAct=(G.phase==="idle")||!!window._cardOpts;
+  if(!canAct){_afkT=0;_afkWarned=false;return;}
+  var sig=G.turn+"|"+G.phase+"|"+(window._cardSeq||0);
+  if(sig!==_afkSig){_afkSig=sig;_afkT=0;_afkWarned=false;}
+  _afkT+=dt;
+  if(_afkT>40&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" schläft — in 20s übernimmt Robo den Zug …","#ffb46e");
+    netSend({t:"chat",m:"⏰ "+p.name+": noch 20s, dann übernimmt Robo!"});}
+  if(_afkT>60){_afkT=0;_afkWarned=false;
+    chatAdd&&chatAdd("System","🤖 Robo übernimmt den Zug von "+p.name);
+    if(window._cardOpts){cardPick((Math.random()*window._cardOpts.length)|0);}
+    else{netSend({t:"roll"});NET.q.push({t:"roll"});}}
+}
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
@@ -2673,7 +2691,7 @@ var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
-  if(running&&G){G.t+=dt;updBot(dt);updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updBirds(dt,G.t);updIdleLife(dt);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
+  if(running&&G){G.t+=dt;updBot(dt);updAfk(dt);updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updBirds(dt,G.t);updIdleLife(dt);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
     if(window._lpWindmill)window._lpWindmill.rotation.z+=dt*(OPT.motion?1.15:0); // Windrad dreht
     if(window._lpFlag)for(var fq=0;fq<window._lpFlag.length;fq++){var _q=window._lpFlag[fq];
       _q.rotation.y=OPT.motion?Math.sin(G.t*3-fq*0.7)*0.45:0;_q.position.z=OPT.motion?Math.sin(G.t*3-fq*0.7)*0.05*fq:0;} // Fahne weht
