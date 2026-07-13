@@ -98,6 +98,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="chatToggle" title="Chat">💬</button>
 <button id="emoteToggle" title="Emotes">😊</button>
 <button id="micBtn" title="Voice-Chat">🎙️</button>
+<button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,#ff9a3a,#ff4a2a);box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer">🚀</button>
+<button id="hornBtn" style="position:fixed;left:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:rgba(255,253,246,.96);box-shadow:0 6px 20px rgba(60,40,10,.3);cursor:pointer">📣</button>
 <button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:30px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:linear-gradient(90deg,#e0703a,#c8502a);box-shadow:0 8px 22px rgba(200,80,40,.4);cursor:pointer">🚪 Aussteigen</button>
 <div id="emoteBar"></div>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
@@ -1394,7 +1396,7 @@ function updAuto(dt){
     else{a.state="parkt";a.mesh.position.set(a.homeX,a.homeY||0.01,a.homeZ);a.mesh.rotation.y=Math.PI/2;}}
 }
 // ---- Auto fahren (GTA-Style: einsteigen, selbst lenken, aussteigen) ----
-var fahren=false,carRot=Math.PI/2,carLean=0,driveCar=null,driveGeklaut=false;
+var fahren=false,carRot=Math.PI/2,carLean=0,driveCar=null,driveGeklaut=false,nitro=0;
 function einsteigen(rec,geklaut){
   var a=rec||window.autoRec;if(!a||fahren)return;
   fahren=true;driveCar=a;driveGeklaut=!!geklaut;
@@ -1402,6 +1404,8 @@ function einsteigen(rec,geklaut){
   sims[0].mesh.visible=false;followSim=null;
   carRot=a.mesh.rotation.y;camR=Math.max(camR,16);
   document.getElementById("exitCar").style.display="block";
+  document.getElementById("nitroBtn").style.display="block";
+  document.getElementById("hornBtn").style.display="block";
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei kommt! 🚨");
     setTimeout(function(){if(fahren)startPolizeiJagd();},1800);}
@@ -1416,8 +1420,10 @@ function aussteigen(){
     a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);}
   else if(driveGeklaut&&a.route){ // geklautes Auto zurück in den Verkehr
     a.pos=a.route.axis==="x"?a.mesh.position.x:a.mesh.position.z;}
-  driveCar=null;driveGeklaut=false;
+  driveCar=null;driveGeklaut=false;nitro=0;
   document.getElementById("exitCar").style.display="none";
+  document.getElementById("nitroBtn").style.display="none";
+  document.getElementById("hornBtn").style.display="none";
   hint("🚶 Ausgestiegen");}
 function autoFahr(dt){
   var a=driveCar||window.autoRec;if(!a){fahren=false;return;}
@@ -1430,7 +1436,7 @@ function autoFahr(dt){
     var d=((ziel-carRot+Math.PI*3)%(Math.PI*2))-Math.PI;
     carRot+=d*Math.min(1,dt*4);           // sanftes Lenken
     carLean=carLean*0.85 - d*0.25;         // Karosserie neigt sich in die Kurve
-    var sp=13*Math.min(1,l);
+    var sp=(13+(nitro>0?12:0))*Math.min(1,l);if(nitro>0)nitro-=dt;
     m.position.x+=Math.sin(carRot)*sp*dt;
     m.position.z+=Math.cos(carRot)*sp*dt;
     m.position.x=Math.max(-110,Math.min(110,m.position.x));
@@ -1440,6 +1446,9 @@ function autoFahr(dt){
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
   camTx=m.position.x;camTz=m.position.z;updCam();}
 document.getElementById("exitCar").onclick=aussteigen;
+document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
+document.getElementById("hornBtn").onclick=function(){if(fahren){beep(340,.18,"square",.06);setTimeout(function(){beep(300,.2,"square",.06);},120);
+  npcs.forEach(function(n){if(n.mesh)npcEmoji(n,"😠");});fussg.forEach(function(p){/*erschreckt*/});}};
 // ---- Polizei-Jagd (nach Autoklau) ----
 var polizeiJagd=null;
 function spielerPos(){return fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z}:{x:sims[0].x,z:sims[0].z};}
