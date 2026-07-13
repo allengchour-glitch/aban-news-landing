@@ -214,7 +214,27 @@
     state.score[player]++;
     updateScores();
     showFloat(player, x, y);
+    showSparks(player, x, y);
     placeStar(player);
+  }
+
+  function showSparks(player, x, y){
+    /* kleine leuchtende Fang-Partikel, fliegen sternförmig auseinander */
+    var field = fields[player];
+    for(var i=0;i<7;i++){
+      var sp = document.createElement("div");
+      sp.className = "spark";
+      var ang = (Math.PI*2/7)*i + rand(-0.3,0.3);
+      var dist = rand(34,66);
+      sp.style.left = (x-4) + "px";
+      sp.style.top = (y-4) + "px";
+      sp.style.setProperty("--dx", Math.round(Math.cos(ang)*dist) + "px");
+      sp.style.setProperty("--dy", Math.round(Math.sin(ang)*dist) + "px");
+      field.appendChild(sp);
+      (function(node){
+        setTimeout(function(){ if(node.parentNode) node.parentNode.removeChild(node); }, 600);
+      })(sp);
+    }
   }
 
   function showFloat(player, x, y){
@@ -262,7 +282,7 @@
     startOv.classList.add("hidden");
     endOv.classList.add("hidden");
     // clear stray stars/floats
-    document.querySelectorAll(".star,.float").forEach(function(n){ n.remove(); });
+    document.querySelectorAll(".star,.float,.spark").forEach(function(n){ n.remove(); });
     state.stars = [null,null];
     placeStar(0);
     placeStar(1);
