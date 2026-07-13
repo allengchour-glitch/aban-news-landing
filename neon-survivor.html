@@ -30,7 +30,10 @@ canvas{display:block}
 #xpFill{background:linear-gradient(90deg,#5ef2ff,#b98bff)}
 #hudTop{display:flex;justify-content:space-between;gap:8px;font-size:1rem;white-space:nowrap}
 #hpwrap{max-width:240px} #xpwrap{margin-top:6px;max-width:100%}
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(6,7,15,.93));padding:20px;backdrop-filter:blur(3px)}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(6,7,15,.93));padding:20px 20px calc(20px + env(safe-area-inset-bottom));backdrop-filter:blur(3px);overflow-y:auto}
+/* Kleine Screens: Overlay-Inhalt scrollbar + "safe center" (Feder-Elemente statt hartem justify-center, sonst wird oben abgeschnitten) */
+.overlay::before,.overlay::after{content:"";flex:1 0 14px}
+.overlay>*{flex-shrink:0}
 .overlay h1{font-size:2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.2rem}
 .overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:1rem;line-height:1.5}
 .tag{font-size:.72rem;letter-spacing:3px;color:#7e88c0;text-transform:uppercase;margin-bottom:6px}
@@ -191,6 +194,7 @@ canvas{display:block}
 <script src="/js/mp.js"></script>
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
+<script src="/js/vendor/RGBELoader.js"></script>
 <script>
 (function(){
 "use strict";
@@ -206,6 +210,10 @@ var frame=0;              // Frame-Zähler (Trail-Emission drosseln)
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
+/* Software-Renderer erkennen (SwiftShader/llvmpipe: Headless-CI, VMs) → teure Optik drosseln (kein IBL, halbe Modell-Pools) */
+var SOFT_GPU=false;
+try{var _glc=renderer.getContext(),_dbgi=_glc.getExtension("WEBGL_debug_renderer_info");
+  if(_dbgi){var _rstr=String(_glc.getParameter(_dbgi.UNMASKED_RENDERER_WEBGL)||"");if(/swiftshader|llvmpipe|software/i.test(_rstr))SOFT_GPU=true;}}catch(e){}
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x06070f); scene.fog=new THREE.Fog(0x06070f,72,560);
 var camera=new THREE.PerspectiveCamera(60,W/H,0.1,2000);
@@ -219,7 +227,30 @@ var floor=new THREE.Mesh(new THREE.PlaneGeometry(ARENA*2,ARENA*2),new THREE.Mesh
 floor.rotation.x=-Math.PI/2; scene.add(floor);
 var grid=new THREE.GridHelper(ARENA*2,Math.round(ARENA*0.87),0x4458b0,0x222a55); grid.position.y=0.02; scene.add(grid);
 
-function mat(c,e){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:1.1,flatShading:true}); return m;}
+/* ===== Phase 4 Optik: texturierter Arena-Boden (PolyHaven CC0) + Akzent-Plattform + HDR-IBL ===== */
+var GFX={floorTex:false,ibl:false};
+var MAXANI=renderer.capabilities.getMaxAnisotropy?renderer.capabilities.getMaxAnisotropy():1;
+var texLoader=new THREE.TextureLoader();
+function nfTex(url,rep,cb){texLoader.load(url,function(t){t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rep,rep);t.anisotropy=Math.min(8,MAXANI);t.encoding=THREE.sRGBEncoding;cb(t);},undefined,function(){});}
+function floorTint(mm){ /* Karten-Farbe als dunkler Ton auf die Textur (map wird von color multipliziert -> aufhellen, aber dunkel-neon halten) */
+  mm=mm||MAPS[(curMapIdx||0)%MAPS.length];
+  floor.material.color.setHex(mm.floor);
+  if(GFX.floorTex)floor.material.color.lerp(new THREE.Color(0x9aa4d0),0.62);
+}
+nfTex("/textures/tex_neon_metal_plate.jpg",16,function(t){
+  floor.material.map=t;floor.material.roughness=0.5;floor.material.metalness=0.4;floor.material.needsUpdate=true;GFX.floorTex=true;floorTint();});
+var platMat=new THREE.MeshStandardMaterial({color:0x1b2f7a,roughness:0.55,metalness:0.35,envMapIntensity:0.3});
+var plat=new THREE.Mesh(new THREE.CircleGeometry(ARENA*0.24,56),platMat);
+plat.rotation.x=-Math.PI/2;plat.position.y=0.021;scene.add(plat);
+nfTex("/textures/tex_neon_panel_blue.jpg",5,function(t){platMat.map=t;platMat.color.setHex(0x9aa4d0);platMat.needsUpdate=true;});
+nfTex("/textures/tex_neon_grate.jpg",1,function(t){if(floorTilesMat){floorTilesMat.map=t;floorTilesMat.needsUpdate=true;}});
+if(THREE.RGBELoader&&renderer.capabilities.isWebGL2&&!SOFT_GPU){try{new THREE.RGBELoader().load("/textures/sky_1k.hdr",function(tex){
+  var pm=new THREE.PMREMGenerator(renderer);pm.compileEquirectangularShader();
+  var env=pm.fromEquirectangular(tex).texture;scene.environment=env;tex.dispose();pm.dispose();GFX.ibl=true;
+  scene.traverse(function(n){if(n.isMesh){var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(mm){if(mm&&mm.isMeshStandardMaterial&&mm.envMapIntensity===1)mm.envMapIntensity=0.25;});}});
+},undefined,function(){});}catch(e){}}
+
+function mat(c,e){var m=new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:c,emissiveIntensity:1.1,flatShading:true,envMapIntensity:0.25}); return m;}
 // ---- Spieler: "Nova", knuffiger Neon-Buddy mit Kulleraugen (statt simpler Blob) ----
 // Blick-/Feuerrichtung = lokales +z; bei rotation.y=0 schaut die Figur zur Kamera.
 var player=new THREE.Group(); player.position.y=0.9; scene.add(player);
@@ -424,7 +455,7 @@ function updateLandscape(dt,t){
 function applyMap(idx){var m=MAPS[idx%MAPS.length];
   var hor=new THREE.Color(m.fog).lerp(new THREE.Color(m.accent),0.16); skyMat.uniforms.cHor.value.copy(hor);
   skyMat.uniforms.cTop.value.set(0x03040c); auroras[0].material.color.setHex(m.accent); auroras[1].material.color.setHex(m.accent2);
-  scene.background.setHex(m.fog);scene.fog.color.setHex(m.fog);floor.material.color.setHex(m.floor);
+  scene.background.setHex(m.fog);scene.fog.color.setHex(m.fog);floorTint(m);
   for(var i=0;i<mapWalls.length;i++){mapWalls[i].material.color.setHex(m.accent);mapWalls[i].material.emissive.setHex(m.accent);}
   emblem.material.color.setHex(m.accent);emblem.material.emissive.setHex(m.accent);
   emblem2.material.color.setHex(m.accent2);emblem2.material.emissive.setHex(m.accent2);
@@ -446,8 +477,82 @@ function enemyMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(1.0,1.0,1.0),mat
   var eyeM=new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffffff,emissiveIntensity:2.2});
   var e1=new THREE.Mesh(new THREE.SphereGeometry(0.09,6,5),eyeM);e1.position.set(-0.2,0.14,0.52);m.add(e1);
   var e2=e1.clone();e2.position.x=0.2;m.add(e2);
+  m.userData.prim=m.children.slice(0); /* Primitiv-Teile merken (werden bei Modell-Skin ausgeblendet) */
   m.active=false; scene.add(m); return {m:m,active:false,hp:1,spd:1};}
 function orbMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.4,0),mat(0xffd166,0xffd166)); m.active=false; scene.add(m); return {m:m,active:false}; }
+
+/* ===== Phase 4: Gegner-GLB-Skins — Pool aus FRESH geladenen Instanzen (r128-Regel: skinned GLB NIE clonen).
+   Pro sichtbarem Gegner-Typ ein kleiner Pool echter Modelle (Quaternius/Kenney CC0) mit laufender Idle-Animation.
+   Pool voll oder Modell (noch) nicht geladen -> Primitiv-Fallback (alte Optik bleibt funktionsfähig). */
+var EKIND={ /* n = Instanz-Cap (Skinning ist teuer, v.a. Software-Renderer/ältere Mobiles) — Überzahl fällt auf Primitive zurück */
+ swarm:   {file:"nf_drone.glb",       th:1.35, clip:"Flying_Idle",            n:IS_TOUCH?4:6,  hover:0.35},
+ runner:  {file:"mn_bat.glb",         th:1.15, clip:"BatArmature|Bat_Flying", n:IS_TOUCH?3:5,  hover:0.5},
+ shooter: {file:"mn_ghost.glb",       th:1.35, clip:"idle",                   n:IS_TOUCH?6:10, hover:0.2},
+ tank:    {file:"nf_robot_small.glb", th:1.35, clip:"Flying_Idle",            n:IS_TOUCH?3:4,  hover:0.25},
+ splitter:{file:"mn_slime.glb",       th:1.25, clip:"CharacterArmature|Walk", n:IS_TOUCH?4:5,  hover:0},
+ boss:    {file:"nf_robot_large.glb", th:1.6,  clip:"Walk",                   n:IS_TOUCH?1:2,  hover:0}
+};
+/* Farb-Hex -> Typ (für den Online-Client-Spiegel: Snapshot trägt nur die Farbe) */
+var KIND_BY_COLOR={0xffaa33:"swarm",0x9b5cff:"tank",0x33d0ff:"shooter",0x44ee88:"splitter",0xff5577:"runner",0xff2266:"boss",0xff7a1a:"boss",0xffd166:"boss",0xff9a3a:"runner"};
+var EPOOLS={},EMODELS_LOADED={};
+function buildSkinInst(kind,g){var M=EKIND[kind],o=g.scene||(g.scenes&&g.scenes[0]);if(!o)return;
+  var box=new THREE.Box3().setFromObject(o),size=new THREE.Vector3(),ctr=new THREE.Vector3();
+  box.getSize(size);box.getCenter(ctr);
+  var k=M.th/Math.max(0.001,size.y);if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(20,k));
+  o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k); /* auf Box-Mitte des Primitivs zentriert */
+  var mats=[];
+  o.traverse(function(n){if(n.isMesh){n.castShadow=false;n.receiveShadow=false;n.frustumCulled=false;
+    if(n.material){if(!n.material.emissive)n.material.emissive=new THREE.Color(0);n.material.envMapIntensity=0.25;
+      n.material._baseCol=n.material.color?n.material.color.clone():new THREE.Color(0xffffff);mats.push(n.material);}}});
+  var mixer=null;
+  if(g.animations&&g.animations.length){var clip=null;
+    for(var ci=0;ci<g.animations.length;ci++)if(g.animations[ci].name===M.clip){clip=g.animations[ci];break;}
+    if(!clip)clip=g.animations[0];
+    mixer=new THREE.AnimationMixer(o);var act=mixer.clipAction(clip);act.play();act.time=Math.random()*(clip.duration||1);}
+  var pool=EPOOLS[kind]=EPOOLS[kind]||[];
+  pool.push({obj:o,mixer:mixer,mats:mats,inUse:false,owner:null,kind:kind,baseY:-ctr.y*k,th:M.th,hover:M.hover||0});
+  EMODELS_LOADED[kind]=(EMODELS_LOADED[kind]||0)+1;}
+(function(){ /* Lade-Queue mit 2 Bahnen + kleinem Stagger (kein Haupt-Thread-Ruckler beim Start) */
+  if(!THREE.GLTFLoader)return;var jobs=[],kind;
+  for(kind in EKIND){var _cap=Math.max(1,Math.round(EKIND[kind].n*(SOFT_GPU?0.5:1)));for(var i=0;i<_cap;i++)jobs.push(kind);}
+  var qi=0;
+  function next(){if(qi>=jobs.length)return;var kd=jobs[qi++];
+    try{new THREE.GLTFLoader().load("/models/"+EKIND[kd].file,function(g){try{buildSkinInst(kd,g);}catch(e){}setTimeout(next,30);},undefined,function(){setTimeout(next,30);});}
+    catch(e){setTimeout(next,60);}}
+  next();next();})();
+var _tintCol=null;
+function skinTint(en){var inst=en.model;if(!inst)return;var c=en.m.material.color.getHex();
+  if(!_tintCol)_tintCol=new THREE.Color();_tintCol.setHex(c);
+  for(var i=0;i<inst.mats.length;i++){var mm=inst.mats[i];
+    mm.emissive.setHex(c);mm.emissiveIntensity=0.55;
+    if(mm._baseCol&&mm.color)mm.color.copy(mm._baseCol).lerp(_tintCol,0.6); /* Albedo Richtung Typ-Farbe → klare Farbcodierung trotz Textur */
+  }}
+function skinDetach(en){var inst=en.model;if(!inst)return;en.model=null;
+  if(inst.obj.parent)inst.obj.parent.remove(inst.obj);
+  inst.inUse=false;inst.owner=null;
+  en.m.material.visible=true;
+  var pr=en.m.userData.prim||[];for(var i=0;i<pr.length;i++)pr[i].visible=true;}
+function skinAttach(en,kind){if(!kind)return;
+  if(en.model){if(en.model.kind===kind){skinTint(en);return;}skinDetach(en);}
+  en.kind=kind;var pool=EPOOLS[kind];if(!pool)return;
+  var inst=null;for(var i=0;i<pool.length;i++)if(!pool[i].inUse){inst=pool[i];break;}
+  if(!inst)return; /* Pool erschöpft -> Primitiv-Fallback (mischt sich automatisch) */
+  inst.inUse=true;inst.owner=en;en.model=inst;
+  var bs=en.bs||en.m.scale.x||1,by=en.by||en.m.position.y||0.7;
+  inst.obj.position.y=inst.baseY+inst.th/2-by/bs+inst.hover/bs; /* Füsse auf den Boden (skaliert), Flieger schweben */
+  en.m.add(inst.obj);
+  en.m.material.visible=false;
+  var pr=en.m.userData.prim||[];for(i=0;i<pr.length;i++)pr[i].visible=false;
+  skinTint(en);}
+function updateSkins(dt){ /* zentraler Sweep: Mixer ticken + verwaiste Instanzen freigeben (läuft auch beim Online-Client) */
+  for(var kind in EPOOLS){var pool=EPOOLS[kind];
+    for(var i=0;i<pool.length;i++){var inst=pool[i];if(!inst.inUse)continue;
+      var ow=inst.owner;
+      if(!ow||!ow.active||ow.model!==inst){ /* Besitzer despawnt (Kill/Bauphase/Koloss-Clear) -> Instanz zurück in den Pool */
+        if(ow&&ow.model===inst)skinDetach(ow);
+        else{if(inst.obj.parent)inst.obj.parent.remove(inst.obj);inst.inUse=false;inst.owner=null;}
+        continue;}
+      if(inst.mixer)inst.mixer.update(dt);}}}
 
 // State + Upgrades
 var S={};
@@ -513,22 +618,22 @@ function spawnEnemy(boss){
   en.m.position.set(esx,0.7,esz);
   if(boss){
     en.hp=40+Math.floor(S.t/3); en.spd=1.8; en.xp=8; en.m.scale.set(2.6,2.6,2.6); en.shootT=2.5;
-    en.m.material.color.setHex(0xff2266); en.m.material.emissive.setHex(0xff2266);
+    en.m.material.color.setHex(0xff2266); en.m.material.emissive.setHex(0xff2266); en.kind="boss";
   } else {
     var roll=rnd();
     if(roll<0.20){ en.hp=1; en.spd=Math.min(8.4,4.6+S.t*0.03); en.xp=1; en.m.scale.set(0.7,0.7,0.7);
-      en.m.material.color.setHex(0xffaa33); en.m.material.emissive.setHex(0xaa5500); }
+      en.m.material.color.setHex(0xffaa33); en.m.material.emissive.setHex(0xaa5500); en.kind="swarm"; }
     else if(roll<0.36){ en.hp=4+Math.floor(S.t/15); en.spd=1.6+S.t*0.01; en.xp=3; en.m.scale.set(1.5,1.5,1.5);
-      en.m.material.color.setHex(0x9b5cff); en.m.material.emissive.setHex(0x5522aa); }
+      en.m.material.color.setHex(0x9b5cff); en.m.material.emissive.setHex(0x5522aa); en.kind="tank"; }
     else if(roll<0.52){ en.hp=3+Math.floor(S.t/18); en.spd=1.8; en.xp=3; en.shooter=true; en.shootT=1.5+rnd(); en.m.scale.set(1.1,1.1,1.1);
-      en.m.material.color.setHex(0x33d0ff); en.m.material.emissive.setHex(0x1188cc); }
+      en.m.material.color.setHex(0x33d0ff); en.m.material.emissive.setHex(0x1188cc); en.kind="shooter"; }
     else if(roll<0.66){ en.hp=5+Math.floor(S.t/14); en.spd=2.0; en.xp=4; en.splitter=true; en.m.scale.set(1.3,1.3,1.3);
-      en.m.material.color.setHex(0x44ee88); en.m.material.emissive.setHex(0x22aa55); }
+      en.m.material.color.setHex(0x44ee88); en.m.material.emissive.setHex(0x22aa55); en.kind="splitter"; }
     else { en.hp=1+Math.floor(S.t/25); en.spd=Math.min(8.4,2.4+rnd()*1.2+S.t*0.02); en.xp=1; en.m.scale.set(1,1,1);
-      en.m.material.color.setHex(0xff5577); en.m.material.emissive.setHex(0xaa1133); }
+      en.m.material.color.setHex(0xff5577); en.m.material.emissive.setHex(0xaa1133); en.kind="runner"; }
   }
   en.baseEmissive=en.m.material.emissive.getHex(); en.flash=0; en.finalBoss=false;
-  initEnemyAnim(en);
+  initEnemyAnim(en);skinAttach(en,en.kind);
 }
 function announce(txt){if(coopMode==='host'&&netSess&&txt){try{netSess.send({e:'an',t:txt});}catch(e){}}
   var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:26%;left:0;right:0;text-align:center;font-weight:800;font-size:1.6rem;color:#ff7ad9;text-shadow:0 2px 10px #000;pointer-events:none;transition:opacity .4s";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";
@@ -541,7 +646,7 @@ function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"s
   var a=rnd()*6.283;en.m.position.set(Math.max(-ARENA+3,Math.min(ARENA-3,player.position.x+Math.cos(a)*ARENA*0.75)),0.9,Math.max(-ARENA+3,Math.min(ARENA-3,player.position.z+Math.sin(a)*ARENA*0.75)));
   en.hp=800+S.kills*1.2;en.spd=2.4;en.xp=50;en.m.scale.set(4,4,4);
   en.shooter=false;en.splitter=false;en.shootT=3.0; // Pool-Altlasten zurücksetzen (sonst spawnt der Endboss beim Tod Splitter-Minions)
-  en.m.material.color.setHex(0xffd166);en.m.material.emissive.setHex(0xffaa00);en.baseEmissive=0xffaa00;en.flash=0;en.raider=false;en.baseWaveBoss=false;initEnemyAnim(en);}
+  en.m.material.color.setHex(0xffd166);en.m.material.emissive.setHex(0xffaa00);en.baseEmissive=0xffaa00;en.flash=0;en.raider=false;en.baseWaveBoss=false;initEnemyAnim(en);skinAttach(en,"boss");}
 // ---- Boss-Ansturm: markanter mehrteiliger Basis-Boss (Krone/Halo/Schulterpanzer) marschiert auf die Basis ----
 var bossAdorn=null;
 function getBossAdorn(){if(bossAdorn)return bossAdorn;var g=new THREE.Group();
@@ -560,20 +665,20 @@ function spawnBossWave(){if(S.bossWave||S.finalBoss)return;S.bossWave=true;
   boss.hp=90+S.wave*22;boss.maxhp=boss.hp;boss.spd=1.7;boss.xp=24;boss.m.scale.set(3.0,3.0,3.0);
   boss.m.material.color.setHex(0xff7a1a);boss.m.material.emissive.setHex(0xff5a00);boss.baseEmissive=0xff5a00;boss.flash=0;
   boss.m.add(getBossAdorn());boss._adorned=true;
-  initEnemyAnim(boss);S.bossWaveBoss=boss;
+  initEnemyAnim(boss);skinAttach(boss,"boss");S.bossWaveBoss=boss;
   var n=Math.min(6,2+Math.floor(S.wave/5));
   for(var c=0;c<n;c++){var m2=getMesh(enemies,enemyMesh);m2.active=true;m2.m.visible=true;m2.boss=false;m2.finalBoss=false;m2.raider=true;m2.baseWaveBoss=false;m2.shooter=false;m2.splitter=false;m2.shootT=0;
     var a2=rnd()*6.283,rr=ARENA*0.8;m2.m.position.set(Math.max(-ARENA+2,Math.min(ARENA-2,player.position.x+Math.cos(a2)*rr)),0.7,Math.max(-ARENA+2,Math.min(ARENA-2,player.position.z+Math.sin(a2)*rr)));
-    m2.hp=8+S.wave*2;m2.spd=2.4;m2.xp=3;m2.m.scale.set(1.4,1.4,1.4);m2.m.material.color.setHex(0xff9a3a);m2.m.material.emissive.setHex(0xcc5500);m2.baseEmissive=0xcc5500;m2.flash=0;initEnemyAnim(m2);}}
+    m2.hp=8+S.wave*2;m2.spd=2.4;m2.xp=3;m2.m.scale.set(1.4,1.4,1.4);m2.m.material.color.setHex(0xff9a3a);m2.m.material.emissive.setHex(0xcc5500);m2.baseEmissive=0xcc5500;m2.flash=0;initEnemyAnim(m2);skinAttach(m2,"runner");}}
 // ---------- Waffen-System: mehrere Waffen (je 6 Level) → Build-Vielfalt ----------
 function spawnBullet(x,z,ang,spd,dmg,life,pierce,color){var b=getMesh(bullets,bulletMesh);b.active=true;b.m.visible=true;b.m.position.set(x,0.9,z);b.vx=Math.cos(ang)*spd;b.vz=Math.sin(ang)*spd;b.life=life;b.dmg=dmg;b.pierce=pierce||0;b.m.material.color.setHex(color||0x88ffff);b.m.material.emissive.setHex(color||0x88ffff);
   b.m.rotation.y=Math.atan2(b.vx,b.vz);b.m.scale.set(1,1,2.6);} // Streak-Look: entlang Flugrichtung gestreckt (Hitbox bleibt distanzbasiert)
-function killEnemy(en){en.active=false;en.m.visible=false;burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);deathPop(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577,!!en.boss);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);
+function killEnemy(en){en.active=false;en.m.visible=false;skinDetach(en);burst(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577);deathPop(en.m.position.x,en.m.position.z,en.boss?0xff2266:0xff5577,!!en.boss);var drops=Math.min(6,en.xp||1);for(var d=0;d<drops;d++)dropOrb(en.m.position.x+(rnd()-.5)*2.2,en.m.position.z+(rnd()-.5)*2.2);
   if(en.baseWaveBoss){if(en._adorned){en.m.remove(bossAdorn);en._adorned=false;}S.bossWave=false;S.bossWaveBoss=null;
     var bonus=18+S.wave*2;for(var _b=0;_b<bonus;_b++)dropScrap(en.m.position.x+(rnd()-.5)*6,en.m.position.z+(rnd()-.5)*6);
     saveCores(loadCores()+2);announce("🏆 Basis gehalten! +Schrott +2 ⬢ Kerne");screenFlash("rgba(120,255,160,.26)",0.55,440);nsConfetti();shake=Math.max(shake,0.8);
     S.waveT=COMBAT_DUR;} // erlaubt sofortige Bauphase
-  if(en.splitter){var px=en.m.position.x,pz=en.m.position.z;for(var sp2=0;sp2<2;sp2++){var mi=getMesh(enemies,enemyMesh);mi.active=true;mi.m.visible=true;mi.boss=false;mi.shooter=false;mi.splitter=false;mi.shootT=0;mi.raider=false;mi.baseWaveBoss=false;mi.hp=1;mi.spd=4.5;mi.xp=1;mi.m.scale.set(0.6,0.6,0.6);mi.m.material.color.setHex(0x44ee88);mi.m.material.emissive.setHex(0x22aa55);mi.baseEmissive=0x22aa55;mi.flash=0;mi.finalBoss=false;mi.m.position.set(px+(rnd()-.5)*2.4,0.7,pz+(rnd()-.5)*2.4);initEnemyAnim(mi);}}
+  if(en.splitter){var px=en.m.position.x,pz=en.m.position.z;for(var sp2=0;sp2<2;sp2++){var mi=getMesh(enemies,enemyMesh);mi.active=true;mi.m.visible=true;mi.boss=false;mi.shooter=false;mi.splitter=false;mi.shootT=0;mi.raider=false;mi.baseWaveBoss=false;mi.hp=1;mi.spd=4.5;mi.xp=1;mi.m.scale.set(0.6,0.6,0.6);mi.m.material.color.setHex(0x44ee88);mi.m.material.emissive.setHex(0x22aa55);mi.baseEmissive=0x22aa55;mi.flash=0;mi.finalBoss=false;mi.m.position.set(px+(rnd()-.5)*2.4,0.7,pz+(rnd()-.5)*2.4);initEnemyAnim(mi);skinAttach(mi,"splitter");}}
   var dc=en.finalBoss?1:(en.boss?1:(en.splitter?0.14:(en.shooter?0.10:0.05)));
   if(rnd()<dc)spawnLoot(en.m.position.x,en.m.position.z,en.finalBoss?3:(en.boss?2:0));
   var nsc=en.finalBoss?15:(en.boss?4:(rnd()<0.30?1:0));
@@ -1108,7 +1213,9 @@ window.__ns={scrap:function(n){S.scrap=Math.max(0,(S.scrap||0)+(n||0));updateScr
   boss:function(n){if(!running)return "not-running";cb_start(n==null?0:n);return {kind:CB.kind,name:CB_COLOSSI[CB.kind].name,hp:CB.hp,max:CB.max};},
   bossDmg:function(d){if(!CB.active)return "no-boss";cb_damage(d==null?100:d);return Math.round(Math.max(0,CB.hp));},
   bossState:function(){return {active:CB.active,kind:CB.kind,name:CB.active?CB_COLOSSI[CB.kind].name:null,hp:Math.round(CB.hp),max:CB.max,phase:CB.phase,intro:CB.intro>0,model:!!cbBoss.userData.model,pos:{x:Math.round(cbBoss.position.x),z:Math.round(cbBoss.position.z)}};},
-  spawnAt:function(x,z,hp){var en=getMesh(enemies,enemyMesh);en.active=true;en.m.visible=true;en.boss=false;en.shooter=false;en.splitter=false;en.shootT=0;en.finalBoss=false;en.raider=false;en.baseWaveBoss=false;en.m.position.set(x,0.7,z);en.hp=hp||30;en.spd=3;en.xp=1;en.m.scale.set(1,1,1);en.m.material.color.setHex(0xff5577);en.m.material.emissive.setHex(0xaa1133);en.baseEmissive=0xaa1133;en.flash=0;initEnemyAnim(en);return true;},
+  spawnAt:function(x,z,hp,kind){var en=getMesh(enemies,enemyMesh);en.active=true;en.m.visible=true;en.boss=false;en.shooter=false;en.splitter=false;en.shootT=0;en.finalBoss=false;en.raider=false;en.baseWaveBoss=false;en.m.position.set(x,0.7,z);en.hp=hp||30;en.spd=3;en.xp=1;en.m.scale.set(1,1,1);
+    var kc={swarm:[0xffaa33,0xaa5500],tank:[0x9b5cff,0x5522aa],shooter:[0x33d0ff,0x1188cc],splitter:[0x44ee88,0x22aa55],runner:[0xff5577,0xaa1133],boss:[0xff2266,0xff2266]}[(kind&&EKIND[kind])?kind:"runner"];
+    en.m.material.color.setHex(kc[0]);en.m.material.emissive.setHex(kc[1]);en.baseEmissive=kc[1];en.flash=0;initEnemyAnim(en);skinAttach(en,(kind&&EKIND[kind])?kind:"runner");return true;},
   bossWave:function(){if(running)spawnBossWave();return {bossWave:S.bossWave,hp:S.bossWaveBoss?Math.round(S.bossWaveBoss.hp):0};},
   structs:function(){return structures.map(function(s){return {type:s.type,hp:Math.round(s.hp),max:s.maxhp,lv:s.lv||null,x:Math.round(s.x),z:Math.round(s.z)};});},
   enemies:function(){var a=[];for(var i=0;i<enemies.length;i++){var e=enemies[i];if(e.active)a.push({x:Math.round(e.m.position.x),z:Math.round(e.m.position.z),hp:Math.round(e.hp),boss:!!e.boss,raider:!!e.raider});}return a;},
@@ -1208,9 +1315,13 @@ function cb_tgMake(){
   var ring=new THREE.Mesh(new THREE.RingGeometry(0.9,1.0,48),new THREE.MeshBasicMaterial({color:0xff4060,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false,fog:false}));
   ring.rotation.x=-Math.PI/2;ring.position.y=0.05;ring.visible=false;scene.add(ring);
   return {active:false,type:0,line:line,ring:ring,x:0,z:0,ang:0,len:0,wid:0,rad:0,t:0,delay:0,fired:0,firedT:0,dmg:0};}
-function cb_teleLine(x,z,ang,len,wid,delay,dmg){var g=getMesh(cbTg,cb_tgMake);g.active=true;g.type=0;g.x=x;g.z=z;g.ang=ang;g.len=len;g.wid=wid;g.delay=delay;g.dmg=dmg;g.t=0;g.fired=0;g.firedT=0;
+function cb_teleLine(x,z,ang,len,wid,delay,dmg){
+  if(coopMode==='host')netEv({e:'tl',x:+x.toFixed(1),z:+z.toFixed(1),a:+ang.toFixed(3),l:len,w:wid,d:delay}); /* Client-Spiegel zeigt den Telegrafen lokal */
+  var g=getMesh(cbTg,cb_tgMake);g.active=true;g.type=0;g.x=x;g.z=z;g.ang=ang;g.len=len;g.wid=wid;g.delay=delay;g.dmg=dmg;g.t=0;g.fired=0;g.firedT=0;
   g.ring.visible=false;g.line.visible=true;g.line.material.color.setHex(0xff4060);g.line.scale.set(len,wid,1);g.line.position.set(x+Math.cos(ang)*len/2,0.06,z+Math.sin(ang)*len/2);g.line.rotation.z=-ang;g.line.material.opacity=0;return g;}
-function cb_teleRing(x,z,rad,delay,dmg){var g=getMesh(cbTg,cb_tgMake);g.active=true;g.type=1;g.x=x;g.z=z;g.rad=rad;g.delay=delay;g.dmg=dmg;g.t=0;g.fired=0;g.firedT=0;
+function cb_teleRing(x,z,rad,delay,dmg){
+  if(coopMode==='host')netEv({e:'tr',x:+x.toFixed(1),z:+z.toFixed(1),r:rad,d:delay});
+  var g=getMesh(cbTg,cb_tgMake);g.active=true;g.type=1;g.x=x;g.z=z;g.rad=rad;g.delay=delay;g.dmg=dmg;g.t=0;g.fired=0;g.firedT=0;
   g.line.visible=false;g.ring.visible=true;g.ring.material.color.setHex(0xff4060);g.ring.position.set(x,0.05,z);g.ring.scale.set(rad,rad,1);g.ring.material.opacity=0;return g;}
 // ---- Boss-Event starten/beenden ----
 function cb_updPips(){var el=document.getElementById("cbPips").children;for(var i=0;i<el.length;i++)el[i].className=(i<CB.phase)?"on":"";}
@@ -1390,6 +1501,7 @@ function renderBloom(){
 function resizeBloom(){rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
 
 var shake=0,hitstop=0,running=false,last=performance.now(),hurt=0,hurtEl=document.getElementById("hurt");
+var camZoom=1; /* 1 = normal; <1 näher ran (Debug/QA via __ns.zoom) */
 var curName="";
 function start(){
   // Name aus dem Feld übernehmen (oder gespeichertes Profil) → ins gemeinsame Arcade-Profil schreiben
@@ -1514,7 +1626,8 @@ function loop(now){
       if(e2.raider&&tstruct&&tstruct.hp>0){var sdx=tstruct.x-e2.m.position.x,sdz=tstruct.z-e2.m.position.z;if(sdx*sdx+sdz*sdz<(e2.boss?10:4.5)){damageStruct(tstruct,(e2.boss?16:6)*dt);if(e2.boss&&(frame&3)===0){smallSpark(tstruct.x,tstruct.z,0xff8a3a);}e2.m.position.y=(e2.by||0.7)+Math.abs(Math.sin(S.t*13))*0.12;}}
       if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ped<42){enemyShoot(e2.m.position.x,e2.m.position.z,13,_tp.x,_tp.z);e2.shootT=2.8;}}
       if(e2.boss){e2.shootT-=dt;if(e2.shootT<=0){var nb=e2.finalBoss?14:(e2.baseWaveBoss?12:10);for(var rr=0;rr<nb;rr++){var ang2=rr/nb*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*9;eb2.vz=Math.sin(ang2)*9;eb2.life=4;}spawnRing(e2.m.position.x,e2.m.position.z,e2.baseWaveBoss?0xff6a00:0xff2266,1,7,0.4);e2.shootT=e2.finalBoss?3.0:(e2.baseWaveBoss?3.6:4.2);beep(120,.3,"sawtooth",.07);}}
-      if(e2.flash>0){e2.flash-=dt;e2.m.material.emissive.setHex(e2.flash>0?0xffffff:e2.baseEmissive);}
+      if(e2.flash>0){e2.flash-=dt;var _efl=e2.flash>0;e2.m.material.emissive.setHex(_efl?0xffffff:e2.baseEmissive);
+        if(e2.model){var _efm=e2.model.mats;for(var _efi=0;_efi<_efm.length;_efi++){_efm[_efi].emissive.setHex(_efl?0xffffff:e2.m.material.color.getHex());_efm[_efi].emissiveIntensity=_efl?1.1:0.55;}}}
       if(_p1on){var _c1=Math.hypot(player.position.x-e2.m.position.x,player.position.z-e2.m.position.z);
         if(_c1<1.4&&!(S.skIfr>0)){S.hp-=13*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}}
       if(_p2on&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4)p2Damage(13*dt);
@@ -1544,6 +1657,7 @@ function loop(now){
   }
   // FX (laufen auch pausiert → Level-Up-/Bau-Flourishes animieren im Overlay)
   frame++;
+  updateSkins(dt); /* Gegner-Modell-Mixer + Pool-Sweep (läuft immer, auch als Online-Client) */
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=8*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;p.m.position.y=-99;}}
   updateRings(dt);updateFlashes(dt);updateTrails(dt);
   // Bau-Aufpopp (Scale-In mit leichtem Overshoot) — nur bis pop=1
@@ -1560,8 +1674,9 @@ function loop(now){
     cpx=(cpx+P2.g.position.x)/2;cpz=(cpz+P2.g.position.z)/2;
     var _cd=Math.hypot(player.position.x-P2.g.position.x,player.position.z-P2.g.position.z);
     camK*=Math.min(1.5,1+Math.max(0,_cd-16)*0.02);}
+  camK*=camZoom; /* Debug-/QA-Zoom (__ns.zoom) */
   camera.position.set(cpx+(Math.random()-.5)*shake*3,CAM_H*camK,cpz+CAM_Z*camK+(Math.random()-.5)*shake*3);
-  camera.lookAt(cpx,CAM_LOOKZ*-0.4,cpz+CAM_LOOKZ);
+  camera.lookAt(cpx,CAM_LOOKZ*-0.4*camZoom,cpz+CAM_LOOKZ*camZoom);
   /* Online-Keepalive: am Pause-/Level-Up-/Game-Over-Screen laufen keine Snapshots/Inputs —
      ohne 1/s-Ping würde der 6s-Watchdog in mp.js die Verbindung fälschlich kappen */
   if(netSess&&netSess.status==='connected'&&(!running||paused)&&now-kaLast>=1000){kaLast=now;try{netSess.sendFast({k:'p'});}catch(e){}}
@@ -1583,6 +1698,18 @@ var RARITY=[
  {n:"Selten",    c:0xb15cff,cnt:2,pow:1.6,w:11},
  {n:"Legendär",  c:0xff9a2e,cnt:3,pow:2.1,w:3}
 ];
+/* Phase 4: Loot-Optik — Schatz-/Waffen-Modelle statt Oktaeder (unskinned -> clone erlaubt), pro Rarity vor-getönt.
+   Fallback: Oktaeder bleibt, solange das Modell (noch) nicht geladen ist. */
+var LOOT_FILES=[["wp_coins.glb"],["wp_potion.glb"],["wp_gem.glb"],["wp_shield_golden.glb","wp_sword.glb"]];
+var LOOT_PROTOS=[null,null,null,null];
+if(THREE.GLTFLoader)(function(){LOOT_FILES.forEach(function(list,ri){LOOT_PROTOS[ri]=[];
+  list.forEach(function(f){try{new THREE.GLTFLoader().load("/models/"+f,function(g){var o=g.scene;if(!o)return;
+    var box=new THREE.Box3().setFromObject(o),size=new THREE.Vector3(),ctr=new THREE.Vector3();box.getSize(size);box.getCenter(ctr);
+    var k=0.95/Math.max(0.001,Math.max(size.x,size.y,size.z));o.scale.setScalar(k);o.position.set(-ctr.x*k,-ctr.y*k,-ctr.z*k);
+    var lc=RARITY[ri].c;
+    o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(n.material){n.material=n.material.clone();
+      if(!n.material.emissive)n.material.emissive=new THREE.Color(0);n.material.emissive.setHex(lc);n.material.emissiveIntensity=0.4;n.material.envMapIntensity=0.3;}}});
+    LOOT_PROTOS[ri].push(o);},undefined,function(){});}catch(e){}});});})();
 var AFFIXES=[
  {l:"+Schaden",  f:function(p){S.dmg*=1+0.14*p;}},
  {l:"+Tempo",    f:function(p){S.speed*=1+0.08*p;}},
@@ -1596,8 +1723,13 @@ var AFFIXES=[
 function rollRarity(bias){var tw=0,ws=RARITY.map(function(r,idx){var w=r.w*(1+(bias||0)*idx*0.7);tw+=w;return w;});var x=rnd()*tw;for(var i=0;i<RARITY.length;i++){x-=ws[i];if(x<=0)return i;}return 0;}
 function spawnLoot(x,z,bias){var g=getMesh(loot,lootMesh);var ri=rollRarity(bias);g.active=true;g.m.visible=true;g.rar=ri;var lc=RARITY[ri].c;g.m.material.color.setHex(lc);g.m.material.emissive.setHex(lc);g.m.scale.setScalar(0.85+ri*0.28);g.m.position.set(x,0.7,z);
   var ub=g.m.userData.beam,uh=g.m.userData.halo;
-  if(ub){ub.material.color.setHex(lc);ub.material.opacity=0.14+ri*0.09;}
-  if(uh){uh.material.color.setHex(lc);uh.material.opacity=0.35+ri*0.14;}}
+  if(ub){ub.material.color.setHex(lc);ub.material.opacity=0.10+ri*0.05;} /* dezenter — sonst frisst Bloom das Modell */
+  if(uh){uh.material.color.setHex(lc);uh.material.opacity=0.26+ri*0.10;}
+  /* Modell-Skin nach Rarity (Beam/Halo bleiben; Dreh-Animation kommt vom rotierenden Parent) */
+  if(g.m.userData.wpn){g.m.remove(g.m.userData.wpn);g.m.userData.wpn=null;}
+  var lp=LOOT_PROTOS[ri];
+  if(lp&&lp.length){var w=lp[(rnd()*lp.length)|0].clone(true);g.m.userData.wpn=w;g.m.add(w);g.m.material.visible=false;}
+  else g.m.material.visible=true;}
 /* Abyss-Stil Affix-Popup: Rarity-Farbe + gewürfelte Affixe; Legendär (auch Koloss-Drops, Bias 3) grösser + Glow */
 var _lpN=0;
 function lootPop(ri,picks){var r=RARITY[ri],col="#"+("000000"+r.c.toString(16)).slice(-6),leg=ri>=3;
@@ -1658,7 +1790,24 @@ function mkP2(){ /* zweite Spielerfigur: warm getönter Neon-Buddy (orange) */
   ring.rotation.x=Math.PI/2;ring.position.y=-0.5;g.add(ring);
   var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.42,6),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffcf6e,emissiveIntensity:0.9}));ant.position.set(0,0.78,0);g.add(ant);
   var ab=new THREE.Mesh(new THREE.SphereGeometry(0.1,10,8),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffcf6e,emissiveIntensity:1.1}));ab.position.set(0,1.02,0);g.add(ab);
-  return {g:g,bm:bm,ring:ring,hp:100,maxhp:100,down:0,rev:0,vx:0,vz:0,active:false};
+  var out={g:g,bm:bm,ring:ring,hp:100,maxhp:100,down:0,rev:0,vx:0,vz:0,active:false,model:null,modelMats:null};
+  /* Phase 4: char.glb (unskinned, wie colossus/duo) als Partner-Figur mit Orange-Tint; Primitiv-Buddy = Fallback.
+     Nur EIN Partner -> einmalige Ladung reicht, kein Pool nötig. Neon-Ring bleibt als Team-Marker sichtbar. */
+  if(THREE.GLTFLoader)try{new THREE.GLTFLoader().load("/models/char.glb",function(gg){
+    var o=gg.scene;if(!o)return;
+    var box=new THREE.Box3().setFromObject(o),size=new THREE.Vector3(),ctr=new THREE.Vector3();
+    box.getSize(size);box.getCenter(ctr);
+    var k=1.7/Math.max(0.001,size.y);if(!isFinite(k)||k<=0)k=1;
+    o.scale.setScalar(k);o.position.set(-ctr.x*k,-0.9-box.min.y*k,-ctr.z*k); /* Füsse auf den Boden (g schwebt auf y=0.9) */
+    var mats=[];
+    o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(n.material){n.material=n.material.clone();
+      if(!n.material.emissive)n.material.emissive=new THREE.Color(0);n.material.emissive.setHex(0xb35a1a);n.material.emissiveIntensity=0.35;n.material.envMapIntensity=0.3;
+      if(n.material.color)n.material.color.lerp(new THREE.Color(0xff8a2a),0.45); /* Orange-Tint = P2-Kennung */
+      mats.push(n.material);}}});
+    g.add(o);out.model=o;out.modelMats=mats;
+    body.visible=false;belly.visible=false;eL.visible=false;eR.visible=false;ant.visible=false;ab.visible=false;
+  },undefined,function(){});}catch(e){}
+  return out;
 }
 function setCoopTag(){
   coopTagBase=coopMode==='ai'?"🤖 KI-Partner":(coopMode==='host'?"🌐 Partner (online)":(coopMode==='client'?"🌐 DU (P2) — Partner hostet":""));
@@ -1755,6 +1904,7 @@ function p2Vis(dt){ /* Optik: Lauf-Wippen, Blickrichtung, Down-Kippen */
   P2.g.position.y=0.9+(P2.down>0?-0.25:Math.abs(Math.sin(S.t*12))*Math.min(0.12,sp*0.012)+Math.sin(S.t*2.6)*0.03);
   if(P2.ring)P2.ring.rotation.z+=dt*1.7;
   P2.bm.emissive.setHex(P2.down>0?0x661111:0x5a2c10);
+  if(P2.modelMats)for(var _pm=0;_pm<P2.modelMats.length;_pm++)P2.modelMats[_pm].emissive.setHex(P2.down>0?0x7a1a1a:0xb35a1a);
 }
 function coopSimP2(dt){ /* Simulation (lokal/Host): P2 bewegen + feuern, Down-/Revive-Logik beider Spieler */
   if(coopOn()){
@@ -1801,9 +1951,10 @@ function buildSnap(){ /* kompakter Host-Frame: Spieler, HP/Down, XP/Welle, Gegne
     en:en,eb:eb,st:st};
 }
 function hostNetFrame(dt){snapAcc+=dt;if(snapAcc>=0.066&&netSess){snapAcc=0;try{netSess.sendFast(buildSnap());}catch(e){}}}
-function cliClear(){ /* Client-Spiegel aufräumen (Strukturen + Koloss) */
+function cliClear(){ /* Client-Spiegel aufräumen (Strukturen + Koloss + Telegrafen) */
   for(var i=0;i<cliSt.length;i++)scene.remove(cliSt[i]);
   cliSt.length=0;cliStSig="";
+  for(i=0;i<cbTg.length;i++){cbTg[i].active=false;cbTg[i].line.visible=false;cbTg[i].ring.visible=false;}
   if(cliCb.on){cliCb.on=false;cbBoss.visible=false;var bar=document.getElementById("cbBar");if(bar)bar.classList.add("hide");}
 }
 function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD-Zustand übernehmen) */
@@ -1825,7 +1976,8 @@ function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD
     if(!e.active){e.active=true;e.m.visible=true;e.m.position.set(a[1],0.7,a[2]);e.hp=1;}
     e._tx=a[1];e._tz=a[2];
     if(e._sc!==a[3]){e._sc=a[3];e.m.scale.set(a[3],a[3],a[3]);}
-    if(e._col!==a[4]){e._col=a[4];e.m.material.color.setHex(a[4]);e.m.material.emissive.setHex(a[4]);e.baseEmissive=a[4];}
+    if(e._col!==a[4]){e._col=a[4];e.m.material.color.setHex(a[4]);e.m.material.emissive.setHex(a[4]);e.baseEmissive=a[4];
+      var _kk=KIND_BY_COLOR[a[4]];if(_kk)skinAttach(e,_kk);else skinDetach(e);} /* Client-Spiegel bekommt dieselben GLB-Skins */
   }
   if(coopMode!=='client')return; /* netSim auf dem Host: nur Spiegel-Ziele prüfen, nichts zerstören */
   for(i=0;i<enemies.length;i++){var e2=enemies[i];
@@ -1850,6 +2002,14 @@ function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD
     burst(cbBoss.position.x,cbBoss.position.z,0xffd166);shake=Math.max(shake,0.8);}
   updHUD();
 }
+function cliTgUpdate(dt){ /* Client: Telegrafen-Animation (Blinken/Feuern) OHNE Schadens-Check — der Host rechnet Treffer */
+  for(var i=0;i<cbTg.length;i++){var g=cbTg[i];if(!g.active)continue;g.t+=dt;
+    if(g.fired){g.firedT-=dt;var o2=Math.max(0,g.firedT/0.18);if(g.type===0)g.line.material.opacity=o2*0.9;else g.ring.material.opacity=o2*0.9;
+      if(g.firedT<=0){g.active=false;g.line.visible=false;g.ring.visible=false;}continue;}
+    var prog=g.t/g.delay,blink=(Math.floor(g.t*14)%2===0)?0.5:0.18;
+    if(g.type===0)g.line.material.opacity=0.15+prog*0.3+(prog>0.7?blink:0);
+    else g.ring.material.opacity=0.15+prog*0.35+(prog>0.7?blink:0);
+    if(g.t>=g.delay){g.fired=1;g.firedT=0.18;(g.type===0?g.line:g.ring).material.color.setHex(0xffffff);}}}
 function clientFrame(dt){ /* Online-Client: eigene Figur (Vorhersage + sanfte Host-Korrektur), Welt interpolieren, Input senden */
   S.t+=dt;
   if(P2&&P2.active){
@@ -1881,9 +2041,16 @@ function clientFrame(dt){ /* Online-Client: eigene Figur (Vorhersage + sanfte Ho
   player.rotation.z+=((p1Down>0?1.2:0)-player.rotation.z)*Math.min(1,dt*8);
   glow.position.set(player.position.x,2,player.position.z);
   for(var i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.cbProxy||e._tx===undefined)continue;
-    e.m.position.x+=(e._tx-e.m.position.x)*k;e.m.position.z+=(e._tz-e.m.position.z)*k;e.m.rotation.y+=dt*1.5;}
+    var _emx=(e._tx-e.m.position.x),_emz=(e._tz-e.m.position.z);
+    e.m.position.x+=_emx*k;e.m.position.z+=_emz*k;
+    /* leichte Idle-Bewegung im Client-Spiegel: Blick in Bewegungsrichtung + Schwebe-Bob statt Dauerdrehung */
+    if(Math.abs(_emx)+Math.abs(_emz)>0.03){var _eta=Math.atan2(_emx,_emz),_eda=_eta-e.m.rotation.y;
+      while(_eda>Math.PI)_eda-=6.283;while(_eda<-Math.PI)_eda+=6.283;e.m.rotation.y+=_eda*Math.min(1,dt*8);}
+    else e.m.rotation.y+=dt*0.6;
+    e.m.position.y=0.7+Math.abs(Math.sin(S.t*6+i*1.7))*0.07;}
   if(cliCb.on){cbBoss.position.x+=(cliCb.tx-cbBoss.position.x)*k;cbBoss.position.z+=(cliCb.tz-cbBoss.position.z)*k;
     cbBoss.position.y=3.6+Math.sin(S.t*1.8)*0.35;cbBoss.rotation.y+=dt*0.4;}
+  cliTgUpdate(dt); /* Boss-Telegrafen (vom Host per 'tl'/'tr'-Event) lokal animieren — ohne Schaden */
   if(hurt>0)hurt=Math.max(0,hurt-dt*2.2);hurtEl.style.opacity=hurt;
   inAcc+=dt;
   if(inAcc>=0.05&&netSess){inAcc=0;try{netSess.sendFast({k:'i',x:+cliMv.x.toFixed(2),z:+cliMv.z.toFixed(2)});}catch(e){}}
@@ -1916,6 +2083,8 @@ function netMsg(m,roleOverride){ /* eingehende Nachrichten (beide Rollen) — de
   switch(m.e){
     case 'bg':pendingMap=(m.mi==null?null:m.mi);dailyMode=false;coopMode='client';start();announce("🌐 KOOP GESTARTET — du bist der ORANGE Buddy!");break;
     case 'an':if(coopMode==='client')announce(m.t);break;
+    case 'tl':if(coopMode==='client')cb_teleLine(+m.x||0,+m.z||0,+m.a||0,+m.l||10,+m.w||2,+m.d||0.8,0);break; /* dmg 0: nur Optik */
+    case 'tr':if(coopMode==='client')cb_teleRing(+m.x||0,+m.z||0,+m.r||5,+m.d||0.8,0);break;
     case 'lu':if(coopMode==='client')announce("⬆ Partner wählt ein Upgrade… (geteilter Build)");break;
     case 'ov':if(coopMode==='client')clientOver(m);break;
     case 'wn':if(coopMode==='client')clientWin(m);break;
@@ -2052,6 +2221,12 @@ window.__ns.netSim=function(){ /* Loopback-Test OHNE Netz: Host-Frame encode→d
     return 'ok';
   }catch(e){return 'err:'+((e&&e.message)||e);}
 };
+window.__ns.zoom=function(f){camZoom=Math.max(0.15,Math.min(3,+f||1));return camZoom;};
+window.__ns.gfx=function(){ /* Phase-4-Debug: Modell-/Textur-Status */
+  var loaded={},act={},kind;
+  for(kind in EKIND){loaded[kind]=EMODELS_LOADED[kind]||0;var p=EPOOLS[kind]||[],a=0;for(var i=0;i<p.length;i++)if(p[i].inUse)a++;act[kind]=a;}
+  var lm=0;for(var r=0;r<LOOT_PROTOS.length;r++)if(LOOT_PROTOS[r]&&LOOT_PROTOS[r].length)lm++;
+  return {enemyModels:{loaded:loaded,active:act},lootModels:lm,p2Model:!!(P2&&P2.model),floorTex:GFX.floorTex,ibl:GFX.ibl,softGpu:SOFT_GPU};};
 reset(); showBest(); renderShop(); renderChars();
 // Namensfeld: live-Gruß beim Tippen, Enter startet direkt
 (function(){var ni=document.getElementById("nameInput");if(!ni)return;
