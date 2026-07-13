@@ -2463,10 +2463,20 @@ function updIdleLife(dt){
 (function(){
   function lm(ci){var f=fields[ci*FIELDS_PER],g=new THREE.Group();g.position.set(f.x,0,f.z-5);
     function add(m,x,y,z){m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
-    if(ci===0){ // Bauklötze-Turm
-      add(new THREE.Mesh(new THREE.BoxGeometry(2.2,2.2,2.2),mat(0xff5d7d)),0,1.1,0);
-      add(new THREE.Mesh(new THREE.BoxGeometry(1.7,1.7,1.7),mat(0x5ea8ff)),0.3,3.05,0);
-      add(new THREE.Mesh(new THREE.ConeGeometry(1.2,1.6,4),mat(0xffd166)),0.2,4.7,0);}
+    if(ci===0){ /* 🧸 Bauklotz-Turm — mit ABC-Buchstaben + Ball sofort als Spielzeug erkennbar (User: "was ist das?") */
+      function klotz(sz,col,ch){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+        var hex="#"+("00000"+col.toString(16)).slice(-6);
+        c.fillStyle=hex;c.fillRect(0,0,128,128);
+        c.strokeStyle="rgba(255,255,255,.8)";c.lineWidth=8;c.strokeRect(9,9,110,110);
+        c.fillStyle="rgba(255,255,255,.95)";c.font="900 82px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(ch,64,70);
+        return new THREE.Mesh(new THREE.BoxGeometry(sz,sz,sz),
+          new THREE.MeshStandardMaterial({map:crispTex(cv),emissive:0x5a4a3a,emissiveIntensity:0.12,flatShading:true}));}
+      add(klotz(2.2,0xff5d7d,"A"),0,1.1,0).rotation.y=0.12;
+      add(klotz(1.7,0x5ea8ff,"B"),0.3,3.05,0).rotation.y=-0.24;
+      add(klotz(1.3,0x7ad97a,"C"),0.1,4.55,0).rotation.y=0.38;
+      var dach=add(new THREE.Mesh(new THREE.ConeGeometry(0.95,1.1,4),mat(0xffd166,0xffd166,0.2)),0.1,5.75,0);dach.rotation.y=Math.PI/4; /* Dach-Klötzchen */
+      add(new THREE.Mesh(new THREE.SphereGeometry(0.85,14,11),mat(0xff9a4a,0xff9a4a,0.15)),2.7,0.85,1.1); /* Spielball */
+      var strf=add(new THREE.Mesh(new THREE.TorusGeometry(0.86,0.09,6,20),mat(0xffffff,0xf0f0f0,0.1)),2.7,0.85,1.1);strf.rotation.x=0.5; /* Ball-Streifen */}
     if(ci===1){ // Schul-Tafel + Fahne
       add(new THREE.Mesh(new THREE.BoxGeometry(3.4,2.2,0.3),mat(0x2a4a3a)),0,1.6,0);
       add(new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.09,4.6,6),mat(0xd8d8e0)),2.2,2.3,0);
