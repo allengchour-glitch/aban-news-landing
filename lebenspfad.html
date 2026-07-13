@@ -1119,7 +1119,7 @@ function mkPawnMesh(color,cfg,onReady){
   cfg=cfg||{g:"m",style:0,skin:0};
   var bodyHex=(cfg.cloth!=null&&cfg.cloth>=0)?CLOTHES[cfg.cloth%CLOTHES.length]:color; // 👕 wählbare Kleiderfarbe
   var g=new THREE.Group(),cm=smat(bodyHex,bodyHex,0.10),skin=smat(SKINTONES[cfg.skin%SKINTONES.length],0x3a2a1a,0.04);
-  var pantsHex=PANTS[((cfg.pants|0)>=0?cfg.pants:0)%PANTS.length];var pants=smat(pantsHex);
+  var pantsHex=PANTS[Math.max(0,cfg.pants|0)%PANTS.length];var pants=smat(pantsHex); // |0 fängt undefined/NaN ab
   var hairHex=(cfg.hair!=null&&cfg.hair>=0)?HAIRS[cfg.hair%HAIRS.length]:HAIRS[(cfg.style*2+cfg.skin+(cfg.g==="m"?1:0))%HAIRS.length];var hair=smat(hairHex);
   var HSEG=IS_COARSE?10:14,LSEG=IS_COARSE?8:10; // Kugel-/Kapsel-Segmente (rund genug, aber sparsam: 2-4 Figuren)
   // Kapsel-Glied: Pivot oben, Kapsel hängt runde herab (schwingt beim Laufen)
@@ -1908,7 +1908,7 @@ function updMove(dt){
     var dd=Math.hypot(pw.position.x-px,pw.position.z-pz);
     for(var wi=0;wi<pw.userData.wheels.length;wi++)pw.userData.wheels[wi].rotation.x+=dd/0.33;
     if(pw.userData.car)pw.userData.car.rotation.z=Math.sin(performance.now()*0.012)*0.02;}
-  animWalk(pw,true,1/60);
+  animWalk(pw,true,dt);
 }
 function pawnOffset(i){var a=i/4*Math.PI*2;return {x:Math.cos(a)*0.55,y:0,z:Math.sin(a)*0.55};}
 function placePawn(i){var p=G.players[i],o=pawnOffset(i);pawns[i].position.set(fields[p.tile].x+o.x,0,fields[p.tile].z+o.z);}
@@ -3317,7 +3317,7 @@ function begin(saved){
   G=saved||freshState(selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked,
     (document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked)?"kurz":"voll");
   if(G.mode!=="kurz")G.mode="voll"; // alte v3-Saves defensiv
-  if(!G.goal)G.goal=GOALS[(Math.random()*GOALS.length)|0];
+  if(!G.goal)G.goal=GOALS[(NET.on?(NET.seed>>>3)%GOALS.length:(Math.random()*GOALS.length))|0]; // online: seed-deterministisch (sonst Ziel-Desync)
   forkSel=null;moveTo=-1;moveQ=0;hopT=0;
   G.players.forEach(function(pp){if(!fields[pp.tile])pp.tile=0;}); // unbekannter Feld-Index -> Start (nie crashen)
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
