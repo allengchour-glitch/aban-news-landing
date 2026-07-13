@@ -2008,10 +2008,11 @@ function updMove(dt){
   }
   var k=hopT,x=hopFrom.x+(to.x-hopFrom.x)*k,z=hopFrom.z+(to.z-hopFrom.z)*k;
   var px=pw.position.x,pz=pw.position.z;
+  var runFlat=(pw.userData.gacts&&!jump)?0.25:1; /* 🎬 Anime-Figur rennt bodennah — Run-Clip statt Hopser */
   var y=(drv&&!jump)?0.02+Math.sin(performance.now()*0.02)*0.02 // leichtes Wippen beim Fahren
-        :Math.sin(k*Math.PI)*(OPT.motion?(jump?4.2:0.55):0.2); // Hüpf-Parabel (Zeitsprung: hoher Bogen)
+        :Math.sin(k*Math.PI)*(OPT.motion?(jump?4.2:0.55*runFlat):0.2*runFlat); // Hüpf-Parabel (Zeitsprung: hoher Bogen)
   pw.position.set(x,y+pawnOffset(G.turn).y,z);
-  pw.userData.stretch=(!drv&&OPT.motion)?Math.sin(k*Math.PI)*0.9:0; // Stretch im Flug
+  pw.userData.stretch=(!drv&&OPT.motion)?Math.sin(k*Math.PI)*0.9*(pw.userData.gacts&&!jump?0.2:1):0; // Stretch im Flug (Anime: kaum)
   var o=pawnOffset(G.turn);pw.position.x+=o.x;pw.position.z+=o.z;
   pw.rotation.y=Math.atan2(to.x-hopFrom.x,to.z-hopFrom.z); // in Laufrichtung schauen
   if(drv&&pw.userData.wheels){ // Räder drehen ∝ zurückgelegter Distanz
