@@ -51,6 +51,20 @@ if [ -s /tmp/seo_fill_done.txt ] || [ -f automation/seo_fill.py ]; then
   fi
 fi
 
+# ── 1c. Google-Feed-Metafeld-Filler (Polish): self-heal wie SEO ──
+if [ -s /tmp/gfeed_done.txt ] && [ -f automation/gfeed_fill.py ] && [ -s /tmp/gaps2.json ]; then
+  GTOT=$(python3 -c "import json;g=json.load(open('/tmp/gaps2.json'));print(len(set(g['no_gender'])|set(g['no_age'])))" 2>/dev/null || echo 0)
+  GDONE=$(wc -l < /tmp/gfeed_done.txt 2>/dev/null || echo 0)
+  if [ "$GDONE" -lt "$GTOT" ] 2>/dev/null; then
+    GMT=$(stat -c %Y /tmp/gfeed_done.txt 2>/dev/null || echo 0); GAGE=$(( $(date +%s) - GMT ))
+    if [ "$(alive 'gfeed_fill.py')" -eq 0 ] || [ "$GAGE" -gt 600 ]; then
+      pkill -f gfeed_fill.py 2>/dev/null; sleep 1; [ -s "$SHENV" ] && source "$SHENV"
+      nohup python3 automation/gfeed_fill.py > /tmp/gfeed_fill.log 2>&1 &
+      echo "[selbstkontrolle] gfeed-Filler (neu/entklemmt) bei ${GDONE}/${GTOT}"
+    fi
+  fi
+fi
+
 # ── 2. Auto-Committer (5-Min-Loop) — nutzt jetzt den flock-serialisierten git_sync.sh ──
 if [ "$(alive 'git_sync.sh auto-loop|sleep 300; cd')" -eq 0 ]; then
   nohup bash -c "while true; do sleep 300; bash /home/user/aban-news-landing/automation/git_sync.sh 'Ledger-Drift (auto) #autocommit-loop'; done # git_sync.sh auto-loop" > /tmp/autocommit.log 2>&1 &
