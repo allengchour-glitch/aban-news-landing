@@ -1439,12 +1439,10 @@ function cardRustle(){ // Seiten-Rascheln beim Karten-Flip (WebAudio-Rauschen, s
   }catch(e){}
 }
 function emote(i,kind){var pw=pawns[i];if(!pw)return;
-  if(!pw.userData.limbs){ /* 🎬 Anime-GLB: Jubel = attack-Clip (falls vorhanden), sonst kurzer Sprint an Ort */
-    if(pw.userData.gacts){pw.userData.emoteOnce=true;
-      var ok=meshyAnimOnce(pw,kind==="jubel"?"attack":"walk");
-      setTimeout(function(){pw.userData.emoteOnce=false;},ok?1400:300);}
-    return;}
-  pw.userData.emote={k:kind,t:0};}
+  if(!pw.userData.limbs&&pw.userData.gacts&&kind==="jubel"){ /* 🎬 Anime: Sieger-Pose per attack-Clip */
+    pw.userData.emoteOnce=true;var ok=meshyAnimOnce(pw,"attack");
+    setTimeout(function(){pw.userData.emoteOnce=false;},ok?1400:300);}
+  pw.userData.emote={k:kind,t:0}; /* Gruppen-Bewegung (Huepfen/Lehnen/Wiegen/Drehen) laeuft fuer ALLE Figuren-Typen */}
 var MEET_BUBBLE={jubel:["❤️","🎉"],highfive:["🙌","✋"],umarmung:["🫂","💕"],kuss:["😘","❤️"],tanz:["💃","🎶"],wink:["👋","😊"]};
 function meetTogether(ai,bi,x,z,kind){ // 🤝 zwei Figuren treffen sich -> wenden sich einander zu & agieren gemeinsam
   kind=kind||"jubel";var a=pawns[ai],b=pawns[bi];
@@ -1467,41 +1465,47 @@ function meetPickShow(){var el=document.getElementById("meetPick"),row=document.
 function meetDoChosen(kind){var m=window._lpMeet,el=document.getElementById("meetPick");if(el)el.classList.add("hide");
   if(!m)return;m.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,m.x,m.z,kind);});
   if(NET.on&&myTurn())netSend({t:"meetact",k:kind});beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste
-function updEmotes(dt){
+function updEmotes(dt){ /* Limb-sicher: Gruppen-Bewegung fuer ALLE Figuren, Arm-Posen nur wenn Limbs da (Toon) */
   for(var i=0;i<pawns.length;i++){var pw=pawns[i],e=pw.userData.emote;if(!e)continue;
     e.t+=dt;var L=pw.userData.limbs;
     if(e.k==="jubel"){ // Arme hoch + Hüpfer
-      L.la.rotation.x=-2.6;L.ra.rotation.x=-2.6;
-      L.la.rotation.z=0.3+Math.sin(e.t*14)*0.25;L.ra.rotation.z=-0.3-Math.sin(e.t*14)*0.25;
+      if(L){L.la.rotation.x=-2.6;L.ra.rotation.x=-2.6;
+        L.la.rotation.z=0.3+Math.sin(e.t*14)*0.25;L.ra.rotation.z=-0.3-Math.sin(e.t*14)*0.25;}
       pw.position.y=Math.abs(Math.sin(e.t*7))*0.5;
-      if(e.t>1.3){pw.position.y=0;L.la.rotation.z=0;L.ra.rotation.z=0;pw.userData.emote=null;}}
+      if(e.t>1.3){pw.position.y=0;if(L){L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
     else if(e.k==="trauer"){ // hängen lassen
-      L.la.rotation.x=0.35;L.ra.rotation.x=0.35;
+      if(L){L.la.rotation.x=0.35;L.ra.rotation.x=0.35;}
       pw.rotation.x=Math.min(0.28,e.t*0.6);
       if(e.t>1.4){pw.rotation.x=0;pw.userData.emote=null;}}
     else if(e.k==="wurf"){ // Wurf-Geste: Arm holt aus und schleudert
-      var ph2=Math.min(1,e.t/0.7);
-      L.ra.rotation.x=ph2<0.5?(-0.5-ph2*3.4):(-2.2+(ph2-0.5)*5.2);
-      if(e.t>0.9){L.ra.rotation.x=0;pw.userData.emote=null;}}
-    else if(e.k==="wink"){ // rechter Arm winkt
-      L.ra.rotation.x=-2.8;L.ra.rotation.z=-0.2+Math.sin(e.t*11)*0.5;
-      if(e.t>1.1){L.ra.rotation.z=0;pw.userData.emote=null;}}
+      if(L){var ph2=Math.min(1,e.t/0.7);
+        L.ra.rotation.x=ph2<0.5?(-0.5-ph2*3.4):(-2.2+(ph2-0.5)*5.2);}
+      if(e.t>0.9){if(L)L.ra.rotation.x=0;pw.userData.emote=null;}}
+    else if(e.k==="wink"){ // rechter Arm winkt (Anime: freundliches Wiegen)
+      if(L){L.ra.rotation.x=-2.8;L.ra.rotation.z=-0.2+Math.sin(e.t*11)*0.5;}
+      else pw.rotation.z=Math.sin(e.t*9)*0.12;
+      if(e.t>1.1){if(L)L.ra.rotation.z=0;else pw.rotation.z=0;pw.userData.emote=null;}}
     else if(e.k==="highfive"){ // 🤝 rechter Arm hoch nach vorn + kleiner Sprung
-      L.ra.rotation.x=-2.9;L.ra.rotation.z=-0.35;
+      if(L){L.ra.rotation.x=-2.9;L.ra.rotation.z=-0.35;}
       pw.position.y=e.t<0.9?Math.abs(Math.sin(e.t*7))*0.42:0;
-      if(e.t>1.2){pw.position.y=0;L.ra.rotation.x=0;L.ra.rotation.z=0;pw.userData.emote=null;}}
+      if(e.t>1.2){pw.position.y=0;if(L){L.ra.rotation.x=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
     else if(e.k==="umarmung"){ // 🫂 Arme nach vorn/innen + zueinander lehnen (Kuscheln)
-      L.la.rotation.x=-1.25;L.ra.rotation.x=-1.25;L.la.rotation.z=0.55;L.ra.rotation.z=-0.55;
+      if(L){L.la.rotation.x=-1.25;L.ra.rotation.x=-1.25;L.la.rotation.z=0.55;L.ra.rotation.z=-0.55;}
       pw.rotation.x=Math.sin(Math.min(Math.PI,e.t*1.7))*0.3;pw.position.y=Math.abs(Math.sin(e.t*3.5))*0.1;
-      if(e.t>2.0){pw.rotation.x=0;pw.position.y=0;L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;pw.userData.emote=null;}}
+      if(e.t>2.0){pw.rotation.x=0;pw.position.y=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
     else if(e.k==="kuss"){ // 😘 kurz vorlehnen (Küsschen)
       pw.rotation.x=Math.sin(Math.min(Math.PI,e.t*2.4))*0.32;
-      L.la.rotation.x=-0.55;L.ra.rotation.x=-0.55;
-      if(e.t>1.5){pw.rotation.x=0;L.la.rotation.x=0;L.ra.rotation.x=0;pw.userData.emote=null;}}
+      if(L){L.la.rotation.x=-0.55;L.ra.rotation.x=-0.55;}
+      if(e.t>1.5){pw.rotation.x=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;}pw.userData.emote=null;}}
     else if(e.k==="tanz"){ // 💃 wiegen + Arme raus
-      L.la.rotation.x=-1.7;L.ra.rotation.x=-1.7;L.la.rotation.z=0.45;L.ra.rotation.z=-0.45;
+      if(L){L.la.rotation.x=-1.7;L.ra.rotation.x=-1.7;L.la.rotation.z=0.45;L.ra.rotation.z=-0.45;}
       pw.rotation.z=Math.sin(e.t*8)*0.24;pw.position.y=Math.abs(Math.sin(e.t*6))*0.2;
-      if(e.t>2.3){pw.rotation.z=0;pw.position.y=0;L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;pw.userData.emote=null;}}}}
+      if(e.t>2.3){pw.rotation.z=0;pw.position.y=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
+    else if(e.k==="brautwalzer"){ // 💒 Hochzeitstanz: langsame Drehung + Wiegen + Herzchen-Spur
+      pw.rotation.y+=dt*2.4;pw.rotation.z=Math.sin(e.t*4)*0.14;pw.position.y=Math.abs(Math.sin(e.t*3))*0.16;
+      if(L){L.la.rotation.x=-1.4;L.ra.rotation.x=-1.4;}
+      if((e.hb|0)!==((e.t*2)|0)){e.hb=(e.t*2)|0;hearts(pw.position.x,pw.position.z);}
+      if(e.t>3.6){pw.rotation.z=0;pw.position.y=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;}pw.userData.emote=null;}}}}
 function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
   // Alters-Tween (weiches Wachsen am Geburtstag; bei OPT.motion aus -> fast sofort)
   var u=pw.userData,ak=Math.min(1,dt*(OPT.motion?4:24));
@@ -1693,8 +1697,9 @@ function weddingScene(i){
   var pw=pawns[i];
   // Hochzeitsglocken (Terz-Geläut) + Herzregen + Konfetti + 💋 (familienfreundlich)
   [659.25,523.25,659.25,783.99,659.25].forEach(function(f,k){setTimeout(function(){beep(f,.5,"triangle",.07);beep(f/2,.7,"sine",.04);},k*320);});
-  for(var w2=0;w2<3;w2++)setTimeout(function(){hearts(pw.position.x,pw.position.z);},w2*400);
+  for(var w2=0;w2<5;w2++)setTimeout(function(){hearts(pw.position.x,pw.position.z);},w2*400);
   confetti(pw.position.x,pw.position.z,0xff9ad9);
+  emote(i,"brautwalzer"); /* 💃 die Figur tanzt — funktioniert fuer Toon UND Anime */
   var kiss=emojiSprite("💋",1.3);kiss.position.set(pw.position.x,2.6,pw.position.z);scene.add(kiss);
   confs.push({m:kiss,vx:0,vy:1.0,vz:0,rx:0,rz:0,life:2.0,heart:true});
   announce("💒 HOCHZEIT!","#ff5db8");camShake=0.4;
