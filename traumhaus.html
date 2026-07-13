@@ -522,6 +522,7 @@ setTimeout(function baueVerkehr(){
 },0);
 function updVerkehr(dt){
   verkehr.forEach(function(v){
+    if(v===driveCar)return; // wird gerade gefahren (geklaut)
     v.pos+=v.route.dir*v.route.speed*dt;
     var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+34; // weit außerhalb der Sicht umkehren
     if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
@@ -688,6 +689,7 @@ var ACH=[
  ["taenzer","💃","Tanzfieber","Eine perfekte Tanz-Session",function(){return (stats.tanzPerfekt||0)>=1;}],
  ["ehrenbuerger","🎖️","Ehrenbürger","3 Stadt-Aufträge erfüllt",function(){return (stats.quests||0)>=3;}],
  ["langfinger","🤏","Langfinger","3 erfolgreiche Taschendiebstähle",function(){return (stats.diebstahl||0)>=3;}],
+ ["autodieb","🚗","Autodieb","Ein fahrendes Auto geklaut",function(){return (stats.autosGeklaut||0)>=1;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
@@ -1346,25 +1348,32 @@ function updAuto(dt){
     else{a.state="parkt";a.mesh.position.set(a.homeX,a.homeY||0.01,a.homeZ);a.mesh.rotation.y=Math.PI/2;}}
 }
 // ---- Auto fahren (GTA-Style: einsteigen, selbst lenken, aussteigen) ----
-var fahren=false,carRot=Math.PI/2,carLean=0;
-function einsteigen(){
-  var a=window.autoRec;if(!a||fahren)return;
-  fahren=true;a.state="fahren";
+var fahren=false,carRot=Math.PI/2,carLean=0,driveCar=null,driveGeklaut=false;
+function einsteigen(rec,geklaut){
+  var a=rec||window.autoRec;if(!a||fahren)return;
+  fahren=true;driveCar=a;driveGeklaut=!!geklaut;
+  if(a.state!==undefined)a.state="fahren";
   sims[0].mesh.visible=false;followSim=null;
   carRot=a.mesh.rotation.y;camR=Math.max(camR,16);
   document.getElementById("exitCar").style.display="block";
-  hint("🚗 Eingestiegen! Lenke mit Joystick/WASD — 🚪 zum Aussteigen");}
+  if(geklaut){polizeiPending=true;npcTimer=Math.min(npcTimer,6);stats.autosGeklaut=(stats.autosGeklaut||0)+1;
+    hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei ist alarmiert! 🚨");}
+  else hint("🚗 Eingestiegen! Lenke mit Joystick/WASD — 🚪 zum Aussteigen");}
 function aussteigen(){
   if(!fahren)return;fahren=false;
-  var a=window.autoRec;a.state="parkt";
+  var a=driveCar||window.autoRec;
   sims[0].mesh.visible=true;
   sims[0].x=a.mesh.position.x+Math.cos(carRot)*1.6;sims[0].z=a.mesh.position.z-Math.sin(carRot)*1.6;
   sims[0].state="idle";sims[0].pose="stand";
-  a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);
+  if(a===window.autoRec){a.state="parkt";
+    a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);}
+  else if(driveGeklaut&&a.route){ // geklautes Auto zurück in den Verkehr
+    a.pos=a.route.axis==="x"?a.mesh.position.x:a.mesh.position.z;}
+  driveCar=null;driveGeklaut=false;
   document.getElementById("exitCar").style.display="none";
   hint("🚶 Ausgestiegen");}
 function autoFahr(dt){
-  var a=window.autoRec;if(!a){fahren=false;return;}
+  var a=driveCar||window.autoRec;if(!a){fahren=false;return;}
   var m=a.mesh;m.visible=true;
   var lx=-Math.sin(camA),lz=-Math.cos(camA),rx=-lz,rz=lx;
   var mx=(-steer.z)*lx+steer.x*rx,mz=(-steer.z)*lz+steer.x*rz;
@@ -1380,7 +1389,7 @@ function autoFahr(dt){
     m.position.x=Math.max(-110,Math.min(110,m.position.x));
     m.position.z=Math.max(-110,Math.min(110,m.position.z));
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03; // leichtes Wanken
-  }else{carLean*=0.85;m.position.y=a.homeY||0.01;}
+  }else{carLean*=0.85;m.position.y=(a.homeY||0.01);}
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
   camTx=m.position.x;camTz=m.position.z;updCam();}
 document.getElementById("exitCar").onclick=aussteigen;
@@ -1831,6 +1840,8 @@ function tapAt(px,py){
       if(f2.id==="teich"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<2.2){angelStart();return;}
       if(f2.id==="stereo"&&Math.hypot(cx(f2.gx)-c0.pt.x,cz(f2.gy)-c0.pt.z)<1.5){tanzStart();return;}}
       if(window.autoRec&&window.autoRec.state==="parkt"&&Math.hypot(window.autoRec.mesh.position.x-c0.pt.x,window.autoRec.mesh.position.z-c0.pt.z)<3){einsteigen();return;}}
+    if(c0&&!fahren){for(var vi9=0;vi9<verkehr.length;vi9++){var v9=verkehr[vi9];
+      if(v9.mesh&&Math.hypot(v9.mesh.position.x-c0.pt.x,v9.mesh.position.z-c0.pt.z)<3.5){einsteigen(v9,true);return;}}}
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
