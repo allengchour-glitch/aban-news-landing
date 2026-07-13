@@ -97,17 +97,29 @@ base=np.stack([v*182,v*182,v*190],-1)     # helleres Steingrau
 save(base,"tex_stone.png")
 save(normal_from_height(grout*(0.5+0.5*tileid),2.4),"tex_stone_n.png")
 
-# ================= 3) GRAS (Boden) — GLATT & sauber (kein Pixel-Rauschen) =================
-patch = fbm(N,5,seed=41)          # weiche mittlere Variation
-big   = fbm(N,3,seed=42)          # grosse sanfte Flaechen
-lum = (0.66+0.22*patch)*(0.92+0.08*big)
-base = np.zeros((N,N,3),np.float32)
-base[...,0] = lum*(58+26*patch)   # gedaempftes R
-base[...,1] = lum*(138+28*patch)  # sattes, sauberes Gruen
-base[...,2] = lum*(52+16*patch)   # niedriges B
-# sehr sanfte, seltene trockene Flecken (weich, kein Korn)
-dry = np.clip(fbm(N,4,seed=44)-0.66,0,1)*1.6
-base[...,0]+=dry*42; base[...,1]+=dry*26
+# ================= 3) GRAS (Boden) — satte Wiese: weiche Mehrton-Zonen, Sonnenflecken, zarte Tupfer =================
+big   = fbm(N,3,seed=42)          # grosse sanfte Flaechen (Zonen)
+patch = fbm(N,4,seed=41)          # weiche mittlere Variation
+blade = fbm(N,6,seed=47)          # feine Halm-Struktur — NUR minimal beigemischt (kein Korn)
+# zwei Gruentoene weich mischen: frisches Gras <-> tiefes Wiesengruen
+g1=np.array([88,186,104],np.float32); g2=np.array([52,140,74],np.float32)
+mixz=np.clip((big-0.35)*2.2,0,1)[...,None]
+base=(g1*mixz+g2*(1-mixz))
+# mittlere weiche Flecken hellen/dunkeln sanft
+base*= (0.90+0.18*patch)[...,None]
+# warme Sonnenflecken (selten, weich) -> gelbgruener Schimmer
+sun=np.clip(fbm(N,3,seed=45)-0.62,0,1)*2.4
+base[...,0]+=sun*34; base[...,1]+=sun*22
+# feine Halme: sehr dezent (±7), weich — Struktur ohne Pixelrauschen
+base+=((blade-0.5)*14)[...,None]*np.array([0.7,1.0,0.6])
+# 🌼 zarte Bluemchen-Tupfer: sehr sparsam, weiche Raender (Worley-Punkte)
+f1,_,_fid=worley(N,cells=26,seed=48)
+dot=np.clip(0.10-f1,0,1)/0.10          # weicher Kreis um jeden Zellpunkt
+mask=(np.random.default_rng(9).random((26,26))<0.16)  # nur ~16% der Zellen haben eine Blume
+cellx=(np.arange(N)/N*26).astype(int)
+mm=mask[np.ix_((np.arange(N)/N*26).astype(int),cellx)]
+dot=dot*mm
+base[...,0]+=dot*95; base[...,1]+=dot*85; base[...,2]+=dot*95   # weisslich
 base = np.clip(base,0,255)
 save(base,"tex_grass.png")
 save(normal_from_height(patch*0.6+big*0.4,0.8),"tex_grass_n.png")
