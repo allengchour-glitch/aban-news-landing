@@ -698,6 +698,7 @@ var ACH=[
  ["ehrenbuerger","🎖️","Ehrenbürger","3 Stadt-Aufträge erfüllt",function(){return (stats.quests||0)>=3;}],
  ["langfinger","🤏","Langfinger","3 erfolgreiche Taschendiebstähle",function(){return (stats.diebstahl||0)>=3;}],
  ["autodieb","🚗","Autodieb","Ein fahrendes Auto geklaut",function(){return (stats.autosGeklaut||0)>=1;}],
+ ["fluchtprofi","🏁","Fluchtprofi","Der Polizei entkommen",function(){return (stats.entkommen||0)>=1;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
@@ -1364,8 +1365,9 @@ function einsteigen(rec,geklaut){
   sims[0].mesh.visible=false;followSim=null;
   carRot=a.mesh.rotation.y;camR=Math.max(camR,16);
   document.getElementById("exitCar").style.display="block";
-  if(geklaut){polizeiPending=true;npcTimer=Math.min(npcTimer,6);stats.autosGeklaut=(stats.autosGeklaut||0)+1;
-    hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei ist alarmiert! 🚨");}
+  if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
+    hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei kommt! 🚨");
+    setTimeout(function(){if(fahren)startPolizeiJagd();},1800);}
   else hint("🚗 Eingestiegen! Lenke mit Joystick/WASD — 🚪 zum Aussteigen");}
 function aussteigen(){
   if(!fahren)return;fahren=false;
@@ -1401,6 +1403,42 @@ function autoFahr(dt){
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
   camTx=m.position.x;camTz=m.position.z;updCam();}
 document.getElementById("exitCar").onclick=aussteigen;
+// ---- Polizei-Jagd (nach Autoklau) ----
+var polizeiJagd=null;
+function spielerPos(){return fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z}:{x:sims[0].x,z:sims[0].z};}
+function startPolizeiJagd(){
+  if(polizeiJagd)return;
+  var gg=new THREE.Group();
+  var korpus=new THREE.Mesh(new THREE.BoxGeometry(3.6,1,1.7),stdMat(0x2a3a6a,0.5));korpus.position.y=0.7;korpus.castShadow=true;gg.add(korpus);
+  var dach=new THREE.Mesh(new THREE.BoxGeometry(2,0.7,1.5),stdMat(0xf4f4f8,0.4));dach.position.y=1.5;gg.add(dach);
+  var bl=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.18,0.5),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));bl.position.set(-0.3,1.95,0);gg.add(bl);
+  var br=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.18,0.5),new THREE.MeshStandardMaterial({color:0xff3a3a,emissive:0xff3a3a,emissiveIntensity:1.6}));br.position.set(0.3,1.95,0);gg.add(br);
+  for(var w=0;w<2;w++)[-1,1].forEach(function(sn){var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.35,0.35,0.25,10),stdMat(0x1a1a20,0.5));rad.rotation.z=Math.PI/2;rad.position.set(-1+w*2,0.35,sn*0.85);gg.add(rad);});
+  var sp=spielerPos();
+  gg.position.set(sp.x-Math.sign(sp.x||1)*30,0.01,sp.z);scene.add(gg);
+  polizeiJagd={mesh:gg,bl:bl,br:br,rot:0,t:0,entkommT:0};
+  hint("🚔 POLIZEI verfolgt dich! Häng sie ab oder du wirst gefasst!");}
+function updPolizei(dt,now){
+  var pj=polizeiJagd;if(!pj)return;
+  var sp=spielerPos(),m=pj.mesh;
+  var dx=sp.x-m.position.x,dz=sp.z-m.position.z,dist=Math.hypot(dx,dz);
+  // Blaulicht blinkt
+  var f=(Math.floor(now*0.006)%2)===0;
+  pj.bl.material.emissiveIntensity=f?1.8:0.2;pj.br.material.emissiveIntensity=f?0.2:1.8;
+  if(dist>1){var ziel=Math.atan2(dx,dz);var d=((ziel-pj.rot+Math.PI*3)%(Math.PI*2))-Math.PI;pj.rot+=d*Math.min(1,dt*3);
+    var sp2=Math.min(dist,15)*dt;m.position.x+=Math.sin(pj.rot)*sp2;m.position.z+=Math.cos(pj.rot)*sp2;m.rotation.set(0,pj.rot,0);}
+  // Gefasst: nah + Spieler langsam/steht
+  if(dist<3.2){pj.t+=dt;if(pj.t>1.2){
+    var busse=Math.min(geld,300+(skills.krimi.lv||0)*80);geld-=busse;geldSend();updHUD();
+    if(fahren)aussteigen();
+    hint("🚔 Erwischt! Busse: −"+busse+" § — nächstes Mal schneller weg!");
+    scene.remove(m);polizeiJagd=null;return;}}else pj.t=0;
+  // Entkommen: weit weg für 7 s
+  if(dist>55){pj.entkommT+=dt;if(pj.entkommT>7){
+    stats.entkommen=(stats.entkommen||0)+1;
+    hint("🏁 Abgehängt! Die Polizei hat dich verloren 😎");
+    scene.remove(m);polizeiJagd=null;return;}}else pj.entkommT=0;}
+
 function updWork(dt){
   if(MPs&&!mpHost)return;
   var hh=uhrzeit/60;
@@ -2313,7 +2351,7 @@ function loop(now){
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
-    updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
+    updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
