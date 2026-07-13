@@ -10,7 +10,7 @@
   html, body { height: 100%; overflow: hidden; }
   body {
     font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
-    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    background: linear-gradient(160deg, #bce6ff, #dff2ff, #eaf7ff);
     color: #204a63;
     display: flex; flex-direction: column;
     height: 100%; user-select: none; -webkit-user-select: none;
@@ -18,30 +18,36 @@
   }
   .back {
     position: absolute; top: 12px; left: 12px; z-index: 20;
-    background: #fff; border: none; border-radius: 16px;
+    background: #fffdf6; border: none; border-radius: 16px;
     padding: 10px 16px; font-size: 16px; font-weight: bold; color: #2b7bb0;
-    box-shadow: 0 3px 0 #a9d4ec; cursor: pointer; min-height: 46px;
+    box-shadow: 0 4px 14px rgba(40,90,150,.18); cursor: pointer; min-height: 46px;
   }
-  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #a9d4ec; }
+  .back:active { transform: translateY(2px); box-shadow: 0 2px 8px rgba(40,90,150,.15); }
 
-  h1 { text-align: center; font-size: 26px; margin-top: 58px; color: #1c6ea4; text-shadow: 0 2px 0 #fff; }
-  .sub { text-align: center; font-size: 14px; color: #5a8bab; margin: 2px 0 6px; }
+  h1 { text-align: center; font-size: 27px; margin-top: 58px; color: #1c6ea4; text-shadow: 0 2px 0 #fff; }
+  .sub { text-align: center; font-size: 14px; color: #5a8bab; margin: 2px 0 6px; font-weight: bold; }
 
-  .arena { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; padding: 8px 10px; }
+  .arena { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 8px 12px 14px; }
 
   /* Player 2 area (top, rotated) */
   .pad {
-    flex: 1; border-radius: 24px; display: flex; flex-direction: column;
+    flex: 1; border-radius: 20px; display: flex; flex-direction: column;
     align-items: center; justify-content: center; cursor: pointer;
-    box-shadow: 0 6px 0 rgba(0,0,0,.12); position: relative; overflow: hidden;
+    box-shadow: 0 4px 14px rgba(40,90,150,.2), inset 0 0 0 3px rgba(255,255,255,.45);
+    position: relative; overflow: hidden;
     min-height: 120px; touch-action: manipulation;
   }
-  .pad .lbl { font-size: 20px; font-weight: bold; margin-bottom: 4px; }
-  .pad .emo { font-size: 54px; line-height: 1; }
-  .pad .hint { font-size: 13px; margin-top: 6px; opacity: .85; }
-  .pad .score { position: absolute; top: 8px; right: 14px; font-size: 22px; font-weight: bold; }
-  .pad.p2 { background: linear-gradient(180deg,#ffd9e6,#ffb3cd); color: #a11d54; transform: rotate(180deg); }
-  .pad.p1 { background: linear-gradient(180deg,#c9f0d0,#96e2a8); color: #1c7a3d; }
+  .pad .lbl { font-size: 21px; font-weight: 900; margin-bottom: 4px; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,.25); }
+  .pad .emo { font-size: 58px; line-height: 1; }
+  .pad .hint { font-size: 14px; margin-top: 6px; color: #fff; opacity: .9; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  .pad .score { position: absolute; top: 10px; right: 14px; font-size: 22px; font-weight: 900; color: #fff;
+    background: rgba(0,0,0,.16); border-radius: 12px; padding: 2px 12px; }
+  .pad.p2 { background:
+    radial-gradient(120% 90% at 50% 100%, rgba(255,255,255,.3), rgba(255,255,255,0) 60%),
+    linear-gradient(160deg, #7fb3ea, #3a7dd8); transform: rotate(180deg); }
+  .pad.p1 { background:
+    radial-gradient(120% 90% at 50% 100%, rgba(255,255,255,.3), rgba(255,255,255,0) 60%),
+    linear-gradient(160deg, #f8998b, #e8574a); }
   .pad.tap { animation: pop .12s ease; }
   @keyframes pop { 50% { transform: scale(.97) rotate(var(--r,0deg)); } }
   .pad.p2.tap { --r: 180deg; }
@@ -49,15 +55,18 @@
   /* rope */
   .ropewrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
   .track {
-    width: 100%; max-width: 520px; height: 46px; background: #fff;
-    border-radius: 24px; position: relative; box-shadow: inset 0 3px 6px rgba(0,0,0,.12);
+    width: 100%; max-width: 520px; height: 48px; background: #fffdf6;
+    border-radius: 24px; position: relative;
+    box-shadow: inset 0 3px 8px rgba(40,90,150,.2), 0 4px 14px rgba(40,90,150,.15);
     overflow: hidden;
   }
-  .center-line { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 4px; margin-left: -2px; background: #ffd76a; border-radius: 2px; }
-  .flag { position: absolute; top: 50%; font-size: 30px; transition: left .06s linear; transform: translate(-50%,-50%); }
+  .center-line { position: absolute; left: 50%; top: 4px; bottom: 4px; width: 5px; margin-left: -2.5px;
+    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); border-radius: 3px; }
+  .flag { position: absolute; top: 50%; font-size: 32px; transition: left .06s linear; transform: translate(-50%,-50%);
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
   .zoneL, .zoneR { position: absolute; top: 0; bottom: 0; width: 12%; }
-  .zoneL { left: 0; background: rgba(150,226,168,.5); border-radius: 24px 0 0 24px;}
-  .zoneR { right: 0; background: rgba(255,179,205,.5); border-radius: 0 24px 24px 0;}
+  .zoneL { left: 0; background: linear-gradient(90deg, rgba(232,87,74,.45), rgba(232,87,74,.15)); border-radius: 24px 0 0 24px;}
+  .zoneR { right: 0; background: linear-gradient(270deg, rgba(58,125,216,.45), rgba(58,125,216,.15)); border-radius: 0 24px 24px 0;}
 
   .countdown {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -67,19 +76,25 @@
 
   /* overlay */
   .overlay {
-    position: absolute; inset: 0; background: rgba(255,255,255,.92);
+    position: absolute; inset: 0; background: rgba(223,242,255,.9); backdrop-filter: blur(4px);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 18px; z-index: 25; text-align: center; padding: 20px;
+    gap: 0; z-index: 25; text-align: center; padding: 20px;
   }
-  .overlay h2 { font-size: 40px; color: #1c6ea4; }
-  .overlay .big { font-size: 80px; }
-  .overlay p { font-size: 18px; color: #5a8bab; }
+  .card {
+    background: #fffdf6; border-radius: 24px; padding: 28px 24px; max-width: 360px; width: 100%;
+    box-shadow: 0 14px 34px rgba(40,90,150,.22);
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  .overlay h2 { font-size: 38px; color: #1c6ea4; }
+  .overlay .big { font-size: 76px; }
+  .overlay p { font-size: 18px; color: #5a8bab; line-height: 1.45; }
   .btn {
-    background: #ffb03a; border: none; border-radius: 20px; padding: 16px 30px;
-    font-size: 22px; font-weight: bold; color: #fff; box-shadow: 0 5px 0 #d98a1f;
+    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); border: none; border-radius: 18px; padding: 16px 34px;
+    font-size: 22px; font-weight: bold; color: #fff; text-shadow: 0 1px 3px rgba(140,60,0,.35);
+    box-shadow: 0 6px 16px rgba(255,140,42,.45);
     cursor: pointer; min-height: 46px;
   }
-  .btn:active { transform: translateY(2px); box-shadow: 0 3px 0 #d98a1f; }
+  .btn:active { transform: translateY(2px); box-shadow: 0 3px 8px rgba(255,140,42,.35); }
   .hidden { display: none !important; }
 </style>
 </head>
@@ -92,7 +107,7 @@
     <div class="pad p2" id="pad2">
       <div class="score" id="s2">0</div>
       <div class="emo">💪</div>
-      <div class="lbl">Spieler 2 (Rosa)</div>
+      <div class="lbl">Spieler 2 (Blau)</div>
       <div class="hint">Tippen zum Ziehen →</div>
     </div>
 
@@ -110,31 +125,35 @@
     <div class="pad p1" id="pad1">
       <div class="score" id="s1">0</div>
       <div class="emo">💪</div>
-      <div class="lbl">Spieler 1 (Grün)</div>
+      <div class="lbl">Spieler 1 (Rot)</div>
       <div class="hint">Tippen zum Ziehen →</div>
     </div>
   </div>
 
   <div class="overlay" id="startO">
-    <div class="big">🪢</div>
-    <h2>Tauziehen</h2>
-    <p>2 Spieler · Ein Gerät<br>Spieler 1 unten (grün), Spieler 2 oben (rosa).<br>Hämmert so schnell ihr könnt!<br>Best of 3 Runden gewinnt.</p>
-    <button class="btn" id="startBtn">▶ Los geht's</button>
+    <div class="card">
+      <div class="big">🪢</div>
+      <h2>Tauziehen</h2>
+      <p>2 Spieler · Ein Gerät<br>Spieler 1 unten (rot), Spieler 2 oben (blau).<br>Hämmert so schnell ihr könnt!<br>Best of 3 Runden gewinnt.</p>
+      <button class="btn" id="startBtn">▶ Los geht's</button>
+    </div>
   </div>
 
   <div class="overlay hidden" id="endO">
-    <div class="big" id="endEmo">🏆</div>
-    <h2 id="endTitle">Sieg!</h2>
-    <p id="endText"></p>
-    <button class="btn" id="againBtn">🔁 Nochmal</button>
+    <div class="card">
+      <div class="big" id="endEmo">🏆</div>
+      <h2 id="endTitle">Sieg!</h2>
+      <p id="endText"></p>
+      <button class="btn" id="againBtn">🔁 Nochmal</button>
+    </div>
   </div>
 
 <script>
 (function(){
-  var pos = 50;            // 0 = Spieler1(links/grün) gewinnt, 100 = Spieler2(rechts/rosa) gewinnt
-  var WIN_ZONE = 12;       // Prozent Rand
-  var STEP = 2.2;          // Bewegung pro Tap
-  var DECAY = 0.06;        // sanfte Rückzug-Reibung Richtung Mitte pro frame
+  var pos = 50;            /* 0 = Spieler1(links/rot) gewinnt, 100 = Spieler2(rechts/blau) gewinnt */
+  var WIN_ZONE = 12;       /* Prozent Rand */
+  var STEP = 2.2;          /* Bewegung pro Tap */
+  var DECAY = 0.06;        /* sanfte Rückzug-Reibung Richtung Mitte pro frame */
   var wins = {p1:0, p2:0};
   var roundActive = false;
   var counting = false;
@@ -157,7 +176,7 @@
     if(!roundActive){ rafId = null; return; }
     if(!lastTs) lastTs = ts;
     var dt = Math.min(64, ts - lastTs); lastTs = ts;
-    // sanfte Reibung Richtung Mitte, damit Nichtstun bestraft/ausgeglichen wirkt
+    /* sanfte Reibung Richtung Mitte, damit Nichtstun bestraft/ausgeglichen wirkt */
     var frames = dt/16.7;
     if(pos > 50) pos = Math.max(50, pos - DECAY*frames);
     else if(pos < 50) pos = Math.min(50, pos + DECAY*frames);
@@ -194,7 +213,7 @@
     if(wins.p1>=2 || wins.p2>=2){
       showEnd();
     } else {
-      status.textContent = (player===1?'Grün':'Rosa') + ' gewinnt die Runde! Nächste Runde …';
+      status.textContent = (player===1?'Rot':'Blau') + ' gewinnt die Runde! Nächste Runde …';
       setTimeout(function(){ startRound(); }, 1200);
     }
   }
@@ -225,8 +244,8 @@
   function showEnd(){
     var p1win = wins.p1>wins.p2;
     document.getElementById('endEmo').textContent = '🏆';
-    document.getElementById('endTitle').textContent = (p1win?'Spieler 1 (Grün)':'Spieler 2 (Rosa)') + ' gewinnt!';
-    document.getElementById('endText').textContent = 'Endstand: Grün ' + wins.p1 + ' : ' + wins.p2 + ' Rosa 🎉';
+    document.getElementById('endTitle').textContent = (p1win?'Spieler 1 (Rot)':'Spieler 2 (Blau)') + ' gewinnt!';
+    document.getElementById('endText').textContent = 'Endstand: Rot ' + wins.p1 + ' : ' + wins.p2 + ' Blau 🎉';
     endO.classList.remove('hidden');
   }
 
@@ -236,7 +255,7 @@
     startRound();
   }
 
-  // Input: sowohl Touch als auch Maus/Pointer. touchstart verhindert doppelten click.
+  /* Input: sowohl Touch als auch Maus/Pointer. touchstart verhindert doppelten click. */
   function bind(el, player){
     el.addEventListener('touchstart', function(e){ e.preventDefault(); pull(player, el); }, {passive:false});
     el.addEventListener('mousedown', function(e){ e.preventDefault(); pull(player, el); });

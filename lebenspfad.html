@@ -49,7 +49,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #rollBtn:disabled{opacity:.35;cursor:default}
 #dice{position:fixed;bottom:104px;left:50%;transform:translateX(-50%);font-size:3rem;z-index:20;text-shadow:0 6px 24px rgba(255,209,102,.5);opacity:0;transition:opacity .3s;pointer-events:none}
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.05em;text-shadow:0 2px 0 rgba(90,50,0,.75),0 4px 14px rgba(70,40,0,.5),0 0 18px rgba(255,255,255,.3);opacity:0;transition:opacity .4s;color:#ffd166;pointer-events:none}
-#hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.95rem;color:#fff;text-shadow:0 2px 0 rgba(90,50,0,.7),0 3px 10px rgba(70,40,0,.55);background:rgba(120,80,20,.32);border-radius:14px;padding:4px 14px;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
+#hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1.05rem;line-height:1.4;color:#fff;text-shadow:0 2px 0 rgba(90,50,0,.7),0 3px 10px rgba(70,40,0,.55);background:rgba(120,80,20,.32);border-radius:14px;padding:4px 14px;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
 .dnum{position:absolute;font-weight:900;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .75s ease-out,opacity .75s;opacity:1;will-change:transform,opacity}
 /* 🎲 Gewürfelte Zahl gross aufpoppen (Scale 1.6→1.0, kurze Freeze) */
 #bignum{position:fixed;left:50%;top:38%;z-index:24;pointer-events:none;font-weight:900;font-size:clamp(90px,17vw,190px);color:#fffdf6;-webkit-text-stroke:5px #3a2a10;text-shadow:0 8px 0 rgba(120,70,10,.35),0 12px 30px rgba(90,50,0,.5);opacity:0;transform:translate(-50%,-50%) scale(.4);will-change:transform,opacity}
@@ -137,7 +137,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 /* Pass B2: Gabelungs-Wahl, Quiz-Timer, Smiley-Fast-Chat */
 #card button.forkBtn{font-size:1.02rem;padding:16px 18px;min-height:60px;border-width:3px}
 #qTimer{height:10px;background:#f0e4c4;border-radius:6px;margin-top:12px;overflow:hidden}
-#qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 15s linear}
+#qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 22s linear}
 #emoBtn{position:fixed;right:14px;bottom:160px;z-index:16;width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);font-size:1.3rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)}
 #emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;gap:8px}
 #emoFan button{width:48px;height:48px;border-radius:50%;border:2px solid #ffcf3a;background:#fffdf6;font-size:1.05rem;cursor:pointer;box-shadow:0 3px 10px rgba(60,40,10,.25)}
@@ -1826,8 +1826,8 @@ function updPawnBlobs(){for(var i=0;i<pawns.length;i++){var b2=pawnBlobs[i];if(!
 document.getElementById("keysHelp").innerHTML=IS_COARSE?
   "🎲 antippen zum Würfeln · Karten antippen · 😊 = Emotes":
   "<b>LEER</b>/Knopf würfeln · <b>1–6</b> Emote · <b>M</b> Ton · <b>ESC</b> Menü — Ereignisse: anklicken &amp; entscheiden";
-function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2600);}
-function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},3400);}
+function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||4500);} /* langsamer lesbar (User-Wunsch) */
+function announce(t,color,ms){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},ms||5000);} /* laenger sichtbar (User-Wunsch) */
 function initProgMap(){var ps2=document.getElementById("progSegs");ps2.innerHTML="";
   activeChaps().forEach(function(cidx){var c=CHAPTERS[cidx];var d=document.createElement("div");
     d.style.cssText="flex:1;background:#"+("00000"+c.ground.toString(16)).slice(-6);ps2.appendChild(d);});}
@@ -2115,7 +2115,9 @@ function nextTurn(){
   G.phase="idle";rollBtn.disabled=NET.on&&G.turn!==NET.my;
   if(NET.on)rollBtn.innerHTML=(G.turn===NET.my)?"🎡 Drehen!":"⏳ "+G.players[G.turn].name+" ist dran …";
   updPlayers();updChapter();saveGame();
-  if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
+  if(G.players.length>1&&!G.players[G.turn].done){
+    if(NET.on&&G.turn===NET.my)announce("🎲 DU BIST DRAN — Drehen!","#8fffb0",5200); /* Koop: eigener Zug unuebersehbar */
+    else announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));}
   if(!G.players[G.turn].done){beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}
   if(!G.players[G.turn].done){emote(G.turn,"wink");markerPop=1;} // Marker springt zur neuen Figur
   var _mpk=document.getElementById("meetPick");if(_mpk)_mpk.classList.add("hide"); // Begegnungs-Menü schließen beim Zugwechsel
@@ -3753,7 +3755,7 @@ document.getElementById("resumeBtn").onclick=toggleMenu;
 addEventListener("keydown",function(e){if(e.key==="Escape"&&G)toggleMenu();});
 document.getElementById("rulesBtn").onclick=function(){toggleMenu();
   showLocalInfo("📜 So spielt ihr Lebenspfad",
-    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (15 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
+    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (22 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
     );};
 // ❓ Anfaenger-Tutorial: 4 einfache Schritte, grosse Emojis, kurze Saetze — zeigt sich automatisch beim ersten Spiel
 var TUT_STEPS=[
@@ -3986,7 +3988,7 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
   var opts=Q.a.map(function(al,k){return {l:["🅰","🅱","🅲"][k]+" "+al,fn:function(){fin(k===Q.c,false);}};});
   opts.push({l:"",hidden:1,fn:function(){fin(false,true);}}); // Timeout-Wahl (unsichtbar, lockstep-gesynct)
   showCard("Quiz-Karte · richtig = +2 🧠 +2 💰","❓ "+Q.q,
-    timed?'⏳ 15 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
+    timed?'⏳ 22 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
   clearTimeout(window._qTO);
   if(timed)requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
   if(timed||NET.on){ // Online IMMER scharf schalten (auch bei OPT.motion=aus) -> AFK erzeugt keinen Soft-Lock
@@ -3994,7 +3996,7 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
       if(!window._cardOpts)return;
       if(NET.on&&G.turn!==NET.my)return;
       sendPick(3);
-    },15300);}
+    },22300);} /* Quiz: 22s statt 15s — nicht zu schwierig (User-Wunsch) */
 }
 function tauschCard(p){ // 🔄 Kurs schwankt: 3–5 💰 gegen 2 ❤️ oder 2 🧠
   var cost=3+((srand()*3)|0),toH=srand()<0.5,gl=toH?"❤️":"🧠",fx=toH?{geld:-cost,glueck:2}:{geld:-cost,wissen:2};

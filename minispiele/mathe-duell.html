@@ -10,37 +10,46 @@
   html,body{height:100%;overflow:hidden}
   body{
     font-family:'Trebuchet MS','Segoe UI',Verdana,sans-serif;
-    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+    background:linear-gradient(160deg,#bce6ff,#dff2ff,#eaf7ff);
     color:#0d3b66;user-select:none;
   }
-  #app{display:flex;flex-direction:column;height:100%;width:100%;}
+  #app{display:flex;flex-direction:column;height:100%;width:100%;padding:8px;gap:8px;}
   .back{
     position:fixed;top:10px;left:10px;z-index:30;
-    background:#fff;border:none;border-radius:14px;
+    background:#fffdf6;border:none;border-radius:14px;
     padding:10px 16px;font-size:16px;font-weight:bold;color:#0d3b66;
-    box-shadow:0 3px 8px rgba(13,59,102,.2);cursor:pointer;min-height:46px;
+    box-shadow:0 4px 14px rgba(40,90,150,.18);cursor:pointer;min-height:46px;
   }
   .back:active{transform:scale(.95)}
 
   /* Ein Spieler-Halbfeld */
   .half{
     flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    position:relative;padding:8px;overflow:hidden;
+    position:relative;padding:8px;overflow:hidden;border-radius:18px;
+    box-shadow:0 4px 14px rgba(40,90,150,.12), inset 0 0 0 2px rgba(255,255,255,.55);
   }
-  .top{transform:rotate(180deg);background:rgba(255,214,102,.35);}
-  .bottom{background:rgba(120,220,180,.25);}
+  .top{transform:rotate(180deg);background:
+    radial-gradient(120% 100% at 50% 0%,rgba(255,255,255,.5),rgba(255,255,255,0) 65%),
+    linear-gradient(180deg,#cfe2f8,#b3d0f2);}
+  .bottom{background:
+    radial-gradient(120% 100% at 50% 100%,rgba(255,255,255,.5),rgba(255,255,255,0) 65%),
+    linear-gradient(0deg,#f9d3ce,#fbe3e0);}
   .divider{
-    height:6px;background:linear-gradient(90deg,#ff9a76,#ffd166,#7ad9b0);
-    flex:0 0 auto;box-shadow:0 0 10px rgba(0,0,0,.15);
+    height:8px;border-radius:4px;background:linear-gradient(90deg,#ffcf3a,#ff8c2a,#ffcf3a);
+    flex:0 0 auto;box-shadow:0 2px 8px rgba(255,140,42,.4);
   }
 
-  .label{font-size:15px;font-weight:bold;opacity:.85;margin-bottom:2px}
-  .score{font-size:22px;font-weight:bold;margin-bottom:6px}
-  .pips{font-size:16px;letter-spacing:2px;margin-bottom:8px;min-height:20px}
+  .label{font-size:16px;font-weight:900;margin-bottom:2px;letter-spacing:.5px}
+  .top .label{color:#3a7dd8}
+  .bottom .label{color:#e8574a}
+  .score{font-size:24px;font-weight:900;margin-bottom:6px}
+  .top .score{color:#3a7dd8}
+  .bottom .score{color:#e8574a}
+  .pips{font-size:16px;letter-spacing:2px;margin-bottom:8px;min-height:20px;opacity:.85}
   .question{
-    font-size:min(11vw,46px);font-weight:bold;margin-bottom:12px;
-    background:#fff;border-radius:16px;padding:8px 20px;
-    box-shadow:0 3px 10px rgba(13,59,102,.15);
+    font-size:min(11vw,46px);font-weight:900;margin-bottom:12px;
+    background:#fffdf6;border-radius:18px;padding:8px 24px;
+    box-shadow:0 4px 14px rgba(40,90,150,.15);
   }
   .answers{
     display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:340px;
@@ -48,10 +57,13 @@
   .ans{
     border:none;border-radius:16px;padding:16px 6px;min-height:56px;
     font-size:min(7vw,26px);font-weight:bold;color:#fff;cursor:pointer;
-    box-shadow:0 4px 0 rgba(0,0,0,.15);transition:transform .06s;
+    text-shadow:0 1px 3px rgba(0,0,0,.25);
+    box-shadow:0 4px 0 rgba(0,0,0,.14), 0 6px 14px rgba(40,90,150,.18);
+    background-image:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 50%,rgba(0,0,0,.06));
+    transition:transform .06s;
   }
-  .ans:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.15)}
-  .a0{background:#ff6b6b}.a1{background:#4d96ff}.a2{background:#ffb84d}.a3{background:#38b000}
+  .ans:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.14)}
+  .a0{background-color:#e8574a}.a1{background-color:#3a7dd8}.a2{background-color:#ff8c2a}.a3{background-color:#35b06a}
   .ans.wrong{background:#9aa5b1 !important;animation:shake .3s}
   .ans.right{background:#2d9b47 !important;outline:4px solid #fff}
   @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
@@ -61,8 +73,8 @@
   /* Countdown Overlay */
   #count{
     position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-    font-size:26vw;font-weight:bold;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.3);
-    background:rgba(13,59,102,.25);z-index:20;
+    font-size:26vw;font-weight:bold;color:#fff;text-shadow:0 6px 16px rgba(13,59,102,.4);
+    background:rgba(13,59,102,.25);backdrop-filter:blur(2px);z-index:20;
   }
   #count.hidden{display:none}
 
@@ -70,28 +82,31 @@
   #end{
     position:fixed;inset:0;z-index:40;display:none;flex-direction:column;
     align-items:center;justify-content:center;text-align:center;padding:24px;
-    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+    background:linear-gradient(160deg,#bce6ff,#dff2ff,#eaf7ff);
   }
   #end.show{display:flex}
-  #end .emoji{font-size:80px;margin-bottom:10px}
-  #end h1{font-size:34px;margin-bottom:8px}
-  #end p{font-size:20px;margin-bottom:22px;color:#0d3b66}
-  #end button, #startBtn{
-    border:none;border-radius:18px;padding:16px 30px;font-size:22px;font-weight:bold;
-    color:#fff;background:#38b000;box-shadow:0 5px 0 #2a8600;cursor:pointer;min-height:56px;
+  .card{
+    background:#fffdf6;border-radius:24px;padding:30px 26px;max-width:360px;width:100%;
+    box-shadow:0 14px 34px rgba(40,90,150,.22);
   }
-  #end button:active,#startBtn:active{transform:translateY(3px);box-shadow:0 2px 0 #2a8600}
+  .card .emoji{font-size:76px;margin-bottom:10px}
+  .card h1{font-size:34px;margin-bottom:10px;color:#0d3b66}
+  .card p{font-size:18px;margin-bottom:22px;color:#41597a;line-height:1.45}
+  #end button, #startBtn{
+    border:none;border-radius:18px;padding:16px 32px;font-size:22px;font-weight:bold;
+    color:#fff;background:linear-gradient(180deg,#ffcf3a,#ff8c2a);
+    text-shadow:0 1px 3px rgba(140,60,0,.35);
+    box-shadow:0 6px 16px rgba(255,140,42,.45);cursor:pointer;min-height:56px;
+  }
+  #end button:active,#startBtn:active{transform:translateY(3px);box-shadow:0 3px 8px rgba(255,140,42,.35)}
 
   /* Start */
   #start{
     position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;
     align-items:center;justify-content:center;text-align:center;padding:24px;
-    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+    background:linear-gradient(160deg,#bce6ff,#dff2ff,#eaf7ff);
   }
   #start.hidden{display:none}
-  #start .emoji{font-size:76px;margin-bottom:6px}
-  #start h1{font-size:36px;margin-bottom:10px}
-  #start p{font-size:17px;max-width:320px;margin-bottom:22px;line-height:1.4}
 </style>
 </head>
 <body>
@@ -120,27 +135,31 @@
 <div id="count" class="hidden"></div>
 
 <div id="start">
-  <div class="emoji">➗</div>
-  <h1>Mathe-Duell</h1>
-  <p>Beide sehen die gleiche Aufgabe. Wer zuerst die richtige Antwort tippt, gewinnt den Punkt!<br><br>
-  Best of 7 – wer zuerst 4 Punkte hat, gewinnt. 🏆<br>Haltet das Handy zwischen euch.</p>
-  <button id="startBtn">Los geht's!</button>
+  <div class="card">
+    <div class="emoji">➗</div>
+    <h1>Mathe-Duell</h1>
+    <p>Beide sehen die gleiche Aufgabe. Wer zuerst die richtige Antwort tippt, gewinnt den Punkt!<br><br>
+    Best of 7 – wer zuerst 4 Punkte hat, gewinnt. 🏆<br>Haltet das Handy zwischen euch.</p>
+    <button id="startBtn">Los geht's!</button>
+  </div>
 </div>
 
 <div id="end">
-  <div class="emoji" id="endEmoji">🏆</div>
-  <h1 id="endTitle">Gewonnen!</h1>
-  <p id="endText"></p>
-  <button id="againBtn">🔁 Nochmal</button>
+  <div class="card">
+    <div class="emoji" id="endEmoji">🏆</div>
+    <h1 id="endTitle">Gewonnen!</h1>
+    <p id="endText"></p>
+    <button id="againBtn">🔁 Nochmal</button>
+  </div>
 </div>
 
 <script>
 (function(){
-  var WIN=4; // best of 7
+  var WIN=4; /* best of 7 */
   var scores={1:0,2:0};
-  var current=null; // {answer, options}
+  var current=null; /* {answer, options} */
   var roundActive=false;
-  var locked={1:false,2:false}; // wrong-answer lock this round
+  var locked={1:false,2:false}; /* wrong-answer lock this round */
   var countTimer=null, raf=null;
 
   var el={
@@ -166,7 +185,7 @@
     else if(op==='−'){a=5+rnd(35);b=1+rnd(a-1);ans=a-b;}
     else{a=2+rnd(9);b=2+rnd(9);ans=a*b;}
     text=a+' '+op+' '+b;
-    // vier eindeutige Optionen
+    /* vier eindeutige Optionen */
     var set={};set[ans]=true;var opts=[ans];
     var guard=0;
     while(opts.length<4 && guard<200){
@@ -176,7 +195,7 @@
       if(cand<0)cand=ans+delta;
       if(!set[cand]){set[cand]=true;opts.push(cand);}
     }
-    // shuffle
+    /* shuffle */
     for(var i=opts.length-1;i>0;i--){var j=rnd(i+1);var t=opts[i];opts[i]=opts[j];opts[j]=t;}
     return {text:text,answer:ans,options:opts};
   }
@@ -239,7 +258,7 @@
     if(!roundActive)return;
     if(locked[player])return;
     if(parseInt(val,10)===current.answer){
-      // Punkt!
+      /* Punkt! */
       roundActive=false;setEnabled(false);
       btn.classList.add('right');
       scores[player]++;refreshScore();
@@ -253,13 +272,13 @@
         setTimeout(newRound,1000);
       }
     }else{
-      // falsch – dieser Spieler ist diese Runde gesperrt
+      /* falsch – dieser Spieler ist diese Runde gesperrt */
       locked[player]=true;
       btn.classList.add('wrong');
       var m=player===1?el.m1:el.m2;
       m.textContent='❌ Falsch – warte!';
       if(locked[1]&&locked[2]){
-        // beide daneben → neue Runde
+        /* beide daneben → neue Runde */
         roundActive=false;setEnabled(false);
         setTimeout(newRound,900);
       }

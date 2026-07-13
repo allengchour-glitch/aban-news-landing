@@ -10,7 +10,7 @@
   html, body { height: 100%; overflow: hidden; }
   body {
     font-family: "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
-    background: linear-gradient(160deg, #bce6ff, #eaf7ff);
+    background: linear-gradient(160deg, #bce6ff, #dff2ff, #eaf7ff);
     color: #234;
     user-select: none; -webkit-user-select: none;
     touch-action: manipulation;
@@ -19,25 +19,28 @@
 
   .back {
     position: fixed; top: 10px; left: 10px; z-index: 50;
-    background: rgba(255,255,255,.85); border: none; border-radius: 14px;
-    padding: 10px 16px; font-size: 16px; font-weight: 700; color: #2a6;
-    min-height: 46px; box-shadow: 0 3px 8px rgba(0,0,0,.12); cursor: pointer;
+    background: #fffdf6; border: none; border-radius: 14px;
+    padding: 10px 16px; font-size: 16px; font-weight: 700; color: #3a7dd8;
+    min-height: 46px; box-shadow: 0 4px 14px rgba(40,90,150,.18); cursor: pointer;
+    transition: transform .1s;
   }
+  .back:active { transform: scale(.95); }
 
   /* Spielfeld: zwei Hälften */
   #arena { flex: 1; display: flex; flex-direction: column; position: relative; }
   .pane {
     flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
     position: relative; overflow: hidden; transition: background .12s;
+    box-shadow: inset 0 0 60px rgba(255,255,255,.16);
   }
   .pane.top { border-radius: 0 0 26px 26px; }
   .pane.bottom { border-radius: 26px 26px 0 0; }
-  #p1 { background: #ff8fab; }         /* wartend rosa */
-  #p2 { background: #7fd4ff; }         /* wartend blau */
-  .pane.armed { background: #b8f7c0 !important; } /* bereit, aber noch nicht grün */
-  .pane.go { background: #2fd35a !important; }    /* GRÜN – jetzt! */
-  .pane.win { background: #ffe27a !important; }
-  .pane.lose { background: #d76b7f !important; }
+  #p1 { background: linear-gradient(180deg, #f2867b, #e8574a); }  /* Spieler 1 = Rot */
+  #p2 { background: linear-gradient(0deg, #3a7dd8, #5f97e4); }    /* Spieler 2 = Blau */
+  .pane.armed { background: linear-gradient(180deg, #c8f8ce, #a9efb4) !important; } /* bereit, aber noch nicht grün */
+  .pane.go { background: linear-gradient(180deg, #3fdd68, #26c94e) !important; }    /* GRÜN – jetzt! */
+  .pane.win { background: linear-gradient(180deg, #ffdf74, #ffcf3a) !important; }
+  .pane.lose { background: linear-gradient(180deg, #d97a8a, #c95f72) !important; }
 
   .pane .lbl {
     font-size: clamp(22px, 7vw, 40px); font-weight: 900; color: #fff;
@@ -55,38 +58,44 @@
     padding: 0 16px; pointer-events: none; z-index: 20;
   }
   .score {
-    background: rgba(255,255,255,.92); border-radius: 16px; padding: 6px 14px;
-    font-weight: 900; font-size: 18px; box-shadow: 0 3px 8px rgba(0,0,0,.15);
+    background: #fffdf6; border-radius: 16px; padding: 6px 14px;
+    font-weight: 900; font-size: 18px; box-shadow: 0 4px 14px rgba(40,90,150,.22);
     min-width: 62px; text-align: center;
   }
-  .score.p1 { color: #e5487a; transform: rotate(180deg); }
-  .score.p2 { color: #1f9bd6; }
+  .score.p1 { color: #e8574a; transform: rotate(180deg); }
+  .score.p2 { color: #3a7dd8; }
   #round {
-    background: #234; color:#fff; border-radius: 20px; padding: 8px 16px;
-    font-weight: 900; font-size: 15px; box-shadow: 0 3px 8px rgba(0,0,0,.2);
+    background: #274b63; color:#fff; border-radius: 20px; padding: 8px 16px;
+    font-weight: 900; font-size: 15px; box-shadow: 0 4px 14px rgba(40,90,150,.3);
   }
 
   /* Overlay Start / Ende */
   .overlay {
     position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-align: center;
-    background: linear-gradient(160deg, #bce6ff, #eaf7ff); padding: 24px;
+    background: linear-gradient(160deg, #bce6ff, #dff2ff, #eaf7ff); padding: 24px;
   }
   .card {
-    background: #fff; border-radius: 26px; padding: 26px 22px; max-width: 420px; width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    background: #fffdf6; border-radius: 26px; padding: 26px 22px; max-width: 420px; width: 100%;
+    box-shadow: 0 16px 40px rgba(20,60,110,.25);
   }
-  .card h1 { font-size: 30px; margin-bottom: 8px; color: #2a6; }
+  .card h1 { font-size: 30px; margin-bottom: 8px; color: #2f6db3; text-shadow: 0 2px 0 rgba(255,255,255,.9); }
   .card p { font-size: 16px; line-height: 1.5; margin-bottom: 14px; color: #456; }
   .big { font-size: 46px; margin-bottom: 6px; }
   .btn {
-    background: linear-gradient(#ffd34d, #ffb703); border: none; border-radius: 18px;
-    padding: 15px 26px; font-size: 20px; font-weight: 900; color: #6a3d00;
-    min-height: 46px; cursor: pointer; box-shadow: 0 5px 0 #d68e00; margin-top: 8px;
+    background: linear-gradient(180deg, #ffd75e, #ffcf3a 55%, #ff8c2a); border: none; border-radius: 18px;
+    padding: 15px 26px; font-size: 20px; font-weight: 900; color: #5a3600;
+    min-height: 46px; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255,140,42,.4), inset 0 1px 0 rgba(255,255,255,.5); margin-top: 8px;
   }
-  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #d68e00; }
+  .btn:active { transform: translateY(3px); box-shadow: 0 2px 6px rgba(255,140,42,.35); }
   .hidden { display: none !important; }
   .flag { display:flex; gap:8px; justify-content:center; margin-bottom:12px; font-size:26px; }
+  .confetti {
+    position: fixed; top: -16px; z-index: 55; border-radius: 3px; pointer-events: none;
+    animation: cfall linear forwards;
+  }
+  @keyframes cfall { to { transform: translateY(112vh) rotate(720deg); } }
 </style>
 </head>
 <body>
@@ -221,6 +230,22 @@
     timer = setTimeout(nextRound, 1500);
   }
 
+  function confetti(){
+    var colors = ['#ffcf3a','#ff8c2a','#e8574a','#3a7dd8','#7ed957','#fffdf6'];
+    for (var i=0;i<60;i++){
+      var s = document.createElement('div');
+      s.className = 'confetti';
+      s.style.left = (Math.random()*100) + 'vw';
+      s.style.width = (6+Math.random()*6) + 'px';
+      s.style.height = (8+Math.random()*8) + 'px';
+      s.style.background = colors[i % colors.length];
+      s.style.animationDuration = (1.6+Math.random()*1.6) + 's';
+      s.style.animationDelay = (Math.random()*0.5) + 's';
+      document.body.appendChild(s);
+      (function(el){ setTimeout(function(){ if(el.parentNode){ el.parentNode.removeChild(el); } }, 4200); })(s);
+    }
+  }
+
   function endGame(){
     state = 'done';
     clearTimer();
@@ -233,8 +258,10 @@
       e.textContent = '🤝'; t.textContent = 'Unentschieden!';
     } else if(score1 > score2){
       e.textContent = '🌸'; t.textContent = 'Spieler 1 gewinnt!';
+      confetti();
     } else {
       e.textContent = '💙'; t.textContent = 'Spieler 2 gewinnt!';
+      confetti();
     }
     endScreen.classList.remove('hidden');
   }
