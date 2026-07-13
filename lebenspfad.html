@@ -1064,7 +1064,12 @@ function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
     o.traverse(function(n){if(n.isMesh)n.frustumCulled=false;});
     g.add(o);g.userData.gscene=o;
     if(ph){g.remove(ph);ph=null;} /* echtes Modell ist da -> Platzhalter raus */
-    if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);var idle=gl.animations[0];for(var a=0;a<gl.animations.length;a++)if(/idle/i.test(gl.animations[a].name)){idle=gl.animations[a];break;}mx.clipAction(idle).play();mx.update(0.1);g.userData.gmix=mx;}
+    if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);
+      var acts={};for(var a=0;a<gl.animations.length;a++)acts[gl.animations[a].name.toLowerCase()]=mx.clipAction(gl.animations[a]);
+      g.userData.gacts=acts; /* 🎬 idle/walk/run/attack — Umschalten uebernimmt meshyAnim() */
+      var st=acts.idle||acts[Object.keys(acts)[0]];
+      if(st){st.play();g.userData.gcur=st;}
+      mx.update(0.1);g.userData.gmix=mx;}
     if(onReady)onReady();
   },undefined,function(){if(++glTries<3)setTimeout(glLoad,1500*glTries);/* Netz-Huster: bis 2x neu versuchen, sonst bleibt der Toon-Platzhalter */});}
   glLoad();
@@ -1433,7 +1438,12 @@ function cardRustle(){ // Seiten-Rascheln beim Karten-Flip (WebAudio-Rauschen, s
     src.connect(bp);bp.connect(ga);ga.connect(sfxDest()||actx.destination);src.start();
   }catch(e){}
 }
-function emote(i,kind){var pw=pawns[i];if(!pw||!pw.userData.limbs)return;
+function emote(i,kind){var pw=pawns[i];if(!pw)return;
+  if(!pw.userData.limbs){ /* 🎬 Anime-GLB: Jubel = attack-Clip (falls vorhanden), sonst kurzer Sprint an Ort */
+    if(pw.userData.gacts){pw.userData.emoteOnce=true;
+      var ok=meshyAnimOnce(pw,kind==="jubel"?"attack":"walk");
+      setTimeout(function(){pw.userData.emoteOnce=false;},ok?1400:300);}
+    return;}
   pw.userData.emote={k:kind,t:0};}
 var MEET_BUBBLE={jubel:["❤️","🎉"],highfive:["🙌","✋"],umarmung:["🫂","💕"],kuss:["😘","❤️"],tanz:["💃","🎶"],wink:["👋","😊"]};
 function meetTogether(ai,bi,x,z,kind){ // 🤝 zwei Figuren treffen sich -> wenden sich einander zu & agieren gemeinsam
@@ -1515,8 +1525,27 @@ function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
   if(pw.userData.squash>0){pw.userData.squash-=dt*5;
     var q=Math.max(0,pw.userData.squash);pw.scale.set(bs*sx*(1+q*0.25),bs*ty*(1-q*0.3),bs*sx*(1+q*0.25));}
   else{var st2=pw.userData.stretch||0;pw.scale.set(bs*sx*(1-st2*0.08),bs*ty*(1+st2*0.14),bs*sx*(1-st2*0.08));}}
+function meshyAnim(pw,name){ /* 🎬 weiches Umschalten zwischen GLB-Clips (Koop: laeuft lockstep auf allen Clients) */
+  var A=pw.userData.gacts;if(!A)return;
+  var next=A[name]||((name==="run"||name==="walk")?(A.run||A.walk):null)||A.idle;
+  if(!next||pw.userData.gcur===next)return;
+  var cur=pw.userData.gcur;
+  next.reset();next.setLoop(THREE.LoopRepeat,Infinity);next.play();
+  if(cur)cur.crossFadeTo(next,0.22,false);
+  pw.userData.gcur=next;}
+function meshyAnimOnce(pw,name){ /* Clip einmal spielen (z.B. attack als Jubel), danach zurueck zu idle */
+  var A=pw.userData.gacts,mx=pw.userData.gmix;if(!A||!mx)return false;
+  var a=A[name];if(!a)return false;
+  a.reset();a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=false;a.play();
+  var cur=pw.userData.gcur;if(cur&&cur!==a)cur.crossFadeTo(a,0.15,false);
+  pw.userData.gcur=a;
+  var onF=function(e){if(e.action!==a)return;mx.removeEventListener("finished",onF);
+    if(pw.userData.gcur===a)meshyAnim(pw,"idle");};
+  mx.addEventListener("finished",onF);
+  return true;}
 function animWalk(pw,moving,dt){
-  if(pw.userData.gmix)pw.userData.gmix.update(dt); // 🎌 Meshy-GLB Idle-Animation
+  if(pw.userData.gmix)pw.userData.gmix.update(dt); // 🎌 Meshy-GLB-Animation
+  if(pw.userData.gacts&&!pw.userData.emoteOnce)meshyAnim(pw,moving?"run":"idle"); /* rennen beim Ziehen, sonst idle */
   animLife(pw,dt,moving);
   if(pw.userData.emote)return; // Emote hat Vorrang
   var L=pw.userData.limbs;if(!L)return;
