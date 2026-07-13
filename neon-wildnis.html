@@ -169,6 +169,7 @@ canvas{display:block}
   <div class="btn hide" id="bSkill" title="Schockwelle (Q)">💥</div>
   <div class="btn hide" id="bThrow" title="Wurf-Angriff (F)">🏹</div>
   <div class="btn hide" id="bDodge" title="Ausweichrolle (SHIFT)">💨</div>
+  <button id="muteBtn2" title="Ton an/aus" style="position:fixed;top:54px;right:12px;z-index:30;width:38px;height:38px;border-radius:50%;border:1px solid rgba(140,190,220,.4);background:rgba(16,28,40,.75);color:#cfe;font-size:1rem;cursor:pointer">🔊</button>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
 <div id="tradeMenu" class="hide"></div>
@@ -1902,7 +1903,7 @@ function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/max
 function xpNeed(){return 20+level*16;}
 function xpUpd(){var b=document.getElementById("xpFill");if(b)b.style.width=Math.min(100,xp/xpNeed()*100)+"%";var l=document.getElementById("lvlBadge");if(l)l.textContent="Lv "+level;}
 function gainXP(n){if(dead)return;xp+=n;var ups=0;while(xp>=xpNeed()){xp-=xpNeed();level++;ups++;}
-  if(ups>0){maxHp+=8;hp=Math.min(maxHp,hp+8);
+  if(ups>0){sfxSeq([[523],[659],[784],[1046]]);maxHp+=8;hp=Math.min(maxHp,hp+8);
     if(typeof burst==="function")burst(player.position.x,player.position.y+2,player.position.z,0xffd166,24);
     hpUpd();perkQueue+=ups;if(!perkChoosing)showPerkPick();}
   xpUpd();}
@@ -1945,7 +1946,7 @@ function doDodge(){
   var l=Math.hypot(mx,my);
   if(l>0.15){dodgeVX=-mx/l;dodgeVZ=-my/l;}
   else{dodgeVX=-Math.sin(player.rotation.y);dodgeVZ=-Math.cos(player.rotation.y);}
-  dodgeT=0.26;dodgeCd=1.4;
+  dodgeT=0.26;dodgeCd=1.4;sfx(760,0.09,"triangle",0.04,260);
   if(heroRig)playOnce(heroRig,"run",2.6);
   burst(player.position.x,player.position.y+0.7,player.position.z,0x7de3ff,8);
 }
@@ -1959,7 +1960,7 @@ function updDodge(dt){
   player.position.x=nx;player.position.z=nz;
   if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
-function damagePlayer(d){if(dead)return;if(dodgeT>0)return;/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
+function damagePlayer(d){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -2049,7 +2050,7 @@ function floatText(x,y,z,txt,color){
 }
 
 // ---------- Sammeln ----------
-var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false;
+var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null;
 var merchant={x:null,z:null};
 function findNear(){
   nearRes=null;nearMon=null;nearAni=null;nearWork=null;var best=3.6*3.6;
@@ -2060,20 +2061,46 @@ function findNear(){
   for(var k=0;k<animals.length;k++){var an=animals[k];if(!an.alive)continue;var ax=an.x-player.position.x,az=an.z-player.position.z,da=ax*ax+az*az;if(da<ba){ba=da;nearAni=an;}}
   var bw=3.4*3.4;
   for(var w=0;w<structures.length;w++){var s=structures[w];if(s.type!=="werk")continue;var wx=s.x-player.position.x,wz=s.z-player.position.z,dw=wx*wx+wz*wz;if(dw<bw){bw=dw;nearWork=s;}}
+  nearNpc=null;var bn2=3.0*3.0;
+  if(typeof npcs!=="undefined")for(var q2=0;q2<npcs.length;q2++){var n2=npcs[q2];if(!n2.mesh||n2.sleeping)continue;
+    var nx2=n2.mesh.position.x-player.position.x,nz2=n2.mesh.position.z-player.position.z,dn2=nx2*nx2+nz2*nz2;if(dn2<bn2){bn2=dn2;nearNpc=n2;}}
   nearMerchant=false;if(merchant.x!=null){var mdx=merchant.x-player.position.x,mdz=merchant.z-player.position.z;if(mdx*mdx+mdz*mdz<4.5*4.5)nearMerchant=true;}
   nearLoot=null;var bl=3.4*3.4;
   for(var L=0;L<loots.length;L++){var lt=loots[L];if(lt.opened)continue;var lx=lt.x-player.position.x,lz=lt.z-player.position.z,dl=lx*lx+lz*lz;if(dl<bl){bl=dl;nearLoot=lt;}}
+}
+// 🗨️ NPC-Dialoge (Realm-Merge Teil 3): kurze Sprüche mit Tipps & Leben
+var NPC_LINES=[
+ "Willkommen in unserer Stadt, Fremde·r! 🏘️",
+ "Nachts kommen die Monster in Wellen — bau dir Mauern! 🌙",
+ "Mit R (oder Tipp auf 🍖/🍓) isst du Vorräte.",
+ "SHIFT bzw. 💨 macht eine Ausweichrolle — unverwundbar!",
+ "Im Süden soll ein alter Friedhof liegen … gruselig! 🪦",
+ "Der Leuchtturm an der Küste weist Reisenden den Weg. 🗼",
+ "Der Händler am Markt tauscht Kristalle gegen gute Ware. 💎",
+ "Ziehe am Bildschirm, um die Kamera zu drehen! 🔄",
+ "Man sagt, nachts fallen Sternschnuppen — wünsch dir was! 🌠",
+ "Die Windmühle mahlt seit hundert Jahren unser Korn. 🌾",
+ "Ein Drache soll in den Bergen hausen … pass auf dich auf! 🐉",
+ "Sammle Holz und Stein — eine Werkbank wirkt Wunder. 🔨"];
+function talkToNpc(){
+  if(!nearNpc||!nearNpc.mesh)return;
+  sfx(500,0.07);sfx(640,0.07);
+  var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
+  faceTo(nearNpc.mesh.position.x,nearNpc.mesh.position.z);
+  announce("🗨️ „"+line+"“","#cfe8ff");
+  nearNpc.idle=3;nearNpc.emoT=0.1; // NPC bleibt kurz stehen + Emote
 }
 function harvest(){
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
   // Werkbank in der Nähe (und nichts Wichtigeres) → Crafting öffnen
   if(nearMerchant&&!nearMon&&!nearAni&&!buildMode){openTrade();return;}
   if(nearWork&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!buildMode){openCraft();return;}
+  if(nearNpc&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!nearMerchant&&!buildMode){talkToNpc();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
   if(nearMon){ // Kampf
     if(heroRig)playOnce(heroRig,"attack",2.2);
     faceTo(nearMon.x,nearMon.z);
-    nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+    nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
@@ -2088,7 +2115,7 @@ function harvest(){
     return;
   }
   if(!nearRes)return;var r=nearRes;
-  if(heroRig)playOnce(heroRig,"attack",2.4);
+  if(heroRig)playOnce(heroRig,"attack",2.4);sfx(220,0.06,"square",0.04);
   faceTo(r.x,r.z);
   var dmg=(1+PERK.harvest)|0;dmg=Math.max(1,dmg);if(r.type==="tree")dmg=1+tools.axe+(PERK.harvest>=0.3?1:0);else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick+(PERK.harvest>=0.3?1:0);
   r.hp-=dmg;r.hitAnim=0.2;
@@ -2096,9 +2123,9 @@ function harvest(){
   burst(r.x,r.baseY+1.2,r.z,col,8); // satter: mehr Splitter
   if(r.hp<=0){
     if(r.type==="tree"){inv.wood+=3;totalWood+=3;gainXP(1);toast("🪵 +3 Holz");floatText(r.x,r.baseY+2.4,r.z,"+3 🪵","#e6b98a");r.falling=0.01;shake=Math.min(shake+0.22,0.5);}
-    else if(r.type==="rock"){inv.stone+=2;gainXP(1);toast("🪨 +2 Stein");floatText(r.x,r.baseY+1.4,r.z,"+2 🪨","#cdd6ea");r.dead=true;r.mesh.visible=false;r.regrow=90;burst(r.x,r.baseY+0.6,r.z,0xaab,6);}
-    else if(r.type==="crystal"){inv.crystal+=1;inv.stone+=1;gainXP(3);toast("💎 +1 Kristall");floatText(r.x,r.baseY+1.6,r.z,"+1 💎","#7de3ff");r.dead=true;r.mesh.visible=false;r.regrow=140;burst(r.x,r.baseY+0.7,r.z,0x7de3ff,8);}
-    else if(r.type==="bush"){inv.berry+=1;gainXP(1);toast("🍓 +1 Beere");floatText(r.x,r.baseY+1.0,r.z,"+1 🍓","#ff8ab0");r.dead=true;if(r.berry)r.berry.visible=false;r.regrow=45;}
+    else if(r.type==="rock"){sfx(300,0.07,"square",0.04);inv.stone+=2;gainXP(1);toast("🪨 +2 Stein");floatText(r.x,r.baseY+1.4,r.z,"+2 🪨","#cdd6ea");r.dead=true;r.mesh.visible=false;r.regrow=90;burst(r.x,r.baseY+0.6,r.z,0xaab,6);}
+    else if(r.type==="crystal"){sfx(1050,0.1,"triangle",0.045);inv.crystal+=1;inv.stone+=1;gainXP(3);toast("💎 +1 Kristall");floatText(r.x,r.baseY+1.6,r.z,"+1 💎","#7de3ff");r.dead=true;r.mesh.visible=false;r.regrow=140;burst(r.x,r.baseY+0.7,r.z,0x7de3ff,8);}
+    else if(r.type==="bush"){sfx(640,0.06);inv.berry+=1;gainXP(1);toast("🍓 +1 Beere");floatText(r.x,r.baseY+1.0,r.z,"+1 🍓","#ff8ab0");r.dead=true;if(r.berry)r.berry.visible=false;r.regrow=45;}
     invUpd();
   }
 }
@@ -2117,7 +2144,7 @@ function updResources(dt){
 // ---------- Essen (Fleisch bevorzugt, dann Beeren) ----------
 function eat(){
   if(hp>=maxHp){toast("❤️ Volle Gesundheit");return;}
-  if(inv.meat>0){inv.meat--;hp=Math.min(maxHp,hp+35);invUpd();hpUpd();toast("🍖 +35 HP");floatText(player.position.x,player.position.y+2.2,player.position.z,"+35 ❤️","#ff9a6c");}
+  if(inv.meat>0){sfx(420,0.08,"square",0.04);inv.meat--;hp=Math.min(maxHp,hp+35);invUpd();hpUpd();toast("🍖 +35 HP");floatText(player.position.x,player.position.y+2.2,player.position.z,"+35 ❤️","#ff9a6c");}
   else if(inv.berry>0){inv.berry--;hp=Math.min(maxHp,hp+18);invUpd();hpUpd();toast("🍓 +18 HP");floatText(player.position.x,player.position.y+2.2,player.position.z,"+18 ❤️","#ff8ab0");}
   else toast("Nichts zu essen — jage 🍖 oder pflücke 🍓");
 }
@@ -2266,7 +2293,7 @@ function updDayNight(dt){
   dayT+=dt;var cyc=isNight?NIGHTLEN:DAYLEN;
   if(dayT>=cyc){dayT=0;isNight=!isNight;
     if(isNight){nights++;waveNum++;waveToSpawn=6+waveNum*4;waveSpawned=0;waveActive=true;
-      announce("🌙 WELLE "+waveNum+" — "+waveToSpawn+" Gegner! Überlebe!");
+      announce("🌙 WELLE "+waveNum+" — "+waveToSpawn+" Gegner! Überlebe!");sfx(90,0.5,"sawtooth",0.05,60);
       if(nights>=2&&nights%2===0)setTimeout(spawnBoss,2500);}
     else{day++;waveActive=false;
       if(typeof gainXP==="function")gainXP(10+waveNum*4); // Welle überlebt -> XP-Bonus
@@ -2342,7 +2369,8 @@ addEventListener("mouseup",function(){mDrag=false;});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
 function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 bindTap("bAct",function(){harvest();});
-bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
+bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);
+(function(){var mb=document.getElementById("muteBtn2");if(mb){mb.textContent=muted?"🔇":"🔊";mb.onclick=function(){toggleMute();};}})();bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
 document.getElementById("bSound").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊";};
@@ -2382,6 +2410,19 @@ function saveGame(){
 function loadSave(){var raw=lsGet("nw_save1");if(!raw)return null;try{return JSON.parse(raw);}catch(e){return null;}}
 function loadBest(){try{return JSON.parse(lsGet("nw_best")||"null");}catch(e){return null;}}
 var autoSaveT=0;
+// 🔊 SOUND (WebAudio-Synth, kein Asset nötig) + Mute (persistent)
+var _AC=null,muted=(lsGet("nw_mute")==="1");
+function sfx(f,d,type,g,slide){if(muted||!running)return;try{
+  _AC=_AC||new (window.AudioContext||window.webkitAudioContext)();
+  var o=_AC.createOscillator(),ga=_AC.createGain();o.type=type||"triangle";
+  o.frequency.value=f;d=d||0.1;
+  if(slide)o.frequency.exponentialRampToValueAtTime(slide,_AC.currentTime+d);
+  ga.gain.value=g||0.045;ga.gain.exponentialRampToValueAtTime(0.0001,_AC.currentTime+d);
+  o.connect(ga);ga.connect(_AC.destination);o.start();o.stop(_AC.currentTime+d+0.02);
+}catch(e){}}
+function sfxSeq(seq){seq.forEach(function(sq,i){setTimeout(function(){sfx(sq[0],sq[1]||0.12,sq[2]||"triangle",sq[3]||0.05);},i*95);});}
+function toggleMute(){muted=!muted;lsSet("nw_mute",muted?"1":"0");
+  var mb=document.getElementById("muteBtn2");if(mb)mb.textContent=muted?"🔇":"🔊";}
 // 🏅 ERFOLGE (Abzeichen) — einmalig, persistent, mit Announce (Sucht-Faktor)
 var BADGES=[
   {id:"kill1",   n:"Erster Sieg",      ic:"⚔️", t:function(){return kills>=1;}},
@@ -2401,7 +2442,7 @@ function updBadges(dt){_bgT+=dt;if(_bgT<2)return;_bgT=0;
   var got=badgesGot(),won2=false;
   for(var i=0;i<BADGES.length;i++){var B=BADGES[i];
     if(!got[B.id]&&B.t()){got[B.id]=1;won2=true;
-      announce("🏅 ERFOLG: "+B.ic+" "+B.n+"!","#ffd166");
+      announce("🏅 ERFOLG: "+B.ic+" "+B.n+"!","#ffd166");sfxSeq([[659],[880],[1174]]);
       burst(player.position.x,player.position.y+2,player.position.z,0xffd166,14);}}
   if(won2)lsSet("nw_badges",JSON.stringify(got));}
 // 🎁 Tägliche Belohnung: einmal pro Kalendertag +3 Kristalle
@@ -2436,11 +2477,36 @@ function updQuest(dt){
     var wasNexus=QUESTS[quest].nexus;
     quest++;
     if(quest<QUESTS.length){announce("✅ Ziel erreicht! Nächstes Ziel…");document.getElementById("questText").textContent=QUESTS[quest].t;}
-    else{document.getElementById("questText").textContent=wasNexus?"🏆 Nexus stabilisiert — du hast gewonnen! Überlebe weiter.":"🏆 Alle Ziele geschafft — überlebe weiter!";announce(wasNexus?"🏆 WILDNIS-MEISTER! 🌌":"🏆 Wildnis-Meister!");}
+    else{document.getElementById("questText").textContent=wasNexus?"🏆 Nexus stabilisiert — du hast gewonnen! Überlebe weiter.":"🏆 Alle Ziele geschafft — überlebe weiter!";
+      if(wasNexus)showWinScreen();else announce("🏆 Wildnis-Meister!");}
     updNexusProgress();saveGame();
   }
 }
 
+// 🏆 Sieg-Bildschirm: grosse Feier mit Statistik (macht das Spiel RUND)
+function showWinScreen(){
+  sfxSeq([[523],[659],[784],[1046,0.3],[784],[1046,0.5]]);
+  var got=badgesGot(),nb=0;for(var i=0;i<BADGES.length;i++)if(got[BADGES[i].id])nb++;
+  var ov=document.getElementById("winOv");
+  if(!ov){ov=document.createElement("div");ov.id="winOv";
+    ov.style.cssText="position:fixed;inset:0;z-index:75;background:rgba(8,16,28,.88);display:flex;align-items:center;justify-content:center;padding:20px";
+    document.body.appendChild(ov);}
+  ov.innerHTML='<div style="max-width:420px;text-align:center;background:linear-gradient(160deg,#122438,#0c1a2c);border:2px solid rgba(255,209,102,.5);border-radius:22px;padding:26px 22px;color:#eaf6ff">'+
+    '<div style="font-size:3rem">🏆</div>'+
+    '<div style="font-size:1.5rem;font-weight:900;color:#ffd166;letter-spacing:.04em">WILDNIS-MEISTER!</div>'+
+    '<div style="margin:6px 0 14px;color:#9fc6de">Du hast den Nexus stabilisiert — die Wildnis ist gerettet.</div>'+
+    '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;font-weight:800">'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">📅 Tag '+day+'</span>'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">⚔️ '+kills+' Gegner</span>'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">⭐ Level '+level+'</span>'+
+      '<span style="background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px">🏅 '+nb+"/"+BADGES.length+'</span></div>'+
+    '<button id="winGo" style="margin-top:18px;width:100%;padding:13px;border:none;border-radius:14px;background:linear-gradient(135deg,#3ad0ff,#7de88a);color:#04121f;font-weight:900;font-size:1rem;cursor:pointer">🌄 Weiterspielen (Endlos-Modus)</button>'+
+    '<button id="winNew" style="margin-top:8px;width:100%;padding:11px;border:1px solid rgba(140,190,220,.4);border-radius:14px;background:transparent;color:#9fc6de;font-weight:800;cursor:pointer">Neue Welt starten</button></div>';
+  ov.style.display="flex";
+  for(var c=0;c<40;c++)setTimeout(function(){burst(player.position.x+(rnd()-0.5)*8,player.position.y+2+rnd()*3,player.position.z+(rnd()-0.5)*8,[0xffd166,0x7de3ff,0xff6ab0][(rnd()*3)|0],6);},c*80);
+  document.getElementById("winGo").onclick=function(){ov.style.display="none";};
+  document.getElementById("winNew").onclick=function(){try{localStorage.removeItem("nw_save1");}catch(e){}location.reload();};
+}
 // ---------- Loop ----------
 var perfNow=0,lastT=0,_mmT=0;
 function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running)return;var ctx=cv.getContext("2d");var W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=W/2;
@@ -2508,6 +2574,7 @@ function updPrompt(){
   else if(nearAni){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🏹":"E";document.getElementById("kpTxt").textContent="Jagen 🍖";act.textContent="🏹";}
   else if(nearLoot){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🖐️":"E";document.getElementById("kpTxt").textContent="Öffnen";act.textContent="🖐️";}
   else if(nearWork){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔧":"E";document.getElementById("kpTxt").textContent="Werkbank öffnen";act.textContent="🔧";}
+  else if(nearNpc){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🗨️":"E";document.getElementById("kpTxt").textContent="Reden";act.textContent="🗨️";}
   else{kp.style.opacity=0;act.textContent="⚔️";}
 }
 
@@ -2708,6 +2775,7 @@ if(loadSave()){document.getElementById("startBtn").textContent="▶ Weiterspiele
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
 window.__nw={
+  win:function(){showWinScreen();return 1;}, // Test-Only
   boss:function(){spawnBoss();return monsters.length;}, // Test-Only
   xp:function(n){gainXP(n||100);return {level:level,perk:PERK};}, // Test-Only
   perkState:function(){return PERK;},
