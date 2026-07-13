@@ -10,7 +10,7 @@
   html, body {
     height: 100%; overflow: hidden;
     font-family: "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
-    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    background: linear-gradient(160deg, #bce6ff, #dff2ff, #eaf7ff);
     color: #2b3a55; user-select: none; -webkit-user-select: none; touch-action: none;
   }
   #app { position: fixed; inset: 0; display: flex; flex-direction: column; }
@@ -19,42 +19,45 @@
     padding: 10px 12px; flex: 0 0 auto;
   }
   .back {
-    border: none; background: #fff; color: #2b3a55;
+    border: none; background: #fffdf6; color: #2b3a55;
     font-size: 16px; font-weight: 700; padding: 12px 16px;
     border-radius: 16px; min-height: 46px; cursor: pointer;
-    box-shadow: 0 4px 0 #a9cbe6; }
-  .back:active { transform: translateY(2px); box-shadow: 0 2px 0 #a9cbe6; }
+    box-shadow: 0 4px 14px rgba(40,90,150,.18); }
+  .back:active { transform: translateY(2px); box-shadow: 0 2px 8px rgba(40,90,150,.15); }
   .title { font-size: 22px; font-weight: 800; margin-left: 4px; }
   .title small { font-size: 13px; font-weight: 600; opacity: .7; display: block; }
   .scorebar {
     display: flex; justify-content: space-around; align-items: center;
     padding: 4px 12px 10px; flex: 0 0 auto; gap: 10px;
   }
-  .sc { flex: 1; text-align: center; background: #fff; border-radius: 16px; padding: 8px 4px;
-        box-shadow: 0 4px 0 rgba(150,180,210,.4); }
+  .sc { flex: 1; text-align: center; background: #fffdf6; border-radius: 16px; padding: 8px 4px;
+        box-shadow: 0 4px 14px rgba(40,90,150,.15); }
   .sc .name { font-size: 14px; font-weight: 700; }
   .sc .pts { font-size: 30px; font-weight: 900; line-height: 1.1; }
-  .sc.p1 { color: #e0518a; }
-  .sc.p2 { color: #2f8fd8; }
+  .sc.p1 { color: #e8574a; }
+  .sc.p2 { color: #3a7dd8; }
   .sc.turn { outline: 3px solid currentColor; }
   .stagewrap { flex: 1 1 auto; position: relative; padding: 0 10px 14px; }
   canvas { width: 100%; height: 100%; display: block; border-radius: 22px;
-           background: #0e2033; box-shadow: 0 8px 24px rgba(40,70,110,.35); touch-action: none; }
+           background: #0e2033; box-shadow: 0 10px 28px rgba(40,70,110,.4), inset 0 0 0 2px rgba(255,255,255,.06);
+           touch-action: none; }
   .overlay {
     position: absolute; inset: 0 10px 14px; display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-align: center; gap: 16px;
-    background: rgba(14,32,51,.86); border-radius: 22px; color: #fff; padding: 24px;
+    background: rgba(14,32,51,.88); backdrop-filter: blur(3px);
+    border-radius: 22px; color: #fff; padding: 24px;
   }
   .overlay.hidden { display: none; }
   .overlay h2 { font-size: 30px; font-weight: 900; }
   .overlay p { font-size: 16px; opacity: .92; max-width: 320px; line-height: 1.45; }
   .btn {
     border: none; font-size: 19px; font-weight: 800; padding: 16px 30px;
-    border-radius: 20px; min-height: 46px; cursor: pointer; color: #fff;
-    background: linear-gradient(180deg, #ffb43e, #ff8f2e); box-shadow: 0 5px 0 #d9701c;
+    border-radius: 18px; min-height: 46px; cursor: pointer; color: #fff;
+    text-shadow: 0 1px 3px rgba(140,60,0,.35);
+    background: linear-gradient(180deg, #ffcf3a, #ff8c2a); box-shadow: 0 6px 16px rgba(255,140,42,.5);
   }
-  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #d9701c; }
-  .winP1 { color: #ff9ec4; } .winP2 { color: #8fd0ff; }
+  .btn:active { transform: translateY(3px); box-shadow: 0 3px 8px rgba(255,140,42,.4); }
+  .winP1 { color: #ffb0a6; } .winP2 { color: #a5cbf7; }
 </style>
 </head>
 <body>
@@ -84,21 +87,25 @@
   var ptsEl = { 1: document.getElementById("ptsP1"), 2: document.getElementById("ptsP2") };
   var scEl = { 1: document.getElementById("scP1"), 2: document.getElementById("scP2") };
 
-  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 3);
   var WIN = 5;
-  // Colors
-  var COL = { 1: "#ff5f9e", 2: "#39a7f0" }; // 1 = unten (rot/pink), 2 = oben (blau)
+  /* Colors: 1 = unten (rot), 2 = oben (blau) — plus helle Varianten für Verläufe */
+  var COL  = { 1: "#e8574a", 2: "#3a7dd8" };
+  var COLL = { 1: "#ff9384", 2: "#7fb3ea" };
 
-  var state = "menu"; // menu | serve | play | over
+  var state = "menu"; /* menu | serve | play | over */
   var score = { 1: 0, 2: 0 };
   var paddleW, paddleH = 16, ballR = 9;
-  var pad = { 1: 0, 2: 0 }; // x-center of paddle
+  var pad = { 1: 0, 2: 0 }; /* x-center of paddle */
   var ball = { x: 0, y: 0, vx: 0, vy: 0 };
   var serveTo = 1, serveTimer = 0, winner = 0;
   var raf = null;
+  var trail = [];      /* Ball-Trail: letzte Positionen */
+  var parts = [];      /* Partikel beim Punkt */
 
   function resize(){
     var wrap = cv.parentElement;
+    dpr = Math.min(window.devicePixelRatio || 1, 3);
     W = wrap.clientWidth; H = wrap.clientHeight;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -109,7 +116,7 @@
   }
   function clamp(v,a,b){ return v < a ? a : (v > b ? b : v); }
 
-  function padY(p){ return p === 1 ? H - 34 : 34; } // 1 unten, 2 oben
+  function padY(p){ return p === 1 ? H - 34 : 34; } /* 1 unten, 2 oben */
 
   function resetGame(){
     score[1] = 0; score[2] = 0; updateScore();
@@ -120,14 +127,15 @@
   function startServe(){
     state = "serve"; serveTimer = 60;
     ball.x = W/2; ball.y = H/2; ball.vx = 0; ball.vy = 0;
+    trail.length = 0;
     highlightTurn();
   }
   function launch(){
     state = "play";
     var speed = Math.max(4.2, H * 0.010);
-    var ang = (Math.random() * 0.6 - 0.3); // horizontal spread
+    var ang = (Math.random() * 0.6 - 0.3); /* horizontal spread */
     ball.vx = Math.sin(ang) * speed;
-    var dir = serveTo === 1 ? 1 : -1; // serve toward the receiver's side? send toward server
+    var dir = serveTo === 1 ? 1 : -1; /* serve toward the receiver's side? send toward server */
     ball.vy = (serveTo === 1 ? 1 : -1) * Math.cos(ang) * speed;
   }
   function highlightTurn(){
@@ -138,10 +146,19 @@
     ptsEl[1].textContent = score[1]; ptsEl[2].textContent = score[2];
   }
 
+  function burst(x, y, col){
+    for (var i = 0; i < 26; i++){
+      var a = Math.random() * Math.PI * 2, sp = 1.5 + Math.random() * 4.5;
+      parts.push({ x: x, y: y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp,
+                   r: 2 + Math.random()*3.5, life: 1, col: col });
+    }
+  }
+
   function point(to){
+    burst(clamp(ball.x, ballR, W - ballR), clamp(ball.y, ballR, H - ballR), COL[to]);
     score[to]++; updateScore();
     if (score[to] >= WIN){ winner = to; endGame(); return; }
-    serveTo = to === 1 ? 2 : 1; // Verlierer serviert? -> der andere serviert
+    serveTo = to === 1 ? 2 : 1; /* Verlierer serviert? -> der andere serviert */
     startServe();
   }
 
@@ -159,18 +176,30 @@
     });
   }
 
+  function stepParts(){
+    for (var i = parts.length - 1; i >= 0; i--){
+      var p = parts[i];
+      p.x += p.vx; p.y += p.vy;
+      p.vx *= 0.97; p.vy = p.vy * 0.97 + 0.06;
+      p.life -= 0.022;
+      if (p.life <= 0) parts.splice(i, 1);
+    }
+  }
+
   function step(){
+    stepParts();
     if (state === "serve"){
       serveTimer--;
       ball.x = W/2; ball.y = H/2;
       if (serveTimer <= 0) launch();
     } else if (state === "play"){
       ball.x += ball.vx; ball.y += ball.vy;
-      // side walls
+      trail.push({ x: ball.x, y: ball.y });
+      if (trail.length > 14) trail.shift();
+      /* side walls */
       if (ball.x < ballR){ ball.x = ballR; ball.vx = Math.abs(ball.vx); }
       if (ball.x > W - ballR){ ball.x = W - ballR; ball.vx = -Math.abs(ball.vx); }
-      // paddle collisions
-      // bottom paddle (player 1)
+      /* paddle collisions — bottom paddle (player 1) */
       var y1 = padY(1);
       if (ball.vy > 0 && ball.y + ballR >= y1 - paddleH/2 && ball.y - ballR <= y1 + paddleH/2){
         if (Math.abs(ball.x - pad[1]) <= paddleW/2 + ballR){
@@ -183,60 +212,106 @@
           bounce(2, y2 + paddleH/2 + ballR);
         }
       }
-      // scoring
-      if (ball.y < -ballR*2){ point(1); }          // passed top -> P1 scores
-      else if (ball.y > H + ballR*2){ point(2); }  // passed bottom -> P2 scores
+      /* scoring */
+      if (ball.y < -ballR*2){ point(1); }          /* passed top -> P1 scores */
+      else if (ball.y > H + ballR*2){ point(2); }  /* passed bottom -> P2 scores */
     }
   }
 
   function bounce(p, snapY){
     ball.y = snapY;
     ball.vy = -ball.vy;
-    // add angle based on where it hit the paddle
-    var off = (ball.x - pad[p]) / (paddleW/2); // -1..1
+    /* add angle based on where it hit the paddle */
+    var off = (ball.x - pad[p]) / (paddleW/2); /* -1..1 */
     var speed = Math.hypot(ball.vx, ball.vy) * 1.035;
     speed = Math.min(speed, H * 0.028);
     var maxAng = 1.05;
     var ang = off * maxAng;
-    var dir = p === 1 ? -1 : 1; // 1 (bottom) sends up
+    var dir = p === 1 ? -1 : 1; /* 1 (bottom) sends up */
     ball.vx = Math.sin(ang) * speed;
     ball.vy = dir * Math.abs(Math.cos(ang)) * speed;
   }
 
   function draw(){
-    ctx.clearRect(0,0,W,H);
-    // center line
-    ctx.strokeStyle = "rgba(255,255,255,.25)"; ctx.lineWidth = 3;
+    /* Court: weicher vertikaler Verlauf statt Flachfarbe */
+    var bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, "#1c3d63");
+    bg.addColorStop(0.5, "#122c4a");
+    bg.addColorStop(1, "#0e2033");
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+    /* sanfte Farb-Auren pro Spielerhälfte */
+    var gTop = ctx.createRadialGradient(W/2, 0, 0, W/2, 0, H*0.55);
+    gTop.addColorStop(0, "rgba(58,125,216,.20)"); gTop.addColorStop(1, "rgba(58,125,216,0)");
+    ctx.fillStyle = gTop; ctx.fillRect(0, 0, W, H/2);
+    var gBot = ctx.createRadialGradient(W/2, H, 0, W/2, H, H*0.55);
+    gBot.addColorStop(0, "rgba(232,87,74,.20)"); gBot.addColorStop(1, "rgba(232,87,74,0)");
+    ctx.fillStyle = gBot; ctx.fillRect(0, H/2, W, H/2);
+
+    /* center line + Mittelkreis */
+    ctx.strokeStyle = "rgba(255,255,255,.22)"; ctx.lineWidth = 3;
     ctx.setLineDash([10,12]); ctx.beginPath();
     ctx.moveTo(0, H/2); ctx.lineTo(W, H/2); ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.arc(W/2, H/2, 34, 0, Math.PI*2);
+    ctx.strokeStyle = "rgba(255,255,255,.12)"; ctx.lineWidth = 2; ctx.stroke();
 
-    // paddles
+    /* paddles */
     drawPaddle(1); drawPaddle(2);
 
-    // ball
+    /* Ball-Trail */
+    for (var i = 0; i < trail.length; i++){
+      var t = trail[i], f = (i + 1) / trail.length;
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(255,215,106," + (f * 0.35) + ")";
+      ctx.arc(t.x, t.y, ballR * f * 0.85, 0, Math.PI*2); ctx.fill();
+    }
+
+    /* Ball mit Glanz + Glow */
+    ctx.save();
+    ctx.shadowColor = "#ffcf3a"; ctx.shadowBlur = 18;
+    var bgrad = ctx.createRadialGradient(ball.x - 3, ball.y - 3, 1, ball.x, ball.y, ballR + 1);
+    bgrad.addColorStop(0, "#fffbe8"); bgrad.addColorStop(0.55, "#ffe28a"); bgrad.addColorStop(1, "#ffb43e");
     ctx.beginPath();
-    ctx.fillStyle = "#fff5cc";
+    ctx.fillStyle = bgrad;
     ctx.arc(ball.x, ball.y, ballR, 0, Math.PI*2); ctx.fill();
-    ctx.strokeStyle = "rgba(0,0,0,.15)"; ctx.lineWidth = 2; ctx.stroke();
+    ctx.restore();
+
+    /* Partikel */
+    for (var j = 0; j < parts.length; j++){
+      var p = parts[j];
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.beginPath();
+      ctx.fillStyle = p.col;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
 
     if (state === "serve"){
-      ctx.fillStyle = COL[serveTo];
-      ctx.font = "800 20px system-ui, sans-serif";
       ctx.textAlign = "center";
+      ctx.save();
+      ctx.shadowColor = "rgba(0,0,0,.4)"; ctx.shadowBlur = 8;
+      ctx.fillStyle = COLL[serveTo];
+      ctx.font = "800 24px system-ui, sans-serif";
       var txt = (serveTo === 1 ? "🔴 Rot" : "🔵 Blau") + " serviert…";
-      ctx.fillText(txt, W/2, H/2 - 24);
+      ctx.fillText(txt, W/2, H/2 - 56);
       ctx.fillStyle = "#fff";
-      ctx.font = "900 34px system-ui, sans-serif";
-      ctx.fillText(Math.ceil(serveTimer/20), W/2, H/2 + 46);
+      ctx.font = "900 52px system-ui, sans-serif";
+      ctx.fillText(Math.ceil(serveTimer/20), W/2, H/2 + 78);
+      ctx.restore();
     }
   }
   function drawPaddle(p){
     var y = padY(p), x = pad[p];
     var r = paddleH/2;
-    ctx.fillStyle = COL[p];
+    ctx.save();
+    ctx.shadowColor = COL[p]; ctx.shadowBlur = 16;
+    var grad = ctx.createLinearGradient(0, y - paddleH/2, 0, y + paddleH/2);
+    grad.addColorStop(0, COLL[p]); grad.addColorStop(1, COL[p]);
+    ctx.fillStyle = grad;
     roundRect(x - paddleW/2, y - paddleH/2, paddleW, paddleH, r);
     ctx.fill();
-    ctx.fillStyle = "rgba(255,255,255,.35)";
+    ctx.restore();
+    ctx.fillStyle = "rgba(255,255,255,.4)";
     roundRect(x - paddleW/2 + 6, y - paddleH/2 + 3, paddleW - 12, 4, 2); ctx.fill();
   }
   function roundRect(x,y,w,h,r){
@@ -254,8 +329,8 @@
     raf = requestAnimationFrame(loop);
   }
 
-  // ---- Input: pointer/touch. Top half controls P2, bottom half controls P1 ----
-  var active = {}; // pointerId -> player
+  /* ---- Input: pointer/touch. Top half controls P2, bottom half controls P1 ---- */
+  var active = {}; /* pointerId -> player */
   function whichPlayer(clientY){
     var rect = cv.getBoundingClientRect();
     return (clientY - rect.top) < rect.height/2 ? 2 : 1;

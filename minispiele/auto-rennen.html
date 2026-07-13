@@ -10,33 +10,35 @@
   html, body {
     margin: 0; padding: 0; height: 100%;
     font-family: "Comic Sans MS", "Segoe UI", "Trebuchet MS", sans-serif;
-    background: linear-gradient(180deg, #bce6ff 0%, #eaf7ff 100%);
+    background: linear-gradient(160deg, #bce6ff 0%, #dff2ff 55%, #eaf7ff 100%);
     overflow: hidden; user-select: none;
     color: #17415f;
   }
   #app { display: flex; flex-direction: column; height: 100%; padding: 8px; gap: 8px; }
   .topbar { display: flex; align-items: center; gap: 8px; }
   .backbtn {
-    background: #fff; border: 3px solid #7fc9ff; color: #17415f;
+    background: #fffdf6; border: none; color: #17415f;
     border-radius: 16px; padding: 10px 16px; font-size: 16px; font-weight: bold;
-    min-height: 46px; cursor: pointer; box-shadow: 0 3px 0 #7fc9ff;
+    min-height: 46px; cursor: pointer; box-shadow: 0 4px 14px rgba(40,90,150,.15);
   }
-  .backbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 #7fc9ff; }
+  .backbtn:active { transform: translateY(2px); box-shadow: 0 2px 6px rgba(40,90,150,.15); }
   .title { font-size: 22px; font-weight: bold; flex: 1; text-align: center; }
   .title small { display:block; font-size: 12px; font-weight: normal; opacity: .8; }
-  #track { flex: 1; width: 100%; border-radius: 20px; display: block; box-shadow: 0 6px 18px rgba(60,120,180,.25); }
-  .pads { display: flex; gap: 8px; }
+  #track { flex: 1; width: 100%; border-radius: 20px; display: block; box-shadow: 0 4px 14px rgba(40,90,150,.22); }
+  .pads { display: flex; gap: 10px; }
   .pad {
-    flex: 1; border: none; border-radius: 22px; padding: 22px 8px;
+    flex: 1; border: none; border-radius: 20px; padding: 22px 8px;
     font-size: 20px; font-weight: bold; color: #fff; cursor: pointer;
-    min-height: 92px; box-shadow: 0 5px 0 rgba(0,0,0,.18); touch-action: manipulation;
+    min-height: 92px; box-shadow: 0 5px 0 rgba(0,0,0,.18), 0 8px 18px rgba(40,90,150,.18);
+    touch-action: manipulation;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.18);
   }
-  .pad:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,.18); }
-  .pad .emoji { font-size: 34px; }
+  .pad:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,.18), 0 4px 10px rgba(40,90,150,.15); }
+  .pad .emoji { font-size: 38px; text-shadow: none; }
   .pad .score { font-size: 15px; opacity: .95; }
-  #padRed { background: linear-gradient(180deg,#ff8a8a,#ec4d54); }
-  #padBlue { background: linear-gradient(180deg,#7fb8ff,#3f7fe0); }
+  #padRed { background: linear-gradient(180deg,#ff8a7d,#e8574a); }
+  #padBlue { background: linear-gradient(180deg,#7fb0ec,#3a7dd8); }
   .pad.win { animation: pulse .5s ease-in-out infinite alternate; }
   @keyframes pulse { to { filter: brightness(1.18); transform: scale(1.02); } }
   .center-msg {
@@ -44,19 +46,24 @@
   }
   /* Overlay */
   #overlay {
-    position: absolute; inset: 0; background: rgba(190,230,255,.94);
+    position: absolute; inset: 0; background: rgba(223,242,255,.9);
+    backdrop-filter: blur(3px);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 18px; text-align: center; padding: 24px; z-index: 10;
   }
   #overlay.hide { display: none; }
-  #overlay h1 { font-size: 30px; margin: 0; }
-  #overlay p { font-size: 17px; margin: 0; max-width: 320px; line-height: 1.4; }
-  .bigbtn {
-    background: #ffd23f; border: none; border-radius: 22px; padding: 16px 34px;
-    font-size: 22px; font-weight: bold; color: #7a4f00; cursor: pointer;
-    box-shadow: 0 5px 0 #e0a800; min-height: 46px;
+  #overlay h1 { font-size: 30px; margin: 0; color: #1e5a8a; }
+  #overlay p {
+    font-size: 17px; margin: 0; max-width: 340px; line-height: 1.45;
+    background: #fffdf6; border-radius: 18px; padding: 16px 18px;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15);
   }
-  .bigbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #e0a800; }
+  .bigbtn {
+    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); border: none; border-radius: 20px;
+    padding: 16px 34px; font-size: 22px; font-weight: bold; color: #7a3d00; cursor: pointer;
+    box-shadow: 0 5px 0 #d97a1e, 0 8px 18px rgba(40,90,150,.2); min-height: 46px;
+  }
+  .bigbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #d97a1e, 0 4px 10px rgba(40,90,150,.15); }
   .trophy { font-size: 64px; }
 </style>
 </head>
@@ -122,7 +129,7 @@
 
   function resize(){
     var rect = canvas.getBoundingClientRect();
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, 3);
     W = rect.width; H = rect.height;
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
@@ -232,44 +239,77 @@
     if(!W || !H) return;
     ctx.clearRect(0,0,W,H);
 
-    // Rasen-Hintergrund
+    /* Rasen-Hintergrund mit weichem Verlauf + Mäh-Streifen */
     var g = ctx.createLinearGradient(0,0,0,H);
-    g.addColorStop(0,"#8fd98a");
+    g.addColorStop(0,"#a5e39d");
     g.addColorStop(1,"#6cc97e");
     ctx.fillStyle = g;
     roundRect(0,0,W,H,20); ctx.fill();
+    ctx.save();
+    roundRect(0,0,W,H,20); ctx.clip();
+    ctx.fillStyle = "rgba(255,255,255,.08)";
+    for(var s=0; s<W+H; s+=52){
+      ctx.beginPath();
+      ctx.moveTo(s,0); ctx.lineTo(s-H,H); ctx.lineTo(s-H+26,H); ctx.lineTo(s+26,0);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
 
     var pad = 14;
     var startX = pad + 30;
     var finishX = W - pad - 26;
     var laneTop = H*0.18, laneBot = H*0.9;
 
-    // Asphaltbahn
-    ctx.fillStyle = "#4a4f57";
+    /* Asphaltbahn mit Verlauf + weichem Schatten */
+    ctx.save();
+    ctx.shadowColor = "rgba(20,50,80,.3)";
+    ctx.shadowBlur = 12;
+    ctx.shadowOffsetY = 4;
+    var ag = ctx.createLinearGradient(0,laneTop,0,laneBot);
+    ag.addColorStop(0,"#5d6672");
+    ag.addColorStop(0.5,"#4a525d");
+    ag.addColorStop(1,"#3c434d");
+    ctx.fillStyle = ag;
     roundRect(pad, laneTop, W-2*pad, laneBot-laneTop, 16); ctx.fill();
+    ctx.restore();
 
-    // Mittelstreifen (Trennung der beiden Bahnen)
-    ctx.strokeStyle = "rgba(255,255,255,.55)";
-    ctx.lineWidth = 3;
-    ctx.setLineDash([16,14]);
+    /* Randlinien */
+    ctx.strokeStyle = "rgba(255,255,255,.65)";
+    ctx.lineWidth = 2.5;
     ctx.beginPath();
-    ctx.moveTo(pad+6, H*0.5); ctx.lineTo(W-pad-6, H*0.5);
+    ctx.moveTo(pad+10, laneTop+7); ctx.lineTo(W-pad-10, laneTop+7);
+    ctx.moveTo(pad+10, laneBot-7); ctx.lineTo(W-pad-10, laneBot-7);
+    ctx.stroke();
+
+    /* Mittelstreifen (Trennung der beiden Bahnen) */
+    ctx.strokeStyle = "rgba(255,255,255,.85)";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.setLineDash([18,16]);
+    ctx.beginPath();
+    ctx.moveTo(pad+8, H*0.5); ctx.lineTo(W-pad-8, H*0.5);
     ctx.stroke();
     ctx.setLineDash([]);
+    ctx.lineCap = "butt";
 
-    // Startlinie
-    ctx.fillStyle = "rgba(255,255,255,.85)";
-    ctx.fillRect(startX-3, laneTop+8, 4, (laneBot-laneTop)-16);
+    /* Startlinie */
+    ctx.fillStyle = "rgba(255,255,255,.9)";
+    ctx.fillRect(startX-3, laneTop+10, 4, (laneBot-laneTop)-20);
 
-    // Ziel-Schachbrett
-    var chkX = finishX, chkTop = laneTop+6, chkH = (laneBot-laneTop)-12;
-    var cell = 9, cols = 2, rows = Math.floor(chkH/cell);
+    /* Ziel-Schachbrett */
+    var chkX = finishX, chkTop = laneTop+8, chkH = (laneBot-laneTop)-16;
+    var cell = 10, cols = 2, rows = Math.ceil(chkH/cell);
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(chkX, chkTop, cols*cell, chkH);
+    ctx.clip();
     for(var r=0;r<rows;r++){
       for(var c=0;c<cols;c++){
         ctx.fillStyle = ((r+c)%2===0) ? "#ffffff" : "#2b2f36";
         ctx.fillRect(chkX + c*cell, chkTop + r*cell, cell, cell);
       }
     }
+    ctx.restore();
 
     // Autos
     var span = finishX - startX - 8;
@@ -278,15 +318,20 @@
 
     // Countdown-Overlay
     if(countLabel){
-      ctx.fillStyle = "rgba(23,65,95,.15)";
+      ctx.fillStyle = "rgba(23,65,95,.18)";
       roundRect(0,0,W,H,20); ctx.fill();
-      ctx.fillStyle = "#fff";
+      ctx.save();
+      ctx.shadowColor = "rgba(20,50,80,.35)";
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetY = 3;
+      ctx.fillStyle = countLabel === "LOS!" ? "#ffcf3a" : "#fff";
       ctx.strokeStyle = "#17415f";
-      ctx.lineWidth = 4;
+      ctx.lineWidth = 5;
       ctx.font = "bold " + Math.round(H*0.32) + "px 'Comic Sans MS', sans-serif";
       ctx.textAlign = "center"; ctx.textBaseline = "middle";
       ctx.strokeText(countLabel, W/2, H/2);
       ctx.fillText(countLabel, W/2, H/2);
+      ctx.restore();
     }
   }
 
@@ -299,11 +344,15 @@
     ctx.translate(x, y - b*4);
     ctx.font = size + "px serif";
     ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    // kleiner Schatten
-    ctx.fillStyle = "rgba(0,0,0,.18)";
+    /* weicher Bodenschatten */
+    ctx.save();
+    ctx.shadowColor = "rgba(0,0,0,.28)";
+    ctx.shadowBlur = 6;
+    ctx.fillStyle = "rgba(0,0,0,.2)";
     ctx.beginPath();
-    ctx.ellipse(0, size*0.42, size*0.42, size*0.14, 0, 0, Math.PI*2);
+    ctx.ellipse(0, size*0.44, size*0.46, size*0.13, 0, 0, Math.PI*2);
     ctx.fill();
+    ctx.restore();
     ctx.fillText(car.emoji, 0, 0);
     ctx.restore();
   }

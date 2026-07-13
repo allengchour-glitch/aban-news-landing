@@ -9,26 +9,26 @@
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0;
     font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif;user-select:none;-webkit-user-select:none;touch-action:manipulation;}
   html,body{height:100%;overflow:hidden;}
-  body{background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);}
+  body{background:linear-gradient(160deg,#bce6ff 0%,#dff2ff 55%,#eaf7ff 100%);}
   #app{position:fixed;inset:0;display:flex;flex-direction:column;}
 
   .backbtn{position:absolute;top:10px;left:10px;z-index:80;
     min-height:46px;padding:8px 16px;border:none;border-radius:18px;
-    background:rgba(255,255,255,.9);color:#2b6cb0;font-size:16px;font-weight:bold;
-    box-shadow:0 3px 8px rgba(0,0,0,.15);cursor:pointer;}
+    background:rgba(255,253,246,.94);color:#3a7dd8;font-size:16px;font-weight:bold;
+    box-shadow:0 4px 14px rgba(40,90,150,.18);cursor:pointer;}
   .backbtn:active{transform:scale(.95);}
 
   .arena{flex:1;display:flex;flex-direction:column;}
   .half{flex:1;position:relative;display:flex;flex-direction:column;
     align-items:center;justify-content:center;overflow:hidden;}
-  .half.top{background:linear-gradient(160deg,#ffe0b3,#ffc477);border-bottom:5px dashed #fff;}
-  .half.bottom{background:linear-gradient(160deg,#c9e6ff,#8fc9ff);}
+  .half.top{background:linear-gradient(160deg,#f9b7ab,#ef8a7c);border-bottom:5px dashed #fffdf6;}
+  .half.bottom{background:linear-gradient(160deg,#b5d8fa,#7cb2ee);}
   .half.top .flip{transform:rotate(180deg);}
 
-  .who{font-size:20px;font-weight:900;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.28);margin-bottom:2px;}
-  .score{font-size:15px;font-weight:bold;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.25);margin-bottom:6px;}
-  .balloon{font-size:64px;line-height:1;transition:transform .12s ease-out;transform:scale(.5);
-    filter:drop-shadow(0 4px 6px rgba(0,0,0,.2));}
+  .who{font-size:22px;font-weight:900;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.28);margin-bottom:2px;}
+  .score{font-size:16px;font-weight:bold;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.25);margin-bottom:6px;}
+  .balloon{font-size:74px;line-height:1;transition:transform .12s ease-out;transform:scale(.5);
+    filter:drop-shadow(0 6px 8px rgba(0,0,0,.22));}
   .fillbar{width:70%;max-width:240px;height:14px;background:rgba(255,255,255,.55);
     border-radius:10px;margin-top:12px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.15);}
   .fillbar>i{display:block;height:100%;width:0%;border-radius:10px;transition:width .1s;

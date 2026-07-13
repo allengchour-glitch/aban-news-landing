@@ -10,39 +10,41 @@
   html,body{height:100%;overflow:hidden}
   body{
     font-family:"Comic Sans MS","Trebuchet MS",-apple-system,system-ui,sans-serif;
-    background:linear-gradient(160deg,#bce6ff 0%,#eaf7ff 100%);
+    background:linear-gradient(160deg,#bce6ff 0%,#dff2ff 55%,#eaf7ff 100%);
     color:#204060;display:flex;flex-direction:column;align-items:center;
     height:100dvh;user-select:none;-webkit-user-select:none;touch-action:manipulation;
   }
   .top{width:100%;max-width:520px;display:flex;align-items:center;justify-content:space-between;padding:8px 10px;gap:8px}
   .back{
-    background:#fff;border:none;border-radius:16px;padding:10px 14px;font-size:16px;font-weight:bold;
-    color:#3a7bd5;box-shadow:0 3px 0 #b8d8f0;cursor:pointer;min-height:46px;font-family:inherit;
+    background:#fffdf6;border:none;border-radius:16px;padding:10px 14px;font-size:16px;font-weight:bold;
+    color:#3a7bd5;box-shadow:0 4px 14px rgba(40,90,150,.15);cursor:pointer;min-height:46px;font-family:inherit;
   }
-  .back:active{transform:translateY(2px);box-shadow:0 1px 0 #b8d8f0}
+  .back:active{transform:translateY(2px);box-shadow:0 2px 6px rgba(40,90,150,.15)}
   h1{font-size:22px;color:#2a6bbf;text-shadow:0 2px 0 #fff}
   .scores{width:100%;max-width:520px;display:flex;gap:8px;padding:0 10px 6px}
-  .sc{flex:1;background:#fff;border-radius:14px;padding:8px 10px;text-align:center;box-shadow:0 3px 0 rgba(0,0,0,.06);transition:transform .15s}
+  .sc{flex:1;background:#fffdf6;border-radius:14px;padding:8px 10px;text-align:center;box-shadow:0 4px 14px rgba(40,90,150,.15);transition:transform .15s}
   .sc .n{font-size:13px;font-weight:bold}
-  .sc .v{font-size:20px;font-weight:bold}
-  .sc.p1{color:#e8622c} .sc.p2{color:#2e9e6b}
-  .sc.active{transform:scale(1.06);box-shadow:0 4px 0 rgba(0,0,0,.12);outline:3px solid currentColor}
+  .sc .v{font-size:22px;font-weight:bold}
+  .sc.p1{color:#e8574a} .sc.p2{color:#3a7dd8}
+  .sc.active{transform:scale(1.06);box-shadow:0 6px 18px rgba(40,90,150,.25);outline:3px solid currentColor}
   .stage{width:100%;max-width:520px;flex:1;position:relative;padding:0 10px 10px}
-  canvas{display:block;width:100%;height:100%;background:linear-gradient(180deg,#dff2ff 0%,#c3e7ff 100%);border-radius:18px;box-shadow:inset 0 0 0 4px #fff}
+  canvas{display:block;width:100%;height:100%;background:linear-gradient(180deg,#e8f6ff 0%,#c9e8ff 100%);border-radius:18px;box-shadow:0 4px 14px rgba(40,90,150,.18),inset 0 0 0 4px #fffdf6}
   .hint{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-size:15px;font-weight:bold;color:#2a6bbf;pointer-events:none;text-shadow:0 1px 0 #fff}
   .overlay{
-    position:absolute;inset:0;background:rgba(255,255,255,.82);display:flex;flex-direction:column;
+    position:absolute;inset:0;background:rgba(255,253,246,.88);backdrop-filter:blur(3px);
+    display:flex;flex-direction:column;
     align-items:center;justify-content:center;gap:14px;border-radius:18px;text-align:center;padding:20px;
   }
   .overlay.hidden{display:none}
   .overlay h2{font-size:28px;color:#2a6bbf}
-  .overlay p{font-size:17px;line-height:1.4}
+  .overlay p{font-size:17px;line-height:1.45}
   .btn{
-    background:linear-gradient(180deg,#ffcf3f,#ffb020);border:none;border-radius:20px;padding:16px 26px;
-    font-size:20px;font-weight:bold;color:#7a3d00;box-shadow:0 5px 0 #d98a00;cursor:pointer;font-family:inherit;min-height:46px;
+    background:linear-gradient(180deg,#ffcf3a,#ff8c2a);border:none;border-radius:20px;padding:16px 26px;
+    font-size:20px;font-weight:bold;color:#7a3d00;box-shadow:0 5px 0 #d97a1e,0 8px 18px rgba(40,90,150,.18);
+    cursor:pointer;font-family:inherit;min-height:46px;
   }
-  .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #d98a00}
-  .big{font-size:44px}
+  .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #d97a1e}
+  .big{font-size:48px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.15))}
 </style>
 </head>
 <body>
@@ -79,15 +81,15 @@
   var W=0,H=0,DPR=1;
   function resize(){
     var r=cv.getBoundingClientRect();
-    DPR=Math.min(window.devicePixelRatio||1,2);
+    DPR=Math.min(window.devicePixelRatio||1,3);
     W=Math.max(200,r.width); H=Math.max(300,r.height);
     cv.width=W*DPR; cv.height=H*DPR;
     ctx.setTransform(DPR,0,0,DPR,0,0);
   }
   window.addEventListener("resize",resize);
 
-  // Farben je Spieler
-  var COLORS=[["#ff8a5b","#e8622c"],["#5bc7ff","#2e9e6b"]];
+  // Farben je Spieler (Rot / Blau)
+  var COLORS=[["#ff9a86","#e8574a"],["#8ab9f0","#3a7dd8"]];
   var GAMEROUNDS=6; // 3 Blöcke pro Spieler
 
   var state; // 'p1build','p2build','roundover','gameover'
@@ -209,11 +211,19 @@
     var c=COLORS[pl-1];
     var g=ctx.createLinearGradient(x,y,x,y+h);
     g.addColorStop(0,c[0]); g.addColorStop(1,c[1]);
+    ctx.save();
+    ctx.shadowColor="rgba(40,90,150,.3)";
+    ctx.shadowBlur=8;
+    ctx.shadowOffsetY=3;
     ctx.fillStyle=g;
     roundRect(x,y,w,h-3,6); ctx.fill();
-    // fugen-punkte
-    ctx.fillStyle="rgba(255,255,255,.35)";
+    ctx.restore();
+    /* Glanzkante oben */
+    ctx.fillStyle="rgba(255,255,255,.4)";
     roundRect(x+4,y+3,Math.max(6,w-8),4,2); ctx.fill();
+    /* dunkle Kante unten */
+    ctx.fillStyle="rgba(0,0,0,.12)";
+    roundRect(x+3,y+h-8,Math.max(6,w-6),4,2); ctx.fill();
   }
   function roundRect(x,y,w,h,r){
     r=Math.min(r,w/2,h/2);
@@ -228,22 +238,35 @@
 
   function render(){
     ctx.clearRect(0,0,W,H);
-    // Boden
-    ctx.fillStyle="#8fd18f";
-    roundRect(0,H-24,W,24,0); ctx.fill();
-    ctx.fillStyle="rgba(255,255,255,.25)";
-    ctx.fillRect(0,H-24,W,4);
 
-    // Mittellinie (Trennung der beiden Türme)
+    /* Sonne + Wolken (Himmel-Deko) */
+    var sg=ctx.createRadialGradient(W*0.85,H*0.1,4,W*0.85,H*0.1,44);
+    sg.addColorStop(0,"rgba(255,223,120,.95)");
+    sg.addColorStop(0.5,"rgba(255,207,58,.35)");
+    sg.addColorStop(1,"rgba(255,207,58,0)");
+    ctx.fillStyle=sg;
+    ctx.beginPath(); ctx.arc(W*0.85,H*0.1,44,0,Math.PI*2); ctx.fill();
+    drawCloud(W*0.2,H*0.1,1);
+    drawCloud(W*0.62,H*0.2,0.7);
+
+    /* Boden mit Verlauf */
+    var bg=ctx.createLinearGradient(0,H-26,0,H);
+    bg.addColorStop(0,"#9adb8f"); bg.addColorStop(1,"#6cc97e");
+    ctx.fillStyle=bg;
+    roundRect(0,H-26,W,26,0); ctx.fill();
+    ctx.fillStyle="rgba(255,255,255,.35)";
+    ctx.fillRect(0,H-26,W,3);
+
+    /* Mittellinie (Trennung der beiden Türme) */
     ctx.strokeStyle="rgba(90,140,190,.25)";
     ctx.setLineDash([6,6]); ctx.lineWidth=2;
-    ctx.beginPath(); ctx.moveTo(W/2,20); ctx.lineTo(W/2,H-24); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W/2,20); ctx.lineTo(W/2,H-26); ctx.stroke();
     ctx.setLineDash([]);
 
-    // Labels
-    ctx.textAlign="center"; ctx.font="bold 13px sans-serif";
-    ctx.fillStyle="rgba(232,98,44,.55)"; ctx.fillText("🔴",W*0.25,H-8);
-    ctx.fillStyle="rgba(46,158,107,.55)"; ctx.fillText("🔵",W*0.75,H-8);
+    /* Labels */
+    ctx.textAlign="center"; ctx.font="bold 14px sans-serif";
+    ctx.fillStyle="rgba(232,87,74,.7)"; ctx.fillText("🔴",W*0.25,H-8);
+    ctx.fillStyle="rgba(58,125,216,.7)"; ctx.fillText("🔵",W*0.75,H-8);
 
     // Türme
     drawTower(1); drawTower(2);
@@ -269,6 +292,17 @@
       ctx.fillStyle="rgba(255,255,255,"+(flash*0.4)+")";
       ctx.fillRect(0,0,W,H);
     }
+  }
+  function drawCloud(cx,cy,s){
+    ctx.save();
+    ctx.fillStyle="rgba(255,255,255,.75)";
+    ctx.beginPath();
+    ctx.arc(cx,cy,16*s,0,Math.PI*2);
+    ctx.arc(cx+18*s,cy+2*s,13*s,0,Math.PI*2);
+    ctx.arc(cx-18*s,cy+3*s,12*s,0,Math.PI*2);
+    ctx.arc(cx+4*s,cy-8*s,12*s,0,Math.PI*2);
+    ctx.fill();
+    ctx.restore();
   }
   function drawTower(pl){
     var t=towers[pl];

@@ -10,7 +10,7 @@
   html, body { margin: 0; padding: 0; height: 100%; }
   body {
     font-family: 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
-    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    background: linear-gradient(160deg, #bce6ff 0%, #dff2ff 55%, #eaf7ff 100%);
     color: #1c3d5a;
     min-height: 100%;
     display: flex;
@@ -22,50 +22,52 @@
   }
   .back {
     position: fixed; top: 10px; left: 10px; z-index: 20;
-    background: #fff; border: none; border-radius: 16px;
+    background: #fffdf6; border: none; border-radius: 16px;
     padding: 10px 16px; font-size: 16px; font-weight: bold; color: #1c3d5a;
-    box-shadow: 0 3px 0 #a9cfe6; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15); cursor: pointer;
   }
-  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #a9cfe6; }
+  .back:active { transform: translateY(2px); box-shadow: 0 2px 6px rgba(40,90,150,.15); }
   .wrap { width: 100%; max-width: 460px; padding: 58px 12px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-  h1 { margin: 0; font-size: 26px; text-align: center; letter-spacing: .5px; }
-  h1 small { display:block; font-size: 14px; font-weight: normal; opacity:.75; margin-top:2px;}
+  h1 { margin: 0; font-size: 27px; text-align: center; letter-spacing: .5px; text-shadow: 0 2px 0 rgba(255,255,255,.7); }
+  h1 small { display:block; font-size: 14px; font-weight: normal; opacity:.75; margin-top:3px;}
 
   .scoreboard {
     display: flex; gap: 10px; width: 100%; justify-content: center;
   }
   .pcard {
-    flex: 1; background: #fff; border-radius: 18px; padding: 10px 8px; text-align: center;
-    box-shadow: 0 4px 0 #cbe6f5; border: 3px solid transparent; transition: border-color .2s, transform .2s;
+    flex: 1; background: #fffdf6; border-radius: 18px; padding: 10px 8px; text-align: center;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15); border: 3px solid transparent; transition: border-color .2s, transform .2s, box-shadow .2s;
   }
-  .pcard.p1 { color: #e0453a; }
-  .pcard.p2 { color: #2e73d8; }
-  .pcard.active { border-color: currentColor; transform: translateY(-3px); }
+  .pcard.p1 { color: #e8574a; }
+  .pcard.p2 { color: #3a7dd8; }
+  .pcard.active { border-color: currentColor; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(40,90,150,.22); }
   .pcard .name { font-size: 15px; font-weight: bold; }
-  .pcard .score { font-size: 30px; font-weight: 900; line-height: 1.1; }
-  .pcard .shots { font-size: 16px; letter-spacing: 2px; min-height: 20px; }
+  .pcard .score { font-size: 32px; font-weight: 900; line-height: 1.1; }
+  .pcard .shots { font-size: 17px; letter-spacing: 2px; min-height: 22px; }
 
   .turnbar {
-    background: #fff; border-radius: 16px; padding: 10px 14px; text-align: center;
-    font-size: 17px; font-weight: bold; box-shadow: 0 4px 0 #cbe6f5; width: 100%;
+    background: #fffdf6; border-radius: 16px; padding: 11px 14px; text-align: center;
+    font-size: 17px; font-weight: bold; box-shadow: 0 4px 14px rgba(40,90,150,.15); width: 100%;
   }
-  .turnbar b.r1 { color:#e0453a } .turnbar b.r2 { color:#2e73d8 }
+  .turnbar b.r1 { color:#e8574a } .turnbar b.r2 { color:#3a7dd8 }
 
   canvas {
-    width: 100%; max-width: 436px; height: auto; border-radius: 18px;
-    background: linear-gradient(#8fd0ff 0%, #bff0d0 45%, #7ec86b 100%);
-    box-shadow: 0 6px 0 #7fb8d6; display: block;
+    width: 100%; max-width: 436px; aspect-ratio: 436 / 300; height: auto;
+    border-radius: 18px;
+    background: linear-gradient(#9fd9ff 0%, #bff0d0 45%, #6fbf62 100%);
+    box-shadow: 0 10px 24px rgba(40,90,150,.20); display: block;
   }
 
   .controls { display: flex; gap: 10px; width: 100%; }
   .zbtn {
-    flex: 1; border: none; border-radius: 16px; padding: 16px 4px; font-size: 22px;
-    font-weight: bold; background: #fff; color: #1c3d5a; box-shadow: 0 4px 0 #cbe6f5;
-    cursor: pointer; min-height: 56px;
+    flex: 1; border: none; border-radius: 16px; padding: 16px 4px; font-size: 24px;
+    font-weight: bold; background: #fffdf6; color: #1c3d5a;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15);
+    cursor: pointer; min-height: 58px;
   }
   .zbtn .lbl { display:block; font-size:12px; margin-top:2px; opacity:.7 }
-  .zbtn:active { transform: translateY(3px); box-shadow: 0 1px 0 #cbe6f5; }
-  .zbtn.chosen { background: #ffe08a; box-shadow: 0 4px 0 #e0b84a; }
+  .zbtn:active { transform: translateY(3px); box-shadow: 0 2px 6px rgba(40,90,150,.15); }
+  .zbtn.chosen { background: #ffcf3a; box-shadow: 0 4px 14px rgba(224,160,20,.35); }
   .zbtn:disabled { opacity: .5; }
 
   .hint { font-size: 14px; text-align:center; opacity:.8; min-height: 20px; }
@@ -76,17 +78,19 @@
   }
   .overlay.show { display: flex; }
   .endcard {
-    background: #fff; border-radius: 24px; padding: 28px 24px; text-align: center;
-    max-width: 360px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    background: #fffdf6; border-radius: 24px; padding: 28px 24px; text-align: center;
+    max-width: 360px; width: 100%; box-shadow: 0 14px 34px rgba(20,50,90,.35);
   }
-  .endcard .trophy { font-size: 64px; }
+  .endcard .trophy { font-size: 68px; }
   .endcard h2 { margin: 8px 0 4px; font-size: 26px; }
-  .endcard .fin { font-size: 20px; font-weight: bold; margin: 8px 0 16px; }
+  .endcard .fin { font-size: 22px; font-weight: bold; margin: 8px 0 16px; }
   .again {
     border: none; border-radius: 18px; padding: 16px 22px; font-size: 20px; font-weight: bold;
-    background: #34c26b; color: #fff; box-shadow: 0 5px 0 #229a51; cursor: pointer; min-height: 56px; width:100%;
+    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); color: #fff;
+    text-shadow: 0 1px 2px rgba(120,60,0,.35);
+    box-shadow: 0 5px 0 #d9821e, 0 8px 18px rgba(224,140,40,.35); cursor: pointer; min-height: 56px; width:100%;
   }
-  .again:active { transform: translateY(3px); box-shadow: 0 2px 0 #229a51; }
+  .again:active { transform: translateY(3px); box-shadow: 0 2px 0 #d9821e; }
 </style>
 </head>
 <body>
@@ -110,7 +114,7 @@
 
   <div class="turnbar" id="turnbar">Runde 1 · <b class="r1">Spieler 1</b> schiesst</div>
 
-  <canvas id="cv" width="436" height="300"></canvas>
+  <canvas id="cv"></canvas>
 
   <div class="hint" id="hint">Wähle deine Ecke: links, Mitte oder rechts.</div>
 
@@ -135,15 +139,23 @@
   "use strict";
   const cv = document.getElementById('cv');
   const ctx = cv.getContext('2d');
-  const W = cv.width, H = cv.height;
 
-  // Zonen-Positionen im Tor (Ballziel-X, Keeper-X)
-  const ZONES = [
-    { x: W*0.30 }, // links
-    { x: W*0.50 }, // mitte
-    { x: W*0.70 }  // rechts
-  ];
-  const GOAL_Y = 92; // Höhe der Ballruhelage im Tor
+  /* --- Scharfes DPR-Rendering: Backing-Store = CSS-Groesse x dpr (Cap 3) --- */
+  let W = 436, H = 300; /* CSS-Pixel, bei resize aktualisiert */
+  function setupCanvas(){
+    const rect = cv.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 3);
+    W = rect.width  || 436;
+    H = rect.height || (W * 300 / 436);
+    cv.width  = Math.max(1, Math.round(W * dpr));
+    cv.height = Math.max(1, Math.round(H * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener('resize', function(){ setupCanvas(); render(); });
+
+  /* Spielkoordinaten als Anteile der CSS-Groesse (skalieren sauber mit) */
+  const ZONE_UX = [0.30, 0.50, 0.70]; /* links, mitte, rechts */
+  const GOAL_UY = 0.31;               /* Ballruhelage im Tor */
 
   // Spielzustand
   let scores, shotLog, round, shooter, phase, chosenZone, keeperZone, anim, message;
@@ -159,6 +171,7 @@
     chosenZone = -1;
     keeperZone = -1;
     message = '';
+    particles = [];
     stopAnim();
     updateUI();
     render();
@@ -212,54 +225,206 @@
   }
 
   // ---- Zeichnen ----
-  let ball = { x: W*0.5, y: H-40, r: 13 };
-  let keeper = { x: W*0.5, y: GOAL_Y+34 };
+  /* Positionen in Anteilen (ux/uy), Radius als Anteil von W */
+  let ball = { ux: 0.5, uy: 0.867, ur: 0.030 };
+  let keeper = { ux: 0.5, uy: GOAL_UY + 0.113 };
+  let particles = []; /* Jubel-Konfetti */
 
   function render(){
     ctx.clearRect(0,0,W,H);
     drawField();
     drawGoal();
-    drawKeeper(keeper.x, keeper.y);
-    drawBall(ball.x, ball.y, ball.r);
+    drawKeeper(keeper.ux*W, keeper.uy*H);
+    drawShooter();
+    drawBall(ball.ux*W, ball.uy*H, ball.ur*W);
+    drawParticles();
   }
 
   function drawField(){
-    // Rasenlinien
-    ctx.strokeStyle = 'rgba(255,255,255,0.5)';
-    ctx.lineWidth = 3;
-    // Strafraum
-    ctx.strokeRect(W*0.12, GOAL_Y+52, W*0.76, H-GOAL_Y-90);
-    // Elfmeterpunkt
+    /* Himmel */
+    const sky = ctx.createLinearGradient(0, 0, 0, H*0.42);
+    sky.addColorStop(0, '#8ecff7');
+    sky.addColorStop(1, '#d4efff');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, H*0.42);
+    /* Rasen-Verlauf */
+    const grass = ctx.createLinearGradient(0, H*0.28, 0, H);
+    grass.addColorStop(0, '#93d47e');
+    grass.addColorStop(0.5, '#79c468');
+    grass.addColorStop(1, '#57ae4f');
+    ctx.fillStyle = grass;
+    ctx.fillRect(0, H*0.28, W, H*0.72);
+    /* Maehstreifen mit Perspektive */
+    ctx.fillStyle = 'rgba(255,255,255,0.09)';
+    let y = H*0.30, hh = H*0.045, k = 0;
+    while(y < H){
+      if(k % 2 === 0) ctx.fillRect(0, y, W, hh);
+      y += hh; hh *= 1.3; k++;
+    }
+    /* Strafraum */
+    ctx.strokeStyle = 'rgba(255,255,255,0.8)';
+    ctx.lineWidth = Math.max(2, W*0.007);
+    ctx.strokeRect(W*0.12, H*0.48, W*0.76, H*0.393);
+    /* Elfmeterpunkt */
     ctx.fillStyle = '#fff';
-    ctx.beginPath(); ctx.arc(W*0.5, H-46, 3, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(W*0.5, H*0.847, Math.max(2.5, W*0.008), 0, 7); ctx.fill();
   }
 
   function drawGoal(){
-    const gx = W*0.16, gw = W*0.68, gy = 30, gh = 70;
-    // Netz
-    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    const gx = W*0.16, gw = W*0.68, gy = H*0.10, gh = H*0.233;
+    /* Schatten des Tors auf dem Rasen */
+    ctx.fillStyle = 'rgba(30,80,40,0.13)';
+    ctx.beginPath();
+    ctx.ellipse(gx+gw/2, gy+gh+H*0.012, gw*0.54, H*0.018, 0, 0, 7);
+    ctx.fill();
+    /* Netz-Flaeche */
+    ctx.fillStyle = 'rgba(255,255,255,0.28)';
     ctx.fillRect(gx, gy, gw, gh);
-    ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+    /* Netz-Muster: Rauten (diagonale Linien) */
+    ctx.save();
+    ctx.beginPath(); ctx.rect(gx, gy, gw, gh); ctx.clip();
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
     ctx.lineWidth = 1;
-    for(let x=gx; x<=gx+gw+1; x+=14){ ctx.beginPath(); ctx.moveTo(x,gy); ctx.lineTo(x,gy+gh); ctx.stroke(); }
-    for(let y=gy; y<=gy+gh+1; y+=14){ ctx.beginPath(); ctx.moveTo(gx,y); ctx.lineTo(gx+gw,y); ctx.stroke(); }
-    // Pfosten
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 7; ctx.lineJoin='round';
+    const step = Math.max(9, W*0.030);
+    for(let x = gx - gh; x <= gx + gw; x += step){
+      ctx.beginPath(); ctx.moveTo(x, gy); ctx.lineTo(x + gh, gy + gh); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x + gh, gy); ctx.lineTo(x, gy + gh); ctx.stroke();
+    }
+    ctx.restore();
+    /* Pfosten + Latte mit weicher Kontur */
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.strokeStyle = 'rgba(90,120,140,0.5)';
+    ctx.lineWidth = Math.max(6, W*0.020);
+    ctx.beginPath();
+    ctx.moveTo(gx, gy+gh); ctx.lineTo(gx, gy); ctx.lineTo(gx+gw, gy); ctx.lineTo(gx+gw, gy+gh);
+    ctx.stroke();
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = Math.max(4.5, W*0.015);
     ctx.beginPath();
     ctx.moveTo(gx, gy+gh); ctx.lineTo(gx, gy); ctx.lineTo(gx+gw, gy); ctx.lineTo(gx+gw, gy+gh);
     ctx.stroke();
   }
 
   function drawKeeper(x,y){
-    ctx.font = '38px serif';
+    /* Schatten unter dem Torwart */
+    ctx.fillStyle = 'rgba(20,60,30,0.18)';
+    ctx.beginPath();
+    ctx.ellipse(x, y + W*0.062, W*0.055, W*0.016, 0, 0, 7);
+    ctx.fill();
+    ctx.font = Math.round(W*0.115) + 'px "Segoe UI Emoji","Noto Color Emoji",serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText('🧤', x, y);
   }
 
+  function drawShooter(){
+    /* Schuetze steht schraeg hinter dem Ball (nur Deko) */
+    const x = W*0.345, y = H*0.905;
+    ctx.fillStyle = 'rgba(20,60,30,0.16)';
+    ctx.beginPath();
+    ctx.ellipse(x, y + W*0.055, W*0.048, W*0.014, 0, 0, 7);
+    ctx.fill();
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(-1, 1); /* Blick Richtung Ball */
+    ctx.font = Math.round(W*0.105) + 'px "Segoe UI Emoji","Noto Color Emoji",serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('🏃', 0, 0);
+    ctx.restore();
+  }
+
+  function pentagonPath(x, y, r, rot){
+    ctx.beginPath();
+    for(let i=0;i<5;i++){
+      const a = rot + i * Math.PI*2/5;
+      const px = x + Math.cos(a)*r, py = y + Math.sin(a)*r;
+      if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+    }
+    ctx.closePath();
+  }
+
   function drawBall(x,y,r){
-    ctx.font = (r*2)+'px serif';
-    ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillText('⚽', x, y);
+    /* Ball-Schatten */
+    ctx.fillStyle = 'rgba(20,60,30,0.22)';
+    ctx.beginPath();
+    ctx.ellipse(x, y + r*1.25, r*0.95, r*0.34, 0, 0, 7);
+    ctx.fill();
+    /* Kugel mit Schattierung */
+    const g = ctx.createRadialGradient(x - r*0.38, y - r*0.42, r*0.12, x, y, r*1.05);
+    g.addColorStop(0, '#ffffff');
+    g.addColorStop(0.65, '#f1f5f8');
+    g.addColorStop(1, '#b9c6d1');
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7);
+    ctx.fillStyle = g; ctx.fill();
+    ctx.strokeStyle = 'rgba(90,110,130,0.65)';
+    ctx.lineWidth = Math.max(1, r*0.09);
+    ctx.stroke();
+    /* Panel-Flecken (im Kreis geclippt) */
+    ctx.save();
+    ctx.beginPath(); ctx.arc(x, y, r*0.96, 0, 7); ctx.clip();
+    ctx.fillStyle = '#2e3d4a';
+    pentagonPath(x, y - r*0.05, r*0.34, -Math.PI/2); ctx.fill();
+    for(let i=0;i<5;i++){
+      const a = -Math.PI/2 + i * Math.PI*2/5 + Math.PI/5;
+      pentagonPath(x + Math.cos(a)*r*0.85, y + Math.sin(a)*r*0.85, r*0.22, a); ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  /* ---- Jubel-Konfetti ---- */
+  const CONF_COLORS = ['#ffcf3a','#ff8c2a','#e8574a','#3a7dd8','#7ac96b','#ffffff'];
+  function spawnConfetti(x, y){
+    particles = [];
+    for(let i=0;i<42;i++){
+      const a = Math.random()*Math.PI*2;
+      const sp = (0.4 + Math.random()*1.1) * W*0.012;
+      particles.push({
+        x: x + (Math.random()-0.5)*W*0.10,
+        y: y + (Math.random()-0.5)*H*0.06,
+        vx: Math.cos(a)*sp,
+        vy: Math.sin(a)*sp - W*0.008,
+        rot: Math.random()*Math.PI,
+        vr: (Math.random()-0.5)*0.35,
+        s: W*(0.010 + Math.random()*0.012),
+        c: CONF_COLORS[i % CONF_COLORS.length],
+        life: 46 + Math.random()*14
+      });
+    }
+    let frames = 0;
+    function cstep(){
+      frames++;
+      let alive = false;
+      for(const p of particles){
+        p.x += p.vx; p.y += p.vy;
+        p.vy += W*0.0009;   /* Schwerkraft */
+        p.vx *= 0.985;
+        p.rot += p.vr;
+        p.life--;
+        if(p.life > 0) alive = true;
+      }
+      render();
+      if(alive && frames < 70){
+        anim = requestAnimationFrame(cstep);
+      } else {
+        anim = null;
+        particles = [];
+        render();
+      }
+    }
+    stopAnim();
+    anim = requestAnimationFrame(cstep);
+  }
+  function drawParticles(){
+    for(const p of particles){
+      if(p.life <= 0) continue;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life/22));
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.s/2, -p.s/3, p.s, p.s*0.66);
+      ctx.restore();
+    }
+    ctx.globalAlpha = 1;
   }
 
   // ---- Ablauf ----
@@ -277,18 +442,18 @@
   }
 
   function shoot(){
-    const targetX = ZONES[chosenZone].x;
-    const keeperTargetX = ZONES[keeperZone].x;
+    const targetUX = ZONE_UX[chosenZone];
+    const keeperTargetUX = ZONE_UX[keeperZone];
     const saved = (chosenZone === keeperZone);
 
     // Startwerte
-    ball.x = W*0.5; ball.y = H-40; ball.r = 13;
-    keeper.x = W*0.5; keeper.y = GOAL_Y+34;
+    ball.ux = 0.5; ball.uy = 0.867; ball.ur = 0.030;
+    keeper.ux = 0.5; keeper.uy = GOAL_UY + 0.113;
 
-    const startBallX = ball.x, startBallY = ball.y;
-    const endBallY = GOAL_Y + 6;
+    const startUX = ball.ux, startUY = ball.uy;
+    const endUY = GOAL_UY + 0.02;
     // Wenn gehalten, prallt Ball leicht ab (Endpunkt beim Keeper)
-    const endBallX = targetX;
+    const endUX = targetUX;
 
     let t = 0;
     const dur = 46; // frames
@@ -301,15 +466,14 @@
       // Keeper springt (leicht früher & schneller)
       const kp = Math.min(t/ (dur*0.72), 1);
       const ke = 1-Math.pow(1-kp,3);
-      keeper.x = W*0.5 + (keeperTargetX - W*0.5)*ke;
+      keeper.ux = 0.5 + (keeperTargetUX - 0.5)*ke;
 
       // Ball fliegt
-      ball.x = startBallX + (endBallX - startBallX)*ease;
-      ball.y = startBallY + (endBallY - startBallY)*ease;
-      ball.r = 13 - 5*ease; // wird kleiner (weiter weg)
+      ball.ux = startUX + (endUX - startUX)*ease;
+      ball.uy = startUY + (endUY - startUY)*ease;
+      ball.ur = 0.030 - 0.0115*ease; // wird kleiner (weiter weg)
 
       render();
-      // kleiner Bogen-Schatten könnte hier, reicht so
 
       if(p < 1){
         anim = requestAnimationFrame(step);
@@ -331,6 +495,7 @@
       scores[shooter]++;
       shotLog[shooter].push('⚽');
       message = '⚽ TOOOR!';
+      spawnConfetti(ball.ux*W, ball.uy*H); /* Jubel! */
     }
     phase = 'shot';
     updateUI();
@@ -342,9 +507,11 @@
 
   function nextTurn(){
     chosenZone = -1; keeperZone = -1;
+    stopAnim();
+    particles = [];
     // Ball & Keeper zurück
-    ball.x = W*0.5; ball.y = H-40; ball.r = 13;
-    keeper.x = W*0.5; keeper.y = GOAL_Y+34;
+    ball.ux = 0.5; ball.uy = 0.867; ball.ur = 0.030;
+    keeper.ux = 0.5; keeper.uy = GOAL_UY + 0.113;
     render();
 
     // Reihenfolge: S1 R1, S2 R1, S1 R2, ...
@@ -403,6 +570,7 @@
     b.addEventListener('touchstart', handler, {passive:false});
   }
 
+  setupCanvas();
   reset();
 })();
 </script>

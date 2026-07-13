@@ -10,7 +10,7 @@
   html, body { margin: 0; padding: 0; height: 100%; }
   body {
     font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
-    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    background: linear-gradient(160deg, #bce6ff 0%, #dff2ff 55%, #eaf7ff 100%);
     color: #234;
     min-height: 100%;
     display: flex;
@@ -22,47 +22,48 @@
   }
   #back {
     position: fixed; top: 12px; left: 12px; z-index: 20;
-    background: #fff; color: #2a6ea6; border: none;
+    background: #fffdf6; color: #2a6ea6; border: none;
     border-radius: 16px; padding: 10px 16px; font-size: 16px; font-weight: bold;
-    min-height: 46px; box-shadow: 0 3px 0 #a9d4ef; cursor: pointer;
+    min-height: 46px; box-shadow: 0 4px 14px rgba(40,90,150,.15); cursor: pointer;
   }
-  #back:active { transform: translateY(2px); box-shadow: 0 1px 0 #a9d4ef; }
+  #back:active { transform: translateY(2px); box-shadow: 0 2px 6px rgba(40,90,150,.15); }
   .wrap { width: 100%; max-width: 480px; padding: 68px 16px 24px; display: flex; flex-direction: column; align-items: center; }
   h1 { font-size: 30px; margin: 0 0 4px; color: #1b5e8a; text-shadow: 0 2px 0 #fff; }
   .sub { font-size: 15px; color: #4a7ba0; margin: 0 0 14px; text-align: center; }
 
   .scores { display: flex; gap: 12px; width: 100%; margin-bottom: 14px; }
   .pcard {
-    flex: 1; background: #fff; border-radius: 18px; padding: 10px 8px; text-align: center;
-    box-shadow: 0 4px 0 rgba(120,160,200,.25); border: 3px solid transparent; transition: border-color .2s, transform .2s;
+    flex: 1; background: #fffdf6; border-radius: 18px; padding: 10px 8px; text-align: center;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15); border: 3px solid transparent; transition: border-color .2s, transform .2s, box-shadow .2s;
   }
   .pcard .name { font-size: 15px; font-weight: bold; }
-  .pcard .pts { font-size: 26px; font-weight: bold; }
-  .p1 .name { color: #e8622c; } .p1 .pts { color: #e8622c; }
-  .p2 .name { color: #7a3fd0; } .p2 .pts { color: #7a3fd0; }
-  .pcard.active { transform: translateY(-3px); }
-  .p1.active { border-color: #f4a06f; }
-  .p2.active { border-color: #b78ff0; }
+  .pcard .pts { font-size: 28px; font-weight: 900; }
+  .p1 .name { color: #e8574a; } .p1 .pts { color: #e8574a; }
+  .p2 .name { color: #3a7dd8; } .p2 .pts { color: #3a7dd8; }
+  .pcard.active { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(40,90,150,.22); }
+  .p1.active { border-color: #e8574a; }
+  .p2.active { border-color: #3a7dd8; }
 
   .turn { font-size: 19px; font-weight: bold; margin-bottom: 10px; min-height: 26px; text-align:center; }
   .round { font-size: 14px; color: #5a86a8; margin-bottom: 12px; }
 
   .cardrow { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
   .card {
-    width: 118px; height: 168px; border-radius: 16px; background: #fff;
-    box-shadow: 0 6px 0 rgba(120,160,200,.35);
+    width: 124px; height: 176px; border-radius: 16px; background: #fffdf6;
+    box-shadow: 0 8px 18px rgba(40,90,150,.20), inset 0 0 0 1px rgba(120,160,200,.18);
     display: flex; flex-direction: column; justify-content: space-between; padding: 8px 10px;
     position: relative;
   }
   .card.back {
-    background: repeating-linear-gradient(45deg, #7fb8e6, #7fb8e6 10px, #6aa9db 10px, #6aa9db 20px);
+    background: repeating-linear-gradient(45deg, #5b9be6, #5b9be6 10px, #3a7dd8 10px, #3a7dd8 20px);
     color: #fff;
+    box-shadow: 0 8px 18px rgba(40,90,150,.25), inset 0 0 0 4px rgba(255,255,255,.55);
   }
-  .card .corner { font-size: 20px; font-weight: bold; line-height: 1; }
+  .card .corner { font-size: 22px; font-weight: 900; line-height: 1; }
   .card .corner.br { align-self: flex-end; transform: rotate(180deg); }
-  .card .mid { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 52px; }
-  .card .qmark { position:absolute; top:50%; left:50%; transform: translate(-50%,-50%); font-size:60px; color:#fff; }
-  .red { color: #d1345b; } .blk { color: #2a3b4c; }
+  .card .mid { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 58px; text-shadow: 0 2px 3px rgba(40,90,150,.12); }
+  .card .qmark { position:absolute; top:50%; left:50%; transform: translate(-50%,-50%); font-size:64px; color:#fff; text-shadow: 0 2px 6px rgba(20,50,90,.3); }
+  .red { color: #e8574a; } .blk { color: #2a3b4c; }
 
   .arrow { font-size: 30px; color: #4a7ba0; }
   .anim-up { animation: floatUp .4s ease; }
@@ -72,16 +73,18 @@
 
   .buttons { display: flex; gap: 12px; width: 100%; margin-top: 14px; }
   .btn {
-    flex: 1; border: none; border-radius: 18px; padding: 16px 8px; font-size: 19px; font-weight: bold;
-    color: #fff; min-height: 60px; cursor: pointer; box-shadow: 0 5px 0 rgba(0,0,0,.15);
+    flex: 1; border: none; border-radius: 18px; padding: 16px 8px; font-size: 20px; font-weight: bold;
+    color: #fff; min-height: 62px; cursor: pointer;
+    box-shadow: 0 5px 0 rgba(0,0,0,.16), 0 8px 18px rgba(40,90,150,.18);
+    text-shadow: 0 1px 2px rgba(0,0,0,.18);
   }
-  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,.15); }
+  .btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0,0,0,.16); }
   .btn.higher { background: linear-gradient(#5bc47a, #3faa60); }
-  .btn.lower  { background: linear-gradient(#f28e5b, #e26a35); }
+  .btn.lower  { background: linear-gradient(#ffcf3a, #ff8c2a); }
   .btn:disabled { opacity: .45; }
 
-  .feedback { font-size: 20px; font-weight: bold; min-height: 28px; margin-top: 14px; text-align: center; }
-  .ok { color: #2fa85a; } .bad { color: #d1345b; }
+  .feedback { font-size: 21px; font-weight: bold; min-height: 28px; margin-top: 14px; text-align: center; }
+  .ok { color: #2fa85a; } .bad { color: #e8574a; }
 
   /* Endscreen */
   .overlay {
@@ -90,10 +93,10 @@
   }
   .overlay.show { display: flex; }
   .modal {
-    background: #fff; border-radius: 24px; padding: 26px 22px; text-align: center; max-width: 360px; width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    background: #fffdf6; border-radius: 24px; padding: 26px 22px; text-align: center; max-width: 360px; width: 100%;
+    box-shadow: 0 14px 34px rgba(20,50,90,.35);
   }
-  .modal .big { font-size: 40px; margin-bottom: 6px; }
+  .modal .big { font-size: 52px; margin-bottom: 6px; }
   .modal h2 { margin: 6px 0; font-size: 26px; color: #1b5e8a; }
   .modal .res { font-size: 18px; margin: 8px 0 18px; color: #456; }
   .btn.again { background: linear-gradient(#5aa9e6, #3b86c9); }
@@ -108,17 +111,17 @@
 
   <div class="scores">
     <div class="pcard p1" id="pc1">
-      <div class="name">🟠 Spieler 1</div>
+      <div class="name">🔴 Spieler 1</div>
       <div class="pts" id="pts1">0</div>
     </div>
     <div class="pcard p2" id="pc2">
-      <div class="name">🟣 Spieler 2</div>
+      <div class="name">🔵 Spieler 2</div>
       <div class="pts" id="pts2">0</div>
     </div>
   </div>
 
   <div class="round" id="round">Runde 1 von 10</div>
-  <div class="turn" id="turn">🟠 Spieler 1 ist dran</div>
+  <div class="turn" id="turn">🔴 Spieler 1 ist dran</div>
 
   <div class="cardrow">
     <div class="card" id="curCard">
@@ -210,9 +213,9 @@
 
   function updateHud(){
     roundEl.textContent = "Runde " + state.round + " von " + TOTAL_ROUNDS;
-    var who = state.turn === 1 ? "🟠 Spieler 1" : "🟣 Spieler 2";
+    var who = state.turn === 1 ? "🔴 Spieler 1" : "🔵 Spieler 2";
     turnEl.textContent = who + " ist dran";
-    turnEl.style.color = state.turn === 1 ? "#e8622c" : "#7a3fd0";
+    turnEl.style.color = state.turn === 1 ? "#e8574a" : "#3a7dd8";
     pc1.classList.toggle("active", state.turn===1);
     pc2.classList.toggle("active", state.turn===2);
   }
@@ -286,8 +289,8 @@
     } else {
       var winner = s1 > s2 ? 1 : 2;
       emoji = "🏆";
-      title = (winner===1 ? "🟠 Spieler 1" : "🟣 Spieler 2") + " gewinnt!";
-      res = "🟠 " + s1 + " : " + s2 + " 🟣";
+      title = (winner===1 ? "🔴 Spieler 1" : "🔵 Spieler 2") + " gewinnt!";
+      res = "🔴 " + s1 + " : " + s2 + " 🔵";
     }
     el("endEmoji").textContent = emoji;
     el("endTitle").textContent = title;
