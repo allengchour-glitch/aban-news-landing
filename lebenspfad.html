@@ -244,7 +244,6 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
     <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
-  <button class="btn" id="miniBtn" style="margin-top:8px;background:linear-gradient(135deg,#ff9ac0,#ffca7a)" onclick="location.href='/minispiele/'">🎮 Minispiele (20 · zu zweit)</button>
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
@@ -3906,7 +3905,7 @@ function handleField(p,f){
     }
     var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
     var humans=G.players.filter(function(pp){return !pp.bot;}).length;
-    if(!NET.on&&humans>=2&&Math.random()<0.55){ // 🎮 Bonus-Minispiel (nur lokal, nur echte Menschen)
+    if(!NET.on&&humans>=2&&Math.random()<0.9){ /* 🎮 Bonus-Minispiel fast immer anbieten — Minispiele leben jetzt IM Spiel (User-Wunsch), nur lokal + echte Menschen */
       mOpts.push({l:"🎮 Bonus-Minispiel!",sub:"zu zweit spielen · danach +2 ❤️ für ALLE",fn:function(){
         openMiniGame(function(){G.players.forEach(function(pp){if(!pp.dead)pp.glueck+=2;});
           announce("🎮 Bonus-Runde! +2 ❤️ für alle","#ff9ad9");p.bio.push("forderte alle zu einem Minispiel heraus");endTurnSoon();});}});}
@@ -3924,7 +3923,17 @@ function handleField(p,f){
     beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
   if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");floatStat("+2 ❤️","#ff9ad9",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
   if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");floatStat("+2 🧠","#7db8ff",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
-  if(f.type==="f"){var fb=2+((p.fam&&p.fam.dog&&srand()<0.5)?1:0);p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
+  if(f.type==="f"){var fb=2+((p.fam&&p.fam.dog&&srand()<0.5)?1:0);
+    var humansF=G.players.filter(function(pp){return !pp.bot;}).length;
+    if(!NET.on&&humansF>=2&&Math.random()<0.3){ /* 🎮 Freundschafts-Duell: gelegentliches Minispiel auf dem Freunde-Feld */
+      p.freunde+=fb;
+      showCard("Freunde-Feld","🎮 Freundschafts-Duell?","Deine Freunde fordern dich zu einem kleinen Spiel heraus!",[
+        {l:"🎮 Los geht's!",sub:"Minispiel zu zweit · danach +2 👥 fuer ALLE",fn:function(){
+          openMiniGame(function(){G.players.forEach(function(pp){if(!pp.dead)pp.freunde+=2;});
+            announce("🎮 Duell vorbei! +2 👥 fuer alle","#8affc0");endTurnSoon();});}},
+        {l:"Lieber weiterziehen ▶",sub:"+"+fb+" 👥 wie gewohnt",fn:function(){endTurnSoon();}}]);
+      floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);return;}
+    p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
     announce("+"+fb+" 👥"+(fb>2?" (🐕 wedelt!)":""),"#8affc0");floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,8);
     beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
   if(f.type==="q"){quizCard(p);return;} // ❓ Quiz-Karte
