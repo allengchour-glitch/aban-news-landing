@@ -949,7 +949,7 @@ document.getElementById("edSell").onclick=function(){
   if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
@@ -964,7 +964,7 @@ function loadSnapshot(sn){
     applyFurn(sn.au.id,sn.au.x+mx9,sn.au.y+my9,0);}
   if(sn.hu&&!haustier)applyFurn("hund",sn.hu.x+mx9,sn.hu.y+my9,0);
   if(sn.qb!==undefined){questBusy=!!sn.qb;if(questBusy)buergermeisterPending=true;}
-  if(sn.we)setWetter(sn.we);applySaison();
+  if(sn.we)setWetter(sn.we);applySaison();if(sn.tq!==undefined)teamIdx=sn.tq;
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
   if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
@@ -993,6 +993,7 @@ function onNetMsg(m){
   else if(m.t==="kochBoost"&&mpHost)kochApply(m.s);
   else if(m.t==="tanzBoost"&&mpHost)tanzApply(m.s);
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
+  else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
   else if(m.t==="steer"&&mpHost){if(sims[1])sims[1].netSteer={x:m.x,z:m.z,t:performance.now()};}
   else if(m.t==="wachs"&&!mpHost){m.a.forEach(function(e9){
     for(var i9=0;i9<furn.length;i9++){var f9=furn[i9];
@@ -1032,7 +1033,7 @@ document.getElementById("piGift").onclick=function(){partnerAct("gift");};
 document.getElementById("piDance").onclick=function(){partnerAct("dance");};
 function meinSi(){return (MPs&&!mpHost)?1:0;}
 var EMOTES=[["😍","liebe"],["❤️","herz"],["👋","winken"],["😂","lachen"],["🎉","party"],["👍","daumen"],["😮","wow"],["🧡","danke"]];
-function doEmote(k){
+function doEmote(k){window._emoteCount=(window._emoteCount||0)+1;
   var si=meinSi(),s9=sims[si];if(!s9)return;
   simEmoji(s9,k);
   if(k==="❤️"||k==="😍")hearts(s9.x,s9.z);
@@ -1463,6 +1464,30 @@ function checkQuest(){
   if(questBusy||questIdx>=QUESTS.length)return;
   if(QUESTS[questIdx][4]()){questBusy=true;buergermeisterPending=true;npcTimer=Math.min(npcTimer,3);
     hint("📜 Auftrag erfüllt! Der Bürgermeister ist unterwegs …");}}
+// ---- Koop-Team-Aufgaben (viele, rotierend, gemeinsame Ziele) ----
+var teamIdx=0,teamBasis=null;
+var TEAMQ=[
+ ["🛋️","Richtet euer Zuhause ein: stellt zusammen 12 Möbel auf",300,function(){return stats.moebelGekauft;},12],
+ ["🍳","Kocht als Team 2 perfekte Menüs",350,function(){return stats.kochPerfekt||0;},2],
+ ["🎣","Fangt gemeinsam 5 Fische",300,function(){return stats.fische||0;},5],
+ ["💃","Legt 2 perfekte Tanz-Sessions hin",300,function(){return stats.tanzPerfekt||0;},2],
+ ["🥕","Fahrt zusammen 6 Ernten ein",400,function(){return stats.ernten;},6],
+ ["😮","Macht 10 Emotes zusammen",200,function(){return window._emoteCount||0;},10],
+ ["💰","Verdient als Paar 4000 § dazu",500,function(){return teamBasis===null?0:Math.max(0,geld-teamBasis+ (window._teamGeldBonus||0));},4000],
+ ["🎖️","Erfüllt 3 Stadt-Aufträge",600,function(){return stats.quests||0;},3]];
+function teamProg(){var q=TEAMQ[teamIdx%TEAMQ.length];return Math.min(q[4],q[3]());}
+function teamTxt(){var q=TEAMQ[teamIdx%TEAMQ.length];return q[0]+" "+q[1]+"  ("+teamProg()+"/"+q[4]+")  → +"+q[2]+" §";}
+function checkTeamQ(){
+  if(!MPs||!mpHost)return; // nur echte Koop-Runde, Host prüft
+  var q=TEAMQ[teamIdx%TEAMQ.length];
+  if(teamBasis===null&&teamIdx===0)teamBasis=geld;
+  if(q[3]()>=q[4]){
+    geld+=q[2];window._teamGeldBonus=(window._teamGeldBonus||0)+q[2];
+    teamIdx++;teamBasis=geld;
+    hint("🤝 Team-Aufgabe geschafft! +"+q[2]+" § — Neu: "+teamTxt());
+    netSend({t:"teamq",i:teamIdx});
+    beep(700,.1,"triangle",.06);setTimeout(function(){beep(980,.14,"triangle",.07);},130);}}
+
 var NPC_DEFS={
  postbote:{farbe:{skin:0xf0c090,hair:0x3a2a1a,top:0xf0c33a,bottom:0x3a4a6a,dress:false,longHair:false},speed:2.6},
  nachbarin:{farbe:{skin:0xffd9b8,hair:0xd8d8e0,top:0x8a5aa0,bottom:0x8a5aa0,dress:true,longHair:false},speed:1.6},
@@ -1996,7 +2021,7 @@ document.getElementById("achBtn").onclick=function(){
     d3.style.cssText="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:"+(ok3?"#f0f8e8":"#f5f2ea")+";opacity:"+(ok3?"1":"0.55");
     d3.innerHTML="<span style='font-size:1.4rem'>"+(ok3?a3[1]:"🔒")+"</span><span><b>"+a3[2]+"</b><br><small style='color:#8a7a5a'>"+a3[3]+"</small></span>"+(ok3?"<span style='margin-left:auto;color:#5ab86a;font-weight:800'>✓</span>":"");
     lst.appendChild(d3);});
-  document.getElementById("questTxt").innerHTML="📜 <b>Stadt-Auftrag:</b> "+questTxt();
+  document.getElementById("questTxt").innerHTML=(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt();
   var w2=hausWert();
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" § · "+done+"/"+ACH.length;
   document.getElementById("achPanel").style.display="flex";};
@@ -2220,7 +2245,7 @@ function loop(now){
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
-    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();}
+    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();}
       if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});
         netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten,st:stats,ac:achDone});
