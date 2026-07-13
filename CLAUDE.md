@@ -71,6 +71,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    /tmp/meta_page_token + IG-ID /tmp/meta_ig_id (Seite 1049840534888592, IG 17841480560863361).
    Erster Auto-Post: instagram.com/reel/DagJ_sgDjT_. ⚠️ Vor Post prüfen, dass das beworbene
    Produkt noch ACTIVE ist (Klimaanlagen-Reel-Falle: Queue bewarb gedraftete Ware → skip).
+   **⛔ DOPPELPOST-BUG behoben (2026-07-12, User musste IG-Doppelpost löschen):** `meta_reel_post.mjs`
+   markierte die Zeile erst GANZ AM ENDE (nach ~4-Min-IG-Poll + FB-Upload) als posted → stirbt der
+   Container in diesem Fenster (passiert hier ständig!) oder feuert ein 2. Cron, postet der nächste Lauf
+   denselben `ready`-Reel nochmal = Doppelpost (steht NICHT im Ledger, weil im ungeschützten Fenster
+   entstanden). Fix: (1) Lockfile /tmp/meta_reel_post.lock (O_EXCL) gegen parallele Läufe, (2) Zeile SOFORT
+   nach IG-media_publish auf `posted-ig-fb` schreiben (VOR dem langsamen FB-Schritt), (3) Claim als
+   `posting` vor dem Post, (4) Stale-`posting`→`posting-unklar-pruefen` statt Re-Post. Regel: Bei
+   Post-Automaten IMMER erst claimen/committen, DANN die Nebenwirkung — nie umgekehrt.
 11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO
    (Video-Generierung, ~CHF 3–8/Clip)** — CHF 46 in 6 Tagen. Regel: Veo NUR für einzelne
    Hero-/Kampagnen-Clips (max ~CHF 10 pro Anlass), NIE in Loops/Massenproduktion — tägliche

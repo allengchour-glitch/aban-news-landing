@@ -44,10 +44,36 @@ function parseCsv(text) {
 }
 const esc = s => /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 
+// ── Lock gegen parallele Läufe (GEHIRN 10: Doppelpost-Verbot) ──
+const LOCK = '/tmp/meta_reel_post.lock';
+if (!DRY) {
+  try {
+    const fd = fs.openSync(LOCK, 'wx');           // O_EXCL: schlägt fehl wenn Lock existiert
+    fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd);
+  } catch {
+    const age = fs.existsSync(LOCK) ? (Date.now() - fs.statSync(LOCK).mtimeMs) / 60000 : 999;
+    if (age < 20) { console.log(`Lock aktiv (${age.toFixed(1)}min) → anderer Lauf postet, skip.`); process.exit(0); }
+    fs.writeFileSync(LOCK, String(process.pid));    // veralteter Lock (>20min) → übernehmen
+  }
+}
+const releaseLock = () => { try { if (!DRY) fs.unlinkSync(LOCK); } catch {} };
+process.on('exit', releaseLock);
+
 const rows = parseCsv(fs.readFileSync(CSV, 'utf8'));
 const head = rows[0];
 const idx = Object.fromEntries(head.map((h, i) => [h.trim(), i]));
 const today = new Date().toISOString().slice(0, 10);
+const writeLedger = () => fs.writeFileSync(CSV, rows.map(r => r.map(esc).join(',')).join('\n') + '\n');
+
+// Stale-Recovery: hängengebliebene 'posting'-Zeilen (>30min ohne Abschluss) NICHT neu posten —
+// sie könnten live sein (Post-vor-Commit-Fenster). Auf 'posting-unklar' setzen für manuelle Prüfung.
+for (const r of rows.slice(1)) {
+  if ((r[idx.status] || '').trim() === 'posting') {
+    const t = Date.parse(r[idx.posted_at] || '') || 0;
+    if (Date.now() - t > 30 * 60000) { r[idx.status] = 'posting-unklar-pruefen'; }
+  }
+}
+if (!DRY) writeLedger();
 
 // Kadenz-Wache: letzter IG-Post aus dem Ledger
 let lastPosted = 0;
@@ -71,28 +97,40 @@ const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice
 console.log(`Post: ${id}\n  Video: ${url.slice(0, 90)}\n  Caption: ${text.slice(0, 100)}…`);
 if (DRY) { console.log('[DRY] würde jetzt IG-Reel + FB-Video posten.'); process.exit(0); }
 
+// ── CLAIM: Zeile SOFORT als 'posting' markieren + Ledger schreiben, BEVOR gepostet wird.
+//    Schließt das «Post-vor-Commit»-Fenster: stirbt der Prozess jetzt, steht die Zeile auf
+//    'posting' (nicht mehr 'ready') → kein zweiter Lauf postet denselben Reel erneut.
+cand[idx.status] = 'posting';
+cand[idx.posted_at] = new Date().toISOString();
+writeLedger();
+
 let igPermalink = '';
 // 1) Instagram Reel
 const c = await api(`${IG}/media`, { media_type: 'REELS', video_url: url, caption: text, share_to_feed: 'true' });
-if (!c.id) { console.error('IG-Container-Fehler:', JSON.stringify(c).slice(0, 300)); process.exit(1); }
+if (!c.id) { console.error('IG-Container-Fehler:', JSON.stringify(c).slice(0, 300)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
 for (let a = 0; a < 30; a++) {
   await sleep(8000);
   const st = await api(`${c.id}`, { fields: 'status_code' }, 'GET');
   if (st.status_code === 'FINISHED') break;
-  if (st.status_code === 'ERROR') { console.error('IG-Verarbeitung fehlgeschlagen:', JSON.stringify(st).slice(0, 200)); process.exit(1); }
+  if (st.status_code === 'ERROR') { console.error('IG-Verarbeitung fehlgeschlagen:', JSON.stringify(st).slice(0, 200)); cand[idx.status] = 'ready'; writeLedger(); process.exit(1); }
 }
 const pub = await api(`${IG}/media_publish`, { creation_id: c.id });
 if (pub.id) {
+  // ✅ IG ist LIVE → SOFORT committen (vor dem langsamen FB-Schritt), sonst droht Re-Post bei Abbruch.
+  cand[idx.status] = 'posted-ig-fb';
+  cand[idx.posted_at] = new Date().toISOString();
+  cand[idx.post_url] = pub.id;
+  writeLedger();
   const perma = await api(`${pub.id}`, { fields: 'permalink' }, 'GET');
   igPermalink = perma.permalink || pub.id;
+  cand[idx.post_url] = igPermalink; writeLedger();
   console.log('✅ Instagram-Reel live:', igPermalink);
-} else { console.error('IG-Publish-Fehler:', JSON.stringify(pub).slice(0, 300)); process.exit(1); }
-// 2) Facebook-Seitenvideo
+} else {
+  // Publish fehlgeschlagen (kein IG-Post entstanden) → zurück auf ready
+  console.error('IG-Publish-Fehler:', JSON.stringify(pub).slice(0, 300));
+  cand[idx.status] = 'ready'; cand[idx.posted_at] = ''; writeLedger(); process.exit(1);
+}
+// 2) Facebook-Seitenvideo (best effort — Ledger ist bereits committet, FB-Fehler löst KEINEN Re-Post aus)
 const fb = await api(`${FB}/videos`, { file_url: url, description: text });
-console.log(fb.id ? `✅ Facebook-Video live: ${fb.id}` : `FB-Fehler (IG war ok): ${JSON.stringify(fb).slice(0, 200)}`);
-// 3) Ledger
-cand[idx.status] = 'posted-ig-fb';
-cand[idx.posted_at] = new Date().toISOString();
-cand[idx.post_url] = igPermalink;
-fs.writeFileSync(CSV, rows.map(r => r.map(esc).join(',')).join('\n') + '\n');
+console.log(fb.id ? `✅ Facebook-Video live: ${fb.id}` : `FB-Fehler (IG war ok, Ledger committet): ${JSON.stringify(fb).slice(0, 200)}`);
 console.log('Ledger aktualisiert →', id, 'posted-ig-fb');
