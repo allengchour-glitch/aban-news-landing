@@ -489,24 +489,24 @@ var fields=[];
     if(TSPECIAL[i])ty=TSPECIAL[i];
     var p=pathPts[i];
     var rr0=ty==="m"?2.7:2.0,sg0=ty==="m"?36:32; // runde Scheiben (mehr Segmente = saubere Ränder auch bei Zoom)
-    var yoff=(i%3)*0.04; /* Hoehen-Staffelung: eng benachbarte Felder ueberlappen in Kurven -> ohne Versatz Z-Fighting (Pixel-Flimmern an der Schnittkante) */
+    var yoff=0,vparts=[]; /* Hoehen kommen aus dem Ueberlapp-Pass unten (nur wo sich Felder wirklich beruehren) */
     var blob=new THREE.Mesh(new THREE.CircleGeometry(rr0+0.7,sg0),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
     blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.03,p.z);scene.add(blob);
     var sock=new THREE.Mesh(new THREE.CylinderGeometry(rr0+0.22,rr0+0.35,0.34,sg0),mat(0xffffff,0xf0f0f0,0.06)); // weißer Plastik-Sockel
-    sock.position.set(p.x,0.17+yoff,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
+    sock.position.set(p.x,0.17+yoff,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);vparts.push(sock);
     // Deckel bewusst mit Luft über dem Sockel (0.34) -> KEINE koplanaren Flächen mehr = kein Z-Fighting-Flimmern am Feldrand
     var disc=new THREE.Mesh(new THREE.CylinderGeometry(rr0,rr0+0.08,0.26,sg0),mat(FTYPE_COL[ty],FTYPE_COL[ty],ty==="e"?0.1:0.32)); // satter Farbdeckel
     disc.material.polygonOffset=true;disc.material.polygonOffsetFactor=-1;disc.material.polygonOffsetUnits=-2;
-    disc.position.set(p.x,0.5+yoff,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
+    disc.position.set(p.x,0.5+yoff,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);vparts.push(disc);
     if(ty!=="m"&&ty!=="e"){var trg=new THREE.Mesh(new THREE.TorusGeometry(rr0+0.12,0.09,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
-      trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6+yoff,p.z);scene.add(trg);}
+      trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6+yoff,p.z);scene.add(trg);vparts.push(trg);}
     if(ty==="m"){ // Gold-Ring + Fähnchen
       var gr=new THREE.Mesh(new THREE.TorusGeometry(2.9,0.14,8,24),mat(0xffb84a,0xffb84a,0.7));
-      gr.rotation.x=Math.PI/2;gr.position.set(p.x,0.62+yoff,p.z);scene.add(gr);
+      gr.rotation.x=Math.PI/2;gr.position.set(p.x,0.62+yoff,p.z);scene.add(gr);vparts.push(gr);
       var fp2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,5),mat(0xf0e8d8));fp2.position.set(p.x+1.9,1.55,p.z-1.4);scene.add(fp2);
       var fl2=new THREE.Mesh(new THREE.PlaneGeometry(1.1,0.7),new THREE.MeshBasicMaterial({color:CHAPTERS[Math.min(7,Math.ceil(i/FIELDS_PER))].accent,side:THREE.DoubleSide}));
       fl2.position.set(p.x+2.45,2.5,p.z-1.4);scene.add(fl2);}
-    fields.push({x:p.x,z:p.z,type:ty,disc:disc});
+    fields.push({x:p.x,z:p.z,type:ty,disc:disc,vparts:vparts,rsock:rr0+0.35,yoff:0});
     // Verbindungsstege
     if(i>0){var q=pathPts[i-1],mx=(p.x+q.x)/2,mz=(p.z+q.z)/2,len=Math.hypot(p.x-q.x,p.z-q.z);
       var steps=Math.max(2,Math.floor(len/2.2)); // Trittsteine statt Steg
@@ -529,7 +529,7 @@ var fields=[];
       var p=fk.pts[j];
       var blob=new THREE.Mesh(new THREE.CircleGeometry(2.0,30),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
       blob.rotation.x=-Math.PI/2;blob.position.set(p.x,0.03,p.z);scene.add(blob);
-      var yoff2=0.02+(j%3)*0.04; /* wie Hauptpfad: Staffelung gegen Z-Fighting, +0.02 damit Neben-Route nie exakt auf Hauptpfad-Hoehe liegt */
+      var yoff2=0,vparts2=[];
       var sock=new THREE.Mesh(new THREE.CylinderGeometry(1.62,1.75,0.34,30),mat(0xffffff,0xf0f0f0,0.06));
       sock.position.set(p.x,0.17+yoff2,p.z);sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
       var disc=new THREE.Mesh(new THREE.CylinderGeometry(1.45,1.53,0.26,30),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.32));
@@ -537,7 +537,8 @@ var fields=[];
       disc.position.set(p.x,0.5+yoff2,p.z);disc.receiveShadow=true;disc.castShadow=true;scene.add(disc);
       var trg=new THREE.Mesh(new THREE.TorusGeometry(1.57,0.08,6,22),mat(FTYPE_COL[ty],FTYPE_COL[ty],0.55));
       trg.rotation.x=Math.PI/2;trg.position.set(p.x,0.6+yoff2,p.z);scene.add(trg);
-      fields.push({x:p.x,z:p.z,type:ty,disc:disc,mchap:mch,prog:fk.at+(fk.rejoin-fk.at)*(j+1)/(fk.types.length+1)});
+      vparts2.push(sock,disc,trg);
+      fields.push({x:p.x,z:p.z,type:ty,disc:disc,vparts:vparts2,rsock:1.75,yoff:0,mchap:mch,prog:fk.at+(fk.rejoin-fk.at)*(j+1)/(fk.types.length+1)});
       var idx=fields.length-1;
       if(j===0)first=idx;else fields[idxPrev].nxt=idx;
       idxPrev=idx;stones(prev,p);prev=p;});
@@ -554,6 +555,23 @@ var fields=[];
       var pl=new THREE.Mesh(new THREE.PlaneGeometry(2.4,0.45),new THREE.MeshBasicMaterial({map:crispTex(cv),side:THREE.DoubleSide}));
       pl.position.set(pathPts[fk.at].x+1.8,sg[1],pathPts[fk.at].z-1.8);pl.rotation.y=0.4+si*0.5;scene.add(pl);});
   });
+})();
+// 🔧 Ueberlapp-Pass gegen Feld-Flimmern: wo sich zwei Feld-Sockel BERUEHREN (Kurven/Kreuzungen),
+// wird das spaetere Feld angehoben, bis sich alle Beruehrenden um >=0.045 in der Hoehe unterscheiden.
+// Ersetzt die alte %3-Staffelung, die bei Kreuzungen gleicher Restklasse weiter flimmerte (User-Report).
+(function(){
+  function lift(f,ny){var dy=ny-(f.yoff||0);if(!dy)return;f.yoff=ny;
+    if(f.vparts)f.vparts.forEach(function(m){m.position.y+=dy;});}
+  for(var i=1;i<fields.length;i++){var a=fields[i],guard=0;
+    while(guard++<12){
+      var hit=null;
+      for(var j=0;j<i;j++){var b=fields[j];
+        var lim=(a.rsock||1.75)+(b.rsock||1.75),dx=a.x-b.x,dz=a.z-b.z;
+        if(dx*dx+dz*dz>=lim*lim)continue;
+        if(Math.abs((a.yoff||0)-(b.yoff||0))<0.04){hit=b;break;}}
+      if(!hit)break;
+      lift(a,(hit.yoff||0)+0.045);
+    }}
 })();
 // Regenbogen über der Brettmitte + Sonne (Spielzeug-Himmel)
 (function(){
@@ -2742,6 +2760,14 @@ window.__lp={
   pan:function(x,z){panOff.x=x||0;panOff.z=z||0;panning=false;return panOff;},
   zoom:function(z){if(z!==undefined)zoomK=Math.max(0.6,Math.min(1.9,z));return zoomK;},
   state:function(){return G;},fieldIcons:function(){return fieldSprites.length;},
+  zfight:function(){ /* Test-Only: kleinster Hoehen-Abstand aller sich beruehrenden Feld-Paare */
+    var worst=99,pair=null;
+    for(var i=1;i<fields.length;i++)for(var j=0;j<i;j++){var a=fields[i],b=fields[j];
+      var lim=(a.rsock||1.75)+(b.rsock||1.75),dx=a.x-b.x,dz=a.z-b.z;
+      if(dx*dx+dz*dz>=lim*lim)continue;
+      var d=Math.abs((a.yoff||0)-(b.yoff||0));
+      if(d<worst){worst=d;pair=[i,j];}}
+    return {touchingWorstDy:worst===99?null:+worst.toFixed(3),pair:pair,maxLift:Math.max.apply(null,fields.map(function(f){return f.yoff||0;}))};},
   snap:function(t){if(!G||!G.players[G.turn])return null;var pi=G.turn;
     var M={wedding:["💍","Hochzeit"],car:["🚗","Auto"],house:["🏠","Haus"],kid:["👶","Kind"],dog:["🐕","Hund"],fork:["🧭","Weggabelung"]},m=M[t]||["📸","Testmoment"];
     snap(pi,m[0],m[1]);return G.players[pi].album.length;},
