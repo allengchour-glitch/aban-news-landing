@@ -27,6 +27,7 @@ canvas{display:block}
 .small{font-size:.85rem;color:#6a8aa8;margin-top:14px}.small a{color:#4a7ab0}
 #hud{position:fixed;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:10;gap:8px;flex-wrap:wrap}
 .panel{background:rgba(255,253,248,.92);border:2px solid rgba(120,110,80,.2);border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 4px 14px rgba(60,40,10,.15);pointer-events:auto}
+#geld{font-size:1.25rem;font-weight:900;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border-color:#e8b04a}
 #uhr{font-size:1rem}
 #geld{color:#b8860b}
 .needs{display:flex;flex-direction:column;gap:3px;font-size:.72rem;min-width:130px}
@@ -35,7 +36,8 @@ canvas{display:block}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
 @media (max-width:560px){
   #hud{top:8px;left:8px;right:8px;gap:6px}
-  #geld,#uhr{font-size:1.05rem;padding:9px 13px;font-weight:900}
+  #geld{font-size:1.25rem;padding:10px 15px;font-weight:900}
+  #uhr{font-size:1rem;padding:9px 13px;font-weight:900}
   .needs{font-size:.64rem;min-width:104px;gap:2px;padding:7px 9px}
   .needs .nbar{height:6px}
   #achBtn{width:46px;height:46px;font-size:1.2rem}
@@ -66,6 +68,8 @@ canvas{display:block}
 #micBtn.on{background:#e05a4a;color:#fff;animation:micp 1.2s infinite}
 #micBtn.muted{background:#8a8a92;color:#fff}
 @keyframes micp{0%,100%{box-shadow:0 6px 18px rgba(224,90,74,.4)}50%{box-shadow:0 6px 26px rgba(224,90,74,.85)}}
+@keyframes rotwig{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+@media (max-width:900px) and (orientation:portrait){#rotHint{display:flex !important}}
 #emoteBar{position:fixed;right:10px;bottom:calc(122px + env(safe-area-inset-bottom));z-index:22;display:none;flex-direction:column;gap:6px}
 #emoteBar button{width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
 #emoteBar button:active{transform:scale(.9)}
@@ -113,6 +117,11 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="palette">
   <div id="palCats"></div>
   <div id="palItems"></div>
+</div>
+<div id="rotHint" style="position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(30,25,20,.92);color:#fff;text-align:center;padding:24px;font-size:1.1rem">
+  <div style="font-size:3rem;animation:rotwig 1.5s infinite">📱↻</div>
+  <div style="margin-top:14px;font-weight:800">Dreh dein Handy quer!</div>
+  <div style="margin-top:6px;opacity:.8;font-size:.9rem">Im Querformat spielt sich Traumhaus am besten 🏡</div>
 </div>
 <div id="hint"></div>
 <div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:16px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
