@@ -266,6 +266,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="scores"></div>
   <div id="endAch" style="margin:10px 0"></div>
   <div id="bio"></div>
+  <button class="btn ghost" id="shareEndBtn" style="border-color:#7db88a;color:#2a7d46">📲 Ergebnis teilen</button>
   <button class="btn" id="newBtn">Neues Leben ▶</button>
   <button class="btn" id="rematchBtn" style="display:none">🔁 Neue Online-Runde ▶</button>
   <button class="btn ghost" id="shareBtn">📖 Biografie teilen</button>
@@ -2110,6 +2111,19 @@ function showEnd(){
     d.innerHTML="<div style='font-size:.72rem;color:#9aa0aa;font-weight:800;margin-bottom:2px'>"+badge+" Platz</div>"+
       "<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(rank===0?"👑 ":""))+p.name+"</b>"+r.s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>"+goalTxt;
     sc.appendChild(d);});
+  // 📲 Ergebnis teilen (System-Share/Zwischenablage) — bringt neue Mitspieler
+  (function(){var sb=document.getElementById("shareEndBtn");if(!sb)return;
+    var MED=["🥇","🥈","🥉","4."];
+    var lines=ranked.map(function(r,i2){return MED[Math.min(3,i2)]+" "+r.p.name+" — "+r.s+" Lebenspunkte";});
+    var txt="🎲 Wir haben LEBENSPFAD gespielt!\n"+lines.join("\n")+"\nSpiel mit: https://abannews.com/lebenspfad.html";
+    sb.onclick=function(){
+      if(navigator.share){navigator.share({title:"Lebenspfad — Endstand",text:txt}).catch(function(){});}
+      else{try{navigator.clipboard.writeText(txt);}catch(e){}
+        sb.textContent="✓ Kopiert!";setTimeout(function(){sb.textContent="📲 Ergebnis teilen";},1600);}};})();
+  // 🤖 Robo kommentiert das Ergebnis
+  (function(){var bIdx=-1;G.players.forEach(function(pp,i2){if(pp.bot)bIdx=i2;});
+    if(bIdx<0)return;var bRank=ranked.findIndex(function(r){return r.p===G.players[bIdx];});
+    setTimeout(function(){chatAdd&&chatAdd("Robo 🤖",bRank===0?"Berechnung korrekt: Ich gewinne! 😎":(bRank===ranked.length-1?"Systemfehler … Rechenfehler … gratuliere. 🤖💔":"Gut gespielt! Nächstes Mal optimiere ich meine Würfel-Algorithmen."));},1800);})();
   var rankedP=ranked.map(function(r){return r.p;}); // gleiche Reihenfolge für die Chronik unten
   // Lebens-Chronik: Kurvenverlauf aller Werte pro Spieler
   var bio=document.getElementById("bio");bio.innerHTML="";
@@ -2641,6 +2655,7 @@ camera.position.set(fields[0].x,22,fields[0].z+24);camera.lookAt(fields[0].x,0,f
 // ===================== Debug-Hook (nur für Tests; kein Gameplay-Einfluss) =====================
 window.__lp={
   openMini:function(cb){openMiniGame(cb);},closeMini:function(){closeMiniGame();},
+  end:function(){showEnd();return 1;}, // Test-Only
   chapter:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
     G.players[G.turn].tile=n*FIELDS_PER;placePawn(G.turn);agePawn(G.turn,false);updChapter();updPlayers();return chapterOf(G.players[G.turn].tile);},
   birthday:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
