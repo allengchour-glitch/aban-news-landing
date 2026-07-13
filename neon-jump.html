@@ -539,10 +539,12 @@ function renderLvlSel(){var el=document.getElementById("lvlSel");if(!el)return;e
     b.innerHTML=(i+1)+"<br><small style='font-weight:600'>"+L.name+"</small>"+(lvlStars(i)?"<br>"+lvlStars(i):"");
     b.onclick=function(){curLvl=i;try{localStorage.setItem("nj_lvl",String(i));}catch(e){}renderLvlSel();};
     el.appendChild(b);});}
-function startGame(coop){coopMode=("ontouchstart"in window&&!coop)?false:coop;
+function startGame(coop){
+  coopMode=IS_MOBILE?false:coop; // 📱 Handy: IMMER Solo mit Touch-Zonen (Tastatur-Koop ergab dort KEINE Steuerung)
   resetRun();running=true;
   document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
-  if("ontouchstart"in window&&!coopMode)touchEl.style.display="block";musSync();}
+  if(IS_MOBILE)touchEl.style.display="block";
+  musSync();}
 function showBest(){var b=bestT();document.getElementById("best2").textContent=b>0?("🏆 Beste Zeit L1: "+b+"s"):"";}
 function finish(win){running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.style.display="none";var _wp=document.getElementById("waitP");if(_wp)_wp.classList.add("hide");
   if(win){for(var gi=0;gi<FXC.goal.length;gi++)spawnRing(goalX,goalY+1,FXC.goal[gi],0.7,4+gi*1.1);} // Ziel: bunter Feier-Puls
@@ -561,6 +563,9 @@ function finish(win){running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.s
   document.getElementById("over").classList.remove("hide");beep(win?880:90,.4,win?"triangle":"sawtooth",.1);}
 document.getElementById("startBtn").onclick=function(){startGame(true);};
 document.getElementById("soloBtn").onclick=function(){startGame(false);};
+if(IS_MOBILE){ // 📱 klare Beschriftung: auf dem Handy gibt es (noch) nur Solo mit Tipp-Zonen
+  document.getElementById("startBtn").textContent="🏃 Los geht's ▶";
+  document.getElementById("soloBtn").style.display="none";}
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Jump 🤝 Level "+(curLvl+1)+" in "+Math.floor(elapsed)+"s, "+coins+" Münzen\nGratis spielen: abannews.com/neon-jump.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 function overlaps(ax,ay,bx,by,bw2,bh2){return Math.abs(ax-bx)<HW+bw2 && Math.abs(ay-by)<HH+bh2;}
 // ---- Hauptschleife ----
