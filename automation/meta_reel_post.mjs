@@ -87,11 +87,23 @@ if (lastPosted && (Date.now() - lastPosted) < MIN_GAP_H * 3600000) {
   process.exit(0);
 }
 
-// Nächste fällige Zeile: ready + instagram-Plattform + fällig
+// ⛔ INHALTS-SPERRE (GEHIRN 10, «darf kein Doppelpost mehr passieren»): jedes je gepostete Video
+//    (Basename der URL, plattform-übergreifend) merken → nie zweimal posten, auch wenn es in einer
+//    zweiten ready-Zeile steht oder der Status-Flow mal durcheinanderkam.
+const vkey = u => (u || '').split('?')[0].split('/').pop().toLowerCase();
+const postedVideos = new Set();
+for (const r of rows.slice(1)) {
+  const st = (r[idx.status] || '').trim();
+  if (st.startsWith('posted') || st === 'posting') { const k = vkey(r[idx.video_url]); if (k) postedVideos.add(k); }
+}
+// Nächste fällige Zeile: ready + instagram + fällig + Video noch NIE gepostet
 const cand = rows.slice(1).find(r => (r[idx.status] || '').trim() === 'ready'
   && /instagram/i.test(r[idx.platforms] || '')
-  && (r[idx.scheduled_date] || '9999') <= today);
-if (!cand) { console.log('Nichts fällig (kein ready+instagram+due).'); process.exit(0); }
+  && (r[idx.scheduled_date] || '9999') <= today
+  && !postedVideos.has(vkey(r[idx.video_url])));
+if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
+// Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger)
+if (postedVideos.has(vkey(cand[idx.video_url]))) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
 const [id, , url, caption, tags] = [cand[idx.id], 0, cand[idx.video_url], cand[idx.caption], cand[idx.hashtags]];
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 12).join(' ')}`;
 console.log(`Post: ${id}\n  Video: ${url.slice(0, 90)}\n  Caption: ${text.slice(0, 100)}…`);

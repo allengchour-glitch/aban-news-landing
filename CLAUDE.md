@@ -79,6 +79,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    nach IG-media_publish auf `posted-ig-fb` schreiben (VOR dem langsamen FB-Schritt), (3) Claim als
    `posting` vor dem Post, (4) Stale-`posting`→`posting-unklar-pruefen` statt Re-Post. Regel: Bei
    Post-Automaten IMMER erst claimen/committen, DANN die Nebenwirkung — nie umgekehrt.
+   **⛔ VERSCHÄRFT (User 2026-07-14 «darf kein doppelpost mehr passieren»):** 3. Schicht = INHALTS-SPERRE.
+   meta_reel_post.mjs baut ein Set aller je geposteten Video-Basenames (aus posted*/posting-Zeilen,
+   plattformübergreifend) und (a) wählt nur ready-Zeilen mit NIE gepostetem Video, (b) hat einen harten
+   Stopp direkt vorm Post, falls das Video schon im Set ist. Damit kann dasselbe Video nie zweimal raus —
+   auch nicht wenn es in 2 Queue-Zeilen steht oder der Status-Flow durcheinanderkam. Lock+Claim+Inhalts-Sperre.
 11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO
    (Video-Generierung, ~CHF 3–8/Clip)** — CHF 46 in 6 Tagen. Regel: Veo NUR für einzelne
    Hero-/Kampagnen-Clips (max ~CHF 10 pro Anlass), NIE in Loops/Massenproduktion — tägliche
