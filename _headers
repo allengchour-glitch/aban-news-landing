@@ -29,7 +29,7 @@
 
 # HTML: kürzer cachen (Inhalt kann sich ändern)
 /*.html
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: public, max-age=300, must-revalidate
 
 # Index
 /
