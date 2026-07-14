@@ -83,6 +83,17 @@ canvas{display:block}
 
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
+<script>/* 🚑 Robust-Loader: r128-FileLoader (Stream-Reader) scheitert auf manchen Geraeten hinter dem
+   Service Worker mit 'Failed to fetch' (User-Diagnose Android/Brave). GLB selbst per fetch holen
+   und direkt parsen — bei Fehler faellt es auf den alten Weg zurueck. */
+(function(){if(!(window.THREE&&THREE.GLTFLoader))return;
+  var _origLoad=THREE.GLTFLoader.prototype.load;
+  THREE.GLTFLoader.prototype.load=function(url,onLoad,onProgress,onError){var self=this;
+    fetch(url,{cache:"force-cache"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.arrayBuffer();})
+    .then(function(buf){self.parse(buf,url.slice(0,url.lastIndexOf("/")+1),onLoad,function(pe){if(onError)onError(pe);});})
+    .catch(function(e){try{_origLoad.call(self,url,onLoad,onProgress,onError);}catch(e2){if(onError)onError(e2);}});
+  };})();
+</script>
 <script>
 (function(){
 "use strict";
