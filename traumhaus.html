@@ -746,6 +746,7 @@ var ACH=[
  ["langfinger","🤏","Langfinger","3 erfolgreiche Taschendiebstähle",function(){return (stats.diebstahl||0)>=3;}],
  ["autodieb","🚗","Autodieb","Ein fahrendes Auto geklaut",function(){return (stats.autosGeklaut||0)>=1;}],
  ["fluchtprofi","🏁","Fluchtprofi","Der Polizei entkommen",function(){return (stats.entkommen||0)>=1;}],
+ ["umlackierer","🎨","Umlackierer","Auto in der Einfahrt versteckt (Fahndung getilgt)",function(){return (stats.lackiert||0)>=1;}],
  ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
@@ -1428,11 +1429,17 @@ function aussteigen(){
     a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);}
   else if(driveGeklaut&&a.route){ // geklautes Auto zurück in den Verkehr
     a.pos=a.route.axis==="x"?a.mesh.position.x:a.mesh.position.z;}
+  // Pay'n'Spray: Auto auf dem eigenen Grundstück abstellen = umlackiert → Fahndung fällt
+  var aufGrund=Math.abs(a.mesh.position.x)<GW*CS/2&&Math.abs(a.mesh.position.z)<GH*CS/2;
+  var lackiert=false;
+  if(wanted>0&&aufGrund){lackiert=true;stats.lackiert=(stats.lackiert||0)+1;
+    polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];wanted=0;updWantedHUD();
+    beep(300,.2,"sine",.05);setTimeout(function(){beep(500,.25,"sine",.06);},180);}
   driveCar=null;driveGeklaut=false;nitro=0;
   document.getElementById("exitCar").style.display="none";
   document.getElementById("nitroBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
-  hint("🚶 Ausgestiegen");}
+  hint(lackiert?"🎨 Auto umlackiert & versteckt — die Polizei hat die Spur verloren! 😎":"🚶 Ausgestiegen");}
 function autoFahr(dt){
   var a=driveCar||window.autoRec;if(!a){fahren=false;return;}
   var m=a.mesh;m.visible=true;
