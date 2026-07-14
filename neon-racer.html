@@ -2,6 +2,18 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>/* 🧹 SW-Kick: Eine alte Service-Worker-Version zerbricht auf manchen Geraeten die Modell-Downloads
+   (User-Diagnose: Header ok, Body scheitert). Spiel-Seiten brauchen keinen SW — abmelden und EINMAL
+   neu laden; spiele.html registriert bei Bedarf die reparierte v2 neu. */
+(function(){try{
+  if(navigator.serviceWorker&&navigator.serviceWorker.controller&&!sessionStorage.getItem("swKick")){
+    navigator.serviceWorker.getRegistrations().then(function(rs){
+      if(!rs.length)return;
+      Promise.all(rs.map(function(r){return r.unregister();})).then(function(){
+        sessionStorage.setItem("swKick","1");location.reload();});
+    });}
+}catch(e){}})();</script>
+
 <script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
 if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
 <meta name="robots" content="noindex">

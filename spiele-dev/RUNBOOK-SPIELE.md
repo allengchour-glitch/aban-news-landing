@@ -561,3 +561,28 @@ Nachbarskind-NPC, Sammlung/Streak, mehr Tapeten. NIE vergessen: ASCII-Anführung
 6. ✅ QUESTS (PR #1744): Bürgermeister-NPC + 7 Stadt-Aufträge (Pool→Beete→Fische→Auto→Hochzeit→Karriere→8000-§-Haus), Auftragskarte im 🏆-Panel. Offen: Nachbarskind-NPC
 Fallen: Anker-Kollisionen bei python-Patches (Funktionskopf-DUBLETTEN prüfen: grep 'function X.*function X'),
 skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x langsamer (Tests mit __CLK-Hook).
+
+## 🎓 Master-Lektionen 2026-07-14 (Charakterauswahl-Saga + Parallel-Session-Chaos)
+1. **SERVICE-WORKER-FALLE (3 Schichten, teuer gelernt):** sw.js (von spiele.html, Scope /) zerbrach auf
+   Android/Brave den BODY-Stream von MB-GLBs (clone/put in stale-while-revalidate) → GLTFLoader r128
+   'Failed to fetch', obwohl Header-Fetch 200 lieferte. Fixes (alle drin lassen!): (a) Robust-Loader-
+   Monkeypatch (fetch+parse statt FileLoader-Stream) in allen GLB-Spielen, (b) sw.js v2 fasst /models/
+   + /audio/ nicht an, (c) SW-Kick auf Spiel-Seiten (unregister + 1x reload, sessionStorage-Guard) —
+   nötig, weil alte SW-Version Clients kontrolliert, bis sie abgemeldet ist.
+2. **'Preload ok (200)' beweist NUR Header** — fuer Download-Diagnosen immer den Body lesen (arrayBuffer).
+3. **🩺 ?diag=1 in lebenspfad.html** = Live-Protokoll (Preload/Laden/Parsen/Swap + window.onerror capture=true
+   faengt auch Resource-Fehler). User-Screenshot davon loeste den Fall — Muster fuer andere Spiele kopierbar.
+4. **INHALTS-AUDIT-PFLICHT:** Parallel-Sessions machen WIP-Sweeps + checkout -B verwirft uncommitted Staende →
+   4 Fixes gingen still verloren (glWait, canWalk/addCollider, data-exp, netHud). Nach JEDEM Merge:
+   `git show HEAD | grep -c <Kernstueck>` UND nach Sync `grep <Kernstueck> <datei>` in origin/main.
+5. **NIE `git stash pop` ohne eigenen Stash** — fremder Session-Stash brachte Konflikte + revertete Dateien.
+6. **Charakter-GLBs frueh laden:** anime_*.glb standen hinter ~40 Deko-GLBs in der Request-Queue (Vorschau
+   'haengt') → Frueh-Preload als ALLERERSTE Anfrage (fetch priority:high, direkt nach lsGet-Helfern).
+7. **HTML-Cache 300s** (_headers): bei taeglichen Fixes sind 3600s zu lang — User testete immer alte Version.
+   Cache-Bust-Tipp fuer User: beliebiger ?query-Suffix.
+8. **Kamera-relative Steuerung:** Bewegungs-Input IMMER um camYaw drehen (camRel()), sonst 'Steuerung komisch'
+   nach Kamera-Drag; Dodge-Fallback = Blickrichtung VORWAERTS.
+9. **Pflaster auf Huegeln:** CircleGeometry hat nur Zentrum+Rand — fuer gelaende-anschmiegende Scheiben
+   radiale Ringe generieren (6-14 x 48) und JEDES Vertex auf groundH setzen.
+10. **Overlay-Zentrier-Bug:** flex justify-center + Overflow schneidet Titel unerreichbar ab →
+    justify-content:flex-start + ::before/::after-Federn (kurz zentriert, lang ab oben scrollbar).
