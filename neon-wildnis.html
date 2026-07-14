@@ -1066,10 +1066,19 @@ function roadRibbon(pts,width,cobble,normal){
 function layRoads(cx,cz,rr){
   // 🧱 GANZES Dorf gepflastert: grosse Kopfstein-Scheibe unter allem (Wege/Platz liegen als Detail obendrauf)
   if(rr){var cbAll=gtex("tex_cobble.png",0,true);cbAll.repeat.set(Math.max(2,rr/3.5),Math.max(2,rr/3.5));
-    var pg=new THREE.CircleGeometry(rr,48,0,6.283);pg.rotateX(-Math.PI/2);
-    var pp5=pg.attributes.position; // dem welligen Gelände anschmiegen (sonst stossen Hügel durch)
-    for(var pv=0;pv<pp5.count;pv++){var vx5=pp5.getX(pv),vz5=pp5.getZ(pv);pp5.setY(pv,groundH(cx+vx5,cz+vz5)+0.10);}
-    pg.computeVertexNormals();
+    /* Scheibe mit RADIALEN Ringen: CircleGeometry hat nur Zentrum+Rand -> auf Hügeln stiess das Gelände
+       mitten durch die flachen Dreiecke (User: 'auf dem hügel dorf sollte auch pflaster sein') */
+    var SEGp=48,RINGSp=Math.max(6,Math.min(14,Math.round(rr/4))),posP=[],uvP=[],idxP=[];
+    for(var rp=0;rp<=RINGSp;rp++){var radP=rr*rp/RINGSp;
+      for(var sp2=0;sp2<=SEGp;sp2++){var ap=sp2/SEGp*6.283185,xP=Math.cos(ap)*radP,zP=Math.sin(ap)*radP;
+        posP.push(xP,groundH(cx+xP,cz+zP)+0.10,zP);uvP.push(xP/7,zP/7);}}
+    for(var r2p=0;r2p<RINGSp;r2p++)for(var s2p=0;s2p<SEGp;s2p++){
+      var a0=r2p*(SEGp+1)+s2p,b0=a0+SEGp+1;
+      idxP.push(a0,b0,a0+1, a0+1,b0,b0+1);}
+    var pg=new THREE.BufferGeometry();
+    pg.setAttribute("position",new THREE.Float32BufferAttribute(posP,3));
+    pg.setAttribute("uv",new THREE.Float32BufferAttribute(uvP,2));
+    pg.setIndex(idxP);pg.computeVertexNormals();
     var pav=new THREE.Mesh(pg,new THREE.MeshLambertMaterial({map:cbAll}));
     pav.position.set(cx,0,cz);pav.receiveShadow=true;scene.add(pav);}
   var cobble=gtex("tex_cobble.png",0,true);cobble.repeat.set(1,1);
@@ -1087,6 +1096,9 @@ function layRoads(cx,cz,rr){
   // RUNDER Steinplatten-Platz im Zentrum (nicht eckig)
   var st=gtex("tex_stone.png",0,true);st.repeat.set(3,3);var stn=gtex("tex_stone_n.png",0,false);stn.repeat.set(3,3);
   var gp=new THREE.CircleGeometry(7.5,32);gp.rotateX(-Math.PI/2);
+  var gpp=gp.attributes.position; /* Platz schmiegt sich ans Gelände (Hügel-Dörfer) */
+  for(var gv=0;gv<gpp.count;gv++){var gx5=gpp.getX(gv),gz5=gpp.getZ(gv);gpp.setY(gv,groundH(cx+gx5,cz+gz5)-groundH(cx,cz)+0.0);}
+  gp.computeVertexNormals();
   var mp=new THREE.Mesh(gp,new THREE.MeshLambertMaterial({map:st}));
   mp.position.set(cx,groundH(cx,cz)+0.15,cz);mp.receiveShadow=true;scene.add(mp);
   // 🌸 Blumen-Kranz + Bänke rund um den Platz (mega schön)
@@ -2280,8 +2292,8 @@ function doDodge(){
   var mx=stickV.x,my=stickV.y;
   if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
   var l=Math.hypot(mx,my);
-  if(l>0.15){dodgeVX=-mx/l;dodgeVZ=-my/l;}
-  else{dodgeVX=-Math.sin(player.rotation.y);dodgeVZ=-Math.cos(player.rotation.y);}
+  if(l>0.15){var dcr=camRel(mx/l,my/l);dodgeVX=dcr.x;dodgeVZ=dcr.z;} /* kamera-relativ wie das Laufen */
+  else{dodgeVX=Math.sin(player.rotation.y);dodgeVZ=Math.cos(player.rotation.y);} /* im Stand: nach VORN rollen */
   dodgeT=0.26;dodgeCd=1.4;sfx(760,0.09,"triangle",0.04,260);
   if(heroRig)playOnce(heroRig,"run",2.6);
   burst(player.position.x,player.position.y+0.7,player.position.z,0x7de3ff,8);
@@ -2761,6 +2773,9 @@ document.getElementById("bMenu").onclick=function(){togglePause();};
 
 // ---------- Kamera ----------
 var camYaw=0,shake=0;
+function camRel(mx,my){ /* 🎮 Input -> Welt, relativ zur Kamera-Drehung (User: 'Steuerung komisch' nach Kamera-Drag) */
+  var cy=Math.cos(camYaw),sy=Math.sin(camYaw);
+  return {x:-mx*cy-my*sy, z:mx*sy-my*cy};}
 function updCamera(dt){
   // Aspekt-adaptiv: auf hohen Handys Spieler höher ins Bild (gelernt aus neon-realm)
   var asp=camera.aspect,nf=Math.max(0,Math.min(1,(0.7-asp)/0.17));
@@ -2933,13 +2948,14 @@ function frame(now){
   var ml=Math.hypot(mx,my);
   var moving=ml>0.15&&!dead;
   if(moving){
-    var spd=8+PERK.spd;var nx=player.position.x-mx/ml*spd*dt*Math.min(1,ml),nz=player.position.z-my/ml*spd*dt*Math.min(1,ml);
+    var spd=8+PERK.spd,cr=camRel(mx/ml,my/ml); /* vorwärts = Blickrichtung der Kamera */
+    var nx=player.position.x+cr.x*spd*dt*Math.min(1,ml),nz=player.position.z+cr.z*spd*dt*Math.min(1,ml);
     // Grenze
     nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
     // Struktur-Kollision (grob)
     var blocked=false;for(var i=0;i<structures.length;i++){var s=structures[i];if(s.type==="wand"&&Math.hypot(s.x-nx,s.z-nz)<1.6){blocked=true;break;}}
     if(!blocked){player.position.x=nx;player.position.z=nz;}
-    if(!buildMode)player.rotation.y=Math.atan2(-mx,-my);
+    if(!buildMode)player.rotation.y=Math.atan2(cr.x,cr.z);
     if(heroRig&&!ONESHOT[heroRig.cur])setAnim(heroRig,"walk",0.2,ml>0.9?1.3:1.0);
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
