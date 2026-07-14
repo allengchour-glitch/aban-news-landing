@@ -272,6 +272,19 @@ var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.heig
   try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
+// Kaminrauch aus mehreren Häusern (leichte aufsteigende Partikel)
+var rauchPunkte=[[-38.9,-30,7.9],[10,-30,7.6],[46,-33,8.5],[-40,30,8],[8,32,8.8]];
+var rauchGeo=new THREE.BufferGeometry(),rauchN=rauchPunkte.length*8,rauchPos=new Float32Array(rauchN*3),rauchBase=[];
+for(var rp=0;rp<rauchPunkte.length;rp++)for(var rq=0;rq<8;rq++){var idx=(rp*8+rq)*3;
+  rauchPos[idx]=rauchPunkte[rp][0]+(Math.random()-0.5);rauchPos[idx+1]=rauchPunkte[rp][2]+rq*0.6;rauchPos[idx+2]=rauchPunkte[rp][1]+(Math.random()-0.5);
+  rauchBase.push({x:rauchPunkte[rp][0],y:rauchPunkte[rp][2],z:rauchPunkte[rp][1],off:rq*0.6});}
+rauchGeo.setAttribute("position",new THREE.BufferAttribute(rauchPos,3));
+var rauch=new THREE.Points(rauchGeo,new THREE.PointsMaterial({color:0xcccccc,size:0.9,transparent:true,opacity:0.35,depthWrite:false}));
+rauch.frustumCulled=false;scene.add(rauch);
+function updRauch(dt){var pp=rauchGeo.attributes.position.array;
+  for(var i=0;i<rauchBase.length;i++){var b=rauchBase[i];b.off+=dt*0.5;if(b.off>5)b.off=0;
+    pp[i*3]=b.x+Math.sin(b.off*1.5)*0.5;pp[i*3+1]=b.y+b.off;pp[i*3+2]=b.z;}
+  rauchGeo.attributes.position.needsUpdate=true;}
 ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.material.needsUpdate=true;});
 // ---- Open-World-Landschaft rundherum ----
 (function landschaft(){
@@ -596,12 +609,23 @@ setTimeout(function baueFussg(){
       dir:i%2?1:-1,speed:1.1+(i%4)*0.35,walkT:i*2});}
 },0);
 function updFussg(dt,now){
+  var panik=(typeof wanted!=="undefined"&&wanted>0);
   fussg.forEach(function(p){
-    p.x+=p.dir*p.speed*dt;p.walkT+=dt*7*p.speed;
+    var spd=p.speed*(panik?2.6:1);
+    p.x+=p.dir*spd*dt;p.walkT+=dt*7*spd;
     if(p.x>66){p.dir=-1;}if(p.x<-66){p.dir=1;}
-    p.mesh.position.set(p.x,0,p.z);p.mesh.rotation.y=p.dir>0?Math.PI/2:-Math.PI/2;
-    var ud=p.mesh.userData;if(ud&&ud.ll){var sw=Math.sin(p.walkT);
-      ud.ll.rotation.x=sw*0.55;ud.rl.rotation.x=-sw*0.55;ud.la.rotation.x=-sw*0.4;ud.ra.rotation.x=sw*0.4;}});}
+    if(panik&&!p._schreck&&Math.random()<0.02){p._schreck=true;fgEmoji(p,"😱");}
+    if(!panik)p._schreck=false;
+    p.mesh.position.set(p.x,panik?Math.abs(Math.sin(p.walkT))*0.08:0,p.z);p.mesh.rotation.y=p.dir>0?Math.PI/2:-Math.PI/2;
+    var ud=p.mesh.userData;if(ud&&ud.ll){var sw=Math.sin(p.walkT);var amp=panik?0.9:0.55;
+      ud.ll.rotation.x=sw*amp;ud.rl.rotation.x=-sw*amp;ud.la.rotation.x=-sw*(amp-0.15);ud.ra.rotation.x=sw*(amp-0.15);
+      if(panik){ud.la.rotation.x-=1.5;ud.ra.rotation.x-=1.5;}}});}
+function fgEmoji(p,txt){
+  var cv=document.createElement("canvas");cv.width=cv.height=48;var c=cv.getContext("2d");
+  c.font="34px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(txt,24,26);
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+  sp.scale.set(0.5,0.5,1);sp.position.y=2.1;p.mesh.add(sp);
+  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},1600);}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -2441,7 +2465,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
