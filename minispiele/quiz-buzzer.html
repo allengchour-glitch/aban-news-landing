@@ -10,7 +10,7 @@
   html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
   body {
     font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
-    background: linear-gradient(180deg, #bce6ff 0%, #eaf7ff 100%);
+    background: linear-gradient(160deg, #bce6ff 0%, #dff2ff 55%, #eaf7ff 100%);
     color: #23405e;
     min-height: 100%;
     display: flex;
@@ -22,11 +22,11 @@
   }
   .back {
     position: fixed; top: 10px; left: 10px; z-index: 20;
-    background: #fff; border: none; border-radius: 14px;
+    background: #fffdf6; border: none; border-radius: 16px;
     padding: 10px 16px; font-size: 16px; font-weight: bold; color: #2b6cb0;
-    box-shadow: 0 3px 0 #b7d8ef; cursor: pointer; min-height: 46px;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15); cursor: pointer; min-height: 46px;
   }
-  .back:active { transform: translateY(2px); box-shadow: 0 1px 0 #b7d8ef; }
+  .back:active { transform: translateY(2px); box-shadow: 0 2px 6px rgba(40,90,150,.15); }
   .wrap { width: 100%; max-width: 480px; padding: 64px 14px 24px; }
   h1 { text-align: center; font-size: 30px; margin: 4px 0 2px; color: #1e5a8a; }
   h1 .e { font-size: 34px; }
@@ -34,20 +34,21 @@
 
   .scores { display: flex; gap: 10px; margin-bottom: 12px; }
   .score {
-    flex: 1; background: #fff; border-radius: 18px; padding: 10px 8px; text-align: center;
-    box-shadow: 0 4px 0 #d3e9f7; border: 3px solid transparent;
+    flex: 1; background: #fffdf6; border-radius: 18px; padding: 10px 8px; text-align: center;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15); border: 3px solid transparent;
+    transition: transform .15s;
   }
-  .score.p1 { border-color: #ffb3c1; }
-  .score.p2 { border-color: #ffe08a; }
+  .score.p1 { border-color: #f5b5ad; }
+  .score.p2 { border-color: #b0cdf2; }
   .score .name { font-weight: bold; font-size: 15px; }
-  .score .pts { font-size: 26px; font-weight: bold; }
-  .p1 .pts { color: #e5527a; }
-  .p2 .pts { color: #e0a400; }
-  .score.active { transform: scale(1.05); box-shadow: 0 6px 0 #b7d8ef; }
+  .score .pts { font-size: 28px; font-weight: bold; }
+  .p1 .pts { color: #e8574a; }
+  .p2 .pts { color: #3a7dd8; }
+  .score.active { transform: scale(1.05); box-shadow: 0 6px 18px rgba(40,90,150,.25); }
 
   .card {
-    background: #fff; border-radius: 22px; padding: 18px 16px 20px;
-    box-shadow: 0 8px 0 #cfe7f6; margin-bottom: 14px;
+    background: #fffdf6; border-radius: 20px; padding: 18px 16px 20px;
+    box-shadow: 0 4px 14px rgba(40,90,150,.15); margin-bottom: 14px;
   }
   .qnum { text-align: center; color: #7aa0bd; font-weight: bold; font-size: 14px; margin-bottom: 6px; }
   .question { text-align: center; font-size: 21px; font-weight: bold; line-height: 1.3; min-height: 62px;
@@ -57,24 +58,25 @@
   .buzzer {
     flex: 1; border: none; border-radius: 20px; color: #fff; font-weight: bold;
     font-size: 19px; padding: 26px 8px; cursor: pointer; min-height: 90px;
-    box-shadow: 0 7px 0 rgba(0,0,0,.18); line-height: 1.25;
+    box-shadow: 0 7px 0 rgba(0,0,0,.18), 0 10px 20px rgba(40,90,150,.2); line-height: 1.25;
+    text-shadow: 0 1px 2px rgba(0,0,0,.2);
   }
-  .buzzer:active { transform: translateY(3px); box-shadow: 0 4px 0 rgba(0,0,0,.18); }
-  .buzzer.b1 { background: linear-gradient(180deg,#ff8fab,#f2557e); }
-  .buzzer.b2 { background: linear-gradient(180deg,#ffd469,#efb32e); }
+  .buzzer:active { transform: translateY(3px); box-shadow: 0 4px 0 rgba(0,0,0,.18), 0 6px 12px rgba(40,90,150,.15); }
+  .buzzer.b1 { background: linear-gradient(180deg,#ff8a7d,#e8574a); }
+  .buzzer.b2 { background: linear-gradient(180deg,#7fb0ec,#3a7dd8); }
   .buzzer:disabled { opacity: .45; filter: grayscale(.3); }
-  .buzzer .big { font-size: 30px; display: block; }
+  .buzzer .big { font-size: 34px; display: block; text-shadow: none; }
 
   .answers { display: none; flex-direction: column; gap: 10px; }
   .answers.show { display: flex; }
   .ans {
-    border: none; border-radius: 16px; background: #eef6fc; color: #23405e;
+    border: none; border-radius: 16px; background: #fffdf6; color: #23405e;
     font-size: 18px; font-weight: bold; padding: 16px 14px; cursor: pointer;
-    min-height: 46px; box-shadow: 0 4px 0 #d3e9f7; text-align: center;
+    min-height: 46px; box-shadow: 0 4px 14px rgba(40,90,150,.15); text-align: center;
   }
-  .ans:active { transform: translateY(2px); box-shadow: 0 2px 0 #d3e9f7; }
-  .ans.correct { background: #9be6a8; box-shadow: 0 4px 0 #6cc57c; }
-  .ans.wrong { background: #ffb0a8; box-shadow: 0 4px 0 #e07a70; }
+  .ans:active { transform: translateY(2px); box-shadow: 0 2px 6px rgba(40,90,150,.15); }
+  .ans.correct { background: #9be6a8; box-shadow: 0 4px 14px rgba(46,140,80,.3); }
+  .ans.wrong { background: #ffb0a8; box-shadow: 0 4px 14px rgba(200,80,70,.3); }
 
   .status { text-align: center; font-size: 17px; font-weight: bold; min-height: 26px; margin: 4px 0 10px; color: #2f628f; }
   .who { font-size: 20px; }
@@ -86,10 +88,10 @@
 
   .btn {
     border: none; border-radius: 18px; padding: 16px 26px; font-size: 20px; font-weight: bold;
-    color: #fff; background: linear-gradient(180deg,#63b8ff,#2f8fe0); cursor: pointer;
-    box-shadow: 0 6px 0 #1f6fb5; min-height: 46px;
+    color: #7a3d00; background: linear-gradient(180deg,#ffcf3a,#ff8c2a); cursor: pointer;
+    box-shadow: 0 6px 0 #d97a1e, 0 8px 18px rgba(40,90,150,.18); min-height: 46px;
   }
-  .btn:active { transform: translateY(3px); box-shadow: 0 3px 0 #1f6fb5; }
+  .btn:active { transform: translateY(3px); box-shadow: 0 3px 0 #d97a1e; }
   .hidden { display: none !important; }
 </style>
 </head>
@@ -101,8 +103,8 @@
   <p class="sub">Wer zuerst buzzert, darf antworten!</p>
 
   <div class="scores">
-    <div class="score p1" id="sc1"><div class="name">🌸 Spieler 1</div><div class="pts" id="pt1">0</div></div>
-    <div class="score p2" id="sc2"><div class="name">⭐ Spieler 2</div><div class="pts" id="pt2">0</div></div>
+    <div class="score p1" id="sc1"><div class="name">🔴 Spieler 1</div><div class="pts" id="pt1">0</div></div>
+    <div class="score p2" id="sc2"><div class="name">🔵 Spieler 2</div><div class="pts" id="pt2">0</div></div>
   </div>
 
   <!-- GAME -->
@@ -115,8 +117,8 @@
     <div class="status" id="status">Bereit? Drückt euren Buzzer!</div>
 
     <div class="buzzers" id="buzzers">
-      <button class="buzzer b1" id="buz1"><span class="big">🔴</span>🌸 Spieler 1</button>
-      <button class="buzzer b2" id="buz2"><span class="big">🔴</span>⭐ Spieler 2</button>
+      <button class="buzzer b1" id="buz1"><span class="big">🔴</span>Spieler 1</button>
+      <button class="buzzer b2" id="buz2"><span class="big">🔵</span>Spieler 2</button>
     </div>
 
     <div class="answers" id="answers"></div>
@@ -177,7 +179,7 @@
     buzzed = player; locked = true;
     buz1.disabled = true; buz2.disabled = true;
     if (player === 1) sc1.classList.add("active"); else sc2.classList.add("active");
-    var name = player === 1 ? "🌸 Spieler 1" : "⭐ Spieler 2";
+    var name = player === 1 ? "🔴 Spieler 1" : "🔵 Spieler 2";
     statusEl.innerHTML = '<span class="who">' + name + " ist dran — antworte!</span>";
     statusEl.className = "status";
     showAnswers();
@@ -230,9 +232,9 @@
     var end = el("end");
     end.classList.remove("hidden");
     var title = el("endTitle"), trophy = el("trophy"), final = el("endFinal");
-    final.textContent = "🌸 Spieler 1: " + p1 + " Punkte   ·   ⭐ Spieler 2: " + p2 + " Punkte";
-    if (p1 > p2){ trophy.textContent = "🏆🌸"; title.textContent = "Spieler 1 gewinnt!"; }
-    else if (p2 > p1){ trophy.textContent = "🏆⭐"; title.textContent = "Spieler 2 gewinnt!"; }
+    final.textContent = "🔴 Spieler 1: " + p1 + " Punkte   ·   🔵 Spieler 2: " + p2 + " Punkte";
+    if (p1 > p2){ trophy.textContent = "🏆"; title.textContent = "🔴 Spieler 1 gewinnt!"; }
+    else if (p2 > p1){ trophy.textContent = "🏆"; title.textContent = "🔵 Spieler 2 gewinnt!"; }
     else { trophy.textContent = "🤝"; title.textContent = "Unentschieden!"; }
   }
 

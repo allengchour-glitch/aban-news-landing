@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>aban Arcade — kostenlose 3D-Browser-Games &amp; tägliche Rätsel</title>
-<meta name="description" content="Die aban Arcade: kostenlose Browser-Games im Neon-Look — Open-World-RPG, Boss-Fight, Roguelites, Racer, Platformer und tägliche Worträtsel. Kein Download, 1 Tap und du spielst.">
+<meta name="description" content="Die aban Arcade: zwei grosse kostenlose Spielwelten im Browser — das Brettspiel Lebenspfad (Online-Koop, Voice-Chat, 20 Minispiele) und die offene 3D-Welt Neon Wildnis (Arena, Flugfeld, Parcours, Rennstrecke). Dazu Traumhaus & tägliche Worträtsel. Kein Download.">
 <link rel="canonical" href="https://abannews.com/spiele.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="aban Arcade — kostenlose Neon-Browser-Games">
-<meta property="og:description" content="Open-World-RPG, Boss-Fight, Roguelites, Racer & tägliche Rätsel. Gratis im Browser, kein Download.">
+<meta property="og:description" content="Zwei grosse Spielwelten: Lebenspfad (Brettspiel, Online-Koop, Voice-Chat) & Neon Wildnis (offene 3D-Welt mit 4 Stationen). Dazu tägliche Rätsel. Gratis im Browser.">
 <meta property="og:url" content="https://abannews.com/spiele.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06070f">
@@ -88,6 +88,15 @@ body{background:#06070f;color:#eaf0ff;font-family:system-ui,-apple-system,Segoe 
 .card p{color:#aeb8e0;font-size:.9rem;margin:0 0 14px;flex:1}
 .rec{display:none;font-size:.76rem;font-weight:800;color:#0a1020;background:var(--c,#5ef2ff);border-radius:20px;padding:3px 11px;margin-bottom:10px;width:max-content;box-shadow:0 0 16px color-mix(in srgb,var(--c,#5ef2ff) 60%,transparent)}
 .rec.on{display:inline-block}
+/* ---- Welt-Karten: Feature-Chips + Rekord-Zeile ---- */
+.sect{margin:40px 4px 2px;font-size:.78rem;font-weight:900;letter-spacing:.34em;text-transform:uppercase;color:#a9b8ff;text-shadow:0 2px 10px #000}
+.sect small{display:block;letter-spacing:.02em;text-transform:none;font-weight:600;color:#8b93b8;margin-top:4px;font-size:.82rem}
+.feats{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.feats li{font-size:.79rem;font-weight:700;color:#e2e9ff;background:rgba(255,255,255,.055);
+  border:1px solid color-mix(in srgb,var(--c,#5ef2ff) 32%,transparent);border-radius:20px;padding:5px 12px}
+.feats li b{color:#fff}
+.recs{display:flex;flex-wrap:wrap;gap:6px}
+.recs .rec{margin-bottom:10px}
 /* „Spielen"-Button: echter Tap-Button ≥44px (Design-Regel: 1 Tap ins Spiel) */
 .play{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 24px;margin-top:auto;width:max-content;
   font-weight:900;font-size:.92rem;color:#0a1020;background:var(--c,#5ef2ff);border-radius:40px;
@@ -115,7 +124,7 @@ footer a{color:var(--purple);text-decoration:none}
   <div class="hero">
     <div class="kick">aban arcade</div>
     <h1>🕹️ ABAN ARCADE</h1>
-    <p>Kostenlose Browser-Games im Neon-Look — 3D-Action, Roguelites, Racer &amp; tägliche Rätsel. Kein Download, 1 Tap und du spielst.</p>
+    <p>Zwei grosse Spielwelten — das Brettspiel <b>Lebenspfad</b> und die offene 3D-Welt <b>Neon Wildnis</b> — plus Traumhaus, Minispiele &amp; tägliche Rätsel. Kein Download, 1 Tap und du spielst.</p>
   </div>
 
   <div class="pbar">
@@ -124,103 +133,69 @@ footer a{color:var(--purple);text-decoration:none}
     <div class="chips" id="chips" aria-label="Deine Rekorde"></div>
   </div>
 
+  <h2 class="sect">Die zwei grossen Welten</h2>
   <div class="grid-games">
-    <a class="card feat" href="/neon-realm.html" style="--c:#b98bff">
-      <div class="emo">🗺️</div>
+    <a class="card feat" href="/lebenspfad.html" style="--c:#ffcf6e">
+      <div class="emo">🎲</div>
       <div class="body">
-        <span class="tag">3D · Open-World-RPG · neu</span>
-        <h2>Neon Realm</h2>
-        <p>Ein <b>komplettes Open-World-RPG</b> im Browser: prozedurale Landschaft mit See und Vogelschwärmen, Tag/Nacht, <b>Quest-Kette</b>, Loot in vier Seltenheitsstufen, Skills, <b>4 Klassen</b> und 5 verschiedene Monster — dazu der <b>Dungeon Die Tiefe</b>, der nächtliche <b>SERAPH-Weltboss</b> und am Ende der <b>NEXUS</b>. Echte 3D-Modelle, Minimap, Speicherstand.</p>
-        <span class="rec" data-best="nr_save1" data-json="lvl" data-icon="⭐" data-prefix="Dein Held: Level " data-suffix="" data-chip="🗺️ Realm · Level #"></span>
-        <span class="play">Reich betreten</span>
+        <span class="tag">Brettspiel · 1–4 Spieler · 🌐 Online-Koop · 🎙️ Voice-Chat</span>
+        <h2>Lebenspfad</h2>
+        <p>Das riesige Würfel-Brettspiel übers ganze Leben: <b>272 Ereignisse</b> über 8 Lebenskapitel, Berufswahl, Heirat &amp; Kinder, die dir übers Brett folgen, der Storch, 8 animierte Wahrzeichen — und am Ende <b>deine Biografie mit Lebenskurven</b>. Im <b>Online-Koop</b> treten Freunde per Raum-Code vom eigenen Handy bei und reden per <b>Voice-Chat</b> mit.</p>
+        <ul class="feats">
+          <li>🌐 <b>Online-Koop</b> mit Raum-Code</li>
+          <li>🎙️ <b>Voice-Chat</b> am Brett</li>
+          <li>🎮 <b>20 Minispiele</b> eingebaut</li>
+          <li>🎡 Drehrad &amp; Würfel</li>
+          <li>🔞 optional: der Tod spielt mit</li>
+          <li>📖 Biografie zum Schluss</li>
+        </ul>
+        <div class="recs">
+          <span class="rec" data-best="lp_save1" data-json="round" data-icon="💾" data-prefix="Spielstand: Runde " data-chip="🎲 Lebenspfad · Runde #"></span>
+        </div>
+        <span class="play">Leben beginnen</span>
       </div>
     </a>
 
-    <a class="card" href="/neon-wildnis.html" style="--c:#6affc0">
+    <a class="card feat" href="/neon-wildnis.html" style="--c:#6affc0">
       <div class="emo">🌲</div>
-      <span class="tag">3D · Survival · neu</span>
-      <h2>Neon Wildnis</h2>
-      <p>Eine riesige leuchtende Wildnis: <b>fälle Bäume</b>, sammle Holz, Stein und Kristalle, <b>baue deine Basis</b> mit Mauern, Türmen und Lagerfeuer — und überlebe, wenn nachts die Kreaturen kommen. Tag/Nacht-Zyklus, Speicherstand.</p>
-      <span class="play">Überleben</span>
+      <div class="body">
+        <span class="tag">3D · Offene Welt · Stadt-Hub · 4 Stationen · 🌐 Koop</span>
+        <h2>Neon Wildnis</h2>
+        <p>Die offene 3D-Neon-Welt: <b>fälle Bäume</b>, sammle Kristalle, <b>baue deine Basis</b>, erfülle Quests am Quest-Brett und überlebe die Nacht — allein oder im <b>Online-Koop</b>. Von der <b>Stadt</b> aus erreichst du vier Stationen; hier leben die früheren Neon-Spiele (Flug, Jump, Racer, Survivor, Duo, Colossus, Abyss, Realm) weiter:</p>
+        <ul class="feats">
+          <li>⚔️ <b>Arena</b> — Roguelite mit Bossen &amp; Online-Koop</li>
+          <li>✈️ <b>Flugfeld</b> — Arcade-Flug durch den Canyon</li>
+          <li>🏃 <b>Parcours</b> — Koop-Platformer, 3 Level</li>
+          <li>🏎️ <b>Rennstrecke</b> — Anti-Grav-Racer</li>
+        </ul>
+        <div class="recs">
+          <span class="rec" data-best="nr_save1" data-json="lvl" data-icon="⭐" data-prefix="Dein Held: Level " data-suffix="" data-chip="🌲 Wildnis · Level #"></span>
+          <span class="rec" data-best="ns_best" data-icon="⚔️" data-prefix="Arena: " data-suffix="s überlebt" data-chip="⚔️ Arena · #s"></span>
+          <span class="rec" data-best="aban_neon_best" data-icon="✈️" data-prefix="Flugfeld: " data-suffix=" Punkte" data-chip="✈️ Flugfeld · # P"></span>
+          <span class="rec" data-best="nj_best" data-icon="🏃" data-prefix="Parcours: " data-suffix="s Bestzeit" data-chip="🏃 Parcours · #s"></span>
+          <span class="rec" data-best="nr_best" data-icon="🏎️" data-prefix="Rennstrecke: " data-suffix=" m" data-chip="🏎️ Rennstrecke · # m"></span>
+        </div>
+        <span class="play">Wildnis betreten</span>
+      </div>
     </a>
+  </div>
 
-    <a class="card" href="/neon-jump.html" style="--c:#ff6ec7">
-      <div class="emo">🏃</div>
-      <span class="tag">3D · Koop-Platformer · 2 Spieler · NEU</span>
-      <h2>Neon Jump</h2>
-      <p>Jetzt <b>Koop</b>: Pink &amp; Cyan, verbunden durchs Band — <b>Schalter halten Tore offen</b> für den Partner, beide müssen ins Ziel. 3 Level mit Checkpoints, Federn, bröckelnden &amp; beweglichen Plattformen. Auch solo.</p>
-      <span class="rec" data-best="nj_best" data-suffix="s Bestzeit" data-chip="🏃 Jump · #s"></span>
-      <span class="play">Spielen</span>
-    </a>
-
-    <a class="card" href="/neon-flug.html" style="--c:#5ef2ff">
-      <div class="emo">🚀</div>
-      <span class="tag">3D · Arcade · frisch poliert</span>
-      <h2>Neon-Flug</h2>
-      <p>Flüssiges 3D-Arcade: durch den Neon-Canyon fliegen, ausweichen, Orbs sammeln, Upgrades wählen. Tages-Challenge inklusive.</p>
-      <span class="rec" data-best="aban_neon_best" data-suffix=" Punkte" data-chip="🚀 Flug · # P"></span>
-      <span class="play">Spielen</span>
-    </a>
-
-    <a class="card" href="/neon-racer.html" style="--c:#6affab">
-      <div class="emo">🏎️</div>
-      <span class="tag">3D · Racer · frisch poliert</span>
-      <h2>Neon Racer</h2>
-      <p>Anti-Grav-Rennen im PSP/Wipeout-Stil: folge der kurvigen Neon-Strecke, nimm Boost-Pads mit, weiche Barrieren aus, werde immer schneller. Mit Neon-Glow.</p>
-      <span class="rec" data-best="nr_best" data-suffix=" m" data-chip="🏎️ Racer · # m"></span>
-      <span class="play">Spielen</span>
-    </a>
-
-    <a class="card" href="/neon-survivor.html" style="--c:#5ef2ff">
-      <div class="emo">🛡️</div>
-      <span class="tag">3D · Roguelite · frisch poliert</span>
-      <h2>Neon Survivor</h2>
-      <p>Überlebe die Gegner-Schwärme: bewegen, auto-feuern, XP sammeln, Upgrades &amp; Waffen-Evolutionen wählen, Bosse legen. Vampire-Survivors-Stil mit Meta-Progression.</p>
-      <span class="rec" data-best="ns_best" data-suffix="s überlebt" data-chip="🛡️ Survivor · #s"></span>
-      <span class="play">Spielen</span>
-    </a>
-
+  <h2 class="sect">Ausserdem in der Arcade</h2>
+  <div class="grid-games">
     <a class="card" href="/traumhaus.html" style="--c:#ff9a6e">
       <div class="emo">🏡</div>
-      <span class="tag">Simulation · Bauen · 🌐 ONLINE-KOOP · NEU</span>
+      <span class="tag">Simulation · Bauen · 🌐 Online-Koop</span>
       <h2>Traumhaus</h2>
-      <p>Sims-Style Bau-Simulation: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett über Küche, Bad, Büro bis Garten &amp; Pool. Bewohner <b>Max &amp; Mia</b> mit Bedürfnissen, <b>Arbeit &amp; Karriere</b>, <b>Liebe → Hochzeit → Kinder</b> und sogar <b>krummen Dingern (Bank-Coup)</b>, dazu Familienhund, Tag/Nacht, Romantik-Modus (18+) — und im Online-Koop baut ihr <b>zusammen am selben Haus</b> (Raum-Code!).</p>
-      <span class="play">Bauen ▶</span>
-    </a>
-    <a class="card" href="/lebenspfad.html" style="--c:#ffcf6e">
-      <div class="emo">🎲</div>
-      <span class="tag">Brettspiel · 1–4 Spieler · 🌐 ONLINE-KOOP · 🎡 Drehrad</span>
-      <h2>Lebenspfad</h2>
-      <p>Das riesige Würfel-Brettspiel: <b>272 Ereignisse</b> über 8 Lebenskapitel, Berufswahl, Heirat &amp; Kinder, die dir übers Brett folgen, laufende Charaktere, der Storch, 8 animierte Wahrzeichen — und optional der <b>🔞-Modus, in dem der Tod mitspielt</b>. Am Ende: <b>deine Biografie + Lebenskurven</b>. NEU: <b>🌐 Online-Koop mit Chat</b> — Raum-Code erstellen, Freunde treten vom eigenen Handy bei!</p>
-      <span class="rec" data-best="lp_save1" data-json="round" data-icon="💾" data-prefix="Spielstand: Runde " data-chip="🎲 Lebenspfad · Runde #"></span>
-      <span class="play">Leben beginnen</span>
+      <p>Sims-Style Bau-Simulation: <b>Wände, Böden, Möbel</b> von Küche bis Pool, Bewohner <b>Max &amp; Mia</b> mit Bedürfnissen, <b>Arbeit, Liebe → Hochzeit → Kinder</b>, Familienhund und Tag/Nacht — im Online-Koop baut ihr <b>zusammen am selben Haus</b> (Raum-Code!).</p>
+      <span class="play">Bauen</span>
     </a>
 
-    <a class="card" href="/neon-duo.html" style="--c:#b98bff">
-      <div class="emo">⛓️</div>
-      <span class="tag">Koop · 2 Spieler · neu</span>
-      <h2>Neon Duo</h2>
-      <p>Echtes Koop-Design: <b>Klinge</b> bricht Panzer, <b>Funke</b> trifft Flieger — verbunden durch das <b>Band</b>, das Gegner dazwischen verbrennt. Mit Wiederbeleben, Kombo-Novas und einem Boss, der beide Rollen erzwingt. Zu zweit an einer Tastatur oder solo mit KI-Partnerin.</p>
-      <span class="rec" data-best="nd_best" data-suffix=" Punkte" data-chip="⛓️ Duo · # P"></span>
-      <span class="play">Zusammen spielen</span>
-    </a>
-
-    <a class="card" href="/neon-colossus.html" style="--c:#ff6ec7">
-      <div class="emo">🗡️</div>
-      <span class="tag">3D · Boss-Fight · Koop</span>
-      <h2>Neon Colossus</h2>
-      <p>Cinematisches Boss-Duell mit <b>echten 3D-Modellen</b>: spiele einen Sci-Fi-Krieger, weiche telegrafierten Angriffen aus, dashe durch den Kugelhagel und bezwinge drei mehrphasige Kolosse. Mit <b>lokalem 2-Spieler-Koop</b>, Retro-Sonne, Bloom, Zeitlupe-Momenten &amp; eskalierender Musik.</p>
-      <span class="rec" data-best="nc_best" data-suffix=" / 3 Kolosse" data-chip="🗡️ Colossus · #/3"></span>
-      <span class="play">Arena betreten</span>
-    </a>
-
-    <a class="card" href="/neon-abyss.html" style="--c:#b98bff">
-      <div class="emo">⚔️</div>
-      <span class="tag">3D · Action-RPG</span>
-      <h2>Neon Abyss</h2>
-      <p>Diablo-Style-ARPG: Klick zum Laufen, Auto-Angriff, drei Skills (Nova · Blink · Heilen), Loot mit Seltenheitsstufen, Gegner-Wellen &amp; Boss alle fünf Wellen.</p>
-      <span class="rec" data-best="na_best" data-suffix=". Welle" data-chip="⚔️ Abyss · Welle #"></span>
-      <span class="play">Spielen</span>
+    <a class="card" href="/minispiele/" style="--c:#5ef2ff">
+      <div class="emo">🎮</div>
+      <span class="tag">20 Spiele · 2 Spieler · 1 Gerät</span>
+      <h2>Minispiele-Sammlung</h2>
+      <p>20 schnelle Duelle für zwei an einem Gerät: Pong, Vier gewinnt, Reaktions-Duell, Elfmeter, Tauziehen &amp; mehr. Die gleichen Spiele warten auch <b>im Lebenspfad</b> auf den Ereignisfeldern.</p>
+      <span class="play">Duell starten</span>
     </a>
 
     <a class="card" href="/wort-des-tages.html" style="--c:#ffcf6e">
@@ -253,26 +228,29 @@ footer a{color:var(--purple);text-decoration:none}
 <script src="/js/arcade.js"></script>
 <script>
 (function(){
-  var GAMES_TOTAL=11;
+  var GAMES_TOTAL=6; // 2 Welten (Lebenspfad, Neon Wildnis) + Traumhaus + Minispiele + 2 Rätsel
   function readBest(key,field){ // defensiv: nutzt AbanArcade, sonst Inline-Fallback
     if(window.AbanArcade)return AbanArcade.readBest(key,field);
     try{var raw=localStorage.getItem(key);if(raw==null||raw==="")return 0;
       var v=field?(JSON.parse(raw)||{})[field]:parseFloat(raw);
       v=Math.round(Number(v)*10)/10;return (isFinite(v)&&v>0)?v:0;}catch(e){return 0;}
   }
-  // Karten-Rekorde + Chips für die Gesamt-Leiste
-  var chips=[],withProgress=0,els=document.querySelectorAll(".rec");
+  // Karten-Rekorde + Chips für die Gesamt-Leiste (Fortschritt zählt pro KARTE,
+  // nicht pro Rekord — die Wildnis-Karte trägt mehrere Stations-Rekorde)
+  var chips=[],cardsDone=[],els=document.querySelectorAll(".rec");
   for(var i=0;i<els.length;i++){var el=els[i];
     try{
       var v=readBest(el.getAttribute("data-best"),el.getAttribute("data-json"));
       if(v>0){
-        withProgress++;
+        var card=el.closest?el.closest("a.card"):null;
+        if(card&&cardsDone.indexOf(card)<0)cardsDone.push(card);
         el.textContent=(el.getAttribute("data-icon")||"🏆")+" "+(el.getAttribute("data-prefix")||"Rekord: ")+v+(el.getAttribute("data-suffix")||"");
         el.className="rec on";
         var c=el.getAttribute("data-chip");if(c)chips.push(c.replace("#",v));
       }
     }catch(e){}
   }
+  var withProgress=cardsDone.length||chips.length;
   // Gesamt-Highscore-Leiste
   try{
     var bar=document.getElementById("chips");

@@ -10,7 +10,7 @@
   html, body { height: 100%; overflow: hidden; }
   body {
     font-family: "Baloo 2", "Comic Sans MS", "Segoe UI", system-ui, sans-serif;
-    background: linear-gradient(160deg, #bce6ff 0%, #eaf7ff 100%);
+    background: linear-gradient(160deg, #bce6ff 0%, #dff2ff 55%, #eaf7ff 100%);
     color: #2a3d55;
     user-select: none;
     -webkit-user-select: none;
@@ -21,16 +21,16 @@
   .backbtn {
     position: fixed; top: 10px; left: 10px; z-index: 50;
     min-height: 46px; padding: 8px 16px;
-    background: #fff; color: #2a3d55; border: none; border-radius: 20px;
+    background: #fffdf6; color: #2a3d55; border: none; border-radius: 16px;
     font-size: 16px; font-weight: 700; cursor: pointer;
-    box-shadow: 0 3px 10px rgba(80,120,170,.25);
+    box-shadow: 0 4px 14px rgba(40,90,150,.15);
   }
   .backbtn:active { transform: scale(.95); }
 
   /* Playfield: two half-screens stacked (top rotated for face-to-face play) */
   .field { position: relative; flex: 1; overflow: hidden; }
-  .top    { background: linear-gradient(180deg, #ffe0ec, #ffd0e0); }
-  .bottom { background: linear-gradient(180deg, #d8f5e0, #c4efd4); }
+  .top    { background: linear-gradient(180deg, #ffe3ea, #ffd2de); }
+  .bottom { background: linear-gradient(180deg, #dcedff, #c6e1fb); }
 
   .half-info {
     position: absolute; left: 0; right: 0; z-index: 5;
@@ -41,18 +41,33 @@
   .top .half-info { top: 6px; transform: rotate(180deg); }
   .bottom .half-info { bottom: 6px; }
 
-  .p1c { color: #d6336c; }
-  .p2c { color: #1a9b5a; }
+  .p1c { color: #e8574a; }
+  .p2c { color: #3a7dd8; }
 
   .star {
-    position: absolute; width: 64px; height: 64px; margin: -32px 0 0 -32px;
+    position: absolute; width: 72px; height: 72px; margin: -36px 0 0 -36px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 48px; cursor: pointer; z-index: 3;
+    font-size: 54px; cursor: pointer; z-index: 3;
     transition: transform .06s ease-out;
-    filter: drop-shadow(0 3px 4px rgba(0,0,0,.15));
+    filter: drop-shadow(0 0 12px rgba(255,207,58,.85)) drop-shadow(0 4px 6px rgba(0,0,0,.18));
+    animation: twinkle 1.4s ease-in-out infinite alternate;
   }
-  .star.pop { animation: pop .28s ease-out; }
+  .star.pop { animation: pop .28s ease-out, twinkle 1.4s ease-in-out .28s infinite alternate; }
   @keyframes pop { 0%{transform:scale(.2) rotate(-40deg);opacity:0} 60%{transform:scale(1.15) rotate(8deg);opacity:1} 100%{transform:scale(1) rotate(0)} }
+  @keyframes twinkle {
+    from { filter: drop-shadow(0 0 8px rgba(255,207,58,.6)) drop-shadow(0 4px 6px rgba(0,0,0,.18)); }
+    to   { filter: drop-shadow(0 0 16px rgba(255,207,58,1)) drop-shadow(0 4px 6px rgba(0,0,0,.18)); }
+  }
+  .spark {
+    position: absolute; width: 9px; height: 9px; border-radius: 50%;
+    background: #ffcf3a; box-shadow: 0 0 8px rgba(255,207,58,.95);
+    pointer-events: none; z-index: 7;
+    animation: spark .55s ease-out forwards;
+  }
+  @keyframes spark {
+    from { transform: translate(0,0) scale(1); opacity: 1; }
+    to   { transform: translate(var(--dx), var(--dy)) scale(.15); opacity: 0; }
+  }
 
   .float {
     position: absolute; font-weight: 900; font-size: 28px; z-index: 8;
@@ -63,9 +78,9 @@
 
   /* Timer bar in the middle */
   .timerbar {
-    height: 54px; background: #fff; display: flex; align-items: center;
+    height: 54px; background: #fffdf6; display: flex; align-items: center;
     justify-content: center; gap: 14px; z-index: 20;
-    box-shadow: 0 0 14px rgba(80,120,170,.3);
+    box-shadow: 0 0 14px rgba(40,90,150,.28);
   }
   .clock { font-size: 26px; font-weight: 900; color: #2a3d55; min-width: 92px; text-align: center; }
   .mini { font-size: 17px; font-weight: 800; }
@@ -78,19 +93,19 @@
     background: rgba(255,255,255,.72); backdrop-filter: blur(3px);
   }
   .card {
-    background: #fff; border-radius: 26px; padding: 28px 24px;
-    box-shadow: 0 12px 34px rgba(80,120,170,.28);
+    background: #fffdf6; border-radius: 20px; padding: 28px 24px;
+    box-shadow: 0 12px 34px rgba(40,90,150,.28);
     max-width: 340px; width: 100%;
   }
   h1 { font-size: 34px; color: #2a3d55; margin-bottom: 6px; }
   .sub { font-size: 17px; color: #5a6b82; line-height: 1.45; margin-bottom: 8px; }
   .bigbtn {
     min-height: 56px; width: 100%; margin-top: 14px;
-    background: linear-gradient(180deg,#ffd54a,#ffb703); color: #6a3d00;
+    background: linear-gradient(180deg,#ffcf3a,#ff8c2a); color: #7a3d00;
     border: none; border-radius: 20px; font-size: 22px; font-weight: 900;
-    cursor: pointer; box-shadow: 0 5px 0 #e08e00;
+    cursor: pointer; box-shadow: 0 5px 0 #d97a1e, 0 8px 18px rgba(40,90,150,.18);
   }
-  .bigbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #e08e00; }
+  .bigbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #d97a1e; }
   .result-big { font-size: 40px; font-weight: 900; margin: 4px 0; }
   .scorerow { display: flex; justify-content: center; gap: 22px; font-size: 22px; font-weight: 800; margin: 8px 0; }
   .hidden { display: none !important; }
@@ -112,7 +127,7 @@
   </div>
 
   <div class="field bottom" id="fieldBottom">
-    <div class="half-info"><span class="p2c">🟢 Spieler 2</span> · <span id="s2" class="p2c">0</span></div>
+    <div class="half-info"><span class="p2c">🔵 Spieler 2</span> · <span id="s2" class="p2c">0</span></div>
   </div>
 
   <!-- Start overlay -->
@@ -121,7 +136,7 @@
       <h1>🌟 Punkte-Jagd</h1>
       <p class="sub">Zwei Spieler, ein Gerät!<br>Auf jeder Hälfte springt ein Stern umher.<br><b>Tippe ihn schnell an</b> – schon kommt der nächste.</p>
       <p class="sub">Wer in <b>30 Sekunden</b> mehr Sterne fängt, gewinnt!</p>
-      <p class="go-label">🔴 oben &nbsp;•&nbsp; 🟢 unten</p>
+      <p class="go-label">🔴 oben &nbsp;•&nbsp; 🔵 unten</p>
       <button class="bigbtn" id="startBtn">Los geht's!</button>
     </div>
   </div>
@@ -131,7 +146,7 @@
     <div class="card">
       <div class="result-big" id="resultEmoji">🏆</div>
       <h1 id="resultTitle">Ergebnis</h1>
-      <div class="scorerow"><span class="p1c">🔴 <span id="es1">0</span></span><span class="p2c">🟢 <span id="es2">0</span></span></div>
+      <div class="scorerow"><span class="p1c">🔴 <span id="es1">0</span></span><span class="p2c">🔵 <span id="es2">0</span></span></div>
       <p class="sub" id="resultSub"></p>
       <button class="bigbtn" id="againBtn">🔁 Nochmal</button>
     </div>
@@ -199,7 +214,27 @@
     state.score[player]++;
     updateScores();
     showFloat(player, x, y);
+    showSparks(player, x, y);
     placeStar(player);
+  }
+
+  function showSparks(player, x, y){
+    /* kleine leuchtende Fang-Partikel, fliegen sternförmig auseinander */
+    var field = fields[player];
+    for(var i=0;i<7;i++){
+      var sp = document.createElement("div");
+      sp.className = "spark";
+      var ang = (Math.PI*2/7)*i + rand(-0.3,0.3);
+      var dist = rand(34,66);
+      sp.style.left = (x-4) + "px";
+      sp.style.top = (y-4) + "px";
+      sp.style.setProperty("--dx", Math.round(Math.cos(ang)*dist) + "px");
+      sp.style.setProperty("--dy", Math.round(Math.sin(ang)*dist) + "px");
+      field.appendChild(sp);
+      (function(node){
+        setTimeout(function(){ if(node.parentNode) node.parentNode.removeChild(node); }, 600);
+      })(sp);
+    }
   }
 
   function showFloat(player, x, y){
@@ -247,7 +282,7 @@
     startOv.classList.add("hidden");
     endOv.classList.add("hidden");
     // clear stray stars/floats
-    document.querySelectorAll(".star,.float").forEach(function(n){ n.remove(); });
+    document.querySelectorAll(".star,.float,.spark").forEach(function(n){ n.remove(); });
     state.stars = [null,null];
     placeStar(0);
     placeStar(1);
@@ -280,7 +315,7 @@
       sub.textContent = "Mit " + a + " gegen " + b + " Sternen. Toll gefangen!";
     } else {
       emoji.textContent = "🏆";
-      title.innerHTML = '<span class="p2c">🟢 Spieler 2 gewinnt!</span>';
+      title.innerHTML = '<span class="p2c">🔵 Spieler 2 gewinnt!</span>';
       sub.textContent = "Mit " + b + " gegen " + a + " Sternen. Toll gefangen!";
     }
     endOv.classList.remove("hidden");

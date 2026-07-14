@@ -40,7 +40,9 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   .pcard{font-size:.7rem;padding:5px 8px}}
 #chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 1px 2px rgba(10,20,35,.9),0 2px 8px rgba(10,20,35,.6)}
 #chapterTag small{display:block;color:#fdf3d0;font-size:.72rem;margin-top:1px;text-shadow:0 1px 3px rgba(10,20,35,.85)}
-#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffdf8a;background:rgba(38,52,72,.42);padding:3px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95)}
+#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffdf8a;background:rgba(38,52,72,.48);padding:4px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95);white-space:nowrap;line-height:1.2}
+#turnTag:empty{display:none}
+#turnTag small{display:block;font-size:.68em;font-weight:800;color:#ffedb8;letter-spacing:.5px;opacity:.9}
 /* Würfel-Knopf */
 @keyframes rollPulse{0%,100%{outline:4px solid rgba(255,209,102,0)}50%{outline:4px solid rgba(255,209,102,.55)}}
 #rollBtn:not(:disabled):not(.hide){animation:rollPulse 2.4s ease-in-out infinite}
@@ -49,7 +51,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #rollBtn:disabled{opacity:.35;cursor:default}
 #dice{position:fixed;bottom:104px;left:50%;transform:translateX(-50%);font-size:3rem;z-index:20;text-shadow:0 6px 24px rgba(255,209,102,.5);opacity:0;transition:opacity .3s;pointer-events:none}
 #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.05em;text-shadow:0 2px 0 rgba(90,50,0,.75),0 4px 14px rgba(70,40,0,.5),0 0 18px rgba(255,255,255,.3);opacity:0;transition:opacity .4s;color:#ffd166;pointer-events:none}
-#hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:.95rem;color:#fff;text-shadow:0 2px 0 rgba(90,50,0,.7),0 3px 10px rgba(70,40,0,.55);background:rgba(120,80,20,.32);border-radius:14px;padding:4px 14px;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
+#hint{position:absolute;bottom:180px;left:50%;transform:translateX(-50%);font-weight:800;font-size:1.05rem;line-height:1.4;color:#fff;text-shadow:0 2px 0 rgba(90,50,0,.7),0 3px 10px rgba(70,40,0,.55);background:rgba(120,80,20,.32);border-radius:14px;padding:4px 14px;text-align:center;transition:opacity .3s;opacity:0;max-width:92vw}
 .dnum{position:absolute;font-weight:900;text-shadow:0 2px 6px #000;transform:translate(-50%,-50%);transition:transform .75s ease-out,opacity .75s;opacity:1;will-change:transform,opacity}
 /* 🎲 Gewürfelte Zahl gross aufpoppen (Scale 1.6→1.0, kurze Freeze) */
 #bignum{position:fixed;left:50%;top:38%;z-index:24;pointer-events:none;font-weight:900;font-size:clamp(90px,17vw,190px);color:#fffdf6;-webkit-text-stroke:5px #3a2a10;text-shadow:0 8px 0 rgba(120,70,10,.35),0 12px 30px rgba(90,50,0,.5);opacity:0;transform:translate(-50%,-50%) scale(.4);will-change:transform,opacity}
@@ -70,7 +72,8 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #card button:hover{border-color:#ffcf3a;background:#fffbe8;transform:translateY(-1px)}
 #card button small{display:block;color:#8a7a4a;font-weight:600;margin-top:3px;font-size:.76rem}
 /* Overlays */
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,rgba(110,200,245,.96),rgba(255,244,214,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:linear-gradient(180deg,rgba(110,200,245,.96),rgba(255,244,214,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
+.overlay::before,.overlay::after{content:"";flex:1 0 10px} /* Feder: kurz = zentriert, lang = scrollbar ab OBEN (Titel nie abgeschnitten) */
 .overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#4a6a8a;text-transform:uppercase;margin-bottom:12px;font-weight:800}
 .overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#ff8c2a,#ff5db8 45%,#2f8cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 0 rgba(255,255,255,.8)) drop-shadow(0 8px 22px rgba(80,60,20,.25))}
 .overlay p{color:#3a4252;max-width:540px;margin:.8rem 0;font-size:.95rem;line-height:1.55}
@@ -81,7 +84,8 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .pselect button.on{border-color:#ff8c2a;box-shadow:0 0 16px rgba(255,150,40,.5)}
 .foot{margin-top:14px;font-size:.78rem;color:#6a7282}.foot a{color:#2f7dd0;font-weight:700}
 /* Biografie */
-#bio{max-width:600px;text-align:left;background:#fffdf6;border:3px solid #ffcf3a;border-radius:16px;padding:18px 22px;margin:10px 0;font-size:.9rem;line-height:1.65;color:#3a4252;max-height:44vh;overflow:auto;box-shadow:0 10px 30px rgba(60,40,10,.2)}
+#bio{max-width:600px;text-align:left;background:#fffdf6;border:3px solid #ffcf3a;border-radius:16px;padding:18px 22px;margin:10px 0;font-size:.9rem;line-height:1.65;color:#3a4252;max-height:44vh;overflow:auto;box-shadow:0 10px 30px rgba(60,40,10,.2);flex-shrink:0;width:min(600px,94vw)} /* flex-shrink:0: Overlay ist flex-column — sonst wird die Biografie-Box auf wenige px gequetscht */
+#bio:empty{display:none}
 #bio h4{color:#c9821a;margin:10px 0 4px;font-size:.95rem}
 #scores{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:8px 0}
 .score{background:#fffdf6;border:2px solid #e8d8b0;border-radius:14px;padding:10px 16px;font-size:.85rem;color:#3a4252}
@@ -97,7 +101,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   .pcard .st{gap:6px}
   #chapterTag b{font-size:.82rem;letter-spacing:.12em}
   #chapterTag small{font-size:.62rem}
-  #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:44vw;text-align:right}
+  #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:none;text-align:right} /* nowrap + 2 Zeilen (small) statt max-width-Umbruch */
   .pcard .items span{font-size:15px;min-width:24px;height:24px;line-height:24px}
   #progMap{bottom:88px;width:92vw}
   #card{padding:16px}
@@ -130,6 +134,8 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .charCard{background:#fffdf6;border-radius:14px;padding:8px 8px 6px;display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:0 4px 14px rgba(60,40,10,.15)}
 .charCard canvas{border-radius:10px;background:linear-gradient(180deg,#dff2ff,#f8f0dc)}
 .charCard .crow{display:flex;gap:5px;align-items:center;justify-content:center}
+.charCard .crow.wrap{flex-wrap:wrap;max-width:100%;row-gap:6px} /* Swatch-Reihe (10 Knoepfe) darf umbrechen — lief sonst aus der Karte/dem Screen */
+.charCard{max-width:min(240px,92vw)}
 .charCard button{border:2px solid #d8c8a0;background:#fffdf6;border-radius:10px;min-width:44px;min-height:44px;font-size:1.15rem;cursor:pointer;font-weight:900;color:#3a4252;padding:0 6px}
 .charCard button.on{border-color:#ff8c2a;box-shadow:0 0 10px rgba(255,150,40,.45);background:#fff6e2}
 .charCard .lbl{font-size:.72rem;font-weight:800;color:#6a7282;min-width:96px;text-align:center}
@@ -137,7 +143,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 /* Pass B2: Gabelungs-Wahl, Quiz-Timer, Smiley-Fast-Chat */
 #card button.forkBtn{font-size:1.02rem;padding:16px 18px;min-height:60px;border-width:3px}
 #qTimer{height:10px;background:#f0e4c4;border-radius:6px;margin-top:12px;overflow:hidden}
-#qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 15s linear}
+#qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 22s linear}
 #emoBtn{position:fixed;right:14px;bottom:160px;z-index:16;width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);font-size:1.3rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)}
 #emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;gap:8px}
 #emoFan button{width:48px;height:48px;border-radius:50%;border:2px solid #ffcf3a;background:#fffdf6;font-size:1.05rem;cursor:pointer;box-shadow:0 3px 10px rgba(60,40,10,.25)}
@@ -376,7 +382,7 @@ var GOALS=[
 ];
 function goalMet(p){return !!(G&&G.goal&&p[G.goal.k]>=G.goal.n);}
 function renderStartStats(){var el=document.getElementById("startStats");if(!el)return;
-  var best=LPSTATS.bestScore?("🏆 Bestleistung: "+LPSTATS.bestScore+" Punkte"+(LPSTATS.bestName?" ("+LPSTATS.bestName+")":"")):"🏆 Noch keine Bestleistung spiel dein erstes Leben!";
+  var best=LPSTATS.bestScore?("🏆 Bestleistung: "+LPSTATS.bestScore+" Punkte"+(LPSTATS.bestName?" ("+LPSTATS.bestName+")":"")):"🏆 Noch keine Bestleistung — spiel dein erstes Leben!";
   var lives=(LPSTATS.games||0)+" Spiel"+((LPSTATS.games||0)===1?"":"e")+" · "+(LPSTATS.lives||0)+" Leben gelebt";
   el.innerHTML="<div style='font-weight:800;color:#c9821a;font-size:.9rem'>"+best+"</div><div style='font-size:.78rem;color:#7a8a9a;margin:2px 0 8px'>"+lives+"</div>"+achGalleryHTML()+freischaltHTML();}
 (function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";lsSet("lp_muted",muted?"1":"0");
@@ -1826,8 +1832,8 @@ function updPawnBlobs(){for(var i=0;i<pawns.length;i++){var b2=pawnBlobs[i];if(!
 document.getElementById("keysHelp").innerHTML=IS_COARSE?
   "🎲 antippen zum Würfeln · Karten antippen · 😊 = Emotes":
   "<b>LEER</b>/Knopf würfeln · <b>1–6</b> Emote · <b>M</b> Ton · <b>ESC</b> Menü — Ereignisse: anklicken &amp; entscheiden";
-function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2600);}
-function announce(t,color){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},3400);}
+function showHint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||4500);} /* langsamer lesbar (User-Wunsch) */
+function announce(t,color,ms){var a=document.getElementById("announce");a.textContent=t;a.style.color=color||"#ffd166";a.style.opacity=1;clearTimeout(a._t);a._t=setTimeout(function(){a.style.opacity=0;},ms||5000);} /* laenger sichtbar (User-Wunsch) */
 function initProgMap(){var ps2=document.getElementById("progSegs");ps2.innerHTML="";
   activeChaps().forEach(function(cidx){var c=CHAPTERS[cidx];var d=document.createElement("div");
     d.style.cssText="flex:1;background:#"+("00000"+c.ground.toString(16)).slice(-6);ps2.appendChild(d);});}
@@ -1861,7 +1867,10 @@ function updChapter(){
   if(pos<0){pos=0;for(var ai=0;ai<AC.length;ai++)if(AC[ai]<ci)pos=ai;}
   var small=window.matchMedia&&window.matchMedia("(max-width:480px)").matches; // mobil: kurz halten
   document.getElementById("chapSub").textContent="Kapitel "+(pos+1)+" von "+AC.length+(small?"":" · "+c.sub);
-  document.getElementById("turnTag").textContent=p.done?"":("🎲 "+p.name+" ist dran (Runde "+G.round+")");
+  (function(){var tt=document.getElementById("turnTag"); /* zweizeilig: Name-Zeile + kleine Runden-Zeile — kein haesslicher Umbruch mehr */
+    if(p.done){tt.textContent="";tt.style.display="none";return;}
+    tt.style.display="";tt.textContent="🎲 "+p.name+" ist dran";
+    var s=document.createElement("small");s.textContent="Runde "+G.round;tt.appendChild(s);})();
   var gt=document.getElementById("goalTag");
   if(gt){if(G.goal){var mine=G.players[G.turn],cur=mine[G.goal.k]||0,ok=cur>=G.goal.n;
     gt.style.display="block";gt.innerHTML=(ok?"✅ ":"🎯 ")+"Rundenziel: "+G.goal.ic+" "+cur+"/"+G.goal.n;}else gt.style.display="none";}
@@ -2115,7 +2124,9 @@ function nextTurn(){
   G.phase="idle";rollBtn.disabled=NET.on&&G.turn!==NET.my;
   if(NET.on)rollBtn.innerHTML=(G.turn===NET.my)?"🎡 Drehen!":"⏳ "+G.players[G.turn].name+" ist dran …";
   updPlayers();updChapter();saveGame();
-  if(G.players.length>1&&!G.players[G.turn].done)announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));
+  if(G.players.length>1&&!G.players[G.turn].done){
+    if(NET.on&&G.turn===NET.my)announce("🎲 DU BIST DRAN — Drehen!","#8fffb0",5200); /* Koop: eigener Zug unuebersehbar */
+    else announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));}
   if(!G.players[G.turn].done){beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}
   if(!G.players[G.turn].done){emote(G.turn,"wink");markerPop=1;} // Marker springt zur neuen Figur
   var _mpk=document.getElementById("meetPick");if(_mpk)_mpk.classList.add("hide"); // Begegnungs-Menü schließen beim Zugwechsel
@@ -2246,7 +2257,7 @@ function showEnd(){
       (p.geld>=p.wissen&&p.geld>=p.freunde?"Lebensmotto: Wer sät, darf auch ernten.":
       (p.wissen>=p.freunde?"Lebensmotto: Wer aufhört zu lernen, hört auf zu leben.":"Lebensmotto: Reich ist, wer Freunde hat."));
     t.innerHTML=(p.bio.length?("Es war ein Leben, das "+(p.glueck>p.geld?"dem Glück":"dem Ehrgeiz")+" gehörte"+(p.job?" — das Leben von "+p.name+", "+p.job.n:"")+". "+p.name+" "+p.bio.join(". Später ")+".")
-      :(p.name+" ging den Pfad still und stetig — und war am Ende zufrieden."))+"<br><i style='color:#ffd166'>"+motto+"</i>";
+      :(p.name+" ging den Pfad still und stetig — und war am Ende zufrieden."))+"<br><i style='color:#b07a2a;font-weight:700'>"+motto+"</i>"; /* dunkles Gold statt #ffd166 — war auf cremeweissem Karton unlesbar */
     bio.appendChild(t);
     // 📷 Foto-Album des Lebens: Polaroids „an die Wand gepinnt", fliegen animiert herein
     if(p.album&&p.album.length){
@@ -2941,7 +2952,7 @@ function renderCharUI(){
     ml=document.createElement("div");ml.className="lbl";
     var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
     rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
-    var r3=document.createElement("div");r3.className="crow"; // Hautton-Punkte + Hosenfarbe
+    var r3=document.createElement("div");r3.className="crow wrap"; // Hautton-Punkte + Hosenfarbe (wrap: 10 Knoepfe brauchen 2 Zeilen)
     for(var d=0;d<SKINTONES.length;d++)(function(d){var b=document.createElement("button");b.className="skin";
       b.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);b.title="Hautton "+(d+1);
       b.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.skin=d;upd();beep(540,.04,"triangle",.03);};dots.push(b);r3.appendChild(b);})(d);
@@ -3241,7 +3252,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
     ml=document.createElement("div");ml.className="lbl";
     var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
     rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
-  var r3=document.createElement("div");r3.className="crow";
+  var r3=document.createElement("div");r3.className="crow wrap"; /* wrap: 10 Knoepfe brauchen 2 Zeilen */
   for(var d=0;d<SKINTONES.length;d++)(function(d){var bd=document.createElement("button");bd.className="skin";bd.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);bd.title="Hautton "+(d+1);bd.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.skin=d;upd();};dots.push(bd);r3.appendChild(bd);})(d);
   pl=document.createElement("button");pl.className="skin";pl.title="Hosen-/Rockfarbe wechseln";pl.style.width="auto";pl.style.padding="0 6px";
   pl.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.pants=((cfg.pants|0)+1)%PANTS.length;upd();beep(560,.04,"triangle",.03);};r3.appendChild(pl);
@@ -3753,7 +3764,7 @@ document.getElementById("resumeBtn").onclick=toggleMenu;
 addEventListener("keydown",function(e){if(e.key==="Escape"&&G)toggleMenu();});
 document.getElementById("rulesBtn").onclick=function(){toggleMenu();
   showLocalInfo("📜 So spielt ihr Lebenspfad",
-    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (15 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
+    "🎲 Reihum würfeln (LEER/Knopf) und über 8 Lebenskapitel ziehen.<br>✨ Ereignis-Felder stellen Entscheidungen — sie formen 💰 Geld, ❤️ Glück, 🧠 Wissen und 👥 Freunde.<br>⭐ Meilensteine bringen Beruf, Auto, Hochzeit, Nachwuchs &amp; Haus.<br>🚗 Mit Auto fährt deine Figur im Cabrio (6 = +1 Extra-Feld) — Familie sitzt mit drin!<br>🛤️ An <b>Weggabelungen</b> wählst du deinen Weg: Studium oder Abenteuer, Karriere oder Familie.<br>❓🔄🏁 Sonderfelder: <b>Quiz</b> (22 Sekunden!), <b>Tauschhandel</b> und <b>Wettrennen</b> aller Spieler.<br>⚡ Kurz-Modus „Schnelles Leben“: 4 Kapitel — perfekt für 10 Minuten.<br>😊 Emotes: Tasten 1–6 oder der 😊-Knopf — Sprechblasen über deiner Figur.<br>🎒 Dein Besitz erscheint als Icons unter deiner Karte — antippen erklärt ihn.<br>💫 Landet ihr auf demselben Feld: Begegnungs-Bonus für beide!<br>🏁 Am Ziel zählt die Lebenspunkte-Summe — und das Spiel schreibt jede Biografie.",
     );};
 // ❓ Anfaenger-Tutorial: 4 einfache Schritte, grosse Emojis, kurze Saetze — zeigt sich automatisch beim ersten Spiel
 var TUT_STEPS=[
@@ -3986,7 +3997,7 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
   var opts=Q.a.map(function(al,k){return {l:["🅰","🅱","🅲"][k]+" "+al,fn:function(){fin(k===Q.c,false);}};});
   opts.push({l:"",hidden:1,fn:function(){fin(false,true);}}); // Timeout-Wahl (unsichtbar, lockstep-gesynct)
   showCard("Quiz-Karte · richtig = +2 🧠 +2 💰","❓ "+Q.q,
-    timed?'⏳ 15 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
+    timed?'⏳ 22 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
   clearTimeout(window._qTO);
   if(timed)requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
   if(timed||NET.on){ // Online IMMER scharf schalten (auch bei OPT.motion=aus) -> AFK erzeugt keinen Soft-Lock
@@ -3994,7 +4005,7 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
       if(!window._cardOpts)return;
       if(NET.on&&G.turn!==NET.my)return;
       sendPick(3);
-    },15300);}
+    },22300);} /* Quiz: 22s statt 15s — nicht zu schwierig (User-Wunsch) */
 }
 function tauschCard(p){ // 🔄 Kurs schwankt: 3–5 💰 gegen 2 ❤️ oder 2 🧠
   var cost=3+((srand()*3)|0),toH=srand()<0.5,gl=toH?"❤️":"🧠",fx=toH?{geld:-cost,glueck:2}:{geld:-cost,wissen:2};

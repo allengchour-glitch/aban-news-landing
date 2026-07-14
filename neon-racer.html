@@ -2,11 +2,14 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
+if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+<meta name="robots" content="noindex">
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Racer — Anti-Grav-Rennspiel (PSP-Style) | aban news</title>
 <meta name="description" content="Neon Racer: futuristischer Anti-Grav-Racer im Browser, im Stil der PSP-Klassiker. Folge der kurvigen Neon-Strecke, nutze Boost, weiche aus, werde immer schneller. Gratis, kein Download.">
-<link rel="canonical" href="https://abannews.com/neon-racer.html">
+<link rel="canonical" href="https://abannews.com/neon-wildnis.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Neon Racer — Anti-Grav-Rennspiel (PSP-Style)">
 <meta property="og:description" content="Futuristischer Neon-Racer im Browser. Kurvige Strecke, Boost, immer schneller. Gratis.">
@@ -22,8 +25,11 @@ html,body{height:100%;overflow:hidden;background:#04050d;color:#fff;font-family:
 canvas{display:block}
 #hud{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 10px;gap:8px;font-weight:800;text-shadow:0 2px 8px #000;pointer-events:none;z-index:5}
 .panel{background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:12px;padding:7px 13px;box-shadow:0 4px 18px rgba(0,0,0,.4);backdrop-filter:blur(3px)}
-#spd{font-size:1.5rem;line-height:1.15}#spd small{font-size:1rem;color:#9fb2ff;font-weight:600}
-.best{font-size:1rem;text-align:right;line-height:1.4;margin-right:56px}
+#spd{font-size:1.5rem;line-height:1.15;white-space:nowrap}#spd small{font-size:1rem;color:#9fb2ff;font-weight:600}
+#coinpanel{white-space:nowrap}
+.best{font-size:1rem;text-align:right;line-height:1.4;margin-right:56px;white-space:nowrap}
+/* Schmale Screens: kompaktere Chips, sonst umbrachen km/h + Rekord und kollidierten mit der Schild-Leiste */
+@media (max-width:560px){#spd{font-size:1.2rem}#spd small{font-size:.85rem}.best{font-size:.88rem;margin-right:46px}#coinpanel{font-size:1.15rem}}
 #shieldwrap{position:fixed;top:66px;left:10px;display:flex;align-items:center;gap:7px;pointer-events:none;background:rgba(9,13,32,.72);border:1px solid rgba(94,242,255,.28);border-radius:10px;padding:6px 10px;z-index:5}
 #shieldwrap .sic{font-size:1rem;line-height:1}
 #shieldtrack{display:block;width:150px;height:10px;background:rgba(16,20,43,.9);border-radius:6px;overflow:hidden}
@@ -149,18 +155,18 @@ var wheels=[];                                  // 4 drehende Räder (0/1 vorne 
   var floor=new THREE.Mesh(roundedBoxGeo(1.78,0.2,2.6,0.12),matS(0x161c34,0x0a1030,0.25)); floor.position.y=0.3; kart.add(floor);
   var nose=new THREE.Mesh(roundedBoxGeo(1.2,0.42,0.95,0.2),matS(0xff5c86,0x6e0f28,0.3)); nose.position.set(0,0.5,-1.32); kart.add(nose);
   // weiche Nasen-Kuppel (Halbkugel statt eckiger Klotz)
-  var noseTip=new THREE.Mesh(new THREE.SphereGeometry(0.32,16,12),matS(0xffd23f,0x8a6a10,0.4)); noseTip.scale.set(1,0.82,1.1); noseTip.position.set(0,0.48,-1.82); kart.add(noseTip);
+  var noseTip=new THREE.Mesh(new THREE.SphereGeometry(0.32,16,12),matS(0xffd23f,0x8a6a10,0.25)); noseTip.scale.set(1,0.82,1.1); noseTip.position.set(0,0.48,-1.82); kart.add(noseTip);
   // Seiten-Pods (Sidepods) — runde Kapseln
   var podL=new THREE.Mesh(capsuleGeo(0.2,1.15,14),matS(0x1b2447,0x0a1030,0.3)); podL.rotation.x=Math.PI/2; podL.position.set(-0.97,0.44,0.1); kart.add(podL);
   var podR=podL.clone(); podR.position.x=0.97; kart.add(podR);
   // Heckflügel
-  var wing=new THREE.Mesh(roundedBoxGeo(1.9,0.14,0.5,0.06),matS(0x5ef2ff,0x1a6f8c,0.95)); wing.position.set(0,1.05,1.2); kart.add(wing);
+  var wing=new THREE.Mesh(roundedBoxGeo(1.9,0.14,0.5,0.06),matS(0x5ef2ff,0x1a6f8c,0.45)); wing.position.set(0,1.05,1.2); kart.add(wing); /* 0.95 = blendend weisser Balken */
   var wpL=new THREE.Mesh(roundedBoxGeo(0.14,0.55,0.5,0.06),matS(0x1b2447,0x0a1030,0.3)); wpL.position.set(-0.82,0.8,1.2); kart.add(wpL);
   var wpR=wpL.clone(); wpR.position.x=0.82; kart.add(wpR);
   // Sitz + Fahrer (Körper=Kapsel, Helm=Kugel, Visier, Hände am Lenker)
   var seat=new THREE.Mesh(roundedBoxGeo(0.96,0.4,0.92,0.18),matS(0x11162e,0x070a1a,0.2)); seat.position.set(0,0.8,0.42); kart.add(seat);
-  var driver=new THREE.Mesh(capsuleGeo(0.34,0.5,16),matS(0x3a7bff,0x14284f,0.32)); driver.position.set(0,1.16,0.42); kart.add(driver);
-  var helmet=new THREE.Mesh(new THREE.SphereGeometry(0.37,20,16),matS(0xffe08a,0x7a5c10,0.35)); helmet.position.set(0,1.72,0.34); kart.add(helmet);
+  var driver=new THREE.Mesh(capsuleGeo(0.34,0.5,16),matS(0x3a7bff,0x14284f,0.22)); driver.position.set(0,1.16,0.42); kart.add(driver);
+  var helmet=new THREE.Mesh(new THREE.SphereGeometry(0.37,20,16),matS(0xffe08a,0x7a5c10,0.18)); helmet.position.set(0,1.72,0.34); kart.add(helmet); /* Fahrer+Helm brannten zu weissen Kugeln aus */
   var visor=new THREE.Mesh(roundedBoxGeo(0.52,0.18,0.16,0.07),matS(0x0a0f22,0x0a0f22,0.05)); visor.position.set(0,1.7,0.05); kart.add(visor);
   var hands=new THREE.Mesh(roundedBoxGeo(0.72,0.16,0.18,0.07),matS(0x2a2f4f,0x11162e,0.2)); hands.position.set(0,1.14,-0.05); kart.add(hands);
   // Auspuffrohre
@@ -175,8 +181,8 @@ var wheels=[];                                  // 4 drehende Räder (0/1 vorne 
     var tire=new THREE.Mesh(new THREE.CylinderGeometry(0.47,0.47,0.4,IS_COARSE?20:28),matS(0x0d0f1c,0x05060d,0.12)); tire.rotation.z=Math.PI/2; wg.add(tire);
     // weiche Reifenschulter (Torus rundet die harte Zylinderkante ab)
     var shoulder=new THREE.Mesh(new THREE.TorusGeometry(0.44,0.11,IS_COARSE?6:10,IS_COARSE?16:22),matS(0x0d0f1c,0x05060d,0.12)); shoulder.rotation.y=Math.PI/2; wg.add(shoulder);
-    var hub=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,0.4,6),mat(front?0xffd23f:0x5ef2ff,front?0x8a6a10:0x2a9fbf,0.9)); hub.rotation.z=Math.PI/2; wg.add(hub);
-    var spoke=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.09,0.09),mat(0xf0f4ff,0xf0f4ff,0.7)); spoke.position.x=0; wg.add(spoke);
+    var hub=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,0.4,6),mat(front?0xffd23f:0x5ef2ff,front?0x8a6a10:0x2a9fbf,0.5)); hub.rotation.z=Math.PI/2; wg.add(hub);
+    var spoke=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.09,0.09),mat(0xf0f4ff,0xf0f4ff,0.35)); spoke.position.x=0; wg.add(spoke);
     wg.position.set(x,0.46,z); ship.add(wg); wheels.push(wg); return wg;
   }
   wheel(-0.92,-0.95,true); wheel(0.92,-0.95,true); wheel(-0.98,1.05,false); wheel(0.98,1.05,false);
@@ -233,11 +239,11 @@ var vergeMat=new THREE.MeshLambertMaterial({map:grassT,color:0x9ad889,emissive:0
 var VW=14,vergeL=[],vergeR=[];  // grüne Schulterstreifen links/rechts der Strecke (flache Planes)
 function vergeMesh(){var m=new THREE.Mesh(new THREE.PlaneGeometry(VW,SP),vergeMat);m.rotation.x=-Math.PI/2;scene.add(m);return m;}
 // Randstein-Curbs (rot/weiss gestreift, Streifen scrollen je Frame) — niedrig, blenden nicht mehr aus
-function railMesh(c){var m=new THREE.Mesh(roundedBarGeo(0.72,0.5,SP*0.98,0.17),mat(c,c,0.5));scene.add(m);return m;}
+function railMesh(c){var m=new THREE.Mesh(roundedBarGeo(0.72,0.5,SP*0.98,0.17),mat(c,c,0.3));scene.add(m);return m;}
 function tileMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(HALF*2,0.12,SP),roadMat);scene.add(m);return m;}
 var midLine=[],edgeL=[],edgeR=[];
-function midMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(0.28,0.14,SP*0.5),mat(0xfff2d6,0xfff2d6,0.85));scene.add(m);return m;}
-function edgeMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(0.24,0.13,SP),mat(0xf2f7ff,0xf2f7ff,0.6));scene.add(m);return m;}
+function midMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(0.28,0.14,SP*0.5),mat(0xfff2d6,0xfff2d6,0.55));scene.add(m);return m;}
+function edgeMesh(){var m=new THREE.Mesh(new THREE.BoxGeometry(0.24,0.13,SP),mat(0xf2f7ff,0xf2f7ff,0.4));scene.add(m);return m;}
 for(var i=0;i<N;i++){leftRail.push(railMesh(0xff2d55));rightRail.push(railMesh(0xff2d55));tiles.push(tileMesh());midLine.push(midMesh());edgeL.push(edgeMesh());edgeR.push(edgeMesh());vergeL.push(vergeMesh());vergeR.push(vergeMesh());}
 
 
@@ -345,7 +351,14 @@ function updGreen(){
    h.position.set((Math.random()*2-1)*170,-5-Math.random()*5,-80-Math.random()*120);
    h.scale.set(30+Math.random()*32,15+Math.random()*13,30+Math.random()*32);
    h.rotation.y=Math.random()*6.283;scene.add(h);}})();
-var stG=new THREE.BufferGeometry();var sp=new Float32Array(200*3);for(i=0;i<200;i++){sp[i*3]=(Math.random()-.5)*400;sp[i*3+1]=Math.random()*80+15;sp[i*3+2]=-Math.random()*360;}stG.setAttribute("position",new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(stG,new THREE.PointsMaterial({color:0x9aa2d8,size:0.8,transparent:true,opacity:.7})));
+/* Sterne mit weicher Radial-Textur (vorher harte Quadrat-Pixel) + mehr davon — der Himmel war ein leeres schwarzes Loch */
+var starTex=new THREE.CanvasTexture((function(){var cv=document.createElement("canvas");cv.width=cv.height=32;var x=cv.getContext("2d");var g=x.createRadialGradient(16,16,1,16,16,15);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=g;x.fillRect(0,0,32,32);return cv;})());
+var stG=new THREE.BufferGeometry();var sp=new Float32Array(320*3);for(i=0;i<320;i++){sp[i*3]=(Math.random()-.5)*440;sp[i*3+1]=Math.random()*95+12;sp[i*3+2]=-Math.random()*360;}stG.setAttribute("position",new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(stG,new THREE.PointsMaterial({color:0xb9c2ee,size:1.1,map:starTex,transparent:true,opacity:.75,depthWrite:false})));
+/* Retrowave-Horizontglut hinter dem Bergring: füllt den leeren Nachthimmel, Violett→Cyan */
+var horizonA=new THREE.Mesh(new THREE.PlaneGeometry(560,180),new THREE.MeshBasicMaterial({map:radialTex("rgba(255,255,255,.75)","rgba(255,255,255,0)"),color:0x7a4dff,transparent:true,opacity:.4,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+horizonA.position.set(0,8,-338);scene.add(horizonA);
+var horizonB=new THREE.Mesh(new THREE.PlaneGeometry(300,90),new THREE.MeshBasicMaterial({map:radialTex("rgba(255,255,255,.8)","rgba(255,255,255,0)"),color:0x3ad0ff,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
+horizonB.position.set(0,2,-336);scene.add(horizonB);
 
 // ---- Chevron-Boost-Pad-Textur (Canvas → leuchtende Pfeile auf dem Boden) ----
 function chevronTex(){
@@ -361,8 +374,8 @@ var padTex=chevronTex();
 // Hindernisse (rot/weisse Barriere) + Boost-Pads (Chevron-Pad am Boden), am Distanz-Wert verankert
 var things=[];
 function thingMesh(){
-  var bar=new THREE.Mesh(roundedBoxGeo(2.4,1.4,0.7,0.2),mat(0xff2d55,0xff2d55,1.0));
-  var cap=new THREE.Mesh(roundedBoxGeo(2.55,0.42,0.82,0.18),mat(0xf4f7ff,0xf4f7ff,0.85));cap.position.y=0.9;bar.add(cap);
+  var bar=new THREE.Mesh(roundedBoxGeo(2.4,1.4,0.7,0.2),mat(0xff2d55,0xff2d55,0.55)); /* 1.0 = rosa Marshmallow statt roter Gefahr */
+  var cap=new THREE.Mesh(roundedBoxGeo(2.55,0.42,0.82,0.18),mat(0xf4f7ff,0xf4f7ff,0.45));cap.position.y=0.9;bar.add(cap);
   var legL=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,0.7,IS_COARSE?8:12),mat(0x11162e,0x0a1030,0.2));legL.position.set(-1.0,-0.9,0);bar.add(legL);
   var legR=legL.clone();legR.position.x=1.0;bar.add(legR);
   bar.visible=false;scene.add(bar);
@@ -409,9 +422,9 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,_dw()>>1),bh=Math.max(1,_dh()>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.76}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.82}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.68}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.58}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
 function renderBloom(){
@@ -474,8 +487,10 @@ function showBest(){var b=bestM();document.getElementById("best").textContent=b;
 function gameOver(){running=false;shake=1.4;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
   document.getElementById("finalT").textContent=m+" m";
   document.getElementById("verdict").innerHTML=(rec&&m>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+" m · ")+"🪙 "+coinScore+" · Top-Speed "+Math.floor(speed*3.0)+" km/h";
+  var _sc=document.getElementById("stCrys");if(_sc)_sc.innerHTML="💎 <b>+"+(Math.floor(dist/10)+(coinScore|0))+" Kristalle</b> — bring sie zurück zur Wildnis!"; /* Stations-Inszenierung (nur wenn Element existiert) */
   document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");brakeBtnVis(false);
   showBest(); // HUD-"Rekord" sofort aktualisieren (stand sonst bis zum Reload auf dem alten Wert)
+  if(STATION)stationPost({t:"stationDone",score:Math.floor(dist/10)+(coinScore|0)}); /* 🌲 Wildnis-Station: Ergebnis melden */
   musSync();beep(90,.4,"sawtooth",.12);}
 
 document.getElementById("startBtn").onclick=start;
@@ -579,6 +594,34 @@ function loop(now){
 }
 reset(); showBest(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(_dw(),_dh());bw=Math.max(1,_dw()>>1);bh=Math.max(1,_dh()>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
+
+/* ===================== 🌲 Stations-Modus (Wildnis-Fusion): läuft als Iframe-Station in neon-wildnis =====================
+   Ausserhalb des Iframes (window.parent===window) ändert sich NICHTS am Verhalten. */
+var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
+if(STATION){
+  /* Arcade-Links ausblenden (würden im Iframe navigieren) */
+  document.querySelectorAll('a[href="/spiele.html"]').forEach(function(a){a.style.display="none";});
+  /* '← Wildnis'-Knopf (immer sichtbar) */
+  var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
+  _wb.style.cssText="position:fixed;top:8px;left:10px;z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:22px;padding:10px 16px;font-weight:800;font-size:1rem;cursor:pointer";
+  _wb.onclick=function(){stationPost("mini-back");};
+  document.body.appendChild(_wb);
+  /* HUD unter den Wildnis-Knopf schieben (Tempo-Anzeige war sonst verdeckt) */
+  document.getElementById("hud").style.top="62px";
+  document.getElementById("shieldwrap").style.top="118px";
+  /* Game-Over als Stations-Moment inszenieren: grosse Distanz + Kristall-Zeile */
+  var _ft=document.getElementById("finalT");_ft.style.fontSize="3.2rem";
+  var _cy=document.createElement("p");_cy.id="stCrys";
+  _cy.style.cssText="color:#8ef7d2;font-weight:800;font-size:1.05rem;margin:.2rem 0;text-shadow:0 2px 10px rgba(0,0,0,.6)";
+  _ft.parentNode.insertBefore(_cy,_ft.nextSibling);
+  /* '← Zurück zur Wildnis' im Game-Over-Screen */
+  var _ob=document.createElement("button");_ob.className="btn ghost";_ob.textContent="← Zurück zur Wildnis";
+  _ob.onclick=function(){stationPost("mini-back");};
+  var _ag=document.getElementById("againBtn");_ag.parentNode.insertBefore(_ob,_ag.nextSibling);
+  /* Startscreen überspringen — Auto-Start */
+  start();
+}
 })();
 </script>
 </body>
