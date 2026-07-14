@@ -1302,8 +1302,17 @@ function mkBunting(cx,cz,ax,az,bx,bz){
   var poleMat=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
   [[ax,az],[bx,bz]].forEach(function(p){var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.12,5.2,6),poleMat);pole.position.set(p[0],groundH(p[0],p[1])+2.6,p[1]);pole.castShadow=true;scene.add(pole);});
   var topY=Math.max(groundH(ax,az),groundH(bx,bz))+4.7,sag=1.5,N=16;
+  /* 🪢 Schnur zwischen den Masten — ohne sie sahen die Fähnchen wie schwebendes Konfetti aus (Polier-Pass) */
+  var ropeMat=new THREE.MeshBasicMaterial({color:0x4a3a2a});
+  var ropeG=new THREE.CylinderGeometry(0.022,0.022,1,3);ropeG.translate(0,0.5,0);
+  var prevX=ax,prevY=topY,prevZ=az;
+  for(var ri=1;ri<=N;ri++){var rf=ri/N,rx=ax+(bx-ax)*rf,rz=az+(bz-az)*rf,ry=topY-Math.sin(rf*Math.PI)*sag;
+    var ddx=rx-prevX,ddy=ry-prevY,ddz=rz-prevZ,len=Math.sqrt(ddx*ddx+ddy*ddy+ddz*ddz);
+    var seg=new THREE.Mesh(ropeG,ropeMat);seg.position.set(prevX,prevY,prevZ);seg.scale.set(1,len,1);
+    seg.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),new THREE.Vector3(ddx/len,ddy/len,ddz/len));
+    scene.add(seg);prevX=rx;prevY=ry;prevZ=rz;}
   for(var i=0;i<N;i++){var f=(i+0.5)/N,x=ax+(bx-ax)*f,z=az+(bz-az)*f,y=topY-Math.sin(f*Math.PI)*sag;
-    var fl=new THREE.Mesh(new THREE.ConeGeometry(0.17,0.34,3),new THREE.MeshBasicMaterial({color:COL[i%COL.length]}));fl.position.set(x,y-0.18,z);fl.rotation.x=Math.PI;scene.add(fl);}
+    var fl=new THREE.Mesh(new THREE.ConeGeometry(0.15,0.3,3),new THREE.MeshBasicMaterial({color:COL[i%COL.length]}));fl.position.set(x,y-0.16,z);fl.rotation.x=Math.PI;scene.add(fl);}
 }
 // 🌟 Dorf-Extras: Gärten neben Häusern, Wimpelketten, zusätzliche Marktstände mit Waren
 function decoVillageExtras(vx,vz,isSpawn,houses){
@@ -2681,7 +2690,7 @@ function updDayNight(dt){
   var vig=document.getElementById("nightVig");
   if(isNight){t=0.08;var lbl="🌙 Tag "+day+" · Nacht ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
     if(vig)vig.style.opacity=(0.55+Math.sin(perfNow*0.004)*0.12).toFixed(2);}
-  else{t=0.62+Math.sin(f*Math.PI)*0.38;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph;
+  else{t=0.72+Math.sin(f*Math.PI)*0.28;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph; /* Morgen/Abend heller — wirkte fast wie Nacht (Polier-Pass) */
     // Dämmerungs-Warnung kurz vor der Nacht
     if(vig)vig.style.opacity=(f>0.85?(f-0.85)/0.15*0.3:0).toFixed(2);
     if(f>0.9&&!duskWarned){duskWarned=true;announce("🌇 Die Dunkelheit naht — sichere deine Basis!");}
