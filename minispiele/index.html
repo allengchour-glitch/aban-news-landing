@@ -18,6 +18,9 @@
   .back:active{transform:translateY(1px)}
   h1{font-size:22px;margin:0;font-weight:900;letter-spacing:.3px}
   .sub{max-width:760px;margin:0 auto 12px;padding:0 4px;color:#3a6a8a;font-weight:600;font-size:14px}
+  .sub .hint{display:block;margin-top:6px;font-size:12.5px;font-weight:600;color:#5a7a94}
+  .sub .hint a{color:#2a6ab0;font-weight:800;text-decoration:none}
+  .sub .hint a:hover{text-decoration:underline}
   .grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
   a.card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-decoration:none;
     background:#fff;border-radius:20px;padding:16px 10px 14px;box-shadow:0 4px 14px rgba(40,90,150,.15);
@@ -37,7 +40,8 @@
   <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{location.href='/lebenspfad.html'}">← Lebenspfad</button>
   <h1>🎮 Minispiele</h1>
 </header>
-<div class="sub">Kleine Spiele für zwischendurch — zu zweit auf einem Gerät. Wählt ein Spiel!</div>
+<div class="sub">Kleine Spiele für zwischendurch — zu zweit auf einem Gerät. Wählt ein Spiel!
+  <span class="hint">💡 Alle 20 Spiele stecken auch im Brettspiel <a href="/lebenspfad.html">🎲 Lebenspfad</a> — dort fordern sie euch unterwegs heraus.</span></div>
 <div class="grid" id="grid"></div>
 <footer>20 Koop-Minispiele · für 2 Spieler am selben Gerät 🎉</footer>
 <script>
