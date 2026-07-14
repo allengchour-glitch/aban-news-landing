@@ -2,11 +2,14 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>/* Fusion: Direktbesuch -> Wildnis-Welt (Arena-Station); als Station (iframe/?station=1) laeuft das Spiel normal */
+if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+<meta name="robots" content="noindex">
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Survivor — 3D-Roguelite-Survival | aban news</title>
 <meta name="description" content="Neon Survivor: 3D-Roguelite im Browser. Bewege dich, auto-feuere auf Gegner-Schwärme, sammle XP, wähle Upgrades, überlebe so lange wie möglich. Gratis, kein Download.">
-<link rel="canonical" href="https://abannews.com/neon-survivor.html">
+<link rel="canonical" href="https://abannews.com/neon-wildnis.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Neon Survivor — 3D-Roguelite-Survival">
 <meta property="og:description" content="Bewegen, auto-feuern, XP sammeln, Upgrades wählen, überleben. Gratis im Browser.">
@@ -1522,12 +1525,14 @@ function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.sty
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   // Mehr-Runden-Speicherstand: Run eintragen (Profil + Bestenliste) und Game-Over-Extras füllen
   nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills));
+  if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Score melden (Kristall-Belohnung) */
   document.getElementById("over").classList.remove("hide");}
 function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
   if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
   var _r=recordRun(curName,S.t,S.wave,S.kills); // Sieg zählt auch als gespielte Runde
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
+  if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Sieg zählt erst recht */
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();}
 
 function aiWanted(){var c=document.getElementById("aiChk");return !!(c&&c.checked);}
@@ -2234,6 +2239,31 @@ reset(); showBest(); renderShop(); renderChars();
   ni.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();dailyMode=false;start();}});})();
 requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
+
+/* ===================== 🌲 Stations-Modus (Wildnis-Fusion): läuft als ⚔️ Arena-Iframe in neon-wildnis =====================
+   Ausserhalb des Iframes (window.parent===window) ändert sich NICHTS am Verhalten. */
+var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
+if(STATION){
+  /* Arcade-Links ausblenden (würden im Iframe navigieren) + Koop-Box/Tages-Challenge raus (Solo-Run) */
+  document.querySelectorAll('a[href="/spiele.html"]').forEach(function(a){a.style.display="none";});
+  var _cb=document.getElementById("coopBox");if(_cb)_cb.style.display="none";
+  var _db=document.getElementById("dailyBtn");if(_db)_db.style.display="none";
+  /* '← Wildnis'-Knopf (immer sichtbar, unter Mute/Pause rechts oben) */
+  var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
+  _wb.style.cssText="position:fixed;top:calc(112px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:22px;padding:10px 14px;font-weight:800;font-size:.95rem;cursor:pointer";
+  _wb.onclick=function(){stationPost("mini-back");};
+  document.body.appendChild(_wb);
+  /* '← Zurück zur Wildnis' im Game-Over- UND Sieg-Screen */
+  var _ob=document.createElement("button");_ob.className="btn ghost";_ob.textContent="← Zurück zur Wildnis";
+  _ob.onclick=function(){stationPost("mini-back");};
+  var _ag=document.getElementById("againBtn");_ag.parentNode.insertBefore(_ob,_ag.nextSibling);
+  var _ow=document.createElement("button");_ow.className="btn ghost";_ow.textContent="← Zurück zur Wildnis";
+  _ow.onclick=function(){stationPost("mini-back");};
+  var _wa=document.getElementById("winAgainBtn");_wa.parentNode.insertBefore(_ow,_wa.nextSibling);
+  /* Startscreen überspringen — Auto-Start Solo-Run mit gespeichertem Charakter/Meta (localStorage ist same-origin im Iframe) */
+  dailyMode=false;coopMode=null;start();
+}
 })();
 </script>
 </body>
