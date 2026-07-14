@@ -1367,7 +1367,7 @@ function mkArenaGate(g){ /* ⚔️ Martialisches Portal: dunkler Bogen + rote Le
   var glow=new THREE.Mesh(new THREE.RingGeometry(0.9,1.3,24),new THREE.MeshBasicMaterial({color:0xff3b3b,transparent:true,opacity:0.85,side:THREE.DoubleSide}));
   glow.position.y=5.62;glow.position.z=0.52;g.add(glow); /* Ring-Emblem am Querbalken */
   for(var t=0;t<2;t++){ /* 2 Wach-Geschütze (nf_turret_single, Primitiv-Fallback) */
-    var tx=t?4.6:-4.6,tu=(typeof cc0inst==="function")?cc0inst("nf_turret_single",2.0):null;
+    var tx=t?4.6:-4.6,tu=(typeof cc0inst==="function")?cc0inst("nf_turret_single",3.2):null; /* groesser + heller (Polier-Loop) */
     if(!tu){tu=new THREE.Group();
       var tb=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.9,0.9),dm);tb.position.y=0.45;tu.add(tb);
       var tk=new THREE.Mesh(new THREE.CylinderGeometry(0.14,0.14,1.1,8),new THREE.MeshBasicMaterial({color:0xff3b3b}));
