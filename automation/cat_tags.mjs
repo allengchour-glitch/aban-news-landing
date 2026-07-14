@@ -27,6 +27,7 @@ export function catTags(text) {
     [/gesichtsreiniger|reinigungsburste|\bserum\b|hautpflege|gesichtscreme|anti.?aging|cleanser|\btoner\b|gesichtsmaske/, ['beauty', 'hautpflege']],
     [/massage|massager|gua.?sha|jade.?roll|akupress|augen.?massag/, ['beauty', 'wellness']],
     [/wimper|lippenstift|nagel|makeup|make.?up|lidschatten|foundation/, ['beauty']],
+    [/parfum|parfüm|eau de (parfum|toilette)|\bedt\b|\bedp\b|duft|cologne/, ['beauty', 'parfum']],
     // Home / Licht / Küche / Deko
     [/\blampe\b|leuchte|beleuchtung|projektor|nachtlicht|led.?strip|lichterkette/, ['beleuchtung']],
     [/diffuser|\baroma\b|duftkerze/,                            ['home', 'deko', 'wellness']],
