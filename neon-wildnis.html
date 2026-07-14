@@ -2,6 +2,18 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>/* 🧹 SW-Kick: Eine alte Service-Worker-Version zerbricht auf manchen Geraeten die Modell-Downloads
+   (User-Diagnose: Header ok, Body scheitert). Spiel-Seiten brauchen keinen SW — abmelden und EINMAL
+   neu laden; spiele.html registriert bei Bedarf die reparierte v2 neu. */
+(function(){try{
+  if(navigator.serviceWorker&&navigator.serviceWorker.controller&&!sessionStorage.getItem("swKick")){
+    navigator.serviceWorker.getRegistrations().then(function(rs){
+      if(!rs.length)return;
+      Promise.all(rs.map(function(r){return r.unregister();})).then(function(){
+        sessionStorage.setItem("swKick","1");location.reload();});
+    });}
+}catch(e){}})();</script>
+
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Wildnis — Sammeln & Bauen im Browser | aban Arcade</title>
