@@ -1172,9 +1172,10 @@ function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.
   n.mesh.rotation.y+=(n.dir-n.mesh.rotation.y)*Math.min(1,dt*4);
   // 💬 Emote-Blase über dem Kopf
   n.emoT-=dt;
-  if(n.emoT<=0){n.emoT=5+rnd()*10;
+  if(n.emoT<=0){n.emoT=n.fixedEmo?(3+rnd()*3):(5+rnd()*10); /* 🎶 Musikant: alle paar Sekunden Noten-Blase */
     if(n.emo){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}
-    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(NPC_EMO[(rnd()*NPC_EMO.length)|0]),transparent:true,depthWrite:false}));
+    var _em=NPC_EMO[(rnd()*NPC_EMO.length)|0];if(n.fixedEmo)_em=n.fixedEmo;
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(_em),transparent:true,depthWrite:false}));
     sp.scale.set(0.6,0.6,0.6);sp.position.y=2.4;n.mesh.add(sp);n.emo=sp;n.emoLife=3;}
   if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}}}}
 // Emote-Texturen einmalig vorbaken (geteilt; nur das SpriteMaterial ist pro Blase)
@@ -1496,6 +1497,165 @@ function decorateWorldLate(){
   addStation(spotFar(55),{kind:"flug", name:"Flugfeld",   icon:"✈️", url:"/neon-flug.html",  badge:"flieger", color:0x7de3ff});
   addStation(spotFar(60),{kind:"jump", name:"Parcours",   icon:"🏃", url:"/neon-jump.html",  badge:"springer",color:0xff7ad9});
   addStation(spotFar(75),{kind:"racer",name:"Rennstrecke",icon:"🏎️", url:"/neon-racer.html", badge:"raser",   color:0xffd166});
+  buildSpawnHub(); /* 🏘️ Phase 2: Spawn-Stadt wird lebendiger Hub (nach den Stationen — Quest-Brett kennt sie dann) */
+}
+/* ===================== 🏘️ SPAWN-STADT-HUB (Wildnis-Fusion Phase 2) =====================
+   Marktstände · Brunnen-Sitzgruppe · Taverne · Schmiede · Quest-Brett · Tier-Cluster ·
+   Nacht-Laternen · Wassermühle am Fluss · Bauernhof-Pferch. Eigener mulberry32-Strom
+   (rnd/rnd2 bleiben unberührt -> Welt-Layout identisch), Abstands-Checks gegen Häuser. */
+var hub={stands:0,lanterns:0,mill:false,forge:false,board:false,critters:0,millX:0,millZ:0};
+var hubLanterns=[],hubForge=null,hubWheel=null,questBoard=null,nearBoard=false,_hubNight=null;
+var COMPASS8=["Norden","Nordosten","Osten","Südosten","Süden","Südwesten","Westen","Nordwesten"];
+var COMPASS8_AR=["⬆️","↗️","➡️","↘️","⬇️","↙️","⬅️","↖️"];
+function compass8(dx,dz){var a=Math.atan2(dx,-dz);if(a<0)a+=Math.PI*2;return Math.round(a/(Math.PI/4))%8;} /* Minimap-Konvention: N = -z */
+function buildSpawnHub(){
+  if(typeof villages==="undefined"||!villages.length)return;
+  var v=villages[0],vx=v.x,vz=v.z;
+  var rndH=mulberry32(((SEED^0x51ab2)>>>0)||1); /* eigener deterministischer Strom */
+  var houses=window._spawnHouses||[];
+  function clearOf(x,z,d){for(var i=0;i<houses.length;i++){if(Math.hypot(houses[i].x-x,houses[i].z-z)<d)return false;}return true;}
+  function hubSpot(ang,r){ /* deterministisch: Radius nach aussen nudgen, bis hausfrei */
+    for(var k=0;k<6;k++){var x=vx+Math.cos(ang)*(r+k*2),z=vz+Math.sin(ang)*(r+k*2);if(clearOf(x,z,5.5))return {x:x,z:z};}
+    return {x:vx+Math.cos(ang)*r,z:vz+Math.sin(ang)*r};
+  }
+  /* 1) 🛒 Belebter Marktplatz: 3 Stände mit Essens-Waren obendrauf (decoVillageExtras-Muster) */
+  var goods=["fd_pie","fd_sausage","fd_burger"];
+  [[5.6,10],[0.35,10],[2.5,10]].forEach(function(sd,si){
+    var sx=vx+Math.cos(sd[0])*sd[1],sz=vz+Math.sin(sd[0])*sd[1];
+    if(!clearOf(sx,sz,4.5))return;
+    var stall=cc0inst("ftk_stall",2.8);if(!stall)return;
+    stall.position.set(sx,groundH(sx,sz),sz);stall.rotation.y=Math.atan2(vz-sz,vx-sx)+Math.PI/2;scene.add(stall);
+    for(var gi=0;gi<3;gi++){var gm=cc0inst(goods[(si+gi)%3],0.5+rndH()*0.15);
+      if(gm){gm.position.set(sx+Math.cos(sd[0]+1.5708)*(gi-1)*0.55,groundH(sx,sz)+0.95,sz+Math.sin(sd[0]+1.5708)*(gi-1)*0.55);gm.rotation.y=rndH()*6.28;scene.add(gm);}}
+    hub.stands++;(hub.standPos=hub.standPos||[]).push({x:sx,z:sz});
+  });
+  /* 2) ⛲ Brunnen-Sitzgruppe: item_fountain (Fallback mkTimberWell) + Bänke/Hocker + 2 rastende NPCs */
+  (function(){var p=hubSpot(0.9,23),fx=p.x,fz=p.z;
+    hub.fx=fx;hub.fz=fz;
+    var f=cc0inst("item_fountain",2.6);
+    if(f){f.position.set(fx,groundH(fx,fz),fz);scene.add(f);}else mkTimberWell(fx,fz);
+    for(var i=0;i<4;i++){var ba=i/4*6.28+0.45,bx=fx+Math.cos(ba)*2.9,bz=fz+Math.sin(ba)*2.9;
+      var s=cc0inst(i%2?"fu_bench":"fn_stool",i%2?0.55:0.9);
+      if(s){s.position.set(bx,groundH(bx,bz),bz);s.rotation.y=ba+Math.PI/2;scene.add(s);}}
+    for(var n2=0;n2<2;n2++){mkVillager(fx+(n2?1.8:-1.8),fz+0.6,vx,vz);var rec=npcs[npcs.length-1];
+      if(rec){rec.spd=0.3;rec.pois=[{x:fx+1.8,z:fz+0.6},{x:fx-1.8,z:fz+0.6},{x:fx,z:fz-2.2}];}} /* bleiben am Brunnen */
+  })();
+  /* 3) 🍺 Taverne: bd_inn + Laterne + warmes Licht + Musikant-NPC (♪-Blase, fixedEmo) */
+  (function(){var p=hubSpot(2.6,23),tx=p.x,tz=p.z;
+    var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);}
+    var dc=vx-tx,ds=vz-tz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
+    var dx=tx+dc*4.4,dz=tz+ds*4.4; /* Vorplatz Richtung Zentrum */
+    var lan=cc0inst("ftk_lantern",1.8);if(lan){lan.position.set(dx+0.9,groundH(dx+0.9,dz),dz);scene.add(lan);}
+    var wl=new THREE.PointLight(0xffb060,0.9,14);wl.position.set(dx,groundH(dx,dz)+2.4,dz);scene.add(wl);
+    mkVillager(dx-1.2,dz+0.8,vx,vz);var mus=npcs[npcs.length-1];
+    if(mus){mus.fixedEmo="🎶";mus.spd=0.25;mus.emoT=1.5;mus.pois=[{x:dx-1.2,z:dz+0.8},{x:dx+1.4,z:dz+1.2},{x:dx,z:dz+2.2}];}
+  })();
+  /* 4) ⚒️ Arbeitende Schmiede: bd_smithy + Amboss + sv_hammer + periodische Funken + Flacker-Licht */
+  (function(){var p=hubSpot(4.9,23),sx=p.x,sz=p.z;
+    var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);}
+    var dc=vx-sx,ds=vz-sz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
+    var ax=sx+dc*4.6,az=sz+ds*4.6,ay=groundH(ax,az);
+    var base=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.4,0.4,8),new THREE.MeshLambertMaterial({color:0x6a4a2c,flatShading:true}));base.position.set(ax,ay+0.2,az);base.castShadow=true;scene.add(base);
+    var anvil=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.5,0.42),new THREE.MeshStandardMaterial({color:0x3a3f4a,roughness:0.6,metalness:0.5,flatShading:true}));anvil.position.set(ax,ay+0.66,az);anvil.castShadow=true;scene.add(anvil);
+    var hm=cc0inst("sv_hammer",0.45);if(hm){hm.position.set(ax+0.24,ay+0.95,az);hm.rotation.set(0.4,rndH()*6.28,1.2);scene.add(hm);}
+    var emb=new THREE.Mesh(new THREE.CircleGeometry(0.55,10),new THREE.MeshBasicMaterial({color:0xff7a20}));emb.rotation.x=-Math.PI/2;emb.position.set(ax+dc*1.7,ay+0.08,az+ds*1.7);scene.add(emb); /* glühende Esse */
+    var fl=new THREE.PointLight(0xff8a30,1.0,13);fl.position.set(ax,ay+1.6,az);scene.add(fl);
+    hubForge={x:ax,y:ay+0.95,z:az,light:fl,t:1+rndH()*2,ph:rndH()*6.28};
+    hub.forge=true;
+  })();
+  /* 5) 🪧 Quest-Aushang-Brett nahe Spawn/Platz — Interaktion zeigt Stations-Kompass (readBoard) */
+  (function(){var p=hubSpot(1.1,10.5),gy=groundH(p.x,p.z);
+    var g=new THREE.Group();g.position.set(p.x,gy,p.z);g.rotation.y=Math.atan2(vx-p.x,vz-p.z);
+    var wood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+    for(var s2=-1;s2<=1;s2+=2){var post=new THREE.Mesh(new THREE.BoxGeometry(0.18,2.6,0.18),wood);post.position.set(s2*1.05,1.3,0);post.castShadow=true;g.add(post);}
+    var cv=document.createElement("canvas");cv.width=256;cv.height=160;var c=cv.getContext("2d");
+    c.fillStyle="#7a5230";c.fillRect(0,0,256,160);c.strokeStyle="#4a3018";c.lineWidth=8;c.strokeRect(4,4,248,152);
+    c.fillStyle="#f4e6c8";c.font="bold 28px sans-serif";c.textAlign="center";c.fillText("📜 AUSHANG",128,40);
+    c.font="22px sans-serif";c.fillText("✈️ Flugfeld",128,76);c.fillText("🏃 Parcours",128,106);c.fillText("🏎️ Rennstrecke",128,136);
+    var bmat=new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:1});
+    var board=new THREE.Mesh(new THREE.BoxGeometry(2.3,1.5,0.1),[wood,wood,wood,wood,bmat,wood]);
+    board.position.y=1.9;board.castShadow=true;g.add(board);
+    var roof=new THREE.Mesh(new THREE.BoxGeometry(2.7,0.1,0.7),new THREE.MeshLambertMaterial({color:0x7a3a26,flatShading:true}));roof.position.set(0,2.75,0.12);roof.rotation.x=0.25;g.add(roof);
+    var sp=stationNameSprite("🪧 Quest-Brett");sp.scale.set(4.6,0.86,1);sp.position.y=3.6;g.add(sp);
+    scene.add(g);
+    questBoard={x:p.x,z:p.z,mesh:g};hub.board=true;
+  })();
+  /* 6) 🐕🐈🐔 Tier-Cluster ums Zentrum (regCritter, kleine Wander-Range) */
+  var CRIT=["an_dog","an_cat","an_chicken","an_chicken","an_dog","an_cat"];
+  var nCrit=IS_MOB?4:6;
+  for(var ci=0;ci<nCrit;ci++){var ca=0.3+ci*1.05,cr2=11+(ci%2)*1.7,cx3=vx+Math.cos(ca)*cr2,cz3=vz+Math.sin(ca)*cr2;
+    if(!clearOf(cx3,cz3,4))continue;
+    var cm2=cc0inst(CRIT[ci],CRIT[ci]==="an_chicken"?0.42:0.62);
+    if(cm2){cm2.position.set(cx3,groundH(cx3,cz3),cz3);cm2.rotation.y=rndH()*6.28;scene.add(cm2);
+      regCritter(cm2,cx3,cz3,{range:4.5,spd:CRIT[ci]==="an_dog"?0.9:0.6,hop:CRIT[ci]!=="an_dog"});hub.critters++;}}
+  /* 7) 🏮 Laternen entlang der Stadt-Wege (4 Speichen, alle ~8 Einheiten) — nachts an,
+        Performance: max 8 echte PointLights (mobil 4), Rest nur Leucht-Glas */
+  var maxL=IS_MOB?4:8,nLights=0;
+  var glowMat=new THREE.MeshBasicMaterial({color:0xffd88a});
+  [0.4,1.97,3.54,5.11].forEach(function(la){
+    for(var r2=12;r2<=36;r2+=8){var lx=vx+Math.cos(la)*r2,lz=vz+Math.sin(la)*r2;
+      if(!clearOf(lx,lz,3.2))continue;
+      var lm=cc0inst("ftk_lantern",1.8);if(!lm)continue;
+      lm.position.set(lx,groundH(lx,lz),lz);lm.rotation.y=rndH()*6.28;scene.add(lm);
+      var gl=new THREE.Mesh(new THREE.SphereGeometry(0.13,6,6),glowMat);gl.position.set(lx,groundH(lx,lz)+1.42,lz);gl.visible=false;scene.add(gl);
+      var lt=null;
+      if(nLights<maxL&&hub.lanterns%2===0){lt=new THREE.PointLight(0xffcf7a,0.8,11);lt.position.set(lx,groundH(lx,lz)+1.6,lz);lt.visible=false;scene.add(lt);nLights++;}
+      hubLanterns.push({glow:gl,light:lt});hub.lanterns++;
+    }
+  });
+  /* 8) 🌊 Wassermühle am nächsten Flusspunkt zur Stadt (ausserhalb des Zaunrings) */
+  (function(){var pts=window._riverPts||[];if(!pts.length)return;
+    var best=null,bi=-1,bd=1e9;
+    for(var i=0;i<pts.length;i++){var d=Math.hypot(pts[i].x-vx,pts[i].z-vz);if(d>=46&&d<bd){bd=d;best=pts[i];bi=i;}}
+    if(!best)return;
+    var mx=best.x,mz=best.z,nxt=pts[Math.min(pts.length-1,bi+1)];
+    var fxd=nxt.x-mx,fzd=nxt.z-mz; /* Fliessrichtung -> Radachse quer dazu */
+    var hut=cc0inst("bd_sawmill",7);if(hut){var hx2=mx+3.4,hz2=mz+2.0;hut.position.set(hx2,groundH(hx2,hz2),hz2);hut.rotation.y=Math.atan2(mx-hx2,mz-hz2);scene.add(hut);}
+    var wood2=new THREE.MeshLambertMaterial({color:0x6a4a2c,flatShading:true});
+    var wg=new THREE.Group();wg.position.set(mx,groundH(mx,mz)+1.35,mz);wg.rotation.y=Math.atan2(fxd,fzd)+Math.PI/2;scene.add(wg);
+    var wheel=new THREE.Group();wg.add(wheel);
+    for(var s3=-1;s3<=1;s3+=2){var disc=new THREE.Mesh(new THREE.TorusGeometry(1.7,0.13,6,14),wood2);disc.position.z=s3*0.45;wheel.add(disc);}
+    for(var sp2=0;sp2<6;sp2++){var a3=sp2/6*6.2832;
+      var spoke=new THREE.Mesh(new THREE.BoxGeometry(0.14,3.3,0.12),wood2);spoke.rotation.z=a3;wheel.add(spoke);
+      var pad2=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.14,1.0),wood2);
+      pad2.position.set(Math.cos(a3+0.5236)*1.72,Math.sin(a3+0.5236)*1.72,0);pad2.rotation.z=a3+0.5236;wheel.add(pad2);}
+    var axg=new THREE.CylinderGeometry(0.12,0.12,1.7,6);axg.rotateX(Math.PI/2);
+    var axle=new THREE.Mesh(axg,wood2);wheel.add(axle);
+    for(var ps2=-1;ps2<=1;ps2+=2){var post2=new THREE.Mesh(new THREE.BoxGeometry(0.22,2.2,0.22),wood2);post2.position.set(0,-1.1,ps2*0.82);wg.add(post2);}
+    hubWheel={m:wheel};hub.mill=true;hub.millX=mx;hub.millZ=mz;
+  })();
+  /* 9) 🐄🐖 Bauernhof-Ecke: Zaun-Pferch bei der Scheune, Kuh + Schwein eingezäunt (kleine Range) */
+  (function(){var pa2=3.3,pr2=52,px3=vx+Math.cos(pa2)*pr2,pz3=vz+Math.sin(pa2)*pr2;
+    for(var f2=0;f2<10;f2++){var fa2=f2/10*6.28,fx2=px3+Math.cos(fa2)*5.6,fz2=pz3+Math.sin(fa2)*5.6;
+      var fm2=cc0inst("cc0_fence",1.2);if(fm2){fm2.position.set(fx2,groundH(fx2,fz2),fz2);fm2.rotation.y=fa2+Math.PI/2;scene.add(fm2);}}
+    [["an_cow",1.35],["an_pig",0.85]].forEach(function(an2,ai2){
+      var axp=px3+(ai2?1.9:-1.9),azp=pz3+(ai2?-1.2:1.0);
+      var am2=cc0inst(an2[0],an2[1]);if(am2){am2.position.set(axp,groundH(axp,azp),azp);am2.rotation.y=rndH()*6.28;scene.add(am2);
+        regCritter(am2,px3,pz3,{range:3.4,spd:0.35});hub.critters++;}});
+    var tr2=cc0inst("sv_bucket",0.35);if(tr2){tr2.position.set(px3,groundH(px3,pz3),pz3);scene.add(tr2);}
+  })();
+}
+/* 🪧 Quest-Brett lesen: Toast mit den 3 Stationen + Richtungs-Kompass (Punkt 10: Tore auffindbar) */
+function readBoard(){
+  if(!questBoard)return;
+  sfx(520,0.07);sfx(660,0.07);
+  var parts=[];
+  for(var i=0;i<stations.length;i++){var s=stations[i],ci=compass8(s.x-questBoard.x,s.z-questBoard.z);
+    parts.push(s.icon+" "+s.name+": "+COMPASS8_AR[ci]+" "+COMPASS8[ci]);}
+  toast(parts.length?("🪧 "+parts.join(" · ")):"🪧 Noch keine Stationen entdeckt");toastT=5;
+  announce("🪧 Aushang: 3 Aktivitäten warten in der Wildnis!");
+}
+/* Hub-Animation: Funken-Schmiede, Nacht-Laternen, Wasserrad */
+function updHub(dt){
+  if(hubWheel)hubWheel.m.rotation.z-=dt*0.45;
+  if(hubForge){hubForge.ph+=dt;
+    hubForge.light.intensity=0.8+Math.abs(Math.sin(hubForge.ph*11))*0.5+Math.sin(hubForge.ph*23)*0.15;
+    hubForge.t-=dt;
+    if(hubForge.t<=0){hubForge.t=IS_MOB?2.6:1.4;
+      var dxp=player.position.x-hubForge.x,dzp=player.position.z-hubForge.z;
+      if(dxp*dxp+dzp*dzp<3600)burst(hubForge.x,hubForge.y,hubForge.z,[0xffb050,0xff7a20,0xffe08a],IS_MOB?4:7);}}
+  if(_hubNight!==isNight){_hubNight=isNight;
+    for(var i=0;i<hubLanterns.length;i++){var L=hubLanterns[i];L.glow.visible=isNight;if(L.light)L.light.visible=isNight;}}
 }
 
 // 🌍 Lade-Anzeige beim Weltaufbau (super spielbar: man sieht, dass es vorangeht)
@@ -1625,6 +1785,7 @@ function decorateWorld(){
     for(var f=0;f<(isSpawn?16:8);f++){var nF=isSpawn?16:8;var fa=f/nF*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
+    if(isSpawn)window._spawnHouses=_houses.slice(); /* 🏙️ Haus-Positionen für Hub-Abstands-Checks (Phase 2) */
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
     layRoads(vx,vz,ringR+3);
     // 🌷 Schöne Wege von jeder Haustür zum Platz (Blumen/Laternen/Türschwelle)
@@ -1734,11 +1895,13 @@ function buildRiver(){
   var wm=new THREE.MeshStandardMaterial({color:0x1e6f92,emissive:0x0b3f60,emissiveIntensity:0.5,transparent:true,opacity:0.82,roughness:0.12,metalness:0.6});
   var dir=rnd()*6.28,cx=Math.cos(dir),cz=Math.sin(dir),px2=-Math.sin(dir),pz2=Math.cos(dir);
   var len=MAP*0.9, steps=Math.round(48), start=-len/2;
+  window._riverPts=[]; /* 🌊 Flusspunkte merken (Hub-Wassermühle sucht den nächsten zur Stadt) */
   for(var i=0;i<steps;i++){
     var t=start+len*(i/steps);var wob=Math.sin(t*0.02)*22+Math.sin(t*0.061)*8;
     var wx=cx*t+px2*wob, wz=cz*t+pz2*wob;var w=6+Math.sin(t*0.03)*2;
     var seg=new THREE.Mesh(new THREE.CircleGeometry(w,14),wm);seg.rotation.x=-Math.PI/2;
     var gy=groundH(wx,wz)-0.35;seg.position.set(wx,gy+0.06,wz);scene.add(seg);
+    window._riverPts.push({x:wx,z:wz,w:w});
   }
 }
 
@@ -2214,6 +2377,8 @@ function findNear(){
   for(var L=0;L<loots.length;L++){var lt=loots[L];if(lt.opened)continue;var lx=lt.x-player.position.x,lz=lt.z-player.position.z,dl=lx*lx+lz*lz;if(dl<bl){bl=dl;nearLoot=lt;}}
   nearStation=null;var bst=4*4; /* 🎯 Aktivitäts-Station (Radius 4) */
   for(var S=0;S<stations.length;S++){var sx3=stations[S].x-player.position.x,sz3=stations[S].z-player.position.z,dst=sx3*sx3+sz3*sz3;if(dst<bst){bst=dst;nearStation=stations[S];}}
+  nearBoard=false; /* 🪧 Quest-Aushang (Hub) */
+  if(questBoard){var qbx=questBoard.x-player.position.x,qbz=questBoard.z-player.position.z;if(qbx*qbx+qbz*qbz<3.4*3.4)nearBoard=true;}
 }
 // 🗨️ NPC-Dialoge (Realm-Merge Teil 3): kurze Sprüche mit Tipps & Leben
 var NPC_LINES=[
@@ -2244,6 +2409,7 @@ function harvest(){
   if(nearWork&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!buildMode){openCraft();return;}
   if(nearNpc&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!nearMerchant&&!buildMode){talkToNpc();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
+  if(nearBoard&&!nearMon&&!nearAni&&!buildMode){readBoard();return;} /* 🪧 Quest-Aushang lesen */
   if(nearStation&&!nearMon&&!nearAni&&!buildMode){openStation(nearStation.i);return;} /* 🎯 Station betreten (vor dem Kampf-Zweig) */
   if(nearMon){ // Kampf
     if(heroRig)playOnce(heroRig,"attack",2.2);
@@ -2709,7 +2875,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -2725,6 +2891,7 @@ function updPrompt(){
   var kp=document.getElementById("kprompt"),act=document.getElementById("bAct");
   if(buildMode||craftMode){kp.style.opacity=0;return;}
   if(nearMon){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"⚔️":"E";document.getElementById("kpTxt").textContent="Angreifen";act.textContent="⚔️";}
+  else if(nearBoard){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🪧":"E";document.getElementById("kpTxt").textContent="Aushang lesen";act.textContent="🪧";}
   else if(nearStation){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🎮":"E";document.getElementById("kpTxt").textContent=nearStation.icon+" "+nearStation.name+" starten";act.textContent=nearStation.icon;}
   else if(nearRes){kp.style.opacity=1;var tx={tree:"Baum fällen",rock:"Stein abbauen",crystal:"Kristall abbauen",bush:"Beeren pflücken"}[nearRes.type];
     document.getElementById("kpKey").textContent=IS_MOB?"🪓":"E";document.getElementById("kpTxt").textContent=tx;
@@ -2973,6 +3140,14 @@ window.__nw={
   closeStation:closeStation,
   stationOpen:function(){return stationOpen;},
   stationsDone:function(){return stationsDone();},
+  hub:function(){return {stands:hub.stands,lanterns:hub.lanterns,mill:hub.mill,forge:hub.forge,board:hub.board,critters:hub.critters};},
+  snapCam:function(d,h){d=d||12;h=(h==null)?8.5:h;var tx=player.position.x-Math.sin(camYaw)*d,tz=player.position.z-Math.cos(camYaw)*d;camera.position.set(tx,player.position.y+h,tz);camera.lookAt(player.position.x,player.position.y+1.6,player.position.z+3);return 1;}, /* Test-Only: Kamera sofort hinter den Spieler (Screenshots ohne Lerp-Wartezeit) */
+  tp:function(x,z){player.position.x=x;player.position.z=z;return 1;}, /* Test-Only */
+  hubPos:function(){return {fountain:{x:hub.fx,z:hub.fz},stands:(hub.standPos||[]).slice(),mill:{x:hub.millX,z:hub.millZ},board:questBoard?{x:questBoard.x,z:questBoard.z}:null};},
+  toBoard:function(){if(!questBoard)return null;player.position.x=questBoard.x;player.position.z=questBoard.z-2.4;return {x:questBoard.x,z:questBoard.z};}, /* Brett vor der Kamera (+z) */
+  readBoard:function(){readBoard();return nearBoard;},
+  toMill:function(){if(!hub.mill)return null;player.position.x=hub.millX;player.position.z=hub.millZ-8;return {x:hub.millX,z:hub.millZ};},
+  toForge:function(){if(!hubForge)return null;player.position.x=hubForge.x;player.position.z=hubForge.z-5;return {x:hubForge.x,z:hubForge.z};},
   state:function(){return{day:day,dayT:dayT,night:isNight,nights:nights,mon:monsters.length,st:structures.length,hp:hp,meat:inv.meat,axe:tools.axe,pick:tools.pick,animals:this.animals(),loot:loots.length,quest:quest,won:won,crystal:inv.crystal,stationOpen:stationOpen,stations:stations.length};}
 };
 requestAnimationFrame(frame);

@@ -2,11 +2,14 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
+if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+<meta name="robots" content="noindex">
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon-Flug — 3D-Arcade-Spiel | aban news</title>
 <meta name="description" content="Neon-Flug: flüssiges 3D-Arcade-Spiel im Browser. Steuere den Gleiter durch den Neon-Canyon, weiche Säulen aus, sammle Orbs. Gratis, kein Download, 60 fps.">
-<link rel="canonical" href="https://abannews.com/neon-flug.html">
+<link rel="canonical" href="https://abannews.com/neon-wildnis.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Neon-Flug — 3D-Arcade im Browser">
 <meta property="og:description" content="Flüssiges 3D-Spiel, kein Download. Weiche aus, sammle Orbs, knacke deinen Rekord.">
