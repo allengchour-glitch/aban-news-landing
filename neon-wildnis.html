@@ -217,6 +217,17 @@ canvas{display:block}
 
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
+<script>/* 🚑 Robust-Loader: r128-FileLoader (Stream-Reader) scheitert auf manchen Geraeten hinter dem
+   Service Worker mit 'Failed to fetch' (User-Diagnose Android/Brave). GLB selbst per fetch holen
+   und direkt parsen — bei Fehler faellt es auf den alten Weg zurueck. */
+(function(){if(!(window.THREE&&THREE.GLTFLoader))return;
+  var _origLoad=THREE.GLTFLoader.prototype.load;
+  THREE.GLTFLoader.prototype.load=function(url,onLoad,onProgress,onError){var self=this;
+    fetch(url,{cache:"force-cache"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.arrayBuffer();})
+    .then(function(buf){self.parse(buf,url.slice(0,url.lastIndexOf("/")+1),onLoad,function(pe){if(onError)onError(pe);});})
+    .catch(function(e){try{_origLoad.call(self,url,onLoad,onProgress,onError);}catch(e2){if(onError)onError(e2);}});
+  };})();
+</script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
 <script>
@@ -1134,7 +1145,7 @@ function layVillagePaths(vx,vz,houses){
 }
 // 🪣 Holz-Ziehbrunnen (passt zum Fachwerk-Stil, ersetzt den "modernen" Steinbrunnen)
 // 🌾 Windmühle mit DREHENDEM Rotor (Blender-Split: Turm + Flügel, Rotor-Pivot auf der Nabe)
-function mkWindmillLive(x,z,targetH){
+function mkWindmillLive(x,z,targetH){addCollider(x,z,2.4);
   var tw=cc0proto["bd_windmill_tower"],blp=cc0proto["bd_windmill_blades"];
   if(!tw||!blp){var st=cc0inst("bd_windmill",targetH||13);if(st){st.position.set(x,groundH(x,z),z);scene.add(st);}return;}
   var k=(targetH||13)/(cc0h["bd_windmill_tower"]||8.87),gy=groundH(x,z);
@@ -1854,7 +1865,7 @@ function decorateWorld(){
         else{ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=27+rnd()*10;}
       }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
       var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
-      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);addChimney(hx+(rnd()-0.5)*1.5,hz+(rnd()-0.5)*1.5,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});}
+      var hm=cc0inst(HOUSES[(rnd()*HOUSES.length)|0],9.5*(0.9+rnd()*0.25));if(hm){hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=Math.atan2(vx-hx,vz-hz)+ (rnd()-0.5)*0.4;scene.add(hm);addChimney(hx+(rnd()-0.5)*1.5,hz+(rnd()-0.5)*1.5,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});addCollider(hx,hz,3.4);}
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
@@ -2305,7 +2316,10 @@ function updDodge(dt){
   dodgeT-=dt;
   var sp2=17,nx=player.position.x+dodgeVX*sp2*dt,nz=player.position.z+dodgeVZ*sp2*dt;
   nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
-  player.position.x=nx;player.position.z=nz;
+  if(canWalk(nx,nz)){player.position.x=nx;player.position.z=nz;}
+  else if(canWalk(nx,player.position.z)){player.position.x=nx;}
+  else if(canWalk(player.position.x,nz)){player.position.z=nz;}
+  else{dodgeT=0;}
   if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
 function damagePlayer(d){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
@@ -2773,6 +2787,20 @@ document.getElementById("bMenu").onclick=function(){togglePause();};
 
 // ---------- Kamera ----------
 var camYaw=0,shake=0;
+var colliders=[];
+function addCollider(x,z,r){colliders.push({x:x,z:z,r:r});}
+function canWalk(nx,nz){ /* 🧱 grosse Gegenstaende blockieren (User-Wunsch) */
+  for(var i=0;i<colliders.length;i++){var c=colliders[i];
+    var dx=c.x-nx;if(dx>c.r||dx<-c.r)continue;
+    var dz=c.z-nz;if(dz>c.r||dz<-c.r)continue;
+    if(dx*dx+dz*dz<c.r*c.r)return false;}
+  for(var j=0;j<resources.length;j++){var r2=resources[j];
+    if(r2.dead||r2.falling)continue;
+    var rr=r2.type==="tree"?0.85:(r2.type==="rock"?1.05:0);if(!rr)continue;
+    var ax=r2.x-nx;if(ax>rr||ax<-rr)continue;
+    var az=r2.z-nz;if(az>rr||az<-rr)continue;
+    if(ax*ax+az*az<rr*rr)return false;}
+  return true;}
 function camRel(mx,my){ /* 🎮 Input -> Welt, relativ zur Kamera-Drehung (User: 'Steuerung komisch' nach Kamera-Drag) */
   var cy=Math.cos(camYaw),sy=Math.sin(camYaw);
   return {x:-mx*cy-my*sy, z:mx*sy-my*cy};}
@@ -2954,7 +2982,10 @@ function frame(now){
     nx=Math.max(-MAP/2+10,Math.min(MAP/2-10,nx));nz=Math.max(-MAP/2+10,Math.min(MAP/2-10,nz));
     // Struktur-Kollision (grob)
     var blocked=false;for(var i=0;i<structures.length;i++){var s=structures[i];if(s.type==="wand"&&Math.hypot(s.x-nx,s.z-nz)<1.6){blocked=true;break;}}
-    if(!blocked){player.position.x=nx;player.position.z=nz;}
+    if(!blocked){
+      if(canWalk(nx,nz)){player.position.x=nx;player.position.z=nz;}
+      else if(canWalk(nx,player.position.z)){player.position.x=nx;}
+      else if(canWalk(player.position.x,nz)){player.position.z=nz;}}
     if(!buildMode)player.rotation.y=Math.atan2(cr.x,cr.z);
     if(heroRig&&!ONESHOT[heroRig.cur])setAnim(heroRig,"walk",0.2,ml>0.9?1.3:1.0);
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}

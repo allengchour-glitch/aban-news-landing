@@ -2,7 +2,7 @@
    Strategie: HTML/Navigation = network-first (Spiele bleiben aktuell, wir deployen oft),
    statische Assets (js/vendor, models, icons, audio) = stale-while-revalidate,
    Offline-Fallback auf die zuletzt gecachte Seite bzw. den App-Hub. */
-var VERSION = "aban-arcade-v1";
+var VERSION = "aban-arcade-v2";
 var SHELL = [
   "/spiele.html",
   "/js/arcade.js",
@@ -45,6 +45,9 @@ self.addEventListener("fetch", function (e) {
   if (req.method !== "GET") return;
   var url = new URL(req.url);
   if (url.origin !== self.location.origin) return; // fremde Hosts unangetastet
+  // Grosse Binaerdateien NICHT anfassen: clone/put von MB-GLBs brach auf manchen Geraeten
+  // den Stream des Spiels ('Failed to fetch', User-Diagnose) und frisst Cache-Quota.
+  if (url.pathname.indexOf("/models/") === 0 || url.pathname.indexOf("/audio/") === 0) return;
 
   if (isHTML(req)) {
     // network-first: immer die aktuelle Seite, offline aus dem Cache
