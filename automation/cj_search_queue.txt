@@ -379,10 +379,10 @@
 #done search:handheld vacuum cordless
 #done search:cleaning brush set kitchen
 #done search:ceramic vase modern decor
-search:wall art canvas set
-search:metal wall decor hanging
-search:moissanite ring silver
-search:moissanite necklace pendant
+#done search:wall art canvas set
+#done search:metal wall decor hanging
+#done search:moissanite ring silver
+#done search:moissanite necklace pendant
 search:moissanite stud earrings
 search:pet cooling mat summer
 search:dog cooling vest
