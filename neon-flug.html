@@ -130,14 +130,14 @@ var trailN=Math.round(14*PFX),trailG=new THREE.BufferGeometry(),trailP=new Float
 for(var _ti=0;_ti<trailN;_ti++){var fdd=1-_ti/trailN;trailCl[_ti*3]=0.37*fdd;trailCl[_ti*3+1]=0.95*fdd;trailCl[_ti*3+2]=1.0*fdd;}
 trailG.setAttribute("position",new THREE.BufferAttribute(trailP,3));trailG.setAttribute("color",new THREE.BufferAttribute(trailCl,3));
 var trailTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,64,64);return new THREE.CanvasTexture(cv);})();
-var trail=new THREE.Points(trailG,new THREE.PointsMaterial({size:0.55,map:trailTex,vertexColors:true,transparent:true,opacity:0.6,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(trail);
+var trail=new THREE.Points(trailG,new THREE.PointsMaterial({size:0.34,map:trailTex,vertexColors:true,transparent:true,opacity:0.45,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(trail);
 
 // Neon-Canyon-Wände (füllen den leeren Raum, geben "Canyon"-Gefühl)
-var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x0b1636,emissive:0x5ef2ff,emissiveIntensity:0.32,flatShading:true}));
+var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x0b1636,emissive:0x5ef2ff,emissiveIntensity:0.14,flatShading:true})); /* Polier-Pass: 0.32 brannte die Wände zu riesigen Pastell-Rampen aus */
 wallL.position.set(-9.6,-0.4,-300);scene.add(wallL);
 var wallR=wallL.clone();wallR.material=wallL.material.clone();wallR.position.x=9.6;scene.add(wallR);
 // Untere Leuchtleisten an den Wänden
-var stripL=new THREE.Mesh(new THREE.BoxGeometry(0.25,0.25,800),new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0xb98bff,emissiveIntensity:1.1}));
+var stripL=new THREE.Mesh(new THREE.BoxGeometry(0.25,0.25,800),new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0xb98bff,emissiveIntensity:0.85}));
 stripL.position.set(-9.0,-1.8,-300);scene.add(stripL);
 var stripR=stripL.clone();stripR.material=stripL.material.clone();stripR.position.x=9.0;scene.add(stripR);
 
@@ -190,7 +190,7 @@ var TRN=Math.round(60*PFX),trail=[],trailGeo=new THREE.BufferGeometry();
 var tpos=new Float32Array(TRN*3);
 for(var i=0;i<TRN;i++){trail.push({x:0,y:0,z:0});}
 trailGeo.setAttribute("position",new THREE.BufferAttribute(tpos,3));
-var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.5,map:trailTex,transparent:true,opacity:.6,blending:THREE.AdditiveBlending,depthWrite:false});
+var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.3,map:trailTex,transparent:true,opacity:.4,blending:THREE.AdditiveBlending,depthWrite:false}); /* 0.5/.6 wirkte wie weisser Leuchtstab unterm Gleiter */
 var trailPts=new THREE.Points(trailGeo,trailMat);scene.add(trailPts);
 
 // Object pools
@@ -199,7 +199,7 @@ var pillars=[],orbs=[],bursts=[];
 function pillar(){
   var h=6+Math.random()*10;
   var m=new THREE.Mesh(new THREE.BoxGeometry(1.6,h,1.6),
-    new THREE.MeshStandardMaterial({color:0x222a55,emissive:COLORS[(Math.random()*COLORS.length)|0],emissiveIntensity:.9,flatShading:true,metalness:.3,roughness:.4}));
+    new THREE.MeshStandardMaterial({color:0x222a55,emissive:COLORS[(Math.random()*COLORS.length)|0],emissiveIntensity:.55,flatShading:true,metalness:.3,roughness:.4})); /* .9 brannte die Neon-Säulen weiss aus (Doppel-Tonemap) */
   m.position.set(0,h/2-2,-200);scene.add(m);return {m:m,h:h,active:false};
 }
 function orb(){
@@ -210,7 +210,7 @@ function orb(){
 // Bonus-Ringe (Skill-Event, Rhythmuswechsel): durchfliegen = großer Combo/Score/Dash-Bonus.
 function gate(){
   var m=new THREE.Mesh(new THREE.TorusGeometry(2.4,0.22,8,28),
-    new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:.9,flatShading:true}));
+    new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:.7,flatShading:true}));
   m.position.set(0,0.4,-200);scene.add(m);return {m:m,active:false,scored:false};
 }
 for(i=0;i<14;i++)pillars.push(pillar());
@@ -218,7 +218,7 @@ for(i=0;i<10;i++)orbs.push(orb());
 var gates=[];for(i=0;i<4;i++)gates.push(gate());
 // Deko: Neon-Bögen über der Strecke
 var arches=[];
-for(i=0;i<4;i++){var am=new THREE.Mesh(new THREE.TorusGeometry(8.6,0.22,8,28,Math.PI),new THREE.MeshStandardMaterial({color:i%2?0xb98bff:0x5ef2ff,emissive:i%2?0xb98bff:0x5ef2ff,emissiveIntensity:1.1,flatShading:true}));
+for(i=0;i<4;i++){var am=new THREE.Mesh(new THREE.TorusGeometry(8.6,0.22,8,28,Math.PI),new THREE.MeshStandardMaterial({color:i%2?0xb98bff:0x5ef2ff,emissive:i%2?0xb98bff:0x5ef2ff,emissiveIntensity:0.6,flatShading:true}));
   am.position.set(0,-1.6,-260-i*90);scene.add(am);arches.push(am);}
 
 // Burst particle effect on collect/crash
@@ -359,6 +359,7 @@ function gameOver(){
   document.getElementById("best").textContent=best;
   document.getElementById("finalScore").textContent=score;
   document.getElementById("verdict").textContent=(score>best-1&&score>0)?tr("newRec"):tr("verdicts")[Math.min(3,(score/15)|0)];
+  var _sc=document.getElementById("stCrys");if(_sc)_sc.innerHTML="💎 <b>+"+score+" Kristalle</b> — bring sie zurück zur Wildnis!"; /* Stations-Inszenierung (nur wenn Element existiert) */
   if(STATION)stationPost({t:"stationDone",score:score}); /* 🌲 Wildnis-Station: Score melden (Kristall-Belohnung) */
   setTimeout(function(){if(!running)document.getElementById("over").classList.remove("hide");},340); // Crash-Shake/Flash erst sichtbar lassen (Guard: Space-Restart in der Lücke)
 }
@@ -439,9 +440,9 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.74}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.80}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.6}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);vec3 col=b.rgb+g.rgb*strength;gl_FragColor=vec4(vec3(1.0)-exp(-col*1.2),1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.55}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);vec3 col=b.rgb+g.rgb*strength;gl_FragColor=vec4(vec3(1.0)-exp(-col*0.95),1.0);}"}); /* exp-Kurve 1.2->0.95: zweites Tonemap nach ACES wusch alles weiss */
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
 function renderBloom(){
@@ -555,6 +556,13 @@ if(STATION){
   _wb.style.cssText="position:fixed;top:8px;left:10px;z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:22px;padding:10px 16px;font-weight:800;font-size:1rem;cursor:pointer";
   _wb.onclick=function(){stationPost("mini-back");};
   document.body.appendChild(_wb);
+  /* HUD nach rechts/unten aus dem Schatten des Wildnis-Knopfs (Score war sonst verdeckt) */
+  document.getElementById("hud").style.paddingLeft="128px";
+  /* Game-Over als Stations-Moment inszenieren: grosser Score + Kristall-Zeile */
+  var _fs=document.getElementById("finalScore");_fs.style.fontSize="3.4rem";
+  var _cy=document.createElement("p");_cy.id="stCrys";
+  _cy.style.cssText="color:#8ef7d2;font-weight:800;font-size:1.05rem;margin:.2rem 0;text-shadow:0 2px 10px rgba(0,0,0,.6)";
+  _fs.parentNode.insertBefore(_cy,_fs.nextSibling);
   /* '← Zurück zur Wildnis' im Game-Over-Screen */
   var _ob=document.createElement("button");_ob.className="btn ghost";_ob.textContent="← Zurück zur Wildnis";
   _ob.onclick=function(){stationPost("mini-back");};
