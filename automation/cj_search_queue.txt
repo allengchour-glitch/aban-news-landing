@@ -367,14 +367,14 @@
 #done search:vegetable chopper cutter
 #done search:serving tray acrylic
 #done search:salad spinner manual
-search:measuring spoons cups set
-search:kitchen scale digital
-search:car phone holder magnetic vent
-search:car charger fast usb c
-search:car cleaning gel putty
-search:car vacuum cordless mini
-search:jump starter power bank car
-search:tempered glass screen protector
+#done search:measuring spoons cups set
+#done search:kitchen scale digital
+#done search:car phone holder magnetic vent
+#done search:car charger fast usb c
+#done search:car cleaning gel putty
+#done search:car vacuum cordless mini
+#done search:jump starter power bank car
+#done search:tempered glass screen protector
 search:privacy screen protector phone
 search:handheld vacuum cordless
 search:cleaning brush set kitchen
