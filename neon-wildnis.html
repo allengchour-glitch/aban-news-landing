@@ -80,7 +80,8 @@ canvas{display:block}
 .bcard .bc{font-size:.82rem;color:#bcd}
 .bcard.aff{border-color:#6affc0}
 /* Start / Pause Overlay */
-#ov{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#182a55,#0a0e1e 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;pointer-events:auto;z-index:5;overflow:auto}
+#ov{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#182a55,#0a0e1e 75%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:24px;pointer-events:auto;z-index:5;overflow:auto}
+#ov::before,#ov::after{content:"";flex:1 0 10px} /* Feder: Titel nie abgeschnitten, alles erreichbar */
 #ov h1{font-size:clamp(2.4rem,9vw,4rem);font-weight:900;letter-spacing:.04em;background:linear-gradient(90deg,#6affc0,#7de3ff,#c98bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
 #ov .sub{color:#9fb3d8;letter-spacing:.28em;font-size:.85rem;text-transform:uppercase;margin-bottom:16px}
 #ov p{max-width:520px;line-height:1.6;color:#cfe;margin-bottom:12px;font-size:1.02rem}
@@ -184,6 +185,7 @@ canvas{display:block}
   <h1>NEON WILDNIS</h1>
   <p>Eine riesige leuchtende Wildnis gehört dir. <b>Fälle Bäume</b>, sammle Holz, Stein und Kristalle, <b>baue deine Basis</b> — und überlebe, wenn nachts die Kreaturen kommen.</p>
   <div id="recBar" class="hide" style="margin:6px auto 10px;max-width:420px;padding:8px 12px;border:1px solid rgba(255,209,102,.4);border-radius:12px;background:rgba(40,32,10,.45);color:#ffd166;font-weight:800;font-size:14px"></div>
+  <div style="margin:4px auto 8px;max-width:460px;padding:7px 12px;border:1px solid rgba(125,227,255,.45);border-radius:12px;background:rgba(10,40,60,.5);color:#7de3ff;font-weight:800;font-size:13.5px">✨ NEU in der Welt: ✈️ Flugfeld · 🏃 Parcours · 🏎️ Rennstrecke — folge den Wegweisern am Quest-Brett!</div>
   <div class="ctl">
     <span class="chip"><b>Ziehen</b> laufen</span>
     <span class="chip"><b>🪓</b> Sammeln/Kämpfen</span>
