@@ -1843,6 +1843,10 @@ function mkP2(){ /* zweite Spielerfigur: warm getönter Neon-Buddy (orange) */
   var ring=new THREE.Mesh(new THREE.TorusGeometry(0.62,0.06,8,20),new THREE.MeshStandardMaterial({color:0xffcf6e,emissive:0xffcf6e,emissiveIntensity:0.7,flatShading:true}));
   ring.rotation.x=Math.PI/2;ring.position.y=-0.5;g.add(ring);
   var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.42,6),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffcf6e,emissiveIntensity:0.9}));ant.position.set(0,0.78,0);g.add(ant);
+  /* 🏷️ Namensschild — Online-Koop zeigt den echten Partner-Namen (User-Wunsch) */
+  (function(){var cv=document.createElement("canvas");cv.width=256;cv.height=64;
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+    sp.scale.set(2.2,0.55,1);sp.position.y=1.55;sp.visible=false;g.add(sp);g.userData.nameSpr=sp;g.userData.nameCv=cv;})();
   var ab=new THREE.Mesh(new THREE.SphereGeometry(0.1,10,8),new THREE.MeshStandardMaterial({color:0xffffff,emissive:0xffcf6e,emissiveIntensity:1.1}));ab.position.set(0,1.02,0);g.add(ab);
   var out={g:g,bm:bm,ring:ring,hp:100,maxhp:100,down:0,rev:0,vx:0,vz:0,active:false,model:null,modelMats:null};
   /* Phase 4: char.glb (unskinned, wie colossus/duo) als Partner-Figur mit Orange-Tint; Primitiv-Buddy = Fallback.
@@ -1864,7 +1868,7 @@ function mkP2(){ /* zweite Spielerfigur: warm getönter Neon-Buddy (orange) */
   return out;
 }
 function setCoopTag(){
-  coopTagBase=coopMode==='ai'?"🤖 KI-Partner":(coopMode==='host'?"🌐 Partner (online)":(coopMode==='client'?"🌐 DU (P2) — Partner hostet":""));
+  coopTagBase=coopMode==='ai'?"🤖 KI-Partner":(coopMode==='host'?("🌐 "+(netPartnerName||"Partner")+" (online)"):(coopMode==='client'?("🌐 DU (P2) · Host: "+(netPartnerName||"…")):""));
   var tg=document.getElementById("p2tag");if(tg)tg.textContent=coopTagBase;
 }
 function coopSetup(){ /* nach reset()/applyMap() in start(): P2 aktivieren + HUD umschalten */
@@ -1988,6 +1992,18 @@ function coopSimP2(dt){ /* Simulation (lokal/Host): P2 bewegen + feuern, Down-/R
 }
 /* ---------------- Online-Koop: Protokoll (Snapshots + Events) ---------------- */
 function netEv(o){if(netSess){try{netSess.send(o);}catch(e){}}}
+var netPartnerName="";
+function p2SetName(n){netPartnerName=nsClean(n);setCoopTag();
+  var g=(typeof P2!=="undefined"&&P2)?P2:null;if(!g||!g.userData||!g.userData.nameSpr)return;
+  var sp=g.userData.nameSpr,cv=g.userData.nameCv,c=cv.getContext("2d");
+  c.clearRect(0,0,256,64);
+  if(!netPartnerName){sp.visible=false;return;}
+  c.font="bold 34px sans-serif";c.textAlign="center";
+  var w=Math.min(240,c.measureText(netPartnerName).width+30);
+  c.fillStyle="rgba(10,12,26,.78)";c.beginPath();c.roundRect((256-w)/2,8,w,48,14);c.fill();
+  c.strokeStyle="#ffa03c";c.lineWidth=3;c.beginPath();c.roundRect((256-w)/2,8,w,48,14);c.stroke();
+  c.fillStyle="#ffd9a8";c.fillText(netPartnerName,128,42);
+  sp.material.map.needsUpdate=true;sp.visible=true;}
 function buildSnap(){ /* kompakter Host-Frame: Spieler, HP/Down, XP/Welle, Gegner (Pool-Index), Schüsse, Bauten, Koloss */
   var en=[],i;
   for(i=0;i<enemies.length;i++){var e=enemies[i];if(!e.active||e.cbProxy)continue;
@@ -2130,12 +2146,15 @@ function netMsg(m,roleOverride){ /* eingehende Nachrichten (beide Rollen) — de
   var r=roleOverride||coopMode;
   if(r==='host'){
     if(m.k==='i'){netIn={x:+m.x||0,z:+m.z||0};netInT=performance.now();}
-    else if(m.k==='again'){if(!running){coopMode='host';start();netEv({e:'bg',mi:curMapIdx});}}
+    else if(m.k==='again'){if(!running){coopMode='host';start();netEv({e:'bg',mi:curMapIdx});netEv({e:'nm',n:nsGetName()||"Gastgeber"});}}
+    else if(m.k==='nm'){p2SetName(m.n);mpState("✅ Partner verbunden: <b>"+nsClean(m.n)+"</b>");}
     return;
   }
   if(m.k==='s'){if(coopMode==='client'&&running)applySnap(m);return;}
   switch(m.e){
-    case 'bg':pendingMap=(m.mi==null?null:m.mi);dailyMode=false;coopMode='client';start();announce("🌐 KOOP GESTARTET — du bist der ORANGE Buddy!");break;
+    case 'bg':pendingMap=(m.mi==null?null:m.mi);dailyMode=false;coopMode='client';start();announce("🌐 KOOP GESTARTET — du bist der ORANGE Buddy!");
+      try{netSess.sendFast({k:'nm',n:nsGetName()||"Gast"});}catch(e){}break;
+    case 'nm':p2SetName(m.n);break;
     case 'an':if(coopMode==='client')announce(m.t);break;
     case 'tl':if(coopMode==='client')cb_teleLine(+m.x||0,+m.z||0,+m.a||0,+m.l||10,+m.w||2,+m.d||0.8,0);break; /* dmg 0: nur Optik */
     case 'tr':if(coopMode==='client')cb_teleRing(+m.x||0,+m.z||0,+m.r||5,+m.d||0.8,0);break;
@@ -2191,7 +2210,7 @@ function hostFixed(code){ /* Offener Raum: mp.js kann keine festen Codes hosten 
   S2.close=function(){byUs=true;clearTimeout(tmo);S2._set("closed");try{peer.destroy();}catch(e){}};
   return S2;
 }
-function hostStart(){coopMode='host';dailyMode=false;start();netEv({e:'bg',mi:curMapIdx});}
+function hostStart(){coopMode='host';dailyMode=false;start();netEv({e:'bg',mi:curMapIdx});netEv({e:'nm',n:nsGetName()||"Gastgeber"});}
 (function(){ /* Buttons verdrahten — alles try/catch-frei haltbar, IDs existieren im Start-Overlay */
   var mk=document.getElementById("mpMakeBtn"),go=document.getElementById("mpGoBtn"),
       op=document.getElementById("mpOpenBtn"),ci=document.getElementById("mpCodeIn");
