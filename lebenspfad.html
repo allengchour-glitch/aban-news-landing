@@ -314,6 +314,16 @@ var THREE=window.THREE,W=innerWidth,H=innerHeight;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
+/* 🚀 ALLERERSTE Netz-Anfragen: Anime-GLBs der gespeicherten Charaktere vorladen. Muss VOR allen
+   Deko-Lade-Bloecken stehen — sonst stehen sie hinter ~40 Brett-Modellen an und die Charakter-
+   Vorschau zeigt minutenlang '⏳ lädt' (User-Report Handy+Desktop). Dateischema: anime_<id>.glb */
+(function(){try{
+  var seen={};
+  ["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"].forEach(function(k){
+    try{var c=JSON.parse(localStorage.getItem(k)||"");
+      if(c&&c.meshy&&!seen[c.meshy]){seen[c.meshy]=1;
+        fetch("/models/anime_"+String(c.meshy).replace(/[^a-z0-9]/g,"")+".glb",{priority:"high"}).catch(function(){});}}catch(e){}});
+}catch(e){}})();
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 var renderer=new THREE.WebGLRenderer({antialias:true}); // AA IMMER an (auch mobil): simple Szene, ohne AA Treppchen-Kanten an allen Feld-Rändern
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);
