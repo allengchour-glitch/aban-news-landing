@@ -21,6 +21,16 @@
 //                       1 Versuch) | "closed" (endgültig)
 //   s.close()        — sauberes Cleanup
 (function () {
+  /* 🌐 Broker-Ersatz: PeerJS-Cloud zeitweise down -> nach Server-Fehler naechsten Broker merken */
+  var MP_BROKERS = [null, { host: "peerjs.92k.de", port: 443, secure: true }];
+  function mpPeerCfg() {
+    var i = 0; try { i = (+(localStorage.getItem("aban_broker") || 0)) % MP_BROKERS.length; } catch (e) {}
+    var b = MP_BROKERS[i], o = { debug: 0 };
+    if (b) { o.host = b.host; o.port = b.port; o.secure = b.secure; }
+    return o;
+  }
+  function mpNextBroker() { try { var i = ((+(localStorage.getItem("aban_broker") || 0)) + 1) % MP_BROKERS.length; localStorage.setItem("aban_broker", String(i)); } catch (e) {} }
+
   "use strict";
   var ALPHA = "ABCDEFGHJKLMNPQRSTUVWXYZ"; // A–Z ohne I/O (Verwechslungsgefahr)
   var JOIN_TIMEOUT = 15000;
@@ -106,7 +116,7 @@
       }
     }
     function boot() {
-      peer = new window.Peer(isHost ? pid(gameId, S.code) : undefined, { debug: 0 });
+      peer = new window.Peer(isHost ? pid(gameId, S.code) : undefined, mpPeerCfg());
       S._peer = peer;
       clearTimeout(tmo);
       tmo = setTimeout(function () {
@@ -126,6 +136,7 @@
       });
       peer.on("disconnected", function () { if (!byUs) { try { peer.reconnect(); } catch (e) {} } });
       peer.on("error", function (err) {
+      try { var _t = err && err.type; if (_t === "network" || _t === "server-error" || _t === "socket-error" || _t === "socket-closed") mpNextBroker(); } catch (e) {}
         var t = err && err.type;
         if (isHost && t === "unavailable-id" && tries < 3) { // Code-Kollision → neuer Code
           tries++; try { peer.destroy(); } catch (e) {}
