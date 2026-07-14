@@ -271,12 +271,18 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
-      <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:120px;font-size:16px">
-      <button class="btn ghost" id="netHostBtn" style="margin-top:0">Raum erstellen</button>
-      <input id="netCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:76px;text-transform:uppercase;font-size:16px">
-      <button class="btn ghost" id="netJoinBtn" style="margin-top:0">Beitreten</button>
-      <button class="btn ghost" id="netHostPubBtn" style="margin-top:0" title="Raum ohne Code — jeder kann beitreten">🌍 Offener Raum</button>
-      <button class="btn ghost" id="netJoinPubBtn" style="margin-top:0" title="Offenem Raum ohne Code beitreten">🌍 Offen beitreten</button>
+      <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:150px;font-size:16px;text-align:center">
+      <button class="btn" id="quickPlayBtn" style="margin-top:0;flex-basis:100%;max-width:360px;background:linear-gradient(135deg,#5ee0a0,#2fb8ff);font-size:1.02rem">🌍 Sofort online spielen — 1 Tipp, ohne Code</button>
+      <details style="flex-basis:100%">
+        <summary style="cursor:pointer;color:#2a6ab0;font-weight:700;font-size:.86rem">👥 Mit Freunden per Code spielen</summary>
+        <div style="margin-top:8px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
+          <button class="btn ghost" id="netHostBtn" style="margin-top:0">Raum erstellen</button>
+          <input id="netCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:76px;text-transform:uppercase;font-size:16px">
+          <button class="btn ghost" id="netJoinBtn" style="margin-top:0">Beitreten</button>
+        </div>
+      </details>
+      <button class="btn ghost" id="netHostPubBtn" style="display:none" title="Raum ohne Code — jeder kann beitreten">🌍 Offener Raum</button>
+      <button class="btn ghost" id="netJoinPubBtn" style="display:none" title="Offenem Raum ohne Code beitreten">🌍 Offen beitreten</button>
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
@@ -3505,6 +3511,10 @@ document.getElementById("netHostPubBtn").onclick=function(){ // 🌍 offener Rau
   if(NET.peer)return;NET.pubWanted=true;document.getElementById("netHostBtn").click();};
 document.getElementById("netJoinPubBtn").onclick=function(){ // 🌍 offenem Raum beitreten
   if(NET.peer)return;document.getElementById("netCode").value="OFEN";document.getElementById("netJoinBtn").click();};
+document.getElementById("quickPlayBtn").onclick=function(){ /* 🌍 1-Tipp: joinen ODER automatisch Raum oeffnen */
+  if(NET.peer)return;NET.quick=true;
+  netStatus("🌍 Suche offenen Raum …","#2a6ab0");
+  document.getElementById("netCode").value="OFEN";document.getElementById("netJoinBtn").click();};
 document.getElementById("netJoinBtn").onclick=function(){
   if(typeof Peer==="undefined"){netStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
   if(NET.peer)return; // Doppelklick-Schutz
@@ -3513,7 +3523,15 @@ document.getElementById("netJoinBtn").onclick=function(){
   var jb=this,hb=document.getElementById("netHostBtn");jb.disabled=true;hb.disabled=true;jb.textContent="⏳ …";
   NET.host=false;NET.code=code;NET.my=-1;NET.started=false;NET.ping=0;NET._reTries=0; // Index bis 'welcome' unbekannt (nicht 0!)
   netStatus("⏳ Verbinde mit Raum "+code+" …","#2a6ab0");
-  function joinReset(msg){try{voiceStop();}catch(e){}netStatus(msg,"#e05a5a");clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
+  function joinReset(msg){try{voiceStop();}catch(e){}
+    if(NET.quick){ /* 🌍 kein offener Raum -> automatisch selbst einen oeffnen */
+      NET.quick=false;clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);
+      try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
+      jb.disabled=false;hb.disabled=false;jb.textContent="Beitreten";
+      netStatus("🌍 Kein offener Raum da — ich öffne einen für dich …","#2a7d46");
+      setTimeout(function(){document.getElementById("netHostPubBtn").click();},350);
+      return;}
+    netStatus(msg,"#e05a5a");clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
     jb.disabled=false;hb.disabled=false;jb.textContent="Beitreten";
     document.getElementById("chatToggle").style.display="none";
     document.getElementById("netSetup").style.display="flex";document.getElementById("netLobby").style.display="none";}
@@ -3526,12 +3544,12 @@ document.getElementById("netJoinBtn").onclick=function(){
   NET.peer.on("call",voiceAnswer); /* 🎙️ eingehende Voice-Anrufe annehmen */
   // 🔁 Beitritt mit Wiederholung: der Gratis-Broker ist manchmal träge, oder der Host lädt noch —
   // ein einzelnes "peer-unavailable" heisst NICHT, dass der Raum weg ist. Bis zu 5 Versuche.
-  var attempt=0,MAXTRY=5;
+  var attempt=0,MAXTRY=NET.quick?2:5;
   function tryConnect(){
     if(opened||!NET.peer||NET.peer.destroyed)return;
     attempt++;netStatus("⏳ Suche Raum "+code+" … (Versuch "+attempt+"/"+MAXTRY+")","#2a6ab0");
     var c=NET.peer.connect(netRoomId(code),{reliable:true});NET.conns=[c];var thisOpen=false;
-    c.on("open",function(){thisOpen=true;opened=true;clearTimeout(NET._tmo);clearTimeout(NET._retryT);
+    c.on("open",function(){thisOpen=true;opened=true;NET.quick=false;clearTimeout(NET._tmo);clearTimeout(NET._retryT);
       netLobbyShow();netPlayersUpd();netConnInfo();netStatus("");
       try{c.send(JSON.stringify({t:"hallo",n:netMyName(),cfg:loadChar(0)}));}catch(e){}
       document.getElementById("netHint").textContent="Verbunden — mach dich bereit und warte auf den Start …";

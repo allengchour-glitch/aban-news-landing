@@ -152,15 +152,16 @@ canvas{display:block}
   <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
   <div id="coopBox" style="margin-top:12px;max-width:360px;width:100%;font-size:.9rem;border:1px solid #2a3170;border-radius:12px;padding:10px;background:rgba(10,13,30,.5)">
     <div style="font-weight:800;color:#9fb2ff;margin-bottom:6px">🌐 Online-Koop — zu zweit gegen die Schwärme</div>
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-      <button class="btn ghost" id="mpMakeBtn" style="margin-top:0">🎲 Raum erstellen</button>
-      <button class="btn ghost" id="mpOpenBtn" style="margin-top:0" title="Ohne Code — findet automatisch einen Mitspieler">🌍 Offener Raum</button>
-    </div>
-    <div style="margin-top:8px;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap">
-      <input id="mpCodeIn" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Raum-Code"
-        style="width:118px;text-align:center;padding:10px;border-radius:10px;border:1px solid #3a4170;background:#10142b;color:#eaf0ff;font-size:16px;font-weight:900;letter-spacing:4px;text-transform:uppercase;outline:none">
-      <button class="btn ghost" id="mpGoBtn" style="margin-top:0">Beitreten ▶</button>
-    </div>
+    <button class="btn" id="mpOpenBtn" style="margin-top:0;width:100%;max-width:340px;font-size:1.02rem;background:linear-gradient(135deg,#5ee0a0,#2fb8ff);color:#08131c" title="Ohne Code — findet automatisch einen Mitspieler oder öffnet einen Raum">🌍 Sofort zusammen spielen — 1 Tipp, ohne Code</button>
+    <details style="margin-top:8px">
+      <summary style="cursor:pointer;color:#9fb2ff;font-weight:700;font-size:.86rem">👥 Mit Freunden per Code spielen</summary>
+      <div style="margin-top:8px;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap">
+        <button class="btn ghost" id="mpMakeBtn" style="margin-top:0">🎲 Raum erstellen</button>
+        <input id="mpCodeIn" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false" aria-label="Raum-Code"
+          style="width:118px;text-align:center;padding:10px;border-radius:10px;border:1px solid #3a4170;background:#10142b;color:#eaf0ff;font-size:16px;font-weight:900;letter-spacing:4px;text-transform:uppercase;outline:none">
+        <button class="btn ghost" id="mpGoBtn" style="margin-top:0">Beitreten ▶</button>
+      </div>
+    </details>
     <div id="mpState" style="margin-top:8px;color:#c7cbe6;font-size:.88rem;line-height:1.45"></div>
     <label style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;color:#c7cbe6;font-weight:700;margin-top:10px"><input type="checkbox" id="aiChk" style="width:18px;height:18px;accent-color:#5ef2ff"> 🤖 KI-Partner (Solo mit Bot)</label>
   </div>
