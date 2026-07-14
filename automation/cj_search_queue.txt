@@ -323,10 +323,10 @@
 #done search:travel makeup bag
 #done search:packing cubes set
 #done search:car phone holder magnetic
-search:solar garden lights outdoor
-search:solar lantern hanging
-search:string lights outdoor waterproof
-search:led fairy lights garden
+#done search:solar garden lights outdoor
+#done search:solar lantern hanging
+#done search:string lights outdoor waterproof
+#done search:led fairy lights garden
 search:balcony hanging planter
 search:self watering plant pot
 search:macrame plant hanger
