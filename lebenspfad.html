@@ -314,6 +314,17 @@ var THREE=window.THREE,W=innerWidth,H=innerHeight;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
+/* 🩺 Diagnose-Overlay (?diag=1): zeigt live, was beim Laden passiert — fuer Geraete-Fehlersuche */
+var DIAGON=/[?&]diag=1/.test(location.search),_diagEl=null;
+function diag(t){if(!DIAGON)return;try{
+  if(!_diagEl){_diagEl=document.createElement("div");
+    _diagEl.style.cssText="position:fixed;left:4px;top:4px;z-index:99999;background:rgba(0,0,0,.88);color:#7dff9a;font:11px/1.5 monospace;padding:8px;max-width:94vw;max-height:46vh;overflow:auto;border-radius:8px;white-space:pre-wrap;pointer-events:auto";
+    document.body.appendChild(_diagEl);}
+  _diagEl.textContent+=t+"\n";_diagEl.scrollTop=1e9;}catch(e){}}
+if(DIAGON){window.addEventListener("error",function(e){
+  diag("❌ FEHLER: "+(e.message||e.type||"?")+" @"+String(e.filename||(e.target&&e.target.src)||"").split("/").pop()+(e.lineno?":"+e.lineno:""));},true);
+  diag("🩺 Diagnose an · "+(navigator.userAgent||"").slice(0,60));
+  setTimeout(function(){diag("GLTFLoader nach 1s: "+(window.THREE&&THREE.GLTFLoader?"da ✅":"FEHLT ❌"));},1000);}
 /* 🚀 ALLERERSTE Netz-Anfragen: Anime-GLBs der gespeicherten Charaktere vorladen. Muss VOR allen
    Deko-Lade-Bloecken stehen — sonst stehen sie hinter ~40 Brett-Modellen an und die Charakter-
    Vorschau zeigt minutenlang '⏳ lädt' (User-Report Handy+Desktop). Dateischema: anime_<id>.glb */
@@ -322,7 +333,8 @@ function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
   ["lp_char_rot","lp_char_blau","lp_char_gruen","lp_char_gold"].forEach(function(k){
     try{var c=JSON.parse(localStorage.getItem(k)||"");
       if(c&&c.meshy&&!seen[c.meshy]){seen[c.meshy]=1;
-        fetch("/models/anime_"+String(c.meshy).replace(/[^a-z0-9]/g,"")+".glb",{priority:"high"}).catch(function(){});}}catch(e){}});
+        var _pf="anime_"+String(c.meshy).replace(/[^a-z0-9]/g,"")+".glb";diag("🚀 Preload "+_pf);
+        fetch("/models/"+_pf,{priority:"high"}).then(function(r){diag("🚀 Preload ok "+_pf+" ("+r.status+")");}).catch(function(er){diag("🚀 Preload FEHLER "+_pf+" "+er);});}}catch(e){}});
 }catch(e){}})();
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 var renderer=new THREE.WebGLRenderer({antialias:true}); // AA IMMER an (auch mobil): simple Szene, ohne AA Treppchen-Kanten an allen Feld-Rändern
@@ -1068,8 +1080,16 @@ function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
   /* 👤 Sofort-Platzhalter: bis das GLB geladen ist steht die Toon-Figur auf dem Brett (sonst "unsichtbare
      Charaktere" bei langsamem Netz) — und sie BLEIBT stehen, falls der Download endgueltig scheitert. */
   var ph=null;try{var pcfg={};for(var pk in cfg)if(pk!=="meshy")pcfg[pk]=cfg[pk];ph=mkPawnMesh(color,pcfg);g.add(ph);}catch(e){}
-  var glTries=0;
-  function glLoad(){if(!THREE.GLTFLoader)return;new THREE.GLTFLoader().load("/models/"+spec.file,function(gl){
+  var glTries=0,glWait=0;
+  function glLoad(){
+    if(!THREE.GLTFLoader){ /* 📱 GLTFLoader.js evtl. noch nicht geladen -> warten statt still aufgeben */
+      if(glWait===0)diag("⏳ warte auf GLTFLoader … ("+spec.file+")");
+      if(++glWait<50)setTimeout(glLoad,300);
+      else diag("❌ GLTFLoader kam nie an — "+spec.file+" bleibt Platzhalter");
+      return;}
+    diag("⬇️ lade "+spec.file+" (Versuch "+(glTries+1)+")");
+    new THREE.GLTFLoader().load("/models/"+spec.file,function(gl){
+    diag("✅ GLB geparst: "+spec.file);
     var o=gl.scene;o.scale.setScalar(0.95); // 0.62 war winzig neben der Toon-Figur
     // 🎨 Kleiderfarbe wirkt auch auf Anime-Figuren: Meshy-GLBs haben EINE Atlas-Textur (weisse Grundfarbe),
     // darum werden die TEXTUR-Pixel selektiv umgefärbt — Haut-Töne, fast-Weiss und sehr Dunkles bleiben erhalten.
@@ -1118,7 +1138,8 @@ function mkMeshyPawn(color,cfg,onReady){var g=new THREE.Group();
       if(st){st.play();g.userData.gcur=st;}
       mx.update(0.1);g.userData.gmix=mx;}
     if(onReady)onReady();
-  },undefined,function(){if(++glTries<3)setTimeout(glLoad,1500*glTries);/* Netz-Huster: bis 2x neu versuchen, sonst bleibt der Toon-Platzhalter */});}
+  },undefined,function(err){diag("❌ GLB-Fehler "+spec.file+": "+((err&&err.message)||(err&&err.target&&err.target.status)||err||"?"));
+    if(++glTries<3)setTimeout(glLoad,1500*glTries);/* Netz-Huster: bis 2x neu versuchen, sonst bleibt der Toon-Platzhalter */});}
   glLoad();
   return g;}
 // ===== 🔓 Freischalt-System: Fun-Looks schalten sich mit gespielten Leben frei (klein, nicht pay2win) =====
@@ -2915,7 +2936,10 @@ function charPreview(cv,cfg,col){ // Mini-3D-Vorschau: über den HAUPT-Renderer 
       p=mkPawnMesh(col,tc,null);p.rotation.y=0.45;draw();
       (function(){try{var c2d=cv.getContext("2d");c2d.font="bold "+(14*(PV_W/110))+"px sans-serif";c2d.textAlign="center";
         c2d.fillStyle="rgba(40,60,90,.75)";c2d.fillText("⏳ lädt …",PV_W/2,PV_H*0.13);}catch(e){}})();
-      var mp=mkPawnMesh(col,cfg,function(){p=mp;mp.rotation.y=0.45;draw();});
+      var mp=mkPawnMesh(col,cfg,function(){
+        if(cv.__gen!==myGen){diag("🗑️ Vorschau verworfen (neu gerendert): "+(cfg.meshy||"?"));return;}
+        diag("🖼️ Vorschau-Swap ok: "+(cfg.meshy||"?"));
+        p=mp;mp.rotation.y=0.45;draw();});
     }else{
       p=mkPawnMesh(col,cfg,null);p.rotation.y=0.45;draw();
     }
