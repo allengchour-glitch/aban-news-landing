@@ -323,3 +323,43 @@
 #done search:travel makeup bag
 #done search:packing cubes set
 #done search:car phone holder magnetic
+search:solar garden lights outdoor
+search:solar lantern hanging
+search:string lights outdoor waterproof
+search:led fairy lights garden
+search:balcony hanging planter
+search:self watering plant pot
+search:macrame plant hanger
+search:vertical garden wall planter
+search:hanging basket flower
+search:plant pot drainage set
+search:garden tools set hand
+search:pruning shears bypass
+search:garden kneeler pad
+search:watering can indoor
+search:plant watering spike self
+search:bird feeder hanging
+search:bird house wooden
+search:wind chime metal
+search:garden gnome decor
+search:solar fountain pump
+search:outdoor cushion waterproof
+search:balcony privacy screen
+search:door mat outdoor coir
+search:garden fence decorative
+search:plant labels garden
+search:seed starter tray
+search:garden gloves waterproof
+search:outdoor thermometer wall
+search:citronella candle outdoor
+search:mosquito repellent outdoor
+search:foldable picnic blanket
+search:hammock portable outdoor
+search:garden solar stake light
+search:flower pot hanging railing
+search:balcony rail hook planter
+search:artificial plants outdoor
+search:garden storage bag
+search:sun shade sail
+search:outdoor lantern led
+search:plant grow bags fabric
