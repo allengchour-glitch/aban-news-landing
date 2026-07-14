@@ -1633,7 +1633,7 @@ function buildSpawnHub(){
   })();
   /* 3) 🍺 Taverne: bd_inn + Laterne + warmes Licht + Musikant-NPC (♪-Blase, fixedEmo) */
   (function(){var p=hubSpot(2.6,23),tx=p.x,tz=p.z;
-    var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);}
+    var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);addCollider(tx,tz,4.0);}
     var dc=vx-tx,ds=vz-tz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var dx=tx+dc*4.4,dz=tz+ds*4.4; /* Vorplatz Richtung Zentrum */
     var lan=cc0inst("ftk_lantern",1.8);if(lan){lan.position.set(dx+0.9,groundH(dx+0.9,dz),dz);scene.add(lan);}
@@ -1643,7 +1643,7 @@ function buildSpawnHub(){
   })();
   /* 4) ⚒️ Arbeitende Schmiede: bd_smithy + Amboss + sv_hammer + periodische Funken + Flacker-Licht */
   (function(){var p=hubSpot(4.9,23),sx=p.x,sz=p.z;
-    var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);}
+    var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);addCollider(sx,sz,3.8);}
     var dc=vx-sx,ds=vz-sz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var ax=sx+dc*4.6,az=sz+ds*4.6,ay=groundH(ax,az);
     var base=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.4,0.4,8),new THREE.MeshLambertMaterial({color:0x6a4a2c,flatShading:true}));base.position.set(ax,ay+0.2,az);base.castShadow=true;scene.add(base);
@@ -1701,7 +1701,7 @@ function buildSpawnHub(){
     if(!best)return;
     var mx=best.x,mz=best.z,nxt=pts[Math.min(pts.length-1,bi+1)];
     var fxd=nxt.x-mx,fzd=nxt.z-mz; /* Fliessrichtung -> Radachse quer dazu */
-    var hut=cc0inst("bd_sawmill",7);if(hut){var hx2=mx+3.4,hz2=mz+2.0;hut.position.set(hx2,groundH(hx2,hz2),hz2);hut.rotation.y=Math.atan2(mx-hx2,mz-hz2);scene.add(hut);}
+    var hut=cc0inst("bd_sawmill",7);if(hut){var hx2=mx+3.4,hz2=mz+2.0;hut.position.set(hx2,groundH(hx2,hz2),hz2);hut.rotation.y=Math.atan2(mx-hx2,mz-hz2);scene.add(hut);addCollider(hx2,hz2,3.2);}
     var wood2=new THREE.MeshLambertMaterial({color:0x6a4a2c,flatShading:true});
     var wg=new THREE.Group();wg.position.set(mx,groundH(mx,mz)+1.35,mz);wg.rotation.y=Math.atan2(fxd,fzd)+Math.PI/2;scene.add(wg);
     var wheel=new THREE.Group();wg.add(wheel);
@@ -1883,10 +1883,10 @@ function decorateWorld(){
     layVillagePaths(vx,vz,isSpawn?_houses.slice(0,10):_houses);
     decoVillageExtras(vx,vz,isSpawn,_houses); // 🥕🎉 Gärten, Wimpelketten, Marktstände
     if(isSpawn){ // ⛪🌾 Dorf-Wahrzeichen: Kirche, Windmühle am Rand, Scheune + Stall
-      var ch2=cc0inst("bd_church",10);if(ch2){var chx=vx-14,chz=vz-12;ch2.position.set(chx,groundH(chx,chz),chz);ch2.rotation.y=Math.atan2(vx-chx,vz-chz);scene.add(ch2);}
+      var ch2=cc0inst("bd_church",10);if(ch2){var chx=vx-14,chz=vz-12;ch2.position.set(chx,groundH(chx,chz),chz);ch2.rotation.y=Math.atan2(vx-chx,vz-chz);scene.add(ch2);addCollider(chx,chz,4.5);}
       mkWindmillLive(vx+Math.cos(-2.4)*(ringR+13),vz+Math.sin(-2.4)*(ringR+13),13); // kameraabgewandt, Rotor dreht
-      var bn=cc0inst("bd_barn",6.5);if(bn){var bx3=vx-Math.cos(0.4)*(ringR+6),bz3=vz-Math.sin(0.4)*(ringR+6);bn.position.set(bx3,groundH(bx3,bz3),bz3);bn.rotation.y=rnd()*6.28;scene.add(bn);}
-      var st4=cc0inst("bd_stable",4.5);if(st4){var sx4=vx-Math.cos(0.4)*(ringR+6)+6,sz4=vz-Math.sin(0.4)*(ringR+6)+3;st4.position.set(sx4,groundH(sx4,sz4),sz4);st4.rotation.y=rnd()*6.28;scene.add(st4);}}
+      var bn=cc0inst("bd_barn",6.5);if(bn){var bx3=vx-Math.cos(0.4)*(ringR+6),bz3=vz-Math.sin(0.4)*(ringR+6);bn.position.set(bx3,groundH(bx3,bz3),bz3);bn.rotation.y=rnd()*6.28;scene.add(bn);addCollider(bx3,bz3,4.0);}
+      var st4=cc0inst("bd_stable",4.5);if(st4){var sx4=vx-Math.cos(0.4)*(ringR+6)+6,sz4=vz-Math.sin(0.4)*(ringR+6)+3;st4.position.set(sx4,groundH(sx4,sz4),sz4);st4.rotation.y=rnd()*6.28;scene.add(st4);addCollider(sx4,sz4,3.0);}}
     if(!isSpawn&&rnd()<0.4){var wa2=rnd()*6.28;mkWindmillLive(vx+Math.cos(wa2)*(ringR+7),vz+Math.sin(wa2)*(ringR+7),12);}
     if(isSpawn){ // 🎄 festliche Ecke im Anfangsdorf (CC0 Holiday-Kit)
       var ft=cc0inst("hd_tree",3.2);if(ft){var fx=vx+10,fz=vz+9;ft.position.set(fx,groundH(fx,fz),fz);scene.add(ft);
