@@ -526,6 +526,19 @@ Shot-Review-Frage ab jetzt immer: „Würde ein 8-Jähriger ohne Erklärung losl
 Stand: Bauen(7 Kategorien, 22 Möbel) · Bedürfnis-KI · Arbeit/Gehalt/Karriere · Liebe→Hochzeit→Kinder ·
 krumme Dinger + Minigames (Timing) · NPCs (Postbote/Nachbarin/Händler/Katze/Polizist) · realistische
 geriggte Charaktere (th_mann/th_frau, Bone-Height-Messung!) · Hund · Gemüsebeet · Koop komplett (mp.js).
+Stand 2026-07-13 (Session ~80 PRs): Traumhaus ist jetzt ein GTA-artiger Open-World-Lebenssim.
+NEU seit 07-12: Open-World-Map 34x24 + ferne Landschaft (Hügel/Blumenfelder/See), Skyline (6 Wolkenkratzer)
++ Neon-Schilder + Ampeln; Auto FAHREN (einsteigen/selbst lenken/Nitro+Hupe) + fremde Autos KLAUEN → POLIZEI-JAGD
+(verfolgt, gefasst=Busse, entkommen); Koop-Vollausbau: Live-Voice (WebRTC über MPs._peer.call, itch/Playwright
+im Sandbox NICHT testbar → nur Verdrahtung+Guards testen), Emote-Buttons, 8 Koop-Team-Aufgaben; 25 Erfolge;
+83+ Katalog-Items (41 echte PolyHaven-Foto-Scans, alle via simplify→resize256→prune, zielH+korr-Normalisierung);
+Handy-Optimierung (Geldanzeige groß, Querformat-Hinweis, ≥44px); Hint-Dauer skaliert mit Textlänge (langsame Leser).
+ASSET-LEHRE (teuer): Echte GEBÄUDE-Kits (Quaternius/Kenney) NICHT ladbar — itch.io=Connection-Reset über Proxy,
+GitHub blockiert. PolyHaven hat NUR Props/Möbel, keine Gebäude. OpenGameArt geht (curl 200), Blender bpy 5.0.1
+konvertiert OBJ→GLB (bpy.ops.wm.obj_import), aber gefundene PD-Stadt war rot/abstrakt → verworfen. Fazit: Stadt
+prozedural mit echten Foto-Wandtexturen aufwerten, Innen-Möbel von PolyHaven. NIE-VERGESSEN-FALLEN: geld läuft
+als DELTA (geldSend/geldLast, kommutativ); Remote-del erstattet NICHT (ohneGeld-Flag); busy-Leaks via zielFrei();
+Coup-Strafe skaliert mit Beute + 2/Tag-Limit; Angel-CD 3h; Busk 3/Tag; NPC nur 1x bestohlen.
 Stand 2026-07-12 ABEND (Session ~58 PRs): Traumhaus hat jetzt AUSSERDEM: CC0-Foto-Texturen
 (PolyHaven/ambientCG, textures/th/), 18+11 echte PolyHaven-Möbel (⭐-Items, zielH+korr-Normalisierung,
 Pipeline: simplify --ratio → resize 256 → prune — NIE „optimize --texture-size", wirkt nicht!),

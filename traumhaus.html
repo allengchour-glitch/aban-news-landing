@@ -126,6 +126,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div style="margin-top:6px;opacity:.8;font-size:.9rem">Im Querformat spielt sich Traumhaus am besten 🏡</div>
 </div>
 <div id="hint"></div>
+<div id="wanted" style="position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:15;display:none;background:rgba(20,15,20,.82);border:2px solid #ff5a3a;border-radius:14px;padding:6px 14px;font-size:1.3rem;letter-spacing:3px;box-shadow:0 4px 16px rgba(255,90,40,.5)"></div>
 <div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:16px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
   <span id="editName" style="align-self:center;font-weight:800;font-size:.85rem;color:#5a4a30;margin-right:4px"></span>
   <button class="ebtn" id="edMove" style="border:0;background:#e0ecf8;border-radius:10px;padding:8px 12px;font-size:.85rem;cursor:pointer">↔️ Verschieben</button>
@@ -1334,7 +1335,7 @@ function finishCrime(){
   if(ok){geld+=beute;stats.coupsOk++;
     crimeScene(true,job,beute);
     skillXp("krimi",2);}
-  else{polizeiPending=true;var strafe=Math.min(geld,Math.round(beute*0.6)+100);geld-=strafe;
+  else{polizeiPending=true;wantedPlus(1);var strafe=Math.min(geld,Math.round(beute*0.6)+100);geld-=strafe;
     crimeScene(false,job,strafe);
     skillXp("krimi",1);
     sims.forEach(function(s2){s2.needs.spass=Math.max(5,s2.needs.spass-25);simEmoji(s2,"\U0001F62C");});}
@@ -1408,7 +1409,7 @@ function einsteigen(rec,geklaut){
   document.getElementById("hornBtn").style.display="block";
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei kommt! 🚨");
-    setTimeout(function(){if(fahren)startPolizeiJagd();},1800);}
+    setTimeout(function(){if(fahren)wantedPlus(2);},1500);}
   else hint("🚗 Eingestiegen! Lenke mit Joystick/WASD — 🚪 zum Aussteigen");}
 function aussteigen(){
   if(!fahren)return;fahren=false;
@@ -1450,40 +1451,53 @@ document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep
 document.getElementById("hornBtn").onclick=function(){if(fahren){beep(340,.18,"square",.06);setTimeout(function(){beep(300,.2,"square",.06);},120);
   npcs.forEach(function(n){if(n.mesh)npcEmoji(n,"😠");});fussg.forEach(function(p){/*erschreckt*/});}};
 // ---- Polizei-Jagd (nach Autoklau) ----
-var polizeiJagd=null;
+var polizei=[],wanted=0,wantedEntkomm=0;
 function spielerPos(){return fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z}:{x:sims[0].x,z:sims[0].z};}
-function startPolizeiJagd(){
-  if(polizeiJagd)return;
+function mkPolizeiAuto(schnell){
   var gg=new THREE.Group();
-  var korpus=new THREE.Mesh(new THREE.BoxGeometry(3.6,1,1.7),stdMat(0x2a3a6a,0.5));korpus.position.y=0.7;korpus.castShadow=true;gg.add(korpus);
-  var dach=new THREE.Mesh(new THREE.BoxGeometry(2,0.7,1.5),stdMat(0xf4f4f8,0.4));dach.position.y=1.5;gg.add(dach);
+  var korpus=new THREE.Mesh(new THREE.BoxGeometry(3.6,1,1.7),stdMat(schnell?0x1a1a22:0x2a3a6a,0.5));korpus.position.y=0.7;korpus.castShadow=true;gg.add(korpus);
+  var dach=new THREE.Mesh(new THREE.BoxGeometry(2,0.7,1.5),stdMat(schnell?0x2a2a30:0xf4f4f8,0.4));dach.position.y=1.5;gg.add(dach);
   var bl=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.18,0.5),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));bl.position.set(-0.3,1.95,0);gg.add(bl);
   var br=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.18,0.5),new THREE.MeshStandardMaterial({color:0xff3a3a,emissive:0xff3a3a,emissiveIntensity:1.6}));br.position.set(0.3,1.95,0);gg.add(br);
   for(var w=0;w<2;w++)[-1,1].forEach(function(sn){var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.35,0.35,0.25,10),stdMat(0x1a1a20,0.5));rad.rotation.z=Math.PI/2;rad.position.set(-1+w*2,0.35,sn*0.85);gg.add(rad);});
-  var sp=spielerPos();
-  gg.position.set(sp.x-Math.sign(sp.x||1)*30,0.01,sp.z);scene.add(gg);
-  polizeiJagd={mesh:gg,bl:bl,br:br,rot:0,t:0,entkommT:0};
-  hint("🚔 POLIZEI verfolgt dich! Häng sie ab oder du wirst gefasst!");}
+  var sp=spielerPos(),ang=Math.random()*6.283;
+  gg.position.set(sp.x+Math.cos(ang)*34,0.01,sp.z+Math.sin(ang)*34);scene.add(gg);
+  return {mesh:gg,bl:bl,br:br,rot:0,t:0,speed:schnell?18:14};}
+function updWantedHUD(){
+  var el=document.getElementById("wanted");
+  if(wanted<=0){el.style.display="none";return;}
+  el.style.display="block";el.textContent="🚔 "+"⭐".repeat(wanted);}
+function setWanted(n){
+  n=Math.max(0,Math.min(5,n));
+  if(n===wanted&&polizei.length===n)return;
+  wanted=n;wantedEntkomm=0;
+  while(polizei.length<wanted)polizei.push(mkPolizeiAuto(wanted>=4));
+  while(polizei.length>wanted){var rem=polizei.pop();scene.remove(rem.mesh);}
+  updWantedHUD();}
+function wantedPlus(n){
+  if(MPs&&!mpHost)return;
+  var vor=wanted;setWanted(wanted+n);
+  if(wanted>vor)hint("🚔 Fahndung: "+"⭐".repeat(wanted)+" — häng sie ab!");}
 function updPolizei(dt,now){
-  var pj=polizeiJagd;if(!pj)return;
-  var sp=spielerPos(),m=pj.mesh;
-  var dx=sp.x-m.position.x,dz=sp.z-m.position.z,dist=Math.hypot(dx,dz);
-  // Blaulicht blinkt
-  var f=(Math.floor(now*0.006)%2)===0;
-  pj.bl.material.emissiveIntensity=f?1.8:0.2;pj.br.material.emissiveIntensity=f?0.2:1.8;
-  if(dist>1){var ziel=Math.atan2(dx,dz);var d=((ziel-pj.rot+Math.PI*3)%(Math.PI*2))-Math.PI;pj.rot+=d*Math.min(1,dt*3);
-    var sp2=Math.min(dist,15)*dt;m.position.x+=Math.sin(pj.rot)*sp2;m.position.z+=Math.cos(pj.rot)*sp2;m.rotation.set(0,pj.rot,0);}
-  // Gefasst: nah + Spieler langsam/steht
-  if(dist<3.2){pj.t+=dt;if(pj.t>1.2){
-    var busse=Math.min(geld,300+(skills.krimi.lv||0)*80);geld-=busse;geldSend();updHUD();
-    if(fahren)aussteigen();
-    hint("🚔 Erwischt! Busse: −"+busse+" § — nächstes Mal schneller weg!");
-    scene.remove(m);polizeiJagd=null;return;}}else pj.t=0;
-  // Entkommen: weit weg für 7 s
-  if(dist>55){pj.entkommT+=dt;if(pj.entkommT>7){
-    stats.entkommen=(stats.entkommen||0)+1;
-    hint("🏁 Abgehängt! Die Polizei hat dich verloren 😎");
-    scene.remove(m);polizeiJagd=null;return;}}else pj.entkommT=0;}
+  if(!polizei.length){if(wanted!==0){wanted=0;updWantedHUD();}return;}
+  var sp=spielerPos(),f=(Math.floor(now*0.006)%2)===0,minDist=1e9;
+  for(var i=polizei.length-1;i>=0;i--){var pj=polizei[i],m=pj.mesh;
+    var dx=sp.x-m.position.x,dz=sp.z-m.position.z,dist=Math.hypot(dx,dz);minDist=Math.min(minDist,dist);
+    pj.bl.material.emissiveIntensity=f?1.8:0.2;pj.br.material.emissiveIntensity=f?0.2:1.8;
+    if(dist>1){var ziel=Math.atan2(dx,dz);var d=((ziel-pj.rot+Math.PI*3)%(Math.PI*2))-Math.PI;pj.rot+=d*Math.min(1,dt*3);
+      var sp2=Math.min(dist,pj.speed)*dt;m.position.x+=Math.sin(pj.rot)*sp2;m.position.z+=Math.cos(pj.rot)*sp2;m.rotation.set(0,pj.rot,0);}
+    // Gefasst wenn EIN Auto nah genug + Spieler nicht mit Vollgas
+    if(dist<3.2){pj.t+=dt;if(pj.t>1.2){
+      var busse=Math.min(geld,200+wanted*150+(skills.krimi.lv||0)*60);geld-=busse;geldSend();updHUD();
+      if(fahren)aussteigen();
+      hint("🚔 Geschnappt! Busse: −"+busse+" § (Fahndung "+wanted+"⭐)");
+      polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];wanted=0;updWantedHUD();return;}}else pj.t=0;}
+  // Entkommen: alle weit weg für 8 s → Fahndung sinkt um 1 Stern
+  if(minDist>55){wantedEntkomm+=dt;if(wantedEntkomm>8){
+    stats.entkommen=(stats.entkommen||0)+1;wantedEntkomm=0;
+    setWanted(wanted-1);
+    if(wanted===0)hint("🏁 Sauber abgehängt! Fahndung aufgehoben 😎");
+    else hint("🏁 Ein Stern weniger — dranbleiben!");}}else wantedEntkomm=0;}
 
 function updWork(dt){
   if(MPs&&!mpHost)return;
@@ -2142,7 +2156,7 @@ function taschendieb(n9){
       var beute9=Math.round((25+Math.random()*55)*(1+skills.krimi.lv*0.25));
       geld+=beute9;stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
       geldSend();updHUD();
-      if(Math.random()<0.12){polizeiPending=true;npcTimer=Math.min(npcTimer,5);
+      if(Math.random()<0.12){polizeiPending=true;wantedPlus(1);npcTimer=Math.min(npcTimer,5);
         hint("🤏 +"+beute9+" § … aber jemand hat es GESEHEN! 🚨");}
       else hint("🤏 Zack — Portemonnaie! +"+beute9+" § (unbemerkt)");
       npcEmoji(n9,"❓");sims.forEach(function(s9){simEmoji(s9,"🤫");});}
