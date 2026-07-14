@@ -47,7 +47,9 @@ canvas{display:block}
 #nexusProg .npt{font-size:.78rem;color:#d9c6ff;margin-top:3px;font-weight:700}
 #kprompt{position:absolute;bottom:130px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.85);border:1px solid rgba(120,255,200,.4);border-radius:12px;padding:9px 16px;font-size:1.05rem;font-weight:800;opacity:0;transition:opacity .2s;white-space:nowrap}
 #kprompt .key{display:inline-block;background:#1a2140;border:1px solid #6affc0;border-radius:6px;padding:1px 8px;margin-right:6px;color:#6affc0}
-#announce{position:absolute;top:30%;left:0;right:0;text-align:center;font-weight:900;font-size:1.9rem;letter-spacing:.04em;text-shadow:0 2px 3px #000,0 0 6px #000,0 4px 22px #000,0 0 30px rgba(125,227,255,.5);opacity:0;transition:opacity .4s;color:#eafcff;pointer-events:none;padding:0 12px}
+/* Announce als Pill statt nacktem Riesen-Text — war über hellen Dächern kaum lesbar (Polier-Pass) */
+#announce{position:absolute;top:28%;left:50%;transform:translateX(-50%);width:max-content;max-width:86vw;text-align:center;font-weight:900;font-size:1.55rem;letter-spacing:.04em;text-shadow:0 2px 3px #000,0 0 6px #000;opacity:0;transition:opacity .4s;color:#eafcff;pointer-events:none;padding:8px 22px;background:rgba(8,14,30,.66);border:1px solid rgba(125,227,255,.3);border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.45);backdrop-filter:blur(3px)}
+@media(max-width:600px){#announce{font-size:1.15rem;padding:7px 14px}}
 #toast{position:absolute;bottom:200px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.9);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:8px 16px;font-weight:700;opacity:0;transition:opacity .3s;max-width:88vw;text-align:center}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
@@ -58,6 +60,9 @@ canvas{display:block}
 #bConfirm{right:calc(24px + env(safe-area-inset-right));bottom:calc(130px + env(safe-area-inset-bottom));width:64px;height:64px;border-color:#7de3ff;color:#dff}
 #bSkill{right:calc(118px + env(safe-area-inset-right));bottom:calc(130px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#c98bff;color:#f0e0ff;font-size:1.5rem}
 #bThrow{position:absolute;right:calc(118px + env(safe-area-inset-right));bottom:calc(204px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#7de3ff;color:#dff;font-size:1.5rem}
+/* 💨/⚡ hatten keine Position und klebten oben links über der Uhr (Polier-Pass) */
+#bDodge{right:calc(196px + env(safe-area-inset-right));bottom:calc(96px + env(safe-area-inset-bottom));width:56px;height:56px;border-color:#9fe8ff;color:#dff;font-size:1.4rem}
+#bBolt{right:calc(196px + env(safe-area-inset-right));bottom:calc(170px + env(safe-area-inset-bottom));width:56px;height:56px;border-color:#ffe08a;color:#ffd;font-size:1.4rem}
 /* Menü/Sound-Knöpfe oben rechts unter Inventar */
 #sysRow{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;gap:8px;pointer-events:auto}
 .sysbtn{width:44px;height:44px;border-radius:12px;background:rgba(20,30,60,.6);border:1px solid rgba(120,200,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;pointer-events:auto;cursor:pointer}
@@ -128,8 +133,9 @@ canvas{display:block}
 #waveHud{position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:22;background:linear-gradient(160deg,rgba(40,20,60,.9),rgba(20,10,34,.9));border:2px solid #a14bff;border-radius:14px;padding:5px 16px;color:#f2e0ff;font-weight:900;font-size:.95rem;letter-spacing:.02em;box-shadow:0 6px 20px rgba(120,40,200,.4)}
 #waveHud.hide{display:none}
 
-#minimap{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(96px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
-@media(max-width:600px){#minimap{width:92px;height:92px}}
+/* Minimap unter das Ziel-Panel geschoben — vorher lief der Questtext unter die Karte (Polier-Pass) */
+#minimap{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(152px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
+@media(max-width:600px){#minimap{width:92px;height:92px;top:calc(138px + env(safe-area-inset-top))}}
 </style>
 </head>
 <body>
@@ -171,7 +177,7 @@ canvas{display:block}
   <div class="btn hide" id="bThrow" title="Wurf-Angriff (F)">🏹</div>
   <div class="btn hide" id="bDodge" title="Ausweichrolle (SHIFT)">💨</div>
   <div class="btn hide" id="bBolt" title="Kettenblitz (C)">⚡</div>
-  <button id="muteBtn2" title="Ton an/aus" style="position:fixed;top:54px;right:12px;z-index:30;width:38px;height:38px;border-radius:50%;border:1px solid rgba(140,190,220,.4);background:rgba(16,28,40,.75);color:#cfe;font-size:1rem;cursor:pointer">🔊</button>
+  <button id="muteBtn2" title="Ton an/aus" style="display:none;position:fixed;top:54px;right:12px;z-index:30;width:38px;height:38px;border-radius:50%;border:1px solid rgba(140,190,220,.4);background:rgba(16,28,40,.75);color:#cfe;font-size:1rem;cursor:pointer">🔊</button>
   <div class="btn hide" id="bConfirm">✓</div>
   <div id="buildMenu" class="hide"></div>
 <div id="tradeMenu" class="hide"></div>
@@ -242,6 +248,30 @@ sun.shadow.mapSize.set(IS_MOB?1024:2048,IS_MOB?1024:2048);
 sun.shadow.camera.near=1;sun.shadow.camera.far=260;
 sun.shadow.camera.left=-100;sun.shadow.camera.right=100;sun.shadow.camera.top=100;sun.shadow.camera.bottom=-100;
 sun.shadow.bias=-0.0006;sun.shadow.normalBias=0.03;sun.shadow.radius=3;scene.add(sun);scene.add(sun.target);
+
+/* 🩹 Metal-Fix (Polier-Pass): GLB-Materialien kommen teils mit glTF-Default metalness=1.
+   Ohne EnvMap rendert three.js r128 solches Metall fast SCHWARZ (die "schwarzen Würfel"-Bäume
+   am Horizont, schwarze tote Bäume am Friedhof etc.). Zentral am GLTFLoader geklemmt,
+   damit ALLE Lade-Pfade (Natur, CC0-Props, Mobs, Gebäude) profitieren. Kein Gameplay-Einfluss. */
+(function(){
+  if(!THREE.GLTFLoader||THREE.GLTFLoader.prototype.__nwMetalFix)return;
+  THREE.GLTFLoader.prototype.__nwMetalFix=1;
+  var _gl=THREE.GLTFLoader.prototype.load;
+  THREE.GLTFLoader.prototype.load=function(url,onLoad,onProg,onErr){
+    return _gl.call(this,url,function(g){
+      try{
+        if(g&&g.scene)g.scene.traverse(function(n){
+          if(!n.isMesh||!n.material)return;
+          var ms=Array.isArray(n.material)?n.material:[n.material];
+          for(var i=0;i<ms.length;i++){var m=ms[i];
+            if(m&&m.isMeshStandardMaterial&&m.metalness>0.5&&!m.metalnessMap&&!m.envMap){
+              m.metalness=0.12;if(m.roughness<0.65)m.roughness=0.8;}}
+        });
+      }catch(e){}
+      if(onLoad)onLoad(g);
+    },onProg,onErr);
+  };
+})();
 
 // ---------- Seeded RNG ----------
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
@@ -2372,7 +2402,7 @@ function playerDie(){
 var toastT=0;
 function toast(msg){var t=document.getElementById("toast");t.textContent=msg;t.style.opacity=1;toastT=2.2;}
 var annT=0;
-function announce(msg){var a=document.getElementById("announce");a.textContent=msg;a.style.opacity=1;annT=2.2;}
+function announce(msg,col){var a=document.getElementById("announce");a.textContent=msg;a.style.color=col||"#eafcff";a.style.opacity=1;annT=2.2;}
 // schwebende Sammel-Zahl an Weltposition
 var _pv=new THREE.Vector3();
 function floatText(x,y,z,txt,color){
