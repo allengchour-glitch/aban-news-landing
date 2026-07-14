@@ -1545,8 +1545,8 @@ function coopAgain(){ /* Nochmal: Online-Client fragt den Host, Host startet + k
 }
 document.getElementById("againBtn").onclick=coopAgain;
 document.getElementById("winAgainBtn").onclick=coopAgain;
-document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor 🏆 DURCHGESPIELT in "+mmss(S.t)+" — Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("winShareBtn").textContent="Kopiert 📋";});};
-document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-survivor.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
+document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor 🏆 DURCHGESPIELT in "+mmss(S.t)+" — Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("winShareBtn").textContent="Kopiert 📋";});};
+document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
 // Ambient-Partikel (Atmosphäre)
 var ambN=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(ambN*3),ambVv=new Float32Array(ambN);
