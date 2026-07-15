@@ -734,6 +734,25 @@ function mkGhost(){var g=new THREE.Group();var gm=new THREE.MeshStandardMaterial
   var body=new THREE.Mesh(new THREE.SphereGeometry(0.5,9,8,0,6.28,0,2.3),gm);body.scale.set(1,1.35,1);body.position.y=0.6;g.add(body);
   var em3=new THREE.MeshBasicMaterial({color:0x1a1a2a});[[-0.15],[0.15]].forEach(function(e){var ey=new THREE.Mesh(new THREE.SphereGeometry(0.09,6,6),em3);ey.position.set(e[0],0.72,0.4);g.add(ey);});
   var mo=new THREE.Mesh(new THREE.SphereGeometry(0.08,6,6),em3);mo.position.set(0,0.55,0.42);mo.scale.set(1,1.4,1);g.add(mo);return g;}
+/* ⚔️ W4: Monster-Rigs — Attack-/Walk-/Idle-Clips per Regex aus den GLB-Anims gemappt.
+   Klon-Mobs (skins:0, Node-Anims) binden Clips per Node-Name auch auf dem Klon;
+   geskinnte Mobs bekommen ihr Rig beim Frisch-Laden. */
+var MOB_ANIMS={}; /* id -> AnimationClips vom Proto (Klon-Pfad) */
+function mobClipPick(anims,re,excl){for(var i=0;i<anims.length;i++){var nm=anims[i].name;if(re.test(nm)&&(!excl||!excl.test(nm)))return anims[i];}return null;}
+function mobRig(o,anims){
+  if(!anims||!anims.length)return null;
+  var atk=mobClipPick(anims,/attack-melee/i)||mobClipPick(anims,/attack|bite|punch|headbutt/i,/wheelchair/i);
+  var walk=mobClipPick(anims,/(^|\|)walk/i)||mobClipPick(anims,/run|fast_flying|flying(?!_idle)|sprint/i);
+  var idle=mobClipPick(anims,/(^|\|)idle/i)||mobClipPick(anims,/flying_idle|static/i)||walk;
+  if(!atk&&!walk&&!idle)return null;
+  var mx=new THREE.AnimationMixer(o),r={mixer:mx,actions:{},cur:null};
+  if(idle)r.actions.idle=mx.clipAction(idle);
+  if(walk)r.actions.walk=(walk===idle)?r.actions.idle:mx.clipAction(walk);
+  if(atk){var aa=mx.clipAction(atk);aa.setLoop(THREE.LoopOnce,1);r.actions.attack=aa;}
+  mx.addEventListener("finished",function(){ /* nach dem Zuschlag zurueck zu walk/idle */
+    if(r.cur!=="attack")return;var back=r.actions.walk?"walk":(r.actions.idle?"idle":null);r.cur=back;
+    if(back){var b=r.actions[back];b.reset();b.play();}});
+  return r;}
 var MOBS=[
   {id:"slime", file:null,               scale:2.0, hp:3, spd:3.0, minDay:1, w:5, emo:"🟢"},
   {id:"goblin",file:"mob_goblin.glb",   scale:1.5, hp:4, spd:3.6, minDay:1, w:4, emo:"👹"},
@@ -741,15 +760,16 @@ var MOBS=[
   {id:"golem", file:"mob_golem.glb",    scale:2.3, hp:9, spd:1.9, minDay:3, w:2, emo:"🗿"},
   {id:"bat",   build:mkBat,             scale:1.4, hp:2, spd:4.4, minDay:1, w:3, emo:"🦇", fly:true},
   {id:"spider",build:mkSpider,          scale:1.4, hp:5, spd:3.4, minDay:2, w:3, emo:"🕷️"},
-  {id:"ghost", build:mkGhost,           scale:1.6, hp:6, spd:2.7, minDay:3, w:2, emo:"👻", fly:true},
+  {id:"ghost", build:mkGhost,           scale:1.6, hp:6, spd:2.7, minDay:3, w:2, emo:"👻", fly:true, undead:true},
   // 🆕 CC0-Monster (Kenney Undead + Quaternius, Blender-poliert) — feste Skalen (Skinned-BBox unzuverlässig)
-  {id:"skelett", file:"mn_skeleton.glb",   scale:1.0,  hp:5,  spd:3.2, minDay:2, w:3, emo:"💀"},
+  {id:"skelett", file:"mn_skeleton.glb",   th:1.7, scale:1.0,  hp:5,  spd:3.2, minDay:2, w:3, emo:"💀", undead:true},
   {id:"ork",     file:"mn_orc.glb", skinned:true,        th:2.1, scale:0.65, hp:6,  spd:3.0, minDay:2, w:3, emo:"👺"},
-  {id:"zombie",  file:"mn_zombie.glb",     scale:1.0,  hp:7,  spd:2.2, minDay:3, w:3, emo:"🧟"},
+  {id:"zombie",  file:"mn_zombie.glb",     th:1.7, scale:1.0,  hp:7,  spd:2.2, minDay:3, w:3, emo:"🧟", undead:true},
   {id:"imp",     file:"mn_demon_blue.glb", skinned:true, th:1.9, scale:0.6,  hp:5,  spd:4.0, minDay:3, w:3, emo:"👿"},
   {id:"stachel", file:"mn_slime_spiky.glb", skinned:true,th:2.0, scale:0.45, hp:8,  spd:2.4, minDay:3, w:2, emo:"🦔"},
-  {id:"vampir",  file:"mn_vampire.glb",    scale:1.0,  hp:8,  spd:3.8, minDay:4, w:2, emo:"🧛"},
-  {id:"mimic",   file:"mn_mimic.glb",      scale:0.5,  hp:9,  spd:1.6, minDay:4, w:1, emo:"📕"},
+  {id:"vampir",  file:"mn_vampire.glb",    th:1.8, scale:1.0,  hp:8,  spd:3.8, minDay:4, w:2, emo:"🧛", undead:true},
+  {id:"geist",   file:"mn_ghost.glb",      th:1.8, scale:1.0,  hp:6,  spd:3.6, minDay:3, w:2, emo:"👻", undead:true}, /* 👻 W4: Kenney-Geist (Node-Anims, klonbar) */
+  {id:"mimic",   file:"mn_mimic.glb",      th:1.0, scale:0.5,  hp:9,  spd:1.6, minDay:4, w:1, emo:"📕"},
   {id:"daemon",  file:"mn_demon.glb", skinned:true,      th:2.7, scale:0.7,  hp:12, spd:2.6, minDay:5, w:2, emo:"😈"},
   {id:"yeti",    file:"mn_yeti.glb", skinned:true,       th:2.7, scale:0.65, hp:14, spd:2.2, minDay:6, w:2, emo:"🦍"}
 ];
@@ -758,23 +778,35 @@ function loadSlime(){
   if(!THREE.GLTFLoader)return;
   new THREE.GLTFLoader().load("/models/monster_slime.glb",function(g){slimeProto=g.scene;},undefined,function(){});
   MOBS.forEach(function(M){if(!M.file||M.skinned)return; // geskinnte werden pro Spawn frisch geladen (r128: Skinned-Klon kaputt)
-    new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});mobProtos[M.id]=o;},undefined,function(){});
+    new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      if(M.th){var bb=new THREE.Box3().setFromObject(o),bh=Math.max(0.001,bb.max.y-bb.min.y);M._fit=Math.max(0.02,Math.min(12,M.th/bh));} /* 👹 W4: Klon-Mobs auf th-Zielhoehe normieren */
+      if(g.animations&&g.animations.length)MOB_ANIMS[M.id]=g.animations; /* ⚔️ W4: Clips fuer Klone */
+      mobProtos[M.id]=o;},undefined,function(){});
   });
   new THREE.GLTFLoader().load("/models/item_chest.glb",function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});chestProto=o;},undefined,function(){});
 }
 var chestProto=null;
 function fallbackSlime(){var m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.7,1),new THREE.MeshStandardMaterial({color:0x3ad0ff,emissive:0x1466aa,emissiveIntensity:.6,flatShading:true}));return m;}
-function pickMob(){ // gewichtete Auswahl, härtere Gegner erst an späteren Tagen
+function pickMob(x,z){ // gewichtete Auswahl, härtere Gegner erst an späteren Tagen
+  /* 👹 W4: Nacht-/Zonen-Gewichte — Untote nahe Friedhof x4, in tiefer Nacht x1.5.
+     Deterministisch aus Position/Tag abgeleitet, verbraucht weiterhin GENAU 1 rnd() (Koop). */
   var pool=MOBS.filter(function(M){return day>=M.minDay&&(M.id==="slime"||M.build||M.skinned||mobProtos[M.id]);});
   if(!pool.length)return MOBS[0];
-  var tot=0;pool.forEach(function(M){tot+=M.w;});var r=rnd()*tot;
-  for(var i=0;i<pool.length;i++){r-=pool[i].w;if(r<=0)return pool[i];}
+  var gv=null;if(typeof villages!=="undefined")for(var vi=0;vi<villages.length;vi++)if(villages[vi].grave)gv=villages[vi];
+  var nearGrave=!!(gv&&x!=null&&Math.hypot(x-gv.x,z-gv.z)<34);
+  var deep=isNight&&nights>=2;
+  function wOf(M){var w2=M.w;if(M.undead){if(nearGrave)w2*=4;if(deep)w2*=1.5;}return w2;}
+  var tot=0;pool.forEach(function(M){tot+=wOf(M);});var r=rnd()*tot;
+  for(var i=0;i<pool.length;i++){r-=wOf(pool[i]);if(r<=0)return pool[i];}
   return pool[pool.length-1];
 }
-function spawnMonster(){
-  var a=rnd()*6.28,rd=32+rnd()*14;
-  var x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
-  var M=pickMob();
+function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur Tests) — Spielpfad ruft ohne Argumente auf */
+  var x,z;
+  if(fx!=null){x=fx;z=fz;}
+  else{var a=rnd()*6.28,rd=32+rnd()*14;x=player.position.x+Math.cos(a)*rd;z=player.position.z+Math.sin(a)*rd;}
+  var M=null;
+  if(forceId){for(var fi2=0;fi2<MOBS.length;fi2++)if(MOBS[fi2].id===forceId)M=MOBS[fi2];if(!M)return 0;}
+  else M=pickMob(x,z);
   if(M.skinned&&THREE.GLTFLoader){ // geskinnte GLBs: pro Spawn frisch laden (Klonen bricht Skinning in r128)
     (function(MM,xx,zz){new THREE.GLTFLoader().load("/models/"+MM.file,function(g){
       var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
@@ -783,29 +815,51 @@ function spawnMonster(){
       var k=(MM.th||2.2)/hh;if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(12,k));
       o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
-      monsters.push({mesh:o,x:xx,z:zz,hp:MM.hp,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null});
+      var rig=mobRig(o,g.animations); /* ⚔️ W4: Attack/Walk/Idle-Rig */
+      monsters.push({mesh:o,x:xx,z:zz,hp:MM.hp,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
+      if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
       if(typeof updWaveHud==="function")updWaveHud();
     },undefined,function(){});})(M,x,z);
-    return;
+    return 1;
   }
   var m,sc;
   if(M.build){m=M.build();sc=M.scale;}
-  else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}
+  else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?(M._fit||M.scale):1;} /* 👹 W4: th-normierte Klon-Skala */
   m.traverse(function(n){if(n.isMesh){n.castShadow=true;}});
   m.scale.setScalar(sc);
   m.position.set(x,groundH(x,z),z);scene.add(m);
-  monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});
+  var rig2=(M.file&&MOB_ANIMS[M.id])?mobRig(m,MOB_ANIMS[M.id]):null; /* ⚔️ W4: Node-Anims binden per Name auch auf Klonen */
+  monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
+  if(rig2)setAnim(rig2,rig2.actions.walk?"walk":"idle",0);
+  return 1;
 }
-function spawnBoss(){ // 🐉 Nacht-Boss — abwechselnd Meshy-Drache / Quaternius-Drache / SERAPH-Slime
+function spawnGlbBoss(file,th,label,bhp,x,z,bspd){ /* 👑 W4: Mini-Boss aus mn_*-GLB — frisch laden, th-normiert, mit Attack-Rig */
+  new THREE.GLTFLoader().load("/models/"+file,function(g){
+    var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+    var bb=new THREE.Box3().setFromObject(o),bh=Math.max(0.001,bb.max.y-bb.min.y);
+    var k=Math.max(0.02,Math.min(12,th/bh));o.scale.setScalar(k);
+    o.position.set(x,groundH(x,z)-bb.min.y*k,z);scene.add(o);
+    var rig=mobRig(o,g.animations);
+    monsters.push({mesh:o,x:x,z:z,hp:bhp,maxhp:bhp,t:0,boss:true,baseScale:k,walk:true,kind:file.replace(".glb",""),spd:bspd||2.4,rig:rig});
+    if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
+    var bl=document.getElementById("bossLbl");if(bl)bl.textContent=label;
+    announce(label+" erwacht! Besiege den Boss!");shake=0.6;
+  },undefined,function(){});}
+function spawnBoss(){ // 🐉 Nacht-Boss — Rotation: Urdrache / 💀 Knochenkönig / 😈 Erzdämon (W4) / Drache / SERAPH
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
   var hp=28+nights*10;
-  if(rnd()<0.5&&THREE.GLTFLoader){ // 🐲 Quaternius-Drache (geskinnt): frisch laden + auf Zielhöhe normieren
+  var roll=rnd(); /* W4: verbraucht weiter GENAU 1 rnd (Koop-Determinismus) */
+  if(roll>=0.34&&roll<0.55&&THREE.GLTFLoader){spawnGlbBoss("mn_skeleton.glb",3.3,"💀 KNOCHENKÖNIG",hp,x,z,3.0);return;}
+  if(roll>=0.55&&roll<0.76&&THREE.GLTFLoader){spawnGlbBoss("mn_demon.glb",3.6,"😈 ERZDÄMON",Math.round(hp*1.15),x,z,2.4);return;}
+  if(roll<0.34&&THREE.GLTFLoader){ // 🐲 Quaternius-Drache (geskinnt): frisch laden + auf Zielhöhe normieren
     (function(xx,zz,hh2){new THREE.GLTFLoader().load("/models/mn_dragon.glb",function(g){
       var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
       var bb=new THREE.Box3().setFromObject(o),bh=Math.max(0.001,bb.max.y-bb.min.y);
       var k=Math.max(0.02,Math.min(12,6.5/bh));o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
-      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:rnd()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6});
+      var rigD=mobRig(o,g.animations); /* ⚔️ W4 */
+      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:rnd()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6,rig:rigD});
+      if(rigD)setAnim(rigD,rigD.actions.walk?"walk":"idle",0);
       var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="🐲 URDRACHE";
     },undefined,function(){});})(x,z,hp);
     return;
@@ -837,15 +891,19 @@ function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monster
   else el.classList.add("hide");}
 function updMonsters(dt){
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];e.t+=dt;
+    if(e.rig)e.rig.mixer.update(dt); /* ⚔️ W4: Monster-Anim-Mixer */
     var dx=player.position.x-e.x,dz=player.position.z-e.z,d=Math.hypot(dx,dz)||1;
     var spd=e.spd||3;
-    if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;}
+    if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
+      if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
     else{ // Angriff
-      if(!e.atkCd||e.atkCd<=0){damagePlayer(e.boss?14:6);e.atkCd=1;} }
+      if(!e.atkCd||e.atkCd<=0){
+        if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.35); /* ⚔️ W4: Zuschlag-Clip statt nur Schaden-Tick */
+        damagePlayer(e.boss?14:6);e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;} }
     if(e.atkCd)e.atkCd-=dt;
     var _bsc=e.baseScale||(slimeProto?2:1);
     if(e.walk){ // feste Kreaturen (inkl. Drachen-Boss): laufen, zum Spieler gedreht, leichtes Wippen — kein Squash
-      var fy=e.fly?(2.4+Math.sin(e.t*3)*0.4):Math.abs(Math.sin(e.t*8))*0.12;
+      var fy=e.fly?(2.4+Math.sin(e.t*3)*0.4):(e.rig?0:Math.abs(Math.sin(e.t*8))*0.12); /* geriggte: Clip statt Wippen */
       e.mesh.position.set(e.x,groundH(e.x,e.z)+fy,e.z);
       e.mesh.rotation.y=Math.atan2(dx,dz);
       e.mesh.scale.setScalar(_bsc);
@@ -1399,6 +1457,19 @@ var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a
 var NPC_EMO=["👋","💬","🙂","🎶","❤️","🍺","🧺","⚒️"];
 var ANIME_NPC=["anime_boy","anime_boy2","anime_girl","anime_girl2","anime_mage","anime_ninja","anime_schoolgirl","anime_warrior","anime_hero"];
 var POI_OFF=[[0,0],[-4,3],[5,-2],[-6,-5],[2,5],[-7,0],[7,0],[3,-4]]; // Brunnen/Markt/Taverne/Karren/Banner...
+/* 🧑 W4: Schoene GLB-Dorfbewohner (Kenney npc_fa..npc_md, riesige Anim-Sets).
+   Skinned -> NIE clonen (r128): jeder GLB-NPC laedt frisch. Budget: nur die ersten
+   NPC_GLB_CAP Dorfbewohner (Desktop 10 / mobil 6) bekommen GLB+Mixer, der Rest bleibt
+   Anime-Toon (Mix ok). Eigener Seed-Strom _w4rnd -> Haupt-rnd unberuehrt (Koop-Determinismus). */
+var NPC_GLB=["npc_fa","npc_fb","npc_fc","npc_fd","npc_ma","npc_mb","npc_mc","npc_md"];
+var NPC_GLB_CAP=IS_MOB?6:10,_npcGlbN=0,_w4rnd=mulberry32(0x51c0de);
+function npcClipPick(anims,base){var i,re; /* exakter Kurzname zuerst ('idle'/'walk'), sonst passendster mit Suffix (_character-male-a ...) */
+  for(i=0;i<anims.length;i++)if(anims[i].name.toLowerCase()===base)return anims[i];
+  re=new RegExp("^"+base+"([_|.-]|$)","i");
+  for(i=0;i<anims.length;i++)if(re.test(anims[i].name))return anims[i];
+  re=new RegExp(base,"i");
+  for(i=0;i<anims.length;i++)if(re.test(anims[i].name)&&!/wheelchair|attack|holding/i.test(anims[i].name))return anims[i];
+  return null;}
 /* 🕐 W3: NPC-Tagesablauf — morgens Markt/Brunnen, mittags Wege, abends Taverne, nachts heim+Fade.
    Lauf-Budget: max ~10 aktive Laeufer (mobil 6), Rest steht (plaudert nur). Eigener Seed-Strom
    (_w3rnd) fuer alle neuen Zufalls-Entscheidungen — Haupt-rnd bleibt unberuehrt (Koop-Determinismus). */
@@ -1437,7 +1508,24 @@ function mkVillager(x,z,vcx,vcz){var gy=groundH(x,z);vcx=(vcx==null)?x:vcx;vcz=(
   npcs.push(rec);
   rec.roam=(npcs.length<=NPC_ROAM_CAP); /* 🕐 W3: nur die ersten N laufen, Rest statisch */
   rec.hubNpc=!!(typeof villages!=="undefined"&&villages.length&&Math.hypot(vcx-villages[0].x,vcz-villages[0].z)<2);
-  if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
+  if(THREE.GLTFLoader&&_npcGlbN<NPC_GLB_CAP){_npcGlbN++; /* 🧑 W4: npc_*-GLB frisch laden (skinned nie clonen) */
+    (function(){var _f=NPC_GLB[(_w4rnd()*NPC_GLB.length)|0];
+    new THREE.GLTFLoader().load("/models/"+_f+".glb",function(gl){
+      var o=gl.scene;o.traverse(function(n3){if(n3.isMesh){n3.castShadow=true;n3.frustumCulled=false;}});
+      var bb=new THREE.Box3().setFromObject(o),hh=Math.max(0.001,bb.max.y-bb.min.y);
+      var k=1.72/hh;if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(8,k)); /* th-Normierung ~1.72m */
+      var grp=new THREE.Group();o.scale.setScalar(k);o.position.y=-bb.min.y*k;grp.add(o);
+      grp.position.set(x,gy,z);grp.rotation.y=Math.random()*6.28;scene.add(grp);rec.mesh=grp;rec.glb=true;
+      if(gl.animations&&gl.animations.length){
+        var mx2=new THREE.AnimationMixer(o),ci=npcClipPick(gl.animations,"idle"),cw=npcClipPick(gl.animations,"walk");
+        rec.mix=mx2;rec.acts={};
+        if(ci)rec.acts.idle=mx2.clipAction(ci);
+        if(cw){rec.acts.walk=mx2.clipAction(cw);rec.acts.walk.timeScale=Math.max(0.7,rec.spd*1.6);}
+        if(rec.acts.idle){rec.acts.idle.play();rec.aCur="idle";}
+        else if(rec.acts.walk){rec.acts.walk.play();rec.aCur="walk";}
+      }
+    },undefined,function(){});})();
+  } else if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
     var o=gl.scene;o.scale.setScalar(1.35); // feste Skala (Skinned-BBox unzuverlässig -> keine Riesen)
     // 🎨 individuelle Kleidungsfarbe (Haut/sehr Helles ausgenommen) -> nicht alle gleich/pink
     var tint=new THREE.Color().setHSL(Math.random(),0.45+Math.random()*0.35,0.5+Math.random()*0.15);
@@ -1473,7 +1561,10 @@ function updNPCs(dt){
       else{if(n.idle<=0)n.idle=3+Math.random()*5;n.idle-=dt;if(n.idle<=0)n.reached=true;}
     } /* Statisten (ueber dem Lauf-Budget): stehen am Platz, plaudern nur */
   }
-  n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+(moving?Math.abs(Math.sin(n.walk))*0.06:0);
+  if(n.acts){ /* 🧑 W4: GLB-NPC spielt walk beim Gehen, idle beim Stehen (Tagesablauf-Logik unveraendert) */
+    var _want=(moving&&n.acts.walk)?"walk":(n.acts.idle?"idle":n.aCur);
+    if(_want&&_want!==n.aCur&&n.acts[_want]){var _pv=n.aCur?n.acts[n.aCur]:null;n.aCur=_want;var _ac=n.acts[_want];_ac.reset();_ac.play();if(_pv)_pv.crossFadeTo(_ac,0.22,false);}}
+  n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+((moving&&!n.acts)?Math.abs(Math.sin(n.walk))*0.06:0);
   n.mesh.rotation.y+=(n.dir-n.mesh.rotation.y)*Math.min(1,dt*4);
   // 💬 Emote-Blase über dem Kopf
   n.emoT-=dt;
@@ -2242,6 +2333,9 @@ function decorateWorld(){
     }
     var nGar=isSpawn?3:1;for(var ga=0;ga<nGar;ga++){var gaa=rnd()*6.28,gar=ringR-5;mkGarden(vx+Math.cos(gaa)*gar,vz+Math.sin(gaa)*gar);}
     var nNpc=isSpawn?14:3;for(var np=0;np<nNpc;np++){var na=rnd()*6.28,nr=rnd()*(ringR-4);mkVillager(vx+Math.cos(na)*nr,vz+Math.sin(na)*nr,vx,vz);}
+    if(isSpawn){ /* 🧑 W4: +4 Dorfbewohner im Spawn-Dorf — EIGENER Seed-Strom, Haupt-rnd unberuehrt */
+      var w4r=mulberry32(((SEED^0x4bca7d)>>>0)||1);
+      for(var w4i=0;w4i<4;w4i++){var w4a=w4r()*6.28,w4rd=3+w4r()*(ringR-7);mkVillager(vx+Math.cos(w4a)*w4rd,vz+Math.sin(w4a)*w4rd,vx,vz);}}
     if(isSpawn){ // 💰 Händler beim Marktstand
       merchant.x=vx+5;merchant.z=vz-2;var mv=mkVillager(merchant.x,merchant.z,vx,vz);
       var cvM=document.createElement("canvas");cvM.width=cvM.height=64;var cm=cvM.getContext("2d");cm.font="46px sans-serif";cm.textAlign="center";cm.textBaseline="middle";cm.fillText("💰",32,36);
@@ -2838,7 +2932,13 @@ function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t
     floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,11);
     scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);continue;}
   if(o.life<=0){scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);}}}
-function hurtFlash(){shake=Math.min(shake+0.15,0.4);}
+function hurtFlash(){shake=Math.min(shake+0.15,0.4);
+  /* ⚔️ W4: sichtbares Treffer-Feedback — kurzer roter Vignetten-Blitz (DOM, billig) */
+  var v=document.getElementById("hurtVig");
+  if(!v){v=document.createElement("div");v.id="hurtVig";
+    v.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;background:radial-gradient(ellipse at center,rgba(255,45,80,0) 55%,rgba(255,45,80,.4) 100%);opacity:0;transition:opacity .35s";
+    document.body.appendChild(v);}
+  v.style.opacity="1";clearTimeout(v._t);v._t=setTimeout(function(){v.style.opacity="0";},90);}
 function playerDie(){
   dead=true;announce("💀 Du bist gefallen…");
   setTimeout(function(){ // Respawn am Lagerfeuer (oder Ursprung)
@@ -3754,7 +3854,9 @@ window.__nw={
   xp:function(n){gainXP(n||100);return {level:level,perk:PERK};}, // Test-Only
   perkState:function(){return PERK;},
   trade:function(){if(merchant.x!=null){player.position.x=merchant.x;player.position.z=merchant.z+1.5;}inv.wood=20;inv.crystal=20;inv.stone=20;invUpd();openTrade();return {mx:merchant.x,mz:merchant.z};}, // Test-Only
-  spawnMob:function(id){var M=null;for(var i=0;i<MOBS.length;i++)if(MOBS[i].id===id)M=MOBS[i];if(!M)return 0;if(M.skinned&&THREE.GLTFLoader){var xx=player.position.x+3,zz=player.position.z+3;new THREE.GLTFLoader().load("/models/"+M.file,function(g){var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});var bb=new THREE.Box3().setFromObject(o),hh=Math.max(0.001,bb.max.y-bb.min.y);var k=(M.th||2.2)/hh;if(!isFinite(k)||k<=0)k=1;k=Math.max(0.02,Math.min(12,k));o.scale.setScalar(k);o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);monsters.push({mesh:o,x:xx,z:zz,hp:M.hp,t:0,spd:0,baseScale:k,kind:M.id,walk:true,fly:false,wings:null});});return 1;}var m,sc;if(M.build){m=M.build();sc=M.scale;}else{var proto=M.file?mobProtos[M.id]:slimeProto;m=proto?proto.clone(true):fallbackSlime();sc=proto?M.scale:1;}m.traverse(function(n){if(n.isMesh)n.castShadow=true;});m.scale.setScalar(sc);var x=player.position.x+3,z=player.position.z+3;m.position.set(x,groundH(x,z),z);scene.add(m);monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:0,spd:0,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null});return 1;}, // Test-Only
+  spawnMob:function(id,dx2,dz2){return spawnMonster(id,player.position.x+(dx2==null?3:dx2),player.position.z+(dz2==null?3:dz2));}, /* Test-Only — W4: nutzt den echten Spawn-Pfad inkl. Rig */
+  mobInfo:function(){return monsters.map(function(m2){return {kind:m2.kind,x:+m2.x.toFixed(2),z:+m2.z.toFixed(2),hp:m2.hp,boss:!!m2.boss,cur:m2.rig?m2.rig.cur:null,clips:m2.rig?Object.keys(m2.rig.actions):[]};});}, /* Test/QA: W4 Monster-Rigs */
+  simMon:function(sec){updMonsters(Math.max(0.016,Math.min(10,sec||1)));return monsters.length;}, /* Test-Only: Monster-Tick vorspulen */
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
   villages:function(){return villages.slice();},
@@ -3794,7 +3896,7 @@ window.__nw={
   setQuest:function(n){quest=Math.max(0,Math.min(QUESTS.length,n|0));document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";return quest;}, /* Test-Only: Quest-Stand vorspulen */
   simStation:function(i,score){_stCur=i|0;_stRewarded=false;onStationDone(score|0);_stCur=-1;return this.qprog();}, /* Test-Only: stationDone-Pfad ohne iframe */
   phase:function(){return dayPhase();}, /* Test/QA: Tagesphase */
-  npcInfo:function(){var a=[],w=0;for(var i=0;i<npcs.length;i++){var n=npcs[i];if(!n.mesh)continue;if(n.roam)w++;a.push({x:+n.mesh.position.x.toFixed(2),z:+n.mesh.position.z.toFixed(2),roam:!!n.roam,vis:n.mesh.visible,sleep:!!n.sleeping});}return {phase:dayPhase(),roamers:w,list:a};}, /* Test/QA: NPC-Tagesablauf */
+  npcInfo:function(){var a=[],w=0,g2=0;for(var i=0;i<npcs.length;i++){var n=npcs[i];if(!n.mesh)continue;if(n.roam)w++;if(n.glb)g2++;a.push({x:+n.mesh.position.x.toFixed(2),z:+n.mesh.position.z.toFixed(2),roam:!!n.roam,vis:n.mesh.visible,sleep:!!n.sleeping,glb:!!n.glb,anim:n.aCur||null});}return {phase:dayPhase(),roamers:w,glbs:g2,glbCap:NPC_GLB_CAP,list:a};}, /* Test/QA: NPC-Tagesablauf + W4-GLB-NPCs */
   dog:function(){if(_dogIdx<0)return null;var d=critters[_dogIdx];return {x:d.m.position.x,z:d.m.position.z,follow:+d.follow.toFixed(2),cd:+d.cd.toFixed(2)};}, /* Test/QA: Dorfhund */
   simNpc:function(sec){updNPCs(Math.max(0.016,Math.min(10,sec||1)));return dayPhase();}, /* Test-Only: NPC-Tick vorspulen (SwiftShader-Zeitlupe) */
   simCrit:function(sec){updCritters(Math.max(0.016,Math.min(2,sec||0.4)));return 1;}, /* Test-Only */
