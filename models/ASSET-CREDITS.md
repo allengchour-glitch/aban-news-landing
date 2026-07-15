@@ -250,3 +250,58 @@ flat-shading) + `gltf-transform resize 512/prune/dedup` + Sampler NEAREST (Palet
 > (Kenney: kein Garten-Kit; Quaternius Furniture/Modular-Streets ohne Schirm; itch.io/KayKit über
 > Proxy nicht ladbar; OpenGameArt-CC0-Treffer nur Hand-Regenschirm = Stil-Mismatch). Grill/Pool
 > existieren bereits als th_grill/th_pool; Gartenstuhl-Ersatz: th_gruenstuhl/th2_gartenbank.
+
+## Neon-Wildnis — Natur/Dorf-Nachschub (`nw_*`) — 2026-07-15
+Beschafft für neon-wildnis.html (schönere Felsen, wertige Blumen, Dorf-Leben, Wege-Deko). Alle CC0 1.0.
+Namensschema `nw_<name>.glb`. **Duplikat-Check gegen Original-Namen** der bestehenden nt_/fg_/cc0_/ftk_/sv_-GLBs
+(Node-Namen aus dem JSON-Chunk extrahiert) — alle 27 Picks sind neue Originale.
+Verifiziert je Datei: glTF-Magic + Version 2 + JSON-Chunk parsebar + ≥1 Mesh + keine externen URIs + <300 KB.
+
+### Kenney — Nature Kit 2.1 (CC0), 21 Modelle
+Quelle: https://kenney.nl/assets/nature-kit · Lizenz: CC0 1.0. Format `Models/GLTF format` (= .glb,
+self-contained, **Material-Farben + KHR_materials_unlit** — gleiches Muster wie die r128-verifizierten
+cc0_*-Nature-Assets, rendert nativ). Aufbereitung: nur `gltf-transform prune`+`dedup`. Alle 2,6–23 KB.
+
+| Datei | Original | Nutzung |
+|---|---|---|
+| nw_fels_a.glb | rock_largeC | Fels-Variante (schönere Steine!) |
+| nw_fels_b.glb | rock_largeE | Fels-Variante |
+| nw_stein_gross_a.glb | stone_largeA | grauer Stein groß |
+| nw_stein_gross_b.glb | stone_largeD | grauer Stein groß, Variante |
+| nw_klippe.glb | cliff_large_rock | großer Klippenblock (Terrain-Akzent) |
+| nw_blume_lila.glb | flower_purpleC | Blume lila (hoch) |
+| nw_blume_rot.glb | flower_redB | Blume rot |
+| nw_blume_gelb.glb | flower_yellowB | Blume gelb |
+| nw_blume_gelb_hoch.glb | flower_yellowC | Blume gelb hoch |
+| nw_busch_gross.glb | plant_bushLargeTriangle | großer Dreiecks-Busch |
+| nw_schilf.glb | grass_leafsLarge | Schilf/hohes Blattgras (Ufer) |
+| nw_stumpf_alt.glb | stump_old | alter Baumstumpf |
+| nw_pilz_braun.glb | mushroom_tanGroup | braune Pilz-Gruppe |
+| nw_pilz_rot_hoch.glb | mushroom_redTall | hoher roter Pilz |
+| nw_zaun_tor.glb | fence_gate | Zaun mit Tor (Dorf/Gehege) |
+| nw_schild.glb | sign | Holz-Schild (Wege-Deko) |
+| nw_meilenstein.glb | statue_obelisk | Meilenstein/Obelisk (Wegmarke) |
+| nw_holzstapel_gross.glb | log_stackLarge | großer Holzstapel (Dorf) |
+| nw_kuerbis.glb | crop_pumpkin | Kürbis (Feld/Dorf) |
+| nw_weizen.glb | crops_wheatStageB | Weizen-Reihe (Feld, Heu-Ersatz) |
+| nw_topf_gross.glb | pot_large | großer Tontopf (Dorf-Deko) |
+
+### Kenney — Fantasy Town Kit 2.0 + Survival Kit 2.0 (CC0), 6 Modelle
+Quellen: https://kenney.nl/assets/fantasy-town-kit · https://kenney.nl/assets/survival-kit · CC0 1.0.
+GLB referenziert externe `Textures/colormap.png` → **Blender-Embed** (polish_kenney_glb.py-Muster,
+flat-shading) + `gltf-transform resize 512` + prune + dedup + **Sampler NEAREST** (Palette-Atlas-r128-Fix,
+identity KHR_texture_transform entfernt). PNG eingebettet, 15–78 KB.
+
+| Datei | Original (Kit) | Nutzung |
+|---|---|---|
+| nw_marktstand_gruen.glb | stall-green (Fantasy Town) | Marktstand grün (Variante zu ftk_stall) |
+| nw_marktstand_bank.glb | stall-bench (Fantasy Town) | Markt-Verkaufsbank |
+| nw_brunnen_eckig.glb | fountain-square (Fantasy Town) | eckiger Brunnen (Variante) |
+| nw_karren_hoch.glb | cart-high (Fantasy Town) | hoher Karren (Variante zu ftk_cart) |
+| nw_fass_offen.glb | barrel-open (Survival) | offenes Fass (Dorf-Prop) |
+| nw_wegweiser.glb | signpost (Survival) | mehrarmiger Wegweiser |
+
+> Verworfen/nicht beschafft: **Heuballen** (existiert in keinem der 3 Kits — Ersatz: nw_weizen/nw_kuerbis
+> als Feld-Deko), **Fass-Stapel** (kein Kit hat gestapelte Fässer — Ersatz: nw_fass_offen + cc0_barrel
+> kombinieren), **Seerose** (fg_lilypad/fg_lilypad_small existieren bereits = Duplikat), einfacher
+> Nature-Kit-Zaun `fence_simple` (cc0_fence + th2_gartenzaun decken das ab).
