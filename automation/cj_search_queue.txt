@@ -409,14 +409,14 @@
 #done search:napkin holder modern
 #done search:phone case shockproof
 #done search:cable organizer desk
-search:football jersey blank custom
-search:soccer jersey kids plain
-search:switzerland fan scarf football
-search:football fan accessories flag
-search:soccer socks football training
-search:football keychain fan
-search:swiss flag cape fan
-search:soccer ball size 5
+#done search:football jersey blank custom
+#done search:soccer jersey kids plain
+#done search:switzerland fan scarf football
+#done search:football fan accessories flag
+#done search:soccer socks football training
+#done search:football keychain fan
+#done search:swiss flag cape fan
+#done search:soccer ball size 5
 search:shin guards football kids
 search:football captain armband
 search:polo shirt men slim fit
