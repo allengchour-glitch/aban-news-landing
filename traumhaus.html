@@ -1309,6 +1309,23 @@ var sims=simDefs.map(function(sd,i){
     state:"idle",pose:"stand",path:[],target:null,useT:0,walkT:0,net:null,emoji:null,emoT:0,glb:null,mixer:null,walkAction:null};});
 attachRealChar(sims[0],"th_mann.glb",1.48);
 attachRealChar(sims[1],"th_frau.glb",1.40);
+// ---- Partner-Marker (nur Koop): findet den Mitspieler in der großen Welt ----
+var partnerMark=null;
+function ensurePartnerMark(){
+  if(partnerMark)return partnerMark;
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  c.fillStyle="#3ad0ff";c.strokeStyle="#fff";c.lineWidth=4;
+  c.beginPath();c.moveTo(32,54);c.lineTo(12,20);c.lineTo(52,20);c.closePath();c.fill();c.stroke();
+  var tx=new THREE.CanvasTexture(cv);
+  partnerMark=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true,depthWrite:false,depthTest:false}));
+  partnerMark.scale.set(1.3,1.3,1);partnerMark.renderOrder=999;scene.add(partnerMark);return partnerMark;}
+function updPartnerMark(dt,now){
+  if(!MPs){if(partnerMark)partnerMark.visible=false;return;}
+  var pm=ensurePartnerMark();
+  var partner=sims[mpHost?1:0]; // Host verfolgt Mia, Gast verfolgt Max
+  if(!partner||!partner.mesh){pm.visible=false;return;}
+  pm.visible=true;
+  pm.position.set(partner.x,2.6+Math.sin(now*0.004)*0.15,partner.z);}
 function simEmoji(s,txt){
   if(s.emoji){s.mesh.remove(s.emoji);s.emoji=null;}
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
@@ -2550,7 +2567,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
