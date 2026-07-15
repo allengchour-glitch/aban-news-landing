@@ -561,10 +561,11 @@ function placeResources(){
   (function(){
     var o=new THREE.Object3D(),cc=new THREE.Color();
     function spot(){var a=rnd()*6.28,rd=6+rnd()*half;return [Math.cos(a)*rd,Math.sin(a)*rd];}
-    var FL=Math.round(360*VF),FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c,0xff5c7a];
-    var flowers=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.15,0),new THREE.MeshBasicMaterial(),FL); // unlit -> leuchtet auch nachts
-    for(var i=0;i<FL;i++){var p=spot();o.position.set(p[0],groundH(p[0],p[1])+0.2,p[1]);o.scale.setScalar(0.6+rnd()*0.9);o.rotation.set(rnd()*6.28,rnd()*6.28,0);o.updateMatrix();flowers.setMatrixAt(i,o.matrix);cc.setHex(FLC[(rnd()*FLC.length)|0]);flowers.setColorAt(i,cc);}
-    flowers.instanceColor.needsUpdate=true;scene.add(flowers);
+    /* 🌸 W3-Deko-Audit („keine billigen Blumen"): Ico-Tupfer-Teppich (nackte Primitive) ENTFERNT —
+       echte GLB-Blumen-Cluster uebernehmen in decorateWorld. Die rnd-Draws bleiben 1:1 erhalten
+       (6/Blume), damit Loot-/Teich-Positionen alter Saves stabil bleiben. */
+    var FL=Math.round(360*VF);
+    for(var i=0;i<FL;i++){spot();rnd();rnd();rnd();rnd();}
     var GR=Math.round(470*VF),GC=[0x3fa060,0x4fbf6e,0x2e8a50,0x6ac07a,0x9ad46a];
     var grass=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.6,4),new THREE.MeshLambertMaterial(),GR);grass.castShadow=false;grass.receiveShadow=true;
     for(var j=0;j<GR;j++){var q=spot();o.position.set(q[0],groundH(q[0],q[1])+0.28,q[1]);o.scale.set(1,0.7+rnd()*0.9,1);o.rotation.set((rnd()-.5)*0.3,rnd()*6.28,(rnd()-.5)*0.3);o.updateMatrix();grass.setMatrixAt(j,o.matrix);cc.setHex(GC[(rnd()*GC.length)|0]);grass.setColorAt(j,cc);}
@@ -1180,18 +1181,34 @@ function regSway(m,amp,freq){if(swayers.length>=_swayCap)return;swayers.push({m:
 function updSway(dt){_swayT+=dt;var t=_swayT;for(var i=0;i<swayers.length;i++){var s=swayers[i];s.m.rotation.z=s.base+Math.sin(t*s.freq+s.ph)*s.amp;}}
 // 🐄 Umherwandernde Tiere — einfache prozedurale KI (kosmetisch, Math.random statt seed → kein Koop-Desync)
 var critters=[];
-function regCritter(m,x,z,opts){opts=opts||{};critters.push({m:m,hx:x,hz:z,range:opts.range||7,spd:opts.spd||(0.5+Math.random()*0.7),hop:!!opts.hop,ph:Math.random()*6.28,t:Math.random()*3,tx:x,tz:z,rest:0});}
+var _dogIdx=-1,_critChkT=0; /* 🐕 W3: genau EIN Dorfhund folgt dem Spieler; Checks gedrosselt */
+function regCritter(m,x,z,opts){opts=opts||{};critters.push({m:m,hx:x,hz:z,range:opts.range||7,spd:opts.spd||(0.5+Math.random()*0.7),hop:!!opts.hop,ph:Math.random()*6.28,t:Math.random()*3,tx:x,tz:z,rest:0,sp:opts.sp||null,follow:0,cd:0});
+  if(opts.sp==="an_dog"&&_dogIdx<0)_dogIdx=critters.length-1;}
 function updCritters(dt){
+  _critChkT-=dt;
+  if(_critChkT<=0){_critChkT=IS_MOB?0.5:0.3; /* 🐕 W3: Distanz-Check gedrosselt (kein Per-Frame-Gewicht) */
+    if(_dogIdx>=0){var dg=critters[_dogIdx];
+      if(dg.follow<=0&&dg.cd<=0){var ddx=player.position.x-dg.m.position.x,ddz=player.position.z-dg.m.position.z;
+        if(ddx*ddx+ddz*ddz<12.25){dg.follow=10;dg.rest=0;if(typeof toast==="function")toast("🐕 Der Dorfhund folgt dir!");}}}}
   for(var i=0;i<critters.length;i++){var c=critters[i],m=c.m;
-    if(c.rest>0){c.rest-=dt;c.ph+=dt*2;m.rotation.x=Math.sin(c.ph)*0.07;m.position.y=groundH(m.position.x,m.position.z);continue;} // grasen (Kopf-Nicken)
+    if(c.cd>0)c.cd-=dt;
+    if(c.follow>0){ /* 🐕 W3: folgt dem Spieler ~10s, dann Heimweg + Cooldown */
+      c.follow-=dt;c.rest=0;c.t=1;
+      c.tx=player.position.x+Math.sin(c.ph)*1.5;c.tz=player.position.z+Math.cos(c.ph)*1.5;
+      if(c.follow<=0){c.cd=20;c.tx=c.hx;c.tz=c.hz;}}
+    if(c.rest>0){c.rest-=dt;c.ph+=dt*2;
+      if(c.sp==="an_chicken")m.rotation.x=Math.max(0,Math.sin(c.ph*2.8))*0.5; /* 🐔 W3: Picken (tiefes Kopf-Nicken) */
+      else m.rotation.x=Math.sin(c.ph)*0.07;
+      m.position.y=groundH(m.position.x,m.position.z);continue;} // grasen (Kopf-Nicken)
     c.t-=dt;
     if(c.t<=0){var a=Math.random()*6.28,rd=Math.random()*c.range;c.tx=c.hx+Math.cos(a)*rd;c.tz=c.hz+Math.sin(a)*rd;c.t=2+Math.random()*4;if(Math.random()<0.4){c.rest=1.5+Math.random()*3;}}
     var dx=c.tx-m.position.x,dz=c.tz-m.position.z,d=Math.hypot(dx,dz);
-    if(d>0.4){var nx=m.position.x+dx/d*c.spd*dt,nz=m.position.z+dz/d*c.spd*dt;m.position.x=nx;m.position.z=nz;c.ph+=dt*(c.hop?9:5.5);
+    if(d>0.4){var sp3=(c.follow>0)?Math.max(c.spd,1.7):c.spd; /* 🐕 sprintet beim Folgen */
+      var nx=m.position.x+dx/d*sp3*dt,nz=m.position.z+dz/d*sp3*dt;m.position.x=nx;m.position.z=nz;c.ph+=dt*(c.hop?9:5.5);
       m.position.y=groundH(nx,nz)+(c.hop?Math.abs(Math.sin(c.ph))*0.28:0);
       var ty=Math.atan2(dx,dz);var dyaw=ty-m.rotation.y;while(dyaw>Math.PI)dyaw-=6.283;while(dyaw<-Math.PI)dyaw+=6.283;m.rotation.y+=dyaw*Math.min(1,dt*6);
       m.rotation.x=0;m.rotation.z=Math.sin(c.ph)*0.05;}
-    else{c.rest=1+Math.random()*2;}
+    else if(c.follow<=0){c.rest=1+Math.random()*2;}
   }
 }
 
@@ -1382,10 +1399,44 @@ var npcs=[];var NPC_ROBES=[0x8a5a3a,0x5a7a9a,0x7a5a8a,0x6a8a5a,0x9a6a4a,0xaa8a5a
 var NPC_EMO=["👋","💬","🙂","🎶","❤️","🍺","🧺","⚒️"];
 var ANIME_NPC=["anime_boy","anime_boy2","anime_girl","anime_girl2","anime_mage","anime_ninja","anime_schoolgirl","anime_warrior","anime_hero"];
 var POI_OFF=[[0,0],[-4,3],[5,-2],[-6,-5],[2,5],[-7,0],[7,0],[3,-4]]; // Brunnen/Markt/Taverne/Karren/Banner...
+/* 🕐 W3: NPC-Tagesablauf — morgens Markt/Brunnen, mittags Wege, abends Taverne, nachts heim+Fade.
+   Lauf-Budget: max ~10 aktive Laeufer (mobil 6), Rest steht (plaudert nur). Eigener Seed-Strom
+   (_w3rnd) fuer alle neuen Zufalls-Entscheidungen — Haupt-rnd bleibt unberuehrt (Koop-Determinismus). */
+var NPC_ROAM_CAP=IS_MOB?6:10,_npcPhase="mittag",_w3rnd=mulberry32(0x77bd15);
+var NPC_SAY={
+  morgen:["Guten Morgen!","Frisch vom Markt!","Was für ein Morgen ☀️","Zum Brunnen!"],
+  mittag:["Schöner Tag!","Viel zu tun…","Grüss dich, Wanderer!","Die Wege rufen 🥾"],
+  abend:["Feierabend!","Auf zur Taverne 🍺","Ein Lied am Abend 🎶","Bis morgen!"]};
+var _sayTexCache={};
+function sayTexFor(t){if(_sayTexCache[t])return _sayTexCache[t]; /* Text-Sprite-Muster (wie emoTexFor, gecacht) */
+  var cv=document.createElement("canvas");cv.width=256;cv.height=64;var c=cv.getContext("2d");
+  c.fillStyle="rgba(16,28,44,.88)";c.beginPath();c.roundRect(4,8,248,48,14);c.fill();
+  c.strokeStyle="rgba(125,227,255,.5)";c.lineWidth=3;c.stroke();
+  c.fillStyle="#eaf6ff";c.font="bold 24px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(t,128,33);
+  _sayTexCache[t]=new THREE.CanvasTexture(cv);return _sayTexCache[t];}
+function dayPhase(){if(isNight)return "nacht";var f=dayT/DAYLEN;return f<0.33?"morgen":(f<0.66?"mittag":"abend");}
+function npcOpacity(n,v){n.mesh.traverse(function(m){if(m.isMesh&&m.material){var ms=Array.isArray(m.material)?m.material:[m.material];
+  for(var i=0;i<ms.length;i++){if(v>=1){ms[i].opacity=1;ms[i].transparent=ms[i]._w3t||false;}
+    else{if(ms[i]._w3t==null)ms[i]._w3t=ms[i].transparent;ms[i].transparent=true;ms[i].opacity=v;}}}});}
+function npcPhaseTarget(n){ /* Ziel je Tagesphase; Spawn-Hub-NPCs nutzen echte Hub-Orte */
+  var j=(_w3rnd()*3)|0,ox=(_w3rnd()-0.5)*2.6,oz=(_w3rnd()-0.5)*2.6,p2;
+  if(_npcPhase==="morgen"){
+    if(n.hubNpc&&hub.standPos&&hub.standPos.length){p2=hub.standPos[j%hub.standPos.length];return {x:p2.x+ox,z:p2.z+oz};}
+    if(n.hubNpc&&hub.fx!=null)return {x:hub.fx+ox*1.5,z:hub.fz+oz*1.5};
+    p2=n.pois[j%Math.min(2,n.pois.length)];return {x:p2.x+ox,z:p2.z+oz}; /* Brunnen/Markt-POIs */
+  }
+  if(_npcPhase==="abend"){
+    if(n.hubNpc&&hub.tavX!=null)return {x:hub.tavX+ox*1.8,z:hub.tavZ+oz*1.8};
+    p2=n.pois[Math.min(2,n.pois.length-1)];return {x:p2.x+ox,z:p2.z+oz}; /* Taverne-POI */
+  }
+  p2=n.pois[(_w3rnd()*n.pois.length)|0];return {x:p2.x+ox,z:p2.z+oz}; /* mittags: Wege/Plaetze entlang */
+}
 function mkVillager(x,z,vcx,vcz){var gy=groundH(x,z);vcx=(vcx==null)?x:vcx;vcz=(vcz==null)?z:vcz;
   var pois=POI_OFF.map(function(o){return {x:vcx+o[0],z:vcz+o[1]};});
-  var rec={mesh:null,cx:x,cz:z,vcx:vcx,vcz:vcz,pois:pois,tgt:null,idle:0,reached:true,sleeping:false,t:Math.random()*6,dir:Math.random()*6.28,spd:0.5+Math.random()*0.5,rr:9,walk:0,emoT:2+Math.random()*8,emo:null,mix:null};
+  var rec={mesh:null,cx:x,cz:z,vcx:vcx,vcz:vcz,pois:pois,tgt:null,idle:0,reached:true,sleeping:false,t:Math.random()*6,dir:Math.random()*6.28,spd:0.5+Math.random()*0.5,rr:9,walk:0,emoT:2+Math.random()*8,emo:null,mix:null,roam:false,hubNpc:false,fadeV:null};
   npcs.push(rec);
+  rec.roam=(npcs.length<=NPC_ROAM_CAP); /* 🕐 W3: nur die ersten N laufen, Rest statisch */
+  rec.hubNpc=!!(typeof villages!=="undefined"&&villages.length&&Math.hypot(vcx-villages[0].x,vcz-villages[0].z)<2);
   if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
     var o=gl.scene;o.scale.setScalar(1.35); // feste Skala (Skinned-BBox unzuverlässig -> keine Riesen)
     // 🎨 individuelle Kleidungsfarbe (Haut/sehr Helles ausgenommen) -> nicht alle gleich/pink
@@ -1402,18 +1453,25 @@ function mkVillager(x,z,vcx,vcz){var gy=groundH(x,z);vcx=(vcx==null)?x:vcx;vcz=(
     if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);mx.clipAction(gl.animations[0]).play();rec.mix=mx;}
   },undefined,function(){});}
   return null;}
-function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.mesh){continue;}if(n.mix)n.mix.update(dt);
+function updNPCs(dt){
+  var _ph=dayPhase(),_phChg=(_ph!==_npcPhase);if(_phChg)_npcPhase=_ph; /* 🕐 W3: Phase 1x/Frame global */
+  for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.mesh){continue;}if(n.mix)n.mix.update(dt);
   var moving=false;
-  if(isNight){ // 🌙 nachts heim + schlafen
+  if(isNight){ // 🌙 nachts heim (Laeufer) bzw. an Ort ausblenden — mit Fade (W3)
     if(!n.sleeping){var hx=n.vcx-n.mesh.position.x,hz=n.vcz-n.mesh.position.z,hd=Math.hypot(hx,hz)||1;
-      if(hd>1.6){n.dir=Math.atan2(hx,hz);var st=n.spd*1.3*dt;n.mesh.position.x+=hx/hd*st;n.mesh.position.z+=hz/hd*st;n.walk+=st*6;moving=true;}
-      else{n.sleeping=true;n.mesh.visible=false;}}
-  } else { // ☀️ tagsüber Ziele ansteuern, dort verweilen (plaudern/arbeiten)
-    if(n.sleeping){n.sleeping=false;n.mesh.visible=true;}
-    if(!n.tgt||n.reached){var poi=n.pois[(Math.random()*n.pois.length)|0];n.tgt={x:poi.x,z:poi.z};n.reached=false;n.idle=0;}
-    var dx=n.tgt.x-n.mesh.position.x,dz=n.tgt.z-n.mesh.position.z,dd=Math.hypot(dx,dz)||1;
-    if(dd>0.9&&n.idle<=0){n.dir=Math.atan2(dx,dz);var st2=n.spd*dt;n.mesh.position.x+=dx/dd*st2;n.mesh.position.z+=dz/dd*st2;n.walk+=st2*6;moving=true;}
-    else{if(n.idle<=0)n.idle=3+Math.random()*5;n.idle-=dt;if(n.idle<=0)n.reached=true;}
+      if(n.roam&&hd>1.6&&n.fadeV==null){n.dir=Math.atan2(hx,hz);var st=n.spd*1.3*dt;n.mesh.position.x+=hx/hd*st;n.mesh.position.z+=hz/hd*st;n.walk+=st*6;moving=true;}
+      else{n.fadeV=(n.fadeV==null?1:n.fadeV)-dt*0.8; /* daheim/statisch: sanft ausblenden */
+        if(n.fadeV<=0){n.sleeping=true;n.mesh.visible=false;npcOpacity(n,1);n.fadeV=null;}
+        else npcOpacity(n,Math.max(0,n.fadeV));}}
+  } else { // ☀️ W3-Tagesablauf: morgens Markt/Brunnen · mittags Wege · abends Taverne
+    if(n.sleeping){n.sleeping=false;n.mesh.visible=true;n.fadeV=null;npcOpacity(n,1);}
+    else if(n.fadeV!=null){n.fadeV=null;npcOpacity(n,1);} /* Daemmerung unterbrochen -> wieder voll da */
+    if(n.roam){
+      if(_phChg||!n.tgt||n.reached){n.tgt=npcPhaseTarget(n);n.reached=false;n.idle=0;}
+      var dx=n.tgt.x-n.mesh.position.x,dz=n.tgt.z-n.mesh.position.z,dd=Math.hypot(dx,dz)||1;
+      if(dd>0.9&&n.idle<=0){n.dir=Math.atan2(dx,dz);var st2=n.spd*dt;n.mesh.position.x+=dx/dd*st2;n.mesh.position.z+=dz/dd*st2;n.walk+=st2*6;moving=true;}
+      else{if(n.idle<=0)n.idle=3+Math.random()*5;n.idle-=dt;if(n.idle<=0)n.reached=true;}
+    } /* Statisten (ueber dem Lauf-Budget): stehen am Platz, plaudern nur */
   }
   n.mesh.position.y=groundH(n.mesh.position.x,n.mesh.position.z)+(moving?Math.abs(Math.sin(n.walk))*0.06:0);
   n.mesh.rotation.y+=(n.dir-n.mesh.rotation.y)*Math.min(1,dt*4);
@@ -1421,9 +1479,17 @@ function updNPCs(dt){for(var i=0;i<npcs.length;i++){var n=npcs[i];n.t+=dt;if(!n.
   n.emoT-=dt;
   if(n.emoT<=0){n.emoT=n.fixedEmo?(3+rnd()*3):(5+rnd()*10); /* 🎶 Musikant: alle paar Sekunden Noten-Blase */
     if(n.emo){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}
-    var _em=NPC_EMO[(rnd()*NPC_EMO.length)|0];if(n.fixedEmo)_em=n.fixedEmo;
-    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(_em),transparent:true,depthWrite:false}));
-    sp.scale.set(0.6,0.6,0.6);sp.position.y=2.4;n.mesh.add(sp);n.emo=sp;n.emoLife=3;}
+    var sp;
+    if(!n.fixedEmo&&_npcPhase!=="nacht"&&_w3rnd()<0.45){ /* 🗨️ W3: Tageszeit-Floskel statt Emoji */
+      var _arr=NPC_SAY[_npcPhase]||NPC_SAY.mittag;
+      sp=new THREE.Sprite(new THREE.SpriteMaterial({map:sayTexFor(_arr[(_w3rnd()*_arr.length)|0]),transparent:true,depthWrite:false}));
+      sp.scale.set(2.1,0.55,1);
+    }else{
+      var _em=NPC_EMO[(rnd()*NPC_EMO.length)|0];if(n.fixedEmo)_em=n.fixedEmo;
+      sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(_em),transparent:true,depthWrite:false}));
+      sp.scale.set(0.6,0.6,0.6);
+    }
+    sp.position.y=2.4;n.mesh.add(sp);n.emo=sp;n.emoLife=3;}
   if(n.emo){n.emoLife-=dt;n.emo.position.y=2.4+Math.sin(n.t*3)*0.08;n.emo.material.opacity=Math.max(0,Math.min(1,n.emoLife));if(n.emoLife<=0){n.mesh.remove(n.emo);n.emo.material.dispose();n.emo=null;}}}}
 // Emote-Texturen einmalig vorbaken (geteilt; nur das SpriteMaterial ist pro Blase)
 var _emoTexCache={};
@@ -1648,6 +1714,7 @@ function stationsDone(){try{return JSON.parse(lsGet("nw_stations")||"{}");}catch
 function openStation(i){
   var st=stations[i];if(!st||stationOpen)return;
   _stCur=i;_stRewarded=false;stationOpen=true;
+  if(st.badge==="flieger"&&!qProg.flug)qProg.flug=1; /* 📜 W3-Quest (a): Betreten zaehlt */
   if(typeof buildMode!=="undefined"&&buildMode)closeBuild();
   if(typeof craftMode!=="undefined"&&craftMode)closeCraft();
   if(typeof tradeOpen!=="undefined"&&tradeOpen)closeTrade();
@@ -1673,6 +1740,8 @@ function onStationDone(score){
     ?Math.max(1,Math.min(12,1+Math.floor((score|0)/40))) /* ⚔️ Arena (Kills+Level·10): grösserer Einsatz, Cap 12 */
     :Math.max(1,Math.min(8,1+Math.floor((score|0)/25))); /* score-skaliert, Cap 8 */
   inv.crystal=(inv.crystal|0)+cr;invUpd();
+  if(st.badge==="gladiator")qProg.arenaCr=(qProg.arenaCr|0)+cr; /* 📜 W3-Quest (b): Arena-💎 zaehlen */
+  if(st.badge==="raser"&&(score|0)>=40)qProg.raceWin=1; /* 📜 W3-Quest (c): Renn-Sieg ab Score 40 */
   toast(st.icon+" "+st.name+": +"+cr+" 💎");
   var done=stationsDone();
   if(!done[st.badge]){done[st.badge]=1;lsSet("nw_stations",JSON.stringify(done));}
@@ -1835,6 +1904,7 @@ function buildSpawnHub(){
     var dx=tx+dc*4.4,dz=tz+ds*4.4; /* Vorplatz Richtung Zentrum */
     var lan=cc0inst("ftk_lantern",1.8);if(lan){lan.position.set(dx+0.9,groundH(dx+0.9,dz),dz);scene.add(lan);}
     var wl=new THREE.PointLight(0xffb060,0.9,14);wl.position.set(dx,groundH(dx,dz)+2.4,dz);scene.add(wl);
+    hub.tavX=dx;hub.tavZ=dz; /* 🕐 W3: Abend-Treffpunkt fuer den NPC-Tagesablauf */
     mkVillager(dx-1.2,dz+0.8,vx,vz);var mus=npcs[npcs.length-1];
     if(mus){mus.fixedEmo="🎶";mus.spd=0.25;mus.emoT=1.5;mus.pois=[{x:dx-1.2,z:dz+0.8},{x:dx+1.4,z:dz+1.2},{x:dx,z:dz+2.2}];}
   })();
@@ -1875,7 +1945,7 @@ function buildSpawnHub(){
     if(!clearOf(cx3,cz3,4))continue;
     var cm2=cc0inst(CRIT[ci],CRIT[ci]==="an_chicken"?0.42:0.62);
     if(cm2){cm2.position.set(cx3,groundH(cx3,cz3),cz3);cm2.rotation.y=rndH()*6.28;scene.add(cm2);
-      regCritter(cm2,cx3,cz3,{range:4.5,spd:CRIT[ci]==="an_dog"?0.9:0.6,hop:CRIT[ci]!=="an_dog"});hub.critters++;}}
+      regCritter(cm2,cx3,cz3,{range:4.5,spd:CRIT[ci]==="an_dog"?0.9:0.6,hop:CRIT[ci]!=="an_dog",sp:CRIT[ci]});hub.critters++;}}
   /* 7) 🏮 Laternen entlang der Stadt-Wege (4 Speichen, alle ~8 Einheiten) — nachts an,
         Performance: max 8 echte PointLights (mobil 4), Rest nur Leucht-Glas */
   var maxL=IS_MOB?4:8,nLights=0;
@@ -1984,27 +2054,36 @@ function decorateWorld(){
     return g;}
   var BUSHES=["nt_bush","cc0_bush","fg_bush","fg_bush_large","fg_bush_small"];
   farScatter(Math.round(150*VF),8,function(x,z){var m=(rnd()<0.45)?mkBush():cc0inst(BUSHES[(rnd()*BUSHES.length)|0],1.4*(0.8+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);if(rnd()<0.5)regSway(m,0.05+rnd()*0.04,1.1+rnd()*0.6);});
-  var FLOW=["cc0_flower_purple","nt_flower_red","nt_flower_yellow","fg_flower_red","fg_flower_yellow","fg_flower_purple"];
-  farScatter(Math.round(150*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.09+rnd()*0.06,1.4+rnd()*0.8);});
+  var FLOW=["cc0_flower_purple","nt_flower_red","nt_flower_yellow","nw_blume_lila","nw_blume_rot","nw_blume_gelb"]; /* 🌸 W3: wertige nw_blume_* bevorzugt (gleiche Pool-Laenge -> Draws stabil) */
+  var NWFL=["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch"];
+  var rndFC=mulberry32(((SEED^0x2fb7d3)>>>0)||1),_w3fc=0,W3FC_CAP=IS_MOB?40:80; /* eigener Strom + Deckel */
+  farScatter(Math.round(150*VF),8,function(x,z){var m=cc0inst(FLOW[(rnd()*FLOW.length)|0],0.8*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.09+rnd()*0.06,1.4+rnd()*0.8);
+    if(_w3fc<W3FC_CAP&&rndFC()<0.5){var nM=1+((rndFC()*2)|0); /* 🌸 W3: 2-3er-Gruppen statt Einzelstreu */
+      for(var c4=0;c4<nM&&_w3fc<W3FC_CAP;c4++){var m2=cc0inst(NWFL[(rndFC()*NWFL.length)|0],0.6+rndFC()*0.5);
+        if(!m2)continue;var cx4=x+(rndFC()-0.5)*2.0,cz4=z+(rndFC()-0.5)*2.0;
+        m2.position.set(cx4,groundH(cx4,cz4),cz4);m2.rotation.y=rndFC()*6.28;scene.add(m2);
+        regSway(m2,0.08+rndFC()*0.05,1.3+rndFC()*0.7);_w3fc++;}}});
   farScatter(Math.round(90*VF),10,function(x,z){var m=cc0inst(rnd()<0.5?"nt_mushroom":"cc0_mushroom_red",0.9*(0.7+rnd()*0.6));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // 🌾 Grasbüschel + Baumstümpfe/liegende Stämme (Boden lebendiger)
   var GRASSES=["nt_grass","fg_grass","fg_grass_tall","fg_grass_leafy"];
   farScatter(Math.round(170*VF),6,function(x,z){var m=cc0inst(GRASSES[(rnd()*GRASSES.length)|0],0.5*(0.7+rnd()*0.8));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);regSway(m,0.11+rnd()*0.07,1.6+rnd()*0.9);});
   farScatter(Math.round(40*VF),12,function(x,z){var m=cc0inst(rnd()<0.5?"nt_stump":"nt_log",0.6*(0.8+rnd()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- Felsen-Sorten / Holzstapel als Streu-Props ---
-  var ROCKS=["cc0_rock_large","cc0_rock_small","nt_rock","nt_rock_tall"];
+  var ROCKS=["cc0_rock_large","nw_fels_a","nw_fels_b","nw_stein_gross_a","nw_stein_gross_b","nt_rock_tall"]; /* 🪨 W3: strukturierte nw-Felsen statt glatter Alt-Steine */
   farScatter(Math.round(90*VF),10,function(x,z){var m=cc0inst(ROCKS[(rnd()*ROCKS.length)|0],1.6*(0.7+rnd()*0.9));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   farScatter(Math.round(26*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
   function spotFar(minR){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
   // 🌸 Blumenwiese: dichter Farbteppich
-  (function(){var p=spotFar(80);var FLC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff9a5c];
-    var stemM=new THREE.MeshLambertMaterial({color:0x2f7a45}),stemG=new THREE.CylinderGeometry(0.03,0.03,0.5,4),blG=new THREE.IcosahedronGeometry(0.16,0);
-    var blM=FLC.map(function(c){return new THREE.MeshBasicMaterial({color:c});}); // geteilte Materialien/Geometrien statt 90x2 Unikate
-    for(var i=0;i<90*VF;i++){var ox=p.x+(rnd()-0.5)*34,oz=p.z+(rnd()-0.5)*34;
-      var st=new THREE.Mesh(stemG,stemM);st.position.set(ox,groundH(ox,oz)+0.25,oz);scene.add(st);
-      var bl=new THREE.Mesh(blG,blM[(rnd()*blM.length)|0]);bl.position.set(ox,groundH(ox,oz)+0.55,oz);scene.add(bl);}})();
+  (function(){var p=spotFar(80); /* 🌸 W3: echte GLB-Blumenwiese statt Stiel+Ico-Primitiven */
+    var rndF=mulberry32(((SEED^0x33caf1)>>>0)||1); /* eigener Strom fuer Zusatz-Varianz */
+    var FLG=["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","cc0_flower_purple","nt_flower_red"];
+    for(var i=0;i<90*VF;i++){var ox=p.x+(rnd()-0.5)*34,oz=p.z+(rnd()-0.5)*34,ti=(rnd()*FLG.length)|0; /* Draws wie zuvor: 3/Blume */
+      if(i%2)continue; /* halbe Anzahl — GLB-Blumen sind detailreicher */
+      var m=cc0inst(FLG[ti],0.6+rndF()*0.5);if(!m)continue;
+      m.position.set(ox,groundH(ox,oz),oz);m.rotation.y=rndF()*6.28;scene.add(m);
+      if(rndF()<0.6)regSway(m,0.08+rndF()*0.05,1.3+rndF()*0.7);}})();
   // 🍄 Pilzhain: dichte leuchtende Pilze
   (function(){var p=spotFar(90);for(var i=0;i<50*VF;i++){var ox=p.x+(rnd()-0.5)*26,oz=p.z+(rnd()-0.5)*26;
     var m=cc0inst("cc0_mushroom_red",1.1*(0.7+rnd()*0.9));if(m){m.position.set(ox,groundH(ox,oz),oz);m.rotation.y=rnd()*6.28;scene.add(m);}
@@ -2041,7 +2120,11 @@ function decorateWorld(){
     var hill=new THREE.Mesh(new THREE.SphereGeometry(hr,12,7,0,6.28,0,Math.PI/2.2),new THREE.MeshLambertMaterial({color:0x3f9a54,flatShading:true}));
     hill.scale.y=0.22+rnd()*0.12;hill.position.set(p.x,groundH(p.x,p.z)-hr*0.05,p.z);hill.receiveShadow=true;hill.castShadow=true;scene.add(hill);
     var hy=groundH(p.x,p.z)+hill.scale.y*hr*0.55;
-    for(var fl=0;fl<10;fl++){var fa=rnd()*6.28,fr=rnd()*hr*0.6;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.16,0),new THREE.MeshBasicMaterial({color:[0xff6ab0,0xffd166,0x7de3ff,0xffffff][(rnd()*4)|0]}));bl.position.set(p.x+Math.cos(fa)*fr,hy,p.z+Math.sin(fa)*fr);scene.add(bl);}})();}
+    for(var fl=0;fl<10;fl++){var fa=rnd()*6.28,fr=rnd()*hr*0.6,ti3=(rnd()*4)|0; /* Draws wie zuvor: 3/Tupfer */
+      if(fl%2)continue; /* 🌸 W3: 5 echte GLB-Blumen am Huegelfuss statt 10 schwebender Ico-Tupfer */
+      var bx=p.x+Math.cos(fa)*(hr*1.02+fr*0.4),bz=p.z+Math.sin(fa)*(hr*1.02+fr*0.4);
+      var bm2=cc0inst(["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch"][ti3],0.62+ti3*0.15);
+      if(bm2){bm2.position.set(bx,groundH(bx,bz),bz);scene.add(bm2);if(typeof regSway==="function")regSway(bm2,0.07,1.4);}}})();}
   // ⛰️ Berge am Kartenrand (Kulisse ringsum)
   var rockM=new THREE.MeshLambertMaterial({color:0x6a6a74,flatShading:true}),snowM=new THREE.MeshLambertMaterial({color:0xeef2ff,flatShading:true});
   for(var mt=0;mt<Math.round(16);mt++){var ma=mt/16*6.28+rnd()*0.15,mrd=MAP/2-18;var mx=Math.cos(ma)*mrd,mz=Math.sin(ma)*mrd;
@@ -2175,7 +2258,6 @@ function decorateWorld(){
     var rndR=mulberry32(((SEED^0x77aa11)>>>0)||1);
     var cobR=gtex("tex_cobble.png",0,true);cobR.repeat.set(1,1);
     var gateWood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
-    var rockMatR=new THREE.MeshLambertMaterial({color:0x8b8d96,flatShading:true});
     var DECO_CAP=IS_MOB?50:90,decoN=0;
     function mkRoadGate(x,z,ux,uz){ /* kleiner Torbogen: 2 Pfosten + Querbalken (Holz) */
       var g=new THREE.Group();g.position.set(x,groundH(x,z),z);g.rotation.y=Math.atan2(ux,uz);
@@ -2201,7 +2283,7 @@ function decorateWorld(){
       /* 🏗️ Torbögen an den Dorf-Ausgängen */
       mkRoadGate(s0.x,s0.z,ux,uz);mkRoadGate(sE.x,sE.z,ux,uz);
       /* 🎀 Deko alle ~22 Einheiten: Laterne / Blume / Findling abwechselnd, gedeckelt */
-      var FLW=["nt_flower_red","nt_flower_yellow","cc0_flower_purple"];
+      var FLW=["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch"]; /* 🌸 W3: wertige nw-Blumen */
       var cum=0,nextAt=22,kind=0;
       for(var p3=1;p3<pts.length&&decoN<DECO_CAP;p3++){
         cum+=Math.hypot(pts[p3].x-pts[p3-1].x,pts[p3].z-pts[p3-1].z);
@@ -2209,8 +2291,15 @@ function decorateWorld(){
         nextAt+=22;
         var side=(kind%2?1:-1),ox=pts[p3].x+qx*side*3.4,oz=pts[p3].z+qz*side*3.4;
         if(kind%3===0){var lm2=cc0inst("ftk_lantern",1.7);if(lm2){lm2.position.set(ox,groundH(ox,oz),oz);scene.add(lm2);decoN++;}}
-        else if(kind%3===1){var fm2=cc0inst(FLW[(rndR()*3)|0],0.75*(0.7+rndR()*0.5));if(fm2){fm2.position.set(ox,groundH(ox,oz),oz);fm2.rotation.y=rndR()*6.28;scene.add(fm2);if(typeof regSway==="function")regSway(fm2,0.09,1.4);decoN++;}}
-        else{var fs=0.5+rndR()*0.6;var fnd=cc0inst("cc0_rock_small",fs)||new THREE.Mesh(new THREE.IcosahedronGeometry(fs*0.5,0),rockMatR);fnd.position.set(ox,groundH(ox,oz),oz);fnd.rotation.y=rndR()*6.28;scene.add(fnd);decoN++;}
+        else if(kind%3===1){var nB=2+((rndR()*2)|0); /* 🌸 W3: 2-3er-GLB-Blumengruppe statt Einzelblume */
+          for(var fb=0;fb<nB;fb++){var fm2=cc0inst(FLW[(rndR()*FLW.length)|0],0.6+rndR()*0.5);
+            if(!fm2)continue;var fx4=ox+(rndR()-0.5)*1.7,fz4=oz+(rndR()-0.5)*1.7;
+            fm2.position.set(fx4,groundH(fx4,fz4),fz4);fm2.rotation.y=rndR()*6.28;scene.add(fm2);
+            if(typeof regSway==="function")regSway(fm2,0.07+rndR()*0.04,1.2+rndR()*0.6);}
+          decoN++;}
+        else{var fs=1.0+rndR()*0.8;var fnd=cc0inst((kind%6===2)?"nw_meilenstein":((rndR()<0.5)?"nw_stein_gross_a":"nw_stein_gross_b"),fs);
+          /* 🪨 W3: strukturierter nw-Stein/Meilenstein; KEIN Ico-Fallback — lieber nichts als billig */
+          if(fnd){fnd.position.set(ox,groundH(ox,oz),oz);fnd.rotation.y=rndR()*6.28;scene.add(fnd);decoN++;}}
         kind++;
       }
     }
@@ -2537,6 +2626,9 @@ var running=false,paused=false,muted=false;
 var buildMode=false,ghost=null,ghostType=null,ghostValid=false;
 var felled=[]; // Regrow-Timer
 var quest=0;
+/* 📜 W3: Fortschritt der Folge-Quests (Persistenz im Save als qp — defensiv fuer alte Saves) */
+var qProg={flug:0,arenaCr:0,raceWin:0};
+function cntStruct(t){var n=0;for(var i=0;i<structures.length;i++)if(structures[i].type===t)n++;return n;}
 var QUESTS=[
   {t:"Sammle 10 Holz 🪵",done:function(){return inv.wood>=10||totalWood>=10;}},
   {t:"Baue ein Lagerfeuer 🔥",done:function(){return structures.some(function(s){return s.type==="lager";});}},
@@ -2545,7 +2637,12 @@ var QUESTS=[
   {t:"Fertige eine Axt 🪓 an der Werkbank",done:function(){return tools.axe>=1;}},
   {t:"Baue einen Wächter-Turm 🗼",done:function(){return structures.some(function(s){return s.type==="turm";});}},
   {t:"Jage ein Tier für Fleisch 🍖",done:function(){return inv.meat>=1;}},
-  {t:"Baue den NEXUS-TURM 🌌 — stabilisiere die Wildnis!",done:function(){return hasNexus();},nexus:true}
+  {t:"Baue den NEXUS-TURM 🌌 — stabilisiere die Wildnis!",done:function(){return hasNexus();},nexus:true},
+  /* 📜 W3-Folge-Quests (nach der Alt-Kette): Stationen-Bezug + Basis-Ausbau; rw = 💎-Belohnung */
+  {t:"Besuche das Flugfeld ✈️ (Station betreten)",done:function(){return !!qProg.flug;},rw:4},
+  {t:"Verdiene 8 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=8;},rw:6},
+  {t:"Gewinne ein Rennen 🏎️ (Score ≥ 40)",done:function(){return !!qProg.raceWin;},rw:8},
+  {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},rw:10}
 ];
 var totalWood=0;
 function updNexusProgress(){
@@ -3188,7 +3285,8 @@ function saveGame(){
     st:structures.map(function(o){return{t:o.type,x:o.x,z:o.z,hp:o.hp};}),
     loot:lootOpened,
     fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};}),
-    perk:PERK};
+    perk:PERK,
+    qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0}}; /* 📜 W3-Quest-Fortschritt */
   lsSet("nw_save1",JSON.stringify(s));
   // 🏆 Rekord mitschreiben (Sucht-Faktor: eigenen Bestwert schlagen)
   try{var b=JSON.parse(lsGet("nw_best")||"{}");
@@ -3226,7 +3324,12 @@ var BADGES=[
   {id:"flieger", n:"Flieger",          ic:"✈️", t:function(){return !!stationsDone().flieger;}},
   {id:"springer",n:"Springer",         ic:"🏃", t:function(){return !!stationsDone().springer;}},
   {id:"raser",   n:"Raser",            ic:"🏎️", t:function(){return !!stationsDone().raser;}},
-  {id:"gladiator",n:"Gladiator",       ic:"⚔️", t:function(){return !!stationsDone().gladiator;}}
+  {id:"gladiator",n:"Gladiator",       ic:"⚔️", t:function(){return !!stationsDone().gladiator;}},
+  /* 📜 W3-Folge-Quest-Abzeichen */
+  {id:"qflug",   n:"Stations-Besucher",ic:"🛫", t:function(){return !!qProg.flug;}},
+  {id:"qarena",  n:"Arena-Verdiener",  ic:"💎", t:function(){return (qProg.arenaCr|0)>=8;}},
+  {id:"qrace",   n:"Renn-Sieger",      ic:"🏁", t:function(){return !!qProg.raceWin;}},
+  {id:"qlicht",  n:"Lichtbringer",     ic:"🏮", t:function(){return cntStruct("fackel")>=3;}}
 ];
 function badgesGot(){try{return JSON.parse(lsGet("nw_badges")||"{}");}catch(e){return {};}}
 var _bgT=0;
@@ -3267,10 +3370,13 @@ function updQuest(dt){
   if(QUESTS[quest].done()){
     burst(player.position.x,player.position.y+2,player.position.z,0xffd166,12);
     var wasNexus=QUESTS[quest].nexus;
+    var rw=QUESTS[quest].rw|0; /* 💎 W3: Quest-Belohnung (Folge-Quests) */
     quest++;
+    if(rw>0){inv.crystal=(inv.crystal|0)+rw;invUpd();toast("🎁 Quest-Belohnung: +"+rw+" 💎");}
+    if(wasNexus)showWinScreen(); /* 🏆 Nexus bleibt der grosse Sieg — Folge-Quests kommen danach */
     if(quest<QUESTS.length){announce("✅ Ziel erreicht! Nächstes Ziel…");document.getElementById("questText").textContent=QUESTS[quest].t;}
-    else{document.getElementById("questText").textContent=wasNexus?"🏆 Nexus stabilisiert — du hast gewonnen! Überlebe weiter.":"🏆 Alle Ziele geschafft — überlebe weiter!";
-      if(wasNexus)showWinScreen();else announce("🏆 Wildnis-Meister!");}
+    else{document.getElementById("questText").textContent="🏆 Alle Ziele geschafft — überlebe weiter!";
+      if(!wasNexus)announce("🏆 Wildnis-Meister!");}
     updNexusProgress();saveGame();
   }
 }
@@ -3503,7 +3609,7 @@ function startGame(fresh){
   SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
   buildGround();buildRiver();buildGrassTufts();loadNature(function(){placeResources();buildAmbient();placeLoot();loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
-    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase","fn_bed"].concat(NEW_ASSETS).concat(NEW_ASSETS2).filter(function(n){return DEFER_ASSETS.indexOf(n)<0;}),
+    loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase","fn_bed","nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","nw_fels_a","nw_fels_b","nw_stein_gross_a","nw_stein_gross_b","nw_meilenstein"].concat(NEW_ASSETS).concat(NEW_ASSETS2).filter(function(n){return DEFER_ASSETS.indexOf(n)<0;}),
       function(){decorateWorld();iblClamp();loadCC0(DEFER_ASSETS,function(){decorateWorldLate();iblClamp();});}); // 🕑 Phase 2 lädt nach Spielstart; iblClamp: EnvMap auf Spät-Materialien dezent halten
   });
   loadHero();loadSlime();
@@ -3512,6 +3618,7 @@ function startGame(fresh){
     hp=sv.hp||100;day=sv.day||1;dayT=sv.dayT||0;isNight=!!sv.isNight;nights=sv.nights||0;won=!!sv.won;
     if(sv.maxHp)maxHp=sv.maxHp;if(sv.xp!=null)xp=sv.xp;if(sv.level)level=sv.level;if(sv.kills)kills=sv.kills;
     if(sv.perk)for(var pk in PERK)if(typeof sv.perk[pk]==="number")PERK[pk]=sv.perk[pk]; // gewählte Level-Perks zurück
+    if(sv.qp){qProg.flug=sv.qp.f|0;qProg.arenaCr=sv.qp.a|0;qProg.raceWin=sv.qp.r|0;}else{qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;} /* 📜 W3: defensiv (alte Saves: 0) */
     if(sv.fell&&sv.fell.length){ // gefällte Bäume/Felsen wieder als gefällt markieren (waren nach Reload wieder da)
       sv.fell.forEach(function(fr){for(var ri=0;ri<resources.length;ri++){var r=resources[ri];
         if(!r.dead&&Math.round(r.x)===fr.x&&Math.round(r.z)===fr.z){r.dead=true;r.regrow=fr.rg||60;
@@ -3522,7 +3629,7 @@ function startGame(fresh){
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+  } else {qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
       if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
       if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;
@@ -3670,6 +3777,7 @@ window.__nw={
   inv:function(){return inv;},
   give:function(k,n){inv[k]=(inv[k]||0)+n;invUpd();},
   night:function(){isNight=false;dayT=DAYLEN;}, // flippt im nächsten Frame zur Nacht
+  forceDay:function(){isNight=false;dayT=DAYLEN*0.5;return dayPhase();}, /* Test-Only: sofort heller Tag */
   giveTool:function(kind,lvl){tools[kind]=lvl;invUpd();},
   craft:function(id){doCraft(id);},
   openCraft:openCraft,closeCraft:closeCraft,
@@ -3682,6 +3790,15 @@ window.__nw={
   toLoot:function(){for(var i=0;i<loots.length;i++){if(!loots[i].opened){player.position.x=loots[i].x-1;player.position.z=loots[i].z;return loots[i];}}},
   place:function(t){placeStructure(t,player.position.x+3,player.position.z);return structures[structures.length-1];},
   quest:function(){return quest;},
+  qprog:function(){return {flug:qProg.flug|0,arenaCr:qProg.arenaCr|0,raceWin:qProg.raceWin|0};}, /* Test/QA: W3-Folge-Quests */
+  setQuest:function(n){quest=Math.max(0,Math.min(QUESTS.length,n|0));document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";return quest;}, /* Test-Only: Quest-Stand vorspulen */
+  simStation:function(i,score){_stCur=i|0;_stRewarded=false;onStationDone(score|0);_stCur=-1;return this.qprog();}, /* Test-Only: stationDone-Pfad ohne iframe */
+  phase:function(){return dayPhase();}, /* Test/QA: Tagesphase */
+  npcInfo:function(){var a=[],w=0;for(var i=0;i<npcs.length;i++){var n=npcs[i];if(!n.mesh)continue;if(n.roam)w++;a.push({x:+n.mesh.position.x.toFixed(2),z:+n.mesh.position.z.toFixed(2),roam:!!n.roam,vis:n.mesh.visible,sleep:!!n.sleeping});}return {phase:dayPhase(),roamers:w,list:a};}, /* Test/QA: NPC-Tagesablauf */
+  dog:function(){if(_dogIdx<0)return null;var d=critters[_dogIdx];return {x:d.m.position.x,z:d.m.position.z,follow:+d.follow.toFixed(2),cd:+d.cd.toFixed(2)};}, /* Test/QA: Dorfhund */
+  simNpc:function(sec){updNPCs(Math.max(0.016,Math.min(10,sec||1)));return dayPhase();}, /* Test-Only: NPC-Tick vorspulen (SwiftShader-Zeitlupe) */
+  simCrit:function(sec){updCritters(Math.max(0.016,Math.min(2,sec||0.4)));return 1;}, /* Test-Only */
+  simAni:function(sec){updAnimals(Math.max(0.016,Math.min(2,sec||0.4)));return 1;}, /* Test-Only */
   stations:function(){return stations.map(function(s){return {i:s.i,x:s.x,z:s.z,name:s.name,url:s.url,badge:s.badge};});},
   toStation:function(i){var s=stations[i||0];if(!s)return null;player.position.x=s.x-2;player.position.z=s.z;return {x:s.x,z:s.z,name:s.name};},
   openStation:function(i){openStation(i||0);return stationOpen;},
@@ -3691,12 +3808,12 @@ window.__nw={
   hub:function(){return {stands:hub.stands,lanterns:hub.lanterns,mill:hub.mill,forge:hub.forge,board:hub.board,critters:hub.critters};},
   snapCam:function(d,h){d=d||12;h=(h==null)?8.5:h;var tx=player.position.x-Math.sin(camYaw)*d,tz=player.position.z-Math.cos(camYaw)*d;camera.position.set(tx,player.position.y+h,tz);camera.lookAt(player.position.x,player.position.y+1.6,player.position.z+3);return 1;}, /* Test-Only: Kamera sofort hinter den Spieler (Screenshots ohne Lerp-Wartezeit) */
   tp:function(x,z){player.position.x=x;player.position.z=z;return 1;}, /* Test-Only */
-  hubPos:function(){return {fountain:{x:hub.fx,z:hub.fz},stands:(hub.standPos||[]).slice(),mill:{x:hub.millX,z:hub.millZ},board:questBoard?{x:questBoard.x,z:questBoard.z}:null};},
+  hubPos:function(){return {fountain:{x:hub.fx,z:hub.fz},stands:(hub.standPos||[]).slice(),mill:{x:hub.millX,z:hub.millZ},board:questBoard?{x:questBoard.x,z:questBoard.z}:null,tav:(hub.tavX!=null)?{x:hub.tavX,z:hub.tavZ}:null};},
   toBoard:function(){if(!questBoard)return null;player.position.x=questBoard.x;player.position.z=questBoard.z-2.4;return {x:questBoard.x,z:questBoard.z};}, /* Brett vor der Kamera (+z) */
   readBoard:function(){readBoard();return nearBoard;},
   toMill:function(){if(!hub.mill)return null;player.position.x=hub.millX;player.position.z=hub.millZ-8;return {x:hub.millX,z:hub.millZ};},
   toForge:function(){if(!hubForge)return null;player.position.x=hubForge.x;player.position.z=hubForge.z-5;return {x:hubForge.x,z:hubForge.z};},
-  state:function(){return{day:day,dayT:dayT,night:isNight,nights:nights,mon:monsters.length,st:structures.length,hp:hp,meat:inv.meat,axe:tools.axe,pick:tools.pick,animals:this.animals(),loot:loots.length,quest:quest,won:won,crystal:inv.crystal,stationOpen:stationOpen,stations:stations.length};}
+  state:function(){return{x:player.position.x,z:player.position.z,day:day,dayT:dayT,night:isNight,nights:nights,mon:monsters.length,st:structures.length,hp:hp,meat:inv.meat,axe:tools.axe,pick:tools.pick,animals:this.animals(),loot:loots.length,quest:quest,won:won,crystal:inv.crystal,stationOpen:stationOpen,stations:stations.length};}
 };
 requestAnimationFrame(frame);
 })();
