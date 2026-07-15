@@ -202,3 +202,106 @@ itch.io-Blocker gilt also nicht für die Drive-Links — via `drive.google.com/u
 | nf_drone.glb | Enemy_Flying.gltf | Flugdrohnen-Gegner (**8 Animationen**, geriggt) |
 | nf_robot_small.glb | Enemy_Small.gltf | kleiner Roboter-Gegner (**8 Animationen**) |
 | nf_robot_large.glb | Enemy_Large.gltf | großer Roboter-Boss (**14 Animationen**) |
+
+## Traumhaus-Spiel — Interior/Garten-Nachschub (`th2_*`) — 2026-07-14
+Beschafft für traumhaus.html (Sims-Style Hausbau). Alle CC0 1.0. Namensschema `th2_<name>.glb`,
+damit keine Kollision mit den bestehenden `th_*`/`fu_*` (Duplikat-Check gegen Mesh-Namen der
+fu_*-GLBs gemacht — ⚠️ `fu_wardrobe.glb` enthält in Wahrheit `cabinetTelevision`, ist also ein
+TV-Lowboard; ein echter Kleiderschrank fehlte → `th2_kleiderschrank`).
+Verifiziert je Datei: glTF-Magic + Version 2 + JSON-Chunk parsebar + keine externen URIs + ≥1 Mesh.
+
+### Kenney — Furniture Kit 2.0 (CC0), 18 Modelle
+Quelle: https://kenney.nl/assets/furniture-kit · Lizenz: CC0 1.0. Format-Ursprung `Models/GLTF format`
+(**Material-Farben, KEINE Texturen** → kein Blender/colormap-Fix nötig, nur `gltf-transform prune`+`dedup`).
+
+| Datei | Original | Nutzung |
+|---|---|---|
+| th2_spuele.glb | kitchenSink | Küchen-Spüle (Unterschrank + Becken) |
+| th2_haengeschrank.glb | kitchenCabinetUpperDouble | Küchen-Hängeschrank |
+| th2_kuechentheke.glb | kitchenBar | Küchentheke/Bar-Element |
+| th2_kaffeemaschine.glb | kitchenCoffeeMachine | Kaffeemaschine (Deko Küche) |
+| th2_toaster.glb | toaster | Toaster (Deko Küche) |
+| th2_waschbecken.glb | bathroomSink | Bad-Waschbecken (Säule) |
+| th2_badspiegel.glb | bathroomMirror | Badspiegel (Wand) |
+| th2_badschrank.glb | bathroomCabinetDrawer | Badschrank mit Schublade |
+| th2_waschmaschine.glb | washer | Waschmaschine |
+| th2_ecksofa.glb | loungeSofaCorner | Ecksofa (Wohnzimmer) |
+| th2_relaxsessel.glb | loungeChairRelax | Relax-/Liegesessel |
+| th2_stehlampe.glb | lampRoundFloor | Stehlampe (fu_lamp = nur Tischlampe) |
+| th2_deckenlampe.glb | lampSquareCeiling | Deckenlampe |
+| th2_einzelbett.glb | bedSingle | Einzelbett |
+| th2_etagenbett.glb | bedBunk | Etagenbett (Kinderzimmer) |
+| th2_nachttisch.glb | sideTableDrawers | Nachttisch mit Schubladen |
+| th2_kleiderschrank.glb | bookcaseClosedDoors | Kleiderschrank (hoher Schrank mit Türen) |
+| th2_garderobe.glb | coatRackStanding | Stand-Garderobe (Flur) |
+
+### Kenney — City Kit Suburban 2.0 + Coaster Kit (CC0), 3 Garten-Modelle
+Quellen: https://kenney.nl/assets/city-kit-suburban · https://kenney.nl/assets/coaster-kit · CC0 1.0.
+GLB-Format referenziert externe `Textures/colormap.png` → Blender-Embed (polish_kenney_glb.py-Muster,
+flat-shading) + `gltf-transform resize 512/prune/dedup` + Sampler NEAREST (Palette-Atlas-r128-Fix).
+
+| Datei | Original (Kit) | Nutzung |
+|---|---|---|
+| th2_blumenbeet.glb | planter (Suburban) | Pflanzkasten/Blumenbeet (Garten) |
+| th2_gartenzaun.glb | fence (Suburban) | Gartenzaun-Segment |
+| th2_gartenbank.glb | bench (Coaster) | Garten-/Parkbank |
+
+> Nicht beschafft: Sonnenschirm + dedizierter Gartenstuhl — in keinem curl-baren CC0-Kit gefunden
+> (Kenney: kein Garten-Kit; Quaternius Furniture/Modular-Streets ohne Schirm; itch.io/KayKit über
+> Proxy nicht ladbar; OpenGameArt-CC0-Treffer nur Hand-Regenschirm = Stil-Mismatch). Grill/Pool
+> existieren bereits als th_grill/th_pool; Gartenstuhl-Ersatz: th_gruenstuhl/th2_gartenbank.
+
+## Neon-Wildnis — Natur/Dorf-Nachschub (`nw_*`) — 2026-07-15
+Beschafft für neon-wildnis.html (schönere Felsen, wertige Blumen, Dorf-Leben, Wege-Deko). Alle CC0 1.0.
+Namensschema `nw_<name>.glb`. **Duplikat-Check gegen Original-Namen** der bestehenden nt_/fg_/cc0_/ftk_/sv_-GLBs
+(Node-Namen aus dem JSON-Chunk extrahiert) — alle 27 Picks sind neue Originale.
+Verifiziert je Datei: glTF-Magic + Version 2 + JSON-Chunk parsebar + ≥1 Mesh + keine externen URIs + <300 KB.
+
+### Kenney — Nature Kit 2.1 (CC0), 21 Modelle
+Quelle: https://kenney.nl/assets/nature-kit · Lizenz: CC0 1.0. Format `Models/GLTF format` (= .glb,
+self-contained, **Material-Farben + KHR_materials_unlit** — gleiches Muster wie die r128-verifizierten
+cc0_*-Nature-Assets, rendert nativ). Aufbereitung: nur `gltf-transform prune`+`dedup`. Alle 2,6–23 KB.
+
+| Datei | Original | Nutzung |
+|---|---|---|
+| nw_fels_a.glb | rock_largeC | Fels-Variante (schönere Steine!) |
+| nw_fels_b.glb | rock_largeE | Fels-Variante |
+| nw_stein_gross_a.glb | stone_largeA | grauer Stein groß |
+| nw_stein_gross_b.glb | stone_largeD | grauer Stein groß, Variante |
+| nw_klippe.glb | cliff_large_rock | großer Klippenblock (Terrain-Akzent) |
+| nw_blume_lila.glb | flower_purpleC | Blume lila (hoch) |
+| nw_blume_rot.glb | flower_redB | Blume rot |
+| nw_blume_gelb.glb | flower_yellowB | Blume gelb |
+| nw_blume_gelb_hoch.glb | flower_yellowC | Blume gelb hoch |
+| nw_busch_gross.glb | plant_bushLargeTriangle | großer Dreiecks-Busch |
+| nw_schilf.glb | grass_leafsLarge | Schilf/hohes Blattgras (Ufer) |
+| nw_stumpf_alt.glb | stump_old | alter Baumstumpf |
+| nw_pilz_braun.glb | mushroom_tanGroup | braune Pilz-Gruppe |
+| nw_pilz_rot_hoch.glb | mushroom_redTall | hoher roter Pilz |
+| nw_zaun_tor.glb | fence_gate | Zaun mit Tor (Dorf/Gehege) |
+| nw_schild.glb | sign | Holz-Schild (Wege-Deko) |
+| nw_meilenstein.glb | statue_obelisk | Meilenstein/Obelisk (Wegmarke) |
+| nw_holzstapel_gross.glb | log_stackLarge | großer Holzstapel (Dorf) |
+| nw_kuerbis.glb | crop_pumpkin | Kürbis (Feld/Dorf) |
+| nw_weizen.glb | crops_wheatStageB | Weizen-Reihe (Feld, Heu-Ersatz) |
+| nw_topf_gross.glb | pot_large | großer Tontopf (Dorf-Deko) |
+
+### Kenney — Fantasy Town Kit 2.0 + Survival Kit 2.0 (CC0), 6 Modelle
+Quellen: https://kenney.nl/assets/fantasy-town-kit · https://kenney.nl/assets/survival-kit · CC0 1.0.
+GLB referenziert externe `Textures/colormap.png` → **Blender-Embed** (polish_kenney_glb.py-Muster,
+flat-shading) + `gltf-transform resize 512` + prune + dedup + **Sampler NEAREST** (Palette-Atlas-r128-Fix,
+identity KHR_texture_transform entfernt). PNG eingebettet, 15–78 KB.
+
+| Datei | Original (Kit) | Nutzung |
+|---|---|---|
+| nw_marktstand_gruen.glb | stall-green (Fantasy Town) | Marktstand grün (Variante zu ftk_stall) |
+| nw_marktstand_bank.glb | stall-bench (Fantasy Town) | Markt-Verkaufsbank |
+| nw_brunnen_eckig.glb | fountain-square (Fantasy Town) | eckiger Brunnen (Variante) |
+| nw_karren_hoch.glb | cart-high (Fantasy Town) | hoher Karren (Variante zu ftk_cart) |
+| nw_fass_offen.glb | barrel-open (Survival) | offenes Fass (Dorf-Prop) |
+| nw_wegweiser.glb | signpost (Survival) | mehrarmiger Wegweiser |
+
+> Verworfen/nicht beschafft: **Heuballen** (existiert in keinem der 3 Kits — Ersatz: nw_weizen/nw_kuerbis
+> als Feld-Deko), **Fass-Stapel** (kein Kit hat gestapelte Fässer — Ersatz: nw_fass_offen + cc0_barrel
+> kombinieren), **Seerose** (fg_lilypad/fg_lilypad_small existieren bereits = Duplikat), einfacher
+> Nature-Kit-Zaun `fence_simple` (cc0_fence + th2_gartenzaun decken das ab).

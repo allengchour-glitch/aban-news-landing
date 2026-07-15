@@ -271,12 +271,18 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
-      <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:120px;font-size:16px">
-      <button class="btn ghost" id="netHostBtn" style="margin-top:0">Raum erstellen</button>
-      <input id="netCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:76px;text-transform:uppercase;font-size:16px">
-      <button class="btn ghost" id="netJoinBtn" style="margin-top:0">Beitreten</button>
-      <button class="btn ghost" id="netHostPubBtn" style="margin-top:0" title="Raum ohne Code — jeder kann beitreten">🌍 Offener Raum</button>
-      <button class="btn ghost" id="netJoinPubBtn" style="margin-top:0" title="Offenem Raum ohne Code beitreten">🌍 Offen beitreten</button>
+      <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:150px;font-size:16px;text-align:center">
+      <button class="btn" id="quickPlayBtn" style="margin-top:0;flex-basis:100%;max-width:360px;background:linear-gradient(135deg,#5ee0a0,#2fb8ff);font-size:1.02rem">🌍 Sofort online spielen — 1 Tipp, ohne Code</button>
+      <details style="flex-basis:100%">
+        <summary style="cursor:pointer;color:#2a6ab0;font-weight:700;font-size:.86rem">👥 Mit Freunden per Code spielen</summary>
+        <div style="margin-top:8px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
+          <button class="btn ghost" id="netHostBtn" style="margin-top:0">Raum erstellen</button>
+          <input id="netCode" placeholder="CODE" maxlength="4" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:76px;text-transform:uppercase;font-size:16px">
+          <button class="btn ghost" id="netJoinBtn" style="margin-top:0">Beitreten</button>
+        </div>
+      </details>
+      <button class="btn ghost" id="netHostPubBtn" style="display:none" title="Raum ohne Code — jeder kann beitreten">🌍 Offener Raum</button>
+      <button class="btn ghost" id="netJoinPubBtn" style="display:none" title="Offenem Raum ohne Code beitreten">🌍 Offen beitreten</button>
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
@@ -342,6 +348,14 @@ var THREE=window.THREE,W=innerWidth,H=innerHeight;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
+/* 🌐 Vermittlungs-Server mit ERSATZ: der Gratis-PeerJS-Cloud-Server ist zeitweise nicht erreichbar
+   (User-Report: 'Verbindung zum Server fehlgeschlagen' auf beiden Geraeten). Nach einem Server-Fehler
+   merken wir uns den naechsten Broker — der naechste Versuch nutzt automatisch den Ersatz. */
+var PEER_BROKERS=[null,{host:"peerjs.92k.de",port:443,secure:true}];
+function peerCfg(){var i=(+(lsGet("lp_broker")||0))%PEER_BROKERS.length;var b=PEER_BROKERS[i];
+  var o={debug:0};if(b){o.host=b.host;o.port=b.port;o.secure=b.secure;}return o;}
+function peerNextBroker(){var i=((+(lsGet("lp_broker")||0))+1)%PEER_BROKERS.length;lsSet("lp_broker",String(i));
+  var b=PEER_BROKERS[i];return b?"Ersatz-Server":"Standard-Server";}
 /* 🩺 Diagnose-Overlay (?diag=1): zeigt live, was beim Laden passiert — fuer Geraete-Fehlersuche */
 var DIAGON=/[?&]diag=1/.test(location.search),_diagEl=null;
 function diag(t){if(!DIAGON)return;try{
@@ -3109,7 +3123,11 @@ function netApply(m){
   if(m.t==="emo"){showEmoteB(m.i|0,m.k|0);return;} // 😊 Smiley-Fast-Chat
   if(m.t==="init"){beginNet(m);return;}
   if(m.t==="rematch"){beginNet(m);return;} // 🔁 neue Runde, gleiche Spieler
-  if(m.t==="welcome"){NET.my=m.idx|0;netUnlockAfterWelcome();return;} // Host teilt dem Gast seinen Spieler-Index mit
+  if(m.t==="welcome"){NET.my=m.idx|0;netUnlockAfterWelcome();
+    beep(720,.12,"triangle",.07);setTimeout(function(){beep(980,.16,"triangle",.07);},130); /* 🔔 verbunden! */
+    try{if(navigator.vibrate)navigator.vibrate([80,40,120]);}catch(e){}
+    netStatus("✅ Verbunden — du bist im Raum!","#2a7d46");
+    return;} // Host teilt dem Gast seinen Spieler-Index mit
   if(m.t==="full"){netRoomFull();return;} // Raum ist voll (max. 4)
   if(m.t==="ready"){if(!NET.ready)NET.ready=[];NET.ready[m.i|0]=!!m.v;netPlayersUpd();return;} // Bereit-Status
   if(m.t==="pong"){NET._lastPong=performance.now();if(m.ts)NET.ping=Math.max(1,Math.round(performance.now()-m.ts));netConnInfo();return;} // Ping-Messung + Watchdog (Gast)
@@ -3430,11 +3448,11 @@ function netHostReset(){try{voiceStop();}catch(e){}NET.host=false;NET.pubWanted=
 function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln + retry (bis 3×)
   if(NET.pubWanted){NET.code="OFEN";} // 🌍 Offener Raum: fester Code, jeder kann ohne Code beitreten
   else{NET.code="";var A="ABCDEFGHJKLMNPQRSTUVWXYZ";for(var i=0;i<4;i++)NET.code+=A[(Math.random()*A.length)|0];}
-  try{NET.peer=new Peer(netRoomId(NET.code),{debug:0});}catch(e){netStatus("Online-Modul-Fehler — Seite neu laden.","#e05a5a");netHostReset();return;}
+  try{NET.peer=new Peer(netRoomId(NET.code),peerCfg());}catch(e){netStatus("Online-Modul-Fehler — Seite neu laden.","#e05a5a");netHostReset();return;}
   clearTimeout(NET._tmo);
   NET._tmo=setTimeout(function(){ // 15s-Timeout: nie stilles Nichts
     if(NET.peer&&NET.peer.open)return;
-    netStatus("⏱️ Verbindung zum Server fehlgeschlagen — nochmal versuchen.","#e05a5a");
+    var nb3=peerNextBroker();netStatus("⏱️ Verbindung zum Server fehlgeschlagen — NOCHMAL TIPPEN, ich nutze dann den "+nb3+".","#e05a5a");
     try{if(NET.peer)NET.peer.destroy();}catch(e){}netHostReset();
   },15000);
   NET.peer.on("open",function(){clearTimeout(NET._tmo);NET.peer._opened=true;
@@ -3447,7 +3465,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
     if(NET.peer&&NET.peer._opened)return; // Verbindung steht schon — Fehler nicht fatal
     clearTimeout(NET._tmo);
     if(t==="browser-incompatible")netStatus("Dein Browser kann kein WebRTC — Online geht hier leider nicht.","#e05a5a");
-    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed")netStatus("⏱️ Kein Kontakt zum Vermittlungs-Server — Internet prüfen, nochmal versuchen.","#e05a5a");
+    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed"){var nb=peerNextBroker();netStatus("⏱️ Vermittlungs-Server nicht erreichbar — NOCHMAL TIPPEN, ich nutze dann den "+nb+".","#e05a5a");}
     else netStatus("Online-Fehler ("+t+") — nochmal versuchen.","#e05a5a");
     netHostReset();
   });
@@ -3461,7 +3479,10 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         var nm=netUniqueName(String(m.n||"Spieler").slice(0,12));NET.names.push(nm);NET.cfgs.push(sanCfg(m.cfg)||seededChar(1,NET.names.length-1));
         c._idx=NET.names.length-1;NET.ready[c._idx]=false;
         try{c.send(JSON.stringify({t:"welcome",idx:c._idx}));}catch(e){}
-        netPlayersUpd();netConnInfo();chatAdd("System",nm+" ist beigetreten");beep(720,.08,"triangle",.05);return;}
+        netPlayersUpd();netConnInfo();chatAdd("System",nm+" ist beigetreten");
+        beep(720,.12,"triangle",.07);setTimeout(function(){beep(980,.16,"triangle",.07);},130); /* 🔔 deutlicher Verbindungs-Ton */
+        try{if(navigator.vibrate)navigator.vibrate([80,40,120]);}catch(e){}
+        return;}
       if(m.t==="rejoin"){ // Wiedereintritt im laufenden Spiel -> vollständigen Snapshot schicken
         var ri=m.idx|0;
         if(!NET.started||ri<0||ri>=NET.names.length||(typeof netPresent==="function"&&netPresent(ri)&&ri!==0)){ // ungültig/besetzt -> ablehnen
@@ -3505,6 +3526,10 @@ document.getElementById("netHostPubBtn").onclick=function(){ // 🌍 offener Rau
   if(NET.peer)return;NET.pubWanted=true;document.getElementById("netHostBtn").click();};
 document.getElementById("netJoinPubBtn").onclick=function(){ // 🌍 offenem Raum beitreten
   if(NET.peer)return;document.getElementById("netCode").value="OFEN";document.getElementById("netJoinBtn").click();};
+document.getElementById("quickPlayBtn").onclick=function(){ /* 🌍 1-Tipp: joinen ODER automatisch Raum oeffnen */
+  if(NET.peer)return;NET.quick=true;
+  netStatus("🌍 Suche offenen Raum …","#2a6ab0");
+  document.getElementById("netCode").value="OFEN";document.getElementById("netJoinBtn").click();};
 document.getElementById("netJoinBtn").onclick=function(){
   if(typeof Peer==="undefined"){netStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
   if(NET.peer)return; // Doppelklick-Schutz
@@ -3513,12 +3538,20 @@ document.getElementById("netJoinBtn").onclick=function(){
   var jb=this,hb=document.getElementById("netHostBtn");jb.disabled=true;hb.disabled=true;jb.textContent="⏳ …";
   NET.host=false;NET.code=code;NET.my=-1;NET.started=false;NET.ping=0;NET._reTries=0; // Index bis 'welcome' unbekannt (nicht 0!)
   netStatus("⏳ Verbinde mit Raum "+code+" …","#2a6ab0");
-  function joinReset(msg){try{voiceStop();}catch(e){}netStatus(msg,"#e05a5a");clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
+  function joinReset(msg){try{voiceStop();}catch(e){}
+    if(NET.quick){ /* 🌍 kein offener Raum -> automatisch selbst einen oeffnen */
+      NET.quick=false;clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);
+      try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
+      jb.disabled=false;hb.disabled=false;jb.textContent="Beitreten";
+      netStatus("🌍 Kein offener Raum da — ich öffne einen für dich …","#2a7d46");
+      setTimeout(function(){document.getElementById("netHostPubBtn").click();},350);
+      return;}
+    netStatus(msg,"#e05a5a");clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
     jb.disabled=false;hb.disabled=false;jb.textContent="Beitreten";
     document.getElementById("chatToggle").style.display="none";
     document.getElementById("netSetup").style.display="flex";document.getElementById("netLobby").style.display="none";}
   var opened=false;
-  try{NET.peer=new Peer(undefined,{debug:0});}catch(e){joinReset("Online-Modul-Fehler — Seite neu laden.");return;}
+  try{NET.peer=new Peer(undefined,peerCfg());}catch(e){joinReset("Online-Modul-Fehler — Seite neu laden.");return;}
   clearTimeout(NET._tmo);
   NET._tmo=setTimeout(function(){if(opened)return; // Gesamt-Timeout (deckt alle Wiederhol-Versuche ab)
     joinReset("⏱️ Raum "+code+" antwortet nicht — Code prüfen, dann nochmal versuchen.");},28000);
@@ -3526,12 +3559,12 @@ document.getElementById("netJoinBtn").onclick=function(){
   NET.peer.on("call",voiceAnswer); /* 🎙️ eingehende Voice-Anrufe annehmen */
   // 🔁 Beitritt mit Wiederholung: der Gratis-Broker ist manchmal träge, oder der Host lädt noch —
   // ein einzelnes "peer-unavailable" heisst NICHT, dass der Raum weg ist. Bis zu 5 Versuche.
-  var attempt=0,MAXTRY=5;
+  var attempt=0,MAXTRY=NET.quick?2:5;
   function tryConnect(){
     if(opened||!NET.peer||NET.peer.destroyed)return;
     attempt++;netStatus("⏳ Suche Raum "+code+" … (Versuch "+attempt+"/"+MAXTRY+")","#2a6ab0");
     var c=NET.peer.connect(netRoomId(code),{reliable:true});NET.conns=[c];var thisOpen=false;
-    c.on("open",function(){thisOpen=true;opened=true;clearTimeout(NET._tmo);clearTimeout(NET._retryT);
+    c.on("open",function(){thisOpen=true;opened=true;NET.quick=false;clearTimeout(NET._tmo);clearTimeout(NET._retryT);
       netLobbyShow();netPlayersUpd();netConnInfo();netStatus("");
       try{c.send(JSON.stringify({t:"hallo",n:netMyName(),cfg:loadChar(0)}));}catch(e){}
       document.getElementById("netHint").textContent="Verbunden — mach dich bereit und warte auf den Start …";
@@ -3554,7 +3587,7 @@ document.getElementById("netJoinBtn").onclick=function(){
       return;}
     clearTimeout(NET._tmo);
     if(t==="browser-incompatible")joinReset("Dein Browser kann kein WebRTC — Online geht hier leider nicht.");
-    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed")joinReset("⏱️ Kein Kontakt zum Vermittlungs-Server — Internet prüfen, dann nochmal.");
+    else if(t==="network"||t==="server-error"||t==="socket-error"||t==="socket-closed"){var nb2=peerNextBroker();joinReset("⏱️ Vermittlungs-Server nicht erreichbar — NOCHMAL TIPPEN, ich nutze dann den "+nb2+".");}
     else joinReset("Verbindung fehlgeschlagen ("+t+") — nochmal versuchen.");});
 };
 // Bereit-Knopf (Gast), Code-Kopieren, Online-Start + Rematch teilen sich netLaunch
@@ -3649,7 +3682,7 @@ function syncSendStart(){ /* Sende-Seite: Raum mit Zufalls-Code oeffnen, Bundle 
   syncKill();if(G&&running)saveGame(); /* laufendes Spiel: aktuellen Stand sichern, dann senden */
   var code="",A="ABCDEFGHJKLMNPQRSTUVWXYZ";for(var i=0;i<4;i++)code+=A[(Math.random()*A.length)|0];
   syncStatus("⏳ Erstelle Übertragungs-Code …");
-  try{SYNC.peer=new Peer("aban-lpsv-"+code.toLowerCase(),{debug:0});}catch(e){syncStatus("Fehler — Seite neu laden.","#e05a5a");return;}
+  try{SYNC.peer=new Peer("aban-lpsv-"+code.toLowerCase(),peerCfg());}catch(e){syncStatus("Fehler — Seite neu laden.","#e05a5a");return;}
   SYNC.tmo=setTimeout(function(){syncStatus("⏱️ Zeit abgelaufen — nochmal auf »senden« tippen.","#e05a5a");syncKill();},120000);
   SYNC.peer.on("open",function(){syncStatus("📤 Am ANDEREN Gerät diesen Code eingeben:  "+code+"  (2 Min gültig)","#2a7d46");});
   SYNC.peer.on("connection",function(c){
@@ -3664,7 +3697,7 @@ function syncRecvStart(code){
   code=String(code||"").trim().toUpperCase().replace(/[^A-Z]/g,"");
   if(code.length!==4){syncStatus("Bitte den 4-Buchstaben-Code vom anderen Gerät eingeben.","#e05a5a");return;}
   syncKill();syncStatus("⏳ Hole Spielstand "+code+" …");
-  try{SYNC.peer=new Peer(undefined,{debug:0});}catch(e){syncStatus("Fehler — Seite neu laden.","#e05a5a");return;}
+  try{SYNC.peer=new Peer(undefined,peerCfg());}catch(e){syncStatus("Fehler — Seite neu laden.","#e05a5a");return;}
   SYNC.tmo=setTimeout(function(){syncStatus("⏱️ Nicht gefunden — sendet das andere Gerät gerade? Code prüfen.","#e05a5a");syncKill();},25000);
   SYNC.peer.on("open",function(){
     var c=SYNC.peer.connect("aban-lpsv-"+code.toLowerCase(),{reliable:true});
