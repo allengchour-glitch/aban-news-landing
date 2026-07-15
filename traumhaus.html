@@ -281,7 +281,8 @@ for(var rp=0;rp<rauchPunkte.length;rp++)for(var rq=0;rq<8;rq++){var idx=(rp*8+rq
 rauchGeo.setAttribute("position",new THREE.BufferAttribute(rauchPos,3));
 var rauch=new THREE.Points(rauchGeo,new THREE.PointsMaterial({color:0xcccccc,size:0.9,transparent:true,opacity:0.35,depthWrite:false}));
 rauch.frustumCulled=false;scene.add(rauch);
-function updRauch(dt){var pp=rauchGeo.attributes.position.array;
+var _rauchFrame=0;
+function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.position.array;
   for(var i=0;i<rauchBase.length;i++){var b=rauchBase[i];b.off+=dt*0.5;if(b.off>5)b.off=0;
     pp[i*3]=b.x+Math.sin(b.off*1.5)*0.5;pp[i*3+1]=b.y+b.off;pp[i*3+2]=b.z;}
   rauchGeo.attributes.position.needsUpdate=true;}
@@ -638,7 +639,9 @@ function updVoegel(dt,now){if(!window._voegel)return;
   window._voegel.forEach(function(b){b.ph+=dt*b.sp2;
     b.sp.position.set(Math.cos(b.ph)*b.r,b.h+Math.sin(b.ph*2)*1.5,Math.sin(b.ph)*b.r);
     var flap=1.4+Math.abs(Math.sin(now*0.012+b.ph*10))*0.8;b.sp.scale.set(2,flap,1);});}
-function updWasser(dt,now){
+var _wasserFrame=0;
+function updWasser(dt,now){if((++_wasserFrame&1))return; // jeden 2. Frame reicht optisch
+  
   if(!window._wasser)return;
   window._wasser.forEach(function(w){var pa=w.geo.attributes.position.array,b=w.base;
     for(var i=0;i<pa.length;i+=3){pa[i+2]=b[i+2]+Math.sin(now*0.002+b[i]*0.3)*0.25+Math.cos(now*0.0015+b[i+1]*0.3)*0.2;}
