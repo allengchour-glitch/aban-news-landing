@@ -421,11 +421,11 @@
 #done search:football captain armband
 #done search:polo shirt men slim fit
 #done search:polo shirt women cotton
-search:pique polo classic men
-search:football training jersey set
-search:goalkeeper gloves kids
-search:fan face paint set
-search:soccer water bottle sport
-search:football boot bag
-search:kids sports jersey set
-search:soccer training cones
+#done search:pique polo classic men
+#done search:football training jersey set
+#done search:goalkeeper gloves kids
+#done search:fan face paint set
+#done search:soccer water bottle sport
+#done search:football boot bag
+#done search:kids sports jersey set
+#done search:soccer training cones
