@@ -445,10 +445,10 @@
 #done search:hair claw clip matte
 #done search:silk hair scrunchie
 #done search:sunglasses oversized women
-search:bucket hat cotton
-search:crossbody belt bag
-search:oversized hoodie unisex
-search:sweatpants jogger women
+#done search:bucket hat cotton
+#done search:crossbody belt bag
+#done search:oversized hoodie unisex
+#done search:sweatpants jogger women
 search:led mirror makeup vanity
 search:jewelry box travel
 search:candle warmer lamp
