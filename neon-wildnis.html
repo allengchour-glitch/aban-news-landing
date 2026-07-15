@@ -157,6 +157,11 @@ canvas{display:block}
 /* Minimap unter das Ziel-Panel geschoben — vorher lief der Questtext unter die Karte (Polier-Pass) */
 #minimap{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(152px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
 @media(max-width:600px){#minimap{width:92px;height:92px;top:calc(138px + env(safe-area-inset-top))}}
+/* 🔍 Zoom-Buttons neben/unter der Minimap (Wildnis-Paket #2) */
+#zoomBtns{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(280px + env(safe-area-inset-top));z-index:21;display:flex;gap:6px;pointer-events:auto}
+#zoomBtns .zbtn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(130,200,255,.55);background:rgba(8,20,32,.72);color:#cfe9ff;font-size:1.05rem;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}
+#zoomBtns .zbtn:active{transform:scale(.92)}
+@media(max-width:600px){#zoomBtns{top:calc(236px + env(safe-area-inset-top))}}
 </style>
 </head>
 <body>
@@ -181,6 +186,7 @@ canvas{display:block}
     <div id="waveHud" class="hide"></div>
     <canvas id="minimap" width="140" height="140"></canvas>
   </div>
+  <div id="zoomBtns"><div class="zbtn" id="zoomIn" title="Heranzoomen">➕</div><div class="zbtn" id="zoomOut" title="Herauszoomen">➖</div></div>
   <div id="sysRow">
     <div class="sysbtn" id="bSound">🔊</div>
     <div class="sysbtn" id="bMenu">⏸</div>
@@ -1249,7 +1255,9 @@ function roadRibbon(pts,width,cobble,normal){
     pos.push(lx,groundH(lx,lz)+0.13,lz, rx,groundH(rx,rz)+0.13,rz);
     var v=cum/4;uv.push(0,v, width/4,v);
   }
-  for(var j=0;j<pts.length-1;j++){var a=j*2;idx.push(a,a+1,a+2, a+1,a+3,a+2);}
+  /* 🐛 Paket-#2-Fix: Dreiecke zeigten nach UNTEN (Backface-Cull -> Strassen von oben unsichtbar,
+     Raycast-verifiziert, auch auf main). Winding gedreht = Normale nach oben. */
+  for(var j=0;j<pts.length-1;j++){var a=j*2;idx.push(a,a+2,a+1, a+1,a+2,a+3);}
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
   g.setAttribute("uv",new THREE.Float32BufferAttribute(uv,2));
@@ -1268,7 +1276,8 @@ function layRoads(cx,cz,rr){
         posP.push(xP,groundH(cx+xP,cz+zP)+0.10,zP);uvP.push(xP/7,zP/7);}}
     for(var r2p=0;r2p<RINGSp;r2p++)for(var s2p=0;s2p<SEGp;s2p++){
       var a0=r2p*(SEGp+1)+s2p,b0=a0+SEGp+1;
-      idxP.push(a0,b0,a0+1, a0+1,b0,b0+1);}
+      /* 🐛 Paket-#2-Fix: Winding zeigte nach unten (Pflaster von oben weggecullt) -> gedreht */
+      idxP.push(a0,a0+1,b0, a0+1,b0+1,b0);}
     var pg=new THREE.BufferGeometry();
     pg.setAttribute("position",new THREE.Float32BufferAttribute(posP,3));
     pg.setAttribute("uv",new THREE.Float32BufferAttribute(uvP,2));
@@ -1788,8 +1797,13 @@ function buildSpawnHub(){
   var rndH=mulberry32(((SEED^0x51ab2)>>>0)||1); /* eigener deterministischer Strom */
   var houses=window._spawnHouses||[];
   function clearOf(x,z,d){for(var i=0;i<houses.length;i++){if(Math.hypot(houses[i].x-x,houses[i].z-z)<d)return false;}return true;}
-  function hubSpot(ang,r){ /* deterministisch: Radius nach aussen nudgen, bis hausfrei */
-    for(var k=0;k<6;k++){var x=vx+Math.cos(ang)*(r+k*2),z=vz+Math.sin(ang)*(r+k*2);if(clearOf(x,z,5.5))return {x:x,z:z};}
+  function hubSpot(ang,r,d){ /* deterministisch: Radius nach aussen + Winkel leicht wackeln, bis hausfrei (d=Mindestabstand) */
+    d=d||5.5;
+    var AOFF=[0,0.12,-0.12,0.24,-0.24,0.36,-0.36];
+    for(var ka=0;ka<AOFF.length;ka++)for(var k=0;k<12;k++){
+      var a2=ang+AOFF[ka],x=vx+Math.cos(a2)*(r+k*2),z=vz+Math.sin(a2)*(r+k*2);
+      if(clearOf(x,z,d))return {x:x,z:z};}
+    console.log("[nw] Hub-Overlap akzeptiert (Versuche erschöpft)",ang,r);
     return {x:vx+Math.cos(ang)*r,z:vz+Math.sin(ang)*r};
   }
   /* 1) 🛒 Belebter Marktplatz: 3 Stände mit Essens-Waren obendrauf (decoVillageExtras-Muster) */
@@ -1815,7 +1829,7 @@ function buildSpawnHub(){
       if(rec){rec.spd=0.3;rec.pois=[{x:fx+1.8,z:fz+0.6},{x:fx-1.8,z:fz+0.6},{x:fx,z:fz-2.2}];}} /* bleiben am Brunnen */
   })();
   /* 3) 🍺 Taverne: bd_inn + Laterne + warmes Licht + Musikant-NPC (♪-Blase, fixedEmo) */
-  (function(){var p=hubSpot(2.6,23),tx=p.x,tz=p.z;
+  (function(){var p=hubSpot(2.6,23,8.5),tx=p.x,tz=p.z; /* 📏 Taverne: ≥8.5 zu Häusern */
     var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);addCollider(tx,tz,4.0);}
     var dc=vx-tx,ds=vz-tz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var dx=tx+dc*4.4,dz=tz+ds*4.4; /* Vorplatz Richtung Zentrum */
@@ -1825,7 +1839,7 @@ function buildSpawnHub(){
     if(mus){mus.fixedEmo="🎶";mus.spd=0.25;mus.emoT=1.5;mus.pois=[{x:dx-1.2,z:dz+0.8},{x:dx+1.4,z:dz+1.2},{x:dx,z:dz+2.2}];}
   })();
   /* 4) ⚒️ Arbeitende Schmiede: bd_smithy + Amboss + sv_hammer + periodische Funken + Flacker-Licht */
-  (function(){var p=hubSpot(4.9,23),sx=p.x,sz=p.z;
+  (function(){var p=hubSpot(4.9,23,8.5),sx=p.x,sz=p.z; /* 📏 Schmiede: ≥8.5 zu Häusern */
     var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);addCollider(sx,sz,3.8);}
     var dc=vx-sx,ds=vz-sz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var ax=sx+dc*4.6,az=sz+ds*4.6,ay=groundH(ax,az);
@@ -2036,25 +2050,47 @@ function decorateWorld(){
     var snow=new THREE.Mesh(new THREE.ConeGeometry(mr*0.42,mh*0.32,6,1),snowM);snow.position.set(mx,groundH(mx,mz)+mh-mh*0.16-6,mz);snow.rotation.y=mtn.rotation.y;scene.add(snow);}
   // --- Dörfer: 2–3 Cluster aus Häusern + Zäunen + Lagerfeuer + Fässern/Kisten/Zelt ---
   var HOUSES=["building_fachwerk","building_werkstatt","building_turm","bd_house_a","bd_house_b","bd_inn","bd_smithy","bd_town_house"]; // 🆕 Quaternius-Dorfbauten
+  /* 📏 Paket #2: eigener Strom für Ring 3 + Abstands-Retries (Haupt-rnd-Sequenz bleibt BYTE-IDENTISCH → Koop) */
+  var rndP=mulberry32(((SEED^0x5a17c3)>>>0)||1);
   var nV=3+((rnd()*2)|0);
   for(var v=0;v<nV;v++){
     var isSpawn=(v===0); // 🏡 Dorf 0 = RIESIGES Anfangsdorf am Spawn (0,0)
     var vx,vz;
     if(isSpawn){vx=0;vz=0;}else{var va=rnd()*6.28,vrd=70+rnd()*(half-90);vx=Math.cos(va)*vrd;vz=Math.sin(va)*vrd;}
     villages.push({x:vx,z:vz,big:isSpawn});
-    var ringR=isSpawn?42:13; // 🏙️ RIESIGE Hauptstadt (User-Wunsch)
-    var nH=isSpawn?22:(2+((rnd()*3)|0));
+    var ringR=isSpawn?52:13; // 🏙️ RIESIGE Hauptstadt (User-Wunsch, Paket #2: 42→52 + 3. Ring)
+    var nH=isSpawn?30:(2+((rnd()*3)|0));
     var _houses=[];
     for(var h=0;h<nH;h++){
       var ha,hrd;
-      if(isSpawn){ // zwei Häuser-Ringe: innen 10, aussen 12
+      /* Ring 3 (h>=22) zieht ALLE Zufälle aus rndP → Haupt-rnd-Strom bleibt exakt wie vor Paket #2 */
+      var R3=(isSpawn&&h>=22),R=R3?rndP:rnd;
+      if(isSpawn){ // drei Häuser-Ringe: innen 10, mitte 12, aussen 8
         if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=13+rnd()*6;}
-        else{ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=27+rnd()*10;}
+        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=27+rnd()*10;}
+        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=40+rndP()*8;}
       }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
       var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       /* rnd-Aufrufe unbedingt (identischer Strom mit/ohne GLB → koop-sicher); fehlt das GLB,
          springt ein Primitiv-Haus ein (Welt nie leer, Android-Fetch-Saga). */
-      var hIdx=(rnd()*HOUSES.length)|0,hSc=9.5*(0.9+rnd()*0.25),hRy=Math.atan2(vx-hx,vz-hz)+(rnd()-0.5)*0.4,hCx=hx+(rnd()-0.5)*1.5,hCz=hz+(rnd()-0.5)*1.5;
+      var hIdx=(R()*HOUSES.length)|0,hSc=9.5*(0.9+R()*0.25),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4;
+      /* 📏 Mindestabstand 8.5 (Zentrum-zu-Zentrum): Retry-Sampling NUR aus rndP (deterministisch) */
+      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<8.5)return true;return false;};
+      var tries=0;
+      while(tries<12&&tooClose(hx,hz)){
+        var ra,rr2;
+        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=13+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=27+rndP()*10;}else{ra=rndP()*6.28;rr2=40+rndP()*8;}}
+        else{ra=rndP()*6.28;rr2=6+rndP()*7;}
+        hx=vx+Math.cos(ra)*rr2;hz=vz+Math.sin(ra)*rr2;hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;tries++;
+      }
+      if(tries>=12&&tooClose(hx,hz)){ /* 12 Random-Retries erschöpft → deterministisch radial nach aussen nudgen */
+        console.log("[nw] Haus-Overlap nach 12 Versuchen — nudge radial",v,h,Math.round(hx),Math.round(hz));
+        var nAng=Math.atan2(hz-vz,hx-vx),nRad=Math.hypot(hx-vx,hz-vz);
+        for(var nk=1;nk<=14&&tooClose(hx,hz);nk++){hx=vx+Math.cos(nAng)*(nRad+nk*1.6);hz=vz+Math.sin(nAng)*(nRad+nk*1.6);}
+        hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;
+        if(tooClose(hx,hz))console.log("[nw] Haus-Overlap akzeptiert",v,h,Math.round(hx),Math.round(hz));
+      }
+      var hCx=hx+(R()-0.5)*1.5,hCz=hz+(R()-0.5)*1.5;
       var hm=cc0inst(HOUSES[hIdx],hSc)||mkFallbackHouse(hSc*0.9);
       hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});addCollider(hx,hz,3.4);
     }
@@ -2064,7 +2100,7 @@ function decorateWorld(){
     var fL=new THREE.PointLight(0xffa040,1.4,18);fL.position.set(vx,groundH(vx,vz)+1.2,vz);scene.add(fL);
     worldProps.push({mesh:fire,halo:null,ph:rnd()*6.28,base:fire.position.y,float:false,scl:1,flick:true,light:fL});
     // Zaun-Ring + Fässer/Kisten/Zelt
-    for(var f=0;f<(isSpawn?16:8);f++){var nF=isSpawn?16:8;var fa=f/nF*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
+    for(var f=0;f<(isSpawn?20:8);f++){var nF=isSpawn?20:8;var fa=f/nF*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;/* Zaun zieht mit ringR 52 mit (20 Segmente) */var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     if(isSpawn)window._spawnHouses=_houses.slice(); /* 🏙️ Haus-Positionen für Hub-Abstands-Checks (Phase 2) */
@@ -2130,6 +2166,55 @@ function decorateWorld(){
       worldProps.push({mesh:spM,halo:null,ph:0,base:spM.position.y,float:true,scl:1});
     }
   }
+  /* --- 🛣️ Inter-Village-Strassennetz (Paket #2): von villages[0] zu JEDEM anderen Dorf eine
+     geschwungene Kopfstein-Strasse (roadRibbon, terrain-anschmiegend) + Wegweiser + Torbögen +
+     Deko-Props alle ~22 Einheiten. EIGENER mulberry32-Strom → Haupt-rnd-Sequenz unberührt (Koop).
+     Performance: pro Dorf 1 grosses statisches Ribbon, keine Per-Frame-Kosten. */
+  (function(){
+    if(villages.length<2)return;
+    var rndR=mulberry32(((SEED^0x77aa11)>>>0)||1);
+    var cobR=gtex("tex_cobble.png",0,true);cobR.repeat.set(1,1);
+    var gateWood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
+    var rockMatR=new THREE.MeshLambertMaterial({color:0x8b8d96,flatShading:true});
+    var DECO_CAP=IS_MOB?50:90,decoN=0;
+    function mkRoadGate(x,z,ux,uz){ /* kleiner Torbogen: 2 Pfosten + Querbalken (Holz) */
+      var g=new THREE.Group();g.position.set(x,groundH(x,z),z);g.rotation.y=Math.atan2(ux,uz);
+      for(var s=-1;s<=1;s+=2){var post=new THREE.Mesh(new THREE.CylinderGeometry(0.14,0.17,3.4,6),gateWood);post.position.set(s*3.0,1.7,0);post.castShadow=true;g.add(post);}
+      var beam=new THREE.Mesh(new THREE.BoxGeometry(6.6,0.34,0.3),gateWood);beam.position.y=3.35;beam.castShadow=true;g.add(beam);
+      scene.add(g);}
+    var A=villages[0],r0=55; /* Spawn-Pflaster deckt ringR+3=55 */
+    for(var vi=1;vi<villages.length;vi++){
+      var B=villages[vi],dxr=B.x-A.x,dzr=B.z-A.z,LR=Math.hypot(dxr,dzr);if(LR<r0+20)continue;
+      var ux=dxr/LR,uz=dzr/LR,qx=-uz,qz=ux,r1=16; /* Klein-Dorf-Pflaster: ringR13+3 */
+      var ph1=rndR()*6.28,ph2=rndR()*6.28,amp=5+rndR()*5;
+      var span=LR-r0-r1,steps=Math.max(16,Math.min(72,Math.round(span/6)));
+      var pts=[];
+      for(var s2=0;s2<=steps;s2++){var f=s2/steps,dd=r0+span*f;
+        var env=Math.sin(f*Math.PI); /* Enden laufen gerade in die Dörfer */
+        var wob=(Math.sin(f*6.28+ph1)*amp+Math.sin(f*15.7+ph2)*2.2)*env;
+        pts.push({x:A.x+ux*dd+qx*wob,z:A.z+uz*dd+qz*wob});}
+      window._ivRoads=window._ivRoads||[];window._ivRoads.push(roadRibbon(pts,4.5,cobR)); /* QA-Registry */
+      /* 🪧 Wegweiser an beiden Dorfausgängen */
+      var s0=pts[0],sE=pts[pts.length-1];
+      mkSignpost(s0.x+qx*3.4,s0.z+qz*3.4,[{t:"🏘️ Dorf "+(vi+1)+" →",a:Math.atan2(B.z-s0.z,B.x-s0.x)}]);
+      mkSignpost(sE.x+qx*3.4,sE.z+qz*3.4,[{t:"🏡 Heimdorf →",a:Math.atan2(A.z-sE.z,A.x-sE.x)}]);
+      /* 🏗️ Torbögen an den Dorf-Ausgängen */
+      mkRoadGate(s0.x,s0.z,ux,uz);mkRoadGate(sE.x,sE.z,ux,uz);
+      /* 🎀 Deko alle ~22 Einheiten: Laterne / Blume / Findling abwechselnd, gedeckelt */
+      var FLW=["nt_flower_red","nt_flower_yellow","cc0_flower_purple"];
+      var cum=0,nextAt=22,kind=0;
+      for(var p3=1;p3<pts.length&&decoN<DECO_CAP;p3++){
+        cum+=Math.hypot(pts[p3].x-pts[p3-1].x,pts[p3].z-pts[p3-1].z);
+        if(cum<nextAt)continue;
+        nextAt+=22;
+        var side=(kind%2?1:-1),ox=pts[p3].x+qx*side*3.4,oz=pts[p3].z+qz*side*3.4;
+        if(kind%3===0){var lm2=cc0inst("ftk_lantern",1.7);if(lm2){lm2.position.set(ox,groundH(ox,oz),oz);scene.add(lm2);decoN++;}}
+        else if(kind%3===1){var fm2=cc0inst(FLW[(rndR()*3)|0],0.75*(0.7+rndR()*0.5));if(fm2){fm2.position.set(ox,groundH(ox,oz),oz);fm2.rotation.y=rndR()*6.28;scene.add(fm2);if(typeof regSway==="function")regSway(fm2,0.09,1.4);decoN++;}}
+        else{var fs=0.5+rndR()*0.6;var fnd=cc0inst("cc0_rock_small",fs)||new THREE.Mesh(new THREE.IcosahedronGeometry(fs*0.5,0),rockMatR);fnd.position.set(ox,groundH(ox,oz),oz);fnd.rotation.y=rndR()*6.28;scene.add(fnd);decoN++;}
+        kind++;
+      }
+    }
+  })();
   // --- Versteckter Friedhof (Fantasy-Grusel) mit SUPER-Loot-Gruft ---
   (function(){
     var ga=rnd()*6.28,grd=half*0.72;var gx=Math.cos(ga)*grd,gz=Math.sin(ga)*grd;
@@ -2327,21 +2412,44 @@ function updAnimalSpawns(dt){
 // ---------- Strukturen / Bauen ----------
 var structures=[]; // {type,mesh,x,z,hp,data}
 var STRUCT_CAP=18;
+/* 🧱 Paket #2: Canvas-Mini-Icons (32px, Pastell) für Bau-Karten, wo das Emoji daneben lag
+   (🚧 Baustelle ≠ Holzzaun, 🪤 Mausefalle ≠ Stachelfalle, 🔦 Taschenlampe ≠ Fackel, 🧱 Ziegel ≠ Holz-Mauer) */
+function mkBIcon(kind){try{
+  var cv=document.createElement("canvas");cv.width=cv.height=32;var c=cv.getContext("2d");
+  if(kind==="zaun"){ /* 3 braune Latten mit Querbalken */
+    c.fillStyle="#b98a5e";
+    [4,13,22].forEach(function(x){c.fillRect(x,8,6,20);c.beginPath();c.moveTo(x,8);c.lineTo(x+3,3);c.lineTo(x+6,8);c.fill();});
+    c.fillStyle="#8a5a34";c.fillRect(1,12,30,4);c.fillRect(1,21,30,4);
+  }else if(kind==="falle"){ /* Holzbrett mit 4 grauen Spitzen */
+    c.fillStyle="#8a5a34";c.fillRect(2,23,28,7);c.fillStyle="#6a4526";c.fillRect(2,28,28,2);
+    c.fillStyle="#aeb4bf";
+    [5,12,19,26].forEach(function(x){c.beginPath();c.moveTo(x-3,23);c.lineTo(x,7);c.lineTo(x+3,23);c.fill();});
+  }else if(kind==="wand"){ /* Holz-Mauer: 4 horizontale Bretter + 2 Stützen */
+    c.fillStyle="#b98a5e";for(var y=4;y<28;y+=7)c.fillRect(2,y,28,5);
+    c.fillStyle="#8a5a34";c.fillRect(5,3,3,26);c.fillRect(24,3,3,26);
+  }else if(kind==="fackel"){ /* Holzstab + Flamme */
+    c.fillStyle="#8a5a34";c.fillRect(14,13,4,17);
+    c.fillStyle="#ffb35c";c.beginPath();c.moveTo(16,2);c.quadraticCurveTo(23,10,16,15);c.quadraticCurveTo(9,10,16,2);c.fill();
+    c.fillStyle="#ffe08a";c.beginPath();c.arc(16,10,3,0,6.29);c.fill();
+  }
+  return cv.toDataURL();
+}catch(e){return null;}}
 var RECIPES={
-  wand:{ic:"🧱",name:"Holz-Mauer",cost:{wood:4},hp:60,need:null},
-  fackel:{ic:"🔦",name:"Fackel",cost:{wood:1},hp:20,need:null},
+  wand:{ic:"🪵",name:"Holz-Mauer",cost:{wood:4},hp:60,need:null},
+  fackel:{ic:"🔥",name:"Fackel",cost:{wood:1},hp:20,need:null},
   lager:{ic:"🔥",name:"Lagerfeuer",cost:{wood:6,stone:2},hp:40,need:null},
   werk:{ic:"🔧",name:"Werkbank",cost:{wood:8,stone:4},hp:40,need:null},
   turm:{ic:"🗼",name:"Wächter-Turm",cost:{stone:6,crystal:2},hp:50,need:"werk"},
   steinwand:{ic:"🧱",name:"Steinmauer",cost:{stone:8},hp:180,need:"werk"},
   steinboden:{ic:"⬛",name:"Steinboden",cost:{stone:4},hp:120,need:"werk"},
   steinpfeiler:{ic:"🏛️",name:"Steinpfeiler",cost:{stone:5},hp:150,need:"werk"},
-  zaun:{ic:"🚧",name:"Holzzaun",cost:{wood:3},hp:40,need:null},
+  zaun:{ic:"🪵",name:"Holzzaun",cost:{wood:3},hp:40,need:null},
   bett:{ic:"🛏️",name:"Bett",cost:{wood:8},hp:40,need:null},
-  falle:{ic:"🪤",name:"Stachelfalle",cost:{wood:3,stone:5},hp:30,need:"werk"},
+  falle:{ic:"⚔️",name:"Stachelfalle",cost:{wood:3,stone:5},hp:30,need:"werk"},
   kiste:{ic:"📦",name:"Vorratskiste",cost:{wood:8,stone:2},hp:50,need:"werk"},
   nexus:{ic:"🌌",name:"Nexus-Turm",cost:{wood:30,stone:24,crystal:10},hp:300,need:"werk"}
 };
+RECIPES.zaun.img=mkBIcon("zaun");RECIPES.falle.img=mkBIcon("falle");RECIPES.wand.img=mkBIcon("wand");RECIPES.fackel.img=mkBIcon("fackel");
 var NEXUS_COST=RECIPES.nexus.cost;
 // Crafting an der Werkbank (Werkzeuge) — Holz→Stein-Progression
 var CRAFT={
@@ -2850,7 +2958,8 @@ function renderBuildMenu(){
     var r=RECIPES[type];var locked=r.need&&!hasWorkbench();var aff=canAfford(type)&&!locked;
     var costTxt=Object.keys(r.cost).map(function(k){var ic={wood:"🪵",stone:"🪨",crystal:"💎"}[k];return ic+r.cost[k];}).join(" ");
     var d=document.createElement("div");d.className="bcard"+(locked?" locked":"")+(aff?" aff":"");
-    d.innerHTML='<div class="bi">'+r.ic+'</div><div class="bn">'+r.name+'</div><div class="bc">'+(locked?"🔧 Werkbank nötig":costTxt)+'</div>';
+    var icHtml=r.img?'<img src="'+r.img+'" width="32" height="32" alt="" style="vertical-align:middle">':r.ic; /* 🧱 Canvas-Icon falls vorhanden */
+    d.innerHTML='<div class="bi">'+icHtml+'</div><div class="bn">'+r.name+'</div><div class="bc">'+(locked?"🔧 Werkbank nötig":costTxt)+'</div>';
     d.onclick=function(){if(locked){toast("Baue zuerst eine Werkbank 🔧");return;}if(!canAfford(type)){toast("Nicht genug Material");return;}startGhost(type);};
     el.appendChild(d);
   });
@@ -2990,15 +3099,33 @@ addEventListener("touchend",function(e){if(e.changedTouches)for(var i=0;i<e.chan
 addEventListener("touchcancel",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
 // 🔄 Kamera drehen: mit dem Finger auf der rechten Bildschirmhälfte ziehen (Joystick bleibt links) / Maus ziehen
 var rotId=null,rotLX=0;
+/* 🔍 Pinch-Zoom (2 Finger, Joystick-Finger zählt nicht mit); während Pinch pausiert der Kamera-Drag */
+var pinchIds=null,pinchD0=1,pinchZ0=1;
+function pinchDropTouch(e){if(!pinchIds)return;for(var i=0;i<e.changedTouches.length;i++){var id=e.changedTouches[i].identifier;if(id===pinchIds[0]||id===pinchIds[1]){pinchIds=null;return;}}}
 addEventListener("touchstart",function(e){if(!running)return;
+  var free=[];for(var j=0;j<e.touches.length;j++){var tt=e.touches[j];
+    if(tt.identifier===stickId)continue;
+    if(tt.target&&tt.target.closest&&tt.target.closest(".btn,#buildMenu,#tradeMenu,#perkPick,#coopBox,#zoomBtns,#stick"))continue;
+    free.push(tt);}
+  if(!pinchIds&&free.length>=2){ /* 2-Finger = Zoom, Drag-Logik pausiert */
+    pinchIds=[free[0].identifier,free[1].identifier];
+    pinchD0=Math.hypot(free[0].clientX-free[1].clientX,free[0].clientY-free[1].clientY)||1;
+    pinchZ0=camZoomT;rotId=null;return;}
   for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
     if(t.identifier===stickId)continue;
-    if(t.clientX>innerWidth*0.4&&rotId===null&&!(t.target&&t.target.closest&&t.target.closest(".btn,#buildMenu,#tradeMenu,#perkPick,#coopBox"))){rotId=t.identifier;rotLX=t.clientX;}}},{passive:true});
-addEventListener("touchmove",function(e){if(rotId===null)return;
+    if(t.clientX>innerWidth*0.4&&rotId===null&&pinchIds===null&&!(t.target&&t.target.closest&&t.target.closest(".btn,#buildMenu,#tradeMenu,#perkPick,#coopBox,#zoomBtns"))){rotId=t.identifier;rotLX=t.clientX;}}},{passive:true});
+addEventListener("touchmove",function(e){
+  if(pinchIds){var a=null,b=null;
+    for(var j=0;j<e.touches.length;j++){var tt=e.touches[j];if(tt.identifier===pinchIds[0])a=tt;else if(tt.identifier===pinchIds[1])b=tt;}
+    if(a&&b){var d=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)||1;setZoom(pinchZ0*pinchD0/d);}
+    return;}
+  if(rotId===null)return;
   for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
     if(t.identifier===rotId){camYaw-=(t.clientX-rotLX)*0.008;rotLX=t.clientX;}}},{passive:true});
-addEventListener("touchend",function(e){for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
-addEventListener("touchcancel",function(e){for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
+addEventListener("touchend",function(e){pinchDropTouch(e);for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
+addEventListener("touchcancel",function(e){pinchDropTouch(e);for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===rotId)rotId=null;});
+/* 🔍 Mausrad-Zoom (Desktop) */
+addEventListener("wheel",function(e){if(!running)return;setZoom(camZoomT*(e.deltaY>0?1.1:0.9));},{passive:true});
 var mDrag=false,mLX=0;
 addEventListener("mousedown",function(e){if(!running||IS_MOB)return;if(e.target&&e.target.tagName==="CANVAS"){mDrag=true;mLX=e.clientX;}});
 addEventListener("mousemove",function(e){if(mDrag){camYaw-=(e.clientX-mLX)*0.008;mLX=e.clientX;}});
@@ -3009,12 +3136,17 @@ bindTap("bAct",function(){harvest();});
 bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);bindTap("bBolt",useBolt);
 (function(){var mb=document.getElementById("muteBtn2");if(mb){mb.textContent=muted?"🔇":"🔊";mb.onclick=function(){toggleMute();};}})();bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
+bindTap("zoomIn",function(){setZoom(camZoomT*0.85);});  /* 🔍 näher ran */
+bindTap("zoomOut",function(){setZoom(camZoomT*1.18);}); /* 🔍 weiter weg */
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
 document.getElementById("bSound").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊";};
 document.getElementById("bMenu").onclick=function(){togglePause();};
 
 // ---------- Kamera ----------
 var camYaw=0,shake=0;
+/* 🔍 Zoom (Wildnis-Paket #2): Faktor auf Kamera-Distanz, sanft gelerpt, persistent (nw_zoom) */
+var camZoomT=(function(){var z=parseFloat(lsGet("nw_zoom"));return (z>=0.55&&z<=1.8)?z:1;})(),camZoom=camZoomT;
+function setZoom(v){camZoomT=Math.max(0.55,Math.min(1.8,v));lsSet("nw_zoom",camZoomT.toFixed(3));}
 var colliders=[];
 function addCollider(x,z,r){colliders.push({x:x,z:z,r:r});}
 function canWalk(nx,nz){ /* 🧱 grosse Gegenstaende blockieren (User-Wunsch) */
@@ -3035,7 +3167,8 @@ function camRel(mx,my){ /* 🎮 Input -> Welt, relativ zur Kamera-Drehung (User:
 function updCamera(dt){
   // Aspekt-adaptiv: auf hohen Handys Spieler höher ins Bild (gelernt aus neon-realm)
   var asp=camera.aspect,nf=Math.max(0,Math.min(1,(0.7-asp)/0.17));
-  var dist=12+nf*1.5,hgt=8.5+nf*1;
+  camZoom+=(camZoomT-camZoom)*Math.min(1,dt*7); /* 🔍 sanft gelerpt */
+  var dist=(12+nf*1.5)*camZoom,hgt=(8.5+nf*1)*camZoom;
   var tx=player.position.x-Math.sin(camYaw)*dist,tz=player.position.z-Math.cos(camYaw)*dist;
   camera.position.x+=(tx-camera.position.x)*Math.min(1,dt*6);
   camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*6);
@@ -3518,6 +3651,11 @@ window.__nw={
   props:function(){return worldProps.length;},
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
   villages:function(){return villages.slice();},
+  houses:function(){return (window._spawnHouses||[]).slice();}, /* Test-Only: Überschneidungs-Probe */
+  ivRoads:function(){return (window._ivRoads||[]).length;}, /* Test-Only */
+  toRoad:function(i){var m=(window._ivRoads||[])[i||0];if(!m)return null;var p=m.geometry.attributes.position;var mi=((p.count/2)|0)&~1;var x=p.getX(mi),z=p.getZ(mi);player.position.x=x;player.position.z=z-4;return {x:x,z:z};}, /* Test-Only */
+  texCount:function(re){var n=0;scene.traverse(function(o){if(o.isMesh&&o.material&&o.material.map){var im=o.material.map.image;var s=(im&&(im.currentSrc||im.src))||"";if(new RegExp(re).test(s))n++;}});return n;}, /* Test-Only */
+  zoom:function(v){if(v!=null)setZoom(v);return {t:camZoomT,cur:camZoom,dist:Math.hypot(camera.position.x-player.position.x,camera.position.y-player.position.y,camera.position.z-player.position.z)};}, /* Test-Only: Zoom-E2E */
   toVillage:function(i){var v=villages[i||0];if(!v)return null;player.position.x=v.x;player.position.z=v.z-18;return v;},
   toGrave:function(){for(var i=0;i<loots.length;i++)if(loots[i].type==="grave"){var g=loots[i];player.position.x=g.x-2;player.position.z=g.z-10;return g;}return null;},
   cc0:function(){return Object.keys(cc0proto).length;},
