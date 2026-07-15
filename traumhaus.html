@@ -479,6 +479,12 @@ var dorfFenster=[];
     var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
       new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
     kopf.position.y=3.2;lg.add(kopf);dorfFenster.push(kopf.material);
+    // warmer Lichtschein am Boden (nachts sichtbar)
+    var scheinMat=new THREE.MeshStandardMaterial({color:0xffe8a0,emissive:0xffdd88,emissiveIntensity:0,transparent:true,opacity:0.0,side:THREE.DoubleSide});
+    var schein=new THREE.Mesh(new THREE.CircleGeometry(3.2,20),scheinMat);
+    schein.rotation.x=-Math.PI/2;schein.position.set(0,0.04,0);lg.add(schein);
+    dorfFenster.push(scheinMat);
+    lg._schein=scheinMat;
     lg.position.set(p[0],0,p[1]);scene.add(lg);});
 })();
 // ---- Grosse Stadt: 2. Ring (Wohnbloecke, Kirche, Laeden) ----
@@ -2512,7 +2518,7 @@ function loop(now){
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?1.1:0;});
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
-      dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?0.9:0;});}
+      dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?0.9:0;if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.32:0;});}
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
     if(followSim){
