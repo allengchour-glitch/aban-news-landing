@@ -73,6 +73,8 @@ canvas{display:block}
 #emoteBar{position:fixed;right:10px;bottom:calc(122px + env(safe-area-inset-bottom));z-index:22;display:none;flex-direction:column;gap:6px}
 #emoteBar button{width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
 #emoteBar button:active{transform:scale(.9)}
+#pingBtn{position:fixed;right:70px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(58,208,255,.96);box-shadow:0 6px 18px rgba(20,80,120,.34);font-size:1.4rem;cursor:pointer;display:none}
+#pingBtn:active{transform:scale(.9)}
 #chatSend{border:0;background:#ffd166;padding:0 14px;cursor:pointer;font-weight:800;border-radius:0 0 12px 0}
 #chatToggle{position:fixed;left:66px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:2px solid #e8b04a;background:rgba(255,253,246,.94);border-radius:50%;width:48px;height:48px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:cblink 1s infinite}
@@ -97,6 +99,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat">💬</button>
 <button id="emoteToggle" title="Emotes">😊</button>
+<button id="pingBtn" title="Treffpunkt setzen">📍</button>
 <button id="micBtn" title="Voice-Chat">🎙️</button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,#ff9a3a,#ff4a2a);box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer">🚀</button>
 <button id="hornBtn" style="position:fixed;left:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:rgba(255,253,246,.96);box-shadow:0 6px 20px rgba(60,40,10,.3);cursor:pointer">📣</button>
@@ -1163,6 +1166,7 @@ function onNetMsg(m){
   else if(m.t==="geld"){if(m.d!==undefined){geld+=m.d;geldLast+=m.d;}else{geld=m.v;geldLast=geld;}updHUD();}
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="emote")onEmote(m.si,m.k);
+  else if(m.t==="ping")onPing(m.x,m.z);
   else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
   else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
@@ -1228,6 +1232,32 @@ function onEmote(si,k){var s9=sims[si];if(!s9)return;simEmoji(s9,k);if(k==="❤�
   EMOTES.forEach(function(e9){var b=document.createElement("button");b.textContent=e9[0];
     b.onclick=function(){doEmote(e9[0]);};eb.appendChild(b);});
   et.onclick=function(){eb.style.display=eb.style.display==="flex"?"none":"flex";};})();
+// ---- Koop-Treffpunkt (Ping-Beacon): beide Spieler finden sich in der grossen Welt ----
+var pings=[];
+function makePing(x,z){
+  while(pings.length>=3){var old9=pings.shift();scene.remove(old9.grp);}
+  var grp=new THREE.Group();
+  var pil=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.55,16,12,1,true),new THREE.MeshBasicMaterial({color:0x3ad0ff,transparent:true,opacity:0.3,depthWrite:false,side:THREE.DoubleSide}));
+  pil.position.y=8;grp.add(pil);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(0.9,1.5,28),new THREE.MeshBasicMaterial({color:0x3ad0ff,transparent:true,opacity:0.55,side:THREE.DoubleSide,depthWrite:false}));
+  ring.rotation.x=-Math.PI/2;ring.position.y=0.06;grp.add(ring);
+  var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  c.font="50px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText("\u{1F4CD}",32,36);
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false,depthTest:false}));
+  sp.scale.set(1.7,1.7,1);sp.position.y=3.4;sp.renderOrder=999;grp.add(sp);
+  grp.position.set(x,0,z);scene.add(grp);
+  pings.push({grp:grp,sp:sp,pil:pil,ring:ring,t:14});}
+function updPings(dt,now){
+  for(var i=pings.length-1;i>=0;i--){var p=pings[i];p.t-=dt;
+    if(p.t<=0){scene.remove(p.grp);pings.splice(i,1);continue;}
+    var fade=p.t<2?p.t/2:1;
+    p.sp.position.y=3.4+Math.sin(now*0.005)*0.28;
+    p.ring.material.opacity=(0.4+Math.sin(now*0.006)*0.25)*fade;
+    p.ring.scale.setScalar(1+Math.sin(now*0.006)*0.18);
+    p.pil.material.opacity=0.3*fade;p.sp.material.opacity=fade;}}
+function doPing(){var si=meinSi(),s9=sims[si];if(!s9)return;makePing(s9.x,s9.z);beep(880,.08,"sine",.05);netSend({t:"ping",x:s9.x,z:s9.z});chatAdd("System","📍 Treffpunkt gesetzt — dein Partner sieht ihn");}
+function onPing(x,z){makePing(x,z);beep(760,.08,"sine",.05);}
+(function(){var pb=document.getElementById("pingBtn");if(pb)pb.onclick=doPing;})();
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
@@ -2567,10 +2597,11 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);updPings(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
+    document.getElementById("pingBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
