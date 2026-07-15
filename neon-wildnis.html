@@ -1860,8 +1860,9 @@ function remoteStation(i){
 function decorateWorldLate(){
   var half=MAP/2-40, half2=MAP/2-60;
   var rnd2=mulberry32(((SEED^0x9e3779)>>>0)||1);
-  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
-  function spotFar(minR){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
+  function inVZoneL(x,z){var vc=window._villageClear;if(!vc)return (Math.abs(x)<64&&Math.abs(z)<64);for(var i=0;i<vc.length;i++){var d=vc[i].clear;if((x-vc[i].x)*(x-vc[i].x)+(z-vc[i].z)*(z-vc[i].z)<d*d)return true;}return false;}
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZoneL(x,z))continue;fn(x,z);}}
+  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZoneL(x,z))return {x:x,z:z};}var a2=rnd2()*6.28,rd2=minR+rnd2()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
   // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
   var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["fd_burger",0.6],["cc0_tent",1.8],["ck_catapult",2.2],["ftk_lantern",1.5],["fn_stool",0.9],["fn_chair",0.9],["fn_plant",1.0],["dk_chest",0.9],["cc0_log_stack",1.0],["fn_bookcase",1.3],["cc0_campfire",0.7],
     // 🆕 Survival/Piraten/Möbel/Dungeon-Streuprops
@@ -2121,7 +2122,15 @@ function updHub(dt){
 function decorateWorld(){
   var wl=document.getElementById("worldLoad");if(wl)wl.style.display="none";
   var half=MAP/2-40;
-  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}fn(x,z);}}
+  /* 📏 Welle 5: Dorf-Zentren VOR der Streu-Deko aus dem Haupt-rnd-Strom ziehen (exakt in der Reihenfolge,
+     die die Village-Loop bisher zog), damit farScatter/spotFar NICHTS ins Dorf setzen (User: "keine überschneidung").
+     Die Village-Loop liest _vc dann statt neu zu ziehen → identische Gesamt-Draws, koop-deterministisch. */
+  var _nV=3+((rnd()*2)|0);
+  var _vc=[{x:0,z:0,clear:64}]; /* Dorf 0 = Spawn (0,0): ringR52 + 12 Puffer */
+  for(var _iv=1;_iv<_nV;_iv++){var _va=rnd()*6.28,_vrd=70+rnd()*(half-90);_vc.push({x:Math.cos(_va)*_vrd,z:Math.sin(_va)*_vrd,clear:22});}
+  window._villageClear=_vc;
+  function inVZone(x,z){for(var i=0;i<_vc.length;i++){var d=_vc[i].clear;if((x-_vc[i].x)*(x-_vc[i].x)+(z-_vc[i].z)*(z-_vc[i].z)<d*d)return true;}return false;}
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZone(x,z))continue;fn(x,z);}}
   // --- Deko-Bäume in Sorten (nicht abbaubar, nur Dichte/Look) ---
   var TREES=[["cc0_tree_pine",5.2],["cc0_tree_oak",4.6],["cc0_tree_default",4.4],["cc0_tree_palm",5.8],["ftk_tree",5.0],["ck_tree",5.4],
     ["nt_pine",5.4],["nt_oak",4.8],["nt_tree",4.4],["nt_tree_leafy",4.6],["nt_palm",5.8]];
@@ -2165,7 +2174,7 @@ function decorateWorld(){
   farScatter(Math.round(26*VF),14,function(x,z){var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;scene.add(m);});
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
-  function spotFar(minR){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR);return {x:Math.cos(a)*rd,z:Math.sin(a)*rd};}
+  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZone(x,z))return {x:x,z:z};}var a2=rnd()*6.28,rd2=minR+rnd()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
   // 🌸 Blumenwiese: dichter Farbteppich
   (function(){var p=spotFar(80); /* 🌸 W3: echte GLB-Blumenwiese statt Stiel+Ico-Primitiven */
     var rndF=mulberry32(((SEED^0x33caf1)>>>0)||1); /* eigener Strom fuer Zusatz-Varianz */
@@ -2226,11 +2235,11 @@ function decorateWorld(){
   var HOUSES=["building_fachwerk","building_werkstatt","building_turm","bd_house_a","bd_house_b","bd_inn","bd_smithy","bd_town_house"]; // 🆕 Quaternius-Dorfbauten
   /* 📏 Paket #2: eigener Strom für Ring 3 + Abstands-Retries (Haupt-rnd-Sequenz bleibt BYTE-IDENTISCH → Koop) */
   var rndP=mulberry32(((SEED^0x5a17c3)>>>0)||1);
-  var nV=3+((rnd()*2)|0);
+  var nV=_nV; /* Welle 5: schon oben gezogen */
   for(var v=0;v<nV;v++){
     var isSpawn=(v===0); // 🏡 Dorf 0 = RIESIGES Anfangsdorf am Spawn (0,0)
     var vx,vz;
-    if(isSpawn){vx=0;vz=0;}else{var va=rnd()*6.28,vrd=70+rnd()*(half-90);vx=Math.cos(va)*vrd;vz=Math.sin(va)*vrd;}
+    if(isSpawn){vx=0;vz=0;}else{vx=_vc[v].x;vz=_vc[v].z;} /* Welle 5: Zentrum oben vorberechnet */
     villages.push({x:vx,z:vz,big:isSpawn});
     var ringR=isSpawn?52:13; // 🏙️ RIESIGE Hauptstadt (User-Wunsch, Paket #2: 42→52 + 3. Ring)
     var nH=isSpawn?30:(2+((rnd()*3)|0));
