@@ -16,6 +16,7 @@
  *      META_GRAPH_VERSION(Default v21.0) · MAX_PER_RUN(1) · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 
 const CSV = new URL('../social/story_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -139,11 +140,13 @@ const due = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.medi
 if(due.length===0){ console.log('Keine Story fällig.'); process.exit(0); }
 
 console.log(`Kanäle: ${configured.join('+')||'(DRY)'} · fällig: ${due.length} · MAX_PER_RUN: ${MAX}`);
+if(!DRY) postLock();
 let postedCount = 0, anyFail = false;
 
 for(const next of due.slice(0, MAX)){
   const type = (next[idx.type]||'image').trim().toLowerCase()==='video' ? 'video' : 'image';
   const url = next[idx.media_url].trim();
+  if(!DRY && postSeen(url)){ console.log(`   ⛔ Story-Medium schon gepostet → skip: ${url}`); next[idx.status]='posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue; }
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
@@ -156,7 +159,9 @@ for(const next of due.slice(0, MAX)){
   else results.push(null);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
+    if(results[0] && results[0]!==false) postMark(url);
     next[idx.status]='posted'; next[idx.posted_at]=new Date().toISOString(); next[idx.post_url]=got[0];
+    fs.writeFileSync(CSV, serialize(rows));
     postedCount++;
     console.log(`   ✅ Story auf ${results.map((x,i)=>x&&x!==false?['IG','FB'][i]:null).filter(Boolean).join('+')}`);
   } else { anyFail = true; console.error('   ❌ keine Story erfolgreich — bleibt ready.'); }

@@ -429,10 +429,10 @@
 #done search:football boot bag
 #done search:kids sports jersey set
 #done search:soccer training cones
-search:oversized blazer women
-search:cargo pants women wide
-search:linen dress midi women
-search:knit vest women
+#done search:oversized blazer women
+#done search:cargo pants women wide
+#done search:linen dress midi women
+#done search:knit vest women
 search:pleated skirt mini
 search:corset top women
 search:chunky sneakers women

@@ -20,6 +20,7 @@
  * Der EINE Schritt für Dauerbetrieb: THREADS_ACCESS_TOKEN (+ IG/FB) als Repo-Secret → Cron postet 2×/Tag.
  */
 import fs from 'node:fs';
+import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 
 const CSV = new URL('../social/posts_image.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -146,11 +147,16 @@ const ready = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.im
 if(ready.length===0){ console.log('Kein Bild mit status=ready — nichts zu tun.'); process.exit(0); }
 
 console.log(`Konfigurierte Kanäle: ${configured.join('+')||'(keine, DRY)'} · ready: ${ready.length} · MAX_PER_RUN: ${MAX}`);
+if(!DRY) postLock();                        // ⛔ gemeinsamer Lock mit allen Postern
 let postedCount = 0, anyFail = false;
 
 for(const next of ready.slice(0, MAX)){
   const imageUrl = next[idx.image_url].trim();
   const caption = next[idx.caption] || '';
+  if(!DRY && postSeen(imageUrl)){           // ⛔ Bild schon je gepostet → nie zweimal
+    console.log(`   ⛔ Bild schon gepostet (gemeinsamer Ledger) → skip: ${imageUrl}`);
+    next[idx.status] = 'posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue;
+  }
   if(!isJpg(imageUrl)){
     console.error(`⏭️  Übersprungen (keine JPG-URL, Meta-Pflicht): ${imageUrl}`);
     next[idx.status] = 'skipped-nonjpg'; anyFail = true; continue;
@@ -170,9 +176,11 @@ for(const next of ready.slice(0, MAX)){
   ]);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
+    if(results[0] && results[0]!==false) postMark(imageUrl);   // IG ok → sofort in gemeinsamen Ledger
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();
     next[idx.post_url] = got[0];
+    fs.writeFileSync(CSV, serialize(rows));                     // sofort committen (kein Post-vor-Commit-Fenster)
     postedCount++;
     console.log(`   ✅ veröffentlicht auf ${results.map((x,i)=>x&&x!==false?['IG','FB','Threads'][i]:null).filter(Boolean).join('+')}`);
   } else {

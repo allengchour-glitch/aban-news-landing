@@ -11,6 +11,7 @@
  *      FB_PAGE_ID (Default 1049840534888592) · [DRY=1] · [MIN_GAP_H=48]
  */
 import fs from 'node:fs';
+import { seen as postSeen, mark as postMark } from './post_guard.mjs';
 const CSV = 'automation/reels_seed.csv';
 const V = 'v21.0';
 const DRY = process.env.DRY === '1';
@@ -100,10 +101,11 @@ for (const r of rows.slice(1)) {
 const cand = rows.slice(1).find(r => (r[idx.status] || '').trim() === 'ready'
   && /instagram/i.test(r[idx.platforms] || '')
   && (r[idx.scheduled_date] || '9999') <= today
-  && !postedVideos.has(vkey(r[idx.video_url])));
+  && !postedVideos.has(vkey(r[idx.video_url]))
+  && !postSeen(r[idx.video_url]));                    // gemeinsamer Ledger (script-übergreifend)
 if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
-// Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger)
-if (postedVideos.has(vkey(cand[idx.video_url]))) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
+// Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger + gemeinsamer Ledger)
+if (postedVideos.has(vkey(cand[idx.video_url])) || postSeen(cand[idx.video_url])) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
 const [id, , url, caption, tags] = [cand[idx.id], 0, cand[idx.video_url], cand[idx.caption], cand[idx.hashtags]];
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 12).join(' ')}`;
 console.log(`Post: ${id}\n  Video: ${url.slice(0, 90)}\n  Caption: ${text.slice(0, 100)}…`);
@@ -132,6 +134,7 @@ if (pub.id) {
   cand[idx.status] = 'posted-ig-fb';
   cand[idx.posted_at] = new Date().toISOString();
   cand[idx.post_url] = pub.id;
+  postMark(url);                    // gemeinsamer Ledger: kein anderer Poster wiederholt dieses Video
   writeLedger();
   const perma = await api(`${pub.id}`, { fields: 'permalink' }, 'GET');
   igPermalink = perma.permalink || pub.id;

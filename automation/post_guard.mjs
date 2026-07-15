@@ -1,0 +1,37 @@
+/* post_guard.mjs — GEMEINSAME Doppelpost-Sperre für ALLE Social-Poster (User 2026-07-14:
+ * «darf kein doppelpost mehr passieren», erneut aufgetreten aus einem Legacy-Poster ohne Schutz).
+ * Jeder Poster (meta_reel_post, video-autopost-meta, social-autopost-meta, story-autopost-meta)
+ * MUSS diese 3 Funktionen nutzen:
+ *   lock()        — EIN gemeinsamer O_EXCL-Lock (/tmp/ig_post.lock) → nie zwei Poster gleichzeitig
+ *   seen(url)     — true, wenn dieses Medium (Basename der URL) schon je gepostet wurde (script-übergreifend)
+ *   mark(url)     — Medium SOFORT nach erfolgreichem Publish in den gemeinsamen Ledger schreiben
+ * Ledger liegt im Repo (dropship/_posted_media.txt) → überlebt Container-Resets, wird committet.
+ */
+import fs from 'node:fs';
+const LOCK = '/tmp/ig_post.lock';
+const LEDGER = 'dropship/_posted_media.txt';
+export const mediaKey = u => (u || '').split('?')[0].split('/').pop().toLowerCase().trim();
+
+let _released = false;
+export function lock(maxMin = 20) {
+  try {
+    const fd = fs.openSync(LOCK, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd);
+  } catch {
+    const age = fs.existsSync(LOCK) ? (Date.now() - fs.statSync(LOCK).mtimeMs) / 60000 : 999;
+    if (age < maxMin) { console.log(`[post_guard] Lock aktiv (${age.toFixed(1)}min) → anderer Poster läuft, skip.`); process.exit(0); }
+    fs.writeFileSync(LOCK, String(process.pid)); // veraltet → übernehmen
+  }
+  const rel = () => { if (_released) return; _released = true; try { fs.unlinkSync(LOCK); } catch {} };
+  process.on('exit', rel);
+  return rel;
+}
+function loadSeen() {
+  try { return new Set(fs.readFileSync(LEDGER, 'utf8').split('\n').map(s => s.trim()).filter(Boolean)); }
+  catch { return new Set(); }
+}
+export function seen(url) { const k = mediaKey(url); return !!k && loadSeen().has(k); }
+export function mark(url) {
+  const k = mediaKey(url); if (!k) return;
+  const s = loadSeen(); if (s.has(k)) return;
+  fs.appendFileSync(LEDGER, k + '\n');
+}

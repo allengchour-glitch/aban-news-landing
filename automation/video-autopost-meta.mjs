@@ -21,6 +21,7 @@
  *   MAX_PER_RUN=1 · DRY_RUN=1
  */
 import fs from 'node:fs';
+import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 
 const CSV = new URL('../social/video_queue.csv', import.meta.url).pathname;
 const V = process.env.META_GRAPH_VERSION || 'v21.0';
@@ -143,11 +144,17 @@ const due = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.vide
 if(due.length===0){ console.log('Kein Video fällig (status=ready, scheduled_date<=heute).'); process.exit(0); }
 
 console.log(`Kanäle: ${configured.join('+')||'(DRY)'} · fällig: ${due.length} · MAX_PER_RUN: ${MAX}`);
+if(!DRY) postLock();                       // ⛔ gemeinsamer Lock: nie zwei Poster gleichzeitig
 let postedCount = 0, anyFail = false;
 
 for(const next of due.slice(0, MAX)){
   const videoUrl = next[idx.video_url].trim();
   const caption = next[idx.caption] || '';
+  // ⛔ INHALTS-SPERRE: dieses Video schon je gepostet (script-übergreifend)? → nie zweimal.
+  if(!DRY && postSeen(videoUrl)){
+    console.log(`   ⛔ Video schon gepostet (gemeinsamer Ledger) → skip, kein Doppelpost: ${videoUrl}`);
+    next[idx.status] = 'posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue;
+  }
   const plat = (next[idx.platforms]||'').toLowerCase();
   const wantIG = !plat.trim() || /instagram|\big\b/.test(plat);
   const wantFB = !plat.trim() || /facebook|\bfb\b/.test(plat);
@@ -162,9 +169,11 @@ for(const next of due.slice(0, MAX)){
   results.push(wantTH ? await postThreads(videoUrl, caption) : null);
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
+    if(results[0] && results[0]!==false) postMark(videoUrl);   // IG erfolgreich → SOFORT in gemeinsamen Ledger
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();
     next[idx.post_url] = got[0];
+    fs.writeFileSync(CSV, serialize(rows));                     // sofort committen (kein Post-vor-Commit-Fenster)
     postedCount++;
     console.log(`   ✅ veröffentlicht auf ${results.map((x,i)=>x&&x!==false?['IG','FB','Threads'][i]:null).filter(Boolean).join('+')}`);
   } else {
