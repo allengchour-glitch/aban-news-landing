@@ -305,3 +305,77 @@ identity KHR_texture_transform entfernt). PNG eingebettet, 15–78 KB.
 > als Feld-Deko), **Fass-Stapel** (kein Kit hat gestapelte Fässer — Ersatz: nw_fass_offen + cc0_barrel
 > kombinieren), **Seerose** (fg_lilypad/fg_lilypad_small existieren bereits = Duplikat), einfacher
 > Nature-Kit-Zaun `fence_simple` (cc0_fence + th2_gartenzaun decken das ab).
+
+## Neon-Wildnis — animierte CHARAKTER-Helden (`nwhero_*`) — 2026-07-15
+Beschafft für die Helden-Charakterauswahl in neon-wildnis.html (CHARACTERS-Liste). **13 geriggte, animierte
+CC0-Figuren** von **Quaternius** — für Silhouetten-Vielfalt: 7 Fantasy-Menschen (gemeinsames Anim-Set) +
+6 skurrile Monster/Nicht-Menschen (eigenes Anim-Set). Namensschema `nwhero_<klasse>.glb`. Alle CC0 1.0.
+**KEINE Duplikate** zu den bestehenden Helden (class_mage/ranger/titan = Meshy; anime_* = Anime-Meshy;
+hero_meshy_combat2 = Meshy). Quaternius-Blocky-Stil ist eine neue, dritte Optik.
+
+Quelle-Download = öffentliche Google-Drive-Ordner der jeweiligen Pack-Seite (License.txt im Ordner = CC0 1.0
+Universal, „LowPoly Models by @Quaternius"). Skriptbar via `drive.google.com/uc?export=download&id=<fileId>`
+(Ordner-Listing über die Drive-Folder-HTML, `_DRIVE_ivd`-Blob → id/name; \x22/\x5b entescapen).
+
+- **Ultimate Animated Character Pack** — Seite `quaternius.com/packs/ultimatedanimatedcharacter.html`,
+  Drive-Folder `1sNi1AfenfPRrvRt5yfaj5QMMd6KKcUJ5` → Unterordner **glTF** `1UNNT0MeVX0O04RGgu8aLkKe3fwB9_t-A`.
+- **Ultimate Monsters Pack** — Seite `quaternius.com/packs/ultimatemonsters.html`,
+  Drive-Folder `18m4KpzpEzhC9wl7jzr6dUc0N8Jozr79C` → **Big/glTF** `1sOXLt5U3ofaujPlQRL11s4ub2UsqN8V8`.
+
+**Aufbereitung (Node + `@gltf-transform` 4.4.1, Skript-Kette):** Die `.gltf` sind self-contained
+(base64-Buffer, Textur als bufferView eingebettet — **keine** externen URIs, keine Atlas-Datei nötig).
+Pipeline je Datei: **Animationen umbenennen auf das heroAct-Schema (lowercase idle/walk/run/attack/…) +
+ungenutzte Clips verwerfen** → `resample()` (redundante Keyframes) → `prune()` → `dedup()` → plain GLB.
+Skinned/animiert **bewahrt** (Skin + JOINTS_0 + alle Anim-Channels auf Joints verifiziert). **KEIN Draco/WebP.**
+Die 3 schwersten (Viking/Wizard/Witch, ~2 MB Quell-Geometrie ≈ 9,8 k Verts f32) zusätzlich mit
+**`quantize()` (KHR_mesh_quantization**, position 14-bit — von three.js r128 nativ unterstützt, ist *nicht*
+Draco) auf <900 KB gedrückt; die übrigen 10 sind plain (unquantisiert).
+
+**⚠️ Clip-Namen kritisch fürs Anim-System `heroAct`/`makeRig`** (neon-wildnis.html): der Rig sucht Actions
+per Name `idle/walk/run/attack/attack2/attack3/cast/charge_release/dash_attack/dodge/hit/victory/taunt/wave`
+(ONESHOT-Set feuert einmalig, Fallback auf ersten Clip wenn kein `idle`). Darum wurden die Quaternius-
+Originalnamen auf dieses Schema gemappt.
+
+### Fantasy-Menschen (Ultimate Animated Character Pack) — 9 Clips: `idle, walk, run, attack, attack2, attack3, dodge, hit, victory`
+Original-Anim-Set (17): Idle/Walk/Run/SwordSlash/Punch/Shoot_OneHanded/Roll/RecieveHit/Victory (+ Death,
+Defeat, Jump, PickUp, SitDown, StandUp, Run_Carry, Walk_Carry = verworfen). Mapping: SwordSlash→attack,
+Punch→attack2, Shoot_OneHanded→attack3, Roll→dodge, RecieveHit→hit. Vertex-Farben (keine Textur).
+
+| Datei | KB | Original | Held-Idee | Clips |
+|---|---|---|---|---|
+| nwhero_ritter.glb | 751 | Knight_Male | 🛡️ Ritter (Schwert) | idle,walk,run,attack,attack2,attack3,dodge,hit,victory |
+| nwhero_wikinger.glb | 735¹ | Viking_Male | 🪓 Barbar/Wikinger | idle,walk,run,attack,attack2,attack3,dodge,hit,victory |
+| nwhero_magier.glb | 736¹ | Wizard | 🔮 Magier (Stab, Hut) | idle,walk,run,attack,attack2,attack3,dodge,hit,victory |
+| nwhero_elf.glb | 715 | Elf | 🏹 Elf/Bogenschütze (Shoot=attack3) | idle,walk,run,attack,attack2,attack3,dodge,hit,victory |
+| nwhero_pirat.glb | 714 | Pirate_Male | 🏴‍☠️ Pirat | idle,walk,run,attack,attack2,attack3,dodge,hit,victory |
+| nwhero_hexe.glb | 752¹ | Witch | 🧙‍♀️ Hexe (Spitzhut) | idle,walk,run,attack,attack2,attack3,dodge,hit,victory |
+| nwhero_goblin.glb | 683 | Goblin_Male | 👺 Goblin-Krieger (skurril) | idle,walk,run,attack,attack2,attack3,dodge,hit,victory |
+
+¹ mit KHR_mesh_quantization (r128-kompatibel).
+
+### Monster/Nicht-Menschen (Ultimate Monsters Pack, Big) — 8 Clips: `idle, walk, run, attack, attack2, hit, dodge, wave`
+Original-Anim-Set (14): Idle/Walk/Run/Punch/Weapon/HitReact/Duck/Wave (+ Death, Jump, Jump_Idle, Jump_Land,
+No, Yes = verworfen). Mapping: Punch→attack, Weapon→attack2, HitReact→hit, Duck→dodge, Wave→wave
+(heroAct nutzt `wave` als Fallback für victory/taunt). Textur (Monster-Atlas) im Buffer eingebettet.
+
+| Datei | KB | Original | Held-Idee | Clips |
+|---|---|---|---|---|
+| nwhero_alien.glb | 541 | Alien | 👽 Alien (skurril) | idle,walk,run,attack,attack2,dodge,hit,wave |
+| nwhero_ork.glb | 540 | Orc | 🧌 Ork-Krieger | idle,walk,run,attack,attack2,dodge,hit,wave |
+| nwhero_totenork.glb | 545 | Orc_Skull | 💀 Totenschädel-Ork (skurril) | idle,walk,run,attack,attack2,dodge,hit,wave |
+| nwhero_daemon.glb | 528 | Demon | 😈 Dämon | idle,walk,run,attack,attack2,dodge,hit,wave |
+| nwhero_pilzkoenig.glb | 490 | MushroomKing | 🍄 Pilzkönig (skurril) | idle,walk,run,attack,attack2,dodge,hit,wave |
+| nwhero_yeti.glb | 491 | Yeti | 🦍 Yeti | idle,walk,run,attack,attack2,dodge,hit,wave |
+
+> **Verworfen/nicht beschafft:** *Roboter*- und *Alien*-Einzelpacks (`animatedrobot`/`animatedalien`,
+> Drive-Folder `18MU0RtRu9G6SU6uSZ_zMQFmVkRlB4zH5` / `1ADdETHqjSIEUhjKjhLB9hQjeppXEqcvL`) liefern **nur
+> FBX/OBJ/Blend, keinen glTF-Ordner** → bräuchten Blender-FBX-Konvertierung; stattdessen deckt der
+> Monsters-Pack Alien (nwhero_alien) + skurrile Silhouetten ohne Blender ab. *Ninja* (Character-Pack) +
+> *Magier/Kriegerin* bewusst ausgelassen, wo `anime_ninja/anime_mage/anime_warrior` das Thema schon
+> abdecken. Zivil-Typen (Doctor/Chef/Suit/Worker/Casual) = kein Fantasy-Fit, übersprungen. Restliche
+> Monster (Dino/Frog/Bunny/Birb/Cactoro/Tribal/Fish/Yeti-Varianten) = Reserve für später.
+
+> **Einbau (andere Session, neon-wildnis.html):** neue Einträge in die `CHARACTERS`-Liste, z. B.
+> `{id:"ritter", emo:"🛡️", name:"Ritter", desc:"Schwertkämpfer", file:"nwhero_ritter.glb", scale:1.05, glow:"soft"}`.
+> Die Clip-Namen passen bereits auf `heroAct`; `scale` ~1.0–1.1 (Quaternius-Figuren sind ~4 Units hoch, etwas
+> grösser als anime_*). `glow:"soft"` (keine Neon-Emissive-Verstärkung nötig).
