@@ -3443,6 +3443,30 @@ function sfx(f,d,type,g,slide){if(muted||!running)return;try{
   ga.gain.value=g||0.045;ga.gain.exponentialRampToValueAtTime(0.0001,_AC.currentTime+d);
   o.connect(ga);ga.connect(_AC.destination);o.start();o.stop(_AC.currentTime+d+0.02);
 }catch(e){}}
+/* 🔊 Welle 5: Sound-Landschaft — Vögel (Tag) / Grillen (Nacht) / Lagerfeuer-Knistern (nah).
+   Timing über Math.random (NICHT rnd/rnd2 — sonst Welt-Desync im Koop). Respektiert muted. */
+var _ambT=0,_ambNext=2,_crackT=0;
+function ambChirp(){ /* fröhliches Vogel-Zwitschern: 2-3 schnelle hohe Töne */
+  var base=1600+Math.random()*900,n=2+((Math.random()*2)|0);
+  for(var i=0;i<n;i++)setTimeout(function(){sfx(base*(0.9+Math.random()*0.5),0.06,"sine",0.018,base*1.4);},i*70);}
+function ambCricket(){ /* Grillen: kurzes hohes Doppel-Blip */
+  sfx(4200,0.02,"square",0.006);setTimeout(function(){sfx(4200,0.02,"square",0.006);},55);}
+function updAmbience(dt){
+  if(muted||!running||paused)return;
+  _ambT+=dt;
+  if(_ambT>=_ambNext){_ambT=0;
+    if(isNight){_ambNext=0.9+Math.random()*1.4;if(Math.random()<0.85)ambCricket();}
+    else{_ambNext=2.2+Math.random()*3.5;if(Math.random()<0.8)ambChirp();}}
+  /* 🔥 Lagerfeuer-Knistern, wenn der Spieler nahe einem Feuer steht */
+  _crackT-=dt;
+  if(_crackT<=0&&typeof worldProps!=="undefined"){
+    var near=false;
+    for(var i=0;i<worldProps.length;i++){var wp=worldProps[i];if(!wp.flick||!wp.mesh)continue;
+      var dx=wp.mesh.position.x-player.position.x,dz=wp.mesh.position.z-player.position.z;
+      if(dx*dx+dz*dz<196){near=true;break;}} /* <14 */
+    if(near){sfx(320+Math.random()*260,0.03+Math.random()*0.03,"sawtooth",0.01);_crackT=0.18+Math.random()*0.4;}
+    else _crackT=0.5;}
+}
 function sfxSeq(seq){seq.forEach(function(sq,i){setTimeout(function(){sfx(sq[0],sq[1]||0.12,sq[2]||"triangle",sq[3]||0.05);},i*95);});}
 function toggleMute(){muted=!muted;lsSet("nw_mute",muted?"1":"0");
   var mb=document.getElementById("muteBtn2");if(mb)mb.textContent=muted?"🔇":"🔊";}
@@ -3634,7 +3658,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
