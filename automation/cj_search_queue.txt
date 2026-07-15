@@ -433,18 +433,18 @@
 #done search:cargo pants women wide
 #done search:linen dress midi women
 #done search:knit vest women
-search:pleated skirt mini
-search:corset top women
-search:chunky sneakers women
-search:platform boots women
-search:mini shoulder bag trendy
-search:woven raffia bag
-search:gold hoop earrings statement
-search:pearl necklace layered
-search:chunky chain bracelet
-search:hair claw clip matte
-search:silk hair scrunchie
-search:sunglasses oversized women
+#done search:pleated skirt mini
+#done search:corset top women
+#done search:chunky sneakers women
+#done search:platform boots women
+#done search:mini shoulder bag trendy
+#done search:woven raffia bag
+#done search:gold hoop earrings statement
+#done search:pearl necklace layered
+#done search:chunky chain bracelet
+#done search:hair claw clip matte
+#done search:silk hair scrunchie
+#done search:sunglasses oversized women
 search:bucket hat cotton
 search:crossbody belt bag
 search:oversized hoodie unisex
