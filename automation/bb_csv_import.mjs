@@ -22,11 +22,15 @@ async function sgql(q,v){for(let a=0;a<4;a++){const r=await fetch(`https://${SHO
 async function img200(u){try{const r=await fetch(u,{method:'HEAD'});return r.ok;}catch{return false;}}
 const clean=n=>n.replace(/\s*\((Restauriert|Refurbished)[^)]*\)/gi,'').replace(/ß/g,'ss').replace(/\s{2,}/g,' ').trim().slice(0,70);
 const SET=`mutation($input:ProductSetInput!){productSet(synchronous:true,input:$input){product{id} userErrors{message}}}`;
+// ⛔ Off-brand-Elektronik hart blocken (2026-07-15: iPhone/Projektor/TV/Galaxy Watch etc. rutschten durch
+//    und mussten gedraftet werden — passen NICHT in den Mode/Lifestyle-Shop, Echtheits-/Graumarkt-Risiko).
+const OFFBRAND=/\biphone\b|smartphone|\bapple\b|samsung|\bsony\b|\bgalaxy\b|smartwatch|projektor|beamer|\btv\b|fernseher|\bmonitor\b|tablet|laptop|\bpc\b|drucker|toner|stabilisator|gimbal|\badapter\b|konverter|objektiv|\blinse\b|kamera|\bcanon\b|\bnikon\b|\bxiaomi\b|\bhuawei\b|\blenovo\b|\basus\b|festplatte|\bssd\b|\bhdd\b|router|\bakku\b/i;
 let created=0,skip=0;
 for(const it of viable.slice(0,LIMIT)){
   if(done.has('bbc:'+it.ref)){skip++;continue;}
   const title=clean(it.name);
   if(!title||title.length<6){skip++;fs.appendFileSync(LEDGER,'bbc:'+it.ref+'\n');continue;}
+  if(OFFBRAND.test(it.name)){console.log('⛔ off-brand-skip',title.slice(0,40));fs.appendFileSync(LEDGER,'bbc:'+it.ref+'\n');continue;}
   if(existTitles.has(normT(title))){console.log('= existiert',title.slice(0,40));fs.appendFileSync(LEDGER,'bbc:'+it.ref+'\n');continue;}
   const img=it.img;
   if(!img||!/^https?:\/\//.test(img)||!(await img200(img))){console.log('✗ bild',title.slice(0,40));fs.appendFileSync(LEDGER,'bbc:'+it.ref+'\n');continue;}
