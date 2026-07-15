@@ -624,7 +624,20 @@ setTimeout(function baueVerkehr(){
   var suchlicht=new THREE.Mesh(new THREE.CircleGeometry(0.3,10),new THREE.MeshStandardMaterial({color:0xfff4c0,emissive:0xffe080,emissiveIntensity:1.2}));suchlicht.position.set(1.4,-0.9,0);suchlicht.rotation.x=-Math.PI/2;heliG.add(suchlicht);
   heliG.position.set(0,32,0);heliG.scale.setScalar(1.4);scene.add(heliG);
   window._heli={mesh:heliG,rotor:rotor,heckrotor:heckrotor,ang:0};
+  // ---- Vogelschwarm am Himmel ----
+  var voegel=new THREE.Group();window._voegel=[];
+  var vcv=document.createElement("canvas");vcv.width=vcv.height=32;var vc=vcv.getContext("2d");
+  vc.strokeStyle="#33333a";vc.lineWidth=3;vc.beginPath();vc.moveTo(4,20);vc.quadraticCurveTo(16,8,28,20);vc.stroke();
+  var vtex=new THREE.CanvasTexture(vcv);
+  for(var vb=0;vb<9;vb++){var v=new THREE.Sprite(new THREE.SpriteMaterial({map:vtex,transparent:true,depthWrite:false}));
+    v.scale.set(2,2,1);voegel.add(v);
+    window._voegel.push({sp:v,ph:vb*0.7,r:22+vb*3,h:26+((vb%3)*4),sp2:0.15+((vb%4)*0.04)});}
+  scene.add(voegel);
 },0);
+function updVoegel(dt,now){if(!window._voegel)return;
+  window._voegel.forEach(function(b){b.ph+=dt*b.sp2;
+    b.sp.position.set(Math.cos(b.ph)*b.r,b.h+Math.sin(b.ph*2)*1.5,Math.sin(b.ph)*b.r);
+    var flap=1.4+Math.abs(Math.sin(now*0.012+b.ph*10))*0.8;b.sp.scale.set(2,flap,1);});}
 function updWasser(dt,now){
   if(!window._wasser)return;
   window._wasser.forEach(function(w){var pa=w.geo.attributes.position.array,b=w.base;
@@ -2534,7 +2547,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
