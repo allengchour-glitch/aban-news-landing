@@ -659,6 +659,27 @@ function makeRig(o,anims){var r={mixer:new THREE.AnimationMixer(o),actions:{},cu
   rigs.push(r);return r;}
 function setAnim(r,name,fade,ts){if(!r||!r.actions[name])return;if(r.cur===name){if(ts!==undefined)r.actions[name].timeScale=ts;return;}var prev=r.cur?r.actions[r.cur]:null;r.cur=name;var a=r.actions[name];a.reset();if(ts!==undefined)a.timeScale=ts;a.play();if(prev)prev.crossFadeTo(a,fade||0.25,false);}
 function playOnce(r,name,ts){if(!r||!r.actions[name])return;var prev=(r.cur&&r.cur!==name)?r.actions[r.cur]:null;r.cur=name;var a=r.actions[name];a.reset();a.timeScale=ts||1;a.play();if(prev)prev.crossFadeTo(a,0.1,false);}
+/* ⚔️ Welle 6: reiches Kampf-Anim-System — mappt Intent auf den passenden Clip des Helden (15 bei "Held",
+   weniger bei Anime/Klassen), mit Fallback. Combo zyklt attack→attack2→attack3. Nutzt Math.random NICHT
+   (rein lokale Zähler), berührt kein rnd/rnd2. */
+var _combo=0,_comboT=0;
+function heroActBolt(){if(typeof heroAct==="function"&&running&&!dead)heroAct("cast",1.6);}
+function heroHas(n){return !!(heroRig&&heroRig.actions[n]);}
+function heroAct(intent,ts){if(!heroRig)return;
+  var pick;
+  if(intent==="melee"){ /* 3-Treffer-Combo, Reset nach 1.4s Pause */
+    if(perfNow-_comboT>1400)_combo=0;_comboT=perfNow;
+    var chain=["attack","attack2","attack3"];
+    for(var c=_combo;c<chain.length;c++){if(heroHas(chain[c])){pick=chain[c];_combo=(c+1)%chain.length;break;}}
+    if(!pick){pick="attack";}
+  }else if(intent==="cast"){pick=heroHas("cast")?"cast":(heroHas("charge_release")?"charge_release":(heroHas("attack2")?"attack2":"attack"));}
+  else if(intent==="dash"){pick=heroHas("dash_attack")?"dash_attack":(heroHas("attack3")?"attack3":"attack");}
+  else if(intent==="dodge"){pick=heroHas("dodge")?"dodge":(heroHas("run")?"run":null);}
+  else if(intent==="hit"){pick=heroHas("hit")?"hit":null;}
+  else if(intent==="victory"){pick=heroHas("victory")?"victory":(heroHas("wave")?"wave":null);}
+  else if(intent==="taunt"){pick=heroHas("taunt")?"taunt":(heroHas("wave")?"wave":null);}
+  else pick=intent;
+  if(pick&&heroRig.actions[pick])playOnce(heroRig,pick,ts||1.6);}
 // ---------- Charaktere (einzigartige, wählbare Helden) ----------
 // glow:"neon" = starkes Meshy-Emissive-Tuning; "soft" = moderat für class_*/hero.glb
 var CHARACTERS=[
@@ -2833,7 +2854,7 @@ function doDodge(){
   if(l>0.15){var dcr=camRel(mx/l,my/l);dodgeVX=dcr.x;dodgeVZ=dcr.z;} /* kamera-relativ wie das Laufen */
   else{dodgeVX=Math.sin(player.rotation.y);dodgeVZ=Math.cos(player.rotation.y);} /* im Stand: nach VORN rollen */
   dodgeT=0.26;dodgeCd=1.4;sfx(760,0.09,"triangle",0.04,260);
-  if(heroRig)playOnce(heroRig,"run",2.6);
+  heroAct("dodge",2.4);
   burst(player.position.x,player.position.y+0.7,player.position.z,0x7de3ff,8);
 }
 function updDodge(dt){
@@ -2849,7 +2870,7 @@ function updDodge(dt){
   else{dodgeT=0;}
   if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
-function damagePlayer(d){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(hp<=0){hp=0;playerDie();}hpUpd();}
+function damagePlayer(d){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -2857,7 +2878,7 @@ function useSkill(){
   if(level<2){toast("💥 Schockwelle ab Level 2");return;}
   if(skillCd>0){toast("💥 Cooldown "+Math.ceil(skillCd)+"s");return;}
   skillCd=Math.max(2,SKILL_CD-PERK.skillcd);var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
-  burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);
+  burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
     if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
@@ -2870,7 +2891,7 @@ function doThrow(){
   var best=null,bd=26*26;
   for(var i=0;i<monsters.length;i++){var e=monsters[i];var dx=e.x-player.position.x,dz=e.z-player.position.z,d=dx*dx+dz*dz;if(d<bd){bd=d;best=e;}}
   if(!best){toast("🏹 Kein Ziel in Reichweite");return;}
-  throwCd=THROW_CD;if(typeof faceTo==="function")faceTo(best.x,best.z);if(heroRig&&typeof playOnce==="function")playOnce(heroRig,"attack",2.2);
+  throwCd=THROW_CD;if(typeof faceTo==="function")faceTo(best.x,best.z);heroAct("dash",2.0);
   var pm=new THREE.Mesh(new THREE.IcosahedronGeometry(0.24,0),new THREE.MeshBasicMaterial({color:0x7de3ff}));
   pm.position.set(player.position.x,groundH(player.position.x,player.position.z)+1.3,player.position.z);scene.add(pm);
   projectiles.push({m:pm,tgt:best,t:0,dmg:2+Math.floor(level/2)+weaponAtk()});
@@ -2895,7 +2916,7 @@ function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bS
   b.style.opacity=(skillCd>0)?0.4:1;b.textContent=(skillCd>0)?Math.ceil(skillCd):"💥";}
 // ⚡ KETTENBLITZ (Realm-Skill): trifft bis zu 3 Gegner in 14 Einheiten, gezackte Blitz-Linien
 var boltCd=0,BOLT_CD=10,_boltShown=false,boltFx=[];
-function useBolt(){
+function useBolt(){heroActBolt();
   if(!running||dead||buildMode)return;
   if(level<4){toast("⚡ Kettenblitz ab Level 4");return;}
   if(boltCd>0)return;
@@ -3039,7 +3060,7 @@ function harvest(){
   if(nearBoard&&!nearMon&&!nearAni&&!buildMode){readBoard();return;} /* 🪧 Quest-Aushang lesen */
   if(nearStation&&!nearMon&&!nearAni&&!buildMode){openStation(nearStation.i);return;} /* 🎯 Station betreten (vor dem Kampf-Zweig) */
   if(nearMon){ // Kampf
-    if(heroRig)playOnce(heroRig,"attack",2.2);
+    heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
     nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
@@ -3048,7 +3069,7 @@ function harvest(){
     return;
   }
   if(nearAni){ // Jagen
-    if(heroRig)playOnce(heroRig,"attack",2.2);
+    heroAct("melee",2.2);
     faceTo(nearAni.x,nearAni.z);
     nearAni.hp-=1;nearAni.state="flee";nearAni.fleeT=0;nearAni.hurt=0.2;
     burst(nearAni.x,groundH(nearAni.x,nearAni.z)+0.5,nearAni.z,0xff9a6c,6);shake=Math.min(shake+0.08,0.3);
@@ -3056,7 +3077,7 @@ function harvest(){
     return;
   }
   if(!nearRes)return;var r=nearRes;
-  if(heroRig)playOnce(heroRig,"attack",2.4);sfx(220,0.06,"square",0.04);
+  heroAct("melee",2.4);sfx(220,0.06,"square",0.04);
   faceTo(r.x,r.z);
   var dmg=(1+PERK.harvest)|0;dmg=Math.max(1,dmg);if(r.type==="tree")dmg=1+tools.axe+(PERK.harvest>=0.3?1:0);else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick+(PERK.harvest>=0.3?1:0);
   r.hp-=dmg;r.hitAnim=0.2;
@@ -3544,7 +3565,7 @@ function updQuest(dt){
 }
 
 // 🏆 Sieg-Bildschirm: grosse Feier mit Statistik (macht das Spiel RUND)
-function showWinScreen(){
+function showWinScreen(){try{heroAct("victory",1.0);}catch(e){}
   sfxSeq([[523],[659],[784],[1046,0.3],[784],[1046,0.5]]);
   var got=badgesGot(),nb=0;for(var i=0;i<BADGES.length;i++)if(got[BADGES[i].id])nb++;
   var ov=document.getElementById("winOv");
