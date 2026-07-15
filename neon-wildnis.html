@@ -3370,15 +3370,35 @@ function canWalk(nx,nz){ /* 🧱 grosse Gegenstaende blockieren (User-Wunsch) */
 function camRel(mx,my){ /* 🎮 Input -> Welt, relativ zur Kamera-Drehung (User: 'Steuerung komisch' nach Kamera-Drag) */
   var cy=Math.cos(camYaw),sy=Math.sin(camYaw);
   return {x:-mx*cy-my*sy, z:mx*sy-my*cy};}
+/* 📷 Welle 5: Kamera-Kollision — Gebäude/Hügel dürfen nicht mehr durchs Bild schneiden (User-Befund).
+   Zieht die Kamera-Distanz ein, wenn ein Collider (Häuser/Landmarken) zwischen Spieler und Kamera liegt,
+   und hebt sie über hohes Gelände. Nutzt die vorhandene colliders-Liste (2D-Strahl, mobil-günstig). */
+function camClampDist(px,pz,dx,dz,want){
+  var maxD=want;
+  if(typeof colliders!=="undefined")for(var i=0;i<colliders.length;i++){var c=colliders[i];
+    var rr=c.r+0.8; /* etwas Puffer, damit die Wand nicht am Bildrand klebt */
+    var ex=px-c.x,ez=pz-c.z; /* Strahl px+t*dir, Kreis um c */
+    var bq=2*(ex*dx+ez*dz),cq=ex*ex+ez*ez-rr*rr; /* a=1 (dir normiert) */
+    var disc=bq*bq-4*cq;if(disc<0)continue;
+    var sq=Math.sqrt(disc),t0=(-bq-sq)/2;
+    if(t0>1.6&&t0<maxD)maxD=t0-0.4;}
+  return Math.max(4.5,maxD);}
 function updCamera(dt){
   // Aspekt-adaptiv: auf hohen Handys Spieler höher ins Bild (gelernt aus neon-realm)
   var asp=camera.aspect,nf=Math.max(0,Math.min(1,(0.7-asp)/0.17));
   camZoom+=(camZoomT-camZoom)*Math.min(1,dt*7); /* 🔍 sanft gelerpt */
   var dist=(12+nf*1.5)*camZoom,hgt=(8.5+nf*1)*camZoom;
-  var tx=player.position.x-Math.sin(camYaw)*dist,tz=player.position.z-Math.cos(camYaw)*dist;
+  var dirx=-Math.sin(camYaw),dirz=-Math.cos(camYaw);
+  dist=camClampDist(player.position.x,player.position.z,dirx,dirz,dist); /* 🏠 Wand im Weg -> näher ran */
+  var tx=player.position.x+dirx*dist,tz=player.position.z+dirz*dist;
   camera.position.x+=(tx-camera.position.x)*Math.min(1,dt*6);
   camera.position.z+=(tz-camera.position.z)*Math.min(1,dt*6);
-  camera.position.y+=(player.position.y+hgt-camera.position.y)*Math.min(1,dt*6);
+  /* Gelände-Schutz: Kamera bleibt über dem Boden zwischen sich und dem Spieler (Hügel nicht durchs Bild) */
+  var gMax=groundH(camera.position.x,camera.position.z);
+  var mgx=(player.position.x+camera.position.x)/2,mgz=(player.position.z+camera.position.z)/2;
+  gMax=Math.max(gMax,groundH(mgx,mgz));
+  var wantY=Math.max(player.position.y+hgt,gMax+3.5);
+  camera.position.y+=(wantY-camera.position.y)*Math.min(1,dt*6);
   var sx=(shake>0?(rnd()-.5)*shake:0),sz=(shake>0?(rnd()-.5)*shake:0);
   camera.lookAt(player.position.x+sx,player.position.y+1.6-nf*1.2,player.position.z+sz+3+nf*5);
   if(shake>0)shake=Math.max(0,shake-dt*1.5);
