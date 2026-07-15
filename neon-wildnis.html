@@ -2653,6 +2653,40 @@ function mkBIcon(kind){try{
     c.fillStyle="#8a5a34";c.fillRect(14,13,4,17);
     c.fillStyle="#ffb35c";c.beginPath();c.moveTo(16,2);c.quadraticCurveTo(23,10,16,15);c.quadraticCurveTo(9,10,16,2);c.fill();
     c.fillStyle="#ffe08a";c.beginPath();c.arc(16,10,3,0,6.29);c.fill();
+  }else if(kind==="steinboden"){ /* Kopfstein-Kacheln statt ⬛-Pixelquadrat */
+    c.fillStyle="#8f96a2";c.fillRect(2,2,28,28);c.strokeStyle="#5c626d";c.lineWidth=1.5;
+    for(var gy=6;gy<30;gy+=8)for(var gx=(gy%16?2:6);gx<30;gx+=8){c.strokeRect(gx,gy-4,7,7);}
+    c.fillStyle="#a8afba";for(var d=6;d<30;d+=8){c.fillRect(4,d-4,5,5);}
+  }else if(kind==="steinwand"){ /* Ziegelmauer aus versetzten Steinen */
+    c.fillStyle="#9aa0ab";c.fillRect(2,3,28,26);c.strokeStyle="#6a6f79";c.lineWidth=1.4;
+    for(var ry=6;ry<29;ry+=6){var off=(ry/6%2)?0:5;c.beginPath();c.moveTo(2,ry);c.lineTo(30,ry);c.stroke();
+      for(var rx=2+off;rx<30;rx+=10){c.beginPath();c.moveTo(rx,ry);c.lineTo(rx,ry+6);c.stroke();}}
+  }else if(kind==="steinpfeiler"){ /* Säule mit Kapitell */
+    c.fillStyle="#b9bec8";c.fillRect(11,6,10,22);c.fillStyle="#cfd4dd";c.fillRect(8,3,16,4);c.fillRect(7,27,18,4);
+    c.strokeStyle="#8a8f99";c.lineWidth=1;for(var px=13;px<20;px+=3){c.beginPath();c.moveTo(px,7);c.lineTo(px,27);c.stroke();}
+  }else if(kind==="turm"){ /* Wachturm mit Zinnen */
+    c.fillStyle="#9aa0ab";c.fillRect(9,10,14,20);c.fillStyle="#7a808b";
+    [9,14,19].forEach(function(x){c.fillRect(x,6,4,5);});
+    c.fillStyle="#3a4048";c.fillRect(13,18,6,7);c.fillStyle="#7de3ff";c.fillRect(14,13,4,3);
+  }else if(kind==="lager"){ /* Lagerfeuer: Holzscheite + Flamme */
+    c.strokeStyle="#8a5a34";c.lineWidth=3;c.beginPath();c.moveTo(6,28);c.lineTo(26,24);c.moveTo(26,28);c.lineTo(6,24);c.stroke();
+    c.fillStyle="#ff8a3c";c.beginPath();c.moveTo(16,4);c.quadraticCurveTo(24,16,16,22);c.quadraticCurveTo(8,16,16,4);c.fill();
+    c.fillStyle="#ffd166";c.beginPath();c.moveTo(16,11);c.quadraticCurveTo(20,17,16,21);c.quadraticCurveTo(12,17,16,11);c.fill();
+  }else if(kind==="nexus"){ /* Nexus: Kristall-Turm mit Aura */
+    c.fillStyle="#3a2f5a";c.fillRect(11,14,10,16);
+    c.fillStyle="#b98bff";c.beginPath();c.moveTo(16,2);c.lineTo(23,13);c.lineTo(16,17);c.lineTo(9,13);c.fill();
+    c.fillStyle="#e0c8ff";c.beginPath();c.moveTo(16,4);c.lineTo(20,12);c.lineTo(16,15);c.lineTo(12,12);c.fill();
+    c.strokeStyle="#7de3ff";c.lineWidth=1.2;c.beginPath();c.arc(16,10,13,3.4,6.0);c.stroke();
+  }else if(kind==="werk"){ /* Werkbank: Tisch + Hammer */
+    c.fillStyle="#a8794e";c.fillRect(3,12,26,6);c.fillRect(5,18,3,10);c.fillRect(24,18,3,10);
+    c.strokeStyle="#8a5a34";c.lineWidth=3;c.beginPath();c.moveTo(16,4);c.lineTo(16,12);c.stroke();
+    c.fillStyle="#9aa0ab";c.fillRect(12,3,10,4);
+  }else if(kind==="bett"){ /* Bett: Rahmen + Kissen + Decke */
+    c.fillStyle="#8a5a34";c.fillRect(3,10,26,16);c.fillStyle="#e8e0d0";c.fillRect(5,12,8,6);
+    c.fillStyle="#e05a6a";c.fillRect(13,12,14,12);c.fillStyle="#6a4526";c.fillRect(3,24,4,5);c.fillRect(25,24,4,5);
+  }else if(kind==="kiste"){ /* Vorratskiste: Holzkiste mit Beschlag */
+    c.fillStyle="#a8794e";c.fillRect(4,8,24,20);c.fillStyle="#8a5a34";c.fillRect(4,8,24,4);c.fillRect(14,8,4,20);
+    c.strokeStyle="#6a4526";c.lineWidth=1.5;c.strokeRect(4,8,24,20);c.fillStyle="#d8b048";c.fillRect(14,16,4,4);
   }
   return cv.toDataURL();
 }catch(e){return null;}}
@@ -2671,7 +2705,21 @@ var RECIPES={
   kiste:{ic:"📦",name:"Vorratskiste",cost:{wood:8,stone:2},hp:50,need:"werk"},
   nexus:{ic:"🌌",name:"Nexus-Turm",cost:{wood:30,stone:24,crystal:10},hp:300,need:"werk"}
 };
-RECIPES.zaun.img=mkBIcon("zaun");RECIPES.falle.img=mkBIcon("falle");RECIPES.wand.img=mkBIcon("wand");RECIPES.fackel.img=mkBIcon("fackel");
+["zaun","falle","wand","fackel","steinboden","steinwand","steinpfeiler","turm","lager","nexus","werk","bett","kiste"].forEach(function(k){if(RECIPES[k])RECIPES[k].img=mkBIcon(k);});
+/* 📝 Kurz-Beschreibungen (User: gute Beschreibung) */
+RECIPES.wand.desc="Hält Kreaturen auf. Günstig aus Holz.";
+RECIPES.fackel.desc="Spendet Licht in der Nacht. 3 an der Basis = Quest.";
+RECIPES.lager.desc="Wärme & Sammelpunkt. Heilt langsam in der Nähe.";
+RECIPES.werk.desc="Schaltet alle Stein-Bauten & Türme frei.";
+RECIPES.turm.desc="Schiesst automatisch auf nahe Gegner.";
+RECIPES.steinwand.desc="Sehr robuste Mauer (180 HP). Braucht Werkbank.";
+RECIPES.steinboden.desc="Fester Kopfstein-Boden für deine Basis.";
+RECIPES.steinpfeiler.desc="Dekorative Säule, sehr stabil.";
+RECIPES.zaun.desc="Einfache Abgrenzung aus Holzlatten.";
+RECIPES.bett.desc="Setzt deinen Wiederbelebungspunkt.";
+RECIPES.falle.desc="Verletzt Gegner, die hineinlaufen.";
+RECIPES.kiste.desc="Lagert Vorräte sicher. Braucht Werkbank.";
+RECIPES.nexus.desc="Das grosse Ziel — baue ihn, um zu gewinnen!";
 var NEXUS_COST=RECIPES.nexus.cost;
 // Crafting an der Werkbank (Werkzeuge) — Holz→Stein-Progression
 var CRAFT={
@@ -3195,7 +3243,7 @@ function renderBuildMenu(){
     var costTxt=Object.keys(r.cost).map(function(k){var ic={wood:"🪵",stone:"🪨",crystal:"💎"}[k];return ic+r.cost[k];}).join(" ");
     var d=document.createElement("div");d.className="bcard"+(locked?" locked":"")+(aff?" aff":"");
     var icHtml=r.img?'<img src="'+r.img+'" width="32" height="32" alt="" style="vertical-align:middle">':r.ic; /* 🧱 Canvas-Icon falls vorhanden */
-    d.innerHTML='<div class="bi">'+icHtml+'</div><div class="bn">'+r.name+'</div><div class="bc">'+(locked?"🔧 Werkbank nötig":costTxt)+'</div>';
+    d.innerHTML='<div class="bi">'+icHtml+'</div><div class="bn">'+r.name+'</div>'+(r.desc?'<div class="bd">'+r.desc+'</div>':'')+'<div class="bc">'+(locked?"🔧 Werkbank nötig":costTxt)+'</div>';
     d.onclick=function(){if(locked){toast("Baue zuerst eine Werkbank 🔧");return;}if(!canAfford(type)){toast("Nicht genug Material");return;}startGhost(type);};
     el.appendChild(d);
   });
