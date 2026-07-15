@@ -729,7 +729,10 @@ function loadHero(){
   buildPawn(C.col,0xffe2c0);pBody.visible=true; /* 🧍 Sofort sichtbar in Klassenfarbe — GLB ersetzt gleich */
   if(!THREE.GLTFLoader)return;
   new THREE.GLTFLoader().load("/models/"+C.file,function(g){
-    var o=g.scene;o.scale.setScalar((C.scale||1.15)*1.18) /* Welle 5: Held prominenter (User: 'charakter ist wichtig') */;
+    var o=g.scene;
+    /* 📏 Hoehen-Normierung: verschiedene GLBs haben verschiedene Eigengroessen -> auf Zielhoehe skalieren
+       (fixe Skala liess einzelne Helden riesig werden — User: '1 ist riesig'). Ziel ~2.0 Einheiten. */
+    (function(){var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;if(h>0.01){var k=(2.0*(C.hscale||1))/h;o.scale.setScalar(Math.max(0.05,Math.min(8,k)));}else o.scale.setScalar((C.scale||1.15)*1.18);})();
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
@@ -3938,8 +3941,11 @@ function startGame(fresh){
     (function loadGLB(){
       new THREE.GLTFLoader().load("/models/"+C.file,function(g){
         if(_lastId!==id)return; // schon weitergeklickt
-        clearModel();var o=g.scene;o.scale.setScalar((C.scale||1.15)*0.55);
+        clearModel();var o=g.scene;
         o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
+        /* 📏 Vorschau ebenfalls auf feste Hoehe normieren (kein Riesen-Charakter mehr) */
+        var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;
+        var pk=(h0>0.01)?(1.65/h0):((C.scale||1.15)*0.55);o.scale.setScalar(Math.max(0.05,Math.min(6,pk)));
         var box=new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();box.getCenter(ctr);
         o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=box.min.y;
         pmodel=o;psc.add(o);
@@ -3964,9 +3970,19 @@ function startGame(fresh){
 (function(){
   var wrap=document.getElementById("charPick");if(!wrap)return;
   var curId=getChar().id;
+  var CATNAMES={klasse:"⚔️ Klassen",anime:"🎌 Anime-Helden",fantasy:"🛡️ Fantasy-Helden",monster:"👹 Skurrile Helden"};
+  function catOf(C){var id=C.id;
+    if(id.indexOf("anime_")===0)return "anime";
+    if(["ritter","wikinger","magier2","elf","pirat","hexe"].indexOf(id)>=0)return "fantasy";
+    if(["held_goblin","held_ork","totenork","daemon","pilzkoenig","yeti"].indexOf(id)>=0)return "monster";
+    return "klasse";}
   function render(){
-    wrap.innerHTML="";
+    wrap.innerHTML="";var lastCat=null;
     CHARACTERS.forEach(function(C){
+      var cat=catOf(C);
+      if(cat!==lastCat){lastCat=cat;var hd=document.createElement("div");hd.className="cathd";
+        hd.textContent=CATNAMES[cat]||"";hd.style.cssText="flex-basis:100%;text-align:center;color:#9fd0ff;font-weight:800;font-size:12px;letter-spacing:.08em;margin:8px 0 2px;opacity:.9";
+        wrap.appendChild(hd);}
       var b=document.createElement("button");
       b.className="ccard"+(C.id===curId?" sel":"");b.type="button";
       b.setAttribute("aria-pressed",C.id===curId?"true":"false");
