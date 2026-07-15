@@ -1340,7 +1340,7 @@ var sims=simDefs.map(function(sd,i){
 attachRealChar(sims[0],"th_mann.glb",1.48);
 attachRealChar(sims[1],"th_frau.glb",1.40);
 // ---- Partner-Marker (nur Koop): findet den Mitspieler in der großen Welt ----
-var partnerMark=null;
+var partnerMark=null,partnerDist=null,_pdCtx=null,_pdTex=null,_pdT=0,_pdLast=-1;
 function ensurePartnerMark(){
   if(partnerMark)return partnerMark;
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
@@ -1348,14 +1348,29 @@ function ensurePartnerMark(){
   c.beginPath();c.moveTo(32,54);c.lineTo(12,20);c.lineTo(52,20);c.closePath();c.fill();c.stroke();
   var tx=new THREE.CanvasTexture(cv);
   partnerMark=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true,depthWrite:false,depthTest:false}));
-  partnerMark.scale.set(1.3,1.3,1);partnerMark.renderOrder=999;scene.add(partnerMark);return partnerMark;}
+  partnerMark.scale.set(1.3,1.3,1);partnerMark.renderOrder=999;scene.add(partnerMark);
+  // Distanz-Label über dem Marker
+  var dc=document.createElement("canvas");dc.width=128;dc.height=40;_pdCtx=dc.getContext("2d");
+  _pdTex=new THREE.CanvasTexture(dc);
+  partnerDist=new THREE.Sprite(new THREE.SpriteMaterial({map:_pdTex,transparent:true,depthWrite:false,depthTest:false}));
+  partnerDist.scale.set(1.7,0.53,1);partnerDist.renderOrder=999;scene.add(partnerDist);
+  return partnerMark;}
 function updPartnerMark(dt,now){
-  if(!MPs){if(partnerMark)partnerMark.visible=false;return;}
+  if(!MPs){if(partnerMark)partnerMark.visible=false;if(partnerDist)partnerDist.visible=false;return;}
   var pm=ensurePartnerMark();
   var partner=sims[mpHost?1:0]; // Host verfolgt Mia, Gast verfolgt Max
-  if(!partner||!partner.mesh){pm.visible=false;return;}
-  pm.visible=true;
-  pm.position.set(partner.x,2.6+Math.sin(now*0.004)*0.15,partner.z);}
+  if(!partner||!partner.mesh){pm.visible=false;partnerDist.visible=false;return;}
+  pm.visible=true;partnerDist.visible=true;
+  var bob=Math.sin(now*0.004)*0.15;
+  pm.position.set(partner.x,2.6+bob,partner.z);
+  partnerDist.position.set(partner.x,3.35+bob,partner.z);
+  _pdT-=dt;
+  if(_pdT<=0){_pdT=0.3;var me9=sims[meinSi()];
+    var d9=me9?Math.round(Math.hypot(partner.x-me9.x,partner.z-me9.z)):0;
+    if(d9!==_pdLast){_pdLast=d9;var c9=_pdCtx;c9.clearRect(0,0,128,40);
+      c9.font="bold 26px sans-serif";c9.textAlign="center";c9.textBaseline="middle";
+      c9.lineWidth=5;c9.strokeStyle="rgba(15,35,55,.9)";c9.strokeText(d9+" m",64,20);
+      c9.fillStyle="#eaffff";c9.fillText(d9+" m",64,20);_pdTex.needsUpdate=true;}}}
 function simEmoji(s,txt){
   if(s.emoji){s.mesh.remove(s.emoji);s.emoji=null;}
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
