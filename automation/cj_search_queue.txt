@@ -417,10 +417,10 @@
 #done search:football keychain fan
 #done search:swiss flag cape fan
 #done search:soccer ball size 5
-search:shin guards football kids
-search:football captain armband
-search:polo shirt men slim fit
-search:polo shirt women cotton
+#done search:shin guards football kids
+#done search:football captain armband
+#done search:polo shirt men slim fit
+#done search:polo shirt women cotton
 search:pique polo classic men
 search:football training jersey set
 search:goalkeeper gloves kids
