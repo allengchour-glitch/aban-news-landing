@@ -1371,13 +1371,13 @@ function layRoads(cx,cz,rr){
   var pts2=[];for(var u=-1;u<=1.0001;u+=0.1){var sM=u*20,wb=Math.sin(u*4+ang)*6;
     pts2.push({x:cx+qx*sM+px*wb, z:cz+qz*sM+pz*wb});}
   roadRibbon(pts2,5,cobble2,n2);
-  // RUNDER Steinplatten-Platz im Zentrum (nicht eckig)
-  var st=gtex("tex_stone.png",0,true);st.repeat.set(3,3);var stn=gtex("tex_stone_n.png",0,false);stn.repeat.set(3,3);
-  var gp=new THREE.CircleGeometry(7.5,32);gp.rotateX(-Math.PI/2);
+  // RUNDER Kopfstein-Marktplatz im Zentrum (warm getönt statt Badezimmer-Fliesen-Look)
+  var st=gtex("tex_cobble.png",0,true);st.repeat.set(5,5);var stn=gtex("tex_cobble_n.png",0,false);stn.repeat.set(5,5);
+  var gp=new THREE.CircleGeometry(9.5,40);gp.rotateX(-Math.PI/2);
   var gpp=gp.attributes.position; /* Platz schmiegt sich ans Gelände (Hügel-Dörfer) */
   for(var gv=0;gv<gpp.count;gv++){var gx5=gpp.getX(gv),gz5=gpp.getZ(gv);gpp.setY(gv,groundH(cx+gx5,cz+gz5)-groundH(cx,cz)+0.0);}
   gp.computeVertexNormals();
-  var mp=new THREE.Mesh(gp,new THREE.MeshLambertMaterial({map:st}));
+  var mp=new THREE.Mesh(gp,new THREE.MeshLambertMaterial({map:st,normalMap:(typeof SOFT_GPU!=="undefined"&&SOFT_GPU)?null:stn,color:0xe8dcc4}));
   mp.position.set(cx,groundH(cx,cz)+0.15,cz);mp.receiveShadow=true;scene.add(mp);
   // 🌸 Blumen-Kranz + Bänke rund um den Platz (mega schön)
   var PF=["nt_flower_red","nt_flower_yellow","cc0_flower_purple"];
