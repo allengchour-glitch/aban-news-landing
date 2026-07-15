@@ -250,7 +250,7 @@ sun.shadow.camera.left=-34;sun.shadow.camera.right=34;sun.shadow.camera.top=34;s
 function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
 
 // ===================== Grundstück =====================
-var GW=34,GH=24,CS=2; // Open-World 2026-07-13; alt 28x20 / 18x14 → Migration in loadSnapshot
+var GW=40,GH=28,CS=2; // Open-World XL 2026-07-13; alt 34x24 → Migration in loadSnapshot
 function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
@@ -410,7 +410,7 @@ var bordstein=new THREE.Mesh(new THREE.BoxGeometry(140,0.18,0.5),stdMat(0xb8b8b0
 bordstein.position.set(0,0.09,GH*CS/2+8.3);bordstein.receiveShadow=true;scene.add(bordstein);
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
-    [[-42,-30],[44,-26],[-41,30],[45,28]].forEach(function(p,i){
+    [[-60,-58],[60,-58],[-60,58],[60,58]].forEach(function(p,i){
       var t=g.scene.clone(true);var box=new THREE.Box3().setFromObject(t),sz=new THREE.Vector3();box.getSize(sz);
       var k=(7+i%2*2)/(sz.y||1);t.scale.setScalar(k);
       var b2=new THREE.Box3().setFromObject(t);t.position.set(p[0],-b2.min.y-0.02,p[1]);
