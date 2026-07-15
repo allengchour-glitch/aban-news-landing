@@ -694,7 +694,7 @@ function loadHero(){
   buildPawn(C.col,0xffe2c0);pBody.visible=true; /* 🧍 Sofort sichtbar in Klassenfarbe — GLB ersetzt gleich */
   if(!THREE.GLTFLoader)return;
   new THREE.GLTFLoader().load("/models/"+C.file,function(g){
-    var o=g.scene;o.scale.setScalar(C.scale||1.15);
+    var o=g.scene;o.scale.setScalar((C.scale||1.15)*1.18) /* Welle 5: Held prominenter (User: 'charakter ist wichtig') */;
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
@@ -707,7 +707,7 @@ function loadHero(){
   },undefined,function(){
     // Fallback: Standard-Held, falls gewähltes Modell nicht lädt
     if(C.file!=="hero_meshy_combat2.glb"){new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
-      var o=g.scene;o.scale.setScalar(1.15);
+      var o=g.scene;o.scale.setScalar(1.35);
       o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){n.material.emissiveIntensity=1.2;if(n.material.color)n.material.color.multiplyScalar(2.0);}}});
       pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
     },undefined,function(){});}
@@ -3396,7 +3396,7 @@ function updCamera(dt){
   // Aspekt-adaptiv: auf hohen Handys Spieler höher ins Bild (gelernt aus neon-realm)
   var asp=camera.aspect,nf=Math.max(0,Math.min(1,(0.7-asp)/0.17));
   camZoom+=(camZoomT-camZoom)*Math.min(1,dt*7); /* 🔍 sanft gelerpt */
-  var dist=(12+nf*1.5)*camZoom,hgt=(8.5+nf*1)*camZoom;
+  var dist=(10.8+nf*1.4)*camZoom,hgt=(7.6+nf*0.9)*camZoom; /* Welle 5: näher an den Helden (Charakter prominenter) */
   var dirx=-Math.sin(camYaw),dirz=-Math.cos(camYaw);
   dist=camClampDist(player.position.x,player.position.z,dirx,dirz,dist); /* 🏠 Wand im Weg -> näher ran */
   var tx=player.position.x+dirx*dist,tz=player.position.z+dirz*dist;
