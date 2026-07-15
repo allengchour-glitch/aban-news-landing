@@ -461,10 +461,10 @@
 #done search:tea infuser stainless
 #done search:reusable coffee cup
 #done search:desk organizer bamboo
-search:wall mirror round
-search:throw blanket knit
-search:cushion cover boho
-search:jewelry stand tree
+#done search:wall mirror round
+#done search:throw blanket knit
+#done search:cushion cover boho
+#done search:jewelry stand tree
 search:makeup brush set pro
 search:facial roller ice
 search:heatless curls kit
