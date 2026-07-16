@@ -559,10 +559,10 @@
 #done search:curling iron ceramic
 #done search:led face mask therapy
 #done search:blackhead remover vacuum
-search:electric toothbrush sonic
-search:water flosser cordless
-search:sleep mask silk contoured
-search:humidifier desktop mini
+#done search:electric toothbrush sonic
+#done search:water flosser cordless
+#done search:sleep mask silk contoured
+#done search:humidifier desktop mini
 search:essential oil set gift
 search:candle set scented gift
 search:blanket hoodie oversized
