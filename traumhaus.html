@@ -2134,6 +2134,13 @@ function steerMove(s9,sv,dt,sprint){
   if(cx2!==cx1&&inLot(cx1,cy1)&&inLot(cx2,cy1)&&edgeBlocked(cx1,cy1,cx2,cy1))nx=s9.x;
   if(cy2!==cy1&&inLot(cx1,cy1)&&inLot(cx1,cy2)&&edgeBlocked(cx1,cy1,cx1,cy2))nz=s9.z;
   s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9*(sprint?1.5:1);}
+// Folge-Kamera: beim aktiven Steuern schneller + leicht vorausschauend (fühlt sich flott an)
+function updFollow(dt){
+  if(!followSim)return;
+  if(followSim.state==="work"){followSim=null;return;}
+  var st=followSim.state==="steer",fr=st?6.5:4,ld=st?2.2:0;
+  var tx=followSim.x+Math.sin(followSim.rot||0)*ld,tz=followSim.z+Math.cos(followSim.rot||0)*ld;
+  camTx+=(tx-camTx)*Math.min(1,dt*fr);camTz+=(tz-camTz)*Math.min(1,dt*fr);updCam();}
 var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
 renderer.domElement.addEventListener("mousedown",function(e){dragging=true;dragBtn=e.button;lx=e.clientX;ly=e.clientY;downT=performance.now();downX=e.clientX;downY=e.clientY;});
 addEventListener("mousemove",function(e){
@@ -2672,9 +2679,7 @@ function loop(now){
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?0.9:0;if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.32:0;});}
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
-    if(followSim){
-      if(followSim.state==="work"){followSim=null;}
-      else{camTx+=(followSim.x-camTx)*Math.min(1,dt*4);camTz+=(followSim.z-camTz)*Math.min(1,dt*4);updCam();}}
+    updFollow(dt);
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
