@@ -944,7 +944,7 @@ function updMonsters(dt){
       var fy=e.fly?(2.4+Math.sin(e.t*3)*0.4):(e.rig?0:Math.abs(Math.sin(e.t*8))*0.12); /* geriggte: Clip statt Wippen */
       e.mesh.position.set(e.x,groundH(e.x,e.z)+fy,e.z);
       e.mesh.rotation.y=Math.atan2(dx,dz);
-      e.mesh.scale.setScalar(_bsc);
+      if(e.hitPop>0){e.hitPop=Math.max(0,e.hitPop-dt);e.mesh.scale.setScalar(_bsc*(1+e.hitPop*1.6));}else e.mesh.scale.setScalar(_bsc);
       if(e.wings){var fl=Math.sin(e.t*14)*0.7;e.wings[0].rotation.y=fl;e.wings[1].rotation.y=-fl;}
     }else{ // Slime/Boss: hüpfen + squash
       e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc,e.z);
@@ -2945,7 +2945,7 @@ function useSkill(){
   skillCd=Math.max(2,SKILL_CD-PERK.skillcd);var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
-    e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
+    e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
@@ -2970,7 +2970,7 @@ function updThrow(dt){
     p.m.position.x+=(tx-p.m.position.x)*Math.min(1,dt*11);p.m.position.z+=(tz-p.m.position.z)*Math.min(1,dt*11);p.m.position.y+=(ty-p.m.position.y)*Math.min(1,dt*11);
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
-      if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);shake=Math.min(shake+0.1,0.4);
+      if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);shake=Math.min(shake+0.1,0.4);
         if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
@@ -3003,7 +3003,7 @@ function useBolt(){heroActBolt();
     var ln=new THREE.Line(lg,new THREE.LineBasicMaterial({color:0x9fe8ff,transparent:true,opacity:1}));
     scene.add(ln);boltFx.push({m:ln,life:0.3});
     burst(e.x,groundH(e.x,e.z)+1,e.z,0x9fe8ff,8);
-    e.hp-=dmg;
+    e.hp-=dmg;dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
       gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);
       if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}
@@ -3069,6 +3069,10 @@ function floatText(x,y,z,txt,color){
   var layer=document.getElementById("floatLayer");layer.appendChild(el);
   setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},1050);
 }
+/* ⚔️ Welle 6: Treffer-Feedback — Schadenszahl + kurzer Scale-Pop auf dem Monster (befriedigender Kampf) */
+function dmgHit(e,dmg){if(!e)return;
+  floatText(e.x,groundH(e.x,e.z)+1.9,e.z,"-"+Math.round(dmg),"#ffe14a");
+  e.hitPop=0.16;}
 
 // ---------- Sammeln ----------
 var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null;
@@ -3127,7 +3131,7 @@ function harvest(){
   if(nearMon){ // Kampf
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
-    nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
