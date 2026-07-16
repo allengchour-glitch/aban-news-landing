@@ -531,18 +531,18 @@
 #done search:wide leg jeans women
 #done search:faux leather leggings
 #done search:thermal leggings fleece lined
-search:beanie ribbed unisex
-search:knit gloves touchscreen
-search:infinity scarf blanket
-search:ear warmer headband
-search:wool socks thermal
-search:ankle boots heeled women
-search:combat boots lace up
-search:fluffy slippers women
-search:crossbody bag quilted
-search:backpack mini women
-search:laptop backpack women
-search:jewelry set gift box
+#done search:beanie ribbed unisex
+#done search:knit gloves touchscreen
+#done search:infinity scarf blanket
+#done search:ear warmer headband
+#done search:wool socks thermal
+#done search:ankle boots heeled women
+#done search:combat boots lace up
+#done search:fluffy slippers women
+#done search:crossbody bag quilted
+#done search:backpack mini women
+#done search:laptop backpack women
+#done search:jewelry set gift box
 search:watch women minimalist
 search:apple watch band leather
 search:phone case magsafe clear
