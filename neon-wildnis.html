@@ -3044,12 +3044,26 @@ function hurtFlash(){shake=Math.min(shake+0.15,0.4);
     document.body.appendChild(v);}
   v.style.opacity="1";clearTimeout(v._t);v._t=setTimeout(function(){v.style.opacity="0";},90);}
 function playerDie(){
-  dead=true;announce("💀 Du bist gefallen…");
-  setTimeout(function(){ // Respawn am Lagerfeuer (oder Ursprung)
+  dead=true;announce("💀 Du bist gefallen…","#ff6a6a");
+  if(typeof hurtFlash==="function")hurtFlash();shake=Math.min(shake+0.6,0.9);
+  /* 🩸 Tod deutlicher: roter Vollbild-Schleier + kurzer Countdown bis Respawn */
+  var ov=document.getElementById("deathVig");
+  if(!ov){ov=document.createElement("div");ov.id="deathVig";
+    ov.style.cssText="position:fixed;inset:0;z-index:60;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(120,0,10,.25),rgba(90,0,8,.72));opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;color:#ffd0d0;font-weight:900;font-size:1.6rem;text-shadow:0 2px 8px #000";
+    document.body.appendChild(ov);}
+  ov.textContent="";ov.style.opacity="1";
+  setTimeout(function(){
+    /* Respawn: Bett (gesetzter Punkt) > Lagerfeuer > Heimdorf */
+    var bp=structures.find(function(s){return s.type==="bett";});
     var lp=structures.find(function(s){return s.type==="lager";});
-    var rx=lp?lp.x:0,rz=lp?lp.z:0;player.position.set(rx,0,rz);
-    hp=maxHp;dead=false;hpUpd();announce("🔥 Zurück am Feuer");
-  },1600);
+    var spot=bp||lp,rx=spot?spot.x:0,rz=spot?spot.z:0;
+    player.position.set(rx,0,rz);
+    hp=maxHp;dead=false;hpUpd();
+    if(ov)ov.style.opacity="0";
+    burst(rx,groundH(rx,rz)+1,rz,bp?[0x7de3ff,0xc8ffe0]:[0xffb347,0xffd166],22);
+    announce(bp?"🛏️ Zurück am Bett":(lp?"🔥 Zurück am Feuer":"🏡 Zurück im Heimdorf"),"#8affb0");
+    if(typeof sfx==="function")sfx(520,0.12,"triangle",0.05,720);
+  },1700);
 }
 
 // ---------- Toast / Announce ----------
