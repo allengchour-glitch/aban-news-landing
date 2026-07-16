@@ -3039,11 +3039,16 @@ function dropLoot(x,z,force){var ri=(force!=null)?force:rollRarity(),R=LOOT_RARI
   if(ri>=2)burst(x,groundH(x,z)+0.9,z,R.c,8);}
 function bossReward(x,z){announce("🏆 Boss besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
-  o.m.rotation.y+=dt*2.6;o.m.position.y=groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16;
-  var dx=o.x-player.position.x,dz=o.z-player.position.z;
-  var LR=1.7+PERK.magnet;if(dx*dx+dz*dz<LR*LR&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
+  o.m.rotation.y+=dt*2.6;
+  var dx=player.position.x-o.x,dz=player.position.z-o.z;var d2=dx*dx+dz*dz;
+  var LR=1.7+PERK.magnet;
+  /* 🧲 W7: Magnet-Sog — Orb fliegt sichtbar zum Spieler (statt Teleport-Collect); beschleunigt je näher/länger */
+  if(d2<(LR*2.7)*(LR*2.7)&&!dead){var sp=Math.min(0.9,dt*(5+o.t*2.4));o.x+=dx*sp;o.z+=dz*sp;o.m.scale.setScalar(1+Math.min(0.5,o.t*0.35));}
+  o.m.position.set(o.x,groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16,o.z);
+  if(d2<0.9*0.9&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
     toast((o.ri>=3?"🌟 ":"💎 ")+R.n+"e Beute! +"+R.xp+" XP"+(R.cr?" · +"+R.cr+"💎":"")+(R.hp?" · +"+R.hp+" maxHP":""));
-    floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,11);
+    if(typeof sfx==="function")sfx(o.ri>=3?900:660,0.13,"triangle",0.05,o.ri>=3?1500:1050);
+    floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,o.ri>=3?18:11);
     scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);continue;}
   if(o.life<=0){scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);}}}
 function hurtFlash(){shake=Math.min(shake+0.15,0.4);
