@@ -298,6 +298,11 @@ var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
   var moon=new THREE.Mesh(new THREE.SphereGeometry(10,20,20),new THREE.MeshBasicMaterial({color:0xf6f2dc,transparent:true,opacity:1}));moon.material.fog=false;
   moon.position.set(-150,175,-210);nightSky.add(moon);
   var halo=new THREE.Mesh(new THREE.SphereGeometry(15,20,20),new THREE.MeshBasicMaterial({color:0xbfd4ff,transparent:true,opacity:0.16,side:THREE.BackSide}));halo.material.fog=false;moon.add(halo);})();
+/* ☀️ W8: Tag-Himmel — Sonnenscheibe + warmer Halo, tagsüber sichtbar (Gegenstück zum Nachthimmel).
+   Folgt dem Spieler wie eine Skybox, rein kosmetisch (fog:false). */
+var daySky=new THREE.Group();scene.add(daySky);
+(function(){var sd=new THREE.Mesh(new THREE.SphereGeometry(11,20,20),new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:1}));sd.material.fog=false;sd.position.set(150,165,185);daySky.add(sd);
+  var h=new THREE.Mesh(new THREE.SphereGeometry(19,20,20),new THREE.MeshBasicMaterial({color:0xffe0a0,transparent:true,opacity:0.22,side:THREE.BackSide}));h.material.fog=false;sd.add(h);})();
 /* ✨ W8: Umgebungs-Partikel — Pollen bei Tag, Glühwürmchen bei Nacht. Folgt dem Spieler, driftet sanft.
    Rein kosmetisch (Math.random) → kein seeded-Stream, keine Koop-Auswirkung. */
 var motes=null,moteN=IS_MOB?40:70,moteMat=null,_moteT=0;
@@ -3488,6 +3493,9 @@ function updDayNight(dt){
   if(typeof nightSky!=="undefined"&&nightSky){nightSky.position.set(player.position.x,0,player.position.z);
     var skyV=isNight?1:(f>0.85?(f-0.85)/0.15:0);nightSky.visible=skyV>0.02;
     if(nightSky.visible)nightSky.traverse(function(c){if(c.material&&c.material.transparent){if(c.material._o0==null)c.material._o0=c.material.opacity;c.material.opacity=c.material._o0*skyV;}});}
+  if(typeof daySky!=="undefined"&&daySky){daySky.position.set(player.position.x,0,player.position.z);
+    var dayV=isNight?0:Math.max(0.25,t);daySky.visible=dayV>0.05;
+    if(daySky.visible)daySky.traverse(function(c){if(c.material&&c.material.transparent){if(c.material._o0==null)c.material._o0=c.material.opacity;c.material.opacity=c.material._o0*dayV;}});}
   var ang=f*Math.PI;sun.position.set(player.position.x+Math.cos(ang)*32,Math.max(85,Math.sin(isNight?0.4:f*Math.PI)*100),player.position.z+Math.sin(ang)*28);
   sun.target.position.copy(player.position); // Schatten-Frustum bleibt zentriert -> kein dunkler Fleck
   // Monster nachts spawnen
