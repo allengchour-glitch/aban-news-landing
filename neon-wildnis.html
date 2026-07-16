@@ -231,12 +231,14 @@ canvas{display:block}
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
   <div id="coopBox" style="margin-top:12px;padding:12px;border:2px solid #2a6a8a;border-radius:14px;background:rgba(10,30,45,.5)">
     <div style="font-weight:900;color:#7de3ff;margin-bottom:8px">🌐 Koop (2 Spieler)</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+    <button class="big" id="coopQuick" style="width:100%;background:linear-gradient(90deg,#1b8f5a,#0f6a8a);border:none;margin-bottom:8px">⚡ Schnell zusammen spielen — 1 Tipp</button>
+    <details style="margin-bottom:2px"><summary style="cursor:pointer;color:#9fd6e8;font-size:.82rem;text-align:center;list-style:none">oder mit Code · Freund einladen ▾</summary>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px">
       <button class="ghost" id="coopHost" style="min-width:120px">🏠 Raum öffnen</button>
       <input id="coopCode" maxlength="4" placeholder="CODE" style="width:90px;text-transform:uppercase;text-align:center;font-weight:900;letter-spacing:.2em;border-radius:10px;border:2px solid #2a6a8a;background:#0a1e2d;color:#eaf6ff;padding:8px">
       <button class="ghost" id="coopJoin" style="min-width:110px">🚪 Beitreten</button>
       <button class="ghost hide" id="coopShare" style="min-width:120px">📲 Link teilen</button>
-    </div>
+    </div></details>
     <div id="coopStatus" style="margin-top:8px;font-size:.85rem;color:#9fd6e8;min-height:1.1em"></div>
   </div>
   <a class="arc" href="/spiele.html">🕹️ aban Arcade — mehr Spiele</a>
@@ -286,6 +288,31 @@ var scene=new THREE.Scene();
 var SKY_DAY=new THREE.Color(0x4a74b8),SKY_NIGHT=new THREE.Color(0x081234),SKY_DUSK=new THREE.Color(0xd97b52);
 scene.background=SKY_DAY.clone();
 scene.fog=new THREE.Fog(SKY_DAY.getHex(),90,360); /* etwas weichere Tiefe, Weitsicht bleibt */
+/* 🌙 W7: Nachthimmel — Sternenfeld + Mond, nur nachts sichtbar, folgt dem Spieler wie eine Skybox.
+   Rein kosmetisch (Math.random, fog:false) → berührt keinen seeded-Stream, keine Koop-Auswirkung. */
+var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
+(function(){var N=IS_MOB?220:360,pos=new Float32Array(N*3);
+  for(var i=0;i<N;i++){var th=Math.random()*6.2832,ph=0.12+Math.random()*1.15,r=330;
+    pos[i*3]=Math.cos(th)*Math.sin(ph)*r;pos[i*3+1]=Math.abs(Math.cos(ph))*r*0.85+55;pos[i*3+2]=Math.sin(th)*Math.sin(ph)*r;}
+  var sg=new THREE.BufferGeometry();sg.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  var sm=new THREE.PointsMaterial({color:0xdfe8ff,size:2.0,sizeAttenuation:false,transparent:true,opacity:0.9,depthWrite:false});sm.fog=false;
+  nightSky.add(new THREE.Points(sg,sm));
+  var moon=new THREE.Mesh(new THREE.SphereGeometry(10,20,20),new THREE.MeshBasicMaterial({color:0xf6f2dc,transparent:true,opacity:1}));moon.material.fog=false;
+  moon.position.set(-150,175,-210);nightSky.add(moon);
+  var halo=new THREE.Mesh(new THREE.SphereGeometry(15,20,20),new THREE.MeshBasicMaterial({color:0xbfd4ff,transparent:true,opacity:0.16,side:THREE.BackSide}));halo.material.fog=false;moon.add(halo);})();
+/* ☀️ W8: Tag-Himmel — Sonnenscheibe + warmer Halo, tagsüber sichtbar (Gegenstück zum Nachthimmel).
+   Folgt dem Spieler wie eine Skybox, rein kosmetisch (fog:false). */
+var daySky=new THREE.Group();scene.add(daySky);
+(function(){var sd=new THREE.Mesh(new THREE.SphereGeometry(11,20,20),new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:1}));sd.material.fog=false;sd.position.set(150,165,185);daySky.add(sd);
+  var h=new THREE.Mesh(new THREE.SphereGeometry(19,20,20),new THREE.MeshBasicMaterial({color:0xffe0a0,transparent:true,opacity:0.22,side:THREE.BackSide}));h.material.fog=false;sd.add(h);})();
+/* ✨ W8: Umgebungs-Partikel — Pollen bei Tag, Glühwürmchen bei Nacht. Folgt dem Spieler, driftet sanft.
+   Rein kosmetisch (Math.random) → kein seeded-Stream, keine Koop-Auswirkung. */
+var motes=null,moteN=IS_MOB?40:70,moteMat=null,_moteT=0;
+(function(){var mp=new Float32Array(moteN*3);
+  for(var i=0;i<moteN;i++){mp[i*3]=(Math.random()-0.5)*40;mp[i*3+1]=0.6+Math.random()*4.2;mp[i*3+2]=(Math.random()-0.5)*40;}
+  var mg=new THREE.BufferGeometry();mg.setAttribute("position",new THREE.BufferAttribute(mp,3));
+  moteMat=new THREE.PointsMaterial({color:0xfff2c0,size:0.15,transparent:true,opacity:0.42,depthWrite:false});
+  motes=new THREE.Points(mg,moteMat);motes.frustumCulled=false;scene.add(motes);})();
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xcfe0ff,0x33424f,0.66);scene.add(hemi); /* Boden-Anteil wärmer-grünlich statt blau */
@@ -296,12 +323,11 @@ sun.position.set(40,80,30);sun.castShadow=true;
 sun.shadow.mapSize.set(IS_MOB?1024:2048,IS_MOB?1024:2048);
 sun.shadow.camera.near=1;sun.shadow.camera.far=200;
 /* 🌞 W7: enger Schatten-Frustum (±52 statt ±100) → ~2× Texel-Dichte am Spieler = knackiger Boden-Schatten
-   unter dem Helden. updSun() lässt Licht dem Spieler folgen (auf 2er-Raster gesnappt gegen Schatten-Crawl). */
+   unter dem Helden. (Sonne folgt dem Spieler bereits in updDayNight → Frustum bleibt zentriert.) */
 sun.shadow.camera.left=-52;sun.shadow.camera.right=52;sun.shadow.camera.top=52;sun.shadow.camera.bottom=-52;
 sun.shadow.bias=-0.0006;sun.shadow.normalBias=0.03;sun.shadow.radius=3;scene.add(sun);scene.add(sun.target);
-function updSun(){if(!sun.castShadow||typeof player==="undefined")return;
-  var sx=Math.round(player.position.x/2)*2,sz=Math.round(player.position.z/2)*2;
-  sun.position.set(sx+40,80,sz+30);sun.target.position.set(sx,0,sz);sun.target.updateMatrixWorld();}
+/* Sonnen-Position/-Target folgen dem Spieler bereits in updDayNight (Tag/Nacht-Bogen) — der enge ±52-Frustum
+   oben zentriert sich dadurch automatisch am Spieler = knackiger Schatten OHNE separaten updSun-Override. */
 
 /* 🌇 HDR-IBL (wie neon-survivor): sky_1k.hdr → PMREM-EnvMap, nur WebGL2 + echte GPU.
    Dezent (envMapIntensity 0.25) — PBR-Materialien (GLBs, Wasser, Kristalle) kriegen echte Reflexe. */
@@ -737,7 +763,19 @@ function loadHero(){
     var o=g.scene;
     /* 📏 Hoehen-Normierung: verschiedene GLBs haben verschiedene Eigengroessen -> auf Zielhoehe skalieren
        (fixe Skala liess einzelne Helden riesig werden — User: '1 ist riesig'). Ziel ~2.0 Einheiten. */
-    (function(){var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;if(h>0.01){var k=(2.0*(C.hscale||1))/h;o.scale.setScalar(Math.max(0.05,Math.min(8,k)));}else o.scale.setScalar((C.scale||1.15)*1.18);})();
+    (function(){
+      /* 📏 Einheitliche Höhen-Normierung auf ~2.3 Einheiten. WICHTIG (teuer gemessen): setFromObject() liefert
+         für skinned GLBs unbrauchbare BBoxen — bei Meshy zu klein (Riesen-Held), bei Quaternius/nwhero zu groß
+         (Zwerg-Held ~1.1). Zuverlässig ist NUR die posierte Knochen-Y-Spanne (echte Render-Höhe). */
+      var TGT=2.3*(C.hscale||1);
+      o.updateMatrixWorld(true);
+      var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
+      o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+      var hb=(bn&&maxy>miny)?(maxy-miny):0;
+      if(hb>0.3){o.scale.setScalar(Math.max(0.15,Math.min(4,TGT/hb)));} /* Knochen-basiert (Regelfall) */
+      else{var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y; /* Fallback: Geometrie-BBox, sonst feste Skala */
+        if(h>0.8&&h<6)o.scale.setScalar(Math.max(0.2,Math.min(3.2,TGT/h)));else o.scale.setScalar((C.scale||1.15)*1.18);}
+    })();
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
@@ -747,6 +785,7 @@ function loadHero(){
     // idle tolerant: manche Modelle (hero.glb) haben andere Clip-Namen → Fallback auf ersten Clip
     if(heroRig.actions.idle)setAnim(heroRig,"idle",0);
     else if(g.animations&&g.animations[0])setAnim(heroRig,g.animations[0].name,0);
+    if(typeof applyGearVisuals==="function")applyGearVisuals(); /* ⚔️🛡️ sichtbare Ausrüstung anlegen */
   },undefined,function(){
     // Fallback: Standard-Held, falls gewähltes Modell nicht lädt
     if(C.file!=="hero_meshy_combat2.glb"){new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
@@ -888,8 +927,17 @@ function spawnGlbBoss(file,th,label,bhp,x,z,bspd){ /* 👑 W4: Mini-Boss aus mn_
     var bl=document.getElementById("bossLbl");if(bl)bl.textContent=label;
     announce(label+" erwacht! Besiege den Boss!");shake=0.6;
   },undefined,function(){});}
+function bossEntrance(x,z){ /* 👑 W7: epischer Boss-Auftritt — Screen-Flash + Boden-Schockringe + tiefer Klang. KEIN rnd() → koop-deterministisch. */
+  if(typeof spawnShock==="function"){spawnShock(x,z,8,0xff2d6f);spawnShock(x,z,4.5,0xc98bff);}
+  if(typeof sfx==="function"){sfx(90,0.5,"sawtooth",0.09,42);setTimeout(function(){sfx(66,0.7,"sine",0.08,36);},150);}
+  shake=Math.max(shake,0.85);
+  var f=document.getElementById("bossFlash");
+  if(!f){f=document.createElement("div");f.id="bossFlash";f.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:45;opacity:0;background:radial-gradient(ellipse at center,rgba(255,45,110,0) 30%,rgba(170,20,55,.55) 100%)";document.body.appendChild(f);}
+  if(f.animate)f.animate([{opacity:0},{opacity:0.8},{opacity:0}],{duration:900,easing:"ease-out"});
+}
 function spawnBoss(){ // 🐉 Nacht-Boss — Rotation: Urdrache / 💀 Knochenkönig / 😈 Erzdämon (W4) / Drache / SERAPH
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
+  bossEntrance(x,z);
   var hp=28+nights*10;
   var roll=rnd(); /* W4: verbraucht weiter GENAU 1 rnd (Koop-Determinismus) */
   if(roll>=0.34&&roll<0.55&&THREE.GLTFLoader){spawnGlbBoss("mn_skeleton.glb",3.3,"💀 KNOCHENKÖNIG",hp,x,z,3.0);return;}
@@ -932,17 +980,45 @@ function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monster
   var el=document.getElementById("bossBar");if(!el)return;
   if(boss){el.classList.remove("hide");document.getElementById("bossFill").style.width=Math.max(0,boss.hp/boss.maxhp*100)+"%";}
   else el.classList.add("hide");}
+function clearWarn(e){if(e&&e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}} /* 👑 W8: Boss-Warnring aufräumen, falls Boss mid-Windup stirbt */
 function updMonsters(dt){
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];e.t+=dt;
     if(e.rig)e.rig.mixer.update(dt); /* ⚔️ W4: Monster-Anim-Mixer */
     var dx=player.position.x-e.x,dz=player.position.z-e.z,d=Math.hypot(dx,dz)||1;
     var spd=e.spd||3;
-    if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
+    /* 👑 W8: Boss-Spezialangriff — telegrafierter AoE-Slam (ausweichbar). Bosse werden dadurch skill-basiert
+       statt reiner Kontaktschaden = tiefer als die Originale. rnd-frei (spawnShock/sfx) → koop-konform. */
+    var tel=false;
+    if(e.boss){
+      if(e.slamCd==null)e.slamCd=4.5+Math.random()*3;
+      if(e.slamT>0){ tel=true; e.slamT-=dt;
+        if(e.warnRing)e.warnRing.material.opacity=0.35+0.5*Math.abs(Math.sin((1.0-e.slamT)*20));
+        if(e.slamT<=0){ /* Detonation */
+          var pdx=player.position.x-e.slamX,pdz=player.position.z-e.slamZ;
+          if(pdx*pdx+pdz*pdz<e.slamR*e.slamR&&!dead&&dodgeT<=0)damagePlayer(22,e);
+          if(typeof spawnShock==="function")spawnShock(e.slamX,e.slamZ,e.slamR*1.4,0xff2d3a);
+          shake=Math.max(shake,0.72);if(typeof sfx==="function")sfx(70,0.42,"square",0.09,40);
+          if(e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}
+          e.slamCd=5+Math.random()*3;
+        }
+      } else { e.slamCd-=dt;
+        if(e.slamCd<=0&&d<12&&!dead){ /* Slam anwerfen — Zielort = aktuelle Spielerposition (Ausweich-Fenster) */
+          e.slamT=1.0;e.slamX=player.position.x;e.slamZ=player.position.z;e.slamR=4.2;tel=true;
+          var wg=new THREE.RingGeometry(e.slamR-0.28,e.slamR,44);wg.rotateX(-Math.PI/2);
+          e.warnRing=new THREE.Mesh(wg,new THREE.MeshBasicMaterial({color:0xff2d3a,transparent:true,opacity:0.6,side:THREE.DoubleSide,depthWrite:false}));
+          e.warnRing.position.set(e.slamX,groundH(e.slamX,e.slamZ)+0.13,e.slamZ);scene.add(e.warnRing);
+          if(typeof sfx==="function")sfx(200,0.9,"sawtooth",0.05,540);
+          if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.0);
+        }
+      }
+    }
+    if(tel){ if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2); } /* Wind-up: Boss steht */
+    else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
     else{ // Angriff
       if(!e.atkCd||e.atkCd<=0){
         if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.35); /* ⚔️ W4: Zuschlag-Clip statt nur Schaden-Tick */
-        damagePlayer(e.boss?14:6);e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;} }
+        damagePlayer(e.boss?14:6,e);e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;} }
     if(e.atkCd)e.atkCd-=dt;
     var _bsc=e.baseScale||(slimeProto?2:1);
     if(e.walk){ // feste Kreaturen (inkl. Drachen-Boss): laufen, zum Spieler gedreht, leichtes Wippen — kein Squash
@@ -2872,9 +2948,70 @@ function invUpd(){
 }
 function gearUpd(){
   var ww=document.getElementById("wWeap"),war=document.getElementById("wArmor");
-  if(!ww||!war)return;
-  if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
-  if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
+  if(ww&&war){
+    if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
+    if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
+  }
+  if(typeof applyGearVisuals==="function")applyGearVisuals();
+}
+/* ⚔️🛡️ W8: SICHTBARE Ausrüstung — echte Waffe in der Hand + Schulter-Rüstung am Helden (User: „krasse Rüstungen und Waffen").
+   An die Skelett-Knochen gehängt → bewegt sich mit den Animationen mit. Robust über verschiedene Rig-Namen (Mixamo/Quaternius). */
+var _weaponMesh=null,_armorParts=[];
+function _findBone(re){var f=null;if(!heroModel)return null;heroModel.traverse(function(n){if(f)return;if((n.isBone||n.type==="Bone")&&re.test(n.name))f=n;});return f;}
+function _mat(c,em,ei,rough,metal){return new THREE.MeshStandardMaterial({color:c,emissive:em||0x000000,emissiveIntensity:ei||0,roughness:rough==null?0.5:rough,metalness:metal==null?0.3:metal,flatShading:true});}
+function buildWeapon(tier){
+  var g=new THREE.Group();
+  if(tier===3){ /* 🌟 Neon-Klinge — leuchtende Cyan-Klinge */
+    var bl=new THREE.Mesh(new THREE.BoxGeometry(0.07,1.05,0.16),_mat(0x9ff6ff,0x2ad4ff,1.4,0.25,0.6));bl.position.y=0.62;g.add(bl);
+    var tip=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.24,4),_mat(0xd6fbff,0x40e0ff,1.6,0.2,0.6));tip.position.y=1.24;g.add(tip);
+    var gd=new THREE.Mesh(new THREE.BoxGeometry(0.34,0.06,0.1),_mat(0x2b2f45,0x120a2a,0.4,0.4,0.7));gd.position.y=0.08;g.add(gd);
+    var hd=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.22,8),_mat(0x151826,0,0,0.6,0.5));hd.position.y=-0.05;g.add(hd);
+  } else if(tier===2){ /* ⚔️ Kriegsaxt */
+    var sh=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.055,1.05,8),_mat(0x6a4a2c,0,0,0.85,0.1));sh.position.y=0.5;g.add(sh);
+    var head=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.34,0.5),_mat(0xb8bcc6,0x101418,0.15,0.35,0.9));head.position.set(0,0.92,0.16);g.add(head);
+    var edge=new THREE.Mesh(new THREE.BoxGeometry(0.04,0.4,0.16),_mat(0xe6ebf2,0,0,0.25,0.95));edge.position.set(0,0.92,0.42);g.add(edge);
+  } else { /* 🗡️ Bronze-Schwert */
+    var bl2=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.92,0.14),_mat(0xd9a23c,0x2a1a00,0.15,0.4,0.85));bl2.position.y=0.56;g.add(bl2);
+    var tip2=new THREE.Mesh(new THREE.ConeGeometry(0.08,0.2,4),_mat(0xe6b84a,0,0,0.35,0.85));tip2.position.y=1.12;g.add(tip2);
+    var gd2=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.06,0.1),_mat(0x8a5a22,0,0,0.5,0.6));gd2.position.y=0.08;g.add(gd2);
+    var hd2=new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.045,0.2,8),_mat(0x4a3316,0,0,0.7,0.2));hd2.position.y=-0.04;g.add(hd2);
+  }
+  g.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+  return g;
+}
+function buildPauldron(tier){
+  var g=new THREE.Group(),m;
+  if(tier===3)m=_mat(0x8fe8ff,0x2ad4ff,1.2,0.2,0.6);       /* 💠 Kristall — glühend */
+  else if(tier===2)m=_mat(0xc2c7d2,0x0a0e14,0.1,0.3,0.95);  /* 🛡️ Eisen — Metall */
+  else m=_mat(0x7a4a28,0x1a0d00,0.05,0.85,0.05);            /* 🥋 Leder */
+  var dome=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8,0,6.283,0,1.7),m);dome.scale.set(1.25,0.9,1.15);g.add(dome);
+  if(tier===3){for(var i=0;i<3;i++){var sh=new THREE.Mesh(new THREE.ConeGeometry(0.05,0.22,4),m);sh.position.set((i-1)*0.12,0.1,0);sh.rotation.z=(i-1)*0.35;g.add(sh);}}
+  else if(tier===2){var sp=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.2,5),m);sp.position.y=0.13;g.add(sp);}
+  g.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+  return g;
+}
+function _attachNorm(bone,obj,extraScale){ /* Objekt an Knochen hängen, PRO-ACHSE Welt-Skala ausgleichen (Bones sind oft nicht-uniform → Squash) */
+  var ws=bone.getWorldScale(new THREE.Vector3());var e=extraScale||1;
+  obj.scale.set(e/(Math.abs(ws.x)>0.0001?Math.abs(ws.x):1),e/(Math.abs(ws.y)>0.0001?Math.abs(ws.y):1),e/(Math.abs(ws.z)>0.0001?Math.abs(ws.z):1));
+  bone.add(obj);
+}
+function applyGearVisuals(){
+  if(!heroModel)return;
+  if(_weaponMesh&&_weaponMesh.parent)_weaponMesh.parent.remove(_weaponMesh);_weaponMesh=null;
+  _armorParts.forEach(function(p){if(p&&p.parent)p.parent.remove(p);});_armorParts=[];
+  if(equip.weapon>0){
+    var hand=_findBone(/right.?hand|hand.?r|fist.?r|hand_r|wrist.?r|righthand/i)||_findBone(/hand|fist/i);
+    var w=buildWeapon(equip.weapon);
+    if(hand){_attachNorm(hand,w,1.35);w.position.set(0,0.05,0);w.rotation.set(Math.PI*0.15,0,0);} /* grob in die Faust; feinjustiert nach Screenshot */
+    else{w.position.set(0.42,heroModel.userData._h?heroModel.userData._h*0.55:1.2,0.15);heroModel.add(w);}
+    _weaponMesh=w;
+  }
+  if(equip.armor>0){
+    var shR=_findBone(/right.?shoulder|shoulder.?r|shoulderr/i),shL=_findBone(/left.?shoulder|shoulder.?l|shoulderl/i);
+    if(shR){var pR=buildPauldron(equip.armor);_attachNorm(shR,pR,1.3);pR.position.set(0,0.02,0);_armorParts.push(pR);}
+    if(shL){var pL=buildPauldron(equip.armor);_attachNorm(shL,pL,1.3);pL.position.set(0,0.02,0);_armorParts.push(pL);}
+    if(!shR&&!shL){var t=_findBone(/torso|spine|chest|abdomen/i);if(t){var pc=buildPauldron(equip.armor);_attachNorm(t,pc,1.3);pc.position.set(0,0.15,0.12);_armorParts.push(pc);}}
+  }
 }
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
   /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
@@ -2948,7 +3085,7 @@ function updDodge(dt){
   else{dodgeT=0;}
   if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
-function damagePlayer(d){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -2959,7 +3096,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);spawnShock(px,pz,R,0x9fd0ff);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 var throwCd=0,THROW_CD=1.1,projectiles=[];
@@ -2984,7 +3121,7 @@ function updThrow(dt){
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
       if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);shake=Math.min(shake+0.1,0.4);
-        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}
+        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
@@ -2998,6 +3135,16 @@ function spawnShock(x,z,r,color){
 function updShock(dt){for(var i=shockRings.length-1;i>=0;i--){var s2=shockRings[i];s2.t+=dt*3.2;
   var f=Math.min(1,s2.t);var sc=0.4+f*s2.max;s2.m.scale.set(sc,1,sc);s2.m.material.opacity=0.85*(1-f);
   if(f>=1){scene.remove(s2.m);s2.m.geometry.dispose();shockRings.splice(i,1);}}}
+function updMotes(dt){if(!motes||typeof player==="undefined")return;_moteT+=dt;
+  motes.position.set(player.position.x,0,player.position.z);
+  var a=motes.geometry.attributes.position.array;
+  for(var i=0;i<moteN;i++){a[i*3]+=Math.sin(_moteT*0.5+i*1.3)*dt*0.25;a[i*3+1]+=Math.sin(_moteT*0.8+i)*dt*0.12;a[i*3+2]+=Math.cos(_moteT*0.4+i*0.7)*dt*0.25;
+    if(a[i*3]>22)a[i*3]-=44;else if(a[i*3]<-22)a[i*3]+=44;
+    if(a[i*3+2]>22)a[i*3+2]-=44;else if(a[i*3+2]<-22)a[i*3+2]+=44;
+    if(a[i*3+1]>5)a[i*3+1]=0.6;else if(a[i*3+1]<0.4)a[i*3+1]=4.5;}
+  motes.geometry.attributes.position.needsUpdate=true;
+  if(isNight){moteMat.color.setHex(0x8fffa0);moteMat.opacity=0.55+Math.sin(_moteT*3)*0.2;moteMat.size=0.17;} /* 🌙 Glühwürmchen: grün, pulsierend */
+  else{moteMat.color.setHex(0xfff2c0);moteMat.opacity=0.4;moteMat.size=0.15;}}
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
@@ -3029,7 +3176,7 @@ function useBolt(){heroActBolt();
     e.hp-=dmg;dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
       gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);
-      if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}
+      if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}
   });
   toast("⚡ Kettenblitz! "+hits.length+" getroffen");
 }
@@ -3071,6 +3218,16 @@ function hurtFlash(){shake=Math.min(shake+0.15,0.4);
     v.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;background:radial-gradient(ellipse at center,rgba(255,45,80,0) 55%,rgba(255,45,80,.4) 100%);opacity:0;transition:opacity .35s";
     document.body.appendChild(v);}
   v.style.opacity="1";clearTimeout(v._t);v._t=setTimeout(function(){v.style.opacity="0";},90);}
+function dmgDir(src){ /* ⚔️ W8: Schadens-Richtung — roter Rand-Glow zeigt, woher der Treffer kam (camera.project = robust) */
+  if(!src||typeof camera==="undefined")return;
+  var v=new THREE.Vector3(src.x,groundH(src.x,src.z)+1,src.z).project(camera);
+  var nx=v.x,ny=v.y;if(v.z>1){nx=-nx;ny=-ny;} /* hinter der Kamera → spiegeln */
+  var mag=Math.hypot(nx,ny);if(mag<0.05)return; /* fast zentriert → hurtFlash reicht */
+  var ang=Math.atan2(ny,nx),ex=50+Math.cos(ang)*46,ey=50-Math.sin(ang)*46; /* Screen-y ist invertiert */
+  var el=document.getElementById("dmgDir");
+  if(!el){el=document.createElement("div");el.id="dmgDir";el.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;opacity:0";document.body.appendChild(el);}
+  el.style.background="radial-gradient(circle at "+ex.toFixed(0)+"% "+ey.toFixed(0)+"%, rgba(255,40,60,.55), rgba(255,40,60,0) 42%)";
+  if(el.animate)el.animate([{opacity:0.9},{opacity:0}],{duration:620,easing:"ease-out"});}
 function playerDie(){
   dead=true;announce("💀 Du bist gefallen…","#ff6a6a");
   if(typeof hurtFlash==="function")hurtFlash();shake=Math.min(shake+0.6,0.9);
@@ -3174,7 +3331,7 @@ function harvest(){
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
 var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
+    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -3386,7 +3543,7 @@ function updDayNight(dt){
       // 🏆 Neuer Tages-Rekord? -> extra Belohnung (Sucht-Faktor)
       try{var _bd=(loadBest()||{}).day||0;if(day>_bd&&_bd>0){setTimeout(function(){announce("🏆 NEUER REKORD — Tag "+day+"! 🌟","#ffd166");inv.crystal+=2;invUpd();},1600);}}catch(e){}
       saveGame();
-      monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}
+      monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;}
     updWaveHud();}
   var f=dayT/cyc;
   var t; // 0=tiefste Nacht,1=heller Tag
@@ -3408,6 +3565,13 @@ function updDayNight(dt){
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   if(!isNight)scene.background.lerp(SKY_DUSK,warm*0.5); /* Abendrot/Morgenrot in den Himmel mischen */
   scene.fog.color.copy(scene.background);
+  /* 🌙 W7: Nachthimmel ein-/ausblenden — nachts voll, in der Dämmerung sanft rein; folgt dem Spieler (Skybox) */
+  if(typeof nightSky!=="undefined"&&nightSky){nightSky.position.set(player.position.x,0,player.position.z);
+    var skyV=isNight?1:(f>0.85?(f-0.85)/0.15:0);nightSky.visible=skyV>0.02;
+    if(nightSky.visible)nightSky.traverse(function(c){if(c.material&&c.material.transparent){if(c.material._o0==null)c.material._o0=c.material.opacity;c.material.opacity=c.material._o0*skyV;}});}
+  if(typeof daySky!=="undefined"&&daySky){daySky.position.set(player.position.x,0,player.position.z);
+    var dayV=isNight?0:Math.max(0.25,t);daySky.visible=dayV>0.05;
+    if(daySky.visible)daySky.traverse(function(c){if(c.material&&c.material.transparent){if(c.material._o0==null)c.material._o0=c.material.opacity;c.material.opacity=c.material._o0*dayV;}});}
   var ang=f*Math.PI;sun.position.set(player.position.x+Math.cos(ang)*32,Math.max(85,Math.sin(isNight?0.4:f*Math.PI)*100),player.position.z+Math.sin(ang)*28);
   sun.target.position.copy(player.position); // Schatten-Frustum bleibt zentriert -> kein dunkler Fleck
   // Monster nachts spawnen
@@ -3790,12 +3954,12 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
-  updCamera(dt);updSun();updQuest(dt);updBadges(dt);
+  updCamera(dt);updQuest(dt);updBadges(dt);
   // Toast/announce fade
   if(toastT>0){toastT-=dt;if(toastT<=0)document.getElementById("toast").style.opacity=0;}
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
@@ -3858,7 +4022,7 @@ function netStart(role,code){
 }
 function onNetMsg(d){
   if(!d)return;
-  if(d.t==="start"&&NET.role==="join"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;}
+  if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;} /* join ODER quick-Gast */
   if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
@@ -3879,7 +4043,26 @@ function netTick(dt){
   if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur});} /* st = Stations-Flag für Partner-Blase */
   if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
 }
-(function(){var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
+function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Raum, join-oder-host) */
+  if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
+  if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}
+  coopStatusMsg("⚡ Suche Mitspieler…");setOnline("waiting");
+  try{NET.s=MP.quick("wildnis");}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
+  NET.role="quick"; /* wird bei Verbindung auf host/join gesetzt */
+  NET.s.onStatus(function(st){
+    if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
+    else if(st==="connected"){NET.role=NET.s.role||NET.role;coopStatusMsg("✅ Verbunden!");setOnline("connected");}
+    else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");}});
+  NET.s.onMessage(onNetMsg);
+  NET.s.ready.then(function(){
+    NET.on=true;NET.role=NET.s.role||NET.role;
+    if(NET.role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}
+    else spawnRemote(); /* Gast: wartet auf "start"-Nachricht */
+  }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));setOnline("solo");});
+}
+(function(){var q=document.getElementById("coopQuick");if(q)q.onclick=netStartQuick;
+  var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
   if(h)h.onclick=function(){if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}netStart("host");
     setTimeout(function(){var sb=document.getElementById("coopShare");if(sb&&NET.s&&NET.s.code)sb.classList.remove("hide");},600);};
   var sb=document.getElementById("coopShare");
@@ -4085,6 +4268,13 @@ window.__nw={
   toPotion:function(){for(var i=0;i<potions.length;i++)if(!potions[i].taken){player.position.x=potions[i].x-6;player.position.z=potions[i].z;return potions[i];}return null;},
   toCastle:function(){return null;},
   day:function(n){day=n;},
+  setgear:function(w,a){equip.weapon=w|0;equip.armor=a|0;gearUpd();return {weapon:equip.weapon,armor:equip.armor,hasWeaponMesh:!!_weaponMesh,armorParts:_armorParts.length};}, /* Test/QA: Ausrüstung setzen + sichtbar machen */
+  sizes:function(){var o={};try{if(heroModel){o.heroScale=+heroModel.scale.x.toFixed(3);
+    /* Render-Höhe skinned Meshes = posierte Knochen-Y-Spanne (setFromObject ist bei Meshy-GLBs unbrauchbar) */
+    var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();heroModel.updateMatrixWorld(true);
+    heroModel.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+    if(bn){o.boneH=+(maxy-miny).toFixed(3);o.bones=bn;}}}catch(e){o.err=e.message;}return o;}, /* QA: reale Helden-Render-Höhe (bone-basiert) */
+  night:function(on){isNight=(on!==false);dayT=isNight?2:0;updDayNight(0.001);return {isNight:isNight,stars:!!(nightSky&&nightSky.visible)};}, /* Test/QA: Nacht erzwingen (Sternenhimmel/Glühwürmchen prüfen) */
   time:function(fr){if(!isNight)dayT=Math.max(0,Math.min(0.999,fr))*DAYLEN;return dayT;}, /* Test-Only: Tagesphase setzen (Screenshots) */
   toTree:function(){for(var i=0;i<resources.length;i++){if(resources[i].type==="tree"&&!resources[i].dead){player.position.x=resources[i].x-1;player.position.z=resources[i].z;return resources[i];}}},
   harvest:harvest,
