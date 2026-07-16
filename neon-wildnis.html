@@ -970,7 +970,7 @@ function updMonsters(dt){
     else{ // Angriff
       if(!e.atkCd||e.atkCd<=0){
         if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.35); /* ⚔️ W4: Zuschlag-Clip statt nur Schaden-Tick */
-        damagePlayer(e.boss?14:6);e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;} }
+        damagePlayer(e.boss?14:6,e);e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;} }
     if(e.atkCd)e.atkCd-=dt;
     var _bsc=e.baseScale||(slimeProto?2:1);
     if(e.walk){ // feste Kreaturen (inkl. Drachen-Boss): laufen, zum Spieler gedreht, leichtes Wippen — kein Squash
@@ -2976,7 +2976,7 @@ function updDodge(dt){
   else{dodgeT=0;}
   if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
-function damagePlayer(d){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -3109,6 +3109,16 @@ function hurtFlash(){shake=Math.min(shake+0.15,0.4);
     v.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;background:radial-gradient(ellipse at center,rgba(255,45,80,0) 55%,rgba(255,45,80,.4) 100%);opacity:0;transition:opacity .35s";
     document.body.appendChild(v);}
   v.style.opacity="1";clearTimeout(v._t);v._t=setTimeout(function(){v.style.opacity="0";},90);}
+function dmgDir(src){ /* ⚔️ W8: Schadens-Richtung — roter Rand-Glow zeigt, woher der Treffer kam (camera.project = robust) */
+  if(!src||typeof camera==="undefined")return;
+  var v=new THREE.Vector3(src.x,groundH(src.x,src.z)+1,src.z).project(camera);
+  var nx=v.x,ny=v.y;if(v.z>1){nx=-nx;ny=-ny;} /* hinter der Kamera → spiegeln */
+  var mag=Math.hypot(nx,ny);if(mag<0.05)return; /* fast zentriert → hurtFlash reicht */
+  var ang=Math.atan2(ny,nx),ex=50+Math.cos(ang)*46,ey=50-Math.sin(ang)*46; /* Screen-y ist invertiert */
+  var el=document.getElementById("dmgDir");
+  if(!el){el=document.createElement("div");el.id="dmgDir";el.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;opacity:0";document.body.appendChild(el);}
+  el.style.background="radial-gradient(circle at "+ex.toFixed(0)+"% "+ey.toFixed(0)+"%, rgba(255,40,60,.55), rgba(255,40,60,0) 42%)";
+  if(el.animate)el.animate([{opacity:0.9},{opacity:0}],{duration:620,easing:"ease-out"});}
 function playerDie(){
   dead=true;announce("💀 Du bist gefallen…","#ff6a6a");
   if(typeof hurtFlash==="function")hurtFlash();shake=Math.min(shake+0.6,0.9);
