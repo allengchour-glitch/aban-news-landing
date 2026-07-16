@@ -587,6 +587,14 @@ skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x l
 10. **Overlay-Zentrier-Bug:** flex justify-center + Overflow schneidet Titel unerreichbar ab →
     justify-content:flex-start + ::before/::after-Federn (kurz zentriert, lang ab oben scrollbar).
 
+## 🌐 Wildnis Online-Koop — W8 (2026-07-16, PRs #1946/#1949/#1950/#1951)
+Ziel „koop online einfach": kein Code-Austausch, Partner voll erlebbar. Alle via Plumbing-Commit + 2-Seiten-Playwright-Test (`?mp=local`, BroadcastChannel).
+- **1-Tipp Schnell-Koop** (`MP.quick` in `js/mp.js`): join-oder-host auf festem Public-Raum **"PUBA"** (4 gültige Buchstaben, KEINE Ziffern — sonst kürzt der Code-Sanitizer!). `MP._hostFixed`+`noRegen`-Flag. UI-Knopf `coopQuick`, Code-Weg in `<details>` eingeklappt.
+- **Partner = echter Held** (`loadRemoteHero`): frisch laden (kein Clone!), gleiche Bone-Höhen-Normierung ~2.3, animiert in `netTick` (walk/idle nach Bewegung). Char-Sync `{t:"char",id,from}`.
+- **Partner-Ausrüstung + Kampfanim** (`_gearOn` generalisiert für beliebiges Modell; `applyRemoteGear`, `heroActRemote`): `{t:"gear",w,a}` + `{t:"act",intent}`.
+- **Partner-HP-Balken** (`drawRemoteHp`): hp% reist im `pos`-Sync mit, Canvas-Sprite über dem Kopf (grün/gelb/rot).
+- **🔑 LEHREN:** (1) Sync-Nachrichten IMMER mit `from:NET.role` taggen → Empfänger ignoriert Eigen-Echo (`d.from!==NET.role`). (2) Mehrfach senden (0/1.2/3s) gegen Timing-Races. (3) **Test-Falle:** 2 Playwright-Pages im SELBEN Context teilen `localStorage` (→ gleicher `nw_char`) — für echte Char-Trennung getrennte Contexts, ABER die teilen keine BroadcastChannel → localEngine verbindet dann nicht. Also: Mechanik im shared-Context testen, Char-Artefakt einkalkulieren. (4) Echtes P2P (PeerJS-Cloud) headless nicht testbar → User auf 2 Geräten gegentesten lassen.
+
 ## 🌲 Wildnis „hoch 100" — Politur-Stand W7 (2026-07-16)
 Alle via Plumbing-Commit (Fremd-traumhaus-Dateien blockieren normale Branch-Ops) → Draft-PR → squash-merge → Inhalts-Audit in origin/main.
 - **Schockwellen-Ring** (`spawnShock`/`updShock`/`shockRings`): sichtbarer expandierender Ring beim 💥-Skill (vorher nur unsichtbarer Burst). PR #1924.
