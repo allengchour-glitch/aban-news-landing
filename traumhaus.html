@@ -686,9 +686,14 @@ function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
   verkehr.forEach(function(v){
     if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}
+    var _pv=v.pos;
     v.pos+=v.route.dir*v.route.speed*dt;
     var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+34; // weit außerhalb der Sicht umkehren
     if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
+    // an roter/gelber Ampel vor der Kreuzung halten (Haltelinie beim Überfahren clampen)
+    if(ampRed(v.route.axis)){var bd=v.route.axis==="x"?48:43,sl=v.route.dir>0?-bd:bd;
+      if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
+      else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}
     var px,pz,fx=0,fz=0;
     if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
     else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
@@ -708,6 +713,8 @@ function updVerkehr(dt){
     busRec.mesh.rotation.y=0; // Koerper laengs zur Fahrtrichtung (+x)
     if(busRec.lichter){var kb=nn?1.5:0.18,hb=nn?1.2:0.22;busRec.lichter.forEach(function(l){l.m.emissiveIntensity=l.typ==="k"?kb:hb;});}}}
 var _ampelT=0;
+function ampRed(axis){ // true = diese Achse hat Gelb/Rot -> Verkehr haelt (x=Gruppe0, z=Gruppe1)
+  var t=(_ampelT+(axis==="x"?0:5))%10;return t>=4.5;}
 function updAmpel(dt){if(!window._ampeln)return;
   _ampelT+=dt;
   window._ampeln.forEach(function(A){
