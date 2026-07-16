@@ -593,4 +593,9 @@ Alle via Plumbing-Commit (Fremd-traumhaus-Dateien blockieren normale Branch-Ops)
 - **Loot-Magnet-Sog** (`updLoot`): Beute-Orbs fliegen sichtbar zum Spieler (Attract-Radius LR*2.7, Scale-Up) + aufsteigender Pickup-Sound (`sfx`), statt Teleport-Collect. PR #1925.
 - **DPR-Cap 1.5 mobil** (`setPixelRatio`): spürbar flüssiger auf High-Res-Handys, Desktop bleibt 2×. PR #1926.
 - **Anfänger-Tipps** (`nw_intro` localStorage): einmalige gestaffelte Steuerungs-Tipps beim ersten Solo-Start (beantwortet „Regeln für Anfänger"). PR #1927.
+- **Schatten-Frustum** (`sun.shadow.camera` ±52 statt ±100, far 200): ~2× Texel-Dichte → knackiger Boden-Schatten unter dem Helden. PR #1929.
+- **Kritisch-HP-Warn-Vignette** (`lowVig` in `hpUpd`): pulsierender roter Rand < 25% HP (Web Animations API, z-index 43). PR #1930.
+- **Epischer Boss-Auftritt** (`bossEntrance(x,z)`, oben in `spawnBoss`): Screen-Flash + 2 Schockringe + tiefer Klang + Shake, für ALLE Boss-Typen. KEIN `rnd()` → koop-deterministischer Spawn bleibt. PR #1935.
+- **Nachthimmel** (`nightSky`: Points-Sternenfeld + Mond+Halo, `fog:false`): folgt Spieler als Skybox, Dämmerungs-Fade in `updDayNight` (f>0.85). Math.random-Positionen = kosmetisch. PR #1937.
+- **⚠️ LEHRE (updSun-Regression, PR #1929→#1936):** `updDayNight` bewegt die Sonne SCHON entlang des Tag/Nacht-Bogens UND folgt dem Spieler (`sun.target.position.copy(player.position)`). Ein separates `updSun()` überschrieb das → Sonnenstand fror ein. **Nie die Sonnen-Position doppelt ansteuern** — nur den Frustum tunen; `updDayNight` besitzt Position+Target.
 - **WICHTIG geprüft:** `rnd()` (seeded mulberry32) ist im Wildnis-Runtime NICHT im Lockstep — `rollRarity`/`spawnMonster`/`burst` nutzen es alle live. Coop teilt NUR den Start-SEED (identische Weltgen), Gameplay ist positions-sync/host-lite. → Cosmetics dürfen `rnd()` nutzen; kein Zwang zu `Math.random` im Kampf-VFX (anders als Lebenspfad-Regel).
