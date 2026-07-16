@@ -298,6 +298,14 @@ var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
   var moon=new THREE.Mesh(new THREE.SphereGeometry(10,20,20),new THREE.MeshBasicMaterial({color:0xf6f2dc,transparent:true,opacity:1}));moon.material.fog=false;
   moon.position.set(-150,175,-210);nightSky.add(moon);
   var halo=new THREE.Mesh(new THREE.SphereGeometry(15,20,20),new THREE.MeshBasicMaterial({color:0xbfd4ff,transparent:true,opacity:0.16,side:THREE.BackSide}));halo.material.fog=false;moon.add(halo);})();
+/* ✨ W8: Umgebungs-Partikel — Pollen bei Tag, Glühwürmchen bei Nacht. Folgt dem Spieler, driftet sanft.
+   Rein kosmetisch (Math.random) → kein seeded-Stream, keine Koop-Auswirkung. */
+var motes=null,moteN=IS_MOB?40:70,moteMat=null,_moteT=0;
+(function(){var mp=new Float32Array(moteN*3);
+  for(var i=0;i<moteN;i++){mp[i*3]=(Math.random()-0.5)*40;mp[i*3+1]=0.6+Math.random()*4.2;mp[i*3+2]=(Math.random()-0.5)*40;}
+  var mg=new THREE.BufferGeometry();mg.setAttribute("position",new THREE.BufferAttribute(mp,3));
+  moteMat=new THREE.PointsMaterial({color:0xfff2c0,size:0.15,transparent:true,opacity:0.42,depthWrite:false});
+  motes=new THREE.Points(mg,moteMat);motes.frustumCulled=false;scene.add(motes);})();
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xcfe0ff,0x33424f,0.66);scene.add(hemi); /* Boden-Anteil wärmer-grünlich statt blau */
@@ -3018,6 +3026,16 @@ function spawnShock(x,z,r,color){
 function updShock(dt){for(var i=shockRings.length-1;i>=0;i--){var s2=shockRings[i];s2.t+=dt*3.2;
   var f=Math.min(1,s2.t);var sc=0.4+f*s2.max;s2.m.scale.set(sc,1,sc);s2.m.material.opacity=0.85*(1-f);
   if(f>=1){scene.remove(s2.m);s2.m.geometry.dispose();shockRings.splice(i,1);}}}
+function updMotes(dt){if(!motes||typeof player==="undefined")return;_moteT+=dt;
+  motes.position.set(player.position.x,0,player.position.z);
+  var a=motes.geometry.attributes.position.array;
+  for(var i=0;i<moteN;i++){a[i*3]+=Math.sin(_moteT*0.5+i*1.3)*dt*0.25;a[i*3+1]+=Math.sin(_moteT*0.8+i)*dt*0.12;a[i*3+2]+=Math.cos(_moteT*0.4+i*0.7)*dt*0.25;
+    if(a[i*3]>22)a[i*3]-=44;else if(a[i*3]<-22)a[i*3]+=44;
+    if(a[i*3+2]>22)a[i*3+2]-=44;else if(a[i*3+2]<-22)a[i*3+2]+=44;
+    if(a[i*3+1]>5)a[i*3+1]=0.6;else if(a[i*3+1]<0.4)a[i*3+1]=4.5;}
+  motes.geometry.attributes.position.needsUpdate=true;
+  if(isNight){moteMat.color.setHex(0x8fffa0);moteMat.opacity=0.55+Math.sin(_moteT*3)*0.2;moteMat.size=0.17;} /* 🌙 Glühwürmchen: grün, pulsierend */
+  else{moteMat.color.setHex(0xfff2c0);moteMat.opacity=0.4;moteMat.size=0.15;}}
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
@@ -3814,7 +3832,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -4109,6 +4127,7 @@ window.__nw={
   toPotion:function(){for(var i=0;i<potions.length;i++)if(!potions[i].taken){player.position.x=potions[i].x-6;player.position.z=potions[i].z;return potions[i];}return null;},
   toCastle:function(){return null;},
   day:function(n){day=n;},
+  night:function(on){isNight=(on!==false);dayT=isNight?2:0;updDayNight(0.001);return {isNight:isNight,stars:!!(nightSky&&nightSky.visible)};}, /* Test/QA: Nacht erzwingen (Sternenhimmel/Glühwürmchen prüfen) */
   time:function(fr){if(!isNight)dayT=Math.max(0,Math.min(0.999,fr))*DAYLEN;return dayT;}, /* Test-Only: Tagesphase setzen (Screenshots) */
   toTree:function(){for(var i=0;i<resources.length;i++){if(resources[i].type==="tree"&&!resources[i].dead){player.position.x=resources[i].x-1;player.position.z=resources[i].z;return resources[i];}}},
   harvest:harvest,
