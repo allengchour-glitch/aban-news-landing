@@ -584,16 +584,16 @@ setTimeout(function baueVerkehr(){
     {axis:"x",z:-SZ-13.6,dir:1,speed:5.5},{axis:"x",z:-SZ-10.4,dir:-1,speed:4.8},
     {axis:"z",x:-(RX+1.6),dir:1,speed:4.5},{axis:"z",x:RX+1.6,dir:-1,speed:5}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
-  ["auto_kombi","auto_flitzer","auto_van","auto_kombi","auto_van","auto_flitzer"].forEach(function(id,i){
+  ["auto_kombi","auto_flitzer","auto_van","auto_kombi","auto_van","auto_flitzer","auto_kombi","auto_van","auto_flitzer","auto_kombi"].forEach(function(id,i){
     loadTH(id,function(tpl){if(!tpl)return;
       var m=tpl.clone(true);
       m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
-        if(i>0)n.material.color.lerp(new THREE.Color(TINT[i]),0.35);}});
+        if(i>0)n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.35);}});
       var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
       m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
       var b2=new THREE.Box3().setFromObject(m);
       var r=ROUTEN[i%ROUTEN.length];
-      var rec={mesh:m,route:r,pos:-60+i*22,homeY:-b2.min.y+0.01};
+      var rec={mesh:m,route:r,pos:-75+i*15,homeY:-b2.min.y+0.01};
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
       scene.add(m);verkehr.push(rec);});});
   // Bus prozedural (OeV): gelb, Fensterband, faehrt Suedstrasse, haelt an der Haltestelle
@@ -2140,7 +2140,7 @@ addEventListener("mousemove",function(e){
 addEventListener("mouseup",function(e){dragging=false;
   if(performance.now()-downT<260&&Math.hypot(e.clientX-downX,e.clientY-downY)<8)tapAt(e.clientX,e.clientY);});
 renderer.domElement.addEventListener("contextmenu",function(e){e.preventDefault();});
-addEventListener("wheel",function(e){camR=Math.max(7,Math.min(60,camR+e.deltaY*0.02));updCam();},{passive:true});
+addEventListener("wheel",function(e){camR=Math.max(7,Math.min(90,camR+e.deltaY*0.02));updCam();},{passive:true});
 renderer.domElement.addEventListener("touchstart",function(e){
   if(e.touches.length===1){dragging=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;downT=performance.now();downX=lx;downY=ly;}
   else if(e.touches.length===2){pinchD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
@@ -2149,7 +2149,7 @@ renderer.domElement.addEventListener("touchmove",function(e){
   if(e.touches.length===1&&dragging){var dx=e.touches[0].clientX-lx,dy=e.touches[0].clientY-ly;lx=e.touches[0].clientX;ly=e.touches[0].clientY;
     camAT=null;camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}
   else if(e.touches.length===2){var nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-    camR=Math.max(7,Math.min(60,camR-(nd-pinchD)*0.05));pinchD=nd;updCam();}
+    camR=Math.max(7,Math.min(90,camR-(nd-pinchD)*0.05));pinchD=nd;updCam();}
   e.preventDefault();},{passive:false});
 renderer.domElement.addEventListener("touchend",function(e){dragging=false;
   if(e.changedTouches[0]&&performance.now()-downT<300){var t=e.changedTouches[0];
@@ -2239,7 +2239,7 @@ function tapAt(px,py){
   geldSend();
   updHUD();beep(660,.06,"triangle",.04);}
 document.getElementById("zoomIn").onclick=function(){camR=Math.max(7,camR-4);updCam();};
-document.getElementById("zoomOut").onclick=function(){camR=Math.min(60,camR+4);followSim=null;updCam();};
+document.getElementById("zoomOut").onclick=function(){camR=Math.min(90,camR+4);followSim=null;updCam();};
 // ---- Mini-Game: Timing-Bar (3 Runden, Ergebnis 0..1) ----
 var MG={on:false,pos:0,dir:1,speed:1.6,round:0,scores:[],cb:null,raf:0};
 function mgDraw(){
