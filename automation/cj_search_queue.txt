@@ -477,10 +477,10 @@
 #done search:makeup mirror led rechargeable
 #done search:electric callus remover
 #done search:facial steamer home
-search:scalp massager shampoo brush
-search:eyelash curler heated
-search:magnetic lashes kit
-search:gel nail polish kit
+#done search:scalp massager shampoo brush
+#done search:eyelash curler heated
+#done search:magnetic lashes kit
+#done search:gel nail polish kit
 search:cuticle oil pen
 search:hair straightener brush
 search:hair diffuser attachment
