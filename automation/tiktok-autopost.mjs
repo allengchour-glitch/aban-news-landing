@@ -22,6 +22,7 @@
  *   DRY_RUN=1
  */
 import fs from 'node:fs';
+import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 
@@ -163,10 +164,16 @@ const ready = data.filter(r => (r[idx.status]||'').trim()==='ready' && (r[idx.vi
 if(ready.length===0){ console.log('Kein Reel mit status=ready → No-op.'); process.exit(0); }
 
 console.log(`TikTok ready: ${ready.length} · MAX_PER_RUN: ${MAX} · Privacy: ${PRIVACY}`);
+if(!DRY) postLock();                         // ⛔ gemeinsamer Lock mit allen Postern (IG/FB/Story/TikTok)
 let postedCount = 0, anyFail = false;
 for(const next of ready.slice(0, MAX)){
   const videoUrl = next[idx.video_url].trim();
   const caption = (next[idx.caption] || '') + (next[idx.hashtags] ? '\n' + next[idx.hashtags] : '');
+  // ⛔ INHALTS-SPERRE: Video schon je gepostet (auch auf IG/FB)? → nie zweimal, kein Cross-Plattform-Doppel.
+  if(!DRY && postSeen(videoUrl)){
+    console.log(`   ⛔ Video schon gepostet (gemeinsamer Ledger, evtl. IG) → skip: ${videoUrl}`);
+    next[idx.status] = 'posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue;
+  }
   console.log(`→ Reel ${next[idx.id]} | ${videoUrl}`);
   if(DRY){ console.log('   DRY_RUN: würde an TikTok senden.'); postedCount++; continue; }
   try{
@@ -174,9 +181,11 @@ for(const next of ready.slice(0, MAX)){
     if(pubId === 'AUDIT_PENDING'){ console.log('   → warte auf TikTok-Audit; Reel bleibt ready.'); break; }
     if(pubId){
       const inbox = String(pubId).startsWith('INBOX:');
+      if(!inbox) postMark(videoUrl);         // nur echter Post markiert den Ledger (Entwurf/Inbox ist noch nicht live)
       next[idx.status] = inbox ? 'tiktok-entwurf' : 'posted-tiktok';
       next[idx.posted_at] = new Date().toISOString();
       next[idx.post_url] = inbox ? pubId.slice(6) : `tt:${pubId}`;
+      fs.writeFileSync(CSV, serialize(rows));   // sofort committen (kein Post-vor-Commit-Fenster)
       postedCount++;
       console.log(inbox ? '   📥 in TikTok-Entwürfe geladen — in der App final posten' : '   ✅ veröffentlicht auf TikTok');
     } else { anyFail = true; }
