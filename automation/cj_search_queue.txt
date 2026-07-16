@@ -519,14 +519,14 @@
 #done search:tarot cards deck
 #done search:moon lamp 3d
 #done search:essential oil roller set
-search:winter coat women wool
-search:puffer jacket cropped
-search:fleece jacket zip women
-search:teddy coat oversized
-search:trench coat belted
-search:leather jacket biker women
-search:denim jacket oversized
-search:knit sweater dress
+#done search:winter coat women wool
+#done search:puffer jacket cropped
+#done search:fleece jacket zip women
+#done search:teddy coat oversized
+#done search:trench coat belted
+#done search:leather jacket biker women
+#done search:denim jacket oversized
+#done search:knit sweater dress
 search:turtleneck bodysuit
 search:wide leg jeans women
 search:faux leather leggings
