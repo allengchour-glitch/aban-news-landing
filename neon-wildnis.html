@@ -761,12 +761,19 @@ function loadHero(){
     var o=g.scene;
     /* 📏 Hoehen-Normierung: verschiedene GLBs haben verschiedene Eigengroessen -> auf Zielhoehe skalieren
        (fixe Skala liess einzelne Helden riesig werden — User: '1 ist riesig'). Ziel ~2.0 Einheiten. */
-    (function(){var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;
-      /* Nur bei PLAUSIBLER Messung normieren: skinned Meshy-GLBs (z.B. hero_meshy_combat2) geben eine
-         degenerierte Mini-BBox (~0.14) → k=2/0.14 sprengte den Clamp auf 8× = RIESEN-Held (User: „riesig").
-         Fällt die Messung aus dem sinnvollen Bereich, feste Char-Skala nutzen. Clamp zusätzlich auf 3.2 gesenkt. */
-      if(h>0.8&&h<6){var k=(2.0*(C.hscale||1))/h;o.scale.setScalar(Math.max(0.2,Math.min(3.2,k)));}
-      else o.scale.setScalar((C.scale||1.15)*1.18);})();
+    (function(){
+      /* 📏 Einheitliche Höhen-Normierung auf ~2.3 Einheiten. WICHTIG (teuer gemessen): setFromObject() liefert
+         für skinned GLBs unbrauchbare BBoxen — bei Meshy zu klein (Riesen-Held), bei Quaternius/nwhero zu groß
+         (Zwerg-Held ~1.1). Zuverlässig ist NUR die posierte Knochen-Y-Spanne (echte Render-Höhe). */
+      var TGT=2.3*(C.hscale||1);
+      o.updateMatrixWorld(true);
+      var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
+      o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+      var hb=(bn&&maxy>miny)?(maxy-miny):0;
+      if(hb>0.3){o.scale.setScalar(Math.max(0.15,Math.min(4,TGT/hb)));} /* Knochen-basiert (Regelfall) */
+      else{var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y; /* Fallback: Geometrie-BBox, sonst feste Skala */
+        if(h>0.8&&h<6)o.scale.setScalar(Math.max(0.2,Math.min(3.2,TGT/h)));else o.scale.setScalar((C.scale||1.15)*1.18);}
+    })();
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
