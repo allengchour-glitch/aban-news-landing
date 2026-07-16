@@ -761,7 +761,12 @@ function loadHero(){
     var o=g.scene;
     /* 📏 Hoehen-Normierung: verschiedene GLBs haben verschiedene Eigengroessen -> auf Zielhoehe skalieren
        (fixe Skala liess einzelne Helden riesig werden — User: '1 ist riesig'). Ziel ~2.0 Einheiten. */
-    (function(){var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;if(h>0.01){var k=(2.0*(C.hscale||1))/h;o.scale.setScalar(Math.max(0.05,Math.min(8,k)));}else o.scale.setScalar((C.scale||1.15)*1.18);})();
+    (function(){var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;
+      /* Nur bei PLAUSIBLER Messung normieren: skinned Meshy-GLBs (z.B. hero_meshy_combat2) geben eine
+         degenerierte Mini-BBox (~0.14) → k=2/0.14 sprengte den Clamp auf 8× = RIESEN-Held (User: „riesig").
+         Fällt die Messung aus dem sinnvollen Bereich, feste Char-Skala nutzen. Clamp zusätzlich auf 3.2 gesenkt. */
+      if(h>0.8&&h<6){var k=(2.0*(C.hscale||1))/h;o.scale.setScalar(Math.max(0.2,Math.min(3.2,k)));}
+      else o.scale.setScalar((C.scale||1.15)*1.18);})();
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
@@ -4173,6 +4178,11 @@ window.__nw={
   toPotion:function(){for(var i=0;i<potions.length;i++)if(!potions[i].taken){player.position.x=potions[i].x-6;player.position.z=potions[i].z;return potions[i];}return null;},
   toCastle:function(){return null;},
   day:function(n){day=n;},
+  sizes:function(){var o={};try{if(heroModel){o.heroScale=+heroModel.scale.x.toFixed(3);
+    /* Render-Höhe skinned Meshes = posierte Knochen-Y-Spanne (setFromObject ist bei Meshy-GLBs unbrauchbar) */
+    var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();heroModel.updateMatrixWorld(true);
+    heroModel.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+    if(bn){o.boneH=+(maxy-miny).toFixed(3);o.bones=bn;}}}catch(e){o.err=e.message;}return o;}, /* QA: reale Helden-Render-Höhe (bone-basiert) */
   night:function(on){isNight=(on!==false);dayT=isNight?2:0;updDayNight(0.001);return {isNight:isNight,stars:!!(nightSky&&nightSky.visible)};}, /* Test/QA: Nacht erzwingen (Sternenhimmel/Glühwürmchen prüfen) */
   time:function(fr){if(!isNight)dayT=Math.max(0,Math.min(0.999,fr))*DAYLEN;return dayT;}, /* Test-Only: Tagesphase setzen (Screenshots) */
   toTree:function(){for(var i=0;i<resources.length;i++){if(resources[i].type==="tree"&&!resources[i].dead){player.position.x=resources[i].x-1;player.position.z=resources[i].z;return resources[i];}}},
