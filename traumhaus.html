@@ -556,14 +556,16 @@ var dorfFenster=[];
     var sch=new THREE.Mesh(new THREE.PlaneGeometry(2.4,1.2),new THREE.MeshStandardMaterial({map:tx,emissive:new THREE.Color(n[2]),emissiveIntensity:0.9,emissiveMap:tx}));
     sch.position.set(n[0],4.3,SZ+18.6);scene.add(sch);});
   // ---- Ampeln an den Kreuzungen ----
-  function ampel(x,z){var g=new THREE.Group();
+  function ampel(x,z,grp){var g=new THREE.Group();
     var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.11,4,7),stdMat(0x2a2a30,0.5));mast.position.y=2;g.add(mast);
     var kasten=new THREE.Mesh(new THREE.BoxGeometry(0.4,1.1,0.35),stdMat(0x1a1a1e,0.5));kasten.position.y=4;g.add(kasten);
-    [[0.35,0xff3a3a],[0,0xf0c030],[-0.35,0x3ad86a]].forEach(function(l){
-      var li=new THREE.Mesh(new THREE.CircleGeometry(0.13,10),new THREE.MeshStandardMaterial({color:l[1],emissive:l[1],emissiveIntensity:l[0]===0.35?1.4:0.15}));
-      li.position.set(0,4+l[0],0.19);g.add(li);});
-    g.position.set(x,0,z);scene.add(g);}
-  ampel(-44,-SZ-9);ampel(44,SZ+9);ampel(-44,SZ+9);ampel(44,-SZ-9);
+    var mats={};
+    [["rot",0.35,0xff3a3a],["gelb",0,0xf0c030],["gruen",-0.35,0x3ad86a]].forEach(function(l){
+      var li=new THREE.Mesh(new THREE.CircleGeometry(0.13,10),new THREE.MeshStandardMaterial({color:l[2],emissive:l[2],emissiveIntensity:0.15}));
+      li.position.set(0,4+l[1],0.19);g.add(li);mats[l[0]]=li.material;});
+    g.position.set(x,0,z);scene.add(g);
+    if(!window._ampeln)window._ampeln=[];window._ampeln.push({rot:mats.rot,gelb:mats.gelb,gruen:mats.gruen,grp:grp||0});}
+  ampel(-44,-SZ-9,0);ampel(44,SZ+9,0);ampel(-44,SZ+9,1);ampel(44,-SZ-9,1);
 })();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
@@ -705,6 +707,14 @@ function updVerkehr(dt){
     busRec.mesh.position.set(busRec.pos,0,busRec.z);
     busRec.mesh.rotation.y=0; // Koerper laengs zur Fahrtrichtung (+x)
     if(busRec.lichter){var kb=nn?1.5:0.18,hb=nn?1.2:0.22;busRec.lichter.forEach(function(l){l.m.emissiveIntensity=l.typ==="k"?kb:hb;});}}}
+var _ampelT=0;
+function updAmpel(dt){if(!window._ampeln)return;
+  _ampelT+=dt;
+  window._ampeln.forEach(function(A){
+    var t=(_ampelT+(A.grp?5:0))%10; // Gruppe 1 um halben Zyklus versetzt (Querverkehr)
+    var r=0.15,y=0.15,gr=0.15;
+    if(t<4.5)gr=1.5; else if(t<5.5)y=1.5; else r=1.5; // gruen -> gelb -> rot
+    A.rot.emissiveIntensity=r;A.gelb.emissiveIntensity=y;A.gruen.emissiveIntensity=gr;});}
 // ---- Fussgaenger auf den Gehwegen (Ambiente) ----
 var fussg=[];
 setTimeout(function baueFussg(){
@@ -2657,7 +2667,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);updPings(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);updPings(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
