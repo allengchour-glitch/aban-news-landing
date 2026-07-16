@@ -1216,7 +1216,9 @@ function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Lo
   return null;}
 function loadChar(i){ // defensiv lesen: kaputte/fehlende Daten -> hübscher Default (jeder Spieler anders)
   try{var c=sanCfg(JSON.parse(lsGet(CHARKEYS[i]||"")||""));if(c)return c;}catch(e){}
-  return {g:i%2?"m":"f",style:i%4,skin:i%3,hair:-1,pants:i%PANTS.length};}
+  /* 🎌 Frischer Charakter startet als schöne 3D-Anime-Figur (statt blockigem Toon) — „verbessere Charakter".
+     Gespeicherte/eigene Looks bleiben unberührt; per „🧍 Toon"-Pfeil jederzeit auf anpassbaren Toon wechselbar. */
+  return {g:i%2?"m":"f",style:i%4,skin:i%3,hair:-1,pants:i%PANTS.length,meshy:MESHY_CHARS[i%MESHY_CHARS.length].id};}
 function saveChar(i,c){if(CHARKEYS[i])lsSet(CHARKEYS[i],JSON.stringify(c));}
 function seededChar(seed,i){ // Online-Fallback: deterministischer Look aus dem Spiel-Seed (alle Clients gleich)
   var n=(((seed>>>0)+i*2654435761)>>>0);n^=n>>>15;n=(n*2246822519)>>>0;
@@ -2942,7 +2944,7 @@ var _pv=null;
 var PV_CSS_W=110,PV_CSS_H=124,PV_SS=Math.min(window.devicePixelRatio||1,2)*2;
 var PV_W=Math.round(PV_CSS_W*PV_SS),PV_H=Math.round(PV_CSS_H*PV_SS);
 // ===================== Start =====================
-var selN=2;
+var selN=1; /* 🌐 Online-Koop = jeder wählt nur SEINEN 1 Charakter (User); mehr Spieler per Zahl-Auswahl bleibt möglich */
 (function(){var ps=document.getElementById("pselect");
   for(var i=1;i<=4;i++)(function(n){var b=document.createElement("button");b.textContent=n;if(n===selN)b.className="on";
     b.onclick=function(){selN=n;ps.querySelectorAll("button").forEach(function(x){x.className="";});b.className="on";renderNames();var br=document.getElementById("botRow");if(br)br.style.display=(n===1)?"flex":"none";};
