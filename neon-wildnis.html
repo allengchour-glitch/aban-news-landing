@@ -783,6 +783,7 @@ function loadHero(){
     // idle tolerant: manche Modelle (hero.glb) haben andere Clip-Namen → Fallback auf ersten Clip
     if(heroRig.actions.idle)setAnim(heroRig,"idle",0);
     else if(g.animations&&g.animations[0])setAnim(heroRig,g.animations[0].name,0);
+    if(typeof applyGearVisuals==="function")applyGearVisuals(); /* ⚔️🛡️ sichtbare Ausrüstung anlegen */
   },undefined,function(){
     // Fallback: Standard-Held, falls gewähltes Modell nicht lädt
     if(C.file!=="hero_meshy_combat2.glb"){new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
@@ -2945,9 +2946,70 @@ function invUpd(){
 }
 function gearUpd(){
   var ww=document.getElementById("wWeap"),war=document.getElementById("wArmor");
-  if(!ww||!war)return;
-  if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
-  if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
+  if(ww&&war){
+    if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
+    if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
+  }
+  if(typeof applyGearVisuals==="function")applyGearVisuals();
+}
+/* ⚔️🛡️ W8: SICHTBARE Ausrüstung — echte Waffe in der Hand + Schulter-Rüstung am Helden (User: „krasse Rüstungen und Waffen").
+   An die Skelett-Knochen gehängt → bewegt sich mit den Animationen mit. Robust über verschiedene Rig-Namen (Mixamo/Quaternius). */
+var _weaponMesh=null,_armorParts=[];
+function _findBone(re){var f=null;if(!heroModel)return null;heroModel.traverse(function(n){if(f)return;if((n.isBone||n.type==="Bone")&&re.test(n.name))f=n;});return f;}
+function _mat(c,em,ei,rough,metal){return new THREE.MeshStandardMaterial({color:c,emissive:em||0x000000,emissiveIntensity:ei||0,roughness:rough==null?0.5:rough,metalness:metal==null?0.3:metal,flatShading:true});}
+function buildWeapon(tier){
+  var g=new THREE.Group();
+  if(tier===3){ /* 🌟 Neon-Klinge — leuchtende Cyan-Klinge */
+    var bl=new THREE.Mesh(new THREE.BoxGeometry(0.07,1.05,0.16),_mat(0x9ff6ff,0x2ad4ff,1.4,0.25,0.6));bl.position.y=0.62;g.add(bl);
+    var tip=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.24,4),_mat(0xd6fbff,0x40e0ff,1.6,0.2,0.6));tip.position.y=1.24;g.add(tip);
+    var gd=new THREE.Mesh(new THREE.BoxGeometry(0.34,0.06,0.1),_mat(0x2b2f45,0x120a2a,0.4,0.4,0.7));gd.position.y=0.08;g.add(gd);
+    var hd=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.22,8),_mat(0x151826,0,0,0.6,0.5));hd.position.y=-0.05;g.add(hd);
+  } else if(tier===2){ /* ⚔️ Kriegsaxt */
+    var sh=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.055,1.05,8),_mat(0x6a4a2c,0,0,0.85,0.1));sh.position.y=0.5;g.add(sh);
+    var head=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.34,0.5),_mat(0xb8bcc6,0x101418,0.15,0.35,0.9));head.position.set(0,0.92,0.16);g.add(head);
+    var edge=new THREE.Mesh(new THREE.BoxGeometry(0.04,0.4,0.16),_mat(0xe6ebf2,0,0,0.25,0.95));edge.position.set(0,0.92,0.42);g.add(edge);
+  } else { /* 🗡️ Bronze-Schwert */
+    var bl2=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.92,0.14),_mat(0xd9a23c,0x2a1a00,0.15,0.4,0.85));bl2.position.y=0.56;g.add(bl2);
+    var tip2=new THREE.Mesh(new THREE.ConeGeometry(0.08,0.2,4),_mat(0xe6b84a,0,0,0.35,0.85));tip2.position.y=1.12;g.add(tip2);
+    var gd2=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.06,0.1),_mat(0x8a5a22,0,0,0.5,0.6));gd2.position.y=0.08;g.add(gd2);
+    var hd2=new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.045,0.2,8),_mat(0x4a3316,0,0,0.7,0.2));hd2.position.y=-0.04;g.add(hd2);
+  }
+  g.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+  return g;
+}
+function buildPauldron(tier){
+  var g=new THREE.Group(),m;
+  if(tier===3)m=_mat(0x8fe8ff,0x2ad4ff,1.2,0.2,0.6);       /* 💠 Kristall — glühend */
+  else if(tier===2)m=_mat(0xc2c7d2,0x0a0e14,0.1,0.3,0.95);  /* 🛡️ Eisen — Metall */
+  else m=_mat(0x7a4a28,0x1a0d00,0.05,0.85,0.05);            /* 🥋 Leder */
+  var dome=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8,0,6.283,0,1.7),m);dome.scale.set(1.25,0.9,1.15);g.add(dome);
+  if(tier===3){for(var i=0;i<3;i++){var sh=new THREE.Mesh(new THREE.ConeGeometry(0.05,0.22,4),m);sh.position.set((i-1)*0.12,0.1,0);sh.rotation.z=(i-1)*0.35;g.add(sh);}}
+  else if(tier===2){var sp=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.2,5),m);sp.position.y=0.13;g.add(sp);}
+  g.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+  return g;
+}
+function _attachNorm(bone,obj,extraScale){ /* Objekt an Knochen hängen, PRO-ACHSE Welt-Skala ausgleichen (Bones sind oft nicht-uniform → Squash) */
+  var ws=bone.getWorldScale(new THREE.Vector3());var e=extraScale||1;
+  obj.scale.set(e/(Math.abs(ws.x)>0.0001?Math.abs(ws.x):1),e/(Math.abs(ws.y)>0.0001?Math.abs(ws.y):1),e/(Math.abs(ws.z)>0.0001?Math.abs(ws.z):1));
+  bone.add(obj);
+}
+function applyGearVisuals(){
+  if(!heroModel)return;
+  if(_weaponMesh&&_weaponMesh.parent)_weaponMesh.parent.remove(_weaponMesh);_weaponMesh=null;
+  _armorParts.forEach(function(p){if(p&&p.parent)p.parent.remove(p);});_armorParts=[];
+  if(equip.weapon>0){
+    var hand=_findBone(/right.?hand|hand.?r|fist.?r|hand_r|wrist.?r|righthand/i)||_findBone(/hand|fist/i);
+    var w=buildWeapon(equip.weapon);
+    if(hand){_attachNorm(hand,w,1.35);w.position.set(0,0.05,0);w.rotation.set(Math.PI*0.15,0,0);} /* grob in die Faust; feinjustiert nach Screenshot */
+    else{w.position.set(0.42,heroModel.userData._h?heroModel.userData._h*0.55:1.2,0.15);heroModel.add(w);}
+    _weaponMesh=w;
+  }
+  if(equip.armor>0){
+    var shR=_findBone(/right.?shoulder|shoulder.?r|shoulderr/i),shL=_findBone(/left.?shoulder|shoulder.?l|shoulderl/i);
+    if(shR){var pR=buildPauldron(equip.armor);_attachNorm(shR,pR,1.3);pR.position.set(0,0.02,0);_armorParts.push(pR);}
+    if(shL){var pL=buildPauldron(equip.armor);_attachNorm(shL,pL,1.3);pL.position.set(0,0.02,0);_armorParts.push(pL);}
+    if(!shR&&!shL){var t=_findBone(/torso|spine|chest|abdomen/i);if(t){var pc=buildPauldron(equip.armor);_attachNorm(t,pc,1.3);pc.position.set(0,0.15,0.12);_armorParts.push(pc);}}
+  }
 }
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
   /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
@@ -4185,6 +4247,7 @@ window.__nw={
   toPotion:function(){for(var i=0;i<potions.length;i++)if(!potions[i].taken){player.position.x=potions[i].x-6;player.position.z=potions[i].z;return potions[i];}return null;},
   toCastle:function(){return null;},
   day:function(n){day=n;},
+  setgear:function(w,a){equip.weapon=w|0;equip.armor=a|0;gearUpd();return {weapon:equip.weapon,armor:equip.armor,hasWeaponMesh:!!_weaponMesh,armorParts:_armorParts.length};}, /* Test/QA: Ausrüstung setzen + sichtbar machen */
   sizes:function(){var o={};try{if(heroModel){o.heroScale=+heroModel.scale.x.toFixed(3);
     /* Render-Höhe skinned Meshes = posierte Knochen-Y-Spanne (setFromObject ist bei Meshy-GLBs unbrauchbar) */
     var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();heroModel.updateMatrixWorld(true);
