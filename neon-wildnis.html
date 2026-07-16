@@ -710,7 +710,8 @@ function heroAct(intent,ts){if(!heroRig)return;
   else if(intent==="victory"){pick=heroHas("victory")?"victory":(heroHas("wave")?"wave":null);}
   else if(intent==="taunt"){pick=heroHas("taunt")?"taunt":(heroHas("wave")?"wave":null);}
   else pick=intent;
-  if(pick&&heroRig.actions[pick])playOnce(heroRig,pick,ts||1.6);}
+  if(pick&&heroRig.actions[pick])playOnce(heroRig,pick,ts||1.6);
+  if(typeof NET!=="undefined"&&NET.on&&typeof sendAct==="function")sendAct(intent);} /* 🌐 Kampfanimation an Partner senden */
 // ---------- Charaktere (einzigartige, wählbare Helden) ----------
 // glow:"neon" = starkes Meshy-Emissive-Tuning; "soft" = moderat für class_*/hero.glb
 var CHARACTERS=[
@@ -2957,7 +2958,7 @@ function gearUpd(){
 /* ⚔️🛡️ W8: SICHTBARE Ausrüstung — echte Waffe in der Hand + Schulter-Rüstung am Helden (User: „krasse Rüstungen und Waffen").
    An die Skelett-Knochen gehängt → bewegt sich mit den Animationen mit. Robust über verschiedene Rig-Namen (Mixamo/Quaternius). */
 var _weaponMesh=null,_armorParts=[];
-function _findBone(re){var f=null;if(!heroModel)return null;heroModel.traverse(function(n){if(f)return;if((n.isBone||n.type==="Bone")&&re.test(n.name))f=n;});return f;}
+function _findBone(re,model){var m=model||heroModel,f=null;if(!m)return null;m.traverse(function(n){if(f)return;if((n.isBone||n.type==="Bone")&&re.test(n.name))f=n;});return f;}
 function _mat(c,em,ei,rough,metal){return new THREE.MeshStandardMaterial({color:c,emissive:em||0x000000,emissiveIntensity:ei||0,roughness:rough==null?0.5:rough,metalness:metal==null?0.3:metal,flatShading:true});}
 function buildWeapon(tier){
   var g=new THREE.Group();
@@ -2995,24 +2996,38 @@ function _attachNorm(bone,obj,extraScale){ /* Objekt an Knochen hängen, PRO-ACH
   obj.scale.set(e/(Math.abs(ws.x)>0.0001?Math.abs(ws.x):1),e/(Math.abs(ws.y)>0.0001?Math.abs(ws.y):1),e/(Math.abs(ws.z)>0.0001?Math.abs(ws.z):1));
   bone.add(obj);
 }
+/* Waffe+Rüstung an EIN Modell hängen; gibt {weapon, armor:[]} zurück (für lokal ODER Partner nutzbar). */
+function _gearOn(model,weapon,armor,old){
+  if(old){if(old.weapon&&old.weapon.parent)old.weapon.parent.remove(old.weapon);(old.armor||[]).forEach(function(p){if(p&&p.parent)p.parent.remove(p);});}
+  var refs={weapon:null,armor:[]};
+  if(!model)return refs;
+  if(weapon>0){
+    var hand=_findBone(/right.?hand|hand.?r|fist.?r|hand_r|wrist.?r|righthand/i,model)||_findBone(/hand|fist/i,model);
+    var w=buildWeapon(weapon);
+    if(hand){_attachNorm(hand,w,1.35);w.position.set(0,0.05,0);w.rotation.set(Math.PI*0.15,0,0);}
+    else{w.position.set(0.42,1.2,0.15);model.add(w);}
+    refs.weapon=w;
+  }
+  if(armor>0){
+    var shR=_findBone(/right.?shoulder|shoulder.?r|shoulderr/i,model),shL=_findBone(/left.?shoulder|shoulder.?l|shoulderl/i,model);
+    if(shR){var pR=buildPauldron(armor);_attachNorm(shR,pR,1.3);pR.position.set(0,0.02,0);refs.armor.push(pR);}
+    if(shL){var pL=buildPauldron(armor);_attachNorm(shL,pL,1.3);pL.position.set(0,0.02,0);refs.armor.push(pL);}
+    if(!shR&&!shL){var t=_findBone(/torso|spine|chest|abdomen/i,model);if(t){var pc=buildPauldron(armor);_attachNorm(t,pc,1.3);pc.position.set(0,0.15,0.12);refs.armor.push(pc);}}
+  }
+  return refs;
+}
 function applyGearVisuals(){
   if(!heroModel)return;
-  if(_weaponMesh&&_weaponMesh.parent)_weaponMesh.parent.remove(_weaponMesh);_weaponMesh=null;
-  _armorParts.forEach(function(p){if(p&&p.parent)p.parent.remove(p);});_armorParts=[];
-  if(equip.weapon>0){
-    var hand=_findBone(/right.?hand|hand.?r|fist.?r|hand_r|wrist.?r|righthand/i)||_findBone(/hand|fist/i);
-    var w=buildWeapon(equip.weapon);
-    if(hand){_attachNorm(hand,w,1.35);w.position.set(0,0.05,0);w.rotation.set(Math.PI*0.15,0,0);} /* grob in die Faust; feinjustiert nach Screenshot */
-    else{w.position.set(0.42,heroModel.userData._h?heroModel.userData._h*0.55:1.2,0.15);heroModel.add(w);}
-    _weaponMesh=w;
-  }
-  if(equip.armor>0){
-    var shR=_findBone(/right.?shoulder|shoulder.?r|shoulderr/i),shL=_findBone(/left.?shoulder|shoulder.?l|shoulderl/i);
-    if(shR){var pR=buildPauldron(equip.armor);_attachNorm(shR,pR,1.3);pR.position.set(0,0.02,0);_armorParts.push(pR);}
-    if(shL){var pL=buildPauldron(equip.armor);_attachNorm(shL,pL,1.3);pL.position.set(0,0.02,0);_armorParts.push(pL);}
-    if(!shR&&!shL){var t=_findBone(/torso|spine|chest|abdomen/i);if(t){var pc=buildPauldron(equip.armor);_attachNorm(t,pc,1.3);pc.position.set(0,0.15,0.12);_armorParts.push(pc);}}
-  }
+  var r=_gearOn(heroModel,equip.weapon,equip.armor,{weapon:_weaponMesh,armor:_armorParts});
+  _weaponMesh=r.weapon;_armorParts=r.armor;
+  if(NET.on)sendMyGear(); /* Partner über eigene Ausrüstung informieren */
 }
+function applyRemoteGear(weapon,armor){ /* 🛡️ Partner-Held bekommt seine Ausrüstung sichtbar */
+  if(!NET.remoteHero)return;
+  var r=_gearOn(NET.remoteHero,weapon|0,armor|0,{weapon:NET.remoteWeapon,armor:NET.remoteArmor});
+  NET.remoteWeapon=r.weapon;NET.remoteArmor=r.armor;NET.remoteGear={w:weapon|0,a:armor|0};
+}
+function sendMyGear(){try{if(NET.s&&NET.on)NET.s.send({t:"gear",w:equip.weapon|0,a:equip.armor|0,from:NET.role});}catch(e){}}
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
   /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
   var lv=document.getElementById("lowVig");
@@ -4025,6 +4040,8 @@ function onNetMsg(d){
   if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);sendMyChar();return;} /* join ODER quick-Gast */
   if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
+  if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
+  if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
 function spawnRemote(){
@@ -4058,13 +4075,29 @@ function loadRemoteHero(id){ /* 🧑‍🤝‍🧑 W8: Partner als SEIN gewählt
     NET.remote.add(o);NET.remoteHero=o;NET.remoteRig=makeRig(o,g2.animations);
     if(NET.remoteRig.actions.idle)setAnim(NET.remoteRig,"idle",0);else if(g2.animations&&g2.animations[0])setAnim(NET.remoteRig,g2.animations[0].name,0);
     if(NET.remotePh)NET.remotePh.visible=false; /* Platzhalter aus */
+    if(NET.remoteGear)applyRemoteGear(NET.remoteGear.w,NET.remoteGear.a); /* evtl. schon empfangene Ausrüstung anlegen */
   },undefined,function(){});
 }
+function heroActRemote(intent){ /* ⚔️ Partner-Kampfanimation auf dem Partner-Rig abspielen (gleiche Intent→Clip-Logik, tolerant) */
+  var rig=NET.remoteRig;if(!rig)return;
+  function has(n){return !!(rig.actions&&rig.actions[n]);}
+  var pick;
+  if(intent==="melee")pick=has("attack")?"attack":(has("attack2")?"attack2":null);
+  else if(intent==="cast")pick=has("cast")?"cast":(has("charge_release")?"charge_release":(has("attack2")?"attack2":"attack"));
+  else if(intent==="dash")pick=has("dash_attack")?"dash_attack":(has("attack3")?"attack3":"attack");
+  else if(intent==="dodge")pick=has("dodge")?"dodge":null;
+  else if(intent==="hit")pick=has("hit")?"hit":null;
+  else if(intent==="victory")pick=has("victory")?"victory":(has("wave")?"wave":null);
+  else pick=intent;
+  if(pick&&rig.actions[pick])playOnce(rig,pick,1.6);
+}
+function sendAct(intent){try{if(NET.s&&NET.on)NET.s.send({t:"act",intent:intent,from:NET.role});}catch(e){}}
 function sendMyChar(){ /* mehrfach senden gegen Timing-Races; from=eigene Rolle → Partner ignoriert Eigen-Echo */
   var pk=function(){return {t:"char",id:getChar().id,from:NET.role};};
   try{if(NET.s)NET.s.send(pk());}catch(e){}
-  setTimeout(function(){try{if(NET.s&&NET.on)NET.s.send(pk());}catch(e){}},1200);
-  setTimeout(function(){try{if(NET.s&&NET.on)NET.s.send(pk());}catch(e){}},3000);}
+  if(typeof sendMyGear==="function")sendMyGear(); /* Ausrüstung gleich mitschicken */
+  setTimeout(function(){try{if(NET.s&&NET.on)NET.s.send(pk());}catch(e){}if(typeof sendMyGear==="function")sendMyGear();},1200);
+  setTimeout(function(){try{if(NET.s&&NET.on)NET.s.send(pk());}catch(e){}if(typeof sendMyGear==="function")sendMyGear();},3000);}
 function netTick(dt){
   if(!NET.on||!NET.s)return;
   NET.sendT-=dt;
