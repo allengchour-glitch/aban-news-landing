@@ -63,7 +63,9 @@
   }
 
   // ===== Engine A: PeerJS + Cloud-Signaling ================================
-  function peerEngine(S, gameId, isHost) {
+  // noRegen=true (feste Public-Room-IDs für Quick-Match): bei unavailable-id NICHT neuen
+  // Code würfeln, sondern scheitern -> MP.quick wechselt dann auf Beitreten.
+  function peerEngine(S, gameId, isHost, noRegen) {
     if (!window.Peer) { S._setStatus("closed"); S._rej(new Error("PeerJS nicht geladen (js/vendor/peerjs.min.js)")); return; }
     var peer = null, main = null, fast = null, ever = false, byUs = false, tmo = null, tries = 0, retried = false;
     var lastRecv = 0, wd = null;
@@ -138,9 +140,9 @@
       peer.on("error", function (err) {
       try { var _t = err && err.type; if (_t === "network" || _t === "server-error" || _t === "socket-error" || _t === "socket-closed") mpNextBroker(); } catch (e) {}
         var t = err && err.type;
-        if (isHost && t === "unavailable-id" && tries < 3) { // Code-Kollision → neuer Code
-          tries++; try { peer.destroy(); } catch (e) {}
-          S.code = makeCode(); boot(); return;
+        if (isHost && t === "unavailable-id") {
+          if (noRegen) { fail("Public-Raum bereits belegt"); return; } // Quick-Match: auf Beitreten wechseln
+          if (tries < 3) { tries++; try { peer.destroy(); } catch (e) {} S.code = makeCode(); boot(); return; } // Code-Kollision → neuer Code
         }
         if (t === "peer-unavailable") fail("Raum " + S.code + " nicht gefunden — Code prüfen!");
         else if (!ever && (t === "network" || t === "server-error" || t === "socket-error" || t === "socket-closed"))
@@ -239,6 +241,45 @@
       }
       if (FORCE_LOCAL) localEngine(S, gameId, false); else peerEngine(S, gameId, false);
       return S;
+    },
+    // Host mit FESTEM Code (Public-Room), scheitert bei Kollision statt neu zu würfeln.
+    _hostFixed: function (gameId, code) {
+      var S = mkSession("host", code);
+      if (FORCE_LOCAL) localEngine(S, gameId, true); else peerEngine(S, gameId, true, true);
+      return S;
+    },
+    // ⚡ 1-Tipp Schnell-Koop OHNE Code: erst versuchen einem Public-Raum beizutreten,
+    // ist er leer -> selbst Host des Public-Raums werden. Kein Code-Austausch nötig.
+    // Läuft eine Session-Kette (join → hostFixed → join …) und spiegelt sie in EINE Außen-Session.
+    quick: function (gameId, room) {
+      // Public-Raum-Code: GENAU 4 Buchstaben aus dem erlaubten Alphabet (A–Z ohne I/O), keine Ziffern!
+      room = String(room || "PUBA").toUpperCase().replace(/[^A-HJ-NP-Z]/g, "").slice(0, 4);
+      if (room.length !== 4) room = "PUBA";
+      var outer = mkSession("quick", room);
+      outer.code = room;
+      var inner = null, phase = 0, closedByUs = false, maxPhase = 4;
+      function wire(sess) {
+        inner = sess; outer.code = sess.code; outer.role = sess.role;
+        sess.onMessage(function (d) { outer._emit(d); });
+        outer.send = function (o) { sess.send(o); };
+        outer.sendFast = function (o) { sess.sendFast(o); };
+        sess.onStatus(function (st) {
+          if (st === "closed" && !closedByUs && outer.status !== "connected" && phase < maxPhase) {
+            phase++;
+            // abwechselnd: Host des Public-Raums werden ↔ erneut beitreten (mit kleinem Zufalls-Delay gegen Race)
+            var next = (phase % 2 === 1) ? function () { wire(MP._hostFixed(gameId, room)); }
+                                         : function () { wire(MP.join(gameId, room)); };
+            setTimeout(next, 250 + ((Math.random() * 500) | 0));
+            return;
+          }
+          outer.role = inner ? inner.role : outer.role;
+          outer._setStatus(st);
+        });
+        sess.ready.then(function () { outer.role = sess.role; outer._res(outer); }).catch(function () {});
+      }
+      wire(MP.join(gameId, room)); // Phase 0: zuerst Beitreten versuchen
+      outer.close = function () { closedByUs = true; if (inner) inner.close(); outer._setStatus("closed"); };
+      return outer;
     }
   };
 })();
