@@ -469,14 +469,14 @@
 #done search:facial roller ice
 #done search:heatless curls kit
 #done search:nail art stickers
-search:travel jewelry organizer
-search:silk pillowcase satin
-search:weighted blanket cooling
-search:aromatherapy shower steamer
-search:bamboo bath tray
-search:makeup mirror led rechargeable
-search:electric callus remover
-search:facial steamer home
+#done search:travel jewelry organizer
+#done search:silk pillowcase satin
+#done search:weighted blanket cooling
+#done search:aromatherapy shower steamer
+#done search:bamboo bath tray
+#done search:makeup mirror led rechargeable
+#done search:electric callus remover
+#done search:facial steamer home
 search:scalp massager shampoo brush
 search:eyelash curler heated
 search:magnetic lashes kit
