@@ -296,12 +296,11 @@ sun.position.set(40,80,30);sun.castShadow=true;
 sun.shadow.mapSize.set(IS_MOB?1024:2048,IS_MOB?1024:2048);
 sun.shadow.camera.near=1;sun.shadow.camera.far=200;
 /* 🌞 W7: enger Schatten-Frustum (±52 statt ±100) → ~2× Texel-Dichte am Spieler = knackiger Boden-Schatten
-   unter dem Helden. updSun() lässt Licht dem Spieler folgen (auf 2er-Raster gesnappt gegen Schatten-Crawl). */
+   unter dem Helden. (Sonne folgt dem Spieler bereits in updDayNight → Frustum bleibt zentriert.) */
 sun.shadow.camera.left=-52;sun.shadow.camera.right=52;sun.shadow.camera.top=52;sun.shadow.camera.bottom=-52;
 sun.shadow.bias=-0.0006;sun.shadow.normalBias=0.03;sun.shadow.radius=3;scene.add(sun);scene.add(sun.target);
-function updSun(){if(!sun.castShadow||typeof player==="undefined")return;
-  var sx=Math.round(player.position.x/2)*2,sz=Math.round(player.position.z/2)*2;
-  sun.position.set(sx+40,80,sz+30);sun.target.position.set(sx,0,sz);sun.target.updateMatrixWorld();}
+/* Sonnen-Position/-Target folgen dem Spieler bereits in updDayNight (Tag/Nacht-Bogen) — der enge ±52-Frustum
+   oben zentriert sich dadurch automatisch am Spieler = knackiger Schatten OHNE separaten updSun-Override. */
 
 /* 🌇 HDR-IBL (wie neon-survivor): sky_1k.hdr → PMREM-EnvMap, nur WebGL2 + echte GPU.
    Dezent (envMapIntensity 0.25) — PBR-Materialien (GLBs, Wasser, Kristalle) kriegen echte Reflexe. */
@@ -3804,7 +3803,7 @@ function frame(now){
   findNear();updPrompt();
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
-  updCamera(dt);updSun();updQuest(dt);updBadges(dt);
+  updCamera(dt);updQuest(dt);updBadges(dt);
   // Toast/announce fade
   if(toastT>0){toastT-=dt;if(toastT<=0)document.getElementById("toast").style.opacity=0;}
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
