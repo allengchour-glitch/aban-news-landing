@@ -481,10 +481,10 @@
 #done search:eyelash curler heated
 #done search:magnetic lashes kit
 #done search:gel nail polish kit
-search:cuticle oil pen
-search:hair straightener brush
-search:hair diffuser attachment
-search:silk bonnet sleep
+#done search:cuticle oil pen
+#done search:hair straightener brush
+#done search:hair diffuser attachment
+#done search:silk bonnet sleep
 search:posture corrector back
 search:resistance loop bands set
 search:yoga wheel cork
