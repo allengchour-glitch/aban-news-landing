@@ -4284,13 +4284,30 @@ function startGame(fresh){
 (function(){
   var wrap=document.getElementById("charPick");if(!wrap)return;
   var curId=getChar().id;
-  var CATNAMES={klasse:"⚔️ Klassen",anime:"🎌 Anime-Helden",fantasy:"🛡️ Fantasy-Helden",monster:"👹 Skurrile Helden"};
+  var CATNAMES={klasse:"⚔️ Klassen",anime:"🎌 Anime-Helden",fantasy:"🛡️ Fantasy-Helden"};
   function catOf(C){var id=C.id;
     if(id.indexOf("anime_")===0)return "anime";
     if(["ritter","wikinger","magier2","elf","pirat","hexe"].indexOf(id)>=0)return "fantasy";
-    if(["held_goblin","held_ork","totenork","daemon","pilzkoenig","yeti"].indexOf(id)>=0)return "monster";
     return "klasse";}
+  function idxOf(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return i;return 0;}
+  function pick(id){curId=id;try{localStorage.setItem("nw_char",id);}catch(e){}render();}
+  function cycle(dir){var i=(idxOf(curId)+dir+CHARACTERS.length)%CHARACTERS.length;pick(CHARACTERS[i].id);}
+  /* 🎠 W8: Karussell — großer 3D-Held + ◀ Name ▶, damit man den Charakter WIRKLICH sieht (User: „auswahl ist scheisse") */
+  var nav=document.getElementById("charNav");
+  if(!nav){nav=document.createElement("div");nav.id="charNav";
+    nav.style.cssText="display:flex;align-items:center;justify-content:center;gap:10px;margin:2px auto 10px;max-width:400px";
+    var mk=function(t){var b=document.createElement("button");b.textContent=t;b.type="button";
+      b.style.cssText="width:52px;height:52px;flex:0 0 auto;border-radius:50%;border:2px solid rgba(120,200,255,.4);background:rgba(20,30,60,.8);color:#bfe9ff;font-size:1.5rem;cursor:pointer";return b;};
+    var la=mk("◀"),ra=mk("▶");
+    var nm=document.createElement("div");nm.id="charNavName";nm.style.cssText="flex:1 1 auto;text-align:center;min-width:0";
+    la.onclick=function(){cycle(-1);};ra.onclick=function(){cycle(1);};
+    nav.appendChild(la);nav.appendChild(nm);nav.appendChild(ra);
+    wrap.parentNode.insertBefore(nav,wrap); /* zwischen 3D-Vorschau und Karten-Grid */
+  }
   function render(){
+    var C0=CHARACTERS[idxOf(curId)];
+    var nm=document.getElementById("charNavName");
+    if(nm)nm.innerHTML='<div style="font-size:1.15rem;font-weight:900;color:#eaffff">'+C0.emo+' '+C0.name+'</div><div style="font-size:.8rem;color:#9fd0ff">'+C0.desc+'</div><div style="font-size:.7rem;color:#7f97bf;margin-top:2px">'+(idxOf(curId)+1)+' / '+CHARACTERS.length+'</div>';
     wrap.innerHTML="";var lastCat=null;
     CHARACTERS.forEach(function(C){
       var cat=catOf(C);
@@ -4301,7 +4318,7 @@ function startGame(fresh){
       b.className="ccard"+(C.id===curId?" sel":"");b.type="button";
       b.setAttribute("aria-pressed",C.id===curId?"true":"false");
       b.innerHTML='<span class="cemo">'+C.emo+'</span><span class="cnm">'+C.name+'</span><span class="cdesc">'+C.desc+'</span>';
-      b.onclick=function(){curId=C.id;try{localStorage.setItem("nw_char",C.id);}catch(e){}render();};
+      b.onclick=function(){pick(C.id);};
       wrap.appendChild(b);
     });
     if(window.setCharPreview)window.setCharPreview(curId);
