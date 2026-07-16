@@ -1,15 +1,15 @@
 {
-  "ts": "2026-07-15T23:28:02.581Z",
+  "ts": "2026-07-16T05:28:02.644Z",
   "platforms": {
     "tiktok": {
       "result": "SOUND_DIAG",
       "reason": "Sound-Panel-Screenshots erstellt",
       "file": "mw-statement-ohrringe-onyx-geom.mp4",
-      "vor_min": 28939
+      "vor_min": 29299
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 27780
+      "vor_min": 28140
     },
     "meta": {
       "result": "WORKER_NICHT_ERREICHBAR",
