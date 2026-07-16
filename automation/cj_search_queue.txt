@@ -567,5 +567,5 @@
 #done search:candle set scented gift
 #done search:blanket hoodie oversized
 #done search:heated blanket usb
-search:mug warmer coffee
-search:desk lamp led dimmable
+#done search:mug warmer coffee
+#done search:desk lamp led dimmable
