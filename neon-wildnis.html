@@ -3933,8 +3933,15 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
   for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1,p2[1]-1,2,2);}
   // Gegner (rot)
   if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];var p3=pt(e.x,e.z);ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.beginPath();ctx.arc(p3[0],p3[1],e.boss?3:2,0,6.283);ctx.fill();}
-  // Partner (Koop, cyan)
-  if(typeof NET!=="undefined"&&NET.remote&&NET.remote.visible){var pr=pt(NET.remote.position.x,NET.remote.position.z);ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(pr[0],pr[1],3,0,6.283);ctx.fill();}
+  // Partner (Koop, cyan) — IMMER anzeigen: bei Distanz am Minimap-Rand festhalten + Richtungspfeil
+  if(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible){
+    var rx=NET.remote.position.x-px,rz=NET.remote.position.z-pz,maxR=R-6,mx,my,edge=false;
+    if(Math.hypot(rx,rz)*SC>maxR){edge=true;var pa=Math.atan2(rz,rx);mx=cx+Math.cos(pa)*maxR;my=cy+Math.sin(pa)*maxR;}
+    else{mx=cx+rx*SC;my=cy+rz*SC;}
+    ctx.fillStyle="#35d0ff";ctx.strokeStyle="#eaffff";ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.arc(mx,my,edge?4.5:3.5,0,6.283);ctx.fill();ctx.stroke();
+    if(edge){var pa2=Math.atan2(rz,rx);ctx.save();ctx.translate(mx,my);ctx.rotate(pa2);ctx.fillStyle="#eaffff";ctx.beginPath();ctx.moveTo(6,0);ctx.lineTo(1,-3);ctx.lineTo(1,3);ctx.closePath();ctx.fill();ctx.restore();}
+  }
   // Spieler (Mitte, Pfeil in Blickrichtung)
   ctx.fillStyle="#fff";ctx.save();ctx.translate(cx,cy);ctx.rotate(-player.rotation.y);ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(3.5,4);ctx.lineTo(-3.5,4);ctx.closePath();ctx.fill();ctx.restore();
   ctx.restore();
