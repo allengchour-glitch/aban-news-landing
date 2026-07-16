@@ -465,10 +465,10 @@
 #done search:throw blanket knit
 #done search:cushion cover boho
 #done search:jewelry stand tree
-search:makeup brush set pro
-search:facial roller ice
-search:heatless curls kit
-search:nail art stickers
+#done search:makeup brush set pro
+#done search:facial roller ice
+#done search:heatless curls kit
+#done search:nail art stickers
 search:travel jewelry organizer
 search:silk pillowcase satin
 search:weighted blanket cooling
