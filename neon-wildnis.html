@@ -268,7 +268,7 @@ var VF=IS_MOB?0.6:1; // Dichte-Faktor mobil
 
 // ---------- Renderer / Scene ----------
 var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
-renderer.setPixelRatio(Math.min(devicePixelRatio,IS_MOB?2:2));
+renderer.setPixelRatio(Math.min(devicePixelRatio,IS_MOB?1.5:2)); /* 📱 W7: DPR-Cap 1.5 mobil = spürbar flüssiger auf High-Res-Handys */
 renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 if(renderer.outputEncoding!==undefined)renderer.outputEncoding=THREE.sRGBEncoding;
