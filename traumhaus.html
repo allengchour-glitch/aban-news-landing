@@ -567,6 +567,13 @@ var dorfFenster=[];
 })();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
+var _lichtTexW=null,_lichtTexR=null;
+function _glowTex(core,edge){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+  var g=c.createRadialGradient(32,32,1,32,32,31);g.addColorStop(0,core);g.addColorStop(0.35,core);g.addColorStop(1,edge);
+  c.fillStyle=g;c.fillRect(0,0,64,64);return new THREE.CanvasTexture(cv);}
+function mkLicht(kind){if(!_lichtTexW){_lichtTexW=_glowTex("#fff6d0","rgba(255,246,208,0)");_lichtTexR=_glowTex("#ff2a1a","rgba(255,42,26,0)");}
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:kind==="r"?_lichtTexR:_lichtTexW,transparent:true,depthWrite:false,opacity:0,blending:THREE.AdditiveBlending}));
+  var sc=kind==="r"?0.75:1.0;sp.scale.set(sc,sc,1);scene.add(sp);return sp;}
 setTimeout(function baueVerkehr(){
   var SZ=GH*CS/2;
   var ROUTEN=[
@@ -584,20 +591,37 @@ setTimeout(function baueVerkehr(){
       var b2=new THREE.Box3().setFromObject(m);
       var r=ROUTEN[i%ROUTEN.length];
       var rec={mesh:m,route:r,pos:-60+i*22,homeY:-b2.min.y+0.01};
+      rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
       scene.add(m);verkehr.push(rec);});});
   // Bus prozedural (OeV): gelb, Fensterband, faehrt Suedstrasse, haelt an der Haltestelle
   var bg=new THREE.Group();
-  var korpus=new THREE.Mesh(new THREE.BoxGeometry(7,2.3,2.3),stdMat(0xf0b83a,0.55));
-  korpus.position.y=1.55;korpus.castShadow=true;bg.add(korpus);
-  var band=new THREE.Mesh(new THREE.BoxGeometry(6.4,0.75,2.36),stdMat(0x9ecce0,0.2));
-  band.position.y=1.95;bg.add(band);
-  for(var wr=0;wr<4;wr++){[-1,1].forEach(function(seite){
-    var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.42,0.3,12),stdMat(0x1a1a20,0.6));
-    rad.rotation.z=Math.PI/2;rad.position.set(-2.4+wr*1.6,0.42,seite*1.05);bg.add(rad);});}
-  var schild=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.4,0.06),new THREE.MeshStandardMaterial({color:0x222228,emissive:0xffa040,emissiveIntensity:0.8}));
-  schild.position.set(2.6,2.35,1.16);bg.add(schild);
+  var korpus=new THREE.Mesh(new THREE.BoxGeometry(8,2.4,2.4),stdMat(0xf0b83a,0.5));
+  korpus.position.y=1.6;korpus.castShadow=true;bg.add(korpus);
+  var dach=new THREE.Mesh(new THREE.BoxGeometry(7.6,0.35,2.2),stdMat(0xe0a828,0.5));dach.position.y=2.95;bg.add(dach);
+  var band=new THREE.Mesh(new THREE.BoxGeometry(7.2,0.85,2.46),new THREE.MeshStandardMaterial({color:0x214656,roughness:0.15,metalness:0.4}));
+  band.position.y=2.05;bg.add(band);
+  var front=new THREE.Mesh(new THREE.BoxGeometry(0.12,1.15,2.15),new THREE.MeshStandardMaterial({color:0x18384a,roughness:0.1,metalness:0.5}));
+  front.position.set(4.02,2.0,0);bg.add(front);
+  var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.8,0.06),stdMat(0x162730,0.4));tuer.position.set(1.2,1.15,1.23);bg.add(tuer);
+  [4.05,-4.05].forEach(function(bx){var st=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.4,2.3),stdMat(0x33333a,0.5));st.position.set(bx,0.62,0);bg.add(st);});
+  [1.35,-1.35].forEach(function(mz){var sp5=new THREE.Mesh(new THREE.BoxGeometry(0.32,0.3,0.08),stdMat(0x1c1c22,0.5));sp5.position.set(3.75,2.35,mz);bg.add(sp5);
+    var arm=new THREE.Mesh(new THREE.BoxGeometry(0.28,0.06,0.06),stdMat(0x1c1c22,0.5));arm.position.set(3.95,2.35,mz);bg.add(arm);});
+  var busRaeder=[];
+  [-2.6,2.6].forEach(function(rx){[-1,1].forEach(function(seite){
+    var radG=new THREE.Group();radG.rotation.x=Math.PI/2;radG.position.set(rx,0.5,seite*1.14);
+    var radI=new THREE.Group();
+    var reifen=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,0.34,16),stdMat(0x18181c,0.7));radI.add(reifen);
+    var speiche=new THREE.Mesh(new THREE.BoxGeometry(0.86,0.36,0.14),stdMat(0xc2c6cc,0.4));radI.add(speiche);
+    radG.add(radI);bg.add(radG);busRaeder.push(radI);});});
+  var busLichter=[];
+  [0.9,-0.9].forEach(function(hz){var hl=new THREE.Mesh(new THREE.CircleGeometry(0.24,14),new THREE.MeshStandardMaterial({color:0xfff2c0,emissive:0xfff2c0,emissiveIntensity:0.2}));
+    hl.position.set(4.07,1.0,hz);hl.rotation.y=Math.PI/2;bg.add(hl);busLichter.push({m:hl.material,typ:"k"});});
+  [0.9,-0.9].forEach(function(rz){var rl=new THREE.Mesh(new THREE.CircleGeometry(0.2,14),new THREE.MeshStandardMaterial({color:0xff3020,emissive:0xff2010,emissiveIntensity:0.25}));
+    rl.position.set(-4.07,1.0,rz);rl.rotation.y=-Math.PI/2;bg.add(rl);busLichter.push({m:rl.material,typ:"h"});});
+  var schild=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.44,0.06),new THREE.MeshStandardMaterial({color:0x141417,emissive:0xffa040,emissiveIntensity:0.9}));
+  schild.position.set(2.3,2.6,1.24);bg.add(schild);
   scene.add(bg);
-  busRec={mesh:bg,pos:-70,speed:4,wartet:0,z:SZ+10.4};
+  busRec={mesh:bg,pos:-70,speed:4,wartet:0,z:SZ+10.4,raeder:busRaeder,lichter:busLichter};
   // Haltestelle vor dem Grundstueck
   var hs=new THREE.Group();
   var mast2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,7),stdMat(0x3a3a42,0.5));mast2.position.y=1.3;hs.add(mast2);
@@ -657,21 +681,30 @@ function updHeli(dt,now){var h=window._heli;if(!h)return;
   h.mesh.rotation.y=-h.ang+Math.PI/2;
   h.rotor.rotation.y+=dt*30;h.heckrotor.rotation.x+=dt*40;}
 function updVerkehr(dt){
+  var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
   verkehr.forEach(function(v){
-    if(v===driveCar)return; // wird gerade gefahren (geklaut)
+    if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}
     v.pos+=v.route.dir*v.route.speed*dt;
     var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+34; // weit außerhalb der Sicht umkehren
     if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
-    if(v.route.axis==="x"){v.mesh.position.set(v.pos,v.homeY,v.route.z);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
-    else{v.mesh.position.set(v.route.x,v.homeY,v.pos);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}});
+    var px,pz,fx=0,fz=0;
+    if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
+    else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
+    if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
+      var opK=nn?0.85:0,opH=nn?0.7:0;
+      for(var li=0;li<2;li++){var sd=li?1:-1;
+        v.kopf[li].position.set(px+fx*2.0+qx*0.55*sd,0.75,pz+fz*2.0+qz*0.55*sd);v.kopf[li].material.opacity=opK;
+        v.heck[li].position.set(px-fx*2.0+qx*0.55*sd,0.7,pz-fz*2.0+qz*0.55*sd);v.heck[li].material.opacity=opH;}}});
   if(busRec){
     if(busRec.wartet>0){busRec.wartet-=dt;}
     else{var prev9=busRec.pos;busRec.pos+=busRec.speed*dt;
       var rand9=GW*CS/2+30;
       if(busRec.pos>rand9)busRec.pos=-rand9; // Rueckkehr weit ausserhalb der Sicht
-      if(prev9<-8&&busRec.pos>=-8)busRec.wartet=4;}
+      if(prev9<-8&&busRec.pos>=-8)busRec.wartet=4;
+      if(busRec.raeder){var rs=busRec.speed*dt/0.5;busRec.raeder.forEach(function(rd){rd.rotation.y+=rs;});}}
     busRec.mesh.position.set(busRec.pos,0,busRec.z);
-    busRec.mesh.rotation.y=Math.PI/2;}}
+    busRec.mesh.rotation.y=0; // Koerper laengs zur Fahrtrichtung (+x)
+    if(busRec.lichter){var kb=nn?1.5:0.18,hb=nn?1.2:0.22;busRec.lichter.forEach(function(l){l.m.emissiveIntensity=l.typ==="k"?kb:hb;});}}}
 // ---- Fussgaenger auf den Gehwegen (Ambiente) ----
 var fussg=[];
 setTimeout(function baueFussg(){
