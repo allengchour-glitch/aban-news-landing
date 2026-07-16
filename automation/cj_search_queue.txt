@@ -527,10 +527,10 @@
 #done search:leather jacket biker women
 #done search:denim jacket oversized
 #done search:knit sweater dress
-search:turtleneck bodysuit
-search:wide leg jeans women
-search:faux leather leggings
-search:thermal leggings fleece lined
+#done search:turtleneck bodysuit
+#done search:wide leg jeans women
+#done search:faux leather leggings
+#done search:thermal leggings fleece lined
 search:beanie ribbed unisex
 search:knit gloves touchscreen
 search:infinity scarf blanket
