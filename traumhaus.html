@@ -201,7 +201,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
   <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
-  <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
+  <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
   </label>
@@ -2031,7 +2031,9 @@ function updSim(s,si,dt,now){
     if(sv9){
       if(s.state==="use"&&s.target){s.target.busy=false;s.target=null;}
       else if(s.state==="walk"&&s.target){s.target.busy=false;s.target=null;s.path=null;}
-      s.state="steer";s.pose="stand";steerMove(s,sv9,dt);
+      s.state="steer";s.pose="stand";
+      var sprint9=(si===0)?(shiftHeld||joyEdge):(Math.hypot(sv9.x,sv9.z)>0.92);
+      steerMove(s,sv9,dt,sprint9);
       if(si===0&&!followSim&&!buildMode)followSim=s;}
     else if(s.state==="steer")s.state="idle";
     var ehe=verheiratet?0.82:1;
@@ -2082,7 +2084,7 @@ function updCam(){
   camera.lookAt(camTx,0.6,camTz);}
 updCam();
 // ---- Direkte Steuerung: Joystick + WASD ----
-var steer={x:0,z:0},steerKeys={},steerNetT=0,steerWasActive=false;
+var steer={x:0,z:0},steerKeys={},steerNetT=0,steerWasActive=false,shiftHeld=false,joyEdge=false;
 function steerActive(){return Math.abs(steer.x)>0.12||Math.abs(steer.z)>0.12;}
 function updSteerKeys(){
   var x=0,z=0;
@@ -2096,6 +2098,9 @@ addEventListener("keydown",function(e){
 addEventListener("keyup",function(e){
   var k=(e.key||"").toLowerCase();
   if(steerKeys[k]){delete steerKeys[k];updSteerKeys();}});
+addEventListener("keydown",function(e){if(e.key==="Shift")shiftHeld=true;}); // Rennen
+addEventListener("keyup",function(e){if(e.key==="Shift")shiftHeld=false;});
+addEventListener("blur",function(){shiftHeld=false;});
 (function(){
   var joy=document.getElementById("joy"),knob=document.getElementById("joyKnob"),jid=null;
   function setKnob(dx,dz){knob.style.left=(34+dx*38)+"px";knob.style.top=(34+dz*38)+"px";}
@@ -2103,10 +2108,10 @@ addEventListener("keyup",function(e){
   function joyMove(e){
     var r=joy.getBoundingClientRect();
     var dx=(e.clientX-r.left-56)/40,dz=(e.clientY-r.top-56)/40;
-    var l=Math.hypot(dx,dz);if(l>1){dx/=l;dz/=l;}
+    var l=Math.hypot(dx,dz);joyEdge=l>0.92;if(l>1){dx/=l;dz/=l;}
     steer.x=dx;steer.z=dz;setKnob(dx,dz);}
   joy.addEventListener("pointermove",function(e){if(jid===e.pointerId)joyMove(e);});
-  function joyEnd(e){if(jid!==e.pointerId)return;jid=null;steer.x=0;steer.z=0;setKnob(0,0);}
+  function joyEnd(e){if(jid!==e.pointerId)return;jid=null;steer.x=0;steer.z=0;joyEdge=false;setKnob(0,0);}
   joy.addEventListener("pointerup",joyEnd);joy.addEventListener("pointercancel",joyEnd);
 })();
 function steerVec(si){
@@ -2115,12 +2120,12 @@ function steerVec(si){
   if(MPs&&mpHost&&si===1){var ns=sims[1]&&sims[1].netSteer;
     if(ns&&performance.now()-ns.t<700&&(Math.abs(ns.x)>0.12||Math.abs(ns.z)>0.12))return {x:ns.x,z:ns.z};}
   return null;}
-function steerMove(s9,sv,dt){
+function steerMove(s9,sv,dt,sprint){
   var lx=-Math.sin(camA),lz=-Math.cos(camA),rx=-lz,rz=lx;
   var mx=(-sv.z)*lx+sv.x*rx,mz=(-sv.z)*lz+sv.x*rz;
   var l9=Math.hypot(mx,mz);if(l9>1){mx/=l9;mz/=l9;}
   if(l9<0.05)return;
-  var sp9=3.4,nx=s9.x+mx*sp9*dt,nz=s9.z+mz*sp9*dt;
+  var sp9=4.0*(sprint?1.65:1),nx=s9.x+mx*sp9*dt,nz=s9.z+mz*sp9*dt;
   var lim=GW*CS/2+9,limZ=GH*CS/2+14;
   nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(GH*CS/2+13,nz));
   function cellX(w){return Math.round(w/CS+GW/2-0.5);}
@@ -2128,7 +2133,7 @@ function steerMove(s9,sv,dt){
   var cx1=cellX(s9.x),cy1=cellY(s9.z),cx2=cellX(nx),cy2=cellY(nz);
   if(cx2!==cx1&&inLot(cx1,cy1)&&inLot(cx2,cy1)&&edgeBlocked(cx1,cy1,cx2,cy1))nx=s9.x;
   if(cy2!==cy1&&inLot(cx1,cy1)&&inLot(cx1,cy2)&&edgeBlocked(cx1,cy1,cx1,cy2))nz=s9.z;
-  s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9;}
+  s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9*(sprint?1.5:1);}
 var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
 renderer.domElement.addEventListener("mousedown",function(e){dragging=true;dragBtn=e.button;lx=e.clientX;ly=e.clientY;downT=performance.now();downX=e.clientX;downY=e.clientY;});
 addEventListener("mousemove",function(e){
