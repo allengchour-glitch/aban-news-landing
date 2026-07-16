@@ -888,8 +888,17 @@ function spawnGlbBoss(file,th,label,bhp,x,z,bspd){ /* 👑 W4: Mini-Boss aus mn_
     var bl=document.getElementById("bossLbl");if(bl)bl.textContent=label;
     announce(label+" erwacht! Besiege den Boss!");shake=0.6;
   },undefined,function(){});}
+function bossEntrance(x,z){ /* 👑 W7: epischer Boss-Auftritt — Screen-Flash + Boden-Schockringe + tiefer Klang. KEIN rnd() → koop-deterministisch. */
+  if(typeof spawnShock==="function"){spawnShock(x,z,8,0xff2d6f);spawnShock(x,z,4.5,0xc98bff);}
+  if(typeof sfx==="function"){sfx(90,0.5,"sawtooth",0.09,42);setTimeout(function(){sfx(66,0.7,"sine",0.08,36);},150);}
+  shake=Math.max(shake,0.85);
+  var f=document.getElementById("bossFlash");
+  if(!f){f=document.createElement("div");f.id="bossFlash";f.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:45;opacity:0;background:radial-gradient(ellipse at center,rgba(255,45,110,0) 30%,rgba(170,20,55,.55) 100%)";document.body.appendChild(f);}
+  if(f.animate)f.animate([{opacity:0},{opacity:0.8},{opacity:0}],{duration:900,easing:"ease-out"});
+}
 function spawnBoss(){ // 🐉 Nacht-Boss — Rotation: Urdrache / 💀 Knochenkönig / 😈 Erzdämon (W4) / Drache / SERAPH
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
+  bossEntrance(x,z);
   var hp=28+nights*10;
   var roll=rnd(); /* W4: verbraucht weiter GENAU 1 rnd (Koop-Determinismus) */
   if(roll>=0.34&&roll<0.55&&THREE.GLTFLoader){spawnGlbBoss("mn_skeleton.glb",3.3,"💀 KNOCHENKÖNIG",hp,x,z,3.0);return;}
