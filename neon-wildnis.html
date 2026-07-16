@@ -4257,11 +4257,16 @@ function startGame(fresh){
         if(_lastId!==id)return; // schon weitergeklickt
         clearModel();var o=g.scene;
         o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
-        /* 📏 Vorschau ebenfalls auf feste Hoehe normieren (kein Riesen-Charakter mehr) */
-        var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;
-        var pk=(h0>0.01)?(1.65/h0):((C.scale||1.15)*0.55);o.scale.setScalar(Math.max(0.05,Math.min(6,pk)));
-        var box=new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();box.getCenter(ctr);
-        o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=box.min.y;
+        /* 📏 Vorschau bone-basiert normieren+zentrieren — setFromObject ist bei skinned Meshy-GLBs Müll
+           (→ 6×-Clamp = Riese, Kamera sah nur die Stiefel). Ziel ~1.75 Einheiten, Füße bei y≈0. */
+        function boneBox(){var b=new THREE.Box3(),c=0,V=new THREE.Vector3();o.updateMatrixWorld(true);
+          o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton)n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);b.expandByPoint(V);c++;});});return c?b:null;}
+        var bb=boneBox(),pk;
+        if(bb){var hh=bb.max.y-bb.min.y;pk=(hh>0.3)?(1.75/hh):1;}
+        else{var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;pk=(h0>0.8&&h0<6)?(1.75/h0):((C.scale||1.15)*0.55);}
+        o.scale.setScalar(Math.max(0.05,Math.min(4,pk)));
+        var bb2=boneBox()||new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();bb2.getCenter(ctr);
+        o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=(bb2.min.y-0.04);
         pmodel=o;psc.add(o);
         if(g.animations&&g.animations.length){pmix=new THREE.AnimationMixer(o);
           var idle=null;for(var a=0;a<g.animations.length;a++)if(/idle/i.test(g.animations[a].name)){idle=g.animations[a];break;}
