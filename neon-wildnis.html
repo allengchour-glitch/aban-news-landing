@@ -960,12 +960,40 @@ function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monster
   var el=document.getElementById("bossBar");if(!el)return;
   if(boss){el.classList.remove("hide");document.getElementById("bossFill").style.width=Math.max(0,boss.hp/boss.maxhp*100)+"%";}
   else el.classList.add("hide");}
+function clearWarn(e){if(e&&e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}} /* 👑 W8: Boss-Warnring aufräumen, falls Boss mid-Windup stirbt */
 function updMonsters(dt){
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];e.t+=dt;
     if(e.rig)e.rig.mixer.update(dt); /* ⚔️ W4: Monster-Anim-Mixer */
     var dx=player.position.x-e.x,dz=player.position.z-e.z,d=Math.hypot(dx,dz)||1;
     var spd=e.spd||3;
-    if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
+    /* 👑 W8: Boss-Spezialangriff — telegrafierter AoE-Slam (ausweichbar). Bosse werden dadurch skill-basiert
+       statt reiner Kontaktschaden = tiefer als die Originale. rnd-frei (spawnShock/sfx) → koop-konform. */
+    var tel=false;
+    if(e.boss){
+      if(e.slamCd==null)e.slamCd=4.5+Math.random()*3;
+      if(e.slamT>0){ tel=true; e.slamT-=dt;
+        if(e.warnRing)e.warnRing.material.opacity=0.35+0.5*Math.abs(Math.sin((1.0-e.slamT)*20));
+        if(e.slamT<=0){ /* Detonation */
+          var pdx=player.position.x-e.slamX,pdz=player.position.z-e.slamZ;
+          if(pdx*pdx+pdz*pdz<e.slamR*e.slamR&&!dead&&dodgeT<=0)damagePlayer(22,e);
+          if(typeof spawnShock==="function")spawnShock(e.slamX,e.slamZ,e.slamR*1.4,0xff2d3a);
+          shake=Math.max(shake,0.72);if(typeof sfx==="function")sfx(70,0.42,"square",0.09,40);
+          if(e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}
+          e.slamCd=5+Math.random()*3;
+        }
+      } else { e.slamCd-=dt;
+        if(e.slamCd<=0&&d<12&&!dead){ /* Slam anwerfen — Zielort = aktuelle Spielerposition (Ausweich-Fenster) */
+          e.slamT=1.0;e.slamX=player.position.x;e.slamZ=player.position.z;e.slamR=4.2;tel=true;
+          var wg=new THREE.RingGeometry(e.slamR-0.28,e.slamR,44);wg.rotateX(-Math.PI/2);
+          e.warnRing=new THREE.Mesh(wg,new THREE.MeshBasicMaterial({color:0xff2d3a,transparent:true,opacity:0.6,side:THREE.DoubleSide,depthWrite:false}));
+          e.warnRing.position.set(e.slamX,groundH(e.slamX,e.slamZ)+0.13,e.slamZ);scene.add(e.warnRing);
+          if(typeof sfx==="function")sfx(200,0.9,"sawtooth",0.05,540);
+          if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.0);
+        }
+      }
+    }
+    if(tel){ if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2); } /* Wind-up: Boss steht */
+    else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
     else{ // Angriff
       if(!e.atkCd||e.atkCd<=0){
@@ -2987,7 +3015,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);spawnShock(px,pz,R,0x9fd0ff);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 var throwCd=0,THROW_CD=1.1,projectiles=[];
@@ -3012,7 +3040,7 @@ function updThrow(dt){
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
       if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);shake=Math.min(shake+0.1,0.4);
-        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}
+        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
@@ -3067,7 +3095,7 @@ function useBolt(){heroActBolt();
     e.hp-=dmg;dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
       gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);
-      if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}
+      if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}
   });
   toast("⚡ Kettenblitz! "+hits.length+" getroffen");
 }
@@ -3222,7 +3250,7 @@ function harvest(){
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
 var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
+    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -3434,7 +3462,7 @@ function updDayNight(dt){
       // 🏆 Neuer Tages-Rekord? -> extra Belohnung (Sucht-Faktor)
       try{var _bd=(loadBest()||{}).day||0;if(day>_bd&&_bd>0){setTimeout(function(){announce("🏆 NEUER REKORD — Tag "+day+"! 🌟","#ffd166");inv.crystal+=2;invUpd();},1600);}}catch(e){}
       saveGame();
-      monsters.forEach(function(e){scene.remove(e.mesh);});monsters.length=0;}
+      monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;}
     updWaveHud();}
   var f=dayT/cyc;
   var t; // 0=tiefste Nacht,1=heller Tag
