@@ -286,6 +286,18 @@ var scene=new THREE.Scene();
 var SKY_DAY=new THREE.Color(0x4a74b8),SKY_NIGHT=new THREE.Color(0x081234),SKY_DUSK=new THREE.Color(0xd97b52);
 scene.background=SKY_DAY.clone();
 scene.fog=new THREE.Fog(SKY_DAY.getHex(),90,360); /* etwas weichere Tiefe, Weitsicht bleibt */
+/* 🌙 W7: Nachthimmel — Sternenfeld + Mond, nur nachts sichtbar, folgt dem Spieler wie eine Skybox.
+   Rein kosmetisch (Math.random, fog:false) → berührt keinen seeded-Stream, keine Koop-Auswirkung. */
+var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
+(function(){var N=IS_MOB?220:360,pos=new Float32Array(N*3);
+  for(var i=0;i<N;i++){var th=Math.random()*6.2832,ph=0.12+Math.random()*1.15,r=330;
+    pos[i*3]=Math.cos(th)*Math.sin(ph)*r;pos[i*3+1]=Math.abs(Math.cos(ph))*r*0.85+55;pos[i*3+2]=Math.sin(th)*Math.sin(ph)*r;}
+  var sg=new THREE.BufferGeometry();sg.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  var sm=new THREE.PointsMaterial({color:0xdfe8ff,size:2.0,sizeAttenuation:false,transparent:true,opacity:0.9,depthWrite:false});sm.fog=false;
+  nightSky.add(new THREE.Points(sg,sm));
+  var moon=new THREE.Mesh(new THREE.SphereGeometry(10,20,20),new THREE.MeshBasicMaterial({color:0xf6f2dc,transparent:true,opacity:1}));moon.material.fog=false;
+  moon.position.set(-150,175,-210);nightSky.add(moon);
+  var halo=new THREE.Mesh(new THREE.SphereGeometry(15,20,20),new THREE.MeshBasicMaterial({color:0xbfd4ff,transparent:true,opacity:0.16,side:THREE.BackSide}));halo.material.fog=false;moon.add(halo);})();
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
 var hemi=new THREE.HemisphereLight(0xcfe0ff,0x33424f,0.66);scene.add(hemi); /* Boden-Anteil wärmer-grünlich statt blau */
@@ -3416,6 +3428,10 @@ function updDayNight(dt){
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   if(!isNight)scene.background.lerp(SKY_DUSK,warm*0.5); /* Abendrot/Morgenrot in den Himmel mischen */
   scene.fog.color.copy(scene.background);
+  /* 🌙 W7: Nachthimmel ein-/ausblenden — nachts voll, in der Dämmerung sanft rein; folgt dem Spieler (Skybox) */
+  if(typeof nightSky!=="undefined"&&nightSky){nightSky.position.set(player.position.x,0,player.position.z);
+    var skyV=isNight?1:(f>0.85?(f-0.85)/0.15:0);nightSky.visible=skyV>0.02;
+    if(nightSky.visible)nightSky.traverse(function(c){if(c.material&&c.material.transparent){if(c.material._o0==null)c.material._o0=c.material.opacity;c.material.opacity=c.material._o0*skyV;}});}
   var ang=f*Math.PI;sun.position.set(player.position.x+Math.cos(ang)*32,Math.max(85,Math.sin(isNight?0.4:f*Math.PI)*100),player.position.z+Math.sin(ang)*28);
   sun.target.position.copy(player.position); // Schatten-Frustum bleibt zentriert -> kein dunkler Fleck
   // Monster nachts spawnen
