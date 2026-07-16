@@ -3616,6 +3616,14 @@ document.getElementById("netReadyBtn").onclick=function(){
       var nb=document.getElementById("netBox");if(nb)nb.scrollIntoView({block:"center"});
       document.getElementById("netJoinBtn").click();}
     else if(tries>40)clearInterval(iv);},250);})();
+// 🌍 STATISCHER Direkt-Koop-Link: /lebenspfad.html?quick=1 (oder ?coop=1) -> startet sofort 1-Tipp-Quick-Play,
+//    kein Hosten/Code nötig. Ein Link, beide tippen drauf, beide landen im selben offenen Raum.
+(function(){if(!/[?&](quick|coop)=1\b/.test(location.search))return;
+  var tries=0,iv=setInterval(function(){tries++;var qb=document.getElementById("quickPlayBtn");
+    if(typeof Peer!=="undefined"&&qb){clearInterval(iv);
+      var nb=document.getElementById("netBox");if(nb)nb.scrollIntoView({block:"center"});
+      qb.click();}
+    else if(tries>40)clearInterval(iv);},250);})();
 function netLaunch(){ // Host: Runde starten / neue Runde — Init an alle + selbst starten
   if(!NET.host)return;
   var seed=(Math.random()*4294967296)>>>0;
