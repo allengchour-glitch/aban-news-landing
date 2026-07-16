@@ -231,12 +231,14 @@ canvas{display:block}
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
   <div id="coopBox" style="margin-top:12px;padding:12px;border:2px solid #2a6a8a;border-radius:14px;background:rgba(10,30,45,.5)">
     <div style="font-weight:900;color:#7de3ff;margin-bottom:8px">🌐 Koop (2 Spieler)</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+    <button class="big" id="coopQuick" style="width:100%;background:linear-gradient(90deg,#1b8f5a,#0f6a8a);border:none;margin-bottom:8px">⚡ Schnell zusammen spielen — 1 Tipp</button>
+    <details style="margin-bottom:2px"><summary style="cursor:pointer;color:#9fd6e8;font-size:.82rem;text-align:center;list-style:none">oder mit Code · Freund einladen ▾</summary>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px">
       <button class="ghost" id="coopHost" style="min-width:120px">🏠 Raum öffnen</button>
       <input id="coopCode" maxlength="4" placeholder="CODE" style="width:90px;text-transform:uppercase;text-align:center;font-weight:900;letter-spacing:.2em;border-radius:10px;border:2px solid #2a6a8a;background:#0a1e2d;color:#eaf6ff;padding:8px">
       <button class="ghost" id="coopJoin" style="min-width:110px">🚪 Beitreten</button>
       <button class="ghost hide" id="coopShare" style="min-width:120px">📲 Link teilen</button>
-    </div>
+    </div></details>
     <div id="coopStatus" style="margin-top:8px;font-size:.85rem;color:#9fd6e8;min-height:1.1em"></div>
   </div>
   <a class="arc" href="/spiele.html">🕹️ aban Arcade — mehr Spiele</a>
@@ -4020,7 +4022,7 @@ function netStart(role,code){
 }
 function onNetMsg(d){
   if(!d)return;
-  if(d.t==="start"&&NET.role==="join"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;}
+  if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;} /* join ODER quick-Gast */
   if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
@@ -4041,7 +4043,26 @@ function netTick(dt){
   if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur});} /* st = Stations-Flag für Partner-Blase */
   if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
 }
-(function(){var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
+function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Raum, join-oder-host) */
+  if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
+  if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}
+  coopStatusMsg("⚡ Suche Mitspieler…");setOnline("waiting");
+  try{NET.s=MP.quick("wildnis");}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
+  NET.role="quick"; /* wird bei Verbindung auf host/join gesetzt */
+  NET.s.onStatus(function(st){
+    if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
+    else if(st==="connected"){NET.role=NET.s.role||NET.role;coopStatusMsg("✅ Verbunden!");setOnline("connected");}
+    else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");}});
+  NET.s.onMessage(onNetMsg);
+  NET.s.ready.then(function(){
+    NET.on=true;NET.role=NET.s.role||NET.role;
+    if(NET.role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}
+    else spawnRemote(); /* Gast: wartet auf "start"-Nachricht */
+  }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));setOnline("solo");});
+}
+(function(){var q=document.getElementById("coopQuick");if(q)q.onclick=netStartQuick;
+  var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
   if(h)h.onclick=function(){if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}netStart("host");
     setTimeout(function(){var sb=document.getElementById("coopShare");if(sb&&NET.s&&NET.s.code)sb.classList.remove("hide");},600);};
   var sb=document.getElementById("coopShare");
