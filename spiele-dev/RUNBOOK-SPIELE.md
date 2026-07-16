@@ -586,3 +586,11 @@ skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x l
    radiale Ringe generieren (6-14 x 48) und JEDES Vertex auf groundH setzen.
 10. **Overlay-Zentrier-Bug:** flex justify-center + Overflow schneidet Titel unerreichbar ab →
     justify-content:flex-start + ::before/::after-Federn (kurz zentriert, lang ab oben scrollbar).
+
+## 🌲 Wildnis „hoch 100" — Politur-Stand W7 (2026-07-16)
+Alle via Plumbing-Commit (Fremd-traumhaus-Dateien blockieren normale Branch-Ops) → Draft-PR → squash-merge → Inhalts-Audit in origin/main.
+- **Schockwellen-Ring** (`spawnShock`/`updShock`/`shockRings`): sichtbarer expandierender Ring beim 💥-Skill (vorher nur unsichtbarer Burst). PR #1924.
+- **Loot-Magnet-Sog** (`updLoot`): Beute-Orbs fliegen sichtbar zum Spieler (Attract-Radius LR*2.7, Scale-Up) + aufsteigender Pickup-Sound (`sfx`), statt Teleport-Collect. PR #1925.
+- **DPR-Cap 1.5 mobil** (`setPixelRatio`): spürbar flüssiger auf High-Res-Handys, Desktop bleibt 2×. PR #1926.
+- **Anfänger-Tipps** (`nw_intro` localStorage): einmalige gestaffelte Steuerungs-Tipps beim ersten Solo-Start (beantwortet „Regeln für Anfänger"). PR #1927.
+- **WICHTIG geprüft:** `rnd()` (seeded mulberry32) ist im Wildnis-Runtime NICHT im Lockstep — `rollRarity`/`spawnMonster`/`burst` nutzen es alle live. Coop teilt NUR den Start-SEED (identische Weltgen), Gameplay ist positions-sync/host-lite. → Cosmetics dürfen `rnd()` nutzen; kein Zwang zu `Math.random` im Kampf-VFX (anders als Lebenspfad-Regel).

@@ -268,7 +268,7 @@ var VF=IS_MOB?0.6:1; // Dichte-Faktor mobil
 
 // ---------- Renderer / Scene ----------
 var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
-renderer.setPixelRatio(Math.min(devicePixelRatio,IS_MOB?2:2));
+renderer.setPixelRatio(Math.min(devicePixelRatio,IS_MOB?1.5:2)); /* 📱 W7: DPR-Cap 1.5 mobil = spürbar flüssiger auf High-Res-Handys */
 renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 if(renderer.outputEncoding!==undefined)renderer.outputEncoding=THREE.sRGBEncoding;
@@ -294,9 +294,14 @@ var SUN_NOON=new THREE.Color(0xfff2da),SUN_LOW=new THREE.Color(0xffb166); /* Mit
 var sun=new THREE.DirectionalLight(0xfff2da,1.0);
 sun.position.set(40,80,30);sun.castShadow=true;
 sun.shadow.mapSize.set(IS_MOB?1024:2048,IS_MOB?1024:2048);
-sun.shadow.camera.near=1;sun.shadow.camera.far=260;
-sun.shadow.camera.left=-100;sun.shadow.camera.right=100;sun.shadow.camera.top=100;sun.shadow.camera.bottom=-100;
+sun.shadow.camera.near=1;sun.shadow.camera.far=200;
+/* 🌞 W7: enger Schatten-Frustum (±52 statt ±100) → ~2× Texel-Dichte am Spieler = knackiger Boden-Schatten
+   unter dem Helden. updSun() lässt Licht dem Spieler folgen (auf 2er-Raster gesnappt gegen Schatten-Crawl). */
+sun.shadow.camera.left=-52;sun.shadow.camera.right=52;sun.shadow.camera.top=52;sun.shadow.camera.bottom=-52;
 sun.shadow.bias=-0.0006;sun.shadow.normalBias=0.03;sun.shadow.radius=3;scene.add(sun);scene.add(sun.target);
+function updSun(){if(!sun.castShadow||typeof player==="undefined")return;
+  var sx=Math.round(player.position.x/2)*2,sz=Math.round(player.position.z/2)*2;
+  sun.position.set(sx+40,80,sz+30);sun.target.position.set(sx,0,sz);sun.target.updateMatrixWorld();}
 
 /* 🌇 HDR-IBL (wie neon-survivor): sky_1k.hdr → PMREM-EnvMap, nur WebGL2 + echte GPU.
    Dezent (envMapIntensity 0.25) — PBR-Materialien (GLBs, Wasser, Kristalle) kriegen echte Reflexe. */
@@ -696,7 +701,21 @@ var CHARACTERS=[
   {id:"anime_ninja",        emo:"🥷", name:"Anime-Ninja",    desc:"Maske & Kapuze",     file:"anime_ninja.glb",     scale:1.05, glow:"soft"},
   {id:"anime_schuelerin",   emo:"🎀", name:"Anime-Schülerin",desc:"Sailor-Uniform",     file:"anime_schoolgirl.glb",scale:1.05, glow:"soft"},
   {id:"anime_maedchen",     emo:"👧", name:"Anime-Mädchen",  desc:"Süß & flink",        file:"anime_girl.glb",      scale:1.05, glow:"soft"},
-  {id:"anime_junge",        emo:"👦", name:"Anime-Junge",    desc:"Cool & blau",        file:"anime_boy.glb",       scale:1.05, glow:"soft"}
+  {id:"anime_junge",        emo:"👦", name:"Anime-Junge",    desc:"Cool & blau",        file:"anime_boy.glb",       scale:1.05, glow:"soft"},
+  // 🛡️ Fantasy-Helden (Quaternius, 3-Hit-Combo: attack/attack2/attack3 + dodge/hit/victory)
+  {id:"ritter",     emo:"🛡️", name:"Ritter",      desc:"Schwert & Rüstung · Combo", file:"nwhero_ritter.glb",   scale:1.05, glow:"soft", col:0xbcc4d0, cls:{hp:15}},
+  {id:"wikinger",   emo:"🪓", name:"Wikinger",    desc:"Axt & Wut · +Angriff",      file:"nwhero_wikinger.glb", scale:1.05, glow:"soft", col:0xd0a060, cls:{atk:1}},
+  {id:"magier2",    emo:"🧙", name:"Zauberer",    desc:"Stab & Magie · schnellere Skills", file:"nwhero_magier.glb", scale:1.05, glow:"soft", col:0x9a6aff, cls:{skillcd:1.5}},
+  {id:"elf",        emo:"🧝", name:"Elf",         desc:"Bogen · +Tempo",            file:"nwhero_elf.glb",      scale:1.05, glow:"soft", col:0x7ad9a0, cls:{spd:1.2}},
+  {id:"pirat",      emo:"🏴‍☠️", name:"Pirat",     desc:"Säbel & Frechheit",         file:"nwhero_pirat.glb",    scale:1.05, glow:"soft", col:0xc86a5a},
+  {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}},
+  // 👹 Skurrile Helden (Monster-Rig: attack/attack2 + dodge/hit/wave)
+  {id:"held_goblin",emo:"👺", name:"Goblin-Held", desc:"Klein & gemein · flink",    file:"nwhero_goblin.glb",   scale:1.0,  glow:"soft", col:0x8ac86a, cls:{spd:1.2}},
+  {id:"held_ork",   emo:"👹", name:"Ork-Krieger", desc:"Roh & stark · +Leben",      file:"nwhero_ork.glb",      scale:1.1,  glow:"soft", col:0x6a9a5a, cls:{hp:20}},
+  {id:"totenork",   emo:"💀", name:"Toten-Ork",   desc:"Untot & furchtlos",         file:"nwhero_totenork.glb", scale:1.1,  glow:"soft", col:0xd8d0c0},
+  {id:"daemon",     emo:"😈", name:"Dämon",       desc:"Höllisch · +Angriff",       file:"nwhero_daemon.glb",   scale:1.15, glow:"neon", col:0xff5a6a, cls:{atk:1}},
+  {id:"pilzkoenig", emo:"🍄", name:"Pilzkönig",   desc:"Sporig & zäh · +Leben",     file:"nwhero_pilzkoenig.glb",scale:1.1, glow:"soft", col:0xff8ab0, cls:{hp:20}},
+  {id:"yeti",       emo:"🧊", name:"Yeti",        desc:"Frostig & mächtig · zäh",   file:"nwhero_yeti.glb",     scale:1.2,  glow:"soft", col:0xd8f0ff, cls:{hp:25}}
 ];
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
 function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
@@ -715,7 +734,10 @@ function loadHero(){
   buildPawn(C.col,0xffe2c0);pBody.visible=true; /* 🧍 Sofort sichtbar in Klassenfarbe — GLB ersetzt gleich */
   if(!THREE.GLTFLoader)return;
   new THREE.GLTFLoader().load("/models/"+C.file,function(g){
-    var o=g.scene;o.scale.setScalar((C.scale||1.15)*1.18) /* Welle 5: Held prominenter (User: 'charakter ist wichtig') */;
+    var o=g.scene;
+    /* 📏 Hoehen-Normierung: verschiedene GLBs haben verschiedene Eigengroessen -> auf Zielhoehe skalieren
+       (fixe Skala liess einzelne Helden riesig werden — User: '1 ist riesig'). Ziel ~2.0 Einheiten. */
+    (function(){var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;if(h>0.01){var k=(2.0*(C.hscale||1))/h;o.scale.setScalar(Math.max(0.05,Math.min(8,k)));}else o.scale.setScalar((C.scale||1.15)*1.18);})();
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
       if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
@@ -927,7 +949,7 @@ function updMonsters(dt){
       var fy=e.fly?(2.4+Math.sin(e.t*3)*0.4):(e.rig?0:Math.abs(Math.sin(e.t*8))*0.12); /* geriggte: Clip statt Wippen */
       e.mesh.position.set(e.x,groundH(e.x,e.z)+fy,e.z);
       e.mesh.rotation.y=Math.atan2(dx,dz);
-      e.mesh.scale.setScalar(_bsc);
+      if(e.hitPop>0){e.hitPop=Math.max(0,e.hitPop-dt);e.mesh.scale.setScalar(_bsc*(1+e.hitPop*1.6));}else e.mesh.scale.setScalar(_bsc);
       if(e.wings){var fl=Math.sin(e.t*14)*0.7;e.wings[0].rotation.y=fl;e.wings[1].rotation.y=-fl;}
     }else{ // Slime/Boss: hüpfen + squash
       e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc,e.z);
@@ -2854,7 +2876,15 @@ function gearUpd(){
   if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
   if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
 }
-function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";}
+function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
+  /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
+  var lv=document.getElementById("lowVig");
+  if(!lv){lv=document.createElement("div");lv.id="lowVig";
+    lv.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:43;opacity:0;background:radial-gradient(ellipse at center,rgba(255,30,60,0) 52%,rgba(255,30,60,.55) 100%)";
+    document.body.appendChild(lv);}
+  var crit=!dead&&hp>0&&hp/maxHp<0.25;
+  if(crit&&!lv._anim&&lv.animate){lv._anim=lv.animate([{opacity:0.16},{opacity:0.5}],{duration:640,iterations:Infinity,direction:"alternate",easing:"ease-in-out"});}
+  else if(!crit&&lv._anim){lv._anim.cancel();lv._anim=null;lv.style.opacity=0;}}
 function xpNeed(){return 20+level*16;}
 function xpUpd(){var b=document.getElementById("xpFill");if(b)b.style.width=Math.min(100,xp/xpNeed()*100)+"%";var l=document.getElementById("lvlBadge");if(l)l.textContent="Lv "+level;}
 function gainXP(n){if(dead)return;xp+=n;var ups=0;while(xp>=xpNeed()){xp-=xpNeed();level++;ups++;}
@@ -2926,9 +2956,9 @@ function useSkill(){
   if(level<2){toast("💥 Schockwelle ab Level 2");return;}
   if(skillCd>0){toast("💥 Cooldown "+Math.ceil(skillCd)+"s");return;}
   skillCd=Math.max(2,SKILL_CD-PERK.skillcd);var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
-  burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
+  burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);spawnShock(px,pz,R,0x9fd0ff);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
-    e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);
+    e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
@@ -2953,11 +2983,21 @@ function updThrow(dt){
     p.m.position.x+=(tx-p.m.position.x)*Math.min(1,dt*11);p.m.position.z+=(tz-p.m.position.z)*Math.min(1,dt*11);p.m.position.y+=(ty-p.m.position.y)*Math.min(1,dt*11);
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
-      if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);shake=Math.min(shake+0.1,0.4);
+      if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);shake=Math.min(shake+0.1,0.4);
         if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
+/* 💥 Welle 6: sichtbarer Schockwellen-Ring — expandiert + fadet (statt nur Funken) */
+var shockRings=[];
+function spawnShock(x,z,r,color){
+  var g=new THREE.RingGeometry(0.8,1.15,40);g.rotateX(-Math.PI/2);
+  var m=new THREE.MeshBasicMaterial({color:color||0x7de3ff,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false});
+  var ring=new THREE.Mesh(g,m);ring.position.set(x,groundH(x,z)+0.15,z);scene.add(ring);
+  shockRings.push({m:ring,t:0,max:r||7});}
+function updShock(dt){for(var i=shockRings.length-1;i>=0;i--){var s2=shockRings[i];s2.t+=dt*3.2;
+  var f=Math.min(1,s2.t);var sc=0.4+f*s2.max;s2.m.scale.set(sc,1,sc);s2.m.material.opacity=0.85*(1-f);
+  if(f>=1){scene.remove(s2.m);s2.m.geometry.dispose();shockRings.splice(i,1);}}}
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
@@ -2986,7 +3026,7 @@ function useBolt(){heroActBolt();
     var ln=new THREE.Line(lg,new THREE.LineBasicMaterial({color:0x9fe8ff,transparent:true,opacity:1}));
     scene.add(ln);boltFx.push({m:ln,life:0.3});
     burst(e.x,groundH(e.x,e.z)+1,e.z,0x9fe8ff,8);
-    e.hp-=dmg;
+    e.hp-=dmg;dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
       gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);
       if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}
@@ -3012,11 +3052,16 @@ function dropLoot(x,z,force){var ri=(force!=null)?force:rollRarity(),R=LOOT_RARI
   if(ri>=2)burst(x,groundH(x,z)+0.9,z,R.c,8);}
 function bossReward(x,z){announce("🏆 Boss besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
-  o.m.rotation.y+=dt*2.6;o.m.position.y=groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16;
-  var dx=o.x-player.position.x,dz=o.z-player.position.z;
-  var LR=1.7+PERK.magnet;if(dx*dx+dz*dz<LR*LR&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
+  o.m.rotation.y+=dt*2.6;
+  var dx=player.position.x-o.x,dz=player.position.z-o.z;var d2=dx*dx+dz*dz;
+  var LR=1.7+PERK.magnet;
+  /* 🧲 W7: Magnet-Sog — Orb fliegt sichtbar zum Spieler (statt Teleport-Collect); beschleunigt je näher/länger */
+  if(d2<(LR*2.7)*(LR*2.7)&&!dead){var sp=Math.min(0.9,dt*(5+o.t*2.4));o.x+=dx*sp;o.z+=dz*sp;o.m.scale.setScalar(1+Math.min(0.5,o.t*0.35));}
+  o.m.position.set(o.x,groundH(o.x,o.z)+0.9+Math.sin(o.t*3)*0.16,o.z);
+  if(d2<0.9*0.9&&!dead){var R=LOOT_RARITY[o.ri];gainXP(R.xp);if(R.cr){inv.crystal+=R.cr;}if(R.heal){hp=Math.min(maxHp,hp+R.heal);}if(R.hp){maxHp+=R.hp;hp=maxHp;}hpUpd();invUpd();
     toast((o.ri>=3?"🌟 ":"💎 ")+R.n+"e Beute! +"+R.xp+" XP"+(R.cr?" · +"+R.cr+"💎":"")+(R.hp?" · +"+R.hp+" maxHP":""));
-    floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,11);
+    if(typeof sfx==="function")sfx(o.ri>=3?900:660,0.13,"triangle",0.05,o.ri>=3?1500:1050);
+    floatText(o.x,o.m.position.y+0.6,o.z,R.n,"#"+("00000"+R.c.toString(16)).slice(-6));burst(o.x,o.m.position.y,o.z,R.c,o.ri>=3?18:11);
     scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);continue;}
   if(o.life<=0){scene.remove(o.m);o.m.geometry.dispose();o.m.material.dispose();lootOrbs.splice(i,1);}}}
 function hurtFlash(){shake=Math.min(shake+0.15,0.4);
@@ -3027,12 +3072,26 @@ function hurtFlash(){shake=Math.min(shake+0.15,0.4);
     document.body.appendChild(v);}
   v.style.opacity="1";clearTimeout(v._t);v._t=setTimeout(function(){v.style.opacity="0";},90);}
 function playerDie(){
-  dead=true;announce("💀 Du bist gefallen…");
-  setTimeout(function(){ // Respawn am Lagerfeuer (oder Ursprung)
+  dead=true;announce("💀 Du bist gefallen…","#ff6a6a");
+  if(typeof hurtFlash==="function")hurtFlash();shake=Math.min(shake+0.6,0.9);
+  /* 🩸 Tod deutlicher: roter Vollbild-Schleier + kurzer Countdown bis Respawn */
+  var ov=document.getElementById("deathVig");
+  if(!ov){ov=document.createElement("div");ov.id="deathVig";
+    ov.style.cssText="position:fixed;inset:0;z-index:60;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(120,0,10,.25),rgba(90,0,8,.72));opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;color:#ffd0d0;font-weight:900;font-size:1.6rem;text-shadow:0 2px 8px #000";
+    document.body.appendChild(ov);}
+  ov.textContent="";ov.style.opacity="1";
+  setTimeout(function(){
+    /* Respawn: Bett (gesetzter Punkt) > Lagerfeuer > Heimdorf */
+    var bp=structures.find(function(s){return s.type==="bett";});
     var lp=structures.find(function(s){return s.type==="lager";});
-    var rx=lp?lp.x:0,rz=lp?lp.z:0;player.position.set(rx,0,rz);
-    hp=maxHp;dead=false;hpUpd();announce("🔥 Zurück am Feuer");
-  },1600);
+    var spot=bp||lp,rx=spot?spot.x:0,rz=spot?spot.z:0;
+    player.position.set(rx,0,rz);
+    hp=maxHp;dead=false;hpUpd();
+    if(ov)ov.style.opacity="0";
+    burst(rx,groundH(rx,rz)+1,rz,bp?[0x7de3ff,0xc8ffe0]:[0xffb347,0xffd166],22);
+    announce(bp?"🛏️ Zurück am Bett":(lp?"🔥 Zurück am Feuer":"🏡 Zurück im Heimdorf"),"#8affb0");
+    if(typeof sfx==="function")sfx(520,0.12,"triangle",0.05,720);
+  },1700);
 }
 
 // ---------- Toast / Announce ----------
@@ -3052,6 +3111,10 @@ function floatText(x,y,z,txt,color){
   var layer=document.getElementById("floatLayer");layer.appendChild(el);
   setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},1050);
 }
+/* ⚔️ Welle 6: Treffer-Feedback — Schadenszahl + kurzer Scale-Pop auf dem Monster (befriedigender Kampf) */
+function dmgHit(e,dmg){if(!e)return;
+  floatText(e.x,groundH(e.x,e.z)+1.9,e.z,"-"+Math.round(dmg),"#ffe14a");
+  e.hitPop=0.16;}
 
 // ---------- Sammeln ----------
 var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null;
@@ -3110,7 +3173,7 @@ function harvest(){
   if(nearMon){ // Kampf
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
-    nearMon.hp-=(1+Math.floor(level/3)+weaponAtk());sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
@@ -3727,12 +3790,12 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
-  updCamera(dt);updQuest(dt);updBadges(dt);
+  updCamera(dt);updSun();updQuest(dt);updBadges(dt);
   // Toast/announce fade
   if(toastT>0){toastT-=dt;if(toastT<=0)document.getElementById("toast").style.opacity=0;}
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
@@ -3881,6 +3944,10 @@ function startGame(fresh){
     worldProps.push({mesh:tri,float:true,base:2.9,ph:0,halo:null});}
   running=true;paused=false;xpUpd();updOnline();dailyReward();
   announce("🌅 Willkommen in der Wildnis!");
+  /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
+  if(!sv&&!NET.on&&!lsGet("nw_intro")){lsSet("nw_intro","1");
+    var _tips=["🕹️ Ziehe links den Joystick zum Laufen","⚔️ Rechts = Angriff · 🔨 = Bäume & Steine sammeln","💥 = Spezial-Skill · 💨 = Rolle zum Ausweichen","🌲 Sammle 10 Holz für das erste Ziel!"];
+    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead)announce(tp,"#bfe9ff");},2600+ti*2700);});}
 }
 // ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
 (function(){
@@ -3924,8 +3991,11 @@ function startGame(fresh){
     (function loadGLB(){
       new THREE.GLTFLoader().load("/models/"+C.file,function(g){
         if(_lastId!==id)return; // schon weitergeklickt
-        clearModel();var o=g.scene;o.scale.setScalar((C.scale||1.15)*0.55);
+        clearModel();var o=g.scene;
         o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
+        /* 📏 Vorschau ebenfalls auf feste Hoehe normieren (kein Riesen-Charakter mehr) */
+        var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;
+        var pk=(h0>0.01)?(1.65/h0):((C.scale||1.15)*0.55);o.scale.setScalar(Math.max(0.05,Math.min(6,pk)));
         var box=new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();box.getCenter(ctr);
         o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=box.min.y;
         pmodel=o;psc.add(o);
@@ -3950,9 +4020,19 @@ function startGame(fresh){
 (function(){
   var wrap=document.getElementById("charPick");if(!wrap)return;
   var curId=getChar().id;
+  var CATNAMES={klasse:"⚔️ Klassen",anime:"🎌 Anime-Helden",fantasy:"🛡️ Fantasy-Helden",monster:"👹 Skurrile Helden"};
+  function catOf(C){var id=C.id;
+    if(id.indexOf("anime_")===0)return "anime";
+    if(["ritter","wikinger","magier2","elf","pirat","hexe"].indexOf(id)>=0)return "fantasy";
+    if(["held_goblin","held_ork","totenork","daemon","pilzkoenig","yeti"].indexOf(id)>=0)return "monster";
+    return "klasse";}
   function render(){
-    wrap.innerHTML="";
+    wrap.innerHTML="";var lastCat=null;
     CHARACTERS.forEach(function(C){
+      var cat=catOf(C);
+      if(cat!==lastCat){lastCat=cat;var hd=document.createElement("div");hd.className="cathd";
+        hd.textContent=CATNAMES[cat]||"";hd.style.cssText="flex-basis:100%;text-align:center;color:#9fd0ff;font-weight:800;font-size:12px;letter-spacing:.08em;margin:8px 0 2px;opacity:.9";
+        wrap.appendChild(hd);}
       var b=document.createElement("button");
       b.className="ccard"+(C.id===curId?" sel":"");b.type="button";
       b.setAttribute("aria-pressed",C.id===curId?"true":"false");
