@@ -176,6 +176,10 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
 <button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)">🏆</button>
 <canvas id="minimap" width="120" height="120" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:3px solid rgba(255,255,255,.75);box-shadow:0 4px 14px rgba(0,0,0,.35);background:#3a5a34"></canvas>
+<div id="speedo" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:12px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
+  <div style="font-size:1.15rem;font-weight:900;line-height:1">🏎️ <span id="spNum">0</span> <span style="font-size:.7rem;opacity:.7">km/h</span></div>
+  <div style="height:5px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:4px;overflow:hidden"><div id="spBar" style="height:100%;width:0;background:#3ad0ff;border-radius:3px"></div></div>
+</div>
 <div id="achPanel" style="position:fixed;inset:0;z-index:27;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.6)">
   <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:16px;max-width:420px;width:92vw;max-height:80vh;overflow-y:auto">
     <div style="display:flex;justify-content:space-between;align-items:center">
@@ -1649,6 +1653,7 @@ function einsteigen(rec,geklaut){
   document.getElementById("exitCar").style.display="block";
   document.getElementById("nitroBtn").style.display="block";
   document.getElementById("hornBtn").style.display="block";
+  document.getElementById("speedo").style.display="block";
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei kommt! 🚨");
     setTimeout(function(){if(fahren)wantedPlus(2);},1500);}
@@ -1674,6 +1679,7 @@ function aussteigen(){
   document.getElementById("exitCar").style.display="none";
   document.getElementById("nitroBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
+  document.getElementById("speedo").style.display="none";
   hint(lackiert?"🎨 Auto umlackiert & versteckt — die Polizei hat die Spur verloren! 😎":"🚶 Ausgestiegen");}
 function autoFahr(dt){
   var a=driveCar||window.autoRec;if(!a){fahren=false;return;}
@@ -1686,7 +1692,7 @@ function autoFahr(dt){
     var d=((ziel-carRot+Math.PI*3)%(Math.PI*2))-Math.PI;
     carRot+=d*Math.min(1,dt*4);           // sanftes Lenken
     carLean=carLean*0.85 - d*0.25;         // Karosserie neigt sich in die Kurve
-    var sp=(13+(nitro>0?12:0))*Math.min(1,l);if(nitro>0)nitro-=dt;
+    var sp=(13+(nitro>0?12:0))*Math.min(1,l);if(nitro>0)nitro-=dt;window._carKmh=Math.round(sp*4);
     var fx=ensureNitroFx();
     if(nitro>0){fx.visible=true;
       fx.position.set(m.position.x-Math.sin(carRot)*2.2,0.6,m.position.z-Math.cos(carRot)*2.2);
@@ -1698,8 +1704,10 @@ function autoFahr(dt){
     m.position.x=Math.max(-110,Math.min(110,m.position.x));
     m.position.z=Math.max(-110,Math.min(110,m.position.z));
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03; // leichtes Wanken
-  }else{carLean*=0.85;m.position.y=(a.homeY||0.01);}
+  }else{carLean*=0.85;m.position.y=(a.homeY||0.01);window._carKmh=Math.round((window._carKmh||0)*0.8);}
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
+  var _sn=document.getElementById("spNum"),_sb=document.getElementById("spBar");
+  if(_sn){var kmh=window._carKmh||0;_sn.textContent=kmh;_sb.style.width=Math.min(100,kmh)+"%";_sb.style.background=nitro>0?"#ff9a2a":"#3ad0ff";}
   // Fahrzeug-Lichter: Scheinwerfer nachts, Bremslicht beim Bremsen/Ausrollen
   ensureDriveLights();
   var nn2=window._dorfNacht?1:0,brems=(l<=0.1);
