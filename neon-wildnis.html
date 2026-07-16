@@ -2876,7 +2876,15 @@ function gearUpd(){
   if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
   if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
 }
-function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";}
+function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
+  /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
+  var lv=document.getElementById("lowVig");
+  if(!lv){lv=document.createElement("div");lv.id="lowVig";
+    lv.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:43;opacity:0;background:radial-gradient(ellipse at center,rgba(255,30,60,0) 52%,rgba(255,30,60,.55) 100%)";
+    document.body.appendChild(lv);}
+  var crit=!dead&&hp>0&&hp/maxHp<0.25;
+  if(crit&&!lv._anim&&lv.animate){lv._anim=lv.animate([{opacity:0.16},{opacity:0.5}],{duration:640,iterations:Infinity,direction:"alternate",easing:"ease-in-out"});}
+  else if(!crit&&lv._anim){lv._anim.cancel();lv._anim=null;lv.style.opacity=0;}}
 function xpNeed(){return 20+level*16;}
 function xpUpd(){var b=document.getElementById("xpFill");if(b)b.style.width=Math.min(100,xp/xpNeed()*100)+"%";var l=document.getElementById("lvlBadge");if(l)l.textContent="Lv "+level;}
 function gainXP(n){if(dead)return;xp+=n;var ups=0;while(xp>=xpNeed()){xp-=xpNeed();level++;ups++;}
