@@ -2943,7 +2943,7 @@ function useSkill(){
   if(level<2){toast("💥 Schockwelle ab Level 2");return;}
   if(skillCd>0){toast("💥 Cooldown "+Math.ceil(skillCd)+"s");return;}
   skillCd=Math.max(2,SKILL_CD-PERK.skillcd);var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
-  burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
+  burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);spawnShock(px,pz,R,0x9fd0ff);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}updWaveHud();}}}
@@ -2975,6 +2975,16 @@ function updThrow(dt){
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
+/* 💥 Welle 6: sichtbarer Schockwellen-Ring — expandiert + fadet (statt nur Funken) */
+var shockRings=[];
+function spawnShock(x,z,r,color){
+  var g=new THREE.RingGeometry(0.8,1.15,40);g.rotateX(-Math.PI/2);
+  var m=new THREE.MeshBasicMaterial({color:color||0x7de3ff,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false});
+  var ring=new THREE.Mesh(g,m);ring.position.set(x,groundH(x,z)+0.15,z);scene.add(ring);
+  shockRings.push({m:ring,t:0,max:r||7});}
+function updShock(dt){for(var i=shockRings.length-1;i>=0;i--){var s2=shockRings[i];s2.t+=dt*3.2;
+  var f=Math.min(1,s2.t);var sc=0.4+f*s2.max;s2.m.scale.set(sc,1,sc);s2.m.material.opacity=0.85*(1-f);
+  if(f>=1){scene.remove(s2.m);s2.m.geometry.dispose();shockRings.splice(i,1);}}}
 function updSkill(dt){if(skillCd>0)skillCd-=dt;var b=document.getElementById("bSkill");if(!b)return;
   var show=running&&level>=2&&!buildMode;b.classList.toggle("hide",!show);
   if(show&&!_skillShown){_skillShown=true;announce("💥 Skill frei: Q / 💥-Knopf = Schockwelle!");}
@@ -3762,7 +3772,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
