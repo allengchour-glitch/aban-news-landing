@@ -720,7 +720,6 @@ var CHARACTERS=[
   {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", col:0xb06aff, cls:{skillcd:1.5}},
   {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", col:0x58c26a, cls:{spd:1.2}},
   {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", col:0xd08a3a, cls:{hp:25}},
-  {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft", col:0xc8bfa8},
   // 🎌 Anime-Charaktere (Meshy, gerigged idle/walk/run) — echte Anime-Figuren zur Auswahl
   {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style",       file:"anime_hero.glb",      scale:1.05, glow:"soft"},
   {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr", file:"anime_warrior.glb",   scale:1.05, glow:"soft"},
@@ -735,14 +734,9 @@ var CHARACTERS=[
   {id:"magier2",    emo:"🧙", name:"Zauberer",    desc:"Stab & Magie · schnellere Skills", file:"nwhero_magier.glb", scale:1.05, glow:"soft", col:0x9a6aff, cls:{skillcd:1.5}},
   {id:"elf",        emo:"🧝", name:"Elf",         desc:"Bogen · +Tempo",            file:"nwhero_elf.glb",      scale:1.05, glow:"soft", col:0x7ad9a0, cls:{spd:1.2}},
   {id:"pirat",      emo:"🏴‍☠️", name:"Pirat",     desc:"Säbel & Frechheit",         file:"nwhero_pirat.glb",    scale:1.05, glow:"soft", col:0xc86a5a},
-  {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}},
-  // 👹 Skurrile Helden (Monster-Rig: attack/attack2 + dodge/hit/wave)
-  {id:"held_goblin",emo:"👺", name:"Goblin-Held", desc:"Klein & gemein · flink",    file:"nwhero_goblin.glb",   scale:1.0,  glow:"soft", col:0x8ac86a, cls:{spd:1.2}},
-  {id:"held_ork",   emo:"👹", name:"Ork-Krieger", desc:"Roh & stark · +Leben",      file:"nwhero_ork.glb",      scale:1.1,  glow:"soft", col:0x6a9a5a, cls:{hp:20}},
-  {id:"totenork",   emo:"💀", name:"Toten-Ork",   desc:"Untot & furchtlos",         file:"nwhero_totenork.glb", scale:1.1,  glow:"soft", col:0xd8d0c0},
-  {id:"daemon",     emo:"😈", name:"Dämon",       desc:"Höllisch · +Angriff",       file:"nwhero_daemon.glb",   scale:1.15, glow:"neon", col:0xff5a6a, cls:{atk:1}},
-  {id:"pilzkoenig", emo:"🍄", name:"Pilzkönig",   desc:"Sporig & zäh · +Leben",     file:"nwhero_pilzkoenig.glb",scale:1.1, glow:"soft", col:0xff8ab0, cls:{hp:20}},
-  {id:"yeti",       emo:"🧊", name:"Yeti",        desc:"Frostig & mächtig · zäh",   file:"nwhero_yeti.glb",     scale:1.2,  glow:"soft", col:0xd8f0ff, cls:{hp:25}}
+  {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}}
+  /* 🗑️ Monster-„Helden" (Goblin/Ork/Totenork/Dämon/Pilzkönig/Yeti) + Wanderer-Mannequin entfernt —
+     User: „viele scheiss charakter". Nur noch hochwertige, menschliche/Anime/Fantasy-Helden. */
 ];
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
 function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
