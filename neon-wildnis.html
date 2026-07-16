@@ -4011,37 +4011,72 @@ function netStart(role,code){
   setOnline("waiting");
   NET.s.onStatus(function(st){
     if(st==="waiting"){coopStatusMsg("Warte auf Partner… Code: "+NET.s.code);setOnline("waiting");}
-    else if(st==="connected"){coopStatusMsg("✅ Verbunden!");setOnline("connected");}
+    else if(st==="connected"){coopStatusMsg("✅ Verbunden!");setOnline("connected");sendMyChar();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
     else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");}});
   NET.s.onMessage(onNetMsg);
   NET.s.ready.then(function(){
     NET.on=true;
-    if(role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}
+    if(role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}sendMyChar();
   }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));});
 }
 function onNetMsg(d){
   if(!d)return;
-  if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);return;} /* join ODER quick-Gast */
+  if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);sendMyChar();return;} /* join ODER quick-Gast */
   if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
+  if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
 function spawnRemote(){
   if(NET.remote)return;
   var g=new THREE.Group();
-  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.42,1.2,10),new THREE.MeshStandardMaterial({color:0x35d0ff,emissive:0x1466aa,emissiveIntensity:0.6,flatShading:true}));body.position.y=0.85;body.castShadow=true;g.add(body);
-  var head=new THREE.Mesh(new THREE.SphereGeometry(0.3,12,9),new THREE.MeshStandardMaterial({color:0xffd166,emissive:0x886600,emissiveIntensity:0.3}));head.position.y=1.62;g.add(head);
+  var ph=new THREE.Group(); /* Platzhalter bis der echte Partner-Held geladen ist */
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.42,1.2,10),new THREE.MeshStandardMaterial({color:0x35d0ff,emissive:0x1466aa,emissiveIntensity:0.6,flatShading:true}));body.position.y=0.85;body.castShadow=true;ph.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.3,12,9),new THREE.MeshStandardMaterial({color:0xffd166,emissive:0x886600,emissiveIntensity:0.3}));head.position.y=1.62;ph.add(head);
+  g.add(ph);NET.remotePh=ph;
   // Namensschild
   var cv=document.createElement("canvas");cv.width=256;cv.height=64;var cx=cv.getContext("2d");
   cx.font="bold 40px sans-serif";cx.textAlign="center";cx.fillStyle="rgba(20,40,60,.85)";cx.beginPath();cx.roundRect(28,6,200,52,16);cx.fill();cx.fillStyle="#7de3ff";cx.fillText("Partner",128,44);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));sp.scale.set(2,0.5,1);sp.position.y=2.4;g.add(sp);
+  // 🎯 Partner-Marker (cyan Ring, durch Wände sichtbar)
+  var rg=new THREE.Mesh(new THREE.RingGeometry(0.5,0.64,24),new THREE.MeshBasicMaterial({color:0x35d0ff,transparent:true,opacity:0.5,depthTest:false}));rg.rotation.x=-Math.PI/2;rg.position.y=0.06;rg.renderOrder=998;g.add(rg);
   g.visible=false;scene.add(g);NET.remote=g;
 }
+function loadRemoteHero(id){ /* 🧑‍🤝‍🧑 W8: Partner als SEIN gewählter Held (frisch laden, gleiche Höhen-Normierung wie loadHero) */
+  if(!THREE.GLTFLoader)return;
+  if(!NET.remote)spawnRemote();
+  var C=charById(id);if(NET.remoteCharId===C.id&&NET.remoteHero)return;NET.remoteCharId=C.id;
+  new THREE.GLTFLoader().load("/models/"+C.file,function(g2){
+    var o=g2.scene;var TGT=2.3*(C.hscale||1);o.updateMatrixWorld(true);
+    var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
+    o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+    var hb=(bn&&maxy>miny)?(maxy-miny):0;
+    if(hb>0.3)o.scale.setScalar(Math.max(0.15,Math.min(4,TGT/hb)));
+    else{var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;if(h>0.8&&h<6)o.scale.setScalar(Math.max(0.2,Math.min(3.2,TGT/h)));else o.scale.setScalar((C.scale||1.15)*1.18);}
+    var neon=C.glow==="neon";o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);toonify(n,neon);}}});
+    if(NET.remoteHero&&NET.remoteHero.parent)NET.remoteHero.parent.remove(NET.remoteHero);
+    NET.remote.add(o);NET.remoteHero=o;NET.remoteRig=makeRig(o,g2.animations);
+    if(NET.remoteRig.actions.idle)setAnim(NET.remoteRig,"idle",0);else if(g2.animations&&g2.animations[0])setAnim(NET.remoteRig,g2.animations[0].name,0);
+    if(NET.remotePh)NET.remotePh.visible=false; /* Platzhalter aus */
+  },undefined,function(){});
+}
+function sendMyChar(){ /* mehrfach senden gegen Timing-Races; from=eigene Rolle → Partner ignoriert Eigen-Echo */
+  var pk=function(){return {t:"char",id:getChar().id,from:NET.role};};
+  try{if(NET.s)NET.s.send(pk());}catch(e){}
+  setTimeout(function(){try{if(NET.s&&NET.on)NET.s.send(pk());}catch(e){}},1200);
+  setTimeout(function(){try{if(NET.s&&NET.on)NET.s.send(pk());}catch(e){}},3000);}
 function netTick(dt){
   if(!NET.on||!NET.s)return;
   NET.sendT-=dt;
   if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur});} /* st = Stations-Flag für Partner-Blase */
-  if(NET.remote&&NET.remote.visible){var r=NET.remote;r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;}
+  if(NET.remote&&NET.remote.visible){var r=NET.remote;var ox=r.position.x,oz=r.position.z;
+    r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;
+    /* 🧑‍🤝‍🧑 Partner-Held animieren: laufen wenn er sich bewegt, sonst idle */
+    if(NET.remoteRig){NET.remoteRig.mixer.update(dt);
+      var mv=Math.hypot(r.position.x-ox,r.position.z-oz)/Math.max(0.0001,dt);
+      var want=(mv>0.6&&NET.remoteRig.actions.walk)?"walk":(NET.remoteRig.actions.idle?"idle":null);
+      if(want&&NET.remoteRig.cur!==want&&NET.remoteRig.cur!=="attack")setAnim(NET.remoteRig,want,0.2);}
+  }
 }
 function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Raum, join-oder-host) */
   if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
@@ -4051,7 +4086,7 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
   NET.role="quick"; /* wird bei Verbindung auf host/join gesetzt */
   NET.s.onStatus(function(st){
     if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
-    else if(st==="connected"){NET.role=NET.s.role||NET.role;coopStatusMsg("✅ Verbunden!");setOnline("connected");}
+    else if(st==="connected"){NET.role=NET.s.role||NET.role;coopStatusMsg("✅ Verbunden!");setOnline("connected");sendMyChar();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
     else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");}});
   NET.s.onMessage(onNetMsg);
@@ -4059,6 +4094,7 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
     NET.on=true;NET.role=NET.s.role||NET.role;
     if(NET.role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}
     else spawnRemote(); /* Gast: wartet auf "start"-Nachricht */
+    sendMyChar();
   }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));setOnline("solo");});
 }
 (function(){var q=document.getElementById("coopQuick");if(q)q.onclick=netStartQuick;
