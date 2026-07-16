@@ -1619,6 +1619,8 @@ function ensureNitroFx(){
   var tx=new THREE.CanvasTexture(cv);
   nitroFx=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
   nitroFx.scale.set(1.6,1.6,1);nitroFx.visible=false;scene.add(nitroFx);return nitroFx;}
+var driveKopf=null,driveHeck=null;
+function ensureDriveLights(){if(driveKopf)return;driveKopf=[mkLicht("w"),mkLicht("w")];driveHeck=[mkLicht("r"),mkLicht("r")];}
 function einsteigen(rec,geklaut){
   var a=rec||window.autoRec;if(!a||fahren)return;
   fahren=true;driveCar=a;driveGeklaut=!!geklaut;
@@ -1649,6 +1651,7 @@ function aussteigen(){
     polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];wanted=0;updWantedHUD();
     beep(300,.2,"sine",.05);setTimeout(function(){beep(500,.25,"sine",.06);},180);}
   driveCar=null;driveGeklaut=false;nitro=0;if(nitroFx)nitroFx.visible=false;
+  if(driveKopf){driveKopf[0].material.opacity=driveKopf[1].material.opacity=0;driveHeck[0].material.opacity=driveHeck[1].material.opacity=0;}
   document.getElementById("exitCar").style.display="none";
   document.getElementById("nitroBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
@@ -1678,6 +1681,15 @@ function autoFahr(dt){
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03; // leichtes Wanken
   }else{carLean*=0.85;m.position.y=(a.homeY||0.01);}
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
+  // Fahrzeug-Lichter: Scheinwerfer nachts, Bremslicht beim Bremsen/Ausrollen
+  ensureDriveLights();
+  var nn2=window._dorfNacht?1:0,brems=(l<=0.1);
+  var fdx=Math.sin(carRot),fdz=Math.cos(carRot),ppx=Math.cos(carRot),ppz=-Math.sin(carRot);
+  for(var dl=0;dl<2;dl++){var sd2=dl?1:-1;
+    driveKopf[dl].position.set(m.position.x+fdx*2.0+ppx*0.5*sd2,0.8,m.position.z+fdz*2.0+ppz*0.5*sd2);
+    driveKopf[dl].material.opacity=nn2?0.85:0;
+    driveHeck[dl].position.set(m.position.x-fdx*2.0+ppx*0.5*sd2,0.75,m.position.z-fdz*2.0+ppz*0.5*sd2);
+    driveHeck[dl].material.opacity=brems?0.95:(nn2?0.55:0);}
   camTx=m.position.x;camTz=m.position.z;updCam();}
 document.getElementById("exitCar").onclick=aussteigen;
 document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
