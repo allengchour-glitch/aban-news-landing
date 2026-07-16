@@ -509,13 +509,13 @@
 #done search:cable management box
 #done search:desk mat leather large
 #done search:monitor stand riser wood
-search:book stand adjustable
-search:reading light clip
-search:sunset lamp projector rgb
-search:galaxy star projector
-search:neon sign led custom
-search:incense holder waterfall
-search:crystal decor healing
-search:tarot cards deck
+#done search:book stand adjustable
+#done search:reading light clip
+#done search:sunset lamp projector rgb
+#done search:galaxy star projector
+#done search:neon sign led custom
+#done search:incense holder waterfall
+#done search:crystal decor healing
+#done search:tarot cards deck
 search:moon lamp 3d
 search:essential oil roller set
