@@ -755,7 +755,7 @@ function toonify(mesh,neon){var m=mesh.material;if(!m||m._toon||!m.isMeshStandar
   var tm=new THREE.MeshToonMaterial({map:m.map||null,color:m.color?m.color.clone():new THREE.Color(0xffffff),
     gradientMap:nwGradTex(),emissive:m.emissive?m.emissive.clone():new THREE.Color(0x000000),emissiveMap:m.emissiveMap||null,
     transparent:!!m.transparent,opacity:m.opacity!==undefined?m.opacity:1,side:m.side,alphaTest:m.alphaTest||0});
-  tm.emissiveIntensity=neon?0.9:0.35;tm.skinning=!!mesh.isSkinnedMesh;tm._toon=true;mesh.material=tm;}
+  tm.emissiveIntensity=neon?0.5:0.32;tm.skinning=!!mesh.isSkinnedMesh;tm._toon=true;mesh.material=tm;} /* Neon dezenter → Modell-Details bleiben sichtbar (User: „Charaktere sehen nicht toll aus") */
 function loadHero(){
   var C=getChar();
   buildPawn(C.col,0xffe2c0);pBody.visible=true; /* 🧍 Sofort sichtbar in Klassenfarbe — GLB ersetzt gleich */
@@ -779,7 +779,7 @@ function loadHero(){
     })();
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
-      if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);
+      if(neon&&n.material.color)n.material.color.multiplyScalar(1.3); /* vorher 2.0 = überstrahlt/detaillos */
       toonify(n,neon); // Anime-Cel-Look
     }}});
     pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);
@@ -791,7 +791,7 @@ function loadHero(){
     // Fallback: Standard-Held, falls gewähltes Modell nicht lädt
     if(C.file!=="hero_meshy_combat2.glb"){new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
       var o=g.scene;o.scale.setScalar(1.35);
-      o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){n.material.emissiveIntensity=1.2;if(n.material.color)n.material.color.multiplyScalar(2.0);}}});
+      o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){n.material.emissiveIntensity=0.5;if(n.material.color)n.material.color.multiplyScalar(1.3);}}});
       pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
     },undefined,function(){});}
   });
