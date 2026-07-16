@@ -3931,6 +3931,10 @@ function startGame(fresh){
     worldProps.push({mesh:tri,float:true,base:2.9,ph:0,halo:null});}
   running=true;paused=false;xpUpd();updOnline();dailyReward();
   announce("🌅 Willkommen in der Wildnis!");
+  /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
+  if(!sv&&!NET.on&&!lsGet("nw_intro")){lsSet("nw_intro","1");
+    var _tips=["🕹️ Ziehe links den Joystick zum Laufen","⚔️ Rechts = Angriff · 🔨 = Bäume & Steine sammeln","💥 = Spezial-Skill · 💨 = Rolle zum Ausweichen","🌲 Sammle 10 Holz für das erste Ziel!"];
+    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead)announce(tp,"#bfe9ff");},2600+ti*2700);});}
 }
 // ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
 (function(){
