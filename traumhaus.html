@@ -175,6 +175,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="achToast" style="position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-130px);z-index:26;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border:2px solid #e8b04a;border-radius:14px;padding:10px 20px;font-size:.95rem;text-align:center;box-shadow:0 10px 30px rgba(140,90,20,.35);transition:transform .5s cubic-bezier(.2,1.2,.4,1)"><div style="font-size:.7rem;letter-spacing:2px;color:#b8862a">🏆 ERFOLG FREIGESCHALTET</div><div id="achToastTxt"></div></div>
 <button id="achBtn" style="position:fixed;left:10px;top:calc(64px + env(safe-area-inset-top));z-index:14;display:none;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);border-radius:14px;width:48px;height:48px;font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)">🏆</button>
+<canvas id="minimap" width="120" height="120" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:3px solid rgba(255,255,255,.75);box-shadow:0 4px 14px rgba(0,0,0,.35);background:#3a5a34"></canvas>
 <div id="achPanel" style="position:fixed;inset:0;z-index:27;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.6)">
   <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:16px;max-width:420px;width:92vw;max-height:80vh;overflow-y:auto">
     <div style="display:flex;justify-content:space-between;align-items:center">
@@ -2141,6 +2142,40 @@ function updFollow(dt){
   var st=followSim.state==="steer",fr=st?6.5:4,ld=st?2.2:0;
   var tx=followSim.x+Math.sin(followSim.rot||0)*ld,tz=followSim.z+Math.cos(followSim.rot||0)*ld;
   camTx+=(tx-camTx)*Math.min(1,dt*fr);camTz+=(tz-camTz)*Math.min(1,dt*fr);updCam();}
+var _mmT=0,_mmCtx=null;
+function updMinimap(dt){
+  var cv=document.getElementById("minimap");if(!cv)return;
+  _mmT-=dt;if(_mmT>0)return;_mmT=0.12; // ~8x/s reicht fuers Radar
+  if(!_mmCtx)_mmCtx=cv.getContext("2d");
+  var c=_mmCtx,W=120,Cc=60,R=82,sc=Cc/R;
+  var me=sims[meinSi()];if(!me)return;
+  var pcx=(fahren&&driveCar)?driveCar.mesh.position.x:me.x,pcz=(fahren&&driveCar)?driveCar.mesh.position.z:me.z;
+  var head=(fahren&&driveCar)?carRot:(me.rot||0);
+  function S(wx,wz){return [Cc+(wx-pcx)*sc,Cc+(wz-pcz)*sc];}
+  c.clearRect(0,0,W,W);
+  c.save();c.beginPath();c.arc(Cc,Cc,Cc-1,0,6.283);c.clip();
+  c.fillStyle="#3a5a34";c.fillRect(0,0,W,W);
+  // Grundstueck
+  var a=S(-GW*CS/2,-GH*CS/2),b=S(GW*CS/2,GH*CS/2);
+  c.fillStyle="rgba(150,195,120,.55)";c.fillRect(a[0],a[1],b[0]-a[0],b[1]-a[1]);
+  // Strassennetz
+  c.strokeStyle="#6b6b72";c.lineWidth=Math.max(3,7*sc);var SZ=GH*CS/2;
+  var yN=S(0,-SZ-12)[1],yS=S(0,SZ+12)[1],xW=S(-RX,0)[0],xE=S(RX,0)[0];
+  c.beginPath();c.moveTo(0,yN);c.lineTo(W,yN);c.moveTo(0,yS);c.lineTo(W,yS);
+  c.moveTo(xW,0);c.lineTo(xW,W);c.moveTo(xE,0);c.lineTo(xE,W);c.stroke();
+  // Verkehr
+  c.fillStyle="#dcdce0";for(var i=0;i<verkehr.length;i++){var p=verkehr[i].mesh.position,s2=S(p.x,p.z);c.fillRect(s2[0]-1.5,s2[1]-1.5,3,3);}
+  if(busRec){var bs=S(busRec.pos,busRec.z);c.fillStyle="#f0c030";c.fillRect(bs[0]-2,bs[1]-2,4,4);}
+  // Polizei
+  c.fillStyle="#ff3020";for(var q=0;q<polizei.length;q++){var s3=S(polizei[q].mesh.position.x,polizei[q].mesh.position.z);c.beginPath();c.arc(s3[0],s3[1],2.6,0,6.283);c.fill();}
+  // Koop-Partner
+  if(MPs){var pa=sims[1-meinSi()];if(pa){var s4=S(pa.x,pa.z);c.fillStyle="#3ad0ff";c.beginPath();c.arc(s4[0],s4[1],3,0,6.283);c.fill();c.strokeStyle="#fff";c.lineWidth=1.2;c.stroke();}}
+  c.restore();
+  // Spieler-Pfeil in der Mitte (Blickrichtung)
+  c.save();c.translate(Cc,Cc);c.rotate(Math.atan2(Math.cos(head),Math.sin(head))+Math.PI/2);
+  c.fillStyle="#ffffff";c.strokeStyle="#123a6a";c.lineWidth=1.5;
+  c.beginPath();c.moveTo(0,-7);c.lineTo(4.5,5);c.lineTo(0,2);c.lineTo(-4.5,5);c.closePath();c.fill();c.stroke();
+  c.restore();}
 var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
 renderer.domElement.addEventListener("mousedown",function(e){dragging=true;dragBtn=e.button;lx=e.clientX;ly=e.clientY;downT=performance.now();downX=e.clientX;downY=e.clientY;});
 addEventListener("mousemove",function(e){
@@ -2679,7 +2714,7 @@ function loop(now){
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?0.9:0;if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.32:0;});}
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
-    updFollow(dt);
+    updFollow(dt);updMinimap(dt);
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
@@ -2687,6 +2722,7 @@ function loop(now){
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
     updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);updPings(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
+    document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
