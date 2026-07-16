@@ -4038,7 +4038,7 @@ function netStart(role,code){
 function onNetMsg(d){
   if(!d)return;
   if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);sendMyChar();return;} /* join ODER quick-Gast */
-  if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
+  if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
   if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
@@ -4055,6 +4055,11 @@ function spawnRemote(){
   var cv=document.createElement("canvas");cv.width=256;cv.height=64;var cx=cv.getContext("2d");
   cx.font="bold 40px sans-serif";cx.textAlign="center";cx.fillStyle="rgba(20,40,60,.85)";cx.beginPath();cx.roundRect(28,6,200,52,16);cx.fill();cx.fillStyle="#7de3ff";cx.fillText("Partner",128,44);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));sp.scale.set(2,0.5,1);sp.position.y=2.4;g.add(sp);
+  // ❤️ Partner-HP-Balken über dem Kopf
+  var hcv=document.createElement("canvas");hcv.width=200;hcv.height=28;
+  var hsp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(hcv),transparent:true,depthWrite:false,depthTest:false}));
+  hsp.scale.set(1.7,0.24,1);hsp.position.y=2.78;hsp.renderOrder=999;g.add(hsp);
+  NET.remoteHpCv=hcv;NET.remoteHpSprite=hsp;NET.remoteHpPct=-1;
   // 🎯 Partner-Marker (cyan Ring, durch Wände sichtbar)
   var rg=new THREE.Mesh(new THREE.RingGeometry(0.5,0.64,24),new THREE.MeshBasicMaterial({color:0x35d0ff,transparent:true,opacity:0.5,depthTest:false}));rg.rotation.x=-Math.PI/2;rg.position.y=0.06;rg.renderOrder=998;g.add(rg);
   g.visible=false;scene.add(g);NET.remote=g;
@@ -4092,6 +4097,11 @@ function heroActRemote(intent){ /* ⚔️ Partner-Kampfanimation auf dem Partner
   if(pick&&rig.actions[pick])playOnce(rig,pick,1.6);
 }
 function sendAct(intent){try{if(NET.s&&NET.on)NET.s.send({t:"act",intent:intent,from:NET.role});}catch(e){}}
+function drawRemoteHp(pct){var cv=NET.remoteHpCv;if(!cv)return;var c=cv.getContext("2d");c.clearRect(0,0,200,28);
+  c.fillStyle="rgba(10,14,24,.8)";c.beginPath();c.roundRect(2,4,196,20,8);c.fill();
+  var col=pct>50?"#5be08a":(pct>25?"#ffd166":"#ff5a6a");
+  c.fillStyle=col;c.beginPath();c.roundRect(4,6,Math.max(0,192*pct/100),16,7);c.fill();
+  if(NET.remoteHpSprite&&NET.remoteHpSprite.material.map)NET.remoteHpSprite.material.map.needsUpdate=true;}
 function sendMyChar(){ /* mehrfach senden gegen Timing-Races; from=eigene Rolle → Partner ignoriert Eigen-Echo */
   var pk=function(){return {t:"char",id:getChar().id,from:NET.role};};
   try{if(NET.s)NET.s.send(pk());}catch(e){}
@@ -4101,7 +4111,7 @@ function sendMyChar(){ /* mehrfach senden gegen Timing-Races; from=eigene Rolle 
 function netTick(dt){
   if(!NET.on||!NET.s)return;
   NET.sendT-=dt;
-  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur});} /* st = Stations-Flag für Partner-Blase */
+  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur,hp:Math.max(0,Math.round(hp/maxHp*100))});} /* st = Stations-Flag; hp = Partner-HP-Balken */
   if(NET.remote&&NET.remote.visible){var r=NET.remote;var ox=r.position.x,oz=r.position.z;
     r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;
     /* 🧑‍🤝‍🧑 Partner-Held animieren: laufen wenn er sich bewegt, sonst idle */
@@ -4109,6 +4119,7 @@ function netTick(dt){
       var mv=Math.hypot(r.position.x-ox,r.position.z-oz)/Math.max(0.0001,dt);
       var want=(mv>0.6&&NET.remoteRig.actions.walk)?"walk":(NET.remoteRig.actions.idle?"idle":null);
       if(want&&NET.remoteRig.cur!==want&&NET.remoteRig.cur!=="attack")setAnim(NET.remoteRig,want,0.2);}
+    if(NET.rt.hp!=null&&NET.rt.hp!==NET.remoteHpPct){NET.remoteHpPct=NET.rt.hp;drawRemoteHp(NET.rt.hp);} /* ❤️ Partner-HP-Balken aktualisieren */
   }
 }
 function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Raum, join-oder-host) */
