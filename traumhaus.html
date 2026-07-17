@@ -1223,6 +1223,7 @@ function onNetMsg(m){
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="emote")onEmote(m.si,m.k);
   else if(m.t==="ping")onPing(m.x,m.z);
+  else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
   else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
   else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
@@ -1313,6 +1314,38 @@ function updPings(dt,now){
     p.pil.material.opacity=0.3*fade;p.sp.material.opacity=fade;}}
 function doPing(){var si=meinSi(),s9=sims[si];if(!s9)return;makePing(s9.x,s9.z);beep(880,.08,"sine",.05);netSend({t:"ping",x:s9.x,z:s9.z});chatAdd("System","📍 Treffpunkt gesetzt — dein Partner sieht ihn");}
 function onPing(x,z){makePing(x,z);beep(760,.08,"sine",.05);}
+// ---- Collectibles: Muenzen & Geschenke ueber die Map einsammeln ----
+var pickups=[];
+var PICKPOS=[[30,20],[-35,25],[40,-30],[-40,-28],[64,10],[-64,-6],[16,-62],[-22,64],[72,-56],[-72,58],[54,-52],[-54,50]];
+setTimeout(function bauePickups(){
+  PICKPOS.forEach(function(p,i){
+    var gift=(i%4===0),reward=gift?120:30;
+    var g=new THREE.Group();
+    if(gift){
+      var box=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.7,0.7),new THREE.MeshStandardMaterial({color:0xff5a8a,roughness:0.5,emissive:0xff2a6a,emissiveIntensity:0.4}));g.add(box);
+      var b1=new THREE.Mesh(new THREE.BoxGeometry(0.76,0.76,0.16),new THREE.MeshStandardMaterial({color:0xffe14a,emissive:0xffd000,emissiveIntensity:0.5}));g.add(b1);
+      var b2=b1.clone();b2.rotation.y=Math.PI/2;g.add(b2);
+    }else{
+      var coin=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.55,0.14,20),new THREE.MeshStandardMaterial({color:0xffd23a,metalness:0.7,roughness:0.25,emissive:0xffa000,emissiveIntensity:0.55}));
+      coin.rotation.x=Math.PI/2;g.add(coin);
+    }
+    g.position.set(p[0],1.1,p[1]);scene.add(g);
+    pickups.push({mesh:g,x:p[0],z:p[1],gift:gift,reward:reward,active:true,ph:i*1.3});});
+},0);
+function collectPickup(i){var pk=pickups[i];if(!pk||!pk.active)return;pk.active=false;pk.mesh.visible=false;
+  geld+=pk.reward;geldSend();updHUD();
+  beep(880,.07,"square",.05);setTimeout(function(){beep(1180,.1,"square",.05);},80);
+  hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden! +"+pk.reward+" §");
+  if(pk.gift&&typeof hearts==="function")hearts(pk.x,pk.z);
+  if(MPs)netSend({t:"pickup",i:i,on:false});
+  setTimeout(function(){pk.active=true;pk.mesh.visible=true;if(MPs&&mpHost)netSend({t:"pickup",i:i,on:true});},30000);}
+function updPickups(dt,now){
+  for(var i=0;i<pickups.length;i++){var pk=pickups[i];
+    if(pk.active){pk.mesh.rotation.y+=dt*2.2;pk.mesh.position.y=1.1+Math.sin(now*0.004+pk.ph)*0.2;}
+    if((!MPs||mpHost)&&pk.active){var got=false;
+      for(var q=0;q<sims.length;q++){var sq=sims[q];if(sq.mesh.visible&&Math.hypot(sq.x-pk.x,sq.z-pk.z)<2.6){got=true;break;}}
+      if(!got&&fahren&&driveCar&&Math.hypot(driveCar.mesh.position.x-pk.x,driveCar.mesh.position.z-pk.z)<3.4)got=true;
+      if(got)collectPickup(i);}}}
 (function(){var pb=document.getElementById("pingBtn");if(pb)pb.onclick=doPing;})();
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
@@ -2174,6 +2207,7 @@ function updMinimap(dt){
   // Verkehr
   c.fillStyle="#dcdce0";for(var i=0;i<verkehr.length;i++){var p=verkehr[i].mesh.position,s2=S(p.x,p.z);c.fillRect(s2[0]-1.5,s2[1]-1.5,3,3);}
   if(busRec){var bs=S(busRec.pos,busRec.z);c.fillStyle="#f0c030";c.fillRect(bs[0]-2,bs[1]-2,4,4);}
+  if(window.pickups){c.fillStyle="#ffe14a";for(var pk9=0;pk9<pickups.length;pk9++){if(!pickups[pk9].active)continue;var sp9=S(pickups[pk9].x,pickups[pk9].z);c.beginPath();c.arc(sp9[0],sp9[1],2,0,6.283);c.fill();}}
   // Polizei
   c.fillStyle="#ff3020";for(var q=0;q<polizei.length;q++){var s3=S(polizei[q].mesh.position.x,polizei[q].mesh.position.z);c.beginPath();c.arc(s3[0],s3[1],2.6,0,6.283);c.fill();}
   // Koop-Partner
@@ -2728,7 +2762,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);updPings(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
