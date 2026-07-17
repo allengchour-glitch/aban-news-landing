@@ -3237,27 +3237,52 @@ function dmgDir(src){ /* ⚔️ W8: Schadens-Richtung — roter Rand-Glow zeigt,
   if(!el){el=document.createElement("div");el.id="dmgDir";el.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;opacity:0";document.body.appendChild(el);}
   el.style.background="radial-gradient(circle at "+ex.toFixed(0)+"% "+ey.toFixed(0)+"%, rgba(255,40,60,.55), rgba(255,40,60,0) 42%)";
   if(el.animate)el.animate([{opacity:0.9},{opacity:0}],{duration:620,easing:"ease-out"});}
+var _downed=false,_downedT=0,_reviveHoldT=0,_downedTimer=null;
+function _deathVigEl(){var ov=document.getElementById("deathVig");
+  if(!ov){ov=document.createElement("div");ov.id="deathVig";
+    ov.style.cssText="position:fixed;inset:0;z-index:60;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(120,0,10,.25),rgba(90,0,8,.72));opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;text-align:center;color:#ffd0d0;font-weight:900;font-size:1.4rem;text-shadow:0 2px 8px #000;padding:20px";
+    document.body.appendChild(ov);}
+  return ov;}
+function respawnSelf(halfHp){
+  _downed=false;if(_downedTimer){clearTimeout(_downedTimer);_downedTimer=null;}var ov=document.getElementById("deathVig");
+  /* Respawn: Bett (gesetzter Punkt) > Lagerfeuer > Heimdorf */
+  var bp=structures.find(function(s){return s.type==="bett";});
+  var lp=structures.find(function(s){return s.type==="lager";});
+  var spot=bp||lp,rx=spot?spot.x:0,rz=spot?spot.z:0;
+  if(halfHp){rx=player.position.x;rz=player.position.z;} /* Wiederbelebt: an Ort & Stelle */
+  player.position.set(rx,0,rz);
+  hp=halfHp?Math.round(maxHp*0.6):maxHp;dead=false;hpUpd();
+  if(ov)ov.style.opacity="0";
+  burst(rx,groundH(rx,rz)+1,rz,halfHp?[0x8affb0,0xffffff]:(bp?[0x7de3ff,0xc8ffe0]:[0xffb347,0xffd166]),22);
+  announce(halfHp?"🙌 Vom Partner wiederbelebt!":(bp?"🛏️ Zurück am Bett":(lp?"🔥 Zurück am Feuer":"🏡 Zurück im Heimdorf")),"#8affb0");
+  if(typeof sfx==="function")sfx(520,0.12,"triangle",0.05,720);
+  try{if(NET.on&&NET.s)NET.s.send({t:"up",from:NET.role});}catch(e){} /* Partner: „downed"-Marker weg */
+}
 function playerDie(){
   dead=true;announce("💀 Du bist gefallen…","#ff6a6a");
   if(typeof hurtFlash==="function")hurtFlash();shake=Math.min(shake+0.6,0.9);
-  /* 🩸 Tod deutlicher: roter Vollbild-Schleier + kurzer Countdown bis Respawn */
-  var ov=document.getElementById("deathVig");
-  if(!ov){ov=document.createElement("div");ov.id="deathVig";
-    ov.style.cssText="position:fixed;inset:0;z-index:60;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(120,0,10,.25),rgba(90,0,8,.72));opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;color:#ffd0d0;font-weight:900;font-size:1.6rem;text-shadow:0 2px 8px #000";
-    document.body.appendChild(ov);}
-  ov.textContent="";ov.style.opacity="1";
-  setTimeout(function(){
-    /* Respawn: Bett (gesetzter Punkt) > Lagerfeuer > Heimdorf */
-    var bp=structures.find(function(s){return s.type==="bett";});
-    var lp=structures.find(function(s){return s.type==="lager";});
-    var spot=bp||lp,rx=spot?spot.x:0,rz=spot?spot.z:0;
-    player.position.set(rx,0,rz);
-    hp=maxHp;dead=false;hpUpd();
-    if(ov)ov.style.opacity="0";
-    burst(rx,groundH(rx,rz)+1,rz,bp?[0x7de3ff,0xc8ffe0]:[0xffb347,0xffd166],22);
-    announce(bp?"🛏️ Zurück am Bett":(lp?"🔥 Zurück am Feuer":"🏡 Zurück im Heimdorf"),"#8affb0");
-    if(typeof sfx==="function")sfx(520,0.12,"triangle",0.05,720);
-  },1700);
+  var ov=_deathVigEl();ov.style.opacity="1";
+  var partnerAlive=(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible&&(NET.rt.hp==null||NET.rt.hp>0));
+  if(partnerAlive){ /* 🤝 Koop: „downed" — Partner kann aufwecken; garantierter Sicherheits-Timeout (setTimeout, loop-unabhängig) */
+    _downed=true;_downedT=6;ov.textContent="💀 Gefallen — dein Partner kann dich aufwecken! (sonst Respawn in 6s)";
+    try{if(NET.s)NET.s.send({t:"down",from:NET.role});}catch(e){}
+    if(_downedTimer)clearTimeout(_downedTimer);_downedTimer=setTimeout(function(){if(_downed)respawnSelf(false);},6000);
+  } else { ov.textContent="";setTimeout(function(){respawnSelf(false);},1700); }
+}
+var _reviveToastT=0;
+function updDowned(dt){
+  if(_downed){_downedT-=dt;var ov=document.getElementById("deathVig"); /* Countdown-Text (kosmetisch; echter Respawn = setTimeout) */
+    if(ov)ov.textContent="💀 Gefallen — Partner kann dich aufwecken! (Respawn in "+Math.max(0,Math.ceil(_downedT))+"s)";
+    return;}
+  /* Partner-Seite: steht der lebende Spieler nah am gefallenen Partner → nach 1.0s wiederbeleben */
+  if(typeof NET!=="undefined"&&NET.on&&!dead&&NET.remoteDowned&&NET.remote&&NET.remote.visible){
+    var dx=NET.remote.position.x-player.position.x,dz=NET.remote.position.z-player.position.z;
+    if(dx*dx+dz*dz<3.0*3.0){_reviveHoldT+=dt;
+      if(_reviveHoldT>=1.0){_reviveHoldT=0;try{if(NET.s)NET.s.send({t:"revive",from:NET.role});}catch(e){}
+        toast("🙌 Partner wiederbelebt!");NET.remoteDowned=false;}
+      else if(!_reviveToastT||perfNow-_reviveToastT>700){_reviveToastT=perfNow;toast("🔼 Halte Position — belebe Partner…");}
+    } else _reviveHoldT=0;
+  } else _reviveHoldT=0;
 }
 
 // ---------- Toast / Announce ----------
@@ -3970,7 +3995,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -4042,6 +4067,9 @@ function onNetMsg(d){
   if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
   if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
+  if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
+  if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
+  if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
