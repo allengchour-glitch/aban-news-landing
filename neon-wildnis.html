@@ -2021,6 +2021,12 @@ function decorateWorldLate(){
     // 🪨✨ Batch 2: Klippe/Ruinen-Säule/Grasbüschel + Neon-Kristalle (on-theme)
     ["nw_klippe",1.9],["cc0_pillar",1.9],["cc0_grass",0.6],["nf_crystal",1.0],["nf_crystal_large",1.7]];
   farScatter(Math.round(190*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd2()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);});
+  // 🌸 BLUMENWIESEN: dichte, bunte Blüten-Cluster für eine schönere Welt (jeweils 2–5 Blumen)
+  var NWFL2=["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","cc0_flower_purple","nt_flower_red","nt_flower_yellow"];
+  farScatter(Math.round(48*VF),20,function(x,z){var cn=2+((rnd2()*4)|0);
+    for(var ci=0;ci<cn;ci++){var fa=rnd2()*6.28,fr=rnd2()*2.4,fx=x+Math.cos(fa)*fr,fz=z+Math.sin(fa)*fr;
+      var fl=cc0inst(NWFL2[(rnd2()*NWFL2.length)|0],0.6*(0.7+rnd2()*0.7));
+      if(fl){fl.position.set(fx,groundH(fx,fz),fz);fl.rotation.y=rnd2()*6.28;scene.add(fl);}}});
   // 🐄🦌 Tiere über die Welt verteilt (Vieh nahe Dörfer / Wild in Wäldern) — statische Belebung
   var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
   var WILD=[["an_deer",1.4],["an_boar",0.9],["an_fox",0.6],["an_rabbit",0.5],["an_beaver",0.6]];
