@@ -587,6 +587,14 @@ skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x l
 10. **Overlay-Zentrier-Bug:** flex justify-center + Overflow schneidet Titel unerreichbar ab →
     justify-content:flex-start + ::before/::after-Federn (kurz zentriert, lang ab oben scrollbar).
 
+## ⚔️🌲 Wildnis W9 (2026-07-17, PRs #1967–#1982): Emotes, Elden-Ring-Paket, Kamera, HUD, mehr STL, Perf
+- **Koop-Emotes** (`showEmoteOver`/`floatEmotes`/`emoteBar`): 👋❤️😂🧘🆘 über dem Kopf, `{t:"emote"}`-sync; 🆘=größer+Meldung+Ton, 🧘=Rast-Geste (`heroAct("taunt")` lokal+`heroActRemote` beim Partner).
+- **Elden-Ring-Paket** (User-Clip „Sit Millicent", „alles davon"): (1) **Rasten am Lagerfeuer** `restAtFire` — nearFire (`lager`-Struktur) → HP voll + `saveGame` + Rast-Geste. (2) **Kampf-Rückstoß** `knockback(e,fromX,fromZ,str)` — Impuls `e.kbT/kbx/kbz`, in `updMonsters` VOR Normal-Bewegung; Bosse 0.28×; an Nahkampf(9)/Projektil(7)/Skill(11). (3) **NPC-Geschenke** in `talkToNpc` — `nearNpc.gifted` einmalig (Beere/Kristall/XP/HP). (4) **Sitz-Emote** 🧘. (5) `hitSfx()` Thud+Crack.
+- **📱 Kamera zentriert** (User „charakter soll immer mitte sein"): `updCamera` lookAt `z+3+nf*5` (Vorausblick) → `z+1` → Held vertikal in der Mitte, alle Seitenverhältnisse.
+- **📱 HUD-Überschneidungen** (User „keine überschneidung … steuerung und text"): invBar schmaler + sysbtn 44→40 (Inventar↔🔊/⏸), `onlineBadge` im Solo ausgeblendet/im Koop block (**LEHRE: inline `style=` schlägt CSS-Media → per JS-inline-Style in `updOnline` fixen**), announce schmaler/höher.
+- **🌿 Mehr STL** (18 neue Props: nw_* Natur/Dorf + Klippe/Säule/Neon-Kristalle) im `STUFF`-Scatter (150→190) + **`farScatter` Mindestabstand 3.2m** (Belegung vorbefüllt aus `resources`) → keine Überschneidung. Windmühle+Weizen & Boot+Steg als Landmarken (Zonen). **ftk_windmill = 1 Mesh → keine Flügel-Animation möglich.**
+- **⚡ Perf-FIX (halbiert!):** statische Props (item_shrine/mushroom) hatten `frustumCulled=false` → immer gezeichnet → Draw-Calls **1288→696** mobil. Nur die geriggten Chars/Monster behalten `false` (Skinned-BBox-Pop).
+
 ## 🎭 Charakter-Overhaul + Koop-Revive — W8+ (2026-07-16, PRs #1957/#1961–#1965)
 - **Wildnis Charakterauswahl** (User: „auswahl ist scheisse, viele scheiss charakter"): 24→**17** Helden — 6 Monster-„Helden" (Goblin/Ork/Yeti…) + `hero.glb`-Mannequin ENTFERNT (per In-Game-Screenshot als schwach bestätigt). **Karussell** (`charNav`: ◀ Name/Bonus/„n von 17" ▶ + `cycle()`) über der 3D-Vorschau. **Vorschau bone-basiert** normiert+zentriert (`boneBox()`, ~1.75u) — vorher zeigte setFromObject-6×-Clamp nur die Stiefel. Neon-Chars entstrahlt (color`*2→*1.3`, emissive`0.9→0.5`).
 - **Lebenspfad**: `selN 2→1` (Online-Koop = 1 Char), `loadChar`-Default bekommt `meshy` (frische Figur = Anime statt blockigem Toon; gespeicherte bleiben). `?quick=1`/`?coop=1` statischer Direkt-Link → Auto-Quick-Play. Offener Raum zeigt „🌍 offen" + „Freund tippt denselben Knopf".
