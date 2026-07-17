@@ -811,6 +811,33 @@ function updBallon(dt,now){var b=window._ballon;if(!b)return;
   b.x+=b.sp*dt;if(b.x>135){b.x=-135;b.z=-95+((now|0)%70);}
   b.mesh.position.set(b.x,24+Math.sin(now*0.0006)*1.6,b.z);
   b.mesh.rotation.y=Math.sin(now*0.0004)*0.25;}
+// ---- Feuerwerk bei Nacht ----
+var FWCOL=[0xff4a6a,0xffd23a,0x3ad0ff,0x8a5aff,0x4aff8a,0xff9a2a,0xffffff];
+window._fw={rockets:[],bursts:[]};
+function launchFirework(x,z){
+  var col=FWCOL[(Math.random()*FWCOL.length)|0];
+  var m=new THREE.Mesh(new THREE.SphereGeometry(0.2,8,6),new THREE.MeshBasicMaterial({color:col}));
+  m.position.set(x,1,z);scene.add(m);
+  window._fw.rockets.push({mesh:m,x:x,z:z,y:1,vy:17+Math.random()*7,apex:22+Math.random()*12,col:col});}
+function fwExplode(x,y,z,col){
+  var N=72,pos=new Float32Array(N*3),vel=[];
+  for(var i=0;i<N;i++){pos[i*3]=x;pos[i*3+1]=y;pos[i*3+2]=z;
+    var th=Math.random()*6.283,ph=Math.acos(2*Math.random()-1),sp=6+Math.random()*5;
+    vel.push([Math.sin(ph)*Math.cos(th)*sp,Math.cos(ph)*sp,Math.sin(ph)*Math.sin(th)*sp]);}
+  var g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:col,size:0.55,transparent:true,opacity:1,depthWrite:false,blending:THREE.AdditiveBlending}));
+  scene.add(pts);window._fw.bursts.push({pts:pts,vel:vel,t:1.7});
+  beep(180+Math.random()*120,.12,"sawtooth",.04);}
+function updFireworks(dt,now){var F=window._fw;if(!F)return;
+  if(window._dorfNacht&&(F.rockets.length+F.bursts.length)<4&&Math.random()<dt*0.7){
+    launchFirework((Math.random()-0.5)*120,(Math.random()-0.5)*120);}
+  for(var r=F.rockets.length-1;r>=0;r--){var rk=F.rockets[r];rk.y+=rk.vy*dt;rk.vy-=8*dt;rk.mesh.position.y=rk.y;
+    if(rk.y>=rk.apex||rk.vy<=0){fwExplode(rk.x,rk.y,rk.z,rk.col);scene.remove(rk.mesh);F.rockets.splice(r,1);}}
+  for(var b=F.bursts.length-1;b>=0;b--){var bs=F.bursts[b];bs.t-=dt;
+    var arr=bs.pts.geometry.attributes.position.array;
+    for(var i=0;i<bs.vel.length;i++){var v=bs.vel[i];arr[i*3]+=v[0]*dt;arr[i*3+1]+=v[1]*dt;arr[i*3+2]+=v[2]*dt;v[1]-=9*dt;v[0]*=0.98;v[2]*=0.98;}
+    bs.pts.geometry.attributes.position.needsUpdate=true;bs.pts.material.opacity=Math.max(0,bs.t/1.7);
+    if(bs.t<=0){scene.remove(bs.pts);F.bursts.splice(b,1);}}}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -2808,7 +2835,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
