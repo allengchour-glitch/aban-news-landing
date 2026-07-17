@@ -30,9 +30,16 @@ async function cj(path) {
   return {};
 }
 async function shTok() {
-  const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
-  return (await r.json()).access_token;
+  for (let a = 0; a < 5; a++) {
+    try {
+      const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
+      const t = await r.text();
+      try { const tok = JSON.parse(t).access_token; if (tok) return tok; } catch {}
+    } catch {}
+    await sleep(2000 * (a + 1));
+  }
+  throw new Error('shTok: kein Token nach 5 Versuchen');
 }
 async function sgql(t, q, v) { const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': t }, body: JSON.stringify({ query: q, variables: v }) }); return r.json(); }
 
