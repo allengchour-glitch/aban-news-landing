@@ -3771,7 +3771,7 @@ function updCamera(dt){
   var wantY=Math.max(player.position.y+hgt,gMax+3.5);
   camera.position.y+=(wantY-camera.position.y)*Math.min(1,dt*6);
   var sx=(shake>0?(rnd()-.5)*shake:0),sz=(shake>0?(rnd()-.5)*shake:0);
-  camera.lookAt(player.position.x+sx,player.position.y+1.6-nf*1.2,player.position.z+sz+3+nf*5);
+  camera.lookAt(player.position.x+sx,player.position.y+1.5,player.position.z+sz+1); /* 🎯 Held vertikal zentriert (kein großer Vorausblick mehr — User: „Charakter soll immer Mitte sein") */
   if(shake>0)shake=Math.max(0,shake-dt*1.5);
 }
 
