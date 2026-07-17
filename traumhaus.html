@@ -838,6 +838,24 @@ function updFireworks(dt,now){var F=window._fw;if(!F)return;
     for(var i=0;i<bs.vel.length;i++){var v=bs.vel[i];arr[i*3]+=v[0]*dt;arr[i*3+1]+=v[1]*dt;arr[i*3+2]+=v[2]*dt;v[1]-=9*dt;v[0]*=0.98;v[2]*=0.98;}
     bs.pts.geometry.attributes.position.needsUpdate=true;bs.pts.material.opacity=Math.max(0,bs.t/1.7);
     if(bs.t<=0){scene.remove(bs.pts);F.bursts.splice(b,1);}}}
+// ---- Brunnen (Landmark, hebt die Laune) ----
+setTimeout(function baueBrunnen(){
+  var g=new THREE.Group();var stein=new THREE.MeshStandardMaterial({color:0xbfc4cc,roughness:0.6});
+  var basin=new THREE.Mesh(new THREE.CylinderGeometry(3,3.2,0.6,24),stein);basin.position.y=0.3;basin.castShadow=true;g.add(basin);
+  var water=new THREE.Mesh(new THREE.CylinderGeometry(2.7,2.7,0.4,24),new THREE.MeshStandardMaterial({color:0x2e7fc0,roughness:0.1,metalness:0.3,transparent:true,opacity:0.85}));water.position.y=0.5;g.add(water);
+  var col=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.5,1.6,12),stein);col.position.y=1.3;g.add(col);
+  var top=new THREE.Mesh(new THREE.CylinderGeometry(1.1,1.1,0.28,16),stein);top.position.y=2.1;g.add(top);
+  var jets=[];for(var j=0;j<6;j++){var a=j/6*6.283;var jet=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.02,1.2,5),new THREE.MeshStandardMaterial({color:0x9fd8f0,transparent:true,opacity:0.6,roughness:0.1}));jet.position.set(Math.cos(a)*0.35,2.6,Math.sin(a)*0.35);g.add(jet);jets.push(jet);}
+  g.position.set(68,0,-20);scene.add(g);
+  window._brunnen={grp:g,jets:jets,x:68,z:-20,cd:0};
+},0);
+function updBrunnen(dt,now){var B=window._brunnen;if(!B)return;
+  for(var i=0;i<B.jets.length;i++){var jt=B.jets[i];var h=0.8+Math.abs(Math.sin(now*0.006+i))*0.9;jt.scale.y=h;jt.position.y=2.2+h*0.55;}
+  B.cd-=dt;
+  if((!MPs||mpHost)&&B.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
+    if(sq.mesh.visible&&Math.hypot(sq.x-B.x,sq.z-B.z)<3.4){B.cd=25;
+      sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+14);});
+      if(typeof hearts==="function")hearts(B.x,B.z);simEmoji(sq,"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");break;}}}}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -2835,7 +2853,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
