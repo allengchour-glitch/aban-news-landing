@@ -587,6 +587,12 @@ skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x l
 10. **Overlay-Zentrier-Bug:** flex justify-center + Overflow schneidet Titel unerreichbar ab →
     justify-content:flex-start + ::before/::after-Federn (kurz zentriert, lang ab oben scrollbar).
 
+## 🎭 Charakter-Overhaul + Koop-Revive — W8+ (2026-07-16, PRs #1957/#1961–#1965)
+- **Wildnis Charakterauswahl** (User: „auswahl ist scheisse, viele scheiss charakter"): 24→**17** Helden — 6 Monster-„Helden" (Goblin/Ork/Yeti…) + `hero.glb`-Mannequin ENTFERNT (per In-Game-Screenshot als schwach bestätigt). **Karussell** (`charNav`: ◀ Name/Bonus/„n von 17" ▶ + `cycle()`) über der 3D-Vorschau. **Vorschau bone-basiert** normiert+zentriert (`boneBox()`, ~1.75u) — vorher zeigte setFromObject-6×-Clamp nur die Stiefel. Neon-Chars entstrahlt (color`*2→*1.3`, emissive`0.9→0.5`).
+- **Lebenspfad**: `selN 2→1` (Online-Koop = 1 Char), `loadChar`-Default bekommt `meshy` (frische Figur = Anime statt blockigem Toon; gespeicherte bleiben). `?quick=1`/`?coop=1` statischer Direkt-Link → Auto-Quick-Play. Offener Raum zeigt „🌍 offen" + „Freund tippt denselben Knopf".
+- **Koop-Wiederbeleben** (`playerDie`→`respawnSelf(half)`+`updDowned`): gefallener Spieler = „downed", Partner belebt durch ~1s Nähe (`{t:"down/revive/up"}`). **Soft-Lock-frei via `setTimeout(6s)`** (NICHT loop-abhängig — updDowned läuft nur wenn running). Solo/kein Partner → normaler Sofort-Respawn.
+- **🔑 LEHRE:** Koop-Feature-Timeouts NIE nur über den Frame-Loop (updX) treiben — bei Tod/Pause läuft der Loop evtl. nicht → `setTimeout` für garantierte Zustandswechsel. `partnerAlive` = `NET.remote.visible` ist im Headless-Test flaky (Pos-Sync-Timing) → Feature degradiert sauber auf Normal-Respawn (nie schlimmer als vorher).
+
 ## 🌐 Wildnis Online-Koop — W8 (2026-07-16, PRs #1946/#1949/#1950/#1951)
 Ziel „koop online einfach": kein Code-Austausch, Partner voll erlebbar. Alle via Plumbing-Commit + 2-Seiten-Playwright-Test (`?mp=local`, BroadcastChannel).
 - **1-Tipp Schnell-Koop** (`MP.quick` in `js/mp.js`): join-oder-host auf festem Public-Raum **"PUBA"** (4 gültige Buchstaben, KEINE Ziffern — sonst kürzt der Code-Sanitizer!). `MP._hostFixed`+`noRegen`-Flag. UI-Knopf `coopQuick`, Code-Weg in `<details>` eingeklappt.
