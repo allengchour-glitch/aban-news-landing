@@ -3353,6 +3353,8 @@ function dmgHit(e,dmg){if(!e)return;
   e.hitPop=0.16;}
 /* 💥 Rückstoß: schiebt den Gegner weg vom Treffer-Ursprung; Bosse widerstehen stärker (Elden-Ring-Wucht) */
 function knockback(e,fromX,fromZ,str){if(!e)return;var kx=e.x-fromX,kz=e.z-fromZ,kd=Math.hypot(kx,kz)||1;var s=(e.boss?str*0.28:str);e.kbx=kx/kd*s;e.kbz=kz/kd*s;e.kbT=0.16;}
+/* 🔊 Wuchtiger Treffer-Klang: tiefer Thud + kurzer Crack (passt zum Rückstoß) */
+function hitSfx(){if(typeof sfx!=="function")return;sfx(92,0.09,"sawtooth",0.06,54);sfx(330,0.05,"square",0.04,150);}
 
 // ---------- Sammeln ----------
 var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null,nearFire=null;
@@ -3432,7 +3434,7 @@ function harvest(){
   if(nearMon){ // Kampf
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
-var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
