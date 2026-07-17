@@ -1327,7 +1327,7 @@ function loadProps(){
   ];
   SPECS.forEach(function(S){
     new THREE.GLTFLoader().load("/models/"+S.file,function(g){
-      var proto=g.scene;proto.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      var proto=g.scene;proto.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)toonify(n,true);}}); /* 📱 statische Props frustum-cullen (nicht false) → weniger Draw-Calls auf dem Handy */
       for(var i=0;i<S.n;i++){
         var a=rnd()*6.28,rd=22+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;
         if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}
