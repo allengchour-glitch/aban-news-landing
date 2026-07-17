@@ -848,6 +848,31 @@ setTimeout(function baueBrunnen(){
   var jets=[];for(var j=0;j<6;j++){var a=j/6*6.283;var jet=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.02,1.2,5),new THREE.MeshStandardMaterial({color:0x9fd8f0,transparent:true,opacity:0.6,roughness:0.1}));jet.position.set(Math.cos(a)*0.35,2.6,Math.sin(a)*0.35);g.add(jet);jets.push(jet);}
   g.position.set(68,0,-20);scene.add(g);
   window._brunnen={grp:g,jets:jets,x:68,z:-20,cd:0};
+  // Park rundherum: Plattenweg-Ring, Baenke, Blumenbeete, Hecken, Laternen
+  var park=new THREE.Group();park.position.set(68,0,-20);
+  var weg=new THREE.Mesh(new THREE.RingGeometry(3.6,5.4,28),new THREE.MeshStandardMaterial({color:0xcfc6b4,roughness:0.9}));
+  weg.rotation.x=-Math.PI/2;weg.position.y=0.005;weg.receiveShadow=true;park.add(weg);
+  var holz=new THREE.MeshStandardMaterial({color:0x8a6a48,roughness:0.8}),eisen=new THREE.MeshStandardMaterial({color:0x3a3a42,roughness:0.6});
+  for(var bk=0;bk<4;bk++){var ba2=bk/4*6.283+0.785;var bench=new THREE.Group();
+    var sitz=new THREE.Mesh(new THREE.BoxGeometry(2,0.12,0.55),holz);sitz.position.y=0.55;bench.add(sitz);
+    var lehne=new THREE.Mesh(new THREE.BoxGeometry(2,0.5,0.1),holz);lehne.position.set(0,0.92,-0.24);lehne.rotation.x=-0.15;bench.add(lehne);
+    [[-0.85],[0.85]].forEach(function(fx){var fuss=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.55,0.5),eisen);fuss.position.set(fx[0],0.28,0);bench.add(fuss);});
+    bench.position.set(Math.cos(ba2)*6.6,0,Math.sin(ba2)*6.6);bench.rotation.y=-ba2-Math.PI/2;bench.castShadow=true;park.add(bench);}
+  var BLUM=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43];
+  for(var bb=0;bb<4;bb++){var bba=bb/4*6.283;var beet=new THREE.Group();
+    var rand2=new THREE.Mesh(new THREE.CylinderGeometry(0.9,0.95,0.3,10),new THREE.MeshStandardMaterial({color:0x9a9088,roughness:0.9}));rand2.position.y=0.15;beet.add(rand2);
+    var erde=new THREE.Mesh(new THREE.CylinderGeometry(0.82,0.82,0.32,10),new THREE.MeshStandardMaterial({color:0x4a3626,roughness:1}));erde.position.y=0.17;beet.add(erde);
+    for(var fl=0;fl<7;fl++){var fa=fl/7*6.283;var bl2=new THREE.Mesh(new THREE.SphereGeometry(0.11,6,5),new THREE.MeshStandardMaterial({color:BLUM[(bb+fl)%4],roughness:0.6,emissive:BLUM[(bb+fl)%4],emissiveIntensity:0.15}));
+      bl2.position.set(Math.cos(fa)*0.45,0.42,Math.sin(fa)*0.45);beet.add(bl2);}
+    beet.position.set(Math.cos(bba)*6.6,0,Math.sin(bba)*6.6);park.add(beet);}
+  for(var hk=0;hk<10;hk++){var ha=hk/10*6.283+0.31;var hecke=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.8,0.6),new THREE.MeshStandardMaterial({color:0x3f7a38,roughness:0.95}));
+    hecke.position.set(Math.cos(ha)*8.6,0.4,Math.sin(ha)*8.6);hecke.rotation.y=-ha+Math.PI/2;hecke.castShadow=true;park.add(hecke);}
+  [[-7.6,0],[7.6,0]].forEach(function(lp){var lg2=new THREE.Group();
+    var mast3=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3,7),eisen);mast3.position.y=1.5;lg2.add(mast3);
+    var kopf2=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+    kopf2.position.y=3.1;lg2.add(kopf2);dorfFenster.push(kopf2.material);
+    lg2.position.set(lp[0],0,lp[1]);park.add(lg2);});
+  scene.add(park);
 },0);
 function updBrunnen(dt,now){var B=window._brunnen;if(!B)return;
   for(var i=0;i<B.jets.length;i++){var jt=B.jets[i];var h=0.8+Math.abs(Math.sin(now*0.006+i))*0.9;jt.scale.y=h;jt.position.y=2.2+h*0.55;}
